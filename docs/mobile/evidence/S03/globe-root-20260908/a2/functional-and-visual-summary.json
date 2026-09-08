@@ -1,0 +1,148 @@
+{
+  "runId": "pwa-product-root-20260908-a2",
+  "localQaOnly": true,
+  "buildId": "a93cbdd2c1a69dfeb2ceb70ce36e7b4b6849d38950207effdb10adc46bdcaf7c",
+  "sourceCommit": "5d96c5dd9a99bb36a2a1c91c334185a998cf1e92",
+  "localQaAuthority": true,
+  "functional": {
+    "passed": 5,
+    "failed": 3,
+    "durationMs": 226051.481,
+    "changedSourceSnapshots": [],
+    "cases": [
+      {
+        "project": "pwa-desktop",
+        "title": "real signed access, locale and connectivity preserve the actual R3F scene",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 12897
+          }
+        ]
+      },
+      {
+        "project": "pwa-desktop",
+        "title": "known revocation closes access and cannot be resurrected by offline reload",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 8648
+          }
+        ]
+      },
+      {
+        "project": "pwa-desktop",
+        "title": "a corrupt candidate preserves the active build; explicit update and rollback select whole verified generations",
+        "status": "unexpected",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 30241
+          }
+        ]
+      },
+      {
+        "project": "pwa-mobile",
+        "title": "real signed access, locale and connectivity preserve the actual R3F scene",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 17697
+          }
+        ]
+      },
+      {
+        "project": "pwa-mobile",
+        "title": "known revocation closes access and cannot be resurrected by offline reload",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 12669
+          }
+        ]
+      },
+      {
+        "project": "pwa-mobile",
+        "title": "a corrupt candidate preserves the active build; explicit update and rollback select whole verified generations",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 42654
+          }
+        ]
+      },
+      {
+        "project": "pwa-desktop",
+        "title": "canonical book favorite survives cold offline reload and locale route change",
+        "status": "unexpected",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 30689
+          }
+        ]
+      },
+      {
+        "project": "pwa-mobile",
+        "title": "canonical book favorite survives cold offline reload and locale route change",
+        "status": "unexpected",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 30227
+          }
+        ]
+      }
+    ]
+  },
+  "strictArtifactAudit": {
+    "path": "strict-artifact-audit.json",
+    "pass": true,
+    "counts": {
+      "files": 362,
+      "bytes": 41417241,
+      "bootstrapFiles": 316,
+      "bootstrapBytes": 20046475,
+      "sourceInputs": 961,
+      "publicSources": 291,
+      "scripts": 42
+    },
+    "findings": []
+  },
+  "diagnoses": [
+    {
+      "test": "desktop corrupt candidate",
+      "phase": "new updated document, after setOffline, capture before rollback",
+      "kind": "fixture readiness",
+      "detail": "Initial captureNoticeNodes existence assertion ran before asynchronous real R3F readiness. Earlier notice/scene identity, actual Return and keyboard Tab-to-Update passed. Mobile complete update/rollback passed. Readiness wait added without changing identity gates."
+    },
+    {
+      "test": "favorite desktop and mobile",
+      "phase": "four canonical cover cards before selected-work viewport",
+      "kind": "fixture pagination",
+      "detail": "Failure snapshot shows 13 of 46 RU cards. Canonical exact Dickens key is valid but absent from first locale-ordered batch. Test now browses actual Show more batches before exact key/currentSrc/naturalWidth assertions; no product ID change."
+    }
+  ],
+  "visualReview": {
+    "reviewed": [
+      "artifacts/controlled-pwa-real-signed-5b137-eserve-the-actual-R3F-scene-pwa-desktop/pwa-offline-en-notices.png",
+      "artifacts/controlled-pwa-real-signed-5b137-eserve-the-actual-R3F-scene-pwa-mobile/pwa-offline-en-notices.png",
+      "artifacts/controlled-pwa-a-corrupt-c-5da21--whole-verified-generations-pwa-mobile/pwa-collection-keyboard-rollback.png"
+    ],
+    "findings": [
+      "Country presentation and offline notice no longer overlap; mobile disclosure hit test passed.",
+      "Rollback is visibly keyboard-focused inside panel notice slot above catalog content.",
+      "Large inherited Recent padding still visible in a2; parent applied subsequent CSS-only compact spacing for a3."
+    ],
+    "limits": [
+      "No numerical text-contrast audit.",
+      "Four-cover runtime and cold selected-work viewport gates were not reached in failed favorite cases; remain pending."
+    ]
+  },
+  "releaseReady": false
+}

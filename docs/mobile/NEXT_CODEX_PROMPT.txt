@@ -1,9 +1,15 @@
-LATEST CHECKPOINT: Android globe-only source26e290845639d05b72972381e1f83453a674d75c
-is built, audited and preserved. Read evidence/S04/android-globe-entry-20260908/result.json
-and evidence/S04/globe-entry-20260908/result.json. Do not repeat unchanged green
-builds/tests. Root is adapting the controlled paid-PWA root/access/help layer;
-controlled_images is adapting its browser coverage. Inspect current agent
-messages and working diff before running those changed-source tests.
+LATEST CHECKPOINT: controlled paid PWA now shares the canonical globe-only
+root and retained collection/reader. Read evidence/S03/globe-root-20260908/result.json
+and final-source-validation.json. a5 final desktop/mobile favorite PASS with
+cold RU/EN real reader layout, header, covers, single global language control,
+Help, same scene and return. a1-a4 failures/evidence remain distinct. Do not
+rerun unchanged green scenarios or relabel earlier artifacts.
+
+NEXT: commit checked source/evidence and build fresh Android/dev using
+.tmp/native-bootstrap/build-globe-panels-android-20260908.ps1 with explicit
+ExpectedSourceCommit. Previous3cd APK lacks these shared fixes. Preserve
+new exact runtime/APK/audits; update this checkpoint. iOS isolated public-parent
+projection is prepared separately; no publication of private local history.
 
 Continue V12 in literary-planet-v12-work on
 codex/literary-planet-v12-bilingual-final-autopilot.

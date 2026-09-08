@@ -258,3 +258,14 @@
   do not prove installed Android/iOS behavior, exact-RC/store suitability,
   stage acceptance, production signing or bilingual/content completion.
   Subsequent shared-source/PWA work needs its own artifact identity.
+
+- D064: PWA/native share the canonical globe root. The existing locale control
+  and one stable notice portal move into active product panels without new
+  scene/auth/worker ownership. Root notices reserve overlay space only.
+- D065: Cold reader reveal must wait for actual nonzero layout. Product
+  navigation does not run public-site hash scroll writers; the outer panel
+  uses overflow:clip and its own content scrollport retains visible controls.
+  Preserve observed a3/a4 failures and final bounded a5 desktop/mobile passes.
+- D066: Selected canonical image bytes/provenance remain unchanged. Added
+  offline files and a text fallback are delivery fixes, not new title, portrait,
+  editorial or rights approvals. No screenshot is promoted to an exact RC.

@@ -1,0 +1,49 @@
+{
+  "runId": "pwa-product-root-20260908-a1",
+  "buildId": "ce0fab4d59fcafac422746a4e7487fe06b74baa689d910adb6df43900f0fc57e",
+  "sourceCommit": "5d96c5dd9a99bb36a2a1c91c334185a998cf1e92",
+  "localQaOnly": true,
+  "functional": {
+    "passed": 12,
+    "failed": 0,
+    "projects": ["pwa-desktop", "pwa-mobile"],
+    "durationReportedMinutes": 6.3,
+    "changedSourceSnapshots": [],
+    "coverage": ["signed access and actual R3F identity", "cold RU/EN offline country and search", "known revocation and offline reload", "unsigned flags cannot grant access", "corrupt candidate and verified update/rollback", "canonical favorite, Collection return, shared locale control, Help and history"]
+  },
+  "strictArtifactAudit": {
+    "path": "strict-artifact-audit.json",
+    "pass": true,
+    "findings": [],
+    "files": 354,
+    "bytes": 40647677,
+    "bootstrapFiles": 308,
+    "bootstrapBytes": 19284221,
+    "sourceInputs": 959,
+    "publicSources": 283,
+    "scripts": 42
+  },
+  "noticeBounds": [
+    {"viewport": {"width": 1280, "height": 720}, "bounds": {"x": 784, "y": 589.25, "width": 480, "height": 114.75}},
+    {"viewport": {"width": 412, "height": 839}, "bounds": {"x": 16, "y": 708.25, "width": 380, "height": 114.75}}
+  ],
+  "visualFindings": [
+    {
+      "status": "OPEN",
+      "finding": "Offline notices fit the viewport but overlap the collapsed country sheet on mobile and lower book/help content on desktop.",
+      "screenshots": ["artifacts/controlled-pwa-real-signed-5b137-eserve-the-actual-R3F-scene-pwa-mobile/pwa-offline-en-notices.png", "artifacts/offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-desktop/pwa-collection-en-help.png"]
+    },
+    {
+      "status": "OPEN",
+      "finding": "Broken editorial cover images are visible for 1984, A Tale of Two Cities, Ann Veronica and Brave New World. Exact runtime image URLs were not captured by the original functional scenario.",
+      "screenshots": ["artifacts/offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-desktop/pwa-collection-en-book.png"]
+    },
+    {
+      "status": "OPEN",
+      "finding": "The mobile cold English book route has a selected detail DOM node, but its screenshot displays the catalog header. A viewport assertion is needed to verify selected-work reveal.",
+      "screenshots": ["artifacts/offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-mobile/pwa-collection-en-book.png"]
+    }
+  ],
+  "visualReview": "Actual RU/EN desktop/mobile Collection, Help and offline-notice screenshots were viewed. Main foreground text was visually readable; no complete contrast audit is claimed.",
+  "limits": ["Functional success does not resolve these visual findings.", "Local Chrome QA does not prove native installation, Safari, physical-device behavior, complete translations or release readiness.", "No production services, publication, release or deployment was performed."]
+}

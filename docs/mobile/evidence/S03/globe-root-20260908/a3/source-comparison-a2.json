@@ -1,0 +1,14 @@
+{
+  "previousBuildId": "a93cbdd2c1a69dfeb2ceb70ce36e7b4b6849d38950207effdb10adc46bdcaf7c",
+  "currentBuildId": "c04164d1d974552857cf75b53a951d0ce5bf9e9bc3838181247485a2fc3a97d3",
+  "previousSourceInputs": 961,
+  "currentSourceInputs": 961,
+  "changedInputs": [
+    "src/host/host.css"
+  ],
+  "removedInputs": [],
+  "jsTsSourceInputs": 887,
+  "jsTsChanged": [],
+  "localQaOnly": true,
+  "note": "Source JavaScript/TypeScript equivalence only; CSS changed and each candidate has its own local signer/build identity. Bundled entry bytes are not asserted identical."
+}

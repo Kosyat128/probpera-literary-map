@@ -6,10 +6,10 @@ Internal implementation remains the assistant's responsibility:
   platform boundaries passed. Fresh Android3cd14423 build/static binary checks
   and exact archival copies passed. Installed Android/emulator/physical-device
   behavior still requires its own evidence; this is not S03/S04/S05 acceptance.
-- Adapt controlled paid PWA to the same globe-only home and access/help panels,
-  then validate changed behavior and a fresh exact artifact. Historical PWA
-  tests do not cover the current presentation change. OS installation and a
-  broader device matrix remain open; keep QA authorities isolated.
+- Controlled paid PWA globe/panel working validation is complete for the
+  documented bounded cases; original failures remain preserved. OS installation,
+  the broader device matrix and remaining S03 gates are open. Fresh Android
+  shared-panel artifact required; keep QA authorities isolated.
 - Corrected iOS globe-first source still needs its own simulator/runtime
   evidence. Historical cloud launch succeeded, but its magazine-home and
   safe-area screenshots fail the product contract. Do not relabel old results.

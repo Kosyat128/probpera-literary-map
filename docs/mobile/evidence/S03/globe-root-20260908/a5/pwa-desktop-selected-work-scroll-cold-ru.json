@@ -1,0 +1,1206 @@
+{
+  "localQaOnly": true,
+  "phase": "cold-ru",
+  "events": [
+    {
+      "kind": "scrollTo:call",
+      "atMs": 1747.1000000014901,
+      "id": "",
+      "className": "native-planet-panel__content",
+      "target": {
+        "x": 460,
+        "y": 135.375,
+        "width": 820,
+        "height": 584.625,
+        "top": 135.375,
+        "right": 1280,
+        "bottom": 720,
+        "left": 460
+      },
+      "options": {
+        "behavior": "smooth",
+        "top": 581.765625
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "windowScroll": {
+        "x": 0,
+        "y": 0
+      },
+      "panelScroll": {
+        "left": 0,
+        "top": 0
+      },
+      "contentScroll": {
+        "left": 0,
+        "top": 0
+      },
+      "panel": {
+        "x": 460,
+        "y": 0,
+        "width": 820,
+        "height": 720,
+        "top": 0,
+        "right": 1280,
+        "bottom": 720,
+        "left": 460
+      },
+      "content": {
+        "x": 460,
+        "y": 135.375,
+        "width": 820,
+        "height": 584.625,
+        "top": 135.375,
+        "right": 1280,
+        "bottom": 720,
+        "left": 460
+      },
+      "header": {
+        "x": 460,
+        "y": 0,
+        "width": 820,
+        "height": 75,
+        "top": 0,
+        "right": 1280,
+        "bottom": 75,
+        "left": 460
+      },
+      "books": {
+        "x": 460,
+        "y": 314.40625,
+        "width": 820,
+        "height": 990.859375,
+        "top": 314.40625,
+        "right": 1280,
+        "bottom": 1305.265625,
+        "left": 460
+      },
+      "detail": {
+        "x": 972.484375,
+        "y": 717.140625,
+        "width": 265.25,
+        "height": 466.25,
+        "top": 717.140625,
+        "right": 1237.734375,
+        "bottom": 1183.390625,
+        "left": 972.484375
+      },
+      "heading": {
+        "x": 972.484375,
+        "y": 762.921875,
+        "width": 246.25,
+        "height": 28.796875,
+        "top": 762.921875,
+        "right": 1218.734375,
+        "bottom": 791.71875,
+        "left": 972.484375
+      }
+    },
+    {
+      "kind": "scrollTo:return",
+      "atMs": 1747.300000000745,
+      "id": "",
+      "className": "native-planet-panel__content",
+      "target": {
+        "x": 460,
+        "y": 135.375,
+        "width": 820,
+        "height": 584.625,
+        "top": 135.375,
+        "right": 1280,
+        "bottom": 720,
+        "left": 460
+      },
+      "options": {
+        "behavior": "smooth",
+        "top": 581.765625
+      },
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "windowScroll": {
+        "x": 0,
+        "y": 0
+      },
+      "panelScroll": {
+        "left": 0,
+        "top": 0
+      },
+      "contentScroll": {
+        "left": 0,
+        "top": 0
+      },
+      "panel": {
+        "x": 460,
+        "y": 0,
+        "width": 820,
+        "height": 720,
+        "top": 0,
+        "right": 1280,
+        "bottom": 720,
+        "left": 460
+      },
+      "content": {
+        "x": 460,
+        "y": 135.375,
+        "width": 820,
+        "height": 584.625,
+        "top": 135.375,
+        "right": 1280,
+        "bottom": 720,
+        "left": 460
+      },
+      "header": {
+        "x": 460,
+        "y": 0,
+        "width": 820,
+        "height": 75,
+        "top": 0,
+        "right": 1280,
+        "bottom": 75,
+        "left": 460
+      },
+      "books": {
+        "x": 460,
+        "y": 314.40625,
+        "width": 820,
+        "height": 990.859375,
+        "top": 314.40625,
+        "right": 1280,
+        "bottom": 1305.265625,
+        "left": 460
+      },
+      "detail": {
+        "x": 972.484375,
+        "y": 717.140625,
+        "width": 265.25,
+        "height": 466.25,
+        "top": 717.140625,
+        "right": 1237.734375,
+        "bottom": 1183.390625,
+        "left": 972.484375
+      },
+      "heading": {
+        "x": 972.484375,
+        "y": 762.921875,
+        "width": 246.25,
+        "height": 28.796875,
+        "top": 762.921875,
+        "right": 1218.734375,
+        "bottom": 791.71875,
+        "left": 972.484375
+      }
+    },
+    {
+      "kind": "scroll:event",
+      "atMs": 1866.4000000022352,
+      "id": "",
+      "className": "native-planet-panel__content",
+      "target": {
+        "x": 460,
+        "y": 135.375,
+        "width": 820,
+        "height": 584.625,
+        "top": 135.375,
+        "right": 1280,
+        "bottom": 720,
+        "left": 460
+      },
+      "options": null,
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "windowScroll": {
+        "x": 0,
+        "y": 0
+      },
+      "panelScroll": {
+        "left": 0,
+        "top": 0
+      },
+      "contentScroll": {
+        "left": 0,
+        "top": 218
+      },
+      "panel": {
+        "x": 460,
+        "y": 0,
+        "width": 820,
+        "height": 720,
+        "top": 0,
+        "right": 1280,
+        "bottom": 720,
+        "left": 460
+      },
+      "content": {
+        "x": 460,
+        "y": 135.375,
+        "width": 820,
+        "height": 584.625,
+        "top": 135.375,
+        "right": 1280,
+        "bottom": 720,
+        "left": 460
+      },
+      "header": {
+        "x": 460,
+        "y": 0,
+        "width": 820,
+        "height": 75,
+        "top": 0,
+        "right": 1280,
+        "bottom": 75,
+        "left": 460
+      },
+      "books": {
+        "x": 460,
+        "y": 96.40625,
+        "width": 820,
+        "height": 990.859375,
+        "top": 96.40625,
+        "right": 1280,
+        "bottom": 1087.265625,
+        "left": 460
+      },
+      "detail": {
+        "x": 959.8325805664062,
+        "y": 499.140625,
+        "width": 265.24993896484375,
+        "height": 466.25,
+        "top": 499.140625,
+        "right": 1225.08251953125,
+        "bottom": 965.390625,
+        "left": 959.8325805664062
+      },
+      "heading": {
+        "x": 959.8325805664062,
+        "y": 544.921875,
+        "width": 246.24993896484375,
+        "height": 28.796875,
+        "top": 544.921875,
+        "right": 1206.08251953125,
+        "bottom": 573.71875,
+        "left": 959.8325805664062
+      }
+    },
+    {
+      "kind": "scroll:event",
+      "atMs": 1978.4000000022352,
+      "id": "",
+      "className": "native-planet-panel__content",
+      "target": {
+        "x": 460,
+        "y": 135.375,
+        "width": 820,
+        "height": 584.625,
+        "top": 135.375,
+        "right": 1280,
+        "bottom": 720,
+        "left": 460
+      },
+      "options": null,
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "windowScroll": {
+        "x": 0,
+        "y": 0
+      },
+      "panelScroll": {
+        "left": 0,
+        "top": 0
+      },
+      "contentScroll": {
+        "left": 0,
+        "top": 427
+      },
+      "panel": {
+        "x": 460,
+        "y": 0,
+        "width": 820,
+        "height": 720,
+        "top": 0,
+        "right": 1280,
+        "bottom": 720,
+        "left": 460
+      },
+      "content": {
+        "x": 460,
+        "y": 135.375,
+        "width": 820,
+        "height": 584.625,
+        "top": 135.375,
+        "right": 1280,
+        "bottom": 720,
+        "left": 460
+      },
+      "header": {
+        "x": 460,
+        "y": 0,
+        "width": 820,
+        "height": 75,
+        "top": 0,
+        "right": 1280,
+        "bottom": 75,
+        "left": 460
+      },
+      "books": {
+        "x": 460,
+        "y": -112.59375,
+        "width": 820,
+        "height": 1038.859375,
+        "top": -112.59375,
+        "right": 1280,
+        "bottom": 926.265625,
+        "left": 460
+      },
+      "detail": {
+        "x": 956.1199951171875,
+        "y": 338.140625,
+        "width": 265.25,
+        "height": 466.25,
+        "top": 338.140625,
+        "right": 1221.3699951171875,
+        "bottom": 804.390625,
+        "left": 956.1199951171875
+      },
+      "heading": {
+        "x": 956.1199951171875,
+        "y": 383.921875,
+        "width": 246.25,
+        "height": 28.796875,
+        "top": 383.921875,
+        "right": 1202.3699951171875,
+        "bottom": 412.71875,
+        "left": 956.1199951171875
+      }
+    },
+    {
+      "kind": "scroll:event",
+      "atMs": 1993,
+      "id": "",
+      "className": "native-planet-panel__content",
+      "target": {
+        "x": 460,
+        "y": 135.375,
+        "width": 820,
+        "height": 584.625,
+        "top": 135.375,
+        "right": 1280,
+        "bottom": 720,
+        "left": 460
+      },
+      "options": null,
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "windowScroll": {
+        "x": 0,
+        "y": 0
+      },
+      "panelScroll": {
+        "left": 0,
+        "top": 0
+      },
+      "contentScroll": {
+        "left": 0,
+        "top": 528
+      },
+      "panel": {
+        "x": 460,
+        "y": 0,
+        "width": 820,
+        "height": 720,
+        "top": 0,
+        "right": 1280,
+        "bottom": 720,
+        "left": 460
+      },
+      "content": {
+        "x": 460,
+        "y": 135.375,
+        "width": 820,
+        "height": 584.625,
+        "top": 135.375,
+        "right": 1280,
+        "bottom": 720,
+        "left": 460
+      },
+      "header": {
+        "x": 460,
+        "y": 0,
+        "width": 820,
+        "height": 75,
+        "top": 0,
+        "right": 1280,
+        "bottom": 75,
+        "left": 460
+      },
+      "books": {
+        "x": 460,
+        "y": -213.59375,
+        "width": 820,
+        "height": 1038.859375,
+        "top": -213.59375,
+        "right": 1280,
+        "bottom": 825.265625,
+        "left": 460
+      },
+      "detail": {
+        "x": 952.1524658203125,
+        "y": 237.140625,
+        "width": 265.25,
+        "height": 466.25,
+        "top": 237.140625,
+        "right": 1217.4024658203125,
+        "bottom": 703.390625,
+        "left": 952.1524658203125
+      },
+      "heading": {
+        "x": 952.1524658203125,
+        "y": 282.921875,
+        "width": 246.25,
+        "height": 28.796875,
+        "top": 282.921875,
+        "right": 1198.4024658203125,
+        "bottom": 311.71875,
+        "left": 952.1524658203125
+      }
+    },
+    {
+      "kind": "scroll:event",
+      "atMs": 2004.199999999255,
+      "id": "",
+      "className": "native-planet-panel__content",
+      "target": {
+        "x": 460,
+        "y": 135.375,
+        "width": 820,
+        "height": 584.625,
+        "top": 135.375,
+        "right": 1280,
+        "bottom": 720,
+        "left": 460
+      },
+      "options": null,
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "windowScroll": {
+        "x": 0,
+        "y": 0
+      },
+      "panelScroll": {
+        "left": 0,
+        "top": 0
+      },
+      "contentScroll": {
+        "left": 0,
+        "top": 538
+      },
+      "panel": {
+        "x": 460,
+        "y": 0,
+        "width": 820,
+        "height": 720,
+        "top": 0,
+        "right": 1280,
+        "bottom": 720,
+        "left": 460
+      },
+      "content": {
+        "x": 460,
+        "y": 135.375,
+        "width": 820,
+        "height": 584.625,
+        "top": 135.375,
+        "right": 1280,
+        "bottom": 720,
+        "left": 460
+      },
+      "header": {
+        "x": 460,
+        "y": 0,
+        "width": 820,
+        "height": 75,
+        "top": 0,
+        "right": 1280,
+        "bottom": 75,
+        "left": 460
+      },
+      "books": {
+        "x": 460,
+        "y": -223.59375,
+        "width": 820,
+        "height": 1038.859375,
+        "top": -223.59375,
+        "right": 1280,
+        "bottom": 815.265625,
+        "left": 460
+      },
+      "detail": {
+        "x": 951.9412841796875,
+        "y": 227.140625,
+        "width": 265.25,
+        "height": 466.25,
+        "top": 227.140625,
+        "right": 1217.1912841796875,
+        "bottom": 693.390625,
+        "left": 951.9412841796875
+      },
+      "heading": {
+        "x": 951.9412841796875,
+        "y": 272.921875,
+        "width": 246.25,
+        "height": 28.796875,
+        "top": 272.921875,
+        "right": 1198.1912841796875,
+        "bottom": 301.71875,
+        "left": 951.9412841796875
+      }
+    },
+    {
+      "kind": "scroll:event",
+      "atMs": 2011,
+      "id": "",
+      "className": "native-planet-panel__content",
+      "target": {
+        "x": 460,
+        "y": 135.375,
+        "width": 820,
+        "height": 584.625,
+        "top": 135.375,
+        "right": 1280,
+        "bottom": 720,
+        "left": 460
+      },
+      "options": null,
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "windowScroll": {
+        "x": 0,
+        "y": 0
+      },
+      "panelScroll": {
+        "left": 0,
+        "top": 0
+      },
+      "contentScroll": {
+        "left": 0,
+        "top": 547
+      },
+      "panel": {
+        "x": 460,
+        "y": 0,
+        "width": 820,
+        "height": 720,
+        "top": 0,
+        "right": 1280,
+        "bottom": 720,
+        "left": 460
+      },
+      "content": {
+        "x": 460,
+        "y": 135.375,
+        "width": 820,
+        "height": 584.625,
+        "top": 135.375,
+        "right": 1280,
+        "bottom": 720,
+        "left": 460
+      },
+      "header": {
+        "x": 460,
+        "y": 0,
+        "width": 820,
+        "height": 75,
+        "top": 0,
+        "right": 1280,
+        "bottom": 75,
+        "left": 460
+      },
+      "books": {
+        "x": 460,
+        "y": -232.59375,
+        "width": 820,
+        "height": 1038.859375,
+        "top": -232.59375,
+        "right": 1280,
+        "bottom": 806.265625,
+        "left": 460
+      },
+      "detail": {
+        "x": 951.54736328125,
+        "y": 218.140625,
+        "width": 265.25,
+        "height": 466.25,
+        "top": 218.140625,
+        "right": 1216.79736328125,
+        "bottom": 684.390625,
+        "left": 951.54736328125
+      },
+      "heading": {
+        "x": 951.54736328125,
+        "y": 263.921875,
+        "width": 246.25,
+        "height": 28.796875,
+        "top": 263.921875,
+        "right": 1197.79736328125,
+        "bottom": 292.71875,
+        "left": 951.54736328125
+      }
+    },
+    {
+      "kind": "scroll:event",
+      "atMs": 2014.9000000022352,
+      "id": "",
+      "className": "native-planet-panel__content",
+      "target": {
+        "x": 460,
+        "y": 135.375,
+        "width": 820,
+        "height": 584.625,
+        "top": 135.375,
+        "right": 1280,
+        "bottom": 720,
+        "left": 460
+      },
+      "options": null,
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "windowScroll": {
+        "x": 0,
+        "y": 0
+      },
+      "panelScroll": {
+        "left": 0,
+        "top": 0
+      },
+      "contentScroll": {
+        "left": 0,
+        "top": 551
+      },
+      "panel": {
+        "x": 460,
+        "y": 0,
+        "width": 820,
+        "height": 720,
+        "top": 0,
+        "right": 1280,
+        "bottom": 720,
+        "left": 460
+      },
+      "content": {
+        "x": 460,
+        "y": 135.375,
+        "width": 820,
+        "height": 584.625,
+        "top": 135.375,
+        "right": 1280,
+        "bottom": 720,
+        "left": 460
+      },
+      "header": {
+        "x": 460,
+        "y": 0,
+        "width": 820,
+        "height": 75,
+        "top": 0,
+        "right": 1280,
+        "bottom": 75,
+        "left": 460
+      },
+      "books": {
+        "x": 460,
+        "y": -236.59375,
+        "width": 820,
+        "height": 1038.859375,
+        "top": -236.59375,
+        "right": 1280,
+        "bottom": 802.265625,
+        "left": 460
+      },
+      "detail": {
+        "x": 951.3695068359375,
+        "y": 214.140625,
+        "width": 265.25,
+        "height": 466.25,
+        "top": 214.140625,
+        "right": 1216.6195068359375,
+        "bottom": 680.390625,
+        "left": 951.3695068359375
+      },
+      "heading": {
+        "x": 951.3695068359375,
+        "y": 259.921875,
+        "width": 246.25,
+        "height": 28.796875,
+        "top": 259.921875,
+        "right": 1197.6195068359375,
+        "bottom": 288.71875,
+        "left": 951.3695068359375
+      }
+    },
+    {
+      "kind": "scroll:event",
+      "atMs": 2021.800000000745,
+      "id": "",
+      "className": "native-planet-panel__content",
+      "target": {
+        "x": 460,
+        "y": 135.375,
+        "width": 820,
+        "height": 584.625,
+        "top": 135.375,
+        "right": 1280,
+        "bottom": 720,
+        "left": 460
+      },
+      "options": null,
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "windowScroll": {
+        "x": 0,
+        "y": 0
+      },
+      "panelScroll": {
+        "left": 0,
+        "top": 0
+      },
+      "contentScroll": {
+        "left": 0,
+        "top": 555
+      },
+      "panel": {
+        "x": 460,
+        "y": 0,
+        "width": 820,
+        "height": 720,
+        "top": 0,
+        "right": 1280,
+        "bottom": 720,
+        "left": 460
+      },
+      "content": {
+        "x": 460,
+        "y": 135.375,
+        "width": 820,
+        "height": 584.625,
+        "top": 135.375,
+        "right": 1280,
+        "bottom": 720,
+        "left": 460
+      },
+      "header": {
+        "x": 460,
+        "y": 0,
+        "width": 820,
+        "height": 75,
+        "top": 0,
+        "right": 1280,
+        "bottom": 75,
+        "left": 460
+      },
+      "books": {
+        "x": 460,
+        "y": -240.59375,
+        "width": 820,
+        "height": 1038.859375,
+        "top": -240.59375,
+        "right": 1280,
+        "bottom": 798.265625,
+        "left": 460
+      },
+      "detail": {
+        "x": 951.2015991210938,
+        "y": 210.140625,
+        "width": 265.25006103515625,
+        "height": 466.25,
+        "top": 210.140625,
+        "right": 1216.45166015625,
+        "bottom": 676.390625,
+        "left": 951.2015991210938
+      },
+      "heading": {
+        "x": 951.2015991210938,
+        "y": 255.921875,
+        "width": 246.25006103515625,
+        "height": 28.796875,
+        "top": 255.921875,
+        "right": 1197.45166015625,
+        "bottom": 284.71875,
+        "left": 951.2015991210938
+      }
+    },
+    {
+      "kind": "scroll:event",
+      "atMs": 2029,
+      "id": "",
+      "className": "native-planet-panel__content",
+      "target": {
+        "x": 460,
+        "y": 135.375,
+        "width": 820,
+        "height": 584.625,
+        "top": 135.375,
+        "right": 1280,
+        "bottom": 720,
+        "left": 460
+      },
+      "options": null,
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "windowScroll": {
+        "x": 0,
+        "y": 0
+      },
+      "panelScroll": {
+        "left": 0,
+        "top": 0
+      },
+      "contentScroll": {
+        "left": 0,
+        "top": 558
+      },
+      "panel": {
+        "x": 460,
+        "y": 0,
+        "width": 820,
+        "height": 720,
+        "top": 0,
+        "right": 1280,
+        "bottom": 720,
+        "left": 460
+      },
+      "content": {
+        "x": 460,
+        "y": 135.375,
+        "width": 820,
+        "height": 584.625,
+        "top": 135.375,
+        "right": 1280,
+        "bottom": 720,
+        "left": 460
+      },
+      "header": {
+        "x": 460,
+        "y": 0,
+        "width": 820,
+        "height": 75,
+        "top": 0,
+        "right": 1280,
+        "bottom": 75,
+        "left": 460
+      },
+      "books": {
+        "x": 460,
+        "y": -243.59375,
+        "width": 820,
+        "height": 1038.859375,
+        "top": -243.59375,
+        "right": 1280,
+        "bottom": 795.265625,
+        "left": 460
+      },
+      "detail": {
+        "x": 951.0406494140625,
+        "y": 207.140625,
+        "width": 265.25,
+        "height": 466.25,
+        "top": 207.140625,
+        "right": 1216.2906494140625,
+        "bottom": 673.390625,
+        "left": 951.0406494140625
+      },
+      "heading": {
+        "x": 951.0406494140625,
+        "y": 252.921875,
+        "width": 246.25,
+        "height": 28.796875,
+        "top": 252.921875,
+        "right": 1197.2906494140625,
+        "bottom": 281.71875,
+        "left": 951.0406494140625
+      }
+    },
+    {
+      "kind": "scroll:event",
+      "atMs": 2291.199999999255,
+      "id": "",
+      "className": "native-planet-panel__content",
+      "target": {
+        "x": 460,
+        "y": 135.375,
+        "width": 820,
+        "height": 584.625,
+        "top": 135.375,
+        "right": 1280,
+        "bottom": 720,
+        "left": 460
+      },
+      "options": null,
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "windowScroll": {
+        "x": 0,
+        "y": 0
+      },
+      "panelScroll": {
+        "left": 0,
+        "top": 0
+      },
+      "contentScroll": {
+        "left": 0,
+        "top": 561
+      },
+      "panel": {
+        "x": 460,
+        "y": 0,
+        "width": 820,
+        "height": 720,
+        "top": 0,
+        "right": 1280,
+        "bottom": 720,
+        "left": 460
+      },
+      "content": {
+        "x": 460,
+        "y": 135.375,
+        "width": 820,
+        "height": 584.625,
+        "top": 135.375,
+        "right": 1280,
+        "bottom": 720,
+        "left": 460
+      },
+      "header": {
+        "x": 460,
+        "y": 0,
+        "width": 820,
+        "height": 75,
+        "top": 0,
+        "right": 1280,
+        "bottom": 75,
+        "left": 460
+      },
+      "books": {
+        "x": 460,
+        "y": -246.59375,
+        "width": 820,
+        "height": 1038.859375,
+        "top": -246.59375,
+        "right": 1280,
+        "bottom": 792.265625,
+        "left": 460
+      },
+      "detail": {
+        "x": 950.890625,
+        "y": 204.140625,
+        "width": 265.25,
+        "height": 466.25,
+        "top": 204.140625,
+        "right": 1216.140625,
+        "bottom": 670.390625,
+        "left": 950.890625
+      },
+      "heading": {
+        "x": 950.890625,
+        "y": 249.921875,
+        "width": 246.25,
+        "height": 28.796875,
+        "top": 249.921875,
+        "right": 1197.140625,
+        "bottom": 278.71875,
+        "left": 950.890625
+      }
+    },
+    {
+      "kind": "scroll:event",
+      "atMs": 2312.699999999255,
+      "id": "",
+      "className": "native-planet-panel__content",
+      "target": {
+        "x": 460,
+        "y": 135.375,
+        "width": 820,
+        "height": 584.625,
+        "top": 135.375,
+        "right": 1280,
+        "bottom": 720,
+        "left": 460
+      },
+      "options": null,
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "windowScroll": {
+        "x": 0,
+        "y": 0
+      },
+      "panelScroll": {
+        "left": 0,
+        "top": 0
+      },
+      "contentScroll": {
+        "left": 0,
+        "top": 582
+      },
+      "panel": {
+        "x": 460,
+        "y": 0,
+        "width": 820,
+        "height": 720,
+        "top": 0,
+        "right": 1280,
+        "bottom": 720,
+        "left": 460
+      },
+      "content": {
+        "x": 460,
+        "y": 135.375,
+        "width": 820,
+        "height": 584.625,
+        "top": 135.375,
+        "right": 1280,
+        "bottom": 720,
+        "left": 460
+      },
+      "header": {
+        "x": 460,
+        "y": 0,
+        "width": 820,
+        "height": 75,
+        "top": 0,
+        "right": 1280,
+        "bottom": 75,
+        "left": 460
+      },
+      "books": {
+        "x": 460,
+        "y": -267.59375,
+        "width": 820,
+        "height": 1038.859375,
+        "top": -267.59375,
+        "right": 1280,
+        "bottom": 771.265625,
+        "left": 460
+      },
+      "detail": {
+        "x": 948.5787353515625,
+        "y": 183.140625,
+        "width": 265.25,
+        "height": 466.25,
+        "top": 183.140625,
+        "right": 1213.8287353515625,
+        "bottom": 649.390625,
+        "left": 948.5787353515625
+      },
+      "heading": {
+        "x": 948.5787353515625,
+        "y": 228.921875,
+        "width": 246.25,
+        "height": 28.796875,
+        "top": 228.921875,
+        "right": 1194.8287353515625,
+        "bottom": 257.71875,
+        "left": 948.5787353515625
+      }
+    }
+  ],
+  "final": {
+    "viewport": {
+      "width": 1280,
+      "height": 720
+    },
+    "windowScroll": {
+      "x": 0,
+      "y": 0
+    },
+    "panelScroll": {
+      "left": 0,
+      "top": 0
+    },
+    "contentScroll": {
+      "left": 0,
+      "top": 582
+    },
+    "panel": {
+      "x": 460,
+      "y": 0,
+      "width": 820,
+      "height": 720,
+      "top": 0,
+      "right": 1280,
+      "bottom": 720,
+      "left": 460
+    },
+    "content": {
+      "x": 460,
+      "y": 135.375,
+      "width": 820,
+      "height": 584.625,
+      "top": 135.375,
+      "right": 1280,
+      "bottom": 720,
+      "left": 460
+    },
+    "header": {
+      "x": 460,
+      "y": 0,
+      "width": 820,
+      "height": 75,
+      "top": 0,
+      "right": 1280,
+      "bottom": 75,
+      "left": 460
+    },
+    "books": {
+      "x": 460,
+      "y": -267.59375,
+      "width": 820,
+      "height": 1038.859375,
+      "top": -267.59375,
+      "right": 1280,
+      "bottom": 771.265625,
+      "left": 460
+    },
+    "detail": {
+      "x": 948.484375,
+      "y": 183.140625,
+      "width": 265.25,
+      "height": 466.25,
+      "top": 183.140625,
+      "right": 1213.734375,
+      "bottom": 649.390625,
+      "left": 948.484375
+    },
+    "heading": {
+      "x": 948.484375,
+      "y": 228.921875,
+      "width": 246.25,
+      "height": 28.796875,
+      "top": 228.921875,
+      "right": 1194.734375,
+      "bottom": 257.71875,
+      "left": 948.484375
+    }
+  }
+}

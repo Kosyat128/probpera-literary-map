@@ -1,0 +1,649 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T04:15:10.892Z",
+  "kind": "read-only-four-writer-canonical-key-derivation",
+  "method": "Existing canonical pure TypeScript functions evaluated with in-memory module loading, using the countries/index.ts merge order but only England's four target writers. No app/full-catalog aggregate, bundler, test or network run.",
+  "uiObservation": false,
+  "inputCountries": 1,
+  "inputWriters": 4,
+  "boundedArchiveEntries": 130,
+  "countryPipelineSource": "src/data/countries/index.ts: countriesBeforeWriterBiographyCorrections -> bookArchiveCountries",
+  "finalArchivePipelineSource": "src/data/bookArchive.ts:612 buildBookArchive",
+  "canonicalUiKeySource": "src/components/BookArchiveSection.tsx:393 bookKey -> src/data/bookArchive.ts:435 bookArchiveKey",
+  "identityRules": [
+    "Candidate priority is CMS -> reviewed generated -> writer.workDetails -> raw generated; same id or normalized title keeps earlier identity.",
+    "Book enrichment merges run before bibliographic/evidence/publication overlays; source-backed survivor keys are retained.",
+    "CMS edition attachment changes cover/edition fields but not work identity.",
+    "applyUserSuppliedBookCover adds cover metadata after aggregation and never changes work.id/countryId/writerId."
+  ],
+  "matches": [
+    {
+      "expectedKeyFromCoverManifestOrBase": "england:george_orwell:nineteen-eighty-four",
+      "coverUrl": "brand/book-covers/nineteen-eighty-four-editorial.webp",
+      "matches": [
+        {
+          "actualComputedKey": "england:george_orwell:nineteen-eighty-four",
+          "id": "nineteen-eighty-four",
+          "countryId": "england",
+          "writerId": "george_orwell",
+          "ruTitle": "1984",
+          "enTitle": "1984",
+          "publicEligible": true,
+          "editorialStatus": "verified",
+          "coverUrl": "brand/book-covers/nineteen-eighty-four-editorial.webp",
+          "thumbnail": "brand/book-covers/thumbs/nineteen-eighty-four-editorial.webp",
+          "keyMatchesInitialDerivedAudit": true
+        }
+      ]
+    },
+    {
+      "expectedKeyFromCoverManifestOrBase": "england:charles_dickens:a-tale-of-two-cities",
+      "coverUrl": "brand/book-covers/tale-of-two-cities-editorial.webp",
+      "matches": [
+        {
+          "actualComputedKey": "england:charles_dickens:a-tale-of-two-cities",
+          "id": "a-tale-of-two-cities",
+          "countryId": "england",
+          "writerId": "charles_dickens",
+          "ruTitle": "Повесть о двух городах",
+          "enTitle": "A Tale of Two Cities",
+          "publicEligible": true,
+          "editorialStatus": "verified",
+          "coverUrl": "brand/book-covers/tale-of-two-cities-editorial.webp",
+          "thumbnail": "brand/book-covers/thumbs/tale-of-two-cities-editorial.webp",
+          "keyMatchesInitialDerivedAudit": true
+        }
+      ]
+    },
+    {
+      "expectedKeyFromCoverManifestOrBase": "england:h_g_wells:ann-veronica",
+      "coverUrl": "brand/book-covers/ann-veronica-20260820-editorial.webp",
+      "matches": [
+        {
+          "actualComputedKey": "england:h_g_wells:ann-veronica",
+          "id": "ann-veronica",
+          "countryId": "england",
+          "writerId": "h_g_wells",
+          "ruTitle": "Анна-Вероника",
+          "enTitle": "Ann Veronica",
+          "publicEligible": true,
+          "editorialStatus": "verified",
+          "coverUrl": "brand/book-covers/ann-veronica-20260820-editorial.webp",
+          "thumbnail": "brand/book-covers/thumbs/ann-veronica-20260820-editorial.webp",
+          "keyMatchesInitialDerivedAudit": true
+        }
+      ]
+    },
+    {
+      "expectedKeyFromCoverManifestOrBase": "england:aldous_huxley:brave-new-world-editorial",
+      "coverUrl": "brand/book-covers/brave-new-world-editorial.webp",
+      "matches": [
+        {
+          "actualComputedKey": "england:aldous_huxley:brave-new-world-editorial",
+          "id": "brave-new-world-editorial",
+          "countryId": "england",
+          "writerId": "aldous_huxley",
+          "ruTitle": "О дивный новый мир",
+          "enTitle": "Brave New World",
+          "publicEligible": true,
+          "editorialStatus": "verified",
+          "coverUrl": "brand/book-covers/brave-new-world-editorial.webp",
+          "thumbnail": "brand/book-covers/thumbs/brave-new-world-editorial.webp",
+          "keyMatchesInitialDerivedAudit": true
+        }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "name": "curated England four target writers",
+      "countryCount": 1,
+      "writers": [
+        {
+          "id": "charles_dickens",
+          "workIds": [
+            "great-expectations-editorial",
+            "oliver-twist-editorial",
+            "david-copperfield-editorial"
+          ]
+        },
+        {
+          "id": "h_g_wells",
+          "workIds": [
+            "invisible-man-editorial"
+          ]
+        },
+        {
+          "id": "aldous_huxley",
+          "workIds": [
+            "brave-new-world-editorial"
+          ]
+        },
+        {
+          "id": "george_orwell",
+          "workIds": [
+            "nineteen-eighty-four",
+            "animal-farm-editorial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mergeNobelLaureates",
+      "countryCount": 1,
+      "writers": [
+        {
+          "id": "charles_dickens",
+          "workIds": [
+            "great-expectations-editorial",
+            "oliver-twist-editorial",
+            "david-copperfield-editorial"
+          ]
+        },
+        {
+          "id": "h_g_wells",
+          "workIds": [
+            "invisible-man-editorial"
+          ]
+        },
+        {
+          "id": "aldous_huxley",
+          "workIds": [
+            "brave-new-world-editorial"
+          ]
+        },
+        {
+          "id": "george_orwell",
+          "workIds": [
+            "nineteen-eighty-four",
+            "animal-farm-editorial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mergeGeneratedWriters",
+      "countryCount": 1,
+      "writers": [
+        {
+          "id": "charles_dickens",
+          "workIds": [
+            "great-expectations-editorial",
+            "oliver-twist-editorial",
+            "david-copperfield-editorial"
+          ]
+        },
+        {
+          "id": "h_g_wells",
+          "workIds": [
+            "invisible-man-editorial"
+          ]
+        },
+        {
+          "id": "aldous_huxley",
+          "workIds": [
+            "brave-new-world-editorial"
+          ]
+        },
+        {
+          "id": "george_orwell",
+          "workIds": [
+            "nineteen-eighty-four",
+            "animal-farm-editorial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mergeArticleReferencedBooks",
+      "countryCount": 1,
+      "writers": [
+        {
+          "id": "charles_dickens",
+          "workIds": [
+            "great-expectations-editorial",
+            "oliver-twist-editorial",
+            "david-copperfield-editorial",
+            "article-series-1tdjfsi",
+            "article-series-cyoupj"
+          ]
+        },
+        {
+          "id": "h_g_wells",
+          "workIds": [
+            "invisible-man-editorial",
+            "the-war-in-the-air",
+            "article-series-15osrun",
+            "article-series-1b3bqeg",
+            "article-series-ao1mz8",
+            "article-series-1p52m90",
+            "article-series-7jam8a",
+            "article-series-6ztozx",
+            "article-series-wsj9a0",
+            "article-series-bnagqs"
+          ]
+        },
+        {
+          "id": "aldous_huxley",
+          "workIds": [
+            "brave-new-world-editorial"
+          ]
+        },
+        {
+          "id": "george_orwell",
+          "workIds": [
+            "nineteen-eighty-four",
+            "animal-farm-editorial",
+            "article-series-1ux02ta"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mergeUserSuppliedBookWorkSupplementsBatch20260820",
+      "countryCount": 1,
+      "writers": [
+        {
+          "id": "charles_dickens",
+          "workIds": [
+            "great-expectations-editorial",
+            "oliver-twist-editorial",
+            "david-copperfield-editorial",
+            "article-series-1tdjfsi",
+            "article-series-cyoupj"
+          ]
+        },
+        {
+          "id": "h_g_wells",
+          "workIds": [
+            "invisible-man-editorial",
+            "the-war-in-the-air",
+            "article-series-15osrun",
+            "article-series-1b3bqeg",
+            "article-series-ao1mz8",
+            "article-series-1p52m90",
+            "article-series-7jam8a",
+            "article-series-6ztozx",
+            "article-series-wsj9a0",
+            "article-series-bnagqs",
+            "when-the-sleeper-wakes",
+            "the-first-men-in-the-moon",
+            "the-food-of-the-gods",
+            "the-world-set-free",
+            "men-like-gods",
+            "ann-veronica",
+            "the-history-of-mr-polly"
+          ]
+        },
+        {
+          "id": "aldous_huxley",
+          "workIds": [
+            "brave-new-world-editorial"
+          ]
+        },
+        {
+          "id": "george_orwell",
+          "workIds": [
+            "nineteen-eighty-four",
+            "animal-farm-editorial",
+            "article-series-1ux02ta"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mergeVerifiedBookSupplements",
+      "countryCount": 1,
+      "writers": [
+        {
+          "id": "charles_dickens",
+          "workIds": [
+            "great-expectations",
+            "oliver-twist-editorial",
+            "david-copperfield-editorial",
+            "article-series-1tdjfsi",
+            "article-series-cyoupj",
+            "a-tale-of-two-cities"
+          ]
+        },
+        {
+          "id": "h_g_wells",
+          "workIds": [
+            "invisible-man-editorial",
+            "the-war-in-the-air",
+            "article-series-15osrun",
+            "article-series-1b3bqeg",
+            "article-series-ao1mz8",
+            "article-series-1p52m90",
+            "article-series-7jam8a",
+            "article-series-6ztozx",
+            "article-series-wsj9a0",
+            "article-series-bnagqs",
+            "when-the-sleeper-wakes",
+            "the-first-men-in-the-moon",
+            "the-food-of-the-gods",
+            "the-world-set-free",
+            "men-like-gods",
+            "ann-veronica",
+            "the-history-of-mr-polly"
+          ]
+        },
+        {
+          "id": "aldous_huxley",
+          "workIds": [
+            "brave-new-world-editorial"
+          ]
+        },
+        {
+          "id": "george_orwell",
+          "workIds": [
+            "nineteen-eighty-four",
+            "animal-farm-editorial",
+            "article-series-1ux02ta"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mergeWriterPortraits",
+      "countryCount": 1,
+      "writers": [
+        {
+          "id": "charles_dickens",
+          "workIds": [
+            "great-expectations",
+            "oliver-twist-editorial",
+            "david-copperfield-editorial",
+            "article-series-1tdjfsi",
+            "article-series-cyoupj",
+            "a-tale-of-two-cities"
+          ]
+        },
+        {
+          "id": "h_g_wells",
+          "workIds": [
+            "invisible-man-editorial",
+            "the-war-in-the-air",
+            "article-series-15osrun",
+            "article-series-1b3bqeg",
+            "article-series-ao1mz8",
+            "article-series-1p52m90",
+            "article-series-7jam8a",
+            "article-series-6ztozx",
+            "article-series-wsj9a0",
+            "article-series-bnagqs",
+            "when-the-sleeper-wakes",
+            "the-first-men-in-the-moon",
+            "the-food-of-the-gods",
+            "the-world-set-free",
+            "men-like-gods",
+            "ann-veronica",
+            "the-history-of-mr-polly"
+          ]
+        },
+        {
+          "id": "aldous_huxley",
+          "workIds": [
+            "brave-new-world-editorial"
+          ]
+        },
+        {
+          "id": "george_orwell",
+          "workIds": [
+            "nineteen-eighty-four",
+            "animal-farm-editorial",
+            "article-series-1ux02ta"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mergeReviewedWriterBiographyDrafts",
+      "countryCount": 1,
+      "writers": [
+        {
+          "id": "charles_dickens",
+          "workIds": [
+            "great-expectations",
+            "oliver-twist-editorial",
+            "david-copperfield-editorial",
+            "article-series-1tdjfsi",
+            "article-series-cyoupj",
+            "a-tale-of-two-cities"
+          ]
+        },
+        {
+          "id": "h_g_wells",
+          "workIds": [
+            "invisible-man-editorial",
+            "the-war-in-the-air",
+            "article-series-15osrun",
+            "article-series-1b3bqeg",
+            "article-series-ao1mz8",
+            "article-series-1p52m90",
+            "article-series-7jam8a",
+            "article-series-6ztozx",
+            "article-series-wsj9a0",
+            "article-series-bnagqs",
+            "when-the-sleeper-wakes",
+            "the-first-men-in-the-moon",
+            "the-food-of-the-gods",
+            "the-world-set-free",
+            "men-like-gods",
+            "ann-veronica",
+            "the-history-of-mr-polly"
+          ]
+        },
+        {
+          "id": "aldous_huxley",
+          "workIds": [
+            "brave-new-world-editorial"
+          ]
+        },
+        {
+          "id": "george_orwell",
+          "workIds": [
+            "nineteen-eighty-four",
+            "animal-farm-editorial",
+            "article-series-1ux02ta"
+          ]
+        }
+      ]
+    }
+  ],
+  "dependencySources": [
+    {
+      "path": "src/data/bookArchive.ts",
+      "sha256": "4ce49f1e712cd2448fa0d8f798655294972c33622ef2b73fd4ed4f0244822884"
+    },
+    {
+      "path": "src/data/bookLocalization.ts",
+      "sha256": "1cbb3221e62310fe76fe328741e3316b8f0623d03ea77c994d25d6ca52545773"
+    },
+    {
+      "path": "src/data/bookQuality.ts",
+      "sha256": "eefcd1d589684d2fb16995c5158355005a968ac325b80502842a050d749ffd77"
+    },
+    {
+      "path": "src/data/cms/bookEditions.generated.ts",
+      "sha256": "3ef359e0a7ab025fda76d728024f33401453b6faa175bfdc5550c1621e2e4726"
+    },
+    {
+      "path": "src/data/cms/bookEditions.ts",
+      "sha256": "c7a372e8fa23857c45a88eeddd2e485ca71bbcf42edcb93718cf012c12ac4867"
+    },
+    {
+      "path": "src/data/cms/countryProfiles.generated.ts",
+      "sha256": "8a9a93607b7108709b8cf37f036dd1476acae780cf49b4beec92664e0199b409"
+    },
+    {
+      "path": "src/data/cms/editorialOverrides.ts",
+      "sha256": "f7222571a71e916dd24af9659948f8c22124377f7eddcc57d713416a6f7081cb"
+    },
+    {
+      "path": "src/data/cms/literaryWorks.generated.ts",
+      "sha256": "eac4343ef1fe3f4707d2598521824941ab62034beea83750637d27df65d9587c"
+    },
+    {
+      "path": "src/data/cms/writerProfiles.generated.ts",
+      "sha256": "ed95100fba2c4a469e72fac677ed0ec9456c7fd086a411d3b931f9d5429790e2"
+    },
+    {
+      "path": "src/data/countries/articleCatalogBooks.ts",
+      "sha256": "66244e1fec29703a8e533dad061ece24e7bbf34fe388fa872b269d066c233c85"
+    },
+    {
+      "path": "src/data/countries/articleReferencedBooks.ts",
+      "sha256": "6d3fe2939e14e39d98d2e975f403647166a7d242b975b91f5d6378135e3d3bd4"
+    },
+    {
+      "path": "src/data/countries/bookArticleSynopsisBatch01.ts",
+      "sha256": "e11ccf873286ca0d2e9124cbbc75988cfaa5a8ed7aa87abba64e5c07f362ca0e"
+    },
+    {
+      "path": "src/data/countries/bookBibliographicOverlays.ts",
+      "sha256": "7c62441a40d83fcef8e91c3cd142a42796e6119b8aa31edeba739884849ddd4c"
+    },
+    {
+      "path": "src/data/countries/bookEvidenceV2ExpansionBatch01.ts",
+      "sha256": "cc8012a301ce2804a94a323164a499577c6c4b705c439164099821e3ecc873a1"
+    },
+    {
+      "path": "src/data/countries/bookEvidenceV2LegacyVerifiedReaudit01.ts",
+      "sha256": "c0dbf6111aa50e4f1ee253ac18de1799e4e5f1a57e2012dbc13481b0f21e0392"
+    },
+    {
+      "path": "src/data/countries/bookEvidenceV2PublicBatch02.ts",
+      "sha256": "e5010f2e683818b4c82850ffa8530a7144b75b950b4bd77180d19f659f710cfc"
+    },
+    {
+      "path": "src/data/countries/bookEvidenceV2PublicBatch03.ts",
+      "sha256": "34d83df89022208e45be1ee8b108fab48df37efda535c13d0fa856d1ff37ae94"
+    },
+    {
+      "path": "src/data/countries/bookEvidenceV2PublicBatch04.ts",
+      "sha256": "b05988fad25cc9afac26bac8058e762c4fd90b2cea49c11420af32564bbf4ddb"
+    },
+    {
+      "path": "src/data/countries/bookEvidenceV2PublicBatch05.ts",
+      "sha256": "b80e8537c6e4127b7e3a9eea4a790761c0677d1b95c5fde45083ca3233b18813"
+    },
+    {
+      "path": "src/data/countries/bookEvidenceV2PublicBatch06.ts",
+      "sha256": "cbbc3e05682469c4ba27ee939b91b34b41e565a3cd54e25771dab682e5099ed9"
+    },
+    {
+      "path": "src/data/countries/bookEvidenceV2PublicBatch07.ts",
+      "sha256": "8d9fbab5898dfe2ebd1e31c6bb18774cddf5333d1bf11383e269bfbe8d72f0a9"
+    },
+    {
+      "path": "src/data/countries/bookEvidenceV2PublicHolds01.ts",
+      "sha256": "c846b2b42a73e97c17b7c71131cc2f2cea7de0df0286aaa7985d9238490bfba7"
+    },
+    {
+      "path": "src/data/countries/bookEvidenceV2PublicQuarantine01.ts",
+      "sha256": "d99d9ca38edb7a8b117ca101074881311913871d0ffa09ddbb20dd488e05f3ae"
+    },
+    {
+      "path": "src/data/countries/bookEvidenceV2TitleEvidence.ts",
+      "sha256": "dcf1135f6b47f24f98a8be740affa6ac7825ecf59028c9d9c148ac44edfa8dea"
+    },
+    {
+      "path": "src/data/countries/england.ts",
+      "sha256": "f275ec6861a40de9bc5021d6d83e5582c2d2a2acf259cdc7fcba852eae1c7a84"
+    },
+    {
+      "path": "src/data/countries/generated/books.enrichment-actions.json",
+      "sha256": "816493b01d85b27878231ea18af9c726ccca3434e9817045407e97d3d5436000"
+    },
+    {
+      "path": "src/data/countries/generated/books.generated.json",
+      "sha256": "074ba8f31fd9591b0f09156b64784566995f7a9df2ceb0940acdb46936350aea"
+    },
+    {
+      "path": "src/data/countries/generated/books.reviewed.json",
+      "sha256": "7d117fdea7dcfa0727a9c9f252621de43c8a7d20ace79a851bd1c8d5ef9fa028"
+    },
+    {
+      "path": "src/data/countries/generated/generatedBooks.ts",
+      "sha256": "2beb8791e96a164dab4045aee9d20844a890b5775371eee1388085259554e3cb"
+    },
+    {
+      "path": "src/data/countries/generated/index.ts",
+      "sha256": "44c4c4947dad07bce2d30c8ffd29fc64c77e076002a1128570ed3bf4ff25a56a"
+    },
+    {
+      "path": "src/data/countries/generated/metadata.generated.json",
+      "sha256": "c226ffe076fe850e1a38d8102084fdd99667d69ab25707805d262f291872fa7c"
+    },
+    {
+      "path": "src/data/countries/generated/nobelLiterature.official.json",
+      "sha256": "17ae9117699ac10d6ea857f422b3625730fabe2378901124e7b4d3b98f540576"
+    },
+    {
+      "path": "src/data/countries/generated/userSuppliedBookCovers.generated.json",
+      "sha256": "760a49fff4b4152545758ebbc360b90e1fd82739950d606a43289ec26df9a627"
+    },
+    {
+      "path": "src/data/countries/generated/userSuppliedBookCoversBatch20260813.generated.json",
+      "sha256": "39ac684ee6ec504cc717e235e266bac3306aa346ed007a9cd209692962a9ae14"
+    },
+    {
+      "path": "src/data/countries/generated/userSuppliedBookCoversBatch20260820.generated.json",
+      "sha256": "fd8e5811fb6172cf9d8aa732f0aeede06f6ed71a16b05f8759e7badb315cf3ad"
+    },
+    {
+      "path": "src/data/countries/generated/writerIdentityRemediations.generated.json",
+      "sha256": "4f5872fccf6b38a3f797c5a6bf3df6c2d6951b4bce3ec703fc18fc4def5c6c7b"
+    },
+    {
+      "path": "src/data/countries/generated/writerPortraits.generated.json",
+      "sha256": "c18c91a581f8c77e81a54e0579d5ac2474a699645181c8aac5246790e4b5807c"
+    },
+    {
+      "path": "src/data/countries/generated/writerPortraits.ts",
+      "sha256": "df9439840d358edf6f36d4d42aa07b0cdf4b8226c9771200a3f0be914b124523"
+    },
+    {
+      "path": "src/data/countries/nobelLaureatesSupplement.ts",
+      "sha256": "444ab0394e9082b0c4189a509886a4272488889b2f441bcaa678175bf69a8267"
+    },
+    {
+      "path": "src/data/countries/nobelLiteratureRegistry.ts",
+      "sha256": "f1f756a8aa4015351d1cf953418256be2242eaccdc3b1b521d1b709b177a4e0d"
+    },
+    {
+      "path": "src/data/countries/userSuppliedBookWorkSupplementsBatch20260820.ts",
+      "sha256": "19ba3e05bfcae1bba9733d3fa991d4063a20a44c1cd124c94f977a029b96523f"
+    },
+    {
+      "path": "src/data/countries/verifiedBookSupplements.ts",
+      "sha256": "b998a103f5ffec4f4ad8f90b0e86489c09a781bba2eed6a8ce0ad63d360201fa"
+    },
+    {
+      "path": "src/data/countries/writerBiographyResearch.ts",
+      "sha256": "ea7ea72e52e5a148b8987f866b1d67dccb68429ddddb7037bab5a250389241ff"
+    },
+    {
+      "path": "src/data/countries/writerBiographyResearchBatch01.ts",
+      "sha256": "180da43e2eaed4206df302fa819d75d79fc56c7b34c00fb54ffd50c0828657f1"
+    },
+    {
+      "path": "src/data/countries/writerBiographyResearchBatches.ts",
+      "sha256": "a68f8d3ec00bcc3b47b8801387c9eea287aec0f9508c476626da2be42296e6a3"
+    },
+    {
+      "path": "src/data/userSuppliedBookCovers.ts",
+      "sha256": "2f0c590c1d0c61ae73eeb63980ef79dd2f35534e03f9f71273267601b05d1e70"
+    },
+    {
+      "path": "src/data/writerBiography.ts",
+      "sha256": "45424be0be190f0191bec4bb3cf5c934ec627f467dcffd5f4a35123e90adb954"
+    }
+  ],
+  "limitations": [
+    "This computes canonical data keys, not live DOM presence, page position, active filters, search results or selected page. Live UI is audited separately by controlled_images.",
+    "Publication/rights flags are existing computed metadata and are not new editorial, legal or owner approvals.",
+    "No assets, facts, source, tests, manifests or historical a1 evidence were changed."
+  ]
+}

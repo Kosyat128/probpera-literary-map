@@ -1,0 +1,539 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T04:01:09.383Z",
+  "kind": "bounded-missing-canonical-cover-audit",
+  "scope": "Four visually broken collection covers; source/files/provenance only. No build, source change, network fetch or rights approval.",
+  "checkedPwaArtifact": {
+    "path": ".tmp/pwa-artifacts/ce0fab4d-globe-root-before-notice-fix-20260908",
+    "buildId": "ce0fab4d59fcafac422746a4e7487fe06b74baa689d910adb6df43900f0fc57e",
+    "sourceCommit": "5d96c5dd9a99bb36a2a1c91c334185a998cf1e92",
+    "sourceInputsSha256": "b821b3b328f37ad36b7c742fe4a6e43be815a59b7542e0de2c8a3fd82a8c0167"
+  },
+  "observedScreenshot": {
+    "path": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a1/artifacts/offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-desktop/pwa-collection-en-book.png",
+    "sha256": "dc9b3a8399dee65b8582cec385b9ac95620757c72811e2037c407f2c5ffc8ce9",
+    "reportedBy": "controlled_images",
+    "exactReleaseCandidate": false,
+    "finding": "Four broken cover boxes visible. Request URL/currentSrc were not captured by that original functional case."
+  },
+  "works": [
+    {
+      "workKey": "england:george_orwell:nineteen-eighty-four",
+      "englishTitle": "1984",
+      "runtimeUrlEvidence": {
+        "requestCaptured": false,
+        "classification": "computed-from-current-canonical-renderer-and-PWA-scope",
+        "renderer": "src/components/BookArchiveSection.tsx:535",
+        "collectionImage": "src/components/BookArchiveSection.tsx:4805",
+        "srcsetBuilder": "src/data/bookArchive.ts:781",
+        "scope": "scripts/mobile/pwa-artifact.mjs:59",
+        "src": "/planet/brand/book-covers/thumbs/nineteen-eighty-four-editorial.webp",
+        "srcset": "/planet/brand/book-covers/thumbs/nineteen-eighty-four-editorial.webp 400w, /planet/brand/book-covers/nineteen-eighty-four-editorial.webp 800w",
+        "actualCurrentSrc": null
+      },
+      "existing": {
+        "record": "src/data/countries/england.ts",
+        "recordSha256": "f275ec6861a40de9bc5021d6d83e5582c2d2a2acf259cdc7fcba852eae1c7a84",
+        "startLine": 1622,
+        "coverRights": {
+          "status": "editorial-original",
+          "licenseName": "Редакционное оформление «Пробы Пера»",
+          "creator": "Редакция «Пробы Пера»",
+          "rightsHolder": "Проба Пера",
+          "sourceUrl": "brand/book-covers/nineteen-eighty-four-editorial.webp",
+          "checkedAt": "2026-07-30",
+          "note": "Собственная художественная обложка сайта; не является воспроизведением конкретного издательского тиража."
+        },
+        "coverRightsConstruction": "Explicit canonical work.coverRights",
+        "provenance": null,
+        "existingWorkEditorialRecord": {
+          "status": "verified",
+          "reviewedAt": "2026-07-30"
+        },
+        "historicalAudit": {
+          "file": "reports/cover-rights-audit.json",
+          "generatedAt": "2026-08-20T00:00:00.000Z",
+          "record": {
+            "file": "england.ts",
+            "coverUrl": "brand/book-covers/nineteen-eighty-four-editorial.webp",
+            "coverSourceUrl": "brand/book-covers/nineteen-eighty-four-editorial.webp",
+            "status": "editorial-original",
+            "sourceUrl": "brand/book-covers/nineteen-eighty-four-editorial.webp",
+            "checkedAt": "2026-07-30",
+            "note": "Собственная художественная обложка сайта; не является воспроизведением конкретного издательского тиража.",
+            "displayAllowed": true,
+            "issues": []
+          }
+        },
+        "newRightsApproval": false
+      },
+      "assets": [
+        {
+          "variant": "full",
+          "source": "public/brand/book-covers/nineteen-eighty-four-editorial.webp",
+          "output": "brand/book-covers/nineteen-eighty-four-editorial.webp",
+          "expectedScopedRuntimeUrl": "/planet/brand/book-covers/nineteen-eighty-four-editorial.webp",
+          "sourceSha256": "cca8d3f684191027c40a1664d05c0939aebf82ffc7d72cb21b9159d0ee559d01",
+          "outputSha256IfCopiedWithoutTransformation": "cca8d3f684191027c40a1664d05c0939aebf82ffc7d72cb21b9159d0ee559d01",
+          "bytes": 312152,
+          "width": 800,
+          "height": 1200,
+          "format": "webp",
+          "declaredSourceHash": null,
+          "sourceHashMatchesManifest": null,
+          "historicalCanonicalBuild": {
+            "evidence": "docs/mobile/evidence/S02/web-build-inventory.json",
+            "path": "brand/book-covers/nineteen-eighty-four-editorial.webp",
+            "sha256": "cca8d3f684191027c40a1664d05c0939aebf82ffc7d72cb21b9159d0ee559d01",
+            "exactBytesMatch": true
+          },
+          "presentInCheckedPwaArtifact": false,
+          "presentOnCheckedPwaDisk": false
+        },
+        {
+          "variant": "thumbnail",
+          "source": "public/brand/book-covers/thumbs/nineteen-eighty-four-editorial.webp",
+          "output": "brand/book-covers/thumbs/nineteen-eighty-four-editorial.webp",
+          "expectedScopedRuntimeUrl": "/planet/brand/book-covers/thumbs/nineteen-eighty-four-editorial.webp",
+          "sourceSha256": "346360d7794d342af53dbac086b858dd3f0ca70730d28ed4159f29211a0f7a6b",
+          "outputSha256IfCopiedWithoutTransformation": "346360d7794d342af53dbac086b858dd3f0ca70730d28ed4159f29211a0f7a6b",
+          "bytes": 84044,
+          "width": 400,
+          "height": 600,
+          "format": "webp",
+          "declaredSourceHash": null,
+          "sourceHashMatchesManifest": null,
+          "historicalCanonicalBuild": {
+            "evidence": "docs/mobile/evidence/S02/web-build-inventory.json",
+            "path": "brand/book-covers/thumbs/nineteen-eighty-four-editorial.webp",
+            "sha256": "346360d7794d342af53dbac086b858dd3f0ca70730d28ed4159f29211a0f7a6b",
+            "exactBytesMatch": true
+          },
+          "presentInCheckedPwaArtifact": false,
+          "presentOnCheckedPwaDisk": false
+        }
+      ],
+      "proposal": "reuse-existing-canonical-editorial-artwork-with-label"
+    },
+    {
+      "workKey": "england:charles_dickens:a-tale-of-two-cities",
+      "englishTitle": "A Tale of Two Cities",
+      "runtimeUrlEvidence": {
+        "requestCaptured": false,
+        "classification": "computed-from-current-canonical-renderer-and-PWA-scope",
+        "renderer": "src/components/BookArchiveSection.tsx:535",
+        "collectionImage": "src/components/BookArchiveSection.tsx:4805",
+        "srcsetBuilder": "src/data/bookArchive.ts:781",
+        "scope": "scripts/mobile/pwa-artifact.mjs:59",
+        "src": "/planet/brand/book-covers/thumbs/tale-of-two-cities-editorial.webp",
+        "srcset": "/planet/brand/book-covers/thumbs/tale-of-two-cities-editorial.webp 360w, /planet/brand/book-covers/tale-of-two-cities-editorial.webp 720w",
+        "actualCurrentSrc": null
+      },
+      "existing": {
+        "record": "src/data/countries/generated/userSuppliedBookCoversBatch20260813.generated.json",
+        "recordSha256": "39ac684ee6ec504cc717e235e266bac3306aa346ed007a9cd209692962a9ae14",
+        "startLine": null,
+        "coverRights": {
+          "status": "editorial-original",
+          "sourceUrl": "brand/book-covers/tale-of-two-cities-editorial.webp",
+          "checkedAt": "2026-08-13",
+          "note": "Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания."
+        },
+        "coverRightsConstruction": "Existing applyUserSuppliedBookCover in src/data/userSuppliedBookCovers.ts",
+        "provenance": {
+          "kind": "user-supplied",
+          "archiveSha256": "2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f",
+          "imageSha256": "2b2338995c2995da06ba84e6591c23308928d6336c3b9aef9e3959a2f782b670",
+          "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 04_58_20 (7).png",
+          "sourceIndex": 98,
+          "matchBasis": "exact-author-and-title",
+          "sourceEvidence": "chatgpt-image-filename",
+          "note": "Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания."
+        },
+        "existingWorkEditorialRecord": null,
+        "historicalAudit": {
+          "file": "reports/cover-rights-audit.json",
+          "generatedAt": "2026-08-20T00:00:00.000Z",
+          "record": {
+            "file": "generated/userSuppliedBookCoversBatch20260813.generated.json",
+            "coverUrl": "brand/book-covers/tale-of-two-cities-editorial.webp",
+            "coverSourceUrl": "brand/book-covers/tale-of-two-cities-editorial.webp",
+            "status": "editorial-original",
+            "sourceUrl": "brand/book-covers/tale-of-two-cities-editorial.webp",
+            "checkedAt": "2026-08-13",
+            "coverWidth": 720,
+            "coverHeight": 1080,
+            "coverThumbnailWidth": 360,
+            "coverThumbnailHeight": 540,
+            "provenance": {
+              "kind": "user-supplied",
+              "archiveSha256": "2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f",
+              "imageSha256": "2b2338995c2995da06ba84e6591c23308928d6336c3b9aef9e3959a2f782b670",
+              "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 04_58_20 (7).png",
+              "sourceIndex": 98,
+              "matchBasis": "exact-author-and-title",
+              "sourceEvidence": "chatgpt-image-filename",
+              "note": "Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания."
+            },
+            "note": "Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.",
+            "displayAllowed": true,
+            "issues": []
+          }
+        },
+        "newRightsApproval": false
+      },
+      "assets": [
+        {
+          "variant": "full",
+          "source": "public/brand/book-covers/tale-of-two-cities-editorial.webp",
+          "output": "brand/book-covers/tale-of-two-cities-editorial.webp",
+          "expectedScopedRuntimeUrl": "/planet/brand/book-covers/tale-of-two-cities-editorial.webp",
+          "sourceSha256": "a3498dbe0033956ac2237ce0385f5d117afa37c3dcc7d3a89f6eb53a8897b77b",
+          "outputSha256IfCopiedWithoutTransformation": "a3498dbe0033956ac2237ce0385f5d117afa37c3dcc7d3a89f6eb53a8897b77b",
+          "bytes": 113742,
+          "width": 720,
+          "height": 1080,
+          "format": "webp",
+          "declaredSourceHash": "a3498dbe0033956ac2237ce0385f5d117afa37c3dcc7d3a89f6eb53a8897b77b",
+          "sourceHashMatchesManifest": true,
+          "historicalCanonicalBuild": {
+            "evidence": "docs/mobile/evidence/S02/web-build-inventory.json",
+            "path": "brand/book-covers/tale-of-two-cities-editorial.webp",
+            "sha256": "a3498dbe0033956ac2237ce0385f5d117afa37c3dcc7d3a89f6eb53a8897b77b",
+            "exactBytesMatch": true
+          },
+          "presentInCheckedPwaArtifact": false,
+          "presentOnCheckedPwaDisk": false
+        },
+        {
+          "variant": "thumbnail",
+          "source": "public/brand/book-covers/thumbs/tale-of-two-cities-editorial.webp",
+          "output": "brand/book-covers/thumbs/tale-of-two-cities-editorial.webp",
+          "expectedScopedRuntimeUrl": "/planet/brand/book-covers/thumbs/tale-of-two-cities-editorial.webp",
+          "sourceSha256": "d83efc0280b46832c0e7ece8726c59975bc7e852317ae948dc7656a1c203ea36",
+          "outputSha256IfCopiedWithoutTransformation": "d83efc0280b46832c0e7ece8726c59975bc7e852317ae948dc7656a1c203ea36",
+          "bytes": 24168,
+          "width": 360,
+          "height": 540,
+          "format": "webp",
+          "declaredSourceHash": "d83efc0280b46832c0e7ece8726c59975bc7e852317ae948dc7656a1c203ea36",
+          "sourceHashMatchesManifest": true,
+          "historicalCanonicalBuild": {
+            "evidence": "docs/mobile/evidence/S02/web-build-inventory.json",
+            "path": "brand/book-covers/thumbs/tale-of-two-cities-editorial.webp",
+            "sha256": "d83efc0280b46832c0e7ece8726c59975bc7e852317ae948dc7656a1c203ea36",
+            "exactBytesMatch": true
+          },
+          "presentInCheckedPwaArtifact": false,
+          "presentOnCheckedPwaDisk": false
+        }
+      ],
+      "proposal": "reuse-existing-canonical-editorial-artwork-with-label"
+    },
+    {
+      "workKey": "england:h_g_wells:ann-veronica",
+      "englishTitle": "Ann Veronica",
+      "runtimeUrlEvidence": {
+        "requestCaptured": false,
+        "classification": "computed-from-current-canonical-renderer-and-PWA-scope",
+        "renderer": "src/components/BookArchiveSection.tsx:535",
+        "collectionImage": "src/components/BookArchiveSection.tsx:4805",
+        "srcsetBuilder": "src/data/bookArchive.ts:781",
+        "scope": "scripts/mobile/pwa-artifact.mjs:59",
+        "src": "/planet/brand/book-covers/thumbs/ann-veronica-20260820-editorial.webp",
+        "srcset": "/planet/brand/book-covers/thumbs/ann-veronica-20260820-editorial.webp 360w, /planet/brand/book-covers/ann-veronica-20260820-editorial.webp 720w",
+        "actualCurrentSrc": null
+      },
+      "existing": {
+        "record": "src/data/countries/generated/userSuppliedBookCoversBatch20260820.generated.json",
+        "recordSha256": "fd8e5811fb6172cf9d8aa732f0aeede06f6ed71a16b05f8759e7badb315cf3ad",
+        "startLine": null,
+        "coverRights": {
+          "status": "editorial-original",
+          "sourceUrl": "brand/book-covers/ann-veronica-20260820-editorial.webp",
+          "checkedAt": "2026-08-20",
+          "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN."
+        },
+        "coverRightsConstruction": "Existing applyUserSuppliedBookCover in src/data/userSuppliedBookCovers.ts",
+        "provenance": {
+          "kind": "user-supplied",
+          "archiveSha256": "0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3",
+          "imageSha256": "d6c61844bc73125d6e21563102164a0423eac1eaaf1297abe19d6924c341fdde",
+          "sourceFilename": "ChatGPT Image 19 авг. 2026 г., 22_10_28 (2).png",
+          "sourceRelativePath": "ChatGPT Image 19 авг. 2026 г., 22_10_28 (2).png",
+          "sourceIndex": 42,
+          "matchBasis": "exact-author-and-title",
+          "sourceEvidence": "chatgpt-image-filename",
+          "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN."
+        },
+        "existingWorkEditorialRecord": null,
+        "historicalAudit": {
+          "file": "reports/cover-rights-audit.json",
+          "generatedAt": "2026-08-20T00:00:00.000Z",
+          "record": {
+            "file": "generated/userSuppliedBookCoversBatch20260820.generated.json",
+            "coverUrl": "brand/book-covers/ann-veronica-20260820-editorial.webp",
+            "coverSourceUrl": "brand/book-covers/ann-veronica-20260820-editorial.webp",
+            "status": "editorial-original",
+            "sourceUrl": "brand/book-covers/ann-veronica-20260820-editorial.webp",
+            "checkedAt": "2026-08-20",
+            "coverWidth": 720,
+            "coverHeight": 1080,
+            "coverThumbnailWidth": 360,
+            "coverThumbnailHeight": 540,
+            "provenance": {
+              "kind": "user-supplied",
+              "archiveSha256": "0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3",
+              "imageSha256": "d6c61844bc73125d6e21563102164a0423eac1eaaf1297abe19d6924c341fdde",
+              "sourceFilename": "ChatGPT Image 19 авг. 2026 г., 22_10_28 (2).png",
+              "sourceRelativePath": "ChatGPT Image 19 авг. 2026 г., 22_10_28 (2).png",
+              "sourceIndex": 42,
+              "matchBasis": "exact-author-and-title",
+              "sourceEvidence": "chatgpt-image-filename",
+              "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN."
+            },
+            "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.",
+            "displayAllowed": true,
+            "issues": []
+          }
+        },
+        "newRightsApproval": false
+      },
+      "assets": [
+        {
+          "variant": "full",
+          "source": "public/brand/book-covers/ann-veronica-20260820-editorial.webp",
+          "output": "brand/book-covers/ann-veronica-20260820-editorial.webp",
+          "expectedScopedRuntimeUrl": "/planet/brand/book-covers/ann-veronica-20260820-editorial.webp",
+          "sourceSha256": "b4fc87654fd8041ee554b70eb10aa08cdc50f7a75f84cd3057b63f329e812e18",
+          "outputSha256IfCopiedWithoutTransformation": "b4fc87654fd8041ee554b70eb10aa08cdc50f7a75f84cd3057b63f329e812e18",
+          "bytes": 49798,
+          "width": 720,
+          "height": 1080,
+          "format": "webp",
+          "declaredSourceHash": "b4fc87654fd8041ee554b70eb10aa08cdc50f7a75f84cd3057b63f329e812e18",
+          "sourceHashMatchesManifest": true,
+          "historicalCanonicalBuild": {
+            "evidence": "docs/mobile/evidence/S02/web-build-inventory.json",
+            "path": "brand/book-covers/ann-veronica-20260820-editorial.webp",
+            "sha256": "b4fc87654fd8041ee554b70eb10aa08cdc50f7a75f84cd3057b63f329e812e18",
+            "exactBytesMatch": true
+          },
+          "presentInCheckedPwaArtifact": false,
+          "presentOnCheckedPwaDisk": false
+        },
+        {
+          "variant": "thumbnail",
+          "source": "public/brand/book-covers/thumbs/ann-veronica-20260820-editorial.webp",
+          "output": "brand/book-covers/thumbs/ann-veronica-20260820-editorial.webp",
+          "expectedScopedRuntimeUrl": "/planet/brand/book-covers/thumbs/ann-veronica-20260820-editorial.webp",
+          "sourceSha256": "04f4364f85fdb4cd4115ea07be103d36ab9bbf2001d0ff7dc13e3d64d8acfd85",
+          "outputSha256IfCopiedWithoutTransformation": "04f4364f85fdb4cd4115ea07be103d36ab9bbf2001d0ff7dc13e3d64d8acfd85",
+          "bytes": 13998,
+          "width": 360,
+          "height": 540,
+          "format": "webp",
+          "declaredSourceHash": "04f4364f85fdb4cd4115ea07be103d36ab9bbf2001d0ff7dc13e3d64d8acfd85",
+          "sourceHashMatchesManifest": true,
+          "historicalCanonicalBuild": {
+            "evidence": "docs/mobile/evidence/S02/web-build-inventory.json",
+            "path": "brand/book-covers/thumbs/ann-veronica-20260820-editorial.webp",
+            "sha256": "04f4364f85fdb4cd4115ea07be103d36ab9bbf2001d0ff7dc13e3d64d8acfd85",
+            "exactBytesMatch": true
+          },
+          "presentInCheckedPwaArtifact": false,
+          "presentOnCheckedPwaDisk": false
+        }
+      ],
+      "proposal": "reuse-existing-canonical-editorial-artwork-with-label"
+    },
+    {
+      "workKey": "england:aldous_huxley:brave-new-world-editorial",
+      "englishTitle": "Brave New World",
+      "runtimeUrlEvidence": {
+        "requestCaptured": false,
+        "classification": "computed-from-current-canonical-renderer-and-PWA-scope",
+        "renderer": "src/components/BookArchiveSection.tsx:535",
+        "collectionImage": "src/components/BookArchiveSection.tsx:4805",
+        "srcsetBuilder": "src/data/bookArchive.ts:781",
+        "scope": "scripts/mobile/pwa-artifact.mjs:59",
+        "src": "/planet/brand/book-covers/thumbs/brave-new-world-editorial.webp",
+        "srcset": "/planet/brand/book-covers/thumbs/brave-new-world-editorial.webp 400w, /planet/brand/book-covers/brave-new-world-editorial.webp 800w",
+        "actualCurrentSrc": null
+      },
+      "existing": {
+        "record": "src/data/countries/england.ts",
+        "recordSha256": "f275ec6861a40de9bc5021d6d83e5582c2d2a2acf259cdc7fcba852eae1c7a84",
+        "startLine": 1489,
+        "coverRights": {
+          "status": "editorial-original",
+          "licenseName": "Редакционное оформление «Пробы Пера»",
+          "creator": "Редакция «Пробы Пера»",
+          "rightsHolder": "Проба Пера",
+          "sourceUrl": "brand/book-covers/brave-new-world-editorial.webp",
+          "checkedAt": "2026-08-02",
+          "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+        },
+        "coverRightsConstruction": "Explicit canonical work.coverRights",
+        "provenance": null,
+        "existingWorkEditorialRecord": {
+          "status": "draft"
+        },
+        "historicalAudit": {
+          "file": "reports/cover-rights-audit.json",
+          "generatedAt": "2026-08-20T00:00:00.000Z",
+          "record": {
+            "file": "england.ts",
+            "coverUrl": "brand/book-covers/brave-new-world-editorial.webp",
+            "coverSourceUrl": "brand/book-covers/brave-new-world-editorial.webp",
+            "status": "editorial-original",
+            "sourceUrl": "brand/book-covers/brave-new-world-editorial.webp",
+            "checkedAt": "2026-08-02",
+            "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания.",
+            "displayAllowed": true,
+            "issues": []
+          }
+        },
+        "newRightsApproval": false
+      },
+      "assets": [
+        {
+          "variant": "full",
+          "source": "public/brand/book-covers/brave-new-world-editorial.webp",
+          "output": "brand/book-covers/brave-new-world-editorial.webp",
+          "expectedScopedRuntimeUrl": "/planet/brand/book-covers/brave-new-world-editorial.webp",
+          "sourceSha256": "81c3e253221525d5450ee87749fe8ad8a1113382030be902f2048550f656d634",
+          "outputSha256IfCopiedWithoutTransformation": "81c3e253221525d5450ee87749fe8ad8a1113382030be902f2048550f656d634",
+          "bytes": 135682,
+          "width": 800,
+          "height": 1200,
+          "format": "webp",
+          "declaredSourceHash": null,
+          "sourceHashMatchesManifest": null,
+          "historicalCanonicalBuild": {
+            "evidence": "docs/mobile/evidence/S02/web-build-inventory.json",
+            "path": "brand/book-covers/brave-new-world-editorial.webp",
+            "sha256": "81c3e253221525d5450ee87749fe8ad8a1113382030be902f2048550f656d634",
+            "exactBytesMatch": true
+          },
+          "presentInCheckedPwaArtifact": false,
+          "presentOnCheckedPwaDisk": false
+        },
+        {
+          "variant": "thumbnail",
+          "source": "public/brand/book-covers/thumbs/brave-new-world-editorial.webp",
+          "output": "brand/book-covers/thumbs/brave-new-world-editorial.webp",
+          "expectedScopedRuntimeUrl": "/planet/brand/book-covers/thumbs/brave-new-world-editorial.webp",
+          "sourceSha256": "8a967c4b8736962060a3de7bcc26a4b39997662a154572ffd621f789e3669a83",
+          "outputSha256IfCopiedWithoutTransformation": "8a967c4b8736962060a3de7bcc26a4b39997662a154572ffd621f789e3669a83",
+          "bytes": 24532,
+          "width": 320,
+          "height": 480,
+          "format": "webp",
+          "declaredSourceHash": null,
+          "sourceHashMatchesManifest": null,
+          "historicalCanonicalBuild": {
+            "evidence": "docs/mobile/evidence/S02/web-build-inventory.json",
+            "path": "brand/book-covers/thumbs/brave-new-world-editorial.webp",
+            "sha256": "8a967c4b8736962060a3de7bcc26a4b39997662a154572ffd621f789e3669a83",
+            "exactBytesMatch": true
+          },
+          "presentInCheckedPwaArtifact": false,
+          "presentOnCheckedPwaDisk": false
+        }
+      ],
+      "proposal": "reuse-existing-canonical-editorial-artwork-with-label"
+    }
+  ],
+  "minimalProposedBuildList": [
+    {
+      "source": "public/brand/book-covers/nineteen-eighty-four-editorial.webp",
+      "output": "brand/book-covers/nineteen-eighty-four-editorial.webp",
+      "sourceSha256": "cca8d3f684191027c40a1664d05c0939aebf82ffc7d72cb21b9159d0ee559d01",
+      "bytes": 312152,
+      "transformation": "none",
+      "workKey": "england:george_orwell:nineteen-eighty-four"
+    },
+    {
+      "source": "public/brand/book-covers/thumbs/nineteen-eighty-four-editorial.webp",
+      "output": "brand/book-covers/thumbs/nineteen-eighty-four-editorial.webp",
+      "sourceSha256": "346360d7794d342af53dbac086b858dd3f0ca70730d28ed4159f29211a0f7a6b",
+      "bytes": 84044,
+      "transformation": "none",
+      "workKey": "england:george_orwell:nineteen-eighty-four"
+    },
+    {
+      "source": "public/brand/book-covers/tale-of-two-cities-editorial.webp",
+      "output": "brand/book-covers/tale-of-two-cities-editorial.webp",
+      "sourceSha256": "a3498dbe0033956ac2237ce0385f5d117afa37c3dcc7d3a89f6eb53a8897b77b",
+      "bytes": 113742,
+      "transformation": "none",
+      "workKey": "england:charles_dickens:a-tale-of-two-cities"
+    },
+    {
+      "source": "public/brand/book-covers/thumbs/tale-of-two-cities-editorial.webp",
+      "output": "brand/book-covers/thumbs/tale-of-two-cities-editorial.webp",
+      "sourceSha256": "d83efc0280b46832c0e7ece8726c59975bc7e852317ae948dc7656a1c203ea36",
+      "bytes": 24168,
+      "transformation": "none",
+      "workKey": "england:charles_dickens:a-tale-of-two-cities"
+    },
+    {
+      "source": "public/brand/book-covers/ann-veronica-20260820-editorial.webp",
+      "output": "brand/book-covers/ann-veronica-20260820-editorial.webp",
+      "sourceSha256": "b4fc87654fd8041ee554b70eb10aa08cdc50f7a75f84cd3057b63f329e812e18",
+      "bytes": 49798,
+      "transformation": "none",
+      "workKey": "england:h_g_wells:ann-veronica"
+    },
+    {
+      "source": "public/brand/book-covers/thumbs/ann-veronica-20260820-editorial.webp",
+      "output": "brand/book-covers/thumbs/ann-veronica-20260820-editorial.webp",
+      "sourceSha256": "04f4364f85fdb4cd4115ea07be103d36ab9bbf2001d0ff7dc13e3d64d8acfd85",
+      "bytes": 13998,
+      "transformation": "none",
+      "workKey": "england:h_g_wells:ann-veronica"
+    },
+    {
+      "source": "public/brand/book-covers/brave-new-world-editorial.webp",
+      "output": "brand/book-covers/brave-new-world-editorial.webp",
+      "sourceSha256": "81c3e253221525d5450ee87749fe8ad8a1113382030be902f2048550f656d634",
+      "bytes": 135682,
+      "transformation": "none",
+      "workKey": "england:aldous_huxley:brave-new-world-editorial"
+    },
+    {
+      "source": "public/brand/book-covers/thumbs/brave-new-world-editorial.webp",
+      "output": "brand/book-covers/thumbs/brave-new-world-editorial.webp",
+      "sourceSha256": "8a967c4b8736962060a3de7bcc26a4b39997662a154572ffd621f789e3669a83",
+      "bytes": 24532,
+      "transformation": "none",
+      "workKey": "england:aldous_huxley:brave-new-world-editorial"
+    }
+  ],
+  "proposedFiles": 8,
+  "proposedBytes": 758116,
+  "buildListTargetForRootReview": "Existing copyPublic asset allowlist in scripts/mobile/build-pwa.mjs; include full and thumbnail because the canonical renderer exposes both srcset candidates.",
+  "visualInspection": {
+    "files": [
+      "public/brand/book-covers/thumbs/nineteen-eighty-four-editorial.webp",
+      "public/brand/book-covers/thumbs/tale-of-two-cities-editorial.webp",
+      "public/brand/book-covers/thumbs/ann-veronica-20260820-editorial.webp",
+      "public/brand/book-covers/thumbs/brave-new-world-editorial.webp"
+    ],
+    "result": "Viewed four actual canonical thumbnails. They are labelled editorial illustrations with Russian cover lettering; no real-writer portrait was identified. This is not a new rights determination or English artwork approval."
+  },
+  "fallback": {
+    "canonicalSurface": "src/components/BookArchiveSection.tsx:4836 existing author/title typographic cover branch",
+    "policy": "docs/COVER_RIGHTS_POLICY.md",
+    "recommendation": "If a canonical asset or its existing rights/provenance cannot be established, retain the book and show the existing localized author/title cover fallback. Do not invent an image or promote its rights status.",
+    "currentMissingImageLimitation": "The current catalog img branch has no onError fallback; a display-allowed but absent file can show a browser broken-image box. A separate scoped render fallback is preferable to changing catalog coverRights."
+  },
+  "limitations": [
+    "Existing local editorial-original records and historical display audit are reported as found, not newly verified signed licenses or legal approval.",
+    "Dickens/Wells records explicitly identify user-supplied ChatGPT editorial artwork. Existing assets were inspected only; nothing new was generated.",
+    "English book labels come from the canonical observed catalog; Russian lettering within these existing editorial artworks is preserved. No complete English content/translation coverage is certified.",
+    "Actual browser currentSrc depends on viewport/DPR. Both exact canonical srcset paths are proposed, but neither is presented as a captured request.",
+    "No production/store/RC acceptance or full catalog asset coverage follows from this four-work audit."
+  ]
+}

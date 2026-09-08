@@ -1,4 +1,4 @@
-import type { RefObject } from "react";
+import type { ReactNode, RefObject } from "react";
 
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import Button from "../ui/Button";
@@ -17,6 +17,7 @@ type Props = {
   filtersOpen: boolean;
   immersive: boolean;
   applicationRoot?: boolean;
+  languageControl?: ReactNode;
   onCollection?: () => void;
   onClose: () => void;
   onFiltersToggle: () => void;
@@ -33,6 +34,7 @@ export default function AtlasExperienceChrome({
   filtersOpen,
   immersive,
   applicationRoot = false,
+  languageControl = <InterfaceLanguageControl />,
   onCollection,
   onClose,
   onFiltersToggle,
@@ -113,7 +115,7 @@ export default function AtlasExperienceChrome({
           >
             {t("Случайное путешествие")}
           </Button>
-          <InterfaceLanguageControl />
+          {languageControl}
           <IconButton
             ref={closeButtonRef}
             className="atlas-immersive-close"

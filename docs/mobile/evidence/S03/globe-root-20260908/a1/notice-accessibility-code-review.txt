@@ -1,0 +1,23 @@
+Prepared only; not applied to source. Five files in ../notice-accessibility.patch.
+
+Confirmed defect:
+NativePlanetPanel traps Tab inside its dialog; the existing sibling PWA notices were outside this dialog, so visible Update/Restore actions were unreachable through its normal Tab sequence.
+
+Patch:
+- ProductNoticeHost owns one detached-created DOM container and one stable createPortal target.
+- Slots are presentation-only: fallback (access closed), root (inside globe main), panel (active Collection). Active panel has highest priority.
+- Only that container is reparented; React continues rendering the same notice subtree, preserving PwaConnectivity dismissal state and worker subscription. No auth/controller changes.
+- Panel notice slot is inside the dialog, between header and scrollable content. Its own bounded scroll row reserves reader space. Existing trap and focus return need no custom outside exceptions.
+- Root slot falls under existing launch/globe inert ownership. Without a provider, native/public slots return null.
+- Existing help, locale controls, App/globe renderer/camera and license behavior remain owned by their current components.
+
+Checks completed: git apply --check; syntax diagnostics for four staged TSX files; all four existing source SHA match originals and the new helper does not exist in source. No browser/full typecheck/build, no source writes.
+
+Minimal focused browser acceptance after applying:
+1. Start with a real available update/rollback; store .product-notice-host/.connectivity-status DOM references. Open Collection and reach notice buttons by Tab inside [role=dialog]. Verify panel notice bottom <= reader content top and no notice/control hit-test overlap on narrow viewport.
+2. Dismiss update; close/reopen Collection and change RU/EN. Same host/connectivity DOM and hidden update state must persist, one live help/control, original R3F identity unchanged. Return restores Collection trigger focus.
+3. Known revocation unmounts App but leaves the same worker/notice host in fallback; identity-bound access state must still deny.
+
+Remaining separate geometry defect: root's desktop offline cards overlap the country/writer panel (root-inspected actual PNG y590..704 in720px viewport). This patch changes collection layout only; no completed globe geometry claim. Recommended next bounded fix: ResizeObserver of this same host writes a scoped footprint CSS variable on globe main; raise only country panel bottom/max-height and bottom UI controls with it. Keep Canvas container/renderer/camera dimensions unchanged. Validate RU/EN height changes and mobile safe-area bounds before acceptance.
+
+React portal identity reference: https://react.dev/reference/react-dom/createPortal (changing domNode recreates portal content; this patch keeps domNode constant).

@@ -54,11 +54,11 @@ function accountLinkProps(page: "planet-account" | "delete-account", language: "
 
 /** Native details keeps keyboard behavior and its open state across locale
  * updates; it neither remounts the application nor adds a second locale control. */
-export default function PwaHelp() {
+export default function PwaHelp({ embedded = false }: { embedded?: boolean } = {}) {
   const { language } = useInterfaceLanguage();
   const copy = pwaHelpCopy.locales[language];
   return (
-    <aside className="pwa-help" aria-label={copy.heading}>
+    <aside className={`pwa-help${embedded ? " pwa-help--embedded" : ""}`} aria-label={copy.heading}>
       <details>
         <summary>{copy.heading}</summary>
         <div className="pwa-help__body">

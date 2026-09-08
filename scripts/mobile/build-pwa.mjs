@@ -107,6 +107,27 @@ for (const asset of [
   "brand/atlas-side-brushes.webp", "brand/atlas-side-brushes-mobile.webp",
   "brand/alfred-nobel-medallion.png", "articles/book-mentions.json",
 ]) await copyPublic(asset);
+// Canonical entry/search/reading assets already verified in the native base
+// selection. Keep the same originals available for the PWA's offline surface.
+// This copies existing artwork and provenance; it creates no rights approval.
+for (const asset of [
+  "assets/writer-portraits/q320935.webp", "assets/writer-portraits/q991.webp",
+  "assets/writer-portraits/q189950.webp", "assets/writer-portraits/q318473.webp",
+  "assets/writer-portraits/q31628.webp", "assets/writer-portraits/q52224.webp",
+  "assets/writer-portraits/q37217.webp",
+  "brand/book-covers/crime-and-punishment-editorial.webp",
+  "brand/book-covers/thumbs/crime-and-punishment-editorial.webp",
+  "brand/book-covers/the-catcher-in-the-rye-editorial.webp",
+  "brand/book-covers/thumbs/the-catcher-in-the-rye-editorial.webp",
+  "brand/book-covers/nineteen-eighty-four-editorial.webp",
+  "brand/book-covers/thumbs/nineteen-eighty-four-editorial.webp",
+  "brand/book-covers/tale-of-two-cities-editorial.webp",
+  "brand/book-covers/thumbs/tale-of-two-cities-editorial.webp",
+  "brand/book-covers/ann-veronica-20260820-editorial.webp",
+  "brand/book-covers/thumbs/ann-veronica-20260820-editorial.webp",
+  "brand/book-covers/brave-new-world-editorial.webp",
+  "brand/book-covers/thumbs/brave-new-world-editorial.webp",
+]) await copyPublic(asset);
 for (const asset of await walk(path.join(root, "public/fonts/editorial"))) {
   await copyPublic("fonts/editorial/" + asset, asset.endsWith(".woff2"));
 }

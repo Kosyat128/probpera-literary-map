@@ -1,0 +1,66 @@
+[
+  {
+    "path": "src/App.tsx",
+    "sha256": "b098d3c70cfc99221f5788b7b31503060f94a373338d9a4ebf60959f5fcf66fb"
+  },
+  {
+    "path": "src/host/host.css",
+    "sha256": "18d72e65beab0ef0b10249ec46f674f04331036eed01fa761d8fb0d483d71440"
+  },
+  {
+    "path": "src/host/NativePlanetPanel.tsx",
+    "sha256": "f03fb0a528111f9df17b976838461b06a424105cfecbc87388ac8e95bcada9f9"
+  },
+  {
+    "path": "src/components/AtlasExperienceChrome.tsx",
+    "sha256": "ae4df4122ca217f3b885016424c1e5a4c95408434ad11c69457ec2e797cce292"
+  },
+  {
+    "path": "src/pwa/PwaEdition.tsx",
+    "sha256": "7d02ac0e9ac3e51c9a9afcacce3558cdc40749effc85d7304999d5ba91f396c4"
+  },
+  {
+    "path": "src/pwa/PwaHelp.tsx",
+    "sha256": "0bdb7c59afbc3049529ef714ff7fecda8172565cf6f59683139653c347e529d0"
+  },
+  {
+    "path": "src/pwa/pwa.css",
+    "sha256": "7c62e4198f5e0a123cf8ab3d5b7eee72c2e311d63d361b792280e878b674339c"
+  },
+  {
+    "path": "scripts/mobile/build-pwa.mjs",
+    "sha256": "49c4abc58f3eb25040bccf0614028d5031aed8f0afb5c7d2065070ec0dcc5b11"
+  },
+  {
+    "path": "scripts/mobile/native-base-assets.json",
+    "sha256": "091b17fe4e41306a245c6d813ecc042fd3b9dfadeaa28b202f24a84de0ab40ca"
+  },
+  {
+    "path": "tests/pwa/controlled-pwa.spec.mjs",
+    "sha256": "5a57cd0ccee9746c306c8d44f10d6a5da55c810091a1f8a47026ffbb985ed56e"
+  },
+  {
+    "path": "tests/pwa/offline-catalog.spec.mjs",
+    "sha256": "446c00f9cadc3558ce2252611c9628de9a6738ec8fcf547d46b96e8dfb24884a"
+  },
+  {
+    "path": "playwright.pwa-current.config.mjs",
+    "sha256": "a1dd4f348dff085913e9b3241902bf1617b9fe170e49cbd88565a74f054c7749"
+  },
+  {
+    "path": "src/host/ProductNoticeHost.tsx",
+    "sha256": "10e1832212274636b8b6b35b3e97accd5f9eb80ea16ff6d9298879442753d8fd"
+  },
+  {
+    "path": "src/pwa/PwaAccessBoundary.tsx",
+    "sha256": "d99a361be74eb4dcd597139d0d4e7c88361b60ada19696d667932ef63b00bbf8"
+  },
+  {
+    "path": "src/components/BookCoverArtwork.tsx",
+    "sha256": "efe19f32cb0cc2817cce59748668684ad43ee828b33b2ce7365f6d68214ee803"
+  },
+  {
+    "path": "src/components/BookArchiveSection.tsx",
+    "sha256": "6b54a0a6a0d9d1ff0463a4a308a04cec9b99ead64e567f4618968eda489909b5"
+  }
+]

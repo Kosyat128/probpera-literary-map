@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "runId": "pwa-product-root-20260908-a4",
+  "localQaOnly": true,
+  "origin": "http://127.0.0.1:4296",
+  "availability": {
+    "capturedAt": "2026-09-08T04:30:22.539Z",
+    "host": {
+      "platform": "win32",
+      "architecture": "x64",
+      "release": "10.0.22631"
+    },
+    "playwrightVersion": "1.62.1",
+    "requestedBrowserPath": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\browser-engines",
+    "engines": [
+      {
+        "engine": "chromium",
+        "executablePath": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\browser-engines\\chromium-1234\\chrome-win64\\chrome.exe",
+        "executableExists": false,
+        "descriptor": {
+          "name": "chromium",
+          "revision": "1234",
+          "installByDefault": true,
+          "browserVersion": "151.0.7922.34",
+          "title": "Chrome for Testing"
+        },
+        "runtimeVersion": null
+      },
+      {
+        "engine": "firefox",
+        "executablePath": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\browser-engines\\firefox-1538\\firefox\\firefox.exe",
+        "executableExists": true,
+        "descriptor": {
+          "name": "firefox",
+          "revision": "1538",
+          "installByDefault": true,
+          "browserVersion": "153.0",
+          "title": "Firefox"
+        },
+        "runtimeVersion": null
+      },
+      {
+        "engine": "webkit",
+        "executablePath": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\browser-engines\\webkit-2336\\Playwright.exe",
+        "executableExists": true,
+        "descriptor": {
+          "name": "webkit",
+          "revision": "2336",
+          "installByDefault": true,
+          "revisionOverrides": {
+            "mac14": "2251",
+            "mac14-arm64": "2251",
+            "ubuntu20.04-x64": "2092",
+            "ubuntu20.04-arm64": "2092"
+          },
+          "browserVersion": "26.5",
+          "title": "WebKit"
+        },
+        "runtimeVersion": null
+      }
+    ],
+    "chromeWindowsCandidates": [
+      {
+        "executablePath": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+        "executableExists": true,
+        "runtimeVersion": null
+      },
+      {
+        "executablePath": "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe",
+        "executableExists": false,
+        "runtimeVersion": null
+      }
+    ],
+    "verdict": "Inventory only: no browser or native installation UI was started."
+  },
+  "artifact": {
+    "buildId": "1879dc4261e3b11ab5bfb4f5050fe0181f8165e301a46abb0f80173bb2011a65",
+    "authoritySha256": "383b36311ef6c5abc4320dd1ad1da06006d49cad764730757dc177c85d1558d1",
+    "sourceCommit": "5d96c5dd9a99bb36a2a1c91c334185a998cf1e92",
+    "sourceInputsSha256": "c600f9cb5ee0aca9d8c93b896f6def94ac3cce41d23d764d66b1c2178b95e536",
+    "localQaAuthority": true,
+    "releaseReady": false
+  },
+  "limits": [
+    "One fresh loopback QA authority signs fixture access only.",
+    "No production identity/payment, native installation, Safari or physical mobile claim."
+  ]
+}

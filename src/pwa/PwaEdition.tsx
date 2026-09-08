@@ -7,7 +7,11 @@ import PwaHelp from "./PwaHelp";
 
 export type PwaLicenseRuntime = ReturnType<typeof createPwaLicenseRuntime>;
 /** One identity runtime belongs to the distribution, never to a locale or route. */
-export default function PwaEdition({ runtime, children }: { runtime: PwaLicenseRuntime; children: ReactNode }) {
+export default function PwaEdition({ runtime, children, connectivityNotice }: {
+  runtime: PwaLicenseRuntime;
+  children: ReactNode;
+  connectivityNotice?: ReactNode;
+}) {
   const { connectivity, visibility } = usePlatformSnapshot();
   const initialRuntime = useRef(runtime);
   if (initialRuntime.current !== runtime) throw new Error("PWA identity runtime must remain stable for this application mount");
@@ -41,15 +45,14 @@ export default function PwaEdition({ runtime, children }: { runtime: PwaLicenseR
     return () => { controller.abort(); };
   }, [runtime, connectivity, attempt]);
   return (
-    <>
     <PwaAccessBoundary
       client={access.client}
+      closedHelp={<PwaHelp />}
+      connectivityNotice={connectivityNotice}
       bootstrapStatus={{ checking: access.checking, reason: access.reason }}
       onBootstrapRetry={access.reason === "unconfigured" || access.reason === "invalid-key" ? undefined : () => setAttempt(value => value + 1)}
     >
       {children}
     </PwaAccessBoundary>
-    <PwaHelp />
-    </>
   );
 }

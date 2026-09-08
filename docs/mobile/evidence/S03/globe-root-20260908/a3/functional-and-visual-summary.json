@@ -1,0 +1,154 @@
+{
+  "runId": "pwa-product-root-20260908-a3",
+  "localQaOnly": true,
+  "buildId": "c04164d1d974552857cf75b53a951d0ce5bf9e9bc3838181247485a2fc3a97d3",
+  "sourceCommit": "5d96c5dd9a99bb36a2a1c91c334185a998cf1e92",
+  "localQaAuthority": true,
+  "functional": {
+    "passed": 2,
+    "failed": 1,
+    "durationMs": 178516.53,
+    "changedSourceSnapshots": [],
+    "cases": [
+      {
+        "project": "pwa-desktop",
+        "title": "a corrupt candidate preserves the active build; explicit update and rollback select whole verified generations",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 49356
+          }
+        ]
+      },
+      {
+        "project": "pwa-desktop",
+        "title": "canonical book favorite survives cold offline reload and locale route change",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 43388
+          }
+        ]
+      },
+      {
+        "project": "pwa-mobile",
+        "title": "canonical book favorite survives cold offline reload and locale route change",
+        "status": "unexpected",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 48259
+          }
+        ]
+      }
+    ]
+  },
+  "strictArtifactAudit": {
+    "path": "strict-artifact-audit.json",
+    "pass": true,
+    "counts": {
+      "files": 362,
+      "bytes": 41417340,
+      "bootstrapFiles": 316,
+      "bootstrapBytes": 20046574,
+      "sourceInputs": 961,
+      "publicSources": 291,
+      "scripts": 42
+    },
+    "findings": []
+  },
+  "sourceComparisonWithA2": {
+    "previousBuildId": "a93cbdd2c1a69dfeb2ceb70ce36e7b4b6849d38950207effdb10adc46bdcaf7c",
+    "currentBuildId": "c04164d1d974552857cf75b53a951d0ce5bf9e9bc3838181247485a2fc3a97d3",
+    "previousSourceInputs": 961,
+    "currentSourceInputs": 961,
+    "changedInputs": [
+      "src/host/host.css"
+    ],
+    "removedInputs": [],
+    "jsTsSourceInputs": 887,
+    "jsTsChanged": [],
+    "localQaOnly": true,
+    "note": "Source JavaScript/TypeScript equivalence only; CSS changed and each candidate has its own local signer/build identity. Bundled entry bytes are not asserted identical."
+  },
+  "canonicalCollectionEvidence": [
+    {
+      "project": "pwa-desktop",
+      "localQaOnly": true,
+      "selectedBook": "england:george_orwell:nineteen-eighty-four",
+      "coldOffline": true,
+      "singleCanvasPerDocument": true,
+      "sameCanvasRendererCameraSceneAcrossCollectionAndLocale": true,
+      "sameBookDetailAcrossLocale": true,
+      "helpOpenStateAcrossLocale": true,
+      "singleSharedLanguageControl": true,
+      "closeFlows": [
+        "detail then collection",
+        "top return while detail open"
+      ],
+      "noticeSlotAboveContent": true,
+      "selectedWorkRevealedInViewport": true,
+      "coverImages": [
+        {
+          "workKey": "england:george_orwell:nineteen-eighty-four",
+          "pathname": "/planet/brand/book-covers/thumbs/nineteen-eighty-four-editorial.webp",
+          "naturalWidth": 190,
+          "naturalHeight": 285,
+          "offline": true
+        },
+        {
+          "workKey": "england:charles_dickens:a-tale-of-two-cities",
+          "pathname": "/planet/brand/book-covers/thumbs/tale-of-two-cities-editorial.webp",
+          "naturalWidth": 190,
+          "naturalHeight": 285,
+          "offline": true
+        },
+        {
+          "workKey": "england:h_g_wells:ann-veronica",
+          "pathname": "/planet/brand/book-covers/thumbs/ann-veronica-20260820-editorial.webp",
+          "naturalWidth": 190,
+          "naturalHeight": 285,
+          "offline": true
+        },
+        {
+          "workKey": "england:aldous_huxley:brave-new-world-editorial",
+          "pathname": "/planet/brand/book-covers/thumbs/brave-new-world-editorial.webp",
+          "naturalWidth": 152,
+          "naturalHeight": 228,
+          "offline": true
+        }
+      ]
+    }
+  ],
+  "remainingFailure": {
+    "project": "pwa-mobile",
+    "phase": "cold RU reload before EN route",
+    "workKey": "england:george_orwell:nineteen-eighty-four",
+    "gate": "selectedWorkInViewport at offline-catalog.spec.mjs:300",
+    "actual": "Detail DOM and saved favorite exist; intersection ratio stayed 0 for 15 seconds / 32 observations.",
+    "screenshot": "artifacts/offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-mobile/test-failed-1.png",
+    "productHypothesis": "Competing homepage #books deferred hash scroll may override detail reveal when canonical country data arrives. No callback instrumentation in a3; ordering remains inferred.",
+    "noTestDrivenDetailScroll": true
+  },
+  "visualReview": {
+    "reviewed": [
+      "artifacts/offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-desktop/pwa-collection-en-book.png",
+      "artifacts/offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-desktop/pwa-collection-ru-help.png",
+      "artifacts/offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-mobile/pwa-collection-ru-book.png",
+      "artifacts/offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-mobile/test-failed-1.png"
+    ],
+    "observations": [
+      "Desktop EN selected detail and title visible; four exact editorial images now loaded, no missing-image boxes in observed cards.",
+      "Desktop RU Help readable with shared language control and notice above content.",
+      "Mobile warm RU detail visible, but Collection header is outside screenshot; investigate scroll containment together with cold reveal.",
+      "Mobile cold RU shows catalog heading/count/search, not selected work."
+    ],
+    "limits": [
+      "No numerical text-contrast audit.",
+      "Mobile favorite did not reach EN cold reveal and final RU/EN preservation gates."
+    ]
+  },
+  "releaseReady": false
+}

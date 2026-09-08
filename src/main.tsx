@@ -24,6 +24,7 @@ import { createWebPlatformAdapter } from './platform/adapters/web/WebPlatformAda
 import { isControlledWebEdition } from './platform/distribution';
 import { createPwaLicenseRuntime } from './pwa/PwaLicenseRuntime';
 import PwaEdition from './pwa/PwaEdition';
+import PwaHelp from './pwa/PwaHelp';
 import PwaLocaleMetadata from './pwa/PwaLocaleMetadata';
 import PwaConnectivity from './pwa/PwaConnectivity';
 import { registerPwaWorker } from './pwa/registerPwaWorker';
@@ -51,6 +52,7 @@ import './styles/article-reading-layout.css';
 import './styles/search-account-layout.css';
 import './styles/community-layout.css';
 import './styles/header-preserved.css';
+import './host/host.css';
 installSafeWebStorage();
 const PlanetAccountPage = React.lazy(() => import('./pwa/PlanetAccountPage'));
 const platformServices = createWebPlatformAdapter();
@@ -104,9 +106,12 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             {publicContent && !cmsEditMode && <ConsentAwareActivityTracker />}
             {publicContent && !cmsEditMode && <AnalyticsConsent />}
             {publicContent && <ClientDiagnostics />}
-            {pwaWorker ? <PwaConnectivity controller={pwaWorker} /> : <ConnectivityStatus />}
+            {!pwaWorker && <ConnectivityStatus />}
             <AppErrorBoundary>
-              {accountMode ? <AccountEntry mode={accountMode} /> : pwaRuntime ? <PwaEdition runtime={pwaRuntime}><App /></PwaEdition>
+              {accountMode ? <AccountEntry mode={accountMode} /> : pwaRuntime ? <PwaEdition runtime={pwaRuntime}
+                connectivityNotice={pwaWorker ? <PwaConnectivity controller={pwaWorker} /> : undefined}>
+                <App productHelp={<PwaHelp embedded />} />
+              </PwaEdition>
                 : cmsPage ? <CmsPageReader page={cmsPage} /> : <App />}
             </AppErrorBoundary>
           </AuthProvider>

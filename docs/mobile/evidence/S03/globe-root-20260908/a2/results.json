@@ -1,0 +1,541 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "playwright.pwa-current.config.mjs",
+      "--grep",
+      "real signed access|a corrupt candidate|canonical book favorite|known revocation"
+    ],
+    "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\playwright.pwa-current.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+    "failOnFlakyTests": false,
+    "forbidOnly": true,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/.tmp/pwa-cross-engine-results/pwa-product-root-20260908-a2/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "pwa-desktop",
+        "name": "pwa-desktop",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "controlled-pwa.spec.mjs",
+          "offline-catalog.spec.mjs"
+        ],
+        "timeout": 120000
+      },
+      {
+        "outputDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/.tmp/pwa-cross-engine-results/pwa-product-root-20260908-a2/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "pwa-mobile",
+        "name": "pwa-mobile",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "controlled-pwa.spec.mjs",
+          "offline-catalog.spec.mjs"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\pwa-cross-engine-results\\pwa-product-root-20260908-a2\\results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": {
+      "command": "node tests/pwa/support/cross-engine-server.mjs --serve",
+      "url": "http://127.0.0.1:4296/__pwa_qa__/ready",
+      "cwd": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\",
+      "timeout": 120000,
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "controlled-pwa.spec.mjs",
+      "file": "controlled-pwa.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "real signed access, locale and connectivity preserve the actual R3F scene",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "pwa-desktop",
+              "projectName": "pwa-desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12897,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T04:08:21.931Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "pwa-offline-notice-bounds",
+                      "contentType": "application/json",
+                      "body": "eyJ2aWV3cG9ydCI6eyJ3aWR0aCI6MTI4MCwiaGVpZ2h0Ijo3MjB9LCJib3VuZHMiOnsieCI6Nzg0LCJ5Ijo1ODkuMjUsIndpZHRoIjo0ODAsImhlaWdodCI6MTE0Ljc1fSwiY291bnRyeUJvdW5kcyI6eyJ4Ijo4MjIsInkiOjg0LCJ3aWR0aCI6NDQwLCJoZWlnaHQiOjQ4NX0sIm5vQ291bnRyeU92ZXJsYXAiOnRydWUsIm1vYmlsZURpc2Nsb3N1cmVIaXRUYXJnZXQiOmZhbHNlLCJsb2NhbGUiOiJlbiIsIm9mZmxpbmUiOnRydWUsImxvY2FsUWFPbmx5Ijp0cnVlfQ=="
+                    },
+                    {
+                      "name": "scene-identity-evidence",
+                      "contentType": "application/json",
+                      "body": "eyJidWlsZElkIjoiYTkzY2JkZDJjMWE2OWRmZWIyY2ViNzBjZTM2ZTdiNGI2ODQ5ZDM4OTUwMjA3ZWZmZGIxMGFkYzQ2YmRjYWY3YyIsImNhbm9uaWNhbENhbnZhcyI6dHJ1ZSwic2FtZVJlbmRlcmVyIjp0cnVlLCJzYW1lQ2FtZXJhIjp0cnVlLCJzYW1lU2NlbmUiOnRydWUsImxhbmd1YWdlcyI6WyJydSIsImVuIl0sIm9mZmxpbmVSZWNvbm5lY3QiOnRydWUsImxvY2FsUWFPbmx5Ijp0cnVlfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e57d1aee4d9d53cc8f3-2145bed989b04bf6835d",
+          "file": "controlled-pwa.spec.mjs",
+          "line": 107,
+          "column": 1
+        },
+        {
+          "title": "known revocation closes access and cannot be resurrected by offline reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "pwa-desktop",
+              "projectName": "pwa-desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8648,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T04:08:35.217Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e57d1aee4d9d53cc8f3-11ff425ebdb079771f6b",
+          "file": "controlled-pwa.spec.mjs",
+          "line": 181,
+          "column": 1
+        },
+        {
+          "title": "a corrupt candidate preserves the active build; explicit update and rollback select whole verified generations",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "pwa-desktop",
+              "projectName": "pwa-desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 30241,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at captureNoticeNodes (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\controlled-pwa.spec.mjs:58:191)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\controlled-pwa.spec.mjs:269:27",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\controlled-pwa.spec.mjs",
+                      "column": 191,
+                      "line": 58
+                    },
+                    "snippet": "  56 |     scene: window.__literaryPlanetQaScenes().find(item => document.querySelector(\"#atlas\").contains(item.canvas)),\n  57 |   }));\n> 58 |   expect(await nodes.evaluate(value => Boolean(value.host && value.notices && value.connectivity && value.scene?.canvas && value.scene.renderer && value.scene.camera && value.scene.scene))).toBe(true);\n     |                                                                                                                                                                                               ^\n  59 |   return nodes;\n  60 | }\n  61 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\controlled-pwa.spec.mjs",
+                        "column": 191,
+                        "line": 58
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  56 |     scene: window.__literaryPlanetQaScenes().find(item => document.querySelector(\"#atlas\").contains(item.canvas)),\n  57 |   }));\n> 58 |   expect(await nodes.evaluate(value => Boolean(value.host && value.notices && value.connectivity && value.scene?.canvas && value.scene.renderer && value.scene.camera && value.scene.scene))).toBe(true);\n     |                                                                                                                                                                                               ^\n  59 |   return nodes;\n  60 | }\n  61 |\n    at captureNoticeNodes (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\controlled-pwa.spec.mjs:58:191)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\controlled-pwa.spec.mjs:269:27"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T04:08:43.888Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\pwa-cross-engine-results\\pwa-product-root-20260908-a2\\artifacts\\controlled-pwa-a-corrupt-c-5da21--whole-verified-generations-pwa-desktop\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\pwa-cross-engine-results\\pwa-product-root-20260908-a2\\artifacts\\controlled-pwa-a-corrupt-c-5da21--whole-verified-generations-pwa-desktop\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\pwa-cross-engine-results\\pwa-product-root-20260908-a2\\artifacts\\controlled-pwa-a-corrupt-c-5da21--whole-verified-generations-pwa-desktop\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\controlled-pwa.spec.mjs",
+                    "column": 191,
+                    "line": 58
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "7e57d1aee4d9d53cc8f3-727fedf9f4b6b32c0da7",
+          "file": "controlled-pwa.spec.mjs",
+          "line": 214,
+          "column": 1
+        },
+        {
+          "title": "real signed access, locale and connectivity preserve the actual R3F scene",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "pwa-mobile",
+              "projectName": "pwa-mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 17697,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T04:09:55.592Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "pwa-offline-notice-bounds",
+                      "contentType": "application/json",
+                      "body": "eyJ2aWV3cG9ydCI6eyJ3aWR0aCI6NDEyLCJoZWlnaHQiOjgzOX0sImJvdW5kcyI6eyJ4IjoxNiwieSI6NzA4LjI1LCJ3aWR0aCI6MzgwLCJoZWlnaHQiOjExNC43NX0sImNvdW50cnlCb3VuZHMiOnsieCI6OCwieSI6NTU4LCJ3aWR0aCI6Mzk2LCJoZWlnaHQiOjEzNH0sIm5vQ291bnRyeU92ZXJsYXAiOnRydWUsIm1vYmlsZURpc2Nsb3N1cmVIaXRUYXJnZXQiOnRydWUsImxvY2FsZSI6ImVuIiwib2ZmbGluZSI6dHJ1ZSwibG9jYWxRYU9ubHkiOnRydWV9"
+                    },
+                    {
+                      "name": "scene-identity-evidence",
+                      "contentType": "application/json",
+                      "body": "eyJidWlsZElkIjoiYTkzY2JkZDJjMWE2OWRmZWIyY2ViNzBjZTM2ZTdiNGI2ODQ5ZDM4OTUwMjA3ZWZmZGIxMGFkYzQ2YmRjYWY3YyIsImNhbm9uaWNhbENhbnZhcyI6dHJ1ZSwic2FtZVJlbmRlcmVyIjp0cnVlLCJzYW1lQ2FtZXJhIjp0cnVlLCJzYW1lU2NlbmUiOnRydWUsImxhbmd1YWdlcyI6WyJydSIsImVuIl0sIm9mZmxpbmVSZWNvbm5lY3QiOnRydWUsImxvY2FsUWFPbmx5Ijp0cnVlfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e57d1aee4d9d53cc8f3-e4e3ee3bc654acd27673",
+          "file": "controlled-pwa.spec.mjs",
+          "line": 107,
+          "column": 1
+        },
+        {
+          "title": "known revocation closes access and cannot be resurrected by offline reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "pwa-mobile",
+              "projectName": "pwa-mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12669,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T04:10:13.682Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e57d1aee4d9d53cc8f3-14f6aa12640f45e07664",
+          "file": "controlled-pwa.spec.mjs",
+          "line": 181,
+          "column": 1
+        },
+        {
+          "title": "a corrupt candidate preserves the active build; explicit update and rollback select whole verified generations",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "pwa-mobile",
+              "projectName": "pwa-mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 42654,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T04:10:26.385Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "pwa-update-notice-host-evidence",
+                      "contentType": "application/json",
+                      "body": "eyJsb2NhbFFhT25seSI6dHJ1ZSwic2FtZU5vdGljZUhvc3RBbmRDb25uZWN0aXZpdHlBY3Jvc3NDb2xsZWN0aW9uIjp0cnVlLCJzYW1lQ2FudmFzUmVuZGVyZXJDYW1lcmFTY2VuZUJlZm9yZUV4cGxpY2l0QWN0aXZhdGlvbiI6dHJ1ZSwia2V5Ym9hcmRVcGRhdGVBbmRSb2xsYmFja0Zyb21Db2xsZWN0aW9uQ2xvc2UiOnRydWUsImNvcnJ1cHRlZENhbmRpZGF0ZVJlamVjdGVkIjp0cnVlLCJzZWxlY3RlZFdob2xlVmVyaWZpZWRHZW5lcmF0aW9ucyI6WyJhOTNjYmRkMmMxYTY5ZGZlYjJjZWI3MGNlMzZlN2I0YjY4NDlkMzg5NTAyMDdlZmZkYjEwYWRjNDZiZGNhZjdjIiwiNDg2NDRlNGI4ZDUwNmZjMDJjNTY1ZDljNDkxZDMyMmUwNjkzNmU2MzE2MTA5NmEyYzdkZDBjNDFkNmE0YzA4YiIsImE5M2NiZGQyYzFhNjlkZmViMmNlYjcwY2UzNmU3YjRiNjg0OWQzODk1MDIwN2VmZmRiMTBhZGM0NmJkY2FmN2MiXX0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e57d1aee4d9d53cc8f3-23ace2d3a3e04007a3ec",
+          "file": "controlled-pwa.spec.mjs",
+          "line": 214,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "offline-catalog.spec.mjs",
+      "file": "offline-catalog.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "canonical book favorite survives cold offline reload and locale route change",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "pwa-desktop",
+              "projectName": "pwa-desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 30689,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.native-planet-panel').locator('.book-archive-grid > article').filter({ has: locator('.archive-book-detail[data-book-key=\"england:charles_dickens:a-tale-of-two-cities\"]') })\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.native-planet-panel').locator('.book-archive-grid > article').filter({ has: locator('.archive-book-detail[data-book-key=\"england:charles_dickens:a-tale-of-two-cities\"]') })\u001b[22m\n\u001b[2m    33 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.native-planet-panel').locator('.book-archive-grid > article').filter({ has: locator('.archive-book-detail[data-book-key=\"england:charles_dickens:a-tale-of-two-cities\"]') })\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.native-planet-panel').locator('.book-archive-grid > article').filter({ has: locator('.archive-book-detail[data-book-key=\"england:charles_dickens:a-tale-of-two-cities\"]') })\u001b[22m\n\u001b[2m    33 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n\n    at verifiedCoverImages (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\offline-catalog.spec.mjs:65:24)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\offline-catalog.spec.mjs:244:25",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\offline-catalog.spec.mjs",
+                      "column": 24,
+                      "line": 65
+                    },
+                    "snippet": "  63 |   for (const [workKey, filename] of targets) {\n  64 |     const card = collection.locator(\".book-archive-grid > article\").filter({ has: page.locator('.archive-book-detail[data-book-key=' + JSON.stringify(workKey) + ']') });\n> 65 |     await expect(card).toHaveCount(1);\n     |                        ^\n  66 |     // Exercise actual catalog lazy loading while browsing these four cards.\n  67 |     // Selected-work reveal below is checked without any test-driven scroll.\n  68 |     await card.scrollIntoViewIfNeeded();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\offline-catalog.spec.mjs",
+                        "column": 24,
+                        "line": 65
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.native-planet-panel').locator('.book-archive-grid > article').filter({ has: locator('.archive-book-detail[data-book-key=\"england:charles_dickens:a-tale-of-two-cities\"]') })\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.native-planet-panel').locator('.book-archive-grid > article').filter({ has: locator('.archive-book-detail[data-book-key=\"england:charles_dickens:a-tale-of-two-cities\"]') })\u001b[22m\n\u001b[2m    33 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n\n\n  63 |   for (const [workKey, filename] of targets) {\n  64 |     const card = collection.locator(\".book-archive-grid > article\").filter({ has: page.locator('.archive-book-detail[data-book-key=' + JSON.stringify(workKey) + ']') });\n> 65 |     await expect(card).toHaveCount(1);\n     |                        ^\n  66 |     // Exercise actual catalog lazy loading while browsing these four cards.\n  67 |     // Selected-work reveal below is checked without any test-driven scroll.\n  68 |     await card.scrollIntoViewIfNeeded();\n    at verifiedCoverImages (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\offline-catalog.spec.mjs:65:24)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\offline-catalog.spec.mjs:244:25"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T04:09:21.025Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\pwa-cross-engine-results\\pwa-product-root-20260908-a2\\artifacts\\offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-desktop\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\pwa-cross-engine-results\\pwa-product-root-20260908-a2\\artifacts\\offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-desktop\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\pwa-cross-engine-results\\pwa-product-root-20260908-a2\\artifacts\\offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-desktop\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\offline-catalog.spec.mjs",
+                    "column": 24,
+                    "line": 65
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "4f278828d3066cd6b78c-d54a943ed2c4a53f57ff",
+          "file": "offline-catalog.spec.mjs",
+          "line": 230,
+          "column": 1
+        },
+        {
+          "title": "canonical book favorite survives cold offline reload and locale route change",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "pwa-mobile",
+              "projectName": "pwa-mobile",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 30227,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.native-planet-panel').locator('.book-archive-grid > article').filter({ has: locator('.archive-book-detail[data-book-key=\"england:charles_dickens:a-tale-of-two-cities\"]') })\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.native-planet-panel').locator('.book-archive-grid > article').filter({ has: locator('.archive-book-detail[data-book-key=\"england:charles_dickens:a-tale-of-two-cities\"]') })\u001b[22m\n\u001b[2m    33 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.native-planet-panel').locator('.book-archive-grid > article').filter({ has: locator('.archive-book-detail[data-book-key=\"england:charles_dickens:a-tale-of-two-cities\"]') })\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.native-planet-panel').locator('.book-archive-grid > article').filter({ has: locator('.archive-book-detail[data-book-key=\"england:charles_dickens:a-tale-of-two-cities\"]') })\u001b[22m\n\u001b[2m    33 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n\n    at verifiedCoverImages (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\offline-catalog.spec.mjs:65:24)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\offline-catalog.spec.mjs:244:25",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\offline-catalog.spec.mjs",
+                      "column": 24,
+                      "line": 65
+                    },
+                    "snippet": "  63 |   for (const [workKey, filename] of targets) {\n  64 |     const card = collection.locator(\".book-archive-grid > article\").filter({ has: page.locator('.archive-book-detail[data-book-key=' + JSON.stringify(workKey) + ']') });\n> 65 |     await expect(card).toHaveCount(1);\n     |                        ^\n  66 |     // Exercise actual catalog lazy loading while browsing these four cards.\n  67 |     // Selected-work reveal below is checked without any test-driven scroll.\n  68 |     await card.scrollIntoViewIfNeeded();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\offline-catalog.spec.mjs",
+                        "column": 24,
+                        "line": 65
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.native-planet-panel').locator('.book-archive-grid > article').filter({ has: locator('.archive-book-detail[data-book-key=\"england:charles_dickens:a-tale-of-two-cities\"]') })\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.native-planet-panel').locator('.book-archive-grid > article').filter({ has: locator('.archive-book-detail[data-book-key=\"england:charles_dickens:a-tale-of-two-cities\"]') })\u001b[22m\n\u001b[2m    33 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n\n\n  63 |   for (const [workKey, filename] of targets) {\n  64 |     const card = collection.locator(\".book-archive-grid > article\").filter({ has: page.locator('.archive-book-detail[data-book-key=' + JSON.stringify(workKey) + ']') });\n> 65 |     await expect(card).toHaveCount(1);\n     |                        ^\n  66 |     // Exercise actual catalog lazy loading while browsing these four cards.\n  67 |     // Selected-work reveal below is checked without any test-driven scroll.\n  68 |     await card.scrollIntoViewIfNeeded();\n    at verifiedCoverImages (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\offline-catalog.spec.mjs:65:24)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\offline-catalog.spec.mjs:244:25"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T04:11:09.105Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\pwa-cross-engine-results\\pwa-product-root-20260908-a2\\artifacts\\offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-mobile\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\pwa-cross-engine-results\\pwa-product-root-20260908-a2\\artifacts\\offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-mobile\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\pwa-cross-engine-results\\pwa-product-root-20260908-a2\\artifacts\\offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-mobile\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\offline-catalog.spec.mjs",
+                    "column": 24,
+                    "line": 65
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "4f278828d3066cd6b78c-5b74660aad19bbae22af",
+          "file": "offline-catalog.spec.mjs",
+          "line": 230,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-08T04:07:57.821Z",
+    "duration": 226051.481,
+    "expected": 5,
+    "skipped": 0,
+    "unexpected": 3,
+    "flaky": 0
+  }
+}

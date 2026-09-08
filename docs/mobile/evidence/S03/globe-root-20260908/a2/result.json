@@ -1,0 +1,299 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T04:21:32.281Z",
+  "kind": "controlled-PWA-globe-root-second-working-iteration",
+  "iteration": "a2",
+  "runId": "pwa-product-root-20260908-a2",
+  "localQaOnly": true,
+  "status": "5_PASSED_3_FAILED_PRESERVED",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "source": {
+    "commit": "5d96c5dd9a99bb36a2a1c91c334185a998cf1e92",
+    "sourceInputsSha256": "67bb2408ba40440d62a77bbebe6ec2c18550f49cd5ef1d159dd6bc7a3fc59d7e",
+    "buildId": "a93cbdd2c1a69dfeb2ceb70ce36e7b4b6849d38950207effdb10adc46bdcaf7c",
+    "artifact": ".tmp/pwa-artifacts/a93cbdd2-globe-notice-fix-20260908/artifact.json",
+    "artifactSha256": "dc4c8c03d64215f8071bfa3ef8bf88a4b1fa993e81da23fa3e8232b9e42b8341",
+    "snapshotsUnchangedDuringRun": true,
+    "sourceSnapshotSha256": "0579a2ef83a2fa69cf1b3560bc2543460e8d6107e72537a1e667c85795681d87",
+    "laterWorkingChangesCovered": false
+  },
+  "functional": {
+    "passed": 5,
+    "failed": 3,
+    "skipped": 0,
+    "flaky": 0,
+    "startTime": "2026-09-08T04:07:57.821Z",
+    "durationMilliseconds": 226051.481,
+    "projects": [
+      "pwa-desktop",
+      "pwa-mobile"
+    ],
+    "cases": [
+      {
+        "project": "pwa-desktop",
+        "title": "real signed access, locale and connectivity preserve the actual R3F scene",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 12897
+          }
+        ]
+      },
+      {
+        "project": "pwa-desktop",
+        "title": "known revocation closes access and cannot be resurrected by offline reload",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 8648
+          }
+        ]
+      },
+      {
+        "project": "pwa-desktop",
+        "title": "a corrupt candidate preserves the active build; explicit update and rollback select whole verified generations",
+        "status": "unexpected",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 30241
+          }
+        ]
+      },
+      {
+        "project": "pwa-mobile",
+        "title": "real signed access, locale and connectivity preserve the actual R3F scene",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 17697
+          }
+        ]
+      },
+      {
+        "project": "pwa-mobile",
+        "title": "known revocation closes access and cannot be resurrected by offline reload",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 12669
+          }
+        ]
+      },
+      {
+        "project": "pwa-mobile",
+        "title": "a corrupt candidate preserves the active build; explicit update and rollback select whole verified generations",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 42654
+          }
+        ]
+      },
+      {
+        "project": "pwa-desktop",
+        "title": "canonical book favorite survives cold offline reload and locale route change",
+        "status": "unexpected",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 30689
+          }
+        ]
+      },
+      {
+        "project": "pwa-mobile",
+        "title": "canonical book favorite survives cold offline reload and locale route change",
+        "status": "unexpected",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 30227
+          }
+        ]
+      }
+    ]
+  },
+  "strictArtifactAudit": {
+    "pass": true,
+    "report": "docs/mobile/evidence/S03/globe-root-20260908/a2/strict-artifact-audit.json",
+    "counts": {
+      "files": 362,
+      "bytes": 41417241,
+      "bootstrapFiles": 316,
+      "bootstrapBytes": 20046475,
+      "sourceInputs": 961,
+      "publicSources": 291,
+      "scripts": 42
+    }
+  },
+  "recordedSourceChecks": {
+    "report": "docs/mobile/evidence/S03/globe-root-20260908/a2/source-validation.json",
+    "checks": [
+      {
+        "command": "node node_modules/typescript/bin/tsc --noEmit",
+        "exitCode": 0,
+        "diagnostics": []
+      },
+      {
+        "command": "node scripts/mobile/platform-boundaries.mjs",
+        "exitCode": 0,
+        "pass": true,
+        "sourceFileCount": 877,
+        "auditedRuntimeFileCount": 510,
+        "findings": []
+      },
+      {
+        "command": "node --check scripts/mobile/build-pwa.mjs",
+        "exitCode": 0
+      },
+      {
+        "command": "git diff --check",
+        "exitCode": 0
+      }
+    ],
+    "rerunDuringPreservation": false
+  },
+  "diagnoses": [
+    {
+      "failure": "desktop update/rollback",
+      "classification": "test-readiness-assumption",
+      "finding": "captureNoticeNodes ran in the post-update document before the asynchronous real R3F scene became ready. Earlier keyboard-to-Update and panel notice checks passed; the separate mobile update/rollback scenario passed.",
+      "correctionScope": "Wait for real scene readiness before capture; preserve existing identity assertions. No product-code change is inferred from this diagnosis."
+    },
+    {
+      "failure": "desktop and mobile favorite",
+      "classification": "test-pagination-assumption",
+      "finding": "RU catalog failure state shows13 of46 cards. Dickens' verified canonical key is absent from the initial locale-sorted batch. Browse actual Show more batches before checking that card and its image.",
+      "keyEvidence": "docs/mobile/evidence/S03/globe-root-20260908/missing-cover-key-audit.json",
+      "correctionScope": "Test navigation only; no product key/ID or factual catalog change. Key audit computed four writers/130 entries, without observing UI."
+    }
+  ],
+  "observedProgress": {
+    "source": "docs/mobile/evidence/S03/globe-root-20260908/a2/functional-and-visual-summary.json",
+    "noticeGeometry": "Actual reviewed a2 captures no longer show country/notice overlap; the mobile disclosure hit test passed.",
+    "keyboard": "Mobile rollback is visibly keyboard-focused inside the panel notice slot. The desktop Update capture precedes its later readiness-related failure.",
+    "remainingSpacing": "Large inherited Recent padding was visible in a2; later compact spacing belongs to a3, not this artifact.",
+    "coversRuntime": "NOT_COMPLETED: both favorite cases failed before completing the four-cover runtime gate.",
+    "coldSelectedWorkViewport": "NOT_REACHED: no selected-work viewport PASS is claimed from these failed favorite scenarios."
+  },
+  "nextIteration": {
+    "id": "a3",
+    "resultsIncluded": false,
+    "rootReportedSourceComparison": "Only src/host/host.css compact panel spacing differed across the961 product source-input SHA comparison; test fixes separately address readiness and RU pagination.",
+    "scope": "Only the three failed scenarios are being rerun against a distinct artifact. Preserve a2 raw failures unchanged."
+  },
+  "preservation": {
+    "reports": [
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a2/results.json",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a2/results.json",
+        "bytes": 33830,
+        "sha256": "158e98aa2042f9633f40dca0de7a1be2928d5c53be3e956f9324341ed130632a"
+      },
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a2/session.json",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a2/session.json",
+        "bytes": 3221,
+        "sha256": "8a1aa60e1e18302613934cf01379b4911b6629cdad8505adec28cdbda19ca602"
+      },
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a2/source-before.json",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a2/source-before.json",
+        "bytes": 2069,
+        "sha256": "0579a2ef83a2fa69cf1b3560bc2543460e8d6107e72537a1e667c85795681d87"
+      },
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a2/source-after.json",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a2/source-after.json",
+        "bytes": 2069,
+        "sha256": "0579a2ef83a2fa69cf1b3560bc2543460e8d6107e72537a1e667c85795681d87"
+      },
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a2/source-validation.json",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a2/source-validation.json",
+        "bytes": 2860,
+        "sha256": "9f256a39fd91962380a33a7b27060f118ccbab1c48aac4bd32206cc7a869e626"
+      },
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a2/strict-artifact-audit.json",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a2/strict-artifact-audit.json",
+        "bytes": 792,
+        "sha256": "407dc308a24e2b378d4bf12d5f7f84171b52109212c6503a155e24ee858e38b5"
+      },
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a2/functional-and-visual-summary.json",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a2/functional-and-visual-summary.json",
+        "bytes": 5006,
+        "sha256": "6abfee4509e00b619e8feff893518d34c3a82cc2e7737e1c61548d1add9eb2af"
+      }
+    ],
+    "keyAudit": {
+      "source": ".tmp/missing-cover-key-audit.json",
+      "path": "docs/mobile/evidence/S03/globe-root-20260908/missing-cover-key-audit.json",
+      "bytes": 21695,
+      "sha256": "313239c48ee903427a8134a77e76320276f0791ab1f7e796f9d04b2bd811326d"
+    },
+    "screenshots": [
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a2/artifacts/controlled-pwa-real-signed-5b137-eserve-the-actual-R3F-scene-pwa-mobile/pwa-offline-en-notices.png",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a2/screenshots/pwa-mobile-pwa-offline-en-notices.png",
+        "bytes": 1882362,
+        "sha256": "1cc2ab843522118cbb9aafb0a3f45374d54f914439b0d9000ee34b8f8e80c059",
+        "project": "pwa-mobile",
+        "kind": "globe-offline-notices",
+        "actualBrowserCapture": true,
+        "exactReleaseCandidate": false
+      },
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a2/artifacts/controlled-pwa-a-corrupt-c-5da21--whole-verified-generations-pwa-mobile/pwa-collection-keyboard-rollback.png",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a2/screenshots/pwa-mobile-pwa-collection-keyboard-rollback.png",
+        "bytes": 572530,
+        "sha256": "4b836e75f6a0fd4cbdfcfc53735139b2a2e65ecb2513c38f0c596ebe0719b4ac",
+        "project": "pwa-mobile",
+        "kind": "keyboard-rollback-in-panel",
+        "actualBrowserCapture": true,
+        "exactReleaseCandidate": false
+      },
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a2/artifacts/controlled-pwa-a-corrupt-c-5da21--whole-verified-generations-pwa-desktop/pwa-collection-keyboard-update.png",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a2/screenshots/pwa-desktop-pwa-collection-keyboard-update.png",
+        "bytes": 676255,
+        "sha256": "a64b46a8403330594541b1f86e15dd856c1a8bd7931ecd62e93cfae0d195bef8",
+        "project": "pwa-desktop",
+        "kind": "keyboard-update-in-panel-before-later-failure",
+        "actualBrowserCapture": true,
+        "exactReleaseCandidate": false
+      }
+    ],
+    "transcript": {
+      "path": "docs/mobile/evidence/S03/globe-root-20260908/a2/run-transcript.json",
+      "bytes": 19433,
+      "sha256": "581301f8ad73463e8654d0e2ea51361e22e64c8018ef2080869d1267a662b018",
+      "original": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a2/run.log",
+      "originalBytes": 18596,
+      "originalSha256": "a174496e260314a464c2621f04dbd1f54f19c49257cf2d9b6f72cd9dbd12a8fc"
+    },
+    "exactCopyHashesVerified": true,
+    "privateControlFilesCopied": false,
+    "signersCopied": false,
+    "tracesCopied": false,
+    "testsRerun": false,
+    "sourceChanged": false,
+    "stateUpdated": false,
+    "commitCreated": false
+  },
+  "limitations": [
+    "Five passed cases and three failed cases remain the historical a2 result. Later fixes or reruns cannot reclassify this run as green.",
+    "Test readiness/pagination diagnoses do not establish full product correctness. Four-cover image loading and cold selected-work viewport assertions remain incomplete in a2.",
+    "Local Windows Chrome desktop/mobile-viewport QA is not OS PWA installation, native installation, actual Safari, physical-device or exact release-candidate evidence.",
+    "No full visual/contrast/accessibility/translation, editorial/title/name, rights, child/commerce, store or owner approval is certified. Existing metadata remain unchanged.",
+    "No production identity/payment authority, deploy, Submit, Release, merge, store mutation or production database action was performed."
+  ]
+}

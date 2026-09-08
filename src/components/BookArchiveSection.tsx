@@ -17,6 +17,7 @@ import { useRecentHistory } from "../planet/RecentHistory";
 import { isPublicBook } from "../data/bookQuality";
 
 import ArticleEngagement from "../community/ArticleEngagement";
+import BookCoverArtwork from "./BookCoverArtwork";
 import {
   bookArchiveKey,
   coverArtworkSrcSet,
@@ -1969,6 +1970,7 @@ export default function BookArchiveSection({
     if (!requestedBook) return;
     openBookDetail(requestedBook, requestedBookReturnFocus);
     onRequestedBookHandled?.();
+    if (embeddedInPlanet) return;
     window.requestAnimationFrame(() => {
       document.getElementById("books")?.scrollIntoView({
         behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
@@ -1976,6 +1978,7 @@ export default function BookArchiveSection({
       });
     });
   }, [
+    embeddedInPlanet,
     onRequestedBookHandled,
     openBookDetail,
     requestedBook,
@@ -1983,24 +1986,53 @@ export default function BookArchiveSection({
   ]);
 
   useEffect(() => {
-    if (!selectedBook) return;
-    const frame = window.requestAnimationFrame(() => {
+    if (!selectedBook || !nativePanelActive) return;
+    let frame = 0;
+    let observer: ResizeObserver | undefined;
+    const reveal = () => {
       if (viewMode === "shelf") {
         centerShelfScene();
         return;
       }
       const detail = detailRef.current;
       if (!detail) return;
-      detail.scrollIntoView({
-        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
-          ? "auto"
-          : "smooth",
-        block: "start",
-      });
+      const behavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "auto" : "smooth";
+      const panelContent = embeddedInPlanet
+        ? detail.closest<HTMLElement>(".native-planet-panel__content") : null;
+      if (panelContent) {
+        // The mobile sheet initially renders collapsed (display:none). Reveal
+        // once its real layout exists, including after the opening state commit.
+        const detailBounds = detail.getBoundingClientRect();
+        if (!detailBounds.width || !detailBounds.height) {
+          if (!observer) {
+            observer = new ResizeObserver(() => {
+              window.cancelAnimationFrame(frame);
+              frame = window.requestAnimationFrame(reveal);
+            });
+            observer.observe(detail);
+          }
+          return;
+        }
+        observer?.disconnect();
+        // scrollIntoView also scrolls overflow:hidden ancestors, which can move
+        // the panel's persistent header and locale control out of view.
+        panelContent.scrollTo({
+          top: panelContent.scrollTop + detailBounds.top
+            - panelContent.getBoundingClientRect().top,
+          behavior,
+        });
+      } else {
+        detail.scrollIntoView({ behavior, block: "start" });
+      }
       detail.focus({ preventScroll: true });
-    });
-    return () => window.cancelAnimationFrame(frame);
-  }, [centerShelfScene, selectedBook, viewMode]);
+    };
+    frame = window.requestAnimationFrame(reveal);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      observer?.disconnect();
+    };
+  }, [centerShelfScene, embeddedInPlanet, nativePanelActive, selectedBook, viewMode]);
 
   useEffect(() => {
     let active = true;
@@ -4238,29 +4270,19 @@ export default function BookArchiveSection({
             `/library?country_id=${encodeURIComponent(selectedBook.countryId)}&writer_id=${encodeURIComponent(selectedBook.writerId)}&work_id=${encodeURIComponent(bookKey(selectedBook))}`
           )}
         >
-          <div
-            className={`book-detail-cover${selectedCoverUrl ? " has-image" : ""}`}
+          <BookCoverArtwork
+            className="book-detail-cover"
+            src={selectedCoverUrl ? resolveCoverUrl(selectedCoverUrl) : undefined}
+            srcSet={coverArtworkSrcSet(selectedBook, resolveCoverUrl)}
+            sizes="(max-width: 680px) 82px, 96px"
+            alt={isEditorialCover(selectedBook)
+              ? `${t("Редакционная обложка")} «${selectedBookText?.title}»`
+              : `${t("Обложка конкретного издания")} «${selectedBookText?.title}»`}
           >
-            {selectedCoverUrl ? (
-              <img
-                src={resolveCoverUrl(selectedCoverUrl)}
-                srcSet={coverArtworkSrcSet(selectedBook, resolveCoverUrl)}
-                sizes="(max-width: 680px) 82px, 96px"
-                alt={
-                  isEditorialCover(selectedBook)
-                    ? `${t("Редакционная обложка")} «${selectedBookText?.title}»`
-                    : `${t("Обложка конкретного издания")} «${selectedBookText?.title}»`
-                }
-                decoding="async"
-              />
-            ) : (
-              <>
-                <small>{selectedWriterName}</small>
-                <strong>{selectedBookText?.title}</strong>
-                <span aria-hidden="true">✦</span>
-              </>
-            )}
-          </div>
+            <small>{selectedWriterName}</small>
+            <strong>{selectedBookText?.title}</strong>
+            <span aria-hidden="true">✦</span>
+          </BookCoverArtwork>
           <div className="book-detail-copy">
             <span className="section-kicker">
               {selectedItem?.status === "verified"
@@ -4816,32 +4838,20 @@ export default function BookArchiveSection({
               `/library?country_id=${encodeURIComponent(book.countryId)}&writer_id=${encodeURIComponent(book.writerId)}&work_id=${encodeURIComponent(bookKey(book))}`
             )}
           >
-            <div
-              className={`archive-book-cover${coverUrl ? " has-image" : ""}`}
+            <BookCoverArtwork
+              className="archive-book-cover"
+              src={coverUrl ? resolveCoverUrl(coverUrl) : undefined}
+              srcSet={coverArtworkSrcSet(book, resolveCoverUrl)}
+              sizes="(max-width: 680px) 42vw, 190px"
+              alt={isEditorialCover(book)
+                ? `${t("Редакционная обложка")} «${localizedBook.title}»`
+                : `${t("Обложка конкретного издания")} «${localizedBook.title}»`}
+              loading="lazy"
             >
-              {coverUrl ? (
-                <img
-                  src={resolveCoverUrl(coverUrl)}
-                  srcSet={coverArtworkSrcSet(book, resolveCoverUrl)}
-                  sizes="(max-width: 680px) 42vw, 190px"
-                  alt={
-                    isEditorialCover(book)
-                      ? `${t("Редакционная обложка")} «${localizedBook.title}»`
-                      : `${t("Обложка конкретного издания")} «${localizedBook.title}»`
-                  }
-                  loading="lazy"
-                  decoding="async"
-                />
-              ) : (
-                <>
-                  <small>
-                    {selectBookWriterName(book, language, t("Автор"))}
-                  </small>
-                  <strong>{localizedBook.title}</strong>
-                  <span aria-hidden="true">✦</span>
-                </>
-              )}
-            </div>
+              <small>{selectBookWriterName(book, language, t("Автор"))}</small>
+              <strong>{localizedBook.title}</strong>
+              <span aria-hidden="true">✦</span>
+            </BookCoverArtwork>
             <div className="archive-book-copy">
               <small>
                 {countryName(book.country.code, book.countryName)}

@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T04:40:06.184Z",
+  "kind": "controlled-PWA-canonical-globe-and-retained-product-panels",
+  "status": "SELECTED_WORKING_VALIDATION_PASSED",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "finalCandidate": {
+    "buildId": "7dc47dd87f5bb7653021d95523176aec7693af521ef096ae663e564030318c11",
+    "sourceCommit": "5d96c5dd9a99bb36a2a1c91c334185a998cf1e92",
+    "localQaAuthority": true
+  },
+  "finalCandidateScope": "Two desktop/mobile favorite scenarios including real covers, cold RU/EN reader reveal, retained scene, header, locale, Help and return. Distinct earlier candidates validate other changed access/update paths; this is not one complete green run.",
+  "iterations": [
+    {
+      "iteration": "a1",
+      "evidence": "docs/mobile/evidence/S03/globe-root-20260908/a1/result.json",
+      "status": "FUNCTIONAL_PASSED_WITH_UNRESOLVED_VISUAL_AND_ACCESSIBILITY_FINDINGS"
+    },
+    {
+      "iteration": "a2",
+      "evidence": "docs/mobile/evidence/S03/globe-root-20260908/a2/result.json",
+      "status": "5_PASSED_3_FAILED_PRESERVED"
+    },
+    {
+      "iteration": "a3",
+      "evidence": "docs/mobile/evidence/S03/globe-root-20260908/a3/result.json",
+      "status": "2_PASSED_1_REAL_MOBILE_VIEWPORT_FAILURE"
+    },
+    {
+      "iteration": "a4",
+      "evidence": "docs/mobile/evidence/S03/globe-root-20260908/a4/result.json",
+      "status": "1_REAL_MOBILE_COLD_REVEAL_FAILURE_PRESERVED"
+    },
+    {
+      "iteration": "a5",
+      "evidence": "docs/mobile/evidence/S03/globe-root-20260908/a5/result.json",
+      "status": "2_PASSED_0_FAILED"
+    }
+  ],
+  "sourceValidation": "docs/mobile/evidence/S03/globe-root-20260908/final-source-validation.json",
+  "fixes": [
+    "Controlled paid PWA uses the same canonical globe application root as native; public-site presentation remains scoped to the public site.",
+    "One existing global locale control moves into the active collection header; auth, worker, selected book and scene ownership are retained.",
+    "One notice portal moves into the modal focus boundary; notices consume their own row and reserve root control space without resizing the globe.",
+    "Nineteen selected canonical image files are now included in the PWA base; eight also extend the existing native selection. Original provenance and bytes retained.",
+    "Canonical book artwork uses its existing text fallback if an allowed image fails; no invented art or facts.",
+    "Product routes no longer invoke the website #books scroll writers. The mobile reader waits for real nonzero layout; only panel content scrolls, and the fixed outer frame cannot scroll."
+  ],
+  "rootVisualReview": {
+    "performed": true,
+    "scope": "Actual a5 mobile RU/EN book and EN Help PNGs: header/locale/return visible, selected 1984 card visible, canonical cover rendered. These are Chrome QA screenshots, not native or exact-RC screenshots."
+  },
+  "limitations": [
+    "Earlier failures are preserved with exact source/build identities. No later source identity is assigned to an earlier run.",
+    "Physical devices, PWA OS installation, corrected iOS runtime, full onboarding/child/commerce, original interactive 3D Planetka and complete bilingual/content/legal/store/RC approval remain open."
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "localQaOnly": true,
+  "coverImages": [
+    {
+      "workKey": "england:george_orwell:nineteen-eighty-four",
+      "pathname": "/planet/brand/book-covers/nineteen-eighty-four-editorial.webp",
+      "naturalWidth": 173,
+      "naturalHeight": 259,
+      "offline": true
+    },
+    {
+      "workKey": "england:charles_dickens:a-tale-of-two-cities",
+      "pathname": "/planet/brand/book-covers/tale-of-two-cities-editorial.webp",
+      "naturalWidth": 173,
+      "naturalHeight": 259,
+      "offline": true
+    },
+    {
+      "workKey": "england:h_g_wells:ann-veronica",
+      "pathname": "/planet/brand/book-covers/ann-veronica-20260820-editorial.webp",
+      "naturalWidth": 173,
+      "naturalHeight": 259,
+      "offline": true
+    },
+    {
+      "workKey": "england:aldous_huxley:brave-new-world-editorial",
+      "pathname": "/planet/brand/book-covers/brave-new-world-editorial.webp",
+      "naturalWidth": 173,
+      "naturalHeight": 259,
+      "offline": true
+    }
+  ]
+}

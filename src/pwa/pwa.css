@@ -21,13 +21,34 @@
 }
 .pwa-access__actions :is(a, button):focus-visible { outline: 3px solid #4b087c; outline-offset: 3px; }
 .pwa-access__actions button:disabled { opacity: .65; cursor: progress; }
+.product-notice-host {
+  position: fixed;
+  z-index: 1200;
+  right: max(1rem, env(safe-area-inset-right, 0px));
+  bottom: max(1rem, env(safe-area-inset-bottom, 0px));
+  width: min(30rem, calc(100dvw - max(1rem, env(safe-area-inset-left, 0px)) - max(1rem, env(safe-area-inset-right, 0px))));
+  max-height: min(35dvh, calc(100dvh - max(1rem, env(safe-area-inset-top, 0px)) - max(1rem, env(safe-area-inset-bottom, 0px))));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  pointer-events: none;
+}
+.pwa-notices { display: grid; gap: .5rem; min-width: 0; }
+.pwa-notices > .connectivity-status {
+  position: static;
+  min-width: 0;
+  max-width: none;
+  flex-wrap: wrap;
+  overflow-wrap: break-word;
+  pointer-events: auto;
+}
+.pwa-notices .connectivity-status button {
+  min-height: 44px;
+  padding-inline: .5rem;
+}
 .pwa-access__refresh {
   box-sizing: border-box;
-  position: fixed;
-  z-index: 90;
-  right: max(1rem, env(safe-area-inset-right));
-  bottom: max(1rem, env(safe-area-inset-bottom));
-  max-width: min(30rem, 90vw);
+  min-width: 0;
+  overflow-wrap: break-word;
   padding: .6rem 1rem;
   border: 1px solid #f67518;
   border-radius: .5rem;
@@ -41,6 +62,10 @@
   background: var(--paper, #fffaf2);
   color: var(--ink, #271538);
 }
+.pwa-help--embedded {
+  /* The containing product collection already applies the device safe areas. */
+  padding: 1rem;
+}
 .pwa-help details { max-width: 48rem; margin-inline: auto; }
 .pwa-help summary { min-height: 44px; padding-block: .75rem; cursor: pointer; }
 .pwa-help__body { line-height: 1.65; overflow-wrap: break-word; }
@@ -50,4 +75,48 @@
 .pwa-help :is(summary, a):focus-visible { outline: 3px solid #4b087c; outline-offset: 3px; }
 @media (forced-colors: active) {
   .pwa-access__actions :is(a, button), .pwa-access__refresh { border-color: ButtonText; }
+}
+
+/* In the active collection, notices belong to the modal and consume their own
+   row. Reader controls remain in a separate, independently scrollable row. */
+.product-notice-slot[data-product-notice-placement="panel"] {
+  flex: 0 0 auto;
+  min-height: 0;
+  max-height: min(35dvh, 18rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-inline: 1rem;
+}
+.product-notice-slot[data-product-notice-placement="panel"] .product-notice-host {
+  position: static;
+  width: auto;
+  max-height: none;
+  overflow: visible;
+  pointer-events: auto;
+}
+.product-notice-slot[data-product-notice-placement="panel"] .pwa-notices:not(:empty) {
+  padding-block: .5rem;
+}
+
+/* Only overlay UI reserves notice space. The atlas surface, scene dimensions,
+   Canvas and camera keep their canonical full-viewport geometry. */
+[data-product-notice-space="occupied"] .atlas-experience-surface[data-atlas-view="immersive"] {
+  --product-country-room: max(64px, calc(100dvh - var(--atlas-globe-rail-top) - var(--product-notice-bottom-space) - 12px));
+}
+[data-product-notice-space="occupied"] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-country-presentation {
+  bottom: var(--product-notice-bottom-space);
+  max-height: var(--product-country-room);
+}
+[data-product-notice-space="occupied"] .atlas-experience-surface[data-atlas-view="immersive"] .literary-globe .globe-controls {
+  margin-bottom: var(--product-notice-bottom-space);
+}
+@media (max-width: 980px) {
+  [data-product-notice-space="occupied"] .atlas-experience-surface[data-atlas-view="immersive"][data-atlas-sheet-state="collapsed"] {
+    /* The collapsed country action and the 48px globe buttons both stay below
+       the top toolbar; the existing expanded/half sheet behavior is retained. */
+    --product-country-room: max(64px, calc(100dvh - var(--atlas-globe-rail-top) - var(--product-notice-bottom-space) - 100px));
+  }
+  [data-product-notice-space="occupied"] .atlas-experience-surface[data-atlas-view="immersive"][data-atlas-panel-state="open"][data-atlas-sheet-state="collapsed"] .literary-globe .globe-controls {
+    margin-bottom: calc(var(--product-notice-bottom-space) + min(142px, var(--product-country-room)) - 142px);
+  }
 }

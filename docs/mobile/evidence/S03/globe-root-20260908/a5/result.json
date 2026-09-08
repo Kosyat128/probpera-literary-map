@@ -1,0 +1,840 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T04:39:35.398Z",
+  "kind": "controlled-PWA-globe-root-selected-work-layout-regression",
+  "iteration": "a5",
+  "runId": "pwa-product-root-20260908-a5",
+  "localQaOnly": true,
+  "status": "2_PASSED_0_FAILED",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "source": {
+    "commit": "5d96c5dd9a99bb36a2a1c91c334185a998cf1e92",
+    "sourceInputsSha256": "2ab79fcdc91dc9d179f478a1789c7513cb4e3166f44e95c0b3d927bdcf4e6744",
+    "buildId": "7dc47dd87f5bb7653021d95523176aec7693af521ef096ae663e564030318c11",
+    "artifact": "dist-pwa/artifact.json",
+    "artifactSha256": "e7e1747f82a333b42400381a99ef2469b79d81be2a66320a7aeee632ba9eb274",
+    "snapshotsUnchangedDuringRun": true,
+    "sourceSnapshotSha256": "c19df3ef3ce2b2065645a4056ebb7127106e73d423d017dad045862bc8d54b87",
+    "laterWorkingChangesCovered": false
+  },
+  "functional": {
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "startTime": "2026-09-08T04:34:52.283Z",
+    "durationMilliseconds": 81832.999,
+    "projects": [
+      "pwa-desktop",
+      "pwa-mobile"
+    ],
+    "cases": [
+      {
+        "project": "pwa-desktop",
+        "title": "canonical book favorite survives cold offline reload and locale route change",
+        "status": "expected",
+        "durationMs": 32147
+      },
+      {
+        "project": "pwa-mobile",
+        "title": "canonical book favorite survives cold offline reload and locale route change",
+        "status": "expected",
+        "durationMs": 31120
+      }
+    ]
+  },
+  "strictArtifactAudit": {
+    "pass": true,
+    "identity": {
+      "buildId": "7dc47dd87f5bb7653021d95523176aec7693af521ef096ae663e564030318c11",
+      "sourceCommit": "5d96c5dd9a99bb36a2a1c91c334185a998cf1e92",
+      "localQaAuthority": true
+    },
+    "counts": {
+      "files": 362,
+      "bytes": 41417037,
+      "bootstrapFiles": 316,
+      "bootstrapBytes": 20046271,
+      "sourceInputs": 961,
+      "publicSources": 291,
+      "scripts": 42
+    },
+    "findings": [],
+    "releaseReady": false,
+    "limitations": [
+      "Preparation integrity and current source-input freshness only; not an RC, editorial/rights approval, entitlement authority or deployment approval.",
+      "Static module/HTML/worker configuration checks do not prove browser behavior or arbitrary executable equivalence; real browser and native gates remain required."
+    ]
+  },
+  "coverage": [
+    "four exact editorial covers load offline on desktop and mobile",
+    "actual warm RU and cold RU/EN detail and title in viewport",
+    "outer Collection header fully visible during each work reveal",
+    "canonical favorite across cold reload and RU/EN route",
+    "same single Canvas/renderer/camera/scene across panel open/close and locale",
+    "same selected detail and open Help state across shared locale toggle",
+    "both detail-close and top Return while detail open preserve globe"
+  ],
+  "scrollEvidence": {
+    "noTestDrivenDetailScroll": true,
+    "passiveOriginalCallThroughTelemetry": true,
+    "phases": [
+      {
+        "project": "pwa-desktop",
+        "phase": "warm-ru",
+        "evidence": "pwa-desktop-selected-work-scroll-warm-ru.json",
+        "calls": [
+          {
+            "kind": "scrollTo:call",
+            "id": "",
+            "className": "native-planet-panel__content",
+            "atMs": 7127.400000002235,
+            "options": {
+              "behavior": "smooth",
+              "top": 581.765625
+            },
+            "positiveDetailLayout": true
+          }
+        ],
+        "final": {
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          },
+          "windowScroll": {
+            "x": 0,
+            "y": 0
+          },
+          "panelScroll": {
+            "left": 0,
+            "top": 0
+          },
+          "contentScroll": {
+            "left": 0,
+            "top": 582
+          },
+          "panel": {
+            "x": 460,
+            "y": 0,
+            "width": 820,
+            "height": 720,
+            "top": 0,
+            "right": 1280,
+            "bottom": 720,
+            "left": 460
+          },
+          "content": {
+            "x": 460,
+            "y": 135.375,
+            "width": 820,
+            "height": 584.625,
+            "top": 135.375,
+            "right": 1280,
+            "bottom": 720,
+            "left": 460
+          },
+          "header": {
+            "x": 460,
+            "y": 0,
+            "width": 820,
+            "height": 75,
+            "top": 0,
+            "right": 1280,
+            "bottom": 75,
+            "left": 460
+          },
+          "books": {
+            "x": 460,
+            "y": -267.59375,
+            "width": 820,
+            "height": 990.859375,
+            "top": -267.59375,
+            "right": 1280,
+            "bottom": 723.265625,
+            "left": 460
+          },
+          "detail": {
+            "x": 950.1388549804688,
+            "y": 135.140625,
+            "width": 265.25006103515625,
+            "height": 466.25,
+            "top": 135.140625,
+            "right": 1215.388916015625,
+            "bottom": 601.390625,
+            "left": 950.1388549804688
+          },
+          "heading": {
+            "x": 950.1388549804688,
+            "y": 180.921875,
+            "width": 246.25006103515625,
+            "height": 28.796875,
+            "top": 180.921875,
+            "right": 1196.388916015625,
+            "bottom": 209.71875,
+            "left": 950.1388549804688
+          }
+        }
+      },
+      {
+        "project": "pwa-desktop",
+        "phase": "cold-ru",
+        "evidence": "pwa-desktop-selected-work-scroll-cold-ru.json",
+        "calls": [
+          {
+            "kind": "scrollTo:call",
+            "id": "",
+            "className": "native-planet-panel__content",
+            "atMs": 1747.1000000014901,
+            "options": {
+              "behavior": "smooth",
+              "top": 581.765625
+            },
+            "positiveDetailLayout": true
+          }
+        ],
+        "final": {
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          },
+          "windowScroll": {
+            "x": 0,
+            "y": 0
+          },
+          "panelScroll": {
+            "left": 0,
+            "top": 0
+          },
+          "contentScroll": {
+            "left": 0,
+            "top": 582
+          },
+          "panel": {
+            "x": 460,
+            "y": 0,
+            "width": 820,
+            "height": 720,
+            "top": 0,
+            "right": 1280,
+            "bottom": 720,
+            "left": 460
+          },
+          "content": {
+            "x": 460,
+            "y": 135.375,
+            "width": 820,
+            "height": 584.625,
+            "top": 135.375,
+            "right": 1280,
+            "bottom": 720,
+            "left": 460
+          },
+          "header": {
+            "x": 460,
+            "y": 0,
+            "width": 820,
+            "height": 75,
+            "top": 0,
+            "right": 1280,
+            "bottom": 75,
+            "left": 460
+          },
+          "books": {
+            "x": 460,
+            "y": -267.59375,
+            "width": 820,
+            "height": 1038.859375,
+            "top": -267.59375,
+            "right": 1280,
+            "bottom": 771.265625,
+            "left": 460
+          },
+          "detail": {
+            "x": 948.484375,
+            "y": 183.140625,
+            "width": 265.25,
+            "height": 466.25,
+            "top": 183.140625,
+            "right": 1213.734375,
+            "bottom": 649.390625,
+            "left": 948.484375
+          },
+          "heading": {
+            "x": 948.484375,
+            "y": 228.921875,
+            "width": 246.25,
+            "height": 28.796875,
+            "top": 228.921875,
+            "right": 1194.734375,
+            "bottom": 257.71875,
+            "left": 948.484375
+          }
+        }
+      },
+      {
+        "project": "pwa-desktop",
+        "phase": "cold-en",
+        "evidence": "pwa-desktop-selected-work-scroll-cold-en.json",
+        "calls": [
+          {
+            "kind": "scrollTo:call",
+            "id": "",
+            "className": "native-planet-panel__content",
+            "atMs": 1878.0999999977648,
+            "options": {
+              "behavior": "smooth",
+              "top": 581.765625
+            },
+            "positiveDetailLayout": true
+          }
+        ],
+        "final": {
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          },
+          "windowScroll": {
+            "x": 0,
+            "y": 0
+          },
+          "panelScroll": {
+            "left": 0,
+            "top": 0
+          },
+          "contentScroll": {
+            "left": 0,
+            "top": 582
+          },
+          "panel": {
+            "x": 460,
+            "y": 0,
+            "width": 820,
+            "height": 720,
+            "top": 0,
+            "right": 1280,
+            "bottom": 720,
+            "left": 460
+          },
+          "content": {
+            "x": 460,
+            "y": 135.375,
+            "width": 820,
+            "height": 584.625,
+            "top": 135.375,
+            "right": 1280,
+            "bottom": 720,
+            "left": 460
+          },
+          "header": {
+            "x": 460,
+            "y": 0,
+            "width": 820,
+            "height": 75,
+            "top": 0,
+            "right": 1280,
+            "bottom": 75,
+            "left": 460
+          },
+          "books": {
+            "x": 460,
+            "y": -267.59375,
+            "width": 820,
+            "height": 1038.859375,
+            "top": -267.59375,
+            "right": 1280,
+            "bottom": 771.265625,
+            "left": 460
+          },
+          "detail": {
+            "x": 948.484375,
+            "y": 183.140625,
+            "width": 265.25,
+            "height": 466.25,
+            "top": 183.140625,
+            "right": 1213.734375,
+            "bottom": 649.390625,
+            "left": 948.484375
+          },
+          "heading": {
+            "x": 948.484375,
+            "y": 228.921875,
+            "width": 246.25,
+            "height": 28.796875,
+            "top": 228.921875,
+            "right": 1194.734375,
+            "bottom": 257.71875,
+            "left": 948.484375
+          }
+        }
+      },
+      {
+        "project": "pwa-mobile",
+        "phase": "warm-ru",
+        "evidence": "pwa-mobile-selected-work-scroll-warm-ru.json",
+        "calls": [
+          {
+            "kind": "scrollTo:call",
+            "id": "",
+            "className": "native-planet-panel__content",
+            "atMs": 6356.80000000447,
+            "options": {
+              "behavior": "smooth",
+              "top": 916.78125
+            },
+            "positiveDetailLayout": true
+          }
+        ],
+        "final": {
+          "viewport": {
+            "width": 412,
+            "height": 839
+          },
+          "windowScroll": {
+            "x": 0,
+            "y": 0
+          },
+          "panelScroll": {
+            "left": 0,
+            "top": 0
+          },
+          "contentScroll": {
+            "left": 0,
+            "top": 728
+          },
+          "panel": {
+            "x": 0,
+            "y": 0,
+            "width": 412,
+            "height": 839,
+            "top": 0,
+            "right": 412,
+            "bottom": 839,
+            "left": 0
+          },
+          "content": {
+            "x": 0,
+            "y": 158.5625,
+            "width": 412,
+            "height": 680.4375,
+            "top": 158.5625,
+            "right": 412,
+            "bottom": 839,
+            "left": 0
+          },
+          "header": {
+            "x": 0,
+            "y": 0,
+            "width": 412,
+            "height": 75,
+            "top": 0,
+            "right": 412,
+            "bottom": 75,
+            "left": 0
+          },
+          "books": {
+            "x": 0,
+            "y": -390.40625,
+            "width": 412,
+            "height": 1228.90625,
+            "top": -390.40625,
+            "right": 412,
+            "bottom": 838.5,
+            "left": 0
+          },
+          "detail": {
+            "x": 31.359375,
+            "y": 347.34375,
+            "width": 349.28125,
+            "height": 173.15625,
+            "top": 347.34375,
+            "right": 380.640625,
+            "bottom": 520.5,
+            "left": 31.359375
+          },
+          "heading": {
+            "x": 31.359375,
+            "y": 388.234375,
+            "width": 345.28125,
+            "height": 28.796875,
+            "top": 388.234375,
+            "right": 376.640625,
+            "bottom": 417.03125,
+            "left": 31.359375
+          }
+        }
+      },
+      {
+        "project": "pwa-mobile",
+        "phase": "cold-ru",
+        "evidence": "pwa-mobile-selected-work-scroll-cold-ru.json",
+        "calls": [
+          {
+            "kind": "scrollTo:call",
+            "id": "",
+            "className": "native-planet-panel__content",
+            "atMs": 1719,
+            "options": {
+              "behavior": "smooth",
+              "top": 1040.78125
+            },
+            "positiveDetailLayout": true
+          }
+        ],
+        "final": {
+          "viewport": {
+            "width": 412,
+            "height": 839
+          },
+          "windowScroll": {
+            "x": 0,
+            "y": 0
+          },
+          "panelScroll": {
+            "left": 0,
+            "top": 0
+          },
+          "contentScroll": {
+            "left": 0,
+            "top": 728
+          },
+          "panel": {
+            "x": 0,
+            "y": 0,
+            "width": 412,
+            "height": 839,
+            "top": 0,
+            "right": 412,
+            "bottom": 839,
+            "left": 0
+          },
+          "content": {
+            "x": 0,
+            "y": 158.5625,
+            "width": 412,
+            "height": 680.4375,
+            "top": 158.5625,
+            "right": 412,
+            "bottom": 839,
+            "left": 0
+          },
+          "header": {
+            "x": 0,
+            "y": 0,
+            "width": 412,
+            "height": 75,
+            "top": 0,
+            "right": 412,
+            "bottom": 75,
+            "left": 0
+          },
+          "books": {
+            "x": 0,
+            "y": -390.40625,
+            "width": 412,
+            "height": 1276.90625,
+            "top": -390.40625,
+            "right": 412,
+            "bottom": 886.5,
+            "left": 0
+          },
+          "detail": {
+            "x": 31.359375,
+            "y": 519.34375,
+            "width": 349.28125,
+            "height": 173.15625,
+            "top": 519.34375,
+            "right": 380.640625,
+            "bottom": 692.5,
+            "left": 31.359375
+          },
+          "heading": {
+            "x": 31.359375,
+            "y": 560.234375,
+            "width": 345.28125,
+            "height": 28.796875,
+            "top": 560.234375,
+            "right": 376.640625,
+            "bottom": 589.03125,
+            "left": 31.359375
+          }
+        }
+      },
+      {
+        "project": "pwa-mobile",
+        "phase": "cold-en",
+        "evidence": "pwa-mobile-selected-work-scroll-cold-en.json",
+        "calls": [
+          {
+            "kind": "scrollTo:call",
+            "id": "",
+            "className": "native-planet-panel__content",
+            "atMs": 1747.1999999955297,
+            "options": {
+              "behavior": "smooth",
+              "top": 1033.234375
+            },
+            "positiveDetailLayout": true
+          }
+        ],
+        "final": {
+          "viewport": {
+            "width": 412,
+            "height": 839
+          },
+          "windowScroll": {
+            "x": 0,
+            "y": 0
+          },
+          "panelScroll": {
+            "left": 0,
+            "top": 0
+          },
+          "contentScroll": {
+            "left": 0,
+            "top": 696
+          },
+          "panel": {
+            "x": 0,
+            "y": 0,
+            "width": 412,
+            "height": 839,
+            "top": 0,
+            "right": 412,
+            "bottom": 839,
+            "left": 0
+          },
+          "content": {
+            "x": 0,
+            "y": 135.375,
+            "width": 412,
+            "height": 703.625,
+            "top": 135.375,
+            "right": 412,
+            "bottom": 839,
+            "left": 0
+          },
+          "header": {
+            "x": 0,
+            "y": 0,
+            "width": 412,
+            "height": 75,
+            "top": 0,
+            "right": 412,
+            "bottom": 75,
+            "left": 0
+          },
+          "books": {
+            "x": 0,
+            "y": -381.59375,
+            "width": 412,
+            "height": 1269.359375,
+            "top": -381.59375,
+            "right": 412,
+            "bottom": 887.765625,
+            "left": 0
+          },
+          "detail": {
+            "x": 31.359375,
+            "y": 520.609375,
+            "width": 349.28125,
+            "height": 173.15625,
+            "top": 520.609375,
+            "right": 380.640625,
+            "bottom": 693.765625,
+            "left": 31.359375
+          },
+          "heading": {
+            "x": 31.359375,
+            "y": 561.5,
+            "width": 345.28125,
+            "height": 28.796875,
+            "top": 561.5,
+            "right": 376.640625,
+            "bottom": 590.296875,
+            "left": 31.359375
+          }
+        }
+      }
+    ]
+  },
+  "visualReview": {
+    "reviewed": [
+      "artifacts/offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-desktop/pwa-collection-en-book.png",
+      "artifacts/offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-mobile/pwa-collection-en-book.png",
+      "artifacts/offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-mobile/pwa-collection-en-help.png"
+    ],
+    "observations": [
+      "Desktop and mobile cold EN selected book is visible, with canonical cover/title and persistent Collection header.",
+      "Separate exact-file visual inspection confirms mobile EN Help retains Collection header, shared RU/EN control, close button and saved-verification row; Help content is readable below."
+    ],
+    "screenshotLimits": [
+      "RU book PNG is warm-open evidence; cold RU has exact passive rect telemetry, no dedicated PNG was captured.",
+      "EN book PNG is actual cold EN capture.",
+      "No numerical text-contrast audit."
+    ],
+    "correction": {
+      "detail": "Earlier intermediate message incorrectly interpreted the multi-image preview as a missing header. Corrected by separate inspection of the same PNG, without source/test rerun.",
+      "file": "artifacts/offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-mobile/pwa-collection-en-help.png",
+      "sha256": "74b3ac1ea79356a62bf3daf5b1e17a254965769859613ded25a4b39ebcc57883"
+    }
+  },
+  "command": "node node_modules/@playwright/test/cli.js test --config playwright.pwa-current.config.mjs --grep \"canonical book favorite\"",
+  "evidence": {
+    "sourceRunDirectory": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a5",
+    "files": [
+      {
+        "path": "strict-artifact-audit.json",
+        "sha256": "1c409f1e214d12dc69064de32d490b0b358bf0e12581604a8a74bdf2bb6db90f",
+        "bytes": 792
+      },
+      {
+        "path": "results.json",
+        "sha256": "9f5ba6192c639340edc4a4183f934d8621209c404c7a1755f67774313a16933d",
+        "bytes": 136202
+      },
+      {
+        "path": "run.log",
+        "sha256": "63085da2d568dd41e12ae95064e4d783f12b57ef10c61fee860b0f5cd071c1ea",
+        "bytes": 7193
+      },
+      {
+        "path": "source-before.json",
+        "sha256": "c19df3ef3ce2b2065645a4056ebb7127106e73d423d017dad045862bc8d54b87",
+        "bytes": 2216
+      },
+      {
+        "path": "source-after.json",
+        "sha256": "c19df3ef3ce2b2065645a4056ebb7127106e73d423d017dad045862bc8d54b87",
+        "bytes": 2216
+      },
+      {
+        "path": "session.json",
+        "sha256": "dbb62946244c01b2dd798280a9c0017a8283ab2bbd3ba16e5e2978cd8cbc7ee4",
+        "bytes": 3221
+      },
+      {
+        "path": "functional-and-visual-summary.json",
+        "sha256": "8dcd93a821f69226b7231cbce0c7742f79f4b2a89a3031ca50da6d3e5ff46bee",
+        "bytes": 18019
+      },
+      {
+        "path": "pwa-desktop-selected-work-scroll-warm-ru.json",
+        "sha256": "86ad40d0acddac9f4fec199e3498f0f28635e7df71709b7b2024c6725fd008f3",
+        "bytes": 12038
+      },
+      {
+        "path": "pwa-desktop-selected-work-scroll-cold-ru.json",
+        "sha256": "4d18fcdbd29fb90670102363ddbe5e4c6babe30beec44ff73fcbfadfca248f90",
+        "bytes": 25293
+      },
+      {
+        "path": "pwa-desktop-selected-work-scroll-cold-en.json",
+        "sha256": "9db45b7fb0606cc4ddc4e5db91a0e7356e8ca420182c570c36ab9de31004b0c9",
+        "bytes": 37139
+      },
+      {
+        "path": "pwa-desktop-canonical-offline-cover-images.json",
+        "sha256": "1153f05434c03de64459c2778fe560ad273faa5dcdd60b36103f2b7096f67fe9",
+        "bytes": 1010
+      },
+      {
+        "path": "pwa-desktop-canonical-pwa-collection-evidence.json",
+        "sha256": "172f577c49db4816d419d43072084d7f740f42502fa09311f847c6868a498d61",
+        "bytes": 1476
+      },
+      {
+        "path": "artifacts/offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-desktop/pwa-collection-en-book.png",
+        "sha256": "f78bc243220f577b34ba85bfc00f0aa359055347b39d9bf2b7577145ff9b5f27",
+        "bytes": 387386
+      },
+      {
+        "path": "artifacts/offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-desktop/pwa-collection-en-help.png",
+        "sha256": "0f62a92be74c8e0dd6ac2e844962a56ddffd1b71fddc38588fa0b5aaa5ad872f",
+        "bytes": 144897
+      },
+      {
+        "path": "artifacts/offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-desktop/pwa-collection-ru-book.png",
+        "sha256": "7daecdd8115ee08377c7b61298b749e743ddf773a63f2290d3801137e787706e",
+        "bytes": 333552
+      },
+      {
+        "path": "artifacts/offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-desktop/pwa-collection-ru-help.png",
+        "sha256": "19850329d199b5e47a3edcd980d2deee96b8c799a4aa5d0307b9b8355db35e58",
+        "bytes": 147595
+      },
+      {
+        "path": "artifacts/offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-desktop/pwa-offline-collection-return.png",
+        "sha256": "e4fa7ff82167fdcb2397500aacc7d51ee03a6c23fcac229e0b728fde74089ed4",
+        "bytes": 438866
+      },
+      {
+        "path": "pwa-mobile-selected-work-scroll-warm-ru.json",
+        "sha256": "9c3be6aef0431572f01fe9d182948834a35c8757c739a84fa89d5e90abccb119",
+        "bytes": 10719
+      },
+      {
+        "path": "pwa-mobile-selected-work-scroll-cold-ru.json",
+        "sha256": "bdfca50718367dc5b13e2027df7444980d588b094d7ca013859eba7cc0bd06dd",
+        "bytes": 43629
+      },
+      {
+        "path": "pwa-mobile-selected-work-scroll-cold-en.json",
+        "sha256": "344b46dedf88b4f11df599cd26c407ef772c3e1759e378c6ac76c3f8b3a8e26f",
+        "bytes": 35991
+      },
+      {
+        "path": "pwa-mobile-canonical-offline-cover-images.json",
+        "sha256": "9a2a07d55c42c84549c7dd112fd13ea85fb96fa77c8b1dd8d0c0ec386b63d203",
+        "bytes": 982
+      },
+      {
+        "path": "pwa-mobile-canonical-pwa-collection-evidence.json",
+        "sha256": "c8c52c25d8bc030b90ca14be43316acc61e05c409fba1ceb5c74f2f5189e7d58",
+        "bytes": 1448
+      },
+      {
+        "path": "artifacts/offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-mobile/pwa-collection-en-book.png",
+        "sha256": "c29e984eb5742807ee77c98d614070a7e6de1ebe983bd7f4c03ae119061ff9e9",
+        "bytes": 543595
+      },
+      {
+        "path": "artifacts/offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-mobile/pwa-collection-en-help.png",
+        "sha256": "74b3ac1ea79356a62bf3daf5b1e17a254965769859613ded25a4b39ebcc57883",
+        "bytes": 255346
+      },
+      {
+        "path": "artifacts/offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-mobile/pwa-collection-ru-book.png",
+        "sha256": "d47a639a71e979622bb5dce0b067ccc428353fd75f2fd688b0b5fef202edcd5d",
+        "bytes": 544721
+      },
+      {
+        "path": "artifacts/offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-mobile/pwa-collection-ru-help.png",
+        "sha256": "06306236fb5163866183c77710ccb224c26c5e9b83d190be3c2395fcd1f44b4a",
+        "bytes": 261679
+      },
+      {
+        "path": "artifacts/offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-mobile/pwa-offline-collection-return.png",
+        "sha256": "b42a6fa3adc836d39a42aac0b9d7fca2020fe6617e4e628dd2a260a5cee0c472",
+        "bytes": 1854105
+      }
+    ],
+    "losslessTranscript": {
+      "path": "run.log",
+      "sha256": "63085da2d568dd41e12ae95064e4d783f12b57ef10c61fee860b0f5cd071c1ea",
+      "byteIdenticalToRunLog": true
+    },
+    "excluded": [
+      "QA authority/control credentials",
+      "Playwright traces",
+      "Private keys",
+      "Production services"
+    ]
+  },
+  "limits": [
+    "Two targeted cases only; other previously green scenarios were not repeated.",
+    "Actual Chrome desktop and Pixel7 emulation using local signed QA access; no installed native/device or production identity claim.",
+    "RU book PNG is warm-open; cold RU has exact rect telemetry without a dedicated screenshot.",
+    "Historical a1-a4 failures remain preserved and are not overwritten."
+  ]
+}

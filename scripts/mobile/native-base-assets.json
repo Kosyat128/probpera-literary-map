@@ -1306,9 +1306,33 @@
       "transformation": "none"
     },
     {
+      "source": "public/brand/book-covers/ann-veronica-20260820-editorial.webp",
+      "output": "brand/book-covers/ann-veronica-20260820-editorial.webp",
+      "sourceSha256": "b4fc87654fd8041ee554b70eb10aa08cdc50f7a75f84cd3057b63f329e812e18",
+      "transformation": "none"
+    },
+    {
+      "source": "public/brand/book-covers/brave-new-world-editorial.webp",
+      "output": "brand/book-covers/brave-new-world-editorial.webp",
+      "sourceSha256": "81c3e253221525d5450ee87749fe8ad8a1113382030be902f2048550f656d634",
+      "transformation": "none"
+    },
+    {
       "output": "brand/book-covers/crime-and-punishment-editorial.webp",
       "source": "public/brand/book-covers/crime-and-punishment-editorial.webp",
       "sourceSha256": "696100d523bc12c6ccb0002de685a55572ef214d5278fcc7a2f338d7a1c61bec",
+      "transformation": "none"
+    },
+    {
+      "source": "public/brand/book-covers/nineteen-eighty-four-editorial.webp",
+      "output": "brand/book-covers/nineteen-eighty-four-editorial.webp",
+      "sourceSha256": "cca8d3f684191027c40a1664d05c0939aebf82ffc7d72cb21b9159d0ee559d01",
+      "transformation": "none"
+    },
+    {
+      "source": "public/brand/book-covers/tale-of-two-cities-editorial.webp",
+      "output": "brand/book-covers/tale-of-two-cities-editorial.webp",
+      "sourceSha256": "a3498dbe0033956ac2237ce0385f5d117afa37c3dcc7d3a89f6eb53a8897b77b",
       "transformation": "none"
     },
     {
@@ -1318,9 +1342,33 @@
       "transformation": "none"
     },
     {
+      "source": "public/brand/book-covers/thumbs/ann-veronica-20260820-editorial.webp",
+      "output": "brand/book-covers/thumbs/ann-veronica-20260820-editorial.webp",
+      "sourceSha256": "04f4364f85fdb4cd4115ea07be103d36ab9bbf2001d0ff7dc13e3d64d8acfd85",
+      "transformation": "none"
+    },
+    {
+      "source": "public/brand/book-covers/thumbs/brave-new-world-editorial.webp",
+      "output": "brand/book-covers/thumbs/brave-new-world-editorial.webp",
+      "sourceSha256": "8a967c4b8736962060a3de7bcc26a4b39997662a154572ffd621f789e3669a83",
+      "transformation": "none"
+    },
+    {
       "output": "brand/book-covers/thumbs/crime-and-punishment-editorial.webp",
       "source": "public/brand/book-covers/thumbs/crime-and-punishment-editorial.webp",
       "sourceSha256": "c068156394e37026e4aa2c03a8cd48253ce0f802636f4a997cd2289c75ac2c4e",
+      "transformation": "none"
+    },
+    {
+      "source": "public/brand/book-covers/thumbs/nineteen-eighty-four-editorial.webp",
+      "output": "brand/book-covers/thumbs/nineteen-eighty-four-editorial.webp",
+      "sourceSha256": "346360d7794d342af53dbac086b858dd3f0ca70730d28ed4159f29211a0f7a6b",
+      "transformation": "none"
+    },
+    {
+      "source": "public/brand/book-covers/thumbs/tale-of-two-cities-editorial.webp",
+      "output": "brand/book-covers/thumbs/tale-of-two-cities-editorial.webp",
+      "sourceSha256": "d83efc0280b46832c0e7ece8726c59975bc7e852317ae948dc7656a1c203ea36",
       "transformation": "none"
     },
     {

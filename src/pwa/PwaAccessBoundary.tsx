@@ -9,6 +9,7 @@ import InterfaceLanguageControl from "../components/InterfaceLanguageControl";
 import { planetAccountCopy } from "./accountCopy";
 import { RecentHistoryProvider } from "../planet/RecentHistory";
 import { createWebRecentHistory } from "../platform/adapters/web/WebRecentHistory";
+import { ProductNoticeHost, ProductNoticeSlot } from "../host/ProductNoticeHost";
 
 type AuthorizedGrant = Extract<WebLicenseResult, { status: "authorized" }>;
 type AccessMode = "online" | "offline";
@@ -148,12 +149,14 @@ export function pwaAccessMessage(copy: PwaAccessCopy, reason: WebLicenseDenial |
 export interface PwaAccessBoundaryProps {
   readonly client: WebLicenseClient | null;
   readonly children: ReactNode;
+  readonly closedHelp?: ReactNode;
+  readonly connectivityNotice?: ReactNode;
   readonly bootstrapStatus?: { readonly checking: boolean; readonly reason: WebLicenseDenial | null };
   readonly onBootstrapRetry?: () => void;
 }
 
 /** Preparation/QA boundary. Identity/client creation and release copy review are external. */
-export default function PwaAccessBoundary({ client, children, bootstrapStatus, onBootstrapRetry }: PwaAccessBoundaryProps) {
+export default function PwaAccessBoundary({ client, children, bootstrapStatus, onBootstrapRetry, closedHelp, connectivityNotice }: PwaAccessBoundaryProps) {
   const { language, t } = useInterfaceLanguage();
   const { connectivity, visibility } = usePlatformSnapshot();
   const controller = useMemo(() => createPwaAccessController(client), [client]);
@@ -187,7 +190,17 @@ export default function PwaAccessBoundary({ client, children, bootstrapStatus, o
   const reason = client ? snapshot.reason : bootstrapStatus?.reason ?? "unconfigured";
   const checking = client ? snapshot.checking || snapshot.reason === "not-checked" : bootstrapStatus?.checking === true;
   return (
-    <>
+    <ProductNoticeHost notices={
+      <div className="pwa-notices">
+        {authorized && (snapshot.checking || snapshot.verificationSource === "saved") ? (
+          <div key="refresh" className="pwa-access__refresh" role="status" aria-live="polite" aria-atomic="true"
+            data-pwa-access-verification={snapshot.verificationSource ?? undefined}>
+            {snapshot.checking ? copy.checking : copy.savedVerification}
+          </div>
+        ) : null}
+        {connectivityNotice}
+      </div>
+    }>
       {authorized && recentStore ? <RecentHistoryProvider key="experience" store={recentStore}><div className="pwa-access__content" data-pwa-authorized="">{children}</div></RecentHistoryProvider> : null}
       {!authorized ? (
         <main key="access" className="pwa-access app-error" aria-labelledby={headingId} data-pwa-access-state={checking ? "checking" : "closed"}>
@@ -207,12 +220,9 @@ export default function PwaAccessBoundary({ client, children, bootstrapStatus, o
             <a href={`${canonicalJournalOrigin}/${language}/delete-account/${accountQuery}`}>{accountCopy.deleteLink}</a>
           </div>
         </main>
-      ) : snapshot.checking || snapshot.verificationSource === "saved" ? (
-        <div key="refresh" className="pwa-access__refresh" role="status" aria-live="polite" aria-atomic="true"
-          data-pwa-access-verification={snapshot.verificationSource ?? undefined}>
-          {snapshot.checking ? copy.checking : copy.savedVerification}
-        </div>
       ) : null}
-    </>
+      {!authorized ? closedHelp : null}
+      <ProductNoticeSlot placement="fallback" />
+    </ProductNoticeHost>
   );
 }

@@ -1,0 +1,287 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T04:38:27.843Z",
+  "kind": "controlled-PWA-globe-root-fourth-working-iteration",
+  "iteration": "a4",
+  "runId": "pwa-product-root-20260908-a4",
+  "status": "1_REAL_MOBILE_COLD_REVEAL_FAILURE_PRESERVED",
+  "localQaOnly": true,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "source": {
+    "commit": "5d96c5dd9a99bb36a2a1c91c334185a998cf1e92",
+    "buildId": "1879dc4261e3b11ab5bfb4f5050fe0181f8165e301a46abb0f80173bb2011a65",
+    "sourceInputsSha256": "c600f9cb5ee0aca9d8c93b896f6def94ac3cce41d23d764d66b1c2178b95e536",
+    "artifact": ".tmp/pwa-artifacts/1879dc42-globe-zero-layout-before-fix-20260908/artifact.json",
+    "artifactSha256": "469a3ccac193b9723042bf51737a863ad17245336b0a579e4fa5f1556750ff93",
+    "sourceSnapshotsUnchangedDuringRun": true,
+    "sourceSnapshotSha256": "b1714f59ae6064f444b1e1327678aeba62c00bc08d82439910cdae3110382dc7",
+    "laterSourceChangesCovered": false
+  },
+  "functional": {
+    "passed": 0,
+    "failed": 1,
+    "skipped": 0,
+    "flaky": 0,
+    "startTime": "2026-09-08T04:30:21.481Z",
+    "durationMilliseconds": 84315.754,
+    "project": "pwa-mobile",
+    "scope": "Only the previously failing canonical favorite/cold-reload/locale scenario was retried."
+  },
+  "strictArtifactAudit": {
+    "pass": true,
+    "report": "docs/mobile/evidence/S03/globe-root-20260908/a4/strict-artifact-audit.json",
+    "counts": {
+      "files": 362,
+      "bytes": 41416940,
+      "bootstrapFiles": 316,
+      "bootstrapBytes": 20046174,
+      "sourceInputs": 961,
+      "publicSources": 291,
+      "scripts": 42
+    }
+  },
+  "completedSubsteps": {
+    "fourCanonicalOfflineCoverImages": "docs/mobile/evidence/S03/globe-root-20260908/a4/canonical-offline-cover-images.json",
+    "warmDetailAndHeader": "Observed warm selected work and persistent Collection header are both visible; this does not clear cold reload."
+  },
+  "realFailure": {
+    "status": "FAIL",
+    "phase": "cold RU reload, before EN navigation",
+    "workKey": "england:george_orwell:nineteen-eighty-four",
+    "gate": "selected-work viewport ratio 0 for15sec",
+    "observedCalls": [
+      {
+        "atMs": 597,
+        "kind": "scrollIntoView:call",
+        "id": "books",
+        "className": "book-archive-section stage5-loading-shell",
+        "options": {
+          "behavior": "auto",
+          "block": "start"
+        },
+        "detail": null
+      },
+      {
+        "atMs": 2374.5,
+        "kind": "scrollTo:call",
+        "id": "",
+        "className": "native-planet-panel__content",
+        "options": {
+          "behavior": "smooth",
+          "top": 20.4375
+        },
+        "detail": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      }
+    ],
+    "finalGeometry": {
+      "viewport": {
+        "width": 412,
+        "height": 839
+      },
+      "windowScroll": {
+        "x": 0,
+        "y": 0
+      },
+      "panelScroll": {
+        "left": 0,
+        "top": 0
+      },
+      "contentScroll": {
+        "left": 0,
+        "top": 20
+      },
+      "panel": {
+        "x": 0,
+        "y": 0,
+        "width": 412,
+        "height": 839,
+        "top": 0,
+        "right": 412,
+        "bottom": 839,
+        "left": 0
+      },
+      "content": {
+        "x": 0,
+        "y": 158.5625,
+        "width": 412,
+        "height": 680.4375,
+        "top": 158.5625,
+        "right": 412,
+        "bottom": 839,
+        "left": 0
+      },
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 412,
+        "height": 75,
+        "top": 0,
+        "right": 412,
+        "bottom": 75,
+        "left": 0
+      },
+      "books": {
+        "x": 0,
+        "y": 317.59375,
+        "width": 412,
+        "height": 1276.90625,
+        "top": 317.59375,
+        "right": 412,
+        "bottom": 1594.5,
+        "left": 0
+      },
+      "detail": {
+        "x": 31.359375,
+        "y": 1227.34375,
+        "width": 349.28125,
+        "height": 173.15625,
+        "top": 1227.34375,
+        "right": 380.640625,
+        "bottom": 1400.5,
+        "left": 31.359375
+      },
+      "heading": {
+        "x": 31.359375,
+        "y": 1268.234375,
+        "width": 345.28125,
+        "height": 28.796875,
+        "top": 1268.234375,
+        "right": 376.640625,
+        "bottom": 1297.03125,
+        "left": 31.359375
+      }
+    },
+    "diagnosis": "Native panel scroll containment keeps header at y0. Reveal computes target while mobile article has zero layout size in collapsed state, then never runs for visible half state. Separate address callback still scrolls #books loading shell.",
+    "sourcePointers": [
+      "src/styles/stage5-book-shelf.css:1804",
+      "src/components/BookArchiveSection.tsx:1742",
+      "src/components/BookArchiveSection.tsx:1988",
+      "src/App.tsx:825"
+    ],
+    "diagnosisBoundary": "Unlike a3's ordering hypothesis, a4 captures the reveal scroll call while the detail rect is zero-sized. The later visible half-state is not followed by a correcting reveal. Source review ties this to the collapsed CSS layout and reveal lifecycle.",
+    "screenshot": "docs/mobile/evidence/S03/globe-root-20260908/a4/screenshots/pwa-mobile-test-failed-1.png",
+    "scrollEvidence": [
+      "docs/mobile/evidence/S03/globe-root-20260908/a4/selected-work-scroll-warm-ru.json",
+      "docs/mobile/evidence/S03/globe-root-20260908/a4/selected-work-scroll-cold-ru.json"
+    ],
+    "instrumentationScope": "Safe targeted geometry/scroll telemetry; original scroll methods were called with unchanged arguments. No test-driven selected-detail scroll or private QA trace was copied.",
+    "laterGates": "Cold English navigation and final mobile locale/favorite return assertions were not reached."
+  },
+  "nextIteration": {
+    "id": "a5",
+    "resultsIncluded": false,
+    "scope": "Root changed and froze the product reveal implementation after this failure. It requires a distinct artifact and focused result; a4 remains failed."
+  },
+  "preservation": {
+    "reports": [
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a4/results.json",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a4/results.json",
+        "bytes": 33118,
+        "sha256": "d7e23040e775f1ce06580d68db0406671c4f1c167efc356fa0774e848c7be052"
+      },
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a4/session.json",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a4/session.json",
+        "bytes": 3221,
+        "sha256": "fa7822531b5db5f5840162e3afd81bc598126c9dee34e57189fec8bc77ae03eb"
+      },
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a4/source-before.json",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a4/source-before.json",
+        "bytes": 2216,
+        "sha256": "b1714f59ae6064f444b1e1327678aeba62c00bc08d82439910cdae3110382dc7"
+      },
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a4/source-after.json",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a4/source-after.json",
+        "bytes": 2216,
+        "sha256": "b1714f59ae6064f444b1e1327678aeba62c00bc08d82439910cdae3110382dc7"
+      },
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a4/strict-artifact-audit.json",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a4/strict-artifact-audit.json",
+        "bytes": 792,
+        "sha256": "c35a0c730fefbe5f44058906fe205e3c287c99470d79dc34dd2446a4b74eaab6"
+      },
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a4/functional-and-visual-summary.json",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a4/functional-and-visual-summary.json",
+        "bytes": 4372,
+        "sha256": "595a46e212b90023dbda9f46fc77bec564cf6671915dd1fab679b1df004a0401"
+      },
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a4/canonical-offline-cover-images.json",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a4/canonical-offline-cover-images.json",
+        "bytes": 982,
+        "sha256": "9a2a07d55c42c84549c7dd112fd13ea85fb96fa77c8b1dd8d0c0ec386b63d203"
+      },
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a4/selected-work-scroll-warm-ru.json",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a4/selected-work-scroll-warm-ru.json",
+        "bytes": 10436,
+        "sha256": "9adf2873694d6b98c7155826221edd438b00dae991cd4907e7380d8eca289475"
+      },
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a4/selected-work-scroll-cold-ru.json",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a4/selected-work-scroll-cold-ru.json",
+        "bytes": 17387,
+        "sha256": "58ffb61751127cc0d95670b217260b558f3698aca7b01bc679e38d27f63c2aee"
+      }
+    ],
+    "screenshots": [
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a4/artifacts/offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-mobile/pwa-collection-ru-book.png",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a4/screenshots/pwa-mobile-pwa-collection-ru-book.png",
+        "bytes": 495491,
+        "sha256": "a5fab30ca3a1c42e77e16222a7c341162c5cfe1aaf2ed9781ce61810af4ed97a",
+        "kind": "warm-Russian-selected-detail-with-persistent-header",
+        "project": "pwa-mobile",
+        "actualBrowserCapture": true,
+        "exactReleaseCandidate": false
+      },
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a4/artifacts/offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-mobile/test-failed-1.png",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a4/screenshots/pwa-mobile-test-failed-1.png",
+        "bytes": 464143,
+        "sha256": "dd386b8fb64a09cf453db5f7acec65dbc683307c2842cc04ed5dcbd7dabe401a",
+        "kind": "real-cold-Russian-selected-detail-below-viewport",
+        "project": "pwa-mobile",
+        "actualBrowserCapture": true,
+        "exactReleaseCandidate": false
+      }
+    ],
+    "transcript": {
+      "path": "docs/mobile/evidence/S03/globe-root-20260908/a4/run-transcript.json",
+      "bytes": 10970,
+      "sha256": "8fcf8f68a2704797e964d29123ff5b2b1f0512ed188a76933bc171d5feb9c89a",
+      "original": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a4/run.log",
+      "originalBytes": 10397,
+      "originalSha256": "b88369a4e48a5298610c50bc1db4ee6539c49c4954d20ecac3b2d2335033f862"
+    },
+    "exactCopyHashesVerified": true,
+    "testsRerun": false,
+    "sourceChanged": false,
+    "stateUpdated": false,
+    "commitCreated": false,
+    "privateControlFilesCopied": false,
+    "signersCopied": false,
+    "tracesCopied": false
+  },
+  "limitations": [
+    "Static artifact PASS and passing early cover/warm-detail assertions do not resolve the real mobile cold selected-work viewport failure.",
+    "This is local Chrome mobile-viewport QA with controlled fixture authority, not installed PWA/native, Safari, physical-device or exact release-candidate evidence.",
+    "No full bilingual/translation/contrast/accessibility/content/rights/child/commerce/store/owner approval or stage/global acceptance is certified.",
+    "No production deploy, Submit, Release, merge, store mutation or production database action was performed."
+  ]
+}

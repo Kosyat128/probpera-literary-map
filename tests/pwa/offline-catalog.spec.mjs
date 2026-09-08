@@ -21,17 +21,143 @@ async function prepare(page, request) {
   await expect.poll(() => page.evaluate(() => navigator.serviceWorker.controller?.scriptURL ?? ""), { timeout: 60_000 }).toBe(config.origin + "/planet/sw.js");
 }
 
+async function actualGlobe(page) {
+  await expect(page.locator("[data-pwa-authorized]")).toBeVisible({ timeout: 45_000 });
+  await expect(page.locator('[data-atlas-experience]')).toHaveAttribute("data-atlas-view", "immersive");
+  await expect(page.locator(".magazine-hero, .site-header")).toHaveCount(0);
+  await expect(page.locator("#atlas .literary-globe")).toHaveAttribute("data-globe-webgl-context", "ready", { timeout: 45_000 });
+  await expect(page.locator(".native-planet-launch")).toBeHidden();
+  await expect(page.locator("canvas")).toHaveCount(1);
+  await expect.poll(() => page.evaluate(() => typeof window.__literaryPlanetQaScenes)).toBe("function");
+  const scene = await page.evaluateHandle(() => window.__literaryPlanetQaScenes().find(item => document.querySelector("#atlas").contains(item.canvas)));
+  expect(await scene.evaluate(value => Boolean(value?.canvas && value.renderer && value.camera && value.scene))).toBe(true);
+  return scene;
+}
+
+async function retainedGlobe(page, original) {
+  await expect(page.locator("canvas")).toHaveCount(1);
+  expect(await original.evaluate(previous => {
+    const current = window.__literaryPlanetQaScenes().find(item => item.canvas === previous.canvas);
+    return previous.canvas.isConnected && current?.renderer === previous.renderer && current?.camera === previous.camera && current?.scene === previous.scene;
+  })).toBe(true);
+}
+
+async function panelNoticeLayout(page) {
+  const slot = page.locator('.native-planet-panel > [data-product-notice-placement="panel"]');
+  await expect(slot.locator(".product-notice-host > .pwa-notices")).toBeVisible();
+  await expect(page.locator(".product-notice-host")).toHaveCount(1);
+  await expect.poll(async () => {
+    const notice = await slot.boundingBox(), content = await page.locator(".native-planet-panel__content").boundingBox();
+    return Boolean(notice && content && notice.y + notice.height <= content.y + 1);
+  }).toBe(true);
+}
+
+async function verifiedCoverImages(page, collection) {
+  const targets = [
+    ["england:george_orwell:nineteen-eighty-four", "nineteen-eighty-four-editorial.webp"],
+    ["england:charles_dickens:a-tale-of-two-cities", "tale-of-two-cities-editorial.webp"],
+    ["england:h_g_wells:ann-veronica", "ann-veronica-20260820-editorial.webp"],
+    ["england:aldous_huxley:brave-new-world-editorial", "brave-new-world-editorial.webp"],
+  ];
+  const evidence = [];
+  for (const [workKey, filename] of targets) {
+    const card = collection.locator(".book-archive-grid > article").filter({ has: page.locator('.archive-book-detail[data-book-key=' + JSON.stringify(workKey) + ']') });
+    // Canonical RU ordering differs from EN; the catalog initially renders
+    // thirteen cards. Browse its real next batches instead of assuming that
+    // these four verified works all belong to the first locale-specific page.
+    const more = collection.locator(".book-archive-more");
+    while (await card.count() === 0 && await more.count() > 0) {
+      const previousCount = await collection.locator(".book-archive-grid > article").count();
+      await more.click();
+      await expect.poll(() => collection.locator(".book-archive-grid > article").count()).toBeGreaterThan(previousCount);
+    }
+    await expect(card).toHaveCount(1);
+    // Exercise actual catalog lazy loading while browsing these four cards.
+    // Selected-work reveal below is checked without any test-driven scroll.
+    await card.scrollIntoViewIfNeeded();
+    const image = card.locator(".archive-book-cover img");
+    await expect.poll(() => image.evaluate(element => element.complete && element.naturalWidth > 0)).toBe(true);
+    const loaded = await image.evaluate(element => ({ pathname: new URL(element.currentSrc).pathname, naturalWidth: element.naturalWidth, naturalHeight: element.naturalHeight }));
+    expect(["/planet/brand/book-covers/" + filename, "/planet/brand/book-covers/thumbs/" + filename]).toContain(loaded.pathname);
+    evidence.push({ workKey, ...loaded, offline: true });
+  }
+  return evidence;
+}
+
+async function observeProductScrolling(page) {
+  await page.addInitScript(() => {
+    const events = [];
+    const rectangle = node => node?.getBoundingClientRect().toJSON() ?? null;
+    const geometry = () => {
+      const panel = document.querySelector(".native-planet-panel");
+      const content = document.querySelector(".native-planet-panel__content");
+      return {
+        viewport: { width: innerWidth, height: innerHeight },
+        windowScroll: { x: scrollX, y: scrollY },
+        panelScroll: panel ? { left: panel.scrollLeft, top: panel.scrollTop } : null,
+        contentScroll: content ? { left: content.scrollLeft, top: content.scrollTop } : null,
+        panel: rectangle(panel), content: rectangle(content),
+        header: rectangle(document.querySelector(".native-planet-panel__header")),
+        books: rectangle(document.getElementById("books")),
+        detail: rectangle(document.getElementById("book-archive-detail")),
+        heading: rectangle(document.querySelector("#book-archive-detail .book-detail-copy h3")),
+      };
+    };
+    const relevant = node => node instanceof Element && (node.id === "books" || node.id === "atlas"
+      || node.id === "book-archive-detail" || node.matches(".native-planet-panel, .native-planet-panel__content"));
+    const record = (kind, node, options) => {
+      if (events.length >= 200) return;
+      events.push({ kind, atMs: performance.now(), id: node.id, className: node.getAttribute("class"),
+        target: rectangle(node), options, ...geometry() });
+    };
+    for (const name of ["scrollIntoView", "scrollTo", "scroll"]) {
+      const original = Element.prototype[name];
+      if (typeof original !== "function") continue;
+      Element.prototype[name] = function (...args) {
+        const observed = relevant(this);
+        const input = args[0];
+        const options = input && typeof input === "object"
+          ? Object.fromEntries(["behavior", "block", "inline", "top", "left"]
+            .filter(key => typeof input[key] === "string" || typeof input[key] === "number")
+            .map(key => [key, input[key]])) : args.filter(value => typeof value === "number" || typeof value === "boolean");
+        if (observed) record(name + ":call", this, options);
+        // Observe actual product callbacks without changing their arguments,
+        // scheduling, return value or scrolling any target from the test.
+        const result = Reflect.apply(original, this, args);
+        if (observed) record(name + ":return", this, options);
+        return result;
+      };
+    }
+    document.addEventListener("scroll", event => {
+      if (relevant(event.target)) record("scroll:event", event.target, null);
+    }, { capture: true, passive: true });
+    window.__pwaScrollSnapshot = () => ({ events: [...events], final: geometry() });
+  });
+}
+
+async function selectedWorkInViewport(page, detail, testInfo, phase) {
+  try {
+    await expect(detail).toBeInViewport({ ratio: 0.05 });
+    await expect(detail.locator(".book-detail-copy h3")).toBeInViewport({ ratio: 0.5 });
+    await expect(page.locator(".native-planet-panel__header")).toBeInViewport({ ratio: 1 });
+  } finally {
+    const evidence = await page.evaluate(() => window.__pwaScrollSnapshot());
+    await testInfo.attach("selected-work-scroll-" + phase, { body: JSON.stringify({ localQaOnly: true, phase, ...evidence }), contentType: "application/json" });
+  }
+}
+
 test("cold offline writer biography and works use the canonical catalog", async ({ page, context, request, isMobile }) => {
   await prepare(page, request);
   await context.setOffline(true);
   try {
     await page.reload();
     await expect(page.locator("[data-pwa-authorized]")).toBeVisible();
-    await page.locator(".global-search-trigger").click();
+    await expect(page.locator(".native-planet-launch")).toBeHidden();
+    await page.locator('[data-atlas-action="toggle-search"]').click();
     // This exact canonical writer/work passes both the writer-panel and the
     // enriched book publication selectors (verifiedBookSupplements.ts).
-    await page.locator(".global-search").getByRole("searchbox").fill("Galsworthy");
-    const author = page.locator(".global-search-results button").filter({ hasText: /Голсуорси|Galsworthy/iu }).first();
+    await page.locator("#country-search").fill("Galsworthy");
+    const author = page.locator('#country-results [role="option"]').filter({ hasText: /Голсуорси|Galsworthy/iu }).first();
     await expect(author).toBeVisible();
     await author.click();
     if (isMobile) {
@@ -95,9 +221,10 @@ test("cold offline Dostoevsky enrichment preserves writer, works tab and actual 
     const savedVerification = page.locator('[data-pwa-access-verification="saved"]');
     await expect(savedVerification).toHaveText("Используется сохранённое подтверждение доступа.");
     await expect(savedVerification).toHaveAttribute("role", "status");
-    await page.locator("#atlas").scrollIntoViewIfNeeded();
     await expect(page.locator("#atlas .literary-globe")).toHaveAttribute("data-globe-webgl-context", "ready", { timeout: 45_000 });
+    await expect(page.locator(".native-planet-launch")).toBeHidden();
     await expect(page.locator("#atlas canvas")).toHaveCount(1);
+    await expect(page.locator("canvas")).toHaveCount(1);
     if (isMobile) {
       const toggle = page.locator(".atlas-country-sheet-toggle");
       if (await toggle.getAttribute("aria-expanded") === "false") await toggle.click();
@@ -120,7 +247,7 @@ test("cold offline Dostoevsky enrichment preserves writer, works tab and actual 
     }));
     expect(await original.evaluate(value => Boolean(value.detail && value.tab && value.panel && value.scene?.canvas && value.scene.renderer && value.scene.camera && value.scene.scene))).toBe(true);
     for (const locale of ["en", "ru"]) {
-      await page.locator(".site-header .interface-language-control button").filter({ hasText: locale.toUpperCase() }).click();
+      await page.locator(".atlas-immersive-chrome .interface-language-control button").filter({ hasText: locale.toUpperCase() }).click();
       await expect(page.locator("html")).toHaveAttribute("lang", locale);
       await expect(savedVerification).toHaveText(locale === "ru"
         ? "Используется сохранённое подтверждение доступа."
@@ -133,6 +260,7 @@ test("cold offline Dostoevsky enrichment preserves writer, works tab and actual 
       await expect(worksPanel).toBeVisible();
       await expect(worksPanel.getByRole("button", { name: (locale === "ru" ? "Книжный архив: " : "Book archive: ") + titles[locale], exact: true })).toBeVisible();
       await expect(page.locator("#atlas canvas")).toHaveCount(1);
+      await expect(page.locator("canvas")).toHaveCount(1);
       expect(await original.evaluate(previous => {
         const current = window.__literaryPlanetQaScenes().find(item => item.canvas === previous.scene.canvas);
         return previous.document === document && previous.detail === document.querySelector(".writer-detail")
@@ -165,23 +293,35 @@ test("cold offline Dostoevsky enrichment preserves writer, works tab and actual 
   } finally { await original?.dispose(); await context.setOffline(false); }
 });
 
-test("canonical book favorite survives cold offline reload and locale route change", async ({ page, context, request }) => {
+test("canonical book favorite survives cold offline reload and locale route change", async ({ page, context, request }, testInfo) => {
+  await observeProductScrolling(page);
   await prepare(page, request);
   await context.setOffline(true);
+  let scene;
   try {
-    await page.goto("/planet/ru/#books");
-    await expect(page.locator("[data-pwa-authorized]")).toBeVisible();
-    const catalog = page.getByRole("button", { name: "Каталог", exact: true });
-    await expect(catalog).toBeVisible({ timeout: 30_000 });
-    await catalog.click();
+    await page.goto("/planet/ru/");
+    scene = await actualGlobe(page);
+    await expect(page.locator(".native-planet-panel")).toBeHidden();
+    await page.locator('[data-atlas-action="open-collection"]').click();
+    const collection = page.locator(".native-planet-panel");
+    await expect(collection).toBeVisible();
+    await expect(collection).toHaveAttribute("role", "dialog");
+    await expect(page.locator(".interface-language-control")).toHaveCount(1);
+    await panelNoticeLayout(page);
+    const coverImages = await verifiedCoverImages(page, collection);
+    await testInfo.attach("canonical-offline-cover-images", { body: JSON.stringify({ localQaOnly: true, coverImages }), contentType: "application/json" });
     const item = page.locator(".archive-book-detail").first();
     await expect(item).toBeVisible({ timeout: 30_000 });
     await item.click();
     const detail = page.locator("#book-archive-detail");
     await expect(detail).toBeVisible();
+    await selectedWorkInViewport(page, detail, testInfo, "warm-ru");
+    await retainedGlobe(page, scene);
+    await page.screenshot({ path: testInfo.outputPath("pwa-collection-ru-book.png"), fullPage: false });
     // Opening a book updates canonical history without rendering Help. Both
     // native account links must capture this new selection when used.
-    const help = page.locator(".pwa-help");
+    const help = collection.locator(".pwa-help");
+    await expect(help).toBeVisible();
     await help.locator("summary").click();
     for (const name of ["Восстановить доступ", "Заявка на удаление аккаунта"]) {
       const accountLink = help.getByRole("link", { name, exact: true });
@@ -198,15 +338,38 @@ test("canonical book favorite survives cold offline reload and locale route chan
     const selected = new URL(page.url());
     expect(selected.searchParams.get("book")).toBeTruthy();
     const title = (await detail.locator(".book-detail-copy h3").innerText()).trim();
+    await collection.locator(".book-detail-close").click();
+    await expect(detail).toBeHidden();
+    await expect(collection).toBeVisible();
+    await retainedGlobe(page, scene);
+    await collection.getByRole("button", { name: "Вернуться к планете", exact: true }).click();
+    await expect(collection).toBeHidden();
+    await expect.poll(() => new URL(page.url()).searchParams.get("book")).toBeNull();
+    await retainedGlobe(page, scene);
+    await page.locator('[data-atlas-action="open-collection"]').click();
+    await collection.locator('.archive-book-detail[data-book-key=' + JSON.stringify(selected.searchParams.get("book")) + ']').click();
+    await expect(detail).toBeVisible();
+    await expect(detail.getByRole("button", { name: "В избранном", exact: true })).toHaveAttribute("aria-pressed", "true");
+    await retainedGlobe(page, scene);
+    await scene.dispose();
+    scene = undefined;
     await page.reload();
+    scene = await actualGlobe(page);
     await expect(page.locator("#book-archive-detail")).toBeVisible({ timeout: 30_000 });
+    await selectedWorkInViewport(page, detail, testInfo, "cold-ru");
     await expect(page.locator("#book-archive-detail .book-detail-copy h3")).toHaveText(title);
     await expect(page.locator("#book-archive-detail").getByRole("button", { name: "В избранном", exact: true })).toHaveAttribute("aria-pressed", "true");
+    await scene.dispose();
+    scene = undefined;
     await page.goto("/planet/en/" + selected.search + selected.hash);
+    scene = await actualGlobe(page);
     await expect(page.locator("html")).toHaveAttribute("lang", "en");
     await expect(page.locator("#book-archive-detail")).toBeVisible({ timeout: 30_000 });
+    await selectedWorkInViewport(page, detail, testInfo, "cold-en");
+    await panelNoticeLayout(page);
     expect(new URL(page.url()).searchParams.get("book")).toBe(selected.searchParams.get("book"));
     await expect(page.locator("#book-archive-detail .book-detail-actions button.is-saved").filter({ has: page.locator(".brand-heart-icon") })).not.toHaveCount(0);
+    await page.screenshot({ path: testInfo.outputPath("pwa-collection-en-book.png"), fullPage: false });
     await help.locator("summary").click();
     await expect(help.getByRole("heading", { name: "Reading offline", exact: true })).toBeVisible();
     await expect(help.getByRole("heading", { name: "Data on this device", exact: true })).toBeVisible();
@@ -214,12 +377,19 @@ test("canonical book favorite survives cold offline reload and locale route chan
     const restore = new URL(await help.getByRole("link", { name: "Restore access", exact: true }).getAttribute("href"));
     expect(restore.origin).toBe("https://probpera.ru");
     expect(restore.searchParams.get("returnTo")).toBe("/planet/en/" + selected.search + selected.hash);
+    await page.screenshot({ path: testInfo.outputPath("pwa-collection-en-help.png"), fullPage: false });
     const selectedBook = await page.locator("#book-archive-detail").elementHandle();
-    await page.locator(".site-header .interface-language-control button").filter({ hasText: "RU" }).click();
+    await expect(page.locator(".interface-language-control")).toHaveCount(1);
+    await collection.locator(".native-planet-panel__header .interface-language-control button").filter({ hasText: "RU" }).click();
+    await expect(page.locator("html")).toHaveAttribute("lang", "ru");
+    await expect.poll(() => new URL(page.url()).pathname).toBe("/planet/ru/");
     await expect(help.getByRole("heading", { name: "Чтение без сети", exact: true })).toBeVisible();
     await expect(help.locator("details")).toHaveAttribute("open", "");
+    await panelNoticeLayout(page);
     expect(await page.locator("#book-archive-detail").evaluate((node, previous) => node === previous, selectedBook)).toBe(true);
+    await retainedGlobe(page, scene);
     await selectedBook.dispose();
+    await page.screenshot({ path: testInfo.outputPath("pwa-collection-ru-help.png"), fullPage: false });
     const recent = page.locator("[data-recent-history]");
     await recent.locator("summary").click();
     await expect(recent.locator("[data-recent-entry]")).not.toHaveCount(0);
@@ -227,7 +397,22 @@ test("canonical book favorite survives cold offline reload and locale route chan
     await expect(recent.locator("[data-recent-entry]")).toHaveCount(0);
     await expect(recent.locator("[data-recent-clear]")).toBeDisabled();
     await expect(page.locator("#book-archive-detail").getByRole("button", { name: "В избранном", exact: true })).toHaveAttribute("aria-pressed", "true");
-  } finally { await context.setOffline(false); }
+    await collection.getByRole("button", { name: "Вернуться к планете", exact: true }).click();
+    await expect(detail).toBeHidden();
+    await expect(collection).toBeHidden();
+    await expect.poll(() => new URL(page.url()).searchParams.get("book")).toBeNull();
+    await retainedGlobe(page, scene);
+    await expect(page.locator(".interface-language-control")).toHaveCount(1);
+    await expect(page.locator(".atlas-immersive-chrome .interface-language-control")).toBeVisible();
+    await testInfo.attach("canonical-pwa-collection-evidence", { body: JSON.stringify({
+      localQaOnly: true, selectedBook: selected.searchParams.get("book"), coldOffline: true,
+      singleCanvasPerDocument: true, sameCanvasRendererCameraSceneAcrossCollectionAndLocale: true,
+      sameBookDetailAcrossLocale: true, helpOpenStateAcrossLocale: true,
+      singleSharedLanguageControl: true, closeFlows: ["detail then collection", "top return while detail open"],
+      noticeSlotAboveContent: true, selectedWorkRevealedInViewport: true, coverImages,
+    }), contentType: "application/json" });
+    await page.screenshot({ path: testInfo.outputPath("pwa-offline-collection-return.png"), fullPage: false });
+  } finally { await scene?.dispose(); await context.setOffline(false); }
 });
 
 test("recent writer opens outside the active country filter without replacing the globe", async ({ page, context, request, isMobile }) => {
@@ -245,10 +430,12 @@ test("recent writer opens outside the active country filter without replacing th
     await expect(page.locator(".writer-detail h4")).toContainText("Кадаре");
     await expect(page.locator("#atlas canvas")).toBeVisible();
     const canvas = await page.locator("#atlas canvas").elementHandle();
+    await page.locator('[data-atlas-action="toggle-filters"]').click();
     const filter = page.locator('[data-atlas-filter="nobel"]');
     await filter.click();
     await expect(filter).toHaveAttribute("aria-pressed", "true");
     await expect(page.locator('[data-atlas-country="albania"]')).toHaveCount(0);
+    await page.locator('[data-atlas-action="open-collection"]').click();
     const recent = page.locator("[data-recent-history]");
     await recent.locator("summary").click();
     const writer = recent.locator("[data-recent-entry]").filter({ hasText: "Кадаре" }).filter({ has: page.locator("span", { hasText: "Автор" }) });

@@ -1,0 +1,236 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T04:07:25.931Z",
+  "kind": "controlled-PWA-globe-root-first-working-iteration",
+  "runId": "pwa-product-root-20260908-a1",
+  "iteration": "a1",
+  "localQaOnly": true,
+  "status": "FUNCTIONAL_PASSED_WITH_UNRESOLVED_VISUAL_AND_ACCESSIBILITY_FINDINGS",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "source": {
+    "commit": "5d96c5dd9a99bb36a2a1c91c334185a998cf1e92",
+    "sourceInputsSha256": "b821b3b328f37ad36b7c742fe4a6e43be815a59b7542e0de2c8a3fd82a8c0167",
+    "artifact": ".tmp/pwa-artifacts/ce0fab4d-globe-root-before-notice-fix-20260908/artifact.json",
+    "artifactSha256": "30c290b5bbf85969b62af0ba19279d12a8f687e2f30ef8d56ab10f70c506d937",
+    "buildId": "ce0fab4d59fcafac422746a4e7487fe06b74baa689d910adb6df43900f0fc57e",
+    "snapshotsUnchangedDuringRun": true,
+    "sourceSnapshotSha256": "62389f11c45fb99a2036232af92e78754d5dd3c04cb15a1249ee9fccbeddd9b5",
+    "laterWorkingChangesCovered": false
+  },
+  "functional": {
+    "passed": 12,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "startTime": "2026-09-08T03:51:05.725Z",
+    "durationMilliseconds": 377906.204,
+    "reportedMinutes": 6.3,
+    "projects": [
+      "pwa-desktop",
+      "pwa-mobile"
+    ],
+    "casesPerProject": 6,
+    "coverage": [
+      "signed access and actual R3F identity",
+      "cold RU/EN offline country and search",
+      "known revocation and offline reload",
+      "unsigned flags cannot grant access",
+      "corrupt candidate and verified update/rollback",
+      "canonical favorite, Collection return, shared locale control, Help and history"
+    ]
+  },
+  "strictArtifactAudit": {
+    "pass": true,
+    "report": "docs/mobile/evidence/S03/globe-root-20260908/a1/strict-artifact-audit.json",
+    "counts": {
+      "files": 354,
+      "bytes": 40647677,
+      "bootstrapFiles": 308,
+      "bootstrapBytes": 19284221,
+      "sourceInputs": 959,
+      "publicSources": 283,
+      "scripts": 42
+    }
+  },
+  "findings": [
+    {
+      "id": "PWA-A1-NOTICE-GEOMETRY",
+      "status": "FAIL",
+      "evidenceType": "actual-screenshot-review",
+      "finding": "Offline cards fit the viewport but obstruct the collapsed mobile country panel and lower desktop collection/book content. Fitting inside viewport does not establish usable geometry.",
+      "screenshots": [
+        "docs/mobile/evidence/S03/globe-root-20260908/a1/screenshots/pwa-desktop-pwa-collection-en-book.png",
+        "docs/mobile/evidence/S03/globe-root-20260908/a1/screenshots/pwa-desktop-pwa-offline-en-notices.png",
+        "docs/mobile/evidence/S03/globe-root-20260908/a1/screenshots/pwa-mobile-pwa-offline-en-notices.png"
+      ]
+    },
+    {
+      "id": "PWA-A1-NOTICE-KEYBOARD",
+      "status": "FAIL",
+      "evidenceType": "source-control-flow-review",
+      "finding": "The collection dialog traps Tab while sibling PWA notices remain outside it; visible update/restore actions cannot be reached through the dialog's normal keyboard sequence.",
+      "codeReview": "docs/mobile/evidence/S03/globe-root-20260908/a1/notice-accessibility-code-review.txt",
+      "boundary": "This is a code audit finding, not an assertion of a failed keyboard browser run in a1."
+    },
+    {
+      "id": "PWA-A1-MISSING-COVERS",
+      "status": "FAIL",
+      "evidenceType": "actual-screenshot-plus-contained-asset-audit",
+      "finding": "Broken image boxes are visible for 1984, A Tale of Two Cities, Ann Veronica and Brave New World; eight canonical full/thumb paths are absent from this artifact.",
+      "evidence": "docs/mobile/evidence/S03/globe-root-20260908/missing-covers.json",
+      "screenshot": "docs/mobile/evidence/S03/globe-root-20260908/a1/screenshots/pwa-desktop-pwa-collection-en-book.png",
+      "newRightsApproval": false
+    },
+    {
+      "id": "PWA-A1-COLD-BOOK-VIEWPORT",
+      "status": "UNDER_INVESTIGATION",
+      "evidenceType": "actual-screenshot-vs-insufficient-DOM-assertion",
+      "finding": "The cold English mobile book route has a visible DOM detail but the screenshot shows the catalog header. toBeVisible alone does not prove selected-work viewport reveal; root had not changed product scroll code at this checkpoint.",
+      "screenshot": "docs/mobile/evidence/S03/globe-root-20260908/a1/screenshots/pwa-mobile-pwa-collection-en-book.png"
+    }
+  ],
+  "preservation": {
+    "reports": [
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a1/results.json",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a1/results.json",
+        "bytes": 20085,
+        "sha256": "b08a1fc0d8db76a76230905f1a02cb248c18dde8d36a3a54b06db6d1fcd186b3"
+      },
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a1/session.json",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a1/session.json",
+        "bytes": 3221,
+        "sha256": "5944338d40812dcc185f6c08b479613f0edb3a33f1e71fbcfb0d6b14f94a69f7"
+      },
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a1/source-before.json",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a1/source-before.json",
+        "bytes": 1645,
+        "sha256": "62389f11c45fb99a2036232af92e78754d5dd3c04cb15a1249ee9fccbeddd9b5"
+      },
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a1/source-after.json",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a1/source-after.json",
+        "bytes": 1645,
+        "sha256": "62389f11c45fb99a2036232af92e78754d5dd3c04cb15a1249ee9fccbeddd9b5"
+      },
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a1/strict-artifact-audit.json",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a1/strict-artifact-audit.json",
+        "bytes": 792,
+        "sha256": "3c4bf346846f4338c1e86b0e9023a6371213a78a10654af315882a420deb0fb5"
+      },
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a1/functional-and-visual-summary.json",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a1/functional-and-visual-summary.json",
+        "bytes": 2913,
+        "sha256": "ae5531fe81d6223c2dccbbbe8ff4341986fe9aabf3f587841e73ed96e9d618bc"
+      }
+    ],
+    "codeReview": {
+      "source": ".tmp/pwa-globe-root/notice-accessibility/README.txt",
+      "path": "docs/mobile/evidence/S03/globe-root-20260908/a1/notice-accessibility-code-review.txt",
+      "bytes": 2809,
+      "sha256": "799fcdbfb33971cc08ec23003598382097716771b49cf85c785320ee7c121ea5"
+    },
+    "missingCovers": {
+      "source": ".tmp/pwa-globe-root/missing-covers.json",
+      "path": "docs/mobile/evidence/S03/globe-root-20260908/missing-covers.json",
+      "bytes": 30469,
+      "sha256": "dc38aeb2c1815706755a6803acda2038c74cfeac48f446ed4556d5886220f033"
+    },
+    "screenshots": [
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a1/artifacts/offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-desktop/pwa-collection-ru-book.png",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a1/screenshots/pwa-desktop-pwa-collection-ru-book.png",
+        "bytes": 273232,
+        "sha256": "7351503eafcebfa815b89b068a4df6a5f89d2b5f9771e0c46c1451e33585f0a9",
+        "project": "pwa-desktop",
+        "locale": "ru",
+        "kind": "collection-book",
+        "exactReleaseCandidate": false
+      },
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a1/artifacts/offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-desktop/pwa-collection-en-book.png",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a1/screenshots/pwa-desktop-pwa-collection-en-book.png",
+        "bytes": 215645,
+        "sha256": "dc9b3a8399dee65b8582cec385b9ac95620757c72811e2037c407f2c5ffc8ce9",
+        "project": "pwa-desktop",
+        "locale": "en",
+        "kind": "collection-book",
+        "exactReleaseCandidate": false
+      },
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a1/artifacts/controlled-pwa-real-signed-5b137-eserve-the-actual-R3F-scene-pwa-desktop/pwa-offline-en-notices.png",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a1/screenshots/pwa-desktop-pwa-offline-en-notices.png",
+        "bytes": 941264,
+        "sha256": "96d759eb7a741e9b4199e386e4fff451cf2c7c05645b1e7cfccb67e57d1803bf",
+        "project": "pwa-desktop",
+        "locale": "en",
+        "kind": "offline-notices",
+        "exactReleaseCandidate": false
+      },
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a1/artifacts/offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-mobile/pwa-collection-ru-book.png",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a1/screenshots/pwa-mobile-pwa-collection-ru-book.png",
+        "bytes": 294085,
+        "sha256": "55e9885f9355ea485b41ec94d1962c3a0677a7df49c564997236ffd21fb4a14a",
+        "project": "pwa-mobile",
+        "locale": "ru",
+        "kind": "collection-book",
+        "exactReleaseCandidate": false
+      },
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a1/artifacts/offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-mobile/pwa-collection-en-book.png",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a1/screenshots/pwa-mobile-pwa-collection-en-book.png",
+        "bytes": 336466,
+        "sha256": "1fb011da98f285318df093dfd7f2022bb7663aa1837d867e557c1464ed910fb4",
+        "project": "pwa-mobile",
+        "locale": "en",
+        "kind": "collection-book",
+        "exactReleaseCandidate": false
+      },
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a1/artifacts/controlled-pwa-real-signed-5b137-eserve-the-actual-R3F-scene-pwa-mobile/pwa-offline-en-notices.png",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a1/screenshots/pwa-mobile-pwa-offline-en-notices.png",
+        "bytes": 2124862,
+        "sha256": "fe1bf36e759ee796cf2e305af669f3578a2a92b7dd9bbe759b4937e610ec240e",
+        "project": "pwa-mobile",
+        "locale": "en",
+        "kind": "offline-notices",
+        "exactReleaseCandidate": false
+      }
+    ],
+    "transcript": {
+      "path": "docs/mobile/evidence/S03/globe-root-20260908/a1/run-transcript.json",
+      "bytes": 9259,
+      "sha256": "cb738740d9c8e2c1f5d811d33768e63ef5f7c580d5bdcbc0806ba617a83a1f9b",
+      "original": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a1/run.log",
+      "originalBytes": 8791,
+      "originalSha256": "15751423cbd71afaaee2865f52ffffc56f3de4cd20f17bd44350c919e6370b3d"
+    },
+    "exactCopyHashesVerified": true,
+    "testsRerun": false,
+    "privateControlFilesCopied": false,
+    "signersCopied": false,
+    "tracesCopied": false,
+    "stateUpdated": false,
+    "commitCreated": false
+  },
+  "nextIteration": {
+    "id": "a2",
+    "statusAtPreservation": "SEPARATE_FOCUSED_FIX_AND_VALIDATION_WORK",
+    "resultsIncluded": false
+  },
+  "limitations": [
+    "Twelve functional PASS results do not resolve the independently observed geometry, keyboard, cover or cold-route reveal findings.",
+    "This is local Windows Chrome desktop/mobile-viewport QA with an isolated temporary signing authority, not production identity/payment/entitlement authority.",
+    "No PWA OS installation, native installation, actual Safari, physical device or exact release candidate is established by this evidence.",
+    "Bilingual interface/content work remains incomplete; draft/internal copy is not newly certified editorial or legal text, complete English artwork, or full accessibility acceptance.",
+    "Existing canonical coverRights/provenance are preserved as found. No new rights, title/name evidence, publisher-edition identity or owner approval is created.",
+    "Historical source/build identities and failures remain immutable. Later a2/shared/native source changes need their own evidence; no S03/S04/S05 or global requirement is accepted here.",
+    "No production deploy, store mutation, Submit, Release, merge or production database action was performed."
+  ]
+}

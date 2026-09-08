@@ -1,0 +1,275 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "playwright.pwa-current.config.mjs",
+      "--test-list",
+      ".tmp/pwa-globe-root/a3-test-list.txt"
+    ],
+    "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\playwright.pwa-current.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+    "failOnFlakyTests": false,
+    "forbidOnly": true,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/.tmp/pwa-cross-engine-results/pwa-product-root-20260908-a3/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "pwa-desktop",
+        "name": "pwa-desktop",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "controlled-pwa.spec.mjs",
+          "offline-catalog.spec.mjs"
+        ],
+        "timeout": 120000
+      },
+      {
+        "outputDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/.tmp/pwa-cross-engine-results/pwa-product-root-20260908-a3/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "pwa-mobile",
+        "name": "pwa-mobile",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "controlled-pwa.spec.mjs",
+          "offline-catalog.spec.mjs"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\pwa-cross-engine-results\\pwa-product-root-20260908-a3\\results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": {
+      "command": "node tests/pwa/support/cross-engine-server.mjs --serve",
+      "url": "http://127.0.0.1:4296/__pwa_qa__/ready",
+      "cwd": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\",
+      "timeout": 120000,
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "controlled-pwa.spec.mjs",
+      "file": "controlled-pwa.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "a corrupt candidate preserves the active build; explicit update and rollback select whole verified generations",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "pwa-desktop",
+              "projectName": "pwa-desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 49356,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T04:19:59.395Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "pwa-update-notice-host-evidence",
+                      "contentType": "application/json",
+                      "body": "eyJsb2NhbFFhT25seSI6dHJ1ZSwic2FtZU5vdGljZUhvc3RBbmRDb25uZWN0aXZpdHlBY3Jvc3NDb2xsZWN0aW9uIjp0cnVlLCJzYW1lQ2FudmFzUmVuZGVyZXJDYW1lcmFTY2VuZUJlZm9yZUV4cGxpY2l0QWN0aXZhdGlvbiI6dHJ1ZSwia2V5Ym9hcmRVcGRhdGVBbmRSb2xsYmFja0Zyb21Db2xsZWN0aW9uQ2xvc2UiOnRydWUsImNvcnJ1cHRlZENhbmRpZGF0ZVJlamVjdGVkIjp0cnVlLCJzZWxlY3RlZFdob2xlVmVyaWZpZWRHZW5lcmF0aW9ucyI6WyJjMDQxNjRkMWQ5NzQ1NTI4NTdjZjc1YjUzYTk1MWQwY2U1YmY5ZTliYzM4MzgxODEyNDc0ODVhMmZjM2E5N2QzIiwiOTI2YjQyOWNjNWIxZWQyOTNkZWFjYWI3MTEzYmEwZjViMjgzYjM0ZDE2NWY4OGMxNGNiOWJlNjNiODFjYzJiZCIsImMwNDE2NGQxZDk3NDU1Mjg1N2NmNzViNTNhOTUxZDBjZTViZjllOWJjMzgzODE4MTI0NzQ4NWEyZmMzYTk3ZDMiXX0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e57d1aee4d9d53cc8f3-727fedf9f4b6b32c0da7",
+          "file": "controlled-pwa.spec.mjs",
+          "line": 224,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "offline-catalog.spec.mjs",
+      "file": "offline-catalog.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "canonical book favorite survives cold offline reload and locale route change",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "pwa-desktop",
+              "projectName": "pwa-desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 43388,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T04:20:49.305Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "canonical-pwa-collection-evidence",
+                      "contentType": "application/json",
+                      "body": "eyJsb2NhbFFhT25seSI6dHJ1ZSwic2VsZWN0ZWRCb29rIjoiZW5nbGFuZDpnZW9yZ2Vfb3J3ZWxsOm5pbmV0ZWVuLWVpZ2h0eS1mb3VyIiwiY29sZE9mZmxpbmUiOnRydWUsInNpbmdsZUNhbnZhc1BlckRvY3VtZW50Ijp0cnVlLCJzYW1lQ2FudmFzUmVuZGVyZXJDYW1lcmFTY2VuZUFjcm9zc0NvbGxlY3Rpb25BbmRMb2NhbGUiOnRydWUsInNhbWVCb29rRGV0YWlsQWNyb3NzTG9jYWxlIjp0cnVlLCJoZWxwT3BlblN0YXRlQWNyb3NzTG9jYWxlIjp0cnVlLCJzaW5nbGVTaGFyZWRMYW5ndWFnZUNvbnRyb2wiOnRydWUsImNsb3NlRmxvd3MiOlsiZGV0YWlsIHRoZW4gY29sbGVjdGlvbiIsInRvcCByZXR1cm4gd2hpbGUgZGV0YWlsIG9wZW4iXSwibm90aWNlU2xvdEFib3ZlQ29udGVudCI6dHJ1ZSwic2VsZWN0ZWRXb3JrUmV2ZWFsZWRJblZpZXdwb3J0Ijp0cnVlLCJjb3ZlckltYWdlcyI6W3sid29ya0tleSI6ImVuZ2xhbmQ6Z2VvcmdlX29yd2VsbDpuaW5ldGVlbi1laWdodHktZm91ciIsInBhdGhuYW1lIjoiL3BsYW5ldC9icmFuZC9ib29rLWNvdmVycy90aHVtYnMvbmluZXRlZW4tZWlnaHR5LWZvdXItZWRpdG9yaWFsLndlYnAiLCJuYXR1cmFsV2lkdGgiOjE5MCwibmF0dXJhbEhlaWdodCI6Mjg1LCJvZmZsaW5lIjp0cnVlfSx7IndvcmtLZXkiOiJlbmdsYW5kOmNoYXJsZXNfZGlja2VuczphLXRhbGUtb2YtdHdvLWNpdGllcyIsInBhdGhuYW1lIjoiL3BsYW5ldC9icmFuZC9ib29rLWNvdmVycy90aHVtYnMvdGFsZS1vZi10d28tY2l0aWVzLWVkaXRvcmlhbC53ZWJwIiwibmF0dXJhbFdpZHRoIjoxOTAsIm5hdHVyYWxIZWlnaHQiOjI4NSwib2ZmbGluZSI6dHJ1ZX0seyJ3b3JrS2V5IjoiZW5nbGFuZDpoX2dfd2VsbHM6YW5uLXZlcm9uaWNhIiwicGF0aG5hbWUiOiIvcGxhbmV0L2JyYW5kL2Jvb2stY292ZXJzL3RodW1icy9hbm4tdmVyb25pY2EtMjAyNjA4MjAtZWRpdG9yaWFsLndlYnAiLCJuYXR1cmFsV2lkdGgiOjE5MCwibmF0dXJhbEhlaWdodCI6Mjg1LCJvZmZsaW5lIjp0cnVlfSx7IndvcmtLZXkiOiJlbmdsYW5kOmFsZG91c19odXhsZXk6YnJhdmUtbmV3LXdvcmxkLWVkaXRvcmlhbCIsInBhdGhuYW1lIjoiL3BsYW5ldC9icmFuZC9ib29rLWNvdmVycy90aHVtYnMvYnJhdmUtbmV3LXdvcmxkLWVkaXRvcmlhbC53ZWJwIiwibmF0dXJhbFdpZHRoIjoxNTIsIm5hdHVyYWxIZWlnaHQiOjIyOCwib2ZmbGluZSI6dHJ1ZX1dfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4f278828d3066cd6b78c-d54a943ed2c4a53f57ff",
+          "file": "offline-catalog.spec.mjs",
+          "line": 239,
+          "column": 1
+        },
+        {
+          "title": "canonical book favorite survives cold offline reload and locale route change",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "pwa-mobile",
+              "projectName": "pwa-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 48259,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeInViewport\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#book-archive-detail')\nExpected: in viewport\nReceived: viewport ratio 0\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeInViewport\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('#book-archive-detail')\u001b[22m\n\u001b[2m    32 × locator resolved to <article role=\"region\" tabindex=\"-1\" aria-label=\"1984\" data-cms-label=\"1984\" data-cms-entity=\"book\" id=\"book-archive-detail\" class=\"book-detail-card\" data-cms-entity-id=\"england:george_orwell:nineteen-eighty-four\" data-cms-admin-href=\"/library?country_id=england&writer_id=george_orwell&work_id=england%3Ageorge_orwell%3Anineteen-eighty-four\">…</article>\u001b[22m\n\u001b[2m       - unexpected value \"viewport ratio 0\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeInViewport\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#book-archive-detail')\nExpected: in viewport\nReceived: viewport ratio 0\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeInViewport\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('#book-archive-detail')\u001b[22m\n\u001b[2m    32 × locator resolved to <article role=\"region\" tabindex=\"-1\" aria-label=\"1984\" data-cms-label=\"1984\" data-cms-entity=\"book\" id=\"book-archive-detail\" class=\"book-detail-card\" data-cms-entity-id=\"england:george_orwell:nineteen-eighty-four\" data-cms-admin-href=\"/library?country_id=england&writer_id=george_orwell&work_id=england%3Ageorge_orwell%3Anineteen-eighty-four\">…</article>\u001b[22m\n\u001b[2m       - unexpected value \"viewport ratio 0\"\u001b[22m\n\n    at selectedWorkInViewport (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\offline-catalog.spec.mjs:88:24)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\offline-catalog.spec.mjs:300:11",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\offline-catalog.spec.mjs",
+                      "column": 24,
+                      "line": 88
+                    },
+                    "snippet": "  86 |\n  87 | async function selectedWorkInViewport(detail) {\n> 88 |   await expect(detail).toBeInViewport({ ratio: 0.05 });\n     |                        ^\n  89 |   await expect(detail.locator(\".book-detail-copy h3\")).toBeInViewport({ ratio: 0.5 });\n  90 | }\n  91 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\offline-catalog.spec.mjs",
+                        "column": 24,
+                        "line": 88
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeInViewport\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#book-archive-detail')\nExpected: in viewport\nReceived: viewport ratio 0\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeInViewport\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('#book-archive-detail')\u001b[22m\n\u001b[2m    32 × locator resolved to <article role=\"region\" tabindex=\"-1\" aria-label=\"1984\" data-cms-label=\"1984\" data-cms-entity=\"book\" id=\"book-archive-detail\" class=\"book-detail-card\" data-cms-entity-id=\"england:george_orwell:nineteen-eighty-four\" data-cms-admin-href=\"/library?country_id=england&writer_id=george_orwell&work_id=england%3Ageorge_orwell%3Anineteen-eighty-four\">…</article>\u001b[22m\n\u001b[2m       - unexpected value \"viewport ratio 0\"\u001b[22m\n\n\n  86 |\n  87 | async function selectedWorkInViewport(detail) {\n> 88 |   await expect(detail).toBeInViewport({ ratio: 0.05 });\n     |                        ^\n  89 |   await expect(detail.locator(\".book-detail-copy h3\")).toBeInViewport({ ratio: 0.5 });\n  90 | }\n  91 |\n    at selectedWorkInViewport (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\offline-catalog.spec.mjs:88:24)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\offline-catalog.spec.mjs:300:11"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T04:21:36.202Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\pwa-cross-engine-results\\pwa-product-root-20260908-a3\\artifacts\\offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-mobile\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\pwa-cross-engine-results\\pwa-product-root-20260908-a3\\artifacts\\offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-mobile\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\pwa-cross-engine-results\\pwa-product-root-20260908-a3\\artifacts\\offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-mobile\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\offline-catalog.spec.mjs",
+                    "column": 24,
+                    "line": 88
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "4f278828d3066cd6b78c-5b74660aad19bbae22af",
+          "file": "offline-catalog.spec.mjs",
+          "line": 239,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-08T04:19:34.479Z",
+    "duration": 178516.53,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

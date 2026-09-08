@@ -1,0 +1,300 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T04:29:36.362Z",
+  "kind": "controlled-PWA-globe-root-third-working-iteration",
+  "iteration": "a3",
+  "runId": "pwa-product-root-20260908-a3",
+  "status": "2_PASSED_1_REAL_MOBILE_VIEWPORT_FAILURE",
+  "localQaOnly": true,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "source": {
+    "commit": "5d96c5dd9a99bb36a2a1c91c334185a998cf1e92",
+    "buildId": "c04164d1d974552857cf75b53a951d0ce5bf9e9bc3838181247485a2fc3a97d3",
+    "sourceInputsSha256": "4ac41531ab8d91ae74e23185fd66f8cf668666009280d17f11719fc79c457543",
+    "artifactMetadataPathAtPreservation": ".tmp/pwa-artifacts/c04164d1-globe-cold-reveal-before-fix-20260908/artifact.json",
+    "artifactMetadataSha256": "cc43b021f5d342cb47812d1ddbc4c3554718b2306b86c1bc59fee7f90e3a144d",
+    "sourceSnapshotsUnchangedDuringRun": true,
+    "sourceSnapshotSha256": "4e2f47d4d2b5535bac84d56d76e997d882b32605f0cdf23c407d75fc5527d7d1",
+    "comparisonWithA2": {
+      "previousBuildId": "a93cbdd2c1a69dfeb2ceb70ce36e7b4b6849d38950207effdb10adc46bdcaf7c",
+      "currentBuildId": "c04164d1d974552857cf75b53a951d0ce5bf9e9bc3838181247485a2fc3a97d3",
+      "previousSourceInputs": 961,
+      "currentSourceInputs": 961,
+      "changedInputs": [
+        "src/host/host.css"
+      ],
+      "removedInputs": [],
+      "jsTsSourceInputs": 887,
+      "jsTsChanged": [],
+      "localQaOnly": true,
+      "note": "Source JavaScript/TypeScript equivalence only; CSS changed and each candidate has its own local signer/build identity. Bundled entry bytes are not asserted identical.",
+      "report": "docs/mobile/evidence/S03/globe-root-20260908/a3/source-comparison-a2.json"
+    },
+    "laterSourceChangesCovered": false
+  },
+  "functional": {
+    "passed": 2,
+    "failed": 1,
+    "skipped": 0,
+    "flaky": 0,
+    "startTime": "2026-09-08T04:19:34.479Z",
+    "durationMilliseconds": 178516.53,
+    "cases": [
+      {
+        "project": "pwa-desktop",
+        "title": "a corrupt candidate preserves the active build; explicit update and rollback select whole verified generations",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 49356
+          }
+        ]
+      },
+      {
+        "project": "pwa-desktop",
+        "title": "canonical book favorite survives cold offline reload and locale route change",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "durationMs": 43388
+          }
+        ]
+      },
+      {
+        "project": "pwa-mobile",
+        "title": "canonical book favorite survives cold offline reload and locale route change",
+        "status": "unexpected",
+        "results": [
+          {
+            "status": "failed",
+            "durationMs": 48259
+          }
+        ]
+      }
+    ]
+  },
+  "strictArtifactAudit": {
+    "pass": true,
+    "report": "docs/mobile/evidence/S03/globe-root-20260908/a3/strict-artifact-audit.json",
+    "counts": {
+      "files": 362,
+      "bytes": 41417340,
+      "bootstrapFiles": 316,
+      "bootstrapBytes": 20046574,
+      "sourceInputs": 961,
+      "publicSources": 291,
+      "scripts": 42
+    }
+  },
+  "desktopWorkingEvidence": {
+    "source": "docs/mobile/evidence/S03/globe-root-20260908/a3/functional-and-visual-summary.json",
+    "canonicalCollection": [
+      {
+        "project": "pwa-desktop",
+        "localQaOnly": true,
+        "selectedBook": "england:george_orwell:nineteen-eighty-four",
+        "coldOffline": true,
+        "singleCanvasPerDocument": true,
+        "sameCanvasRendererCameraSceneAcrossCollectionAndLocale": true,
+        "sameBookDetailAcrossLocale": true,
+        "helpOpenStateAcrossLocale": true,
+        "singleSharedLanguageControl": true,
+        "closeFlows": [
+          "detail then collection",
+          "top return while detail open"
+        ],
+        "noticeSlotAboveContent": true,
+        "selectedWorkRevealedInViewport": true,
+        "coverImages": [
+          {
+            "workKey": "england:george_orwell:nineteen-eighty-four",
+            "pathname": "/planet/brand/book-covers/thumbs/nineteen-eighty-four-editorial.webp",
+            "naturalWidth": 190,
+            "naturalHeight": 285,
+            "offline": true
+          },
+          {
+            "workKey": "england:charles_dickens:a-tale-of-two-cities",
+            "pathname": "/planet/brand/book-covers/thumbs/tale-of-two-cities-editorial.webp",
+            "naturalWidth": 190,
+            "naturalHeight": 285,
+            "offline": true
+          },
+          {
+            "workKey": "england:h_g_wells:ann-veronica",
+            "pathname": "/planet/brand/book-covers/thumbs/ann-veronica-20260820-editorial.webp",
+            "naturalWidth": 190,
+            "naturalHeight": 285,
+            "offline": true
+          },
+          {
+            "workKey": "england:aldous_huxley:brave-new-world-editorial",
+            "pathname": "/planet/brand/book-covers/thumbs/brave-new-world-editorial.webp",
+            "naturalWidth": 152,
+            "naturalHeight": 228,
+            "offline": true
+          }
+        ]
+      }
+    ],
+    "keyboardUpdateRollback": "The focused desktop update/rollback scenario passed with real-scene readiness maintained."
+  },
+  "realRemainingFailure": {
+    "status": "FAIL",
+    "scope": "Mobile cold RU reload selected-work viewport",
+    "selectedWorkKey": "england:george_orwell:nineteen-eighty-four",
+    "observed": "Selected detail DOM and saved favorite exist, but intersection ratio remained0 for15seconds/32observations; screenshot shows catalog heading/count/search instead of the selected work.",
+    "noTestDrivenDetailScroll": true,
+    "screenshot": "docs/mobile/evidence/S03/globe-root-20260908/a3/screenshots/pwa-mobile-test-failed-1.png",
+    "warmDetailScreenshot": "docs/mobile/evidence/S03/globe-root-20260908/a3/screenshots/pwa-mobile-pwa-collection-ru-book.png",
+    "diagnosisBoundary": "This is a real visible-viewport failure. Competing homepage #books deferred hash scroll is a hypothesis inferred by root; a3 did not instrument callback ordering.",
+    "laterMobileGates": "English cold reveal and final RU/EN retention assertions were not reached by the failed mobile case."
+  },
+  "visualReviewAsRecorded": {
+    "reviewed": [
+      "artifacts/offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-desktop/pwa-collection-en-book.png",
+      "artifacts/offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-desktop/pwa-collection-ru-help.png",
+      "artifacts/offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-mobile/pwa-collection-ru-book.png",
+      "artifacts/offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-mobile/test-failed-1.png"
+    ],
+    "observations": [
+      "Desktop EN selected detail and title visible; four exact editorial images now loaded, no missing-image boxes in observed cards.",
+      "Desktop RU Help readable with shared language control and notice above content.",
+      "Mobile warm RU detail visible, but Collection header is outside screenshot; investigate scroll containment together with cold reveal.",
+      "Mobile cold RU shows catalog heading/count/search, not selected work."
+    ],
+    "limits": [
+      "No numerical text-contrast audit.",
+      "Mobile favorite did not reach EN cold reveal and final RU/EN preservation gates."
+    ]
+  },
+  "nextIteration": {
+    "id": "a4",
+    "resultsIncluded": false,
+    "scope": "Root is fixing product scroll ownership, then rerunning only the previously failed mobile scenario. Do not reclassify historical a3 as green."
+  },
+  "preservation": {
+    "reports": [
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a3/results.json",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a3/results.json",
+        "bytes": 15933,
+        "sha256": "4562517bec74e9e273b066af36f9e4882bfd71317b0c04904e8d85e21394bb7a"
+      },
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a3/session.json",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a3/session.json",
+        "bytes": 3221,
+        "sha256": "b250a44d5417e99bb62e458962bf33d3c5bdf223eeaa7cdfd83815922bdd4437"
+      },
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a3/source-before.json",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a3/source-before.json",
+        "bytes": 2069,
+        "sha256": "4e2f47d4d2b5535bac84d56d76e997d882b32605f0cdf23c407d75fc5527d7d1"
+      },
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a3/source-after.json",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a3/source-after.json",
+        "bytes": 2069,
+        "sha256": "4e2f47d4d2b5535bac84d56d76e997d882b32605f0cdf23c407d75fc5527d7d1"
+      },
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a3/source-comparison-a2.json",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a3/source-comparison-a2.json",
+        "bytes": 565,
+        "sha256": "9f866bb65945d343bc4ad3f6e6e86bbfd848ad1e78ffeb37532731be6a83cb62"
+      },
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a3/strict-artifact-audit.json",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a3/strict-artifact-audit.json",
+        "bytes": 792,
+        "sha256": "b6fe7f83b002c5224f9dee727687b889dff4c37e1d3572434df1cbc5a214e5a8"
+      },
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a3/functional-and-visual-summary.json",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a3/functional-and-visual-summary.json",
+        "bytes": 5855,
+        "sha256": "1431a89646957245a5aaeeb8d46118e5f3de06feea753f6c83cedf8863895893"
+      }
+    ],
+    "screenshots": [
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a3/artifacts/offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-desktop/pwa-collection-en-book.png",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a3/screenshots/pwa-desktop-pwa-collection-en-book.png",
+        "bytes": 353762,
+        "sha256": "d1d9d55cbd7988edf03b3c316aafa5ab4b298519cd3d25ad869424f9c9269505",
+        "project": "pwa-desktop",
+        "kind": "desktop-cold-English-selected-work-and-covers",
+        "actualBrowserCapture": true,
+        "exactReleaseCandidate": false
+      },
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a3/artifacts/offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-desktop/pwa-collection-ru-help.png",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a3/screenshots/pwa-desktop-pwa-collection-ru-help.png",
+        "bytes": 147562,
+        "sha256": "fb8f377be6e1499290b63cd12407c8d7900a59b1b6fb322159bb9f5d9f37e5e0",
+        "project": "pwa-desktop",
+        "kind": "desktop-Russian-help",
+        "actualBrowserCapture": true,
+        "exactReleaseCandidate": false
+      },
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a3/artifacts/controlled-pwa-a-corrupt-c-5da21--whole-verified-generations-pwa-desktop/pwa-collection-keyboard-rollback.png",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a3/screenshots/pwa-desktop-pwa-collection-keyboard-rollback.png",
+        "bytes": 636074,
+        "sha256": "f47106ad83ebbada000966e9891c3ca072620b83988271ac9dc2ea460bed496f",
+        "project": "pwa-desktop",
+        "kind": "desktop-keyboard-rollback",
+        "actualBrowserCapture": true,
+        "exactReleaseCandidate": false
+      },
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a3/artifacts/offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-mobile/pwa-collection-ru-book.png",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a3/screenshots/pwa-mobile-pwa-collection-ru-book.png",
+        "bytes": 506628,
+        "sha256": "40967d5f07fb5269f4f90dae62d2369e8454cc47791ed63bba5c774afbf6f01f",
+        "project": "pwa-mobile",
+        "kind": "mobile-warm-Russian-detail",
+        "actualBrowserCapture": true,
+        "exactReleaseCandidate": false
+      },
+      {
+        "source": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a3/artifacts/offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-mobile/test-failed-1.png",
+        "path": "docs/mobile/evidence/S03/globe-root-20260908/a3/screenshots/pwa-mobile-test-failed-1.png",
+        "bytes": 349165,
+        "sha256": "56c051d64fd1f88edbd8bc41b5443a3983f0d3194ea95fb3d6037e6d2f62a837",
+        "project": "pwa-mobile",
+        "kind": "mobile-real-cold-reload-viewport-failure",
+        "actualBrowserCapture": true,
+        "exactReleaseCandidate": false
+      }
+    ],
+    "transcript": {
+      "path": "docs/mobile/evidence/S03/globe-root-20260908/a3/run-transcript.json",
+      "bytes": 11361,
+      "sha256": "afbcea1b1b99bf108c3f4bc00a8da1dfffc2ac38f27dd245be35037a24e896e2",
+      "original": ".tmp/pwa-cross-engine-results/pwa-product-root-20260908-a3/run.log",
+      "originalBytes": 10776,
+      "originalSha256": "387581e506b70a80f4f3097281756c5e779682c8febbd6eaa31530f71469772f"
+    },
+    "exactCopyHashesVerified": true,
+    "testsRerun": false,
+    "privateControlFilesCopied": false,
+    "signersCopied": false,
+    "tracesCopied": false,
+    "sourceChanged": false,
+    "stateUpdated": false,
+    "commitCreated": false
+  },
+  "limitations": [
+    "Two desktop passes do not resolve the real mobile cold-reload viewport failure. No full green run or complete mobile bilingual flow is claimed.",
+    "Four exact editorial cover paths and loaded image dimensions were observed offline in the completed desktop scenario; this is not complete catalog/right/content validation.",
+    "Actual local Chrome captures are not exact-RC screenshots, installed PWA/native applications, Safari, physical-device or complete accessibility/contrast evidence.",
+    "Existing draft/editorial/legal/rights/translation boundaries persist. No new authority, approval, stage/global requirement acceptance or production signing is implied.",
+    "No production deploy, store mutation, Submit, Release, merge or production database action was performed."
+  ]
+}

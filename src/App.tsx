@@ -9,6 +9,7 @@ import {
   useState,
   type CSSProperties,
   type HTMLAttributes,
+  type ReactNode,
 } from "react";
 
 import ArticleEngagement from "./community/ArticleEngagement";
@@ -18,6 +19,7 @@ import { isControlledWebEdition } from "./platform/distribution";
 import { usePlatformServices } from "./platform/PlatformServices";
 import NativePlanetLaunch from "./host/NativePlanetLaunch";
 import NativePlanetPanel from "./host/NativePlanetPanel";
+import { ProductNoticeSlot } from "./host/ProductNoticeHost";
 import {
   type NativeNavigationContext,
   type NativeNavigationIntent,
@@ -537,13 +539,13 @@ function safeHomepageHref(value: string, fallback: string) {
   return safePublicHref(value, fallback);
 }
 
-export default function App() {
+export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
   const { user } = useAuth();
   const { record: recordRecent } = useRecentHistory();
   const { language, setLanguage, t, countryName, number } = useInterfaceLanguage();
   const platformServices = usePlatformServices();
-  const isNativeHost = platformServices.kind !== "web";
-  const [nativeCollectionOpen, setNativeCollectionOpen] = useState(() => isNativeHost && addressRequestsCollection());
+  const isPlanetApplication = isControlledWebEdition || platformServices.kind !== "web";
+  const [nativeCollectionOpen, setNativeCollectionOpen] = useState(() => isPlanetApplication && addressRequestsCollection());
   const nativeGlobeRootRef = useRef<HTMLElement>(null);
   const nativeReturnRequestedRef = useRef(false);
   const closeNativeCollection = useCallback(() => {
@@ -657,7 +659,7 @@ export default function App() {
     return true;
   }, [largestArchivesOpen]);
   const atlasExperience = useAtlasExperience({
-    applicationRoot: isNativeHost,
+    applicationRoot: isPlanetApplication,
     urlSelection: {
       filter: atlasFilter,
       countryId: selectedCountry?.id ?? null,
@@ -725,7 +727,9 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    if (directArticleRoute || !window.location.hash) return undefined;
+    // Product panels reveal their selected item inside their own scroll area.
+    // A late archive load must not scroll a retained reader back to #books.
+    if (isPlanetApplication || directArticleRoute || !window.location.hash) return undefined;
     let frame = 0;
     let attempts = 0;
     const scrollWhenReady = () => {
@@ -735,7 +739,7 @@ export default function App() {
     };
     frame = window.requestAnimationFrame(scrollWhenReady);
     return () => window.cancelAnimationFrame(frame);
-  }, [countryArchive.length, directArticleRoute]);
+  }, [countryArchive.length, directArticleRoute, isPlanetApplication]);
 
   const cancelSectionsMenuClose = useCallback(() => {
     if (sectionsMenuCloseTimer.current !== null) {
@@ -824,6 +828,7 @@ export default function App() {
       if (!addressRequestsBook()) return;
       requestBookRuntime();
       setBookLoadRequested(true);
+      if (isPlanetApplication) return;
       window.requestAnimationFrame(() =>
         document.getElementById("books")?.scrollIntoView({
           behavior: "auto",
@@ -838,7 +843,7 @@ export default function App() {
       window.removeEventListener("popstate", requestBookFromAddress);
       window.removeEventListener("probpera:navigation", requestBookFromAddress);
     };
-  }, [requestBookRuntime]);
+  }, [isPlanetApplication, requestBookRuntime]);
 
   useEffect(() => {
     if (directArticleRoute || !archiveDataRequested) return undefined;
@@ -911,7 +916,7 @@ export default function App() {
       const target = event.target as HTMLElement | null;
       if (
         event.key !== "/" ||
-        (isNativeHost && (nativeCollectionOpen || nativeGlobeRootRef.current?.hasAttribute("inert"))) ||
+        (isPlanetApplication && (nativeCollectionOpen || nativeGlobeRootRef.current?.hasAttribute("inert"))) ||
         target?.matches("input, textarea, select, [contenteditable='true']")
       ) {
         return;
@@ -928,7 +933,7 @@ export default function App() {
     };
     window.addEventListener("keydown", openSearch);
     return () => window.removeEventListener("keydown", openSearch);
-  }, [atlasExperienceDispatch, atlasImmersive, isNativeHost, nativeCollectionOpen, openGlobalSearch]);
+  }, [atlasExperienceDispatch, atlasImmersive, isPlanetApplication, nativeCollectionOpen, openGlobalSearch]);
 
   const archiveStatistics = useMemo(
     () => calculateLightweightArchiveOverview(countryArchive),
@@ -1333,8 +1338,8 @@ export default function App() {
     setBookLoadRequested(true);
     requestedBookReturnFocusRef.current = returnFocus;
     setRequestedBook(book);
-    if (isNativeHost) { nativeReturnRequestedRef.current = false; setNativeCollectionOpen(true); }
-  }, [cancelNativeNavigation, isNativeHost, requestBookRuntime]);
+    if (isPlanetApplication) { nativeReturnRequestedRef.current = false; setNativeCollectionOpen(true); }
+  }, [cancelNativeNavigation, isPlanetApplication, requestBookRuntime]);
 
   const retryBookArchive = useCallback(() => {
     requestBookRuntime();
@@ -1351,7 +1356,7 @@ export default function App() {
 
   const openResolvedWriterWork = useCallback(
     (book: BookArchiveEntry, returnFocus: HTMLElement | null) => {
-      if (atlasImmersive && !isNativeHost) {
+      if (atlasImmersive && !isPlanetApplication) {
         pendingImmersiveBookRef.current = book;
         pendingImmersiveBookFocusRef.current = returnFocus;
         atlasExperience.requestExit("programmatic");
@@ -1359,7 +1364,7 @@ export default function App() {
       }
       openBook(book, returnFocus);
     },
-    [atlasExperience, atlasImmersive, isNativeHost, openBook]
+    [atlasExperience, atlasImmersive, isPlanetApplication, openBook]
   );
 
   const openWriterWork = useCallback(
@@ -1575,7 +1580,7 @@ export default function App() {
     (result: AtlasSearchResult) => {
       if (result.type === "book") {
         selectBookWriterAndCountry(result.book, false);
-        if (atlasImmersive && !isNativeHost) {
+        if (atlasImmersive && !isPlanetApplication) {
           pendingImmersiveBookRef.current = result.book;
           pendingImmersiveBookFocusRef.current = null;
           atlasExperience.requestExit("programmatic");
@@ -1594,7 +1599,7 @@ export default function App() {
     [
       atlasExperience,
       atlasImmersive,
-      isNativeHost,
+      isPlanetApplication,
       openBook,
       selectBookWriterAndCountry,
       selectCountry,
@@ -1854,7 +1859,7 @@ export default function App() {
       const state = next.localeOnly ? window.history.state : nativeNavigationEntryState(window.history.state);
       window.history[next.localeOnly ? "replaceState" : "pushState"](state, "", next.relative);
     }
-    if (isNativeHost && !next.localeOnly) {
+    if (isPlanetApplication && !next.localeOnly) {
       nativeReturnRequestedRef.current = false;
       setNativeCollectionOpen(Boolean(intent.bookKey || intent.shelfId || intent.section === "books"));
     }
@@ -1862,7 +1867,7 @@ export default function App() {
     // A locale-only link must never run atlas/book restoration or clear a search.
     if (!next.localeOnly) window.dispatchEvent(new PopStateEvent("popstate", { state: window.history.state }));
     window.dispatchEvent(new Event("probpera:navigation"));
-    if (intent.section || intent.bookKey) {
+    if (!isPlanetApplication && (intent.section || intent.bookKey)) {
       window.requestAnimationFrame(() => scrollToDeferredHashTarget(window.location.hash));
     }
     return "applied";
@@ -1883,7 +1888,7 @@ export default function App() {
     handleBack: () => {
       if (globalSearchOpen) { closeGlobalSearch(); return "handled"; }
       if (communityOpen) { closeCommunity(); return "handled"; }
-      if ((!isNativeHost || nativeCollectionOpen) && nativeBookBackRef.current?.()) return "handled";
+      if ((!isPlanetApplication || nativeCollectionOpen) && nativeBookBackRef.current?.()) return "handled";
       if (nativeCollectionOpen) { closeNativeCollection(); return "handled"; }
       if (closeLargestArchivesOnEscape()) return "handled";
       if (atlasSearchOpen) {
@@ -1896,8 +1901,8 @@ export default function App() {
         window.requestAnimationFrame(() => atlasExperience.filtersButtonRef.current?.focus({ preventScroll: true }));
         return "handled";
       }
-      if (isNativeHost && selectedCountry) { closeCountry(); return "handled"; }
-      if (isNativeHost) return "handled";
+      if (isPlanetApplication && selectedCountry) { closeCountry(); return "handled"; }
+      if (isPlanetApplication) return "handled";
       if (atlasImmersive || atlasExperience.state.transition === "preparing") {
         atlasExperience.requestExit("escape");
         return "handled";
@@ -1911,7 +1916,7 @@ export default function App() {
   }, [directArticleRoute, platformServices.navigation, requestBookRuntime]);
 
   useEffect(() => {
-    if (!isNativeHost) return;
+    if (!isPlanetApplication) return;
     const restorePanel = () => {
       if (nativeReturnRequestedRef.current || !addressRequestsCollection()) return;
       requestBookRuntime();
@@ -1921,10 +1926,10 @@ export default function App() {
     restorePanel();
     window.addEventListener("popstate", restorePanel);
     return () => window.removeEventListener("popstate", restorePanel);
-  }, [isNativeHost, requestBookRuntime]);
+  }, [isPlanetApplication, requestBookRuntime]);
 
   useEffect(() => {
-    if (!isNativeHost || nativeCollectionOpen) return;
+    if (!isPlanetApplication || nativeCollectionOpen) return;
     const escape = (event: KeyboardEvent) => {
       if (event.key !== "Escape" || event.defaultPrevented || nativeGlobeRootRef.current?.hasAttribute("inert")) return;
       if (closeLargestArchivesOnEscape()) { event.preventDefault(); return; }
@@ -1940,7 +1945,7 @@ export default function App() {
     };
     window.addEventListener("keydown", escape);
     return () => window.removeEventListener("keydown", escape);
-  }, [isNativeHost, nativeCollectionOpen, closeLargestArchivesOnEscape, atlasSearchOpen,
+  }, [isPlanetApplication, nativeCollectionOpen, closeLargestArchivesOnEscape, atlasSearchOpen,
     closeAtlasSearch, atlasExperience.searchButtonRef, atlasExperience.filtersButtonRef,
     atlasExperience.state.filtersOpen, atlasExperienceDispatch, selectedCountry, closeCountry]);
 
@@ -2125,7 +2130,8 @@ export default function App() {
               >
                 <AtlasExperienceChrome
                   immersive={atlasImmersive}
-                  applicationRoot={isNativeHost}
+                  applicationRoot={isPlanetApplication}
+                  languageControl={isPlanetApplication && nativeCollectionOpen ? null : undefined}
                   onCollection={() => { cancelNativeNavigation(); requestBookRuntime(); setBookLoadRequested(true); setNativeCollectionOpen(true); }}
                   searchOpen={atlasSearchOpen}
                   filtersOpen={atlasExperience.state.filtersOpen}
@@ -2680,7 +2686,7 @@ export default function App() {
           bookStatus={bookRuntimeStatus}
           onLoad={() => { requestArchiveData(); requestBookRuntime(); }}
           onRetry={() => { retryArchiveData(); retryBookArchive(); }}
-          onOpenWriter={(country, writer) => { selectCountry(country, true, writer, undefined, "all"); if (isNativeHost) closeNativeCollection(); }}
+          onOpenWriter={(country, writer) => { selectCountry(country, true, writer, undefined, "all"); if (isPlanetApplication) closeNativeCollection(); }}
           onOpenWork={(book, returnFocus) => openBook(book, returnFocus)}
         />
         <DeferredBookArchive
@@ -2697,19 +2703,20 @@ export default function App() {
           requestedBook={requestedBook}
           requestedBookReturnFocus={requestedBookReturnFocusRef.current}
           onRequestedBookHandled={handleRequestedBookHandled}
-          registerNativeBack={platformServices.navigation?.subscribeBack ? registerNativeBookBack : undefined}
-          nativePanelActive={!isNativeHost || nativeCollectionOpen}
-          embeddedInPlanet={isNativeHost}
-          onNativeDetailClosed={isNativeHost ? finishNativeDetailClose : undefined}
+          registerNativeBack={isPlanetApplication || platformServices.navigation?.subscribeBack ? registerNativeBookBack : undefined}
+          nativePanelActive={!isPlanetApplication || nativeCollectionOpen}
+          embeddedInPlanet={isPlanetApplication}
+          onNativeDetailClosed={isPlanetApplication ? finishNativeDetailClose : undefined}
           onBookSelect={selectBookWriterAndCountry}
         />
   </>);
 
-  if (isNativeHost) {
+  if (isPlanetApplication) {
     return <div className="magazine-app native-planet-app" data-typography-component="magazine" data-planet-ready={String(globeViewSample.revision > 0)}>
-      <main ref={nativeGlobeRootRef}>{atlasContent}</main>
+      <main ref={nativeGlobeRootRef}>{atlasContent}<ProductNoticeSlot placement="root" reserveSpaceRef={nativeGlobeRootRef} /></main>
       <NativePlanetPanel open={nativeCollectionOpen} onClose={requestReturnToPlanet} onBack={handleNativePanelBack}
         globeRef={nativeGlobeRootRef} returnFocusRef={atlasExperience.closeButtonRef}>
+        {productHelp}
         {collectionContent}
       </NativePlanetPanel>
       <NativePlanetLaunch ready={globeViewSample.revision > 0} failed={archiveDataStatus === "error"} />

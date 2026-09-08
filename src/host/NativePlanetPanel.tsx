@@ -2,7 +2,9 @@ import { useEffect, useRef, type ReactNode, type RefObject } from "react";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import BrandCloseIcon from "../components/BrandCloseIcon";
 import IconButton from "../ui/IconButton";
+import InterfaceLanguageControl from "../components/InterfaceLanguageControl";
 import { acquireHostInert } from "./hostInert";
+import { ProductNoticeSlot } from "./ProductNoticeHost";
 
 type Props = {
   open: boolean;
@@ -52,10 +54,12 @@ export default function NativePlanetPanel({ open, onClose, onBack, globeRef, ret
     role={open ? "dialog" : undefined} aria-modal={open ? true : undefined} aria-labelledby="native-collection-title">
     <header className="native-planet-panel__header">
       <h1 id="native-collection-title">{language === "ru" ? "Коллекция" : "Collection"}</h1>
+      {open && <InterfaceLanguageControl />}
       <IconButton ref={closeRef} icon={<BrandCloseIcon />} size="md"
         aria-label={language === "ru" ? "Вернуться к планете" : "Return to the planet"}
         onClick={onClose} />
     </header>
+    <ProductNoticeSlot placement="panel" active={open} />
     <div className="native-planet-panel__content">{children}</div>
   </section>;
 }

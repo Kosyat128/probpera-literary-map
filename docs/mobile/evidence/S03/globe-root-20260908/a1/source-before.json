@@ -1,0 +1,50 @@
+[
+  {
+    "path": "src/App.tsx",
+    "sha256": "f7fe6ff0d9a1ebbaa0aafb9b49c309c360616fbb0ea014af93984cb22545ce99"
+  },
+  {
+    "path": "src/host/host.css",
+    "sha256": "4ae2206b94b66d11788e629776e948ce6ce2832f434a5eb0eb376cac7765cb44"
+  },
+  {
+    "path": "src/host/NativePlanetPanel.tsx",
+    "sha256": "94e5b13e0d38d0c94ff329d104a490813589349c596210e13fbadcfff0a8d9bf"
+  },
+  {
+    "path": "src/components/AtlasExperienceChrome.tsx",
+    "sha256": "ae4df4122ca217f3b885016424c1e5a4c95408434ad11c69457ec2e797cce292"
+  },
+  {
+    "path": "src/pwa/PwaEdition.tsx",
+    "sha256": "7d02ac0e9ac3e51c9a9afcacce3558cdc40749effc85d7304999d5ba91f396c4"
+  },
+  {
+    "path": "src/pwa/PwaHelp.tsx",
+    "sha256": "0bdb7c59afbc3049529ef714ff7fecda8172565cf6f59683139653c347e529d0"
+  },
+  {
+    "path": "src/pwa/pwa.css",
+    "sha256": "125a8174c6072ecaa17453cd1af1f82bb1dfa7cc8edba59e464a111db5345a94"
+  },
+  {
+    "path": "scripts/mobile/build-pwa.mjs",
+    "sha256": "e68c10b493ac0b4ea88a3bdfc7fe664e05278c635c66322de16e9e7fecb0861f"
+  },
+  {
+    "path": "scripts/mobile/native-base-assets.json",
+    "sha256": "421cbe68e393355e8a44e07de87ecaad9112dc383951419d2e77d2a63fd30add"
+  },
+  {
+    "path": "tests/pwa/controlled-pwa.spec.mjs",
+    "sha256": "26fc58d1fa48723f955ff025afa86a75af0cb2611bed817bccbd9ba7aa1661e8"
+  },
+  {
+    "path": "tests/pwa/offline-catalog.spec.mjs",
+    "sha256": "a129a9d619c666862db9a987de82d06e4a5a57e6af4311c73d74692bde0a11ae"
+  },
+  {
+    "path": "playwright.pwa-current.config.mjs",
+    "sha256": "a1dd4f348dff085913e9b3241902bf1617b9fe170e49cbd88565a74f054c7749"
+  }
+]

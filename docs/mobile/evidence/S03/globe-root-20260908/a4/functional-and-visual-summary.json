@@ -1,0 +1,165 @@
+{
+  "runId": "pwa-product-root-20260908-a4",
+  "localQaOnly": true,
+  "buildId": "1879dc4261e3b11ab5bfb4f5050fe0181f8165e301a46abb0f80173bb2011a65",
+  "sourceCommit": "5d96c5dd9a99bb36a2a1c91c334185a998cf1e92",
+  "localQaAuthority": true,
+  "functional": {
+    "passed": 0,
+    "failed": 1,
+    "durationMs": 84315.754,
+    "changedSourceSnapshots": []
+  },
+  "strictArtifactAudit": {
+    "path": "strict-artifact-audit.json",
+    "pass": true,
+    "counts": {
+      "files": 362,
+      "bytes": 41416940,
+      "bootstrapFiles": 316,
+      "bootstrapBytes": 20046174,
+      "sourceInputs": 961,
+      "publicSources": 291,
+      "scripts": 42
+    },
+    "findings": []
+  },
+  "runtimeCoverEvidence": "canonical-offline-cover-images.json",
+  "scrollEvidence": [
+    "selected-work-scroll-warm-ru.json",
+    "selected-work-scroll-cold-ru.json"
+  ],
+  "remainingFailure": {
+    "phase": "cold RU reload, before EN navigation",
+    "workKey": "england:george_orwell:nineteen-eighty-four",
+    "gate": "selected-work viewport ratio 0 for15sec",
+    "observedCalls": [
+      {
+        "atMs": 597,
+        "kind": "scrollIntoView:call",
+        "id": "books",
+        "className": "book-archive-section stage5-loading-shell",
+        "options": {
+          "behavior": "auto",
+          "block": "start"
+        },
+        "detail": null
+      },
+      {
+        "atMs": 2374.5,
+        "kind": "scrollTo:call",
+        "id": "",
+        "className": "native-planet-panel__content",
+        "options": {
+          "behavior": "smooth",
+          "top": 20.4375
+        },
+        "detail": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      }
+    ],
+    "finalGeometry": {
+      "viewport": {
+        "width": 412,
+        "height": 839
+      },
+      "windowScroll": {
+        "x": 0,
+        "y": 0
+      },
+      "panelScroll": {
+        "left": 0,
+        "top": 0
+      },
+      "contentScroll": {
+        "left": 0,
+        "top": 20
+      },
+      "panel": {
+        "x": 0,
+        "y": 0,
+        "width": 412,
+        "height": 839,
+        "top": 0,
+        "right": 412,
+        "bottom": 839,
+        "left": 0
+      },
+      "content": {
+        "x": 0,
+        "y": 158.5625,
+        "width": 412,
+        "height": 680.4375,
+        "top": 158.5625,
+        "right": 412,
+        "bottom": 839,
+        "left": 0
+      },
+      "header": {
+        "x": 0,
+        "y": 0,
+        "width": 412,
+        "height": 75,
+        "top": 0,
+        "right": 412,
+        "bottom": 75,
+        "left": 0
+      },
+      "books": {
+        "x": 0,
+        "y": 317.59375,
+        "width": 412,
+        "height": 1276.90625,
+        "top": 317.59375,
+        "right": 412,
+        "bottom": 1594.5,
+        "left": 0
+      },
+      "detail": {
+        "x": 31.359375,
+        "y": 1227.34375,
+        "width": 349.28125,
+        "height": 173.15625,
+        "top": 1227.34375,
+        "right": 380.640625,
+        "bottom": 1400.5,
+        "left": 31.359375
+      },
+      "heading": {
+        "x": 31.359375,
+        "y": 1268.234375,
+        "width": 345.28125,
+        "height": 28.796875,
+        "top": 1268.234375,
+        "right": 376.640625,
+        "bottom": 1297.03125,
+        "left": 31.359375
+      }
+    },
+    "diagnosis": "Native panel scroll containment keeps header at y0. Reveal computes target while mobile article has zero layout size in collapsed state, then never runs for visible half state. Separate address callback still scrolls #books loading shell.",
+    "sourcePointers": [
+      "src/styles/stage5-book-shelf.css:1804",
+      "src/components/BookArchiveSection.tsx:1742",
+      "src/components/BookArchiveSection.tsx:1988",
+      "src/App.tsx:825"
+    ]
+  },
+  "visualReview": {
+    "reviewed": "artifacts/offline-catalog-canonical--49409-oad-and-locale-route-change-pwa-mobile/pwa-collection-ru-book.png",
+    "finding": "Warm selected work and persistent header both visible; cold detail remains entirely below viewport."
+  },
+  "limits": [
+    "No test-driven detail scrolling; telemetry calls original native methods with unchanged arguments.",
+    "Cold EN and final mobile locale/favorite return gates not reached.",
+    "No production release or physical-device claim."
+  ],
+  "releaseReady": false
+}
