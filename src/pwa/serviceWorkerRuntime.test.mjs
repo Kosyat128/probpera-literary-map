@@ -15,6 +15,7 @@ function memoryCaches() {
     putFailure: undefined,
     keys: vi.fn(async () => [...stores.keys()]),
     delete: vi.fn(async (name) => stores.delete(name)),
+    match: vi.fn(async (request, options) => stores.get(options.cacheName)?.match(request)),
     open: vi.fn(async (name) => {
       if (!stores.has(name)) {
         const entries = new Map();
@@ -108,6 +109,143 @@ async function rollbackFixture() {
   const rollback = (patch = {}) => current.send({ type: "PLANET_ACTIVATE_ROLLBACK", requestId: "explicit-rollback", engineBuildId: current.config.buildId, targetBuildId: prior.config.buildId, ...patch });
   return { prior, current, caches, rollback };
 }
+
+function readinessRequest(env, patch = {}) {
+  return { type: "PLANET_OFFLINE_READINESS", requestId: "offline-check", engineBuildId: env.config.buildId, activeBuildId: env.config.buildId, ...patch };
+}
+function clearReadinessEffects(env) {
+  for (const mock of [env.worker.fetch, env.worker.skipWaiting, env.worker.clients.claim, env.caches.open, env.caches.delete, env.caches.match]) mock.mockClear();
+  for (const cache of env.caches.stores.values()) { cache.put.mockClear(); cache.delete.mockClear(); }
+  env.client.postMessage.mockClear();
+}
+function expectReadOnly(env) {
+  for (const mock of [env.worker.fetch, env.worker.skipWaiting, env.worker.clients.claim, env.caches.open, env.caches.delete]) expect(mock).not.toHaveBeenCalled();
+  for (const cache of env.caches.stores.values()) { expect(cache.put).not.toHaveBeenCalled(); expect(cache.delete).not.toHaveBeenCalled(); }
+}
+async function stalledReadiness(env) {
+  const cache = env.caches.stores.get(env.registration.cacheName);
+  const match = cache.match.getMockImplementation();
+  let entered;
+  const started = new Promise(resolve => { entered = resolve; });
+  const cancelled = vi.fn();
+  cache.match.mockImplementation(async request => {
+    if (absolute(request).endsWith(`/assets/app-${env.config.buildId[0]}.js`)) {
+      return new Response(new ReadableStream({ start: () => entered(), cancel: cancelled }), { headers: { "Content-Type": "text/javascript" } });
+    }
+    return match(request);
+  });
+  const pending = env.send(readinessRequest(env));
+  await started;
+  return { pending, cancelled, restore: () => cache.match.mockImplementation(match) };
+}
+
+describe("explicit read-only offline readiness", () => {
+  it("checks every selected file and reports only validated counts without any repair or lifecycle mutation", async () => {
+    const env = environment(); await env.lifetime("install"); await env.lifetime("activate");
+    clearReadinessEffects(env);
+    await env.send(readinessRequest(env));
+    expect(env.client.postMessage).toHaveBeenCalledExactlyOnceWith({ ...readinessRequest(env), type: "PLANET_OFFLINE_READINESS_RESULT", status: "complete", fileCount: env.config.files.length, bytes: env.config.files.reduce((sum, file) => sum + file.bytes, 0) });
+    for (const file of env.config.files) expect(env.caches.match).toHaveBeenCalledWith(ORIGIN + file.url, { cacheName: env.registration.cacheName });
+    expectReadOnly(env);
+  });
+  it.each(["missing file", "corrupt file", "missing marker", "evicted cache"])("does not mistake a prior COMPLETE marker for surviving files: %s", async reason => {
+    const env = environment(); await env.lifetime("install"); await env.lifetime("activate");
+    const cache = env.caches.stores.get(env.registration.cacheName);
+    const url = ORIGIN + "/planet/assets/app-a.js";
+    if (reason === "missing file") cache.entries.delete(url);
+    if (reason === "corrupt file") cache.entries.set(url, new Response("x".repeat(env.bodies.get("/planet/assets/app-a.js").length), { headers: { "Content-Type": "text/javascript" } }));
+    if (reason === "missing marker") cache.entries.delete(MARKER);
+    if (reason === "evicted cache") env.caches.stores.delete(env.registration.cacheName);
+    clearReadinessEffects(env);
+    await env.send(readinessRequest(env));
+    expect(env.client.postMessage).toHaveBeenLastCalledWith({ ...readinessRequest(env), type: "PLANET_OFFLINE_READINESS_RESULT", status: "incomplete" });
+    expectReadOnly(env);
+    if (reason === "evicted cache") expect(env.caches.stores.size).toBe(0);
+  });
+  it("checks the selected rollback generation after restart, then detects later eviction in that generation", async () => {
+    const { prior, current, caches, rollback } = await rollbackFixture(); await rollback();
+    const restarted = environment(current, caches);
+    await restarted.send({ type: "PLANET_ROLLBACK_STATUS", requestId: "restore-selection" });
+    clearReadinessEffects(restarted);
+    const request = readinessRequest(restarted, { activeBuildId: prior.config.buildId });
+    await restarted.send(request);
+    expect(restarted.client.postMessage.mock.calls.at(-1)[0]).toMatchObject({ status: "complete", engineBuildId: current.config.buildId, activeBuildId: prior.config.buildId });
+    expect(restarted.caches.match).not.toHaveBeenCalledWith(ORIGIN + "/planet/assets/app-b.js", expect.anything());
+    caches.stores.get(prior.registration.cacheName).entries.delete(ORIGIN + "/planet/assets/app-a.js");
+    await restarted.send(request);
+    expect(restarted.client.postMessage.mock.calls.at(-1)[0]).toMatchObject({ status: "incomplete", activeBuildId: prior.config.buildId });
+    expectReadOnly(restarted);
+  });
+  it("rejects a result spanning a rollback selection even when all scanned old bytes are valid", async () => {
+    const { current, rollback } = await rollbackFixture();
+    const cache = current.caches.stores.get(current.registration.cacheName), match = cache.match.getMockImplementation();
+    let entered, release;
+    const started = new Promise(resolve => { entered = resolve; });
+    const held = new Promise(resolve => { release = resolve; });
+    cache.match.mockImplementation(async request => {
+      if (absolute(request).endsWith("/assets/app-b.js")) { entered(); await held; }
+      return match(request);
+    });
+    const pending = current.send(readinessRequest(current)); await started;
+    await rollback(); release(); await pending;
+    expect(current.client.postMessage.mock.calls.at(-1)[0]).toMatchObject({ type: "PLANET_OFFLINE_READINESS_RESULT", status: "unavailable", reason: "worker-changed" });
+  });
+  it.each(["wrong origin", "missing origin", "unknown client", "hostile current URL", "wrong engine", "invalid request", "extra field"])("ignores an unauthorized readiness query: %s", async reason => {
+    const env = environment(); await env.lifetime("install"); await env.lifetime("activate");
+    const request = readinessRequest(env), fields = {};
+    if (reason === "wrong origin") fields.origin = "https://other.test";
+    if (reason === "missing origin") fields.origin = "";
+    if (reason === "unknown client") fields.source = { id: "unknown", type: "window" };
+    if (reason === "hostile current URL") env.client.url = ORIGIN + "/planet/admin/";
+    if (reason === "wrong engine") request.engineBuildId = "b".repeat(64);
+    if (reason === "invalid request") request.requestId = "../private";
+    if (reason === "extra field") request.repair = true;
+    clearReadinessEffects(env);
+    await env.send(request, fields);
+    expect(env.client.postMessage).not.toHaveBeenCalled(); expect(env.caches.match).not.toHaveBeenCalled(); expectReadOnly(env);
+  });
+  it("reauthorizes a client whose document changes during verification", async () => {
+    const env = environment(); await env.lifetime("install"); await env.lifetime("activate");
+    const cache = env.caches.stores.get(env.registration.cacheName), match = cache.match.getMockImplementation();
+    cache.match.mockImplementation(async request => {
+      if (absolute(request).endsWith(".webp")) env.client.url = ORIGIN + "/planet/admin/";
+      return match(request);
+    });
+    clearReadinessEffects(env);
+    await env.send(readinessRequest(env));
+    expect(env.client.postMessage).not.toHaveBeenCalled(); expectReadOnly(env);
+  });
+  it("bounds concurrent scans and permits cancellation only by the originating client, request and generation", async () => {
+    const env = environment(); await env.lifetime("install"); await env.lifetime("activate");
+    clearReadinessEffects(env);
+    const stalled = await stalledReadiness(env);
+    await env.send(readinessRequest(env, { requestId: "second-query" }));
+    expect(env.client.postMessage.mock.calls.at(-1)[0]).toMatchObject({ requestId: "second-query", status: "unavailable", reason: "busy" });
+    const other = { id: "other-client", type: "window", url: ORIGIN + "/planet/en/", postMessage: vi.fn() }; env.clients.set(other.id, other);
+    const cancel = readinessRequest(env, { type: "PLANET_CANCEL_OFFLINE_READINESS" });
+    await env.send(cancel, { source: other });
+    await env.send({ ...cancel, requestId: "wrong-request" });
+    await env.send({ ...cancel, activeBuildId: "b".repeat(64) });
+    expect(stalled.cancelled).not.toHaveBeenCalled();
+    await env.send(cancel); await stalled.pending;
+    expect(stalled.cancelled).toHaveBeenCalledOnce();
+    expect(env.client.postMessage.mock.calls.at(-1)[0]).toMatchObject({ requestId: "offline-check", status: "unavailable", reason: "cancelled" });
+    stalled.restore(); await env.send(readinessRequest(env, { requestId: "after-cancel" }));
+    expect(env.client.postMessage.mock.calls.at(-1)[0]).toMatchObject({ status: "complete" }); expectReadOnly(env);
+  });
+  it("releases a stalled cached stream at the worker deadline without downloading or leaving the query slot occupied", async () => {
+    vi.useFakeTimers();
+    const env = environment(); await env.lifetime("install"); await env.lifetime("activate");
+    clearReadinessEffects(env);
+    const stalled = await stalledReadiness(env);
+    await vi.advanceTimersByTimeAsync(30_001); await stalled.pending;
+    expect(env.client.postMessage.mock.calls.at(-1)[0]).toMatchObject({ status: "unavailable", reason: "timeout" });
+    expect(stalled.cancelled).toHaveBeenCalledOnce();
+    expect(vi.getTimerCount()).toBe(0);
+    stalled.restore(); await env.send(readinessRequest(env, { requestId: "after-timeout" }));
+    expect(env.client.postMessage.mock.calls.at(-1)[0]).toMatchObject({ status: "complete" }); expectReadOnly(env);
+  });
+});
 
 describe("explicit whole-generation rollback", () => {
   it("normalizes entrypoints, files and aliases into one immutable canonical manifest", () => {

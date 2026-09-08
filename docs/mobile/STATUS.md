@@ -32,9 +32,26 @@ Historical3cd/46eb artifacts remain preserved. Installed-device behavior and
 store/RC readiness are unverified. SDK license/tools already approved.
 
 Historical iOS run34179803208 installed/launched RU/EN simulators, but its
-magazine-home/status-bar screenshots FAIL the product contract. A local
-isolated corrected source projection is being prepared; it is not that old
-binary. Internal archive/reports/keys/private history never enter public CI.
+magazine-home/status-bar screenshots FAIL the product contract. The corrected
+isolated83-file projection passed local TypeScript and285 exact asset hashes.
+Publication to the test branch awaits the existing pending answer:16 files
+fall outside the previous74-file review. Evidence:
+evidence/S04/ios-globe-projection-20260908/result.json.
+No new public commit, CI run or iOS runtime validation has occurred.
+Internal archive/reports/keys/private history never enter public CI.
+
+Controlled PWA Help now includes user-initiated installation, exact offline
+file checking and browser storage controls in RU/EN.237 unit tests passed
+across scoped runs; desktop/mobile browser scenarios both passed on ee021f84.
+Real worker/cache tests detected a removed EN shell, restored readiness only
+after its original bytes returned, and made zero worker network requests.
+Install/storage browser APIs used explicit fixtures; OS installation remains
+unverified. The final051c3da1 artifact passed strict audit; its only subsequent
+source change is a more visible focus outline. Browser cases were not replayed
+for that CSS color. New copy remains draft, not editorially approved.
+Evidence: evidence/S03/device-preparation-20260908/result.json.
+Prior7dc47dd8 PWA is archived; current dist-pwa is051c3da1. Android742 retains
+source8a3ef924; do not infer equality of new PWA/build-tool inputs with that APK.
 
 Full onboarding, child policy/Parent Gate/profiles/original interactive 3D
 Planetka, commerce, scene customization, complete bilingual editorial/legal/

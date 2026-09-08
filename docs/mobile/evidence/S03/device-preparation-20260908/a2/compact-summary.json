@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "localQaOnly": true,
+  "releaseReady": false,
+  "runId": "pwa-device-preparation-20260908-a2",
+  "kind": "focus-color-only-build-and-audit",
+  "buildId": "051c3da1b534623b00875ccfb4ab421a5ae24ab6e8c5a3a5cdb71d1c9c53a8e3",
+  "sourceCommit": "585e479f482bb2c574dc266883766df4461feed8",
+  "artifactSha256": "2680e7f84d2ce7e375797e2c39cf210fcfa51953f97caf764e473b46953cafe1",
+  "strictArtifactAuditPassed": true,
+  "artifactCounts": {
+    "files": 362,
+    "bytes": 41434917,
+    "bootstrapFiles": 316,
+    "bootstrapBytes": 20061621,
+    "sourceInputs": 963,
+    "publicSources": 291,
+    "scripts": 42
+  },
+  "gracefulServerClose": true,
+  "sourceFilesUnchangedDuringRun": 964,
+  "unchangedDuringRun": true,
+  "previousBrowserBuildId": "ee021f84f9ecf8472581f175ec18c73592da42c31a848e12f104af2e7f0e3ba4",
+  "changedSourcePaths": [
+    "src/pwa/pwa.css"
+  ],
+  "artifactSourceFilesCompared": 963,
+  "allJavaScriptTypeScriptSourcesUnchanged": true,
+  "browserCasesRun": 0,
+  "inheritedBrowserEvidence": "../a1/result.json",
+  "inheritedBrowserCasesPassed": 2,
+  "limits": [
+    "No browser replay for the single low-impact focus outline color change. Actual RU/EN screenshots and runtime assertions belong to a1.",
+    "Final artifact freshness and hashes passed strict audit; no OS installation, physical device, Safari or release approval claim."
+  ],
+  "command": "node .tmp/pwa-cross-engine-results/pwa-device-preparation-20260908-a2/build-and-audit.mjs"
+}

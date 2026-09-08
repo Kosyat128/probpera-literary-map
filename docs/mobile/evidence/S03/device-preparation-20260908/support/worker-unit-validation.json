@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "scope": "S03 explicit read-only offline readiness: controller and worker unit validation",
+  "evidenceKind": "Observed exec_command tool results preserved without rerunning commands",
+  "productionReadiness": false,
+  "rawProcessLog": {
+    "available": false,
+    "reason": "The two test commands were executed directly without a log-file redirection. Only the captured exec_command tool output is available; it is reproduced below, not presented as an independently saved raw process transcript."
+  },
+  "runs": [
+    {
+      "ordinal": 1,
+      "command": "node node_modules/vitest/vitest.mjs run src/pwa/registerPwaWorker.test.ts src/pwa/serviceWorkerRuntime.test.mjs --configLoader runner --maxWorkers=2",
+      "cwd": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work",
+      "observedToolChunkId": "78c5b2",
+      "exitCode": 1,
+      "reportedStartTime": "08:01:18",
+      "date": "2026-09-08",
+      "timeZoneClaim": null,
+      "durationSeconds": 6.31,
+      "results": {
+        "testFiles": {
+          "passed": 1,
+          "failed": 1
+        },
+        "tests": {
+          "passed": 223,
+          "failed": 1,
+          "total": 224
+        },
+        "controller": {
+          "passed": 65,
+          "failed": 0,
+          "total": 65,
+          "note": "Individual controller count is inferred exactly from combined total 224 minus the worker file total 159; the controller file passed in this first run."
+        },
+        "worker": {
+          "passed": 158,
+          "failed": 1,
+          "total": 159
+        }
+      },
+      "failure": {
+        "test": "releases a stalled cached stream at the worker deadline without downloading or leaving the query slot occupied",
+        "message": "Test timed out in 5000ms.",
+        "classification": "test-fixture clock initialization",
+        "cause": "The worker captured setTimeout when environment() installed it, before this test enabled vi.useFakeTimers(); advancing the fake clock therefore did not fire the worker's captured real timer.",
+        "correction": "Moved vi.useFakeTimers() before environment() construction in this one worker test. No product source changed for this correction."
+      },
+      "observedToolOutput": "\n RUN  v4.1.10 C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work\n\n ❯ src/pwa/serviceWorkerRuntime.test.mjs (159 tests | 1 failed) 5729ms\n     × releases a stalled cached stream at the worker deadline without downloading or leaving the query slot occupied 5016ms\n\n⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯\n\n FAIL  src/pwa/serviceWorkerRuntime.test.mjs > explicit read-only offline readiness > releases a stalled cached stream at the worker deadline without downloading or leaving the query slot occupied\nError: Test timed out in 5000ms.\nIf this is a long-running test, pass a timeout value as the last argument or configure it globally with \"testTimeout\".\n ❯ src/pwa/serviceWorkerRuntime.test.mjs:236:5\n    234|     expect(env.client.postMessage.mock.calls.at(-1)[0]).toMatchObject(…\n    235|   });\n    236|   it(\"releases a stalled cached stream at the worker deadline without …\n       |     ^\n    237|     const env = environment(); await env.lifetime(\"install\"); await en…\n    238|     vi.useFakeTimers(); clearReadinessEffects(env);\n\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯\n\n\n Test Files  1 failed | 1 passed (2)\n      Tests  1 failed | 223 passed (224)\n   Start at  08:01:18\n   Duration  6.31s (transform 215ms, setup 0ms, import 429ms, tests 5.84s, environment 0ms)\n\n"
+    },
+    {
+      "ordinal": 2,
+      "command": "node node_modules/vitest/vitest.mjs run src/pwa/serviceWorkerRuntime.test.mjs --configLoader runner --maxWorkers=2",
+      "cwd": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work",
+      "observedToolChunkId": "53e851",
+      "exitCode": 0,
+      "reportedStartTime": "08:01:42",
+      "date": "2026-09-08",
+      "timeZoneClaim": null,
+      "durationSeconds": 1.34,
+      "results": {
+        "testFiles": {
+          "passed": 1,
+          "failed": 0
+        },
+        "worker": {
+          "passed": 159,
+          "failed": 0,
+          "total": 159
+        }
+      },
+      "rerunScope": "Only the worker test file after its fixture correction; no second controller run.",
+      "observedToolOutput": "\n RUN  v4.1.10 C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work\n\n\n Test Files  1 passed (1)\n      Tests  159 passed (159)\n   Start at  08:01:42\n   Duration  1.34s (transform 52ms, setup 0ms, import 124ms, tests 853ms, environment 0ms)\n\n"
+    }
+  ],
+  "finalAffectedUnitStatus": {
+    "controller": {
+      "passed": 65,
+      "total": 65,
+      "validatedByRun": 1
+    },
+    "worker": {
+      "passed": 159,
+      "total": 159,
+      "validatedByRun": 2
+    },
+    "combinedPassed": 224,
+    "note": "This is a combined conclusion from two observed runs, not a claim that a third combined all-pass run occurred."
+  },
+  "sourceHashes": {
+    "algorithm": "SHA256",
+    "measurement": "Read from current files when preserving evidence after the successful worker rerun. No pre-run source-hash snapshot was captured.",
+    "files": [
+      {
+        "path": "src/pwa/registerPwaWorker.ts",
+        "sha256": "2ba1f2206189b627a8a18773137b7d4de0f04090903738ead5b7aaf4aef535ef"
+      },
+      {
+        "path": "src/pwa/serviceWorkerRuntime.js",
+        "sha256": "e4c3cf9c2cbf3d42481244434a900807cd01b8c743d4f2d4828302e8c0dca3fc"
+      },
+      {
+        "path": "src/pwa/registerPwaWorker.test.ts",
+        "sha256": "9af2e4b7cc17295542a1660e3483a47640e4ed86d1b8dad2e34b79dc2282acca"
+      },
+      {
+        "path": "src/pwa/serviceWorkerRuntime.test.mjs",
+        "sha256": "45c1bd0dcf86334944289f8f04b1aeefc201413f12c29728a401788ee0c342a9"
+      }
+    ]
+  },
+  "diffCheck": {
+    "command": "git diff --check -- src/pwa/serviceWorkerRuntime.js src/pwa/registerPwaWorker.ts src/pwa/serviceWorkerRuntime.test.mjs src/pwa/registerPwaWorker.test.ts",
+    "cwd": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work",
+    "observedToolChunkId": "394a57",
+    "exitCode": 0,
+    "source": "Previously observed tool result; not rerun during preservation.",
+    "observedToolOutput": "warning: in the working copy of 'src/pwa/registerPwaWorker.test.ts', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'src/pwa/registerPwaWorker.ts', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'src/pwa/serviceWorkerRuntime.js', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'src/pwa/serviceWorkerRuntime.test.mjs', LF will be replaced by CRLF the next time Git touches it\n"
+  },
+  "separateRootValidation": {
+    "check": "TypeScript",
+    "status": "PASS reported by root",
+    "sessionId": 21839,
+    "independentlyObservedHere": false,
+    "note": "Recorded separately by root; no TypeScript command or raw output fabricated in this report."
+  },
+  "limits": [
+    "Unit fixtures do not establish real-device offline behavior, installed-browser persistence, release-candidate acceptance, translation approval, entitlement availability, or stage completion.",
+    "No build, browser regression, deployment, source edit, state update or commit was performed while preserving this report."
+  ]
+}

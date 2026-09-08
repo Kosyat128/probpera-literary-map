@@ -25,6 +25,8 @@ import { isControlledWebEdition } from './platform/distribution';
 import { createPwaLicenseRuntime } from './pwa/PwaLicenseRuntime';
 import PwaEdition from './pwa/PwaEdition';
 import PwaHelp from './pwa/PwaHelp';
+import PwaDevicePanel from './pwa/PwaDevicePanel';
+import { createPwaInstallController } from './pwa/PwaInstallController';
 import PwaLocaleMetadata from './pwa/PwaLocaleMetadata';
 import PwaConnectivity from './pwa/PwaConnectivity';
 import { registerPwaWorker } from './pwa/registerPwaWorker';
@@ -64,6 +66,7 @@ const pwaRuntime = isControlledWebEdition ? createPwaLicenseRuntime({
   allowLocalQa: localQa,
 }) : null;
 const pwaWorker = isControlledWebEdition ? registerPwaWorker({ controlledDistribution: true, allowLocalQa: localQa }) : null;
+const pwaInstall = isControlledWebEdition ? createPwaInstallController({ controlledDistribution: true }) : null;
 if (isControlledWebEdition && __LITERARY_PLANET_LOCAL_QA__ && localQa) {
   void import('./pwa/qaSceneProbe').then(({ installPwaSceneProbe }) => installPwaSceneProbe(window));
 }
@@ -110,7 +113,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             <AppErrorBoundary>
               {accountMode ? <AccountEntry mode={accountMode} /> : pwaRuntime ? <PwaEdition runtime={pwaRuntime}
                 connectivityNotice={pwaWorker ? <PwaConnectivity controller={pwaWorker} /> : undefined}>
-                <App productHelp={<PwaHelp embedded />} />
+                <App productHelp={<PwaHelp embedded devicePanel={pwaWorker && pwaInstall
+                  ? <PwaDevicePanel install={pwaInstall} worker={pwaWorker} /> : undefined} />} />
               </PwaEdition>
                 : cmsPage ? <CmsPageReader page={cmsPage} /> : <App />}
             </AppErrorBoundary>

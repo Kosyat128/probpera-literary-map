@@ -301,6 +301,115 @@ function rollbackReply(env: ReturnType<typeof fixture>, overrides: Record<string
   env.reply({ type: "PLANET_ROLLBACK_ACTIVATION_RESULT", requestId: request.requestId, engineBuildId: BUILD, activeBuildId: PREVIOUS, targetBuildId: PREVIOUS, accepted: true, ...overrides });
 }
 
+function readinessReply(env: ReturnType<typeof fixture>, overrides: Record<string, unknown> = {}, source: unknown = env.worker, origin = ORIGIN) {
+  const request = latest(env.worker, "PLANET_OFFLINE_READINESS");
+  env.reply({ ...request, type: "PLANET_OFFLINE_READINESS_RESULT", status: "complete", fileCount: 4, bytes: 2048, ...overrides }, source, origin);
+}
+
+describe("explicit read-only offline readiness", () => {
+  it("does not infer readiness from discovered generations and only checks on demand without changing snapshots", async () => {
+    const env = await rollbackFixture();
+    const snapshot = env.service.getSnapshot();
+    const changed = vi.fn(); env.service.subscribe(changed);
+    expect(latest(env.worker, "PLANET_OFFLINE_READINESS")).toBeUndefined();
+    const operation = env.service.checkOfflineReadiness();
+    expect(latest(env.worker, "PLANET_OFFLINE_READINESS")).toMatchObject({ engineBuildId: BUILD, activeBuildId: BUILD });
+    readinessReply(env);
+    const result = await operation;
+    expect(result).toEqual({ status: "complete", engineBuildId: BUILD, activeBuildId: BUILD, fileCount: 4, bytes: 2048 });
+    expect(Object.isFrozen(result)).toBe(true);
+    expect(env.service.getSnapshot()).toBe(snapshot); expect(changed).not.toHaveBeenCalled();
+    expect(env.registration.update).not.toHaveBeenCalled(); expect(env.reload).not.toHaveBeenCalled();
+    expect(latest(env.worker, "PLANET_ACTIVATE_UPDATE")).toBeUndefined(); expect(latest(env.worker, "PLANET_ACTIVATE_ROLLBACK")).toBeUndefined();
+    expect(env.container.count("message")).toBe(0);
+  });
+  it("returns incomplete without counts and without starting a repair or reload", async () => {
+    const env = await rollbackFixture();
+    const operation = env.service.checkOfflineReadiness();
+    env.reply({ ...latest(env.worker, "PLANET_OFFLINE_READINESS"), type: "PLANET_OFFLINE_READINESS_RESULT", status: "incomplete" });
+    expect(await operation).toEqual({ status: "incomplete", engineBuildId: BUILD, activeBuildId: BUILD });
+    expect(env.registration.update).not.toHaveBeenCalled(); expect(env.reload).not.toHaveBeenCalled();
+  });
+  it("pins a selected previous app generation separately from the current worker engine", async () => {
+    const env = fixture({ waiting: false }); await settled(env.service); controllerChange(env);
+    const request = latest(env.worker, "PLANET_ROLLBACK_STATUS");
+    env.reply({ type: "PLANET_ROLLBACK_STATUS_RESULT", requestId: request.requestId, engineBuildId: BUILD, activeBuildId: PREVIOUS, rollbackBuildId: null, ready: false });
+    await settled(env.service);
+    const operation = env.service.checkOfflineReadiness();
+    expect(latest(env.worker, "PLANET_OFFLINE_READINESS")).toMatchObject({ engineBuildId: BUILD, activeBuildId: PREVIOUS });
+    readinessReply(env);
+    expect(await operation).toMatchObject({ status: "complete", engineBuildId: BUILD, activeBuildId: PREVIOUS });
+  });
+  it.each(["wrong origin", "wrong source", "wrong request", "wrong engine", "wrong active", "wrong status", "invalid count", "invalid bytes", "incomplete with counts", "unknown fields"])("rejects a forged or malformed response until the bounded deadline: %s", async reason => {
+    vi.useFakeTimers();
+    const env = await rollbackFixture(); const operation = env.service.checkOfflineReadiness();
+    const overrides: Record<string, unknown> = {};
+    if (reason === "wrong request") overrides.requestId = "some-other-check";
+    if (reason === "wrong engine") overrides.engineBuildId = PREVIOUS;
+    if (reason === "wrong active") overrides.activeBuildId = PREVIOUS;
+    if (reason === "wrong status") overrides.status = "ready";
+    if (reason === "invalid count") overrides.fileCount = 513;
+    if (reason === "invalid bytes") overrides.bytes = 64 * 1024 * 1024 + 1;
+    if (reason === "incomplete with counts") overrides.status = "incomplete";
+    if (reason === "unknown fields") overrides.entitled = true;
+    readinessReply(env, overrides, reason === "wrong source" ? new FakeWorker() : env.worker, reason === "wrong origin" ? "https://other.test" : ORIGIN);
+    await vi.advanceTimersByTimeAsync(101);
+    expect(await operation).toEqual({ status: "unavailable", reason: "timeout" });
+    expect(latest(env.worker, "PLANET_CANCEL_OFFLINE_READINESS")).toMatchObject({ requestId: latest(env.worker, "PLANET_OFFLINE_READINESS").requestId });
+    expect(env.container.count("message")).toBe(0); expect(vi.getTimerCount()).toBe(0); expect(env.reload).not.toHaveBeenCalled();
+  });
+  it("bounds duplicate requests to one worker scan and releases the slot after completion", async () => {
+    const env = await rollbackFixture();
+    const first = env.service.checkOfflineReadiness();
+    expect(await env.service.checkOfflineReadiness()).toEqual({ status: "unavailable", reason: "busy" });
+    expect(env.worker.postMessage.mock.calls.filter(([data]) => data.type === "PLANET_OFFLINE_READINESS")).toHaveLength(1);
+    readinessReply(env); await first;
+    const next = env.service.checkOfflineReadiness(); readinessReply(env); expect(await next).toMatchObject({ status: "complete" });
+  });
+  it.each(["abort", "dispose"])("cleans pending listeners and cancels the exact worker scan on %s", async reason => {
+    const env = await rollbackFixture(); const cancellation = new AbortController();
+    const operation = env.service.checkOfflineReadiness({ signal: cancellation.signal });
+    if (reason === "abort") cancellation.abort(); else env.service.dispose();
+    expect(await operation).toEqual({ status: "unavailable", reason: reason === "abort" ? "cancelled" : "disposed" });
+    expect(latest(env.worker, "PLANET_CANCEL_OFFLINE_READINESS")).toMatchObject({ engineBuildId: BUILD, activeBuildId: BUILD, requestId: latest(env.worker, "PLANET_OFFLINE_READINESS").requestId });
+    readinessReply(env); expect(env.container.count("message")).toBe(0); expect(env.reload).not.toHaveBeenCalled();
+    if (reason === "abort") {
+      const retry = env.service.checkOfflineReadiness(); readinessReply(env); expect(await retry).toMatchObject({ status: "complete" });
+    }
+  });
+  it("does not send a query without a known controller generation or with a pre-aborted signal", async () => {
+    const pending = fixture({ waiting: false }); await settled(pending.service);
+    expect(await pending.service.checkOfflineReadiness()).toEqual({ status: "unavailable", reason: "not-ready" });
+    const env = await rollbackFixture();
+    expect(await env.service.checkOfflineReadiness({ signal: AbortSignal.abort() })).toEqual({ status: "unavailable", reason: "cancelled" });
+    expect(latest(env.worker, "PLANET_OFFLINE_READINESS")).toBeUndefined();
+    env.service.dispose(); expect(await env.service.checkOfflineReadiness()).toEqual({ status: "unavailable", reason: "disposed" });
+  });
+  it("rejects a complete old response after controller replacement", async () => {
+    const env = await rollbackFixture(); const operation = env.service.checkOfflineReadiness();
+    const replacement = new FakeWorker(); controllerChange(env, replacement);
+    const request = latest(replacement, "PLANET_ROLLBACK_STATUS");
+    env.reply({ type: "PLANET_ROLLBACK_STATUS_RESULT", requestId: request.requestId, engineBuildId: "c".repeat(64), activeBuildId: "c".repeat(64), rollbackBuildId: BUILD, ready: true }, replacement);
+    readinessReply(env);
+    expect(await operation).toEqual({ status: "unavailable", reason: "worker-changed" });
+    expect(env.reload).not.toHaveBeenCalled();
+  });
+  it("rejects a result that overlaps even a rejected rollback attempt", async () => {
+    const env = await rollbackFixture(); const operation = env.service.checkOfflineReadiness();
+    const rollback = env.service.rollback(); rollbackReply(env, { accepted: false, activeBuildId: BUILD, reason: "multiple-clients" });
+    expect(await rollback).toEqual({ ok: false, reason: "multiple-clients" });
+    readinessReply(env);
+    expect(await operation).toEqual({ status: "unavailable", reason: "worker-changed" });
+    expect(env.reload).not.toHaveBeenCalled();
+  });
+  it("returns an explicit worker unavailability without adding it to shared lifecycle state", async () => {
+    const env = await rollbackFixture(), snapshot = env.service.getSnapshot();
+    const operation = env.service.checkOfflineReadiness();
+    env.reply({ ...latest(env.worker, "PLANET_OFFLINE_READINESS"), type: "PLANET_OFFLINE_READINESS_RESULT", status: "unavailable", reason: "busy" });
+    expect(await operation).toEqual({ status: "unavailable", reason: "busy" }); expect(env.service.getSnapshot()).toBe(snapshot);
+  });
+});
+
 describe("explicit whole-generation rollback", () => {
   it("discovers an anchored previous generation without activation or reload", async () => {
     const env = await rollbackFixture();

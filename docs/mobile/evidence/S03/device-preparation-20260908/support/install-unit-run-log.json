@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "kind": "lossless-utf8-log",
+  "originalRelativePath": "support/install-unit-run.log",
+  "bytes": 502,
+  "sha256": "889c3120a66f63c3dd8ac7db1489c8e0edeb32d6ae2f78decb1e4a87badf5f01",
+  "encoding": "utf8",
+  "text": "\r\n RUN  v4.1.10 C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work\r\n\r\n ✓ src/pwa/PwaInstallController.test.ts (13 tests) 13ms\r\n\r\n Test Files  1 passed (1)\r\n      Tests  13 passed (13)\r\n   Start at  07:53:33\r\n   Duration  427ms (transform 50ms, setup 0ms, import 95ms, tests 13ms, environment 0ms)\r\n\r\nJSON report written to C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/.tmp/pwa-install-controller-20260908/unit-results.json\r\n"
+}

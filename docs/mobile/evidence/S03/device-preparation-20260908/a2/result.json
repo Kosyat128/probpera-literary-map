@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "localQaOnly": true,
+  "releaseReady": false,
+  "sourceRun": ".tmp/pwa-cross-engine-results/pwa-device-preparation-20260908-a2",
+  "copiedFiles": [
+    {
+      "path": "compact-summary.json",
+      "sha256": "7bf6ed037653fce783534473921b681381d8f52c046edc533fdbefc753c6af54",
+      "bytes": 1519
+    },
+    {
+      "path": "build-and-audit.mjs",
+      "sha256": "d7d874107718f360a67ecce7c9f6ec2ccea37630ec5d36ee3a167fe5434e267e",
+      "bytes": 2840
+    },
+    {
+      "path": "run.log",
+      "sha256": "b435e1dbc0c5c96e8907226fc4bd737125fe4b0514d8d3f3d2b3e17e044084cf",
+      "bytes": 13084
+    },
+    {
+      "path": "session.json",
+      "sha256": "7861f64b73d9a06e6221895505668fd4b2dc5340795e511e6031c6a773893c63",
+      "bytes": 824
+    },
+    {
+      "path": "strict-artifact-audit.json",
+      "sha256": "4d5eb0a921d1b9843c44e245a725705b6269dd0c7fb44d8b03836ac2dd0c8961",
+      "bytes": 792
+    },
+    {
+      "path": "strict-artifact-audit.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "source-before.json",
+      "sha256": "f136eb66ada2b728dea10293c35a4e790e23a9079434b306f2d19c8c6048f3e5",
+      "bytes": 139636
+    },
+    {
+      "path": "source-after.json",
+      "sha256": "f136eb66ada2b728dea10293c35a4e790e23a9079434b306f2d19c8c6048f3e5",
+      "bytes": 139636
+    },
+    {
+      "path": "server-closed.json",
+      "sha256": "98e5a52c54d443bc90eea6b9f8fc44d7c74bb14623dc20940fbf8f0472d238ab",
+      "bytes": 80
+    }
+  ],
+  "privateAuthorityAndControlExcluded": true,
+  "browserCasesRun": 0,
+  "inheritedBrowserCasesPassed": 2,
+  "summary": "compact-summary.json"
+}

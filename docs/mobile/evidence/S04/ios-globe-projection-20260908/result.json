@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T04:58:45.960Z",
+  "kind": "Local validated iOS globe source projection review, not a release",
+  "sourceCommit": "8a3ef924aa911aeda4742b4434ac925ac576764e",
+  "docsOnlyHeadObservation": "585e479f482bb2c574dc266883766df4461feed8",
+  "publicParent": "325e9f3c0daef6600c1a96e5af76c9f9d2f857c4",
+  "publicBaseTree": "0ba8e8d71236a2299607cab27617b517691e1db0",
+  "expectedCandidateTree": "58ea6814d6d6abe49a0f57ed7f3b00f867d35ab1",
+  "payloadSha256": "5d3e521294ae46f827ecd974525136462c104d54bee03448bac0ec7a21531741",
+  "counts": {
+    "closureFiles": 562,
+    "closureChanged": 82,
+    "overlayFiles": 83,
+    "addedPaths": 32,
+    "modifiedPaths": 51,
+    "bytes": 3062557,
+    "assetsRetainedFromPublicParent": 285,
+    "descriptorLfRepins": 209
+  },
+  "validation": {
+    "candidateTypeScriptPass": true,
+    "firstAttemptFailed": true,
+    "correction": "Exact already-public main ambient declaration src/articles/hyphen.d.ts; exact unchanged public parent report materialized for existing baseline test only",
+    "firstAttemptDiagnosticCodes": [
+      "TS7016",
+      "TS2307"
+    ],
+    "correctedTypeScriptDurationMs": 19967,
+    "strictActualAssetHashesPass": true,
+    "assetCount": 285,
+    "frozenInputFiles": 848,
+    "sourceAndOverlayUnchangedAfterValidation": true,
+    "repeatedValidationDuringEvidencePreservation": false
+  },
+  "publication": {
+    "status": "awaiting-user-answer",
+    "questionRaisedByRoot": true,
+    "questionScope": {
+      "fileCount": 83,
+      "unpublishedFilesOutsidePrior74": 16,
+      "repository": "Kosyat128/probpera-literary-map",
+      "branch": "codex/literary-planet-v12-ios-ci",
+      "execution": "Unsigned iOS simulator build and RU/EN runtime screenshots"
+    },
+    "approvalReceived": false,
+    "prior74AuthorizationStillRecorded": true,
+    "remoteWritesPerformed": false,
+    "commitObjectsCreated": false,
+    "refsUpdated": false,
+    "workflowsDispatched": false
+  },
+  "scope": {
+    "newPwaDeviceUxIncluded": false,
+    "payloadIncluded": false,
+    "base64Included": false,
+    "checkoutIncluded": false,
+    "privateLogsIncluded": false,
+    "keysIncluded": false,
+    "beforeOrOverlayIncluded": false,
+    "stateUpdated": false,
+    "committed": false
+  },
+  "preservedFiles": [
+    "REVIEW.md",
+    "review.json",
+    "candidate-tsc.json",
+    "candidate-tsc-attempt1.json",
+    "candidate-tsc-attempt2.json",
+    "candidate-assets.json",
+    "artifact-hashes.json"
+  ],
+  "sourceArtifactManifestNote": "artifact-hashes.json is preserved exactly from the completed projection. It inventories the original local artifacts, including files intentionally not exported here. evidence-copy-verification.json identifies the exact preserved subset.",
+  "releaseReady": false
+}

@@ -188,6 +188,202 @@ test("cold offline RU and EN launch preserve country and load first-use search",
   } finally { await context.setOffline(false); }
 });
 
+test("device preparation checks the real offline cache and keeps simulated browser decisions truthful", async ({ page, context }, testInfo) => {
+  // Only installation/persistence decisions are simulated. The signed access,
+  // app, globe, service worker, manifest, cached bytes and hash checks are real.
+  // These disposable browser fixtures never invoke an OS installation prompt.
+  await page.addInitScript(() => {
+    const qa = window.__pwaDeviceQa = { prompts: [], persistence: [], readiness: [], resolveChoice: null };
+    window.addEventListener("beforeinstallprompt", event => {
+      if (event.isTrusted) { event.preventDefault(); event.stopImmediatePropagation(); }
+    }, true);
+    Object.defineProperties(navigator.storage, {
+      persisted: { configurable: true, value: async () => false },
+      persist: { configurable: true, value: () => {
+        qa.persistence.push({ userActivation: navigator.userActivation.isActive });
+        return Promise.resolve(false);
+      } },
+    });
+    qa.offerPrompt = () => {
+      const event = new Event("beforeinstallprompt", { cancelable: true });
+      const userChoice = new Promise(resolve => { qa.resolveChoice = resolve; });
+      Object.defineProperties(event, {
+        userChoice: { value: userChoice },
+        prompt: { value: () => {
+          qa.prompts.push({ userActivation: navigator.userActivation.isActive });
+          return Promise.resolve();
+        } },
+      });
+      window.dispatchEvent(event);
+    };
+    navigator.serviceWorker.addEventListener("message", event => {
+      const data = event.data;
+      if (event.source !== navigator.serviceWorker.controller || data?.type !== "PLANET_OFFLINE_READINESS_RESULT") return;
+      qa.readiness.push({ status: data.status, engineBuildId: data.engineBuildId, activeBuildId: data.activeBuildId,
+        ...(data.status === "complete" ? { fileCount: data.fileCount, bytes: data.bytes } : {}) });
+    });
+  });
+  await openAuthorized(page);
+  const marker = await installed(page);
+  const target = marker.manifest.files.find(file => file.kind === "shell" && file.url === marker.manifest.entrypoints.en);
+  expect(target).toBeTruthy();
+  const cacheName = "literary-planet-pwa-v1-" + marker.manifest.buildId;
+  await expect.poll(() => page.evaluate(() => typeof window.__literaryPlanetQaScenes)).toBe("function");
+  const scene = await page.evaluateHandle(() => window.__literaryPlanetQaScenes().find(item => document.querySelector("#atlas").contains(item.canvas)));
+  expect(await scene.evaluate(value => Boolean(value?.canvas && value.renderer && value.camera && value.scene))).toBe(true);
+  const worker = context.serviceWorkers().find(item => item.url() === qaOrigin + "/planet/sw.js");
+  expect(worker).toBeTruthy();
+  // Transparent worker fetch observation: count attempts, including failures
+  // while offline, and always call the original API with its original receiver.
+  await worker.evaluate(() => {
+    const original = globalThis.fetch;
+    globalThis.__pwaDeviceFetchQa = { original, armed: false, count: 0 };
+    globalThis.fetch = function (...args) {
+      if (globalThis.__pwaDeviceFetchQa.armed) globalThis.__pwaDeviceFetchQa.count++;
+      return Reflect.apply(original, this, args);
+    };
+  });
+  let backup = null;
+  let restored = false;
+  const evidence = { localQaOnly: true, buildId: marker.manifest.buildId, ownedCacheEntry: target,
+    simulatedApis: ["beforeinstallprompt.prompt/userChoice", "StorageManager.persist/persisted"],
+    actualOsInstallation: false, checks: [], screenshots: [], headerBounds: [] };
+  try {
+    // Offer before opening Help; its later mount must not lose the deferred event.
+    await page.evaluate(() => window.__pwaDeviceQa.offerPrompt());
+    expect(await page.evaluate(() => window.__pwaDeviceQa.prompts.length)).toBe(0);
+    await page.locator('[data-atlas-action="open-collection"]').click();
+    const collection = page.locator(".native-planet-panel");
+    const header = collection.locator(".native-planet-panel__header");
+    const help = collection.locator(".pwa-help");
+    await help.locator("summary").click();
+    const device = help.locator(".pwa-device");
+    await expect(device.getByRole("heading", { name: "Приложение на устройстве", exact: true })).toBeVisible();
+    const nodes = await page.evaluateHandle(() => ({ header: document.querySelector(".native-planet-panel__header"),
+      help: document.querySelector(".pwa-help details"), device: document.querySelector(".pwa-device") }));
+    const readiness = device.locator("[data-pwa-offline-readiness]");
+    await expect(readiness).toHaveAttribute("data-pwa-offline-readiness", "unchecked");
+    expect(await page.evaluate(() => ({ prompts: window.__pwaDeviceQa.prompts.length,
+      persistence: window.__pwaDeviceQa.persistence.length, checks: window.__pwaDeviceQa.readiness.length })))
+      .toEqual({ prompts: 0, persistence: 0, checks: 0 });
+    const stable = async (locale, phase) => {
+      await expect(page.locator("html")).toHaveAttribute("lang", locale);
+      expect(new URL(page.url()).pathname).toBe("/planet/" + locale + "/");
+      expect(new URL(page.url()).searchParams.get("country")).toBe("russia");
+      await expect(page.locator("canvas")).toHaveCount(1);
+      expect(await scene.evaluate(original => {
+        const current = window.__literaryPlanetQaScenes().find(item => item.canvas === original.canvas);
+        return original.canvas.isConnected && current?.renderer === original.renderer
+          && current?.camera === original.camera && current?.scene === original.scene;
+      })).toBe(true);
+      expect(await nodes.evaluate(original => original.header === document.querySelector(".native-planet-panel__header")
+        && original.help === document.querySelector(".pwa-help details") && original.help.open
+        && original.device === document.querySelector(".pwa-device"))).toBe(true);
+      await expect(header).toBeInViewport({ ratio: 1 });
+      await hitTarget(header.getByRole("button", { name: locale === "ru" ? "Вернуться к планете" : "Return to the planet", exact: true }));
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
+      evidence.headerBounds.push({ phase, locale, viewport: page.viewportSize(), bounds: await header.boundingBox() });
+    };
+    const locale = async value => {
+      await header.locator(".interface-language-control button").filter({ hasText: value.toUpperCase() }).click();
+      await expect(page.locator("html")).toHaveAttribute("lang", value);
+    };
+    const screenshot = async name => {
+      await page.screenshot({ path: testInfo.outputPath(name + ".png"), fullPage: false });
+      evidence.screenshots.push(name + ".png");
+    };
+    const check = async (language, expected) => {
+      const before = await page.evaluate(() => window.__pwaDeviceQa.readiness.length);
+      await worker.evaluate(() => { globalThis.__pwaDeviceFetchQa.count = 0; globalThis.__pwaDeviceFetchQa.armed = true; });
+      let networkAttempts;
+      try {
+        await device.getByRole("button", { name: language === "ru" ? "Проверить офлайн-файлы" : "Check offline files", exact: true }).click();
+        await expect(readiness).toHaveAttribute("data-pwa-offline-readiness", expected, { timeout: 35_000 });
+        await expect.poll(() => page.evaluate(() => window.__pwaDeviceQa.readiness.length)).toBe(before + 1);
+      } finally {
+        networkAttempts = await worker.evaluate(() => {
+          globalThis.__pwaDeviceFetchQa.armed = false;
+          return globalThis.__pwaDeviceFetchQa.count;
+        });
+      }
+      const reply = await page.evaluate(() => window.__pwaDeviceQa.readiness.at(-1));
+      evidence.checks.push({ locale: language, networkAttempts, ...reply });
+      expect(networkAttempts).toBe(0);
+      expect(reply).toMatchObject({ status: expected, engineBuildId: marker.manifest.buildId, activeBuildId: marker.manifest.buildId });
+      if (expected === "complete") expect(reply).toMatchObject({ fileCount: marker.manifest.files.length,
+        bytes: marker.manifest.files.reduce((sum, file) => sum + file.bytes, 0) });
+      await stable(language, expected);
+    };
+    await check("ru", "complete");
+    await expect(readiness).toHaveText("Все базовые файлы прошли проверку на этом устройстве.");
+    await screenshot("device-ru-complete");
+    await device.getByRole("button", { name: "Установить приложение", exact: true }).click();
+    await expect(device.getByRole("status").filter({ hasText: "Завершите выбор в окне браузера." })).toBeVisible();
+    await locale("en");
+    await expect(device.getByRole("status").filter({ hasText: "Complete your choice in the browser dialog." })).toBeVisible();
+    await page.evaluate(() => window.__pwaDeviceQa.resolveChoice({ outcome: "accepted", platform: "qa-simulated" }));
+    await expect(device.getByRole("status").filter({ hasText: "Request accepted. Wait for the browser to finish installing the app." })).toBeVisible();
+    await expect(device.getByRole("button", { name: "Install app", exact: true })).toHaveCount(0);
+    await expect(device.getByText("The browser reported an installation. The shortcut will appear when it finishes.", { exact: true })).toHaveCount(0);
+    await expect(device.getByText("The planet is open in its own app window.", { exact: true })).toHaveCount(0);
+    await stable("en", "simulated-install-accepted");
+    await screenshot("device-en-simulated-install-accepted");
+    await context.setOffline(true);
+    backup = await page.evaluateHandle(async ({ cacheName, target }) => {
+      if (!await caches.has(cacheName)) throw new Error("The exact QA build cache is absent");
+      const response = await caches.match(target.url, { cacheName });
+      if (!response) throw new Error("The exact manifest entry is absent before the test");
+      const hash = [...new Uint8Array(await crypto.subtle.digest("SHA-256", await response.clone().arrayBuffer()))]
+        .map(value => value.toString(16).padStart(2, "0")).join("");
+      if (hash !== target.sha256) throw new Error("The baseline cached bytes do not match the manifest");
+      return { cacheName, url: target.url, response, hash };
+    }, { cacheName, target });
+    expect(await backup.evaluate(async value => (await caches.open(value.cacheName)).delete(value.url))).toBe(true);
+    await check("en", "incomplete");
+    expect(await backup.evaluate(async value => Boolean(await caches.match(value.url, { cacheName: value.cacheName })))).toBe(false);
+    await expect(readiness).toHaveText("Some base files are missing or damaged. Connect to the internet and open the content you need before travelling.");
+    await screenshot("device-en-incomplete");
+    await device.getByRole("button", { name: "Request persistent storage", exact: true }).click();
+    await expect(device.getByRole("status").filter({ hasText: "The browser did not grant persistent storage." })).toBeVisible();
+    await stable("en", "simulated-persistence-denied");
+    await screenshot("device-en-simulated-persistence-denied");
+    await locale("ru");
+    await expect(readiness).toHaveAttribute("data-pwa-offline-readiness", "incomplete");
+    await expect(readiness).toHaveText("Часть базовых файлов отсутствует или повреждена. Подключитесь к сети и откройте нужные материалы перед поездкой.");
+    await expect(device.getByRole("status").filter({ hasText: "Браузер не разрешил постоянное хранение." })).toBeVisible();
+    await stable("ru", "retained-incomplete-and-denied");
+    await backup.evaluate(async value => { await (await caches.open(value.cacheName)).put(value.url, value.response.clone()); });
+    restored = true;
+    await check("ru", "complete");
+    const decisions = await page.evaluate(() => ({ prompts: window.__pwaDeviceQa.prompts, persistence: window.__pwaDeviceQa.persistence }));
+    expect(decisions).toEqual({ prompts: [{ userActivation: true }], persistence: [{ userActivation: true }] });
+    evidence.simulatedDecisions = decisions;
+    await header.getByRole("button", { name: "Вернуться к планете", exact: true }).click();
+    await expect(collection).toBeHidden();
+    await page.locator('[data-atlas-action="open-collection"]').click();
+    await stable("ru", "collection-reopened");
+    await expect(device.getByRole("status").filter({ hasText: "Запрос принят. Дождитесь завершения установки браузером." })).toBeVisible();
+    await expect(readiness).toHaveAttribute("data-pwa-offline-readiness", "complete");
+    await nodes.dispose();
+  } finally {
+    if (backup) {
+      if (!restored) await backup.evaluate(async value => { await (await caches.open(value.cacheName)).put(value.url, value.response.clone()); });
+      evidence.restoredSha256 = await backup.evaluate(async value => {
+        const response = await caches.match(value.url, { cacheName: value.cacheName });
+        if (!response) return null;
+        return [...new Uint8Array(await crypto.subtle.digest("SHA-256", await response.arrayBuffer()))]
+          .map(item => item.toString(16).padStart(2, "0")).join("");
+      });
+      await backup.dispose();
+    }
+    await worker.evaluate(() => { globalThis.fetch = globalThis.__pwaDeviceFetchQa.original; delete globalThis.__pwaDeviceFetchQa; });
+    await context.setOffline(false);
+    await scene.dispose();
+    await testInfo.attach("device-preparation-evidence", { body: JSON.stringify(evidence, null, 2), contentType: "application/json" });
+    if (backup) expect(evidence.restoredSha256).toBe(target.sha256);
+  }
+});
+
 test("known revocation closes access and cannot be resurrected by offline reload", async ({ page, context, request }) => {
   await openAuthorized(page);
   await installed(page);

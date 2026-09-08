@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 1,
+  "runId": "pwa-device-preparation-20260908-a1",
+  "localQaOnly": true,
+  "releaseReady": false,
+  "command": "node node_modules/@playwright/test/cli.js test --config playwright.pwa-current.config.mjs --grep 'device preparation checks the real offline cache'",
+  "strictAuditCommand": "node scripts/mobile/verify-pwa-artifact.mjs --allow-qa",
+  "stats": {
+    "startTime": "2026-09-08T05:04:55.223Z",
+    "duration": 71084.00399999999,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "artifact": {
+    "buildId": "ee021f84f9ecf8472581f175ec18c73592da42c31a848e12f104af2e7f0e3ba4",
+    "sourceCommit": "585e479f482bb2c574dc266883766df4461feed8",
+    "localQaAuthority": true
+  },
+  "artifactSha256": "ae594db4f37fa6af72d48b157d9c8738b45f30aa785805a0ac4a43c1c2838936",
+  "artifactCounts": {
+    "files": 362,
+    "bytes": 41434917,
+    "bootstrapFiles": 316,
+    "bootstrapBytes": 20061621,
+    "sourceInputs": 963,
+    "publicSources": 291,
+    "scripts": 42
+  },
+  "strictArtifactAuditPassed": true,
+  "sourceFilesUnchangedDuringRun": 964,
+  "unchangedDuringRun": true,
+  "changedSourcePathsVsGlobeA5": [
+    "src/main.tsx",
+    "src/pwa/PwaDevicePanel.tsx",
+    "src/pwa/PwaHelp.tsx",
+    "src/pwa/PwaInstallController.ts",
+    "src/pwa/pwa.css",
+    "src/pwa/registerPwaWorker.ts",
+    "src/pwa/serviceWorkerRuntime.js"
+  ],
+  "projects": [
+    {
+      "project": "pwa-desktop",
+      "status": "passed",
+      "durationMs": 21884,
+      "evidence": "pwa-desktop-device-preparation-evidence.json",
+      "readinessSequence": [
+        "complete",
+        "incomplete",
+        "complete"
+      ],
+      "workerNetworkAttempts": [
+        0,
+        0,
+        0
+      ],
+      "restoredSha256": "ab23df0a8bf835169e047d6fb98381d5de252eaf767feb76996ba8cdf5ee6c83",
+      "simulatedDecisions": {
+        "prompts": [
+          {
+            "userActivation": true
+          }
+        ],
+        "persistence": [
+          {
+            "userActivation": true
+          }
+        ]
+      }
+    },
+    {
+      "project": "pwa-mobile",
+      "status": "passed",
+      "durationMs": 19967,
+      "evidence": "pwa-mobile-device-preparation-evidence.json",
+      "readinessSequence": [
+        "complete",
+        "incomplete",
+        "complete"
+      ],
+      "workerNetworkAttempts": [
+        0,
+        0,
+        0
+      ],
+      "restoredSha256": "ab23df0a8bf835169e047d6fb98381d5de252eaf767feb76996ba8cdf5ee6c83",
+      "simulatedDecisions": {
+        "prompts": [
+          {
+            "userActivation": true
+          }
+        ],
+        "persistence": [
+          {
+            "userActivation": true
+          }
+        ]
+      }
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "artifacts/controlled-pwa-device-prep-02071--browser-decisions-truthful-pwa-desktop/device-en-incomplete.png",
+      "sha256": "5b092503874b0de8a5408d0553caad3f2e38a878d1d01d2b08cd55a9a55396d9",
+      "bytes": 464472
+    },
+    {
+      "path": "artifacts/controlled-pwa-device-prep-02071--browser-decisions-truthful-pwa-desktop/device-en-simulated-install-accepted.png",
+      "sha256": "3d980c976ce15b5b6e3cba70145f1d6608405eb9e0e18142a287917dc45e298d",
+      "bytes": 461293
+    },
+    {
+      "path": "artifacts/controlled-pwa-device-prep-02071--browser-decisions-truthful-pwa-desktop/device-en-simulated-persistence-denied.png",
+      "sha256": "67aeff6e90ce238e92345c4e0bae162574da7e69a5d1efe2fd3c3bac60026483",
+      "bytes": 518908
+    },
+    {
+      "path": "artifacts/controlled-pwa-device-prep-02071--browser-decisions-truthful-pwa-desktop/device-ru-complete.png",
+      "sha256": "c53ca73c480f4951d39077074e88e797f5ec0c72f2dfc93290d80d1609300119",
+      "bytes": 466675
+    },
+    {
+      "path": "artifacts/controlled-pwa-device-prep-02071--browser-decisions-truthful-pwa-mobile/device-en-incomplete.png",
+      "sha256": "aa7d93a500c204d5dd05a760a2f4b6e515651feaefb3f8022c7dcac9adf6f6a9",
+      "bytes": 213835
+    },
+    {
+      "path": "artifacts/controlled-pwa-device-prep-02071--browser-decisions-truthful-pwa-mobile/device-en-simulated-install-accepted.png",
+      "sha256": "411d3ce8603a6cc1ba0925fd323403e06fd617ba53acf21401645e1088782192",
+      "bytes": 191806
+    },
+    {
+      "path": "artifacts/controlled-pwa-device-prep-02071--browser-decisions-truthful-pwa-mobile/device-en-simulated-persistence-denied.png",
+      "sha256": "a603079341d228e5ed11d73602fd8cf9ae14f0cdd082df11c3df5e337f18fc1f",
+      "bytes": 233553
+    },
+    {
+      "path": "artifacts/controlled-pwa-device-prep-02071--browser-decisions-truthful-pwa-mobile/device-ru-complete.png",
+      "sha256": "c4e177dbffe34656931d4b35364dbe4752637f93063a74ac3a2ffe3f3ee3fda6",
+      "bytes": 194006
+    }
+  ],
+  "visuallyInspected": [
+    "pwa-desktop/device-ru-complete.png",
+    "pwa-mobile/device-ru-complete.png",
+    "pwa-mobile/device-en-incomplete.png",
+    "pwa-mobile/device-en-simulated-install-accepted.png",
+    "pwa-mobile/device-en-simulated-persistence-denied.png"
+  ],
+  "visualFindings": [
+    "Actual RU/EN cards and current state text are readable; Collection header, global language and close remain visible.",
+    "Mobile notices occupy their own area above scrolling content; no horizontal overflow. Desktop retains the real canonical globe beside its panel.",
+    "Known follow-up outside this artifact: change new button focus outline from orange to existing violet for stronger contrast. Mouse screenshots do not validate keyboard focus styling."
+  ],
+  "limitations": [
+    "Only the new device scenario was run in Chrome desktop and Pixel 7 emulation. No OS PWA installation, Safari or physical-device claim.",
+    "Install accepted and storage denial are explicitly simulated Browser API outcomes, triggered by real user-activation clicks. Paid access, service worker, cache bytes, SHA verification and scene identities are real.",
+    "The exact current-build EN shell was removed from the disposable QA cache, checked without network repair, and restored byte-for-byte. No other cache entry, production service or personal browser profile was modified.",
+    "RU/EN device copy remains implementation draft pending synchronized editorial review. This is focused internal S03 evidence, not stage acceptance or a release candidate."
+  ]
+}

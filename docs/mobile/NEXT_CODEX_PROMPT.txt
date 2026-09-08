@@ -1,55 +1,72 @@
 Continue V12 in literary-planet-v12-work on
 codex/literary-planet-v12-bilingual-final-autopilot.
 
-LATEST SOURCE CHECKPOINT:8a3ef924aa911aeda4742b4434ac925ac576764e.
-The canonical globe is the only PWA/native application home. Orange splash ->
-real existing R3F scene; retained collection/reader panels, single global
-RU/EN control, accessible notices and Help. Do not restore magazine homepage.
-Read GLOBE_APPLICATION_CONTRACT.md; original interactive 3D Planetka, lighting,
-environments and expressiveness remain binding future stage work, not complete.
+Globe/panel source8a3ef924 and Android evidence checkpoint585e479f are followed
+by the committed PWA Device UX/evidence checkpoint; resolve its SHA via git log.
+The canonical globe is the only PWA/native home. Orange splash -> actual
+existing R3F scene, retained reader/collection, one global RU/EN control.
+Read GLOBE_APPLICATION_CONTRACT.md. Original interactive3D Planetka, refined
+lighting/environments and performance tiers remain binding work, not complete.
 
-PWA evidence: evidence/S03/globe-root-20260908/result.json and
-final-source-validation.json. a5 7dc47dd87f5bb7653021d95523176aec7693af521ef096ae663e564030318c11
-passed final two desktop/mobile favorite cases: real offline cover bytes,
-selected reader visible after cold RU/EN reload, header/locale/return retained,
-same Canvas/renderer/camera/scene, Help and history. Actual RU PNG is warm;
-cold RU has telemetry and cold EN has telemetry plus PNG. a1-a4 failures stay
-distinct. Earlier access/revocation/keyboard update+rollback/notice geometry
-passes are retained. Do not call this a full final suite or repeat green checks.
+LATEST PWA: 051c3da1b534623b00875ccfb4ab421a5ae24ab6e8c5a3a5cdb71d1c9c53a8e3
+artifactSHA256:2680e7f84d2ce7e375797e2c39cf210fcfa51953f97caf764e473b46953cafe1
+dist-pwa currently contains this final focus-color-only candidate.
+Evidence: evidence/S03/device-preparation-20260908/result.json.
+237 final unit passes across scoped runs; two real desktop/mobile browser
+passes on ee021f84. Real cache SHA256 check detects removed EN shell without
+fetching/repairing, and returns complete after exact-byte restoration.
+Install/storage browser APIs were simulated; no actual OS installation claim.
+All963 input files compared: only pwa.css changed after browser evidence.
+Final strict audit passed; do not replay green cases for that color-only delta.
+First worker fixture/tsc failures and corrections remain preserved. Copy is draft.
 
-Android:74201a08c3c2014ea1e652b866fc241a6c47cfdcbc510698e2f9927193be0a9b
-sourceInputsSha256:bfafd2b40f96cac3e4ab4430a25b5f20dd3bf7381ca72ed8d58db85f582326a5
-.tmp/native-builds/android-dev/74201a08/runtime
+Prior PWA globe/panels evidence: evidence/S03/globe-root-20260908/result.json.
+a5 7dc47dd8 runtime archived at
+.tmp/pwa-artifacts/7dc47dd8-globe-panels-before-device-ux-20260908
+Two affected desktop/mobile favorite cases passed, including cold RU/EN reader
+viewport and same Canvas/renderer/camera/scene. Actual RU PNG is warm; cold RU
+has telemetry, cold EN telemetry+PNG. Keep a1-a4 failures distinct; no full-suite
+replay or exact RC claim. Earlier access/revocation/update/rollback retained.
+
+ANDROID:74201a08c3c2014ea1e652b866fc241a6c47cfdcbc510698e2f9927193be0a9b
+SOURCE:8a3ef924aa911aeda4742b4434ac925ac576764e
 .tmp/native-builds/android-dev/74201a08/app-dev-debug.apk
-APK35208110B SHA256d0ebd99b6be3ca3a2c6d972e5cd44165b0453e5e940dd7542cafc7baccd98de1.
+35208110B SHA256d0ebd99b6be3ca3a2c6d972e5cd44165b0453e5e940dd7542cafc7baccd98de1
 Evidence: evidence/S04/android-globe-panels-20260908/result.json.
-Strict343files; APK342 matched plus only .vite metadata omission; offline
-Gradle and independent plugin/resource/debug-signature/alignment checks passed.
-Exact archived copies verified. No Android install/physicaldevice/RC claim.
-Previous3cd14423/46ebba56 remain preserved; never relabel their source.
-Workspace-local Java21/SDK are already installed/licensed by owner approval.
+Strict/source/offline Gradle/APK binary/plugin/resource/signature/alignment and
+preservation passed once. No installed Android/device/RC claim. New Device UX
+is PWA-only but serviceWorkerRuntime.js also enters native build-tool inputs;
+never relabel APK742 with new-source identity. Previous3cd/46eb preserved.
+Java21/SDK/license are prepared and approved. Do not request them again.
 
-iOS: historical public325e9f3c / run34179803208 installed/launched RU/EN
-simulators but magazine-home/status-bar screenshots FAIL the product contract.
-Corrected isolated public-parent projection is in
-.tmp/ios-globe-projection-20260908/final-a5/REVIEW.md with payload/diff/overlay.
-Read current agent messages: candidate-wide local TypeScript/asset validation
-is being completed.82 preliminary delta files;16 unpublished files are outside
-the previous74-file reviewed payload. Prepare concrete validated review before
-any publication permission step. No private local history/V12/reports/keys
-may enter public CI. Owner has no Mac; cloud testing avoids a Mac purchase.
+IOS: historical public325e9f3c / run34179803208 installed/launched RU/EN
+simulators; magazine-home/safe-area screenshots FAIL product contract.
+Corrected83-file isolated projection is fully locally validated:
+.tmp/ios-globe-projection-20260908/final-a5/REVIEW.md
+payloadSHA256:5d3e521294ae46f827ecd974525136462c104d54bee03448bac0ec7a21531741
+expectedTree:58ea6814d6d6abe49a0f57ed7f3b00f867d35ab1
+publicParent:325e9f3c0daef6600c1a96e5af76c9f9d2f857c4
+TypeScript passed after preserved first failure;285 exact assets retained.
+Evidence: evidence/S04/ios-globe-projection-20260908/result.json.
+PUBLICATION QUESTION ALREADY PENDING:16 unpublished files outside prior74.
+Do not repeat the question or infer approval from elapsed time. If an explicit
+answer authorizes it, publish only exact83-file projection on the reviewed
+public parent/nonforce test branch and run simulator build. No private history,
+V12/reports/keys; new PWA Device UX not included. Owner has no Mac.
 
 S00-S02 accepted. S03 first-open/S03.acceptance. S03/S04/S05 IN_PROGRESS under
 documented parallel-safe entry; S06-S40 NOT_STARTED. releaseReady:false.
-Finish remaining internal paid-PWA/native/onboarding work, restrictive child
-policy/Parent Gate/profiles/Planetka, commerce and full bilingual editorial,
-legal, accessibility, package/device/RC and owner approval gates. Never assign
-translation or programming to owner or present placeholder child/shop as done.
+Remaining internal work includes actual PWA installation/device evidence,
+paid-web checkout integration, reviewed indexable RU/EN content, native/device
+and S05 onboarding, restrictive child policy/Parent Gate/profiles/Planetka,
+commerce, full bilingual editorial/legal/support/accessibility and RC gates.
+Never transfer translation/programming tasks to owner. No mock child/shop claims.
 
 Read AGENTS/state/status/decisions/blockers and only active-stage routing.
-Archive194checksums/191manifest entries/173binding documents already verified
-for this continuation; master and routed18/21/22/23 read. Do not restart S00.
-Preserve tests -> fixes -> relevant regression -> evidence -> atomic commit ->
-state/status/decisions/next checkpoint. No production deploy/Submit/Release/
-merge/store/DB action, second globe, invented facts/titles, raw MT or unlicensed
-protected production assets. Accepted state.headSha remains S02:6305df5f.
+Archive194 checksums/191 manifest entries/173 binding documents already
+verified this continuation; master and routed18/21/22/23 read. Do not restart S00.
+Checkpoint verify-state passed at585e479f; subsequent cache/evidence metadata
+does not change criteria or accepted head. Do not relabel that old verification.
+Tests -> fixes -> relevant regression -> evidence -> atomic commit -> checkpoint.
+No production deploy/Submit/Release/merge/store/DB action, second globe, invented
+facts/titles, raw MT or unlicensed protected assets. Accepted head remains S02.

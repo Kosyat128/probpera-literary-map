@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T05:10:51.603Z",
+  "sourceFiles": [
+    {
+      "path": "src/main.tsx",
+      "sha256": "111b797aeba148b16a3fe21b3ca64ca70d13b8b1939a07f8674b448afdecf69e"
+    },
+    {
+      "path": "src/pwa/PwaHelp.tsx",
+      "sha256": "a2adc1f81f55a9cf820fb1859efdbb90376eb44a4a6ce2056f96e5b9efb1a093"
+    },
+    {
+      "path": "src/pwa/PwaDevicePanel.tsx",
+      "sha256": "e6db7142de8bdb3fe66f7b3bd457c537b2dc0eb3ae8e47a2f36416113cc5e875"
+    },
+    {
+      "path": "src/pwa/pwa.css",
+      "sha256": "3a4a3d81cb994f8d441f611d084d570954dd826e1405a005aba949bba49bd967"
+    },
+    {
+      "path": "src/pwa/PwaInstallController.ts",
+      "sha256": "108b64464e4b1c3d420099be92a30c9949994677b3c83c24c55db3c3ef8087cb"
+    },
+    {
+      "path": "src/pwa/registerPwaWorker.ts",
+      "sha256": "2ba1f2206189b627a8a18773137b7d4de0f04090903738ead5b7aaf4aef535ef"
+    },
+    {
+      "path": "src/pwa/serviceWorkerRuntime.js",
+      "sha256": "e4c3cf9c2cbf3d42481244434a900807cd01b8c743d4f2d4828302e8c0dca3fc"
+    }
+  ],
+  "checks": [
+    {
+      "command": "node node_modules/typescript/bin/tsc --noEmit",
+      "attempt": 1,
+      "toolSession": 43220,
+      "exitCode": 1,
+      "diagnostics": [
+        "TS2550: Object.hasOwn is unavailable in the current TypeScript library target at registerPwaWorker.ts:323."
+      ],
+      "correction": "Use compatible Object.prototype.hasOwnProperty.call; no library/target upgrade."
+    },
+    {
+      "command": "node node_modules/typescript/bin/tsc --noEmit",
+      "attempt": 2,
+      "toolSession": 21839,
+      "exitCode": 0,
+      "diagnostics": []
+    },
+    {
+      "command": "node scripts/mobile/platform-boundaries.mjs",
+      "exitCode": 0,
+      "pass": true,
+      "sourceFileCount": 879,
+      "webReachableFileCount": 503,
+      "auditedRuntimeFileCount": 512,
+      "importCount": 1924,
+      "findings": []
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0
+    }
+  ],
+  "evidenceOrigin": "Observed completed tool outputs; no checks rerun to create this record. Final subsequent change is the scoped focus-outline color only.",
+  "focusCorrection": {
+    "path": "src/pwa/pwa.css",
+    "selector": ".pwa-device button:focus-visible",
+    "background": "#fffdf8",
+    "old": "#f67518",
+    "oldContrast": 2.7630850437547054,
+    "current": "#4b087c",
+    "currentContrast": 12.712732249034262,
+    "outlinePixels": 3,
+    "offsetPixels": 3,
+    "method": "WCAG relative-luminance calculation of declared opaque colors. Not a full accessibility audit.",
+    "extraBrowserTestsWritten": false
+  },
+  "primarySources": [
+    {
+      "url": "https://storage.spec.whatwg.org/#storagemanager",
+      "applied": "Storage estimate is approximate and origin-wide; persist is a permission request issued only by an explicit user action."
+    },
+    {
+      "url": "https://webkit.org/blog/14403/updates-to-storage-policy/",
+      "applied": "Storage support and persistence behavior are browser-dependent; expose unavailable/denied states without guarantees."
+    }
+  ],
+  "rootVisualReview": {
+    "scope": "a1 actual mobile RU complete and EN incomplete PNGs; header, locale, return and text are readable. Install and Storage API fixtures are simulated, real cache/worker/scene behavior is separate.",
+    "pass": true
+  },
+  "releaseReady": false,
+  "stageAccepted": false
+}

@@ -1,0 +1,331 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-controlled-pwa-device-preparation-evidence",
+  "recordedAt": "2026-09-08T05:20:18.709095Z",
+  "stage": "S03",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "localQaOnly": true,
+  "scope": "Explicit device preparation in the shared globe Collection Help: installation guidance, read-only offline readiness, origin-wide storage estimate and user-requested persistence.",
+  "workspaceRoot": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work",
+  "artifactSourceCommit": "585e479f482bb2c574dc266883766df4461feed8",
+  "finalStatus": {
+    "focusedImplementationValidated": true,
+    "unitTestsPassed": 237,
+    "unitBreakdown": {
+      "installController": 13,
+      "workerController": 65,
+      "serviceWorker": 159
+    },
+    "browserScenariosPassed": 2,
+    "browserProjects": [
+      "pwa-desktop",
+      "pwa-mobile"
+    ],
+    "finalCandidateStrictAuditPassed": true,
+    "finalCandidateBrowserReplay": 0,
+    "stageAcceptanceClaim": false
+  },
+  "sourceValidation": {
+    "evidence": "support/source-validation.json",
+    "typeScriptFinalExitCode": 0,
+    "platformBoundaryPass": true,
+    "gitDiffCheckExitCode": 0,
+    "scope": "Recorded existing tool results, not rerun during aggregation.",
+    "focusCorrection": {
+      "path": "src/pwa/pwa.css",
+      "selector": ".pwa-device button:focus-visible",
+      "background": "#fffdf8",
+      "old": "#f67518",
+      "oldContrast": 2.7630850437547054,
+      "current": "#4b087c",
+      "currentContrast": 12.712732249034262,
+      "outlinePixels": 3,
+      "offsetPixels": 3,
+      "method": "WCAG relative-luminance calculation of declared opaque colors. Not a full accessibility audit.",
+      "extraBrowserTestsWritten": false
+    }
+  },
+  "units": {
+    "install": {
+      "passed": 13,
+      "json": "support/install-unit-results.json",
+      "losslessRawProcessLog": "support/install-unit-run-log.json",
+      "primarySources": "support/install-primary-sources.json",
+      "rawLogFormat": "Lossless UTF-8 JSON wrapper; reconstruct text using raw-log-preservation.json.",
+      "originalIgnoredRawLog": "support/install-unit-run.log"
+    },
+    "offlineReadiness": {
+      "controllerPassed": 65,
+      "workerPassed": 159,
+      "evidence": "support/worker-unit-validation.json",
+      "firstRun": {
+        "passed": 223,
+        "failed": 1,
+        "total": 224
+      },
+      "correctedWorkerRun": {
+        "passed": 159,
+        "failed": 0
+      },
+      "rawProcessLogAvailable": false,
+      "provenance": "Worker evidence reproduces captured exec_command outputs; it is not an independently saved lossless process transcript."
+    },
+    "counting": "237 final distinct passing unit cases combines install 13, first-run controller 65, and corrected worker 159. No single 237-test combined run is claimed; the initial 158 worker passes are not counted again."
+  },
+  "preservedFailures": [
+    {
+      "kind": "worker-test-fixture",
+      "evidence": "support/worker-unit-validation.json",
+      "ordinal": 1,
+      "exitCode": 1,
+      "test": "releases a stalled cached stream at the worker deadline without downloading or leaving the query slot occupied",
+      "message": "Test timed out in 5000ms.",
+      "cause": "The worker captured setTimeout when environment() installed it, before this test enabled vi.useFakeTimers(); advancing the fake clock therefore did not fire the worker's captured real timer.",
+      "correction": "Moved vi.useFakeTimers() before environment() construction in this one worker test. No product source changed for this correction.",
+      "finalValidation": "Only affected worker file rerun: 159/159 pass; controller 65/65 retained from the first run."
+    },
+    {
+      "kind": "TypeScript",
+      "evidence": "support/source-validation.json",
+      "attempt": 1,
+      "toolSession": 43220,
+      "exitCode": 1,
+      "diagnostics": [
+        "TS2550: Object.hasOwn is unavailable in the current TypeScript library target at registerPwaWorker.ts:323."
+      ],
+      "correction": "Use compatible Object.prototype.hasOwnProperty.call; no library/target upgrade.",
+      "finalValidation": "Second recorded typecheck session 21839 exited 0."
+    }
+  ],
+  "realBrowserEvidence": {
+    "run": "a1/result.json",
+    "summary": "a1/compact-summary.json",
+    "buildId": "ee021f84f9ecf8472581f175ec18c73592da42c31a848e12f104af2e7f0e3ba4",
+    "passed": 2,
+    "failed": 0,
+    "screenshotCount": 8,
+    "projects": [
+      {
+        "project": "pwa-desktop",
+        "status": "passed",
+        "durationMs": 21884,
+        "evidence": "pwa-desktop-device-preparation-evidence.json",
+        "readinessSequence": [
+          "complete",
+          "incomplete",
+          "complete"
+        ],
+        "workerNetworkAttempts": [
+          0,
+          0,
+          0
+        ],
+        "restoredSha256": "ab23df0a8bf835169e047d6fb98381d5de252eaf767feb76996ba8cdf5ee6c83",
+        "simulatedDecisions": {
+          "prompts": [
+            {
+              "userActivation": true
+            }
+          ],
+          "persistence": [
+            {
+              "userActivation": true
+            }
+          ]
+        }
+      },
+      {
+        "project": "pwa-mobile",
+        "status": "passed",
+        "durationMs": 19967,
+        "evidence": "pwa-mobile-device-preparation-evidence.json",
+        "readinessSequence": [
+          "complete",
+          "incomplete",
+          "complete"
+        ],
+        "workerNetworkAttempts": [
+          0,
+          0,
+          0
+        ],
+        "restoredSha256": "ab23df0a8bf835169e047d6fb98381d5de252eaf767feb76996ba8cdf5ee6c83",
+        "simulatedDecisions": {
+          "prompts": [
+            {
+              "userActivation": true
+            }
+          ],
+          "persistence": [
+            {
+              "userActivation": true
+            }
+          ]
+        }
+      }
+    ],
+    "actualSystems": [
+      "Loopback QA signed paid access boundary",
+      "Canonical App / LiteraryGlobe and real R3F Canvas, renderer, camera and scene",
+      "Real service worker, exact COMPLETE manifest and CacheStorage bytes",
+      "Explicit UI request with actual SHA-256 verification of 316 base files",
+      "RU/EN provider, retained open Help/device/header nodes and Collection close/reopen"
+    ],
+    "cacheMutation": {
+      "ownedEntry": "/planet/en/",
+      "selectedFrom": "The exact active-build COMPLETE manifest entrypoints.en shell",
+      "sequence": [
+        "complete",
+        "incomplete-after-one-entry-deletion",
+        "complete-after-original-byte-restoration"
+      ],
+      "workerFetchAttemptsPerCheck": [
+        0,
+        0,
+        0
+      ],
+      "restoredSha256": "ab23df0a8bf835169e047d6fb98381d5de252eaf767feb76996ba8cdf5ee6c83",
+      "cacheRepairDuringReadinessCheck": false,
+      "restorationPolicy": "Original Response bytes restored before the final complete check; finally restores on early failure and verifies the final SHA256."
+    },
+    "simulatedApis": [
+      "beforeinstallprompt event, prompt() and accepted userChoice",
+      "StorageManager.persisted() and denied persist() result"
+    ],
+    "simulationClaims": [
+      "One prompt and one persistence request were invoked by explicit real clicks with userActivation=true.",
+      "Accepted choice did not show installed/standalone claims; denial stayed truthful through RU/EN changes.",
+      "No actual OS installation, browser installation dialog or persistent-storage grant occurred."
+    ]
+  },
+  "finalCandidate": {
+    "run": "a2/result.json",
+    "summary": "a2/compact-summary.json",
+    "buildId": "051c3da1b534623b00875ccfb4ab421a5ae24ab6e8c5a3a5cdb71d1c9c53a8e3",
+    "artifactSha256": "2680e7f84d2ce7e375797e2c39cf210fcfa51953f97caf764e473b46953cafe1",
+    "counts": {
+      "files": 362,
+      "bytes": 41434917,
+      "bootstrapFiles": 316,
+      "bootstrapBytes": 20061621,
+      "sourceInputs": 963,
+      "publicSources": 291,
+      "scripts": 42
+    },
+    "strictAudit": "a2/strict-artifact-audit.json",
+    "strictPass": true,
+    "sourceFilesCompared": 963,
+    "sourceSnapshotFiles": 964,
+    "sourceUnchangedDuringRun": true,
+    "deltaFromBrowserCandidate": [
+      "src/pwa/pwa.css"
+    ],
+    "delta": "One focus outline color: orange #f67518 to existing violet #4b087c; outline 3px and offset 3px retained.",
+    "allJavaScriptTypeScriptSourcesUnchanged": true,
+    "browserCasesRun": 0,
+    "browserEvidenceInheritedFrom": "a1",
+    "gracefulQaServerClose": true,
+    "exactFinalCandidateScreenshotsCaptured": false
+  },
+  "artifacts": [
+    {
+      "role": "current-final-focus-candidate",
+      "workspaceRelativePath": "dist-pwa",
+      "buildId": "051c3da1b534623b00875ccfb4ab421a5ae24ab6e8c5a3a5cdb71d1c9c53a8e3",
+      "artifactSha256": "2680e7f84d2ce7e375797e2c39cf210fcfa51953f97caf764e473b46953cafe1",
+      "identityRecheckedDuringAggregation": true
+    },
+    {
+      "role": "preserved-globe-panel-baseline",
+      "workspaceRelativePath": ".tmp/pwa-artifacts/7dc47dd8-globe-panels-before-device-ux-20260908",
+      "buildId": "7dc47dd87f5bb7653021d95523176aec7693af521ef096ae663e564030318c11",
+      "artifactSha256": "e7e1747f82a333b42400381a99ef2469b79d81be2a66320a7aeee632ba9eb274",
+      "identityRecheckedDuringAggregation": true
+    },
+    {
+      "role": "preserved-device-browser-tested-candidate",
+      "workspaceRelativePath": ".tmp/pwa-artifacts/ee021f84-device-ux-before-focus-color-20260908",
+      "buildId": "ee021f84f9ecf8472581f175ec18c73592da42c31a848e12f104af2e7f0e3ba4",
+      "artifactSha256": "ae594db4f37fa6af72d48b157d9c8738b45f30aa785805a0ac4a43c1c2838936",
+      "identityRecheckedDuringAggregation": true
+    }
+  ],
+  "integrity": {
+    "algorithm": "SHA256",
+    "supportCopies": [
+      {
+        "sourcePath": ".tmp/pwa-device-preparation-20260908/source-validation.json",
+        "path": "support/source-validation.json",
+        "sha256": "a39ef927da133f7ab83f8c1144c9ed3f28f95acfe8d31121697db160dc6ae05c",
+        "bytes": 3378,
+        "losslessCopy": true
+      },
+      {
+        "sourcePath": ".tmp/pwa-device-preparation-20260908/worker-unit-validation.json",
+        "path": "support/worker-unit-validation.json",
+        "sha256": "44e67d4ce43c26ac2d7409e31cf6a09ad380f956534af5bb2743a5e308e85a16",
+        "bytes": 7609,
+        "losslessCopy": true
+      },
+      {
+        "sourcePath": ".tmp/pwa-install-controller-20260908/unit-results.json",
+        "path": "support/install-unit-results.json",
+        "sha256": "563dc09ea65c91b52b36f81a7b4f5e9582c5cf10a9f7a358fdd3ca1fca83f802",
+        "bytes": 5608,
+        "losslessCopy": true
+      },
+      {
+        "sourcePath": ".tmp/pwa-install-controller-20260908/primary-sources.json",
+        "path": "support/install-primary-sources.json",
+        "sha256": "2550a766d4b3d9516805d5284457e26d24f2c2d9d0677c05eddcb87940d814f7",
+        "bytes": 1553,
+        "losslessCopy": true
+      },
+      {
+        "sourcePath": ".tmp/pwa-install-controller-20260908/unit-run.log",
+        "path": "support/install-unit-run.log",
+        "sha256": "889c3120a66f63c3dd8ac7db1489c8e0edeb32d6ae2f78decb1e4a87badf5f01",
+        "bytes": 502,
+        "losslessCopy": true
+      }
+    ],
+    "preservedRunIndexes": [
+      {
+        "path": "a1/result.json",
+        "sha256": "7d9d8ad6e7dcc9beb7263690bcb9aadab29348affd4fab827b917208ac1098d2",
+        "indexedFilesVerified": 18,
+        "indexedBytes": 3066126.0
+      },
+      {
+        "path": "a2/result.json",
+        "sha256": "41a070f67cc6ea31d295747e2b236f2e6edf03e28945688515169510907ace9c",
+        "indexedFilesVerified": 9,
+        "indexedBytes": 298411.0
+      }
+    ],
+    "privateQaAuthorityAndControlFilesExcluded": true,
+    "privateTracesExcluded": true,
+    "installRawLogBytePreserved": true,
+    "newCommandsDuringAggregation": "Read source evidence, compare artifact identities, copy whitelisted files and verify SHA256 only. No tests, builds or browsers rerun.",
+    "rawLogPreservation": {
+      "manifest": "raw-log-preservation.json",
+      "manifestSha256": "2e8f3a9fa5ce8f8b539a905417474b61df1cddce4298208fb23e8e009a5566bf",
+      "originalIgnoredLogs": 4,
+      "losslessJsonWrappers": 4,
+      "allRoundTripsVerified": true,
+      "originalCopiedFilesReceiptsUnchanged": true,
+      "note": "Original *.log files are ignored by Git. The referenced JSON wrappers preserve exact bytes and provide the versionable evidence; original copiedFiles entries remain provenance receipts."
+    }
+  },
+  "limitations": [
+    "Internal focused S03 evidence only; no S03/S00-S40 acceptance, global BIL completion or production RC claim.",
+    "RU/EN device copy remains implementation draft pending synchronized editorial review.",
+    "Chrome desktop and Pixel 7 emulation do not establish Safari, physical-device or OS-installed-PWA behavior.",
+    "Offline readiness covers the current base files at check time. It does not extend entitlement, promise future browser retention or include optional packages.",
+    "Storage estimates are approximate and origin-wide; accepted installation choice and simulated denial are separate from real browser/OS evidence.",
+    "Raw worker process transcripts and raw first typecheck output were not independently saved; their existing tool-result records are preserved honestly.",
+    "Actual screenshots and browser checks belong to a1. Final a2 has the documented low-impact color delta and strict artifact audit, with zero browser replay.",
+    "Original ignored *.log paths in provenance receipts may be absent from a Git checkout. Use raw-log-preservation.json mappings and lossless JSON wrappers to read or reconstruct those exact logs."
+  ]
+}

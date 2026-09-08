@@ -1,4 +1,4 @@
-import type { SyntheticEvent } from "react";
+import type { ReactNode, SyntheticEvent } from "react";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import { canonicalJournalOrigin } from "../platform/distribution";
 
@@ -54,7 +54,7 @@ function accountLinkProps(page: "planet-account" | "delete-account", language: "
 
 /** Native details keeps keyboard behavior and its open state across locale
  * updates; it neither remounts the application nor adds a second locale control. */
-export default function PwaHelp({ embedded = false }: { embedded?: boolean } = {}) {
+export default function PwaHelp({ embedded = false, devicePanel }: { embedded?: boolean; devicePanel?: ReactNode } = {}) {
   const { language } = useInterfaceLanguage();
   const copy = pwaHelpCopy.locales[language];
   return (
@@ -62,6 +62,7 @@ export default function PwaHelp({ embedded = false }: { embedded?: boolean } = {
       <details>
         <summary>{copy.heading}</summary>
         <div className="pwa-help__body">
+          {devicePanel}
           <h2>{copy.offlineHeading}</h2>
           <p>{copy.offline}</p>
           <p>{copy.access}</p>

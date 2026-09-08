@@ -275,3 +275,20 @@
   offline build, actual binary and preservation checks passed once; older
   artifacts retain their own identities. Installed-device and release claims
   require separate evidence. Keep final PWA a5 evidence source-bound.
+
+- D068: PWA offline readiness is a user-initiated read-only SHA256 check of
+  every selected-generation cache file. A marker or active build ID alone is
+  insufficient. Cancellation, stale/controller/rollback races and missing
+  files fail closed without fetching, repairing or replacing the scene.
+- D069: Browser install acceptance is distinct from reported installation.
+  Storage estimates are approximate and origin-wide; persistence is requested
+  only on explicit action, with unavailable/denied/error outcomes visible.
+  RU/EN switches reuse the same controllers. New copy remains draft.
+- D070: Keep237 unit passes and two actual browser passes source-bound.
+  Final051c3da1 differs from tested ee021f84 only in a focus-outline color;
+  strict artifact/input comparison supports retaining bounded behavior evidence
+  without replaying green browser cases. No OS/device/RC acceptance follows.
+- D071: The exact83-file iOS projection is validated against its public parent;
+  payload5d3e5212 and tree58ea6814 supersede the preliminary82-file candidate.
+  The already-pending question concerns16 files outside prior74-file approval.
+  No response means no authorization; retain local review without public writes.

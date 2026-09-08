@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "localQaOnly": true,
+  "releaseReady": false,
+  "sourceRun": ".tmp/pwa-cross-engine-results/pwa-device-preparation-20260908-a1",
+  "copiedFiles": [
+    {
+      "path": "compact-summary.json",
+      "sha256": "f5159c6c99ee9e695c181861bf1896f3bcc4fc10c5625089de9a2585fbb21893",
+      "bytes": 6460
+    },
+    {
+      "path": "results.json",
+      "sha256": "dabc9b83af669b6043aff8e999dfddd90f4cca4c4a166c57443da017ce9d92d5",
+      "bytes": 15719
+    },
+    {
+      "path": "run.log",
+      "sha256": "c6d0acd6cf22b7ffcf1ee4eb10dc55e0d25e022a7c343c85c5a204870b49daec",
+      "bytes": 7228
+    },
+    {
+      "path": "session.json",
+      "sha256": "e46fab699dce001da60ee925423ca93f1b259724ae337a77e4a7048f385c0954",
+      "bytes": 3227
+    },
+    {
+      "path": "strict-artifact-audit.json",
+      "sha256": "3eb6751d1130a8c83b9f1ae30c64df60876cda48c05e497f07148ecda391d780",
+      "bytes": 792
+    },
+    {
+      "path": "source-before.json",
+      "sha256": "42904c38add31a66a35a6a75cd2b8c37af92dd7c734cde5644a1456749857249",
+      "bytes": 139636
+    },
+    {
+      "path": "source-after.json",
+      "sha256": "42904c38add31a66a35a6a75cd2b8c37af92dd7c734cde5644a1456749857249",
+      "bytes": 139636
+    },
+    {
+      "path": "source-comparison.json",
+      "sha256": "f6fe58e4f8adb4c02f84e7544dbec616f29eeb47ea9a50a9926c614de2e3ac8e",
+      "bytes": 1709
+    },
+    {
+      "path": "pwa-desktop-device-preparation-evidence.json",
+      "sha256": "01f46ec860561cccfa7c20cfdcf403b7b91630e9cabd8ce8cb8ac6aff7b2f6ea",
+      "bytes": 3596
+    },
+    {
+      "path": "pwa-mobile-device-preparation-evidence.json",
+      "sha256": "40d28042e768cdb46217b1754282d289144defd66f6ce09d1cc874e51d58cd37",
+      "bytes": 3575
+    },
+    {
+      "path": "artifacts/controlled-pwa-device-prep-02071--browser-decisions-truthful-pwa-desktop/device-en-incomplete.png",
+      "sha256": "5b092503874b0de8a5408d0553caad3f2e38a878d1d01d2b08cd55a9a55396d9",
+      "bytes": 464472
+    },
+    {
+      "path": "artifacts/controlled-pwa-device-prep-02071--browser-decisions-truthful-pwa-desktop/device-en-simulated-install-accepted.png",
+      "sha256": "3d980c976ce15b5b6e3cba70145f1d6608405eb9e0e18142a287917dc45e298d",
+      "bytes": 461293
+    },
+    {
+      "path": "artifacts/controlled-pwa-device-prep-02071--browser-decisions-truthful-pwa-desktop/device-en-simulated-persistence-denied.png",
+      "sha256": "67aeff6e90ce238e92345c4e0bae162574da7e69a5d1efe2fd3c3bac60026483",
+      "bytes": 518908
+    },
+    {
+      "path": "artifacts/controlled-pwa-device-prep-02071--browser-decisions-truthful-pwa-desktop/device-ru-complete.png",
+      "sha256": "c53ca73c480f4951d39077074e88e797f5ec0c72f2dfc93290d80d1609300119",
+      "bytes": 466675
+    },
+    {
+      "path": "artifacts/controlled-pwa-device-prep-02071--browser-decisions-truthful-pwa-mobile/device-en-incomplete.png",
+      "sha256": "aa7d93a500c204d5dd05a760a2f4b6e515651feaefb3f8022c7dcac9adf6f6a9",
+      "bytes": 213835
+    },
+    {
+      "path": "artifacts/controlled-pwa-device-prep-02071--browser-decisions-truthful-pwa-mobile/device-en-simulated-install-accepted.png",
+      "sha256": "411d3ce8603a6cc1ba0925fd323403e06fd617ba53acf21401645e1088782192",
+      "bytes": 191806
+    },
+    {
+      "path": "artifacts/controlled-pwa-device-prep-02071--browser-decisions-truthful-pwa-mobile/device-en-simulated-persistence-denied.png",
+      "sha256": "a603079341d228e5ed11d73602fd8cf9ae14f0cdd082df11c3df5e337f18fc1f",
+      "bytes": 233553
+    },
+    {
+      "path": "artifacts/controlled-pwa-device-prep-02071--browser-decisions-truthful-pwa-mobile/device-ru-complete.png",
+      "sha256": "c4e177dbffe34656931d4b35364dbe4752637f93063a74ac3a2ffe3f3ee3fda6",
+      "bytes": 194006
+    }
+  ],
+  "privateAuthorityAndControlExcluded": true,
+  "browserCasesPassed": 2
+}

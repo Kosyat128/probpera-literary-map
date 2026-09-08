@@ -1,0 +1,12 @@
+{
+  "checkedAt": "2026-09-08",
+  "scope": "Controlled PWA installation controller; no production installation claim",
+  "sources": [
+    {"url":"https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeinstallprompt_event","applied":"Feature may be absent or delayed. Retain a valid event at bootstrap; expose an explicit action only when an event is available."},
+    {"url":"https://developer.mozilla.org/en-US/docs/Web/API/BeforeInstallPromptEvent/prompt","applied":"Call prompt directly from user activation and at most once per event. Support the documented outcome and legacy userChoice fallback."},
+    {"url":"https://developer.mozilla.org/en-US/docs/Web/API/Window/appinstalled_event","applied":"Browser appinstalled is separate evidence from the prompt choice."},
+    {"url":"https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/display-mode","applied":"Observe current standalone mode. Fullscreen alone is not used as installation evidence because ordinary pages can enter fullscreen."},
+    {"url":"https://web.dev/learn/pwa/detection","applied":"Chromium appinstalled on Android can precede completion of WebAPK creation. UI must describe browser evidence without promising completed OS installation."}
+  ],
+  "decisions": ["No user-agent inference or guaranteed browser installation instructions.","No automatic prompt, persistent installed flag, storage mutation, auth/license or worker change.","One lifetime controller is integrated by the distribution bootstrap, not recreated by locale or Help mounts."]
+}

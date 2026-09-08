@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "runId": "pwa-device-preparation-20260908-a2",
+  "localQaOnly": true,
+  "buildOnly": true,
+  "origin": "http://127.0.0.1:4296",
+  "browserCasesRun": 0,
+  "inheritedBrowserRun": "pwa-device-preparation-20260908-a1",
+  "artifact": {
+    "buildId": "051c3da1b534623b00875ccfb4ab421a5ae24ab6e8c5a3a5cdb71d1c9c53a8e3",
+    "sourceCommit": "585e479f482bb2c574dc266883766df4461feed8",
+    "sourceInputsSha256": "6aad777bbea17ff9c8136d6924770a2523a480e5bc0185e1aa8bb456d136deb2",
+    "authoritySha256": "4354a0b33904292d7943d6a8562656f3b5973e5ba0b7b07d37f25f355b39ee97",
+    "localQaAuthority": true,
+    "releaseReady": false
+  },
+  "limitations": [
+    "A final focus-color-only candidate; no browser replay or OS installation.",
+    "Ephemeral local signer; no production service or publication."
+  ]
+}

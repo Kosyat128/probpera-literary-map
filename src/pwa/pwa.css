@@ -73,6 +73,36 @@
 .pwa-help__links { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; }
 .pwa-help__links a { display: inline-flex; align-items: center; min-height: 44px; color: inherit; text-underline-offset: .2em; }
 .pwa-help :is(summary, a):focus-visible { outline: 3px solid #4b087c; outline-offset: 3px; }
+.pwa-device { margin-bottom: 1.5rem; }
+.pwa-device__cards { display: grid; gap: 1rem; }
+.pwa-device__cards > section {
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid #dacbdc;
+  border-radius: .75rem;
+  background: #fffdf8;
+}
+.pwa-device h3 { margin: 0 0 .5rem; font-size: 1rem; line-height: 1.4; }
+.pwa-device p { margin-block: .5rem; }
+.pwa-device button {
+  min-height: 44px;
+  max-width: 100%;
+  padding: .6rem .9rem;
+  border: 1px solid #4b087c;
+  border-radius: .5rem;
+  background: #4b087c;
+  color: #fffaf2;
+  font: inherit;
+  line-height: 1.4;
+  cursor: pointer;
+}
+.pwa-device button:focus-visible { outline: 3px solid #4b087c; outline-offset: 3px; }
+.pwa-device button:disabled { opacity: .65; cursor: progress; }
+.pwa-device__actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+.pwa-device__note { font-size: .9rem; }
+.pwa-device dl { margin-block: .75rem; }
+.pwa-device dl > div { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .25rem 1rem; }
+.pwa-device dd { margin: 0; font-variant-numeric: tabular-nums; }
 @media (forced-colors: active) {
   .pwa-access__actions :is(a, button), .pwa-access__refresh { border-color: ButtonText; }
 }

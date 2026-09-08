@@ -1,0 +1,14 @@
+{
+  "command": "node node_modules/typescript/bin/tsc --noEmit --pretty false",
+  "cwd": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\ios-globe-projection-20260908\\candidate-a5",
+  "startedAt": "2026-09-08T04:45:46.772Z",
+  "completedAt": "2026-09-08T04:46:11.300Z",
+  "durationMs": 24528,
+  "exitCode": 2,
+  "signal": null,
+  "errorCode": null,
+  "pass": false,
+  "attempt": 1,
+  "dependencies": "existing root node_modules junction; no installation or mutations",
+  "project": "complete retained public src plus frozen 82-file overlay"
+}

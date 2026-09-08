@@ -1,0 +1,43 @@
+{
+  "unchangedDuringRun": true,
+  "files": 964,
+  "changedDuringRun": [],
+  "artifactSha256": "ae594db4f37fa6af72d48b157d9c8738b45f30aa785805a0ac4a43c1c2838936",
+  "changedVsA5": [
+    {
+      "path": "src/main.tsx",
+      "previousSha256": "1735242d425f40707239e194aedb42526b664158622f3aa578fd0ded526791c6",
+      "sha256": "111b797aeba148b16a3fe21b3ca64ca70d13b8b1939a07f8674b448afdecf69e"
+    },
+    {
+      "path": "src/pwa/PwaDevicePanel.tsx",
+      "previousSha256": null,
+      "sha256": "e6db7142de8bdb3fe66f7b3bd457c537b2dc0eb3ae8e47a2f36416113cc5e875"
+    },
+    {
+      "path": "src/pwa/PwaHelp.tsx",
+      "previousSha256": "0bdb7c59afbc3049529ef714ff7fecda8172565cf6f59683139653c347e529d0",
+      "sha256": "a2adc1f81f55a9cf820fb1859efdbb90376eb44a4a6ce2056f96e5b9efb1a093"
+    },
+    {
+      "path": "src/pwa/PwaInstallController.ts",
+      "previousSha256": null,
+      "sha256": "108b64464e4b1c3d420099be92a30c9949994677b3c83c24c55db3c3ef8087cb"
+    },
+    {
+      "path": "src/pwa/pwa.css",
+      "previousSha256": "7c62e4198f5e0a123cf8ab3d5b7eee72c2e311d63d361b792280e878b674339c",
+      "sha256": "fbc61d897ef8eccca127e64dee9e8e9e904a74b0fd3de733eabba23f1e59c380"
+    },
+    {
+      "path": "src/pwa/registerPwaWorker.ts",
+      "previousSha256": "2da0965fbe7acbf47c9be1320041f37ebc1eefb632991f72b12326dc4cf0557c",
+      "sha256": "2ba1f2206189b627a8a18773137b7d4de0f04090903738ead5b7aaf4aef535ef"
+    },
+    {
+      "path": "src/pwa/serviceWorkerRuntime.js",
+      "previousSha256": "908c2de5a6cabdec3388c930ff07c65f7a01f0407f9d9dca06a1ab17dd21eca1",
+      "sha256": "e4c3cf9c2cbf3d42481244434a900807cd01b8c743d4f2d4828302e8c0dca3fc"
+    }
+  ]
+}

@@ -83,6 +83,8 @@ export function installPwaWorker(worker, input) {
   const engine = generation(config);
   const knownRoutes = new Set([...engine.entries.keys(), ...(config.rollbackReference?.routes ?? [])]);
   let selected = engine, selectionPromise, selectionInvalid = false, blockedClientId = null, rollbackPending = false;
+  let offlineCheck = null;
+  let selectionEpoch = 0;
   const ResponseClass = worker.Response ?? Response;
   const RequestClass = worker.Request ?? Request;
   const later = worker.setTimeout?.bind(worker) ?? setTimeout;
@@ -91,26 +93,45 @@ export function installPwaWorker(worker, input) {
   const sha256 = async (bytes) => [...new Uint8Array(await worker.crypto.subtle.digest("SHA-256", bytes))].map((byte) => byte.toString(16).padStart(2, "0")).join("");
   const configHash = () => fingerprint ??= sha256(encoder.encode(JSON.stringify(config)));
 
-  async function readBounded(response, limit) {
+  function abortable(operation, signal) {
+    if (!signal) return operation;
+    return new Promise((resolve, reject) => {
+      const abort = () => finish(new Error("cancelled"));
+      let settled = false;
+      function finish(error, value) {
+        if (settled) return;
+        settled = true;
+        signal.removeEventListener("abort", abort);
+        if (error) reject(error); else resolve(value);
+      }
+      signal.addEventListener("abort", abort, { once: true });
+      operation.then(value => finish(null, value), error => finish(error));
+      if (signal.aborted) abort();
+    });
+  }
+  async function readBounded(response, limit, signal) {
     if (!response.body) throw new Error("Missing shell response body");
     const reader = response.body.getReader();
     const chunks = [];
     let length = 0;
     try {
       while (true) {
-        const { done, value } = await reader.read();
+        const { done, value } = await abortable(reader.read(), signal);
         if (done) break;
         length += value.byteLength;
-        if (length > limit) { await reader.cancel("Shell byte budget exceeded"); throw new Error("Shell byte budget exceeded"); }
+        if (length > limit) { void reader.cancel("Shell byte budget exceeded").catch(() => undefined); throw new Error("Shell byte budget exceeded"); }
         chunks.push(value);
       }
-    } finally { reader.releaseLock(); }
+    } finally {
+      if (signal?.aborted) void reader.cancel("Readiness query cancelled").catch(() => undefined);
+      reader.releaseLock();
+    }
     const bytes = new Uint8Array(length);
     let offset = 0;
     for (const chunk of chunks) { bytes.set(chunk, offset); offset += chunk.byteLength; }
     return bytes;
   }
-  async function verifiedResponse(response, file, buildId) {
+  async function verifiedResponse(response, file, buildId, signal) {
     if (!response || response.status !== 200 || response.redirected || ["opaque", "opaqueredirect", "error"].includes(response.type) || /\b(?:no-store|private)\b/iu.test(response.headers.get("Cache-Control") ?? "") || /(?:^|,)\s*(?:\*|cookie|authorization)\s*(?:,|$)/iu.test(response.headers.get("Vary") ?? "")) throw new Error("Shell response is not immutable public content");
     if (response.url && response.url !== new URL(file.url, origin).href) throw new Error("Shell response URL changed");
     const mediaType = (response.headers.get("Content-Type") ?? "").split(";", 1)[0].trim().toLowerCase();
@@ -119,8 +140,8 @@ export function installPwaWorker(worker, input) {
         : /\.css$/iu.test(file.url) ? ["text/css"]
           : /\.(?:geo)?json$/iu.test(file.url) ? ["application/json", "application/geo+json"] : null;
     if (requiredMediaTypes && !requiredMediaTypes.includes(mediaType)) throw new Error("Shell response has an unusable Content-Type");
-    const bytes = await readBounded(response, file.bytes);
-    if (bytes.byteLength !== file.bytes || await sha256(bytes) !== file.sha256) throw new Error("Shell integrity mismatch");
+    const bytes = await readBounded(response, file.bytes, signal);
+    if (bytes.byteLength !== file.bytes || await abortable(sha256(bytes), signal) !== file.sha256) throw new Error("Shell integrity mismatch");
     const headers = new Headers(response.headers);
     headers.delete("Content-Encoding");
     headers.delete("Transfer-Encoding");
@@ -137,24 +158,27 @@ export function installPwaWorker(worker, input) {
       return await verifiedResponse(await worker.fetch(request), file, buildId);
     } finally { cancelTimer(timeout); }
   }
-  async function readMarker(name) {
+  async function readMarker(name, signal) {
     if (!new RegExp("^" + PREFIX + "[a-f0-9]{64}$", "u").test(name)) return null;
     try {
-      if (!(await worker.caches.keys()).includes(name)) return null;
-      const cache = await worker.caches.open(name);
-      const response = await cache.match(markerUrl);
+      if (!(await abortable(worker.caches.keys(), signal)).includes(name)) return null;
+      const response = await abortable(worker.caches.match(markerUrl, { cacheName: name }), signal);
       if (!response) return null;
-      const marker = JSON.parse(new TextDecoder().decode(await readBounded(response, MAX_MARKER_BYTES)));
+      const marker = JSON.parse(new TextDecoder().decode(await readBounded(response, MAX_MARKER_BYTES, signal)));
       exactKeys(marker, ["state", "manifestSha256", "completedAt", "activationSequence", "manifest"]);
       if (marker.state !== "COMPLETE" || !SHA256.test(marker.manifestSha256) || !Number.isSafeInteger(marker.completedAt) || marker.completedAt < 0 || !Number.isSafeInteger(marker.activationSequence) || marker.activationSequence < 0) return null;
       const manifest = normalizePwaWorkerConfig(marker.manifest, origin);
-      if (name !== PREFIX + manifest.buildId || marker.manifestSha256 !== await sha256(encoder.encode(JSON.stringify(manifest)))) return null;
+      if (name !== PREFIX + manifest.buildId || marker.manifestSha256 !== await abortable(sha256(encoder.encode(JSON.stringify(manifest))), signal)) return null;
       return { ...marker, manifest };
-    } catch { return null; }
+    } catch (error) { if (signal?.aborted) throw error; return null; }
   }
-  async function verifyCache(name, manifest) {
-    const cache = await worker.caches.open(name);
-    for (const file of manifest.files) await verifiedResponse(await cache.match(new URL(file.url, origin).href), file, manifest.buildId);
+  async function verifyCache(name, manifest, signal) {
+    // CacheStorage.match never creates an empty cache after eviction, unlike open.
+    for (const file of manifest.files) {
+      if (signal?.aborted) throw new Error("cancelled");
+      const response = await abortable(worker.caches.match(new URL(file.url, origin).href, { cacheName: name }), signal);
+      await verifiedResponse(response, file, manifest.buildId, signal);
+    }
   }
   async function currentComplete(verifyFiles = false) {
     const marker = await readMarker(cacheName);
@@ -173,7 +197,7 @@ export function installPwaWorker(worker, input) {
     if (!previous || previous.activationSequence < 1 || previous.activationSequence !== current.activationSequence - 1 || previous.manifestSha256 !== reference.manifestSha256) return null;
     // A previous engine that already rolled back did not last serve its own
     // application build. Do not label that superseded build "previous".
-    if (await (await worker.caches.open(PREFIX + reference.buildId)).match(selectionUrl)) return null;
+    if (await worker.caches.match(selectionUrl, { cacheName: PREFIX + reference.buildId })) return null;
     const routes = previous.manifest.files.flatMap(file => [file.url, ...file.aliases]).sort();
     if (JSON.stringify(routes) !== JSON.stringify(reference.routes)) return null;
     await verifyCache(PREFIX + reference.buildId, previous.manifest);
@@ -181,8 +205,7 @@ export function installPwaWorker(worker, input) {
   }
   async function loadSelection() {
     return selectionPromise ??= (async () => {
-      const cache = await worker.caches.open(cacheName);
-      const response = await cache.match(selectionUrl);
+      const response = await worker.caches.match(selectionUrl, { cacheName });
       if (!response) return selected;
       try {
         const marker = JSON.parse(new TextDecoder().decode(await readBounded(response, 4096)));
@@ -342,9 +365,61 @@ export function installPwaWorker(worker, input) {
     try { url = new URL(client.url); } catch { return null; }
     return classifyRequest({ url: url.href, method: "GET", mode: "navigate", headers: new Headers() }) ? client : null;
   }
+  async function checkOfflineReadiness(event, client) {
+    const request = event.data;
+    const reply = result => client.postMessage({ type: "PLANET_OFFLINE_READINESS_RESULT", requestId: request.requestId,
+      engineBuildId: config.buildId, activeBuildId: request.activeBuildId, ...result });
+    if (request.type === "PLANET_CANCEL_OFFLINE_READINESS") {
+      if (offlineCheck?.clientId === client.id && offlineCheck.requestId === request.requestId
+        && offlineCheck.activeBuildId === request.activeBuildId) offlineCheck.controller.abort();
+      return;
+    }
+    if (offlineCheck) { reply({ status: "unavailable", reason: "busy" }); return; }
+    const attempt = { clientId: client.id, requestId: request.requestId, activeBuildId: request.activeBuildId, controller: new AbortController() };
+    offlineCheck = attempt;
+    let timedOut = false;
+    const timer = later(() => { timedOut = true; attempt.controller.abort(); }, 30_000);
+    const signal = attempt.controller.signal;
+    let result;
+    try {
+      const active = await abortable(loadSelection(), signal);
+      const epoch = selectionEpoch;
+      const current = () => !selectionInvalid && !rollbackPending && selected === active && epoch === selectionEpoch
+        && active.config.buildId === request.activeBuildId;
+      if (!current()) result = { status: "unavailable", reason: "worker-changed" };
+      else {
+        const marker = await readMarker(active.cacheName, signal);
+        const expectedHash = active === engine ? await abortable(configHash(), signal) : config.rollbackReference?.manifestSha256;
+        if (!marker || marker.manifestSha256 !== expectedHash) result = { status: "incomplete" };
+        else {
+          try {
+            await verifyCache(active.cacheName, active.config, signal);
+            result = { status: "complete", fileCount: active.config.files.length,
+              bytes: active.config.files.reduce((sum, file) => sum + file.bytes, 0) };
+          } catch (error) {
+            if (signal.aborted) throw error;
+            result = { status: "incomplete" };
+          }
+        }
+        // Selection can change while hashing or while authorization is rechecked.
+        const stillAuthorized = await abortable(sourceClient(event), signal);
+        if (!stillAuthorized) return;
+        if (!current()) result = { status: "unavailable", reason: "worker-changed" };
+      }
+    } catch {
+      result = { status: "unavailable", reason: timedOut ? "timeout" : signal.aborted ? "cancelled" : "not-ready" };
+    } finally {
+      cancelTimer(timer);
+      if (offlineCheck === attempt) offlineCheck = null;
+    }
+    reply(result);
+  }
   async function message(event) {
     const client = await sourceClient(event);
     if (!client) return;
+    if (["PLANET_OFFLINE_READINESS", "PLANET_CANCEL_OFFLINE_READINESS"].includes(event.data.type)) {
+      await checkOfflineReadiness(event, client); return;
+    }
     if (event.data.type === "PLANET_ROLLBACK_STATUS" || event.data.type === "PLANET_ACTIVATE_ROLLBACK") {
       await loadSelection();
       let previous;
@@ -357,6 +432,7 @@ export function installPwaWorker(worker, input) {
       }
       let accepted = false, reason = "not-ready";
       if (ready && event.data.targetBuildId === previous.config.buildId) {
+        selectionEpoch++;
         rollbackPending = true;
         try {
           const stillAuthorized = await sourceClient(event);
@@ -396,6 +472,12 @@ export function installPwaWorker(worker, input) {
   });
   worker.addEventListener("message", (event) => {
     const data = event.data;
+    if (record(data) && ["PLANET_OFFLINE_READINESS", "PLANET_CANCEL_OFFLINE_READINESS"].includes(data.type)) {
+      try { exactKeys(data, ["type", "requestId", "engineBuildId", "activeBuildId"]); } catch { return; }
+      if (event.origin !== origin || typeof data.requestId !== "string" || !/^[A-Za-z0-9_-]{1,96}$/u.test(data.requestId)
+        || data.engineBuildId !== config.buildId || typeof data.activeBuildId !== "string" || !SHA256.test(data.activeBuildId)) return;
+      event.waitUntil(message(event).catch(() => undefined)); return;
+    }
     if (record(data) && ["PLANET_ROLLBACK_STATUS", "PLANET_ACTIVATE_ROLLBACK"].includes(data.type)) {
       if (typeof data.requestId !== "string" || !/^[A-Za-z0-9_-]{1,96}$/u.test(data.requestId) || (Object.hasOwn(data, "engineBuildId") && data.engineBuildId !== config.buildId) || (data.type === "PLANET_ACTIVATE_ROLLBACK" && (data.engineBuildId !== config.buildId || !SHA256.test(data.targetBuildId)))) return;
       event.waitUntil(message(event).catch(() => undefined)); return;

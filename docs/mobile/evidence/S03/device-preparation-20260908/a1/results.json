@@ -1,0 +1,193 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "playwright.pwa-current.config.mjs",
+      "--grep",
+      "device preparation checks the real offline cache"
+    ],
+    "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\playwright.pwa-current.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+    "failOnFlakyTests": false,
+    "forbidOnly": true,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/.tmp/pwa-cross-engine-results/pwa-device-preparation-20260908-a1/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "pwa-desktop",
+        "name": "pwa-desktop",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "controlled-pwa.spec.mjs",
+          "offline-catalog.spec.mjs"
+        ],
+        "timeout": 120000
+      },
+      {
+        "outputDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/.tmp/pwa-cross-engine-results/pwa-device-preparation-20260908-a1/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "pwa-mobile",
+        "name": "pwa-mobile",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "controlled-pwa.spec.mjs",
+          "offline-catalog.spec.mjs"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\pwa-cross-engine-results\\pwa-device-preparation-20260908-a1\\results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": {
+      "command": "node tests/pwa/support/cross-engine-server.mjs --serve",
+      "url": "http://127.0.0.1:4296/__pwa_qa__/ready",
+      "cwd": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\",
+      "timeout": 120000,
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "controlled-pwa.spec.mjs",
+      "file": "controlled-pwa.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "device preparation checks the real offline cache and keeps simulated browser decisions truthful",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "pwa-desktop",
+              "projectName": "pwa-desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 21884,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:05:18.429Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "device-preparation-evidence",
+                      "contentType": "application/json",
+                      "body": "ewogICJsb2NhbFFhT25seSI6IHRydWUsCiAgImJ1aWxkSWQiOiAiZWUwMjFmODRmOWVjZjg0NzI1ODFmMTc1ZWMxOGM3MzU5MmRhNDJjMzFhODQ4ZTEyZjEwNGFmMmU3ZjBlM2JhNCIsCiAgIm93bmVkQ2FjaGVFbnRyeSI6IHsKICAgICJ1cmwiOiAiL3BsYW5ldC9lbi8iLAogICAgImJ5dGVzIjogMjYyMywKICAgICJzaGEyNTYiOiAiYWIyM2RmMGE4YmY4MzUxNjllMDQ3ZDZmYjk4MzgxZDVkZTI1MmVhZjc2N2ZlYjc2OTk2YmE4Y2RmNWVlNmM4MyIsCiAgICAia2luZCI6ICJzaGVsbCIsCiAgICAiYWxpYXNlcyI6IFtdCiAgfSwKICAic2ltdWxhdGVkQXBpcyI6IFsKICAgICJiZWZvcmVpbnN0YWxscHJvbXB0LnByb21wdC91c2VyQ2hvaWNlIiwKICAgICJTdG9yYWdlTWFuYWdlci5wZXJzaXN0L3BlcnNpc3RlZCIKICBdLAogICJhY3R1YWxPc0luc3RhbGxhdGlvbiI6IGZhbHNlLAogICJjaGVja3MiOiBbCiAgICB7CiAgICAgICJsb2NhbGUiOiAicnUiLAogICAgICAibmV0d29ya0F0dGVtcHRzIjogMCwKICAgICAgInN0YXR1cyI6ICJjb21wbGV0ZSIsCiAgICAgICJlbmdpbmVCdWlsZElkIjogImVlMDIxZjg0ZjllY2Y4NDcyNTgxZjE3NWVjMThjNzM1OTJkYTQyYzMxYTg0OGUxMmYxMDRhZjJlN2YwZTNiYTQiLAogICAgICAiYWN0aXZlQnVpbGRJZCI6ICJlZTAyMWY4NGY5ZWNmODQ3MjU4MWYxNzVlYzE4YzczNTkyZGE0MmMzMWE4NDhlMTJmMTA0YWYyZTdmMGUzYmE0IiwKICAgICAgImZpbGVDb3VudCI6IDMxNiwKICAgICAgImJ5dGVzIjogMjAwNjE2MjEKICAgIH0sCiAgICB7CiAgICAgICJsb2NhbGUiOiAiZW4iLAogICAgICAibmV0d29ya0F0dGVtcHRzIjogMCwKICAgICAgInN0YXR1cyI6ICJpbmNvbXBsZXRlIiwKICAgICAgImVuZ2luZUJ1aWxkSWQiOiAiZWUwMjFmODRmOWVjZjg0NzI1ODFmMTc1ZWMxOGM3MzU5MmRhNDJjMzFhODQ4ZTEyZjEwNGFmMmU3ZjBlM2JhNCIsCiAgICAgICJhY3RpdmVCdWlsZElkIjogImVlMDIxZjg0ZjllY2Y4NDcyNTgxZjE3NWVjMThjNzM1OTJkYTQyYzMxYTg0OGUxMmYxMDRhZjJlN2YwZTNiYTQiCiAgICB9LAogICAgewogICAgICAibG9jYWxlIjogInJ1IiwKICAgICAgIm5ldHdvcmtBdHRlbXB0cyI6IDAsCiAgICAgICJzdGF0dXMiOiAiY29tcGxldGUiLAogICAgICAiZW5naW5lQnVpbGRJZCI6ICJlZTAyMWY4NGY5ZWNmODQ3MjU4MWYxNzVlYzE4YzczNTkyZGE0MmMzMWE4NDhlMTJmMTA0YWYyZTdmMGUzYmE0IiwKICAgICAgImFjdGl2ZUJ1aWxkSWQiOiAiZWUwMjFmODRmOWVjZjg0NzI1ODFmMTc1ZWMxOGM3MzU5MmRhNDJjMzFhODQ4ZTEyZjEwNGFmMmU3ZjBlM2JhNCIsCiAgICAgICJmaWxlQ291bnQiOiAzMTYsCiAgICAgICJieXRlcyI6IDIwMDYxNjIxCiAgICB9CiAgXSwKICAic2NyZWVuc2hvdHMiOiBbCiAgICAiZGV2aWNlLXJ1LWNvbXBsZXRlLnBuZyIsCiAgICAiZGV2aWNlLWVuLXNpbXVsYXRlZC1pbnN0YWxsLWFjY2VwdGVkLnBuZyIsCiAgICAiZGV2aWNlLWVuLWluY29tcGxldGUucG5nIiwKICAgICJkZXZpY2UtZW4tc2ltdWxhdGVkLXBlcnNpc3RlbmNlLWRlbmllZC5wbmciCiAgXSwKICAiaGVhZGVyQm91bmRzIjogWwogICAgewogICAgICAicGhhc2UiOiAiY29tcGxldGUiLAogICAgICAibG9jYWxlIjogInJ1IiwKICAgICAgInZpZXdwb3J0IjogewogICAgICAgICJ3aWR0aCI6IDEyODAsCiAgICAgICAgImhlaWdodCI6IDcyMAogICAgICB9LAogICAgICAiYm91bmRzIjogewogICAgICAgICJ4IjogNDYwLAogICAgICAgICJ5IjogMCwKICAgICAgICAid2lkdGgiOiA4MjAsCiAgICAgICAgImhlaWdodCI6IDc1CiAgICAgIH0KICAgIH0sCiAgICB7CiAgICAgICJwaGFzZSI6ICJzaW11bGF0ZWQtaW5zdGFsbC1hY2NlcHRlZCIsCiAgICAgICJsb2NhbGUiOiAiZW4iLAogICAgICAidmlld3BvcnQiOiB7CiAgICAgICAgIndpZHRoIjogMTI4MCwKICAgICAgICAiaGVpZ2h0IjogNzIwCiAgICAgIH0sCiAgICAgICJib3VuZHMiOiB7CiAgICAgICAgIngiOiA0NjAsCiAgICAgICAgInkiOiAwLAogICAgICAgICJ3aWR0aCI6IDgyMCwKICAgICAgICAiaGVpZ2h0IjogNzUKICAgICAgfQogICAgfSwKICAgIHsKICAgICAgInBoYXNlIjogImluY29tcGxldGUiLAogICAgICAibG9jYWxlIjogImVuIiwKICAgICAgInZpZXdwb3J0IjogewogICAgICAgICJ3aWR0aCI6IDEyODAsCiAgICAgICAgImhlaWdodCI6IDcyMAogICAgICB9LAogICAgICAiYm91bmRzIjogewogICAgICAgICJ4IjogNDYwLAogICAgICAgICJ5IjogMCwKICAgICAgICAid2lkdGgiOiA4MjAsCiAgICAgICAgImhlaWdodCI6IDc1CiAgICAgIH0KICAgIH0sCiAgICB7CiAgICAgICJwaGFzZSI6ICJzaW11bGF0ZWQtcGVyc2lzdGVuY2UtZGVuaWVkIiwKICAgICAgImxvY2FsZSI6ICJlbiIsCiAgICAgICJ2aWV3cG9ydCI6IHsKICAgICAgICAid2lkdGgiOiAxMjgwLAogICAgICAgICJoZWlnaHQiOiA3MjAKICAgICAgfSwKICAgICAgImJvdW5kcyI6IHsKICAgICAgICAieCI6IDQ2MCwKICAgICAgICAieSI6IDAsCiAgICAgICAgIndpZHRoIjogODIwLAogICAgICAgICJoZWlnaHQiOiA3NQogICAgICB9CiAgICB9LAogICAgewogICAgICAicGhhc2UiOiAicmV0YWluZWQtaW5jb21wbGV0ZS1hbmQtZGVuaWVkIiwKICAgICAgImxvY2FsZSI6ICJydSIsCiAgICAgICJ2aWV3cG9ydCI6IHsKICAgICAgICAid2lkdGgiOiAxMjgwLAogICAgICAgICJoZWlnaHQiOiA3MjAKICAgICAgfSwKICAgICAgImJvdW5kcyI6IHsKICAgICAgICAieCI6IDQ2MCwKICAgICAgICAieSI6IDAsCiAgICAgICAgIndpZHRoIjogODIwLAogICAgICAgICJoZWlnaHQiOiA3NQogICAgICB9CiAgICB9LAogICAgewogICAgICAicGhhc2UiOiAiY29tcGxldGUiLAogICAgICAibG9jYWxlIjogInJ1IiwKICAgICAgInZpZXdwb3J0IjogewogICAgICAgICJ3aWR0aCI6IDEyODAsCiAgICAgICAgImhlaWdodCI6IDcyMAogICAgICB9LAogICAgICAiYm91bmRzIjogewogICAgICAgICJ4IjogNDYwLAogICAgICAgICJ5IjogMCwKICAgICAgICAid2lkdGgiOiA4MjAsCiAgICAgICAgImhlaWdodCI6IDc1CiAgICAgIH0KICAgIH0sCiAgICB7CiAgICAgICJwaGFzZSI6ICJjb2xsZWN0aW9uLXJlb3BlbmVkIiwKICAgICAgImxvY2FsZSI6ICJydSIsCiAgICAgICJ2aWV3cG9ydCI6IHsKICAgICAgICAid2lkdGgiOiAxMjgwLAogICAgICAgICJoZWlnaHQiOiA3MjAKICAgICAgfSwKICAgICAgImJvdW5kcyI6IHsKICAgICAgICAieCI6IDQ2MCwKICAgICAgICAieSI6IDAsCiAgICAgICAgIndpZHRoIjogODIwLAogICAgICAgICJoZWlnaHQiOiA3NQogICAgICB9CiAgICB9CiAgXSwKICAic2ltdWxhdGVkRGVjaXNpb25zIjogewogICAgInByb21wdHMiOiBbCiAgICAgIHsKICAgICAgICAidXNlckFjdGl2YXRpb24iOiB0cnVlCiAgICAgIH0KICAgIF0sCiAgICAicGVyc2lzdGVuY2UiOiBbCiAgICAgIHsKICAgICAgICAidXNlckFjdGl2YXRpb24iOiB0cnVlCiAgICAgIH0KICAgIF0KICB9LAogICJyZXN0b3JlZFNoYTI1NiI6ICJhYjIzZGYwYThiZjgzNTE2OWUwNDdkNmZiOTgzODFkNWRlMjUyZWFmNzY3ZmViNzY5OTZiYThjZGY1ZWU2YzgzIgp9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e57d1aee4d9d53cc8f3-4fff3fb6e2ed7c74501c",
+          "file": "controlled-pwa.spec.mjs",
+          "line": 191,
+          "column": 1
+        },
+        {
+          "title": "device preparation checks the real offline cache and keeps simulated browser decisions truthful",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "pwa-mobile",
+              "projectName": "pwa-mobile",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 19967,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:05:43.126Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "device-preparation-evidence",
+                      "contentType": "application/json",
+                      "body": "ewogICJsb2NhbFFhT25seSI6IHRydWUsCiAgImJ1aWxkSWQiOiAiZWUwMjFmODRmOWVjZjg0NzI1ODFmMTc1ZWMxOGM3MzU5MmRhNDJjMzFhODQ4ZTEyZjEwNGFmMmU3ZjBlM2JhNCIsCiAgIm93bmVkQ2FjaGVFbnRyeSI6IHsKICAgICJ1cmwiOiAiL3BsYW5ldC9lbi8iLAogICAgImJ5dGVzIjogMjYyMywKICAgICJzaGEyNTYiOiAiYWIyM2RmMGE4YmY4MzUxNjllMDQ3ZDZmYjk4MzgxZDVkZTI1MmVhZjc2N2ZlYjc2OTk2YmE4Y2RmNWVlNmM4MyIsCiAgICAia2luZCI6ICJzaGVsbCIsCiAgICAiYWxpYXNlcyI6IFtdCiAgfSwKICAic2ltdWxhdGVkQXBpcyI6IFsKICAgICJiZWZvcmVpbnN0YWxscHJvbXB0LnByb21wdC91c2VyQ2hvaWNlIiwKICAgICJTdG9yYWdlTWFuYWdlci5wZXJzaXN0L3BlcnNpc3RlZCIKICBdLAogICJhY3R1YWxPc0luc3RhbGxhdGlvbiI6IGZhbHNlLAogICJjaGVja3MiOiBbCiAgICB7CiAgICAgICJsb2NhbGUiOiAicnUiLAogICAgICAibmV0d29ya0F0dGVtcHRzIjogMCwKICAgICAgInN0YXR1cyI6ICJjb21wbGV0ZSIsCiAgICAgICJlbmdpbmVCdWlsZElkIjogImVlMDIxZjg0ZjllY2Y4NDcyNTgxZjE3NWVjMThjNzM1OTJkYTQyYzMxYTg0OGUxMmYxMDRhZjJlN2YwZTNiYTQiLAogICAgICAiYWN0aXZlQnVpbGRJZCI6ICJlZTAyMWY4NGY5ZWNmODQ3MjU4MWYxNzVlYzE4YzczNTkyZGE0MmMzMWE4NDhlMTJmMTA0YWYyZTdmMGUzYmE0IiwKICAgICAgImZpbGVDb3VudCI6IDMxNiwKICAgICAgImJ5dGVzIjogMjAwNjE2MjEKICAgIH0sCiAgICB7CiAgICAgICJsb2NhbGUiOiAiZW4iLAogICAgICAibmV0d29ya0F0dGVtcHRzIjogMCwKICAgICAgInN0YXR1cyI6ICJpbmNvbXBsZXRlIiwKICAgICAgImVuZ2luZUJ1aWxkSWQiOiAiZWUwMjFmODRmOWVjZjg0NzI1ODFmMTc1ZWMxOGM3MzU5MmRhNDJjMzFhODQ4ZTEyZjEwNGFmMmU3ZjBlM2JhNCIsCiAgICAgICJhY3RpdmVCdWlsZElkIjogImVlMDIxZjg0ZjllY2Y4NDcyNTgxZjE3NWVjMThjNzM1OTJkYTQyYzMxYTg0OGUxMmYxMDRhZjJlN2YwZTNiYTQiCiAgICB9LAogICAgewogICAgICAibG9jYWxlIjogInJ1IiwKICAgICAgIm5ldHdvcmtBdHRlbXB0cyI6IDAsCiAgICAgICJzdGF0dXMiOiAiY29tcGxldGUiLAogICAgICAiZW5naW5lQnVpbGRJZCI6ICJlZTAyMWY4NGY5ZWNmODQ3MjU4MWYxNzVlYzE4YzczNTkyZGE0MmMzMWE4NDhlMTJmMTA0YWYyZTdmMGUzYmE0IiwKICAgICAgImFjdGl2ZUJ1aWxkSWQiOiAiZWUwMjFmODRmOWVjZjg0NzI1ODFmMTc1ZWMxOGM3MzU5MmRhNDJjMzFhODQ4ZTEyZjEwNGFmMmU3ZjBlM2JhNCIsCiAgICAgICJmaWxlQ291bnQiOiAzMTYsCiAgICAgICJieXRlcyI6IDIwMDYxNjIxCiAgICB9CiAgXSwKICAic2NyZWVuc2hvdHMiOiBbCiAgICAiZGV2aWNlLXJ1LWNvbXBsZXRlLnBuZyIsCiAgICAiZGV2aWNlLWVuLXNpbXVsYXRlZC1pbnN0YWxsLWFjY2VwdGVkLnBuZyIsCiAgICAiZGV2aWNlLWVuLWluY29tcGxldGUucG5nIiwKICAgICJkZXZpY2UtZW4tc2ltdWxhdGVkLXBlcnNpc3RlbmNlLWRlbmllZC5wbmciCiAgXSwKICAiaGVhZGVyQm91bmRzIjogWwogICAgewogICAgICAicGhhc2UiOiAiY29tcGxldGUiLAogICAgICAibG9jYWxlIjogInJ1IiwKICAgICAgInZpZXdwb3J0IjogewogICAgICAgICJ3aWR0aCI6IDQxMiwKICAgICAgICAiaGVpZ2h0IjogODM5CiAgICAgIH0sCiAgICAgICJib3VuZHMiOiB7CiAgICAgICAgIngiOiAwLAogICAgICAgICJ5IjogMCwKICAgICAgICAid2lkdGgiOiA0MTIsCiAgICAgICAgImhlaWdodCI6IDc1CiAgICAgIH0KICAgIH0sCiAgICB7CiAgICAgICJwaGFzZSI6ICJzaW11bGF0ZWQtaW5zdGFsbC1hY2NlcHRlZCIsCiAgICAgICJsb2NhbGUiOiAiZW4iLAogICAgICAidmlld3BvcnQiOiB7CiAgICAgICAgIndpZHRoIjogNDEyLAogICAgICAgICJoZWlnaHQiOiA4MzkKICAgICAgfSwKICAgICAgImJvdW5kcyI6IHsKICAgICAgICAieCI6IDAsCiAgICAgICAgInkiOiAwLAogICAgICAgICJ3aWR0aCI6IDQxMiwKICAgICAgICAiaGVpZ2h0IjogNzUKICAgICAgfQogICAgfSwKICAgIHsKICAgICAgInBoYXNlIjogImluY29tcGxldGUiLAogICAgICAibG9jYWxlIjogImVuIiwKICAgICAgInZpZXdwb3J0IjogewogICAgICAgICJ3aWR0aCI6IDQxMiwKICAgICAgICAiaGVpZ2h0IjogODM5CiAgICAgIH0sCiAgICAgICJib3VuZHMiOiB7CiAgICAgICAgIngiOiAwLAogICAgICAgICJ5IjogMCwKICAgICAgICAid2lkdGgiOiA0MTIsCiAgICAgICAgImhlaWdodCI6IDc1CiAgICAgIH0KICAgIH0sCiAgICB7CiAgICAgICJwaGFzZSI6ICJzaW11bGF0ZWQtcGVyc2lzdGVuY2UtZGVuaWVkIiwKICAgICAgImxvY2FsZSI6ICJlbiIsCiAgICAgICJ2aWV3cG9ydCI6IHsKICAgICAgICAid2lkdGgiOiA0MTIsCiAgICAgICAgImhlaWdodCI6IDgzOQogICAgICB9LAogICAgICAiYm91bmRzIjogewogICAgICAgICJ4IjogMCwKICAgICAgICAieSI6IDAsCiAgICAgICAgIndpZHRoIjogNDEyLAogICAgICAgICJoZWlnaHQiOiA3NQogICAgICB9CiAgICB9LAogICAgewogICAgICAicGhhc2UiOiAicmV0YWluZWQtaW5jb21wbGV0ZS1hbmQtZGVuaWVkIiwKICAgICAgImxvY2FsZSI6ICJydSIsCiAgICAgICJ2aWV3cG9ydCI6IHsKICAgICAgICAid2lkdGgiOiA0MTIsCiAgICAgICAgImhlaWdodCI6IDgzOQogICAgICB9LAogICAgICAiYm91bmRzIjogewogICAgICAgICJ4IjogMCwKICAgICAgICAieSI6IDAsCiAgICAgICAgIndpZHRoIjogNDEyLAogICAgICAgICJoZWlnaHQiOiA3NQogICAgICB9CiAgICB9LAogICAgewogICAgICAicGhhc2UiOiAiY29tcGxldGUiLAogICAgICAibG9jYWxlIjogInJ1IiwKICAgICAgInZpZXdwb3J0IjogewogICAgICAgICJ3aWR0aCI6IDQxMiwKICAgICAgICAiaGVpZ2h0IjogODM5CiAgICAgIH0sCiAgICAgICJib3VuZHMiOiB7CiAgICAgICAgIngiOiAwLAogICAgICAgICJ5IjogMCwKICAgICAgICAid2lkdGgiOiA0MTIsCiAgICAgICAgImhlaWdodCI6IDc1CiAgICAgIH0KICAgIH0sCiAgICB7CiAgICAgICJwaGFzZSI6ICJjb2xsZWN0aW9uLXJlb3BlbmVkIiwKICAgICAgImxvY2FsZSI6ICJydSIsCiAgICAgICJ2aWV3cG9ydCI6IHsKICAgICAgICAid2lkdGgiOiA0MTIsCiAgICAgICAgImhlaWdodCI6IDgzOQogICAgICB9LAogICAgICAiYm91bmRzIjogewogICAgICAgICJ4IjogMCwKICAgICAgICAieSI6IDAsCiAgICAgICAgIndpZHRoIjogNDEyLAogICAgICAgICJoZWlnaHQiOiA3NQogICAgICB9CiAgICB9CiAgXSwKICAic2ltdWxhdGVkRGVjaXNpb25zIjogewogICAgInByb21wdHMiOiBbCiAgICAgIHsKICAgICAgICAidXNlckFjdGl2YXRpb24iOiB0cnVlCiAgICAgIH0KICAgIF0sCiAgICAicGVyc2lzdGVuY2UiOiBbCiAgICAgIHsKICAgICAgICAidXNlckFjdGl2YXRpb24iOiB0cnVlCiAgICAgIH0KICAgIF0KICB9LAogICJyZXN0b3JlZFNoYTI1NiI6ICJhYjIzZGYwYThiZjgzNTE2OWUwNDdkNmZiOTgzODFkNWRlMjUyZWFmNzY3ZmViNzY5OTZiYThjZGY1ZWU2YzgzIgp9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e57d1aee4d9d53cc8f3-9e654f0029013dfa80bc",
+          "file": "controlled-pwa.spec.mjs",
+          "line": 191,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-08T05:04:55.223Z",
+    "duration": 71084.00399999999,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

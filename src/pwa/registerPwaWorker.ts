@@ -10,6 +10,10 @@ export interface PwaWorkerSnapshot {
   readonly engineBuildId: string | null;
 }
 export type PwaWorkerResult = { readonly ok: true } | { readonly ok: false; readonly reason: PwaWorkerError };
+export type PwaOfflineReadinessResult =
+  | { readonly status: "complete"; readonly engineBuildId: string; readonly activeBuildId: string; readonly fileCount: number; readonly bytes: number }
+  | { readonly status: "incomplete"; readonly engineBuildId: string; readonly activeBuildId: string }
+  | { readonly status: "unavailable"; readonly reason: PwaWorkerError };
 export interface PwaWorkerOptions {
   readonly controlledDistribution: boolean;
   /** Null explicitly disables unavailable browser APIs, including SSR fixtures. */
@@ -25,6 +29,9 @@ export interface PwaWorkerController {
   getSnapshot(): PwaWorkerSnapshot;
   subscribe(callback: () => void): () => void;
   checkForUpdate(options?: { readonly signal?: AbortSignal }): Promise<PwaWorkerResult>;
+  /** Explicit user-requested cache integrity check only. No repair, download or
+   * entitlement check; success does not promise that the OS will retain files. */
+  checkOfflineReadiness(options?: { readonly signal?: AbortSignal }): Promise<PwaOfflineReadinessResult>;
   /** Call only from an explicit user action. Cancellation cannot undo skipWaiting. */
   activateUpdate(options?: { readonly signal?: AbortSignal }): Promise<PwaWorkerResult>;
   /** Explicit whole-app rollback; the installed worker engine remains current.
@@ -78,6 +85,7 @@ export function registerPwaWorker(options: PwaWorkerOptions): PwaWorkerControlle
   let rollbackOperation: Promise<PwaWorkerResult> | undefined;
   let activeProbe: { worker: ServiceWorker; promise: Promise<void> } | undefined;
   let generationEpoch = 0;
+  let offlineReadinessPending = false;
 
   function setSnapshot(phase: PwaWorkerPhase, buildId: string | null = null, error: PwaWorkerError | null = null) {
     if (snapshot.phase === phase && snapshot.update?.buildId === (buildId ?? undefined) && snapshot.error === error && snapshot.activeBuildId === generationState.activeBuildId && snapshot.engineBuildId === generationState.engineBuildId && snapshot.rollback?.buildId === (generationState.rollbackBuildId ?? undefined)) return;
@@ -284,6 +292,62 @@ export function registerPwaWorker(options: PwaWorkerOptions): PwaWorkerControlle
     pendingCheck = operation;
     return operation;
   }
+  async function checkOfflineReadiness({ signal }: { signal?: AbortSignal } = {}): Promise<PwaOfflineReadinessResult> {
+    const unavailable = (reason: PwaWorkerError): PwaOfflineReadinessResult => Object.freeze({ status: "unavailable", reason });
+    if (disposed) return unavailable("disposed");
+    if (signal?.aborted) return unavailable("cancelled");
+    if (offlineReadinessPending || activation || rollbackOperation || reloaded) return unavailable("busy");
+    const worker = container?.controller;
+    const { engineBuildId, activeBuildId } = generationState;
+    if (!allowed || !registration || !worker || !workerAllowed(worker) || !engineBuildId || !activeBuildId) return unavailable("not-ready");
+    const epoch = generationEpoch;
+    const joined = combinedSignal(signal);
+    const requestId = `pwa-${nonce}-${++requestSequence}`;
+    let onMessage: ((event: MessageEvent) => void) | undefined;
+    let completed = false;
+    offlineReadinessPending = true;
+    try {
+      const result = await bounded(new Promise<PwaOfflineReadinessResult>((resolve, reject) => {
+        onMessage = event => {
+          const data = event.data;
+          if (event.source !== worker || event.origin !== origin || !data || typeof data !== "object" || Array.isArray(data)
+            || data.type !== "PLANET_OFFLINE_READINESS_RESULT" || data.requestId !== requestId
+            || data.engineBuildId !== engineBuildId || data.activeBuildId !== activeBuildId) return;
+          const extraKeys = data.status === "complete" ? ["fileCount", "bytes"] : data.status === "unavailable" ? ["reason"] : [];
+          if (Object.keys(data).some(key => !["type", "requestId", "engineBuildId", "activeBuildId", "status", ...extraKeys].includes(key))) return;
+          if (data.status === "complete") {
+            if (!Number.isSafeInteger(data.fileCount) || data.fileCount < 2 || data.fileCount > 512
+              || !Number.isSafeInteger(data.bytes) || data.bytes < data.fileCount || data.bytes > 64 * 1024 * 1024) return;
+            resolve(Object.freeze({ status: "complete", engineBuildId, activeBuildId, fileCount: data.fileCount, bytes: data.bytes }));
+          } else if (data.status === "incomplete") {
+            if (Object.prototype.hasOwnProperty.call(data, "fileCount") || Object.prototype.hasOwnProperty.call(data, "bytes")) return;
+            resolve(Object.freeze({ status: "incomplete", engineBuildId, activeBuildId }));
+          } else if (data.status === "unavailable" && ["busy", "worker-changed", "timeout", "cancelled", "not-ready"].includes(data.reason)) {
+            resolve(unavailable(data.reason));
+          }
+        };
+        container!.addEventListener("message", onMessage);
+        try { worker.postMessage({ type: "PLANET_OFFLINE_READINESS", requestId, engineBuildId, activeBuildId }); }
+        catch { reject(new LifecycleError("message-failed")); }
+      }), joined.signal);
+      if (disposed || joined.signal.aborted) return unavailable(disposed ? "disposed" : "cancelled");
+      if (epoch !== generationEpoch || container?.controller !== worker || !workerAllowed(worker)
+        || generationState.engineBuildId !== engineBuildId || generationState.activeBuildId !== activeBuildId
+        || activation || rollbackOperation || reloaded) return unavailable("worker-changed");
+      completed = true;
+      return result;
+    } catch (error) {
+      return unavailable(errorReason(error, "message-failed"));
+    } finally {
+      if (onMessage) container!.removeEventListener("message", onMessage);
+      if (!completed) {
+        try { worker.postMessage({ type: "PLANET_CANCEL_OFFLINE_READINESS", requestId, engineBuildId, activeBuildId }); }
+        catch { /* Local listener and deadline are already released. */ }
+      }
+      joined.cleanup();
+      offlineReadinessPending = false;
+    }
+  }
   function activateUpdate({ signal }: { signal?: AbortSignal } = {}): Promise<PwaWorkerResult> {
     if (disposed) return Promise.resolve(failure("disposed"));
     if (activation?.promise) return activation.promise;
@@ -365,7 +429,7 @@ export function registerPwaWorker(options: PwaWorkerOptions): PwaWorkerControlle
   }
   options.signal?.addEventListener("abort", dispose, { once: true });
   if (options.signal?.aborted) dispose();
-  return Object.freeze({ ready, getSnapshot: () => snapshot, checkForUpdate, activateUpdate, rollback, dispose,
+  return Object.freeze({ ready, getSnapshot: () => snapshot, checkForUpdate, checkOfflineReadiness, activateUpdate, rollback, dispose,
     subscribe(callback: () => void) {
       if (disposed) return () => undefined;
       subscribers.set(callback, (subscribers.get(callback) ?? 0) + 1);

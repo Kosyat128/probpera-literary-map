@@ -1,0 +1,74 @@
+[
+  {
+    "path": "asset-repins.json",
+    "sha256": "45f7b4a142daedcfc851b0ec707ddd91ec103b44dd63932be076479e7356d10b"
+  },
+  {
+    "path": "candidate-assets.json",
+    "sha256": "5e616213ebf48ead3b5087f727fab5be5129820f334cd4f96de3e90e6297b2de"
+  },
+  {
+    "path": "candidate-tsc-attempt1.json",
+    "sha256": "869e03f6234be4b2e4fdbf35bea967e0e4d654b6ae5534cafbba20c9e5a50912"
+  },
+  {
+    "path": "candidate-tsc-attempt1.log",
+    "sha256": "75f81fedafe0e58702b0abe7a44f137e6fca979d0b60b499905d9ab72c65656f"
+  },
+  {
+    "path": "candidate-tsc-attempt2.json",
+    "sha256": "26129e0f05614ac6559693497e0b11715cff4350886ce3e2f8e12183ab8a9f37"
+  },
+  {
+    "path": "candidate-tsc-attempt2.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "candidate-tsc.json",
+    "sha256": "26129e0f05614ac6559693497e0b11715cff4350886ce3e2f8e12183ab8a9f37"
+  },
+  {
+    "path": "candidate-tsc.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "intended-tree.json",
+    "sha256": "9f57dcb6c03bd5c889a222d4bd8db88aef79c0ed608fbedd473e13ca522ea86d"
+  },
+  {
+    "path": "payload.json",
+    "sha256": "5d3e521294ae46f827ecd974525136462c104d54bee03448bac0ec7a21531741"
+  },
+  {
+    "path": "payload.json.before-ambient-fix",
+    "sha256": "2ec1b93e3b52206d786ffad70c6c1ed4390a2b0a79542078250042347b5f4363"
+  },
+  {
+    "path": "review.json",
+    "sha256": "1102d11de0d51ed126218fd9bd30305483e2dfc5a4ae090ea2c34bbee9936837"
+  },
+  {
+    "path": "review.json.before-ambient-fix",
+    "sha256": "604b369e5886a675177b15aae0fdfc7c5b41c8137b53a0b9fab7578dfd3c4cdb"
+  },
+  {
+    "path": "REVIEW.md",
+    "sha256": "1bc73f496917c45acd758c158df3de25447840916433dda7eb778cdb7bc42900"
+  },
+  {
+    "path": "source-closure.json",
+    "sha256": "7ff0267b2fdb86dd4f20fc469e0d9d3e882c7bc8f96d794b9e2924af855ad711"
+  },
+  {
+    "path": "source-snapshot.json",
+    "sha256": "4ee7c41d5b88661104f551e38c3a533c5ca6ac5b14a9f26d7755c03939d3c0d3"
+  },
+  {
+    "path": "source.diff",
+    "sha256": "ef4fe5ca415faacee5005f62df47c0a05aa6a349546da1d41c11a40f85674eac"
+  },
+  {
+    "path": "source.diff.before-ambient-fix",
+    "sha256": "c427c5be45ee6d2dd9b3c10a7056e23cc139f9213ba6fd1b4b2163b785c2e6f2"
+  }
+]

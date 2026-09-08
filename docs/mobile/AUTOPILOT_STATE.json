@@ -5,7 +5,7 @@
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
   "headSha": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-08T04:44:26.047Z",
+  "updatedAt": "2026-09-08T05:21:10.180Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -529,7 +529,8 @@
         "docs/mobile/evidence/S03/cross-engine-artifact-preservation.json",
         "docs/mobile/evidence/S04/pwa-preparation/result.json",
         "docs/mobile/evidence/S03/deletion-processor-current-validation.json",
-        "docs/mobile/evidence/S03/current-pwa-20260908/result.json"
+        "docs/mobile/evidence/S03/current-pwa-20260908/result.json",
+        "docs/mobile/evidence/S03/device-preparation-20260908/result.json"
       ],
       "externalBlockers": []
     },
@@ -835,7 +836,8 @@
         "docs/mobile/evidence/S04/ios-runtime-20260908/preparation.json",
         "docs/mobile/evidence/S04/ios-runtime-20260908/first-failure/result.json",
         "docs/mobile/evidence/S04/ios-runtime-20260908/retry-preparation.json",
-        "docs/mobile/evidence/S04/globe-entry-20260908/result.json"
+        "docs/mobile/evidence/S04/globe-entry-20260908/result.json",
+        "docs/mobile/evidence/S04/ios-globe-projection-20260908/result.json"
       ],
       "externalBlockers": []
     },
@@ -10549,7 +10551,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Finish candidate-wide local validation of the exact corrected iOS public-parent projection, prepare concrete reviewable publication delta, and continue outstanding S03/S04/S05 internal requirements. Android74201a08 build/binary audit and bounded PWA globe/panel behavior passed; physical-device, full onboarding and release gates remain open.",
+    "nextAction": "Continue outstanding S03 paid-PWA and S04/S05 native/onboarding work. PWA install/offline/storage UI has bounded unit/browser evidence; actual OS installation and device matrix remain open. Exact83-file iOS source projection is locally validated and awaits the already-pending publication answer; do not publish until received. Preserve Android742 source8a and source-bound PWA artifacts.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -10772,7 +10774,8 @@
         "installedRuntimeTested": false,
         "exactReleaseCandidate": false,
         "stageAccepted": false,
-        "releaseReady": false
+        "releaseReady": false,
+        "sourceScopeNote": "APK742 remains bound to source8a3ef924. The subsequent Device UX feature is PWA-only, but its worker runtime also belongs to the native build-tool input closure. Do not relabel APK742 with the new source identity or call it an exact RC."
       }
     },
     "s04IosRuntime": {
@@ -10795,6 +10798,42 @@
       "finalCandidateBrowserCases": 2,
       "wholeSuiteRepeated": false,
       "stageAccepted": false,
+      "releaseReady": false,
+      "archivedRuntime": ".tmp/pwa-artifacts/7dc47dd8-globe-panels-before-device-ux-20260908",
+      "currentDistPwa": false
+    },
+    "s03DevicePreparation": {
+      "status": "SELECTED_WORKING_VALIDATION_PASSED",
+      "evidence": "docs/mobile/evidence/S03/device-preparation-20260908/result.json",
+      "buildId": "051c3da1b534623b00875ccfb4ab421a5ae24ab6e8c5a3a5cdb71d1c9c53a8e3",
+      "artifactSha256": "2680e7f84d2ce7e375797e2c39cf210fcfa51953f97caf764e473b46953cafe1",
+      "unitPassed": 237,
+      "browserCasesPassed": 2,
+      "browserBuildId": "ee021f84f9ecf8472581f175ec18c73592da42c31a848e12f104af2e7f0e3ba4",
+      "finalCandidateBrowserCasesRun": 0,
+      "finalCandidateDelta": "Only the focus outline color changed after the two browser passes; all963 artifact input files compared, JS/TS unchanged. Final strict artifact audit passed.",
+      "realCacheIntegrityQuery": true,
+      "installAndStorageBrowserApisSimulated": true,
+      "actualOsInstallVerified": false,
+      "copyReviewStatus": "draft",
+      "stageAccepted": false,
+      "releaseReady": false
+    },
+    "s04IosGlobeProjection": {
+      "status": "LOCAL_VALIDATION_PASSED_APPROVAL_PENDING",
+      "evidence": "docs/mobile/evidence/S04/ios-globe-projection-20260908/result.json",
+      "sourceCommit": "8a3ef924aa911aeda4742b4434ac925ac576764e",
+      "publicParent": "325e9f3c0daef6600c1a96e5af76c9f9d2f857c4",
+      "expectedCandidateTree": "58ea6814d6d6abe49a0f57ed7f3b00f867d35ab1",
+      "payloadSha256": "5d3e521294ae46f827ecd974525136462c104d54bee03448bac0ec7a21531741",
+      "deltaFiles": 83,
+      "unpublishedFilesOutsidePrior74": 16,
+      "candidateTypeScriptPass": true,
+      "exactAssetsPassed": 285,
+      "approvalReceived": false,
+      "remoteWritesPerformed": false,
+      "includesPwaDevicePreparation": false,
+      "simulatorRuntimeVerified": false,
       "releaseReady": false
     }
   },

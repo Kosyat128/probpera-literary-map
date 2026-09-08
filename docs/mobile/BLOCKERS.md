@@ -10,7 +10,12 @@ Internal implementation remains the assistant's responsibility:
   documented bounded cases; original failures remain preserved. OS installation,
   the broader device matrix and remaining S03 gates are open. Android74201a08
   contains the shared-panel fixes; keep QA authorities isolated.
-- Corrected iOS globe-first source still needs its own simulator/runtime
+- Controlled PWA installation/offline/storage UI has237 scoped unit passes and
+  two desktop/mobile browser passes. Actual OS installation, paid web checkout
+  and merchant integration, reviewed indexable RU/EN pages and the broader
+  device matrix remain open. New copy is draft; do not claim bilingual approval.
+- Corrected iOS globe-first source passed isolated local TypeScript and285
+  exact asset checks. It still needs its own simulator/runtime
   evidence. Historical cloud launch succeeded, but its magazine-home and
   safe-area screenshots fail the product contract. Do not relabel old results.
 - Complete S03/S04 platform foundations and S05 onboarding, sealed child
@@ -25,6 +30,10 @@ External inputs, when corresponding internal artifacts are ready:
   final bilingual approval. Consolidate concrete steps once; never assign
   translation or programming. The user has no Mac; authorized reviewed-source
   cloud macOS testing is available without requiring a Mac purchase.
+- The concrete83-file iOS projection has a pending publication question for
+  the test branch because16 previously unpublished files are outside the
+  prior74-file reviewed payload. Await that answer; independent local work
+  continues. Existing74-file permission persists, and no Mac purchase is needed.
 - Public main is protected. Detailed protection configuration is inaccessible
   to the current integration403; never infer required checks from empty data.
 

@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "kind": "lossless-ignored-log-preservation",
+  "localQaOnly": true,
+  "pathBase": "docs/mobile/evidence/S03/device-preparation-20260908",
+  "reason": "Repository *.log ignore rules omit original raw files when staging evidence. These JSON wrappers preserve their exact UTF-8 bytes for a complete versioned evidence checkout.",
+  "originalReceiptsUnchanged": true,
+  "reconstruction": "Parse wrapper JSON, then encode its text field as UTF-8 without adding or removing BOM characters, newlines or whitespace. Verify bytes and SHA256 against wrapper metadata.",
+  "mappings": [
+    {
+      "originalRelativePath": "a1/run.log",
+      "jsonRelativePath": "a1/run-log.json",
+      "originalIgnoredByGit": true,
+      "bytes": 7228,
+      "sha256": "c6d0acd6cf22b7ffcf1ee4eb10dc55e0d25e022a7c343c85c5a204870b49daec",
+      "encoding": "utf8",
+      "reconstructedBytes": 7228,
+      "reconstructedSha256": "c6d0acd6cf22b7ffcf1ee4eb10dc55e0d25e022a7c343c85c5a204870b49daec",
+      "roundTripVerified": true,
+      "jsonSha256": "730f5cdea11fbe75d390248f4c3ce42621762f54b3f88cd34ff20d8ae6c8eda3"
+    },
+    {
+      "originalRelativePath": "a2/run.log",
+      "jsonRelativePath": "a2/run-log.json",
+      "originalIgnoredByGit": true,
+      "bytes": 13084,
+      "sha256": "b435e1dbc0c5c96e8907226fc4bd737125fe4b0514d8d3f3d2b3e17e044084cf",
+      "encoding": "utf8",
+      "reconstructedBytes": 13084,
+      "reconstructedSha256": "b435e1dbc0c5c96e8907226fc4bd737125fe4b0514d8d3f3d2b3e17e044084cf",
+      "roundTripVerified": true,
+      "jsonSha256": "a8759caf88c6d5a6c7ab186d61cf098c642bfe60004bdd211f36bbec7dfacb4d"
+    },
+    {
+      "originalRelativePath": "a2/strict-artifact-audit.stderr.log",
+      "jsonRelativePath": "a2/strict-artifact-audit-stderr-log.json",
+      "originalIgnoredByGit": true,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "encoding": "utf8",
+      "reconstructedBytes": 0,
+      "reconstructedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "roundTripVerified": true,
+      "jsonSha256": "e20773f3eed87f42a89918c80a3d1568e84c2e90fd0c58f675950f403ca9e7dc"
+    },
+    {
+      "originalRelativePath": "support/install-unit-run.log",
+      "jsonRelativePath": "support/install-unit-run-log.json",
+      "originalIgnoredByGit": true,
+      "bytes": 502,
+      "sha256": "889c3120a66f63c3dd8ac7db1489c8e0edeb32d6ae2f78decb1e4a87badf5f01",
+      "encoding": "utf8",
+      "reconstructedBytes": 502,
+      "reconstructedSha256": "889c3120a66f63c3dd8ac7db1489c8e0edeb32d6ae2f78decb1e4a87badf5f01",
+      "roundTripVerified": true,
+      "jsonSha256": "66a288266702d0a787a9ad76b8e959f9ab9e5064e0d29495830fcdd92e082580"
+    }
+  ],
+  "limits": [
+    "These are lossless wrappers of existing safe log files, not regenerated test output.",
+    "No missing worker or TypeScript process transcript has been invented; their existing recorded tool-output evidence remains separate."
+  ]
+}

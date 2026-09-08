@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "sourceRoot": ".tmp/ios-globe-projection-20260908/final-a5",
+  "preservedSubset": true,
+  "allExact": true,
+  "copied": [
+    {
+      "path": "REVIEW.md",
+      "bytes": 4015,
+      "sourceSha256": "1bc73f496917c45acd758c158df3de25447840916433dda7eb778cdb7bc42900",
+      "preservedSha256": "1bc73f496917c45acd758c158df3de25447840916433dda7eb778cdb7bc42900",
+      "exact": true
+    },
+    {
+      "path": "review.json",
+      "bytes": 51352,
+      "sourceSha256": "1102d11de0d51ed126218fd9bd30305483e2dfc5a4ae090ea2c34bbee9936837",
+      "preservedSha256": "1102d11de0d51ed126218fd9bd30305483e2dfc5a4ae090ea2c34bbee9936837",
+      "exact": true
+    },
+    {
+      "path": "candidate-tsc.json",
+      "bytes": 628,
+      "sourceSha256": "26129e0f05614ac6559693497e0b11715cff4350886ce3e2f8e12183ab8a9f37",
+      "preservedSha256": "26129e0f05614ac6559693497e0b11715cff4350886ce3e2f8e12183ab8a9f37",
+      "exact": true
+    },
+    {
+      "path": "candidate-tsc-attempt1.json",
+      "bytes": 595,
+      "sourceSha256": "869e03f6234be4b2e4fdbf35bea967e0e4d654b6ae5534cafbba20c9e5a50912",
+      "preservedSha256": "869e03f6234be4b2e4fdbf35bea967e0e4d654b6ae5534cafbba20c9e5a50912",
+      "exact": true
+    },
+    {
+      "path": "candidate-tsc-attempt2.json",
+      "bytes": 628,
+      "sourceSha256": "26129e0f05614ac6559693497e0b11715cff4350886ce3e2f8e12183ab8a9f37",
+      "preservedSha256": "26129e0f05614ac6559693497e0b11715cff4350886ce3e2f8e12183ab8a9f37",
+      "exact": true
+    },
+    {
+      "path": "candidate-assets.json",
+      "bytes": 117190,
+      "sourceSha256": "5e616213ebf48ead3b5087f727fab5be5129820f334cd4f96de3e90e6297b2de",
+      "preservedSha256": "5e616213ebf48ead3b5087f727fab5be5129820f334cd4f96de3e90e6297b2de",
+      "exact": true
+    },
+    {
+      "path": "artifact-hashes.json",
+      "bytes": 2281,
+      "sourceSha256": "5adac9887ddbd969d8be39d8dc427615399bf8dfc1dc8745f6650a2c7cdab83b",
+      "preservedSha256": "5adac9887ddbd969d8be39d8dc427615399bf8dfc1dc8745f6650a2c7cdab83b",
+      "exact": true
+    }
+  ],
+  "excluded": [
+    "payload.json and earlier payload",
+    "before/",
+    "overlay/",
+    "candidate checkout",
+    "source snapshot/closure/diff",
+    "raw TypeScript logs",
+    "private logs",
+    "keys"
+  ],
+  "validationRerun": false,
+  "sourceEdits": false,
+  "remoteWrites": false
+}

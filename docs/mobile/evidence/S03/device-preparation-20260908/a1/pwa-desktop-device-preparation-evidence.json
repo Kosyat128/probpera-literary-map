@@ -1,0 +1,162 @@
+{
+  "localQaOnly": true,
+  "buildId": "ee021f84f9ecf8472581f175ec18c73592da42c31a848e12f104af2e7f0e3ba4",
+  "ownedCacheEntry": {
+    "url": "/planet/en/",
+    "bytes": 2623,
+    "sha256": "ab23df0a8bf835169e047d6fb98381d5de252eaf767feb76996ba8cdf5ee6c83",
+    "kind": "shell",
+    "aliases": []
+  },
+  "simulatedApis": [
+    "beforeinstallprompt.prompt/userChoice",
+    "StorageManager.persist/persisted"
+  ],
+  "actualOsInstallation": false,
+  "checks": [
+    {
+      "locale": "ru",
+      "networkAttempts": 0,
+      "status": "complete",
+      "engineBuildId": "ee021f84f9ecf8472581f175ec18c73592da42c31a848e12f104af2e7f0e3ba4",
+      "activeBuildId": "ee021f84f9ecf8472581f175ec18c73592da42c31a848e12f104af2e7f0e3ba4",
+      "fileCount": 316,
+      "bytes": 20061621
+    },
+    {
+      "locale": "en",
+      "networkAttempts": 0,
+      "status": "incomplete",
+      "engineBuildId": "ee021f84f9ecf8472581f175ec18c73592da42c31a848e12f104af2e7f0e3ba4",
+      "activeBuildId": "ee021f84f9ecf8472581f175ec18c73592da42c31a848e12f104af2e7f0e3ba4"
+    },
+    {
+      "locale": "ru",
+      "networkAttempts": 0,
+      "status": "complete",
+      "engineBuildId": "ee021f84f9ecf8472581f175ec18c73592da42c31a848e12f104af2e7f0e3ba4",
+      "activeBuildId": "ee021f84f9ecf8472581f175ec18c73592da42c31a848e12f104af2e7f0e3ba4",
+      "fileCount": 316,
+      "bytes": 20061621
+    }
+  ],
+  "screenshots": [
+    "device-ru-complete.png",
+    "device-en-simulated-install-accepted.png",
+    "device-en-incomplete.png",
+    "device-en-simulated-persistence-denied.png"
+  ],
+  "headerBounds": [
+    {
+      "phase": "complete",
+      "locale": "ru",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "bounds": {
+        "x": 460,
+        "y": 0,
+        "width": 820,
+        "height": 75
+      }
+    },
+    {
+      "phase": "simulated-install-accepted",
+      "locale": "en",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "bounds": {
+        "x": 460,
+        "y": 0,
+        "width": 820,
+        "height": 75
+      }
+    },
+    {
+      "phase": "incomplete",
+      "locale": "en",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "bounds": {
+        "x": 460,
+        "y": 0,
+        "width": 820,
+        "height": 75
+      }
+    },
+    {
+      "phase": "simulated-persistence-denied",
+      "locale": "en",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "bounds": {
+        "x": 460,
+        "y": 0,
+        "width": 820,
+        "height": 75
+      }
+    },
+    {
+      "phase": "retained-incomplete-and-denied",
+      "locale": "ru",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "bounds": {
+        "x": 460,
+        "y": 0,
+        "width": 820,
+        "height": 75
+      }
+    },
+    {
+      "phase": "complete",
+      "locale": "ru",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "bounds": {
+        "x": 460,
+        "y": 0,
+        "width": 820,
+        "height": 75
+      }
+    },
+    {
+      "phase": "collection-reopened",
+      "locale": "ru",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "bounds": {
+        "x": 460,
+        "y": 0,
+        "width": 820,
+        "height": 75
+      }
+    }
+  ],
+  "simulatedDecisions": {
+    "prompts": [
+      {
+        "userActivation": true
+      }
+    ],
+    "persistence": [
+      {
+        "userActivation": true
+      }
+    ]
+  },
+  "restoredSha256": "ab23df0a8bf835169e047d6fb98381d5de252eaf767feb76996ba8cdf5ee6c83"
+}
