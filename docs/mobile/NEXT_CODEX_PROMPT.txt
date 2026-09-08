@@ -1,67 +1,74 @@
-LATEST: Native globe-only entry working validation passed. Read evidence/S04/globe-entry-20260908/result.json. Core cases a4b/work, a5/locale and a6/compact geometry passed; preserve failed runs. JS unchanged across final cases; compact-only CSS has its own a6 evidence. Fresh Android build is next; do not rerun green checks without changes. Controlled paid PWA still needs equivalent product presentation and help/access-layer adaptation; navigation_review completed read-only audit.
+LATEST CHECKPOINT: Android globe-only source26e290845639d05b72972381e1f83453a674d75c
+is built, audited and preserved. Read evidence/S04/android-globe-entry-20260908/result.json
+and evidence/S04/globe-entry-20260908/result.json. Do not repeat unchanged green
+builds/tests. Root is adapting the controlled paid-PWA root/access/help layer;
+controlled_images is adapting its browser coverage. Inspect current agent
+messages and working diff before running those changed-source tests.
 
-Continue V12 in literary-planet-v12-work on codex/literary-planet-v12-bilingual-final-autopilot.
+Continue V12 in literary-planet-v12-work on
+codex/literary-planet-v12-bilingual-final-autopilot.
 
-USER PRODUCT CORRECTION 2026-09-08: the live canonical Literary Planet is the
-ONLY application home. Orange splash -> cinematic globe reveal; all search,
-country/writer/work, collection, child/Planetka, settings/customization/store
-are controls/panels around the same scene. No website magazine homepage or
-intermediate menu. Read GLOBE_APPLICATION_CONTRACT.md. Latest owner also
-prioritizes real original 3D modelling/animation, high-quality interactive
-Planetka/environments, under V12 performance/reduced-motion constraints.
-Other V12 requirements remain binding; never ask the user to restate them.
+PRODUCT CONTRACT: the live canonical Literary Planet is the ONLY application
+home. Orange splash -> cinematic globe reveal; search/country/writer/work,
+collection, child/Planetka, settings/customization/store are controls/panels
+around the same scene. No magazine homepage or intermediate menu. Read
+GLOBE_APPLICATION_CONTRACT.md. Original interactive 3D Planetka/environments
+and scene quality remain required under performance/reduced-motion constraints.
+All remaining V12 requirements remain binding; do not ask owner to restate them.
 
-Current working changes: native root branch reuses App's one canonical atlas
-and archive JSX, applicationRoot hook holds immersive without modal/history
-exit, native launch reveals actual sampled scene, collection is an overlay.
-Book archive embeddedInPlanet forces canonical catalog presentation, avoiding
-a second bookshelf Canvas. Hidden panels cannot steal keyboard/portal focus.
-Seven exact canonical portraits added to native selection after observed404s;
-credits/rights records were retained, no new editorial/legal approval made.
+Native implementation: shared canonical atlas/collection JSX, fullscreen
+applicationRoot without a website/modal exit, real sampled-scene launch,
+retained collection/reading panels and shared inert leases. The catalog panel
+does not allocate a second bookshelf Canvas. Locale/selection/presentation
+retain scene state. Eleven missing selected canonical portrait/cover files
+were added with exact bytes and existing credits; no new rights approval.
 
-Tests in progress: inspect latest .tmp/native-planet-browser-results entries
-and agents before changing sources. a1 sandbox failed; a2 identified missing
-portraits and archive loading failure; a3 proved the latter was fixture-only
-esbuild incompatibility with two Vite import.meta.glob calls. Do not weaken
-assertions or label these runs green. Corrected fixture preserves actual lazy
-primary/retry modules. Latest single work case a4 and remaining cases a5 are
-delegated to controlled_images. Read messages/results; do not duplicate runs.
-Typecheck/platform boundaries passed before final catalog-only prop change;
-one final typecheck is pending. Atlas root/web-modal3 Chrome cases passed.
-After required fixes: source-bound evidence, atomic commit, fresh Android
-build+native audit+offline cached Gradle, APK byte audit, final state check.
+Completed bounded checks: a4b/work reading/return, a5/RU-EN-RU identity/camera
+and a6/narrow390x844 reduced-motion/CDP geometry passed. The a5 run also had a
+separate narrow-fixture failure; keep all original failures a1-a5. Final
+typecheck/platform boundaries and canonical book controls passed. No duplicate
+full regression is needed without relevant changes. Evidence distinguishes
+real R3F/Chrome with native bindings from actual installed native runtime.
 
-S00-S02 accepted; S03 remains first-open/S03.acceptance. S04 and S05 are
-IN_PROGRESS with documented parallel-safe entry. S06-S40 NOT_STARTED.
-No global requirement passed; releaseReady:false. Full child/commerce,
-English content, device/install/RC and owner/legal gates remain incomplete.
+Exact Android artifact:
+buildId3cd14423f6e7271d75f4112915f45c64170a5ce6fc224483f3ea671ddc409374
+sourceInputsSha2569af1308f791fd82b045f735fbc1222987dacda5a993df216fac4caf9cbcd670b
+.tmp/native-builds/android-dev/3cd14423/runtime
+.tmp/native-builds/android-dev/3cd14423/app-dev-debug.apk
+APK34,415,589B SHA256f73f86414a7e88a8bb26c3d8d7d06a230a618efae1f00a78348ef6f23a784cb2.
+Strict native audit333files and offline Gradle167tasks/22executed145cached
+passed; APK332matched assets excludes only .vite/manifest validation metadata.
+Runtime/APK copies were byte-checked without overwriting46ebba56/fa9dd4a0.
+No Android install/device test. Java21/SDK/Gradle remain workspace-local;
+SDK license already explicitly accepted. Never silently reuse this identity
+for subsequent PWA/shared-source changes or publish debug keys.
 
-iOS public branch codex/literary-planet-v12-ios-ci currently325e9f3c, tree
-0ba8e8d71236a2299607cab27617b517691e1db0. Run34179803208 succeeded in actual
-RU/EN simulator install/launch; archive hash f98ca51c1d95d3a49760f765f9fcd81afe54c2669e3aad6de41b894288ef8996.
-Root viewed screenshots: magazine homepage and status-bar overlap FAIL the
-required application. Original run34178911693 timed out installing at60s;
-240s retry bound fixed that only. Preserve all failures and original reports.
-Current local app correction is NOT this historical public iOS artifact.
-Only existing public CI helper/workflow files were updated this turn; do not
-publish private local branch/history or silently republish current App content.
-The user already approved the74 reviewed source files and public simulator test
-branch; source delta must be concrete/reviewed before any additional action.
+Next independent gate: complete the controlled PWA globe-only/access/help
+presentation, run only affected browser/native/public checks, preserve source
+identities and original failures, then build/audit its fresh isolated QA
+artifact. Preserve historical QA authorities and signers. The older PWA
+current-pwa-20260908 evidence is11pass/1selector failure then one corrected
+pass on identical product source/new QA authority; it predates this change.
+Check active agents before duplicating any run. OS install remains unverified.
 
-Previous local Android/dev46ebba56 APK is preserved:
-.tmp/native-builds/android-dev/46ebba56/app-dev-debug.apk
-SHA2568244b5022bf89373890254204ce06bdf9226a382d33d75f21422802db830d502.
-It predates globe-only entry. Java21/AndroidSDK/Gradle are workspace-local and
-SDK license already explicitly accepted with owner's permission. Use positional
-build-native.mjs android dev, scoped Git safe.directory when escalated, then
-fresh exact-identity audit. Do not overwrite historical artifacts/QA signers.
-Current PWA evidence/S03/current-pwa-20260908/result.json:11pass1fail selector
-then only corrected1pass on identical product source/new QA authority, both
-strict audits passed. This predates native-only entry correction; no OS install.
+iOS public branch codex/literary-planet-v12-ios-ci remains325e9f3c, tree
+0ba8e8d71236a2299607cab27617b517691e1db0. Run34179803208 installed/launched on
+RU/EN simulators; archiveSHA256f98ca51c1d95d3a49760f765f9fcd81afe54c2669e3aad6de41b894288ef8996.
+Actual magazine-home/safe-area screenshots FAIL the product contract. Current
+local correction is NOT that historical public artifact. Preserve original
+34178911693 installation timeout and240-second retry evidence. Existing74-file
+source/test permission persists; keep reviewed source deltas concrete and
+exclude internal archive/reports/private history/keys from public branches.
+
+S00-S02 accepted. S03 is first-open/S03.acceptance; S03/S04/S05 IN_PROGRESS
+with documented parallel-safe entry. S06-S40 NOT_STARTED. No global requirement
+passed; releaseReady:false. Full onboarding/child/commerce/content/bilingual
+editorial/legal/device/RC/owner acceptance gates remain open.
 
 Read AGENTS/state/status/decisions/blockers and only active-stage routing.
-Archive194 checksums/191manifest entries/173binding docs reverified this turn;
-master and routed21/22/23 reread for this correction. Do not restart S00.
+Archive194checksums/191manifest entries/173binding docs were reverified and
+master/routed21/22/23 reread for this correction. Do not restart S00. Continue
+tests -> fixes -> bounded regression -> evidence -> atomic commit -> checkpoint.
 No production deploy/Submit/Release/merge/store/DB action. No second globe,
 invented title/biography, raw AI production translation or unlicensed assets.
-User has no Mac; do not assign Mac purchase, translation or programming.
+Owner has no Mac; do not assign Mac purchase, translation or programming.

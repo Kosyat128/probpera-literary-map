@@ -250,3 +250,11 @@
   faithfully by the test fixture; do not alter product code or weaken assertions
   to mask test-tool incompatibility. Add only evidenced missing canonical asset
   bytes with existing provenance; selection is not new rights/editorial approval.
+
+- D063: Android3cd14423 is the source-bound globe-only devDebug artifact from
+  26e29084. Preserve exact runtime/APK bytes and raw build/audit transcripts;
+  completed green build checks are not repeated merely to archive them. Static
+  APK equality/plugin/resource/signature/alignment checks and Chrome fixtures
+  do not prove installed Android/iOS behavior, exact-RC/store suitability,
+  stage acceptance, production signing or bilingual/content completion.
+  Subsequent shared-source/PWA work needs its own artifact identity.

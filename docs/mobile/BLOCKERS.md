@@ -2,30 +2,33 @@
 
 Internal implementation remains the assistant's responsibility:
 
-- Finish corrected globe-only native entry, actual scene/reading/Back/locale
-  regression, fresh artifacts and device/runtime validation. Complete S03/S04
-  and S05 onboarding; current entry work is not stage acceptance.
-- Complete sealed child policy/Parent Gate/profiles/Planetka, optional commerce,
-  scene customization, offline delivery, content and complete bilingual release.
-  No child/store menu is presented as functional before its underlying gates.
+- Native globe-only entry, three core browser scenarios, final typecheck and
+  platform boundaries passed. Fresh Android3cd14423 build/static binary checks
+  and exact archival copies passed. Installed Android/emulator/physical-device
+  behavior still requires its own evidence; this is not S03/S04/S05 acceptance.
+- Adapt controlled paid PWA to the same globe-only home and access/help panels,
+  then validate changed behavior and a fresh exact artifact. Historical PWA
+  tests do not cover the current presentation change. OS installation and a
+  broader device matrix remain open; keep QA authorities isolated.
+- Corrected iOS globe-first source still needs its own simulator/runtime
+  evidence. Historical cloud launch succeeded, but its magazine-home and
+  safe-area screenshots fail the product contract. Do not relabel old results.
+- Complete S03/S04 platform foundations and S05 onboarding, sealed child
+  policy/Parent Gate/profiles/Planetka, optional commerce, scene customization,
+  offline delivery and content. Child/shop UI is not functional acceptance.
 - English factual content, editorial/name/title evidence, synchronized legal,
-  support/store/reviewer materials and accessibility remain incomplete.
-- Actual iOS cloud launch succeeded on historical source but its magazine-home
-  screenshots fail the product contract and safe-area geometry. Corrected
-  local source needs its own native evidence; do not relabel old artifacts.
-- Android tooling/SDK license are complete. Real debug APK exists; physical
-  installation is unverified. PWA OS installation and broader device matrix
-  remain unverified; retain isolated QA authorities and exact hashes.
+  support/store/reviewer materials and complete accessibility remain unfinished.
 
 External inputs, when corresponding internal artifacts are ready:
 
 - Owner signing/merchant/store access, territory/rights/legal decisions and
   final bilingual approval. Consolidate concrete steps once; never assign
-  translation or programming. The user has no Mac; cloud macOS testing is
-  available and was explicitly authorized for reviewed source/test scope.
+  translation or programming. The user has no Mac; authorized reviewed-source
+  cloud macOS testing is available without requiring a Mac purchase.
 - Public main is protected. Detailed protection configuration is inaccessible
   to the current integration403; never infer required checks from empty data.
 
-The existing74-file public iOS source/test approval persists. Internal archive,
-reports, private history and keys are excluded from public publication.
+Android SDK license and workspace-local installation are already complete.
+The existing74-file public iOS source/test approval persists; review exact
+source deltas. Internal archive/reports/private history/keys remain excluded.
 Production deploy/Submit/Release/merge/store/DB actions remain prohibited.
