@@ -140,14 +140,24 @@ export async function runSimulatorSmoke({ root, runnerTemp, expectedCommit, deve
   process.once('SIGTERM', interrupted);
   process.once('SIGINT', interrupted);
   const command = async (binary, args, transcript, timeoutMs = 30_000, cleanup = false) => {
-    const entry = { binary, args, startedAt: new Date().toISOString() };
+    const started = Date.now();
+    const entry = { binary, args, startedAt: new Date(started).toISOString(), timeoutMs };
     transcript.push(entry);
     return new Promise((resolve, reject) => {
-      execFile(binary, args, { encoding: 'utf8', timeout: timeoutMs, maxBuffer: 4 * 1024 * 1024, killSignal: 'SIGKILL', ...(cleanup ? {} : { signal: abort.signal }) }, (error, stdout, stderr) => {
-        Object.assign(entry, { exitCode: error?.code ?? 0, signal: error?.signal ?? null, stdout, stderr, finishedAt: new Date().toISOString() });
+      let deadline, timedOut = false;
+      const child = execFile(binary, args, { encoding: 'utf8', maxBuffer: 4 * 1024 * 1024, killSignal: 'SIGKILL', ...(cleanup ? {} : { signal: abort.signal }) }, (error, stdout, stderr) => {
+        clearTimeout(deadline);
+        Object.assign(entry, { exitCode: error ? (typeof error.code === 'number' ? error.code : null) : 0, errorCode: typeof error?.code === 'string' ? error.code : null, signal: error?.signal ?? null, killed: error?.killed === true, timedOut, elapsedMs: Date.now() - started, stdout, stderr, finishedAt: new Date().toISOString() });
         if (error) reject(new Error('Simulator command failed: ' + args.slice(0, 3).join(' ') + ' (' + String(error.code ?? error.signal) + ')'));
         else resolve(stdout);
       });
+      // Record our own deadline firing; a received SIGKILL alone is not a timeout diagnosis.
+      deadline = setTimeout(() => {
+        if (child.exitCode === null && child.signalCode === null) {
+          timedOut = true;
+          child.kill('SIGKILL');
+        }
+      }, timeoutMs);
     });
   };
   const simctl = (args, transcript, timeoutMs, cleanup) => command('/usr/bin/xcrun', ['simctl', ...args], transcript, timeoutMs, cleanup);
@@ -173,7 +183,7 @@ export async function runSimulatorSmoke({ root, runnerTemp, expectedCommit, deve
         await simctl(['boot', id], transcript, 60_000);
         await simctl(['bootstatus', id, '-b'], transcript, 180_000);
         result.booted = true;
-        await simctl(['install', id, app], transcript, 60_000);
+        await simctl(['install', id, app], transcript, 240_000);
         const installed = (await simctl(['get_app_container', id, 'ru.probpera.literaryplanet', 'app'], transcript)).trim();
         check(path.isAbsolute(installed) && path.basename(installed) === 'App.app' && installed.split(path.sep).includes(id), 'Installed bundle must belong to the newly created simulator.');
         check(sha256(await regular(installed, 'App')) === executableSha256 && sha256(await regular(installed, 'public/artifact.json')) === artifactSha256, 'Installed application differs from the compiled preparation.');
