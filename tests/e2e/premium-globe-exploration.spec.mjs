@@ -392,32 +392,41 @@ test("edition rail moves focus without changing the rendered edition", async ({
     '[data-globe-control="edition-rail-toggle"]'
   );
 
-  const controlAlignment = await globe
-    .locator(
-      '[data-globe-control="auto-rotate"], [data-globe-control="reset"]'
-    )
-    .evaluateAll((buttons) =>
-      buttons.map((button) => {
-        const buttonBox = button.getBoundingClientRect();
-        const label = button.querySelector(".ui-action__label");
-        const labelBox = label?.getBoundingClientRect();
-        return {
-          clipped: button.scrollWidth > button.clientWidth,
-          height: buttonBox.height,
-          labelCenterOffset: labelBox
-            ? Math.abs(
-                labelBox.top + labelBox.height / 2 -
-                  (buttonBox.top + buttonBox.height / 2)
-              )
-            : Number.POSITIVE_INFINITY,
-        };
-      })
-    );
+  const alignedControls = globe.locator(
+    '[data-globe-control="auto-rotate"], [data-globe-control="reset"]'
+  );
+  for (const button of await alignedControls.all()) {
+    await expect(button).toHaveAccessibleName(/\S/u);
+  }
+  const controlAlignment = await alignedControls.evaluateAll((buttons) =>
+    buttons.map((button) => {
+      const buttonBox = button.getBoundingClientRect();
+      const label = button.querySelector(".ui-action__label");
+      // The mobile dock uses named icon buttons; measure the visible content.
+      const content = label?.getClientRects().length
+        ? label
+        : button.querySelector(".ui-action__icon");
+      const contentBox = content?.getBoundingClientRect();
+      return {
+        clipped: button.scrollWidth > button.clientWidth,
+        height: buttonBox.height,
+        width: buttonBox.width,
+        contentCenterOffset: contentBox?.height
+          ? Math.abs(
+              contentBox.top + contentBox.height / 2 -
+                (buttonBox.top + buttonBox.height / 2)
+            )
+          : Number.POSITIVE_INFINITY,
+      };
+    })
+  );
   expect(controlAlignment).toHaveLength(2);
   expect(new Set(controlAlignment.map(({ height }) => height)).size).toBe(1);
   for (const control of controlAlignment) {
     expect(control.clipped).toBe(false);
-    expect(control.labelCenterOffset).toBeLessThanOrEqual(0.5);
+    expect(control.height).toBeGreaterThanOrEqual(44);
+    expect(control.width).toBeGreaterThanOrEqual(44);
+    expect(control.contentCenterOffset).toBeLessThanOrEqual(0.5);
   }
 
   await randMcNally.focus();
@@ -450,6 +459,26 @@ test("edition rail moves focus without changing the rendered edition", async ({
   await expect(globe).toHaveAttribute("data-globe-edition-rail", "visible");
   await expect(naturalEarth).toBeFocused();
 
+  // Keep the real pointer target below both sticky navigation rows. Automatic
+  // nearest-edge scrolling can oscillate between the header and the tall scene.
+  await naturalEarth.evaluate((element) => {
+    const stickyBottom = Math.max(0, ...Array.from(
+      document.querySelectorAll(".site-header, .mobile-nav"),
+      (node) => node.getBoundingClientRect().bottom
+    ));
+    window.scrollTo({
+      top: window.scrollY + element.getBoundingClientRect().top - stickyBottom - 16,
+      behavior: "instant",
+    });
+  });
+  // The horizontally scrolled rail can clip a fractional pixel of the border.
+  await expect(naturalEarth).toBeInViewport({ ratio: 0.99 });
+  await expect.poll(() => naturalEarth.evaluate((element) => {
+    const box = element.getBoundingClientRect();
+    return element.contains(document.elementFromPoint(
+      box.left + box.width / 2, box.top + box.height / 2
+    ));
+  })).toBe(true);
   await naturalEarth.click();
   await expect(globe).toHaveAttribute("data-globe-edition-rail", "hidden");
   if (isMobile) {
@@ -975,9 +1004,23 @@ test("country selection keeps Canvas stable and exposes the responsive presentat
     await expect(toggle).toHaveCount(0);
     await expect(sheet.locator(".country-panel")).toBeVisible();
   }
+  await expect(canvas).toHaveAttribute("data-stage4-sheet-identity", "stable");
+  await expect.poll(() => canvas.evaluate((element) => {
+    const bounds = element.getBoundingClientRect();
+    const stage = element.closest(".world-map-stage");
+    const stageBounds = stage.getBoundingClientRect();
+    return bounds.width > 0 && bounds.height > 0 &&
+      Math.abs(bounds.x - stageBounds.x - stage.clientLeft) < 2 &&
+      Math.abs(bounds.y - stageBounds.y - stage.clientTop) < 2 &&
+      Math.abs(bounds.width - stage.clientWidth) < 2 &&
+      Math.abs(bounds.height - stage.clientHeight) < 2;
+  })).toBe(true);
   const after = await canvas.boundingBox();
   expect(Math.abs((after?.width ?? 0) - (before?.width ?? 0))).toBeLessThan(2);
-  expect(Math.abs((after?.height ?? 0) - (before?.height ?? 0))).toBeLessThan(2);
+  // Selecting a country reserves space for the mobile sheet; its original
+  // Canvas must resize to the real stage rather than retain the closed height.
+  if (isMobile) expect(after.height).toBeGreaterThanOrEqual(before.height);
+  else expect(Math.abs(after.height - before.height)).toBeLessThan(2);
 
   if (isMobile) {
     await exerciseThreeStateCountrySheet({ sheet, canvas, page });
