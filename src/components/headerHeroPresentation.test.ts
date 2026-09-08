@@ -44,7 +44,7 @@ describe("Header + Hero presentation contract", () => {
     expect(languageControlSource).not.toContain('../ui/Button');
     expect(languageControlSource).toContain('<button\n          type="button"');
     expect(publicStyles).toMatch(/\.interface-language-control\s*\{[\s\S]*?height:\s*32px;[\s\S]*?padding:\s*3px;/u);
-    expect(publicStyles).toMatch(/@media \(max-width:\s*1520px\)\s*\{[\s\S]*?\.header-actions \.header-socials/u);
+    expect(publicStyles).toMatch(/@media \(max-width:\s*1600px\)\s*\{[\s\S]*?\.header-actions \.header-socials/u);
     expect(publicStyles).not.toMatch(/\/\* Header refinement:/u);
   });
 

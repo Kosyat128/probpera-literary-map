@@ -460,6 +460,38 @@ function exactClassTokenPattern(classToken) {
   return new RegExp(`(^|[^\\w-])\\.${escaped}(?![\\w-])`, "u");
 }
 
+// The owner-requested button placement fix retains the existing compact group
+// through 1600px. Reverse only this exact reviewed block for historical hashes.
+const approvedHeaderCompactBefore = [
+  "@media (max-width: 1520px) {",
+  "  .global-search-trigger {",
+  "    width: 38px;",
+  "    justify-content: center;",
+  "    padding: 0;",
+  "  }",
+  "",
+  "  .global-search-trigger small,",
+  "  .global-search-trigger kbd {",
+  "    display: none;",
+  "  }",
+  "",
+  "  .header-actions .header-socials {",
+  "    display: none;",
+  "  }",
+  "}",
+].join("\n");
+const approvedHeaderCompactAfter =
+  "/* Keep fallback-font navigation clear before restoring the full action group. */\n" +
+  approvedHeaderCompactBefore.replace("max-width: 1520px", "max-width: 1600px");
+
+function projectApprovedHeaderCompact(relativePath, source) {
+  if (relativePath !== "src/index.css") return source;
+  if (source.split(approvedHeaderCompactAfter).length !== 2) {
+    throw new Error("Missing, duplicate or changed reviewed header compact delta");
+  }
+  return source.replace(approvedHeaderCompactAfter, approvedHeaderCompactBefore);
+}
+
 function ownerCssFingerprint() {
   // The historical registry omitted the Articles trigger despite protecting
   // its Sections counterpart; freeze both while excluding popup contents.
@@ -483,7 +515,8 @@ function ownerCssFingerprint() {
     )).toBe(true);
   }
   const rules = parseCss(
-    projectReviewedReadingDesign("src/index.css", readFileSync(path.join(root, "src/index.css"), "utf8")),
+    projectReviewedReadingDesign("src/index.css", projectApprovedHeaderCompact("src/index.css",
+      readFileSync(path.join(root, "src/index.css"), "utf8").replace(/\r\n?/gu, "\n"))),
     "src/index.css"
   )
     .filter((rule) => patterns.some((pattern) => pattern.test(rule.selector)))
@@ -1054,6 +1087,24 @@ describe("Stage 5 owner and production-pipeline governance locks", () => {
       files: 9,
       sha256: "5f9a3fc115e4022b6a128cb592191b8e0a3c317e55e383e5b95651d45f97e383",
     });
+  });
+
+  it("projects only the reviewed header compact breakpoint while retaining every declaration", () => {
+    const source = readFileSync(path.join(root, "src/index.css"), "utf8").replace(/\r\n?/gu, "\n");
+    const projected = projectApprovedHeaderCompact("src/index.css", source);
+    expect(projected).toBe(source.replace(approvedHeaderCompactAfter, approvedHeaderCompactBefore));
+    for (const invalid of [
+      source.replace(approvedHeaderCompactAfter, ""),
+      source + approvedHeaderCompactAfter,
+      source.replace(approvedHeaderCompactAfter, approvedHeaderCompactAfter.replace("1600px", "1601px")),
+      source.replace(approvedHeaderCompactAfter, approvedHeaderCompactAfter.replace("38px", "39px")),
+    ]) {
+      expect(() => projectApprovedHeaderCompact("src/index.css", invalid))
+        .toThrow("Missing, duplicate or changed reviewed header compact delta");
+    }
+    const unrelated = "\n.site-header { padding: 1px; }\n";
+    expect(projectApprovedHeaderCompact("src/index.css", source + unrelated)).toBe(projected + unrelated);
+    expect(projectApprovedHeaderCompact("src/styles/header-preserved.css", source)).toBe(source);
   });
 
   it("keeps Header/Hero owner CSS rules unchanged", () => {
