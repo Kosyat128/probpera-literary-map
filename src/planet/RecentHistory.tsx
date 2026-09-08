@@ -14,6 +14,8 @@ export interface RecentHistorySnapshot {
   readonly available: boolean;
   readonly loaded: boolean;
   readonly entries: readonly RecentEntry[];
+  /** Native persistence feedback; omitted by the existing scoped Web store. */
+  readonly storageStatus?: "loading" | "ready" | "saving" | "error";
 }
 /** Platform-neutral preference port. Never a source of content or paid access. */
 export interface RecentHistoryStore {
@@ -22,6 +24,8 @@ export interface RecentHistoryStore {
   subscribe(listener: () => void): () => void;
   record(target: RecentTarget): Promise<void>;
   clear(): Promise<void>;
+  retry?(): Promise<void>;
+  dispose?(): void;
 }
 export const RECENT_HISTORY_LIMIT = 20;
 const emptyEntries: readonly RecentEntry[] = Object.freeze([]);
@@ -32,10 +36,10 @@ const Context = createContext<RecentHistoryStore>(disabledStore);
 export function RecentHistoryProvider({ store, children }: { store: RecentHistoryStore; children: ReactNode }) {
   return <Context.Provider value={store}>{children}</Context.Provider>;
 }
-/** The public site and unconfigured native hosts retain a stable no-op port. */
+/** Without a provider, including on the public site, this is a stable no-op port. */
 export function useRecentHistory() {
   const store = useContext(Context);
   const snapshot = useSyncExternalStore(store.subscribe, store.getSnapshot, store.getSnapshot);
-  return useMemo(() => ({ ...snapshot, record: store.record, clear: store.clear }), [snapshot, store]);
+  return useMemo(() => ({ ...snapshot, record: store.record, clear: store.clear, retry: store.retry }), [snapshot, store]);
 }
 export const recentEntryKey = (entry: RecentTarget) => JSON.stringify([entry.kind, entry.countryId, entry.writerId, entry.kind === "work" ? entry.workId : null]);

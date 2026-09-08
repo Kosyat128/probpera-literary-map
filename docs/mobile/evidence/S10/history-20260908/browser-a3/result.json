@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "runId": "s10-history-20260908-a3",
+  "title": "native collections disclose session-only favorites and smart shelves when IndexedDB is unavailable",
+  "head": "641f18f57ca9877be912ad6231705541c188dd64",
+  "status": "SOURCE_BROWSER_PASSED",
+  "pass": true,
+  "sourceInputsSha256": "1c34faf8ec41268991291fa298735f0f1da3eba4814d0f24cd2d6f3a2e4f6e44",
+  "sourceInputsUnchanged": true,
+  "statistics": {
+    "startTime": "2026-09-08T13:51:46.664Z",
+    "duration": 11740.77,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "exitCode": 0,
+  "cases": [
+    {
+      "title": "native collections disclose session-only favorites and smart shelves when IndexedDB is unavailable",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 9459,
+          "errors": []
+        }
+      ]
+    }
+  ],
+  "preserved": [
+    {
+      "path": "docs/mobile/evidence/S10/history-20260908/browser-a3/playwright.json",
+      "bytes": 114802,
+      "sha256": "0d4b5b0626c93ec5ab720285c48206c280b6d93d0ac94d8b6e6bfc17da2d23fc"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/history-20260908/browser-a3/native-collection-session-ru.json",
+      "bytes": 26537,
+      "sha256": "56b7eb184ee0445030cdbe08a9f00b5d9a69c664ba7c4b25067de284e8274d4a"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/history-20260908/browser-a3/native-collection-session-ru-screenshot.png",
+      "bytes": 79479,
+      "sha256": "4438cfed5fc2d91f454a4aeec568500385794c2c84a6167a971af8ff95d1a0f7"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/history-20260908/browser-a3/native-collection-session-en.json",
+      "bytes": 21476,
+      "sha256": "c1b1df2b682c205cb25cf29bae5f3b54a4286483632ecae2ac7fe396b94e1996"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/history-20260908/browser-a3/native-collection-session-en-screenshot.png",
+      "bytes": 74119,
+      "sha256": "d0c45b08a848204b7bd1a8e79fe0f8ec7246d72e94715cfc9e5b030a6889f3c7"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/history-20260908/browser-a3/native-collection-session-complete.json",
+      "bytes": 16785,
+      "sha256": "bcf519d598133fc98fe6365200bf3813307ae09d5ff8a3a81e8339905394968d"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/history-20260908/browser-a3/native-collection-session-complete-screenshot.png",
+      "bytes": 111447,
+      "sha256": "d2792fa306af974eb30ed251fe12c088d0a867ba9f81048f83b49b8269266d07"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/history-20260908/browser-a3/native-final-passed.json",
+      "bytes": 16483,
+      "sha256": "775843ff29f157942fd4c2d502de44f60e2e1367d505d431a74093dd389f67a3"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/history-20260908/browser-a3/native-final-passed-screenshot.png",
+      "bytes": 111447,
+      "sha256": "d2792fa306af974eb30ed251fe12c088d0a867ba9f81048f83b49b8269266d07"
+    }
+  ],
+  "fixtureUsesCanonicalAppAndScene": true,
+  "actualInstalledRuntime": false,
+  "nativePluginsSimulated": true,
+  "stageAccepted": false,
+  "releaseReady": false
+}

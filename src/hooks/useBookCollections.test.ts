@@ -1,17 +1,21 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { test } from "vitest";
+import { test, vi } from "vitest";
 
 import {
   BOOK_COLLECTION_SCHEMA_VERSION,
   createEmptyBookCollectionSnapshot,
   type BookCollection,
+  type BookCollectionSnapshot,
 } from "../books/bookCollections";
-import { createBookCollectionMutation } from "../books/bookCollectionStorage";
+import { createBookCollectionMutation, createBookCollectionStorage, type BookCollectionStorageCommitResult } from "../books/bookCollectionStorage";
 import {
   applyBookCollectionMutations,
   createBookCollectionSnapshotMutations,
   findBookCollectionConflicts,
+  commitBookCollectionUpdate,
+  loadBookCollectionPersistence,
+  type BookCollectionPersistenceStatus,
 } from "./useBookCollections";
 
 const firstTimestamp = "2026-08-27T10:00:00.000Z";
@@ -123,4 +127,138 @@ test("remote writes are owner-scoped and memberships never duplicate archive met
   assert.doesNotMatch(remoteItemBody, /\b(?:title|author|cover|description)\b/iu);
   assert.doesNotMatch(source, /localStorage\.(?:setItem|removeItem)\(/u);
   assert.match(source, /databaseName: `\$\{BOOK_COLLECTION_DATABASE_NAME\}:\$\{storageScope\}`/u);
+});
+
+const deferred = <T,>() => {
+  let resolve!: (value: T) => void;
+  let reject!: (reason: unknown) => void;
+  const promise = new Promise<T>((accept, decline) => { resolve = accept; reject = decline; });
+  return { promise, resolve, reject };
+};
+
+function commitFixture(persistent: boolean) {
+  const previous = createEmptyBookCollectionSnapshot();
+  const next = { ...previous, collections: [manualCollection("Synthetic personal shelf")] };
+  const snapshots: BookCollectionSnapshot[] = [];
+  const persistence: BookCollectionPersistenceStatus[] = [];
+  const reportError = vi.fn();
+  const clearError = vi.fn();
+  const storage = {
+    commit: vi.fn(async (): Promise<BookCollectionStorageCommitResult> => ({ snapshot: next, persistent })),
+    // Spies intentionally detect forbidden compensating writes after rejection.
+    replace: vi.fn(), acknowledgeMutations: vi.fn(),
+  };
+  const options = {
+    previous, next,
+    mutations: [createBookCollectionMutation({ kind: "collection-upsert", value: next.collections[0] })],
+    storage,
+    isCurrent: () => true,
+    isScopeCurrent: () => true,
+    publishSnapshot: (snapshot: BookCollectionSnapshot) => { snapshots.push(snapshot); },
+    publishPersistence: (status: BookCollectionPersistenceStatus) => { persistence.push(status); },
+    reportError, clearError,
+  };
+  return { options, snapshots, persistence, reportError, clearError, storage };
+}
+
+test.each([true, false])("local commit reports actual persistent=%s without conflating usable edits and durable storage", async persistent => {
+  const env = commitFixture(persistent);
+  assert.equal(await commitBookCollectionUpdate(env.options), true);
+  assert.equal(env.snapshots[env.snapshots.length - 1], env.options.next);
+  assert.deepEqual(env.persistence, ["unknown", persistent ? "persistent" : "session-only"]);
+  assert.equal(env.reportError.mock.calls.length, 0);
+});
+
+test.each([true, false])("server sync failure retains a successful local persistent=%s edit and its pending mutation", async persistent => {
+  const env = commitFixture(persistent), failure = new Error("synthetic-remote-unavailable");
+  const flush = vi.fn(async () => { throw failure; });
+  assert.equal(await commitBookCollectionUpdate({ ...env.options, flush }), true);
+  assert.equal(env.snapshots[env.snapshots.length - 1], env.options.next);
+  assert.equal(env.persistence[env.persistence.length - 1], persistent ? "persistent" : "session-only");
+  assert.deepEqual(env.reportError.mock.calls, [[failure, "sync"]]);
+  assert.equal(env.storage.replace.mock.calls.length, 0);
+  assert.equal(env.storage.acknowledgeMutations.mock.calls.length, 0);
+});
+
+test("a rejected atomic local commit changes only the current optimistic view, never rewrites storage", async () => {
+  const env = commitFixture(true), failure = new Error("synthetic-transaction-rejected");
+  env.storage.commit.mockRejectedValueOnce(failure);
+  assert.equal(await commitBookCollectionUpdate(env.options), false);
+  assert.equal(env.snapshots[env.snapshots.length - 1], env.options.previous);
+  assert.deepEqual(env.persistence, ["unknown", "error"]);
+  assert.deepEqual(env.reportError.mock.calls, [[failure, "local"]]);
+  assert.equal(env.storage.replace.mock.calls.length, 0);
+  assert.equal(env.storage.acknowledgeMutations.mock.calls.length, 0);
+});
+
+test("a scope changed away and back cannot accept the old generation's completed snapshot or persistence", async () => {
+  const env = commitFixture(true), commit = deferred<BookCollectionStorageCommitResult>();
+  const originalScope = { name: "user:synthetic-a" };
+  let activeScope = originalScope;
+  env.storage.commit.mockReturnValueOnce(commit.promise);
+  const operation = commitBookCollectionUpdate({ ...env.options,
+    isCurrent: () => activeScope === originalScope,
+    isScopeCurrent: () => activeScope === originalScope,
+  });
+  activeScope = { name: "user:synthetic-b" };
+  activeScope = { name: "user:synthetic-a" };
+  commit.resolve({ snapshot: env.options.next, persistent: true });
+  assert.equal(await operation, false);
+  assert.deepEqual(env.snapshots, [env.options.next]);
+  assert.deepEqual(env.persistence, ["unknown"]);
+  assert.equal(env.clearError.mock.calls.length, 0);
+});
+
+test("a later completion cannot replace a newer merged snapshot or upgrade its session-only status", async () => {
+  const env = commitFixture(true), first = deferred<BookCollectionStorageCommitResult>();
+  let revision = 1;
+  env.storage.commit.mockReturnValueOnce(first.promise);
+  const older = commitBookCollectionUpdate({ ...env.options, isCurrent: () => revision === 1 });
+  revision = 2;
+  const merged = { ...env.options.next, favorites: [{ bookKey: "russia:tolstoy:war-and-peace", addedAt: firstTimestamp, updatedAt: firstTimestamp }] };
+  env.storage.commit.mockResolvedValueOnce({ snapshot: merged, persistent: false });
+  assert.equal(await commitBookCollectionUpdate({ ...env.options, next: merged, isCurrent: () => revision === 2 }), true);
+  first.resolve({ snapshot: env.options.next, persistent: true });
+  assert.equal(await older, true);
+  assert.equal(env.snapshots[env.snapshots.length - 1], merged);
+  assert.equal(env.persistence[env.persistence.length - 1], "session-only");
+});
+
+test("a superseded local failure cannot roll back a newer edit or replace its error status", async () => {
+  const env = commitFixture(true), first = deferred<BookCollectionStorageCommitResult>();
+  let current = true;
+  env.storage.commit.mockReturnValueOnce(first.promise);
+  const older = commitBookCollectionUpdate({ ...env.options, isCurrent: () => current });
+  current = false;
+  first.reject(new Error("synthetic-old-failure"));
+  assert.equal(await older, false);
+  assert.deepEqual(env.snapshots, [env.options.next]);
+  assert.deepEqual(env.persistence, ["unknown"]);
+  assert.equal(env.reportError.mock.calls.length, 0);
+  assert.equal(env.storage.replace.mock.calls.length, 0);
+});
+
+test("the persistence probe observes a read-triggered backend downgrade instead of its old capability", async () => {
+  let persistent = true;
+  const snapshot = createEmptyBookCollectionSnapshot();
+  const actual = await loadBookCollectionPersistence({
+    load: async () => { persistent = false; return snapshot; },
+    isPersistent: async () => persistent,
+  });
+  assert.equal(actual.snapshot, snapshot);
+  assert.equal(actual.persistence, "session-only");
+});
+
+test("actual unavailable-IndexedDB storage retains a usable session edit and never reports device persistence", async () => {
+  const storage = createBookCollectionStorage({ indexedDB: null, broadcastChannel: null });
+  try {
+    const env = commitFixture(false);
+    assert.equal((await loadBookCollectionPersistence(storage)).persistence, "session-only");
+    assert.equal(await commitBookCollectionUpdate({ ...env.options, storage }), true);
+    const loaded = await loadBookCollectionPersistence(storage);
+    assert.equal(loaded.persistence, "session-only");
+    assert.deepEqual(loaded.snapshot.collections, env.options.next.collections);
+  } finally {
+    storage.close();
+  }
 });

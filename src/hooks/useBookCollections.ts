@@ -25,6 +25,7 @@ import {
   createBookCollectionStorage,
   createBookCollectionMutation,
   type BookCollectionMutation,
+  type BookCollectionStorage,
 } from "../books/bookCollectionStorage";
 import { useAuth } from "../community/AuthContext";
 import { supabase } from "../lib/supabase";
@@ -34,6 +35,68 @@ export type BookCollectionSyncStatus =
   | "syncing"
   | "synced"
   | "error";
+
+export type BookCollectionPersistenceStatus =
+  | "unknown"
+  | "persistent"
+  | "session-only"
+  | "error";
+
+/** Probe after loading: a failed IndexedDB read can switch to session memory. */
+export async function loadBookCollectionPersistence(
+  storage: Pick<BookCollectionStorage, "load" | "isPersistent">,
+) {
+  const snapshot = await storage.load();
+  const persistent = await storage.isPersistent();
+  return { snapshot, persistence: persistent ? "persistent" as const : "session-only" as const };
+}
+
+/** Local commit and remote sync have separate failure and rollback boundaries. */
+export async function commitBookCollectionUpdate(options: {
+  next: BookCollectionSnapshot;
+  previous: BookCollectionSnapshot;
+  mutations: readonly BookCollectionMutation[];
+  storage: Pick<BookCollectionStorage, "commit">;
+  isCurrent: () => boolean;
+  isScopeCurrent: () => boolean;
+  publishSnapshot: (snapshot: BookCollectionSnapshot) => void;
+  publishPersistence: (status: BookCollectionPersistenceStatus) => void;
+  reportError: (reason: unknown, phase: "local" | "sync") => void;
+  clearError: () => void;
+  flush?: () => Promise<void>;
+}): Promise<boolean> {
+  if (!options.isCurrent()) return false;
+  options.publishSnapshot(options.next);
+  options.publishPersistence("unknown");
+  let committed: Awaited<ReturnType<BookCollectionStorage["commit"]>>;
+  try {
+    committed = await options.storage.commit(options.next, options.mutations);
+  } catch (reason) {
+    if (options.isCurrent()) {
+      // The storage transaction is atomic. Compensating writes could erase a
+      // newer edit; only the current optimistic view returns to its prior value.
+      options.publishSnapshot(options.previous);
+      options.publishPersistence("error");
+      options.reportError(reason, "local");
+    }
+    return false;
+  }
+  if (!options.isScopeCurrent()) return false;
+  if (options.isCurrent()) {
+    options.publishSnapshot(committed.snapshot);
+    options.publishPersistence(committed.persistent ? "persistent" : "session-only");
+    options.clearError();
+  }
+  if (options.flush) {
+    try {
+      await options.flush();
+    } catch (reason) {
+      if (options.isCurrent()) options.reportError(reason, "sync");
+      // A server failure must never remove a successfully committed local edit.
+    }
+  }
+  return options.isScopeCurrent();
+}
 
 type RemoteCollectionRow = {
   id: string;
@@ -355,12 +418,41 @@ export function useBookCollections() {
     createEmptyBookCollectionSnapshot,
     [storageScope],
   );
+  const operationScope = useMemo(() => ({
+    active: true,
+    revision: 0,
+    loadRevision: 0,
+    pending: new Set<number>(),
+    persistence: "unknown" as BookCollectionPersistenceStatus,
+  }), [storage]);
+  const activeOperationScopeRef = useRef(operationScope);
+  activeOperationScopeRef.current = operationScope;
+  const isScopeCurrent = useCallback(
+    () => activeOperationScopeRef.current === operationScope && operationScope.active,
+    [operationScope],
+  );
+  const [scopedPersistence, setScopedPersistence] = useState(() => ({
+    scope: operationScope,
+    value: "unknown" as BookCollectionPersistenceStatus,
+  }));
+  const localPersistenceStatus = scopedPersistence.scope === operationScope
+    ? scopedPersistence.value
+    : "unknown";
+  const publishPersistence = useCallback((value: BookCollectionPersistenceStatus) => {
+    if (!isScopeCurrent()) return;
+    operationScope.persistence = value;
+    setScopedPersistence({ scope: operationScope, value });
+  }, [isScopeCurrent, operationScope]);
+  const getLocalPersistenceStatus = useCallback(
+    () => isScopeCurrent() ? operationScope.persistence : "unknown" as const,
+    [isScopeCurrent, operationScope],
+  );
   const [scopedSnapshot, setScopedSnapshot] = useState(() => ({
-    scope: storageScope,
+    scope: operationScope,
     value: emptySnapshot,
   }));
   const snapshot =
-    scopedSnapshot.scope === storageScope
+    scopedSnapshot.scope === operationScope
       ? scopedSnapshot.value
       : emptySnapshot;
   const [status, setStatus] = useState<BookCollectionSyncStatus>("local-only");
@@ -369,7 +461,7 @@ export function useBookCollections() {
   const snapshotRef = useRef(snapshot);
   const snapshotScopeRef = useRef(storageScope);
   const flushRef = useRef<{
-    scope: string;
+    scope: typeof operationScope;
     promise: Promise<void>;
   } | null>(null);
   const flushRequestedRef = useRef(false);
@@ -379,28 +471,31 @@ export function useBookCollections() {
     flushRequestedRef.current = false;
   }
 
-  useEffect(
-    () => () => {
+  useEffect(() => {
+    operationScope.active = true;
+    return () => {
+      operationScope.active = false;
       if (storage !== bookCollectionStorage) storage.close();
-    },
-    [storage],
-  );
+    };
+  }, [operationScope, storage]);
 
   const publishSnapshot = useCallback((next: BookCollectionSnapshot) => {
+    if (!isScopeCurrent()) return;
     snapshotRef.current = next;
-    setScopedSnapshot({ scope: storageScope, value: next });
-  }, [storageScope]);
+    setScopedSnapshot({ scope: operationScope, value: next });
+  }, [isScopeCurrent, operationScope]);
 
   const flush = useCallback((): Promise<void> => {
+    if (!isScopeCurrent()) return Promise.resolve();
     if (!configured || !supabase || !user) {
       setStatus("local-only");
       return Promise.resolve();
     }
     const currentFlush = flushRef.current;
-    if (currentFlush?.scope === storageScope) {
+    if (currentFlush?.scope === operationScope) {
       flushRequestedRef.current = true;
       return currentFlush.promise.then(() => {
-        if (snapshotScopeRef.current !== storageScope) return;
+        if (!isScopeCurrent()) return;
         if (!flushRequestedRef.current) return;
         flushRequestedRef.current = false;
         return flush();
@@ -408,6 +503,7 @@ export function useBookCollections() {
     }
     const client = supabase;
     const userId = user.id;
+    const revision = operationScope.revision;
     setStatus("syncing");
     const operation = (async () => {
       const mutations = await storage.pendingMutations();
@@ -415,12 +511,12 @@ export function useBookCollections() {
         await sendMutation(client, userId, mutation);
         await storage.acknowledgeMutations([mutation.id]);
       }
-      if (snapshotScopeRef.current === storageScope) {
+      if (isScopeCurrent() && operationScope.revision === revision) {
         setError(null);
         setStatus("synced");
       }
     })().catch((reason: unknown) => {
-      if (snapshotScopeRef.current === storageScope) {
+      if (isScopeCurrent() && operationScope.revision === revision) {
         setError(errorMessage(reason));
         setStatus("error");
       }
@@ -428,29 +524,47 @@ export function useBookCollections() {
     }).finally(() => {
       if (flushRef.current?.promise === operation) flushRef.current = null;
     });
-    flushRef.current = { scope: storageScope, promise: operation };
+    flushRef.current = { scope: operationScope, promise: operation };
     return operation;
-  }, [configured, storage, storageScope, user]);
+  }, [configured, isScopeCurrent, operationScope, storage, storageScope, user]);
 
   useEffect(() => {
     let active = true;
+    const migrationRevision = operationScope.revision;
+    const load = async () => {
+      const revision = operationScope.revision;
+      const loadRevision = ++operationScope.loadRevision;
+      try {
+        const local = await loadBookCollectionPersistence(storage);
+        if (!active || !isScopeCurrent() || operationScope.revision !== revision ||
+          operationScope.loadRevision !== loadRevision || operationScope.pending.size) return;
+        publishSnapshot(local.snapshot);
+        publishPersistence(local.persistence);
+      } catch (reason) {
+        if (!active || !isScopeCurrent() || operationScope.revision !== revision ||
+          operationScope.loadRevision !== loadRevision || operationScope.pending.size) return;
+        publishPersistence("error");
+        setError(errorMessage(reason));
+      }
+    };
     void (async () => {
       if (storage === bookCollectionStorage) {
         await bookCollectionStorage.migrateLegacySmartShelves(legacySmartCollection);
       }
-      const local = await storage.load();
-      if (active) publishSnapshot(local);
-    })();
+      if (active && isScopeCurrent()) await load();
+    })().catch((reason: unknown) => {
+      if (!active || !isScopeCurrent() || operationScope.revision !== migrationRevision) return;
+      publishPersistence("error");
+      setError(errorMessage(reason));
+    });
     const unsubscribe = storage.subscribe(() => {
-      void storage.load().then((next) => {
-        if (active) publishSnapshot(next);
-      });
+      if (!operationScope.pending.size) void load();
     });
     return () => {
       active = false;
       unsubscribe();
     };
-  }, [publishSnapshot, storage]);
+  }, [isScopeCurrent, operationScope, publishPersistence, publishSnapshot, storage]);
 
   useEffect(() => {
     if (!configured || !supabase || !user) {
@@ -462,6 +576,8 @@ export function useBookCollections() {
     let active = true;
     const client = supabase;
     const userId = user.id;
+    const startingRevision = operationScope.revision;
+    let syncRevision = startingRevision;
     setStatus("syncing");
     void (async () => {
       await bookCollectionStorage.migrateLegacySmartShelves(legacySmartCollection);
@@ -473,6 +589,7 @@ export function useBookCollections() {
           bookCollectionStorage.load(),
           bookCollectionStorage.pendingMutations(),
         ]);
+      if (!active || !isScopeCurrent() || operationScope.revision !== startingRevision) return;
       const localWithAnonymous = mergeBookCollectionSnapshots(anonymous, local);
       const anonymousTransferMutations = coalesceBookCollectionMutations(
         createBookCollectionSnapshotMutations(anonymous),
@@ -490,56 +607,72 @@ export function useBookCollections() {
         mergeBookCollectionSnapshots(localWithAnonymous, remote),
         combinedPending,
       );
-      const committed = await storage.commit(merged, combinedPending);
+      const revision = ++operationScope.revision;
+      syncRevision = revision;
+      operationScope.pending.add(revision);
+      publishPersistence("unknown");
+      let committed: Awaited<ReturnType<BookCollectionStorage["commit"]>>;
+      try {
+        committed = await storage.commit(merged, combinedPending);
+      } catch (reason) {
+        if (active && isScopeCurrent() && operationScope.revision === revision) publishPersistence("error");
+        throw reason;
+      } finally {
+        operationScope.pending.delete(revision);
+      }
+      if (!active || !isScopeCurrent() || operationScope.revision !== revision) return;
+      publishSnapshot(committed.snapshot);
+      publishPersistence(committed.persistent ? "persistent" : "session-only");
       if (committed.persistent && anonymousTransferMutations.length > 0) {
         await bookCollectionStorage.replace(createEmptyBookCollectionSnapshot());
         await bookCollectionStorage.acknowledgeMutations(
           anonymousPending.map(({ id }) => id),
         );
       }
-      if (!active) return;
-      publishSnapshot(committed.snapshot);
+      if (!active || !isScopeCurrent() || operationScope.revision !== revision) return;
       setConflicts(conflictKeys);
       setError(null);
       await flush();
     })().catch((reason: unknown) => {
-      if (!active) return;
+      if (!active || !isScopeCurrent() || operationScope.revision !== syncRevision) return;
       setError(errorMessage(reason));
       setStatus("error");
     });
     return () => {
       active = false;
     };
-  }, [configured, flush, publishSnapshot, storage, user]);
+  }, [configured, flush, isScopeCurrent, operationScope, publishPersistence, publishSnapshot, storage, user]);
 
   const commitOptimistic = useCallback(async (
     next: BookCollectionSnapshot,
     mutations: readonly BookCollectionMutation[],
   ): Promise<boolean> => {
+    if (!isScopeCurrent()) return false;
     const previous = snapshotRef.current;
-    publishSnapshot(next);
+    const revision = ++operationScope.revision;
+    operationScope.pending.add(revision);
     try {
-      const result = await storage.commit(next, mutations);
-      publishSnapshot(result.snapshot);
-      setError(null);
-      if (configured && supabase && user) await flush();
-      else setStatus("local-only");
-      return true;
-    } catch (reason) {
-      try {
-        await storage.acknowledgeMutations(mutations.map(({ id }) => id));
-        await storage.replace(previous);
-      } catch {
-        // The in-memory rollback below remains authoritative for this session.
-      }
-      publishSnapshot(previous);
-      setError(errorMessage(reason));
-      setStatus("error");
-      return false;
+      return await commitBookCollectionUpdate({
+        next, previous, mutations, storage, isScopeCurrent,
+        isCurrent: () => isScopeCurrent() && operationScope.revision === revision,
+        publishSnapshot, publishPersistence,
+        clearError: () => {
+          setError(null);
+          if (!configured || !supabase || !user) setStatus("local-only");
+        },
+        reportError: (reason) => {
+          setError(errorMessage(reason));
+          setStatus("error");
+        },
+        ...(configured && supabase && user ? { flush } : {}),
+      });
+    } finally {
+      operationScope.pending.delete(revision);
     }
-  }, [configured, flush, publishSnapshot, storage, user]);
+  }, [configured, flush, isScopeCurrent, operationScope, publishPersistence, publishSnapshot, storage, user]);
 
   const upsertCollection = useCallback(async (value: BookCollection) => {
+    if (!isScopeCurrent()) return false;
     const safe = parseBookCollection(value);
     if (!safe) return false;
     if (safe.visibility !== "private") {
@@ -562,9 +695,10 @@ export function useBookCollections() {
           value: safe,
         })])
       : false;
-  }, [commitOptimistic]);
+  }, [commitOptimistic, isScopeCurrent]);
 
   const removeCollection = useCallback(async (collectionId: string) => {
+    if (!isScopeCurrent()) return false;
     const current = snapshotRef.current;
     if (!current.collections.some(({ id }) => id === collectionId)) return true;
     const next = parseBookCollectionSnapshot({
@@ -578,13 +712,14 @@ export function useBookCollections() {
           collectionId,
         })])
       : false;
-  }, [commitOptimistic]);
+  }, [commitOptimistic, isScopeCurrent]);
 
   const addBook = useCallback(async (
     collectionId: string,
     bookKey: string,
     position?: number,
   ) => {
+    if (!isScopeCurrent()) return false;
     const current = snapshotRef.current;
     if (!current.collections.some(({ id }) => id === collectionId)) return false;
     const previous = current.items.find(
@@ -622,9 +757,10 @@ export function useBookCollections() {
           value: item,
         })])
       : false;
-  }, [commitOptimistic]);
+  }, [commitOptimistic, isScopeCurrent]);
 
   const removeBook = useCallback(async (collectionId: string, bookKey: string) => {
+    if (!isScopeCurrent()) return false;
     const current = snapshotRef.current;
     const next = parseBookCollectionSnapshot({
       ...current,
@@ -639,12 +775,13 @@ export function useBookCollections() {
           bookKey,
         })])
       : false;
-  }, [commitOptimistic]);
+  }, [commitOptimistic, isScopeCurrent]);
 
   const reorderBooks = useCallback(async (
     collectionId: string,
     orderedBookKeys: readonly string[],
   ) => {
+    if (!isScopeCurrent()) return false;
     const current = snapshotRef.current;
     const collection = current.collections.find(({ id }) => id === collectionId);
     if (!collection || collection.kind !== "manual") return false;
@@ -692,9 +829,10 @@ export function useBookCollections() {
           ),
         )
       : false;
-  }, [commitOptimistic]);
+  }, [commitOptimistic, isScopeCurrent]);
 
   const toggleFavorite = useCallback(async (bookKey: string) => {
+    if (!isScopeCurrent()) return false;
     const current = snapshotRef.current;
     const previous = current.favorites.find((value) => value.bookKey === bookKey);
     if (!previous && current.favorites.length >= BOOK_COLLECTION_MAX_FAVORITES) {
@@ -730,7 +868,7 @@ export function useBookCollections() {
           value: favorite,
         })])
       : false;
-  }, [commitOptimistic]);
+  }, [commitOptimistic, isScopeCurrent]);
 
   const favoriteKeys = useMemo(
     () => new Set(snapshot.favorites.map(({ bookKey }) => bookKey)),
@@ -744,6 +882,8 @@ export function useBookCollections() {
     favorites: snapshot.favorites,
     favoriteKeys,
     status,
+    localPersistenceStatus,
+    getLocalPersistenceStatus,
     error,
     conflicts,
     isFavorite: (bookKey: string) => favoriteKeys.has(bookKey),

@@ -6,6 +6,7 @@ const LANGUAGE = "probpera-interface-language";
 const DISPLAY = "probpera-display-mode";
 const WELCOME = "probpera-planet-welcome-v1";
 const GRAPHICS = "probpera-planet-graphics-quality-v1";
+const RECENT = "probpera-planet-recent-adult-v1";
 const MAIL = "mailto:probperasite@yandex.ru";
 function deferred<T>() {
   let resolve!: (value: T) => void;
@@ -310,6 +311,31 @@ describe("native subscription lifetimes and ordering", () => {
 });
 
 describe("exact non-secret preferences with serialized readback", () => {
+  it.each(["android", "ios"] as const)("exposes lazy adult history through the %s bridge without widening generic preferences", async kind => {
+    const f = fixture();
+    const services = createHostPlatformServices({ kind, channel: "dev", languages: ["ru"], preferences: f.preferences });
+    expect(f.preferences.get).not.toHaveBeenCalled();
+    expect(f.preferences.set).not.toHaveBeenCalled();
+    expect(await services.preferences.set(RECENT, '{"v":1,"entries":[]}')).toBe(false);
+    expect(await services.preferences.get(RECENT)).toBeNull();
+    expect(await services.preferences.remove(RECENT)).toBe(false);
+    expect(f.preferences.get).not.toHaveBeenCalled();
+    const history = services.recentHistory!;
+    expect(history).toBeDefined();
+    const target = { kind: "writer", countryId: "russia", writerId: "dostoevsky" } as const;
+    await history.record(target);
+    expect(history.getSnapshot().entries).toEqual([expect.objectContaining(target)]);
+    expect([...f.memory.keys()]).toEqual([RECENT]);
+    const fresh = createHostPlatformServices({ kind, channel: "dev", languages: ["en"], preferences: f.preferences });
+    await fresh.recentHistory!.retry!();
+    expect(fresh.recentHistory!.getSnapshot().entries).toEqual(history.getSnapshot().entries);
+    await fresh.recentHistory!.clear();
+    expect(fresh.recentHistory!.getSnapshot().entries).toEqual([]);
+    expect(JSON.parse(f.memory.get(RECENT)!)).toEqual({ v: 1, entries: [] });
+    history.dispose?.();
+    fresh.recentHistory!.dispose?.();
+    f.services.recentHistory?.dispose?.();
+  });
   it.each(["high", "balanced", "economy"])("restores graphics quality %s through a fresh native adapter", async value => {
     const f = fixture();
     expect(await f.services.preferences.set(GRAPHICS, value)).toBe(true);

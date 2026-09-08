@@ -1,0 +1,25 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=playwright.native-planet.config.mjs",
+    "--grep",
+    "native collections disclose session-only favorites and smart shelves when IndexedDB is unavailable"
+  ],
+  "startedAt": "2026-09-08T13:51:46.147Z",
+  "durationMs": 12380,
+  "exitCode": 0,
+  "logs": {
+    "stdout": {
+      "text": "\nRunning 1 test using 1 worker\n\n  ok 1 tests\\host\\native-planet.spec.mjs:1912:1 › native collections disclose session-only favorites and smart shelves when IndexedDB is unavailable (9.5s)\n\n  1 passed (11.7s)\n",
+      "bytes": 210,
+      "sha256": "b4a4bf52c85ba3919bc328c594d0033865b06cef6922fcdd23a7a4998214549d"
+    },
+    "stderr": {
+      "text": "(node:44580) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "bytes": 164,
+      "sha256": "8b00169eb6191f25cc78f044a33a75209011ae04d324c57b23f184da943c1575"
+    }
+  }
+}

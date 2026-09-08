@@ -1622,8 +1622,8 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
   );
 
   const selectWriterAndFocus = useCallback(
-    (country: Country, writer: Writer) => {
-      selectCountry(country, false, writer);
+    (country: Country, writer: Writer, selectionFilter?: AtlasFilter) => {
+      selectCountry(country, false, writer, undefined, selectionFilter);
       if (isPlanetApplication && atlasExperience.compactSheet) {
         // Reveal the existing country sheet in the same commit as the writer.
         // A focus token must not be consumed inside its collapsed, inert content.
@@ -2800,7 +2800,14 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
           bookStatus={bookRuntimeStatus}
           onLoad={() => { requestArchiveData(); requestBookRuntime(); }}
           onRetry={() => { retryArchiveData(); retryBookArchive(); }}
-          onOpenWriter={(country, writer) => { selectCountry(country, true, writer, undefined, "all"); if (isPlanetApplication) closeNativeCollection(); }}
+          onOpenWriter={(country, writer) => {
+            if (isPlanetApplication) {
+              selectWriterAndFocus(country, writer, "all");
+              closeNativeCollection();
+            } else {
+              selectCountry(country, true, writer, undefined, "all");
+            }
+          }}
           onOpenWork={(book, returnFocus) => openBook(book, returnFocus)}
         />
         <DeferredBookArchive

@@ -5,7 +5,7 @@
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
   "headSha": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-08T12:57:36.349Z",
+  "updatedAt": "2026-09-08T14:01:33.695Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -1599,10 +1599,9 @@
         }
       ],
       "lastGreenCommands": [
-        "Focused search/async preparation: 80 unique unit passes; only newly affected suites repeated.",
+        "Focused native/Web history and collections: 184 unit passes.",
         "Final TypeScript and platform-boundaries: pass",
-        "Actual mobile globe book RUEN plus mounted React10000-row race/cancellation browser: 2 pass",
-        "Exact-baseline synthetic10000-row core benchmark: pass"
+        "Actual App browser: native history RUEN/reload/clear and unavailable-IndexedDB collections: 2 pass"
       ],
       "artifacts": [
         "docs/mobile/evidence/S10/search-20260908/entry.json",
@@ -1612,7 +1611,10 @@
         "docs/mobile/evidence/S10/capacity-20260908/entry.json",
         "docs/mobile/evidence/S10/capacity-20260908/result.json",
         "docs/mobile/evidence/S04/capacity-android-20260908/result.json",
-        "docs/mobile/evidence/S10/capacity-20260908/pwa/result.json"
+        "docs/mobile/evidence/S10/capacity-20260908/pwa/result.json",
+        "docs/mobile/evidence/S10/history-20260908/entry.json",
+        "docs/mobile/evidence/S10/history-20260908/collection-follow-up.json",
+        "docs/mobile/evidence/S10/history-20260908/result.json"
       ],
       "externalBlockers": []
     },
@@ -10591,7 +10593,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Continue routed open work from committed S10 capacity069a2c6e. Existing atlas/shared search compiles once, prepares in cooperative cancellable batches, keeps exact matching and uses active-locale ordering. Desktop engine10000 synthetic records and real mounted React cancellation/locale/retry are verified; this does not add production books or certify device latency. 80unique units, final static, actual globe RUEN book browser and actual hook fixture passed; exact Android/dev and local-QA PWA preserved, coldRUEN/offline PWA case passed. Do not replay unchanged green checks or benchmark. Next internal S10/S08 work: explicit reviewed native/transliteration alias contract and separate child index/history/cache, then collection/passport and content delivery/owner edition-cover correction. Current publication gate admits four books; never promote held records or invent evidence/English titles. First-open S03 remains. Full bilingual content/biographies, nearly10k real catalog, Planetka/3D and device/store/legal/release gates remain open. Frozen iOS83 unchanged/pending; no production actions.",
+    "nextAction": "Build fresh Android/dev and local-QA PWA from the committed S10 adult native history and truthful collection persistence source. Focused units/static and actual App history/collection failure cases passed. Preserve prior Android7e302703/PWAb13ec20e and frozen iOS83. First-open S03 remains; no stage or release acceptance. Do not rerun unchanged search benchmarks or full suites.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -11742,7 +11744,7 @@
       "evidence": "docs/mobile/evidence/S10/capacity-20260908/result.json",
       "sha256": "dd3477eee52511d4fa1fb3d69a07267370919506ab7d327396e5923d5be064a0",
       "sourceCommit": "069a2c6e6d8d890b956ae35fdff92ed619ee8493",
-      "sourceInputsCurrent": true,
+      "sourceInputsCurrent": false,
       "uniqueUnitPasses": 80,
       "sourceBrowserPasses": 2,
       "nativeArtifact": {
@@ -11760,7 +11762,7 @@
         "strictAudit": true,
         "binaryAudit": true,
         "copiesVerified": true,
-        "currentSource": true,
+        "currentSource": false,
         "installedRuntimeTested": false
       },
       "pwaArtifact": {
@@ -11776,11 +11778,21 @@
         "strictAudit": true,
         "copiesVerified": true,
         "localQaAuthority": true,
-        "currentSource": true,
+        "currentSource": false,
         "browserExecutions": 1,
         "browserPassed": true,
         "physicalDeviceTested": false
       },
+      "stageAccepted": false,
+      "releaseReady": false
+    },
+    "s10NativeHistory": {
+      "status": "SOURCE_VALIDATION_PASSED",
+      "evidence": "docs/mobile/evidence/S10/history-20260908/result.json",
+      "sha256": "fe9ca407c56b73cbf0ffea46bf5e89e16173e79f0c1bf6bd208f875a9db2bdf3",
+      "uniqueUnitPasses": 184,
+      "sourceBrowserPasses": 2,
+      "sourceInputsCurrent": true,
       "stageAccepted": false,
       "releaseReady": false
     }

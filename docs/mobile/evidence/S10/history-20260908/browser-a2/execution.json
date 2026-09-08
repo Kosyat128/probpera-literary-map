@@ -1,0 +1,25 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=playwright.native-planet.config.mjs",
+    "--grep",
+    "native recent history persists canonical writer and work across RU and EN reload and clears locally"
+  ],
+  "startedAt": "2026-09-08T13:50:22.101Z",
+  "durationMs": 17126,
+  "exitCode": 0,
+  "logs": {
+    "stdout": {
+      "text": "\nRunning 1 test using 1 worker\n\n  ok 1 tests\\host\\native-planet.spec.mjs:1776:1 › native recent history persists canonical writer and work across RU and EN reload and clears locally (13.3s)\n\n  1 passed (16.3s)\n",
+      "bytes": 212,
+      "sha256": "9e6ebdb0d4f7c1d5b5a160a0f6e2b2eff7e2d3725564eb0566b972a21dc49a4e"
+    },
+    "stderr": {
+      "text": "(node:16700) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "bytes": 164,
+      "sha256": "f9a063d04f68e1e8a997b62d19fb9b81b48f39e241a96a19e9aed97d1bf5847b"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T13:33:38.5802670+00:00",
+  "stage": "S10",
+  "status": "IMPLEMENTATION_IN_PROGRESS",
+  "entry": "docs/mobile/evidence/S10/history-20260908/entry.json",
+  "finding": "The canonical collection store can return persistent:false, while useBookCollections ignores it and BookArchiveSection claims storage on this device.",
+  "scope": "Propagate actual scoped persistence status and truthful RU/EN collection feedback. Keep usable session edits, current canonical collection schema, real IndexedDB backend and public data unchanged.",
+  "validation": "Focused store/hook/panel tests plus one actual native-source browser with IndexedDB deliberately unavailable. Final static and source artifacts shared with native history changes.",
+  "boundaries": [
+    "No new database, schema, account sync policy, child namespace or entitlement storage.",
+    "Memory-session availability is not durable device persistence.",
+    "No production/store/database actions; first-open S03 and frozen iOS83 unchanged."
+  ],
+  "stageAccepted": false,
+  "releaseReady": false
+}

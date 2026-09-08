@@ -64,7 +64,7 @@ describe("BookShelfControls suggestions", () => {
     ).toBe(false);
   });
 
-  it("renders arbitrary existing suggestion buttons as an APG listbox", () => {
+  it("keeps preloaded suggestion buttons collapsed until the search owns focus", () => {
     const markup = renderToStaticMarkup(
       <BookShelfControls
         {...baseProps}
@@ -87,19 +87,13 @@ describe("BookShelfControls suggestions", () => {
     expect(markup).toContain('role="combobox"');
     expect(markup).toContain('aria-autocomplete="list"');
     expect(markup).toContain('aria-haspopup="listbox"');
-    expect(markup).toContain('aria-expanded="true"');
+    expect(markup).toContain('aria-expanded="false"');
     expect(markup).toMatch(/aria-controls="book-shelf-search-[^"]+-listbox"/u);
-    expect(markup).toMatch(
-      /aria-activedescendant="book-shelf-search-[^"]+-listbox-option-1"/u
-    );
-    expect(markup).toContain('role="listbox"');
-    expect(markup).toContain('aria-label="Подсказки поиска книг"');
-    expect(markup.match(/role="option"/gu)).toHaveLength(2);
-    expect(markup).toContain('aria-selected="true"');
-    expect(markup).toContain('aria-posinset="1"');
-    expect(markup).toContain('aria-setsize="2"');
-    expect(markup).toContain('tabindex="-1"');
-    expect(markup).toContain('data-book-shelf-suggestion-option=""');
+    expect(markup).not.toContain("aria-activedescendant");
+    expect(markup).not.toContain('role="listbox"');
+    expect(markup).not.toContain('role="option"');
+    expect(markup).not.toContain("Фёдор Достоевский");
+    expect(markup).not.toContain("Братья Карамазовы");
   });
 
   it("keeps the combobox collapsed when no suggestion surface exists", () => {

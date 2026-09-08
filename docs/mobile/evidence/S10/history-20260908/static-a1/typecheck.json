@@ -1,0 +1,23 @@
+{
+  "name": "typecheck",
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/typescript/bin/tsc",
+    "--noEmit"
+  ],
+  "startedAt": "2026-09-08T13:44:37.336Z",
+  "durationMs": 25129,
+  "exitCode": 2,
+  "logs": {
+    "stdout": {
+      "text": "src/hooks/useBookCollections.test.ts(167,30): error TS2550: Property 'at' does not exist on type 'Readonly<{ schemaVersion: 1; collections: readonly Readonly<{ id: string; ownerId?: string | undefined; kind: \"editorial\" | \"manual\" | \"system\" | \"smart\"; systemType?: \"library\" | \"reading\" | \"finished\" | \"want-to-read\" | undefined; ... 11 more ...; updatedAt: string; }>[]; items: readonly Readonly<...>[]; favorites...'. Do you need to change your target library? Try changing the 'lib' compiler option to 'es2022' or later.\r\nsrc/hooks/useBookCollections.test.ts(176,30): error TS2550: Property 'at' does not exist on type 'Readonly<{ schemaVersion: 1; collections: readonly Readonly<{ id: string; ownerId?: string | undefined; kind: \"editorial\" | \"manual\" | \"system\" | \"smart\"; systemType?: \"library\" | \"reading\" | \"finished\" | \"want-to-read\" | undefined; ... 11 more ...; updatedAt: string; }>[]; items: readonly Readonly<...>[]; favorites...'. Do you need to change your target library? Try changing the 'lib' compiler option to 'es2022' or later.\r\nsrc/hooks/useBookCollections.test.ts(177,32): error TS2550: Property 'at' does not exist on type 'BookCollectionPersistenceStatus[]'. Do you need to change your target library? Try changing the 'lib' compiler option to 'es2022' or later.\r\nsrc/hooks/useBookCollections.test.ts(187,30): error TS2550: Property 'at' does not exist on type 'Readonly<{ schemaVersion: 1; collections: readonly Readonly<{ id: string; ownerId?: string | undefined; kind: \"editorial\" | \"manual\" | \"system\" | \"smart\"; systemType?: \"library\" | \"reading\" | \"finished\" | \"want-to-read\" | undefined; ... 11 more ...; updatedAt: string; }>[]; items: readonly Readonly<...>[]; favorites...'. Do you need to change your target library? Try changing the 'lib' compiler option to 'es2022' or later.\r\nsrc/hooks/useBookCollections.test.ts(223,30): error TS2550: Property 'at' does not exist on type 'Readonly<{ schemaVersion: 1; collections: readonly Readonly<{ id: string; ownerId?: string | undefined; kind: \"editorial\" | \"manual\" | \"system\" | \"smart\"; systemType?: \"library\" | \"reading\" | \"finished\" | \"want-to-read\" | undefined; ... 11 more ...; updatedAt: string; }>[]; items: readonly Readonly<...>[]; favorites...'. Do you need to change your target library? Try changing the 'lib' compiler option to 'es2022' or later.\r\nsrc/hooks/useBookCollections.test.ts(224,32): error TS2550: Property 'at' does not exist on type 'BookCollectionPersistenceStatus[]'. Do you need to change your target library? Try changing the 'lib' compiler option to 'es2022' or later.\r\nsrc/host/HostRecentHistory.ts(13,146): error TS2550: Property 'hasOwn' does not exist on type 'ObjectConstructor'. Do you need to change your target library? Try changing the 'lib' compiler option to 'es2022' or later.\r\n",
+      "bytes": 2802,
+      "sha256": "159ed70348f4fdf9c965c73e919c233540477b01071cf194c5bad457a13bb002"
+    },
+    "stderr": {
+      "text": "",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

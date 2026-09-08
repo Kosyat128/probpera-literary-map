@@ -491,3 +491,27 @@
   latency and mounted React scheduling/cancellation evidence are separate from
   current public catalog coverage (four books), actual installed devices, full
   English content, child/collection/alias completion and release acceptance.
+
+- D097: Continue S10 through the existing adult collection/history seam.
+  Native hosts currently use the disabled history context; connect a bounded
+  adult-only store to the installed preferences bridge and canonical IDs.
+  Do not broaden generic preference keys or reuse the PWA license namespace.
+  Show pending/error/retry honestly; clear supersedes delayed work. Opening a
+  recent writer must reveal/focus its existing card and preserve the globe.
+  No new content/approval, child isolation, durable-secret, device or stage
+  acceptance is implied. Keep first-open S03 and frozen iOS83 unchanged.
+
+- D098: The same S10 reliability slice also fixes collection persistence feedback.
+  Existing IndexedDB fallback can retain edits only in memory; the hook/UI must
+  expose that fact instead of claiming storage on this device or falsely saying
+  a locally retained edit was rolled back after a sync error. Keep canonical
+  schema and backend ownership unchanged, scope status against stale operations,
+  and verify the real capability-unavailable browser path before one shared build.
+
+- D099: Source-validated adult native history reuses OS Preferences and canonical
+  IDs only, with serialized readback, bounded confirmation and authoritative clear.
+  Locale switching and history return retain the existing scene. Local collection
+  durability is a separate status from optional server sync; memory fallback must
+  never claim on-device persistence, and successful local edits survive sync errors.
+  Source browser uses actual App with injected platform primitives. No child scope,
+  editorial approval, installed-device certification or stage acceptance is implied.

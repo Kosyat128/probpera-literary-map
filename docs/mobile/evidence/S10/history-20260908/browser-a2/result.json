@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "runId": "s10-history-20260908-a2",
+  "title": "native recent history persists canonical writer and work across RU and EN reload and clears locally",
+  "head": "641f18f57ca9877be912ad6231705541c188dd64",
+  "status": "SOURCE_BROWSER_PASSED",
+  "pass": true,
+  "sourceInputsSha256": "1c34faf8ec41268991291fa298735f0f1da3eba4814d0f24cd2d6f3a2e4f6e44",
+  "sourceInputsUnchanged": true,
+  "statistics": {
+    "startTime": "2026-09-08T13:50:22.780Z",
+    "duration": 16329.028,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "exitCode": 0,
+  "cases": [
+    {
+      "title": "native recent history persists canonical writer and work across RU and EN reload and clears locally",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 13344,
+          "errors": []
+        }
+      ]
+    }
+  ],
+  "preserved": [
+    {
+      "path": "docs/mobile/evidence/S10/history-20260908/browser-a2/playwright.json",
+      "bytes": 149838,
+      "sha256": "6566e0b00a4b90ca18aa2b478474c66b40c0b22e25b1bdb00ad15ade9662f3f5"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/history-20260908/browser-a2/native-history-ru.json",
+      "bytes": 24839,
+      "sha256": "86f6c91e345b94ea1d142879cb89af7dae87881a212187de3085f0e1e45b3c63"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/history-20260908/browser-a2/native-history-ru-screenshot.png",
+      "bytes": 54896,
+      "sha256": "2fb999b871edbe404e32e3d448d77ab2cda6f4ffdb61a8147d1e5bb47fe87b07"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/history-20260908/browser-a2/native-history-en.json",
+      "bytes": 20290,
+      "sha256": "8e4746dfd038bc41411d93ddbea89b06db91243b28becef8bc6aa8163f9f07be"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/history-20260908/browser-a2/native-history-en-screenshot.png",
+      "bytes": 54123,
+      "sha256": "326e0029c2e7cb6d7e0eff4e53e983522e879a5bc3b2e8193a87e0750aa5f678"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/history-20260908/browser-a2/native-history-writer-return.json",
+      "bytes": 30864,
+      "sha256": "986ea4ac70104bc208b7094cbc576a502bea2cdbe095400d05d2f4a4791d88af"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/history-20260908/browser-a2/native-history-writer-return-screenshot.png",
+      "bytes": 326674,
+      "sha256": "520466897f652d32efa5b0c0f6b0fa0ef60548c73dbe8c48a73ab9547156f196"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/history-20260908/browser-a2/native-history-complete.json",
+      "bytes": 15713,
+      "sha256": "75477076dccf46870465795a0d78964253a25e1e22f699c2e335dc44c36e1ec8"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/history-20260908/browser-a2/native-history-complete-screenshot.png",
+      "bytes": 50683,
+      "sha256": "1f85a498ecda64dc5e2a01246710e2e929d216e381cd639e0ccaecdc83e92436"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/history-20260908/browser-a2/native-final-passed.json",
+      "bytes": 15381,
+      "sha256": "09cf5ef3e67bad04bab6c9bad4339eba94bbd2249cbc532f5732c02ddefac23e"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/history-20260908/browser-a2/native-final-passed-screenshot.png",
+      "bytes": 50683,
+      "sha256": "1f85a498ecda64dc5e2a01246710e2e929d216e381cd639e0ccaecdc83e92436"
+    }
+  ],
+  "fixtureUsesCanonicalAppAndScene": true,
+  "actualInstalledRuntime": false,
+  "nativePluginsSimulated": true,
+  "stageAccepted": false,
+  "releaseReady": false
+}

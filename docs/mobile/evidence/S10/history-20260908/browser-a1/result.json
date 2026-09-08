@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "runId": "s10-history-20260908-a1",
+  "title": "native recent history persists canonical writer and work across RU and EN reload and clears locally",
+  "head": "641f18f57ca9877be912ad6231705541c188dd64",
+  "status": "SOURCE_BROWSER_FAILED",
+  "pass": false,
+  "sourceInputsSha256": "67548f9432c134ad90a7e657296ebbf0391dbf5d9e5ed36d9eda215a3213b32e",
+  "sourceInputsUnchanged": true,
+  "statistics": {
+    "startTime": "2026-09-08T13:44:39.817Z",
+    "duration": 29533.29,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "exitCode": 1,
+  "cases": [
+    {
+      "title": "native recent history persists canonical writer and work across RU and EN reload and clears locally",
+      "results": [
+        {
+          "status": "failed",
+          "duration": 26087,
+          "errors": [
+            {
+              "location": {
+                "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs",
+                "column": 27,
+                "line": 1886
+              },
+              "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.native-planet-panel').locator('[data-recent-history]').locator('[data-recent-entry=\"[\\\\\"work\\\\\",\\\\\"russia\\\\\",\\\\\"dostoevsky\\\\\",\\\\\"crime-and-punishment\\\\\"]\"]')\nExpected: focused\nReceived: inactive\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.native-planet-panel').locator('[data-recent-history]').locator('[data-recent-entry=\"[\\\\\"work\\\\\",\\\\\"russia\\\\\",\\\\\"dostoevsky\\\\\",\\\\\"crime-and-punishment\\\\\"]\"]')\u001b[22m\n\u001b[2m    33 × locator resolved to <button type=\"button\" data-recent-entry=\"[\"work\",\"russia\",\"dostoevsky\",\"crime-and-punishment\"]\">…</button>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n\n\n  1884 |     await panel.locator(\".book-detail-close\").click();\n  1885 |     await expect(detail).toBeHidden();\n> 1886 |     await expect(workRow).toBeFocused();\n       |                           ^\n  1887 |     await expect(workRow).toBeInViewport();\n  1888 |     await retained(page, scene);\n  1889 |\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs:1886:27"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "preserved": [
+    {
+      "path": "docs/mobile/evidence/S10/history-20260908/browser-a1/playwright.json",
+      "bytes": 147735,
+      "sha256": "4268340acfb18f60ce98d58473628bbe9b3409b2c483db20fda297a5f2fbfe70"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/history-20260908/browser-a1/native-history-ru.json",
+      "bytes": 26442,
+      "sha256": "a46a5cffe0d28b4ee88b0b37c30b5304eb66313eac92a403249614755106392a"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/history-20260908/browser-a1/native-history-ru-screenshot.png",
+      "bytes": 107979,
+      "sha256": "1a832be9f5565f0ff5e9d88dcf0bfd2c750d6ef8e051b9b8fd3872d393648090"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/history-20260908/browser-a1/native-history-en.json",
+      "bytes": 21942,
+      "sha256": "63cbf38ef6b11644b9f128a14d9e042d33438e6aefea971a23d9c6d80990bfde"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/history-20260908/browser-a1/native-history-en-screenshot.png",
+      "bytes": 106684,
+      "sha256": "a6577336ef7ef0260e200acad17813453d75cd9d8764b1d0a7e2f81210fa84be"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/history-20260908/browser-a1/native-history-writer-return.json",
+      "bytes": 32482,
+      "sha256": "948c0493c7bc8d214ce1dd5c28b3782e6f14dcd2fbe5e0cdf7b8bbac1353dd7a"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/history-20260908/browser-a1/native-history-writer-return-screenshot.png",
+      "bytes": 326674,
+      "sha256": "520466897f652d32efa5b0c0f6b0fa0ef60548c73dbe8c48a73ab9547156f196"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/history-20260908/browser-a1/native-final-failed.json",
+      "bytes": 20878,
+      "sha256": "910a977fe354afddf6282dde4e81dc5fb9155aedbb1014050c143b4510eea0c1"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/history-20260908/browser-a1/native-final-failed-screenshot.png",
+      "bytes": 85334,
+      "sha256": "edde1f2b19c2f2a5605f0ed349717e377cde8f19f8b3874dbefbae46725c3aab"
+    }
+  ],
+  "fixtureUsesCanonicalAppAndScene": true,
+  "actualInstalledRuntime": false,
+  "nativePluginsSimulated": true,
+  "stageAccepted": false,
+  "releaseReady": false
+}

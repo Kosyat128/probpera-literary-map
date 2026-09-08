@@ -1,0 +1,25 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=playwright.native-planet.config.mjs",
+    "--grep",
+    "native recent history persists canonical writer and work across RU and EN reload and clears locally"
+  ],
+  "startedAt": "2026-09-08T13:44:38.778Z",
+  "durationMs": 30632,
+  "exitCode": 1,
+  "logs": {
+    "stdout": {
+      "text": "\nRunning 1 test using 1 worker\n\n  x  1 tests\\host\\native-planet.spec.mjs:1776:1 › native recent history persists canonical writer and work across RU and EN reload and clears locally (26.1s)\n\n\n  1) tests\\host\\native-planet.spec.mjs:1776:1 › native recent history persists canonical writer and work across RU and EN reload and clears locally \n\n    Error: expect(locator).toBeFocused() failed\n\n    Locator:  locator('.native-planet-panel').locator('[data-recent-history]').locator('[data-recent-entry=\"[\\\\\"work\\\\\",\\\\\"russia\\\\\",\\\\\"dostoevsky\\\\\",\\\\\"crime-and-punishment\\\\\"]\"]')\n    Expected: focused\n    Received: inactive\n    Timeout:  15000ms\n\n    Call log:\n      - Expect \"toBeFocused\" with timeout 15000ms\n      - waiting for locator('.native-planet-panel').locator('[data-recent-history]').locator('[data-recent-entry=\"[\\\\\"work\\\\\",\\\\\"russia\\\\\",\\\\\"dostoevsky\\\\\",\\\\\"crime-and-punishment\\\\\"]\"]')\n        33 × locator resolved to <button type=\"button\" data-recent-entry=\"[\"work\",\"russia\",\"dostoevsky\",\"crime-and-punishment\"]\">…</button>\n           - unexpected value \"inactive\"\n\n\n      1884 |     await panel.locator(\".book-detail-close\").click();\n      1885 |     await expect(detail).toBeHidden();\n    > 1886 |     await expect(workRow).toBeFocused();\n           |                           ^\n      1887 |     await expect(workRow).toBeInViewport();\n      1888 |     await retained(page, scene);\n      1889 |\n        at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs:1886:27\n\n    attachment #2: native-history-ru-screenshot (image/png) ────────────────────────────────────────\n    .tmp\\native-planet-browser-results\\s10-history-20260908-a1\\artifacts\\native-planet-native-recen-eda22-N-reload-and-clears-locally\\attachments\\native-history-ru-screenshot-35528489be8773930d13552a5453abbfc0e55a9b.png\n    ────────────────────────────────────────────────────────────────────────────────────────────────\n\n    attachment #4: native-history-en-screenshot (image/png) ────────────────────────────────────────\n    .tmp\\native-planet-browser-results\\s10-history-20260908-a1\\artifacts\\native-planet-native-recen-eda22-N-reload-and-clears-locally\\attachments\\native-history-en-screenshot-84624b26f11df7f3d32f1ff2560991cc8cea443c.png\n    ────────────────────────────────────────────────────────────────────────────────────────────────\n\n    attachment #6: native-history-writer-return-screenshot (image/png) ─────────────────────────────\n    .tmp\\native-planet-browser-results\\s10-history-20260908-a1\\artifacts\\native-planet-native-recen-eda22-N-reload-and-clears-locally\\attachments\\native-history-writer-return-screenshot-43127f67d79f2d14068a69dcebe556ee9f7f2a22.png\n    ────────────────────────────────────────────────────────────────────────────────────────────────\n\n    attachment #8: native-final-failed-screenshot (image/png) ──────────────────────────────────────\n    .tmp\\native-planet-browser-results\\s10-history-20260908-a1\\artifacts\\native-planet-native-recen-eda22-N-reload-and-clears-locally\\attachments\\native-final-failed-screenshot-06177cbe47e4d76be6cdb7487b351992d5f9324a.png\n    ────────────────────────────────────────────────────────────────────────────────────────────────\n\n    Error Context: .tmp\\native-planet-browser-results\\s10-history-20260908-a1\\artifacts\\native-planet-native-recen-eda22-N-reload-and-clears-locally\\error-context.md\n\n    Error Context: .tmp\\native-planet-browser-results\\s10-history-20260908-a1\\artifacts\\native-planet-native-recen-eda22-N-reload-and-clears-locally\\error-context.md\n\n  1 failed\n    tests\\host\\native-planet.spec.mjs:1776:1 › native recent history persists canonical writer and work across RU and EN reload and clears locally \n",
+      "bytes": 4816,
+      "sha256": "f8f75b0cdb80dc6f919b191dd8059c1a45db50724cf5d5589fb704f012bcf1d3"
+    },
+    "stderr": {
+      "text": "(node:2164) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "bytes": 163,
+      "sha256": "3a52b9f879620cf6ee57dff68d98328ea94c90d4d8880d2aa28cfa06f8d13228"
+    }
+  }
+}

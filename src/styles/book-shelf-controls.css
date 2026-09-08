@@ -213,6 +213,7 @@
 .book-shelf-frame__detail button:disabled { opacity: .5; cursor: not-allowed; box-shadow: none; }
 .book-shelf-frame__active-rail { flex-wrap: wrap; padding: 0 24px 10px; gap: 6px; color: var(--cream); background: var(--violet-800); overflow: visible; }
 .book-shelf-frame__active-rail button { padding: 6px 10px; }
+.book-shelf-frame__filter-status[data-book-collection-persistence] { flex: 1 1 100%; min-width: 0; max-width: 100%; white-space: normal; overflow-wrap: anywhere; line-height: 1.5; }
 .book-shelf-frame__filter-drawer:not([hidden]) { animation: book-shelf-panel-enter 160ms ease; }
 .book-shelf-frame__navigation {
   padding: 12px 24px;

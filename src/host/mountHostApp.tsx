@@ -8,6 +8,7 @@ import SiteDesignRuntime from "../cms/SiteDesignRuntime";
 import SiteTypographyRuntime from "../cms/SiteTypographyRuntime";
 import { InterfaceLanguageProvider, resolveInitialInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import { PlatformServicesProvider } from "../platform/PlatformServices";
+import { RecentHistoryProvider } from "../planet/RecentHistory";
 import { installSafeWebStorage } from "../utils/safeWebStorage";
 import type { InitializedHostPlatform } from "./initializeHostPlatform";
 import { createHostLanguageStatus, HostRuntimeStatus } from "./HostRuntimeStatus";
@@ -49,6 +50,7 @@ export function mountHostApp({ services, initialization }: InitializedHostPlatfo
   document.title = language === "ru" ? "Литературная планета" : "Literary Planet";
   mounted = true;
   const root = createRoot(target);
+  const application = <AppErrorBoundary><App /></AppErrorBoundary>;
   root.render(
     <React.StrictMode>
       <BootstrapErrorBoundary>
@@ -58,7 +60,9 @@ export function mountHostApp({ services, initialization }: InitializedHostPlatfo
               <SiteTypographyRuntime />
               <SiteDesignRuntime />
               <HostRuntimeStatus controller={languageStatus} />
-              <AppErrorBoundary><App /></AppErrorBoundary>
+              {services.recentHistory
+                ? <RecentHistoryProvider store={services.recentHistory}>{application}</RecentHistoryProvider>
+                : application}
             </AccountlessReaderProvider>
           </InterfaceLanguageProvider>
         </PlatformServicesProvider>
@@ -71,6 +75,7 @@ export function mountHostApp({ services, initialization }: InitializedHostPlatfo
       if (unmounted) return;
       unmounted = true;
       languageStatus.dispose();
+      services.recentHistory?.dispose?.();
       root.unmount();
     },
   });

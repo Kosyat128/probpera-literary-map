@@ -1,0 +1,42 @@
+{
+  "recordedAt": "2026-09-08T14:01:31.620Z",
+  "inspection": "Actual390x844 Chrome screenshots inspected at original resolution",
+  "files": [
+    {
+      "path": "browser-a4/native-history-ru-screenshot.png",
+      "bytes": 57850,
+      "sha256": "92882d5e527f84802a49ddd556af7da9dba4ddf2103e14300180454c0e22f756"
+    },
+    {
+      "path": "browser-a4/native-history-en-screenshot.png",
+      "bytes": 56858,
+      "sha256": "6c2730f35315ec9739231fb444eddc6387db7b79b65f426d2b40988757eccf63"
+    },
+    {
+      "path": "browser-a5/native-collection-session-ru-screenshot.png",
+      "bytes": 76218,
+      "sha256": "b0a2dc62f63a562f1b3b29f99857e47dfce6291e8bff1c8c92945a4d08b5f504"
+    },
+    {
+      "path": "browser-a5/native-collection-session-en-screenshot.png",
+      "bytes": 74082,
+      "sha256": "38469a60e0c1d5a863993653be3ffe6312cd0cdb638b436552e0c00ee0635c4a"
+    }
+  ],
+  "findings": [
+    "History buttons use the committed globe palette instead of gray browser defaults; RUEN labels wrap.",
+    "Storage warnings fully wrap within the panel; autocomplete no longer covers them after smart shelf save.",
+    "Browser metrics independently verify button44px bounds, palette values, warning text bounds and unobstructed hit target."
+  ],
+  "earlierDefects": [
+    "browser-a2 and browser-a3 originals retained; unstyled buttons, overflow and unsolicited suggestions corrected before source commit"
+  ],
+  "boundaries": [
+    "Source browser with injected OS primitives, not an installed binary or exact release-candidate store screenshot.",
+    "Images capture scrolled interaction states; the sticky header occludes content above the scroll position.",
+    "Existing RU cover in EN session and incomplete editorial content are not accepted as full English content parity."
+  ],
+  "newEditorialApprovalCreated": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

@@ -1,4 +1,5 @@
 import type { OpenLinkResult, PlatformServices, PlatformSnapshot, PreferenceStore } from "../platform/ports";
+import { createHostRecentHistory } from "./HostRecentHistory";
 
 export interface HostListenerHandle { remove(): void | Promise<void>; }
 export interface HostAppState { readonly isActive: boolean; }
@@ -237,6 +238,7 @@ export function createHostPlatformServices(options: HostPlatformServicesOptions)
     kind: options.kind,
     channel: options.channel,
     preferences,
+    recentHistory: createHostRecentHistory(options.preferences),
     getSnapshot: () => snapshot,
     getSystemLanguages: () => languageSnapshot,
     subscribe(listener: () => void) {

@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T13:22:40.566Z",
+  "stage": "S10",
+  "status": "IMPLEMENTATION_IN_PROGRESS",
+  "baselineSourceCommit": "641f18f57ca9877be912ad6231705541c188dd64",
+  "route": "S03-S10",
+  "entryRule": "Continue the D091 matrix69 parallel-safe adult search/collection/resume slice",
+  "packageIntegrity": {
+    "pass": true,
+    "checksumCount": 194,
+    "manifestFileCount": 191,
+    "bindingDocumentCount": 173,
+    "manifestSha256": "bb759162674bafe0a9baa87ee6adffd41527d6e38e979f5cf6a6d0445535acd8",
+    "checksumFileSha256": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732"
+  },
+  "scope": "Connect the existing Recently opened collection panel to bounded native adult history through the already installed preference bridge; restore the existing writer/work route, reveal and focus without replacing the globe.",
+  "mappedRequirements": [
+    "S10.BIL-006",
+    "S10.BIL-037"
+  ],
+  "parallelSafety": [
+    "One canonical catalog/locale/globe and existing history UI/selection callbacks; no extra factual database.",
+    "Fixed native adult namespace stores at most20 canonical references and opening times, never labels, entitlements, child profiles or source content.",
+    "Existing PWA identity-scoped history retains its provider and storage; public website remains unchanged.",
+    "Native persistence errors and bounded pending operations are exposed honestly with retry; no claim of secure or durable secret storage.",
+    "Native adult history is not reusable by future child mode, and no child-policy acceptance is claimed.",
+    "No production, store, database, remote runtime or frozen iOS83 mutations."
+  ],
+  "acceptanceForSlice": [
+    "Native opening of canonical writers/works updates the same bounded list; RUEN resolves current labels by the same IDs.",
+    "Cold native-host document restores saved history; clear supersedes delayed reads/writes and retries preserve the latest session intent.",
+    "Unavailable, rejected, malformed or timed-out persistence never freezes the app or silently claims success.",
+    "Selecting a recent writer returns to the persistent globe, resets an incompatible filter, opens the mobile card and focuses it.",
+    "Focused store/adapter/panel regression, static boundaries and actual mobile source-browser persistence/locale/navigation evidence."
+  ],
+  "testsRunAtEntry": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false
+}

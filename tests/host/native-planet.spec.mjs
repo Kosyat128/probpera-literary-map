@@ -147,14 +147,14 @@ test.afterEach(async ({}, testInfo) => {
   }
 });
 
-async function open({ route = "/", language = "ru", viewport = { width: 1280, height: 800 }, reducedMotion = "reduce", safeArea, preferences = {}, hasTouch = false, isMobile = false, observeSheetGesture = false, deviceScaleFactor = 1, capabilityHints } = {}) {
+async function open({ route = "/", language = "ru", viewport = { width: 1280, height: 800 }, reducedMotion = "reduce", safeArea, preferences = {}, hasTouch = false, isMobile = false, observeSheetGesture = false, deviceScaleFactor = 1, capabilityHints, indexedDBAvailable = true } = {}) {
   const page = await browser.newPage({ viewport, reducedMotion, hasTouch, isMobile, deviceScaleFactor });
   page.setDefaultTimeout(15_000);
   const errors = [], consoleErrors = [], externalRequests = [], missingResources = [];
   const preferenceMemory = new Map([["probpera-interface-language", language], ...Object.entries(preferences)]);
   const preferenceOperations = [];
   const fixture = { page, errors, consoleErrors, externalRequests, missingResources, preferenceMemory, preferenceOperations,
-    browserCapabilities: { hasTouch, isMobile, reducedMotion, deviceScaleFactor, ...(capabilityHints ? { simulatedCapabilityHints: capabilityHints } : {}) } };
+    browserCapabilities: { hasTouch, isMobile, reducedMotion, deviceScaleFactor, ...(capabilityHints ? { simulatedCapabilityHints: capabilityHints } : {}), ...(indexedDBAvailable ? {} : { indexedDBAvailable: false }) } };
   activeFixtures.add(fixture);
   // Simulated OS persistence lives outside the document. Reload therefore tests
   // the real adapter's whitelist/readback and the real welcome initialization.
@@ -173,6 +173,11 @@ async function open({ route = "/", language = "ru", viewport = { width: 1280, he
     await session.send("Emulation.setSafeAreaInsetsOverride", { insets: safeArea });
   }
   await page.addInitScript(value => {
+    if (value.indexedDBAvailable === false) {
+      // Browser capability failure only; the canonical storage implementation
+      // must choose its own fallback. Existing cases retain real IndexedDB.
+      Object.defineProperty(window, "indexedDB", { configurable: true, value: undefined });
+    }
     if (value.capabilityHints) {
       for (const name of ["deviceMemory", "hardwareConcurrency"]) {
         Object.defineProperty(navigator, name, { configurable: true, get: () => value.capabilityHints[name] });
@@ -255,7 +260,7 @@ async function open({ route = "/", language = "ru", viewport = { width: 1280, he
       requestAnimationFrame(observe);
     };
     requestAnimationFrame(observe);
-  }, { language, observeSheetGesture, capabilityHints });
+  }, { language, observeSheetGesture, capabilityHints, ...(indexedDBAvailable ? {} : { indexedDBAvailable: false }) });
   await page.route("**/*", async request => {
     const url = new URL(request.request().url());
     if (url.origin !== origin) { externalRequests.push(url.href); await request.abort(); return; }
@@ -1766,4 +1771,307 @@ test("mobile globe book search resolves evidence-backed RU and EN titles to the 
       actualCatalog: true, oppositeLocaleQueries: 8, activatedSameBookInBothLocales: selectedBook.key,
       sameCanvasRendererCameraScene: true, nativeDeviceObserved: false });
   } finally { await original.dispose(); }
+});
+
+test("native recent history persists canonical writer and work across RU and EN reload and clears locally", async ({}, testInfo) => {
+  const fixture = await open({ route: "/?country=russia&writer=dostoevsky#atlas", viewport: { width: 390, height: 844 },
+    reducedMotion: "reduce", hasTouch: true, isMobile: true, preferences: { "probpera-planet-welcome-v1": "completed" } });
+  const { page } = fixture;
+  let scene = await captureScene(page);
+  const storageKey = "probpera-planet-recent-adult-v1";
+  const writerKey = JSON.stringify(["writer", "russia", "dostoevsky", null]);
+  const workKey = JSON.stringify(["work", "russia", "dostoevsky", "crime-and-punishment"]);
+  const canonicalBookKey = "russia:dostoevsky:crime-and-punishment";
+  const panel = page.locator(".native-planet-panel");
+  const detail = panel.locator("#book-archive-detail");
+  const recent = panel.locator("[data-recent-history]");
+  const writerRow = recent.locator("[data-recent-entry=" + JSON.stringify(writerKey) + "]");
+  const workRow = recent.locator("[data-recent-entry=" + JSON.stringify(workKey) + "]");
+  const readEntries = () => {
+    const stored = fixture.preferenceMemory.get(storageKey);
+    return stored ? JSON.parse(stored).entries : [];
+  };
+  const entryKey = entry => JSON.stringify([entry.kind, entry.countryId, entry.writerId, entry.kind === "work" ? entry.workId : null]);
+  const assertIdsOnly = entries => {
+    expect(entries.length).toBeLessThanOrEqual(20);
+    for (const entry of entries) {
+      expect(Object.keys(entry).sort()).toEqual((entry.kind === "work"
+        ? ["kind", "countryId", "writerId", "workId", "openedAt"]
+        : ["kind", "countryId", "writerId", "openedAt"]).sort());
+      expect(Number.isSafeInteger(entry.openedAt)).toBe(true);
+      expect(entry.openedAt).toBeGreaterThanOrEqual(0);
+    }
+  };
+  const showHistory = async () => {
+    if (!await panel.isVisible()) await page.locator('[data-atlas-action="open-collection"]').click();
+    await expect(recent).toHaveCount(1);
+    if (await recent.getAttribute("open") === null) await recent.locator("summary").click();
+    await expect(recent.locator(".recent-history__content")).toBeVisible();
+  };
+  const historyAppearance = async () => {
+    // Resolve inherited tokens through CSS itself; hex and rgb serialization
+    // must not cause false mismatches. The hidden probe never changes layout.
+    await page.mouse.move(1, 1);
+    const appearance = await recent.evaluate(element => {
+      const probe = document.createElement("span");
+      probe.style.cssText = "position:fixed;visibility:hidden;pointer-events:none;color:var(--planet-ink);background-color:var(--planet-surface)";
+      element.append(probe);
+      const probeStyle = getComputedStyle(probe);
+      const palette = { color: probeStyle.color, backgroundColor: probeStyle.backgroundColor };
+      probe.remove();
+      const panelRect = element.closest(".native-planet-panel").getBoundingClientRect();
+      return { palette, buttons: [...element.querySelectorAll("button")].map(button => {
+        const style = getComputedStyle(button), rect = button.getBoundingClientRect();
+        const range = document.createRange(); range.selectNodeContents(button);
+        const textRects = [...range.getClientRects()].filter(item => item.width && item.height);
+        return { label: button.textContent, color: style.color, backgroundColor: style.backgroundColor,
+          radius: style.borderRadius, minHeight: parseFloat(style.minHeight), height: rect.height,
+          scrollWidth: button.scrollWidth, clientWidth: button.clientWidth,
+          rowFitsPanel: rect.left >= Math.max(0, panelRect.left) - 1 && rect.right <= Math.min(innerWidth, panelRect.right) + 1,
+          textFitsRow: textRects.every(item => item.left >= rect.left - 1 && item.right <= rect.right + 1) };
+      }) };
+    });
+    expect(appearance.buttons.length).toBeGreaterThanOrEqual(3);
+    for (const button of appearance.buttons) {
+      expect(button.color).toBe(appearance.palette.color);
+      expect(button.backgroundColor).toBe(appearance.palette.backgroundColor);
+      expect(button.radius).toBe("12px");
+      expect(button.minHeight).toBeGreaterThanOrEqual(44);
+      expect(button.height).toBeGreaterThanOrEqual(44);
+      expect(button.scrollWidth).toBeLessThanOrEqual(button.clientWidth + 1);
+      expect(button.rowFitsPanel).toBe(true);
+      expect(button.textFitsRow).toBe(true);
+    }
+    return appearance;
+  };
+  try {
+    // Both records originate from canonical UI, never preloaded history JSON.
+    await showWriter(page);
+    await expect.poll(() => readEntries().map(entryKey)).toContain(writerKey);
+    await page.locator("#writer-biography-russia-tab-works").click();
+    await page.locator("#writer-biography-russia-panel-works").getByRole("button", { name: "Книжный архив: Преступление и наказание", exact: true }).click();
+    await expect(detail).toHaveAccessibleName("Преступление и наказание");
+    await expect(detail).toBeVisible();
+    await expect.poll(() => new URL(page.url()).searchParams.get("book")).toBe(canonicalBookKey);
+    await expect.poll(() => readEntries().map(entryKey)).toContain(workKey);
+    await panel.locator(".book-detail-close").click();
+    await expect(detail).toBeHidden();
+    await showHistory();
+    await expect(recent.locator("summary")).toHaveText("Недавно открытое");
+    await expect(writerRow).toContainText(/Достоевск/iu);
+    await expect(workRow).toContainText("Преступление и наказание");
+    const ruEntries = readEntries();
+    assertIdsOnly(ruEntries);
+    await retained(page, scene);
+    const ruHistoryAppearance = await historyAppearance();
+    await evidence(fixture, testInfo, "native-history-ru", { storageKey, entries: ruEntries, historyAppearance: ruHistoryAppearance,
+      actualWriterAndWorkOpened: true, sameCanvasRendererCameraScene: true });
+
+    const pose = await settledCameraPose(scene);
+    const beforeLocale = fixture.preferenceMemory.get(storageKey);
+    await panel.locator(".interface-language-control button").filter({ hasText: "EN" }).click();
+    await expect(page.locator("html")).toHaveAttribute("lang", "en");
+    await expect(recent.locator("summary")).toHaveText("Recently opened");
+    await expect(writerRow).toContainText("Dostoevsky");
+    await expect(workRow).toContainText("Crime and Punishment");
+    expect(fixture.preferenceMemory.get(storageKey)).toBe(beforeLocale);
+    expect(await cameraPose(scene)).toEqual(pose);
+    await retained(page, scene);
+    const enHistoryAppearance = await historyAppearance();
+    await evidence(fixture, testInfo, "native-history-en", { storageKey, entries: readEntries(), historyAppearance: enHistoryAppearance,
+      localeRelabelsExistingIdsOnly: true, sameCanvasRendererCameraScene: true, pose });
+
+    await panel.getByRole("button", { name: "Return to the planet", exact: true }).click();
+    await expect(panel).toBeHidden();
+    await page.locator('[data-atlas-action="toggle-filters"]').click();
+    await page.locator('[data-atlas-filter="nobel"]').click();
+    await expect(page.locator('[data-atlas-filter="nobel"]')).toHaveAttribute("aria-pressed", "true");
+    await showHistory();
+    await writerRow.click();
+    await expect(panel).toBeHidden();
+    await expect(page.locator('[data-atlas-filter="all"]')).toHaveAttribute("aria-pressed", "true");
+    await expect(page.locator(".atlas-country-presentation")).toHaveAttribute("data-atlas-sheet-state", "half");
+    await expect(page.locator(".writer-detail")).toBeFocused();
+    await expect(page.locator(".writer-detail h4")).toBeInViewport();
+    await expect(page.locator(".writer-detail h4")).toContainText("Dostoevsky");
+    await expect.poll(() => new URL(page.url()).searchParams.get("country")).toBe("russia");
+    await expect.poll(() => new URL(page.url()).searchParams.get("writer")).toBe("dostoevsky");
+    await retained(page, scene);
+    await evidence(fixture, testInfo, "native-history-writer-return", { storageKey,
+      restrictiveFilterCleared: true, writerFocusedWithoutManualSheetExpansion: true, sameCanvasRendererCameraScene: true });
+
+    const firstDocument = await page.evaluate(() => performance.timeOrigin);
+    await scene.dispose(); scene = null;
+    await page.reload();
+    await nativeRootReady(page);
+    expect(await page.evaluate(() => performance.timeOrigin)).not.toBe(firstDocument);
+    await expect(page.locator("html")).toHaveAttribute("lang", "en");
+    scene = await captureScene(page);
+    await showHistory();
+    await expect(writerRow).toContainText("Dostoevsky");
+    await expect(workRow).toContainText("Crime and Punishment");
+    expect(readEntries().map(entryKey)).toContain(writerKey);
+    expect(readEntries().map(entryKey)).toContain(workKey);
+    assertIdsOnly(readEntries());
+    await workRow.click();
+    await expect(detail).toBeVisible();
+    await expect(detail).toHaveAccessibleName("Crime and Punishment");
+    await expect(detail.getByRole("heading", { level: 3, name: "Crime and Punishment", exact: true })).toBeInViewport();
+    await expect.poll(() => new URL(page.url()).searchParams.get("book")).toBe(canonicalBookKey);
+    await retained(page, scene);
+    await panel.locator(".book-detail-close").click();
+    await expect(detail).toBeHidden();
+    await expect(workRow).toBeFocused();
+    await expect(workRow).toBeInViewport();
+    await retained(page, scene);
+
+    await recent.locator("[data-recent-clear]").click();
+    await expect(recent.locator("[data-recent-entry]")).toHaveCount(0);
+    await expect.poll(() => readEntries()).toEqual([]);
+    await expect.poll(() => JSON.parse(fixture.preferenceMemory.get(storageKey) ?? "null")).toEqual({ v: 1, entries: [] });
+    // A neutral fresh address avoids deliberately reopening a writer from the
+    // old URL immediately after clearing; no history payload is edited by QA.
+    await scene.dispose(); scene = null;
+    await page.goto(origin + "/#atlas");
+    await nativeRootReady(page);
+    scene = await captureScene(page);
+    await showHistory();
+    await expect(recent.locator("[data-recent-entry]")).toHaveCount(0);
+    await expect(recent).toContainText("Writers and works you open will appear here.");
+    expect(readEntries()).toEqual([]);
+    expect(fixture.consoleErrors).toEqual([]);
+    await evidence(fixture, testInfo, "native-history-complete", { storageKey,
+      restoredAfterNewDocument: true, historyWorkOpenedCanonicalReader: canonicalBookKey,
+      historyWorkReturnFocusPreserved: true, clearedHistoryRemainedEmptyOnNeutralColdStart: true,
+      finalEntries: readEntries(), simulatedOsPreferencesOnly: true, actualNativeInstallation: false });
+  } finally { await scene?.dispose(); }
+});
+
+test("native collections disclose session-only favorites and smart shelves when IndexedDB is unavailable", async ({}, testInfo) => {
+  const fixture = await open({ route: "/?country=russia&writer=dostoevsky#atlas", viewport: { width: 390, height: 844 },
+    reducedMotion: "reduce", hasTouch: true, isMobile: true, indexedDBAvailable: false,
+    preferences: { "probpera-planet-welcome-v1": "completed" } });
+  const { page } = fixture;
+  let scene = await captureScene(page);
+  const panel = page.locator(".native-planet-panel");
+  const detail = panel.locator("#book-archive-detail");
+  const status = panel.locator("[data-book-collection-persistence]");
+  const shelf = panel.locator("#book-collection-shelf");
+  const canonicalBookKey = "russia:dostoevsky:crime-and-punishment";
+  const bookButton = panel.locator('.archive-book-detail[data-book-key="' + canonicalBookKey + '"]');
+  const noFalseStorageClaim = async () => {
+    const text = await panel.innerText();
+    for (const claim of ["Личные полки хранятся на этом устройстве", "Умная полка сохранена на этом устройстве",
+      "Personal shelves are stored on this device", "Smart shelf saved on this device"]) expect(text).not.toContain(claim);
+  };
+  const visibleWarningLayout = async () => {
+    await status.scrollIntoViewIfNeeded();
+    await expect(status).toBeInViewport({ ratio: 1 });
+    const layout = await status.evaluate(element => {
+      const rect = element.getBoundingClientRect();
+      const panelRect = element.closest(".native-planet-panel").getBoundingClientRect();
+      const range = document.createRange(); range.selectNodeContents(element);
+      const textRects = [...range.getClientRects()].filter(item => item.width && item.height);
+      const left = Math.max(0, panelRect.left), right = Math.min(innerWidth, panelRect.right);
+      const hit = document.elementFromPoint(rect.left + rect.width / 2, rect.top + rect.height / 2);
+      return { scrollWidth: element.scrollWidth, clientWidth: element.clientWidth,
+        elementFitsPanel: rect.left >= left - 1 && rect.right <= right + 1,
+        textFitsPanel: textRects.every(item => item.left >= left - 1 && item.right <= right + 1),
+        textFitsElement: textRects.every(item => item.left >= rect.left - 1 && item.right <= rect.right + 1),
+        textLines: textRects.length, centerUnobstructed: hit === element || element.contains(hit),
+        obstructingElement: hit === element || element.contains(hit) ? null : { tag: hit?.tagName, role: hit?.getAttribute("role"), className: hit?.getAttribute("class") } };
+    });
+    expect(layout.scrollWidth).toBeLessThanOrEqual(layout.clientWidth + 1);
+    expect(layout.elementFitsPanel).toBe(true);
+    expect(layout.textFitsPanel).toBe(true);
+    expect(layout.textFitsElement).toBe(true);
+    expect(layout.textLines).toBeGreaterThan(0);
+    expect(layout.centerUnobstructed, JSON.stringify(layout.obstructingElement)).toBe(true);
+    return layout;
+  };
+  try {
+    expect(await page.evaluate(() => typeof window.indexedDB)).toBe("undefined");
+    await showWriter(page);
+    await page.locator("#writer-biography-russia-tab-works").click();
+    await page.locator("#writer-biography-russia-panel-works").getByRole("button", { name: "Книжный архив: Преступление и наказание", exact: true }).click();
+    await expect(detail).toBeVisible();
+    await detail.getByRole("button", { name: "В избранное", exact: true }).click();
+    await expect(detail.getByRole("button", { name: "В избранном", exact: true })).toHaveAttribute("aria-pressed", "true");
+    await panel.locator(".book-detail-close").click();
+    await expect(detail).toBeHidden();
+    await expect(status).toHaveAttribute("data-book-collection-persistence", "session-only");
+    await expect(status).toHaveText("Личные полки доступны только в текущем сеансе. Они могут исчезнуть после закрытия приложения.");
+    await noFalseStorageClaim();
+
+    // Save real current filters through the existing smart-shelf action.
+    await panel.locator(".book-shelf-controls__scope select").selectOption("library");
+    const collectionSearch = panel.locator('.book-shelf-controls input[role="combobox"]');
+    const suggestions = panel.locator('.book-shelf-controls [role="listbox"]');
+    await collectionSearch.fill("Достоевский");
+    await expect(collectionSearch).toBeFocused();
+    await expect(collectionSearch).toHaveAttribute("aria-expanded", "true");
+    await expect(suggestions).toBeVisible();
+    await collectionSearch.press("ArrowDown");
+    const activeOptionId = await collectionSearch.getAttribute("aria-activedescendant");
+    expect(activeOptionId).toBeTruthy();
+    const activeOption = suggestions.locator("[id=" + JSON.stringify(activeOptionId) + "]");
+    await expect(activeOption).toHaveAttribute("role", "option");
+    await expect(activeOption).toHaveAttribute("aria-selected", "true");
+    await expect(collectionSearch).toBeFocused();
+    await collectionSearch.press("Escape");
+    await expect(suggestions).toBeHidden();
+    await collectionSearch.press("ArrowDown");
+    await expect(suggestions).toBeVisible();
+    await panel.getByRole("button", { name: "Сохранить как умную полку", exact: true }).click();
+    await expect(collectionSearch).toHaveAttribute("aria-expanded", "false");
+    await expect(suggestions).toBeHidden();
+    await expect.poll(() => shelf.inputValue()).toMatch(/^smart-/u);
+    const smartShelfId = await shelf.inputValue();
+    await expect(shelf.locator('option[value="' + smartShelfId + '"]')).toHaveCount(1);
+    await expect(status).toHaveAttribute("data-book-collection-persistence", "session-only");
+    await expect(status).toHaveText("Умная полка доступна в текущем сеансе; сохранение на устройстве недоступно.");
+    await noFalseStorageClaim();
+    const ruWarningLayout = await visibleWarningLayout();
+    await retained(page, scene);
+    await evidence(fixture, testInfo, "native-collection-session-ru", { canonicalBookKey, smartShelfId,
+      indexedDBUnavailable: true, actualFavoriteAndSmartShelfActions: true, storageWarning: await status.innerText(), warningLayout: ruWarningLayout,
+      sameCanvasRendererCameraScene: true });
+
+    const pose = await settledCameraPose(scene);
+    await panel.locator(".interface-language-control button").filter({ hasText: "EN" }).click();
+    await expect(page.locator("html")).toHaveAttribute("lang", "en");
+    await expect(shelf).toHaveValue(smartShelfId);
+    await expect(status).toHaveText("Smart shelf is available in this session; saving on this device is unavailable.");
+    await expect(collectionSearch).toHaveAttribute("aria-expanded", "false");
+    await expect(suggestions).toBeHidden();
+    await noFalseStorageClaim();
+    expect(await cameraPose(scene)).toEqual(pose);
+    await retained(page, scene);
+    const enWarningLayout = await visibleWarningLayout();
+    await evidence(fixture, testInfo, "native-collection-session-en", { canonicalBookKey, smartShelfId,
+      indexedDBUnavailable: true, storageWarning: await status.innerText(), warningLayout: enWarningLayout, sameCanvasRendererCameraScene: true, pose });
+
+    await bookButton.click();
+    await expect(detail).toBeVisible();
+    await expect(detail).toHaveAccessibleName("Crime and Punishment");
+    await expect(detail.getByRole("button", { name: "In favourites", exact: true })).toHaveAttribute("aria-pressed", "true");
+    await expect.poll(() => new URL(page.url()).searchParams.get("book")).toBe(canonicalBookKey);
+    await retained(page, scene);
+    await scene.dispose(); scene = null;
+    await page.reload();
+    await nativeRootReady(page);
+    scene = await captureScene(page);
+    expect(await page.evaluate(() => typeof window.indexedDB)).toBe("undefined");
+    await expect(page.locator("html")).toHaveAttribute("lang", "en");
+    await expect(detail).toBeVisible();
+    await expect(detail).toHaveAccessibleName("Crime and Punishment");
+    await expect(detail.getByRole("button", { name: "Add to favourites", exact: true })).toHaveAttribute("aria-pressed", "false");
+    await expect(shelf.locator('option[value="' + smartShelfId + '"]')).toHaveCount(0);
+    await expect(shelf).not.toHaveValue(smartShelfId);
+    await noFalseStorageClaim();
+    expect(fixture.consoleErrors).toEqual([]);
+    await evidence(fixture, testInfo, "native-collection-session-complete", { canonicalBookKey, smartShelfId,
+      indexedDBUnavailable: true, currentSessionFavoriteAndShelfRetainedAcrossLocale: true,
+      disclosedFavoriteAndShelfLossOnNewDocumentObserved: true, noInjectedCollectionStore: true, actualNativeInstallation: false });
+  } finally { await scene?.dispose(); }
 });

@@ -276,15 +276,33 @@ export default function BookShelfControls({
   const controlId = `book-shelf-search-${generatedId.replace(/:/g, "")}`;
   const searchLabelId = `${controlId}-label`;
   const listboxId = `${controlId}-listbox`;
+  const searchInputRef = useRef<HTMLInputElement>(null);
   const suggestionsRef = useRef<HTMLDivElement>(null);
   const suggestionCount = countSuggestionOptions(suggestions);
   const suggestionsAvailable =
     suggestions !== undefined && suggestions !== null && suggestions !== false;
   const [suggestionsDismissed, setSuggestionsDismissed] = useState(false);
+  const [suggestionFocusOwned, setSuggestionFocusOwned] = useState(false);
   const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(() =>
     suggestionCount > 0 ? 0 : -1
   );
-  const suggestionsOpen = suggestionsAvailable && !suggestionsDismissed;
+  const suggestionsOpen = suggestionsAvailable && suggestionFocusOwned && !suggestionsDismissed;
+
+  useEffect(() => {
+    if (!suggestionsOpen) return;
+    const dismissOutside = (event: Event) => {
+      const target = event.target;
+      if (target instanceof Node &&
+        (searchInputRef.current?.contains(target) || suggestionsRef.current?.contains(target))) return;
+      // Touch browsers may leave the input focused when another action is
+      // tapped. That action still ends the autocomplete interaction.
+      setSuggestionFocusOwned(false);
+      setSuggestionsDismissed(true);
+      setActiveSuggestionIndex(-1);
+    };
+    document.addEventListener("pointerdown", dismissOutside, true);
+    return () => document.removeEventListener("pointerdown", dismissOutside, true);
+  }, [suggestionsOpen]);
 
   useEffect(() => {
     setSuggestionsDismissed(false);
@@ -331,6 +349,7 @@ export default function BookShelfControls({
   };
 
   const dismissSuggestions = () => {
+    setSuggestionFocusOwned(false);
     setSuggestionsDismissed(true);
     setActiveSuggestionIndex(-1);
     onSuggestionsDismiss?.();
@@ -348,6 +367,7 @@ export default function BookShelfControls({
     event.preventDefault();
     if (event.key === "Escape") event.stopPropagation();
     setSuggestionsDismissed(!action.open);
+    setSuggestionFocusOwned(action.open);
     setActiveSuggestionIndex(action.nextIndex);
     if (event.key === "Escape") onSuggestionsDismiss?.();
     if (action.selectIndex !== null) {
@@ -376,20 +396,24 @@ export default function BookShelfControls({
           <span className="book-shelf-controls__input">
             <BrandSearchIcon />
             <input
+              ref={searchInputRef}
               id={controlId}
               role="combobox"
               type="search"
               value={query}
               onChange={(event) => {
+                setSuggestionFocusOwned(true);
                 setSuggestionsDismissed(false);
                 setActiveSuggestionIndex(-1);
                 onQueryChange(event.target.value);
               }}
               onFocus={() => {
+                setSuggestionFocusOwned(true);
                 setSuggestionsDismissed(false);
                 if (suggestionCount > 0) setActiveSuggestionIndex(0);
               }}
               onClick={() => {
+                setSuggestionFocusOwned(true);
                 setSuggestionsDismissed(false);
                 if (suggestionCount > 0 && activeSuggestionIndex < 0) {
                   setActiveSuggestionIndex(0);
@@ -403,6 +427,7 @@ export default function BookShelfControls({
                 ) {
                   return;
                 }
+                setSuggestionFocusOwned(false);
                 setSuggestionsDismissed(true);
                 setActiveSuggestionIndex(-1);
               }}
@@ -447,6 +472,14 @@ export default function BookShelfControls({
           className="book-shelf-controls__suggestions"
           role="listbox"
           aria-label={suggestionsLabel || searchLabel}
+          onBlur={(event) => {
+            const nextTarget = event.relatedTarget;
+            if (nextTarget === searchInputRef.current ||
+              (nextTarget instanceof Node && suggestionsRef.current?.contains(nextTarget))) return;
+            setSuggestionFocusOwned(false);
+            setSuggestionsDismissed(true);
+            setActiveSuggestionIndex(-1);
+          }}
           onPointerMove={handleSuggestionPointerMove}
           onPointerDown={(event) => {
             if (event.pointerType === "mouse" && findSuggestionOption(event.target)) {

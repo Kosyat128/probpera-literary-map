@@ -1,6 +1,19 @@
 Continue V12 in literary-planet-v12-work on
 codex/literary-planet-v12-bilingual-final-autopilot.
 
+<!-- s10-history:begin -->
+Adult native Recently opened and truthful collection persistence are source-validated.
+History stores20 canonical references/timestamps through existing OS preferences;
+RUEN labels come from current catalog. Retry/clear handle delayed or failed I/O.
+History writer return opens/focuses the existing country sheet on the same globe.
+Collections explicitly report session-only storage when IndexedDB is unavailable;
+a remote sync error does not undo a successful local edit.
+184 focused units, final static and2 actual App browser cases passed.
+Fresh Android/PWA builds follow the source checkpoint. Copy remains draft.
+Evidence: evidence/S10/history-20260908/result.json. First-open S03; S10 in progress.
+Child/aliases/full content/Planetka/device/release gates and frozen iOS83 remain open.
+<!-- s10-history:end -->
+
 <!-- s10-capacity:begin -->
 Source 069a2c6e6d8d890b956ae35fdff92ed619ee8493: precompiled atlas/shared search and cancellable
 cooperative preparation; active-locale sorting and canonical actions preserved.

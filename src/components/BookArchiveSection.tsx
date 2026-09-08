@@ -165,7 +165,7 @@ import {
   getCoreHomepageSection,
 } from "../data/cms/homepage";
 import { useReadingLibrary } from "../hooks/useReadingLibrary";
-import { useBookCollections } from "../hooks/useBookCollections";
+import { useBookCollections, type BookCollectionPersistenceStatus } from "../hooks/useBookCollections";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import {
   articlePath,
@@ -579,7 +579,10 @@ export default function BookArchiveSection({
         : undefined
     )
   );
-  const [smartShelfStatus, setSmartShelfStatus] = useState("");
+  const [smartShelfStatus, setSmartShelfStatus] = useState<{
+    kind: "create-failed" | "save-failed" | "saved";
+    scope: () => BookCollectionPersistenceStatus;
+  } | null>(null);
   const [activeShelfId, setActiveShelfId] = useState(() => {
     if (typeof window === "undefined") return BOOK_COLLECTION_ALL_SHELF_ID;
     return (
@@ -789,6 +792,8 @@ export default function BookArchiveSection({
     favorites: bookFavorites,
     favoriteKeys,
     status: bookCollectionSyncStatus,
+    localPersistenceStatus: bookCollectionPersistence,
+    getLocalPersistenceStatus,
     error: bookCollectionError,
     conflicts: bookCollectionConflicts,
     upsertCollection,
@@ -1364,7 +1369,7 @@ export default function BookArchiveSection({
   const resetArchiveFilters = useCallback(() => {
     setQuery("");
     setFilterState(normalizeBookArchiveFilterState());
-    setSmartShelfStatus("");
+    setSmartShelfStatus(null);
   }, []);
 
   const authorOptions = useMemo(
@@ -1923,7 +1928,10 @@ export default function BookArchiveSection({
       }
       if (
         !event &&
-        (pendingBookCloseRef.current ||
+        // history.back() is asynchronous. Do not reopen the old URL between
+        // the close render and its popstate, losing the original return focus.
+        (skipNextBookPopstateRef.current ||
+          pendingBookCloseRef.current ||
           pendingBookSwitchRef.current ||
           pendingInspectionBookRef.current)
       ) {
@@ -2534,7 +2542,7 @@ export default function BookArchiveSection({
       );
       setQuery("");
       setFilterState(normalizeBookArchiveFilterState());
-      setSmartShelfStatus("");
+      setSmartShelfStatus(null);
       setSearchScope("library");
       setAdvancedFiltersOpen(false);
       setShelfFailure(null);
@@ -3315,14 +3323,16 @@ export default function BookArchiveSection({
       createdAt: now,
       updatedAt: now,
     });
-    if (!collection || !(await upsertCollection(collection))) {
-      setSmartShelfStatus(t("Не удалось создать личную полку"));
+    const saved = collection ? await upsertCollection(collection) : false;
+    if (getLocalPersistenceStatus() === "unknown") return;
+    if (!collection || !saved) {
+      setSmartShelfStatus({ kind: "create-failed", scope: getLocalPersistenceStatus });
       return;
     }
     setActiveShelfId(collection.id);
     setManagerCollectionId(collection.id);
     replaceBookShelfLocation(collection.id, "push");
-  }, [bookCollections, number, t, upsertCollection]);
+  }, [bookCollections, getLocalPersistenceStatus, number, t, upsertCollection]);
   const managedBookCollection = useMemo<ManagedBookCollection | null>(() => {
     const collection = bookCollections.find(
       (candidate) => candidate.id === managerCollectionId
@@ -3522,7 +3532,7 @@ export default function BookArchiveSection({
 
   const saveCurrentAsSmartShelf = useCallback(async () => {
     if (searchScope !== "library") return;
-    setSmartShelfStatus("");
+    setSmartShelfStatus(null);
     const now = new Date().toISOString();
     const ruleParts = [
       ...(query.trim() ? [`${t("Поиск")}: «${query.trim()}»`] : []),
@@ -3566,21 +3576,17 @@ export default function BookArchiveSection({
       createdAt: now,
       updatedAt: now,
     });
-    if (!collection || !(await upsertCollection(collection))) {
-      setSmartShelfStatus(t("Не удалось сохранить умную полку"));
+    const saved = collection ? await upsertCollection(collection) : false;
+    if (getLocalPersistenceStatus() === "unknown") return;
+    if (!collection || !saved) {
+      setSmartShelfStatus({ kind: "save-failed", scope: getLocalPersistenceStatus });
       return;
     }
     setActiveShelfId(collection.id);
     replaceBookShelfLocation(collection.id, "push");
-    setSmartShelfStatus(
-      bookCollectionSyncStatus === "local-only"
-        ? language === "en"
-          ? "Smart shelf saved on this device"
-          : "Умная полка сохранена на этом устройстве"
-        : t("Умная полка сохранена")
-    );
+    setSmartShelfStatus({ kind: "saved", scope: getLocalPersistenceStatus });
   }, [
-    bookCollectionSyncStatus,
+    getLocalPersistenceStatus,
     filterState,
     facetResult.total,
     language,
@@ -3592,13 +3598,42 @@ export default function BookArchiveSection({
     t,
     upsertCollection,
   ]);
-  const personalCollectionStatus =
-    smartShelfStatus ||
-    (bookCollectionError
+  const currentSmartShelfStatus = smartShelfStatus?.scope === getLocalPersistenceStatus
+    ? smartShelfStatus.kind
+    : null;
+  const collectionPersistenceMessage = bookCollectionPersistence === "session-only"
+    ? language === "en"
+      ? "Personal shelves are available only in this session. They may be lost when the app closes."
+      : "Личные полки доступны только в текущем сеансе. Они могут исчезнуть после закрытия приложения."
+    : bookCollectionPersistence === "persistent"
       ? language === "en"
-        ? "Personal shelves could not be synced. The last change was rolled back."
-        : "Не удалось синхронизировать личные полки. Последнее изменение отменено."
-      : bookCollectionConflicts.length > 0
+        ? "Personal shelves are stored on this device"
+        : "Личные полки хранятся на этом устройстве"
+      : language === "en"
+        ? "Checking personal shelf storage…"
+        : "Проверяем сохранение личных полок…";
+  const smartShelfMessage = currentSmartShelfStatus === "saved"
+    ? bookCollectionPersistence === "persistent"
+      ? language === "en" ? "Smart shelf saved on this device" : "Умная полка сохранена на этом устройстве"
+      : bookCollectionPersistence === "session-only"
+        ? language === "en"
+          ? "Smart shelf is available in this session; saving on this device is unavailable."
+          : "Умная полка доступна в текущем сеансе; сохранение на устройстве недоступно."
+        : collectionPersistenceMessage
+    : currentSmartShelfStatus === "save-failed"
+      ? language === "en" ? "Could not save the smart shelf" : "Не удалось сохранить умную полку"
+      : currentSmartShelfStatus === "create-failed"
+        ? language === "en" ? "Could not create the personal shelf" : "Не удалось создать личную полку"
+        : "";
+  const personalCollectionStatus = bookCollectionPersistence === "error"
+    ? language === "en"
+      ? "Could not confirm local shelf storage. Check your latest changes before closing the app."
+      : "Не удалось подтвердить локальное сохранение полок. Проверьте последние изменения перед закрытием приложения."
+    : bookCollectionError
+      ? (bookCollectionSyncStatus === "error"
+        ? language === "en" ? "Personal shelves could not be synced. " : "Не удалось синхронизировать личные полки. "
+        : language === "en" ? "Could not complete the personal shelf action. " : "Не удалось выполнить действие с личной полкой. ") + collectionPersistenceMessage
+      : smartShelfMessage || (bookCollectionConflicts.length > 0
         ? language === "en"
           ? `Resolved ${number(bookCollectionConflicts.length)} shelf sync conflicts`
           : `Разрешено конфликтов синхронизации полок: ${number(bookCollectionConflicts.length)}`
@@ -3606,11 +3641,8 @@ export default function BookArchiveSection({
           ? language === "en"
             ? "Syncing personal shelves…"
             : "Синхронизация личных полок…"
-          : bookCollectionSyncStatus === "local-only" &&
-              (smartShelves.length > 0 || bookFavorites.length > 0)
-            ? language === "en"
-              ? "Personal shelves are stored on this device"
-              : "Личные полки хранятся на этом устройстве"
+          : bookCollections.length > 0 || bookFavorites.length > 0
+            ? collectionPersistenceMessage
             : "");
 
   const changeActiveShelf = useCallback(
@@ -4153,6 +4185,7 @@ export default function BookArchiveSection({
               className="book-shelf-frame__filter-status"
               role="status"
               aria-live="polite"
+              data-book-collection-persistence={bookCollectionPersistence}
             >
               {personalCollectionStatus}
             </span>

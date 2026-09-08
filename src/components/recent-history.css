@@ -1,8 +1,18 @@
 .recent-history { margin-block: 1.5rem; }
-.recent-history > summary { cursor: pointer; font-size: 1.2rem; font-weight: 600; padding-block: .75rem; }
+.recent-history > summary { box-sizing: border-box; min-height: 44px; cursor: pointer; color: inherit; font-size: 1.2rem; font-weight: 600; padding-block: .75rem; }
 .recent-history__content { padding-block: .5rem 1rem; }
+.recent-history button { appearance: none; box-sizing: border-box; min-height: 44px; max-width: 100%; padding: 10px 14px; font: inherit; font-weight: 600; color: var(--planet-ink, var(--ink, #271b20)); background: var(--planet-surface, var(--paper, #fff8eb)); border: 1px solid var(--planet-line, var(--line, #d8cec0)); border-radius: 12px; overflow-wrap: anywhere; white-space: normal; cursor: pointer; }
+.recent-history button:not(:disabled):hover { border-color: var(--planet-accent-strong, var(--ui-focus-color, currentColor)); background: var(--planet-card, var(--cream-deep, #fffaf0)); }
+.recent-history button:disabled { cursor: default; opacity: .6; }
 .recent-history ol { display: grid; gap: .5rem; list-style: none; margin: 0 0 1rem; padding: 0; max-height: 24rem; overflow: auto; }
 .recent-history li button { display: flex; flex-wrap: wrap; gap: .5rem; text-align: start; width: 100%; max-width: 100%; overflow-wrap: break-word; min-height: 44px; }
-.recent-history__kind { opacity: .7; }
+.recent-history__kind { color: var(--planet-muted, var(--muted, #61545c)); font-size: .85em; font-weight: 400; }
 .recent-history__label { flex: 1 1 14rem; min-width: 0; overflow-wrap: break-word; }
-.recent-history button:focus-visible, .recent-history > summary:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.recent-history button:focus-visible, .recent-history > summary:focus-visible { outline: 3px solid var(--planet-accent-strong, var(--ui-focus-color, currentColor)); outline-offset: 3px; }
+.recent-history li button:focus-visible { outline-offset: -3px; }
+@media (forced-colors: active) {
+  .recent-history button { color: ButtonText; background: ButtonFace; border-color: ButtonText; }
+  .recent-history__kind { color: ButtonText; }
+  .recent-history button:disabled { color: GrayText; opacity: 1; }
+  .recent-history button:focus-visible, .recent-history > summary:focus-visible { outline-color: Highlight; }
+}

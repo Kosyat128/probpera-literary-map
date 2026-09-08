@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T14:01:33.695Z",
+  "status": "SOURCE_VALIDATION_PASSED",
+  "stage": "S10",
+  "entry": "docs/mobile/evidence/S10/history-20260908/entry.json",
+  "relatedScope": "docs/mobile/evidence/S10/history-20260908/collection-follow-up.json",
+  "testedWorkingSourceSha256": "0e7068e2d65fd4530468db15936738ed88df77a6c63bce5853581bbad408a013",
+  "implementation": [
+    "src/host/HostRecentHistory.ts",
+    "src/host/HostPlatformServices.ts",
+    "src/host/mountHostApp.tsx",
+    "src/platform/ports.ts",
+    "src/planet/RecentHistory.tsx",
+    "src/components/RecentHistoryPanel.tsx",
+    "src/components/recent-history.css",
+    "src/App.tsx",
+    "src/hooks/useBookCollections.ts",
+    "src/components/BookArchiveSection.tsx",
+    "src/components/BookShelfControls.tsx",
+    "src/styles/book-shelf-controls.css"
+  ],
+  "validation": {
+    "uniqueUnitPasses": 184,
+    "totalTestExecutions": 210,
+    "repeatedAffectedPasses": 26,
+    "unitEvidence": [
+      "unit-a1/result.json",
+      "unit-repair-a1/result.json",
+      "unit-controls-a1/result.json"
+    ],
+    "staticEvidence": "static-a3/result.json",
+    "actualBrowserPasses": 2,
+    "fixes": [
+      "Static-a1 rejected ES2022 Object.hasOwn and Array.at under the existing target; replaced by compatible operations and reran only the two affected26-test suites.",
+      "Browser-a1 exposed history return focus stolen by duplicate close: asynchronous history.back left the old book URL visible to the render effect. Suppress no-event URL reopening until the expected popstate; keep the original trigger and existing close flow.",
+      "Original-resolution browser-a2/a3 screenshots exposed UA-style history buttons, overflowing collection storage copy and an unfocused autocomplete reopening over status. Reuse existing globe palette, wrap status within the rail, and keep suggestions tied to user focus; final browser verifies these changes."
+    ],
+    "historicalFailures": [
+      "static-a1/result.json",
+      "browser-a1/result.json"
+    ],
+    "earlierPassedBehavior": [
+      "static-a2/result.json",
+      "browser-a2/result.json",
+      "browser-a3/result.json"
+    ],
+    "sourceBrowserEvidence": [
+      "browser-a4/result.json",
+      "browser-a5/result.json"
+    ],
+    "runtime": [
+      "Native adult history uses the existing OS preference bridge, stores at most20 canonical targets and timestamps, serializes writes/readback, bounds confirmation waits and prevents old reads/writes undoing clear.",
+      "Actual App source browser opens canonical writer/work, switches RUEN on the retained scene, reveals history writer outside the active filter, reloads persisted targets and clears locally.",
+      "Collection persistence follows the actual local commit outcome; unavailable IndexedDB remains explicit session-only. A later remote sync failure does not roll back a successful local edit."
+    ],
+    "sourceBrowserBoundary": "Canonical App/scene in a browser with injected OS bridge; not installed Android or iOS runtime certification."
+  },
+  "canonicalDataChanged": false,
+  "newEditorialApprovalCreated": false,
+  "newUiCopyReviewStatus": "draft",
+  "firstOpenCriterion": "S03.acceptance",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false,
+  "remaining": [
+    "Fresh Android/dev and local-QA PWA artifacts follow the source commit.",
+    "Adult native history does not implement or accept separate child profiles/history, entitlements or downloads.",
+    "Publication gate currently admits four books; prior10000 synthetic capacity is not a verified production catalog.",
+    "Reviewed native/transliteration aliases, complete RUEN content/biographies, child/Planetka/3D, passport/store, edition covers/correction workflow and device/legal/release gates remain open.",
+    "Frozen iOS83 unchanged and pending; no new iOS build."
+  ]
+}
