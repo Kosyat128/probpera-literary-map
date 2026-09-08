@@ -1,0 +1,9 @@
+{
+  "sourceCommit": "bda662c4779ac6852add6d6d6e94e36dfbb91f9a",
+  "exitCode": 0,
+  "log": ".tmp/s10-search-pwa-20260908/pipeline-a1.log",
+  "buildAndAuditInvoked": true,
+  "affectedBrowserPlanned": true,
+  "stageAccepted": false,
+  "releaseReady": false
+}

@@ -1,0 +1,30 @@
+[
+  {
+    "path": "scripts/mobile/verify-pwa-artifact.mjs",
+    "sha256": "9b6c71a03698ecfdf51edc72a1c57c3b9d995ce8e875d92e111f090fd7b871db"
+  },
+  {
+    "path": "tests/pwa/controlled-pwa.spec.mjs",
+    "sha256": "0bd4e12dfb6147dabc35416a3e10bade59e8cea2ed2914654de4d5ee7b6b31bb"
+  },
+  {
+    "path": "playwright.pwa-current.config.mjs",
+    "sha256": "a1dd4f348dff085913e9b3241902bf1617b9fe170e49cbd88565a74f054c7749"
+  },
+  {
+    "path": ".tmp/s10-search-pwa-20260908/playwright.search.config.mjs",
+    "sha256": "789ff8f12912679dd30e625dda38749ba83db04d4e6a7424fc312bb6f167557d"
+  },
+  {
+    "path": "tests/pwa/support/local-server.mjs",
+    "sha256": "5961d3e61339bb8e44704d804acbad99041706645377c9f9bf28b6676f1c5c1e"
+  },
+  {
+    "path": "tests/pwa/support/cross-engine-server.mjs",
+    "sha256": "51d6ba7b0b71e0008dc650812e11d7ded327e5607316af330c0757eef011bbb6"
+  },
+  {
+    "path": ".tmp/s10-search-pwa-20260908/run-pwa-search.mjs",
+    "sha256": "f65f4685b8149112d487e130d82aec90a195872c9291ef52d4095353b8ff4d79"
+  }
+]

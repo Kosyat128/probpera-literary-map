@@ -1,0 +1,301 @@
+{
+  "schemaVersion": 1,
+  "stage": "S10",
+  "recordedAt": "2026-09-08T12:22:32.797Z",
+  "runId": "pwa-search-20260908-a1",
+  "sourceCommit": "bda662c4779ac6852add6d6d6e94e36dfbb91f9a",
+  "buildId": "a22183b0935b4108668d5d7d3009d3729cb32ea47ed388bd83a3135bd09d7363",
+  "status": "LOCAL_QA_PWA_BUILD_AUDIT_AND_AFFECTED_BROWSER_PASSED",
+  "strictArtifactAuditPassed": true,
+  "statistics": {
+    "startTime": "2026-09-08T12:21:22.844Z",
+    "duration": 48169.854,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "sourceUnchanged": true,
+  "browserTestsRun": true,
+  "browserExecutions": 1,
+  "browserProof": [
+    {
+      "title": "expanded portrait base installs and verifies real offline bytes with saved graphics and bilingual scene",
+      "project": "pwa-desktop",
+      "status": "passed",
+      "durationMs": 45518,
+      "errors": []
+    }
+  ],
+  "artifact": {
+    "path": ".tmp/pwa-artifacts/a22183b0-search-20260908-a1",
+    "files": 1367,
+    "bytes": 70169349,
+    "artifactSha256": "6ca598be29ec0abf25b678c1ce65b41fc890d0ca23fe7402f0431c28def18fbd",
+    "exactCopiesVerified": true
+  },
+  "preservedFiles": [
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-search-20260908-a1/session.json",
+      "path": "docs/mobile/evidence/S10/search-20260908/pwa/session.json",
+      "bytes": 1183,
+      "sha256": "5a532c7430adc587230125fd2bb0523725d004692a610c06b496e5a3e483bcfc"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-search-20260908-a1/source-before.json",
+      "path": "docs/mobile/evidence/S10/search-20260908/pwa/source-before.json",
+      "bytes": 137987,
+      "sha256": "d72020ed8b0f196033bb9225bc075a35b84a549a44eb143eaa4ce893b49540ff"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-search-20260908-a1/source-after.json",
+      "path": "docs/mobile/evidence/S10/search-20260908/pwa/source-after.json",
+      "bytes": 137987,
+      "sha256": "d72020ed8b0f196033bb9225bc075a35b84a549a44eb143eaa4ce893b49540ff"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-search-20260908-a1/source-comparison.json",
+      "path": "docs/mobile/evidence/S10/search-20260908/pwa/source-comparison.json",
+      "bytes": 205,
+      "sha256": "3ed9cf9659040bd03bb23fe1da2c1cac4099a31c6ca7d2d4d7c38a52e2ef26d4"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-search-20260908-a1/support-before.json",
+      "path": "docs/mobile/evidence/S10/search-20260908/pwa/support-before.json",
+      "bytes": 1028,
+      "sha256": "dd22f080ac88d9c4a4b9b3244469aa2e7ed1dfabd8812d68cd75074b86e74f5b"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-search-20260908-a1/support-after.json",
+      "path": "docs/mobile/evidence/S10/search-20260908/pwa/support-after.json",
+      "bytes": 1028,
+      "sha256": "dd22f080ac88d9c4a4b9b3244469aa2e7ed1dfabd8812d68cd75074b86e74f5b"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-search-20260908-a1/strict-artifact-audit.json",
+      "path": "docs/mobile/evidence/S10/search-20260908/pwa/strict-artifact-audit.json",
+      "bytes": 795,
+      "sha256": "9421cbda5d451418c575abbd51740eeb0c131bae8dd9e84bb98d329e84dc9a51"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-search-20260908-a1/strict-artifact-audit-execution.json",
+      "path": "docs/mobile/evidence/S10/search-20260908/pwa/strict-artifact-audit-execution.json",
+      "bytes": 168,
+      "sha256": "687c74c07451c3a89017d7d2f36a87aedd0f9b239453a3d9ab6e082829b9c06a"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-search-20260908-a1/server-closed.json",
+      "path": "docs/mobile/evidence/S10/search-20260908/pwa/server-closed.json",
+      "bytes": 93,
+      "sha256": "4d6d4721ecc3a782afa0df8c369c2fe515d62820c7b45dc316bf0038f0bf1e3b"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-search-20260908-a1/run-result.json",
+      "path": "docs/mobile/evidence/S10/search-20260908/pwa/run-result.json",
+      "bytes": 676,
+      "sha256": "27be6534263daf39df955d1e5302ac76450daaad3bed95c37724ac5f994d92ce"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-search-20260908-a1/discovery.json",
+      "path": "docs/mobile/evidence/S10/search-20260908/pwa/discovery.json",
+      "bytes": 269,
+      "sha256": "3a6a4bed659766c7a41471d1adf03fe2b08e3bb63bee18b2f2b3e753c2731b22"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-search-20260908-a1/discovery-execution.json",
+      "path": "docs/mobile/evidence/S10/search-20260908/pwa/discovery-execution.json",
+      "bytes": 300,
+      "sha256": "09881b1adce1547bf5a447db6da34b121924f1c6f8bceba1e7d05530a28f1ad8"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-search-20260908-a1/browser-run-execution.json",
+      "path": "docs/mobile/evidence/S10/search-20260908/pwa/browser-run-execution.json",
+      "bytes": 264,
+      "sha256": "ead7b18e074081aa2128a59f88a537bd17b90229f0567d7b12f471ccf07ebbc9"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-search-20260908-a1/results.json",
+      "path": "docs/mobile/evidence/S10/search-20260908/pwa/results.json",
+      "bytes": 5644,
+      "sha256": "c34b9f9bde47af75d75745f73ea8c5f4b41f14ce44ef423b03e7c670f3fb499d"
+    },
+    {
+      "source": "dist-pwa/artifact.json",
+      "path": "docs/mobile/evidence/S10/search-20260908/pwa/artifact.json",
+      "bytes": 387736,
+      "sha256": "6ca598be29ec0abf25b678c1ce65b41fc890d0ca23fe7402f0431c28def18fbd"
+    },
+    {
+      "source": ".tmp/s10-search-pwa-20260908/prior-8521-before-search.json",
+      "path": "docs/mobile/evidence/S10/search-20260908/pwa/prior-8521-before-search.json",
+      "bytes": 233707,
+      "sha256": "e6c4f9b7ad514c40cea73a33b79851e43dc0c2065b24ea69350125344b9f8fdc"
+    },
+    {
+      "source": ".tmp/s10-search-pwa-20260908/preparation.json",
+      "path": "docs/mobile/evidence/S10/search-20260908/pwa/preparation.json",
+      "bytes": 3365,
+      "sha256": "84e71c8dfd3a9f35b7122dc35ab3235ffab09189606c16015eb8b4797fff7d47"
+    },
+    {
+      "source": ".tmp/s10-search-pwa-20260908/preparation-recovery.json",
+      "path": "docs/mobile/evidence/S10/search-20260908/pwa/preparation-recovery.json",
+      "bytes": 751,
+      "sha256": "d18a147fcbfa48dccc805f2a73f301c126bb21de0f2a857181eabdb1f36b2878"
+    },
+    {
+      "source": ".tmp/s10-search-pwa-20260908/pipeline-a1-execution.json",
+      "path": "docs/mobile/evidence/S10/search-20260908/pwa/pipeline-a1-execution.json",
+      "bytes": 265,
+      "sha256": "3ca7d464e8bbd9c40c67b861817b654ee847df36bfcb7daff349c9e365cd8a78"
+    },
+    {
+      "source": ".tmp/s10-search-pwa-20260908/run-pwa-search.mjs",
+      "path": "docs/mobile/evidence/S10/search-20260908/pwa/helpers/run-pwa-search.mjs",
+      "bytes": 10596,
+      "sha256": "f65f4685b8149112d487e130d82aec90a195872c9291ef52d4095353b8ff4d79"
+    },
+    {
+      "source": ".tmp/s10-search-pwa-20260908/run-pwa-search.ps1",
+      "path": "docs/mobile/evidence/S10/search-20260908/pwa/helpers/run-pwa-search.ps1",
+      "bytes": 1084,
+      "sha256": "c29d4836ab9d9ba4540a8191996769d4bbf4927d0408d97c4001f0617f57637e"
+    },
+    {
+      "source": ".tmp/s10-search-pwa-20260908/preserve-pwa-search.mjs",
+      "path": "docs/mobile/evidence/S10/search-20260908/pwa/helpers/preserve-pwa-search.mjs",
+      "bytes": 10120,
+      "sha256": "f77079b229ed91ce7cc4740567a99a550090ab067abd48c3a47ca1fb2ede6644"
+    },
+    {
+      "source": ".tmp/s10-search-pwa-20260908/park-8521-before-search.mjs",
+      "path": "docs/mobile/evidence/S10/search-20260908/pwa/helpers/park-8521-before-search.mjs",
+      "bytes": 4539,
+      "sha256": "10cd50661d1a2c274b8f1077810e69fee08f8901277a5906afbec2d779a939d8"
+    },
+    {
+      "source": ".tmp/s10-search-pwa-20260908/playwright.search.config.mjs",
+      "path": "docs/mobile/evidence/S10/search-20260908/pwa/helpers/playwright.search.config.mjs",
+      "bytes": 542,
+      "sha256": "789ff8f12912679dd30e625dda38749ba83db04d4e6a7424fc312bb6f167557d"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-search-20260908-a1/strict-artifact-audit.log",
+      "path": "docs/mobile/evidence/S10/search-20260908/pwa/strict-artifact-audit-log.json",
+      "bytes": 1189,
+      "sha256": "7eba36292b8402f92c8159b9316152089df3332f22fbb3b3f40121cf1fede30c",
+      "rawBytes": 795,
+      "rawSha256": "9421cbda5d451418c575abbd51740eeb0c131bae8dd9e84bb98d329e84dc9a51",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-search-20260908-a1/strict-artifact-audit.stdout.log",
+      "path": "docs/mobile/evidence/S10/search-20260908/pwa/strict-artifact-audit.stdout-log.json",
+      "bytes": 1196,
+      "sha256": "816647a6a09c093d218c9f6a38567d2126555768d260ee178975af0a6c3134fc",
+      "rawBytes": 795,
+      "rawSha256": "9421cbda5d451418c575abbd51740eeb0c131bae8dd9e84bb98d329e84dc9a51",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-search-20260908-a1/strict-artifact-audit.stderr.log",
+      "path": "docs/mobile/evidence/S10/search-20260908/pwa/strict-artifact-audit.stderr-log.json",
+      "bytes": 336,
+      "sha256": "19a6b019aa6127c6ea88dc1fedd45cadc481efdd53e1ebd8cb33f5c4fede4175",
+      "rawBytes": 0,
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-search-20260908-a1/discovery.log",
+      "path": "docs/mobile/evidence/S10/search-20260908/pwa/discovery-log.json",
+      "bytes": 3533,
+      "sha256": "42dd4ea919988d4465cab79bb6e32bc3b1212a51d8768c0b0fd202d18b1b8a50",
+      "rawBytes": 2879,
+      "rawSha256": "b3271a014f64b4ab0d57805f693aace1ce1531714adb4ef5d13a63f5cbe5ade8",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-search-20260908-a1/discovery.stdout.log",
+      "path": "docs/mobile/evidence/S10/search-20260908/pwa/discovery.stdout-log.json",
+      "bytes": 3540,
+      "sha256": "350914d1afb0aea7cf41e564995cbda29ab45c405990800f1004c5e41e0b2b65",
+      "rawBytes": 2879,
+      "rawSha256": "b3271a014f64b4ab0d57805f693aace1ce1531714adb4ef5d13a63f5cbe5ade8",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-search-20260908-a1/discovery.stderr.log",
+      "path": "docs/mobile/evidence/S10/search-20260908/pwa/discovery.stderr-log.json",
+      "bytes": 324,
+      "sha256": "6a595cdb78c2a9aed263ac89f4841323c093dc0bcea2e96981aebf7553a81249",
+      "rawBytes": 0,
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-search-20260908-a1/browser-run.log",
+      "path": "docs/mobile/evidence/S10/search-20260908/pwa/browser-run-log.json",
+      "bytes": 728,
+      "sha256": "f335a06fed2f273ce8407958cf9e8050f4dfc99496cc120372fcb872d1ffe378",
+      "rawBytes": 397,
+      "rawSha256": "77e1c339fb4bb4cb4f3e7d09d31e9230a78c83ba858ce9f96e09e14297646a0b",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-search-20260908-a1/browser-run.stdout.log",
+      "path": "docs/mobile/evidence/S10/search-20260908/pwa/browser-run.stdout-log.json",
+      "bytes": 569,
+      "sha256": "992f36af15abb6e8cc5a8a47109cd118db8699fd5f51c1f6c56749112ae494cf",
+      "rawBytes": 233,
+      "rawSha256": "69e1ed091cbaf2f5c7ae1d48bc3c803ed7d413ccb0b91c0c0714769151255219",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-search-20260908-a1/browser-run.stderr.log",
+      "path": "docs/mobile/evidence/S10/search-20260908/pwa/browser-run.stderr-log.json",
+      "bytes": 494,
+      "sha256": "d9ecbaf88645c6ca721e3fb0d33d5d61a396b60eb8c78d631d7937f8a2f67b44",
+      "rawBytes": 164,
+      "rawSha256": "03d8b04b73463309b7f8f1318091cd66a234d42bc048abc76dc78144855fb928",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/s10-search-pwa-20260908/pipeline-a1.log",
+      "path": "docs/mobile/evidence/S10/search-20260908/pwa/pipeline-a1-log.json",
+      "bytes": 13983,
+      "sha256": "d454ac27d2a4611f9263114d94c1429e21f55419b76ab481379b0ed82c1a915c",
+      "rawBytes": 13374,
+      "rawSha256": "ff049c6669dbb3a504d94109893f16c58e590a779427b8ebe1e889e18e77ac84",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-search-20260908-a1/results.json#expanded-portrait-offline-evidence",
+      "path": "docs/mobile/evidence/S10/search-20260908/pwa/expanded-portrait-offline-evidence.json",
+      "bytes": 1358,
+      "sha256": "6719a8ed514a3b384033979f439054949a415b54d2e03fd9c5933d15bf327c7f"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-search-20260908-a1/artifacts/controlled-pwa-expanded-po-1aabd-raphics-and-bilingual-scene-pwa-desktop/expanded-offline-english-writer.png",
+      "path": "docs/mobile/evidence/S10/search-20260908/pwa/expanded-offline-english-writer.png",
+      "bytes": 2362292,
+      "sha256": "3c8f6ed11c39b160a15bccdaaed1cc54d6dafecd5bec997b35286ad126d61a1c"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-search-20260908-a1/artifacts/controlled-pwa-expanded-po-1aabd-raphics-and-bilingual-scene-pwa-desktop/expanded-offline-russian-writer-list.png",
+      "path": "docs/mobile/evidence/S10/search-20260908/pwa/expanded-offline-russian-writer-list.png",
+      "bytes": 2368409,
+      "sha256": "f54fc561d8c3b93113c0993209c9fced4a6492c8bfed684a4e3cd3c1449a3cd8"
+    }
+  ],
+  "stageAccepted": false,
+  "releaseReady": false,
+  "copyReviewStatus": "draft",
+  "actualOsInstallation": false,
+  "realPaymentProviderConfigured": false,
+  "limits": [
+    "Fresh local QA Vite/worker build, strict audit, byte-exact archive and one existing desktop worker/expanded-portrait offline case for the changed search bundle. No old appearance, repair, recovery or full browser suite rerun.",
+    "The separate native-source search interaction proof does not constitute PWA interaction, production distribution, physical GPU or APK evidence.",
+    "Local ephemeral QA authority does not establish a real merchant/payment, legal/editorial approval, owner acceptance or release readiness."
+  ]
+}

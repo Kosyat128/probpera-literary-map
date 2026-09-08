@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "status": "PREPARATION_SCRIPT_CORRECTED",
+  "observedFailure": "AssertionError: Missing exact substitution pwa-graphics-quality-20260908-a1",
+  "cause": "Common literal replacement incorrectly required the runId in the PowerShell template, which only contains the helper path.",
+  "observationSource": "Tool output only; no separately captured raw log exists.",
+  "completedBeforeFailure": [
+    "run-pwa-search.mjs prepared"
+  ],
+  "correction": "Use optional common renames for different templates and explicit file-specific contract assertions; remaining helpers written without overwriting the existing runner.",
+  "currentArtifactModified": false,
+  "buildExecutions": 0,
+  "browserExecutions": 0,
+  "signerStarts": 0
+}

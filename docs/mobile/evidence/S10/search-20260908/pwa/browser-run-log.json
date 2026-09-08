@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "originalPath": ".tmp/pwa-cross-engine-results/pwa-search-20260908-a1/browser-run.log",
+  "originalBytes": 397,
+  "originalSha256": "77e1c339fb4bb4cb4f3e7d09d31e9230a78c83ba858ce9f96e09e14297646a0b",
+  "reconstruction": "UTF-8 encode text exactly, without newline normalization",
+  "text": "\nRunning 1 test using 1 worker\n\n(node:31256) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n  ok 1 [pwa-desktop] › tests\\pwa\\controlled-pwa.spec.mjs:191:1 › expanded portrait base installs and verifies real offline bytes with saved graphics and bilingual scene (45.5s)\n\n  1 passed (48.2s)\n"
+}

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "recordedAt": "2026-09-08T12:14:18.422Z",
-  "status": "SOURCE_VALIDATION_PASSED",
+  "recordedAt": "2026-09-08T12:23:55.425Z",
+  "status": "SOURCE_AND_LOCAL_ARTIFACT_VALIDATION_PASSED",
   "stage": "S10",
   "entry": "docs/mobile/evidence/S10/search-20260908/entry.json",
   "testedWorkingSourceSha256": "e0c5b1c976fa664a4024b830403b17637aed7e41d6f1876e578499a554c85d13",
@@ -110,9 +110,54 @@
   "releaseReady": false,
   "productionActionsPerformed": false,
   "remaining": [
-    "Fresh Android/dev and local-QA PWA artifacts follow the source commit.",
     "Full verified RU/EN/native/transliteration coverage, child isolation, collection/passport and nearly10k capacity remain open.",
     "English content/biographies, edition-specific covers, owner visual content correction, Planetka/full3D and release/legal/device/store gates remain open.",
     "Frozen iOS83 projection remains unchanged and pending approval; there is no new iOS build."
-  ]
+  ],
+  "sourceCommit": "bda662c4779ac6852add6d6d6e94e36dfbb91f9a",
+  "nativeArtifact": {
+    "evidence": "docs/mobile/evidence/S04/search-android-20260908/result.json",
+    "sha256": "1fee62ea8d91f174d90f0c4c8f9fd8e93190472042d3e43a51bc31134da4f170",
+    "buildId": "40d1a1b5b7647da0e0077aeed96534cb6dd3afb0a6f955ff0b0356c99d0d4594",
+    "sourceCommit": "bda662c4779ac6852add6d6d6e94e36dfbb91f9a",
+    "sourceInputsSha256": "6f9d860ec30e47e38c9a7fb5b9e1fffe1eeb26fe68f5423895afe37437ec985e",
+    "runtime": ".tmp/native-builds/android-dev/search-40d1a1b5/runtime",
+    "apk": {
+      "path": ".tmp/native-builds/android-dev/search-40d1a1b5/app-dev-debug.apk",
+      "bytes": 63592343,
+      "sha256": "4abe9dd5682f486f9285a2a276c9a01d3278d312efe8a5b64373ef57c53d9457"
+    },
+    "strictAudit": true,
+    "binaryAudit": true,
+    "copiesVerified": true,
+    "currentSource": true,
+    "installedRuntimeTested": false
+  },
+  "pwaArtifact": {
+    "evidence": "docs/mobile/evidence/S10/search-20260908/pwa/result.json",
+    "sha256": "eb552fe86846c3ae0b3c9460e72802db7f50389a40083c506aade8bf616f5109",
+    "buildId": "a22183b0935b4108668d5d7d3009d3729cb32ea47ed388bd83a3135bd09d7363",
+    "sourceCommit": "bda662c4779ac6852add6d6d6e94e36dfbb91f9a",
+    "sourceInputsSha256": "d72020ed8b0f196033bb9225bc075a35b84a549a44eb143eaa4ce893b49540ff",
+    "runtime": ".tmp/pwa-artifacts/a22183b0-search-20260908-a1",
+    "artifactSha256": "6ca598be29ec0abf25b678c1ce65b41fc890d0ca23fe7402f0431c28def18fbd",
+    "files": 1367,
+    "bytes": 70169349,
+    "strictAudit": true,
+    "copiesVerified": true,
+    "localQaAuthority": true,
+    "currentSource": true,
+    "browserExecutions": 1,
+    "browserPassed": true,
+    "physicalDeviceTested": false
+  },
+  "artifactSourceProof": {
+    "uniqueInputs": 984,
+    "currentSourceBytesMatched": true,
+    "canonicalRegistry": {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    },
+    "apkBytesAndArchivedMetadataVerified": true
+  }
 }

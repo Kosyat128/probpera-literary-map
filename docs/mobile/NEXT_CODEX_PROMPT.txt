@@ -2,17 +2,19 @@ Continue V12 in literary-planet-v12-work on
 codex/literary-planet-v12-bilingual-final-autopilot.
 
 <!-- s10-search:begin -->
-Existing globe search is source-validated: mobile writer results open their
-card and receive visible focus; Escape returns to search; RU/EN keep one scene.
-Opposite-locale book titles require existing title/source evidence; canonical
-IDs and current-language labels remain shared. No title or approval generated.
-259 unique tests passed; two type-corrected test files alone were repeated.
-Final TypeScript/boundaries and two actual mobile RU/EN browser cases passed.
-Failed focus/type/discovery attempts are retained with their corrections.
-Fresh Android/PWA build follows this source checkpoint.
+Source bda662c4779ac6852add6d6d6e94e36dfbb91f9a: adult globe search reveals writers, restores focus,
+and finds the same book by evidence-backed titles from either locale.
+259 unique tests, final static and 2 actual mobile source-browser cases passed;
+writer focus also checked with normal and reduced motion.
+Android/dev 40d1a1b5: strict build, offline Gradle, real APK inspection.
+APK: .tmp/native-builds/android-dev/search-40d1a1b5/app-dev-debug.apk.
+Controlled local-QA PWA a22183b0: strict audit and 1 actual cold-RUEN/offline case passed.
+Both artifacts bind the exact canonical title authority registry and current source.
+Current strict publication gate admits 4 books; this is not nearly10k coverage.
 Evidence: evidence/S10/search-20260908/result.json.
-First-open S03; S10 in progress. Full alias coverage, child isolation,
-collection/passport/capacity and release gates open; frozen iOS83 unchanged.
+First-open S03; S10 in progress. Full aliases, child isolation, collection/passport,
+content/biographies/edition covers/Planetka and device/release gates remain open.
+Frozen iOS83 unchanged/pending; no production actions. Earlier blocks are history.
 <!-- s10-search:end -->
 
 <!-- s06-graphics-quality:begin -->

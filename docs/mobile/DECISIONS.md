@@ -458,3 +458,11 @@
   canonical source authority registry, now hashed in both artifact inputs and
   explicitly owned by PWA offline bootstrap; no broader root data import is
   admitted by the native verifier. Existing approval metadata is not new review.
+
+- D093: Source bda662c4 is compiled as Android/dev 40d1a1b5 and
+  controlled local-QA PWA a22183b0. Exact source/registry inputs and
+  preserved APK/PWA identities are verified; one actual cold RU/EN PWA worker
+  scenario verifies the new bundled module remains available offline. The
+  current publication gate admits four books, each searchable by both existing
+  published titles. This does not certify full English content, nearly10k
+  capacity, child search, installed devices, store release or stage completion.

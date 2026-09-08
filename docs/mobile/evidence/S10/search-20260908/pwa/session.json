@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "runId": "pwa-search-20260908-a1",
+  "localQaOnly": true,
+  "origin": "http://127.0.0.1:4296",
+  "artifact": {
+    "buildId": "a22183b0935b4108668d5d7d3009d3729cb32ea47ed388bd83a3135bd09d7363",
+    "sourceCommit": "bda662c4779ac6852add6d6d6e94e36dfbb91f9a",
+    "sourceInputsSha256": "d72020ed8b0f196033bb9225bc075a35b84a549a44eb143eaa4ce893b49540ff",
+    "authoritySha256": "ba86770d8290cc74caeac9fc737c377115f0762c5f766df06b9d27633c60a904",
+    "localQaAuthority": true,
+    "releaseReady": false
+  },
+  "planned": {
+    "sourceBuilds": 1,
+    "strictArtifactAudits": 1,
+    "browserExecutions": 1
+  },
+  "limits": [
+    "Ephemeral signer exists only in this local process. No provider/payment or installed OS evidence.",
+    "One new Vite/worker build for the existing globe search focus and evidence-backed bilingual book-title aliases. Previous8521 and all historical evidence remain archived. Only one existing expanded-portrait install/readiness/offline case runs to verify the changed bundle under the actual worker; no full appearance/repair suite is rerun. Search interaction evidence is recorded separately from the native-source browser."
+  ]
+}

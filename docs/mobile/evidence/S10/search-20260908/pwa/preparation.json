@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "stage": "S10",
+  "status": "PREPARED_NOT_EXECUTED",
+  "sourceHelpers": ".tmp/s03-graphics-quality-pwa-20260908",
+  "sourceHelperSha256": {
+    "run-pwa-graphics-quality.mjs": "263659759795791b9484e6593a67a4bb42fc9e87e371cd8d9972ddc007ea9cb6",
+    "run-pwa-graphics-quality.ps1": "5fd726549e7125f773d8af9630bceed17e59ebc88394bd3ea174fee851e4ad2f",
+    "playwright.graphics.config.mjs": "789ff8f12912679dd30e625dda38749ba83db04d4e6a7424fc312bb6f167557d",
+    "park-8609-before-graphics-quality.mjs": "b80b4cd474c3876460db959ccf59ef0409804cea8239efd27463dc28d438f0a4",
+    "preserve-pwa-graphics-quality.mjs": "636a6f67315980eecec1be45f066a87072e43bfe24ec57b2312ee212339cb39d"
+  },
+  "generated": [
+    {
+      "path": ".tmp/s10-search-pwa-20260908/park-8521-before-search.mjs",
+      "bytes": 4539,
+      "sha256": "10cd50661d1a2c274b8f1077810e69fee08f8901277a5906afbec2d779a939d8"
+    },
+    {
+      "path": ".tmp/s10-search-pwa-20260908/playwright.search.config.mjs",
+      "bytes": 542,
+      "sha256": "789ff8f12912679dd30e625dda38749ba83db04d4e6a7424fc312bb6f167557d"
+    },
+    {
+      "path": ".tmp/s10-search-pwa-20260908/preparation-recovery.json",
+      "bytes": 751,
+      "sha256": "d18a147fcbfa48dccc805f2a73f301c126bb21de0f2a857181eabdb1f36b2878"
+    },
+    {
+      "path": ".tmp/s10-search-pwa-20260908/preserve-pwa-search.mjs",
+      "bytes": 10120,
+      "sha256": "f77079b229ed91ce7cc4740567a99a550090ab067abd48c3a47ca1fb2ede6644"
+    },
+    {
+      "path": ".tmp/s10-search-pwa-20260908/run-pwa-search.mjs",
+      "bytes": 10596,
+      "sha256": "f65f4685b8149112d487e130d82aec90a195872c9291ef52d4095353b8ff4d79"
+    },
+    {
+      "path": ".tmp/s10-search-pwa-20260908/run-pwa-search.ps1",
+      "bytes": 1084,
+      "sha256": "c29d4836ab9d9ba4540a8191996769d4bbf4927d0408d97c4001f0617f57637e"
+    }
+  ],
+  "expectedPrior": {
+    "buildId": "8521b4e54ab24b32c030ed4938c6df9136728752d5a86632cc00b35fdeee427b",
+    "sourceCommit": "632a60c36ce117e210010da1ab77432280f5fa10",
+    "artifactSha256": "25de7d6454d276239dbb683b282ccefffe08b0f551963c5b9050085dc8b6bdaf",
+    "files": 1367,
+    "bytes": 70142310
+  },
+  "requiredFreshSourceCommit": "Explicit 40-character lowercase SHA from root after source freeze and commit",
+  "sourceInputAddition": "data/book-canon-source-registry.json; explicitly included even if Git listing changes, matching builder/verifier. src/data/bookSearchAliases.ts is already covered by src.",
+  "strictAuditContract": "Canonical registry source hash and emitted chunk must belong to offline bootstrap ownership; no new untracked runtime helper.",
+  "futureRun": {
+    "runId": "pwa-search-20260908-a1",
+    "buildCount": 1,
+    "strictAuditCount": 1,
+    "browserCount": 1,
+    "project": "pwa-desktop",
+    "title": "expanded portrait base installs and verifies real offline bytes with saved graphics and bilingual scene",
+    "discoveryBeforeSignerAndBuild": true
+  },
+  "historicalArtifactChecks": "All exact files compared against current artifact inventory and historical immutable copy before contained rename, then verified after; no new-current-source audit against the historical generation",
+  "trackedSourceOrTestChanges": false,
+  "currentArtifactMoved": false,
+  "serverStarted": false,
+  "buildRun": false,
+  "testsRun": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}
