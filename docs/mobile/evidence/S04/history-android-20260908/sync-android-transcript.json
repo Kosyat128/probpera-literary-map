@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "source": ".tmp/history-android-20260908/sync-android.log",
+  "originalName": "sync-android.log",
+  "originalBytes": 543,
+  "originalSha256": "c283cdb1c23acc4a195ab7ce6df00fb8ab5f247a6d94a7ced2ee7671d9a96024",
+  "encoding": "utf8",
+  "content": "√ Copying web assets from dist-native to apps\\mobile\\android\\app\\src\\main\\assets\\public in 700.93ms\r\n√ Creating capacitor.config.json in apps\\mobile\\android\\app\\src\\main\\assets in 1.84ms\r\n√ copy android in 748.51ms\r\n√ Updating Android plugins in 9.18ms\r\n[info] Found 5 Capacitor plugins for android:\r\n       @capacitor/app@8.1.1\r\n       @capacitor/app-launcher@8.0.1\r\n       @capacitor/browser@8.0.4\r\n       @capacitor/network@8.0.1\r\n       @capacitor/preferences@8.0.1\r\n√ update android in 131.75ms\r\n[info] Sync finished in 0.959s\r\n"
+}

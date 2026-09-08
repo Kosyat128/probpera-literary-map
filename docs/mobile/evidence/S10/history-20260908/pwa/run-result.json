@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "runId": "pwa-history-20260908-a1",
+  "sourceCommit": "deaea6c77adb274fed8cb8f524e87cfa433a037c",
+  "buildId": "8b5204edfa04d834c726c8b35db3cdb3ed8d88ff711d5b87b3a5f9c3a71596d1",
+  "strictArtifactAuditPassed": true,
+  "browserTestsRun": true,
+  "browserExecutions": 1,
+  "statistics": {
+    "startTime": "2026-09-08T14:03:53.942Z",
+    "duration": 35184.494,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "browserExitCode": 0,
+  "failure": null,
+  "sourceUnchanged": true,
+  "pass": true,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "installedRuntimeVerified": false,
+  "productionActionsPerformed": false
+}

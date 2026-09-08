@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "scope": "Temporary helper generation only",
+  "observedCommand": "node .tmp/s10-history-pwa-20260908/prepare-helpers.mjs",
+  "firstAttempt": {
+    "exitCode": 1,
+    "reason": "Attachment-removal locator assumed CRLF in the prior preservation helper; its actual line endings did not match.",
+    "observedError": "AssertionError: assert.ok(attachmentStart > 0 && attachmentEnd > attachmentStart)",
+    "rawTranscriptAvailable": false,
+    "evidenceBasis": "Observed exec_command output; this record is not a raw transcript.",
+    "helperFilesAlreadyCreated": 4,
+    "artifactMoved": false,
+    "serverStarted": false,
+    "buildsRun": 0,
+    "browserExecutions": 0
+  },
+  "correction": "Use the unchanged collect(suite.suites...) delimiter independent of newline style. Resume only if the four already generated helper files match their intended bytes exactly; no overwrite.",
+  "secondAttempt": {
+    "exitCode": 0,
+    "status": "PREPARED_NOT_EXECUTED",
+    "helperFilesPrepared": 5,
+    "artifactMoved": false,
+    "serverStarted": false,
+    "buildsRun": 0,
+    "browserExecutions": 0
+  },
+  "trackedSourceOrTestChanges": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

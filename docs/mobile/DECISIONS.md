@@ -515,3 +515,9 @@
   never claim on-device persistence, and successful local edits survive sync errors.
   Source browser uses actual App with injected platform primitives. No child scope,
   editorial approval, installed-device certification or stage acceptance is implied.
+
+- D100: Sourcedeaea6c7 is compiled as Android/dev 186fa925
+  and local-QA PWA 8b5204ed with matching canonical source inputs.
+  Exact APK/runtime copies and one affected real offline PWA history scenario
+  are verified. This completes the bounded history/persistence working slice,
+  not native installed-device, child mode, translation review or stage acceptance.

@@ -1,16 +1,19 @@
 # V12 status — 2026-09-08
 
 <!-- s10-history:begin -->
-Adult native Recently opened and truthful collection persistence are source-validated.
+Source deaea6c77adb274fed8cb8f524e87cfa433a037c: adult native Recently opened and truthful collection persistence.
 History stores20 canonical references/timestamps through existing OS preferences;
-RUEN labels come from current catalog. Retry/clear handle delayed or failed I/O.
-History writer return opens/focuses the existing country sheet on the same globe.
-Collections explicitly report session-only storage when IndexedDB is unavailable;
-a remote sync error does not undo a successful local edit.
-184 focused units, final static and2 actual App browser cases passed.
-Fresh Android/PWA builds follow the source checkpoint. Copy remains draft.
-Evidence: evidence/S10/history-20260908/result.json. First-open S03; S10 in progress.
-Child/aliases/full content/Planetka/device/release gates and frozen iOS83 remain open.
+RUEN labels/current catalog, retry and authoritative clear retain the same globe.
+History writer return reveals/focuses the existing country card.
+Collections expose session fallback; server failures preserve successful local edits.
+184 focused units, final static and2 actual native source-browser cases passed.
+Android/dev 186fa925: strict build, offline Gradle, APK bytes/signature.
+APK: .tmp/native-builds/android-dev/history-186fa925/app-dev-debug.apk.
+Local-QA PWA 8b5204ed: strict audit and1 affected real offline history case.
+Both artifacts bind current source and the same canonical registry; new copy is draft.
+Evidence: evidence/S10/history-20260908/result.json. Publication gate admits4 books.
+First-open S03; S10 in progress. Child/aliases/full content/Planetka/device/release
+gates and frozen iOS83 remain open. No production actions. Earlier blocks are history.
 <!-- s10-history:end -->
 
 <!-- s10-capacity:begin -->

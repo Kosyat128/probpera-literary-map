@@ -1,0 +1,283 @@
+{
+  "schemaVersion": 1,
+  "stage": "S10",
+  "recordedAt": "2026-09-08T14:04:48.204Z",
+  "runId": "pwa-history-20260908-a1",
+  "sourceCommit": "deaea6c77adb274fed8cb8f524e87cfa433a037c",
+  "buildId": "8b5204edfa04d834c726c8b35db3cdb3ed8d88ff711d5b87b3a5f9c3a71596d1",
+  "status": "LOCAL_QA_PWA_BUILD_AUDIT_AND_AFFECTED_BROWSER_PASSED",
+  "strictArtifactAuditPassed": true,
+  "statistics": {
+    "startTime": "2026-09-08T14:03:53.942Z",
+    "duration": 35184.494,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "sourceUnchanged": true,
+  "browserTestsRun": true,
+  "browserExecutions": 1,
+  "browserProof": [
+    {
+      "title": "recent writer opens outside the active country filter without replacing the globe",
+      "project": "pwa-desktop",
+      "status": "passed",
+      "durationMs": 33116,
+      "errors": []
+    }
+  ],
+  "artifact": {
+    "path": ".tmp/pwa-artifacts/8b5204ed-history-20260908-a1",
+    "files": 1367,
+    "bytes": 70179536,
+    "artifactSha256": "0b65a1486f9c5300683df02ad79b3a5dd3061bec8a5914569c893c4cdeac1363",
+    "exactCopiesVerified": true
+  },
+  "preservedFiles": [
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-history-20260908-a1/session.json",
+      "path": "docs/mobile/evidence/S10/history-20260908/pwa/session.json",
+      "bytes": 1220,
+      "sha256": "001a4fb17873550a59781d4517695f51cca15d12047a2b23dd13c5e001ec6b18"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-history-20260908-a1/source-before.json",
+      "path": "docs/mobile/evidence/S10/history-20260908/pwa/source-before.json",
+      "bytes": 138401,
+      "sha256": "707f7573d708ec43f0cc022ee1bda5734e68e7df2c13e48488abd44a1034ac55"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-history-20260908-a1/source-after.json",
+      "path": "docs/mobile/evidence/S10/history-20260908/pwa/source-after.json",
+      "bytes": 138401,
+      "sha256": "707f7573d708ec43f0cc022ee1bda5734e68e7df2c13e48488abd44a1034ac55"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-history-20260908-a1/source-comparison.json",
+      "path": "docs/mobile/evidence/S10/history-20260908/pwa/source-comparison.json",
+      "bytes": 205,
+      "sha256": "2c37f1e3090eabec162d1bac05f2979829a4680577149cfa18bee6c7a10cdf8b"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-history-20260908-a1/support-before.json",
+      "path": "docs/mobile/evidence/S10/history-20260908/pwa/support-before.json",
+      "bytes": 1033,
+      "sha256": "bf0123a6ec33943d4623ccc5d14e776cd067544fa0ffe3e359bb1d47d7335ca1"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-history-20260908-a1/support-after.json",
+      "path": "docs/mobile/evidence/S10/history-20260908/pwa/support-after.json",
+      "bytes": 1033,
+      "sha256": "bf0123a6ec33943d4623ccc5d14e776cd067544fa0ffe3e359bb1d47d7335ca1"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-history-20260908-a1/strict-artifact-audit.json",
+      "path": "docs/mobile/evidence/S10/history-20260908/pwa/strict-artifact-audit.json",
+      "bytes": 795,
+      "sha256": "72d1a888388fe757f43f875a2ab253f15228e9f2b8bcacfbf8e8334db4aadaea"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-history-20260908-a1/strict-artifact-audit-execution.json",
+      "path": "docs/mobile/evidence/S10/history-20260908/pwa/strict-artifact-audit-execution.json",
+      "bytes": 168,
+      "sha256": "9ada2faf0e5d2ee403aec705ec154d4ec7ce4b60f0aa91784b5c7b25bbb5fb5d"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-history-20260908-a1/server-closed.json",
+      "path": "docs/mobile/evidence/S10/history-20260908/pwa/server-closed.json",
+      "bytes": 93,
+      "sha256": "bc3352e91033b55b529f7921fe1635bf7f68c35ff079c73f9583161c2aeae630"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-history-20260908-a1/run-result.json",
+      "path": "docs/mobile/evidence/S10/history-20260908/pwa/run-result.json",
+      "bytes": 677,
+      "sha256": "00eaaa22161e575ad5ae5e0d424e876ab13a88d5ed0f328e96ed27837dc84284"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-history-20260908-a1/discovery.json",
+      "path": "docs/mobile/evidence/S10/history-20260908/pwa/discovery.json",
+      "bytes": 247,
+      "sha256": "b0594ea4601fb62fc6155f2dd27cc43586f98dd40afab1ecfa8d61086cc570ea"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-history-20260908-a1/discovery-execution.json",
+      "path": "docs/mobile/evidence/S10/history-20260908/pwa/discovery-execution.json",
+      "bytes": 301,
+      "sha256": "3ad5549c79b8c9248bc173dd8c6997de723f5ab8af30fd0a56b98be5ef2927ff"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-history-20260908-a1/browser-run-execution.json",
+      "path": "docs/mobile/evidence/S10/history-20260908/pwa/browser-run-execution.json",
+      "bytes": 266,
+      "sha256": "676bb5e97a3e35a8e6cd4bf74790f4acf438913246d071b61b76eb9aa05956f4"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-history-20260908-a1/results.json",
+      "path": "docs/mobile/evidence/S10/history-20260908/pwa/results.json",
+      "bytes": 3599,
+      "sha256": "740e204a41329dd4aae8d1d0c211e87e6718db02fed5bf3c0f040bd0b305f87e"
+    },
+    {
+      "source": "dist-pwa/artifact.json",
+      "path": "docs/mobile/evidence/S10/history-20260908/pwa/artifact.json",
+      "bytes": 388199,
+      "sha256": "0b65a1486f9c5300683df02ad79b3a5dd3061bec8a5914569c893c4cdeac1363"
+    },
+    {
+      "source": ".tmp/s10-history-pwa-20260908/prior-b13e-before-history.json",
+      "path": "docs/mobile/evidence/S10/history-20260908/pwa/prior-b13e-before-history.json",
+      "bytes": 233700,
+      "sha256": "54d905d23d3e980cd3729cf590f6ce6a5f3234a293296e8ef9ac15a56adb7ff3"
+    },
+    {
+      "source": ".tmp/s10-history-pwa-20260908/preparation.json",
+      "path": "docs/mobile/evidence/S10/history-20260908/pwa/preparation.json",
+      "bytes": 3538,
+      "sha256": "d004589e92e3a7e2147525b0a66abbe75a9912a0131b20de2ae79467604e0411"
+    },
+    {
+      "source": ".tmp/s10-history-pwa-20260908/preparation-recovery.json",
+      "path": "docs/mobile/evidence/S10/history-20260908/pwa/preparation-recovery.json",
+      "bytes": 1212,
+      "sha256": "f7f88450f02bb9360d08bba0b09653c3078f3ba787291899e9ef80686a8fdd46"
+    },
+    {
+      "source": ".tmp/s10-history-pwa-20260908/pipeline-a1-execution.json",
+      "path": "docs/mobile/evidence/S10/history-20260908/pwa/pipeline-a1-execution.json",
+      "bytes": 266,
+      "sha256": "7c09694460ab02a79c74231b7a94e33eb784e5df08158ec888763991b08f8df4"
+    },
+    {
+      "source": ".tmp/s10-history-pwa-20260908/run-pwa-history.mjs",
+      "path": "docs/mobile/evidence/S10/history-20260908/pwa/helpers/run-pwa-history.mjs",
+      "bytes": 10620,
+      "sha256": "06fa7742e4442c1310a69133761da0cc7e827603c8cda5e93a51bbf6bdc47d42"
+    },
+    {
+      "source": ".tmp/s10-history-pwa-20260908/run-pwa-history.ps1",
+      "path": "docs/mobile/evidence/S10/history-20260908/pwa/helpers/run-pwa-history.ps1",
+      "bytes": 1089,
+      "sha256": "24d9a63b6b6b7e4369f6bd4d37168d90341b4f90c62b8f02b16c6af42840db50"
+    },
+    {
+      "source": ".tmp/s10-history-pwa-20260908/preserve-pwa-history.mjs",
+      "path": "docs/mobile/evidence/S10/history-20260908/pwa/helpers/preserve-pwa-history.mjs",
+      "bytes": 9473,
+      "sha256": "b67e6efd697fc73438763308fc0bdb3ee01ea4cecc63869eec4b87c264051f4d"
+    },
+    {
+      "source": ".tmp/s10-history-pwa-20260908/park-b13e-before-history.mjs",
+      "path": "docs/mobile/evidence/S10/history-20260908/pwa/helpers/park-b13e-before-history.mjs",
+      "bytes": 4535,
+      "sha256": "789cb2ce65907efeafc1a2ba6bfb75a376693711da2d864419651a2445dd0fba"
+    },
+    {
+      "source": ".tmp/s10-history-pwa-20260908/playwright.history.config.mjs",
+      "path": "docs/mobile/evidence/S10/history-20260908/pwa/helpers/playwright.history.config.mjs",
+      "bytes": 521,
+      "sha256": "c133a0e2b14414758210a579d3e8cff7ed81eb87e92f30f6b651f751c781992d"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-history-20260908-a1/strict-artifact-audit.log",
+      "path": "docs/mobile/evidence/S10/history-20260908/pwa/strict-artifact-audit-log.json",
+      "bytes": 1190,
+      "sha256": "6ffc1882f8b44f249f68f200ae49d3c3d2715d9ebe0dee784a76ae39be9c010c",
+      "rawBytes": 795,
+      "rawSha256": "72d1a888388fe757f43f875a2ab253f15228e9f2b8bcacfbf8e8334db4aadaea",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-history-20260908-a1/strict-artifact-audit.stdout.log",
+      "path": "docs/mobile/evidence/S10/history-20260908/pwa/strict-artifact-audit.stdout-log.json",
+      "bytes": 1197,
+      "sha256": "ccae9d22478c31752e73a6af9a4a84ac711c977c4e1c01ccb7389db52bee50d3",
+      "rawBytes": 795,
+      "rawSha256": "72d1a888388fe757f43f875a2ab253f15228e9f2b8bcacfbf8e8334db4aadaea",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-history-20260908-a1/strict-artifact-audit.stderr.log",
+      "path": "docs/mobile/evidence/S10/history-20260908/pwa/strict-artifact-audit.stderr-log.json",
+      "bytes": 337,
+      "sha256": "86d3c623ee26da8c56ab328a27264cadf3f1260f4938856ecdf34ca366f97ffa",
+      "rawBytes": 0,
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-history-20260908-a1/discovery.log",
+      "path": "docs/mobile/evidence/S10/history-20260908/pwa/discovery-log.json",
+      "bytes": 3521,
+      "sha256": "c3e0b25e922b7d516fc083e056eee409717e25e517e98e792411223448074b9e",
+      "rawBytes": 2866,
+      "rawSha256": "67e35cf6e8fb0c8087e24f3fb26f30c36ef6c399567946ee940e24b438b3c95a",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-history-20260908-a1/discovery.stdout.log",
+      "path": "docs/mobile/evidence/S10/history-20260908/pwa/discovery.stdout-log.json",
+      "bytes": 3528,
+      "sha256": "6d15c9f5560460a55250c5111d53610e932d5de7806cb1e43e704e0a8f7d1256",
+      "rawBytes": 2866,
+      "rawSha256": "67e35cf6e8fb0c8087e24f3fb26f30c36ef6c399567946ee940e24b438b3c95a",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-history-20260908-a1/discovery.stderr.log",
+      "path": "docs/mobile/evidence/S10/history-20260908/pwa/discovery.stderr-log.json",
+      "bytes": 325,
+      "sha256": "6b089259be651c2f10f11ee944d1d7b6e236c1bc97a5288412c6b2ee89bc74bf",
+      "rawBytes": 0,
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-history-20260908-a1/browser-run.log",
+      "path": "docs/mobile/evidence/S10/history-20260908/pwa/browser-run-log.json",
+      "bytes": 708,
+      "sha256": "c1d0cdbacf5e97201ed4bb6957ce6e28c85a4227b7c3b5604a8f0aa08c396854",
+      "rawBytes": 376,
+      "rawSha256": "eef0c3c8942346429b6841c7f0ea1fb5b66a575db3e0263a67c9cf2746c058c5",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-history-20260908-a1/browser-run.stdout.log",
+      "path": "docs/mobile/evidence/S10/history-20260908/pwa/browser-run.stdout-log.json",
+      "bytes": 549,
+      "sha256": "e91e8d6064782401fe1f0061e583786cdd3ad4464ab9bf0db2d833d4d7130c46",
+      "rawBytes": 212,
+      "rawSha256": "43b46b0b8bf4c39b4ba1c7e75796e4ddc89346a8495e19c4cb14ccb4f943a1af",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-history-20260908-a1/browser-run.stderr.log",
+      "path": "docs/mobile/evidence/S10/history-20260908/pwa/browser-run.stderr-log.json",
+      "bytes": 495,
+      "sha256": "92cbd603bcee16fd46967dcb1f2a4bab0541bcce18ccd84a4655fa004b486e82",
+      "rawBytes": 164,
+      "rawSha256": "9628c8d546d024b983c6bbc57494b19d5444ab119f93451d87236c42559d2505",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/s10-history-pwa-20260908/pipeline-a1.log",
+      "path": "docs/mobile/evidence/S10/history-20260908/pwa/pipeline-a1-log.json",
+      "bytes": 13985,
+      "sha256": "8bae2d59183adc37f5bd13d5ca06bedb7634ea78acaf1a6049161c5d80dc4bd4",
+      "rawBytes": 13375,
+      "rawSha256": "defc450268a4c69aa187b61c06ebbe3388f341b29594cf67b7b326c0f6d903dd",
+      "lossless": true
+    }
+  ],
+  "stageAccepted": false,
+  "releaseReady": false,
+  "copyReviewStatus": "draft",
+  "actualOsInstallation": false,
+  "realPaymentProviderConfigured": false,
+  "limits": [
+    "Fresh local QA Vite/worker build, strict audit, byte-exact archive and one existing desktop recent-writer/offline case. Native recent-history and unavailable IndexedDB UI proofs are separate. No old appearance, repair, recovery or full browser suite rerun.",
+    "This PWA case preserves raw functional results only; it has no success screenshot or visual review attachment. Native-source UI screenshots and persistence assertions do not establish installed native OS or APK behavior.",
+    "Local ephemeral QA authority does not establish a real merchant/payment, legal/editorial approval, owner acceptance or release readiness."
+  ]
+}

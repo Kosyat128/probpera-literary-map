@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "runId": "pwa-history-20260908-a1",
+  "localQaOnly": true,
+  "origin": "http://127.0.0.1:4296",
+  "artifact": {
+    "buildId": "8b5204edfa04d834c726c8b35db3cdb3ed8d88ff711d5b87b3a5f9c3a71596d1",
+    "sourceCommit": "deaea6c77adb274fed8cb8f524e87cfa433a037c",
+    "sourceInputsSha256": "707f7573d708ec43f0cc022ee1bda5734e68e7df2c13e48488abd44a1034ac55",
+    "authoritySha256": "4a3e07965b0bb6df5f30f43c27c32978645ae70699a490dabd8d230a6534ce4e",
+    "localQaAuthority": true,
+    "releaseReady": false
+  },
+  "planned": {
+    "sourceBuilds": 1,
+    "strictArtifactAudits": 1,
+    "browserExecutions": 1
+  },
+  "limits": [
+    "Ephemeral signer exists only in this local process. No provider/payment or installed OS evidence.",
+    "One new Vite/worker build for native recent-history integration, existing-globe history return and truthful collection persistence feedback. Previous b13ec20e and all historical evidence remain archived. Exactly one existing desktop recent-writer/offline case verifies the changed bundle under the actual worker. Native persistence and unavailable IndexedDB interaction evidence is recorded separately. No appearance, repair or full browser suite is rerun."
+  ]
+}

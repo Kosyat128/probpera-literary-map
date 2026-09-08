@@ -5,7 +5,7 @@
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
   "headSha": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-08T14:01:33.695Z",
+  "updatedAt": "2026-09-08T14:05:45.766Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -541,7 +541,8 @@
         "docs/mobile/evidence/S03/canonical-portraits-20260908/result.json",
         "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/result.json",
         "docs/mobile/evidence/S10/search-20260908/pwa/result.json",
-        "docs/mobile/evidence/S10/capacity-20260908/pwa/result.json"
+        "docs/mobile/evidence/S10/capacity-20260908/pwa/result.json",
+        "docs/mobile/evidence/S10/history-20260908/pwa/result.json"
       ],
       "externalBlockers": []
     },
@@ -854,7 +855,8 @@
         "docs/mobile/evidence/S04/biography-review-android-20260908/result.json",
         "docs/mobile/evidence/S04/graphics-profiles-android-20260908/result.json",
         "docs/mobile/evidence/S04/search-android-20260908/result.json",
-        "docs/mobile/evidence/S04/capacity-android-20260908/result.json"
+        "docs/mobile/evidence/S04/capacity-android-20260908/result.json",
+        "docs/mobile/evidence/S04/history-android-20260908/result.json"
       ],
       "externalBlockers": []
     },
@@ -1614,7 +1616,9 @@
         "docs/mobile/evidence/S10/capacity-20260908/pwa/result.json",
         "docs/mobile/evidence/S10/history-20260908/entry.json",
         "docs/mobile/evidence/S10/history-20260908/collection-follow-up.json",
-        "docs/mobile/evidence/S10/history-20260908/result.json"
+        "docs/mobile/evidence/S10/history-20260908/result.json",
+        "docs/mobile/evidence/S04/history-android-20260908/result.json",
+        "docs/mobile/evidence/S10/history-20260908/pwa/result.json"
       ],
       "externalBlockers": []
     },
@@ -10593,7 +10597,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Build fresh Android/dev and local-QA PWA from the committed S10 adult native history and truthful collection persistence source. Focused units/static and actual App history/collection failure cases passed. Preserve prior Android7e302703/PWAb13ec20e and frozen iOS83. First-open S03 remains; no stage or release acceptance. Do not rerun unchanged search benchmarks or full suites.",
+    "nextAction": "Continue routed work from committed S10 adult native history and collection persistence sourcedeaea6c7. History uses the installed OS bridge and bounded canonical IDs; real RUEN navigation/reload/clear verified. Collections distinguish device persistence/session fallback/sync failure without destructive rollback. 184 focused units, static and2 native source-browser cases pass; exact Android/dev and local-QA PWA retained with affected real PWA history case. Do not repeat unchanged green tests/builds/search benchmark. First-open S03 remains. Next internal work: evidence-bound native/transliteration aliases, separate child profile/index/history/cache and canonical content/correction delivery; full RUEN biographies/content, final near10k catalog, Planetka/3D/passport/store and device/legal/release acceptance remain open. Current publication gate admits four books; no invented translations/approvals/rights. Frozen iOS83 unchanged/pending. No production actions.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -11787,12 +11791,49 @@
       "releaseReady": false
     },
     "s10NativeHistory": {
-      "status": "SOURCE_VALIDATION_PASSED",
+      "status": "SOURCE_AND_LOCAL_ARTIFACT_VALIDATION_PASSED",
       "evidence": "docs/mobile/evidence/S10/history-20260908/result.json",
-      "sha256": "fe9ca407c56b73cbf0ffea46bf5e89e16173e79f0c1bf6bd208f875a9db2bdf3",
+      "sha256": "e9049dda25f1555b30c817b7450cdaf7011f97c8a4326e8c19fb79413be6357f",
+      "sourceCommit": "deaea6c77adb274fed8cb8f524e87cfa433a037c",
+      "sourceInputsCurrent": true,
       "uniqueUnitPasses": 184,
       "sourceBrowserPasses": 2,
-      "sourceInputsCurrent": true,
+      "nativeArtifact": {
+        "evidence": "docs/mobile/evidence/S04/history-android-20260908/result.json",
+        "sha256": "62542ec6d361f8c3027b425b5b1ab1648fa0a20bbdb7b93d1c424f4fa3a357a1",
+        "buildId": "186fa925e685563f128068ac57f94b58fff59198c6c63ade184a47a62efa0ca8",
+        "sourceCommit": "deaea6c77adb274fed8cb8f524e87cfa433a037c",
+        "sourceInputsSha256": "04a0605d17072030b741e387dab56dfbde89c6e50358e739d7bad60c3be17d83",
+        "runtime": ".tmp/native-builds/android-dev/history-186fa925/runtime",
+        "apk": {
+          "path": ".tmp/native-builds/android-dev/history-186fa925/app-dev-debug.apk",
+          "bytes": 63595249,
+          "sha256": "c812ee3d55a3a16281247bd1915a3e4c1ece81d7a76b962596dc1843799b058b"
+        },
+        "strictAudit": true,
+        "binaryAudit": true,
+        "copiesVerified": true,
+        "currentSource": true,
+        "installedRuntimeTested": false
+      },
+      "pwaArtifact": {
+        "evidence": "docs/mobile/evidence/S10/history-20260908/pwa/result.json",
+        "sha256": "5c1758ab5d4bf9a3f37c01ba1987abdc802ffe310414aadd22b6237e2775af9d",
+        "buildId": "8b5204edfa04d834c726c8b35db3cdb3ed8d88ff711d5b87b3a5f9c3a71596d1",
+        "sourceCommit": "deaea6c77adb274fed8cb8f524e87cfa433a037c",
+        "sourceInputsSha256": "707f7573d708ec43f0cc022ee1bda5734e68e7df2c13e48488abd44a1034ac55",
+        "runtime": ".tmp/pwa-artifacts/8b5204ed-history-20260908-a1",
+        "artifactSha256": "0b65a1486f9c5300683df02ad79b3a5dd3061bec8a5914569c893c4cdeac1363",
+        "files": 1367,
+        "bytes": 70179536,
+        "strictAudit": true,
+        "copiesVerified": true,
+        "localQaAuthority": true,
+        "currentSource": true,
+        "browserExecutions": 1,
+        "browserPassed": true,
+        "physicalDeviceTested": false
+      },
       "stageAccepted": false,
       "releaseReady": false
     }

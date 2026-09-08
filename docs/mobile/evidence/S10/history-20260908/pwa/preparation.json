@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "stage": "S10",
+  "status": "PREPARED_NOT_EXECUTED",
+  "generated": [
+    {
+      "source": ".tmp/s10-capacity-pwa-20260908/park-a221-before-capacity.mjs",
+      "sourceSha256": "4a0ef02cec1069bdefca979959f2f3b4ece1f1fc067feb3be6ae4119ebe7b860",
+      "path": ".tmp/s10-history-pwa-20260908/park-b13e-before-history.mjs",
+      "bytes": 4535,
+      "sha256": "789cb2ce65907efeafc1a2ba6bfb75a376693711da2d864419651a2445dd0fba"
+    },
+    {
+      "source": ".tmp/s10-capacity-pwa-20260908/run-pwa-capacity.mjs",
+      "sourceSha256": "f251f0ab9375c20d7870293bf3c1a73a5bcdb1b8ad0966760b46befeb09add36",
+      "path": ".tmp/s10-history-pwa-20260908/run-pwa-history.mjs",
+      "bytes": 10620,
+      "sha256": "06fa7742e4442c1310a69133761da0cc7e827603c8cda5e93a51bbf6bdc47d42"
+    },
+    {
+      "source": ".tmp/s10-capacity-pwa-20260908/run-pwa-capacity.ps1",
+      "sourceSha256": "d336cedc50803b98b82e7c1fcc86d18a016a5aee0867109ca8b4c4834d70b2e4",
+      "path": ".tmp/s10-history-pwa-20260908/run-pwa-history.ps1",
+      "bytes": 1089,
+      "sha256": "24d9a63b6b6b7e4369f6bd4d37168d90341b4f90c62b8f02b16c6af42840db50"
+    },
+    {
+      "source": ".tmp/s10-capacity-pwa-20260908/playwright.capacity.config.mjs",
+      "sourceSha256": "789ff8f12912679dd30e625dda38749ba83db04d4e6a7424fc312bb6f167557d",
+      "path": ".tmp/s10-history-pwa-20260908/playwright.history.config.mjs",
+      "bytes": 521,
+      "sha256": "c133a0e2b14414758210a579d3e8cff7ed81eb87e92f30f6b651f751c781992d"
+    },
+    {
+      "source": ".tmp/s10-capacity-pwa-20260908/preserve-pwa-capacity.mjs",
+      "sourceSha256": "6bc9d08753e9acc3d91eba98e97febcbb337eb2471af11250a7edd59b1b9d807",
+      "path": ".tmp/s10-history-pwa-20260908/preserve-pwa-history.mjs",
+      "bytes": 9473,
+      "sha256": "b67e6efd697fc73438763308fc0bdb3ee01ea4cecc63869eec4b87c264051f4d"
+    }
+  ],
+  "expectedPrior": {
+    "buildId": "b13ec20ec42dbd1d27d818932200fb200c5252aa5e69cff33da88613b44b9a5a",
+    "sourceCommit": "069a2c6e6d8d890b956ae35fdff92ed619ee8493",
+    "artifactSha256": "7139cc3a0c9c626c8cee8b72e41d7d05fe4f64406bf91e9f4777dafd2f4c15ee",
+    "files": 1367,
+    "bytes": 70172613,
+    "archive": ".tmp/pwa-artifacts/b13ec20e-capacity-20260908-a1",
+    "evidence": "docs/mobile/evidence/S10/capacity-20260908/pwa/result.json"
+  },
+  "requiredFreshSourceCommit": "Explicit 40-character lowercase SHA after root source freeze and commit",
+  "sourceInputContract": "Existing complete src closure covers recent-history store, adapters, App return focus and truthful collection persistence feedback. Portrait selection and canonical title source registry inputs remain pinned.",
+  "futureRun": {
+    "runId": "pwa-history-20260908-a1",
+    "buildCount": 1,
+    "strictAuditCount": 1,
+    "browserCount": 1,
+    "project": "pwa-desktop",
+    "title": "recent writer opens outside the active country filter without replacing the globe",
+    "fixture": "tests/pwa/offline-catalog.spec.mjs",
+    "discoveryBeforeSignerAndBuild": true,
+    "visualCapturePlanned": false,
+    "evidence": "docs/mobile/evidence/S10/history-20260908/pwa/result.json"
+  },
+  "historicalArtifactChecks": "Compare all 1367 exact files with inventory and historical immutable archive before contained rename; verify after. No current-source audit is replayed against the old generation.",
+  "trackedSourceOrTestChanges": false,
+  "currentArtifactMoved": false,
+  "serverStarted": false,
+  "buildRun": false,
+  "testsRun": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

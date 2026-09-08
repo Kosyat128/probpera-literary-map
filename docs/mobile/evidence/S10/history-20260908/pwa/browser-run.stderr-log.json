@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "originalPath": ".tmp/pwa-cross-engine-results/pwa-history-20260908-a1/browser-run.stderr.log",
+  "originalBytes": 164,
+  "originalSha256": "9628c8d546d024b983c6bbc57494b19d5444ab119f93451d87236c42559d2505",
+  "reconstruction": "UTF-8 encode text exactly, without newline normalization",
+  "text": "(node:48992) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+}

@@ -1,0 +1,30 @@
+[
+  {
+    "path": "scripts/mobile/verify-pwa-artifact.mjs",
+    "sha256": "9b6c71a03698ecfdf51edc72a1c57c3b9d995ce8e875d92e111f090fd7b871db"
+  },
+  {
+    "path": "tests/pwa/offline-catalog.spec.mjs",
+    "sha256": "446c00f9cadc3558ce2252611c9628de9a6738ec8fcf547d46b96e8dfb24884a"
+  },
+  {
+    "path": "playwright.pwa-current.config.mjs",
+    "sha256": "a1dd4f348dff085913e9b3241902bf1617b9fe170e49cbd88565a74f054c7749"
+  },
+  {
+    "path": ".tmp/s10-history-pwa-20260908/playwright.history.config.mjs",
+    "sha256": "c133a0e2b14414758210a579d3e8cff7ed81eb87e92f30f6b651f751c781992d"
+  },
+  {
+    "path": "tests/pwa/support/local-server.mjs",
+    "sha256": "5961d3e61339bb8e44704d804acbad99041706645377c9f9bf28b6676f1c5c1e"
+  },
+  {
+    "path": "tests/pwa/support/cross-engine-server.mjs",
+    "sha256": "51d6ba7b0b71e0008dc650812e11d7ded327e5607316af330c0757eef011bbb6"
+  },
+  {
+    "path": ".tmp/s10-history-pwa-20260908/run-pwa-history.mjs",
+    "sha256": "06fa7742e4442c1310a69133761da0cc7e827603c8cda5e93a51bbf6bdc47d42"
+  }
+]
