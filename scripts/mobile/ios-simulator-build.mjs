@@ -1,8 +1,10 @@
-/** Local CI evidence gates. No subprocesses, signing, upload or remote dispatch.
- * The workflow performs the real commands; these checks never assert execution
- * merely from this file's presence. Public-copy checks are not a binary audit. */
+/** CI evidence gates and an explicit, bounded Simulator smoke command.
+ * No signing, upload or remote dispatch. A captured screen is not UI approval.
+ * Public-copy checks are not a native binary audit. */
 import { createHash } from 'node:crypto';
+import { execFile } from 'node:child_process';
 import { lstat, readdir, readFile, realpath, writeFile } from 'node:fs/promises';
+import { setTimeout as delay } from 'node:timers/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -16,7 +18,9 @@ export const EVIDENCE_FILES = Object.freeze([
   'sync-integrity.json', 'schemes.json', 'package-resolution.log', 'Package.resolved',
   'xcode-build.log', 'app-info.json', 'mach-o-build.txt', 'audit-after-build.json',
   'simulator-bundle.json', 'App-simulator.app.zip', 'App-simulator.app.tar.gz',
-  'ios-build.xcresult.zip', 'checksums.json',
+  'ios-build.xcresult.zip', 'simctl-help.txt', 'simulator-runtime.json',
+  'simulator-ru.log', 'simulator-en.log', 'simulator-ru.png', 'simulator-en.png',
+  'checksums.json',
 ]);
 export const DEVELOPER_DIR = '/Applications/Xcode_26.6.app/Contents/Developer';
 // Official refs/tags/8.5.1, verified 2026-09-06 (lightweight tag, no dereference).
@@ -100,15 +104,136 @@ async function verifyConfig(root, copiedDirectory) {
   return sha256(bytes);
 }
 
+export function selectSmokeTarget(value) {
+  check(Array.isArray(value?.runtimes) && Array.isArray(value.devicetypes), 'Expected actual simctl inventory.');
+  const runtimes = value.runtimes.filter(item => item.isAvailable === true && /^com\.apple\.CoreSimulator\.SimRuntime\.iOS-\d+-\d+(?:-\d+)?$/u.test(item.identifier) && /^\d+(?:\.\d+){1,2}$/u.test(item.version) && !/beta|preview|seed/iu.test(item.name ?? ''));
+  runtimes.sort((a, b) => b.version.localeCompare(a.version, 'en', { numeric: true }));
+  const types = value.devicetypes.filter(item => /^iPhone \d+$/u.test(item.name) && /^com\.apple\.CoreSimulator\.SimDeviceType\.iPhone-\d+$/u.test(item.identifier));
+  types.sort((a, b) => b.name.localeCompare(a.name, 'en', { numeric: true }));
+  check(runtimes.length > 0 && types.length > 0, 'No installed stable iOS runtime and standard iPhone device type.');
+  return { runtime: { identifier: runtimes[0].identifier, version: runtimes[0].version, name: runtimes[0].name }, deviceType: { identifier: types[0].identifier, name: types[0].name } };
+}
+
+export function simulatorLaunchPid(output) {
+  const match = /^ru\.probpera\.literaryplanet:\s*([1-9]\d*)\s*$/u.exec(output.trim());
+  check(match && Number.isSafeInteger(Number(match[1])), 'simctl did not report the canonical application PID.');
+  return Number(match[1]);
+}
+
+/** This command runs only on the authorized disposable GitHub macOS runner. */
+export async function runSimulatorSmoke({ root, runnerTemp, expectedCommit, developerDir }) {
+  check(process.platform === 'darwin' && process.env.GITHUB_ACTIONS === 'true' && process.env.GITHUB_REPOSITORY === 'Kosyat128/probpera-literary-map' && /^refs\/heads\/codex\/literary-planet-v12-(?:ios-ci|bilingual-final-autopilot)$/u.test(process.env.GITHUB_REF ?? ''), 'Simulator smoke requires the authorized macOS CI branch.');
+  check(developerDir === DEVELOPER_DIR && typeof runnerTemp === 'string' && path.isAbsolute(runnerTemp), 'Expected the selected Xcode and real runner temporary directory.');
+  const directory = path.join(root, EVIDENCE_DIR);
+  const readJson = async filename => JSON.parse(await regular(directory, filename, 16 * 1024 * 1024));
+  const artifact = await readJson('artifact.json');
+  validatePreparation(artifact, await readJson('audit-after-build.json'), expectedCommit);
+  validateAppInfo(await readJson('app-info.json'), (await regular(directory, 'mach-o-build.txt')).toString('utf8'));
+  const app = path.join(await realpath(runnerTemp), 'ios-derived/Build/Products/Debug-iphonesimulator/App.app');
+  const executableSha256 = sha256(await regular(app, 'App'));
+  const artifactSha256 = sha256(await regular(directory, 'artifact.json'));
+  check(sha256(await regular(app, 'public/artifact.json')) === artifactSha256, 'Built application does not contain this preparation.');
+  const report = { schemaVersion: 1, kind: 'ios-simulator-runtime-smoke', sourceCommit: expectedCommit, buildId: artifact.buildId, executableSha256, artifactSha256, startedAt: new Date().toISOString(), locales: [], smokePassed: false, visibleUiVerified: false, localeUiVerified: false, exactRcScreenshots: false, releaseReady: false, productionActionsPerformed: false, limitations: ['Boot, install, process liveness and screenshot capture only. The captured images require visual review before claiming a visible localized application.', 'Historical authorized source projection; no current-main, physical-device, purchase, child-mode or store acceptance.'] };
+  const help = [];
+  const abort = new AbortController();
+  const interrupted = () => abort.abort();
+  process.once('SIGTERM', interrupted);
+  process.once('SIGINT', interrupted);
+  const command = async (binary, args, transcript, timeoutMs = 30_000, cleanup = false) => {
+    const entry = { binary, args, startedAt: new Date().toISOString() };
+    transcript.push(entry);
+    return new Promise((resolve, reject) => {
+      execFile(binary, args, { encoding: 'utf8', timeout: timeoutMs, maxBuffer: 4 * 1024 * 1024, killSignal: 'SIGKILL', ...(cleanup ? {} : { signal: abort.signal }) }, (error, stdout, stderr) => {
+        Object.assign(entry, { exitCode: error?.code ?? 0, signal: error?.signal ?? null, stdout, stderr, finishedAt: new Date().toISOString() });
+        if (error) reject(new Error('Simulator command failed: ' + args.slice(0, 3).join(' ') + ' (' + String(error.code ?? error.signal) + ')'));
+        else resolve(stdout);
+      });
+    });
+  };
+  const simctl = (args, transcript, timeoutMs, cleanup) => command('/usr/bin/xcrun', ['simctl', ...args], transcript, timeoutMs, cleanup);
+  try {
+    // Capture the actual installed CLI contract before using its subcommands.
+    for (const name of ['list', 'create', 'boot', 'bootstatus', 'install', 'get_app_container', 'launch', 'io', 'shutdown', 'delete']) {
+      await simctl(['help', name], help);
+      const text = help.at(-1).stdout + help.at(-1).stderr;
+      check(text.includes(name) && (name !== 'bootstatus' || /-b\b/u.test(text)) && (name !== 'io' || text.includes('screenshot')), 'Installed simctl help does not describe required command: ' + name);
+    }
+    report.target = selectSmokeTarget(JSON.parse(await simctl(['list', '--json'], help)));
+    const { default: sharp } = await import('sharp');
+    for (const locale of ['ru', 'en']) {
+      const transcript = [];
+      const result = { locale, languageArguments: ['-AppleLanguages', '(' + locale + ')', '-AppleLocale', locale === 'ru' ? 'ru_RU' : 'en_US'], booted: false, installed: false, launched: false, livenessChecks: [], screenshotCaptured: false, cleanup: { shutdown: false, deleted: false } };
+      report.locales.push(result);
+      let ownedDevice;
+      try {
+        const id = (await simctl(['create', 'LiteraryPlanet-' + expectedCommit.slice(0, 8) + '-' + locale, report.target.deviceType.identifier, report.target.runtime.identifier], transcript)).trim();
+        check(/^[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}$/iu.test(id), 'simctl create did not return one device UUID.');
+        ownedDevice = id;
+        result.deviceId = id;
+        await simctl(['boot', id], transcript, 60_000);
+        await simctl(['bootstatus', id, '-b'], transcript, 180_000);
+        result.booted = true;
+        await simctl(['install', id, app], transcript, 60_000);
+        const installed = (await simctl(['get_app_container', id, 'ru.probpera.literaryplanet', 'app'], transcript)).trim();
+        check(path.isAbsolute(installed) && path.basename(installed) === 'App.app' && installed.split(path.sep).includes(id), 'Installed bundle must belong to the newly created simulator.');
+        check(sha256(await regular(installed, 'App')) === executableSha256 && sha256(await regular(installed, 'public/artifact.json')) === artifactSha256, 'Installed application differs from the compiled preparation.');
+        await verifyCopiedPublic(path.join(root, 'dist-native'), path.join(installed, 'public'));
+        await verifyConfig(root, installed);
+        result.installed = true;
+        result.pid = simulatorLaunchPid(await simctl(['launch', id, 'ru.probpera.literaryplanet', ...result.languageArguments], transcript, 30_000));
+        result.launched = true;
+        // Bounded process observation is not a claim that the WebView UI is ready.
+        for (let observation = 0; observation < 3; observation++) {
+          await delay(4_000, undefined, { signal: abort.signal });
+          const status = (await command('/bin/ps', ['-p', String(result.pid), '-o', 'pid=,comm='], transcript, 10_000)).trim();
+          const match = /^(\d+)\s+(.+)$/u.exec(status);
+          check(match && Number(match[1]) === result.pid && path.basename(match[2]) === 'App', 'Launched App did not remain alive.');
+          result.livenessChecks.push({ observedAt: new Date().toISOString(), pid: result.pid });
+        }
+        const filename = 'simulator-' + locale + '.png';
+        await simctl(['io', id, 'screenshot', '--type=png', path.join(directory, filename)], transcript, 30_000);
+        const bytes = await regular(directory, filename, 32 * 1024 * 1024);
+        const metadata = await sharp(bytes).metadata();
+        const stats = await sharp(bytes).stats();
+        check(metadata.format === 'png' && metadata.width >= 320 && metadata.height >= 320 && stats.channels.some(channel => channel.stdev > 0.1), 'Expected a decodable, nonuniform Simulator screenshot.');
+        result.screenshot = { path: filename, bytes: bytes.length, sha256: sha256(bytes), width: metadata.width, height: metadata.height };
+        result.screenshotCaptured = true;
+      } finally {
+        // Cleanup is restricted to the UUID returned by this iteration's create.
+        if (ownedDevice) {
+          try { await simctl(['shutdown', ownedDevice], transcript, 30_000, true); result.cleanup.shutdown = true; }
+          catch { result.cleanup.shutdown = false; }
+          try { await simctl(['delete', ownedDevice], transcript, 30_000, true); result.cleanup.deleted = true; }
+          catch { result.cleanup.deleted = false; }
+        }
+        await writeFile(path.join(directory, 'simulator-' + locale + '.log'), json(transcript), { flag: 'wx' });
+      }
+      check(result.cleanup.deleted, 'The owned simulator was not deleted.');
+    }
+    report.smokePassed = report.locales.length === 2 && report.locales.every(result => result.booted && result.installed && result.launched && result.livenessChecks.length === 3 && result.screenshotCaptured && result.cleanup.deleted);
+    check(report.smokePassed, 'Simulator runtime smoke incomplete.');
+  } catch (error) {
+    report.failure = error.message;
+    throw error;
+  } finally {
+    process.removeListener('SIGTERM', interrupted);
+    process.removeListener('SIGINT', interrupted);
+    report.finishedAt = new Date().toISOString();
+    await writeFile(path.join(directory, 'simctl-help.txt'), json(help), { flag: 'wx' });
+    await writeFile(path.join(directory, 'simulator-runtime.json'), json(report), { flag: 'wx' });
+  }
+}
+
 export async function runGate(step, { root, runnerTemp, expectedCommit, developerDir } = {}) {
-  check(['toolchain', 'prepared', 'synced', 'scheme', 'resolved', 'built', 'evidence'].includes(step), 'Use one explicit iOS CI evidence gate.');
+  check(['toolchain', 'prepared', 'synced', 'scheme', 'resolved', 'built', 'smoke', 'evidence'].includes(step), 'Use one explicit iOS CI evidence gate.');
   root = await realpath(root);
   const directory = path.join(root, EVIDENCE_DIR);
   check(await realpath(directory) === directory && (await lstat(directory)).isDirectory(), 'Expected a real CI evidence directory.');
   const read = async filename => (await regular(directory, filename, 16 * 1024 * 1024)).toString('utf8');
   const readJson = async filename => JSON.parse(await read(filename));
   const save = (filename, value) => writeFile(path.join(directory, filename), json(value), { flag: 'wx' });
-  if (step === 'toolchain') {
+  if (step === 'smoke') await runSimulatorSmoke({ root, runnerTemp, expectedCommit, developerDir });
+  else if (step === 'toolchain') {
     validateToolchain({ version: await read('xcode-version.txt'), architecture: await read('architecture.txt'), developerDir, sourceCommit: await read('source-commit.txt'), expectedCommit, node: await read('node-version.txt'), npm: await read('npm-version.txt') });
   } else if (step === 'scheme') validateSchemes(await readJson('schemes.json'));
   else if (step === 'resolved') {
@@ -152,6 +277,6 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
   try {
     check(process.argv.length === 3, 'Use one explicit iOS CI evidence gate.');
     await runGate(process.argv[2], { root: fileURLToPath(new URL('../../', import.meta.url)), runnerTemp: process.env.RUNNER_TEMP, expectedCommit: process.env.GITHUB_SHA, developerDir: process.env.DEVELOPER_DIR });
-    process.stdout.write('iOS CI evidence gate passed; no build is executed by this helper.\n');
+    process.stdout.write(process.argv[2] === 'smoke' ? 'iOS Simulator launch/liveness/screenshots captured; visual review remains required.\n' : 'iOS CI evidence gate passed; no build is executed by this helper.\n');
   } catch (error) { process.stderr.write(error.message + '\n'); process.exitCode = 1; }
 }
