@@ -5,7 +5,7 @@
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
   "headSha": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-08T12:23:55.425Z",
+  "updatedAt": "2026-09-08T12:52:27.151Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -1597,15 +1597,18 @@
         }
       ],
       "lastGreenCommands": [
-        "Focused search and artifact regression: 259 unique tests; only two corrected test files repeated.",
-        "TypeScript and platform-boundaries: final pass",
-        "Two actual mobile source-browser search/RUEN/focus/scene and book cases: pass"
+        "Focused search/async preparation: 80 unique unit passes; only newly affected suites repeated.",
+        "Final TypeScript and platform-boundaries: pass",
+        "Actual mobile globe book RUEN plus mounted React10000-row race/cancellation browser: 2 pass",
+        "Exact-baseline synthetic10000-row core benchmark: pass"
       ],
       "artifacts": [
         "docs/mobile/evidence/S10/search-20260908/entry.json",
         "docs/mobile/evidence/S10/search-20260908/result.json",
         "docs/mobile/evidence/S04/search-android-20260908/result.json",
-        "docs/mobile/evidence/S10/search-20260908/pwa/result.json"
+        "docs/mobile/evidence/S10/search-20260908/pwa/result.json",
+        "docs/mobile/evidence/S10/capacity-20260908/entry.json",
+        "docs/mobile/evidence/S10/capacity-20260908/result.json"
       ],
       "externalBlockers": []
     },
@@ -10584,7 +10587,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Continue routed open work from committed S10 search bda662c4. Adult mobile writer/book search, RUEN labels and IDs, visible focus/reduced motion/normal motion and same scene have two real source-browser passes, 259 unique tests and final static. Android/dev and controlled PWA exact source artifacts are preserved; PWA real offline cold-RUEN case passed. Do not replay unchanged green checks. Next internal S10/S08 work: compiled search for nearly10k capacity, verified native/transliteration alias schema and separate child search, then collection/passport and editorial/content delivery. Current publication gate admits four books; do not promote held records, invent titles or treat this as full catalog coverage. First-open remains S03; full English/biographies, edition covers/owner workflow, Planetka/3D and device/store/legal/release gates remain open. Frozen iOS83 unchanged/pending; no production actions.",
+    "nextAction": "Build fresh Android/dev and controlled local-QA PWA from the committed S10 compiled/cooperative search source. Final units/static and two affected actual-browser cases passed; exact engine benchmark retained without repetition. Preserve prior Android40d1a1b5/PWAa22183b0 and frozen iOS83. First-open remains S03; no production catalog capacity/content/device/stage acceptance.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -11688,7 +11691,7 @@
       "evidence": "docs/mobile/evidence/S10/search-20260908/result.json",
       "sha256": "d15fccfc693898cd96f4112e528d229ec80428c880ad891ac1f5a684939744be",
       "sourceCommit": "bda662c4779ac6852add6d6d6e94e36dfbb91f9a",
-      "sourceInputsCurrent": true,
+      "sourceInputsCurrent": false,
       "uniqueUnitPasses": 259,
       "sourceBrowserPasses": 2,
       "nativeArtifact": {
@@ -11706,7 +11709,7 @@
         "strictAudit": true,
         "binaryAudit": true,
         "copiesVerified": true,
-        "currentSource": true,
+        "currentSource": false,
         "installedRuntimeTested": false
       },
       "pwaArtifact": {
@@ -11722,11 +11725,21 @@
         "strictAudit": true,
         "copiesVerified": true,
         "localQaAuthority": true,
-        "currentSource": true,
+        "currentSource": false,
         "browserExecutions": 1,
         "browserPassed": true,
         "physicalDeviceTested": false
       },
+      "stageAccepted": false,
+      "releaseReady": false
+    },
+    "s10SearchCapacity": {
+      "status": "SOURCE_VALIDATION_PASSED",
+      "evidence": "docs/mobile/evidence/S10/capacity-20260908/result.json",
+      "sha256": "69edcbc6d44c4410c5d502ff1826d6686d9a8084a0d0abebbd79914f299b1d3b",
+      "uniqueUnitPasses": 80,
+      "sourceBrowserPasses": 2,
+      "syntheticCapacity": 10000,
       "stageAccepted": false,
       "releaseReady": false
     }

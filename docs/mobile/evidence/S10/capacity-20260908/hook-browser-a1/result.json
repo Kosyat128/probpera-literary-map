@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "runId": "s10-capacity-20260908-a1",
+  "title": "mounted search preparation preserves locale snapshots and cancels obsolete work",
+  "head": "89ce01c60fafb5067c997c7f130c432c3750ad04",
+  "status": "SOURCE_BROWSER_PASSED",
+  "pass": true,
+  "sourceInputsSha256": "8d52ed00ff35723612e50daa846b692879e059b387f5f38157d97f48844d103a",
+  "sourceInputsUnchanged": true,
+  "statistics": {
+    "startTime": "2026-09-08T12:51:30.546Z",
+    "duration": 7458.960999999999,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "exitCode": 0,
+  "cases": [
+    {
+      "title": "mounted search preparation preserves locale snapshots and cancels obsolete work",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 5499,
+          "errors": []
+        }
+      ]
+    }
+  ],
+  "preserved": [
+    {
+      "path": "docs/mobile/evidence/S10/capacity-20260908/hook-browser-a1/playwright.json",
+      "bytes": 102933,
+      "sha256": "c1361ed55021d528469cffa9760d01105684bb6ca59c70d90952c106305b6e40"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/capacity-20260908/hook-browser-a1/search-preparation-lifecycle.json",
+      "bytes": 74385,
+      "sha256": "62620c4561d9a34ff456601700e2f450ae133f723372f01ac89a711602c41000"
+    }
+  ],
+  "fixtureUsesCanonicalAppAndScene": false,
+  "realMountedReactHook": true,
+  "actualInstalledRuntime": false,
+  "nativePluginsSimulated": false,
+  "syntheticRecords": 10000,
+  "stageAccepted": false,
+  "releaseReady": false
+}

@@ -1,0 +1,25 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=playwright.search-preparation.config.mjs",
+    "--grep",
+    "mounted search preparation preserves locale snapshots and cancels obsolete work"
+  ],
+  "startedAt": "2026-09-08T12:51:29.612Z",
+  "durationMs": 8542,
+  "exitCode": 0,
+  "logs": {
+    "stdout": {
+      "text": "\nRunning 1 test using 1 worker\n\n  ok 1 tests\\host\\search-preparation.spec.mjs:129:1 › mounted search preparation preserves locale snapshots and cancels obsolete work (5.5s)\n\n  1 passed (7.5s)\n",
+      "bytes": 194,
+      "sha256": "8116c231a995a06106b3137db17ffc5d45c435319a7e7e546241658f8dd2b7d2"
+    },
+    "stderr": {
+      "text": "(node:23224) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "bytes": 164,
+      "sha256": "ed5c1c476d0e58d7dc14330d8b1e22dc8990a28561c67828bab705ff6b2e681b"
+    }
+  }
+}

@@ -17,11 +17,15 @@ import type { Country, Writer } from "../data/countries";
 import { writerBiographyText } from "../data/writerBiography";
 import type { InterfaceLanguage } from "../i18n/InterfaceLanguage";
 import {
-  literarySearchMatchScore,
-  normalizeLiterarySearch,
+  compileLiterarySearchFields,
+  compileLiterarySearchQuery,
+  compiledLiterarySearchMatchScore,
+  type CompiledLiterarySearchFields,
+  type CompiledLiterarySearchQuery,
   type LiterarySearchValue,
 } from "../utils/literarySearch";
 import { writerSearchLabel } from "../utils/writerSearchLabel";
+import { mapSearchIndexInBatches } from "../utils/prepareSearchIndex";
 export const globalSearchGroups = [
   "books",
   "writers",
@@ -294,11 +298,23 @@ type SuggestionFields = {
   verifiedMetadata?: LiterarySearchValue[];
 };
 
-type IndexedGlobalSearchDocument = {
+type GlobalSearchDocumentInput = {
   result: GlobalSearchResult;
   primaryValues: LiterarySearchValue[];
   secondaryValues: LiterarySearchValue[];
   suggestionFields?: SuggestionFields;
+};
+
+type CompiledSuggestionFields = Partial<
+  Record<keyof SuggestionFields, CompiledLiterarySearchFields>
+>;
+
+type IndexedGlobalSearchDocument = GlobalSearchDocumentInput & {
+  readonly compiled: {
+    readonly primary: CompiledLiterarySearchFields;
+    readonly secondary: CompiledLiterarySearchFields;
+    readonly suggestions: CompiledSuggestionFields;
+  };
 };
 
 export type GlobalSearchIndex = {
@@ -307,6 +323,43 @@ export type GlobalSearchIndex = {
   entityCount: number;
   readonly documents: readonly IndexedGlobalSearchDocument[];
 };
+
+function compileDocument(document: GlobalSearchDocumentInput): IndexedGlobalSearchDocument {
+  const suggestions: CompiledSuggestionFields = {};
+  for (const field of Object.keys(document.suggestionFields || {}) as Array<keyof SuggestionFields>) {
+    const values = document.suggestionFields?.[field];
+    if (values) suggestions[field] = compileLiterarySearchFields(values);
+  }
+  return {
+    ...document,
+    compiled: {
+      primary: compileLiterarySearchFields(document.primaryValues),
+      secondary: compileLiterarySearchFields(document.secondaryValues),
+      suggestions,
+    },
+  };
+}
+
+type IndexCollators = {
+  language: InterfaceLanguage;
+  labels: Intl.Collator;
+  keys: Intl.Collator;
+};
+
+// Index-owned caches also support the existing lightweight empty indexes.
+const indexCollators = new WeakMap<GlobalSearchIndex, IndexCollators>();
+
+function collatorsForIndex(index: GlobalSearchIndex) {
+  const current = indexCollators.get(index);
+  if (current?.language === index.language) return current;
+  const collators = {
+    language: index.language,
+    labels: new Intl.Collator(index.language),
+    keys: new Intl.Collator("en"),
+  };
+  indexCollators.set(index, collators);
+  return collators;
+}
 
 /**
  * Adds the small, caller-owned facet/collection layer without rebuilding the
@@ -320,7 +373,7 @@ export function extendGlobalSearchIndex(
 
   const extensionDocuments = extensions.flatMap((extension) => {
     const document = extensionDocument(extension);
-    return document ? [document] : [];
+    return document ? [compileDocument(document)] : [];
   });
   if (!extensionDocuments.length) return baseIndex;
 
@@ -333,11 +386,13 @@ export function extendGlobalSearchIndex(
     ).values(),
   ];
 
-  return {
+  const extendedIndex: GlobalSearchIndex = {
     ...baseIndex,
     entityCount: documents.length,
     documents,
   };
+  indexCollators.set(extendedIndex, collatorsForIndex(baseIndex));
+  return extendedIndex;
 }
 
 export type CreateGlobalSearchIndexOptions = {
@@ -397,7 +452,7 @@ export function localizeGlobalSearchArticles(
 
 function extensionDocument(
   extension: GlobalSearchExtensionDocument
-): IndexedGlobalSearchDocument | null {
+): GlobalSearchDocumentInput | null {
   const id = extension.id.trim();
   const label = extension.label.trim();
   if (!id || !label) return null;
@@ -499,7 +554,7 @@ function extensionDocument(
   };
 }
 
-export function createGlobalSearchIndex({
+function* globalSearchDocuments({
   countries,
   books,
   language,
@@ -507,12 +562,10 @@ export function createGlobalSearchIndex({
   countryName,
   articles = [],
   extensions = [],
-}: CreateGlobalSearchIndexOptions): GlobalSearchIndex {
-  const documents: IndexedGlobalSearchDocument[] = [];
-
+}: CreateGlobalSearchIndexOptions, counts: { articleCount: number }): Generator<GlobalSearchDocumentInput | null> {
   for (const country of countries) {
     const localizedCountryName = countryName(country.code, country.name);
-    documents.push({
+    yield {
       result: {
         kind: "country",
         group: "countries",
@@ -546,13 +599,16 @@ export function createGlobalSearchIndex({
       suggestionFields: {
         country: [country.name, localizedCountryName],
       },
-    });
+    };
 
     for (const writer of country.writers) {
       const label = writerSearchLabel(writer, language);
-      if (!label) continue;
+      if (!label) {
+        yield null;
+        continue;
+      }
       const authorKey = [country.id, writer.id].join(":");
-      documents.push({
+      yield {
         result: {
           kind: "writer",
           group: "writers",
@@ -594,12 +650,15 @@ export function createGlobalSearchIndex({
         suggestionFields: {
           writer: [label, writer.name, writer.fullName],
         },
-      });
+      };
     }
   }
 
   for (const book of books) {
-    if (!isPublicBook(book)) continue;
+    if (!isPublicBook(book)) {
+      yield null;
+      continue;
+    }
     const displayedBook = presentBookArchiveEntry(book, language);
     const oppositeLocaleTitleAliases =
       getEvidenceBackedOppositeLocaleBookTitleAliases(book, language);
@@ -623,7 +682,7 @@ export function createGlobalSearchIndex({
       book.id
     );
 
-    documents.push({
+    yield {
       result: {
         kind: "book",
         group: "books",
@@ -662,15 +721,17 @@ export function createGlobalSearchIndex({
         ],
         verifiedMetadata,
       },
-    });
+    };
   }
 
-  const localizedArticles = localizeGlobalSearchArticles(
-    articles,
-    language
-  );
-  for (const article of localizedArticles) {
-    documents.push({
+  for (const sourceArticle of articles) {
+    const article = articleCatalogEntryForLanguage(sourceArticle, language);
+    if (!article) {
+      yield null;
+      continue;
+    }
+    counts.articleCount += 1;
+    yield {
       result: {
         kind: "article",
         group: "articles",
@@ -691,29 +752,57 @@ export function createGlobalSearchIndex({
         article.seoDescription,
         ...(article.seoKeywords || []),
       ],
-    });
+    };
   }
 
   for (const extension of extensions) {
-    const document = extensionDocument(extension);
-    if (document) documents.push(document);
+    yield extensionDocument(extension);
+  }
+}
+
+function finishGlobalSearchIndex(
+  language: InterfaceLanguage,
+  documents: readonly (IndexedGlobalSearchDocument | null)[],
+  articleCount: number
+): GlobalSearchIndex {
+  const uniqueDocuments = new Map<string, IndexedGlobalSearchDocument>();
+  for (const document of documents) {
+    if (document) uniqueDocuments.set(document.result.key, document);
   }
 
-  const uniqueDocuments = [
-    ...new Map(
-      documents.map((document) => [
-        document.result.key,
-        document,
-      ])
-    ).values(),
-  ];
-
-  return {
+  const index: GlobalSearchIndex = {
     language,
-    articleCount: localizedArticles.length,
-    entityCount: uniqueDocuments.length,
-    documents: uniqueDocuments,
+    articleCount,
+    entityCount: uniqueDocuments.size,
+    documents: [...uniqueDocuments.values()],
   };
+  collatorsForIndex(index);
+  return index;
+}
+
+function compileAvailableDocument(document: GlobalSearchDocumentInput | null) {
+  return document ? compileDocument(document) : null;
+}
+
+/** Synchronous compatibility factory; both factories share all document gates. */
+export function createGlobalSearchIndex(options: CreateGlobalSearchIndexOptions): GlobalSearchIndex {
+  const counts = { articleCount: 0 };
+  const documents = Array.from(globalSearchDocuments(options, counts), compileAvailableDocument);
+  return finishGlobalSearchIndex(options.language, documents, counts.articleCount);
+}
+
+/** Yield before and between bounded batches of construction and compilation. */
+export async function createGlobalSearchIndexAsync(
+  options: CreateGlobalSearchIndexOptions,
+  signal?: AbortSignal
+): Promise<GlobalSearchIndex> {
+  const counts = { articleCount: 0 };
+  const documents = await mapSearchIndexInBatches(
+    globalSearchDocuments(options, counts),
+    compileAvailableDocument,
+    { signal }
+  );
+  return finishGlobalSearchIndex(options.language, documents, counts.articleCount);
 }
 
 function emptyGroupedResults(): GlobalSearchGroupedResults {
@@ -731,19 +820,19 @@ function emptyGroupedResults(): GlobalSearchGroupedResults {
 }
 
 function fieldScore(
-  query: string,
-  values: LiterarySearchValue[] | undefined
+  query: CompiledLiterarySearchQuery,
+  values: CompiledLiterarySearchFields | undefined
 ) {
-  if (!values?.length) return null;
-  return literarySearchMatchScore(query, values);
+  if (!values) return null;
+  return compiledLiterarySearchMatchScore(query, values);
 }
 
 function globalSuggestionScore(
-  query: string,
+  query: CompiledLiterarySearchQuery,
   document: IndexedGlobalSearchDocument,
   fallbackScore: number
 ) {
-  const fields = document.suggestionFields;
+  const fields = document.compiled.suggestions;
   const title = fieldScore(query, fields?.title);
   if (title === 0) return 0;
   if (title === 1) return 10;
@@ -818,17 +907,12 @@ const suggestionGroupPriority:
 
 function compareLabels(
   first: IndexedGlobalSearchDocument,
-  second: IndexedGlobalSearchDocument
+  second: IndexedGlobalSearchDocument,
+  collators: IndexCollators
 ) {
   return (
-    first.result.label.localeCompare(
-      second.result.label,
-      "ru"
-    ) ||
-    first.result.key.localeCompare(
-      second.result.key,
-      "en"
-    )
+    collators.labels.compare(first.result.label, second.result.label) ||
+    collators.keys.compare(first.result.key, second.result.key)
   );
 }
 
@@ -862,7 +946,8 @@ export function searchGlobalSearchIndex(
   profile: GlobalSearchProfile =
     HEADER_GLOBAL_SEARCH_PROFILE
 ): GlobalSearchResponse {
-  const normalizedQuery = normalizeLiterarySearch(query);
+  const compiledQuery = compileLiterarySearchQuery(query);
+  const { normalizedQuery } = compiledQuery;
   const empty = emptyGroupedResults();
 
   if (normalizedQuery.length < profile.minQueryLength) {
@@ -876,15 +961,16 @@ export function searchGlobalSearchIndex(
   }
 
   const allowedGroups = new Set(profile.groups);
+  const collators = collatorsForIndex(index);
   const scored = index.documents.flatMap<ScoredDocument>(
     (document) => {
       if (!allowedGroups.has(document.result.group)) {
         return [];
       }
-      const score = literarySearchMatchScore(
-        normalizedQuery,
-        document.primaryValues,
-        document.secondaryValues
+      const score = compiledLiterarySearchMatchScore(
+        compiledQuery,
+        document.compiled.primary,
+        document.compiled.secondary
       );
       if (score === null) return [];
 
@@ -893,7 +979,7 @@ export function searchGlobalSearchIndex(
           document,
           score,
           suggestionScore: globalSuggestionScore(
-            normalizedQuery,
+            compiledQuery,
             document,
             score
           ),
@@ -914,7 +1000,8 @@ export function searchGlobalSearchIndex(
           first.score - second.score ||
           compareLabels(
             first.document,
-            second.document
+            second.document,
+            collators
           )
       );
 
@@ -940,7 +1027,8 @@ export function searchGlobalSearchIndex(
         ] ||
       compareLabels(
         first.document,
-        second.document
+        second.document,
+        collators
       )
   );
   const allMatches = globallyRanked.map(

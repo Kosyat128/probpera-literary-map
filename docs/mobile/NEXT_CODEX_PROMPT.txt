@@ -1,6 +1,18 @@
 Continue V12 in literary-planet-v12-work on
 codex/literary-planet-v12-bilingual-final-autopilot.
 
+<!-- s10-capacity:begin -->
+Compiled search and cooperative index preparation are source-validated.
+Synthetic10000: atlas median795.845→6.908ms, shared-fields940.917→6.292ms;
+all matched keys/scores agree with exact prior engine. This is desktop engine
+capacity, not production catalog/device certification. Initial and between-batch
+host yields replace the measured~823ms monolithic preparation; stale builds abort.
+80 unique units, final static and2 actual-browser cases passed.
+Fresh Android/PWA build follows this source checkpoint.
+Evidence: evidence/S10/capacity-20260908/result.json. First-open S03; S10 in progress.
+Full content/child/alias/collection/device gates open; frozen iOS83 unchanged.
+<!-- s10-capacity:end -->
+
 <!-- s10-search:begin -->
 Source bda662c4779ac6852add6d6d6e94e36dfbb91f9a: adult globe search reveals writers, restores focus,
 and finds the same book by evidence-backed titles from either locale.

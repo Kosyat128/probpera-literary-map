@@ -466,3 +466,20 @@
   current publication gate admits four books, each searchable by both existing
   published titles. This does not certify full English content, nearly10k
   capacity, child search, installed devices, store release or stage completion.
+
+- D094: Continue the parallel-safe S10 adult search slice with precompiled
+  document fields and one prepared query per execution. Preserve raw matching,
+  scoring, publication/title evidence and canonical actions. Compare the exact
+  prior engine with a deterministic synthetic10000-record workload, including
+  index preparation and memory. A capacity fixture establishes no factual
+  catalog coverage or installed-device latency acceptance. Keep first-open S03,
+  child/collection/full-alias gates and frozen iOS83 unchanged.
+
+- D095: Exact-baseline synthetic10000 search measurements preserve all scored
+  keys and show large query savings, but expose~823ms synchronous preparation.
+  Prepare the existing atlas/shared indexes through cooperative8ms/100-operation
+  batches with an initial host yield. Generator construction also yields for
+  hidden records; obsolete locale/revision work aborts. Commit no mixed-locale
+  index, retain retry and one current shared promise. Browser lifecycle evidence
+  uses explicitly synthetic records; canonical book/globe evidence remains
+  separate. No production catalog, memory/FPS/device or stage acceptance follows.

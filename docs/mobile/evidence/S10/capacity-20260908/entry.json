@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T12:33:07.811Z",
+  "stage": "S10",
+  "status": "IMPLEMENTATION_IN_PROGRESS",
+  "baselineSourceCommit": "89ce01c60fafb5067c997c7f130c432c3750ad04",
+  "route": "S03-S10",
+  "entryRule": "Continue the D091 matrix69 parallel-safe adult search slice",
+  "packageIntegrity": {
+    "pass": true,
+    "checksumCount": 194,
+    "manifestFileCount": 191,
+    "bindingDocumentCount": 173,
+    "manifestSha256": "bb759162674bafe0a9baa87ee6adffd41527d6e38e979f5cf6a6d0445535acd8",
+    "checksumFileSha256": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732"
+  },
+  "scope": "Prepare document tokens once and query tokens once for the existing adult globe/shared search; measure an explicitly synthetic 10000-record workload against the exact prior engine.",
+  "mappedRequirements": [
+    "S10.BIL-006",
+    "S10.BIL-036",
+    "S10.BIL-037",
+    "S10.BIL-039"
+  ],
+  "parallelSafety": [
+    "Single canonical catalog, IDs, globe and locale controller remain the authority.",
+    "No change to publication/evidence gates, source content or approved title aliases.",
+    "Derived indexes remain owned by their existing runtime; no unbounded query cache.",
+    "Synthetic capacity fixtures are test-only and never become production book records.",
+    "Full native aliases, child isolation, collection/passport, device latency and stage acceptance remain open.",
+    "No store, production, remote runtime or frozen iOS83 mutations."
+  ],
+  "acceptanceForSlice": [
+    "Preserve documented matching and scoring, including short tokens, conservative fuzzy/transliteration and cross-field matches.",
+    "Compile fields once at index creation/extension and each search query once.",
+    "Use active-locale label ordering without changing canonical result actions.",
+    "Record before/after query latency, preparation cost and memory for the same deterministic synthetic 10000-record corpus; explicitly report practical limits.",
+    "Run focused unit/static regression and the affected actual globe book navigation browser scenario."
+  ],
+  "testsRunAtEntry": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false
+}

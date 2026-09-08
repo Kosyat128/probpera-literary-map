@@ -1,16 +1,5 @@
 export type LiterarySearchValue = string | null | undefined;
 
-export type CompiledLiterarySearchQuery = {
-  readonly normalizedQuery: string;
-  readonly tokenGroups: readonly (readonly string[])[];
-  readonly normalizedVariants: readonly string[];
-};
-
-export type CompiledLiterarySearchFields = {
-  readonly tokenAliases: readonly string[];
-  readonly normalizedVariants: readonly string[];
-};
-
 const searchStopWords = new Set([
   "a",
   "an",
@@ -124,14 +113,10 @@ function stemToken(token: string) {
   return stemEnglishToken(stemRussianToken(token));
 }
 
-function tokensFromNormalizedValue(value: string) {
-  const tokens = value.split(" ").filter(Boolean);
+function rawSearchTokens(value: string) {
+  const tokens = normalizeLiterarySearch(value).split(" ").filter(Boolean);
   if (tokens.length <= 1) return tokens;
   return tokens.filter((token) => !searchStopWords.has(token));
-}
-
-function rawSearchTokens(value: string) {
-  return tokensFromNormalizedValue(normalizeLiterarySearch(value));
 }
 
 export function literarySearchTokens(value: string) {
@@ -140,9 +125,9 @@ export function literarySearchTokens(value: string) {
     .filter((token) => token.length >= 2);
 }
 
-function tokenAliases(token: string, transliteration: string) {
+function tokenAliases(token: string) {
   const normalized = stemToken(token);
-  const transliterated = stemToken(transliteration);
+  const transliterated = stemToken(transliterateToken(token));
   return [...new Set([normalized, transliterated])].filter(
     (candidate) => candidate.length >= 2
   );
@@ -180,70 +165,51 @@ function tokensMatch(queryToken: string, valueToken: string) {
   );
 }
 
-function compileValue(value: string) {
-  const normalized = normalizeLiterarySearch(value);
-  const tokens = tokensFromNormalizedValue(normalized);
-  const transliterations = tokens.map(transliterateToken);
-  return {
-    normalized,
-    tokenGroups: tokens
-      .map((token, index) => tokenAliases(token, transliterations[index]))
-      .filter(aliases => aliases.length > 0),
-    normalizedVariants: [...new Set([normalized, transliterations.join(" ")])].filter(Boolean),
-  };
-}
-
-/** Compile once per query; callers own the lifetime, with no shared query cache. */
-export function compileLiterarySearchQuery(query: string): CompiledLiterarySearchQuery {
-  const compiled = compileValue(query);
-  return {
-    normalizedQuery: compiled.normalized,
-    tokenGroups: compiled.tokenGroups,
-    normalizedVariants: compiled.normalizedVariants,
-  };
-}
-
-/** Keep each value's stopword policy and complete phrases independent. */
-export function compileLiterarySearchFields(
-  values: readonly LiterarySearchValue[]
-): CompiledLiterarySearchFields {
-  const aliases = new Set<string>();
-  const variants = new Set<string>();
-  for (const value of values) {
-    if (!value?.trim()) continue;
-    const compiled = compileValue(value);
-    for (const group of compiled.tokenGroups) for (const alias of group) aliases.add(alias);
-    for (const variant of compiled.normalizedVariants) variants.add(variant);
-  }
-  return { tokenAliases: [...aliases], normalizedVariants: [...variants] };
-}
-
-export function compiledLiterarySearchMatches(
-  query: CompiledLiterarySearchQuery,
-  primary: CompiledLiterarySearchFields,
-  secondary?: CompiledLiterarySearchFields
-): boolean {
-  if (!query.tokenGroups.length) return false;
-  return query.tokenGroups.every(aliases =>
-    aliases.some(queryToken =>
-      primary.tokenAliases.some(valueToken => tokensMatch(queryToken, valueToken)) ||
-      secondary?.tokenAliases.some(valueToken => tokensMatch(queryToken, valueToken))
+export function literarySearchMatches(
+  query: string,
+  values: LiterarySearchValue[]
+) {
+  const queryGroups = rawSearchTokens(query)
+    .map(tokenAliases)
+    .filter((aliases) => aliases.length > 0);
+  const valueTokens = values
+    .filter((value): value is string => Boolean(value?.trim()))
+    .flatMap(rawSearchTokens)
+    .flatMap(tokenAliases);
+  if (!queryGroups.length || !valueTokens.length) return false;
+  return queryGroups.every((aliases) =>
+    aliases.some((queryToken) =>
+      valueTokens.some((valueToken) => tokensMatch(queryToken, valueToken))
     )
   );
 }
 
-export function compiledLiterarySearchMatchScore(
-  query: CompiledLiterarySearchQuery,
-  primary: CompiledLiterarySearchFields,
-  secondary?: CompiledLiterarySearchFields
-): number | null {
-  if (!compiledLiterarySearchMatches(query, primary, secondary)) {
+function normalizedVariants(value: string) {
+  const normalized = normalizeLiterarySearch(value);
+  const transliterated = rawSearchTokens(value)
+    .map(transliterateToken)
+    .join(" ");
+  return [...new Set([normalized, transliterated])].filter(Boolean);
+}
+
+export function literarySearchMatchScore(
+  query: string,
+  primaryValues: LiterarySearchValue[],
+  secondaryValues: LiterarySearchValue[] = []
+) {
+  if (!literarySearchMatches(query, [...primaryValues, ...secondaryValues])) {
     return null;
   }
-  const queryVariants = query.normalizedVariants;
-  if (primary.normalizedVariants.some(value => queryVariants.includes(value))) return 0;
+  const queryVariants = normalizedVariants(query);
+  const primary = primaryValues
+    .filter((value): value is string => Boolean(value?.trim()))
+    .flatMap(normalizedVariants);
+  const secondary = secondaryValues
+    .filter((value): value is string => Boolean(value?.trim()))
+    .flatMap(normalizedVariants);
+  if (primary.some((value) => queryVariants.includes(value))) return 0;
   if (
-    primary.normalizedVariants.some((value) =>
+    primary.some((value) =>
       queryVariants.some((queryValue) =>
         queryValue.length >= 3 ? value.startsWith(queryValue) : false
       )
@@ -251,32 +217,10 @@ export function compiledLiterarySearchMatchScore(
   ) {
     return 1;
   }
-  if (compiledLiterarySearchMatches(query, primary)) return 2;
-  if (secondary?.normalizedVariants.some(value => queryVariants.includes(value))) return 3;
-  if (secondary && compiledLiterarySearchMatches(query, secondary)) return 4;
+  if (literarySearchMatches(query, primaryValues)) return 2;
+  if (secondary.some((value) => queryVariants.includes(value))) return 3;
+  if (literarySearchMatches(query, secondaryValues)) return 4;
   return 5;
-}
-
-export function literarySearchMatches(
-  query: string,
-  values: readonly LiterarySearchValue[]
-): boolean {
-  return compiledLiterarySearchMatches(
-    compileLiterarySearchQuery(query),
-    compileLiterarySearchFields(values)
-  );
-}
-
-export function literarySearchMatchScore(
-  query: string,
-  primaryValues: readonly LiterarySearchValue[],
-  secondaryValues: readonly LiterarySearchValue[] = []
-): number | null {
-  return compiledLiterarySearchMatchScore(
-    compileLiterarySearchQuery(query),
-    compileLiterarySearchFields(primaryValues),
-    compileLiterarySearchFields(secondaryValues)
-  );
 }
 
 export function literarySearchScore(label: string, query: string) {

@@ -2,7 +2,7 @@ import type { BookArchiveEntry } from "../data/bookArchive";
 import type { Country } from "../data/countries";
 import type { InterfaceLanguage } from "../i18n/InterfaceLanguage";
 import {
-  createGlobalSearchIndex,
+  createGlobalSearchIndexAsync,
   extendGlobalSearchIndex,
   loadGlobalSearchArticleCatalog,
   type CreateGlobalSearchIndexOptions,
@@ -21,7 +21,10 @@ export type GlobalSearchBaseRequest = Omit<
 
 type GlobalSearchRuntimeDependencies = {
   loadArticles: typeof loadGlobalSearchArticleCatalog;
-  createIndex: typeof createGlobalSearchIndex;
+  createIndex: (
+    options: CreateGlobalSearchIndexOptions,
+    signal?: AbortSignal
+  ) => GlobalSearchIndex | Promise<GlobalSearchIndex>;
 };
 
 export type GlobalSearchRuntime = {
@@ -37,6 +40,7 @@ type RuntimeEntry = {
   key: string;
   promise: Promise<GlobalSearchIndex>;
   index: GlobalSearchIndex | null;
+  controller: AbortController;
 };
 
 export function globalSearchRequestCacheKey(request: GlobalSearchBaseRequest) {
@@ -51,7 +55,7 @@ export function globalSearchRequestCacheKey(request: GlobalSearchBaseRequest) {
 export function createGlobalSearchRuntime(
   dependencies: GlobalSearchRuntimeDependencies = {
     loadArticles: loadGlobalSearchArticleCatalog,
-    createIndex: createGlobalSearchIndex,
+    createIndex: createGlobalSearchIndexAsync,
   }
 ): GlobalSearchRuntime {
   let entry: RuntimeEntry | null = null;
@@ -59,26 +63,41 @@ export function createGlobalSearchRuntime(
   const ensure = (request: GlobalSearchBaseRequest) => {
     const key = globalSearchRequestCacheKey(request);
     if (entry?.key === key) return entry.promise;
+    if (entry && !entry.index) entry.controller.abort();
+    const controller = new AbortController();
+    const assertCurrentPreparation = () => {
+      if (controller.signal.aborted) {
+        throw controller.signal.reason ?? new DOMException("Search preparation superseded", "AbortError");
+      }
+    };
 
     const promise = dependencies
       .loadArticles()
-      .then((articles) =>
-        dependencies.createIndex({
+      .then((articles) => {
+        assertCurrentPreparation();
+        return dependencies.createIndex({
           countries: request.countries,
           books: request.books,
           language: request.language,
           translate: request.translate,
           countryName: request.countryName,
           articles,
-        })
-      );
+        }, controller.signal);
+      })
+      .then((index) => {
+        assertCurrentPreparation();
+        return index;
+      });
     const nextEntry: RuntimeEntry = {
       key,
       promise,
       index: null,
+      controller,
     };
     entry = nextEntry;
 
+    // Observe every rejection here as well as in UI consumers. Aborting an old
+    // request cannot leave an unhandled rejection or clear a newer cache entry.
     promise.then(
       (index) => {
         if (entry === nextEntry) nextEntry.index = index;

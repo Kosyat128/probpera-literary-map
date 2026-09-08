@@ -1,0 +1,436 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T12:38:48.729Z",
+  "pass": true,
+  "fixture": "DETERMINISTIC_SYNTHETIC_NOT_PRODUCTION_CATALOG",
+  "count": 10000,
+  "corpusSha256": "aeff69759ce9e5fbba802d00c431f5a210b4c3885d170887176d6c534ed03813",
+  "queryCount": 14,
+  "repeats": 2,
+  "environment": {
+    "node": "v24.20.0",
+    "platform": "win32",
+    "architecture": "x64",
+    "cpu": "AMD Ryzen 7 5800H with Radeon Graphics         ",
+    "cpuCount": 16
+  },
+  "modes": [
+    {
+      "mode": "atlas",
+      "preparationMs": 822.912,
+      "retainedHeapDeltaBytes": 33389448,
+      "measurements": [
+        {
+          "query": "Тестовый том 00042",
+          "baselineMs": [
+            821.419,
+            799.257
+          ],
+          "compiledMs": [
+            9.401,
+            6.195
+          ],
+          "matches": 1,
+          "digest": "9f1cb6eca381d82cfab9210d79daa3bc17a57979cb1408fc7e86c76ebb98dec8"
+        },
+        {
+          "query": "Benchmark volume 03173",
+          "baselineMs": [
+            788.594,
+            795.845
+          ],
+          "compiledMs": [
+            8.234,
+            6.695
+          ],
+          "matches": 1,
+          "digest": "02a05329591cafa0e9a5adf2b0d46c4fbf40733a74f2020464d5db5450812b3f"
+        },
+        {
+          "query": "volume",
+          "baselineMs": [
+            928.633,
+            912.87
+          ],
+          "compiledMs": [
+            8.539,
+            8.006
+          ],
+          "matches": 10000,
+          "digest": "4ca6f802f98e321c82805b7a0c132cab8be203194a1f17632d4c76e0c61d7eb6"
+        },
+        {
+          "query": "Северный",
+          "baselineMs": [
+            827.949,
+            822.318
+          ],
+          "compiledMs": [
+            6.908,
+            7.19
+          ],
+          "matches": 5000,
+          "digest": "5bcff805cb030a6f1ca82dec8dcf9ad5a3ce285614db0428e3bda0ddef1029f9"
+        },
+        {
+          "query": "Severnyy",
+          "baselineMs": [
+            807.318,
+            794.169
+          ],
+          "compiledMs": [
+            7.155,
+            6.881
+          ],
+          "matches": 5000,
+          "digest": "5bcff805cb030a6f1ca82dec8dcf9ad5a3ce285614db0428e3bda0ddef1029f9"
+        },
+        {
+          "query": "Тестовый Северный",
+          "baselineMs": [
+            870.506,
+            870.434
+          ],
+          "compiledMs": [
+            7.676,
+            7.414
+          ],
+          "matches": 5000,
+          "digest": "5bcff805cb030a6f1ca82dec8dcf9ad5a3ce285614db0428e3bda0ddef1029f9"
+        },
+        {
+          "query": "03173 poetry",
+          "baselineMs": [
+            767.668,
+            771.339
+          ],
+          "compiledMs": [
+            5.219,
+            5.094
+          ],
+          "matches": 1,
+          "digest": "90bb21e738fc904a32a6bb4ebb1b62eafb7596ebc0498b048eef5ce203802491"
+        },
+        {
+          "query": "試験の本 00042",
+          "baselineMs": [
+            782.54,
+            795.852
+          ],
+          "compiledMs": [
+            5.579,
+            5.911
+          ],
+          "matches": 1,
+          "digest": "be11110468a734cefc45157f24f16ada3d09537c12597dfbfa03da2916c3ea49"
+        },
+        {
+          "query": "synthetix",
+          "baselineMs": [
+            853.471,
+            854.128
+          ],
+          "compiledMs": [
+            7.598,
+            7.826
+          ],
+          "matches": 10000,
+          "digest": "3598009fefbb1f13010b98a212a4f28fd44d457de91a46c4adbb77d482baae32"
+        },
+        {
+          "query": "biography",
+          "baselineMs": [
+            755.893,
+            750.96
+          ],
+          "compiledMs": [
+            7.232,
+            7.609
+          ],
+          "matches": 0,
+          "digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        {
+          "query": "in",
+          "baselineMs": [
+            742.912,
+            748.866
+          ],
+          "compiledMs": [
+            4.978,
+            4.55
+          ],
+          "matches": 0,
+          "digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        {
+          "query": "no-such-zqxv",
+          "baselineMs": [
+            770.96,
+            794.87
+          ],
+          "compiledMs": [
+            6.501,
+            6.255
+          ],
+          "matches": 0,
+          "digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        {
+          "query": "\"ТОМ\"",
+          "baselineMs": [
+            987.527,
+            991.363
+          ],
+          "compiledMs": [
+            7.242,
+            7.354
+          ],
+          "matches": 10000,
+          "digest": "9d0771b5e03a95d4fd723564bbff1c636338b72d4cb6c4628ba4c2488922678e"
+        },
+        {
+          "query": "а",
+          "baselineMs": [
+            753.786,
+            761.078
+          ],
+          "compiledMs": [
+            0.169,
+            0.2
+          ],
+          "matches": 0,
+          "digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "baseline": {
+        "medianMs": 795.845,
+        "p95Ms": 987.527,
+        "maxMs": 991.363
+      },
+      "compiled": {
+        "medianMs": 6.908,
+        "p95Ms": 8.539,
+        "maxMs": 9.401
+      },
+      "medianSpeedup": 115.206,
+      "allRankedKeyAndScoreDigestsEqual": true
+    },
+    {
+      "mode": "shared-fields",
+      "preparationMs": 827.924,
+      "retainedHeapDeltaBytes": 32561928,
+      "measurements": [
+        {
+          "query": "Тестовый том 00042",
+          "baselineMs": [
+            857.319,
+            850.251
+          ],
+          "compiledMs": [
+            8.786,
+            4.874
+          ],
+          "matches": 1,
+          "digest": "9f1cb6eca381d82cfab9210d79daa3bc17a57979cb1408fc7e86c76ebb98dec8"
+        },
+        {
+          "query": "Benchmark volume 03173",
+          "baselineMs": [
+            846.918,
+            835.312
+          ],
+          "compiledMs": [
+            7.449,
+            5.173
+          ],
+          "matches": 1,
+          "digest": "02a05329591cafa0e9a5adf2b0d46c4fbf40733a74f2020464d5db5450812b3f"
+        },
+        {
+          "query": "volume",
+          "baselineMs": [
+            1862.606,
+            1856.793
+          ],
+          "compiledMs": [
+            8.245,
+            5.798
+          ],
+          "matches": 10000,
+          "digest": "0eb3fbdcd1342492d6ce20bb9707adb0b80a48a6810960768253800f11d59e82"
+        },
+        {
+          "query": "Северный",
+          "baselineMs": [
+            1694.531,
+            1713.91
+          ],
+          "compiledMs": [
+            9.314,
+            8.903
+          ],
+          "matches": 5000,
+          "digest": "efb37d9844a3b36a18038df2c37479f72bedaeba2e3894a63b4b31bd6fad262e"
+        },
+        {
+          "query": "Severnyy",
+          "baselineMs": [
+            1655.942,
+            1662.476
+          ],
+          "compiledMs": [
+            6.678,
+            7.229
+          ],
+          "matches": 5000,
+          "digest": "efb37d9844a3b36a18038df2c37479f72bedaeba2e3894a63b4b31bd6fad262e"
+        },
+        {
+          "query": "Тестовый Северный",
+          "baselineMs": [
+            1766.112,
+            1756.476
+          ],
+          "compiledMs": [
+            8.308,
+            8.462
+          ],
+          "matches": 5000,
+          "digest": "efb37d9844a3b36a18038df2c37479f72bedaeba2e3894a63b4b31bd6fad262e"
+        },
+        {
+          "query": "03173 poetry",
+          "baselineMs": [
+            829.563,
+            826.561
+          ],
+          "compiledMs": [
+            4.697,
+            4.591
+          ],
+          "matches": 1,
+          "digest": "2a6d59d037fdb5cd61055d54f9ba6e21a39f97f436f96d90f8c4cd35e523b1df"
+        },
+        {
+          "query": "試験の本 00042",
+          "baselineMs": [
+            837.523,
+            905.478
+          ],
+          "compiledMs": [
+            4.647,
+            6.016
+          ],
+          "matches": 1,
+          "digest": "9f1cb6eca381d82cfab9210d79daa3bc17a57979cb1408fc7e86c76ebb98dec8"
+        },
+        {
+          "query": "synthetix",
+          "baselineMs": [
+            2480.637,
+            3354.394
+          ],
+          "compiledMs": [
+            9.551,
+            10.611
+          ],
+          "matches": 10000,
+          "digest": "815b5290e70b9739137b1aea7e49c1a5de9de5727f3254814e22df730c477236"
+        },
+        {
+          "query": "biography",
+          "baselineMs": [
+            804.84,
+            940.917
+          ],
+          "compiledMs": [
+            5.932,
+            7.743
+          ],
+          "matches": 0,
+          "digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        {
+          "query": "in",
+          "baselineMs": [
+            788.417,
+            899.116
+          ],
+          "compiledMs": [
+            4.173,
+            6.529
+          ],
+          "matches": 0,
+          "digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        {
+          "query": "no-such-zqxv",
+          "baselineMs": [
+            817.619,
+            1058.259
+          ],
+          "compiledMs": [
+            6.292,
+            5.762
+          ],
+          "matches": 0,
+          "digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        {
+          "query": "\"ТОМ\"",
+          "baselineMs": [
+            1901.155,
+            2041.385
+          ],
+          "compiledMs": [
+            5.718,
+            6.845
+          ],
+          "matches": 10000,
+          "digest": "0eb3fbdcd1342492d6ce20bb9707adb0b80a48a6810960768253800f11d59e82"
+        },
+        {
+          "query": "а",
+          "baselineMs": [
+            790.838,
+            1163.881
+          ],
+          "compiledMs": [
+            0.193,
+            0.251
+          ],
+          "matches": 0,
+          "digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "baseline": {
+        "medianMs": 940.917,
+        "p95Ms": 2480.637,
+        "maxMs": 3354.394
+      },
+      "compiled": {
+        "medianMs": 6.292,
+        "p95Ms": 9.551,
+        "maxMs": 10.611
+      },
+      "medianSpeedup": 149.542,
+      "allRankedKeyAndScoreDigestsEqual": true
+    }
+  ],
+  "limits": [
+    "Node desktop engine measurement; not installed-device or browser main-thread latency certification.",
+    "Shared-fields mode measures matching/scoring, not full global suggestion grouping, article loading or publication checks.",
+    "Preparation is synchronous and memory is an approximate retained V8 heap delta after GC; cold startup/chunk scheduling require separate measurement.",
+    "Mixed-query percentiles describe these 28 samples per mode; no production SLA is inferred.",
+    "No synthetic record has publication, translation, title evidence or rights approval."
+  ],
+  "stageAccepted": false,
+  "releaseReady": false,
+  "baselineRef": "89ce01c60fafb5067c997c7f130c432c3750ad04",
+  "baselineEngineSha256": "d1cb29821a01e963329b5adb6f3abd3206322ae81b1aca8ca8e5cd6b154436d5",
+  "currentEngineSha256": "0023e444161e580d53a5618b9a8ee0daf241062ecd00f8ee023da48b886afade",
+  "runnerSha256": "8fe11a10e692fdf8f762c62a76ca6c34ef5a8274017c4c56b80aaffc5503d2b8",
+  "scriptSha256": "ee6ca7ea14e8ff1a11e20c480736cc8d092c4d04683e4461445489e69c61ab4b",
+  "sourceUnchanged": true
+}

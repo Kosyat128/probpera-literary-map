@@ -4,12 +4,15 @@ import type { BookArchiveEntry } from "../data/bookArchive";
 import type { ArticleCatalogEntry } from "../data/articles/catalog";
 import type { Country, Writer } from "../data/countries";
 import type { WorkLocale } from "../data/countries/types";
+import * as literarySearch from "../utils/literarySearch";
 import {
   BOOKS_GLOBAL_SEARCH_PROFILE,
   BOOKS_LIBRARY_SEARCH_PROFILE,
   HEADER_GLOBAL_SEARCH_PROFILE,
   createGlobalSearchIndex,
+  createGlobalSearchIndexAsync,
   createLazyGlobalSearchArticleCatalogLoader,
+  extendGlobalSearchIndex,
   searchGlobalSearchIndex,
 } from "./globalSearchIndex";
 
@@ -209,6 +212,160 @@ function addSyntheticTitleEvidence(book: BookArchiveEntry, locale: WorkLocale, t
 }
 
 describe("shared global search index", () => {
+  it.each<WorkLocale>(["ru", "en"])("prepares %s asynchronously with the same gates, deduplication, identities and ranking", async language => {
+    const country = makeCountry("async", 2);
+    country.writers.push({ id: "ru-only", name: "Условный автор" });
+    const book = makeVerifiedBook("async-book", country, "Visible Anchor");
+    addSyntheticTitleEvidence(book, "en", "Synthetic Beacon");
+    const article = makeArticle("async");
+    const options = {
+      countries: [country], books: [book, makeBook("draft", country), book],
+      articles: [article, article], language, translate, countryName,
+      extensions: [
+        { kind: "genre" as const, id: "shared", label: "Old facet" },
+        { kind: "genre" as const, id: "shared", label: "Current facet", aliases: ["Sea voyages"] },
+        { kind: "genre" as const, id: "", label: "Ignored" },
+      ],
+    };
+    const synchronous = createGlobalSearchIndex(options);
+    const constructCountryName = vi.fn(countryName);
+    const pending = createGlobalSearchIndexAsync({ ...options, countryName: constructCountryName });
+    expect(constructCountryName).not.toHaveBeenCalled();
+    const asynchronous = await pending;
+    expect(asynchronous).toEqual(synchronous);
+    expect(asynchronous.articleCount).toBe(language === "ru" ? 2 : 0);
+    expect(asynchronous.documents.filter(document => document.result.kind === "book")).toHaveLength(1);
+    for (const query of ["Archive", "Synthetic Beacon", "Sea voyages", "Pending Card", "Условный автор"]) {
+      expect(searchGlobalSearchIndex(asynchronous, query, BOOKS_GLOBAL_SEARCH_PROFILE)).toEqual(
+        searchGlobalSearchIndex(synchronous, query, BOOKS_GLOBAL_SEARCH_PROFILE)
+      );
+    }
+    const result = asynchronous.documents.find(document => document.result.kind === "book")!.result;
+    expect(result.kind === "book" && result.book).toBe(book);
+  });
+
+  it("can cancel preparation before consuming canonical documents", async () => {
+    const controller = new AbortController();
+    const constructCountryName = vi.fn(countryName);
+    const pending = createGlobalSearchIndexAsync({
+      countries: [makeCountry("aborted", 1)], books: [], language: "ru",
+      translate, countryName: constructCountryName,
+    }, controller.signal);
+    controller.abort();
+    await expect(pending).rejects.toMatchObject({ name: "AbortError" });
+    expect(constructCountryName).not.toHaveBeenCalled();
+  });
+
+  it("yields and cancels while visiting a large rejected book queue", async () => {
+    const country = makeCountry("rejected-queue", 1);
+    let visited = 0;
+    const books = Array.from({ length: 240 }, (_, index) => {
+      const book = makeBook(`draft-${index}`, country);
+      Object.defineProperty(book, "editorial", { get: () => {
+        visited += 1;
+        return { status: "draft" };
+      } });
+      return book;
+    });
+    const controller = new AbortController();
+    const pending = createGlobalSearchIndexAsync({
+      countries: [], books, language: "ru", translate, countryName,
+    }, controller.signal);
+    expect(visited).toBe(0);
+    const cancel = setTimeout(() => controller.abort(), 0);
+    try {
+      await expect(pending).rejects.toMatchObject({ name: "AbortError" });
+      expect(visited).toBeGreaterThan(0);
+      expect(visited).toBeLessThan(books.length);
+    } finally {
+      clearTimeout(cancel);
+    }
+  });
+
+  it.each<[WorkLocale, string[]]>([
+    ["ru", ["Якорь", "Zebra"]],
+    ["en", ["Zebra", "Якорь"]],
+  ])("collates equally ranked labels using %s while keeping English identity tie breaks", (language, labels) => {
+    const countries: Country[] = [
+      { id: "latin", name: "Zebra", description: "shared", writers: [] },
+      { id: "cyrillic", name: "Якорь", description: "shared", writers: [] },
+    ];
+    const index = makeIndex({ countries, language });
+    expect(searchGlobalSearchIndex(index, "shared").groups.countries.map(result => result.label)).toEqual(labels);
+    expect(searchGlobalSearchIndex(index, "shared").suggestions.map(result => result.label)).toEqual(labels);
+
+    const tied = makeIndex({ countries: [
+      { id: "я", name: "Shared", writers: [] },
+      { id: "z", name: "Shared", writers: [] },
+    ], language });
+    expect(searchGlobalSearchIndex(tied, "shared").groups.countries.map(result => result.key)).toEqual(["country:z", "country:я"]);
+  });
+
+  it("reuses compiled base documents through extension and preprocesses each query only once", () => {
+    const country = makeCountry("compiled", 1);
+    const base = makeIndex({ countries: [country], books: [makeVerifiedBook("compiled", country)] });
+    const baseDocuments = [...base.documents];
+    const compileFields = vi.spyOn(literarySearch, "compileLiterarySearchFields");
+    const compileQuery = vi.spyOn(literarySearch, "compileLiterarySearchQuery");
+    try {
+      const extended = extendGlobalSearchIndex(base, [{
+        kind: "genre", id: "navigation", label: "Морские путешествия",
+        aliases: ["Sea voyages"], keywords: ["Navigation"],
+      }]);
+      expect(compileFields).toHaveBeenCalled();
+      for (const document of baseDocuments) {
+        const retained = extended.documents.find(item => item.result.key === document.result.key);
+        expect(retained).toBe(document);
+        expect(retained!.compiled).toBe(document.compiled);
+      }
+      expect(base.documents).toEqual(baseDocuments);
+      expect(extendGlobalSearchIndex(base, [])).toBe(base);
+      compileFields.mockClear();
+      compileQuery.mockClear();
+
+      const first = searchGlobalSearchIndex(extended, "Sea voyages", BOOKS_GLOBAL_SEARCH_PROFILE);
+      const second = searchGlobalSearchIndex(extended, "Navigation", BOOKS_GLOBAL_SEARCH_PROFILE);
+      expect(first.groups.genres.map(item => item.genreId)).toEqual(["navigation"]);
+      expect(second.groups.genres.map(item => item.genreId)).toEqual(["navigation"]);
+      expect(compileFields).not.toHaveBeenCalled();
+      expect(compileQuery).toHaveBeenCalledTimes(2);
+      expect(searchGlobalSearchIndex(base, "Navigation", BOOKS_GLOBAL_SEARCH_PROFILE).groups.genres).toEqual([]);
+    } finally {
+      compileFields.mockRestore();
+      compileQuery.mockRestore();
+    }
+  });
+
+  it("preserves per-field stopwords, distributed words, and transliteration", () => {
+    const countries: Country[] = [{
+      id: "russia", name: "Россия", writers: [{
+        id: "dostoevsky", name: "Фёдор Достоевский", fullName: "Фёдор Михайлович Достоевский",
+      }],
+    }, { id: "india", name: "India", code: "IN", writers: [] }];
+    const index = makeIndex({ countries });
+    expect(searchGlobalSearchIndex(index, "Dostoevsky Россия").groups.writers.map(item => item.writer.id)).toEqual(["dostoevsky"]);
+    expect(searchGlobalSearchIndex(index, "in").groups.countries.map(item => item.country.id)).toEqual(["india"]);
+    expect(searchGlobalSearchIndex(index, "inside").totalMatches).toBe(0);
+    expect(searchGlobalSearchIndex(index, "Dostoevsky India").totalMatches).toBe(0);
+  });
+
+  it("retains visible title, author, original, alternate and metadata suggestion priorities", () => {
+    const country = makeCountry("priorities", 1);
+    const exact = makeVerifiedBook("exact", country, "Beacon");
+    const prefix = makeVerifiedBook("prefix", country, "Beacon Letters");
+    const authorCountry = makeCountry("author", 1);
+    authorCountry.writers[0].name = "Beacon";
+    authorCountry.writers[0].fullName = "Beacon";
+    const author = makeVerifiedBook("author", authorCountry, "Collected Stories");
+    const original = { ...makeVerifiedBook("original", country, "Original Anchor"), originalTitle: "Beacon" };
+    const alternate = { ...makeVerifiedBook("alternate", country, "Alternate Anchor"), alternateTitles: ["Beacon"] };
+    const metadata = { ...makeVerifiedBook("metadata", country, "Metadata Anchor"), genres: ["Beacon"] };
+    const index = makeIndex({ books: [metadata, alternate, original, author, prefix, exact], language: "en" });
+    expect(searchGlobalSearchIndex(index, "Beacon").suggestions.map(item => item.kind === "book" ? item.book.id : item.key)).toEqual([
+      "exact", "prefix", "author", "original", "alternate", "metadata",
+    ]);
+  });
+
   it.each<[WorkLocale, WorkLocale, string]>([
     ["ru", "en", "Synthetic Beacon"],
     ["en", "ru", "Условный маяк"],

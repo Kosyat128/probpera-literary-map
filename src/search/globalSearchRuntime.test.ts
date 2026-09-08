@@ -4,7 +4,7 @@ import type { BookArchiveEntry } from "../data/bookArchive";
 import type { ArticleCatalogEntry } from "../data/articles/catalog";
 import type { Country } from "../data/countries";
 import type { InterfaceLanguage } from "../i18n/InterfaceLanguage";
-import type { GlobalSearchIndex } from "./globalSearchIndex";
+import type { CreateGlobalSearchIndexOptions, GlobalSearchIndex } from "./globalSearchIndex";
 import {
   createGlobalSearchRuntime,
   globalSearchArchiveVersion,
@@ -39,6 +39,68 @@ function index(language: InterfaceLanguage, entityCount = 0): GlobalSearchIndex 
 }
 
 describe("shared global search runtime", () => {
+  it("shares asynchronous preparation and aborts a superseded locale without caching its result", async () => {
+    const pendingBuilds = new Map<string, { signal: AbortSignal; resolve: (value: GlobalSearchIndex) => void }>();
+    const createIndex = vi.fn((options: CreateGlobalSearchIndexOptions, signal?: AbortSignal) => new Promise<GlobalSearchIndex>(resolve => {
+      if (!signal) throw new Error("Preparation requires its own cancellation signal");
+      pendingBuilds.set(options.language, { signal, resolve });
+    }));
+    const runtime = createGlobalSearchRuntime({ loadArticles: async () => [], createIndex });
+    const ruPromise = runtime.ensure(request("ru"));
+    const ruObserved = ruPromise.catch(error => error);
+    expect(runtime.ensure(request("ru"))).toBe(ruPromise);
+    await Promise.resolve();
+    expect(pendingBuilds.has("ru")).toBe(true);
+
+    const enPromise = runtime.ensure(request("en"));
+    expect(runtime.ensure(request("en"))).toBe(enPromise);
+    expect(pendingBuilds.get("ru")!.signal.aborted).toBe(true);
+    await Promise.resolve();
+    const enIndex = index("en", 2);
+    pendingBuilds.get("en")!.resolve(enIndex);
+    await expect(enPromise).resolves.toBe(enIndex);
+    // Even a dependency that ignores cancellation cannot publish a stale result.
+    pendingBuilds.get("ru")!.resolve(index("ru", 1));
+    expect(await ruObserved).toMatchObject({ name: "AbortError" });
+    expect(runtime.peek(request("ru"))).toBeNull();
+    expect(runtime.peek(request("en"))).toBe(enIndex);
+    expect(createIndex).toHaveBeenCalledTimes(2);
+  });
+
+  it("skips obsolete construction while a shared article import is pending", async () => {
+    let releaseArticles: (value: readonly ArticleCatalogEntry[]) => void = () => undefined;
+    const articlesPending = new Promise<readonly ArticleCatalogEntry[]>(resolve => { releaseArticles = resolve; });
+    const createIndex = vi.fn((options: CreateGlobalSearchIndexOptions) => index(options.language));
+    const runtime = createGlobalSearchRuntime({ loadArticles: () => articlesPending, createIndex });
+    const obsolete = runtime.ensure(request("ru"));
+    const obsoleteObserved = obsolete.catch(error => error);
+    const current = runtime.ensure(request("en"));
+    releaseArticles([]);
+    await expect(current).resolves.toMatchObject({ language: "en" });
+    expect(await obsoleteObserved).toMatchObject({ name: "AbortError" });
+    expect(createIndex).toHaveBeenCalledTimes(1);
+    expect(createIndex.mock.calls[0][0].language).toBe("en");
+  });
+
+  it("shares an async preparation failure and allows one fresh retry", async () => {
+    let attempts = 0;
+    const fresh = index("ru", 3);
+    const createIndex = vi.fn(async () => {
+      attempts += 1;
+      if (attempts === 1) throw new Error("preparation interrupted");
+      return fresh;
+    });
+    const runtime = createGlobalSearchRuntime({ loadArticles: async () => [], createIndex });
+    const first = runtime.ensure(request());
+    expect(runtime.ensure(request())).toBe(first);
+    await expect(first).rejects.toThrow("preparation interrupted");
+    expect(runtime.peek(request())).toBeNull();
+    const retry = runtime.ensure(request());
+    expect(runtime.ensure(request())).toBe(retry);
+    await expect(retry).resolves.toBe(fresh);
+    expect(createIndex).toHaveBeenCalledTimes(2);
+  });
+
   it("does not import articles or build an index before search intent", () => {
     const loadArticles = vi.fn(() =>
       Promise.resolve<readonly ArticleCatalogEntry[]>([])

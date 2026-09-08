@@ -1,0 +1,3781 @@
+{
+  "scope": "Real mounted React hook and compiler; 10000 synthetic rows only; not full App or installed-device performance evidence",
+  "sourceBefore": {
+    "src/search/usePreparedSearchIndex.ts": "c509b1bae61019e1f9d6a9d5345198991a8420f88aa9e4eb04c33cb73b5e1b52",
+    "src/utils/prepareSearchIndex.ts": "e57d723c567cef64bca8eaade8f02d6acac1f9217a7c16632fc8d852bf7b0bfe",
+    "src/utils/literarySearch.ts": "0023e444161e580d53a5618b9a8ee0daf241062ecd00f8ee023da48b886afade",
+    "tests/host/search-preparation.spec.mjs": "26d13a6b527a7cf6288c107bac46af21ecb25e61ebff4422e00ab6451ce28c70",
+    "playwright.search-preparation.config.mjs": "db056e2c194d1d662fee6756ff178617062df7ddfc3544bef3a8b88e0582bb55"
+  },
+  "sourceAfter": {
+    "src/search/usePreparedSearchIndex.ts": "c509b1bae61019e1f9d6a9d5345198991a8420f88aa9e4eb04c33cb73b5e1b52",
+    "src/utils/prepareSearchIndex.ts": "e57d723c567cef64bca8eaade8f02d6acac1f9217a7c16632fc8d852bf7b0bfe",
+    "src/utils/literarySearch.ts": "0023e444161e580d53a5618b9a8ee0daf241062ecd00f8ee023da48b886afade",
+    "tests/host/search-preparation.spec.mjs": "26d13a6b527a7cf6288c107bac46af21ecb25e61ebff4422e00ab6451ce28c70",
+    "playwright.search-preparation.config.mjs": "db056e2c194d1d662fee6756ff178617062df7ddfc3544bef3a8b88e0582bb55"
+  },
+  "sourceUnchanged": true,
+  "bundleSha256": "19e733a5ca4d633cdb6233dc0a8373ee565d37f214cc9c381ecb0b3074e2e4e6",
+  "assertions": {
+    "initialYieldAndHostInterleaving": true,
+    "obsoleteLocaleCancelledAndNeverRendered": true,
+    "stableCallbacksReuseCompletedPreparation": true,
+    "completedOldLocaleHiddenBeforeEffectCleanup": true,
+    "unmountStopsIteratorConsumption": true,
+    "undefinedFailureHandledAndRetryFresh": true
+  },
+  "errors": [],
+  "runtime": {
+    "jobs": [
+      {
+        "id": 1,
+        "language": "ru",
+        "mode": "locale-race",
+        "consumed": 322,
+        "finalized": true,
+        "failed": false
+      },
+      {
+        "id": 2,
+        "language": "en",
+        "mode": "locale-race",
+        "consumed": 10000,
+        "finalized": true,
+        "failed": false
+      },
+      {
+        "id": 3,
+        "language": "ru",
+        "mode": "locale-race",
+        "consumed": 10000,
+        "finalized": true,
+        "failed": false
+      },
+      {
+        "id": 4,
+        "language": "en",
+        "mode": "unmount",
+        "consumed": 381,
+        "finalized": true,
+        "failed": false
+      },
+      {
+        "id": 5,
+        "language": "ru",
+        "mode": "failure",
+        "consumed": 200,
+        "finalized": true,
+        "failed": true
+      },
+      {
+        "id": 6,
+        "language": "ru",
+        "mode": "failure",
+        "consumed": 10000,
+        "finalized": true,
+        "failed": false
+      }
+    ],
+    "renders": [
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "loading": true,
+        "length": 0,
+        "firstLanguage": null,
+        "firstId": null,
+        "wrongLanguage": false,
+        "error": null
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "loading": true,
+        "length": 0,
+        "firstLanguage": null,
+        "firstId": null,
+        "wrongLanguage": false,
+        "error": null
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "loading": true,
+        "length": 0,
+        "firstLanguage": null,
+        "firstId": null,
+        "wrongLanguage": false,
+        "error": null
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "loading": true,
+        "length": 0,
+        "firstLanguage": null,
+        "firstId": null,
+        "wrongLanguage": false,
+        "error": null
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "loading": false,
+        "length": 10000,
+        "firstLanguage": "en",
+        "firstId": "00000",
+        "wrongLanguage": false,
+        "error": null
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "loading": false,
+        "length": 10000,
+        "firstLanguage": "en",
+        "firstId": "00000",
+        "wrongLanguage": false,
+        "error": null
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "loading": true,
+        "length": 0,
+        "firstLanguage": null,
+        "firstId": null,
+        "wrongLanguage": false,
+        "error": null
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "loading": true,
+        "length": 0,
+        "firstLanguage": null,
+        "firstId": null,
+        "wrongLanguage": false,
+        "error": null
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "loading": false,
+        "length": 10000,
+        "firstLanguage": "ru",
+        "firstId": "00000",
+        "wrongLanguage": false,
+        "error": null
+      },
+      {
+        "language": "en",
+        "mode": "unmount",
+        "loading": true,
+        "length": 0,
+        "firstLanguage": null,
+        "firstId": null,
+        "wrongLanguage": false,
+        "error": null
+      },
+      {
+        "language": "en",
+        "mode": "unmount",
+        "loading": true,
+        "length": 0,
+        "firstLanguage": null,
+        "firstId": null,
+        "wrongLanguage": false,
+        "error": null
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "loading": true,
+        "length": 0,
+        "firstLanguage": null,
+        "firstId": null,
+        "wrongLanguage": false,
+        "error": null
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "loading": true,
+        "length": 0,
+        "firstLanguage": null,
+        "firstId": null,
+        "wrongLanguage": false,
+        "error": null
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "loading": false,
+        "length": 0,
+        "firstLanguage": null,
+        "firstId": null,
+        "wrongLanguage": false,
+        "error": "Search index preparation failed"
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "loading": true,
+        "length": 0,
+        "firstLanguage": null,
+        "firstId": null,
+        "wrongLanguage": false,
+        "error": null
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "loading": true,
+        "length": 0,
+        "firstLanguage": null,
+        "firstId": null,
+        "wrongLanguage": false,
+        "error": null
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "loading": false,
+        "length": 10000,
+        "firstLanguage": "ru",
+        "firstId": "00000",
+        "wrongLanguage": false,
+        "error": null
+      }
+    ],
+    "pulses": [
+      {
+        "job": 1,
+        "consumed": 0
+      },
+      {
+        "job": 2,
+        "consumed": 0
+      },
+      {
+        "job": 2,
+        "consumed": 10000
+      },
+      {
+        "job": 3,
+        "consumed": 0
+      },
+      {
+        "job": 4,
+        "consumed": 0
+      },
+      {
+        "job": 5,
+        "consumed": 0
+      },
+      {
+        "job": 6,
+        "consumed": 0
+      }
+    ],
+    "initialTasks": [
+      {
+        "job": 1,
+        "consumed": 0
+      },
+      {
+        "job": 2,
+        "consumed": 0
+      },
+      {
+        "job": 3,
+        "consumed": 0
+      },
+      {
+        "job": 4,
+        "consumed": 0
+      },
+      {
+        "job": 5,
+        "consumed": 0
+      },
+      {
+        "job": 6,
+        "consumed": 0
+      }
+    ],
+    "hostTasks": [
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 1,
+        "consumed": 51
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 1,
+        "consumed": 174
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 1,
+        "consumed": 243
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 76
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 157
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 252
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 252
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 337
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 423
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 423
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 508
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 508
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 608
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 608
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 698
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 698
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 775
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 775
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 853
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 936
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 936
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 1021
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 1021
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 1109
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 1109
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 1208
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 1208
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 1308
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 1308
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 1398
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 1398
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 1480
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 1480
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 1564
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 1564
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 1664
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 1737
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 1737
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 1820
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 1820
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 1920
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 1920
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 2020
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 2020
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 2108
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 2108
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 2208
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 2208
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 2289
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 2289
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 2389
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 2489
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 2489
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 2589
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 2589
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 2689
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 2689
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 2787
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 2871
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 2871
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 2971
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 2971
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 3071
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 3071
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 3171
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 3171
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 3271
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 3271
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 3371
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 3371
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 3471
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 3471
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 3571
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 3571
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 3671
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 3671
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 3771
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 3771
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 3871
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 3871
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 3954
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 3954
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 4054
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 4054
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 4142
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 4142
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 4242
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 4242
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 4342
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 4342
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 4442
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 4442
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 4538
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 4538
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 4638
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 4638
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 4738
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 4738
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 4831
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 4831
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 4931
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 4931
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 5031
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 5031
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 5128
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 5128
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 5228
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 5228
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 5328
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 5328
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 5428
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 5528
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 5528
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 5626
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 5626
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 5726
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 5726
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 5826
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 5826
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 5926
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 5926
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 6026
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 6026
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 6126
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 6126
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 6226
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 6226
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 6326
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 6326
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 6426
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 6517
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 6517
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 6613
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 6613
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 6708
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 6708
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 6799
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 6799
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 6896
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 6896
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 6996
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 6996
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 7096
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 7096
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 7195
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 7195
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 7295
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 7395
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 7395
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 7487
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 7487
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 7587
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 7587
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 7687
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 7687
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 7787
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 7787
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 7887
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 7887
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 7987
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 7987
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 8082
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 8082
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 8182
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 8182
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 8282
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 8282
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 8381
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 8381
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 8478
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 8478
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 8578
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 8578
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 8678
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 8678
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 8765
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 8765
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 8848
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 8948
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 8948
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 9048
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 9048
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 9148
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 9148
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 9248
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 9248
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 9348
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 9348
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 9448
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 9448
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 9548
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 9548
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 9648
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 9648
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 9748
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 9748
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 9835
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 9835
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 9925
+      },
+      {
+        "language": "en",
+        "mode": "locale-race",
+        "job": 2,
+        "consumed": 9925
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 100
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 183
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 369
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 453
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 553
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 553
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 653
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 653
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 753
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 753
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 853
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 853
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 953
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 953
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 1053
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 1053
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 1153
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 1153
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 1253
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 1253
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 1353
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 1353
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 1453
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 1453
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 1542
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 1642
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 1642
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 1742
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 1742
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 1842
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 1842
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 1942
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 1942
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 2035
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 2035
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 2135
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 2135
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 2235
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 2235
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 2335
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 2335
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 2435
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 2435
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 2535
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 2535
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 2635
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 2635
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 2735
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 2835
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 2835
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 2935
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 2935
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 3035
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 3035
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 3135
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 3135
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 3229
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 3229
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 3329
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 3329
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 3429
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 3510
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 3510
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 3603
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 3603
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 3703
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 3703
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 3803
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 3903
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 3903
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 4003
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 4003
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 4103
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 4103
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 4203
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 4203
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 4303
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 4303
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 4390
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 4390
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 4482
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 4482
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 4582
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 4582
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 4682
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 4682
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 4782
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 4782
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 4882
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 4882
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 4982
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 4982
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 5082
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 5082
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 5182
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 5182
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 5282
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 5282
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 5371
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 5371
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 5471
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 5471
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 5571
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 5571
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 5666
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 5666
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 5766
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 5766
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 5864
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 5864
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 5964
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 6064
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 6064
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 6164
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 6164
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 6264
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 6364
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 6364
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 6464
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 6464
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 6564
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 6564
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 6664
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 6764
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 6764
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 6864
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 6864
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 6964
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 6964
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 7064
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 7164
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 7164
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 7264
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 7264
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 7363
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 7363
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 7463
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 7463
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 7563
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 7563
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 7663
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 7663
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 7763
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 7763
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 7863
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 7863
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 7963
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 8063
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 8063
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 8163
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 8163
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 8263
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 8263
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 8363
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 8363
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 8463
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 8463
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 8563
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 8563
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 8663
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 8663
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 8763
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 8763
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 8863
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 8863
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 8963
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 8963
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 9063
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 9063
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 9163
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 9163
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 9263
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 9263
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 9349
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 9349
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 9449
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 9549
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 9549
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 9649
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 9649
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 9749
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 9749
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 9848
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 9848
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 9948
+      },
+      {
+        "language": "ru",
+        "mode": "locale-race",
+        "job": 3,
+        "consumed": 9948
+      },
+      {
+        "language": "en",
+        "mode": "unmount",
+        "job": 4,
+        "consumed": 100
+      },
+      {
+        "language": "en",
+        "mode": "unmount",
+        "job": 4,
+        "consumed": 281
+      },
+      {
+        "language": "en",
+        "mode": "unmount",
+        "job": 4,
+        "consumed": 381
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 5,
+        "consumed": 100
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 5,
+        "consumed": 200
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 100
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 300
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 391
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 491
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 591
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 591
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 691
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 691
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 791
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 791
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 891
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 891
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 991
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 991
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 1091
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 1091
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 1191
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 1191
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 1291
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 1291
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 1391
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 1391
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 1482
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 1482
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 1582
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 1582
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 1669
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 1769
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 1769
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 1869
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 1869
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 1964
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 1964
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 2064
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 2164
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 2164
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 2264
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 2264
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 2364
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 2364
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 2464
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 2464
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 2564
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 2564
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 2664
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 2664
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 2750
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 2750
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 2850
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 2850
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 2950
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 2950
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 3050
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 3050
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 3150
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 3150
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 3250
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 3250
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 3350
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 3350
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 3450
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 3450
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 3550
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 3550
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 3650
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 3650
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 3750
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 3750
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 3850
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 3850
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 3950
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 3950
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 4050
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 4050
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 4150
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 4150
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 4250
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 4250
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 4350
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 4350
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 4450
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 4450
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 4540
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 4540
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 4640
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 4740
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 4740
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 4840
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 4840
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 4940
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 4940
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 5040
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 5040
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 5140
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 5140
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 5240
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 5240
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 5340
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 5340
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 5424
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 5424
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 5524
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 5524
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 5620
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 5620
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 5720
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 5720
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 5820
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 5820
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 5920
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 5920
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 6020
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 6120
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 6120
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 6220
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 6220
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 6320
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 6320
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 6420
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 6420
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 6520
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 6520
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 6620
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 6620
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 6720
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 6820
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 6820
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 6920
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 6920
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 7017
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 7017
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 7117
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 7117
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 7217
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 7217
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 7317
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 7417
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 7417
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 7517
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 7517
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 7617
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 7617
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 7717
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 7717
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 7817
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 7817
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 7917
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 7917
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 8017
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 8017
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 8117
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 8117
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 8217
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 8217
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 8317
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 8417
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 8517
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 8517
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 8617
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 8717
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 8717
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 8817
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 8817
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 8917
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 8917
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 9017
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 9017
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 9117
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 9217
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 9217
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 9317
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 9417
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 9417
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 9517
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 9517
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 9617
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 9617
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 9717
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 9717
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 9817
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 9817
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 9917
+      },
+      {
+        "language": "ru",
+        "mode": "failure",
+        "job": 6,
+        "consumed": 9917
+      }
+    ],
+    "actions": [
+      {
+        "action": "begin",
+        "mode": "locale-race"
+      },
+      {
+        "action": "language",
+        "language": "en"
+      },
+      {
+        "action": "language",
+        "language": "ru"
+      },
+      {
+        "action": "begin",
+        "mode": "unmount"
+      },
+      {
+        "action": "unmount"
+      },
+      {
+        "action": "begin",
+        "mode": "failure"
+      }
+    ]
+  },
+  "stageAccepted": false,
+  "releaseReady": false
+}

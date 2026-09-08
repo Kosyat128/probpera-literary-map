@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T12:52:27.151Z",
+  "status": "SOURCE_VALIDATION_PASSED",
+  "stage": "S10",
+  "entry": "docs/mobile/evidence/S10/capacity-20260908/entry.json",
+  "testedWorkingSourceSha256": "376de49f8be7faffebc1d4cc9e3ab474148d8c89465d520c114b414fb5464f35",
+  "implementation": [
+    "src/App.tsx",
+    "src/utils/literarySearch.ts",
+    "src/utils/prepareSearchIndex.ts",
+    "src/search/globalSearchIndex.ts",
+    "src/search/globalSearchRuntime.ts",
+    "src/search/usePreparedSearchIndex.ts"
+  ],
+  "validation": {
+    "uniqueUnitPasses": 80,
+    "totalTestExecutions": 105,
+    "repeatedAffectedPasses": 25,
+    "unitEvidence": [
+      "unit-a1/result.json",
+      "unit-async-a1/result.json"
+    ],
+    "staticEvidence": "static-a2/result.json",
+    "actualBrowserPasses": 2,
+    "sourceBrowserEvidence": [
+      "browser-a2/result.json",
+      "hook-browser-a1/result.json"
+    ],
+    "earlierSourceBrowser": "browser-a1/result.json; passed compiled search before async refinement and retained as historical evidence",
+    "unchangedCompiledEngineBenchmarkReused": true,
+    "runtime": [
+      "Canonical mobile book search resolves four existing RU/EN published-title pairs and preserves the same globe/selection.",
+      "The mounted React hook uses the actual batching helper and a synthetic10000-row fixture; host tasks interleave, superseded locale/unmount cancel, stale rows are hidden and retry works.",
+      "Shared runtime tests retain single same-key promise, abort stale preparation and protect the new cache from obsolete completions."
+    ]
+  },
+  "capacity": {
+    "fixture": "DETERMINISTIC_SYNTHETIC_NOT_PRODUCTION_CATALOG",
+    "count": 10000,
+    "corpusSha256": "aeff69759ce9e5fbba802d00c431f5a210b4c3885d170887176d6c534ed03813",
+    "baselineRef": "89ce01c60fafb5067c997c7f130c432c3750ad04",
+    "engineSha256": "0023e444161e580d53a5618b9a8ee0daf241062ecd00f8ee023da48b886afade",
+    "evidence": "benchmark-a1/result.json",
+    "modes": [
+      {
+        "mode": "atlas",
+        "preparationMs": 822.912,
+        "retainedHeapDeltaBytes": 33389448,
+        "baseline": {
+          "medianMs": 795.845,
+          "p95Ms": 987.527,
+          "maxMs": 991.363
+        },
+        "compiled": {
+          "medianMs": 6.908,
+          "p95Ms": 8.539,
+          "maxMs": 9.401
+        },
+        "medianSpeedup": 115.206,
+        "allRankedKeyAndScoreDigestsEqual": true
+      },
+      {
+        "mode": "shared-fields",
+        "preparationMs": 827.924,
+        "retainedHeapDeltaBytes": 32561928,
+        "baseline": {
+          "medianMs": 940.917,
+          "p95Ms": 2480.637,
+          "maxMs": 3354.394
+        },
+        "compiled": {
+          "medianMs": 6.292,
+          "p95Ms": 9.551,
+          "maxMs": 10.611
+        },
+        "medianSpeedup": 149.542,
+        "allRankedKeyAndScoreDigestsEqual": true
+      }
+    ],
+    "allRankedKeyAndScoreDigestsEqual": true,
+    "preparationRefinement": "The measured synchronous823ms preparation is now scheduled in initial/between-batch host tasks, with8ms budget and100 iterator/mapper operations per batch. This is cooperative scheduling, not an installed-device FPS claim.",
+    "boundaries": [
+      "Node desktop engine measurement; not installed-device or browser main-thread latency certification.",
+      "Shared-fields mode measures matching/scoring, not full global suggestion grouping, article loading or publication checks.",
+      "Preparation is synchronous and memory is an approximate retained V8 heap delta after GC; cold startup/chunk scheduling require separate measurement.",
+      "Mixed-query percentiles describe these 28 samples per mode; no production SLA is inferred.",
+      "No synthetic record has publication, translation, title evidence or rights approval.",
+      "Rank digests compare score/key order, not full UI label/suggestion sorting.",
+      "Heap delta is added prepared data while the raw fixture remains resident."
+    ]
+  },
+  "canonicalDataChanged": false,
+  "newEditorialApprovalCreated": false,
+  "firstOpenCriterion": "S03.acceptance",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false,
+  "remaining": [
+    "Fresh Android/dev and local-QA PWA artifacts follow the source commit.",
+    "Publication gate currently admits four books; synthetic10000 capacity does not add or verify a production catalog.",
+    "Full native/transliteration alias evidence, child isolation, collection/passport, English biographies/content, edition covers/owner correction workflow, Planetka and device/store/legal/release gates remain open.",
+    "Frozen iOS83 unchanged and pending; no new iOS build."
+  ]
+}

@@ -101,10 +101,13 @@ import {
   getMonthlySelectionIndex,
 } from "./utils/monthlySelection";
 import {
-  literarySearchMatches,
-  literarySearchScore,
+  compileLiterarySearchFields,
+  compileLiterarySearchQuery,
+  compiledLiterarySearchMatches,
+  compiledLiterarySearchMatchScore,
   normalizeLiterarySearch,
 } from "./utils/literarySearch";
+import { usePreparedSearchIndex } from "./search/usePreparedSearchIndex";
 import { safePublicHref } from "./utils/publicHref";
 import { scrollToDeferredHashTarget } from "./utils/deferredHashNavigation";
 import { useAtlasExperience } from "./atlas/useAtlasExperience";
@@ -216,6 +219,15 @@ type AtlasSearchResult =
   | { type: "country"; key: string; country: Country; label: string; searchText: string }
   | { type: "writer"; key: string; country: Country; writer: Writer; label: string; searchText: string }
   | { type: "book"; key: string; country: Country; writer: Writer; book: BookArchiveEntry; label: string; searchText: string };
+
+function prepareAtlasSearchResult(result: AtlasSearchResult) {
+  // Preserve the atlas's joined-field stopword policy and independent label rank.
+  return {
+    result,
+    fields: compileLiterarySearchFields([result.searchText]),
+    label: compileLiterarySearchFields([result.label]),
+  };
+}
 
 const featuredCountryIds = [
   "russia",
@@ -1169,12 +1181,10 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
       window.removeEventListener("popstate", applyAtlasUrlSelection);
   }, [applyAtlasUrlSelection]);
 
-  const atlasSearchIndex = useMemo<AtlasSearchResult[]>(() => {
-    const results: AtlasSearchResult[] = [];
-
+  const atlasSearchSource = useMemo(() => function* (): Generator<AtlasSearchResult> {
     for (const country of countryArchive) {
       const localizedCountryName = countryName(country.code, country.name);
-      results.push({
+      yield {
         type: "country",
         key: `country:${country.id}`,
         country,
@@ -1194,12 +1204,12 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
             .filter(Boolean)
             .join(" ")
         ),
-      });
+      };
 
       for (const writer of country.writers) {
         const label = writerSearchLabel(writer, language);
         if (!label) continue;
-        results.push({
+        yield {
           type: "writer",
           key: `writer:${country.id}:${writer.id}`,
           country,
@@ -1222,7 +1232,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
               .filter(Boolean)
               .join(" ")
           ),
-        });
+        };
       }
     }
 
@@ -1230,7 +1240,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
       for (const book of verifiedBookArchive) {
         const displayedBook =
           bookArchiveRuntime.presentBookArchiveEntry(book, language);
-        results.push({
+        yield {
           type: "book",
           key: `book:${book.countryId}:${book.writerId}:${book.id}`,
           country: book.country,
@@ -1251,12 +1261,15 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
               .filter(Boolean)
               .join(" ")
           ),
-        });
+        };
       }
     }
-
-    return results;
   }, [bookArchiveRuntime, countryArchive, countryName, language, t, verifiedBookArchive]);
+
+  const atlasSearchPreparation = usePreparedSearchIndex(atlasSearchSource, prepareAtlasSearchResult);
+  const atlasSearchIndex = atlasSearchPreparation.items;
+
+  const atlasSearchCollator = useMemo(() => new Intl.Collator(language), [language]);
 
   useEffect(() => {
     if (
@@ -1269,10 +1282,10 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
   }, [filteredCountries, selectedCountry]);
 
   const searchResults = useMemo(() => {
-    const query = normalizeLiterarySearch(search);
+    const query = compileLiterarySearchQuery(search);
     const source = atlasFilter === "all" ? countryArchive : filteredCountries;
 
-    if (!query) {
+    if (!query.normalizedQuery) {
       return featuredCountryIds
         .map((id) => source.find((country) => country.id === id))
         .filter((country): country is Country => Boolean(country))
@@ -1288,23 +1301,24 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     const allowedIds = new Set(source.map((country) => country.id));
     return atlasSearchIndex
       .filter(
-        ({ country, searchText }) =>
-          allowedIds.has(country.id) &&
-          literarySearchMatches(query, [searchText])
+        ({ result, fields }) =>
+          allowedIds.has(result.country.id) &&
+          compiledLiterarySearchMatches(query, fields)
       )
-      .map((result) => {
-        const score = literarySearchScore(result.label, query);
+      .map(({ result, label }) => {
+        const score = compiledLiterarySearchMatchScore(query, label) ?? 6;
         return { result, score };
       })
       .sort(
         (first, second) =>
           first.score - second.score ||
-          first.result.label.localeCompare(second.result.label, language)
+          atlasSearchCollator.compare(first.result.label, second.result.label)
       )
       .map(({ result }) => result)
       .slice(0, 12);
   }, [
     atlasSearchIndex,
+    atlasSearchCollator,
     atlasFilter,
     countryArchive,
     countryName,
@@ -2314,10 +2328,15 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
                   : t("Россия, Достоевский, «Моби Дик»…")
               }
               caption={search ? t("Результаты поиска") : t("Избранные архивы")}
-              emptyContent={t("Ничего не найдено в выбранной коллекции.")}
+              emptyContent={atlasSearchPreparation.error ? (
+                <button type="button" onClick={atlasSearchPreparation.retry}>
+                  {t("Повторить поиск")}
+                </button>
+              ) : t("Ничего не найдено в выбранной коллекции.")}
               loading={
                 Boolean(search.trim()) &&
-                (archiveDataStatus === "loading" ||
+                (atlasSearchPreparation.loading ||
+                  archiveDataStatus === "loading" ||
                   bookRuntimeStatus === "idle" ||
                   bookRuntimeStatus === "loading")
               }
