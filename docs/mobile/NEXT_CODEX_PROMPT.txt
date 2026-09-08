@@ -1,3 +1,10 @@
+CURRENT PWA 2026-09-08: completed the fresh bounded regression. Read
+evidence/S03/current-pwa-20260908/result.json before any rebuild. Do not repeat
+unchanged green checks. Dist-pwa7c35eb3e and archived46210d8e are distinct
+QA authorities with the same product source; both signers are now stopped.
+Next: isolated iOS simulator launch using only the existing public workflow
+and helper delta; keep its historical source separate from current main.
+
 CURRENT 2026-09-08: navigation/image follow-up is validated; fresh Android/dev
 46ebba56 APK and runtime are preserved under .tmp/native-builds/android-dev/46ebba56.
 Read evidence/S04/navigation-followup-20260908/result.json. Next: fresh isolated

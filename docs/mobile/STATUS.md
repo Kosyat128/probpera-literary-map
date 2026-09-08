@@ -118,3 +118,15 @@ The historical191 unit tests did not establish StrictMode integration behavior;
 new evidence explicitly corrects those earlier broad claims.
 The interrupted safe-reader deletion checkpoint records130 prior-run tests/5 files;
 no repeat run or broader account-deletion completion is claimed.
+
+2026-09-08 current PWA:46210d8e first run11 PASS/1 selector FAIL; corrected
+global-search locator and reran only the failed mobile writer/offline scenario:
+7c35eb3e PASS. Product source inputs/worker/commit are identical; QA authorities
+are distinct. Both341-file artifact audits pass. Actual scene/locale/offline,
+favorites/recent tests and RU/EN raw HTTP metadata are preserved in
+evidence/S03/current-pwa-20260908/result.json. Four actual QA screenshots
+are identified by hash; no RC/store/native-device claim. Historical b006 is
+preserved under .tmp/pwa-artifacts/b006c275-before-20260908-a; default authority
+and control files remain unchanged. Current dist-pwa is7c35eb3e; its ephemeral
+signer ended with the test run. Next separate work is authorized cloud iOS
+simulator launch of the existing public payload. S03/S04 remain IN_PROGRESS.

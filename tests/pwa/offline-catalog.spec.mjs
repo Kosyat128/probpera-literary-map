@@ -1,8 +1,19 @@
 import { readFile } from "node:fs/promises";
 import { expect, test } from "@playwright/test";
 
+const qaControlPath = process.env.PWA_QA_CONTROL_PATH ?? ".tmp/pwa-qa/server.json";
+const qaOrigin = process.env.PWA_QA_ORIGIN ?? "http://127.0.0.1:4293";
+if (!/^\.tmp\/pwa-qa\/[A-Za-z0-9._-]+\.json$/u.test(qaControlPath)
+  || !/^http:\/\/127\.0\.0\.1:\d{1,5}$/u.test(qaOrigin)) throw new Error("Invalid local PWA QA configuration");
+
+async function readQaConfiguration() {
+  const configuration = JSON.parse(await readFile(qaControlPath, "utf8"));
+  if (configuration.localQaOnly !== true || configuration.origin !== qaOrigin) throw new Error("PWA QA control origin mismatch");
+  return configuration;
+}
+
 async function prepare(page, request) {
-  const config = JSON.parse(await readFile(".tmp/pwa-qa/server.json", "utf8"));
+  const config = await readQaConfiguration();
   const reset = await request.post(config.origin + "/__pwa_qa__/control", { headers: { Authorization: "Bearer " + config.controlToken }, data: { action: "reset" } });
   expect(reset.status()).toBe(200);
   await page.goto("/planet/ru/?country=russia#atlas");
@@ -19,7 +30,7 @@ test("cold offline writer biography and works use the canonical catalog", async 
     await page.locator(".global-search-trigger").click();
     // This exact canonical writer/work passes both the writer-panel and the
     // enriched book publication selectors (verifiedBookSupplements.ts).
-    await page.getByRole("searchbox").fill("Galsworthy");
+    await page.locator(".global-search").getByRole("searchbox").fill("Galsworthy");
     const author = page.locator(".global-search-results button").filter({ hasText: /Голсуорси|Galsworthy/iu }).first();
     await expect(author).toBeVisible();
     await author.click();
@@ -59,7 +70,7 @@ test("cold offline writer biography and works use the canonical catalog", async 
 });
 
 test("cold offline Dostoevsky enrichment preserves writer, works tab and actual scene across RU/EN", async ({ page, context, request, isMobile }, testInfo) => {
-  const config = JSON.parse(await readFile(".tmp/pwa-qa/server.json", "utf8"));
+  const config = await readQaConfiguration();
   const requests = [], fetchAttempts = [];
   page.on("request", request => requests.push(request.url()));
   // Observe real fetch calls, including attempts rejected by CSP/offline mode;

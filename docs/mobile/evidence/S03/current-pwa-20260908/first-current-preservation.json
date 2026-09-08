@@ -1,0 +1,10 @@
+{
+  "source": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\dist-pwa",
+  "preservedPath": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\pwa-artifacts\\46210d8e-current-20260908-a",
+  "buildId": "46210d8e9a47205ee1c97f11d8c266e15f96e7c3b96dd8c33a0746b46f24108d",
+  "sha256": "56A91E58564261C803DF5EC48604A8C10C778FB8F3226831D1D3EDD8771148F4",
+  "preservedAt": "2026-09-08T01:53:41.1254067+00:00",
+  "browserPassed": 11,
+  "browserFailed": 1,
+  "failure": "Ambiguous searchbox locator; observed two real search fields"
+}

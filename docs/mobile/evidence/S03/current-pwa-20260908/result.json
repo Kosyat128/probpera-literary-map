@@ -1,0 +1,338 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-09-08T02:00:02.385Z",
+  "kind": "s03-current-pwa-working-validation",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "sourceCommit": "caf5e7f034911611cc620555ac600db60bb0cd74",
+  "sourceInputsSha256": "942c6662298cf3ebb52d10fb9578d7cc4fa9f61ca53abe3e652de00e2a4baa62",
+  "candidates": [
+    {
+      "buildId": "46210d8e9a47205ee1c97f11d8c266e15f96e7c3b96dd8c33a0746b46f24108d",
+      "path": ".tmp/pwa-artifacts/46210d8e-current-20260908-a",
+      "audit": "docs/mobile/evidence/S03/current-pwa-20260908/artifact-audit-a.json",
+      "browserRun": "a"
+    },
+    {
+      "buildId": "7c35eb3e488e869e99dc04299b3b1c0cd954c87036d40e344cec5142cd4630a9",
+      "path": "dist-pwa",
+      "audit": "docs/mobile/evidence/S03/current-pwa-20260908/artifact-audit-b.json",
+      "browserRun": "b"
+    }
+  ],
+  "commands": {
+    "first": "PWA_CROSS_ENGINE_RUN_ID=s03-current-20260908-a PWA_CROSS_ENGINE_PORT=4296 PWA_CROSS_ENGINE_ALLOW_BUILD=1 node node_modules/@playwright/test/cli.js test --config playwright.pwa-current.config.mjs --grep 'real signed access|cold offline RU and EN launch|cold offline writer biography|cold offline Dostoevsky|canonical book favorite|recent writer opens'",
+    "retry": "Same isolated environment with runId=s03-current-20260908-b; node node_modules/@playwright/test/cli.js test --config playwright.pwa-current.config.mjs --project pwa-mobile --grep 'cold offline writer biography'",
+    "audit": "node scripts/mobile/verify-pwa-artifact.mjs --dir dist-pwa --allow-qa",
+    "environment": "Workspace browser path, process-scoped Git safe.directory; approved escalation needed for esbuild parent-directory read."
+  },
+  "runs": [
+    {
+      "id": "a",
+      "artifactBuildId": "46210d8e9a47205ee1c97f11d8c266e15f96e7c3b96dd8c33a0746b46f24108d",
+      "stats": {
+        "startTime": "2026-09-08T01:49:36.628Z",
+        "duration": 191256.368,
+        "expected": 11,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      },
+      "rawReport": {
+        "path": ".tmp/pwa-cross-engine-results/s03-current-20260908-a/results.json",
+        "sha256": "55b6a51540dac6a1f4576fbd09580f4747815c68316da55518d55a901aa40fe4",
+        "privateLocalOnly": true
+      },
+      "tests": [
+        {
+          "title": "real signed access, locale and connectivity preserve the actual R3F scene",
+          "project": "pwa-desktop",
+          "status": "passed",
+          "durationMs": 8793,
+          "errors": [],
+          "sceneEvidence": [
+            {
+              "name": "scene-identity-evidence",
+              "value": {
+                "buildId": "46210d8e9a47205ee1c97f11d8c266e15f96e7c3b96dd8c33a0746b46f24108d",
+                "canonicalCanvas": true,
+                "sameRenderer": true,
+                "sameCamera": true,
+                "sameScene": true,
+                "languages": [
+                  "ru",
+                  "en"
+                ],
+                "offlineReconnect": true,
+                "localQaOnly": true
+              }
+            }
+          ]
+        },
+        {
+          "title": "cold offline RU and EN launch preserve country and load first-use search",
+          "project": "pwa-desktop",
+          "status": "passed",
+          "durationMs": 12280,
+          "errors": [],
+          "sceneEvidence": []
+        },
+        {
+          "title": "real signed access, locale and connectivity preserve the actual R3F scene",
+          "project": "pwa-mobile",
+          "status": "passed",
+          "durationMs": 10496,
+          "errors": [],
+          "sceneEvidence": [
+            {
+              "name": "scene-identity-evidence",
+              "value": {
+                "buildId": "46210d8e9a47205ee1c97f11d8c266e15f96e7c3b96dd8c33a0746b46f24108d",
+                "canonicalCanvas": true,
+                "sameRenderer": true,
+                "sameCamera": true,
+                "sameScene": true,
+                "languages": [
+                  "ru",
+                  "en"
+                ],
+                "offlineReconnect": true,
+                "localQaOnly": true
+              }
+            }
+          ]
+        },
+        {
+          "title": "cold offline RU and EN launch preserve country and load first-use search",
+          "project": "pwa-mobile",
+          "status": "passed",
+          "durationMs": 11942,
+          "errors": [],
+          "sceneEvidence": []
+        },
+        {
+          "title": "cold offline writer biography and works use the canonical catalog",
+          "project": "pwa-desktop",
+          "status": "passed",
+          "durationMs": 30797,
+          "errors": [],
+          "sceneEvidence": []
+        },
+        {
+          "title": "cold offline Dostoevsky enrichment preserves writer, works tab and actual scene across RU/EN",
+          "project": "pwa-desktop",
+          "status": "passed",
+          "durationMs": 12625,
+          "errors": [],
+          "sceneEvidence": [
+            {
+              "name": "dostoevsky-offline-locale-evidence",
+              "value": {
+                "scope": "actual local QA artifact",
+                "book": "russia:dostoevsky:crime-and-punishment",
+                "titles": {
+                  "ru": "Преступление и наказание",
+                  "en": "Crime and Punishment"
+                },
+                "locales": [
+                  "ru",
+                  "en",
+                  "ru"
+                ],
+                "coldOffline": true,
+                "sameDocument": true,
+                "sameWriterDetail": true,
+                "sameWorksTab": true,
+                "sameWorksPanel": true,
+                "sameCanvas": true,
+                "sameRenderer": true,
+                "sameCamera": true,
+                "sameScene": true,
+                "externalRequests": [],
+                "remoteNewsOrDossierRequests": []
+              }
+            }
+          ]
+        },
+        {
+          "title": "canonical book favorite survives cold offline reload and locale route change",
+          "project": "pwa-desktop",
+          "status": "passed",
+          "durationMs": 15044,
+          "errors": [],
+          "sceneEvidence": []
+        },
+        {
+          "title": "recent writer opens outside the active country filter without replacing the globe",
+          "project": "pwa-desktop",
+          "status": "passed",
+          "durationMs": 9723,
+          "errors": [],
+          "sceneEvidence": []
+        },
+        {
+          "title": "cold offline writer biography and works use the canonical catalog",
+          "project": "pwa-mobile",
+          "status": "failed",
+          "durationMs": 8318,
+          "errors": [
+            "Error: locator.fill: Error: strict mode violation: getByRole('searchbox') resolved to 2 elements:\n    1) <input value=\"\" type=\"search\" placeholder=\"Название, тема или рубрика…\"/> aka getByRole('searchbox', { name: 'Поиск по публикациям' })\n    2) <input value=\"\" type=\"search\" autocomplete=\"off\" aria-label=\"Страна, писатель, книга, статья, эпоха…\" placeholder=\"Страна, писатель, книга, статья, эпоха…\"/> aka getByRole('searchbox', { name: 'Страна, писатель, книга, статья, эпоха…' })\n\nCall log:\n\u001b[2m  - waiting for getByRole('searchbox')\u001b[22m\n\n\n  31 |     // This exact canonical writer/work passes both the writer-panel and the\n  32 |     // enriched book publication selectors (verifiedBookSupplements.ts).\n> 33 |     await page.getByRole(\"searchbox\").fill(\"Galsworthy\");\n     |                                       ^\n  34 |     const author = page.locator(\".global-search-results button\").filter({ hasText: /Голсуорси|Galsworthy/iu }).first();\n  35 |     await expect(author).toBeVisible();\n  36 |     await author.click();\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\offline-catalog.spec.mjs:33:39"
+          ],
+          "sceneEvidence": []
+        },
+        {
+          "title": "cold offline Dostoevsky enrichment preserves writer, works tab and actual scene across RU/EN",
+          "project": "pwa-mobile",
+          "status": "passed",
+          "durationMs": 17421,
+          "errors": [],
+          "sceneEvidence": [
+            {
+              "name": "dostoevsky-offline-locale-evidence",
+              "value": {
+                "scope": "actual local QA artifact",
+                "book": "russia:dostoevsky:crime-and-punishment",
+                "titles": {
+                  "ru": "Преступление и наказание",
+                  "en": "Crime and Punishment"
+                },
+                "locales": [
+                  "ru",
+                  "en",
+                  "ru"
+                ],
+                "coldOffline": true,
+                "sameDocument": true,
+                "sameWriterDetail": true,
+                "sameWorksTab": true,
+                "sameWorksPanel": true,
+                "sameCanvas": true,
+                "sameRenderer": true,
+                "sameCamera": true,
+                "sameScene": true,
+                "externalRequests": [],
+                "remoteNewsOrDossierRequests": []
+              }
+            }
+          ]
+        },
+        {
+          "title": "canonical book favorite survives cold offline reload and locale route change",
+          "project": "pwa-mobile",
+          "status": "passed",
+          "durationMs": 20963,
+          "errors": [],
+          "sceneEvidence": []
+        },
+        {
+          "title": "recent writer opens outside the active country filter without replacing the globe",
+          "project": "pwa-mobile",
+          "status": "passed",
+          "durationMs": 13617,
+          "errors": [],
+          "sceneEvidence": []
+        }
+      ]
+    },
+    {
+      "id": "b",
+      "artifactBuildId": "7c35eb3e488e869e99dc04299b3b1c0cd954c87036d40e344cec5142cd4630a9",
+      "stats": {
+        "startTime": "2026-09-08T01:54:23.482Z",
+        "duration": 43292.229,
+        "expected": 1,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "rawReport": {
+        "path": ".tmp/pwa-cross-engine-results/s03-current-20260908-b/results.json",
+        "sha256": "6fd4040bf103bb330994530c016c26800b3ddbee740d6655c51cb76d7f05f4b0",
+        "privateLocalOnly": true
+      },
+      "tests": [
+        {
+          "title": "cold offline writer biography and works use the canonical catalog",
+          "project": "pwa-mobile",
+          "status": "passed",
+          "durationMs": 25198,
+          "errors": [],
+          "sceneEvidence": []
+        }
+      ]
+    }
+  ],
+  "conclusion": "11 of 12 first-run scenarios passed. One ambiguous test locator failed before writer selection; scoped it to the open global-search component. Only that mobile scenario was rerun and passed. Both candidates have identical product source inputs/commit/worker source and distinct ephemeral QA authorities. This is not a single clean 12-test run.",
+  "correction": {
+    "productCodeChangedForRetry": false,
+    "testSelector": "page.locator(\".global-search\").getByRole(\"searchbox\")",
+    "assertionsWeakened": false
+  },
+  "auditEnvironment": "First sandbox auditor reported WORKER_EXECUTABLE because its esbuild verification could not complete under the sandbox. The same unchanged first candidate passed with approved escalation; failure report preserved.",
+  "metadata": "docs/mobile/evidence/S03/current-pwa-20260908/http-metadata-a.json",
+  "screenshots": [
+    {
+      "path": ".tmp/pwa-cross-engine-results/s03-current-20260908-a/artifacts/controlled-pwa-real-signed-5b137-eserve-the-actual-R3F-scene-pwa-desktop/ru-actual-pwa.png",
+      "bytes": 378600,
+      "sha256": "a39012bcdbc828af77cd18f96e8d7499723f934a1b1fdf5e54378fae8569dd47",
+      "device": "desktop",
+      "locale": "ru",
+      "artifactBuildId": "46210d8e9a47205ee1c97f11d8c266e15f96e7c3b96dd8c33a0746b46f24108d",
+      "releaseCandidate": false
+    },
+    {
+      "path": ".tmp/pwa-cross-engine-results/s03-current-20260908-a/artifacts/controlled-pwa-real-signed-5b137-eserve-the-actual-R3F-scene-pwa-desktop/en-actual-pwa.png",
+      "bytes": 385406,
+      "sha256": "bbf6ce4ad49bc6e2625ab086c38bd48a455b36d2d44fa5e0010fdc96c603eaf8",
+      "device": "desktop",
+      "locale": "en",
+      "artifactBuildId": "46210d8e9a47205ee1c97f11d8c266e15f96e7c3b96dd8c33a0746b46f24108d",
+      "releaseCandidate": false
+    },
+    {
+      "path": ".tmp/pwa-cross-engine-results/s03-current-20260908-a/artifacts/controlled-pwa-real-signed-5b137-eserve-the-actual-R3F-scene-pwa-mobile/ru-actual-pwa.png",
+      "bytes": 603189,
+      "sha256": "7a9bdf4a944a0dc6abfc91d37073d4ee6311b4c66fc8630028955e4214293517",
+      "device": "mobile",
+      "locale": "ru",
+      "artifactBuildId": "46210d8e9a47205ee1c97f11d8c266e15f96e7c3b96dd8c33a0746b46f24108d",
+      "releaseCandidate": false
+    },
+    {
+      "path": ".tmp/pwa-cross-engine-results/s03-current-20260908-a/artifacts/controlled-pwa-real-signed-5b137-eserve-the-actual-R3F-scene-pwa-mobile/en-actual-pwa.png",
+      "bytes": 732970,
+      "sha256": "8aaec1843e29b72f44b6e660a24203bf7a8fa97d12817c85cdade10fbe2811d9",
+      "device": "mobile",
+      "locale": "en",
+      "artifactBuildId": "46210d8e9a47205ee1c97f11d8c266e15f96e7c3b96dd8c33a0746b46f24108d",
+      "releaseCandidate": false
+    }
+  ],
+  "testSources": [
+    {
+      "path": "tests/pwa/controlled-pwa.spec.mjs",
+      "sha256": "d8426ae77959514da6b72bbd3520fe50f019fb9a7a7bcf39b06cdf0a6f2abc75"
+    },
+    {
+      "path": "tests/pwa/offline-catalog.spec.mjs",
+      "sha256": "d15fea228178351dff7964fc71f6a75df3ac46f7a594f854f210cf326b4217e8"
+    },
+    {
+      "path": "playwright.pwa-current.config.mjs",
+      "sha256": "a1dd4f348dff085913e9b3241902bf1617b9fe170e49cbd88565a74f054c7749"
+    }
+  ],
+  "preservation": {
+    "historicalDefaultAuthorityAndControlUnchanged": true,
+    "publicKeyOrControlTokenPublished": false,
+    "rawTracesKeptPrivate": true,
+    "signers": "Fresh per-run in-memory local QA keys; both test servers ended. Do not replace these public authorities to simulate their stopped signers."
+  },
+  "limits": [
+    "Chrome desktop and mobile viewport tests, not installed Windows PWA, native Android/iOS or physical-device execution.",
+    "Actual canonical Canvas/renderer/camera/scene, RU/EN locale, first-use cold-offline writer/work search, favorites and recent selection were exercised; no whole-catalog English review claim.",
+    "HTTP evidence covers controlled /planet/ RU/EN shell/manifest/static404 with deliberate noindex. Public production /ru/ and /en/ SEO, deployment fallback and final localized legal/support remain separate.",
+    "Screenshots show the exact identified QA candidate; they are not release-candidate/store screenshots.",
+    "Earlier cross-engine 4 pass / 2 fail and b006 Chrome20 results remain separately preserved. No global or stage acceptance is inferred."
+  ]
+}

@@ -1,0 +1,204 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T01:51:42.097Z",
+  "origin": "http://127.0.0.1:4296",
+  "scope": "Read-only raw HTTP metadata and body; no browser execution, QA controls, tokens, publishing or content-review certification",
+  "buildId": "46210d8e9a47205ee1c97f11d8c266e15f96e7c3b96dd8c33a0746b46f24108d",
+  "sourceCommit": "caf5e7f034911611cc620555ac600db60bb0cd74",
+  "sourceInputsSha256": "942c6662298cf3ebb52d10fb9578d7cc4fa9f61ca53abe3e652de00e2a4baa62",
+  "checks": [
+    {
+      "endpoint": "/planet/ru/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 2872,
+      "sha256": "b350965d99170778d887768e27ba128e75c2619b1915f7828f252fa53470db42",
+      "localPath": "dist-pwa/ru/index.html",
+      "matchesBuildOutput": true,
+      "html": {
+        "lang": "ru",
+        "routeLanguage": "ru",
+        "title": "Литературная планета",
+        "robots": "noindex,nofollow",
+        "canonical": "https://probpera.ru/planet/ru/",
+        "alternates": {
+          "ru": "https://probpera.ru/planet/ru/",
+          "en": "https://probpera.ru/planet/en/",
+          "x-default": "https://probpera.ru/planet/"
+        },
+        "manifest": "/planet/ru/manifest.webmanifest",
+        "ogLocale": "ru_RU",
+        "ogAlternate": "en_US",
+        "bodyText": "Литературная планетаЧитать журнал",
+        "moduleScripts": 1
+      },
+      "expectedMetadata": true
+    },
+    {
+      "endpoint": "/planet/ru/manifest.webmanifest",
+      "status": 200,
+      "contentType": "application/manifest+json",
+      "bytes": 589,
+      "sha256": "93047891a7b29663714cf1f826097e6b42137b06d8843200d040ede29b60730d",
+      "localPath": "dist-pwa/ru/manifest.webmanifest",
+      "matchesBuildOutput": true,
+      "manifest": {
+        "id": "/planet/",
+        "scope": "/planet/",
+        "start_url": "/planet/ru/",
+        "lang": "ru",
+        "name": "Литературная планета",
+        "short_name": "Литературная планета",
+        "display": "standalone",
+        "icons": [
+          {
+            "src": "/planet/icons/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+          },
+          {
+            "src": "/planet/icons/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+          }
+        ]
+      },
+      "expectedMetadata": true
+    },
+    {
+      "endpoint": "/planet/ru/404.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 2630,
+      "sha256": "b767246a71ce138fbfe1eec905836ac3ffb6cef34b72281f263a6a96a99f663c",
+      "localPath": "dist-pwa/ru/404.html",
+      "matchesBuildOutput": true,
+      "html": {
+        "lang": "ru",
+        "routeLanguage": "ru",
+        "title": "404 | Литературная планета",
+        "robots": "noindex,nofollow",
+        "canonical": "https://probpera.ru/planet/ru/404.html",
+        "alternates": {
+          "ru": "https://probpera.ru/planet/ru/404.html",
+          "en": "https://probpera.ru/planet/en/404.html",
+          "x-default": "https://probpera.ru/planet/404.html"
+        },
+        "manifest": "/planet/ru/manifest.webmanifest",
+        "ogLocale": "ru_RU",
+        "ogAlternate": "en_US",
+        "bodyText": "Литературная планета404Литературная планетаЧитать журнал",
+        "moduleScripts": 0
+      },
+      "expectedMetadata": true
+    },
+    {
+      "endpoint": "/planet/en/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 2623,
+      "sha256": "976b7385299f71af188d25d4fd195ec8bae085994e1dcab491e5f2f1811e07af",
+      "localPath": "dist-pwa/en/index.html",
+      "matchesBuildOutput": true,
+      "html": {
+        "lang": "en",
+        "routeLanguage": "en",
+        "title": "Literary Planet",
+        "robots": "noindex,nofollow",
+        "canonical": "https://probpera.ru/planet/en/",
+        "alternates": {
+          "ru": "https://probpera.ru/planet/ru/",
+          "en": "https://probpera.ru/planet/en/",
+          "x-default": "https://probpera.ru/planet/"
+        },
+        "manifest": "/planet/en/manifest.webmanifest",
+        "ogLocale": "en_US",
+        "ogAlternate": "ru_RU",
+        "bodyText": "Literary PlanetRead the journal",
+        "moduleScripts": 1
+      },
+      "expectedMetadata": true
+    },
+    {
+      "endpoint": "/planet/en/manifest.webmanifest",
+      "status": 200,
+      "contentType": "application/manifest+json",
+      "bytes": 541,
+      "sha256": "0b30a9de52066d2986711265bbf9de4577ed7786aebf9bee26441cf9f2de41db",
+      "localPath": "dist-pwa/en/manifest.webmanifest",
+      "matchesBuildOutput": true,
+      "manifest": {
+        "id": "/planet/",
+        "scope": "/planet/",
+        "start_url": "/planet/en/",
+        "lang": "en",
+        "name": "Literary Planet",
+        "short_name": "Literary Planet",
+        "display": "standalone",
+        "icons": [
+          {
+            "src": "/planet/icons/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+          },
+          {
+            "src": "/planet/icons/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+          }
+        ]
+      },
+      "expectedMetadata": true
+    },
+    {
+      "endpoint": "/planet/en/404.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 2357,
+      "sha256": "1057fee7ebcf0c1e81f232662bb14bbbd416eef482e04d10f13023e5e3128d42",
+      "localPath": "dist-pwa/en/404.html",
+      "matchesBuildOutput": true,
+      "html": {
+        "lang": "en",
+        "routeLanguage": "en",
+        "title": "404 | Literary Planet",
+        "robots": "noindex,nofollow",
+        "canonical": "https://probpera.ru/planet/en/404.html",
+        "alternates": {
+          "ru": "https://probpera.ru/planet/ru/404.html",
+          "en": "https://probpera.ru/planet/en/404.html",
+          "x-default": "https://probpera.ru/planet/404.html"
+        },
+        "manifest": "/planet/en/manifest.webmanifest",
+        "ogLocale": "en_US",
+        "ogAlternate": "ru_RU",
+        "bodyText": "Literary Planet404Literary PlanetRead the journal",
+        "moduleScripts": 0
+      },
+      "expectedMetadata": true
+    },
+    {
+      "endpoint": "/planet/ru/metadata-audit-missing-page",
+      "status": 404,
+      "contentType": "text/plain",
+      "body": "Not found",
+      "expectedQaServerBehavior": true
+    },
+    {
+      "endpoint": "/planet/en/metadata-audit-missing-page",
+      "status": 404,
+      "contentType": "text/plain",
+      "body": "Not found",
+      "expectedQaServerBehavior": true
+    }
+  ],
+  "pass": true,
+  "limitations": [
+    "Explicit localized 404 documents are static files served with HTTP 200; unknown URLs return plain-text 404 under the local QA server. This does not verify deployment fallback routing.",
+    "This controlled preparation intentionally remains noindex,nofollow; public /ru/ and /en/ SEO acceptance is not established."
+  ]
+}

@@ -1,8 +1,14 @@
 import { readFile } from "node:fs/promises";
 import { expect, test } from "@playwright/test";
 
+const qaControlPath = process.env.PWA_QA_CONTROL_PATH ?? ".tmp/pwa-qa/server.json";
+const qaOrigin = process.env.PWA_QA_ORIGIN ?? "http://127.0.0.1:4293";
+if (!/^\.tmp\/pwa-qa\/[A-Za-z0-9._-]+\.json$/u.test(qaControlPath)
+  || !/^http:\/\/127\.0\.0\.1:\d{1,5}$/u.test(qaOrigin)) throw new Error("Invalid local PWA QA configuration");
+
 async function control(request, body) {
-  const configuration = JSON.parse(await readFile(".tmp/pwa-qa/server.json", "utf8"));
+  const configuration = JSON.parse(await readFile(qaControlPath, "utf8"));
+  if (configuration.localQaOnly !== true || configuration.origin !== qaOrigin) throw new Error("PWA QA control origin mismatch");
   const response = await request.post(configuration.origin + "/__pwa_qa__/control", {
     headers: { Authorization: "Bearer " + configuration.controlToken },
     data: body,
@@ -21,7 +27,7 @@ async function openAuthorized(page, locale = "ru") {
 }
 async function installed(page) {
   await expect.poll(() => page.evaluate(() => navigator.serviceWorker.controller?.scriptURL ?? ""), { timeout: 60_000 })
-    .toBe("http://127.0.0.1:4293/planet/sw.js");
+    .toBe(qaOrigin + "/planet/sw.js");
   const result = await page.evaluate(async () => {
     const names = (await caches.keys()).filter(name => name.startsWith("literary-planet-pwa-v1-"));
     for (const name of names) {
@@ -41,7 +47,7 @@ async function selectLocale(page, locale) {
 
 test("real signed access, locale and connectivity preserve the actual R3F scene", async ({ page, context, isMobile }, testInfo) => {
   const externalRequests = [];
-  page.on("request", request => { if (!request.url().startsWith("http://127.0.0.1:4293/") && /^https?:/u.test(request.url())) externalRequests.push(request.url()); });
+  page.on("request", request => { if (!request.url().startsWith(qaOrigin + "/") && /^https?:/u.test(request.url())) externalRequests.push(request.url()); });
   await openAuthorized(page);
   if (isMobile) {
     await expect(page.locator(".articles-menu summary")).toBeHidden();
@@ -218,7 +224,7 @@ test("site worker activation preserves controlled and unrelated caches", async (
   const site = await context.newPage();
   await site.goto("/site-qa/");
   await site.evaluate(async () => { await navigator.serviceWorker.register("/sw.js", { scope: "/" }); await navigator.serviceWorker.ready; });
-  await expect.poll(() => site.evaluate(() => navigator.serviceWorker.controller?.scriptURL ?? "")).toBe("http://127.0.0.1:4293/sw.js");
+  await expect.poll(() => site.evaluate(() => navigator.serviceWorker.controller?.scriptURL ?? "")).toBe(qaOrigin + "/sw.js");
   const names = await page.evaluate(() => caches.keys());
   expect(names).toContain("unrelated-application-cache");
   expect(names).toContain("literary-planet-pwa-v1-" + current.manifest.buildId);

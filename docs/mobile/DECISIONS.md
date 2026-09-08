@@ -219,3 +219,9 @@
 - D055: Refresh evidence uses changed-surface tests and cached offline Gradle
   compilation. Android46ebba56 is independently bound to actual APK bytes;
   no device or release claim follows. Historical artifacts/failures remain.
+
+- D056: PWA regression runs use unique authority/control/output paths. Historical
+  defaults are hash-preserved. A selector failure is kept as11 PASS/1 FAIL;
+  only the corrected failed scenario is rerun on identical product sources
+  with a new temporary authority. Do not reclassify this as a single12 PASS run
+  or copy private QA traces/control tokens into release evidence.
