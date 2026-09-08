@@ -50,10 +50,10 @@ async function openAtlas(page) {
 }
 
 async function clickAtlasDiscoveryControl(control) {
-  if (await control.evaluate((element) => Boolean(element.closest(".atlas-embedded-discovery")))) {
-    // Position the real target below sticky navigation before pointer input.
-    // Nearest-edge scrolling can oscillate inside the tall clipped scene.
-    await control.evaluate((element) => {
+  await expect.poll(() => control.evaluate((element) => {
+    if (element.closest(".atlas-embedded-discovery")) {
+      // Re-measure and align in the same frame as the hit check: closing the
+      // country sheet can still change page anchoring between browser calls.
       const stickyBottom = Math.max(0, ...Array.from(
         document.querySelectorAll(".site-header, .mobile-nav"),
         (node) => node.getBoundingClientRect().bottom
@@ -62,14 +62,14 @@ async function clickAtlasDiscoveryControl(control) {
         top: window.scrollY + element.getBoundingClientRect().top - stickyBottom - 16,
         behavior: "instant",
       });
-    });
-    await expect.poll(() => control.evaluate((element) => {
-      const box = element.getBoundingClientRect();
-      return element.contains(document.elementFromPoint(
-        box.left + box.width / 2, box.top + box.height / 2
-      ));
-    })).toBe(true);
-  }
+    } else {
+      return true;
+    }
+    const box = element.getBoundingClientRect();
+    return element.contains(document.elementFromPoint(
+      box.left + box.width / 2, box.top + box.height / 2
+    ));
+  })).toBe(true);
   await control.click();
 }
 
@@ -1213,6 +1213,10 @@ test("writer selection stays still until explicit Show on globe", async ({
   page,
   isMobile,
 }) => {
+  // Keep writer focus and the subsequent unavailable-country marker cleanup
+  // on the same Canvas. Software rendering can exceed the total 45s budget;
+  // individual assertions, including camera settlement, keep their limits.
+  test.setTimeout(90_000);
   const { atlas, globe, canvas } = await openAtlas(page);
   await canvas.evaluate((element) => {
     element.dataset.stage4WriterIdentity = "stable";
