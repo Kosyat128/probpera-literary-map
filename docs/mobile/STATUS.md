@@ -21,15 +21,15 @@ zero-layout FAIL; a5 final two affected desktop/mobile cases PASS. Each strict
 artifact audit passed. Earlier evidence covers access/revocation, keyboard
 update/rollback and notice geometry; no full-suite or installed-device claim.
 
-Fresh Android/dev 74201a08 is built from source8a3ef924 and
-contains the corrected shared globe/panels. Strict artifact audit, offline
-Gradle, actual APK payload/plugin/resource/signature/alignment audit and exact
-preservation passed. 35,208,110 bytes:
-.tmp/native-builds/android-dev/74201a08/app-dev-debug.apk
-SHA256 d0ebd99b6be3ca3a2c6d972e5cd44165b0453e5e940dd7542cafc7baccd98de1.
-Evidence: evidence/S04/android-globe-panels-20260908/result.json.
-Historical3cd/46eb artifacts remain preserved. Installed-device behavior and
-store/RC readiness are unverified. SDK license/tools already approved.
+Fresh Android/dev 7b631c49 is built from source 282e03d5f877c2e1dc0d0ffd6fc8a211c5460c94 and
+contains the canonical globe/panels and first-journey invitation. Strict
+artifact audit, cached offline Gradle, actual APK payload/plugin/resource/
+signature/alignment audit and exact preservation passed. 35,529,259 bytes:
+.tmp/native-builds/android-dev/first-journey-7b631c49/app-dev-debug.apk
+SHA256 0b37610afb86c2e1d7a133dc5573e4e6c49b99f185657091eb99b6cd5d0c608f.
+Evidence: evidence/S04/android-first-journey-20260908/result.json.
+Historical742/3cd/46eb artifacts remain preserved. Installed-device behavior
+and store/RC readiness remain unverified. SDK license/tools already approved.
 
 Historical iOS run34179803208 installed/launched RU/EN simulators, but its
 magazine-home/status-bar screenshots FAIL the product contract. The corrected
@@ -50,8 +50,8 @@ unverified. The final051c3da1 artifact passed strict audit; its only subsequent
 source change is a more visible focus outline. Browser cases were not replayed
 for that CSS color. New copy remains draft, not editorially approved.
 Evidence: evidence/S03/device-preparation-20260908/result.json.
-Prior7dc47dd8 PWA is archived; current dist-pwa is051c3da1. Android742 retains
-source8a3ef924; do not infer equality of new PWA/build-tool inputs with that APK.
+Prior7dc47dd8 PWA is archived; current dist-pwa is051c3da1. Android 7b631c49
+has its own newer source/build identity; PWA051 still excludes first-journey.
 
 <!-- s05-first-journey:begin -->
 S05 first-journey working slice: a small RU/EN invitation follows the actual
@@ -67,8 +67,8 @@ runs remain separately classified in evidence, not silently relabelled.
 Evidence: evidence/S05/first-journey-20260908/result.json.
 Chrome/native-plugin fixtures do not establish installed Android/iOS behavior.
 New copy remains draft; full onboarding, child entry and original 3D Planetka
-remain unfinished. Android 742/source8a, PWA 051 Device UX and frozen 83-file iOS
-projection exclude this slice; their earlier source-bound results remain valid.
+remain unfinished. Android 7b631c49 now includes this slice. PWA 051 Device UX and the frozen
+83-file iOS projection still exclude it and retain their own source-bound results.
 <!-- s05-first-journey:end -->
 
 Full onboarding, child policy/Parent Gate/profiles/original interactive 3D

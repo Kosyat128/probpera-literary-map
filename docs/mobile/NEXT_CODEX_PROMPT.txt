@@ -10,8 +10,8 @@ browser passes. Do not count the failed earlier cases as passed or infer a
 full-suite, installed-device, full-onboarding or bilingual editorial approval.
 Later host.css-only product changes are documented in final-source CSS delta
 and final affected browser evidence; no static-tool rerun after CSS is claimed.
-Android 742/source8a, PWA 051 and frozen 83-file iOS payload/tree remain unchanged
-and do not contain this newer source. The iOS publication question is already
+Android 7b631c49 now contains this first-journey source. PWA 051 and the
+frozen 83-file iOS payload/tree remain unchanged and do not contain it. The iOS publication question is already
 pending; this slice does not enlarge that review or authorize publication.
 Resume S03.acceptance first, with documented S04/S05 parallel-safe work.
 <!-- s05-first-journey:end -->
@@ -43,15 +43,21 @@ viewport and same Canvas/renderer/camera/scene. Actual RU PNG is warm; cold RU
 has telemetry, cold EN telemetry+PNG. Keep a1-a4 failures distinct; no full-suite
 replay or exact RC claim. Earlier access/revocation/update/rollback retained.
 
-ANDROID:74201a08c3c2014ea1e652b866fc241a6c47cfdcbc510698e2f9927193be0a9b
-SOURCE:8a3ef924aa911aeda4742b4434ac925ac576764e
-.tmp/native-builds/android-dev/74201a08/app-dev-debug.apk
-35208110B SHA256d0ebd99b6be3ca3a2c6d972e5cd44165b0453e5e940dd7542cafc7baccd98de1
-Evidence: evidence/S04/android-globe-panels-20260908/result.json.
-Strict/source/offline Gradle/APK binary/plugin/resource/signature/alignment and
-preservation passed once. No installed Android/device/RC claim. New Device UX
-is PWA-only but serviceWorkerRuntime.js also enters native build-tool inputs;
-never relabel APK742 with new-source identity. Previous3cd/46eb preserved.
+ANDROID:7b631c491fb0d4fb72a135b9a1a341392bbdefc7d5e3515265d45b19801b7c4c
+SOURCE:282e03d5f877c2e1dc0d0ffd6fc8a211c5460c94
+SOURCE_INPUTS_SHA256:a6444b9df21cfa6b7c99704587ccaaa684cf12f613c19b27080c2091371842a1
+.tmp/native-builds/android-dev/first-journey-7b631c49/runtime
+.tmp/native-builds/android-dev/first-journey-7b631c49/app-dev-debug.apk
+35529259B SHA2560b37610afb86c2e1d7a133dc5573e4e6c49b99f185657091eb99b6cd5d0c608f
+Evidence: evidence/S04/android-first-journey-20260908/result.json.
+Canonical globe/panels and S05 first-journey source are now in this devDebug APK.
+Strict audit: 343 runtime files. Actual APK: 342
+matched assets of 343; omitted validation metadata:
+.vite/manifest.json.
+Offline Gradle, binary/plugin/resource/debug-signature/alignment and exact
+preservation passed. No installed Android/device/RC/stage-acceptance claim.
+Previous742/3cd/46eb artifacts retain their original bytes/source evidence.
+PWA051 and frozen iOS83 exclude this newer source; do not relabel either.
 Java21/SDK/license are prepared and approved. Do not request them again.
 
 IOS: historical public325e9f3c / run34179803208 installed/launched RU/EN

@@ -3,13 +3,13 @@
 Internal implementation remains the assistant's responsibility:
 
 - Native globe-only entry, three core browser scenarios, final typecheck and
-  platform boundaries passed. Fresh Android74201a08 build/static binary checks
+  platform boundaries passed. Fresh Android 7b631c49 build/static binary checks
   and exact archival copies passed. Installed Android/emulator/physical-device
   behavior still requires its own evidence; this is not S03/S04/S05 acceptance.
 - Controlled paid PWA globe/panel working validation is complete for the
   documented bounded cases; original failures remain preserved. OS installation,
-  the broader device matrix and remaining S03 gates are open. Android74201a08
-  contains the shared-panel fixes; keep QA authorities isolated.
+  the broader device matrix and remaining S03 gates are open. Android 7b631c49
+  contains shared-panel and first-journey fixes; keep QA authorities isolated.
 - Controlled PWA installation/offline/storage UI has237 scoped unit passes and
   two desktop/mobile browser passes. Actual OS installation, paid web checkout
   and merchant integration, reviewed indexable RU/EN pages and the broader
@@ -30,7 +30,7 @@ Internal implementation remains the assistant's responsibility:
   fixture/product classifications; 90 other adapter tests were skipped by the
   preferences filter. Full onboarding, child-policy restoration, original
   interactive 3D Planetka, reviewed RU/EN copy and actual device evidence remain
-  internal work. Existing APK/PWA/iOS projection do not include this slice.
+  internal work. Android 7b631c49 includes this slice; PWA051/iOS83 still exclude it.
 <!-- s05-first-journey:end -->
 
 External inputs, when corresponding internal artifacts are ready:

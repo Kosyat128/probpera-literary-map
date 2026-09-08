@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T06:15:42.806Z",
+  "kind": "android-first-journey-dev-apk-preservation",
+  "status": "BUILD_AND_BINARY_INSPECTION_PASSED",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "sourceCommit": "282e03d5f877c2e1dc0d0ffd6fc8a211c5460c94",
+  "buildId": "7b631c491fb0d4fb72a135b9a1a341392bbdefc7d5e3515265d45b19801b7c4c",
+  "sourceInputsSha256": "a6444b9df21cfa6b7c99704587ccaaa684cf12f613c19b27080c2091371842a1",
+  "artifact": {
+    "path": ".tmp/native-builds/android-dev/first-journey-7b631c49/runtime",
+    "metadata": "docs/mobile/evidence/S04/android-first-journey-20260908/native-artifact.json",
+    "sha256": "be37909b9acf16535370e20645786281dea45fc432e51a983aa3f55f97e54fcb"
+  },
+  "apk": {
+    "path": ".tmp/native-builds/android-dev/first-journey-7b631c49/app-dev-debug.apk",
+    "bytes": 35529259,
+    "sha256": "0b37610afb86c2e1d7a133dc5573e4e6c49b99f185657091eb99b6cd5d0c608f"
+  },
+  "validation": {
+    "sourceBehavior": "docs/mobile/evidence/S05/first-journey-20260908",
+    "nativeStrictAudit": {
+      "path": "docs/mobile/evidence/S04/android-first-journey-20260908/native-artifact-audit.json",
+      "pass": true,
+      "files": 343
+    },
+    "build": {
+      "pass": true,
+      "sourceCommit": "282e03d5f877c2e1dc0d0ffd6fc8a211c5460c94",
+      "buildId": "7b631c491fb0d4fb72a135b9a1a341392bbdefc7d5e3515265d45b19801b7c4c",
+      "startedAt": "2026-09-08T06:14:58.0193542+00:00",
+      "durationSeconds": 21.924587,
+      "task": ":app:assembleDevDebug",
+      "offline": true,
+      "actionableTasks": 167,
+      "executed": 22,
+      "upToDate": 145,
+      "fromCache": 0,
+      "deviceTested": false,
+      "releaseReady": false,
+      "report": "docs/mobile/evidence/S04/android-first-journey-20260908/build-run.json"
+    },
+    "binaryAudit": {
+      "path": "docs/mobile/evidence/S04/android-first-journey-20260908/android-dev-apk-verification.json",
+      "pass": true,
+      "bundledAssetsExpected": 343,
+      "bundledAssetsMatched": 342,
+      "omittedValidationMetadata": [
+        ".vite/manifest.json"
+      ],
+      "selectableLocales": [
+        "en",
+        "ru"
+      ],
+      "debugSignature": true,
+      "alignment": true
+    },
+    "preservedCopies": "docs/mobile/evidence/S04/android-first-journey-20260908/copy-verification.json",
+    "completedBuildsOrTestsRepeated": false
+  },
+  "reports": [
+    {
+      "source": ".tmp/native-first-journey-20260908/android-dev-apk-aapt2-badging.txt",
+      "path": "docs/mobile/evidence/S04/android-first-journey-20260908/android-dev-apk-aapt2-badging.txt",
+      "bytes": 5374,
+      "sha256": "71d3971e95e33d7023aa682bdc475572397866ef1ec75ecaf4f31cb9794fac73"
+    },
+    {
+      "source": ".tmp/native-first-journey-20260908/android-dev-apk-locales.txt",
+      "path": "docs/mobile/evidence/S04/android-first-journey-20260908/android-dev-apk-locales.txt",
+      "bytes": 323,
+      "sha256": "e417b96725691c86cc6103223f08367d7454894043884c0e8d1142e519de5200"
+    },
+    {
+      "source": ".tmp/native-first-journey-20260908/android-dev-apk-manifest.txt",
+      "path": "docs/mobile/evidence/S04/android-first-journey-20260908/android-dev-apk-manifest.txt",
+      "bytes": 8836,
+      "sha256": "4903cac6b08900e6b96f58e832f9a2a50c88643ee0d0c37625628c9018afa4ec"
+    },
+    {
+      "source": ".tmp/native-first-journey-20260908/android-dev-apk-signature.txt",
+      "path": "docs/mobile/evidence/S04/android-first-journey-20260908/android-dev-apk-signature.txt",
+      "bytes": 972,
+      "sha256": "8289f86c685f73de50fb3de8bd8f791e4f708dcbd81bf82caaf76b3cd4b650c1"
+    },
+    {
+      "source": ".tmp/native-first-journey-20260908/android-dev-apk-verification.json",
+      "path": "docs/mobile/evidence/S04/android-first-journey-20260908/android-dev-apk-verification.json",
+      "bytes": 7298,
+      "sha256": "05dc9751a1b77e6e3d1b04d95c595ed765605880b65c219686bcdf13a7daf011"
+    },
+    {
+      "source": ".tmp/native-first-journey-20260908/android-dev-apk-zip-entries.json",
+      "path": "docs/mobile/evidence/S04/android-first-journey-20260908/android-dev-apk-zip-entries.json",
+      "bytes": 191326,
+      "sha256": "35fc843ca65e13b3a7d4839274428a7ae22b06fa19935053e5d008c2c2c97019"
+    },
+    {
+      "source": ".tmp/native-first-journey-20260908/android-dev-apk-zipalign.txt",
+      "path": "docs/mobile/evidence/S04/android-first-journey-20260908/android-dev-apk-zipalign.txt",
+      "bytes": 56705,
+      "sha256": "876ed7c4a73969aed9234f9ac4b167fc485e5d2c343757d7709899378dec02a1"
+    },
+    {
+      "source": ".tmp/native-first-journey-20260908/build-run.json",
+      "path": "docs/mobile/evidence/S04/android-first-journey-20260908/build-run.json",
+      "bytes": 446,
+      "sha256": "d1471533287da92ef3f5f6fcd8e201442355302229d1dc1eef48bc8c5d540317"
+    },
+    {
+      "source": ".tmp/native-first-journey-20260908/native-artifact-audit.json",
+      "path": "docs/mobile/evidence/S04/android-first-journey-20260908/native-artifact-audit.json",
+      "bytes": 1068,
+      "sha256": "af9741d09b7ac61e89dd21b65425e014ca749b2c20072c7c861e0564d0b8e0c7"
+    },
+    {
+      "source": ".tmp/native-first-journey-20260908/apk-verifier-transcript.json",
+      "path": "docs/mobile/evidence/S04/android-first-journey-20260908/apk-verifier-transcript.json",
+      "bytes": 7499,
+      "sha256": "539e4d8c09ee92e1e85323959519226a30642e83cd59ed20db33bcfd2d782f08"
+    },
+    {
+      "source": "dist-native/artifact.json",
+      "path": "docs/mobile/evidence/S04/android-first-journey-20260908/native-artifact.json",
+      "bytes": 269956,
+      "sha256": "be37909b9acf16535370e20645786281dea45fc432e51a983aa3f55f97e54fcb"
+    },
+    {
+      "source": ".tmp/native-bootstrap/verify-first-journey-android-20260908.mjs",
+      "path": "docs/mobile/evidence/S04/android-first-journey-20260908/verify-first-journey-android-20260908.mjs",
+      "bytes": 14243,
+      "sha256": "23e18955a56ddf83900c3d8c6ccd8ae49df4173f22feedf57f410e1e4515148b"
+    },
+    {
+      "source": ".tmp/native-bootstrap/build-first-journey-android-20260908.ps1",
+      "path": "docs/mobile/evidence/S04/android-first-journey-20260908/build-first-journey-android-20260908.ps1",
+      "bytes": 6159,
+      "sha256": "6bd452617d4f444532d6dea62ee22aa6d3b16bf0c3fe6071d4d0dd845ecf3134"
+    }
+  ],
+  "transcripts": [
+    {
+      "path": "docs/mobile/evidence/S04/android-first-journey-20260908/native-build-transcript.json",
+      "bytes": 13708,
+      "sha256": "0b415603372d4f6d0df9545796e7c96c322cd516476a8ae9c1ff71fca005912c",
+      "original": ".tmp/native-first-journey-20260908/native-build.log",
+      "originalBytes": 13117,
+      "originalSha256": "edc3ae70161a665fba0283b8c720d08f90785771dfa4668010d3047f3f901d1a"
+    },
+    {
+      "path": "docs/mobile/evidence/S04/android-first-journey-20260908/sync-android-transcript.json",
+      "bytes": 861,
+      "sha256": "8f730288ba5f41c1c23811dc353d7c191c6967045771a3aeb8ee6bed04c0af39",
+      "original": ".tmp/native-first-journey-20260908/sync-android.log",
+      "originalBytes": 543,
+      "originalSha256": "6e268f401c55030d4c2b9095a2fac0dc13a212ef1faf75a4c801e60b2e59a409"
+    },
+    {
+      "path": "docs/mobile/evidence/S04/android-first-journey-20260908/assemble-dev-debug-transcript.json",
+      "bytes": 14678,
+      "sha256": "48f821466f6744dcb0473c9d8821ac0f79f70e8faadc486a30d5d55ae45f3bbd",
+      "original": ".tmp/native-first-journey-20260908/assemble-dev-debug.log",
+      "originalBytes": 13917,
+      "originalSha256": "d81cce5b6656d4706b9414431d294752e84d2fe0871bec026fc46dd84319e5cc"
+    }
+  ],
+  "boundaries": [
+    "Source 282e03d5f877c2e1dc0d0ffd6fc8a211c5460c94 is this exact first-journey devDebug snapshot; all prior Android and iOS artifacts remain distinct and unmodified.",
+    "This exact devDebug APK was compiled and statically inspected; it was not installed or exercised on an Android emulator or physical device.",
+    "Chrome native-binding fixtures and CDP safe-area overrides are not installed Android/iOS runtime evidence or exact-RC screenshots.",
+    "First-journey behavior has separate source-bound browser evidence under docs/mobile/evidence/S05/first-journey-20260908; none of it constitutes installed Android runtime validation.",
+    "S03/S04/S05 and global bilingual/content/child/commerce/rights/owner/release gates remain open. No production signing, deploy, store action, merge or owner approval is implied."
+  ]
+}

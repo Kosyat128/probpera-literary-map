@@ -5,7 +5,7 @@
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
   "headSha": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-08T06:13:41.522Z",
+  "updatedAt": "2026-09-08T06:18:07.745Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -10551,7 +10551,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Continue first-open S03.acceptance with documented S04/S05 parallel-safe work. The bounded first-journey invitation now has source-bound unit/static/browser evidence; full onboarding, sealed child entry and original interactive 3D Planetka remain open. Android742/source8a, PWA051 Device UX and frozen83-file iOS projection exclude this source slice. Keep the existing iOS publication question pending until an explicit answer; no projection expansion or public mutation follows from these checks.",
+    "nextAction": "Continue first-open S03.acceptance with documented S04/S05 parallel-safe work. Android 7b631c49 now contains the bounded first-journey source at 282e03d5f877c2e1dc0d0ffd6fc8a211c5460c94; exact build/binary/preservation checks passed, installed-device behavior remains unverified. PWA051 and frozen iOS83 retain their prior source boundaries. Honor the existing iOS publication-answer state and exact payload; complete remaining paid-PWA/native/onboarding, child/Planetka, bilingual editorial and release gates without assigning programming/translation to the owner.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -10754,33 +10754,62 @@
       "evidence": "docs/mobile/evidence/S04/globe-entry-20260908/result.json",
       "coreBrowserCases": 3,
       "nativeArtifactRefreshed": true,
-      "nativeArtifactEvidence": "docs/mobile/evidence/S04/android-globe-panels-20260908/result.json",
+      "nativeArtifactEvidence": "docs/mobile/evidence/S04/android-first-journey-20260908/result.json",
       "nativeArtifact": {
         "platform": "android",
         "channel": "dev",
-        "sourceCommit": "8a3ef924aa911aeda4742b4434ac925ac576764e",
-        "buildId": "74201a08c3c2014ea1e652b866fc241a6c47cfdcbc510698e2f9927193be0a9b",
-        "sourceInputsSha256": "bfafd2b40f96cac3e4ab4430a25b5f20dd3bf7381ca72ed8d58db85f582326a5",
-        "runtime": ".tmp/native-builds/android-dev/74201a08/runtime",
+        "sourceCommit": "282e03d5f877c2e1dc0d0ffd6fc8a211c5460c94",
+        "buildId": "7b631c491fb0d4fb72a135b9a1a341392bbdefc7d5e3515265d45b19801b7c4c",
+        "sourceInputsSha256": "a6444b9df21cfa6b7c99704587ccaaa684cf12f613c19b27080c2091371842a1",
+        "runtime": ".tmp/native-builds/android-dev/first-journey-7b631c49/runtime",
         "apk": {
-          "path": ".tmp/native-builds/android-dev/74201a08/app-dev-debug.apk",
-          "bytes": 35208110,
-          "sha256": "d0ebd99b6be3ca3a2c6d972e5cd44165b0453e5e940dd7542cafc7baccd98de1"
+          "path": ".tmp/native-builds/android-dev/first-journey-7b631c49/app-dev-debug.apk",
+          "bytes": 35529259,
+          "sha256": "0b37610afb86c2e1d7a133dc5573e4e6c49b99f185657091eb99b6cd5d0c608f"
         },
         "nativeStrictAudit": true,
         "offlineGradleBuild": true,
         "apkBinaryAudit": true,
         "preservationCopiesVerified": true,
+        "currentSource": true,
+        "includesS05FirstJourney": true,
         "installedRuntimeTested": false,
         "exactReleaseCandidate": false,
         "stageAccepted": false,
         "releaseReady": false,
-        "sourceScopeNote": "APK742 remains bound to source8a3ef924. The subsequent Device UX feature is PWA-only, but its worker runtime also belongs to the native build-tool input closure. Do not relabel APK742 with the new source identity or call it an exact RC.",
-        "currentSource": false,
-        "includesS05FirstJourney": false,
-        "firstJourneySourceScopeNote": "S05 first-journey source changes postdate this frozen artifact/projection. Prior source-bound validation remains valid for its recorded inputs; it does not cover first-journey behavior."
+        "sourceScopeNote": "Exact first-journey source checkpoint compiled and statically inspected as Android devDebug. The PWA051 artifact and frozen iOS83 projection retain their prior identities and exclude this newer slice. Browser/native-plugin fixtures do not establish installed-device behavior."
       },
-      "nativeArtifactCurrentSource": false
+      "nativeArtifactCurrentSource": true,
+      "nativeArtifactHistory": [
+        {
+          "evidence": "docs/mobile/evidence/S04/android-globe-panels-20260908/result.json",
+          "artifact": {
+            "platform": "android",
+            "channel": "dev",
+            "sourceCommit": "8a3ef924aa911aeda4742b4434ac925ac576764e",
+            "buildId": "74201a08c3c2014ea1e652b866fc241a6c47cfdcbc510698e2f9927193be0a9b",
+            "sourceInputsSha256": "bfafd2b40f96cac3e4ab4430a25b5f20dd3bf7381ca72ed8d58db85f582326a5",
+            "runtime": ".tmp/native-builds/android-dev/74201a08/runtime",
+            "apk": {
+              "path": ".tmp/native-builds/android-dev/74201a08/app-dev-debug.apk",
+              "bytes": 35208110,
+              "sha256": "d0ebd99b6be3ca3a2c6d972e5cd44165b0453e5e940dd7542cafc7baccd98de1"
+            },
+            "nativeStrictAudit": true,
+            "offlineGradleBuild": true,
+            "apkBinaryAudit": true,
+            "preservationCopiesVerified": true,
+            "installedRuntimeTested": false,
+            "exactReleaseCandidate": false,
+            "stageAccepted": false,
+            "releaseReady": false,
+            "sourceScopeNote": "APK742 remains bound to source8a3ef924. The subsequent Device UX feature is PWA-only, but its worker runtime also belongs to the native build-tool input closure. Do not relabel APK742 with the new source identity or call it an exact RC.",
+            "currentSource": false,
+            "includesS05FirstJourney": false,
+            "firstJourneySourceScopeNote": "S05 first-journey source changes postdate this frozen artifact/projection. Prior source-bound validation remains valid for its recorded inputs; it does not cover first-journey behavior."
+          }
+        }
+      ]
     },
     "s04IosRuntime": {
       "runId": 34179803208,
@@ -11059,7 +11088,7 @@
       "singleGlobalLanguageControl": true,
       "browserNativePluginsSimulated": true,
       "actualInstalledNativeRuntimeVerified": false,
-      "newNativeArtifactProduced": false,
+      "newNativeArtifactProduced": true,
       "newPwaArtifactProduced": false,
       "includedInFrozenIosProjection": false,
       "copyReviewStatus": "draft",
@@ -11067,7 +11096,10 @@
       "childPolicyAccepted": false,
       "original3dPlanetkaComplete": false,
       "stageAccepted": false,
-      "releaseReady": false
+      "releaseReady": false,
+      "nativeArtifactEvidence": "docs/mobile/evidence/S04/android-first-journey-20260908/result.json",
+      "nativeArtifactBuildId": "7b631c491fb0d4fb72a135b9a1a341392bbdefc7d5e3515265d45b19801b7c4c",
+      "nativeArtifactSourceCommit": "282e03d5f877c2e1dc0d0ffd6fc8a211c5460c94"
     }
   },
   "externalOwnerInputsStatus": {

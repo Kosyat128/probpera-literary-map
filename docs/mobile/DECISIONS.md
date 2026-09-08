@@ -304,3 +304,11 @@
   Android742/source8a, PWA051 and frozen83-file iOS payload exclude this work.
   Old artifact evidence stays valid for its own bytes; no iOS approval or
   publication follows from local onboarding checks.
+
+- D074: Android 7b631c49 is the first-journey devDebug artifact from
+  source 282e03d5f877c2e1dc0d0ffd6fc8a211c5460c94. Strict source/artifact, cached offline
+  Gradle, actual APK binary and byte-exact preservation evidence passed.
+  Historical742/3cd/46eb and PWA051/frozen iOS83 retain their own identities;
+  preserve D073 as the earlier checkpoint observation, not a current APK claim.
+  New Android includes the bounded S05 invitation, not completed onboarding,
+  reviewed bilingual copy, installed-device validation or release acceptance.
