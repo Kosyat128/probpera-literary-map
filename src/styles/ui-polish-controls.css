@@ -358,6 +358,10 @@
     background: var(--violet-900);
     border-color: rgba(255, 255, 255, .2);
   }
+  #atlas .atlas-experience-surface[data-atlas-view="embedded"] .globe-nobel-status {
+    /* Keep the summary below the 44px touch control, with a 16px gap. */
+    top: 208px;
+  }
   #atlas .literary-globe .globe-controls {
     grid-template-columns: 44px minmax(44px, 1fr) 44px repeat(3, 44px);
     gap: 4px;

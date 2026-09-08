@@ -49,11 +49,35 @@ async function openAtlas(page) {
   return { atlas, globe, canvas };
 }
 
+async function clickAtlasDiscoveryControl(control) {
+  if (await control.evaluate((element) => Boolean(element.closest(".atlas-embedded-discovery")))) {
+    // Position the real target below sticky navigation before pointer input.
+    // Nearest-edge scrolling can oscillate inside the tall clipped scene.
+    await control.evaluate((element) => {
+      const stickyBottom = Math.max(0, ...Array.from(
+        document.querySelectorAll(".site-header, .mobile-nav"),
+        (node) => node.getBoundingClientRect().bottom
+      ));
+      window.scrollTo({
+        top: window.scrollY + element.getBoundingClientRect().top - stickyBottom - 16,
+        behavior: "instant",
+      });
+    });
+    await expect.poll(() => control.evaluate((element) => {
+      const box = element.getBoundingClientRect();
+      return element.contains(document.elementFromPoint(
+        box.left + box.width / 2, box.top + box.height / 2
+      ));
+    })).toBe(true);
+  }
+  await control.click();
+}
+
 async function openAtlasInterface(page) {
   await page.goto(process.env.UI_POLISH_BASE_URL || "/");
   const atlas = page.locator("#atlas");
   await atlas.scrollIntoViewIfNeeded();
-  await atlas.locator('.atlas-embedded-discovery [data-atlas-action="toggle-filters"]').click();
+  await clickAtlasDiscoveryControl(atlas.locator('.atlas-embedded-discovery [data-atlas-action="toggle-filters"]'));
   await expect(atlas.locator(".atlas-toolbar")).toBeVisible();
   return { atlas };
 }
@@ -83,7 +107,7 @@ async function openStationaryAtlasInterface(page) {
 async function selectCountryFromAtlasSearch(page, query) {
   const search = page.locator("#country-search");
   if (!(await search.isVisible())) {
-    await page.locator('[data-atlas-action="toggle-search"]:visible').click();
+    await clickAtlasDiscoveryControl(page.locator('[data-atlas-action="toggle-search"]:visible'));
   }
   await search.fill(query);
   const result = page.getByRole("option", { name: query, exact: true });
@@ -618,7 +642,7 @@ test("atlas controls wrap without overlap and discovery panels stay exclusive", 
   }
   // R05 gives filters and search separate, mutually exclusive panels. Exercise
   // their actual triggers instead of asserting the superseded simultaneous row.
-  await atlas.locator('.atlas-embedded-discovery [data-atlas-action="toggle-search"]').click();
+  await clickAtlasDiscoveryControl(atlas.locator('.atlas-embedded-discovery [data-atlas-action="toggle-search"]'));
   await expect(atlas.locator(".atlas-toolbar")).toBeHidden();
   const searchField = atlas.locator(".country-search .search-field");
   await expect(searchField).toBeVisible();
@@ -629,7 +653,7 @@ test("atlas controls wrap without overlap and discovery panels stay exclusive", 
   expect(input.width).toBeGreaterThanOrEqual(220);
   expect(input.x).toBeGreaterThanOrEqual(atlasBounds.x);
   expect(input.x + input.width).toBeLessThanOrEqual(atlasBounds.x + atlasBounds.width);
-  await atlas.locator('.atlas-embedded-discovery [data-atlas-action="toggle-filters"]').click();
+  await clickAtlasDiscoveryControl(atlas.locator('.atlas-embedded-discovery [data-atlas-action="toggle-filters"]'));
   await expect(atlas.locator(".country-search")).toBeHidden();
   await expect(filters).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBeLessThanOrEqual(1);
@@ -673,7 +697,7 @@ test("rich collection count and archive navigation stay consistent", async ({
   // Selecting a collection closes its panel; reopen it through the real trigger
   // before exercising the independent largest-archives popover.
   await expect(filters).toBeHidden();
-  await atlas.locator('.atlas-embedded-discovery [data-atlas-action="toggle-filters"]').click();
+  await clickAtlasDiscoveryControl(atlas.locator('.atlas-embedded-discovery [data-atlas-action="toggle-filters"]'));
   await expect(filters).toBeVisible();
   const archivesToggle = filters.locator("[data-atlas-archives-toggle]");
   await expect(archivesToggle).toContainText(
@@ -703,7 +727,7 @@ test("immersive archive Escape closes its popover before the filter panel", asyn
   await expect(rich).toHaveAttribute("aria-pressed", "true");
   await expect(page).toHaveURL(/[?&]atlas=rich(?:[&#]|$)/u);
   await expect(filters).toBeHidden();
-  await atlas.locator('.atlas-embedded-discovery [data-atlas-action="toggle-filters"]').click();
+  await clickAtlasDiscoveryControl(atlas.locator('.atlas-embedded-discovery [data-atlas-action="toggle-filters"]'));
   await expect(filters).toBeVisible();
   const archivesToggle = filters.locator("[data-atlas-archives-toggle]");
   await atlas.locator('[data-atlas-action="enter-immersive"]').click();
@@ -735,7 +759,7 @@ test("immersive random journey respects the current collection and recent picks"
     element.dataset.stage4RandomIdentity = "stable";
   });
   const verified = atlas.locator('[data-atlas-filter="verified"]');
-  await atlas.locator('.atlas-embedded-discovery [data-atlas-action="toggle-filters"]').click();
+  await clickAtlasDiscoveryControl(atlas.locator('.atlas-embedded-discovery [data-atlas-action="toggle-filters"]'));
   await verified.click();
   await expect(verified).toHaveAttribute("aria-pressed", "true");
 
@@ -792,6 +816,10 @@ test("coarse embedded globe preserves page pan until explicit full control", asy
   page,
   isMobile,
 }) => {
+  // Keep page-pan, gestures, sheet handoff and immersive ownership in one
+  // mobile session. Software rendering needs a larger total lifecycle budget;
+  // the individual gesture and response assertions retain their own limits.
+  if (isMobile) test.setTimeout(90_000);
   const { globe, canvas } = await openAtlas(page);
   if (!isMobile) {
     await expect(globe).toHaveAttribute("data-globe-touch-mode", "globe-control");
@@ -1101,6 +1129,7 @@ test("country selection keeps Canvas stable and exposes the responsive presentat
 
 test("Nobel layer keeps selection and its explicit article action separate", async ({
   page,
+  isMobile,
 }) => {
   const { atlas, globe, canvas } = await openAtlas(page);
   await canvas.evaluate((element) => {
@@ -1108,12 +1137,36 @@ test("Nobel layer keeps selection and its explicit article action separate", asy
   });
 
   const nobelFilter = atlas.locator('[data-atlas-filter="nobel"]');
-  await atlas.locator('.atlas-embedded-discovery [data-atlas-action="toggle-filters"]').click();
+  await clickAtlasDiscoveryControl(atlas.locator('.atlas-embedded-discovery [data-atlas-action="toggle-filters"]'));
   await nobelFilter.click();
   await expect(nobelFilter).toHaveAttribute("aria-pressed", "true");
 
   const nobelStatus = globe.locator(".globe-nobel-status");
   await expect(nobelStatus).toBeVisible();
+  if (isMobile) {
+    // The Nobel editorial panel can push the scene below the viewport. Inspect
+    // both controls with the globe active, where the touch button is rendered.
+    await globe.evaluate((element) => {
+      const stickyBottom = Math.max(0, ...Array.from(
+        document.querySelectorAll(".site-header, .mobile-nav"),
+        (node) => node.getBoundingClientRect().bottom
+      ));
+      window.scrollTo({
+        top: window.scrollY + element.getBoundingClientRect().top - stickyBottom - 16,
+        behavior: "instant",
+      });
+    });
+    const activation = globe.locator('[data-globe-control="touch-activation"]');
+    await expect(activation).toBeVisible();
+    await expect.poll(async () => {
+      const [statusBox, activationBox] = await Promise.all([
+        nobelStatus.boundingBox(), activation.boundingBox(),
+      ]);
+      return statusBox && activationBox
+        ? statusBox.y - activationBox.y - activationBox.height
+        : Number.NEGATIVE_INFINITY;
+    }).toBeGreaterThanOrEqual(8);
+  }
   await nobelStatus.locator("summary").click();
   await expect(nobelStatus).toHaveAttribute("open", "");
   const nobelIndex = nobelStatus.getByRole("list", {
@@ -1395,6 +1448,9 @@ test("rapid A to B to high-latitude C selection is latest-wins through resize", 
   page,
   isMobile,
 }) => {
+  // The high-DPR mobile run must preserve all three selections and the resize
+  // in one session; its assertion and camera-settlement limits stay unchanged.
+  if (isMobile) test.setTimeout(90_000);
   if (isMobile) await page.setViewportSize({ width: 1024, height: 768 });
   const { globe, canvas } = await openAtlas(page);
   await canvas.evaluate((element) => {
