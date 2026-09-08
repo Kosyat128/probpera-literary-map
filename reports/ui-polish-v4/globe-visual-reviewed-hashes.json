@@ -1,0 +1,22 @@
+[
+  {
+    "name": "globe-desktop-top-chrome-edition-rail.png",
+    "before": "dd10427de1fd193c1f2a72071df14a3013f642a9e67670b8ff15f44acdab571d",
+    "after": "04c25dddbc31c7bf5b4c937f181cce4bfa5a44fd45f120eea39c575ab313e103"
+  },
+  {
+    "name": "globe-desktop-writer-card.png",
+    "before": "decb7bfd5304190c5ab80c22e09011cb3b51f57a664d44ad222ac33ed030a2ae",
+    "after": "decb7bfd5304190c5ab80c22e09011cb3b51f57a664d44ad222ac33ed030a2ae"
+  },
+  {
+    "name": "globe-mobile-top-chrome-edition-rail.png",
+    "before": "c8c507631b8f79ccd030fb485548d667287973eba19d0b551e14e766040f6023",
+    "after": "bd314949b7379f368d47797d3d372ad6643b8255e27047cc056ac4789fa171d8"
+  },
+  {
+    "name": "globe-mobile-writer-card.png",
+    "before": "2f5fe21d723e7bdd9e47bdd795e813f89eedc1c52c8e69dd73b35343832bb235",
+    "after": "2f5fe21d723e7bdd9e47bdd795e813f89eedc1c52c8e69dd73b35343832bb235"
+  }
+]

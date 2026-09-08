@@ -1,0 +1,149 @@
+{
+  "date": "2026-09-08T04:30:46.373Z",
+  "records": [
+    {
+      "width": 1440,
+      "height": 1000,
+      "reducedMotion": "reduce",
+      "checks": [
+        "archive single-line; two mode labels visible; all action targets >=44px",
+        "search 1984; archive action works while suggestion surface open and clears query",
+        "empty search has explicit recovery; archive restores records",
+        "all six navigation buttons move the actual position; disabled controls retain frame and44px target",
+        "centred navigation; range44px; next13 button and keyboard End/Home update actual book position",
+        "reminder opens real book; detail closes",
+        "settings and filters Escape close and restore trigger focus",
+        "random opens real work detail",
+        "mode labels and no horizontal overflow also checked at 768px",
+        "canonical English mode labels render with no page overflow"
+      ],
+      "errors": [],
+      "geometry": [
+        {
+          "selector": "",
+          "text": "",
+          "width": 868.8125,
+          "height": 44,
+          "fontSize": "16px",
+          "labelClip": null
+        },
+        {
+          "selector": "is-active",
+          "text": "Полка",
+          "width": 99.6875,
+          "height": 44,
+          "fontSize": "14px",
+          "labelClip": "none"
+        },
+        {
+          "selector": "",
+          "text": "Каталог",
+          "width": 99.703125,
+          "height": 44,
+          "fontSize": "14px",
+          "labelClip": "none"
+        },
+        {
+          "selector": "book-shelf-controls__archive",
+          "text": "Весь архив",
+          "width": 112,
+          "height": 44,
+          "fontSize": "14px",
+          "labelClip": null
+        },
+        {
+          "selector": "book-shelf-controls__random",
+          "text": "Наугад",
+          "width": 148,
+          "height": 44,
+          "fontSize": "14px",
+          "labelClip": "none"
+        }
+      ],
+      "navigation": {
+        "centreDelta": 0,
+        "rangeHeight": 44
+      },
+      "disabledStyle": {
+        "border": "rgba(255, 255, 255, 0.2)",
+        "background": "rgb(48, 10, 79)",
+        "opacity": "0.5",
+        "width": 44,
+        "height": 44
+      },
+      "status": "passed"
+    },
+    {
+      "width": 390,
+      "height": 1000,
+      "reducedMotion": "reduce",
+      "checks": [
+        "archive single-line; two mode labels visible; all action targets >=44px",
+        "search 1984; archive action works while suggestion surface open and clears query",
+        "empty search has explicit recovery; archive restores records",
+        "all six navigation buttons move the actual position; disabled controls retain frame and44px target",
+        "centred navigation; range44px; next13 button and keyboard End/Home update actual book position",
+        "reminder opens real book; detail closes",
+        "settings and filters Escape close and restore trigger focus",
+        "random opens real work detail",
+        "mode labels and no horizontal overflow also checked at 320px",
+        "canonical English mode labels render with no page overflow"
+      ],
+      "errors": [],
+      "geometry": [
+        {
+          "selector": "",
+          "text": "",
+          "width": 172,
+          "height": 44,
+          "fontSize": "16px",
+          "labelClip": null
+        },
+        {
+          "selector": "is-active",
+          "text": "Полка",
+          "width": 159,
+          "height": 44,
+          "fontSize": "14px",
+          "labelClip": "none"
+        },
+        {
+          "selector": "",
+          "text": "Каталог",
+          "width": 159,
+          "height": 44,
+          "fontSize": "14px",
+          "labelClip": "none"
+        },
+        {
+          "selector": "book-shelf-controls__archive",
+          "text": "Весь архив",
+          "width": 112,
+          "height": 44,
+          "fontSize": "14px",
+          "labelClip": null
+        },
+        {
+          "selector": "book-shelf-controls__random",
+          "text": "Наугад",
+          "width": 228,
+          "height": 44,
+          "fontSize": "14px",
+          "labelClip": "none"
+        }
+      ],
+      "navigation": {
+        "centreDelta": 0,
+        "rangeHeight": 44
+      },
+      "disabledStyle": {
+        "border": "rgba(255, 255, 255, 0.2)",
+        "background": "rgb(48, 10, 79)",
+        "opacity": "0.5",
+        "width": 44,
+        "height": 44
+      },
+      "status": "passed"
+    }
+  ]
+}

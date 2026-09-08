@@ -1,0 +1,448 @@
+{
+  "phase": "before",
+  "baseURL": "http://127.0.0.1:4186/probpera-literary-map/",
+  "date": "2026-09-08T01:56:56.569Z",
+  "head": "f6ec0cbdb48b8e9877c766b3cdb8cdafb4b76316",
+  "captures": [
+    {
+      "width": 1440,
+      "language": "ru",
+      "dpr": 1,
+      "blocks": [
+        {
+          "selector": ".magazine-hero",
+          "top": 114,
+          "height": 720,
+          "width": 1440,
+          "background": "rgb(22, 2, 31)",
+          "font": "\"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, \"Helvetica Neue\", Arial, sans-serif"
+        },
+        {
+          "selector": "#atlas",
+          "top": 834,
+          "height": 1309.28125,
+          "width": 1440,
+          "background": "rgb(17, 3, 29)",
+          "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif"
+        },
+        {
+          "selector": "#book-day",
+          "top": 2143.28125,
+          "height": 1174.015625,
+          "width": 1440,
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif"
+        },
+        {
+          "selector": "#books",
+          "top": 3317.296875,
+          "height": 1190.8125,
+          "width": 1440,
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif"
+        },
+        {
+          "selector": "#featured-journal",
+          "top": 4508.109375,
+          "height": 1221.765625,
+          "width": 1440,
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif"
+        },
+        {
+          "selector": "#journal",
+          "top": 5729.875,
+          "height": 3360.4375,
+          "width": 1440,
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif"
+        },
+        {
+          "selector": "#authors",
+          "top": 9090.3125,
+          "height": 742.40625,
+          "width": 1440,
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif"
+        },
+        {
+          "selector": "#sections",
+          "top": 9832.71875,
+          "height": 1447.3125,
+          "width": 1440,
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif"
+        },
+        {
+          "selector": "#calendar",
+          "top": 11280.03125,
+          "height": 2363.75,
+          "width": 1440,
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif"
+        },
+        {
+          "selector": "#community",
+          "top": 13643.78125,
+          "height": 709.125,
+          "width": 1440,
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif"
+        },
+        {
+          "selector": "#editorial-policy",
+          "top": 14352.90625,
+          "height": 664.75,
+          "width": 1440,
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif"
+        },
+        {
+          "selector": ".site-footer",
+          "top": 15017.65625,
+          "height": 536.1875,
+          "width": 1440,
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif"
+        }
+      ],
+      "early": {
+        "requests": [
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/assets/index-IuIzEitX.js",
+            "bytes": 120393,
+            "decoded": 399980
+          },
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/assets/vite-preload-helper-Bk9RROYF.js",
+            "bytes": 965,
+            "decoded": 1132
+          },
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/assets/react-vendor-DY4IABGq.js",
+            "bytes": 47482,
+            "decoded": 145954
+          },
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/assets/index-CnxcRB_D.css",
+            "bytes": 97377,
+            "decoded": 579946
+          },
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/fonts/editorial/onest-cyrillic-variable.woff2",
+            "bytes": 16160,
+            "decoded": 15860
+          },
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/fonts/editorial/onest-latin-variable.woff2",
+            "bytes": 34060,
+            "decoded": 33760
+          },
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/assets/CmsHomepageContent-DWBuDhQ1.js",
+            "bytes": 2616,
+            "decoded": 8088
+          },
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/assets/catalog-DB9Wg_iO.js",
+            "bytes": 84288,
+            "decoded": 607081
+          },
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/assets/SectionsDirectory-P9o0_nVt.js",
+            "bytes": 2663,
+            "decoded": 5058
+          },
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/assets/articleSeries-bfsT0q_2.js",
+            "bytes": 1499,
+            "decoded": 2623
+          },
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/assets/LiteraryCalendar-BLvv5YMo.js",
+            "bytes": 3709,
+            "decoded": 8934
+          },
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/brand/magazine-hero-wide.avif?v=20260813-literary-nature-final",
+            "bytes": 141907,
+            "decoded": 141607
+          },
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/brand/probpera-logo.png",
+            "bytes": 21111,
+            "decoded": 20811
+          },
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/brand/atlas-side-brushes.webp",
+            "bytes": 64132,
+            "decoded": 63832
+          },
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/assets/brush-paper-corners-ChpKv6VW.webp",
+            "bytes": 75700,
+            "decoded": 75400
+          },
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/assets/editorial-paper-DwbOovh5.webp",
+            "bytes": 37572,
+            "decoded": 37272
+          },
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/assets/LiteraryGlobe-ClnDFJJd.js",
+            "bytes": 41769,
+            "decoded": 127248
+          },
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/assets/three-vendor-CfY00QhG.js",
+            "bytes": 330673,
+            "decoded": 1094826
+          },
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/assets/nobelArticles-DgfAK9tj.js",
+            "bytes": 776,
+            "decoded": 476
+          },
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/assets/BrandPlusIcon-C46NekHe.js",
+            "bytes": 517,
+            "decoded": 217
+          },
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/assets/countries-Dx5XTjIJ.js",
+            "bytes": 225695,
+            "decoded": 771182
+          },
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/assets/writer-portraits-data-ZDd9rYw-.js",
+            "bytes": 76633,
+            "decoded": 500029
+          },
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/assets/writer-biography-reviews-BMVRO21A.js",
+            "bytes": 393933,
+            "decoded": 1227678
+          },
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/assets/editorialOverrides-StGXJP3e.js",
+            "bytes": 9970,
+            "decoded": 50558
+          },
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/assets/country-data-a-m-C_afZbhK.js",
+            "bytes": 159675,
+            "decoded": 789513
+          },
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/assets/country-data-n-z-B6kBB-fK.js",
+            "bytes": 105567,
+            "decoded": 508626
+          },
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/brand/probpera-logo.png",
+            "bytes": 21111,
+            "decoded": 20811
+          }
+        ],
+        "cls": 0.000014643464265046294
+      },
+      "errors": [],
+      "overflow": 0
+    },
+    {
+      "width": 390,
+      "language": "ru",
+      "dpr": 1,
+      "blocks": [
+        {
+          "selector": ".magazine-hero",
+          "top": 111,
+          "height": 835,
+          "width": 390,
+          "background": "rgb(22, 2, 31)",
+          "font": "\"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, \"Helvetica Neue\", Arial, sans-serif"
+        },
+        {
+          "selector": "#atlas",
+          "top": 946,
+          "height": 1485.5625,
+          "width": 390,
+          "background": "rgb(17, 3, 29)",
+          "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif"
+        },
+        {
+          "selector": "#book-day",
+          "top": 2431.5625,
+          "height": 2316.140625,
+          "width": 390,
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif"
+        },
+        {
+          "selector": "#books",
+          "top": 4747.703125,
+          "height": 1363.3125,
+          "width": 390,
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif"
+        },
+        {
+          "selector": "#featured-journal",
+          "top": 6111.015625,
+          "height": 3439.953125,
+          "width": 390,
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif"
+        },
+        {
+          "selector": "#journal",
+          "top": 9550.96875,
+          "height": 8048.453125,
+          "width": 390,
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif"
+        },
+        {
+          "selector": "#authors",
+          "top": 17599.421875,
+          "height": 2200.28125,
+          "width": 390,
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif"
+        },
+        {
+          "selector": "#sections",
+          "top": 19799.703125,
+          "height": 3328.59375,
+          "width": 390,
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif"
+        },
+        {
+          "selector": "#calendar",
+          "top": 23128.296875,
+          "height": 3180.796875,
+          "width": 390,
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif"
+        },
+        {
+          "selector": "#community",
+          "top": 26309.09375,
+          "height": 1654.921875,
+          "width": 390,
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif"
+        },
+        {
+          "selector": "#editorial-policy",
+          "top": 27964.015625,
+          "height": 1000.9375,
+          "width": 390,
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif"
+        },
+        {
+          "selector": ".site-footer",
+          "top": 28964.953125,
+          "height": 1367.671875,
+          "width": 390,
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Onest Local\", \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif"
+        }
+      ],
+      "early": {
+        "requests": [
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/assets/index-IuIzEitX.js",
+            "bytes": 120393,
+            "decoded": 399980
+          },
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/assets/react-vendor-DY4IABGq.js",
+            "bytes": 47482,
+            "decoded": 145954
+          },
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/assets/vite-preload-helper-Bk9RROYF.js",
+            "bytes": 965,
+            "decoded": 1132
+          },
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/assets/index-CnxcRB_D.css",
+            "bytes": 97377,
+            "decoded": 579946
+          },
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/fonts/editorial/onest-cyrillic-variable.woff2",
+            "bytes": 16160,
+            "decoded": 15860
+          },
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/fonts/editorial/onest-latin-variable.woff2",
+            "bytes": 34060,
+            "decoded": 33760
+          },
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/assets/CmsHomepageContent-DWBuDhQ1.js",
+            "bytes": 2616,
+            "decoded": 8088
+          },
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/assets/catalog-DB9Wg_iO.js",
+            "bytes": 84288,
+            "decoded": 607081
+          },
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/assets/SectionsDirectory-P9o0_nVt.js",
+            "bytes": 2663,
+            "decoded": 5058
+          },
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/assets/articleSeries-bfsT0q_2.js",
+            "bytes": 1499,
+            "decoded": 2623
+          },
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/assets/LiteraryCalendar-BLvv5YMo.js",
+            "bytes": 3709,
+            "decoded": 8934
+          },
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/brand/probpera-logo.png",
+            "bytes": 21111,
+            "decoded": 20811
+          },
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/brand/magazine-hero-mobile.avif?v=20260813-literary-nature-portrait",
+            "bytes": 144636,
+            "decoded": 144336
+          },
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/brand/atlas-side-brushes-mobile.webp",
+            "bytes": 22880,
+            "decoded": 22580
+          },
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/assets/brush-paper-corners-ChpKv6VW.webp",
+            "bytes": 75700,
+            "decoded": 75400
+          },
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/assets/editorial-paper-DwbOovh5.webp",
+            "bytes": 37572,
+            "decoded": 37272
+          },
+          {
+            "name": "http://127.0.0.1:4186/probpera-literary-map/brand/probpera-logo.png",
+            "bytes": 21111,
+            "decoded": 20811
+          }
+        ],
+        "cls": 0
+      },
+      "errors": [],
+      "overflow": 0
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+ExpectError: expect(received).toBe(expected) // Object.is equality
+
+Expected: 3
+Received: 1
+    at captureRawStack (C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\node_modules\playwright-core\lib\coreBundle.js:9681:17)
+    at callMatcherAsStep (C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\node_modules\playwright\lib\matchers\expect.js:13310:57)
+    at Object.toBe (C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\node_modules\playwright\lib\matchers\expect.js:13300:23)
+    at C:\Users\User\Documents\ChatGPT\Работа по сайту\probpera-typography\.tmp\capture-ui-main-toolbar.mjs:22:35 {
+  matcherResult: {
+    actual: 1,
+    expected: 3,
+    message: 'expect(received).toBe(expected) // Object.is equality\n' +
+      '\n' +
+      'Expected: 3\n' +
+      'Received: 1',
+    name: 'toBe',
+    pass: false
+  }
+}
+
+Node.js v24.20.0

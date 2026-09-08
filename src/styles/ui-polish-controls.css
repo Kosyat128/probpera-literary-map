@@ -1,0 +1,403 @@
+/* R04-R05: existing shelf and globe controls, with no scene or asset changes. */
+#atlas .atlas-experience-surface[data-atlas-view="embedded"] .atlas-intro {
+  gap: 20px 24px;
+  margin-bottom: 24px;
+}
+#atlas .atlas-experience-surface[data-atlas-view="embedded"][data-atlas-search-open="false"] .country-search,
+#atlas .atlas-experience-surface[data-atlas-view="embedded"][data-atlas-filters-open="false"] .atlas-toolbar {
+  display: none;
+}
+#atlas .atlas-experience-surface[data-atlas-view="embedded"] .country-search {
+  grid-column: 1 / -1;
+  justify-self: end;
+  width: min(420px, 100%);
+  scroll-margin-top: calc(var(--sticky-navigation-offset) + 12px);
+}
+#atlas:has(.atlas-experience-surface[data-atlas-view="embedded"][data-atlas-search-open="true"]) {
+  overflow-anchor: none;
+}
+#atlas .atlas-experience-surface[data-atlas-view="embedded"] .country-search > label {
+  position: static;
+  margin-bottom: 8px;
+}
+#atlas .atlas-experience-surface[data-atlas-view="embedded"] .country-search .search-results {
+  position: static;
+  inset: auto;
+  max-height: min(320px, 42svh);
+  margin-top: 8px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+}
+#atlas .atlas-experience-surface[data-atlas-view="embedded"] .atlas-toolbar {
+  grid-column: 1 / -1;
+}
+#atlas .atlas-experience-surface[data-atlas-view="embedded"] .globe-column {
+  min-height: 1040px;
+}
+#atlas .atlas-experience-surface { --polish-globe-reserve: 0px; }
+#atlas .atlas-experience-surface[data-atlas-view="embedded"] .world-map-stage {
+  top: 0;
+  height: 100%;
+}
+#atlas .atlas-experience-surface[data-atlas-view="embedded"] .literary-globe { height: 100%; }
+#atlas .atlas-experience-surface[data-atlas-view="embedded"] .atlas-immersion-launch {
+  top: 16px;
+  left: 20px;
+}
+.atlas-embedded-discovery {
+  position: absolute;
+  z-index: 24;
+  top: 16px;
+  left: 72px;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 8px;
+}
+#atlas .atlas-experience-surface[data-atlas-view="embedded"] :is(.atlas-immersion-launch, .atlas-embedded-discovery .ui-icon-button) {
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  min-height: 44px;
+  padding: 0;
+  color: rgba(255, 255, 255, .9);
+  background: rgba(19, 2, 32, .2);
+  border: 1px solid rgba(255, 255, 255, .26);
+  border-radius: var(--ui-radius-control);
+  box-shadow: none;
+  backdrop-filter: none;
+  transform: none;
+}
+#atlas .atlas-experience-surface[data-atlas-view="embedded"] :is(.atlas-immersion-launch, .atlas-embedded-discovery .ui-icon-button):not(:disabled):hover {
+  color: #fff;
+  background: #3b174f;
+  border-color: var(--orange-soft);
+  transform: none;
+}
+#atlas .atlas-experience-surface[data-atlas-view="embedded"] :is(.atlas-immersion-launch, .atlas-embedded-discovery .ui-icon-button):is(:active, [aria-expanded="true"]) {
+  color: #fff;
+  background: var(--violet-700);
+  border-color: var(--orange-soft);
+  transform: none;
+}
+#atlas .atlas-experience-surface[data-atlas-view="embedded"] :is(.atlas-immersion-launch, .atlas-embedded-discovery .ui-icon-button):focus-visible {
+  outline: 2px solid var(--orange-soft);
+  outline-offset: 3px;
+  box-shadow: var(--ui-focus-ring);
+}
+#atlas .atlas-immersive-chrome nav > * { order: 2; }
+#atlas .atlas-immersive-chrome .atlas-immersive-filter-toggle { order: 0; color: #fff; }
+#atlas .atlas-immersive-chrome .atlas-immersive-search-toggle { order: 1; color: #fff; }
+#atlas .atlas-immersive-chrome :is(.atlas-immersive-filter-toggle, .atlas-immersive-search-toggle) .ui-action__icon {
+  color: #fff;
+  background: rgba(255, 255, 255, .06);
+  border-color: rgba(255, 255, 255, .3);
+}
+@media (min-width: 721px) {
+  #atlas .atlas-immersive-chrome nav {
+    grid-template-columns: 48px 48px minmax(140px, 1fr) 91px 44px;
+    gap: 6px;
+  }
+}
+#atlas .globe-edition-controls {
+  position: absolute;
+  z-index: 24;
+  top: 80px;
+  right: 20px;
+  left: 20px;
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) 44px;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+}
+#atlas .globe-edition-controls[data-visible="false"] {
+  visibility: hidden;
+}
+#atlas .globe-edition-controls .globe-style-switch {
+  position: relative;
+  inset: auto;
+  grid-column: 2;
+  grid-row: 1;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 0;
+  transform: none;
+  pointer-events: auto;
+  grid-auto-columns: max(132px, calc((100% - 12px) / 7));
+}
+#atlas .atlas-experience-surface[data-atlas-view="embedded"] .globe-style-switch {
+  height: 44px;
+  min-height: 44px;
+  padding: 0;
+  border-width: 0;
+  border-radius: 12px;
+  outline: 1px solid rgba(255, 191, 126, .34);
+  outline-offset: 0;
+}
+/* Leave one 16px gap after the three 44px actions and their two 8px gaps. */
+@media (min-width: 768px) {
+  #atlas .atlas-experience-surface[data-atlas-view="embedded"] .globe-edition-controls {
+    top: 16px;
+    left: 184px;
+  }
+}
+/* The country card also owns horizontal space at these intermediate widths. */
+@media (min-width: 981px) and (max-width: 1199px) {
+  #atlas .atlas-experience-surface[data-atlas-view="embedded"][data-atlas-panel-state="open"] .globe-edition-controls {
+    top: 80px;
+    left: 20px;
+  }
+}
+#atlas .globe-edition-controls .globe-edition-scroll-cue {
+  position: static;
+  display: flex;
+  grid-column: 1;
+  grid-row: 1;
+  width: 44px;
+  height: 44px;
+  background: none;
+  visibility: hidden;
+}
+#atlas .globe-edition-controls .globe-edition-scroll-cue.is-next { grid-column: 3; }
+#atlas .globe-edition-controls .globe-edition-scroll-cue[data-visible="true"] { visibility: visible; }
+#atlas .globe-edition-controls[data-visible="false"] :is(.globe-style-switch, .globe-edition-scroll-cue) {
+  visibility: hidden;
+  pointer-events: none;
+}
+/* Match the legacy layer: important declarations outrank unlayered overrides. */
+@layer site-defaults {
+  @media (prefers-reduced-motion: reduce) {
+    #atlas .globe-edition-controls .globe-style-switch { transform: none !important; }
+    #atlas .atlas-experience-surface[data-atlas-view="immersive"] .literary-globe .globe-controls {
+      transform: translateX(-50%) !important;
+    }
+  }
+}
+#atlas .globe-edition-controls .globe-edition-compact-select { display: none; }
+#atlas .atlas-experience-surface[data-atlas-view="immersive"] .globe-edition-controls {
+  top: var(--atlas-globe-rail-top, 92px);
+  right: var(--atlas-globe-safe-right, 20px);
+  left: var(--atlas-globe-safe-left, 20px);
+}
+#atlas .literary-globe .globe-controls {
+  grid-template-columns: 44px 64px 44px repeat(3, minmax(0, 1fr));
+  width: min(488px, calc(100% - 40px));
+  bottom: calc(var(--polish-globe-reserve) + 78px);
+  gap: 4px;
+  padding: 6px;
+  background: rgba(27, 9, 38, .96);
+  border-color: rgba(239, 198, 255, .28);
+}
+#atlas .literary-globe .globe-controls button {
+  width: 100%;
+  height: 44px;
+  min-height: 44px;
+  min-width: 44px;
+  color: #fff;
+  border-color: rgba(255, 255, 255, .18);
+}
+#atlas .literary-globe .globe-controls button:not(:disabled):hover {
+  background: #442153;
+  border-color: var(--orange-soft);
+}
+#atlas .literary-globe .globe-controls button:focus-visible {
+  outline: 2px solid var(--orange-soft);
+  outline-offset: 2px;
+}
+#atlas .literary-globe .globe-controls button:disabled { opacity: .5; box-shadow: none; }
+#atlas .literary-globe .globe-controls .ui-action__icon { color: currentColor; }
+#atlas .literary-globe .globe-scale-feedback {
+  position: static;
+  display: grid;
+  align-self: stretch;
+  place-items: center;
+  min-width: 0;
+  margin: 0;
+  padding: 0 4px;
+  color: #fff;
+  font: 500 14px/1.25 var(--font-ui, var(--sans));
+  font-variant-numeric: tabular-nums;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+#atlas .atlas-coordinate small {
+  font: 400 13px/1.35 var(--font-ui, var(--sans));
+  letter-spacing: .01em;
+  text-transform: none;
+  color: #eee6f3;
+}
+#atlas .literary-globe .globe-navigation-label {
+  z-index: 10;
+  font: 400 13px/1.4 var(--font-ui, var(--sans));
+  color: #e5d4e7;
+  position: absolute;
+  top: auto;
+  right: 24px;
+  bottom: calc(var(--polish-globe-reserve) + 94px);
+  left: auto;
+  width: max-content;
+  max-width: 280px;
+  white-space: normal;
+  text-align: right;
+  transform: none;
+}
+#atlas .literary-globe .globe-instruction {
+  right: auto;
+  bottom: calc(var(--polish-globe-reserve) + 26px);
+  left: 50%;
+  width: 488px;
+  max-width: calc(100% - 360px);
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.4;
+  white-space: normal;
+  transform: translateX(-50%);
+}
+#atlas .atlas-experience-surface[data-atlas-view="embedded"] .atlas-coordinate { left: 24px; }
+#atlas .atlas-experience-surface[data-atlas-panel-state="closed"] .atlas-coordinate {
+  bottom: 107px;
+  transform: translateY(50%);
+}
+#atlas .atlas-experience-surface[data-atlas-panel-state="closed"] .globe-navigation-label {
+  bottom: 107px;
+  transform: translateY(50%);
+}
+@media (min-width: 981px) {
+  #atlas .atlas-experience-surface[data-atlas-panel-state="open"] .globe-controls { bottom: 108px; }
+  #atlas .atlas-experience-surface[data-atlas-panel-state="open"] .globe-navigation-label,
+  #atlas .atlas-experience-surface[data-atlas-panel-state="open"] .globe-instruction {
+    right: auto;
+    left: calc((100% - var(--atlas-globe-panel-reserve, 445px)) / 2);
+    text-align: center;
+    transform: translateX(-50%);
+  }
+  #atlas .atlas-experience-surface[data-atlas-panel-state="open"] .globe-navigation-label { bottom: 74px; }
+  #atlas .atlas-experience-surface[data-atlas-panel-state="open"] .globe-instruction { max-width: calc(100% - 490px); }
+}
+@media (max-width: 1180px) {
+  #atlas .literary-globe .globe-controls { bottom: calc(var(--polish-globe-reserve) + 108px); }
+  #atlas .literary-globe .globe-navigation-label {
+    right: 20px;
+    bottom: calc(var(--polish-globe-reserve) + 74px);
+    width: max-content;
+    max-width: calc(100% - 40px);
+    text-align: right;
+  }
+  #atlas .literary-globe .globe-instruction { max-width: calc(100% - 40px); }
+}
+@media (max-width: 980px) {
+  #atlas .atlas-experience-surface[data-atlas-panel-state="open"] { --polish-globe-reserve: 154px; }
+}
+@media (min-width: 768px) and (max-width: 1180px) {
+  #atlas .literary-globe .globe-controls {
+    grid-template-columns: 44px minmax(44px, 1fr) 44px repeat(3, 44px);
+    width: 344px;
+  }
+  #atlas .literary-globe .globe-controls .ui-action__label { display: none; }
+  #atlas .atlas-experience-surface[data-atlas-panel-state="closed"] .atlas-coordinate,
+  #atlas .atlas-experience-surface[data-atlas-panel-state="closed"] .globe-navigation-label {
+    bottom: 137px;
+  }
+  #atlas .atlas-experience-surface[data-atlas-panel-state="closed"] .globe-navigation-label {
+    max-width: calc((100% - 344px) / 2 - 40px);
+  }
+}
+
+#books .book-shelf-controls .book-shelf-controls__archive {
+  color: #fff;
+  background: #4b087c;
+  border: 1px solid #f6954c;
+  box-shadow: inset 0 1px rgba(255,255,255,.09), 0 0 14px rgba(246,117,24,.16);
+  font-weight: 600;
+}
+#books .book-shelf-controls .book-shelf-controls__archive:hover { background: #621297; }
+#books .book-shelf-controls__views { min-width: 0; }
+#books .book-shelf-frame__navigation {
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  gap: 12px;
+}
+#books .book-shelf-navigation__position,
+#books .book-shelf-navigation__actions { justify-content: center; }
+#books .book-shelf-navigation__previous { display: none; }
+#books .book-shelf-scene-hint {
+  border-color: rgba(247, 190, 145, .38);
+  background: rgba(30, 10, 43, .96);
+}
+#books .book-shelf-scene-hint small { color: #e4d9e9; font-size: 14px; line-height: 1.4; }
+
+@media (min-width: 1100px) {
+  #books .book-shelf-frame__navigation {
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  }
+  #books .book-shelf-navigation__position { grid-column: 2; }
+  #books .book-shelf-navigation__actions { grid-column: 3; justify-self: end; flex-wrap: wrap; }
+}
+@media (min-width: 981px) {
+  #atlas .atlas-experience-surface[data-atlas-panel-state="open"] .globe-edition-controls {
+    right: calc(var(--atlas-globe-panel-reserve, 450px) + 20px);
+  }
+}
+@media (max-width: 767px) {
+  #atlas .atlas-experience-surface[data-atlas-view="embedded"] .globe-column { min-height: 880px; }
+  #atlas .atlas-experience-surface[data-atlas-view="embedded"][data-atlas-panel-state="open"] .globe-column { min-height: 1000px; }
+  #atlas .globe-edition-controls { right: 12px; left: 12px; gap: 4px; }
+  #atlas .atlas-experience-surface[data-atlas-view="embedded"] .globe-touch-activation {
+    top: 148px;
+    right: 14px;
+    bottom: auto;
+    max-width: calc(100% - 28px);
+    color: #fff;
+    background: var(--violet-900);
+    border-color: rgba(255, 255, 255, .2);
+  }
+  #atlas .literary-globe .globe-controls {
+    grid-template-columns: 44px minmax(44px, 1fr) 44px repeat(3, 44px);
+    gap: 4px;
+    width: min(344px, calc(100% - 16px));
+    bottom: calc(var(--polish-globe-reserve) + 86px);
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  #atlas .literary-globe .globe-controls button { min-width: 44px; padding-inline: 2px; }
+  #atlas .literary-globe .globe-controls .ui-action__label { display: none; }
+  #atlas .literary-globe .globe-navigation-label {
+    font-size: 12px;
+    bottom: calc(var(--polish-globe-reserve) + 46px);
+    max-width: calc(100% - 32px);
+    white-space: normal;
+  }
+  #atlas .atlas-experience-surface[data-atlas-panel-state="closed"] .globe-navigation-label {
+    bottom: 46px;
+    transform: none;
+  }
+  #atlas .literary-globe .globe-instruction { bottom: calc(var(--polish-globe-reserve) + 16px); }
+  #books .book-shelf-controls__topline {
+    grid-template-areas: "collection collection collection" "search search search" "views views views" "filters random settings";
+    grid-template-columns: 44px minmax(0, 1fr) 44px;
+  }
+  #books .book-shelf-controls__views { justify-self: center; width: auto; }
+  #books .book-shelf-controls .book-shelf-controls__suggestions {
+    position: static;
+    grid-column: 1 / -1;
+    width: 100%;
+    max-width: 100%;
+    max-height: min(320px, 45svh);
+    margin-top: 8px;
+  }
+  #books .book-shelf-controls .book-shelf-controls__archive { width: auto; min-width: 116px; padding-inline: 14px; }
+  #books .book-shelf-controls__random > span { position: static; width: auto; height: auto; clip-path: none; overflow: visible; }
+}
+@media (max-width: 360px) {
+  #atlas .atlas-experience-surface[data-atlas-view="embedded"] .globe-controls {
+    grid-template-columns: repeat(3, minmax(44px, 1fr));
+  }
+}

@@ -1,0 +1,310 @@
+{
+  "output": "reports/ui-polish-v4/brand-after",
+  "checked": true,
+  "results": [
+    {
+      "width": 1440,
+      "header": {
+        "link": {
+          "fontFamily": "\"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "normal",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(255, 255, 255)",
+          "display": "flex",
+          "marginTop": "0px",
+          "gap": "13px",
+          "width": "204.422px",
+          "height": "55px",
+          "fontKerning": "auto"
+        },
+        "image": {
+          "fontFamily": "\"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "normal",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(255, 255, 255)",
+          "display": "block",
+          "marginTop": "0px",
+          "gap": "normal",
+          "width": "55px",
+          "height": "55px",
+          "fontKerning": "auto"
+        },
+        "title": {
+          "fontFamily": "Georgia, \"Times New Roman\", serif",
+          "fontSize": "23px",
+          "fontWeight": "500",
+          "lineHeight": "normal",
+          "letterSpacing": "0.46px",
+          "textTransform": "none",
+          "color": "rgb(255, 255, 255)",
+          "display": "block",
+          "marginTop": "0px",
+          "gap": "normal",
+          "width": "136.422px",
+          "height": "26px",
+          "fontKerning": "auto"
+        },
+        "subtitle": {
+          "fontFamily": "\"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "8px",
+          "fontWeight": "800",
+          "lineHeight": "normal",
+          "letterSpacing": "1.44px",
+          "textTransform": "uppercase",
+          "color": "rgba(255, 255, 255, 0.61)",
+          "display": "block",
+          "marginTop": "3px",
+          "gap": "normal",
+          "width": "136.422px",
+          "height": "11px",
+          "fontKerning": "auto"
+        }
+      },
+      "footer": {
+        "link": {
+          "fontFamily": "\"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "normal",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(255, 255, 255)",
+          "display": "inline-flex",
+          "marginTop": "0px",
+          "gap": "13px",
+          "width": "204.422px",
+          "height": "55px",
+          "fontKerning": "auto"
+        },
+        "image": {
+          "fontFamily": "\"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "normal",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(255, 255, 255)",
+          "display": "block",
+          "marginTop": "0px",
+          "gap": "normal",
+          "width": "55px",
+          "height": "55px",
+          "fontKerning": "auto"
+        },
+        "title": {
+          "fontFamily": "Georgia, \"Times New Roman\", serif",
+          "fontSize": "23px",
+          "fontWeight": "500",
+          "lineHeight": "normal",
+          "letterSpacing": "0.46px",
+          "textTransform": "none",
+          "color": "rgb(255, 255, 255)",
+          "display": "block",
+          "marginTop": "0px",
+          "gap": "normal",
+          "width": "136.422px",
+          "height": "26px",
+          "fontKerning": "auto"
+        },
+        "subtitle": {
+          "fontFamily": "\"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "8px",
+          "fontWeight": "800",
+          "lineHeight": "normal",
+          "letterSpacing": "1.44px",
+          "textTransform": "uppercase",
+          "color": "rgba(255, 255, 255, 0.61)",
+          "display": "block",
+          "marginTop": "3px",
+          "gap": "normal",
+          "width": "136.422px",
+          "height": "11px",
+          "fontKerning": "auto"
+        }
+      },
+      "language": [
+        {
+          "text": "RU",
+          "fontFamily": "\"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, \"Helvetica Neue\", Arial, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "12px",
+          "width": 29.34375
+        },
+        {
+          "text": "EN",
+          "fontFamily": "\"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, \"Helvetica Neue\", Arial, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "12px",
+          "width": 28.96875
+        }
+      ],
+      "logoUrls": [
+        "/probpera-literary-map/brand/probpera-logo.png",
+        "/probpera-literary-map/brand/probpera-logo.png"
+      ],
+      "brandTexts": [
+        "Проба ПераЛитературный журнал",
+        "Проба ПераЛитературный журнал"
+      ],
+      "footerFits": true
+    },
+    {
+      "width": 390,
+      "header": {
+        "link": {
+          "fontFamily": "\"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "normal",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(255, 255, 255)",
+          "display": "flex",
+          "marginTop": "0px",
+          "gap": "0px",
+          "width": "40px",
+          "height": "40px",
+          "fontKerning": "auto"
+        },
+        "image": {
+          "fontFamily": "\"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "normal",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(255, 255, 255)",
+          "display": "block",
+          "marginTop": "0px",
+          "gap": "normal",
+          "width": "40px",
+          "height": "40px",
+          "fontKerning": "auto"
+        },
+        "title": {
+          "fontFamily": "Georgia, \"Times New Roman\", serif",
+          "fontSize": "18px",
+          "fontWeight": "500",
+          "lineHeight": "normal",
+          "letterSpacing": "0.36px",
+          "textTransform": "none",
+          "color": "rgb(255, 255, 255)",
+          "display": "block",
+          "marginTop": "0px",
+          "gap": "normal",
+          "width": "auto",
+          "height": "auto",
+          "fontKerning": "auto"
+        },
+        "subtitle": {
+          "fontFamily": "\"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "8px",
+          "fontWeight": "800",
+          "lineHeight": "normal",
+          "letterSpacing": "1.44px",
+          "textTransform": "uppercase",
+          "color": "rgba(255, 255, 255, 0.61)",
+          "display": "none",
+          "marginTop": "3px",
+          "gap": "normal",
+          "width": "auto",
+          "height": "auto",
+          "fontKerning": "auto"
+        }
+      },
+      "footer": {
+        "link": {
+          "fontFamily": "\"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "normal",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(255, 255, 255)",
+          "display": "inline-flex",
+          "marginTop": "0px",
+          "gap": "13px",
+          "width": "204.422px",
+          "height": "55px",
+          "fontKerning": "auto"
+        },
+        "image": {
+          "fontFamily": "\"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "normal",
+          "letterSpacing": "normal",
+          "textTransform": "none",
+          "color": "rgb(255, 255, 255)",
+          "display": "block",
+          "marginTop": "0px",
+          "gap": "normal",
+          "width": "55px",
+          "height": "55px",
+          "fontKerning": "auto"
+        },
+        "title": {
+          "fontFamily": "Georgia, \"Times New Roman\", serif",
+          "fontSize": "23px",
+          "fontWeight": "500",
+          "lineHeight": "normal",
+          "letterSpacing": "0.46px",
+          "textTransform": "none",
+          "color": "rgb(255, 255, 255)",
+          "display": "block",
+          "marginTop": "0px",
+          "gap": "normal",
+          "width": "136.422px",
+          "height": "26px",
+          "fontKerning": "auto"
+        },
+        "subtitle": {
+          "fontFamily": "\"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "8px",
+          "fontWeight": "800",
+          "lineHeight": "normal",
+          "letterSpacing": "1.44px",
+          "textTransform": "uppercase",
+          "color": "rgba(255, 255, 255, 0.61)",
+          "display": "block",
+          "marginTop": "3px",
+          "gap": "normal",
+          "width": "136.422px",
+          "height": "11px",
+          "fontKerning": "auto"
+        }
+      },
+      "language": [
+        {
+          "text": "RU",
+          "fontFamily": "\"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, \"Helvetica Neue\", Arial, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "12px",
+          "width": 44
+        },
+        {
+          "text": "EN",
+          "fontFamily": "\"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, \"Helvetica Neue\", Arial, sans-serif",
+          "fontWeight": "400",
+          "fontSize": "12px",
+          "width": 44
+        }
+      ],
+      "logoUrls": [
+        "/probpera-literary-map/brand/probpera-logo.png",
+        "/probpera-literary-map/brand/probpera-logo.png"
+      ],
+      "brandTexts": [
+        "Проба ПераЛитературный журнал",
+        "Проба ПераЛитературный журнал"
+      ],
+      "footerFits": true
+    }
+  ]
+}

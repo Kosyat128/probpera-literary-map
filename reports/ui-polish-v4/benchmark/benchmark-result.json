@@ -1,0 +1,512 @@
+{
+  "requirement": "F21",
+  "accessDate": "2026-09-08",
+  "status": "done_with_documented_verification_limits",
+  "projects": [
+    {
+      "name": "Emergence Magazine",
+      "role": "editorial",
+      "home": "https://emergencemagazine.org/",
+      "content": "https://emergencemagazine.org/essay/a-seasonal-practice-of-fermentation/",
+      "visual": "verified_sample",
+      "award": "Site of the Day 2018-08-11; historical version only",
+      "awardSource": "https://www.awwwards.com/sites/emergence-magazine"
+    },
+    {
+      "name": "The Paris Review",
+      "role": "literary_editorial",
+      "home": "https://www.theparisreview.org/",
+      "content": "https://www.theparisreview.org/blog/2026/08/18/the-catalogue-of-lost-things/",
+      "visual": "home_verified_content_not_verified_http_403",
+      "award": "not_claimed"
+    },
+    {
+      "name": "The Pudding",
+      "role": "interactive_editorial",
+      "home": "https://pudding.cool/",
+      "content": "https://pudding.cool/2026/05/similes/",
+      "visual": "verified_sample",
+      "award": "not_claimed"
+    },
+    {
+      "name": "Linear",
+      "role": "product_controls_bounded_reference_separate_from_eight_editorial_axes",
+      "home": "https://linear.app/",
+      "accessDate": "2026-09-08",
+      "visual": "live_desktop_mobile_menu_focus_and_preview_selected_surface_observed",
+      "interaction": "Menu Enter/Escape and aria-expanded verified; Next issue preview change not verified",
+      "viewports": [
+        {
+          "width": 1440,
+          "height": 1000,
+          "dpr": 1
+        },
+        {
+          "width": 390,
+          "height": 844,
+          "dpr": 1
+        }
+      ],
+      "award": "not_claimed",
+      "evidence": [
+        "CONTROLS_REFERENCE_RU.md",
+        "linear-controls-ready/observations.json",
+        "linear-controls-ready/linear-1440-focus.png",
+        "linear-controls-ready/linear-1440-menu.png",
+        "linear-controls-ready/linear-390-menu.png",
+        "linear-controls-ready/linear-1440-preview.png"
+      ],
+      "limits": "No login or submitted data; POST blocked; early top captures excluded; React 419 observed; full accessibility not claimed"
+    }
+  ],
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 1000,
+      "dpr": 1
+    },
+    {
+      "width": 390,
+      "height": 1000,
+      "dpr": 1
+    }
+  ],
+  "languages": {
+    "references": "en",
+    "probpera": "ru"
+  },
+  "axes": [
+    {
+      "id": 1,
+      "axis": "typography_readability",
+      "result": "comparable_in_verified_aspect",
+      "localEvidence": [
+        "probpera-before-article-1440-content.png",
+        "probpera-before-article-390-content.png",
+        "local-baseline.json"
+      ],
+      "referenceEvidence": [
+        "emergence-article-1440-content.png",
+        "emergence-reading-390.png",
+        "pudding-story-1440-content.png"
+      ],
+      "action": "Preserve existing Onest Local scale and reading measure",
+      "requirements": [
+        "F01",
+        "F21"
+      ]
+    },
+    {
+      "id": 2,
+      "axis": "grid_spacing_alignment",
+      "result": "comparable_in_verified_aspect",
+      "localEvidence": [
+        "probpera-before-seam-1440.png",
+        "probpera-before-cards-390.png"
+      ],
+      "referenceEvidence": [
+        "paris-home-1440-content.png",
+        "pudding-home-1440-content.png"
+      ],
+      "action": "Preserve established section-card rails; no mechanical imitation of reference density",
+      "requirements": [
+        "F03",
+        "F21"
+      ]
+    },
+    {
+      "id": 3,
+      "axis": "images_cropping",
+      "result": "comparable_in_verified_aspect",
+      "localEvidence": [
+        "../before/ru-1440-journal.png",
+        "../after/ru-1440-journal.png",
+        "../after/ru-390-journal.png"
+      ],
+      "referenceEvidence": [
+        "paris-home-1440-content.png",
+        "emergence-article-1440-top.png"
+      ],
+      "action": "Preserve source images and focal positions; earlier benchmark loading placeholders are not evidence of a crop defect",
+      "requirements": [
+        "F23"
+      ]
+    },
+    {
+      "id": 4,
+      "axis": "artistic_cohesion_transitions",
+      "result": "specific_gap_closed_in_current_reviewed_visual_scope",
+      "localEvidence": [
+        "probpera-before-home-1440.png",
+        "../working/ru-1440-reader-discussion.png",
+        "../working/ru-1440-journal.png"
+      ],
+      "referenceEvidence": [
+        "pudding-transition-1440.png",
+        "pudding-transition-390.png"
+      ],
+      "action": "Owner-directed large contrasting strokes in separate corners and side margins; no manufactured joining of colors. One runtime orange alpha with CSS white/violet tint, protected content surfaces.",
+      "requirements": [
+        "R06",
+        "R07",
+        "R08",
+        "R09",
+        "R10",
+        "R11",
+        "R12",
+        "R13",
+        "F21",
+        "F22",
+        "F23",
+        "F24"
+      ],
+      "afterStatus": "passed_scoped_1440_390_current_candidate",
+      "afterEvidence": [
+        "FINAL_SEAM_MATRIX_RU.md",
+        "final-seam-review.json",
+        "CURRENT_DESKTOP_REVIEW_RU.md",
+        "../after/measurements.json"
+      ]
+    },
+    {
+      "id": 5,
+      "axis": "navigation_controls_feedback",
+      "result": "comparable_in_verified_card_to_reader_transition_with_bounded_shelf_visual_review",
+      "localEvidence": [
+        "local-baseline.json",
+        "probpera-before-article-1440-top.png"
+      ],
+      "referenceEvidence": [
+        "reference-interaction.json",
+        "pudding-home-390-filter-active.png",
+        "pudding-home-390-menu-open.png",
+        "CONTROLS_REFERENCE_RU.md",
+        "linear-controls-ready/observations.json"
+      ],
+      "action": "Shelf keeps Onest and canonical violet/orange, separates navigation into two rows, retains disabled frames and consistent chevrons. Linear informs stable geometry and independent focus only; full control runtime acceptance remains separate.",
+      "requirements": [
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "F10",
+        "F16"
+      ],
+      "afterEvidence": [
+        "../shelf-logical/1440-controls-final-ru.png",
+        "../shelf-logical/390-controls-final-ru.png",
+        "../shelf-logical/1440-navigation-final.png",
+        "../shelf-logical/390-navigation-final.png"
+      ]
+    },
+    {
+      "id": 6,
+      "axis": "mobile_reading_real_states",
+      "result": "comparable_in_verified_aspect",
+      "localEvidence": [
+        "probpera-before-article-390-content.png",
+        "probpera-before-cards-390.png",
+        "local-baseline.json"
+      ],
+      "referenceEvidence": [
+        "emergence-reading-390.png",
+        "pudding-story-390-content.png",
+        "paris-home-390-content.png"
+      ],
+      "action": "Retain local readable single column; do not reproduce reference subscription popover overlap",
+      "requirements": [
+        "F04",
+        "F08",
+        "F19",
+        "F24"
+      ]
+    },
+    {
+      "id": 7,
+      "axis": "accessibility",
+      "result": "not_verified_full_comparison",
+      "localEvidence": [],
+      "referenceEvidence": [
+        "reference-captures.json",
+        "reference-interaction.json"
+      ],
+      "action": "Use project keyboard, targets, text-spacing, contrast and reduced-motion checks; no global WCAG claim from snapshots",
+      "requirements": [
+        "F19",
+        "F24"
+      ]
+    },
+    {
+      "id": 8,
+      "axis": "speed_stability",
+      "result": "not_verified_competitive_ranking",
+      "localEvidence": [],
+      "referenceEvidence": [
+        "reference-captures.json"
+      ],
+      "action": "One cold-context timing sample is not field INP or standardized CLS and cannot rank localhost against external sites; enforce own performance budget",
+      "requirements": [
+        "F07",
+        "F23",
+        "F24"
+      ]
+    }
+  ],
+  "workingFindings": [
+    {
+      "id": "B01",
+      "status": "closed_verified_current_compiled_1440_390_visual_scope",
+      "finding": "Dark journal heading and copy overlap purple brush at desktop",
+      "evidence": "../working/ru-1440-journal.png",
+      "recheck": "FINAL_SEAM_MATRIX_RU.md",
+      "captureDate": "2026-09-08T05:28:37.997Z",
+      "sourceSha256": "9d483cf13525dbfe5d320e07eaf251692913d62bea7de214ba451aac0e560280"
+    },
+    {
+      "id": "B02",
+      "status": "closed_verified_current_compiled_1440_390_visual_scope",
+      "finding": "Compact engagement text disappears on white discussion card; star remains",
+      "evidence": "../working/ru-1440-reader-discussion.png",
+      "recheck": "FINAL_SEAM_MATRIX_RU.md",
+      "captureDate": "2026-09-08T05:28:37.997Z",
+      "sourceSha256": "9d483cf13525dbfe5d320e07eaf251692913d62bea7de214ba451aac0e560280"
+    },
+    {
+      "id": "B03",
+      "status": "closed_verified_current_compiled_1440_390_visual_scope",
+      "finding": "Light journal search placeholder has weak distinction on orange",
+      "evidence": "../working/ru-390-journal.png",
+      "recheck": "FINAL_SEAM_MATRIX_RU.md",
+      "captureDate": "2026-09-08T05:28:37.997Z",
+      "sourceSha256": "9d483cf13525dbfe5d320e07eaf251692913d62bea7de214ba451aac0e560280"
+    },
+    {
+      "id": "B04",
+      "status": "superseded_by_owner_direction",
+      "finding": "Straight section-boundary cut remains visible at discussion to journal despite diagonal brush rhythm",
+      "evidence": "../working/ru-1440-reader-discussion.png",
+      "recheck": "FINAL_SEAM_MATRIX_RU.md",
+      "historicalRecheck": "recheck-accepted/REVIEW_RU.md"
+    },
+    {
+      "id": "B05",
+      "status": "closed_verified_current_compiled_1440_390_visual_scope",
+      "finding": "Author source credit overlapped purple brush; local white source-credit surface restored distinction.",
+      "evidence": "remaining-review/authors-sources-sections-1440.png",
+      "recheck": "FINAL_SEAM_MATRIX_RU.md",
+      "captureDate": "2026-09-08T05:28:37.997Z",
+      "sourceSha256": "9d483cf13525dbfe5d320e07eaf251692913d62bea7de214ba451aac0e560280"
+    },
+    {
+      "id": "B06",
+      "status": "superseded_by_owner_direction",
+      "finding": "Old editorial to footer boundary had a straight cut; previous synthetic joining approach is rejected by owner.",
+      "evidence": "remaining-review/editorial-footer-1440.png",
+      "recheck": "FINAL_SEAM_MATRIX_RU.md"
+    }
+  ],
+  "protectedContent": "protected-content-check.json",
+  "limitations": [
+    "Paris Review content page blocked with HTTP 403; no bypass",
+    "No forms submitted; Pudding story answer result not verified",
+    "Second engine, screen reader, full contrast audit and field performance of references not verified",
+    "No competitive numeric ratings or superiority claims",
+    "No reference assets copied into product",
+    "Linear is a fourth bounded controls reference, not a fourth full eight-axis editorial comparison.",
+    "Current news capture is an error state; successful feed and live forms/rating/comment writes are not verified here.",
+    "24 bounded images do not prove all controls, all lower side accents, physical devices, or runtime success.",
+    "Legacy seam and small-alpha captures remain rejected or superseded history."
+  ],
+  "recheck": "FINAL_SEAM_MATRIX_RU.md",
+  "atlasDirectedBackground": {
+    "status": "orange_right_visible_verified_1440_390_current_candidate",
+    "history": "Previous white-right design and small orange-tip mobile placement superseded by owner direction.",
+    "evidence": [
+      "../after/ru-1440-atlas.png",
+      "../after/ru-390-atlas.png"
+    ]
+  },
+  "ownerDirection": {
+    "date": "2026-09-08",
+    "status": "implemented_visual_and_selected_runtime_verified_with_documented_limits",
+    "instruction": "Strokes three times previous CSS widths, two contrasting colors on each base, separated at corners and sides; no mixed-color seam collage.",
+    "colors": {
+      "violetBase": [
+        "orange",
+        "white"
+      ],
+      "whiteBase": [
+        "orange",
+        "violet"
+      ]
+    },
+    "supersedes": [
+      "manufactured_seams",
+      "intact_cover_full_panels",
+      "native_upper_lower_background_halves",
+      "original_eight_canvas_mapping",
+      "small_alpha_accent_composition"
+    ],
+    "assets": {
+      "runtime": "orange-stroke.webp",
+      "runtimeBytes": 284052,
+      "diskFiles": [
+        "orange-stroke.webp",
+        "white-stroke.webp"
+      ],
+      "diskBytes": 346588,
+      "secondaryVariants": "CSS white or violet tint of the same orange runtime image",
+      "originalsPreserved": true
+    },
+    "cssWidthsPx": {
+      "orangeDesktop": [
+        840,
+        1140
+      ],
+      "orangeMobile": 510,
+      "secondaryDesktop": 600,
+      "secondaryMobile": 330
+    },
+    "cleanup": [
+      "legacy community::before disabled",
+      "legacy site-footer::before disabled"
+    ],
+    "preserved": [
+      "approved hero",
+      "real logo",
+      "authored content and URLs",
+      "globe scene",
+      "shelf spines",
+      "accepted Onest",
+      "preserved header and footer brand typography",
+      "original footer base gradient"
+    ],
+    "widthClampCorrection": "Scoped max-inline-size:none; upper stroke offsets follow actual orange width. Changed areas visually accepted; six compiled background scenarios across five widths passed separately."
+  },
+  "finalAcceptance": {
+    "captureDate": "2026-09-08T05:28:37.997Z",
+    "sourceSha256": "9d483cf13525dbfe5d320e07eaf251692913d62bea7de214ba451aac0e560280",
+    "url": "http://127.0.0.1:4186/probpera-literary-map/",
+    "browser": "Chromium",
+    "language": "ru",
+    "widths": [
+      1440,
+      390
+    ],
+    "regions": 13,
+    "boundaries": 12,
+    "status": "passed_scoped_with_capture_limits",
+    "evidence": "FINAL_SEAM_MATRIX_RU.md",
+    "visualReviewRecord": "final-seam-review.json",
+    "measurements": "../after/measurements.json",
+    "overflow": [
+      {
+        "width": 1440,
+        "value": 0
+      },
+      {
+        "width": 390,
+        "value": 0
+      }
+    ],
+    "errors": [
+      {
+        "width": 1440,
+        "value": []
+      },
+      {
+        "width": 390,
+        "value": []
+      }
+    ],
+    "reviewTiming": {
+      "initial12DesktopAnd12Mobile": "2026-09-08T04:44:19.780Z",
+      "cleanupDesktop": [
+        "community",
+        "site-footer"
+      ],
+      "cleanupCaptureDate": "2026-09-08T04:54:21.904Z",
+      "latestChangedRecapture": "2026-09-08T05:28:37.997Z",
+      "repeatedDesktop": [
+        "atlas",
+        "books",
+        "authors"
+      ],
+      "repeatedMobile": "all 12 current 390px boundary captures reviewed by root",
+      "otherDesktopRegions": "unchanged after their latest relevant visual review; not rereviewed"
+    },
+    "scope": "24 bounded boundary images only; runtime is separate",
+    "fullPageLimit": "Only bounded section images accepted. Side accents below the first 900px and bottoms of long sections are not proved by their top captures. Historical fullPage paint/duplication artifacts are not DOM evidence."
+  },
+  "technicalVerification": {
+    "status": "passed_selected_runtime_scope",
+    "sourceSha256": "9d483cf13525dbfe5d320e07eaf251692913d62bea7de214ba451aac0e560280",
+    "historicalRuns": [
+      {
+        "name": "base78",
+        "passed": 65,
+        "failed": 5,
+        "skipped": 8,
+        "evidence": "../owner-final-e2e.log"
+      },
+      {
+        "name": "addendum1",
+        "passed": 2,
+        "failed": 3,
+        "skipped": 1,
+        "evidence": "../owner-final-e2e-addendum.log"
+      },
+      {
+        "name": "addendum2",
+        "passed": 4,
+        "failed": 0,
+        "skipped": 0,
+        "durationSeconds": 33.5,
+        "evidence": "../owner-final-e2e-addendum-2.log"
+      }
+    ],
+    "uniqueExecutedClosed": 70,
+    "legitimateSkips": 8,
+    "unresolvedSelectedFailures": 0,
+    "original31Failures": "closed in final selected coverage",
+    "backgroundScenarios": {
+      "passed": 6,
+      "scope": "compiled technical scenarios; separate from PNG acceptance",
+      "widthCount": 5
+    },
+    "description": "Final selected coverage is closed after setup-only addenda. Counts are deduplicated across runs, not summed. Product source remains unchanged. Skips are not passes; external services and physical-device limits remain."
+  },
+  "visualAcceptanceHistory": [
+    {
+      "status": "historical_scoped_visual_pass",
+      "captureDate": "2026-09-08T04:54:21.904Z",
+      "sourceSha256": "d620a89fe19423313318edb4c8789e01bb17d40758ae33459612756559b977a6",
+      "widths": [
+        1440,
+        390
+      ],
+      "regions": 13,
+      "boundaries": 12,
+      "reviewedBy": "root mobile; reader_controls desktop",
+      "reviewedAt": "2026-09-08T05:05:29.761Z",
+      "scope": "24 bounded boundary images only; runtime is separate"
+    }
+  ],
+  "galleryVerification": {
+    "status": "passed",
+    "date": "2026-09-08T05:55:06.463Z",
+    "initial1440": 12,
+    "mobile390": 12,
+    "all": 24,
+    "jump": {
+      "hidden": false,
+      "top": 95
+    },
+    "images": 44,
+    "missingBefore": 4,
+    "overflow": 0,
+    "evidence": "gallery-check.json",
+    "reviewedBy": "root",
+    "scope": "Gallery UI only; four missing baseline states remain explicitly marked"
+  }
+}

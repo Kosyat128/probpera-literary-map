@@ -1,0 +1,13 @@
+
+Running 4 tests using 1 worker
+
+(node:8772) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [desktop-chromium] › tests\e2e\premium-globe-exploration.spec.mjs:219:1 › keyboard candidate selects the optical-centre country without replacing Canvas (8.1s)
+  ok 2 [desktop-chromium] › tests\e2e\premium-globe-exploration.spec.mjs:492:1 › atlas controls wrap without overlap and rich count matches the collection (8.5s)
+(node:48728) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 3 [mobile-chromium] › tests\e2e\premium-globe-exploration.spec.mjs:219:1 › keyboard candidate selects the optical-centre country without replacing Canvas (6.1s)
+  ok 4 [mobile-chromium] › tests\e2e\premium-globe-exploration.spec.mjs:492:1 › atlas controls wrap without overlap and rich count matches the collection (7.4s)
+
+  4 passed (33.5s)

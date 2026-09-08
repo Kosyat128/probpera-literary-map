@@ -100,6 +100,34 @@ describe("canonical typography audit", () => {
       .toHaveLength(5);
   });
 
+  it("limits the matching masthead exception to the footer logo link in its preserved stylesheet", () => {
+    const scanFooter = (selector, file = "src/styles/header-preserved.css") => auditTypography({
+      "src/styles/site-typography.css": canonical,
+      [file]: `${selector} { --serif: Georgia, "Times New Roman", serif; font-weight: 800; }`,
+    });
+    expect(scanFooter(".footer-brand > a")).toEqual([]);
+    expect(scanFooter(".footer-brand > a small")).toEqual([]);
+    for (const selector of [".footer-brand", ".footer-brand > p", ".footer-map a", ".footer-brand > a small, .footer-brand > p"]) {
+      expect(scanFooter(selector).length).toBeGreaterThan(0);
+    }
+    expect(scanFooter(".footer-brand > a", "src/index.css").length).toBeGreaterThan(0);
+  });
+
+  it("rejects fixed-height prose in the retired DOM-column book stylesheet", () => {
+    const pageRule = `.article-reader.is-book .article-reader-content {
+      block-size: var(--book-page-height); column-count: var(--book-columns, 1); column-fill: auto;
+    }`;
+    const scanBook = css => auditTypography({
+      "src/styles/site-typography.css": canonical,
+      "src/styles/article-book-pagination.css": css,
+    });
+    expect(scanBook(pageRule)).toHaveLength(1);
+    expect(scanBook(pageRule.replace(".article-reader.is-book ", ""))).toHaveLength(1);
+    expect(scanBook(pageRule.replace("column-fill: auto;", "overflow: hidden;"))).toHaveLength(2);
+    expect(scanBook(`${pageRule} .article-reader.is-book .article-reader-content p { max-height: 20px; }`)).toHaveLength(2);
+    expect(scan(pageRule)).toHaveLength(1);
+  });
+
   it("allows emergency URL wrapping only on bibliography anchors", () => {
     expect(scan('.article-reader-sources a { overflow-wrap: anywhere; word-break: normal; }')).toEqual([]);
     expect(scan(`

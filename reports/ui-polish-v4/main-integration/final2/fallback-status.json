@@ -1,0 +1,22 @@
+{
+  "started": "2026-09-08T08:24:07.742Z",
+  "finished": "2026-09-08T08:24:22.980Z",
+  "exitCode": 0,
+  "sourceSha256": "7544c08c956e3b8402dd630a53048d4c692e953907dbc58f9f60d5adbb959b20",
+  "sourceSha256After": "7544c08c956e3b8402dd630a53048d4c692e953907dbc58f9f60d5adbb959b20",
+  "args": [
+    "node_modules/playwright/cli.js",
+    "test",
+    "tests/e2e/article-book-pagination.spec.mjs",
+    "tests/e2e/reader-extended-accessibility.spec.mjs",
+    "tests/e2e/article-book-reading.spec.mjs",
+    "tests/e2e/article-book-zoom.spec.mjs",
+    "tests/e2e/ui-polish-controls.spec.mjs",
+    "tests/e2e/ui-polish-backgrounds.spec.mjs",
+    "--grep",
+    "WebGL failure retains",
+    "--workers=1",
+    "--output=reports/ui-polish-v4/main-integration/final2/fallback-artifacts",
+    "--reporter=list,json"
+  ]
+}

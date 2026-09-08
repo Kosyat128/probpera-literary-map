@@ -1,0 +1,19 @@
+
+> literary-map@0.1.0 lint
+> npm run text:hyphens:check && npm run lint:public && npm run lint --workspace @probpera/admin
+
+
+> literary-map@0.1.0 text:hyphens:check
+> node scripts/normalize-short-hyphens.mjs
+
+Short-hyphen policy passed.
+
+> literary-map@0.1.0 lint:public
+> tsc --noEmit && npm run typography:audit
+
+
+> literary-map@0.1.0 typography:audit
+> node scripts/audit-typography.mjs
+
+src/styles/article-book-pagination.css:18: Canonical role size has a second owner outside site-typography.css: font-size: .8125rem (.article-reader-metrics > span)
+Typography audit: 32 public CSS files, 1 issue(s).

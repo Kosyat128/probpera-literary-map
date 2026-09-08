@@ -1,0 +1,73 @@
+{
+  "date": "2026-09-08T08:24:43.428Z",
+  "base": "5d3f6fb61e170bcc8fd64062c6283a7c75b5f144",
+  "sourceSha256": "7544c08c956e3b8402dd630a53048d4c692e953907dbc58f9f60d5adbb959b20",
+  "unchangedSource": true,
+  "changes": [
+    {
+      "from": "ba185ceb68cb3aa31a7a7094d16a84cac8e9623e2955da16e9b4b01c683c4ffe",
+      "to": "0af2d67668451c7e0234a18d2584430975ce7b031dd18423b79237e80aca8803",
+      "paths": [
+        "src/styles/article-book-pagination.css"
+      ]
+    },
+    {
+      "from": "0af2d67668451c7e0234a18d2584430975ce7b031dd18423b79237e80aca8803",
+      "to": "7544c08c956e3b8402dd630a53048d4c692e953907dbc58f9f60d5adbb959b20",
+      "paths": [
+        "src/components/ArticleReader.tsx"
+      ]
+    }
+  ],
+  "runs": [
+    {
+      "path": "browser-result.json",
+      "stats": {
+        "startTime": "2026-09-08T07:59:37.475Z",
+        "duration": 382608.725,
+        "expected": 30,
+        "skipped": 6,
+        "unexpected": 8,
+        "flaky": 0
+      }
+    },
+    {
+      "path": "final/browser-result.json",
+      "stats": {
+        "startTime": "2026-09-08T08:09:34.759Z",
+        "duration": 199979.543,
+        "expected": 6,
+        "skipped": 0,
+        "unexpected": 2,
+        "flaky": 0
+      }
+    },
+    {
+      "path": "final2/browser-result.json",
+      "stats": {
+        "startTime": "2026-09-08T08:19:07.057Z",
+        "duration": 183002.551,
+        "expected": 10,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    {
+      "path": "final2/fallback-result.json",
+      "stats": {
+        "startTime": "2026-09-08T08:24:08.398Z",
+        "duration": 14544.314,
+        "expected": 2,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    }
+  ],
+  "uniqueCases": 44,
+  "uniqueExecuted": 38,
+  "skipped": 6,
+  "unresolved": [],
+  "scope": "Targeted integration validation only; historical complete-suite results remain separate."
+}

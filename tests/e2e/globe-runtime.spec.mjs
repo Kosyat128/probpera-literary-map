@@ -1,6 +1,14 @@
 import { expect, test } from "@playwright/test";
 import sharp from "sharp";
 
+async function openAtlasPanel(page, panel) {
+  const content = page.locator(panel === "filters" ? "#atlas .atlas-toolbar" : "#country-search");
+  if (!(await content.isVisible())) {
+    await page.locator(`#atlas .atlas-embedded-discovery [data-atlas-action="toggle-${panel}"]`).click();
+  }
+  await expect(content).toBeVisible();
+}
+
 async function meanPixelDifference(firstPng, secondPng) {
   const [{ data: first, info }, { data: second }] = await Promise.all([
     sharp(firstPng).ensureAlpha().raw().toBuffer({ resolveWithObject: true }),
@@ -255,10 +263,12 @@ test("atlas URL restores selections, supports history and mounts the index on de
   await expect(countryIndex.locator(":scope > div")).toHaveCount(1);
   await expect(countryIndex.locator(":scope > div > button")).toHaveCount(190);
 
+  await openAtlasPanel(page, "filters");
   await page.locator('[data-atlas-filter="all"]').click();
   await expect(page).not.toHaveURL(/atlas=verified/iu);
   await expect(page).toHaveURL(/country=russia/iu);
   const search = page.locator("#country-search");
+  await openAtlasPanel(page, "search");
   await search.fill("Чехов");
   await expect(search).toHaveValue("Чехов");
   await page.goBack();
@@ -290,6 +300,7 @@ test("globe filters update the collection without rebuilding the 3D atlas", asyn
   const filters = ["all", "nobel", "rich", "portrait", "verified"];
 
   for (const filter of filters) {
+    await openAtlasPanel(page, "filters");
     const filterButton = page.locator(`[data-atlas-filter="${filter}"]`);
     const count = (
       await filterButton.locator(".atlas-filter-count").textContent()
@@ -345,10 +356,60 @@ test("selected Indonesia remains centered after the focus animation", async ({
   const canvas = page.locator("#atlas canvas");
   const bringCanvasIntoView = async () => {
     await canvas.evaluate((element) => {
-      element.scrollIntoView({ block: "center", inline: "center" });
+      element.scrollIntoView({ block: "center", inline: "center", behavior: "instant" });
     });
     await expect(canvas).toBeInViewport();
   };
+  const visibleCanvasRegion = () => canvas.evaluate((element) => {
+    const bounds = element.getBoundingClientRect();
+    const visible = {
+      left: Math.max(0, bounds.left),
+      top: Math.max(0, bounds.top),
+      right: Math.min(window.innerWidth, bounds.right),
+      bottom: Math.min(window.innerHeight, bounds.bottom),
+    };
+    const selectors = [
+      ".site-header", ".mobile-nav", ".atlas-immersive-chrome",
+      "#atlas .atlas-embedded-discovery", "#atlas .atlas-toolbar",
+      "#atlas .country-panel", "#atlas .atlas-country-sheet-toggle",
+      "#atlas .globe-controls", "#atlas .globe-edition-controls",
+      "#atlas .globe-style-switch-toggle", "#atlas .globe-modern-badge",
+      "#atlas .globe-country-label", "#atlas .globe-navigation-label",
+      "#atlas .globe-instruction", "#atlas .atlas-coordinate",
+    ];
+    let candidates = [visible];
+    for (const overlay of document.querySelectorAll(selectors.join(","))) {
+      const style = getComputedStyle(overlay);
+      if (style.display === "none" || style.visibility === "hidden" || Number(style.opacity) === 0) continue;
+      const box = overlay.getBoundingClientRect();
+      if (!box.width || !box.height) continue;
+      const obstacle = { left: box.left - 4, top: box.top - 4, right: box.right + 4, bottom: box.bottom + 4 };
+      candidates = candidates.flatMap((area) => {
+        if (obstacle.right <= area.left || obstacle.left >= area.right || obstacle.bottom <= area.top || obstacle.top >= area.bottom) return [area];
+        return [
+          { ...area, bottom: Math.min(area.bottom, obstacle.top) },
+          { ...area, top: Math.max(area.top, obstacle.bottom) },
+          { ...area, right: Math.min(area.right, obstacle.left) },
+          { ...area, left: Math.max(area.left, obstacle.right) },
+        ].filter(part => part.right > part.left && part.bottom > part.top);
+      });
+    }
+    const center = { x: (visible.left + visible.right) / 2, y: (visible.top + visible.bottom) / 2 };
+    const containsCenter = area => area.left <= center.x && area.right >= center.x && area.top <= center.y && area.bottom >= center.y;
+    const areaSize = area => (area.right - area.left) * (area.bottom - area.top);
+    const centralCandidates = candidates.filter(containsCenter);
+    const area = (centralCandidates.length ? centralCandidates : candidates).sort((a, b) => areaSize(b) - areaSize(a))[0];
+    if (!area) throw new Error("No unobscured visible canvas region for the stability comparison");
+    const x = Math.ceil(area.left) + 4;
+    const y = Math.ceil(area.top) + 4;
+    return {
+      clip: { x, y, width: Math.floor(area.right) - 4 - x, height: Math.floor(area.bottom) - 4 - y },
+      visibleWidth: visible.right - visible.left,
+      visibleHeight: visible.bottom - visible.top,
+      canvas: { x: bounds.x, y: bounds.y, width: bounds.width, height: bounds.height },
+      scroll: { x: window.scrollX, y: window.scrollY },
+    };
+  });
   await expect(globe).toHaveAttribute("data-globe-render-loop", "active", {
     timeout: 45_000,
   });
@@ -365,6 +426,7 @@ test("selected Indonesia remains centered after the focus animation", async ({
     "modern"
   );
 
+  await openAtlasPanel(page, "search");
   await page.locator("#country-search").fill("Индонезия");
   const indonesiaResult = page
     .locator(".search-results button")
@@ -419,11 +481,21 @@ test("selected Indonesia remains centered after the focus animation", async ({
   await bringCanvasIntoView();
   await expect(globe).toHaveAttribute("data-globe-frame-mode", "demand");
   await page.waitForTimeout(1_800);
-  const focused = await canvas.screenshot();
+  // A canvas taller than the viewport is not an element-screenshot target:
+  // Playwright may scroll it between captures and pause offscreen WebGL.
+  // Compare the same substantial visible canvas area, excluding DOM chrome.
+  const region = await visibleCanvasRegion();
+  expect(region.clip.width).toBeGreaterThanOrEqual(Math.min(240, region.visibleWidth * 0.6));
+  expect(region.clip.height).toBeGreaterThanOrEqual(Math.min(240, region.visibleHeight * 0.4));
+  expect(region.clip.width * region.clip.height).toBeGreaterThanOrEqual(region.visibleWidth * region.visibleHeight * 0.25);
+  const focused = await page.screenshot({ clip: region.clip });
   // This interval is deliberately longer than the former delayed auto-rotate
   // restart (1.75 s), so the regression cannot hide behind the camera tween.
   await page.waitForTimeout(3_200);
-  const stillFocused = await canvas.screenshot();
+  await expect(globe).toHaveAttribute("data-globe-frame-mode", "demand");
+  expect(await visibleCanvasRegion()).toEqual(region);
+  const stillFocused = await page.screenshot({ clip: region.clip });
+  expect(await visibleCanvasRegion()).toEqual(region);
 
   expect(await meanPixelDifference(focused, stillFocused)).toBeLessThan(0.9);
 

@@ -1,0 +1,13 @@
+{
+  "date": "2026-09-08T08:30:56.103Z",
+  "viewport": {
+    "width": 390,
+    "height": 1000
+  },
+  "positions": {
+    "header": 58,
+    "heading": 167.1875,
+    "scrollY": 972
+  },
+  "note": "Viewport frames preserve the actual sticky header; tall element capture is excluded from the curated evidence."
+}

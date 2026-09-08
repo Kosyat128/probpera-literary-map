@@ -1,6 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 const ORDER_SELECTORS = [
+  "#reader-discussion",
   "#journal",
   "#authors",
   "#sections",
@@ -312,10 +313,11 @@ test("Stage 5C keeps the final homepage structure and card geometry", async ({
 }) => {
   await openHomepage(page);
 
-  const editorialContext = page.locator("#book-day .news-editorial-context");
-  await expect(editorialContext.locator("summary")).toBeVisible();
-  await expect(editorialContext.locator(".editorial-standard#about")).toHaveCount(1);
-  await expect(editorialContext).not.toHaveAttribute("open", "");
+  // R08 keeps the actual editorial card visible beside the separate discussion.
+  const editorialCard = page.locator("#reader-discussion > .journal-engagement > .editorial-standard#about");
+  await expect(editorialCard).toHaveCount(1);
+  await expect(editorialCard).toBeVisible();
+  await expect(page.locator("#book-day .literary-news-slot")).toBeVisible();
 
   for (const viewport of VIEWPORTS) {
     await page.setViewportSize({ width: viewport.width, height: viewport.height });

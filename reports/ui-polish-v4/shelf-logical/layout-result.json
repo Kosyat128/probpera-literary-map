@@ -1,0 +1,121 @@
+{
+  "date": "2026-09-08T04:33:49.446Z",
+  "records": [
+    {
+      "width": 1440,
+      "language": "ru",
+      "bounds": [
+        {
+          "text": "Полка",
+          "width": 99.6875,
+          "height": 44,
+          "labelInside": true,
+          "iconSeparate": true
+        },
+        {
+          "text": "Каталог",
+          "width": 99.703125,
+          "height": 44,
+          "labelInside": true,
+          "iconSeparate": true
+        }
+      ],
+      "overflow": 0,
+      "controlOrder": {
+        "modesBeforeArchive": true,
+        "filterBeforeSettings": true,
+        "settingsBeforeRandom": true
+      },
+      "range": {
+        "height": 44,
+        "appearance": "none",
+        "value": "1",
+        "min": "1"
+      }
+    },
+    {
+      "width": 1440,
+      "language": "en",
+      "bounds": [
+        {
+          "text": "Shelf",
+          "width": 102.734375,
+          "height": 44,
+          "labelInside": true,
+          "iconSeparate": true
+        },
+        {
+          "text": "Catalogue",
+          "width": 102.734375,
+          "height": 44,
+          "labelInside": true,
+          "iconSeparate": true
+        }
+      ],
+      "overflow": 0,
+      "controlOrder": {
+        "modesBeforeArchive": true,
+        "filterBeforeSettings": true,
+        "settingsBeforeRandom": true
+      }
+    },
+    {
+      "width": 390,
+      "language": "ru",
+      "bounds": [
+        {
+          "text": "Полка",
+          "width": 159,
+          "height": 44,
+          "labelInside": true,
+          "iconSeparate": true
+        },
+        {
+          "text": "Каталог",
+          "width": 159,
+          "height": 44,
+          "labelInside": true,
+          "iconSeparate": true
+        }
+      ],
+      "overflow": 0,
+      "controlOrder": {
+        "modesBeforeArchive": true,
+        "filterBeforeSettings": true,
+        "settingsBeforeRandom": true
+      },
+      "range": {
+        "height": 44,
+        "appearance": "none",
+        "value": "1",
+        "min": "1"
+      }
+    },
+    {
+      "width": 390,
+      "language": "en",
+      "bounds": [
+        {
+          "text": "Shelf",
+          "width": 159,
+          "height": 44,
+          "labelInside": true,
+          "iconSeparate": true
+        },
+        {
+          "text": "Catalogue",
+          "width": 159,
+          "height": 44,
+          "labelInside": true,
+          "iconSeparate": true
+        }
+      ],
+      "overflow": 0,
+      "controlOrder": {
+        "modesBeforeArchive": true,
+        "filterBeforeSettings": true,
+        "settingsBeforeRandom": true
+      }
+    }
+  ]
+}

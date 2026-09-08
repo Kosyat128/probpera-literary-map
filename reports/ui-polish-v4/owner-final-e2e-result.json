@@ -1,0 +1,3365 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\node_modules\\playwright\\cli.js",
+      "test",
+      "tests/e2e/globe-runtime.spec.mjs",
+      "tests/e2e/globe-visual-regression.spec.mjs",
+      "tests/e2e/home-first-paint.spec.mjs",
+      "tests/e2e/literary-news-production.spec.mjs",
+      "tests/e2e/literary-planet-immersion.spec.mjs",
+      "tests/e2e/premium-globe-exploration.spec.mjs",
+      "tests/e2e/public-reader-journey.spec.ts",
+      "tests/e2e/public-smoke.spec.mjs",
+      "tests/e2e/responsive-reader-globe.spec.mjs",
+      "tests/e2e/stage5b-art-direction.spec.mjs",
+      "tests/e2e/stage5c-layout-community.spec.mjs",
+      "tests/e2e/reader-extended-accessibility.spec.mjs",
+      "tests/e2e/article-book-pagination.spec.mjs",
+      "tests/e2e/ui-polish-backgrounds.spec.mjs",
+      "tests/e2e/ui-polish-controls.spec.mjs",
+      "--grep",
+      "atlas URL restores selections, supports history and mounts the index on demand|globe filters update the collection without rebuilding the 3D atlas|selected Indonesia remains centered after the focus animation|keeps premium chrome and country cards aligned at desktop and mobile sizes|статический архив журнала не скрывается защитой главной|public news loads near the book feature and follows language and visitor dates|premium globe controls stay balanced and inside every viewport|atlas controls wrap without overlap and rich count matches the collection|immersive random journey respects the current collection and recent picks|Nobel layer keeps selection and its explicit article action separate|reader can open the journal and a real article without runtime failures|home and journal remain inside a narrow mobile viewport|поиск глобуса сохраняет запрос при ленивой загрузке и не раскрывает непубличную книгу|globe search metadata and instructions stay readable inside 320-1720px|Stage 5B desktop RU roles and surfaces stay inside the approved scale|Stage 5B mobile EN roles reflow without overflow|Stage 5C keeps the final homepage structure and card geometry|real reader keeps text and controls with expanded text spacing|article-book-pagination\\.spec\\.mjs|reader-extended-accessibility\\.spec\\.mjs|ui-polish-backgrounds\\.spec\\.mjs|ui-polish-controls\\.spec\\.mjs|keyboard candidate selects the optical-centre country without replacing Canvas|coarse embedded globe preserves page pan until explicit full control|embedded atlas enters one-canvas immersion and Escape restores scroll and focus",
+      "--workers=1",
+      "--output=reports/ui-polish-v4/owner-final-e2e-artifacts",
+      "--reporter=list,json"
+    ],
+    "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\playwright.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/probpera-typography/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/probpera-typography/reports/ui-polish-v4/owner-final-e2e-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-chromium",
+        "name": "desktop-chromium",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/probpera-typography/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/probpera-typography/reports/ui-polish-v4/owner-final-e2e-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile-chromium",
+        "name": "mobile-chromium",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/probpera-typography/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run preview -- --host 127.0.0.1 --port 4186",
+      "url": "http://127.0.0.1:4186",
+      "reuseExistingServer": true,
+      "timeout": 60000,
+      "env": {
+        "ALLUSERSPROFILE": "C:\\ProgramData",
+        "APPDATA": "C:\\Users\\User\\AppData\\Roaming",
+        "asl.log": "Destination=file",
+        "CODEX_APP_TOOLS_PIPE_PATH": "\\\\.\\pipe\\codex-browser-use-87b1562b-f967-4e64-a4e8-cbd0419ae162",
+        "CODEX_CI": "1",
+        "CODEX_HOME": "D:\\CodexData\\.codex",
+        "CODEX_INTERNAL_ORIGINATOR_OVERRIDE": "Codex Desktop",
+        "CODEX_MCP_NODE_PATH": "C:\\Users\\User\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\b474a88d5d105afa\\bin\\node.exe",
+        "CODEX_PERMISSION_PROFILE": ":workspace",
+        "CODEX_SAGE_BACKFILL_TRACKER_TAB_REUSE": "1",
+        "CODEX_SANDBOX_NETWORK_DISABLED": "1",
+        "CODEX_SESSION_ID": "01a07eb0-c75a-70a0-8991-77a88d21385c",
+        "CODEX_SHELL": "1",
+        "CODEX_THREAD_ID": "01a07eb0-c75a-70a0-8991-77a88d21385c",
+        "COLORTERM": "",
+        "CommonProgramFiles": "C:\\Program Files\\Common Files",
+        "CommonProgramFiles(x86)": "C:\\Program Files (x86)\\Common Files",
+        "CommonProgramW6432": "C:\\Program Files\\Common Files",
+        "COMPUTERNAME": "MAGICBOOK",
+        "ComSpec": "C:\\WINDOWS\\system32\\cmd.exe",
+        "DISABLE_AUTO_UPDATE": "true",
+        "DriverData": "C:\\Windows\\System32\\Drivers\\DriverData",
+        "GH_PAGER": "cat",
+        "GIT_CONFIG_COUNT": "1",
+        "GIT_CONFIG_KEY_0": "safe.directory",
+        "GIT_CONFIG_VALUE_0": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography",
+        "GIT_PAGER": "cat",
+        "HOMEDRIVE": "C:",
+        "HOMEPATH": "\\Users\\User",
+        "LANG": "C.UTF-8",
+        "LC_ALL": "C.UTF-8",
+        "LC_CTYPE": "C.UTF-8",
+        "LOCALAPPDATA": "C:\\Users\\User\\AppData\\Local",
+        "LOGONSERVER": "\\\\MAGICBOOK",
+        "LOG_FORMAT": "json",
+        "NO_COLOR": "1",
+        "NUMBER_OF_PROCESSORS": "16",
+        "OneDrive": "C:\\Users\\User\\OneDrive",
+        "OS": "Windows_NT",
+        "PAGER": "cat",
+        "Path": "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell;D:\\CodexData\\.codex\\tmp\\arg0\\codex-arg0rRqpl4;D:\\CodexData\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\libheif\\libheif\\bin;D:\\CodexData\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\jxrlib\\jxrlib\\bin;D:\\CodexData\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin;C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\bin\\override;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\dotnet\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\GitHub CLI\\;C:\\Program Files\\nodejs\\;C:\\Users\\User\\AppData\\Local\\Programs\\Python\\Launcher\\;C:\\Users\\User\\AppData\\Local\\Programs\\OpenAI\\Codex\\bin;C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell;C:\\Users\\User\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\User\\.dotnet\\tools;C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\User\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\User\\AppData\\Local\\Programs\\nodejs;C:\\Users\\User\\AppData\\Roaming\\npm;C:\\Users\\User\\.dotnet\\tools;C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\bin\\fallback;C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin;C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\git\\cmd;C:\\Users\\User\\AppData\\Local\\OpenAI\\Codex\\bin\\c60635126245daef;C:\\Users\\User\\AppData\\Local\\OpenAI\\Codex\\bin\\8e5b6932251c2c1c",
+        "PATHEXT": ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.CPL",
+        "PLAYWRIGHT_JSON_OUTPUT_FILE": "reports/ui-polish-v4/owner-final-e2e-result.json",
+        "PLAYWRIGHT_PORT": "4186",
+        "PLAYWRIGHT_REUSE_SERVER": "true",
+        "PROCESSOR_ARCHITECTURE": "AMD64",
+        "PROCESSOR_IDENTIFIER": "AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD",
+        "PROCESSOR_LEVEL": "25",
+        "PROCESSOR_REVISION": "5000",
+        "ProgramData": "C:\\ProgramData",
+        "ProgramFiles": "C:\\Program Files",
+        "ProgramFiles(x86)": "C:\\Program Files (x86)",
+        "ProgramW6432": "C:\\Program Files",
+        "PSModulePath": "C:\\Users\\User\\Documents\\PowerShell\\Modules;C:\\Program Files\\PowerShell\\Modules;c:\\users\\user\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\Modules;C:\\Users\\User\\Documents\\WindowsPowerShell\\Modules;C:\\Program Files\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules",
+        "PUBLIC": "C:\\Users\\Public",
+        "RUST_LOG": "warn",
+        "SHELL": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "SystemDrive": "C:",
+        "SystemRoot": "C:\\WINDOWS",
+        "TEMP": "D:\\CodexData\\Temp",
+        "TERM": "dumb",
+        "TMP": "D:\\CodexData\\Temp",
+        "USERDOMAIN": "MAGICBOOK",
+        "USERDOMAIN_ROAMINGPROFILE": "MAGICBOOK",
+        "USERNAME": "User",
+        "USERPROFILE": "C:\\Users\\User",
+        "VBOX_HWVIRTEX_IGNORE_SVM_IN_USE": "1",
+        "windir": "C:\\WINDOWS",
+        "XDG_CACHE_HOME": "D:\\CodexData\\.cache",
+        "ZSH_TMUX_AUTOSTART": "false",
+        "ZSH_TMUX_AUTOSTARTED": "true",
+        "PUBLIC_SITE_BASE_PATH": "/probpera-literary-map/"
+      }
+    }
+  },
+  "suites": [
+    {
+      "title": "article-book-pagination.spec.mjs",
+      "file": "article-book-pagination.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "existing article book preserves content and turns through both boundaries",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2417,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:31:06.101Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e4c4ca943362690c92e4-f78db1b718af14376abb",
+          "file": "article-book-pagination.spec.mjs",
+          "line": 38,
+          "column": 1
+        },
+        {
+          "title": "book keeps a content anchor through reflow, font sizing and reopening",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3555,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:31:08.843Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e4c4ca943362690c92e4-e7c268201314c9f08805",
+          "file": "article-book-pagination.spec.mjs",
+          "line": 67,
+          "column": 1
+        },
+        {
+          "title": "book keyboard, horizontal swipe and reduced motion remain usable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1944,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:31:12.417Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e4c4ca943362690c92e4-be332bf81d2b78008b78",
+          "file": "article-book-pagination.spec.mjs",
+          "line": 109,
+          "column": 1
+        },
+        {
+          "title": "archive CTA opens that article in book mode and reader layers return focus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6025,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:31:14.378Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e4c4ca943362690c92e4-183a9b84f18e1d08e1cb",
+          "file": "article-book-pagination.spec.mjs",
+          "line": 123,
+          "column": 1
+        },
+        {
+          "title": "existing article book preserves content and turns through both boundaries",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2967,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:36:11.268Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e4c4ca943362690c92e4-861ef417fce5f9b138ef",
+          "file": "article-book-pagination.spec.mjs",
+          "line": 38,
+          "column": 1
+        },
+        {
+          "title": "book keeps a content anchor through reflow, font sizing and reopening",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4763,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:36:14.715Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e4c4ca943362690c92e4-db124124da04f6c3cc21",
+          "file": "article-book-pagination.spec.mjs",
+          "line": 67,
+          "column": 1
+        },
+        {
+          "title": "book keyboard, horizontal swipe and reduced motion remain usable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2308,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:36:19.497Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e4c4ca943362690c92e4-aa90a3bda9a27c5181a8",
+          "file": "article-book-pagination.spec.mjs",
+          "line": 109,
+          "column": 1
+        },
+        {
+          "title": "archive CTA opens that article in book mode and reader layers return focus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6318,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:36:21.821Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e4c4ca943362690c92e4-5c53472e139437c196c4",
+          "file": "article-book-pagination.spec.mjs",
+          "line": 123,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "globe-runtime.spec.mjs",
+      "file": "globe-runtime.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "atlas URL restores selections, supports history and mounts the index on demand",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6971,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:31:20.556Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e4b2de0a8aadc41e45e2-1e7c4be1e61c6ff88a68",
+          "file": "globe-runtime.spec.mjs",
+          "line": 247,
+          "column": 1
+        },
+        {
+          "title": "globe filters update the collection without rebuilding the 3D atlas",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8295,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:31:27.564Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e4b2de0a8aadc41e45e2-9d3e27d4bb9f88bb3591",
+          "file": "globe-runtime.spec.mjs",
+          "line": 284,
+          "column": 1
+        },
+        {
+          "title": "selected Indonesia remains centered after the focus animation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16169,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:31:35.880Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e4b2de0a8aadc41e45e2-f3a6417de60bd7d10cd2",
+          "file": "globe-runtime.spec.mjs",
+          "line": 345,
+          "column": 1
+        },
+        {
+          "title": "atlas URL restores selections, supports history and mounts the index on demand",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6869,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:36:28.276Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e4b2de0a8aadc41e45e2-31dc130ae56a108afc21",
+          "file": "globe-runtime.spec.mjs",
+          "line": 247,
+          "column": 1
+        },
+        {
+          "title": "globe filters update the collection without rebuilding the 3D atlas",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10285,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:36:35.161Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e4b2de0a8aadc41e45e2-0e107cdb15d8e15870ec",
+          "file": "globe-runtime.spec.mjs",
+          "line": 284,
+          "column": 1
+        },
+        {
+          "title": "selected Indonesia remains centered after the focus animation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 15111,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:36:45.465Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e4b2de0a8aadc41e45e2-e648ef25c0d33418d469",
+          "file": "globe-runtime.spec.mjs",
+          "line": 345,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "globe-visual-regression.spec.mjs",
+      "file": "globe-visual-regression.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "globe visual regression",
+          "file": "globe-visual-regression.spec.mjs",
+          "line": 116,
+          "column": 6,
+          "specs": [
+            {
+              "title": "keeps premium chrome and country cards aligned at desktop and mobile sizes",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 4572,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-08T05:31:52.114Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "638d4291cbac4ec136a6-b24e95c677df2e409357",
+              "file": "globe-visual-regression.spec.mjs",
+              "line": 119,
+              "column": 3
+            },
+            {
+              "title": "keeps premium chrome and country cards aligned at desktop and mobile sizes",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "mobile-chromium",
+                  "projectName": "mobile-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 6527,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-09-08T05:37:00.623Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "638d4291cbac4ec136a6-1e7c3abf6c6faa399472",
+              "file": "globe-visual-regression.spec.mjs",
+              "line": 119,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "home-first-paint.spec.mjs",
+      "file": "home-first-paint.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "статический архив журнала не скрывается защитой главной",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 604,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:31:56.720Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4649d3d2c6c749db20c2-bfcbeac5ef72b6bf3204",
+          "file": "home-first-paint.spec.mjs",
+          "line": 69,
+          "column": 1
+        },
+        {
+          "title": "статический архив журнала не скрывается защитой главной",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 920,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:37:07.198Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4649d3d2c6c749db20c2-b770fd3a97fea8442454",
+          "file": "home-first-paint.spec.mjs",
+          "line": 69,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "literary-news-production.spec.mjs",
+      "file": "literary-news-production.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "public news loads near the book feature and follows language and visitor dates",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7770,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:31:57.362Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6ee9767d5f417c4ac6ee-0ce787135a8fabd63d34",
+          "file": "literary-news-production.spec.mjs",
+          "line": 45,
+          "column": 1
+        },
+        {
+          "title": "public news loads near the book feature and follows language and visitor dates",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7520,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:37:08.149Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6ee9767d5f417c4ac6ee-4d5fba8bc14beecc8ae9",
+          "file": "literary-news-production.spec.mjs",
+          "line": 45,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "literary-planet-immersion.spec.mjs",
+      "file": "literary-planet-immersion.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "embedded atlas enters one-canvas immersion and Escape restores scroll and focus",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 15376,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeInViewport\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-atlas-experience]').locator('[data-atlas-action=\"enter-immersive\"]')\nExpected: in viewport\nReceived: viewport ratio 0.9925426244735718\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeInViewport\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-atlas-experience]').locator('[data-atlas-action=\"enter-immersive\"]')\u001b[22m\n\u001b[2m    23 × locator resolved to <button type=\"button\" data-atlas-action=\"enter-immersive\" title=\"Погрузиться в Литературную планету\" aria-label=\"Погрузиться в Литературную планету\" class=\"ui-icon-button ui-icon-button--md ui-icon-button--dark atlas-immersion-launch\">…</button>\u001b[22m\n\u001b[2m       - unexpected value \"viewport ratio 0.9925426244735718\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeInViewport\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-atlas-experience]').locator('[data-atlas-action=\"enter-immersive\"]')\nExpected: in viewport\nReceived: viewport ratio 0.9925426244735718\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeInViewport\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-atlas-experience]').locator('[data-atlas-action=\"enter-immersive\"]')\u001b[22m\n\u001b[2m    23 × locator resolved to <button type=\"button\" data-atlas-action=\"enter-immersive\" title=\"Погрузиться в Литературную планету\" aria-label=\"Погрузиться в Литературную планету\" class=\"ui-icon-button ui-icon-button--md ui-icon-button--dark atlas-immersion-launch\">…</button>\u001b[22m\n\u001b[2m       - unexpected value \"viewport ratio 0.9925426244735718\"\u001b[22m\n\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\literary-planet-immersion.spec.mjs:126:24",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\literary-planet-immersion.spec.mjs",
+                      "column": 24,
+                      "line": 126
+                    },
+                    "snippet": "  124 |   await launch.scrollIntoViewIfNeeded();\n  125 |   await launch.focus();\n> 126 |   await expect(launch).toBeInViewport({ ratio: 1 });\n      |                        ^\n  127 |   const scrollBefore = await page.evaluate(() => window.scrollY);\n  128 |   const historyBefore = await page.evaluate(() => window.history.length);\n  129 |   await launch.click();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\literary-planet-immersion.spec.mjs",
+                        "column": 24,
+                        "line": 126
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeInViewport\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-atlas-experience]').locator('[data-atlas-action=\"enter-immersive\"]')\nExpected: in viewport\nReceived: viewport ratio 0.9925426244735718\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeInViewport\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-atlas-experience]').locator('[data-atlas-action=\"enter-immersive\"]')\u001b[22m\n\u001b[2m    23 × locator resolved to <button type=\"button\" data-atlas-action=\"enter-immersive\" title=\"Погрузиться в Литературную планету\" aria-label=\"Погрузиться в Литературную планету\" class=\"ui-icon-button ui-icon-button--md ui-icon-button--dark atlas-immersion-launch\">…</button>\u001b[22m\n\u001b[2m       - unexpected value \"viewport ratio 0.9925426244735718\"\u001b[22m\n\n\n  124 |   await launch.scrollIntoViewIfNeeded();\n  125 |   await launch.focus();\n> 126 |   await expect(launch).toBeInViewport({ ratio: 1 });\n      |                        ^\n  127 |   const scrollBefore = await page.evaluate(() => window.scrollY);\n  128 |   const historyBefore = await page.evaluate(() => window.history.length);\n  129 |   await launch.click();\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\literary-planet-immersion.spec.mjs:126:24"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:32:05.181Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\owner-final-e2e-artifacts\\literary-planet-immersion--69cfd-e-restores-scroll-and-focus-desktop-chromium\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\owner-final-e2e-artifacts\\literary-planet-immersion--69cfd-e-restores-scroll-and-focus-desktop-chromium\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\owner-final-e2e-artifacts\\literary-planet-immersion--69cfd-e-restores-scroll-and-focus-desktop-chromium\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\literary-planet-immersion.spec.mjs",
+                    "column": 24,
+                    "line": 126
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "802a26569ab74421746b-d474bf45423bd75cce53",
+          "file": "literary-planet-immersion.spec.mjs",
+          "line": 112,
+          "column": 1
+        },
+        {
+          "title": "premium globe controls stay balanced and inside every viewport",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10804,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:32:23.199Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "802a26569ab74421746b-ffe3a02355af8039a509",
+          "file": "literary-planet-immersion.spec.mjs",
+          "line": 457,
+          "column": 1
+        },
+        {
+          "title": "embedded atlas enters one-canvas immersion and Escape restores scroll and focus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Desktop covers the full modal keyboard contract.",
+                  "location": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\literary-planet-immersion.spec.mjs",
+                    "line": 117,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "skipped",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "skipped",
+                  "duration": 323,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:37:15.706Z",
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Desktop covers the full modal keyboard contract.",
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\literary-planet-immersion.spec.mjs",
+                        "line": 117,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "802a26569ab74421746b-a41eba196448b5ad26ab",
+          "file": "literary-planet-immersion.spec.mjs",
+          "line": 112,
+          "column": 1
+        },
+        {
+          "title": "premium globe controls stay balanced and inside every viewport",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "The desktop project owns the exact responsive matrix.",
+                  "location": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\literary-planet-immersion.spec.mjs",
+                    "line": 462,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "skipped",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "skipped",
+                  "duration": 331,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:37:16.046Z",
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "The desktop project owns the exact responsive matrix.",
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\literary-planet-immersion.spec.mjs",
+                        "line": 462,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "802a26569ab74421746b-40257414325b1ddf9131",
+          "file": "literary-planet-immersion.spec.mjs",
+          "line": 457,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "premium-globe-exploration.spec.mjs",
+      "file": "premium-globe-exploration.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "keyboard candidate selects the optical-centre country without replacing Canvas",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 16081,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 10000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 10000ms exceeded while waiting on the predicate\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\premium-globe-exploration.spec.mjs:235:38",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\premium-globe-exploration.spec.mjs",
+                      "column": 38,
+                      "line": 235
+                    },
+                    "snippet": "  233 |       Math.abs(bounds.width - stage.width) < 2 && Math.abs(bounds.height - stage.height) < 2;\n  234 |   });\n> 235 |   await expect.poll(canvasFitsStage).toBe(true);\n      |                                      ^\n  236 |   const before = await canvas.boundingBox();\n  237 |\n  238 |   await globe.focus();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\premium-globe-exploration.spec.mjs",
+                        "column": 38,
+                        "line": 235
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 10000ms exceeded while waiting on the predicate\n\n  233 |       Math.abs(bounds.width - stage.width) < 2 && Math.abs(bounds.height - stage.height) < 2;\n  234 |   });\n> 235 |   await expect.poll(canvasFitsStage).toBe(true);\n      |                                      ^\n  236 |   const before = await canvas.boundingBox();\n  237 |\n  238 |   await globe.focus();\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\premium-globe-exploration.spec.mjs:235:38"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:32:34.425Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\owner-final-e2e-artifacts\\premium-globe-exploration--f4acd-ry-without-replacing-Canvas-desktop-chromium\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\owner-final-e2e-artifacts\\premium-globe-exploration--f4acd-ry-without-replacing-Canvas-desktop-chromium\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\owner-final-e2e-artifacts\\premium-globe-exploration--f4acd-ry-without-replacing-Canvas-desktop-chromium\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\premium-globe-exploration.spec.mjs",
+                    "column": 38,
+                    "line": 235
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "ca75044de9e303299adf-3c9f77ca31b1e5e47a63",
+          "file": "premium-globe-exploration.spec.mjs",
+          "line": 219,
+          "column": 1
+        },
+        {
+          "title": "atlas controls wrap without overlap and rich count matches the collection",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 46593,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\premium-globe-exploration.spec.mjs",
+                        "column": 24,
+                        "line": 588
+                      },
+                      "message": "Error: locator.click: Test timeout of 45000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#atlas').locator('.atlas-filters').locator('[data-atlas-archives-toggle]')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" aria-expanded=\"false\" data-atlas-archives-toggle=\"true\" aria-controls=\"atlas-largest-archives\" class=\"ui-action ui-action--text ui-action--md ui-action--dark atlas-archives-toggle\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    75 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n\n  586 |     /Крупнейшие архивы|Largest archives/iu\n  587 |   );\n> 588 |   await archivesToggle.click();\n      |                        ^\n  589 |   await expect(archivesToggle).toHaveAttribute(\"aria-expanded\", \"true\");\n  590 |   const archivesPopover = atlas.locator(\"#atlas-largest-archives\");\n  591 |   await expect(archivesPopover).toBeVisible();\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\premium-globe-exploration.spec.mjs:588:24"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:32:53.912Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\owner-final-e2e-artifacts\\premium-globe-exploration--30196-ount-matches-the-collection-desktop-chromium\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\owner-final-e2e-artifacts\\premium-globe-exploration--30196-ount-matches-the-collection-desktop-chromium\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\owner-final-e2e-artifacts\\premium-globe-exploration--30196-ount-matches-the-collection-desktop-chromium\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "ca75044de9e303299adf-efee7fe3f3496915b17a",
+          "file": "premium-globe-exploration.spec.mjs",
+          "line": 477,
+          "column": 1
+        },
+        {
+          "title": "immersive random journey respects the current collection and recent picks",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9397,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:33:43.202Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ca75044de9e303299adf-7784296ac57e25a4f24f",
+          "file": "premium-globe-exploration.spec.mjs",
+          "line": 616,
+          "column": 1
+        },
+        {
+          "title": "coarse embedded globe preserves page pan until explicit full control",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3955,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:33:52.967Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ca75044de9e303299adf-1a478f9c0ae55ededc14",
+          "file": "premium-globe-exploration.spec.mjs",
+          "line": 677,
+          "column": 1
+        },
+        {
+          "title": "Nobel layer keeps selection and its explicit article action separate",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6860,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:33:56.946Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ca75044de9e303299adf-1c83fb98e13deca2376a",
+          "file": "premium-globe-exploration.spec.mjs",
+          "line": 974,
+          "column": 1
+        },
+        {
+          "title": "keyboard candidate selects the optical-centre country without replacing Canvas",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 16057,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 10000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 10000ms exceeded while waiting on the predicate\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\premium-globe-exploration.spec.mjs:235:38",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\premium-globe-exploration.spec.mjs",
+                      "column": 38,
+                      "line": 235
+                    },
+                    "snippet": "  233 |       Math.abs(bounds.width - stage.width) < 2 && Math.abs(bounds.height - stage.height) < 2;\n  234 |   });\n> 235 |   await expect.poll(canvasFitsStage).toBe(true);\n      |                                      ^\n  236 |   const before = await canvas.boundingBox();\n  237 |\n  238 |   await globe.focus();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\premium-globe-exploration.spec.mjs",
+                        "column": 38,
+                        "line": 235
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 10000ms exceeded while waiting on the predicate\n\n  233 |       Math.abs(bounds.width - stage.width) < 2 && Math.abs(bounds.height - stage.height) < 2;\n  234 |   });\n> 235 |   await expect.poll(canvasFitsStage).toBe(true);\n      |                                      ^\n  236 |   const before = await canvas.boundingBox();\n  237 |\n  238 |   await globe.focus();\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\premium-globe-exploration.spec.mjs:235:38"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:37:16.427Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\owner-final-e2e-artifacts\\premium-globe-exploration--f4acd-ry-without-replacing-Canvas-mobile-chromium\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\owner-final-e2e-artifacts\\premium-globe-exploration--f4acd-ry-without-replacing-Canvas-mobile-chromium\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\owner-final-e2e-artifacts\\premium-globe-exploration--f4acd-ry-without-replacing-Canvas-mobile-chromium\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\premium-globe-exploration.spec.mjs",
+                    "column": 38,
+                    "line": 235
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "ca75044de9e303299adf-45895f7d755e7a4d09d3",
+          "file": "premium-globe-exploration.spec.mjs",
+          "line": 219,
+          "column": 1
+        },
+        {
+          "title": "atlas controls wrap without overlap and rich count matches the collection",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 47168,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 45000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\premium-globe-exploration.spec.mjs",
+                        "column": 24,
+                        "line": 588
+                      },
+                      "message": "Error: locator.click: Test timeout of 45000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#atlas').locator('.atlas-filters').locator('[data-atlas-archives-toggle]')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" aria-expanded=\"false\" data-atlas-archives-toggle=\"true\" aria-controls=\"atlas-largest-archives\" class=\"ui-action ui-action--text ui-action--md ui-action--dark atlas-archives-toggle\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    79 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n\n  586 |     /Крупнейшие архивы|Largest archives/iu\n  587 |   );\n> 588 |   await archivesToggle.click();\n      |                        ^\n  589 |   await expect(archivesToggle).toHaveAttribute(\"aria-expanded\", \"true\");\n  590 |   const archivesPopover = atlas.locator(\"#atlas-largest-archives\");\n  591 |   await expect(archivesPopover).toBeVisible();\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\premium-globe-exploration.spec.mjs:588:24"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:37:36.385Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\owner-final-e2e-artifacts\\premium-globe-exploration--30196-ount-matches-the-collection-mobile-chromium\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\owner-final-e2e-artifacts\\premium-globe-exploration--30196-ount-matches-the-collection-mobile-chromium\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\owner-final-e2e-artifacts\\premium-globe-exploration--30196-ount-matches-the-collection-mobile-chromium\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "ca75044de9e303299adf-78642003df3efa0b2b43",
+          "file": "premium-globe-exploration.spec.mjs",
+          "line": 477,
+          "column": 1
+        },
+        {
+          "title": "immersive random journey respects the current collection and recent picks",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8095,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:38:26.043Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ca75044de9e303299adf-f690fcdfa0c36feb189b",
+          "file": "premium-globe-exploration.spec.mjs",
+          "line": 616,
+          "column": 1
+        },
+        {
+          "title": "coarse embedded globe preserves page pan until explicit full control",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 15657,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:38:34.471Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ca75044de9e303299adf-a8adb5ab6a835afa1dea",
+          "file": "premium-globe-exploration.spec.mjs",
+          "line": 677,
+          "column": 1
+        },
+        {
+          "title": "Nobel layer keeps selection and its explicit article action separate",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7411,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:38:50.148Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ca75044de9e303299adf-0359e5142e740e64bdf3",
+          "file": "premium-globe-exploration.spec.mjs",
+          "line": 974,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "public-reader-journey.spec.ts",
+      "file": "public-reader-journey.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "reader can open the journal and a real article without runtime failures",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3091,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:34:03.839Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e2dbd1ca5f96e38dd844-af9eb66c0e3377286238",
+          "file": "public-reader-journey.spec.ts",
+          "line": 99,
+          "column": 1
+        },
+        {
+          "title": "home and journal remain inside a narrow mobile viewport",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1991,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:34:06.945Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e2dbd1ca5f96e38dd844-4915134c4a102aba4bff",
+          "file": "public-reader-journey.spec.ts",
+          "line": 132,
+          "column": 1
+        },
+        {
+          "title": "reader can open the journal and a real article without runtime failures",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2877,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:38:57.596Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e2dbd1ca5f96e38dd844-54812b244966a7d4ab0e",
+          "file": "public-reader-journey.spec.ts",
+          "line": 99,
+          "column": 1
+        },
+        {
+          "title": "home and journal remain inside a narrow mobile viewport",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1851,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:39:00.494Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e2dbd1ca5f96e38dd844-d6f03a89f93b6ef9618d",
+          "file": "public-reader-journey.spec.ts",
+          "line": 132,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "public-smoke.spec.mjs",
+      "file": "public-smoke.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "поиск глобуса сохраняет запрос при ленивой загрузке и не раскрывает непубличную книгу",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3901,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:34:09.050Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8dc2291fe2f27f1fbc72-fdd4d895fc1b64fe6cec",
+          "file": "public-smoke.spec.mjs",
+          "line": 522,
+          "column": 1
+        },
+        {
+          "title": "поиск глобуса сохраняет запрос при ленивой загрузке и не раскрывает непубличную книгу",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4285,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:39:02.446Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8dc2291fe2f27f1fbc72-4891275a338f68d36717",
+          "file": "public-smoke.spec.mjs",
+          "line": 522,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "reader-extended-accessibility.spec.mjs",
+      "file": "reader-extended-accessibility.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "disabled community runtime exposes honest state and preserves form text without writes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3353,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:34:12.979Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "540dc7c85b8fabdcd45b-712a90cc2da4d1715d3c",
+          "file": "reader-extended-accessibility.spec.mjs",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "real reader keeps text and controls with expanded text spacing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2366,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:34:16.349Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "text-spacing.json",
+                      "contentType": "application/json",
+                      "body": "WwogIHsKICAgICJ3aWR0aCI6IDE0NDAsCiAgICAicmVhZGVyT3ZlcmZsb3ciOiAwLAogICAgImJhck92ZXJmbG93IjogMCwKICAgICJsaW5lSGVpZ2h0IjogMS41LAogICAgImxldHRlclNwYWNpbmciOiAwLjEyLAogICAgIndvcmRTcGFjaW5nIjogMC4xNiwKICAgICJhdEVuZCI6IHRydWUKICB9LAogIHsKICAgICJ3aWR0aCI6IDM5MCwKICAgICJyZWFkZXJPdmVyZmxvdyI6IDAsCiAgICAiYmFyT3ZlcmZsb3ciOiAwLAogICAgImxpbmVIZWlnaHQiOiAxLjUsCiAgICAibGV0dGVyU3BhY2luZyI6IDAuMTIsCiAgICAid29yZFNwYWNpbmciOiAwLjE2LAogICAgImF0RW5kIjogdHJ1ZQogIH0KXQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "540dc7c85b8fabdcd45b-f8266365ccdb0ea1d9f1",
+          "file": "reader-extended-accessibility.spec.mjs",
+          "line": 40,
+          "column": 1
+        },
+        {
+          "title": "request-only complex table and verse retain semantic contents and keyboard scrolling",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1826,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:34:18.732Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "540dc7c85b8fabdcd45b-7331322960fea4086bcb",
+          "file": "reader-extended-accessibility.spec.mjs",
+          "line": 99,
+          "column": 1
+        },
+        {
+          "title": "print media exposes full book text beyond the screen page",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1666,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:34:20.580Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "print-media.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJ0ZXh0TGVuZ3RoIjogMTQ0NzQsCiAgImNvbnRlbnRIZWlnaHQiOiAyMjAzOC43NSwKICAiY29udGVudE92ZXJmbG93IjogInZpc2libGUiLAogICJjb2x1bW5zIjogImF1dG8iLAogICJwYWdlckRpc3BsYXkiOiAibm9uZSIsCiAgInJlYWRlclBvc2l0aW9uIjogInN0YXRpYyIsCiAgInNjcm9sbE92ZXJmbG93IjogInZpc2libGUiLAogICJzY3JvbGxIZWlnaHQiOiAyNTUzNiwKICAiY2xpZW50SGVpZ2h0IjogNjU0Cn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "540dc7c85b8fabdcd45b-a31af6451fef3c3a5c5e",
+          "file": "reader-extended-accessibility.spec.mjs",
+          "line": 142,
+          "column": 1
+        },
+        {
+          "title": "disabled community runtime exposes honest state and preserves form text without writes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3730,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:39:06.755Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "540dc7c85b8fabdcd45b-0920bc5693fdab056209",
+          "file": "reader-extended-accessibility.spec.mjs",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "real reader keeps text and controls with expanded text spacing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2852,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:39:10.502Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "text-spacing.json",
+                      "contentType": "application/json",
+                      "body": "WwogIHsKICAgICJ3aWR0aCI6IDE0NDAsCiAgICAicmVhZGVyT3ZlcmZsb3ciOiAwLAogICAgImJhck92ZXJmbG93IjogMCwKICAgICJsaW5lSGVpZ2h0IjogMS41LAogICAgImxldHRlclNwYWNpbmciOiAwLjEyLAogICAgIndvcmRTcGFjaW5nIjogMC4xNiwKICAgICJhdEVuZCI6IHRydWUKICB9LAogIHsKICAgICJ3aWR0aCI6IDM5MCwKICAgICJyZWFkZXJPdmVyZmxvdyI6IDAsCiAgICAiYmFyT3ZlcmZsb3ciOiAwLAogICAgImxpbmVIZWlnaHQiOiAxLjUsCiAgICAibGV0dGVyU3BhY2luZyI6IDAuMTIsCiAgICAid29yZFNwYWNpbmciOiAwLjE2LAogICAgImF0RW5kIjogdHJ1ZQogIH0KXQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "540dc7c85b8fabdcd45b-ebd58394f07794865844",
+          "file": "reader-extended-accessibility.spec.mjs",
+          "line": 40,
+          "column": 1
+        },
+        {
+          "title": "request-only complex table and verse retain semantic contents and keyboard scrolling",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2072,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:39:13.371Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "540dc7c85b8fabdcd45b-98bde671cff7375bded7",
+          "file": "reader-extended-accessibility.spec.mjs",
+          "line": 99,
+          "column": 1
+        },
+        {
+          "title": "print media exposes full book text beyond the screen page",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1737,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:39:15.461Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "print-media.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJ0ZXh0TGVuZ3RoIjogMTQ0NzQsCiAgImNvbnRlbnRIZWlnaHQiOiAyNTc1Mi4zNTkzNzUsCiAgImNvbnRlbnRPdmVyZmxvdyI6ICJ2aXNpYmxlIiwKICAiY29sdW1ucyI6ICJhdXRvIiwKICAicGFnZXJEaXNwbGF5IjogIm5vbmUiLAogICJyZWFkZXJQb3NpdGlvbiI6ICJzdGF0aWMiLAogICJzY3JvbGxPdmVyZmxvdyI6ICJ2aXNpYmxlIiwKICAic2Nyb2xsSGVpZ2h0IjogMzE1OTgsCiAgImNsaWVudEhlaWdodCI6IDczOQp9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "540dc7c85b8fabdcd45b-ba9146b913bbf6189260",
+          "file": "reader-extended-accessibility.spec.mjs",
+          "line": 142,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "responsive-reader-globe.spec.mjs",
+      "file": "responsive-reader-globe.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "globe search metadata and instructions stay readable inside 320-1720px",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6893,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:34:22.291Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "60ce5ae4393d6249c742-7d9753fa4fed6b250698",
+          "file": "responsive-reader-globe.spec.mjs",
+          "line": 375,
+          "column": 1
+        },
+        {
+          "title": "globe search metadata and instructions stay readable inside 320-1720px",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8735,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:39:17.237Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "60ce5ae4393d6249c742-52d1d255ffcf797bf44a",
+          "file": "responsive-reader-globe.spec.mjs",
+          "line": 375,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "stage5b-art-direction.spec.mjs",
+      "file": "stage5b-art-direction.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Stage 5B desktop RU roles and surfaces stay inside the approved scale",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9744,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:34:29.225Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6ee99ca2255f9095f56e-5d1c38496599e243da70",
+          "file": "stage5b-art-direction.spec.mjs",
+          "line": 132,
+          "column": 1
+        },
+        {
+          "title": "Stage 5B mobile EN roles reflow without overflow",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4983,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:34:38.986Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6ee99ca2255f9095f56e-c302338f6f5e4abf3557",
+          "file": "stage5b-art-direction.spec.mjs",
+          "line": 156,
+          "column": 1
+        },
+        {
+          "title": "Stage 5B desktop RU roles and surfaces stay inside the approved scale",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11322,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:39:25.997Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6ee99ca2255f9095f56e-32358a979c95252197bc",
+          "file": "stage5b-art-direction.spec.mjs",
+          "line": 132,
+          "column": 1
+        },
+        {
+          "title": "Stage 5B mobile EN roles reflow without overflow",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6127,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:39:37.337Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "6ee99ca2255f9095f56e-2b9ed5307757a1caa842",
+          "file": "stage5b-art-direction.spec.mjs",
+          "line": 156,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "stage5c-layout-community.spec.mjs",
+      "file": "stage5c-layout-community.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Stage 5C keeps the final homepage structure and card geometry",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3385,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:34:44.017Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "12129a2b55a690e8d1f6-698c20f0f5c9c1a73900",
+          "file": "stage5c-layout-community.spec.mjs",
+          "line": 311,
+          "column": 1
+        },
+        {
+          "title": "Stage 5C keeps the final homepage structure and card geometry",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4861,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:39:43.508Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "12129a2b55a690e8d1f6-47a9e159c8f7f39d21c8",
+          "file": "stage5c-layout-community.spec.mjs",
+          "line": 311,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "ui-polish-backgrounds.spec.mjs",
+      "file": "ui-polish-backgrounds.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "V4 artwork remains outside controls and follows real section bounds at 1440",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7571,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:34:47.443Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "brush-bounds-1440",
+                      "contentType": "application/json",
+                      "body": "ewogICJ3aWR0aCI6IDE0NDAsCiAgImVhcmx5IjogWwogICAgImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIKICBdLAogICJtZWFzdXJlbWVudHMiOiBbCiAgICB7CiAgICAgICJpZCI6ICJhdGxhcyIsCiAgICAgICJoZWlnaHQiOiAxNDY1LjI4MTI1LAogICAgICAiYm90dG9tRGVsdGEiOiAwLAogICAgICAiYXJ0aWZpY2lhbEpvaW5zIjogMCwKICAgICAgInBvaW50ZXIiOiAibm9uZSIsCiAgICAgICJoaWRkZW4iOiAidHJ1ZSIsCiAgICAgICJpbWFnZXMiOiBbCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiA2MDAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogNTQuMjgxMjUsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDYwMCwKICAgICAgICAgICJjb2xvciI6ICJ3aGl0ZSIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogMTE0MCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiA4NDAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDE0OSwKICAgICAgICAgICJjb2xvciI6ICJvcmFuZ2UiCiAgICAgICAgfQogICAgICBdLAogICAgICAiZ3JhZGllbnRzIjogIm5vbmUiLAogICAgICAib3ZlcmxheU92ZXJmbG93IjogInZpc2libGUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAiYm9vay1kYXkiLAogICAgICAiaGVpZ2h0IjogMTE1My43OTY4NzUsCiAgICAgICJib3R0b21EZWx0YSI6IDAsCiAgICAgICJhcnRpZmljaWFsSm9pbnMiOiAwLAogICAgICAicG9pbnRlciI6ICJub25lIiwKICAgICAgImhpZGRlbiI6ICJ0cnVlIiwKICAgICAgImltYWdlcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDYwMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiA0NzAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDkzLjU2MjUsCiAgICAgICAgICAiY29sb3IiOiAid2hpdGUiCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDExNDAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogODQwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiAyMTQuMjgxMjUsCiAgICAgICAgICAiY29sb3IiOiAib3JhbmdlIgogICAgICAgIH0KICAgICAgXSwKICAgICAgImdyYWRpZW50cyI6ICJub25lIiwKICAgICAgIm92ZXJsYXlPdmVyZmxvdyI6ICJ2aXNpYmxlIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImJvb2tzIiwKICAgICAgImhlaWdodCI6IDEzNDEuODEyNSwKICAgICAgImJvdHRvbURlbHRhIjogMCwKICAgICAgImFydGlmaWNpYWxKb2lucyI6IDAsCiAgICAgICJwb2ludGVyIjogIm5vbmUiLAogICAgICAiaGlkZGVuIjogInRydWUiLAogICAgICAiaW1hZ2VzIjogWwogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogNjAwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDU0LjI4MTI1LAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA2MDAsCiAgICAgICAgICAiY29sb3IiOiAidmlvbGV0IgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiAxMTQwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDc1MCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogMjY0LjI4MTI1LAogICAgICAgICAgImNvbG9yIjogIm9yYW5nZSIKICAgICAgICB9CiAgICAgIF0sCiAgICAgICJncmFkaWVudHMiOiAibm9uZSIsCiAgICAgICJvdmVybGF5T3ZlcmZsb3ciOiAidmlzaWJsZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJmZWF0dXJlZC1qb3VybmFsIiwKICAgICAgImhlaWdodCI6IDk0MC4yMDMxMjUsCiAgICAgICJib3R0b21EZWx0YSI6IDAsCiAgICAgICJhcnRpZmljaWFsSm9pbnMiOiAwLAogICAgICAicG9pbnRlciI6ICJub25lIiwKICAgICAgImhpZGRlbiI6ICJ0cnVlIiwKICAgICAgImltYWdlcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDYwMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiA0MDAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDgzLjU2MjUsCiAgICAgICAgICAiY29sb3IiOiAid2hpdGUiCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDExNDAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogODQwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiAyMTQuMjgxMjUsCiAgICAgICAgICAiY29sb3IiOiAib3JhbmdlIgogICAgICAgIH0KICAgICAgXSwKICAgICAgImdyYWRpZW50cyI6ICJub25lIiwKICAgICAgIm92ZXJsYXlPdmVyZmxvdyI6ICJ2aXNpYmxlIgogICAgfSwKICAgIHsKICAgICAgImlkIjogInJlYWRlci1kaXNjdXNzaW9uIiwKICAgICAgImhlaWdodCI6IDY1Ny40Mzc1LAogICAgICAiYm90dG9tRGVsdGEiOiAwLAogICAgICAiYXJ0aWZpY2lhbEpvaW5zIjogMCwKICAgICAgInBvaW50ZXIiOiAibm9uZSIsCiAgICAgICJoaWRkZW4iOiAidHJ1ZSIsCiAgICAgICJpbWFnZXMiOiBbCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiA2MDAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogNTQuMjgxMjUsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDQ4MS41NzgxMjUsCiAgICAgICAgICAiY29sb3IiOiAidmlvbGV0IgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiAxMTQwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDg0MCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogMjE0LjI4MTI1LAogICAgICAgICAgImNvbG9yIjogIm9yYW5nZSIKICAgICAgICB9CiAgICAgIF0sCiAgICAgICJncmFkaWVudHMiOiAibm9uZSIsCiAgICAgICJvdmVybGF5T3ZlcmZsb3ciOiAidmlzaWJsZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJqb3VybmFsIiwKICAgICAgImhlaWdodCI6IDMzNjcuNDM3NSwKICAgICAgImJvdHRvbURlbHRhIjogMCwKICAgICAgImFydGlmaWNpYWxKb2lucyI6IDAsCiAgICAgICJwb2ludGVyIjogIm5vbmUiLAogICAgICAiaGlkZGVuIjogInRydWUiLAogICAgICAiaW1hZ2VzIjogWwogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogNjAwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDQ1MCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogNzguNTYyNSwKICAgICAgICAgICJjb2xvciI6ICJ3aGl0ZSIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogMTE0MCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiA4NDAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDIxNC4yODEyNSwKICAgICAgICAgICJjb2xvciI6ICJvcmFuZ2UiCiAgICAgICAgfQogICAgICBdLAogICAgICAiZ3JhZGllbnRzIjogIm5vbmUiLAogICAgICAib3ZlcmxheU92ZXJmbG93IjogInZpc2libGUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAiYXV0aG9ycyIsCiAgICAgICJoZWlnaHQiOiA3NDIuNDA2MjUsCiAgICAgICJib3R0b21EZWx0YSI6IDAsCiAgICAgICJhcnRpZmljaWFsSm9pbnMiOiAwLAogICAgICAicG9pbnRlciI6ICJub25lIiwKICAgICAgImhpZGRlbiI6ICJ0cnVlIiwKICAgICAgImltYWdlcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDYwMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiA1NC4yODEyNSwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogNTE5LjgxMjUsCiAgICAgICAgICAiY29sb3IiOiAidmlvbGV0IgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiAxMTQwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDg2MCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogMTA0LAogICAgICAgICAgImNvbG9yIjogIm9yYW5nZSIKICAgICAgICB9CiAgICAgIF0sCiAgICAgICJncmFkaWVudHMiOiAibm9uZSIsCiAgICAgICJvdmVybGF5T3ZlcmZsb3ciOiAidmlzaWJsZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJzZWN0aW9ucyIsCiAgICAgICJoZWlnaHQiOiAxNDQ3LjMxMjUsCiAgICAgICJib3R0b21EZWx0YSI6IDAsCiAgICAgICJhcnRpZmljaWFsSm9pbnMiOiAwLAogICAgICAicG9pbnRlciI6ICJub25lIiwKICAgICAgImhpZGRlbiI6ICJ0cnVlIiwKICAgICAgImltYWdlcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDYwMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiA0ODAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDg4LjU2MjUsCiAgICAgICAgICAiY29sb3IiOiAid2hpdGUiCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDExNDAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogODIwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiAyMTQuMjgxMjUsCiAgICAgICAgICAiY29sb3IiOiAib3JhbmdlIgogICAgICAgIH0KICAgICAgXSwKICAgICAgImdyYWRpZW50cyI6ICJub25lIiwKICAgICAgIm92ZXJsYXlPdmVyZmxvdyI6ICJ2aXNpYmxlIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImNhbGVuZGFyIiwKICAgICAgImhlaWdodCI6IDIzNjMuNzUsCiAgICAgICJib3R0b21EZWx0YSI6IDAsCiAgICAgICJhcnRpZmljaWFsSm9pbnMiOiAwLAogICAgICAicG9pbnRlciI6ICJub25lIiwKICAgICAgImhpZGRlbiI6ICJ0cnVlIiwKICAgICAgImltYWdlcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDYwMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiA1NC4yODEyNSwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogNjAwLAogICAgICAgICAgImNvbG9yIjogInZpb2xldCIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogMTE0MCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiA4NDAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDIxNC4yODEyNSwKICAgICAgICAgICJjb2xvciI6ICJvcmFuZ2UiCiAgICAgICAgfQogICAgICBdLAogICAgICAiZ3JhZGllbnRzIjogIm5vbmUiLAogICAgICAib3ZlcmxheU92ZXJmbG93IjogInZpc2libGUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAiZWRpdG9yaWFsLXBvbGljeSIsCiAgICAgICJoZWlnaHQiOiA2NjMuNzUsCiAgICAgICJib3R0b21EZWx0YSI6IDAsCiAgICAgICJhcnRpZmljaWFsSm9pbnMiOiAwLAogICAgICAicG9pbnRlciI6ICJub25lIiwKICAgICAgImhpZGRlbiI6ICJ0cnVlIiwKICAgICAgImltYWdlcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDYwMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiA0MDAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDkzLjU2MjUsCiAgICAgICAgICAiY29sb3IiOiAid2hpdGUiCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDExNDAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogODQwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiAyMTQuMjgxMjUsCiAgICAgICAgICAiY29sb3IiOiAib3JhbmdlIgogICAgICAgIH0KICAgICAgXSwKICAgICAgImdyYWRpZW50cyI6ICJub25lIiwKICAgICAgIm92ZXJsYXlPdmVyZmxvdyI6ICJ2aXNpYmxlIgogICAgfQogIF0sCiAgImhlaWdodENoYW5nZSI6IFsKICAgIDMzNjcuNDM3NSwKICAgIDc5MS4zNzUKICBdCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "398feaa804a845a82b80-463b49d105d22f9c54ae",
+          "file": "ui-polish-backgrounds.spec.mjs",
+          "line": 20,
+          "column": 50
+        },
+        {
+          "title": "V4 artwork remains outside controls and follows real section bounds at 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9543,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:34:55.029Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "brush-bounds-390",
+                      "contentType": "application/json",
+                      "body": "ewogICJ3aWR0aCI6IDM5MCwKICAiZWFybHkiOiBbCiAgICAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIgogIF0sCiAgIm1lYXN1cmVtZW50cyI6IFsKICAgIHsKICAgICAgImlkIjogImF0bGFzIiwKICAgICAgImhlaWdodCI6IDEzNTguOTY4NzUsCiAgICAgICJib3R0b21EZWx0YSI6IDAsCiAgICAgICJhcnRpZmljaWFsSm9pbnMiOiAwLAogICAgICAicG9pbnRlciI6ICJub25lIiwKICAgICAgImhpZGRlbiI6ICJ0cnVlIiwKICAgICAgImltYWdlcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDMzMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiAxNy44NTE1NjI1LAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiAzMzAsCiAgICAgICAgICAiY29sb3IiOiAid2hpdGUiCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDUxMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiAzNTAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDU4LjI4MTI1LAogICAgICAgICAgImNvbG9yIjogIm9yYW5nZSIKICAgICAgICB9CiAgICAgIF0sCiAgICAgICJncmFkaWVudHMiOiAibm9uZSIsCiAgICAgICJvdmVybGF5T3ZlcmZsb3ciOiAidmlzaWJsZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJib29rLWRheSIsCiAgICAgICJoZWlnaHQiOiAyMjY5LjE0MDYyNSwKICAgICAgImJvdHRvbURlbHRhIjogMCwKICAgICAgImFydGlmaWNpYWxKb2lucyI6IDAsCiAgICAgICJwb2ludGVyIjogIm5vbmUiLAogICAgICAiaGlkZGVuIjogInRydWUiLAogICAgICAiaW1hZ2VzIjogWwogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogMzMwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDI0MCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogNDkuNzAzMTI1LAogICAgICAgICAgImNvbG9yIjogIndoaXRlIgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiA1MTAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogMzUwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA4OS4yODEyNSwKICAgICAgICAgICJjb2xvciI6ICJvcmFuZ2UiCiAgICAgICAgfQogICAgICBdLAogICAgICAiZ3JhZGllbnRzIjogIm5vbmUiLAogICAgICAib3ZlcmxheU92ZXJmbG93IjogInZpc2libGUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAiYm9va3MiLAogICAgICAiaGVpZ2h0IjogMTUzNS4zMTI1LAogICAgICAiYm90dG9tRGVsdGEiOiAwLAogICAgICAiYXJ0aWZpY2lhbEpvaW5zIjogMCwKICAgICAgInBvaW50ZXIiOiAibm9uZSIsCiAgICAgICJoaWRkZW4iOiAidHJ1ZSIsCiAgICAgICJpbWFnZXMiOiBbCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiAzMzAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogMTcuODUxNTYyNSwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogMzMwLAogICAgICAgICAgImNvbG9yIjogInZpb2xldCIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogNTEwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDM1MCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogODkuMjgxMjUsCiAgICAgICAgICAiY29sb3IiOiAib3JhbmdlIgogICAgICAgIH0KICAgICAgXSwKICAgICAgImdyYWRpZW50cyI6ICJub25lIiwKICAgICAgIm92ZXJsYXlPdmVyZmxvdyI6ICJ2aXNpYmxlIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImZlYXR1cmVkLWpvdXJuYWwiLAogICAgICAiaGVpZ2h0IjogMjk0OS45MjE4NzUsCiAgICAgICJib3R0b21EZWx0YSI6IDAsCiAgICAgICJhcnRpZmljaWFsSm9pbnMiOiAwLAogICAgICAicG9pbnRlciI6ICJub25lIiwKICAgICAgImhpZGRlbiI6ICJ0cnVlIiwKICAgICAgImltYWdlcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDMzMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiAyNDAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDQ5LjcwMzEyNSwKICAgICAgICAgICJjb2xvciI6ICJ3aGl0ZSIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogNTEwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDM1MCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogODkuMjgxMjUsCiAgICAgICAgICAiY29sb3IiOiAib3JhbmdlIgogICAgICAgIH0KICAgICAgXSwKICAgICAgImdyYWRpZW50cyI6ICJub25lIiwKICAgICAgIm92ZXJsYXlPdmVyZmxvdyI6ICJ2aXNpYmxlIgogICAgfSwKICAgIHsKICAgICAgImlkIjogInJlYWRlci1kaXNjdXNzaW9uIiwKICAgICAgImhlaWdodCI6IDEyMDUuNDM3NSwKICAgICAgImJvdHRvbURlbHRhIjogMCwKICAgICAgImFydGlmaWNpYWxKb2lucyI6IDAsCiAgICAgICJwb2ludGVyIjogIm5vbmUiLAogICAgICAiaGlkZGVuIjogInRydWUiLAogICAgICAiaW1hZ2VzIjogWwogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogMzMwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDE3Ljg1MTU2MjUsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDMzMCwKICAgICAgICAgICJjb2xvciI6ICJ2aW9sZXQiCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDUxMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiAzNTAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDg5LjI4MTI1LAogICAgICAgICAgImNvbG9yIjogIm9yYW5nZSIKICAgICAgICB9CiAgICAgIF0sCiAgICAgICJncmFkaWVudHMiOiAibm9uZSIsCiAgICAgICJvdmVybGF5T3ZlcmZsb3ciOiAidmlzaWJsZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJqb3VybmFsIiwKICAgICAgImhlaWdodCI6IDgwNTUuNDUzMTI1LAogICAgICAiYm90dG9tRGVsdGEiOiAwLAogICAgICAiYXJ0aWZpY2lhbEpvaW5zIjogMCwKICAgICAgInBvaW50ZXIiOiAibm9uZSIsCiAgICAgICJoaWRkZW4iOiAidHJ1ZSIsCiAgICAgICJpbWFnZXMiOiBbCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiAzMzAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogMjQwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA0OS43MDMxMjUsCiAgICAgICAgICAiY29sb3IiOiAid2hpdGUiCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDUxMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiAzNTAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDg5LjI4MTI1LAogICAgICAgICAgImNvbG9yIjogIm9yYW5nZSIKICAgICAgICB9CiAgICAgIF0sCiAgICAgICJncmFkaWVudHMiOiAibm9uZSIsCiAgICAgICJvdmVybGF5T3ZlcmZsb3ciOiAidmlzaWJsZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJhdXRob3JzIiwKICAgICAgImhlaWdodCI6IDIyMDAuMjgxMjUsCiAgICAgICJib3R0b21EZWx0YSI6IDAsCiAgICAgICJhcnRpZmljaWFsSm9pbnMiOiAwLAogICAgICAicG9pbnRlciI6ICJub25lIiwKICAgICAgImhpZGRlbiI6ICJ0cnVlIiwKICAgICAgImltYWdlcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDMzMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiAxNy44NTE1NjI1LAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiAzMzAsCiAgICAgICAgICAiY29sb3IiOiAidmlvbGV0IgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiA1MTAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogMzUwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA1OC4yODEyNSwKICAgICAgICAgICJjb2xvciI6ICJvcmFuZ2UiCiAgICAgICAgfQogICAgICBdLAogICAgICAiZ3JhZGllbnRzIjogIm5vbmUiLAogICAgICAib3ZlcmxheU92ZXJmbG93IjogInZpc2libGUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAic2VjdGlvbnMiLAogICAgICAiaGVpZ2h0IjogMzMyOC41OTM3NSwKICAgICAgImJvdHRvbURlbHRhIjogMCwKICAgICAgImFydGlmaWNpYWxKb2lucyI6IDAsCiAgICAgICJwb2ludGVyIjogIm5vbmUiLAogICAgICAiaGlkZGVuIjogInRydWUiLAogICAgICAiaW1hZ2VzIjogWwogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogMzMwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDI1MCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogNDkuNzAzMTI1LAogICAgICAgICAgImNvbG9yIjogIndoaXRlIgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiA1MTAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogMzQ1LAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA4OS4yODEyNSwKICAgICAgICAgICJjb2xvciI6ICJvcmFuZ2UiCiAgICAgICAgfQogICAgICBdLAogICAgICAiZ3JhZGllbnRzIjogIm5vbmUiLAogICAgICAib3ZlcmxheU92ZXJmbG93IjogInZpc2libGUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAiY2FsZW5kYXIiLAogICAgICAiaGVpZ2h0IjogMzE4MC43OTY4NzUsCiAgICAgICJib3R0b21EZWx0YSI6IDAsCiAgICAgICJhcnRpZmljaWFsSm9pbnMiOiAwLAogICAgICAicG9pbnRlciI6ICJub25lIiwKICAgICAgImhpZGRlbiI6ICJ0cnVlIiwKICAgICAgImltYWdlcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDMzMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiAxNy44NTE1NjI1LAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiAzMzAsCiAgICAgICAgICAiY29sb3IiOiAidmlvbGV0IgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiA1MTAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogMzUwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA4OS4yODEyNSwKICAgICAgICAgICJjb2xvciI6ICJvcmFuZ2UiCiAgICAgICAgfQogICAgICBdLAogICAgICAiZ3JhZGllbnRzIjogIm5vbmUiLAogICAgICAib3ZlcmxheU92ZXJmbG93IjogInZpc2libGUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAiZWRpdG9yaWFsLXBvbGljeSIsCiAgICAgICJoZWlnaHQiOiA5OTkuOTM3NSwKICAgICAgImJvdHRvbURlbHRhIjogMCwKICAgICAgImFydGlmaWNpYWxKb2lucyI6IDAsCiAgICAgICJwb2ludGVyIjogIm5vbmUiLAogICAgICAiaGlkZGVuIjogInRydWUiLAogICAgICAiaW1hZ2VzIjogWwogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogMzMwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDI0MCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogNDkuNzAzMTI1LAogICAgICAgICAgImNvbG9yIjogIndoaXRlIgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiA1MTAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogMzUwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA4OS4yODEyNSwKICAgICAgICAgICJjb2xvciI6ICJvcmFuZ2UiCiAgICAgICAgfQogICAgICBdLAogICAgICAiZ3JhZGllbnRzIjogIm5vbmUiLAogICAgICAib3ZlcmxheU92ZXJmbG93IjogInZpc2libGUiCiAgICB9CiAgXSwKICAiaGVpZ2h0Q2hhbmdlIjogWwogICAgODA1NS40NTMxMjUsCiAgICAxMDQxLjY4NzUKICBdCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "398feaa804a845a82b80-2f13e1793acc7a239589",
+          "file": "ui-polish-backgrounds.spec.mjs",
+          "line": 20,
+          "column": 50
+        },
+        {
+          "title": "V4 artwork remains outside controls and follows real section bounds at 320",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5912,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:35:04.594Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "brush-bounds-320",
+                      "contentType": "application/json",
+                      "body": "ewogICJ3aWR0aCI6IDMyMCwKICAiZWFybHkiOiBbCiAgICAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIgogIF0sCiAgIm1lYXN1cmVtZW50cyI6IFsKICAgIHsKICAgICAgImlkIjogImF0bGFzIiwKICAgICAgImhlaWdodCI6IDEzODYuNzgxMjUsCiAgICAgICJib3R0b21EZWx0YSI6IDAsCiAgICAgICJhcnRpZmljaWFsSm9pbnMiOiAwLAogICAgICAicG9pbnRlciI6ICJub25lIiwKICAgICAgImhpZGRlbiI6ICJ0cnVlIiwKICAgICAgImltYWdlcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDMzMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiAxNy44NTE1NjI1LAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiAzMzAsCiAgICAgICAgICAiY29sb3IiOiAid2hpdGUiCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDUxMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiAzMjAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDU4LjI4MTI1LAogICAgICAgICAgImNvbG9yIjogIm9yYW5nZSIKICAgICAgICB9CiAgICAgIF0sCiAgICAgICJncmFkaWVudHMiOiAibm9uZSIsCiAgICAgICJvdmVybGF5T3ZlcmZsb3ciOiAidmlzaWJsZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJib29rLWRheSIsCiAgICAgICJoZWlnaHQiOiAyNDc5LjMyODEyNSwKICAgICAgImJvdHRvbURlbHRhIjogMCwKICAgICAgImFydGlmaWNpYWxKb2lucyI6IDAsCiAgICAgICJwb2ludGVyIjogIm5vbmUiLAogICAgICAiaGlkZGVuIjogInRydWUiLAogICAgICAiaW1hZ2VzIjogWwogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogMzMwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDI0MCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogNDkuNzAzMTI1LAogICAgICAgICAgImNvbG9yIjogIndoaXRlIgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiA1MTAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogMzIwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA4OS4yODEyNSwKICAgICAgICAgICJjb2xvciI6ICJvcmFuZ2UiCiAgICAgICAgfQogICAgICBdLAogICAgICAiZ3JhZGllbnRzIjogIm5vbmUiLAogICAgICAib3ZlcmxheU92ZXJmbG93IjogInZpc2libGUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAiYm9va3MiLAogICAgICAiaGVpZ2h0IjogMTU2MS43MDMxMjUsCiAgICAgICJib3R0b21EZWx0YSI6IDAsCiAgICAgICJhcnRpZmljaWFsSm9pbnMiOiAwLAogICAgICAicG9pbnRlciI6ICJub25lIiwKICAgICAgImhpZGRlbiI6ICJ0cnVlIiwKICAgICAgImltYWdlcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDMzMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiAxNy44NTE1NjI1LAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiAzMzAsCiAgICAgICAgICAiY29sb3IiOiAidmlvbGV0IgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiA1MTAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogMzIwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA4OS4yODEyNSwKICAgICAgICAgICJjb2xvciI6ICJvcmFuZ2UiCiAgICAgICAgfQogICAgICBdLAogICAgICAiZ3JhZGllbnRzIjogIm5vbmUiLAogICAgICAib3ZlcmxheU92ZXJmbG93IjogInZpc2libGUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAiZmVhdHVyZWQtam91cm5hbCIsCiAgICAgICJoZWlnaHQiOiAyODY4LjUzMTI1LAogICAgICAiYm90dG9tRGVsdGEiOiAwLAogICAgICAiYXJ0aWZpY2lhbEpvaW5zIjogMCwKICAgICAgInBvaW50ZXIiOiAibm9uZSIsCiAgICAgICJoaWRkZW4iOiAidHJ1ZSIsCiAgICAgICJpbWFnZXMiOiBbCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiAzMzAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogMjQwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA0OS43MDMxMjUsCiAgICAgICAgICAiY29sb3IiOiAid2hpdGUiCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDUxMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiAzMjAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDg5LjI4MTI1LAogICAgICAgICAgImNvbG9yIjogIm9yYW5nZSIKICAgICAgICB9CiAgICAgIF0sCiAgICAgICJncmFkaWVudHMiOiAibm9uZSIsCiAgICAgICJvdmVybGF5T3ZlcmZsb3ciOiAidmlzaWJsZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJyZWFkZXItZGlzY3Vzc2lvbiIsCiAgICAgICJoZWlnaHQiOiAxNDExLjY1NjI1LAogICAgICAiYm90dG9tRGVsdGEiOiAwLAogICAgICAiYXJ0aWZpY2lhbEpvaW5zIjogMCwKICAgICAgInBvaW50ZXIiOiAibm9uZSIsCiAgICAgICJoaWRkZW4iOiAidHJ1ZSIsCiAgICAgICJpbWFnZXMiOiBbCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiAzMzAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogMTcuODUxNTYyNSwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogMzMwLAogICAgICAgICAgImNvbG9yIjogInZpb2xldCIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogNTEwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDMyMCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogODkuMjgxMjUsCiAgICAgICAgICAiY29sb3IiOiAib3JhbmdlIgogICAgICAgIH0KICAgICAgXSwKICAgICAgImdyYWRpZW50cyI6ICJub25lIiwKICAgICAgIm92ZXJsYXlPdmVyZmxvdyI6ICJ2aXNpYmxlIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImpvdXJuYWwiLAogICAgICAiaGVpZ2h0IjogODI3My4wNDY4NzUsCiAgICAgICJib3R0b21EZWx0YSI6IDAsCiAgICAgICJhcnRpZmljaWFsSm9pbnMiOiAwLAogICAgICAicG9pbnRlciI6ICJub25lIiwKICAgICAgImhpZGRlbiI6ICJ0cnVlIiwKICAgICAgImltYWdlcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDMzMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiAyNDAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDQ5LjcwMzEyNSwKICAgICAgICAgICJjb2xvciI6ICJ3aGl0ZSIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogNTEwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDMyMCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogODkuMjgxMjUsCiAgICAgICAgICAiY29sb3IiOiAib3JhbmdlIgogICAgICAgIH0KICAgICAgXSwKICAgICAgImdyYWRpZW50cyI6ICJub25lIiwKICAgICAgIm92ZXJsYXlPdmVyZmxvdyI6ICJ2aXNpYmxlIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImF1dGhvcnMiLAogICAgICAiaGVpZ2h0IjogMTk0MC4yODEyNSwKICAgICAgImJvdHRvbURlbHRhIjogMCwKICAgICAgImFydGlmaWNpYWxKb2lucyI6IDAsCiAgICAgICJwb2ludGVyIjogIm5vbmUiLAogICAgICAiaGlkZGVuIjogInRydWUiLAogICAgICAiaW1hZ2VzIjogWwogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogMzMwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDE3Ljg1MTU2MjUsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDMzMCwKICAgICAgICAgICJjb2xvciI6ICJ2aW9sZXQiCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDUxMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiAzMjAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDU4LjI4MTI1LAogICAgICAgICAgImNvbG9yIjogIm9yYW5nZSIKICAgICAgICB9CiAgICAgIF0sCiAgICAgICJncmFkaWVudHMiOiAibm9uZSIsCiAgICAgICJvdmVybGF5T3ZlcmZsb3ciOiAidmlzaWJsZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJzZWN0aW9ucyIsCiAgICAgICJoZWlnaHQiOiAzNzQ2Ljc5Njg3NSwKICAgICAgImJvdHRvbURlbHRhIjogMCwKICAgICAgImFydGlmaWNpYWxKb2lucyI6IDAsCiAgICAgICJwb2ludGVyIjogIm5vbmUiLAogICAgICAiaGlkZGVuIjogInRydWUiLAogICAgICAiaW1hZ2VzIjogWwogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogMzMwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDI1MCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogNDkuNzAzMTI1LAogICAgICAgICAgImNvbG9yIjogIndoaXRlIgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiA1MTAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogMzIwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA4OS4yODEyNSwKICAgICAgICAgICJjb2xvciI6ICJvcmFuZ2UiCiAgICAgICAgfQogICAgICBdLAogICAgICAiZ3JhZGllbnRzIjogIm5vbmUiLAogICAgICAib3ZlcmxheU92ZXJmbG93IjogInZpc2libGUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAiY2FsZW5kYXIiLAogICAgICAiaGVpZ2h0IjogMzM1Ny44OTA2MjUsCiAgICAgICJib3R0b21EZWx0YSI6IDAsCiAgICAgICJhcnRpZmljaWFsSm9pbnMiOiAwLAogICAgICAicG9pbnRlciI6ICJub25lIiwKICAgICAgImhpZGRlbiI6ICJ0cnVlIiwKICAgICAgImltYWdlcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDMzMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiAxNy44NTE1NjI1LAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiAzMzAsCiAgICAgICAgICAiY29sb3IiOiAidmlvbGV0IgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiA1MTAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogMzIwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA4OS4yODEyNSwKICAgICAgICAgICJjb2xvciI6ICJvcmFuZ2UiCiAgICAgICAgfQogICAgICBdLAogICAgICAiZ3JhZGllbnRzIjogIm5vbmUiLAogICAgICAib3ZlcmxheU92ZXJmbG93IjogInZpc2libGUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAiZWRpdG9yaWFsLXBvbGljeSIsCiAgICAgICJoZWlnaHQiOiAxMDc4LjU5Mzc1LAogICAgICAiYm90dG9tRGVsdGEiOiAwLAogICAgICAiYXJ0aWZpY2lhbEpvaW5zIjogMCwKICAgICAgInBvaW50ZXIiOiAibm9uZSIsCiAgICAgICJoaWRkZW4iOiAidHJ1ZSIsCiAgICAgICJpbWFnZXMiOiBbCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiAzMzAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogMjQwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA0OS43MDMxMjUsCiAgICAgICAgICAiY29sb3IiOiAid2hpdGUiCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDUxMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiAzMjAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDg5LjI4MTI1LAogICAgICAgICAgImNvbG9yIjogIm9yYW5nZSIKICAgICAgICB9CiAgICAgIF0sCiAgICAgICJncmFkaWVudHMiOiAibm9uZSIsCiAgICAgICJvdmVybGF5T3ZlcmZsb3ciOiAidmlzaWJsZSIKICAgIH0KICBdLAogICJoZWlnaHRDaGFuZ2UiOiBbCiAgICA4MjczLjA0Njg3NSwKICAgIDExNDAuODQzNzUKICBdCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "398feaa804a845a82b80-c2bd67708490fa3aa895",
+          "file": "ui-polish-backgrounds.spec.mjs",
+          "line": 20,
+          "column": 50
+        },
+        {
+          "title": "V4 artwork remains outside controls and follows real section bounds at 768",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6575,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:35:10.525Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "brush-bounds-768",
+                      "contentType": "application/json",
+                      "body": "ewogICJ3aWR0aCI6IDc2OCwKICAiZWFybHkiOiBbCiAgICAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIgogIF0sCiAgIm1lYXN1cmVtZW50cyI6IFsKICAgIHsKICAgICAgImlkIjogImF0bGFzIiwKICAgICAgImhlaWdodCI6IDE0MzQuNDY4NzUsCiAgICAgICJib3R0b21EZWx0YSI6IDAsCiAgICAgICJhcnRpZmljaWFsSm9pbnMiOiAwLAogICAgICAicG9pbnRlciI6ICJub25lIiwKICAgICAgImhpZGRlbiI6ICJ0cnVlIiwKICAgICAgImltYWdlcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDYwMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiA1NC4yODEyNSwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogNjAwLAogICAgICAgICAgImNvbG9yIjogIndoaXRlIgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiA4NDAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogNTQwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiAxNDksCiAgICAgICAgICAiY29sb3IiOiAib3JhbmdlIgogICAgICAgIH0KICAgICAgXSwKICAgICAgImdyYWRpZW50cyI6ICJub25lIiwKICAgICAgIm92ZXJsYXlPdmVyZmxvdyI6ICJ2aXNpYmxlIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImJvb2stZGF5IiwKICAgICAgImhlaWdodCI6IDE1MTQuMDMxMjUsCiAgICAgICJib3R0b21EZWx0YSI6IDAsCiAgICAgICJhcnRpZmljaWFsSm9pbnMiOiAwLAogICAgICAicG9pbnRlciI6ICJub25lIiwKICAgICAgImhpZGRlbiI6ICJ0cnVlIiwKICAgICAgImltYWdlcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDYwMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiA0NzAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDkzLjU2MjUsCiAgICAgICAgICAiY29sb3IiOiAid2hpdGUiCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDg0MCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiA1NDAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDEwMCwKICAgICAgICAgICJjb2xvciI6ICJvcmFuZ2UiCiAgICAgICAgfQogICAgICBdLAogICAgICAiZ3JhZGllbnRzIjogIm5vbmUiLAogICAgICAib3ZlcmxheU92ZXJmbG93IjogInZpc2libGUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAiYm9va3MiLAogICAgICAiaGVpZ2h0IjogMTQ0Ni41MzEyNSwKICAgICAgImJvdHRvbURlbHRhIjogMCwKICAgICAgImFydGlmaWNpYWxKb2lucyI6IDAsCiAgICAgICJwb2ludGVyIjogIm5vbmUiLAogICAgICAiaGlkZGVuIjogInRydWUiLAogICAgICAiaW1hZ2VzIjogWwogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogNjAwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDU0LjI4MTI1LAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA2MDAsCiAgICAgICAgICAiY29sb3IiOiAidmlvbGV0IgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiA4NDAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogNDUwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiAxNTAsCiAgICAgICAgICAiY29sb3IiOiAib3JhbmdlIgogICAgICAgIH0KICAgICAgXSwKICAgICAgImdyYWRpZW50cyI6ICJub25lIiwKICAgICAgIm92ZXJsYXlPdmVyZmxvdyI6ICJ2aXNpYmxlIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImZlYXR1cmVkLWpvdXJuYWwiLAogICAgICAiaGVpZ2h0IjogMTU3MS45MjE4NzUsCiAgICAgICJib3R0b21EZWx0YSI6IDAsCiAgICAgICJhcnRpZmljaWFsSm9pbnMiOiAwLAogICAgICAicG9pbnRlciI6ICJub25lIiwKICAgICAgImhpZGRlbiI6ICJ0cnVlIiwKICAgICAgImltYWdlcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDYwMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiA0MDAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDgzLjU2MjUsCiAgICAgICAgICAiY29sb3IiOiAid2hpdGUiCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDg0MCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiA1NDAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDEwMCwKICAgICAgICAgICJjb2xvciI6ICJvcmFuZ2UiCiAgICAgICAgfQogICAgICBdLAogICAgICAiZ3JhZGllbnRzIjogIm5vbmUiLAogICAgICAib3ZlcmxheU92ZXJmbG93IjogInZpc2libGUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAicmVhZGVyLWRpc2N1c3Npb24iLAogICAgICAiaGVpZ2h0IjogNzQ1LjkwNjI1LAogICAgICAiYm90dG9tRGVsdGEiOiAwLAogICAgICAiYXJ0aWZpY2lhbEpvaW5zIjogMCwKICAgICAgInBvaW50ZXIiOiAibm9uZSIsCiAgICAgICJoaWRkZW4iOiAidHJ1ZSIsCiAgICAgICJpbWFnZXMiOiBbCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiA2MDAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogNTQuMjgxMjUsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDUyMS4zOTA2MjUsCiAgICAgICAgICAiY29sb3IiOiAidmlvbGV0IgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiA4NDAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogNTQwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiAxMDAsCiAgICAgICAgICAiY29sb3IiOiAib3JhbmdlIgogICAgICAgIH0KICAgICAgXSwKICAgICAgImdyYWRpZW50cyI6ICJub25lIiwKICAgICAgIm92ZXJsYXlPdmVyZmxvdyI6ICJ2aXNpYmxlIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImpvdXJuYWwiLAogICAgICAiaGVpZ2h0IjogNTM0Mi45NTMxMjUsCiAgICAgICJib3R0b21EZWx0YSI6IDAsCiAgICAgICJhcnRpZmljaWFsSm9pbnMiOiAwLAogICAgICAicG9pbnRlciI6ICJub25lIiwKICAgICAgImhpZGRlbiI6ICJ0cnVlIiwKICAgICAgImltYWdlcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDYwMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiA0NTAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDc4LjU2MjUsCiAgICAgICAgICAiY29sb3IiOiAid2hpdGUiCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDg0MCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiA1NDAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDEwMCwKICAgICAgICAgICJjb2xvciI6ICJvcmFuZ2UiCiAgICAgICAgfQogICAgICBdLAogICAgICAiZ3JhZGllbnRzIjogIm5vbmUiLAogICAgICAib3ZlcmxheU92ZXJmbG93IjogInZpc2libGUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAiYXV0aG9ycyIsCiAgICAgICJoZWlnaHQiOiAxMTA5LjQzNzUsCiAgICAgICJib3R0b21EZWx0YSI6IDAsCiAgICAgICJhcnRpZmljaWFsSm9pbnMiOiAwLAogICAgICAicG9pbnRlciI6ICJub25lIiwKICAgICAgImhpZGRlbiI6ICJ0cnVlIiwKICAgICAgImltYWdlcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDYwMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiA1NC4yODEyNSwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogNjAwLAogICAgICAgICAgImNvbG9yIjogInZpb2xldCIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogODQwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDU2MCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogMTA0LAogICAgICAgICAgImNvbG9yIjogIm9yYW5nZSIKICAgICAgICB9CiAgICAgIF0sCiAgICAgICJncmFkaWVudHMiOiAibm9uZSIsCiAgICAgICJvdmVybGF5T3ZlcmZsb3ciOiAidmlzaWJsZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJzZWN0aW9ucyIsCiAgICAgICJoZWlnaHQiOiAyMjMyLjI4MTI1LAogICAgICAiYm90dG9tRGVsdGEiOiAwLAogICAgICAiYXJ0aWZpY2lhbEpvaW5zIjogMCwKICAgICAgInBvaW50ZXIiOiAibm9uZSIsCiAgICAgICJoaWRkZW4iOiAidHJ1ZSIsCiAgICAgICJpbWFnZXMiOiBbCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiA2MDAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogNDgwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA4OC41NjI1LAogICAgICAgICAgImNvbG9yIjogIndoaXRlIgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiA4NDAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogNTIwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiAxMDAsCiAgICAgICAgICAiY29sb3IiOiAib3JhbmdlIgogICAgICAgIH0KICAgICAgXSwKICAgICAgImdyYWRpZW50cyI6ICJub25lIiwKICAgICAgIm92ZXJsYXlPdmVyZmxvdyI6ICJ2aXNpYmxlIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImNhbGVuZGFyIiwKICAgICAgImhlaWdodCI6IDI3MzkuODc1LAogICAgICAiYm90dG9tRGVsdGEiOiAwLAogICAgICAiYXJ0aWZpY2lhbEpvaW5zIjogMCwKICAgICAgInBvaW50ZXIiOiAibm9uZSIsCiAgICAgICJoaWRkZW4iOiAidHJ1ZSIsCiAgICAgICJpbWFnZXMiOiBbCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiA2MDAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogNTQuMjgxMjUsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDYwMCwKICAgICAgICAgICJjb2xvciI6ICJ2aW9sZXQiCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDg0MCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiA1NDAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDEwMCwKICAgICAgICAgICJjb2xvciI6ICJvcmFuZ2UiCiAgICAgICAgfQogICAgICBdLAogICAgICAiZ3JhZGllbnRzIjogIm5vbmUiLAogICAgICAib3ZlcmxheU92ZXJmbG93IjogInZpc2libGUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAiZWRpdG9yaWFsLXBvbGljeSIsCiAgICAgICJoZWlnaHQiOiA4MTMuODEyNSwKICAgICAgImJvdHRvbURlbHRhIjogMCwKICAgICAgImFydGlmaWNpYWxKb2lucyI6IDAsCiAgICAgICJwb2ludGVyIjogIm5vbmUiLAogICAgICAiaGlkZGVuIjogInRydWUiLAogICAgICAiaW1hZ2VzIjogWwogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogNjAwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDQwMCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogOTMuNTYyNSwKICAgICAgICAgICJjb2xvciI6ICJ3aGl0ZSIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogODQwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDU0MCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogMTAwLAogICAgICAgICAgImNvbG9yIjogIm9yYW5nZSIKICAgICAgICB9CiAgICAgIF0sCiAgICAgICJncmFkaWVudHMiOiAibm9uZSIsCiAgICAgICJvdmVybGF5T3ZlcmZsb3ciOiAidmlzaWJsZSIKICAgIH0KICBdLAogICJoZWlnaHRDaGFuZ2UiOiBbCiAgICA1MzQyLjk1MzEyNSwKICAgIDg2NQogIF0KfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "398feaa804a845a82b80-d15405fee1c2e7243873",
+          "file": "ui-polish-backgrounds.spec.mjs",
+          "line": 20,
+          "column": 50
+        },
+        {
+          "title": "V4 artwork remains outside controls and follows real section bounds at 1920",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7471,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:35:17.115Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "brush-bounds-1920",
+                      "contentType": "application/json",
+                      "body": "ewogICJ3aWR0aCI6IDE5MjAsCiAgImVhcmx5IjogWwogICAgImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIKICBdLAogICJtZWFzdXJlbWVudHMiOiBbCiAgICB7CiAgICAgICJpZCI6ICJhdGxhcyIsCiAgICAgICJoZWlnaHQiOiAxNDY1LjI4MTI1LAogICAgICAiYm90dG9tRGVsdGEiOiAwLAogICAgICAiYXJ0aWZpY2lhbEpvaW5zIjogMCwKICAgICAgInBvaW50ZXIiOiAibm9uZSIsCiAgICAgICJoaWRkZW4iOiAidHJ1ZSIsCiAgICAgICJpbWFnZXMiOiBbCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiA2MDAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogNTQuMjgxMjUsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDYwMCwKICAgICAgICAgICJjb2xvciI6ICJ3aGl0ZSIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogMTE0MCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiA4NDAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDE0OSwKICAgICAgICAgICJjb2xvciI6ICJvcmFuZ2UiCiAgICAgICAgfQogICAgICBdLAogICAgICAiZ3JhZGllbnRzIjogIm5vbmUiLAogICAgICAib3ZlcmxheU92ZXJmbG93IjogInZpc2libGUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAiYm9vay1kYXkiLAogICAgICAiaGVpZ2h0IjogMTE3Mi4wNzgxMjUsCiAgICAgICJib3R0b21EZWx0YSI6IDAsCiAgICAgICJhcnRpZmljaWFsSm9pbnMiOiAwLAogICAgICAicG9pbnRlciI6ICJub25lIiwKICAgICAgImhpZGRlbiI6ICJ0cnVlIiwKICAgICAgImltYWdlcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDYwMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiA0NzAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDkzLjU2MjUsCiAgICAgICAgICAiY29sb3IiOiAid2hpdGUiCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDExNDAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogODQwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiAyMTQuMjgxMjUsCiAgICAgICAgICAiY29sb3IiOiAib3JhbmdlIgogICAgICAgIH0KICAgICAgXSwKICAgICAgImdyYWRpZW50cyI6ICJub25lIiwKICAgICAgIm92ZXJsYXlPdmVyZmxvdyI6ICJ2aXNpYmxlIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImJvb2tzIiwKICAgICAgImhlaWdodCI6IDE1MjAuNjg3NSwKICAgICAgImJvdHRvbURlbHRhIjogMCwKICAgICAgImFydGlmaWNpYWxKb2lucyI6IDAsCiAgICAgICJwb2ludGVyIjogIm5vbmUiLAogICAgICAiaGlkZGVuIjogInRydWUiLAogICAgICAiaW1hZ2VzIjogWwogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogNjAwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDU0LjI4MTI1LAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA2MDAsCiAgICAgICAgICAiY29sb3IiOiAidmlvbGV0IgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiAxMTQwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDc1MCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogMjY0LjI4MTI1LAogICAgICAgICAgImNvbG9yIjogIm9yYW5nZSIKICAgICAgICB9CiAgICAgIF0sCiAgICAgICJncmFkaWVudHMiOiAibm9uZSIsCiAgICAgICJvdmVybGF5T3ZlcmZsb3ciOiAidmlzaWJsZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJmZWF0dXJlZC1qb3VybmFsIiwKICAgICAgImhlaWdodCI6IDEwMDEuMDMxMjUsCiAgICAgICJib3R0b21EZWx0YSI6IDAsCiAgICAgICJhcnRpZmljaWFsSm9pbnMiOiAwLAogICAgICAicG9pbnRlciI6ICJub25lIiwKICAgICAgImhpZGRlbiI6ICJ0cnVlIiwKICAgICAgImltYWdlcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDYwMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiA0MDAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDgzLjU2MjUsCiAgICAgICAgICAiY29sb3IiOiAid2hpdGUiCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDExNDAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogODQwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiAyMTQuMjgxMjUsCiAgICAgICAgICAiY29sb3IiOiAib3JhbmdlIgogICAgICAgIH0KICAgICAgXSwKICAgICAgImdyYWRpZW50cyI6ICJub25lIiwKICAgICAgIm92ZXJsYXlPdmVyZmxvdyI6ICJ2aXNpYmxlIgogICAgfSwKICAgIHsKICAgICAgImlkIjogInJlYWRlci1kaXNjdXNzaW9uIiwKICAgICAgImhlaWdodCI6IDYzMi44NzUsCiAgICAgICJib3R0b21EZWx0YSI6IDAsCiAgICAgICJhcnRpZmljaWFsSm9pbnMiOiAwLAogICAgICAicG9pbnRlciI6ICJub25lIiwKICAgICAgImhpZGRlbiI6ICJ0cnVlIiwKICAgICAgImltYWdlcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDYwMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiA1NC4yODEyNSwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogNDcwLjUxNTYyNSwKICAgICAgICAgICJjb2xvciI6ICJ2aW9sZXQiCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDExNDAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogODQwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiAyMTQuMjgxMjUsCiAgICAgICAgICAiY29sb3IiOiAib3JhbmdlIgogICAgICAgIH0KICAgICAgXSwKICAgICAgImdyYWRpZW50cyI6ICJub25lIiwKICAgICAgIm92ZXJsYXlPdmVyZmxvdyI6ICJ2aXNpYmxlIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImpvdXJuYWwiLAogICAgICAiaGVpZ2h0IjogMzM0Mi4yMzQzNzUsCiAgICAgICJib3R0b21EZWx0YSI6IDAsCiAgICAgICJhcnRpZmljaWFsSm9pbnMiOiAwLAogICAgICAicG9pbnRlciI6ICJub25lIiwKICAgICAgImhpZGRlbiI6ICJ0cnVlIiwKICAgICAgImltYWdlcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDYwMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiA0NTAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDc4LjU2MjUsCiAgICAgICAgICAiY29sb3IiOiAid2hpdGUiCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDExNDAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogODQwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiAyMTQuMjgxMjUsCiAgICAgICAgICAiY29sb3IiOiAib3JhbmdlIgogICAgICAgIH0KICAgICAgXSwKICAgICAgImdyYWRpZW50cyI6ICJub25lIiwKICAgICAgIm92ZXJsYXlPdmVyZmxvdyI6ICJ2aXNpYmxlIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImF1dGhvcnMiLAogICAgICAiaGVpZ2h0IjogNzY2LjA5Mzc1LAogICAgICAiYm90dG9tRGVsdGEiOiAwLAogICAgICAiYXJ0aWZpY2lhbEpvaW5zIjogMCwKICAgICAgInBvaW50ZXIiOiAibm9uZSIsCiAgICAgICJoaWRkZW4iOiAidHJ1ZSIsCiAgICAgICJpbWFnZXMiOiBbCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiA2MDAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogNTQuMjgxMjUsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDUzMC40Njg3NSwKICAgICAgICAgICJjb2xvciI6ICJ2aW9sZXQiCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDExNDAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogODYwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiAxMDQsCiAgICAgICAgICAiY29sb3IiOiAib3JhbmdlIgogICAgICAgIH0KICAgICAgXSwKICAgICAgImdyYWRpZW50cyI6ICJub25lIiwKICAgICAgIm92ZXJsYXlPdmVyZmxvdyI6ICJ2aXNpYmxlIgogICAgfSwKICAgIHsKICAgICAgImlkIjogInNlY3Rpb25zIiwKICAgICAgImhlaWdodCI6IDEzODQuNDIxODc1LAogICAgICAiYm90dG9tRGVsdGEiOiAwLAogICAgICAiYXJ0aWZpY2lhbEpvaW5zIjogMCwKICAgICAgInBvaW50ZXIiOiAibm9uZSIsCiAgICAgICJoaWRkZW4iOiAidHJ1ZSIsCiAgICAgICJpbWFnZXMiOiBbCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiA2MDAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogNDgwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA4OC41NjI1LAogICAgICAgICAgImNvbG9yIjogIndoaXRlIgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiAxMTQwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDgyMCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogMjE0LjI4MTI1LAogICAgICAgICAgImNvbG9yIjogIm9yYW5nZSIKICAgICAgICB9CiAgICAgIF0sCiAgICAgICJncmFkaWVudHMiOiAibm9uZSIsCiAgICAgICJvdmVybGF5T3ZlcmZsb3ciOiAidmlzaWJsZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJjYWxlbmRhciIsCiAgICAgICJoZWlnaHQiOiAyMzc4LjE3MTg3NSwKICAgICAgImJvdHRvbURlbHRhIjogMCwKICAgICAgImFydGlmaWNpYWxKb2lucyI6IDAsCiAgICAgICJwb2ludGVyIjogIm5vbmUiLAogICAgICAiaGlkZGVuIjogInRydWUiLAogICAgICAiaW1hZ2VzIjogWwogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogNjAwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDU0LjI4MTI1LAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA2MDAsCiAgICAgICAgICAiY29sb3IiOiAidmlvbGV0IgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiAxMTQwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDg0MCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogMjE0LjI4MTI1LAogICAgICAgICAgImNvbG9yIjogIm9yYW5nZSIKICAgICAgICB9CiAgICAgIF0sCiAgICAgICJncmFkaWVudHMiOiAibm9uZSIsCiAgICAgICJvdmVybGF5T3ZlcmZsb3ciOiAidmlzaWJsZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJlZGl0b3JpYWwtcG9saWN5IiwKICAgICAgImhlaWdodCI6IDY1Ny45MDYyNSwKICAgICAgImJvdHRvbURlbHRhIjogMCwKICAgICAgImFydGlmaWNpYWxKb2lucyI6IDAsCiAgICAgICJwb2ludGVyIjogIm5vbmUiLAogICAgICAiaGlkZGVuIjogInRydWUiLAogICAgICAiaW1hZ2VzIjogWwogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogNjAwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDQwMCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogOTMuNTYyNSwKICAgICAgICAgICJjb2xvciI6ICJ3aGl0ZSIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogMTE0MCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiA4NDAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDIxNC4yODEyNSwKICAgICAgICAgICJjb2xvciI6ICJvcmFuZ2UiCiAgICAgICAgfQogICAgICBdLAogICAgICAiZ3JhZGllbnRzIjogIm5vbmUiLAogICAgICAib3ZlcmxheU92ZXJmbG93IjogInZpc2libGUiCiAgICB9CiAgXSwKICAiaGVpZ2h0Q2hhbmdlIjogWwogICAgMzM0Mi4yMzQzNzUsCiAgICA4MTkuOTA2MjUKICBdCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "398feaa804a845a82b80-b7e2bc9ed5ea1aa06b46",
+          "file": "ui-polish-backgrounds.spec.mjs",
+          "line": 20,
+          "column": 50
+        },
+        {
+          "title": "V4 decoration failure and changed neighbours preserve content and navigation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4340,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:35:24.605Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "398feaa804a845a82b80-9b568c5042c86bf0428c",
+          "file": "ui-polish-backgrounds.spec.mjs",
+          "line": 91,
+          "column": 1
+        },
+        {
+          "title": "V4 artwork remains outside controls and follows real section bounds at 1440",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Widths are explicit in this composition test.",
+                  "location": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\ui-polish-backgrounds.spec.mjs",
+                    "line": 21,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "skipped",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "skipped",
+                  "duration": 362,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:39:48.398Z",
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Widths are explicit in this composition test.",
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\ui-polish-backgrounds.spec.mjs",
+                        "line": 21,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "398feaa804a845a82b80-af19e7f3494cccf36ee2",
+          "file": "ui-polish-backgrounds.spec.mjs",
+          "line": 20,
+          "column": 50
+        },
+        {
+          "title": "V4 artwork remains outside controls and follows real section bounds at 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Widths are explicit in this composition test.",
+                  "location": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\ui-polish-backgrounds.spec.mjs",
+                    "line": 21,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "skipped",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "skipped",
+                  "duration": 353,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:39:48.774Z",
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Widths are explicit in this composition test.",
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\ui-polish-backgrounds.spec.mjs",
+                        "line": 21,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "398feaa804a845a82b80-948f20ab68bb55ca78f6",
+          "file": "ui-polish-backgrounds.spec.mjs",
+          "line": 20,
+          "column": 50
+        },
+        {
+          "title": "V4 artwork remains outside controls and follows real section bounds at 320",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Widths are explicit in this composition test.",
+                  "location": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\ui-polish-backgrounds.spec.mjs",
+                    "line": 21,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "skipped",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "skipped",
+                  "duration": 322,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:39:49.142Z",
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Widths are explicit in this composition test.",
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\ui-polish-backgrounds.spec.mjs",
+                        "line": 21,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "398feaa804a845a82b80-95ecf75ac4e1284aaf57",
+          "file": "ui-polish-backgrounds.spec.mjs",
+          "line": 20,
+          "column": 50
+        },
+        {
+          "title": "V4 artwork remains outside controls and follows real section bounds at 768",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Widths are explicit in this composition test.",
+                  "location": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\ui-polish-backgrounds.spec.mjs",
+                    "line": 21,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "skipped",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "skipped",
+                  "duration": 302,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:39:49.478Z",
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Widths are explicit in this composition test.",
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\ui-polish-backgrounds.spec.mjs",
+                        "line": 21,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "398feaa804a845a82b80-8c8d356e78b8e6f4d178",
+          "file": "ui-polish-backgrounds.spec.mjs",
+          "line": 20,
+          "column": 50
+        },
+        {
+          "title": "V4 artwork remains outside controls and follows real section bounds at 1920",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Widths are explicit in this composition test.",
+                  "location": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\ui-polish-backgrounds.spec.mjs",
+                    "line": 21,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "skipped",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "skipped",
+                  "duration": 301,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:39:49.793Z",
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Widths are explicit in this composition test.",
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\ui-polish-backgrounds.spec.mjs",
+                        "line": 21,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "398feaa804a845a82b80-306805869319f9ca74d9",
+          "file": "ui-polish-backgrounds.spec.mjs",
+          "line": 20,
+          "column": 50
+        },
+        {
+          "title": "V4 decoration failure and changed neighbours preserve content and navigation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [
+                {
+                  "type": "skip",
+                  "location": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\ui-polish-backgrounds.spec.mjs",
+                    "line": 92,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "skipped",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "skipped",
+                  "duration": 286,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:39:50.107Z",
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\ui-polish-backgrounds.spec.mjs",
+                        "line": 92,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "398feaa804a845a82b80-f4f6913adc75cedd7810",
+          "file": "ui-polish-backgrounds.spec.mjs",
+          "line": 91,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "ui-polish-controls.spec.mjs",
+      "file": "ui-polish-controls.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "F13 WebGL creation failure preserves country search and article reading",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5722,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:35:28.976Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e224795f3abf86c2b7e-dfab2afd5074e0c01482",
+          "file": "ui-polish-controls.spec.mjs",
+          "line": 15,
+          "column": 1
+        },
+        {
+          "title": "R05 panels, zoom, resize and immersive return at 1440px",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9347,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:35:34.715Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e224795f3abf86c2b7e-3d8ba07880fa3b34a81c",
+          "file": "ui-polish-controls.spec.mjs",
+          "line": 48,
+          "column": 3
+        },
+        {
+          "title": "R04 archive, shelf search, random selection and centered navigation at 1440px",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9734,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:35:44.091Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e224795f3abf86c2b7e-802d3080b6296dcb50b8",
+          "file": "ui-polish-controls.spec.mjs",
+          "line": 184,
+          "column": 3
+        },
+        {
+          "title": "R05 panels, zoom, resize and immersive return at 390px",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6628,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:35:53.841Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e224795f3abf86c2b7e-b3c5305bb89d24c71d40",
+          "file": "ui-polish-controls.spec.mjs",
+          "line": 48,
+          "column": 3
+        },
+        {
+          "title": "R04 archive, shelf search, random selection and centered navigation at 390px",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8142,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:36:00.486Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e224795f3abf86c2b7e-e7d988d7afd130d179a6",
+          "file": "ui-polish-controls.spec.mjs",
+          "line": 184,
+          "column": 3
+        },
+        {
+          "title": "F13 WebGL creation failure preserves country search and article reading",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5819,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:39:50.419Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e224795f3abf86c2b7e-d033229b7c9799bf9c52",
+          "file": "ui-polish-controls.spec.mjs",
+          "line": 15,
+          "column": 1
+        },
+        {
+          "title": "R05 panels, zoom, resize and immersive return at 1440px",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11841,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:39:56.251Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e224795f3abf86c2b7e-42e451ff071afff682e9",
+          "file": "ui-polish-controls.spec.mjs",
+          "line": 48,
+          "column": 3
+        },
+        {
+          "title": "R04 archive, shelf search, random selection and centered navigation at 1440px",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9534,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:40:08.110Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e224795f3abf86c2b7e-a5cb735ec496a0c2462d",
+          "file": "ui-polish-controls.spec.mjs",
+          "line": 184,
+          "column": 3
+        },
+        {
+          "title": "R05 panels, zoom, resize and immersive return at 390px",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8236,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:40:17.665Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e224795f3abf86c2b7e-55c542b6a4c59e15153a",
+          "file": "ui-polish-controls.spec.mjs",
+          "line": 48,
+          "column": 3
+        },
+        {
+          "title": "R04 archive, shelf search, random selection and centered navigation at 390px",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10002,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:40:25.917Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e224795f3abf86c2b7e-9732c84f7b663ca62525",
+          "file": "ui-polish-controls.spec.mjs",
+          "line": 184,
+          "column": 3
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-08T05:31:04.884Z",
+    "duration": 572200.405,
+    "expected": 65,
+    "skipped": 8,
+    "unexpected": 5,
+    "flaky": 0
+  }
+}

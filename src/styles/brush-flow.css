@@ -1,0 +1,177 @@
+@layer site-defaults {
+  /* Owner revision: three times the previous widths, with two contrasting colors.
+     The same high-resolution alpha keeps the edges crisp when tinted by CSS. */
+  .brush-surface {
+    position: relative;
+    isolation: isolate;
+    overflow: visible;
+    --brush-base: var(--violet-850);
+  }
+  /* The legacy important background-image reads this token; custom images remain. */
+  .brush-surface:not(.has-cms-background) { --cms-core-tint: none !important; }
+  #reader-discussion.brush-surface,
+  #books.brush-surface,
+  #authors.brush-surface,
+  #calendar.brush-surface { --brush-base: #fff; }
+  #book-day.brush-surface,
+  #atlas.brush-surface,
+  #books.brush-surface,
+  #featured-journal.brush-surface,
+  #reader-discussion.brush-surface,
+  #journal.brush-surface,
+  #authors.brush-surface,
+  #sections.brush-surface,
+  #calendar.brush-surface,
+  #editorial-policy.brush-surface {
+    background: var(--brush-base);
+    box-shadow: none;
+    overflow: visible;
+    border-block: 0;
+  }
+  #atlas.brush-surface:not([data-atlas-immersive="true"]) { overflow: visible; }
+  .brush-surface::before,
+  .brush-surface::after,
+  #atlas.brush-surface::before,
+  #atlas.brush-surface::after { display: none; }
+  .brush-backdrop {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    user-select: none;
+    overflow: clip;
+  }
+  .brush-backdrop__accent {
+    position: absolute;
+    display: block;
+    block-size: auto;
+    max-inline-size: none;
+  }
+  .brush-backdrop__accent--secondary {
+    inline-size: 600px;
+    inset-block-start: -120px;
+    inset-inline-start: -150px;
+    transform: scaleX(-1);
+    opacity: .85;
+  }
+  .brush-backdrop__accent--white { filter: brightness(0) invert(1); }
+  .brush-backdrop__accent--violet { filter: brightness(0) saturate(100%) invert(14%) sepia(66%) saturate(2593%) hue-rotate(261deg) brightness(91%) contrast(110%); }
+  .brush-backdrop__accent--orange {
+    inline-size: clamp(840px, 81vw, 1140px);
+    inset-block-end: -220px;
+    inset-inline-end: -300px;
+  }
+  :where(#atlas) .brush-backdrop__accent--orange {
+    inset-block-start: calc(149px - clamp(840px, 81vw, 1140px) * .38095238);
+    inset-block-end: auto;
+  }
+  :where(#atlas) .brush-backdrop__accent--secondary {
+    inset-block-start: 54%;
+    inset-block-end: auto;
+    inset-inline-start: auto;
+    inset-inline-end: -360px;
+    rotate: 90deg;
+  }
+  :where(#book-day) .brush-backdrop__accent--secondary { inset-block-start: -135px; inset-inline-start: -130px; }
+  :where(#books, #reader-discussion) .brush-backdrop__accent--secondary { inset-block-start: 55%; inset-inline-start: -360px; rotate: 90deg; }
+  :where(#books) .brush-backdrop__accent--orange { inset-inline-end: -390px; inset-block-end: -170px; }
+  :where(#featured-journal) .brush-backdrop__accent--secondary { inset-inline-start: -200px; inset-block-start: -145px; }
+  :where(#journal) .brush-backdrop__accent--secondary { inset-block-start: -150px; inset-inline-start: -150px; }
+  :where(#authors, #calendar) .brush-backdrop__accent--secondary { inset-block-start: 55%; inset-inline-start: auto; inset-inline-end: -360px; rotate: 90deg; }
+  :where(#authors) .brush-backdrop__accent--orange { inset-block-start: calc(104px - clamp(840px, 81vw, 1140px) * .38095238); inset-block-end: auto; inset-inline-start: -280px; inset-inline-end: auto; transform: scaleX(-1); }
+  :where(#sections) .brush-backdrop__accent--secondary { inset-inline-start: auto; inset-inline-end: -120px; inset-block-start: -140px; transform: none; }
+  :where(#sections) .brush-backdrop__accent--orange { inset-inline-start: -320px; inset-inline-end: auto; transform: scaleX(-1); }
+  :where(#editorial-policy) .brush-backdrop__accent--secondary { inset-inline-start: -200px; inset-block-start: -135px; }
+  #atlas.brush-surface .atlas-heading { background: none; box-shadow: none; }
+  #atlas.brush-surface .atlas-heading :is(h1, h2, p, .section-kicker) { background: var(--brush-base); }
+  #book-day.brush-surface { padding-block: var(--home-section-space); }
+  .brush-surface > .section-heading,
+  #books.brush-surface > .book-archive-heading,
+  #journal.brush-surface > .article-library-heading,
+  #journal.brush-surface > .article-library-summary {
+    background-color: var(--brush-base);
+    box-shadow: none;
+  }
+  #journal.brush-surface .article-library-heading input {
+    color: #fff;
+    background: var(--violet-850);
+    border-color: var(--ink);
+  }
+  #journal.brush-surface .article-library-heading input::placeholder { color: var(--type-muted-dark); }
+  #featured-journal.brush-surface .editorial-grid article,
+  #sections.brush-surface .section-directory-card,
+  #journal.brush-surface .article-library-grid article {
+    background-color: color-mix(in srgb, var(--violet-950) 96%, transparent);
+  }
+  #journal.brush-surface > :is(.article-library-heading, .article-library-summary),
+  #editorial-policy.brush-surface > .section-heading { color: #fff; }
+  #journal.brush-surface .article-library-heading :is(p, label span, .section-kicker),
+  #journal.brush-surface .article-library-summary :is(p, strong),
+  #editorial-policy.brush-surface .section-heading :is(p, .section-kicker) { color: #fff; }
+  #journal.brush-surface .section-kicker,
+  #editorial-policy.brush-surface .section-kicker { color: var(--orange); }
+  #journal.brush-surface :is(.article-library-tabs, .article-library-more, .article-library-empty) {
+    color: #fff;
+    background: var(--violet-850);
+    border-radius: 5px;
+  }
+  #journal.brush-surface .article-library-tabs { padding: 12px; }
+  #editorial-policy.brush-surface details {
+    color: var(--ink);
+    background: #fff;
+    border-color: color-mix(in srgb, var(--ink) 24%, transparent);
+  }
+  #authors .author-showcase article > a {
+    color: var(--ink);
+    background: #fff;
+    padding: 5px 8px;
+    border-radius: 2px;
+    inline-size: fit-content;
+  }
+  /* Retire the old synthetic seam fragments beside the pigment composition. */
+  #community::before,
+  .site-footer::before { display: none; }
+  #reader-discussion {
+    padding: var(--home-section-space) max(clamp(18px, 4vw, 68px), calc((100vw - 1530px) / 2));
+    color: var(--ink);
+  }
+  #reader-discussion .journal-engagement {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+    margin: 0 auto;
+    padding: 0;
+    border: 0;
+    background: none;
+  }
+  #reader-discussion .journal-engagement > div:first-child {
+    padding: clamp(22px, 3vw, 40px);
+    background: #fff;
+    border: 1px solid color-mix(in srgb, var(--ink) 20%, transparent);
+    border-radius: 5px;
+  }
+  #reader-discussion .journal-engagement > div:first-child > p { color: var(--ink); }
+  #reader-discussion .engagement-card {
+    margin-block-start: 28px;
+    color: var(--ink);
+    background: var(--cream);
+    border-color: color-mix(in srgb, var(--ink) 24%, transparent);
+  }
+  #reader-discussion .engagement-card :is(p, small, .engagement-heading > span) { color: var(--type-muted-light); }
+  #reader-discussion .rating-summary button { color: var(--type-muted-light); }
+  #reader-discussion .rating-summary button:is(.is-active, :hover) { color: var(--orange-deep); }
+  #reader-discussion .editorial-standard { min-inline-size: 0; margin: 0; }
+  @media (max-width: 680px) {
+    #reader-discussion .journal-engagement { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+    .brush-backdrop__accent--secondary { inline-size: 330px; }
+    .brush-backdrop__accent--orange { inline-size: 510px; }
+    .brush-surface .brush-backdrop__accent--secondary { inset-block-start: -76px; inset-block-end: auto; inset-inline-start: -90px; inset-inline-end: auto; }
+    .brush-surface .brush-backdrop__accent--orange { inset-block-start: auto; inset-block-end: -105px; inset-inline-start: auto; inset-inline-end: -160px; }
+    :where(#atlas).brush-surface .brush-backdrop__accent--orange { inset-block-start: -136px; inset-block-end: auto; }
+    :where(#atlas, #authors, #calendar).brush-surface .brush-backdrop__accent--secondary { inset-block-start: 55%; inset-inline-start: auto; inset-inline-end: -210px; }
+    :where(#books, #reader-discussion).brush-surface .brush-backdrop__accent--secondary { inset-block-start: 55%; inset-inline-start: -210px; }
+    :where(#sections).brush-surface .brush-backdrop__accent--secondary { inset-inline-start: auto; inset-inline-end: -80px; }
+    :where(#sections).brush-surface .brush-backdrop__accent--orange { inset-inline-start: -165px; inset-inline-end: auto; }
+    :where(#authors).brush-surface .brush-backdrop__accent--orange { inset-block-start: -136px; inset-block-end: auto; inset-inline-start: -160px; inset-inline-end: auto; }
+  }
+  @media print { .brush-backdrop { display: none; } }
+}

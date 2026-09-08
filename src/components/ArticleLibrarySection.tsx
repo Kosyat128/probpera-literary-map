@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import { publicImageAttributes } from "../utils/imageDelivery";
+import BrushBackdrop from "./BrushBackdrop";
 
 import {
   articleCatalog,
@@ -28,6 +29,8 @@ import {
 } from "../utils/articleSeries";
 import { cmsEntityMarker } from "../cms/directEditBridge";
 import BrandSearchIcon from "./BrandSearchIcon";
+import { useDisplayMode } from "../hooks/useDisplayMode";
+import { rememberReaderTrigger } from "../editorial/readerFocus";
 
 const ArticleReader = lazy(() => import("./ArticleReader"));
 
@@ -216,6 +219,7 @@ export default function ArticleLibrarySection({
   readerOnly = false,
 }: ArticleLibrarySectionProps) {
   const { language, t, number } = useInterfaceLanguage();
+  const { setMode } = useDisplayMode();
   const localizedArticleCatalog = useMemo(
     () =>
       articleCatalog.flatMap((article) => {
@@ -413,10 +417,11 @@ export default function ArticleLibrarySection({
   return (
     <>
       <section
-        className="article-library"
+        className="article-library brush-surface"
         id="journal"
         data-typography-component="journal"
       >
+        <BrushBackdrop source="read" />
         <header className="article-library-heading">
           <div>
             <span className="section-kicker">
@@ -539,6 +544,8 @@ export default function ArticleLibrarySection({
                   onClick={(event) => {
                     if (!shouldUseClientNavigation(event)) return;
                     event.preventDefault();
+                    rememberReaderTrigger(event.currentTarget);
+                    setMode("book");
                     openArticle(article);
                   }}
                 >

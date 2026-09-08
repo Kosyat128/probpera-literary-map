@@ -1,0 +1,31 @@
+{
+  "started": "2026-09-08T05:44:18.808Z",
+  "finished": "2026-09-08T05:45:38.539Z",
+  "exitCode": 1,
+  "signal": null,
+  "sourceSha256": "9d483cf13525dbfe5d320e07eaf251692913d62bea7de214ba451aac0e560280",
+  "sourceSha256After": "9d483cf13525dbfe5d320e07eaf251692913d62bea7de214ba451aac0e560280",
+  "baseResultSha256": "0135c5788195a2a015c7043e4900d30a87528cd0b8a4a8d990a197f0fccb835a",
+  "baseStatusSha256": "885bbcad5777db9542e8b22f26b0df1b2f3c9f0107dcf3b6990f776729af27e5",
+  "baseResultFile": "owner-final-e2e-result.json",
+  "baseStatusFile": "owner-final-e2e-status.json",
+  "baseEvidenceUnchanged": true,
+  "log": "owner-final-e2e-addendum.log",
+  "selectors": [
+    "tests/e2e/literary-planet-immersion.spec.mjs",
+    "tests/e2e/premium-globe-exploration.spec.mjs",
+    "--grep",
+    "embedded atlas enters one-canvas immersion and Escape restores scroll and focus|keyboard candidate selects the optical-centre country without replacing Canvas|atlas controls wrap without overlap and rich count matches the collection"
+  ],
+  "args": [
+    "node_modules/playwright/cli.js",
+    "test",
+    "tests/e2e/literary-planet-immersion.spec.mjs",
+    "tests/e2e/premium-globe-exploration.spec.mjs",
+    "--grep",
+    "embedded atlas enters one-canvas immersion and Escape restores scroll and focus|keyboard candidate selects the optical-centre country without replacing Canvas|atlas controls wrap without overlap and rich count matches the collection",
+    "--workers=1",
+    "--output=reports/ui-polish-v4/owner-final-e2e-addendum-artifacts",
+    "--reporter=list,json"
+  ]
+}

@@ -118,13 +118,20 @@ test("embedded atlas enters one-canvas immersion and Escape restores scroll and 
 
   const atlas = await openEmbeddedAtlas(page);
   await markCanvas(atlas.canvas);
-  const scrollBefore = await page.evaluate(() => window.scrollY);
-  const historyBefore = await page.evaluate(() => window.history.length);
-
   const launch = atlas.experience.locator(
     '[data-atlas-action="enter-immersive"]'
   );
-  await launch.focus();
+  await launch.evaluate(element => {
+    const bounds = element.getBoundingClientRect();
+    window.scrollTo({
+      top: window.scrollY + bounds.top - window.innerHeight / 2 + bounds.height / 2,
+      behavior: "instant",
+    });
+    element.focus({ preventScroll: true });
+  });
+  await expect(launch).toBeInViewport({ ratio: 1 });
+  const scrollBefore = await page.evaluate(() => window.scrollY);
+  const historyBefore = await page.evaluate(() => window.history.length);
   await launch.click();
 
   await expect(atlas.experience).toHaveAttribute(
@@ -508,6 +515,7 @@ test("premium globe controls stay balanced and inside every viewport", async ({
           element.querySelectorAll(".interface-language-control button")
         ).map(rect),
         close: select(".atlas-immersive-close"),
+        editionControls: select(".globe-edition-controls"),
         styleSwitch: select(".globe-style-switch"),
         controls: select(".globe-controls"),
         navigationLabel: select(".globe-navigation-label"),
@@ -533,7 +541,7 @@ test("premium globe controls stay balanced and inside every viewport", async ({
       };
     });
 
-    for (const group of [geometry.chrome, geometry.styleSwitch, geometry.controls]) {
+    for (const group of [geometry.chrome, geometry.editionControls, geometry.styleSwitch, geometry.controls]) {
       expect(group.x).toBeGreaterThanOrEqual(0);
       expect(group.right).toBeLessThanOrEqual(viewport.width);
     }
@@ -552,7 +560,8 @@ test("premium globe controls stay balanced and inside every viewport", async ({
           Math.min(geometry.search.width, geometry.filters.width, geometry.random.width)
       ).toBeLessThanOrEqual(1);
     } else {
-      expect(geometry.search.width).toBeLessThan(geometry.filters.width);
+      expect(Math.abs(geometry.search.width - geometry.filters.width)).toBeLessThanOrEqual(1);
+      expect(geometry.filters.width).toBeGreaterThanOrEqual(44);
       expect(geometry.filters.width).toBeLessThan(geometry.random.width);
     }
     for (const control of [
@@ -568,19 +577,22 @@ test("premium globe controls stay balanced and inside every viewport", async ({
       expect(control.right).toBeLessThanOrEqual(viewport.width);
     }
     expect(geometry.chrome.bottom).toBeLessThanOrEqual(geometry.styleSwitch.y);
+    expect(geometry.styleSwitch.x).toBeGreaterThanOrEqual(geometry.editionControls.x + 44);
+    expect(geometry.styleSwitch.right).toBeLessThanOrEqual(geometry.editionControls.right - 44);
     expect(
       Math.max(...geometry.controlButtons.map((button) => button.y)) -
         Math.min(...geometry.controlButtons.map((button) => button.y))
     ).toBeLessThanOrEqual(1);
     if (viewport.width <= 680) {
-      for (const dock of [geometry.styleSwitch, geometry.controls]) {
-        expect(Math.abs(dock.x - geometry.chrome.x)).toBeLessThanOrEqual(1);
-        expect(Math.abs(dock.right - geometry.chrome.right)).toBeLessThanOrEqual(1);
+      for (const dock of [geometry.editionControls, geometry.controls]) {
+        expect(dock.x).toBeGreaterThanOrEqual(geometry.chrome.x);
+        expect(dock.right).toBeLessThanOrEqual(geometry.chrome.right);
+        expect(Math.abs(dock.x + dock.width / 2 - viewport.width / 2)).toBeLessThanOrEqual(1);
       }
       const controlsInstructionGap =
         geometry.navigationLabel.y - geometry.controls.bottom;
-      expect(controlsInstructionGap).toBeGreaterThanOrEqual(0);
-      expect(controlsInstructionGap).toBeLessThanOrEqual(20);
+      expect(controlsInstructionGap).toBeGreaterThanOrEqual(8);
+      expect(controlsInstructionGap).toBeLessThanOrEqual(40);
     } else {
       expect(geometry.coordinate).not.toBeNull();
       expect(
@@ -588,10 +600,15 @@ test("premium globe controls stay balanced and inside every viewport", async ({
           geometry.controls.x + geometry.controls.width / 2 - viewport.width / 2
         )
       ).toBeLessThanOrEqual(1);
-      expect(geometry.coordinate.x).toBeLessThan(geometry.controls.x);
-      const controlsCoordinateGap = geometry.coordinate.y - geometry.controls.bottom;
-      expect(controlsCoordinateGap).toBeGreaterThanOrEqual(4);
-      expect(controlsCoordinateGap).toBeLessThanOrEqual(20);
+      expect(
+        geometry.coordinate.right <= geometry.controls.x - 8 ||
+        geometry.coordinate.y >= geometry.controls.bottom + 8
+      ).toBe(true);
+      expect(geometry.coordinate.bottom).toBeLessThanOrEqual(viewport.height - 8);
+      expect(geometry.navigationLabel.x).toBeGreaterThanOrEqual(geometry.controls.right + 8);
+      for (const caption of [geometry.coordinate, geometry.navigationLabel]) {
+        expect(Math.abs(caption.y + caption.height / 2 - geometry.controls.y - geometry.controls.height / 2)).toBeLessThanOrEqual(2);
+      }
     }
     expect(
       Math.abs(geometry.controlButtons[0].width - geometry.controlButtons[1].width)

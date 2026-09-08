@@ -1,0 +1,22 @@
+{
+  "started": "2026-09-08T08:09:33.966Z",
+  "finished": "2026-09-08T08:12:54.794Z",
+  "exitCode": 1,
+  "sourceSha256": "0af2d67668451c7e0234a18d2584430975ce7b031dd18423b79237e80aca8803",
+  "sourceSha256After": "0af2d67668451c7e0234a18d2584430975ce7b031dd18423b79237e80aca8803",
+  "args": [
+    "node_modules/playwright/cli.js",
+    "test",
+    "tests/e2e/article-book-pagination.spec.mjs",
+    "tests/e2e/reader-extended-accessibility.spec.mjs",
+    "tests/e2e/article-book-reading.spec.mjs",
+    "tests/e2e/article-book-zoom.spec.mjs",
+    "tests/e2e/ui-polish-controls.spec.mjs",
+    "tests/e2e/ui-polish-backgrounds.spec.mjs",
+    "--grep",
+    "canonical book keeps the source fragment|illustrated book preserves every page|a delayed illustration|print media exposes the full source",
+    "--workers=1",
+    "--output=reports/ui-polish-v4/main-integration/final/browser-artifacts",
+    "--reporter=list,json"
+  ]
+}

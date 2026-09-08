@@ -6,6 +6,7 @@ import {
   updateBookInspectionDrag, type BookInspectionPageDirection, type BookInspectionSession,
 } from "../books/bookInspectionSession";
 import { compileArticleBookDocument } from "../articles/articleBookTextures";
+import { articleBookPageAnchor, readArticleBookAnchor, resolveArticleBookAnchor, writeArticleBookAnchor } from "../articles/articleBookPosition";
 import { publicImageAttributes, publicImageUrl } from "../utils/imageDelivery";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import "../styles/article-book-reader.css";
@@ -20,8 +21,9 @@ export type ArticleBookReaderProps = {
   locale: "ru" | "en";
   fontScale?: number;
   initialProgress?: number;
-  restoreRequest?: Readonly<{ id: number; articleId: string; progress: number }>;
-  onProgress?: (percentage: number) => void;
+  initialPositionHint?: string;
+  restoreRequest?: Readonly<{ id: number; articleId: string; progress: number; positionHint?: string }>;
+  onProgress?: (percentage: number, positionHint?: string) => void;
   onFallback?: () => void;
   onOpenImage?: (src: string, alt: string) => void;
 };
@@ -50,6 +52,8 @@ export default function ArticleBookReader(props: ArticleBookReaderProps) {
   const [reducedMotion, setReducedMotion] = useState(() => typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
   const sequence = useRef(0);
   const position = useRef(Math.min(100, Math.max(0, props.initialProgress || 0)));
+  const sourceAnchor = useRef(readArticleBookAnchor(props.initialPositionHint, locale));
+  const [positionHint, setPositionHint] = useState(props.initialPositionHint);
   const identity = useRef(`${articleId}:${locale}`);
   // Requests already present at mount are reflected in initialProgress. Only
   // later external restorations may move an existing physical-page session.
@@ -100,6 +104,7 @@ export default function ArticleBookReader(props: ArticleBookReaderProps) {
     if (identity.current !== nextIdentity) {
       identity.current = nextIdentity;
       position.current = Math.min(100, Math.max(0, props.initialProgress || 0));
+      sourceAnchor.current = readArticleBookAnchor(props.initialPositionHint, locale);
       setFailed(false);
       setViewScaleIndex(0);
     }
@@ -111,8 +116,9 @@ export default function ArticleBookReader(props: ArticleBookReaderProps) {
       owned = result;
       if (!result.document.pages.length) { setFailed(true); return; }
       setCompiled(result);
+      const anchoredPage = resolveArticleBookAnchor(result.pages, sourceAnchor.current);
       setSession(createBookInspectionSession({ bookKey: result.document.bookKey, pageCount: result.document.pages.length,
-        pageIndex: Math.round((result.document.pages.length - 1) * position.current / 100),
+        pageIndex: anchoredPage >= 0 ? anchoredPage : Math.round((result.document.pages.length - 1) * position.current / 100),
         pages: result.document.pages, requestId: ++sequence.current }));
     }).catch(() => { if (current) setFailed(true); });
     return () => { current = false; controller.abort(); owned?.dispose(); };
@@ -135,20 +141,27 @@ export default function ArticleBookReader(props: ArticleBookReaderProps) {
     const request = props.restoreRequest;
     if (!request || request.articleId !== articleId || restoredRequest.current === request.id) return;
     position.current = Math.min(100, Math.max(0, request.progress));
+    sourceAnchor.current = readArticleBookAnchor(request.positionHint, locale);
     if (!session || session.phase !== "idle") return;
     restoredRequest.current = request.id;
     if (failed) return;
-    const target = Math.round((session.pageCount - 1) * position.current / 100);
+    const anchoredPage = compiled ? resolveArticleBookAnchor(compiled.pages, sourceAnchor.current) : -1;
+    const target = anchoredPage >= 0 ? anchoredPage : Math.round((session.pageCount - 1) * position.current / 100);
     const requestId = ++sequence.current;
     setSession(value => value ? settleBookInspectionSession(requestBookInspectionPage(value, requestId, target), requestId) : value);
-  }, [articleId, props.restoreRequest, session?.phase, session?.pageCount, failed]);
+  }, [articleId, props.restoreRequest, session?.phase, session?.pageCount, failed, compiled, locale]);
 
   useEffect(() => {
-    if (!failed && session?.phase === "idle") {
+    if (!failed && compiled?.document.bookKey === `article:${articleId}` && compiled.document.locale === locale && session?.phase === "idle") {
       position.current = session.pageCount > 1 ? session.pageIndex / (session.pageCount - 1) * 100 : 100;
-      progressRef.current?.(position.current);
+      if (resolveArticleBookAnchor(compiled.pages, sourceAnchor.current) !== session.pageIndex) {
+        sourceAnchor.current = articleBookPageAnchor(compiled.pages, session.pageIndex);
+      }
+      const hint = writeArticleBookAnchor(sourceAnchor.current, locale);
+      setPositionHint(hint);
+      progressRef.current?.(position.current, hint);
     }
-  }, [failed, session?.pageIndex, session?.pageCount, session?.phase]);
+  }, [failed, compiled, articleId, locale, session?.pageIndex, session?.pageCount, session?.phase]);
 
   useEffect(() => {
     if (failed) props.onFallback?.();
@@ -159,8 +172,9 @@ export default function ArticleBookReader(props: ArticleBookReaderProps) {
   }, [failed, props.initialProgress]);
 
   const go = useCallback((pageIndex: number) => {
+    if (session && pageIndex === session.pageCount - 1) sourceAnchor.current = { blockId: "end", offset: 0 };
     setSession(value => value ? requestBookInspectionPage(value, ++sequence.current, pageIndex) : value);
-  }, []);
+  }, [session]);
   const keyboard = useCallback((key: string, shiftKey = false) => {
     if (failed || !session || session.phase !== "idle") return false;
     const target = getBookInspectionKeyboardTarget(session, key, shiftKey);
@@ -233,7 +247,7 @@ export default function ArticleBookReader(props: ArticleBookReaderProps) {
   };
 
   return <section className={`article-book-reader${failed ? " has-fallback" : ""}${zoomed ? " is-zoomed" : ""}`} lang={locale} style={{ "--reader-scale": fontScale, "--book-view-scale": viewScale } as CSSProperties} aria-label={t("Иллюстрированная книга")}
-    data-article-book-reader="" data-page-index={session?.pageIndex ?? 0} data-page-count={session?.pageCount ?? 0} data-renderer={failed ? "text" : "three"} data-book-ready={pageReady} data-book-view-scale={viewScale} tabIndex={0}
+    data-article-book-reader="" data-page-index={session?.pageIndex ?? 0} data-page-count={session?.pageCount ?? 0} data-renderer={failed ? "text" : "three"} data-book-ready={pageReady} data-book-view-scale={viewScale} data-reading-anchor={positionHint} tabIndex={0}
     onKeyDown={event => {
       if ((event.key === "Enter" || event.key === " ") && (event.target as Element).matches('img[role="button"]') && openImage(event.target)) { event.preventDefault(); return; }
       if ((event.target as Element).closest("button, input, select, textarea, a, summary")) return;

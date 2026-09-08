@@ -1,5 +1,7 @@
 import { expect, test } from "@playwright/test";
 
+const surfaceSelectors = ["#featured-journal", "#journal", "#community", "#authors", "#sections"];
+
 const roleSelectors = {
   section: [
     "#featured-journal .section-heading h2",
@@ -12,13 +14,13 @@ const roleSelectors = {
     "#book-day .book-of-day h3",
   ],
   compact: [
-    "#featured-journal .journal-engagement h3",
+    "#reader-discussion .journal-engagement h3",
     "#book-day .book-fact-card h3",
     "#editorial-policy summary",
   ],
   body: [
     "#book-day .book-of-day p",
-    "#book-day .editorial-standard > p",
+    "#reader-discussion .editorial-standard > p",
     "#community .community-copy > p",
     "#calendar .calendar-heading p",
   ],
@@ -51,10 +53,22 @@ async function openHomepage(page, { width, height, locale }) {
     await document.fonts.ready;
   });
   await expect(page.locator("#calendar")).toBeVisible();
+  // The approved brush artwork now loads as real images near each section.
+  // Enter its observer range before judging whether the decorated surface exists.
+  for (const selector of surfaceSelectors) {
+    const surface = page.locator(selector);
+    await surface.scrollIntoViewIfNeeded();
+    const decoration = surface.locator(":scope > .brush-backdrop");
+    if (await decoration.count()) {
+      await expect.poll(() => decoration.locator("img").evaluateAll(images =>
+        images.length > 0 && images.every(image => image.complete && image.naturalWidth > 0)
+      )).toBe(true);
+    }
+  }
 }
 
 async function collectRoleMetrics(page) {
-  return page.evaluate((selectorsByRole) => {
+  return page.evaluate(({ selectorsByRole, surfaces }) => {
     const metrics = {};
     for (const [role, selectors] of Object.entries(selectorsByRole)) {
       metrics[role] = selectors.map((selector) => {
@@ -88,13 +102,22 @@ async function collectRoleMetrics(page) {
       overflow:
         document.documentElement.scrollWidth -
         document.documentElement.clientWidth,
-      backgrounds: ["#featured-journal", "#journal", "#community", "#authors", "#sections"]
-        .map((selector) => ({
+      backgrounds: surfaces.map((selector) => {
+        const surface = document.querySelector(selector);
+        const decoration = surface.querySelector(":scope > .brush-backdrop");
+        return {
           selector,
-          backgroundImage: getComputedStyle(document.querySelector(selector)).backgroundImage,
-        })),
+          backgroundImage: getComputedStyle(surface).backgroundImage,
+          loadedArtwork: [...(decoration?.querySelectorAll("img") || [])].some(image => {
+            const style = getComputedStyle(image);
+            const box = image.getBoundingClientRect();
+            return image.complete && image.naturalWidth > 0 && box.width > 0 && box.height > 0 &&
+              style.display !== "none" && style.visibility !== "hidden" && Number(style.opacity) > 0;
+          }),
+        };
+      }),
     };
-  }, roleSelectors);
+  }, { selectorsByRole: roleSelectors, surfaces: surfaceSelectors });
 }
 
 function expectRole(metrics, role, minSize, maxSize, lineHeightRatio) {
@@ -128,7 +151,7 @@ test("Stage 5B desktop RU roles and surfaces retain the approved scale and 13px 
   expect(result.spacing.calendarBottom).toBeLessThanOrEqual(96.1);
   expect(result.overflow).toBeLessThanOrEqual(2);
   for (const surface of result.backgrounds) {
-    expect(surface.backgroundImage, surface.selector).not.toBe("none");
+    expect(surface.backgroundImage !== "none" || surface.loadedArtwork, `${surface.selector}: painted surface`).toBe(true);
   }
 });
 

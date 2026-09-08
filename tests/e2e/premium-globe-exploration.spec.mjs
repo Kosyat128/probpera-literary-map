@@ -5,7 +5,7 @@ import { expect, test } from "@playwright/test";
 test.use({ serviceWorkers: "block" });
 
 async function openAtlas(page) {
-  await page.goto("/");
+  await page.goto(process.env.UI_POLISH_BASE_URL || "/");
   const atlas = page.locator("#atlas");
   await atlas.scrollIntoViewIfNeeded();
   const globe = atlas.locator(".literary-globe:not(.is-loading)");
@@ -50,15 +50,19 @@ async function openAtlas(page) {
 }
 
 async function openAtlasInterface(page) {
-  await page.goto("/");
+  await page.goto(process.env.UI_POLISH_BASE_URL || "/");
   const atlas = page.locator("#atlas");
   await atlas.scrollIntoViewIfNeeded();
+  await atlas.locator('.atlas-embedded-discovery [data-atlas-action="toggle-filters"]').click();
   await expect(atlas.locator(".atlas-toolbar")).toBeVisible();
   return { atlas };
 }
 
 async function selectCountryFromAtlasSearch(page, query) {
   const search = page.locator("#country-search");
+  if (!(await search.isVisible())) {
+    await page.locator('[data-atlas-action="toggle-search"]:visible').click();
+  }
   await search.fill(query);
   const result = page.getByRole("option", { name: query, exact: true });
   await expect(result).toBeVisible();
@@ -221,6 +225,17 @@ test("keyboard candidate selects the optical-centre country without replacing Ca
   await canvas.evaluate((element) => {
     element.dataset.stage4CanvasIdentity = "stable";
   });
+  const canvasFitsStage = () => canvas.evaluate(element => {
+    const bounds = element.getBoundingClientRect();
+    const stage = element.closest('.world-map-stage');
+    const stageBounds = stage.getBoundingClientRect();
+    return bounds.width > 0 && bounds.height > 0 &&
+      Math.abs(bounds.x - stageBounds.x - stage.clientLeft) < 2 &&
+      Math.abs(bounds.y - stageBounds.y - stage.clientTop) < 2 &&
+      Math.abs(bounds.width - stage.clientWidth) < 2 &&
+      Math.abs(bounds.height - stage.clientHeight) < 2;
+  });
+  await expect.poll(canvasFitsStage).toBe(true);
   const before = await canvas.boundingBox();
 
   await globe.focus();
@@ -228,10 +243,22 @@ test("keyboard candidate selects the optical-centre country without replacing Ca
   await expect(globe.locator(".globe-keyboard-status")).toHaveText("");
   const auto = globe.locator('[data-globe-control="auto-rotate"]');
   if ((await auto.getAttribute("aria-pressed")) === "true") {
+    // Position the real pointer target using the page scroller. Playwright's
+    // retry alignment can otherwise horizontally scroll the clipped stage.
+    await auto.evaluate(element => {
+      const bounds = element.getBoundingClientRect();
+      window.scrollTo({
+        top: window.scrollY + bounds.top - window.innerHeight / 2 + bounds.height / 2,
+        behavior: "instant",
+      });
+      element.focus({ preventScroll: true });
+    });
+    await expect(auto).toBeInViewport({ ratio: 1 });
     await auto.click();
   }
   await expect(auto).toHaveAttribute("aria-pressed", "false");
   await expect(globe).toHaveAttribute("data-globe-frame-mode", "demand");
+  await expect.poll(canvasFitsStage).toBe(true);
 
   const coordinateReadout = page.locator(".atlas-coordinate strong");
   await expect(coordinateReadout).not.toHaveText("-");
@@ -281,9 +308,13 @@ test("keyboard candidate selects the optical-centre country without replacing Ca
   await expect(
     page.locator('canvas[data-stage4-canvas-identity="stable"]')
   ).toHaveCount(1);
+  await expect.poll(canvasFitsStage).toBe(true);
   const after = await canvas.boundingBox();
   expect(Math.abs((after?.width ?? 0) - (before?.width ?? 0))).toBeLessThan(2);
-  expect(Math.abs((after?.height ?? 0) - (before?.height ?? 0))).toBeLessThan(2);
+  // The selected mobile stage reserves additional space for its country sheet.
+  // The same Canvas must fill that actual stage, without losing its selection.
+  if (isMobile) expect(after.height).toBeGreaterThanOrEqual(before.height);
+  else expect(Math.abs(after.height - before.height)).toBeLessThan(2);
 });
 
 test("edition buttons commit only the texture that actually rendered", async ({
@@ -513,19 +544,28 @@ test("atlas controls wrap without overlap and rich count matches the collection"
   expect(ribbonMetrics.overflowX).toBe("visible");
   expect(ribbonMetrics.scrollHeight).toBeLessThanOrEqual(ribbonMetrics.clientHeight + 1);
   expect(ribbonMetrics.scrollWidth).toBeLessThanOrEqual(ribbonMetrics.clientWidth + 1);
-  const input = await atlas.locator(".country-search .search-field").boundingBox();
   const filterBounds = await filters.boundingBox();
-  expect(input).not.toBeNull();
   expect(filterBounds).not.toBeNull();
-  if (isMobile) {
-    expect(input.y).toBeGreaterThanOrEqual(filterBounds.y + filterBounds.height + 16);
-  } else {
-    expect(input.x).toBeGreaterThanOrEqual(filterBounds.x + filterBounds.width + 8);
-    expect(Math.abs(input.y + input.height / 2 - buttonBoxes[0].top - buttonBoxes[0].height / 2)).toBeLessThanOrEqual(1);
+  if (!isMobile) {
     expect(Math.max(...buttonBoxes.map(({ top }) => top)) - Math.min(...buttonBoxes.map(({ top }) => top))).toBeLessThanOrEqual(1);
     expect(buttonBoxes[5].left).toBeGreaterThan(buttonBoxes[4].right);
-    expect(input.width).toBeGreaterThanOrEqual(220);
   }
+  // R05 gives filters and search separate, mutually exclusive panels. Exercise
+  // their actual triggers instead of asserting the superseded simultaneous row.
+  await atlas.locator('.atlas-embedded-discovery [data-atlas-action="toggle-search"]').click();
+  await expect(atlas.locator(".atlas-toolbar")).toBeHidden();
+  const searchField = atlas.locator(".country-search .search-field");
+  await expect(searchField).toBeVisible();
+  const input = await searchField.boundingBox();
+  const atlasBounds = await atlas.boundingBox();
+  expect(input).not.toBeNull();
+  expect(input.height).toBeGreaterThanOrEqual(44);
+  expect(input.width).toBeGreaterThanOrEqual(220);
+  expect(input.x).toBeGreaterThanOrEqual(atlasBounds.x);
+  expect(input.x + input.width).toBeLessThanOrEqual(atlasBounds.x + atlasBounds.width);
+  await atlas.locator('.atlas-embedded-discovery [data-atlas-action="toggle-filters"]').click();
+  await expect(atlas.locator(".country-search")).toBeHidden();
+  await expect(filters).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBeLessThanOrEqual(1);
 
   const rich = filters.locator('[data-atlas-filter="rich"]');
@@ -556,6 +596,11 @@ test("atlas controls wrap without overlap and rich count matches the collection"
     expect(Number(writerCount.replace(/\D/gu, ""))).toBeGreaterThanOrEqual(10);
   }
 
+  // Selecting a collection closes its panel; reopen it through the real trigger
+  // before exercising the independent largest-archives popover.
+  await expect(filters).toBeHidden();
+  await atlas.locator('.atlas-embedded-discovery [data-atlas-action="toggle-filters"]').click();
+  await expect(filters).toBeVisible();
   const archivesToggle = filters.locator("[data-atlas-archives-toggle]");
   await expect(archivesToggle).toContainText(
     /Крупнейшие архивы|Largest archives/iu
@@ -574,6 +619,10 @@ test("atlas controls wrap without overlap and rich count matches the collection"
   await atlas.locator('[data-atlas-action="enter-immersive"]').click();
   const surface = atlas.locator(".atlas-experience-surface");
   await expect(surface).toHaveAttribute("data-atlas-view", "immersive");
+  await expect(surface).toHaveAttribute("data-atlas-transition", "idle");
+  await expect(surface).toHaveAttribute("data-atlas-filters-open", "true");
+  await surface.locator('[data-atlas-action="toggle-filters"]').click();
+  await expect(surface).toHaveAttribute("data-atlas-filters-open", "false");
   await surface.locator('[data-atlas-action="toggle-filters"]').click();
   await expect(surface).toHaveAttribute("data-atlas-filters-open", "true");
   await archivesToggle.click();
@@ -596,6 +645,7 @@ test("immersive random journey respects the current collection and recent picks"
     element.dataset.stage4RandomIdentity = "stable";
   });
   const verified = atlas.locator('[data-atlas-filter="verified"]');
+  await atlas.locator('.atlas-embedded-discovery [data-atlas-action="toggle-filters"]').click();
   await verified.click();
   await expect(verified).toHaveAttribute("aria-pressed", "true");
 
@@ -954,6 +1004,7 @@ test("Nobel layer keeps selection and its explicit article action separate", asy
   });
 
   const nobelFilter = atlas.locator('[data-atlas-filter="nobel"]');
+  await atlas.locator('.atlas-embedded-discovery [data-atlas-action="toggle-filters"]').click();
   await nobelFilter.click();
   await expect(nobelFilter).toHaveAttribute("aria-pressed", "true");
 

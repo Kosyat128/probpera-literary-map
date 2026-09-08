@@ -539,6 +539,8 @@ test("поиск глобуса сохраняет запрос при лени�
   });
   await page.goto("/#atlas");
   const search = page.locator("#country-search");
+  await page.locator('#atlas .atlas-embedded-discovery [data-atlas-action="toggle-search"]').click();
+  await expect(search).toBeVisible();
   await search.fill("Морской волк");
   await expect(search).toHaveValue("Морской волк");
   const results = page.locator("#country-results");

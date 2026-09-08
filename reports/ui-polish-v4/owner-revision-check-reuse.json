@@ -1,0 +1,20 @@
+{
+  "sourceSha256": "9d483cf13525dbfe5d320e07eaf251692913d62bea7de214ba451aac0e560280",
+  "recordedAt": "2026-09-08T05:29:29.288Z",
+  "BeforeSourceSnapshot": "source-before-touch-contrast.json",
+  "beforeSourceSha256": "383ff8da6ea5a3ba076ff8516e4812f875d5d2a3bae0894cc8dc496c83f4fe29",
+  "changedPaths": [
+    "src/styles/ui-polish-controls.css"
+  ],
+  "observedScope": "Exact source-manifest delta after the latest complete lint, governance and source build: only src/styles/ui-polish-controls.css. Root reports the delta changes touch button colors, with no typography or geometry change. Current candidate file hashes were verified when recording this reuse. Original check timestamps remain unchanged; this is not a fresh full test run.",
+  "lint": {
+    "status": "reused_unchanged_typescript_current_css_audit",
+    "originalFinished": "2026-09-08T05:22:59.5510400Z",
+    "currentCssAuditLog": "owner-revision-css-rebuild.log"
+  },
+  "governance": {
+    "status": "reused_outside_guarded_paths",
+    "log": "owner-final-governance.log",
+    "allowedPathsHash": "6e37223830434b26ee44d1b01abe24b9ab8292da4817c1404e44f9ca8149a0a0"
+  }
+}

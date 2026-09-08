@@ -1,0 +1,15 @@
+Evidence recorded at: 2026-09-08T10:46:56.9352201+03:00
+Recorded from the original successful tool result; tests were not rerun to create this log.
+Command: "C:\Program Files\nodejs\node.exe" node_modules/vitest/vitest.mjs run scripts/audit-typography.test.mjs --reporter=dot
+Working directory: C:\Users\User\Documents\ChatGPT\Работа по сайту\probpera-typography
+
+ RUN  v4.1.10 C:/Users/User/Documents/ChatGPT/Работа по сайту/probpera-typography
+
+ Test Files  1 passed (1)
+      Tests  16 passed (16)
+   Start at  10:45:11
+   Duration  391ms (transform 39ms, setup 0ms, import 103ms, tests 34ms, environment 0ms)
+Exit code: 0
+
+Coverage: main canonical leading upper/lower limits and responsive tokens; preserved Header/Hero; narrow footer-logo exception; rejection of retired DOM-column fixed-height prose.
+Separate node --check commands for scripts/lib/stage5-content-data-lock.test.mjs and scripts/audit-typography.mjs also returned exit 0 in the same original execution.

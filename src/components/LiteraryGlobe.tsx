@@ -37,6 +37,7 @@ import BrandPlusIcon from "./BrandPlusIcon";
 import BrandResetIcon from "./BrandResetIcon";
 import BrandRotateIcon from "./BrandRotateIcon";
 import WriterPortrait from "./WriterPortrait";
+import GlobeCanvasErrorBoundary from "./GlobeCanvasErrorBoundary";
 import NobelMarkerLayer, { type NobelLayerHover } from "./NobelMarkerLayer";
 import GlobeCameraRig, {
   globeCameraIntentKey,
@@ -2984,6 +2985,15 @@ export default function LiteraryGlobe({
       }
       style={{ touchAction: touchActivationPolicy.touchAction }}
     >
+      <GlobeCanvasErrorBoundary
+        key={webglRecoveryGeneration}
+        fallback={
+          <div className="globe-loading" role="status">
+            <span aria-hidden="true">✦</span>
+            <p>{t("Используйте текстовый указатель стран ниже")}</p>
+          </div>
+        }
+      >
       <Canvas
         key={webglRecoveryGeneration}
         camera={GLOBE_CAMERA_CONFIG}
@@ -3036,6 +3046,7 @@ export default function LiteraryGlobe({
           touchInteractionEnabled={touchActivationPolicy.controlsEnabled}
         />
       </Canvas>
+      </GlobeCanvasErrorBoundary>
 
       <div className="globe-edition-transition" aria-hidden="true">
         <span />
@@ -3101,19 +3112,6 @@ export default function LiteraryGlobe({
         aria-label={t("Управление глобусом")}
       >
         <IconButton
-          icon={<BrandPlusIcon />}
-          surface="dark"
-          data-globe-control="zoom-in"
-          aria-label={`${t("Увеличить масштаб глобуса")}. ${t("Текущий масштаб")} ${number(globeScalePercent)}%`}
-          aria-describedby="globe-scale-feedback"
-          aria-keyshortcuts="+"
-          title={t("Увеличить масштаб глобуса")}
-          disabled={zoomInDisabled}
-          onClick={() =>
-            requestGlobeControl({ type: "zoom", direction: "in" })
-          }
-        />
-        <IconButton
           icon={<BrandMinusIcon />}
           surface="dark"
           data-globe-control="zoom-out"
@@ -3124,6 +3122,22 @@ export default function LiteraryGlobe({
           disabled={zoomOutDisabled}
           onClick={() =>
             requestGlobeControl({ type: "zoom", direction: "out" })
+          }
+        />
+        <output id="globe-scale-feedback" className="globe-scale-feedback" aria-label={t("Текущий масштаб")}>
+          {number(globeScalePercent)}%
+        </output>
+        <IconButton
+          icon={<BrandPlusIcon />}
+          surface="dark"
+          data-globe-control="zoom-in"
+          aria-label={`${t("Увеличить масштаб глобуса")}. ${t("Текущий масштаб")} ${number(globeScalePercent)}%`}
+          aria-describedby="globe-scale-feedback"
+          aria-keyshortcuts="+"
+          title={t("Увеличить масштаб глобуса")}
+          disabled={zoomInDisabled}
+          onClick={() =>
+            requestGlobeControl({ type: "zoom", direction: "in" })
           }
         />
         <Button
@@ -3162,6 +3176,12 @@ export default function LiteraryGlobe({
         <Button
           surface="dark"
           variant="text"
+          startIcon={
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+              <circle cx="12" cy="12" r="8.5" />
+              <path d="M12 10.5v6M12 7.5h.01" strokeLinecap="round" />
+            </svg>
+          }
           data-globe-control="edition-info"
           aria-label={t("Источник и права текущего издания глобуса")}
           title={t("Источник и права")}
@@ -3169,13 +3189,10 @@ export default function LiteraryGlobe({
         >
           <small>{t("Источник")}</small>
         </Button>
-        <span className="globe-navigation-label" aria-hidden="true">
-          {t("Интерактивный глобус · ручная навигация")}
-        </span>
-        <output id="globe-scale-feedback" className="globe-scale-feedback">
-          {t("Масштаб")} {number(globeScalePercent)}%
-        </output>
       </div>
+      <span className="globe-navigation-label" aria-hidden="true">
+        {t("Интерактивный глобус · ручная навигация")}
+      </span>
 
       <IconButton
         ref={editionRailToggleRef}
@@ -3194,6 +3211,7 @@ export default function LiteraryGlobe({
         onClick={openEditionRailFromToggle}
       />
 
+      <div className="globe-edition-controls" data-visible={editionRailVisible}>
       <div
         className="globe-edition-scroll-cue is-previous"
         data-visible={editionRailScroll.canScrollLeft}
@@ -3299,6 +3317,7 @@ export default function LiteraryGlobe({
           ))}
         </select>
       </label>
+      </div>
 
       <span
         className={`globe-style-status${visualStyleError ? " is-error" : ""}`}

@@ -1,0 +1,56 @@
+
+> literary-map@0.1.0 lint
+> npm run text:hyphens:check && npm run lint:public && npm run lint --workspace @probpera/admin
+
+
+> literary-map@0.1.0 text:hyphens:check
+> node scripts/normalize-short-hyphens.mjs
+
+Short-hyphen policy passed.
+
+> literary-map@0.1.0 lint:public
+> tsc --noEmit && npm run typography:audit
+
+
+> literary-map@0.1.0 typography:audit
+> node scripts/audit-typography.mjs
+
+Typography audit: 28 public CSS files, 0 issue(s).
+
+> @probpera/admin@0.1.0 lint
+> node ../../scripts/export-editorial-catalog.mjs --check && node ../../scripts/export-interface-copy-catalog.mjs --check && wrangler types --env-interface AdminCloudflareBindings --include-runtime=false cloudflare-env.generated.d.ts && node scripts/normalize-cloudflare-env.mjs --check && tsc --noEmit && tsc --project tsconfig.cloudflare.json
+
+Verified 1433 site-copy fields for the admin.
+
+ ⛅️ wrangler 4.122.0 (update available 4.129.1)
+───────────────────────────────────────────────
+Generating project types...
+
+interface __BaseEnv_AdminCloudflareBindings {
+	ADMIN_CATALOGS: KVNamespace;
+	AI: Ai;
+	ASSETS: Fetcher;
+	ADMIN_BASE_PATH: "/";
+	NEXT_PUBLIC_ADMIN_URL: "https://admin.probpera.ru";
+	NEXT_PUBLIC_SITE_URL: "https://probpera.ru";
+	ADMIN_ALLOWED_ORIGINS: "admin.probpera.ru";
+	PREMIUM_TRANSLATION_PROVIDER: "cloudflare";
+	OPENAI_AUTO_TRANSLATE_PROFILES: "false";
+}
+declare namespace Cloudflare {
+	interface Env extends __BaseEnv_AdminCloudflareBindings {}
+}
+interface AdminCloudflareBindings extends __BaseEnv_AdminCloudflareBindings {}
+type StringifyValues<EnvType extends Record<string, unknown>> = {
+	[Binding in keyof EnvType]: EnvType[Binding] extends string ? EnvType[Binding] : string;
+};
+declare namespace NodeJS {
+	interface ProcessEnv extends StringifyValues<Pick<Cloudflare.Env, "ADMIN_BASE_PATH" | "NEXT_PUBLIC_ADMIN_URL" | "NEXT_PUBLIC_SITE_URL" | "ADMIN_ALLOWED_ORIGINS" | "PREMIUM_TRANSLATION_PROVIDER" | "OPENAI_AUTO_TRANSLATE_PROFILES">> {}
+}
+
+
+✨ Types written to cloudflare-env.generated.d.ts
+
+📣 Remember to rerun 'wrangler types' after you change your wrangler.jsonc file.
+
+Verified current Cloudflare binding declarations.

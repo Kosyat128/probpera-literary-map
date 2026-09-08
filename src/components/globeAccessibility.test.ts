@@ -33,8 +33,11 @@ describe("literary globe accessible interaction wiring", () => {
       expect(globeSource).toContain(`data-globe-control="${control}"`);
     }
 
-    expect(globeSource.indexOf('data-globe-control="zoom-in"')).toBeLessThan(
-      globeSource.indexOf('data-globe-control="zoom-out"')
+    expect(globeSource.indexOf('data-globe-control="zoom-out"')).toBeLessThan(
+      globeSource.indexOf('<output id="globe-scale-feedback"')
+    );
+    expect(globeSource.indexOf('<output id="globe-scale-feedback"')).toBeLessThan(
+      globeSource.indexOf('data-globe-control="zoom-in"')
     );
   });
 

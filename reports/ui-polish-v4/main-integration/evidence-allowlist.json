@@ -1,0 +1,1137 @@
+{
+  "generatedAt": "2026-09-08T07:42:37.747Z",
+  "scope": "Historical pre-main checkpoint evidence only; not acceptance of the combined main tree",
+  "checkpoint": "88a0830a",
+  "incomingMain": "5d3f6fb6",
+  "sourceSha256": "9d483cf13525dbfe5d320e07eaf251692913d62bea7de214ba451aac0e560280",
+  "pathBase": "repository root",
+  "fileCount": 153,
+  "totalBytes": 25789735,
+  "groups": {
+    "linked-evidence": {
+      "files": 35,
+      "bytes": 937284
+    },
+    "reader-pairs": {
+      "files": 16,
+      "bytes": 2128672
+    },
+    "linked-visuals": {
+      "files": 64,
+      "bytes": 21536765
+    },
+    "acceptance-provenance": {
+      "files": 17,
+      "bytes": 502359
+    },
+    "summaries": {
+      "files": 13,
+      "bytes": 206183
+    },
+    "globe-before": {
+      "files": 4,
+      "bytes": 399602
+    },
+    "galleries": {
+      "files": 2,
+      "bytes": 39622
+    },
+    "shelf-EN": {
+      "files": 2,
+      "bytes": 39248
+    }
+  },
+  "files": [
+    "reports/ui-polish-v4/after/measurements.json",
+    "reports/ui-polish-v4/after/reader-1440-book-with-controls.png",
+    "reports/ui-polish-v4/after/reader-1440-book.png",
+    "reports/ui-polish-v4/after/reader-1440-metrics.png",
+    "reports/ui-polish-v4/after/reader-1440-top.png",
+    "reports/ui-polish-v4/after/reader-390-book-with-controls.png",
+    "reports/ui-polish-v4/after/reader-390-book.png",
+    "reports/ui-polish-v4/after/reader-390-metrics.png",
+    "reports/ui-polish-v4/after/reader-390-top.png",
+    "reports/ui-polish-v4/after/reader-measurements.json",
+    "reports/ui-polish-v4/after/ru-1440-atlas.png",
+    "reports/ui-polish-v4/after/ru-1440-authors.png",
+    "reports/ui-polish-v4/after/ru-1440-book-day.png",
+    "reports/ui-polish-v4/after/ru-1440-books.png",
+    "reports/ui-polish-v4/after/ru-1440-calendar.png",
+    "reports/ui-polish-v4/after/ru-1440-community.png",
+    "reports/ui-polish-v4/after/ru-1440-editorial-policy.png",
+    "reports/ui-polish-v4/after/ru-1440-featured-journal.png",
+    "reports/ui-polish-v4/after/ru-1440-journal.png",
+    "reports/ui-polish-v4/after/ru-1440-reader-discussion.png",
+    "reports/ui-polish-v4/after/ru-1440-sections.png",
+    "reports/ui-polish-v4/after/ru-1440-site-footer.png",
+    "reports/ui-polish-v4/after/ru-390-atlas.png",
+    "reports/ui-polish-v4/after/ru-390-authors.png",
+    "reports/ui-polish-v4/after/ru-390-book-day.png",
+    "reports/ui-polish-v4/after/ru-390-books.png",
+    "reports/ui-polish-v4/after/ru-390-calendar.png",
+    "reports/ui-polish-v4/after/ru-390-community.png",
+    "reports/ui-polish-v4/after/ru-390-editorial-policy.png",
+    "reports/ui-polish-v4/after/ru-390-featured-journal.png",
+    "reports/ui-polish-v4/after/ru-390-journal.png",
+    "reports/ui-polish-v4/after/ru-390-reader-discussion.png",
+    "reports/ui-polish-v4/after/ru-390-sections.png",
+    "reports/ui-polish-v4/after/ru-390-site-footer.png",
+    "reports/ui-polish-v4/before/measurements.json",
+    "reports/ui-polish-v4/before/reader-1440-book.png",
+    "reports/ui-polish-v4/before/reader-1440-metrics.png",
+    "reports/ui-polish-v4/before/reader-1440-top.png",
+    "reports/ui-polish-v4/before/reader-390-book.png",
+    "reports/ui-polish-v4/before/reader-390-metrics.png",
+    "reports/ui-polish-v4/before/reader-390-top.png",
+    "reports/ui-polish-v4/before/reader-measurements.json",
+    "reports/ui-polish-v4/before/ru-1440-authors.png",
+    "reports/ui-polish-v4/before/ru-1440-book-day.png",
+    "reports/ui-polish-v4/before/ru-1440-calendar.png",
+    "reports/ui-polish-v4/before/ru-1440-community.png",
+    "reports/ui-polish-v4/before/ru-1440-editorial-policy.png",
+    "reports/ui-polish-v4/before/ru-1440-featured-journal.png",
+    "reports/ui-polish-v4/before/ru-1440-journal.png",
+    "reports/ui-polish-v4/before/ru-1440-sections.png",
+    "reports/ui-polish-v4/before/ru-390-authors.png",
+    "reports/ui-polish-v4/before/ru-390-book-day.png",
+    "reports/ui-polish-v4/before/ru-390-calendar.png",
+    "reports/ui-polish-v4/before/ru-390-community.png",
+    "reports/ui-polish-v4/before/ru-390-editorial-policy.png",
+    "reports/ui-polish-v4/before/ru-390-featured-journal.png",
+    "reports/ui-polish-v4/before/ru-390-journal.png",
+    "reports/ui-polish-v4/before/ru-390-sections.png",
+    "reports/ui-polish-v4/benchmark/BENCHMARK_NOTES_RU.md",
+    "reports/ui-polish-v4/benchmark/benchmark-result.json",
+    "reports/ui-polish-v4/benchmark/CONTROLS_REFERENCE_RU.md",
+    "reports/ui-polish-v4/benchmark/CURRENT_DESKTOP_REVIEW_RU.md",
+    "reports/ui-polish-v4/benchmark/FINAL_SEAM_MATRIX_RU.md",
+    "reports/ui-polish-v4/benchmark/final-seam-review.json",
+    "reports/ui-polish-v4/benchmark/gallery-check.json",
+    "reports/ui-polish-v4/benchmark/linear-controls-ready/observations.json",
+    "reports/ui-polish-v4/benchmark/protected-content-check.json",
+    "reports/ui-polish-v4/benchmark/reference-captures.json",
+    "reports/ui-polish-v4/benchmark/reference-interaction.json",
+    "reports/ui-polish-v4/benchmark/reference-states.json",
+    "reports/ui-polish-v4/brand-after-dev/footer-1440.png",
+    "reports/ui-polish-v4/brand-after-dev/footer-390.png",
+    "reports/ui-polish-v4/brand-after-dev/header-1440.png",
+    "reports/ui-polish-v4/brand-after-dev/header-390.png",
+    "reports/ui-polish-v4/brand-after-dev/measurements.json",
+    "reports/ui-polish-v4/brand-after/footer-1440.png",
+    "reports/ui-polish-v4/brand-after/footer-390.png",
+    "reports/ui-polish-v4/brand-after/header-1440.png",
+    "reports/ui-polish-v4/brand-after/header-390.png",
+    "reports/ui-polish-v4/brand-after/measurements.json",
+    "reports/ui-polish-v4/brand-before/footer-1440.png",
+    "reports/ui-polish-v4/brand-before/footer-390.png",
+    "reports/ui-polish-v4/brand-before/header-1440.png",
+    "reports/ui-polish-v4/brand-before/header-390.png",
+    "reports/ui-polish-v4/brand-before/measurements.json",
+    "reports/ui-polish-v4/brand-final-capture.log",
+    "reports/ui-polish-v4/candidate-source.json",
+    "reports/ui-polish-v4/controls-before/1440-globe.png",
+    "reports/ui-polish-v4/controls-before/1440-shelf.png",
+    "reports/ui-polish-v4/controls-before/390-globe.png",
+    "reports/ui-polish-v4/controls-before/390-shelf.png",
+    "reports/ui-polish-v4/controls-before/geometry.json",
+    "reports/ui-polish-v4/CURRENT_ACCEPTANCE_RU.md",
+    "reports/ui-polish-v4/CURRENT_ACCEPTANCE.json",
+    "reports/ui-polish-v4/F01-F20-evidence.md",
+    "reports/ui-polish-v4/final-background-browser.log",
+    "reports/ui-polish-v4/final-complete-e2e.log",
+    "reports/ui-polish-v4/final-complete-unit.log",
+    "reports/ui-polish-v4/final-globe-checks.log",
+    "reports/ui-polish-v4/final-globe-reduced-motion.log",
+    "reports/ui-polish-v4/footer-brand-evidence.md",
+    "reports/ui-polish-v4/GLOBE_VISUAL_BASELINE_REVIEW_RU.md",
+    "reports/ui-polish-v4/globe-visual-reviewed-before/globe-desktop-top-chrome-edition-rail.png",
+    "reports/ui-polish-v4/globe-visual-reviewed-before/globe-desktop-writer-card.png",
+    "reports/ui-polish-v4/globe-visual-reviewed-before/globe-mobile-top-chrome-edition-rail.png",
+    "reports/ui-polish-v4/globe-visual-reviewed-before/globe-mobile-writer-card.png",
+    "reports/ui-polish-v4/globe-visual-reviewed-hashes.json",
+    "reports/ui-polish-v4/globe-visual-reviewed.log",
+    "reports/ui-polish-v4/non-globe-e2e-triage.md",
+    "reports/ui-polish-v4/owner-build-before-final-interactions.json",
+    "reports/ui-polish-v4/owner-final-browser.log",
+    "reports/ui-polish-v4/owner-final-build.log",
+    "reports/ui-polish-v4/owner-final-e2e-addenda.json",
+    "reports/ui-polish-v4/owner-final-e2e-addendum-2-result.json",
+    "reports/ui-polish-v4/owner-final-e2e-addendum-2-status.json",
+    "reports/ui-polish-v4/owner-final-e2e-addendum-2.log",
+    "reports/ui-polish-v4/owner-final-e2e-addendum-result.json",
+    "reports/ui-polish-v4/owner-final-e2e-addendum-status.json",
+    "reports/ui-polish-v4/owner-final-e2e-addendum.log",
+    "reports/ui-polish-v4/owner-final-e2e-result.json",
+    "reports/ui-polish-v4/owner-final-e2e-status.json",
+    "reports/ui-polish-v4/owner-final-e2e.log",
+    "reports/ui-polish-v4/owner-final-governance.log",
+    "reports/ui-polish-v4/owner-final-lint-status.json",
+    "reports/ui-polish-v4/owner-final-lint.log",
+    "reports/ui-polish-v4/owner-revision-build-results.json",
+    "reports/ui-polish-v4/owner-revision-check-reuse.json",
+    "reports/ui-polish-v4/owner-revision-css-rebuild.log",
+    "reports/ui-polish-v4/owner-revision-domain-build.log",
+    "reports/ui-polish-v4/owner-revision-domain-performance.log",
+    "reports/ui-polish-v4/owner-revision-e2e-plan.json",
+    "reports/ui-polish-v4/owner-revision-e2e-status.json",
+    "reports/ui-polish-v4/owner-revision-e2e.log",
+    "reports/ui-polish-v4/R04-R05-CONTROLS.md",
+    "reports/ui-polish-v4/reader-controls-evidence.md",
+    "reports/ui-polish-v4/review.html",
+    "reports/ui-polish-v4/search-reveal-atlas-anchor-fixed/results.json",
+    "reports/ui-polish-v4/SHELF_LOGICAL_LAYOUT_RU.md",
+    "reports/ui-polish-v4/shelf-logical-before/1440-controls-final-ru.png",
+    "reports/ui-polish-v4/shelf-logical-before/1440-navigation-final.png",
+    "reports/ui-polish-v4/shelf-logical-before/390-controls-final-ru.png",
+    "reports/ui-polish-v4/shelf-logical-before/390-navigation-final.png",
+    "reports/ui-polish-v4/shelf-logical/1440-controls-final-en.png",
+    "reports/ui-polish-v4/shelf-logical/1440-controls-final-ru.png",
+    "reports/ui-polish-v4/shelf-logical/1440-navigation-final.png",
+    "reports/ui-polish-v4/shelf-logical/390-controls-final-en.png",
+    "reports/ui-polish-v4/shelf-logical/390-controls-final-ru.png",
+    "reports/ui-polish-v4/shelf-logical/390-navigation-final.png",
+    "reports/ui-polish-v4/shelf-logical/gallery-check.json",
+    "reports/ui-polish-v4/shelf-logical/layout-result.json",
+    "reports/ui-polish-v4/shelf-logical/result.json",
+    "reports/ui-polish-v4/shelf-logical/review.html",
+    "reports/ui-polish-v4/source-before-touch-contrast.json"
+  ],
+  "entries": [
+    {
+      "path": "reports/ui-polish-v4/after/measurements.json",
+      "bytes": 18593,
+      "group": "linked-evidence",
+      "sha256": "d099008c2bd0cb7a976cf8ca9eaf592be4d265e4bde2eb99668995023f9806de"
+    },
+    {
+      "path": "reports/ui-polish-v4/after/reader-1440-book-with-controls.png",
+      "bytes": 185885,
+      "group": "reader-pairs",
+      "sha256": "f3d118058a2027376b274a39ab2eeeb8eba0306def45a4aa7ed35fe7417c0e56"
+    },
+    {
+      "path": "reports/ui-polish-v4/after/reader-1440-book.png",
+      "bytes": 484255,
+      "group": "reader-pairs",
+      "sha256": "fef11380d6904433e8feb3e91c6085d5546e4b1c87e4d8577153bd17e165d6b4"
+    },
+    {
+      "path": "reports/ui-polish-v4/after/reader-1440-metrics.png",
+      "bytes": 8632,
+      "group": "reader-pairs",
+      "sha256": "65607244bc087ee77c2726d953ff69b737ccc1e8673df8f4921e451bb87affda"
+    },
+    {
+      "path": "reports/ui-polish-v4/after/reader-1440-top.png",
+      "bytes": 219738,
+      "group": "reader-pairs",
+      "sha256": "2a8523f9fc6e4166cd4147962afd76af653c8e1b82db50fc659b1e51e91c260c"
+    },
+    {
+      "path": "reports/ui-polish-v4/after/reader-390-book-with-controls.png",
+      "bytes": 72795,
+      "group": "reader-pairs",
+      "sha256": "bb0d204c78b9508b899678b1dcdc837eb707ff07aa2836a372118dce59df3c37"
+    },
+    {
+      "path": "reports/ui-polish-v4/after/reader-390-book.png",
+      "bytes": 112443,
+      "group": "reader-pairs",
+      "sha256": "06e1345415517c760940d4988252df55b1a07a9711b3ec785f2e02472caa4d3b"
+    },
+    {
+      "path": "reports/ui-polish-v4/after/reader-390-metrics.png",
+      "bytes": 8798,
+      "group": "reader-pairs",
+      "sha256": "7844485f0620b402b3189fa7674d94e2b63d11ae43998f12ace257e5e0db0c80"
+    },
+    {
+      "path": "reports/ui-polish-v4/after/reader-390-top.png",
+      "bytes": 87469,
+      "group": "reader-pairs",
+      "sha256": "ac111a630fec63aa4cf3f266c9350acd6f03808b5f9ca32a379e087ac457c8aa"
+    },
+    {
+      "path": "reports/ui-polish-v4/after/reader-measurements.json",
+      "bytes": 2107,
+      "group": "reader-pairs",
+      "sha256": "f123f35c8e9d0230a55e0eb60f7ab864a0dcc86d25a96cfa716ee890dd3a55ad"
+    },
+    {
+      "path": "reports/ui-polish-v4/after/ru-1440-atlas.png",
+      "bytes": 545426,
+      "group": "linked-visuals",
+      "sha256": "3b3eacb5c3f8f8a2cec4ffd3fa0d26e39a9304f893ecc100fa9420f9256b9907"
+    },
+    {
+      "path": "reports/ui-polish-v4/after/ru-1440-authors.png",
+      "bytes": 873378,
+      "group": "linked-visuals",
+      "sha256": "aa8c38cc8aa85606c31bc5c4703155d4ed75ef11479f64fdc952d1fa9eff1f91"
+    },
+    {
+      "path": "reports/ui-polish-v4/after/ru-1440-book-day.png",
+      "bytes": 611430,
+      "group": "linked-visuals",
+      "sha256": "3f2b6bed3677b2ef7b6911d9186e0567131574579a85fbd6d08556b134ae56a0"
+    },
+    {
+      "path": "reports/ui-polish-v4/after/ru-1440-books.png",
+      "bytes": 713487,
+      "group": "linked-visuals",
+      "sha256": "9d59b26d02964eae168d354e77f0793106e60c981720628c9cd1ed293dff4395"
+    },
+    {
+      "path": "reports/ui-polish-v4/after/ru-1440-calendar.png",
+      "bytes": 440977,
+      "group": "linked-visuals",
+      "sha256": "e2f1a0e44c957caa3c92d0313c86182cb23a281c3e650f5f8d51b3af31fb431f"
+    },
+    {
+      "path": "reports/ui-polish-v4/after/ru-1440-community.png",
+      "bytes": 715151,
+      "group": "linked-visuals",
+      "sha256": "420dbd4fa7cabb8e8ee6141f3744de6a3ffa49268df7aa57ea7d6cd14e4a85f4"
+    },
+    {
+      "path": "reports/ui-polish-v4/after/ru-1440-editorial-policy.png",
+      "bytes": 306415,
+      "group": "linked-visuals",
+      "sha256": "d0991892520c87011a93a85e8611d857d8798e8b5cc7f41951958d1492adcfd6"
+    },
+    {
+      "path": "reports/ui-polish-v4/after/ru-1440-featured-journal.png",
+      "bytes": 723171,
+      "group": "linked-visuals",
+      "sha256": "8731dfd95e06e0fcba24730e8cf4ed774f275db4f2777dc70a63802a4d301337"
+    },
+    {
+      "path": "reports/ui-polish-v4/after/ru-1440-journal.png",
+      "bytes": 578023,
+      "group": "linked-visuals",
+      "sha256": "cec038b1f65dafef6ddcd715ff0de18d21efec8092d69f11818e5bc6f87ba8d2"
+    },
+    {
+      "path": "reports/ui-polish-v4/after/ru-1440-reader-discussion.png",
+      "bytes": 399087,
+      "group": "linked-visuals",
+      "sha256": "12cead2b522b89cf8234ff587078025031e86f38166504e56342a2cdec89bd61"
+    },
+    {
+      "path": "reports/ui-polish-v4/after/ru-1440-sections.png",
+      "bytes": 1031753,
+      "group": "linked-visuals",
+      "sha256": "8b26bd8c72c8d5deb088bdf20c9bd548fa09ee6ba9f1a520dc452038553f2c54"
+    },
+    {
+      "path": "reports/ui-polish-v4/after/ru-1440-site-footer.png",
+      "bytes": 475216,
+      "group": "linked-visuals",
+      "sha256": "3e38ec7a9ea94c115e92153843530f5216e60e91bccdfd52ee89b20325b5bd5e"
+    },
+    {
+      "path": "reports/ui-polish-v4/after/ru-390-atlas.png",
+      "bytes": 276548,
+      "group": "linked-visuals",
+      "sha256": "1431e5f34dee0c65dbfec98d93f82d351eef7a9c0f5c3de4af5afa9e5c627f4e"
+    },
+    {
+      "path": "reports/ui-polish-v4/after/ru-390-authors.png",
+      "bytes": 273779,
+      "group": "linked-visuals",
+      "sha256": "2cca3c4d82f9d2264153b39c633da1b56f4a545e818b06b9bb72fca625814475"
+    },
+    {
+      "path": "reports/ui-polish-v4/after/ru-390-book-day.png",
+      "bytes": 276928,
+      "group": "linked-visuals",
+      "sha256": "f8464f6ab5b623e53359f5d656ae6c3f5573ca69816e55453423e1148f665d62"
+    },
+    {
+      "path": "reports/ui-polish-v4/after/ru-390-books.png",
+      "bytes": 97968,
+      "group": "linked-visuals",
+      "sha256": "32b95c89eb766911fb796218848cf77b528beeb3e487accabec7901a6fbfdaae"
+    },
+    {
+      "path": "reports/ui-polish-v4/after/ru-390-calendar.png",
+      "bytes": 201731,
+      "group": "linked-visuals",
+      "sha256": "402574ffb52314cb4d2b1dee9b610000a314178080729da456ffe2a5cde71bca"
+    },
+    {
+      "path": "reports/ui-polish-v4/after/ru-390-community.png",
+      "bytes": 237378,
+      "group": "linked-visuals",
+      "sha256": "45acec39276e4f25570b54f15c2259c539531567468d91f58eb353a8f22305af"
+    },
+    {
+      "path": "reports/ui-polish-v4/after/ru-390-editorial-policy.png",
+      "bytes": 90170,
+      "group": "linked-visuals",
+      "sha256": "1936c31697222301c0e51799bfee7f68f4ff8fb316ef9e8dfb620ac1c740395f"
+    },
+    {
+      "path": "reports/ui-polish-v4/after/ru-390-featured-journal.png",
+      "bytes": 220270,
+      "group": "linked-visuals",
+      "sha256": "1da7b30d9663ec1094b9b6226719635a55ef4cff72aa71e49cd5616f5f1b3bc2"
+    },
+    {
+      "path": "reports/ui-polish-v4/after/ru-390-journal.png",
+      "bytes": 137476,
+      "group": "linked-visuals",
+      "sha256": "1056843123d5027b21ac76a02016b2cf0f03493e4ceb50f582dcc57309ea45a6"
+    },
+    {
+      "path": "reports/ui-polish-v4/after/ru-390-reader-discussion.png",
+      "bytes": 115031,
+      "group": "linked-visuals",
+      "sha256": "2a5909950e920637813bef9829809a0fe2ee2e4e7b24a79be717952b526fa53d"
+    },
+    {
+      "path": "reports/ui-polish-v4/after/ru-390-sections.png",
+      "bytes": 305445,
+      "group": "linked-visuals",
+      "sha256": "a51884226d72dafc01ca36a64560351d25ad05f7ad20c7f1b0097baf4cf06925"
+    },
+    {
+      "path": "reports/ui-polish-v4/after/ru-390-site-footer.png",
+      "bytes": 215654,
+      "group": "linked-visuals",
+      "sha256": "8c70e8c38469cb58bc62ebb4117ee45bee143c7034b2667d9b3eba68ea910b94"
+    },
+    {
+      "path": "reports/ui-polish-v4/before/measurements.json",
+      "bytes": 15976,
+      "group": "acceptance-provenance",
+      "sha256": "4bece7578578a870513fdf42cbaf87209ccd3a4560c0ed016c54fd95ab17bdac"
+    },
+    {
+      "path": "reports/ui-polish-v4/before/reader-1440-book.png",
+      "bytes": 521945,
+      "group": "reader-pairs",
+      "sha256": "5993db630f234186c9661d0189149c49f49052934c1e56eab50cdae621ff0649"
+    },
+    {
+      "path": "reports/ui-polish-v4/before/reader-1440-metrics.png",
+      "bytes": 9889,
+      "group": "reader-pairs",
+      "sha256": "fbcccf34075cd94885c7267a67d669f07a37ae097ae08f36a94d3476388f0e50"
+    },
+    {
+      "path": "reports/ui-polish-v4/before/reader-1440-top.png",
+      "bytes": 221622,
+      "group": "reader-pairs",
+      "sha256": "6993c5ba3b2718ee00ec29a603b63c6f08dc303bd6f9c146883e17f6ad873cea"
+    },
+    {
+      "path": "reports/ui-polish-v4/before/reader-390-book.png",
+      "bytes": 92306,
+      "group": "reader-pairs",
+      "sha256": "d6371352b762bcf40beef7e640be5e5a8e1c847f5f968dce1008750eb99cb152"
+    },
+    {
+      "path": "reports/ui-polish-v4/before/reader-390-metrics.png",
+      "bytes": 10933,
+      "group": "reader-pairs",
+      "sha256": "219edd0b246f919911b7867a183faef716e7ccac02796c8d019bea849192cd28"
+    },
+    {
+      "path": "reports/ui-polish-v4/before/reader-390-top.png",
+      "bytes": 87731,
+      "group": "reader-pairs",
+      "sha256": "927099861fd7942c6fe20ce908387089ac9fc8a7e58a82c96e9fd143120f2c49"
+    },
+    {
+      "path": "reports/ui-polish-v4/before/reader-measurements.json",
+      "bytes": 2124,
+      "group": "reader-pairs",
+      "sha256": "f2197d3bff881d8a9248f5cfcef63e1361d7b5b054334fcabcac8f0b7a9c3fd7"
+    },
+    {
+      "path": "reports/ui-polish-v4/before/ru-1440-authors.png",
+      "bytes": 907886,
+      "group": "linked-visuals",
+      "sha256": "04743668455527fbe9ae152bae0dc7d8c64cb5b63dc9e373db2dd69fef62c2d2"
+    },
+    {
+      "path": "reports/ui-polish-v4/before/ru-1440-book-day.png",
+      "bytes": 661344,
+      "group": "linked-visuals",
+      "sha256": "3f6406ffa5f58ea41fce2a1a552e77953fb6d133cac57651d4e188f79b346ea5"
+    },
+    {
+      "path": "reports/ui-polish-v4/before/ru-1440-calendar.png",
+      "bytes": 469343,
+      "group": "linked-visuals",
+      "sha256": "dea5be76b6d2a2dbd01728ba9799fb024f603f7372bcbbacfd3f43cb5dba8d1c"
+    },
+    {
+      "path": "reports/ui-polish-v4/before/ru-1440-community.png",
+      "bytes": 713295,
+      "group": "linked-visuals",
+      "sha256": "b2997f484691ff354009099c51861465f755db4dfc0f1631f1cf861b4e8fb5b0"
+    },
+    {
+      "path": "reports/ui-polish-v4/before/ru-1440-editorial-policy.png",
+      "bytes": 380195,
+      "group": "linked-visuals",
+      "sha256": "b97ae16111efb04f900d98e6e71b61e38a840231a12a68a3f18586c1d160783e"
+    },
+    {
+      "path": "reports/ui-polish-v4/before/ru-1440-featured-journal.png",
+      "bytes": 1029479,
+      "group": "linked-visuals",
+      "sha256": "379fb82f00eae993f6ac0d60c8d65536b95794a082ee21cc58a855a42a923891"
+    },
+    {
+      "path": "reports/ui-polish-v4/before/ru-1440-journal.png",
+      "bytes": 865585,
+      "group": "linked-visuals",
+      "sha256": "d68700049c82f22f4a894618223f3f5f7a2dce37c2fd96f856b0c2f040b1e82b"
+    },
+    {
+      "path": "reports/ui-polish-v4/before/ru-1440-sections.png",
+      "bytes": 1134573,
+      "group": "linked-visuals",
+      "sha256": "a707c8db61d964ba55c1150b2177463918d8be176b0881971d21d3f03be89556"
+    },
+    {
+      "path": "reports/ui-polish-v4/before/ru-390-authors.png",
+      "bytes": 281726,
+      "group": "linked-visuals",
+      "sha256": "bc7b326317f35e5eae10eea1dd9200efc16d8fd498973ca7c3629896cddf18eb"
+    },
+    {
+      "path": "reports/ui-polish-v4/before/ru-390-book-day.png",
+      "bytes": 291880,
+      "group": "linked-visuals",
+      "sha256": "30da198d5351e57f4c68d8ac21b93382e0c3435323f9b6ac736aa79cb52c36c3"
+    },
+    {
+      "path": "reports/ui-polish-v4/before/ru-390-calendar.png",
+      "bytes": 210141,
+      "group": "linked-visuals",
+      "sha256": "5bd9fb32b8ad66425eefde64292eca08ffd25b483f7d6e85fe16d947f955ce14"
+    },
+    {
+      "path": "reports/ui-polish-v4/before/ru-390-community.png",
+      "bytes": 227955,
+      "group": "linked-visuals",
+      "sha256": "25b194adb6162c82f6a2cdff67e76183a9bf71dfbbc04c14e7db0ea3cd782895"
+    },
+    {
+      "path": "reports/ui-polish-v4/before/ru-390-editorial-policy.png",
+      "bytes": 134886,
+      "group": "linked-visuals",
+      "sha256": "d371c113c7dc07181aa057c5ed5e47ae6f3b3b4ca2247659b4fa35986b789f93"
+    },
+    {
+      "path": "reports/ui-polish-v4/before/ru-390-featured-journal.png",
+      "bytes": 301560,
+      "group": "linked-visuals",
+      "sha256": "3033b4e47276bbbb438a16624dd1c1d5eef31f242f844917705acf5b60daa91b"
+    },
+    {
+      "path": "reports/ui-polish-v4/before/ru-390-journal.png",
+      "bytes": 177194,
+      "group": "linked-visuals",
+      "sha256": "e0de2443c1a18ff61e4a9cfdf3b3dc6c74d20418d47ee15bc602d3bff2c4f3f9"
+    },
+    {
+      "path": "reports/ui-polish-v4/before/ru-390-sections.png",
+      "bytes": 330513,
+      "group": "linked-visuals",
+      "sha256": "11b116723efe63ea240228520dbd30c6960ef9d8f9cc4060037bf0f3d16611cc"
+    },
+    {
+      "path": "reports/ui-polish-v4/benchmark/BENCHMARK_NOTES_RU.md",
+      "bytes": 25018,
+      "group": "summaries",
+      "sha256": "1b0020af807bcbadc327337fba6edb7580f282036d78f08dd75f79cf99da5108"
+    },
+    {
+      "path": "reports/ui-polish-v4/benchmark/benchmark-result.json",
+      "bytes": 17245,
+      "group": "summaries",
+      "sha256": "8949a40674c51c960b9d5180ca27424181af2b6c616896993babcf4682e5a2a0"
+    },
+    {
+      "path": "reports/ui-polish-v4/benchmark/CONTROLS_REFERENCE_RU.md",
+      "bytes": 2607,
+      "group": "summaries",
+      "sha256": "157402cdd6b5c41e826d353535370bfcdafa3a093acc358db8b8e5ee1cd9c154"
+    },
+    {
+      "path": "reports/ui-polish-v4/benchmark/CURRENT_DESKTOP_REVIEW_RU.md",
+      "bytes": 12098,
+      "group": "summaries",
+      "sha256": "04d948752152d78e39db591aa24ada7fc04e80f6be1af0abba33cfe390019f03"
+    },
+    {
+      "path": "reports/ui-polish-v4/benchmark/FINAL_SEAM_MATRIX_RU.md",
+      "bytes": 12509,
+      "group": "summaries",
+      "sha256": "801e2817c826ffa73a71e89330055c29a0993a749725f3a78b29779af91292d8"
+    },
+    {
+      "path": "reports/ui-polish-v4/benchmark/final-seam-review.json",
+      "bytes": 771,
+      "group": "linked-evidence",
+      "sha256": "dd9abc62981fc36edf69f64697b874ffd0fe1cebde9046dfab22d9c8d0c42564"
+    },
+    {
+      "path": "reports/ui-polish-v4/benchmark/gallery-check.json",
+      "bytes": 201,
+      "group": "linked-evidence",
+      "sha256": "c9dc020a2a27614db87374e0662f398b612799024d593a0c7d3169c252bfb198"
+    },
+    {
+      "path": "reports/ui-polish-v4/benchmark/linear-controls-ready/observations.json",
+      "bytes": 401356,
+      "group": "linked-evidence",
+      "sha256": "30104b34309cf36121657e862070a712a918319bc0343b4f31eaeba2a33a386d"
+    },
+    {
+      "path": "reports/ui-polish-v4/benchmark/protected-content-check.json",
+      "bytes": 2659,
+      "group": "linked-evidence",
+      "sha256": "f5d7e7efbb2f70817da321fe51f8794e8b109f3b9000d63ce925a15f855cf62d"
+    },
+    {
+      "path": "reports/ui-polish-v4/benchmark/reference-captures.json",
+      "bytes": 356550,
+      "group": "acceptance-provenance",
+      "sha256": "08d32c78d88ec2540e0982a329da6ff2124057e6250840047336309b08e66aea"
+    },
+    {
+      "path": "reports/ui-polish-v4/benchmark/reference-interaction.json",
+      "bytes": 971,
+      "group": "acceptance-provenance",
+      "sha256": "1d8e5a33a289737c7884de8b56b6f1116acb8d267683cb211d2c3bba7d312c23"
+    },
+    {
+      "path": "reports/ui-polish-v4/benchmark/reference-states.json",
+      "bytes": 12814,
+      "group": "acceptance-provenance",
+      "sha256": "a1ff1aba3615a5dd32b7a27884847adf409b24ab5d3ed85410ed95bfcec97e8d"
+    },
+    {
+      "path": "reports/ui-polish-v4/brand-after-dev/footer-1440.png",
+      "bytes": 86460,
+      "group": "linked-visuals",
+      "sha256": "68f71a2b175dd15547b4adb3f927ca8574126418636f44c1b9a4e1980ee6b574"
+    },
+    {
+      "path": "reports/ui-polish-v4/brand-after-dev/footer-390.png",
+      "bytes": 78144,
+      "group": "linked-visuals",
+      "sha256": "f34d8bcfaf77b306f1f2cdb6add73c1e0f89cc7434204cf497c5491d279ae07c"
+    },
+    {
+      "path": "reports/ui-polish-v4/brand-after-dev/header-1440.png",
+      "bytes": 29911,
+      "group": "linked-visuals",
+      "sha256": "3d90122968869066723a3927a78a3c708e3c7cf4e8bbc291c57bf8d064e71d6d"
+    },
+    {
+      "path": "reports/ui-polish-v4/brand-after-dev/header-390.png",
+      "bytes": 17950,
+      "group": "linked-visuals",
+      "sha256": "0ea93017be111737e13cba6aca22281d3fa4f64a5867005514f88c31d40605db"
+    },
+    {
+      "path": "reports/ui-polish-v4/brand-after-dev/measurements.json",
+      "bytes": 10439,
+      "group": "linked-evidence",
+      "sha256": "95962d60121f126677650aff498c362614cf3013d2bbc7dd56c2b695255f043d"
+    },
+    {
+      "path": "reports/ui-polish-v4/brand-after/footer-1440.png",
+      "bytes": 86460,
+      "group": "linked-visuals",
+      "sha256": "68f71a2b175dd15547b4adb3f927ca8574126418636f44c1b9a4e1980ee6b574"
+    },
+    {
+      "path": "reports/ui-polish-v4/brand-after/footer-390.png",
+      "bytes": 79489,
+      "group": "linked-visuals",
+      "sha256": "d75fcee8f969e795942475d3356943f39a833614dfd1db924f35f6d61a3a6d9b"
+    },
+    {
+      "path": "reports/ui-polish-v4/brand-after/header-1440.png",
+      "bytes": 29911,
+      "group": "linked-visuals",
+      "sha256": "3d90122968869066723a3927a78a3c708e3c7cf4e8bbc291c57bf8d064e71d6d"
+    },
+    {
+      "path": "reports/ui-polish-v4/brand-after/header-390.png",
+      "bytes": 17950,
+      "group": "linked-visuals",
+      "sha256": "0ea93017be111737e13cba6aca22281d3fa4f64a5867005514f88c31d40605db"
+    },
+    {
+      "path": "reports/ui-polish-v4/brand-after/measurements.json",
+      "bytes": 10439,
+      "group": "linked-evidence",
+      "sha256": "9a2704704ce09bffbf3ac40f120e577746795d355c2aa93459baa8fab1de6c98"
+    },
+    {
+      "path": "reports/ui-polish-v4/brand-before/footer-1440.png",
+      "bytes": 88747,
+      "group": "linked-visuals",
+      "sha256": "3ae63a4017b9e8ae1cc5122c7e582666b24b98a61392959f891cda03ca00e38a"
+    },
+    {
+      "path": "reports/ui-polish-v4/brand-before/footer-390.png",
+      "bytes": 80232,
+      "group": "linked-visuals",
+      "sha256": "319daa379093b2985ed60afad524e51b662824856792f5b11ce1996a6f046007"
+    },
+    {
+      "path": "reports/ui-polish-v4/brand-before/header-1440.png",
+      "bytes": 29911,
+      "group": "linked-visuals",
+      "sha256": "3d90122968869066723a3927a78a3c708e3c7cf4e8bbc291c57bf8d064e71d6d"
+    },
+    {
+      "path": "reports/ui-polish-v4/brand-before/header-390.png",
+      "bytes": 17950,
+      "group": "linked-visuals",
+      "sha256": "0ea93017be111737e13cba6aca22281d3fa4f64a5867005514f88c31d40605db"
+    },
+    {
+      "path": "reports/ui-polish-v4/brand-before/measurements.json",
+      "bytes": 10558,
+      "group": "linked-evidence",
+      "sha256": "a10f1254c467a8e93314ae05ac4a9da5295063029335053509bc5a8d1b517948"
+    },
+    {
+      "path": "reports/ui-polish-v4/brand-final-capture.log",
+      "bytes": 10761,
+      "group": "linked-evidence",
+      "sha256": "00a63adacd30671c3c210de32493bb84e4eec8b22eab4b61ade95b91202bddbd"
+    },
+    {
+      "path": "reports/ui-polish-v4/candidate-source.json",
+      "bytes": 4202,
+      "group": "linked-evidence",
+      "sha256": "bd77ca5c5541b4a10b6922bb71bab7b72c582651389613e341529fa2ca7f1c63"
+    },
+    {
+      "path": "reports/ui-polish-v4/controls-before/1440-globe.png",
+      "bytes": 721646,
+      "group": "linked-visuals",
+      "sha256": "c907bb5d3ae41453be19b15698ff8b9d988d1369b6f0b485590edce528ce1d08"
+    },
+    {
+      "path": "reports/ui-polish-v4/controls-before/1440-shelf.png",
+      "bytes": 1302198,
+      "group": "linked-visuals",
+      "sha256": "c1eaf7f4a06589451c444ec8c959541873505ae16a1695775906468a9bf7c0a5"
+    },
+    {
+      "path": "reports/ui-polish-v4/controls-before/390-globe.png",
+      "bytes": 429706,
+      "group": "linked-visuals",
+      "sha256": "6597cc6d078d2263e5f4740e1813dd5c31cd4b978d998c76fa2db123d3debe31"
+    },
+    {
+      "path": "reports/ui-polish-v4/controls-before/390-shelf.png",
+      "bytes": 337469,
+      "group": "linked-visuals",
+      "sha256": "8d165b55798779154ea6c4f276fef95170485781857236aa7ef5d2f61cd8a561"
+    },
+    {
+      "path": "reports/ui-polish-v4/controls-before/geometry.json",
+      "bytes": 780,
+      "group": "acceptance-provenance",
+      "sha256": "f0a8c121351cdf9ab8506e216cb04c6a4b5704ba0482a40e64068813bc7b4323"
+    },
+    {
+      "path": "reports/ui-polish-v4/CURRENT_ACCEPTANCE_RU.md",
+      "bytes": 6220,
+      "group": "summaries",
+      "sha256": "2d5b58a4d46706945e0ebfd143b02f47773d542f10c897ae71388f7455c1348e"
+    },
+    {
+      "path": "reports/ui-polish-v4/CURRENT_ACCEPTANCE.json",
+      "bytes": 17994,
+      "group": "summaries",
+      "sha256": "b862e5202cf2d4de20f35f52b2d54a75cca5e7c14faad95311230513e1b51af6"
+    },
+    {
+      "path": "reports/ui-polish-v4/F01-F20-evidence.md",
+      "bytes": 42761,
+      "group": "summaries",
+      "sha256": "89a544446716a0186282cb4cbdfc75480ec7f15969831f1929a872a9fcfdcdbc"
+    },
+    {
+      "path": "reports/ui-polish-v4/final-background-browser.log",
+      "bytes": 1213,
+      "group": "linked-evidence",
+      "sha256": "4df6d6cb8094bf713d0a9791a2f3cee6fa39d9f3b1dde0554f3bb7ad619f9a5f"
+    },
+    {
+      "path": "reports/ui-polish-v4/final-complete-e2e.log",
+      "bytes": 143912,
+      "group": "linked-evidence",
+      "sha256": "219442c2af8c50ee72667237a8be41e6e6d1fd541ef457a84e6a11aa628abf6b"
+    },
+    {
+      "path": "reports/ui-polish-v4/final-complete-unit.log",
+      "bytes": 2422,
+      "group": "linked-evidence",
+      "sha256": "959d7a0742e74d1e44c26bc5fdeb5e5feb52f96c7459c223d65f13ddf74f9fc3"
+    },
+    {
+      "path": "reports/ui-polish-v4/final-globe-checks.log",
+      "bytes": 700,
+      "group": "linked-evidence",
+      "sha256": "c6263df2835dc9eb208d6b43167954a222790bc5013888a91c891b0fe4df8723"
+    },
+    {
+      "path": "reports/ui-polish-v4/final-globe-reduced-motion.log",
+      "bytes": 491,
+      "group": "linked-evidence",
+      "sha256": "ae830346cf3737ec622a79fe043e1705ec7caa14a21e0c2255d6a883bb68c6c7"
+    },
+    {
+      "path": "reports/ui-polish-v4/footer-brand-evidence.md",
+      "bytes": 4543,
+      "group": "summaries",
+      "sha256": "83e5893de5d7e62aed9c890ae13fe2e77e6f65737e1a216d01835bda15dc950f"
+    },
+    {
+      "path": "reports/ui-polish-v4/GLOBE_VISUAL_BASELINE_REVIEW_RU.md",
+      "bytes": 4372,
+      "group": "summaries",
+      "sha256": "890c985731988da16d5633f9f93e398b4718fd510f293a818760c5d4c248c358"
+    },
+    {
+      "path": "reports/ui-polish-v4/globe-visual-reviewed-before/globe-desktop-top-chrome-edition-rail.png",
+      "bytes": 126205,
+      "group": "globe-before",
+      "sha256": "dd10427de1fd193c1f2a72071df14a3013f642a9e67670b8ff15f44acdab571d"
+    },
+    {
+      "path": "reports/ui-polish-v4/globe-visual-reviewed-before/globe-desktop-writer-card.png",
+      "bytes": 118678,
+      "group": "globe-before",
+      "sha256": "decb7bfd5304190c5ab80c22e09011cb3b51f57a664d44ad222ac33ed030a2ae"
+    },
+    {
+      "path": "reports/ui-polish-v4/globe-visual-reviewed-before/globe-mobile-top-chrome-edition-rail.png",
+      "bytes": 48317,
+      "group": "globe-before",
+      "sha256": "c8c507631b8f79ccd030fb485548d667287973eba19d0b551e14e766040f6023"
+    },
+    {
+      "path": "reports/ui-polish-v4/globe-visual-reviewed-before/globe-mobile-writer-card.png",
+      "bytes": 106402,
+      "group": "globe-before",
+      "sha256": "2f5fe21d723e7bdd9e47bdd795e813f89eedc1c52c8e69dd73b35343832bb235"
+    },
+    {
+      "path": "reports/ui-polish-v4/globe-visual-reviewed-hashes.json",
+      "bytes": 889,
+      "group": "acceptance-provenance",
+      "sha256": "167571fcd70063bcb81658bf756a4a9474a656f6671fca8faa5d7f55efd4bc0b"
+    },
+    {
+      "path": "reports/ui-polish-v4/globe-visual-reviewed.log",
+      "bytes": 1548,
+      "group": "acceptance-provenance",
+      "sha256": "99f2613b0278262b646524432f4209862c5f6cf4b6f75b336269fab1d2cef578"
+    },
+    {
+      "path": "reports/ui-polish-v4/non-globe-e2e-triage.md",
+      "bytes": 6048,
+      "group": "linked-evidence",
+      "sha256": "d792c4e97cc544f3b638756eae070559cdf5495a221be52afc73e42ba4be6133"
+    },
+    {
+      "path": "reports/ui-polish-v4/owner-build-before-final-interactions.json",
+      "bytes": 281,
+      "group": "acceptance-provenance",
+      "sha256": "c608a26cd3aba273ae478cb250fd0d4a988e72c9d034704a7589c9da6a0a63ae"
+    },
+    {
+      "path": "reports/ui-polish-v4/owner-final-browser.log",
+      "bytes": 5103,
+      "group": "linked-evidence",
+      "sha256": "27b6eb0fbfad6bff6e66184fff2ad17266705f53b3b35f28a1acb8d54ccefd91"
+    },
+    {
+      "path": "reports/ui-polish-v4/owner-final-build.log",
+      "bytes": 13063,
+      "group": "acceptance-provenance",
+      "sha256": "b1e0d4a120b742f37a08c64dbe33cc4bb49fb871d17c497aff4900500c8ccd8d"
+    },
+    {
+      "path": "reports/ui-polish-v4/owner-final-e2e-addenda.json",
+      "bytes": 1027,
+      "group": "linked-evidence",
+      "sha256": "9b30646b3a8251af0be7253ba0cdc267fd500ee9a0a42e2d7577d8a83f8c908b"
+    },
+    {
+      "path": "reports/ui-polish-v4/owner-final-e2e-addendum-2-result.json",
+      "bytes": 13134,
+      "group": "linked-evidence",
+      "sha256": "0d9e4183c14e43f35e16b342437963a312bac002620f37c992f7886603cf97ce"
+    },
+    {
+      "path": "reports/ui-polish-v4/owner-final-e2e-addendum-2-status.json",
+      "bytes": 1668,
+      "group": "linked-evidence",
+      "sha256": "119109c0c0a0f8733efc198f8dcfdd332be0d4c3e258c8aec30ff9964f4c9ea6"
+    },
+    {
+      "path": "reports/ui-polish-v4/owner-final-e2e-addendum-2.log",
+      "bytes": 1052,
+      "group": "linked-evidence",
+      "sha256": "8da386e7242131ae0601c999d330553bc82ec78ab30745c852fbc6086006c204"
+    },
+    {
+      "path": "reports/ui-polish-v4/owner-final-e2e-addendum-result.json",
+      "bytes": 39411,
+      "group": "linked-evidence",
+      "sha256": "a248b68d731350b826129e419c5947c02f15a90d3b63865cd0b520d9035af397"
+    },
+    {
+      "path": "reports/ui-polish-v4/owner-final-e2e-addendum-status.json",
+      "bytes": 1576,
+      "group": "linked-evidence",
+      "sha256": "afafb901f0f895a9353794365b1dcb6fd5c2704b409735f0559673d27285e155"
+    },
+    {
+      "path": "reports/ui-polish-v4/owner-final-e2e-addendum.log",
+      "bytes": 12568,
+      "group": "linked-evidence",
+      "sha256": "2e4d8fdb29dc243ffd31cf0ebf6488bf7d3beb73d334261e67867ae434e3f55e"
+    },
+    {
+      "path": "reports/ui-polish-v4/owner-final-e2e-result.json",
+      "bytes": 188167,
+      "group": "linked-evidence",
+      "sha256": "0135c5788195a2a015c7043e4900d30a87528cd0b8a4a8d990a197f0fccb835a"
+    },
+    {
+      "path": "reports/ui-polish-v4/owner-final-e2e-status.json",
+      "bytes": 3172,
+      "group": "linked-evidence",
+      "sha256": "885bbcad5777db9542e8b22f26b0df1b2f3c9f0107dcf3b6990f776729af27e5"
+    },
+    {
+      "path": "reports/ui-polish-v4/owner-final-e2e.log",
+      "bytes": 29820,
+      "group": "linked-evidence",
+      "sha256": "b718058fe464795bdcb34cd260e15db352ccf53a90dd227931789c4e6b6ad4bb"
+    },
+    {
+      "path": "reports/ui-polish-v4/owner-final-governance.log",
+      "bytes": 276,
+      "group": "linked-evidence",
+      "sha256": "6c52ddbe89f3bb5340f8506dcca02380763c3a651496fb3700ef188633dea5f8"
+    },
+    {
+      "path": "reports/ui-polish-v4/owner-final-lint-status.json",
+      "bytes": 230,
+      "group": "linked-evidence",
+      "sha256": "31f5f57cd17f95a3828bf9ba4fb3cb9655621ca05ac05f5704d7b2b9ea0125f5"
+    },
+    {
+      "path": "reports/ui-polish-v4/owner-final-lint.log",
+      "bytes": 2286,
+      "group": "acceptance-provenance",
+      "sha256": "610d5205b749c227b32fc99084f6bbcb4f3e05ea0379ebe48aab4e78d3aca1ab"
+    },
+    {
+      "path": "reports/ui-polish-v4/owner-revision-build-results.json",
+      "bytes": 310,
+      "group": "linked-evidence",
+      "sha256": "bf00b767f2ddbeb2b96d5cc9364d69b4feacac6a2f73086dfee3e32c2f142432"
+    },
+    {
+      "path": "reports/ui-polish-v4/owner-revision-check-reuse.json",
+      "bytes": 1141,
+      "group": "linked-evidence",
+      "sha256": "ffaab1c582f64e6df23b0830038076b505bc7ce773f5c3603af8787eb984bc6c"
+    },
+    {
+      "path": "reports/ui-polish-v4/owner-revision-css-rebuild.log",
+      "bytes": 13063,
+      "group": "acceptance-provenance",
+      "sha256": "b2601756861b63a1f35a578d25a8648dbf04a8af989174db247ba14191deaad5"
+    },
+    {
+      "path": "reports/ui-polish-v4/owner-revision-domain-build.log",
+      "bytes": 7965,
+      "group": "acceptance-provenance",
+      "sha256": "04f835826df86cd2f85f4eeef7dd4aca4a5a5990994f260c2706e78cc9298235"
+    },
+    {
+      "path": "reports/ui-polish-v4/owner-revision-domain-performance.log",
+      "bytes": 3067,
+      "group": "acceptance-provenance",
+      "sha256": "267d975d0c1f875365bb5967a3389d76cc570328f8db11f78611cd7e6b80b1cc"
+    },
+    {
+      "path": "reports/ui-polish-v4/owner-revision-e2e-plan.json",
+      "bytes": 3072,
+      "group": "linked-evidence",
+      "sha256": "f5008870dc1ec839c36d529fb3d59641f118117fe1149ae1e5b2fb9492e31a4d"
+    },
+    {
+      "path": "reports/ui-polish-v4/owner-revision-e2e-status.json",
+      "bytes": 3172,
+      "group": "acceptance-provenance",
+      "sha256": "124b7dd31ef3a2b3bbf7a0bea1241ed09ae209044997cba29c22c59aee4c9c3b"
+    },
+    {
+      "path": "reports/ui-polish-v4/owner-revision-e2e.log",
+      "bytes": 65683,
+      "group": "acceptance-provenance",
+      "sha256": "f89b50080b2b8d644df178132e8111266e9f59af07abb226979ebc5c9ffb24b9"
+    },
+    {
+      "path": "reports/ui-polish-v4/R04-R05-CONTROLS.md",
+      "bytes": 36126,
+      "group": "summaries",
+      "sha256": "0ed2d701577131d3db3a869394416d51d6f88f4cf7abb654f49acfbb8aede39c"
+    },
+    {
+      "path": "reports/ui-polish-v4/reader-controls-evidence.md",
+      "bytes": 19334,
+      "group": "summaries",
+      "sha256": "f181e62c830b959f4ff0e7efb5a8e58980f7b925fbe8ff3f01161d1eed0714cb"
+    },
+    {
+      "path": "reports/ui-polish-v4/review.html",
+      "bytes": 35446,
+      "group": "galleries",
+      "sha256": "1c2f34d626d2d44c7f742de88cad09e7f4c402aeed319b4588457dc639264bb7"
+    },
+    {
+      "path": "reports/ui-polish-v4/search-reveal-atlas-anchor-fixed/results.json",
+      "bytes": 3652,
+      "group": "linked-evidence",
+      "sha256": "558526f981274fd07b941deab963370026e21bba94ece6551e200e1c50c4f9e0"
+    },
+    {
+      "path": "reports/ui-polish-v4/SHELF_LOGICAL_LAYOUT_RU.md",
+      "bytes": 5356,
+      "group": "summaries",
+      "sha256": "14be09d67a38f3e614c81c34d257736b14fae86c33ef587e5323d035adae7f51"
+    },
+    {
+      "path": "reports/ui-polish-v4/shelf-logical-before/1440-controls-final-ru.png",
+      "bytes": 17239,
+      "group": "linked-visuals",
+      "sha256": "6c3b0d8e3fe5008085bdba0420cad40dff3d4d8a2ca091b83f3716de2bb17f24"
+    },
+    {
+      "path": "reports/ui-polish-v4/shelf-logical-before/1440-navigation-final.png",
+      "bytes": 13904,
+      "group": "linked-visuals",
+      "sha256": "c16949a2d35467a204491f237f97296b902d7e8dfb5af40df0727f0b2ecc99b3"
+    },
+    {
+      "path": "reports/ui-polish-v4/shelf-logical-before/390-controls-final-ru.png",
+      "bytes": 16068,
+      "group": "linked-visuals",
+      "sha256": "e28bea00149f374bd7767867694eb583c8833110f243e9c2b908c327cc833103"
+    },
+    {
+      "path": "reports/ui-polish-v4/shelf-logical-before/390-navigation-final.png",
+      "bytes": 11323,
+      "group": "linked-visuals",
+      "sha256": "9780edf9e41585fa22f8b8af96dcedd91ea1ab3f13868f91d28048ad4bc85594"
+    },
+    {
+      "path": "reports/ui-polish-v4/shelf-logical/1440-controls-final-en.png",
+      "bytes": 19993,
+      "group": "shelf-EN",
+      "sha256": "1bf09c4e38f730b3ac2c0422e06c550c7e2038880daa314e1bf8736d93ef67fb"
+    },
+    {
+      "path": "reports/ui-polish-v4/shelf-logical/1440-controls-final-ru.png",
+      "bytes": 17302,
+      "group": "linked-visuals",
+      "sha256": "852692aeca6cd1a32fe6a50ae34a00ee3fafcc191dfd3495dd71136b7236285d"
+    },
+    {
+      "path": "reports/ui-polish-v4/shelf-logical/1440-navigation-final.png",
+      "bytes": 17084,
+      "group": "linked-visuals",
+      "sha256": "778a7978daffd9d9ab24de9123746fedf741b3b821a16fca046694d668b15bb4"
+    },
+    {
+      "path": "reports/ui-polish-v4/shelf-logical/390-controls-final-en.png",
+      "bytes": 19255,
+      "group": "shelf-EN",
+      "sha256": "777f8987c8bc555546a789fba0c221ce4942e2e6c54617323ef8a9999a2d76fe"
+    },
+    {
+      "path": "reports/ui-polish-v4/shelf-logical/390-controls-final-ru.png",
+      "bytes": 16592,
+      "group": "linked-visuals",
+      "sha256": "b545d5a7e60b0422a9ea184929698ac6da916bc2a0edff9c529aebfc0118bab4"
+    },
+    {
+      "path": "reports/ui-polish-v4/shelf-logical/390-navigation-final.png",
+      "bytes": 13672,
+      "group": "linked-visuals",
+      "sha256": "e72aac2e992e0cc702006452fd0f2405cbe50c7f1deec84781da0379793ed346"
+    },
+    {
+      "path": "reports/ui-polish-v4/shelf-logical/gallery-check.json",
+      "bytes": 49,
+      "group": "acceptance-provenance",
+      "sha256": "65e1f3bdb2f7af88ba59988b432a4e86e0f3537ce37658e89865ef13826f2272"
+    },
+    {
+      "path": "reports/ui-polish-v4/shelf-logical/layout-result.json",
+      "bytes": 2611,
+      "group": "linked-evidence",
+      "sha256": "1caf4a62025ff9c7d7b5675b027e19387338d3c75bda22cc865aa6094ba612a0"
+    },
+    {
+      "path": "reports/ui-polish-v4/shelf-logical/result.json",
+      "bytes": 4529,
+      "group": "linked-evidence",
+      "sha256": "a82cffe45a9520c0e30dbc1797b12ea66742ef75e970e82fb21924265bfe1774"
+    },
+    {
+      "path": "reports/ui-polish-v4/shelf-logical/review.html",
+      "bytes": 4176,
+      "group": "galleries",
+      "sha256": "e114014535ef0202d482c0ebc5ca0d1db876a9227f2f364d0c7c497da67a0c78"
+    },
+    {
+      "path": "reports/ui-polish-v4/source-before-touch-contrast.json",
+      "bytes": 4202,
+      "group": "acceptance-provenance",
+      "sha256": "db54701db5cbb13474f61534887533c44048b7166653f144d0033d624ed5a5ba"
+    }
+  ],
+  "localLinkedFilesMissing": [],
+  "integrationDocuments": [
+    "reports/ui-polish-v4/main-integration/evidence-allowlist.json",
+    "reports/ui-polish-v4/main-integration/EVIDENCE_SCOPE_RU.md"
+  ],
+  "excluded": [
+    "trace ZIP and videos",
+    "large test artifact trees",
+    "fullPage homepage PNG",
+    "rejected background variants and working/recheck/dev captures, except historically linked brand-after-dev",
+    "temporary capture/debug helpers",
+    "foreign benchmark PNG"
+  ],
+  "notes": [
+    "UI_POLISH_PROGRESS.md is the separate canonical root ledger.",
+    "The two integrationDocuments are outside the 153 evidence leaf files.",
+    "No files are staged, committed, moved or removed by this manifest."
+  ]
+}

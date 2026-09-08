@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "captureDate": "2026-09-08T05:28:37.997Z",
+  "sourceSha256": "9d483cf13525dbfe5d320e07eaf251692913d62bea7de214ba451aac0e560280",
+  "widths": [
+    1440,
+    390
+  ],
+  "regions": 13,
+  "boundaries": 12,
+  "reviewedBy": "root mobile; reader_controls desktop",
+  "reviewedAt": "2026-09-08T05:42:37.719Z",
+  "scope": "24 bounded boundary images only; runtime is separate",
+  "technicalVerification": {
+    "status": "passed_selected_runtime_scope",
+    "evidence": "benchmark-result.json#technicalVerification",
+    "uniqueExecutedClosed": 70,
+    "legitimateSkips": 8,
+    "sourceSha256": "9d483cf13525dbfe5d320e07eaf251692913d62bea7de214ba451aac0e560280",
+    "scope": "Separate executed-test evidence; the visual scope above is unchanged"
+  }
+}

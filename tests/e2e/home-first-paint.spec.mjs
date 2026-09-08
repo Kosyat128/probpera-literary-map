@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { articleFromSitemap } from "./helpers/article-route.mjs";
 
 test("главная не показывает SEO-заглушку до загрузки CSS и приложения", async ({
   page,
@@ -67,8 +68,13 @@ test("без JavaScript главная сохраняет доступную с�
 
 test("статический архив журнала не скрывается защитой главной", async ({
   page,
+  request,
+  baseURL,
 }) => {
-  await page.goto("/stati/", { waitUntil: "domcontentloaded" });
+  // Resolve the published archive under both domain and project preview bases.
+  const archiveUrl = new URL(await articleFromSitemap(request, baseURL));
+  archiveUrl.pathname = archiveUrl.pathname.replace(/(\/stati\/).*$/u, "$1");
+  await page.goto(archiveUrl.href, { waitUntil: "domcontentloaded" });
   await expect(page.locator('script[type="module"]')).toHaveCount(0);
   await expect(page.locator("[data-static-seo]")).toBeVisible();
   await expect(

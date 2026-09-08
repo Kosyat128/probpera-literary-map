@@ -1,0 +1,26 @@
+{
+  "date": "2026-09-08T08:26:42.873Z",
+  "sourceSha256": "7544c08c956e3b8402dd630a53048d4c692e953907dbc58f9f60d5adbb959b20",
+  "records": [
+    {
+      "width": 1440,
+      "errors": [],
+      "reader": {
+        "height": 939.1875,
+        "pageCount": "50",
+        "readingAnchor": "article-book:v1:ru:article-title:0"
+      },
+      "horizontalOverflow": 0
+    },
+    {
+      "width": 390,
+      "errors": [],
+      "reader": {
+        "height": 775.1875,
+        "pageCount": "50",
+        "readingAnchor": "article-book:v1:ru:article-title:0"
+      },
+      "horizontalOverflow": 0
+    }
+  ]
+}

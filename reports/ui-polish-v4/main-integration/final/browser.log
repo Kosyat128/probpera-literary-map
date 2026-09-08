@@ -1,0 +1,103 @@
+
+Running 8 tests using 1 worker
+
+(node:34200) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 [desktop-chromium] › tests\e2e\article-book-pagination.spec.mjs:14:1 › canonical book keeps the source fragment through reflow, sizing, mode changes and reopening (35.0s)
+(node:47020) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 2 [desktop-chromium] › tests\e2e\article-book-reading.spec.mjs:288:1 › illustrated book preserves every page, renders illustrations and supports accessible navigation (49.8s)
+  ok 3 [desktop-chromium] › tests\e2e\article-book-reading.spec.mjs:377:1 › a delayed illustration fills the existing book without blocking reading or resetting its page (11.1s)
+  ok 4 [desktop-chromium] › tests\e2e\reader-extended-accessibility.spec.mjs:140:1 › print media exposes the full source once and preserves canonical book position (5.8s)
+(node:48880) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  5 [mobile-chromium] › tests\e2e\article-book-pagination.spec.mjs:14:1 › canonical book keeps the source fragment through reflow, sizing, mode changes and reopening (39.2s)
+(node:48104) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 6 [mobile-chromium] › tests\e2e\article-book-reading.spec.mjs:288:1 › illustrated book preserves every page, renders illustrations and supports accessible navigation (31.3s)
+  ok 7 [mobile-chromium] › tests\e2e\article-book-reading.spec.mjs:377:1 › a delayed illustration fills the existing book without blocking reading or resetting its page (11.5s)
+  ok 8 [mobile-chromium] › tests\e2e\reader-extended-accessibility.spec.mjs:140:1 › print media exposes the full source once and preserves canonical book position (4.3s)
+
+
+  1) [desktop-chromium] › tests\e2e\article-book-pagination.spec.mjs:14:1 › canonical book keeps the source fragment through reflow, sizing, mode changes and reopening 
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator:  locator('[data-article-book-reader]')
+    Expected: "article-book:v1:ru:block-2:194"
+    Received: "article-book:v1:ru:block-2:55"
+    Timeout:  10000ms
+
+    Call log:
+      - Expect "toHaveAttribute" with timeout 10000ms
+      - waiting for locator('[data-article-book-reader]')
+        23 × locator resolved to <section lang="ru" tabindex="0" data-page-index="2" data-page-count="61" data-renderer="three" data-book-ready="true" data-book-view-scale="1" class="article-book-reader" data-article-book-reader="" aria-label="Иллюстрированная книга" data-reading-anchor="article-book:v1:ru:block-2:55">…</section>
+           - unexpected value "article-book:v1:ru:block-2:55"
+
+
+      61 |   await page.getByRole("button", { name: "Режим печатной книги", exact: true }).click();
+      62 |   await ready(book);
+    > 63 |   await expect(book).toHaveAttribute("data-reading-anchor", anchor);
+         |                      ^
+      64 |   await book.locator("summary").click();
+      65 |   await expect(semantic).toContainText(fragment, { useInnerText: true });
+      66 |   await expect(content).toHaveText(originalText);
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\probpera-typography\tests\e2e\article-book-pagination.spec.mjs:63:22
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    reports\ui-polish-v4\main-integration\final\browser-artifacts\article-book-pagination-ca-fae55--mode-changes-and-reopening-desktop-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: reports\ui-polish-v4\main-integration\final\browser-artifacts\article-book-pagination-ca-fae55--mode-changes-and-reopening-desktop-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    reports\ui-polish-v4\main-integration\final\browser-artifacts\article-book-pagination-ca-fae55--mode-changes-and-reopening-desktop-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace reports\ui-polish-v4\main-integration\final\browser-artifacts\article-book-pagination-ca-fae55--mode-changes-and-reopening-desktop-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [mobile-chromium] › tests\e2e\article-book-pagination.spec.mjs:14:1 › canonical book keeps the source fragment through reflow, sizing, mode changes and reopening 
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator:  locator('[data-article-book-reader]')
+    Expected: "article-book:v1:ru:block-2:194"
+    Received: "article-book:v1:ru:block-2:55"
+    Timeout:  10000ms
+
+    Call log:
+      - Expect "toHaveAttribute" with timeout 10000ms
+      - waiting for locator('[data-article-book-reader]')
+        23 × locator resolved to <section lang="ru" tabindex="0" data-page-index="2" data-page-count="61" data-renderer="three" data-book-ready="true" data-book-view-scale="1" class="article-book-reader" data-article-book-reader="" aria-label="Иллюстрированная книга" data-reading-anchor="article-book:v1:ru:block-2:55">…</section>
+           - unexpected value "article-book:v1:ru:block-2:55"
+
+
+      61 |   await page.getByRole("button", { name: "Режим печатной книги", exact: true }).click();
+      62 |   await ready(book);
+    > 63 |   await expect(book).toHaveAttribute("data-reading-anchor", anchor);
+         |                      ^
+      64 |   await book.locator("summary").click();
+      65 |   await expect(semantic).toContainText(fragment, { useInnerText: true });
+      66 |   await expect(content).toHaveText(originalText);
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\probpera-typography\tests\e2e\article-book-pagination.spec.mjs:63:22
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    reports\ui-polish-v4\main-integration\final\browser-artifacts\article-book-pagination-ca-fae55--mode-changes-and-reopening-mobile-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: reports\ui-polish-v4\main-integration\final\browser-artifacts\article-book-pagination-ca-fae55--mode-changes-and-reopening-mobile-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    reports\ui-polish-v4\main-integration\final\browser-artifacts\article-book-pagination-ca-fae55--mode-changes-and-reopening-mobile-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace reports\ui-polish-v4\main-integration\final\browser-artifacts\article-book-pagination-ca-fae55--mode-changes-and-reopening-mobile-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    [desktop-chromium] › tests\e2e\article-book-pagination.spec.mjs:14:1 › canonical book keeps the source fragment through reflow, sizing, mode changes and reopening 
+    [mobile-chromium] › tests\e2e\article-book-pagination.spec.mjs:14:1 › canonical book keeps the source fragment through reflow, sizing, mode changes and reopening 
+  6 passed (3.3m)

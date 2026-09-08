@@ -1,0 +1,112 @@
+{
+  "date": "2026-09-08T05:22:25.747Z",
+  "head": "f6ec0cbdb48b8e9877c766b3cdb8cdafb4b76316",
+  "scope": "All changed or added product source and decorative assets; exact file bytes. Unchanged source remains anchored to HEAD.",
+  "sourceSha256": "383ff8da6ea5a3ba076ff8516e4812f875d5d2a3bae0894cc8dc496c83f4fe29",
+  "files": [
+    {
+      "path": "public/brand/ui-polish-v4/manifest.json",
+      "sha256": "61ffb4e2b78f57a0f8e3dcf027ac1de7822c07718fe078bed8a66af227b91636"
+    },
+    {
+      "path": "public/brand/ui-polish-v4/orange-stroke.webp",
+      "sha256": "498a831349dad8d9d2ce0440f35b73b564b8af0784b3041a007575f4c8f39033"
+    },
+    {
+      "path": "public/brand/ui-polish-v4/white-stroke.webp",
+      "sha256": "be7df1f53c55f2721d661f7d17a6bbe61f145f02b6f216548cf9ee08d93e4ad1"
+    },
+    {
+      "path": "src/App.tsx",
+      "sha256": "d6d321341720eeed8250092204c11c408d5d6a932b3f56d2f5946efda42e5e7a"
+    },
+    {
+      "path": "src/atlas/atlasExperienceState.test.ts",
+      "sha256": "59a837c52a4daccc9671c9c1b4699ae851b7280c67f24424434a27fbfc8e3dd5"
+    },
+    {
+      "path": "src/atlas/atlasExperienceState.ts",
+      "sha256": "e0e55428e5ec5b6dd1b358a70762dce9edbcf100e2f0cac4da263c412f310a87"
+    },
+    {
+      "path": "src/components/ArticleLibrarySection.tsx",
+      "sha256": "b83663b9cbe6148cbe01514333f93be43e5853fedff99232d9f6576b34ff4f27"
+    },
+    {
+      "path": "src/components/ArticleReader.tsx",
+      "sha256": "6f0edf2d16e28b5b413b4af824f2e31232f912ce687a7cd76f5b1bc3a928874e"
+    },
+    {
+      "path": "src/components/AtlasExperienceChrome.tsx",
+      "sha256": "8f3d933795ca699eaa643023fb99a8a8ce469fdcd2cefb408ec136475100effc"
+    },
+    {
+      "path": "src/components/AtlasSearchCombobox.test.tsx",
+      "sha256": "18ed48d80aa4d481d9dae907bea3a648d6d38bb40bcf32a7c94a2fc541984a6a"
+    },
+    {
+      "path": "src/components/AtlasSearchCombobox.tsx",
+      "sha256": "38d820633b73ad262384a5068534329f6fa41ea28ea9bffdfc05056dac769124"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "sha256": "cdcc851c74ddc7f0e87805f4d48db19a88d5698857362eae0f7048a26f646b8e"
+    },
+    {
+      "path": "src/components/BookShelfControls.tsx",
+      "sha256": "f3c65143c25c7a4af2c18bf11793e2fbfdfb2e926de9358bb3d64369dcbe2765"
+    },
+    {
+      "path": "src/components/BrushBackdrop.tsx",
+      "sha256": "3738ff42ed1911a905b429ea9797e5e3f8139f8b653e811ad16619ee9f8bd499"
+    },
+    {
+      "path": "src/components/GlobeCanvasErrorBoundary.tsx",
+      "sha256": "864e49f5064ba0ab353e1e8f031dbb22259e60a7aa0106d373f77b7cdc71dd19"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "sha256": "27ae368679f922f234bcd68c92eedb66ac1ba0cf41b87ce7af14ceefe34babee"
+    },
+    {
+      "path": "src/components/globeAccessibility.test.ts",
+      "sha256": "def2f1b2ae44f5dcf8503b47a7d6f1ac6e6463c5fe462937ec7251944fc7f4a7"
+    },
+    {
+      "path": "src/editorial/readerFocus.ts",
+      "sha256": "8c8cafc178d59f28fcbbf067f9c1c75d27f810e966fe5593072e514404e8ade2"
+    },
+    {
+      "path": "src/editorial/useArticleBookPagination.ts",
+      "sha256": "29cc289d93bc046c14aa7c576eae0a9d2b0c6c98e156cbbc597f43fb1cc5728f"
+    },
+    {
+      "path": "src/hooks/useReadingProgress.ts",
+      "sha256": "4891f0e85b53edbb6f5b73c2dfa846142d6fa099b476c6049d39190e9ca1a866"
+    },
+    {
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "sha256": "14f610e06f6582c3c3598f5001f3b0501b5014bc3e09984cdbb72a25d5af8617"
+    },
+    {
+      "path": "src/styles/article-book-pagination.css",
+      "sha256": "2f71b18e2c1d513ca215f6b5837b5f5757d8691c6cb36355b98202e59e0edfd6"
+    },
+    {
+      "path": "src/styles/brush-flow.css",
+      "sha256": "d75102ffb4cd9fc83aeebe5427ba6a58a0fbb722cc704794dcd8801b190b19f9"
+    },
+    {
+      "path": "src/styles/header-preserved.css",
+      "sha256": "ad0447be10578563d76cd46c96a3a5ae644a4a0ee33ade3aef928ec4f9e6ff9f"
+    },
+    {
+      "path": "src/styles/shelf-polish.css",
+      "sha256": "e2a190c2238de716e6c492080002a4acd9333b1b4a0cb9d8417b871106ce84cd"
+    },
+    {
+      "path": "src/styles/ui-polish-controls.css",
+      "sha256": "bf5038fb8bb7455b7cae077fe34df10d816e0fad6436f654869907e11743b6b3"
+    }
+  ]
+}

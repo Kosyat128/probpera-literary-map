@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "UI-POLISH-READING-MAIN-INTEGRATION-20260908",
+  "mainSha": "5d3f6fb6",
+  "uiCheckpointSha": "88a0830a",
+  "authorization": "Integrate the user-requested UI work into updated main. Preserve later RU/EN 12px/400/Segoe and matching footer, plus main DisplayMode 10px.",
+  "uiAttestationSha256": "8f8313646f36009e7aad07ed7b159201236f78a727188c984105f37cb8c61332",
+  "readingAttestationSha256": "48a8b26d60093d8123a102c4f5affad746981428b408afe86b048e252ce314d2",
+  "overrides": [
+    {
+      "projectionIndex": 36,
+      "path": "src/styles/header-preserved.css",
+      "originalBeforeSha256": "b1d016e7ac512c6e81456409fac023527fb9b433c194ea7408651cc164b67db6",
+      "originalAfterSha256": "fe8b5f2fae44911c0313df69064b049741fd622a44a70d6781e801c3a18fc028",
+      "before": "font-kerning: auto;\n}\n.site-header .interface-language-control button {\n  font-size: 10px;\n  font-weight: 900;\n  transition:\n    color 160ms ease,\n    background 160ms ease,\n",
+      "after": "font-kerning: auto;\n}\n.site-header .interface-language-control button {\n  /* Historical header family from before 0a348bd4; independent of UI buttons. */\n  font-family: var(--sans);\n  font-size: 12px;\n  font-weight: 400;\n  transition:\n    color 160ms ease,\n    background 160ms ease,\n"
+    },
+    {
+      "projectionIndex": 37,
+      "path": "src/styles/header-preserved.css",
+      "originalBeforeSha256": "f20e11732b76d9a24b6643b4063abc1e6601c769c3f66c2a7b8bb18d0bdb6fad",
+      "originalAfterSha256": "51903030e594de5f0b5f0e9379e586a7c5655c3d358fc9b8838ac6309f363743",
+      "before": "  font-size: 10px;\n  font-weight: 900;\n}\n}\n",
+      "after": "  font-size: 10px;\n  font-weight: 900;\n}\n/* The footer repeats the desktop masthead, including on narrow screens. */\n.footer-brand > a {\n  display: inline-flex;\n  width: max-content;\n  max-width: 100%;\n  gap: 13px;\n}\n.footer-brand > a img {\n  width: 55px;\n  height: 55px;\n  flex-shrink: 0;\n  box-shadow: 0 8px 24px rgba(22, 1, 38, 0.24);\n}\n.footer-brand > a span {\n  display: block;\n}\n.footer-brand > a strong {\n  font-family: var(--serif);\n  font-size: 23px;\n  font-weight: 500;\n  line-height: normal;\n  letter-spacing: 0.02em;\n}\n.footer-brand > a small {\n  margin-top: 3px;\n  color: rgba(255, 255, 255, 0.61);\n  font-family: var(--sans);\n  font-size: 8px;\n  font-weight: 800;\n  line-height: normal;\n  letter-spacing: 0.18em;\n  text-transform: uppercase;\n}\n@media (max-width: 680px) {\n.site-header .interface-language-control button {\n    font-size: 12px;\n}\n}\n}\n"
+    }
+  ]
+}

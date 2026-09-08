@@ -4856,10 +4856,10 @@
     "multiline": false
   },
   {
-    "key": "interface.Нажмите на корешок - книга выйдет вперёд, а справа откроются описание и сведения.",
+    "key": "interface.Нажмите на корешок - книга выйдет вперёд, и откроются описание и сведения.",
     "group": "Весь интерфейс",
-    "label": "Нажмите на корешок - книга выйдет вперёд, а справа откроются описание и сведения.",
-    "defaultRu": "Нажмите на корешок - книга выйдет вперёд, а справа откроются описание и сведения.",
+    "label": "Нажмите на корешок - книга выйдет вперёд, и откроются описание и сведения.",
+    "defaultRu": "Нажмите на корешок - книга выйдет вперёд, и откроются описание и сведения.",
     "defaultEn": "Select a spine to bring the book forward and open its description and details.",
     "multiline": false
   },
@@ -6597,6 +6597,14 @@
     "label": "Перелистывайте страницы книги",
     "defaultRu": "Перелистывайте страницы книги",
     "defaultEn": "Turn the book pages",
+    "multiline": false
+  },
+  {
+    "key": "interface.Перелистывание статьи",
+    "group": "Весь интерфейс",
+    "label": "Перелистывание статьи",
+    "defaultRu": "Перелистывание статьи",
+    "defaultEn": "Article pagination",
     "multiline": false
   },
   {
@@ -9936,6 +9944,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Страница {page} из {total}",
+    "group": "Весь интерфейс",
+    "label": "Страница {page} из {total}",
+    "defaultRu": "Страница {page} из {total}",
+    "defaultEn": "Page {page} of {total}",
+    "multiline": false
+  },
+  {
     "key": "interface.Страница столкнулась с ошибкой",
     "group": "Весь интерфейс",
     "label": "Страница столкнулась с ошибкой",
@@ -9949,6 +9965,14 @@
     "label": "Страницы книги",
     "defaultRu": "Страницы книги",
     "defaultEn": "Book pages",
+    "multiline": false
+  },
+  {
+    "key": "interface.Страницы статьи",
+    "group": "Весь интерфейс",
+    "label": "Страницы статьи",
+    "defaultRu": "Страницы статьи",
+    "defaultEn": "Article pages",
     "multiline": false
   },
   {

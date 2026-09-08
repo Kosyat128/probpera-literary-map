@@ -1,0 +1,82 @@
+{
+  "baseline": "f6ec0cbdb48b8e9877c766b3cdb8cdafb4b76316",
+  "checkedAt": "2026-09-08T04:16:48.839Z",
+  "scope": "Read-only snapshot of an actively edited worktree; normalized tracked-content check plus exact bytes for selected protected assets. Not a runtime/production certificate.",
+  "protectedTrackedFileCount": 1451,
+  "changedProtectedPaths": [],
+  "unchangedComponents": [
+    {
+      "file": "src/utils/articleRoutes.ts",
+      "equalLfNormalized": true
+    },
+    {
+      "file": "src/components/BookShelfScene.tsx",
+      "equalLfNormalized": true
+    },
+    {
+      "file": "src/components/BookShelfSceneCanvas.tsx",
+      "equalLfNormalized": true
+    },
+    {
+      "file": "src/components/BookShelfSpineTooltip.tsx",
+      "equalLfNormalized": true
+    },
+    {
+      "file": "src/books/bookOwnerSpineIdentity.ts",
+      "equalLfNormalized": true
+    },
+    {
+      "file": "src/styles/site-typography.css",
+      "equalLfNormalized": true
+    },
+    {
+      "file": "src/styles/editorial-card-layout.css",
+      "equalLfNormalized": true
+    }
+  ],
+  "fragments": [
+    {
+      "label": "App approved magazine hero markup and content",
+      "file": "src/App.tsx",
+      "equalLfNormalized": true
+    },
+    {
+      "label": "Globe Canvas scene render tree",
+      "file": "src/components/LiteraryGlobe.tsx",
+      "equalLfNormalized": true
+    }
+  ],
+  "assets": [
+    {
+      "file": "public/brand/magazine-hero-mobile.avif",
+      "bytes": 144336,
+      "sha256": "304a0cb57ebd0736b26d82fe9a04739b5dc3da9b5a2ca2ac874e1e324caf73d3",
+      "identicalBytes": true
+    },
+    {
+      "file": "public/brand/magazine-hero-mobile.webp",
+      "bytes": 238192,
+      "sha256": "4b09de40909a720a94844e538e8efebfe196c451feecbae3b2f833214d47b713",
+      "identicalBytes": true
+    },
+    {
+      "file": "public/brand/magazine-hero-wide.avif",
+      "bytes": 141607,
+      "sha256": "cf58f94ef29aacc546c412f41459f5afc1d0b1e7f6c8e1e9e87a1880a0ce04ba",
+      "identicalBytes": true
+    },
+    {
+      "file": "public/brand/magazine-hero-wide.webp",
+      "bytes": 230886,
+      "sha256": "29df2ed78320b87c8d49abc6dc76cee466e4ad75d8d1ee4a373d339c23ee1cd9",
+      "identicalBytes": true
+    },
+    {
+      "file": "public/brand/probpera-logo.png",
+      "bytes": 20811,
+      "sha256": "d8b31268a45ddbc576fe36e1d65ff68883ee4c4a7b490b8976001858d3f3ba27",
+      "identicalBytes": true
+    }
+  ],
+  "allowedChangedScope": "Background component/derivatives, discussion reorganization, article pagination, control layout/state and header language legibility are authorized. Globe chrome changed; globe Canvas and bookshelf scene/spine rendering protected."
+}

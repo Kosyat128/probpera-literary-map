@@ -1,0 +1,9 @@
+
+ RUN  v4.1.10 C:/Users/User/Documents/ChatGPT/Работа по сайту/probpera-typography
+
+
+ Test Files  3 passed (3)
+      Tests  26 passed (26)
+   Start at  10:51:11
+   Duration  941ms (transform 198ms, setup 0ms, import 769ms, tests 292ms, environment 0ms)
+

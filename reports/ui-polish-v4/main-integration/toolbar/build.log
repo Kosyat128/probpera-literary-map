@@ -1,0 +1,199 @@
+vite v7.3.6 building client environment for production...
+transforming...
+✓ 1204 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                       4.18 kB │ gzip:   1.46 kB
+dist/assets/editorial-paper-DwbOovh5.webp            37.27 kB
+dist/assets/brush-orange-stage-B2wkl8IX.webp         46.57 kB
+dist/assets/brush-paper-split-zfVJ2vHM.webp          62.35 kB
+dist/assets/brush-violet-stage-WEaHRUQQ.webp         67.86 kB
+dist/assets/brush-paper-east-Dhu-9hco.webp           68.43 kB
+dist/assets/brush-paper-corners-ChpKv6VW.webp        75.40 kB
+dist/assets/countries-B1fL43Dn.geojson              305.05 kB
+dist/assets/section-prizes-DXUciBB7.webp            349.28 kB
+dist/assets/ArticleReader-DH1RNugl.css                1.73 kB │ gzip:   0.69 kB
+dist/assets/ArticleBookReader-C3U9oGqS.css            6.31 kB │ gzip:   1.67 kB
+dist/assets/BookArchiveSection-CdOKAbrW.css          15.68 kB │ gzip:   3.17 kB
+dist/assets/LiteraryNewsPanel-D5C44bus.css           24.93 kB │ gzip:   4.31 kB
+dist/assets/index-BVBLs7z7.css                      627.03 kB │ gzip: 105.49 kB
+dist/assets/BrandPlusIcon-C9vhMPJd.js                 0.22 kB │ gzip:   0.20 kB
+dist/assets/nobelArticles-BKSX8f7o.js                 0.48 kB │ gzip:   0.35 kB
+dist/assets/supabase-BZGyFWga.js                      1.06 kB │ gzip:   0.58 kB
+dist/assets/vite-preload-helper-BXl3LOEh.js           1.11 kB │ gzip:   0.65 kB
+dist/assets/bookArchiveQueue-DI9jtltf.js              1.77 kB │ gzip:   0.91 kB
+dist/assets/useSubscriptions-t4TTvh3n.js              2.15 kB │ gzip:   1.04 kB
+dist/assets/articleSeries-bfsT0q_2.js                 2.62 kB │ gzip:   1.20 kB
+dist/assets/NobelArchiveStrip-Cs5wdO9B.js             3.86 kB │ gzip:   1.86 kB
+dist/assets/SectionsDirectory-DfLsqcFS.js             5.01 kB │ gzip:   2.32 kB
+dist/assets/BrandHeartIcon-DKXDCVyq.js                5.95 kB │ gzip:   2.28 kB
+dist/assets/CmsHomepageContent-BOZXzOpE.js            8.18 kB │ gzip:   2.37 kB
+dist/assets/GlobalSearch-C_sp87fr.js                  8.23 kB │ gzip:   3.11 kB
+dist/assets/globalSearchRuntime-D8Ymrf9N.js           8.33 kB │ gzip:   2.92 kB
+dist/assets/LiteraryCalendar-X0ICLxZ1.js              9.54 kB │ gzip:   3.61 kB
+dist/assets/BookShelfSceneCanvas-B_a6wbGY.js         10.37 kB │ gzip:   3.86 kB
+dist/assets/BookShelfSceneCanvas-BJf2zQJn.js         10.37 kB │ gzip:   3.86 kB
+dist/assets/ArticleLibrarySection-DVXTyqhO.js        13.31 kB │ gzip:   5.36 kB
+dist/assets/BookShelfScene-D0QRi-cp.js               21.56 kB │ gzip:   8.20 kB
+dist/assets/bookArchiveLocation-BKvrtcBs.js          24.76 kB │ gzip:   8.96 kB
+dist/assets/WriterPanel-CIXrTrx3.js                  27.95 kB │ gzip:   8.51 kB
+dist/assets/LiteraryNewsPanel-Baeh5gXd.js            28.39 kB │ gzip:   9.20 kB
+dist/assets/editorialOverrides-StGXJP3e.js           50.56 kB │ gzip:   9.67 kB
+dist/assets/CommunityHub-HOgb8-eI.js                 54.41 kB │ gzip:  16.66 kB
+dist/assets/completeShelfRenderer-BOitdkaO.js        57.76 kB │ gzip:  19.92 kB
+dist/assets/LiteraryGlobe-C0C6hl2Y.js               127.87 kB │ gzip:  41.64 kB
+dist/assets/ArticleBookReader-D5EFHIpj.js           143.06 kB │ gzip:  48.08 kB
+dist/assets/react-vendor-BtloPIQe.js                146.08 kB │ gzip:  47.23 kB
+dist/assets/supabase-vendor-C0Z0FS3K.js             216.82 kB │ gzip:  57.10 kB
+dist/assets/ArticleReader-yGB2s9F2.js               237.01 kB │ gzip:  71.89 kB
+dist/assets/BookArchiveSection-DzROwIFH.js          274.62 kB │ gzip:  82.68 kB
+dist/assets/index-DDt2ezKg.js                       450.67 kB │ gzip: 138.93 kB
+dist/assets/writer-portraits-data-ZDd9rYw-.js       500.03 kB │ gzip:  76.33 kB
+dist/assets/country-data-n-z-B6kBB-fK.js            508.63 kB │ gzip: 105.27 kB
+dist/assets/bookArchive-DY4mGZ-8.js                 605.78 kB │ gzip: 134.27 kB
+dist/assets/catalog-DW4hokL_.js                     607.08 kB │ gzip:  83.99 kB
+dist/assets/countries-AvaWKHmx.js                   771.18 kB │ gzip: 225.40 kB
+dist/assets/country-data-a-m-C_afZbhK.js            789.51 kB │ gzip: 159.38 kB
+dist/assets/three-vendor-Cxx1MbK0.js              1,094.83 kB │ gzip: 330.37 kB
+dist/assets/writer-biography-reviews-BMVRO21A.js  1,227.68 kB │ gzip: 393.63 kB
+dist/assets/book-catalog-CUS-317M.js              2,053.99 kB │ gzip: 187.59 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 20.65s
+Built 167 article pages, 0 CMS pages, 2330 redirects (1503 portable section aliases), sitemap and RSS for https://probpera.ru.
+Release code head written: 5d3f6fb61e170bcc8fd64062c6283a7c75b5f144 -> C:\Users\User\Documents\ChatGPT\Работа по сайту\probpera-typography\dist\.well-known\probpera-release-head.json
+{
+  "status": "ready",
+  "checks": 12876,
+  "passed": 12876,
+  "failed": 0,
+  "articles": 167,
+  "sitemapUrls": 180,
+  "redirects": 2330,
+  "serverRedirects": 827,
+  "portableSectionAliases": 1503,
+  "errors": []
+}
+{
+  "status": "ready",
+  "checks": 5513,
+  "pages": 180,
+  "uniqueLastmodDates": 13,
+  "warnings": [],
+  "errors": []
+}
+PASS initial asset references: 4 / 4 files
+PASS initial module script/modulepreload/CSS gzip: 290649 / 307200 bytes
+PASS CMS article growth allowance: 167 / 162 baseline articles; 1310720 bytes (262144 per additional article)
+PASS published image corpus total: 604254471 / 671088640 bytes
+PASS published image corpus count: 3890 / 4200 files
+PASS published image source count: 1748 / 1900 sources
+PASS published site total: 737295638 / 900000000 bytes
+Validated published image corpus measured separately: 604254471 bytes.
+PASS dist total: 133041167 / 135790592 bytes
+PASS dist excluding book covers: 93466001 / 96206848 bytes
+PASS largest JS (assets/book-catalog-CUS-317M.js): 2053989 / 2097152 bytes
+PASS largest JS gzip (assets/book-catalog-CUS-317M.js): 183790 / 409600 bytes
+PASS main JS (assets/index-DDt2ezKg.js): 450667 / 716800 bytes
+PASS main JS gzip (assets/index-DDt2ezKg.js): 138563 / 225280 bytes
+PASS antique globe texture: 2901792 / 3355443 bytes
+PASS globe texture count: 20 / 20 files
+PASS globe textures total: 22049818 / 26214400 bytes
+PASS desktop globe texture textures/antique-world-1887.webp: 2901792 / 3355443 bytes
+PASS desktop globe texture textures/behaim-1492-ravenstein-1908.webp: 2031414 / 3355443 bytes
+PASS desktop globe texture textures/cassini-globo-terrestre-1790.webp: 2619370 / 3355443 bytes
+PASS desktop globe texture textures/coronelli-1697.webp: 1429020 / 3355443 bytes
+PASS desktop globe texture textures/earth-blue-marble.webp: 434610 / 3355443 bytes
+PASS desktop globe texture textures/hondius-rossi-1615.webp: 1929066 / 3355443 bytes
+PASS desktop globe texture textures/modern-atlas-2026-en.webp: 1461376 / 3355443 bytes
+PASS desktop globe texture textures/modern-atlas-2026-ru.webp: 1477124 / 3355443 bytes
+PASS desktop globe texture textures/scherer-1700.webp: 1104598 / 3355443 bytes
+PASS desktop globe texture textures/us-army-general-reference-1943.webp: 1971264 / 3355443 bytes
+PASS mobile globe texture textures/antique-world-1887-mobile.webp: 687972 / 786432 bytes
+PASS mobile globe texture textures/behaim-1492-ravenstein-1908-mobile.webp: 511208 / 786432 bytes
+PASS mobile globe texture textures/cassini-globo-terrestre-1790-mobile.webp: 609440 / 786432 bytes
+PASS mobile globe texture textures/coronelli-1697-mobile.webp: 499562 / 786432 bytes
+PASS mobile globe texture textures/earth-blue-marble-mobile.webp: 126246 / 786432 bytes
+PASS mobile globe texture textures/hondius-rossi-1615-mobile.webp: 537158 / 786432 bytes
+PASS mobile globe texture textures/modern-atlas-2026-en-mobile.webp: 390810 / 786432 bytes
+PASS mobile globe texture textures/modern-atlas-2026-ru-mobile.webp: 395324 / 786432 bytes
+PASS mobile globe texture textures/scherer-1700-mobile.webp: 407040 / 786432 bytes
+PASS mobile globe texture textures/us-army-general-reference-1943-mobile.webp: 525424 / 786432 bytes
+PASS writer portraits total: 30943374 / 37748736 bytes
+PASS writer portrait average: 27239 / 36864 bytes
+PASS writer portrait maximum: 123952 / 153600 bytes
+PASS book cover count: 424 / 424 files
+PASS book covers total: 39575166 / 40108032 bytes
+PASS book cover average: 93338 / 153600 bytes
+PASS book cover maximum: 462894 / 491520 bytes
+Performance budget passed for 8473 production files.
+vite v7.3.6 building client environment for production...
+transforming...
+✓ 1204 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                       4.40 kB │ gzip:   1.47 kB
+dist/assets/editorial-paper-DwbOovh5.webp            37.27 kB
+dist/assets/brush-orange-stage-B2wkl8IX.webp         46.57 kB
+dist/assets/brush-paper-split-zfVJ2vHM.webp          62.35 kB
+dist/assets/brush-violet-stage-WEaHRUQQ.webp         67.86 kB
+dist/assets/brush-paper-east-Dhu-9hco.webp           68.43 kB
+dist/assets/brush-paper-corners-ChpKv6VW.webp        75.40 kB
+dist/assets/countries-B1fL43Dn.geojson              305.05 kB
+dist/assets/section-prizes-DXUciBB7.webp            349.28 kB
+dist/assets/ArticleReader-DH1RNugl.css                1.73 kB │ gzip:   0.69 kB
+dist/assets/ArticleBookReader-C3U9oGqS.css            6.31 kB │ gzip:   1.67 kB
+dist/assets/BookArchiveSection-CdOKAbrW.css          15.68 kB │ gzip:   3.17 kB
+dist/assets/LiteraryNewsPanel-D5C44bus.css           24.93 kB │ gzip:   4.31 kB
+dist/assets/index-BYRXEivO.css                      627.89 kB │ gzip: 105.59 kB
+dist/assets/BrandPlusIcon-C9vhMPJd.js                 0.22 kB │ gzip:   0.20 kB
+dist/assets/nobelArticles-B4X6dW2p.js                 0.48 kB │ gzip:   0.35 kB
+dist/assets/supabase-D0n0hbWC.js                      1.06 kB │ gzip:   0.58 kB
+dist/assets/vite-preload-helper-Bk9RROYF.js           1.13 kB │ gzip:   0.67 kB
+dist/assets/bookArchiveQueue-Cx02-doC.js              1.77 kB │ gzip:   0.91 kB
+dist/assets/useSubscriptions-B6cvfvXJ.js              2.15 kB │ gzip:   1.04 kB
+dist/assets/articleSeries-bfsT0q_2.js                 2.62 kB │ gzip:   1.20 kB
+dist/assets/NobelArchiveStrip-3MyJk7Yi.js             3.88 kB │ gzip:   1.87 kB
+dist/assets/SectionsDirectory-DK-R8jGY.js             5.01 kB │ gzip:   2.32 kB
+dist/assets/BrandHeartIcon-CaH6jIfN.js                5.95 kB │ gzip:   2.28 kB
+dist/assets/CmsHomepageContent-C1CgGK4y.js            8.18 kB │ gzip:   2.37 kB
+dist/assets/GlobalSearch-BRuD7g3K.js                  8.25 kB │ gzip:   3.12 kB
+dist/assets/globalSearchRuntime-BXNk3B2R.js           8.33 kB │ gzip:   2.92 kB
+dist/assets/LiteraryCalendar-DqY2Q0ew.js              9.54 kB │ gzip:   3.61 kB
+dist/assets/BookShelfSceneCanvas-DrR3pveB.js         10.37 kB │ gzip:   3.86 kB
+dist/assets/BookShelfSceneCanvas-ZfA-t7Yd.js         10.37 kB │ gzip:   3.86 kB
+dist/assets/ArticleLibrarySection-D6Xi-n-K.js        13.35 kB │ gzip:   5.36 kB
+dist/assets/BookShelfScene-DQXeuXq5.js               21.56 kB │ gzip:   8.20 kB
+dist/assets/bookArchiveLocation-Di4miKpd.js          24.78 kB │ gzip:   8.97 kB
+dist/assets/WriterPanel-p-Glxw_6.js                  27.97 kB │ gzip:   8.52 kB
+dist/assets/LiteraryNewsPanel-M9UHJabH.js            28.39 kB │ gzip:   9.21 kB
+dist/assets/editorialOverrides-StGXJP3e.js           50.56 kB │ gzip:   9.67 kB
+dist/assets/CommunityHub-CKBTPGM-.js                 54.48 kB │ gzip:  16.68 kB
+dist/assets/completeShelfRenderer-CVMvtC3y.js        57.76 kB │ gzip:  19.91 kB
+dist/assets/LiteraryGlobe-DVcLNAjI.js               128.02 kB │ gzip:  41.69 kB
+dist/assets/ArticleBookReader-XQ4qiLxE.js           143.06 kB │ gzip:  48.09 kB
+dist/assets/react-vendor-BtloPIQe.js                146.08 kB │ gzip:  47.23 kB
+dist/assets/supabase-vendor-C0Z0FS3K.js             216.82 kB │ gzip:  57.10 kB
+dist/assets/ArticleReader-Cop_YyM8.js               237.09 kB │ gzip:  71.89 kB
+dist/assets/BookArchiveSection-Dwd9Qbke.js          274.64 kB │ gzip:  82.69 kB
+dist/assets/index-CZiJeiAQ.js                       451.08 kB │ gzip: 138.96 kB
+dist/assets/writer-portraits-data-ZDd9rYw-.js       500.03 kB │ gzip:  76.33 kB
+dist/assets/country-data-n-z-B6kBB-fK.js            508.63 kB │ gzip: 105.27 kB
+dist/assets/bookArchive-Bt0Q6vzg.js                 605.78 kB │ gzip: 134.27 kB
+dist/assets/catalog-U9J07ZyX.js                     607.08 kB │ gzip:  83.99 kB
+dist/assets/countries-CVNdHDMZ.js                   771.18 kB │ gzip: 225.40 kB
+dist/assets/country-data-a-m-C_afZbhK.js            789.51 kB │ gzip: 159.38 kB
+dist/assets/three-vendor-Cxx1MbK0.js              1,094.83 kB │ gzip: 330.37 kB
+dist/assets/writer-biography-reviews-BMVRO21A.js  1,227.68 kB │ gzip: 393.63 kB
+dist/assets/book-catalog-CUS-317M.js              2,053.99 kB │ gzip: 187.59 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 22.93s
+Built 167 article pages, 0 CMS pages, 2330 redirects (1503 portable section aliases), sitemap and RSS for https://kosyat128.github.io/probpera-literary-map.
+{"checked":661,"issues":[]}

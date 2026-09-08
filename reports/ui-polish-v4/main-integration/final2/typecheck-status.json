@@ -1,0 +1,6 @@
+{
+  "started": "2026-09-08T08:17:24.9897960Z",
+  "finished": "2026-09-08T08:18:04.7108222Z",
+  "command": "node node_modules/typescript/bin/tsc --noEmit",
+  "exitCode": 0
+}

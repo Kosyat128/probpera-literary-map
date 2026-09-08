@@ -221,6 +221,8 @@ type Props = {
   onViewModeChange: (mode: BookShelfViewMode) => void;
   shelfLabel: string;
   catalogLabel: string;
+  archiveLabel?: string;
+  onOpenArchive?: () => void;
   randomLabel: string;
   randomDescription: string;
   randomDisabled: boolean;
@@ -256,6 +258,8 @@ export default function BookShelfControls({
   onViewModeChange,
   shelfLabel,
   catalogLabel,
+  archiveLabel,
+  onOpenArchive,
   randomLabel,
   randomDescription,
   randomDisabled,
@@ -366,7 +370,23 @@ export default function BookShelfControls({
 
   return (
     <div className="book-archive-toolbar book-shelf-controls">
-      <div className="book-shelf-controls__topline">
+      <div
+        className="book-shelf-controls__topline"
+        onMouseDownCapture={(event) => {
+          // Mobile results occupy a row. Keep it in place until the clicked
+          // action receives its click, instead of moving that action on blur.
+          if (!suggestionsOpen || !(event.target instanceof Element)) return;
+          const button = event.target.closest("button");
+          if (button && !suggestionsRef.current?.contains(button)) event.preventDefault();
+        }}
+        onClickCapture={(event) => {
+          if (!suggestionsOpen || !(event.target instanceof Element)) return;
+          const button = event.target.closest("button");
+          if (!button || suggestionsRef.current?.contains(button)) return;
+          dismissSuggestions();
+          button.focus({ preventScroll: true });
+        }}
+      >
         {collectionControl ? <div className="book-shelf-controls__collection">{collectionControl}</div> : null}
         <div className="book-shelf-controls__search-group">
         <label className="book-shelf-controls__search" htmlFor={controlId}>
@@ -460,6 +480,7 @@ export default function BookShelfControls({
       ) : null}
         </div>
 
+        <div className="book-shelf-controls__view-actions">
         <div className="book-shelf-controls__views" role="group" aria-label={catalogLabel}>
           <button
             type="button"
@@ -485,6 +506,8 @@ export default function BookShelfControls({
             <span>{catalogLabel}</span>
           </button>
         </div>
+          {onOpenArchive && <button type="button" className="book-shelf-controls__archive" onClick={onOpenArchive}>{archiveLabel}</button>}
+        </div>
         <div className="book-filter-panel">
           <span className="book-shelf-controls__visually-hidden">
             {resultCountLabel}
@@ -502,6 +525,7 @@ export default function BookShelfControls({
             <BrandFilterIcon />
           </button>
         </div>
+        {settingsControl ? <div className="book-shelf-controls__settings">{settingsControl}</div> : null}
         <button
           type="button"
           className="book-shelf-controls__random"
@@ -513,7 +537,6 @@ export default function BookShelfControls({
           <BrandSparkleIcon />
           <span>{randomLabel}</span>
         </button>
-        {settingsControl ? <div className="book-shelf-controls__settings">{settingsControl}</div> : null}
       </div>
 
 

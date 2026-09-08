@@ -65,36 +65,31 @@ export default function AtlasExperienceChrome({
           </div>
         </div>
         <nav aria-label={t("Литературная планета")}>
-          <Button
-            ref={searchButtonRef}
-            className="atlas-immersive-search-toggle"
-            size="md"
-            surface="dark"
-            variant="secondary"
-            startIcon={<BrandSearchIcon />}
-            aria-expanded={searchOpen}
-            aria-controls="atlas-search-panel"
-            aria-label={t("Поиск по Литературной планете")}
-            data-atlas-action="toggle-search"
-            onClick={onSearchToggle}
-          >
-            {t("Поиск")}
-          </Button>
-          <Button
+          <IconButton
             ref={filtersButtonRef}
             className="atlas-immersive-filter-toggle"
             size="md"
             surface="dark"
-            variant="secondary"
-            startIcon={<BrandFilterIcon />}
+            icon={<BrandFilterIcon />}
             aria-expanded={filtersOpen}
             aria-controls="atlas-filter-panel"
-            aria-label={t("Фильтры глобуса")}
+            aria-label={t("Все страны")}
             data-atlas-action="toggle-filters"
             onClick={onFiltersToggle}
-          >
-            {t("Фильтры глобуса")}
-          </Button>
+          />
+          <IconButton
+            ref={searchButtonRef}
+            className="atlas-immersive-search-toggle"
+            size="md"
+            surface="dark"
+            icon={<BrandSearchIcon />}
+            aria-expanded={searchOpen}
+            aria-controls="atlas-search-panel"
+            aria-label={t("Поиск по Литературной планете")}
+            data-atlas-action="toggle-search"
+            onMouseDown={(event) => event.preventDefault()}
+            onClick={onSearchToggle}
+          />
           <Button
             className="atlas-immersive-random"
             size="md"

@@ -220,6 +220,7 @@ import BookShelfControls, {
 } from "./BookShelfControls";
 import BookShelfQualityMenu from "./BookShelfQualityMenu";
 import BookShelfFrame from "./BookShelfFrame";
+import BrushBackdrop from "./BrushBackdrop";
 import BookShelfProgressRail from "./BookShelfProgressRail";
 import BookShelfScene, {
   type BookShelfSceneAppearance,
@@ -3840,7 +3841,7 @@ export default function BookArchiveSection({
   return (
     <section
       ref={archiveSectionRef}
-      className={`book-archive-section${coreHomepageSectionClass(
+      className={`book-archive-section brush-surface${coreHomepageSectionClass(
         coreBookArchive
       )}`}
       id="books"
@@ -3852,6 +3853,7 @@ export default function BookArchiveSection({
         { kind: "image", label: "Фон книжного архива" }
       )}
     >
+      <BrushBackdrop source="authors" />
       <header className="book-archive-heading">
         <div>
           <span
@@ -4017,6 +4019,14 @@ export default function BookArchiveSection({
             }}
             shelfLabel={shelfTabLabel}
             catalogLabel={catalogTabLabel}
+            archiveLabel={t("Весь архив")}
+            onOpenArchive={() => {
+              changeActiveShelf(BOOK_COLLECTION_ALL_SHELF_ID);
+              setQuery("");
+              setFilterState(normalizeBookArchiveFilterState());
+              setSearchScope("archive");
+              setViewMode("catalog");
+            }}
             randomLabel={t("Наугад")}
             randomDescription={t(
               "Выбрать случайное произведение из всего архива"
@@ -4738,7 +4748,7 @@ export default function BookArchiveSection({
                     openBookDetail(item.book, event.currentTarget);
                   }}
                   aria-label={`${t("Выберите книгу")}. ${t(
-                    "Нажмите на корешок - книга выйдет вперёд, а справа откроются описание и сведения."
+                    "Нажмите на корешок - книга выйдет вперёд, и откроются описание и сведения."
                   )}`}
                 >
                   <BrandBookIcon />
@@ -4746,7 +4756,7 @@ export default function BookArchiveSection({
                     <strong>{t("Выберите книгу")}</strong>
                     <small>
                       {t(
-                        "Нажмите на корешок - книга выйдет вперёд, а справа откроются описание и сведения."
+                        "Нажмите на корешок - книга выйдет вперёд, и откроются описание и сведения."
                       )}
                     </small>
                   </span>
@@ -4940,18 +4950,9 @@ export default function BookArchiveSection({
             <span>{t("Назад")}</span>
           </button>
           <div className="book-shelf-navigation__position">
+            <div className="book-shelf-navigation__steps">
             <button
-              className="is-edge"
-              type="button"
-              onClick={() => focusBookAt(0)}
-              disabled={navigationLocked || !shelfNavigation.canMovePrevious}
-              aria-label={t("Первая книга")}
-            >
-              <span aria-hidden="true">|</span>
-              <BrandArrowIcon />
-            </button>
-            <button
-              className="book-shelf-navigation__batch"
+              className="book-shelf-navigation__batch is-previous"
               type="button"
               onClick={() => focusBookAt(shelfNavigation.pagePreviousIndex)}
               disabled={navigationLocked || !shelfNavigation.canMovePagePrevious}
@@ -4962,7 +4963,7 @@ export default function BookArchiveSection({
               <span>13</span>
             </button>
             <button
-              className="book-shelf-navigation__single"
+              className="book-shelf-navigation__single is-previous"
               type="button"
               onClick={() => focusBookAt(shelfNavigation.previousIndex)}
               disabled={navigationLocked || !shelfNavigation.canMovePrevious}
@@ -4980,15 +4981,6 @@ export default function BookArchiveSection({
                 <small>{t("Полка пуста")}</small>
               )}
             </span>
-            <BookShelfProgressRail
-              focusIndex={shelfNavigation.focusIndex}
-              total={shelfNavigation.total}
-              label={t("Позиция на книжной полке")}
-              valueText={(current, total) =>
-                `${number(current)} ${t("из")} ${number(total)}`
-              }
-              onFocusIndexChange={focusBookAt}
-            />
             <button
               className="book-shelf-navigation__single"
               type="button"
@@ -5009,6 +5001,28 @@ export default function BookArchiveSection({
               <span>13</span>
               <BrandArrowIcon />
             </button>
+            </div>
+            <div className="book-shelf-navigation__scrub">
+            <button
+              className="is-edge"
+              type="button"
+              onClick={() => focusBookAt(0)}
+              disabled={navigationLocked || !shelfNavigation.canMovePrevious}
+              aria-label={t("Первая книга")}
+            >
+              <svg className="book-shelf-navigation__skip-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M7 5v14M17 6l-6 6 6 6" />
+              </svg>
+            </button>
+            <BookShelfProgressRail
+              focusIndex={shelfNavigation.focusIndex}
+              total={shelfNavigation.total}
+              label={t("Позиция на книжной полке")}
+              valueText={(current, total) =>
+                `${number(current)} ${t("из")} ${number(total)}`
+              }
+              onFocusIndexChange={focusBookAt}
+            />
             <button
               className="is-edge"
               type="button"
@@ -5019,9 +5033,11 @@ export default function BookArchiveSection({
               }
               aria-label={t("Последняя книга")}
             >
-              <BrandArrowIcon />
-              <span aria-hidden="true">|</span>
+              <svg className="book-shelf-navigation__skip-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M17 5v14M7 6l6 6-6 6" />
+              </svg>
             </button>
+            </div>
           </div>
           <div className="book-shelf-navigation__actions">
             <button
@@ -5058,7 +5074,7 @@ export default function BookArchiveSection({
               }
               disabled={!navigationActionBook}
             >
-              <span aria-hidden="true">＋</span>
+              <BrandPlusIcon />
               <span>{language === "en" ? "Add to shelf" : "Добавить на полку"}</span>
             </button>
           </div>
