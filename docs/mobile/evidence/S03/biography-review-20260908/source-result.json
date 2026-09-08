@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "stage": "S03",
-  "status": "SOURCE_AND_LOCAL_ARTIFACT_VALIDATION_PASSED",
-  "recordedAt": "2026-09-08T10:26:41.235Z",
+  "status": "FOCUSED_SOURCE_VALIDATION_PASSED",
+  "recordedAt": "2026-09-08T10:16:46.057Z",
   "sourceCheckpointBeforeChanges": "5b9aa7bf76e829428ff34db0a2965fdbfb1a7564",
   "sourceFiles": [
     {
@@ -151,8 +151,8 @@
     "translatedApprovals": 0,
     "factualReviewPerformed": false
   },
-  "newNativeArtifactProduced": true,
-  "newPwaArtifactProduced": true,
+  "newNativeArtifactProduced": false,
+  "newPwaArtifactProduced": false,
   "history": [
     "Runtime a1 passed before review found source-eligibility and correction-retention defects; corrected runtime/CMS/overlay a2 is the final 52-case run.",
     "Public a1 failed at sandboxed esbuild config loading with no Vitest report; public a2 ran all 36 selected tests successfully.",
@@ -401,15 +401,5 @@
     "evidence": "source-state-verification.json",
     "passed": true,
     "releaseReady": false
-  },
-  "sourceCommit": "308d8366c24f8b9f47ada304b43856c327890d43",
-  "sourceCheckpointEvidence": "source-result.json",
-  "sourceCheckpointSha256": "adca0b7f5149831c9a253cb217a7b4e16d34a17369efaa95aa4c26d9b51688fd",
-  "artifactCheckpointEvidence": "artifact-checkpoint.json",
-  "artifactCheckpointSha256": "10cd549b64b7ffa2045dc9cc1bcf4bcfe5d354ab3a8bf99ea51478905ec86762",
-  "nativeArtifactEvidence": "docs/mobile/evidence/S04/biography-review-android-20260908/result.json",
-  "pwaArtifactEvidence": "docs/mobile/evidence/S03/biography-review-20260908/pwa/result.json",
-  "nativeBuildId": "6611b76bcd73daf6c39017f7ca1067d8fb52c8927b1fbd21055efc8e27117a50",
-  "pwaBuildId": "86096d6415c05646e47679ee98a411862cb6ba296caa56ce86a5747bd5e00955",
-  "artifactRuntimeLimit": "One source/browser scenario with injected OS APIs plus exact native/PWA build audits; no installed APK or fresh PWA browser suite."
+  }
 }

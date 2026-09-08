@@ -1,0 +1,14 @@
+[
+  {
+    "path": "tests/pwa/support/local-server.mjs",
+    "sha256": "5961d3e61339bb8e44704d804acbad99041706645377c9f9bf28b6676f1c5c1e"
+  },
+  {
+    "path": "tests/pwa/support/cross-engine-server.mjs",
+    "sha256": "51d6ba7b0b71e0008dc650812e11d7ded327e5607316af330c0757eef011bbb6"
+  },
+  {
+    "path": ".tmp/s03-biography-review-pwa-20260908/run-pwa-biography-review.mjs",
+    "sha256": "f9747a83bda8903130271024f7373fd63ef0451496a1b39d3e6217ddf6f9c02f"
+  }
+]

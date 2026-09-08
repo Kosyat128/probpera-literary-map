@@ -2,20 +2,20 @@ Continue V12 in literary-planet-v12-work on
 codex/literary-planet-v12-bilingual-final-autopilot.
 
 <!-- s03-biography-review:begin -->
-Current work: exact editorial acceptance and stale propagation for biographies.
-Generated EN stays draft; both human and machine translations require a supplied
-human review bound to exact source/target revisions and an eligible source.
-CMS edits invalidate acceptance; generated data preserves existing correction
-work. The public exporter retains original and post-edit provenance.
-138 focused tests plus one shared TypeScript/platform-boundary execution passed.
-One actual RU/EN writer/globe source-browser case passed with simulated native
-plugins. Corpus export retains all1684 RU/20 authored EN profiles and preserves
-previously dropped provenance on1672 RU profiles; no prose changes.
-Fresh Android/PWA artifacts follow this source checkpoint. Prior17b6/7855 below
-now retain historical source identities. Evidence: evidence/S03/biography-review-20260908/result.json.
-No real translation approval was created. Full English coverage, visual owner
-corrections, nearly10k capacity, edition-specific covers and all open stage/device
-release gates remain incomplete; first-open is S03, full S38 is not started.
+Source 308d8366c24f8b9f47ada304b43856c327890d43: exact biography review and stale propagation.
+Generated EN stays draft; CMS/source/target changes invalidate acceptance.
+138 focused tests, one shared static run, one actual RU/EN writer/globe
+source-browser case and full current biography export comparison passed.
+All1684 RU/20 authored EN profiles retained;1672 source provenance records
+preserved. No prose translation or human approval was created.
+Android/dev 6611b76b: strict build, offline Gradle, APK checks and exact copies.
+APK: .tmp/native-builds/android-dev/biography-review-6611b76b/app-dev-debug.apk.
+Controlled local-QA PWA 86096d64: strict artifact/worker audit and exact copies;
+zero new PWA browser executions. Prior7855 repair browser evidence is historical.
+Evidence: evidence/S03/biography-review-20260908/result.json.
+Full English coverage, visual owner corrections, nearly10k capacity, EN edition
+covers, quality tiers/Planetka and device/release gates remain incomplete.
+First-open stays S03; full S38 is not started. Frozen iOS83 unchanged/pending.
 <!-- s03-biography-review:end -->
 
 <!-- s07-appearance-quality:begin -->

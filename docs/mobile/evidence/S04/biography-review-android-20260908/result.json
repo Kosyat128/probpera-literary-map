@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T10:23:03.778Z",
+  "kind": "android-biography-review-dev-apk-preservation",
+  "status": "BUILD_AND_BINARY_INSPECTION_PASSED",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "sourceCommit": "308d8366c24f8b9f47ada304b43856c327890d43",
+  "buildId": "6611b76bcd73daf6c39017f7ca1067d8fb52c8927b1fbd21055efc8e27117a50",
+  "sourceInputsSha256": "dea3876d9feb40027815206f14073c8af87ee3b13cacf2bd9b7a80ba0a624196",
+  "artifact": {
+    "path": ".tmp/native-builds/android-dev/biography-review-6611b76b/runtime",
+    "metadata": "docs/mobile/evidence/S04/biography-review-android-20260908/native-artifact.json",
+    "sha256": "b0492a3205add7c4368be0cf07aa76c8ceac20aaba40514236ca790e0ebca103"
+  },
+  "apk": {
+    "path": ".tmp/native-builds/android-dev/biography-review-6611b76b/app-dev-debug.apk",
+    "bytes": 35535481,
+    "sha256": "d1d62d3b1eb61f915f16ac5f5057e1b66bcac00526d16a856d3513840f41688d"
+  },
+  "validation": {
+    "sourceBehavior": "docs/mobile/evidence/S03/biography-review-20260908",
+    "nativeStrictAudit": {
+      "path": "docs/mobile/evidence/S04/biography-review-android-20260908/native-artifact-audit.json",
+      "pass": true,
+      "files": 345
+    },
+    "build": {
+      "pass": true,
+      "sourceCommit": "308d8366c24f8b9f47ada304b43856c327890d43",
+      "buildId": "6611b76bcd73daf6c39017f7ca1067d8fb52c8927b1fbd21055efc8e27117a50",
+      "startedAt": "2026-09-08T10:21:40.1258582+00:00",
+      "durationSeconds": 41.3720636,
+      "task": ":app:assembleDevDebug",
+      "offline": true,
+      "actionableTasks": 167,
+      "executed": 22,
+      "upToDate": 145,
+      "fromCache": 0,
+      "deviceTested": false,
+      "releaseReady": false,
+      "report": "docs/mobile/evidence/S04/biography-review-android-20260908/build-run.json"
+    },
+    "binaryAudit": {
+      "path": "docs/mobile/evidence/S04/biography-review-android-20260908/android-dev-apk-verification.json",
+      "pass": true,
+      "bundledAssetsExpected": 345,
+      "bundledAssetsMatched": 344,
+      "omittedValidationMetadata": [
+        ".vite/manifest.json"
+      ],
+      "selectableLocales": [
+        "en",
+        "ru"
+      ],
+      "debugSignature": true,
+      "alignment": true
+    },
+    "preservedCopies": "docs/mobile/evidence/S04/biography-review-android-20260908/copy-verification.json",
+    "completedBuildsOrTestsRepeated": false
+  },
+  "reports": [
+    {
+      "source": ".tmp/biography-review-android-20260908/android-dev-apk-aapt2-badging.txt",
+      "path": "docs/mobile/evidence/S04/biography-review-android-20260908/android-dev-apk-aapt2-badging.txt",
+      "bytes": 5374,
+      "sha256": "71d3971e95e33d7023aa682bdc475572397866ef1ec75ecaf4f31cb9794fac73"
+    },
+    {
+      "source": ".tmp/biography-review-android-20260908/android-dev-apk-locales.txt",
+      "path": "docs/mobile/evidence/S04/biography-review-android-20260908/android-dev-apk-locales.txt",
+      "bytes": 323,
+      "sha256": "e417b96725691c86cc6103223f08367d7454894043884c0e8d1142e519de5200"
+    },
+    {
+      "source": ".tmp/biography-review-android-20260908/android-dev-apk-manifest.txt",
+      "path": "docs/mobile/evidence/S04/biography-review-android-20260908/android-dev-apk-manifest.txt",
+      "bytes": 8836,
+      "sha256": "4903cac6b08900e6b96f58e832f9a2a50c88643ee0d0c37625628c9018afa4ec"
+    },
+    {
+      "source": ".tmp/biography-review-android-20260908/android-dev-apk-signature.txt",
+      "path": "docs/mobile/evidence/S04/biography-review-android-20260908/android-dev-apk-signature.txt",
+      "bytes": 972,
+      "sha256": "8289f86c685f73de50fb3de8bd8f791e4f708dcbd81bf82caaf76b3cd4b650c1"
+    },
+    {
+      "source": ".tmp/biography-review-android-20260908/android-dev-apk-verification.json",
+      "path": "docs/mobile/evidence/S04/biography-review-android-20260908/android-dev-apk-verification.json",
+      "bytes": 7318,
+      "sha256": "e5e4dbfc85bfa378ccdb517eeda93a1a930937dce61a0f25b4a88ee3b8be7c18"
+    },
+    {
+      "source": ".tmp/biography-review-android-20260908/android-dev-apk-zip-entries.json",
+      "path": "docs/mobile/evidence/S04/biography-review-android-20260908/android-dev-apk-zip-entries.json",
+      "bytes": 191816,
+      "sha256": "bb773473dd54dfed03a48a00db7be65c38817f26f176a3d2203be50d3f89d462"
+    },
+    {
+      "source": ".tmp/biography-review-android-20260908/android-dev-apk-zipalign.txt",
+      "path": "docs/mobile/evidence/S04/biography-review-android-20260908/android-dev-apk-zipalign.txt",
+      "bytes": 56845,
+      "sha256": "a4ca3c5ffb4a6d72bd9e7a82b0ac8e7115905431afcafdd8bdeb363e0da3380d"
+    },
+    {
+      "source": ".tmp/biography-review-android-20260908/build-run.json",
+      "path": "docs/mobile/evidence/S04/biography-review-android-20260908/build-run.json",
+      "bytes": 447,
+      "sha256": "3f58d522dd7f9b5819c83c0e2e29a828e1a9cb9cfd7c121d1ad4feca8b6846e8"
+    },
+    {
+      "source": ".tmp/biography-review-android-20260908/native-artifact-audit.json",
+      "path": "docs/mobile/evidence/S04/biography-review-android-20260908/native-artifact-audit.json",
+      "bytes": 1068,
+      "sha256": "5e89d66d0c39c28cd721d4fa3b0953baac711e12c0c7ccbd0994c3da20c5112e"
+    },
+    {
+      "source": ".tmp/biography-review-android-20260908/apk-verifier-transcript.json",
+      "path": "docs/mobile/evidence/S04/biography-review-android-20260908/apk-verifier-transcript.json",
+      "bytes": 7519,
+      "sha256": "c014348048510355e3ecbb7b2727fa9814dfe3bea3f145231d084b7bf944ebfc"
+    },
+    {
+      "source": "dist-native/artifact.json",
+      "path": "docs/mobile/evidence/S04/biography-review-android-20260908/native-artifact.json",
+      "bytes": 271431,
+      "sha256": "b0492a3205add7c4368be0cf07aa76c8ceac20aaba40514236ca790e0ebca103"
+    },
+    {
+      "source": ".tmp/native-bootstrap/verify-biography-review-android-20260908.mjs",
+      "path": "docs/mobile/evidence/S04/biography-review-android-20260908/verify-biography-review-android-20260908.mjs",
+      "bytes": 14250,
+      "sha256": "b1423b6fcf321ce2688959234e2b7e4c08f088e809515e0e3f2900449f99f9ba"
+    },
+    {
+      "source": ".tmp/native-bootstrap/build-biography-review-android-20260908.ps1",
+      "path": "docs/mobile/evidence/S04/biography-review-android-20260908/build-biography-review-android-20260908.ps1",
+      "bytes": 6166,
+      "sha256": "51e1546df447fa6de654a29d133c675c1337a317dfc44554e8bb7ef3e9a9f705"
+    },
+    {
+      "source": ".tmp/native-bootstrap/preserve-biography-review-android-20260908.mjs",
+      "path": "docs/mobile/evidence/S04/biography-review-android-20260908/preserve-biography-review-android-20260908.mjs",
+      "bytes": 9892,
+      "sha256": "69798bb3ea9fe1d3dfa09f480436a35fa8165ee6f79845de649c7a8648b720e4"
+    }
+  ],
+  "transcripts": [
+    {
+      "path": "docs/mobile/evidence/S04/biography-review-android-20260908/native-build-transcript.json",
+      "bytes": 13847,
+      "sha256": "81abdc79825d395242a1c5ebb400faaf07d3b03a3452515a2406326e9f6929c3",
+      "original": ".tmp/biography-review-android-20260908/native-build.log",
+      "originalBytes": 13250,
+      "originalSha256": "7688bbb80dac0888a770b5f24233e04d82df30d9a33bbb82c4955191f96daa90"
+    },
+    {
+      "path": "docs/mobile/evidence/S04/biography-review-android-20260908/sync-android-transcript.json",
+      "bytes": 865,
+      "sha256": "25c38055fef29150530d70e8c3f3cbba0e71097b927f00a7210f0c43461e81cf",
+      "original": ".tmp/biography-review-android-20260908/sync-android.log",
+      "originalBytes": 543,
+      "originalSha256": "5644e7051d2560f94eb3eda4f3fca082109f0a9f75506df42a009506743f5b63"
+    },
+    {
+      "path": "docs/mobile/evidence/S04/biography-review-android-20260908/assemble-dev-debug-transcript.json",
+      "bytes": 14682,
+      "sha256": "c60c91d9b323a03fbf3215a16c5e0c5cb523b1979d5462ecccb68fc684213111",
+      "original": ".tmp/biography-review-android-20260908/assemble-dev-debug.log",
+      "originalBytes": 13917,
+      "originalSha256": "52e05fe45ed4274e40922a265360395223dec4a7b48160948aa91440c0f8359b"
+    }
+  ],
+  "boundaries": [
+    "Source 308d8366c24f8b9f47ada304b43856c327890d43 is this exact biography-review devDebug snapshot; all prior Android and iOS artifacts remain distinct and unmodified.",
+    "This exact devDebug APK was compiled and statically inspected; it was not installed or exercised on an Android emulator or physical device.",
+    "Chrome native-binding fixtures and CDP safe-area overrides are not installed Android/iOS runtime evidence or exact-RC screenshots.",
+    "Biography review behavior has separate source-bound unit/integration evidence under docs/mobile/evidence/S03/biography-review-20260908; none of it constitutes installed Android runtime validation or a real editorial approval.",
+    "S03/S04/S05/S07 and global bilingual/content/child/commerce/rights/owner/release gates remain open. No production signing, deploy, store action, merge or owner approval is implied."
+  ]
+}

@@ -5,7 +5,7 @@
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
   "headSha": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-08T10:16:46.057Z",
+  "updatedAt": "2026-09-08T10:26:41.235Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -536,7 +536,8 @@
         "docs/mobile/evidence/S03/offline-editions-20260908/source-result.json",
         "docs/mobile/evidence/S03/offline-repair-20260908/a4/result.json",
         "docs/mobile/evidence/S03/offline-repair-20260908/a5/result.json",
-        "docs/mobile/evidence/S03/biography-review-20260908/result.json"
+        "docs/mobile/evidence/S03/biography-review-20260908/result.json",
+        "docs/mobile/evidence/S03/biography-review-20260908/pwa/result.json"
       ],
       "externalBlockers": []
     },
@@ -845,7 +846,8 @@
         "docs/mobile/evidence/S04/globe-entry-20260908/result.json",
         "docs/mobile/evidence/S04/ios-globe-projection-20260908/result.json",
         "docs/mobile/evidence/S04/country-sheet-android-20260908/result.json",
-        "docs/mobile/evidence/S04/appearance-quality-android-20260908/result.json"
+        "docs/mobile/evidence/S04/appearance-quality-android-20260908/result.json",
+        "docs/mobile/evidence/S04/biography-review-android-20260908/result.json"
       ],
       "externalBlockers": []
     },
@@ -10564,7 +10566,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Build fresh Android/dev and controlled PWA from the committed biography review source, preserving prior17b6/7855 and frozen iOS83. Focused138, joint static, one real RU/EN writer/globe source-browser case and the full current biography exporter comparison passed. Do not repeat green appearance/repair suites. S03 remains first-open; full S38 editorial/owner correction workflow and English coverage, nearly10k capacity, edition covers, quality tiers and other device/release gates remain open.",
+    "nextAction": "Continue routed S03 outstanding access/offline/localization gates from source308d8366. Biography review/stale gate has138 focused tests, joint static, one actual RU/EN writer/globe source-browser case, all1684RU/20authoredEN exporter comparison, fresh Android6611b76b and strict-only PWA86096d64. Do not replay unchanged tests or confuse prior7855 repair-browser evidence with a new PWA browser run. Full S38 translation/owner correction workflow, English coverage, nearly10k catalog capacity, edition-specific EN covers, quality tiers/Planetka and device/release gates remain open. Frozen iOS83 awaits its existing approval.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -10774,37 +10776,38 @@
       "evidence": "docs/mobile/evidence/S04/globe-entry-20260908/result.json",
       "coreBrowserCases": 3,
       "nativeArtifactRefreshed": true,
-      "nativeArtifactEvidence": "docs/mobile/evidence/S04/appearance-quality-android-20260908/result.json",
+      "nativeArtifactEvidence": "docs/mobile/evidence/S04/biography-review-android-20260908/result.json",
       "nativeArtifact": {
         "platform": "android",
         "channel": "dev",
-        "sourceCommit": "1f9bae113129d00828dc1b0714e9002b1ff1f63f",
-        "buildId": "17b6fc88d0b9fe7f14e67f9200e2796b85598392a05d66261137fe18af39a980",
-        "sourceInputsSha256": "4379341a41baa8b733c7560637d3dfb95025577ef6ecd489f1d164a3db73f26a",
-        "runtime": ".tmp/native-builds/android-dev/appearance-quality-17b6fc88/runtime",
+        "sourceCommit": "308d8366c24f8b9f47ada304b43856c327890d43",
+        "buildId": "6611b76bcd73daf6c39017f7ca1067d8fb52c8927b1fbd21055efc8e27117a50",
+        "sourceInputsSha256": "dea3876d9feb40027815206f14073c8af87ee3b13cacf2bd9b7a80ba0a624196",
+        "runtime": ".tmp/native-builds/android-dev/biography-review-6611b76b/runtime",
         "apk": {
-          "path": ".tmp/native-builds/android-dev/appearance-quality-17b6fc88/app-dev-debug.apk",
-          "bytes": 35810501,
-          "sha256": "ddde529c551ffb449bfcc8ab912f49304a15ee464b99e32051baf9dc54013583"
+          "path": ".tmp/native-builds/android-dev/biography-review-6611b76b/app-dev-debug.apk",
+          "bytes": 35535481,
+          "sha256": "d1d62d3b1eb61f915f16ac5f5057e1b66bcac00526d16a856d3513840f41688d"
         },
         "nativeStrictAudit": true,
         "offlineGradleBuild": true,
         "apkBinaryAudit": true,
         "preservationCopiesVerified": true,
-        "currentSource": false,
-        "validatedAgainstSourceCommit": "96690a486cfd39519481b2e9274adfca9602114c",
-        "runtimeEquivalentToCurrentSource": false,
-        "buildCommitEqualsCurrentCommit": false,
+        "currentSource": true,
+        "runtimeEquivalentToCurrentSource": true,
+        "validatedAgainstSourceCommit": "308d8366c24f8b9f47ada304b43856c327890d43",
+        "buildCommitEqualsValidatedSourceCommit": true,
         "includesS05FirstJourney": true,
         "includesNativeActivity": true,
         "includesCountrySheetGestures": true,
         "includesRichDefaultAndEditionAppearance": true,
+        "includesBiographyReviewAndStaleGate": true,
         "installedRuntimeTested": false,
         "exactReleaseCandidate": false,
         "stageAccepted": false,
         "releaseReady": false
       },
-      "nativeArtifactCurrentSource": false,
+      "nativeArtifactCurrentSource": true,
       "nativeArtifactHistory": [
         {
           "evidence": "docs/mobile/evidence/S04/android-globe-panels-20260908/result.json",
@@ -10913,6 +10916,38 @@
             "includesS05FirstJourney": true,
             "includesNativeActivity": true,
             "includesCountrySheetGestures": true,
+            "installedRuntimeTested": false,
+            "exactReleaseCandidate": false,
+            "stageAccepted": false,
+            "releaseReady": false
+          }
+        },
+        {
+          "evidence": "docs/mobile/evidence/S04/appearance-quality-android-20260908/result.json",
+          "artifact": {
+            "platform": "android",
+            "channel": "dev",
+            "sourceCommit": "1f9bae113129d00828dc1b0714e9002b1ff1f63f",
+            "buildId": "17b6fc88d0b9fe7f14e67f9200e2796b85598392a05d66261137fe18af39a980",
+            "sourceInputsSha256": "4379341a41baa8b733c7560637d3dfb95025577ef6ecd489f1d164a3db73f26a",
+            "runtime": ".tmp/native-builds/android-dev/appearance-quality-17b6fc88/runtime",
+            "apk": {
+              "path": ".tmp/native-builds/android-dev/appearance-quality-17b6fc88/app-dev-debug.apk",
+              "bytes": 35810501,
+              "sha256": "ddde529c551ffb449bfcc8ab912f49304a15ee464b99e32051baf9dc54013583"
+            },
+            "nativeStrictAudit": true,
+            "offlineGradleBuild": true,
+            "apkBinaryAudit": true,
+            "preservationCopiesVerified": true,
+            "currentSource": false,
+            "validatedAgainstSourceCommit": "96690a486cfd39519481b2e9274adfca9602114c",
+            "runtimeEquivalentToCurrentSource": false,
+            "buildCommitEqualsCurrentCommit": false,
+            "includesS05FirstJourney": true,
+            "includesNativeActivity": true,
+            "includesCountrySheetGestures": true,
+            "includesRichDefaultAndEditionAppearance": true,
             "installedRuntimeTested": false,
             "exactReleaseCandidate": false,
             "stageAccepted": false,
@@ -11432,17 +11467,56 @@
     ],
     "s03BiographyReview": {
       "evidence": "docs/mobile/evidence/S03/biography-review-20260908/result.json",
-      "sha256": "adca0b7f5149831c9a253cb217a7b4e16d34a17369efaa95aa4c26d9b51688fd",
-      "status": "FOCUSED_SOURCE_VALIDATION_PASSED",
+      "sha256": "fbc2da63ec149cef5fa7e7cdf4e6723be4033eb6d61e63820575d7897345ad56",
+      "status": "SOURCE_AND_LOCAL_ARTIFACT_VALIDATION_PASSED",
       "unitPasses": 138,
       "exactReviewContract": "writer-biography-review-v1",
       "actualApprovalsCreated": 0,
       "sourceBrowserPasses": 1,
       "corpusExportComparisonPassed": true,
-      "newNativeArtifactProduced": false,
-      "newPwaArtifactProduced": false,
+      "newNativeArtifactProduced": true,
+      "newPwaArtifactProduced": true,
       "stageAccepted": false,
-      "releaseReady": false
+      "releaseReady": false,
+      "sourceCommit": "308d8366c24f8b9f47ada304b43856c327890d43",
+      "sourceInputsCurrent": true,
+      "nativeArtifact": {
+        "evidence": "docs/mobile/evidence/S04/biography-review-android-20260908/result.json",
+        "sha256": "941bb2131b6216fa0e198fb718233d3fac16dca47b582bb2ff1677a967fb49c1",
+        "buildId": "6611b76bcd73daf6c39017f7ca1067d8fb52c8927b1fbd21055efc8e27117a50",
+        "sourceInputsSha256": "dea3876d9feb40027815206f14073c8af87ee3b13cacf2bd9b7a80ba0a624196",
+        "runtime": ".tmp/native-builds/android-dev/biography-review-6611b76b/runtime",
+        "apk": {
+          "path": ".tmp/native-builds/android-dev/biography-review-6611b76b/app-dev-debug.apk",
+          "bytes": 35535481,
+          "sha256": "d1d62d3b1eb61f915f16ac5f5057e1b66bcac00526d16a856d3513840f41688d"
+        },
+        "strictAudit": true,
+        "binaryAudit": true,
+        "copiesVerified": true,
+        "installedRuntimeTested": false
+      },
+      "pwaArtifact": {
+        "evidence": "docs/mobile/evidence/S03/biography-review-20260908/pwa/result.json",
+        "sha256": "a24e6f62c2c9e6d88c6642ccdfbe582bbddc1c0a72f158ff8d766cbe9bd4d3be",
+        "buildId": "86096d6415c05646e47679ee98a411862cb6ba296caa56ce86a5747bd5e00955",
+        "sourceInputsSha256": "450ed063848d562c6bacf6b58044a137b46577574f58959186abef92e0ca7e92",
+        "runtime": ".tmp/pwa-artifacts/86096d64-biography-review-20260908-a1",
+        "artifactSha256": "7e8553e6f27b0f414f55bd870f8dd12983b094aaa855aa1d8570658662b491c3",
+        "files": 364,
+        "bytes": 41518077,
+        "strictAudit": true,
+        "copiesVerified": true,
+        "localQaAuthority": true,
+        "browserExecutions": 0
+      },
+      "corpus": {
+        "ru": 1684,
+        "en": 20,
+        "existingProfilesRetained": true,
+        "actualTranslatedApprovals": 0,
+        "fullCoverageCertified": false
+      }
     }
   },
   "externalOwnerInputsStatus": {

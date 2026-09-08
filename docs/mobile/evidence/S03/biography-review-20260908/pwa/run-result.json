@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "runId": "pwa-biography-review-20260908-a1",
+  "sourceCommit": "308d8366c24f8b9f47ada304b43856c327890d43",
+  "buildId": "86096d6415c05646e47679ee98a411862cb6ba296caa56ce86a5747bd5e00955",
+  "strictArtifactAuditPassed": true,
+  "browserTestsRun": false,
+  "browserExecutions": 0,
+  "statistics": null,
+  "failure": null,
+  "sourceUnchanged": true,
+  "pass": true,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "installedRuntimeVerified": false,
+  "productionActionsPerformed": false
+}

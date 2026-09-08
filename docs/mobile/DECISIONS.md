@@ -407,3 +407,13 @@
   browser/Node SHA256 review contract. Hash validity does not authenticate the
   supplied reviewer or establish factual accuracy. This is a bounded S03 global
   invariant correction, not S38 workflow/English coverage acceptance.
+
+- D087: Biography review source 308d8366c24f8b9f47ada304b43856c327890d43 is compiled as
+  Android/dev 6611b76b and controlled local-QA PWA 86096d64. Exact artifacts,
+  source digests, offline Gradle and APK binary checks passed. One source-browser
+  RU/EN writer/globe case uses the same native input snapshot; it injects OS APIs
+  and does not execute the APK. No new PWA browser suite was run for this bounded
+  data/hash change. Retain prior7855 repair/appearance receipts as historical.
+  Corpus export preserves all1684 RU/20 authored EN; no new translated approval
+  or prose was produced. Source and artifact checks do not accept S03, S38, full
+  bilingual content, installed devices, iOS83 or production release.

@@ -1,0 +1,21 @@
+{
+  "pass": true,
+  "errors": [],
+  "releaseReady": false,
+  "internalRequirementsPassed": false,
+  "requirementCount": 342,
+  "bilingualCount": 107,
+  "allInternalComplete": false,
+  "completedStages": [
+    "S00",
+    "S01",
+    "S02"
+  ],
+  "firstOpen": {
+    "stageId": "S03",
+    "criterionId": "S03.acceptance"
+  },
+  "priorCompleteEvidenceVerification": "source-state-verification.json",
+  "acceptanceStateUnchanged": true,
+  "scope": "Structural validation after artifact-cache update. Prior full evidence check remains source-bound; no acceptance criteria or approvals changed."
+}

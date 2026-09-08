@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "stage": "S03",
+  "recordedAt": "2026-09-08T10:22:42.320Z",
+  "runId": "pwa-biography-review-20260908-a1",
+  "sourceCommit": "308d8366c24f8b9f47ada304b43856c327890d43",
+  "buildId": "86096d6415c05646e47679ee98a411862cb6ba296caa56ce86a5747bd5e00955",
+  "status": "LOCAL_QA_PWA_BUILD_AND_AUDIT_PASSED",
+  "strictArtifactAuditPassed": true,
+  "statistics": null,
+  "sourceUnchanged": true,
+  "browserTestsRun": false,
+  "browserExecutions": 0,
+  "artifact": {
+    "path": ".tmp/pwa-artifacts/86096d64-biography-review-20260908-a1",
+    "files": 364,
+    "bytes": 41518077,
+    "artifactSha256": "7e8553e6f27b0f414f55bd870f8dd12983b094aaa855aa1d8570658662b491c3",
+    "exactCopiesVerified": true
+  },
+  "preservedFiles": [
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-biography-review-20260908-a1/session.json",
+      "path": "docs/mobile/evidence/S03/biography-review-20260908/pwa/session.json",
+      "bytes": 958,
+      "sha256": "1a1eef00c322f2b8a5bb0d0e74e0b50211fe70802441a2b0b57cfd9f8290b05d"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-biography-review-20260908-a1/source-before.json",
+      "path": "docs/mobile/evidence/S03/biography-review-20260908/pwa/source-before.json",
+      "bytes": 136726,
+      "sha256": "450ed063848d562c6bacf6b58044a137b46577574f58959186abef92e0ca7e92"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-biography-review-20260908-a1/source-after.json",
+      "path": "docs/mobile/evidence/S03/biography-review-20260908/pwa/source-after.json",
+      "bytes": 136726,
+      "sha256": "450ed063848d562c6bacf6b58044a137b46577574f58959186abef92e0ca7e92"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-biography-review-20260908-a1/source-comparison.json",
+      "path": "docs/mobile/evidence/S03/biography-review-20260908/pwa/source-comparison.json",
+      "bytes": 205,
+      "sha256": "1c059ecf32f369a0022015a00a6e7f09570c910af77d0563a9d53b3e32dfde94"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-biography-review-20260908-a1/support-before.json",
+      "path": "docs/mobile/evidence/S03/biography-review-20260908/pwa/support-before.json",
+      "bytes": 463,
+      "sha256": "5266dea6b0a1ca3ccef02713b3a2f519ed19b74d2bb9d3c1fd0bf1bc7850d4dc"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-biography-review-20260908-a1/support-after.json",
+      "path": "docs/mobile/evidence/S03/biography-review-20260908/pwa/support-after.json",
+      "bytes": 463,
+      "sha256": "5266dea6b0a1ca3ccef02713b3a2f519ed19b74d2bb9d3c1fd0bf1bc7850d4dc"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-biography-review-20260908-a1/strict-artifact-audit.json",
+      "path": "docs/mobile/evidence/S03/biography-review-20260908/pwa/strict-artifact-audit.json",
+      "bytes": 792,
+      "sha256": "a63c4ed48d123ae0a94ebe693c6e0b85e2616c4e11349599353d61420c519b57"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-biography-review-20260908-a1/strict-artifact-audit-execution.json",
+      "path": "docs/mobile/evidence/S03/biography-review-20260908/pwa/strict-artifact-audit-execution.json",
+      "bytes": 168,
+      "sha256": "1317a5a83f68e1be2dddc193d68cf04e2891ea7c822c1bc22d8a4300b9183bef"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-biography-review-20260908-a1/server-closed.json",
+      "path": "docs/mobile/evidence/S03/biography-review-20260908/pwa/server-closed.json",
+      "bytes": 93,
+      "sha256": "75634c30baa210db1c2e7b4736c3bb7eea43caebcae6fb2675807f9cd780d3d5"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-biography-review-20260908-a1/run-result.json",
+      "path": "docs/mobile/evidence/S03/biography-review-20260908/pwa/run-result.json",
+      "bytes": 517,
+      "sha256": "734bd0fd987de51f09590cc59511746d1ef03ec1039cbee234295d855884fd98"
+    },
+    {
+      "source": "dist-pwa/artifact.json",
+      "path": "docs/mobile/evidence/S03/biography-review-20260908/pwa/artifact.json",
+      "bytes": 213955,
+      "sha256": "7e8553e6f27b0f414f55bd870f8dd12983b094aaa855aa1d8570658662b491c3"
+    },
+    {
+      "source": ".tmp/s03-biography-review-pwa-20260908/prior-7855-before-biography-review.json",
+      "path": "docs/mobile/evidence/S03/biography-review-20260908/pwa/prior-7855-before-biography-review.json",
+      "bytes": 61329,
+      "sha256": "d2a136f703e369c2fc31fa6422977176d732b2e7ab5c4f89dada3c098247d27f"
+    },
+    {
+      "source": ".tmp/s03-biography-review-pwa-20260908/run-pwa-biography-review.mjs",
+      "path": "docs/mobile/evidence/S03/biography-review-20260908/pwa/helpers/run-pwa-biography-review.mjs",
+      "bytes": 8416,
+      "sha256": "f9747a83bda8903130271024f7373fd63ef0451496a1b39d3e6217ddf6f9c02f"
+    },
+    {
+      "source": ".tmp/s03-biography-review-pwa-20260908/run-pwa-biography-review.ps1",
+      "path": "docs/mobile/evidence/S03/biography-review-20260908/pwa/helpers/run-pwa-biography-review.ps1",
+      "bytes": 1125,
+      "sha256": "a9faeef0d52da054111bfb8e0d6aaefbaea7662d3c676467a2b64fb323f6cc57"
+    },
+    {
+      "source": ".tmp/s03-biography-review-pwa-20260908/preserve-pwa-biography-review.mjs",
+      "path": "docs/mobile/evidence/S03/biography-review-20260908/pwa/helpers/preserve-pwa-biography-review.mjs",
+      "bytes": 7999,
+      "sha256": "70cff25f4558f32f9caf2dac41712c558cec027b653829484cf5ddad0596cf56"
+    },
+    {
+      "source": ".tmp/s03-biography-review-pwa-20260908/park-7855-before-biography-review.mjs",
+      "path": "docs/mobile/evidence/S03/biography-review-20260908/pwa/helpers/park-7855-before-biography-review.mjs",
+      "bytes": 4576,
+      "sha256": "b2fa084c1a7a3336ca2cf59ce670c0609cfcc53067b5f284561fa9475bd3e3e0"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-biography-review-20260908-a1/strict-artifact-audit.log",
+      "path": "docs/mobile/evidence/S03/biography-review-20260908/pwa/strict-artifact-audit-log.json",
+      "bytes": 1196,
+      "sha256": "b072d764fd6bd7ebe15a2354733b6e9377a3cdb82caffbf987c8f568911f4e6e",
+      "rawBytes": 792,
+      "rawSha256": "a63c4ed48d123ae0a94ebe693c6e0b85e2616c4e11349599353d61420c519b57",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/s03-biography-review-pwa-20260908/pipeline-a1.log",
+      "path": "docs/mobile/evidence/S03/biography-review-20260908/pwa/pipeline-a1-log.json",
+      "bytes": 13861,
+      "sha256": "4f3e833e88657bed90233a6ff89304aa670e2268cc62412367226e3ffb3a62b3",
+      "rawBytes": 13258,
+      "rawSha256": "3b50567bdcf0574db4dc8936cf8409903abca83bcf12139eb8f0321ac7e0589b",
+      "lossless": true
+    }
+  ],
+  "stageAccepted": false,
+  "releaseReady": false,
+  "copyReviewStatus": "draft",
+  "actualOsInstallation": false,
+  "realPaymentProviderConfigured": false,
+  "limits": [
+    "Fresh local QA Vite/worker build, strict audit and byte-exact archive only; no browser suite or installed app runtime was exercised for these exact artifact bytes.",
+    "The separate native-source RU/EN writer smoke is recorded under the sibling browser evidence directory and is not a production artifact or APK claim.",
+    "Local ephemeral QA authority does not establish a real merchant/payment, legal/editorial approval, owner acceptance or release readiness."
+  ]
+}

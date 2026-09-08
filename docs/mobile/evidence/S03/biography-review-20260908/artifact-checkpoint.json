@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T10:26:41.235Z",
+  "sourceCommit": "308d8366c24f8b9f47ada304b43856c327890d43",
+  "sourceInputsCurrent": true,
+  "sourceInputCounts": {
+    "android": 972,
+    "pwa": 971,
+    "uniqueVerifiedIncludingFocusedTests": 984
+  },
+  "android": {
+    "evidence": "docs/mobile/evidence/S04/biography-review-android-20260908/result.json",
+    "sha256": "941bb2131b6216fa0e198fb718233d3fac16dca47b582bb2ff1677a967fb49c1",
+    "buildId": "6611b76bcd73daf6c39017f7ca1067d8fb52c8927b1fbd21055efc8e27117a50",
+    "sourceInputsSha256": "dea3876d9feb40027815206f14073c8af87ee3b13cacf2bd9b7a80ba0a624196",
+    "runtime": ".tmp/native-builds/android-dev/biography-review-6611b76b/runtime",
+    "apk": {
+      "path": ".tmp/native-builds/android-dev/biography-review-6611b76b/app-dev-debug.apk",
+      "bytes": 35535481,
+      "sha256": "d1d62d3b1eb61f915f16ac5f5057e1b66bcac00526d16a856d3513840f41688d"
+    },
+    "strictAudit": true,
+    "binaryAudit": true,
+    "copiesVerified": true,
+    "installedRuntimeTested": false
+  },
+  "pwa": {
+    "evidence": "docs/mobile/evidence/S03/biography-review-20260908/pwa/result.json",
+    "sha256": "a24e6f62c2c9e6d88c6642ccdfbe582bbddc1c0a72f158ff8d766cbe9bd4d3be",
+    "buildId": "86096d6415c05646e47679ee98a411862cb6ba296caa56ce86a5747bd5e00955",
+    "sourceInputsSha256": "450ed063848d562c6bacf6b58044a137b46577574f58959186abef92e0ca7e92",
+    "runtime": ".tmp/pwa-artifacts/86096d64-biography-review-20260908-a1",
+    "artifactSha256": "7e8553e6f27b0f414f55bd870f8dd12983b094aaa855aa1d8570658662b491c3",
+    "files": 364,
+    "bytes": 41518077,
+    "strictAudit": true,
+    "copiesVerified": true,
+    "localQaAuthority": true,
+    "browserExecutions": 0
+  },
+  "browser": {
+    "evidence": "docs/mobile/evidence/S03/biography-review-20260908/browser/result.json",
+    "passes": 1,
+    "sameNativeSourceInputSnapshot": true,
+    "nativePluginsSimulated": true,
+    "exactArtifactRuntime": false
+  },
+  "acceptanceStateUnchanged": true,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false
+}
