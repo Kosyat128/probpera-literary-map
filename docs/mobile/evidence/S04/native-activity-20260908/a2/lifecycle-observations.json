@@ -1,0 +1,88 @@
+{
+  "automaticBackground": {
+    "samples": 18,
+    "renderFrames": [
+      163
+    ],
+    "documentVisibility": [
+      "visible"
+    ],
+    "frameloop": [
+      "never"
+    ],
+    "autoRotate": [
+      false
+    ],
+    "controlsEnabled": [
+      false
+    ],
+    "elapsedBrowserAnimationMs": 118.1
+  },
+  "selectedBackground": {
+    "samples": 18,
+    "renderFrames": [
+      187
+    ],
+    "documentVisibility": [
+      "visible"
+    ],
+    "frameloop": [
+      "never"
+    ],
+    "autoRotate": [
+      false
+    ],
+    "controlsEnabled": [
+      false
+    ],
+    "elapsedBrowserAnimationMs": 118
+  },
+  "events": [
+    {
+      "isActive": false,
+      "documentVisibility": "visible",
+      "listenerCount": 1
+    },
+    {
+      "isActive": true,
+      "documentVisibility": "visible",
+      "listenerCount": 1
+    },
+    {
+      "isActive": false,
+      "documentVisibility": "visible",
+      "listenerCount": 1
+    },
+    {
+      "isActive": true,
+      "documentVisibility": "visible",
+      "listenerCount": 1
+    }
+  ],
+  "selectedPose": {
+    "position": [
+      -0.22625,
+      2.67961,
+      -1.42543
+    ],
+    "quaternion": [
+      0.04031,
+      0.85589,
+      0.51115,
+      -0.0675
+    ],
+    "zoom": 1
+  },
+  "sameCanvasRendererCameraScene": true,
+  "selectedCountry": "russia",
+  "selectedWriter": "dostoevsky",
+  "locale": "en",
+  "reducedMotion": true,
+  "missingResources": [],
+  "errors": [],
+  "selection": {
+    "assets": 286,
+    "sha256": "c1f42e5c8d8afd58102d24faa434a1b01a77129f97bc11ac59fe8ce5e4ca4268"
+  },
+  "fixtureScope": "RealApp/R3F/renderer frames, simulated native OS lifecycle; DOM remained visible, no device/battery measurement."
+}

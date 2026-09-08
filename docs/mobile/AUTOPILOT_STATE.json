@@ -5,7 +5,7 @@
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
   "headSha": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-08T06:18:07.745Z",
+  "updatedAt": "2026-09-08T06:32:16.503Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -10551,7 +10551,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Continue first-open S03.acceptance with documented S04/S05 parallel-safe work. Android 7b631c49 now contains the bounded first-journey source at 282e03d5f877c2e1dc0d0ffd6fc8a211c5460c94; exact build/binary/preservation checks passed, installed-device behavior remains unverified. PWA051 and frozen iOS83 retain their prior source boundaries. Honor the existing iOS publication-answer state and exact payload; complete remaining paid-PWA/native/onboarding, child/Planetka, bilingual editorial and release gates without assigning programming/translation to the owner.",
+    "nextAction": "Continue first-open S03.acceptance with documented S04/S05 parallel-safe work. The bounded native activity-to-globe connection has source-bound static and one actual App/R3F browser case with injected native events. Android7b631c49 includes first-journey but excludes native activity; preserve its artifact identity. PWA051 and frozen iOS83 retain their previous bytes, source scopes and publication-answer state. Complete remaining platform/onboarding, original 3D Planetka, child, bilingual editorial and release gates without inferring stage acceptance.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -10771,15 +10771,17 @@
         "offlineGradleBuild": true,
         "apkBinaryAudit": true,
         "preservationCopiesVerified": true,
-        "currentSource": true,
+        "currentSource": false,
         "includesS05FirstJourney": true,
         "installedRuntimeTested": false,
         "exactReleaseCandidate": false,
         "stageAccepted": false,
         "releaseReady": false,
-        "sourceScopeNote": "Exact first-journey source checkpoint compiled and statically inspected as Android devDebug. The PWA051 artifact and frozen iOS83 projection retain their prior identities and exclude this newer slice. Browser/native-plugin fixtures do not establish installed-device behavior."
+        "sourceScopeNote": "Exact first-journey source checkpoint compiled and statically inspected as Android devDebug. The PWA051 artifact and frozen iOS83 projection retain their prior identities and exclude this newer slice. Browser/native-plugin fixtures do not establish installed-device behavior.",
+        "includesNativeActivity": false,
+        "nativeActivitySourceScopeNote": "Android7b631c49 contains first-journey source but predates native activity propagation. Its exact-byte build/audit evidence remains valid for that artifact."
       },
-      "nativeArtifactCurrentSource": true,
+      "nativeArtifactCurrentSource": false,
       "nativeArtifactHistory": [
         {
           "evidence": "docs/mobile/evidence/S04/android-globe-panels-20260908/result.json",
@@ -11100,6 +11102,117 @@
       "nativeArtifactEvidence": "docs/mobile/evidence/S04/android-first-journey-20260908/result.json",
       "nativeArtifactBuildId": "7b631c491fb0d4fb72a135b9a1a341392bbdefc7d5e3515265d45b19801b7c4c",
       "nativeArtifactSourceCommit": "282e03d5f877c2e1dc0d0ffd6fc8a211c5460c94"
+    },
+    "s04NativeActivity": {
+      "status": "SELECTED_WORKING_VALIDATION_PASSED",
+      "evidence": "docs/mobile/evidence/S04/native-activity-20260908/result.json",
+      "aggregateSha256": "0af7a73a104c81390e2b3523b4f020742ee8a168e8e5814e8e82d97ce01bb3d1",
+      "requirement": "PERF-008",
+      "sourceValidationEvidence": "docs/mobile/evidence/S04/native-activity-20260908/static/static-checks.json",
+      "sourceValidationSha256": "82b34780d19b0e1ea4d6f933ed549df0fb7f061f2885328d8f51a87a3baa9548",
+      "sourceInputs": [
+        {
+          "path": "src/App.tsx",
+          "sha256": "589ac2b9acd60387b4696591828f3eebc9b3a26d703cc458f42e9bd83552b3e8"
+        },
+        {
+          "path": "src/components/LiteraryWorldMap.tsx",
+          "sha256": "19212b6c329302f4ba4b46b8097bc47f2027854309f4ec23ba8a4e33c446d441"
+        },
+        {
+          "path": "src/components/LiteraryGlobe.tsx",
+          "sha256": "c6bd95071d447bd1bd7e527d864face907ccc6514be5ce880133024474075a66"
+        }
+      ],
+      "assetCorrectionEvidence": "docs/mobile/evidence/S04/native-activity-20260908/asset-correction.json",
+      "assetCorrectionSha256": "fb5442eac133558c27528f8a0d0562065c6e0fab03638e041f4caad3d6541c2e",
+      "staticScopeNote": "The three application TypeScript inputs retain their recorded static hashes. The later canonical portrait inclusion is separately evidenced; no static-tool replay after that asset correction is claimed.",
+      "typeScriptPassed": true,
+      "platformBoundariesPassed": true,
+      "browserEvidence": "docs/mobile/evidence/S04/native-activity-20260908/a2/result.json",
+      "browserEvidenceSha256": "9caeeceb00bfd960f768269834101c4d47c674bcf8e0c180b36cbb8365794c66",
+      "browserPassed": 1,
+      "browserFailed": 0,
+      "browserRunId": "native-activity-20260908-a2",
+      "sourceUnchangedDuringBrowserRun": true,
+      "preservedBrowserHistory": [
+        {
+          "evidence": "a1/result.json",
+          "sha256": "eee295e30425d7603bdd3c1a16d50309f6c4a0099bd858064b0931492aeea5a9",
+          "runId": "native-activity-20260908-a1",
+          "statistics": {
+            "startTime": "2026-09-08T06:24:50.872Z",
+            "duration": 11336.375,
+            "expected": 0,
+            "skipped": 0,
+            "unexpected": 1,
+            "flaky": 0
+          },
+          "sourceComparison": {
+            "sourceFiles": 967,
+            "unchangedDuringRun": true,
+            "changed": []
+          },
+          "failureClassification": [],
+          "scope": "Canonical App/R3F/CSS in Chrome with injected Android OS appStateChange and Preferences; real document visibility unchanged; no native artifact or battery measurement.",
+          "tests": [
+            {
+              "ordinal": 1,
+              "title": "native host background pauses the actual globe while the document stays visible and resumes preserved state",
+              "status": "failed",
+              "errorCount": 1
+            }
+          ],
+          "selectedFinalRun": false
+        },
+        {
+          "evidence": "a2/result.json",
+          "sha256": "9caeeceb00bfd960f768269834101c4d47c674bcf8e0c180b36cbb8365794c66",
+          "runId": "native-activity-20260908-a2",
+          "statistics": {
+            "startTime": "2026-09-08T06:29:43.199Z",
+            "duration": 10554.465999999999,
+            "expected": 1,
+            "skipped": 0,
+            "unexpected": 0,
+            "flaky": 0
+          },
+          "sourceComparison": {
+            "sourceFiles": 967,
+            "unchangedDuringRun": true,
+            "changed": [],
+            "supplementalNativeSelection": {
+              "path": "scripts/mobile/native-base-assets.json",
+              "beforeSha256": "c1f42e5c8d8afd58102d24faa434a1b01a77129f97bc11ac59fe8ce5e4ca4268",
+              "afterSha256": "c1f42e5c8d8afd58102d24faa434a1b01a77129f97bc11ac59fe8ce5e4ca4268",
+              "unchanged": true
+            }
+          },
+          "failureClassification": [],
+          "scope": "Canonical App/R3F/CSS in Chrome with injected Android OS appStateChange and Preferences; real document visibility unchanged; no native artifact or battery measurement.",
+          "tests": [
+            {
+              "ordinal": 1,
+              "title": "native host background pauses the actual globe while the document stays visible and resumes preserved state",
+              "status": "passed",
+              "errorCount": 0
+            }
+          ],
+          "selectedFinalRun": true
+        }
+      ],
+      "nativeActivityFeedsCanonicalGlobe": true,
+      "canvasAndCameraRetained": true,
+      "autoRotationPreferenceRetained": true,
+      "publicWebLifecycleUnchanged": true,
+      "nativePluginsSimulated": true,
+      "actualInstalledNativeRuntimeVerified": false,
+      "fullSuiteRun": false,
+      "newNativeArtifactProduced": false,
+      "newPwaArtifactProduced": false,
+      "includedInFrozenIosProjection": false,
+      "stageAccepted": false,
+      "releaseReady": false
     }
   },
   "externalOwnerInputsStatus": {

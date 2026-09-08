@@ -31,17 +31,22 @@ test.beforeAll(async () => {
       import{createAndroidPlatformAdapter}from'./src/platform/adapters/android/AndroidPlatformAdapter';
       const initial=window.__nativePlanetInitial;
       const handles=[];
+      let appActive=true;
+      const lifecycleEvents=[];
       const subscribe=async(event,listener)=>{const handle={event,listener,removed:false,async remove(){handle.removed=true}};handles.push(handle);return handle};
       const bindings={
         core:{getPlatform:()=> 'android',isNativePlatform:()=>true,isPluginAvailable:()=>true},
-        app:{getAppLanguage:async()=>({value:initial.language==='ru'?'ru-RU':'en-US'}),getState:async()=>({isActive:true}),getLaunchUrl:async()=>undefined,addListener:subscribe},
+        app:{getAppLanguage:async()=>({value:initial.language==='ru'?'ru-RU':'en-US'}),getState:async()=>({isActive:appActive}),getLaunchUrl:async()=>undefined,addListener:subscribe},
         network:{getStatus:async()=>({connected:true}),addListener:subscribe},
         preferences:{get:async({key})=>({value:await window.__nativePlanetPreference('get',key)}),set:async({key,value})=>{await window.__nativePlanetPreference('set',key,value)},remove:async({key})=>{await window.__nativePlanetPreference('remove',key)}},
         browser:{open:async()=>{throw Error('External browser unavailable in the native source fixture')}},
         appLauncher:{openUrl:async()=>({completed:false})}
       };
       window.__nativePlanetHarness={
-        scenes:()=>[..._roots.entries()].map(([canvas,root])=>{const s=root.store.getState();return{canvas,renderer:s.gl,camera:s.camera,scene:s.scene}}),
+        scenes:()=>[..._roots.entries()].map(([canvas,root])=>{const s=root.store.getState();return{canvas,renderer:s.gl,camera:s.camera,scene:s.scene,controls:s.controls,frameloop:s.frameloop}}),
+        appListenerCount:()=>handles.filter(handle=>!handle.removed&&handle.event==='appStateChange').length,
+        setAppActive:isActive=>{if(typeof isActive!=='boolean')throw Error('Boolean app state required');appActive=isActive;const listeners=handles.filter(handle=>!handle.removed&&handle.event==='appStateChange');lifecycleEvents.push({isActive,documentVisibility:document.visibilityState,listenerCount:listeners.length});for(const handle of listeners)handle.listener({isActive});return listeners.length},
+        lifecycleEvents:()=>lifecycleEvents,
         savedLanguage:()=>window.__nativePlanetPreference('get','probpera-interface-language'),
         savedWelcome:()=>window.__nativePlanetPreference('get','probpera-planet-welcome-v1'),
         canonicalCountry:async(id)=>{const{countries}=await import('./src/data/countries');const country=countries.find(value=>value.id===id);return country?{id:country.id,writerCount:country.writers.length}:null},
@@ -287,6 +292,7 @@ async function captureEvidence(fixture, testInfo, name, extra = {}) {
         finalActiveElement: { tag: document.activeElement?.tagName, id: document.activeElement?.id,
           action: document.activeElement?.getAttribute("data-atlas-action") },
         journeyRandomInput: window.__nativePlanetJourneyRandom ?? null,
+        nativeLifecycleEvents: window.__nativePlanetHarness?.lifecycleEvents() ?? [],
         canvasCount: document.querySelectorAll("#atlas canvas").length,
         documentCanvasCount: document.querySelectorAll("canvas").length,
         native: describe(".native-planet-app, .native-planet-launch, .native-planet-panel"),
@@ -335,6 +341,123 @@ test("native first screen is the actual immersive globe and RU/EN retains writer
       expect(url.searchParams.get("writer")).toBe("dostoevsky");
       await evidence(fixture, testInfo, "native-entry-" + language, { locales: ["ru", "en", "ru"], selectedCountry: "russia", selectedWriter: "dostoevsky", sameCanvasRendererCameraScene: true, cameraPose: selectedCameraPose, cameraPoseDecimalPrecision: 5 });
     }
+  } finally { await original.dispose(); }
+});
+
+async function nativeGlobeRuntime(page) {
+  return page.evaluate(() => {
+    const current = window.__nativePlanetHarness.scenes().find(value => document.querySelector("#atlas").contains(value.canvas));
+    return { documentVisibility: document.visibilityState, frameloop: current.frameloop,
+      renderFrame: current.renderer.info.render.frame, autoRotate: current.controls?.autoRotate,
+      controlsEnabled: current.controls?.enabled };
+  });
+}
+
+async function backgroundFrameEvidence(page) {
+  const samples = await page.evaluate(async () => {
+    const frame = () => new Promise(resolve => requestAnimationFrame(resolve));
+    // Allow the committed R3F mode change to consume pending browser work, then
+    // observe real renderer counters while document animation frames still run.
+    await frame(); await frame();
+    const samples = [];
+    for (let index = 0; index < 18; index++) {
+      const at = await frame();
+      const current = window.__nativePlanetHarness.scenes().find(value => document.querySelector("#atlas").contains(value.canvas));
+      samples.push({ at, documentVisibility: document.visibilityState, frameloop: current.frameloop,
+        renderFrame: current.renderer.info.render.frame, autoRotate: current.controls?.autoRotate,
+        controlsEnabled: current.controls?.enabled,
+        cameraPosition: current.camera.position.toArray().map(value => Number(value.toFixed(5))),
+        cameraQuaternion: current.camera.quaternion.toArray().map(value => Number(value.toFixed(5))) });
+    }
+    return samples;
+  });
+  expect(samples).toHaveLength(18);
+  expect(samples.at(-1).at).toBeGreaterThan(samples[0].at);
+  expect(samples.every(sample => sample.documentVisibility === "visible" && sample.frameloop === "never" &&
+    sample.autoRotate === false && sample.controlsEnabled === false)).toBe(true);
+  expect(new Set(samples.map(sample => sample.renderFrame)).size).toBe(1);
+  expect(new Set(samples.map(sample => JSON.stringify([sample.cameraPosition, sample.cameraQuaternion]))).size).toBe(1);
+  return samples;
+}
+
+test("native host background pauses the actual globe while the document stays visible and resumes preserved state", async ({}, testInfo) => {
+  const fixture = await open({ reducedMotion: "no-preference", preferences: { "probpera-planet-welcome-v1": "completed" } });
+  const { page } = fixture;
+  const original = await captureScene(page);
+  const globe = page.locator("#atlas .literary-globe");
+  try {
+    await expect.poll(() => page.evaluate(() => window.__nativePlanetHarness.appListenerCount())).toBe(1);
+    await expect(globe).toHaveAttribute("data-globe-render-loop", "active");
+    await expect(globe).toHaveAttribute("data-globe-auto-rotate", "active");
+    await expect.poll(async () => (await nativeGlobeRuntime(page)).autoRotate).toBe(true);
+    const initial = await nativeGlobeRuntime(page);
+    expect(initial.documentVisibility).toBe("visible");
+    expect(initial.frameloop).toBe("always");
+    await expect.poll(async () => (await nativeGlobeRuntime(page)).renderFrame).toBeGreaterThan(initial.renderFrame);
+
+    expect(await page.evaluate(() => window.__nativePlanetHarness.setAppActive(false))).toBe(1);
+    await expect(globe).toHaveAttribute("data-globe-render-loop", "paused");
+    await expect(globe).toHaveAttribute("data-globe-frame-mode", "never");
+    await expect(globe).toHaveAttribute("data-globe-auto-rotate", "document-hidden");
+    await expect.poll(async () => (await nativeGlobeRuntime(page)).frameloop).toBe("never");
+    await expect.poll(async () => (await nativeGlobeRuntime(page)).controlsEnabled).toBe(false);
+    const automaticBackground = await backgroundFrameEvidence(page);
+    await retained(page, original);
+    await evidence(fixture, testInfo, "native-host-background", { initial, automaticBackground,
+      nativeLifecycleFixture: "Injected App appStateChange; actual document remains visible and browser RAF continues",
+      batteryOrDeviceMeasurement: false });
+
+    expect(await page.evaluate(() => window.__nativePlanetHarness.setAppActive(true))).toBe(1);
+    await expect(globe).toHaveAttribute("data-globe-render-loop", "active");
+    await expect(globe).toHaveAttribute("data-globe-auto-rotate", "active");
+    await expect.poll(async () => (await nativeGlobeRuntime(page)).autoRotate).toBe(true);
+    await expect.poll(async () => (await nativeGlobeRuntime(page)).renderFrame).toBeGreaterThan(automaticBackground.at(-1).renderFrame);
+    await retained(page, original);
+
+    // Select an existing canonical writer through the real UI, then preserve
+    // that selection, locale and reduced-motion preference across another cycle.
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.locator('[data-atlas-action="toggle-search"]').click();
+    await page.locator("#country-search").fill("Достоевский");
+    await page.locator('#country-results [role="option"]').filter({ hasText: /Ф[её]дор.*Достоевск/iu }).first().click();
+    await showWriter(page);
+    await expect.poll(() => new URL(page.url()).searchParams.get("country")).toBe("russia");
+    await expect.poll(() => new URL(page.url()).searchParams.get("writer")).toBe("dostoevsky");
+    await page.locator(".native-planet-app .interface-language-control button").filter({ hasText: "EN" }).click();
+    await expect(page.locator("html")).toHaveAttribute("lang", "en");
+    await expect.poll(() => page.evaluate(() => window.__nativePlanetHarness.savedLanguage())).toBe("en");
+    await expect(globe).toHaveAttribute("data-globe-camera-phase", "idle");
+    await expect(globe).toHaveAttribute("data-globe-auto-rotate", "reduced-motion");
+    await expect.poll(async () => (await nativeGlobeRuntime(page)).frameloop).toBe("demand");
+    const selectedPose = await settledCameraPose(original);
+    const selectedUrl = page.url();
+
+    expect(await page.evaluate(() => window.__nativePlanetHarness.setAppActive(false))).toBe(1);
+    await expect(globe).toHaveAttribute("data-globe-render-loop", "paused");
+    await expect.poll(async () => (await nativeGlobeRuntime(page)).frameloop).toBe("never");
+    await expect.poll(async () => (await nativeGlobeRuntime(page)).controlsEnabled).toBe(false);
+    const selectedBackground = await backgroundFrameEvidence(page);
+    expect(await cameraPose(original)).toEqual(selectedPose);
+    expect(page.url()).toBe(selectedUrl);
+    await expect(page.locator("html")).toHaveAttribute("lang", "en");
+
+    expect(await page.evaluate(() => window.__nativePlanetHarness.setAppActive(true))).toBe(1);
+    await expect(globe).toHaveAttribute("data-globe-render-loop", "active");
+    await expect(globe).toHaveAttribute("data-globe-auto-rotate", "reduced-motion");
+    await expect.poll(async () => (await nativeGlobeRuntime(page)).frameloop).toBe("demand");
+    expect((await nativeGlobeRuntime(page)).autoRotate).toBe(false);
+    expect((await nativeGlobeRuntime(page)).controlsEnabled).toBe(true);
+    expect(await page.evaluate(() => matchMedia("(prefers-reduced-motion: reduce)").matches)).toBe(true);
+    expect(page.url()).toBe(selectedUrl);
+    await expect(page.locator("html")).toHaveAttribute("lang", "en");
+    await showWriter(page);
+    await retained(page, original);
+    expect(await settledCameraPose(original)).toEqual(selectedPose);
+    await expect.poll(() => page.evaluate(() => window.__nativePlanetHarness.appListenerCount())).toBe(1);
+    await evidence(fixture, testInfo, "native-host-resumed-en-selection", { selectedBackground, selectedPose,
+      selectedCountry: "russia", selectedWriter: "dostoevsky", locale: "en", reducedMotion: true,
+      sameCanvasRendererCameraScene: true, nativeLifecycleFixture: "Two injected OS lifecycle cycles with real App/R3F behavior",
+      batteryOrDeviceMeasurement: false });
   } finally { await original.dispose(); }
 });
 

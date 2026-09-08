@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T06:32:10.159Z",
+  "stage": "S04",
+  "requirement": "PERF-008",
+  "finalStatus": "SELECTED_WORKING_VALIDATION_PASSED",
+  "sourceCheckpointBeforeChanges": "37a7cd2650431c5460093fbe204b298b8936e276",
+  "problem": "Native appStateChange already updates the shared platform snapshot, but the canonical globe previously used only DOM visibility and viewport intersection. A native background event could therefore leave its scene active while the document still reported visible.",
+  "implemented": [
+    "Existing usePlatformSnapshot supplies native runtimeActive through the same App/LiteraryWorldMap/LiteraryGlobe tree.",
+    "Combined native and DOM visibility feeds existing auto-rotation, frame-mode and active-scene policies; no scene recreation or new native listeners.",
+    "Source review confirms existing camera cancellation retains its interrupted pose and prevents replay of the same handled intent. CameraRig itself is unchanged; the browser scenario checks settled camera preservation.",
+    "Optional runtimeActive defaults to true and ordinary Web/PWA keeps its previous DOM lifecycle.",
+    "The existing canonical Tolstoy portrait is now explicitly included in native/PWA asset selections after the first lifecycle scenario exposed its missing local request. No new image or rights approval was created."
+  ],
+  "sourceValidation": {
+    "evidence": "static/static-checks.json",
+    "typeScriptPass": true,
+    "platformBoundariesPass": true,
+    "unchangedDuringChecks": true,
+    "files": [
+      {
+        "path": "src/App.tsx",
+        "sha256": "589ac2b9acd60387b4696591828f3eebc9b3a26d703cc458f42e9bd83552b3e8"
+      },
+      {
+        "path": "src/components/LiteraryWorldMap.tsx",
+        "sha256": "19212b6c329302f4ba4b46b8097bc47f2027854309f4ec23ba8a4e33c446d441"
+      },
+      {
+        "path": "src/components/LiteraryGlobe.tsx",
+        "sha256": "c6bd95071d447bd1bd7e527d864face907ccc6514be5ce880133024474075a66"
+      }
+    ],
+    "preserved": [
+      {
+        "source": ".tmp/s04-native-activity-20260908/static/static-checks.json",
+        "path": "static/static-checks.json",
+        "bytes": 1719,
+        "sha256": "82b34780d19b0e1ea4d6f933ed549df0fb7f061f2885328d8f51a87a3baa9548"
+      },
+      {
+        "source": ".tmp/s04-native-activity-20260908/static/typecheck.json",
+        "path": "static/typecheck.json",
+        "bytes": 348,
+        "sha256": "5e3faaf192b1d1eaddc2418f4b3f43a31c731f01ddf025fd2c3040947690bab0"
+      },
+      {
+        "source": ".tmp/s04-native-activity-20260908/static/platform-boundaries.json",
+        "path": "static/platform-boundaries.json",
+        "bytes": 2008,
+        "sha256": "33e7e864bd702c4c0cf02e94e521ec139d391ea0f8e1a29c1f75c19a883867f2"
+      }
+    ],
+    "assetCorrectionEvidence": "asset-correction.json",
+    "assetCorrectionSha256": "fb5442eac133558c27528f8a0d0562065c6e0fab03638e041f4caad3d6541c2e",
+    "scopeNote": "The three TypeScript inputs still match the completed static checks. Subsequent asset-selection changes have separate canonical-byte evidence and the final browser run; static tools were not replayed for these list additions."
+  },
+  "browser": {
+    "run": "a2/result.json",
+    "sha256": "9caeeceb00bfd960f768269834101c4d47c674bcf8e0c180b36cbb8365794c66",
+    "passed": 1,
+    "failed": 0,
+    "sourceFiles": 967,
+    "scope": "Canonical App/R3F/CSS in Chrome with injected Android OS appStateChange and Preferences; real document visibility unchanged; no native artifact or battery measurement.",
+    "limitation": "Actual App/R3F/renderer in Chrome, injected native App events. This is not installed Android/iOS or measured device battery usage."
+  },
+  "extraUnitSuitesRun": false,
+  "rootVisualReview": {
+    "image": "a2/case-1/native-host-resumed-en-selection-screenshot.png",
+    "observed": "Actual resumed scene retains the highlighted Russia globe and English Dostoevsky profile. The canonical Tolstoy portrait is visible in the adjacent writer row. The biography remains honestly held for editorial review.",
+    "screenshotType": "Source/browser rendering with injected native events, not an installed-device or store RC screenshot."
+  },
+  "history": [
+    {
+      "run": "a1/result.json",
+      "sha256": "eee295e30425d7603bdd3c1a16d50309f6c4a0099bd858064b0931492aeea5a9",
+      "statistics": {
+        "startTime": "2026-09-08T06:24:50.872Z",
+        "duration": 11336.375,
+        "expected": 0,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      },
+      "sourceComparison": {
+        "sourceFiles": 967,
+        "unchangedDuringRun": true,
+        "changed": []
+      },
+      "classification": "Whole scenario failed at its final missing-resource gate for the canonical Tolstoy portrait; the earlier lifecycle assertions do not relabel that run as passed."
+    }
+  ],
+  "previousEvidence": {
+    "firstJourney": "docs/mobile/evidence/S05/first-journey-20260908/result.json",
+    "latestAndroidAtSourceChange": "docs/mobile/evidence/S04/android-first-journey-20260908/result.json",
+    "android7b63IncludesFirstJourney": true,
+    "android7b63IncludesNativeActivity": false,
+    "note": "Earlier artifacts retain their exact source identities. Their original passing evidence is not relabelled as containing this new wiring."
+  },
+  "limits": [
+    "Device background/resume behavior still requires installed-runtime evidence.",
+    "Original interactive 3D Planetka, complete onboarding and remaining S03/S04/S05 and bilingual/content/commerce/release gates remain open."
+  ],
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false
+}

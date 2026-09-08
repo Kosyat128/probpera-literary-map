@@ -24,6 +24,14 @@ Internal implementation remains the assistant's responsibility:
 - English factual content, editorial/name/title evidence, synchronized legal,
   support/store/reviewer materials and complete accessibility remain unfinished.
 
+<!-- s04-native-activity:begin -->
+- Native activity propagation has bounded static/browser evidence; installed
+  runtime and device performance remain open. Existing Android7b631c49
+  includes first-journey but not this later source. Preserve all artifact
+  identities and pending iOS publication state; no stage gate is cleared.
+  Evidence: evidence/S04/native-activity-20260908/result.json.
+<!-- s04-native-activity:end -->
+
 <!-- s05-first-journey:begin -->
 - The bounded S05 first-journey invitation has 67 scoped unit and 1 selected
   browser passes plus static checks. Preserve initial failures and explicit

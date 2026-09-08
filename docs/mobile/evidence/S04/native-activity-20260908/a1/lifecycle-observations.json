@@ -1,0 +1,69 @@
+{
+  "automaticBackground": {
+    "samples": 18,
+    "renderFrames": [
+      156
+    ],
+    "documentVisibility": [
+      "visible"
+    ],
+    "frameloop": [
+      "never"
+    ]
+  },
+  "selectedBackground": {
+    "samples": 18,
+    "renderFrames": [
+      184
+    ],
+    "documentVisibility": [
+      "visible"
+    ],
+    "frameloop": [
+      "never"
+    ]
+  },
+  "events": [
+    {
+      "isActive": false,
+      "documentVisibility": "visible",
+      "listenerCount": 1
+    },
+    {
+      "isActive": true,
+      "documentVisibility": "visible",
+      "listenerCount": 1
+    },
+    {
+      "isActive": false,
+      "documentVisibility": "visible",
+      "listenerCount": 1
+    },
+    {
+      "isActive": true,
+      "documentVisibility": "visible",
+      "listenerCount": 1
+    }
+  ],
+  "retainedSelectedPose": {
+    "position": [
+      -0.22625,
+      2.67961,
+      -1.42543
+    ],
+    "quaternion": [
+      0.04031,
+      0.85589,
+      0.51115,
+      -0.0675
+    ],
+    "zoom": 1
+  },
+  "sameCanvasRendererCameraScene": true,
+  "selectedCountry": "russia",
+  "selectedWriter": "dostoevsky",
+  "locale": "en",
+  "reducedMotion": true,
+  "scope": "These lifecycle assertions passed before the final missing-resource gate failed; the scenario remains FAIL.",
+  "deviceOrBatteryClaim": false
+}

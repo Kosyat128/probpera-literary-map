@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "reason": "Actual canonical Tolstoy row requested its original local portrait, omitted from both controlled asset selections.",
+  "canonicalWriter": "russia:tolstoy",
+  "path": "public/assets/writer-portraits/q7243.webp",
+  "bytes": 17768,
+  "sha256": "2f8f3a46c0b10e3ac736858980bdd0611240bdb99a4bf042a56d64f11d8102d2",
+  "canonicalMetadata": {
+    "portrait": "assets/writer-portraits/q7243.webp",
+    "portraitAlt": "Портрет: Лев Николаевич Толстой",
+    "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:%D0%9B._%D0%9D._%D0%A2%D0%BE%D0%BB%D1%81%D1%82%D0%BE%D0%B9_(%D0%9B%D0%B5%D0%B2%D0%B8%D1%86%D0%BA%D0%B8%D0%B9,_1856)_(cropped).jpg",
+    "portraitRights": {
+      "status": "public-domain",
+      "licenseName": "PD-old-100-expired plus United States pre-1931 public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/Template:PD-old-100-expired",
+      "creator": "Sergey Lvovich Levitsky",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%D0%9B._%D0%9D._%D0%A2%D0%BE%D0%BB%D1%81%D1%82%D0%BE%D0%B9_(%D0%9B%D0%B5%D0%B2%D0%B8%D1%86%D0%BA%D0%B8%D0%B9,_1856)_(cropped).jpg",
+      "checkedAt": "2026-08-31"
+    }
+  },
+  "canonicalMetadataSource": "src/data/countries/generated/writerPortraits.generated.json",
+  "visualInspection": {
+    "tool": "view_image",
+    "source": "public/assets/writer-portraits/q7243.webp",
+    "observed": "Readable existing monochrome portrait with correct image geometry; exact canonical bytes retained."
+  },
+  "rights": "Existing canonical metadata retained; no new rights or editorial approval created.",
+  "selectionDelta": {
+    "beforeCount": 285,
+    "afterCount": 286,
+    "added": [
+      {
+        "output": "assets/writer-portraits/q7243.webp",
+        "source": "public/assets/writer-portraits/q7243.webp",
+        "sourceSha256": "2f8f3a46c0b10e3ac736858980bdd0611240bdb99a4bf042a56d64f11d8102d2",
+        "transformation": "none"
+      }
+    ],
+    "removed": [],
+    "changed": []
+  },
+  "fileHashes": {
+    "before": [
+      {
+        "path": "scripts/mobile/native-base-assets.json",
+        "sha256": "091b17fe4e41306a245c6d813ecc042fd3b9dfadeaa28b202f24a84de0ab40ca"
+      },
+      {
+        "path": "scripts/mobile/build-pwa.mjs",
+        "sha256": "49c4abc58f3eb25040bccf0614028d5031aed8f0afb5c7d2065070ec0dcc5b11"
+      }
+    ],
+    "after": [
+      {
+        "path": "scripts/mobile/native-base-assets.json",
+        "sha256": "c1f42e5c8d8afd58102d24faa434a1b01a77129f97bc11ac59fe8ce5e4ca4268"
+      },
+      {
+        "path": "scripts/mobile/build-pwa.mjs",
+        "sha256": "ee1260f91a4f4a9adf207b700aa9c1585da167f0e4ad07af8a567aab166c0528"
+      }
+    ]
+  },
+  "pwaExplicitSelectionAdded": "assets/writer-portraits/q7243.webp",
+  "pwaOrNativeArtifactRebuilt": false,
+  "fixtureAssetBypass": false
+}

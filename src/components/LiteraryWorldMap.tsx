@@ -55,6 +55,7 @@ interface Props {
   onHoverCountryChange?: (country: Country | null) => void;
   focusRequest?: GlobeExplicitFocusRequest | null;
   economical?: boolean;
+  runtimeActive?: boolean;
   dataStatus?: DeferredLoadStatus;
   forceLoad?: boolean;
   onLoadIntent?: () => void;
@@ -76,6 +77,7 @@ export default function LiteraryWorldMap({
   onHoverCountryChange,
   focusRequest,
   economical = false,
+  runtimeActive = true,
   dataStatus = "ready",
   forceLoad = false,
   onLoadIntent,
@@ -167,6 +169,7 @@ export default function LiteraryWorldMap({
           onHoverCountryChange={onHoverCountryChange}
           focusRequest={focusRequest}
           economical={economical}
+          runtimeActive={runtimeActive}
         />
       ) : (
         <div className="globe-loading" role="status" aria-live="polite">

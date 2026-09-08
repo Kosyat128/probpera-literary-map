@@ -144,6 +144,7 @@ interface Props {
   onHoverCountryChange?: (country: Country | null) => void;
   focusRequest?: GlobeExplicitFocusRequest | null;
   economical?: boolean;
+  runtimeActive?: boolean;
 }
 
 const GLOBE_EDITION_STORAGE_KEY = "probpera.globe-edition.v2";
@@ -1967,6 +1968,7 @@ export default function LiteraryGlobe({
   onHoverCountryChange,
   focusRequest,
   economical = false,
+  runtimeActive = true,
 }: Props) {
   const { language, t, countryName, number } = useInterfaceLanguage();
   const initialEditionId = useRef(storedGlobeEdition());
@@ -2044,7 +2046,10 @@ export default function LiteraryGlobe({
   const [documentVisible, setDocumentVisible] = useState(
     () => document.visibilityState !== "hidden"
   );
-  const globeActive = globeVisible && documentVisible;
+  // Native app state can become inactive before the WebView reports hidden.
+  // Keep the canonical scene mounted and feed both signals into its own policy.
+  const runtimeVisible = runtimeActive && documentVisible;
+  const globeActive = globeVisible && runtimeVisible;
   const [atlasRequested, setAtlasRequested] = useState(false);
   const [autoRotateRequested, setAutoRotateRequested] = useState(true);
   const [interactionPaused, setInteractionPaused] = useState(false);
@@ -2249,7 +2254,7 @@ export default function LiteraryGlobe({
   const autoRotatePolicy = resolveGlobeAutoRotationPolicy({
     requested: autoRotateRequested,
     reducedMotion,
-    documentVisible,
+    documentVisible: runtimeVisible,
     globeVisible,
     hasSelection: Boolean(selectedCountry),
     hasHover: Boolean(hoveredCountry || hoveredLaureate),
@@ -2278,7 +2283,7 @@ export default function LiteraryGlobe({
     : t("Авто");
   const frameMode = resolveGlobeFrameMode({
     globeVisible,
-    documentVisible,
+    documentVisible: runtimeVisible,
     autoRotateActive,
     cameraFlightActive,
     controlsDampingActive: cameraControlsActive,

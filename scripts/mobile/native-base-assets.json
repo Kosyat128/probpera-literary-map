@@ -1282,6 +1282,12 @@
       "transformation": "none"
     },
     {
+      "output": "assets/writer-portraits/q7243.webp",
+      "source": "public/assets/writer-portraits/q7243.webp",
+      "sourceSha256": "2f8f3a46c0b10e3ac736858980bdd0611240bdb99a4bf042a56d64f11d8102d2",
+      "transformation": "none"
+    },
+    {
       "output": "assets/writer-portraits/q991.webp",
       "source": "public/assets/writer-portraits/q991.webp",
       "sourceSha256": "516784608ec509dd304b6f3e097a16d1dc3686cbae2e76974e4d5b95bc68a253",

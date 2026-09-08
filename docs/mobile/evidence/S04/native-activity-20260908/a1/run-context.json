@@ -1,0 +1,19 @@
+{
+  "runId": "native-activity-20260908-a1",
+  "sourceCommit": "37a7cd2650431c5460093fbe204b298b8936e276",
+  "changedFromS05A6": [
+    "src/App.tsx",
+    "src/components/LiteraryGlobe.tsx",
+    "src/components/LiteraryWorldMap.tsx",
+    "tests/host/native-planet.spec.mjs"
+  ],
+  "selectedScenarios": 1,
+  "grep": "native host background pauses",
+  "sourceFiles": 967,
+  "browserCapabilities": "Desktop Chrome real App/R3F with injected Android OS bindings; actual document remains visible during native appStateChange.",
+  "observedTransitions": [
+    "automatic rotation: foreground/background/foreground",
+    "selected canonical writer + English + reduced motion: foreground/background/foreground"
+  ],
+  "noDeviceOrBatteryClaim": true
+}

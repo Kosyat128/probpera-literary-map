@@ -16,7 +16,7 @@ import ArticleEngagement from "./community/ArticleEngagement";
 import { publicImageAttributes } from "./utils/imageDelivery";
 import type { CommunityView } from "./community/CommunityHub";
 import { isControlledWebEdition } from "./platform/distribution";
-import { usePlatformServices } from "./platform/PlatformServices";
+import { usePlatformServices, usePlatformSnapshot } from "./platform/PlatformServices";
 import NativePlanetLaunch from "./host/NativePlanetLaunch";
 import PlanetWelcome from "./host/PlanetWelcome";
 import NativePlanetPanel from "./host/NativePlanetPanel";
@@ -545,6 +545,8 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
   const { record: recordRecent } = useRecentHistory();
   const { language, setLanguage, t, countryName, number } = useInterfaceLanguage();
   const platformServices = usePlatformServices();
+  const { visibility: platformVisibility } = usePlatformSnapshot();
+  const globeRuntimeActive = platformServices.kind === "web" || platformVisibility === "active";
   const isPlanetApplication = isControlledWebEdition || platformServices.kind !== "web";
   const [nativeCollectionOpen, setNativeCollectionOpen] = useState(() => isPlanetApplication && addressRequestsCollection());
   const [planetLaunchComplete, setPlanetLaunchComplete] = useState(false);
@@ -2527,6 +2529,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
                 onHoverCountryChange={setGlobeHoveredCountry}
                 focusRequest={globeFocusRequest}
                 economical={atlasExperience.economical}
+                runtimeActive={globeRuntimeActive}
                 showNobelLaureates={
                   atlasFilter === "nobel" ||
                   nobelSpotlightCountryId === selectedCountry?.id

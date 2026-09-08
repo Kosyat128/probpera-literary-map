@@ -1,0 +1,11 @@
+{
+  "sourceFiles": 967,
+  "unchangedDuringRun": true,
+  "changed": [],
+  "supplementalNativeSelection": {
+    "path": "scripts/mobile/native-base-assets.json",
+    "beforeSha256": "c1f42e5c8d8afd58102d24faa434a1b01a77129f97bc11ac59fe8ce5e4ca4268",
+    "afterSha256": "c1f42e5c8d8afd58102d24faa434a1b01a77129f97bc11ac59fe8ce5e4ca4268",
+    "unchanged": true
+  }
+}

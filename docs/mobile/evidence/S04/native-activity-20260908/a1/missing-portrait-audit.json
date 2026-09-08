@@ -1,0 +1,29 @@
+{
+  "asset": "public/assets/writer-portraits/q7243.webp",
+  "bytes": 17768,
+  "sha256": "2f8f3a46c0b10e3ac736858980bdd0611240bdb99a4bf042a56d64f11d8102d2",
+  "canonicalWriter": "russia:tolstoy",
+  "canonicalSource": "src/data/countries/generated/writerPortraits.generated.json",
+  "existingCanonicalMetadata": {
+    "portrait": "assets/writer-portraits/q7243.webp",
+    "portraitAlt": "Портрет: Лев Николаевич Толстой",
+    "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:%D0%9B._%D0%9D._%D0%A2%D0%BE%D0%BB%D1%81%D1%82%D0%BE%D0%B9_(%D0%9B%D0%B5%D0%B2%D0%B8%D1%86%D0%BA%D0%B8%D0%B9,_1856)_(cropped).jpg",
+    "portraitRights": {
+      "status": "public-domain",
+      "licenseName": "PD-old-100-expired plus United States pre-1931 public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/Template:PD-old-100-expired",
+      "creator": "Sergey Lvovich Levitsky",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:%D0%9B._%D0%9D._%D0%A2%D0%BE%D0%BB%D1%81%D1%82%D0%BE%D0%B9_(%D0%9B%D0%B5%D0%B2%D0%B8%D1%86%D0%BA%D0%B8%D0%B9,_1856)_(cropped).jpg",
+      "checkedAt": "2026-08-31"
+    }
+  },
+  "independentNewRightsApproval": false,
+  "nativeSelected": false,
+  "pwaExplicitSelected": false,
+  "fixtureRoute": "Exact native-base-assets selection, verifiedbySHA; unselectedresource rejected404.",
+  "observedRuntimeRequest": [
+    "/assets/writer-portraits/q7243.webp"
+  ],
+  "visual": "English countrylist Tolstoy row displayed the existing silhouette fallback; Dostoevsky selection and portrait remained visible.",
+  "sourceModified": false
+}

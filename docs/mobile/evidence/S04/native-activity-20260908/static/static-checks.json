@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "before": [
+    {
+      "path": "src/App.tsx",
+      "sha256": "589ac2b9acd60387b4696591828f3eebc9b3a26d703cc458f42e9bd83552b3e8"
+    },
+    {
+      "path": "src/components/LiteraryWorldMap.tsx",
+      "sha256": "19212b6c329302f4ba4b46b8097bc47f2027854309f4ec23ba8a4e33c446d441"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "sha256": "c6bd95071d447bd1bd7e527d864face907ccc6514be5ce880133024474075a66"
+    }
+  ],
+  "after": [
+    {
+      "path": "src/App.tsx",
+      "sha256": "589ac2b9acd60387b4696591828f3eebc9b3a26d703cc458f42e9bd83552b3e8"
+    },
+    {
+      "path": "src/components/LiteraryWorldMap.tsx",
+      "sha256": "19212b6c329302f4ba4b46b8097bc47f2027854309f4ec23ba8a4e33c446d441"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "sha256": "c6bd95071d447bd1bd7e527d864face907ccc6514be5ce880133024474075a66"
+    }
+  ],
+  "unchanged": true,
+  "results": [
+    {
+      "name": "typecheck",
+      "command": [
+        "node",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit"
+      ],
+      "startedAt": "2026-09-08T06:22:27.864Z",
+      "durationMs": 20089,
+      "exitCode": 0,
+      "report": "typecheck.json",
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "platform-boundaries",
+      "command": [
+        "node",
+        "scripts/mobile/platform-boundaries.mjs"
+      ],
+      "startedAt": "2026-09-08T06:22:27.878Z",
+      "durationMs": 6157,
+      "exitCode": 0,
+      "report": "platform-boundaries.json",
+      "logSha256": "53a1dc5824a10394c04f6d8718e303a920cad6d2b1fb3c07cf05c8b235f4ab68"
+    }
+  ],
+  "releaseReady": false,
+  "stageAccepted": false
+}

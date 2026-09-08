@@ -312,3 +312,10 @@
   preserve D073 as the earlier checkpoint observation, not a current APK claim.
   New Android includes the bounded S05 invitation, not completed onboarding,
   reviewed bilingual copy, installed-device validation or release acceptance.
+
+- D075: Native activity uses the existing shared platform snapshot and canonical
+  globe lifecycle. Combine native and DOM visibility without replacing the
+  scene, camera or rotation preference; preserve cancelled-focus semantics.
+  Static and one injected-native App/R3F case validate this source slice only.
+  Android7b631c49 retains first-journey but excludes this change; preserve
+  existing artifact identities, S05 result, iOS approval state and S03 first-open.

@@ -1,0 +1,16 @@
+{
+  "name": "platform-boundaries",
+  "command": [
+    "node",
+    "scripts/mobile/platform-boundaries.mjs"
+  ],
+  "startedAt": "2026-09-08T06:22:27.878Z",
+  "durationMs": 6157,
+  "exitCode": 0,
+  "log": {
+    "encoding": "utf8",
+    "bytes": 1544,
+    "sha256": "53a1dc5824a10394c04f6d8718e303a920cad6d2b1fb3c07cf05c8b235f4ab68",
+    "text": "{\n  \"pass\": true,\n  \"sourceFileCount\": 880,\n  \"webReachableFileCount\": 504,\n  \"auditedRuntimeFileCount\": 513,\n  \"importCount\": 1932,\n  \"webEntries\": [\n    \"src/main.tsx\"\n  ],\n  \"adapterRoots\": [\n    \"src/platform/adapters/android\",\n    \"src/platform/adapters/ios\"\n  ],\n  \"canonicalSceneFiles\": {\n    \"LiteraryWorldMap\": \"src/components/LiteraryWorldMap.tsx\",\n    \"LiteraryGlobe\": \"src/components/LiteraryGlobe.tsx\",\n    \"GlobeCameraRig\": \"src/components/GlobeCameraRig.tsx\"\n  },\n  \"canvasOwnerFiles\": [\n    \"src/components/LiteraryGlobe.tsx\",\n    \"src/components/BookShelfSceneCanvas.tsx\"\n  ],\n  \"canvasSites\": [\n    {\n      \"file\": \"src/components/BookShelfSceneCanvas.tsx\",\n      \"line\": 503\n    },\n    {\n      \"file\": \"src/components/LiteraryGlobe.tsx\",\n      \"line\": 2992\n    }\n  ],\n  \"nativeConfigs\": [\n    \"capacitor.config.json\"\n  ],\n  \"findings\": [],\n  \"limitations\": [\n    \"Static source ownership does not prove a single active globe/Canvas/renderer or preserved runtime identity; browser and native tests must verify those invariants.\",\n    \"Third-party package contents, bundler plugins, generated artifacts, injected scripts and installed native binaries require separate build/artifact audits.\",\n    \"Dependency resolution/loader enforcement covers reachable web and native-adapter runtime graphs; inactive source is still scanned for native SDK imports and duplicate scene ownership.\",\n    \"Computed module loaders and non-static native runtime configuration fail closed; this is not a general JavaScript data-flow proof.\"\n  ]\n}\n"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "runId": "native-activity-20260908-a2",
+  "sourceCommit": "37a7cd2650431c5460093fbe204b298b8936e276",
+  "changedFromA1": [
+    "scripts/mobile/build-pwa.mjs"
+  ],
+  "selectedScenarios": 1,
+  "grep": "native host background pauses",
+  "sourceFiles": 967,
+  "nativeSelectionSha256": "c1f42e5c8d8afd58102d24faa434a1b01a77129f97bc11ac59fe8ce5e4ca4268",
+  "reason": "Exact existing q7243 portrait now in both controlled asset selections; actual native fixture uses the same286-entry selection.",
+  "browserCapabilities": "Desktop Chrome real App/R3F; only Android OS events and storage injected, document visibility stays visible.",
+  "noNativeOrPwaArtifactRebuilt": true,
+  "syntaxCheck": {
+    "command": "node --check scripts/mobile/build-pwa.mjs",
+    "exitCode": 0
+  }
+}

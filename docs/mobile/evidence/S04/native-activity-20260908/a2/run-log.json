@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "kind": "lossless-utf8-log",
+  "originalRelativePath": ".tmp/s04-native-activity-20260908/a2/run.log",
+  "bytes": 390,
+  "sha256": "294069aad7c27c55b851e63f52b7444abd4a559f5db6b309b69e1204c6e02ee5",
+  "encoding": "utf8",
+  "text": "\r\nRunning 1 test using 1 worker\r\n\r\n(node:38004) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\r\n(Use `node --trace-warnings ...` to show where the warning was created)\r\n  ok 1 tests\\host\\native-planet.spec.mjs:383:1 › native host background pauses the actual globe while the document stays visible and resumes preserved state (8.5s)\r\n\r\n  1 passed (10.6s)\r\n"
+}

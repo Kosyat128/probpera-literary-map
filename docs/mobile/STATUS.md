@@ -7,6 +7,20 @@ customization and store functions surround that same persistent scene.
 S00-S02 accepted. S03 is first-open; S03/S04/S05 remain IN_PROGRESS under the
 documented parallel-safe entry. S06-S40 NOT_STARTED. releaseReady:false.
 
+<!-- s04-native-activity:begin -->
+Native background/resume now reaches the existing globe through the shared
+platform snapshot: rendering/controls pause, while Canvas, camera, selection
+and rotation preference remain. TypeScript/platform checks and one final actual
+App/R3F Chrome case passed with injected native events and unchanged source.
+The initial a1 whole-case failure remains preserved: its lifecycle assertions
+passed before the final image-load gate failed; no partial green is substituted.
+Evidence: evidence/S04/native-activity-20260908/result.json.
+No installed-device, battery, full-suite or stage-acceptance claim. Android
+7b631c49 contains first-journey but excludes this newer native activity change;
+its previous build/audit evidence remains valid. PWA051 and frozen iOS83 keep
+their existing source boundaries and permissions. First-open remains S03.
+<!-- s04-native-activity:end -->
+
 Controlled paid PWA now uses the same globe root as native. The active panel
 contains the single global RU/EN control and accessible access/update notices.
 The selected book survives cold offline RU/EN reloads and returns visibly

@@ -1,0 +1,195 @@
+{
+  "schemaVersion": 1,
+  "stage": "S04",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "runId": "native-activity-20260908-a1",
+  "sourceCommit": "37a7cd2650431c5460093fbe204b298b8936e276",
+  "scope": "Canonical App/R3F/CSS in Chrome with injected Android OS appStateChange and Preferences; real document visibility unchanged; no native artifact or battery measurement.",
+  "statistics": {
+    "startTime": "2026-09-08T06:24:50.872Z",
+    "duration": 11336.375,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "selectionErrorBeforeFixture": false,
+  "tests": [
+    {
+      "title": "native host background pauses the actual globe while the document stays visible and resumes preserved state",
+      "status": "failed",
+      "durationMs": 9017,
+      "errors": [
+        "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 3\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q7243.webp\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n\n  317 |   expect(fixture.errors).toEqual([]);\n  318 |   expect(fixture.externalRequests).toEqual([]);\n> 319 |   expect(fixture.missingResources).toEqual([]);\n      |                                    ^\n  320 |   expect(await fixture.page.evaluate(() => window.__nativePlanetVisibleHeroFrames)).toBe(0);\n  321 | }\n  322 |\n    at evidence (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs:319:36)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs:457:5"
+      ],
+      "attachments": [
+        {
+          "name": "native-host-background",
+          "path": "case-1/native-host-background.json"
+        },
+        {
+          "name": "native-host-background-screenshot",
+          "path": "case-1/native-host-background-screenshot.png"
+        },
+        {
+          "name": "native-host-resumed-en-selection",
+          "path": "case-1/native-host-resumed-en-selection.json"
+        },
+        {
+          "name": "native-host-resumed-en-selection-screenshot",
+          "path": "case-1/native-host-resumed-en-selection-screenshot.png"
+        },
+        {
+          "name": "native-final-failed",
+          "path": "case-1/native-final-failed.json"
+        },
+        {
+          "name": "native-final-failed-screenshot",
+          "path": "case-1/native-final-failed-screenshot.png"
+        }
+      ]
+    }
+  ],
+  "sourceComparison": {
+    "sourceFiles": 967,
+    "unchangedDuringRun": true,
+    "changed": []
+  },
+  "runContext": {
+    "runId": "native-activity-20260908-a1",
+    "sourceCommit": "37a7cd2650431c5460093fbe204b298b8936e276",
+    "changedFromS05A6": [
+      "src/App.tsx",
+      "src/components/LiteraryGlobe.tsx",
+      "src/components/LiteraryWorldMap.tsx",
+      "tests/host/native-planet.spec.mjs"
+    ],
+    "selectedScenarios": 1,
+    "grep": "native host background pauses",
+    "sourceFiles": 967,
+    "browserCapabilities": "Desktop Chrome real App/R3F with injected Android OS bindings; actual document remains visible during native appStateChange.",
+    "observedTransitions": [
+      "automatic rotation: foreground/background/foreground",
+      "selected canonical writer + English + reduced motion: foreground/background/foreground"
+    ],
+    "noDeviceOrBatteryClaim": true
+  },
+  "preservedFiles": [
+    {
+      "path": "source-before.json",
+      "source": ".tmp/s04-native-activity-20260908/a1/source-before.json",
+      "bytes": 136183,
+      "sha256": "3235e4c5d9e96becfd4607d89e4115ecd020123ac53a5c0c1e43617654e91bab"
+    },
+    {
+      "path": "source-after.json",
+      "source": ".tmp/s04-native-activity-20260908/a1/source-after.json",
+      "bytes": 136183,
+      "sha256": "3235e4c5d9e96becfd4607d89e4115ecd020123ac53a5c0c1e43617654e91bab"
+    },
+    {
+      "path": "source-comparison.json",
+      "source": ".tmp/s04-native-activity-20260908/a1/source-comparison.json",
+      "bytes": 72,
+      "sha256": "eed61890d6f7454d6aba135e26b02a7c6640c10611696daf3a684865abf04b8c"
+    },
+    {
+      "path": "run-context.json",
+      "source": ".tmp/s04-native-activity-20260908/a1/run-context.json",
+      "bytes": 741,
+      "sha256": "c98f9d8f8b8c47afeb925747ec11b5a7b7186f73b0d9832c40e2e18e60eb73b9"
+    },
+    {
+      "path": "browser-results.json",
+      "source": ".tmp/native-planet-browser-results/native-activity-20260908-a1/results.json",
+      "bytes": 64171,
+      "sha256": "f0edcb357877262ef264a67f78fbfa84add42796645d737cee4bfa669f0dd51c"
+    },
+    {
+      "path": "case-1/native-host-background.json",
+      "source": "Exact decoded Playwright attachment: native-host-background",
+      "bytes": 11156,
+      "sha256": "90f3a3570a886d244c113340d23691cda8dc54fdbb04d699bbd4bd76be88f8d9"
+    },
+    {
+      "path": "case-1/native-host-background-screenshot.png",
+      "source": ".tmp/native-planet-browser-results/native-activity-20260908-a1/artifacts/native-planet-native-host--493c3-and-resumes-preserved-state/attachments/native-host-background-screenshot-57143df10c323196a22d0fcf517c185e8682949c.png",
+      "bytes": 445230,
+      "sha256": "ce54623653c0131a73c87f8ddea951363c3490feaa15ffab7f23592a3d3df071"
+    },
+    {
+      "path": "case-1/native-host-resumed-en-selection.json",
+      "source": "Exact decoded Playwright attachment: native-host-resumed-en-selection",
+      "bytes": 16903,
+      "sha256": "9b0eae0fdac5ee8ef7c65bf2996e496fd8fb3aeefe13f0acbf30980a4b3f2c6b"
+    },
+    {
+      "path": "case-1/native-host-resumed-en-selection-screenshot.png",
+      "source": ".tmp/native-planet-browser-results/native-activity-20260908-a1/artifacts/native-planet-native-host--493c3-and-resumes-preserved-state/attachments/native-host-resumed-en-selection-screenshot-be4fdabea7d833e3cd5cce81c844195be9bd4860.png",
+      "bytes": 1100981,
+      "sha256": "c8615eb966de18a9a84c20384f8b606f7bcb9c6d40a8b1a7894644ea9028dd0b"
+    },
+    {
+      "path": "case-1/native-final-failed.json",
+      "source": "Exact decoded Playwright attachment: native-final-failed",
+      "bytes": 12493,
+      "sha256": "8cdcb203c49d7f81d9427aaffa1b9edb0e337ba1efe8986336b69880477852cb"
+    },
+    {
+      "path": "case-1/native-final-failed-screenshot.png",
+      "source": ".tmp/native-planet-browser-results/native-activity-20260908-a1/artifacts/native-planet-native-host--493c3-and-resumes-preserved-state/attachments/native-final-failed-screenshot-e0d0ef6b7d3c1c1b0006d3802dafafaf20952067.png",
+      "bytes": 1100981,
+      "sha256": "c8615eb966de18a9a84c20384f8b606f7bcb9c6d40a8b1a7894644ea9028dd0b"
+    },
+    {
+      "path": "run-log.json",
+      "source": ".tmp/s04-native-activity-20260908/a1/run.log",
+      "bytes": 4396,
+      "sha256": "7f6a8c04369aec1e0ea01c72329a7ac2ee9e150a7f6ef6942c9d0c8488ac9160"
+    },
+    {
+      "path": "missing-portrait-audit.json",
+      "source": "Derived from exact safe runtime attachments and referenced canonical local files",
+      "bytes": 1604,
+      "sha256": "b4bd93b88337c3dd4f7f7cbbb706fcf5e18f9e16d6f880c28b8808ddf5797758"
+    },
+    {
+      "path": "lifecycle-observations.json",
+      "source": "Derived from exact safe runtime attachments and referenced canonical local files",
+      "bytes": 1294,
+      "sha256": "e15e9bc41b2efa41f0d19dd19fe1fab205762f99b098a5203f1a6d3e1199bf0e"
+    }
+  ],
+  "losslessRunLog": {
+    "path": "run-log.json",
+    "bytes": 3983,
+    "sha256": "4dca3126c8e5aa2c0ec2c7c44a95e79037a99b82f3c94372dd028c1243e4364a",
+    "roundTripVerified": true
+  },
+  "limitations": [
+    "This preserves the exact attempt, including failures; it is not stage acceptance.",
+    "No OS installation, native/PWA artifact, production publication, trace.zip or compiled source payload included.",
+    "Only existing evidence was copied and checked by hash; no tests rerun for preservation."
+  ],
+  "failureDiagnosis": {
+    "gate": "missingResources expectedempty, gotexact q7243.webp",
+    "audit": "missing-portrait-audit.json",
+    "lifecycle": "lifecycle-observations.json",
+    "fixtureWorkaroundApplied": false
+  },
+  "visualReview": {
+    "inspectedScreenshots": [
+      "case-1/native-host-background-screenshot.png",
+      "case-1/native-host-resumed-en-selection-screenshot.png"
+    ],
+    "observed": [
+      "Background screenshot retains the actual canonical globe.",
+      "Resumed English screenshot retains the selected Dostoevsky country/writer view; Tolstoy list row uses an existing silhouette because its selected local resource is absent."
+    ],
+    "limitations": [
+      "Chrome DOM-visible OS-event fixture, not physical device lifecycle or battery evidence.",
+      "English writer profile remains editorial-review content; this scenario does not establish bilingual editorial completion."
+    ]
+  }
+}

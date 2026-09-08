@@ -1,0 +1,197 @@
+{
+  "schemaVersion": 1,
+  "stage": "S04",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "runId": "native-activity-20260908-a2",
+  "sourceCommit": "37a7cd2650431c5460093fbe204b298b8936e276",
+  "scope": "Canonical App/R3F/CSS in Chrome with injected Android OS appStateChange and Preferences; real document visibility unchanged; no native artifact or battery measurement.",
+  "statistics": {
+    "startTime": "2026-09-08T06:29:43.199Z",
+    "duration": 10554.465999999999,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "selectionErrorBeforeFixture": false,
+  "tests": [
+    {
+      "title": "native host background pauses the actual globe while the document stays visible and resumes preserved state",
+      "status": "passed",
+      "durationMs": 8503,
+      "errors": [],
+      "attachments": [
+        {
+          "name": "native-host-background",
+          "path": "case-1/native-host-background.json"
+        },
+        {
+          "name": "native-host-background-screenshot",
+          "path": "case-1/native-host-background-screenshot.png"
+        },
+        {
+          "name": "native-host-resumed-en-selection",
+          "path": "case-1/native-host-resumed-en-selection.json"
+        },
+        {
+          "name": "native-host-resumed-en-selection-screenshot",
+          "path": "case-1/native-host-resumed-en-selection-screenshot.png"
+        },
+        {
+          "name": "native-final-passed",
+          "path": "case-1/native-final-passed.json"
+        },
+        {
+          "name": "native-final-passed-screenshot",
+          "path": "case-1/native-final-passed-screenshot.png"
+        }
+      ]
+    }
+  ],
+  "sourceComparison": {
+    "sourceFiles": 967,
+    "unchangedDuringRun": true,
+    "changed": [],
+    "supplementalNativeSelection": {
+      "path": "scripts/mobile/native-base-assets.json",
+      "beforeSha256": "c1f42e5c8d8afd58102d24faa434a1b01a77129f97bc11ac59fe8ce5e4ca4268",
+      "afterSha256": "c1f42e5c8d8afd58102d24faa434a1b01a77129f97bc11ac59fe8ce5e4ca4268",
+      "unchanged": true
+    }
+  },
+  "runContext": {
+    "runId": "native-activity-20260908-a2",
+    "sourceCommit": "37a7cd2650431c5460093fbe204b298b8936e276",
+    "changedFromA1": [
+      "scripts/mobile/build-pwa.mjs"
+    ],
+    "selectedScenarios": 1,
+    "grep": "native host background pauses",
+    "sourceFiles": 967,
+    "nativeSelectionSha256": "c1f42e5c8d8afd58102d24faa434a1b01a77129f97bc11ac59fe8ce5e4ca4268",
+    "reason": "Exact existing q7243 portrait now in both controlled asset selections; actual native fixture uses the same286-entry selection.",
+    "browserCapabilities": "Desktop Chrome real App/R3F; only Android OS events and storage injected, document visibility stays visible.",
+    "noNativeOrPwaArtifactRebuilt": true,
+    "syntaxCheck": {
+      "command": "node --check scripts/mobile/build-pwa.mjs",
+      "exitCode": 0
+    }
+  },
+  "preservedFiles": [
+    {
+      "path": "source-before.json",
+      "source": ".tmp/s04-native-activity-20260908/a2/source-before.json",
+      "bytes": 136183,
+      "sha256": "883e30731edd50575737b90a2b03543020e44a1840ddb743c4db49a675ee0786"
+    },
+    {
+      "path": "source-after.json",
+      "source": ".tmp/s04-native-activity-20260908/a2/source-after.json",
+      "bytes": 136183,
+      "sha256": "883e30731edd50575737b90a2b03543020e44a1840ddb743c4db49a675ee0786"
+    },
+    {
+      "path": "source-comparison.json",
+      "source": ".tmp/s04-native-activity-20260908/a2/source-comparison.json",
+      "bytes": 363,
+      "sha256": "4d02a1746cc292eae27181e3e872e4e40fedd672c325556ad9bf243291f3c107"
+    },
+    {
+      "path": "run-context.json",
+      "source": ".tmp/s04-native-activity-20260908/a2/run-context.json",
+      "bytes": 775,
+      "sha256": "639c8086bf713138d73ec8e7f10d877d623dd11ee83872ca7257c2e412447eeb"
+    },
+    {
+      "path": "browser-results.json",
+      "source": ".tmp/native-planet-browser-results/native-activity-20260908-a2/results.json",
+      "bytes": 59416,
+      "sha256": "66688e5134671292e3ea7dabd6346f41269cf97bd89524ec035881d66ce0e921"
+    },
+    {
+      "path": "case-1/native-host-background.json",
+      "source": "Exact decoded Playwright attachment: native-host-background",
+      "bytes": 11156,
+      "sha256": "36be527f5b4c35aac0ee51846bb32f22c135dd530c1183eb1e83f796e2a1c1ec"
+    },
+    {
+      "path": "case-1/native-host-background-screenshot.png",
+      "source": ".tmp/native-planet-browser-results/native-activity-20260908-a2/artifacts/native-planet-native-host--493c3-and-resumes-preserved-state/attachments/native-host-background-screenshot-87889ba74a8af8a3c304d9d177e56c44f5a5a67f.png",
+      "bytes": 444414,
+      "sha256": "9d77b2f7f704c59e26028e641878277ce6245a6b679481ae3c9f8d65a296f105"
+    },
+    {
+      "path": "case-1/native-host-resumed-en-selection.json",
+      "source": "Exact decoded Playwright attachment: native-host-resumed-en-selection",
+      "bytes": 16789,
+      "sha256": "984137833fa1e5017ac0765513e073bd2c344a365511e574ed73a42e854057c9"
+    },
+    {
+      "path": "case-1/native-host-resumed-en-selection-screenshot.png",
+      "source": ".tmp/native-planet-browser-results/native-activity-20260908-a2/artifacts/native-planet-native-host--493c3-and-resumes-preserved-state/attachments/native-host-resumed-en-selection-screenshot-af05208b8cbac09fb669efed6b358e9044f700c5.png",
+      "bytes": 1103181,
+      "sha256": "29bd27ec0a66bbd104b1698013aa503a07145e6b0b8498f4939972e6c0d560c7"
+    },
+    {
+      "path": "case-1/native-final-passed.json",
+      "source": "Exact decoded Playwright attachment: native-final-passed",
+      "bytes": 12373,
+      "sha256": "a3f77a34783e3a8f1e231339385f0585c8cc0dba069f896b79c2954a3585e285"
+    },
+    {
+      "path": "case-1/native-final-passed-screenshot.png",
+      "source": ".tmp/native-planet-browser-results/native-activity-20260908-a2/artifacts/native-planet-native-host--493c3-and-resumes-preserved-state/attachments/native-final-passed-screenshot-6994be7c65190a2fafa548e9a6006bad0c71d10c.png",
+      "bytes": 1103181,
+      "sha256": "29bd27ec0a66bbd104b1698013aa503a07145e6b0b8498f4939972e6c0d560c7"
+    },
+    {
+      "path": "run-log.json",
+      "source": ".tmp/s04-native-activity-20260908/a2/run.log",
+      "bytes": 670,
+      "sha256": "d71434d31dc3e81be974e009315cb228d2730166289759c651d6318d01124a86"
+    },
+    {
+      "path": "lifecycle-observations.json",
+      "source": "Exact safe runtime attachments summarized without replay",
+      "bytes": 1673,
+      "sha256": "194e13636b53d308b3ac0c0c3d49ea361d0237d63f6be2e7825297891943c25b"
+    }
+  ],
+  "losslessRunLog": {
+    "path": "run-log.json",
+    "bytes": 390,
+    "sha256": "294069aad7c27c55b851e63f52b7444abd4a559f5db6b309b69e1204c6e02ee5",
+    "roundTripVerified": true
+  },
+  "limitations": [
+    "This preserves the exact attempt, including failures; it is not stage acceptance.",
+    "No OS installation, native/PWA artifact, production publication, trace.zip or compiled source payload included.",
+    "Only existing evidence was copied and checked by hash; no tests rerun for preservation."
+  ],
+  "focusedResult": {
+    "passed": 1,
+    "failed": 0,
+    "originalFailurePreserved": "../a1/result.json",
+    "assetCorrection": "../asset-correction.json",
+    "observations": "lifecycle-observations.json",
+    "noOtherBrowserCasesRepeated": true,
+    "noCompilerReplayForAssetList": true,
+    "noNativeOrPwaArtifactBuilt": true
+  },
+  "visualReview": {
+    "inspectedScreenshots": [
+      "case-1/native-host-background-screenshot.png",
+      "case-1/native-host-resumed-en-selection-screenshot.png"
+    ],
+    "observed": [
+      "The canonical globe remains rendered in place during the simulated native background interval.",
+      "After resume the same English Dostoevsky profile, Russia selection and global toolbar are visible.",
+      "The Tolstoy row now displays the exact canonical local portrait instead of the missing-resource fallback."
+    ],
+    "limitations": [
+      "This is desktop Chrome source evidence with injected native OS events, not physical Android/iOS lifecycle or battery evidence.",
+      "Existing English editorial-review placeholders remain outside this lifecycle task; no global bilingual or release-ready claim is made."
+    ]
+  }
+}

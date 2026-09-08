@@ -114,7 +114,7 @@ for (const asset of [
   "assets/writer-portraits/q320935.webp", "assets/writer-portraits/q991.webp",
   "assets/writer-portraits/q189950.webp", "assets/writer-portraits/q318473.webp",
   "assets/writer-portraits/q31628.webp", "assets/writer-portraits/q52224.webp",
-  "assets/writer-portraits/q37217.webp",
+  "assets/writer-portraits/q37217.webp", "assets/writer-portraits/q7243.webp",
   "brand/book-covers/crime-and-punishment-editorial.webp",
   "brand/book-covers/thumbs/crime-and-punishment-editorial.webp",
   "brand/book-covers/the-catcher-in-the-rye-editorial.webp",
