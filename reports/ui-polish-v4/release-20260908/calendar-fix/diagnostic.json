@@ -1,0 +1,73 @@
+{
+  "status": "targeted_software_passed_ci_pending",
+  "recordedAt": "2026-09-08T16:17:51.9250419+00:00",
+  "ci": {
+    "runId": "34244040582",
+    "log": "ci-excerpt.txt",
+    "failure": "calendar-design-quality.spec.mjs original line76, mobile WebGL shard4, both attempts",
+    "savedBaselineColors": [
+      "oklab(0.705383 0.119281 0.13621)",
+      "oklab(0.705414 0.119268 0.136197)"
+    ],
+    "receivedSettledColor": "rgb(246, 117, 24)",
+    "originalLogLocal": "../ci-ea15-failed.log"
+  },
+  "cause": "The test captured an interpolated baseline before finishing the selected state transition, then explicitly finished animations only after hover. The two comparisons therefore used different animation phases. The same ordering existed for today.",
+  "change": {
+    "file": "tests/e2e/calendar-design-quality.spec.mjs",
+    "sha256": "165571ea9e57d9323c60a7fa97e7305152e145781fdc64064b52f534b8820d72",
+    "diff": "+3 lines",
+    "beforeOrdering": "read background -> hover -> finish animations -> compare",
+    "afterOrdering": "finish animations -> read background -> hover -> finish animations -> compare",
+    "states": [
+      "today",
+      "selected"
+    ],
+    "styleEvidence": "src/index.css:7566-7569 defines finite 150ms color/background/box-shadow transitions",
+    "preserved": [
+      "Both original background equality assertions",
+      "Contrast >= 4.5",
+      "90 second test timeout and existing assertion timeouts",
+      "RU and EN loops",
+      "Every compact-day event, keyboard scrolling, focus, bounds and deselection assertions"
+    ],
+    "productChanged": false
+  },
+  "validation": {
+    "nodeCheck": "passed",
+    "gitDiffCheck": "passed",
+    "exitCode": 0,
+    "config": ".tmp/playwright-software-gpu.config.mjs",
+    "preview": "http://127.0.0.1:4186",
+    "renderer": "ANGLE SwiftShader",
+    "workers": 1,
+    "retries": 0,
+    "results": "software-results.json",
+    "log": "software.log",
+    "stats": {
+      "startTime": "2026-09-08T16:16:22.683Z",
+      "duration": 39920.424,
+      "expected": 2,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "executed": [
+      {
+        "project": "desktop-chromium",
+        "status": "passed",
+        "durationMs": 18761,
+        "retry": 0,
+        "errors": []
+      },
+      {
+        "project": "mobile-chromium",
+        "status": "passed",
+        "durationMs": 18129,
+        "retry": 0,
+        "errors": []
+      }
+    ],
+    "limits": "Only this calendar scenario on desktop and mobile was run. No full suite, other shard, build or production change."
+  }
+}

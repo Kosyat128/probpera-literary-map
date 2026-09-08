@@ -1,0 +1,11 @@
+
+Running 2 tests using 1 worker
+
+(node:21040) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [desktop-chromium] › tests\e2e\calendar-design-quality.spec.mjs:3:1 › calendar keeps readable date states and every compact-day event remains reachable (18.8s)
+(node:49040) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 2 [mobile-chromium] › tests\e2e\calendar-design-quality.spec.mjs:3:1 › calendar keeps readable date states and every compact-day event remains reachable (18.1s)
+
+  2 passed (39.9s)
