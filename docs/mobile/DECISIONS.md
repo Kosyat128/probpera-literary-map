@@ -377,3 +377,11 @@
   The small browser selection proves no full-catalog capacity or complete EN
   content; no-programming owner corrections remain required, not delivered.
   Bundled offline cover changes currently enter through a new app build.
+
+- D084: Real final-PWA a4 cold EN launch exposes incomplete offline edition
++  coverage: saved NASA survives, but its texture is outside the strict cache
++  manifest, so the loader warns and falls back. Include all already bundled,
++  pinned selectable edition originals and exact version aliases under unchanged
++  worker/resource bounds. Keep both failed receipts and rerun only their two
++  cases after the necessary new PWA build. Android17b6 source1f9bae11 remains
++  separately identified; PWA-only builder/tests are outside its971 input set.

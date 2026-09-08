@@ -1,0 +1,30 @@
+{
+  "observedAt": "2026-09-08T09:24:33.517Z",
+  "files": [
+    {
+      "path": "scripts/mobile/build-pwa.mjs",
+      "bytes": 17051,
+      "sha256": "ec3a3887ec8e250eb3aa8a1798bd1ef7c7a712d3c955bbefce6cbd0fe84a9219"
+    },
+    {
+      "path": "scripts/mobile/pwa-artifact.test.mjs",
+      "bytes": 21739,
+      "sha256": "979b9ee1ce25565f8f670dc9d52873b5e0d72ed49d1234de28916975f2d5f5a5"
+    },
+    {
+      "path": "src/components/globeEditions.ts",
+      "bytes": 23668,
+      "sha256": "b7440b6278979deb1e47738572460869202f0d9cf794a144aceac9dbcf8cdd77"
+    },
+    {
+      "path": "scripts/mobile/native-base-assets.json",
+      "bytes": 69956,
+      "sha256": "c1f42e5c8d8afd58102d24faa434a1b01a77129f97bc11ac59fe8ce5e4ca4268"
+    },
+    {
+      "path": "src/pwa/serviceWorkerRuntime.js",
+      "bytes": 41987,
+      "sha256": "7093d4c17cff9794c35b0d17b905d29f2186ef98eccda5ed4bba5509991c8a31"
+    }
+  ]
+}

@@ -1,17 +1,23 @@
 # V12 blockers and pending work
 
 <!-- s07-appearance-quality:begin -->
-LATEST SOURCE: owner-selected rich graphics default and edition-derived
-application appearance. Nine palettes,12 scoped units, one shared static
-execution and one actual native-binding Chrome case (three styles) passed.
-CSS/fixture corrections and all prior attempts are preserved.
-Evidence: evidence/S07/appearance-quality-20260908/result.json.
-Fresh Android/PWA builds and final PWA theme/help/repair screenshots are next.
-Artifacts a7828499/3eb567d6 below predate this source. Earlier blocks remain
-historical. Full High/Balanced/Economy, Planetka and global gates remain open.
-Owner also requires nearly10k canonical books, reviewed EN biographies and
-later edition-specific EN covers; see GLOBE_APPLICATION_CONTRACT.md. Full-catalog
-capacity and owner content updates are not accepted by the small test selection.
+Appearance and rich-default source:1f9bae113129d00828dc1b0714e9002b1ff1f63f.
+Android/dev17b6fc88 built once; strict/Gradle/APK checks passed, actualdevice
+not tested. Preserve its exact source identity and validate runtime equivalence
+instead of rebuilding it for PWA-only builder/tests.
+PWA991973aa strict audit passed but BOTH a4 cases failed on cold EN NASA:
+nondefault textures existed in inventory, outside the guaranteed worker cache.
+Saved choice remained intact; canonical loader showed a real fallback warning.
+The PWA-only correction now includes20 existing pinned texture files and exact
+version aliases for all9 available editions and RU/EN modern maps. Three scoped
+unit tests passed; worker protocol/512files/64MiB/16MiB limits unchanged.
+Fresh PWA a5 and the SAME2cases are next; no successful native/unit/static replay.
+Evidence: evidence/S03/offline-editions-20260908/source-result.json;
+evidence/S03/offline-repair-20260908/a4/result.json;
+evidence/S04/appearance-quality-android-20260908/result.json.
+Nearly10k books, reviewed EN biographies, edition-specific EN covers and owner
+corrections remain open in GLOBE_APPLICATION_CONTRACT.md/content-follow-up.md.
+Full High/Balanced/Economy, Planetka, installed devices and release remain open.
 <!-- s07-appearance-quality:end -->
 
 <!-- s07-country-sheet:begin -->

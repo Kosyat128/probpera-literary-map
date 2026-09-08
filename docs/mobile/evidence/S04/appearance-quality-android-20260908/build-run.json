@@ -1,0 +1,15 @@
+{
+  "pass": true,
+  "sourceCommit": "1f9bae113129d00828dc1b0714e9002b1ff1f63f",
+  "buildId": "17b6fc88d0b9fe7f14e67f9200e2796b85598392a05d66261137fe18af39a980",
+  "startedAt": "2026-09-08T09:06:22.0029859+00:00",
+  "durationSeconds": 42.9517976,
+  "task": ":app:assembleDevDebug",
+  "offline": true,
+  "actionableTasks": 167,
+  "executed": 22,
+  "upToDate": 145,
+  "fromCache": 0,
+  "deviceTested": false,
+  "releaseReady": false
+}

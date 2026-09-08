@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "stage": "S03",
+  "recordedAt": "2026-09-08T09:24:33.541Z",
+  "status": "FOCUSED_MANIFEST_UNIT_VALIDATION_PASSED",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "scope": "Make all currently bundled canonical selectable globe editions and their exact version aliases part of the verified PWA offline manifest; no runtime, worker protocol, UI, artwork or entitlement changes.",
+  "source": {
+    "baseSourceCommit": "1f9bae113129d00828dc1b0714e9002b1ff1f63f",
+    "changedPaths": [
+      "scripts/mobile/build-pwa.mjs",
+      "scripts/mobile/pwa-artifact.test.mjs"
+    ],
+    "snapshotBefore": "source-before.json",
+    "snapshotAfter": "source-after.json",
+    "unchangedDuringTests": true,
+    "observedInputs": 5
+  },
+  "requirementsRead": [
+    {
+      "path": "docs/mobile/requirements/v12/18_CONTENT_DELIVERY_OFFLINE_SYNC_RU.md",
+      "relevantSections": [
+        "6: included skins offline",
+        "10: isolated worker and essential precache"
+      ]
+    },
+    {
+      "path": "docs/mobile/requirements/v12/23_PERFORMANCE_RELIABILITY_DEVICE_MATRIX_RU.md",
+      "relevantSections": [
+        "3: measured package budgets",
+        "5: bounded assets and integrity",
+        "10: enforced package budgets"
+      ]
+    }
+  ],
+  "tests": {
+    "command": "node node_modules/vitest/vitest.mjs run scripts/mobile/pwa-artifact.test.mjs -t \"included globe edition offline closure\" --reporter=default --reporter=json --outputFile=.tmp/pwa-offline-editions-20260908/vitest.json",
+    "passed": 3,
+    "failed": 0,
+    "skippedByNameFilter": 43,
+    "report": "vitest.json",
+    "log": "run-log.json",
+    "coverage": [
+      "Actual RU/EN desktop/mobile loader URLs for all selectable editions",
+      "Existing native selection source SHA-256 and WebP signatures for all 20 originals",
+      "Strict worker manifest normalization",
+      "Unavailable/blocked exclusion, duplicate alias coalescing, missing locale/path/version rejection and unchanged alias limit"
+    ]
+  },
+  "budget": {
+    "kind": "Projection from the previous actual PWA inventory plus the fixed texture closure; not a new build result",
+    "previousBuildId": "991973aa7cb2dde03c8acfbf5c39da110150da8fd31e08ce563c69e74cb95536",
+    "previousManifestSha256": "5932811bced6548b1d9c7f750e1c11731e1aa4506b6aed5f16d22c709048d933",
+    "previousFiles": 318,
+    "previousBytes": 20119279,
+    "addedFiles": 18,
+    "addedBytes": 18460054,
+    "projectedFiles": 336,
+    "projectedBytes": 38579333,
+    "limitsUnchanged": {
+      "maxFiles": 512,
+      "maxBytes": 67108864,
+      "maxFileBytes": 16777216,
+      "maxAliasesPerFile": 4
+    },
+    "fitsUnchangedWorkerNormalization": true,
+    "closure": "texture-closure.json"
+  },
+  "native": {
+    "buildId": "17b6fc88d0b9fe7f14e67f9200e2796b85598392a05d66261137fe18af39a980",
+    "sourceCommit": "1f9bae113129d00828dc1b0714e9002b1ff1f63f",
+    "sourceInputCount": 971,
+    "changedPathsInNativeFingerprint": [],
+    "fingerprintSource": "scripts/mobile/build-native.mjs inputs()",
+    "rebuildPerformed": false,
+    "note": "This PWA-only builder/test delta is outside the existing native fingerprint. No new native artifact or device claim."
+  },
+  "pending": [
+    "Fresh source-committed PWA build and actual cold offline RU/EN browser regression; root owns execution.",
+    "No complete stage acceptance, production release, store submission, deploy or merge."
+  ],
+  "artifacts": [
+    {
+      "path": "vitest.json",
+      "bytes": 15714,
+      "sha256": "5b688a9c5aaa7383c7b641753741970780450336e8a5103244c8356489c6cfe8"
+    },
+    {
+      "path": "source-before.json",
+      "bytes": 908,
+      "sha256": "235675294a9f3ed330cc425b0db09dc3285d31ff85347d66f60afeda996536ba"
+    },
+    {
+      "path": "source-after.json",
+      "bytes": 908,
+      "sha256": "c8f63d940d73d20f866301af9884c1e81150565b9901376ab5b415f63be43030"
+    },
+    {
+      "path": "run-log.json",
+      "bytes": 926,
+      "sha256": "aeefb0eade3bed72e7ec86dcb52c0677a4f7b227f4d7481ec940710866253d90"
+    },
+    {
+      "path": "texture-closure.json",
+      "bytes": 7217,
+      "sha256": "7a2c72fa7e53228a8958a073ff862cd32706dd7db5e838a98234dec637415eae"
+    }
+  ]
+}

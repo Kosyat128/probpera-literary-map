@@ -6,9 +6,63 @@ import { rollup } from "rollup";
 import { build as viteBuild } from "vite";
 import { artifactPath, bootstrapClosure, bootstrapSourcePath, capturePwaModuleOwnership, createPwaModuleOwnershipPlugin, scopeCanonicalCssUrls, normalizePwaAuthority, pwaAuthoritySha256, previousPwaGeneration, loadPwaAuthority } from "./pwa-artifact.mjs";
 import { normalizePwaWorkerConfig } from "../../src/pwa/serviceWorkerRuntime.js";
+import { pwaGlobeTextureClosure } from "./build-pwa.mjs";
+import { GLOBE_EDITIONS, resolveGlobeEditionTextureUrl } from "../../src/components/globeEditions.ts";
 
 const roots = [];
 const sha = bytes => createHash("sha256").update(bytes).digest("hex");
+
+describe("included globe edition offline closure", () => {
+  it("covers every real RU/EN desktop/mobile loader URL with the already pinned original bytes", async () => {
+    const closure = pwaGlobeTextureClosure();
+    const selection = JSON.parse(await readFile(new URL("./native-base-assets.json", import.meta.url), "utf8"));
+    const files = [];
+    for (const [relative, aliases] of closure) {
+      const bytes = await readFile(new URL("../../public/" + relative, import.meta.url));
+      const pin = selection.files.find(file => file.output === relative);
+      expect(pin, relative).toMatchObject({ source: "public/" + relative, transformation: "none", sourceSha256: sha(bytes) });
+      expect(bytes.toString("ascii", 0, 4)).toBe("RIFF");
+      expect(bytes.toString("ascii", 8, 12)).toBe("WEBP");
+      files.push({ url: "/planet/" + relative, bytes: bytes.length, sha256: sha(bytes), kind: "asset", aliases: [...aliases] });
+    }
+    const manifest = normalizePwaWorkerConfig({ schemaVersion: 1, scopePath: "/planet/", buildId: "f".repeat(64),
+      entrypoints: { ru: "/planet/ru/", en: "/planet/en/" }, files: [
+        ...["ru", "en"].map(locale => ({ url: "/planet/" + locale + "/", bytes: 1, sha256: sha(locale), kind: "shell" })), ...files,
+      ] });
+    const routes = new Set(manifest.files.flatMap(file => [file.url, ...file.aliases]));
+    for (const edition of GLOBE_EDITIONS.filter(item => item.visitorAvailable && item.status === "available")) {
+      for (const language of ["ru", "en"]) for (const compact of [false, true]) {
+        expect(routes.has("/planet/" + resolveGlobeEditionTextureUrl(edition.id, compact, language)), `${edition.id}/${language}/${compact}`).toBe(true);
+      }
+    }
+    expect(routes.has("/planet/textures/earth-blue-marble.webp?v=sha256-cfa65dea7bdfea51")).toBe(true);
+    expect(routes.has("/planet/textures/modern-atlas-2026-en-mobile.webp?v=sha256-78388ac530e7a515")).toBe(true);
+  });
+
+  it("excludes unavailable artwork and coalesces only exact aliases for shared texture bytes", () => {
+    const available = { id: "fixture", visitorAvailable: true, status: "available", desktopTexture: "textures/shared.webp", mobileTexture: "textures/shared.webp", textureContentVersion: "v1" };
+    const closure = pwaGlobeTextureClosure([available,
+      { ...available, textureContentVersion: "v2" },
+      { ...available, textureContentVersion: null },
+      { ...available, status: "blocked-rights", desktopTexture: "textures/blocked.webp" },
+      { ...available, visitorAvailable: false, desktopTexture: "textures/hidden.webp" },
+    ]);
+    expect([...closure].map(([file, aliases]) => [file, [...aliases]])).toEqual([
+      ["textures/shared.webp", ["/planet/textures/shared.webp?v=v1", "/planet/textures/shared.webp?v=v2"]],
+    ]);
+  });
+
+  it("rejects incomplete bilingual textures and paths or aliases outside the closed worker contract", () => {
+    const available = { id: "fixture", visitorAvailable: true, status: "available", desktopTexture: "textures/a.webp", mobileTexture: "textures/b.webp", textureContentVersion: "v1" };
+    for (const patch of [
+      { desktopTexture: { ru: "textures/ru.webp" } }, { mobileTexture: null },
+      { desktopTexture: "textures/../private.webp" }, { desktopTexture: "brand/unrelated.webp" },
+      { mobileTexture: "textures/a.webp?v=arbitrary" }, { textureContentVersion: "v1&unbounded=true" },
+    ]) expect(() => pwaGlobeTextureClosure([{ ...available, ...patch }])).toThrow();
+    expect(() => pwaGlobeTextureClosure(Array.from({ length: 5 }, (_, index) => ({ ...available, textureContentVersion: "v" + index })))).toThrow("Too many canonical aliases");
+  });
+});
+
 afterEach(async () => {
   for (const root of roots.splice(0)) {
     if (path.dirname(root) !== path.resolve(".tmp") || !path.basename(root).startsWith("pwa-previous-test-")) throw new Error("Unsafe fixture cleanup");

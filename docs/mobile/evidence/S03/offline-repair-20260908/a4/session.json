@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "runId": "pwa-offline-repair-20260908-a4",
+  "localQaOnly": true,
+  "origin": "http://127.0.0.1:4296",
+  "artifact": {
+    "buildId": "991973aa7cb2dde03c8acfbf5c39da110150da8fd31e08ce563c69e74cb95536",
+    "sourceCommit": "1f9bae113129d00828dc1b0714e9002b1ff1f63f",
+    "sourceInputsSha256": "36778559b2d938a0d3512283785e53c131a94a9fcf1c33b18464932e1076c490",
+    "authoritySha256": "f86a331f67ee3a453302e3782e6f48ed4f58eb615a6e46f655537c3f4c2d9c7c",
+    "localQaAuthority": true,
+    "releaseReady": false
+  },
+  "planned": {
+    "oneScenario": true,
+    "projects": [
+      "pwa-desktop",
+      "pwa-mobile"
+    ],
+    "executions": 2,
+    "workers": 1,
+    "retries": 0
+  },
+  "limits": [
+    "Ephemeral signer exists only in this local process. No provider/payment or installed OS evidence.",
+    "One new build for the changed High default, committed-globe appearance and PWA button spacing. Previous051 and3eb remain archived."
+  ]
+}

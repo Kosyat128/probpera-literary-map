@@ -10,6 +10,30 @@ import { artifactPath, bootstrapClosure, createPwaModuleOwnershipPlugin, contain
 import { generatePwaShellFiles } from "./pwa-shell.mjs";
 import { GLOBE_EDITIONS, DEFAULT_GLOBE_EDITION_ID } from "../../src/components/globeEditions.ts";
 
+// Use the canonical selectable registry, including both localized texture paths.
+// A saved edition must remain loadable after an offline restart or locale change.
+export function pwaGlobeTextureClosure(editions = GLOBE_EDITIONS) {
+  const textures = new Map();
+  for (const edition of editions.filter(item => item.visitorAvailable && item.status === "available")) {
+    const version = edition.textureContentVersion;
+    if (version !== null && !/^[A-Za-z0-9._-]{1,96}$/u.test(version ?? "")) throw new Error("Invalid canonical texture version: " + edition.id);
+    for (const texture of [edition.desktopTexture, edition.mobileTexture]) {
+      const paths = typeof texture === "string" ? [texture] : [texture?.ru, texture?.en];
+      for (const candidate of paths) {
+        const relative = artifactPath(candidate);
+        if (!relative.startsWith("textures/")) throw new Error("Invalid canonical texture location: " + relative);
+        const aliases = textures.get(relative) ?? new Set();
+        if (version) aliases.add(PWA_SCOPE + relative + "?v=" + version);
+        if (aliases.size > 4) throw new Error("Too many canonical aliases for " + relative);
+        textures.set(relative, aliases);
+      }
+    }
+  }
+  return new Map([...textures].sort(([a], [b]) => a.localeCompare(b)));
+}
+
+// Keep importing the manifest selection helper free of build/output side effects.
+async function buildPwa() {
 const root = await realpath(fileURLToPath(new URL("../../", import.meta.url)));
 const digest = bytes => createHash("sha256").update(bytes).digest("hex");
 const json = value => JSON.stringify(value, null, 2) + "\n";
@@ -138,16 +162,10 @@ const edition = GLOBE_EDITIONS.find(item => item.id === DEFAULT_GLOBE_EDITION_ID
 if (!edition || typeof edition.desktopTexture !== "string" || typeof edition.mobileTexture !== "string") {
   throw new Error("Canonical default edition must provide exact texture paths");
 }
-const versionedTextures = new Set([edition.desktopTexture, edition.mobileTexture]);
-for (const asset of versionedTextures) await copyPublic(asset);
-// Other canonical editions remain available on demand. Only the default
-// edition belongs to this stage's guaranteed offline bootstrap.
-for (const candidate of GLOBE_EDITIONS.filter(item => item.visitorAvailable && item.status === "available")) {
-  for (const texture of [candidate.desktopTexture, candidate.mobileTexture]) {
-    for (const asset of typeof texture === "string" ? [texture] : Object.values(texture ?? {})) await copyPublic(asset, false);
-  }
-}
-const aliases = new Map();
+// These included editions were already copied into the artifact. Include their
+// exact paths and version aliases in the verified offline package as well.
+const aliases = pwaGlobeTextureClosure();
+for (const asset of aliases.keys()) await copyPublic(asset);
 const appSource = (await containedFile(root, "src/App.tsx")).bytes.toString("utf8");
 for (const match of appSource.matchAll(/["'](brand\/[^"'?\s]+)(?:\?v=[A-Za-z0-9._-]+)?["']/gu)) {
   await copyPublic(artifactPath(match[1]), false);
@@ -180,7 +198,6 @@ for (const relative of [...essential].sort()) {
   const url = shellUrl[relative] ?? PWA_SCOPE + relative;
   const record = { url, bytes: asset.size, sha256: asset.sha256, kind: Object.hasOwn(shellUrl, relative) ? "shell" : "asset" };
   const assetAliases = new Set(aliases.get(relative) ?? []);
-  if (versionedTextures.has(relative) && edition.textureContentVersion) assetAliases.add(url + "?v=" + edition.textureContentVersion);
   if (assetAliases.size > 4) throw new Error("Too many canonical aliases for " + relative);
   if (assetAliases.size) record.aliases = [...assetAliases].sort();
   files.push(record);
@@ -266,3 +283,6 @@ try {
 try { await rename(staging, output); }
 catch (error) { if (movedPrevious) await rename(previous, output); throw error; }
 console.log(json({ output, previous: movedPrevious ? previous : null, buildId, essentialFiles: files.length, essentialBytes: totalBytes, releaseReady: false }));
+}
+
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) await buildPwa();

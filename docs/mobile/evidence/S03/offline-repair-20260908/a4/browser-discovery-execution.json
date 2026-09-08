@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--list",
+    "--reporter=json",
+    "--config=.tmp/s03-offline-repair-20260908/playwright.repair.config.mjs"
+  ],
+  "exitCode": 0,
+  "durationMs": 1578
+}

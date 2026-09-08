@@ -5,7 +5,7 @@
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
   "headSha": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-08T09:04:32.850Z",
+  "updatedAt": "2026-09-08T09:25:07.187Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -532,7 +532,9 @@
         "docs/mobile/evidence/S03/current-pwa-20260908/result.json",
         "docs/mobile/evidence/S03/device-preparation-20260908/result.json",
         "docs/mobile/evidence/S03/offline-repair-20260908/source-result.json",
-        "docs/mobile/evidence/S03/offline-repair-20260908/result.json"
+        "docs/mobile/evidence/S03/offline-repair-20260908/result.json",
+        "docs/mobile/evidence/S03/offline-editions-20260908/source-result.json",
+        "docs/mobile/evidence/S03/offline-repair-20260908/a4/result.json"
       ],
       "externalBlockers": []
     },
@@ -10558,7 +10560,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Build fresh Android/dev and one final controlled PWA from the committed high-default/appearance source. Run only the affected PWA desktop/mobile cases and preserve final visuals. Keep the completed native appearance case/unit/static evidence, recording CSS/fixture-only deltas honestly. S03 first-open; S06 full quality tiers/Planetka and other gates remain open; frozen iOS83 publication still pending.",
+    "nextAction": "Build the corrected PWA with all included edition textures and exact aliases; run only the same two failed desktop/mobile cases as a5. Keep Android17b6 from source1f9bae11 without rebuilding if all971 native source input hashes still match. Keep appearance/native/unit/static proofs and failed991/a4 intact; root must review final cold RU/EN screenshots, then update artifact checkpoint. S03 first-open and all content/device/release gates remain open.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -11336,6 +11338,17 @@
       "newPwaArtifactProduced": false,
       "fullQualityTiersImplemented": false,
       "defaultQuality": "richest-existing-path",
+      "stageAccepted": false,
+      "releaseReady": false
+    },
+    "s03OfflineEditions": {
+      "evidence": "docs/mobile/evidence/S03/offline-editions-20260908/source-result.json",
+      "sha256": "847e3b36464d479c7e6ca21a00b45f3cb237f38927ee99e0966a1ea34ff45025",
+      "status": "SOURCE_AND_SCOPED_UNIT_VALIDATED_BROWSER_PENDING",
+      "unitPasses": 3,
+      "textureFiles": 20,
+      "sourceFailureEvidence": "docs/mobile/evidence/S03/offline-repair-20260908/a4/result.json",
+      "finalPwaBuilt": false,
       "stageAccepted": false,
       "releaseReady": false
     }

@@ -1,0 +1,417 @@
+{
+  "localQaOnly": true,
+  "buildId": "991973aa7cb2dde03c8acfbf5c39da110150da8fd31e08ce563c69e74cb95536",
+  "ownedCacheEntry": {
+    "url": "/planet/en/",
+    "bytes": 2623,
+    "sha256": "b334ee1248a044b97d112154013a031f84810c10dfbd23ea639fe0dc755133bf",
+    "kind": "shell",
+    "aliases": []
+  },
+  "simulatedApis": [
+    "beforeinstallprompt.prompt/userChoice",
+    "StorageManager.persist/persisted"
+  ],
+  "actualOsInstallation": false,
+  "checks": [
+    {
+      "locale": "ru",
+      "networkAttempts": 0,
+      "status": "complete",
+      "engineBuildId": "991973aa7cb2dde03c8acfbf5c39da110150da8fd31e08ce563c69e74cb95536",
+      "activeBuildId": "991973aa7cb2dde03c8acfbf5c39da110150da8fd31e08ce563c69e74cb95536",
+      "fileCount": 318,
+      "bytes": 20119279
+    },
+    {
+      "locale": "en",
+      "networkAttempts": 0,
+      "status": "incomplete",
+      "engineBuildId": "991973aa7cb2dde03c8acfbf5c39da110150da8fd31e08ce563c69e74cb95536",
+      "activeBuildId": "991973aa7cb2dde03c8acfbf5c39da110150da8fd31e08ce563c69e74cb95536"
+    },
+    {
+      "locale": "ru",
+      "networkAttempts": 0,
+      "status": "complete",
+      "engineBuildId": "991973aa7cb2dde03c8acfbf5c39da110150da8fd31e08ce563c69e74cb95536",
+      "activeBuildId": "991973aa7cb2dde03c8acfbf5c39da110150da8fd31e08ce563c69e74cb95536",
+      "fileCount": 318,
+      "bytes": 20119279
+    }
+  ],
+  "repairs": [
+    {
+      "locale": "ru",
+      "networkAttempts": 1,
+      "urls": [
+        "http://127.0.0.1:4296/planet/en/"
+      ],
+      "status": "complete",
+      "engineBuildId": "991973aa7cb2dde03c8acfbf5c39da110150da8fd31e08ce563c69e74cb95536",
+      "activeBuildId": "991973aa7cb2dde03c8acfbf5c39da110150da8fd31e08ce563c69e74cb95536",
+      "fileCount": 318,
+      "bytes": 20119279,
+      "repairedFiles": 1,
+      "repairedBytes": 2623
+    }
+  ],
+  "screenshots": [
+    "device-ru-complete.png",
+    "device-en-simulated-install-accepted.png",
+    "device-en-incomplete.png",
+    "device-en-simulated-persistence-denied.png",
+    "device-ru-repaired.png",
+    "device-en-repaired.png",
+    "device-repaired-cold-ru.png"
+  ],
+  "headerBounds": [
+    {
+      "phase": "complete",
+      "locale": "ru",
+      "viewport": {
+        "width": 412,
+        "height": 839
+      },
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 412,
+        "height": 75
+      }
+    },
+    {
+      "phase": "simulated-install-accepted",
+      "locale": "en",
+      "viewport": {
+        "width": 412,
+        "height": 839
+      },
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 412,
+        "height": 75
+      }
+    },
+    {
+      "phase": "incomplete",
+      "locale": "en",
+      "viewport": {
+        "width": 412,
+        "height": 839
+      },
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 412,
+        "height": 75
+      }
+    },
+    {
+      "phase": "simulated-persistence-denied",
+      "locale": "en",
+      "viewport": {
+        "width": 412,
+        "height": 839
+      },
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 412,
+        "height": 75
+      }
+    },
+    {
+      "phase": "retained-incomplete-and-denied",
+      "locale": "ru",
+      "viewport": {
+        "width": 412,
+        "height": 839
+      },
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 412,
+        "height": 75
+      }
+    },
+    {
+      "phase": "real-offline-repair-complete",
+      "locale": "ru",
+      "viewport": {
+        "width": 412,
+        "height": 839
+      },
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 412,
+        "height": 75
+      }
+    },
+    {
+      "phase": "repair-result-survives-locale",
+      "locale": "en",
+      "viewport": {
+        "width": 412,
+        "height": 839
+      },
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 412,
+        "height": 75
+      }
+    },
+    {
+      "phase": "complete",
+      "locale": "ru",
+      "viewport": {
+        "width": 412,
+        "height": 839
+      },
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 412,
+        "height": 75
+      }
+    },
+    {
+      "phase": "collection-reopened",
+      "locale": "ru",
+      "viewport": {
+        "width": 412,
+        "height": 839
+      },
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 412,
+        "height": 75
+      }
+    }
+  ],
+  "actionSpacing": [
+    {
+      "phase": "complete",
+      "locale": "ru",
+      "gap": 12,
+      "checkHeight": 44,
+      "repairHeight": 44
+    },
+    {
+      "phase": "simulated-install-accepted",
+      "locale": "en",
+      "gap": 12,
+      "checkHeight": 44,
+      "repairHeight": 44
+    },
+    {
+      "phase": "incomplete",
+      "locale": "en",
+      "gap": 12,
+      "checkHeight": 44,
+      "repairHeight": 44
+    },
+    {
+      "phase": "simulated-persistence-denied",
+      "locale": "en",
+      "gap": 12,
+      "checkHeight": 44,
+      "repairHeight": 44
+    },
+    {
+      "phase": "retained-incomplete-and-denied",
+      "locale": "ru",
+      "gap": 12,
+      "checkHeight": 44,
+      "repairHeight": 44
+    },
+    {
+      "phase": "real-offline-repair-complete",
+      "locale": "ru",
+      "gap": 12,
+      "checkHeight": 44,
+      "repairHeight": 44
+    },
+    {
+      "phase": "repair-result-survives-locale",
+      "locale": "en",
+      "gap": 12,
+      "checkHeight": 44,
+      "repairHeight": 44
+    },
+    {
+      "phase": "complete",
+      "locale": "ru",
+      "gap": 12,
+      "checkHeight": 44,
+      "repairHeight": 44
+    },
+    {
+      "phase": "collection-reopened",
+      "locale": "ru",
+      "gap": 12,
+      "checkHeight": 44,
+      "repairHeight": 44
+    }
+  ],
+  "themes": [
+    {
+      "phase": "initial",
+      "style": "antique",
+      "colors": {
+        "helpBackground": "rgb(255, 248, 228)",
+        "cardBackground": "rgb(255, 252, 242)",
+        "cardText": "rgb(50, 29, 27)",
+        "buttonBackground": "rgb(88, 73, 32)",
+        "buttonText": "rgb(255, 245, 210)"
+      }
+    },
+    {
+      "phase": "actual-edition-change",
+      "style": "earth",
+      "edition": "nasa-blue-marble",
+      "colors": {
+        "helpBackground": "rgb(243, 249, 248)",
+        "cardBackground": "rgb(247, 253, 255)",
+        "cardText": "rgb(17, 27, 58)",
+        "buttonBackground": "rgb(20, 67, 119)",
+        "buttonText": "rgb(228, 247, 255)"
+      }
+    },
+    {
+      "phase": "complete",
+      "locale": "ru",
+      "style": "earth",
+      "colors": {
+        "helpBackground": "rgb(243, 249, 248)",
+        "cardBackground": "rgb(247, 253, 255)",
+        "cardText": "rgb(17, 27, 58)",
+        "buttonBackground": "rgb(20, 67, 119)",
+        "buttonText": "rgb(228, 247, 255)"
+      }
+    },
+    {
+      "phase": "simulated-install-accepted",
+      "locale": "en",
+      "style": "earth",
+      "colors": {
+        "helpBackground": "rgb(243, 249, 248)",
+        "cardBackground": "rgb(247, 253, 255)",
+        "cardText": "rgb(17, 27, 58)",
+        "buttonBackground": "rgb(20, 67, 119)",
+        "buttonText": "rgb(228, 247, 255)"
+      }
+    },
+    {
+      "phase": "incomplete",
+      "locale": "en",
+      "style": "earth",
+      "colors": {
+        "helpBackground": "rgb(243, 249, 248)",
+        "cardBackground": "rgb(247, 253, 255)",
+        "cardText": "rgb(17, 27, 58)",
+        "buttonBackground": "rgb(20, 67, 119)",
+        "buttonText": "rgb(228, 247, 255)"
+      }
+    },
+    {
+      "phase": "simulated-persistence-denied",
+      "locale": "en",
+      "style": "earth",
+      "colors": {
+        "helpBackground": "rgb(243, 249, 248)",
+        "cardBackground": "rgb(247, 253, 255)",
+        "cardText": "rgb(17, 27, 58)",
+        "buttonBackground": "rgb(20, 67, 119)",
+        "buttonText": "rgb(228, 247, 255)"
+      }
+    },
+    {
+      "phase": "retained-incomplete-and-denied",
+      "locale": "ru",
+      "style": "earth",
+      "colors": {
+        "helpBackground": "rgb(243, 249, 248)",
+        "cardBackground": "rgb(247, 253, 255)",
+        "cardText": "rgb(17, 27, 58)",
+        "buttonBackground": "rgb(20, 67, 119)",
+        "buttonText": "rgb(228, 247, 255)"
+      }
+    },
+    {
+      "phase": "real-offline-repair-complete",
+      "locale": "ru",
+      "style": "earth",
+      "colors": {
+        "helpBackground": "rgb(243, 249, 248)",
+        "cardBackground": "rgb(247, 253, 255)",
+        "cardText": "rgb(17, 27, 58)",
+        "buttonBackground": "rgb(20, 67, 119)",
+        "buttonText": "rgb(228, 247, 255)"
+      }
+    },
+    {
+      "phase": "repair-result-survives-locale",
+      "locale": "en",
+      "style": "earth",
+      "colors": {
+        "helpBackground": "rgb(243, 249, 248)",
+        "cardBackground": "rgb(247, 253, 255)",
+        "cardText": "rgb(17, 27, 58)",
+        "buttonBackground": "rgb(20, 67, 119)",
+        "buttonText": "rgb(228, 247, 255)"
+      }
+    },
+    {
+      "phase": "complete",
+      "locale": "ru",
+      "style": "earth",
+      "colors": {
+        "helpBackground": "rgb(243, 249, 248)",
+        "cardBackground": "rgb(247, 253, 255)",
+        "cardText": "rgb(17, 27, 58)",
+        "buttonBackground": "rgb(20, 67, 119)",
+        "buttonText": "rgb(228, 247, 255)"
+      }
+    },
+    {
+      "phase": "collection-reopened",
+      "locale": "ru",
+      "style": "earth",
+      "colors": {
+        "helpBackground": "rgb(243, 249, 248)",
+        "cardBackground": "rgb(247, 253, 255)",
+        "cardText": "rgb(17, 27, 58)",
+        "buttonBackground": "rgb(20, 67, 119)",
+        "buttonText": "rgb(228, 247, 255)"
+      }
+    }
+  ],
+  "compactEdition": [],
+  "coldOffline": [
+    {
+      "language": "ru",
+      "country": "russia",
+      "canvasCount": 1,
+      "launchOverlayCount": 0,
+      "savedAccess": "saved"
+    }
+  ],
+  "simulatedDecisions": {
+    "prompts": [
+      {
+        "userActivation": true
+      }
+    ],
+    "persistence": [
+      {
+        "userActivation": true
+      }
+    ]
+  },
+  "restoredSha256": "b334ee1248a044b97d112154013a031f84810c10dfbd23ea639fe0dc755133bf"
+}

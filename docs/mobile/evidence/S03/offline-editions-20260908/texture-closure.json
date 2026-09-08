@@ -1,0 +1,208 @@
+{
+  "textures": [
+    {
+      "url": "/planet/textures/antique-world-1887-mobile.webp",
+      "bytes": 687972,
+      "sha256": "65ea5f03a43b6583dd95b456f42b1d184c48dc0449eaba25c5d23269b1e5974d",
+      "kind": "asset",
+      "aliases": [
+        "/planet/textures/antique-world-1887-mobile.webp?v=sha256-aca29559635dc981"
+      ],
+      "previouslyOffline": true
+    },
+    {
+      "url": "/planet/textures/antique-world-1887.webp",
+      "bytes": 2901792,
+      "sha256": "b498488cba930c48c5c68564ab8f355a50fe620f5aec15353225edcdf592a175",
+      "kind": "asset",
+      "aliases": [
+        "/planet/textures/antique-world-1887.webp?v=sha256-aca29559635dc981"
+      ],
+      "previouslyOffline": true
+    },
+    {
+      "url": "/planet/textures/behaim-1492-ravenstein-1908-mobile.webp",
+      "bytes": 511208,
+      "sha256": "324301cf0724c337d34c1d370dc66fa8ea3f0abaa0afcb34713d2dd2a469d2b5",
+      "kind": "asset",
+      "aliases": [
+        "/planet/textures/behaim-1492-ravenstein-1908-mobile.webp?v=sha256-61b8fc02a496babf"
+      ],
+      "previouslyOffline": false
+    },
+    {
+      "url": "/planet/textures/behaim-1492-ravenstein-1908.webp",
+      "bytes": 2031414,
+      "sha256": "a06342cfaf146fdd4d72c0cbc870ab85946199a977d8c6366ef918bdad19c0b8",
+      "kind": "asset",
+      "aliases": [
+        "/planet/textures/behaim-1492-ravenstein-1908.webp?v=sha256-61b8fc02a496babf"
+      ],
+      "previouslyOffline": false
+    },
+    {
+      "url": "/planet/textures/cassini-globo-terrestre-1790-mobile.webp",
+      "bytes": 609440,
+      "sha256": "2e0efdd36e682d20be5b8db0875a71c47ef33d3d810be45596b6e4e1d99e83f0",
+      "kind": "asset",
+      "aliases": [
+        "/planet/textures/cassini-globo-terrestre-1790-mobile.webp?v=sha256-3cb4692a97d0bb22"
+      ],
+      "previouslyOffline": false
+    },
+    {
+      "url": "/planet/textures/cassini-globo-terrestre-1790.webp",
+      "bytes": 2619370,
+      "sha256": "d62718455ea9a04605ac1694abe20bf551a93bf7b5c2c688df579b6eb4398018",
+      "kind": "asset",
+      "aliases": [
+        "/planet/textures/cassini-globo-terrestre-1790.webp?v=sha256-3cb4692a97d0bb22"
+      ],
+      "previouslyOffline": false
+    },
+    {
+      "url": "/planet/textures/coronelli-1697-mobile.webp",
+      "bytes": 499562,
+      "sha256": "b03c5f23f84ddaef6da942a64f6ac5b37ff7481e90681d5e98ab7eeff48aeacf",
+      "kind": "asset",
+      "aliases": [
+        "/planet/textures/coronelli-1697-mobile.webp?v=sha256-11728e93c8ba3d53"
+      ],
+      "previouslyOffline": false
+    },
+    {
+      "url": "/planet/textures/coronelli-1697.webp",
+      "bytes": 1429020,
+      "sha256": "1654e3e04ee14ccdec7cfbf7a640b212ebde0c96949558bcf0edeece1dd9a012",
+      "kind": "asset",
+      "aliases": [
+        "/planet/textures/coronelli-1697.webp?v=sha256-11728e93c8ba3d53"
+      ],
+      "previouslyOffline": false
+    },
+    {
+      "url": "/planet/textures/earth-blue-marble-mobile.webp",
+      "bytes": 126246,
+      "sha256": "7e7dcfff082c0e1efe909e6d64ee815bc1b9d17f782b802a8fd4e4b2e7a65397",
+      "kind": "asset",
+      "aliases": [
+        "/planet/textures/earth-blue-marble-mobile.webp?v=sha256-cfa65dea7bdfea51"
+      ],
+      "previouslyOffline": false
+    },
+    {
+      "url": "/planet/textures/earth-blue-marble.webp",
+      "bytes": 434610,
+      "sha256": "cc2b9b11fb1ccd4194c612c84320f0ef1ab991f6b247473be7b51a66f3328c41",
+      "kind": "asset",
+      "aliases": [
+        "/planet/textures/earth-blue-marble.webp?v=sha256-cfa65dea7bdfea51"
+      ],
+      "previouslyOffline": false
+    },
+    {
+      "url": "/planet/textures/hondius-rossi-1615-mobile.webp",
+      "bytes": 537158,
+      "sha256": "5ce58cb1b6b3cfc102d0f012911e4a590aa6572302e8fa0b52f3beffb0f7687b",
+      "kind": "asset",
+      "aliases": [
+        "/planet/textures/hondius-rossi-1615-mobile.webp?v=sha256-7d8ef5ed66fe4daf"
+      ],
+      "previouslyOffline": false
+    },
+    {
+      "url": "/planet/textures/hondius-rossi-1615.webp",
+      "bytes": 1929066,
+      "sha256": "4d9b6926768fc6ac91eafa4a1586ab3fc70dfdd2d66d9a35243dc7a897e1b7b1",
+      "kind": "asset",
+      "aliases": [
+        "/planet/textures/hondius-rossi-1615.webp?v=sha256-7d8ef5ed66fe4daf"
+      ],
+      "previouslyOffline": false
+    },
+    {
+      "url": "/planet/textures/modern-atlas-2026-en-mobile.webp",
+      "bytes": 390810,
+      "sha256": "b897e3722909ffbefa25013851ad2bdf605711a069e5c552129b6e470bb3c957",
+      "kind": "asset",
+      "aliases": [
+        "/planet/textures/modern-atlas-2026-en-mobile.webp?v=sha256-78388ac530e7a515"
+      ],
+      "previouslyOffline": false
+    },
+    {
+      "url": "/planet/textures/modern-atlas-2026-en.webp",
+      "bytes": 1461376,
+      "sha256": "8df82c055820b44b178efa7321888e9049821859ca0408bbc77b64b2d9219399",
+      "kind": "asset",
+      "aliases": [
+        "/planet/textures/modern-atlas-2026-en.webp?v=sha256-78388ac530e7a515"
+      ],
+      "previouslyOffline": false
+    },
+    {
+      "url": "/planet/textures/modern-atlas-2026-ru-mobile.webp",
+      "bytes": 395324,
+      "sha256": "8817b45f53a9caa9592a711e52ed83004265f36dd98de777776a2cb6143bd58b",
+      "kind": "asset",
+      "aliases": [
+        "/planet/textures/modern-atlas-2026-ru-mobile.webp?v=sha256-78388ac530e7a515"
+      ],
+      "previouslyOffline": false
+    },
+    {
+      "url": "/planet/textures/modern-atlas-2026-ru.webp",
+      "bytes": 1477124,
+      "sha256": "26a04a83536b6ceb7a3db37c2ff67c083cd1699c4dd4543292e43c8d694fc4fc",
+      "kind": "asset",
+      "aliases": [
+        "/planet/textures/modern-atlas-2026-ru.webp?v=sha256-78388ac530e7a515"
+      ],
+      "previouslyOffline": false
+    },
+    {
+      "url": "/planet/textures/scherer-1700-mobile.webp",
+      "bytes": 407040,
+      "sha256": "573b03cad23a9c626b13be4169b3089f6281a1e75049cb92d081e5ee1a7e6035",
+      "kind": "asset",
+      "aliases": [
+        "/planet/textures/scherer-1700-mobile.webp?v=sha256-53bdbfbca466a77f"
+      ],
+      "previouslyOffline": false
+    },
+    {
+      "url": "/planet/textures/scherer-1700.webp",
+      "bytes": 1104598,
+      "sha256": "b844cc59c075e03873c137daa761431ddb1f9f97676fac1c33b0ec28679cff64",
+      "kind": "asset",
+      "aliases": [
+        "/planet/textures/scherer-1700.webp?v=sha256-53bdbfbca466a77f"
+      ],
+      "previouslyOffline": false
+    },
+    {
+      "url": "/planet/textures/us-army-general-reference-1943-mobile.webp",
+      "bytes": 525424,
+      "sha256": "020f0808c4c1e0671c05124e836349884d6a204fd635057226106a9b9268d38a",
+      "kind": "asset",
+      "aliases": [
+        "/planet/textures/us-army-general-reference-1943-mobile.webp?v=sha256-eca2ae835ef2d061"
+      ],
+      "previouslyOffline": false
+    },
+    {
+      "url": "/planet/textures/us-army-general-reference-1943.webp",
+      "bytes": 1971264,
+      "sha256": "09418203d87aa85a465e3694e53d33b9893387796db798966197dd19193e36d6",
+      "kind": "asset",
+      "aliases": [
+        "/planet/textures/us-army-general-reference-1943.webp?v=sha256-eca2ae835ef2d061"
+      ],
+      "previouslyOffline": false
+    }
+  ],
+  "sourceArtifact": {
+    "buildId": "991973aa7cb2dde03c8acfbf5c39da110150da8fd31e08ce563c69e74cb95536",
+    "sha256": "c90e757676ad39eb58c7d3675e4f980e3eab708a47a1ccd313ce5d82db7a0bfa"
+  }
+}
