@@ -13646,7 +13646,8 @@ html[data-theme="book"] .calendar-heading h3 {
   font-size: var(--type-caption);
 }
 
-@media (max-width: 1520px) {
+/* Keep fallback-font navigation clear before restoring the full action group. */
+@media (max-width: 1600px) {
   .global-search-trigger {
     width: 38px;
     justify-content: center;
