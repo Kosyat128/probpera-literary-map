@@ -35,6 +35,8 @@ export type AtlasExperienceExitReason =
 export type AtlasExperienceUrlSelection = Omit<AtlasUrlState, "view">;
 
 export interface UseAtlasExperienceOptions {
+  /** Keep the canonical immersive atlas as the host's main screen, not a modal. */
+  applicationRoot?: boolean;
   economical?: boolean;
   reducedMotion?: boolean;
   urlSelection?: AtlasExperienceUrlSelection;
@@ -244,6 +246,7 @@ function hideOutsideModal(surface: HTMLElement) {
 export function useAtlasExperience(
   options: UseAtlasExperienceOptions = {}
 ): AtlasExperienceController {
+  const applicationRoot = options.applicationRoot ?? false;
   const detectedReducedMotion = useMediaQuery(
     "(prefers-reduced-motion: reduce)",
     readReducedMotion()
@@ -273,7 +276,17 @@ export function useAtlasExperience(
     useRef<SurfaceVariableSnapshot | null>(null);
 
   const [state, dispatch] = useReducer(
-    atlasExperienceReducer,
+    (current: AtlasExperienceState, event: AtlasExperienceEvent) => {
+      if (applicationRoot) {
+        if (event.type === "EXIT" || event.type === "ESCAPE") {
+          return atlasExperienceReducer(current, { type: "CLOSE_OVERLAYS" });
+        }
+        if (event.type === "SYNC_VIEW") {
+          return atlasExperienceReducer(current, { ...event, view: "immersive" });
+        }
+      }
+      return atlasExperienceReducer(current, event);
+    },
     undefined,
     () => {
       const urlState = readAtlasUrlState();
@@ -281,17 +294,20 @@ export function useAtlasExperience(
         ? readAtlasImmersiveHistoryMarker(window.history.state)
         : null;
       return createAtlasExperienceState({
-        view: urlState.view,
+        view: applicationRoot ? "immersive" : urlState.view,
         entrySource:
-          urlState.view === "immersive"
-            ? marker?.source ?? "url"
-            : "embedded",
+          applicationRoot
+            ? "url"
+            : urlState.view === "immersive"
+              ? marker?.source ?? "url"
+              : "embedded",
         reducedMotion,
       });
     }
   );
 
   const stateRef = useRef(state);
+  const applicationRootRef = useRef(applicationRoot);
   const reducedMotionRef = useRef(reducedMotion);
   const economicalRef = useRef(economical);
   const selectionRef = useRef(options.urlSelection);
@@ -306,6 +322,7 @@ export function useAtlasExperience(
   );
 
   stateRef.current = state;
+  applicationRootRef.current = applicationRoot;
   reducedMotionRef.current = reducedMotion;
   economicalRef.current = economical;
   selectionRef.current = options.urlSelection;
@@ -490,7 +507,7 @@ export function useAtlasExperience(
 
   const enter = useCallback(
     (source: AtlasExperienceEntrySource, opener?: HTMLElement | null) => {
-      if (!canUseDom()) return;
+      if (!canUseDom() || applicationRootRef.current) return;
       const current = stateRef.current;
       if (
         enterInFlightRef.current ||
@@ -535,6 +552,10 @@ export function useAtlasExperience(
   const requestExit = useCallback(
     (reason: AtlasExperienceExitReason = "programmatic") => {
       if (!canUseDom()) return;
+      if (applicationRootRef.current) {
+        dispatch({ type: "CLOSE_OVERLAYS" });
+        return;
+      }
       const current = stateRef.current;
       if (
         current.view === "embedded" &&
@@ -598,6 +619,19 @@ export function useAtlasExperience(
       historyFallbackTimerRef.current = null;
     }
 
+    if (applicationRootRef.current) {
+      // Entity/filter navigation still comes from this URL. The native root
+      // has no embedded page to restore and must not rewrite incoming state.
+      urlState = { ...urlState, view: "immersive" };
+      dispatch({
+        type: "SYNC_VIEW",
+        view: "immersive",
+        reducedMotion: reducedMotionRef.current,
+      });
+      onUrlStateChangeRef.current?.(urlState);
+      return urlState;
+    }
+
     if (urlState.view === "embedded" && current.view === "immersive") {
       const preservedSelection = selectionRef.current;
       if (preservedSelection) {
@@ -635,7 +669,9 @@ export function useAtlasExperience(
       const view = readAtlasUrlState().view;
       return commitAtlasUrlState(
         { ...selection, view },
-        view === "immersive" ? "replace" : embeddedMode,
+        applicationRootRef.current || view === "immersive"
+          ? "replace"
+          : embeddedMode,
         window.history.state
       );
     },
@@ -677,6 +713,7 @@ export function useAtlasExperience(
 
   useLayoutEffect(() => {
     if (
+      applicationRoot ||
       state.view !== "immersive" ||
       state.entrySource !== "url" ||
       surfaceVariableSnapshotRef.current
@@ -684,7 +721,7 @@ export function useAtlasExperience(
       return;
     }
     captureEmbeddedGeometry();
-  }, [captureEmbeddedGeometry, state.entrySource, state.view]);
+  }, [applicationRoot, captureEmbeddedGeometry, state.entrySource, state.view]);
 
   useLayoutEffect(() => {
     const experience = experienceRef.current;
@@ -721,7 +758,8 @@ export function useAtlasExperience(
     }
   }, [state.transition, state.view]);
 
-  const modalActive = state.view === "immersive";
+  const fullscreenActive = state.view === "immersive";
+  const modalActive = fullscreenActive && !applicationRoot;
 
   useEffect(() => {
     if (!modalActive || !canUseDom()) return undefined;
@@ -740,7 +778,7 @@ export function useAtlasExperience(
   }, [modalActive, refreshExitGeometry]);
 
   useEffect(() => {
-    if (!modalActive || !canUseDom()) return undefined;
+    if (!fullscreenActive || !canUseDom()) return undefined;
     const html = document.documentElement;
     const body = document.body;
     const scrollX = window.scrollX;
@@ -752,7 +790,9 @@ export function useAtlasExperience(
         )
       : scrollY;
     const lockedScrollY =
-      state.entrySource === "embedded" ? scrollY : atlasDocumentY;
+      applicationRoot || state.entrySource === "embedded"
+        ? scrollY
+        : atlasDocumentY;
     const scrollbarWidth = Math.max(
       0,
       window.innerWidth - document.documentElement.clientWidth
@@ -796,7 +836,7 @@ export function useAtlasExperience(
       body.style.paddingRight = previous.bodyPaddingRight;
       window.scrollTo(scrollX, lockedScrollY);
     };
-  }, [modalActive, state.entrySource]);
+  }, [applicationRoot, fullscreenActive, state.entrySource]);
 
   useEffect(() => {
     if (!modalActive || !canUseDom()) return undefined;
@@ -907,7 +947,7 @@ export function useAtlasExperience(
   }, [modalActive, notifyActivity, requestExit, state.entrySource]);
 
   useEffect(() => {
-    if (!modalActive) {
+    if (!fullscreenActive) {
       clearQuietTimer();
       return undefined;
     }
@@ -931,10 +971,10 @@ export function useAtlasExperience(
       }
       clearQuietTimer();
     };
-  }, [armQuietTimer, clearQuietTimer, modalActive, notifyActivity]);
+  }, [armQuietTimer, clearQuietTimer, fullscreenActive, notifyActivity]);
 
   useEffect(() => {
-    if (!modalActive || state.transition !== "idle") {
+    if (!fullscreenActive || state.transition !== "idle") {
       clearQuietTimer();
       return;
     }
@@ -943,7 +983,7 @@ export function useAtlasExperience(
   }, [
     armQuietTimer,
     clearQuietTimer,
-    modalActive,
+    fullscreenActive,
     state.filtersOpen,
     state.quiet,
     state.searchOpen,

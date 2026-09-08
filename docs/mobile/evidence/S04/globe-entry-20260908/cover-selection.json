@@ -1,0 +1,51 @@
+{
+  "reason": "Actual canonical reading panel requested missing thumbnails. Include their exact existing canonical full-size sources as well.",
+  "records": [
+    {
+      "output": "brand/book-covers/crime-and-punishment-editorial.webp",
+      "source": "public/brand/book-covers/crime-and-punishment-editorial.webp",
+      "sourceSha256": "696100d523bc12c6ccb0002de685a55572ef214d5278fcc7a2f338d7a1c61bec",
+      "transformation": "none",
+      "bytes": 317752,
+      "canonicalRecord": "src/data/countries/russia.ts",
+      "classification": "Existing editorial-original artwork; never a published-edition cover",
+      "reviewedOriginalImageByRoot": true,
+      "newRightsApproval": false
+    },
+    {
+      "output": "brand/book-covers/thumbs/crime-and-punishment-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/crime-and-punishment-editorial.webp",
+      "sourceSha256": "c068156394e37026e4aa2c03a8cd48253ce0f802636f4a997cd2289c75ac2c4e",
+      "transformation": "none",
+      "bytes": 78002,
+      "canonicalRecord": "src/data/countries/russia.ts",
+      "classification": "Existing editorial-original artwork; never a published-edition cover",
+      "reviewedOriginalImageByRoot": true,
+      "newRightsApproval": false
+    },
+    {
+      "output": "brand/book-covers/the-catcher-in-the-rye-editorial.webp",
+      "source": "public/brand/book-covers/the-catcher-in-the-rye-editorial.webp",
+      "sourceSha256": "5c9a7cc530e829c16e384ff5536d24bddac4bfccfb8b809b59b998e9aa00f1bb",
+      "transformation": "none",
+      "bytes": 131860,
+      "canonicalRecord": "src/data/countries/usa.ts",
+      "classification": "Existing editorial-original artwork; never a published-edition cover",
+      "reviewedOriginalImageByRoot": true,
+      "newRightsApproval": false
+    },
+    {
+      "output": "brand/book-covers/thumbs/the-catcher-in-the-rye-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/the-catcher-in-the-rye-editorial.webp",
+      "sourceSha256": "69371c020357db729b61097d1fd8f9946ee1c24b9410727dcb02b7535c0715ff",
+      "transformation": "none",
+      "bytes": 26066,
+      "canonicalRecord": "src/data/countries/usa.ts",
+      "classification": "Existing editorial-original artwork; never a published-edition cover",
+      "reviewedOriginalImageByRoot": true,
+      "newRightsApproval": false
+    }
+  ],
+  "localQaOnly": true,
+  "releaseReady": false
+}

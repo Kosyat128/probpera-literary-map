@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T02:39:51.909Z",
+  "kind": "s04-ios-launched-visual-followup",
+  "runId": 34179803208,
+  "jobId": 101916411504,
+  "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/34179803208",
+  "publicCommit": "325e9f3c0daef6600c1a96e5af76c9f9d2f857c4",
+  "buildId": "e4420424a7e40fe7632b9e0b13213e6342321ccbd9dd78c6df55d313e6fcebbb",
+  "workflowConclusion": "success",
+  "runtimeSmoke": "PASS",
+  "visualGeometry": "FAIL",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "artifact": {
+    "id": 10038688271,
+    "bytes": 68935604,
+    "sha256": "f98ca51c1d95d3a49760f765f9fcd81afe54c2669e3aad6de41b894288ef8996",
+    "path": ".tmp/ios-runtime-34179803208/artifact.zip",
+    "githubDigestMatched": true,
+    "selectedChecksumsMatched": 10
+  },
+  "installedBytesVerified": true,
+  "visibleAppObserved": true,
+  "firstViewportLocaleObserved": [
+    "ru",
+    "en"
+  ],
+  "device": {
+    "runtime": {
+      "identifier": "com.apple.CoreSimulator.SimRuntime.iOS-26-5",
+      "version": "26.5",
+      "name": "iOS 26.5"
+    },
+    "deviceType": {
+      "identifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-17",
+      "name": "iPhone 17"
+    }
+  },
+  "screenshots": [
+    {
+      "path": ".tmp/ios-runtime-34179803208/evidence/simulator-ru.png",
+      "bytes": 3553328,
+      "sha256": "3d478117780db7500a407dda587daf8225f9827b55c2314e95660916266b0603",
+      "width": 1206,
+      "height": 2622,
+      "locale": "ru",
+      "exactReleaseCandidate": false
+    },
+    {
+      "path": ".tmp/ios-runtime-34179803208/evidence/simulator-en.png",
+      "bytes": 3554753,
+      "sha256": "12008cd41ab379c18b3199338a98df6e8f0b367ae3ba68da3893fc7f2e73107d",
+      "width": 1206,
+      "height": 2622,
+      "locale": "en",
+      "exactReleaseCandidate": false
+    }
+  ],
+  "visualReview": {
+    "method": "Root visually inspected both actual1206x2622 simulator PNGs after matching archive and per-file checksums.",
+    "ru": "Russian navigation, hero heading/body and primary actions are visible.",
+    "en": "English navigation, hero heading/body and primary actions are visible.",
+    "failure": "The native system status bar and Dynamic Island overlap the top header and RU/EN controls. Native header safe-area geometry needs a source fix and another actual capture.",
+    "notAsserted": [
+      "Whole-catalog loading/translation",
+      "Language-switch state retention inside native app",
+      "iPad or physical-device behavior",
+      "Exact-RC or store screenshots"
+    ],
+    "productFailure": "Magazine homepage appeared instead of the required globe-first application. User clarified that the canonical Literary Planet is the only app home; header-only polish is superseded by entry correction."
+  },
+  "timing": {
+    "ruInstallMs": 88617,
+    "enInstallMs": 62543,
+    "interpretation": "Both successful installs exceed the original60s limit, confirming that bound was insufficient for these fresh runners."
+  },
+  "sourceScope": "Historical authorized app source plus CI helper changes only. Current local main/navigation fixes are still a separate Android/PWA candidate.",
+  "originalReportsUnmodified": true,
+  "cleanupVerified": true,
+  "windowsDeviceInventory": {
+    "at": "2026-09-08T02:28:48.5557402+00:00",
+    "method": "Read-only Win32_PnPEntity Android/ADB/WPD filter; no adb or drivers",
+    "matchingPresentDevices": 0,
+    "limitation": "No matching connected device observed; this is not an Android install or runtime result."
+  },
+  "applicationHome": "FAIL"
+}

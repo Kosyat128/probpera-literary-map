@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 1,
+  "kind": "ios-simulator-ci-evidence",
+  "files": [
+    {
+      "path": "app-info.json",
+      "bytes": 1756,
+      "sha256": "44b123372dca58dac43bd14ff8806ebd7180c1263f52b63eca4284d00c214773"
+    },
+    {
+      "path": "App-simulator.app.tar.gz",
+      "bytes": 30224061,
+      "sha256": "bb27e080b435e0fb9f334bc10fe63eb672873bbd414167fdb7fe095bff63286c"
+    },
+    {
+      "path": "App-simulator.app.zip",
+      "bytes": 30302606,
+      "sha256": "cfaa35739ce406feb9869dee8daed606d4dcc6ce04b108826c740f2e1c400d11"
+    },
+    {
+      "path": "architecture.txt",
+      "bytes": 6,
+      "sha256": "c1669e1d8edca98769c37d494b76442a1d6e5ffffd7b4da1fb63aef8ebaf6f01"
+    },
+    {
+      "path": "artifact.json",
+      "bytes": 251159,
+      "sha256": "8977bcb1026dbac79aa5e5146ddaa71938ffe06c00b02c4fc8edfc95b1bc3c3e"
+    },
+    {
+      "path": "audit-after-build.json",
+      "bytes": 1038,
+      "sha256": "11789a019133c990181f2cf894402e7693574add9fd6669749da94407dd4730c"
+    },
+    {
+      "path": "audit-after-sync.json",
+      "bytes": 1038,
+      "sha256": "11789a019133c990181f2cf894402e7693574add9fd6669749da94407dd4730c"
+    },
+    {
+      "path": "audit-before-sync.json",
+      "bytes": 1038,
+      "sha256": "11789a019133c990181f2cf894402e7693574add9fd6669749da94407dd4730c"
+    },
+    {
+      "path": "cap-sync.log",
+      "bytes": 606,
+      "sha256": "8eebc13107582bc68008f663c929fc7463ccd84e5954bb041ce51111f702d215"
+    },
+    {
+      "path": "installed-xcodes.txt",
+      "bytes": 444,
+      "sha256": "c63200e4bbd6943e63e5842296a1a51b4b0b6fddcd01514a114f072f23485bcb"
+    },
+    {
+      "path": "ios-build.xcresult.zip",
+      "bytes": 69981,
+      "sha256": "d4ed3571ce6402b764ea9ea07ec6ae25a4986a8ec62ea1764489f4193e85ee40"
+    },
+    {
+      "path": "mach-o-build.txt",
+      "bytes": 519,
+      "sha256": "2e14513d7a2a6fc988e621131e3a31e9b934e7f26471eb6937289bb8412e2080"
+    },
+    {
+      "path": "macos.txt",
+      "bytes": 65,
+      "sha256": "cd5d6399b3785b04ceaae75045a9ca9f80f0bbc3526eff9d0c36b170ed1ec348"
+    },
+    {
+      "path": "node-version.txt",
+      "bytes": 9,
+      "sha256": "b67d0ced059f9313d861ddbbe734d2d1f9219106a9e036ae6d88407afa0846e6"
+    },
+    {
+      "path": "npm-ci.log",
+      "bytes": 1048,
+      "sha256": "f51232bb0fcbdb0eb9040b9887f40eeb4fc4f0c61147abadd89d59c2ac3e8fa1"
+    },
+    {
+      "path": "npm-version.txt",
+      "bytes": 8,
+      "sha256": "005206ab803f8881d8227540b7980b37e723b69a8849edb31734a90b7e7964e2"
+    },
+    {
+      "path": "package-resolution.log",
+      "bytes": 1601,
+      "sha256": "45b08329bbf45e6e14a31fa9210636d1379ad2d399a946de5f838ef73d55c4bf"
+    },
+    {
+      "path": "Package.resolved",
+      "bytes": 408,
+      "sha256": "c9e105d05bfadcf13451dfa007cef7cf26e7dc9a5a9fd19f196ca1df74c6ae95"
+    },
+    {
+      "path": "schemes.json",
+      "bytes": 334,
+      "sha256": "413c335d5aad7b5b5f3860fd3ee24c18478babaee514d5a844f4623e760d9058"
+    },
+    {
+      "path": "simctl-help.txt",
+      "bytes": 224335,
+      "sha256": "7581e916df411da6ab178847d6dab7f277dee07081df10fd5dd6ab6c05df06c5"
+    },
+    {
+      "path": "simulator-bundle.json",
+      "bytes": 641,
+      "sha256": "ef2545207dcb2be5015b5c803b4daa14090b3e16da21b7503b6aa2544d5ae41f"
+    },
+    {
+      "path": "simulator-en.log",
+      "bytes": 13021,
+      "sha256": "cdaf3461d2bed9e4bd80b751e33a730036b56e9be15f7bee5b0caced192a687c"
+    },
+    {
+      "path": "simulator-en.png",
+      "bytes": 3554753,
+      "sha256": "12008cd41ab379c18b3199338a98df6e8f0b367ae3ba68da3893fc7f2e73107d"
+    },
+    {
+      "path": "simulator-ru.log",
+      "bytes": 10839,
+      "sha256": "6c9602e6e3fe6ccdda2dab8d06644d066a3ec6150e00f08134c082c45a1a1af3"
+    },
+    {
+      "path": "simulator-ru.png",
+      "bytes": 3553328,
+      "sha256": "3d478117780db7500a407dda587daf8225f9827b55c2314e95660916266b0603"
+    },
+    {
+      "path": "simulator-runtime.json",
+      "bytes": 3181,
+      "sha256": "aea919911c2e1eb6f2e6105e67ba387c1e576bea79285022d0439e340758c0f5"
+    },
+    {
+      "path": "simulators.json",
+      "bytes": 193933,
+      "sha256": "8963e76c2d8cfff9aa99f5a3a6ee21702e3aee1965c73b518995fe21e2d385ff"
+    },
+    {
+      "path": "source-commit.txt",
+      "bytes": 41,
+      "sha256": "9559114a03badda5c546e5050c06991edf41841bc039deffbfa649f021842d40"
+    },
+    {
+      "path": "sync-integrity.json",
+      "bytes": 642,
+      "sha256": "abef0fdaef94dcdba08da357f0d89be241ded5b8949ecf241b072624dfc893fe"
+    },
+    {
+      "path": "types.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "web-build.log",
+      "bytes": 15291,
+      "sha256": "7343c19e413640f70f4a15aaa0bfc8c167888e1ec104ea1e0f76cc49cceb5a7b"
+    },
+    {
+      "path": "xcode-build.log",
+      "bytes": 497442,
+      "sha256": "51af1278e61f5290c9ca365dcf100bc06652a6b41347ab22bc67c7cc2a7597d1"
+    },
+    {
+      "path": "xcode-sdks.txt",
+      "bytes": 745,
+      "sha256": "5c577db8d316a5d6dcb343f01a4357bdfbc45fe7a3f8a2b3487b4765d79ce00a"
+    },
+    {
+      "path": "xcode-version.txt",
+      "bytes": 32,
+      "sha256": "18730ed2ae28a2c9cf0c2d5db549033a4f07089331391a7133b7b32187454fa9"
+    }
+  ],
+  "releaseReady": false
+}

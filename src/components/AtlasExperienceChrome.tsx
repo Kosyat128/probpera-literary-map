@@ -4,6 +4,7 @@ import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import Button from "../ui/Button";
 import IconButton from "../ui/IconButton";
 import BrandCloseIcon from "./BrandCloseIcon";
+import BrandBookIcon from "./BrandBookIcon";
 import BrandFilterIcon from "./BrandFilterIcon";
 import BrandSearchIcon from "./BrandSearchIcon";
 import BrandSparkleIcon from "./BrandSparkleIcon";
@@ -15,6 +16,8 @@ type Props = {
   filtersButtonRef: RefObject<HTMLButtonElement>;
   filtersOpen: boolean;
   immersive: boolean;
+  applicationRoot?: boolean;
+  onCollection?: () => void;
   onClose: () => void;
   onFiltersToggle: () => void;
   onRandomJourney: () => void;
@@ -29,6 +32,8 @@ export default function AtlasExperienceChrome({
   filtersButtonRef,
   filtersOpen,
   immersive,
+  applicationRoot = false,
+  onCollection,
   onClose,
   onFiltersToggle,
   onRandomJourney,
@@ -36,7 +41,7 @@ export default function AtlasExperienceChrome({
   randomDisabled = false,
   searchOpen,
 }: Props) {
-  const { t } = useInterfaceLanguage();
+  const { language, t } = useInterfaceLanguage();
 
   return (
     <>
@@ -114,10 +119,10 @@ export default function AtlasExperienceChrome({
             className="atlas-immersive-close"
             size="md"
             surface="dark"
-            icon={<BrandCloseIcon />}
-            aria-label={t("Закрыть Литературную планету")}
-            data-atlas-action="exit-immersive"
-            onClick={onClose}
+            icon={applicationRoot ? <BrandBookIcon /> : <BrandCloseIcon />}
+            aria-label={applicationRoot ? (language === "ru" ? "Коллекция" : "Collection") : t("Закрыть Литературную планету")}
+            data-atlas-action={applicationRoot ? "open-collection" : "exit-immersive"}
+            onClick={applicationRoot ? onCollection : onClose}
           />
         </nav>
       </header>

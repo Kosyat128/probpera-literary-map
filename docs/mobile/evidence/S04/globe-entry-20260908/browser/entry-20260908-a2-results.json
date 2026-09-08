@@ -1,0 +1,294 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "playwright.native-planet.config.mjs"
+    ],
+    "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\playwright.native-planet.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/host",
+    "failOnFlakyTests": false,
+    "forbidOnly": true,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/.tmp/native-planet-browser-results/entry-20260908-a2/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/host",
+        "testIgnore": [],
+        "testMatch": [
+          "native-planet.spec.mjs"
+        ],
+        "timeout": 90000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": ".tmp/native-planet-browser-results/entry-20260908-a2/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "native-planet.spec.mjs",
+      "file": "native-planet.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "native first screen is the actual immersive globe and RU/EN retains writer and scene",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 5929,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 3\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q320935.webp\",\u001b[39m\n\u001b[31m+ ]\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 3\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q320935.webp\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n    at evidence (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs:172:36)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs:196:7",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs",
+                      "column": 36,
+                      "line": 172
+                    },
+                    "snippet": "  170 |   expect(fixture.errors).toEqual([]);\n  171 |   expect(fixture.externalRequests).toEqual([]);\n> 172 |   expect(fixture.missingResources).toEqual([]);\n      |                                    ^\n  173 |   expect(await fixture.page.evaluate(() => window.__nativePlanetVisibleHeroFrames)).toBe(0);\n  174 |   await testInfo.attach(name, { body: JSON.stringify({ ...sourceEvidence, ...extra }), contentType: \"application/json\" });\n  175 |   await fixture.page.screenshot({ path: testInfo.outputPath(name + \".png\") });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs",
+                        "column": 36,
+                        "line": 172
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 3\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q320935.webp\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n\n  170 |   expect(fixture.errors).toEqual([]);\n  171 |   expect(fixture.externalRequests).toEqual([]);\n> 172 |   expect(fixture.missingResources).toEqual([]);\n      |                                    ^\n  173 |   expect(await fixture.page.evaluate(() => window.__nativePlanetVisibleHeroFrames)).toBe(0);\n  174 |   await testInfo.attach(name, { body: JSON.stringify({ ...sourceEvidence, ...extra }), contentType: \"application/json\" });\n  175 |   await fixture.page.screenshot({ path: testInfo.outputPath(name + \".png\") });\n    at evidence (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs:172:36)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs:196:7"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T02:59:22.738Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\entry-20260908-a2\\artifacts\\native-planet-native-first-250e9-EN-retains-writer-and-scene\\error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\entry-20260908-a2\\artifacts\\native-planet-native-first-250e9-EN-retains-writer-and-scene\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs",
+                    "column": 36,
+                    "line": 172
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b868e086da1851f16b13-6ac1624a23ef37d2474d",
+          "file": "native-planet.spec.mjs",
+          "line": 178,
+          "column": 1
+        },
+        {
+          "title": "opening and closing a canonical work returns to the same native globe",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 20597,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#book-archive-detail')\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('#book-archive-detail')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#book-archive-detail')\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('#book-archive-detail')\u001b[22m\n\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs:209:56",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs",
+                      "column": 56,
+                      "line": 209
+                    },
+                    "snippet": "  207 |     await page.locator(\"#writer-biography-russia-tab-works\").click();\n  208 |     await page.locator(\"#writer-biography-russia-panel-works\").getByRole(\"button\", { name: \"Книжный архив: Преступление и наказание\", exact: true }).click();\n> 209 |     await expect(page.locator(\"#book-archive-detail\")).toBeVisible();\n      |                                                        ^\n  210 |     await expect.poll(() => new URL(page.url()).searchParams.get(\"book\")).toBe(\"russia:dostoevsky:crime-and-punishment\");\n  211 |     await retained(page, original);\n  212 |     await page.locator(\"#book-archive-detail .book-detail-close\").click();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs",
+                        "column": 56,
+                        "line": 209
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#book-archive-detail')\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('#book-archive-detail')\u001b[22m\n\n\n  207 |     await page.locator(\"#writer-biography-russia-tab-works\").click();\n  208 |     await page.locator(\"#writer-biography-russia-panel-works\").getByRole(\"button\", { name: \"Книжный архив: Преступление и наказание\", exact: true }).click();\n> 209 |     await expect(page.locator(\"#book-archive-detail\")).toBeVisible();\n      |                                                        ^\n  210 |     await expect.poll(() => new URL(page.url()).searchParams.get(\"book\")).toBe(\"russia:dostoevsky:crime-and-punishment\");\n  211 |     await retained(page, original);\n  212 |     await page.locator(\"#book-archive-detail .book-detail-close\").click();\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs:209:56"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T02:59:31.243Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\entry-20260908-a2\\artifacts\\native-planet-opening-and--523c0-ns-to-the-same-native-globe\\error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\entry-20260908-a2\\artifacts\\native-planet-opening-and--523c0-ns-to-the-same-native-globe\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs",
+                    "column": 56,
+                    "line": 209
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b868e086da1851f16b13-f7e01cde47b3abbf5ad0",
+          "file": "native-planet.spec.mjs",
+          "line": 201,
+          "column": 1
+        },
+        {
+          "title": "narrow reduced-motion native launch and search retain the actual globe without a homepage flash",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 5137,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  -  1\u001b[39m\n\u001b[31m+ Received  + 10\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q991.webp\",\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q189950.webp\",\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q318473.webp\",\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q31628.webp\",\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q52224.webp\",\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q37217.webp\",\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q991.webp\",\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q991.webp\",\u001b[39m\n\u001b[31m+ ]\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  -  1\u001b[39m\n\u001b[31m+ Received  + 10\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q991.webp\",\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q189950.webp\",\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q318473.webp\",\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q31628.webp\",\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q52224.webp\",\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q37217.webp\",\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q991.webp\",\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q991.webp\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n    at evidence (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs:172:36)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs:243:5",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs",
+                      "column": 36,
+                      "line": 172
+                    },
+                    "snippet": "  170 |   expect(fixture.errors).toEqual([]);\n  171 |   expect(fixture.externalRequests).toEqual([]);\n> 172 |   expect(fixture.missingResources).toEqual([]);\n      |                                    ^\n  173 |   expect(await fixture.page.evaluate(() => window.__nativePlanetVisibleHeroFrames)).toBe(0);\n  174 |   await testInfo.attach(name, { body: JSON.stringify({ ...sourceEvidence, ...extra }), contentType: \"application/json\" });\n  175 |   await fixture.page.screenshot({ path: testInfo.outputPath(name + \".png\") });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs",
+                        "column": 36,
+                        "line": 172
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  -  1\u001b[39m\n\u001b[31m+ Received  + 10\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q991.webp\",\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q189950.webp\",\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q318473.webp\",\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q31628.webp\",\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q52224.webp\",\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q37217.webp\",\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q991.webp\",\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q991.webp\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n\n  170 |   expect(fixture.errors).toEqual([]);\n  171 |   expect(fixture.externalRequests).toEqual([]);\n> 172 |   expect(fixture.missingResources).toEqual([]);\n      |                                    ^\n  173 |   expect(await fixture.page.evaluate(() => window.__nativePlanetVisibleHeroFrames)).toBe(0);\n  174 |   await testInfo.attach(name, { body: JSON.stringify({ ...sourceEvidence, ...extra }), contentType: \"application/json\" });\n  175 |   await fixture.page.screenshot({ path: testInfo.outputPath(name + \".png\") });\n    at evidence (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs:172:36)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs:243:5"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T02:59:54.051Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\entry-20260908-a2\\artifacts\\native-planet-narrow-reduc-d9081-be-without-a-homepage-flash\\error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\entry-20260908-a2\\artifacts\\native-planet-narrow-reduc-d9081-be-without-a-homepage-flash\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs",
+                    "column": 36,
+                    "line": 172
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b868e086da1851f16b13-bf57feb78ffa3cca94d0",
+          "file": "native-planet.spec.mjs",
+          "line": 225,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-08T02:59:22.187Z",
+    "duration": 39027.115,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 3,
+    "flaky": 0
+  }
+}

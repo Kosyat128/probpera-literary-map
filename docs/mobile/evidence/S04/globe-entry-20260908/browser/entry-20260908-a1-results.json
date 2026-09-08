@@ -1,0 +1,220 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "playwright.native-planet.config.mjs"
+    ],
+    "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\playwright.native-planet.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/host",
+    "failOnFlakyTests": false,
+    "forbidOnly": true,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/.tmp/native-planet-browser-results/entry-20260908-a1/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/host",
+        "testIgnore": [],
+        "testMatch": [
+          "native-planet.spec.mjs"
+        ],
+        "timeout": 90000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": ".tmp/native-planet-browser-results/entry-20260908-a1/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "native-planet.spec.mjs",
+      "file": "native-planet.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "native first screen is the actual immersive globe and RU/EN retains writer and scene",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 0,
+                  "error": {
+                    "message": "Error: Build failed with 4 errors:\nerror: Cannot read directory \"../../../..\": Access is denied.\nnative-planet-test-entry.ts:2:24: ERROR: Could not resolve \"@react-three/fiber\"\nnative-planet-test-entry.ts:3:30: ERROR: Could not resolve \"./src/host/mountHostApp\"\nnative-planet-test-entry.ts:4:46: ERROR: Could not resolve \"./src/platform/adapters/android/AndroidPlatformAdapter\"",
+                    "stack": "Error: Build failed with 4 errors:\nerror: Cannot read directory \"../../../..\": Access is denied.\nnative-planet-test-entry.ts:2:24: ERROR: Could not resolve \"@react-three/fiber\"\nnative-planet-test-entry.ts:3:30: ERROR: Could not resolve \"./src/host/mountHostApp\"\nnative-planet-test-entry.ts:4:46: ERROR: Could not resolve \"./src/platform/adapters/android/AndroidPlatformAdapter\"\n    at failureErrorWithLog (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\esbuild\\lib\\main.js:1752:15)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\esbuild\\lib\\main.js:1211:25\n    at runOnEndCallbacks (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\esbuild\\lib\\main.js:1592:45)\n    at buildResponseToResult (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\esbuild\\lib\\main.js:1209:7)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\esbuild\\lib\\main.js:1236:16\n    at responseCallbacks.<computed> (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\esbuild\\lib\\main.js:886:9)\n    at handleIncomingPacket (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\esbuild\\lib\\main.js:941:12)\n    at Socket.readFromStdout (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\esbuild\\lib\\main.js:864:7)"
+                  },
+                  "errors": [
+                    {
+                      "message": "Error: Build failed with 4 errors:\nerror: Cannot read directory \"../../../..\": Access is denied.\nnative-planet-test-entry.ts:2:24: ERROR: Could not resolve \"@react-three/fiber\"\nnative-planet-test-entry.ts:3:30: ERROR: Could not resolve \"./src/host/mountHostApp\"\nnative-planet-test-entry.ts:4:46: ERROR: Could not resolve \"./src/platform/adapters/android/AndroidPlatformAdapter\"\n    at failureErrorWithLog (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\esbuild\\lib\\main.js:1752:15)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\esbuild\\lib\\main.js:1211:25\n    at runOnEndCallbacks (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\esbuild\\lib\\main.js:1592:45)\n    at buildResponseToResult (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\esbuild\\lib\\main.js:1209:7)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\esbuild\\lib\\main.js:1236:16\n    at responseCallbacks.<computed> (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\esbuild\\lib\\main.js:886:9)\n    at handleIncomingPacket (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\esbuild\\lib\\main.js:941:12)\n    at Socket.readFromStdout (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\esbuild\\lib\\main.js:864:7)"
+                    },
+                    {
+                      "message": "{\n  detail: undefined,\n  id: '',\n  location: null,\n  notes: [],\n  pluginName: '',\n  text: 'Cannot read directory \"../../../..\": Access is denied.'\n}"
+                    },
+                    {
+                      "message": "{\n  detail: undefined,\n  id: '',\n  location: {\n    column: 24,\n    file: 'native-planet-test-entry.ts',\n    length: 20,\n    line: 2,\n    lineText: \"      import{_roots}from'@react-three/fiber';\",\n    namespace: '',\n    suggestion: ''\n  },\n  notes: [\n    {\n      location: null,\n      text: 'You can mark the path \"@react-three/fiber\" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.'\n    }\n  ],\n  pluginName: '',\n  text: 'Could not resolve \"@react-three/fiber\"'\n}"
+                    },
+                    {
+                      "message": "{\n  detail: undefined,\n  id: '',\n  location: {\n    column: 30,\n    file: 'native-planet-test-entry.ts',\n    length: 25,\n    line: 3,\n    lineText: \"      import{mountHostApp}from'./src/host/mountHostApp';\",\n    namespace: '',\n    suggestion: ''\n  },\n  notes: [],\n  pluginName: '',\n  text: 'Could not resolve \"./src/host/mountHostApp\"'\n}"
+                    },
+                    {
+                      "message": "{\n  detail: undefined,\n  id: '',\n  location: {\n    column: 46,\n    file: 'native-planet-test-entry.ts',\n    length: 56,\n    line: 4,\n    lineText: \"      import{createAndroidPlatformAdapter}from'./src/platform/adapters/android/AndroidPlatformAdapter';\",\n    namespace: '',\n    suggestion: ''\n  },\n  notes: [],\n  pluginName: '',\n  text: 'Could not resolve \"./src/platform/adapters/android/AndroidPlatformAdapter\"'\n}"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T02:59:05.368Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\entry-20260908-a1\\artifacts\\native-planet-native-first-250e9-EN-retains-writer-and-scene\\error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-planet-browser-results\\entry-20260908-a1\\artifacts\\native-planet-native-first-250e9-EN-retains-writer-and-scene\\error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b868e086da1851f16b13-6ac1624a23ef37d2474d",
+          "file": "native-planet.spec.mjs",
+          "line": 178,
+          "column": 1
+        },
+        {
+          "title": "opening and closing a canonical work returns to the same native globe",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "skipped",
+                  "duration": 0,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T02:59:05.466Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "b868e086da1851f16b13-f7e01cde47b3abbf5ad0",
+          "file": "native-planet.spec.mjs",
+          "line": 201,
+          "column": 1
+        },
+        {
+          "title": "narrow reduced-motion native launch and search retain the actual globe without a homepage flash",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": -1,
+                  "parallelIndex": -1,
+                  "status": "skipped",
+                  "duration": 0,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T02:59:05.466Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "b868e086da1851f16b13-bf57feb78ffa3cca94d0",
+          "file": "native-planet.spec.mjs",
+          "line": 225,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-08T02:59:04.706Z",
+    "duration": 777.623,
+    "expected": 0,
+    "skipped": 2,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

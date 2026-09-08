@@ -218,6 +218,7 @@ type Props = {
   archiveScopeLabel: string;
   globalScopeLabel: string;
   viewMode: BookShelfViewMode;
+  showViewModeControl?: boolean;
   onViewModeChange: (mode: BookShelfViewMode) => void;
   shelfLabel: string;
   catalogLabel: string;
@@ -253,6 +254,7 @@ export default function BookShelfControls({
   archiveScopeLabel,
   globalScopeLabel,
   viewMode,
+  showViewModeControl = true,
   onViewModeChange,
   shelfLabel,
   catalogLabel,
@@ -460,7 +462,7 @@ export default function BookShelfControls({
       ) : null}
         </div>
 
-        <div className="book-shelf-controls__views" role="group" aria-label={catalogLabel}>
+        {showViewModeControl && <div className="book-shelf-controls__views" role="group" aria-label={catalogLabel}>
           <button
             type="button"
             className={viewMode === "shelf" ? "is-active" : ""}
@@ -484,7 +486,7 @@ export default function BookShelfControls({
             </svg>
             <span>{catalogLabel}</span>
           </button>
-        </div>
+        </div>}
         <div className="book-filter-panel">
           <span className="book-shelf-controls__visually-hidden">
             {resultCountLabel}

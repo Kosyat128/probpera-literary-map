@@ -16,6 +16,8 @@ import { publicImageAttributes } from "./utils/imageDelivery";
 import type { CommunityView } from "./community/CommunityHub";
 import { isControlledWebEdition } from "./platform/distribution";
 import { usePlatformServices } from "./platform/PlatformServices";
+import NativePlanetLaunch from "./host/NativePlanetLaunch";
+import NativePlanetPanel from "./host/NativePlanetPanel";
 import {
   type NativeNavigationContext,
   type NativeNavigationIntent,
@@ -196,6 +198,11 @@ function initialHashIntent(targets: readonly string[]) {
 function addressRequestsBook() {
   if (typeof window === "undefined") return false;
   return new URLSearchParams(window.location.search).has("book");
+}
+
+function addressRequestsCollection() {
+  if (typeof window === "undefined") return false;
+  return addressRequestsBook() || new URLSearchParams(window.location.search).has("archiveShelf") || window.location.hash === "#books";
 }
 
 type AtlasSearchResult =
@@ -535,6 +542,14 @@ export default function App() {
   const { record: recordRecent } = useRecentHistory();
   const { language, setLanguage, t, countryName, number } = useInterfaceLanguage();
   const platformServices = usePlatformServices();
+  const isNativeHost = platformServices.kind !== "web";
+  const [nativeCollectionOpen, setNativeCollectionOpen] = useState(() => isNativeHost && addressRequestsCollection());
+  const nativeGlobeRootRef = useRef<HTMLElement>(null);
+  const nativeReturnRequestedRef = useRef(false);
+  const closeNativeCollection = useCallback(() => {
+    nativeReturnRequestedRef.current = false;
+    setNativeCollectionOpen(false);
+  }, []);
   const [currentPathname, setCurrentPathname] = useState(() =>
     typeof window === "undefined" ? "" : window.location.pathname
   );
@@ -616,6 +631,16 @@ export default function App() {
     nativeBookBackRef.current = handler;
     return () => { if (nativeBookBackRef.current === handler) nativeBookBackRef.current = null; };
   }, []);
+  const handleNativePanelBack = useCallback(() => {
+    if (!nativeBookBackRef.current?.()) closeNativeCollection();
+  }, [closeNativeCollection]);
+  const requestReturnToPlanet = useCallback(() => {
+    nativeReturnRequestedRef.current = true;
+    if (!nativeBookBackRef.current?.()) closeNativeCollection();
+  }, [closeNativeCollection]);
+  const finishNativeDetailClose = useCallback(() => {
+    if (nativeReturnRequestedRef.current) closeNativeCollection();
+  }, [closeNativeCollection]);
   const cancelNativeNavigation = useCallback(() => {
     nativeNavigationControllerRef.current?.cancelPending();
   }, []);
@@ -632,6 +657,7 @@ export default function App() {
     return true;
   }, [largestArchivesOpen]);
   const atlasExperience = useAtlasExperience({
+    applicationRoot: isNativeHost,
     urlSelection: {
       filter: atlasFilter,
       countryId: selectedCountry?.id ?? null,
@@ -885,6 +911,7 @@ export default function App() {
       const target = event.target as HTMLElement | null;
       if (
         event.key !== "/" ||
+        (isNativeHost && (nativeCollectionOpen || nativeGlobeRootRef.current?.hasAttribute("inert"))) ||
         target?.matches("input, textarea, select, [contenteditable='true']")
       ) {
         return;
@@ -901,7 +928,7 @@ export default function App() {
     };
     window.addEventListener("keydown", openSearch);
     return () => window.removeEventListener("keydown", openSearch);
-  }, [atlasExperienceDispatch, atlasImmersive, openGlobalSearch]);
+  }, [atlasExperienceDispatch, atlasImmersive, isNativeHost, nativeCollectionOpen, openGlobalSearch]);
 
   const archiveStatistics = useMemo(
     () => calculateLightweightArchiveOverview(countryArchive),
@@ -1306,7 +1333,8 @@ export default function App() {
     setBookLoadRequested(true);
     requestedBookReturnFocusRef.current = returnFocus;
     setRequestedBook(book);
-  }, [cancelNativeNavigation, requestBookRuntime]);
+    if (isNativeHost) { nativeReturnRequestedRef.current = false; setNativeCollectionOpen(true); }
+  }, [cancelNativeNavigation, isNativeHost, requestBookRuntime]);
 
   const retryBookArchive = useCallback(() => {
     requestBookRuntime();
@@ -1323,7 +1351,7 @@ export default function App() {
 
   const openResolvedWriterWork = useCallback(
     (book: BookArchiveEntry, returnFocus: HTMLElement | null) => {
-      if (atlasImmersive) {
+      if (atlasImmersive && !isNativeHost) {
         pendingImmersiveBookRef.current = book;
         pendingImmersiveBookFocusRef.current = returnFocus;
         atlasExperience.requestExit("programmatic");
@@ -1331,7 +1359,7 @@ export default function App() {
       }
       openBook(book, returnFocus);
     },
-    [atlasExperience, atlasImmersive, openBook]
+    [atlasExperience, atlasImmersive, isNativeHost, openBook]
   );
 
   const openWriterWork = useCallback(
@@ -1547,7 +1575,7 @@ export default function App() {
     (result: AtlasSearchResult) => {
       if (result.type === "book") {
         selectBookWriterAndCountry(result.book, false);
-        if (atlasImmersive) {
+        if (atlasImmersive && !isNativeHost) {
           pendingImmersiveBookRef.current = result.book;
           pendingImmersiveBookFocusRef.current = null;
           atlasExperience.requestExit("programmatic");
@@ -1566,6 +1594,7 @@ export default function App() {
     [
       atlasExperience,
       atlasImmersive,
+      isNativeHost,
       openBook,
       selectBookWriterAndCountry,
       selectCountry,
@@ -1825,6 +1854,10 @@ export default function App() {
       const state = next.localeOnly ? window.history.state : nativeNavigationEntryState(window.history.state);
       window.history[next.localeOnly ? "replaceState" : "pushState"](state, "", next.relative);
     }
+    if (isNativeHost && !next.localeOnly) {
+      nativeReturnRequestedRef.current = false;
+      setNativeCollectionOpen(Boolean(intent.bookKey || intent.shelfId || intent.section === "books"));
+    }
     if (intent.language && intent.language !== language) setLanguage(intent.language);
     // A locale-only link must never run atlas/book restoration or clear a search.
     if (!next.localeOnly) window.dispatchEvent(new PopStateEvent("popstate", { state: window.history.state }));
@@ -1850,7 +1883,8 @@ export default function App() {
     handleBack: () => {
       if (globalSearchOpen) { closeGlobalSearch(); return "handled"; }
       if (communityOpen) { closeCommunity(); return "handled"; }
-      if (nativeBookBackRef.current?.()) return "handled";
+      if ((!isNativeHost || nativeCollectionOpen) && nativeBookBackRef.current?.()) return "handled";
+      if (nativeCollectionOpen) { closeNativeCollection(); return "handled"; }
       if (closeLargestArchivesOnEscape()) return "handled";
       if (atlasSearchOpen) {
         closeAtlasSearch();
@@ -1862,6 +1896,8 @@ export default function App() {
         window.requestAnimationFrame(() => atlasExperience.filtersButtonRef.current?.focus({ preventScroll: true }));
         return "handled";
       }
+      if (isNativeHost && selectedCountry) { closeCountry(); return "handled"; }
+      if (isNativeHost) return "handled";
       if (atlasImmersive || atlasExperience.state.transition === "preparing") {
         atlasExperience.requestExit("escape");
         return "handled";
@@ -1873,6 +1909,40 @@ export default function App() {
   useEffect(() => {
     if (platformServices.navigation && !directArticleRoute) requestBookRuntime();
   }, [directArticleRoute, platformServices.navigation, requestBookRuntime]);
+
+  useEffect(() => {
+    if (!isNativeHost) return;
+    const restorePanel = () => {
+      if (nativeReturnRequestedRef.current || !addressRequestsCollection()) return;
+      requestBookRuntime();
+      setBookLoadRequested(true);
+      setNativeCollectionOpen(true);
+    };
+    restorePanel();
+    window.addEventListener("popstate", restorePanel);
+    return () => window.removeEventListener("popstate", restorePanel);
+  }, [isNativeHost, requestBookRuntime]);
+
+  useEffect(() => {
+    if (!isNativeHost || nativeCollectionOpen) return;
+    const escape = (event: KeyboardEvent) => {
+      if (event.key !== "Escape" || event.defaultPrevented || nativeGlobeRootRef.current?.hasAttribute("inert")) return;
+      if (closeLargestArchivesOnEscape()) { event.preventDefault(); return; }
+      if (atlasSearchOpen) {
+        event.preventDefault();
+        closeAtlasSearch();
+        atlasExperience.searchButtonRef.current?.focus({ preventScroll: true });
+      } else if (atlasExperience.state.filtersOpen) {
+        event.preventDefault();
+        atlasExperienceDispatch({ type: "CLOSE_FILTERS" });
+        atlasExperience.filtersButtonRef.current?.focus({ preventScroll: true });
+      } else if (selectedCountry) { event.preventDefault(); closeCountry(); }
+    };
+    window.addEventListener("keydown", escape);
+    return () => window.removeEventListener("keydown", escape);
+  }, [isNativeHost, nativeCollectionOpen, closeLargestArchivesOnEscape, atlasSearchOpen,
+    closeAtlasSearch, atlasExperience.searchButtonRef, atlasExperience.filtersButtonRef,
+    atlasExperience.state.filtersOpen, atlasExperienceDispatch, selectedCountry, closeCountry]);
 
   const readerName =
     user?.user_metadata?.display_name || user?.email?.split("@")[0] || "";
@@ -2014,376 +2084,7 @@ export default function App() {
   </article>
   );
 
-  if (directArticleRoute) {
-    return (
-      <div
-        className="magazine-app article-route-shell"
-        data-typography-component="article-reader"
-      >
-        <Suspense
-          fallback={
-            <div className="article-reader-suspense" role="status">
-              {t("Открываем режим чтения…")}
-            </div>
-          }
-        >
-          <ArticleLibrarySection readerOnly />
-        </Suspense>
-      </div>
-    );
-  }
-
-  return (
-    <div className="magazine-app" data-typography-component="magazine">
-      <div className="topline">
-        <span>{t("Литературный журнал и энциклопедия")}</span>
-        <p>{t("Архив пополняется ежедневно")}</p>
-        <div aria-label={t("Проба Пера в цифрах")}>
-          <span>{articleCount ? number(articleCount) : "…"} {t("публикаций")}</span>
-          <span>
-            {archiveStatistics.countries ? number(archiveStatistics.countries) : "…"}{" "}
-            {t("стран")}
-          </span>
-        </div>
-      </div>
-
-      <header className="site-header">
-        <a
-          className="brand"
-          href={import.meta.env.BASE_URL}
-          aria-label={t("Проба Пера - главная")}
-        >
-          <img
-            src={assetUrl("brand/probpera-logo.png")}
-            alt={t("Проба Пера")}
-            width="68"
-            height="68"
-            loading="eager"
-            decoding="async"
-          />
-          <span>
-            <strong>{t("Проба Пера")}</strong>
-            <small>{t("Литературный журнал")}</small>
-          </span>
-        </a>
-
-        <nav aria-label={t("Основная навигация")}>
-          <a href="#atlas">{t("Литературная планета")}</a>
-          <HeaderArticlesMenu language={language} />
-          <details
-            ref={sectionsMenuRef}
-            className="sections-menu"
-            onPointerEnter={cancelSectionsMenuClose}
-            onPointerLeave={(event) => {
-              if (event.pointerType !== "mouse") return;
-              const details = event.currentTarget;
-              cancelSectionsMenuClose();
-              sectionsMenuCloseTimer.current = window.setTimeout(() => {
-                const keyboardFocused = details.contains(document.activeElement) &&
-                  document.activeElement?.matches(":focus-visible");
-                if (!details.matches(":hover") && !keyboardFocused) details.removeAttribute("open");
-                sectionsMenuCloseTimer.current = null;
-              }, 240);
-            }}
-            onBlur={(event) => {
-              if (!event.currentTarget.contains(event.relatedTarget)) {
-                event.currentTarget.removeAttribute("open");
-              }
-            }}
-            onKeyDown={(event) => {
-              if (event.key !== "Escape" || !event.currentTarget.open) return;
-              event.preventDefault();
-              event.currentTarget.removeAttribute("open");
-              event.currentTarget.querySelector("summary")?.focus();
-            }}
-          >
-            <summary>
-              {t("Разделы")} <span aria-hidden="true">⌄</span>
-            </summary>
-            <div className="sections-mega-menu">
-              <header>
-                <span>{t("Навигация по «Пробе Пера»")}</span>
-                <strong>{t("Все темы и разделы сайта")}</strong>
-                <p>
-                  {t(
-                    "От редакционных статей до мировой литературной энциклопедии."
-                  )}
-                </p>
-              </header>
-              <div className="sections-mega-groups" style={{
-                "--menu-group-rows": 1 + 2 * Math.max(...sectionMenuGroups.map(({ sections }) => sections.length)),
-              } as CSSProperties}>
-                {sectionMenuGroups.map(({ group, sections }) => (
-                  <section key={group}>
-                    <h3>{t(group)}</h3>
-                    {sections.map((section) => (
-                      <a
-                        href={section.href}
-                        key={section.id}
-                        onClick={(event) => {
-                          event.currentTarget
-                            .closest("details")
-                            ?.removeAttribute("open");
-                          if (section.action) {
-                            event.preventDefault();
-                            openCommunity(section.action);
-                            return;
-                          }
-                          const journalSectionId =
-                            section.id === "journal" ? "all" : section.id;
-                          if (
-                            section.href === journalPath(journalSectionId) &&
-                            shouldUseClientNavigation(event)
-                          ) {
-                            event.preventDefault();
-                            navigateToJournal(journalSectionId);
-                          }
-                        }}
-                      >
-                        <strong>{t(section.title)}</strong>
-                        <small>{t(section.copy)}</small>
-                      </a>
-                    ))}
-                  </section>
-                ))}
-              </div>
-              <footer>
-                <a
-                  href="#sections"
-                  onClick={(event) =>
-                    event.currentTarget.closest("details")?.removeAttribute("open")
-                  }
-                >
-                  {t("Открыть интерактивный каталог")}{" "}
-                  <span aria-hidden="true">→</span>
-                </a>
-              </footer>
-            </div>
-          </details>
-          <a href="#calendar">{t("Календарь")}</a>
-          {!isControlledWebEdition && <button type="button" onClick={() => openCommunity("forum")}>
-            {t("Форум")}
-          </button>}
-          <a href="#about">{t("О проекте")}</a>
-          <CmsNavigationLinks location="header" />
-        </nav>
-
-        <div className="header-actions">
-          <button
-            className="global-search-trigger"
-            type="button"
-            onClick={() => setGlobalSearchOpen(true)}
-            aria-label={t("Открыть единый поиск")}
-          >
-            <span aria-hidden="true">⌕</span>
-            <small>{t("Поиск")}</small>
-            <kbd>/</kbd>
-          </button>
-          <InterfaceLanguageControl />
-          <SocialLinks />
-          {!isControlledWebEdition && <button
-            className="reader-button"
-            aria-label={readerName || t("Войти")}
-            type="button"
-            onClick={() => openCommunity("account")}
-          >
-            <span>
-              {readerName.slice(0, 1).toUpperCase() || (
-                <svg aria-hidden="true" viewBox="0 0 24 24">
-                  <path d="M12 12.3a4.15 4.15 0 1 0 0-8.3 4.15 4.15 0 0 0 0 8.3Zm-7 7.1c.8-3.3 3.45-5.15 7-5.15s6.2 1.85 7 5.15" />
-                </svg>
-              )}
-            </span>
-            {readerName || t("Войти")}
-          </button>}
-        </div>
-      </header>
-
-      <nav className="mobile-nav" aria-label={t("Быстрая навигация")}>
-        <a href="#atlas">{t("Литературная планета")}</a>
-        <a href="#journal">{t("Статьи")}</a>
-        <a href="#books">{t("Книги")}</a>
-        <a href="#sections">{t("Разделы")}</a>
-        <a href="#calendar">{t("Календарь")}</a>
-        {!isControlledWebEdition && <button type="button" onClick={() => openCommunity("forum")}>
-          {t("Форум")}
-        </button>}
-        <button type="button" onClick={() => setGlobalSearchOpen(true)}>
-          {t("Поиск")}
-        </button>
-        <CmsNavigationLinks location="header" mobile />
-      </nav>
-
-      <main>
-        <CmsHomepageBanners />
-        <section
-          className={`magazine-hero${coreHomepageSectionClass(coreHero)}`}
-          style={coreHomepageSectionStyle(coreHero)}
-          {...cmsCoreFieldMarker(
-            "hero",
-            "backgroundMediaId",
-            coreHero?.backgroundImageUrl || "",
-            { kind: "image", label: "Фоновое изображение первого экрана" }
-          )}
-        >
-          <div className="hero-editorial">
-            <span
-              className="section-kicker"
-              {...cmsCoreFieldMarker(
-                "hero",
-                "eyebrow",
-                coreHero?.eyebrow || "Журнал о литературе и искусстве слова",
-                { label: "Надзаголовок первого экрана" }
-              )}
-            >
-              {language === "ru" && coreHero?.eyebrow
-                ? coreHero.eyebrow
-                : t("Журнал о литературе и искусстве слова")}
-            </span>
-            <h1
-              {...cmsCoreFieldMarker(
-                "hero",
-                "title",
-                coreHero?.title || "Литература - это целый мир!",
-                { label: "Заголовок первого экрана" }
-              )}
-            >
-              {customHeroTitle && !customHeroTitleParts ? (
-                customHeroTitle
-              ) : (
-                <>
-                  <span className="hero-title-lead">{structuredHeroLead}</span>
-                  {" "}
-                  <em className="hero-title-accent">
-                    {structuredHeroAccentParts ? (
-                      <>
-                        <span className="hero-title-accent-line">
-                          {structuredHeroDash}
-                          {structuredHeroAccentParts[1]}
-                        </span>
-                        {" "}
-                        <span className="hero-title-accent-line">
-                          {structuredHeroAccentParts[2]}
-                        </span>
-                      </>
-                    ) : (
-                      <>
-                        {structuredHeroDash}
-                        {structuredHeroAccent}
-                      </>
-                    )}
-                  </em>
-                </>
-              )}
-            </h1>
-            <p
-              {...cmsCoreFieldMarker(
-                "hero",
-                "description",
-                coreHero?.description ||
-                  "Статьи, биографии, редкие книги и первая интерактивная литературная энциклопедия стран - в одном редакционном пространстве.",
-                { kind: "textarea", label: "Описание первого экрана" }
-              )}
-            >
-              {language === "ru" && coreHero?.description
-                ? coreHero.description
-                : t(
-                    "Статьи, биографии, редкие книги и первая интерактивная литературная энциклопедия стран - в одном редакционном пространстве."
-                  )}
-            </p>
-            <div className="hero-actions">
-              <ActionLink
-                className="primary-action"
-                size="lg"
-                surface="dark"
-                variant="primary"
-                endIcon={<BrandArrowIcon />}
-                href={heroPrimaryHref}
-                onClick={(event) => {
-                  if (!heroOpensAtlasImmersive) return;
-                  event.preventDefault();
-                  atlasExperience.enter("hero", event.currentTarget);
-                }}
-                {...cmsCoreFieldMarker(
-                  "hero",
-                  "buttonText",
-                  coreHero?.buttonText || "Открыть глобус",
-                  { label: "Главная кнопка первого экрана" }
-                )}
-              >
-                {language === "ru" && coreHero?.buttonText
-                  ? coreHero.buttonText
-                  : t("Открыть глобус")}
-              </ActionLink>
-              <ActionLink
-                className="secondary-action"
-                size="lg"
-                surface="dark"
-                variant="secondary"
-                href={journalPath()}
-              >
-                {t("Читать журнал")}
-              </ActionLink>
-            </div>
-            <div className="hero-proof">
-              <span>
-                <strong>
-                  {archiveStatistics.countries
-                    ? number(archiveStatistics.countries)
-                    : "…"}
-                </strong>{" "}
-                {t("стран")}
-              </span>
-              <span>
-                <strong>{totalWriters ? number(totalWriters) : "…"}</strong>{" "}
-                {t("писателей")}
-              </span>
-              <span>
-                <strong>{totalWorks ? number(totalWorks) : "…"}</strong>{" "}
-                {t("произведений")}
-              </span>
-            </div>
-          </div>
-
-          <div className="hero-cover">
-            <picture>
-              {!coreHero?.backgroundImageUrl && (
-                <>
-                  <source
-                    media="(max-width: 680px)"
-                    type="image/avif"
-                    srcSet={assetUrl("brand/magazine-hero-mobile.avif?v=20260813-literary-nature-portrait")}
-                  />
-                  <source
-                    media="(max-width: 680px)"
-                    type="image/webp"
-                    srcSet={assetUrl("brand/magazine-hero-mobile.webp?v=20260813-literary-nature-portrait")}
-                  />
-                  <source
-                    type="image/avif"
-                    srcSet={assetUrl("brand/magazine-hero-wide.avif?v=20260813-literary-nature-final")}
-                  />
-                </>
-              )}
-              <img
-                alt=""
-                {...(coreHero?.backgroundImageUrl
-                  ? publicImageAttributes(coreHero.backgroundImageUrl, 1920)
-                  : { src: assetUrl("brand/magazine-hero-wide.webp?v=20260813-literary-nature-final"), width: 1774, height: 887 })}
-                aria-hidden="true"
-                loading="eager"
-                decoding="async"
-                fetchPriority="high"
-              />
-            </picture>
-            <span>{t("Литературный журнал · с 2025 года")}</span>
-          </div>
-        </section>
-
-        <Suspense fallback={null}>
-          <CmsHomepageBlocks />
-        </Suspense>
-
+  const atlasContent = (
         <section
           className={`atlas-section${coreHomepageSectionClass(coreAtlas)}`}
           id="atlas"
@@ -2424,6 +2125,8 @@ export default function App() {
               >
                 <AtlasExperienceChrome
                   immersive={atlasImmersive}
+                  applicationRoot={isNativeHost}
+                  onCollection={() => { cancelNativeNavigation(); requestBookRuntime(); setBookLoadRequested(true); setNativeCollectionOpen(true); }}
                   searchOpen={atlasSearchOpen}
                   filtersOpen={atlasExperience.state.filtersOpen}
                   closeButtonRef={atlasExperience.closeButtonRef}
@@ -2968,6 +2671,422 @@ export default function App() {
             </div>
           </div>
         </section>
+  );
+  const collectionContent = (<>
+        <RecentHistoryPanel
+          countries={countryArchive}
+          books={verifiedBookArchive}
+          countryStatus={archiveDataStatus}
+          bookStatus={bookRuntimeStatus}
+          onLoad={() => { requestArchiveData(); requestBookRuntime(); }}
+          onRetry={() => { retryArchiveData(); retryBookArchive(); }}
+          onOpenWriter={(country, writer) => { selectCountry(country, true, writer, undefined, "all"); if (isNativeHost) closeNativeCollection(); }}
+          onOpenWork={(book, returnFocus) => openBook(book, returnFocus)}
+        />
+        <DeferredBookArchive
+          books={verifiedBookArchive}
+          countries={countryArchive}
+          archiveStatus={bookRuntimeStatus}
+          forceLoad={
+            bookLoadRequested ||
+            Boolean(requestedBook || pendingWriterWork)
+          }
+          retryToken={bookArchiveRetryToken}
+          onLoadIntent={requestBookRuntime}
+          onRetryArchive={retryBookArchive}
+          requestedBook={requestedBook}
+          requestedBookReturnFocus={requestedBookReturnFocusRef.current}
+          onRequestedBookHandled={handleRequestedBookHandled}
+          registerNativeBack={platformServices.navigation?.subscribeBack ? registerNativeBookBack : undefined}
+          nativePanelActive={!isNativeHost || nativeCollectionOpen}
+          embeddedInPlanet={isNativeHost}
+          onNativeDetailClosed={isNativeHost ? finishNativeDetailClose : undefined}
+          onBookSelect={selectBookWriterAndCountry}
+        />
+  </>);
+
+  if (isNativeHost) {
+    return <div className="magazine-app native-planet-app" data-typography-component="magazine" data-planet-ready={String(globeViewSample.revision > 0)}>
+      <main ref={nativeGlobeRootRef}>{atlasContent}</main>
+      <NativePlanetPanel open={nativeCollectionOpen} onClose={requestReturnToPlanet} onBack={handleNativePanelBack}
+        globeRef={nativeGlobeRootRef} returnFocusRef={atlasExperience.closeButtonRef}>
+        {collectionContent}
+      </NativePlanetPanel>
+      <NativePlanetLaunch ready={globeViewSample.revision > 0} failed={archiveDataStatus === "error"} />
+    </div>;
+  }
+
+  if (directArticleRoute) {
+    return (
+      <div
+        className="magazine-app article-route-shell"
+        data-typography-component="article-reader"
+      >
+        <Suspense
+          fallback={
+            <div className="article-reader-suspense" role="status">
+              {t("Открываем режим чтения…")}
+            </div>
+          }
+        >
+          <ArticleLibrarySection readerOnly />
+        </Suspense>
+      </div>
+    );
+  }
+
+  return (
+    <div className="magazine-app" data-typography-component="magazine">
+      <div className="topline">
+        <span>{t("Литературный журнал и энциклопедия")}</span>
+        <p>{t("Архив пополняется ежедневно")}</p>
+        <div aria-label={t("Проба Пера в цифрах")}>
+          <span>{articleCount ? number(articleCount) : "…"} {t("публикаций")}</span>
+          <span>
+            {archiveStatistics.countries ? number(archiveStatistics.countries) : "…"}{" "}
+            {t("стран")}
+          </span>
+        </div>
+      </div>
+
+      <header className="site-header">
+        <a
+          className="brand"
+          href={import.meta.env.BASE_URL}
+          aria-label={t("Проба Пера - главная")}
+        >
+          <img
+            src={assetUrl("brand/probpera-logo.png")}
+            alt={t("Проба Пера")}
+            width="68"
+            height="68"
+            loading="eager"
+            decoding="async"
+          />
+          <span>
+            <strong>{t("Проба Пера")}</strong>
+            <small>{t("Литературный журнал")}</small>
+          </span>
+        </a>
+
+        <nav aria-label={t("Основная навигация")}>
+          <a href="#atlas">{t("Литературная планета")}</a>
+          <HeaderArticlesMenu language={language} />
+          <details
+            ref={sectionsMenuRef}
+            className="sections-menu"
+            onPointerEnter={cancelSectionsMenuClose}
+            onPointerLeave={(event) => {
+              if (event.pointerType !== "mouse") return;
+              const details = event.currentTarget;
+              cancelSectionsMenuClose();
+              sectionsMenuCloseTimer.current = window.setTimeout(() => {
+                const keyboardFocused = details.contains(document.activeElement) &&
+                  document.activeElement?.matches(":focus-visible");
+                if (!details.matches(":hover") && !keyboardFocused) details.removeAttribute("open");
+                sectionsMenuCloseTimer.current = null;
+              }, 240);
+            }}
+            onBlur={(event) => {
+              if (!event.currentTarget.contains(event.relatedTarget)) {
+                event.currentTarget.removeAttribute("open");
+              }
+            }}
+            onKeyDown={(event) => {
+              if (event.key !== "Escape" || !event.currentTarget.open) return;
+              event.preventDefault();
+              event.currentTarget.removeAttribute("open");
+              event.currentTarget.querySelector("summary")?.focus();
+            }}
+          >
+            <summary>
+              {t("Разделы")} <span aria-hidden="true">⌄</span>
+            </summary>
+            <div className="sections-mega-menu">
+              <header>
+                <span>{t("Навигация по «Пробе Пера»")}</span>
+                <strong>{t("Все темы и разделы сайта")}</strong>
+                <p>
+                  {t(
+                    "От редакционных статей до мировой литературной энциклопедии."
+                  )}
+                </p>
+              </header>
+              <div className="sections-mega-groups" style={{
+                "--menu-group-rows": 1 + 2 * Math.max(...sectionMenuGroups.map(({ sections }) => sections.length)),
+              } as CSSProperties}>
+                {sectionMenuGroups.map(({ group, sections }) => (
+                  <section key={group}>
+                    <h3>{t(group)}</h3>
+                    {sections.map((section) => (
+                      <a
+                        href={section.href}
+                        key={section.id}
+                        onClick={(event) => {
+                          event.currentTarget
+                            .closest("details")
+                            ?.removeAttribute("open");
+                          if (section.action) {
+                            event.preventDefault();
+                            openCommunity(section.action);
+                            return;
+                          }
+                          const journalSectionId =
+                            section.id === "journal" ? "all" : section.id;
+                          if (
+                            section.href === journalPath(journalSectionId) &&
+                            shouldUseClientNavigation(event)
+                          ) {
+                            event.preventDefault();
+                            navigateToJournal(journalSectionId);
+                          }
+                        }}
+                      >
+                        <strong>{t(section.title)}</strong>
+                        <small>{t(section.copy)}</small>
+                      </a>
+                    ))}
+                  </section>
+                ))}
+              </div>
+              <footer>
+                <a
+                  href="#sections"
+                  onClick={(event) =>
+                    event.currentTarget.closest("details")?.removeAttribute("open")
+                  }
+                >
+                  {t("Открыть интерактивный каталог")}{" "}
+                  <span aria-hidden="true">→</span>
+                </a>
+              </footer>
+            </div>
+          </details>
+          <a href="#calendar">{t("Календарь")}</a>
+          {!isControlledWebEdition && <button type="button" onClick={() => openCommunity("forum")}>
+            {t("Форум")}
+          </button>}
+          <a href="#about">{t("О проекте")}</a>
+          <CmsNavigationLinks location="header" />
+        </nav>
+
+        <div className="header-actions">
+          <button
+            className="global-search-trigger"
+            type="button"
+            onClick={() => setGlobalSearchOpen(true)}
+            aria-label={t("Открыть единый поиск")}
+          >
+            <span aria-hidden="true">⌕</span>
+            <small>{t("Поиск")}</small>
+            <kbd>/</kbd>
+          </button>
+          <InterfaceLanguageControl />
+          <SocialLinks />
+          {!isControlledWebEdition && <button
+            className="reader-button"
+            aria-label={readerName || t("Войти")}
+            type="button"
+            onClick={() => openCommunity("account")}
+          >
+            <span>
+              {readerName.slice(0, 1).toUpperCase() || (
+                <svg aria-hidden="true" viewBox="0 0 24 24">
+                  <path d="M12 12.3a4.15 4.15 0 1 0 0-8.3 4.15 4.15 0 0 0 0 8.3Zm-7 7.1c.8-3.3 3.45-5.15 7-5.15s6.2 1.85 7 5.15" />
+                </svg>
+              )}
+            </span>
+            {readerName || t("Войти")}
+          </button>}
+        </div>
+      </header>
+
+      <nav className="mobile-nav" aria-label={t("Быстрая навигация")}>
+        <a href="#atlas">{t("Литературная планета")}</a>
+        <a href="#journal">{t("Статьи")}</a>
+        <a href="#books">{t("Книги")}</a>
+        <a href="#sections">{t("Разделы")}</a>
+        <a href="#calendar">{t("Календарь")}</a>
+        {!isControlledWebEdition && <button type="button" onClick={() => openCommunity("forum")}>
+          {t("Форум")}
+        </button>}
+        <button type="button" onClick={() => setGlobalSearchOpen(true)}>
+          {t("Поиск")}
+        </button>
+        <CmsNavigationLinks location="header" mobile />
+      </nav>
+
+      <main>
+        <CmsHomepageBanners />
+        <section
+          className={`magazine-hero${coreHomepageSectionClass(coreHero)}`}
+          style={coreHomepageSectionStyle(coreHero)}
+          {...cmsCoreFieldMarker(
+            "hero",
+            "backgroundMediaId",
+            coreHero?.backgroundImageUrl || "",
+            { kind: "image", label: "Фоновое изображение первого экрана" }
+          )}
+        >
+          <div className="hero-editorial">
+            <span
+              className="section-kicker"
+              {...cmsCoreFieldMarker(
+                "hero",
+                "eyebrow",
+                coreHero?.eyebrow || "Журнал о литературе и искусстве слова",
+                { label: "Надзаголовок первого экрана" }
+              )}
+            >
+              {language === "ru" && coreHero?.eyebrow
+                ? coreHero.eyebrow
+                : t("Журнал о литературе и искусстве слова")}
+            </span>
+            <h1
+              {...cmsCoreFieldMarker(
+                "hero",
+                "title",
+                coreHero?.title || "Литература - это целый мир!",
+                { label: "Заголовок первого экрана" }
+              )}
+            >
+              {customHeroTitle && !customHeroTitleParts ? (
+                customHeroTitle
+              ) : (
+                <>
+                  <span className="hero-title-lead">{structuredHeroLead}</span>
+                  {" "}
+                  <em className="hero-title-accent">
+                    {structuredHeroAccentParts ? (
+                      <>
+                        <span className="hero-title-accent-line">
+                          {structuredHeroDash}
+                          {structuredHeroAccentParts[1]}
+                        </span>
+                        {" "}
+                        <span className="hero-title-accent-line">
+                          {structuredHeroAccentParts[2]}
+                        </span>
+                      </>
+                    ) : (
+                      <>
+                        {structuredHeroDash}
+                        {structuredHeroAccent}
+                      </>
+                    )}
+                  </em>
+                </>
+              )}
+            </h1>
+            <p
+              {...cmsCoreFieldMarker(
+                "hero",
+                "description",
+                coreHero?.description ||
+                  "Статьи, биографии, редкие книги и первая интерактивная литературная энциклопедия стран - в одном редакционном пространстве.",
+                { kind: "textarea", label: "Описание первого экрана" }
+              )}
+            >
+              {language === "ru" && coreHero?.description
+                ? coreHero.description
+                : t(
+                    "Статьи, биографии, редкие книги и первая интерактивная литературная энциклопедия стран - в одном редакционном пространстве."
+                  )}
+            </p>
+            <div className="hero-actions">
+              <ActionLink
+                className="primary-action"
+                size="lg"
+                surface="dark"
+                variant="primary"
+                endIcon={<BrandArrowIcon />}
+                href={heroPrimaryHref}
+                onClick={(event) => {
+                  if (!heroOpensAtlasImmersive) return;
+                  event.preventDefault();
+                  atlasExperience.enter("hero", event.currentTarget);
+                }}
+                {...cmsCoreFieldMarker(
+                  "hero",
+                  "buttonText",
+                  coreHero?.buttonText || "Открыть глобус",
+                  { label: "Главная кнопка первого экрана" }
+                )}
+              >
+                {language === "ru" && coreHero?.buttonText
+                  ? coreHero.buttonText
+                  : t("Открыть глобус")}
+              </ActionLink>
+              <ActionLink
+                className="secondary-action"
+                size="lg"
+                surface="dark"
+                variant="secondary"
+                href={journalPath()}
+              >
+                {t("Читать журнал")}
+              </ActionLink>
+            </div>
+            <div className="hero-proof">
+              <span>
+                <strong>
+                  {archiveStatistics.countries
+                    ? number(archiveStatistics.countries)
+                    : "…"}
+                </strong>{" "}
+                {t("стран")}
+              </span>
+              <span>
+                <strong>{totalWriters ? number(totalWriters) : "…"}</strong>{" "}
+                {t("писателей")}
+              </span>
+              <span>
+                <strong>{totalWorks ? number(totalWorks) : "…"}</strong>{" "}
+                {t("произведений")}
+              </span>
+            </div>
+          </div>
+
+          <div className="hero-cover">
+            <picture>
+              {!coreHero?.backgroundImageUrl && (
+                <>
+                  <source
+                    media="(max-width: 680px)"
+                    type="image/avif"
+                    srcSet={assetUrl("brand/magazine-hero-mobile.avif?v=20260813-literary-nature-portrait")}
+                  />
+                  <source
+                    media="(max-width: 680px)"
+                    type="image/webp"
+                    srcSet={assetUrl("brand/magazine-hero-mobile.webp?v=20260813-literary-nature-portrait")}
+                  />
+                  <source
+                    type="image/avif"
+                    srcSet={assetUrl("brand/magazine-hero-wide.avif?v=20260813-literary-nature-final")}
+                  />
+                </>
+              )}
+              <img
+                alt=""
+                {...(coreHero?.backgroundImageUrl
+                  ? publicImageAttributes(coreHero.backgroundImageUrl, 1920)
+                  : { src: assetUrl("brand/magazine-hero-wide.webp?v=20260813-literary-nature-final"), width: 1774, height: 887 })}
+                aria-hidden="true"
+                loading="eager"
+                decoding="async"
+                fetchPriority="high"
+              />
+            </picture>
+            <span>{t("Литературный журнал · с 2025 года")}</span>
+          </div>
+        </section>
+
+        <Suspense fallback={null}>
+          <CmsHomepageBlocks />
+        </Suspense>
+
+        {atlasContent}
 
 
         <section
@@ -3183,33 +3302,7 @@ export default function App() {
             </details>
         </section>
 
-        <RecentHistoryPanel
-          countries={countryArchive}
-          books={verifiedBookArchive}
-          countryStatus={archiveDataStatus}
-          bookStatus={bookRuntimeStatus}
-          onLoad={() => { requestArchiveData(); requestBookRuntime(); }}
-          onRetry={() => { retryArchiveData(); retryBookArchive(); }}
-          onOpenWriter={(country, writer) => selectCountry(country, true, writer, undefined, "all")}
-          onOpenWork={(book, returnFocus) => openBook(book, returnFocus)}
-        />
-        <DeferredBookArchive
-          books={verifiedBookArchive}
-          countries={countryArchive}
-          archiveStatus={bookRuntimeStatus}
-          forceLoad={
-            bookLoadRequested ||
-            Boolean(requestedBook || pendingWriterWork)
-          }
-          retryToken={bookArchiveRetryToken}
-          onLoadIntent={requestBookRuntime}
-          onRetryArchive={retryBookArchive}
-          requestedBook={requestedBook}
-          requestedBookReturnFocus={requestedBookReturnFocusRef.current}
-          onRequestedBookHandled={handleRequestedBookHandled}
-          registerNativeBack={platformServices.navigation?.subscribeBack ? registerNativeBookBack : undefined}
-          onBookSelect={selectBookWriterAndCountry}
-        />
+        {collectionContent}
 
         <section
           className={`editorial-section${coreHomepageSectionClass(coreFeaturedJournal)}`}

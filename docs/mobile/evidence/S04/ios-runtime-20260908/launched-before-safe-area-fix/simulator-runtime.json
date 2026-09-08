@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "kind": "ios-simulator-runtime-smoke",
+  "sourceCommit": "325e9f3c0daef6600c1a96e5af76c9f9d2f857c4",
+  "buildId": "e4420424a7e40fe7632b9e0b13213e6342321ccbd9dd78c6df55d313e6fcebbb",
+  "executableSha256": "f46eb4d65ee106a3ebe574bfd40da06e7e1ca8b361c825b692237a10682cdb44",
+  "artifactSha256": "8977bcb1026dbac79aa5e5146ddaa71938ffe06c00b02c4fc8edfc95b1bc3c3e",
+  "startedAt": "2026-09-08T02:25:16.503Z",
+  "locales": [
+    {
+      "locale": "ru",
+      "languageArguments": [
+        "-AppleLanguages",
+        "(ru)",
+        "-AppleLocale",
+        "ru_RU"
+      ],
+      "booted": true,
+      "installed": true,
+      "launched": true,
+      "livenessChecks": [
+        {
+          "observedAt": "2026-09-08T02:29:03.242Z",
+          "pid": 9617
+        },
+        {
+          "observedAt": "2026-09-08T02:29:07.276Z",
+          "pid": 9617
+        },
+        {
+          "observedAt": "2026-09-08T02:29:11.317Z",
+          "pid": 9617
+        }
+      ],
+      "screenshotCaptured": true,
+      "cleanup": {
+        "shutdown": true,
+        "deleted": true
+      },
+      "deviceId": "5FAFC8D5-ECAC-4D6F-A72C-D10425521250",
+      "pid": 9617,
+      "screenshot": {
+        "path": "simulator-ru.png",
+        "bytes": 3553328,
+        "sha256": "3d478117780db7500a407dda587daf8225f9827b55c2314e95660916266b0603",
+        "width": 1206,
+        "height": 2622
+      }
+    },
+    {
+      "locale": "en",
+      "languageArguments": [
+        "-AppleLanguages",
+        "(en)",
+        "-AppleLocale",
+        "en_US"
+      ],
+      "booted": true,
+      "installed": true,
+      "launched": true,
+      "livenessChecks": [
+        {
+          "observedAt": "2026-09-08T02:32:17.235Z",
+          "pid": 12894
+        },
+        {
+          "observedAt": "2026-09-08T02:32:21.561Z",
+          "pid": 12894
+        },
+        {
+          "observedAt": "2026-09-08T02:32:25.584Z",
+          "pid": 12894
+        }
+      ],
+      "screenshotCaptured": true,
+      "cleanup": {
+        "shutdown": true,
+        "deleted": true
+      },
+      "deviceId": "D50A42E4-9054-43DC-A825-B4BA78D9F90A",
+      "pid": 12894,
+      "screenshot": {
+        "path": "simulator-en.png",
+        "bytes": 3554753,
+        "sha256": "12008cd41ab379c18b3199338a98df6e8f0b367ae3ba68da3893fc7f2e73107d",
+        "width": 1206,
+        "height": 2622
+      }
+    }
+  ],
+  "smokePassed": true,
+  "visibleUiVerified": false,
+  "localeUiVerified": false,
+  "exactRcScreenshots": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false,
+  "limitations": [
+    "Boot, install, process liveness and screenshot capture only. The captured images require visual review before claiming a visible localized application.",
+    "Historical authorized source projection; no current-main, physical-device, purchase, child-mode or store acceptance."
+  ],
+  "target": {
+    "runtime": {
+      "identifier": "com.apple.CoreSimulator.SimRuntime.iOS-26-5",
+      "version": "26.5",
+      "name": "iOS 26.5"
+    },
+    "deviceType": {
+      "identifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-17",
+      "name": "iPhone 17"
+    }
+  },
+  "finishedAt": "2026-09-08T02:32:34.936Z"
+}

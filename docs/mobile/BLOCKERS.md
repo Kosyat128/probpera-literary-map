@@ -1,33 +1,31 @@
 # V12 blockers and pending work
 
-Internal work:
+Internal implementation remains the assistant's responsibility:
 
-- S03-S40: controlled paid PWA, native clients, content,
-  child/purchase/offline/rights flows and full bilingual release work remain.
-- English content is incomplete in main; prior release deliberately paused bulk
-  English generation. This is internal work, never an owner translation task.
-- Android tooling is now installed and verified inside the workspace, under the
-  user's explicit SDK license authorization. A real dev APK was compiled and
-  independently verified. Installed-device behavior remains unverified.
-- The user has no macOS computer. Actual cloud Xcode/Swift compilation succeeded
-  on explicitly authorized historical source273f400d, and independent binary
-  verification passed. Simulator launch, installed behavior and physical devices
-  remain unverified; no Mac purchase or programming is assigned to the owner.
-- Current main5d3f6fb is integrated through72a62b31 with969 affected tests passing.
-  Historical native/PWA binaries predate it. Native URL/Back wiring is now in the
-  canonical App and covered by focused tests; new image-delivery coverage and
-  fresh current-main artifact/runtime validation remain internal work.
-- PWA locked-shell preparation passed4 actual Chrome checks; OS installation
-  remains unverified. Full standalone tests need a disposable OS environment and
-  fresh QA candidate with its signer alive; do not overwrite historical authority.
+- Finish corrected globe-only native entry, actual scene/reading/Back/locale
+  regression, fresh artifacts and device/runtime validation. Complete S03/S04
+  and S05 onboarding; current entry work is not stage acceptance.
+- Complete sealed child policy/Parent Gate/profiles/Planetka, optional commerce,
+  scene customization, offline delivery, content and complete bilingual release.
+  No child/store menu is presented as functional before its underlying gates.
+- English factual content, editorial/name/title evidence, synchronized legal,
+  support/store/reviewer materials and accessibility remain incomplete.
+- Actual iOS cloud launch succeeded on historical source but its magazine-home
+  screenshots fail the product contract and safe-area geometry. Corrected
+  local source needs its own native evidence; do not relabel old artifacts.
+- Android tooling/SDK license are complete. Real debug APK exists; physical
+  installation is unverified. PWA OS installation and broader device matrix
+  remain unverified; retain isolated QA authorities and exact hashes.
 
-External evidence/access limitations (do not block independent implementation):
+External inputs, when corresponding internal artifacts are ready:
 
-- Main reports protected=true; detailed legacy branch-protection configuration
-  is inaccessible to current integration (403). Do not infer required checks from
-  empty ruleset responses. Preserve main and require owner review before merge.
-- Signing, merchant/store accounts, territory/rights/legal decisions and final
-  owner approval are unverified. Consolidated concrete owner steps will be built
-  when their corresponding artifacts exist; no secrets requested at intake.
+- Owner signing/merchant/store access, territory/rights/legal decisions and
+  final bilingual approval. Consolidate concrete steps once; never assign
+  translation or programming. The user has no Mac; cloud macOS testing is
+  available and was explicitly authorized for reviewed source/test scope.
+- Public main is protected. Detailed protection configuration is inaccessible
+  to the current integration403; never infer required checks from empty data.
 
-Production actions remain prohibited by the user. None have been performed.
+The existing74-file public iOS source/test approval persists. Internal archive,
+reports, private history and keys are excluded from public publication.
+Production deploy/Submit/Release/merge/store/DB actions remain prohibited.

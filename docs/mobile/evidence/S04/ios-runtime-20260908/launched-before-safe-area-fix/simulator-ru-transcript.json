@@ -1,0 +1,247 @@
+[
+  {
+    "binary": "/usr/bin/xcrun",
+    "args": [
+      "simctl",
+      "create",
+      "LiteraryPlanet-325e9f3c-ru",
+      "com.apple.CoreSimulator.SimDeviceType.iPhone-17",
+      "com.apple.CoreSimulator.SimRuntime.iOS-26-5"
+    ],
+    "startedAt": "2026-09-08T02:25:22.223Z",
+    "timeoutMs": 30000,
+    "exitCode": 0,
+    "errorCode": null,
+    "signal": null,
+    "killed": false,
+    "timedOut": false,
+    "elapsedMs": 428,
+    "stdout": "5FAFC8D5-ECAC-4D6F-A72C-D10425521250\n",
+    "stderr": "",
+    "finishedAt": "2026-09-08T02:25:22.651Z"
+  },
+  {
+    "binary": "/usr/bin/xcrun",
+    "args": [
+      "simctl",
+      "boot",
+      "5FAFC8D5-ECAC-4D6F-A72C-D10425521250"
+    ],
+    "startedAt": "2026-09-08T02:25:22.651Z",
+    "timeoutMs": 60000,
+    "exitCode": 0,
+    "errorCode": null,
+    "signal": null,
+    "killed": false,
+    "timedOut": false,
+    "elapsedMs": 16688,
+    "stdout": "",
+    "stderr": "",
+    "finishedAt": "2026-09-08T02:25:39.339Z"
+  },
+  {
+    "binary": "/usr/bin/xcrun",
+    "args": [
+      "simctl",
+      "bootstatus",
+      "5FAFC8D5-ECAC-4D6F-A72C-D10425521250",
+      "-b"
+    ],
+    "startedAt": "2026-09-08T02:25:39.418Z",
+    "timeoutMs": 180000,
+    "exitCode": 0,
+    "errorCode": null,
+    "signal": null,
+    "killed": false,
+    "timedOut": false,
+    "elapsedMs": 92931,
+    "stdout": "Monitoring boot status for LiteraryPlanet-325e9f3c-ru (5FAFC8D5-ECAC-4D6F-A72C-D10425521250).\n[2026-09-08 02:26:26 +0000] Status=2, isTerminal=NO, Elapsed=01:01.\n\tWaiting on Data Migration\n\t\tReason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)\n\t\tMigration Elapsed:00:43 seconds\n\n[2026-09-08 02:26:27 +0000] Status=2, isTerminal=NO, Elapsed=01:02.\n\tWaiting on Data Migration\n\t\tReason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)\n\t\tMigration Elapsed:00:44 seconds\n\n[2026-09-08 02:26:28 +0000] Status=2, isTerminal=NO, Elapsed=01:03.\n\tWaiting on Data Migration\n\t\tReason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)\n\t\tMigration Elapsed:00:45 seconds\n\n[2026-09-08 02:26:29 +0000] Status=2, isTerminal=NO, Elapsed=01:04.\n\tWaiting on Data Migration\n\t\tReason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)\n\t\tMigration Elapsed:00:46 seconds\n\n[2026-09-08 02:26:30 +0000] Status=2, isTerminal=NO, Elapsed=01:05.\n\tWaiting on Data Migration\n\t\tReason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)\n\t\tMigration Elapsed:00:47 seconds\n\n[2026-09-08 02:26:31 +0000] Status=2, isTerminal=NO, Elapsed=01:06.\n\tWaiting on Data Migration\n\t\tReason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)\n\t\tMigration Elapsed:00:48 seconds\n\n[2026-09-08 02:26:32 +0000] Status=2, isTerminal=NO, Elapsed=01:07.\n\tWaiting on Data Migration\n\t\tReason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)\n\t\tMigration Elapsed:00:49 seconds\n\n[2026-09-08 02:26:33 +0000] Status=2, isTerminal=NO, Elapsed=01:08.\n\tWaiting on Data Migration\n\t\tReason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)\n\t\tMigration Elapsed:00:50 seconds\n\n[2026-09-08 02:26:34 +0000] Status=2, isTerminal=NO, Elapsed=01:09.\n\tWaiting on Data Migration\n\t\tReason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)\n\t\tMigration Elapsed:00:51 seconds\n\n[2026-09-08 02:26:35 +0000] Status=2, isTerminal=NO, Elapsed=01:10.\n\tWaiting on Data Migration\n\t\tReason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)\n\t\tMigration Elapsed:00:52 seconds\n\n[2026-09-08 02:26:40 +0000] Status=2, isTerminal=NO, Elapsed=01:15.\n\tWaiting on Data Migration\n\t\tReason:Running plugin com.apple.securityd.KeychainMigrator (KeychainMigrator.migrator, user-agnostic)\n\t\tMigration Elapsed:00:53 seconds\n\n[2026-09-08 02:26:42 +0000] Status=2, isTerminal=NO, Elapsed=01:17.\n\tWaiting on Data Migration\n\t\tReason:Running plugin com.apple.MobileSafari.migrator (MobileSafari.migrator)\n\t\tMigration Elapsed:00:57 seconds\n\n[2026-09-08 02:26:43 +0000] Status=2, isTerminal=NO, Elapsed=01:18.\n\tWaiting on Data Migration\n\t\tReason:Running plugin com.apple.accounts.obsolescencemigrator (AccountsObsolescence.migrator)\n\t\tMigration Elapsed:00:59 seconds\n\n[2026-09-08 02:26:44 +0000] Status=4, isTerminal=NO, Elapsed=01:19.\n\tWaiting on System App\n\n[2026-09-08 02:26:45 +0000] Status=4, isTerminal=NO, Elapsed=01:20.\n\tWaiting on System App\n\n[2026-09-08 02:26:46 +0000] Status=4, isTerminal=NO, Elapsed=01:20.\n\tWaiting on System App\n\n[2026-09-08 02:26:46 +0000] Status=4, isTerminal=NO, Elapsed=01:21.\n\tWaiting on System App\n\n[2026-09-08 02:26:47 +0000] Status=4, isTerminal=NO, Elapsed=01:22.\n\tWaiting on System App\n\n[2026-09-08 02:26:49 +0000] Status=4, isTerminal=NO, Elapsed=01:24.\n\tWaiting on System App\n\n[2026-09-08 02:26:49 +0000] Status=4, isTerminal=NO, Elapsed=01:24.\n\tWaiting on System App\n\n[2026-09-08 02:26:50 +0000] Status=4, isTerminal=NO, Elapsed=01:25.\n\tWaiting on System App\n\n[2026-09-08 02:26:51 +0000] Status=4, isTerminal=NO, Elapsed=01:26.\n\tWaiting on System App\n\n[2026-09-08 02:27:01 +0000] Status=4, isTerminal=NO, Elapsed=01:36.\n\tWaiting on System App\n\n[2026-09-08 02:27:05 +0000] Status=4294967295, isTerminal=YES, Elapsed=01:39.\n\tFinished\n\n",
+    "stderr": "",
+    "finishedAt": "2026-09-08T02:27:13.748Z"
+  },
+  {
+    "binary": "/usr/bin/xcrun",
+    "args": [
+      "simctl",
+      "install",
+      "5FAFC8D5-ECAC-4D6F-A72C-D10425521250",
+      "/Users/runner/work/_temp/ios-derived/Build/Products/Debug-iphonesimulator/App.app"
+    ],
+    "startedAt": "2026-09-08T02:27:19.377Z",
+    "timeoutMs": 240000,
+    "exitCode": 0,
+    "errorCode": null,
+    "signal": null,
+    "killed": false,
+    "timedOut": false,
+    "elapsedMs": 88617,
+    "stdout": "",
+    "stderr": "",
+    "finishedAt": "2026-09-08T02:28:47.995Z"
+  },
+  {
+    "binary": "/usr/bin/xcrun",
+    "args": [
+      "simctl",
+      "get_app_container",
+      "5FAFC8D5-ECAC-4D6F-A72C-D10425521250",
+      "ru.probpera.literaryplanet",
+      "app"
+    ],
+    "startedAt": "2026-09-08T02:28:48.126Z",
+    "timeoutMs": 30000,
+    "exitCode": 0,
+    "errorCode": null,
+    "signal": null,
+    "killed": false,
+    "timedOut": false,
+    "elapsedMs": 5813,
+    "stdout": "/Users/runner/Library/Developer/CoreSimulator/Devices/5FAFC8D5-ECAC-4D6F-A72C-D10425521250/data/Containers/Bundle/Application/2BB33F87-29F1-4C7D-86B7-DD3DFB48CF36/App.app\n",
+    "stderr": "",
+    "finishedAt": "2026-09-08T02:28:53.939Z"
+  },
+  {
+    "binary": "/usr/bin/xcrun",
+    "args": [
+      "simctl",
+      "launch",
+      "5FAFC8D5-ECAC-4D6F-A72C-D10425521250",
+      "ru.probpera.literaryplanet",
+      "-AppleLanguages",
+      "(ru)",
+      "-AppleLocale",
+      "ru_RU"
+    ],
+    "startedAt": "2026-09-08T02:28:56.945Z",
+    "timeoutMs": 30000,
+    "exitCode": 0,
+    "errorCode": null,
+    "signal": null,
+    "killed": false,
+    "timedOut": false,
+    "elapsedMs": 1281,
+    "stdout": "ru.probpera.literaryplanet: 9617\n",
+    "stderr": "",
+    "finishedAt": "2026-09-08T02:28:58.226Z"
+  },
+  {
+    "binary": "/bin/ps",
+    "args": [
+      "-p",
+      "9617",
+      "-o",
+      "pid=,comm="
+    ],
+    "startedAt": "2026-09-08T02:29:03.045Z",
+    "timeoutMs": 10000,
+    "exitCode": 0,
+    "errorCode": null,
+    "signal": null,
+    "killed": false,
+    "timedOut": false,
+    "elapsedMs": 197,
+    "stdout": " 9617 /Users/runner/Library/Developer/CoreSimulator/Devices/5FAFC8D5-ECAC-4D6F-A72C-D10425521250/data/Containers/Bundle/Application/2BB33F87-29F1-4C7D-86B7-DD3DFB48CF36/App.app/App\n",
+    "stderr": "",
+    "finishedAt": "2026-09-08T02:29:03.242Z"
+  },
+  {
+    "binary": "/bin/ps",
+    "args": [
+      "-p",
+      "9617",
+      "-o",
+      "pid=,comm="
+    ],
+    "startedAt": "2026-09-08T02:29:07.254Z",
+    "timeoutMs": 10000,
+    "exitCode": 0,
+    "errorCode": null,
+    "signal": null,
+    "killed": false,
+    "timedOut": false,
+    "elapsedMs": 6,
+    "stdout": " 9617 /Users/runner/Library/Developer/CoreSimulator/Devices/5FAFC8D5-ECAC-4D6F-A72C-D10425521250/data/Containers/Bundle/Application/2BB33F87-29F1-4C7D-86B7-DD3DFB48CF36/App.app/App\n",
+    "stderr": "",
+    "finishedAt": "2026-09-08T02:29:07.260Z"
+  },
+  {
+    "binary": "/bin/ps",
+    "args": [
+      "-p",
+      "9617",
+      "-o",
+      "pid=,comm="
+    ],
+    "startedAt": "2026-09-08T02:29:11.294Z",
+    "timeoutMs": 10000,
+    "exitCode": 0,
+    "errorCode": null,
+    "signal": null,
+    "killed": false,
+    "timedOut": false,
+    "elapsedMs": 23,
+    "stdout": " 9617 /Users/runner/Library/Developer/CoreSimulator/Devices/5FAFC8D5-ECAC-4D6F-A72C-D10425521250/data/Containers/Bundle/Application/2BB33F87-29F1-4C7D-86B7-DD3DFB48CF36/App.app/App\n",
+    "stderr": "",
+    "finishedAt": "2026-09-08T02:29:11.317Z"
+  },
+  {
+    "binary": "/usr/bin/xcrun",
+    "args": [
+      "simctl",
+      "io",
+      "5FAFC8D5-ECAC-4D6F-A72C-D10425521250",
+      "screenshot",
+      "--type=png",
+      "/Users/runner/work/probpera-literary-map/probpera-literary-map/.tmp/ios-simulator-ci/simulator-ru.png"
+    ],
+    "startedAt": "2026-09-08T02:29:11.466Z",
+    "timeoutMs": 30000,
+    "exitCode": 0,
+    "errorCode": null,
+    "signal": null,
+    "killed": false,
+    "timedOut": false,
+    "elapsedMs": 12900,
+    "stdout": "",
+    "stderr": "Note: No display specified. Defaulting to display: DA0DD49D-24DF-4676-9183-E5F35F2EF205 (screenID: 1, name: LCD)\nWrote screenshot to: /Users/runner/work/probpera-literary-map/probpera-literary-map/.tmp/ios-simulator-ci/simulator-ru.png\n",
+    "finishedAt": "2026-09-08T02:29:24.366Z"
+  },
+  {
+    "binary": "/usr/bin/xcrun",
+    "args": [
+      "simctl",
+      "shutdown",
+      "5FAFC8D5-ECAC-4D6F-A72C-D10425521250"
+    ],
+    "startedAt": "2026-09-08T02:29:24.900Z",
+    "timeoutMs": 30000,
+    "exitCode": 0,
+    "errorCode": null,
+    "signal": null,
+    "killed": false,
+    "timedOut": false,
+    "elapsedMs": 4148,
+    "stdout": "",
+    "stderr": "",
+    "finishedAt": "2026-09-08T02:29:29.048Z"
+  },
+  {
+    "binary": "/usr/bin/xcrun",
+    "args": [
+      "simctl",
+      "delete",
+      "5FAFC8D5-ECAC-4D6F-A72C-D10425521250"
+    ],
+    "startedAt": "2026-09-08T02:29:29.049Z",
+    "timeoutMs": 30000,
+    "exitCode": 0,
+    "errorCode": null,
+    "signal": null,
+    "killed": false,
+    "timedOut": false,
+    "elapsedMs": 240,
+    "stdout": "",
+    "stderr": "",
+    "finishedAt": "2026-09-08T02:29:29.289Z"
+  }
+]

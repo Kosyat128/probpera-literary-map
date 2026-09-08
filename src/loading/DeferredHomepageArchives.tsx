@@ -27,6 +27,9 @@ type BookArchiveComponentProps = {
   requestedBookReturnFocus?: HTMLElement | null;
   onRequestedBookHandled?: () => void;
   registerNativeBack?: (handler: () => boolean) => () => void;
+  nativePanelActive?: boolean;
+  onNativeDetailClosed?: () => void;
+  embeddedInPlanet?: boolean;
 };
 
 type BookArchiveComponent = ComponentType<BookArchiveComponentProps>;

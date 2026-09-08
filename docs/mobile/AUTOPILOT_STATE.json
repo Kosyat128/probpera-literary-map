@@ -5,7 +5,7 @@
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
   "headSha": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-08T02:23:38.224Z",
+  "updatedAt": "2026-09-08T03:34:47.279Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -834,14 +834,15 @@
         "docs/mobile/evidence/S04/navigation-followup-20260908/result.json",
         "docs/mobile/evidence/S04/ios-runtime-20260908/preparation.json",
         "docs/mobile/evidence/S04/ios-runtime-20260908/first-failure/result.json",
-        "docs/mobile/evidence/S04/ios-runtime-20260908/retry-preparation.json"
+        "docs/mobile/evidence/S04/ios-runtime-20260908/retry-preparation.json",
+        "docs/mobile/evidence/S04/globe-entry-20260908/result.json"
       ],
       "externalBlockers": []
     },
     {
       "id": "S05",
       "name": "Brand splash and onboarding",
-      "status": "NOT_STARTED",
+      "status": "IN_PROGRESS",
       "criteria": [
         {
           "id": "S05.acceptance",
@@ -949,7 +950,10 @@
         }
       ],
       "lastGreenCommands": [],
-      "artifacts": [],
+      "artifacts": [
+        "docs/mobile/GLOBE_APPLICATION_CONTRACT.md",
+        "docs/mobile/evidence/S04/globe-entry-20260908/result.json"
+      ],
       "externalBlockers": []
     },
     {
@@ -10545,7 +10549,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Observe authorized retry34179803208 at public325e9f3c; do not duplicate. First runtime34178911693 failed at the60s install deadline, with compiled app and clean simulator cleanup preserved. Retry changes only install deadline/diagnostic reporting. Retrieve exact reports/screenshots and inspect visible locale UI; S03/S04 remain open.",
+    "nextAction": "Build/audit fresh Android candidate for validated native globe-only entry; then integrate same product home into controlled paid PWA with preserved access/help/update boundaries. Native source browser scenarios and scoped compact controls passed; no stage accepted.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -10641,6 +10645,12 @@
           "docs/mobile/evidence/S04/parallel-safe-entry.json",
           "docs/mobile/evidence/S04/native-entry-source-review.json"
         ]
+      },
+      "S05": {
+        "reason": "Owner explicitly clarified splash -> cinematic canonical globe as the only application home. The launch/presentation work is independent of remaining S03 paid-PWA and S04 device/child-policy gates. This does not accept onboarding or child entry.",
+        "evidence": [
+          "docs/mobile/GLOBE_APPLICATION_CONTRACT.md"
+        ]
       }
     },
     "s03SavedVerification": {
@@ -10733,6 +10743,28 @@
       "selectedNativeOptimizedRenditions": 0,
       "accepted": false,
       "freshNativeBuildRequired": true
+    },
+    "s04GlobeApplication": {
+      "status": "WORKING_VALIDATION_PASSED",
+      "contract": "docs/mobile/GLOBE_APPLICATION_CONTRACT.md",
+      "oldIosHomeAccepted": false,
+      "releaseReady": false,
+      "evidence": "docs/mobile/evidence/S04/globe-entry-20260908/result.json",
+      "coreBrowserCases": 3,
+      "nativeArtifactRefreshed": false
+    },
+    "s04IosRuntime": {
+      "runId": 34179803208,
+      "publicCommit": "325e9f3c0daef6600c1a96e5af76c9f9d2f857c4",
+      "simulatorLaunch": true,
+      "visibleLocales": [
+        "ru",
+        "en"
+      ],
+      "applicationHome": "FAIL",
+      "safeArea": "FAIL",
+      "releaseReady": false,
+      "evidence": "docs/mobile/evidence/S04/ios-runtime-20260908/launched-before-safe-area-fix/result.json"
     }
   },
   "externalOwnerInputsStatus": {

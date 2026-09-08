@@ -1,0 +1,38 @@
+[
+  {
+    "sha256": "f4a6f0ec623443b73f2fa11018c0a4d6d0acc8c7367aead3199554fd7fb8f864",
+    "path": "src/App.tsx"
+  },
+  {
+    "sha256": "673622411510716e97425e5c7d52e752e5efa861cf403334013451dce4bafa9f",
+    "path": "src/host/host.css"
+  },
+  {
+    "sha256": "fc17036ff9276e26bc3886b6de30895ba409dd0276cf191bf2b8bbf20ade3931",
+    "path": "src/host/NativePlanetLaunch.tsx"
+  },
+  {
+    "sha256": "11e8b74467622fc0e81284a6c5fc327fe94fa3b5a7290df7588d159851a88ebd",
+    "path": "src/host/NativePlanetPanel.tsx"
+  },
+  {
+    "sha256": "fd09fdc75b858efd461f7cbbe7753c41855ac6be68fb72f0a4ecd7f96c06615e",
+    "path": "src/components/BookArchiveSection.tsx"
+  },
+  {
+    "sha256": "897fe17d03b644ae004c59919b6bbfc330c5206bb752ca0ef1ad0f6cb5943a91",
+    "path": "src/loading/DeferredHomepageArchives.tsx"
+  },
+  {
+    "sha256": "8fe2df1115c5aaf3d173527d56245bf736f7d91a255e2060ba8db6004cfd7599",
+    "path": "scripts/mobile/native-base-assets.json"
+  },
+  {
+    "sha256": "0a88a92820034e9b059b6a57cc5975e55b8c601a8215d963321a0134ec05034e",
+    "path": "tests/host/native-planet.spec.mjs"
+  },
+  {
+    "sha256": "17783f4e8371239c1e1a81478bf3b7dfb9e63b0bc58272c19529abf077e38087",
+    "path": "playwright.native-planet.config.mjs"
+  }
+]

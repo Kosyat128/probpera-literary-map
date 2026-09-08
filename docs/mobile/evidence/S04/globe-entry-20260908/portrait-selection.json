@@ -1,0 +1,94 @@
+{
+  "reason": "Actual native-browser entry/search requested canonical portraits missing from the previous controlled selection.",
+  "records": [
+    {
+      "output": "assets/writer-portraits/q320935.webp",
+      "canonicalRecord": "src/data/countries/generated/writerPortraits.generated.json#russia:nestor",
+      "existingRights": {
+        "status": "licensed",
+        "licenseName": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "creator": "Sergey Nikitin",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nestor_03.jpg",
+        "checkedAt": "2026-08-31"
+      },
+      "bytes": 20054,
+      "sha256": "7e527399e543a74402f18fd8c9a5a3058fcc46387ac45f666fcfe76fb39fe640"
+    },
+    {
+      "output": "assets/writer-portraits/q991.webp",
+      "canonicalRecord": "src/data/countries/russia.ts#russia:dostoevsky",
+      "recordSha256": "f2d10c54d790e38a395220b0dcbb84501ac708b4020995ec97e0d9c283436b5f",
+      "bytes": 17430,
+      "sha256": "516784608ec509dd304b6f3e097a16d1dc3686cbae2e76974e4d5b95bc68a253"
+    },
+    {
+      "output": "assets/writer-portraits/q189950.webp",
+      "canonicalRecord": "src/data/countries/generated/writerPortraits.generated.json#russia:mandelstam",
+      "existingRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Photographer unknown, uploader Koperczak ( talk ) 18:30, 4 April 2009 (UTC)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Osip_Mandelstam_Russian_writer.jpg",
+        "checkedAt": "2026-08-31"
+      },
+      "bytes": 28056,
+      "sha256": "d95922ea16d5424b0013300d71070e4233269d4e98896074d61fd5e5ec5b343e"
+    },
+    {
+      "output": "assets/writer-portraits/q318473.webp",
+      "canonicalRecord": "src/data/countries/generated/writerPortraits.generated.json#russia:avvakum",
+      "existingRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Anonymous icon painter; collection of the Moscow State Historical Museum",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Protopop_Avvakym.jpg",
+        "checkedAt": "2026-08-31"
+      },
+      "bytes": 68518,
+      "sha256": "2c5ad8ba0d9cb196a32e4c2472527f7747bbe3af708ae7dfa59f32a8e33d586f"
+    },
+    {
+      "output": "assets/writer-portraits/q31628.webp",
+      "canonicalRecord": "src/data/countries/generated/writerPortraits.generated.json#russia:esenin",
+      "existingRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Unknown author Unknown author",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sergey_Yesenin_2.jpg",
+        "checkedAt": "2026-08-31"
+      },
+      "bytes": 12898,
+      "sha256": "f7cae28d7ce588161357b712fca6862428a64c47bedabf2be707708376c6cbf9"
+    },
+    {
+      "output": "assets/writer-portraits/q52224.webp",
+      "canonicalRecord": "src/data/countries/generated/writerPortraits.generated.json#russia:sergey_lukyanenko",
+      "existingRights": {
+        "status": "licensed",
+        "licenseName": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "creator": "A.Savin",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sergey_Lukyanenko_MOW_03-2011.jpg",
+        "checkedAt": "2026-08-31"
+      },
+      "bytes": 40654,
+      "sha256": "49e0a872d12b766e829a9dcf9112787b13cf67fc9aedbbd6c3cca9bb8776b1c8"
+    },
+    {
+      "output": "assets/writer-portraits/q37217.webp",
+      "canonicalRecord": "src/data/countries/generated/writerPortraits.generated.json#russia:fyodor_tyutchev",
+      "existingRights": {
+        "status": "public-domain",
+        "licenseName": "Public domain",
+        "creator": "Sergey Lvovich Levitsky",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:%D0%A2%D1%8E%D1%82%D1%87%D0%B5%D0%B2_1860%E2%80%941861.jpg",
+        "checkedAt": "2026-08-31"
+      },
+      "bytes": 51926,
+      "sha256": "133cf41db84dd5bf4596ecf77fb9080a017fd4a2f4636fc26b842d453beddcb2"
+    }
+  ],
+  "sourceRegistryUnchanged": true,
+  "productionRightsApprovalCreated": false
+}

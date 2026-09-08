@@ -232,3 +232,21 @@
   historical app payload; never publish internal current-source history.
   PID/liveness and captured PNGs require independent visual inspection before
   claiming visible localized UI. No production or stage acceptance follows.
+
+- D058: Actual iOS simulator launch34179803208 passed, but its screenshots
+  fail the application's globe-only home and safe-area geometry. Preserve raw
+  successes/failures and never reinterpret compilation/runtime as product UX.
+- D059: Owner explicitly clarified the canonical globe is the only application
+  home. Reuse shared atlas/collection JSX with a native root presentation;
+  the site's magazine header/hero/feed remain public-site presentation only.
+  Latest owner 3D-quality priority is incorporated into the product contract.
+- D060: Application-root atlas is fullscreen, not a modal or an embedded
+  website escape path. URL state retains semantic selections, native panels
+  own Back/focus, and shared inert leases protect overlapping startup/reading.
+- D061: Native collection uses the canonical catalog/reader as a panel around
+  the existing globe. It cannot allocate the site's additional bookshelf Canvas.
+  S05 launch can proceed alongside S03/S04; onboarding/child entry stay open.
+- D062: Preserve failed browser runs. Vite glob semantics must be represented
+  faithfully by the test fixture; do not alter product code or weaken assertions
+  to mask test-tool incompatibility. Add only evidenced missing canonical asset
+  bytes with existing provenance; selection is not new rights/editorial approval.

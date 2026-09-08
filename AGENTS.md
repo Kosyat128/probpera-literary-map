@@ -14,6 +14,13 @@ The active task is the user's V12 bilingual product request, based on canonical
 - Preserve the existing LiteraryWorldMap/LiteraryGlobe/GlobeCameraRig and one
   Canvas/renderer. Locale and presentation changes must preserve scene and
   semantic state. Canonical CMS facts, real portraits and flag assets stay shared.
+- The user's clarified product contract (2026-09-08) is globe-only application
+  home: orange launch -> reveal the live canonical Literary Planet. Search,
+  country/writer/work, collection, child/Planetka, settings and optional store
+  are controls/panels around that persistent scene. Never use the website's
+  magazine homepage, hero, editorial feed or an intermediate menu as app home.
+  Preserve public-site chrome in the public site only. A compiled homepage
+  wrapper or screenshot of it is not acceptance of the application experience.
 - Preserve the approved header, hero, orange/violet brand and antique globe
   defaults from current main. Its typography scope allows the documented open
   Sections/Articles panel and embedded control-row refinements; see

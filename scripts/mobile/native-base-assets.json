@@ -1246,6 +1246,48 @@
       "transformation": "none"
     },
     {
+      "output": "assets/writer-portraits/q189950.webp",
+      "source": "public/assets/writer-portraits/q189950.webp",
+      "sourceSha256": "d95922ea16d5424b0013300d71070e4233269d4e98896074d61fd5e5ec5b343e",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/writer-portraits/q31628.webp",
+      "source": "public/assets/writer-portraits/q31628.webp",
+      "sourceSha256": "f7cae28d7ce588161357b712fca6862428a64c47bedabf2be707708376c6cbf9",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/writer-portraits/q318473.webp",
+      "source": "public/assets/writer-portraits/q318473.webp",
+      "sourceSha256": "2c5ad8ba0d9cb196a32e4c2472527f7747bbe3af708ae7dfa59f32a8e33d586f",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/writer-portraits/q320935.webp",
+      "source": "public/assets/writer-portraits/q320935.webp",
+      "sourceSha256": "7e527399e543a74402f18fd8c9a5a3058fcc46387ac45f666fcfe76fb39fe640",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/writer-portraits/q37217.webp",
+      "source": "public/assets/writer-portraits/q37217.webp",
+      "sourceSha256": "133cf41db84dd5bf4596ecf77fb9080a017fd4a2f4636fc26b842d453beddcb2",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/writer-portraits/q52224.webp",
+      "source": "public/assets/writer-portraits/q52224.webp",
+      "sourceSha256": "49e0a872d12b766e829a9dcf9112787b13cf67fc9aedbbd6c3cca9bb8776b1c8",
+      "transformation": "none"
+    },
+    {
+      "output": "assets/writer-portraits/q991.webp",
+      "source": "public/assets/writer-portraits/q991.webp",
+      "sourceSha256": "516784608ec509dd304b6f3e097a16d1dc3686cbae2e76974e4d5b95bc68a253",
+      "transformation": "none"
+    },
+    {
       "output": "brand/alfred-nobel-medallion.png",
       "source": "public/brand/alfred-nobel-medallion.png",
       "sourceSha256": "7c81bf2b388b45e6a2a8a85f126f657719cd3dcd2f7eab4524918b026bca3e85",
@@ -1261,6 +1303,30 @@
       "output": "brand/atlas-side-brushes.webp",
       "source": "public/brand/atlas-side-brushes.webp",
       "sourceSha256": "c31429f2306ea9f74b83d01bc0bd4a9a1cae02892765d214de4775cceca5c084",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/crime-and-punishment-editorial.webp",
+      "source": "public/brand/book-covers/crime-and-punishment-editorial.webp",
+      "sourceSha256": "696100d523bc12c6ccb0002de685a55572ef214d5278fcc7a2f338d7a1c61bec",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/the-catcher-in-the-rye-editorial.webp",
+      "source": "public/brand/book-covers/the-catcher-in-the-rye-editorial.webp",
+      "sourceSha256": "5c9a7cc530e829c16e384ff5536d24bddac4bfccfb8b809b59b998e9aa00f1bb",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/crime-and-punishment-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/crime-and-punishment-editorial.webp",
+      "sourceSha256": "c068156394e37026e4aa2c03a8cd48253ce0f802636f4a997cd2289c75ac2c4e",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/the-catcher-in-the-rye-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/the-catcher-in-the-rye-editorial.webp",
+      "sourceSha256": "69371c020357db729b61097d1fd8f9946ee1c24b9410727dcb02b7535c0715ff",
       "transformation": "none"
     },
     {

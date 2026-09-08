@@ -38,5 +38,11 @@
   "limits": [
     "No RU/EN simulator app launch, image or visible UI success from this failed run.",
     "Downloaded package is historical public source plus CI delta; not current local native App or a release candidate."
-  ]
+  ],
+  "installTranscript": {
+    "path": "docs/mobile/evidence/S04/ios-runtime-20260908/first-failure/simulator-ru-transcript.json",
+    "originalName": "simulator-ru.log",
+    "bytePreserved": true,
+    "sha256": "e387e90fab17e62fdb1110bfcb75aa5801e5cedc714e08a86a4f04136b002133"
+  }
 }

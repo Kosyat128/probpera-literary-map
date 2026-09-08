@@ -1,0 +1,356 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T03:34:47.085Z",
+  "kind": "native-globe-only-application-working-validation",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "contract": "docs/mobile/GLOBE_APPLICATION_CONTRACT.md",
+  "screenshots": [
+    {
+      "path": "docs/mobile/evidence/S04/globe-entry-20260908/screenshots/entry-20260908-a4b-native-work-open.png",
+      "original": ".tmp/native-planet-browser-results/entry-20260908-a4b/artifacts/native-planet-opening-and--523c0-ns-to-the-same-native-globe/native-work-open.png",
+      "bytes": 811725,
+      "sha256": "60df01a106cf109180cd54b2664d0924c64bc2e60afef8844c99efded17d1446",
+      "exactReleaseCandidate": false
+    },
+    {
+      "path": "docs/mobile/evidence/S04/globe-entry-20260908/screenshots/entry-20260908-a4b-native-work-return.png",
+      "original": ".tmp/native-planet-browser-results/entry-20260908-a4b/artifacts/native-planet-opening-and--523c0-ns-to-the-same-native-globe/native-work-return.png",
+      "bytes": 1100671,
+      "sha256": "71e40cd02b72e3ff32fe5fdb33b763bd07e44a435bac7a3cc38684c66a32c943",
+      "exactReleaseCandidate": false
+    },
+    {
+      "path": "docs/mobile/evidence/S04/globe-entry-20260908/screenshots/entry-20260908-a5-native-entry-ru.png",
+      "original": ".tmp/native-planet-browser-results/entry-20260908-a5/artifacts/native-planet-native-first-250e9-EN-retains-writer-and-scene/native-entry-ru.png",
+      "bytes": 1098763,
+      "sha256": "f2d4d095de34e759f40d9298ed73936d04da7cc2be19168e9d7a47493a4772bb",
+      "exactReleaseCandidate": false
+    },
+    {
+      "path": "docs/mobile/evidence/S04/globe-entry-20260908/screenshots/entry-20260908-a5-native-entry-en.png",
+      "original": ".tmp/native-planet-browser-results/entry-20260908-a5/artifacts/native-planet-native-first-250e9-EN-retains-writer-and-scene/native-entry-en.png",
+      "bytes": 1086281,
+      "sha256": "ac5d1e6e565e370f6023df7a366bbbb9a32408d70392017abf247016469e12ea",
+      "exactReleaseCandidate": false
+    },
+    {
+      "path": "docs/mobile/evidence/S04/globe-entry-20260908/screenshots/entry-20260908-a6-native-narrow-reduced-motion.png",
+      "original": ".tmp/native-planet-browser-results/entry-20260908-a6/artifacts/native-planet-narrow-reduc-d9081-be-without-a-homepage-flash/native-narrow-reduced-motion.png",
+      "bytes": 435534,
+      "sha256": "5bc5812fbfa2544e809214162bfad51e412922127504956f48a709f649662675",
+      "exactReleaseCandidate": false
+    },
+    {
+      "path": "docs/mobile/evidence/S04/globe-entry-20260908/screenshots/entry-20260908-a6-native-narrow-collection-safe-area.png",
+      "original": ".tmp/native-planet-browser-results/entry-20260908-a6/artifacts/native-planet-narrow-reduc-d9081-be-without-a-homepage-flash/native-narrow-collection-safe-area.png",
+      "bytes": 90351,
+      "sha256": "53a60cb0e14d24f26329e6281cd96ff4dbcfa618408f124df947b7732a655a2f",
+      "exactReleaseCandidate": false
+    }
+  ],
+  "behavior": [
+    "Orange native/bootstrap bridge reveals the live canonical globe; no magazine homepage is rendered in native App.",
+    "Same canonical atlas/collection JSX and factual stores; no duplicate globe or Canvas.",
+    "Native search/country/writer stay in scene; collection/reading are retained panels. Native catalog does not create the site bookshelf Canvas.",
+    "Root Back/URL/locale never navigate to a magazine homepage. Panel/launch inert ownership and canonical book final-close lifecycle are retained."
+  ],
+  "sourceFiles": [
+    {
+      "path": "src/App.tsx",
+      "sha256": "74c61dd952162b1948d731c1dd5be2476260edd24bdc3925fc355fd78e6e4ae7"
+    },
+    {
+      "path": "src/atlas/useAtlasExperience.ts",
+      "sha256": "dc974357bf3d820e85ee86b6950ce8122b70543f304caeeb6217f0a1317e2046"
+    },
+    {
+      "path": "src/components/AtlasExperienceChrome.tsx",
+      "sha256": "9df485dc9c2a10bae96bfb57f0cf01cf8f389541ed0ab7d6578ad2b2e1f349f0"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "sha256": "4fa66c44b29955ea9d221072ef48d6c9d294500ff5760c8340789389bd4a437f"
+    },
+    {
+      "path": "src/components/BookShelfControls.tsx",
+      "sha256": "ecb35047d0507b3969abc8070e7004cef33e1919f2eb699396a3935d65408e7d"
+    },
+    {
+      "path": "src/loading/DeferredHomepageArchives.tsx",
+      "sha256": "5c5a7cd9e8d259cb5837215bc8b4efd5037b94d8387b1cc0c5bea52fa23f4f8c"
+    },
+    {
+      "path": "src/host/NativePlanetLaunch.tsx",
+      "sha256": "fc17036ff9276e26bc3886b6de30895ba409dd0276cf191bf2b8bbf20ade3931"
+    },
+    {
+      "path": "src/host/planetLaunch.css",
+      "sha256": "81f368d7643a9e21ffb83f0dab41d2dd3fddbe1b88d67ee0b0ebd494cc02426a"
+    },
+    {
+      "path": "src/host/NativePlanetPanel.tsx",
+      "sha256": "11e8b74467622fc0e81284a6c5fc327fe94fa3b5a7290df7588d159851a88ebd"
+    },
+    {
+      "path": "src/host/hostInert.ts",
+      "sha256": "788247dcb6781e80bae1d97aeebfa7cffcc4421cd3c082675a222a287cd6258b"
+    },
+    {
+      "path": "src/host/host.css",
+      "sha256": "4641f44efa89bc4d98ae9bb13c4bd322d43e2e88989796434fb03f71f7d87002"
+    },
+    {
+      "path": "native.html",
+      "sha256": "5de2e345efe2d9289a5c7ca2a028f453f7693eb0490010c708cb90e0058fea15"
+    },
+    {
+      "path": "scripts/mobile/native-base-assets.json",
+      "sha256": "421cbe68e393355e8a44e07de87ecaad9112dc383951419d2e77d2a63fd30add"
+    }
+  ],
+  "tests": {
+    "runs": [
+      {
+        "name": "entry-20260908-a1",
+        "stats": {
+          "startTime": "2026-09-08T02:59:04.706Z",
+          "duration": 777.623,
+          "expected": 0,
+          "skipped": 2,
+          "unexpected": 1,
+          "flaky": 0
+        },
+        "files": [
+          {
+            "path": "docs/mobile/evidence/S04/globe-entry-20260908/browser/entry-20260908-a1-results.json",
+            "sha256": "c16931d9d770246b93e00ade58fb1fa8f8ee06fffd2b330483b6c5008b413c25"
+          }
+        ]
+      },
+      {
+        "name": "entry-20260908-a2",
+        "stats": {
+          "startTime": "2026-09-08T02:59:22.187Z",
+          "duration": 39027.115,
+          "expected": 0,
+          "skipped": 0,
+          "unexpected": 3,
+          "flaky": 0
+        },
+        "files": [
+          {
+            "path": "docs/mobile/evidence/S04/globe-entry-20260908/browser/entry-20260908-a2-results.json",
+            "sha256": "7a1c220155b66f125353e2c73dcdbd5617eb8ca8a3bc2eb23d790c92e0259f33"
+          }
+        ]
+      },
+      {
+        "name": "entry-20260908-a3",
+        "stats": {
+          "startTime": "2026-09-08T03:08:09.676Z",
+          "duration": 24735.377999999997,
+          "expected": 0,
+          "skipped": 0,
+          "unexpected": 1,
+          "flaky": 0
+        },
+        "files": [
+          {
+            "path": "docs/mobile/evidence/S04/globe-entry-20260908/browser/entry-20260908-a3-results.json",
+            "sha256": "fe93239bce0c1b8d4531ce5b1a01861d7b0efa2c7cb4da692efcac7bc5535fed"
+          },
+          {
+            "path": "docs/mobile/evidence/S04/globe-entry-20260908/browser/entry-20260908-a3-source-before.json",
+            "sha256": "4a60beb891d86588c22ff8011fbc7748deaa05731d11701bd418f1aaa4175c07"
+          },
+          {
+            "path": "docs/mobile/evidence/S04/globe-entry-20260908/browser/entry-20260908-a3-source-after.json",
+            "sha256": "4a60beb891d86588c22ff8011fbc7748deaa05731d11701bd418f1aaa4175c07"
+          }
+        ]
+      },
+      {
+        "name": "entry-20260908-a4",
+        "stats": {
+          "startTime": "2026-09-08T03:16:04.497Z",
+          "duration": 93168.959,
+          "expected": 0,
+          "skipped": 0,
+          "unexpected": 1,
+          "flaky": 0
+        },
+        "files": [
+          {
+            "path": "docs/mobile/evidence/S04/globe-entry-20260908/browser/entry-20260908-a4-results.json",
+            "sha256": "cea6099c8ca66285a1881b0cc190cf306121a8d09ca7f5dc699e767a275fdae4"
+          },
+          {
+            "path": "docs/mobile/evidence/S04/globe-entry-20260908/browser/entry-20260908-a4-source-before.json",
+            "sha256": "28650710e3d1fcffac7d627af310bacf80e18c4aa5b5056e6c5a9c4f51f0feba"
+          },
+          {
+            "path": "docs/mobile/evidence/S04/globe-entry-20260908/browser/entry-20260908-a4-source-after.json",
+            "sha256": "28650710e3d1fcffac7d627af310bacf80e18c4aa5b5056e6c5a9c4f51f0feba"
+          }
+        ]
+      },
+      {
+        "name": "entry-20260908-a4b",
+        "stats": {
+          "startTime": "2026-09-08T03:20:05.741Z",
+          "duration": 15658.5,
+          "expected": 1,
+          "skipped": 0,
+          "unexpected": 0,
+          "flaky": 0
+        },
+        "files": [
+          {
+            "path": "docs/mobile/evidence/S04/globe-entry-20260908/browser/entry-20260908-a4b-results.json",
+            "sha256": "0cd82cd5d474ccff5a560944e518c30eb196c7e2052a6614da534deeb59f03bc"
+          },
+          {
+            "path": "docs/mobile/evidence/S04/globe-entry-20260908/browser/entry-20260908-a4b-source-before.json",
+            "sha256": "5010f96c072cc45b8dd6d876450c78e5335a55d68fe9d2be06c2066f97282b16"
+          },
+          {
+            "path": "docs/mobile/evidence/S04/globe-entry-20260908/browser/entry-20260908-a4b-source-after.json",
+            "sha256": "5010f96c072cc45b8dd6d876450c78e5335a55d68fe9d2be06c2066f97282b16"
+          }
+        ]
+      },
+      {
+        "name": "entry-20260908-a5",
+        "stats": {
+          "startTime": "2026-09-08T03:20:59.013Z",
+          "duration": 17043.993000000002,
+          "expected": 1,
+          "skipped": 0,
+          "unexpected": 1,
+          "flaky": 0
+        },
+        "files": [
+          {
+            "path": "docs/mobile/evidence/S04/globe-entry-20260908/browser/entry-20260908-a5-results.json",
+            "sha256": "28b440cf119c7322ed923618f85aaaec8d75f88dad10db0985ddf0a25ad81e34"
+          },
+          {
+            "path": "docs/mobile/evidence/S04/globe-entry-20260908/browser/entry-20260908-a5-source-before.json",
+            "sha256": "a798bff6490646f81783fe5860e477cc28f8fbdc53aa5e9cf98b557df87cbf0c"
+          },
+          {
+            "path": "docs/mobile/evidence/S04/globe-entry-20260908/browser/entry-20260908-a5-source-after.json",
+            "sha256": "a798bff6490646f81783fe5860e477cc28f8fbdc53aa5e9cf98b557df87cbf0c"
+          }
+        ]
+      },
+      {
+        "name": "entry-20260908-a5b",
+        "stats": {
+          "startTime": "2026-09-08T03:22:25.078Z",
+          "duration": 7944.615,
+          "expected": 1,
+          "skipped": 0,
+          "unexpected": 0,
+          "flaky": 0
+        },
+        "files": [
+          {
+            "path": "docs/mobile/evidence/S04/globe-entry-20260908/browser/entry-20260908-a5b-results.json",
+            "sha256": "cb7255d1a6728b4033047b4dcffe72ce6af7657b593203a4f1843724413be2a0"
+          },
+          {
+            "path": "docs/mobile/evidence/S04/globe-entry-20260908/browser/entry-20260908-a5b-source-before.json",
+            "sha256": "33bcb531f126499b91798759c92d29dcd22a28935f194f59fa1eb19ac9cf8a9b"
+          },
+          {
+            "path": "docs/mobile/evidence/S04/globe-entry-20260908/browser/entry-20260908-a5b-source-after.json",
+            "sha256": "33bcb531f126499b91798759c92d29dcd22a28935f194f59fa1eb19ac9cf8a9b"
+          }
+        ]
+      },
+      {
+        "name": "entry-20260908-a6",
+        "stats": {
+          "startTime": "2026-09-08T03:31:06.685Z",
+          "duration": 13782.758,
+          "expected": 1,
+          "skipped": 0,
+          "unexpected": 0,
+          "flaky": 0
+        },
+        "files": [
+          {
+            "path": "docs/mobile/evidence/S04/globe-entry-20260908/browser/entry-20260908-a6-results.json",
+            "sha256": "ff93b3c604eb0c995f6206ebde40ae7301ad146c218d257cf3317e6e0151fbee"
+          },
+          {
+            "path": "docs/mobile/evidence/S04/globe-entry-20260908/browser/entry-20260908-a6-source-before.json",
+            "sha256": "a73e73f7099bb107d19a90cbd6ddd9335c4e1713ae56a14aaa7864f8891e1eee"
+          },
+          {
+            "path": "docs/mobile/evidence/S04/globe-entry-20260908/browser/entry-20260908-a6-source-after.json",
+            "sha256": "a73e73f7099bb107d19a90cbd6ddd9335c4e1713ae56a14aaa7864f8891e1eee"
+          }
+        ]
+      }
+    ],
+    "existingBookControls": {
+      "pass": 3,
+      "fail": 0,
+      "report": "controls-regression.json"
+    },
+    "atlasRootAndUnchangedWebModal": {
+      "pass": 3,
+      "fail": 0,
+      "source": "tests/host/atlas-application-root.spec.mjs",
+      "scope": "Actual React/Chrome controller with a canvas DOM probe, not an R3F scene test."
+    },
+    "typecheck": {
+      "pass": true
+    },
+    "platformBoundaries": {
+      "pass": true
+    },
+    "realNativeApp": {
+      "scope": "Real canonical App/R3F in Chrome; only Android OS bindings injected. Exact Vite primary/retry glob semantics supplied by fixture.",
+      "corePassedCases": [
+        "work reading, detail close, collection close, top Return while detail open",
+        "RU -> EN -> RU object identity and settled camera pose",
+        "narrow 390x844 reduced motion and CDP safe-area override"
+      ],
+      "canvasCount": 1,
+      "selectedAssets": 277,
+      "pageErrors": 0,
+      "externalRequests": 0,
+      "missingResources": 0,
+      "warning": "Existing React fetchPriority console warning retained."
+    }
+  },
+  "failuresPreserved": [
+    "a1 sandbox esbuild access failure",
+    "a2 missing portraits and unimplemented Vite fixture glob semantics",
+    "a3 isolated actual deferred loading failure, subsequently traced to fixture glob support",
+    "a4 successful real book open followed by wrong test close selector; two missing cover thumbnails",
+    "a5 locale passed; narrow case used an incorrect CDP method name before App startup"
+  ],
+  "assetChanges": {
+    "portraits": "portrait-selection.json",
+    "covers": "cover-selection.json",
+    "added": 11,
+    "bytes": 793216,
+    "canonicalSourceBytesUnchanged": true,
+    "newEditorialOrRightsApproval": false
+  },
+  "visualReview": {
+    "scrolledWriterTabs": "The saved work-return frame preserves writer scroll. Tabs are ordinary flow and remain clickable in repeated work opening; no unsupported sticky-CSS fix was applied.",
+    "oldIosHome": "Historical simulator launch succeeded but homepage/safe-area screenshots fail the application contract."
+  },
+  "limitations": [
+    "Not an installed Android/iOS or physical-device result. CDP insets are a browser geometry test, not iOS runtime evidence.",
+    "No exact-RC/store screenshot, full accessibility/performance/translation, child/purchase policy, S03/S04/S05 acceptance or owner approval.",
+    "Public site and controlled paid-PWA presentation still have their separate validation and remaining work.",
+    "Successful cases ran in separate bounded attempts; original failed attempts are not reclassified as green."
+  ]
+}

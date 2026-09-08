@@ -237,6 +237,9 @@ type Props = {
   requestedBookReturnFocus?: HTMLElement | null;
   onRequestedBookHandled?: () => void;
   registerNativeBack?: (handler: () => boolean) => () => void;
+  nativePanelActive?: boolean;
+  onNativeDetailClosed?: () => void;
+  embeddedInPlanet?: boolean;
 };
 
 const shelfKeyboardInstructions = {
@@ -555,7 +558,12 @@ export default function BookArchiveSection({
   requestedBookReturnFocus,
   onRequestedBookHandled,
   registerNativeBack,
+  nativePanelActive = true,
+  onNativeDetailClosed,
+  embeddedInPlanet = false,
 }: Props) {
+  const onNativeDetailClosedRef = useRef(onNativeDetailClosed);
+  onNativeDetailClosedRef.current = onNativeDetailClosed;
   const { record: recordRecent } = useRecentHistory();
   const [initialNavigationContext] = useState(
     readInitialBookArchiveNavigationContext
@@ -594,14 +602,16 @@ export default function BookArchiveSection({
     () =>
       createInitialBookShelfControllerState(
         forcedColors,
-        initialNavigationContext?.viewMode || "shelf"
+        embeddedInPlanet ? "catalog" : initialNavigationContext?.viewMode || "shelf"
       )
   );
   const [sceneLoadGeneration, setSceneLoadGeneration] = useState(0);
-  const viewMode = forcedColors ? "catalog" : shelfState.effectiveViewMode;
+  const viewMode = forcedColors || embeddedInPlanet
+    ? "catalog"
+    : shelfState.effectiveViewMode;
   const setViewMode = useCallback(
     (nextViewMode: BookShelfViewMode) => {
-      const resolvedViewMode = forcedColors ? "catalog" : nextViewMode;
+      const resolvedViewMode = forcedColors || embeddedInPlanet ? "catalog" : nextViewMode;
       shelfDispatch({ type: "set-view-mode", viewMode: resolvedViewMode });
       if (resolvedViewMode === "shelf" && shelfState.error) {
         setSceneLoadGeneration((generation) => generation + 1);
@@ -611,7 +621,7 @@ export default function BookArchiveSection({
         });
       }
     },
-    [forcedColors, shelfState.error, shelfState.requestId]
+    [embeddedInPlanet, forcedColors, shelfState.error, shelfState.requestId]
   );
   const [searchScope, setSearchScope] =
     useState<BookShelfSearchScope>(
@@ -729,7 +739,7 @@ export default function BookArchiveSection({
       initialNavigationContext?.focusOrigin || null
     );
   const restoreInspectionOpenRef = useRef(
-    initialNavigationContext?.inspectionOpen === true
+    !embeddedInPlanet && initialNavigationContext?.inspectionOpen === true
   );
   const filteredItemsRef = useRef<readonly BookArchiveQueueItem[]>([]);
   const filterDrawerRef = useRef<HTMLElement>(null);
@@ -914,6 +924,7 @@ export default function BookArchiveSection({
   );
   const finalizeBookDetailClose = useCallback(
     (returnFocus: HTMLElement | null) => {
+      const closedSelectedBook = Boolean(selectedBookRef.current);
       const centerAfterClose = pendingEmptySceneResetRef.current;
       pendingEmptySceneResetRef.current = false;
       pendingBookCloseRef.current = null;
@@ -928,6 +939,10 @@ export default function BookArchiveSection({
           : filteredItemsRef.current[0]?.key || null
       );
       const restoreCloseDestination = () => {
+        // This boundary follows the actual shelf close and its canonical URL
+        // restoration. A transient null selection during a book switch does
+        // not pass here, and initial mount/locale changes never notify.
+        if (closedSelectedBook) onNativeDetailClosedRef.current?.();
         if (centerAfterClose) {
           // Removing the detail column reconnects the scene. Focus the current
           // node after that commit, just like the catalogue trigger restoration.
@@ -1002,11 +1017,16 @@ export default function BookArchiveSection({
     shelfState.requestId,
   ]);
   useEffect(() => registerNativeBack?.(() => {
+    if (!nativePanelActive) return false;
+    if (advancedFiltersOpen) {
+      closeAdvancedFilters();
+      return true;
+    }
     if (!selectedBookRef.current && !pendingBookCloseRef.current) return false;
     // Reuse the actual close transition, shelf restoration, history and focus.
     closeBookDetail();
     return true;
-  }), [closeBookDetail, registerNativeBack]);
+  }), [advancedFiltersOpen, closeAdvancedFilters, closeBookDetail, nativePanelActive, registerNativeBack]);
   useEffect(() => {
     if (viewMode === "shelf") return;
     const pendingClose = pendingBookCloseRef.current;
@@ -1789,7 +1809,7 @@ export default function BookArchiveSection({
   }, [selectedBook, shelfState.phase, shelfState.requestId, viewMode]);
 
   useEffect(() => {
-    if (!advancedFiltersOpen) return;
+    if (!nativePanelActive || !advancedFiltersOpen) return;
     const drawer = filterDrawerRef.current;
     const focusable = () =>
       drawer
@@ -1821,10 +1841,10 @@ export default function BookArchiveSection({
     document.addEventListener("keydown", handleDialogKeyDown);
     return () =>
       document.removeEventListener("keydown", handleDialogKeyDown);
-  }, [advancedFiltersOpen, closeAdvancedFilters]);
+  }, [advancedFiltersOpen, closeAdvancedFilters, nativePanelActive]);
 
   useEffect(() => {
-    if (!selectedBook) return;
+    if (!nativePanelActive || !selectedBook) return;
     const handleDetailKeyDown = (event: KeyboardEvent) => {
       if (
         event.key !== "Escape" ||
@@ -1839,7 +1859,7 @@ export default function BookArchiveSection({
     };
     document.addEventListener("keydown", handleDetailKeyDown);
     return () => document.removeEventListener("keydown", handleDetailKeyDown);
-  }, [advancedFiltersOpen, closeBookDetail, selectedBook]);
+  }, [advancedFiltersOpen, closeBookDetail, nativePanelActive, selectedBook]);
 
   useEffect(() => {
     const openFromLocation = (event?: Event) => {
@@ -1859,7 +1879,7 @@ export default function BookArchiveSection({
         restoredNavigationContextRef.current = historyContext;
         navigationFocusOriginRef.current = historyContext.focusOrigin;
         setPendingNavigationFocusOrigin(historyContext.focusOrigin);
-        restoreInspectionOpenRef.current = historyContext.inspectionOpen;
+        restoreInspectionOpenRef.current = !embeddedInPlanet && historyContext.inspectionOpen;
         setQuery(historyContext.search.query);
         setSearchScope(historyContext.search.scope);
         setFilterState(
@@ -1943,7 +1963,7 @@ export default function BookArchiveSection({
     openFromLocation();
     window.addEventListener("popstate", openFromLocation);
     return () => window.removeEventListener("popstate", openFromLocation);
-  }, [books, closeBookDetail, openBookDetail, setViewMode]);
+  }, [books, closeBookDetail, embeddedInPlanet, openBookDetail, setViewMode]);
 
   useEffect(() => {
     if (!requestedBook) return;
@@ -2487,12 +2507,13 @@ export default function BookArchiveSection({
       setAdvancedFiltersOpen(false);
       setShelfFailure(null);
       setViewMode("shelf");
-      if (!forcedColors) actualViewModeRef.current = "shelf";
+      if (!forcedColors && !embeddedInPlanet) actualViewModeRef.current = "shelf";
       const displayed = presentBookArchiveQueueItem(item, language);
       setRandomAnnouncement(`${t("Случайный выбор")}: ${displayed.title}`);
       openBookDetail(item.book, trigger);
     },
     [
+      embeddedInPlanet,
       focusedBookKey,
       forcedColors,
       language,
@@ -4029,6 +4050,7 @@ export default function BookArchiveSection({
             archiveScopeLabel={t("В архиве")}
             globalScopeLabel={t("В журнале")}
             viewMode={viewMode}
+            showViewModeControl={!embeddedInPlanet}
             onViewModeChange={(mode) => {
               setRandomAnnouncement("");
               if (mode === "shelf") setShelfFailure(null);
@@ -5083,7 +5105,7 @@ export default function BookArchiveSection({
           </div>
         </div>
 
-        {advancedFiltersOpen && typeof document !== "undefined"
+        {nativePanelActive && advancedFiltersOpen && typeof document !== "undefined"
           ? createPortal(
               <div
                 className="book-shelf-frame__filter-backdrop is-open"
@@ -5454,7 +5476,7 @@ export default function BookArchiveSection({
               document.body
             )
           : null}
-        {collectionDialogBook ? (
+        {nativePanelActive && collectionDialogBook ? (
           <BookCollectionMembershipDialog
             bookKey={bookKey(collectionDialogBook)}
             bookLabel={presentBookArchiveEntry(collectionDialogBook, language).title}
@@ -5484,7 +5506,7 @@ export default function BookArchiveSection({
             }}
           />
         ) : null}
-        {managedBookCollection ? (
+        {nativePanelActive && managedBookCollection ? (
           <BookCollectionManagerSheet
             collection={managedBookCollection}
             orderedItems={managedCollectionItems}

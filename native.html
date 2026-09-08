@@ -1,16 +1,28 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#4b087c" />
+  <meta name="theme-color" content="#f67518" />
   <meta name="robots" content="noindex,nofollow" />
   <meta name="referrer" content="no-referrer" />
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; connect-src 'self'; img-src 'self' data: blob:; font-src 'self'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; frame-src 'none'; form-action 'none'" />
-  <title>Literary Planet</title>
+  <title></title>
+  <style>
+    html, body { margin: 0; background: #f67518; }
+    .native-bootstrap { position: fixed; inset: 0; background: #f67518; }
+    .native-bootstrap img {
+      position: absolute;
+      top: calc(env(safe-area-inset-top, 0px) + 20px);
+      left: calc(env(safe-area-inset-left, 0px) + 24px);
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+    }
+  </style>
 </head>
 <body>
-  <div id="root"><p role="status">Opening Literary Planet…</p></div>
+  <div id="root"><div class="native-bootstrap" aria-hidden="true"><img src="/brand/probpera-logo.png" alt="" width="56" height="56" /></div></div>
   <script type="module" src="/src/platform/adapters/android/entry.ts"></script>
 </body>
 </html>

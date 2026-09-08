@@ -1,106 +1,67 @@
-LATEST CLOUD RETRY:34179803208 at325e9f3c. Do not duplicate. Read
-evidence/S04/ios-runtime-20260908/retry-preparation.json and first-failure.
-Original34178911693 compiled/booted but timed out installing; no runtime pass.
-Retry changes only existing helper deadline/diagnostics, with62+4 focused
-checks passed. Current app content/private history was not newly published.
+LATEST: Native globe-only entry working validation passed. Read evidence/S04/globe-entry-20260908/result.json. Core cases a4b/work, a5/locale and a6/compact geometry passed; preserve failed runs. JS unchanged across final cases; compact-only CSS has its own a6 evidence. Fresh Android build is next; do not rerun green checks without changes. Controlled paid PWA still needs equivalent product presentation and help/access-layer adaptation; navigation_review completed read-only audit.
 
-ACTIVE CLOUD RUN:34178911693, job101913771012, public commit9eacf983.
-Read evidence/S04/ios-runtime-20260908/preparation.json. Do not duplicate the
-run or republish the current private App tree. Only two existing public CI
-files changed over273f400d. Next retrieve exact evidence and visually inspect
-actual RU/EN screens. Current local native/PWA fixes are a different candidate.
+Continue V12 in literary-planet-v12-work on codex/literary-planet-v12-bilingual-final-autopilot.
 
-CURRENT PWA 2026-09-08: completed the fresh bounded regression. Read
-evidence/S03/current-pwa-20260908/result.json before any rebuild. Do not repeat
-unchanged green checks. Dist-pwa7c35eb3e and archived46210d8e are distinct
-QA authorities with the same product source; both signers are now stopped.
-Next: isolated iOS simulator launch using only the existing public workflow
-and helper delta; keep its historical source separate from current main.
+USER PRODUCT CORRECTION 2026-09-08: the live canonical Literary Planet is the
+ONLY application home. Orange splash -> cinematic globe reveal; all search,
+country/writer/work, collection, child/Planetka, settings/customization/store
+are controls/panels around the same scene. No website magazine homepage or
+intermediate menu. Read GLOBE_APPLICATION_CONTRACT.md. Latest owner also
+prioritizes real original 3D modelling/animation, high-quality interactive
+Planetka/environments, under V12 performance/reduced-motion constraints.
+Other V12 requirements remain binding; never ask the user to restate them.
 
-CURRENT 2026-09-08: navigation/image follow-up is validated; fresh Android/dev
-46ebba56 APK and runtime are preserved under .tmp/native-builds/android-dev/46ebba56.
-Read evidence/S04/navigation-followup-20260908/result.json. Next: fresh isolated
-PWA candidate and bounded actual-globe/locale/offline checks; never overwrite
-the historical default QA authority/control files or invent its stopped signer.
+Current working changes: native root branch reuses App's one canonical atlas
+and archive JSX, applicationRoot hook holds immersive without modal/history
+exit, native launch reveals actual sampled scene, collection is an overlay.
+Book archive embeddedInPlanet forces canonical catalog presentation, avoiding
+a second bookshelf Canvas. Hidden panels cannot steal keyboard/portal focus.
+Seven exact canonical portraits added to native selection after observed404s;
+credits/rights records were retained, no new editorial/legal approval made.
 
-USER RESUMED: "Продолжай". The prior pause is lifted.
-Current canonical-main integration checkpoint:72a62b314ecd50ea2c6f128af7134ee4ae3e1944.
-Actual cloud iOS compilation273f400d succeeded; preserve distinct source identities.
+Tests in progress: inspect latest .tmp/native-planet-browser-results entries
+and agents before changing sources. a1 sandbox failed; a2 identified missing
+portraits and archive loading failure; a3 proved the latter was fixture-only
+esbuild incompatibility with two Vite import.meta.glob calls. Do not weaken
+assertions or label these runs green. Corrected fixture preserves actual lazy
+primary/retry modules. Latest single work case a4 and remaining cases a5 are
+delegated to controlled_images. Read messages/results; do not duplicate runs.
+Typecheck/platform boundaries passed before final catalog-only prop change;
+one final typecheck is pending. Atlas root/web-modal3 Chrome cases passed.
+After required fixes: source-bound evidence, atomic commit, fresh Android
+build+native audit+offline cached Gradle, APK byte audit, final state check.
 
-Continue V12 in literary-planet-v12-work on
-codex/literary-planet-v12-bilingual-final-autopilot.
-Read AGENTS.md and state/status/decisions/blockers. Verify immutable requirements,
-stage-context S03 and verify-state. Shared invariants and routed18/21/22/23 were
-read in full; only load active-stage documents. Do not restart S00 or integration.
+S00-S02 accepted; S03 remains first-open/S03.acceptance. S04 and S05 are
+IN_PROGRESS with documented parallel-safe entry. S06-S40 NOT_STARTED.
+No global requirement passed; releaseReady:false. Full child/commerce,
+English content, device/install/RC and owner/legal gates remain incomplete.
 
-S00-S02 accepted; headSha intentionally means accepted S02:6305df5f. Current,
-resume and first-open remain S03.acceptance. S04 has documented parallel-safe
-entry. No global requirement passed and releaseReady:false.
+iOS public branch codex/literary-planet-v12-ios-ci currently325e9f3c, tree
+0ba8e8d71236a2299607cab27617b517691e1db0. Run34179803208 succeeded in actual
+RU/EN simulator install/launch; archive hash f98ca51c1d95d3a49760f765f9fcd81afe54c2669e3aad6de41b894288ef8996.
+Root viewed screenshots: magazine homepage and status-bar overlap FAIL the
+required application. Original run34178911693 timed out installing at60s;
+240s retry bound fixed that only. Preserve all failures and original reports.
+Current local app correction is NOT this historical public iOS artifact.
+Only existing public CI helper/workflow files were updated this turn; do not
+publish private local branch/history or silently republish current App content.
+The user already approved the74 reviewed source files and public simulator test
+branch; source delta must be concrete/reviewed before any additional action.
 
-Canonical main5d3f6fb is incorporated through three further cherry-picks and
-adaptation72a62b31.969 selected tests/61 files, types/boundaries/typography and39
-local SQL checks passed. Android46ebba56 is a post-main rebuild; no fresh full suite or iOS rebuild is claimed.
-S03 working0afad090 and saved-verification e2530cc6 are committed.
-Full4479 unit run predates later bounded fixes. Fresh PWA b006c275 passed20
-actual Chrome scenarios and335-file audit with real offline Dostoevsky/work and
-RU/EN state preservation. Historical cross-engine4 PASS/2 FAIL is not green.
-See STATUS and S03 evidence for distinct source/test identities and remaining
-broader account-lifecycle/device gaps. Do not overwrite historical QA authorities.
+Previous local Android/dev46ebba56 APK is preserved:
+.tmp/native-builds/android-dev/46ebba56/app-dev-debug.apk
+SHA2568244b5022bf89373890254204ce06bdf9226a382d33d75f21422802db830d502.
+It predates globe-only entry. Java21/AndroidSDK/Gradle are workspace-local and
+SDK license already explicitly accepted with owner's permission. Use positional
+build-native.mjs android dev, scoped Git safe.directory when escalated, then
+fresh exact-identity audit. Do not overwrite historical artifacts/QA signers.
+Current PWA evidence/S03/current-pwa-20260908/result.json:11pass1fail selector
+then only corrected1pass on identical product source/new QA authority, both
+strict audits passed. This predates native-only entry correction; no OS install.
 
-S04 now has a real compiled and independently verified Android dev APK:
-.tmp/native-builds/android-dev/fa9dd4a0/app-dev-debug.apk
-SHA256:3a4cccecf310a7b2eabef22426d96fe78033e89bdca058249383e30d2b17cf20.
-167 executed Gradle tasks; no installed device test. Android bundle fa9dd4a0 is
-preserved in .tmp/native-previous-8e4f8e08-37e6-4965-a2ab-b8c00230a03a.
-Historical dist-native was iOS/dev e7921e30. Current dist-native is Android/dev46ebba56.
-Its320 files and native project sync passed. This local artifact is distinct
-from the successful cloud binary. ios-project-sync-review corrects the intake: app SPM exact
-8.5.1, not from-range. Original wrong report is retained in evidence/history.
-
-The user explicitly authorized accepting/installing the standard Google Android
-SDK license; this is completed. Do not ask again. Java/SDK/Gradle/debug key are
-under .tmp/native-tools. Use scoped environment variables only; private signing
-bytes and tool binaries must never enter Git. AGP Unicode-path override was
-documented and actually passed compilation. Do not invoke adb casually: this
-Windows version ignores the user-dir override for its profile root; its single
-transient empty profile directory was removed without recursion.
-
-Shared native App/host adapters and canonical language provider are implemented.
-80 host/68 adapter/64 auditor/129 shared/11 backend/10 outcome tests passed;
-5 actual Chrome host tests replace App with a DOM probe and do not prove native
-globe retention. TypeScript/CSS26/platform boundaries passed. Strict auditor
-failures before removal of the unused backend SDK remain preserved.
-
-The user has no Mac and explicitly authorized publishing the reviewed74 source
-files plus simulator CI on codex/literary-planet-v12-ios-ci in the public repo.
-Automatic source-publication review was resolved by that explicit permission;
-do not ask again. No internal V12 history, evidence, receipt or keys were published.
-First run34002773310 failed with Xcode option exit64; the two exact option fixes
-produced successful34003133006 at273f400d. All real Xcode/Swift/build steps passed.
-Independent archive/binary/compiled plist/public inventory verification passed.
-Stable App: .tmp/native-builds/ios-simulator/273f400d/App-simulator.app.tar.gz
-SHA256:5fc2832cd3458c01a3fc85828864fa5ea3fec5b0c9dbec59707db4c89b7e4715.
-Read evidence/S04/cloud-ios-working-validation.json and ios-binary-verification.json
-for exact proof. Simulator launch, installed-device behavior and IPA remain open.
-The cloud source projection predates current-main integration; never relabel it.
-
-NativeNavigation is now connected to the actual adapter App URL/Back ports and
-canonical App callbacks with bootstrap/policy fencing. Next internal work: audit
-new main image delivery against the controlled asset selection; preserve rights
-checks and exact cross-platform bytes. Build fresh separate candidates after
-corrections. Preserve
-historical dist-native/dist-pwa and original authorities. An isolated Chrome
-locked-shell preparation passed4 checks after3 recorded setup failures; it did not
-perform OS install. Use a disposable OS for actual PWA installation, and a fresh
-QA candidate with its signer alive for authorized globe tests. The b006 signer
-was memory-only and is gone; never overwrite its authority.
-
-Inspect live agents before overlapping edits. Continue real simulator/native
-navigation and later child/commerce/bilingual implementation;
-prepare reviewable automation before any required access question. Do not treat
-missing macOS as a reason to stop independent work.
-
-Preserve stage loop tests/fixes/regression/evidence/atomic local commit/state.
-No second globe/database, remote WebView runtime, guessed titles/biographies,
-raw AI production translation, fabricated approval or protected unlicensed media.
-No production deploy/Submit/Release/merge/store mutation or production DB writes.
+Read AGENTS/state/status/decisions/blockers and only active-stage routing.
+Archive194 checksums/191manifest entries/173binding docs reverified this turn;
+master and routed21/22/23 reread for this correction. Do not restart S00.
+No production deploy/Submit/Release/merge/store/DB action. No second globe,
+invented title/biography, raw AI production translation or unlicensed assets.
+User has no Mac; do not assign Mac purchase, translation or programming.
