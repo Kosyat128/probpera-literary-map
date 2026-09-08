@@ -58,6 +58,28 @@ async function openAtlasInterface(page) {
   return { atlas };
 }
 
+async function openStationaryAtlasInterface(page) {
+  const { atlas } = await openAtlasInterface(page);
+  // Interface checks use the real pause control; rotation is covered separately.
+  const globe = atlas.locator(".literary-globe:not(.is-loading)");
+  const auto = globe.locator('[data-globe-control="auto-rotate"]');
+  await expect(auto).toBeVisible({ timeout: 45_000 });
+  if ((await auto.getAttribute("aria-pressed")) === "true") {
+    const initialScrollY = await page.evaluate(() => window.scrollY);
+    // Native keyboard activation avoids an extra GPU-heavy viewport alignment
+    // in setup. The dedicated rotation scenario covers pointer activation.
+    await auto.focus();
+    await expect(auto).toBeFocused();
+    await auto.press("Space");
+    await auto.evaluate((_element, scrollY) => {
+      window.scrollTo({ top: scrollY, behavior: "instant" });
+    }, initialScrollY);
+  }
+  await expect(auto).toHaveAttribute("aria-pressed", "false");
+  await expect(globe).toHaveAttribute("data-globe-frame-mode", "demand");
+  return { atlas };
+}
+
 async function selectCountryFromAtlasSearch(page, query) {
   const search = page.locator("#country-search");
   if (!(await search.isVisible())) {
@@ -535,14 +557,12 @@ test("idle atlas does not bulk-load country flags and Auto Off becomes demand", 
   await expect(globe).toHaveAttribute("data-globe-frame-mode", "demand");
 });
 
-test("atlas controls wrap without overlap and rich count matches the collection", async ({
+test("atlas controls wrap without overlap and discovery panels stay exclusive", async ({
   page,
   isMobile,
 }) => {
   if (!isMobile) await page.setViewportSize({ width: 1440, height: 900 });
-  // This is an interface contract: waiting for GeoJSON/WebGL readiness makes
-  // it depend on an unrelated, CPU-heavy renderer initialization in Linux CI.
-  const { atlas } = await openAtlasInterface(page);
+  const { atlas } = await openStationaryAtlasInterface(page);
   const filters = atlas.locator(".atlas-filters");
   const filterButtons = filters.locator(
     ":scope > .atlas-filter-options > button[data-atlas-filter]"
@@ -613,7 +633,15 @@ test("atlas controls wrap without overlap and rich count matches the collection"
   await expect(atlas.locator(".country-search")).toBeHidden();
   await expect(filters).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBeLessThanOrEqual(1);
+});
 
+test("rich collection count and archive navigation stay consistent", async ({
+  page,
+  isMobile,
+}) => {
+  if (!isMobile) await page.setViewportSize({ width: 1440, height: 900 });
+  const { atlas } = await openStationaryAtlasInterface(page);
+  const filters = atlas.locator(".atlas-filters");
   const rich = filters.locator('[data-atlas-filter="rich"]');
   await expect(rich).toContainText(/10\+ (?:авторов|writers)/iu);
   const readRichCount = async () =>
@@ -661,7 +689,23 @@ test("atlas controls wrap without overlap and rich count matches the collection"
   await expect(archivesToggle).toBeFocused();
   await expect(archivesToggle).toHaveAttribute("aria-expanded", "false");
   await expect(archivesPopover).toHaveCount(0);
+});
 
+test("immersive archive Escape closes its popover before the filter panel", async ({
+  page,
+  isMobile,
+}) => {
+  if (!isMobile) await page.setViewportSize({ width: 1440, height: 900 });
+  const { atlas } = await openStationaryAtlasInterface(page);
+  const filters = atlas.locator(".atlas-filters");
+  const rich = filters.locator('[data-atlas-filter="rich"]');
+  await rich.click();
+  await expect(rich).toHaveAttribute("aria-pressed", "true");
+  await expect(page).toHaveURL(/[?&]atlas=rich(?:[&#]|$)/u);
+  await expect(filters).toBeHidden();
+  await atlas.locator('.atlas-embedded-discovery [data-atlas-action="toggle-filters"]').click();
+  await expect(filters).toBeVisible();
+  const archivesToggle = filters.locator("[data-atlas-archives-toggle]");
   await atlas.locator('[data-atlas-action="enter-immersive"]').click();
   const surface = atlas.locator(".atlas-experience-surface");
   await expect(surface).toHaveAttribute("data-atlas-view", "immersive");
