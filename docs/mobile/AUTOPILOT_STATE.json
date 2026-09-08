@@ -5,7 +5,7 @@
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
   "headSha": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-08T04:40:06.191Z",
+  "updatedAt": "2026-09-08T04:44:26.047Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -10549,7 +10549,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Build and audit a fresh Android/dev APK from the committed PWA/shared panel source. Preserve exact artifact evidence, then finish S03/S04/S05 remaining gates and corrected iOS source projection. No stage accepted.",
+    "nextAction": "Finish candidate-wide local validation of the exact corrected iOS public-parent projection, prepare concrete reviewable publication delta, and continue outstanding S03/S04/S05 internal requirements. Android74201a08 build/binary audit and bounded PWA globe/panel behavior passed; physical-device, full onboarding and release gates remain open.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -10751,19 +10751,19 @@
       "releaseReady": false,
       "evidence": "docs/mobile/evidence/S04/globe-entry-20260908/result.json",
       "coreBrowserCases": 3,
-      "nativeArtifactRefreshed": false,
-      "nativeArtifactEvidence": "docs/mobile/evidence/S04/android-globe-entry-20260908/result.json",
+      "nativeArtifactRefreshed": true,
+      "nativeArtifactEvidence": "docs/mobile/evidence/S04/android-globe-panels-20260908/result.json",
       "nativeArtifact": {
         "platform": "android",
         "channel": "dev",
-        "sourceCommit": "26e290845639d05b72972381e1f83453a674d75c",
-        "buildId": "3cd14423f6e7271d75f4112915f45c64170a5ce6fc224483f3ea671ddc409374",
-        "sourceInputsSha256": "9af1308f791fd82b045f735fbc1222987dacda5a993df216fac4caf9cbcd670b",
-        "runtime": ".tmp/native-builds/android-dev/3cd14423/runtime",
+        "sourceCommit": "8a3ef924aa911aeda4742b4434ac925ac576764e",
+        "buildId": "74201a08c3c2014ea1e652b866fc241a6c47cfdcbc510698e2f9927193be0a9b",
+        "sourceInputsSha256": "bfafd2b40f96cac3e4ab4430a25b5f20dd3bf7381ca72ed8d58db85f582326a5",
+        "runtime": ".tmp/native-builds/android-dev/74201a08/runtime",
         "apk": {
-          "path": ".tmp/native-builds/android-dev/3cd14423/app-dev-debug.apk",
-          "bytes": 34415589,
-          "sha256": "f73f86414a7e88a8bb26c3d8d7d06a230a618efae1f00a78348ef6f23a784cb2"
+          "path": ".tmp/native-builds/android-dev/74201a08/app-dev-debug.apk",
+          "bytes": 35208110,
+          "sha256": "d0ebd99b6be3ca3a2c6d972e5cd44165b0453e5e940dd7542cafc7baccd98de1"
         },
         "nativeStrictAudit": true,
         "offlineGradleBuild": true,

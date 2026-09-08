@@ -21,11 +21,15 @@ zero-layout FAIL; a5 final two affected desktop/mobile cases PASS. Each strict
 artifact audit passed. Earlier evidence covers access/revocation, keyboard
 update/rollback and notice geometry; no full-suite or installed-device claim.
 
-Android3cd14423 remains the previous globe-only dev APK from26e29084:
-.tmp/native-builds/android-dev/3cd14423/app-dev-debug.apk
-SHA256 f73f86414a7e88a8bb26c3d8d7d06a230a618efae1f00a78348ef6f23a784cb2.
-Its build and binary audit passed, but it predates the shared panel fixes.
-A fresh source-bound Android build is next. SDK license/tools already approved.
+Fresh Android/dev 74201a08 is built from source8a3ef924 and
+contains the corrected shared globe/panels. Strict artifact audit, offline
+Gradle, actual APK payload/plugin/resource/signature/alignment audit and exact
+preservation passed. 35,208,110 bytes:
+.tmp/native-builds/android-dev/74201a08/app-dev-debug.apk
+SHA256 d0ebd99b6be3ca3a2c6d972e5cd44165b0453e5e940dd7542cafc7baccd98de1.
+Evidence: evidence/S04/android-globe-panels-20260908/result.json.
+Historical3cd/46eb artifacts remain preserved. Installed-device behavior and
+store/RC readiness are unverified. SDK license/tools already approved.
 
 Historical iOS run34179803208 installed/launched RU/EN simulators, but its
 magazine-home/status-bar screenshots FAIL the product contract. A local

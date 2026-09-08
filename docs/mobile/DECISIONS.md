@@ -269,3 +269,9 @@
 - D066: Selected canonical image bytes/provenance remain unchanged. Added
   offline files and a text fallback are delivery fixes, not new title, portrait,
   editorial or rights approvals. No screenshot is promoted to an exact RC.
+
+- D067: Android74201a08 is the source8a3ef924 development APK containing the
+  final shared globe/panel and mobile layout fixes. Strict source/artifact,
+  offline build, actual binary and preservation checks passed once; older
+  artifacts retain their own identities. Installed-device and release claims
+  require separate evidence. Keep final PWA a5 evidence source-bound.
