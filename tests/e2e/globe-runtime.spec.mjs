@@ -1,10 +1,12 @@
 import { expect, test } from "@playwright/test";
 import sharp from "sharp";
+import { clickAtlasDiscoveryControl } from "./helpers/atlas-discovery.mjs";
 
 async function openAtlasPanel(page, panel) {
   const content = page.locator(panel === "filters" ? "#atlas .atlas-toolbar" : "#country-search");
   if (!(await content.isVisible())) {
-    await page.locator(`#atlas .atlas-embedded-discovery [data-atlas-action="toggle-${panel}"]`).click();
+    const control = page.locator(`#atlas .atlas-embedded-discovery [data-atlas-action="toggle-${panel}"]`);
+    await clickAtlasDiscoveryControl(control);
   }
   await expect(content).toBeVisible();
 }
@@ -195,7 +197,7 @@ test("all globe surfaces use the same seamless star background", async ({
     }));
   expect(nasaPresentation).toMatchObject({
     scene: "shared-starry",
-    controls: "rgba(30, 9, 45, 0.9)",
+    controls: "rgba(27, 9, 38, 0.96)",
     switcher: "rgba(32, 10, 48, 0.92)",
   });
   expect(nasaPresentation.background).toContain("radial-gradient");

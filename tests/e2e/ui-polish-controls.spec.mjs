@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { clickAtlasDiscoveryControl } from './helpers/atlas-discovery.mjs';
 
 test.use({ serviceWorkers: 'block' });
 const startURL = process.env.UI_POLISH_BASE_URL || '/';
@@ -35,7 +36,7 @@ test('F13 WebGL creation failure preserves country search and article reading', 
   await expect(atlas.getByText('Используйте текстовый указатель стран ниже', { exact: true })).toBeVisible();
   await expect(page.locator('.fatal-error-screen')).toHaveCount(0);
   await expect(page.locator('.magazine-hero')).toBeVisible();
-  await atlas.locator('.atlas-embedded-discovery [data-atlas-action="toggle-search"]').click();
+  await clickAtlasDiscoveryControl(atlas.locator('.atlas-embedded-discovery [data-atlas-action="toggle-search"]'));
   await page.locator('#country-search').fill('Россия');
   await page.getByRole('option', { name: 'Россия', exact: true }).click();
   expect(new URL(page.url()).searchParams.get('country')).toBe('russia');
@@ -74,13 +75,13 @@ for (const width of [1440, 390]) {
     const searchToggle = atlas.locator('.atlas-embedded-discovery [data-atlas-action="toggle-search"]');
     await expect(atlas.locator('.atlas-toolbar')).toBeHidden();
     await expect(page.locator('#country-search')).toBeHidden();
-    await filters.click();
+    await clickAtlasDiscoveryControl(filters);
     await expect(filters).toHaveAttribute('aria-expanded', 'true');
     await expect(atlas.getByRole('button', { name: /^Все страны \d+$/ })).toBeVisible();
     await page.keyboard.press('Escape');
     await expect(filters).toBeFocused();
     await expect(filters).toHaveAttribute('aria-expanded', 'false');
-    await searchToggle.click();
+    await clickAtlasDiscoveryControl(searchToggle);
     await expect(page.locator('#country-search')).toBeFocused();
     await expect(page.locator('#country-search')).toBeInViewport({ ratio: 1 });
     const stickyBottom = await page.locator('.site-header, .mobile-nav').evaluateAll(elements => Math.max(...elements.map(element => element.getBoundingClientRect().bottom)));
@@ -112,16 +113,16 @@ for (const width of [1440, 390]) {
     await expect(page.locator('#country-search')).not.toHaveAttribute('aria-activedescendant', firstActive);
     expect(await page.evaluate(() => window.scrollY)).toBe(windowScroll);
     await page.keyboard.press('Home');
-    await filters.click();
+    await clickAtlasDiscoveryControl(filters);
     await expect(filters).toHaveAttribute('aria-expanded', 'true');
     await expect(atlas.locator('#atlas-filter-panel')).toBeVisible();
     await expect(atlas.locator('#atlas-filter-panel [data-atlas-filter][aria-pressed="true"]')).toBeFocused();
     await expect(page.locator('#country-search')).toBeHidden();
-    await searchToggle.click();
+    await clickAtlasDiscoveryControl(searchToggle);
     await expect(page.locator('#country-search')).toBeFocused();
     await page.keyboard.press('Escape');
     await expect(searchToggle).toBeFocused();
-    await searchToggle.click();
+    await clickAtlasDiscoveryControl(searchToggle);
     await expect(page.locator('#country-search')).toHaveValue('Россия');
     await page.getByRole('option', { name: 'Россия', exact: true }).click();
     const selectedCountry = new URL(page.url()).searchParams.get('country');

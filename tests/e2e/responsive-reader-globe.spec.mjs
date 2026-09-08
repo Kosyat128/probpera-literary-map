@@ -1,6 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 import { articleFromSitemap } from "./helpers/article-route.mjs";
+import { clickAtlasDiscoveryControl } from "./helpers/atlas-discovery.mjs";
 
 const preferredArticlePath =
   "/15-krylatyh-vyrazheniy-prishedshih-k-nam-iz-drevnegrecheskoy-mifologii/";
@@ -382,7 +383,7 @@ test("globe search metadata and instructions stay readable inside 320-1720px", a
     await page.setViewportSize({ width, height: 800 });
     const search = page.locator("#country-search");
     const searchToggle = page.locator('#atlas .atlas-embedded-discovery [data-atlas-action="toggle-search"]');
-    if (await searchToggle.getAttribute("aria-expanded") !== "true") await searchToggle.click();
+    if (await searchToggle.getAttribute("aria-expanded") !== "true") await clickAtlasDiscoveryControl(searchToggle);
     await expect(search).toBeVisible();
     await search.click();
     await search.fill("США");

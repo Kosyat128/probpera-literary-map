@@ -479,6 +479,15 @@ test("premium globe controls stay balanced and inside every viewport", async ({
     await expect(experience.locator("canvas")).toHaveCount(1, {
       timeout: 45_000,
     });
+    const controls = experience.locator(".globe-controls");
+    await expect(controls).toBeVisible();
+    // Canvas can mount during the finite 9px controls arrival animation.
+    // Measure the settled layout, preserving the exact geometric tolerances.
+    await expect.poll(() => controls.evaluate((element) =>
+      element.getAnimations()
+        .filter((animation) => animation.animationName === "atlas-premium-controls-arrive")
+        .every((animation) => animation.playState === "finished")
+    )).toBe(true);
     const geometry = await experience.evaluate((element) => {
       const rect = (target) => {
         const box = target.getBoundingClientRect();

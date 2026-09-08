@@ -1,0 +1,32 @@
+{
+  "runId": 34220034247,
+  "jobId": 102040725127,
+  "headSha": "fd51b33f4ad6d052755cc905f7ea883b1fd2f0e9",
+  "conclusion": "failure",
+  "source": "Completed verify job logs from GitHub connector",
+  "premium": {
+    "completedShards": 22,
+    "totalShards": 22,
+    "passed": 28,
+    "failed": 0,
+    "flaky": 0,
+    "skipped": 0
+  },
+  "webgl": {
+    "completedShards": 1,
+    "totalShards": 6,
+    "completedShard": 1,
+    "passed": 30,
+    "failed": 1,
+    "flaky": 1,
+    "skipped": 1,
+    "failedTest": "desktop-chromium: all globe surfaces use the same seamless star background",
+    "flakyTest": "desktop-chromium: globe filters update the collection without rebuilding the 3D atlas"
+  },
+  "notRun": [
+    "WebGL regression shards 2-6",
+    "Remaining browser checks in parallel",
+    "Production dependency security audit"
+  ],
+  "counting": "Playwright final categories are retained separately; flaky is not added to passed. This run is not a successful complete-suite result."
+}
