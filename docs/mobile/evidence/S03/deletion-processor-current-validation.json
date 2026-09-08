@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "kind": "s03-deletion-processor-current-validation",
+  "scope": "Current-branch safe-reader deletion API, processor, CLI and local SQL fixture regression",
+  "status": "WORKING_VALIDATION",
+  "sourceCommit": "2dd6f1f6",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false,
+  "command": "node node_modules/vitest/vitest.mjs run server/planet/api.test.ts server/planet/integration.test.ts server/planet/deletionProcessor.test.ts server/planet/deletionProcessorCli.test.ts scripts/database/literary-planet-reader-deletion.integration.test.mjs --configLoader runner --maxWorkers=1",
+  "result": {
+    "testFiles": 5,
+    "testsPassed": 130,
+    "testsFailed": 0,
+    "status": "passed"
+  },
+  "confirmed": [
+    "Safe-reader request and provider/disclosure denial paths remain fail closed.",
+    "Deletion processor durable phases, ownership fences, rollback and subject isolation remain covered by the local SQL fixture.",
+    "CLI dry-run and argument/policy validation remain covered without production credentials or transport access."
+  ],
+  "stillOpen": [
+    "The narrow reader processor intentionally blocks public-contributor and staff/editorial accounts; broad enabled-account policy is not accepted by this report.",
+    "PGlite single-connection fixtures do not prove concurrent production races, live Auth/Storage erasure, retention-law validity or owner/legal approval.",
+    "No production migration, processor execute mode, network call or account deletion was performed."
+  ]
+}
