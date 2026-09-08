@@ -5,7 +5,7 @@
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
   "headSha": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-08T07:34:19.357Z",
+  "updatedAt": "2026-09-08T08:00:30.321Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -530,7 +530,8 @@
         "docs/mobile/evidence/S04/pwa-preparation/result.json",
         "docs/mobile/evidence/S03/deletion-processor-current-validation.json",
         "docs/mobile/evidence/S03/current-pwa-20260908/result.json",
-        "docs/mobile/evidence/S03/device-preparation-20260908/result.json"
+        "docs/mobile/evidence/S03/device-preparation-20260908/result.json",
+        "docs/mobile/evidence/S03/offline-repair-20260908/source-result.json"
       ],
       "externalBlockers": []
     },
@@ -1160,7 +1161,8 @@
       ],
       "lastGreenCommands": [],
       "artifacts": [
-        "docs/mobile/evidence/S07/country-sheet-20260908/entry.json"
+        "docs/mobile/evidence/S07/country-sheet-20260908/entry.json",
+        "docs/mobile/evidence/S07/country-sheet-20260908/result.json"
       ],
       "externalBlockers": []
     },
@@ -10553,7 +10555,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Continue documented parallel-safe S07 country-sheet touch work while S03.acceptance remains first-open. Implement and validate drag/snap/cancellation over the same canonical globe; preserve prior source-bound artifacts, pending iOS permission and incomplete platform/child/bilingual/release gates.",
+    "nextAction": "Build one fresh Android/dev and controlled PWA from this committed source; run only the affected PWA repair desktop/mobile case, preserve artifacts and update evidence. S07 touch2 and joint static passed; do not replay unchanged tests. S03.acceptance stays first-open; iOS83 publication approval still pending.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -10653,6 +10655,13 @@
       "S05": {
         "reason": "Owner explicitly clarified splash -> cinematic canonical globe as the only application home. The launch/presentation work is independent of remaining S03 paid-PWA and S04 device/child-policy gates. This does not accept onboarding or child entry.",
         "evidence": [
+          "docs/mobile/GLOBE_APPLICATION_CONTRACT.md"
+        ]
+      },
+      "S07": {
+        "reason": "The S07 presentation-only handle gesture reuses the current sheet reducer and persistent canonical globe. Matrix69 allows documented parallel-safe work; this slice is independent of paid-web hosting, child/commerce policy and device gates. Existing D077 and entry.json establish the scope; S03 remains first-open.",
+        "evidence": [
+          "docs/mobile/evidence/S07/country-sheet-20260908/entry.json",
           "docs/mobile/GLOBE_APPLICATION_CONTRACT.md"
         ]
       }
@@ -10773,7 +10782,7 @@
         "offlineGradleBuild": true,
         "apkBinaryAudit": true,
         "preservationCopiesVerified": true,
-        "currentSource": true,
+        "currentSource": false,
         "includesS05FirstJourney": true,
         "includesNativeActivity": true,
         "installedRuntimeTested": false,
@@ -10782,7 +10791,7 @@
         "releaseReady": false,
         "sourceScopeNote": "Exact native-activity source checkpoint compiled and statically inspected as Android devDebug. Prior7b63 preserves its first-journey evidence; S05, PWA051 and frozen iOS83 keep their prior source-bound identities. Chrome with injected native events does not establish installed-device lifecycle or battery behavior."
       },
-      "nativeArtifactCurrentSource": true,
+      "nativeArtifactCurrentSource": false,
       "nativeArtifactHistory": [
         {
           "evidence": "docs/mobile/evidence/S04/android-globe-panels-20260908/result.json",
@@ -11252,6 +11261,27 @@
       "sha256": "c5e9874979d2d6fb51ebcb12eff67f6c1afb5713e1a8392610779c9839fd99ae",
       "status": "IN_PROGRESS",
       "stageAccepted": false
+    },
+    "s07CountrySheet": {
+      "evidence": "docs/mobile/evidence/S07/country-sheet-20260908/result.json",
+      "sha256": "9725de0bf13981623f5fdbdd7d3de26a37738a5448a5e9084a7ed2d78c9bb0b5",
+      "status": "SELECTED_WORKING_VALIDATION_PASSED",
+      "unitPasses": 6,
+      "selectedBrowserPasses": 2,
+      "nativeArtifactCurrentSource": false,
+      "stageAccepted": false,
+      "releaseReady": false
+    },
+    "s03OfflineRepair": {
+      "evidence": "docs/mobile/evidence/S03/offline-repair-20260908/source-result.json",
+      "sha256": "23c49f65cd048f33dedd10e46a014fe19929b558b836167289973741182c850a",
+      "status": "SOURCE_AND_UNIT_VALIDATED_BROWSER_PENDING",
+      "combinedUnitPasses": 306,
+      "browserRun": false,
+      "pwaBuilt": false,
+      "copyReviewStatus": "draft",
+      "stageAccepted": false,
+      "releaseReady": false
     }
   },
   "externalOwnerInputsStatus": {

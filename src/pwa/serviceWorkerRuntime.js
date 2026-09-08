@@ -84,6 +84,7 @@ export function installPwaWorker(worker, input) {
   const knownRoutes = new Set([...engine.entries.keys(), ...(config.rollbackReference?.routes ?? [])]);
   let selected = engine, selectionPromise, selectionInvalid = false, blockedClientId = null, rollbackPending = false;
   let offlineCheck = null;
+  let offlineRepair = null;
   let selectionEpoch = 0;
   const ResponseClass = worker.Response ?? Response;
   const RequestClass = worker.Request ?? Request;
@@ -105,7 +106,7 @@ export function installPwaWorker(worker, input) {
         if (error) reject(error); else resolve(value);
       }
       signal.addEventListener("abort", abort, { once: true });
-      operation.then(value => finish(null, value), error => finish(error));
+      Promise.resolve(operation).then(value => finish(null, value), error => finish(error));
       if (signal.aborted) abort();
     });
   }
@@ -150,13 +151,16 @@ export function installPwaWorker(worker, input) {
     headers.set("X-Literary-Planet-Build", buildId);
     return new ResponseClass(bytes, { status: 200, headers });
   }
-  async function download(file, buildId = config.buildId) {
+  async function download(file, buildId = config.buildId, signal) {
     const controller = new AbortController();
+    const abort = () => controller.abort();
+    signal?.addEventListener("abort", abort, { once: true });
+    if (signal?.aborted) abort();
     const timeout = later(() => controller.abort(), 30_000);
     try {
       const request = new RequestClass(new URL(file.url, origin).href, { credentials: "omit", cache: "no-store", redirect: "error", signal: controller.signal });
-      return await verifiedResponse(await worker.fetch(request), file, buildId);
-    } finally { cancelTimer(timeout); }
+      return await verifiedResponse(await abortable(worker.fetch(request), controller.signal), file, buildId, controller.signal);
+    } finally { cancelTimer(timeout); signal?.removeEventListener("abort", abort); }
   }
   async function readMarker(name, signal) {
     if (!new RegExp("^" + PREFIX + "[a-f0-9]{64}$", "u").test(name)) return null;
@@ -172,12 +176,14 @@ export function installPwaWorker(worker, input) {
       return { ...marker, manifest };
     } catch (error) { if (signal?.aborted) throw error; return null; }
   }
-  async function verifyCache(name, manifest, signal) {
+  async function verifyCache(name, manifest, signal, checkpoint) {
     // CacheStorage.match never creates an empty cache after eviction, unlike open.
     for (const file of manifest.files) {
+      if (checkpoint) await checkpoint();
       if (signal?.aborted) throw new Error("cancelled");
       const response = await abortable(worker.caches.match(new URL(file.url, origin).href, { cacheName: name }), signal);
       await verifiedResponse(response, file, manifest.buildId, signal);
+      if (checkpoint) await checkpoint();
     }
   }
   async function currentComplete(verifyFiles = false) {
@@ -374,7 +380,7 @@ export function installPwaWorker(worker, input) {
         && offlineCheck.activeBuildId === request.activeBuildId) offlineCheck.controller.abort();
       return;
     }
-    if (offlineCheck) { reply({ status: "unavailable", reason: "busy" }); return; }
+    if (offlineCheck || offlineRepair) { reply({ status: "unavailable", reason: "busy" }); return; }
     const attempt = { clientId: client.id, requestId: request.requestId, activeBuildId: request.activeBuildId, controller: new AbortController() };
     offlineCheck = attempt;
     let timedOut = false;
@@ -414,9 +420,131 @@ export function installPwaWorker(worker, input) {
     }
     reply(result);
   }
+  async function repairOfflineBase(event, client) {
+    const request = event.data;
+    const reply = result => client.postMessage({ type: "PLANET_OFFLINE_REPAIR_RESULT", requestId: request.requestId,
+      engineBuildId: config.buildId, activeBuildId: request.activeBuildId, ...result });
+    const owned = () => offlineRepair?.clientId === client.id && offlineRepair.requestId === request.requestId
+      && offlineRepair.activeBuildId === request.activeBuildId;
+    if (request.type === "PLANET_CANCEL_OFFLINE_REPAIR") {
+      if (owned()) offlineRepair.controller.abort();
+      return;
+    }
+    if (request.type === "PLANET_OFFLINE_REPAIR_PERMISSION") {
+      if (owned() && offlineRepair.permission?.sequence === request.sequence) offlineRepair.permission.resolve(request.deadline);
+      return;
+    }
+    if (offlineRepair || offlineCheck || rollbackPending) { reply({ status: "unavailable", reason: "busy" }); return; }
+    const attempt = { clientId: client.id, requestId: request.requestId, activeBuildId: request.activeBuildId,
+      controller: new AbortController(), permission: null, sequence: 0, deadline: 0, pendingWrite: null };
+    offlineRepair = attempt;
+    let timedOut = false, repairedFiles = 0, repairedBytes = 0;
+    const timer = later(() => { timedOut = true; attempt.controller.abort(); }, 120_000);
+    const signal = attempt.controller.signal;
+    let result;
+    const failure = reason => { throw new Error(reason); };
+    try {
+      const active = await abortable(loadSelection(), signal), epoch = selectionEpoch;
+      const current = () => {
+        if (signal.aborted) failure("cancelled");
+        if (selectionInvalid || rollbackPending || selected !== active || epoch !== selectionEpoch
+          || active.config.buildId !== request.activeBuildId || client.id === blockedClientId) failure("worker-changed");
+      };
+      const authorized = () => { current(); if (Date.now() >= attempt.deadline) failure("access-required"); };
+      const permission = async () => {
+        current();
+        if (!await abortable(sourceClient(event), signal)
+          || (active !== engine && !await abortable(selectedDocument(client.id, active), signal))) failure("worker-changed");
+        current();
+        let cancel;
+        try {
+          const deadline = await abortable(new Promise((resolve, reject) => {
+            const sequence = ++attempt.sequence;
+            attempt.permission = { sequence, resolve };
+            cancel = later(() => reject(new Error("access-required")), 5_000);
+            // The page reuses its current verified access boundary. This is only
+            // a cancellable UI capability, never a grant or worker authority.
+            client.postMessage({ type: "PLANET_OFFLINE_REPAIR_PERMISSION_REQUEST", requestId: request.requestId,
+              engineBuildId: config.buildId, activeBuildId: request.activeBuildId, sequence });
+          }), signal);
+          const now = Date.now();
+          if (!Number.isSafeInteger(deadline) || deadline <= now || deadline > now + 30_000) failure("access-required");
+          attempt.deadline = deadline;
+          authorized();
+        } finally { cancelTimer(cancel); attempt.permission = null; }
+      };
+      const maintainPermission = async () => {
+        current();
+        if (Date.now() + 5_000 >= attempt.deadline) await permission();
+        authorized();
+      };
+      current();
+      await permission();
+      const marker = await readMarker(active.cacheName, signal);
+      const expectedHash = active === engine ? await abortable(configHash(), signal) : config.rollbackReference?.manifestSha256;
+      if (!marker || marker.manifestSha256 !== expectedHash || marker.activationSequence < 1) failure("missing-manifest");
+      const cache = await abortable(worker.caches.open(active.cacheName), signal);
+      const markerCurrent = async () => {
+        const present = await readMarker(active.cacheName, signal);
+        authorized();
+        if (!present || present.manifestSha256 !== expectedHash || present.activationSequence !== marker.activationSequence) failure("missing-manifest");
+      };
+      for (const file of active.config.files) {
+        await maintainPermission();
+        let intact = false;
+        try {
+          const cached = await abortable(worker.caches.match(new URL(file.url, origin).href, { cacheName: active.cacheName }), signal);
+          await verifiedResponse(cached, file, active.config.buildId, signal); intact = true;
+        } catch { await maintainPermission(); }
+        if (intact) continue;
+        await permission();
+        await markerCurrent();
+        let response;
+        try { response = await download(file, active.config.buildId, signal); }
+        catch { authorized(); failure("network-or-integrity"); }
+        await permission();
+        await markerCurrent();
+        try {
+          // Cache.put cannot be cancelled. If cancellation wins the wait, keep
+          // the repair slot occupied until this already-started immutable write
+          // settles; its eventual write is not counted or called rolled back.
+          const write = cache.put(new URL(file.url, origin).href, response);
+          attempt.pendingWrite = write;
+          void write.then(() => { attempt.pendingWrite = null; }, () => { attempt.pendingWrite = null; });
+          await abortable(write, signal);
+        }
+        catch { authorized(); failure("storage"); }
+        authorized();
+        repairedFiles++; repairedBytes += file.bytes;
+      }
+      await permission();
+      await markerCurrent();
+      try { await verifyCache(active.cacheName, active.config, signal, maintainPermission); }
+      catch { authorized(); failure("verification-failed"); }
+      await permission();
+      await markerCurrent();
+      result = { status: "complete", fileCount: active.config.files.length,
+        bytes: active.config.files.reduce((sum, file) => sum + file.bytes, 0), repairedFiles, repairedBytes };
+    } catch (error) {
+      const reason = timedOut ? "timeout" : signal.aborted ? "cancelled" : error.message;
+      result = ["network-or-integrity", "storage", "verification-failed"].includes(reason)
+        ? { status: "incomplete", reason, repairedFiles, repairedBytes }
+        : { status: "unavailable", reason: ["timeout", "cancelled", "access-required", "worker-changed", "missing-manifest"].includes(reason) ? reason : "not-ready" };
+    } finally {
+      cancelTimer(timer); attempt.permission = null;
+      if (attempt.pendingWrite) {
+        const release = () => { if (offlineRepair === attempt) offlineRepair = null; };
+        void attempt.pendingWrite.then(release, release);
+      } else if (offlineRepair === attempt) offlineRepair = null;
+    }
+    reply(result);
+  }
   async function message(event) {
     const client = await sourceClient(event);
     if (!client) return;
+    if (["PLANET_OFFLINE_REPAIR", "PLANET_CANCEL_OFFLINE_REPAIR", "PLANET_OFFLINE_REPAIR_PERMISSION"].includes(event.data.type)) {
+      await repairOfflineBase(event, client); return;
+    }
     if (["PLANET_OFFLINE_READINESS", "PLANET_CANCEL_OFFLINE_READINESS"].includes(event.data.type)) {
       await checkOfflineReadiness(event, client); return;
     }
@@ -432,6 +560,7 @@ export function installPwaWorker(worker, input) {
       }
       let accepted = false, reason = "not-ready";
       if (ready && event.data.targetBuildId === previous.config.buildId) {
+        offlineRepair?.controller.abort();
         selectionEpoch++;
         rollbackPending = true;
         try {
@@ -472,6 +601,14 @@ export function installPwaWorker(worker, input) {
   });
   worker.addEventListener("message", (event) => {
     const data = event.data;
+    if (record(data) && ["PLANET_OFFLINE_REPAIR", "PLANET_CANCEL_OFFLINE_REPAIR", "PLANET_OFFLINE_REPAIR_PERMISSION"].includes(data.type)) {
+      const permission = data.type === "PLANET_OFFLINE_REPAIR_PERMISSION";
+      try { exactKeys(data, ["type", "requestId", "engineBuildId", "activeBuildId", ...(permission ? ["sequence", "deadline"] : [])]); } catch { return; }
+      if (event.origin !== origin || typeof data.requestId !== "string" || !/^[A-Za-z0-9_-]{1,96}$/u.test(data.requestId)
+        || data.engineBuildId !== config.buildId || typeof data.activeBuildId !== "string" || !SHA256.test(data.activeBuildId)
+        || (permission && (!Number.isSafeInteger(data.sequence) || data.sequence < 1 || !Number.isSafeInteger(data.deadline)))) return;
+      event.waitUntil(message(event).catch(() => undefined)); return;
+    }
     if (record(data) && ["PLANET_OFFLINE_READINESS", "PLANET_CANCEL_OFFLINE_READINESS"].includes(data.type)) {
       try { exactKeys(data, ["type", "requestId", "engineBuildId", "activeBuildId"]); } catch { return; }
       if (event.origin !== origin || typeof data.requestId !== "string" || !/^[A-Za-z0-9_-]{1,96}$/u.test(data.requestId)

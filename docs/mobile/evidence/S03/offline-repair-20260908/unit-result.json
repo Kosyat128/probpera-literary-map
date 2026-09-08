@@ -1,0 +1,176 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T07:59:10.400Z",
+  "stage": "S03",
+  "status": "SELECTED_UNIT_VALIDATION_PASSED",
+  "scope": "Explicit user-triggered PWA base-cache repair; worker/controller/current-access boundary tests only",
+  "combinedUnitPassed": 306,
+  "counting": "84 controller cases from a1b; 188 worker and 34 boundary cases from corrected a2. No single all-green 306-case execution is claimed.",
+  "infrastructureFailure": "unit-a1: esbuild sandbox directory access denied before config loaded; no tests executed",
+  "firstExecuted": {
+    "passed": 299,
+    "failed": 7,
+    "controllerPassed": 84,
+    "workerBoundaryFailures": 7,
+    "classification": "Six synchronous legacy fetch fixtures exposed Promise normalization; one prior stop-without-grant subscriber contract. Corrected code, retained failures."
+  },
+  "targetedRerun": {
+    "passed": 222,
+    "failed": 0,
+    "workerPassed": 188,
+    "boundaryPassed": 34,
+    "controllerRepeated": false
+  },
+  "currentSources": [
+    {
+      "path": "src/pwa/serviceWorkerRuntime.js",
+      "sha256": "7093d4c17cff9794c35b0d17b905d29f2186ef98eccda5ed4bba5509991c8a31"
+    },
+    {
+      "path": "src/pwa/serviceWorkerRuntime.test.mjs",
+      "sha256": "9d7527e470b6840eb9c19705db2994aff890f92956ab561100c1655606ce4a98"
+    },
+    {
+      "path": "src/pwa/registerPwaWorker.ts",
+      "sha256": "d6f99e7b5add8af9b88231bdaabbe4556e2005d6f893b654ea1ab0ec7ce7e021"
+    },
+    {
+      "path": "src/pwa/registerPwaWorker.test.ts",
+      "sha256": "35955937c6dc968828dcdd85b5bfe3049346599c9ea6e4162f8635a5b3a7bf78"
+    },
+    {
+      "path": "src/pwa/PwaAccessBoundary.tsx",
+      "sha256": "5da9ec472f3bd16b1493cb44601bf1e3f74d09245e05ba8446cf9d280bee6b80"
+    },
+    {
+      "path": "src/pwa/PwaAccessBoundary.test.tsx",
+      "sha256": "6bf02d8b7af83b06dc57e7129408b003ccf474cac31638d74107b522b2238910"
+    },
+    {
+      "path": "src/pwa/PwaDevicePanel.tsx",
+      "sha256": "8916f3f157740e93e3b78270ee63477ede150d645518a37be9dbc4c8cb381d1f"
+    },
+    {
+      "path": "tests/pwa/controlled-pwa.spec.mjs",
+      "sha256": "960023a90847d80fabe1f7d448d9587e162e5677305b3a25fa468f7dfe375afe"
+    }
+  ],
+  "unitSourcesUnchangedDuringBothExecutedRuns": true,
+  "postUnitUiChange": "PwaDevicePanel clears prior repair status when a new read-only check starts. No unit rerun claimed for that one UI line; real affected browser case prepared, not yet run.",
+  "preserved": [
+    {
+      "source": ".tmp/s03-offline-repair-20260908/unit-validation.json",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/units/unit-validation.json",
+      "bytes": 4804,
+      "sha256": "e9311f7561e36dd3edb9e8661e6aee79009a90b5a908316aa05bd7bd0fd334ad"
+    },
+    {
+      "source": ".tmp/s03-offline-repair-20260908/prior-051-archive.json",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/prior-051-archive.json",
+      "bytes": 61093,
+      "sha256": "97c43ab7479068de6095bf27a9b17416e94f281b120210bbc6be0ae660c43aa0"
+    },
+    {
+      "source": ".tmp/s03-offline-repair-20260908/unit-a1/run-result.json",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/units/unit-a1/run-result.json",
+      "bytes": 288,
+      "sha256": "a6978d9a1e06391794e40991f9b5c64d1bb0cb1ef2efdbab8695589e0636569c"
+    },
+    {
+      "source": ".tmp/s03-offline-repair-20260908/unit-a1/source-before.json",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/units/unit-a1/source-before.json",
+      "bytes": 993,
+      "sha256": "70bcc444363d8a8c23c15e753cb66176d4f521a264c1145c5cb23aba51a4443d"
+    },
+    {
+      "source": ".tmp/s03-offline-repair-20260908/unit-a1/run.log",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/units/unit-a1/run-log.json",
+      "bytes": 2529,
+      "sha256": "c704f8eae9970cd7b46ff95cc6c7ac59b34967b6ae1ff1c13d9f319825e2c393",
+      "rawBytes": 2027,
+      "rawSha256": "e18dcec22f378721219a9d03941ca4e2cc995c2336125120da36d155447eac81",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/s03-offline-repair-20260908/unit-a1b/run-result.json",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/units/unit-a1b/run-result.json",
+      "bytes": 289,
+      "sha256": "210340056c951a003e0aa572e79c1267dfc3bfbf81f75bbc1aae5ac0061d0944"
+    },
+    {
+      "source": ".tmp/s03-offline-repair-20260908/unit-a1b/source-before.json",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/units/unit-a1b/source-before.json",
+      "bytes": 993,
+      "sha256": "70bcc444363d8a8c23c15e753cb66176d4f521a264c1145c5cb23aba51a4443d"
+    },
+    {
+      "source": ".tmp/s03-offline-repair-20260908/unit-a1b/source-after.json",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/units/unit-a1b/source-after.json",
+      "bytes": 993,
+      "sha256": "70bcc444363d8a8c23c15e753cb66176d4f521a264c1145c5cb23aba51a4443d"
+    },
+    {
+      "source": ".tmp/s03-offline-repair-20260908/unit-a1b/vitest.json",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/units/unit-a1b/vitest.json",
+      "bytes": 120014,
+      "sha256": "51fe04939dd79d13b3b4165f62c9fab605a9574a5947346f731c7d4078361ac2"
+    },
+    {
+      "source": ".tmp/s03-offline-repair-20260908/unit-a1b/run.log",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/units/unit-a1b/run-log.json",
+      "bytes": 29945,
+      "sha256": "53278f8a846ce3a9b654bc97fd2b7bf6d61335b4d72dbdb64b46993a3e9f8c00",
+      "rawBytes": 28970,
+      "rawSha256": "6ea10685d073e6d1028a2ee492f9603fc680618057fbe61e50e113b5a9da15d7",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/s03-offline-repair-20260908/unit-a2/run-result.json",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/units/unit-a2/run-result.json",
+      "bytes": 254,
+      "sha256": "be3a39137133e0fff7555e09502c237be590f9257cc0046e7bedbe01bde24be3"
+    },
+    {
+      "source": ".tmp/s03-offline-repair-20260908/unit-a2/source-before.json",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/units/unit-a2/source-before.json",
+      "bytes": 576,
+      "sha256": "133aeb5d47262dbfbd002c90b4c9c2ec9fbdde2a56d801a6a070c5d28971feda"
+    },
+    {
+      "source": ".tmp/s03-offline-repair-20260908/unit-a2/source-after.json",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/units/unit-a2/source-after.json",
+      "bytes": 576,
+      "sha256": "133aeb5d47262dbfbd002c90b4c9c2ec9fbdde2a56d801a6a070c5d28971feda"
+    },
+    {
+      "source": ".tmp/s03-offline-repair-20260908/unit-a2/vitest.json",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/units/unit-a2/vitest.json",
+      "bytes": 78239,
+      "sha256": "eafa8912dfeeb438e4c415f34b46cb6d6eae9e14f744e6d33c67bf864f7373d5"
+    },
+    {
+      "source": ".tmp/s03-offline-repair-20260908/unit-a2/run.log",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/units/unit-a2/run-log.json",
+      "bytes": 7905,
+      "sha256": "f97641d6cb736d55c9add7e1645a1dc3e3a099c584f041a407a5c46960e596f8",
+      "rawBytes": 7480,
+      "rawSha256": "58cefdb512670b1ff9f0dda03e2c7f052e13a6bcc4d06e5fccc2705ca99b20c9",
+      "lossless": true
+    }
+  ],
+  "jointStaticReference": "docs/mobile/evidence/S07/country-sheet-20260908/static/static-checks.json",
+  "jointStaticReferenceStatus": "Root reported this shared execution passed; its durable preservation is owned by root. No duplicate static execution claimed.",
+  "browserPrepared": true,
+  "plannedBrowserExecutions": 2,
+  "browserRun": false,
+  "pwaBuildRun": false,
+  "copyReviewStatus": "draft",
+  "installedRuntimeVerified": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "limits": [
+    "This receipt covers unit validation only. Prepared browser coverage is not observed browser evidence.",
+    "Repair concerns exact public base bytes. It grants no entitlement and promises no future cache persistence.",
+    "The same worker may remain busy while an uncancellable, already-started Cache.put settles; UI cancellation returns without claiming rollback."
+  ]
+}

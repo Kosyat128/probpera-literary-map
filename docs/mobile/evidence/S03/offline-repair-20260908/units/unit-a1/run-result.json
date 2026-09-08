@@ -1,0 +1,4 @@
+{
+  "exitCode": 1,
+  "command": "node node_modules/vitest/vitest.mjs run src/pwa/serviceWorkerRuntime.test.mjs src/pwa/registerPwaWorker.test.ts src/pwa/PwaAccessBoundary.test.tsx --reporter=default --reporter=json --outputFile=.tmp/s03-offline-repair-20260908/unit-a1/vitest.json"
+}

@@ -113,6 +113,187 @@ async function rollbackFixture() {
 function readinessRequest(env, patch = {}) {
   return { type: "PLANET_OFFLINE_READINESS", requestId: "offline-check", engineBuildId: env.config.buildId, activeBuildId: env.config.buildId, ...patch };
 }
+function repairRequest(env, patch = {}) {
+  return { type: "PLANET_OFFLINE_REPAIR", requestId: "offline-repair", engineBuildId: env.config.buildId, activeBuildId: env.config.buildId, ...patch };
+}
+function permitRepairs(env, deadline = () => Date.now() + 29_000) {
+  env.client.postMessage.mockImplementation(data => {
+    if (data.type === "PLANET_OFFLINE_REPAIR_PERMISSION_REQUEST") void env.send({ ...data,
+      type: "PLANET_OFFLINE_REPAIR_PERMISSION", deadline: deadline() });
+  });
+}
+const repairResult = env => env.client.postMessage.mock.calls.map(([data]) => data).filter(data => data.type === "PLANET_OFFLINE_REPAIR_RESULT").at(-1);
+
+describe("explicit offline base repair", () => {
+  it.each(["missing", "corrupt"])("repairs only %s bytes and verifies the whole unchanged generation", async damage => {
+    const env = environment(); await env.lifetime("install"); await env.lifetime("activate");
+    const cache = env.caches.stores.get(env.registration.cacheName), markerBefore = await (await cache.match(MARKER)).text();
+    const target = ORIGIN + "/planet/en/";
+    if (damage === "missing") cache.entries.delete(target);
+    else cache.entries.set(target, new Response("bad bytes", { headers: { "Content-Type": "text/html" } }));
+    clearReadinessEffects(env); permitRepairs(env);
+    await env.send(repairRequest(env));
+    expect(repairResult(env)).toMatchObject({ status: "complete", repairedFiles: 1, repairedBytes: env.bodies.get("/planet/en/").length,
+      fileCount: env.config.files.length, engineBuildId: env.config.buildId, activeBuildId: env.config.buildId });
+    expect(env.worker.fetch).toHaveBeenCalledTimes(1);
+    expect(env.worker.fetch.mock.calls[0][0]).toMatchObject({ url: target, credentials: "omit", redirect: "error", cache: "no-store" });
+    expect(cache.put.mock.calls.map(([url]) => url)).toEqual([target]);
+    expect(await (await cache.match(MARKER)).text()).toBe(markerBefore);
+    expect(env.worker.skipWaiting).not.toHaveBeenCalled(); expect(env.worker.clients.claim).not.toHaveBeenCalled();
+    expect(env.caches.delete).not.toHaveBeenCalled(); expect(cache.delete).not.toHaveBeenCalled();
+    expect(await (await cache.match(target)).text()).toBe(env.bodies.get("/planet/en/"));
+  });
+  it("does not download or rewrite a complete generation", async () => {
+    const env = environment(); await env.lifetime("install"); await env.lifetime("activate");
+    clearReadinessEffects(env); permitRepairs(env); await env.send(repairRequest(env));
+    expect(repairResult(env)).toMatchObject({ status: "complete", repairedFiles: 0, repairedBytes: 0 });
+    expect(env.worker.fetch).not.toHaveBeenCalled();
+    for (const cache of env.caches.stores.values()) expect(cache.put).not.toHaveBeenCalled();
+  });
+  it.each(["missing marker", "evicted cache", "inactive marker"])("fails closed for %s without creating a replacement manifest", async damage => {
+    const env = environment(); await env.lifetime("install"); await env.lifetime("activate");
+    const cache = env.caches.stores.get(env.registration.cacheName);
+    if (damage === "missing marker") cache.entries.delete(MARKER);
+    if (damage === "evicted cache") env.caches.stores.clear();
+    if (damage === "inactive marker") {
+      const marker = await (await cache.match(MARKER)).json(); marker.activationSequence = 0;
+      cache.entries.set(MARKER, new Response(JSON.stringify(marker)));
+    }
+    clearReadinessEffects(env); permitRepairs(env); await env.send(repairRequest(env));
+    expect(repairResult(env)).toMatchObject({ status: "unavailable", reason: "missing-manifest" });
+    expectReadOnly(env);
+  });
+  it.each(["hash", "oversized", "private", "wrong MIME", "foreign URL", "network", "quota"])("rejects %s recovery without recording a complete result", async failure => {
+    const env = environment(); await env.lifetime("install"); await env.lifetime("activate");
+    const cache = env.caches.stores.get(env.registration.cacheName); cache.entries.delete(ORIGIN + "/planet/en/");
+    clearReadinessEffects(env); permitRepairs(env);
+    if (failure === "quota") env.caches.putFailure = () => true;
+    else if (failure === "network") env.worker.fetch.mockRejectedValue(new Error("offline"));
+    else env.worker.fetch.mockImplementation(async () => {
+      const response = new Response(failure === "hash" ? "x".repeat(env.bodies.get("/planet/en/").length) : failure === "oversized" ? "x".repeat(1024) : env.bodies.get("/planet/en/"),
+        { headers: { "Content-Type": failure === "wrong MIME" ? "text/plain" : "text/html", ...(failure === "private" ? { "Cache-Control": "private" } : {}) } });
+      if (failure === "foreign URL") Object.defineProperty(response, "url", { value: "https://other.invalid/planet/en/" });
+      return response;
+    });
+    await env.send(repairRequest(env));
+    expect(repairResult(env)).toMatchObject({ status: "incomplete", repairedFiles: 0, repairedBytes: 0, reason: failure === "quota" ? "storage" : "network-or-integrity" });
+    expect(cache.entries.has(ORIGIN + "/planet/en/")).toBe(false);
+  });
+  it("keeps successful exact writes but reports partial failure honestly", async () => {
+    const env = environment(); await env.lifetime("install"); await env.lifetime("activate");
+    const cache = env.caches.stores.get(env.registration.cacheName);
+    cache.entries.delete(ORIGIN + "/planet/en/"); cache.entries.delete(ORIGIN + "/planet/ru/");
+    const fetch = env.worker.fetch.getMockImplementation();
+    clearReadinessEffects(env); permitRepairs(env);
+    env.worker.fetch.mockImplementation(request => request.url.endsWith("/ru/") ? Promise.reject(new Error("offline")) : fetch(request));
+    await env.send(repairRequest(env));
+    expect(repairResult(env)).toMatchObject({ status: "incomplete", repairedFiles: 1, repairedBytes: env.bodies.get("/planet/en/").length });
+    expect(cache.entries.has(ORIGIN + "/planet/en/")).toBe(true); expect(cache.entries.has(ORIGIN + "/planet/ru/")).toBe(false);
+  });
+  it("requires a final whole-cache check even after successful writes", async () => {
+    const env = environment(); await env.lifetime("install"); await env.lifetime("activate");
+    const cache = env.caches.stores.get(env.registration.cacheName), put = cache.put.getMockImplementation();
+    cache.entries.delete(ORIGIN + "/planet/en/"); clearReadinessEffects(env); permitRepairs(env);
+    cache.put.mockImplementation(async (url, response) => { await put(url, response); cache.entries.delete(ORIGIN + "/planet/assets/app-a.js"); });
+    await env.send(repairRequest(env));
+    expect(repairResult(env)).toMatchObject({ status: "incomplete", reason: "verification-failed", repairedFiles: 1 });
+  });
+  it.each(["expired", "future", "wrong sequence", "foreign client"])("refuses an invalid permission: %s", async failure => {
+    vi.useFakeTimers();
+    const env = environment(); await env.lifetime("install"); await env.lifetime("activate");
+    clearReadinessEffects(env);
+    const other = { ...env.client, id: "other", postMessage: vi.fn() }; env.clients.set(other.id, other);
+    env.client.postMessage.mockImplementation(data => {
+      if (data.type === "PLANET_OFFLINE_REPAIR_PERMISSION_REQUEST") void env.send({ ...data, type: "PLANET_OFFLINE_REPAIR_PERMISSION",
+        sequence: failure === "wrong sequence" ? data.sequence + 1 : data.sequence,
+        deadline: Date.now() + (failure === "expired" ? -1 : failure === "future" ? 60_000 : 29_000) }, failure === "foreign client" ? { source: other } : {});
+    });
+    const pending = env.send(repairRequest(env)); await vi.advanceTimersByTimeAsync(5001); await pending;
+    expect(repairResult(env)).toMatchObject({ status: "unavailable", reason: "access-required" }); expectReadOnly(env);
+  });
+  it("cancels a stalled fetch and rejects duplicate operations without later writes", async () => {
+    const env = environment(); await env.lifetime("install"); await env.lifetime("activate");
+    const cache = env.caches.stores.get(env.registration.cacheName); cache.entries.delete(ORIGIN + "/planet/en/");
+    clearReadinessEffects(env); permitRepairs(env);
+    let started, finish; const begun = new Promise(resolve => { started = resolve; });
+    env.worker.fetch.mockImplementation(() => { started(); return new Promise(resolve => { finish = resolve; }); });
+    const pending = env.send(repairRequest(env)); await begun;
+    await env.send(repairRequest(env, { requestId: "duplicate" }));
+    expect(repairResult(env)).toMatchObject({ status: "unavailable", reason: "busy" });
+    await env.send(readinessRequest(env));
+    expect(env.client.postMessage.mock.calls.at(-1)[0]).toMatchObject({ status: "unavailable", reason: "busy" });
+    await env.send(repairRequest(env, { type: "PLANET_CANCEL_OFFLINE_REPAIR", requestId: "wrong" }));
+    expect(env.worker.fetch.mock.calls[0][0].signal.aborted).toBe(false);
+    await env.send(repairRequest(env, { type: "PLANET_CANCEL_OFFLINE_REPAIR" })); await pending;
+    expect(repairResult(env)).toMatchObject({ status: "unavailable", reason: "cancelled" });
+    expect(env.worker.fetch.mock.calls[0][0].signal.aborted).toBe(true);
+    finish(new Response(env.bodies.get("/planet/en/"), { headers: { "Content-Type": "text/html" } })); await Promise.resolve();
+    expect(cache.put).not.toHaveBeenCalled();
+  });
+  it("checks permission again after network completion before writing", async () => {
+    const env = environment(); await env.lifetime("install"); await env.lifetime("activate");
+    const cache = env.caches.stores.get(env.registration.cacheName); cache.entries.delete(ORIGIN + "/planet/en/");
+    let valid = true; clearReadinessEffects(env); permitRepairs(env, () => valid ? Date.now() + 29_000 : 0);
+    const fetch = env.worker.fetch.getMockImplementation();
+    env.worker.fetch.mockImplementation(async request => { const response = await fetch(request); valid = false; return response; });
+    await env.send(repairRequest(env));
+    expect(repairResult(env)).toMatchObject({ status: "unavailable", reason: "access-required" }); expect(cache.put).not.toHaveBeenCalled();
+  });
+  it("keeps an uncancellable pending write serialized and does not claim it was undone", async () => {
+    const env = environment(); await env.lifetime("install"); await env.lifetime("activate");
+    const cache = env.caches.stores.get(env.registration.cacheName), put = cache.put.getMockImplementation();
+    cache.entries.delete(ORIGIN + "/planet/en/"); clearReadinessEffects(env); permitRepairs(env);
+    let entered, finish; const started = new Promise(resolve => { entered = resolve; });
+    cache.put.mockImplementation(async (url, response) => { entered(); await new Promise(resolve => { finish = resolve; }); await put(url, response); });
+    const pending = env.send(repairRequest(env)); await started;
+    await env.send(repairRequest(env, { type: "PLANET_CANCEL_OFFLINE_REPAIR" })); await pending;
+    expect(repairResult(env)).toMatchObject({ status: "unavailable", reason: "cancelled" });
+    expect(repairResult(env)).not.toHaveProperty("repairedFiles");
+    await env.send(repairRequest(env, { requestId: "during-pending-write" }));
+    expect(repairResult(env)).toMatchObject({ status: "unavailable", reason: "busy" });
+    finish(); await vi.waitFor(() => expect(cache.entries.has(ORIGIN + "/planet/en/")).toBe(true));
+    await env.send(readinessRequest(env));
+    expect(env.client.postMessage.mock.calls.at(-1)[0]).toMatchObject({ status: "complete" });
+  });
+  it("renews a live permit during a slow intact-file scan without downloading", async () => {
+    vi.useFakeTimers(); vi.setSystemTime(1_800_000_000_000);
+    const env = environment(); await env.lifetime("install"); await env.lifetime("activate");
+    const cache = env.caches.stores.get(env.registration.cacheName), match = cache.match.getMockImplementation();
+    let advanced = false;
+    cache.match.mockImplementation(async request => {
+      const response = await match(request);
+      if (!advanced && absolute(request).endsWith("app-a.js")) { advanced = true; vi.setSystemTime(Date.now() + 26_000); }
+      return response;
+    });
+    clearReadinessEffects(env); permitRepairs(env); await env.send(repairRequest(env));
+    expect(repairResult(env)).toMatchObject({ status: "complete", repairedFiles: 0 });
+    expect(env.client.postMessage.mock.calls.filter(([data]) => data.type === "PLANET_OFFLINE_REPAIR_PERMISSION_REQUEST").length).toBe(4);
+    expect(env.worker.fetch).not.toHaveBeenCalled(); expect(vi.getTimerCount()).toBe(0);
+  });
+  it("aborts a download when another valid action selects rollback", async () => {
+    const { current: env, rollback } = await rollbackFixture();
+    const cache = env.caches.stores.get(env.registration.cacheName); cache.entries.delete(ORIGIN + "/planet/en/");
+    clearReadinessEffects(env); permitRepairs(env);
+    let started; const begun = new Promise(resolve => { started = resolve; });
+    env.worker.fetch.mockImplementation(() => { started(); return new Promise(() => undefined); });
+    const pending = env.send(repairRequest(env)); await begun; await rollback(); await pending;
+    expect(repairResult(env)).toMatchObject({ status: "unavailable", reason: "cancelled" }); expect(cache.put.mock.calls.some(([url]) => url.endsWith("/en/"))).toBe(false);
+    expect(env.worker.fetch.mock.calls[0][0].signal.aborted).toBe(true);
+  });
+  it("refuses a damaged persisted rollback generation after restart rather than reconstructing its selection", async () => {
+    const { current, prior, caches, rollback } = await rollbackFixture(); await rollback();
+    caches.stores.get(prior.registration.cacheName).entries.delete(ORIGIN + "/planet/en/");
+    const env = environment(current, caches); clearReadinessEffects(env); permitRepairs(env);
+    await env.send(repairRequest(env, { activeBuildId: prior.config.buildId }));
+    expect(repairResult(env)).toMatchObject({ status: "unavailable", reason: "worker-changed" }); expectReadOnly(env);
+  });
+  it.each(["origin", "source", "extra URL", "engine"])("rejects hostile repair request %s without network", async failure => {
+    const env = environment(); await env.lifetime("install"); await env.lifetime("activate"); clearReadinessEffects(env);
+    const data = repairRequest(env, failure === "extra URL" ? { url: "https://other.invalid/file" } : failure === "engine" ? { engineBuildId: "b".repeat(64) } : {});
+    await env.send(data, failure === "origin" ? { origin: "https://other.invalid" } : failure === "source" ? { source: { ...env.client, id: "unknown" } } : {});
+    expect(env.client.postMessage).not.toHaveBeenCalled(); expectReadOnly(env);
+  });
+});
 function clearReadinessEffects(env) {
   for (const mock of [env.worker.fetch, env.worker.skipWaiting, env.worker.clients.claim, env.caches.open, env.caches.delete, env.caches.match]) mock.mockClear();
   for (const cache of env.caches.stores.values()) { cache.put.mockClear(); cache.delete.mockClear(); }

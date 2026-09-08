@@ -1,4 +1,4 @@
-import { useEffect, useId, useMemo, useRef, useSyncExternalStore, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useId, useMemo, useRef, useSyncExternalStore, type ReactNode } from "react";
 import { useInterfaceLanguage } from "../planet/localization";
 import { usePlatformSnapshot } from "../platform/PlatformServices";
 import type { PlatformSnapshot } from "../platform/ports";
@@ -10,6 +10,10 @@ import { planetAccountCopy } from "./accountCopy";
 import { RecentHistoryProvider } from "../planet/RecentHistory";
 import { createWebRecentHistory } from "../platform/adapters/web/WebRecentHistory";
 import { ProductNoticeHost, ProductNoticeSlot } from "../host/ProductNoticeHost";
+import type { PwaOfflineRepairAccess } from "./registerPwaWorker";
+
+const RepairAccess = createContext<PwaOfflineRepairAccess | null>(null);
+export const usePwaOfflineRepairAccess = () => useContext(RepairAccess);
 
 type AuthorizedGrant = Extract<WebLicenseResult, { status: "authorized" }>;
 type AccessMode = "online" | "offline";
@@ -118,6 +122,13 @@ export function createPwaAccessController(client: WebLicenseClient | null) {
     }
   }
   return Object.freeze({
+    // Reuse the same clock high-water and verified-grant policy as rendering.
+    // This capability controls an explicit public-cache operation, not access.
+    getDeadline() {
+      if (!running) return null;
+      const deadline = pwaAccessDeadline(snapshot.grant, environmentMode(environment), now());
+      return deadline === null ? null : deadline * 1000;
+    },
     getSnapshot: () => snapshot,
     getServerSnapshot,
     subscribe(listener: () => void) { listeners.add(listener); return () => { listeners.delete(listener); }; },
@@ -131,7 +142,8 @@ export function createPwaAccessController(client: WebLicenseClient | null) {
       return Promise.resolve();
     },
     refresh,
-    stop() { running = false; ++generation; pending?.abort(); pending = null; clearTimeout(timer); timer = undefined; },
+    stop() { running = false; ++generation; pending?.abort(); pending = null; clearTimeout(timer); timer = undefined;
+      if (snapshot.grant) for (const listener of [...listeners]) listener(); },
   });
 }
 
@@ -201,7 +213,7 @@ export default function PwaAccessBoundary({ client, children, bootstrapStatus, o
         {connectivityNotice}
       </div>
     }>
-      {authorized && recentStore ? <RecentHistoryProvider key="experience" store={recentStore}><div className="pwa-access__content" data-pwa-authorized="">{children}</div></RecentHistoryProvider> : null}
+      {authorized && recentStore ? <RepairAccess.Provider key="experience" value={controller}><RecentHistoryProvider store={recentStore}><div className="pwa-access__content" data-pwa-authorized="">{children}</div></RecentHistoryProvider></RepairAccess.Provider> : null}
       {!authorized ? (
         <main key="access" className="pwa-access app-error" aria-labelledby={headingId} data-pwa-access-state={checking ? "checking" : "closed"}>
           <InterfaceLanguageControl />

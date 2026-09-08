@@ -1,0 +1,51 @@
+@media (max-width: 980px) {
+  .native-planet-app .atlas-experience-surface .atlas-country-sheet-toggle {
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  .native-planet-app .atlas-experience-surface .atlas-country-presentation {
+    transition: height 180ms cubic-bezier(0.22, 1, 0.36, 1), max-height 180ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .native-planet-app .atlas-experience-surface .atlas-country-presentation[data-atlas-sheet-holding="true"] {
+    height: var(--atlas-sheet-drag-height) !important;
+    max-height: var(--atlas-sheet-drag-height) !important;
+    transition: none !important;
+  }
+
+  .native-planet-app .atlas-experience-surface .atlas-country-presentation[data-atlas-sheet-dragging="true"] {
+    height: min(var(--atlas-sheet-drag-height), var(--product-country-room, 100dvh)) !important;
+    max-height: min(var(--atlas-sheet-drag-height), var(--product-country-room, 100dvh)) !important;
+  }
+
+  /* Dragging shares the expanded notice reservation, while the same live
+     measured notice height still keeps the header below the global controls. */
+  .native-planet-app [data-product-notice-space="occupied"] .atlas-experience-surface[data-atlas-view="immersive"][data-atlas-sheet-dragging="true"] {
+    --product-country-room: max(64px, calc(100dvh - var(--atlas-globe-rail-top) - var(--product-notice-bottom-space) - 12px));
+  }
+
+  .native-planet-app .atlas-experience-surface[data-atlas-sheet-dragging="true"] .globe-controls {
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .native-planet-app .atlas-experience-surface .atlas-country-presentation[data-atlas-sheet-dragging="true"] .atlas-country-sheet-toggle {
+    height: auto;
+    min-height: 64px;
+    border-radius: 14px 14px 0 0;
+  }
+
+  .native-planet-app .atlas-experience-surface .atlas-country-presentation[data-atlas-sheet-dragging="true"] .atlas-country-sheet-content {
+    height: calc(100% - 64px);
+    visibility: visible;
+    pointer-events: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .native-planet-app .atlas-experience-surface .atlas-country-presentation {
+    transition: none !important;
+  }
+}

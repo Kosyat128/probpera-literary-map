@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "actualTouchCapabilities": {
+    "hasTouch": true,
+    "isMobile": true,
+    "reducedMotion": "reduce"
+  },
+  "snapHeights": {
+    "half": 388.234375,
+    "expanded": 590.796875,
+    "collapsed": 142
+  },
+  "drags": [
+    {
+      "from": "collapsed",
+      "fromHeight": 142,
+      "previewHeights": [
+        215.859375,
+        302.046875,
+        388.234375
+      ],
+      "bottoms": [
+        844,
+        844,
+        844
+      ],
+      "semanticStatesDuringDrag": [
+        "collapsed"
+      ],
+      "dragging": true
+    },
+    {
+      "from": "half",
+      "fromHeight": 388.234375,
+      "previewHeights": [
+        449,
+        519.890625,
+        590.796875
+      ],
+      "bottoms": [
+        844,
+        844,
+        844
+      ],
+      "semanticStatesDuringDrag": [
+        "half"
+      ],
+      "dragging": true
+    },
+    {
+      "from": "expanded",
+      "fromHeight": 590.796875,
+      "previewHeights": [
+        530.015625,
+        459.125,
+        388.234375
+      ],
+      "bottoms": [
+        844,
+        844,
+        844
+      ],
+      "semanticStatesDuringDrag": [
+        "expanded"
+      ],
+      "dragging": true
+    },
+    {
+      "from": "half",
+      "fromHeight": 388.234375,
+      "previewHeights": [
+        314.359375,
+        228.171875,
+        142
+      ],
+      "bottoms": [
+        844,
+        844,
+        844
+      ],
+      "semanticStatesDuringDrag": [
+        "half"
+      ],
+      "dragging": true
+    }
+  ],
+  "realContentScroll": {
+    "before": 0,
+    "after": 50,
+    "sheetHeightBefore": 590.796875,
+    "sheetHeightAfter": 590.796875,
+    "semanticState": "expanded"
+  },
+  "inputEvidence": {
+    "trustedPointerEvents": 72,
+    "untrustedEvents": 0,
+    "eventTypes": [
+      "pointermove",
+      "pointerdown",
+      "pointerup",
+      "lostpointercapture",
+      "click",
+      "pointercancel"
+    ],
+    "keyboardEnterAndSpace": true
+  },
+  "cancellation": {
+    "pointerCancelRestoredState": true,
+    "orientationRestoredState": true,
+    "cancelledPreviewCleared": true,
+    "landscapePreviewCleared": true,
+    "landscapeBounds": {
+      "x": 0,
+      "y": 210.609375,
+      "width": 844,
+      "height": 179.390625,
+      "top": 210.609375,
+      "right": 844,
+      "bottom": 390,
+      "left": 0
+    }
+  },
+  "identity": {
+    "country": "russia",
+    "writer": "dostoevsky",
+    "locale": "en",
+    "sameCanvasRendererCameraScene": true,
+    "originalPortraitPose": {
+      "position": [
+        -0.33798,
+        3.91785,
+        -2.08296
+      ],
+      "quaternion": [
+        0.04119,
+        0.85577,
+        0.51108,
+        -0.06898
+      ],
+      "zoom": 1
+    }
+  },
+  "missingResources": [],
+  "errors": [],
+  "limitations": [
+    "Source/browser touch evidence with injected native OS plugins, not a physical Android/iOS device or installed native/PWA artifact.",
+    "No velocity fling rule, every platform/viewport or complete S07 acceptance claim.",
+    "The existing RU content-language marker and English editorial-review placeholders remain; this slice does not accept global bilingual content."
+  ]
+}

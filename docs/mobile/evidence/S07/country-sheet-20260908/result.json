@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T07:59:35.019Z",
+  "stage": "S07",
+  "status": "SELECTED_WORKING_VALIDATION_PASSED",
+  "sourceCheckpointBeforeChanges": "c39300d24745356b9698460b9536f8d5ec34f2fe",
+  "problem": "The existing compact country handle only cycled states by click; direct touch dragging was absent.",
+  "implemented": [
+    "Handle-only pointer drag follows actual CSS heights through one rAF and commits the existing collapsed/half/expanded reducer state.",
+    "Tap and keyboard keep existing semantics; content scroll stays separate; cancellation removes capture, listeners and preview on viewport/native activity/country changes.",
+    "Reduced motion, interrupted transitions and live PWA notice room are respected without adding a globe, Canvas, renderer, camera or data store."
+  ],
+  "requirements": [
+    "S07.UX-002",
+    "S07.A11Y-005",
+    "S07.A11Y-004",
+    "S07.PLATFORM-007"
+  ],
+  "units": {
+    "passed": 6,
+    "failed": 0,
+    "report": "unit/results.json"
+  },
+  "static": {
+    "report": "static/static-checks.json",
+    "unchanged": true,
+    "sharedWith": "S03 offline repair",
+    "executions": 1
+  },
+  "browser": {
+    "report": "a1/result.json",
+    "sha256": "ea4dffb19173b6a10cb5f652e6702fd09810b97f8220b379597abc4f16bb8fd5",
+    "passed": 2,
+    "failed": 0,
+    "sourceFiles": 971,
+    "unchanged": true,
+    "realTouchEvents": true,
+    "nativePluginsInjected": true,
+    "physicalDevice": false
+  },
+  "rootVisualReview": {
+    "images": [
+      "a1/case-1/native-country-sheet-expanded-ru-screenshot.png",
+      "a1/case-2/native-country-sheet-landscape-en-screenshot.png"
+    ],
+    "observation": "Actual RU expanded sheet and EN landscape retain the globe and visible toolbar. Existing archive content-language indicator and editorial holds do not establish bilingual content acceptance."
+  },
+  "copied": [
+    {
+      "path": "docs/mobile/evidence/S07/country-sheet-20260908/static/static-checks.json",
+      "bytes": 5507,
+      "sha256": "33cf148832a618b9f913e2b8c01fca39e2c8fd4974409a81cafee8759ec2a02f"
+    },
+    {
+      "path": "docs/mobile/evidence/S07/country-sheet-20260908/static/typecheck.json",
+      "bytes": 348,
+      "sha256": "115bac96cbc2b71f53989dfce2e1351efff8681a4ab092ad44cd28d7e3302cc0"
+    },
+    {
+      "path": "docs/mobile/evidence/S07/country-sheet-20260908/static/platform-boundaries.json",
+      "bytes": 2008,
+      "sha256": "2332019681dcfd1a8583976a815c7dd260660d1ead1987cd814c40a0bb48a478"
+    },
+    {
+      "path": "docs/mobile/evidence/S07/country-sheet-20260908/unit/results.json",
+      "bytes": 2743,
+      "sha256": "9c5f9ae3a5dda1136f20d2d47733f6e6e3b0b85dfee1cadc69645f66bc1bcea4"
+    }
+  ],
+  "newNativeArtifactProduced": false,
+  "newPwaArtifactProduced": false,
+  "fullStageAccepted": false,
+  "releaseReady": false,
+  "limitations": [
+    "Two focused Chrome touch cases with reduced motion, not installed Android/iOS touch or the full suite.",
+    "PWA capped geometry has source review; the new repair build/browser run is still pending.",
+    "Planetka, child-mode policy, commerce, factual bilingual editorial approval, physical devices and later stage gates remain open."
+  ]
+}

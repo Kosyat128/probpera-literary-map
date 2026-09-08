@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T07:59:35.019Z",
+  "stage": "S03",
+  "status": "SOURCE_AND_UNIT_VALIDATED_BROWSER_PENDING",
+  "unitEvidence": "unit-result.json",
+  "unitEvidenceSha256": "7f780594a6e556491ad629b44d552e52299b45a6b52e48ed9803878da02d92f8",
+  "combinedUnitPasses": 306,
+  "combinedRunNote": "84 unchanged controller passes retained from a1b; affected worker188 and boundary34 pass in a2. Initial failures are retained.",
+  "sharedStaticEvidence": "docs/mobile/evidence/S07/country-sheet-20260908/static/static-checks.json",
+  "sharedStaticSha256": "33cf148832a618b9f913e2b8c01fca39e2c8fd4974409a81cafee8759ec2a02f",
+  "currentSources": [
+    {
+      "path": "src/pwa/serviceWorkerRuntime.js",
+      "sha256": "7093d4c17cff9794c35b0d17b905d29f2186ef98eccda5ed4bba5509991c8a31"
+    },
+    {
+      "path": "src/pwa/serviceWorkerRuntime.test.mjs",
+      "sha256": "9d7527e470b6840eb9c19705db2994aff890f92956ab561100c1655606ce4a98"
+    },
+    {
+      "path": "src/pwa/registerPwaWorker.ts",
+      "sha256": "d6f99e7b5add8af9b88231bdaabbe4556e2005d6f893b654ea1ab0ec7ce7e021"
+    },
+    {
+      "path": "src/pwa/registerPwaWorker.test.ts",
+      "sha256": "35955937c6dc968828dcdd85b5bfe3049346599c9ea6e4162f8635a5b3a7bf78"
+    },
+    {
+      "path": "src/pwa/PwaAccessBoundary.tsx",
+      "sha256": "5da9ec472f3bd16b1493cb44601bf1e3f74d09245e05ba8446cf9d280bee6b80"
+    },
+    {
+      "path": "src/pwa/PwaAccessBoundary.test.tsx",
+      "sha256": "6bf02d8b7af83b06dc57e7129408b003ccf474cac31638d74107b522b2238910"
+    },
+    {
+      "path": "src/pwa/PwaDevicePanel.tsx",
+      "sha256": "8916f3f157740e93e3b78270ee63477ede150d645518a37be9dbc4c8cb381d1f"
+    },
+    {
+      "path": "tests/pwa/controlled-pwa.spec.mjs",
+      "sha256": "960023a90847d80fabe1f7d448d9587e162e5677305b3a25fa468f7dfe375afe"
+    }
+  ],
+  "implemented": [
+    "Explicit RU/EN restore and cancel action in the existing Help panel.",
+    "Current access controller, client and generation binding, expiring operation permission and SHA/size/MIME verification.",
+    "Only missing/damaged immutable base files are downloaded. Success requires a full cache check; partial writes and missing trusted manifests fail truthfully.",
+    "New readiness check clears old restore success. The worker neither grants nor extends paid access."
+  ],
+  "copyReviewStatus": "draft",
+  "browserPrepared": true,
+  "browserRun": false,
+  "pwaBuilt": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

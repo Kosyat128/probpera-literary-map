@@ -188,7 +188,7 @@ test("cold offline RU and EN launch preserve country and load first-use search",
   } finally { await context.setOffline(false); }
 });
 
-test("device preparation checks the real offline cache and keeps simulated browser decisions truthful", async ({ page, context }, testInfo) => {
+test("device preparation restores real offline bytes and keeps simulated browser decisions truthful", async ({ page, context }, testInfo) => {
   // Only installation/persistence decisions are simulated. The signed access,
   // app, globe, service worker, manifest, cached bytes and hash checks are real.
   // These disposable browser fixtures never invoke an OS installation prompt.
@@ -218,7 +218,13 @@ test("device preparation checks the real offline cache and keeps simulated brows
     };
     navigator.serviceWorker.addEventListener("message", event => {
       const data = event.data;
-      if (event.source !== navigator.serviceWorker.controller || data?.type !== "PLANET_OFFLINE_READINESS_RESULT") return;
+      if (event.source !== navigator.serviceWorker.controller) return;
+      if (data?.type === "PLANET_OFFLINE_REPAIR_RESULT") {
+        (qa.repairs ??= []).push({ status: data.status, engineBuildId: data.engineBuildId, activeBuildId: data.activeBuildId,
+          ...(data.status === "complete" ? { fileCount: data.fileCount, bytes: data.bytes, repairedFiles: data.repairedFiles, repairedBytes: data.repairedBytes } : { reason: data.reason }) });
+        return;
+      }
+      if (data?.type !== "PLANET_OFFLINE_READINESS_RESULT") return;
       qa.readiness.push({ status: data.status, engineBuildId: data.engineBuildId, activeBuildId: data.activeBuildId,
         ...(data.status === "complete" ? { fileCount: data.fileCount, bytes: data.bytes } : {}) });
     });
@@ -237,9 +243,12 @@ test("device preparation checks the real offline cache and keeps simulated brows
   // while offline, and always call the original API with its original receiver.
   await worker.evaluate(() => {
     const original = globalThis.fetch;
-    globalThis.__pwaDeviceFetchQa = { original, armed: false, count: 0 };
+    globalThis.__pwaDeviceFetchQa = { original, armed: false, count: 0, urls: [] };
     globalThis.fetch = function (...args) {
-      if (globalThis.__pwaDeviceFetchQa.armed) globalThis.__pwaDeviceFetchQa.count++;
+      if (globalThis.__pwaDeviceFetchQa.armed) {
+        globalThis.__pwaDeviceFetchQa.count++;
+        globalThis.__pwaDeviceFetchQa.urls.push(typeof args[0] === "string" ? args[0] : args[0].url);
+      }
       return Reflect.apply(original, this, args);
     };
   });
@@ -247,7 +256,7 @@ test("device preparation checks the real offline cache and keeps simulated brows
   let restored = false;
   const evidence = { localQaOnly: true, buildId: marker.manifest.buildId, ownedCacheEntry: target,
     simulatedApis: ["beforeinstallprompt.prompt/userChoice", "StorageManager.persist/persisted"],
-    actualOsInstallation: false, checks: [], screenshots: [], headerBounds: [] };
+    actualOsInstallation: false, checks: [], repairs: [], screenshots: [], headerBounds: [], coldOffline: [] };
   try {
     // Offer before opening Help; its later mount must not lose the deferred event.
     await page.evaluate(() => window.__pwaDeviceQa.offerPrompt());
@@ -336,12 +345,12 @@ test("device preparation checks the real offline cache and keeps simulated brows
       const hash = [...new Uint8Array(await crypto.subtle.digest("SHA-256", await response.clone().arrayBuffer()))]
         .map(value => value.toString(16).padStart(2, "0")).join("");
       if (hash !== target.sha256) throw new Error("The baseline cached bytes do not match the manifest");
-      return { cacheName, url: target.url, response, hash };
+      return { cacheName, url: target.url, hash };
     }, { cacheName, target });
     expect(await backup.evaluate(async value => (await caches.open(value.cacheName)).delete(value.url))).toBe(true);
     await check("en", "incomplete");
     expect(await backup.evaluate(async value => Boolean(await caches.match(value.url, { cacheName: value.cacheName })))).toBe(false);
-    await expect(readiness).toHaveText("Some base files are missing or damaged. Connect to the internet and open the content you need before travelling.");
+    await expect(readiness).toHaveText("Some base files are missing or damaged. Connect to the internet and restore the offline files before travelling.");
     await screenshot("device-en-incomplete");
     await device.getByRole("button", { name: "Request persistent storage", exact: true }).click();
     await expect(device.getByRole("status").filter({ hasText: "The browser did not grant persistent storage." })).toBeVisible();
@@ -349,12 +358,32 @@ test("device preparation checks the real offline cache and keeps simulated brows
     await screenshot("device-en-simulated-persistence-denied");
     await locale("ru");
     await expect(readiness).toHaveAttribute("data-pwa-offline-readiness", "incomplete");
-    await expect(readiness).toHaveText("Часть базовых файлов отсутствует или повреждена. Подключитесь к сети и откройте нужные материалы перед поездкой.");
+    await expect(readiness).toHaveText("Часть базовых файлов отсутствует или повреждена. Подключитесь к сети и восстановите офлайн-файлы перед поездкой.");
     await expect(device.getByRole("status").filter({ hasText: "Браузер не разрешил постоянное хранение." })).toBeVisible();
     await stable("ru", "retained-incomplete-and-denied");
-    await backup.evaluate(async value => { await (await caches.open(value.cacheName)).put(value.url, value.response.clone()); });
+    // Restoration is a real product action through the real worker/network.
+    // QA only removes the exact known file; it never writes the repair bytes.
+    await context.setOffline(false);
+    await worker.evaluate(() => { globalThis.__pwaDeviceFetchQa.count = 0; globalThis.__pwaDeviceFetchQa.urls = []; globalThis.__pwaDeviceFetchQa.armed = true; });
+    await device.getByRole("button", { name: "Восстановить офлайн-файлы", exact: true }).click();
+    const repairStatus = device.locator("[data-pwa-offline-repair]");
+    await expect(repairStatus).toHaveAttribute("data-pwa-offline-repair", "complete", { timeout: 125_000 });
+    await expect(readiness).toHaveAttribute("data-pwa-offline-readiness", "complete");
+    const transfer = await worker.evaluate(() => { globalThis.__pwaDeviceFetchQa.armed = false;
+      return { networkAttempts: globalThis.__pwaDeviceFetchQa.count, urls: globalThis.__pwaDeviceFetchQa.urls }; });
+    expect(transfer).toEqual({ networkAttempts: 1, urls: [qaOrigin + target.url] });
+    const repaired = await page.evaluate(() => window.__pwaDeviceQa.repairs.at(-1));
+    expect(repaired).toEqual({ status: "complete", engineBuildId: marker.manifest.buildId, activeBuildId: marker.manifest.buildId,
+      fileCount: marker.manifest.files.length, bytes: marker.manifest.files.reduce((sum, file) => sum + file.bytes, 0), repairedFiles: 1, repairedBytes: target.bytes });
+    evidence.repairs.push({ locale: "ru", ...transfer, ...repaired });
     restored = true;
+    await stable("ru", "real-offline-repair-complete"); await screenshot("device-ru-repaired");
+    await locale("en");
+    await expect(repairStatus).toHaveText("Base files have been restored and passed a full check on this device.");
+    await stable("en", "repair-result-survives-locale"); await screenshot("device-en-repaired");
+    await locale("ru");
     await check("ru", "complete");
+    await expect(repairStatus).toHaveCount(0);
     const decisions = await page.evaluate(() => ({ prompts: window.__pwaDeviceQa.prompts, persistence: window.__pwaDeviceQa.persistence }));
     expect(decisions).toEqual({ prompts: [{ userActivation: true }], persistence: [{ userActivation: true }] });
     evidence.simulatedDecisions = decisions;
@@ -365,22 +394,38 @@ test("device preparation checks the real offline cache and keeps simulated brows
     await expect(device.getByRole("status").filter({ hasText: "Запрос принят. Дождитесь завершения установки браузером." })).toBeVisible();
     await expect(readiness).toHaveAttribute("data-pwa-offline-readiness", "complete");
     await nodes.dispose();
+    // Reload creates one new document/scene per launch. Locale changes within
+    // each document still retain its canonical Canvas; no cross-reload identity
+    // claim is made. Both actual locale shells must launch without any network.
+    await context.setOffline(true);
+    for (const language of ["ru", "en"]) {
+      const destination = new URL(page.url()); destination.pathname = "/planet/" + language + "/";
+      await page.goto(destination.href, { waitUntil: "domcontentloaded" });
+      await expect(page.locator("html")).toHaveAttribute("lang", language);
+      await expect(page.locator("[data-pwa-authorized]")).toBeVisible();
+      await expect(page.locator("#atlas canvas")).toHaveCount(1);
+      await expect.poll(() => page.evaluate(() => window.__literaryPlanetQaScenes?.().filter(item => document.querySelector("#atlas")?.contains(item.canvas)).length)).toBe(1);
+      const cold = await page.evaluate(() => ({ language: document.documentElement.lang,
+        country: new URL(location.href).searchParams.get("country"), canvasCount: document.querySelectorAll("canvas").length,
+        savedAccess: document.querySelector("[data-pwa-access-verification]")?.getAttribute("data-pwa-access-verification") }));
+      expect(cold).toMatchObject({ language, country: "russia", canvasCount: 1, savedAccess: "saved" });
+      evidence.coldOffline.push(cold); await screenshot("device-repaired-cold-" + language);
+    }
   } finally {
     if (backup) {
-      if (!restored) await backup.evaluate(async value => { await (await caches.open(value.cacheName)).put(value.url, value.response.clone()); });
-      evidence.restoredSha256 = await backup.evaluate(async value => {
-        const response = await caches.match(value.url, { cacheName: value.cacheName });
+      evidence.restoredSha256 = await page.evaluate(async ({ cacheName, target }) => {
+        const response = await caches.match(target.url, { cacheName });
         if (!response) return null;
         return [...new Uint8Array(await crypto.subtle.digest("SHA-256", await response.arrayBuffer()))]
           .map(item => item.toString(16).padStart(2, "0")).join("");
-      });
-      await backup.dispose();
+      }, { cacheName, target });
+      await backup.dispose().catch(() => undefined);
     }
     await worker.evaluate(() => { globalThis.fetch = globalThis.__pwaDeviceFetchQa.original; delete globalThis.__pwaDeviceFetchQa; });
     await context.setOffline(false);
-    await scene.dispose();
+    await scene.dispose().catch(() => undefined);
     await testInfo.attach("device-preparation-evidence", { body: JSON.stringify(evidence, null, 2), contentType: "application/json" });
-    if (backup) expect(evidence.restoredSha256).toBe(target.sha256);
+    if (restored) expect(evidence.restoredSha256).toBe(target.sha256);
   }
 });
 

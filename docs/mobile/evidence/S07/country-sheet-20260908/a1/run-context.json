@@ -1,0 +1,36 @@
+{
+  "runId": "country-sheet-20260908-a1",
+  "sourceCommit": "c39300d24745356b9698460b9536f8d5ec34f2fe",
+  "selectedScenarios": 2,
+  "grep": "mobile country sheet",
+  "sourceFiles": 971,
+  "previousSnapshotFiles": 967,
+  "addedSourcePaths": [
+    "src/atlas/atlasSheetGesture.css",
+    "src/atlas/atlasSheetGesture.test.ts",
+    "src/atlas/atlasSheetGesture.ts",
+    "src/atlas/useAtlasSheetGesture.ts"
+  ],
+  "changedFromS04A2": [
+    "src/App.tsx",
+    "src/pwa/PwaAccessBoundary.tsx",
+    "src/pwa/PwaDevicePanel.tsx",
+    "src/pwa/registerPwaWorker.ts",
+    "src/pwa/serviceWorkerRuntime.js",
+    "tests/host/native-planet.spec.mjs"
+  ],
+  "nativeSelectionSha256": "c1f42e5c8d8afd58102d24faa434a1b01a77129f97bc11ac59fe8ce5e4ca4268",
+  "touchFixture": {
+    "hasTouch": true,
+    "isMobile": true,
+    "reducedMotion": "reduce",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "input": "Chrome CDP real touch input, keyboard Enter/Space; no product state writes",
+    "physicalDevice": false
+  },
+  "scope": "S07 two focused touch cases; no prior browser suite replay or artifact build.",
+  "snapshotScope": "Historical967-source snapshot plus newly added runtime paths and focused S07 unit source; no historical unit-source expansion."
+}

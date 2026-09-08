@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T08:00:30.321Z",
+  "command": "node scripts/mobile/verify-state.mjs",
+  "firstRun": {
+    "pass": false,
+    "errors": [
+      "S07: unmet predecessor without documented parallel-safe work"
+    ],
+    "source": "Observed tool output; this record is an error/correction summary, not a raw transcript."
+  },
+  "cause": "S07 entry was documented in D077 and entry.json but its reference was missing from verificationCache.parallelSafeStages.",
+  "correction": "Register the existing bounded entry in the validator schema; no validator, accepted criterion or predecessor status changed.",
+  "stageAccepted": false,
+  "releaseReady": false
+}

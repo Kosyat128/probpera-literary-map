@@ -125,13 +125,14 @@ test.afterEach(async ({}, testInfo) => {
   }
 });
 
-async function open({ route = "/", language = "ru", viewport = { width: 1280, height: 800 }, reducedMotion = "reduce", safeArea, preferences = {} } = {}) {
-  const page = await browser.newPage({ viewport, reducedMotion });
+async function open({ route = "/", language = "ru", viewport = { width: 1280, height: 800 }, reducedMotion = "reduce", safeArea, preferences = {}, hasTouch = false, isMobile = false, observeSheetGesture = false } = {}) {
+  const page = await browser.newPage({ viewport, reducedMotion, hasTouch, isMobile });
   page.setDefaultTimeout(15_000);
   const errors = [], consoleErrors = [], externalRequests = [], missingResources = [];
   const preferenceMemory = new Map([["probpera-interface-language", language], ...Object.entries(preferences)]);
   const preferenceOperations = [];
-  const fixture = { page, errors, consoleErrors, externalRequests, missingResources, preferenceMemory, preferenceOperations };
+  const fixture = { page, errors, consoleErrors, externalRequests, missingResources, preferenceMemory, preferenceOperations,
+    browserCapabilities: { hasTouch, isMobile, reducedMotion } };
   activeFixtures.add(fixture);
   // Simulated OS persistence lives outside the document. Reload therefore tests
   // the real adapter's whitelist/readback and the real welcome initialization.
@@ -154,6 +155,25 @@ async function open({ route = "/", language = "ru", viewport = { width: 1280, he
     window.__nativePlanetVisibleHeroFrames = 0;
     window.__nativePlanetWelcomeFrames = { visible: 0, beforeRealSceneReady: 0, duringLaunch: 0, maxCanvasCount: 0 };
     window.__nativePlanetFocusTrace = [];
+    window.__nativePlanetSheetEvents = [];
+    window.__nativePlanetSheetMeasurements = [];
+    if (value.observeSheetGesture) {
+      let handlePointer = null;
+      for (const type of ["pointerdown", "pointermove", "pointerup", "pointercancel", "lostpointercapture", "click"]) {
+        document.addEventListener(type, event => {
+          const onHandle = event.target instanceof Element && Boolean(event.target.closest(".atlas-country-sheet-toggle"));
+          if (type === "pointerdown" && onHandle) handlePointer = event.pointerId;
+          if (!onHandle && event.pointerId !== handlePointer) return;
+          const sheet = document.querySelector(".atlas-country-presentation");
+          if (window.__nativePlanetSheetEvents.length < 200) window.__nativePlanetSheetEvents.push({
+            type, trusted: event.isTrusted, pointerType: event.pointerType, pointerId: event.pointerId,
+            clientX: event.clientX, clientY: event.clientY, at: performance.now(),
+            state: sheet?.getAttribute("data-atlas-sheet-state"), dragging: sheet?.getAttribute("data-atlas-sheet-dragging"),
+            bounds: sheet?.getBoundingClientRect().toJSON() });
+          if (type === "pointerup" || type === "pointercancel") handlePointer = null;
+        }, { capture: true, passive: true });
+      }
+    }
     const focusNode = element => {
       if (!(element instanceof Element)) return null;
       const rect = element.getBoundingClientRect();
@@ -203,7 +223,7 @@ async function open({ route = "/", language = "ru", viewport = { width: 1280, he
       requestAnimationFrame(observe);
     };
     requestAnimationFrame(observe);
-  }, { language });
+  }, { language, observeSheetGesture });
   await page.route("**/*", async request => {
     const url = new URL(request.request().url());
     if (url.origin !== origin) { externalRequests.push(url.href); await request.abort(); return; }
@@ -293,6 +313,8 @@ async function captureEvidence(fixture, testInfo, name, extra = {}) {
           action: document.activeElement?.getAttribute("data-atlas-action") },
         journeyRandomInput: window.__nativePlanetJourneyRandom ?? null,
         nativeLifecycleEvents: window.__nativePlanetHarness?.lifecycleEvents() ?? [],
+        countrySheetEvents: window.__nativePlanetSheetEvents ?? [],
+        countrySheetMeasurements: window.__nativePlanetSheetMeasurements ?? [],
         canvasCount: document.querySelectorAll("#atlas canvas").length,
         documentCanvasCount: document.querySelectorAll("canvas").length,
         native: describe(".native-planet-app, .native-planet-launch, .native-planet-panel"),
@@ -303,6 +325,7 @@ async function captureEvidence(fixture, testInfo, name, extra = {}) {
   } catch (error) { runtime = { diagnosticError: error.message }; }
   await testInfo.attach(name, { body: JSON.stringify({ ...sourceEvidence, ...extra, runtime,
     simulatedNativePreferences: Object.fromEntries(fixture.preferenceMemory), preferenceOperations: fixture.preferenceOperations,
+    browserCapabilities: fixture.browserCapabilities,
     errors: fixture.errors, consoleErrors: fixture.consoleErrors, externalRequests: fixture.externalRequests, missingResources: fixture.missingResources }), contentType: "application/json" });
   try {
     const screenshotPath = testInfo.outputPath(name + ".png");
@@ -458,6 +481,224 @@ test("native host background pauses the actual globe while the document stays vi
       selectedCountry: "russia", selectedWriter: "dostoevsky", locale: "en", reducedMotion: true,
       sameCanvasRendererCameraScene: true, nativeLifecycleFixture: "Two injected OS lifecycle cycles with real App/R3F behavior",
       batteryOrDeviceMeasurement: false });
+  } finally { await original.dispose(); }
+});
+
+const countrySheetSelector = '.atlas-country-presentation[data-atlas-country="russia"]';
+
+async function sheetMeasurement(page, phase) {
+  return page.evaluate(({ selector, phase }) => {
+    const sheet = document.querySelector(selector), handle = sheet.querySelector(".atlas-country-sheet-toggle");
+    const content = sheet.querySelector(".country-panel:not(.panel-loading)");
+    const result = { phase, state: sheet.getAttribute("data-atlas-sheet-state"),
+      dragging: sheet.getAttribute("data-atlas-sheet-dragging"), bounds: sheet.getBoundingClientRect().toJSON(),
+      handle: handle.getBoundingClientRect().toJSON(), inlineHeight: sheet.style.height, inlineMaxHeight: sheet.style.maxHeight,
+      previewHeight: sheet.style.getPropertyValue("--atlas-sheet-drag-height"),
+      content: content ? { bounds: content.getBoundingClientRect().toJSON(), scrollTop: content.scrollTop,
+        scrollHeight: content.scrollHeight, clientHeight: content.clientHeight } : null,
+      viewport: { width: innerWidth, height: innerHeight }, country: new URL(location.href).searchParams.get("country"),
+      writer: new URL(location.href).searchParams.get("writer"), language: document.documentElement.lang };
+    window.__nativePlanetSheetMeasurements.push(result);
+    return result;
+  }, { selector: countrySheetSelector, phase });
+}
+
+async function browserFrames(page, count = 2) {
+  await page.evaluate(async count => { for (let index = 0; index < count; index++) await new Promise(resolve => requestAnimationFrame(resolve)); }, count);
+}
+
+async function holdTouchStill(page) {
+  // A stationary finger for >120ms selects the nearest height, independently
+  // of device frame rate or the gesture's separate velocity/fling rule.
+  await page.evaluate(() => new Promise(resolve => {
+    const started = performance.now();
+    const tick = at => at - started >= 160 ? resolve() : requestAnimationFrame(tick);
+    requestAnimationFrame(tick);
+  }));
+}
+
+async function touchAt(session, type, point) {
+  await session.send("Input.dispatchTouchEvent", { type, touchPoints: point ? [{ x: point.x, y: point.y, id: 1, radiusX: 4, radiusY: 4, force: 1 }] : [] });
+}
+
+async function touchSheetTap(page, session) {
+  const before = await sheetMeasurement(page, "before-tap");
+  const expected = { collapsed: "half", half: "expanded", expanded: "collapsed" }[before.state];
+  expect(expected).toBeTruthy();
+  const point = { x: before.handle.x + before.handle.width / 2, y: before.handle.y + Math.min(32, before.handle.height / 2) };
+  await touchAt(session, "touchStart", point);
+  await touchAt(session, "touchEnd");
+  await expect(page.locator(countrySheetSelector)).toHaveAttribute("data-atlas-sheet-state", expected);
+  await browserFrames(page);
+  return sheetMeasurement(page, "after-tap");
+}
+
+async function touchSheetDrag(page, session, targetHeight, phase, { finish = true } = {}) {
+  const before = await sheetMeasurement(page, phase + "-before");
+  const point = { x: before.handle.x + before.handle.width / 2, y: before.handle.y + Math.min(32, before.handle.height / 2) };
+  const delta = before.bounds.height - targetHeight;
+  expect(Math.abs(delta)).toBeGreaterThan(20);
+  await touchAt(session, "touchStart", point);
+  const following = [];
+  for (const fraction of [0.3, 0.65, 1]) {
+    const next = { x: point.x, y: point.y + delta * fraction };
+    expect(next.y).toBeGreaterThan(0);
+    expect(next.y).toBeLessThan(page.viewportSize().height);
+    await touchAt(session, "touchMove", next);
+    await browserFrames(page);
+    const measured = await sheetMeasurement(page, phase + "-finger-" + fraction);
+    expect(measured.dragging).toBe("true");
+    expect(measured.state).toBe(before.state);
+    expect(Math.abs(measured.bounds.height - (before.bounds.height - delta * fraction))).toBeLessThanOrEqual(2);
+    expect(Math.abs(measured.bounds.bottom - before.bounds.bottom)).toBeLessThanOrEqual(2);
+    following.push(measured);
+  }
+  if (finish) {
+    await holdTouchStill(page);
+    await touchAt(session, "touchEnd");
+    await expect(page.locator(countrySheetSelector)).not.toHaveAttribute("data-atlas-sheet-dragging", "true");
+  }
+  return { before, following };
+}
+
+async function openTouchCountry() {
+  const safeArea = { top: 59, bottom: 34, left: 0, right: 0 };
+  const fixture = await open({ route: "/?country=russia&writer=dostoevsky#atlas", viewport: { width: 390, height: 844 },
+    reducedMotion: "reduce", safeArea, hasTouch: true, isMobile: true, observeSheetGesture: true });
+  expect(await fixture.page.evaluate(() => navigator.maxTouchPoints > 0 && matchMedia("(pointer: coarse)").matches)).toBe(true);
+  await showWriter(fixture.page);
+  await expect(fixture.page.locator("#atlas .literary-globe")).toHaveAttribute("data-globe-camera-phase", "idle");
+  return fixture;
+}
+
+test("mobile country sheet follows real touch, snaps in both directions and keeps content scrolling separate from the globe", async ({}, testInfo) => {
+  const fixture = await openTouchCountry();
+  const { page, safeAreaSession: session } = fixture;
+  const original = await captureScene(page);
+  try {
+    const pose = await settledCameraPose(original), sheet = page.locator(countrySheetSelector);
+    const snapHeights = {};
+    // Calibrate actual public UI states through ordinary touch taps; this also
+    // checks tap semantics without importing the gesture hook or its formulas.
+    for (let index = 0; index < 3; index++) {
+      const current = await sheetMeasurement(page, "tap-calibration-" + index);
+      snapHeights[current.state] = current.bounds.height;
+      await touchSheetTap(page, session);
+    }
+    expect(Object.keys(snapHeights).sort()).toEqual(["collapsed", "expanded", "half"]);
+    expect(snapHeights.collapsed).toBeLessThan(snapHeights.half);
+    expect(snapHeights.half).toBeLessThan(snapHeights.expanded);
+    for (let index = 0; await sheet.getAttribute("data-atlas-sheet-state") !== "collapsed"; index++) {
+      expect(index).toBeLessThan(3);
+      await touchSheetTap(page, session);
+    }
+    const drags = [];
+    for (const state of ["half", "expanded"]) {
+      drags.push(await touchSheetDrag(page, session, snapHeights[state], "drag-up-" + state));
+      await expect(sheet).toHaveAttribute("data-atlas-sheet-state", state);
+      await retained(page, original);
+      expect(await cameraPose(original)).toEqual(pose);
+    }
+    await evidence(fixture, testInfo, "native-country-sheet-expanded-ru", { snapHeights, drags, sameCanvasRendererCameraScene: true,
+      touchInput: "Chrome CDP touchStart/move/end with hasTouch+isMobile; not a physical native device" });
+
+    const beforeScroll = await sheetMeasurement(page, "before-content-touch-scroll");
+    expect(beforeScroll.content.scrollHeight).toBeGreaterThan(beforeScroll.content.clientHeight);
+    const content = beforeScroll.content.bounds;
+    const visibleBottom = Math.min(content.bottom, beforeScroll.bounds.bottom - 34);
+    const point = { x: content.x + content.width * 0.65, y: Math.max(content.y + 90, visibleBottom - 70) };
+    await touchAt(session, "touchStart", point);
+    for (const distance of [20, 40, 65]) { await touchAt(session, "touchMove", { x: point.x, y: point.y - distance }); await browserFrames(page); }
+    await holdTouchStill(page);
+    await touchAt(session, "touchEnd");
+    await expect.poll(() => sheet.locator(".country-panel:not(.panel-loading)").evaluate(element => element.scrollTop)).toBeGreaterThan(beforeScroll.content.scrollTop + 15);
+    const afterScroll = await sheetMeasurement(page, "after-content-touch-scroll");
+    expect(afterScroll.state).toBe("expanded");
+    expect(afterScroll.dragging).not.toBe("true");
+    expect(Math.abs(afterScroll.bounds.height - beforeScroll.bounds.height)).toBeLessThanOrEqual(1);
+    await retained(page, original);
+    expect(await cameraPose(original)).toEqual(pose);
+    for (const state of ["half", "collapsed"]) {
+      drags.push(await touchSheetDrag(page, session, snapHeights[state], "drag-down-" + state));
+      await expect(sheet).toHaveAttribute("data-atlas-sheet-state", state);
+    }
+    await expect(sheet.locator("#atlas-country-sheet-content")).toHaveAttribute("aria-hidden", "true");
+    await expect(sheet.locator("#atlas-country-sheet-content")).toHaveAttribute("inert", "");
+    await retained(page, original);
+    expect(await cameraPose(original)).toEqual(pose);
+    expect(new URL(page.url()).searchParams.get("writer")).toBe("dostoevsky");
+    await evidence(fixture, testInfo, "native-country-sheet-return-collapsed", { snapHeights, drags, beforeScroll, afterScroll,
+      actualContentScrolled: true, selectedCountry: "russia", selectedWriter: "dostoevsky", unchangedCameraPose: pose });
+  } finally { await original.dispose(); }
+});
+
+test("mobile country sheet preserves keyboard, touch cancellation, locale and orientation without replacing the scene", async ({}, testInfo) => {
+  const fixture = await openTouchCountry();
+  const { page, safeAreaSession: session } = fixture;
+  const original = await captureScene(page);
+  try {
+    const sheet = page.locator(countrySheetSelector), handle = sheet.locator(".atlas-country-sheet-toggle");
+    const pose = await settledCameraPose(original);
+    for (let index = 0; await sheet.getAttribute("data-atlas-sheet-state") !== "collapsed"; index++) {
+      expect(index).toBeLessThan(3);
+      await touchSheetTap(page, session);
+    }
+    await handle.focus();
+    await page.keyboard.press("Enter");
+    await expect(sheet).toHaveAttribute("data-atlas-sheet-state", "half");
+    await expect(handle).toBeFocused();
+    await page.keyboard.press("Space");
+    await expect(sheet).toHaveAttribute("data-atlas-sheet-state", "expanded");
+    await expect(handle).toBeFocused();
+    await touchSheetTap(page, session);
+    await touchSheetTap(page, session);
+    const half = await sheetMeasurement(page, "before-cancel");
+    expect(half.state).toBe("half");
+    const cancelledDrag = await touchSheetDrag(page, session, half.bounds.height + 60, "cancelled-drag", { finish: false });
+    await touchAt(session, "touchCancel");
+    await expect(sheet).not.toHaveAttribute("data-atlas-sheet-dragging", "true");
+    await expect(sheet).toHaveAttribute("data-atlas-sheet-state", "half");
+    const cancelled = await sheetMeasurement(page, "after-touch-cancel");
+    expect(Math.abs(cancelled.bounds.height - half.bounds.height)).toBeLessThanOrEqual(2);
+    expect(cancelled.inlineHeight).toBe("");
+    expect(cancelled.inlineMaxHeight).toBe("");
+    expect(cancelled.previewHeight).toBe("");
+    await retained(page, original);
+    expect(await cameraPose(original)).toEqual(pose);
+
+    await page.locator(".native-planet-app .interface-language-control button").filter({ hasText: "EN" }).tap();
+    await expect(page.locator("html")).toHaveAttribute("lang", "en");
+    await expect(handle).toHaveAccessibleName("Expand archive fully");
+    await expect(sheet).toHaveAttribute("data-atlas-sheet-state", "half");
+    await retained(page, original);
+    expect(await cameraPose(original)).toEqual(pose);
+    const interrupted = await touchSheetDrag(page, session, half.bounds.height + 60, "orientation-interrupted-drag", { finish: false });
+    await session.send("Emulation.setSafeAreaInsetsOverride", { insets: { top: 0, bottom: 21, left: 44, right: 44 } });
+    await page.setViewportSize({ width: 844, height: 390 });
+    await expect(sheet).not.toHaveAttribute("data-atlas-sheet-dragging", "true");
+    await touchAt(session, "touchCancel");
+    await expect(sheet).toHaveAttribute("data-atlas-sheet-state", "half");
+    const landscape = await sheetMeasurement(page, "after-landscape-resize");
+    expect(landscape.inlineHeight).toBe("");
+    expect(landscape.inlineMaxHeight).toBe("");
+    expect(landscape.previewHeight).toBe("");
+    expect(landscape.bounds.bottom).toBeLessThanOrEqual(390);
+    expect(landscape.handle.y).toBeGreaterThanOrEqual(0);
+    await retained(page, original);
+    await evidence(fixture, testInfo, "native-country-sheet-landscape-en", { cancelledDrag, cancelled, interrupted, landscape,
+      orientationFixture: "Chrome viewport rotation and CSS safe-area override, not an OS rotation observation" });
+    await page.setViewportSize({ width: 390, height: 844 });
+    await session.send("Emulation.setSafeAreaInsetsOverride", { insets: { top: 59, bottom: 34, left: 0, right: 0 } });
+    await expect(sheet).toHaveAttribute("data-atlas-sheet-state", "half");
+    await retained(page, original);
+    expect(await settledCameraPose(original)).toEqual(pose);
+    expect(new URL(page.url()).searchParams.get("country")).toBe("russia");
+    expect(new URL(page.url()).searchParams.get("writer")).toBe("dostoevsky");
+    await expect(page.locator("html")).toHaveAttribute("lang", "en");
+    await expect(handle).toHaveAttribute("aria-expanded", "true");
+    await evidence(fixture, testInfo, "native-country-sheet-cancelled-portrait-en", { selectedCountry: "russia", selectedWriter: "dostoevsky",
+      locale: "en", keyboardEnterAndSpace: true, pointerCancelRestoredState: true, orientationRestoredState: true,
+      sameCanvasRendererCameraScene: true, unchangedPortraitCameraPose: pose });
   } finally { await original.dispose(); }
 });
 

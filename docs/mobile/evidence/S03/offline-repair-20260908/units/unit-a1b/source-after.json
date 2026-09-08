@@ -1,0 +1,30 @@
+[
+  {
+    "path": "src/pwa/serviceWorkerRuntime.js",
+    "sha256": "96d83e2feaee9144e5de7fc5b23939f8d0b111f1b03107d5532f1b31984d5234"
+  },
+  {
+    "path": "src/pwa/serviceWorkerRuntime.test.mjs",
+    "sha256": "9d7527e470b6840eb9c19705db2994aff890f92956ab561100c1655606ce4a98"
+  },
+  {
+    "path": "src/pwa/registerPwaWorker.ts",
+    "sha256": "d6f99e7b5add8af9b88231bdaabbe4556e2005d6f893b654ea1ab0ec7ce7e021"
+  },
+  {
+    "path": "src/pwa/registerPwaWorker.test.ts",
+    "sha256": "35955937c6dc968828dcdd85b5bfe3049346599c9ea6e4162f8635a5b3a7bf78"
+  },
+  {
+    "path": "src/pwa/PwaAccessBoundary.tsx",
+    "sha256": "10ddfbd8f949c1f788d57f94bbd71ffca523256ad619ff713a8f30ba3b00710e"
+  },
+  {
+    "path": "src/pwa/PwaAccessBoundary.test.tsx",
+    "sha256": "6bf02d8b7af83b06dc57e7129408b003ccf474cac31638d74107b522b2238910"
+  },
+  {
+    "path": "src/pwa/PwaDevicePanel.tsx",
+    "sha256": "c0992849f4265c94a14343f2ebaff91ca7b0a50d5e9490603cc0be2eb104c69b"
+  }
+]

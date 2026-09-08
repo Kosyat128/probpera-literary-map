@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import type { PwaInstallController } from "./PwaInstallController";
-import type { PwaOfflineReadinessResult, PwaWorkerController } from "./registerPwaWorker";
+import type { PwaOfflineReadinessResult, PwaOfflineRepairResult, PwaWorkerController } from "./registerPwaWorker";
+import { usePwaOfflineRepairAccess } from "./PwaAccessBoundary";
 
 /** Implementation drafts; synchronized editorial approval remains a release gate. */
 export const pwaDeviceCopy = {
@@ -19,7 +20,13 @@ export const pwaDeviceCopy = {
     offlineTitle: "Перед поездкой", check: "Проверить офлайн-файлы", checking: "Проверяем сохранённые файлы…",
     unchecked: "Проверьте базовые файлы перед использованием без сети.",
     complete: "Все базовые файлы прошли проверку на этом устройстве.",
-    incomplete: "Часть базовых файлов отсутствует или повреждена. Подключитесь к сети и откройте нужные материалы перед поездкой.",
+    incomplete: "Часть базовых файлов отсутствует или повреждена. Подключитесь к сети и восстановите офлайн-файлы перед поездкой.",
+    repair: "Восстановить офлайн-файлы", repairing: "Восстанавливаем недостающие файлы и проверяем весь базовый набор…",
+    cancelRepair: "Остановить восстановление", repaired: "Базовые файлы восстановлены и прошли полную проверку на этом устройстве.",
+    repairIncomplete: "Восстановление не завершено. Некоторые проверенные файлы уже могли сохраниться. Проверьте подключение и свободное место, затем повторите попытку.",
+    repairUnavailable: "Восстановление остановлено или сейчас недоступно. Некоторые файлы уже могли сохраниться. Проверьте доступ и подключение, затем повторите проверку файлов.",
+    repairMissingManifest: "Сведения о сохранённой версии отсутствуют. Подключитесь к сети и заново откройте приложение, чтобы загрузить доступную версию.",
+    repairNote: "Загружаются только недостающие или повреждённые базовые файлы. Восстановление использует интернет и не продлевает доступ.",
     unavailable: "Сейчас проверить файлы не удалось. Повторите попытку после завершения загрузки приложения.",
     limit: "Проверка не продлевает право доступа и не включает дополнительные материалы. Браузер может удалить сохранённые файлы позднее.",
     storageTitle: "Место на устройстве", measuring: "Проверяем хранилище…", usage: "Примерно занято", quota: "Лимит браузера", unit: "МБ", largeUnit: "ГБ",
@@ -44,7 +51,13 @@ export const pwaDeviceCopy = {
     offlineTitle: "Before you travel", check: "Check offline files", checking: "Checking saved files…",
     unchecked: "Check the base files before using the app offline.",
     complete: "All base files passed verification on this device.",
-    incomplete: "Some base files are missing or damaged. Connect to the internet and open the content you need before travelling.",
+    incomplete: "Some base files are missing or damaged. Connect to the internet and restore the offline files before travelling.",
+    repair: "Restore offline files", repairing: "Restoring missing files and checking the entire base package…",
+    cancelRepair: "Stop restoring", repaired: "Base files have been restored and passed a full check on this device.",
+    repairIncomplete: "Restoration is incomplete. Some verified files may already have been saved. Check your connection and free space, then try again.",
+    repairUnavailable: "Restoration has stopped or is unavailable now. Some files may already have been saved. Check your access and connection, then check the files again.",
+    repairMissingManifest: "The saved version’s information is missing. Connect to the internet and reopen the app to load an available version.",
+    repairNote: "Only missing or damaged base files are downloaded. Restoration uses the internet and does not extend access.",
     unavailable: "The files could not be checked now. Try again after the app finishes loading.",
     limit: "This check does not extend access or include additional content. The browser may remove saved files later.",
     storageTitle: "Device storage", measuring: "Checking storage…", usage: "Approximate usage", quota: "Browser allowance", unit: "MB", largeUnit: "GB",
@@ -117,14 +130,21 @@ export default function PwaDevicePanel({ install, worker }: { install: PwaInstal
   const workerState = useSyncExternalStore(worker.subscribe, worker.getSnapshot, worker.getSnapshot);
   const [offline, setOffline] = useState<PwaOfflineReadinessResult | null>(null);
   const [checking, setChecking] = useState(false);
+  const [repairing, setRepairing] = useState(false);
+  const [repair, setRepair] = useState<PwaOfflineRepairResult | null>(null);
+  const repairAccess = usePwaOfflineRepairAccess();
+  const repairRequest = useRef<AbortController | null>(null);
+  const mounted = useRef(false);
   const request = useRef<AbortController | null>(null);
   const storage = useStorageStatus();
-  useEffect(() => () => { request.current?.abort(); }, []);
+  useEffect(() => { mounted.current = true; return () => {
+    mounted.current = false; request.current?.abort(); repairRequest.current?.abort();
+  }; }, []);
   const checkOffline = async () => {
-    if (request.current) return;
+    if (request.current || repairRequest.current) return;
     const controller = new AbortController();
     request.current = controller;
-    setChecking(true);
+    setChecking(true); setRepair(null);
     try {
       const result = await worker.checkOfflineReadiness({ signal: controller.signal });
       if (!controller.signal.aborted) setOffline(result);
@@ -135,9 +155,31 @@ export default function PwaDevicePanel({ install, worker }: { install: PwaInstal
       if (!controller.signal.aborted) setChecking(false);
     }
   };
+  const restoreOffline = async () => {
+    if (request.current || repairRequest.current) return;
+    const controller = new AbortController(); repairRequest.current = controller;
+    setRepairing(true); setRepair(null); setOffline(null);
+    try {
+      const result = await worker.repairOfflineBase({ access: repairAccess, signal: controller.signal });
+      if (!mounted.current || repairRequest.current !== controller) return;
+      setRepair(result);
+      if (result.status === "complete") setOffline({ status: "complete", engineBuildId: result.engineBuildId,
+        activeBuildId: result.activeBuildId, fileCount: result.fileCount, bytes: result.bytes });
+      else if (result.status === "incomplete") setOffline({ status: "incomplete", engineBuildId: result.engineBuildId, activeBuildId: result.activeBuildId });
+    } catch { if (mounted.current) setRepair({ status: "unavailable", reason: "rejected" }); }
+    finally {
+      if (repairRequest.current === controller) repairRequest.current = null;
+      if (mounted.current) setRepairing(false);
+    }
+  };
   const currentCheck = offline && offline.status !== "unavailable"
     && (offline.engineBuildId !== workerState.engineBuildId || offline.activeBuildId !== workerState.activeBuildId)
     ? null : offline;
+  const currentRepair = repair && repair.status !== "unavailable"
+    && (repair.engineBuildId !== workerState.engineBuildId || repair.activeBuildId !== workerState.activeBuildId) ? null : repair;
+  const repairText = repairing ? copy.repairing : currentRepair?.status === "complete" ? copy.repaired
+    : currentRepair?.status === "incomplete" ? copy.repairIncomplete
+    : currentRepair?.status === "unavailable" ? currentRepair.reason === "missing-manifest" ? copy.repairMissingManifest : copy.repairUnavailable : null;
   const installText = installation.phase === "installed"
     ? installation.installationEvidence === "standalone" ? copy.standalone : copy.installed
     : installation.phase === "available" ? copy.available
@@ -167,7 +209,13 @@ export default function PwaDevicePanel({ install, worker }: { install: PwaInstal
         <p role="status" data-pwa-offline-readiness={checking ? "checking" : currentCheck?.status ?? "unchecked"}>
           {checking ? copy.checking : currentCheck ? copy[currentCheck.status] : copy.unchecked}
         </p>
-        <button type="button" disabled={checking} onClick={() => { void checkOffline(); }}>{copy.check}</button>
+        <button type="button" disabled={checking || repairing} onClick={() => { void checkOffline(); }}>{copy.check}</button>
+        <div className="pwa-device__actions">
+          <button type="button" disabled={checking || repairing || !repairAccess} onClick={() => { void restoreOffline(); }}>{copy.repair}</button>
+          {repairing ? <button type="button" onClick={() => { repairRequest.current?.abort(); }}>{copy.cancelRepair}</button> : null}
+        </div>
+        {repairText ? <p role="status" data-pwa-offline-repair={repairing ? "repairing" : currentRepair?.status}>{repairText}</p> : null}
+        <p className="pwa-device__note">{copy.repairNote}</p>
         <p className="pwa-device__note">{copy.limit}</p>
       </section>
       <section aria-label={copy.storageTitle}>

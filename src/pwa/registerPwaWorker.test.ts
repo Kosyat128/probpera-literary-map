@@ -305,6 +305,88 @@ function readinessReply(env: ReturnType<typeof fixture>, overrides: Record<strin
   const request = latest(env.worker, "PLANET_OFFLINE_READINESS");
   env.reply({ ...request, type: "PLANET_OFFLINE_READINESS_RESULT", status: "complete", fileCount: 4, bytes: 2048, ...overrides }, source, origin);
 }
+function repairAccess() {
+  let until: number | null = Date.now() + 60_000;
+  const listeners = new Set<() => void>();
+  return { getDeadline: () => until, subscribe(callback: () => void) { listeners.add(callback); return () => { listeners.delete(callback); }; },
+    revoke() { until = null; for (const callback of [...listeners]) callback(); }, listeners };
+}
+function repairReply(env: ReturnType<typeof fixture>, overrides: Record<string, unknown> = {}, source: unknown = env.worker, origin = ORIGIN) {
+  env.reply({ ...latest(env.worker, "PLANET_OFFLINE_REPAIR"), type: "PLANET_OFFLINE_REPAIR_RESULT", status: "complete",
+    fileCount: 4, bytes: 2048, repairedFiles: 1, repairedBytes: 128, ...overrides }, source, origin);
+}
+describe("explicit authorized offline repair", () => {
+  it("renews only pinned permission challenges from the live capability and preserves lifecycle state", async () => {
+    const env = await rollbackFixture(), access = repairAccess(), snapshot = env.service.getSnapshot();
+    const operation = env.service.repairOfflineBase({ access });
+    const request = latest(env.worker, "PLANET_OFFLINE_REPAIR");
+    env.reply({ ...request, type: "PLANET_OFFLINE_REPAIR_PERMISSION_REQUEST", sequence: 1 });
+    const permit = latest(env.worker, "PLANET_OFFLINE_REPAIR_PERMISSION");
+    expect(permit).toMatchObject({ requestId: request.requestId, engineBuildId: BUILD, activeBuildId: BUILD, sequence: 1 });
+    expect(permit.deadline).toBeLessThanOrEqual(Date.now() + 30_000);
+    expect(Object.keys(permit).sort()).toEqual(["type", "requestId", "engineBuildId", "activeBuildId", "sequence", "deadline"].sort());
+    repairReply(env); expect(await operation).toMatchObject({ status: "complete", repairedFiles: 1 });
+    expect(env.service.getSnapshot()).toBe(snapshot); expect(env.reload).not.toHaveBeenCalled(); expect(env.registration.update).not.toHaveBeenCalled();
+    expect(access.listeners.size).toBe(0); expect(env.container.count("message")).toBe(0);
+  });
+  it.each(["missing", "revoked", "throwing"])("never starts with %s access capability", async state => {
+    const env = await rollbackFixture(), access = repairAccess();
+    if (state === "revoked") access.revoke();
+    if (state === "throwing") access.getDeadline = () => { throw new Error("failed"); };
+    expect(await env.service.repairOfflineBase({ access: state === "missing" ? null : access })).toEqual({ status: "unavailable", reason: "access-required" });
+    expect(latest(env.worker, "PLANET_OFFLINE_REPAIR")).toBeUndefined();
+  });
+  it.each(["wrong origin", "wrong source", "wrong request", "wrong engine", "wrong active", "extra field", "bad counts"])("rejects %s result until the operation deadline", async reason => {
+    vi.useFakeTimers();
+    const env = await rollbackFixture();
+    const operation = env.service.repairOfflineBase({ access: repairAccess() });
+    const patch = reason === "wrong request" ? { requestId: "other" } : reason === "wrong engine" ? { engineBuildId: PREVIOUS }
+      : reason === "wrong active" ? { activeBuildId: PREVIOUS } : reason === "extra field" ? { verifiedGrant: true }
+      : reason === "bad counts" ? { repairedFiles: 5 } : {};
+    repairReply(env, patch, reason === "wrong source" ? new FakeWorker() : env.worker, reason === "wrong origin" ? "https://foreign.invalid" : ORIGIN);
+    await vi.advanceTimersByTimeAsync(60_001);
+    expect(await operation).toEqual({ status: "unavailable", reason: "access-required" });
+    expect(latest(env.worker, "PLANET_CANCEL_OFFLINE_REPAIR")).toBeTruthy(); expect(env.container.count("message")).toBe(0);
+  });
+  it.each(["cancel", "revoke", "expire", "dispose", "controller"])("cancels %s and ignores later successful replies", async action => {
+    vi.useFakeTimers();
+    const env = await rollbackFixture(), access = repairAccess(), controller = new AbortController();
+    const operation = env.service.repairOfflineBase({ access, signal: controller.signal });
+    if (action === "cancel") controller.abort();
+    if (action === "revoke") access.revoke();
+    if (action === "expire") await vi.advanceTimersByTimeAsync(60_001);
+    if (action === "dispose") env.service.dispose();
+    if (action === "controller") controllerChange(env, new FakeWorker());
+    expect(await operation).toEqual({ status: "unavailable", reason: action === "cancel" ? "cancelled" : action === "dispose" ? "disposed" : action === "controller" ? "worker-changed" : "access-required" });
+    repairReply(env); expect(latest(env.worker, "PLANET_CANCEL_OFFLINE_REPAIR")).toBeTruthy(); expect(access.listeners.size).toBe(0);
+    expect(env.reload).not.toHaveBeenCalled();
+  });
+  it("bounds actual timeout separately from a still-valid access capability", async () => {
+    vi.useFakeTimers();
+    const env = fixture({ waiting: false, repairTimeoutMs: 100 }); await settled(env.service); controllerChange(env);
+    const probe = latest(env.worker, "PLANET_ROLLBACK_STATUS");
+    env.reply({ ...probe, type: "PLANET_ROLLBACK_STATUS_RESULT", engineBuildId: BUILD, activeBuildId: BUILD, rollbackBuildId: null, ready: false });
+    await settled(env.service);
+    const operation = env.service.repairOfflineBase({ access: repairAccess() });
+    await vi.advanceTimersByTimeAsync(101); expect(await operation).toEqual({ status: "unavailable", reason: "timeout" });
+    expect(env.container.count("message")).toBe(0);
+  });
+  it("serializes repair against check, update and rollback without performing them", async () => {
+    const env = await rollbackFixture(), access = repairAccess();
+    const operation = env.service.repairOfflineBase({ access });
+    expect(await env.service.repairOfflineBase({ access })).toEqual({ status: "unavailable", reason: "busy" });
+    expect(await env.service.checkOfflineReadiness()).toEqual({ status: "unavailable", reason: "busy" });
+    expect(await env.service.activateUpdate()).toEqual({ ok: false, reason: "busy" });
+    expect(await env.service.rollback()).toEqual({ ok: false, reason: "busy" });
+    repairReply(env); await operation;
+  });
+  it("returns partial write counts only from an exact incomplete reply", async () => {
+    const env = await rollbackFixture(); const operation = env.service.repairOfflineBase({ access: repairAccess() });
+    env.reply({ ...latest(env.worker, "PLANET_OFFLINE_REPAIR"), type: "PLANET_OFFLINE_REPAIR_RESULT", status: "incomplete",
+      reason: "storage", repairedFiles: 1, repairedBytes: 20 });
+    expect(await operation).toEqual({ status: "incomplete", engineBuildId: BUILD, activeBuildId: BUILD, reason: "storage", repairedFiles: 1, repairedBytes: 20 });
+  });
+});
 
 describe("explicit read-only offline readiness", () => {
   it("does not infer readiness from discovered generations and only checks on demand without changing snapshots", async () => {

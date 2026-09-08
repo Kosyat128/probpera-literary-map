@@ -335,3 +335,16 @@
   tap/keyboard, cancellation and reduced motion. First-open stays S03; S06 and
   later stages are not accepted or implicitly started. Prior APK/PWA/iOS
   artifacts keep their source identities and pending publication permission.
+
+- D078: S07 drag/snap reuses authored sheet sizes and the existing reducer.
+  Six units, one shared static execution and two actual Chrome touch cases
+  validate this slice; retain canonical scene and keyboard/content scrolling.
+  No physical-device or whole-stage acceptance follows from these results.
+
+- D079: S03 repair is explicit, cancellable and pinned to the current trusted
+  base generation and existing live access boundary. Validate missing payloads
+  before writing and the full cache before success. A started Cache.put cannot
+  be undone; cancellation reports uncertainty and keeps serialization until it
+  settles. Missing trusted rollback metadata is not reconstructed by guess.
+  Unit306 combined passes and static checks are source evidence; build/browser
+  proof follows. New RU/EN copy stays draft; no payment authority is invented.

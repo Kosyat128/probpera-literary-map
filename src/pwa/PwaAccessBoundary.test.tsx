@@ -35,6 +35,21 @@ beforeEach(() => { vi.useFakeTimers(); vi.setSystemTime(NOW * 1000); });
 afterEach(() => { for (const value of controllers.splice(0)) value.stop(); vi.useRealTimers(); });
 
 describe("identity-bound PWA access lifecycle", () => {
+  it("uses the same verified deadline for repair and never grants it before start or after stop", async () => {
+    const client = service(); client.check.mockResolvedValue(authorized()); const access = controller(client);
+    expect(access.getDeadline()).toBeNull(); await access.start(online);
+    expect(access.getDeadline()).toBe((NOW + 600) * 1000);
+    await access.updateEnvironment(offline); expect(access.getDeadline()).toBe((NOW + 120) * 1000);
+    const listener = vi.fn(); access.subscribe(listener); access.stop();
+    expect(access.getDeadline()).toBeNull(); expect(listener).toHaveBeenCalledOnce();
+  });
+  it.each(["revoked", "clock", "expired"])("denies the live repair capability when %s even without a render", async reason => {
+    const client = service(); client.check.mockResolvedValue(authorized()); const access = controller(client); await access.start(online);
+    if (reason === "revoked") { client.check.mockResolvedValue(denied("revoked")); await access.refresh(); }
+    if (reason === "clock") vi.setSystemTime((NOW - 1) * 1000);
+    if (reason === "expired") vi.setSystemTime((NOW + 601) * 1000);
+    expect(access.getDeadline()).toBeNull();
+  });
   it("denies without a client and has no constructor/render network side effects", async () => {
     const client = service();
     client.getSnapshot.mockReturnValue(authorized());

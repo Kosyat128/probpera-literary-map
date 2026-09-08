@@ -17,6 +17,7 @@ import { publicImageAttributes } from "./utils/imageDelivery";
 import type { CommunityView } from "./community/CommunityHub";
 import { isControlledWebEdition } from "./platform/distribution";
 import { usePlatformServices, usePlatformSnapshot } from "./platform/PlatformServices";
+import { useAtlasSheetGesture } from "./atlas/useAtlasSheetGesture";
 import NativePlanetLaunch from "./host/NativePlanetLaunch";
 import PlanetWelcome from "./host/PlanetWelcome";
 import NativePlanetPanel from "./host/NativePlanetPanel";
@@ -693,6 +694,14 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
   const atlasSearchOpen = atlasImmersive
     ? atlasExperience.state.searchOpen
     : searchOpen;
+  const atlasSheetGesture = useAtlasSheetGesture({
+    enabled: isPlanetApplication && atlasExperience.compactSheet && globeRuntimeActive &&
+      !nativeCollectionOpen && atlasExperience.state.transition === "idle",
+    countryId: selectedCountry?.id ?? null,
+    state: atlasExperience.state.sheetState,
+    panelRef: countryPresentationRef,
+    onSnap: sheetState => atlasExperienceDispatch({ type: "SET_SHEET_STATE", sheetState }),
+  });
 
   useLayoutEffect(() => {
     const requested = welcomeFocusRequest.current;
@@ -2561,6 +2570,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
                 {atlasExperience.compactSheet && (
                   <Button
                     className="atlas-country-sheet-toggle"
+                    {...atlasSheetGesture}
                     size="md"
                     surface="dark"
                     variant="secondary"

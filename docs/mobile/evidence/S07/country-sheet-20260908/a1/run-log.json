@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "kind": "lossless-utf8-log",
+  "originalRelativePath": ".tmp/s07-country-sheet-20260908/a1/run.log",
+  "bytes": 573,
+  "sha256": "cd71939ff6e0487a4b89b3e5674405568bf9102b492e02ccf1f44e5e0d36507a",
+  "encoding": "utf8",
+  "text": "\r\nRunning 2 tests using 1 worker\r\n\r\n(node:38916) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\r\n(Use `node --trace-warnings ...` to show where the warning was created)\r\n  ok 1 tests\\host\\native-planet.spec.mjs:574:1 › mobile country sheet follows real touch, snaps in both directions and keeps content scrolling separate from the globe (10.5s)\r\n  ok 2 tests\\host\\native-planet.spec.mjs:635:1 › mobile country sheet preserves keyboard, touch cancellation, locale and orientation without replacing the scene (8.2s)\r\n\r\n  2 passed (21.3s)\r\n"
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "path": "src/pwa/serviceWorkerRuntime.js",
+    "sha256": "7093d4c17cff9794c35b0d17b905d29f2186ef98eccda5ed4bba5509991c8a31"
+  },
+  {
+    "path": "src/pwa/serviceWorkerRuntime.test.mjs",
+    "sha256": "9d7527e470b6840eb9c19705db2994aff890f92956ab561100c1655606ce4a98"
+  },
+  {
+    "path": "src/pwa/PwaAccessBoundary.tsx",
+    "sha256": "5da9ec472f3bd16b1493cb44601bf1e3f74d09245e05ba8446cf9d280bee6b80"
+  },
+  {
+    "path": "src/pwa/PwaAccessBoundary.test.tsx",
+    "sha256": "6bf02d8b7af83b06dc57e7129408b003ccf474cac31638d74107b522b2238910"
+  }
+]

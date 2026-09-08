@@ -14,6 +14,16 @@ export type PwaOfflineReadinessResult =
   | { readonly status: "complete"; readonly engineBuildId: string; readonly activeBuildId: string; readonly fileCount: number; readonly bytes: number }
   | { readonly status: "incomplete"; readonly engineBuildId: string; readonly activeBuildId: string }
   | { readonly status: "unavailable"; readonly reason: PwaWorkerError };
+/** Current verified access controller capability, never a token or SW authority. */
+export interface PwaOfflineRepairAccess {
+  getDeadline(): number | null;
+  subscribe(callback: () => void): () => void;
+}
+export type PwaOfflineRepairError = PwaWorkerError | "access-required" | "missing-manifest";
+export type PwaOfflineRepairResult =
+  | { readonly status: "complete"; readonly engineBuildId: string; readonly activeBuildId: string; readonly fileCount: number; readonly bytes: number; readonly repairedFiles: number; readonly repairedBytes: number }
+  | { readonly status: "incomplete"; readonly engineBuildId: string; readonly activeBuildId: string; readonly reason: "network-or-integrity" | "storage" | "verification-failed"; readonly repairedFiles: number; readonly repairedBytes: number }
+  | { readonly status: "unavailable"; readonly reason: PwaOfflineRepairError };
 export interface PwaWorkerOptions {
   readonly controlledDistribution: boolean;
   /** Null explicitly disables unavailable browser APIs, including SSR fixtures. */
@@ -22,6 +32,7 @@ export interface PwaWorkerOptions {
   readonly reload?: () => void;
   readonly allowLocalQa?: boolean;
   readonly timeoutMs?: number;
+  readonly repairTimeoutMs?: number;
   readonly signal?: AbortSignal;
 }
 export interface PwaWorkerController {
@@ -32,6 +43,9 @@ export interface PwaWorkerController {
   /** Explicit user-requested cache integrity check only. No repair, download or
    * entitlement check; success does not promise that the OS will retain files. */
   checkOfflineReadiness(options?: { readonly signal?: AbortSignal }): Promise<PwaOfflineReadinessResult>;
+  /** Explicit repair of public immutable base bytes only. No entitlement grant,
+   * activation, reload or guarantee that future browser eviction cannot occur. */
+  repairOfflineBase(options: { readonly access: PwaOfflineRepairAccess | null; readonly signal?: AbortSignal }): Promise<PwaOfflineRepairResult>;
   /** Call only from an explicit user action. Cancellation cannot undo skipWaiting. */
   activateUpdate(options?: { readonly signal?: AbortSignal }): Promise<PwaWorkerResult>;
   /** Explicit whole-app rollback; the installed worker engine remains current.
@@ -53,6 +67,7 @@ export function registerPwaWorker(options: PwaWorkerOptions): PwaWorkerControlle
   const container = options.serviceWorker === undefined ? globalThis.navigator?.serviceWorker : options.serviceWorker;
   const location = options.location === undefined ? globalThis.location : options.location;
   const timeoutMs = options.timeoutMs ?? 10_000;
+  const repairTimeoutMs = options.repairTimeoutMs ?? 120_000;
   const reload = options.reload ?? (() => globalThis.location.reload());
   let origin = "";
   let allowed = options.controlledDistribution === true;
@@ -61,7 +76,7 @@ export function registerPwaWorker(options: PwaWorkerOptions): PwaWorkerControlle
     try {
       const url = new URL(location?.href ?? "");
       const local = options.allowLocalQa === true && ["localhost", "127.0.0.1", "[::1]"].includes(url.hostname);
-      if ((!local && url.protocol !== "https:") || (local && !["https:", "http:"].includes(url.protocol)) || !ROUTES.has(url.pathname) || url.username || url.password || !Number.isFinite(timeoutMs) || timeoutMs <= 0 || timeoutMs > 60_000) throw new Error("Invalid distribution boundary");
+      if ((!local && url.protocol !== "https:") || (local && !["https:", "http:"].includes(url.protocol)) || !ROUTES.has(url.pathname) || url.username || url.password || !Number.isFinite(timeoutMs) || timeoutMs <= 0 || timeoutMs > 60_000 || !Number.isFinite(repairTimeoutMs) || repairTimeoutMs <= 0 || repairTimeoutMs > 120_000) throw new Error("Invalid distribution boundary");
       origin = url.origin;
       if (!container?.register || !container.addEventListener) initialError = "unsupported";
     } catch { initialError = "invalid-configuration"; }
@@ -86,6 +101,7 @@ export function registerPwaWorker(options: PwaWorkerOptions): PwaWorkerControlle
   let activeProbe: { worker: ServiceWorker; promise: Promise<void> } | undefined;
   let generationEpoch = 0;
   let offlineReadinessPending = false;
+  let offlineRepairAbort: ((reason: PwaOfflineRepairError) => void) | null = null;
 
   function setSnapshot(phase: PwaWorkerPhase, buildId: string | null = null, error: PwaWorkerError | null = null) {
     if (snapshot.phase === phase && snapshot.update?.buildId === (buildId ?? undefined) && snapshot.error === error && snapshot.activeBuildId === generationState.activeBuildId && snapshot.engineBuildId === generationState.engineBuildId && snapshot.rollback?.buildId === (generationState.rollbackBuildId ?? undefined)) return;
@@ -106,9 +122,9 @@ export function registerPwaWorker(options: PwaWorkerOptions): PwaWorkerControlle
       signal?.removeEventListener("abort", abort);
     } };
   }
-  function bounded<T>(operation: Promise<T>, signal: AbortSignal): Promise<T> {
+  function bounded<T>(operation: Promise<T>, signal: AbortSignal, limit = timeoutMs): Promise<T> {
     return new Promise((resolve, reject) => {
-      const timer = setTimeout(() => finish(new LifecycleError("timeout")), timeoutMs);
+      const timer = setTimeout(() => finish(new LifecycleError("timeout")), limit);
       const abort = () => finish(new LifecycleError(disposed ? "disposed" : "cancelled"));
       let settled = false;
       function finish(error?: unknown, value?: T) {
@@ -243,6 +259,7 @@ export function registerPwaWorker(options: PwaWorkerOptions): PwaWorkerControlle
   }
   function controllerChanged() {
     if (disposed) return;
+    offlineRepairAbort?.("worker-changed");
     generationEpoch++;
     generationState = { activeBuildId: null, engineBuildId: null, rollbackBuildId: null };
     if (activation) {
@@ -296,7 +313,7 @@ export function registerPwaWorker(options: PwaWorkerOptions): PwaWorkerControlle
     const unavailable = (reason: PwaWorkerError): PwaOfflineReadinessResult => Object.freeze({ status: "unavailable", reason });
     if (disposed) return unavailable("disposed");
     if (signal?.aborted) return unavailable("cancelled");
-    if (offlineReadinessPending || activation || rollbackOperation || reloaded) return unavailable("busy");
+    if (offlineReadinessPending || offlineRepairAbort || activation || rollbackOperation || reloaded) return unavailable("busy");
     const worker = container?.controller;
     const { engineBuildId, activeBuildId } = generationState;
     if (!allowed || !registration || !worker || !workerAllowed(worker) || !engineBuildId || !activeBuildId) return unavailable("not-ready");
@@ -348,10 +365,103 @@ export function registerPwaWorker(options: PwaWorkerOptions): PwaWorkerControlle
       offlineReadinessPending = false;
     }
   }
+  async function repairOfflineBase({ access, signal }: { access: PwaOfflineRepairAccess | null; signal?: AbortSignal }): Promise<PwaOfflineRepairResult> {
+    const unavailable = (reason: PwaOfflineRepairError): PwaOfflineRepairResult => Object.freeze({ status: "unavailable", reason });
+    if (disposed) return unavailable("disposed");
+    if (signal?.aborted) return unavailable("cancelled");
+    if (offlineRepairAbort || offlineReadinessPending || activation || rollbackOperation || reloaded) return unavailable("busy");
+    const worker = container?.controller;
+    const { engineBuildId, activeBuildId } = generationState;
+    if (!allowed || !registration || !worker || !workerAllowed(worker) || !engineBuildId || !activeBuildId) return unavailable("not-ready");
+    const deadline = () => {
+      try {
+        const value = access?.getDeadline();
+        return typeof value === "number" && Number.isSafeInteger(value) && value > Date.now() ? value : null;
+      } catch { return null; }
+    };
+    if (!access?.subscribe || deadline() === null) return unavailable("access-required");
+    const epoch = generationEpoch, requestId = `pwa-${nonce}-${++requestSequence}`;
+    const operationAbort = new AbortController(), joined = combinedSignal(operationAbort.signal);
+    let abortReason: PwaOfflineRepairError | null = null, completed = false, sequence = 0;
+    let removeAccess: (() => void) | undefined, onMessage: ((event: MessageEvent) => void) | undefined;
+    let expiryTimer: ReturnType<typeof setTimeout> | undefined;
+    const current = () => !disposed && epoch === generationEpoch && container?.controller === worker && workerAllowed(worker)
+      && generationState.engineBuildId === engineBuildId && generationState.activeBuildId === activeBuildId
+      && !activation && !rollbackOperation && !reloaded;
+    const abort = (reason: PwaOfflineRepairError) => { abortReason ??= reason; operationAbort.abort(); };
+    const externalAbort = () => abort("cancelled");
+    const verifyAccess = () => {
+      clearTimeout(expiryTimer);
+      const until = deadline();
+      if (until === null) { abort("access-required"); return null; }
+      expiryTimer = setTimeout(verifyAccess, Math.min(2_147_000_000, Math.max(1, until - Date.now())));
+      return until;
+    };
+    offlineRepairAbort = abort;
+    signal?.addEventListener("abort", externalAbort, { once: true });
+    try {
+      removeAccess = access.subscribe(() => { verifyAccess(); });
+      verifyAccess();
+      if (signal?.aborted) externalAbort();
+      const result = await bounded(new Promise<PwaOfflineRepairResult>((resolve, reject) => {
+        if (joined.signal.aborted) { reject(new LifecycleError("cancelled")); return; }
+        onMessage = event => {
+          const data = event.data;
+          if (event.source !== worker || event.origin !== origin || !data || typeof data !== "object" || Array.isArray(data)
+            || data.requestId !== requestId || data.engineBuildId !== engineBuildId || data.activeBuildId !== activeBuildId) return;
+          if (!current()) { abort("worker-changed"); return; }
+          const until = verifyAccess();
+          if (until === null) return;
+          const baseKeys = ["type", "requestId", "engineBuildId", "activeBuildId"];
+          if (data.type === "PLANET_OFFLINE_REPAIR_PERMISSION_REQUEST") {
+            if (Object.keys(data).length !== 5 || Object.keys(data).some(key => ![...baseKeys, "sequence"].includes(key))
+              || !Number.isSafeInteger(data.sequence) || data.sequence !== sequence + 1) return;
+            sequence = data.sequence;
+            try { worker.postMessage({ type: "PLANET_OFFLINE_REPAIR_PERMISSION", requestId, engineBuildId, activeBuildId,
+              sequence, deadline: Math.min(until, Date.now() + 30_000) }); }
+            catch { abort("message-failed"); }
+            return;
+          }
+          if (data.type !== "PLANET_OFFLINE_REPAIR_RESULT") return;
+          const counts = ["repairedFiles", "repairedBytes"];
+          const validCounts = () => Number.isSafeInteger(data.repairedFiles) && data.repairedFiles >= 0 && data.repairedFiles <= 512
+            && Number.isSafeInteger(data.repairedBytes) && data.repairedBytes >= data.repairedFiles && data.repairedBytes <= 64 * 1024 * 1024
+            && (data.repairedFiles !== 0 || data.repairedBytes === 0);
+          const fields = data.status === "complete" ? [...counts, "fileCount", "bytes"] : data.status === "incomplete" ? [...counts, "reason"] : ["reason"];
+          if (Object.keys(data).some(key => ![...baseKeys, "status", ...fields].includes(key))) return;
+          if (data.status === "complete") {
+            if (!validCounts() || !Number.isSafeInteger(data.fileCount) || data.fileCount < 2 || data.fileCount > 512
+              || !Number.isSafeInteger(data.bytes) || data.bytes < data.fileCount || data.bytes > 64 * 1024 * 1024
+              || data.repairedFiles > data.fileCount || data.repairedBytes > data.bytes) return;
+            resolve(Object.freeze({ status: "complete", engineBuildId, activeBuildId, fileCount: data.fileCount, bytes: data.bytes,
+              repairedFiles: data.repairedFiles, repairedBytes: data.repairedBytes }));
+          } else if (data.status === "incomplete" && validCounts() && ["network-or-integrity", "storage", "verification-failed"].includes(data.reason)) {
+            resolve(Object.freeze({ status: "incomplete", engineBuildId, activeBuildId, reason: data.reason,
+              repairedFiles: data.repairedFiles, repairedBytes: data.repairedBytes }));
+          } else if (data.status === "unavailable" && ["busy", "worker-changed", "timeout", "cancelled", "not-ready", "access-required", "missing-manifest"].includes(data.reason)) resolve(unavailable(data.reason));
+        };
+        container!.addEventListener("message", onMessage);
+        try { worker.postMessage({ type: "PLANET_OFFLINE_REPAIR", requestId, engineBuildId, activeBuildId }); }
+        catch { reject(new LifecycleError("message-failed")); }
+      }), joined.signal, repairTimeoutMs);
+      if (disposed || joined.signal.aborted) return unavailable(abortReason ?? (disposed ? "disposed" : "cancelled"));
+      if (!current()) return unavailable("worker-changed");
+      if (deadline() === null) return unavailable("access-required");
+      completed = true; return result;
+    } catch (error) { return unavailable(abortReason ?? errorReason(error, "message-failed")); }
+    finally {
+      if (onMessage) container!.removeEventListener("message", onMessage);
+      if (!completed) {
+        try { worker.postMessage({ type: "PLANET_CANCEL_OFFLINE_REPAIR", requestId, engineBuildId, activeBuildId }); } catch { /* Local cleanup still completes. */ }
+      }
+      clearTimeout(expiryTimer); removeAccess?.(); signal?.removeEventListener("abort", externalAbort);
+      joined.cleanup(); if (offlineRepairAbort === abort) offlineRepairAbort = null;
+    }
+  }
   function activateUpdate({ signal }: { signal?: AbortSignal } = {}): Promise<PwaWorkerResult> {
     if (disposed) return Promise.resolve(failure("disposed"));
     if (activation?.promise) return activation.promise;
-    if (rollbackOperation) return Promise.resolve(failure("busy"));
+    if (rollbackOperation || offlineRepairAbort) return Promise.resolve(failure("busy"));
     const worker = registration?.waiting;
     const buildId = snapshot.update?.buildId;
     if (reloaded || !worker || worker !== availableWorker || !buildId || !workerAllowed(worker)) return Promise.resolve(failure("not-ready"));
@@ -385,7 +495,7 @@ export function registerPwaWorker(options: PwaWorkerOptions): PwaWorkerControlle
   function rollback({ signal }: { signal?: AbortSignal } = {}): Promise<PwaWorkerResult> {
     if (disposed) return Promise.resolve(failure("disposed"));
     if (rollbackOperation) return rollbackOperation;
-    if (activation || reloaded) return Promise.resolve(failure("busy"));
+    if (activation || reloaded || offlineRepairAbort) return Promise.resolve(failure("busy"));
     const worker = container?.controller, buildId = snapshot.rollback?.buildId, engineBuildId = snapshot.engineBuildId;
     if (!worker || !workerAllowed(worker) || !buildId || !engineBuildId || snapshot.activeBuildId !== engineBuildId) return Promise.resolve(failure("not-ready"));
     const joined = combinedSignal(signal);
@@ -429,7 +539,7 @@ export function registerPwaWorker(options: PwaWorkerOptions): PwaWorkerControlle
   }
   options.signal?.addEventListener("abort", dispose, { once: true });
   if (options.signal?.aborted) dispose();
-  return Object.freeze({ ready, getSnapshot: () => snapshot, checkForUpdate, checkOfflineReadiness, activateUpdate, rollback, dispose,
+  return Object.freeze({ ready, getSnapshot: () => snapshot, checkForUpdate, checkOfflineReadiness, repairOfflineBase, activateUpdate, rollback, dispose,
     subscribe(callback: () => void) {
       if (disposed) return () => undefined;
       subscribers.set(callback, (subscribers.get(callback) ?? 0) + 1);

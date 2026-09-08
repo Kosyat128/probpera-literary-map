@@ -1,9 +1,16 @@
 # V12 blockers and pending work
 
 <!-- s07-country-sheet:begin -->
-S07 bounded touch work is in progress: drag/snap the existing country sheet,
-retain tap/keyboard/content scroll and the same globe. No new stage acceptance.
-Entry: evidence/S07/country-sheet-20260908/entry.json.
+Current source: existing country sheet now supports direct touch drag/snap.
+Six focused units, shared TypeScript/boundary checks and two real Chrome touch
+cases passed with unchanged971 inputs. Same globe/camera/selection retained.
+Evidence: evidence/S07/country-sheet-20260908/result.json.
+S03 explicit offline repair source has306 combined unit passes; its real PWA
+build and affected browser cases are next, not yet passed. UI copy is draft.
+Evidence: evidence/S03/offline-repair-20260908/source-result.json.
+Android532 and PWA051 below are historical source-bound artifacts; they exclude
+these changes. Earlier evidence blocks remain historical. iOS83 stays frozen
+and awaits its existing publication approval. No stage or release acceptance.
 <!-- s07-country-sheet:end -->
 
 Internal implementation remains the assistant's responsibility:

@@ -1,0 +1,283 @@
+{
+  "schemaVersion": 1,
+  "stage": "S07",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "runId": "country-sheet-20260908-a1",
+  "sourceCommit": "c39300d24745356b9698460b9536f8d5ec34f2fe",
+  "scope": "Canonical App/R3F/CSS in Chrome with hasTouch/isMobile and CDP touch events, injected Android OS plugins; no physical-device or native artifact claim.",
+  "statistics": {
+    "startTime": "2026-09-08T07:56:13.530Z",
+    "duration": 21339.582,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "selectionErrorBeforeFixture": false,
+  "tests": [
+    {
+      "title": "mobile country sheet follows real touch, snaps in both directions and keeps content scrolling separate from the globe",
+      "status": "passed",
+      "durationMs": 10462,
+      "errors": [],
+      "attachments": [
+        {
+          "name": "native-country-sheet-expanded-ru",
+          "path": "case-1/native-country-sheet-expanded-ru.json"
+        },
+        {
+          "name": "native-country-sheet-expanded-ru-screenshot",
+          "path": "case-1/native-country-sheet-expanded-ru-screenshot.png"
+        },
+        {
+          "name": "native-country-sheet-return-collapsed",
+          "path": "case-1/native-country-sheet-return-collapsed.json"
+        },
+        {
+          "name": "native-country-sheet-return-collapsed-screenshot",
+          "path": "case-1/native-country-sheet-return-collapsed-screenshot.png"
+        },
+        {
+          "name": "native-final-passed",
+          "path": "case-1/native-final-passed.json"
+        },
+        {
+          "name": "native-final-passed-screenshot",
+          "path": "case-1/native-final-passed-screenshot.png"
+        }
+      ]
+    },
+    {
+      "title": "mobile country sheet preserves keyboard, touch cancellation, locale and orientation without replacing the scene",
+      "status": "passed",
+      "durationMs": 8218,
+      "errors": [],
+      "attachments": [
+        {
+          "name": "native-country-sheet-landscape-en",
+          "path": "case-2/native-country-sheet-landscape-en.json"
+        },
+        {
+          "name": "native-country-sheet-landscape-en-screenshot",
+          "path": "case-2/native-country-sheet-landscape-en-screenshot.png"
+        },
+        {
+          "name": "native-country-sheet-cancelled-portrait-en",
+          "path": "case-2/native-country-sheet-cancelled-portrait-en.json"
+        },
+        {
+          "name": "native-country-sheet-cancelled-portrait-en-screenshot",
+          "path": "case-2/native-country-sheet-cancelled-portrait-en-screenshot.png"
+        },
+        {
+          "name": "native-final-passed",
+          "path": "case-2/native-final-passed.json"
+        },
+        {
+          "name": "native-final-passed-screenshot",
+          "path": "case-2/native-final-passed-screenshot.png"
+        }
+      ]
+    }
+  ],
+  "sourceComparison": {
+    "sourceFiles": 971,
+    "unchangedDuringRun": true,
+    "changed": [],
+    "supplementalNativeSelection": {
+      "path": "scripts/mobile/native-base-assets.json",
+      "beforeSha256": "c1f42e5c8d8afd58102d24faa434a1b01a77129f97bc11ac59fe8ce5e4ca4268",
+      "afterSha256": "c1f42e5c8d8afd58102d24faa434a1b01a77129f97bc11ac59fe8ce5e4ca4268",
+      "unchanged": true
+    }
+  },
+  "runContext": {
+    "runId": "country-sheet-20260908-a1",
+    "sourceCommit": "c39300d24745356b9698460b9536f8d5ec34f2fe",
+    "selectedScenarios": 2,
+    "grep": "mobile country sheet",
+    "sourceFiles": 971,
+    "previousSnapshotFiles": 967,
+    "addedSourcePaths": [
+      "src/atlas/atlasSheetGesture.css",
+      "src/atlas/atlasSheetGesture.test.ts",
+      "src/atlas/atlasSheetGesture.ts",
+      "src/atlas/useAtlasSheetGesture.ts"
+    ],
+    "changedFromS04A2": [
+      "src/App.tsx",
+      "src/pwa/PwaAccessBoundary.tsx",
+      "src/pwa/PwaDevicePanel.tsx",
+      "src/pwa/registerPwaWorker.ts",
+      "src/pwa/serviceWorkerRuntime.js",
+      "tests/host/native-planet.spec.mjs"
+    ],
+    "nativeSelectionSha256": "c1f42e5c8d8afd58102d24faa434a1b01a77129f97bc11ac59fe8ce5e4ca4268",
+    "touchFixture": {
+      "hasTouch": true,
+      "isMobile": true,
+      "reducedMotion": "reduce",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "input": "Chrome CDP real touch input, keyboard Enter/Space; no product state writes",
+      "physicalDevice": false
+    },
+    "scope": "S07 two focused touch cases; no prior browser suite replay or artifact build.",
+    "snapshotScope": "Historical967-source snapshot plus newly added runtime paths and focused S07 unit source; no historical unit-source expansion."
+  },
+  "preservedFiles": [
+    {
+      "path": "source-before.json",
+      "source": ".tmp/s07-country-sheet-20260908/a1/source-before.json",
+      "bytes": 136736,
+      "sha256": "1b83b6a08ee4205cd883f94b44f11649b213ee3b695d87a4e54c14ecf5838484"
+    },
+    {
+      "path": "source-after.json",
+      "source": ".tmp/s07-country-sheet-20260908/a1/source-after.json",
+      "bytes": 136736,
+      "sha256": "1b83b6a08ee4205cd883f94b44f11649b213ee3b695d87a4e54c14ecf5838484"
+    },
+    {
+      "path": "source-comparison.json",
+      "source": ".tmp/s07-country-sheet-20260908/a1/source-comparison.json",
+      "bytes": 363,
+      "sha256": "bdf0c4a20942d35e65d77bb1419161feb439a3b4df5f8c9b853051bc9db3ddd9"
+    },
+    {
+      "path": "run-context.json",
+      "source": ".tmp/s07-country-sheet-20260908/a1/run-context.json",
+      "bytes": 1262,
+      "sha256": "c776c9622122bc4e2d1b0b848dcd02efa6b4e382e6b76f8d1fb69b3c6bca2064"
+    },
+    {
+      "path": "browser-results.json",
+      "source": ".tmp/native-planet-browser-results/country-sheet-20260908-a1/results.json",
+      "bytes": 320406,
+      "sha256": "122787cdbae0247e1b2beed2c78c931893bcdbdb8583d655cd23ecb1bbefbac2"
+    },
+    {
+      "path": "case-1/native-country-sheet-expanded-ru.json",
+      "source": "Exact decoded Playwright attachment: native-country-sheet-expanded-ru",
+      "bytes": 38409,
+      "sha256": "faf1196cb8d383e55513371ac056a31b69e7aa17e6c65357b50d84dbd2b54e00"
+    },
+    {
+      "path": "case-1/native-country-sheet-expanded-ru-screenshot.png",
+      "source": ".tmp/native-planet-browser-results/country-sheet-20260908-a1/artifacts/native-planet-mobile-count-26550-ing-separate-from-the-globe/attachments/native-country-sheet-expanded-ru-screenshot-e4c557ae84d7995f623f64349b82be902d8cdd16.png",
+      "bytes": 332631,
+      "sha256": "ee1b1dae544afe5a8bff219ea37905aab8a073f69d6c50bb50a14cce8a970bce"
+    },
+    {
+      "path": "case-1/native-country-sheet-return-collapsed.json",
+      "source": "Exact decoded Playwright attachment: native-country-sheet-return-collapsed",
+      "bytes": 54617,
+      "sha256": "eff5d2f17a4c19f8397f38a48cdebe51e57e8e47a51bb4ba9d959e2477697260"
+    },
+    {
+      "path": "case-1/native-country-sheet-return-collapsed-screenshot.png",
+      "source": ".tmp/native-planet-browser-results/country-sheet-20260908-a1/artifacts/native-planet-mobile-count-26550-ing-separate-from-the-globe/attachments/native-country-sheet-return-collapsed-screenshot-b4632c657e951bfd721ff1e93384195c703a496d.png",
+      "bytes": 412842,
+      "sha256": "59fa553d3509ff017ef2ebc42c3fd9041f816db431df8749f30970cb65d3ee98"
+    },
+    {
+      "path": "case-1/native-final-passed.json",
+      "source": "Exact decoded Playwright attachment: native-final-passed",
+      "bytes": 42785,
+      "sha256": "9817b5a0917c5a943912200c2e21a797fbb1628ffc6ea294fbd18fb48af79fe9"
+    },
+    {
+      "path": "case-1/native-final-passed-screenshot.png",
+      "source": ".tmp/native-planet-browser-results/country-sheet-20260908-a1/artifacts/native-planet-mobile-count-26550-ing-separate-from-the-globe/attachments/native-final-passed-screenshot-669f4949362de951cd72b14c3858d96b8951365c.png",
+      "bytes": 412842,
+      "sha256": "59fa553d3509ff017ef2ebc42c3fd9041f816db431df8749f30970cb65d3ee98"
+    },
+    {
+      "path": "case-2/native-country-sheet-landscape-en.json",
+      "source": "Exact decoded Playwright attachment: native-country-sheet-landscape-en",
+      "bytes": 36896,
+      "sha256": "b762f5b49d138cb4dedcbe4d6ba64743d2b384f7db69dbd59d92b8a7f8cea8b2"
+    },
+    {
+      "path": "case-2/native-country-sheet-landscape-en-screenshot.png",
+      "source": ".tmp/native-planet-browser-results/country-sheet-20260908-a1/artifacts/native-planet-mobile-count-ff6a9-without-replacing-the-scene/attachments/native-country-sheet-landscape-en-screenshot-c7e91efa7de556e023b40bd08792c516d76cd08d.png",
+      "bytes": 192057,
+      "sha256": "63eb017a4ef9de63ca9c6a2e7eceac40096488d126bec07245acc068a70f2bb1"
+    },
+    {
+      "path": "case-2/native-country-sheet-cancelled-portrait-en.json",
+      "source": "Exact decoded Playwright attachment: native-country-sheet-cancelled-portrait-en",
+      "bytes": 30584,
+      "sha256": "1276f229118fb20c8d86acf3c3ced0f94c1efdbaa7f4dc39baccec9a879291c9"
+    },
+    {
+      "path": "case-2/native-country-sheet-cancelled-portrait-en-screenshot.png",
+      "source": ".tmp/native-planet-browser-results/country-sheet-20260908-a1/artifacts/native-planet-mobile-count-ff6a9-without-replacing-the-scene/attachments/native-country-sheet-cancelled-portrait-en-screenshot-6d0ecdbbc741d74cd1877f225e87446ed5b9162a.png",
+      "bytes": 420800,
+      "sha256": "4fba0834597cbb0a11588d13d45301c5729b4ae642a041064a451a2fcbfb1a02"
+    },
+    {
+      "path": "case-2/native-final-passed.json",
+      "source": "Exact decoded Playwright attachment: native-final-passed",
+      "bytes": 30253,
+      "sha256": "6dca5f65314f1fbdc1c5afb43a96cabddea4dec590048368c6b47fd2304eee34"
+    },
+    {
+      "path": "case-2/native-final-passed-screenshot.png",
+      "source": ".tmp/native-planet-browser-results/country-sheet-20260908-a1/artifacts/native-planet-mobile-count-ff6a9-without-replacing-the-scene/attachments/native-final-passed-screenshot-e87877c04c9969dee72f8716116e92adaa06ffa4.png",
+      "bytes": 420800,
+      "sha256": "4fba0834597cbb0a11588d13d45301c5729b4ae642a041064a451a2fcbfb1a02"
+    },
+    {
+      "path": "run-log.json",
+      "source": ".tmp/s07-country-sheet-20260908/a1/run.log",
+      "bytes": 855,
+      "sha256": "b234a2388ccf025bb65e56d4d7f2c03299fa6f43fd8772ec7848b951f33e360b"
+    },
+    {
+      "path": "touch-observations.json",
+      "source": "Compact summary of exact safe Playwright runtime attachments",
+      "bytes": 3109,
+      "sha256": "65e48143365fef2f89b9eb74ce32dea16e3110b655cf99d03398edb73e528546"
+    }
+  ],
+  "losslessRunLog": {
+    "path": "run-log.json",
+    "bytes": 573,
+    "sha256": "cd71939ff6e0487a4b89b3e5674405568bf9102b492e02ccf1f44e5e0d36507a",
+    "roundTripVerified": true
+  },
+  "limitations": [
+    "This preserves the exact attempt, including failures; it is not stage acceptance.",
+    "No OS installation, native/PWA artifact, production publication, trace.zip or compiled source payload included.",
+    "Only existing evidence was copied and checked by hash; no tests rerun for preservation."
+  ],
+  "focusedResult": {
+    "passed": 2,
+    "failed": 0,
+    "oldScenariosRepeated": 0,
+    "rawTelemetry": "touch-observations.json",
+    "snapMode": "Actual CSS endpoints measured through real UI taps; stationary hold before release selects nearest height.",
+    "nativeArtifactBuilt": false,
+    "pwaArtifactBuilt": false
+  },
+  "visualReview": {
+    "inspectedScreenshots": [
+      "case-1/native-country-sheet-expanded-ru-screenshot.png",
+      "case-1/native-country-sheet-return-collapsed-screenshot.png",
+      "case-2/native-country-sheet-landscape-en-screenshot.png",
+      "case-2/native-country-sheet-cancelled-portrait-en-screenshot.png"
+    ],
+    "observed": [
+      "The actual country sheet stays over the retained canonical globe in expanded and collapsed states.",
+      "The collapsed handle leaves the globe and its controls visible.",
+      "Landscape half sheet and global EN toolbar remain inside the viewport; portrait restores the half sheet.",
+      "The selected Russia/Dostoevsky state remains in the actual route and component; screenshots in these states show the country archive header."
+    ],
+    "editorialScope": "Existing RU content-language badge and English held/editorial text are not a new locale control or evidence of complete English content.",
+    "physicalDeviceObserved": false
+  }
+}
