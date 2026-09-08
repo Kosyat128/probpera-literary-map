@@ -1,0 +1,8 @@
+{
+  "runId": "first-journey-20260908-a2b",
+  "previousSelectionAttempt": "a2: No tests found before fixture build or browser launch",
+  "sourceCommit": "56a7a8c840d0950f1de2eebb7dd31b9188890312",
+  "runtimeSourceUnchanged": true,
+  "selectedScenarios": 2,
+  "grep": "first journey"
+}

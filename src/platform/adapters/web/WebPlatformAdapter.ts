@@ -36,6 +36,7 @@ export interface WebPlatformAdapterOptions {
 const preferenceValues = new Map<string, readonly string[]>([
   ["probpera-interface-language", ["ru", "en"]],
   ["probpera-display-mode", ["dark", "light", "book"]],
+  ["probpera-planet-welcome-v1", ["completed"]],
 ]);
 
 function safeHttpsUrl(input: string): string | null {

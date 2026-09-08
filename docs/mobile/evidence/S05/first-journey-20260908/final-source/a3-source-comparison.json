@@ -1,0 +1,17 @@
+{
+  "unchangedDuringRun": false,
+  "files": 967,
+  "changed": [
+    {
+      "path": "src/host/host.css",
+      "sha256": "2af966893dc688457554af63fd460e21bbb47d617f1bae7f6db0bf1785c6d76a",
+      "SideIndicator": "=>"
+    },
+    {
+      "path": "src/host/host.css",
+      "sha256": "756cf2dd2865d58127f7bdcdd9fb5de7996bebe24de7011680a47e1aa4b5e924",
+      "SideIndicator": "<="
+    }
+  ],
+  "postRunSourceChange": "Root applied only host.css reduced-motion search fix after observing completed a3, before this post-run hash snapshot. The completed in-memory browser bundle is immutable; full before/after equality is not claimed."
+}

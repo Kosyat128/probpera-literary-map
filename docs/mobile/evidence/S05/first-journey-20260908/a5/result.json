@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "stage": "S05",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "runId": "first-journey-20260908-a5",
+  "sourceCommit": "56a7a8c840d0950f1de2eebb7dd31b9188890312",
+  "scope": "Canonical App/R3F/CSS in Chrome with injected native plugins, simulated OS Preferences persistence and explicit-click random seed.",
+  "statistics": {
+    "startTime": "2026-09-08T06:06:51.314Z",
+    "duration": 21090.473,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "selectionErrorBeforeFixture": false,
+  "tests": [
+    {
+      "title": "first journey on narrow reduced-motion screens supports keyboard search, remembered completion and fresh deep links",
+      "status": "failed",
+      "durationMs": 18970,
+      "errors": [
+        "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeInViewport\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.atlas-immersive-chrome').locator('.interface-language-control button').first()\nExpected: in viewport\nReceived: viewport ratio 0.9545454382896423\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeInViewport\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.atlas-immersive-chrome').locator('.interface-language-control button').first()\u001b[22m\n\u001b[2m    33 × locator resolved to <button type=\"button\" class=\"is-active\" aria-pressed=\"true\" title=\"Русский язык\" aria-label=\"Русский язык\">RU</button>\u001b[22m\n\u001b[2m       - unexpected value \"viewport ratio 0.9545454382896423\"\u001b[22m\n\n\n  373 |   for (const button of await buttons.all()) {\n  374 |     await expect(button).toBeVisible();\n> 375 |     await expect(button).toBeInViewport({ ratio: 1 });\n      |                          ^\n  376 |     const observation = await button.evaluate(element => {\n  377 |       const rect = element.getBoundingClientRect();\n  378 |       const hit = document.elementFromPoint(rect.x + rect.width / 2, rect.y + rect.height / 2);\n    at welcomeLanguageAccess (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs:375:26)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs:482:78"
+      ],
+      "attachments": [
+        {
+          "name": "native-final-failed",
+          "path": "case-1/native-final-failed.json"
+        },
+        {
+          "name": "native-final-failed-screenshot",
+          "path": "case-1/native-final-failed-screenshot.png"
+        }
+      ]
+    }
+  ],
+  "sourceComparison": {
+    "sourceFiles": 967,
+    "unchangedDuringRun": true,
+    "changed": []
+  },
+  "runContext": {
+    "runId": "first-journey-20260908-a5",
+    "sourceCommit": "56a7a8c840d0950f1de2eebb7dd31b9188890312",
+    "changedFromA4": [
+      "src/host/host.css",
+      "tests/host/native-planet.spec.mjs"
+    ],
+    "selectedScenarios": 1,
+    "grep": "first journey on narrow",
+    "sourceFiles": 967,
+    "previousGreenCasesNotRepeated": 4,
+    "narrowChromeCapabilities": "Fine pointer / desktop Chrome with narrow viewport and CDP safe-area emulation; not physical touch or native OS evidence",
+    "reason": "Focused visual/accessibility fix: global RU/EN remains discoverable during naturally reached quiet mode while first-journey invitation is visible.",
+    "evidenceNamingChange": "Multiple native page fixtures now have distinct afterEach screenshot/JSON names; assertions unchanged by this naming fix."
+  },
+  "preservedFiles": [
+    {
+      "path": "source-before.json",
+      "source": ".tmp/s05-first-journey-20260908/a5/source-before.json",
+      "bytes": 136183,
+      "sha256": "1f6978912dc21a899f3a52246928949a9165b2965b309e94edbedfe07d35389b"
+    },
+    {
+      "path": "source-after.json",
+      "source": ".tmp/s05-first-journey-20260908/a5/source-after.json",
+      "bytes": 136183,
+      "sha256": "1f6978912dc21a899f3a52246928949a9165b2965b309e94edbedfe07d35389b"
+    },
+    {
+      "path": "source-comparison.json",
+      "source": ".tmp/s05-first-journey-20260908/a5/source-comparison.json",
+      "bytes": 72,
+      "sha256": "eed61890d6f7454d6aba135e26b02a7c6640c10611696daf3a684865abf04b8c"
+    },
+    {
+      "path": "run-context.json",
+      "source": ".tmp/s05-first-journey-20260908/a5/run-context.json",
+      "bytes": 786,
+      "sha256": "72ca9eefc54b0a254e1b14bc681de5f91bf456e2157177c156bcad0c87809783"
+    },
+    {
+      "path": "browser-results.json",
+      "source": ".tmp/native-planet-browser-results/first-journey-20260908-a5/results.json",
+      "bytes": 20061,
+      "sha256": "e8afbdab20aec050fd1e55b11c39a1ecfe9874d75e55b02abb5fd58a07839655"
+    },
+    {
+      "path": "case-1/native-final-failed.json",
+      "source": "Exact decoded Playwright attachment: native-final-failed",
+      "bytes": 7433,
+      "sha256": "81c9c91972f50983ccb61beefd66735515f2ab6d62cb6c62be6cdbe3c4e32167"
+    },
+    {
+      "path": "case-1/native-final-failed-screenshot.png",
+      "source": ".tmp/native-planet-browser-results/first-journey-20260908-a5/artifacts/native-planet-first-journe-33ddb-letion-and-fresh-deep-links/attachments/native-final-failed-screenshot-3cff4fb911635de919b65879f3a6db681bec93b2.png",
+      "bytes": 184998,
+      "sha256": "61647a60dc9a9fd175f2b69495ca1045a11ec9f2c9c0f3fe1ef33278fe31d112"
+    },
+    {
+      "path": "run-log.json",
+      "source": ".tmp/s05-first-journey-20260908/a5/run.log",
+      "bytes": 3627,
+      "sha256": "05f94541cc4a6e07552fcf8c20820f3d045ca49e87c609de9cb03e2264c8202c"
+    }
+  ],
+  "losslessRunLog": {
+    "path": "run-log.json",
+    "bytes": 3224,
+    "sha256": "7871bd967e0e6a6b8cc049f8e0961cbc11d2b01db49cceafa3d213901c760cc7",
+    "roundTripVerified": true
+  },
+  "limitations": [
+    "This preserves the exact attempt, including failures; it is not stage acceptance.",
+    "No OS installation, native/PWA artifact, production publication, trace.zip or compiled source payload included.",
+    "Only existing evidence was copied and checked by hash; no tests rerun for preservation."
+  ],
+  "visualReview": {
+    "inspectedScreenshot": "case-1/native-final-failed-screenshot.png",
+    "observed": "At 320x844 the canonical logo and global toolbar, including RU/EN, remain visible while the invitation is shown. The earlier quiet-mode invisibility is visibly corrected.",
+    "limitation": "The scenario stopped at the new full-intersection assertion before validating 390px, Search, persistence or fresh deep-link stages. Existing a4 PASS remains separate evidence."
+  },
+  "failureDiagnosis": {
+    "observedGate": "RU button fully in viewport: intersection ratio 0.9545454382896423 instead of 1",
+    "passedBeforeFailure": [
+      "Real application natural quiet=true",
+      "Welcome visible",
+      "Toolbar opacity=1",
+      "Toolbar transform=none",
+      "Toolbar neither hovered nor focus-within",
+      "RU/EN label pair and RU visibility"
+    ],
+    "sourceAnalysis": "The canonical language group retains overflow:hidden and a 1px border with height44px; child buttons are44px tall. Its42px content height explains the observed42/44 intersection. This is a source-supported diagnosis, not a newly captured per-ancestor runtime rectangle.",
+    "sourceReferences": [
+      "src/index.css:19612",
+      "src/index.css:21070",
+      "src/index.css:21495",
+      "src/host/host.css:117"
+    ],
+    "fixAppliedByThisAgent": false
+  }
+}

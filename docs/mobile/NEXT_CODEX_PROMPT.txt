@@ -1,6 +1,21 @@
 Continue V12 in literary-planet-v12-work on
 codex/literary-planet-v12-bilingual-final-autopilot.
 
+<!-- s05-first-journey:begin -->
+LATEST S05 SOURCE: first-journey invitation around the same live globe.
+Evidence: evidence/S05/first-journey-20260908/result.json.
+Read aggregate and preserved run history: 67 scoped unit passes (6 welcome,
+61 preferences), 90 adapter filter skips, App focus-fix static pass and 1 selected
+browser passes. Do not count the failed earlier cases as passed or infer a
+full-suite, installed-device, full-onboarding or bilingual editorial approval.
+Later host.css-only product changes are documented in final-source CSS delta
+and final affected browser evidence; no static-tool rerun after CSS is claimed.
+Android 742/source8a, PWA 051 and frozen 83-file iOS payload/tree remain unchanged
+and do not contain this newer source. The iOS publication question is already
+pending; this slice does not enlarge that review or authorize publication.
+Resume S03.acceptance first, with documented S04/S05 parallel-safe work.
+<!-- s05-first-journey:end -->
+
 Globe/panel source8a3ef924 and Android evidence checkpoint585e479f are followed
 by the committed PWA Device UX/evidence checkpoint; resolve its SHA via git log.
 The canonical globe is the only PWA/native home. Orange splash -> actual

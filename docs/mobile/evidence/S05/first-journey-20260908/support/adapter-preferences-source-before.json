@@ -1,0 +1,18 @@
+[
+  {
+    "Path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\src\\host\\HostPlatformServices.ts",
+    "Hash": "BD66738649A137D9C46EF22C8DAB108B311F51EF3C9DC542E53AA50EE2864EF7"
+  },
+  {
+    "Path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\src\\host\\HostPlatformServices.test.ts",
+    "Hash": "D1927A04ED18F5EA561C110FFFBC581CF34865B7EE07AAFE991DC2578EA9C839"
+  },
+  {
+    "Path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\src\\platform\\adapters\\web\\WebPlatformAdapter.ts",
+    "Hash": "68D1592D73FFE00B59ABCDE72AD17A19CAC8864CC973C69931A11679681E2D11"
+  },
+  {
+    "Path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\src\\platform\\adapters\\web\\WebPlatformAdapter.test.ts",
+    "Hash": "FF1519DE9A3594CA2D3CD6C1D084D0608903513FA4066331A55035A4ADD3C272"
+  }
+]

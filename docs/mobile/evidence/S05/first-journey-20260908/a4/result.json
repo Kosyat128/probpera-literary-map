@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 1,
+  "stage": "S05",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "runId": "first-journey-20260908-a4",
+  "sourceCommit": "56a7a8c840d0950f1de2eebb7dd31b9188890312",
+  "scope": "Canonical App/R3F/CSS in Chrome with injected native plugins, simulated OS Preferences persistence and explicit-click random seed.",
+  "statistics": {
+    "startTime": "2026-09-08T05:56:22.257Z",
+    "duration": 14585.482,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "selectionErrorBeforeFixture": false,
+  "tests": [
+    {
+      "title": "first journey on narrow reduced-motion screens supports keyboard search, remembered completion and fresh deep links",
+      "status": "passed",
+      "durationMs": 12278,
+      "errors": [],
+      "attachments": [
+        {
+          "name": "native-welcome-narrow-ru",
+          "path": "case-1/native-welcome-narrow-ru.json"
+        },
+        {
+          "name": "native-welcome-narrow-ru-screenshot",
+          "path": "case-1/native-welcome-narrow-ru-screenshot.png"
+        },
+        {
+          "name": "native-welcome-narrow-large-text",
+          "path": "case-1/native-welcome-narrow-large-text.json"
+        },
+        {
+          "name": "native-welcome-narrow-large-text-screenshot",
+          "path": "case-1/native-welcome-narrow-large-text-screenshot.png"
+        },
+        {
+          "name": "native-welcome-landscape-keyboard-search",
+          "path": "case-1/native-welcome-landscape-keyboard-search.json"
+        },
+        {
+          "name": "native-welcome-landscape-keyboard-search-screenshot",
+          "path": "case-1/native-welcome-landscape-keyboard-search-screenshot.png"
+        },
+        {
+          "name": "native-welcome-keyboard-search-ready",
+          "path": "case-1/native-welcome-keyboard-search-ready.json"
+        },
+        {
+          "name": "native-welcome-keyboard-search-ready-screenshot",
+          "path": "case-1/native-welcome-keyboard-search-ready-screenshot.png"
+        },
+        {
+          "name": "native-welcome-completed-reload",
+          "path": "case-1/native-welcome-completed-reload.json"
+        },
+        {
+          "name": "native-welcome-completed-reload-screenshot",
+          "path": "case-1/native-welcome-completed-reload-screenshot.png"
+        },
+        {
+          "name": "native-welcome-fresh-deep-link",
+          "path": "case-1/native-welcome-fresh-deep-link.json"
+        },
+        {
+          "name": "native-welcome-fresh-deep-link-screenshot",
+          "path": "case-1/native-welcome-fresh-deep-link-screenshot.png"
+        },
+        {
+          "name": "native-final-passed",
+          "path": "case-1/native-final-passed.json"
+        },
+        {
+          "name": "native-final-passed",
+          "path": "case-1/native-final-passed-2.json"
+        },
+        {
+          "name": "native-final-passed-screenshot",
+          "path": "case-1/native-final-passed-screenshot.png"
+        }
+      ]
+    }
+  ],
+  "sourceComparison": {
+    "unchangedDuringRun": true,
+    "files": 967,
+    "changed": []
+  },
+  "runContext": {
+    "runId": "first-journey-20260908-a4",
+    "sourceCommit": "56a7a8c840d0950f1de2eebb7dd31b9188890312",
+    "changedFromA3": [
+      "src/host/host.css",
+      "tests/host/native-planet.spec.mjs"
+    ],
+    "selectedScenarios": 1,
+    "grep": "first journey on narrow",
+    "sourceFiles": 967,
+    "previousGreenCasesNotRepeated": 4,
+    "narrowChromeCapabilities": "Fine pointer / desktop Chrome with narrow viewport and CDP safe-area emulation; not physical touch or native OS evidence"
+  },
+  "preservedFiles": [
+    {
+      "path": "source-before.json",
+      "source": ".tmp/s05-first-journey-20260908/a4/source-before.json",
+      "bytes": 140053,
+      "sha256": "c60377dafb8a8f5194c3bf0e7f05e19223fbfd0df9820c127f0b724f0302883a"
+    },
+    {
+      "path": "source-after.json",
+      "source": ".tmp/s05-first-journey-20260908/a4/source-after.json",
+      "bytes": 140053,
+      "sha256": "c60377dafb8a8f5194c3bf0e7f05e19223fbfd0df9820c127f0b724f0302883a"
+    },
+    {
+      "path": "source-comparison.json",
+      "source": ".tmp/s05-first-journey-20260908/a4/source-comparison.json",
+      "bytes": 71,
+      "sha256": "95e40cfe3cd0cea0754c56cbacd08bf30687f849ab45d32776715c9a145ced9b"
+    },
+    {
+      "path": "run-context.json",
+      "source": ".tmp/s05-first-journey-20260908/a4/run-context.json",
+      "bytes": 486,
+      "sha256": "8f798eee9acfc02340e6fb7e7d95ea2ab8823706b3ebe8c27837b9edad48720b"
+    },
+    {
+      "path": "browser-results.json",
+      "source": ".tmp/native-planet-browser-results/first-journey-20260908-a4/results.json",
+      "bytes": 108055,
+      "sha256": "f60162e12cd5773957df93b80aee47ea910568deba73caaadb3541eb095be5d6"
+    },
+    {
+      "path": "case-1/native-welcome-narrow-ru.json",
+      "source": "Exact decoded Playwright attachment: native-welcome-narrow-ru",
+      "bytes": 8366,
+      "sha256": "394f09d44c013e6bd819692649116b780f77e4410684cfee8bb5ada0a452e92c"
+    },
+    {
+      "path": "case-1/native-welcome-narrow-ru-screenshot.png",
+      "source": ".tmp/native-planet-browser-results/first-journey-20260908-a4/artifacts/native-planet-first-journe-33ddb-letion-and-fresh-deep-links/attachments/native-welcome-narrow-ru-screenshot-ed12866a602f2bebf81aba633ec2e194289ee1d3.png",
+      "bytes": 237608,
+      "sha256": "8ccdab4a23f4c663f4fda8d6377d3fc1b8fa68beaf2160a198cd6646988e62ab"
+    },
+    {
+      "path": "case-1/native-welcome-narrow-large-text.json",
+      "source": "Exact decoded Playwright attachment: native-welcome-narrow-large-text",
+      "bytes": 7950,
+      "sha256": "6f901d7051113d23ba7bc9d75349d453f4fde8d9c55370d9394770f593c738dd"
+    },
+    {
+      "path": "case-1/native-welcome-narrow-large-text-screenshot.png",
+      "source": ".tmp/native-planet-browser-results/first-journey-20260908-a4/artifacts/native-planet-first-journe-33ddb-letion-and-fresh-deep-links/attachments/native-welcome-narrow-large-text-screenshot-dc0b3c348c8a462190011c6e308707e85ea4b5ad.png",
+      "bytes": 228250,
+      "sha256": "d35b4f81fe6a4fb8a268a249e08d27370685c155e87f360ae82f80c5c82e2b89"
+    },
+    {
+      "path": "case-1/native-welcome-landscape-keyboard-search.json",
+      "source": "Exact decoded Playwright attachment: native-welcome-landscape-keyboard-search",
+      "bytes": 9395,
+      "sha256": "1202306c1c312e9e1d2c0fdf0ded82690c31e6fc20c217b5848823f03076f23f"
+    },
+    {
+      "path": "case-1/native-welcome-landscape-keyboard-search-screenshot.png",
+      "source": ".tmp/native-planet-browser-results/first-journey-20260908-a4/artifacts/native-planet-first-journe-33ddb-letion-and-fresh-deep-links/attachments/native-welcome-landscape-keyboard-search-screenshot-17222a6318a47b8b5a3fe54a6f2c6706cefaf96f.png",
+      "bytes": 139106,
+      "sha256": "4bfd161a4f4777798a4f1eb5d67886a5478773a8948c93d4e9b3909b9acc6d25"
+    },
+    {
+      "path": "case-1/native-welcome-keyboard-search-ready.json",
+      "source": "Exact decoded Playwright attachment: native-welcome-keyboard-search-ready",
+      "bytes": 11482,
+      "sha256": "529b08c4e03b090ad382fb171dd0b61f072da20381a723219f39e4cd78c8fd91"
+    },
+    {
+      "path": "case-1/native-welcome-keyboard-search-ready-screenshot.png",
+      "source": ".tmp/native-planet-browser-results/first-journey-20260908-a4/artifacts/native-planet-first-journe-33ddb-letion-and-fresh-deep-links/attachments/native-welcome-keyboard-search-ready-screenshot-e2ea136d02e66488cc11ff1283791563e13a027e.png",
+      "bytes": 169610,
+      "sha256": "188080cfba160140accb6b7fee8b6c05505259dc1ff9adb3dfa79940182f8548"
+    },
+    {
+      "path": "case-1/native-welcome-completed-reload.json",
+      "source": "Exact decoded Playwright attachment: native-welcome-completed-reload",
+      "bytes": 8351,
+      "sha256": "c7f8a83a188c374fc74a77c5738fc841a48195680c3ea9c192d1eefd37facc1e"
+    },
+    {
+      "path": "case-1/native-welcome-completed-reload-screenshot.png",
+      "source": ".tmp/native-planet-browser-results/first-journey-20260908-a4/artifacts/native-planet-first-journe-33ddb-letion-and-fresh-deep-links/attachments/native-welcome-completed-reload-screenshot-90baf156632d61a737c4adab7135987b85945ef8.png",
+      "bytes": 392261,
+      "sha256": "0123f732525bded50fb546e55224d745b7941546dc729ad498befb42dac88b08"
+    },
+    {
+      "path": "case-1/native-welcome-fresh-deep-link.json",
+      "source": "Exact decoded Playwright attachment: native-welcome-fresh-deep-link",
+      "bytes": 10201,
+      "sha256": "f27c3dae7163d064b7220b5b6435f68bfffdf374abc7371e30e9b2651110a7e2"
+    },
+    {
+      "path": "case-1/native-welcome-fresh-deep-link-screenshot.png",
+      "source": ".tmp/native-planet-browser-results/first-journey-20260908-a4/artifacts/native-planet-first-journe-33ddb-letion-and-fresh-deep-links/attachments/native-welcome-fresh-deep-link-screenshot-07caa649a4a4e7255a4afeb48751188d71eddea0.png",
+      "bytes": 424368,
+      "sha256": "e43a2bd8fad44035f2b4c10c23c97b95c6c73786031155754e2901460d59f568"
+    },
+    {
+      "path": "case-1/native-final-passed.json",
+      "source": "Exact decoded Playwright attachment: native-final-passed",
+      "bytes": 8215,
+      "sha256": "f506c93b5e22c0f774c6289b729056051db6fe2b8743ba9b423274797a452083"
+    },
+    {
+      "path": "case-1/native-final-passed-2.json",
+      "source": "Exact decoded Playwright attachment: native-final-passed",
+      "bytes": 10086,
+      "sha256": "67d2abe940fb4de83c39f7d0921c4db6142bfec1bd6a3238001f773e2c229d1a"
+    },
+    {
+      "path": "case-1/native-final-passed-screenshot.png",
+      "source": ".tmp/native-planet-browser-results/first-journey-20260908-a4/artifacts/native-planet-first-journe-33ddb-letion-and-fresh-deep-links/attachments/native-final-passed-screenshot-2e5c8de5df5763f0e5f04c5874ab9ffaa1055180.png",
+      "bytes": 424368,
+      "sha256": "e43a2bd8fad44035f2b4c10c23c97b95c6c73786031155754e2901460d59f568"
+    },
+    {
+      "path": "run-log.json",
+      "source": ".tmp/s05-first-journey-20260908/a4/run.log",
+      "bytes": 676,
+      "sha256": "b9b628e8049dc09147912323f0d394da5c5f3ba7e6baa0908b9369c34a67bd6b"
+    }
+  ],
+  "losslessRunLog": {
+    "path": "run-log.json",
+    "bytes": 398,
+    "sha256": "a32c9485b9a4734610a88ad605f6b6fa94f33669146d34f7b01a01d49c3f9b83",
+    "roundTripVerified": true
+  },
+  "limitations": [
+    "This preserves the exact attempt, including failures; it is not stage acceptance.",
+    "No OS installation, native/PWA artifact, production publication, trace.zip or compiled source payload included.",
+    "Only existing evidence was copied and checked by hash; no tests rerun for preservation."
+  ],
+  "archivalCorrection": {
+    "issue": "The two final afterEach fixtures shared one attachment name; Playwright overwrote the first redundant final screenshot with the fresh deep-link screenshot.",
+    "rawBrowserResultsUnchanged": true,
+    "bothFinalJsonAttachmentsRecoveredLosslessly": true,
+    "uniqueScreenshotsPreserved": 7,
+    "unavailableRedundantImage": "First afterEach final screenshot of the completed-reload page",
+    "equivalentExplicitImageAvailable": "case-1/native-welcome-completed-reload-screenshot.png",
+    "availableFinalImage": "case-1/native-final-passed-screenshot.png shows the second fresh-deep-link page",
+    "futureFixtureNamingFix": "An afterEach fixture-index suffix was added after the passing run. This only prevents attachment filename collisions; no assertions or app behavior changed, and no test replay was performed."
+  }
+}

@@ -30,20 +30,22 @@ test.beforeAll(async () => {
       import{mountHostApp}from'./src/host/mountHostApp';
       import{createAndroidPlatformAdapter}from'./src/platform/adapters/android/AndroidPlatformAdapter';
       const initial=window.__nativePlanetInitial;
-      const memory=new Map([['probpera-interface-language',initial.language]]);
       const handles=[];
       const subscribe=async(event,listener)=>{const handle={event,listener,removed:false,async remove(){handle.removed=true}};handles.push(handle);return handle};
       const bindings={
         core:{getPlatform:()=> 'android',isNativePlatform:()=>true,isPluginAvailable:()=>true},
         app:{getAppLanguage:async()=>({value:initial.language==='ru'?'ru-RU':'en-US'}),getState:async()=>({isActive:true}),getLaunchUrl:async()=>undefined,addListener:subscribe},
         network:{getStatus:async()=>({connected:true}),addListener:subscribe},
-        preferences:{get:async({key})=>({value:memory.get(key)??null}),set:async({key,value})=>{memory.set(key,value)},remove:async({key})=>{memory.delete(key)}},
+        preferences:{get:async({key})=>({value:await window.__nativePlanetPreference('get',key)}),set:async({key,value})=>{await window.__nativePlanetPreference('set',key,value)},remove:async({key})=>{await window.__nativePlanetPreference('remove',key)}},
         browser:{open:async()=>{throw Error('External browser unavailable in the native source fixture')}},
         appLauncher:{openUrl:async()=>({completed:false})}
       };
       window.__nativePlanetHarness={
         scenes:()=>[..._roots.entries()].map(([canvas,root])=>{const s=root.store.getState();return{canvas,renderer:s.gl,camera:s.camera,scene:s.scene}}),
-        savedLanguage:()=>memory.get('probpera-interface-language'),
+        savedLanguage:()=>window.__nativePlanetPreference('get','probpera-interface-language'),
+        savedWelcome:()=>window.__nativePlanetPreference('get','probpera-planet-welcome-v1'),
+        canonicalCountry:async(id)=>{const{countries}=await import('./src/data/countries');const country=countries.find(value=>value.id===id);return country?{id:country.id,writerCount:country.writers.length}:null},
+        journeySeed:async(id)=>{const[{countries},{chooseRandomLiteraryDestination}]=await Promise.all([import('./src/data/countries'),import('./src/components/globeDiscovery')]);for(let i=0;i<countries.length;i++){const seed=(i+.5)/countries.length;if(chooseRandomLiteraryDestination({candidates:countries,randomValue:seed})?.id===id)return seed}throw Error('Canonical journey destination not found')},
         back:()=>{for(const h of handles)if(!h.removed&&h.event==='backButton')h.listener({canGoBack:false})}
       };
       createAndroidPlatformAdapter({bindings,channel:'dev'}).then(mountHostApp).catch(error=>{window.__nativePlanetBootstrapError=error.message});
@@ -100,7 +102,7 @@ test.beforeAll(async () => {
   }
   sourceEvidence = {
     kind: "canonical-native-app-source-in-Chrome",
-    nativePlugins: "injected Android OS boundary", actualApp: true, actualCss: true,
+    nativePlugins: "injected Android OS boundary; Preferences Map persists outside each document through a Playwright binding", actualApp: true, actualCss: true,
     publicAssetSelectionSha256: digest(selectionBytes), selectedPublicAssets: selection.files.length,
     viteGlobTransform,
     bundledFiles: result.outputFiles.map(file => ({ path: path.relative(memoryOutput, file.path).replaceAll("\\", "/"), sha256: digest(file.contents) })),
@@ -110,30 +112,89 @@ test.beforeAll(async () => {
 });
 test.afterAll(async () => { await browser?.close(); });
 test.afterEach(async ({}, testInfo) => {
+  const multipleFixtures = activeFixtures.size > 1;
+  let fixtureIndex = 0;
   for (const fixture of activeFixtures) {
-    try { await captureEvidence(fixture, testInfo, "native-final-" + testInfo.status); }
+    try { await captureEvidence(fixture, testInfo, "native-final-" + testInfo.status + (multipleFixtures ? "-" + (++fixtureIndex) : "")); }
     finally { await fixture.page.close(); activeFixtures.delete(fixture); }
   }
 });
 
-async function open({ route = "/", language = "ru", viewport = { width: 1280, height: 800 }, reducedMotion = "reduce", safeArea } = {}) {
+async function open({ route = "/", language = "ru", viewport = { width: 1280, height: 800 }, reducedMotion = "reduce", safeArea, preferences = {} } = {}) {
   const page = await browser.newPage({ viewport, reducedMotion });
   page.setDefaultTimeout(15_000);
   const errors = [], consoleErrors = [], externalRequests = [], missingResources = [];
-  const fixture = { page, errors, consoleErrors, externalRequests, missingResources };
+  const preferenceMemory = new Map([["probpera-interface-language", language], ...Object.entries(preferences)]);
+  const preferenceOperations = [];
+  const fixture = { page, errors, consoleErrors, externalRequests, missingResources, preferenceMemory, preferenceOperations };
   activeFixtures.add(fixture);
+  // Simulated OS persistence lives outside the document. Reload therefore tests
+  // the real adapter's whitelist/readback and the real welcome initialization.
+  await page.exposeBinding("__nativePlanetPreference", (_source, operation, key, value) => {
+    preferenceOperations.push({ operation, key, ...(operation === "set" ? { value } : {}) });
+    if (operation === "get") return preferenceMemory.get(key) ?? null;
+    if (operation === "set") { preferenceMemory.set(key, value); return; }
+    if (operation === "remove") { preferenceMemory.delete(key); return; }
+    throw Error("Unknown simulated native preference operation");
+  });
   page.on("pageerror", error => errors.push(error.message));
   page.on("console", message => { if (message.type() === "error") consoleErrors.push(message.text()); });
   if (safeArea) {
     const session = await page.context().newCDPSession(page);
+    fixture.safeAreaSession = session;
     await session.send("Emulation.setSafeAreaInsetsOverride", { insets: safeArea });
   }
   await page.addInitScript(value => {
     window.__nativePlanetInitial = value;
     window.__nativePlanetVisibleHeroFrames = 0;
+    window.__nativePlanetWelcomeFrames = { visible: 0, beforeRealSceneReady: 0, duringLaunch: 0, maxCanvasCount: 0 };
+    window.__nativePlanetFocusTrace = [];
+    const focusNode = element => {
+      if (!(element instanceof Element)) return null;
+      const rect = element.getBoundingClientRect();
+      const hiddenAncestors = [];
+      for (let ancestor = element; ancestor; ancestor = ancestor.parentElement) {
+        const style = getComputedStyle(ancestor);
+        if (ancestor.inert || ancestor.hidden || style.display === "none" || style.visibility === "hidden") {
+          hiddenAncestors.push({ tag: ancestor.tagName, id: ancestor.id, className: ancestor.className,
+            inert: ancestor.inert, hidden: ancestor.hidden, display: style.display, visibility: style.visibility });
+        }
+      }
+      return { tag: element.tagName, id: element.id, className: element.className, connected: element.isConnected,
+        action: element.getAttribute("data-atlas-action") ?? element.getAttribute("data-planet-welcome-action"),
+        rect: { x: rect.x, y: rect.y, width: rect.width, height: rect.height }, hiddenAncestors };
+    };
+    const traceFocus = (kind, target) => {
+      const trace = window.__nativePlanetFocusTrace;
+      if (trace.length >= 150) return;
+      trace.push({ kind, at: performance.now(), target: focusNode(target), active: focusNode(document.activeElement),
+        searchOpen: document.querySelector("[data-atlas-experience]")?.getAttribute("data-atlas-search-open") });
+    };
+    const originalFocus = HTMLElement.prototype.focus;
+    HTMLElement.prototype.focus = function (...args) {
+      const observed = this.matches('#country-search, [data-atlas-action="toggle-search"], [data-planet-welcome-action], .country-panel, .atlas-country-presentation');
+      if (observed) traceFocus("before-focus", this);
+      const result = Reflect.apply(originalFocus, this, args);
+      if (observed) traceFocus("after-focus", this);
+      return result;
+    };
+    document.addEventListener("focusin", event => traceFocus("focusin", event.target), true);
+    document.addEventListener("focusout", event => traceFocus("focusout", event.target), true);
     const observe = () => {
       const hero = document.querySelector(".magazine-hero");
       if (hero) { const rect = hero.getBoundingClientRect(); const style = getComputedStyle(hero); if (rect.width && rect.height && style.display !== "none" && style.visibility !== "hidden") window.__nativePlanetVisibleHeroFrames++; }
+      const visible = element => {
+        if (!element) return false;
+        const rect = element.getBoundingClientRect(), style = getComputedStyle(element);
+        return Boolean(rect.width && rect.height && style.display !== "none" && style.visibility !== "hidden" && style.opacity !== "0");
+      };
+      const frames = window.__nativePlanetWelcomeFrames;
+      frames.maxCanvasCount = Math.max(frames.maxCanvasCount, document.querySelectorAll("canvas").length);
+      if (visible(document.querySelector("[data-planet-welcome]"))) {
+        frames.visible++;
+        if (!document.querySelector('.native-planet-app[data-planet-ready="true"] #atlas .literary-globe[data-globe-webgl-context="ready"]')) frames.beforeRealSceneReady++;
+        if (visible(document.querySelector(".native-planet-launch"))) frames.duringLaunch++;
+      }
       requestAnimationFrame(observe);
     };
     requestAnimationFrame(observe);
@@ -151,6 +212,11 @@ async function open({ route = "/", language = "ru", viewport = { width: 1280, he
     await request.fulfill({ status: 404, contentType: "text/plain", body: "Unselected fixture resource" });
   });
   await page.goto(origin + route);
+  await nativeRootReady(page);
+  return fixture;
+}
+
+async function nativeRootReady(page) {
   await expect(page.locator(".native-planet-app")).toBeVisible();
   await expect(page.locator('.native-planet-app[data-planet-ready="true"]')).toBeVisible({ timeout: 60_000 });
   await expect(page.locator(".native-planet-launch")).toBeHidden();
@@ -158,7 +224,6 @@ async function open({ route = "/", language = "ru", viewport = { width: 1280, he
   await expect(page.locator("#atlas canvas")).toHaveCount(1);
   await expect(page.locator("canvas")).toHaveCount(1);
   await expect(page.locator(".magazine-hero")).toHaveCount(0);
-  return fixture;
 }
 
 async function captureScene(page) {
@@ -216,14 +281,23 @@ async function captureEvidence(fixture, testInfo, name, extra = {}) {
         url: location.href, language: document.documentElement.lang,
         bootstrapError: window.__nativePlanetBootstrapError ?? null,
         visibleHeroFrames: window.__nativePlanetVisibleHeroFrames,
+        welcomeFrames: window.__nativePlanetWelcomeFrames,
+        quietLanguageAccess: window.__nativePlanetQuietLanguageAccess ?? [],
+        focusTrace: window.__nativePlanetFocusTrace,
+        finalActiveElement: { tag: document.activeElement?.tagName, id: document.activeElement?.id,
+          action: document.activeElement?.getAttribute("data-atlas-action") },
+        journeyRandomInput: window.__nativePlanetJourneyRandom ?? null,
         canvasCount: document.querySelectorAll("#atlas canvas").length,
         documentCanvasCount: document.querySelectorAll("canvas").length,
         native: describe(".native-planet-app, .native-planet-launch, .native-planet-panel"),
+        welcome: describe("[data-planet-welcome]"),
         archive: describe("#books, #book-archive-detail, .stage5-deferred-books, [data-requested-book], #books [role=status], #books [role=alert]"),
       };
     });
   } catch (error) { runtime = { diagnosticError: error.message }; }
-  await testInfo.attach(name, { body: JSON.stringify({ ...sourceEvidence, ...extra, runtime, errors: fixture.errors, consoleErrors: fixture.consoleErrors, externalRequests: fixture.externalRequests, missingResources: fixture.missingResources }), contentType: "application/json" });
+  await testInfo.attach(name, { body: JSON.stringify({ ...sourceEvidence, ...extra, runtime,
+    simulatedNativePreferences: Object.fromEntries(fixture.preferenceMemory), preferenceOperations: fixture.preferenceOperations,
+    errors: fixture.errors, consoleErrors: fixture.consoleErrors, externalRequests: fixture.externalRequests, missingResources: fixture.missingResources }), contentType: "application/json" });
   try {
     const screenshotPath = testInfo.outputPath(name + ".png");
     await fixture.page.screenshot({ path: screenshotPath, timeout: 10_000 });
@@ -247,6 +321,7 @@ test("native first screen is the actual immersive globe and RU/EN retains writer
   try {
     await expect(page.locator('[data-atlas-experience]')).toHaveAttribute("data-atlas-view", "immersive");
     await showWriter(page);
+    await expect(page.locator("[data-planet-welcome]")).toHaveCount(0);
     const selectedCameraPose = await settledCameraPose(original);
     for (const language of ["en", "ru"]) {
       await page.locator(".native-planet-app .interface-language-control button").filter({ hasText: language.toUpperCase() }).click();
@@ -261,6 +336,218 @@ test("native first screen is the actual immersive globe and RU/EN retains writer
       await evidence(fixture, testInfo, "native-entry-" + language, { locales: ["ru", "en", "ru"], selectedCountry: "russia", selectedWriter: "dostoevsky", sameCanvasRendererCameraScene: true, cameraPose: selectedCameraPose, cameraPoseDecimalPrecision: 5 });
     }
   } finally { await original.dispose(); }
+});
+
+async function welcomeGeometry(page, safeArea = { top: 0, bottom: 0, left: 0, right: 0 }) {
+  const card = page.locator("[data-planet-welcome]");
+  await expect(card).toBeVisible();
+  const bounds = await card.boundingBox(), viewport = page.viewportSize();
+  expect(bounds.x).toBeGreaterThanOrEqual(safeArea.left);
+  expect(bounds.y).toBeGreaterThanOrEqual(safeArea.top);
+  expect(bounds.x + bounds.width).toBeLessThanOrEqual(viewport.width - safeArea.right);
+  expect(bounds.y + bounds.height).toBeLessThanOrEqual(viewport.height - safeArea.bottom);
+  const header = await page.locator(".atlas-immersive-chrome").boundingBox();
+  expect(bounds.y).toBeGreaterThanOrEqual(header.y + header.height);
+  const buttons = [];
+  for (const button of await card.getByRole("button").all()) {
+    const buttonBounds = await button.boundingBox();
+    expect(buttonBounds.width).toBeGreaterThanOrEqual(44);
+    expect(buttonBounds.height).toBeGreaterThanOrEqual(44);
+    buttons.push({ action: await button.getAttribute("data-planet-welcome-action"), bounds: buttonBounds });
+  }
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
+  return { viewport, safeArea, card: bounds, header, buttons };
+}
+
+async function welcomeLanguageAccess(page, safeArea) {
+  // Observe the application's own idle timer without pointer/focus actions or
+  // synthetic quiet attributes: language must stay discoverable while reading.
+  await expect(page.locator('[data-atlas-experience]')).toHaveAttribute("data-atlas-quiet", "true");
+  await expect(page.locator("[data-planet-welcome]")).toBeVisible();
+  const chrome = page.locator(".atlas-immersive-chrome");
+  await expect(chrome).toHaveCSS("opacity", "1");
+  await expect(chrome).toHaveCSS("transform", "none");
+  expect(await chrome.evaluate(element => element.matches(":hover, :focus-within"))).toBe(false);
+  const buttons = chrome.locator(".interface-language-control button");
+  await expect(buttons).toHaveText(["RU", "EN"]);
+  const observations = [];
+  for (const button of await buttons.all()) {
+    await expect(button).toBeVisible();
+    const observation = await button.evaluate(element => {
+      const rect = element.getBoundingClientRect();
+      const hit = document.elementFromPoint(rect.x + rect.width / 2, rect.y + rect.height / 2);
+      let effectiveOpacity = 1;
+      const clippingAncestors = [];
+      for (let ancestor = element; ancestor; ancestor = ancestor.parentElement) {
+        const style = getComputedStyle(ancestor);
+        effectiveOpacity *= Number(style.opacity);
+        if ([style.overflowX, style.overflowY].some(value => /^(hidden|clip|scroll|auto)$/u.test(value))) {
+          clippingAncestors.push({ tag: ancestor.tagName, className: ancestor.className,
+            bounds: ancestor.getBoundingClientRect().toJSON(), clientWidth: ancestor.clientWidth,
+            clientHeight: ancestor.clientHeight, overflowX: style.overflowX, overflowY: style.overflowY,
+            borderTopWidth: style.borderTopWidth, borderBottomWidth: style.borderBottomWidth });
+        }
+      }
+      const result = { language: element.textContent, bounds: rect.toJSON(), effectiveOpacity,
+        hitTarget: hit === element || element.contains(hit), clippingAncestors };
+      (window.__nativePlanetQuietLanguageAccess ??= []).push({ viewport: { width: innerWidth, height: innerHeight }, ...result });
+      return result;
+    });
+    await expect(button).toBeInViewport({ ratio: 1 });
+    expect(observation.effectiveOpacity).toBe(1);
+    expect(observation.hitTarget).toBe(true);
+    expect(observation.bounds.width).toBeGreaterThanOrEqual(44);
+    expect(observation.bounds.height).toBeGreaterThanOrEqual(44);
+    expect(observation.bounds.x).toBeGreaterThanOrEqual(safeArea.left);
+    expect(observation.bounds.y).toBeGreaterThanOrEqual(safeArea.top);
+    expect(observation.bounds.right).toBeLessThanOrEqual(page.viewportSize().width - safeArea.right);
+    expect(observation.bounds.bottom).toBeLessThanOrEqual(page.viewportSize().height - safeArea.bottom);
+    observations.push(observation);
+  }
+  return { quiet: true, naturalIdleObserved: true, hoveredOrFocused: false,
+    chromeOpacity: 1, chromeTransform: "none", buttons: observations };
+}
+
+test("first journey invitation waits for the real scene, keeps RU/EN camera pose and starts a canonical journey", async ({}, testInfo) => {
+  const fixture = await open();
+  const { page } = fixture;
+  const original = await captureScene(page);
+  try {
+    const invitation = page.locator("[data-planet-welcome]");
+    await expect(invitation.getByRole("heading", { name: "Начните путешествие", exact: true })).toBeVisible();
+    const pose = await settledCameraPose(original);
+    const invitationNode = await invitation.elementHandle();
+    for (const [language, phase] of [["ru", "ru-initial"], ["en", "en"], ["ru", "ru-restored"]]) {
+      if (await page.locator("html").getAttribute("lang") !== language) {
+        await page.locator(".atlas-immersive-chrome .interface-language-control button").filter({ hasText: language.toUpperCase() }).click();
+      }
+      await expect(page.locator("html")).toHaveAttribute("lang", language);
+      await expect(invitation.getByRole("heading", { name: language === "ru" ? "Начните путешествие" : "Begin your journey", exact: true })).toBeVisible();
+      expect(await invitationNode.evaluate(originalNode => originalNode === document.querySelector("[data-planet-welcome]"))).toBe(true);
+      await retained(page, original);
+      expect(await cameraPose(original)).toEqual(pose);
+      expect(new URL(page.url()).searchParams.get("country")).toBeNull();
+      const frames = await page.evaluate(() => window.__nativePlanetWelcomeFrames);
+      expect(frames.visible).toBeGreaterThan(0);
+      expect(frames.beforeRealSceneReady).toBe(0);
+      expect(frames.duringLaunch).toBe(0);
+      expect(frames.maxCanvasCount).toBe(1);
+      await evidence(fixture, testInfo, "native-welcome-" + phase, { welcomeGeometry: await welcomeGeometry(page),
+        sameCanvasRendererCameraScene: true, unchangedCameraPose: pose, simulatedNativePreferences: true });
+    }
+    // Reproducible input to the existing random picker, computed from that
+    // actual picker and current canonical catalogue. No replacement selection
+    // function or invented country is injected. Math.random is replaced only
+    // for the explicit click dispatch and restored after its first use.
+    const seed = await page.evaluate(() => window.__nativePlanetHarness.journeySeed("russia"));
+    await page.evaluate(value => {
+      const button = document.querySelector('[data-planet-welcome-action="journey"]');
+      button.addEventListener("click", () => {
+        const originalRandom = Math.random;
+        const observation = window.__nativePlanetJourneyRandom = { seed: value, calls: 0, restored: false };
+        const restore = () => { Math.random = originalRandom; observation.restored = true; };
+        Math.random = () => { observation.calls++; restore(); return value; };
+        // Native browser dispatch may checkpoint microtasks before React's
+        // delegated bubble listener. A next-task fallback keeps the one-call
+        // seam scoped to this click; the picker itself restores immediately.
+        setTimeout(restore, 0);
+      }, { once: true, capture: true });
+    }, seed);
+    await invitation.locator('[data-planet-welcome-action="journey"]').click();
+    await expect(invitation).toHaveCount(0);
+    await expect.poll(() => new URL(page.url()).searchParams.get("country")).toBe("russia");
+    const canonical = await page.evaluate(() => window.__nativePlanetHarness.canonicalCountry("russia"));
+    expect(canonical.id).toBe("russia");
+    expect(canonical.writerCount).toBeGreaterThan(0);
+    const destination = page.locator('.atlas-country-presentation[data-atlas-country="russia"]');
+    await expect(destination).toBeVisible();
+    await expect(destination).toHaveAccessibleName("Россия");
+    await expect(destination).toBeFocused();
+    await expect(destination.locator(".country-panel:not(.panel-loading)")).toBeVisible();
+    await expect(destination).toBeFocused();
+    await retained(page, original);
+    const destinationPose = await settledCameraPose(original);
+    expect(destinationPose).not.toEqual(pose);
+    await expect.poll(() => page.evaluate(() => window.__nativePlanetHarness.savedWelcome())).toBe("completed");
+    const randomObservation = await page.evaluate(() => window.__nativePlanetJourneyRandom);
+    expect(randomObservation).toEqual({ seed, calls: 1, restored: true });
+    await evidence(fixture, testInfo, "native-welcome-journey-completed", { canonicalDestination: canonical,
+      randomInputFixture: randomObservation, originalCameraPose: pose, destinationCameraPose: destinationPose,
+      sameCanvasRendererCameraScene: true, nativeOsPersistenceObserved: false });
+    await invitationNode.dispose();
+  } finally { await original.dispose(); }
+});
+
+test("first journey on narrow reduced-motion screens supports keyboard search, remembered completion and fresh deep links", async ({}, testInfo) => {
+  const safeArea = { top: 59, bottom: 34, left: 0, right: 0 };
+  const fixture = await open({ viewport: { width: 320, height: 844 }, reducedMotion: "reduce", safeArea });
+  const { page } = fixture;
+  const original = await captureScene(page);
+  try {
+    const invitation = page.locator("[data-planet-welcome]");
+    await expect(invitation).toBeVisible();
+    expect(await page.evaluate(() => matchMedia("(prefers-reduced-motion: reduce)").matches)).toBe(true);
+    const sizes = [];
+    for (const width of [320, 390]) {
+      await page.setViewportSize({ width, height: 844 });
+      sizes.push({ ...await welcomeGeometry(page, safeArea), languageAccess: await welcomeLanguageAccess(page, safeArea) });
+      await retained(page, original);
+    }
+    const pose = await settledCameraPose(original);
+    await evidence(fixture, testInfo, "native-welcome-narrow-ru", { layouts: sizes, reducedMotion: true,
+      safeAreaEmulation: "Chrome CDP CSS environment, not an iOS/Android device" });
+    await page.addStyleTag({ content: "html { font-size: 125% !important; }" });
+    await evidence(fixture, testInfo, "native-welcome-narrow-large-text", { layout: await welcomeGeometry(page, safeArea),
+      textScaleFixture: "CSS root font size 125%; not an OS accessibility-setting observation" });
+    const landscapeArea = { top: 0, bottom: 21, left: 44, right: 44 };
+    await fixture.safeAreaSession.send("Emulation.setSafeAreaInsetsOverride", { insets: landscapeArea });
+    await page.setViewportSize({ width: 844, height: 390 });
+    await invitation.locator('[data-planet-welcome-action="journey"]').focus();
+    await page.keyboard.press("Tab");
+    const search = invitation.locator('[data-planet-welcome-action="search"]');
+    await expect(search).toBeFocused();
+    await expect(search).toBeInViewport({ ratio: 1 });
+    expect(await search.evaluate(element => {
+      const box = element.getBoundingClientRect();
+      const hit = document.elementFromPoint(box.x + box.width / 2, box.y + box.height / 2);
+      return hit === element || element.contains(hit);
+    })).toBe(true);
+    await retained(page, original);
+    await evidence(fixture, testInfo, "native-welcome-landscape-keyboard-search", { layout: await welcomeGeometry(page, landscapeArea),
+      textScaleFixture: 1.25, keyboardFocus: "Tab from canonical journey action to search", sameCanvasRendererCameraScene: true });
+    await page.keyboard.press("Enter");
+    await expect(invitation).toHaveCount(0);
+    await expect(page.locator("#country-search")).toBeFocused();
+    await expect.poll(() => page.evaluate(() => window.__nativePlanetHarness.savedWelcome())).toBe("completed");
+    await retained(page, original);
+    expect(new URL(page.url()).searchParams.get("country")).toBeNull();
+    await page.locator("#country-search").fill("Достоевский");
+    await expect(page.locator('#country-results [role="option"]').filter({ hasText: /Ф[её]дор.*Достоевск/iu }).first()).toBeVisible();
+    await expect(page.locator("#country-search")).toBeFocused();
+    await evidence(fixture, testInfo, "native-welcome-keyboard-search-ready", { query: "Достоевский",
+      realCanonicalWriterResult: true, searchInputFocused: true, sameCanvasRendererCameraScene: true });
+    await page.keyboard.press("Escape");
+    await page.setViewportSize({ width: 390, height: 844 });
+    await fixture.safeAreaSession.send("Emulation.setSafeAreaInsetsOverride", { insets: safeArea });
+    await retained(page, original);
+    expect(await settledCameraPose(original)).toEqual(pose);
+    await page.reload();
+    await nativeRootReady(page);
+    await expect(invitation).toHaveCount(0);
+    expect(await page.evaluate(() => window.__nativePlanetWelcomeFrames.visible)).toBe(0);
+    expect(fixture.preferenceMemory.get("probpera-planet-welcome-v1")).toBe("completed");
+    await evidence(fixture, testInfo, "native-welcome-completed-reload", { persistedThrough: "Simulated OS Preferences Map outside the document",
+      firstJourneyRepeated: false, nativeOsPersistenceObserved: false });
+  } finally { await original.dispose(); }
+  // A separate first-use preference store prevents completed state from hiding
+  // a broken deep-link priority rule. The actual canonical writer is retained.
+  const incoming = await open({ route: "/?country=russia&writer=dostoevsky#atlas", viewport: { width: 390, height: 844 }, reducedMotion: "reduce", safeArea });
+  await showWriter(incoming.page);
+  await expect(incoming.page.locator("[data-planet-welcome]")).toHaveCount(0);
+  expect(await incoming.page.evaluate(() => window.__nativePlanetWelcomeFrames.visible)).toBe(0);
+  expect(incoming.preferenceMemory.has("probpera-planet-welcome-v1")).toBe(false);
+  await evidence(incoming, testInfo, "native-welcome-fresh-deep-link", { selectedCountry: "russia", selectedWriter: "dostoevsky",
+    freshWelcomePreference: true, deepLinkTookPriority: true });
 });
 
 test("opening and closing a canonical work returns to the same native globe", async ({}, testInfo) => {

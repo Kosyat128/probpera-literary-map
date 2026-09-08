@@ -1,0 +1,566 @@
+[
+  {
+    "title": "first journey invitation waits for the real scene, keeps RU/EN camera pose and starts a canonical journey",
+    "status": "failed",
+    "finalActive": {
+      "tag": "BODY",
+      "id": "",
+      "action": null
+    },
+    "random": {
+      "seed": 0.7475,
+      "calls": 1,
+      "restored": true
+    },
+    "focus": [
+      {
+        "kind": "focusin",
+        "at": 5221.89999999851,
+        "target": {
+          "tag": "BUTTON",
+          "id": "",
+          "className": "",
+          "connected": true,
+          "action": null,
+          "rect": {
+            "x": 1167.984375,
+            "y": 18,
+            "width": 44,
+            "height": 44
+          },
+          "hiddenAncestors": []
+        },
+        "active": {
+          "tag": "BUTTON",
+          "id": "",
+          "className": "",
+          "connected": true,
+          "action": null,
+          "rect": {
+            "x": 1167.984375,
+            "y": 18,
+            "width": 44,
+            "height": 44
+          },
+          "hiddenAncestors": []
+        },
+        "searchOpen": "false"
+      },
+      {
+        "kind": "focusout",
+        "at": 5600.39999999851,
+        "target": {
+          "tag": "BUTTON",
+          "id": "",
+          "className": "is-active",
+          "connected": true,
+          "action": null,
+          "rect": {
+            "x": 1167.984375,
+            "y": 18,
+            "width": 44,
+            "height": 44
+          },
+          "hiddenAncestors": []
+        },
+        "active": {
+          "tag": "BODY",
+          "id": "",
+          "className": "",
+          "connected": true,
+          "action": null,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 1280,
+            "height": 800
+          },
+          "hiddenAncestors": []
+        },
+        "searchOpen": "false"
+      },
+      {
+        "kind": "focusin",
+        "at": 5600.70000000298,
+        "target": {
+          "tag": "BUTTON",
+          "id": "",
+          "className": "",
+          "connected": true,
+          "action": null,
+          "rect": {
+            "x": 1122.984375,
+            "y": 18,
+            "width": 44,
+            "height": 44
+          },
+          "hiddenAncestors": []
+        },
+        "active": {
+          "tag": "BUTTON",
+          "id": "",
+          "className": "",
+          "connected": true,
+          "action": null,
+          "rect": {
+            "x": 1122.984375,
+            "y": 18,
+            "width": 44,
+            "height": 44
+          },
+          "hiddenAncestors": []
+        },
+        "searchOpen": "false"
+      },
+      {
+        "kind": "focusout",
+        "at": 6197.10000000149,
+        "target": {
+          "tag": "BUTTON",
+          "id": "",
+          "className": "is-active",
+          "connected": true,
+          "action": null,
+          "rect": {
+            "x": 1122.984375,
+            "y": 18,
+            "width": 44,
+            "height": 44
+          },
+          "hiddenAncestors": []
+        },
+        "active": {
+          "tag": "BODY",
+          "id": "",
+          "className": "",
+          "connected": true,
+          "action": null,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 1280,
+            "height": 800
+          },
+          "hiddenAncestors": []
+        },
+        "searchOpen": "false"
+      },
+      {
+        "kind": "focusin",
+        "at": 6197.30000000447,
+        "target": {
+          "tag": "BUTTON",
+          "id": "",
+          "className": "ui-action ui-action--primary ui-action--md ui-action--light",
+          "connected": true,
+          "action": "journey",
+          "rect": {
+            "x": 29,
+            "y": 308,
+            "width": 163,
+            "height": 44
+          },
+          "hiddenAncestors": []
+        },
+        "active": {
+          "tag": "BUTTON",
+          "id": "",
+          "className": "ui-action ui-action--primary ui-action--md ui-action--light",
+          "connected": true,
+          "action": "journey",
+          "rect": {
+            "x": 29,
+            "y": 308,
+            "width": 163,
+            "height": 44
+          },
+          "hiddenAncestors": []
+        },
+        "searchOpen": "false"
+      },
+      {
+        "kind": "focusout",
+        "at": 6222,
+        "target": {
+          "tag": "BUTTON",
+          "id": "",
+          "className": "ui-action ui-action--primary ui-action--md ui-action--light",
+          "connected": true,
+          "action": "journey",
+          "rect": {
+            "x": 29,
+            "y": 307,
+            "width": 163,
+            "height": 44
+          },
+          "hiddenAncestors": []
+        },
+        "active": {
+          "tag": "BODY",
+          "id": "",
+          "className": "",
+          "connected": true,
+          "action": null,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 1280,
+            "height": 800
+          },
+          "hiddenAncestors": []
+        },
+        "searchOpen": "false"
+      },
+      {
+        "kind": "before-focus",
+        "at": 6247.20000000298,
+        "target": {
+          "tag": "DIV",
+          "id": "",
+          "className": "country-panel panel-loading",
+          "connected": true,
+          "action": null,
+          "rect": {
+            "x": 822,
+            "y": 84,
+            "width": 440,
+            "height": 698
+          },
+          "hiddenAncestors": []
+        },
+        "active": {
+          "tag": "BODY",
+          "id": "",
+          "className": "",
+          "connected": true,
+          "action": null,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 1280,
+            "height": 800
+          },
+          "hiddenAncestors": []
+        },
+        "searchOpen": "false"
+      },
+      {
+        "kind": "after-focus",
+        "at": 6247.39999999851,
+        "target": {
+          "tag": "DIV",
+          "id": "",
+          "className": "country-panel panel-loading",
+          "connected": true,
+          "action": null,
+          "rect": {
+            "x": 822,
+            "y": 84,
+            "width": 440,
+            "height": 698
+          },
+          "hiddenAncestors": []
+        },
+        "active": {
+          "tag": "BODY",
+          "id": "",
+          "className": "",
+          "connected": true,
+          "action": null,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 1280,
+            "height": 800
+          },
+          "hiddenAncestors": []
+        },
+        "searchOpen": "false"
+      }
+    ],
+    "missingResources": [],
+    "errors": [],
+    "visibleHeroFrames": 0,
+    "welcomeFrames": {
+      "visible": 197,
+      "beforeRealSceneReady": 0,
+      "duringLaunch": 0,
+      "maxCanvasCount": 1
+    }
+  },
+  {
+    "title": "first journey on narrow reduced-motion screens supports keyboard search, remembered completion and fresh deep links",
+    "status": "failed",
+    "finalActive": {
+      "tag": "BODY",
+      "id": "",
+      "action": null
+    },
+    "random": null,
+    "focus": [
+      {
+        "kind": "focusin",
+        "at": 4809.60000000149,
+        "target": {
+          "tag": "BUTTON",
+          "id": "",
+          "className": "ui-action ui-action--primary ui-action--md ui-action--light",
+          "connected": true,
+          "action": "journey",
+          "rect": {
+            "x": 61,
+            "y": 267.5,
+            "width": 209,
+            "height": 44
+          },
+          "hiddenAncestors": []
+        },
+        "active": {
+          "tag": "BUTTON",
+          "id": "",
+          "className": "ui-action ui-action--primary ui-action--md ui-action--light",
+          "connected": true,
+          "action": "journey",
+          "rect": {
+            "x": 61,
+            "y": 267.5,
+            "width": 209,
+            "height": 44
+          },
+          "hiddenAncestors": []
+        },
+        "searchOpen": "false"
+      },
+      {
+        "kind": "focusout",
+        "at": 4825.19999999553,
+        "target": {
+          "tag": "BUTTON",
+          "id": "",
+          "className": "ui-action ui-action--primary ui-action--md ui-action--light",
+          "connected": true,
+          "action": "journey",
+          "rect": {
+            "x": 61,
+            "y": 267.5,
+            "width": 209,
+            "height": 44
+          },
+          "hiddenAncestors": []
+        },
+        "active": {
+          "tag": "BODY",
+          "id": "",
+          "className": "",
+          "connected": true,
+          "action": null,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 844,
+            "height": 390
+          },
+          "hiddenAncestors": []
+        },
+        "searchOpen": "false"
+      },
+      {
+        "kind": "focusin",
+        "at": 4825.69999999553,
+        "target": {
+          "tag": "BUTTON",
+          "id": "",
+          "className": "ui-action ui-action--secondary ui-action--md ui-action--light",
+          "connected": true,
+          "action": "search",
+          "rect": {
+            "x": 278,
+            "y": 267.5,
+            "width": 209,
+            "height": 44
+          },
+          "hiddenAncestors": []
+        },
+        "active": {
+          "tag": "BUTTON",
+          "id": "",
+          "className": "ui-action ui-action--secondary ui-action--md ui-action--light",
+          "connected": true,
+          "action": "search",
+          "rect": {
+            "x": 278,
+            "y": 267.5,
+            "width": 209,
+            "height": 44
+          },
+          "hiddenAncestors": []
+        },
+        "searchOpen": "false"
+      },
+      {
+        "kind": "focusout",
+        "at": 5049.10000000149,
+        "target": {
+          "tag": "BUTTON",
+          "id": "",
+          "className": "ui-action ui-action--secondary ui-action--md ui-action--light",
+          "connected": true,
+          "action": "search",
+          "rect": {
+            "x": 278,
+            "y": 267.5,
+            "width": 209,
+            "height": 44
+          },
+          "hiddenAncestors": []
+        },
+        "active": {
+          "tag": "BODY",
+          "id": "",
+          "className": "",
+          "connected": true,
+          "action": null,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 844,
+            "height": 390
+          },
+          "hiddenAncestors": []
+        },
+        "searchOpen": "false"
+      },
+      {
+        "kind": "before-focus",
+        "at": 5051,
+        "target": {
+          "tag": "INPUT",
+          "id": "country-search",
+          "className": "",
+          "connected": true,
+          "action": null,
+          "rect": {
+            "x": 91,
+            "y": 88,
+            "width": 661,
+            "height": 44
+          },
+          "hiddenAncestors": [
+            {
+              "tag": "INPUT",
+              "id": "country-search",
+              "className": "",
+              "inert": false,
+              "hidden": false,
+              "display": "block",
+              "visibility": "hidden"
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "className": "search-field",
+              "inert": false,
+              "hidden": false,
+              "display": "grid",
+              "visibility": "hidden"
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "className": "country-search is-open",
+              "inert": false,
+              "hidden": false,
+              "display": "block",
+              "visibility": "hidden"
+            }
+          ]
+        },
+        "active": {
+          "tag": "BODY",
+          "id": "",
+          "className": "",
+          "connected": true,
+          "action": null,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 844,
+            "height": 390
+          },
+          "hiddenAncestors": []
+        },
+        "searchOpen": "true"
+      },
+      {
+        "kind": "after-focus",
+        "at": 5066.39999999851,
+        "target": {
+          "tag": "INPUT",
+          "id": "country-search",
+          "className": "",
+          "connected": true,
+          "action": null,
+          "rect": {
+            "x": 91,
+            "y": 88,
+            "width": 661,
+            "height": 44
+          },
+          "hiddenAncestors": [
+            {
+              "tag": "INPUT",
+              "id": "country-search",
+              "className": "",
+              "inert": false,
+              "hidden": false,
+              "display": "block",
+              "visibility": "hidden"
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "className": "search-field",
+              "inert": false,
+              "hidden": false,
+              "display": "grid",
+              "visibility": "hidden"
+            },
+            {
+              "tag": "DIV",
+              "id": "",
+              "className": "country-search is-open",
+              "inert": false,
+              "hidden": false,
+              "display": "block",
+              "visibility": "hidden"
+            }
+          ]
+        },
+        "active": {
+          "tag": "BODY",
+          "id": "",
+          "className": "",
+          "connected": true,
+          "action": null,
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 844,
+            "height": 390
+          },
+          "hiddenAncestors": []
+        },
+        "searchOpen": "true"
+      }
+    ],
+    "missingResources": [],
+    "errors": [],
+    "visibleHeroFrames": 0,
+    "welcomeFrames": {
+      "visible": 168,
+      "beforeRealSceneReady": 0,
+      "duringLaunch": 0,
+      "maxCanvasCount": 1
+    }
+  }
+]

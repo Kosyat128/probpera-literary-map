@@ -53,6 +53,24 @@ Evidence: evidence/S03/device-preparation-20260908/result.json.
 Prior7dc47dd8 PWA is archived; current dist-pwa is051c3da1. Android742 retains
 source8a3ef924; do not infer equality of new PWA/build-tool inputs with that APK.
 
+<!-- s05-first-journey:begin -->
+S05 first-journey working slice: a small RU/EN invitation follows the actual
+scene and completed branded reveal. It invokes the existing random-country
+journey or search; navigation suppresses repeat display, and the allowlisted
+completion preference is best-effort. No second scene, mascot or locale state.
+6 lifecycle and 61 selected preference tests passed; 90 other adapter tests were
+skipped by the preferences filter. App focus-fix TypeScript/platform checks
+passed; the later product-only host.css change has separate input comparison
+and affected browser evidence, with no compiler replay after CSS. Final
+selected browser evidence records 1 passed cases; original failed/diagnostic
+runs remain separately classified in evidence, not silently relabelled.
+Evidence: evidence/S05/first-journey-20260908/result.json.
+Chrome/native-plugin fixtures do not establish installed Android/iOS behavior.
+New copy remains draft; full onboarding, child entry and original 3D Planetka
+remain unfinished. Android 742/source8a, PWA 051 Device UX and frozen 83-file iOS
+projection exclude this slice; their earlier source-bound results remain valid.
+<!-- s05-first-journey:end -->
+
 Full onboarding, child policy/Parent Gate/profiles/original interactive 3D
 Planetka, commerce, scene customization, complete bilingual editorial/legal/
 support/store/accessibility and device/RC/owner approval remain unfinished.

@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "originalRoot": ".tmp/s05-first-journey-20260908",
+  "preservedRoot": "docs/mobile/evidence/S05/first-journey-20260908/support",
+  "allExact": true,
+  "files": [
+    {
+      "source": "adapter-preferences-diff-check.log",
+      "preserved": "adapter-preferences-diff-check.log.json",
+      "kind": "lossless-log-json",
+      "bytes": 544,
+      "sourceSha256": "cde82b5c9ba28c1de81ad66b60fab79834075e3d1a85fe847e3af6a865681ed1",
+      "preservedSha256": "4ddfd6e0e9987db216bb503bb46d45fb4efe182eaa80688bcaa0a1663519fdbc",
+      "reconstructedSha256": "cde82b5c9ba28c1de81ad66b60fab79834075e3d1a85fe847e3af6a865681ed1",
+      "exact": true
+    },
+    {
+      "source": "adapter-preferences-run.log",
+      "preserved": "adapter-preferences-run.log.json",
+      "kind": "lossless-log-json",
+      "bytes": 629,
+      "sourceSha256": "9d32a64ea5dc2b17a0c68afe60806dd3d06e14bc120dedfeb5ab7a7caf6993c9",
+      "preservedSha256": "5824606006c59d3f5860b16db4533902ff0a1889c125b8cd60df0091c041c159",
+      "reconstructedSha256": "9d32a64ea5dc2b17a0c68afe60806dd3d06e14bc120dedfeb5ab7a7caf6993c9",
+      "exact": true
+    },
+    {
+      "source": "adapter-preferences-source-after.json",
+      "preserved": "adapter-preferences-source-after.json",
+      "kind": "exact-json",
+      "bytes": 989,
+      "sourceSha256": "92cab5a1ed78cb9674396fc830458bb04ad94f3f38a8c92704fc1651f63216ac",
+      "preservedSha256": "92cab5a1ed78cb9674396fc830458bb04ad94f3f38a8c92704fc1651f63216ac",
+      "exact": true
+    },
+    {
+      "source": "adapter-preferences-source-before.json",
+      "preserved": "adapter-preferences-source-before.json",
+      "kind": "exact-json",
+      "bytes": 989,
+      "sourceSha256": "92cab5a1ed78cb9674396fc830458bb04ad94f3f38a8c92704fc1651f63216ac",
+      "preservedSha256": "92cab5a1ed78cb9674396fc830458bb04ad94f3f38a8c92704fc1651f63216ac",
+      "exact": true
+    },
+    {
+      "source": "adapter-preferences-validation.json",
+      "preserved": "adapter-preferences-validation.json",
+      "kind": "exact-json",
+      "bytes": 1810,
+      "sourceSha256": "7c0e3aba25b567bd805a0bf2902271e42cec77889bb7d4f6294312bcfa602990",
+      "preservedSha256": "7c0e3aba25b567bd805a0bf2902271e42cec77889bb7d4f6294312bcfa602990",
+      "exact": true
+    },
+    {
+      "source": "adapter-preferences-vitest.json",
+      "preserved": "adapter-preferences-vitest.json",
+      "kind": "exact-json",
+      "bytes": 55657,
+      "sourceSha256": "1130b8a2c5d19bb73e08b43c9f3a93601de98db9babd5da513fad2fbc9c0d6a5",
+      "preservedSha256": "1130b8a2c5d19bb73e08b43c9f3a93601de98db9babd5da513fad2fbc9c0d6a5",
+      "exact": true
+    },
+    {
+      "source": "planet-welcome-unit-command.json",
+      "preserved": "planet-welcome-unit-command.json",
+      "kind": "exact-json",
+      "bytes": 441,
+      "sourceSha256": "bc72b69c020135ead37ced042c9ae43439cb2d3555d18f2372e4e0c76defb8bb",
+      "preservedSha256": "bc72b69c020135ead37ced042c9ae43439cb2d3555d18f2372e4e0c76defb8bb",
+      "exact": true
+    },
+    {
+      "source": "planet-welcome-unit-sandbox-startup-command.json",
+      "preserved": "planet-welcome-unit-sandbox-startup-command.json",
+      "kind": "exact-json",
+      "bytes": 392,
+      "sourceSha256": "92406d3ea4d5fe5b6428c83e2ebd6a81c9d681719d0b6434efedc24c2889ebca",
+      "preservedSha256": "92406d3ea4d5fe5b6428c83e2ebd6a81c9d681719d0b6434efedc24c2889ebca",
+      "exact": true
+    },
+    {
+      "source": "planet-welcome-unit-sandbox-startup.log",
+      "preserved": "planet-welcome-unit-sandbox-startup.log.json",
+      "kind": "lossless-log-json",
+      "bytes": 2001,
+      "sourceSha256": "c20981665c2c497cbd9c8fef39e9e5563d64c00d38c6bc4f45a789608bf89af2",
+      "preservedSha256": "3f86785fb05392c4661dfb5560b948adec0d7cf4d72ad124ab1e8da52d34b2c0",
+      "reconstructedSha256": "c20981665c2c497cbd9c8fef39e9e5563d64c00d38c6bc4f45a789608bf89af2",
+      "exact": true
+    },
+    {
+      "source": "planet-welcome-unit.json",
+      "preserved": "planet-welcome-unit.json",
+      "kind": "exact-json",
+      "bytes": 2925,
+      "sourceSha256": "b61a48f00d1dcbd0eb2b976c8061980ba3b07dc6671701702977a2bcfad778dd",
+      "preservedSha256": "b61a48f00d1dcbd0eb2b976c8061980ba3b07dc6671701702977a2bcfad778dd",
+      "exact": true
+    },
+    {
+      "source": "planet-welcome-unit.log",
+      "preserved": "planet-welcome-unit.log.json",
+      "kind": "lossless-log-json",
+      "bytes": 486,
+      "sourceSha256": "99081ddd6b461f57aba323d7a45cdcf4decb9df0c95827ed664ad1bdfaa01c40",
+      "preservedSha256": "d54aa3bca574e8e6f030b5e67b35c3e30b727477d6672ac203f19d8e4487d1c4",
+      "reconstructedSha256": "99081ddd6b461f57aba323d7a45cdcf4decb9df0c95827ed664ad1bdfaa01c40",
+      "exact": true
+    },
+    {
+      "source": "platform-boundaries.json",
+      "preserved": "platform-boundaries.json",
+      "kind": "exact-json",
+      "bytes": 2009,
+      "sourceSha256": "c67d023ce5e67b1b24a388a7f25fa27f5af2fcb50cbe90157550843c8e9f62de",
+      "preservedSha256": "c67d023ce5e67b1b24a388a7f25fa27f5af2fcb50cbe90157550843c8e9f62de",
+      "exact": true
+    },
+    {
+      "source": "static-checks.json",
+      "preserved": "static-checks.json",
+      "kind": "exact-json",
+      "bytes": 2594,
+      "sourceSha256": "bf85a01e963a945aa64b4ff2adc076564e36ab4832ba4b05ebb49ba202515440",
+      "preservedSha256": "bf85a01e963a945aa64b4ff2adc076564e36ab4832ba4b05ebb49ba202515440",
+      "exact": true
+    },
+    {
+      "source": "typecheck.json",
+      "preserved": "typecheck.json",
+      "kind": "exact-json",
+      "bytes": 348,
+      "sourceSha256": "1299032c1de8ea74a293d67dd71a3eb5e73230ebba163686147db261aa18147e",
+      "preservedSha256": "1299032c1de8ea74a293d67dd71a3eb5e73230ebba163686147db261aa18147e",
+      "exact": true
+    }
+  ]
+}

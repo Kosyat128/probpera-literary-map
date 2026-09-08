@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "sourceFilename": "adapter-preferences-run.log",
+  "encoding": "utf8",
+  "bytes": 629,
+  "sha256": "9d32a64ea5dc2b17a0c68afe60806dd3d06e14bc120dedfeb5ab7a7caf6993c9",
+  "text": "\r\n RUN  v4.1.10 C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work\r\n\r\n ✓ src/host/HostPlatformServices.test.ts (93 tests | 58 skipped) 20ms\r\n ✓ src/platform/adapters/web/WebPlatformAdapter.test.ts (58 tests | 32 skipped) 26ms\r\n\r\n Test Files  2 passed (2)\r\n      Tests  61 passed | 90 skipped (151)\r\n   Start at  08:27:48\r\n   Duration  408ms (transform 175ms, setup 0ms, import 272ms, tests 47ms, environment 0ms)\r\n\r\nJSON report written to C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/.tmp/s05-first-journey-20260908/adapter-preferences-vitest.json\r\n"
+}

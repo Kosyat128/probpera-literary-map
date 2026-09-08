@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-09-08T05:27:48.1486119+00:00",
+  "durationSeconds": 1.2375529,
+  "command": "node node_modules/vitest/vitest.mjs run src/host/HostPlatformServices.test.ts src/platform/adapters/web/WebPlatformAdapter.test.ts --configLoader runner --maxWorkers=2 -t preferences --reporter=default --reporter=json --outputFile.json=.tmp/s05-first-journey-20260908/adapter-preferences-vitest.json",
+  "exitCode": 0,
+  "ownSourceUnchangedDuringRun": true,
+  "rawReports": [
+    {
+      "Path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\s05-first-journey-20260908\\adapter-preferences-run.log",
+      "Hash": "9D32A64EA5DC2B17A0C68AFE60806DD3D06E14BC120DEDFEB5AB7A7CAF6993C9"
+    },
+    {
+      "Path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\s05-first-journey-20260908\\adapter-preferences-vitest.json",
+      "Hash": "1130B8A2C5D19BB73E08B43C9F3A93601DE98DB9BABD5DA513FAD2FBC9C0D6A5"
+    },
+    {
+      "Path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\s05-first-journey-20260908\\adapter-preferences-source-before.json",
+      "Hash": "92CAB5A1ED78CB9674396FC830458BB04AD94F3F38A8C92704FC1651F63216AC"
+    },
+    {
+      "Path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\s05-first-journey-20260908\\adapter-preferences-source-after.json",
+      "Hash": "92CAB5A1ED78CB9674396FC830458BB04AD94F3F38A8C92704FC1651F63216AC"
+    }
+  ],
+  "scope": "Only the preferences test sections, including exact welcome key/value contract and existing preference regression",
+  "installedDeviceEvidence": false,
+  "releaseReady": false
+}

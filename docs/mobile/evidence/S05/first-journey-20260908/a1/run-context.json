@@ -1,0 +1,10 @@
+{
+  "runId": "first-journey-20260908-a1",
+  "sourceCommit": "56a7a8c840d0950f1de2eebb7dd31b9188890312",
+  "sourceFiles": 967,
+  "scope": "Canonical App and R3F in Chrome with injected native OS plugin boundary, including simulated preference persistence",
+  "newScenarios": 2,
+  "existingAppRegressionScenarios": 3,
+  "nativeArtifactBuilt": false,
+  "pwaArtifactBuilt": false
+}

@@ -1,0 +1,274 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T06:13:33.133Z",
+  "stage": "S05",
+  "finalStatus": "SELECTED_WORKING_VALIDATION_PASSED",
+  "sourceCheckpointBeforeChanges": "56a7a8c840d0950f1de2eebb7dd31b9188890312",
+  "implemented": [
+    "Nonmodal bilingual first-journey invitation inside the existing canonical globe after actual scene readiness and completed launch.",
+    "Existing country picker/camera path and search, single global locale owner, incoming content priority and session suppression on navigation.",
+    "Exact allowlisted non-secret completion preference via existing Web/native adapters; read/write failures do not block the globe.",
+    "Post-commit explicit focus, stable labelled country container across lazy WriterPanel replacement, reduced-motion search visibility correction.",
+    "Dark canonical foreground on orange invitation action; the global toolbar remains discoverable while the invitation is visible, including quiet mode, with complete 44px language targets inside the border."
+  ],
+  "unitEvidence": {
+    "evidence": "support/result.json",
+    "passed": 67,
+    "lifecyclePassed": 6,
+    "preferencePassed": 61,
+    "adapterTestsExcludedByFilter": 90,
+    "fullUnitSuiteRepeated": false
+  },
+  "sourceValidation": {
+    "evidence": "final-source/static-checks.json",
+    "cssDeltaEvidence": "final-source/final-candidate-css-delta.json",
+    "typeScriptPass": true,
+    "platformBoundariesPass": true,
+    "scope": "Static tools ran after the App focus fix. The subsequent product delta is only host.css; final CSS and evidence-only fixture changes have their own source comparison and a6 browser evidence. No compiler replay for CSS-only changes."
+  },
+  "realBrowserEvidence": {
+    "passed": 1,
+    "failed": 0,
+    "run": "a6/result.json",
+    "scope": "Final narrow Chrome scenario, 320/390 portrait, large text and landscape, real quiet-mode toolbar visibility, keyboard search, completion reload and fresh deep link. Injected native plugins and OS Preferences remain simulated."
+  },
+  "retainedEarlierPasses": [
+    {
+      "run": "a1/result.json",
+      "ordinals": [
+        1,
+        4,
+        5
+      ],
+      "passed": 3,
+      "scope": "Previous actual App country/writer RU/EN, work/return and narrow launch/search regressions, before the first-journey focus corrections."
+    },
+    {
+      "run": "a3/result.json",
+      "ordinals": [
+        1
+      ],
+      "passed": 1,
+      "scope": "Desktop RU/EN invitation, real canonical country journey and retained camera/scene, with focus on the stable labelled country container.",
+      "sourceCaveat": "a3 post-run snapshot observed the subsequent host.css change. Preserve sourceComparison:false; the buffered browser bundle and its source receipt precede that change. This is retained earlier evidence, not a second final-a6 test."
+    }
+  ],
+  "firstJourneyPathsPassedAcrossSourceBoundRuns": [
+    "Desktop journey: a3 case 1",
+    "Narrow keyboard search and completion: a6 case 1"
+  ],
+  "wholeFiveCaseSuitePassedOnFinalSource": false,
+  "corrections": [
+    {
+      "attempt": "a1",
+      "classification": "fixture-and-product",
+      "details": "Test-only random restoration ran too early; actual focus did not reach search. Three prior regressions passed."
+    },
+    {
+      "attempt": "a2",
+      "classification": "test-selection-only",
+      "details": "Anchored grep selected no tests, before the fixture/build. Preserved as a selection failure."
+    },
+    {
+      "attempt": "a2b",
+      "classification": "product-focus-diagnostics",
+      "details": "Corrected random fixture selected Russia. Focus targeted a non-focusable lazy-loading placeholder; the opened search input still inherited hidden visibility."
+    },
+    {
+      "attempt": "a3",
+      "classification": "partial-correction",
+      "details": "Stable country-container focus passed. Narrow search still encountered the generic reduced-motion micro-transition on inherited visibility."
+    },
+    {
+      "attempt": "a4",
+      "classification": "focused-regression-passed",
+      "details": "Scoped removal of search-subtree transitions fixed keyboard focus; completion/reload and incoming-link checks passed. Visual review then found the toolbar became too dim while reading the invitation."
+    },
+    {
+      "attempt": "a5",
+      "classification": "language-target-clipping",
+      "details": "Quiet-mode visibility passed. The new full-intersection assertion found that the 44px group including borders clipped its 44px children to 42px; the scenario stopped before Search."
+    },
+    {
+      "attempt": "a6",
+      "classification": "final-selected-regression-passed",
+      "details": "The native language group now reserves its border outside the full 44px targets. Natural quiet-mode accessibility and the complete narrow regression passed on unchanged sources."
+    }
+  ],
+  "history": [
+    {
+      "evidence": "a1/result.json",
+      "sha256": "219525a4aafb0879d3e09cb0a41428da8d2072dc5fb41380f4a2f80e0d947fb4",
+      "runId": "first-journey-20260908-a1",
+      "statistics": {
+        "startTime": "2026-09-08T05:35:59.513Z",
+        "duration": 82735.787,
+        "expected": 3,
+        "skipped": 0,
+        "unexpected": 2,
+        "flaky": 0
+      },
+      "sourceComparison": {
+        "unchangedDuringRun": true,
+        "files": 967,
+        "changed": []
+      },
+      "failureClassification": [
+        {
+          "case": 2,
+          "observed": "Canonical journey selected Tanzania instead of the test-seeded expected Russia.",
+          "status": "Test-only random override guard suspected; seed application not yet established. No product selection bug claim."
+        },
+        {
+          "case": 3,
+          "observed": "Keyboard Enter from welcome Search closed invitation, persisted completed, and expanded canonical search; #country-search remained inactive.",
+          "status": "Real focus assertion failed; exact focus lifecycle cause awaits passive telemetry."
+        }
+      ]
+    },
+    {
+      "evidence": "a2/result.json",
+      "sha256": "449d2e5e36869415b494039f9d0c6c9356be0ebb4c65f272a2429bf34035ce5e",
+      "runId": "first-journey-20260908-a2",
+      "statistics": {
+        "startTime": "2026-09-08T05:43:06.984Z",
+        "duration": 192.87099999999998,
+        "expected": 0,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "sourceComparison": null,
+      "failureClassification": []
+    },
+    {
+      "evidence": "a2b/result.json",
+      "sha256": "d8c69258ae8a6ff8e4ce75dcb055a3b584c6c894533a2c8548d026cbaf0c4396",
+      "runId": "first-journey-20260908-a2b",
+      "statistics": {
+        "startTime": "2026-09-08T05:43:46.662Z",
+        "duration": 46939.816,
+        "expected": 0,
+        "skipped": 0,
+        "unexpected": 2,
+        "flaky": 0
+      },
+      "sourceComparison": {
+        "unchangedDuringRun": true,
+        "files": 967,
+        "changed": []
+      },
+      "failureClassification": []
+    },
+    {
+      "evidence": "a3/result.json",
+      "sha256": "7e66a86278d2bfdaa7d2a1bd8227950847c8e2655faca54f1ed10246a98c97a5",
+      "runId": "first-journey-20260908-a3",
+      "statistics": {
+        "startTime": "2026-09-08T05:53:00.603Z",
+        "duration": 28977.836000000003,
+        "expected": 1,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      },
+      "sourceComparison": {
+        "unchangedDuringRun": false,
+        "files": 967,
+        "changed": [
+          {
+            "path": "src/host/host.css",
+            "sha256": "2af966893dc688457554af63fd460e21bbb47d617f1bae7f6db0bf1785c6d76a",
+            "SideIndicator": "=>"
+          },
+          {
+            "path": "src/host/host.css",
+            "sha256": "756cf2dd2865d58127f7bdcdd9fb5de7996bebe24de7011680a47e1aa4b5e924",
+            "SideIndicator": "<="
+          }
+        ],
+        "postRunSourceChange": "Root applied only host.css reduced-motion search fix after observing completed a3, before this post-run hash snapshot. The completed in-memory browser bundle is immutable; full before/after equality is not claimed."
+      },
+      "failureClassification": []
+    },
+    {
+      "evidence": "a4/result.json",
+      "sha256": "ade8471422b10b5c2005cb11585e170ba5344afb52fde631d160f031bb026fdf",
+      "runId": "first-journey-20260908-a4",
+      "statistics": {
+        "startTime": "2026-09-08T05:56:22.257Z",
+        "duration": 14585.482,
+        "expected": 1,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "sourceComparison": {
+        "unchangedDuringRun": true,
+        "files": 967,
+        "changed": []
+      },
+      "failureClassification": []
+    },
+    {
+      "evidence": "a5/result.json",
+      "sha256": "adef68790170aa5d0bb82aaaf90d530907bd6e0195d89c0c752360cb4cd6e130",
+      "runId": "first-journey-20260908-a5",
+      "statistics": {
+        "startTime": "2026-09-08T06:06:51.314Z",
+        "duration": 21090.473,
+        "expected": 0,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      },
+      "sourceComparison": {
+        "sourceFiles": 967,
+        "unchangedDuringRun": true,
+        "changed": []
+      },
+      "failureClassification": []
+    },
+    {
+      "evidence": "a6/result.json",
+      "sha256": "e755df1531d228d35a5523cdb3f220f87b02b10d21a13e1ca1f77a0f50a60132",
+      "runId": "first-journey-20260908-a6",
+      "statistics": {
+        "startTime": "2026-09-08T06:11:22.948Z",
+        "duration": 14602.125,
+        "expected": 1,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "sourceComparison": {
+        "sourceFiles": 967,
+        "unchangedDuringRun": true,
+        "changed": []
+      },
+      "failureClassification": []
+    }
+  ],
+  "rootVisualReview": {
+    "scope": "Actual desktop EN invitation, narrow RU invitation and focused typed-search PNGs reviewed; final quiet-mode PNG review is separately preserved with a6.",
+    "firstWhiteOnOrangeLabelCorrected": true,
+    "quietToolbarCorrectionRequiredByActualScreenshot": true,
+    "screenshotType": "Actual source/browser rendering, not a store RC, device screenshot or generated mockup."
+  },
+  "unchangedFrozenArtifacts": {
+    "android742Source": "8a3ef924aa911aeda4742b4434ac925ac576764e",
+    "pwaBuildPrefix": "051c3da1",
+    "iosProjectionFiles": 83,
+    "includesFirstJourney": false,
+    "note": "These earlier APK/PWA/iOS-review artifacts retain their own source identities. This report does not relabel them as containing first-journey changes."
+  },
+  "limits": [
+    "No installed Android/iOS runtime claim.",
+    "Narrow Chrome uses injected native plugins and simulated OS Preferences; viewport/safe-area/text fixtures are not OS accessibility settings.",
+    "New RU/EN copy is draft; no editorial approval.",
+    "Full onboarding, child policy/Parent Gate/profiles, original interactive 3D Planetka, content/store/legal/device/RC gates remain open."
+  ],
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false
+}

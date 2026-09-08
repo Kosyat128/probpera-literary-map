@@ -13,6 +13,33 @@
   background: var(--violet-950);
 }
 
+/* Preserve the full 44px targets inside the language group's 1px border. */
+.native-planet-app .atlas-experience-surface[data-atlas-view="immersive"] .interface-language-control {
+  height: 46px;
+}
+
+/* Keep the one global language/navigation row discoverable while a first-time
+   visitor reads the invitation. Ordinary exploration keeps its quiet mode. */
+.native-planet-app .atlas-experience-surface:has(> .planet-welcome) .atlas-immersive-chrome {
+  opacity: 1;
+  transform: none;
+  border-color: rgba(var(--atlas-chrome-state), 0.38);
+}
+.native-planet-app .atlas-experience-surface:has(> .planet-welcome) .atlas-immersive-chrome nav > *,
+.native-planet-app .atlas-experience-surface:has(> .planet-welcome) .atlas-immersive-identity {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* The site's generic 0.01ms transition duration can animate inherited
+     visibility on these descendants after the search heading is already open.
+     Disable that transition so an explicit keyboard action can focus the input. */
+  .native-planet-app .atlas-heading .country-search,
+  .native-planet-app .atlas-heading .country-search * {
+    transition: none !important;
+  }
+}
+
 .native-planet-panel {
   position: fixed;
   z-index: 1100;

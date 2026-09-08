@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T05:34:31.349Z",
+  "kind": "S05 first-journey unit and static support only",
+  "testsRerunForPreservation": false,
+  "unit": {
+    "welcome": {
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "scope": "PlanetWelcome lifecycle/controller seam only; not actual React/browser geometry or locale evidence",
+      "rawJson": "planet-welcome-unit.json",
+      "command": "planet-welcome-unit-command.json",
+      "log": "planet-welcome-unit.log.json"
+    },
+    "preferences": {
+      "passed": 61,
+      "failed": 0,
+      "skipped": 90,
+      "scope": "Exact preferences sections selected by -t preferences in HostPlatformServices and WebPlatformAdapter tests. 90 other tests excluded/skipped by that filter; full adapter suites were not run.",
+      "rawJson": "adapter-preferences-vitest.json",
+      "validation": "adapter-preferences-validation.json",
+      "log": "adapter-preferences-run.log.json",
+      "sourceBefore": "adapter-preferences-source-before.json",
+      "sourceAfter": "adapter-preferences-source-after.json"
+    }
+  },
+  "startupRestriction": {
+    "occurred": true,
+    "beforeAnyTestExecution": true,
+    "reason": "Sandbox prevented esbuild config resolution: Cannot read directory ../../../..: Access is denied. Tests then passed in the separately permitted local run.",
+    "command": "planet-welcome-unit-sandbox-startup-command.json",
+    "log": "planet-welcome-unit-sandbox-startup.log.json"
+  },
+  "static": {
+    "typecheckPass": true,
+    "platformBoundariesPass": true,
+    "sourceUnchangedDuringRootChecks": true,
+    "reports": [
+      "static-checks.json",
+      "typecheck.json",
+      "platform-boundaries.json"
+    ],
+    "limitations": "Static source ownership does not establish one active Canvas or visual correctness; real browser evidence is separate."
+  },
+  "evidencePreservation": {
+    "allExistingJsonExact": true,
+    "allLogWrappersReconstructedByteForByte": true,
+    "existingStaticEmbeddedLogsReconstructedByteForByte": true,
+    "preservedCount": 14,
+    "manifest": "preservation.json",
+    "referenceResolution": "Original exact JSON may retain .tmp input paths; preservation.json maps every included raw input to its durable sibling, so those logs/reports are not ignored-only references."
+  },
+  "browserEvidenceIncluded": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "sourceEdited": false,
+  "checkpointUpdated": false,
+  "commitCreated": false,
+  "remoteWrites": false
+}

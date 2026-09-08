@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T06:12:50.835Z",
+  "pass": true,
+  "kind": "Input/byte comparison after static checks; no compiler or boundary tool rerun",
+  "baseline": {
+    "runId": "first-journey-20260908-a3",
+    "beforeSnapshot": "a3-source-before.json",
+    "afterSnapshot": "a3-source-after.json",
+    "sourceComparison": "a3-source-comparison.json",
+    "originalUnchangedDuringRun": false,
+    "statistics": {
+      "startTime": "2026-09-08T05:53:00.603Z",
+      "duration": 28977.836000000003,
+      "expected": 1,
+      "skipped": 0,
+      "unexpected": 1,
+      "flaky": 0
+    },
+    "limitation": "a3 after-snapshot includes CSS edited after completed testing. Preserve unchangedDuringRun:false; the retained desktop pass is source-bound and is not counted as a final-source combined suite."
+  },
+  "candidate": {
+    "snapshot": "candidate-source-observed.json",
+    "snapshotSha256": "0c692eb44830af734845c805b2131468b670e1708dac2b3405237c09237d057b",
+    "comparedFiles": 967,
+    "unchangedFiles": 965,
+    "changed": [
+      {
+        "path": "src/host/host.css",
+        "beforeSha256": "756cf2dd2865d58127f7bdcdd9fb5de7996bebe24de7011680a47e1aa4b5e924",
+        "afterSha256": "76db49025f8120d541d71f657e505f7be57f1c7d478932791db2e402974fbd69",
+        "kind": "product-css"
+      },
+      {
+        "path": "tests/host/native-planet.spec.mjs",
+        "beforeSha256": "130801a87b4aca3ba01c6007dea06dd065ee0f65f212d00de1de398c9426d51a",
+        "afterSha256": "d1e1da7f2bba9885a2883e92b83cf51367624affc8a35da481dcb43a178a1bca",
+        "kind": "browser-test-source"
+      }
+    ],
+    "productSourceChangedOnlyHostCss": true,
+    "testSourceAlsoChanged": true,
+    "a3AfterSnapshotVsCurrent": [
+      {
+        "path": "src/host/host.css",
+        "beforeSha256": "2af966893dc688457554af63fd460e21bbb47d617f1bae7f6db0bf1785c6d76a",
+        "afterSha256": "76db49025f8120d541d71f657e505f7be57f1c7d478932791db2e402974fbd69",
+        "kind": "product-css"
+      },
+      {
+        "path": "tests/host/native-planet.spec.mjs",
+        "beforeSha256": "130801a87b4aca3ba01c6007dea06dd065ee0f65f212d00de1de398c9426d51a",
+        "afterSha256": "d1e1da7f2bba9885a2883e92b83cf51367624affc8a35da481dcb43a178a1bca",
+        "kind": "browser-test-source"
+      }
+    ]
+  },
+  "strictTypeScriptInputs": {
+    "scope": "Every TypeScript-family path in the recorded 967-file a3 input snapshot",
+    "count": 886,
+    "unchanged": true
+  },
+  "staticValidation": {
+    "evidence": "static-checks.json",
+    "typecheckEvidence": "typecheck.json",
+    "platformBoundaryEvidence": "platform-boundaries.json",
+    "typecheckDurationMs": 24607,
+    "platformBoundaryDurationMs": 7293,
+    "sixTrackedSourceInputsStillMatch": true,
+    "hostCssNotAmongSixTrackedInputs": true,
+    "staticToolsRerunAfterCssChange": false
+  },
+  "cssChange": {
+    "path": "src/host/host.css",
+    "beforeSha256": "756cf2dd2865d58127f7bdcdd9fb5de7996bebe24de7011680a47e1aa4b5e924",
+    "afterSha256": "76db49025f8120d541d71f657e505f7be57f1c7d478932791db2e402974fbd69",
+    "kind": "product-css",
+    "beforeBytes": "host-css-a3-before.json",
+    "insertionOffsetBytes": 401,
+    "insertedBytes": 1183,
+    "insertedText": "/* Preserve the full 44px targets inside the language group's 1px border. */\n.native-planet-app .atlas-experience-surface[data-atlas-view=\"immersive\"] .interface-language-control {\n  height: 46px;\n}\n\n/* Keep the one global language/navigation row discoverable while a first-time\n   visitor reads the invitation. Ordinary exploration keeps its quiet mode. */\n.native-planet-app .atlas-experience-surface:has(> .planet-welcome) .atlas-immersive-chrome {\n  opacity: 1;\n  transform: none;\n  border-color: rgba(var(--atlas-chrome-state), 0.38);\n}\n.native-planet-app .atlas-experience-surface:has(> .planet-welcome) .atlas-immersive-chrome nav > *,\n.native-planet-app .atlas-experience-surface:has(> .planet-welcome) .atlas-immersive-identity {\n  opacity: 1;\n}\n\n@media (prefers-reduced-motion: reduce) {\n  /* The site's generic 0.01ms transition duration can animate inherited\n     visibility on these descendants after the search heading is already open.\n     Disable that transition so an explicit keyboard action can focus the input. */\n  .native-planet-app .atlas-heading .country-search,\n  .native-planet-app .atlas-heading .country-search * {\n    transition: none !important;\n  }\n}\n\n",
+    "removingInsertedBytesReconstructsExactBefore": true,
+    "scope": "Only product-scoped search reduced-motion transitions, visible global toolbar while the direct welcome invitation exists, and language group height preserving its full 44px child targets inside the border.",
+    "purpose": "Keep the opened input focusable and the existing RU/EN/navigation controls discoverable and fully visible during first-journey reading."
+  },
+  "browserTestSourceDelta": [
+    {
+      "path": "tests/host/native-planet.spec.mjs",
+      "beforeSha256": "130801a87b4aca3ba01c6007dea06dd065ee0f65f212d00de1de398c9426d51a",
+      "afterSha256": "d1e1da7f2bba9885a2883e92b83cf51367624affc8a35da481dcb43a178a1bca",
+      "kind": "browser-test-source"
+    }
+  ],
+  "finalCandidateBrowser": {
+    "evidence": "../a6/result.json",
+    "sha256": "e755df1531d228d35a5523cdb3f220f87b02b10d21a13e1ca1f77a0f50a60132",
+    "passed": 1,
+    "failed": 0,
+    "sourceComparison": "../a6/source-comparison.json",
+    "all967InputsUnchangedDuringRun": true,
+    "currentProductInputsMatchFinalRun": true,
+    "currentAllInputsMatchFinalRun": true,
+    "postRunTestInputChanges": [],
+    "scope": "Final affected narrow first-journey/search/reduced-motion/quiet-toolbar scenario only; prior desktop/regressions remain separately source-bound."
+  },
+  "stageAccepted": false,
+  "releaseReady": false,
+  "sourceEdited": false,
+  "testsRerun": false,
+  "buildsRerun": false
+}

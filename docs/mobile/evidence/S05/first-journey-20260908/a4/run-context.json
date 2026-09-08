@@ -1,0 +1,13 @@
+{
+  "runId": "first-journey-20260908-a4",
+  "sourceCommit": "56a7a8c840d0950f1de2eebb7dd31b9188890312",
+  "changedFromA3": [
+    "src/host/host.css",
+    "tests/host/native-planet.spec.mjs"
+  ],
+  "selectedScenarios": 1,
+  "grep": "first journey on narrow",
+  "sourceFiles": 967,
+  "previousGreenCasesNotRepeated": 4,
+  "narrowChromeCapabilities": "Fine pointer / desktop Chrome with narrow viewport and CDP safe-area emulation; not physical touch or native OS evidence"
+}

@@ -4,6 +4,7 @@ import { createHostPlatformServices, type HostAppBridge, type HostAppState, type
 
 const LANGUAGE = "probpera-interface-language";
 const DISPLAY = "probpera-display-mode";
+const WELCOME = "probpera-planet-welcome-v1";
 const MAIL = "mailto:probperasite@yandex.ru";
 function deferred<T>() {
   let resolve!: (value: T) => void;
@@ -308,7 +309,7 @@ describe("native subscription lifetimes and ordering", () => {
 });
 
 describe("exact non-secret preferences with serialized readback", () => {
-  it.each([[LANGUAGE, "ru"], [LANGUAGE, "en"], [DISPLAY, "dark"], [DISPLAY, "light"], [DISPLAY, "book"]])(
+  it.each([[LANGUAGE, "ru"], [LANGUAGE, "en"], [DISPLAY, "dark"], [DISPLAY, "light"], [DISPLAY, "book"], [WELCOME, "completed"]])(
     "accepts canonical %s=%s with readback and best-effort semantics", async (key, value) => {
       const f = fixture();
       expect(f.services.preferences.persistence).toBe("best-effort");
@@ -317,7 +318,8 @@ describe("exact non-secret preferences with serialized readback", () => {
       expect(await f.services.preferences.remove(key)).toBe(true);
       expect(await f.services.preferences.get(key)).toBeNull();
     });
-  it.each([["access_token", "secret"], ["entitlements", "paid"], [LANGUAGE, "fr"], [LANGUAGE, "EN"],
+  it.each([["access_token", "secret"], ["entitlements", "paid"], ["child-profile", "completed"], ["probpera-profile", "completed"],
+    [WELCOME + ":entitlements", "completed"], [WELCOME + "\u0000", "completed"], [LANGUAGE, "fr"], [LANGUAGE, "EN"],
     [DISPLAY, "auto"], ["probpera-interface-language ", "ru"], ["__proto__", "ru"]])(
     "does not forward disallowed preference %s=%s", async (key, value) => {
       const f = fixture();
@@ -330,6 +332,26 @@ describe("exact non-secret preferences with serialized readback", () => {
         expect(f.preferences.get).not.toHaveBeenCalled();
         expect(f.preferences.remove).not.toHaveBeenCalled();
       }
+    });
+  it("reads only the welcome completion marker through a fresh native adapter without creating profile state", async () => {
+    const f = fixture();
+    expect(await f.services.preferences.get(WELCOME)).toBeNull();
+    expect(await f.services.preferences.set(WELCOME, "completed")).toBe(true);
+    const recreated = createHostPlatformServices({ kind: "ios", channel: "dev", languages: ["en"], preferences: f.preferences });
+    expect(await recreated.preferences.get(WELCOME)).toBe("completed");
+    expect([...f.memory]).toEqual([[WELCOME, "completed"]]);
+    expect(recreated.preferences.persistence).toBe("best-effort");
+    expect(f.preferences.set).toHaveBeenCalledExactlyOnceWith({ key: WELCOME, value: "completed" });
+  });
+  it.each(["", "complete", "Completed", "true", " completed", "completed\u0000", '{"completed":true,"entitlements":"paid"}'])(
+    "rejects invalid welcome values on both write and native read: %j", async value => {
+      const f = fixture(); f.memory.set(WELCOME, "completed");
+      expect(await f.services.preferences.set(WELCOME, value)).toBe(false);
+      expect(f.preferences.set).not.toHaveBeenCalled(); expect(f.preferences.get).not.toHaveBeenCalled();
+      expect(f.memory.get(WELCOME)).toBe("completed");
+      f.memory.set(WELCOME, value);
+      expect(await f.services.preferences.get(WELCOME)).toBeNull();
+      expect(f.onFailure.mock.calls).toEqual([[{ operation: "preference-get", reason: "invalid-response" }]]);
     });
   it("serializes writes, their readbacks, reads and deletion for the same key", async () => {
     const f = fixture();

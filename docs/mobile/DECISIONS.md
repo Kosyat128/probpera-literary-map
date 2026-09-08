@@ -292,3 +292,15 @@
   payload5d3e5212 and tree58ea6814 supersede the preliminary82-file candidate.
   The already-pending question concerns16 files outside prior74-file approval.
   No response means no authorization; retain local review without public writes.
+- D072: First-journey onboarding is a small nonmodal invitation inside the
+  canonical globe surface. Reuse existing journey/search and global RU/EN state;
+  preserve camera/Canvas and defer to user navigation. Versioned completion is
+  an allowlisted non-secret preference, not auth/child policy. No placeholder
+  Planetka or premature child entry; new copy remains draft.
+- D073: Keep first-journey tests and artifacts source-bound. Preserve the initial
+  browser failures and their recorded fixture/product diagnoses; aggregate only
+  explicitly selected passing cases. Unit evidence is 6 lifecycle + 61 selected
+  preference cases, with 90 other adapter cases skipped; no full-suite claim.
+  Android742/source8a, PWA051 and frozen83-file iOS payload exclude this work.
+  Old artifact evidence stays valid for its own bytes; no iOS approval or
+  publication follows from local onboarding checks.

@@ -4,14 +4,15 @@ import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import { acquireHostInert } from "./hostInert";
 import "./planetLaunch.css";
 
-type Props = { ready: boolean; failed: boolean };
+type Props = { ready: boolean; failed: boolean; onComplete?: () => void };
 type LaunchPhase = "loading" | "revealing" | "complete";
 
 /** Reveals the already mounted canonical scene. It never owns a scene or camera. */
-export default function NativePlanetLaunch({ ready, failed }: Props) {
+export default function NativePlanetLaunch({ ready, failed, onComplete }: Props) {
   const { t } = useInterfaceLanguage();
   const overlayRef = useRef<HTMLDivElement>(null);
   const startedAt = useRef(Date.now());
+  const completionNotified = useRef(false);
   const [phase, setPhase] = useState<LaunchPhase>(failed ? "complete" : "loading");
   const [reduceMotion, setReduceMotion] = useState(() =>
     typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches
@@ -29,6 +30,12 @@ export default function NativePlanetLaunch({ ready, failed }: Props) {
     if (failed) setPhase("complete");
     else if (ready) setPhase(current => current === "loading" ? "revealing" : current);
   }, [failed, ready]);
+
+  useEffect(() => {
+    if (phase !== "complete" || completionNotified.current) return;
+    completionNotified.current = true;
+    onComplete?.();
+  }, [onComplete, phase]);
 
   useEffect(() => {
     if (phase === "complete") return;

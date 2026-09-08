@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "before": [
+    {
+      "path": "src/App.tsx",
+      "sha256": "1bb796a0c0769b08fad32bcb315569e62d0b43ec7cbc6f3e73a4448bf4443103"
+    },
+    {
+      "path": "src/host/NativePlanetLaunch.tsx",
+      "sha256": "42fa6de0af7552b2bd6b819fa34c06cb21d5164f75576fb92f33a432aac17680"
+    },
+    {
+      "path": "src/host/PlanetWelcome.tsx",
+      "sha256": "cc9d0df6a3f9f99023affbb3b39842e64935c3aaf30abe9c0ba468b6d30d76ba"
+    },
+    {
+      "path": "src/host/planetWelcome.css",
+      "sha256": "f3cae91ef50f0f0f2283b0591c77f3d4b26cdfd432d9be591ce06626c9277c34"
+    },
+    {
+      "path": "src/host/HostPlatformServices.ts",
+      "sha256": "bd66738649a137d9c46ef22c8dab108b311f51ef3c9dc542e53aa50ee2864ef7"
+    },
+    {
+      "path": "src/platform/adapters/web/WebPlatformAdapter.ts",
+      "sha256": "68d1592d73ffe00b59abcde72ad17a19cac8864cc973c69931a11679681e2d11"
+    }
+  ],
+  "after": [
+    {
+      "path": "src/App.tsx",
+      "sha256": "1bb796a0c0769b08fad32bcb315569e62d0b43ec7cbc6f3e73a4448bf4443103"
+    },
+    {
+      "path": "src/host/NativePlanetLaunch.tsx",
+      "sha256": "42fa6de0af7552b2bd6b819fa34c06cb21d5164f75576fb92f33a432aac17680"
+    },
+    {
+      "path": "src/host/PlanetWelcome.tsx",
+      "sha256": "cc9d0df6a3f9f99023affbb3b39842e64935c3aaf30abe9c0ba468b6d30d76ba"
+    },
+    {
+      "path": "src/host/planetWelcome.css",
+      "sha256": "f3cae91ef50f0f0f2283b0591c77f3d4b26cdfd432d9be591ce06626c9277c34"
+    },
+    {
+      "path": "src/host/HostPlatformServices.ts",
+      "sha256": "bd66738649a137d9c46ef22c8dab108b311f51ef3c9dc542e53aa50ee2864ef7"
+    },
+    {
+      "path": "src/platform/adapters/web/WebPlatformAdapter.ts",
+      "sha256": "68d1592d73ffe00b59abcde72ad17a19cac8864cc973c69931a11679681e2d11"
+    }
+  ],
+  "unchanged": true,
+  "results": [
+    {
+      "name": "typecheck",
+      "command": [
+        "node",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit"
+      ],
+      "startedAt": "2026-09-08T05:32:27.438Z",
+      "durationMs": 42970,
+      "exitCode": 0,
+      "report": "typecheck.json",
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "platform-boundaries",
+      "command": [
+        "node",
+        "scripts/mobile/platform-boundaries.mjs"
+      ],
+      "startedAt": "2026-09-08T05:32:27.466Z",
+      "durationMs": 12872,
+      "exitCode": 0,
+      "report": "platform-boundaries.json",
+      "logSha256": "e56f1cfb7bd5f8d0a16789d415a31827f883247827e90fd85b9dfff3c8656af8"
+    }
+  ],
+  "releaseReady": false,
+  "stageAccepted": false
+}

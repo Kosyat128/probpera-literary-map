@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "kind": "lossless-utf8-log",
+  "originalRelativePath": ".tmp/s05-first-journey-20260908/a2/run.log",
+  "bytes": 25,
+  "sha256": "7d45cb14eebde21adc75048f0a8c06fe3edbaf91692e61cce71876f5495baf43",
+  "encoding": "utf8",
+  "text": "Error: No tests found\r\n\r\n"
+}

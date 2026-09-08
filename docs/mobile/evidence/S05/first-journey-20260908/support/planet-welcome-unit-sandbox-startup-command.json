@@ -1,0 +1,10 @@
+{
+  "command": "node node_modules/vitest/vitest.mjs run src/host/PlanetWelcome.test.ts --maxWorkers=1 --reporter=default --reporter=json --outputFile=.tmp/s05-first-journey-20260908/planet-welcome-unit.json",
+  "startedAt": "2026-09-08T05:30:53.662Z",
+  "completedAt": "2026-09-08T05:30:54.179Z",
+  "durationMs": 517,
+  "exitCode": 1,
+  "signal": null,
+  "errorCode": null,
+  "pass": false
+}

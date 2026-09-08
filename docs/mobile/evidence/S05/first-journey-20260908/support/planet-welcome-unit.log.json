@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "sourceFilename": "planet-welcome-unit.log",
+  "encoding": "utf8",
+  "bytes": 486,
+  "sha256": "99081ddd6b461f57aba323d7a45cdcf4decb9df0c95827ed664ad1bdfaa01c40",
+  "text": "\n RUN  v4.1.10 C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work\n\n ✓ src/host/PlanetWelcome.test.ts (6 tests) 14ms\n\n Test Files  1 passed (1)\n      Tests  6 passed (6)\n   Start at  08:31:39\n   Duration  764ms (transform 247ms, setup 0ms, import 436ms, tests 14ms, environment 0ms)\n\nJSON report written to C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/.tmp/s05-first-journey-20260908/planet-welcome-unit.json\n"
+}

@@ -1,0 +1,13 @@
+{
+  "runId": "first-journey-20260908-a3",
+  "sourceCommit": "56a7a8c840d0950f1de2eebb7dd31b9188890312",
+  "changedFromA2b": [
+    "src/App.tsx",
+    "src/host/planetWelcome.css",
+    "tests/host/native-planet.spec.mjs"
+  ],
+  "selectedScenarios": 2,
+  "grep": "first journey",
+  "sourceFiles": 967,
+  "previousThreeRegressionsNotRepeated": true
+}

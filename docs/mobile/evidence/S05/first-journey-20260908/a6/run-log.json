@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "kind": "lossless-utf8-log",
+  "originalRelativePath": ".tmp/s05-first-journey-20260908/a6/run.log",
+  "bytes": 399,
+  "sha256": "a874f50d590513a1b83525e6c96b119e6992f7b05dfd835ee0d20fff605105d4",
+  "encoding": "utf8",
+  "text": "\r\nRunning 1 test using 1 worker\r\n\r\n(node:30940) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\r\n(Use `node --trace-warnings ...` to show where the warning was created)\r\n  ok 1 tests\\host\\native-planet.spec.mjs:481:1 › first journey on narrow reduced-motion screens supports keyboard search, remembered completion and fresh deep links (12.3s)\r\n\r\n  1 passed (14.6s)\r\n"
+}

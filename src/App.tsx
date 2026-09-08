@@ -18,6 +18,7 @@ import type { CommunityView } from "./community/CommunityHub";
 import { isControlledWebEdition } from "./platform/distribution";
 import { usePlatformServices } from "./platform/PlatformServices";
 import NativePlanetLaunch from "./host/NativePlanetLaunch";
+import PlanetWelcome from "./host/PlanetWelcome";
 import NativePlanetPanel from "./host/NativePlanetPanel";
 import { ProductNoticeSlot } from "./host/ProductNoticeHost";
 import {
@@ -546,6 +547,16 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
   const platformServices = usePlatformServices();
   const isPlanetApplication = isControlledWebEdition || platformServices.kind !== "web";
   const [nativeCollectionOpen, setNativeCollectionOpen] = useState(() => isPlanetApplication && addressRequestsCollection());
+  const [planetLaunchComplete, setPlanetLaunchComplete] = useState(false);
+  const completePlanetLaunch = useCallback(() => setPlanetLaunchComplete(true), []);
+  const [planetWelcomeSuppressed, setPlanetWelcomeSuppressed] = useState(() => {
+    if (typeof window === "undefined") return false;
+    const entry = new URL(window.location.href);
+    // An incoming content address owns the first interaction, including a
+    // target that has not resolved from the canonical catalogue yet.
+    return ["country", "writer", "book", "archiveShelf"].some(key => entry.searchParams.has(key))
+      || Boolean(entry.hash && entry.hash !== "#atlas");
+  });
   const nativeGlobeRootRef = useRef<HTMLElement>(null);
   const nativeReturnRequestedRef = useRef(false);
   const closeNativeCollection = useCallback(() => {
@@ -623,6 +634,8 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     useState<CommunityView>("account");
   const atlasRef = useRef<HTMLElement>(null);
   const atlasSearchInputRef = useRef<HTMLInputElement>(null);
+  const welcomeFocusRequest = useRef<"search" | "country" | null>(null);
+  const countryPresentationRef = useRef<HTMLElement>(null);
   const atlasActiveFilterRef = useRef<HTMLButtonElement>(null);
   const atlasFilterClusterRef = useRef<HTMLDivElement>(null);
   const atlasArchivesToggleRef = useRef<HTMLButtonElement>(null);
@@ -678,6 +691,25 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
   const atlasSearchOpen = atlasImmersive
     ? atlasExperience.state.searchOpen
     : searchOpen;
+
+  useLayoutEffect(() => {
+    const requested = welcomeFocusRequest.current;
+    if (!requested) return;
+    // Consume only this explicit welcome action after its target has committed.
+    // Locale changes never create another focus request.
+    welcomeFocusRequest.current = null;
+    if (!isPlanetApplication || nativeCollectionOpen || nativeGlobeRootRef.current?.hasAttribute("inert")) return;
+    if (requested === "search" && atlasSearchOpen) {
+      atlasSearchInputRef.current?.focus({ preventScroll: true });
+    } else if (requested === "country" && selectedCountry && !atlasSearchOpen) {
+      // The labelled country container survives its lazy WriterPanel fallback.
+      // Focusing the loading placeholder loses focus when the real panel arrives.
+      const target = atlasSheetContentCollapsed
+        ? countryPresentationRef.current?.querySelector<HTMLButtonElement>(".atlas-country-sheet-toggle")
+        : countryPresentationRef.current;
+      target?.focus({ preventScroll: true });
+    }
+  }, [atlasSearchOpen, atlasSheetContentCollapsed, isPlanetApplication, nativeCollectionOpen, selectedCountry?.id]);
 
   useEffect(() => {
     if (atlasImmersive && !atlasExperience.state.filtersOpen) {
@@ -1860,6 +1892,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
       window.history[next.localeOnly ? "replaceState" : "pushState"](state, "", next.relative);
     }
     if (isPlanetApplication && !next.localeOnly) {
+      setPlanetWelcomeSuppressed(true);
       nativeReturnRequestedRef.current = false;
       setNativeCollectionOpen(Boolean(intent.bookKey || intent.shelfId || intent.section === "books"));
     }
@@ -2164,6 +2197,25 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
                   randomDisabled={filteredCountries.length === 0}
                   onRandomJourney={selectRandomLiteraryDestination}
                 />
+                {isPlanetApplication && <PlanetWelcome
+                  preferences={platformServices.preferences}
+                  ready={planetLaunchComplete && globeViewSample.revision > 0 && archiveDataStatus === "ready"}
+                  eligible={!planetWelcomeSuppressed && !selectedCountry && !selectedWriter
+                    && !requestedBook && !pendingWriterWork && !nativeCollectionOpen
+                    && !atlasSearchOpen && !atlasExperience.state.filtersOpen
+                    && !globalSearchOpen && !communityOpen && !largestArchivesOpen && !countryIndexOpen}
+                  journeyDisabled={filteredCountries.length === 0}
+                  returnFocusRef={atlasExperience.searchButtonRef}
+                  onJourney={() => {
+                    welcomeFocusRequest.current = "country";
+                    selectRandomLiteraryDestination();
+                  }}
+                  onSearch={() => {
+                    cancelNativeNavigation();
+                    welcomeFocusRequest.current = "search";
+                    setAtlasSearchVisibility(true);
+                  }}
+                />}
           <div className="atlas-intro">
           <header className="atlas-heading" id="atlas-search-panel">
             <div>
@@ -2493,7 +2545,9 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
 
             {selectedCountry && (
               <aside
+                ref={countryPresentationRef}
                 className="atlas-country-presentation"
+                tabIndex={isPlanetApplication ? -1 : undefined}
                 data-atlas-country={selectedCountry.id}
                 data-atlas-sheet-state={atlasExperience.state.sheetState}
                 aria-label={countryName(
@@ -2713,13 +2767,17 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
 
   if (isPlanetApplication) {
     return <div className="magazine-app native-planet-app" data-typography-component="magazine" data-planet-ready={String(globeViewSample.revision > 0)}>
-      <main ref={nativeGlobeRootRef}>{atlasContent}<ProductNoticeSlot placement="root" reserveSpaceRef={nativeGlobeRootRef} /></main>
+      <main ref={nativeGlobeRootRef} onPointerDownCapture={event => {
+        if (event.target instanceof Element && event.target.closest("canvas, .globe-controls")) {
+          setPlanetWelcomeSuppressed(true);
+        }
+      }}>{atlasContent}<ProductNoticeSlot placement="root" reserveSpaceRef={nativeGlobeRootRef} /></main>
       <NativePlanetPanel open={nativeCollectionOpen} onClose={requestReturnToPlanet} onBack={handleNativePanelBack}
         globeRef={nativeGlobeRootRef} returnFocusRef={atlasExperience.closeButtonRef}>
         {productHelp}
         {collectionContent}
       </NativePlanetPanel>
-      <NativePlanetLaunch ready={globeViewSample.revision > 0} failed={archiveDataStatus === "error"} />
+      <NativePlanetLaunch ready={globeViewSample.revision > 0} failed={archiveDataStatus === "error"} onComplete={completePlanetLaunch} />
     </div>;
   }
 

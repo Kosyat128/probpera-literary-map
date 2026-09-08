@@ -5,6 +5,8 @@ import {
   type WebAdapterWindow,
 } from "./WebPlatformAdapter";
 
+const WELCOME = "probpera-planet-welcome-v1";
+
 function memoryStorage(): Storage {
   const entries = new Map<string, string>();
   return {
@@ -219,7 +221,7 @@ describe("non-secret best-effort canonical preferences", () => {
     expect(browser.sessionStorage.getItem).not.toHaveBeenCalled();
   });
 
-  it.each(["__proto__", "constructor", "toString", "token", "entitlements", "probpera-entitlements", "probpera-interface-language\u0000", "interface-language"])("rejects unapproved key %j without touching storage", async (key) => {
+  it.each(["__proto__", "constructor", "toString", "token", "entitlements", "probpera-entitlements", "child-profile", "probpera-profile", WELCOME + ":entitlements", WELCOME + "\u0000", "probpera-interface-language\u0000", "interface-language"])("rejects unapproved key %j without touching storage", async (key) => {
     const { browser } = browserEnvironment();
     const adapter = createWebPlatformAdapter({ window: browser });
     expect(await adapter.preferences.get(key)).toBeNull();
@@ -229,6 +231,36 @@ describe("non-secret best-effort canonical preferences", () => {
     expect(browser.localStorage.setItem).not.toHaveBeenCalled();
     expect(browser.localStorage.removeItem).not.toHaveBeenCalled();
   });
+
+  it("persists the exact welcome marker through a fresh adapter using only existing local storage", async () => {
+    const { browser } = browserEnvironment();
+    const adapter = createWebPlatformAdapter({ window: browser });
+    expect(await adapter.preferences.get(WELCOME)).toBeNull();
+    expect(await adapter.preferences.set(WELCOME, "completed")).toBe(true);
+    expect(browser.localStorage.setItem).toHaveBeenCalledExactlyOnceWith(WELCOME, "completed");
+    const recreated = createWebPlatformAdapter({ window: browser });
+    expect(await recreated.preferences.get(WELCOME)).toBe("completed");
+    expect(recreated.preferences.persistence).toBe("best-effort");
+    expect(browser.localStorage.length).toBe(1);
+    expect(await recreated.preferences.remove(WELCOME)).toBe(true);
+    expect(await adapter.preferences.get(WELCOME)).toBeNull();
+    expect(browser.sessionStorage.getItem).not.toHaveBeenCalled();
+    expect(browser.sessionStorage.setItem).not.toHaveBeenCalled();
+  });
+
+  it.each(["", "complete", "Completed", "true", " completed", "completed\u0000", '{"completed":true,"entitlements":"paid"}'])(
+    "rejects invalid welcome values on both write and stored read: %j", async value => {
+      const { browser } = browserEnvironment();
+      browser.localStorage.setItem(WELCOME, "completed");
+      vi.mocked(browser.localStorage.setItem).mockClear();
+      const adapter = createWebPlatformAdapter({ window: browser });
+      expect(await adapter.preferences.set(WELCOME, value)).toBe(false);
+      expect(browser.localStorage.setItem).not.toHaveBeenCalled();
+      expect(browser.localStorage.getItem).not.toHaveBeenCalled();
+      expect(browser.localStorage.getItem(WELCOME)).toBe("completed");
+      browser.localStorage.setItem(WELCOME, value);
+      expect(await adapter.preferences.get(WELCOME)).toBeNull();
+    });
 
   it("handles inaccessible/quota-limited storage without installing a facade", async () => {
     const { browser } = browserEnvironment();

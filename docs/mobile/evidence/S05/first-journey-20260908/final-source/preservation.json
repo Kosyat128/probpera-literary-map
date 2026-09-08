@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "allExact": true,
+  "existingStaticEmbeddedLogsReconstructed": true,
+  "copied": [
+    {
+      "source": ".tmp/s05-first-journey-20260908/final-source/static-checks.json",
+      "preserved": "static-checks.json",
+      "bytes": 2593,
+      "sha256": "5ecae3dd7d08f8847b484f5c3b11e6aeb234b75daed814252ba1633571b5250d",
+      "exact": true
+    },
+    {
+      "source": ".tmp/s05-first-journey-20260908/final-source/typecheck.json",
+      "preserved": "typecheck.json",
+      "bytes": 348,
+      "sha256": "fb607994324614302cee138963ca33dce63b1b48741d2b6c0230d6f0d08bab90",
+      "exact": true
+    },
+    {
+      "source": ".tmp/s05-first-journey-20260908/final-source/platform-boundaries.json",
+      "preserved": "platform-boundaries.json",
+      "bytes": 2008,
+      "sha256": "026be54239e8a453c74fc0d03a411d28e478692fc27f775f4380bf59882cb734",
+      "exact": true
+    },
+    {
+      "source": ".tmp/s05-first-journey-20260908/a3/source-before.json",
+      "preserved": "a3-source-before.json",
+      "bytes": 140053,
+      "sha256": "dda9b17c9053c5939fa48df551f816425408a46c3f3eed9c50f9af1856f8d110",
+      "exact": true
+    },
+    {
+      "source": ".tmp/s05-first-journey-20260908/a3/source-after.json",
+      "preserved": "a3-source-after.json",
+      "bytes": 140053,
+      "sha256": "a36e88c44c60c900688b6a520a56cd52464e27b3ad5ddc691c25eea29d3e0f61",
+      "exact": true
+    },
+    {
+      "source": ".tmp/s05-first-journey-20260908/a3/source-comparison.json",
+      "preserved": "a3-source-comparison.json",
+      "bytes": 649,
+      "sha256": "436b8eb3730d1ad0080b324c62b8b3c43cef91ef1e25c2e3d207b20aa7afc85d",
+      "exact": true
+    }
+  ],
+  "generated": [
+    "host-css-a3-before.json",
+    "candidate-source-observed.json",
+    "final-candidate-css-delta.json"
+  ],
+  "noValidationRerun": true
+}

@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "sourceFilename": "adapter-preferences-diff-check.log",
+  "encoding": "utf8",
+  "bytes": 544,
+  "sha256": "cde82b5c9ba28c1de81ad66b60fab79834075e3d1a85fe847e3af6a865681ed1",
+  "text": "warning: in the working copy of 'src/host/HostPlatformServices.test.ts', LF will be replaced by CRLF the next time Git touches it\r\nwarning: in the working copy of 'src/host/HostPlatformServices.ts', LF will be replaced by CRLF the next time Git touches it\r\nwarning: in the working copy of 'src/platform/adapters/web/WebPlatformAdapter.test.ts', LF will be replaced by CRLF the next time Git touches it\r\nwarning: in the working copy of 'src/platform/adapters/web/WebPlatformAdapter.ts', LF will be replaced by CRLF the next time Git touches it\r\n"
+}

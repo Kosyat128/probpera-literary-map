@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "stage": "S05",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "runId": "first-journey-20260908-a2",
+  "sourceCommit": "56a7a8c840d0950f1de2eebb7dd31b9188890312",
+  "scope": "Canonical App/R3F/CSS in Chrome with injected native plugins, simulated OS Preferences persistence and explicit-click random seed.",
+  "statistics": {
+    "startTime": "2026-09-08T05:43:06.984Z",
+    "duration": 192.87099999999998,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "selectionErrorBeforeFixture": true,
+  "tests": [],
+  "sourceComparison": null,
+  "runContext": {
+    "runId": "first-journey-20260908-a2",
+    "sourceCommit": "56a7a8c840d0950f1de2eebb7dd31b9188890312",
+    "sourceFiles": 967,
+    "deltaFromA1": "Only native-planet.spec.mjs: transparent focus telemetry and corrected one-click random fallback",
+    "runtimeSourceUnchanged": true,
+    "selectedScenarios": 2,
+    "previousThreeAppRegressionsNotRepeated": true
+  },
+  "preservedFiles": [
+    {
+      "path": "source-before.json",
+      "source": ".tmp/s05-first-journey-20260908/a2/source-before.json",
+      "bytes": 140053,
+      "sha256": "9209c3c60fae9721648ccb6e456533da40ec42a1d8423120791f69a8edc03ce5"
+    },
+    {
+      "path": "run-context.json",
+      "source": ".tmp/s05-first-journey-20260908/a2/run-context.json",
+      "bytes": 363,
+      "sha256": "1d89f54057a0d21afcf49100e0fcb44046fac9ad242f3d904975d83169390607"
+    },
+    {
+      "path": "browser-results.json",
+      "source": ".tmp/native-planet-browser-results/first-journey-20260908-a2/results.json",
+      "bytes": 2240,
+      "sha256": "d4bd2355c6adfe899b604a9a16b9e4dedbe067e34ea13924bfe11618d26291d8"
+    },
+    {
+      "path": "run-log.json",
+      "source": ".tmp/s05-first-journey-20260908/a2/run.log",
+      "bytes": 288,
+      "sha256": "1f3b75a9d1e8032abf15e1b848884ce1cca7932e87f92db85e3c70e6902b973a"
+    }
+  ],
+  "losslessRunLog": {
+    "path": "run-log.json",
+    "bytes": 25,
+    "sha256": "7d45cb14eebde21adc75048f0a8c06fe3edbaf91692e61cce71876f5495baf43",
+    "roundTripVerified": true
+  },
+  "limitations": [
+    "This preserves the exact attempt, including failures; it is not stage acceptance.",
+    "No OS installation, native/PWA artifact, production publication, trace.zip or compiled source payload included.",
+    "Only existing evidence was copied and checked by hash; no tests rerun for preservation."
+  ]
+}

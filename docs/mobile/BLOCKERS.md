@@ -24,6 +24,15 @@ Internal implementation remains the assistant's responsibility:
 - English factual content, editorial/name/title evidence, synchronized legal,
   support/store/reviewer materials and complete accessibility remain unfinished.
 
+<!-- s05-first-journey:begin -->
+- The bounded S05 first-journey invitation has 67 scoped unit and 1 selected
+  browser passes plus static checks. Preserve initial failures and explicit
+  fixture/product classifications; 90 other adapter tests were skipped by the
+  preferences filter. Full onboarding, child-policy restoration, original
+  interactive 3D Planetka, reviewed RU/EN copy and actual device evidence remain
+  internal work. Existing APK/PWA/iOS projection do not include this slice.
+<!-- s05-first-journey:end -->
+
 External inputs, when corresponding internal artifacts are ready:
 
 - Owner signing/merchant/store access, territory/rights/legal decisions and

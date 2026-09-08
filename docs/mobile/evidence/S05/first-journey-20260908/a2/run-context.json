@@ -1,0 +1,9 @@
+{
+  "runId": "first-journey-20260908-a2",
+  "sourceCommit": "56a7a8c840d0950f1de2eebb7dd31b9188890312",
+  "sourceFiles": 967,
+  "deltaFromA1": "Only native-planet.spec.mjs: transparent focus telemetry and corrected one-click random fallback",
+  "runtimeSourceUnchanged": true,
+  "selectedScenarios": 2,
+  "previousThreeAppRegressionsNotRepeated": true
+}
