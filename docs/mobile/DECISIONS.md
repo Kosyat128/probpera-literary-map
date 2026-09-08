@@ -328,3 +328,10 @@
   checkpoint, not the current APK boundary. Chrome with injected native events
   plus APK static checks does not establish installed-device lifecycle, battery
   performance, reviewed bilingual content, stage acceptance or release readiness.
+
+- D077: S07 country-sheet touch work starts under the documented parallel-safe
+  entry rule in matrix69. Reuse the current sheet reducer and persistent globe;
+  add drag/snap only to its application handle, preserving content scrolling,
+  tap/keyboard, cancellation and reduced motion. First-open stays S03; S06 and
+  later stages are not accepted or implicitly started. Prior APK/PWA/iOS
+  artifacts keep their source identities and pending publication permission.

@@ -1,11 +1,17 @@
 # V12 status — 2026-09-08
 
+<!-- s07-country-sheet:begin -->
+S07 bounded touch work is in progress: drag/snap the existing country sheet,
+retain tap/keyboard/content scroll and the same globe. No new stage acceptance.
+Entry: evidence/S07/country-sheet-20260908/entry.json.
+<!-- s07-country-sheet:end -->
+
 The canonical Literary Planet is the sole application home. Orange launch ->
 live globe; country, writer, work, collection and future child/Planetka,
 customization and store functions surround that same persistent scene.
 
-S00-S02 accepted. S03 is first-open; S03/S04/S05 remain IN_PROGRESS under the
-documented parallel-safe entry. S06-S40 NOT_STARTED. releaseReady:false.
+S00-S02 accepted. S03 is first-open; S03/S04/S05/S07 are IN_PROGRESS under
+documented parallel-safe entry. S06 and S08-S40 NOT_STARTED. releaseReady:false.
 
 <!-- s04-native-activity:begin -->
 Native background/resume reaches the existing globe through the shared

@@ -1,5 +1,11 @@
 # V12 blockers and pending work
 
+<!-- s07-country-sheet:begin -->
+S07 bounded touch work is in progress: drag/snap the existing country sheet,
+retain tap/keyboard/content scroll and the same globe. No new stage acceptance.
+Entry: evidence/S07/country-sheet-20260908/entry.json.
+<!-- s07-country-sheet:end -->
+
 Internal implementation remains the assistant's responsibility:
 
 - Native globe-only entry, three core browser scenarios, final typecheck and

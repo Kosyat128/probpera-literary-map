@@ -1,6 +1,12 @@
 Continue V12 in literary-planet-v12-work on
 codex/literary-planet-v12-bilingual-final-autopilot.
 
+<!-- s07-country-sheet:begin -->
+S07 bounded touch work is in progress: drag/snap the existing country sheet,
+retain tap/keyboard/content scroll and the same globe. No new stage acceptance.
+Entry: evidence/S07/country-sheet-20260908/entry.json.
+<!-- s07-country-sheet:end -->
+
 <!-- s04-native-activity:begin -->
 LATEST S04 SOURCE AND ANDROID: native activity propagation.
 Native background/resume reaches the existing globe through the shared
@@ -91,8 +97,8 @@ answer authorizes it, publish only exact83-file projection on the reviewed
 public parent/nonforce test branch and run simulator build. No private history,
 V12/reports/keys; new PWA Device UX not included. Owner has no Mac.
 
-S00-S02 accepted. S03 first-open/S03.acceptance. S03/S04/S05 IN_PROGRESS under
-documented parallel-safe entry; S06-S40 NOT_STARTED. releaseReady:false.
+S00-S02 accepted. S03 first-open/S03.acceptance. S03/S04/S05/S07 IN_PROGRESS
+under documented parallel-safe entry; S06 and S08-S40 NOT_STARTED. releaseReady:false.
 Remaining internal work includes actual PWA installation/device evidence,
 paid-web checkout integration, reviewed indexable RU/EN content, native/device
 and S05 onboarding, restrictive child policy/Parent Gate/profiles/Planetka,

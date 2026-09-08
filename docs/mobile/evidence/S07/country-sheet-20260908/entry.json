@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T07:34:19.357Z",
+  "stage": "S07",
+  "status": "IN_PROGRESS",
+  "firstOpenCriterion": "S03.acceptance",
+  "sourceCheckpoint": "f7991a9d00d224f4ee89b0ec423f0f907faa80e7",
+  "authority": {
+    "document": "requirements/v12/69_STAGE_ACCEPTANCE_MATRIX.csv",
+    "entryRule": "previous stage complete or parallel-safe documented",
+    "route": "S03-S10",
+    "packageIntegrity": {
+      "pass": true,
+      "checksumCount": 194,
+      "manifestFileCount": 191,
+      "bindingDocumentCount": 173,
+      "manifestSha256": "bb759162674bafe0a9baa87ee6adffd41527d6e38e979f5cf6a6d0445535acd8"
+    }
+  },
+  "scope": "Touch dragging and snapping the existing mobile country sheet using its existing collapsed/half/expanded state; preserve tap, keyboard, independent content scroll and the same canonical globe.",
+  "mappedRequirements": [
+    "S07.UX-002",
+    "S07.A11Y-005",
+    "S07.A11Y-004",
+    "S07.PLATFORM-007"
+  ],
+  "parallelSafety": [
+    "The canonical globe, platform adapters and sheet reducer already exist in the current working implementation; this does not accept their stages.",
+    "Only application presentation and its touch handlers change. Paid-web authority, child policy, factual catalogues and public source projection are outside this slice.",
+    "No changes to Canvas/renderer ownership, native listeners, store automation or first-open progression.",
+    "Current routed21/22/23 govern interaction, accessibility and frame work; no documents from later route groups are loaded."
+  ],
+  "acceptanceForSlice": [
+    "Actual narrow touch drag/snap and cancellation",
+    "Ordinary tap/keyboard still work",
+    "Writer-content scroll does not become a drag gesture",
+    "Locale/camera/selection and same scene survive",
+    "Reduced motion and viewport change release gesture capture safely"
+  ],
+  "stageAccepted": false,
+  "releaseReady": false,
+  "testsRunAtEntry": false,
+  "productionActionsPerformed": false
+}

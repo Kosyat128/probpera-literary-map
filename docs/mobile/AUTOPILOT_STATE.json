@@ -5,7 +5,7 @@
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
   "headSha": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-08T06:34:48.868Z",
+  "updatedAt": "2026-09-08T07:34:19.357Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -1059,7 +1059,7 @@
     {
       "id": "S07",
       "name": "Premium responsive globe UX",
-      "status": "NOT_STARTED",
+      "status": "IN_PROGRESS",
       "criteria": [
         {
           "id": "S07.acceptance",
@@ -1159,7 +1159,9 @@
         }
       ],
       "lastGreenCommands": [],
-      "artifacts": [],
+      "artifacts": [
+        "docs/mobile/evidence/S07/country-sheet-20260908/entry.json"
+      ],
       "externalBlockers": []
     },
     {
@@ -10551,7 +10553,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Continue first-open S03.acceptance with documented S04/S05 parallel-safe work. Android 532d99d6 now includes native activity propagation and first-journey source at c9ed8ca1a2363d62ab82a98feafc492fe88675b0; strict build/binary/preservation passed, installed-device lifecycle and battery behavior remain unverified. S05 keeps its earlier7b63 artifact evidence. PWA051 and frozen iOS83 retain their previous source boundaries and publication-answer state. Complete remaining platform/onboarding, child/Planetka, bilingual editorial and release gates without assigning programming/translation to the owner.",
+    "nextAction": "Continue documented parallel-safe S07 country-sheet touch work while S03.acceptance remains first-open. Implement and validate drag/snap/cancellation over the same canonical globe; preserve prior source-bound artifacts, pending iOS permission and incomplete platform/child/bilingual/release gates.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -11244,6 +11246,12 @@
       "nativeArtifactEvidence": "docs/mobile/evidence/S04/native-activity-android-20260908/result.json",
       "nativeArtifactBuildId": "532d99d601fb5d3365a992142b1035f8d12341cd325a08b895847d5bb2af556e",
       "nativeArtifactSourceCommit": "c9ed8ca1a2363d62ab82a98feafc492fe88675b0"
+    },
+    "s07CountrySheetEntry": {
+      "evidence": "docs/mobile/evidence/S07/country-sheet-20260908/entry.json",
+      "sha256": "c5e9874979d2d6fb51ebcb12eff67f6c1afb5713e1a8392610779c9839fd99ae",
+      "status": "IN_PROGRESS",
+      "stageAccepted": false
     }
   },
   "externalOwnerInputsStatus": {
