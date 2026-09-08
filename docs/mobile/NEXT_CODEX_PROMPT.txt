@@ -2,18 +2,18 @@ Continue V12 in literary-planet-v12-work on
 codex/literary-planet-v12-bilingual-final-autopilot.
 
 <!-- s04-native-activity:begin -->
-LATEST S04 SOURCE: native activity propagation.
-Native background/resume now reaches the existing globe through the shared
-platform snapshot: rendering/controls pause, while Canvas, camera, selection
-and rotation preference remain. TypeScript/platform checks and one final actual
-App/R3F Chrome case passed with injected native events and unchanged source.
-The initial a1 whole-case failure remains preserved: its lifecycle assertions
-passed before the final image-load gate failed; no partial green is substituted.
-Evidence: evidence/S04/native-activity-20260908/result.json.
-No installed-device, battery, full-suite or stage-acceptance claim. Android
-7b631c49 contains first-journey but excludes this newer native activity change;
-its previous build/audit evidence remains valid. PWA051 and frozen iOS83 keep
-their existing source boundaries and permissions. First-open remains S03.
+LATEST S04 SOURCE AND ANDROID: native activity propagation.
+Native background/resume reaches the existing globe through the shared
+platform snapshot: rendering/controls pause while Canvas, camera, selection
+and rotation preference remain. Bounded static and one actual App/R3F Chrome
+case passed with injected native events; earlier failures stay preserved.
+Source evidence: evidence/S04/native-activity-20260908/result.json.
+Android 532d99d6 now includes this source; strict build/static APK audit and
+exact preservation passed from c9ed8ca1a2363d62ab82a98feafc492fe88675b0.
+APK evidence: evidence/S04/native-activity-android-20260908/result.json.
+Installed-device lifecycle, battery performance, full-suite and stage gates
+remain unverified. Prior7b63 and its S05 evidence remain unchanged. PWA051 and
+frozen iOS83 keep their source boundaries and permissions. First-open is S03.
 <!-- s04-native-activity:end -->
 
 <!-- s05-first-journey:begin -->
@@ -58,20 +58,21 @@ viewport and same Canvas/renderer/camera/scene. Actual RU PNG is warm; cold RU
 has telemetry, cold EN telemetry+PNG. Keep a1-a4 failures distinct; no full-suite
 replay or exact RC claim. Earlier access/revocation/update/rollback retained.
 
-ANDROID:7b631c491fb0d4fb72a135b9a1a341392bbdefc7d5e3515265d45b19801b7c4c
-SOURCE:282e03d5f877c2e1dc0d0ffd6fc8a211c5460c94
-SOURCE_INPUTS_SHA256:a6444b9df21cfa6b7c99704587ccaaa684cf12f613c19b27080c2091371842a1
-.tmp/native-builds/android-dev/first-journey-7b631c49/runtime
-.tmp/native-builds/android-dev/first-journey-7b631c49/app-dev-debug.apk
-35529259B SHA2560b37610afb86c2e1d7a133dc5573e4e6c49b99f185657091eb99b6cd5d0c608f
-Evidence: evidence/S04/android-first-journey-20260908/result.json.
-Canonical globe/panels and S05 first-journey source are now in this devDebug APK.
-Strict audit: 343 runtime files. Actual APK: 342
-matched assets of 343; omitted validation metadata:
+ANDROID:532d99d601fb5d3365a992142b1035f8d12341cd325a08b895847d5bb2af556e
+SOURCE:c9ed8ca1a2363d62ab82a98feafc492fe88675b0
+SOURCE_INPUTS_SHA256:46bed15392b9493d46d65a60ef30749c07bcf487a484702d57382528ddede84b
+.tmp/native-builds/android-dev/native-activity-532d99d6/runtime
+.tmp/native-builds/android-dev/native-activity-532d99d6/app-dev-debug.apk
+35808614B SHA2566811e88763ad3d7c690f63f7772be753381c6113f0983538c0a0d8a04bc6c0ae
+Evidence: evidence/S04/native-activity-android-20260908/result.json.
+Canonical globe/panels, first-journey and native activity source are in this APK.
+Strict audit: 344 runtime files. Actual APK: 343
+matched assets of 344; omitted validation metadata:
 .vite/manifest.json.
 Offline Gradle, binary/plugin/resource/debug-signature/alignment and exact
 preservation passed. No installed Android/device/RC/stage-acceptance claim.
-Previous742/3cd/46eb artifacts retain their original bytes/source evidence.
+Prior7b63/742/3cd/46eb retain their bytes/source evidence; S05 cache still
+references its original valid first-journey artifact7b63.
 PWA051 and frozen iOS83 exclude this newer source; do not relabel either.
 Java21/SDK/license are prepared and approved. Do not request them again.
 

@@ -5,7 +5,7 @@
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
   "headSha": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-08T06:32:16.503Z",
+  "updatedAt": "2026-09-08T06:34:48.868Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -10551,7 +10551,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Continue first-open S03.acceptance with documented S04/S05 parallel-safe work. The bounded native activity-to-globe connection has source-bound static and one actual App/R3F browser case with injected native events. Android7b631c49 includes first-journey but excludes native activity; preserve its artifact identity. PWA051 and frozen iOS83 retain their previous bytes, source scopes and publication-answer state. Complete remaining platform/onboarding, original 3D Planetka, child, bilingual editorial and release gates without inferring stage acceptance.",
+    "nextAction": "Continue first-open S03.acceptance with documented S04/S05 parallel-safe work. Android 532d99d6 now includes native activity propagation and first-journey source at c9ed8ca1a2363d62ab82a98feafc492fe88675b0; strict build/binary/preservation passed, installed-device lifecycle and battery behavior remain unverified. S05 keeps its earlier7b63 artifact evidence. PWA051 and frozen iOS83 retain their previous source boundaries and publication-answer state. Complete remaining platform/onboarding, child/Planetka, bilingual editorial and release gates without assigning programming/translation to the owner.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -10754,34 +10754,33 @@
       "evidence": "docs/mobile/evidence/S04/globe-entry-20260908/result.json",
       "coreBrowserCases": 3,
       "nativeArtifactRefreshed": true,
-      "nativeArtifactEvidence": "docs/mobile/evidence/S04/android-first-journey-20260908/result.json",
+      "nativeArtifactEvidence": "docs/mobile/evidence/S04/native-activity-android-20260908/result.json",
       "nativeArtifact": {
         "platform": "android",
         "channel": "dev",
-        "sourceCommit": "282e03d5f877c2e1dc0d0ffd6fc8a211c5460c94",
-        "buildId": "7b631c491fb0d4fb72a135b9a1a341392bbdefc7d5e3515265d45b19801b7c4c",
-        "sourceInputsSha256": "a6444b9df21cfa6b7c99704587ccaaa684cf12f613c19b27080c2091371842a1",
-        "runtime": ".tmp/native-builds/android-dev/first-journey-7b631c49/runtime",
+        "sourceCommit": "c9ed8ca1a2363d62ab82a98feafc492fe88675b0",
+        "buildId": "532d99d601fb5d3365a992142b1035f8d12341cd325a08b895847d5bb2af556e",
+        "sourceInputsSha256": "46bed15392b9493d46d65a60ef30749c07bcf487a484702d57382528ddede84b",
+        "runtime": ".tmp/native-builds/android-dev/native-activity-532d99d6/runtime",
         "apk": {
-          "path": ".tmp/native-builds/android-dev/first-journey-7b631c49/app-dev-debug.apk",
-          "bytes": 35529259,
-          "sha256": "0b37610afb86c2e1d7a133dc5573e4e6c49b99f185657091eb99b6cd5d0c608f"
+          "path": ".tmp/native-builds/android-dev/native-activity-532d99d6/app-dev-debug.apk",
+          "bytes": 35808614,
+          "sha256": "6811e88763ad3d7c690f63f7772be753381c6113f0983538c0a0d8a04bc6c0ae"
         },
         "nativeStrictAudit": true,
         "offlineGradleBuild": true,
         "apkBinaryAudit": true,
         "preservationCopiesVerified": true,
-        "currentSource": false,
+        "currentSource": true,
         "includesS05FirstJourney": true,
+        "includesNativeActivity": true,
         "installedRuntimeTested": false,
         "exactReleaseCandidate": false,
         "stageAccepted": false,
         "releaseReady": false,
-        "sourceScopeNote": "Exact first-journey source checkpoint compiled and statically inspected as Android devDebug. The PWA051 artifact and frozen iOS83 projection retain their prior identities and exclude this newer slice. Browser/native-plugin fixtures do not establish installed-device behavior.",
-        "includesNativeActivity": false,
-        "nativeActivitySourceScopeNote": "Android7b631c49 contains first-journey source but predates native activity propagation. Its exact-byte build/audit evidence remains valid for that artifact."
+        "sourceScopeNote": "Exact native-activity source checkpoint compiled and statically inspected as Android devDebug. Prior7b63 preserves its first-journey evidence; S05, PWA051 and frozen iOS83 keep their prior source-bound identities. Chrome with injected native events does not establish installed-device lifecycle or battery behavior."
       },
-      "nativeArtifactCurrentSource": false,
+      "nativeArtifactCurrentSource": true,
       "nativeArtifactHistory": [
         {
           "evidence": "docs/mobile/evidence/S04/android-globe-panels-20260908/result.json",
@@ -10809,6 +10808,35 @@
             "currentSource": false,
             "includesS05FirstJourney": false,
             "firstJourneySourceScopeNote": "S05 first-journey source changes postdate this frozen artifact/projection. Prior source-bound validation remains valid for its recorded inputs; it does not cover first-journey behavior."
+          }
+        },
+        {
+          "evidence": "docs/mobile/evidence/S04/android-first-journey-20260908/result.json",
+          "artifact": {
+            "platform": "android",
+            "channel": "dev",
+            "sourceCommit": "282e03d5f877c2e1dc0d0ffd6fc8a211c5460c94",
+            "buildId": "7b631c491fb0d4fb72a135b9a1a341392bbdefc7d5e3515265d45b19801b7c4c",
+            "sourceInputsSha256": "a6444b9df21cfa6b7c99704587ccaaa684cf12f613c19b27080c2091371842a1",
+            "runtime": ".tmp/native-builds/android-dev/first-journey-7b631c49/runtime",
+            "apk": {
+              "path": ".tmp/native-builds/android-dev/first-journey-7b631c49/app-dev-debug.apk",
+              "bytes": 35529259,
+              "sha256": "0b37610afb86c2e1d7a133dc5573e4e6c49b99f185657091eb99b6cd5d0c608f"
+            },
+            "nativeStrictAudit": true,
+            "offlineGradleBuild": true,
+            "apkBinaryAudit": true,
+            "preservationCopiesVerified": true,
+            "currentSource": false,
+            "includesS05FirstJourney": true,
+            "installedRuntimeTested": false,
+            "exactReleaseCandidate": false,
+            "stageAccepted": false,
+            "releaseReady": false,
+            "sourceScopeNote": "Exact first-journey source checkpoint compiled and statically inspected as Android devDebug. The PWA051 artifact and frozen iOS83 projection retain their prior identities and exclude this newer slice. Browser/native-plugin fixtures do not establish installed-device behavior.",
+            "includesNativeActivity": false,
+            "nativeActivitySourceScopeNote": "Android7b631c49 contains first-journey source but predates native activity propagation. Its exact-byte build/audit evidence remains valid for that artifact."
           }
         }
       ]
@@ -11208,11 +11236,14 @@
       "nativePluginsSimulated": true,
       "actualInstalledNativeRuntimeVerified": false,
       "fullSuiteRun": false,
-      "newNativeArtifactProduced": false,
+      "newNativeArtifactProduced": true,
       "newPwaArtifactProduced": false,
       "includedInFrozenIosProjection": false,
       "stageAccepted": false,
-      "releaseReady": false
+      "releaseReady": false,
+      "nativeArtifactEvidence": "docs/mobile/evidence/S04/native-activity-android-20260908/result.json",
+      "nativeArtifactBuildId": "532d99d601fb5d3365a992142b1035f8d12341cd325a08b895847d5bb2af556e",
+      "nativeArtifactSourceCommit": "c9ed8ca1a2363d62ab82a98feafc492fe88675b0"
     }
   },
   "externalOwnerInputsStatus": {

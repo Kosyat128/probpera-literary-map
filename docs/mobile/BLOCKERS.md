@@ -3,13 +3,14 @@
 Internal implementation remains the assistant's responsibility:
 
 - Native globe-only entry, three core browser scenarios, final typecheck and
-  platform boundaries passed. Fresh Android 7b631c49 build/static binary checks
+  platform boundaries passed. Fresh Android 532d99d6 build/static binary checks
   and exact archival copies passed. Installed Android/emulator/physical-device
   behavior still requires its own evidence; this is not S03/S04/S05 acceptance.
 - Controlled paid PWA globe/panel working validation is complete for the
   documented bounded cases; original failures remain preserved. OS installation,
-  the broader device matrix and remaining S03 gates are open. Android 7b631c49
-  contains shared-panel and first-journey fixes; keep QA authorities isolated.
+  the broader device matrix and remaining S03 gates are open. Android 532d99d6
+  contains shared-panel, first-journey and native-activity fixes; keep QA
+  authorities isolated.
 - Controlled PWA installation/offline/storage UI has237 scoped unit passes and
   two desktop/mobile browser passes. Actual OS installation, paid web checkout
   and merchant integration, reviewed indexable RU/EN pages and the broader
@@ -25,11 +26,13 @@ Internal implementation remains the assistant's responsibility:
   support/store/reviewer materials and complete accessibility remain unfinished.
 
 <!-- s04-native-activity:begin -->
-- Native activity propagation has bounded static/browser evidence; installed
-  runtime and device performance remain open. Existing Android7b631c49
-  includes first-journey but not this later source. Preserve all artifact
-  identities and pending iOS publication state; no stage gate is cleared.
+- Native activity propagation has bounded static/browser evidence and is
+  included in Android 532d99d6. Its strict build/static APK and preservation
+  checks passed. Installed-runtime lifecycle and device performance remain
+  open. Prior7b63/S05, PWA051 and frozen iOS83 evidence and publication state
+  stay intact; no stage gate is cleared.
   Evidence: evidence/S04/native-activity-20260908/result.json.
+  APK: evidence/S04/native-activity-android-20260908/result.json.
 <!-- s04-native-activity:end -->
 
 <!-- s05-first-journey:begin -->

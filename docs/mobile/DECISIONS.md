@@ -319,3 +319,12 @@
   Static and one injected-native App/R3F case validate this source slice only.
   Android7b631c49 retains first-journey but excludes this change; preserve
   existing artifact identities, S05 result, iOS approval state and S03 first-open.
+
+- D076: Android 532d99d6 compiles native activity propagation and existing
+  first-journey source from c9ed8ca1a2363d62ab82a98feafc492fe88675b0. Strict source/artifact,
+  cached offline Gradle, actual APK binary checks and exact preservation passed.
+  Prior7b63 and the complete S05 cache keep their original source/evidence;
+  PWA051 and frozen iOS83 are unchanged. Preserve D075 as the earlier source
+  checkpoint, not the current APK boundary. Chrome with injected native events
+  plus APK static checks does not establish installed-device lifecycle, battery
+  performance, reviewed bilingual content, stage acceptance or release readiness.

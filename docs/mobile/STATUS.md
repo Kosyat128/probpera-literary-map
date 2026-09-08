@@ -8,17 +8,17 @@ S00-S02 accepted. S03 is first-open; S03/S04/S05 remain IN_PROGRESS under the
 documented parallel-safe entry. S06-S40 NOT_STARTED. releaseReady:false.
 
 <!-- s04-native-activity:begin -->
-Native background/resume now reaches the existing globe through the shared
-platform snapshot: rendering/controls pause, while Canvas, camera, selection
-and rotation preference remain. TypeScript/platform checks and one final actual
-App/R3F Chrome case passed with injected native events and unchanged source.
-The initial a1 whole-case failure remains preserved: its lifecycle assertions
-passed before the final image-load gate failed; no partial green is substituted.
-Evidence: evidence/S04/native-activity-20260908/result.json.
-No installed-device, battery, full-suite or stage-acceptance claim. Android
-7b631c49 contains first-journey but excludes this newer native activity change;
-its previous build/audit evidence remains valid. PWA051 and frozen iOS83 keep
-their existing source boundaries and permissions. First-open remains S03.
+Native background/resume reaches the existing globe through the shared
+platform snapshot: rendering/controls pause while Canvas, camera, selection
+and rotation preference remain. Bounded static and one actual App/R3F Chrome
+case passed with injected native events; earlier failures stay preserved.
+Source evidence: evidence/S04/native-activity-20260908/result.json.
+Android 532d99d6 now includes this source; strict build/static APK audit and
+exact preservation passed from c9ed8ca1a2363d62ab82a98feafc492fe88675b0.
+APK evidence: evidence/S04/native-activity-android-20260908/result.json.
+Installed-device lifecycle, battery performance, full-suite and stage gates
+remain unverified. Prior7b63 and its S05 evidence remain unchanged. PWA051 and
+frozen iOS83 keep their source boundaries and permissions. First-open is S03.
 <!-- s04-native-activity:end -->
 
 Controlled paid PWA now uses the same globe root as native. The active panel
@@ -35,15 +35,16 @@ zero-layout FAIL; a5 final two affected desktop/mobile cases PASS. Each strict
 artifact audit passed. Earlier evidence covers access/revocation, keyboard
 update/rollback and notice geometry; no full-suite or installed-device claim.
 
-Fresh Android/dev 7b631c49 is built from source 282e03d5f877c2e1dc0d0ffd6fc8a211c5460c94 and
-contains the canonical globe/panels and first-journey invitation. Strict
-artifact audit, cached offline Gradle, actual APK payload/plugin/resource/
-signature/alignment audit and exact preservation passed. 35,529,259 bytes:
-.tmp/native-builds/android-dev/first-journey-7b631c49/app-dev-debug.apk
-SHA256 0b37610afb86c2e1d7a133dc5573e4e6c49b99f185657091eb99b6cd5d0c608f.
-Evidence: evidence/S04/android-first-journey-20260908/result.json.
-Historical742/3cd/46eb artifacts remain preserved. Installed-device behavior
-and store/RC readiness remain unverified. SDK license/tools already approved.
+Fresh Android/dev 532d99d6 is built from source c9ed8ca1a2363d62ab82a98feafc492fe88675b0 and
+contains the canonical globe/panels, first-journey invitation and native
+activity propagation. Strict artifact audit, cached offline Gradle, actual
+APK payload/plugin/resource/signature/alignment audit and exact preservation
+passed. 35,808,614 bytes:
+.tmp/native-builds/android-dev/native-activity-532d99d6/app-dev-debug.apk
+SHA256 6811e88763ad3d7c690f63f7772be753381c6113f0983538c0a0d8a04bc6c0ae.
+Evidence: evidence/S04/native-activity-android-20260908/result.json.
+Historical7b63/742/3cd/46eb artifacts remain preserved. Installed-device
+behavior and store/RC readiness remain unverified. SDK license/tools already approved.
 
 Historical iOS run34179803208 installed/launched RU/EN simulators, but its
 magazine-home/status-bar screenshots FAIL the product contract. The corrected
@@ -64,8 +65,9 @@ unverified. The final051c3da1 artifact passed strict audit; its only subsequent
 source change is a more visible focus outline. Browser cases were not replayed
 for that CSS color. New copy remains draft, not editorially approved.
 Evidence: evidence/S03/device-preparation-20260908/result.json.
-Prior7dc47dd8 PWA is archived; current dist-pwa is051c3da1. Android 7b631c49
-has its own newer source/build identity; PWA051 still excludes first-journey.
+Prior7dc47dd8 PWA is archived; current dist-pwa is051c3da1. Android 532d99d6
+has its own newer source/build identity; PWA051 still excludes first-journey
+and the subsequent native-activity source.
 
 <!-- s05-first-journey:begin -->
 S05 first-journey working slice: a small RU/EN invitation follows the actual
