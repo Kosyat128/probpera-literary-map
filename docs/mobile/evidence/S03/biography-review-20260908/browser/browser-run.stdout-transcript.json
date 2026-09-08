@@ -1,0 +1,7 @@
+{
+  "source": ".tmp/s03-biography-review-native-smoke-20260908-a1/reports/browser-run.stdout.log",
+  "originalBytes": 196,
+  "originalSha256": "cb8291c7a30aacb0f8258dd4aa4413b01e438e4b23177891afce9dd047ecc79c",
+  "reconstruction": "UTF-8 encode text exactly without newline normalization",
+  "text": "\nRunning 1 test using 1 worker\n\n  ok 1 tests\\host\\native-planet.spec.mjs:358:1 › native first screen is the actual immersive globe and RU/EN retains writer and scene (16.7s)\n\n  1 passed (25.3s)\n"
+}

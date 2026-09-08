@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { writerBiographyEditorialReviewIssues } from "../../src/data/biographyEditorialReview.ts";
 
 import {
   writerBiographyEditorialPostEditIssues,
@@ -222,6 +223,38 @@ function normalizeTranslationMeta(value) {
   };
 }
 
+function normalizeOptionalProvenance(value) {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return null;
+  const result = {};
+  const validators = {
+    model: (entry) => textValue(entry, 120, true),
+    reviewerModel: (entry) => textValue(entry, 120, true),
+    sourceHash: (entry) => typeof entry === "string" && /^(?:sha256:)?[a-f0-9]{64}$/u.test(entry) ? entry : null,
+    generatedAt: (entry) => isoTimestamp(entry) || isoDate(entry),
+    editorialPostEditedAt: isoTimestamp,
+    editorialPostEditor: (entry) => textValue(entry, 300, true),
+  };
+  for (const [field, validate] of Object.entries(validators)) {
+    if (value[field] === undefined) continue;
+    // Hashes cover the exact published provenance. Trimming it would silently
+    // invalidate a supplied review of the original or its translation.
+    if (validate(value[field]) !== value[field]) return null;
+    result[field] = value[field];
+  }
+  if (value.editorialPostEditReasonCodes !== undefined) {
+    if (!Array.isArray(value.editorialPostEditReasonCodes)) return null;
+    result.editorialPostEditReasonCodes = [...value.editorialPostEditReasonCodes];
+  }
+  const postEditFields = ["editorialPostEditedAt", "editorialPostEditor", "editorialPostEditReasonCodes"];
+  const present = postEditFields.filter((field) => result[field] !== undefined).length;
+  if (present && (present !== postEditFields.length || writerBiographyEditorialPostEditIssues({
+    editedAt: result.editorialPostEditedAt,
+    editor: result.editorialPostEditor,
+    reasonCodes: result.editorialPostEditReasonCodes,
+  }).length)) return null;
+  return result;
+}
+
 function normalizeBiographyProfile(value, locale) {
   const row = plainRecord(value);
   const text = textValue(row.text, 1_600, true);
@@ -286,8 +319,19 @@ function normalizeBiographyProfile(value, locale) {
   const translationMeta =
     method === "machine-translation"
       ? normalizeTranslationMeta(row.translationMeta)
-      : undefined;
-  if (method === "machine-translation" && !translationMeta) return null;
+      : row.translationMeta === undefined
+        ? undefined
+        : normalizeOptionalProvenance(row.translationMeta);
+  if ((method === "machine-translation" || row.translationMeta !== undefined) && !translationMeta) return null;
+  // Keep the supplied attestation byte-for-byte; never manufacture an approval
+  // from model/post-edit metadata or normalize an invalid attestation into one.
+  const review = plainRecord(row.editorialReview);
+  const editorialReview = Object.fromEntries(
+    ["schemaVersion", "hashContract", "decision", "reviewerType", "reviewer",
+      "reviewedAt", "evidenceRef", "sourceHash", "targetHash"]
+      .filter((key) => Object.hasOwn(review, key))
+      .map((key) => [key, review[key]])
+  );
   return {
     locale,
     text,
@@ -300,6 +344,7 @@ function normalizeBiographyProfile(value, locale) {
     ...(sourceTextRights ? { sourceTextRights } : {}),
     sources,
     ...(translationMeta ? { translationMeta } : {}),
+    ...(row.editorialReview !== undefined ? { editorialReview } : {}),
   };
 }
 
@@ -365,6 +410,21 @@ export function normalizePublicWriterBiographyTranslations(value, context = {}) 
       qaIssues.length
     ) {
       profiles.en = null;
+    }
+  }
+  const writer = {
+    id: textValue(context.writerId, 200, true),
+    name: textValue(context.writerName, 300, true),
+    biographyTranslations: profiles,
+  };
+  for (const locale of ["ru", "en"]) {
+    const profile = profiles[locale];
+    if (
+      profile &&
+      (profile.method === "human-translation" || profile.method === "machine-translation") &&
+      writerBiographyEditorialReviewIssues(profile, writer).length
+    ) {
+      profiles[locale] = null;
     }
   }
   return {

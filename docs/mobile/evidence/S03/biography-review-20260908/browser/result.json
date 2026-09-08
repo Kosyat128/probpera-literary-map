@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "runId": "s03-biography-review-native-smoke-20260908-a1",
+  "status": "SELECTED_SOURCE_BROWSER_VALIDATION_PASSED",
+  "startingHead": "5b9aa7bf76e829428ff34db0a2965fdbfb1a7564",
+  "endingHead": "5b9aa7bf76e829428ff34db0a2965fdbfb1a7564",
+  "sourceInputsSha256": "dea3876d9feb40027815206f14073c8af87ee3b13cacf2bd9b7a80ba0a624196",
+  "sourceUnchanged": true,
+  "statistics": {
+    "startTime": "2026-09-08T10:13:05.943Z",
+    "duration": 25347.9,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "executions": [
+    {
+      "title": "native first screen is the actual immersive globe and RU/EN retains writer and scene",
+      "expectedStatus": "passed",
+      "status": "passed",
+      "durationMs": 16741,
+      "errors": []
+    }
+  ],
+  "preservedFiles": [
+    {
+      "source": ".tmp/s03-biography-review-native-smoke-20260908-a1/reports/browser-run-execution.json",
+      "path": "docs/mobile/evidence/S03/biography-review-20260908/browser/browser-run-execution.json",
+      "bytes": 362,
+      "sha256": "5ec7401330433b03326e484f6a1a3665028aeae56513481f161a10b24687b318"
+    },
+    {
+      "source": ".tmp/s03-biography-review-native-smoke-20260908-a1/reports/browser-run.log",
+      "path": "docs/mobile/evidence/S03/biography-review-20260908/browser/browser-run-transcript.json",
+      "bytes": 668,
+      "sha256": "a1bd6bbc49743c2a4e49cd7575d87bc98690b1c3082a1cc48d2b5695978a09dd",
+      "rawSha256": "197534696d869bd7b3aa5629d0f7392789220e1123572f3e2d8eb7d50c5e2b9a",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/s03-biography-review-native-smoke-20260908-a1/reports/browser-run.stderr.log",
+      "path": "docs/mobile/evidence/S03/biography-review-20260908/browser/browser-run.stderr-transcript.json",
+      "bytes": 471,
+      "sha256": "c04a959993a03c142a7162f4cf5eb6da1b85c712cb9280e6ede4b739e22a8ad4",
+      "rawSha256": "90e8290d044a6d20c6666fdcef4c287e1b82f64b63eb8f77ee08c47dad8e15b0",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/s03-biography-review-native-smoke-20260908-a1/reports/browser-run.stdout.log",
+      "path": "docs/mobile/evidence/S03/biography-review-20260908/browser/browser-run.stdout-transcript.json",
+      "bytes": 509,
+      "sha256": "5e40f22d9b99d52de84527bc553b1c75b72a46b64db7e7fc4fa290ebc3ff81a9",
+      "rawSha256": "cb8291c7a30aacb0f8258dd4aa4413b01e438e4b23177891afce9dd047ecc79c",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/s03-biography-review-native-smoke-20260908-a1/reports/discovery-execution.json",
+      "path": "docs/mobile/evidence/S03/biography-review-20260908/browser/discovery-execution.json",
+      "bytes": 398,
+      "sha256": "4b4eaa8570a1baf7b7b6772473a0dfb1af7c9a60e1b6eefd065be4ccc396354b"
+    },
+    {
+      "source": ".tmp/s03-biography-review-native-smoke-20260908-a1/reports/discovery.json",
+      "path": "docs/mobile/evidence/S03/biography-review-20260908/browser/discovery.json",
+      "bytes": 156,
+      "sha256": "b0ccb0030050186998ce6bfcd1475000fb8a0ddd8200a26246d364f08eaa446c"
+    },
+    {
+      "source": ".tmp/s03-biography-review-native-smoke-20260908-a1/reports/discovery.log",
+      "path": "docs/mobile/evidence/S03/biography-review-20260908/browser/discovery-transcript.json",
+      "bytes": 3493,
+      "sha256": "e826189dbdfebb06fbc5922cc08a4fc776632ef2322e4c788bbe573b1c0bf2d1",
+      "rawSha256": "a129695bb2de092a64f550529d2a9d2247abea9ecbd400130fd772029de6d107",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/s03-biography-review-native-smoke-20260908-a1/reports/discovery.stderr.log",
+      "path": "docs/mobile/evidence/S03/biography-review-20260908/browser/discovery.stderr-transcript.json",
+      "bytes": 301,
+      "sha256": "874f64545ca490cbb4024c5b60025a786e375e485e60493438f7e9389d504026",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/s03-biography-review-native-smoke-20260908-a1/reports/discovery.stdout.log",
+      "path": "docs/mobile/evidence/S03/biography-review-20260908/browser/discovery.stdout-transcript.json",
+      "bytes": 3500,
+      "sha256": "68bbc63d07928510c2f8cb34be43f3ec6b38c2e8fd5494693b8a50fffad95282",
+      "rawSha256": "a129695bb2de092a64f550529d2a9d2247abea9ecbd400130fd772029de6d107",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/s03-biography-review-native-smoke-20260908-a1/reports/run-context.json",
+      "path": "docs/mobile/evidence/S03/biography-review-20260908/browser/run-context.json",
+      "bytes": 1242,
+      "sha256": "87768524d8c91d414a5e79a22cc46f992920cfd79721cb04a0a1f732b0b20c95"
+    },
+    {
+      "source": ".tmp/s03-biography-review-native-smoke-20260908-a1/reports/run-result.json",
+      "path": "docs/mobile/evidence/S03/biography-review-20260908/browser/run-result.json",
+      "bytes": 769,
+      "sha256": "ac64f86853083005f6c165ef9bac71cdb98847f610427881547607b1a6213b70"
+    },
+    {
+      "source": ".tmp/s03-biography-review-native-smoke-20260908-a1/reports/source-after.json",
+      "path": "docs/mobile/evidence/S03/biography-review-20260908/browser/source-after.json",
+      "bytes": 144743,
+      "sha256": "92c1c9965b978d35dad1eaec5afdc9581745ca29e49d4d24e73017dad65b347d"
+    },
+    {
+      "source": ".tmp/s03-biography-review-native-smoke-20260908-a1/reports/source-before.json",
+      "path": "docs/mobile/evidence/S03/biography-review-20260908/browser/source-before.json",
+      "bytes": 144743,
+      "sha256": "92c1c9965b978d35dad1eaec5afdc9581745ca29e49d4d24e73017dad65b347d"
+    },
+    {
+      "source": ".tmp/s03-biography-review-native-smoke-20260908-a1/reports/source-comparison.json",
+      "path": "docs/mobile/evidence/S03/biography-review-20260908/browser/source-comparison.json",
+      "bytes": 408,
+      "sha256": "477eea3be6f56bdab886de11ab3b3778804c8cf0aa0b71ea6551523d36f3150d"
+    },
+    {
+      "source": ".tmp/s03-biography-review-native-smoke-20260908-a1/reports/test-config-after.json",
+      "path": "docs/mobile/evidence/S03/biography-review-20260908/browser/test-config-after.json",
+      "bytes": 283,
+      "sha256": "287059b145d258b157f912df1a76d02b5e88418a587356c5556bedba50f2c6d2"
+    },
+    {
+      "source": ".tmp/s03-biography-review-native-smoke-20260908-a1/reports/test-config-before.json",
+      "path": "docs/mobile/evidence/S03/biography-review-20260908/browser/test-config-before.json",
+      "bytes": 283,
+      "sha256": "287059b145d258b157f912df1a76d02b5e88418a587356c5556bedba50f2c6d2"
+    },
+    {
+      "source": ".tmp/s03-biography-review-native-smoke-20260908-a1/run.mjs",
+      "path": "docs/mobile/evidence/S03/biography-review-20260908/browser/runner.mjs",
+      "bytes": 11454,
+      "sha256": "546f599575c982b7663f05a82db0acf6167a71e5544d03a243d21a6f8d2269bf"
+    },
+    {
+      "source": ".tmp/native-planet-browser-results/s03-biography-review-native-smoke-20260908-a1/results.json",
+      "path": "docs/mobile/evidence/S03/biography-review-20260908/browser/results.json",
+      "bytes": 47715,
+      "sha256": "fad86ed9ad4afe4cf97c2478d5c177eca0084d204dad48ab672d745bbaf3bc14"
+    },
+    {
+      "source": ".tmp/native-planet-browser-results/s03-biography-review-native-smoke-20260908-a1/results.json#native-entry-en",
+      "path": "docs/mobile/evidence/S03/biography-review-20260908/browser/native-entry-en.json",
+      "bytes": 8513,
+      "sha256": "833a83afb33cc05387a1c31b34f3e3a2fe9a88fcac7a8ce2e4feb596df0869c7"
+    },
+    {
+      "source": ".tmp/native-planet-browser-results/s03-biography-review-native-smoke-20260908-a1/results.json#native-entry-ru",
+      "path": "docs/mobile/evidence/S03/biography-review-20260908/browser/native-entry-ru.json",
+      "bytes": 11636,
+      "sha256": "407579f0c3c0bff15763a4580703b2fab83363e0b842c181f0d38b7cb4f26b35"
+    },
+    {
+      "source": ".tmp/native-planet-browser-results/s03-biography-review-native-smoke-20260908-a1/artifacts/native-planet-native-first-250e9-EN-retains-writer-and-scene/native-entry-en.png",
+      "path": "docs/mobile/evidence/S03/biography-review-20260908/browser/native-entry-en.png",
+      "bytes": 884106,
+      "sha256": "37e70c126a9d4bbc3f90c4d8db31e6e236760f41f7de5fb371f12cd778ab3458"
+    },
+    {
+      "source": ".tmp/native-planet-browser-results/s03-biography-review-native-smoke-20260908-a1/artifacts/native-planet-native-first-250e9-EN-retains-writer-and-scene/native-entry-ru.png",
+      "path": "docs/mobile/evidence/S03/biography-review-20260908/browser/native-entry-ru.png",
+      "bytes": 894532,
+      "sha256": "78301de534a8ced383c46a962db436355f835faef239b7aafac833b6de7bdb41"
+    }
+  ],
+  "actualApp": true,
+  "nativePluginsSimulated": true,
+  "productionArtifactBuilds": 0,
+  "actualInstalledRuntime": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "scope": "One existing writer/globe RU→EN→RU case with same Canvas/renderer/camera and retained selection; actual source bundled by esbuild in memory.",
+  "limits": [
+    "No dist-native/Vite/Android/iOS artifact runtime or installed-device evidence.",
+    "No full appearance/offline regression, editorial approval or stale/correction acceptance inferred."
+  ]
+}

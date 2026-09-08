@@ -6,7 +6,8 @@ type EnglishTranslationRecord = {
   text: string;
   sourceHash: string;
   generatedAt: string;
-  reviewedAt: string;
+  /** Legacy automated QA date; never an editorial approval date. */
+  reviewedAt?: string;
   model: string;
   reviewerModel: string;
   editorialPostEditedAt?: string;
@@ -33,17 +34,14 @@ export function buildWriterBiographyEnglishTranslation(
     locale: "en",
     text: generated.text,
     sourceLanguage: "Russian",
-    status: "reviewed",
+    status: "draft",
     method: "machine-translation",
-    reviewedAt: generated.reviewedAt,
-    reviewer: `Cloudflare Workers AI two-pass review: ${generated.model} + ${generated.reviewerModel}${
-      generated.editorialPostEditor
-        ? `; editorial post-edit: ${generated.editorialPostEditor}`
-        : ""
-    }`,
     translatedFromLocale: "ru",
     sourceTextRights: "project-original",
-    sources: russian.sources.map((source) => ({ ...source })),
+    sources: russian.sources.map((source) => ({
+      ...source,
+      fields: [...source.fields],
+    })),
     translationMeta: {
       model: generated.model,
       reviewerModel: generated.reviewerModel,
@@ -63,20 +61,23 @@ export function buildWriterBiographyEnglishTranslation(
 }
 
 /**
- * Adds only the generated English translation of the currently published,
- * project-original Russian biography. Source provenance is inherited from the
- * exact Russian profile; generation/check scripts SHA-pin that source before
- * this compact public overlay is accepted by the release gate.
+ * Generated output stays a draft even if its input claims an approval. The
+ * strict publication selector will not expose it, and any existing English
+ * profile takes precedence, including drafts and retained stale reviews.
+ * Replacement requires a separate explicit edit. Source SHA is generation provenance;
+ * the separate versioned editorial review contract controls acceptance.
  */
 export function mergeWriterBiographyEnglishTranslations(
-  countries: Country[]
+  countries: Country[],
+  generatedTranslations: ReadonlyMap<string, EnglishTranslationRecord> = translations
 ): Country[] {
-  if (translations.size === 0) return countries;
+  if (generatedTranslations.size === 0) return countries;
   return countries.map((country) => ({
     ...country,
     writers: country.writers.map((writer) => {
-      const generated = translations.get(`${country.id}:${writer.id}`);
+      const generated = generatedTranslations.get(`${country.id}:${writer.id}`);
       if (!generated) return writer;
+      if (writer.biographyTranslations?.en) return writer;
       const russian = selectWriterBiography(writer, "ru");
       if (!russian || russian.method !== "editorial-original") return writer;
 

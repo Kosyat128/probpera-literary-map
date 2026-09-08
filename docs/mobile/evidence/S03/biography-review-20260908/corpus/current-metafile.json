@@ -1,0 +1,3512 @@
+{
+  "inputs": {
+    "src/data/countries/generated/metadata.generated.json": {
+      "bytes": 158,
+      "imports": []
+    },
+    "src/data/countries/generated/index.ts": {
+      "bytes": 655,
+      "imports": [
+        {
+          "path": "src/data/countries/generated/metadata.generated.json",
+          "kind": "import-statement",
+          "original": "./metadata.generated.json"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/data/countries/generated/writerIdentityRemediations.generated.json": {
+      "bytes": 58752,
+      "imports": []
+    },
+    "src/data/countries/generated/writerPortraits.generated.json": {
+      "bytes": 606102,
+      "imports": []
+    },
+    "src/data/countries/generated/writerPortraits.ts": {
+      "bytes": 1643,
+      "imports": [
+        {
+          "path": "src/data/countries/generated/writerIdentityRemediations.generated.json",
+          "kind": "import-statement",
+          "original": "./writerIdentityRemediations.generated.json"
+        },
+        {
+          "path": "src/data/countries/generated/writerPortraits.generated.json",
+          "kind": "import-statement",
+          "original": "./writerPortraits.generated.json"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/data/countries/generated/nobelLiterature.official.json": {
+      "bytes": 30517,
+      "imports": []
+    },
+    "src/data/countries/nobelLiteratureRegistry.ts": {
+      "bytes": 9336,
+      "imports": [
+        {
+          "path": "src/data/countries/generated/nobelLiterature.official.json",
+          "kind": "import-statement",
+          "original": "./generated/nobelLiterature.official.json"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/data/countries/nobelLaureatesSupplement.ts": {
+      "bytes": 34207,
+      "imports": [
+        {
+          "path": "src/data/countries/nobelLiteratureRegistry.ts",
+          "kind": "import-statement",
+          "original": "./nobelLiteratureRegistry"
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@noble/hashes/esm/cryptoNode.js": {
+      "bytes": 482,
+      "imports": [
+        {
+          "path": "node:crypto",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@noble/hashes/esm/utils.js": {
+      "bytes": 10538,
+      "imports": [
+        {
+          "path": "node_modules/@noble/hashes/esm/cryptoNode.js",
+          "kind": "import-statement",
+          "original": "@noble/hashes/crypto"
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@noble/hashes/esm/_md.js": {
+      "bytes": 6192,
+      "imports": [
+        {
+          "path": "node_modules/@noble/hashes/esm/utils.js",
+          "kind": "import-statement",
+          "original": "./utils.js"
+        }
+      ],
+      "format": "esm"
+    },
+    "node_modules/@noble/hashes/esm/_u64.js": {
+      "bytes": 3081,
+      "imports": [],
+      "format": "esm"
+    },
+    "node_modules/@noble/hashes/esm/sha2.js": {
+      "bytes": 16832,
+      "imports": [
+        {
+          "path": "node_modules/@noble/hashes/esm/_md.js",
+          "kind": "import-statement",
+          "original": "./_md.js"
+        },
+        {
+          "path": "node_modules/@noble/hashes/esm/_u64.js",
+          "kind": "import-statement",
+          "original": "./_u64.js"
+        },
+        {
+          "path": "node_modules/@noble/hashes/esm/utils.js",
+          "kind": "import-statement",
+          "original": "./utils.js"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/data/biographyEditorialReview.ts": {
+      "bytes": 7238,
+      "imports": [
+        {
+          "path": "node_modules/@noble/hashes/esm/sha2.js",
+          "kind": "import-statement",
+          "original": "@noble/hashes/sha2"
+        },
+        {
+          "path": "node_modules/@noble/hashes/esm/utils.js",
+          "kind": "import-statement",
+          "original": "@noble/hashes/utils"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/data/writerBiography.ts": {
+      "bytes": 14356,
+      "imports": [
+        {
+          "path": "src/data/biographyEditorialReview.ts",
+          "kind": "import-statement",
+          "original": "./biographyEditorialReview"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/data/countries/writerBiographyResearch.ts": {
+      "bytes": 13084,
+      "imports": [
+        {
+          "path": "src/data/writerBiography.ts",
+          "kind": "import-statement",
+          "original": "../writerBiography"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/data/countries/writerBiographyResearchBatch01.ts": {
+      "bytes": 43126,
+      "imports": [
+        {
+          "path": "src/data/countries/writerBiographyResearch.ts",
+          "kind": "import-statement",
+          "original": "./writerBiographyResearch"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/data/countries/writerBiographyResearchBatches.ts": {
+      "bytes": 176,
+      "imports": [
+        {
+          "path": "src/data/countries/writerBiographyResearchBatch01.ts",
+          "kind": "import-statement",
+          "original": "./writerBiographyResearchBatch01"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch32.ts": {
+      "bytes": 21922,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch33.ts": {
+      "bytes": 14665,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch34.ts": {
+      "bytes": 17636,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch35.ts": {
+      "bytes": 33905,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch36.ts": {
+      "bytes": 40971,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch37.ts": {
+      "bytes": 35290,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch38.ts": {
+      "bytes": 15238,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch39.ts": {
+      "bytes": 28439,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch40.ts": {
+      "bytes": 32051,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch41.ts": {
+      "bytes": 28626,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch42.ts": {
+      "bytes": 28911,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch43.ts": {
+      "bytes": 33208,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch44.ts": {
+      "bytes": 34060,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch45.ts": {
+      "bytes": 29976,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch46.ts": {
+      "bytes": 5887,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch47.ts": {
+      "bytes": 12065,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch48.ts": {
+      "bytes": 9829,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch49.ts": {
+      "bytes": 11709,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch50.ts": {
+      "bytes": 23592,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch51.ts": {
+      "bytes": 8923,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch52.ts": {
+      "bytes": 22975,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch53.ts": {
+      "bytes": 23741,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch54.ts": {
+      "bytes": 23227,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch55.ts": {
+      "bytes": 24858,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch56.ts": {
+      "bytes": 24603,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch57.ts": {
+      "bytes": 19967,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/writerBiographyLegacyCorrections.ts": {
+      "bytes": 89351,
+      "imports": [
+        {
+          "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch32.ts",
+          "kind": "import-statement",
+          "original": "./writerBiographyPublicProfileFactCorrectionsBatch32"
+        },
+        {
+          "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch33.ts",
+          "kind": "import-statement",
+          "original": "./writerBiographyPublicProfileFactCorrectionsBatch33"
+        },
+        {
+          "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch34.ts",
+          "kind": "import-statement",
+          "original": "./writerBiographyPublicProfileFactCorrectionsBatch34"
+        },
+        {
+          "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch35.ts",
+          "kind": "import-statement",
+          "original": "./writerBiographyPublicProfileFactCorrectionsBatch35"
+        },
+        {
+          "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch36.ts",
+          "kind": "import-statement",
+          "original": "./writerBiographyPublicProfileFactCorrectionsBatch36"
+        },
+        {
+          "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch37.ts",
+          "kind": "import-statement",
+          "original": "./writerBiographyPublicProfileFactCorrectionsBatch37"
+        },
+        {
+          "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch38.ts",
+          "kind": "import-statement",
+          "original": "./writerBiographyPublicProfileFactCorrectionsBatch38"
+        },
+        {
+          "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch39.ts",
+          "kind": "import-statement",
+          "original": "./writerBiographyPublicProfileFactCorrectionsBatch39"
+        },
+        {
+          "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch40.ts",
+          "kind": "import-statement",
+          "original": "./writerBiographyPublicProfileFactCorrectionsBatch40"
+        },
+        {
+          "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch41.ts",
+          "kind": "import-statement",
+          "original": "./writerBiographyPublicProfileFactCorrectionsBatch41"
+        },
+        {
+          "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch42.ts",
+          "kind": "import-statement",
+          "original": "./writerBiographyPublicProfileFactCorrectionsBatch42"
+        },
+        {
+          "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch43.ts",
+          "kind": "import-statement",
+          "original": "./writerBiographyPublicProfileFactCorrectionsBatch43"
+        },
+        {
+          "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch44.ts",
+          "kind": "import-statement",
+          "original": "./writerBiographyPublicProfileFactCorrectionsBatch44"
+        },
+        {
+          "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch45.ts",
+          "kind": "import-statement",
+          "original": "./writerBiographyPublicProfileFactCorrectionsBatch45"
+        },
+        {
+          "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch46.ts",
+          "kind": "import-statement",
+          "original": "./writerBiographyPublicProfileFactCorrectionsBatch46"
+        },
+        {
+          "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch47.ts",
+          "kind": "import-statement",
+          "original": "./writerBiographyPublicProfileFactCorrectionsBatch47"
+        },
+        {
+          "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch48.ts",
+          "kind": "import-statement",
+          "original": "./writerBiographyPublicProfileFactCorrectionsBatch48"
+        },
+        {
+          "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch49.ts",
+          "kind": "import-statement",
+          "original": "./writerBiographyPublicProfileFactCorrectionsBatch49"
+        },
+        {
+          "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch50.ts",
+          "kind": "import-statement",
+          "original": "./writerBiographyPublicProfileFactCorrectionsBatch50"
+        },
+        {
+          "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch51.ts",
+          "kind": "import-statement",
+          "original": "./writerBiographyPublicProfileFactCorrectionsBatch51"
+        },
+        {
+          "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch52.ts",
+          "kind": "import-statement",
+          "original": "./writerBiographyPublicProfileFactCorrectionsBatch52"
+        },
+        {
+          "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch53.ts",
+          "kind": "import-statement",
+          "original": "./writerBiographyPublicProfileFactCorrectionsBatch53"
+        },
+        {
+          "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch54.ts",
+          "kind": "import-statement",
+          "original": "./writerBiographyPublicProfileFactCorrectionsBatch54"
+        },
+        {
+          "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch55.ts",
+          "kind": "import-statement",
+          "original": "./writerBiographyPublicProfileFactCorrectionsBatch55"
+        },
+        {
+          "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch56.ts",
+          "kind": "import-statement",
+          "original": "./writerBiographyPublicProfileFactCorrectionsBatch56"
+        },
+        {
+          "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch57.ts",
+          "kind": "import-statement",
+          "original": "./writerBiographyPublicProfileFactCorrectionsBatch57"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/data/countries/generated/writerBiographyFactReviewRuntime.generated.json": {
+      "bytes": 1597966,
+      "imports": []
+    },
+    "src/data/countries/writerBiographyFactReviews.ts": {
+      "bytes": 9581,
+      "imports": [
+        {
+          "path": "src/data/countries/generated/writerBiographyFactReviewRuntime.generated.json",
+          "kind": "import-statement",
+          "original": "./generated/writerBiographyFactReviewRuntime.generated.json"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/data/countries/generated/writerBiographyEnglishTranslations.generated.json": {
+      "bytes": 222,
+      "imports": []
+    },
+    "src/data/countries/writerBiographyEnglishTranslations.ts": {
+      "bytes": 3419,
+      "imports": [
+        {
+          "path": "src/data/countries/generated/writerBiographyEnglishTranslations.generated.json",
+          "kind": "import-statement",
+          "original": "./generated/writerBiographyEnglishTranslations.generated.json"
+        },
+        {
+          "path": "src/data/writerBiography.ts",
+          "kind": "import-statement",
+          "original": "../writerBiography"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/data/countries/articleCatalogBooks.ts": {
+      "bytes": 13961,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/articleReferencedBooks.ts": {
+      "bytes": 73541,
+      "imports": [
+        {
+          "path": "src/data/countries/articleCatalogBooks.ts",
+          "kind": "import-statement",
+          "original": "./articleCatalogBooks"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/data/countries/verifiedBookSupplements.ts": {
+      "bytes": 41933,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/userSuppliedBookWorkSupplementsBatch20260820.ts": {
+      "bytes": 33898,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/cms/countryProfiles.generated.ts": {
+      "bytes": 210,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/cms/literaryWorks.generated.ts": {
+      "bytes": 63398,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/cms/writerProfiles.generated.ts": {
+      "bytes": 205,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/cms/editorialOverrides.ts": {
+      "bytes": 6995,
+      "imports": [
+        {
+          "path": "src/data/writerBiography.ts",
+          "kind": "import-statement",
+          "original": "../writerBiography"
+        },
+        {
+          "path": "src/data/cms/countryProfiles.generated.ts",
+          "kind": "import-statement",
+          "original": "./countryProfiles.generated"
+        },
+        {
+          "path": "src/data/cms/literaryWorks.generated.ts",
+          "kind": "import-statement",
+          "original": "./literaryWorks.generated"
+        },
+        {
+          "path": "src/data/cms/writerProfiles.generated.ts",
+          "kind": "import-statement",
+          "original": "./writerProfiles.generated"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/utils/countryFlag.ts": {
+      "bytes": 305,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/afghanistan.ts": {
+      "bytes": 6902,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/albania.ts": {
+      "bytes": 6328,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/algeria.ts": {
+      "bytes": 6905,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/andorra.ts": {
+      "bytes": 3018,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/angola.ts": {
+      "bytes": 5564,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/antigua_and_barbuda.ts": {
+      "bytes": 2724,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/argentina.ts": {
+      "bytes": 28067,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/armenia.ts": {
+      "bytes": 9126,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/australia.ts": {
+      "bytes": 28399,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/austria.ts": {
+      "bytes": 10155,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/azerbaijan.ts": {
+      "bytes": 10173,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/bahamas.ts": {
+      "bytes": 2282,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/bahrain.ts": {
+      "bytes": 3721,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/bangladesh.ts": {
+      "bytes": 6777,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/barbados.ts": {
+      "bytes": 4086,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/belarus.ts": {
+      "bytes": 9237,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/belgium.ts": {
+      "bytes": 8519,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/belize.ts": {
+      "bytes": 3646,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/bhutan.ts": {
+      "bytes": 5142,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/bolivia.ts": {
+      "bytes": 21275,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/bosnia.ts": {
+      "bytes": 6330,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/botswana.ts": {
+      "bytes": 3173,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/brazil.ts": {
+      "bytes": 9595,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/brunei.ts": {
+      "bytes": 3533,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/bulgaria.ts": {
+      "bytes": 7037,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/burkina_faso.ts": {
+      "bytes": 3983,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/burundi.ts": {
+      "bytes": 2712,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/cambodia.ts": {
+      "bytes": 6406,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/cameroon.ts": {
+      "bytes": 7971,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/canada.ts": {
+      "bytes": 16978,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/cape_verde.ts": {
+      "bytes": 7834,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/central_african_republic.ts": {
+      "bytes": 1927,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/chad.ts": {
+      "bytes": 2797,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/chile.ts": {
+      "bytes": 27405,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/china.ts": {
+      "bytes": 37330,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/colombia.ts": {
+      "bytes": 29681,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/comoros.ts": {
+      "bytes": 2448,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/cook_islands.ts": {
+      "bytes": 998,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/costa_rica.ts": {
+      "bytes": 5138,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/cote_d_ivoire.ts": {
+      "bytes": 4403,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/croatia.ts": {
+      "bytes": 7143,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/cuba.ts": {
+      "bytes": 6811,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/cyprus.ts": {
+      "bytes": 5199,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/czechia.ts": {
+      "bytes": 6243,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/democratic_republic_of_congo.ts": {
+      "bytes": 5631,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/denmark.ts": {
+      "bytes": 10881,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/djibouti.ts": {
+      "bytes": 2356,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/dominica.ts": {
+      "bytes": 2902,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/dominican_republic.ts": {
+      "bytes": 5522,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/ecuador.ts": {
+      "bytes": 23779,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/egypt.ts": {
+      "bytes": 14320,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/el_salvador.ts": {
+      "bytes": 5507,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/england.ts": {
+      "bytes": 68305,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/equatorial_guinea.ts": {
+      "bytes": 2976,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/eritrea.ts": {
+      "bytes": 3473,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/estonia.ts": {
+      "bytes": 9804,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/eswatini.ts": {
+      "bytes": 2706,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/ethiopia.ts": {
+      "bytes": 5181,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/fiji.ts": {
+      "bytes": 7380,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/finland.ts": {
+      "bytes": 8153,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/france.ts": {
+      "bytes": 59120,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/french_guiana.ts": {
+      "bytes": 2802,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/gabon.ts": {
+      "bytes": 3421,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/gambia.ts": {
+      "bytes": 2959,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/georgia.ts": {
+      "bytes": 8801,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/germany.ts": {
+      "bytes": 45348,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/ghana.ts": {
+      "bytes": 5667,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/greece.ts": {
+      "bytes": 7065,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/grenada.ts": {
+      "bytes": 2443,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/guatemala.ts": {
+      "bytes": 9196,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/guinea.ts": {
+      "bytes": 2319,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/guinea_republic.ts": {
+      "bytes": 5893,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/guyana.ts": {
+      "bytes": 7052,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/haiti.ts": {
+      "bytes": 5380,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/honduras.ts": {
+      "bytes": 5055,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/hong_kong.ts": {
+      "bytes": 805,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/hungary.ts": {
+      "bytes": 6939,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/iceland.ts": {
+      "bytes": 7315,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/india.ts": {
+      "bytes": 39944,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/indonesia.ts": {
+      "bytes": 6247,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/iran.ts": {
+      "bytes": 8963,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/iraq.ts": {
+      "bytes": 5402,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/ireland.ts": {
+      "bytes": 10707,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/israel.ts": {
+      "bytes": 5349,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/italy.ts": {
+      "bytes": 39770,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/jamaica.ts": {
+      "bytes": 6069,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/japan.ts": {
+      "bytes": 40445,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/jordan.ts": {
+      "bytes": 4660,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/kazakhstan.ts": {
+      "bytes": 9655,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/kenya.ts": {
+      "bytes": 8600,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/kiribati.ts": {
+      "bytes": 1490,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/kosovo.ts": {
+      "bytes": 3531,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/kuwait.ts": {
+      "bytes": 4453,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/kyrgyzstan.ts": {
+      "bytes": 8610,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/laos.ts": {
+      "bytes": 5438,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/latvia.ts": {
+      "bytes": 7979,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/lebanon.ts": {
+      "bytes": 6521,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/lesotho.ts": {
+      "bytes": 3344,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/liberia.ts": {
+      "bytes": 3441,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/libya.ts": {
+      "bytes": 6610,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/liechtenstein.ts": {
+      "bytes": 3001,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/lithuania.ts": {
+      "bytes": 13729,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/luxembourg.ts": {
+      "bytes": 3692,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/macau.ts": {
+      "bytes": 2178,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/madagascar.ts": {
+      "bytes": 6938,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/malawi.ts": {
+      "bytes": 3601,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/malaysia.ts": {
+      "bytes": 4878,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/maldives.ts": {
+      "bytes": 2956,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/mali.ts": {
+      "bytes": 4520,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/malta.ts": {
+      "bytes": 4788,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/marshall_islands.ts": {
+      "bytes": 1756,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/mauritania.ts": {
+      "bytes": 3043,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/mauritius.ts": {
+      "bytes": 4552,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/mexico.ts": {
+      "bytes": 34082,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/micronesia.ts": {
+      "bytes": 2511,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/moldova.ts": {
+      "bytes": 3708,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/monaco.ts": {
+      "bytes": 1540,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/mongolia.ts": {
+      "bytes": 8173,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/montenegro.ts": {
+      "bytes": 5724,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/morocco.ts": {
+      "bytes": 6995,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/mozambique.ts": {
+      "bytes": 6049,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/myanmar.ts": {
+      "bytes": 6495,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/namibia.ts": {
+      "bytes": 2180,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/nauru.ts": {
+      "bytes": 861,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/nepal.ts": {
+      "bytes": 6845,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/netherlands.ts": {
+      "bytes": 9485,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/new_zealand.ts": {
+      "bytes": 24777,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/nicaragua.ts": {
+      "bytes": 5479,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/niger.ts": {
+      "bytes": 2908,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/nigeria.ts": {
+      "bytes": 8654,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/niue.ts": {
+      "bytes": 1027,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/north_korea.ts": {
+      "bytes": 3056,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/north_macedonia.ts": {
+      "bytes": 5400,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/norway.ts": {
+      "bytes": 13349,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/oman.ts": {
+      "bytes": 5520,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/pakistan.ts": {
+      "bytes": 7527,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/palau.ts": {
+      "bytes": 1504,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/palestine.ts": {
+      "bytes": 4700,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/panama.ts": {
+      "bytes": 4645,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/papua_new_guinea.ts": {
+      "bytes": 4938,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/paraguay.ts": {
+      "bytes": 18439,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/peru.ts": {
+      "bytes": 25414,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/philippines.ts": {
+      "bytes": 6430,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/poland.ts": {
+      "bytes": 8397,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/portugal.ts": {
+      "bytes": 28552,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/puerto_rico.ts": {
+      "bytes": 6521,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/qatar.ts": {
+      "bytes": 3623,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/republic_of_congo.ts": {
+      "bytes": 7044,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/romania.ts": {
+      "bytes": 7162,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/russianWriterExpansion.ts": {
+      "bytes": 18055,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/russia.ts": {
+      "bytes": 66280,
+      "imports": [
+        {
+          "path": "src/data/countries/russianWriterExpansion.ts",
+          "kind": "import-statement",
+          "original": "./russianWriterExpansion"
+        }
+      ],
+      "format": "esm"
+    },
+    "src/data/countries/rwanda.ts": {
+      "bytes": 3181,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/saint_kitts_and_nevis.ts": {
+      "bytes": 1565,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/saint_lucia.ts": {
+      "bytes": 2827,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/saint_vincent_and_the_grenadines.ts": {
+      "bytes": 1585,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/samoa.ts": {
+      "bytes": 6646,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/san_marino.ts": {
+      "bytes": 931,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/sao_tome_and_principe.ts": {
+      "bytes": 5861,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/senegal.ts": {
+      "bytes": 8776,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/serbia.ts": {
+      "bytes": 7030,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/seychelles.ts": {
+      "bytes": 2343,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/sierra_leone.ts": {
+      "bytes": 3802,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/singapore.ts": {
+      "bytes": 4600,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/slovakia.ts": {
+      "bytes": 6375,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/slovenia.ts": {
+      "bytes": 6861,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/solomon_islands.ts": {
+      "bytes": 2544,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/somalia.ts": {
+      "bytes": 3935,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/south_africa.ts": {
+      "bytes": 14622,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/south_korea.ts": {
+      "bytes": 27949,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/south_sudan.ts": {
+      "bytes": 1720,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/spain.ts": {
+      "bytes": 41094,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/sri_lanka.ts": {
+      "bytes": 7088,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/sudan.ts": {
+      "bytes": 4517,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/suriname.ts": {
+      "bytes": 5536,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/sweden.ts": {
+      "bytes": 11305,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/switzerland.ts": {
+      "bytes": 8130,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/syria.ts": {
+      "bytes": 4689,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/taiwan.ts": {
+      "bytes": 4099,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/tajikistan.ts": {
+      "bytes": 8412,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/tanzania.ts": {
+      "bytes": 5692,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/thailand.ts": {
+      "bytes": 6652,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/timor_leste.ts": {
+      "bytes": 4135,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/tonga.ts": {
+      "bytes": 1642,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/trinidad_and_tobago.ts": {
+      "bytes": 4432,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/tunisia.ts": {
+      "bytes": 5453,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/turkey.ts": {
+      "bytes": 8088,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/turkmenistan.ts": {
+      "bytes": 8318,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/tuvalu.ts": {
+      "bytes": 669,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/uae.ts": {
+      "bytes": 4777,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/uganda.ts": {
+      "bytes": 5174,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/ukraine.ts": {
+      "bytes": 6726,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/uruguay.ts": {
+      "bytes": 22303,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/usa.ts": {
+      "bytes": 66141,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/uzbekistan.ts": {
+      "bytes": 9459,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/vanuatu.ts": {
+      "bytes": 2640,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/vatican.ts": {
+      "bytes": 650,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/venezuela.ts": {
+      "bytes": 18786,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/vietnam.ts": {
+      "bytes": 6467,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/yemen.ts": {
+      "bytes": 4782,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/zambia.ts": {
+      "bytes": 5675,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/zimbabwe.ts": {
+      "bytes": 6725,
+      "imports": [],
+      "format": "esm"
+    },
+    "src/data/countries/index.ts": {
+      "bytes": 13871,
+      "imports": [
+        {
+          "path": "src/data/countries/generated/index.ts",
+          "kind": "import-statement",
+          "original": "./generated"
+        },
+        {
+          "path": "src/data/countries/generated/writerPortraits.ts",
+          "kind": "import-statement",
+          "original": "./generated/writerPortraits"
+        },
+        {
+          "path": "src/data/countries/nobelLaureatesSupplement.ts",
+          "kind": "import-statement",
+          "original": "./nobelLaureatesSupplement"
+        },
+        {
+          "path": "src/data/countries/writerBiographyResearch.ts",
+          "kind": "import-statement",
+          "original": "./writerBiographyResearch"
+        },
+        {
+          "path": "src/data/countries/writerBiographyResearchBatches.ts",
+          "kind": "import-statement",
+          "original": "./writerBiographyResearchBatches"
+        },
+        {
+          "path": "src/data/countries/writerBiographyLegacyCorrections.ts",
+          "kind": "import-statement",
+          "original": "./writerBiographyLegacyCorrections"
+        },
+        {
+          "path": "src/data/countries/writerBiographyFactReviews.ts",
+          "kind": "import-statement",
+          "original": "./writerBiographyFactReviews"
+        },
+        {
+          "path": "src/data/countries/writerBiographyEnglishTranslations.ts",
+          "kind": "import-statement",
+          "original": "./writerBiographyEnglishTranslations"
+        },
+        {
+          "path": "src/data/countries/articleReferencedBooks.ts",
+          "kind": "import-statement",
+          "original": "./articleReferencedBooks"
+        },
+        {
+          "path": "src/data/countries/verifiedBookSupplements.ts",
+          "kind": "import-statement",
+          "original": "./verifiedBookSupplements"
+        },
+        {
+          "path": "src/data/countries/userSuppliedBookWorkSupplementsBatch20260820.ts",
+          "kind": "import-statement",
+          "original": "./userSuppliedBookWorkSupplementsBatch20260820"
+        },
+        {
+          "path": "src/data/cms/editorialOverrides.ts",
+          "kind": "import-statement",
+          "original": "../cms/editorialOverrides"
+        },
+        {
+          "path": "src/utils/countryFlag.ts",
+          "kind": "import-statement",
+          "original": "../../utils/countryFlag"
+        },
+        {
+          "path": "src/data/countries/afghanistan.ts",
+          "kind": "import-statement",
+          "original": "./afghanistan"
+        },
+        {
+          "path": "src/data/countries/albania.ts",
+          "kind": "import-statement",
+          "original": "./albania"
+        },
+        {
+          "path": "src/data/countries/algeria.ts",
+          "kind": "import-statement",
+          "original": "./algeria"
+        },
+        {
+          "path": "src/data/countries/andorra.ts",
+          "kind": "import-statement",
+          "original": "./andorra"
+        },
+        {
+          "path": "src/data/countries/angola.ts",
+          "kind": "import-statement",
+          "original": "./angola"
+        },
+        {
+          "path": "src/data/countries/antigua_and_barbuda.ts",
+          "kind": "import-statement",
+          "original": "./antigua_and_barbuda"
+        },
+        {
+          "path": "src/data/countries/argentina.ts",
+          "kind": "import-statement",
+          "original": "./argentina"
+        },
+        {
+          "path": "src/data/countries/armenia.ts",
+          "kind": "import-statement",
+          "original": "./armenia"
+        },
+        {
+          "path": "src/data/countries/australia.ts",
+          "kind": "import-statement",
+          "original": "./australia"
+        },
+        {
+          "path": "src/data/countries/austria.ts",
+          "kind": "import-statement",
+          "original": "./austria"
+        },
+        {
+          "path": "src/data/countries/azerbaijan.ts",
+          "kind": "import-statement",
+          "original": "./azerbaijan"
+        },
+        {
+          "path": "src/data/countries/bahamas.ts",
+          "kind": "import-statement",
+          "original": "./bahamas"
+        },
+        {
+          "path": "src/data/countries/bahrain.ts",
+          "kind": "import-statement",
+          "original": "./bahrain"
+        },
+        {
+          "path": "src/data/countries/bangladesh.ts",
+          "kind": "import-statement",
+          "original": "./bangladesh"
+        },
+        {
+          "path": "src/data/countries/barbados.ts",
+          "kind": "import-statement",
+          "original": "./barbados"
+        },
+        {
+          "path": "src/data/countries/belarus.ts",
+          "kind": "import-statement",
+          "original": "./belarus"
+        },
+        {
+          "path": "src/data/countries/belgium.ts",
+          "kind": "import-statement",
+          "original": "./belgium"
+        },
+        {
+          "path": "src/data/countries/belize.ts",
+          "kind": "import-statement",
+          "original": "./belize"
+        },
+        {
+          "path": "src/data/countries/bhutan.ts",
+          "kind": "import-statement",
+          "original": "./bhutan"
+        },
+        {
+          "path": "src/data/countries/bolivia.ts",
+          "kind": "import-statement",
+          "original": "./bolivia"
+        },
+        {
+          "path": "src/data/countries/bosnia.ts",
+          "kind": "import-statement",
+          "original": "./bosnia"
+        },
+        {
+          "path": "src/data/countries/botswana.ts",
+          "kind": "import-statement",
+          "original": "./botswana"
+        },
+        {
+          "path": "src/data/countries/brazil.ts",
+          "kind": "import-statement",
+          "original": "./brazil"
+        },
+        {
+          "path": "src/data/countries/brunei.ts",
+          "kind": "import-statement",
+          "original": "./brunei"
+        },
+        {
+          "path": "src/data/countries/bulgaria.ts",
+          "kind": "import-statement",
+          "original": "./bulgaria"
+        },
+        {
+          "path": "src/data/countries/burkina_faso.ts",
+          "kind": "import-statement",
+          "original": "./burkina_faso"
+        },
+        {
+          "path": "src/data/countries/burundi.ts",
+          "kind": "import-statement",
+          "original": "./burundi"
+        },
+        {
+          "path": "src/data/countries/cambodia.ts",
+          "kind": "import-statement",
+          "original": "./cambodia"
+        },
+        {
+          "path": "src/data/countries/cameroon.ts",
+          "kind": "import-statement",
+          "original": "./cameroon"
+        },
+        {
+          "path": "src/data/countries/canada.ts",
+          "kind": "import-statement",
+          "original": "./canada"
+        },
+        {
+          "path": "src/data/countries/cape_verde.ts",
+          "kind": "import-statement",
+          "original": "./cape_verde"
+        },
+        {
+          "path": "src/data/countries/central_african_republic.ts",
+          "kind": "import-statement",
+          "original": "./central_african_republic"
+        },
+        {
+          "path": "src/data/countries/chad.ts",
+          "kind": "import-statement",
+          "original": "./chad"
+        },
+        {
+          "path": "src/data/countries/chile.ts",
+          "kind": "import-statement",
+          "original": "./chile"
+        },
+        {
+          "path": "src/data/countries/china.ts",
+          "kind": "import-statement",
+          "original": "./china"
+        },
+        {
+          "path": "src/data/countries/colombia.ts",
+          "kind": "import-statement",
+          "original": "./colombia"
+        },
+        {
+          "path": "src/data/countries/comoros.ts",
+          "kind": "import-statement",
+          "original": "./comoros"
+        },
+        {
+          "path": "src/data/countries/cook_islands.ts",
+          "kind": "import-statement",
+          "original": "./cook_islands"
+        },
+        {
+          "path": "src/data/countries/costa_rica.ts",
+          "kind": "import-statement",
+          "original": "./costa_rica"
+        },
+        {
+          "path": "src/data/countries/cote_d_ivoire.ts",
+          "kind": "import-statement",
+          "original": "./cote_d_ivoire"
+        },
+        {
+          "path": "src/data/countries/croatia.ts",
+          "kind": "import-statement",
+          "original": "./croatia"
+        },
+        {
+          "path": "src/data/countries/cuba.ts",
+          "kind": "import-statement",
+          "original": "./cuba"
+        },
+        {
+          "path": "src/data/countries/cyprus.ts",
+          "kind": "import-statement",
+          "original": "./cyprus"
+        },
+        {
+          "path": "src/data/countries/czechia.ts",
+          "kind": "import-statement",
+          "original": "./czechia"
+        },
+        {
+          "path": "src/data/countries/democratic_republic_of_congo.ts",
+          "kind": "import-statement",
+          "original": "./democratic_republic_of_congo"
+        },
+        {
+          "path": "src/data/countries/denmark.ts",
+          "kind": "import-statement",
+          "original": "./denmark"
+        },
+        {
+          "path": "src/data/countries/djibouti.ts",
+          "kind": "import-statement",
+          "original": "./djibouti"
+        },
+        {
+          "path": "src/data/countries/dominica.ts",
+          "kind": "import-statement",
+          "original": "./dominica"
+        },
+        {
+          "path": "src/data/countries/dominican_republic.ts",
+          "kind": "import-statement",
+          "original": "./dominican_republic"
+        },
+        {
+          "path": "src/data/countries/ecuador.ts",
+          "kind": "import-statement",
+          "original": "./ecuador"
+        },
+        {
+          "path": "src/data/countries/egypt.ts",
+          "kind": "import-statement",
+          "original": "./egypt"
+        },
+        {
+          "path": "src/data/countries/el_salvador.ts",
+          "kind": "import-statement",
+          "original": "./el_salvador"
+        },
+        {
+          "path": "src/data/countries/england.ts",
+          "kind": "import-statement",
+          "original": "./england"
+        },
+        {
+          "path": "src/data/countries/equatorial_guinea.ts",
+          "kind": "import-statement",
+          "original": "./equatorial_guinea"
+        },
+        {
+          "path": "src/data/countries/eritrea.ts",
+          "kind": "import-statement",
+          "original": "./eritrea"
+        },
+        {
+          "path": "src/data/countries/estonia.ts",
+          "kind": "import-statement",
+          "original": "./estonia"
+        },
+        {
+          "path": "src/data/countries/eswatini.ts",
+          "kind": "import-statement",
+          "original": "./eswatini"
+        },
+        {
+          "path": "src/data/countries/ethiopia.ts",
+          "kind": "import-statement",
+          "original": "./ethiopia"
+        },
+        {
+          "path": "src/data/countries/fiji.ts",
+          "kind": "import-statement",
+          "original": "./fiji"
+        },
+        {
+          "path": "src/data/countries/finland.ts",
+          "kind": "import-statement",
+          "original": "./finland"
+        },
+        {
+          "path": "src/data/countries/france.ts",
+          "kind": "import-statement",
+          "original": "./france"
+        },
+        {
+          "path": "src/data/countries/french_guiana.ts",
+          "kind": "import-statement",
+          "original": "./french_guiana"
+        },
+        {
+          "path": "src/data/countries/gabon.ts",
+          "kind": "import-statement",
+          "original": "./gabon"
+        },
+        {
+          "path": "src/data/countries/gambia.ts",
+          "kind": "import-statement",
+          "original": "./gambia"
+        },
+        {
+          "path": "src/data/countries/georgia.ts",
+          "kind": "import-statement",
+          "original": "./georgia"
+        },
+        {
+          "path": "src/data/countries/germany.ts",
+          "kind": "import-statement",
+          "original": "./germany"
+        },
+        {
+          "path": "src/data/countries/ghana.ts",
+          "kind": "import-statement",
+          "original": "./ghana"
+        },
+        {
+          "path": "src/data/countries/greece.ts",
+          "kind": "import-statement",
+          "original": "./greece"
+        },
+        {
+          "path": "src/data/countries/grenada.ts",
+          "kind": "import-statement",
+          "original": "./grenada"
+        },
+        {
+          "path": "src/data/countries/guatemala.ts",
+          "kind": "import-statement",
+          "original": "./guatemala"
+        },
+        {
+          "path": "src/data/countries/guinea.ts",
+          "kind": "import-statement",
+          "original": "./guinea"
+        },
+        {
+          "path": "src/data/countries/guinea_republic.ts",
+          "kind": "import-statement",
+          "original": "./guinea_republic"
+        },
+        {
+          "path": "src/data/countries/guyana.ts",
+          "kind": "import-statement",
+          "original": "./guyana"
+        },
+        {
+          "path": "src/data/countries/haiti.ts",
+          "kind": "import-statement",
+          "original": "./haiti"
+        },
+        {
+          "path": "src/data/countries/honduras.ts",
+          "kind": "import-statement",
+          "original": "./honduras"
+        },
+        {
+          "path": "src/data/countries/hong_kong.ts",
+          "kind": "import-statement",
+          "original": "./hong_kong"
+        },
+        {
+          "path": "src/data/countries/hungary.ts",
+          "kind": "import-statement",
+          "original": "./hungary"
+        },
+        {
+          "path": "src/data/countries/iceland.ts",
+          "kind": "import-statement",
+          "original": "./iceland"
+        },
+        {
+          "path": "src/data/countries/india.ts",
+          "kind": "import-statement",
+          "original": "./india"
+        },
+        {
+          "path": "src/data/countries/indonesia.ts",
+          "kind": "import-statement",
+          "original": "./indonesia"
+        },
+        {
+          "path": "src/data/countries/iran.ts",
+          "kind": "import-statement",
+          "original": "./iran"
+        },
+        {
+          "path": "src/data/countries/iraq.ts",
+          "kind": "import-statement",
+          "original": "./iraq"
+        },
+        {
+          "path": "src/data/countries/ireland.ts",
+          "kind": "import-statement",
+          "original": "./ireland"
+        },
+        {
+          "path": "src/data/countries/israel.ts",
+          "kind": "import-statement",
+          "original": "./israel"
+        },
+        {
+          "path": "src/data/countries/italy.ts",
+          "kind": "import-statement",
+          "original": "./italy"
+        },
+        {
+          "path": "src/data/countries/jamaica.ts",
+          "kind": "import-statement",
+          "original": "./jamaica"
+        },
+        {
+          "path": "src/data/countries/japan.ts",
+          "kind": "import-statement",
+          "original": "./japan"
+        },
+        {
+          "path": "src/data/countries/jordan.ts",
+          "kind": "import-statement",
+          "original": "./jordan"
+        },
+        {
+          "path": "src/data/countries/kazakhstan.ts",
+          "kind": "import-statement",
+          "original": "./kazakhstan"
+        },
+        {
+          "path": "src/data/countries/kenya.ts",
+          "kind": "import-statement",
+          "original": "./kenya"
+        },
+        {
+          "path": "src/data/countries/kiribati.ts",
+          "kind": "import-statement",
+          "original": "./kiribati"
+        },
+        {
+          "path": "src/data/countries/kosovo.ts",
+          "kind": "import-statement",
+          "original": "./kosovo"
+        },
+        {
+          "path": "src/data/countries/kuwait.ts",
+          "kind": "import-statement",
+          "original": "./kuwait"
+        },
+        {
+          "path": "src/data/countries/kyrgyzstan.ts",
+          "kind": "import-statement",
+          "original": "./kyrgyzstan"
+        },
+        {
+          "path": "src/data/countries/laos.ts",
+          "kind": "import-statement",
+          "original": "./laos"
+        },
+        {
+          "path": "src/data/countries/latvia.ts",
+          "kind": "import-statement",
+          "original": "./latvia"
+        },
+        {
+          "path": "src/data/countries/lebanon.ts",
+          "kind": "import-statement",
+          "original": "./lebanon"
+        },
+        {
+          "path": "src/data/countries/lesotho.ts",
+          "kind": "import-statement",
+          "original": "./lesotho"
+        },
+        {
+          "path": "src/data/countries/liberia.ts",
+          "kind": "import-statement",
+          "original": "./liberia"
+        },
+        {
+          "path": "src/data/countries/libya.ts",
+          "kind": "import-statement",
+          "original": "./libya"
+        },
+        {
+          "path": "src/data/countries/liechtenstein.ts",
+          "kind": "import-statement",
+          "original": "./liechtenstein"
+        },
+        {
+          "path": "src/data/countries/lithuania.ts",
+          "kind": "import-statement",
+          "original": "./lithuania"
+        },
+        {
+          "path": "src/data/countries/luxembourg.ts",
+          "kind": "import-statement",
+          "original": "./luxembourg"
+        },
+        {
+          "path": "src/data/countries/macau.ts",
+          "kind": "import-statement",
+          "original": "./macau"
+        },
+        {
+          "path": "src/data/countries/madagascar.ts",
+          "kind": "import-statement",
+          "original": "./madagascar"
+        },
+        {
+          "path": "src/data/countries/malawi.ts",
+          "kind": "import-statement",
+          "original": "./malawi"
+        },
+        {
+          "path": "src/data/countries/malaysia.ts",
+          "kind": "import-statement",
+          "original": "./malaysia"
+        },
+        {
+          "path": "src/data/countries/maldives.ts",
+          "kind": "import-statement",
+          "original": "./maldives"
+        },
+        {
+          "path": "src/data/countries/mali.ts",
+          "kind": "import-statement",
+          "original": "./mali"
+        },
+        {
+          "path": "src/data/countries/malta.ts",
+          "kind": "import-statement",
+          "original": "./malta"
+        },
+        {
+          "path": "src/data/countries/marshall_islands.ts",
+          "kind": "import-statement",
+          "original": "./marshall_islands"
+        },
+        {
+          "path": "src/data/countries/mauritania.ts",
+          "kind": "import-statement",
+          "original": "./mauritania"
+        },
+        {
+          "path": "src/data/countries/mauritius.ts",
+          "kind": "import-statement",
+          "original": "./mauritius"
+        },
+        {
+          "path": "src/data/countries/mexico.ts",
+          "kind": "import-statement",
+          "original": "./mexico"
+        },
+        {
+          "path": "src/data/countries/micronesia.ts",
+          "kind": "import-statement",
+          "original": "./micronesia"
+        },
+        {
+          "path": "src/data/countries/moldova.ts",
+          "kind": "import-statement",
+          "original": "./moldova"
+        },
+        {
+          "path": "src/data/countries/monaco.ts",
+          "kind": "import-statement",
+          "original": "./monaco"
+        },
+        {
+          "path": "src/data/countries/mongolia.ts",
+          "kind": "import-statement",
+          "original": "./mongolia"
+        },
+        {
+          "path": "src/data/countries/montenegro.ts",
+          "kind": "import-statement",
+          "original": "./montenegro"
+        },
+        {
+          "path": "src/data/countries/morocco.ts",
+          "kind": "import-statement",
+          "original": "./morocco"
+        },
+        {
+          "path": "src/data/countries/mozambique.ts",
+          "kind": "import-statement",
+          "original": "./mozambique"
+        },
+        {
+          "path": "src/data/countries/myanmar.ts",
+          "kind": "import-statement",
+          "original": "./myanmar"
+        },
+        {
+          "path": "src/data/countries/namibia.ts",
+          "kind": "import-statement",
+          "original": "./namibia"
+        },
+        {
+          "path": "src/data/countries/nauru.ts",
+          "kind": "import-statement",
+          "original": "./nauru"
+        },
+        {
+          "path": "src/data/countries/nepal.ts",
+          "kind": "import-statement",
+          "original": "./nepal"
+        },
+        {
+          "path": "src/data/countries/netherlands.ts",
+          "kind": "import-statement",
+          "original": "./netherlands"
+        },
+        {
+          "path": "src/data/countries/new_zealand.ts",
+          "kind": "import-statement",
+          "original": "./new_zealand"
+        },
+        {
+          "path": "src/data/countries/nicaragua.ts",
+          "kind": "import-statement",
+          "original": "./nicaragua"
+        },
+        {
+          "path": "src/data/countries/niger.ts",
+          "kind": "import-statement",
+          "original": "./niger"
+        },
+        {
+          "path": "src/data/countries/nigeria.ts",
+          "kind": "import-statement",
+          "original": "./nigeria"
+        },
+        {
+          "path": "src/data/countries/niue.ts",
+          "kind": "import-statement",
+          "original": "./niue"
+        },
+        {
+          "path": "src/data/countries/north_korea.ts",
+          "kind": "import-statement",
+          "original": "./north_korea"
+        },
+        {
+          "path": "src/data/countries/north_macedonia.ts",
+          "kind": "import-statement",
+          "original": "./north_macedonia"
+        },
+        {
+          "path": "src/data/countries/norway.ts",
+          "kind": "import-statement",
+          "original": "./norway"
+        },
+        {
+          "path": "src/data/countries/oman.ts",
+          "kind": "import-statement",
+          "original": "./oman"
+        },
+        {
+          "path": "src/data/countries/pakistan.ts",
+          "kind": "import-statement",
+          "original": "./pakistan"
+        },
+        {
+          "path": "src/data/countries/palau.ts",
+          "kind": "import-statement",
+          "original": "./palau"
+        },
+        {
+          "path": "src/data/countries/palestine.ts",
+          "kind": "import-statement",
+          "original": "./palestine"
+        },
+        {
+          "path": "src/data/countries/panama.ts",
+          "kind": "import-statement",
+          "original": "./panama"
+        },
+        {
+          "path": "src/data/countries/papua_new_guinea.ts",
+          "kind": "import-statement",
+          "original": "./papua_new_guinea"
+        },
+        {
+          "path": "src/data/countries/paraguay.ts",
+          "kind": "import-statement",
+          "original": "./paraguay"
+        },
+        {
+          "path": "src/data/countries/peru.ts",
+          "kind": "import-statement",
+          "original": "./peru"
+        },
+        {
+          "path": "src/data/countries/philippines.ts",
+          "kind": "import-statement",
+          "original": "./philippines"
+        },
+        {
+          "path": "src/data/countries/poland.ts",
+          "kind": "import-statement",
+          "original": "./poland"
+        },
+        {
+          "path": "src/data/countries/portugal.ts",
+          "kind": "import-statement",
+          "original": "./portugal"
+        },
+        {
+          "path": "src/data/countries/puerto_rico.ts",
+          "kind": "import-statement",
+          "original": "./puerto_rico"
+        },
+        {
+          "path": "src/data/countries/qatar.ts",
+          "kind": "import-statement",
+          "original": "./qatar"
+        },
+        {
+          "path": "src/data/countries/republic_of_congo.ts",
+          "kind": "import-statement",
+          "original": "./republic_of_congo"
+        },
+        {
+          "path": "src/data/countries/romania.ts",
+          "kind": "import-statement",
+          "original": "./romania"
+        },
+        {
+          "path": "src/data/countries/russia.ts",
+          "kind": "import-statement",
+          "original": "./russia"
+        },
+        {
+          "path": "src/data/countries/rwanda.ts",
+          "kind": "import-statement",
+          "original": "./rwanda"
+        },
+        {
+          "path": "src/data/countries/saint_kitts_and_nevis.ts",
+          "kind": "import-statement",
+          "original": "./saint_kitts_and_nevis"
+        },
+        {
+          "path": "src/data/countries/saint_lucia.ts",
+          "kind": "import-statement",
+          "original": "./saint_lucia"
+        },
+        {
+          "path": "src/data/countries/saint_vincent_and_the_grenadines.ts",
+          "kind": "import-statement",
+          "original": "./saint_vincent_and_the_grenadines"
+        },
+        {
+          "path": "src/data/countries/samoa.ts",
+          "kind": "import-statement",
+          "original": "./samoa"
+        },
+        {
+          "path": "src/data/countries/san_marino.ts",
+          "kind": "import-statement",
+          "original": "./san_marino"
+        },
+        {
+          "path": "src/data/countries/sao_tome_and_principe.ts",
+          "kind": "import-statement",
+          "original": "./sao_tome_and_principe"
+        },
+        {
+          "path": "src/data/countries/senegal.ts",
+          "kind": "import-statement",
+          "original": "./senegal"
+        },
+        {
+          "path": "src/data/countries/serbia.ts",
+          "kind": "import-statement",
+          "original": "./serbia"
+        },
+        {
+          "path": "src/data/countries/seychelles.ts",
+          "kind": "import-statement",
+          "original": "./seychelles"
+        },
+        {
+          "path": "src/data/countries/sierra_leone.ts",
+          "kind": "import-statement",
+          "original": "./sierra_leone"
+        },
+        {
+          "path": "src/data/countries/singapore.ts",
+          "kind": "import-statement",
+          "original": "./singapore"
+        },
+        {
+          "path": "src/data/countries/slovakia.ts",
+          "kind": "import-statement",
+          "original": "./slovakia"
+        },
+        {
+          "path": "src/data/countries/slovenia.ts",
+          "kind": "import-statement",
+          "original": "./slovenia"
+        },
+        {
+          "path": "src/data/countries/solomon_islands.ts",
+          "kind": "import-statement",
+          "original": "./solomon_islands"
+        },
+        {
+          "path": "src/data/countries/somalia.ts",
+          "kind": "import-statement",
+          "original": "./somalia"
+        },
+        {
+          "path": "src/data/countries/south_africa.ts",
+          "kind": "import-statement",
+          "original": "./south_africa"
+        },
+        {
+          "path": "src/data/countries/south_korea.ts",
+          "kind": "import-statement",
+          "original": "./south_korea"
+        },
+        {
+          "path": "src/data/countries/south_sudan.ts",
+          "kind": "import-statement",
+          "original": "./south_sudan"
+        },
+        {
+          "path": "src/data/countries/spain.ts",
+          "kind": "import-statement",
+          "original": "./spain"
+        },
+        {
+          "path": "src/data/countries/sri_lanka.ts",
+          "kind": "import-statement",
+          "original": "./sri_lanka"
+        },
+        {
+          "path": "src/data/countries/sudan.ts",
+          "kind": "import-statement",
+          "original": "./sudan"
+        },
+        {
+          "path": "src/data/countries/suriname.ts",
+          "kind": "import-statement",
+          "original": "./suriname"
+        },
+        {
+          "path": "src/data/countries/sweden.ts",
+          "kind": "import-statement",
+          "original": "./sweden"
+        },
+        {
+          "path": "src/data/countries/switzerland.ts",
+          "kind": "import-statement",
+          "original": "./switzerland"
+        },
+        {
+          "path": "src/data/countries/syria.ts",
+          "kind": "import-statement",
+          "original": "./syria"
+        },
+        {
+          "path": "src/data/countries/taiwan.ts",
+          "kind": "import-statement",
+          "original": "./taiwan"
+        },
+        {
+          "path": "src/data/countries/tajikistan.ts",
+          "kind": "import-statement",
+          "original": "./tajikistan"
+        },
+        {
+          "path": "src/data/countries/tanzania.ts",
+          "kind": "import-statement",
+          "original": "./tanzania"
+        },
+        {
+          "path": "src/data/countries/thailand.ts",
+          "kind": "import-statement",
+          "original": "./thailand"
+        },
+        {
+          "path": "src/data/countries/timor_leste.ts",
+          "kind": "import-statement",
+          "original": "./timor_leste"
+        },
+        {
+          "path": "src/data/countries/tonga.ts",
+          "kind": "import-statement",
+          "original": "./tonga"
+        },
+        {
+          "path": "src/data/countries/trinidad_and_tobago.ts",
+          "kind": "import-statement",
+          "original": "./trinidad_and_tobago"
+        },
+        {
+          "path": "src/data/countries/tunisia.ts",
+          "kind": "import-statement",
+          "original": "./tunisia"
+        },
+        {
+          "path": "src/data/countries/turkey.ts",
+          "kind": "import-statement",
+          "original": "./turkey"
+        },
+        {
+          "path": "src/data/countries/turkmenistan.ts",
+          "kind": "import-statement",
+          "original": "./turkmenistan"
+        },
+        {
+          "path": "src/data/countries/tuvalu.ts",
+          "kind": "import-statement",
+          "original": "./tuvalu"
+        },
+        {
+          "path": "src/data/countries/uae.ts",
+          "kind": "import-statement",
+          "original": "./uae"
+        },
+        {
+          "path": "src/data/countries/uganda.ts",
+          "kind": "import-statement",
+          "original": "./uganda"
+        },
+        {
+          "path": "src/data/countries/ukraine.ts",
+          "kind": "import-statement",
+          "original": "./ukraine"
+        },
+        {
+          "path": "src/data/countries/uruguay.ts",
+          "kind": "import-statement",
+          "original": "./uruguay"
+        },
+        {
+          "path": "src/data/countries/usa.ts",
+          "kind": "import-statement",
+          "original": "./usa"
+        },
+        {
+          "path": "src/data/countries/uzbekistan.ts",
+          "kind": "import-statement",
+          "original": "./uzbekistan"
+        },
+        {
+          "path": "src/data/countries/vanuatu.ts",
+          "kind": "import-statement",
+          "original": "./vanuatu"
+        },
+        {
+          "path": "src/data/countries/vatican.ts",
+          "kind": "import-statement",
+          "original": "./vatican"
+        },
+        {
+          "path": "src/data/countries/venezuela.ts",
+          "kind": "import-statement",
+          "original": "./venezuela"
+        },
+        {
+          "path": "src/data/countries/vietnam.ts",
+          "kind": "import-statement",
+          "original": "./vietnam"
+        },
+        {
+          "path": "src/data/countries/yemen.ts",
+          "kind": "import-statement",
+          "original": "./yemen"
+        },
+        {
+          "path": "src/data/countries/zambia.ts",
+          "kind": "import-statement",
+          "original": "./zambia"
+        },
+        {
+          "path": "src/data/countries/zimbabwe.ts",
+          "kind": "import-statement",
+          "original": "./zimbabwe"
+        }
+      ],
+      "format": "esm"
+    },
+    "scripts/lib/writer-biography-english-qa.mjs": {
+      "bytes": 19211,
+      "imports": [],
+      "format": "esm"
+    },
+    "scripts/lib/writer-biography-structured-ru.mjs": {
+      "bytes": 19688,
+      "imports": [],
+      "format": "esm"
+    },
+    "scripts/lib/writer-biography-public-profile.mjs": {
+      "bytes": 14604,
+      "imports": [
+        {
+          "path": "node:crypto",
+          "kind": "import-statement",
+          "external": true
+        },
+        {
+          "path": "src/data/biographyEditorialReview.ts",
+          "kind": "import-statement",
+          "original": "../../src/data/biographyEditorialReview.ts"
+        },
+        {
+          "path": "scripts/lib/writer-biography-english-qa.mjs",
+          "kind": "import-statement",
+          "original": "./writer-biography-english-qa.mjs"
+        },
+        {
+          "path": "scripts/lib/writer-biography-structured-ru.mjs",
+          "kind": "import-statement",
+          "original": "./writer-biography-structured-ru.mjs"
+        }
+      ],
+      "format": "esm"
+    },
+    "corpus-a1-current-entry.ts": {
+      "bytes": 369,
+      "imports": [
+        {
+          "path": "src/data/countries/index.ts",
+          "kind": "import-statement",
+          "original": "./src/data/countries/index.ts"
+        },
+        {
+          "path": "src/data/writerBiography.ts",
+          "kind": "import-statement",
+          "original": "./src/data/writerBiography.ts"
+        },
+        {
+          "path": "scripts/lib/writer-biography-public-profile.mjs",
+          "kind": "import-statement",
+          "original": "./scripts/lib/writer-biography-public-profile.mjs"
+        },
+        {
+          "path": "src/data/countries/generated/writerBiographyEnglishTranslations.generated.json",
+          "kind": "import-statement",
+          "original": "./src/data/countries/generated/writerBiographyEnglishTranslations.generated.json"
+        }
+      ],
+      "format": "esm"
+    }
+  },
+  "outputs": {
+    "stdin.js": {
+      "imports": [
+        {
+          "path": "node:crypto",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "exports": [
+        "countries",
+        "generatedOverlay",
+        "normalizePublicWriterBiographyTranslations",
+        "selectWriterBiography"
+      ],
+      "entryPoint": "corpus-a1-current-entry.ts",
+      "inputs": {
+        "src/data/countries/generated/metadata.generated.json": {
+          "bytesInOutput": 179
+        },
+        "src/data/countries/generated/index.ts": {
+          "bytesInOutput": 139
+        },
+        "src/data/countries/generated/writerIdentityRemediations.generated.json": {
+          "bytesInOutput": 56904
+        },
+        "src/data/countries/generated/writerPortraits.generated.json": {
+          "bytesInOutput": 671044
+        },
+        "src/data/countries/generated/writerPortraits.ts": {
+          "bytesInOutput": 1036
+        },
+        "src/data/countries/generated/nobelLiterature.official.json": {
+          "bytesInOutput": 28914
+        },
+        "src/data/countries/nobelLiteratureRegistry.ts": {
+          "bytesInOutput": 5376
+        },
+        "src/data/countries/nobelLaureatesSupplement.ts": {
+          "bytesInOutput": 64292
+        },
+        "node_modules/@noble/hashes/esm/utils.js": {
+          "bytesInOutput": 2093
+        },
+        "node_modules/@noble/hashes/esm/_md.js": {
+          "bytesInOutput": 3271
+        },
+        "node_modules/@noble/hashes/esm/sha2.js": {
+          "bytesInOutput": 2947
+        },
+        "src/data/biographyEditorialReview.ts": {
+          "bytesInOutput": 5692
+        },
+        "src/data/writerBiography.ts": {
+          "bytesInOutput": 14801
+        },
+        "src/data/countries/writerBiographyResearch.ts": {
+          "bytesInOutput": 9658
+        },
+        "src/data/countries/writerBiographyResearchBatch01.ts": {
+          "bytesInOutput": 67876
+        },
+        "src/data/countries/writerBiographyResearchBatches.ts": {
+          "bytesInOutput": 77
+        },
+        "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch32.ts": {
+          "bytesInOutput": 26309
+        },
+        "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch33.ts": {
+          "bytesInOutput": 23542
+        },
+        "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch34.ts": {
+          "bytesInOutput": 30956
+        },
+        "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch35.ts": {
+          "bytesInOutput": 62068
+        },
+        "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch36.ts": {
+          "bytesInOutput": 78657
+        },
+        "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch37.ts": {
+          "bytesInOutput": 65003
+        },
+        "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch38.ts": {
+          "bytesInOutput": 23138
+        },
+        "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch39.ts": {
+          "bytesInOutput": 43751
+        },
+        "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch40.ts": {
+          "bytesInOutput": 54912
+        },
+        "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch41.ts": {
+          "bytesInOutput": 46296
+        },
+        "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch42.ts": {
+          "bytesInOutput": 47043
+        },
+        "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch43.ts": {
+          "bytesInOutput": 55013
+        },
+        "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch44.ts": {
+          "bytesInOutput": 55573
+        },
+        "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch45.ts": {
+          "bytesInOutput": 47580
+        },
+        "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch46.ts": {
+          "bytesInOutput": 10782
+        },
+        "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch47.ts": {
+          "bytesInOutput": 20997
+        },
+        "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch48.ts": {
+          "bytesInOutput": 15873
+        },
+        "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch49.ts": {
+          "bytesInOutput": 20362
+        },
+        "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch50.ts": {
+          "bytesInOutput": 37355
+        },
+        "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch51.ts": {
+          "bytesInOutput": 14082
+        },
+        "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch52.ts": {
+          "bytesInOutput": 39178
+        },
+        "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch53.ts": {
+          "bytesInOutput": 43025
+        },
+        "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch54.ts": {
+          "bytesInOutput": 40134
+        },
+        "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch55.ts": {
+          "bytesInOutput": 46079
+        },
+        "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch56.ts": {
+          "bytesInOutput": 42657
+        },
+        "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch57.ts": {
+          "bytesInOutput": 36683
+        },
+        "src/data/countries/writerBiographyLegacyCorrections.ts": {
+          "bytesInOutput": 109721
+        },
+        "src/data/countries/generated/writerBiographyFactReviewRuntime.generated.json": {
+          "bytesInOutput": 2579694
+        },
+        "src/data/countries/writerBiographyFactReviews.ts": {
+          "bytesInOutput": 6623
+        },
+        "src/data/countries/generated/writerBiographyEnglishTranslations.generated.json": {
+          "bytesInOutput": 266
+        },
+        "src/data/countries/writerBiographyEnglishTranslations.ts": {
+          "bytesInOutput": 1955
+        },
+        "src/data/countries/articleCatalogBooks.ts": {
+          "bytesInOutput": 24656
+        },
+        "src/data/countries/articleReferencedBooks.ts": {
+          "bytesInOutput": 125542
+        },
+        "src/data/countries/verifiedBookSupplements.ts": {
+          "bytesInOutput": 69531
+        },
+        "src/data/countries/userSuppliedBookWorkSupplementsBatch20260820.ts": {
+          "bytesInOutput": 53241
+        },
+        "src/data/cms/countryProfiles.generated.ts": {
+          "bytesInOutput": 37
+        },
+        "src/data/cms/literaryWorks.generated.ts": {
+          "bytesInOutput": 103135
+        },
+        "src/data/cms/writerProfiles.generated.ts": {
+          "bytesInOutput": 36
+        },
+        "src/data/cms/editorialOverrides.ts": {
+          "bytesInOutput": 1688
+        },
+        "src/utils/countryFlag.ts": {
+          "bytesInOutput": 267
+        },
+        "src/data/countries/afghanistan.ts": {
+          "bytesInOutput": 11576
+        },
+        "src/data/countries/albania.ts": {
+          "bytesInOutput": 9259
+        },
+        "src/data/countries/algeria.ts": {
+          "bytesInOutput": 10938
+        },
+        "src/data/countries/andorra.ts": {
+          "bytesInOutput": 4656
+        },
+        "src/data/countries/angola.ts": {
+          "bytesInOutput": 8385
+        },
+        "src/data/countries/antigua_and_barbuda.ts": {
+          "bytesInOutput": 5060
+        },
+        "src/data/countries/argentina.ts": {
+          "bytesInOutput": 52462
+        },
+        "src/data/countries/armenia.ts": {
+          "bytesInOutput": 14478
+        },
+        "src/data/countries/australia.ts": {
+          "bytesInOutput": 49579
+        },
+        "src/data/countries/austria.ts": {
+          "bytesInOutput": 15789
+        },
+        "src/data/countries/azerbaijan.ts": {
+          "bytesInOutput": 16118
+        },
+        "src/data/countries/bahamas.ts": {
+          "bytesInOutput": 4185
+        },
+        "src/data/countries/bahrain.ts": {
+          "bytesInOutput": 5377
+        },
+        "src/data/countries/bangladesh.ts": {
+          "bytesInOutput": 10826
+        },
+        "src/data/countries/barbados.ts": {
+          "bytesInOutput": 7383
+        },
+        "src/data/countries/belarus.ts": {
+          "bytesInOutput": 13855
+        },
+        "src/data/countries/belgium.ts": {
+          "bytesInOutput": 12897
+        },
+        "src/data/countries/belize.ts": {
+          "bytesInOutput": 6472
+        },
+        "src/data/countries/bhutan.ts": {
+          "bytesInOutput": 8179
+        },
+        "src/data/countries/bolivia.ts": {
+          "bytesInOutput": 39801
+        },
+        "src/data/countries/bosnia.ts": {
+          "bytesInOutput": 9247
+        },
+        "src/data/countries/botswana.ts": {
+          "bytesInOutput": 5171
+        },
+        "src/data/countries/brazil.ts": {
+          "bytesInOutput": 14673
+        },
+        "src/data/countries/brunei.ts": {
+          "bytesInOutput": 5042
+        },
+        "src/data/countries/bulgaria.ts": {
+          "bytesInOutput": 10234
+        },
+        "src/data/countries/burkina_faso.ts": {
+          "bytesInOutput": 6397
+        },
+        "src/data/countries/burundi.ts": {
+          "bytesInOutput": 4076
+        },
+        "src/data/countries/cambodia.ts": {
+          "bytesInOutput": 9084
+        },
+        "src/data/countries/cameroon.ts": {
+          "bytesInOutput": 12960
+        },
+        "src/data/countries/canada.ts": {
+          "bytesInOutput": 30938
+        },
+        "src/data/countries/cape_verde.ts": {
+          "bytesInOutput": 11715
+        },
+        "src/data/countries/central_african_republic.ts": {
+          "bytesInOutput": 3353
+        },
+        "src/data/countries/chad.ts": {
+          "bytesInOutput": 4140
+        },
+        "src/data/countries/chile.ts": {
+          "bytesInOutput": 51602
+        },
+        "src/data/countries/china.ts": {
+          "bytesInOutput": 67402
+        },
+        "src/data/countries/colombia.ts": {
+          "bytesInOutput": 55305
+        },
+        "src/data/countries/comoros.ts": {
+          "bytesInOutput": 3835
+        },
+        "src/data/countries/cook_islands.ts": {
+          "bytesInOutput": 1697
+        },
+        "src/data/countries/costa_rica.ts": {
+          "bytesInOutput": 9319
+        },
+        "src/data/countries/cote_d_ivoire.ts": {
+          "bytesInOutput": 6922
+        },
+        "src/data/countries/croatia.ts": {
+          "bytesInOutput": 10311
+        },
+        "src/data/countries/cuba.ts": {
+          "bytesInOutput": 12802
+        },
+        "src/data/countries/cyprus.ts": {
+          "bytesInOutput": 7243
+        },
+        "src/data/countries/czechia.ts": {
+          "bytesInOutput": 8903
+        },
+        "src/data/countries/democratic_republic_of_congo.ts": {
+          "bytesInOutput": 9429
+        },
+        "src/data/countries/denmark.ts": {
+          "bytesInOutput": 17129
+        },
+        "src/data/countries/djibouti.ts": {
+          "bytesInOutput": 3621
+        },
+        "src/data/countries/dominica.ts": {
+          "bytesInOutput": 5539
+        },
+        "src/data/countries/dominican_republic.ts": {
+          "bytesInOutput": 10568
+        },
+        "src/data/countries/ecuador.ts": {
+          "bytesInOutput": 44804
+        },
+        "src/data/countries/egypt.ts": {
+          "bytesInOutput": 23946
+        },
+        "src/data/countries/el_salvador.ts": {
+          "bytesInOutput": 10368
+        },
+        "src/data/countries/england.ts": {
+          "bytesInOutput": 119160
+        },
+        "src/data/countries/equatorial_guinea.ts": {
+          "bytesInOutput": 5143
+        },
+        "src/data/countries/eritrea.ts": {
+          "bytesInOutput": 5432
+        },
+        "src/data/countries/estonia.ts": {
+          "bytesInOutput": 14285
+        },
+        "src/data/countries/eswatini.ts": {
+          "bytesInOutput": 4128
+        },
+        "src/data/countries/ethiopia.ts": {
+          "bytesInOutput": 7812
+        },
+        "src/data/countries/fiji.ts": {
+          "bytesInOutput": 12275
+        },
+        "src/data/countries/finland.ts": {
+          "bytesInOutput": 12190
+        },
+        "src/data/countries/france.ts": {
+          "bytesInOutput": 103595
+        },
+        "src/data/countries/french_guiana.ts": {
+          "bytesInOutput": 5925
+        },
+        "src/data/countries/gabon.ts": {
+          "bytesInOutput": 5140
+        },
+        "src/data/countries/gambia.ts": {
+          "bytesInOutput": 4571
+        },
+        "src/data/countries/georgia.ts": {
+          "bytesInOutput": 13503
+        },
+        "src/data/countries/germany.ts": {
+          "bytesInOutput": 80910
+        },
+        "src/data/countries/ghana.ts": {
+          "bytesInOutput": 8550
+        },
+        "src/data/countries/greece.ts": {
+          "bytesInOutput": 10264
+        },
+        "src/data/countries/grenada.ts": {
+          "bytesInOutput": 4472
+        },
+        "src/data/countries/guatemala.ts": {
+          "bytesInOutput": 18235
+        },
+        "src/data/countries/guinea.ts": {
+          "bytesInOutput": 3763
+        },
+        "src/data/countries/guinea_republic.ts": {
+          "bytesInOutput": 11982
+        },
+        "src/data/countries/guyana.ts": {
+          "bytesInOutput": 13506
+        },
+        "src/data/countries/haiti.ts": {
+          "bytesInOutput": 10052
+        },
+        "src/data/countries/honduras.ts": {
+          "bytesInOutput": 9232
+        },
+        "src/data/countries/hong_kong.ts": {
+          "bytesInOutput": 1217
+        },
+        "src/data/countries/hungary.ts": {
+          "bytesInOutput": 9835
+        },
+        "src/data/countries/iceland.ts": {
+          "bytesInOutput": 10853
+        },
+        "src/data/countries/india.ts": {
+          "bytesInOutput": 72703
+        },
+        "src/data/countries/indonesia.ts": {
+          "bytesInOutput": 10470
+        },
+        "src/data/countries/iran.ts": {
+          "bytesInOutput": 13883
+        },
+        "src/data/countries/iraq.ts": {
+          "bytesInOutput": 7773
+        },
+        "src/data/countries/ireland.ts": {
+          "bytesInOutput": 16285
+        },
+        "src/data/countries/israel.ts": {
+          "bytesInOutput": 8724
+        },
+        "src/data/countries/italy.ts": {
+          "bytesInOutput": 70911
+        },
+        "src/data/countries/jamaica.ts": {
+          "bytesInOutput": 10946
+        },
+        "src/data/countries/japan.ts": {
+          "bytesInOutput": 71577
+        },
+        "src/data/countries/jordan.ts": {
+          "bytesInOutput": 6779
+        },
+        "src/data/countries/kazakhstan.ts": {
+          "bytesInOutput": 14751
+        },
+        "src/data/countries/kenya.ts": {
+          "bytesInOutput": 12772
+        },
+        "src/data/countries/kiribati.ts": {
+          "bytesInOutput": 2382
+        },
+        "src/data/countries/kosovo.ts": {
+          "bytesInOutput": 5461
+        },
+        "src/data/countries/kuwait.ts": {
+          "bytesInOutput": 6257
+        },
+        "src/data/countries/kyrgyzstan.ts": {
+          "bytesInOutput": 13110
+        },
+        "src/data/countries/laos.ts": {
+          "bytesInOutput": 7854
+        },
+        "src/data/countries/latvia.ts": {
+          "bytesInOutput": 11521
+        },
+        "src/data/countries/lebanon.ts": {
+          "bytesInOutput": 9661
+        },
+        "src/data/countries/lesotho.ts": {
+          "bytesInOutput": 5036
+        },
+        "src/data/countries/liberia.ts": {
+          "bytesInOutput": 5220
+        },
+        "src/data/countries/libya.ts": {
+          "bytesInOutput": 9933
+        },
+        "src/data/countries/liechtenstein.ts": {
+          "bytesInOutput": 4919
+        },
+        "src/data/countries/lithuania.ts": {
+          "bytesInOutput": 20642
+        },
+        "src/data/countries/luxembourg.ts": {
+          "bytesInOutput": 5721
+        },
+        "src/data/countries/macau.ts": {
+          "bytesInOutput": 3448
+        },
+        "src/data/countries/madagascar.ts": {
+          "bytesInOutput": 11105
+        },
+        "src/data/countries/malawi.ts": {
+          "bytesInOutput": 5437
+        },
+        "src/data/countries/malaysia.ts": {
+          "bytesInOutput": 8081
+        },
+        "src/data/countries/maldives.ts": {
+          "bytesInOutput": 4406
+        },
+        "src/data/countries/mali.ts": {
+          "bytesInOutput": 7281
+        },
+        "src/data/countries/malta.ts": {
+          "bytesInOutput": 7275
+        },
+        "src/data/countries/marshall_islands.ts": {
+          "bytesInOutput": 3154
+        },
+        "src/data/countries/mauritania.ts": {
+          "bytesInOutput": 4856
+        },
+        "src/data/countries/mauritius.ts": {
+          "bytesInOutput": 7268
+        },
+        "src/data/countries/mexico.ts": {
+          "bytesInOutput": 64368
+        },
+        "src/data/countries/micronesia.ts": {
+          "bytesInOutput": 4312
+        },
+        "src/data/countries/moldova.ts": {
+          "bytesInOutput": 5767
+        },
+        "src/data/countries/monaco.ts": {
+          "bytesInOutput": 2320
+        },
+        "src/data/countries/mongolia.ts": {
+          "bytesInOutput": 12077
+        },
+        "src/data/countries/montenegro.ts": {
+          "bytesInOutput": 8661
+        },
+        "src/data/countries/morocco.ts": {
+          "bytesInOutput": 11069
+        },
+        "src/data/countries/mozambique.ts": {
+          "bytesInOutput": 10186
+        },
+        "src/data/countries/myanmar.ts": {
+          "bytesInOutput": 10288
+        },
+        "src/data/countries/namibia.ts": {
+          "bytesInOutput": 3475
+        },
+        "src/data/countries/nauru.ts": {
+          "bytesInOutput": 1290
+        },
+        "src/data/countries/nepal.ts": {
+          "bytesInOutput": 11031
+        },
+        "src/data/countries/netherlands.ts": {
+          "bytesInOutput": 14697
+        },
+        "src/data/countries/new_zealand.ts": {
+          "bytesInOutput": 41477
+        },
+        "src/data/countries/nicaragua.ts": {
+          "bytesInOutput": 10376
+        },
+        "src/data/countries/niger.ts": {
+          "bytesInOutput": 4619
+        },
+        "src/data/countries/nigeria.ts": {
+          "bytesInOutput": 13249
+        },
+        "src/data/countries/niue.ts": {
+          "bytesInOutput": 1580
+        },
+        "src/data/countries/north_korea.ts": {
+          "bytesInOutput": 4882
+        },
+        "src/data/countries/north_macedonia.ts": {
+          "bytesInOutput": 11367
+        },
+        "src/data/countries/norway.ts": {
+          "bytesInOutput": 20722
+        },
+        "src/data/countries/oman.ts": {
+          "bytesInOutput": 7992
+        },
+        "src/data/countries/pakistan.ts": {
+          "bytesInOutput": 11754
+        },
+        "src/data/countries/palau.ts": {
+          "bytesInOutput": 2616
+        },
+        "src/data/countries/palestine.ts": {
+          "bytesInOutput": 7870
+        },
+        "src/data/countries/panama.ts": {
+          "bytesInOutput": 8268
+        },
+        "src/data/countries/papua_new_guinea.ts": {
+          "bytesInOutput": 8551
+        },
+        "src/data/countries/paraguay.ts": {
+          "bytesInOutput": 34730
+        },
+        "src/data/countries/peru.ts": {
+          "bytesInOutput": 47782
+        },
+        "src/data/countries/philippines.ts": {
+          "bytesInOutput": 9859
+        },
+        "src/data/countries/poland.ts": {
+          "bytesInOutput": 12280
+        },
+        "src/data/countries/portugal.ts": {
+          "bytesInOutput": 52058
+        },
+        "src/data/countries/puerto_rico.ts": {
+          "bytesInOutput": 11807
+        },
+        "src/data/countries/qatar.ts": {
+          "bytesInOutput": 5116
+        },
+        "src/data/countries/republic_of_congo.ts": {
+          "bytesInOutput": 11516
+        },
+        "src/data/countries/romania.ts": {
+          "bytesInOutput": 10462
+        },
+        "src/data/countries/russianWriterExpansion.ts": {
+          "bytesInOutput": 34105
+        },
+        "src/data/countries/russia.ts": {
+          "bytesInOutput": 118446
+        },
+        "src/data/countries/rwanda.ts": {
+          "bytesInOutput": 5158
+        },
+        "src/data/countries/saint_kitts_and_nevis.ts": {
+          "bytesInOutput": 2985
+        },
+        "src/data/countries/saint_lucia.ts": {
+          "bytesInOutput": 5263
+        },
+        "src/data/countries/saint_vincent_and_the_grenadines.ts": {
+          "bytesInOutput": 2795
+        },
+        "src/data/countries/samoa.ts": {
+          "bytesInOutput": 11202
+        },
+        "src/data/countries/san_marino.ts": {
+          "bytesInOutput": 1461
+        },
+        "src/data/countries/sao_tome_and_principe.ts": {
+          "bytesInOutput": 12071
+        },
+        "src/data/countries/senegal.ts": {
+          "bytesInOutput": 13593
+        },
+        "src/data/countries/serbia.ts": {
+          "bytesInOutput": 10085
+        },
+        "src/data/countries/seychelles.ts": {
+          "bytesInOutput": 3701
+        },
+        "src/data/countries/sierra_leone.ts": {
+          "bytesInOutput": 6073
+        },
+        "src/data/countries/singapore.ts": {
+          "bytesInOutput": 7246
+        },
+        "src/data/countries/slovakia.ts": {
+          "bytesInOutput": 9321
+        },
+        "src/data/countries/slovenia.ts": {
+          "bytesInOutput": 9683
+        },
+        "src/data/countries/solomon_islands.ts": {
+          "bytesInOutput": 4249
+        },
+        "src/data/countries/somalia.ts": {
+          "bytesInOutput": 6423
+        },
+        "src/data/countries/south_africa.ts": {
+          "bytesInOutput": 24172
+        },
+        "src/data/countries/south_korea.ts": {
+          "bytesInOutput": 51259
+        },
+        "src/data/countries/south_sudan.ts": {
+          "bytesInOutput": 2780
+        },
+        "src/data/countries/spain.ts": {
+          "bytesInOutput": 73687
+        },
+        "src/data/countries/sri_lanka.ts": {
+          "bytesInOutput": 11759
+        },
+        "src/data/countries/sudan.ts": {
+          "bytesInOutput": 7466
+        },
+        "src/data/countries/suriname.ts": {
+          "bytesInOutput": 10763
+        },
+        "src/data/countries/sweden.ts": {
+          "bytesInOutput": 17788
+        },
+        "src/data/countries/switzerland.ts": {
+          "bytesInOutput": 12544
+        },
+        "src/data/countries/syria.ts": {
+          "bytesInOutput": 6966
+        },
+        "src/data/countries/taiwan.ts": {
+          "bytesInOutput": 6383
+        },
+        "src/data/countries/tajikistan.ts": {
+          "bytesInOutput": 12624
+        },
+        "src/data/countries/tanzania.ts": {
+          "bytesInOutput": 8862
+        },
+        "src/data/countries/thailand.ts": {
+          "bytesInOutput": 10394
+        },
+        "src/data/countries/timor_leste.ts": {
+          "bytesInOutput": 6466
+        },
+        "src/data/countries/tonga.ts": {
+          "bytesInOutput": 2773
+        },
+        "src/data/countries/trinidad_and_tobago.ts": {
+          "bytesInOutput": 8580
+        },
+        "src/data/countries/tunisia.ts": {
+          "bytesInOutput": 8006
+        },
+        "src/data/countries/turkey.ts": {
+          "bytesInOutput": 12676
+        },
+        "src/data/countries/turkmenistan.ts": {
+          "bytesInOutput": 12342
+        },
+        "src/data/countries/tuvalu.ts": {
+          "bytesInOutput": 1565
+        },
+        "src/data/countries/uae.ts": {
+          "bytesInOutput": 7169
+        },
+        "src/data/countries/uganda.ts": {
+          "bytesInOutput": 8387
+        },
+        "src/data/countries/ukraine.ts": {
+          "bytesInOutput": 10059
+        },
+        "src/data/countries/uruguay.ts": {
+          "bytesInOutput": 42284
+        },
+        "src/data/countries/usa.ts": {
+          "bytesInOutput": 114844
+        },
+        "src/data/countries/uzbekistan.ts": {
+          "bytesInOutput": 14181
+        },
+        "src/data/countries/vanuatu.ts": {
+          "bytesInOutput": 4544
+        },
+        "src/data/countries/vatican.ts": {
+          "bytesInOutput": 1502
+        },
+        "src/data/countries/venezuela.ts": {
+          "bytesInOutput": 35567
+        },
+        "src/data/countries/vietnam.ts": {
+          "bytesInOutput": 10139
+        },
+        "src/data/countries/yemen.ts": {
+          "bytesInOutput": 7093
+        },
+        "src/data/countries/zambia.ts": {
+          "bytesInOutput": 11768
+        },
+        "src/data/countries/zimbabwe.ts": {
+          "bytesInOutput": 10295
+        },
+        "src/data/countries/index.ts": {
+          "bytesInOutput": 3426
+        },
+        "corpus-a1-current-entry.ts": {
+          "bytesInOutput": 0
+        },
+        "scripts/lib/writer-biography-public-profile.mjs": {
+          "bytesInOutput": 13041
+        },
+        "scripts/lib/writer-biography-english-qa.mjs": {
+          "bytesInOutput": 6401
+        },
+        "scripts/lib/writer-biography-structured-ru.mjs": {
+          "bytesInOutput": 8726
+        }
+      },
+      "bytes": 8231262
+    }
+  }
+}

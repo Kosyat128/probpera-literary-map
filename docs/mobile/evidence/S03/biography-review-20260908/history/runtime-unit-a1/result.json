@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "src/data/writerBiography.test.ts",
+    "src/data/countries/writerBiographyEnglishTranslations.test.ts",
+    "--reporter=json",
+    "--outputFile=.tmp/s03-biography-review-20260908/runtime-unit-a1/vitest.json"
+  ],
+  "startedAt": "2026-09-08T10:00:48.431Z",
+  "finishedAt": "2026-09-08T10:00:54.503Z",
+  "durationMs": 6070,
+  "exitCode": 0,
+  "inputsUnchanged": true,
+  "changedInputs": [],
+  "sourceSnapshotScope": "Explicit runtime, owned test, helper, integration, and test-config inputs; not a full corpus byte snapshot."
+}

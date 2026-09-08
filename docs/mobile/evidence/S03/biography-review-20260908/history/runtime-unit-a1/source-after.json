@@ -1,0 +1,14 @@
+{
+  "src/data/countries/types.ts": "1194c21a752e5bfd9b33da43c2950583b5a1e188b1051f63e97c9b28ba724012",
+  "src/data/writerBiography.ts": "a306aa30481c7d1c015ae739574d75423ee79fe6b29417b590b5673df42e05cd",
+  "src/data/writerBiography.test.ts": "a8d945a20a635a5a385b938acb8b95e4eb3714ceeff4d1c97c6ee82d7c35e87a",
+  "src/data/countries/writerBiographyEnglishTranslations.ts": "8a3aa9a2efef6545f2d4e3ed71b11008515daf08a4016e5e8237e1300ac0c815",
+  "src/data/countries/writerBiographyEnglishTranslations.test.ts": "95d725925387dd077cec733859c6f436f97e851d8d13d6b2803f4facd2d64ba5",
+  "src/data/biographyEditorialReview.ts": "727f157477a4969412e472b86aa51f7cc1c807ff6f5ea3d5e5e48c81bc3b7c8d",
+  "src/data/countries/index.ts": "52c164f5db1eedaa55d9a95456ff9903596480a3bad084148384a68d47a0967c",
+  "src/data/cms/editorialOverrides.ts": "f7222571a71e916dd24af9659948f8c22124377f7eddcc57d713416a6f7081cb",
+  "src/data/countries/generated/writerBiographyEnglishTranslations.generated.json": "c1bf1f67597e2faa1768f8d60b3c6b116c134ac36361c7e3ad994350d562ce66",
+  "vitest.config.ts": "5c1e90985e77b35599e5bdaf77c74a1166949ec9c4f45d1c5f926c3f53bef90e",
+  "package.json": "ace4a4e0f7dd0ba496a0ae6b878df75b0b67c82bf74635abf62cf6b113baf147",
+  "package-lock.json": "e2eb030111e59fe4389045da426c2bd48e95038031e5cf6a5061735cfbd3ebbe"
+}

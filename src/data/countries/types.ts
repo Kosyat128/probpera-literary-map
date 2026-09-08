@@ -2,7 +2,20 @@ export type WorkLocale = "ru" | "en";
 
 export type WriterBiographyLocale = "ru" | "en";
 
-export type WriterBiographyEditorialStatus = "draft" | "reviewed" | "verified";
+export type WriterBiographyEditorialStatus = "draft" | "reviewed" | "verified" | "stale";
+
+/** Explicit editorial acceptance of exact source and target revisions. */
+export type WriterBiographyEditorialReviewProfile = {
+  schemaVersion: 1;
+  hashContract: "writer-biography-review-v1";
+  decision: "approved" | "rejected" | "withdrawn";
+  reviewerType: "human";
+  reviewer: string;
+  reviewedAt: string;
+  evidenceRef: string;
+  sourceHash: string;
+  targetHash: string;
+};
 
 export type WriterBiographySourceProfile = {
   provider: string;
@@ -28,6 +41,7 @@ export type WriterBiographyTranslationProfile = {
     | "licensed-source";
   reviewedAt?: string;
   reviewer?: string;
+  editorialReview?: WriterBiographyEditorialReviewProfile;
   translatedFromLocale?: WriterBiographyLocale;
   sourceTextRights?:
     | "project-original"

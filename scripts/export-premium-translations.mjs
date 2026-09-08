@@ -827,7 +827,8 @@ function normalizeBiographyTranslations(value, context) {
     stringValue(effectiveFields.fullName, 300) ||
     stringValue(effectiveFields.name, 300) ||
     stringValue(context.row?.writer_id, 200);
-  return normalizePublicWriterBiographyTranslations(value, { writerName });
+  const writerId = stringValue(context.row?.writer_id, 200);
+  return normalizePublicWriterBiographyTranslations(value, { writerName, writerId });
 }
 const originalHead = publicationHeadFromSnapshot(snapshot);
 let stableHead = originalHead;

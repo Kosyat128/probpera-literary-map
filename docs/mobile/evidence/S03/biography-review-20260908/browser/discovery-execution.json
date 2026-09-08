@@ -1,0 +1,15 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=playwright.native-planet.config.mjs",
+    "--grep",
+    "native first screen is the actual immersive globe and RU/EN retains writer and scene",
+    "--list",
+    "--reporter=json"
+  ],
+  "startedAt": "2026-09-08T10:13:02.787Z",
+  "durationMs": 1112,
+  "exitCode": 0
+}

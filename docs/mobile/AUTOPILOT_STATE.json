@@ -5,7 +5,7 @@
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
   "headSha": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-08T09:30:19.705Z",
+  "updatedAt": "2026-09-08T10:16:46.057Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -535,7 +535,8 @@
         "docs/mobile/evidence/S03/offline-repair-20260908/result.json",
         "docs/mobile/evidence/S03/offline-editions-20260908/source-result.json",
         "docs/mobile/evidence/S03/offline-repair-20260908/a4/result.json",
-        "docs/mobile/evidence/S03/offline-repair-20260908/a5/result.json"
+        "docs/mobile/evidence/S03/offline-repair-20260908/a5/result.json",
+        "docs/mobile/evidence/S03/biography-review-20260908/result.json"
       ],
       "externalBlockers": []
     },
@@ -10563,7 +10564,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Continue from S03.acceptance with the routed outstanding access/offline/bilingual gates; do not replay passed appearance/touch/repair suites without a source change. Nearly10k capacity, English biography draft/review/stale rules, edition-specific EN covers and owner corrections remain open per content-follow-up.md. S06 full quality tiers/Planetka and other platform/device/release gates remain open; frozen iOS83 awaits its existing approval.",
+    "nextAction": "Build fresh Android/dev and controlled PWA from the committed biography review source, preserving prior17b6/7855 and frozen iOS83. Focused138, joint static, one real RU/EN writer/globe source-browser case and the full current biography exporter comparison passed. Do not repeat green appearance/repair suites. S03 remains first-open; full S38 editorial/owner correction workflow and English coverage, nearly10k capacity, edition covers, quality tiers and other device/release gates remain open.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -10790,9 +10791,9 @@
         "offlineGradleBuild": true,
         "apkBinaryAudit": true,
         "preservationCopiesVerified": true,
-        "currentSource": true,
+        "currentSource": false,
         "validatedAgainstSourceCommit": "96690a486cfd39519481b2e9274adfca9602114c",
-        "runtimeEquivalentToCurrentSource": true,
+        "runtimeEquivalentToCurrentSource": false,
         "buildCommitEqualsCurrentCommit": false,
         "includesS05FirstJourney": true,
         "includesNativeActivity": true,
@@ -10803,7 +10804,7 @@
         "stageAccepted": false,
         "releaseReady": false
       },
-      "nativeArtifactCurrentSource": true,
+      "nativeArtifactCurrentSource": false,
       "nativeArtifactHistory": [
         {
           "evidence": "docs/mobile/evidence/S04/android-globe-panels-20260908/result.json",
@@ -11360,7 +11361,7 @@
       "artifactSha256": "4f29406ca48370ced40c768ecb99a521eda3613bd7e36d1a8431794152e9973b",
       "artifactPath": ".tmp/pwa-artifacts/7855b5cf-offline-repair-20260908-a5",
       "sourceCommit": "96690a486cfd39519481b2e9274adfca9602114c",
-      "currentSource": true,
+      "currentSource": false,
       "localQaAuthority": true,
       "copyReviewStatus": "draft",
       "stageAccepted": false,
@@ -11385,7 +11386,7 @@
       "pwaBuildId": "7855b5cf22339bd0f12969f87a9ba9a97e38840daf9d36e42cde3f3b698ed40f",
       "nativeSourceCommit": "1f9bae113129d00828dc1b0714e9002b1ff1f63f",
       "pwaSourceCommit": "96690a486cfd39519481b2e9274adfca9602114c",
-      "nativeRuntimeEquivalentToCurrentSource": true,
+      "nativeRuntimeEquivalentToCurrentSource": false,
       "failedPwaAttemptEvidence": "docs/mobile/evidence/S03/offline-repair-20260908/a4/result.json",
       "failedPwaAttemptSha256": "99ca60ec1613154e24cdb7f3c171f0039dedf06360912f1cb39f2453bdfa6f9c",
       "selectedPwaBrowserPasses": 2,
@@ -11428,7 +11429,21 @@
         "stageAccepted": false,
         "releaseReady": false
       }
-    ]
+    ],
+    "s03BiographyReview": {
+      "evidence": "docs/mobile/evidence/S03/biography-review-20260908/result.json",
+      "sha256": "adca0b7f5149831c9a253cb217a7b4e16d34a17369efaa95aa4c26d9b51688fd",
+      "status": "FOCUSED_SOURCE_VALIDATION_PASSED",
+      "unitPasses": 138,
+      "exactReviewContract": "writer-biography-review-v1",
+      "actualApprovalsCreated": 0,
+      "sourceBrowserPasses": 1,
+      "corpusExportComparisonPassed": true,
+      "newNativeArtifactProduced": false,
+      "newPwaArtifactProduced": false,
+      "stageAccepted": false,
+      "releaseReady": false
+    }
   },
   "externalOwnerInputsStatus": {
     "status": "NOT_STARTED",

@@ -3,6 +3,7 @@ import type {
   WriterBiographyTranslationProfile,
   WriterProfile,
 } from "./countries/types";
+import { writerBiographyEditorialReviewIssues } from "./biographyEditorialReview";
 
 const publishableStatuses = new Set(["reviewed", "verified"]);
 const lawfulMethods = new Set([
@@ -147,13 +148,43 @@ function hasLicenseMetadata(
   );
 }
 
-export function writerBiographyQualityIssues(
+function translatedBiographyReviewIssues(
+  translation: WriterBiographyTranslationProfile,
+  writer: WriterProfile | undefined,
+  visitingLocales: ReadonlySet<WriterBiographyLocale>
+): string[] {
+  const issues = writerBiographyEditorialReviewIssues(translation, writer);
+  const sourceLocale = translation.translatedFromLocale;
+  if (
+    (sourceLocale === "ru" || sourceLocale === "en") &&
+    sourceLocale !== translation.locale
+  ) {
+    const source = writer?.biographyTranslations?.[sourceLocale];
+    if (source) {
+      try {
+        if (biographyQualityIssues(source, sourceLocale, writer, visitingLocales).length) {
+          issues.push("source-not-publishable");
+        }
+      } catch {
+        // Malformed imported provenance cannot make its translation eligible.
+        issues.push("source-not-publishable");
+      }
+    }
+  }
+  return issues;
+}
+
+function biographyQualityIssues(
   translation: WriterBiographyTranslationProfile | undefined,
   locale: WriterBiographyLocale,
-  writer?: WriterProfile
-) {
+  writer: WriterProfile | undefined,
+  visitingLocales: ReadonlySet<WriterBiographyLocale>
+): string[] {
   const issues: string[] = [];
   if (!translation) return [`нет биографии ${locale}`];
+  if (visitingLocales.has(locale)) return ["cyclic-translation-source"];
+  const sourcePath = new Set(visitingLocales);
+  sourcePath.add(locale);
   if (translation.locale !== locale) issues.push(`locale не совпадает с ${locale}`);
   if (!translation.sourceLanguage.trim()) {
     issues.push(`не указан исходный язык биографии ${locale}`);
@@ -233,6 +264,9 @@ export function writerBiographyQualityIssues(
     translation.method === "human-translation" ||
     translation.method === "machine-translation"
   ) {
+    // Model QA and a post-edit credit are provenance, not editorial acceptance.
+    // Recheck the exact revisions here, including after later CMS overrides.
+    issues.push(...translatedBiographyReviewIssues(translation, writer, sourcePath));
     if (!translationSourceRights.has(translation.sourceTextRights || "")) {
       issues.push(`для перевода ${locale} не зафиксированы права на исходный текст`);
     }
@@ -275,6 +309,57 @@ export function writerBiographyQualityIssues(
   }
 
   return [...new Set(issues)];
+}
+
+export function writerBiographyQualityIssues(
+  translation: WriterBiographyTranslationProfile | undefined,
+  locale: WriterBiographyLocale,
+  writer?: WriterProfile
+): string[] {
+  return biographyQualityIssues(translation, locale, writer, new Set());
+}
+
+const staleReviewIssues = new Set([
+  "missing-source",
+  "source-changed",
+  "target-changed",
+  "source-not-publishable",
+]);
+
+/**
+ * Propagates loss of an existing translation approval without promoting any
+ * draft or stale record. Authored profiles and unaffected objects stay intact.
+ */
+export function reconcileWriterBiographyReviews(writer: WriterProfile): WriterProfile {
+  let reconciled = writer;
+  // Two locales: a downgrade of one source may invalidate the other locale.
+  for (let pass = 0; pass < 2; pass += 1) {
+    for (const locale of ["ru", "en"] as const) {
+      const translation = reconciled.biographyTranslations?.[locale];
+      if (
+        !translation ||
+        !publishableStatuses.has(translation.status) ||
+        (translation.method !== "human-translation" &&
+          translation.method !== "machine-translation")
+      ) continue;
+
+      const issues = translatedBiographyReviewIssues(translation, reconciled, new Set([locale]));
+      if (issues.length === 0) continue;
+      reconciled = {
+        ...reconciled,
+        biographyTranslations: {
+          ...reconciled.biographyTranslations,
+          [locale]: {
+            ...translation,
+            status: issues.some((issue) => staleReviewIssues.has(issue))
+              ? "stale"
+              : "draft",
+          },
+        },
+      };
+    }
+  }
+  return reconciled;
 }
 
 /**

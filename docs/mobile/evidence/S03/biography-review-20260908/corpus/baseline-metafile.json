@@ -1,0 +1,63 @@
+{
+  "inputs": {
+    "scripts/lib/writer-biography-english-qa.mjs": {
+      "bytes": 19211,
+      "imports": [],
+      "format": "esm"
+    },
+    "scripts/lib/writer-biography-structured-ru.mjs": {
+      "bytes": 19688,
+      "imports": [],
+      "format": "esm"
+    },
+    "scripts/lib/baseline-5b9aa7-writer-biography-public-profile.mjs": {
+      "bytes": 11336,
+      "imports": [
+        {
+          "path": "node:crypto",
+          "kind": "import-statement",
+          "external": true
+        },
+        {
+          "path": "scripts/lib/writer-biography-english-qa.mjs",
+          "kind": "import-statement",
+          "original": "./writer-biography-english-qa.mjs"
+        },
+        {
+          "path": "scripts/lib/writer-biography-structured-ru.mjs",
+          "kind": "import-statement",
+          "original": "./writer-biography-structured-ru.mjs"
+        }
+      ],
+      "format": "esm"
+    }
+  },
+  "outputs": {
+    "stdin.js": {
+      "imports": [
+        {
+          "path": "node:crypto",
+          "kind": "import-statement",
+          "external": true
+        }
+      ],
+      "exports": [
+        "normalizePublicWriterBiographyTranslations",
+        "writerBiographyPublicSourceHash"
+      ],
+      "entryPoint": "scripts/lib/baseline-5b9aa7-writer-biography-public-profile.mjs",
+      "inputs": {
+        "scripts/lib/baseline-5b9aa7-writer-biography-public-profile.mjs": {
+          "bytesInOutput": 10526
+        },
+        "scripts/lib/writer-biography-english-qa.mjs": {
+          "bytesInOutput": 6401
+        },
+        "scripts/lib/writer-biography-structured-ru.mjs": {
+          "bytesInOutput": 8722
+        }
+      },
+      "bytes": 25975
+    }
+  }
+}

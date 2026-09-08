@@ -379,12 +379,12 @@
   Bundled offline cover changes currently enter through a new app build.
 
 - D084: Real final-PWA a4 cold EN launch exposes incomplete offline edition
-+  coverage: saved NASA survives, but its texture is outside the strict cache
-+  manifest, so the loader warns and falls back. Include all already bundled,
-+  pinned selectable edition originals and exact version aliases under unchanged
-+  worker/resource bounds. Keep both failed receipts and rerun only their two
-+  cases after the necessary new PWA build. Android17b6 source1f9bae11 remains
-+  separately identified; PWA-only builder/tests are outside its971 input set.
+  coverage: saved NASA survives, but its texture is outside the strict cache
+  manifest, so the loader warns and falls back. Include all already bundled,
+  pinned selectable edition originals and exact version aliases under unchanged
+  worker/resource bounds. Keep both failed receipts and rerun only their two
+  cases after the necessary new PWA build. Android17b6 source1f9bae11 remains
+  separately identified; PWA-only builder/tests are outside its971 input set.
 
 - D085: Current source 96690a486cfd39519481b2e9274adfca9602114c is validated against Android/dev
   17b6fc88, built at 1f9bae113129d00828dc1b0714e9002b1ff1f63f, and controlled PWA
@@ -398,3 +398,12 @@
   and APK bytes are inspected. No physical-device, bilingual editorial or
   release acceptance follows. Nearly10k capacity, AI biography review/stale and
   EN edition-cover gaps remain explicit; no new iOS payload or production action.
+
+- D086: Generated biographies are drafts; model checks/post-edit metadata cannot
+  manufacture human acceptance. Both translation methods require a separately
+  supplied review bound to exact source/target revisions and an eligible source.
+  Run stale reconciliation after CMS edits and preserve existing draft/stale
+  correction work. Keep historical sourceHash formats; use a separate versioned
+  browser/Node SHA256 review contract. Hash validity does not authenticate the
+  supplied reviewer or establish factual accuracy. This is a bounded S03 global
+  invariant correction, not S38 workflow/English coverage acceptance.

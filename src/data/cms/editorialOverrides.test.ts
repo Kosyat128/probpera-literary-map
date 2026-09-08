@@ -3,7 +3,14 @@ import { describe, expect, it } from "vitest";
 import type {
   Country,
   WriterBiographySourceProfile,
+  WriterBiographyTranslationProfile,
+  WriterProfile,
 } from "../countries/types";
+import { selectWriterBiography } from "../writerBiography";
+import {
+  writerBiographyReviewSourceHash,
+  writerBiographyReviewTargetHash,
+} from "../biographyEditorialReview";
 import {
   applyCmsCountryProfileOverrides,
   applyCmsWriterProfileOverrides,
@@ -44,7 +51,94 @@ const biographySource: WriterBiographySourceProfile = {
 
 const bookSourceUrl = "https://example.org/book";
 
+/** Synthetic CMS fixture only; never evidence of an actual human approval. */
+function approvedBiographyCountry(): Country {
+  const russian: WriterBiographyTranslationProfile = {
+    locale: "ru",
+    text: "Этот вымышленный писатель существует только в тестовом наборе для проверки редакционного допуска биографий. Его пример не подтверждает никаких сведений о реальных авторах и не является редакционным утверждением.",
+    sourceLanguage: "ru",
+    status: "verified",
+    method: "editorial-original",
+    reviewedAt: "2026-09-08",
+    reviewer: "Synthetic source reviewer",
+    sources: [{ ...biographySource, fields: [...biographySource.fields] }],
+  };
+  const english: WriterBiographyTranslationProfile = {
+    locale: "en",
+    text: "This imaginary writer exists only in a synthetic fixture for testing editorial publication rules. The example does not establish any facts about real authors or provide a real editorial approval.",
+    sourceLanguage: "ru",
+    status: "reviewed",
+    method: "human-translation",
+    reviewedAt: "2026-09-08",
+    reviewer: "Synthetic translation reviewer",
+    translatedFromLocale: "ru",
+    sourceTextRights: "project-original",
+    sources: structuredClone(russian.sources),
+  };
+  const writer: WriterProfile = {
+    id: "writer",
+    name: "Synthetic writer",
+    biographyTranslations: { ru: russian, en: english },
+  };
+  english.editorialReview = {
+    schemaVersion: 1,
+    hashContract: "writer-biography-review-v1",
+    decision: "approved",
+    reviewerType: "human",
+    reviewer: "Synthetic translation reviewer",
+    reviewedAt: "2026-09-08",
+    evidenceRef: "https://example.org/test-only/cms-biography-review",
+    sourceHash: writerBiographyReviewSourceHash(writer, "ru")!,
+    targetHash: writerBiographyReviewTargetHash(english),
+  };
+  return { ...country, writers: [writer] };
+}
+
 describe("CMS editorial overrides", () => {
+  it("preserves a valid writer reference when no CMS override changes its reviewed biography", () => {
+    const fixture = approvedBiographyCountry();
+    const original = fixture.writers[0]!;
+    const [updated] = applyCmsWriterProfileOverrides([fixture], {});
+    expect(updated!.writers[0]).toBe(original);
+    expect(selectWriterBiography(updated!.writers[0]!, "en")).toBe(original.biographyTranslations!.en);
+  });
+
+  it("marks EN stale after a CMS edit to its reviewed RU source", () => {
+    const fixture = approvedBiographyCountry();
+    const original = fixture.writers[0]!;
+    const changed = structuredClone(original.biographyTranslations!);
+    changed.ru!.text += " Источник изменён.";
+    const [updated] = applyCmsWriterProfileOverrides([fixture], {
+      "test-country:writer": { biographyTranslations: changed },
+    });
+    expect(updated!.writers[0]!.biographyTranslations!.en!.status).toBe("stale");
+    expect(updated!.writers[0]!.biographyTranslations!.en!.editorialReview).toBe(changed.en!.editorialReview);
+    expect(selectWriterBiography(updated!.writers[0]!, "en")).toBeNull();
+    expect(original.biographyTranslations!.en!.status).toBe("reviewed");
+  });
+
+  it("marks EN stale after a CMS edit to its bound writer name", () => {
+    const fixture = approvedBiographyCountry();
+    const [updated] = applyCmsWriterProfileOverrides([fixture], {
+      "test-country:writer": { name: "Changed synthetic writer" },
+    });
+    expect(updated!.writers[0]!.name).toBe("Changed synthetic writer");
+    expect(updated!.writers[0]!.biographyTranslations!.en!.status).toBe("stale");
+    expect(selectWriterBiography(updated!.writers[0]!, "en")).toBeNull();
+  });
+
+  it("returns a CMS translation without explicit approval to draft", () => {
+    const fixture = approvedBiographyCountry();
+    const changed = structuredClone(fixture.writers[0]!.biographyTranslations!);
+    delete changed.en!.editorialReview;
+    const [updated] = applyCmsWriterProfileOverrides([fixture], {
+      "test-country:writer": { biographyTranslations: changed },
+    });
+    expect(updated!.writers[0]!.biographyTranslations!.en!.status).toBe("draft");
+    expect(selectWriterBiography(updated!.writers[0]!, "en")).toBeNull();
+    expect(changed.en!.status).toBe("reviewed");
+  });
+
   it("applies country fields and EN translation without allowing an override to replace writers", () => {
     const unsafeDatabaseValue = {
       "test-country": {

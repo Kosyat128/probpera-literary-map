@@ -1,0 +1,405 @@
+{
+  "schemaVersion": 1,
+  "stage": "S03",
+  "status": "FOCUSED_SOURCE_VALIDATION_PASSED",
+  "recordedAt": "2026-09-08T10:16:46.057Z",
+  "sourceCheckpointBeforeChanges": "5b9aa7bf76e829428ff34db0a2965fdbfb1a7564",
+  "sourceFiles": [
+    {
+      "path": "package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+    },
+    {
+      "path": "package.json",
+      "sha256": "90b392c205754f838b8bc7c4475bd475936be1078561bb218c437d151177869f"
+    },
+    {
+      "path": "scripts/export-premium-translations.mjs",
+      "sha256": "51c9cf03d40ee837782b969f584ebc44d52caacfacff6fbf1c4a6a75a02e5017"
+    },
+    {
+      "path": "scripts/export-premium-translations.source.test.mjs",
+      "sha256": "08ab3234424b5d62c474fb972f2e5f266461ca29e8375f256ecee1070d121618"
+    },
+    {
+      "path": "scripts/lib/writer-biography-public-profile.mjs",
+      "sha256": "a419109c90ff34e43628db8543a60683d6fa47a247006c6a766614237b775e23"
+    },
+    {
+      "path": "scripts/lib/writer-biography-public-profile.test.mjs",
+      "sha256": "536cc68ec1873a4cd59c148c86225218e69ae74e04c77c61493543a3ad715f47"
+    },
+    {
+      "path": "src/data/biographyEditorialReview.test.ts",
+      "sha256": "943fd41faf81dfb3ae5b12154c735e680cfe75a18e9d19caa54bf8a100aa141d"
+    },
+    {
+      "path": "src/data/biographyEditorialReview.ts",
+      "sha256": "727f157477a4969412e472b86aa51f7cc1c807ff6f5ea3d5e5e48c81bc3b7c8d"
+    },
+    {
+      "path": "src/data/cms/editorialOverrides.test.ts",
+      "sha256": "e883da4d9a4490e33abc4186c6fae05c32ccb3f9a5f3f97ae6e996724dc1eb4a"
+    },
+    {
+      "path": "src/data/cms/editorialOverrides.ts",
+      "sha256": "b328dfb3b5b1023782bdd625ed33312ea55bbc763543eb9d2dfacb1c1115a882"
+    },
+    {
+      "path": "src/data/countries/types.ts",
+      "sha256": "1194c21a752e5bfd9b33da43c2950583b5a1e188b1051f63e97c9b28ba724012"
+    },
+    {
+      "path": "src/data/countries/writerBiographyEnglishTranslations.test.ts",
+      "sha256": "8e2df420c2072e08c991eb703eb8120005c7aebbd448926977ac7dbc4a54eedb"
+    },
+    {
+      "path": "src/data/countries/writerBiographyEnglishTranslations.ts",
+      "sha256": "c0aa56d541af7a1f1351a977d2dc2668ad4d67b7076e3c732613369590a3a26f"
+    },
+    {
+      "path": "src/data/writerBiography.test.ts",
+      "sha256": "026fee46ebf617536f3f6ee1db2c5122599764e6ad15eb144c10afe2fe051d5c"
+    },
+    {
+      "path": "src/data/writerBiography.ts",
+      "sha256": "4d0097d6d0c450798d720076457ab901a5e2ee48b2ac3526f5d0b548ccd12086"
+    }
+  ],
+  "scope": "Shared bilingual biography draft/review/stale invariant in the active S03 route; not S38 acceptance.",
+  "requirementReferences": [
+    "BIL-022",
+    "BIL-023",
+    "BIL-083",
+    "BIL-101"
+  ],
+  "tests": {
+    "passed": 138,
+    "failed": 0,
+    "groups": [
+      {
+        "scope": "hash-contract",
+        "passed": 50,
+        "failed": 0,
+        "files": 1
+      },
+      {
+        "scope": "runtime-and-CMS",
+        "passed": 52,
+        "failed": 0,
+        "files": 3
+      },
+      {
+        "scope": "public-export",
+        "passed": 36,
+        "failed": 0,
+        "files": 3
+      }
+    ],
+    "earlierRuntimePassesNotDoubleCounted": 34
+  },
+  "static": {
+    "typeScriptPassed": true,
+    "platformBoundariesPassed": true,
+    "executionsPerCheck": 1,
+    "evidence": "static/static-checks.json"
+  },
+  "implemented": [
+    "Generated biography output stays draft and preserves existing EN correction work.",
+    "Independent exact-revision review contract applies to human and machine translations in selector and public export.",
+    "Source eligibility and recursive/cyclic dependency handling fail closed.",
+    "CMS overrides reconcile stale revisions without auto-promotion; provenance survives export."
+  ],
+  "dependency": {
+    "name": "@noble/hashes",
+    "version": "1.8.0",
+    "previouslyInstalledTransitiveVersion": true,
+    "rootProductionDependencyPinned": true,
+    "lockNormalizedOffline": true
+  },
+  "automationCreatedRealApprovals": 0,
+  "realBiographiesTranslated": 0,
+  "browserEvidencePending": false,
+  "corpusExportComparisonPending": false,
+  "browser": {
+    "evidence": "browser/result.json",
+    "sha256": "d0339f6d439668133b93d30dbcc85639365e35c55a60f45cbfcf102c3c58324e",
+    "passed": 1,
+    "failed": 0,
+    "actualAppSource": true,
+    "nativePluginsSimulated": true,
+    "exactArtifactRuntime": false
+  },
+  "visualReview": {
+    "files": [
+      "browser/native-entry-en.png",
+      "browser/native-entry-ru.png"
+    ],
+    "observed": "Actual globe and country/selected-writer breadcrumbs remain; English unavailable-content notices visible. This is not full EN content acceptance."
+  },
+  "corpus": {
+    "evidence": "corpus/result.json",
+    "countries": 200,
+    "writers": 1684,
+    "beforeAndAfter": {
+      "ru": 1684,
+      "en": 20
+    },
+    "removed": 0,
+    "proseChanged": 0,
+    "originalProvenanceRetained": 1672,
+    "translatedApprovals": 0,
+    "factualReviewPerformed": false
+  },
+  "newNativeArtifactProduced": false,
+  "newPwaArtifactProduced": false,
+  "history": [
+    "Runtime a1 passed before review found source-eligibility and correction-retention defects; corrected runtime/CMS/overlay a2 is the final 52-case run.",
+    "Public a1 failed at sandboxed esbuild config loading with no Vitest report; public a2 ran all 36 selected tests successfully.",
+    "Offline install with a package argument lacked cached registry metadata; the existing exact dependency was declared and npm normalized its lock offline without that argument."
+  ],
+  "copiedFiles": [
+    {
+      "source": ".tmp/biography-review-20260908/hash-contract/run.json",
+      "path": "hash-contract/run.json",
+      "bytes": 785,
+      "sha256": "c7d3eb22ec4d0fb069e02a624fa76c7b2398feed18b7b5cb288f3e691ad8132c"
+    },
+    {
+      "source": ".tmp/biography-review-20260908/hash-contract/vitest.json",
+      "path": "hash-contract/vitest.json",
+      "bytes": 18957,
+      "sha256": "619bbf91c7cf2c3fb42ae230d18de309b9ee9c479c53967ccc43feddbc98b063"
+    },
+    {
+      "source": ".tmp/biography-review-20260908/hash-contract/stdout.log",
+      "path": "hash-contract/stdout-transcript.json",
+      "bytes": 389,
+      "sha256": "f45957fa38fe0605858ff0c32ee4a7ca18e08936d5944bbfda248bbdc8414488",
+      "lossless": true,
+      "originalSha256": "1a08124c1c1873426c4db565b8ebd04aa6ad4a9b8f287461ab17640fc9e6d96b"
+    },
+    {
+      "source": ".tmp/biography-review-20260908/hash-contract/stderr.log",
+      "path": "hash-contract/stderr-transcript.json",
+      "bytes": 220,
+      "sha256": "4d1e5580ac5249cc7b428456cee4686afe76aff8540a06c4156afe31eb8080ec",
+      "lossless": true,
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": ".tmp/s03-biography-review-20260908/runtime-unit-a1/result.json",
+      "path": "history/runtime-unit-a1/result.json",
+      "bytes": 663,
+      "sha256": "a1a5c189eb857282545a4c46e25b5d14ce0ac75f052d2a2de0f30e3df7ff1421"
+    },
+    {
+      "source": ".tmp/s03-biography-review-20260908/runtime-unit-a1/vitest.json",
+      "path": "history/runtime-unit-a1/vitest.json",
+      "bytes": 13838,
+      "sha256": "d10ab1741acd2dc25a3391b164543f7b12e631290d4570b4ad46280c6ce59d18"
+    },
+    {
+      "source": ".tmp/s03-biography-review-20260908/runtime-unit-a1/source-before.json",
+      "path": "history/runtime-unit-a1/source-before.json",
+      "bytes": 1314,
+      "sha256": "5384c27391aeffa60d92a3425768cd336dc48b4a193e75fbce9a5ce45dafee45"
+    },
+    {
+      "source": ".tmp/s03-biography-review-20260908/runtime-unit-a1/source-after.json",
+      "path": "history/runtime-unit-a1/source-after.json",
+      "bytes": 1314,
+      "sha256": "5384c27391aeffa60d92a3425768cd336dc48b4a193e75fbce9a5ce45dafee45"
+    },
+    {
+      "source": ".tmp/s03-biography-review-20260908/runtime-unit-a1/stdout.log",
+      "path": "history/runtime-unit-a1/stdout-transcript.json",
+      "bytes": 401,
+      "sha256": "b3ff7012260c19890f3f55c4472a469b98d541666252216538859d334cf75dac",
+      "lossless": true,
+      "originalSha256": "6e26a47b5c3544ad756ad9c2f06330d91dbe209652222ee9f7cadeb6d89637e9"
+    },
+    {
+      "source": ".tmp/s03-biography-review-20260908/runtime-unit-a1/stderr.log",
+      "path": "history/runtime-unit-a1/stderr-transcript.json",
+      "bytes": 226,
+      "sha256": "f94e3a386f7d1a00bf33cc05dac331ebc3fa3dd80240148b08901c83729c8427",
+      "lossless": true,
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": ".tmp/s03-biography-review-20260908/runtime-unit-a2/result.json",
+      "path": "runtime/result.json",
+      "bytes": 711,
+      "sha256": "44f03296946a6caf7b54979d467937c4946fce98770727db3168beadf3dcbf43"
+    },
+    {
+      "source": ".tmp/s03-biography-review-20260908/runtime-unit-a2/vitest.json",
+      "path": "runtime/vitest.json",
+      "bytes": 20356,
+      "sha256": "7b91adaf555157fed4e2d370026635a3a0f66bf635a5e49550c368b7621e98ae"
+    },
+    {
+      "source": ".tmp/s03-biography-review-20260908/runtime-unit-a2/source-before.json",
+      "path": "runtime/source-before.json",
+      "bytes": 1427,
+      "sha256": "91040f4b2887357f9f47c5f6866fff8f38742a2cfc2d56871199f30730851c78"
+    },
+    {
+      "source": ".tmp/s03-biography-review-20260908/runtime-unit-a2/source-after.json",
+      "path": "runtime/source-after.json",
+      "bytes": 1427,
+      "sha256": "91040f4b2887357f9f47c5f6866fff8f38742a2cfc2d56871199f30730851c78"
+    },
+    {
+      "source": ".tmp/s03-biography-review-20260908/runtime-unit-a2/stdout.log",
+      "path": "runtime/stdout-transcript.json",
+      "bytes": 401,
+      "sha256": "934561c7d4621b6c097884416f77649faf048288000e432e186cecf56f763192",
+      "lossless": true,
+      "originalSha256": "a434970e45138a8ad80f60998db580fba783231d5c46d24a70deb9fc6cdfc893"
+    },
+    {
+      "source": ".tmp/s03-biography-review-20260908/runtime-unit-a2/stderr.log",
+      "path": "runtime/stderr-transcript.json",
+      "bytes": 226,
+      "sha256": "fe0fc420940922188f87c59000451b3d39ad8d3ebe44f4a92c3ec5ddfeebd064",
+      "lossless": true,
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": ".tmp/s03-biography-review-20260908/public-unit-a1/stdout.log",
+      "path": "history/public-startup-a1/stdout-transcript.json",
+      "bytes": 225,
+      "sha256": "17a230a9c383393ed189b57d79a7ed9377d4fd165dc949466f78ea8b4c9a54cd",
+      "lossless": true,
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": ".tmp/s03-biography-review-20260908/public-unit-a1/stderr.log",
+      "path": "history/public-startup-a1/stderr-transcript.json",
+      "bytes": 2378,
+      "sha256": "8e0dbd55ada8d15eb6a008a8935192c15bcc973f8a87675050c9647c5339609f",
+      "lossless": true,
+      "originalSha256": "c20981665c2c497cbd9c8fef39e9e5563d64c00d38c6bc4f45a789608bf89af2"
+    },
+    {
+      "source": ".tmp/s03-biography-review-20260908/public-unit-a2/result.json",
+      "path": "public-export/result.json",
+      "bytes": 3654,
+      "sha256": "a1fd392b8b0cf0573e662ec7fd4e0a1c0967dc756dde64a33a8db6612498c7d9"
+    },
+    {
+      "source": ".tmp/s03-biography-review-20260908/public-unit-a2/vitest.json",
+      "path": "public-export/vitest.json",
+      "bytes": 13714,
+      "sha256": "a0b507069e0e255dd29d6038f0eff875c6826cde5ee1fde0cfda1995b4ca22b3"
+    },
+    {
+      "source": ".tmp/s03-biography-review-20260908/public-unit-a2/stdout.log",
+      "path": "public-export/stdout-transcript.json",
+      "bytes": 399,
+      "sha256": "294ad2e5ea9bb3878f9105dc856370033dd1bba3282ffdf4e9c5a0ba88f113db",
+      "lossless": true,
+      "originalSha256": "c86351b82dba6ac62ff5160e0393f75f164e7d003c56085c1a8257e19533b306"
+    },
+    {
+      "source": ".tmp/s03-biography-review-20260908/public-unit-a2/stderr.log",
+      "path": "public-export/stderr-transcript.json",
+      "bytes": 225,
+      "sha256": "d8f6b6d5e1115c687688ee1db93f29bb9eb60312acc0eca90ae62466245e0889",
+      "lossless": true,
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": ".tmp/s03-biography-review-20260908/joint-static/static-checks.json",
+      "path": "static/static-checks.json",
+      "bytes": 4835,
+      "sha256": "546698b8019be0b363acaaa5483729bf5202dc58320bfb1a116a3a730296ba7e"
+    },
+    {
+      "source": ".tmp/s03-biography-review-20260908/joint-static/typecheck.json",
+      "path": "static/typecheck.json",
+      "bytes": 348,
+      "sha256": "dc7226b336f7e48418b85e3464349f56e2de1728f0b4afa7794c888cc24f1def"
+    },
+    {
+      "source": ".tmp/s03-biography-review-20260908/joint-static/platform-boundaries.json",
+      "path": "static/platform-boundaries.json",
+      "bytes": 2009,
+      "sha256": "8274d8343f44989b152f15e53bb9f21b8a9b9758bfa40150acd9c685c1115eda"
+    },
+    {
+      "source": ".tmp/s03-biography-review-20260908/corpus-a1/result.json",
+      "path": "corpus/result.json",
+      "bytes": 3741,
+      "sha256": "aa4d6b5af15a9b808bcec72d7d8888be39a72b512f7110b4a9fa001245226bc5"
+    },
+    {
+      "source": ".tmp/s03-biography-review-20260908/corpus-a1/source-before.json",
+      "path": "corpus/source-before.json",
+      "bytes": 42588,
+      "sha256": "03423897b44fdd9d92c9de23b99489e13c98695eecbed0d6cbe3b2581bdd9acb"
+    },
+    {
+      "source": ".tmp/s03-biography-review-20260908/corpus-a1/source-after.json",
+      "path": "corpus/source-after.json",
+      "bytes": 42588,
+      "sha256": "03423897b44fdd9d92c9de23b99489e13c98695eecbed0d6cbe3b2581bdd9acb"
+    },
+    {
+      "source": ".tmp/s03-biography-review-20260908/corpus-a1/baseline-metafile.json",
+      "path": "corpus/baseline-metafile.json",
+      "bytes": 1686,
+      "sha256": "b268f6ff3375f0bae4e579deb3e8f4a6a39c1d4ca089a09d523f6e9a1735b03c"
+    },
+    {
+      "source": ".tmp/s03-biography-review-20260908/corpus-a1/current-metafile.json",
+      "path": "corpus/current-metafile.json",
+      "bytes": 99874,
+      "sha256": "ee8ec40b424a977fa9fbab5a50f2854fc3e9f7b528deb3e039c896df357753ef"
+    },
+    {
+      "source": ".tmp/s03-biography-review-20260908/source-state-verification.json",
+      "path": "source-state-verification.json",
+      "bytes": 1388,
+      "sha256": "e86fd8685032382585963baec4f0f5e64dd742d8a32b5e1e036e9caf679869b7"
+    },
+    {
+      "source": ".tmp/s03-biography-review-20260908/run-corpus-a1.mjs",
+      "path": "corpus/runner.mjs",
+      "bytes": 8928,
+      "sha256": "9b4950c9d93ec875c7dd67ee7e5b2888621e27dfd614f04379d8e3d642d6fdcc"
+    },
+    {
+      "source": ".tmp/s03-biography-review-20260908/run-public-unit.mjs",
+      "path": "public-export/runner.mjs",
+      "bytes": 2661,
+      "sha256": "47c3830ff43e74c7315e8d1c8598c62d08f995bc3a4dafa6323313808e046dba"
+    },
+    {
+      "source": ".tmp/s03-biography-review-20260908/run-runtime-unit-a2.mjs",
+      "path": "runtime/runner.mjs",
+      "bytes": 2756,
+      "sha256": "dacd275b996f10db50edf404dbda146908d49045b3e74a3af3ea36fc0adc3cf3"
+    },
+    {
+      "source": ".tmp/s03-biography-review-20260908/source-checkpoint.mjs",
+      "path": "source-checkpoint.mjs",
+      "bytes": 12639,
+      "sha256": "c1dcd1ecaa9911f9722bd290230cade639c8217ed9be610ed970130eaafbcbc1"
+    }
+  ],
+  "limitations": [
+    "Review metadata is a trusted editorial attestation; hashes prove revision binding, not reviewer authentication or fact verification.",
+    "No complete English biography/content coverage, owner correction UI, nearly10k capacity, edition-specific cover mapping, device or release acceptance."
+  ],
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false,
+  "stateVerification": {
+    "evidence": "source-state-verification.json",
+    "passed": true,
+    "releaseReady": false
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "runId": "s03-biography-review-native-smoke-20260908-a1",
+  "startingHead": "5b9aa7bf76e829428ff34db0a2965fdbfb1a7564",
+  "sourcePaths": [
+    "src",
+    "native.html",
+    "vite.native.config.ts",
+    "vite.config.ts",
+    "tsconfig.json",
+    "package.json",
+    "package-lock.json",
+    "capacitor.config.json",
+    "scripts/mobile/build-native.mjs",
+    "scripts/mobile/native-base-assets.json",
+    "scripts/mobile/pwa-artifact.mjs"
+  ],
+  "sourceInputsSha256": "dea3876d9feb40027815206f14073c8af87ee3b13cacf2bd9b7a80ba0a624196",
+  "inputSnapshotConvention": "Exact build-native.mjs input selection; this runner does not invoke that builder",
+  "helper": {
+    "path": ".tmp/s03-biography-review-native-smoke-20260908-a1/run.mjs",
+    "sha256": "546f599575c982b7663f05a82db0acf6167a71e5544d03a243d21a6f8d2269bf"
+  },
+  "dependency": {
+    "path": "node_modules/@noble/hashes/package.json",
+    "sha256": "7c4657c5e616c22cefa2691cc30670824a639dc71d97bf83925be2d239dc60e3",
+    "declared": "1.8.0",
+    "installed": "1.8.0"
+  },
+  "headMayAdvanceForRootCommit": true,
+  "requiredSourceAndTestBytesUnchanged": true,
+  "kind": "canonical-native-app-source-in-Chrome",
+  "productionArtifactBuilds": 0,
+  "actualInstalledRuntime": false
+}

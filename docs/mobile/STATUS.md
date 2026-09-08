@@ -1,5 +1,22 @@
 # V12 status — 2026-09-08
 
+<!-- s03-biography-review:begin -->
+Current work: exact editorial acceptance and stale propagation for biographies.
+Generated EN stays draft; both human and machine translations require a supplied
+human review bound to exact source/target revisions and an eligible source.
+CMS edits invalidate acceptance; generated data preserves existing correction
+work. The public exporter retains original and post-edit provenance.
+138 focused tests plus one shared TypeScript/platform-boundary execution passed.
+One actual RU/EN writer/globe source-browser case passed with simulated native
+plugins. Corpus export retains all1684 RU/20 authored EN profiles and preserves
+previously dropped provenance on1672 RU profiles; no prose changes.
+Fresh Android/PWA artifacts follow this source checkpoint. Prior17b6/7855 below
+now retain historical source identities. Evidence: evidence/S03/biography-review-20260908/result.json.
+No real translation approval was created. Full English coverage, visual owner
+corrections, nearly10k capacity, edition-specific covers and all open stage/device
+release gates remain incomplete; first-open is S03, full S38 is not started.
+<!-- s03-biography-review:end -->
+
 <!-- s07-appearance-quality:begin -->
 Current source 96690a486cfd39519481b2e9274adfca9602114c: rich graphics default and edition-derived
 application appearance. Nine palettes,12 units, shared static checks and one

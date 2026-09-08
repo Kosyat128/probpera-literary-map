@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-09-08T10:13:49.596Z",
+  "baselineCommit": "5b9aa7bf76e829428ff34db0a2965fdbfb1a7564",
+  "baselineNormalizer": {
+    "path": "scripts/lib/writer-biography-public-profile.mjs",
+    "gitSourceSha256": "456831b78e7781daa9aa656284a21cd446230122601a6a4b71052646408ce049",
+    "dependencies": "Current shared dependencies captured by source snapshots; historical normalizer source is passed unmodified through esbuild stdin."
+  },
+  "scope": "One canonical writer corpus exporter regression comparison; not editorial factual verification, translation acceptance, release approval, or an application build.",
+  "countryCount": 200,
+  "writerCount": 1684,
+  "generatedOverlayCount": 0,
+  "generatedOverlayRecordCount": 0,
+  "counts": {
+    "input": {
+      "ru": 1684,
+      "en": 20
+    },
+    "runtimePublished": {
+      "ru": 1684,
+      "en": 20
+    },
+    "baselineNormalized": {
+      "ru": 1684,
+      "en": 20
+    },
+    "currentNormalized": {
+      "ru": 1684,
+      "en": 20
+    }
+  },
+  "methodStatusCounts": {
+    "input": {
+      "ru:editorial-original:verified": 1684,
+      "en:editorial-original:reviewed": 20
+    },
+    "baselineNormalized": {
+      "ru:editorial-original:verified": 1684,
+      "en:editorial-original:reviewed": 20
+    },
+    "currentNormalized": {
+      "ru:editorial-original:verified": 1684,
+      "en:editorial-original:reviewed": 20
+    }
+  },
+  "suppliedTranslatedApprovalCount": 0,
+  "added": [],
+  "removed": [],
+  "errors": [],
+  "normalizedChanges": {
+    "total": 1672,
+    "provenanceOnly": 1672,
+    "other": [],
+    "examples": [
+      {
+        "localeId": "afghanistan:rabia_balkhi:ru",
+        "reason": "previously-discarded-optional-provenance-retained",
+        "retainedProvenanceKeys": [
+          "sourceHash",
+          "generatedAt"
+        ]
+      },
+      {
+        "localeId": "afghanistan:mahmud_tarzi:ru",
+        "reason": "previously-discarded-optional-provenance-retained",
+        "retainedProvenanceKeys": [
+          "sourceHash",
+          "generatedAt"
+        ]
+      },
+      {
+        "localeId": "afghanistan:khalilullah_khalili:ru",
+        "reason": "previously-discarded-optional-provenance-retained",
+        "retainedProvenanceKeys": [
+          "sourceHash",
+          "generatedAt"
+        ]
+      },
+      {
+        "localeId": "afghanistan:bahauddin_majrooh:ru",
+        "reason": "previously-discarded-optional-provenance-retained",
+        "retainedProvenanceKeys": [
+          "sourceHash",
+          "generatedAt"
+        ]
+      },
+      {
+        "localeId": "afghanistan:atiq_rahimi:ru",
+        "reason": "previously-discarded-optional-provenance-retained",
+        "retainedProvenanceKeys": [
+          "sourceHash",
+          "generatedAt"
+        ]
+      },
+      {
+        "localeId": "afghanistan:khaled_hosseini:ru",
+        "reason": "previously-discarded-optional-provenance-retained",
+        "retainedProvenanceKeys": [
+          "sourceHash",
+          "generatedAt"
+        ]
+      },
+      {
+        "localeId": "albania:jeronim_de_rada:ru",
+        "reason": "previously-discarded-optional-provenance-retained",
+        "retainedProvenanceKeys": [
+          "sourceHash",
+          "generatedAt"
+        ]
+      },
+      {
+        "localeId": "albania:naim_frasheri:ru",
+        "reason": "previously-discarded-optional-provenance-retained",
+        "retainedProvenanceKeys": [
+          "sourceHash",
+          "generatedAt"
+        ]
+      }
+    ]
+  },
+  "proseChanged": [],
+  "inputMutationIds": [],
+  "missingFromBoth": {
+    "ru": 0,
+    "en": 0
+  },
+  "sourceInputCount": 263,
+  "inputsUnchanged": true,
+  "changedInputs": [],
+  "finishedAt": "2026-09-08T10:13:57.636Z",
+  "success": true
+}

@@ -1,0 +1,7 @@
+{
+  "source": ".tmp/s03-biography-review-native-smoke-20260908-a1/reports/browser-run.log",
+  "originalBytes": 360,
+  "originalSha256": "197534696d869bd7b3aa5629d0f7392789220e1123572f3e2d8eb7d50c5e2b9a",
+  "reconstruction": "UTF-8 encode text exactly without newline normalization",
+  "text": "\nRunning 1 test using 1 worker\n\n(node:30248) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n  ok 1 tests\\host\\native-planet.spec.mjs:358:1 › native first screen is the actual immersive globe and RU/EN retains writer and scene (16.7s)\n\n  1 passed (25.3s)\n"
+}

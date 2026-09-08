@@ -1,4 +1,9 @@
 import { describe, expect, it } from "vitest";
+import {
+  WRITER_BIOGRAPHY_REVIEW_HASH_CONTRACT,
+  writerBiographyReviewSourceHash,
+  writerBiographyReviewTargetHash,
+} from "../../src/data/biographyEditorialReview.ts";
 
 import {
   normalizePublicWriterBiographyTranslations,
@@ -6,6 +11,7 @@ import {
 } from "./writer-biography-public-profile.mjs";
 
 const writerName = "Лев Николаевич Толстой";
+const writerId = "synthetic-test-writer";
 
 const ruText =
   "Лев Толстой (1828-1910) - русский писатель и мыслитель, автор романов «Война и мир» и «Анна Каренина». Его проза оказала значительное влияние на мировую литературу и развитие реалистического романа.";
@@ -36,14 +42,14 @@ function russianProfile(overrides = {}) {
 }
 
 function englishProfile(overrides = {}, russian = russianProfile()) {
-  return {
+  const profile = {
     locale: "en",
     text: enText,
     sourceLanguage: "Russian",
     status: "reviewed",
     method: "machine-translation",
     reviewedAt: "2026-08-31",
-    reviewer: "Cloudflare Workers AI reviewer",
+    reviewer: "Synthetic test reviewer - not a production approval",
     translatedFromLocale: "ru",
     sourceTextRights: "project-original",
     sources: [source],
@@ -55,10 +61,26 @@ function englishProfile(overrides = {}, russian = russianProfile()) {
     },
     ...overrides,
   };
+  if (!Object.hasOwn(overrides, "editorialReview")) {
+    profile.editorialReview = {
+      schemaVersion: 1,
+      hashContract: WRITER_BIOGRAPHY_REVIEW_HASH_CONTRACT,
+      decision: "approved",
+      reviewerType: "human",
+      reviewer: profile.reviewer,
+      reviewedAt: profile.reviewedAt,
+      evidenceRef: "editorial-review:synthetic-test-only",
+      sourceHash: writerBiographyReviewSourceHash({
+        id: writerId, name: writerName, biographyTranslations: { ru: russian },
+      }, "ru"),
+      targetHash: writerBiographyReviewTargetHash(profile),
+    };
+  }
+  return profile;
 }
 
 function normalize(value) {
-  return normalizePublicWriterBiographyTranslations(value, { writerName });
+  return normalizePublicWriterBiographyTranslations(value, { writerName, writerId });
 }
 
 describe("public writer biography profile normalization", () => {
@@ -67,7 +89,7 @@ describe("public writer biography profile normalization", () => {
       "Пэк Нам Рён (род. 1949) - северокорейский писатель, получивший известность благодаря психологической прозе. Его роман «Друг» посвящён семейному конфликту и работе судьи, который рассматривает дело о разводе.";
     expect(normalize({ ru: russianProfile({ text }) }).ru?.text).toBe(text);
   });
-  it("publishes a complete verified RU and reviewed two-pass EN pair", () => {
+  it("publishes RU and a machine draft only after an independently supplied exact human review", () => {
     const result = normalize({
       ru: russianProfile(),
       en: englishProfile(),
@@ -82,6 +104,7 @@ describe("public writer biography profile normalization", () => {
           russian: russianProfile(),
         }),
       },
+      editorialReview: englishProfile().editorialReview,
     });
   });
 
@@ -206,5 +229,58 @@ describe("public writer biography profile normalization", () => {
       en: englishProfile({ text: enText.replace("1828", "1829") }),
     });
     expect(result).toEqual({ ru: expect.any(Object) });
+  });
+
+  it.each(["human-translation", "machine-translation"])(
+    "requires independent acceptance even when %s claims reviewed", (method) => {
+      const candidate = englishProfile({ method, editorialReview: undefined });
+      expect(normalize({ ru: russianProfile(), en: candidate })).toEqual({ ru: expect.any(Object) });
+    }
+  );
+
+  it("does not treat AI post-edit provenance as acceptance", () => {
+    const candidate = englishProfile({ editorialReview: undefined });
+    candidate.translationMeta.editorialPostEditedAt = "2026-08-31T16:14:09.805Z";
+    candidate.translationMeta.editorialPostEditor = "Codex bilingual editorial QA";
+    candidate.translationMeta.editorialPostEditReasonCodes = ["english-style-polish"];
+    expect(normalize({ ru: russianProfile(), en: candidate })).toEqual({ ru: expect.any(Object) });
+  });
+
+  it("publishes an exactly accepted human translation and rejects its later source/target edits", () => {
+    const en = englishProfile({ method: "human-translation", translationMeta: undefined });
+    expect(normalize({ ru: russianProfile(), en }).en?.text).toBe(enText);
+    const changedSource = russianProfile({ text: ruText.replace("мыслитель", "публицист") });
+    expect(normalize({ ru: changedSource, en }).en).toBeUndefined();
+    expect(normalize({ ru: russianProfile(), en: { ...en, text: enText.replace("thinker", "essayist") } }).en).toBeUndefined();
+  });
+
+  it("binds acceptance to the canonical writer identity and fails closed without it", () => {
+    const value = { ru: russianProfile(), en: englishProfile() };
+    for (const context of [{ writerName }, { writerName, writerId: "another-writer" }, { writerName: "Changed name", writerId }]) {
+      expect(normalizePublicWriterBiographyTranslations(value, context).en).toBeUndefined();
+    }
+  });
+
+  it("honors withdrawal and refuses to silently normalize approved text", () => {
+    const en = englishProfile();
+    expect(normalize({ ru: russianProfile(), en: { ...en, editorialReview: { ...en.editorialReview, decision: "withdrawn" } } }).en).toBeUndefined();
+    const padded = englishProfile({ text: ` ${enText} ` });
+    expect(normalize({ ru: russianProfile(), en: padded }).en).toBeUndefined();
+  });
+
+  it("preserves optional original and human-translation provenance covered by acceptance", () => {
+    const ru = russianProfile({ translationMeta: { sourceHash: "b".repeat(64), generatedAt: "2026-08-31" } });
+    const targetProvenance = {
+      editorialPostEditedAt: "2026-08-31T16:14:09.805Z",
+      editorialPostEditor: "Synthetic test editor",
+      editorialPostEditReasonCodes: ["english-style-polish"],
+    };
+    const en = englishProfile({ method: "human-translation", translationMeta: targetProvenance }, ru);
+    const result = normalize({ ru, en });
+    expect(result.ru?.translationMeta).toEqual(ru.translationMeta);
+    expect(result.en?.translationMeta).toEqual(targetProvenance);
+    expect(result.en?.editorialReview).toEqual(en.editorialReview);
+    const machineResult = normalize({ ru, en: englishProfile({}, ru) });
+    expect(machineResult.en?.text).toBe(enText);
   });
 });

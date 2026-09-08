@@ -1,0 +1,24 @@
+import { spawn } from 'node:child_process';
+import { createHash } from 'node:crypto';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+
+const output = '.tmp/s03-biography-review-20260908/public-unit-a2';
+await mkdir(output);
+const inputs = ['scripts/lib/writer-biography-public-profile.mjs', 'scripts/lib/writer-biography-public-profile.test.mjs', 'scripts/lib/writer-biography-public-overrides.mjs', 'scripts/lib/writer-biography-public-overrides.test.mjs', 'scripts/export-premium-translations.mjs', 'scripts/export-premium-translations.source.test.mjs', 'src/data/biographyEditorialReview.ts', 'package.json', 'package-lock.json', 'vitest.config.ts'];
+const sha = bytes => createHash('sha256').update(bytes).digest('hex');
+const snapshot = () => Promise.all(inputs.map(async path => ({ path, sha256: sha(await readFile(path)) })));
+const before = await snapshot(), startedAt = new Date().toISOString(), start = Date.now();
+const args = ['node_modules/vitest/vitest.mjs', 'run', 'scripts/lib/writer-biography-public-profile.test.mjs', 'scripts/lib/writer-biography-public-overrides.test.mjs', 'scripts/export-premium-translations.source.test.mjs', '--reporter=json', `--outputFile=${output}/vitest.json`];
+const child = spawn(process.execPath, args, { windowsHide: true, stdio: ['ignore', 'pipe', 'pipe'] });
+const out = [], err = [];
+child.stdout.on('data', chunk => out.push(chunk));
+child.stderr.on('data', chunk => err.push(chunk));
+const exitCode = await new Promise((resolve, reject) => { child.on('error', reject); child.on('close', resolve); });
+const after = await snapshot();
+await writeFile(`${output}/stdout.log`, Buffer.concat(out), { flag: 'wx' });
+await writeFile(`${output}/stderr.log`, Buffer.concat(err), { flag: 'wx' });
+const report = await readFile(`${output}/vitest.json`, 'utf8').then(JSON.parse).catch(() => null);
+const result = { command: [process.execPath, ...args], startedAt, durationMs: Date.now() - start, exitCode, before, after, unchanged: JSON.stringify(before) === JSON.stringify(after), tests: report?.numTotalTests ?? null, passed: report?.numPassedTests ?? null, failed: report?.numFailedTests ?? null, failures: report?.testResults.flatMap(file => file.assertionResults.filter(test => test.status !== 'passed').map(test => ({ file: file.name, name: test.fullName, status: test.status, failureMessages: test.failureMessages }))) ?? [], reportProduced: Boolean(report) };
+await writeFile(`${output}/result.json`, JSON.stringify(result, null, 2) + '\n', { flag: 'wx' });
+console.log(JSON.stringify({ ...result, before: undefined, after: undefined }));
+if (exitCode || !result.unchanged) process.exitCode = 1;

@@ -1,0 +1,7 @@
+{
+  "source": ".tmp/s03-biography-review-native-smoke-20260908-a1/reports/browser-run.stderr.log",
+  "originalBytes": 164,
+  "originalSha256": "90e8290d044a6d20c6666fdcef4c287e1b82f64b63eb8f77ee08c47dad8e15b0",
+  "reconstruction": "UTF-8 encode text exactly without newline normalization",
+  "text": "(node:30248) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+}

@@ -35,7 +35,7 @@ describe("premium translation public export", () => {
       'await fs.readFile(editorialCatalogPath, "utf8")'
     );
     expect(source).toContain(
-      "normalizePublicWriterBiographyTranslations(value, { writerName })"
+      "normalizePublicWriterBiographyTranslations(value, { writerName, writerId })"
     );
     expect(source.indexOf("effectiveFields.fullName")).toBeLessThan(
       source.indexOf("effectiveFields.name")

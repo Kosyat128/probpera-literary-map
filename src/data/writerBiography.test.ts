@@ -6,10 +6,15 @@ import type {
 } from "./countries/types";
 import {
   countBiographySentences,
+  reconcileWriterBiographyReviews,
   selectWriterBiography,
   writerBiographyQualityIssues,
   writerBiographyText,
 } from "./writerBiography";
+import {
+  writerBiographyReviewSourceHash,
+  writerBiographyReviewTargetHash,
+} from "./biographyEditorialReview";
 
 const source = {
   provider: "Official literary archive",
@@ -42,7 +47,164 @@ function writer(
   };
 }
 
+/** Synthetic review only: no fixture is evidence of real catalog approval. */
+function syntheticApprovedTranslation(
+  method: "machine-translation" | "human-translation" = "machine-translation"
+): WriterProfile {
+  const english: WriterBiographyTranslationProfile = {
+    locale: "en",
+    text:
+      "This synthetic writer explored moral choices and social change in a series of fictional stories created for this test fixture. The example text exists only to exercise the publication contract and contains no real catalog approval.",
+    sourceLanguage: "ru",
+    status: "reviewed",
+    method,
+    reviewedAt: "2026-09-08",
+    reviewer: "Synthetic fixture human reviewer",
+    translatedFromLocale: "ru",
+    sourceTextRights: "project-original",
+    sources: structuredClone(russianBiography.sources),
+    translationMeta: method === "machine-translation" ? {
+      model: "synthetic-translator-model",
+      reviewerModel: "synthetic-qa-model",
+      sourceHash: "a".repeat(64),
+      generatedAt: "2026-09-07T12:00:00.000Z",
+    } : undefined,
+  };
+  const result: WriterProfile = {
+    id: "synthetic-approved-writer",
+    name: "Synthetic writer",
+    biographyTranslations: { ru: structuredClone(russianBiography), en: english },
+  };
+  english.editorialReview = {
+    schemaVersion: 1,
+    hashContract: "writer-biography-review-v1",
+    decision: "approved",
+    reviewerType: "human",
+    reviewer: "Synthetic fixture human reviewer",
+    reviewedAt: "2026-09-08",
+    evidenceRef: "https://example.org/test-only/biography-review",
+    sourceHash: writerBiographyReviewSourceHash(result, "ru")!,
+    targetHash: writerBiographyReviewTargetHash(english),
+  };
+  return result;
+}
+
 describe("writer biography publication gate", () => {
+  it.each(["machine-translation", "human-translation"] as const)(
+    "accepts a synthetic explicitly approved %s with exact source and target bindings",
+    (method) => {
+      const candidate = syntheticApprovedTranslation(method);
+      expect(writerBiographyQualityIssues(candidate.biographyTranslations!.en, "en", candidate)).toEqual([]);
+      expect(selectWriterBiography(candidate, "en")).toBe(candidate.biographyTranslations!.en);
+      expect(reconcileWriterBiographyReviews(candidate)).toBe(candidate);
+    }
+  );
+
+  it.each(["machine-translation", "human-translation"] as const)(
+    "rejects %s without explicit editorial acceptance even with post-edit credits",
+    (method) => {
+      const candidate = syntheticApprovedTranslation(method);
+      delete candidate.biographyTranslations!.en!.editorialReview;
+      candidate.biographyTranslations!.en!.translationMeta = {
+        ...candidate.biographyTranslations!.en!.translationMeta,
+        editorialPostEditedAt: "2026-09-08T12:00:00.000Z",
+        editorialPostEditor: "Automated bilingual QA",
+        editorialPostEditReasonCodes: ["english-style-polish"],
+      };
+      expect(writerBiographyQualityIssues(candidate.biographyTranslations!.en, "en", candidate)).toContain("missing-review");
+      expect(selectWriterBiography(candidate, "en")).toBeNull();
+      const reconciled = reconcileWriterBiographyReviews(candidate);
+      expect(reconciled.biographyTranslations!.en!.status).toBe("draft");
+      expect(reconciled.biographyTranslations!.ru).toBe(candidate.biographyTranslations!.ru);
+      expect(candidate.biographyTranslations!.en!.status).toBe("reviewed");
+    }
+  );
+
+  it.each([
+    ["target text", "target-changed", (candidate: WriterProfile) => { candidate.biographyTranslations!.en!.text += " Changed."; }],
+    ["source text", "source-changed", (candidate: WriterProfile) => { candidate.biographyTranslations!.ru!.text += " Дополнение."; }],
+    ["writer name", "source-changed", (candidate: WriterProfile) => { candidate.name = "Changed synthetic name"; }],
+    ["source provenance", "source-changed", (candidate: WriterProfile) => { candidate.biographyTranslations!.ru!.sources[0]!.url = "https://example.org/changed-source"; }],
+    ["missing source", "missing-source", (candidate: WriterProfile) => { delete candidate.biographyTranslations!.ru; }],
+  ] as const)("marks a previously approved translation stale after changing %s", (_label, issue, mutate) => {
+    const candidate = syntheticApprovedTranslation();
+    mutate(candidate);
+    expect(writerBiographyQualityIssues(candidate.biographyTranslations!.en, "en", candidate)).toContain(issue);
+    expect(selectWriterBiography(candidate, "en")).toBeNull();
+    const reconciled = reconcileWriterBiographyReviews(candidate);
+    expect(reconciled.biographyTranslations!.en!.status).toBe("stale");
+    expect(reconcileWriterBiographyReviews(reconciled)).toBe(reconciled);
+    expect(candidate.biographyTranslations!.en!.status).toBe("reviewed");
+  });
+
+  it.each(["rejected", "withdrawn"] as const)("returns an approval marked %s to draft", (decision) => {
+    const candidate = syntheticApprovedTranslation();
+    candidate.biographyTranslations!.en!.editorialReview!.decision = decision;
+    expect(selectWriterBiography(candidate, "en")).toBeNull();
+    expect(reconcileWriterBiographyReviews(candidate).biographyTranslations!.en!.status).toBe("draft");
+  });
+
+  it.each([
+    ["draft", (source: WriterBiographyTranslationProfile) => { source.status = "draft"; }],
+    ["stale", (source: WriterBiographyTranslationProfile) => { source.status = "stale"; }],
+    ["missing source reviewer", (source: WriterBiographyTranslationProfile) => { delete source.reviewer; }],
+    ["invalid source length", (source: WriterBiographyTranslationProfile) => { source.text = "Короткий текст."; }],
+    ["missing factual provenance", (source: WriterBiographyTranslationProfile) => { source.sources[0]!.usage = "structured-data"; }],
+    ["unlicensed source copy", (source: WriterBiographyTranslationProfile) => { source.method = "licensed-source"; }],
+  ] as const)("rejects an exact synthetic review over an ineligible source: %s", (_label, mutate) => {
+    const candidate = syntheticApprovedTranslation("human-translation");
+    const english = candidate.biographyTranslations!.en!;
+    mutate(candidate.biographyTranslations!.ru!);
+    // This approval binds the invalid source itself, so a hash mismatch alone
+    // cannot explain the rejection. No real approval is represented here.
+    english.editorialReview!.sourceHash = writerBiographyReviewSourceHash(candidate, "ru")!;
+    const issues = writerBiographyQualityIssues(english, "en", candidate);
+    expect(issues).toContain("source-not-publishable");
+    expect(issues).not.toContain("source-changed");
+    expect(issues).not.toContain("target-changed");
+    expect(selectWriterBiography(candidate, "en")).toBeNull();
+    expect(reconcileWriterBiographyReviews(candidate).biographyTranslations!.en!.status).toBe("stale");
+    expect(candidate.biographyTranslations!.en!.status).toBe("reviewed");
+  });
+
+  it("rejects cyclic RU/EN translation sources without recursive publication", () => {
+    const candidate = syntheticApprovedTranslation("human-translation");
+    const russian = candidate.biographyTranslations!.ru!;
+    russian.method = "human-translation";
+    russian.translatedFromLocale = "en";
+    russian.sourceTextRights = "public-domain";
+    candidate.biographyTranslations!.en!.sourceTextRights = "public-domain";
+    expect(writerBiographyQualityIssues(candidate.biographyTranslations!.en, "en", candidate)).toContain("source-not-publishable");
+    expect(selectWriterBiography(candidate, "en")).toBeNull();
+    expect(selectWriterBiography(candidate, "ru")).toBeNull();
+    const reconciled = reconcileWriterBiographyReviews(candidate);
+    expect(reconciled.biographyTranslations!.en!.status).toBe("stale");
+    expect(reconciled.biographyTranslations!.ru!.status).toBe("stale");
+  });
+
+  it("returns malformed approval to draft without inventing a replacement review", () => {
+    const candidate = syntheticApprovedTranslation();
+    candidate.biographyTranslations!.en!.editorialReview!.reviewedAt = "2026-02-30";
+    expect(writerBiographyQualityIssues(candidate.biographyTranslations!.en, "en", candidate)).toContain("invalid-review");
+    const reconciled = reconcileWriterBiographyReviews(candidate);
+    expect(reconciled.biographyTranslations!.en!.status).toBe("draft");
+    expect(reconciled.biographyTranslations!.en!.editorialReview).toBe(candidate.biographyTranslations!.en!.editorialReview);
+  });
+
+  it.each(["draft", "stale"] as const)("never automatically promotes a %s with otherwise valid synthetic review", (status) => {
+    const candidate = syntheticApprovedTranslation();
+    candidate.biographyTranslations!.en!.status = status;
+    expect(reconcileWriterBiographyReviews(candidate)).toBe(candidate);
+    expect(selectWriterBiography(candidate, "en")).toBeNull();
+  });
+
+  it("preserves authored and legacy-only writer references", () => {
+    const authored = writer();
+    expect(reconcileWriterBiographyReviews(authored)).toBe(authored);
+    const legacy: WriterProfile = { id: "legacy", bio: "Legacy text." };
+    expect(reconcileWriterBiographyReviews(legacy)).toBe(legacy);
+  });
+
   it("показывает редакционный русский оригинал с provenance", () => {
     expect(countBiographySentences(russianBiography.text)).toBe(2);
     expect(writerBiographyQualityIssues(russianBiography, "ru", writer())).toEqual(

@@ -1,0 +1,105 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "scripts/lib/writer-biography-public-profile.test.mjs",
+    "scripts/lib/writer-biography-public-overrides.test.mjs",
+    "scripts/export-premium-translations.source.test.mjs",
+    "--reporter=json",
+    "--outputFile=.tmp/s03-biography-review-20260908/public-unit-a2/vitest.json"
+  ],
+  "startedAt": "2026-09-08T10:07:58.590Z",
+  "durationMs": 5134,
+  "exitCode": 0,
+  "before": [
+    {
+      "path": "scripts/lib/writer-biography-public-profile.mjs",
+      "sha256": "a419109c90ff34e43628db8543a60683d6fa47a247006c6a766614237b775e23"
+    },
+    {
+      "path": "scripts/lib/writer-biography-public-profile.test.mjs",
+      "sha256": "536cc68ec1873a4cd59c148c86225218e69ae74e04c77c61493543a3ad715f47"
+    },
+    {
+      "path": "scripts/lib/writer-biography-public-overrides.mjs",
+      "sha256": "291a54dddd8b63b7905c89fcc7561e5c43ad34f9f68b1418b6f6b2eaff56a60d"
+    },
+    {
+      "path": "scripts/lib/writer-biography-public-overrides.test.mjs",
+      "sha256": "e346a81bf58bbe117835c9252af904ef5acbae0b01e91f1e789e49e12b8817d9"
+    },
+    {
+      "path": "scripts/export-premium-translations.mjs",
+      "sha256": "51c9cf03d40ee837782b969f584ebc44d52caacfacff6fbf1c4a6a75a02e5017"
+    },
+    {
+      "path": "scripts/export-premium-translations.source.test.mjs",
+      "sha256": "08ab3234424b5d62c474fb972f2e5f266461ca29e8375f256ecee1070d121618"
+    },
+    {
+      "path": "src/data/biographyEditorialReview.ts",
+      "sha256": "727f157477a4969412e472b86aa51f7cc1c807ff6f5ea3d5e5e48c81bc3b7c8d"
+    },
+    {
+      "path": "package.json",
+      "sha256": "90b392c205754f838b8bc7c4475bd475936be1078561bb218c437d151177869f"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+    },
+    {
+      "path": "vitest.config.ts",
+      "sha256": "5c1e90985e77b35599e5bdaf77c74a1166949ec9c4f45d1c5f926c3f53bef90e"
+    }
+  ],
+  "after": [
+    {
+      "path": "scripts/lib/writer-biography-public-profile.mjs",
+      "sha256": "a419109c90ff34e43628db8543a60683d6fa47a247006c6a766614237b775e23"
+    },
+    {
+      "path": "scripts/lib/writer-biography-public-profile.test.mjs",
+      "sha256": "536cc68ec1873a4cd59c148c86225218e69ae74e04c77c61493543a3ad715f47"
+    },
+    {
+      "path": "scripts/lib/writer-biography-public-overrides.mjs",
+      "sha256": "291a54dddd8b63b7905c89fcc7561e5c43ad34f9f68b1418b6f6b2eaff56a60d"
+    },
+    {
+      "path": "scripts/lib/writer-biography-public-overrides.test.mjs",
+      "sha256": "e346a81bf58bbe117835c9252af904ef5acbae0b01e91f1e789e49e12b8817d9"
+    },
+    {
+      "path": "scripts/export-premium-translations.mjs",
+      "sha256": "51c9cf03d40ee837782b969f584ebc44d52caacfacff6fbf1c4a6a75a02e5017"
+    },
+    {
+      "path": "scripts/export-premium-translations.source.test.mjs",
+      "sha256": "08ab3234424b5d62c474fb972f2e5f266461ca29e8375f256ecee1070d121618"
+    },
+    {
+      "path": "src/data/biographyEditorialReview.ts",
+      "sha256": "727f157477a4969412e472b86aa51f7cc1c807ff6f5ea3d5e5e48c81bc3b7c8d"
+    },
+    {
+      "path": "package.json",
+      "sha256": "90b392c205754f838b8bc7c4475bd475936be1078561bb218c437d151177869f"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+    },
+    {
+      "path": "vitest.config.ts",
+      "sha256": "5c1e90985e77b35599e5bdaf77c74a1166949ec9c4f45d1c5f926c3f53bef90e"
+    }
+  ],
+  "unchanged": true,
+  "tests": 36,
+  "passed": 36,
+  "failed": 0,
+  "failures": [],
+  "reportProduced": true
+}

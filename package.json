@@ -166,6 +166,7 @@
     "@capacitor/ios": "8.5.1",
     "@capacitor/network": "8.0.1",
     "@capacitor/preferences": "8.0.1",
+    "@noble/hashes": "1.8.0",
     "@react-three/drei": "9.122.0",
     "@react-three/fiber": "8.18.0",
     "@supabase/supabase-js": "2.112.3",

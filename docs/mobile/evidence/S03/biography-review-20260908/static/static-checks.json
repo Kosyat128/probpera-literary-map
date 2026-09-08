@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "scope": "One shared execution for biography editorial review and CMS staleness integration; no historical suite replay.",
+  "before": [
+    {
+      "path": "package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+    },
+    {
+      "path": "package.json",
+      "sha256": "90b392c205754f838b8bc7c4475bd475936be1078561bb218c437d151177869f"
+    },
+    {
+      "path": "scripts/mobile/platform-boundaries.mjs",
+      "sha256": "7267e9a0283a2346e3122d4b47ce8b88aa693bf079e0e330712f8f6d2ff9cc75"
+    },
+    {
+      "path": "src/data/biographyEditorialReview.test.ts",
+      "sha256": "943fd41faf81dfb3ae5b12154c735e680cfe75a18e9d19caa54bf8a100aa141d"
+    },
+    {
+      "path": "src/data/biographyEditorialReview.ts",
+      "sha256": "727f157477a4969412e472b86aa51f7cc1c807ff6f5ea3d5e5e48c81bc3b7c8d"
+    },
+    {
+      "path": "src/data/cms/editorialOverrides.test.ts",
+      "sha256": "e883da4d9a4490e33abc4186c6fae05c32ccb3f9a5f3f97ae6e996724dc1eb4a"
+    },
+    {
+      "path": "src/data/cms/editorialOverrides.ts",
+      "sha256": "b328dfb3b5b1023782bdd625ed33312ea55bbc763543eb9d2dfacb1c1115a882"
+    },
+    {
+      "path": "src/data/countries/types.ts",
+      "sha256": "1194c21a752e5bfd9b33da43c2950583b5a1e188b1051f63e97c9b28ba724012"
+    },
+    {
+      "path": "src/data/countries/writerBiographyEnglishTranslations.test.ts",
+      "sha256": "8e2df420c2072e08c991eb703eb8120005c7aebbd448926977ac7dbc4a54eedb"
+    },
+    {
+      "path": "src/data/countries/writerBiographyEnglishTranslations.ts",
+      "sha256": "c0aa56d541af7a1f1351a977d2dc2668ad4d67b7076e3c732613369590a3a26f"
+    },
+    {
+      "path": "src/data/writerBiography.test.ts",
+      "sha256": "026fee46ebf617536f3f6ee1db2c5122599764e6ad15eb144c10afe2fe051d5c"
+    },
+    {
+      "path": "src/data/writerBiography.ts",
+      "sha256": "4d0097d6d0c450798d720076457ab901a5e2ee48b2ac3526f5d0b548ccd12086"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "8d51a8c9266fe83bf17c076b51672753b3750a17520cd0d2c28a90cb8b21e0d6"
+    }
+  ],
+  "after": [
+    {
+      "path": "package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+    },
+    {
+      "path": "package.json",
+      "sha256": "90b392c205754f838b8bc7c4475bd475936be1078561bb218c437d151177869f"
+    },
+    {
+      "path": "scripts/mobile/platform-boundaries.mjs",
+      "sha256": "7267e9a0283a2346e3122d4b47ce8b88aa693bf079e0e330712f8f6d2ff9cc75"
+    },
+    {
+      "path": "src/data/biographyEditorialReview.test.ts",
+      "sha256": "943fd41faf81dfb3ae5b12154c735e680cfe75a18e9d19caa54bf8a100aa141d"
+    },
+    {
+      "path": "src/data/biographyEditorialReview.ts",
+      "sha256": "727f157477a4969412e472b86aa51f7cc1c807ff6f5ea3d5e5e48c81bc3b7c8d"
+    },
+    {
+      "path": "src/data/cms/editorialOverrides.test.ts",
+      "sha256": "e883da4d9a4490e33abc4186c6fae05c32ccb3f9a5f3f97ae6e996724dc1eb4a"
+    },
+    {
+      "path": "src/data/cms/editorialOverrides.ts",
+      "sha256": "b328dfb3b5b1023782bdd625ed33312ea55bbc763543eb9d2dfacb1c1115a882"
+    },
+    {
+      "path": "src/data/countries/types.ts",
+      "sha256": "1194c21a752e5bfd9b33da43c2950583b5a1e188b1051f63e97c9b28ba724012"
+    },
+    {
+      "path": "src/data/countries/writerBiographyEnglishTranslations.test.ts",
+      "sha256": "8e2df420c2072e08c991eb703eb8120005c7aebbd448926977ac7dbc4a54eedb"
+    },
+    {
+      "path": "src/data/countries/writerBiographyEnglishTranslations.ts",
+      "sha256": "c0aa56d541af7a1f1351a977d2dc2668ad4d67b7076e3c732613369590a3a26f"
+    },
+    {
+      "path": "src/data/writerBiography.test.ts",
+      "sha256": "026fee46ebf617536f3f6ee1db2c5122599764e6ad15eb144c10afe2fe051d5c"
+    },
+    {
+      "path": "src/data/writerBiography.ts",
+      "sha256": "4d0097d6d0c450798d720076457ab901a5e2ee48b2ac3526f5d0b548ccd12086"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "8d51a8c9266fe83bf17c076b51672753b3750a17520cd0d2c28a90cb8b21e0d6"
+    }
+  ],
+  "unchanged": true,
+  "results": [
+    {
+      "name": "typecheck",
+      "command": [
+        "node",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit"
+      ],
+      "startedAt": "2026-09-08T10:09:11.615Z",
+      "durationMs": 78284,
+      "exitCode": 0,
+      "report": "typecheck.json",
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "platform-boundaries",
+      "command": [
+        "node",
+        "scripts/mobile/platform-boundaries.mjs"
+      ],
+      "startedAt": "2026-09-08T10:09:11.637Z",
+      "durationMs": 14179,
+      "exitCode": 0,
+      "report": "platform-boundaries.json",
+      "logSha256": "019ccf5b0d78c3a93deb5ded0983909e57e5e6432e7e1971433118478bdb5a63"
+    }
+  ],
+  "stageAccepted": false,
+  "releaseReady": false
+}

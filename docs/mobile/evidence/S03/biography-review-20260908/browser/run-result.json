@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "runId": "s03-biography-review-native-smoke-20260908-a1",
+  "title": "native first screen is the actual immersive globe and RU/EN retains writer and scene",
+  "startingHead": "5b9aa7bf76e829428ff34db0a2965fdbfb1a7564",
+  "endingHead": "5b9aa7bf76e829428ff34db0a2965fdbfb1a7564",
+  "sourceInputsSha256": "dea3876d9feb40027815206f14073c8af87ee3b13cacf2bd9b7a80ba0a624196",
+  "sourceUnchanged": true,
+  "browserExitCode": 0,
+  "statistics": {
+    "startTime": "2026-09-08T10:13:05.943Z",
+    "duration": 25347.9,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "failure": null,
+  "pass": true,
+  "productionArtifactBuilds": 0,
+  "actualInstalledRuntime": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

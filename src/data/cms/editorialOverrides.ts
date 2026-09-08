@@ -1,4 +1,5 @@
 import type { Country, WorkProfile, WriterProfile } from "../countries/types";
+import { reconcileWriterBiographyReviews } from "../writerBiography";
 import { cmsCountryProfileOverrides as generatedCountryProfiles } from "./countryProfiles.generated";
 import { cmsLiteraryWorksByLegacyId as generatedLiteraryWorks } from "./literaryWorks.generated";
 import { cmsWriterProfileOverrides as generatedWriterProfiles } from "./writerProfiles.generated";
@@ -131,13 +132,13 @@ export function applyCmsWriterProfileOverrides(
     writers: country.writers.map((writer) => {
       const override =
         overrides[cmsWriterKey(country.id, writer.id)];
-      if (!override) return writer;
+      if (!override) return reconcileWriterBiographyReviews(writer);
       const safeOverride = Object.fromEntries(
         Object.entries(override).filter(
           ([field]) => !protectedWriterPortraitFields.has(field)
         )
       ) as CmsWriterProfileOverride;
-      return { ...writer, ...safeOverride };
+      return reconcileWriterBiographyReviews({ ...writer, ...safeOverride });
     }),
   }));
 }
