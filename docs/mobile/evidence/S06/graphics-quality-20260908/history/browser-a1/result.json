@@ -1,0 +1,240 @@
+{
+  "schemaVersion": 1,
+  "runId": "s03-graphics-quality-native-20260908-a1",
+  "status": "SELECTED_SOURCE_BROWSER_VALIDATION_FAILED",
+  "startingHead": "c942a43a1f199b83c62bb943e29365f3be59e3e4",
+  "endingHead": "c942a43a1f199b83c62bb943e29365f3be59e3e4",
+  "sourceInputsSha256": "131bff5b5d1903e1c3db5241b33a4f68d33e11bd77b08cca30d1904399a74553",
+  "sourceUnchanged": true,
+  "statistics": {
+    "startTime": "2026-09-08T10:48:53.334Z",
+    "duration": 37718.53,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "executions": [
+    {
+      "title": "native application defaults to rich graphics under low-resource hints while respecting reduced motion and RU/EN scene identity",
+      "expectedStatus": "passed",
+      "status": "failed",
+      "durationMs": 34734,
+      "errors": [
+        {
+          "location": {
+            "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs",
+            "column": 35,
+            "line": 710
+          },
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  -  1\u001b[39m\n\u001b[31m+ Received  + 46\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"Warning: React does not recognize the `%s` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `%s` instead. If you accidentally passed it from a parent component, remove it from the DOM element.%s fetchPriority fetchpriority \u001b[39m\n\u001b[31m+     at img\u001b[39m\n\u001b[31m+     at CountryFlagIcon (https://native-planet.test/fixture/native-planet.js:252592:5)\u001b[39m\n\u001b[31m+     at header\u001b[39m\n\u001b[31m+     at aside\u001b[39m\n\u001b[31m+     at WriterPanel (https://native-planet.test/fixture/native-planet.js:335673:5)\u001b[39m\n\u001b[31m+     at Suspense\u001b[39m\n\u001b[31m+     at div\u001b[39m\n\u001b[31m+     at aside\u001b[39m\n\u001b[31m+     at div\u001b[39m\n\u001b[31m+     at div\u001b[39m\n\u001b[31m+     at div\u001b[39m\n\u001b[31m+     at div\u001b[39m\n\u001b[31m+     at section\u001b[39m\n\u001b[31m+     at main\u001b[39m\n\u001b[31m+     at div\u001b[39m\n\u001b[31m+     at App (https://native-planet.test/fixture/native-planet.js:487999:22)\u001b[39m\n\u001b[31m+     at AppErrorBoundary (https://native-planet.test/fixture/native-planet.js:491404:7)\u001b[39m\n\u001b[31m+     at AccountlessReaderProvider (https://native-planet.test/fixture/native-planet.js:107374:40)\u001b[39m\n\u001b[31m+     at InterfaceLanguageProvider (https://native-planet.test/fixture/native-planet.js:85083:40)\u001b[39m\n\u001b[31m+     at PlatformServicesProvider (https://native-planet.test/fixture/native-planet.js:483798:39)\u001b[39m\n\u001b[31m+     at BootstrapErrorBoundary (https://native-planet.test/fixture/native-planet.js:491448:7)\",\u001b[39m\n\u001b[31m+   \"Warning: React does not recognize the `%s` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `%s` instead. If you accidentally passed it from a parent component, remove it from the DOM element.%s fetchPriority fetchpriority \u001b[39m\n\u001b[31m+     at img\u001b[39m\n\u001b[31m+     at CountryFlagIcon (https://native-planet.test/fixture/native-planet.js:252592:5)\u001b[39m\n\u001b[31m+     at header\u001b[39m\n\u001b[31m+     at aside\u001b[39m\n\u001b[31m+     at WriterPanel (https://native-planet.test/fixture/native-planet.js:335673:5)\u001b[39m\n\u001b[31m+     at Suspense\u001b[39m\n\u001b[31m+     at div\u001b[39m\n\u001b[31m+     at aside\u001b[39m\n\u001b[31m+     at div\u001b[39m\n\u001b[31m+     at div\u001b[39m\n\u001b[31m+     at div\u001b[39m\n\u001b[31m+     at div\u001b[39m\n\u001b[31m+     at section\u001b[39m\n\u001b[31m+     at main\u001b[39m\n\u001b[31m+     at div\u001b[39m\n\u001b[31m+     at App (https://native-planet.test/fixture/native-planet.js:487999:22)\u001b[39m\n\u001b[31m+     at AppErrorBoundary (https://native-planet.test/fixture/native-planet.js:491404:7)\u001b[39m\n\u001b[31m+     at AccountlessReaderProvider (https://native-planet.test/fixture/native-planet.js:107374:40)\u001b[39m\n\u001b[31m+     at InterfaceLanguageProvider (https://native-planet.test/fixture/native-planet.js:85083:40)\u001b[39m\n\u001b[31m+     at PlatformServicesProvider (https://native-planet.test/fixture/native-planet.js:483798:39)\u001b[39m\n\u001b[31m+     at BootstrapErrorBoundary (https://native-planet.test/fixture/native-planet.js:491448:7)\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n\n  708 |         scope: \"320 CSS px browser viewport; normal vertical scrolling allowed. New settings only; no physical device or OS text-scale claim.\" });\n  709 |     }\n> 710 |     expect(fixture.consoleErrors).toEqual([]);\n      |                                   ^\n  711 |   } finally { await original.dispose(); await reloaded?.dispose(); }\n  712 | });\n  713 |\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs:710:35"
+        }
+      ]
+    }
+  ],
+  "preservedFiles": [
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/reports/browser-run-execution.json",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/browser-run-execution.json",
+      "bytes": 404,
+      "sha256": "aeb3007e62b26e97bb165dccc95cab4c8382f764961e20a60e5413ec77ff132e"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/reports/browser-run.log",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/browser-run-transcript.json",
+      "bytes": 9735,
+      "sha256": "b7de691e6a24576d97c89eaac2eea914ce348bc3dd4b4a8f73f3a49a76447710",
+      "rawSha256": "a1eaa7126bba4b656db6f29e6560ded4cb0cfb6c68fa347f90c4b9a3f65a7214",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/reports/browser-run.stderr.log",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/browser-run.stderr-transcript.json",
+      "bytes": 465,
+      "sha256": "79300f4d6b9d7fbd904f00ccff43923ae275c669c36bac7b6e777513d3f13ff8",
+      "rawSha256": "2f0f45500985d27c1ec3294e989cbef67bfbc4590262580b68932456e706f6cc",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/reports/browser-run.stdout.log",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/browser-run.stdout-transcript.json",
+      "bytes": 9576,
+      "sha256": "4366f216bc5142ef482f038aa14945b145fd8c7710ee4565d7d65903cc902c14",
+      "rawSha256": "89c06fa694499795b4152aa7808ae704aca80e07d14d06fdf60cd4b9cc18cec3",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/reports/discovery-execution.json",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/discovery-execution.json",
+      "bytes": 440,
+      "sha256": "a17743e81fe93998c414def55e979582482876495eda8518f0e8e1fc5defbfd4"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/reports/discovery.json",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/discovery.json",
+      "bytes": 198,
+      "sha256": "7010ebd6f75fcc48179ac55d65322494c74ab7c599de3e6e464414967c9c9c79"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/reports/discovery.log",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/discovery-transcript.json",
+      "bytes": 3565,
+      "sha256": "8419c0a0cb44386c3d5b83b6e58538022977dd329abccaa84fd0a1ccd3152b26",
+      "rawSha256": "f5523c43baf189e59c4bce1547ff3bb082864372c039b75ff490a1f0cc58873d",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/reports/discovery.stderr.log",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/discovery.stderr-transcript.json",
+      "bytes": 295,
+      "sha256": "1bfcaaf3818202bf8662d8369ff23039ea0f89c398bca665c1ad14da8c7c9ae1",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/reports/discovery.stdout.log",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/discovery.stdout-transcript.json",
+      "bytes": 3572,
+      "sha256": "991e103e5740c7ec94c8a3fc13d34c168e61a99928b043b28b3dcc9c3acecdd7",
+      "rawSha256": "f5523c43baf189e59c4bce1547ff3bb082864372c039b75ff490a1f0cc58873d",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/reports/run-context.json",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/run-context.json",
+      "bytes": 3639,
+      "sha256": "571e7f69bf8a2d41ed81e5e2e04bf00391ab97b4af5a8c703279d249a51a4ee7"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/reports/run-result.json",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/run-result.json",
+      "bytes": 807,
+      "sha256": "8305c9dbf12d3197dc11bb51ccdd9c52e0a0a17e3776d2a89883c48ee033fd68"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/reports/source-after.json",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/source-after.json",
+      "bytes": 145332,
+      "sha256": "7cc3060881aea0058a3c25715be4679373c6d34f024d97a1b003dd81d85a161f"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/reports/source-before.json",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/source-before.json",
+      "bytes": 145332,
+      "sha256": "7cc3060881aea0058a3c25715be4679373c6d34f024d97a1b003dd81d85a161f"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/reports/source-comparison.json",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/source-comparison.json",
+      "bytes": 408,
+      "sha256": "0b33e7fd59b80e7b072f89f98a907517396e4da68b5ace6e13009a9c74f2f426"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/reports/test-config-after.json",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/test-config-after.json",
+      "bytes": 283,
+      "sha256": "9318b027f573648f98d151f2656d3f1d418f0210be4d78825ab2fb2162fc838e"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/reports/test-config-before.json",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/test-config-before.json",
+      "bytes": 283,
+      "sha256": "9318b027f573648f98d151f2656d3f1d418f0210be4d78825ab2fb2162fc838e"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/run.mjs",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/runner.mjs",
+      "bytes": 11712,
+      "sha256": "8def089cb223783e29f8f49de630ba433f773ffe7ed27ac272c36ab04ef35f5b"
+    },
+    {
+      "source": ".tmp/native-planet-browser-results/s03-graphics-quality-native-20260908-a1/results.json",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/results.json",
+      "bytes": 1117902,
+      "sha256": "2141aebe2a18f97ecfbb38668c661d640e4adffe44b2bf389f75b7921150387a"
+    },
+    {
+      "source": ".tmp/native-planet-browser-results/s03-graphics-quality-native-20260908-a1/results.json#native-graphics-settings-balanced",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/native-graphics-settings-balanced.json",
+      "bytes": 82493,
+      "sha256": "cc9ca8f3f96b345379bbaf2fc167c0303bbadd6522476f386c0e973e79e84c6c"
+    },
+    {
+      "source": ".tmp/native-planet-browser-results/s03-graphics-quality-native-20260908-a1/results.json#native-graphics-settings-economy",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/native-graphics-settings-economy.json",
+      "bytes": 99158,
+      "sha256": "25cd468031bbfe7e246c92c59f865b31b76b132bbc6fd6026fb8a9d6b543c5c8"
+    },
+    {
+      "source": ".tmp/native-planet-browser-results/s03-graphics-quality-native-20260908-a1/results.json#native-graphics-profiles-before-reload",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/native-graphics-profiles-before-reload.json",
+      "bytes": 258505,
+      "sha256": "daba3428bda89646beb552cd89bc5bce7cce227b7558359a2b74dba8363dc722"
+    },
+    {
+      "source": ".tmp/native-planet-browser-results/s03-graphics-quality-native-20260908-a1/results.json#native-graphics-saved-balanced-ru",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/native-graphics-saved-balanced-ru.json",
+      "bytes": 79040,
+      "sha256": "abffa1a552a14770e8c02c6fee9f87c5d4b9e75381e68195f026ee80bd9cf5da"
+    },
+    {
+      "source": ".tmp/native-planet-browser-results/s03-graphics-quality-native-20260908-a1/results.json#native-graphics-settings-narrow-ru",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/native-graphics-settings-narrow-ru.json",
+      "bytes": 98343,
+      "sha256": "07cd69a6c6ec0adecb1d6b08cecb67bc6b9ed01021fd093a635b012ac21b4444"
+    },
+    {
+      "source": ".tmp/native-planet-browser-results/s03-graphics-quality-native-20260908-a1/results.json#native-graphics-settings-narrow-en",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/native-graphics-settings-narrow-en.json",
+      "bytes": 110319,
+      "sha256": "3d4cc588f9da82a955470bebf811b09c408e15f69914d68d894f69550e151ffe"
+    },
+    {
+      "source": ".tmp/native-planet-browser-results/s03-graphics-quality-native-20260908-a1/artifacts/native-planet-native-appli-e5295-on-and-RU-EN-scene-identity/native-graphics-profiles-before-reload.png",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/native-graphics-profiles-before-reload.png",
+      "bytes": 2866908,
+      "sha256": "ba1c71f584641c5a1977e2da5e7fb79fbe839603f7aa9db98f9a3ba1ec7f814a"
+    },
+    {
+      "source": ".tmp/native-planet-browser-results/s03-graphics-quality-native-20260908-a1/artifacts/native-planet-native-appli-e5295-on-and-RU-EN-scene-identity/native-graphics-saved-balanced-ru.png",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/native-graphics-saved-balanced-ru.png",
+      "bytes": 2879450,
+      "sha256": "b5f31a618b4eba044966ee3dd5749bd7cc16a8d486f7c1cb903b558dda6fb10e"
+    },
+    {
+      "source": ".tmp/native-planet-browser-results/s03-graphics-quality-native-20260908-a1/artifacts/native-planet-native-appli-e5295-on-and-RU-EN-scene-identity/native-graphics-settings-balanced.png",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/native-graphics-settings-balanced.png",
+      "bytes": 2077775,
+      "sha256": "12682295123deea72a1943d027718c4180b799711b8993eb99989d7f5d9d2cea"
+    },
+    {
+      "source": ".tmp/native-planet-browser-results/s03-graphics-quality-native-20260908-a1/artifacts/native-planet-native-appli-e5295-on-and-RU-EN-scene-identity/native-graphics-settings-economy.png",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/native-graphics-settings-economy.png",
+      "bytes": 1993708,
+      "sha256": "f2165282d2c62471ea4a57de2b4f3e088a2d01c5df40ba14c6c6e6d2a5a3f206"
+    },
+    {
+      "source": ".tmp/native-planet-browser-results/s03-graphics-quality-native-20260908-a1/artifacts/native-planet-native-appli-e5295-on-and-RU-EN-scene-identity/native-graphics-settings-narrow-en.png",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/native-graphics-settings-narrow-en.png",
+      "bytes": 119724,
+      "sha256": "ba50fb6579959d4604dcd606806bb9e432a403a1a0dca42019ff30951176827a"
+    },
+    {
+      "source": ".tmp/native-planet-browser-results/s03-graphics-quality-native-20260908-a1/artifacts/native-planet-native-appli-e5295-on-and-RU-EN-scene-identity/native-graphics-settings-narrow-ru.png",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/native-graphics-settings-narrow-ru.png",
+      "bytes": 109391,
+      "sha256": "8538f60f16efb1b1602a9f9179f9613e1eda4399e858f7248f806ad6c3947c6d"
+    }
+  ],
+  "actualApp": true,
+  "nativePluginsSimulated": true,
+  "productionArtifactBuilds": 0,
+  "actualInstalledRuntime": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "scope": "One graphics profile case: low-resource hints default High, actual DPR/star buffers/sphere segments/sky material across all profiles; same scene and selection across profiles/locales; native preference reload; reduced motion; keyboard focus; RU/EN labels and 320px/200% text. Source bundled by esbuild in memory.",
+  "limits": [
+    "No dist-native/Vite/Android/iOS artifact runtime or installed-device evidence.",
+    "No full appearance/offline regression or physical GPU/performance certification. Settings copy remains draft."
+  ]
+}

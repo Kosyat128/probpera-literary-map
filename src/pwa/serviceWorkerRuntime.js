@@ -1,11 +1,13 @@
 /** Bundled, integrity-bound application shell. Never an entitlement or child-policy authority. */
+import {
+  PWA_BOOTSTRAP_MAX_FILES as MAX_FILES,
+  PWA_BOOTSTRAP_MAX_FILE_BYTES as MAX_FILE_BYTES,
+  PWA_BOOTSTRAP_MAX_TOTAL_BYTES as MAX_TOTAL_BYTES,
+  PWA_BOOTSTRAP_MAX_MARKER_BYTES as MAX_MARKER_BYTES,
+} from "./pwaBootstrapBudgets.ts";
 const PREFIX = "literary-planet-pwa-v1-";
 const SHA256 = /^[a-f0-9]{64}$/u;
 const SCOPE = "/planet/";
-const MAX_FILES = 512;
-const MAX_FILE_BYTES = 16 * 1024 * 1024;
-const MAX_TOTAL_BYTES = 64 * 1024 * 1024;
-const MAX_MARKER_BYTES = 512 * 1024;
 const MARKER_PATH = SCOPE + "__pwa_complete__";
 const SELECTION_PATH = SCOPE + "__pwa_selection__";
 const CLIENT_PATH = SCOPE + "__pwa_client__/";

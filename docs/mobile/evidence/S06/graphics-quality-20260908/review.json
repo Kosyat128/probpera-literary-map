@@ -1,0 +1,289 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-09-08T10:58:14.916Z",
+  "kind": "automated-read-only-code-and-evidence-review",
+  "sourceHead": "c942a43a1f199b83c62bb943e29365f3be59e3e4",
+  "scope": "Final S06 graphics UI copy, country flag attributes, native panel focus/header fixes, and preservation of existing focused checks. No source edits or test/build execution by this review.",
+  "files": [
+    {
+      "path": "package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+      "bytes": 454352
+    },
+    {
+      "path": "package.json",
+      "sha256": "90b392c205754f838b8bc7c4475bd475936be1078561bb218c437d151177869f",
+      "bytes": 17085
+    },
+    {
+      "path": "scripts/mobile/platform-boundaries.mjs",
+      "sha256": "7267e9a0283a2346e3122d4b47ce8b88aa693bf079e0e330712f8f6d2ff9cc75",
+      "bytes": 36143
+    },
+    {
+      "path": "src/App.tsx",
+      "sha256": "c7143cf37e07086dd54dac8628ff3d56534d3fddf664ac0e487cabd4b0aeffd1",
+      "bytes": 173000
+    },
+    {
+      "path": "src/components/CountryFlagIcon.tsx",
+      "sha256": "f4318be4993ea0c7499fd83053f6595913dcb10184c9dfcaa6ff6f7660afc18b",
+      "bytes": 1625
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "sha256": "2be1cb0b359db33af29482629b28d39d2033e0f01fd8b505379e23ddb120d563",
+      "bytes": 120370
+    },
+    {
+      "path": "src/components/LiteraryWorldMap.tsx",
+      "sha256": "4443314e76c87af1fc8f4d098654c743f4bd4ff07ed5184b7f4171dd38d0391a",
+      "bytes": 6109
+    },
+    {
+      "path": "src/components/globeQuality.test.ts",
+      "sha256": "241a0f611cc034039023ede3a844913c97c22eefa78ed9bf073a06c0c2f2ee8a",
+      "bytes": 2300
+    },
+    {
+      "path": "src/components/globeQuality.ts",
+      "sha256": "355235ed6c9ef67d05bf6075cd49ef7a5636f6f43b2dc090a1063376f942b4c5",
+      "bytes": 2522
+    },
+    {
+      "path": "src/host/HostPlatformServices.test.ts",
+      "sha256": "4aae72e562dbfe75cccc0f72a7dd75156a94b7b90fc53cc17cf52d48f9e2d8d9",
+      "bytes": 32043
+    },
+    {
+      "path": "src/host/HostPlatformServices.ts",
+      "sha256": "0fb34ee847ae38b4a50d962b582664d9436aa6800f7e4922f4a653df1d91ef1e",
+      "bytes": 14534
+    },
+    {
+      "path": "src/host/NativePlanetPanel.tsx",
+      "sha256": "3c4a1518de5da3c5fa25732a6905b86606a48ed281ad30dad51c8adb90d9857d",
+      "bytes": 3435
+    },
+    {
+      "path": "src/host/PlanetGraphicsSettings.css",
+      "sha256": "0c25285a50ba8f097ef867748c57cab270df6406f8a9a2454808b9a197207699",
+      "bytes": 3267
+    },
+    {
+      "path": "src/host/PlanetGraphicsSettings.tsx",
+      "sha256": "6332bec397775901379ec3776548aaf610b6e7cde094badd5672d09436b24e4f",
+      "bytes": 5528
+    },
+    {
+      "path": "src/host/host.css",
+      "sha256": "6bc54f91100cb85c5df6407da0a468d7f81d5bc0d28ca02ff6bab6c873190120",
+      "bytes": 4704
+    },
+    {
+      "path": "src/host/planetGraphicsQuality.test.ts",
+      "sha256": "1ffb4b4c5a3f2f08397924a8724856d02eb7ee0139f7f9f717911439484ebc29",
+      "bytes": 15670
+    },
+    {
+      "path": "src/host/planetGraphicsQuality.ts",
+      "sha256": "5b8cc15796b0a2e0c3e6222ba6c7f0af2ffa2102d7a30000891f2435906d79f2",
+      "bytes": 6618
+    },
+    {
+      "path": "src/platform/adapters/web/WebPlatformAdapter.test.ts",
+      "sha256": "337b4660c7387845540ef4ee08f2acb99479cebc63786bfa1b8259424b982e36",
+      "bytes": 20970
+    },
+    {
+      "path": "src/platform/adapters/web/WebPlatformAdapter.ts",
+      "sha256": "ae2a466155b668e99fc66d9804cc2ba0bbad2bf3539407ccbc0cee7c877bb2d9",
+      "bytes": 8036
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "8d51a8c9266fe83bf17c076b51672753b3750a17520cd0d2c28a90cb8b21e0d6",
+      "bytes": 704
+    },
+    {
+      "path": "vitest.config.ts",
+      "sha256": "5c1e90985e77b35599e5bdaf77c74a1166949ec9c4f45d1c5f926c3f53bef90e",
+      "bytes": 394
+    }
+  ],
+  "evidence": [
+    {
+      "path": ".tmp/s06-graphics-quality-20260908/unit-a1/result.json",
+      "sha256": "5dd58cf15f0f8d7b8df2ef26b482394d4b1a2ed435e88625bbc62208496ff751",
+      "bytes": 6490
+    },
+    {
+      "path": ".tmp/s06-graphics-quality-20260908/unit-a1/unit.json",
+      "sha256": "36d2323a13b69efe4ae9356a33ec96538b36a43f7626c50c00934dde61554563",
+      "bytes": 1109
+    },
+    {
+      "path": ".tmp/s06-graphics-quality-20260908/unit-a1/vitest.json",
+      "sha256": "ffd6cd699661e71909bd97caf99d5ddf693dc465c66a8d541d341472e47b5863",
+      "bytes": 71340
+    },
+    {
+      "path": ".tmp/s06-graphics-quality-20260908/static-a1/platform-boundaries.json",
+      "sha256": "7615064f151f31638f2424831f1d1c480ad6d78f26e9964696ce4bf6594c7c9d",
+      "bytes": 2239
+    },
+    {
+      "path": ".tmp/s06-graphics-quality-20260908/check-scope-reconciliation.json",
+      "sha256": "dce1a86851949bbd4f9400651ee9c6ab9d439dcc9c6facf9d6359dd30ea88667",
+      "bytes": 1598
+    },
+    {
+      "path": ".tmp/s06-graphics-quality-20260908/typecheck-a2/result.json",
+      "sha256": "5e12efedd69dbb08addfef31ef94ae4d030b5e16c0175c9811cc00e9b7d90d1b",
+      "bytes": 6563
+    }
+  ],
+  "checks": {
+    "unitExecutionPassed": true,
+    "unitRelevantInputBytesUnchanged": true,
+    "latestTypecheckPassed": true,
+    "latestTypecheckInputBytesCurrent": true,
+    "initialBoundaryExecutionPassed": true,
+    "priorGraphInputsCurrent": true,
+    "settingsOnlyTwoCopyCorrections": true,
+    "newMarkupImportEdgesUnchanged": true
+  },
+  "unitSourceIdentity": [
+    {
+      "path": "package.json",
+      "beforeSha256": "90b392c205754f838b8bc7c4475bd475936be1078561bb218c437d151177869f",
+      "afterSha256": "90b392c205754f838b8bc7c4475bd475936be1078561bb218c437d151177869f",
+      "currentSha256": "90b392c205754f838b8bc7c4475bd475936be1078561bb218c437d151177869f"
+    },
+    {
+      "path": "package-lock.json",
+      "beforeSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+      "afterSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+      "currentSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+    },
+    {
+      "path": "tsconfig.json",
+      "beforeSha256": "8d51a8c9266fe83bf17c076b51672753b3750a17520cd0d2c28a90cb8b21e0d6",
+      "afterSha256": "8d51a8c9266fe83bf17c076b51672753b3750a17520cd0d2c28a90cb8b21e0d6",
+      "currentSha256": "8d51a8c9266fe83bf17c076b51672753b3750a17520cd0d2c28a90cb8b21e0d6"
+    },
+    {
+      "path": "vitest.config.ts",
+      "beforeSha256": "5c1e90985e77b35599e5bdaf77c74a1166949ec9c4f45d1c5f926c3f53bef90e",
+      "afterSha256": "5c1e90985e77b35599e5bdaf77c74a1166949ec9c4f45d1c5f926c3f53bef90e",
+      "currentSha256": "5c1e90985e77b35599e5bdaf77c74a1166949ec9c4f45d1c5f926c3f53bef90e"
+    },
+    {
+      "path": "src/components/globeQuality.ts",
+      "beforeSha256": "355235ed6c9ef67d05bf6075cd49ef7a5636f6f43b2dc090a1063376f942b4c5",
+      "afterSha256": "355235ed6c9ef67d05bf6075cd49ef7a5636f6f43b2dc090a1063376f942b4c5",
+      "currentSha256": "355235ed6c9ef67d05bf6075cd49ef7a5636f6f43b2dc090a1063376f942b4c5"
+    },
+    {
+      "path": "src/components/globeQuality.test.ts",
+      "beforeSha256": "241a0f611cc034039023ede3a844913c97c22eefa78ed9bf073a06c0c2f2ee8a",
+      "afterSha256": "241a0f611cc034039023ede3a844913c97c22eefa78ed9bf073a06c0c2f2ee8a",
+      "currentSha256": "241a0f611cc034039023ede3a844913c97c22eefa78ed9bf073a06c0c2f2ee8a"
+    },
+    {
+      "path": "src/host/planetGraphicsQuality.ts",
+      "beforeSha256": "5b8cc15796b0a2e0c3e6222ba6c7f0af2ffa2102d7a30000891f2435906d79f2",
+      "afterSha256": "5b8cc15796b0a2e0c3e6222ba6c7f0af2ffa2102d7a30000891f2435906d79f2",
+      "currentSha256": "5b8cc15796b0a2e0c3e6222ba6c7f0af2ffa2102d7a30000891f2435906d79f2"
+    },
+    {
+      "path": "src/host/planetGraphicsQuality.test.ts",
+      "beforeSha256": "1ffb4b4c5a3f2f08397924a8724856d02eb7ee0139f7f9f717911439484ebc29",
+      "afterSha256": "1ffb4b4c5a3f2f08397924a8724856d02eb7ee0139f7f9f717911439484ebc29",
+      "currentSha256": "1ffb4b4c5a3f2f08397924a8724856d02eb7ee0139f7f9f717911439484ebc29"
+    },
+    {
+      "path": "src/host/HostPlatformServices.ts",
+      "beforeSha256": "0fb34ee847ae38b4a50d962b582664d9436aa6800f7e4922f4a653df1d91ef1e",
+      "afterSha256": "0fb34ee847ae38b4a50d962b582664d9436aa6800f7e4922f4a653df1d91ef1e",
+      "currentSha256": "0fb34ee847ae38b4a50d962b582664d9436aa6800f7e4922f4a653df1d91ef1e"
+    },
+    {
+      "path": "src/host/HostPlatformServices.test.ts",
+      "beforeSha256": "4aae72e562dbfe75cccc0f72a7dd75156a94b7b90fc53cc17cf52d48f9e2d8d9",
+      "afterSha256": "4aae72e562dbfe75cccc0f72a7dd75156a94b7b90fc53cc17cf52d48f9e2d8d9",
+      "currentSha256": "4aae72e562dbfe75cccc0f72a7dd75156a94b7b90fc53cc17cf52d48f9e2d8d9"
+    },
+    {
+      "path": "src/platform/adapters/web/WebPlatformAdapter.ts",
+      "beforeSha256": "ae2a466155b668e99fc66d9804cc2ba0bbad2bf3539407ccbc0cee7c877bb2d9",
+      "afterSha256": "ae2a466155b668e99fc66d9804cc2ba0bbad2bf3539407ccbc0cee7c877bb2d9",
+      "currentSha256": "ae2a466155b668e99fc66d9804cc2ba0bbad2bf3539407ccbc0cee7c877bb2d9"
+    },
+    {
+      "path": "src/platform/adapters/web/WebPlatformAdapter.test.ts",
+      "beforeSha256": "337b4660c7387845540ef4ee08f2acb99479cebc63786bfa1b8259424b982e36",
+      "afterSha256": "337b4660c7387845540ef4ee08f2acb99479cebc63786bfa1b8259424b982e36",
+      "currentSha256": "337b4660c7387845540ef4ee08f2acb99479cebc63786bfa1b8259424b982e36"
+    }
+  ],
+  "markupImportReview": [
+    {
+      "path": "src/components/CountryFlagIcon.tsx",
+      "baseline": "HEAD (these files were unchanged during the initial boundary run)",
+      "before": [
+        "\"../utils/countryFlag\"",
+        "\"react\""
+      ],
+      "after": [
+        "\"../utils/countryFlag\"",
+        "\"react\""
+      ],
+      "unchanged": true
+    },
+    {
+      "path": "src/host/NativePlanetPanel.tsx",
+      "baseline": "HEAD (these files were unchanged during the initial boundary run)",
+      "before": [
+        "\"../components/BrandCloseIcon\"",
+        "\"../components/InterfaceLanguageControl\"",
+        "\"../i18n/InterfaceLanguage\"",
+        "\"../ui/IconButton\"",
+        "\"./ProductNoticeHost\"",
+        "\"./hostInert\"",
+        "\"react\""
+      ],
+      "after": [
+        "\"../components/BrandCloseIcon\"",
+        "\"../components/InterfaceLanguageControl\"",
+        "\"../i18n/InterfaceLanguage\"",
+        "\"../ui/IconButton\"",
+        "\"./ProductNoticeHost\"",
+        "\"./hostInert\"",
+        "\"react\""
+      ],
+      "unchanged": true
+    }
+  ],
+  "observations": [
+    "App keeps one quality controller outside the always-mounted panel. Locale and route are not preference or Canvas keys.",
+    "Economy wording now describes the simpler background and does not promise that stars stop twinkling.",
+    "CountryFlagIcon changes image/fallback naming and lowercase fetchpriority DOM attributes only; decorative images remain empty-alt/aria-hidden.",
+    "NativePlanetPanel includes the native summary element in its existing visible-control focus trap without replacing dialog/language/close owners.",
+    "The panel header wraps with a bounded, wrapping title and nonshrinking language/44px close controls; no positioning or z-index ownership changes.",
+    "The initial unit/static wrapper included a separate browser fixture and recorded its newline-only hash change as a failed broad snapshot. The original receipt and its explicit scope reconciliation remain unmodified.",
+    "Current controller/profile/adapter unit inputs match the 103-assertion execution byte-for-byte. Initial boundary graph checks can be carried forward for these UI/CSS-only corrections; this review did not rerun that audit."
+  ],
+  "findings": [],
+  "pass": true,
+  "additionalTestsExecuted": 0,
+  "additionalBuildsExecuted": 0,
+  "humanEditorialApproval": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "limitations": [
+    "This bounded code review is not a browser interaction, screenshot, physical-device or release acceptance.",
+    "Current browser fixture changes and rendered layout/focus require their own final source-bound browser evidence.",
+    "Import-edge comparison supplements the reviewed small DOM/CSS delta; it is not a newly executed platform-boundary audit."
+  ]
+}

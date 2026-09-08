@@ -8,6 +8,8 @@ import { build as bundle } from "esbuild";
 import sharp from "sharp";
 import { artifactPath, bootstrapClosure, createPwaModuleOwnershipPlugin, containedFile, PWA_SCOPE, PWA_BOOTSTRAP_ENTRIES, scopeCanonicalCssUrls, loadPwaAuthority, pwaAuthoritySha256, previousPwaGeneration } from "./pwa-artifact.mjs";
 import { generatePwaShellFiles } from "./pwa-shell.mjs";
+import { PWA_PORTRAIT_SELECTION_PATH, selectPwaPortraitAssets, assertPwaPortraitCopy } from "./pwa-portrait-selection.mjs";
+import { PWA_BOOTSTRAP_MAX_FILES, PWA_BOOTSTRAP_MAX_FILE_BYTES, PWA_BOOTSTRAP_MAX_TOTAL_BYTES } from "../../src/pwa/pwaBootstrapBudgets.ts";
 import { GLOBE_EDITIONS, DEFAULT_GLOBE_EDITION_ID } from "../../src/components/globeEditions.ts";
 
 // Use the canonical selectable registry, including both localized texture paths.
@@ -43,6 +45,7 @@ async function captureSourceInputs() {
   const names = execFileSync("git", ["ls-files", "-z", "--cached", "--others", "--exclude-standard", "--",
     "src", "index.html", "tsconfig.json", "vite.config.ts", "vite.pwa.config.ts", "package.json", "package-lock.json",
     "scripts/mobile/build-pwa.mjs", "scripts/mobile/pwa-artifact.mjs", "scripts/mobile/pwa-shell.mjs",
+    "scripts/mobile/pwa-portrait-selection.mjs", PWA_PORTRAIT_SELECTION_PATH,
   ], { cwd: root, encoding: "utf8", maxBuffer: 4 * 1024 * 1024 }).split("\0");
   const files = [];
   for (const relative of [...new Set(names)].filter(value => value && !/\.(?:test|spec)\.[cm]?[jt]sx?$/u.test(value)).sort()) {
@@ -52,6 +55,7 @@ async function captureSourceInputs() {
   return { sha256: digest(json(files)), files };
 }
 const sourceInputs = await captureSourceInputs();
+const portraitSelection = selectPwaPortraitAssets(JSON.parse((await containedFile(root, PWA_PORTRAIT_SELECTION_PATH)).bytes));
 const scratch = path.join(root, ".tmp");
 await mkdir(scratch, { recursive: true });
 if (await realpath(scratch) !== scratch) throw new Error("PWA scratch must be a real directory in this checkout");
@@ -82,13 +86,26 @@ async function walk(directory, prefix = "") {
   }
   return result.sort();
 }
-async function copyPublic(relative, core = true) {
-  if (provenance.some(item => item.output === relative)) {
+async function copyPublic(relative, core = true, portraitPin = null) {
+  const previous = provenance.find(item => item.output === relative);
+  let input;
+  if (portraitPin) {
+    input = await containedFile(root, portraitPin.source);
+    let existing;
+    try { existing = await containedFile(staging, relative); }
+    catch (error) { if (error.code !== "ENOENT") throw error; }
+    assertPwaPortraitCopy(portraitPin, { sourceBytes: input.bytes, outputBytes: existing?.bytes, provenance: previous });
+  }
+  if (previous) {
     if (core) essential.add(relative);
     return;
   }
-  const input = await containedFile(path.join(root, "public"), relative);
-  await write(relative, input.bytes);
+  input ??= await containedFile(path.join(root, "public"), relative);
+  if (portraitPin) {
+    const filename = path.join(staging, relative);
+    await mkdir(path.dirname(filename), { recursive: true });
+    await writeFile(filename, input.bytes, { flag: "wx" });
+  } else await write(relative, input.bytes);
   provenance.push({ output: relative, source: "public/" + relative, sourceSha256: input.sha256, transformation: "none" });
   if (core) essential.add(relative);
 }
@@ -131,14 +148,11 @@ for (const asset of [
   "brand/atlas-side-brushes.webp", "brand/atlas-side-brushes-mobile.webp",
   "brand/alfred-nobel-medallion.png", "articles/book-mentions.json",
 ]) await copyPublic(asset);
-// Canonical entry/search/reading assets already verified in the native base
-// selection. Keep the same originals available for the PWA's offline surface.
-// This copies existing artwork and provenance; it creates no rights approval.
+// The same hash-pinned native portraits belong to the verified offline core.
+// Copy original bytes and provenance without changing editorial/rights status.
+for (const pin of portraitSelection) await copyPublic(pin.output, true, pin);
+// Keep the existing canonical book-cover selection unchanged.
 for (const asset of [
-  "assets/writer-portraits/q320935.webp", "assets/writer-portraits/q991.webp",
-  "assets/writer-portraits/q189950.webp", "assets/writer-portraits/q318473.webp",
-  "assets/writer-portraits/q31628.webp", "assets/writer-portraits/q52224.webp",
-  "assets/writer-portraits/q37217.webp", "assets/writer-portraits/q7243.webp",
   "brand/book-covers/crime-and-punishment-editorial.webp",
   "brand/book-covers/thumbs/crime-and-punishment-editorial.webp",
   "brand/book-covers/the-catcher-in-the-rye-editorial.webp",
@@ -203,7 +217,7 @@ for (const relative of [...essential].sort()) {
   files.push(record);
 }
 const totalBytes = files.reduce((sum, file) => sum + file.bytes, 0);
-if (files.length > 512 || totalBytes > 64 * 1024 * 1024 || files.some(file => file.bytes > 16 * 1024 * 1024)) {
+if (files.length > PWA_BOOTSTRAP_MAX_FILES || totalBytes > PWA_BOOTSTRAP_MAX_TOTAL_BYTES || files.some(file => file.bytes > PWA_BOOTSTRAP_MAX_FILE_BYTES)) {
   throw new Error("Controlled bootstrap exceeds worker resource bounds");
 }
 const workerSource = await containedFile(root, "src/pwa/serviceWorkerRuntime.js");

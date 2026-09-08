@@ -1,0 +1,10 @@
+[
+  {
+    "path": "tests/host/native-planet.spec.mjs",
+    "sha256": "7f953527de5ba6cf4cc92e19bd71eb75625cf53c2b1784eb7d908965ce8cb748"
+  },
+  {
+    "path": "playwright.native-planet.config.mjs",
+    "sha256": "17783f4e8371239c1e1a81478bf3b7dfb9e63b0bc58272c19529abf077e38087"
+  }
+]

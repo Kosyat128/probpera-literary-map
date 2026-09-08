@@ -1,0 +1,832 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T11:15:54.322Z",
+  "stage": "S06",
+  "status": "FOCUSED_SOURCE_VALIDATION_PASSED",
+  "sourceCheckpointBeforeChanges": "c942a43a1f199b83c62bb943e29365f3be59e3e4",
+  "sourceFiles": [
+    {
+      "path": "scripts/mobile/build-pwa.mjs",
+      "sha256": "2c13ba253e08e8e7e01c5b942cdfba21a7bcaf4a59411035bf94697223c4c0a2"
+    },
+    {
+      "path": "scripts/mobile/native-base-assets.json",
+      "sha256": "80c3561b3e4011625acb6a176811f1b751194abcb9df52e44209b992f55c0a4e"
+    },
+    {
+      "path": "scripts/mobile/pwa-portrait-selection.mjs",
+      "sha256": "1532c226e05e642ffcd2f54f5d795b3f1d3116ca0b1ce03d1f56c4e2d6ab076d"
+    },
+    {
+      "path": "scripts/mobile/pwa-portrait-selection.test.mjs",
+      "sha256": "55683e71d485397f532d5667400182a34d8c4d378a62ac3a65b31e8a5173735a"
+    },
+    {
+      "path": "scripts/mobile/verify-pwa-artifact.mjs",
+      "sha256": "8ff0400b1b3b9f519a44bad26f091bcc12fedeff6473a79fdc4618c24918c240"
+    },
+    {
+      "path": "scripts/mobile/verify-pwa-artifact.test.mjs",
+      "sha256": "9e4755826c96ffe71b6ce790400118a13f2947a9e06d98663bcd40a9e0cc3698"
+    },
+    {
+      "path": "src/App.tsx",
+      "sha256": "c7143cf37e07086dd54dac8628ff3d56534d3fddf664ac0e487cabd4b0aeffd1"
+    },
+    {
+      "path": "src/components/CountryFlagIcon.tsx",
+      "sha256": "f4318be4993ea0c7499fd83053f6595913dcb10184c9dfcaa6ff6f7660afc18b"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "sha256": "2be1cb0b359db33af29482629b28d39d2033e0f01fd8b505379e23ddb120d563"
+    },
+    {
+      "path": "src/components/LiteraryWorldMap.tsx",
+      "sha256": "4443314e76c87af1fc8f4d098654c743f4bd4ff07ed5184b7f4171dd38d0391a"
+    },
+    {
+      "path": "src/components/globeQuality.test.ts",
+      "sha256": "241a0f611cc034039023ede3a844913c97c22eefa78ed9bf073a06c0c2f2ee8a"
+    },
+    {
+      "path": "src/components/globeQuality.ts",
+      "sha256": "355235ed6c9ef67d05bf6075cd49ef7a5636f6f43b2dc090a1063376f942b4c5"
+    },
+    {
+      "path": "src/host/HostPlatformServices.test.ts",
+      "sha256": "4aae72e562dbfe75cccc0f72a7dd75156a94b7b90fc53cc17cf52d48f9e2d8d9"
+    },
+    {
+      "path": "src/host/HostPlatformServices.ts",
+      "sha256": "0fb34ee847ae38b4a50d962b582664d9436aa6800f7e4922f4a653df1d91ef1e"
+    },
+    {
+      "path": "src/host/NativePlanetPanel.tsx",
+      "sha256": "3c4a1518de5da3c5fa25732a6905b86606a48ed281ad30dad51c8adb90d9857d"
+    },
+    {
+      "path": "src/host/PlanetGraphicsSettings.css",
+      "sha256": "0c25285a50ba8f097ef867748c57cab270df6406f8a9a2454808b9a197207699"
+    },
+    {
+      "path": "src/host/PlanetGraphicsSettings.tsx",
+      "sha256": "6332bec397775901379ec3776548aaf610b6e7cde094badd5672d09436b24e4f"
+    },
+    {
+      "path": "src/host/host.css",
+      "sha256": "6bc54f91100cb85c5df6407da0a468d7f81d5bc0d28ca02ff6bab6c873190120"
+    },
+    {
+      "path": "src/host/planetGraphicsQuality.test.ts",
+      "sha256": "1ffb4b4c5a3f2f08397924a8724856d02eb7ee0139f7f9f717911439484ebc29"
+    },
+    {
+      "path": "src/host/planetGraphicsQuality.ts",
+      "sha256": "5b8cc15796b0a2e0c3e6222ba6c7f0af2ffa2102d7a30000891f2435906d79f2"
+    },
+    {
+      "path": "src/platform/adapters/web/WebPlatformAdapter.test.ts",
+      "sha256": "337b4660c7387845540ef4ee08f2acb99479cebc63786bfa1b8259424b982e36"
+    },
+    {
+      "path": "src/platform/adapters/web/WebPlatformAdapter.ts",
+      "sha256": "ae2a466155b668e99fc66d9804cc2ba0bbad2bf3539407ccbc0cee7c877bb2d9"
+    },
+    {
+      "path": "src/pwa/pwaBootstrapBudgets.ts",
+      "sha256": "3fceaa940a83c9d93c1bede09d2f1ab87b276fd837a081038954095be3c3df1a"
+    },
+    {
+      "path": "src/pwa/registerPwaWorker.test.ts",
+      "sha256": "7f2194214e3231c45367e5b6f8dd0aaa51bfc50c510ea52f0b2dd25d47f72107"
+    },
+    {
+      "path": "src/pwa/registerPwaWorker.ts",
+      "sha256": "cb5c95b8abafd82ed25bde899420007bb81a87014ba2bf04a87efd4a1df6ea41"
+    },
+    {
+      "path": "src/pwa/serviceWorkerRuntime.js",
+      "sha256": "a6e53d8e83c137de4cbd60cb1f4a81ff518248d1e3d417a98f229c30c81df79c"
+    },
+    {
+      "path": "src/pwa/serviceWorkerRuntime.test.mjs",
+      "sha256": "0d96881feb59ff6ffdfad7608461a953af7aae753c29ecf7fdb344c9d0e23abd"
+    },
+    {
+      "path": "tests/host/native-planet.spec.mjs",
+      "sha256": "7f953527de5ba6cf4cc92e19bd71eb75625cf53c2b1784eb7d908965ce8cb748"
+    },
+    {
+      "path": "tests/pwa/controlled-pwa.spec.mjs",
+      "sha256": "0bd4e12dfb6147dabc35416a3e10bade59e8cea2ed2914654de4d5ee7b6b31bb"
+    }
+  ],
+  "scope": "Live application graphics profiles and retained shared scene; S03 canonical portrait packaging correction encountered during browser validation.",
+  "implemented": [
+    "High remains the initial owner-selected default independent of resource hints.",
+    "Manual Balanced/Economy adjust actual DPR, star buffers, sphere/frame detail and sky material without a new Canvas/renderer/camera/atlas.",
+    "One preference controller preserves latest intent, serializes writes and bounds confirmation at five seconds with truthful retry.",
+    "Global RU/EN and reduced motion remain independent; settings inherit committed planet surfaces.",
+    "Native panel header and close control reflow at 320px/200% text; native summary participates in the focus trap.",
+    "Canonical flag markup preserves browser priority and localized accessible naming.",
+    "Both local builders use the same exact portrait selection; all current 1011 approved local images are included, with no new image or rights approval."
+  ],
+  "tests": {
+    "uniquePassed": 122,
+    "failedFinal": 0,
+    "graphicsAndPreferences": 103,
+    "workerBudget": 8,
+    "portraitSelectionAndArtifactClosure": 11,
+    "repeatedFinalSelectorPassesNotDoubleCounted": 6
+  },
+  "static": {
+    "typeScriptPassed": true,
+    "platformBoundariesPassed": true,
+    "evidence": "static/result.json",
+    "finalNodeSelectorDelta": "Case-sensitive canonical prefix enforcement; six helper cases rerun. No src/compiler/boundary input changed after the last static execution."
+  },
+  "browser": {
+    "evidence": "browser/result.json",
+    "passed": 1,
+    "sourceInputsSha256": "7f26a8caba4f8e20cd1d951da652c0b8a4c35a0cb4956c1a3b6db7fec49a05e3",
+    "actualAppSource": true,
+    "nativePluginsSimulated": true,
+    "installedRuntimeTested": false,
+    "exactArtifactRuntime": false
+  },
+  "visualReview": {
+    "actualImages": [
+      "browser/native-graphics-settings-narrow-ru.png",
+      "browser/native-graphics-settings-narrow-en.png"
+    ],
+    "observed": "Both locales wrap at 320 CSS px/200% root text; language and close controls remain visible; long content scrolls vertically. Six source-browser PNGs retained."
+  },
+  "portraits": {
+    "evidence": "docs/mobile/evidence/S03/canonical-portraits-20260908/result.json",
+    "sha256": "55f35734f1a6465cddf50dc02a585bd9084993c861127302c2fd11ef8cc7517a",
+    "files": 1011,
+    "references": 1021,
+    "addedFiles": 1003,
+    "addedBytes": 27831946,
+    "totalBytes": 28089250,
+    "newImages": 0,
+    "newRightsApprovals": 0
+  },
+  "offlineBounds": {
+    "maxFiles": 2048,
+    "maxFileBytes": 16777216,
+    "maxTotalBytes": 67108864,
+    "maxMarkerBytes": 524288,
+    "onlyFileCountExpanded": true
+  },
+  "history": [
+    "Initial quality/static wrappers correctly flagged a newline-only change in an unrelated browser fixture; full LF-normalized SHA proves no code difference. Original receipts and scope reconciliation retained.",
+    "Browser a1 failed on existing React fetchPriority casing; its narrow screenshot also exposed the offscreen return button.",
+    "Browser a2 failed on missing canonical Russian list portraits. The full current portrait closure was packaged; a3 passed without suppressing console/network errors.",
+    "The selector received a final uppercase-path refusal fix; only its six tests were repeated."
+  ],
+  "newNativeArtifactProduced": false,
+  "newPwaArtifactProduced": false,
+  "copies": [
+    {
+      "source": ".tmp/s06-graphics-quality-20260908/unit-a1/result.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/quality-units/result.json",
+      "bytes": 6490,
+      "sha256": "5dd58cf15f0f8d7b8df2ef26b482394d4b1a2ed435e88625bbc62208496ff751"
+    },
+    {
+      "source": ".tmp/s06-graphics-quality-20260908/unit-a1/unit.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/quality-units/unit.json",
+      "bytes": 1109,
+      "sha256": "36d2323a13b69efe4ae9356a33ec96538b36a43f7626c50c00934dde61554563"
+    },
+    {
+      "source": ".tmp/s06-graphics-quality-20260908/unit-a1/vitest.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/quality-units/vitest.json",
+      "bytes": 71340,
+      "sha256": "ffd6cd699661e71909bd97caf99d5ddf693dc465c66a8d541d341472e47b5863"
+    },
+    {
+      "source": ".tmp/s06-graphics-quality-20260908/static-a1/platform-boundaries.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/initial-static/platform-boundaries.json",
+      "bytes": 2239,
+      "sha256": "7615064f151f31638f2424831f1d1c480ad6d78f26e9964696ce4bf6594c7c9d"
+    },
+    {
+      "source": ".tmp/s06-graphics-quality-20260908/static-a1/result.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/initial-static/result.json",
+      "bytes": 6324,
+      "sha256": "be3169bc67c4c58a8cb0e61991815df09a3b63a39d637df2adb167d3db9fe882"
+    },
+    {
+      "source": ".tmp/s06-graphics-quality-20260908/static-a1/typecheck.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/initial-static/typecheck.json",
+      "bytes": 578,
+      "sha256": "db3915933f56a9b976aefccaaf01516650afa1b618cafac5d4cebc35ca748407"
+    },
+    {
+      "source": ".tmp/s06-graphics-quality-20260908/typecheck-a2/result.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/typecheck-ui-fixes/result.json",
+      "bytes": 6563,
+      "sha256": "5e12efedd69dbb08addfef31ef94ae4d030b5e16c0175c9811cc00e9b7d90d1b"
+    },
+    {
+      "source": ".tmp/s06-graphics-quality-20260908/typecheck-a2/typecheck.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/typecheck-ui-fixes/typecheck.json",
+      "bytes": 578,
+      "sha256": "0c50c10ea8962364d381b40f08d684e97631c61a35426af2bd71374397d440a0"
+    },
+    {
+      "source": ".tmp/s06-graphics-quality-20260908/static-a3/platform-boundaries.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/static/platform-boundaries.json",
+      "bytes": 2238,
+      "sha256": "baf97a213d93cdf1f25d96ccc2ccd814029bcfc11a58dfd8d40dedcad4403c0e"
+    },
+    {
+      "source": ".tmp/s06-graphics-quality-20260908/static-a3/result.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/static/result.json",
+      "bytes": 10461,
+      "sha256": "879b011708a1767296fb74fa1fa793f31842a5df1cd3e41834962d932b3c2c65"
+    },
+    {
+      "source": ".tmp/s06-graphics-quality-20260908/static-a3/typecheck.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/static/typecheck.json",
+      "bytes": 578,
+      "sha256": "fd2fda0efd311fddf65ce854863cf0f1aa87c2fdd484b9092407852cda81dfc3"
+    },
+    {
+      "source": ".tmp/s06-graphics-quality-20260908/worker-budget-a1/result.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/worker-budget/result.json",
+      "bytes": 3357,
+      "sha256": "c0b605c5b11f70e86259b9011ad789af64d93ba34b53b886c71b532566c24c12"
+    },
+    {
+      "source": ".tmp/s06-graphics-quality-20260908/worker-budget-a1/vitest.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/worker-budget/vitest.json",
+      "bytes": 86967,
+      "sha256": "8b1a1a6df37e61623a21dfc92b5be40f31e11c4bc04846e7f69a39dda5eb7a1a"
+    },
+    {
+      "source": ".tmp/s06-graphics-quality-20260908/selection-a1/result.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/portrait-selection-initial/result.json",
+      "bytes": 10511,
+      "sha256": "5dcb823167bdda600ec156e999ec9d7b7b51586368496153c2edd866f3586dec"
+    },
+    {
+      "source": ".tmp/s06-graphics-quality-20260908/selection-a1/unit.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/portrait-selection-initial/unit.json",
+      "bytes": 1001,
+      "sha256": "50df868385bd0b92ad81fc0abe7aed47adb576840250936de5990c502bdcc348"
+    },
+    {
+      "source": ".tmp/s06-graphics-quality-20260908/selection-a1/vitest.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/portrait-selection-initial/vitest.json",
+      "bytes": 33700,
+      "sha256": "ec86bf6ea9d38ed5c2ceb9e54821d8b2e42795ab1a76bdd29c459215a76dcdae"
+    },
+    {
+      "source": ".tmp/s06-graphics-quality-20260908/selection-a2/result.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/portrait-selection-final/result.json",
+      "bytes": 10454,
+      "sha256": "e7a73ee33e5272df696fc4448117db69d4dbcc3b22cd9d7a3c9886af393020fc"
+    },
+    {
+      "source": ".tmp/s06-graphics-quality-20260908/selection-a2/unit.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/portrait-selection-final/unit.json",
+      "bytes": 950,
+      "sha256": "2b1b267110c5c19cac8d509182a4637eb412f7931c12b7a57c64a8a70ead56fa"
+    },
+    {
+      "source": ".tmp/s06-graphics-quality-20260908/selection-a2/vitest.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/portrait-selection-final/vitest.json",
+      "bytes": 2719,
+      "sha256": "d843f8f2ab3c0e4d46d50aba8702698130c159ec20e0ba706f3dd5429a59531c"
+    },
+    {
+      "source": ".tmp/s06-graphics-quality-20260908/check-scope-reconciliation.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/check-scope-reconciliation.json",
+      "bytes": 1598,
+      "sha256": "dce1a86851949bbd4f9400651ee9c6ab9d439dcc9c6facf9d6359dd30ea88667"
+    },
+    {
+      "source": ".tmp/s06-graphics-quality-20260908/review.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/review.json",
+      "bytes": 12237,
+      "sha256": "62d1e7614375bfc70538db8e807615902e574ffe71c937fccdfb7c1c6fb671fd"
+    },
+    {
+      "source": ".tmp/s06-graphics-quality-20260908/source-state-verification.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/source-state-verification.json",
+      "bytes": 1343,
+      "sha256": "d1ae45fb752019067bdb68a8c89a5e9adce17c3a8c187fdada7d2392bd5670db"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/browser-run-execution.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a1/browser-run-execution.json",
+      "bytes": 404,
+      "sha256": "aeb3007e62b26e97bb165dccc95cab4c8382f764961e20a60e5413ec77ff132e"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/browser-run-transcript.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a1/browser-run-transcript.json",
+      "bytes": 9735,
+      "sha256": "b7de691e6a24576d97c89eaac2eea914ce348bc3dd4b4a8f73f3a49a76447710"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/browser-run.stderr-transcript.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a1/browser-run.stderr-transcript.json",
+      "bytes": 465,
+      "sha256": "79300f4d6b9d7fbd904f00ccff43923ae275c669c36bac7b6e777513d3f13ff8"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/browser-run.stdout-transcript.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a1/browser-run.stdout-transcript.json",
+      "bytes": 9576,
+      "sha256": "4366f216bc5142ef482f038aa14945b145fd8c7710ee4565d7d65903cc902c14"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/discovery-execution.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a1/discovery-execution.json",
+      "bytes": 440,
+      "sha256": "a17743e81fe93998c414def55e979582482876495eda8518f0e8e1fc5defbfd4"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/discovery-transcript.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a1/discovery-transcript.json",
+      "bytes": 3565,
+      "sha256": "8419c0a0cb44386c3d5b83b6e58538022977dd329abccaa84fd0a1ccd3152b26"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/discovery.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a1/discovery.json",
+      "bytes": 198,
+      "sha256": "7010ebd6f75fcc48179ac55d65322494c74ab7c599de3e6e464414967c9c9c79"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/discovery.stderr-transcript.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a1/discovery.stderr-transcript.json",
+      "bytes": 295,
+      "sha256": "1bfcaaf3818202bf8662d8369ff23039ea0f89c398bca665c1ad14da8c7c9ae1"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/discovery.stdout-transcript.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a1/discovery.stdout-transcript.json",
+      "bytes": 3572,
+      "sha256": "991e103e5740c7ec94c8a3fc13d34c168e61a99928b043b28b3dcc9c3acecdd7"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/native-graphics-profiles-before-reload.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a1/native-graphics-profiles-before-reload.json",
+      "bytes": 258505,
+      "sha256": "daba3428bda89646beb552cd89bc5bce7cce227b7558359a2b74dba8363dc722"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/native-graphics-saved-balanced-ru.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a1/native-graphics-saved-balanced-ru.json",
+      "bytes": 79040,
+      "sha256": "abffa1a552a14770e8c02c6fee9f87c5d4b9e75381e68195f026ee80bd9cf5da"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/native-graphics-settings-balanced.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a1/native-graphics-settings-balanced.json",
+      "bytes": 82493,
+      "sha256": "cc9ca8f3f96b345379bbaf2fc167c0303bbadd6522476f386c0e973e79e84c6c"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/native-graphics-settings-economy.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a1/native-graphics-settings-economy.json",
+      "bytes": 99158,
+      "sha256": "25cd468031bbfe7e246c92c59f865b31b76b132bbc6fd6026fb8a9d6b543c5c8"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/native-graphics-settings-narrow-en.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a1/native-graphics-settings-narrow-en.json",
+      "bytes": 110319,
+      "sha256": "3d4cc588f9da82a955470bebf811b09c408e15f69914d68d894f69550e151ffe"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/native-graphics-settings-narrow-en.png",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a1/native-graphics-settings-narrow-en.png",
+      "bytes": 119724,
+      "sha256": "ba50fb6579959d4604dcd606806bb9e432a403a1a0dca42019ff30951176827a"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/native-graphics-settings-narrow-ru.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a1/native-graphics-settings-narrow-ru.json",
+      "bytes": 98343,
+      "sha256": "07cd69a6c6ec0adecb1d6b08cecb67bc6b9ed01021fd093a635b012ac21b4444"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/result.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a1/result.json",
+      "bytes": 17042,
+      "sha256": "0502844bca183dd58b86eb6067a45666022cfc4b9843b9d22de7aac6b67819dd"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/results.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a1/results.json",
+      "bytes": 1117902,
+      "sha256": "2141aebe2a18f97ecfbb38668c661d640e4adffe44b2bf389f75b7921150387a"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/run-context.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a1/run-context.json",
+      "bytes": 3639,
+      "sha256": "571e7f69bf8a2d41ed81e5e2e04bf00391ab97b4af5a8c703279d249a51a4ee7"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/run-result.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a1/run-result.json",
+      "bytes": 807,
+      "sha256": "8305c9dbf12d3197dc11bb51ccdd9c52e0a0a17e3776d2a89883c48ee033fd68"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/runner.mjs",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a1/runner.mjs",
+      "bytes": 11712,
+      "sha256": "8def089cb223783e29f8f49de630ba433f773ffe7ed27ac272c36ab04ef35f5b"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/scoped-review.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a1/scoped-review.json",
+      "bytes": 3384,
+      "sha256": "72eb618ed6c569329b186632145ef7201552ca356248a1b6cd6f3726aa6b6b16"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/source-after.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a1/source-after.json",
+      "bytes": 145332,
+      "sha256": "7cc3060881aea0058a3c25715be4679373c6d34f024d97a1b003dd81d85a161f"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/source-before.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a1/source-before.json",
+      "bytes": 145332,
+      "sha256": "7cc3060881aea0058a3c25715be4679373c6d34f024d97a1b003dd81d85a161f"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/source-comparison.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a1/source-comparison.json",
+      "bytes": 408,
+      "sha256": "0b33e7fd59b80e7b072f89f98a907517396e4da68b5ace6e13009a9c74f2f426"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/test-config-after.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a1/test-config-after.json",
+      "bytes": 283,
+      "sha256": "9318b027f573648f98d151f2656d3f1d418f0210be4d78825ab2fb2162fc838e"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/test-config-before.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a1/test-config-before.json",
+      "bytes": 283,
+      "sha256": "9318b027f573648f98d151f2656d3f1d418f0210be4d78825ab2fb2162fc838e"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/browser-run-execution.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a2/browser-run-execution.json",
+      "bytes": 404,
+      "sha256": "b589b069f8678a379fbff9cb3474c24ad0ca8aa60630060a7ff7e21a9bfe5a7b"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/browser-run-transcript.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a2/browser-run-transcript.json",
+      "bytes": 6926,
+      "sha256": "6345580056065aa9311976c9863a9ff848c49e1097b5e58e7330f8fe274a9176"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/browser-run.stderr-transcript.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a2/browser-run.stderr-transcript.json",
+      "bytes": 465,
+      "sha256": "958be89aa78bd5bb2f6c90530ad7f76eb0751b44df7c1a361e4d580dc28a853d"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/browser-run.stdout-transcript.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a2/browser-run.stdout-transcript.json",
+      "bytes": 6767,
+      "sha256": "87952decfc6fa71c424e49e6ea13cd2eb4558839336275add57da741e6c10dde"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/discovery-execution.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a2/discovery-execution.json",
+      "bytes": 440,
+      "sha256": "7eb853c8e5be4726ee4d94bc95467227b9fe677fd81910a96a7cd90d67753a26"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/discovery-transcript.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a2/discovery-transcript.json",
+      "bytes": 3565,
+      "sha256": "e11c98496eedd7f2d5d6c4bebcde157687032b5b6fe786a42be57671bf8fc4f8"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/discovery.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a2/discovery.json",
+      "bytes": 198,
+      "sha256": "7010ebd6f75fcc48179ac55d65322494c74ab7c599de3e6e464414967c9c9c79"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/discovery.stderr-transcript.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a2/discovery.stderr-transcript.json",
+      "bytes": 295,
+      "sha256": "bc96d37c0019fbf8585aeb58d604363984b3165c6eaa49fce7693384e6ab6eec"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/discovery.stdout-transcript.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a2/discovery.stdout-transcript.json",
+      "bytes": 3572,
+      "sha256": "ec56af071a48bdc0468afa9c1b3fd717f3361f4be81394cecfa0740a25fafddc"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/missing-portraits-audit.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a2/missing-portraits-audit.json",
+      "bytes": 23992,
+      "sha256": "2e1f54860b488773d84d4f984c6d5125d1b17afaac8958c3237a81aec3bc5f42"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/native-graphics-profiles-before-reload.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a2/native-graphics-profiles-before-reload.json",
+      "bytes": 257268,
+      "sha256": "e1b5e2b5b026e68815031ca9d12294053056b60f17f7258c8793650fdda7dc14"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/native-graphics-saved-balanced-ru.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a2/native-graphics-saved-balanced-ru.json",
+      "bytes": 79312,
+      "sha256": "36d14718941a1dcd67fa40f519a9e95c2595604990ecab8befca8fe55fbe104b"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/native-graphics-settings-balanced.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a2/native-graphics-settings-balanced.json",
+      "bytes": 81296,
+      "sha256": "7df4b3a387d256cb3f2ffeeb9ab707e02678c920fffea804e52224d6d36f3052"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/native-graphics-settings-economy.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a2/native-graphics-settings-economy.json",
+      "bytes": 97948,
+      "sha256": "0441c24cd4f85e3be95f74986d8544f41f52e8177f30ca3fc186e0869a882180"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/result.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a2/result.json",
+      "bytes": 13672,
+      "sha256": "d2c7e8cca8d0bc7800345f333328f7a8abb9c1306da9d9fad63e3149ed602c02"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/results.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a2/results.json",
+      "bytes": 785149,
+      "sha256": "e467951654f8a66830ac3f015618a21455e2065a736f86eab4ef27b637e55f94"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/run-context.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a2/run-context.json",
+      "bytes": 4546,
+      "sha256": "305360313d4b7af49e232b50a6c5411424ea1cbb85c2c75cfdc92103820daec3"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/run-result.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a2/run-result.json",
+      "bytes": 808,
+      "sha256": "29e76f485bb2cecb5839fdd36c15ad5a0caf2854b58e398a31d429c6ee481f14"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/runner.mjs",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a2/runner.mjs",
+      "bytes": 11806,
+      "sha256": "57a3c122436e8e2702c2ca7cdbeffd498e82eb00fb68cf0c5b487664773fddf9"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/source-after.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a2/source-after.json",
+      "bytes": 145332,
+      "sha256": "1b5c1f6ff76e65ce6cdd925048fc55beaedf43179202a05b8412af908bb1119b"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/source-before.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a2/source-before.json",
+      "bytes": 145332,
+      "sha256": "1b5c1f6ff76e65ce6cdd925048fc55beaedf43179202a05b8412af908bb1119b"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/source-comparison.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a2/source-comparison.json",
+      "bytes": 408,
+      "sha256": "8a2bd96841e9ae11dce7ce36ef20cb12fbdc19b2976bfce3ab43474e58065568"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/test-config-after.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a2/test-config-after.json",
+      "bytes": 283,
+      "sha256": "8f3a8519ced0473ee3a32932d7d55a7b7072723957177d7d0bf5594bf119c5a0"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/test-config-before.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/history/browser-a2/test-config-before.json",
+      "bytes": 283,
+      "sha256": "8f3a8519ced0473ee3a32932d7d55a7b7072723957177d7d0bf5594bf119c5a0"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a3/evidence/browser-run-execution.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/browser/browser-run-execution.json",
+      "bytes": 404,
+      "sha256": "0dc083757045bd403c5b8a9407ff59576011f40dfadc7b9f64de75883c6386dd"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a3/evidence/browser-run-transcript.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/browser/browser-run-transcript.json",
+      "bytes": 704,
+      "sha256": "53ac88630aaaace4efd1ec8002d3b6ef89e760a6cd646a863d1401f0f6bbf50f"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a3/evidence/browser-run.stderr-transcript.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/browser/browser-run.stderr-transcript.json",
+      "bytes": 465,
+      "sha256": "76e842956cb7b486b07674476626a5f038ca7de7140c652fdbd6cf1a9cb5379e"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a3/evidence/browser-run.stdout-transcript.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/browser/browser-run.stdout-transcript.json",
+      "bytes": 545,
+      "sha256": "c7f5b62f91073255816a54b4e66e6152ea0fac1352b90621519665212f0f23bc"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a3/evidence/discovery-execution.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/browser/discovery-execution.json",
+      "bytes": 439,
+      "sha256": "5095c2c5097a51546d67fb7557d3f7cc8b3f36e42ece56869a5c498e1c09196f"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a3/evidence/discovery-transcript.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/browser/discovery-transcript.json",
+      "bytes": 3564,
+      "sha256": "5d1c24c753518b79cd43f5aa727721d9198941d303c31c6030f774827921e6d2"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a3/evidence/discovery.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/browser/discovery.json",
+      "bytes": 198,
+      "sha256": "7010ebd6f75fcc48179ac55d65322494c74ab7c599de3e6e464414967c9c9c79"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a3/evidence/discovery.stderr-transcript.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/browser/discovery.stderr-transcript.json",
+      "bytes": 295,
+      "sha256": "29212d72266d3aa64159549229504ec8a394e94b25bfaa862d3bcad452fbbe77"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a3/evidence/discovery.stdout-transcript.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/browser/discovery.stdout-transcript.json",
+      "bytes": 3571,
+      "sha256": "264ad70c30aa22949769a6c918dc1a5b0fa52698e50297c8177d6b247e923a5c"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a3/evidence/native-graphics-profiles-before-reload.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/browser/native-graphics-profiles-before-reload.json",
+      "bytes": 257263,
+      "sha256": "e2e90926ecc364a616473dd8836a9fe1bd4accc5ff075286b7a808410327d518"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a3/evidence/native-graphics-profiles-before-reload.png",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/browser/native-graphics-profiles-before-reload.png",
+      "bytes": 2866969,
+      "sha256": "cc3b9775301b07e6f55906bae1346a0cdc5425fce6b60935d702f6e009186f55"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a3/evidence/native-graphics-saved-balanced-ru.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/browser/native-graphics-saved-balanced-ru.json",
+      "bytes": 76683,
+      "sha256": "da301649adf9c5b54d949977bbb385f44a1356276ab57ef0bd9c7766e9cd17b9"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a3/evidence/native-graphics-saved-balanced-ru.png",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/browser/native-graphics-saved-balanced-ru.png",
+      "bytes": 2879450,
+      "sha256": "b5f31a618b4eba044966ee3dd5749bd7cc16a8d486f7c1cb903b558dda6fb10e"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a3/evidence/native-graphics-settings-balanced.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/browser/native-graphics-settings-balanced.json",
+      "bytes": 81303,
+      "sha256": "ac228d181a9c6628697c036cca05d3a998bffa2bba21ce33a1abd419bea09221"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a3/evidence/native-graphics-settings-balanced.png",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/browser/native-graphics-settings-balanced.png",
+      "bytes": 2078184,
+      "sha256": "f59229dd6484e6f203f8b0ee4b105743022bcb90587e3bbf0df8fceef963e999"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a3/evidence/native-graphics-settings-economy.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/browser/native-graphics-settings-economy.json",
+      "bytes": 97957,
+      "sha256": "7b6893225077de4e4d5264d2ff297445a8def0d3288fd2937cce6ef190128219"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a3/evidence/native-graphics-settings-economy.png",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/browser/native-graphics-settings-economy.png",
+      "bytes": 1999131,
+      "sha256": "574fff2afab9322a2becd8bac867f93097cab5e5b8249c4a83a3226d7284a74d"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a3/evidence/native-graphics-settings-narrow-en.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/browser/native-graphics-settings-narrow-en.json",
+      "bytes": 108321,
+      "sha256": "fc0e101a0536371feac1cb6355063a6448c5758f68d589f02743e68c496283ff"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a3/evidence/native-graphics-settings-narrow-en.png",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/browser/native-graphics-settings-narrow-en.png",
+      "bytes": 109365,
+      "sha256": "a95658a9ca3b9badd61fea708d7045a367eadc43214440488b948785b4555fe7"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a3/evidence/native-graphics-settings-narrow-ru.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/browser/native-graphics-settings-narrow-ru.json",
+      "bytes": 96117,
+      "sha256": "85749ce071972b19a95076dbc1569016a42a814a7a360f9efd156c22ecd1a228"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a3/evidence/native-graphics-settings-narrow-ru.png",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/browser/native-graphics-settings-narrow-ru.png",
+      "bytes": 103701,
+      "sha256": "cf74d05f14bae7da11fe2e3030fa4ca8baea9a20b1108a37ba421a845c123d27"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a3/evidence/result.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/browser/result.json",
+      "bytes": 12533,
+      "sha256": "436e43136979aca7597bf600c5e5ddcd601b4a545a6307fe052ad4c490d36a86"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a3/evidence/results.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/browser/results.json",
+      "bytes": 1089561,
+      "sha256": "b0f3a49420bfd2a1f09a28548dfec722d935ff74aa33e91c45674d28f1ef796e"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a3/evidence/run-context.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/browser/run-context.json",
+      "bytes": 5576,
+      "sha256": "36e3570721bae1b0f28f7b13957708c79430e44e0e057267228a0bf70d8192d8"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a3/evidence/run-result.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/browser/run-result.json",
+      "bytes": 807,
+      "sha256": "b6359872c364d2c6a263f9635b9378d09030342d931c9d0f064baf44f3b9bc87"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a3/evidence/runner.mjs",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/browser/runner.mjs",
+      "bytes": 12597,
+      "sha256": "9a508201643fe197a7d67f6b4711fa06c7a34a05678e00ef6786330b8c2c234f"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a3/evidence/scoped-review.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/browser/scoped-review.json",
+      "bytes": 4526,
+      "sha256": "1f5bf0ca523aa7d89e5433d412a542c20f0df3adcc83cb9b8a72f10c63d63ce1"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a3/evidence/source-after.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/browser/source-after.json",
+      "bytes": 145476,
+      "sha256": "df19d8d18543e13cb4b3726ab5aebb7ebb512fe4592a017d8c819fcfc9063f82"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a3/evidence/source-before.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/browser/source-before.json",
+      "bytes": 145476,
+      "sha256": "df19d8d18543e13cb4b3726ab5aebb7ebb512fe4592a017d8c819fcfc9063f82"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a3/evidence/source-comparison.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/browser/source-comparison.json",
+      "bytes": 408,
+      "sha256": "cf7d387975fc3f4d476092dce45d010a90fc66f023af71bce4ff24705b7a93e1"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a3/evidence/test-config-after.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/browser/test-config-after.json",
+      "bytes": 283,
+      "sha256": "8f3a8519ced0473ee3a32932d7d55a7b7072723957177d7d0bf5594bf119c5a0"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a3/evidence/test-config-before.json",
+      "path": "docs/mobile/evidence/S06/graphics-quality-20260908/browser/test-config-before.json",
+      "bytes": 283,
+      "sha256": "8f3a8519ced0473ee3a32932d7d55a7b7072723957177d7d0bf5594bf119c5a0"
+    }
+  ],
+  "limitations": [
+    "Graphics settings copy remains draft, not human editorial approval.",
+    "No full texture/background/Planetka tier completion or physical GPU, FPS, thermal, soak or device acceptance.",
+    "No full English content/biography coverage, nearly10k catalog acceptance, edition-specific EN cover workflow, store or release acceptance.",
+    "Fresh Android and actual built-PWA offline verification follow this source checkpoint; historical6611/8609 keep their own identities."
+  ],
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false
+}

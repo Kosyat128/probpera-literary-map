@@ -1,6 +1,24 @@
 Continue V12 in literary-planet-v12-work on
 codex/literary-planet-v12-bilingual-final-autopilot.
 
+<!-- s06-graphics-quality:begin -->
+High/Balanced/Economy implemented and source-validated; High remains default.
+One Canvas/renderer/camera/atlas and canonical country/writer state retained.
+Saved latest choice, bounded confirmation/retry, RU/EN and reduced motion.
+Actual320px/200% text, keyboard and return control passed.
+122 unique focused tests, final TypeScript/boundaries and one source-browser
+case passed. Initial failed receipts and their actual fixes are preserved.
+S03 packaging fix: same1011 canonical local portraits in native/PWA selection;
+1003 existing files added,27,831,946B. No new artwork or rights approval.
+Fresh Android and built-PWA offline verification pending this source commit.
+Evidence: evidence/S06/graphics-quality-20260908/result.json and
+evidence/S03/canonical-portraits-20260908/result.json.
+First-open stays S03; S06 is in progress, not accepted. Earlier blocks below
+retain historical source/artifact identities. Full asset/Planetka tiers,
+English coverage, nearly10k/edition cover workflows and device/release gates
+remain open; frozen iOS83 unchanged/pending.
+<!-- s06-graphics-quality:end -->
+
 <!-- s03-biography-review:begin -->
 Source 308d8366c24f8b9f47ada304b43856c327890d43: exact biography review and stale propagation.
 Generated EN stays draft; CMS/source/target changes invalidate acceptance.

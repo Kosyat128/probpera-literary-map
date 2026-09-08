@@ -1,0 +1,303 @@
+{
+  "schemaVersion": 1,
+  "mode": "selection",
+  "before": [
+    {
+      "path": "package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+    },
+    {
+      "path": "package.json",
+      "sha256": "90b392c205754f838b8bc7c4475bd475936be1078561bb218c437d151177869f"
+    },
+    {
+      "path": "scripts/mobile/build-pwa.mjs",
+      "sha256": "2c13ba253e08e8e7e01c5b942cdfba21a7bcaf4a59411035bf94697223c4c0a2"
+    },
+    {
+      "path": "scripts/mobile/native-base-assets.json",
+      "sha256": "80c3561b3e4011625acb6a176811f1b751194abcb9df52e44209b992f55c0a4e"
+    },
+    {
+      "path": "scripts/mobile/platform-boundaries.mjs",
+      "sha256": "7267e9a0283a2346e3122d4b47ce8b88aa693bf079e0e330712f8f6d2ff9cc75"
+    },
+    {
+      "path": "scripts/mobile/pwa-portrait-selection.mjs",
+      "sha256": "b1d29482a0cdb553be532e89547aa24722df9498656e6770efc68adcda3bbcb3"
+    },
+    {
+      "path": "scripts/mobile/pwa-portrait-selection.test.mjs",
+      "sha256": "6e9240d96373e7e3cfa37c9d33b9c06e4e07481329e8dda82651c7a2cfcdcb99"
+    },
+    {
+      "path": "scripts/mobile/verify-pwa-artifact.mjs",
+      "sha256": "8ff0400b1b3b9f519a44bad26f091bcc12fedeff6473a79fdc4618c24918c240"
+    },
+    {
+      "path": "scripts/mobile/verify-pwa-artifact.test.mjs",
+      "sha256": "9e4755826c96ffe71b6ce790400118a13f2947a9e06d98663bcd40a9e0cc3698"
+    },
+    {
+      "path": "src/App.tsx",
+      "sha256": "c7143cf37e07086dd54dac8628ff3d56534d3fddf664ac0e487cabd4b0aeffd1"
+    },
+    {
+      "path": "src/components/CountryFlagIcon.tsx",
+      "sha256": "f4318be4993ea0c7499fd83053f6595913dcb10184c9dfcaa6ff6f7660afc18b"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "sha256": "2be1cb0b359db33af29482629b28d39d2033e0f01fd8b505379e23ddb120d563"
+    },
+    {
+      "path": "src/components/LiteraryWorldMap.tsx",
+      "sha256": "4443314e76c87af1fc8f4d098654c743f4bd4ff07ed5184b7f4171dd38d0391a"
+    },
+    {
+      "path": "src/components/globeQuality.test.ts",
+      "sha256": "241a0f611cc034039023ede3a844913c97c22eefa78ed9bf073a06c0c2f2ee8a"
+    },
+    {
+      "path": "src/components/globeQuality.ts",
+      "sha256": "355235ed6c9ef67d05bf6075cd49ef7a5636f6f43b2dc090a1063376f942b4c5"
+    },
+    {
+      "path": "src/host/HostPlatformServices.test.ts",
+      "sha256": "4aae72e562dbfe75cccc0f72a7dd75156a94b7b90fc53cc17cf52d48f9e2d8d9"
+    },
+    {
+      "path": "src/host/HostPlatformServices.ts",
+      "sha256": "0fb34ee847ae38b4a50d962b582664d9436aa6800f7e4922f4a653df1d91ef1e"
+    },
+    {
+      "path": "src/host/NativePlanetPanel.tsx",
+      "sha256": "3c4a1518de5da3c5fa25732a6905b86606a48ed281ad30dad51c8adb90d9857d"
+    },
+    {
+      "path": "src/host/PlanetGraphicsSettings.css",
+      "sha256": "0c25285a50ba8f097ef867748c57cab270df6406f8a9a2454808b9a197207699"
+    },
+    {
+      "path": "src/host/PlanetGraphicsSettings.tsx",
+      "sha256": "6332bec397775901379ec3776548aaf610b6e7cde094badd5672d09436b24e4f"
+    },
+    {
+      "path": "src/host/host.css",
+      "sha256": "6bc54f91100cb85c5df6407da0a468d7f81d5bc0d28ca02ff6bab6c873190120"
+    },
+    {
+      "path": "src/host/planetGraphicsQuality.test.ts",
+      "sha256": "1ffb4b4c5a3f2f08397924a8724856d02eb7ee0139f7f9f717911439484ebc29"
+    },
+    {
+      "path": "src/host/planetGraphicsQuality.ts",
+      "sha256": "5b8cc15796b0a2e0c3e6222ba6c7f0af2ffa2102d7a30000891f2435906d79f2"
+    },
+    {
+      "path": "src/platform/adapters/web/WebPlatformAdapter.test.ts",
+      "sha256": "337b4660c7387845540ef4ee08f2acb99479cebc63786bfa1b8259424b982e36"
+    },
+    {
+      "path": "src/platform/adapters/web/WebPlatformAdapter.ts",
+      "sha256": "ae2a466155b668e99fc66d9804cc2ba0bbad2bf3539407ccbc0cee7c877bb2d9"
+    },
+    {
+      "path": "src/pwa/pwaBootstrapBudgets.ts",
+      "sha256": "3fceaa940a83c9d93c1bede09d2f1ab87b276fd837a081038954095be3c3df1a"
+    },
+    {
+      "path": "src/pwa/registerPwaWorker.test.ts",
+      "sha256": "7f2194214e3231c45367e5b6f8dd0aaa51bfc50c510ea52f0b2dd25d47f72107"
+    },
+    {
+      "path": "src/pwa/registerPwaWorker.ts",
+      "sha256": "cb5c95b8abafd82ed25bde899420007bb81a87014ba2bf04a87efd4a1df6ea41"
+    },
+    {
+      "path": "src/pwa/serviceWorkerRuntime.js",
+      "sha256": "a6e53d8e83c137de4cbd60cb1f4a81ff518248d1e3d417a98f229c30c81df79c"
+    },
+    {
+      "path": "src/pwa/serviceWorkerRuntime.test.mjs",
+      "sha256": "0d96881feb59ff6ffdfad7608461a953af7aae753c29ecf7fdb344c9d0e23abd"
+    },
+    {
+      "path": "tests/host/native-planet.spec.mjs",
+      "sha256": "7f953527de5ba6cf4cc92e19bd71eb75625cf53c2b1784eb7d908965ce8cb748"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "8d51a8c9266fe83bf17c076b51672753b3750a17520cd0d2c28a90cb8b21e0d6"
+    },
+    {
+      "path": "vitest.config.ts",
+      "sha256": "5c1e90985e77b35599e5bdaf77c74a1166949ec9c4f45d1c5f926c3f53bef90e"
+    }
+  ],
+  "after": [
+    {
+      "path": "package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+    },
+    {
+      "path": "package.json",
+      "sha256": "90b392c205754f838b8bc7c4475bd475936be1078561bb218c437d151177869f"
+    },
+    {
+      "path": "scripts/mobile/build-pwa.mjs",
+      "sha256": "2c13ba253e08e8e7e01c5b942cdfba21a7bcaf4a59411035bf94697223c4c0a2"
+    },
+    {
+      "path": "scripts/mobile/native-base-assets.json",
+      "sha256": "80c3561b3e4011625acb6a176811f1b751194abcb9df52e44209b992f55c0a4e"
+    },
+    {
+      "path": "scripts/mobile/platform-boundaries.mjs",
+      "sha256": "7267e9a0283a2346e3122d4b47ce8b88aa693bf079e0e330712f8f6d2ff9cc75"
+    },
+    {
+      "path": "scripts/mobile/pwa-portrait-selection.mjs",
+      "sha256": "b1d29482a0cdb553be532e89547aa24722df9498656e6770efc68adcda3bbcb3"
+    },
+    {
+      "path": "scripts/mobile/pwa-portrait-selection.test.mjs",
+      "sha256": "6e9240d96373e7e3cfa37c9d33b9c06e4e07481329e8dda82651c7a2cfcdcb99"
+    },
+    {
+      "path": "scripts/mobile/verify-pwa-artifact.mjs",
+      "sha256": "8ff0400b1b3b9f519a44bad26f091bcc12fedeff6473a79fdc4618c24918c240"
+    },
+    {
+      "path": "scripts/mobile/verify-pwa-artifact.test.mjs",
+      "sha256": "9e4755826c96ffe71b6ce790400118a13f2947a9e06d98663bcd40a9e0cc3698"
+    },
+    {
+      "path": "src/App.tsx",
+      "sha256": "c7143cf37e07086dd54dac8628ff3d56534d3fddf664ac0e487cabd4b0aeffd1"
+    },
+    {
+      "path": "src/components/CountryFlagIcon.tsx",
+      "sha256": "f4318be4993ea0c7499fd83053f6595913dcb10184c9dfcaa6ff6f7660afc18b"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "sha256": "2be1cb0b359db33af29482629b28d39d2033e0f01fd8b505379e23ddb120d563"
+    },
+    {
+      "path": "src/components/LiteraryWorldMap.tsx",
+      "sha256": "4443314e76c87af1fc8f4d098654c743f4bd4ff07ed5184b7f4171dd38d0391a"
+    },
+    {
+      "path": "src/components/globeQuality.test.ts",
+      "sha256": "241a0f611cc034039023ede3a844913c97c22eefa78ed9bf073a06c0c2f2ee8a"
+    },
+    {
+      "path": "src/components/globeQuality.ts",
+      "sha256": "355235ed6c9ef67d05bf6075cd49ef7a5636f6f43b2dc090a1063376f942b4c5"
+    },
+    {
+      "path": "src/host/HostPlatformServices.test.ts",
+      "sha256": "4aae72e562dbfe75cccc0f72a7dd75156a94b7b90fc53cc17cf52d48f9e2d8d9"
+    },
+    {
+      "path": "src/host/HostPlatformServices.ts",
+      "sha256": "0fb34ee847ae38b4a50d962b582664d9436aa6800f7e4922f4a653df1d91ef1e"
+    },
+    {
+      "path": "src/host/NativePlanetPanel.tsx",
+      "sha256": "3c4a1518de5da3c5fa25732a6905b86606a48ed281ad30dad51c8adb90d9857d"
+    },
+    {
+      "path": "src/host/PlanetGraphicsSettings.css",
+      "sha256": "0c25285a50ba8f097ef867748c57cab270df6406f8a9a2454808b9a197207699"
+    },
+    {
+      "path": "src/host/PlanetGraphicsSettings.tsx",
+      "sha256": "6332bec397775901379ec3776548aaf610b6e7cde094badd5672d09436b24e4f"
+    },
+    {
+      "path": "src/host/host.css",
+      "sha256": "6bc54f91100cb85c5df6407da0a468d7f81d5bc0d28ca02ff6bab6c873190120"
+    },
+    {
+      "path": "src/host/planetGraphicsQuality.test.ts",
+      "sha256": "1ffb4b4c5a3f2f08397924a8724856d02eb7ee0139f7f9f717911439484ebc29"
+    },
+    {
+      "path": "src/host/planetGraphicsQuality.ts",
+      "sha256": "5b8cc15796b0a2e0c3e6222ba6c7f0af2ffa2102d7a30000891f2435906d79f2"
+    },
+    {
+      "path": "src/platform/adapters/web/WebPlatformAdapter.test.ts",
+      "sha256": "337b4660c7387845540ef4ee08f2acb99479cebc63786bfa1b8259424b982e36"
+    },
+    {
+      "path": "src/platform/adapters/web/WebPlatformAdapter.ts",
+      "sha256": "ae2a466155b668e99fc66d9804cc2ba0bbad2bf3539407ccbc0cee7c877bb2d9"
+    },
+    {
+      "path": "src/pwa/pwaBootstrapBudgets.ts",
+      "sha256": "3fceaa940a83c9d93c1bede09d2f1ab87b276fd837a081038954095be3c3df1a"
+    },
+    {
+      "path": "src/pwa/registerPwaWorker.test.ts",
+      "sha256": "7f2194214e3231c45367e5b6f8dd0aaa51bfc50c510ea52f0b2dd25d47f72107"
+    },
+    {
+      "path": "src/pwa/registerPwaWorker.ts",
+      "sha256": "cb5c95b8abafd82ed25bde899420007bb81a87014ba2bf04a87efd4a1df6ea41"
+    },
+    {
+      "path": "src/pwa/serviceWorkerRuntime.js",
+      "sha256": "a6e53d8e83c137de4cbd60cb1f4a81ff518248d1e3d417a98f229c30c81df79c"
+    },
+    {
+      "path": "src/pwa/serviceWorkerRuntime.test.mjs",
+      "sha256": "0d96881feb59ff6ffdfad7608461a953af7aae753c29ecf7fdb344c9d0e23abd"
+    },
+    {
+      "path": "tests/host/native-planet.spec.mjs",
+      "sha256": "7f953527de5ba6cf4cc92e19bd71eb75625cf53c2b1784eb7d908965ce8cb748"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "8d51a8c9266fe83bf17c076b51672753b3750a17520cd0d2c28a90cb8b21e0d6"
+    },
+    {
+      "path": "vitest.config.ts",
+      "sha256": "5c1e90985e77b35599e5bdaf77c74a1166949ec9c4f45d1c5f926c3f53bef90e"
+    }
+  ],
+  "unchanged": true,
+  "executions": [
+    {
+      "name": "unit",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "scripts/mobile/pwa-portrait-selection.test.mjs",
+        "scripts/mobile/verify-pwa-artifact.test.mjs",
+        "--testNamePattern",
+        "canonical PWA portrait",
+        "--reporter=json",
+        "--outputFile=.tmp/s06-graphics-quality-20260908/selection-a1/vitest.json"
+      ],
+      "startedAt": "2026-09-08T11:09:49.095Z",
+      "durationMs": 6723,
+      "exitCode": 0,
+      "evidence": "unit.json"
+    }
+  ],
+  "tests": {
+    "passed": 11,
+    "failed": 0,
+    "skipped": 82,
+    "files": 2,
+    "failures": []
+  },
+  "pass": true,
+  "stageAccepted": false,
+  "releaseReady": false
+}

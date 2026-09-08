@@ -188,6 +188,136 @@ test("cold offline RU and EN launch preserve country and load first-use search",
   } finally { await context.setOffline(false); }
 });
 
+test("expanded portrait base installs and verifies real offline bytes with saved graphics and bilingual scene", async ({ page, context }, testInfo) => {
+  const errors = [], assetFailures = [], checks = [], portraits = [], coldLaunches = [];
+  page.on("pageerror", error => errors.push(error.message));
+  const isAsset = url => url.startsWith(qaOrigin + "/planet/assets/");
+  page.on("response", response => { if (isAsset(response.url()) && response.status() >= 400) assetFailures.push({ url: response.url(), status: response.status() }); });
+  page.on("requestfailed", request => { if (isAsset(request.url())) assetFailures.push({ url: request.url(), failure: request.failure()?.errorText }); });
+  await page.addInitScript(() => {
+    window.__portraitReadinessReplies = [];
+    navigator.serviceWorker.addEventListener("message", event => {
+      if (event.source === navigator.serviceWorker.controller && event.data?.type === "PLANET_OFFLINE_READINESS_RESULT") {
+        const { status, engineBuildId, activeBuildId, fileCount, bytes, reason } = event.data;
+        window.__portraitReadinessReplies.push({ status, engineBuildId, activeBuildId, fileCount, bytes, reason });
+      }
+    });
+  });
+  const selection = JSON.parse(await readFile("scripts/mobile/native-base-assets.json", "utf8"));
+  const selectedPortraits = selection.files.filter(file => file.output.startsWith("assets/writer-portraits/"));
+  await openAuthorized(page);
+  const marker = await installed(page);
+  expect(marker.manifest.files.length).toBeGreaterThan(512);
+  expect(marker.manifest.files.length).toBeLessThanOrEqual(2048);
+  const expectedBytes = marker.manifest.files.reduce((total, file) => total + file.bytes, 0);
+  expect(expectedBytes).toBeLessThanOrEqual(64 * 1024 * 1024);
+  const manifestPortraits = marker.manifest.files.filter(file => file.url.startsWith("/planet/assets/writer-portraits/"));
+  expect(manifestPortraits.length).toBe(selectedPortraits.length);
+  for (const portrait of selectedPortraits) expect(manifestPortraits.find(file => file.url === "/planet/" + portrait.output)?.sha256).toBe(portrait.sourceSha256);
+  const capture = async () => {
+    await expect.poll(() => page.evaluate(() => typeof window.__literaryPlanetQaScenes)).toBe("function");
+    const scene = await page.evaluateHandle(() => window.__literaryPlanetQaScenes().find(item => document.querySelector("#atlas").contains(item.canvas)));
+    expect(await scene.evaluate(value => Boolean(value?.canvas && value.renderer && value.camera && value.scene))).toBe(true);
+    return scene;
+  };
+  const stable = async scene => {
+    await expect(page.locator("canvas")).toHaveCount(1);
+    expect(await scene.evaluate(previous => {
+      const now = window.__literaryPlanetQaScenes().find(item => item.canvas === previous.canvas);
+      return previous.canvas.isConnected && now?.renderer === previous.renderer && now?.camera === previous.camera && now?.scene === previous.scene;
+    })).toBe(true);
+    expect(new URL(page.url()).searchParams.get("country")).toBe("russia");
+    await expect(page.locator("#atlas .literary-globe")).toHaveAttribute("data-globe-quality-tier", "balanced");
+    await expect.poll(() => scene.evaluate(value => ({ dpr: value.renderer.getPixelRatio(), stars: (() => {
+      const counts = []; value.scene.traverse(object => { if (object.isPoints && object.geometry?.attributes.position) counts.push(object.geometry.attributes.position.count); }); return counts;
+    })() }))).toEqual({ dpr: 1.25, stars: [1600] });
+  };
+  const collection = page.locator(".native-planet-panel");
+  const openCollection = async () => { await page.locator('[data-atlas-action="open-collection"]').click(); await expect(collection).toBeVisible(); };
+  const closeCollection = async locale => { await collection.getByRole("button", { name: locale === "ru" ? "Вернуться к планете" : "Return to the planet", exact: true }).click(); await expect(collection).toBeHidden(); };
+  let scene = await capture();
+  const worker = context.serviceWorkers().find(item => item.url() === qaOrigin + "/planet/sw.js");
+  expect(worker).toBeTruthy();
+  await worker.evaluate(() => {
+    const original = globalThis.fetch;
+    globalThis.__portraitFetchObservation = { original, armed: false, attempts: 0 };
+    globalThis.fetch = function (...args) {
+      if (globalThis.__portraitFetchObservation.armed) globalThis.__portraitFetchObservation.attempts++;
+      return Reflect.apply(original, this, args);
+    };
+  });
+  try {
+    await openCollection();
+    const graphics = collection.locator("[data-planet-graphics-settings]");
+    await graphics.locator("summary").click();
+    await graphics.locator('[data-planet-quality-option="balanced"]').check();
+    await expect(graphics.locator("[data-planet-quality-save-state]")).toHaveAttribute("data-planet-quality-save-state", "idle");
+    await stable(scene);
+    const help = collection.locator(".pwa-help");
+    await help.locator("summary").click();
+    await worker.evaluate(() => { globalThis.__portraitFetchObservation.armed = true; });
+    const checkStarted = Date.now();
+    await help.getByRole("button", { name: "Проверить офлайн-файлы", exact: true }).click();
+    await expect(help.locator("[data-pwa-offline-readiness]")).toHaveAttribute("data-pwa-offline-readiness", "complete", { timeout: 35_000 });
+    const reply = await page.evaluate(() => window.__portraitReadinessReplies.at(-1));
+    expect(reply).toMatchObject({ status: "complete", engineBuildId: marker.manifest.buildId, activeBuildId: marker.manifest.buildId,
+      fileCount: marker.manifest.files.length, bytes: expectedBytes });
+    const networkAttempts = await worker.evaluate(() => { globalThis.__portraitFetchObservation.armed = false; return globalThis.__portraitFetchObservation.attempts; });
+    expect(networkAttempts).toBe(0);
+    checks.push({ ...reply, durationMs: Date.now() - checkStarted, networkAttempts });
+    await closeCollection("ru");
+    await stable(scene);
+    await context.setOffline(true);
+    await scene.dispose(); scene = null;
+    await page.goto("/planet/ru/?country=russia#atlas", { waitUntil: "domcontentloaded" });
+    await expect(page.locator("[data-pwa-authorized]")).toBeVisible();
+    await expect(page.locator("#atlas .literary-globe")).toHaveAttribute("data-globe-webgl-context", "ready", { timeout: 45_000 });
+    await expect(page.locator(".native-planet-launch")).toHaveCount(0);
+    await expect(page.locator("[data-pwa-access-verification]")).toHaveAttribute("data-pwa-access-verification", "saved");
+    scene = await capture();
+    await stable(scene);
+    const firstPortrait = page.locator('.writer-list img[src$="/assets/writer-portraits/q45087.webp"]');
+    await firstPortrait.scrollIntoViewIfNeeded();
+    await expect.poll(() => firstPortrait.evaluate(image => image.complete && image.naturalWidth > 0)).toBe(true);
+    portraits.push(await firstPortrait.evaluate(image => ({ locale: document.documentElement.lang, src: image.currentSrc, width: image.naturalWidth, height: image.naturalHeight })));
+    await page.screenshot({ path: testInfo.outputPath("expanded-offline-russian-writer-list.png"), fullPage: false });
+    await page.locator(".writer-list .writer-row").filter({ hasText: /Достоевск|Dostoevsk/iu }).click();
+    await expect(page.locator(".writer-detail h4")).toContainText(/Достоевск|Dostoevsk/iu);
+    expect(new URL(page.url()).searchParams.get("writer")).toBe("dostoevsky");
+    const writerPortrait = page.locator(".writer-detail-portrait img");
+    await writerPortrait.scrollIntoViewIfNeeded();
+    await expect.poll(() => writerPortrait.evaluate(image => image.complete && image.naturalWidth > 0)).toBe(true);
+    await selectLocale(page, "en");
+    await stable(scene);
+    expect(new URL(page.url()).searchParams.get("writer")).toBe("dostoevsky");
+    await expect(page.locator(".writer-detail h4")).toContainText("Dostoevsky");
+    await writerPortrait.scrollIntoViewIfNeeded();
+    await expect.poll(() => writerPortrait.evaluate(image => image.complete && image.naturalWidth > 0)).toBe(true);
+    portraits.push(await writerPortrait.evaluate(image => ({ locale: document.documentElement.lang, src: image.currentSrc, width: image.naturalWidth, height: image.naturalHeight })));
+    await page.screenshot({ path: testInfo.outputPath("expanded-offline-english-writer.png"), fullPage: false });
+    coldLaunches.push({ locale: "ru", followedBy: "en", sameCanvasRendererCameraScene: true, selectedWriter: "dostoevsky", savedQuality: "balanced" });
+    await scene.dispose(); scene = null;
+    await page.reload({ waitUntil: "domcontentloaded" });
+    await expect(page.locator("#atlas .literary-globe")).toHaveAttribute("data-globe-webgl-context", "ready", { timeout: 45_000 });
+    await expect(page.locator(".native-planet-launch")).toHaveCount(0);
+    await expect(page.locator("html")).toHaveAttribute("lang", "en");
+    await expect(page.locator("[data-pwa-access-verification]")).toHaveAttribute("data-pwa-access-verification", "saved");
+    scene = await capture(); await stable(scene);
+    expect(new URL(page.url()).searchParams.get("writer")).toBe("dostoevsky");
+    await expect(page.locator(".writer-detail h4")).toContainText("Dostoevsky");
+    coldLaunches.push({ locale: "en", selectedWriter: "dostoevsky", savedQuality: "balanced", newDocument: true });
+    expect(errors).toEqual([]); expect(assetFailures).toEqual([]);
+  } finally {
+    await worker.evaluate(() => { if (globalThis.__portraitFetchObservation) { globalThis.fetch = globalThis.__portraitFetchObservation.original; delete globalThis.__portraitFetchObservation; } }).catch(() => undefined);
+    await scene?.dispose();
+    await context.setOffline(false);
+    await testInfo.attach("expanded-portrait-offline-evidence", { body: JSON.stringify({ localQaOnly: true, buildId: marker.manifest.buildId,
+      manifestFiles: marker.manifest.files.length, manifestBytes: expectedBytes, manifestPortraits: manifestPortraits.length,
+      checks, portraits, coldLaunches, errors, assetFailures, actualServiceWorker: true, cacheMutationByTest: false,
+      actualOsInstallation: false, releaseReady: false }, null, 2), contentType: "application/json" });
+  }
+});
+
 test("device preparation restores real offline bytes and keeps simulated browser decisions truthful", async ({ page, context }, testInfo) => {
   const desktopCompact = testInfo.project.name === "pwa-desktop";
   // Only installation/persistence decisions are simulated. The signed access,

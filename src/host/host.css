@@ -56,6 +56,7 @@
 .native-planet-panel[hidden] { display: none; }
 .native-planet-panel__header {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   flex-shrink: 0;
@@ -63,8 +64,20 @@
   padding: 12px 20px;
   border-bottom: 1px solid var(--line, #dccfc0);
 }
-.native-planet-panel__header h1 { margin: 0; font-size: 1.25rem; }
+.native-planet-panel__header h1 {
+  min-width: 0;
+  max-width: 100%;
+  margin: 0;
+  font-size: 1.25rem;
+  overflow-wrap: anywhere;
+}
+.native-planet-panel__header > .ui-icon-button {
+  flex-shrink: 0;
+  min-width: 44px;
+  min-height: 44px;
+}
 .native-planet-panel__header .interface-language-control {
+  flex-shrink: 0;
   margin-left: auto;
   height: auto;
   padding: 2px;

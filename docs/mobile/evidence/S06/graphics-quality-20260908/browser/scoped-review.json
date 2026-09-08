@@ -1,0 +1,190 @@
+{
+  "schemaVersion": 1,
+  "status": "ONE_SELECTED_SOURCE_BROWSER_CASE_PASSED",
+  "sourceInputsSha256": "7f26a8caba4f8e20cd1d951da652c0b8a4c35a0cb4956c1a3b6db7fec49a05e3",
+  "statistics": {
+    "startTime": "2026-09-08T11:09:20.529Z",
+    "duration": 28938.538,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "initial": {
+    "tier": "high",
+    "dpr": 1.5,
+    "starCounts": [
+      2400
+    ],
+    "edition": "rand-mcnally-1887",
+    "reducedMotion": false
+  },
+  "changes": [
+    {
+      "tier": "balanced",
+      "dpr": 1.25,
+      "starCounts": [
+        1600
+      ],
+      "edition": "rand-mcnally-1887",
+      "reducedMotion": false
+    },
+    {
+      "tier": "economy",
+      "dpr": 1.1,
+      "starCounts": [
+        900
+      ],
+      "edition": "rand-mcnally-1887",
+      "reducedMotion": false
+    },
+    {
+      "tier": "high",
+      "dpr": 1.5,
+      "starCounts": [
+        2400
+      ],
+      "edition": "rand-mcnally-1887",
+      "reducedMotion": false
+    }
+  ],
+  "reduced": {
+    "tier": "high",
+    "dpr": 1.5,
+    "starCounts": [
+      2400
+    ],
+    "edition": "rand-mcnally-1887",
+    "reducedMotion": true
+  },
+  "savedBeforeReload": {
+    "tier": "balanced",
+    "dpr": 1.25,
+    "starCounts": [
+      1600
+    ],
+    "edition": "rand-mcnally-1887",
+    "reducedMotion": true
+  },
+  "keyboardSelection": {
+    "focused": true,
+    "focusVisible": true,
+    "outlineStyle": "solid",
+    "outlineWidth": 3,
+    "checked": true,
+    "value": "balanced"
+  },
+  "narrow": [
+    {
+      "language": "ru",
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "actualFontSize": "32px",
+      "close": {
+        "label": "Вернуться к планете",
+        "bounds": {
+          "x": 256,
+          "y": 89,
+          "width": 44,
+          "height": 44
+        }
+      },
+      "targets": [
+        {
+          "tier": "high",
+          "width": 270,
+          "height": 522.9375
+        },
+        {
+          "tier": "balanced",
+          "width": 270,
+          "height": 522.9375
+        },
+        {
+          "tier": "economy",
+          "width": 270,
+          "height": 622.125
+        }
+      ],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "missingResources": []
+    },
+    {
+      "language": "en",
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "actualFontSize": "32px",
+      "close": {
+        "label": "Return to the planet",
+        "bounds": {
+          "x": 256,
+          "y": 89,
+          "width": 44,
+          "height": 44
+        }
+      },
+      "targets": [
+        {
+          "tier": "high",
+          "width": 270,
+          "height": 423.75
+        },
+        {
+          "tier": "balanced",
+          "width": 270,
+          "height": 423.75
+        },
+        {
+          "tier": "economy",
+          "width": 270,
+          "height": 522.9375
+        }
+      ],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "missingResources": []
+    }
+  ],
+  "visualReview": {
+    "viewed": [
+      "native-graphics-settings-narrow-ru.png",
+      "native-graphics-settings-narrow-en.png"
+    ],
+    "result": "Header wraps and retains visible44pxclose at320px and measured200% text inRU/EN. New settings labels remain withinviewport; normalverticalscroll, RUlongwordwrap allowed.",
+    "screenshots": [
+      {
+        "path": ".tmp/s03-graphics-quality-native-20260908-a3/evidence/native-graphics-settings-narrow-ru.png",
+        "sha256": "cf74d05f14bae7da11fe2e3030fa4ca8baea9a20b1108a37ba421a845c123d27"
+      },
+      {
+        "path": ".tmp/s03-graphics-quality-native-20260908-a3/evidence/native-graphics-settings-narrow-en.png",
+        "sha256": "a95658a9ca3b9badd61fea708d7045a367eadc43214440488b948785b4555fe7"
+      }
+    ]
+  },
+  "priorAttempts": [
+    {
+      "attempt": "a1",
+      "wholeCase": "FAIL",
+      "cause": "Final console warning gate; additional header clipping identified visually"
+    },
+    {
+      "attempt": "a2",
+      "wholeCase": "FAIL",
+      "cause": "22 actual approved canonical portrait URLs absent from native selection; full existing selection subsequently included"
+    }
+  ],
+  "limits": [
+    "Source bundled in memory in desktop Chrome; OS plugins/capabilities simulated.",
+    "No APK/PWA artifact or actualinstalleddevice claim.",
+    "New RU/EN settings copy remainsdraft; no stageacceptance or performancecertification."
+  ],
+  "actualInstalledRuntime": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

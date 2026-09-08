@@ -9,6 +9,8 @@ import ts from "typescript";
 import { build as bundle } from "esbuild";
 import { PWA_BOOTSTRAP_ENTRIES, bootstrapSourcePath, bootstrapManifestKeys, normalizePwaAuthority, pwaAuthoritySha256, loadPwaAuthority } from "./pwa-artifact.mjs";
 import { normalizePwaWorkerConfig } from "../../src/pwa/serviceWorkerRuntime.js";
+import { PWA_BOOTSTRAP_MAX_FILES, PWA_BOOTSTRAP_MAX_FILE_BYTES, PWA_BOOTSTRAP_MAX_TOTAL_BYTES } from "../../src/pwa/pwaBootstrapBudgets.ts";
+import { PWA_PORTRAIT_SELECTION_PATH, PWA_PORTRAIT_PREFIX, selectPwaPortraitAssets } from "./pwa-portrait-selection.mjs";
 import { bookDossierStaticIssues } from "../audit-book-dossier-delivery.mjs";
 
 const SCOPE = "/planet/";
@@ -227,7 +229,7 @@ export async function verifyPwaArtifact({ rootDir = process.cwd(), artifactDir =
     }
     if (digest(json(inputs.files)) !== inputs.sha256) add("SOURCE_INPUT_DIGEST", "artifact.json", "Source-input aggregate digest does not match the ordered records.");
     try {
-      const names = execFileSync("git", ["-c", "safe.directory=" + root, "ls-files", "-z", "--cached", "--others", "--exclude-standard", "--", "src", "index.html", "vite.config.ts", "vite.pwa.config.ts", "tsconfig.json", "package.json", "package-lock.json", "scripts/mobile/build-pwa.mjs", "scripts/mobile/pwa-artifact.mjs", "scripts/mobile/pwa-shell.mjs"], { cwd: root, encoding: "utf8", maxBuffer: 4 * 1024 * 1024, stdio: ["ignore", "pipe", "pipe"] }).split("\0");
+      const names = execFileSync("git", ["-c", "safe.directory=" + root, "ls-files", "-z", "--cached", "--others", "--exclude-standard", "--", "src", "index.html", "vite.config.ts", "vite.pwa.config.ts", "tsconfig.json", "package.json", "package-lock.json", "scripts/mobile/build-pwa.mjs", "scripts/mobile/pwa-artifact.mjs", "scripts/mobile/pwa-shell.mjs", "scripts/mobile/pwa-portrait-selection.mjs", PWA_PORTRAIT_SELECTION_PATH], { cwd: root, encoding: "utf8", maxBuffer: 4 * 1024 * 1024, stdio: ["ignore", "pipe", "pipe"] }).split("\0");
       const expected = [...new Set(names)].filter(name => name && !/\.(?:test|spec)\.[cm]?[jt]sx?$/u.test(name)).sort();
       if (!sameJson(expected, [...inputMap.keys()])) add("SOURCE_INPUT_SET", "artifact.json", "Snapshot does not cover the current tracked/untracked build-input set.");
     } catch { add("SOURCE_INPUT_SET", "artifact.json", "Cannot independently enumerate current Git source inputs."); }
@@ -252,7 +254,7 @@ export async function verifyPwaArtifact({ rootDir = process.cwd(), artifactDir =
     const urls = new Set();
     for (const file of config.files) {
       try {
-        if (!object(file) || !Object.keys(file).every(key => ["url", "bytes", "sha256", "kind", "aliases"].includes(key)) || !Number.isSafeInteger(file.bytes) || file.bytes < 1 || file.bytes > 16 * 1024 * 1024 || !SHA.test(file.sha256) || !["shell", "asset"].includes(file.kind)) throw new Error("Invalid bootstrap record");
+        if (!object(file) || !Object.keys(file).every(key => ["url", "bytes", "sha256", "kind", "aliases"].includes(key)) || !Number.isSafeInteger(file.bytes) || file.bytes < 1 || file.bytes > PWA_BOOTSTRAP_MAX_FILE_BYTES || !SHA.test(file.sha256) || !["shell", "asset"].includes(file.kind)) throw new Error("Invalid bootstrap record");
         const filename = urlFile(file.url);
         if (urls.has(file.url) || /\/(?:api|auth|license|licenses|entitlements|private|admin|cms|child|children|parent|purchase|billing|payments)(?:\/|$)/iu.test(file.url) || filename.startsWith("__pwa_")) throw new Error("Unsafe/duplicate bootstrap URL");
         if ((file.kind === "shell") !== Object.values(shellPaths).includes(file.url)) throw new Error("Unexpected shell ownership");
@@ -266,7 +268,7 @@ export async function verifyPwaArtifact({ rootDir = process.cwd(), artifactDir =
         }
       } catch { add("BOOTSTRAP_RECORD", file?.url ?? "bootstrap-integrity.json", "Invalid, private, duplicate or out-of-scope essential file/alias."); }
     }
-    if (counts.bootstrapFiles > 512 || counts.bootstrapBytes > 64 * 1024 * 1024 || artifact.bootstrap?.files !== counts.bootstrapFiles || artifact.bootstrap?.bytes !== counts.bootstrapBytes) add("BOOTSTRAP_BUDGET", "artifact.json", "Bootstrap bounds/counts must equal actual verified entries.");
+    if (counts.bootstrapFiles > PWA_BOOTSTRAP_MAX_FILES || counts.bootstrapBytes > PWA_BOOTSTRAP_MAX_TOTAL_BYTES || artifact.bootstrap?.files !== counts.bootstrapFiles || artifact.bootstrap?.bytes !== counts.bootstrapBytes) add("BOOTSTRAP_BUDGET", "artifact.json", "Bootstrap bounds/counts must equal actual verified entries.");
     const expectedBuildId = digest(json({ sourceCommit: artifact.sourceCommit, sourceInputsSha256: inputs?.sha256, workerSourceSha256: artifact.workerSourceSha256, authoritySha256: artifact.authoritySha256, localQaAuthority: artifact.localQaAuthority, authoritySource: artifact.authoritySource, rollbackReference: artifact.rollbackReference, files: config.files }));
     if (expectedBuildId !== artifact.buildId) add("BUILD_ID", "artifact.json", "Build ID does not bind the source snapshot, worker source and essential files.");
   }
@@ -326,6 +328,7 @@ export async function verifyPwaArtifact({ rootDir = process.cwd(), artifactDir =
   }
   const provenance = await parseFile("asset-provenance.json");
   const publicOutputs = new Set();
+  const publicSourceHashes = new Map();
   if (!fields(provenance, ["schemaVersion", "sourceCommit", "files"]) || provenance.schemaVersion !== 1 || provenance.sourceCommit !== artifact.sourceCommit || !Array.isArray(provenance.files) || provenance.files.length > 4096) add("ASSET_PROVENANCE", "asset-provenance.json", "Exact source checkpoint and bounded public-asset provenance are required.");
   else for (const record of provenance.files) {
     try {
@@ -336,7 +339,8 @@ export async function verifyPwaArtifact({ rootDir = process.cwd(), artifactDir =
       publicOutputs.add(output);
       const input = await regular(root, source);
       counts.publicSources++;
-      if (digest(input) !== record.sourceSha256) add("STALE_PUBLIC_SOURCE", source, "Canonical public source differs from the artifact's recorded asset input.");
+      publicSourceHashes.set(source, digest(input));
+      if (publicSourceHashes.get(source) !== record.sourceSha256) add("STALE_PUBLIC_SOURCE", source, "Canonical public source differs from the artifact's recorded asset input.");
       if (record.transformation === "none") {
         if (source !== "public/" + output || actual.get(output).sha256 !== record.sourceSha256) throw new Error("Untransformed public output differs from canonical input");
       } else if (resized && record.purpose === "any" && source === "public/brand/probpera-logo.png" && output === `icons/icon-${resized[1]}.png`) {
@@ -346,6 +350,25 @@ export async function verifyPwaArtifact({ rootDir = process.cwd(), artifactDir =
       } else throw new Error("Unsupported public transformation");
     } catch { add("ASSET_PROVENANCE", record?.output ?? "asset-provenance.json", "Public asset requires contained current source and exact copy/approved icon transformation."); }
   }
+  try {
+    const selectionBytes = await regular(root, PWA_PORTRAIT_SELECTION_PATH);
+    if (inputMap.get(PWA_PORTRAIT_SELECTION_PATH) !== digest(selectionBytes)) throw new Error("Portrait selection must match the recorded source-input snapshot");
+    const portraits = selectPwaPortraitAssets(JSON.parse(selectionBytes));
+    const selected = new Set(portraits.map(pin => pin.output));
+    const records = new Map((Array.isArray(provenance?.files) ? provenance.files : []).map(record => [record?.output, record]));
+    for (const pin of portraits) {
+      const record = records.get(pin.output);
+      if (!actual.has(pin.output) || !bootstrap.has(pin.output) || !publicOutputs.has(pin.output) || !record) {
+        add("PORTRAIT_COVERAGE", pin.output, "Every selected canonical portrait must belong to the actual, traced offline bootstrap.");
+      } else if (!sameJson(record, pin) || actual.get(pin.output).sha256 !== pin.sourceSha256
+        || bootstrap.get(pin.output).sha256 !== pin.sourceSha256 || publicSourceHashes.get(pin.source) !== pin.sourceSha256) {
+        add("PORTRAIT_PIN", pin.output, "Portrait source, output, provenance and offline bytes must match the canonical native selection pin.");
+      }
+    }
+    for (const filename of actual.keys()) if (filename.startsWith(PWA_PORTRAIT_PREFIX) && !selected.has(filename)) {
+      add("PORTRAIT_SELECTION", filename, "A packaged portrait is absent from the canonical native selection.");
+    }
+  } catch (error) { add("PORTRAIT_SELECTION", PWA_PORTRAIT_SELECTION_PATH, error.message); }
   const generatedOutputs = new Set(["artifact.json", "bootstrap-integrity.json", "module-ownership.json", "asset-provenance.json", "license-authority.json", "rollback-manifest.json", "sw.js", "_headers", ".vite/manifest.json", "pwa-shell.css"]);
   for (const prefix of ["", "ru/", "en/"]) for (const name of ["index.html", "404.html", "manifest.webmanifest"]) generatedOutputs.add(prefix + name);
   for (const filename of actual.keys()) if (!generatedOutputs.has(filename) && !emittedModules.has(filename) && !publicOutputs.has(filename)) add("ASSET_PROVENANCE_COVERAGE", filename, "Output is neither a built module, generated shell material nor a traced canonical public asset.");

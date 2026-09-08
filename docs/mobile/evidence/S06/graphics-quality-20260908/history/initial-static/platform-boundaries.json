@@ -1,0 +1,24 @@
+{
+  "name": "platform-boundaries",
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/mobile/platform-boundaries.mjs"
+  ],
+  "startedAt": "2026-09-08T10:47:40.103Z",
+  "durationMs": 16321,
+  "exitCode": 0,
+  "logs": {
+    "stdout": {
+      "encoding": "utf8",
+      "bytes": 1544,
+      "sha256": "123be029f133716b55e5e85832f7ef4e3302c7edf06ad5729dda3c12a4146626",
+      "text": "{\n  \"pass\": true,\n  \"sourceFileCount\": 887,\n  \"webReachableFileCount\": 511,\n  \"auditedRuntimeFileCount\": 520,\n  \"importCount\": 1960,\n  \"webEntries\": [\n    \"src/main.tsx\"\n  ],\n  \"adapterRoots\": [\n    \"src/platform/adapters/android\",\n    \"src/platform/adapters/ios\"\n  ],\n  \"canonicalSceneFiles\": {\n    \"LiteraryWorldMap\": \"src/components/LiteraryWorldMap.tsx\",\n    \"LiteraryGlobe\": \"src/components/LiteraryGlobe.tsx\",\n    \"GlobeCameraRig\": \"src/components/GlobeCameraRig.tsx\"\n  },\n  \"canvasOwnerFiles\": [\n    \"src/components/LiteraryGlobe.tsx\",\n    \"src/components/BookShelfSceneCanvas.tsx\"\n  ],\n  \"canvasSites\": [\n    {\n      \"file\": \"src/components/BookShelfSceneCanvas.tsx\",\n      \"line\": 503\n    },\n    {\n      \"file\": \"src/components/LiteraryGlobe.tsx\",\n      \"line\": 3007\n    }\n  ],\n  \"nativeConfigs\": [\n    \"capacitor.config.json\"\n  ],\n  \"findings\": [],\n  \"limitations\": [\n    \"Static source ownership does not prove a single active globe/Canvas/renderer or preserved runtime identity; browser and native tests must verify those invariants.\",\n    \"Third-party package contents, bundler plugins, generated artifacts, injected scripts and installed native binaries require separate build/artifact audits.\",\n    \"Dependency resolution/loader enforcement covers reachable web and native-adapter runtime graphs; inactive source is still scanned for native SDK imports and duplicate scene ownership.\",\n    \"Computed module loaders and non-static native runtime configuration fail closed; this is not a general JavaScript data-flow proof.\"\n  ]\n}\n"
+    },
+    "stderr": {
+      "encoding": "utf8",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "text": ""
+    }
+  }
+}

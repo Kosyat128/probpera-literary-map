@@ -35,7 +35,7 @@ export default function NativePlanetPanel({ open, onClose, onBack, globeRef, ret
       if (nested && nested !== panelRef.current) return;
       if (event.key === "Escape") { event.preventDefault(); onBackRef.current(); return; }
       if (event.key !== "Tab") return;
-      const items = [...(panelRef.current?.querySelectorAll<HTMLElement>('button, a[href], input, select, textarea, [tabindex="0"]') ?? [])]
+      const items = [...(panelRef.current?.querySelectorAll<HTMLElement>('button, a[href], input, select, textarea, summary, [tabindex="0"]') ?? [])]
         .filter(item => item.getClientRects().length && !item.matches(':disabled') && !item.closest('[hidden], [inert]'));
       const first = items[0], last = items[items.length - 1];
       if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }

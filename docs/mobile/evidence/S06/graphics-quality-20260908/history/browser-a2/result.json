@@ -1,0 +1,216 @@
+{
+  "schemaVersion": 1,
+  "runId": "s03-graphics-quality-native-20260908-a2",
+  "status": "SELECTED_SOURCE_BROWSER_VALIDATION_FAILED",
+  "startingHead": "c942a43a1f199b83c62bb943e29365f3be59e3e4",
+  "endingHead": "c942a43a1f199b83c62bb943e29365f3be59e3e4",
+  "sourceInputsSha256": "88f70fc8803f84809ecba882a66637f005cd14700be57ed0037aac1e2f3c8aee",
+  "sourceUnchanged": true,
+  "statistics": {
+    "startTime": "2026-09-08T10:54:04.330Z",
+    "duration": 26025.012,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "executions": [
+    {
+      "title": "native application defaults to rich graphics under low-resource hints while respecting reduced motion and RU/EN scene identity",
+      "expectedStatus": "passed",
+      "status": "failed",
+      "durationMs": 23488,
+      "errors": [
+        {
+          "location": {
+            "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs",
+            "column": 36,
+            "line": 354
+          },
+          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  -  1\u001b[39m\n\u001b[31m+ Received  + 24\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q45087.webp\",\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q557575.webp\",\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q372115.webp\",\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q58720.webp\",\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q270275.webp\",\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q315885.webp\",\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q191598.webp\",\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q191480.webp\",\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q157623.webp\",\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q471718.webp\",\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q15001.webp\",\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q7200.webp\",\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q43718.webp\",\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q189665.webp\",\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q46599.webp\",\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q42831.webp\",\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q314212.webp\",\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q208003.webp\",\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q171976.webp\",\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q211785.webp\",\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q209004.webp\",\u001b[39m\n\u001b[31m+   \"/assets/writer-portraits/q5685.webp\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n\n  352 |   expect(fixture.errors).toEqual([]);\n  353 |   expect(fixture.externalRequests).toEqual([]);\n> 354 |   expect(fixture.missingResources).toEqual([]);\n      |                                    ^\n  355 |   expect(await fixture.page.evaluate(() => window.__nativePlanetVisibleHeroFrames)).toBe(0);\n  356 | }\n  357 |\n    at evidence (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs:354:36)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs:679:5"
+        }
+      ]
+    }
+  ],
+  "preservedFiles": [
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a2/reports/browser-run-execution.json",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/browser-run-execution.json",
+      "bytes": 404,
+      "sha256": "b589b069f8678a379fbff9cb3474c24ad0ca8aa60630060a7ff7e21a9bfe5a7b"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a2/reports/browser-run.log",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/browser-run-transcript.json",
+      "bytes": 6926,
+      "sha256": "6345580056065aa9311976c9863a9ff848c49e1097b5e58e7330f8fe274a9176",
+      "rawSha256": "bd73ce1b10583dc9c2a3aa466ca10d72e42e07dce92652e8ce9cb27da52b9401",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a2/reports/browser-run.stderr.log",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/browser-run.stderr-transcript.json",
+      "bytes": 465,
+      "sha256": "958be89aa78bd5bb2f6c90530ad7f76eb0751b44df7c1a361e4d580dc28a853d",
+      "rawSha256": "c6b229cc5a279bedab17da786ea5aff2c02ea76d5c24219e416b66e216ff13a7",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a2/reports/browser-run.stdout.log",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/browser-run.stdout-transcript.json",
+      "bytes": 6767,
+      "sha256": "87952decfc6fa71c424e49e6ea13cd2eb4558839336275add57da741e6c10dde",
+      "rawSha256": "3039b3d6890685266dc06272033e474615281a4e992b741755154541ed06b3c3",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a2/reports/discovery-execution.json",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/discovery-execution.json",
+      "bytes": 440,
+      "sha256": "7eb853c8e5be4726ee4d94bc95467227b9fe677fd81910a96a7cd90d67753a26"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a2/reports/discovery.json",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/discovery.json",
+      "bytes": 198,
+      "sha256": "7010ebd6f75fcc48179ac55d65322494c74ab7c599de3e6e464414967c9c9c79"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a2/reports/discovery.log",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/discovery-transcript.json",
+      "bytes": 3565,
+      "sha256": "e11c98496eedd7f2d5d6c4bebcde157687032b5b6fe786a42be57671bf8fc4f8",
+      "rawSha256": "cddd387befc9773cd7db7204dcc5311f2933a71e73d6c0932a0aaaf0367ca679",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a2/reports/discovery.stderr.log",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/discovery.stderr-transcript.json",
+      "bytes": 295,
+      "sha256": "bc96d37c0019fbf8585aeb58d604363984b3165c6eaa49fce7693384e6ab6eec",
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a2/reports/discovery.stdout.log",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/discovery.stdout-transcript.json",
+      "bytes": 3572,
+      "sha256": "ec56af071a48bdc0468afa9c1b3fd717f3361f4be81394cecfa0740a25fafddc",
+      "rawSha256": "cddd387befc9773cd7db7204dcc5311f2933a71e73d6c0932a0aaaf0367ca679",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a2/reports/run-context.json",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/run-context.json",
+      "bytes": 4546,
+      "sha256": "305360313d4b7af49e232b50a6c5411424ea1cbb85c2c75cfdc92103820daec3"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a2/reports/run-result.json",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/run-result.json",
+      "bytes": 808,
+      "sha256": "29e76f485bb2cecb5839fdd36c15ad5a0caf2854b58e398a31d429c6ee481f14"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a2/reports/source-after.json",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/source-after.json",
+      "bytes": 145332,
+      "sha256": "1b5c1f6ff76e65ce6cdd925048fc55beaedf43179202a05b8412af908bb1119b"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a2/reports/source-before.json",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/source-before.json",
+      "bytes": 145332,
+      "sha256": "1b5c1f6ff76e65ce6cdd925048fc55beaedf43179202a05b8412af908bb1119b"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a2/reports/source-comparison.json",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/source-comparison.json",
+      "bytes": 408,
+      "sha256": "8a2bd96841e9ae11dce7ce36ef20cb12fbdc19b2976bfce3ab43474e58065568"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a2/reports/test-config-after.json",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/test-config-after.json",
+      "bytes": 283,
+      "sha256": "8f3a8519ced0473ee3a32932d7d55a7b7072723957177d7d0bf5594bf119c5a0"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a2/reports/test-config-before.json",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/test-config-before.json",
+      "bytes": 283,
+      "sha256": "8f3a8519ced0473ee3a32932d7d55a7b7072723957177d7d0bf5594bf119c5a0"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-native-20260908-a2/run.mjs",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/runner.mjs",
+      "bytes": 11806,
+      "sha256": "57a3c122436e8e2702c2ca7cdbeffd498e82eb00fb68cf0c5b487664773fddf9"
+    },
+    {
+      "source": ".tmp/native-planet-browser-results/s03-graphics-quality-native-20260908-a2/results.json",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/results.json",
+      "bytes": 785149,
+      "sha256": "e467951654f8a66830ac3f015618a21455e2065a736f86eab4ef27b637e55f94"
+    },
+    {
+      "source": ".tmp/native-planet-browser-results/s03-graphics-quality-native-20260908-a2/results.json#native-graphics-settings-balanced",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/native-graphics-settings-balanced.json",
+      "bytes": 81296,
+      "sha256": "7df4b3a387d256cb3f2ffeeb9ab707e02678c920fffea804e52224d6d36f3052"
+    },
+    {
+      "source": ".tmp/native-planet-browser-results/s03-graphics-quality-native-20260908-a2/results.json#native-graphics-settings-economy",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/native-graphics-settings-economy.json",
+      "bytes": 97948,
+      "sha256": "0441c24cd4f85e3be95f74986d8544f41f52e8177f30ca3fc186e0869a882180"
+    },
+    {
+      "source": ".tmp/native-planet-browser-results/s03-graphics-quality-native-20260908-a2/results.json#native-graphics-profiles-before-reload",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/native-graphics-profiles-before-reload.json",
+      "bytes": 257268,
+      "sha256": "e1b5e2b5b026e68815031ca9d12294053056b60f17f7258c8793650fdda7dc14"
+    },
+    {
+      "source": ".tmp/native-planet-browser-results/s03-graphics-quality-native-20260908-a2/results.json#native-graphics-saved-balanced-ru",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/native-graphics-saved-balanced-ru.json",
+      "bytes": 79312,
+      "sha256": "36d14718941a1dcd67fa40f519a9e95c2595604990ecab8befca8fe55fbe104b"
+    },
+    {
+      "source": ".tmp/native-planet-browser-results/s03-graphics-quality-native-20260908-a2/artifacts/native-planet-native-appli-e5295-on-and-RU-EN-scene-identity/native-graphics-profiles-before-reload.png",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/native-graphics-profiles-before-reload.png",
+      "bytes": 2866969,
+      "sha256": "cc3b9775301b07e6f55906bae1346a0cdc5425fce6b60935d702f6e009186f55"
+    },
+    {
+      "source": ".tmp/native-planet-browser-results/s03-graphics-quality-native-20260908-a2/artifacts/native-planet-native-appli-e5295-on-and-RU-EN-scene-identity/native-graphics-saved-balanced-ru.png",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/native-graphics-saved-balanced-ru.png",
+      "bytes": 2879450,
+      "sha256": "b5f31a618b4eba044966ee3dd5749bd7cc16a8d486f7c1cb903b558dda6fb10e"
+    },
+    {
+      "source": ".tmp/native-planet-browser-results/s03-graphics-quality-native-20260908-a2/artifacts/native-planet-native-appli-e5295-on-and-RU-EN-scene-identity/native-graphics-settings-balanced.png",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/native-graphics-settings-balanced.png",
+      "bytes": 2078679,
+      "sha256": "e7ddcfe0939a85128ab474a80fff7bd12f810aeea8bbda1b17ee833f2be64d1e"
+    },
+    {
+      "source": ".tmp/native-planet-browser-results/s03-graphics-quality-native-20260908-a2/artifacts/native-planet-native-appli-e5295-on-and-RU-EN-scene-identity/native-graphics-settings-economy.png",
+      "path": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/native-graphics-settings-economy.png",
+      "bytes": 1999104,
+      "sha256": "4d8b0291dd0de8401844d3fd27e6b814992abab9c14ae0467935e294557522c3"
+    }
+  ],
+  "actualApp": true,
+  "nativePluginsSimulated": true,
+  "productionArtifactBuilds": 0,
+  "actualInstalledRuntime": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "scope": "One graphics profile case: low-resource hints default High, actual DPR/star buffers/sphere segments/sky material across all profiles; same scene and selection across profiles/locales; native preference reload; reduced motion; keyboard focus; RU/EN labels and 320px/200% text. Source bundled by esbuild in memory.",
+  "limits": [
+    "No dist-native/Vite/Android/iOS artifact runtime or installed-device evidence.",
+    "No full appearance/offline regression or physical GPU/performance certification. Settings copy remains draft."
+  ]
+}

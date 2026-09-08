@@ -44,6 +44,7 @@ const preferenceValues = new Map<string, readonly string[]>([
   ["probpera-interface-language", ["ru", "en"]],
   ["probpera-display-mode", ["dark", "light", "book"]],
   ["probpera-planet-welcome-v1", ["completed"]],
+  ["probpera-planet-graphics-quality-v1", ["high", "balanced", "economy"]],
 ]);
 const supportMail = "mailto:probperasite@yandex.ru";
 

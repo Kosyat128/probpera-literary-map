@@ -1,0 +1,20 @@
+{
+  "pass": true,
+  "errors": [],
+  "releaseReady": false,
+  "internalRequirementsPassed": false,
+  "requirementCount": 342,
+  "bilingualCount": 107,
+  "allInternalComplete": false,
+  "completedStages": [
+    "S00",
+    "S01",
+    "S02"
+  ],
+  "firstOpen": {
+    "stageId": "S03",
+    "criterionId": "S03.acceptance"
+  },
+  "acceptanceStateUnchanged": true,
+  "fullEvidenceCheck": "source-state-verification.json"
+}

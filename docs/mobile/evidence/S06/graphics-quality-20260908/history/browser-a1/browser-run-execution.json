@@ -1,0 +1,13 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=playwright.native-planet.config.mjs",
+    "--grep",
+    "native application defaults to rich graphics under low-resource hints while respecting reduced motion and RU/EN scene identity"
+  ],
+  "startedAt": "2026-09-08T10:48:52.552Z",
+  "durationMs": 38544,
+  "exitCode": 1
+}

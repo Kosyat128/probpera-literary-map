@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "wholeCase": "FAIL",
+  "failure": "Final consoleErrors=[] gate; two React development warnings for CountryFlagIcon fetchPriority, once per document",
+  "actualSourceInputsSha256": "131bff5b5d1903e1c3db5241b33a4f68d33e11bd77b08cca30d1904399a74553",
+  "allEarlierAssertionsReached": true,
+  "initial": {
+    "phase": "initial-low-resource-hints",
+    "tier": "high",
+    "dpr": 1.5,
+    "starCounts": [
+      2400
+    ],
+    "edition": "rand-mcnally-1887",
+    "reducedMotion": false
+  },
+  "changes": [
+    {
+      "phase": "selected-profile-balanced",
+      "tier": "balanced",
+      "dpr": 1.25,
+      "starCounts": [
+        1600
+      ],
+      "edition": "rand-mcnally-1887",
+      "reducedMotion": false
+    },
+    {
+      "phase": "selected-profile-economy",
+      "tier": "economy",
+      "dpr": 1.1,
+      "starCounts": [
+        900
+      ],
+      "edition": "rand-mcnally-1887",
+      "reducedMotion": false
+    },
+    {
+      "phase": "selected-profile-high",
+      "tier": "high",
+      "dpr": 1.5,
+      "starCounts": [
+        2400
+      ],
+      "edition": "rand-mcnally-1887",
+      "reducedMotion": false
+    }
+  ],
+  "reduced": {
+    "phase": "reduced-motion-high-rendering",
+    "tier": "high",
+    "dpr": 1.5,
+    "starCounts": [
+      2400
+    ],
+    "edition": "rand-mcnally-1887",
+    "reducedMotion": true
+  },
+  "beforeReload": {
+    "phase": "balanced-before-reload",
+    "tier": "balanced",
+    "dpr": 1.25,
+    "starCounts": [
+      1600
+    ],
+    "edition": "rand-mcnally-1887",
+    "reducedMotion": true
+  },
+  "keyboardSelection": {
+    "focused": true,
+    "focusVisible": true,
+    "outlineStyle": "solid",
+    "outlineWidth": 3,
+    "checked": true,
+    "value": "balanced"
+  },
+  "narrow": [
+    {
+      "language": "ru",
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "rootFontSize": "32px",
+      "targetSizes": [
+        {
+          "tier": "high",
+          "width": 270,
+          "height": 522.9375
+        },
+        {
+          "tier": "balanced",
+          "width": 270,
+          "height": 522.9375
+        },
+        {
+          "tier": "economy",
+          "width": 270,
+          "height": 622.125
+        }
+      ],
+      "pageErrors": [],
+      "missingResources": []
+    },
+    {
+      "language": "en",
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "rootFontSize": "32px",
+      "targetSizes": [
+        {
+          "tier": "high",
+          "width": 270,
+          "height": 423.75
+        },
+        {
+          "tier": "balanced",
+          "width": 270,
+          "height": 423.75
+        },
+        {
+          "tier": "economy",
+          "width": 270,
+          "height": 423.75
+        }
+      ],
+      "pageErrors": [],
+      "missingResources": []
+    }
+  ],
+  "visualReview": {
+    "viewed": [
+      "native-graphics-settings-balanced.png",
+      "native-graphics-settings-narrow-en.png"
+    ],
+    "findings": [
+      "Settings text wraps at320px/200% with normal vertical scrolling.",
+      "Existing modal header close button is outside visible narrow EN screenshot; not caught by original settings-only geometry gate.",
+      "Economy still-sky copy overstates static background; root replacing it with simpler sky background."
+    ]
+  },
+  "actualInstalledRuntime": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

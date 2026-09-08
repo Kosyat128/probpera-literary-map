@@ -1,0 +1,85 @@
+{
+  "runId": "s03-graphics-quality-native-20260908-a2",
+  "startingHead": "c942a43a1f199b83c62bb943e29365f3be59e3e4",
+  "sourcePaths": [
+    "src",
+    "native.html",
+    "vite.native.config.ts",
+    "vite.config.ts",
+    "tsconfig.json",
+    "package.json",
+    "package-lock.json",
+    "capacitor.config.json",
+    "scripts/mobile/build-native.mjs",
+    "scripts/mobile/native-base-assets.json",
+    "scripts/mobile/pwa-artifact.mjs"
+  ],
+  "sourceInputsSha256": "88f70fc8803f84809ecba882a66637f005cd14700be57ed0037aac1e2f3c8aee",
+  "inputSnapshotConvention": "Exact build-native.mjs input selection; this runner does not invoke that builder",
+  "helper": {
+    "path": ".tmp/s03-graphics-quality-native-20260908-a2/run.mjs",
+    "sha256": "57a3c122436e8e2702c2ca7cdbeffd498e82eb00fb68cf0c5b487664773fddf9"
+  },
+  "dependency": {
+    "path": "node_modules/@noble/hashes/package.json",
+    "sha256": "7c4657c5e616c22cefa2691cc30670824a639dc71d97bf83925be2d239dc60e3",
+    "declared": "1.8.0",
+    "installed": "1.8.0"
+  },
+  "testScopeRefactor": {
+    "schemaVersion": 1,
+    "source": "tests/host/native-planet.spec.mjs",
+    "beforeRefactor": {
+      "source": "tests/host/native-planet.spec.mjs",
+      "beforeSha256": "f682544fdea48d35184de23cf1f56cd30814904198de8e04178fb84a024ff86c",
+      "afterSha256": "c18a10c870d037630e3a203305c6fec6d678347cf33290f912936ba5ebdc4b4b",
+      "originalAppearanceTailSha256": "2088765e7a2febbaf230e779a76b80ee10f6ec23b405a989ab55cd6175e4fb26",
+      "appearanceTailPreservedByteExactly": true,
+      "selectedQualityCase": "native application defaults to rich graphics under low-resource hints while respecting reduced motion and RU/EN scene identity",
+      "separateUnrunAppearanceCase": "native application appearance follows canonical globe editions while preserving rich graphics and scene",
+      "testsRun": false,
+      "reason": "Root authorized separate test-only appearance block so one profile case does not rerun green full appearance coverage."
+    },
+    "finalTestSha256": "f865863b685825c54446fd374e06d3e3f3ba6d928edecdc6877b5ba018bb341a",
+    "headSourceSha256": "8a8c99d0bff926114a3b9fccea81d5be365ff0cc9720d0d8a48144f94bd80e9e",
+    "appearanceTailMatchesHeadIgnoringNewlineConvention": true,
+    "appearanceTailNormalizedLfSha256": "1de04883bac128f4b6af1e58531a150654f1118811e1e73e172641039cfb5f07",
+    "selectedBrowserCase": "native application defaults to rich graphics under low-resource hints while respecting reduced motion and RU/EN scene identity",
+    "separateUnselectedCase": "native application appearance follows canonical globe editions while preserving rich graphics and scene",
+    "scope": [
+      "actual DPR, star buffers, main/highlight/sky geometry and sky material",
+      "High default under low hints; explicit balanced/economy/high",
+      "Canvas/renderer/camera/scene and pose continuity across quality and locale",
+      "saved Balanced profile survives real document reload",
+      "reduced motion remains authoritative",
+      "actual keyboard focus and ArrowRight selection",
+      "RU/EN accessible names, 44px labels, 320px width with measured 200% text"
+    ],
+    "noAppearanceSuiteRerun": true,
+    "testsRun": false,
+    "buildRun": false,
+    "status": "PREPARED_NOT_EXECUTED",
+    "lineEndings": "Working file restored to original CRLF; Git baseline may use LF. Earlier refactor receipt records its exact intermediate bytes."
+  },
+  "focusedRetryPreparation": {
+    "status": "PREPARED_NOT_EXECUTED",
+    "test": "tests/host/native-planet.spec.mjs",
+    "beforeSha256": "f865863b685825c54446fd374e06d3e3f3ba6d928edecdc6877b5ba018bb341a",
+    "afterSha256": "7f953527de5ba6cf4cc92e19bd71eb75625cf53c2b1784eb7d908965ce8cb748",
+    "predecessor": ".tmp/s03-graphics-quality-native-20260908-a1/evidence/result.json",
+    "predecessorWholeCase": "0 PASS / 1 FAIL at final console gate; all previous profile/locale/reload/keyboard/text assertions reached",
+    "changes": [
+      "Return-to-planet button remains fully in viewport and >=44x44 at320px/200% RU and EN",
+      "actual narrow close returns focus to collection trigger and retains scene",
+      "decorative country flag alt remains empty and native fetchpriority attribute remains high"
+    ],
+    "noAssertionRemoved": true,
+    "noProductEdits": true,
+    "noTestsRun": true
+  },
+  "headMayAdvanceForRootCommit": true,
+  "requiredSourceAndTestBytesUnchanged": true,
+  "kind": "canonical-native-app-source-in-Chrome",
+  "productionArtifactBuilds": 0,
+  "actualInstalledRuntime": false
+}

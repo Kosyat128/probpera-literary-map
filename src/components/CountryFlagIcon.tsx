@@ -36,7 +36,7 @@ export default function CountryFlagIcon({
         className={`country-flag-icon country-flag-icon--fallback ${className}`.trim()}
         aria-hidden={decorative || undefined}
         role={decorative ? undefined : "img"}
-        aria-label={decorative ? undefined : `Флаг: ${countryName}`}
+        aria-label={decorative ? undefined : countryName}
         style={{ width: size, height: size }}
       >
         {countryFlag(code)}
@@ -48,11 +48,11 @@ export default function CountryFlagIcon({
     <img
       className={`country-flag-icon ${className}`.trim()}
       src={source}
-      alt={decorative ? "" : `Флаг: ${countryName}`}
+      alt={decorative ? "" : countryName}
       width={size}
       height={size}
       loading={priority ? "eager" : "lazy"}
-      fetchPriority={priority ? "high" : "auto"}
+      {...{ fetchpriority: priority ? "high" : "auto" }}
       decoding="async"
       onError={() => setFailed(true)}
     />

@@ -1,0 +1,195 @@
+{
+  "schemaVersion": 1,
+  "mode": "typecheck",
+  "before": [
+    {
+      "path": "package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+    },
+    {
+      "path": "package.json",
+      "sha256": "90b392c205754f838b8bc7c4475bd475936be1078561bb218c437d151177869f"
+    },
+    {
+      "path": "scripts/mobile/platform-boundaries.mjs",
+      "sha256": "7267e9a0283a2346e3122d4b47ce8b88aa693bf079e0e330712f8f6d2ff9cc75"
+    },
+    {
+      "path": "src/App.tsx",
+      "sha256": "c7143cf37e07086dd54dac8628ff3d56534d3fddf664ac0e487cabd4b0aeffd1"
+    },
+    {
+      "path": "src/components/CountryFlagIcon.tsx",
+      "sha256": "f4318be4993ea0c7499fd83053f6595913dcb10184c9dfcaa6ff6f7660afc18b"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "sha256": "2be1cb0b359db33af29482629b28d39d2033e0f01fd8b505379e23ddb120d563"
+    },
+    {
+      "path": "src/components/LiteraryWorldMap.tsx",
+      "sha256": "4443314e76c87af1fc8f4d098654c743f4bd4ff07ed5184b7f4171dd38d0391a"
+    },
+    {
+      "path": "src/components/globeQuality.test.ts",
+      "sha256": "241a0f611cc034039023ede3a844913c97c22eefa78ed9bf073a06c0c2f2ee8a"
+    },
+    {
+      "path": "src/components/globeQuality.ts",
+      "sha256": "355235ed6c9ef67d05bf6075cd49ef7a5636f6f43b2dc090a1063376f942b4c5"
+    },
+    {
+      "path": "src/host/HostPlatformServices.test.ts",
+      "sha256": "4aae72e562dbfe75cccc0f72a7dd75156a94b7b90fc53cc17cf52d48f9e2d8d9"
+    },
+    {
+      "path": "src/host/HostPlatformServices.ts",
+      "sha256": "0fb34ee847ae38b4a50d962b582664d9436aa6800f7e4922f4a653df1d91ef1e"
+    },
+    {
+      "path": "src/host/NativePlanetPanel.tsx",
+      "sha256": "3c4a1518de5da3c5fa25732a6905b86606a48ed281ad30dad51c8adb90d9857d"
+    },
+    {
+      "path": "src/host/PlanetGraphicsSettings.css",
+      "sha256": "0c25285a50ba8f097ef867748c57cab270df6406f8a9a2454808b9a197207699"
+    },
+    {
+      "path": "src/host/PlanetGraphicsSettings.tsx",
+      "sha256": "6332bec397775901379ec3776548aaf610b6e7cde094badd5672d09436b24e4f"
+    },
+    {
+      "path": "src/host/host.css",
+      "sha256": "6bc54f91100cb85c5df6407da0a468d7f81d5bc0d28ca02ff6bab6c873190120"
+    },
+    {
+      "path": "src/host/planetGraphicsQuality.test.ts",
+      "sha256": "1ffb4b4c5a3f2f08397924a8724856d02eb7ee0139f7f9f717911439484ebc29"
+    },
+    {
+      "path": "src/host/planetGraphicsQuality.ts",
+      "sha256": "5b8cc15796b0a2e0c3e6222ba6c7f0af2ffa2102d7a30000891f2435906d79f2"
+    },
+    {
+      "path": "src/platform/adapters/web/WebPlatformAdapter.test.ts",
+      "sha256": "337b4660c7387845540ef4ee08f2acb99479cebc63786bfa1b8259424b982e36"
+    },
+    {
+      "path": "src/platform/adapters/web/WebPlatformAdapter.ts",
+      "sha256": "ae2a466155b668e99fc66d9804cc2ba0bbad2bf3539407ccbc0cee7c877bb2d9"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "8d51a8c9266fe83bf17c076b51672753b3750a17520cd0d2c28a90cb8b21e0d6"
+    },
+    {
+      "path": "vitest.config.ts",
+      "sha256": "5c1e90985e77b35599e5bdaf77c74a1166949ec9c4f45d1c5f926c3f53bef90e"
+    }
+  ],
+  "after": [
+    {
+      "path": "package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+    },
+    {
+      "path": "package.json",
+      "sha256": "90b392c205754f838b8bc7c4475bd475936be1078561bb218c437d151177869f"
+    },
+    {
+      "path": "scripts/mobile/platform-boundaries.mjs",
+      "sha256": "7267e9a0283a2346e3122d4b47ce8b88aa693bf079e0e330712f8f6d2ff9cc75"
+    },
+    {
+      "path": "src/App.tsx",
+      "sha256": "c7143cf37e07086dd54dac8628ff3d56534d3fddf664ac0e487cabd4b0aeffd1"
+    },
+    {
+      "path": "src/components/CountryFlagIcon.tsx",
+      "sha256": "f4318be4993ea0c7499fd83053f6595913dcb10184c9dfcaa6ff6f7660afc18b"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "sha256": "2be1cb0b359db33af29482629b28d39d2033e0f01fd8b505379e23ddb120d563"
+    },
+    {
+      "path": "src/components/LiteraryWorldMap.tsx",
+      "sha256": "4443314e76c87af1fc8f4d098654c743f4bd4ff07ed5184b7f4171dd38d0391a"
+    },
+    {
+      "path": "src/components/globeQuality.test.ts",
+      "sha256": "241a0f611cc034039023ede3a844913c97c22eefa78ed9bf073a06c0c2f2ee8a"
+    },
+    {
+      "path": "src/components/globeQuality.ts",
+      "sha256": "355235ed6c9ef67d05bf6075cd49ef7a5636f6f43b2dc090a1063376f942b4c5"
+    },
+    {
+      "path": "src/host/HostPlatformServices.test.ts",
+      "sha256": "4aae72e562dbfe75cccc0f72a7dd75156a94b7b90fc53cc17cf52d48f9e2d8d9"
+    },
+    {
+      "path": "src/host/HostPlatformServices.ts",
+      "sha256": "0fb34ee847ae38b4a50d962b582664d9436aa6800f7e4922f4a653df1d91ef1e"
+    },
+    {
+      "path": "src/host/NativePlanetPanel.tsx",
+      "sha256": "3c4a1518de5da3c5fa25732a6905b86606a48ed281ad30dad51c8adb90d9857d"
+    },
+    {
+      "path": "src/host/PlanetGraphicsSettings.css",
+      "sha256": "0c25285a50ba8f097ef867748c57cab270df6406f8a9a2454808b9a197207699"
+    },
+    {
+      "path": "src/host/PlanetGraphicsSettings.tsx",
+      "sha256": "6332bec397775901379ec3776548aaf610b6e7cde094badd5672d09436b24e4f"
+    },
+    {
+      "path": "src/host/host.css",
+      "sha256": "6bc54f91100cb85c5df6407da0a468d7f81d5bc0d28ca02ff6bab6c873190120"
+    },
+    {
+      "path": "src/host/planetGraphicsQuality.test.ts",
+      "sha256": "1ffb4b4c5a3f2f08397924a8724856d02eb7ee0139f7f9f717911439484ebc29"
+    },
+    {
+      "path": "src/host/planetGraphicsQuality.ts",
+      "sha256": "5b8cc15796b0a2e0c3e6222ba6c7f0af2ffa2102d7a30000891f2435906d79f2"
+    },
+    {
+      "path": "src/platform/adapters/web/WebPlatformAdapter.test.ts",
+      "sha256": "337b4660c7387845540ef4ee08f2acb99479cebc63786bfa1b8259424b982e36"
+    },
+    {
+      "path": "src/platform/adapters/web/WebPlatformAdapter.ts",
+      "sha256": "ae2a466155b668e99fc66d9804cc2ba0bbad2bf3539407ccbc0cee7c877bb2d9"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "8d51a8c9266fe83bf17c076b51672753b3750a17520cd0d2c28a90cb8b21e0d6"
+    },
+    {
+      "path": "vitest.config.ts",
+      "sha256": "5c1e90985e77b35599e5bdaf77c74a1166949ec9c4f45d1c5f926c3f53bef90e"
+    }
+  ],
+  "unchanged": true,
+  "executions": [
+    {
+      "name": "typecheck",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit"
+      ],
+      "startedAt": "2026-09-08T10:53:35.888Z",
+      "durationMs": 21595,
+      "exitCode": 0,
+      "evidence": "typecheck.json"
+    }
+  ],
+  "tests": null,
+  "pass": true,
+  "stageAccepted": false,
+  "releaseReady": false
+}

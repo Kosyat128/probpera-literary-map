@@ -417,3 +417,19 @@
   Corpus export preserves all1684 RU/20 authored EN; no new translated approval
   or prose was produced. Source and artifact checks do not accept S03, S38, full
   bilingual content, installed devices, iOS83 or production release.
+
+- D088: Enter S06 through the documented matrix69 parallel-safe rule for manual
+  application graphics profiles. High remains the owner-selected default. Use
+  one shared preference/controller and real DPR/geometry/star-density profiles;
+  keep the public-site legacy path and same Canvas/renderer/camera/atlas. Fix
+  app MSAA at context creation instead of pretending to toggle it live. No
+  claim of new textures, complete background/mascot tiers, device thermal/FPS
+  acceptance or S03/S06 completion follows from this bounded implementation.
+
+- D089: The source-browser quality check exposed incomplete local portrait
+  packaging. Include the full current effective approved canonical closure
+  (1011 files,1021 references), using existing bytes/rights metadata only.
+  Both native and PWA builders share exact portrait pins. Raise the bounded
+  offline file count to2048; keep64MiB total,16MiB per file and512KiB marker
+  limits unchanged. This is S03 package completion for current portraits, not
+  new rights approval, all-content coverage or stage/device acceptance.

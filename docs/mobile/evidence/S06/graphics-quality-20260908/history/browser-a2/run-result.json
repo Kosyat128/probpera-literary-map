@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "runId": "s03-graphics-quality-native-20260908-a2",
+  "title": "native application defaults to rich graphics under low-resource hints while respecting reduced motion and RU/EN scene identity",
+  "startingHead": "c942a43a1f199b83c62bb943e29365f3be59e3e4",
+  "endingHead": "c942a43a1f199b83c62bb943e29365f3be59e3e4",
+  "sourceInputsSha256": "88f70fc8803f84809ecba882a66637f005cd14700be57ed0037aac1e2f3c8aee",
+  "sourceUnchanged": true,
+  "browserExitCode": 1,
+  "statistics": {
+    "startTime": "2026-09-08T10:54:04.330Z",
+    "duration": 26025.012,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "failure": null,
+  "pass": false,
+  "productionArtifactBuilds": 0,
+  "actualInstalledRuntime": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

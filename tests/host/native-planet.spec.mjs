@@ -382,13 +382,22 @@ test("native first screen is the actual immersive globe and RU/EN retains writer
 async function nativeGraphicsEvidence(page, phase) {
   return page.evaluate(phase => {
     const current = window.__nativePlanetHarness.scenes().find(value => document.querySelector("#atlas").contains(value.canvas));
-    const pointVertexCounts = [];
-    current.scene.traverse(object => { if (object.isPoints) pointVertexCounts.push(object.geometry.getAttribute("position").count); });
+    const pointVertexCounts = [], sphereMeshes = [];
+    current.scene.traverse(object => {
+      if (object.isPoints) pointVertexCounts.push(object.geometry.getAttribute("position").count);
+      if (object.isMesh && object.geometry?.type === "SphereGeometry") {
+        const { radius, widthSegments, heightSegments } = object.geometry.parameters;
+        sphereMeshes.push({ radius, widthSegments, heightSegments, scale: object.scale.toArray(),
+          materialTypes: (Array.isArray(object.material) ? object.material : [object.material]).map(material => material.type) });
+      }
+    });
     const result = { phase, hints: { saveData: navigator.connection?.saveData, deviceMemory: navigator.deviceMemory,
       hardwareConcurrency: navigator.hardwareConcurrency }, browserPixelRatio: devicePixelRatio,
-      rendererPixelRatio: current.renderer.getPixelRatio(), pointVertexCounts,
+      rendererPixelRatio: current.renderer.getPixelRatio(), pointVertexCounts, sphereMeshes,
       drawingBuffer: { width: current.canvas.width, height: current.canvas.height },
       economical: document.querySelector("[data-atlas-experience]")?.getAttribute("data-atlas-economical"),
+      qualityTier: document.querySelector("#atlas .literary-globe")?.getAttribute("data-globe-quality-tier"),
+      edition: document.querySelector("#atlas .literary-globe")?.getAttribute("data-globe-edition"),
       reducedMotion: matchMedia("(prefers-reduced-motion: reduce)").matches };
     (window.__nativePlanetGraphicsObservations ??= []).push(result);
     return result;
@@ -476,6 +485,250 @@ test("native application defaults to rich graphics under low-resource hints whil
     capabilityHints: { saveData: true, deviceMemory: 2, hardwareConcurrency: 2 } });
   const { page } = fixture;
   const original = await captureScene(page);
+  const preferenceKey = "probpera-planet-graphics-quality-v1";
+  const profiles = {
+    high: { dpr: 1.5, stars: 2400, main: [144, 96], highlight: [112, 72], sky: [48, 32], material: "ShaderMaterial" },
+    balanced: { dpr: 1.25, stars: 1600, main: [128, 84], highlight: [104, 68], sky: [36, 24], material: "ShaderMaterial" },
+    economy: { dpr: 1.1, stars: 900, main: [112, 72], highlight: [96, 64], sky: [24, 16], material: "MeshBasicMaterial" },
+  };
+  const changes = [], locales = [];
+  const globe = page.locator("#atlas .literary-globe");
+  const panel = page.locator(".native-planet-panel");
+  const settings = panel.locator("[data-planet-graphics-settings]");
+  const checkedProfile = tier => settings.locator('[data-planet-quality-option="' + tier + '"]');
+  const readProfile = async (tier, phase) => {
+    const expected = profiles[tier];
+    await expect(globe).toHaveAttribute("data-globe-quality-tier", tier);
+    await expect(page.locator("[data-atlas-experience]")).toHaveAttribute("data-atlas-economical", tier === "economy" ? "true" : "false");
+    await expect.poll(async () => {
+      const actual = await nativeGraphicsEvidence(page, phase + "-settling");
+      const sphere = (radius, segments, material, scale) => actual.sphereMeshes.some(mesh => mesh.radius === radius
+        && mesh.widthSegments === segments[0] && mesh.heightSegments === segments[1]
+        && (!material || mesh.materialTypes.includes(material)) && (!scale || mesh.scale.every(value => value === scale)));
+      return { dpr: actual.rendererPixelRatio, stars: actual.pointVertexCounts.includes(expected.stars),
+        main: sphere(1, expected.main), highlight: sphere(1.006, expected.highlight),
+        sky: sphere(1, expected.sky, expected.material, 22) };
+    }).toEqual({ dpr: expected.dpr, stars: true, main: true, highlight: true, sky: true });
+    const actual = await nativeGraphicsEvidence(page, phase);
+    expect(actual.qualityTier).toBe(tier);
+    expect(actual.edition).toBe("rand-mcnally-1887");
+    expect(new URL(page.url()).searchParams.get("country")).toBe("russia");
+    expect(new URL(page.url()).searchParams.get("writer")).toBe("dostoevsky");
+    return actual;
+  };
+  const settingsLabels = { ru: ["Высокое", "Сбалансированное", "Экономное"], en: ["High", "Balanced", "Economy"] };
+  const inspectSettings = async language => {
+    await expect(settings.locator("summary")).toHaveText(language === "ru" ? "Настройки графики" : "Graphics settings");
+    await expect(settings.locator("fieldset")).toHaveAccessibleName(language === "ru" ? "Качество графики" : "Graphics quality");
+    for (const [index, tier] of ["high", "balanced", "economy"].entries()) {
+      await expect(checkedProfile(tier)).toHaveAccessibleName(settingsLabels[language][index]);
+      await expect(checkedProfile(tier)).toHaveAccessibleDescription(/\S/u);
+    }
+    const actual = await settings.evaluate(element => {
+      const box = node => ({ bounds: node.getBoundingClientRect().toJSON(), clientWidth: node.clientWidth, scrollWidth: node.scrollWidth });
+      const text = [...element.querySelectorAll("summary, legend, p:not(:empty), label strong, label > span > span")].map(node => {
+        const range = document.createRange();
+        range.selectNodeContents(node);
+        return { text: node.textContent, ...box(node), textRects: [...range.getClientRects()].map(rect => rect.toJSON()),
+          fontSize: parseFloat(getComputedStyle(node).fontSize) };
+      });
+      return { viewport: { width: innerWidth, height: innerHeight }, rootFontSize: getComputedStyle(document.documentElement).fontSize,
+        ...box(element), text, targets: [...element.querySelectorAll("input[type=radio]")].map(input => ({
+          tier: input.value, checked: input.checked, ...box(input.labels[0]) })) };
+    });
+    expect(actual.bounds.left).toBeGreaterThanOrEqual(0);
+    expect(actual.bounds.right).toBeLessThanOrEqual(actual.viewport.width);
+    expect(actual.scrollWidth).toBeLessThanOrEqual(actual.clientWidth + 1);
+    for (const target of actual.targets) {
+      expect(target.bounds.width, target.tier + " label target width").toBeGreaterThanOrEqual(44);
+      expect(target.bounds.height, target.tier + " label target height").toBeGreaterThanOrEqual(44);
+      expect(target.scrollWidth, target.tier + " label horizontal clipping").toBeLessThanOrEqual(target.clientWidth + 1);
+    }
+    for (const item of actual.text) {
+      expect(item.scrollWidth, item.text + " horizontal clipping").toBeLessThanOrEqual(item.clientWidth + 1);
+      for (const rect of item.textRects) {
+        expect(rect.left, item.text + " left text edge").toBeGreaterThanOrEqual(actual.bounds.left - 1);
+        expect(rect.right, item.text + " right text edge").toBeLessThanOrEqual(actual.bounds.right + 1);
+      }
+    }
+    return actual;
+  };
+  const openSettings = async (language, keyboard = false) => {
+    await page.locator('[data-atlas-action="open-collection"]').click();
+    await expect(panel).toBeVisible();
+    await expect(settings.locator("summary")).toHaveText(language === "ru" ? "Настройки графики" : "Graphics settings");
+    if (keyboard) {
+      await expect(panel.getByRole("button", { name: language === "ru" ? "Вернуться к планете" : "Return to the planet", exact: true })).toBeFocused();
+      await page.keyboard.press("Tab");
+      await expect(settings.locator("summary")).toBeFocused();
+      if (await settings.getAttribute("open") === null) await page.keyboard.press("Space");
+      await page.keyboard.press("Tab");
+      await expect(checkedProfile("high")).toBeFocused();
+    } else if (await settings.getAttribute("open") === null) await settings.locator("summary").click();
+    await expect(settings.locator("fieldset legend")).toHaveText(language === "ru" ? "Качество графики" : "Graphics quality");
+  };
+  const closeSettings = async language => {
+    await panel.getByRole("button", { name: language === "ru" ? "Вернуться к планете" : "Return to the planet", exact: true }).click();
+    await expect(panel).toBeHidden();
+  };
+  let reloaded;
+  try {
+    await showWriter(page);
+    await expect(globe).toHaveAttribute("data-globe-camera-phase", "idle");
+    const initial = await readProfile("high", "initial-low-resource-hints");
+    expect(initial.hints).toEqual({ saveData: true, deviceMemory: 2, hardwareConcurrency: 2 });
+    expect(initial.browserPixelRatio).toBe(2);
+    expect(initial.rendererPixelRatio).toBe(1.5);
+    expect(initial.pointVertexCounts).toContain(2400);
+    expect(initial.reducedMotion).toBe(false);
+    const pose = await settledCameraPose(original);
+    for (const language of ["en", "ru"]) {
+      await page.locator(".native-planet-app .interface-language-control button").filter({ hasText: language.toUpperCase() }).click();
+      await expect(page.locator("html")).toHaveAttribute("lang", language);
+      await expect.poll(() => page.evaluate(() => window.__nativePlanetHarness.savedLanguage())).toBe(language);
+      await showWriter(page);
+      await retained(page, original);
+      expect(await cameraPose(original)).toEqual(pose);
+      locales.push(await readProfile("high", "initial-locale-" + language));
+    }
+    let language = "ru";
+    let keyboardSelection;
+    const settingsLocales = [];
+    for (const tier of ["balanced", "economy", "high"]) {
+      await openSettings(language, tier === "balanced");
+      if (tier === "balanced") {
+        await page.keyboard.press("ArrowRight");
+        await expect(checkedProfile(tier)).toBeFocused();
+        keyboardSelection = await checkedProfile(tier).evaluate(element => ({
+          focused: document.activeElement === element, focusVisible: element.matches(":focus-visible"),
+          outlineStyle: getComputedStyle(element).outlineStyle, outlineWidth: parseFloat(getComputedStyle(element).outlineWidth),
+          checked: element.checked, value: element.value }));
+        expect(keyboardSelection.focusVisible).toBe(true);
+        expect(keyboardSelection.outlineStyle).not.toBe("none");
+        expect(keyboardSelection.outlineWidth).toBeGreaterThanOrEqual(2);
+      } else await checkedProfile(tier).check();
+      await expect(checkedProfile(tier)).toBeChecked();
+      await expect.poll(() => fixture.preferenceMemory.get(preferenceKey)).toBe(tier);
+      if (tier === "economy") {
+        await panel.locator(".interface-language-control button").filter({ hasText: "EN" }).click();
+        language = "en";
+        await expect(page.locator("html")).toHaveAttribute("lang", "en");
+        await expect.poll(() => page.evaluate(() => window.__nativePlanetHarness.savedLanguage())).toBe("en");
+        await expect(settings.locator("summary")).toHaveText("Graphics settings");
+        await expect(checkedProfile(tier)).toBeChecked();
+        expect(fixture.preferenceMemory.get(preferenceKey)).toBe(tier);
+      }
+      if (tier !== "high") {
+        const accessibility = await inspectSettings(language);
+        settingsLocales.push({ locale: language, selectedProfile: tier, accessibility });
+        await evidence(fixture, testInfo, "native-graphics-settings-" + tier, {
+          selectedProfile: tier, preferenceKey, locale: language, nativePreferenceSaved: true, accessibility,
+          ...(tier === "balanced" ? { keyboardSelection } : {}) });
+      }
+      await closeSettings(language);
+      await showWriter(page);
+      const actual = await readProfile(tier, "selected-profile-" + tier);
+      expect(actual.reducedMotion).toBe(false);
+      await retained(page, original);
+      expect(await settledCameraPose(original)).toEqual(pose);
+      changes.push(actual);
+    }
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await expect(page.locator("[data-atlas-experience]")).toHaveAttribute("data-atlas-reduced-motion", "true");
+    await expect(globe).toHaveAttribute("data-globe-auto-rotate", "reduced-motion");
+    expect((await nativeGlobeRuntime(page)).autoRotate).toBe(false);
+    const reduced = await readProfile("high", "reduced-motion-high-rendering");
+    expect(reduced.reducedMotion).toBe(true);
+    await retained(page, original);
+    expect(await settledCameraPose(original)).toEqual(pose);
+    // Persist a non-default tier, then use an actual document reload. The OS
+    // preference fixture survives outside the document; no storage reseeding.
+    await openSettings("en");
+    await checkedProfile("balanced").check();
+    await expect.poll(() => fixture.preferenceMemory.get(preferenceKey)).toBe("balanced");
+    await closeSettings("en");
+    const beforeReload = await readProfile("balanced", "balanced-before-reload");
+    await retained(page, original);
+    expect(await settledCameraPose(original)).toEqual(pose);
+    await evidence(fixture, testInfo, "native-graphics-profiles-before-reload", { initial, locales, changes, reduced, beforeReload, settingsLocales, keyboardSelection,
+      unchangedCameraPose: pose, selectedCountry: "russia", selectedWriter: "dostoevsky", edition: "rand-mcnally-1887",
+      sameCanvasRendererCameraScene: true, graphicsScope: "Actual DPR, star buffers, sphere segments and sky material after explicit profile actions",
+      capabilityFixture: "Browser capability hints and devicePixelRatio emulated; no physical low-memory GPU or performance guarantee" });
+    await original.dispose();
+    await page.reload();
+    await nativeRootReady(page);
+    await expect(page.locator("html")).toHaveAttribute("lang", "en");
+    await showWriter(page);
+    reloaded = await captureScene(page);
+    const reloadedPose = await settledCameraPose(reloaded);
+    const saved = await readProfile("balanced", "saved-balanced-after-reload");
+    expect(saved.reducedMotion).toBe(true);
+    expect((await nativeGlobeRuntime(page)).autoRotate).toBe(false);
+    await openSettings("en");
+    await expect(checkedProfile("balanced")).toBeChecked();
+    expect(fixture.preferenceMemory.get(preferenceKey)).toBe("balanced");
+    await panel.locator(".interface-language-control button").filter({ hasText: "RU" }).click();
+    await expect(page.locator("html")).toHaveAttribute("lang", "ru");
+    await expect(settings.locator("summary")).toHaveText("Настройки графики");
+    await expect(checkedProfile("balanced")).toBeChecked();
+    await closeSettings("ru");
+    await showWriter(page);
+    const final = await readProfile("balanced", "saved-balanced-after-reload-ru");
+    await retained(page, reloaded);
+    expect(await settledCameraPose(reloaded)).toEqual(reloadedPose);
+    await evidence(fixture, testInfo, "native-graphics-saved-balanced-ru", { saved, final, preferenceKey, persistedProfile: "balanced",
+      selectedCountry: "russia", selectedWriter: "dostoevsky", edition: "rand-mcnally-1887",
+      reloadScope: "Reload creates a new document and scene; saved native preference remains authoritative. Scene identity is verified within each document only.",
+      sameCanvasRendererCameraSceneAfterReloadLocaleChange: true });
+    // Test text enlargement only for the new settings. Viewport changes may
+    // legitimately reframe the camera; object identity must still survive.
+    await page.setViewportSize({ width: 320, height: 844 });
+    await openSettings("ru");
+    const normalText = await inspectSettings("ru");
+    await page.evaluate(() => { document.documentElement.style.fontSize = "200%"; });
+    for (const language of ["ru", "en"]) {
+      if (language === "en") {
+        await panel.locator(".interface-language-control button").filter({ hasText: "EN" }).click();
+        await expect(page.locator("html")).toHaveAttribute("lang", "en");
+        await expect.poll(() => page.evaluate(() => window.__nativePlanetHarness.savedLanguage())).toBe("en");
+      }
+      await expect(checkedProfile("balanced")).toBeChecked();
+      expect(fixture.preferenceMemory.get(preferenceKey)).toBe("balanced");
+      const returnButton = panel.getByRole("button", { name: language === "ru" ? "Вернуться к планете" : "Return to the planet", exact: true });
+      await expect(returnButton).toBeInViewport({ ratio: 1 });
+      const returnBounds = await returnButton.boundingBox();
+      expect(returnBounds.width).toBeGreaterThanOrEqual(44);
+      expect(returnBounds.height).toBeGreaterThanOrEqual(44);
+      expect(returnBounds.x).toBeGreaterThanOrEqual(0);
+      expect(returnBounds.x + returnBounds.width).toBeLessThanOrEqual(320);
+      const accessibility = { ...await inspectSettings(language), returnButton: { label: await returnButton.getAttribute("aria-label"), bounds: returnBounds } };
+      expect(accessibility.text[0].fontSize / normalText.text[0].fontSize).toBeCloseTo(2, 4);
+      for (const tier of ["high", "balanced", "economy"]) {
+        await checkedProfile(tier).scrollIntoViewIfNeeded();
+        await expect(checkedProfile(tier)).toBeInViewport();
+      }
+      await checkedProfile("balanced").scrollIntoViewIfNeeded();
+      await retained(page, reloaded);
+      const graphics = await readProfile("balanced", "narrow-text-200-" + language);
+      await evidence(fixture, testInfo, "native-graphics-settings-narrow-" + language, { accessibility, graphics,
+        sameCanvasRendererCameraScene: true, textScale: "Root font 200%; actual summary font measured at twice baseline",
+        scope: "320 CSS px browser viewport; normal vertical scrolling allowed. New settings only; no physical device or OS text-scale claim." });
+    }
+    await closeSettings("en");
+    await expect(page.locator('[data-atlas-action="open-collection"]')).toBeFocused();
+    await retained(page, reloaded);
+    await expect(page.locator(".country-heading img.country-flag")).toHaveAttribute("alt", "");
+    await expect(page.locator(".country-heading img.country-flag")).toHaveAttribute("fetchpriority", "high");
+    expect(fixture.consoleErrors).toEqual([]);
+  } finally { await original.dispose(); await reloaded?.dispose(); }
+});
+
+test("native application appearance follows canonical globe editions while preserving rich graphics and scene", async ({}, testInfo) => {
+  const fixture = await open({ route: "/?country=russia&writer=dostoevsky#atlas", reducedMotion: "no-preference", deviceScaleFactor: 2,
+    viewport: { width: 1440, height: 800 },
+    capabilityHints: { saveData: true, deviceMemory: 2, hardwareConcurrency: 2 } });
+  const { page } = fixture;
+  const original = await captureScene(page);
   try {
     await showWriter(page);
     await expect(page.locator("#atlas .literary-globe")).toHaveAttribute("data-globe-camera-phase", "idle");
@@ -516,7 +769,7 @@ test("native application defaults to rich graphics under low-resource hints whil
     expect(await settledCameraPose(original)).toEqual(pose);
     await evidence(fixture, testInfo, "native-rich-default-low-hints", { initial, locales, reduced, unchangedCameraPose: pose,
       selectedCountry: "russia", selectedWriter: "dostoevsky", sameCanvasRendererCameraScene: true,
-      graphicsScope: "Existing rich renderer mode; full High/Balanced/Economy profile system remains future work",
+      graphicsScope: "Rich rendering across canonical appearances; profile controls have their own focused regression",
       capabilityFixture: "Browser hints and devicePixelRatio emulated before mount, not a physical low-memory GPU or performance guarantee" });
     const appearances = [];
     for (const [edition, style] of [["rand-mcnally-1887", "antique"], ["nasa-blue-marble", "earth"], ["natural-earth-2026", "modern"]]) {

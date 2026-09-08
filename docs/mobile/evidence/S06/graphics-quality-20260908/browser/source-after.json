@@ -1,0 +1,3913 @@
+{
+  "sha256": "7f26a8caba4f8e20cd1d951da652c0b8a4c35a0cb4956c1a3b6db7fec49a05e3",
+  "files": [
+    {
+      "path": "capacitor.config.json",
+      "sha256": "c28dd50db2c283a03b4859a0cdfe85ce862d08080ab0824cfa6ad7595a9e2863"
+    },
+    {
+      "path": "native.html",
+      "sha256": "5de2e345efe2d9289a5c7ca2a028f453f7693eb0490010c708cb90e0058fea15"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+    },
+    {
+      "path": "package.json",
+      "sha256": "90b392c205754f838b8bc7c4475bd475936be1078561bb218c437d151177869f"
+    },
+    {
+      "path": "scripts/mobile/build-native.mjs",
+      "sha256": "9696723c7c5fad173ab1dfe4cfff96973040186347c64f8c02e4b6bb7a9ee23e"
+    },
+    {
+      "path": "scripts/mobile/native-base-assets.json",
+      "sha256": "80c3561b3e4011625acb6a176811f1b751194abcb9df52e44209b992f55c0a4e"
+    },
+    {
+      "path": "scripts/mobile/pwa-artifact.mjs",
+      "sha256": "32d33ac98f1b60a2f922e531384503850e172062d957aa4beec6270ee0d45193"
+    },
+    {
+      "path": "src/App.tsx",
+      "sha256": "c7143cf37e07086dd54dac8628ff3d56534d3fddf664ac0e487cabd4b0aeffd1"
+    },
+    {
+      "path": "src/analytics/AnalyticsConsent.tsx",
+      "sha256": "b8198a7d8906b528823521b247803566bd317201503b223607b9d1f57edbefcd"
+    },
+    {
+      "path": "src/analytics/analyticsConsent.css",
+      "sha256": "3658d982e4ff7707c3179c20ca133db4f2ea06644d26a1bdebc82b76e8923402"
+    },
+    {
+      "path": "src/analytics/useAnalyticsConsent.ts",
+      "sha256": "7b78a722ec10b5d664753bef68cf5666f143da13e6ce3971ce336b8713ced08e"
+    },
+    {
+      "path": "src/analytics/yandexMetrika.ts",
+      "sha256": "f30ce2e86e81786852ca78929d39610b17350b3871227852d6b33fd6846296ec"
+    },
+    {
+      "path": "src/articles/articleBookImages.ts",
+      "sha256": "6a0315fae6105ffb386fdb418dd911d63a46aa79bf896fb593c078613c78433a"
+    },
+    {
+      "path": "src/articles/articleBookPages.ts",
+      "sha256": "7b417f03460a195f344dccd1f38b50cf34052d3b93bfc737c4a1e445728d134f"
+    },
+    {
+      "path": "src/articles/articleBookTextures.ts",
+      "sha256": "b5a208f0d88ca66754182d57bedb889058817235a3d8752ac032733cdca13cfb"
+    },
+    {
+      "path": "src/articles/hyphen.d.ts",
+      "sha256": "d2b6e7b694375e9fcaf51063bba955a49f9a8248ba75401c3526b2e0fd997e7a"
+    },
+    {
+      "path": "src/assets.d.ts",
+      "sha256": "09b4d17393d7be1ff7c1ed663df954e7c0930a13f0650063e1272abe16193638"
+    },
+    {
+      "path": "src/assets/brand/brush-orange-stage.webp",
+      "sha256": "3d16e63c8d74e2c7cb521a16a4e6ced5fc34d08590140b0d2c993d29eee0b493"
+    },
+    {
+      "path": "src/assets/brand/brush-paper-corners.webp",
+      "sha256": "d6b5a8528a0e95ad555e4a3f93a886e2c7437f578023b6d2bcdea1b0cd6771df"
+    },
+    {
+      "path": "src/assets/brand/brush-paper-east.webp",
+      "sha256": "4067b8328ca6389bf7f6eb38a35f66e428181f0cd37180374c2d9c30415fc031"
+    },
+    {
+      "path": "src/assets/brand/brush-paper-split.webp",
+      "sha256": "7cac3c0966ac13fe1d6e461d051921e8d12ad8b3bab5c8c83f1711708246ee7f"
+    },
+    {
+      "path": "src/assets/brand/brush-violet-stage.webp",
+      "sha256": "e8f77a5f1f2b73ba8abec2921d0b3388bf8a81994c03b810be0d9e664e43aaa3"
+    },
+    {
+      "path": "src/assets/brand/editorial-paper.webp",
+      "sha256": "b47d170befac71b0f2496a9d80dd68e5dd960fd41cb5fc45d48cf0a442cb9a68"
+    },
+    {
+      "path": "src/assets/brand/section-prizes.webp",
+      "sha256": "3b4cd3e381198f0a71226fb46268b298d9fd37061ab039ff9f537fecc37d02ab"
+    },
+    {
+      "path": "src/assets/map/README.md",
+      "sha256": "e62d74891a085b0947391576882f9e92e27f8419a6eb3d77c89ada5fb24cabbe"
+    },
+    {
+      "path": "src/assets/map/literary-world-map.svg",
+      "sha256": "307b1dc11fe9d2d44f6da034aa399cd922098e76f524aec27f2fdff11f6ddb43"
+    },
+    {
+      "path": "src/atlas/atlasExperienceState.ts",
+      "sha256": "fc69f9650d3a78270263901310baa8fd1700e668fdba496246318ca72cf80140"
+    },
+    {
+      "path": "src/atlas/atlasSheetGesture.css",
+      "sha256": "e56ea2ccef9c2bdd100faa1d6bf303239bb241be148cc3993664fa2e445ab114"
+    },
+    {
+      "path": "src/atlas/atlasSheetGesture.ts",
+      "sha256": "0b5a60cefd2362b4c1899dfb00ea0de8674692ea7c2f77c39c3cc9dcafb778ad"
+    },
+    {
+      "path": "src/atlas/useAtlasExperience.ts",
+      "sha256": "dc974357bf3d820e85ee86b6950ce8122b70543f304caeeb6217f0a1317e2046"
+    },
+    {
+      "path": "src/atlas/useAtlasSheetGesture.ts",
+      "sha256": "dbb5fd3651cb7ee9cacf56008725a6a45bcb51f23cee25676be1e15655d62ddd"
+    },
+    {
+      "path": "src/books/bookArchiveDiscovery.ts",
+      "sha256": "8f46544f6093012d6eda020af9c563a551310d2a377d8329ed2d0161846c0deb"
+    },
+    {
+      "path": "src/books/bookArchiveFacets.ts",
+      "sha256": "d8654a1a2fbdc7848efc9d1caac9acfebec23f93713c2e0ed3821bf747b6663d"
+    },
+    {
+      "path": "src/books/bookArchiveLocation.ts",
+      "sha256": "6773066d9e66babaa0c106204cd39b51263b324b31099fa383c1e2334c7923d7"
+    },
+    {
+      "path": "src/books/bookArchiveSceneSettings.ts",
+      "sha256": "32ce7e13c0359f0796c67bf0b4e12a5269735297b17c13fc200ad6f84a2ccfe2"
+    },
+    {
+      "path": "src/books/bookCollectionManager.ts",
+      "sha256": "9d9ab37a92d7365a926ac5970b8c665a2c55879341aa886ac33b402b5cd6c622"
+    },
+    {
+      "path": "src/books/bookCollectionMembershipDialog.ts",
+      "sha256": "c43e57ddaf7012c249ebaaef68f5e6eda44e95acdbf1487e2cabf08da3c1d8d2"
+    },
+    {
+      "path": "src/books/bookCollectionShelfSelector.ts",
+      "sha256": "79e58866b380f9a5ec0e88672814ec7dd4d3b2aa915af27da9be6e84599d8d6d"
+    },
+    {
+      "path": "src/books/bookCollectionStorage.ts",
+      "sha256": "9fba1696dafa4d55b92e993e9f370e8a39a19dc15641c8e05d09649c8ea93361"
+    },
+    {
+      "path": "src/books/bookCollections.ts",
+      "sha256": "402f29b94107a50907bd78f14b4cf2e8b6247e2be5ea64b185432e1043c62474"
+    },
+    {
+      "path": "src/books/bookCoverPalettes.generated.json",
+      "sha256": "b3773254328b117537858f91b6f4429938bdccdcf28ad952cc978b472cd6078c"
+    },
+    {
+      "path": "src/books/bookDossierCompiler.ts",
+      "sha256": "32966360f7dcc4c934e5ec4ac3b266985aa65edd03098003dde5e9e396ca700e"
+    },
+    {
+      "path": "src/books/bookDossierDelivery.ts",
+      "sha256": "0651494558a405c0cd3b5bba1a7402cfa835f68df373b2db1bce1759563b2676"
+    },
+    {
+      "path": "src/books/bookDossierDesign.ts",
+      "sha256": "1d884cdf4c2beb2938fec8c06168c127a4c2a1b805dd3595bf6c3a8772229107"
+    },
+    {
+      "path": "src/books/bookDossierDiagram.ts",
+      "sha256": "7db60e04c6b446fbf5848b14819b401d473f84c3b89acc5e516b8847904b3534"
+    },
+    {
+      "path": "src/books/bookDossierDocument.ts",
+      "sha256": "eebdaac897bff5cd49ce9a27b8def78ba4dc65d814ee728d0e1fa3d54cbe99b6"
+    },
+    {
+      "path": "src/books/bookDossierDraftBuilder.ts",
+      "sha256": "1799e673d5d530218813f64043c549761a9c428049a52b6caff099b10ce24f32"
+    },
+    {
+      "path": "src/books/bookDossierLegacyAdapter.ts",
+      "sha256": "b54cc64ff4c1903b2b989e20680aa97f03fa4f00a439d7d19f612ba1da8d44a9"
+    },
+    {
+      "path": "src/books/bookDossierProgress.ts",
+      "sha256": "503d6b7c9e26da19aee4162c8fc67fa92ad9e09bb08caac97fcd23b795e557dc"
+    },
+    {
+      "path": "src/books/bookDossierPublicClient.ts",
+      "sha256": "d14ec7f2e05340d9bf0530c755a93608bf6cb1013091ddc4669fd9ab9c6eeac9"
+    },
+    {
+      "path": "src/books/bookDossierReadingSteps.ts",
+      "sha256": "54e219801ecf9f81d8d30fbbeab85031d9b39f76697c97df1790c3e29a1902fa"
+    },
+    {
+      "path": "src/books/bookDossierRights.ts",
+      "sha256": "18113ebff92e3f5333e922272649dfed5622cd87f66a361f9a272f05fa4ba0b6"
+    },
+    {
+      "path": "src/books/bookDossierValidation.ts",
+      "sha256": "8c6713ed76f576392ad04363953eee7aba5a275cd9cd8b1a927c4c5053d1f366"
+    },
+    {
+      "path": "src/books/bookDossierWorkflow.ts",
+      "sha256": "445865a9af458f435f217a0f2488d398f2952adfc3bc75f052063aaf96110bcb"
+    },
+    {
+      "path": "src/books/bookEditorialPages.ts",
+      "sha256": "10956b51ae0c7819c2345e3427e514e9091a89a42619ea190032f6c4b69fc360"
+    },
+    {
+      "path": "src/books/bookEndpaperTexture.ts",
+      "sha256": "823b16f6b067fa2af2bf0b4945a29466009ce85474d35f6b53772d372da22cdf"
+    },
+    {
+      "path": "src/books/bookInspectionCamera.ts",
+      "sha256": "4c63f7fa062c80aa2e9f94c9c35a274b07336a7398b9b5d3c036fbd35e92760c"
+    },
+    {
+      "path": "src/books/bookInspectionPageGeometry.ts",
+      "sha256": "1b593fe26ba4b4cc3624e06a265ac29bdcd15343087f437103b3560c9cf0825b"
+    },
+    {
+      "path": "src/books/bookInspectionPageLayout.ts",
+      "sha256": "72cc88dfb6e3050fd418d6539c41f59e643c2df68b8f1c57fe8ebd5ebbd62208"
+    },
+    {
+      "path": "src/books/bookInspectionSession.ts",
+      "sha256": "aff5e2d8c8daaa6af21b1d6aee09a63419da83c1065f77dcecb7afb822e9f990"
+    },
+    {
+      "path": "src/books/bookInspectionShaderWarmup.ts",
+      "sha256": "572445e7d7992fba30b5ae858c7d2c44e3d02fb995e499ac3a449cb3ec7a43a8"
+    },
+    {
+      "path": "src/books/bookInspectionTextures.ts",
+      "sha256": "303ad6a68debbf4a7e69616fff0e873b77f08cd9746e4cd58177454da8d1d151"
+    },
+    {
+      "path": "src/books/bookOwnerSpineIdentity.ts",
+      "sha256": "33dc3d30ac0e780e8462c67dfb2d1bb59b525e2ad5d02acac0ce3563ae30f526"
+    },
+    {
+      "path": "src/books/bookSceneThemes.ts",
+      "sha256": "f4bc1730a94954740656ddba94315d0a60a73590ed0ab56692bca8d10cd63e72"
+    },
+    {
+      "path": "src/books/bookShelfExtractionMotion.ts",
+      "sha256": "41dc57b70520bee7e6f44b4f7b387af6054f333a0e7964b5e652fee11082972d"
+    },
+    {
+      "path": "src/books/bookShelfMobileDetail.ts",
+      "sha256": "315c7a709add15116f7bf8114924e2cb5d6e935cc255c35289da2b9518c6df32"
+    },
+    {
+      "path": "src/books/bookShelfNavigation.ts",
+      "sha256": "3192949802f33a78bdadfb229f53607677eff1263cf38484d21f90960c8fd728"
+    },
+    {
+      "path": "src/books/bookShelfPhysicalLayout.ts",
+      "sha256": "ddec5439906dc8a65344fd099d3e51e2945a2f282bc5d5ad283b40be425efe12"
+    },
+    {
+      "path": "src/books/bookShelfPointer.ts",
+      "sha256": "55b2af88c9eb98352eb8630508f73d85d4728d9c67be2a34fe0130772e1bf285"
+    },
+    {
+      "path": "src/books/bookShelfPresentationProfiles.ts",
+      "sha256": "473bde9e1049645498afea1af84ad248aff0456ec78b85fee2b36e61f88323ea"
+    },
+    {
+      "path": "src/books/bookShelfQualityController.ts",
+      "sha256": "fc84779cc06a0ea0930d082e2c234e26b4f59710b39bd5eec4fc8203a01ee523"
+    },
+    {
+      "path": "src/books/bookShelfState.ts",
+      "sha256": "a0d13a90cda40132be4cbcc2226bf27190a5f3b027a49c0e4571e7f7f8263ec7"
+    },
+    {
+      "path": "src/books/bookShelfViewportInsets.ts",
+      "sha256": "f6c8391e7b6ca6bd0aa248d4a0b0f078ff3f00a154a164a56b2085cf2e715c97"
+    },
+    {
+      "path": "src/books/bookSmartShelves.ts",
+      "sha256": "e4084840ba7d4f0aff6c34470d12b3b28eb94fa7e3699fc7e4901554345ed4d6"
+    },
+    {
+      "path": "src/books/bookTypography.ts",
+      "sha256": "d492d8fd3fdfd75193f12a7fa390526b29f30187cb8777298a7c84700adfe9cc"
+    },
+    {
+      "path": "src/books/completeShelfModel.ts",
+      "sha256": "32c0cb3df0295e95e8b38581df0724e9df42de087150be2b4c31d71a6ff66bbe"
+    },
+    {
+      "path": "src/books/completeShelfRenderer.tsx",
+      "sha256": "b7fd8b3f1a564b438fa1bb1d43a78e89b73106a4c99f525f915910c17669ad69"
+    },
+    {
+      "path": "src/books/completeShelfTextures.ts",
+      "sha256": "82db15d7adea40fe7e4586a53b4b2a806b5de1b0f2b6219a69cb72dafa829283"
+    },
+    {
+      "path": "src/books/sharedAsyncLru.ts",
+      "sha256": "4736d722fdeacb0ff5f319092a71af3e7b0ab12d165b72e3bcf62d684f976522"
+    },
+    {
+      "path": "src/books/useBookShelfViewportInsets.ts",
+      "sha256": "29d1a4b2409498f2d2e6a0b4777bb17331b147a915c189e12a7557c3ebbd54ec"
+    },
+    {
+      "path": "src/books/usePublishedBookDossier.ts",
+      "sha256": "67d2d3dfe387bd42aafa026176c9a66246dc8b01cb7fc04003e58ac719d4aea4"
+    },
+    {
+      "path": "src/cms/SiteDesignRuntime.tsx",
+      "sha256": "bdf81d7ab1cf9bd7b68963b7f93a2e303d734a9a069c837e1c722fa2690e5981"
+    },
+    {
+      "path": "src/cms/SiteTypographyRuntime.tsx",
+      "sha256": "0e6107aa541ac56849a18de0482fc14ef1756570bca567f99e9c287783aacca3"
+    },
+    {
+      "path": "src/cms/directEditBridge.tsx",
+      "sha256": "ef8a51016ef114294d8df69aa0ee1ed21efca5f7fc4a6e9e50fa4618ff239ef7"
+    },
+    {
+      "path": "src/cms/siteChromeRuntime.ts",
+      "sha256": "a3e2af9c2a5504c913f93285e7d870e35bea6a40d88e39ef95e9e78ba60c2d7d"
+    },
+    {
+      "path": "src/community/ActivityTracker.tsx",
+      "sha256": "eea5b9543d2e401faa1f184ee2ee2b9277460b4cba672f6dc5011fb566d47e36"
+    },
+    {
+      "path": "src/community/ArticleEngagement.tsx",
+      "sha256": "35fe5ef1ea89aff53913434f9513653a97336c400c41eba1937efed3bcbab2a9"
+    },
+    {
+      "path": "src/community/ArticleViewCount.tsx",
+      "sha256": "6360e17cf2812138e87328072484efd5ad1446c00bd6e363f67cdf5f7e7e7698"
+    },
+    {
+      "path": "src/community/AuthContext.tsx",
+      "sha256": "979334217af2f29388af0955c081487215f6a3aeb540a07a2ba1c7920fa759b3"
+    },
+    {
+      "path": "src/community/AuthTurnstileGate.tsx",
+      "sha256": "25189693de33edf6297a65de9f7e20029a4ddd1a1b68bc7abb4a7fd2cae3c8e3"
+    },
+    {
+      "path": "src/community/ClientDiagnostics.tsx",
+      "sha256": "426b4ea7b6d80b8ad24c2997c740e9100b298cc47fdb15146cc66068d43ed544"
+    },
+    {
+      "path": "src/community/CommunityHub.tsx",
+      "sha256": "3ee89b855511cb8a84244b19f7b1ca9ceee0478789c13209280057e0ede63a16"
+    },
+    {
+      "path": "src/community/EditorialWorkbench.tsx",
+      "sha256": "b7a1d91231e2e3736eef809cd57819167d8d89739c31957b082adde58788d992"
+    },
+    {
+      "path": "src/community/authTurnstileToken.ts",
+      "sha256": "3ea015880596925068b532c875746da256247724cb02ded2b05f418e608d5984"
+    },
+    {
+      "path": "src/community/community-accessibility.css",
+      "sha256": "0511aa9695398fbec58f331f615ca87f51bb3acf9a933e6fa5739c646a9176ae"
+    },
+    {
+      "path": "src/community/diagnosticsReporter.ts",
+      "sha256": "50fea0bdc59de2fba95046eabfe52d0e13fa5c104602070e6a66fe78d1c2af1b"
+    },
+    {
+      "path": "src/community/sessionIdentity.ts",
+      "sha256": "3fb36c2b23f66fe2c736443bdf7ca8f35c27e2953df736ec31860d2c619d48f4"
+    },
+    {
+      "path": "src/components/AntiqueContinentLayer.tsx",
+      "sha256": "fb4115b92fe51d388bd936f9e5dbc7b5ed29a02f59a8eb473ec6d8bb4be3fcb6"
+    },
+    {
+      "path": "src/components/AppErrorBoundary.tsx",
+      "sha256": "2c056cebcff6962d648549670ba2eed2c4dac4cd0e7ec764881927f008ec6a08"
+    },
+    {
+      "path": "src/components/ArticleBookReader.tsx",
+      "sha256": "d4ff912d734d779faa6185a4a0d3623fe0c7bec2bbdfa82c3b157b92655fea88"
+    },
+    {
+      "path": "src/components/ArticleLibrarySection.tsx",
+      "sha256": "396ca2cad639f9e5a7a2d40eaa37e73bb33032acfaa7b10f62cab98cced69ef7"
+    },
+    {
+      "path": "src/components/ArticleReader.tsx",
+      "sha256": "7415ad442ba0b7ad0d093b4cde907ff35820140ac5bc3e3d7f3c44268835ea5f"
+    },
+    {
+      "path": "src/components/AtlasExperienceChrome.tsx",
+      "sha256": "ae4df4122ca217f3b885016424c1e5a4c95408434ad11c69457ec2e797cce292"
+    },
+    {
+      "path": "src/components/AtlasSearchCombobox.tsx",
+      "sha256": "3682f07130a3dd5f3287ec1bc7c6a5f7f695089119da8c4cfd90af7d4442d88d"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "sha256": "7dd03088ad0e0d5013e3a721b0c68131625162bc2798704c907d94782fc75e35"
+    },
+    {
+      "path": "src/components/BookCollectionManagerSheet.tsx",
+      "sha256": "a8022348bd593a939b0c05bf839ac4370475d028ea5e6ca706265aad56cca6b0"
+    },
+    {
+      "path": "src/components/BookCollectionMembershipDialog.tsx",
+      "sha256": "c5874a0b2df7f9ec9c7cb2abd7be01da54fd8efdd337c49e20b661f9d7a64b89"
+    },
+    {
+      "path": "src/components/BookCollectionShelfSwitcher.tsx",
+      "sha256": "9836b687d1f39bf403d30deff74d278753aafa1752af217bd32b574cff7dbe05"
+    },
+    {
+      "path": "src/components/BookCoverArtwork.tsx",
+      "sha256": "efe19f32cb0cc2817cce59748668684ad43ee828b33b2ce7365f6d68214ee803"
+    },
+    {
+      "path": "src/components/BookDossierMap.tsx",
+      "sha256": "d58437afc9a06c495fa4a6672e985f8cffc021d3ce17858c5ee9ed99ce9630b2"
+    },
+    {
+      "path": "src/components/BookDossierReader.tsx",
+      "sha256": "7953e1aa3fd3cc22e3bd8ac7d50ff9bd1f6448a023d5c31045fe244c4d554332"
+    },
+    {
+      "path": "src/components/BookShelfBrandLoader.tsx",
+      "sha256": "7854b9bd83f7121aee3bd27ee085f2eb5830d43cfc35d020b3f4531851784a1d"
+    },
+    {
+      "path": "src/components/BookShelfControls.tsx",
+      "sha256": "ecb35047d0507b3969abc8070e7004cef33e1919f2eb699396a3935d65408e7d"
+    },
+    {
+      "path": "src/components/BookShelfFrame.tsx",
+      "sha256": "9caca2bdfd37c2cba1056f712c9e601932b61b6c4b999fb25c91a8f6b2fd679c"
+    },
+    {
+      "path": "src/components/BookShelfProgressRail.tsx",
+      "sha256": "d9edb7f22b291a28a720232fee670694e9572227543ae70b72750b7f17d754b1"
+    },
+    {
+      "path": "src/components/BookShelfQualityMenu.tsx",
+      "sha256": "33dc9dd79f425983a825be90109595ee17ec13a2d3b43be1909cac5264cce1bd"
+    },
+    {
+      "path": "src/components/BookShelfScene.tsx",
+      "sha256": "b1e57ce36c73dda924f8a82497c5947595265874df085abe110e74a009c4512a"
+    },
+    {
+      "path": "src/components/BookShelfSceneCanvas.tsx",
+      "sha256": "0b2ce78ad409887afaf82839d2ef6f21a068c6f06d66ca471c200f544c7e7283"
+    },
+    {
+      "path": "src/components/BookShelfSpineTooltip.tsx",
+      "sha256": "7fb5a1bafdf48e06f4761e8022c740937edfc11ba1148ef7a18e19170ec68111"
+    },
+    {
+      "path": "src/components/BootstrapErrorBoundary.tsx",
+      "sha256": "048eb2313433844a8ffd8f6219ee670d79eb7bd5ade1eb701706a71a989ab664"
+    },
+    {
+      "path": "src/components/BrandArrowIcon.tsx",
+      "sha256": "027b1310d2cc97719c56ca31d4a6581d853cdc4d5182c907ac04490ad5ece365"
+    },
+    {
+      "path": "src/components/BrandBookIcon.tsx",
+      "sha256": "c8075bfa4a723a5fad7791b99ca44244bbe2dbedc646c385c2943b063c679720"
+    },
+    {
+      "path": "src/components/BrandCloseIcon.tsx",
+      "sha256": "10b539732e6bad9b2b4b295f82f99de9e195cc968e8065a6d7fcb6bcb4120cb6"
+    },
+    {
+      "path": "src/components/BrandExternalLinkIcon.tsx",
+      "sha256": "737703117dce4e02ae4ce6d6fb7b9c6f0dd2ff1180da49a4d119aede9d6ca986"
+    },
+    {
+      "path": "src/components/BrandFilterIcon.tsx",
+      "sha256": "a3f7e7dc4eecb102ac1500a5efdde0e95cae77bc28b68968f15a06136b9ceff1"
+    },
+    {
+      "path": "src/components/BrandHeartIcon.tsx",
+      "sha256": "4838de51bda7bd68a4f91b9efca541e40467c3e879388df3cdc5a5f5601a808b"
+    },
+    {
+      "path": "src/components/BrandMinusIcon.tsx",
+      "sha256": "aca347646e64e697a91498c42f2ff4add6351f036148aa4ad813fe83f9ab163b"
+    },
+    {
+      "path": "src/components/BrandPlusIcon.tsx",
+      "sha256": "1d17223e5e2c91e023b1393eb30dbfb0bf41511c4b02f12692e17d713b461226"
+    },
+    {
+      "path": "src/components/BrandQuillIcon.tsx",
+      "sha256": "e8fb274d512aa0d49d43ed76e2208ff8d07b45128b3c7794c1b0d2974d2e2d11"
+    },
+    {
+      "path": "src/components/BrandResetIcon.tsx",
+      "sha256": "6f0d06c550ba8db15b191ebdb2ea228f79cfdf969c369998123110ebed1bbe2f"
+    },
+    {
+      "path": "src/components/BrandRotateIcon.tsx",
+      "sha256": "3477a2b885a055a46fe30b910fe180b9bb5895d329d4a38250e5ffbea68d0616"
+    },
+    {
+      "path": "src/components/BrandSearchIcon.tsx",
+      "sha256": "d59b4b2e03be7f4af24d4275a33eef1073df14058505a0102aaa030f5086d746"
+    },
+    {
+      "path": "src/components/BrandSparkleIcon.tsx",
+      "sha256": "46fae81bffa01a9eda516bc48dca44ab6bfbc53be2f20ed935da4e57858093e4"
+    },
+    {
+      "path": "src/components/BrandUserIcon.tsx",
+      "sha256": "eaac5bdac0e38fae931b3e71630d30f9eee1f348b449099e390aa385a84896c2"
+    },
+    {
+      "path": "src/components/BrandWidescreenIcon.tsx",
+      "sha256": "bc8d4cc820682bc7288bb1adf9c1d6bc2cb36e88cb8b2d622506249f6006e6ce"
+    },
+    {
+      "path": "src/components/CmsHomepageContent.tsx",
+      "sha256": "38e59299bc10a7287af03479327175ab5b2b4b985aba7fe9533638e723291b56"
+    },
+    {
+      "path": "src/components/CmsPageReader.tsx",
+      "sha256": "06f757d3a372e79f061c972ed1fc6f19a5bc13d7047141d339b7af33fefccaf3"
+    },
+    {
+      "path": "src/components/CmsSiteChrome.tsx",
+      "sha256": "93efc79da534dfa11d3fdfdcf33c07a7f91ff07f886aef824105205d240786e2"
+    },
+    {
+      "path": "src/components/CountryExplorer.tsx",
+      "sha256": "80960e09c064068613c9ea6e905c32d99cd8b722d177fc549a1986250b840122"
+    },
+    {
+      "path": "src/components/CountryFlagIcon.tsx",
+      "sha256": "f4318be4993ea0c7499fd83053f6595913dcb10184c9dfcaa6ff6f7660afc18b"
+    },
+    {
+      "path": "src/components/CountryStats.tsx",
+      "sha256": "fce78bc127132e71b59f6b004238e4c59f6153a003930ea23fc625389b1beb25"
+    },
+    {
+      "path": "src/components/DisplayModeControl.tsx",
+      "sha256": "71e2b6c9f13359cb26e2e4d788c9a0af99798a44eb581762fb015a6538a89218"
+    },
+    {
+      "path": "src/components/GlobalSearch.tsx",
+      "sha256": "68c8be82f699ba14e41273208649c46f4ae7fb2beccd2741177927092b6bd2d9"
+    },
+    {
+      "path": "src/components/GlobalWriterFilters.tsx",
+      "sha256": "7461b8c0a39064acd5c3bd1169d54d05ef1190fccbccb30eb8534d7cf7b412cd"
+    },
+    {
+      "path": "src/components/GlobalWriterSearch.tsx",
+      "sha256": "5dc41c97142ff65179f6140ac57e2e198548f99b678cd85ff24da511625273ae"
+    },
+    {
+      "path": "src/components/GlobeCameraRig.tsx",
+      "sha256": "5709ce35234066d06469460e8ed98865c2caba5f87dc09a2b3587c20c3acfdb0"
+    },
+    {
+      "path": "src/components/GlobeCountryFocus.tsx",
+      "sha256": "02a26cb55fd0a16bafe5f6a6fc88d343eda33f2137da218d86174f9ed281851a"
+    },
+    {
+      "path": "src/components/GlobeViewObserver.tsx",
+      "sha256": "d56bf531219bb7e129c569ce5b7757db78bc80c14895df82e343e3e28599d639"
+    },
+    {
+      "path": "src/components/HeaderArticlesMenu.tsx",
+      "sha256": "c3aac6abe0e851c1946d7121be1591d1950affb6c3598a07ace80852112f754c"
+    },
+    {
+      "path": "src/components/InterfaceLanguageControl.tsx",
+      "sha256": "69019e0441573d8ea4dd4377ae6dbbd5d3017c5cdd28810bd49942c09f4be293"
+    },
+    {
+      "path": "src/components/LiteraryCalendar.tsx",
+      "sha256": "d8b8dfb653d1098fbda1600ad508c4ebb0b43402d1ba1489b8f381ca3effc1c3"
+    },
+    {
+      "path": "src/components/LiteraryCountryCard.tsx",
+      "sha256": "5fc4452d63dadbc1c00c3ebfca565b36b93cbec58f44d390363d25c704a68af8"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "sha256": "2be1cb0b359db33af29482629b28d39d2033e0f01fd8b505379e23ddb120d563"
+    },
+    {
+      "path": "src/components/LiteraryNewsPanel.tsx",
+      "sha256": "eb9e90d04f9686cee01fb2ac27be858316dcf1af28095d0dc1b749ab24e167cb"
+    },
+    {
+      "path": "src/components/LiteraryPlaces.tsx",
+      "sha256": "2ecc8bc9477229de8c16ba485fb640154ace3490cd8ce4afe07f6f6815d5a1b6"
+    },
+    {
+      "path": "src/components/LiteraryWorldMap.tsx",
+      "sha256": "4443314e76c87af1fc8f4d098654c743f4bd4ff07ed5184b7f4171dd38d0391a"
+    },
+    {
+      "path": "src/components/MapStatistics.tsx",
+      "sha256": "d3e4a0f4c4b2fda1086e385abe6b276d436e0e26d209429e87f52b831cd272fe"
+    },
+    {
+      "path": "src/components/NobelArchiveStrip.tsx",
+      "sha256": "8d4aee80659998927c71ebf21a66b5fd2bfaeee24ebdd0d8abf80916b1e3fe06"
+    },
+    {
+      "path": "src/components/NobelMarkerLayer.tsx",
+      "sha256": "819595c9178f103201046030f9040868326a54abe77c555800271b1f13e1f0ff"
+    },
+    {
+      "path": "src/components/OwnSvgMap.tsx",
+      "sha256": "9efb3d71b686246cfc48e9f6ae17b3955c792a8e6aa30e41d6a9ee31d3d39a7c"
+    },
+    {
+      "path": "src/components/QuoteOfDay.tsx",
+      "sha256": "fd3bc36c6961b84d024b4a513e55faf3b3b33f286678ef0efdc8d0c41fbb53fe"
+    },
+    {
+      "path": "src/components/RecentHistoryPanel.tsx",
+      "sha256": "abcf0d41f67235ed33b64cc217b3fdf3c4c40e8d4fd94cb039bdbd4e6926913f"
+    },
+    {
+      "path": "src/components/SectionsDirectory.tsx",
+      "sha256": "5d21b9c15566c2b0f8c95b9e8393d50f9ba6c201067c888b6ed574368d8b698d"
+    },
+    {
+      "path": "src/components/Sidebar.tsx",
+      "sha256": "9baf36e88817c96a93147b3a299f742825e82ab734bd64ba5da543783c14f62f"
+    },
+    {
+      "path": "src/components/SocialLinks.tsx",
+      "sha256": "b54c17fba3c2f36e4bf92d4ecb76715746204ba644ea95d9220a0eae20aa26c3"
+    },
+    {
+      "path": "src/components/SvgCountryLayer.tsx",
+      "sha256": "6f748ea83c8b9e6c19480a31cd5d175fe893bddc4a5f703942b66af2c3078956"
+    },
+    {
+      "path": "src/components/SvgWorldMap.tsx",
+      "sha256": "d71ea526217e290a92818f3f390a06d3fd153028ed0d941c3b79ee446226fa75"
+    },
+    {
+      "path": "src/components/Timeline.tsx",
+      "sha256": "9f4d10cce9abaf5f26060b972e5d994d745e58b58972aaf250712fa59272822d"
+    },
+    {
+      "path": "src/components/WorldMap.tsx",
+      "sha256": "5c2e9939a2ff7eac819e910f060632f171b04647ba1072314f13a7020233e4f6"
+    },
+    {
+      "path": "src/components/WriterCard.tsx",
+      "sha256": "883116eb0eca552b5a138535371b43bdd4e7fdc4ea0fed6a16dbbbd2eda45740"
+    },
+    {
+      "path": "src/components/WriterClusters.tsx",
+      "sha256": "37a5e87c3f9fd17e578997f22808663bf822af21c0976988fe2dd78cbdcf2514"
+    },
+    {
+      "path": "src/components/WriterFilterPanel.tsx",
+      "sha256": "1a4627338fa540733da34bd89068d831a587bd6b384d7f46383aec4c97fec3a2"
+    },
+    {
+      "path": "src/components/WriterFilters.tsx",
+      "sha256": "202fb9bf4eaa8283e46c19eab4b30426e2d61576392c2b7a741ce29aef40104c"
+    },
+    {
+      "path": "src/components/WriterMap.tsx",
+      "sha256": "b0492e9074ae7b127e6675ae37d7b5cc2ea7a9007eaed40e947f5e93e9056c1a"
+    },
+    {
+      "path": "src/components/WriterPanel.tsx",
+      "sha256": "b10bad5e488d18233a60a4f0450b669af93c7c4c9b81b8a3c87ff355a13b93bf"
+    },
+    {
+      "path": "src/components/WriterPortrait.tsx",
+      "sha256": "13e571489f08624b427e98bac6b76bdf54da2c66cd5907cfa9792d4cb69962cd"
+    },
+    {
+      "path": "src/components/WriterProfile.tsx",
+      "sha256": "4312ba457fbf4214aca15446399f517c7ad4011055c7dc24ba171325908e95b3"
+    },
+    {
+      "path": "src/components/WriterSearch.tsx",
+      "sha256": "b0ab506109c803a79a5ca164fa8eaba03cb424f0207d3efb2d08a8cee3f3fa1e"
+    },
+    {
+      "path": "src/components/globeAssetCache.ts",
+      "sha256": "009f4f6516428c46848cffbecf7c3d3bb0be2b4c1d5989ef8743ecfb4a068987"
+    },
+    {
+      "path": "src/components/globeAtlas.ts",
+      "sha256": "d61529067d5ce3539d783064be9940b4e31d4b3f83e4dfa1fdf1c1ecaf73ab01"
+    },
+    {
+      "path": "src/components/globeCoordinates.ts",
+      "sha256": "1f63623bba1d3fb51cdcddeef7384523eb66774e808a6e826582666ff028f41c"
+    },
+    {
+      "path": "src/components/globeDiscovery.ts",
+      "sha256": "f86866c91c61301b0727334bf4ae58e89dbc8aae46521012f84b46edd24a7de3"
+    },
+    {
+      "path": "src/components/globeEditions.ts",
+      "sha256": "b7440b6278979deb1e47738572460869202f0d9cf794a144aceac9dbcf8cdd77"
+    },
+    {
+      "path": "src/components/globeFocusMath.ts",
+      "sha256": "1dd511d8e47620f73cb72a2e41755256fc0d18679b3e72c4a586b86432c8b30a"
+    },
+    {
+      "path": "src/components/globeGeography.ts",
+      "sha256": "2adecfc19ccb6f15138442c7819c3915952aa71fc707a94daff0be91aa7cce6f"
+    },
+    {
+      "path": "src/components/globeInteraction.ts",
+      "sha256": "f60c2d336147e899bdec7f2836df68d8360071aac1cd514d46d871c7ebdf6fb3"
+    },
+    {
+      "path": "src/components/globeKeyboardNavigation.ts",
+      "sha256": "7afe6e521dc07db5992fd91a6163dba00822154ab13c4202f41d0560216edddb"
+    },
+    {
+      "path": "src/components/globePerformance.ts",
+      "sha256": "a48233d9d4ca64b8c1d87f5e217c87094f28d840e25b6d6f0a37d92ee5c7e0ca"
+    },
+    {
+      "path": "src/components/globeProjection.ts",
+      "sha256": "3caf349273f382fa00b795f56b1912eae6d09e2ad66166217b69f2d3480f5ce6"
+    },
+    {
+      "path": "src/components/globeQuality.ts",
+      "sha256": "355235ed6c9ef67d05bf6075cd49ef7a5636f6f43b2dc090a1063376f942b4c5"
+    },
+    {
+      "path": "src/components/globeTouchActivation.ts",
+      "sha256": "4c12c01ea198498fe066a3cb9ef953073d60ff1780149a367899de3e3418a2e6"
+    },
+    {
+      "path": "src/components/nobelMarkerPolicy.ts",
+      "sha256": "d0671c164fa631f93a3d190aedb1b8a2c26118f9bf31eaff538fffc9d68c8160"
+    },
+    {
+      "path": "src/components/recent-history.css",
+      "sha256": "a071f3211b2f839cfd00da3887e5b5664d2c977abddb157e4202964bba8a1158"
+    },
+    {
+      "path": "src/components/useGlobeStyleState.ts",
+      "sha256": "ed1c7a7af89aef2f275235842f52b976d6b69f727a36788feb51c54c1610123f"
+    },
+    {
+      "path": "src/components/writerPanelBooks.ts",
+      "sha256": "e20f70de4a619a6962ec263fef5d26cc815629101130f593ea2122c056611b68"
+    },
+    {
+      "path": "src/components/writerPanelPresentation.ts",
+      "sha256": "46cb3309d6907f3c6bc5af702b70b6c26eef743bcb5df38a580ebd5bcc218593"
+    },
+    {
+      "path": "src/data/archiveStatistics.ts",
+      "sha256": "e3648496b47fc42d4ed895403f7c32d7931293bf788b366ac27c3bd827539377"
+    },
+    {
+      "path": "src/data/articles/bookMentions.ts",
+      "sha256": "ee6b63e013475939b676e42bd54dd8edf7ec827522acabe826b223391e7c7e42"
+    },
+    {
+      "path": "src/data/articles/catalog.generated.ts",
+      "sha256": "c7b521dc89af5e6c624283e17baccedb6d3272eb08ec4bcf085ea21a5528cf0a"
+    },
+    {
+      "path": "src/data/articles/catalog.ts",
+      "sha256": "bd28fe364377e2a02b83748d7ffcad5eb8ef501ce8d989cdc559a1f546bb1d90"
+    },
+    {
+      "path": "src/data/articles/cms-withdrawals.generated.ts",
+      "sha256": "8d38302336d4c5d61c4fe6d87e27c83902f011e4487a27c471d3d2971995cb93"
+    },
+    {
+      "path": "src/data/articles/cms.generated.ts",
+      "sha256": "7bf8fc939814c6c0ed80ba53d5ec71b7bf833fbac4e423022298098cf1dedd29"
+    },
+    {
+      "path": "src/data/articles/localization.ts",
+      "sha256": "793c11063dd456efcdfa1019c75ff0252e2d6729b23903e2066302f5fb04fded"
+    },
+    {
+      "path": "src/data/articles/nobelArticles.ts",
+      "sha256": "ba0444ec947c4de4932f525ba666593f7d2bcd56a0069d77972fb76a0233590b"
+    },
+    {
+      "path": "src/data/articles/publicationStats.ts",
+      "sha256": "541818e5471486cb300f04d3a24e24d1783d9f15b405760627566940dd7b7490"
+    },
+    {
+      "path": "src/data/articles/sectionRoutes.json",
+      "sha256": "16e44e1e90adf3400637886e089398703df8c6bfcafd90a3cfbef711542b6fd8"
+    },
+    {
+      "path": "src/data/biographyEditorialReview.ts",
+      "sha256": "727f157477a4969412e472b86aa51f7cc1c807ff6f5ea3d5e5e48c81bc3b7c8d"
+    },
+    {
+      "path": "src/data/bookArchive.ts",
+      "sha256": "4ce49f1e712cd2448fa0d8f798655294972c33622ef2b73fd4ed4f0244822884"
+    },
+    {
+      "path": "src/data/bookArchiveQueue.ts",
+      "sha256": "f626eea9e99beccf7ef63f220606c7566fbbb94a83b55728569618c54b63011d"
+    },
+    {
+      "path": "src/data/bookCanonResearchCatalog.ts",
+      "sha256": "d20a52e958a3ae8e6be3f31159339af5eb587bad8f529bcf1b737449cb3f7091"
+    },
+    {
+      "path": "src/data/bookEvidence.ts",
+      "sha256": "a647104281e915d372429983a369e6601f2eca88fcaf9bee65e104a20cc77c5c"
+    },
+    {
+      "path": "src/data/bookLocalization.ts",
+      "sha256": "1cbb3221e62310fe76fe328741e3316b8f0623d03ea77c994d25d6ca52545773"
+    },
+    {
+      "path": "src/data/bookQuality.ts",
+      "sha256": "eefcd1d589684d2fb16995c5158355005a968ac325b80502842a050d749ffd77"
+    },
+    {
+      "path": "src/data/cms/bookEditions.generated.ts",
+      "sha256": "3ef359e0a7ab025fda76d728024f33401453b6faa175bfdc5550c1621e2e4726"
+    },
+    {
+      "path": "src/data/cms/bookEditions.ts",
+      "sha256": "c7a372e8fa23857c45a88eeddd2e485ca71bbcf42edcb93718cf012c12ac4867"
+    },
+    {
+      "path": "src/data/cms/countryProfiles.generated.ts",
+      "sha256": "8a9a93607b7108709b8cf37f036dd1476acae780cf49b4beec92664e0199b409"
+    },
+    {
+      "path": "src/data/cms/editorialOverrides.ts",
+      "sha256": "b328dfb3b5b1023782bdd625ed33312ea55bbc763543eb9d2dfacb1c1115a882"
+    },
+    {
+      "path": "src/data/cms/homepage.ts",
+      "sha256": "771072f76089fd5bdfcade48c323b6cf063b3265040c96abe3665ad5d78928d9"
+    },
+    {
+      "path": "src/data/cms/homepageVisualSettings.ts",
+      "sha256": "2dae3332b76de83c255667cb65c30b10b8ce4ba4e9e667ad2c4e35c44da64c1e"
+    },
+    {
+      "path": "src/data/cms/literaryWorks.generated.ts",
+      "sha256": "eac4343ef1fe3f4707d2598521824941ab62034beea83750637d27df65d9587c"
+    },
+    {
+      "path": "src/data/cms/site.generated.ts",
+      "sha256": "73b4ddeb8c0e343d7e2afd891a35d6e6ffcd05f080f2f34e88a682031b15ab8e"
+    },
+    {
+      "path": "src/data/cms/siteCopy.ts",
+      "sha256": "db26fbe9363d13743e0b5075417fd9f382b4e92678240a7e4ec6350b25a0a00b"
+    },
+    {
+      "path": "src/data/cms/siteDesign.ts",
+      "sha256": "76c6ff8eb5a0f04dfbc032e1e03d08d80d07ad9e424281035231a9ce0e4de498"
+    },
+    {
+      "path": "src/data/cms/siteStudioContract.ts",
+      "sha256": "7357ab997c5adf67a24036af59f4fad062de31fa6222cc5b7bad71003c2aba18"
+    },
+    {
+      "path": "src/data/cms/siteTypography.ts",
+      "sha256": "7b409034c2e87cd6812f7efae5f480c7e7ce05d05b135d575bce4bc1edda538f"
+    },
+    {
+      "path": "src/data/cms/writerProfiles.generated.ts",
+      "sha256": "ed95100fba2c4a469e72fac677ed0ec9456c7fd086a411d3b931f9d5429790e2"
+    },
+    {
+      "path": "src/data/countries.ts",
+      "sha256": "9701375417f014c7424974ca450297141341a08abe1daeab4bbe5b294ab5dcc9"
+    },
+    {
+      "path": "src/data/countries/afghanistan.ts",
+      "sha256": "8a61dc8a4b318203f76b30970b7da00ae44f77a4e0710aabb5f035861f755b86"
+    },
+    {
+      "path": "src/data/countries/albania.ts",
+      "sha256": "ade399fb40c6c682138a0943b205d9d4d8ed25a20c1c499df32bee0f68b7afbc"
+    },
+    {
+      "path": "src/data/countries/algeria.ts",
+      "sha256": "69557c13f781a0912de030a60934f0a17feeedbbb9e34c033bdf25e753504edc"
+    },
+    {
+      "path": "src/data/countries/andorra.ts",
+      "sha256": "d751260a38483c26f45da3f4736cfc9dbec16ce2249e0022e8afd1f940a18561"
+    },
+    {
+      "path": "src/data/countries/angola.ts",
+      "sha256": "691effdcb01bd16383a22fbedbf18b4625ee4d9af75efabf0296270f07b6600b"
+    },
+    {
+      "path": "src/data/countries/antigua_and_barbuda.ts",
+      "sha256": "b54b316f46882b93d95aba17174fe019fb091206d12f70d251c230b58d03b0d6"
+    },
+    {
+      "path": "src/data/countries/argentina.ts",
+      "sha256": "6b5321b5608893675e6167e8c8a3316b5204dcd3f8af04e19c14c2d81f6af418"
+    },
+    {
+      "path": "src/data/countries/armenia.ts",
+      "sha256": "74fc4d0cf44a1dc34147831cd162c1c3fd2bf2f248f2b9f7d8bbb9b257f60e1e"
+    },
+    {
+      "path": "src/data/countries/articleCatalogBooks.ts",
+      "sha256": "66244e1fec29703a8e533dad061ece24e7bbf34fe388fa872b269d066c233c85"
+    },
+    {
+      "path": "src/data/countries/articleReferencedBooks.ts",
+      "sha256": "6d3fe2939e14e39d98d2e975f403647166a7d242b975b91f5d6378135e3d3bd4"
+    },
+    {
+      "path": "src/data/countries/australia.ts",
+      "sha256": "8e139f43f0052de9ec1015e6cdd0d39bf68da750a5eb5d94a0bed63b5158d026"
+    },
+    {
+      "path": "src/data/countries/austria.ts",
+      "sha256": "2545508945addfe64b4a5b42a7590ddfd253e194ce96c9ae290af358d3cac4f2"
+    },
+    {
+      "path": "src/data/countries/azerbaijan.ts",
+      "sha256": "eecf13560283a19f138df4e14463a23c7301228baea9f675ebdb5ef27f5e8d96"
+    },
+    {
+      "path": "src/data/countries/bahamas.ts",
+      "sha256": "9bc505bd9a13ee1a244d465823664418fe3a8537fd23e32d5282df696ca0243c"
+    },
+    {
+      "path": "src/data/countries/bahrain.ts",
+      "sha256": "9bf1a6bed0d652d75709c7ecf667ba3e23ff3c36e111600fda4fa9ebe1694147"
+    },
+    {
+      "path": "src/data/countries/bangladesh.ts",
+      "sha256": "994d3aae2a6556c28e81b86c7822cf29ddff0b8cd7d4af49e8027a37b9c750af"
+    },
+    {
+      "path": "src/data/countries/barbados.ts",
+      "sha256": "a5563ce100f6359bd9652eacf5209c35860fb43bc1ad41c2daeff259b4aadeb4"
+    },
+    {
+      "path": "src/data/countries/belarus.ts",
+      "sha256": "3c532358938ddc5204bdb701c712b1c73014083fa837df0543a4eb3010ec8e32"
+    },
+    {
+      "path": "src/data/countries/belgium.ts",
+      "sha256": "f70bc3a7365ede6ad48a32c3a8c17c94ae5cd9ab8c5f11dfecb4fcead2bd9902"
+    },
+    {
+      "path": "src/data/countries/belize.ts",
+      "sha256": "bc70d37f2a928c6404043c251986affc599d5b8580d1cf36e3629b96d189b7c2"
+    },
+    {
+      "path": "src/data/countries/bhutan.ts",
+      "sha256": "df1750dce841c1b06c2e5cf49e719e798287e22ce2a65b516d3ec6529ad3e5ab"
+    },
+    {
+      "path": "src/data/countries/bolivia.ts",
+      "sha256": "8a4c24247dfb37341bf5d0900e81c3f50918fbee6c80feeff2724460b28ae289"
+    },
+    {
+      "path": "src/data/countries/bookArticleSynopsisBatch01.ts",
+      "sha256": "e11ccf873286ca0d2e9124cbbc75988cfaa5a8ed7aa87abba64e5c07f362ca0e"
+    },
+    {
+      "path": "src/data/countries/bookBibliographicOverlays.ts",
+      "sha256": "7c62441a40d83fcef8e91c3cd142a42796e6119b8aa31edeba739884849ddd4c"
+    },
+    {
+      "path": "src/data/countries/bookCanonAdditionsBatch01.ts",
+      "sha256": "46b403304bc05d8c05e7646f3aed1f0bfcf362b07ca91d6efde8aa36a50f487f"
+    },
+    {
+      "path": "src/data/countries/bookCanonLocHeldResearchBatch01.ts",
+      "sha256": "c79bd0140ec2fab5aca36f4b34e822f0da43b95804f8536572eb7fe40665430b"
+    },
+    {
+      "path": "src/data/countries/bookEvidenceV2ExpansionBatch01.ts",
+      "sha256": "cc8012a301ce2804a94a323164a499577c6c4b705c439164099821e3ecc873a1"
+    },
+    {
+      "path": "src/data/countries/bookEvidenceV2LegacyVerifiedReaudit01.ts",
+      "sha256": "c0dbf6111aa50e4f1ee253ac18de1799e4e5f1a57e2012dbc13481b0f21e0392"
+    },
+    {
+      "path": "src/data/countries/bookEvidenceV2PublicBatch02.ts",
+      "sha256": "e5010f2e683818b4c82850ffa8530a7144b75b950b4bd77180d19f659f710cfc"
+    },
+    {
+      "path": "src/data/countries/bookEvidenceV2PublicBatch03.ts",
+      "sha256": "34d83df89022208e45be1ee8b108fab48df37efda535c13d0fa856d1ff37ae94"
+    },
+    {
+      "path": "src/data/countries/bookEvidenceV2PublicBatch04.ts",
+      "sha256": "b05988fad25cc9afac26bac8058e762c4fd90b2cea49c11420af32564bbf4ddb"
+    },
+    {
+      "path": "src/data/countries/bookEvidenceV2PublicBatch05.ts",
+      "sha256": "b80e8537c6e4127b7e3a9eea4a790761c0677d1b95c5fde45083ca3233b18813"
+    },
+    {
+      "path": "src/data/countries/bookEvidenceV2PublicBatch06.ts",
+      "sha256": "cbbc3e05682469c4ba27ee939b91b34b41e565a3cd54e25771dab682e5099ed9"
+    },
+    {
+      "path": "src/data/countries/bookEvidenceV2PublicBatch07.ts",
+      "sha256": "8d9fbab5898dfe2ebd1e31c6bb18774cddf5333d1bf11383e269bfbe8d72f0a9"
+    },
+    {
+      "path": "src/data/countries/bookEvidenceV2PublicHolds01.ts",
+      "sha256": "c846b2b42a73e97c17b7c71131cc2f2cea7de0df0286aaa7985d9238490bfba7"
+    },
+    {
+      "path": "src/data/countries/bookEvidenceV2PublicQuarantine01.ts",
+      "sha256": "d99d9ca38edb7a8b117ca101074881311913871d0ffa09ddbb20dd488e05f3ae"
+    },
+    {
+      "path": "src/data/countries/bookEvidenceV2TitleEvidence.ts",
+      "sha256": "dcf1135f6b47f24f98a8be740affa6ac7825ecf59028c9d9c148ac44edfa8dea"
+    },
+    {
+      "path": "src/data/countries/bosnia.ts",
+      "sha256": "3c87d5da2ecee09c89c45dd339bcd343a7af651aedab2d79d78f3ae9a0379a8e"
+    },
+    {
+      "path": "src/data/countries/botswana.ts",
+      "sha256": "793f07a27a1cb555ec518c98cdab4be36cf19c91401f867d5790dd8c34004f4c"
+    },
+    {
+      "path": "src/data/countries/brazil.ts",
+      "sha256": "9e45168a4778262632d351b44f9f256c691569d4c630a55922b3a4f9fe70813f"
+    },
+    {
+      "path": "src/data/countries/brunei.ts",
+      "sha256": "5f553a5973f2384b5f6364239e145c69a7a996bc2582eaf8101f57d273039c26"
+    },
+    {
+      "path": "src/data/countries/bulgaria.ts",
+      "sha256": "71c5b1b4f44b220d5623a81fa13ed3dae025689dc471f403e29d69abd196d8dc"
+    },
+    {
+      "path": "src/data/countries/burkina_faso.ts",
+      "sha256": "7dc55e7b271cd6c131acf640737c8e02cccf48dc09d2a481a87fa843556461b6"
+    },
+    {
+      "path": "src/data/countries/burundi.ts",
+      "sha256": "a5e21e263495b9fae6deef75a152a313a8654c3e679c6e38b08e46ef51908e9e"
+    },
+    {
+      "path": "src/data/countries/cambodia.ts",
+      "sha256": "6a08a8493081b7f131318af0707d6d778f7c034c8727bec1b59a4939609fbe88"
+    },
+    {
+      "path": "src/data/countries/cameroon.ts",
+      "sha256": "e96d6894b6372692df9462d4b855abe8dd2334f8f8195894590a9351e3d58ce6"
+    },
+    {
+      "path": "src/data/countries/canada.ts",
+      "sha256": "25670f05b7b9d0a71f7efcc45cb421329259c0ca60b7002b637bbcee8c56160c"
+    },
+    {
+      "path": "src/data/countries/cape_verde.ts",
+      "sha256": "b6881d5a102f1805a6d9fa0db69c54f7d232ea151132be8de88282107fdceefa"
+    },
+    {
+      "path": "src/data/countries/central_african_republic.ts",
+      "sha256": "ca6f8a38651e30177bd3a009efc7ab02253b63c5bf49ef57efe8ba1fc2eaf647"
+    },
+    {
+      "path": "src/data/countries/chad.ts",
+      "sha256": "acf9e857877f2544e9b019b0ffe09c3f03d610e5f9fd064952a38cc0f9f82ed8"
+    },
+    {
+      "path": "src/data/countries/chile.ts",
+      "sha256": "75ecd664625280c5327d3e83b01fa14b48924f4d11c28b581320d91fdc65e38f"
+    },
+    {
+      "path": "src/data/countries/china.ts",
+      "sha256": "ea56040b37d77999d88a8ff4446c4d8c1a9312ccf9de1a9265c57dab962e865b"
+    },
+    {
+      "path": "src/data/countries/colombia.ts",
+      "sha256": "9c77bb8bd637daaa22bc4d3fb7efe7513d9279dbefa2bc71e374c8e16f54858a"
+    },
+    {
+      "path": "src/data/countries/comoros.ts",
+      "sha256": "4f5f583078a42a4b358971b43f4bd6014c81e8148684ab2a3115dcc05e18d2f0"
+    },
+    {
+      "path": "src/data/countries/convertWriter.ts",
+      "sha256": "d90b274317b9095697221888f5649e664666742221833b6f304ce76f9cb19b9f"
+    },
+    {
+      "path": "src/data/countries/cook_islands.ts",
+      "sha256": "2fe79bc25765f261556c49f264cbf2c94006dac59b54e57eda42e164216aa95c"
+    },
+    {
+      "path": "src/data/countries/costa_rica.ts",
+      "sha256": "edd98d4a4121e6c1c861c4459d18ed2f343ed0ec61cbc0be6f96d5d8ae79c520"
+    },
+    {
+      "path": "src/data/countries/cote_d_ivoire.ts",
+      "sha256": "d253f1fddb35edcca5119e53b855151245c212c5d36c4262e9ad23383dc86804"
+    },
+    {
+      "path": "src/data/countries/croatia.ts",
+      "sha256": "2639f0f72e996989991c7c007916ec6a1e268dfee7af777de8d28671b8aa77f2"
+    },
+    {
+      "path": "src/data/countries/cuba.ts",
+      "sha256": "1c0b57ca78bea02a799dbebc7d176904ba127fe40ae16c3de3da90e2b880200d"
+    },
+    {
+      "path": "src/data/countries/cyprus.ts",
+      "sha256": "d8a7c9f63688f16066313e11a0fbc4d73901a4994b25abdc9a8383b53ff42ff7"
+    },
+    {
+      "path": "src/data/countries/czechia.ts",
+      "sha256": "cb2b840135d038a81a4c151130da04e54d640e92d808ec5c24445d9926b6b605"
+    },
+    {
+      "path": "src/data/countries/democratic_republic_of_congo.ts",
+      "sha256": "bc23540ab026b7a9e7010701b074afe13b1537f324a5afbb50940408d0caafc1"
+    },
+    {
+      "path": "src/data/countries/denmark.ts",
+      "sha256": "a6c9dfcb9cc970239da04fd0a4eeb38e73a0615ffcc085aac804545c36d4824a"
+    },
+    {
+      "path": "src/data/countries/djibouti.ts",
+      "sha256": "f74110ff8078bfe3f80e0636d64c75fbb43cacec80d5d054868843d9c9f77436"
+    },
+    {
+      "path": "src/data/countries/dominica.ts",
+      "sha256": "4834c25ba0e49c9638e9ce9956e9aa50d0bf93310d7cc609668d2c822914bf3b"
+    },
+    {
+      "path": "src/data/countries/dominican_republic.ts",
+      "sha256": "5104b0de06ee7fbb3c063ff0b252844aa8e5a2d360811c96ad51099a38676449"
+    },
+    {
+      "path": "src/data/countries/ecuador.ts",
+      "sha256": "44ba0156978386f6add247a384e76d226cb14c66f88fe6c4bac13a3610bc47e2"
+    },
+    {
+      "path": "src/data/countries/editorialAudit.ts",
+      "sha256": "3b6ed4d417074d904f0b502db18cfc392ec70db3e6ced7d6a9f4eee2e55d4fc2"
+    },
+    {
+      "path": "src/data/countries/egypt.ts",
+      "sha256": "992f2823656985f43938cc1edf74df60957e48b42525c2e71fb392af0812c147"
+    },
+    {
+      "path": "src/data/countries/el_salvador.ts",
+      "sha256": "76f52c779bc364130efdf472074d487437cbdf60aec903b31964c0cd57819fbf"
+    },
+    {
+      "path": "src/data/countries/england.ts",
+      "sha256": "f275ec6861a40de9bc5021d6d83e5582c2d2a2acf259cdc7fcba852eae1c7a84"
+    },
+    {
+      "path": "src/data/countries/equatorial_guinea.ts",
+      "sha256": "a305605711bcb9647d9ed4af5a0edfe9952c4268740dfd1cfb96c0c588563390"
+    },
+    {
+      "path": "src/data/countries/eritrea.ts",
+      "sha256": "22af7cd05d0ce6ce9fbd114648ab648c27a501b7d373684b388de3ddcb74683e"
+    },
+    {
+      "path": "src/data/countries/estonia.ts",
+      "sha256": "172fd9bab1e4a7969ec3017aa93dc58c3f0dacfa91b491af7611f1dfcd7f200f"
+    },
+    {
+      "path": "src/data/countries/eswatini.ts",
+      "sha256": "0cdc63119a441109692f85c666aff015dbef48fbd6416f2e4c1f2295064afbd8"
+    },
+    {
+      "path": "src/data/countries/ethiopia.ts",
+      "sha256": "90e69d2604da93913a5670a1a7f00740465964ea691c68f597124a2f20a797be"
+    },
+    {
+      "path": "src/data/countries/fiji.ts",
+      "sha256": "bff3c8492fe82d3c4bff65197774b31c0af7f0f639a9dd7632bfbccd6b4527c3"
+    },
+    {
+      "path": "src/data/countries/finland.ts",
+      "sha256": "72b93fadbba87362eac13cc38898fd490f290e5cd245b877ab64fe2c916c768d"
+    },
+    {
+      "path": "src/data/countries/france.ts",
+      "sha256": "36e5a688e628aebe598b7586e1de96f488fffb90b588958264394d2d067099a8"
+    },
+    {
+      "path": "src/data/countries/french_guiana.ts",
+      "sha256": "35eb79f70f5cf817aed0b97c0ae33ea49e4eceb1a150a493e5d752a5dddfc6f3"
+    },
+    {
+      "path": "src/data/countries/gabon.ts",
+      "sha256": "ef80de976dfa859416cafabe57448e115525f1c34e1d05ff349d36485a52365a"
+    },
+    {
+      "path": "src/data/countries/gambia.ts",
+      "sha256": "fae6d4157c5c39d81c034f2a5a634bc8d3e9cd52160002ae37c91f1859ffe388"
+    },
+    {
+      "path": "src/data/countries/generated/books.enrichment-actions.json",
+      "sha256": "816493b01d85b27878231ea18af9c726ccca3434e9817045407e97d3d5436000"
+    },
+    {
+      "path": "src/data/countries/generated/books.generated.json",
+      "sha256": "074ba8f31fd9591b0f09156b64784566995f7a9df2ceb0940acdb46936350aea"
+    },
+    {
+      "path": "src/data/countries/generated/books.reviewed.json",
+      "sha256": "7d117fdea7dcfa0727a9c9f252621de43c8a7d20ace79a851bd1c8d5ef9fa028"
+    },
+    {
+      "path": "src/data/countries/generated/curatedWriterQids.generated.json",
+      "sha256": "2d73c84a300ec77045c4772b5e9793df567e60ee9c6b35f6b9a6e9cf936e2a61"
+    },
+    {
+      "path": "src/data/countries/generated/generatedBooks.ts",
+      "sha256": "2beb8791e96a164dab4045aee9d20844a890b5775371eee1388085259554e3cb"
+    },
+    {
+      "path": "src/data/countries/generated/index.ts",
+      "sha256": "44c4c4947dad07bce2d30c8ffd29fc64c77e076002a1128570ed3bf4ff25a56a"
+    },
+    {
+      "path": "src/data/countries/generated/metadata.generated.json",
+      "sha256": "c226ffe076fe850e1a38d8102084fdd99667d69ab25707805d262f291872fa7c"
+    },
+    {
+      "path": "src/data/countries/generated/nobelLiterature.official.json",
+      "sha256": "17ae9117699ac10d6ea857f422b3625730fabe2378901124e7b4d3b98f540576"
+    },
+    {
+      "path": "src/data/countries/generated/userSuppliedBookCovers.generated.json",
+      "sha256": "760a49fff4b4152545758ebbc360b90e1fd82739950d606a43289ec26df9a627"
+    },
+    {
+      "path": "src/data/countries/generated/userSuppliedBookCoversBatch20260813.generated.json",
+      "sha256": "39ac684ee6ec504cc717e235e266bac3306aa346ed007a9cd209692962a9ae14"
+    },
+    {
+      "path": "src/data/countries/generated/userSuppliedBookCoversBatch20260820.generated.json",
+      "sha256": "fd8e5811fb6172cf9d8aa732f0aeede06f6ed71a16b05f8759e7badb315cf3ad"
+    },
+    {
+      "path": "src/data/countries/generated/writerBiographyEnglishTranslations.generated.json",
+      "sha256": "c1bf1f67597e2faa1768f8d60b3c6b116c134ac36361c7e3ad994350d562ce66"
+    },
+    {
+      "path": "src/data/countries/generated/writerBiographyFactReviewCorrections.generated.json",
+      "sha256": "90549e9cdf89e3621bb93009c459b1179f21100be981facfd9c9f043b05ee7bb"
+    },
+    {
+      "path": "src/data/countries/generated/writerBiographyFactReviewRuntime.generated.json",
+      "sha256": "76df3b0d99d24fb83055204b7a05d391862e618b6cdd47b690f5b8fe4743c3f1"
+    },
+    {
+      "path": "src/data/countries/generated/writerFacts.wikidata.json",
+      "sha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092"
+    },
+    {
+      "path": "src/data/countries/generated/writerIdentityRemediations.generated.json",
+      "sha256": "4f5872fccf6b38a3f797c5a6bf3df6c2d6951b4bce3ec703fc18fc4def5c6c7b"
+    },
+    {
+      "path": "src/data/countries/generated/writerPortraitAttributionOverrides.json",
+      "sha256": "1dd20573ad31fe40a4eacbdd2719375beaa37c2ea4b21e1f91bc53a90b5d3614"
+    },
+    {
+      "path": "src/data/countries/generated/writerPortraitRejections.json",
+      "sha256": "4e9a6a276b2a7fdd29ebc3581c162701ded285710491d58c62a2f492ceeb143a"
+    },
+    {
+      "path": "src/data/countries/generated/writerPortraits.generated.json",
+      "sha256": "c18c91a581f8c77e81a54e0579d5ac2474a699645181c8aac5246790e4b5807c"
+    },
+    {
+      "path": "src/data/countries/generated/writerPortraits.ts",
+      "sha256": "df9439840d358edf6f36d4d42aa07b0cdf4b8226c9771200a3f0be914b124523"
+    },
+    {
+      "path": "src/data/countries/generated/writers.generated.json",
+      "sha256": "d8d2611825261d4e459f9b63cad6aaefdf5adaacc21fa0a40eaeda84a5f9147f"
+    },
+    {
+      "path": "src/data/countries/georgia.ts",
+      "sha256": "9d2b5a3f9d1ff99ec51ba475c4f5bf04acdd1b02fc47c23b5187c089bb341559"
+    },
+    {
+      "path": "src/data/countries/germany.ts",
+      "sha256": "01ffa8a24468918e830212b7472c77d930fe5ea400b78b81ff92806be1dd462f"
+    },
+    {
+      "path": "src/data/countries/getCountryMetadata.ts",
+      "sha256": "dc5505988bdaa0a0bca97f478964ee4ab9f1adf3bb5b85e142a37205b990f6c8"
+    },
+    {
+      "path": "src/data/countries/ghana.ts",
+      "sha256": "05d265c43434301c0800b3f7afe9356c845c88a4f3d09462dd32419b9e54b918"
+    },
+    {
+      "path": "src/data/countries/greece.ts",
+      "sha256": "20768e879a182c59561fb2116f05a841c9b6058b07aad74ea2745bc2beb23fa3"
+    },
+    {
+      "path": "src/data/countries/grenada.ts",
+      "sha256": "de0bd94a841a57cf306e06194594cf9a574b6d84922c342f7f53dc438e0ebd50"
+    },
+    {
+      "path": "src/data/countries/guatemala.ts",
+      "sha256": "7cecdf465960bb1ff251970239573295be202cd943edabf3cf83eb83e42ea5e7"
+    },
+    {
+      "path": "src/data/countries/guinea.ts",
+      "sha256": "6d07d35aabbafc5c86bb9d3794be4d1a5313d59938acbe2ccb618a1addfb1961"
+    },
+    {
+      "path": "src/data/countries/guinea_republic.ts",
+      "sha256": "8b28570a159edc18861dda8fbd91909e00c72a871b7d8e413faa67f1b16e3504"
+    },
+    {
+      "path": "src/data/countries/guyana.ts",
+      "sha256": "b3262282de058f2f10568c72984c6a9d27caf4db3b680ff6017ee35165930411"
+    },
+    {
+      "path": "src/data/countries/haiti.ts",
+      "sha256": "427a0aaf1b854a45e28fa1e2a1a1279357643ad600f2fcb7a4dda988a91a6200"
+    },
+    {
+      "path": "src/data/countries/honduras.ts",
+      "sha256": "f89d9a5d8a895791d04b12193a22ced66b15b2936fb75568347e75c271d2cc80"
+    },
+    {
+      "path": "src/data/countries/hong_kong.ts",
+      "sha256": "f1146c82fd5b612eb0f7eea7156719ab896629cf8f436051717b2a70e9b37a0e"
+    },
+    {
+      "path": "src/data/countries/hungary.ts",
+      "sha256": "f86da0083530282eca957a578c094efc73df04d1e4653f26272ac40f6229d052"
+    },
+    {
+      "path": "src/data/countries/iceland.ts",
+      "sha256": "ebead5991c3ecf9d0b070317fd17525df9c63017fdf5ea8185c4ec21b6f1aba7"
+    },
+    {
+      "path": "src/data/countries/index.ts",
+      "sha256": "52c164f5db1eedaa55d9a95456ff9903596480a3bad084148384a68d47a0967c"
+    },
+    {
+      "path": "src/data/countries/india.ts",
+      "sha256": "ce1da0957d3ca7ef8e05169f99b4d3bb8b4f2fe51fd73f5d36b23047a22b073e"
+    },
+    {
+      "path": "src/data/countries/indonesia.ts",
+      "sha256": "e5a775e9edf600a3d4d8d6ebea8b4dff6c51f406ebea9589bd4f4616d9a696cb"
+    },
+    {
+      "path": "src/data/countries/iran.ts",
+      "sha256": "1ae789c30d1175b467b2c8367e3faa7d051aed1972edf5d5b286db169791050a"
+    },
+    {
+      "path": "src/data/countries/iraq.ts",
+      "sha256": "8efa17ddc4c96508a1678a5feabb88535ba158ed3bc549ff8039407a03efde91"
+    },
+    {
+      "path": "src/data/countries/ireland.ts",
+      "sha256": "058b06fb7657653738eb569966116e832b8008c70d55fbf11e033bc027d89b5b"
+    },
+    {
+      "path": "src/data/countries/israel.ts",
+      "sha256": "1ed95fa3356a82d7af1da4fb4ab3e75f510f13aa1d59d4daa499d6d8a8031eea"
+    },
+    {
+      "path": "src/data/countries/italy.ts",
+      "sha256": "911fcd2c331dce9d6fa22f3c80a42bd4556e0bc91e72c86512ff9a270fe1f45f"
+    },
+    {
+      "path": "src/data/countries/jamaica.ts",
+      "sha256": "f2c91d6571513f097f34a8c0a40a1798d73d8b7d63aa807d5f15c3da6b09e717"
+    },
+    {
+      "path": "src/data/countries/japan.ts",
+      "sha256": "ba2dcdfe0d4728fa1dbe97f967f888dbd6e42e575ac7febc71e0451bbddce77b"
+    },
+    {
+      "path": "src/data/countries/jordan.ts",
+      "sha256": "9409c7021c80d98f0da6287ee7e0fd5f4b175d982da7372ada9619d399af2e39"
+    },
+    {
+      "path": "src/data/countries/kazakhstan.ts",
+      "sha256": "3787fb47ae302087322bfba30d77f53855a3202f1768a640a38effcd3621de66"
+    },
+    {
+      "path": "src/data/countries/kenya.ts",
+      "sha256": "e2ba5fa7429f2af35b202d2eb0929b7f1ea0d58df4a327bfb88d487379530434"
+    },
+    {
+      "path": "src/data/countries/kiribati.ts",
+      "sha256": "704c185169e37124181e3618370697a20f46b5d46ff847897ff6e078b7355bde"
+    },
+    {
+      "path": "src/data/countries/kosovo.ts",
+      "sha256": "ee60dcccbdc5182e2a64c3891a97b0bc6ca938f887c973d83956ab1c402ea3a9"
+    },
+    {
+      "path": "src/data/countries/kuwait.ts",
+      "sha256": "ca709c866c667f71a70da134fe852237aa2ab1483529b6f807383dcf94849348"
+    },
+    {
+      "path": "src/data/countries/kyrgyzstan.ts",
+      "sha256": "8e831fe91710e2ab0e7be29f20ba2c419f61c14866e8ab67f62f2238919f4c97"
+    },
+    {
+      "path": "src/data/countries/laos.ts",
+      "sha256": "84e38cfcfe4bda14bbd524fb55543f6a7a9754c3aaf10bd5c950d741ee60daa4"
+    },
+    {
+      "path": "src/data/countries/latvia.ts",
+      "sha256": "47212f5e8086a18bab8cef87dbc69053cd94e896fc4b7c2050eaed730778f059"
+    },
+    {
+      "path": "src/data/countries/lebanon.ts",
+      "sha256": "66506bcd59ce96fc093956f01ec1f388aff92194eedf6f0a29232f898c0b1c66"
+    },
+    {
+      "path": "src/data/countries/lesotho.ts",
+      "sha256": "87cb632dfe73cb8740a02c573ae2619d00b98328a56fb4a07b4ac8a7432541fb"
+    },
+    {
+      "path": "src/data/countries/liberia.ts",
+      "sha256": "c97a2875d2accbb4a01e9c008f7825e7b2f4e0d4dc8c50c2d2aecc37adbd29ea"
+    },
+    {
+      "path": "src/data/countries/libya.ts",
+      "sha256": "126382f874a84e7e287fbbfd6c561bf04b15527944693aedf31256278c32f06a"
+    },
+    {
+      "path": "src/data/countries/liechtenstein.ts",
+      "sha256": "d5e2dc7b48df8d5a3235e3e8091972fc81bb5dbde147c577b0d2453a6e6aafca"
+    },
+    {
+      "path": "src/data/countries/lithuania.ts",
+      "sha256": "38a8ecbf14abfed3b831b394750f4c11e1e29be4383ba1396942d26465ffb722"
+    },
+    {
+      "path": "src/data/countries/luxembourg.ts",
+      "sha256": "07bc69cef1366bd4c9e09a09d1d62458d0aa5ec7141bafe08af833efae6ee564"
+    },
+    {
+      "path": "src/data/countries/macau.ts",
+      "sha256": "7e747d63b2d5bdfda478ebd2e53d6562dfedc446a856462b3808a86ef16402e5"
+    },
+    {
+      "path": "src/data/countries/madagascar.ts",
+      "sha256": "f475ff547fe52216519b8d82819cea9d97cb27f4c1f4373a99e8982287087691"
+    },
+    {
+      "path": "src/data/countries/malawi.ts",
+      "sha256": "1e1cfc41a8a3904cb113a7d9e501d499ef4cf295754cb5cb52d05bef399a77be"
+    },
+    {
+      "path": "src/data/countries/malaysia.ts",
+      "sha256": "81dc739d3171a1e4ba9759021b5cedc31c644e7dfad45d298385b489f214fe80"
+    },
+    {
+      "path": "src/data/countries/maldives.ts",
+      "sha256": "eb0ba325ded6f021d3c32289925e0760fecda5e36036bee2fd932402e4c1a204"
+    },
+    {
+      "path": "src/data/countries/mali.ts",
+      "sha256": "624ea6654e02d18a8c016815620c0b934d5cf9e8e81d6877e4030aeb38179a62"
+    },
+    {
+      "path": "src/data/countries/malta.ts",
+      "sha256": "fd1eaa744ada05c7818591dfed3df815e03656f184604be5d255dc9fbdedb5b4"
+    },
+    {
+      "path": "src/data/countries/marshall_islands.ts",
+      "sha256": "11f2cfc2c0f3bf29c5345d99f4c1e5dcdf76efdf88ccb36bf965a49bee2369ad"
+    },
+    {
+      "path": "src/data/countries/mauritania.ts",
+      "sha256": "323a5ccf5a9dded44b4b5dc4e4a676b327247ffc9a283e53a6635b072c325a6d"
+    },
+    {
+      "path": "src/data/countries/mauritius.ts",
+      "sha256": "9529dec69da3c233614db387b38eddf9b6f7054188c58dafd7514ee955cffe40"
+    },
+    {
+      "path": "src/data/countries/metadata.ts",
+      "sha256": "736beef8e928bf6973c8c288c6370386b8be92a3aec1e100089994bef67dd74a"
+    },
+    {
+      "path": "src/data/countries/mexico.ts",
+      "sha256": "d1e1b3a2873cc847b72e42d46aa3ff4bd8fc599224c36ae2840debcc232c8d67"
+    },
+    {
+      "path": "src/data/countries/micronesia.ts",
+      "sha256": "ad464feab1850572100542b840e2e5b536d049eb38b6a6d60e4590b4825815ae"
+    },
+    {
+      "path": "src/data/countries/moldova.ts",
+      "sha256": "115c477b87d09fc9caf6ea3042831d185615df19bfe7f34f2cb7d4ad55f99644"
+    },
+    {
+      "path": "src/data/countries/monaco.ts",
+      "sha256": "b906ebfe9889622bfd022ab03bf0556e7b3b78a4002821e287ee2b014f508fba"
+    },
+    {
+      "path": "src/data/countries/mongolia.ts",
+      "sha256": "38b2bebcf7cac4ac56ea558301c9146415194696f91239252d52bf1fd4365ac3"
+    },
+    {
+      "path": "src/data/countries/montenegro.ts",
+      "sha256": "d973c4495aa8debbff47d469dc668000bf9aaad93adb87dd14abe4f2f8db461a"
+    },
+    {
+      "path": "src/data/countries/morocco.ts",
+      "sha256": "b667f4d9595d766f1056a876c62d6c7cf984d75b4d59a2d84f8102b28ebac724"
+    },
+    {
+      "path": "src/data/countries/mozambique.ts",
+      "sha256": "a88190cccfb1260e4d4ac847d242274ba1b46b262f5d1ffc82da6a077ccb483e"
+    },
+    {
+      "path": "src/data/countries/myanmar.ts",
+      "sha256": "e2e7d70b9745242ccac79a1af3fefd0357a6784da004974037cf931caa2196a9"
+    },
+    {
+      "path": "src/data/countries/namibia.ts",
+      "sha256": "33a057027184077bcb07ab854f00f0c835397a089a42ab42f7bc4f6ba8f82059"
+    },
+    {
+      "path": "src/data/countries/nauru.ts",
+      "sha256": "dec60a2f8669723bdebfcbbf39c306a1d4aab4ab7a6f1dea48d68dfda4f5dd87"
+    },
+    {
+      "path": "src/data/countries/nepal.ts",
+      "sha256": "9a58fc923aee0254612137bc771b39596d1c1bd897e515867e8cbcad3511dea5"
+    },
+    {
+      "path": "src/data/countries/netherlands.ts",
+      "sha256": "f3f11b55cf8fa5346d1d4893cb408b5622a9916dd76cac1cd8ab9153590aef65"
+    },
+    {
+      "path": "src/data/countries/new_zealand.ts",
+      "sha256": "1d780a5f8f00dd634bd6f5e655cd6387f89c9bb69393cf6b96a18cb670b548ef"
+    },
+    {
+      "path": "src/data/countries/nicaragua.ts",
+      "sha256": "03dd99209a7afd3ce4e17836d3c6a9e5574e2a0bf11335ba6965e39da05a2b37"
+    },
+    {
+      "path": "src/data/countries/niger.ts",
+      "sha256": "efbd622eece28d360aee682385d2d30f68848c750fdabf01119018d1267a7ebf"
+    },
+    {
+      "path": "src/data/countries/nigeria.ts",
+      "sha256": "5e6097e7234d9c6a23cc759d9a078904a2d180ca0d1789b2a15f2436e598f8ca"
+    },
+    {
+      "path": "src/data/countries/niue.ts",
+      "sha256": "4bfa590a2023f8798abaf383a4f173a01cb2f632d8c08cea2d091015f8303704"
+    },
+    {
+      "path": "src/data/countries/nobelLaureatesSupplement.ts",
+      "sha256": "444ab0394e9082b0c4189a509886a4272488889b2f441bcaa678175bf69a8267"
+    },
+    {
+      "path": "src/data/countries/nobelLiteratureRegistry.ts",
+      "sha256": "f1f756a8aa4015351d1cf953418256be2242eaccdc3b1b521d1b709b177a4e0d"
+    },
+    {
+      "path": "src/data/countries/north_korea.ts",
+      "sha256": "2ca04128078771a06186b70823993490e85e15d9a146c3fb8224e5053e1c6f20"
+    },
+    {
+      "path": "src/data/countries/north_macedonia.ts",
+      "sha256": "f8a5117da142d00ef009c8283e84cf8b7ad952bb97ed2ca5855ad03100e76cef"
+    },
+    {
+      "path": "src/data/countries/norway.ts",
+      "sha256": "be9fa317253c865a48a6d3fb7cd63b7578fbcc0e9437aab4b23e7b28ee134795"
+    },
+    {
+      "path": "src/data/countries/oman.ts",
+      "sha256": "5b7dc9297a2e032b196c923e9733de9d7da79e79aaeb1c568e10d5bf3f8a9923"
+    },
+    {
+      "path": "src/data/countries/pakistan.ts",
+      "sha256": "915daf2ee4a8bda69c806e99de997a580d4fddb89979a36cc7af702f2c9fbad9"
+    },
+    {
+      "path": "src/data/countries/palau.ts",
+      "sha256": "d5d332bcb989a4f85423a02c26542ef0959b7d5af94d3932523509896e700637"
+    },
+    {
+      "path": "src/data/countries/palestine.ts",
+      "sha256": "09de1cf421671dcd45a89a058a2e6872a6585722d6db4fd7a6d96cecb139597d"
+    },
+    {
+      "path": "src/data/countries/panama.ts",
+      "sha256": "8013c5296f7a080ee8b8e2c572ed59842b80932bb96a8cddd6bed1ee2de3d0ae"
+    },
+    {
+      "path": "src/data/countries/papua_new_guinea.ts",
+      "sha256": "fd201f15f9d952617a52cc8789766063bb0bed6b8812bd38f511c5d64720a33b"
+    },
+    {
+      "path": "src/data/countries/paraguay.ts",
+      "sha256": "404f3d795f8b1bbec7974e4f31b3aef24e7ccfc3fb92daa8758e04b1293c72d0"
+    },
+    {
+      "path": "src/data/countries/peru.ts",
+      "sha256": "69640a9fd2575d8aa0a8b21812ee2472d28875d5e7292e47667c815c2e9b2c46"
+    },
+    {
+      "path": "src/data/countries/philippines.ts",
+      "sha256": "fa449cbe5a90d162024fb666170f4e92bacf123f452cb8949f6fade16ada56e8"
+    },
+    {
+      "path": "src/data/countries/poland.ts",
+      "sha256": "79d9dd27beaf27179ba6cb6c94406ce4a0e67eaa35ff6c6495943595f36fe3b9"
+    },
+    {
+      "path": "src/data/countries/portugal.ts",
+      "sha256": "1c1768a9761fecc747f20e0b8ff9ca14bfb316cec09fc5f425d1f29d32ceafe2"
+    },
+    {
+      "path": "src/data/countries/puerto_rico.ts",
+      "sha256": "e52b14de15f535ec09766cbd3b5626c9706814162c9bcf93134c6d6400de00e2"
+    },
+    {
+      "path": "src/data/countries/qatar.ts",
+      "sha256": "0ff473424f1f06cd20a4d348e92664ba77f5b5170b96e44c0063f47eacfe7cf0"
+    },
+    {
+      "path": "src/data/countries/republic_of_congo.ts",
+      "sha256": "f04b3e84e63e617d75791ce3bc442ac0a2a2b369e0f1e26f251c748938d6b0ab"
+    },
+    {
+      "path": "src/data/countries/romania.ts",
+      "sha256": "4429da45124304c1903e0fc5f6bda42f99395b9da25463c94d3a67c00ad7f360"
+    },
+    {
+      "path": "src/data/countries/russia.ts",
+      "sha256": "5cebb4dab442dee20e8df8b845d06714c75f71bbc93a7177ff5708cc6271cedd"
+    },
+    {
+      "path": "src/data/countries/russianWriterExpansion.ts",
+      "sha256": "178d6ee53d96ca6f35e304ed7083d9863b5cb55d80d7a84d515b02b346b5f064"
+    },
+    {
+      "path": "src/data/countries/rwanda.ts",
+      "sha256": "0cb3bfa5a2dbc97341018577176e518efef6d47e1261b2f5ad3283b248c324ce"
+    },
+    {
+      "path": "src/data/countries/saint_kitts_and_nevis.ts",
+      "sha256": "e3fe1709d6ebfe25c64e602c417949d05b3ff5f3942b6da2b3c0f2b16a8eafc4"
+    },
+    {
+      "path": "src/data/countries/saint_lucia.ts",
+      "sha256": "c590334798507cc2f860cc799447814dbdfffe656ef777b064837009c0fbaa67"
+    },
+    {
+      "path": "src/data/countries/saint_vincent_and_the_grenadines.ts",
+      "sha256": "4a016f43e1081c6d690fe5863a14b6d54661daf055ad6312fa66a23a189d5b71"
+    },
+    {
+      "path": "src/data/countries/samoa.ts",
+      "sha256": "db8d07993841762b535c3c57fa1ee6bd19f05b27b8305a37545d37db87c0427f"
+    },
+    {
+      "path": "src/data/countries/san_marino.ts",
+      "sha256": "fe34bd7fe20388c5d6ab67ebb810144d8aa6a20ad38e17b1f659eb978c6fad10"
+    },
+    {
+      "path": "src/data/countries/sao_tome_and_principe.ts",
+      "sha256": "fbe28636cf1627e8ff5f2b642656dc0e7feb49da6ac99ad0f323f374920cc42e"
+    },
+    {
+      "path": "src/data/countries/senegal.ts",
+      "sha256": "9075a4c5fa3ab392d14046fb0b03e35c67caa46eed32f862237bddab8f8726c6"
+    },
+    {
+      "path": "src/data/countries/serbia.ts",
+      "sha256": "600e7a6eb07bbe7f2926c985a170d67a47a9c5a2c7936f4e27535f02b28f6b28"
+    },
+    {
+      "path": "src/data/countries/seychelles.ts",
+      "sha256": "9be20eb35b389f8a995a045d2042ec6ec0fde370339fb8a4d58f5f26581d0bf8"
+    },
+    {
+      "path": "src/data/countries/sierra_leone.ts",
+      "sha256": "81c118890bcf6c4d20f9135ac7a7d3def6281b0836f7702146098cb25a4f419c"
+    },
+    {
+      "path": "src/data/countries/singapore.ts",
+      "sha256": "c9ecc82ba49d1f3c01ae3fb046eb33b02819557f771b697825c81be13d627884"
+    },
+    {
+      "path": "src/data/countries/slovakia.ts",
+      "sha256": "0b17f3bc29d4b3d04aa37ee3c146d458a016b0dd54d4c288453d98028b93a2d3"
+    },
+    {
+      "path": "src/data/countries/slovenia.ts",
+      "sha256": "80ed92a294f9115b5d74a8152c5d0edc2e15a26003115053b8b9d3de627a56d0"
+    },
+    {
+      "path": "src/data/countries/solomon_islands.ts",
+      "sha256": "aad64d8916b09d498fe5b0a8fe5f207234fa4072ae7fd9f57ee4cb1c84874ec8"
+    },
+    {
+      "path": "src/data/countries/somalia.ts",
+      "sha256": "76760361ffcda13650dd914c25da7186944881124bd11165871a2d4b206b5c3d"
+    },
+    {
+      "path": "src/data/countries/south_africa.ts",
+      "sha256": "e78678b205e2766df16bc24f8031d7e17374df574f358ad22034a538d70d413c"
+    },
+    {
+      "path": "src/data/countries/south_korea.ts",
+      "sha256": "6401e56111996d8acc6385a56a3f58e7884e40572bd4c8edc1fadf46a77d4154"
+    },
+    {
+      "path": "src/data/countries/south_sudan.ts",
+      "sha256": "13678f334fc4e5050642dabdd2441bfce10ff4a772bb136d027e8571e426fd96"
+    },
+    {
+      "path": "src/data/countries/spain.ts",
+      "sha256": "26b027fedf9fd827f3429269296d96947f22e7444cdd503418af4a72406af73c"
+    },
+    {
+      "path": "src/data/countries/sri_lanka.ts",
+      "sha256": "95111ebb994a00611320964d5e1da4cccf2ff3b286188358aec5aafab60465da"
+    },
+    {
+      "path": "src/data/countries/sudan.ts",
+      "sha256": "b91bbd8537c9b018e91c5d068e9c2a2912c405eb8e264847c931e0f284b08e74"
+    },
+    {
+      "path": "src/data/countries/suriname.ts",
+      "sha256": "af312bf7ca7d8a0d89f9b3fee1b59119e30181be3b91b839488e264713546255"
+    },
+    {
+      "path": "src/data/countries/sweden.ts",
+      "sha256": "30016ff296c2a34134f7ccf78e8a418c4f26994dc236e26844f673185b3cd3dd"
+    },
+    {
+      "path": "src/data/countries/switzerland.ts",
+      "sha256": "f73971325dceac3a7d1ab510675fd5c39d6013ed2a96ec4774f5bbdf0e60802f"
+    },
+    {
+      "path": "src/data/countries/syria.ts",
+      "sha256": "9b9bf3b6fbe57dc87d33ea9026ed44426ab667c49f324c0e1ac12f0807209be1"
+    },
+    {
+      "path": "src/data/countries/taiwan.ts",
+      "sha256": "bec08d77539d21fcb97c9e1daf04266e69f8029b4264cf6230f82ef94a2f4ceb"
+    },
+    {
+      "path": "src/data/countries/tajikistan.ts",
+      "sha256": "b4ec97990a065c52ef6c41582de3beeb3ea0f5fdadf5b2ceded5b20f6b90164a"
+    },
+    {
+      "path": "src/data/countries/tanzania.ts",
+      "sha256": "e5b2a1820c4bbdd1112c2ca0aaf5c2287d694ee58575bcb792e3b206af3fc5e9"
+    },
+    {
+      "path": "src/data/countries/thailand.ts",
+      "sha256": "b6588938f66cf61cb512cbb3c59b4c2bcadcc68c2c99391bb2185ed856e7598e"
+    },
+    {
+      "path": "src/data/countries/timor_leste.ts",
+      "sha256": "5ce560988ea9a6087fa97afeb9237240b015f5134b10cc285588b533e7b9b789"
+    },
+    {
+      "path": "src/data/countries/tonga.ts",
+      "sha256": "00c9a69570543f97a6f95268235ade86762834682e1cc74c6ad14bf02f5fd8d2"
+    },
+    {
+      "path": "src/data/countries/trinidad_and_tobago.ts",
+      "sha256": "1be9935f86b872d7fca80dd8ad98b2f365de0fd909ea8930800c107570164aa4"
+    },
+    {
+      "path": "src/data/countries/tunisia.ts",
+      "sha256": "95b0a00d4fd62046eb67bb25e6c0f99f1afa2b16d9b80902387d10e348089219"
+    },
+    {
+      "path": "src/data/countries/turkey.ts",
+      "sha256": "abb760d06c78a4ba16b4b90e63eadc5fdc79ca70d32c01bcbb6204f8c05c030f"
+    },
+    {
+      "path": "src/data/countries/turkmenistan.ts",
+      "sha256": "38534af2ea36e058ffde0b3776ef83b2ce344458f326c109583d28cc54729630"
+    },
+    {
+      "path": "src/data/countries/tuvalu.ts",
+      "sha256": "4b45ae33ec0d7e9415c208eaa9c324e4b96d26907797b3303e51254ddc41e9f0"
+    },
+    {
+      "path": "src/data/countries/types.ts",
+      "sha256": "1194c21a752e5bfd9b33da43c2950583b5a1e188b1051f63e97c9b28ba724012"
+    },
+    {
+      "path": "src/data/countries/uae.ts",
+      "sha256": "993a2641e73843f8f351fd1ee7108cb5bb3d81d344c134edd930aa61daf28bf4"
+    },
+    {
+      "path": "src/data/countries/uganda.ts",
+      "sha256": "cf52eb7721312a1573e6712528a20ec1b5d24bd08c72336b7e7c18b1e2cbdc62"
+    },
+    {
+      "path": "src/data/countries/ukraine.ts",
+      "sha256": "75fcbb4db8f90acd2b5f20a007936d39426ee699b9629afcd1f00235794f7251"
+    },
+    {
+      "path": "src/data/countries/uruguay.ts",
+      "sha256": "9471c24ff84db79d2cf347d25a26eb36d8df386871240895da52823cb6224743"
+    },
+    {
+      "path": "src/data/countries/usa.ts",
+      "sha256": "9e95fce4dd285f8d8f579b8ffeebfc883c2391be3efe04b24920c36b020901f7"
+    },
+    {
+      "path": "src/data/countries/userSuppliedBookWorkSupplementsBatch20260820.ts",
+      "sha256": "19ba3e05bfcae1bba9733d3fa991d4063a20a44c1cd124c94f977a029b96523f"
+    },
+    {
+      "path": "src/data/countries/uzbekistan.ts",
+      "sha256": "7f4e84c94ff8f174307d6a7e3bdb70c367fd11bee5e5143ded76537e83dd1406"
+    },
+    {
+      "path": "src/data/countries/vanuatu.ts",
+      "sha256": "c7bf3557233a1b4e1c2d4fa9ff0f7881ba3c8eb3b053eb55cee847db99eca9d2"
+    },
+    {
+      "path": "src/data/countries/vatican.ts",
+      "sha256": "379e93210b5733759372f7d5743932e571c7ddc3193871f1b8dc818d0433cbc7"
+    },
+    {
+      "path": "src/data/countries/venezuela.ts",
+      "sha256": "527cc7c0ebff0a5b3edc58fad669dbbc1188170186977914fb6eb2793628293f"
+    },
+    {
+      "path": "src/data/countries/verifiedBookSupplements.ts",
+      "sha256": "b998a103f5ffec4f4ad8f90b0e86489c09a781bba2eed6a8ce0ad63d360201fa"
+    },
+    {
+      "path": "src/data/countries/vietnam.ts",
+      "sha256": "58162c7254bdb4229eceb5dc3766356312da17e30b15a12d726c253534109fe5"
+    },
+    {
+      "path": "src/data/countries/writerBiographyEnglishTranslations.ts",
+      "sha256": "c0aa56d541af7a1f1351a977d2dc2668ad4d67b7076e3c732613369590a3a26f"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch.generated-test-support.ts",
+      "sha256": "b8d2a0884161257213070fd0eaa94d270de12606fae2275d1e287d4a8e9d3ca9"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch01.ts",
+      "sha256": "4c3c541dcdd925ede0e984a9b98e003023517e17be2bb817df5c733f36a79255"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch02.ts",
+      "sha256": "c3cec2fad94bdfe0cd843b0039d13387c788d95572b24f1ec6f652eb4098a3f0"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch03.ts",
+      "sha256": "dcda051e543c47a33038e8024d02ce9a1ec27efd4756788b8fb3fed15ba8c900"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch04.ts",
+      "sha256": "d5e8771d1b86d7d03dbaac8d610e4d767023c81b69749cc8b40de291928cf9b1"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch05.ts",
+      "sha256": "12900ac24f85b625e93313409138ddccc5c50a96d8e4336cd9fe6afcdbcac4e4"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch06.ts",
+      "sha256": "54cc22653d1b1ed5b05e334ad7c005c8565d3695fb40344bd35422f8e40dc745"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch07.ts",
+      "sha256": "814661244ea215a48a1b63d3eb51a9214047a0945892d0ba0e3b81116c5a70e0"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch08.ts",
+      "sha256": "0e5e641fb669f40d911abf7d12f5f3af6d5da33af0192b3e072d6ded53e738a8"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch09.ts",
+      "sha256": "cba890a19a95d703e882d9609d4486720f0bb03d9f4db56397bb8a849e7110e4"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch10.ts",
+      "sha256": "ce6de5984be80fad94864c9498a7fd81c02ec26d36e7d364a8588dd0aa89f8c3"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch11.ts",
+      "sha256": "470a08042849273f2a15966b75f754afcca23214740a521c529cd015bc1e2c50"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch12.ts",
+      "sha256": "05a472e6b8163218a269d2f149d8e22d741760739ef43554239a2b6158859724"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch13.ts",
+      "sha256": "6466f048b55e0e6614eeec60fbfb741036f86de59b1148fe0e016dc6ab4b5462"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch14.ts",
+      "sha256": "81fd57eba4d2a613849eb1cb71e1866840b7d25afa5bdfe13aa1bdebfc3e238d"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch15.ts",
+      "sha256": "4524d4ae829f7135e2465d51d37932d588ad85dfb6b0d3ebf94004c5de0b86bb"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch16.ts",
+      "sha256": "dedf4b4debcaacbf4efe073e88f2a2c5c670bb856ef30def9a9a4c3f977ec6c1"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch17.ts",
+      "sha256": "4a35a501ae506db67981b25ca67216bd424df8e801d59348386b86908b2d9c51"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch18.ts",
+      "sha256": "675dcfc84722813ddd2fd8921f7db6db0d552950b381fbe9d94c401db23d71a4"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch19.ts",
+      "sha256": "24171cc52d2ed0ee3e78da52c5619ac4b2a5ebc8607f68ff3b8b613546d610a9"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch20.ts",
+      "sha256": "c915eadd42850c56fd2f70d607e34d4d8aa8ac7c24aa174ead141337b9b338ee"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch21.ts",
+      "sha256": "20bf0b48763b8a9fd2a63fbf4ae2a9fc4018900069f6cc2df7411d0d74111892"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch22.ts",
+      "sha256": "e62948a4c8f2672c5b3792c700a7b8f443a8421a7231cfbd397ca6b9602a9f69"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch23.ts",
+      "sha256": "41a69512ea40379984b7f0d688dd7ca34212f3b0ef5b777f86f3c7d5bd06f752"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch24.ts",
+      "sha256": "df40ea502ff8e5d0d2c8694439234e4eb5dccc3abe92ee71fa54f078975ef745"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch25.ts",
+      "sha256": "a3900f18021cb4ecccef39894294f07040580cdb8b512213ea3577b53c65ad22"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch26.ts",
+      "sha256": "5e6601a358ac676741c54108535f712f5668aea90c73b1d5e57d720d50f14e6d"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch27.ts",
+      "sha256": "23585e80abb82929fd1559f116bfdd1051af44528436a16d579f1ec332ead4ed"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch28.ts",
+      "sha256": "91d13fdd21d26f1f1201d38cfa7613d2598b5e5da75f5a7c21355158ebc61995"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch29.ts",
+      "sha256": "bc5317fcd94b754014403313952f304f4f6288bcbc7feeb48b39cc38c83d6ff9"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch30.ts",
+      "sha256": "a3a789a396f4b75af758b7b29a12d92c64c06a52a615c46c6d7ff32791e1c8bb"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch31.ts",
+      "sha256": "9ed87659f701b1546ce0df158d7811efefcdf57aaeab8eb65f97a4cb17a62809"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch32.ts",
+      "sha256": "e2961e9d93db7c4ccec6eb277e52c812ba4bb487af0ad23046fe5c04fad4c30e"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch33.ts",
+      "sha256": "7f6e0c5619cccc78e3d12294fd617f4fedf66421dda7df3d933c552feb358209"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch34.ts",
+      "sha256": "baf81be0810592600c5da86aeff002ff531244217c4bf1beb8dc711cfa066a68"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch35.ts",
+      "sha256": "45265086e03e0be53ac5fa3f0ad604ff242e84a21ef75620a4b9d497f9337fca"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch36.ts",
+      "sha256": "b307622e76476edf371099fb5b5e6cb8d8f5ec95693f89cb6a4c8db286851c68"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch37.ts",
+      "sha256": "33f2e50008798de9888a8642eea2b3991b8813c427b3ca75bf6c1fd681fc6e82"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch38.ts",
+      "sha256": "9c9510c5e6a3809a51cf57997d477145160c91079d86c7e90607dc9024a9004d"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch39.ts",
+      "sha256": "dfe6761c642782d825146a94bfd64ff8f1785543ec13944775f8c9c9e9cfbe3f"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch40.ts",
+      "sha256": "6e6e908878dc5bc0b7abc0e293c0911b576f882a3182df88dd6a7ed82fdee355"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch41.ts",
+      "sha256": "ca37655364d91831b31aae3f367cf279f9fe1907365d4f1148f91a3e35ddf950"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch42.ts",
+      "sha256": "b722ce2db4c76a4b65cf4dcb913aa53f70d804d8d6c1d831d09fdfff40d4b28d"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch43.ts",
+      "sha256": "7152d1c64df269b4847611daa7afa502ccf8cb0dd43bce23cfa429b752927177"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch44.ts",
+      "sha256": "04b8563ccbc92e32c7ce13218f5aca8f105c9828d7902cb749dcdc2741eb5e90"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch45.ts",
+      "sha256": "83bf46ed3a0e501e0fb8f70ea35223c72d74c116559c0a8853cf1c557d7b45fd"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch46.ts",
+      "sha256": "86608d7aac67a060a6efb107fa370ff078bd8c01267af249d2b462e2799dd2f7"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch47.ts",
+      "sha256": "fbdfb42f3f2962ef08ab9dce9d7f13cf2f855de385480da7607aaf7ed4f837c0"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch48.ts",
+      "sha256": "7642ab8c6f8e3c0a287aadae687b5a4d5757c8829431afd83da829b53807c9fb"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch49.ts",
+      "sha256": "63a9055efe749f24f454496231c7ba959c05a421afc5c3a77f103dafa2901a3c"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch50.ts",
+      "sha256": "8a95699018d952d46925f5b090cc772231841ea7479962d7d5d7ca41806175c0"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch51.ts",
+      "sha256": "3f0b83ea3985ed63a956c9ad10c6f2c152a72d1247489c4f2763dbe1888ec75c"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch52.ts",
+      "sha256": "93783e518acd4a43371bb67058d5474a4746208e230af3177543c46554851e47"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch53.ts",
+      "sha256": "db61a7dbda30d1a6c44c0029cbcbc17dc497adc925b3bade460631271bb41514"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch54.ts",
+      "sha256": "0e589a913bb58a8ecaeea40629a029809c48ff43d9b5f3c9d03db9edeca28070"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch55.ts",
+      "sha256": "a0f3a40c16556db47ae82703063ec5d106ef98717834486ff4a769f1f1bc383a"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch56.ts",
+      "sha256": "40fb55435f86ad1161cd0a9ba3f3495f64d03b61f74b26df1b2358f2cf9f0d46"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBatch57.ts",
+      "sha256": "d8a5b35bc0bf01cd5cdc664367e6b9b7662a1a6766e3a7f10674383ec81818ce"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviewBoundary.test-support.ts",
+      "sha256": "6cf04220edd5d902ae8e1065051111e2aa2d292455e98d73e57d94d2fe77ed76"
+    },
+    {
+      "path": "src/data/countries/writerBiographyFactReviews.ts",
+      "sha256": "cbdd8742ed256d378599ed5055589622663704b84bb4805c7df358a898e0fcd9"
+    },
+    {
+      "path": "src/data/countries/writerBiographyLegacyCorrections.ts",
+      "sha256": "e51197937037be6671f802fb04d8b6cf9262e9914ab99350a88ed8abd07003e7"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch32.ts",
+      "sha256": "b63f83e6997cca57640ca5ba5fac23ea37b1a9ba2b542892488dfbb508aa0f10"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch33.ts",
+      "sha256": "ae00891417b45358b90d4157b962be0b5f9b7cecd89351b51f42ed7548962b07"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch34.ts",
+      "sha256": "caacee556c52a25cd4c3ece90322f370a7c1f7b8657fd2ca10831018523df6a2"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch35.ts",
+      "sha256": "7bd3a4d218c1716b0fdce27d9bc884fc8810c0a3d9e2d5ec682ea6f101335579"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch36.ts",
+      "sha256": "87f847bc01a844a8be80701254e7323e23deb5feac2c57db36adc6546164f83c"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch37.ts",
+      "sha256": "ea3f8daa1f4ab8663b9cb430421c5bedab605da0f74c825540f3561e74d7cfdd"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch38.ts",
+      "sha256": "48338d4c06e7ebf0e31658c11fba4c4fd8b5d73b858bc5cd1265e1216a7c49d8"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch39.ts",
+      "sha256": "67543f7a4702999155378dc8596ca588117d6cd8c70a52281038102f579f2ef2"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch40.ts",
+      "sha256": "f60f9b6c49d355c109fc7fbb76fec89c48b8df6f5c50d7523df92a7a452e06da"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch41.ts",
+      "sha256": "4961011577f92e0b2f5d21c58e8a9d367088e46259080883f0f858bb5c1fb287"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch42.ts",
+      "sha256": "1350170f9aad4ee9f90ffa6420e1d188ad0325b23ae1df3fe5bfa1edfd21ad16"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch43.ts",
+      "sha256": "e91fc5b9211472df740c7a07ed0ef53d913ec27afefd666fb5cfd0adad6dae3a"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch44.ts",
+      "sha256": "4f69e924ef365fe35207ae4edd4b153781382bb7db4b7fb4bc05c66295591239"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch45.ts",
+      "sha256": "f6ae97c3e7d2e621c8e334f718d7fdfcb4f46b3d602fd5faf99103f11c9b7ba9"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch46.ts",
+      "sha256": "598fb7204d0d26314dd6bafd04a355857b8ad5573302662a82f4603e4ebbf21b"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch47.ts",
+      "sha256": "b36a56dac9a8afb95385e49e256c881660f7cc0e16ae7cf0189cc711a0a13593"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch48.ts",
+      "sha256": "2e7263c346fa6b5df7f867853245275dce68c0c2b60bca38e99b0c084325798f"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch49.ts",
+      "sha256": "e9283805a30a4482f20c2d55f34f26b49a1b9b982546ca592483a23c9c474af5"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch50.ts",
+      "sha256": "aa8855ea68761765907f99a7c131e57b16cc793a44a3e4f5be89f0245c8655b7"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch51.ts",
+      "sha256": "06fc7a617a878a89289bbdb7c7dcbdff4ad0ab2c6b69131196cdac8bd8e25fcf"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch52.ts",
+      "sha256": "5df377d35611109b5151962423af0a98cafee9ffcb06bd36c1a3acab1e481000"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch53.ts",
+      "sha256": "2cc765275e6a68c18ffe5ec0998d64dd04496ba0269598013e356d00a78d18ab"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch54.ts",
+      "sha256": "2b3ed74971287200a66edf884526821855e89e5e209d182c18e8f7c0a2aa31dd"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch55.ts",
+      "sha256": "a81b41fa271d5b1df0fca43c06c2e48e2d06574eb080f74051f9be9d065bfbfe"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch56.ts",
+      "sha256": "bebd63722ece4e49382a367254e8b90ad220b693958bb7814ddc630ce55dcf40"
+    },
+    {
+      "path": "src/data/countries/writerBiographyPublicProfileFactCorrectionsBatch57.ts",
+      "sha256": "9fe7e7ae3d880356ad051935d4a0c8027daa6a9d655b57e03698ec1d22e2c5c4"
+    },
+    {
+      "path": "src/data/countries/writerBiographyResearch.ts",
+      "sha256": "ea7ea72e52e5a148b8987f866b1d67dccb68429ddddb7037bab5a250389241ff"
+    },
+    {
+      "path": "src/data/countries/writerBiographyResearchBatch01.ts",
+      "sha256": "180da43e2eaed4206df302fa819d75d79fc56c7b34c00fb54ffd50c0828657f1"
+    },
+    {
+      "path": "src/data/countries/writerBiographyResearchBatches.ts",
+      "sha256": "a68f8d3ec00bcc3b47b8801387c9eea287aec0f9508c476626da2be42296e6a3"
+    },
+    {
+      "path": "src/data/countries/writerBiographyStructuredRuEditorial.json",
+      "sha256": "0e9cb6371c675a0816182e27e1eb0a557fc053e92f577fb2ebe8205e52e04c32"
+    },
+    {
+      "path": "src/data/countries/writerRegistry.ts",
+      "sha256": "b45061d4536344ca757b92727d3aea4a7bf658c5dda6b201e4e0025429ad2a03"
+    },
+    {
+      "path": "src/data/countries/yemen.ts",
+      "sha256": "6591e80ec23313a4adbf210de0c8779fe8f15c3ffba36641cfffbd25a57fd5b3"
+    },
+    {
+      "path": "src/data/countries/zambia.ts",
+      "sha256": "36f6e3754088a5ab31c60d6f3fe60f3d5804f22586dd7812620dbd9f86f0a677"
+    },
+    {
+      "path": "src/data/countries/zimbabwe.ts",
+      "sha256": "ba75274d847589426aaedbcf1358a320f91760fc0fe3bcbe532761c014a3b917"
+    },
+    {
+      "path": "src/data/countriesStats.ts",
+      "sha256": "3d979c398632b8b7071c9e921f078d6294ca0a45bb4c079017fd73959d8ee5c7"
+    },
+    {
+      "path": "src/data/countryLocalization.ts",
+      "sha256": "d9ce4b5e5aaeb6cf4f6c3cc24fdd892de7a109aa32b924d8e9311a0319a6d9d0"
+    },
+    {
+      "path": "src/data/geo/README.md",
+      "sha256": "902c9ea1fc8c0cca00c51f9b762f4c7e089a294eebe37649db02034dfbcdde2c"
+    },
+    {
+      "path": "src/data/geo/countries.geojson",
+      "sha256": "402706b730069fb691d1ec6098e13d7d59670a1823d1ffb62546ff045df20279"
+    },
+    {
+      "path": "src/data/geo/countries.provenance.json",
+      "sha256": "601632eb602ebdaf94bd3fe7e1cc3c6c4b4e3629436cc61e55c67010ac9bdc7e"
+    },
+    {
+      "path": "src/data/imageDelivery.articles.generated.json",
+      "sha256": "6430d65374f895ae1e46b99937d23de9790120cfb00c292e74d8a05b9514b53e"
+    },
+    {
+      "path": "src/data/imageDelivery.generated.json",
+      "sha256": "54830e6cd37f2104954a894c871ee56aeea078baecf1eead6bdf2e4e996ca38e"
+    },
+    {
+      "path": "src/data/imageDelivery.initial.generated.json",
+      "sha256": "39bf33cf4e5d9eb0d020d552d613c4d512294c95bd091c045ef99e6db783c151"
+    },
+    {
+      "path": "src/data/index.ts",
+      "sha256": "ba603b9a46c9f8fd19eb255b98cb5d088fb51b43eeb4aa4274effa47a12eb947"
+    },
+    {
+      "path": "src/data/literaryMap/countries.ts",
+      "sha256": "529c97bc9c01e88f8da03e4ac40397f6ca9ca7585a9e877d2a17b7a3c5297d54"
+    },
+    {
+      "path": "src/data/literaryMap/countryProfiles.ts",
+      "sha256": "b544fd6239d3ffa7967f47a1995667349163fd7bde1c43bc70541714fc32627e"
+    },
+    {
+      "path": "src/data/literaryMap/index.ts",
+      "sha256": "9870c9c04e2c49cedf4f9b67a2749738616d038b6980473c7b94f860cf52d8bc"
+    },
+    {
+      "path": "src/data/literaryMap/writerRelations.ts",
+      "sha256": "06f67f14142f753d0512f6af6dbd7335356cafd31ab668e9da97225045608723"
+    },
+    {
+      "path": "src/data/literaryPeriods.ts",
+      "sha256": "446c23efbdf4233c779f6df9067afe6efd25417542ae3189e28004a7b7884de6"
+    },
+    {
+      "path": "src/data/loadWorldContours.ts",
+      "sha256": "6dd737f4043f874474a5634cf81a09abbc2215459576676c8b4f4b8a882473d8"
+    },
+    {
+      "path": "src/data/map/countryMap.ts",
+      "sha256": "a76787833588d3d5a6acc611abd903ba669b4c4906e4101c1d1e25b67424a6b6"
+    },
+    {
+      "path": "src/data/map/svgCountries.ts",
+      "sha256": "d8d28dbfc71882f808d5aaae24b2cc2be4529d4509925d20112dee20d875d7fa"
+    },
+    {
+      "path": "src/data/mapFilters.ts",
+      "sha256": "f065f57bea4172f3cf8e6e6fb6017a8acc3a04feedf0b5a1522d9d3a83c4c7e1"
+    },
+    {
+      "path": "src/data/mapWriters.ts",
+      "sha256": "8dc4d703fa2e4b70ec712bb21ed78e25d8c5f8e8cd6220baf36963312e9a3a0d"
+    },
+    {
+      "path": "src/data/nobel.ts",
+      "sha256": "95c57bb8bfcf4a9bbf309d72400c70a93bdffac1ba59d8613ea05f08a89c36ab"
+    },
+    {
+      "path": "src/data/nobelWriters.ts",
+      "sha256": "d2d8c5718277a599a8eb41d1b01dcecabde2bd6383e6fef88be853cae42122d0"
+    },
+    {
+      "path": "src/data/regions.ts",
+      "sha256": "44922cdd7412395d7d66eeaa470f8285128ee6ee2c7644a76af71c4527c0495c"
+    },
+    {
+      "path": "src/data/types.ts",
+      "sha256": "9756ebddaf668367c3e7ec92ee7d4a39a23fd51f31f39335719665fcb61716e4"
+    },
+    {
+      "path": "src/data/userSuppliedBookCovers.ts",
+      "sha256": "2f0c590c1d0c61ae73eeb63980ef79dd2f35534e03f9f71273267601b05d1e70"
+    },
+    {
+      "path": "src/data/world/continents.ts",
+      "sha256": "aa3f2346957e9ddeeeee93e6f87447ea9d99400397e590122ceff4681d23ea50"
+    },
+    {
+      "path": "src/data/world/countriesDatabase.ts",
+      "sha256": "b3ea0bcbfd388d5402b2e5350fc3ef03e63a5f80b2e304999fc82caa6e45fd4b"
+    },
+    {
+      "path": "src/data/world/countriesFullList.ts",
+      "sha256": "af442960cdbcba1c166e1b1701bc334bbfe9328885bd915a860dde07f1643f51"
+    },
+    {
+      "path": "src/data/world/countryLiteratureIndex.ts",
+      "sha256": "902c68c6ec23a3a63bad81c43eb9d0a47faeb4f81e8fdd22312a7e50828714ab"
+    },
+    {
+      "path": "src/data/world/writers/afghanistan.ts",
+      "sha256": "4ee4692b551b131bb70d987f61f4c2a6add7786b1b5ab77161466e9fff4b2591"
+    },
+    {
+      "path": "src/data/world/writers/africa.ts",
+      "sha256": "371bb322ffbd2e2872e537048cdb68d4a9bfb23f96579d0607c3999e466f560c"
+    },
+    {
+      "path": "src/data/world/writers/albania.ts",
+      "sha256": "a437a73c92a1d40663c5ab0218cbb91e8cd5b603d170bbfee5ef28ba2f9fcf5b"
+    },
+    {
+      "path": "src/data/world/writers/algeria.ts",
+      "sha256": "45e7d3656e066c27663ad3b818273049899e31f7682634eecbff2f225535d54f"
+    },
+    {
+      "path": "src/data/world/writers/angola.ts",
+      "sha256": "f89741497dac58e792183dd8983ece913cb45257551a1349ebc4af4992c748bd"
+    },
+    {
+      "path": "src/data/world/writers/arabicLiterature.ts",
+      "sha256": "9ba641de37ec588bc57edba59029ada8cb1a3d4e420c908f17ae1af745897cec"
+    },
+    {
+      "path": "src/data/world/writers/argentina.ts",
+      "sha256": "8a9f570eec4fac8f26277b0c4005a12c909eb2ee16feebdcf95240566804f3b8"
+    },
+    {
+      "path": "src/data/world/writers/armenia.ts",
+      "sha256": "d7295424e045104b6ddbb208f4f1bdf441b96dcdf2dbfcfd925262b0995cb955"
+    },
+    {
+      "path": "src/data/world/writers/australia.ts",
+      "sha256": "e33b489a51c8d9e74b72a5f722175e10cf8535987c84451f5777fa0f75be5d83"
+    },
+    {
+      "path": "src/data/world/writers/austria.ts",
+      "sha256": "f94ada621e70ef237d59ba4f944e1104e59ca1e7923a5517c6f7fd9afb0a96dc"
+    },
+    {
+      "path": "src/data/world/writers/azerbaijan.ts",
+      "sha256": "39ba06fd26d68c2962785803285ac2b1fcbdf2074241436cc6eabe515fbeaf4d"
+    },
+    {
+      "path": "src/data/world/writers/bahrain.ts",
+      "sha256": "5614ef909018493662be46afee96b4ddbd386b595d54a27fb7d98e1963d7b22a"
+    },
+    {
+      "path": "src/data/world/writers/balkans.ts",
+      "sha256": "49e9cb1984abb6651f02b66f39c72beed5b8a10ea6019cd7146a5bd2f886ae76"
+    },
+    {
+      "path": "src/data/world/writers/bangladesh.ts",
+      "sha256": "48b92115d27c9f87063e3ae53eeadc384550fe1ce3aaeab4d8c2a86b157ebe66"
+    },
+    {
+      "path": "src/data/world/writers/belarus.ts",
+      "sha256": "c3a5491c39a52eb0ee4d7aecdf22e9b9fc1ab3c595360f2ab4c32ba99a01f017"
+    },
+    {
+      "path": "src/data/world/writers/benin.ts",
+      "sha256": "d33dd936cd98dfa3559306d9f657286bd4ab197d70519b03e0013bc55f249378"
+    },
+    {
+      "path": "src/data/world/writers/bhutan.ts",
+      "sha256": "a6a617fc06ae6007c2b10c58ebe3d14b2d59d9f0a7e762b170ff16601e701d03"
+    },
+    {
+      "path": "src/data/world/writers/botswana.ts",
+      "sha256": "732db3013402b888f7321c9dd812d489aad8944ae1dc94540386425d0b7de6ca"
+    },
+    {
+      "path": "src/data/world/writers/brazil.ts",
+      "sha256": "4d2cafb7618f7f7d80779ac80be970c90022e3110eb09d4a6f49de7dc8706fc0"
+    },
+    {
+      "path": "src/data/world/writers/bulgaria.ts",
+      "sha256": "996d0a13a5c8021b0dd0e3bfc73a53d78404c380971bc450d69a80700890f297"
+    },
+    {
+      "path": "src/data/world/writers/burkina_faso.ts",
+      "sha256": "2af0ed162284fe8e059e4d1137103ba618f95c7d589db446601ebb34fddf5505"
+    },
+    {
+      "path": "src/data/world/writers/cambodia.ts",
+      "sha256": "08909f7c88945b8037965bede8aa1f89ff77c461024ab974158e35a1f80c657e"
+    },
+    {
+      "path": "src/data/world/writers/cameroon.ts",
+      "sha256": "358c83a7119e973367687a4adbdbc34ae8747086a428797741c2031d3acf2681"
+    },
+    {
+      "path": "src/data/world/writers/canada.ts",
+      "sha256": "fde61fad1881447b057d26ca5da73a9d7e79c5f56f2c1db5f3553466f0a4db61"
+    },
+    {
+      "path": "src/data/world/writers/cape_verde.ts",
+      "sha256": "3d541074081e54326761754cd12c6fb1b8eb7b8b138b0e2a68d1d310187b8099"
+    },
+    {
+      "path": "src/data/world/writers/central_african_republic.ts",
+      "sha256": "6edaa3ccd0d465d2d7ffd57587b30cf466bb9da32ae8db7a870630f5da9b01bb"
+    },
+    {
+      "path": "src/data/world/writers/chad.ts",
+      "sha256": "eed32d5313ad7b6200f4c49f9bd891fcd677c749f49354d0fc5cf5fe0aa31a33"
+    },
+    {
+      "path": "src/data/world/writers/chile.ts",
+      "sha256": "dec1e9dcaa61dfe134e6fe74bc87ade3141ebd073787200dce9f44a5194bc633"
+    },
+    {
+      "path": "src/data/world/writers/china.ts",
+      "sha256": "b8ff58d631517cc6eb0b672ecf84dd41951ca86ae5791079915aad7ee4b43f8d"
+    },
+    {
+      "path": "src/data/world/writers/colombia.ts",
+      "sha256": "c46c82df30544b915c0d028c9b6da06251c2a9a8680d35095a74d710e8698554"
+    },
+    {
+      "path": "src/data/world/writers/cote_divoire.ts",
+      "sha256": "d10d585c019605eb22a3167130b25907f20da4d3521adb02bc5ca044457288c8"
+    },
+    {
+      "path": "src/data/world/writers/croatia.ts",
+      "sha256": "183026bc1c677b46a6d18fa5c0ff28d206a621ec76ec0fbe4a1a4a82872c0a47"
+    },
+    {
+      "path": "src/data/world/writers/cuba.ts",
+      "sha256": "8cd97349300c598b72a911ec658f44596dfb28a38410056eb3f718614e387567"
+    },
+    {
+      "path": "src/data/world/writers/czech.ts",
+      "sha256": "3ea63dbf991a97c6988180ddcef772d6ec687acc04d56c0a4fcbde4696538345"
+    },
+    {
+      "path": "src/data/world/writers/denmark.ts",
+      "sha256": "ff231ad5f4c1fac964ae6b9859a143fcd3e193a850eb69b62094b5fe088a56d8"
+    },
+    {
+      "path": "src/data/world/writers/ecuador.ts",
+      "sha256": "4f0a7f739fa2bc2297057cae1a8cdf6ab5ef5e07a6110f0dec243ccdbe414aac"
+    },
+    {
+      "path": "src/data/world/writers/egypt.ts",
+      "sha256": "906564feeb678c96369f12b01c731e8ee88f92a30343f65604228d86a422ea63"
+    },
+    {
+      "path": "src/data/world/writers/equatorial_guinea.ts",
+      "sha256": "1009cefa055ba491c4199b4430614759da19f104620fe101fa4441de81dc789e"
+    },
+    {
+      "path": "src/data/world/writers/estonia.ts",
+      "sha256": "486128231970e58391261abccfe55a790f55bb19f2e0f4c20bd75f6bf89eed8c"
+    },
+    {
+      "path": "src/data/world/writers/ethiopia.ts",
+      "sha256": "3b3de4ac6d42b9a066354e64cad2d023df4159f26eaffe46f0a3e4cdf27d5db0"
+    },
+    {
+      "path": "src/data/world/writers/france.ts",
+      "sha256": "934f65e698ca24193a272aeb11c71c0ea19348391d176c84c339e71b5e76917e"
+    },
+    {
+      "path": "src/data/world/writers/gabon.ts",
+      "sha256": "4f8f9643110c1eff6eafc9ff29a5004d4b0a83315c6b9e2044fc252f1eed6df8"
+    },
+    {
+      "path": "src/data/world/writers/georgia.ts",
+      "sha256": "6318f72c97f10cf3dd395ee3901b091c832a05aa63f8ab96e057eb28583d29a5"
+    },
+    {
+      "path": "src/data/world/writers/germany.ts",
+      "sha256": "30fe2fbca4509b507d6b2d57f822aa7e930937702435842ba48dcc86a27febf3"
+    },
+    {
+      "path": "src/data/world/writers/ghana.ts",
+      "sha256": "cf2738f848aef297a3e78ba34ffd5797e8eaf941990459df1c1a13c5c4c17e09"
+    },
+    {
+      "path": "src/data/world/writers/guinea.ts",
+      "sha256": "089babd37fdeb6d00dbb95ffc4b7c85618628816cd06a1d77d4bb80c179273c4"
+    },
+    {
+      "path": "src/data/world/writers/hungary.ts",
+      "sha256": "f8cfc38e34b60e465612e0be71da7d4dedc246d63c0127841e2e1963e9cc201f"
+    },
+    {
+      "path": "src/data/world/writers/india.ts",
+      "sha256": "1db86b8bed228c979181186759728e9634581c8dc3a43c81378f6784d2dfcdfd"
+    },
+    {
+      "path": "src/data/world/writers/indonesia.ts",
+      "sha256": "bf65f4d382c313182acfd08446a90357a884349a822ec36eaabaf3150abe229d"
+    },
+    {
+      "path": "src/data/world/writers/iran.ts",
+      "sha256": "32770d0e2957cd1c4f99aa9a6d99e7af008d29bd726b788860ce88ed59c25f1a"
+    },
+    {
+      "path": "src/data/world/writers/iraq.ts",
+      "sha256": "ebb71f73183b91aa1cddfb266a3a8898826c7e9b16fb47340dde21506a1a6422"
+    },
+    {
+      "path": "src/data/world/writers/ireland.ts",
+      "sha256": "d0fe178ab1e48e689020db40361366094ad12d4b5359fcc6a888f38be95e1927"
+    },
+    {
+      "path": "src/data/world/writers/israel.ts",
+      "sha256": "be068e784a7504f20f81346fb01ffe80b8c308ba3eb98bf63f48c8cc22862ea1"
+    },
+    {
+      "path": "src/data/world/writers/italy.ts",
+      "sha256": "015c3a784aa17f9221579a09877d0dec7f6fc08476735cf8118dcd1b9d7f80cc"
+    },
+    {
+      "path": "src/data/world/writers/japan.ts",
+      "sha256": "fee4224e8e7f0c3ceac0b47a236e6771ac96f5bcf738b7e04a8a3b4b6be2a8f2"
+    },
+    {
+      "path": "src/data/world/writers/jordan.ts",
+      "sha256": "d02c31bcf29772bba1990f57d408eaf2234c37d8b4503a175f3c25b3755733af"
+    },
+    {
+      "path": "src/data/world/writers/kazakhstan.ts",
+      "sha256": "2b6755b20ccbcf6940a740e15e5cb94e0140ae25e20a15cb51be19d7fda4bd5f"
+    },
+    {
+      "path": "src/data/world/writers/kenya.ts",
+      "sha256": "be201b244c4ee2de6572a292d990ef52d17c3c5e101f14b7de9675f43efdacd5"
+    },
+    {
+      "path": "src/data/world/writers/korea.ts",
+      "sha256": "768ae4976b57701b859993cb9aafa8d0bfb05e6100eab426998306958aab4e46"
+    },
+    {
+      "path": "src/data/world/writers/kuwait.ts",
+      "sha256": "ed271f2eba5f421a72ce895887516a8c469b20b1d080d278b3a243e7beceb245"
+    },
+    {
+      "path": "src/data/world/writers/laos.ts",
+      "sha256": "619b96b8f2a4adfa6fce84289ca9cdcbbc46e9734fbc565bdc95b19d53bf7cb9"
+    },
+    {
+      "path": "src/data/world/writers/latinAmerica.ts",
+      "sha256": "43668b3b599d66a9aac68e4ea6df59722fba479fb1d29812e1da021badf60ba3"
+    },
+    {
+      "path": "src/data/world/writers/latvia.ts",
+      "sha256": "759b1a753c2121cadea64f343959449550acf2bd1abf03f8398fb0f1b3eebdda"
+    },
+    {
+      "path": "src/data/world/writers/lebanon.ts",
+      "sha256": "667914080bff7fc93af3e731b27afee113b47fec8b99bef5cc41d035dbb5f864"
+    },
+    {
+      "path": "src/data/world/writers/lesotho.ts",
+      "sha256": "2460598a8de24970321ff43766e4cd3f7cdabfce4e7e52e132a9bd9667528c00"
+    },
+    {
+      "path": "src/data/world/writers/liberia.ts",
+      "sha256": "82d1caf8ef7a7179e441a7453c5cc0295f6fe6dee9a5032342cc3a0c972969ab"
+    },
+    {
+      "path": "src/data/world/writers/lithuania.ts",
+      "sha256": "d52176037b145dcd1fb2fc982628f3798e70c896363b27342bc51e191962f406"
+    },
+    {
+      "path": "src/data/world/writers/madagascar.ts",
+      "sha256": "00bdd74c258a89f2456c11a235bebef82582e02c183dfeae01a6f7f7cac5dc76"
+    },
+    {
+      "path": "src/data/world/writers/malaysia.ts",
+      "sha256": "8e1a7307fa2cd03d50e7dceafc4076fdc0d4b24dcd0b1b0b5550df4eeba2d64b"
+    },
+    {
+      "path": "src/data/world/writers/maldives.ts",
+      "sha256": "209e177d8c83cc2c9e61f3b71a85120dc8e969661769e6ce4e11388d50c06f47"
+    },
+    {
+      "path": "src/data/world/writers/mali.ts",
+      "sha256": "f1b99ebe7b8ae5cd03f9f35c546ae25d28539f683df3a62c3222104da7bd8cef"
+    },
+    {
+      "path": "src/data/world/writers/mauritius.ts",
+      "sha256": "14ec96d0f755abb3d8bb4c40b64985327f1370ad947f6bbc8566c2077f8b9e2b"
+    },
+    {
+      "path": "src/data/world/writers/mexico.ts",
+      "sha256": "08a287e9f72e26ed5af4f0240c289c6d82e22781dfc1ed5d34346d89a460f616"
+    },
+    {
+      "path": "src/data/world/writers/moldova.ts",
+      "sha256": "b6a53a34aeb87a620b530919534905c9b3550b658f5162dd982c383a5092c2b4"
+    },
+    {
+      "path": "src/data/world/writers/mongolia.ts",
+      "sha256": "2539df082675e0d14694d7f69a093e6ec23810ee98ceff76fa9c3edf026a2117"
+    },
+    {
+      "path": "src/data/world/writers/morocco.ts",
+      "sha256": "e6fba51e6776d4bbb9f7c0f8dbb50210580fab909868be43b97a0eb0b4cf9f1e"
+    },
+    {
+      "path": "src/data/world/writers/mozambique.ts",
+      "sha256": "64b0fad543323cf1c4fef37b83c414d4273084234182b2ac329fe63bb9e00b98"
+    },
+    {
+      "path": "src/data/world/writers/myanmar.ts",
+      "sha256": "38dff8ff82da6b50ad7ca1d558a30ffb6990c64f028851d7d322df19bb9ba357"
+    },
+    {
+      "path": "src/data/world/writers/namibia.ts",
+      "sha256": "c6224973864d4863256165b21969ea30dbdcf7e581df97d2b3a8929bc2b959ce"
+    },
+    {
+      "path": "src/data/world/writers/nepal.ts",
+      "sha256": "5773d348cf8ea4d093357cc446c3779de0615a79ef17b08f6543f78c4d5e0137"
+    },
+    {
+      "path": "src/data/world/writers/netherlands.ts",
+      "sha256": "44bbd32f114f508a318e2cf6824685da074c7feda9137612245c35d02ca0cd7a"
+    },
+    {
+      "path": "src/data/world/writers/newZealand.ts",
+      "sha256": "654a5ec2fdf62b14fd6d21073832012e2d7426c566687226e615a58a30443040"
+    },
+    {
+      "path": "src/data/world/writers/nigeria.ts",
+      "sha256": "370effb7ea2c0f2d6150411c9c3b7f2b5c31eab801664435902ad432cb17370f"
+    },
+    {
+      "path": "src/data/world/writers/norway.ts",
+      "sha256": "2c14a7eca0cc86a80ff17bced0ed6aa35256f739f6090b606a80cb72b31bede5"
+    },
+    {
+      "path": "src/data/world/writers/oman.ts",
+      "sha256": "ec0acccdf0b31cf19fe6c776566ac3f46b4ebde8eb28e773c1d4d22b457dcb10"
+    },
+    {
+      "path": "src/data/world/writers/pakistan.ts",
+      "sha256": "55673e163752a3eaf030155e8b3b4e71b531b83d99774f0e66f56bf9bc72f534"
+    },
+    {
+      "path": "src/data/world/writers/palestine.ts",
+      "sha256": "cf6758e9e1c25b1e099d63674976b53d81c17d85f6621a2592348589a6a5c463"
+    },
+    {
+      "path": "src/data/world/writers/peru.ts",
+      "sha256": "28095a9a4984edea0d8941f3bddfd43ce461afc26a9fce320bcf9c11f61ade5f"
+    },
+    {
+      "path": "src/data/world/writers/philippines.ts",
+      "sha256": "b3d2b85e3f66e11844bb9755957a82939dc8e508db1f2ade40a3ad195c6ea260"
+    },
+    {
+      "path": "src/data/world/writers/poland.ts",
+      "sha256": "f11e092b3afb6de717b2f93e5efeda7963d09e42e8f21266e9205398fa4d62f9"
+    },
+    {
+      "path": "src/data/world/writers/qatar.ts",
+      "sha256": "cac1a58718f9203f7aeab10609ee62f4b14aeab65b7f42cffcb415011c4c0eb1"
+    },
+    {
+      "path": "src/data/world/writers/romania.ts",
+      "sha256": "bc2b2a3d85c813184a3fb195f56391c4b72684655bfccceedc4d8865b5820b1d"
+    },
+    {
+      "path": "src/data/world/writers/rwanda.ts",
+      "sha256": "2c4cae1a0d46790d1c169fc476f6c4440066f7737ef98a7ad27d544e2e9e2485"
+    },
+    {
+      "path": "src/data/world/writers/scandinavia.ts",
+      "sha256": "847c6a6e72174867cbbaea8d3419f0c2ecaae6e973f6b22e3b9dc735eebae06f"
+    },
+    {
+      "path": "src/data/world/writers/senegal.ts",
+      "sha256": "2b1e0e94d3543492097e6097ee0678595057f80b0c740c39012110ad008ffd5d"
+    },
+    {
+      "path": "src/data/world/writers/serbia.ts",
+      "sha256": "67a30e2819321becc6bbca58126161f5464a45e9edc07a8fe689d273f925dc67"
+    },
+    {
+      "path": "src/data/world/writers/singapore.ts",
+      "sha256": "9e896543869c38a90829d8e95d926c87cecd807cf25c902898d1e15ec50a83b7"
+    },
+    {
+      "path": "src/data/world/writers/slovenia.ts",
+      "sha256": "ceda3f7d2143274efb02e7847ad4daa07e983fc6ce302b93c8b52f45efd442ed"
+    },
+    {
+      "path": "src/data/world/writers/somalia.ts",
+      "sha256": "30e3a935619c638c7769bdb387e37a0710240f2d078661684e61d1f599db84c1"
+    },
+    {
+      "path": "src/data/world/writers/south_africa.ts",
+      "sha256": "39a0e281c5c0317e3432fece249442c353dc670a56792584c3453798271475b7"
+    },
+    {
+      "path": "src/data/world/writers/spain.ts",
+      "sha256": "a2b57e310ebb18a357b5fba33d80ee290b6655fb65c1166e792e627bd48210c0"
+    },
+    {
+      "path": "src/data/world/writers/sriLanka.ts",
+      "sha256": "4954d43a2419e274a4a5c5ed69baf0561bb7b0972e2face098988193e8eb399f"
+    },
+    {
+      "path": "src/data/world/writers/sudan.ts",
+      "sha256": "8583e946733821da0a082813bfbfc064bed8cb72a0feccaa01d816f0abe06a56"
+    },
+    {
+      "path": "src/data/world/writers/swaziland.ts",
+      "sha256": "4d42a72025187cd6a9c8608588c09c152f155d6bc54e67fd41c204f27dd20eaa"
+    },
+    {
+      "path": "src/data/world/writers/switzerland.ts",
+      "sha256": "9a49f32cacab8a2ab60959f9e6950e741e9dc8768225f4850ef7fdcd9f1debfd"
+    },
+    {
+      "path": "src/data/world/writers/syria.ts",
+      "sha256": "2796761b5c5ab26f45bfb9e7c8047744282747927b7ffcf8d0e774bf1c85a23c"
+    },
+    {
+      "path": "src/data/world/writers/tanzania.ts",
+      "sha256": "530056e70128c9426d2d5d7f60328f5b7f973b9b864b664b871007b5590854f5"
+    },
+    {
+      "path": "src/data/world/writers/thailand.ts",
+      "sha256": "cb75712b474f5d582c87fa87259a587cc77273306ed1dcc571c9dedc6c452897"
+    },
+    {
+      "path": "src/data/world/writers/togo.ts",
+      "sha256": "ac24a6435d8e575b5cfd87e6ebeab2844f356a2fc4ccd17b9495bc65196edcc4"
+    },
+    {
+      "path": "src/data/world/writers/tunisia.ts",
+      "sha256": "38b1c41d9c3f5edfe488e50233cb8867e7a59d47eac5496fe0b38e0b49bf0b28"
+    },
+    {
+      "path": "src/data/world/writers/turkey.ts",
+      "sha256": "defa156db0769c33e4307f49eae47fa420ed73fac463ab91231c67fb65170702"
+    },
+    {
+      "path": "src/data/world/writers/uae.ts",
+      "sha256": "0323f96e9bbc31f2f8af1f6d665ff4de35a46c069ac73306ca4631b5ce986acb"
+    },
+    {
+      "path": "src/data/world/writers/uganda.ts",
+      "sha256": "8a11a76bf43d47362be6752157d1d0a38a76f2630aa6de7a00e2adf5733a09d3"
+    },
+    {
+      "path": "src/data/world/writers/ukraine.ts",
+      "sha256": "7856734aa8ac27bb9ad090a0bfc6e925dd06e6b78093061f399f29cebc202bf9"
+    },
+    {
+      "path": "src/data/world/writers/unitedKingdom.ts",
+      "sha256": "f4e5867f1aa8f266668859d59e342589df96b122c4a70149125763a0b4ea0de1"
+    },
+    {
+      "path": "src/data/world/writers/usa.ts",
+      "sha256": "05ceae400ba46705a962645196160e6f272b40aa3a39028e8d6d69369ee5b9c1"
+    },
+    {
+      "path": "src/data/world/writers/uzbekistan.ts",
+      "sha256": "045ee7690536cc18b993808f29d385ca4c1b4cd08d81d74065d0e4455d4d815b"
+    },
+    {
+      "path": "src/data/world/writers/venezuela.ts",
+      "sha256": "943b7e7964e0804bb9b695fbe60d98c5e7ca1043591aeb572c83f109d3454ddc"
+    },
+    {
+      "path": "src/data/world/writers/vietnam.ts",
+      "sha256": "89c0b7ffe38f66b47d4876d0f2088e4698d872ff76c7fd3b577467293137dcbb"
+    },
+    {
+      "path": "src/data/world/writers/yemen.ts",
+      "sha256": "70aaf38c6ae263f2bd03d02227a8536f3470bf16db78a5cd2bf5d9a7c86a699f"
+    },
+    {
+      "path": "src/data/world/writers/zambia.ts",
+      "sha256": "2849d9cdc54be5e338493c3cd9298546f8272f0560301274269e2e628fe1fd11"
+    },
+    {
+      "path": "src/data/world/writers/zimbabwe.ts",
+      "sha256": "efb8c18f01580da00800c7c11d965d8e8b24a99024340e86532503d6c51bee75"
+    },
+    {
+      "path": "src/data/world/writersDatabase.ts",
+      "sha256": "567c56ddb8b1ecbbe9270eeb6361649e58a549bbdb48bb76d7aaaa9701e5e8d5"
+    },
+    {
+      "path": "src/data/worldContours.ts",
+      "sha256": "6af0d70134b488b3ad1e9a4886bd6810a4d4d795b2faf6c0bc978317348cd915"
+    },
+    {
+      "path": "src/data/writerBiography.ts",
+      "sha256": "4d0097d6d0c450798d720076457ab901a5e2ee48b2ac3526f5d0b548ccd12086"
+    },
+    {
+      "path": "src/data/writerBiographyDisplay.ts",
+      "sha256": "b03dbb76badc28d029ae8c8bd5b55bbf081d31a65d41162a75c893ee81466b04"
+    },
+    {
+      "path": "src/data/writerCategories.ts",
+      "sha256": "409f6e6dee9611ea28cd98c271f3315c8d829cd247f926e03773012fef535d56"
+    },
+    {
+      "path": "src/data/writerCollections.ts",
+      "sha256": "6cc3e42dff6c249ac061fe739ecea01d9132cadd6deaf0c81c86d84228ba88d5"
+    },
+    {
+      "path": "src/data/writerDirections.ts",
+      "sha256": "09e2b601f810e16a3b64413eb09595cd73afe77a410897162bcdd09c5d36636e"
+    },
+    {
+      "path": "src/data/writerFilters.ts",
+      "sha256": "139418c6fa3fdff4c34bb7a85f06b6581b44a7632f47cab78d1b6d043b90759f"
+    },
+    {
+      "path": "src/data/writerImages.ts",
+      "sha256": "015ea898fd833dcd916f71b21b97e4ae2f26d21c2b049f88c220d9d208b8c252"
+    },
+    {
+      "path": "src/data/writerMedia.ts",
+      "sha256": "17f6d1b3fe7cf1cefdd45591c79e54ae699ac9e9b94313b6135d8b2bc6ea5ed7"
+    },
+    {
+      "path": "src/data/writerNaming.ts",
+      "sha256": "ffdb9949a8d75bc0b5a0b7794791d2495545003bbf4d3d5366889ef05a9e4791"
+    },
+    {
+      "path": "src/data/writerPhotoMap.ts",
+      "sha256": "a7e422bbd506217415e7014f3e772029256514d799172c2b57796ba84e6a09ce"
+    },
+    {
+      "path": "src/data/writerPhotos.ts",
+      "sha256": "8c417ae18d9a2b27fda331bf5e95c9efedc7c223ed65d091879dc0c5098fede0"
+    },
+    {
+      "path": "src/data/writerSearch.ts",
+      "sha256": "e29220d0df06e442f669488f5c2a159be49248ff0223a9171dead66298c178c2"
+    },
+    {
+      "path": "src/data/writerSources.ts",
+      "sha256": "748790e08a7e6ea118d4b7eef2e46313e906680a9a9595a618386080dc60efbf"
+    },
+    {
+      "path": "src/data/writerStats.ts",
+      "sha256": "026646a5a3c7c2a318c08dade178d15e9e74ced7bc23f8ffa78ffb6c330eb8c0"
+    },
+    {
+      "path": "src/data/writerTags.ts",
+      "sha256": "68bdeeb7733ceba0ee1550fff66b2e301a078021814d2190fbae908fb1453865"
+    },
+    {
+      "path": "src/data/writers.ts",
+      "sha256": "62434126e6da1a656ec7691175c258c94214d52883e306a37be8603398e2fb2f"
+    },
+    {
+      "path": "src/data/writers/README.md",
+      "sha256": "30683bf2791f02ba96aed931ec7aa7a6359e80c65afc9d98c70c01fd1722cbff"
+    },
+    {
+      "path": "src/data/writers/atwood.ts",
+      "sha256": "a153be06e51a62f083bc0e631030bd2a151f280a3a8db0402e7fc15c7d22766d"
+    },
+    {
+      "path": "src/data/writers/balzac.ts",
+      "sha256": "a19fd54e246c8aeb7fd2111ce3fddaf18ba505ee712340fb786f559c401fbf00"
+    },
+    {
+      "path": "src/data/writers/borges.ts",
+      "sha256": "3f4d8cd9b4cf41ad04ec591a68f61b37ab5520c6db6f047a65b96027a56d25aa"
+    },
+    {
+      "path": "src/data/writers/cervantes.ts",
+      "sha256": "d7aa33413ba4978f59723b24466f528c4f125520e7aae69a244b73d6aab6977f"
+    },
+    {
+      "path": "src/data/writers/chekhov.ts",
+      "sha256": "3d91bdb7550a2490f13423f4bd595c868f7a35c6e2863a975f54e61a30ec4d45"
+    },
+    {
+      "path": "src/data/writers/cortazar.ts",
+      "sha256": "d1e7019755cbbf6017f5da5116e951e45afb20e76b2e910c3af270d95dce0fd5"
+    },
+    {
+      "path": "src/data/writers/dante.ts",
+      "sha256": "95ee221d7305f274fc785b39a884e44c74973b5054e37fdfd240c6aea5a3a70d"
+    },
+    {
+      "path": "src/data/writers/dickens.ts",
+      "sha256": "7896f86a92c3510e2471d91cbc269a53083fbb29883211855582dd4666d139ba"
+    },
+    {
+      "path": "src/data/writers/dostoevsky.ts",
+      "sha256": "5fdc8fd11bd3e49292463ec7d47791dd1bd0bd684e972a4a2525a945d24a8257"
+    },
+    {
+      "path": "src/data/writers/eco.ts",
+      "sha256": "1010b2768a71f2adf68ec53e3e4464fe711a4c47780634900d8dc604cdc54f3e"
+    },
+    {
+      "path": "src/data/writers/faulkner.ts",
+      "sha256": "eae7f5fe2666ff5b02cadfe83cd77857b04f2fba06df15a2002e5725730f9a8b"
+    },
+    {
+      "path": "src/data/writers/fitz.ts",
+      "sha256": "ebc5c6a091c3ffc05c77d4bb855690dce68753dcf9469e9ee8d4b35d9a633a7d"
+    },
+    {
+      "path": "src/data/writers/fitzgerald.ts",
+      "sha256": "d83dfe01f132bd00d2ade78e398efba8fff367f50dfc1b65e68fc75fca9f3d60"
+    },
+    {
+      "path": "src/data/writers/flober.ts",
+      "sha256": "d831074e40aa6a1b0a33a476f61dddbe6d1f96b4f85fc5bef0c3c6fb1179572c"
+    },
+    {
+      "path": "src/data/writers/goethe.ts",
+      "sha256": "d77af3ab00abd05d904cca466c536320fb5e007533b29835e00930a1e2d6c619"
+    },
+    {
+      "path": "src/data/writers/hemingway.ts",
+      "sha256": "45e6ea2eb25951fc6b03d5b56633d295333a87d8ae0dfd10d07fc9c2dafbc5b8"
+    },
+    {
+      "path": "src/data/writers/hesse.ts",
+      "sha256": "e7f3d8266bc63b414611e244c1aef4ff8e7e06ababd4ba9ec7c1efd509536d4a"
+    },
+    {
+      "path": "src/data/writers/hugo.ts",
+      "sha256": "88e777e460090ce05eb2f4322dc039a8e3a571e3788e2f13255fd30663bd6a49"
+    },
+    {
+      "path": "src/data/writers/index.ts",
+      "sha256": "c7ad6ba7cfff78f3d2149c2b02a897d5852bf87f4280c5e95f586db3733e940e"
+    },
+    {
+      "path": "src/data/writers/kawabata.ts",
+      "sha256": "8ad65f275a9525e7d73cca0b07d1f64aed710b4fedee967a96c51fa14061ed48"
+    },
+    {
+      "path": "src/data/writers/london.ts",
+      "sha256": "cbee9d018faa6187f96b7c383441f2f5124326458104b7fd4afb37c6b01e307c"
+    },
+    {
+      "path": "src/data/writers/mann.ts",
+      "sha256": "8d610b9958f7a18dee2afc5bd7d47586164258d9da7338a872444faa87038bfc"
+    },
+    {
+      "path": "src/data/writers/marquez.ts",
+      "sha256": "62de79b68e612f9478f08e4434335364a0bc347c82cda0f3fd84ab220f2d3b6f"
+    },
+    {
+      "path": "src/data/writers/mistral.ts",
+      "sha256": "2d07805202bcaf2b049019717eac9896978c0d595134872f4dffc327d542d24d"
+    },
+    {
+      "path": "src/data/writers/munro.ts",
+      "sha256": "71a21b38c15d1826dc32493d2739646504495da1e659663e55c5d1b95b51751f"
+    },
+    {
+      "path": "src/data/writers/murakami.ts",
+      "sha256": "f6746dbaad6ea9d74959643a9430352a0d849e1b8ac09a15e7a0b38d55e58fa9"
+    },
+    {
+      "path": "src/data/writers/neruda.ts",
+      "sha256": "092edf5d3f47fd94de0ddfa914c29e7294edc2b950be5f95a1881c85417c1ea0"
+    },
+    {
+      "path": "src/data/writers/oe.ts",
+      "sha256": "01fff3934eece064ab2642cbc4464e853f6c810877ac3199bad5e1a0fe03a0fd"
+    },
+    {
+      "path": "src/data/writers/pushkin.ts",
+      "sha256": "dc90bd13ad79ff4df5d1a02e27d55d46a973f41151c6440fba0638b1c2095cf9"
+    },
+    {
+      "path": "src/data/writers/russia/additional.ts",
+      "sha256": "3e63e6729c41abfcfd2c3eb8cda05cce6b789e382f7691a24653023c30e5dd62"
+    },
+    {
+      "path": "src/data/writers/russia/akhmatova.ts",
+      "sha256": "0a35d4d771cc8e6702760a76d90aa71296fede6fc505a0db351f7465d9261411"
+    },
+    {
+      "path": "src/data/writers/russia/blok.ts",
+      "sha256": "73a4d8ab31b03d7e47e9fb276fe8bff1393c2aa841f32f7a86d1285b537e8e50"
+    },
+    {
+      "path": "src/data/writers/russia/brodsky.ts",
+      "sha256": "5404c9ab0e47d47c180f87dd71a6dfad2b86dd710f95ea315c789884fb7047f0"
+    },
+    {
+      "path": "src/data/writers/russia/bulgakov.ts",
+      "sha256": "6bf4275b3db630958ed0bb6b510f37e4a203211c87c59de5cf49c65964886b6e"
+    },
+    {
+      "path": "src/data/writers/russia/bunin.ts",
+      "sha256": "87d4734b6bb1a9b4a4f5daeb5c9885f602e9abf82e476e09236cbdfee6693ba0"
+    },
+    {
+      "path": "src/data/writers/russia/chekhov.ts",
+      "sha256": "f041b6228386a6d93d0401d92f5b7ead44e9c4a7481800349cb1ee0960fcb855"
+    },
+    {
+      "path": "src/data/writers/russia/dostoevsky.ts",
+      "sha256": "5d0767d4e11f61f18f99a9f106b47c99b6589dbd542e56466723a43e31da785a"
+    },
+    {
+      "path": "src/data/writers/russia/gogol.ts",
+      "sha256": "ecb98d6b9be7123781ac5333cad76d67b58203224658179079ef69f3eb4a4c69"
+    },
+    {
+      "path": "src/data/writers/russia/goncharov.ts",
+      "sha256": "3a2356b7c016a1d956ebade3ecc29fc1ecad146b0c173526fa693b3e22e11dab"
+    },
+    {
+      "path": "src/data/writers/russia/gorky.ts",
+      "sha256": "1b25d575329afd8ece70f13f1c85dfedd4e2a4b6c878612adb020ddf51e217ab"
+    },
+    {
+      "path": "src/data/writers/russia/index.ts",
+      "sha256": "acf4e68500b5879e65ef42ac61de968b2855f7fe84a9927b3f000ee1faf8c730"
+    },
+    {
+      "path": "src/data/writers/russia/kuprin.ts",
+      "sha256": "27cf1caadd34dc9b147e221150b1bee9eafef7209424d0df40b49b2c16d4451b"
+    },
+    {
+      "path": "src/data/writers/russia/lermontov.ts",
+      "sha256": "efb12320840de6318dbb13e47d7548dfa132929d64195fef79702fd0359e760e"
+    },
+    {
+      "path": "src/data/writers/russia/leskov.ts",
+      "sha256": "8c6977318decafef9c4172096c6b65ba66c05184de2a0f867a92294e4d96d76f"
+    },
+    {
+      "path": "src/data/writers/russia/mandelshtam.ts",
+      "sha256": "87bcdd669854a072f47130011d826fd176e4b46c2ec02d0468f1d43bca49706e"
+    },
+    {
+      "path": "src/data/writers/russia/mayakovsky.ts",
+      "sha256": "5120764f7c26b7b79d047264d70c7b9efaf456d47ccd13e4a718c72dc3277b4f"
+    },
+    {
+      "path": "src/data/writers/russia/nabokov.ts",
+      "sha256": "d3456abba4d6707f9d419f1078ac88f9c3ff3d97e6e992099f694395aaa42045"
+    },
+    {
+      "path": "src/data/writers/russia/pasternak.ts",
+      "sha256": "cdfd0ecba95cc6c1f7368cf8394a7202609884bd84aa6fffe0e6896af65f5d99"
+    },
+    {
+      "path": "src/data/writers/russia/pushkin.ts",
+      "sha256": "47361c1fd424f38bebedf768b4865fc7636919c3ea2863ff6008b85757bff5d1"
+    },
+    {
+      "path": "src/data/writers/russia/sholokhov.ts",
+      "sha256": "9549020f512a5c3d4eedcbe57d44a78213c8f9e829cec6408561601d9635f255"
+    },
+    {
+      "path": "src/data/writers/russia/solzhenitsyn.ts",
+      "sha256": "ea05ad1dd6b175797f9449dc2adbd6030d747dc03626cf21536d008e5da2af74"
+    },
+    {
+      "path": "src/data/writers/russia/tolstoy.ts",
+      "sha256": "4a581029d14ff76ad86ae849f9a49af57ca218dfdd40c168e20bd3cf9c42eb4f"
+    },
+    {
+      "path": "src/data/writers/russia/tsvetaeva.ts",
+      "sha256": "561f57c05b12d9162527bc59db132af7f70645ecc358ab8d6f5530c13f2aeb5d"
+    },
+    {
+      "path": "src/data/writers/russia/turgenev.ts",
+      "sha256": "211c5b55f159dae97c677735c23bc988b6a69be87eeb33c9b3c4f480fd5d7aa2"
+    },
+    {
+      "path": "src/data/writers/russia/yesenin.ts",
+      "sha256": "11bfad79f1bc9c0245f318e40376e183ce034b9d929be182b54b8fd051e40b63"
+    },
+    {
+      "path": "src/data/writers/saramago.ts",
+      "sha256": "8dc53d62340c008644e0adc65f9b25c4f2dc5b9f65c05d1ac8a8b85655ad5d60"
+    },
+    {
+      "path": "src/data/writers/schiller.ts",
+      "sha256": "602066fbae2926003d019bff5cfdf5071d2221935e409cefdef20c9b41033697"
+    },
+    {
+      "path": "src/data/writers/shakespeare.ts",
+      "sha256": "565c47eccd674e911b6fd253dba37eb16cb015443876044b4311b6b856bf91f1"
+    },
+    {
+      "path": "src/data/writers/steinbeck.ts",
+      "sha256": "1818c49476a889764c314e21a23ce9d59949541ee755da7eb85991a4f42d06e9"
+    },
+    {
+      "path": "src/data/writers/tagore.ts",
+      "sha256": "3f495ebd94dc2c408ac3855c7d8610b9859adab8461da14a7cb9599985bc5cd5"
+    },
+    {
+      "path": "src/data/writers/tolstoy.ts",
+      "sha256": "e9fe840d7ce18ab45f616ff87b73e6e8813124d70e3014e431116eb85f3b40c1"
+    },
+    {
+      "path": "src/data/writers/twain.ts",
+      "sha256": "7c97ff34f4f68efdde8ba21e76f9569ab164ac4cff8c0c6dd2dfbbdb13583313"
+    },
+    {
+      "path": "src/data/writersAdditional.ts",
+      "sha256": "d7425c5c3ff013933a4838f1abd6d44e3e3f6c352c26c2fe64f18c88c19a4b06"
+    },
+    {
+      "path": "src/data/writersAfrica.ts",
+      "sha256": "6533cd80a00d011707d806a1ea0e9868e57f4b387be4589996c09785d29ed50b"
+    },
+    {
+      "path": "src/data/writersAll.ts",
+      "sha256": "9c537a6bd55ba67764f70756ca1a1cd97d55d689a44a3c9415d575a8aded41a0"
+    },
+    {
+      "path": "src/data/writersAmerica.ts",
+      "sha256": "1c449f3c3b10af425329a3c1feaa3b4366c410421ee6204276340add3937d9a6"
+    },
+    {
+      "path": "src/data/writersAsia.ts",
+      "sha256": "a0ea29e6042aaac0f96f15101a10620d1c1381aeff303ce6d19868418b9c193a"
+    },
+    {
+      "path": "src/data/writersAsiaMore.ts",
+      "sha256": "cc2b4e0812997e434a6e8f34e781989b7a41946eee33a6c5073562373350d1ee"
+    },
+    {
+      "path": "src/data/writersBalkans.ts",
+      "sha256": "ff5484b9be5dc714333be3b51e6039b097633f2a8a38c80821bdbc3951c1842b"
+    },
+    {
+      "path": "src/data/writersCIS.ts",
+      "sha256": "54f4c0a83fbdf210b8da9582d279c3de5e010c5dd5cdba44bedf151b3afdc2c1"
+    },
+    {
+      "path": "src/data/writersEurope.ts",
+      "sha256": "453a3007b4732b11283aac1260b629ceede2afac38e871208575ef0e0eec2a5e"
+    },
+    {
+      "path": "src/data/writersFilter.ts",
+      "sha256": "df5511c81b0268790a744e37e675a729548f08a998d2481320dc0be0fecf8112"
+    },
+    {
+      "path": "src/data/writersMap.ts",
+      "sha256": "efd1e66a42895fe54293650ddd1f8614d60b5e9ec69152ff53275b8c90257214"
+    },
+    {
+      "path": "src/data/writersMiddleEast.ts",
+      "sha256": "675a9df0d6979bfb85520f18aee9db360983f2bbd5910ce38e9258f7fb4586ca"
+    },
+    {
+      "path": "src/data/writersNobel.ts",
+      "sha256": "1e4ada3d0cfabb4a593aab26217d4cd08b59424c2d2fddf8f07141fa923fb31f"
+    },
+    {
+      "path": "src/data/writersOceania.ts",
+      "sha256": "b6b85ac130c1668030dfcc95cd06ce51991ace8dcc9e1a81f8e5368e0191ae14"
+    },
+    {
+      "path": "src/data/writersRussia.ts",
+      "sha256": "e13f3f1e2b53acf85f33cfa4c943750285b8c67665278e2b0a378c6020d72da3"
+    },
+    {
+      "path": "src/data/writersRussia2.ts",
+      "sha256": "64af4cd9963c3e7e7d385a25b9d3d1a4d45bc9815d35096200175488045b4f30"
+    },
+    {
+      "path": "src/data/writersRussiaAdditional.ts",
+      "sha256": "84ba081336a80a6a6373a106c17663dbbfb158e8d1442241bb37e6706169fd64"
+    },
+    {
+      "path": "src/data/writersRussiaMore.ts",
+      "sha256": "67bf3b34aeb32a9c9109d1300223197c85b7f919487a69f7ae44c2933e632f5f"
+    },
+    {
+      "path": "src/data/writersScandinavia.ts",
+      "sha256": "a283ef4a7110407f7d9ea2a76e8838a7765a75c5a6cb72fab9fe0d925deb563d"
+    },
+    {
+      "path": "src/data/writersSouthAmerica.ts",
+      "sha256": "a9bd53e9e5ce7393f04fcb3e688e529817af53893f9debda4d342a9944d6b8a3"
+    },
+    {
+      "path": "src/data/writersWomen.ts",
+      "sha256": "1a47a94b29449089824047ad26288579995853c2833d16d44c8c7a3ef48269dc"
+    },
+    {
+      "path": "src/editorial/ShareLinks.tsx",
+      "sha256": "12ca5b52a97e6c22a3080f2e2cc2ca6d2c5710e4d0cabea6fd7010e177a9bf48"
+    },
+    {
+      "path": "src/filters/filterTypes.ts",
+      "sha256": "39ce1a6dbe6aac0d323a17710f24fc5c87bd1e03ce0020e34ea3d7db324288e0"
+    },
+    {
+      "path": "src/filters/writerFilters.ts",
+      "sha256": "076f7f298a3533878c4ef1c043fd4f75e20cb92f63b769b1f98f8919483fb4a7"
+    },
+    {
+      "path": "src/hooks/useBookCollections.ts",
+      "sha256": "8f05095d43c34293897fbda4a7f51e24c476364749af01fdc9a00bd9ff76396b"
+    },
+    {
+      "path": "src/hooks/useDisplayMode.ts",
+      "sha256": "4f8b5f6979398f72581c31323bd4144e79682ff78b689a6cd7d292f6e1a05d4a"
+    },
+    {
+      "path": "src/hooks/useReadingLibrary.ts",
+      "sha256": "55e00d146dac1cc043300907ffb0b6cd1691a5c7b9ae5d0d7a0d46d26ca01de4"
+    },
+    {
+      "path": "src/hooks/useReadingProgress.ts",
+      "sha256": "13252c5a51457237242356a22a63f0ac6a5e36abf443208b6e40b8d83cd62fff"
+    },
+    {
+      "path": "src/hooks/useSubscriptions.ts",
+      "sha256": "f031940dc5b1ee6d0122dafc2a31c3526684ee97e7fb10e5ecf0473ed7a77323"
+    },
+    {
+      "path": "src/host/HostPlatformServices.ts",
+      "sha256": "0fb34ee847ae38b4a50d962b582664d9436aa6800f7e4922f4a653df1d91ef1e"
+    },
+    {
+      "path": "src/host/HostRuntimeStatus.tsx",
+      "sha256": "cf10af412532534e8f317d4082c40deee8fb9c992f4997a83cf97e5c22cfa736"
+    },
+    {
+      "path": "src/host/NativeNavigation.ts",
+      "sha256": "c23265bfe05c0e97eedb226af1c3cf5e7adb650f5b87b20bf5b4fb899e62a3c7"
+    },
+    {
+      "path": "src/host/NativeNavigationBridge.ts",
+      "sha256": "2e0a86d26843cfdcc6db5ab9d890115a747686a022a1cb7935972c29fb8ad4ab"
+    },
+    {
+      "path": "src/host/NativePlanetLaunch.tsx",
+      "sha256": "42fa6de0af7552b2bd6b819fa34c06cb21d5164f75576fb92f33a432aac17680"
+    },
+    {
+      "path": "src/host/NativePlanetPanel.tsx",
+      "sha256": "3c4a1518de5da3c5fa25732a6905b86606a48ed281ad30dad51c8adb90d9857d"
+    },
+    {
+      "path": "src/host/PlanetGraphicsSettings.css",
+      "sha256": "0c25285a50ba8f097ef867748c57cab270df6406f8a9a2454808b9a197207699"
+    },
+    {
+      "path": "src/host/PlanetGraphicsSettings.tsx",
+      "sha256": "6332bec397775901379ec3776548aaf610b6e7cde094badd5672d09436b24e4f"
+    },
+    {
+      "path": "src/host/PlanetWelcome.tsx",
+      "sha256": "cc9d0df6a3f9f99023affbb3b39842e64935c3aaf30abe9c0ba468b6d30d76ba"
+    },
+    {
+      "path": "src/host/ProductNoticeHost.tsx",
+      "sha256": "10e1832212274636b8b6b35b3e97accd5f9eb80ea16ff6d9298879442753d8fd"
+    },
+    {
+      "path": "src/host/host.css",
+      "sha256": "6bc54f91100cb85c5df6407da0a468d7f81d5bc0d28ca02ff6bab6c873190120"
+    },
+    {
+      "path": "src/host/hostInert.ts",
+      "sha256": "788247dcb6781e80bae1d97aeebfa7cffcc4421cd3c082675a222a287cd6258b"
+    },
+    {
+      "path": "src/host/initializeHostPlatform.ts",
+      "sha256": "05e0f29f6fde21cc48c03cbc52a329d2f7b16c83b614084ef7d69b88465b729d"
+    },
+    {
+      "path": "src/host/mountHostApp.tsx",
+      "sha256": "b1f850347216bf434c8b8cc1772252ce7385e7dee0c2dac84d9463f92bad79f1"
+    },
+    {
+      "path": "src/host/nativeNavigationTarget.ts",
+      "sha256": "c35ed174eee96ac9559bf7de0a4f9f0e1574e85af302067fe5e157b2f3e8d7a0"
+    },
+    {
+      "path": "src/host/planetAppearance.css",
+      "sha256": "57c46af2e0704da55e2054e9d09f2b8d408c4428c002e8faf2fe60663e066329"
+    },
+    {
+      "path": "src/host/planetAppearance.ts",
+      "sha256": "a6b00fce26fdcf5d73ea847ded3fb265d10f023997f3f7bac08da9c1c1b0df10"
+    },
+    {
+      "path": "src/host/planetGraphicsQuality.ts",
+      "sha256": "5b8cc15796b0a2e0c3e6222ba6c7f0af2ffa2102d7a30000891f2435906d79f2"
+    },
+    {
+      "path": "src/host/planetLaunch.css",
+      "sha256": "81f368d7643a9e21ffb83f0dab41d2dd3fddbe1b88d67ee0b0ebd494cc02426a"
+    },
+    {
+      "path": "src/host/planetWelcome.css",
+      "sha256": "8d5c161b827d506bdc8dd7e2db6d38b7138c52426eb6048a68e2f8308e24f7ca"
+    },
+    {
+      "path": "src/host/useNativeNavigation.ts",
+      "sha256": "7e261d298362b65ebf58833210c379a8164e456d4cc4e17105776baa0fba6861"
+    },
+    {
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "sha256": "41afc69ed9dd15ac3caf976818de5d2b50749a2cdbfd64e917e93988b0f00143"
+    },
+    {
+      "path": "src/i18n/PublicLocaleMetadata.tsx",
+      "sha256": "98362b9b5fba6b5478bb339de0e8ec8ab5841301004f6822947ce5b5d71e2e02"
+    },
+    {
+      "path": "src/i18n/headMetadata.ts",
+      "sha256": "e39fc1fd68379fe207e5ede30ec86912e748391c6601a161c72fb595abaf6f2c"
+    },
+    {
+      "path": "src/index.css",
+      "sha256": "d0a65c4aaddef95a96a973165cd823511efb54f799e7ac2139e38edfdf5e30a5"
+    },
+    {
+      "path": "src/lib/loadSupabaseClient.ts",
+      "sha256": "406c41fab955a9d7ce1193ec45fbdaabece8c08329363a46a494db2b91a329d3"
+    },
+    {
+      "path": "src/lib/supabase.ts",
+      "sha256": "6ad4bd4b96e39be319a966397e6bd0d41c0c7d741ec2b6c3ca201483c73f42cd"
+    },
+    {
+      "path": "src/lib/supabaseConfig.ts",
+      "sha256": "db7d2cf3611232e5e9c16839ff4aa91807bfff71757d2c792184f9149674f9b9"
+    },
+    {
+      "path": "src/loading/DeferredHomepageArchives.tsx",
+      "sha256": "5c5a7cd9e8d259cb5837215bc8b4efd5037b94d8387b1cc0c5bea52fa23f4f8c"
+    },
+    {
+      "path": "src/loading/archiveOverview.ts",
+      "sha256": "539b35ca22a83733180fb2e37968c7194284c7bdf26c315ef82224501d21960a"
+    },
+    {
+      "path": "src/loading/bookArchiveRuntime.ts",
+      "sha256": "bcce1a97b7fcac1b7a4a4fa627a3c9cda74944ae7bc215b2c15b7015dcfc0e22"
+    },
+    {
+      "path": "src/loading/nearViewportActivation.ts",
+      "sha256": "b395ad7991b12c437e95557cd5efaab2a46cead47fa64a2af391453f6ca98988"
+    },
+    {
+      "path": "src/main.tsx",
+      "sha256": "111b797aeba148b16a3fe21b3ca64ca70d13b8b1939a07f8674b448afdecf69e"
+    },
+    {
+      "path": "src/mobile/ConnectivityStatus.tsx",
+      "sha256": "34e33dff409848de5637c8de16eea457f8c1a2d9ef8cdd874f5c5f2552e543c7"
+    },
+    {
+      "path": "src/mobile/appConfig.ts",
+      "sha256": "b2d7d9934894bfed3eec47bd4b1f7fd09653ac24e243b3fd64f5a762de981fd9"
+    },
+    {
+      "path": "src/mobile/offlineDatabase.ts",
+      "sha256": "7d56c7204e9c01cc582ae59b686d5d59381ba34cc53720453ba19ea9c2c90e0a"
+    },
+    {
+      "path": "src/mobile/registerServiceWorker.ts",
+      "sha256": "839fc1eeeeb91bcbe045b7dc48579bba19482a0b2101cf7637f3152e51479437"
+    },
+    {
+      "path": "src/news/DeferredLiteraryNewsPanel.tsx",
+      "sha256": "63e8e2431e2ab8729e7ce5f14a7622733417e68b73cdb31ab54ed8f50d95db58"
+    },
+    {
+      "path": "src/news/dates.ts",
+      "sha256": "730d1607d173f738e3422b4d2422740574e50491613b040229a15f8af2ec69ea"
+    },
+    {
+      "path": "src/news/feed.ts",
+      "sha256": "6330ff37895a670fa0d99605e8a3c9a4569111e13ae30a0222c9c46ca9cf03a6"
+    },
+    {
+      "path": "src/news/preview.css",
+      "sha256": "692595393b085cd66f578052a1679bb7083648447e963efe20b6b4d1c7b21c03"
+    },
+    {
+      "path": "src/news/preview.tsx",
+      "sha256": "bd021b93f4daa55421a0423209368cb4f7a5e61962f98808e6918d5e259a7bad"
+    },
+    {
+      "path": "src/news/types.ts",
+      "sha256": "2fd46294cbef6088c426407ce3215b8157e109b59e814aece2f7d96a8ae75e94"
+    },
+    {
+      "path": "src/news/updates.ts",
+      "sha256": "9023f9ad9b98296cab6d9b823805be4625308c2818798b91ab531b2963ace282"
+    },
+    {
+      "path": "src/pages/WritersPage.tsx",
+      "sha256": "37569ef33744113ba2523d8ed5d11f68536b81e29dc697ebfc65386845cf9f9d"
+    },
+    {
+      "path": "src/planet/RecentHistory.tsx",
+      "sha256": "7b80d8b9bcfbee832a36bab1991d11f747fb9904122cb689f285792c0972f7ec"
+    },
+    {
+      "path": "src/planet/books.ts",
+      "sha256": "c694e1991b64a4e626c4e578457d3e3b9f30bfb761558c4c6d8dde4304d08989"
+    },
+    {
+      "path": "src/planet/brand.ts",
+      "sha256": "074c3ad10618ed55204fcd2fb13067d6d6f1977c488b84d13aec460a47c640f4"
+    },
+    {
+      "path": "src/planet/catalog.ts",
+      "sha256": "a03280a4ac68a21be24d9a2dc3b6333ee44e1752e1a2c7c62efecb95d0606e19"
+    },
+    {
+      "path": "src/planet/editions.ts",
+      "sha256": "466105cd35cadf5c0bc656c34d50bc20fe174551020b002fc903b8071dc5145e"
+    },
+    {
+      "path": "src/planet/editorialCatalog.ts",
+      "sha256": "c91696cb5dfa0e3a9324c083b1899fda1429b736adcae55174b557bb7e4ae448"
+    },
+    {
+      "path": "src/planet/localization.ts",
+      "sha256": "28b0b98bbbc89be8e1a33a13f2332217f8bdeb5d16cd702bc200ade4a83d2bff"
+    },
+    {
+      "path": "src/planet/selection.ts",
+      "sha256": "0d0ed8c86722e7f4c36885ab572ffb746c16ce69e4ccebf797eb5c3cd0fd99e3"
+    },
+    {
+      "path": "src/planet/types.ts",
+      "sha256": "80ffbec6e93002364fba05b8d303ee7a712f29cbe801a04a4af70a5a587ff25d"
+    },
+    {
+      "path": "src/platform/PlatformServices.tsx",
+      "sha256": "6f8aa1040a3fc4bd2717a4ec61ec8a89d48c01610f80b17998a31d35bf6d02c5"
+    },
+    {
+      "path": "src/platform/adapters/android/AndroidPlatformAdapter.ts",
+      "sha256": "f01ad9daac2a14e57cf830273b767d509c1df2e344789d9c5e04a5e5bdb673e4"
+    },
+    {
+      "path": "src/platform/adapters/android/entry.ts",
+      "sha256": "afcf86392a70ae0c80ede7e9f34f60e11149d98d2c67c05f970f85cc67520272"
+    },
+    {
+      "path": "src/platform/adapters/ios/IosPlatformAdapter.ts",
+      "sha256": "dfbc518b7e56aabb03f690b2c47b70a484aab7550913daf3a337cef09814c0b0"
+    },
+    {
+      "path": "src/platform/adapters/ios/entry.ts",
+      "sha256": "d9f7913b71ba139ffddfada6a300ad97a516665fb565f443159c54bee2bb75ba"
+    },
+    {
+      "path": "src/platform/adapters/web/WebLicense.ts",
+      "sha256": "490398a3ed108fba036dd0f851fcb74fb3e288bbd71694cedd0c5a593f829089"
+    },
+    {
+      "path": "src/platform/adapters/web/WebPlatformAdapter.ts",
+      "sha256": "ae2a466155b668e99fc66d9804cc2ba0bbad2bf3539407ccbc0cee7c877bb2d9"
+    },
+    {
+      "path": "src/platform/adapters/web/WebRecentHistory.ts",
+      "sha256": "3789da467959003ccc7ad67f4d5c771d334abd6f55b27a065c6c29188ed9200b"
+    },
+    {
+      "path": "src/platform/distribution.ts",
+      "sha256": "c2947a4631d4b72392de12ab35dd8b30254ad3f612396507739067b1a1d6cf0b"
+    },
+    {
+      "path": "src/platform/ports.ts",
+      "sha256": "4760dcda27abfbe62cd052a62064437b5f430d33f8b2c43917b9a38f368d18ff"
+    },
+    {
+      "path": "src/platform/productPolicy.ts",
+      "sha256": "a43622ca8b7ef85bb0b1df2d9dbb1268d4a5e1ce2ca9d1f00a97387250fca480"
+    },
+    {
+      "path": "src/pwa/PlanetAccountPage.tsx",
+      "sha256": "0978223606d38d9d50ea31c9afa8d63af7f69a94680fed0b19c71236bbda79d7"
+    },
+    {
+      "path": "src/pwa/PlanetPasswordRecovery.tsx",
+      "sha256": "7c9be94ec641cae68f81f2b64abd73784c7b4fdb1fb17161026bf53fc48cb461"
+    },
+    {
+      "path": "src/pwa/PwaAccessBoundary.tsx",
+      "sha256": "5da9ec472f3bd16b1493cb44601bf1e3f74d09245e05ba8446cf9d280bee6b80"
+    },
+    {
+      "path": "src/pwa/PwaConnectivity.tsx",
+      "sha256": "a2be74242be199a2b6cb586401fbeb6c6e39fc9be8c1a9760c5c00784a0a5927"
+    },
+    {
+      "path": "src/pwa/PwaDevicePanel.tsx",
+      "sha256": "8916f3f157740e93e3b78270ee63477ede150d645518a37be9dbc4c8cb381d1f"
+    },
+    {
+      "path": "src/pwa/PwaEdition.tsx",
+      "sha256": "7d02ac0e9ac3e51c9a9afcacce3558cdc40749effc85d7304999d5ba91f396c4"
+    },
+    {
+      "path": "src/pwa/PwaHelp.tsx",
+      "sha256": "a2adc1f81f55a9cf820fb1859efdbb90376eb44a4a6ce2056f96e5b9efb1a093"
+    },
+    {
+      "path": "src/pwa/PwaInstallController.ts",
+      "sha256": "108b64464e4b1c3d420099be92a30c9949994677b3c83c24c55db3c3ef8087cb"
+    },
+    {
+      "path": "src/pwa/PwaLicenseRuntime.ts",
+      "sha256": "02abe28132731ce592e2f18e6792d8a3240c391eceba88b0dd0049cf1bb16fb4"
+    },
+    {
+      "path": "src/pwa/PwaLocaleMetadata.tsx",
+      "sha256": "17c10128dea5be84014e17bf3f0ae27df16b06667c40247d3a0007946198ef6d"
+    },
+    {
+      "path": "src/pwa/account.css",
+      "sha256": "8795fce4d4e0281093ac672fa78c59aaeae30e58dd43e6474ad9677838c453cc"
+    },
+    {
+      "path": "src/pwa/accountAccess.ts",
+      "sha256": "b38a88bac60ac595bd6282ace0d574ea41692e276fe4fff617cebe66cb8916cf"
+    },
+    {
+      "path": "src/pwa/accountCopy.ts",
+      "sha256": "73eb68802468efec0c65f33e1df2c44c8466603c1da37b93de8ce11a533fe914"
+    },
+    {
+      "path": "src/pwa/accountRoutes.ts",
+      "sha256": "6e8424a6d87e72b36bc6be1b5963a2a524825ba4b1913877d51bd48d04513d41"
+    },
+    {
+      "path": "src/pwa/passwordRecovery.ts",
+      "sha256": "5275cb1f0c92cfc398d957276b5bc14301a647594f45d79480ae3a890e8a838f"
+    },
+    {
+      "path": "src/pwa/passwordRecoveryCopy.ts",
+      "sha256": "92e7337dea56ba7a882a169932be2a8f9c606830b8edb3c77033614e15e8708c"
+    },
+    {
+      "path": "src/pwa/pwa.css",
+      "sha256": "b62dca25c5bec2a1df94347b0c7d9c043678ace42802ccba516cce326ca95f31"
+    },
+    {
+      "path": "src/pwa/pwaBootstrapBudgets.ts",
+      "sha256": "3fceaa940a83c9d93c1bede09d2f1ab87b276fd837a081038954095be3c3df1a"
+    },
+    {
+      "path": "src/pwa/pwaCopy.ts",
+      "sha256": "577e114719579e69ec68f9aa4ac7ed63033aacd88ddc7a874fcf766a5a51d319"
+    },
+    {
+      "path": "src/pwa/qaSceneProbe.ts",
+      "sha256": "3af4dad00be34e8e4aa29f59c9e7251609ae1473cc96e9d37663c2711d47ce26"
+    },
+    {
+      "path": "src/pwa/registerPwaWorker.ts",
+      "sha256": "cb5c95b8abafd82ed25bde899420007bb81a87014ba2bf04a87efd4a1df6ea41"
+    },
+    {
+      "path": "src/pwa/serviceWorkerRuntime.js",
+      "sha256": "a6e53d8e83c137de4cbd60cb1f4a81ff518248d1e3d417a98f229c30c81df79c"
+    },
+    {
+      "path": "src/search/globalSearchIndex.ts",
+      "sha256": "71d8caa6eeac5edbb0f11bb83204a881271ed972bc7a9a541a3c9636422753b3"
+    },
+    {
+      "path": "src/search/globalSearchRuntime.ts",
+      "sha256": "8efe4c88f8ea4933c04f35aab03421064c9bebdacc6a5a03ff45c9eae5e6c21f"
+    },
+    {
+      "path": "src/styles/article-book-reader.css",
+      "sha256": "bf176f39095885126eab65b50ac0997daac0a6096d1be25baae623b876ba0c9f"
+    },
+    {
+      "path": "src/styles/article-reading-layout.css",
+      "sha256": "3eb4de168f7488e94c059e14c985c8f15e4963798fa2a72f2d6c627f22ceb8a5"
+    },
+    {
+      "path": "src/styles/atlas-intro-layout.css",
+      "sha256": "2696c80f1c841cbd5b8f9a7ec19599a25e9e3a1a93bd98479e18cdb22deab5c4"
+    },
+    {
+      "path": "src/styles/book-dossier.css",
+      "sha256": "2f0a38acc20505bd8ccab2ba9154243b03471a2262774714cf8df3515e76c8f4"
+    },
+    {
+      "path": "src/styles/book-month-news-composition.css",
+      "sha256": "8353bca3052132c4e9a46973223587d5c3eaf1f3b76b08810a2ba81bab77c974"
+    },
+    {
+      "path": "src/styles/book-reader-refinement.css",
+      "sha256": "7bad1c58453b6f26487ab27bf0db5f37e9dcf128129148c2cf3d9bcae97fa997"
+    },
+    {
+      "path": "src/styles/book-shelf-controls.css",
+      "sha256": "049d4cf2c152c4e9c3e7ac7f99d66fbefcfaf6a9fcc1c9cd26c859c16b784152"
+    },
+    {
+      "path": "src/styles/calendar-layout.css",
+      "sha256": "fbfdcbd66e0667e0e90f2d13c0cf37545edd2edff75c9318cf7704e0b194a59a"
+    },
+    {
+      "path": "src/styles/community-editorial-layout.css",
+      "sha256": "807412a41aaee4462460bb910e1e31c3a93530d808164bcd43c84c9bca35ab99"
+    },
+    {
+      "path": "src/styles/community-layout.css",
+      "sha256": "f822748de952a309039edffc9dbededc07ba642b9e542cf531555904015cae62"
+    },
+    {
+      "path": "src/styles/editorial-card-layout.css",
+      "sha256": "a32cacb3017501b0212ff54b0caeb87bc43bf640cc1d2676ea92c513b0fbb07f"
+    },
+    {
+      "path": "src/styles/editorial-fonts.css",
+      "sha256": "c89f85b84d0c9605e49e676fd9740bfaf2c56d968770219e4042e9a2042b7630"
+    },
+    {
+      "path": "src/styles/header-preserved.css",
+      "sha256": "5202e30dbaf7fcc30d43a4487906ad3077f5f2300bd504eabe58821ba2bda466"
+    },
+    {
+      "path": "src/styles/literary-news.css",
+      "sha256": "8307842d5c8439db8d9d991ec55c6e884e4d1e7c60a5fe93023145aa4d5a4070"
+    },
+    {
+      "path": "src/styles/navigation-panels.css",
+      "sha256": "20c36cd316b9d00476d298f1b697094438a1fe57cd4fc24887c60ea59bca1086"
+    },
+    {
+      "path": "src/styles/search-account-layout.css",
+      "sha256": "d9c6da3849dd60cab742a9ac600e9b7b0601954250199a3f0180b1af4ab67b80"
+    },
+    {
+      "path": "src/styles/site-typography.css",
+      "sha256": "1fe463913b921d1fad65e0c7618958a31efbb5948d80f2132a4c71ef46945abb"
+    },
+    {
+      "path": "src/styles/stage5-book-collection-dialog.css",
+      "sha256": "c2538c64ffce103c0bc66214a7e1d4c26d4e5794b884c56e2bb015d254a51750"
+    },
+    {
+      "path": "src/styles/stage5-book-collection-manager.css",
+      "sha256": "17a8013bab044cd08c490c15ea31238347809f6e9e961fcd5ef913b18405ef56"
+    },
+    {
+      "path": "src/styles/stage5-book-shelf.css",
+      "sha256": "ba7e7e65f2a3d42b332456d250d3fa03091a2396120902602ccf6a2461821bea"
+    },
+    {
+      "path": "src/styles/stage5-home-art-direction.css",
+      "sha256": "b831603df709b9683395d4ddb329c59f64d43c27b0e98ac492a6661c072db757"
+    },
+    {
+      "path": "src/styles/stage5-home-layout.css",
+      "sha256": "b2c12339ed66fd27cdf511d947ab20115e0a1a7039a54877efbd56920a06e92d"
+    },
+    {
+      "path": "src/styles/stage5-loading-shells.css",
+      "sha256": "a8afac0c0c2a7f1a926ce7aeacc6019d37da1ebaf80407b8a0bc37e842848c2d"
+    },
+    {
+      "path": "src/styles/stage5f-responsive-accessibility.css",
+      "sha256": "4f4d0f596e01d3714c44d2c9c37e74dfc0d5932c8f4415d5570d757d052a5974"
+    },
+    {
+      "path": "src/ui/ActionLink.tsx",
+      "sha256": "7f038e3a7e69499be6f17ef2dd13a2eced251f59a6065fb3a440ba7849eb0895"
+    },
+    {
+      "path": "src/ui/Button.tsx",
+      "sha256": "c50c98256e134b172f21a7eeb48f09ef00e74c37e0d50685e02ad21567146c65"
+    },
+    {
+      "path": "src/ui/IconButton.tsx",
+      "sha256": "43fae27f082a6d4d5c79d53422ce9dd225b546823378cf33b19c0cb0b90f6ac4"
+    },
+    {
+      "path": "src/utils/articleBoundaryBreaks.ts",
+      "sha256": "1560bfc96a025e39b17518a3ae9127decee5685af9d36778724aba3f5c269dca"
+    },
+    {
+      "path": "src/utils/articleImageDelivery.ts",
+      "sha256": "689aed903da3ffc5b7fe39b9654150bb714de3adaf7009694fc30670b9d98894"
+    },
+    {
+      "path": "src/utils/articleMetadata.ts",
+      "sha256": "83c591bd4bf0d54137e44040cbf13c710a5ca0b95c1adbd1d2f649c8b8be32c3"
+    },
+    {
+      "path": "src/utils/articleRoutes.ts",
+      "sha256": "fe81114b04a386dc83a36bad95252712583819f618f32480e8e1d6974b9f7d68"
+    },
+    {
+      "path": "src/utils/articleSeries.ts",
+      "sha256": "3ae5f7e9620ba5a64eb1aa5178fffdcf9d4f224297b8bd35476dbd7d7ce0e0a6"
+    },
+    {
+      "path": "src/utils/atlasUrlState.ts",
+      "sha256": "42afa5ae434d26f0cb2ad474ba820784147b04dad0cf2cca2fbf82db64458fe9"
+    },
+    {
+      "path": "src/utils/countryFlag.ts",
+      "sha256": "0a52e22624d93da3cab8a9f88b90920770bbb0e7091ebe8d8ac592d4ab798a9b"
+    },
+    {
+      "path": "src/utils/deferredHashNavigation.ts",
+      "sha256": "537e963d0e41692db4812fca2749731b58eb2e294b9fd531e88b1457ad97e0fa"
+    },
+    {
+      "path": "src/utils/editorialImagePresentation.ts",
+      "sha256": "fd09c25a0e1c11484226afb3191ee6e7144eb18d10e347f97b5c2cf070c79ea5"
+    },
+    {
+      "path": "src/utils/editorialLightbox.ts",
+      "sha256": "b9476554e568bdeb955b12ec2de6290927720f66c292076488ccb78f2e0ffc1f"
+    },
+    {
+      "path": "src/utils/formatDate.ts",
+      "sha256": "eadc7da9f32568a414b1e2c6b7132a01b71f0aedd9e319f1bbf37d17cc5bfed9"
+    },
+    {
+      "path": "src/utils/imageDelivery.ts",
+      "sha256": "d60a3086893b95c26958c291faf8319423f1bf30c24cefb814d32b905f43ff4d"
+    },
+    {
+      "path": "src/utils/imageDeliveryControlled.ts",
+      "sha256": "d2f20cd20221fa22a664f198be0035039a4624fbbc86a5315e36bf4a5ad65fac"
+    },
+    {
+      "path": "src/utils/imageDeliveryModel.ts",
+      "sha256": "cfa166e087db7d16248cb28e835741102dfe850ddf92e19ef4c6cd6ee29e741b"
+    },
+    {
+      "path": "src/utils/imageUploadOptimization.ts",
+      "sha256": "d559bd9c609dbd82409169ded91020b11bc00225e4ced9944ca1c3d2fb335fbb"
+    },
+    {
+      "path": "src/utils/initializeEditorialSliders.ts",
+      "sha256": "6fb90eb2e275a03d127f4a5c1b63c9cd9fa199e0c93c0f129794686f5d06cfdd"
+    },
+    {
+      "path": "src/utils/literarySearch.ts",
+      "sha256": "9c32a3f68ec74e5686f4bf809be02e6b1eb48f54bcd635dd7e920f56ec715e59"
+    },
+    {
+      "path": "src/utils/mediaFocus.ts",
+      "sha256": "ff04514ba8bcf06508420450c74f06b9e4ca0678215ec318cedcc1f01cdb6bfa"
+    },
+    {
+      "path": "src/utils/monthlySelection.ts",
+      "sha256": "297029030630dfa9fd6839ce8931d8db883090622527f3e673ff528dec7419a8"
+    },
+    {
+      "path": "src/utils/publicHref.ts",
+      "sha256": "e0113f03f35a0eb2c42ede27f73a12590d2b9ddb4429c96f3fe93750b94f2887"
+    },
+    {
+      "path": "src/utils/rasterImageMetadata.ts",
+      "sha256": "4e1969003064fb7b818915ed8d4158b2a7a5393f0cda1475522cd71db6049fe3"
+    },
+    {
+      "path": "src/utils/resolveRelatedWriters.ts",
+      "sha256": "a4f898d85b0056494e57e3e4459805cf52f925959927f262491c4b15759065a9"
+    },
+    {
+      "path": "src/utils/safeWebStorage.ts",
+      "sha256": "81ea225b4e6c0a1a2d8c3bf4ba2b48523144280429ff3ae2a2bf38df800b9277"
+    },
+    {
+      "path": "src/utils/sanitizeArticleHtml.ts",
+      "sha256": "dcaaa255bdbda7d2b5f6e44e5e44c27ed1e7816e4e8859eab6a85dd204702a0c"
+    },
+    {
+      "path": "src/utils/shortHyphens.ts",
+      "sha256": "669af768ea5d11c4830213de2e4064e04e59133658074b94cdb7b3569ece093b"
+    },
+    {
+      "path": "src/utils/slug.ts",
+      "sha256": "ec793df3c301446081654dc8818f16bdaf03c42c6c51981fbb64a1985be6eb0f"
+    },
+    {
+      "path": "src/utils/writerDates.ts",
+      "sha256": "e97a5bfc9362bc6415fecb6baeb2875ce636a633d3a47ce185485860fbb7eae4"
+    },
+    {
+      "path": "src/utils/writerSearchLabel.ts",
+      "sha256": "813da00e5266d1cfe380a5373eb4f8606f8f0ebc9797fc7bcaa84cf295567588"
+    },
+    {
+      "path": "src/vite-env.d.ts",
+      "sha256": "6d0ec696011492e5b1c49348494bf1f4f3da303136e5fa5908d3acc9e4572248"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "8d51a8c9266fe83bf17c076b51672753b3750a17520cd0d2c28a90cb8b21e0d6"
+    },
+    {
+      "path": "vite.config.ts",
+      "sha256": "940a522685d7d756b068252832a5a6d4497cb2fdeb81377ae70887ce6b3347df"
+    },
+    {
+      "path": "vite.native.config.ts",
+      "sha256": "5a7d0beacf177a2fc645bfb9856f121ce5c3c70fd7001be4224c7433b008c001"
+    }
+  ]
+}

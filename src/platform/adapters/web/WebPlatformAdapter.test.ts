@@ -6,6 +6,7 @@ import {
 } from "./WebPlatformAdapter";
 
 const WELCOME = "probpera-planet-welcome-v1";
+const GRAPHICS = "probpera-planet-graphics-quality-v1";
 
 function memoryStorage(): Storage {
   const entries = new Map<string, string>();
@@ -203,6 +204,37 @@ describe("browser capabilities and subscription lifetime", () => {
 });
 
 describe("non-secret best-effort canonical preferences", () => {
+  it.each(["high", "balanced", "economy"])("restores graphics quality %s through a fresh web adapter", async value => {
+    const { browser } = browserEnvironment();
+    const adapter = createWebPlatformAdapter({ window: browser });
+    expect(await adapter.preferences.set(GRAPHICS, value)).toBe(true);
+    const recreated = createWebPlatformAdapter({ window: browser });
+    expect(await recreated.preferences.get(GRAPHICS)).toBe(value);
+    expect(recreated.preferences.persistence).toBe("best-effort");
+    expect(browser.localStorage.length).toBe(1);
+    expect(await recreated.preferences.remove(GRAPHICS)).toBe(true);
+    expect(await adapter.preferences.get(GRAPHICS)).toBeNull();
+    expect(browser.sessionStorage.getItem).not.toHaveBeenCalled();
+    expect(browser.sessionStorage.setItem).not.toHaveBeenCalled();
+  });
+  it("rejects unsupported graphics values and lookalike keys without storage writes", async () => {
+    const { browser } = browserEnvironment();
+    const adapter = createWebPlatformAdapter({ window: browser });
+    for (const value of ["", "High", "auto", "high ", "economy\u0000"]) {
+      expect(await adapter.preferences.set(GRAPHICS, value)).toBe(false);
+      expect(browser.localStorage.setItem).not.toHaveBeenCalled();
+      browser.localStorage.setItem(GRAPHICS, value);
+      expect(await adapter.preferences.get(GRAPHICS)).toBeNull();
+      vi.mocked(browser.localStorage.setItem).mockClear();
+    }
+    for (const key of [GRAPHICS + ":en", GRAPHICS + "\u0000"]) {
+      expect(await adapter.preferences.set(key, "high")).toBe(false);
+      expect(await adapter.preferences.get(key)).toBeNull();
+      expect(await adapter.preferences.remove(key)).toBe(false);
+    }
+    expect(browser.localStorage.setItem).not.toHaveBeenCalled();
+    expect(browser.localStorage.removeItem).not.toHaveBeenCalled();
+  });
   it("uses existing namespaced values and validates both stored and written preferences", async () => {
     const { browser } = browserEnvironment();
     browser.localStorage.setItem("probpera-interface-language", "ru");

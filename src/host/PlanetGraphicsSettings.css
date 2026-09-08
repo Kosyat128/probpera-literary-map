@@ -1,0 +1,100 @@
+.planet-graphics-settings {
+  min-width: 0;
+  margin: 12px clamp(12px, 3vw, 40px);
+  padding: 4px 16px;
+  color: var(--planet-ink, #271b20);
+  background: var(--planet-card, #fffaf0);
+  border: 1px solid var(--planet-line, #d8cec0);
+  border-radius: 16px;
+  font-size: 1rem;
+  overflow-wrap: anywhere;
+}
+
+.planet-graphics-settings > summary {
+  box-sizing: border-box;
+  min-height: 44px;
+  padding-block: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.planet-graphics-settings__body {
+  min-width: 0;
+  padding-block: 4px 12px;
+  line-height: 1.55;
+}
+
+.planet-graphics-settings__body > p { margin-block: 0 12px; }
+.planet-graphics-settings fieldset { min-width: 0; margin: 0; padding: 0; border: 0; }
+.planet-graphics-settings legend { max-width: 100%; padding: 0 0 8px; font-weight: 700; }
+.planet-graphics-settings__options { display: grid; gap: 8px; }
+
+.planet-graphics-settings__option {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  box-sizing: border-box;
+  min-height: 44px;
+  padding: 12px;
+  color: var(--planet-ink, #271b20);
+  background: var(--planet-surface, #fff8eb);
+  border: 2px solid var(--planet-line, #d8cec0);
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.planet-graphics-settings__option[data-selected="true"] {
+  border-color: var(--planet-accent-strong, #713018);
+}
+
+.planet-graphics-settings__option input {
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+  margin: 3px 0 0;
+  accent-color: var(--planet-accent-strong, #713018);
+}
+
+.planet-graphics-settings__option > span { min-width: 0; }
+.planet-graphics-settings__option strong,
+.planet-graphics-settings__option > span > span { display: block; }
+.planet-graphics-settings__option > span > span { margin-top: 3px; }
+.planet-graphics-settings__body > .planet-graphics-settings__motion { margin-top: 12px; }
+.planet-graphics-settings__body > .planet-graphics-settings__status:empty { margin: 0; }
+
+.planet-graphics-settings__retry {
+  min-height: 44px;
+  max-width: 100%;
+  padding: 10px 16px;
+  color: var(--planet-on-dark, #fff8ec);
+  background: var(--planet-accent-strong, #713018);
+  border: 2px solid transparent;
+  border-radius: 12px;
+  font: inherit;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+
+.planet-graphics-settings :is(summary, input, button):focus-visible {
+  outline: 3px solid var(--planet-accent-strong, #713018);
+  outline-offset: 3px;
+}
+
+.planet-graphics-settings__option:focus-within {
+  box-shadow: 0 0 0 2px var(--planet-card, #fffaf0), 0 0 0 4px var(--planet-accent-strong, #713018);
+}
+
+@media (max-width: 360px) {
+  .planet-graphics-settings { padding-inline: 12px; }
+  .planet-graphics-settings__option { gap: 9px; padding: 10px; }
+}
+
+@media (forced-colors: active) {
+  .planet-graphics-settings,
+  .planet-graphics-settings__option { color: CanvasText; background: Canvas; border-color: CanvasText; }
+  .planet-graphics-settings__option[data-selected="true"] { border-color: Highlight; }
+  .planet-graphics-settings__retry { color: ButtonText; background: ButtonFace; border-color: ButtonText; }
+  .planet-graphics-settings :is(summary, input, button):focus-visible { outline-color: Highlight; }
+  .planet-graphics-settings__option:focus-within { box-shadow: none; outline: 2px solid Highlight; outline-offset: 2px; }
+}

@@ -56,6 +56,11 @@ import {
   type ViewInsets,
 } from "./globeFocusMath";
 import { useGlobeStyleState } from "./useGlobeStyleState";
+import {
+  resolveGlobeQualityProfile,
+  type GlobeQualityProfile,
+  type GlobeQualityTier,
+} from "./globeQuality";
 import GlobeViewObserver, { type GlobeViewSample } from "./GlobeViewObserver";
 import { resolveCountryGlobeCoordinates } from "./globeCoordinates";
 import {
@@ -146,6 +151,7 @@ interface Props {
   onHoverCountryChange?: (country: Country | null) => void;
   focusRequest?: GlobeExplicitFocusRequest | null;
   economical?: boolean;
+  qualityTier?: GlobeQualityTier;
   runtimeActive?: boolean;
 }
 
@@ -703,16 +709,16 @@ function MythicGlobeFrame() {
 
 function ContemporaryGlobeFrame({
   visualStyle,
-  economical,
+  quality,
 }: {
   visualStyle: Exclude<GlobeVisualStyle, "antique">;
-  economical: boolean;
+  quality: GlobeQualityProfile;
 }) {
   const earth = visualStyle === "earth";
   const primary = earth ? "#5fd6b2" : "#9b72ff";
   const secondary = earth ? "#9edfff" : "#ff8354";
   const emissive = earth ? "#115445" : "#34166b";
-  const segments = economical ? 128 : 192;
+  const segments = quality.contemporaryFrameSegments;
 
   return (
     <group>
@@ -760,7 +766,7 @@ function ContemporaryGlobeFrame({
           rotation={[Math.PI / 2, 0, 0]}
           raycast={() => null}
         >
-          <torusGeometry args={[radius, 0.003, 6, economical ? 96 : 144]} />
+          <torusGeometry args={[radius, 0.003, 6, quality.contemporaryBaseSegments]} />
           <meshBasicMaterial
             color={index === 0 ? primary : secondary}
             transparent
@@ -810,9 +816,9 @@ function ContemporaryGlobeFrame({
   );
 }
 
-function ModernGlobeFrame({ economical }: { economical: boolean }) {
+function ModernGlobeFrame({ quality }: { quality: GlobeQualityProfile }) {
   const meridianRef = useRef<THREE.Group>(null);
-  const segments = economical ? 112 : 176;
+  const segments = quality.modernFrameSegments;
   const ticks = Array.from({ length: 13 }, (_, index) => {
     const angle = -Math.PI / 2 + (index / 12) * Math.PI;
     return { angle, x: Math.cos(angle) * 1.105, y: Math.sin(angle) * 1.105 };
@@ -887,16 +893,16 @@ function ModernGlobeFrame({ economical }: { economical: boolean }) {
 }
 
 function MuseumStarfield({
-  economical,
+  quality,
   reducedMotion,
   animate,
 }: {
-  economical: boolean;
+  quality: GlobeQualityProfile;
   reducedMotion: boolean;
   animate: boolean;
 }) {
   const materialRef = useRef<THREE.ShaderMaterial>(null);
-  const count = economical ? 900 : 2400;
+  const count = quality.starCount;
   const geometry = useMemo(() => {
     const positions = new Float32Array(count * 3);
     const sizes = new Float32Array(count);
@@ -1053,11 +1059,11 @@ function MuseumStarfield({
 
 function MuseumSkyDome({
   reducedMotion,
-  economical,
+  quality,
   animate,
 }: {
   reducedMotion: boolean;
-  economical: boolean;
+  quality: GlobeQualityProfile;
   animate: boolean;
 }) {
   const materialRef = useRef<THREE.ShaderMaterial>(null);
@@ -1075,10 +1081,10 @@ function MuseumSkyDome({
     }
   });
 
-  if (economical) {
+  if (!quality.skyShader) {
     return (
       <mesh scale={22} raycast={() => null} renderOrder={-100}>
-        <sphereGeometry args={[1, 24, 16]} />
+        <sphereGeometry args={[1, quality.skyWidthSegments, quality.skyHeightSegments]} />
         <meshBasicMaterial
           color="#050914"
           side={THREE.BackSide}
@@ -1091,7 +1097,7 @@ function MuseumSkyDome({
 
   return (
     <mesh scale={22} raycast={() => null} renderOrder={-100}>
-      <sphereGeometry args={[1, 48, 32]} />
+      <sphereGeometry args={[1, quality.skyWidthSegments, quality.skyHeightSegments]} />
       <shaderMaterial
         ref={materialRef}
         uniforms={uniforms}
@@ -1251,7 +1257,7 @@ function GlobeSurface({
   hoveredCountry,
   onCountrySelect,
   onCountryHover,
-  economical,
+  quality,
   globeObjectRef,
   touchInteractionEnabled,
 }: {
@@ -1263,7 +1269,7 @@ function GlobeSurface({
   hoveredCountry?: Country | null;
   onCountrySelect?: (country: Country) => void;
   onCountryHover: (country: Country | null) => void;
-  economical: boolean;
+  quality: GlobeQualityProfile;
   globeObjectRef: RefObject<THREE.Mesh>;
   touchInteractionEnabled: boolean;
 }) {
@@ -1325,7 +1331,7 @@ function GlobeSurface({
           onCountryHover(null);
         }}
       >
-        <sphereGeometry args={[1, economical ? 112 : 144, economical ? 72 : 96]} />
+        <sphereGeometry args={[1, quality.surfaceWidthSegments, quality.surfaceHeightSegments]} />
         <meshPhysicalMaterial
           map={atlas.mapTexture}
           bumpMap={atlas.reliefTexture}
@@ -1341,7 +1347,7 @@ function GlobeSurface({
         {(overlayProfile.selectionRasterFill ||
           overlayProfile.selectionRasterOutline) && (
           <mesh raycast={() => null}>
-            <sphereGeometry args={[1.006, economical ? 96 : 112, economical ? 64 : 72]} />
+            <sphereGeometry args={[1.006, quality.highlightWidthSegments, quality.highlightHeightSegments]} />
             <meshBasicMaterial
               map={atlas.highlightTexture}
               transparent
@@ -1375,7 +1381,7 @@ function GlobeSurface({
         )}
 
         <mesh rotation={[Math.PI / 2, 0, 0]} raycast={() => null}>
-          <torusGeometry args={[1.009, 0.0022, 8, economical ? 144 : 192]} />
+          <torusGeometry args={[1.009, 0.0022, 8, quality.equatorSegments]} />
           <meshBasicMaterial
             color={surfaceMaterial.equator}
             transparent
@@ -1685,7 +1691,7 @@ function GlobeScene({
   onCountrySelect,
   onCountryHover,
   reducedMotion,
-  economical,
+  quality,
   autoRotate,
   controlRequest,
   onInteractionStart,
@@ -1716,7 +1722,7 @@ function GlobeScene({
   onCountrySelect?: (country: Country) => void;
   onCountryHover: (country: Country | null) => void;
   reducedMotion: boolean;
-  economical: boolean;
+  quality: GlobeQualityProfile;
   autoRotate: boolean;
   controlRequest: GlobeControlRequest | null;
   onInteractionStart: () => void;
@@ -1807,11 +1813,11 @@ function GlobeScene({
     <>
       <MuseumSkyDome
         reducedMotion={reducedMotion}
-        economical={economical}
+        quality={quality}
         animate={autoRotate}
       />
       <MuseumStarfield
-        economical={economical}
+        quality={quality}
         reducedMotion={reducedMotion}
         animate={autoRotate}
       />
@@ -1872,7 +1878,7 @@ function GlobeScene({
         hoveredCountry={hoveredCountry}
         onCountrySelect={onCountrySelect}
         onCountryHover={onCountryHover}
-        economical={economical}
+        quality={quality}
         globeObjectRef={globeObjectRef}
         touchInteractionEnabled={touchInteractionEnabled}
       />
@@ -1886,11 +1892,11 @@ function GlobeScene({
       {visualStyle === "antique" ? (
         <MythicGlobeFrame />
       ) : visualStyle === "modern" ? (
-        <ModernGlobeFrame economical={economical} />
+        <ModernGlobeFrame quality={quality} />
       ) : (
         <ContemporaryGlobeFrame
           visualStyle={visualStyle}
-          economical={economical}
+          quality={quality}
         />
       )}
       <MicrostateMarkers
@@ -1970,8 +1976,10 @@ export default function LiteraryGlobe({
   onHoverCountryChange,
   focusRequest,
   economical = false,
+  qualityTier,
   runtimeActive = true,
 }: Props) {
+  const quality = resolveGlobeQualityProfile(qualityTier, economical);
   const { language, t, countryName, number } = useInterfaceLanguage();
   const initialEditionId = useRef(storedGlobeEdition());
   const initialLanguage = useRef(language);
@@ -2957,6 +2965,7 @@ export default function LiteraryGlobe({
       data-globe-overlay-profile={renderedEdition.overlayProfile.profileId}
       data-globe-render-loop={globeActive ? "active" : "paused"}
       data-globe-frame-mode={frameMode}
+      data-globe-quality-tier={quality.tier}
       data-globe-auto-rotate={autoRotateStatus}
       data-globe-webgl-context={webglContextState}
       data-globe-webgl-api={webglDiagnostics.api}
@@ -2998,7 +3007,7 @@ export default function LiteraryGlobe({
       <Canvas
         key={webglRecoveryGeneration}
         camera={GLOBE_CAMERA_CONFIG}
-        dpr={[1, economical ? 1.1 : 1.5]}
+        dpr={[1, quality.dprCap]}
         frameloop={frameMode}
         style={{ touchAction: touchActivationPolicy.touchAction }}
         fallback={
@@ -3008,7 +3017,7 @@ export default function LiteraryGlobe({
           </div>
         }
         gl={{
-          antialias: !economical,
+          antialias: quality.antialias,
           alpha: true,
           powerPreference: "high-performance",
         }}
@@ -3026,7 +3035,7 @@ export default function LiteraryGlobe({
           onCountrySelect={handleCountrySelect}
           onCountryHover={handleCountryHover}
           reducedMotion={reducedMotion}
-          economical={economical}
+          quality={quality}
           autoRotate={autoRotateActive}
           controlRequest={controlRequest}
           onInteractionStart={handleInteractionStart}

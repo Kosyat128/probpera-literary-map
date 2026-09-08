@@ -5,6 +5,7 @@ import { createHostPlatformServices, type HostAppBridge, type HostAppState, type
 const LANGUAGE = "probpera-interface-language";
 const DISPLAY = "probpera-display-mode";
 const WELCOME = "probpera-planet-welcome-v1";
+const GRAPHICS = "probpera-planet-graphics-quality-v1";
 const MAIL = "mailto:probperasite@yandex.ru";
 function deferred<T>() {
   let resolve!: (value: T) => void;
@@ -309,6 +310,31 @@ describe("native subscription lifetimes and ordering", () => {
 });
 
 describe("exact non-secret preferences with serialized readback", () => {
+  it.each(["high", "balanced", "economy"])("restores graphics quality %s through a fresh native adapter", async value => {
+    const f = fixture();
+    expect(await f.services.preferences.set(GRAPHICS, value)).toBe(true);
+    const recreated = createHostPlatformServices({ kind: "ios", channel: "dev", languages: ["en"], preferences: f.preferences });
+    expect(await recreated.preferences.get(GRAPHICS)).toBe(value);
+    expect([...f.memory]).toEqual([[GRAPHICS, value]]);
+    expect(recreated.preferences.persistence).toBe("best-effort");
+    expect(await recreated.preferences.remove(GRAPHICS)).toBe(true);
+    expect(await f.services.preferences.get(GRAPHICS)).toBeNull();
+  });
+  it("rejects unsupported graphics values and lookalike keys without native writes", async () => {
+    const f = fixture();
+    for (const value of ["", "High", "auto", "high ", "economy\u0000"]) {
+      expect(await f.services.preferences.set(GRAPHICS, value)).toBe(false);
+      f.memory.set(GRAPHICS, value);
+      expect(await f.services.preferences.get(GRAPHICS)).toBeNull();
+    }
+    for (const key of [GRAPHICS + ":en", GRAPHICS + "\u0000"]) {
+      expect(await f.services.preferences.set(key, "high")).toBe(false);
+      expect(await f.services.preferences.get(key)).toBeNull();
+      expect(await f.services.preferences.remove(key)).toBe(false);
+    }
+    expect(f.preferences.set).not.toHaveBeenCalled();
+    expect(f.preferences.remove).not.toHaveBeenCalled();
+  });
   it.each([[LANGUAGE, "ru"], [LANGUAGE, "en"], [DISPLAY, "dark"], [DISPLAY, "light"], [DISPLAY, "book"], [WELCOME, "completed"]])(
     "accepts canonical %s=%s with readback and best-effort semantics", async (key, value) => {
       const f = fixture();

@@ -5,7 +5,7 @@
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
   "headSha": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-08T10:26:41.235Z",
+  "updatedAt": "2026-09-08T11:15:54.322Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -537,7 +537,8 @@
         "docs/mobile/evidence/S03/offline-repair-20260908/a4/result.json",
         "docs/mobile/evidence/S03/offline-repair-20260908/a5/result.json",
         "docs/mobile/evidence/S03/biography-review-20260908/result.json",
-        "docs/mobile/evidence/S03/biography-review-20260908/pwa/result.json"
+        "docs/mobile/evidence/S03/biography-review-20260908/pwa/result.json",
+        "docs/mobile/evidence/S03/canonical-portraits-20260908/result.json"
       ],
       "externalBlockers": []
     },
@@ -971,11 +972,11 @@
     {
       "id": "S06",
       "name": "Canonical globe integration",
-      "status": "NOT_STARTED",
+      "status": "IN_PROGRESS",
       "criteria": [
         {
           "id": "S06.acceptance",
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "evidence": [],
           "commit": null,
           "lastValidatedAt": null,
@@ -1063,7 +1064,10 @@
         }
       ],
       "lastGreenCommands": [],
-      "artifacts": [],
+      "artifacts": [
+        "docs/mobile/evidence/S06/graphics-quality-20260908/entry.json",
+        "docs/mobile/evidence/S06/graphics-quality-20260908/result.json"
+      ],
       "externalBlockers": []
     },
     {
@@ -10566,7 +10570,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Continue routed S03 outstanding access/offline/localization gates from source308d8366. Biography review/stale gate has138 focused tests, joint static, one actual RU/EN writer/globe source-browser case, all1684RU/20authoredEN exporter comparison, fresh Android6611b76b and strict-only PWA86096d64. Do not replay unchanged tests or confuse prior7855 repair-browser evidence with a new PWA browser run. Full S38 translation/owner correction workflow, English coverage, nearly10k catalog capacity, edition-specific EN covers, quality tiers/Planetka and device/release gates remain open. Frozen iOS83 awaits its existing approval.",
+    "nextAction": "Build fresh Android/dev and controlled PWA from the committed S06 graphics/current canonical portrait source, then run exactly one built-PWA offline/quality/RUEN case. Preserve prior6611/8609 and frozen iOS83. 122 unique focused tests, final static and one source-browser case passed; do not replay unchanged suites. First-open remains S03. Full English content, nearly10k capacity, edition covers, Planetka, physical-device and release gates remain open.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -10673,6 +10677,13 @@
         "reason": "The S07 presentation-only handle gesture reuses the current sheet reducer and persistent canonical globe. Matrix69 allows documented parallel-safe work; this slice is independent of paid-web hosting, child/commerce policy and device gates. Existing D077 and entry.json establish the scope; S03 remains first-open.",
         "evidence": [
           "docs/mobile/evidence/S07/country-sheet-20260908/entry.json",
+          "docs/mobile/GLOBE_APPLICATION_CONTRACT.md"
+        ]
+      },
+      "S06": {
+        "reason": "Manual High/Balanced/Economy live rendering profiles and saved choice in the existing application panel; default High by owner instruction. This rendering/preference slice is independent of paid-web merchant, child policy, reviewed factual content, legal approval and device signing.",
+        "evidence": [
+          "docs/mobile/evidence/S06/graphics-quality-20260908/entry.json",
           "docs/mobile/GLOBE_APPLICATION_CONTRACT.md"
         ]
       }
@@ -10793,8 +10804,8 @@
         "offlineGradleBuild": true,
         "apkBinaryAudit": true,
         "preservationCopiesVerified": true,
-        "currentSource": true,
-        "runtimeEquivalentToCurrentSource": true,
+        "currentSource": false,
+        "runtimeEquivalentToCurrentSource": false,
         "validatedAgainstSourceCommit": "308d8366c24f8b9f47ada304b43856c327890d43",
         "buildCommitEqualsValidatedSourceCommit": true,
         "includesS05FirstJourney": true,
@@ -10807,7 +10818,7 @@
         "stageAccepted": false,
         "releaseReady": false
       },
-      "nativeArtifactCurrentSource": true,
+      "nativeArtifactCurrentSource": false,
       "nativeArtifactHistory": [
         {
           "evidence": "docs/mobile/evidence/S04/android-globe-panels-20260908/result.json",
@@ -11479,7 +11490,7 @@
       "stageAccepted": false,
       "releaseReady": false,
       "sourceCommit": "308d8366c24f8b9f47ada304b43856c327890d43",
-      "sourceInputsCurrent": true,
+      "sourceInputsCurrent": false,
       "nativeArtifact": {
         "evidence": "docs/mobile/evidence/S04/biography-review-android-20260908/result.json",
         "sha256": "941bb2131b6216fa0e198fb718233d3fac16dca47b582bb2ff1677a967fb49c1",
@@ -11517,6 +11528,27 @@
         "actualTranslatedApprovals": 0,
         "fullCoverageCertified": false
       }
+    },
+    "s06GraphicsQuality": {
+      "status": "FOCUSED_SOURCE_VALIDATION_PASSED",
+      "evidence": "docs/mobile/evidence/S06/graphics-quality-20260908/result.json",
+      "sha256": "1e6e02dca52362ba358725e116eadd600ed47e2447a8342d619170d18378a76e",
+      "uniqueUnitPasses": 122,
+      "sourceBrowserPasses": 1,
+      "stageAccepted": false,
+      "releaseReady": false
+    },
+    "s03CanonicalPortraits": {
+      "evidence": "docs/mobile/evidence/S03/canonical-portraits-20260908/result.json",
+      "sha256": "55f35734f1a6465cddf50dc02a585bd9084993c861127302c2fd11ef8cc7517a",
+      "files": 1011,
+      "addedFiles": 1003,
+      "addedBytes": 27831946,
+      "sourceInputsCurrent": true,
+      "nativeBuildPending": true,
+      "pwaBuildPending": true,
+      "stageAccepted": false,
+      "releaseReady": false
     }
   },
   "externalOwnerInputsStatus": {

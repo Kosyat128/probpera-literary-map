@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T10:35:18.115Z",
+  "stage": "S06",
+  "status": "IMPLEMENTATION_IN_PROGRESS",
+  "baselineSourceCommit": "c942a43a1f199b83c62bb943e29365f3be59e3e4",
+  "entryRule": "Matrix69: previous stage complete or parallel-safe documented",
+  "route": "S03-S10",
+  "packageIntegrity": {
+    "pass": true,
+    "checksumCount": 194,
+    "manifestFileCount": 191,
+    "bindingDocumentCount": 173,
+    "manifestSha256": "bb759162674bafe0a9baa87ee6adffd41527d6e38e979f5cf6a6d0445535acd8",
+    "checksumFileSha256": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732"
+  },
+  "scope": "Manual High/Balanced/Economy live rendering profiles and saved choice in the existing application panel; default High by owner instruction.",
+  "mappedRequirements": [
+    "S06.PERF-002",
+    "S06.PERF-003",
+    "S06.CANON-003",
+    "S06.BIL-005"
+  ],
+  "parallelSafety": [
+    "Existing shared globe, native/PWA hosts and preference ports are already available; this does not accept their stages.",
+    "This rendering/preference slice is independent of paid-web merchant, child policy, reviewed factual content, legal approval and device signing.",
+    "Keep the same Canvas/renderer/camera/edition/semantic selection. No quality key or atlas rebuild; existing textures/rights/caches remain canonical.",
+    "No native plugin imports in shared UI, new database, account/entitlement authority, production deployment or iOS projection change.",
+    "Routed21/22/23 and the shared bilingual contract govern UI, motion and measured performance; first-open remains S03."
+  ],
+  "acceptanceForSlice": [
+    "Three materially distinct live profiles with legacy public-site behavior retained.",
+    "One stored application choice; late reads and failed/old writes cannot overwrite a newer choice.",
+    "High initial choice despite resource hints; independent reduced motion.",
+    "Real browser DPR/density, preserved scene/selection/RUEN and restart persistence.",
+    "Focused units and static/boundary evidence; no device thermal/FPS or full 3D asset-tier certification."
+  ],
+  "testsRunAtEntry": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false
+}

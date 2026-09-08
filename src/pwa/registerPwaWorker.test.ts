@@ -316,6 +316,13 @@ function repairReply(env: ReturnType<typeof fixture>, overrides: Record<string, 
     fileCount: 4, bytes: 2048, repairedFiles: 1, repairedBytes: 128, ...overrides }, source, origin);
 }
 describe("explicit authorized offline repair", () => {
+  it("accepts portrait-scale repair counts from the pinned worker without changing byte limits", async () => {
+    const env = await rollbackFixture();
+    const operation = env.service.repairOfflineBase({ access: repairAccess() });
+    repairReply(env, { fileCount: 1339, bytes: 66_500_000, repairedFiles: 1003, repairedBytes: 27_831_946 });
+    expect(await operation).toMatchObject({ status: "complete", fileCount: 1339, repairedFiles: 1003 });
+    expect(env.reload).not.toHaveBeenCalled();
+  });
   it("renews only pinned permission challenges from the live capability and preserves lifecycle state", async () => {
     const env = await rollbackFixture(), access = repairAccess(), snapshot = env.service.getSnapshot();
     const operation = env.service.repairOfflineBase({ access });
@@ -389,6 +396,13 @@ describe("explicit authorized offline repair", () => {
 });
 
 describe("explicit read-only offline readiness", () => {
+  it("accepts portrait-scale readiness counts from the pinned worker", async () => {
+    const env = await rollbackFixture();
+    const operation = env.service.checkOfflineReadiness();
+    readinessReply(env, { fileCount: 1339, bytes: 66_500_000 });
+    expect(await operation).toMatchObject({ status: "complete", fileCount: 1339, bytes: 66_500_000 });
+    expect(env.reload).not.toHaveBeenCalled();
+  });
   it("does not infer readiness from discovered generations and only checks on demand without changing snapshots", async () => {
     const env = await rollbackFixture();
     const snapshot = env.service.getSnapshot();
@@ -430,7 +444,7 @@ describe("explicit read-only offline readiness", () => {
     if (reason === "wrong engine") overrides.engineBuildId = PREVIOUS;
     if (reason === "wrong active") overrides.activeBuildId = PREVIOUS;
     if (reason === "wrong status") overrides.status = "ready";
-    if (reason === "invalid count") overrides.fileCount = 513;
+    if (reason === "invalid count") overrides.fileCount = 2049;
     if (reason === "invalid bytes") overrides.bytes = 64 * 1024 * 1024 + 1;
     if (reason === "incomplete with counts") overrides.status = "incomplete";
     if (reason === "unknown fields") overrides.entitled = true;

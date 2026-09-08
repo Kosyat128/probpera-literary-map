@@ -13,6 +13,7 @@ import type {
 } from "./LiteraryGlobe";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import type { GlobeViewSample } from "./GlobeViewObserver";
+import type { GlobeQualityTier } from "./globeQuality";
 import {
   useNearViewportActivation,
   type DeferredLoadStatus,
@@ -55,6 +56,7 @@ interface Props {
   onHoverCountryChange?: (country: Country | null) => void;
   focusRequest?: GlobeExplicitFocusRequest | null;
   economical?: boolean;
+  qualityTier?: GlobeQualityTier;
   runtimeActive?: boolean;
   dataStatus?: DeferredLoadStatus;
   forceLoad?: boolean;
@@ -77,6 +79,7 @@ export default function LiteraryWorldMap({
   onHoverCountryChange,
   focusRequest,
   economical = false,
+  qualityTier,
   runtimeActive = true,
   dataStatus = "ready",
   forceLoad = false,
@@ -169,6 +172,7 @@ export default function LiteraryWorldMap({
           onHoverCountryChange={onHoverCountryChange}
           focusRequest={focusRequest}
           economical={economical}
+          qualityTier={qualityTier}
           runtimeActive={runtimeActive}
         />
       ) : (

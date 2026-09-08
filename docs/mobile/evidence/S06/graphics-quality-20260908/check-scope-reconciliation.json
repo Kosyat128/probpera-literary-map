@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "checks": [
+    {
+      "mode": "unit",
+      "evidence": "unit-a1/result.json",
+      "executionPassed": true,
+      "originalOverbroadSnapshotPassed": false,
+      "changedFile": "tests/host/native-planet.spec.mjs",
+      "beforeSha256": "a181b7dea74d4c065e8db4a3524ffaacf4649eb80eb23747aa0eecff2cc9238f",
+      "afterSha256": "f865863b685825c54446fd374e06d3e3f3ba6d928edecdc6877b5ba018bb341a",
+      "onlyChange": "LF to CRLF in the separate browser fixture, proven by hashing the entire normalized file.",
+      "relevantSourceAndTestBytesUnchanged": true,
+      "additionalExecutions": 0
+    },
+    {
+      "mode": "static",
+      "evidence": "static-a1/result.json",
+      "executionPassed": true,
+      "originalOverbroadSnapshotPassed": false,
+      "changedFile": "tests/host/native-planet.spec.mjs",
+      "beforeSha256": "a181b7dea74d4c065e8db4a3524ffaacf4649eb80eb23747aa0eecff2cc9238f",
+      "afterSha256": "f865863b685825c54446fd374e06d3e3f3ba6d928edecdc6877b5ba018bb341a",
+      "onlyChange": "LF to CRLF in the separate browser fixture, proven by hashing the entire normalized file.",
+      "relevantSourceAndTestBytesUnchanged": true,
+      "additionalExecutions": 0
+    }
+  ],
+  "pass": true,
+  "interpretation": "All 103 selected unit assertions, TypeScript and platform boundaries passed. Original receipts remain unchanged; their overbroad manifest included a browser fixture whose sole change was newline convention. No affected input or code logic changed, so these green checks are not rerun.",
+  "stageAccepted": false,
+  "releaseReady": false
+}

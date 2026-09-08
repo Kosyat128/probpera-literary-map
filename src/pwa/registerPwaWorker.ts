@@ -1,4 +1,5 @@
 /** The controlled /planet/ distribution owns this lifecycle; the public site does not. */
+import { PWA_BOOTSTRAP_MAX_FILES, PWA_BOOTSTRAP_MAX_TOTAL_BYTES } from "./pwaBootstrapBudgets";
 export type PwaWorkerPhase = "disabled" | "registering" | "ready" | "checking" | "update-available" | "activating" | "rolling-back" | "reloading" | "error" | "disposed";
 export type PwaWorkerError = "unsupported" | "invalid-configuration" | "registration-failed" | "update-failed" | "message-failed" | "timeout" | "cancelled" | "disposed" | "not-ready" | "busy" | "worker-changed" | "rejected" | "reload-failed" | "multiple-clients";
 export interface PwaWorkerSnapshot {
@@ -333,8 +334,8 @@ export function registerPwaWorker(options: PwaWorkerOptions): PwaWorkerControlle
           const extraKeys = data.status === "complete" ? ["fileCount", "bytes"] : data.status === "unavailable" ? ["reason"] : [];
           if (Object.keys(data).some(key => !["type", "requestId", "engineBuildId", "activeBuildId", "status", ...extraKeys].includes(key))) return;
           if (data.status === "complete") {
-            if (!Number.isSafeInteger(data.fileCount) || data.fileCount < 2 || data.fileCount > 512
-              || !Number.isSafeInteger(data.bytes) || data.bytes < data.fileCount || data.bytes > 64 * 1024 * 1024) return;
+            if (!Number.isSafeInteger(data.fileCount) || data.fileCount < 2 || data.fileCount > PWA_BOOTSTRAP_MAX_FILES
+              || !Number.isSafeInteger(data.bytes) || data.bytes < data.fileCount || data.bytes > PWA_BOOTSTRAP_MAX_TOTAL_BYTES) return;
             resolve(Object.freeze({ status: "complete", engineBuildId, activeBuildId, fileCount: data.fileCount, bytes: data.bytes }));
           } else if (data.status === "incomplete") {
             if (Object.prototype.hasOwnProperty.call(data, "fileCount") || Object.prototype.hasOwnProperty.call(data, "bytes")) return;
@@ -424,14 +425,14 @@ export function registerPwaWorker(options: PwaWorkerOptions): PwaWorkerControlle
           }
           if (data.type !== "PLANET_OFFLINE_REPAIR_RESULT") return;
           const counts = ["repairedFiles", "repairedBytes"];
-          const validCounts = () => Number.isSafeInteger(data.repairedFiles) && data.repairedFiles >= 0 && data.repairedFiles <= 512
-            && Number.isSafeInteger(data.repairedBytes) && data.repairedBytes >= data.repairedFiles && data.repairedBytes <= 64 * 1024 * 1024
+          const validCounts = () => Number.isSafeInteger(data.repairedFiles) && data.repairedFiles >= 0 && data.repairedFiles <= PWA_BOOTSTRAP_MAX_FILES
+            && Number.isSafeInteger(data.repairedBytes) && data.repairedBytes >= data.repairedFiles && data.repairedBytes <= PWA_BOOTSTRAP_MAX_TOTAL_BYTES
             && (data.repairedFiles !== 0 || data.repairedBytes === 0);
           const fields = data.status === "complete" ? [...counts, "fileCount", "bytes"] : data.status === "incomplete" ? [...counts, "reason"] : ["reason"];
           if (Object.keys(data).some(key => ![...baseKeys, "status", ...fields].includes(key))) return;
           if (data.status === "complete") {
-            if (!validCounts() || !Number.isSafeInteger(data.fileCount) || data.fileCount < 2 || data.fileCount > 512
-              || !Number.isSafeInteger(data.bytes) || data.bytes < data.fileCount || data.bytes > 64 * 1024 * 1024
+            if (!validCounts() || !Number.isSafeInteger(data.fileCount) || data.fileCount < 2 || data.fileCount > PWA_BOOTSTRAP_MAX_FILES
+              || !Number.isSafeInteger(data.bytes) || data.bytes < data.fileCount || data.bytes > PWA_BOOTSTRAP_MAX_TOTAL_BYTES
               || data.repairedFiles > data.fileCount || data.repairedBytes > data.bytes) return;
             resolve(Object.freeze({ status: "complete", engineBuildId, activeBuildId, fileCount: data.fileCount, bytes: data.bytes,
               repairedFiles: data.repairedFiles, repairedBytes: data.repairedBytes }));

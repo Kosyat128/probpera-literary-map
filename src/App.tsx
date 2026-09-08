@@ -21,6 +21,8 @@ import { useAtlasSheetGesture } from "./atlas/useAtlasSheetGesture";
 import NativePlanetLaunch from "./host/NativePlanetLaunch";
 import PlanetWelcome from "./host/PlanetWelcome";
 import NativePlanetPanel from "./host/NativePlanetPanel";
+import PlanetGraphicsSettings from "./host/PlanetGraphicsSettings";
+import { usePlanetGraphicsQuality } from "./host/planetGraphicsQuality";
 import { ProductNoticeSlot } from "./host/ProductNoticeHost";
 import {
   type NativeNavigationContext,
@@ -549,6 +551,10 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
   const { visibility: platformVisibility } = usePlatformSnapshot();
   const globeRuntimeActive = platformServices.kind === "web" || platformVisibility === "active";
   const isPlanetApplication = isControlledWebEdition || platformServices.kind !== "web";
+  const graphics = usePlanetGraphicsQuality({
+    preferences: platformServices.preferences,
+    enabled: isPlanetApplication,
+  });
   const [nativeCollectionOpen, setNativeCollectionOpen] = useState(() => isPlanetApplication && addressRequestsCollection());
   const [planetLaunchComplete, setPlanetLaunchComplete] = useState(false);
   const completePlanetLaunch = useCallback(() => setPlanetLaunchComplete(true), []);
@@ -676,9 +682,9 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
   }, [largestArchivesOpen]);
   const atlasExperience = useAtlasExperience({
     applicationRoot: isPlanetApplication,
-    // Owner-selected app default: use the richest existing scene independently
-    // of device heuristics. Reduced motion remains a separate accessibility rule.
-    economical: isPlanetApplication ? false : undefined,
+    // High is the app default; only an explicit saved/user choice lowers it.
+    // Reduced motion remains a separate accessibility rule.
+    economical: isPlanetApplication ? graphics.qualityTier === "economy" : undefined,
     urlSelection: {
       filter: atlasFilter,
       countryId: selectedCountry?.id ?? null,
@@ -2541,6 +2547,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
                 onHoverCountryChange={setGlobeHoveredCountry}
                 focusRequest={globeFocusRequest}
                 economical={atlasExperience.economical}
+                qualityTier={isPlanetApplication ? graphics.qualityTier : undefined}
                 runtimeActive={globeRuntimeActive}
                 showNobelLaureates={
                   atlasFilter === "nobel" ||
@@ -2790,6 +2797,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
       }}>{atlasContent}<ProductNoticeSlot placement="root" reserveSpaceRef={nativeGlobeRootRef} /></main>
       <NativePlanetPanel open={nativeCollectionOpen} onClose={requestReturnToPlanet} onBack={handleNativePanelBack}
         globeRef={nativeGlobeRootRef} returnFocusRef={atlasExperience.closeButtonRef}>
+        <PlanetGraphicsSettings value={graphics.qualityTier} onChange={graphics.selectQuality} saveState={graphics.saveState} />
         {productHelp}
         {collectionContent}
       </NativePlanetPanel>

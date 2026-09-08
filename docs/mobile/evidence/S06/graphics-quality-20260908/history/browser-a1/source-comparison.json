@@ -1,0 +1,10 @@
+{
+  "startingHead": "c942a43a1f199b83c62bb943e29365f3be59e3e4",
+  "endingHead": "c942a43a1f199b83c62bb943e29365f3be59e3e4",
+  "headChanged": false,
+  "sourceFiles": 976,
+  "testConfigFiles": 2,
+  "sourceBeforeSha256": "131bff5b5d1903e1c3db5241b33a4f68d33e11bd77b08cca30d1904399a74553",
+  "sourceAfterSha256": "131bff5b5d1903e1c3db5241b33a4f68d33e11bd77b08cca30d1904399a74553",
+  "unchangedDuringRun": true
+}

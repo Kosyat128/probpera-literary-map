@@ -614,7 +614,7 @@ describe("isolated immutable PWA configuration", () => {
     ["oversized file", (config) => { config.files[2].bytes = 16 * 1024 * 1024 + 1; }],
     ["wrong checksum", (config) => { config.files[2].sha256 = "guess"; }],
     ["unexpected shell", (config) => { config.files[2].kind = "shell"; }],
-    ["file count overflow", (config) => { config.files = Array.from({ length: 513 }, (_, index) => ({ ...config.files[2], url: `/planet/assets/${index}.js` })); }],
+    ["file count overflow", (config) => { config.files = Array.from({ length: 2049 }, (_, index) => ({ ...config.files[2], url: `/planet/assets/${index}.js` })); }],
     ["total budget overflow", (config) => { config.files.push(...Array.from({ length: 5 }, (_, index) => ({ ...config.files[2], url: `/planet/assets/${index}.js`, bytes: 16 * 1024 * 1024 }))); }],
   ])("rejects %s before registering executable work", (_name, mutate) => {
     const pkg = shell();
@@ -629,6 +629,23 @@ describe("isolated immutable PWA configuration", () => {
 });
 
 describe("atomic verified install and recovery", () => {
+  it("installs a portrait-scale package and verifies its offline readiness without network on read", async () => {
+    const pkg = shell();
+    for (let index = pkg.config.files.length; index < 1339; index++) {
+      const url = `/planet/assets/writer-portraits/q${100000 + index}.webp`, body = `test portrait bytes ${index}`;
+      pkg.bodies.set(url, body);
+      pkg.config.files.push({ url, bytes: Buffer.byteLength(body), sha256: sha256(body), kind: "asset" });
+    }
+    const env = environment(pkg);
+    await env.lifetime("install");
+    expect(env.worker.fetch).toHaveBeenCalledTimes(1339);
+    await env.lifetime("activate");
+    env.worker.fetch.mockClear();
+    await env.send(readinessRequest(env));
+    expect(env.client.postMessage).toHaveBeenLastCalledWith(expect.objectContaining({ status: "complete", fileCount: 1339 }));
+    expect(await (await env.fetchRequest(pkg.config.files.at(-1).url)).text()).toBe(pkg.bodies.get(pkg.config.files.at(-1).url));
+    expect(env.worker.fetch).not.toHaveBeenCalled();
+  }, 20_000);
   it("checks every byte/hash, stores aliases only once, and never activates automatically", async () => {
     const env = environment();
     await env.lifetime("install");

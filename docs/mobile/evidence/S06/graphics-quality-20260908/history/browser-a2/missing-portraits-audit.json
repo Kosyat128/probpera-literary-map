@@ -1,0 +1,544 @@
+{
+  "status": "READ_ONLY_ASSET_GAP_AUDIT",
+  "runtimeEvidence": ".tmp/s03-graphics-quality-native-20260908-a2/evidence/native-graphics-saved-balanced-ru.json",
+  "runtimeObservedMissingCount": 22,
+  "canonicalRecordSource": "src/data/countries/generated/writerPortraits.generated.json",
+  "canonicalRecordSourceSha256": "c18c91a581f8c77e81a54e0579d5ac2474a699645181c8aac5246790e4b5807c",
+  "totalBytes": 634886,
+  "rows": [
+    {
+      "url": "/assets/writer-portraits/q45087.webp",
+      "source": "public/assets/writer-portraits/q45087.webp",
+      "bytes": 51960,
+      "sourceSha256": "8e9f77ac518ffb34af3f2a163d4515c6dcab0f6f146fe5d66606ef23e11940e9",
+      "inNativeBaseList": false,
+      "existingCanonicalRecords": [
+        {
+          "key": "russia:kirill-turovsky",
+          "record": {
+            "portrait": "assets/writer-portraits/q45087.webp",
+            "portraitAlt": "Портрет: Кирилл Туровский",
+            "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Cyril_of_Turov_by_O.Chirikov_(Muz.ist._rel).jpg",
+            "portraitRights": {
+              "status": "public-domain",
+              "licenseName": "Public domain",
+              "creator": "Osip Semenovich Chirikov",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cyril_of_Turov_by_O.Chirikov_(Muz.ist._rel).jpg",
+              "checkedAt": "2026-08-31"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "url": "/assets/writer-portraits/q557575.webp",
+      "source": "public/assets/writer-portraits/q557575.webp",
+      "bytes": 24154,
+      "sourceSha256": "c1093c827d3867f5d4d3aeaf9ade643ed3c84bdd91c86a12f02a991d8ced998a",
+      "inNativeBaseList": false,
+      "existingCanonicalRecords": [
+        {
+          "key": "russia:trediakovsky",
+          "record": {
+            "portrait": "assets/writer-portraits/q557575.webp",
+            "portraitAlt": "Портрет: Василий Кириллович Тредиаковский",
+            "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Trediak2.jpg",
+            "portraitRights": {
+              "status": "public-domain",
+              "licenseName": "Public domain",
+              "creator": "Anonymous; used the etching of A. Ya. Kolpashnikov, 1775",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Trediak2.jpg",
+              "checkedAt": "2026-08-31"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "url": "/assets/writer-portraits/q372115.webp",
+      "source": "public/assets/writer-portraits/q372115.webp",
+      "bytes": 18160,
+      "sourceSha256": "4bd2366fe6b9a6ea3ea50fec2c82bc6545ddde9975d5b1247f1ddc90fc8b2a07",
+      "inNativeBaseList": false,
+      "existingCanonicalRecords": [
+        {
+          "key": "russia:kantemir",
+          "record": {
+            "portrait": "assets/writer-portraits/q372115.webp",
+            "portraitAlt": "Портрет: Антиох Дмитриевич Кантемир",
+            "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Poet_Prince_Antiokh_Kantemir.jpg",
+            "portraitRights": {
+              "status": "public-domain",
+              "licenseName": "Public domain",
+              "creator": "Unknown author Unknown author",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Poet_Prince_Antiokh_Kantemir.jpg",
+              "checkedAt": "2026-08-31"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "url": "/assets/writer-portraits/q58720.webp",
+      "source": "public/assets/writer-portraits/q58720.webp",
+      "bytes": 42202,
+      "sourceSha256": "b556764ceb5349eca162877bedc1be04878b52053b61bfb0f99558afb09e9a85",
+      "inNativeBaseList": false,
+      "existingCanonicalRecords": [
+        {
+          "key": "russia:lomonosov",
+          "record": {
+            "portrait": "assets/writer-portraits/q58720.webp",
+            "portraitAlt": "Портрет: Михаил Васильевич Ломоносов",
+            "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:M.V._Lomonosov_by_L.Miropolskiy_after_G.C.Prenner_(1787,_RAN).jpg",
+            "portraitRights": {
+              "status": "public-domain",
+              "licenseName": "Public domain",
+              "creator": "After Georg Caspar Prenner",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:M.V._Lomonosov_by_L.Miropolskiy_after_G.C.Prenner_(1787,_RAN).jpg",
+              "checkedAt": "2026-08-31"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "url": "/assets/writer-portraits/q270275.webp",
+      "source": "public/assets/writer-portraits/q270275.webp",
+      "bytes": 24838,
+      "sourceSha256": "f761ce31ea4c302bcb579b9fe8de69aa7ecdb1515ddbc0353d261a1c9e7471bf",
+      "inNativeBaseList": false,
+      "existingCanonicalRecords": [
+        {
+          "key": "russia:derzhavin",
+          "record": {
+            "portrait": "assets/writer-portraits/q270275.webp",
+            "portraitAlt": "Портрет: Гавриил Романович Державин",
+            "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Derzhavin_by_Borovikovsky_(1811,_Pushkin_museum).jpg",
+            "portraitRights": {
+              "status": "public-domain",
+              "licenseName": "Public domain",
+              "creator": "Vladimir Borovikovsky",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Derzhavin_by_Borovikovsky_(1811,_Pushkin_museum).jpg",
+              "checkedAt": "2026-08-31"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "url": "/assets/writer-portraits/q315885.webp",
+      "source": "public/assets/writer-portraits/q315885.webp",
+      "bytes": 56480,
+      "sourceSha256": "c6543b5e65833db817b6eb706964e452a980abfbbafc4bc2dac937dbce432aa1",
+      "inNativeBaseList": false,
+      "existingCanonicalRecords": [
+        {
+          "key": "russia:fonvizin",
+          "record": {
+            "portrait": "assets/writer-portraits/q315885.webp",
+            "portraitAlt": "Портрет: Денис Иванович Фонвизин",
+            "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Armand-Charles_Caraffe,_Denis_Fonvizin,_c._1784%E2%80%931785,_Pushkin_House_%D0%96-95;_from_goskatalog.ru.jpg",
+            "portraitRights": {
+              "status": "public-domain",
+              "licenseName": "Public domain",
+              "creator": "Armand-Charles Caraffe",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Armand-Charles_Caraffe,_Denis_Fonvizin,_c._1784%E2%80%931785,_Pushkin_House_%D0%96-95;_from_goskatalog.ru.jpg",
+              "checkedAt": "2026-08-02"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "url": "/assets/writer-portraits/q191598.webp",
+      "source": "public/assets/writer-portraits/q191598.webp",
+      "bytes": 15266,
+      "sourceSha256": "b84f12847fc40d44b8ad52d5ee25239e4ced89bc750e50f016fe9ce7bf9b1a06",
+      "inNativeBaseList": false,
+      "existingCanonicalRecords": [
+        {
+          "key": "russia:karamzin",
+          "record": {
+            "portrait": "assets/writer-portraits/q191598.webp",
+            "portraitAlt": "Портрет: Николай Михайлович Карамзин",
+            "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Karamzin_by_Tropinin_(1818,_Tretyakov_gallery).jpg",
+            "portraitRights": {
+              "status": "public-domain",
+              "licenseName": "Public domain",
+              "creator": "Vasily Andreevich Tropinin",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Karamzin_by_Tropinin_(1818,_Tretyakov_gallery).jpg",
+              "checkedAt": "2026-08-31"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "url": "/assets/writer-portraits/q191480.webp",
+      "source": "public/assets/writer-portraits/q191480.webp",
+      "bytes": 23948,
+      "sourceSha256": "281909d9aba6be4961c67cd2f93a01eedc205edec88ac6496e1300e5c303394c",
+      "inNativeBaseList": false,
+      "existingCanonicalRecords": [
+        {
+          "key": "russia:krylov",
+          "record": {
+            "portrait": "assets/writer-portraits/q191480.webp",
+            "portraitAlt": "Портрет: Иван Андреевич Крылов",
+            "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Eggink-Portrait_of_Ivan_Krylov.jpg",
+            "portraitRights": {
+              "status": "public-domain",
+              "licenseName": "Public domain",
+              "creator": "Ivan Eggink",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Eggink-Portrait_of_Ivan_Krylov.jpg",
+              "checkedAt": "2026-08-31"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "url": "/assets/writer-portraits/q157623.webp",
+      "source": "public/assets/writer-portraits/q157623.webp",
+      "bytes": 30790,
+      "sourceSha256": "1a9551bc12ea658ffef8b6a167108295b6a4d65bc4fa09ef1bf65f7837ed6451",
+      "inNativeBaseList": false,
+      "existingCanonicalRecords": [
+        {
+          "key": "russia:zhukovsky",
+          "record": {
+            "portrait": "assets/writer-portraits/q157623.webp",
+            "portraitAlt": "Портрет: Василий Андреевич Жуковский",
+            "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Bryullov_portrait_of_Zhukovsky.jpg",
+            "portraitRights": {
+              "status": "public-domain",
+              "licenseName": "Public domain",
+              "creator": "Karl Bryullov",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bryullov_portrait_of_Zhukovsky.jpg",
+              "checkedAt": "2026-08-31"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "url": "/assets/writer-portraits/q471718.webp",
+      "source": "public/assets/writer-portraits/q471718.webp",
+      "bytes": 39620,
+      "sourceSha256": "55026d30880c6b97bb0192e00b136bae2e35eeaef6f760b66fa135d491068c51",
+      "inNativeBaseList": false,
+      "existingCanonicalRecords": [
+        {
+          "key": "russia:batushkov",
+          "record": {
+            "portrait": "assets/writer-portraits/q471718.webp",
+            "portraitAlt": "Портрет: Константин Николаевич Батюшков",
+            "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Orest_Kiprensky_041.jpg",
+            "portraitRights": {
+              "status": "public-domain",
+              "licenseName": "Public domain",
+              "creator": "Orest Kiprensky",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Orest_Kiprensky_041.jpg",
+              "checkedAt": "2026-08-31"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "url": "/assets/writer-portraits/q15001.webp",
+      "source": "public/assets/writer-portraits/q15001.webp",
+      "bytes": 23630,
+      "sourceSha256": "ddea299057ba5d608529c0d3d909a124c80537b617d6fe3c42697bbe5d01cfc0",
+      "inNativeBaseList": false,
+      "existingCanonicalRecords": [
+        {
+          "key": "russia:griboedov",
+          "record": {
+            "portrait": "assets/writer-portraits/q15001.webp",
+            "portraitAlt": "Портрет: Александр Сергеевич Грибоедов",
+            "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Ivan_Nikolayevich_Kramskoi_-_Portrait_of_Alexander_Sergeyevich_Griboyedov,_1873.jpg",
+            "portraitRights": {
+              "status": "public-domain",
+              "licenseName": "Public domain",
+              "creator": "Ivan Kramskoi",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ivan_Nikolayevich_Kramskoi_-_Portrait_of_Alexander_Sergeyevich_Griboyedov,_1873.jpg",
+              "checkedAt": "2026-08-31"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "url": "/assets/writer-portraits/q7200.webp",
+      "source": "public/assets/writer-portraits/q7200.webp",
+      "bytes": 32958,
+      "sourceSha256": "d8a60beeec637898c789b9b84672aa7320bc8359deb4672e8b9a4c6661aafdb7",
+      "inNativeBaseList": false,
+      "existingCanonicalRecords": [
+        {
+          "key": "russia:pushkin",
+          "record": {
+            "portrait": "assets/writer-portraits/q7200.webp",
+            "portraitAlt": "Портрет: Александр Сергеевич Пушкин",
+            "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Kiprensky_Pushkin.jpg",
+            "portraitRights": {
+              "status": "public-domain",
+              "licenseName": "Public domain",
+              "creator": "Orest Kiprensky",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kiprensky_Pushkin.jpg",
+              "checkedAt": "2026-08-31"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "url": "/assets/writer-portraits/q43718.webp",
+      "source": "public/assets/writer-portraits/q43718.webp",
+      "bytes": 20176,
+      "sourceSha256": "f25e795d1ed28e640dc2867c51007f53b6c62d0dfabb0d4926dd1ade686cda30",
+      "inNativeBaseList": false,
+      "existingCanonicalRecords": [
+        {
+          "key": "russia:gogol",
+          "record": {
+            "portrait": "assets/writer-portraits/q43718.webp",
+            "portraitAlt": "Портрет: Николай Васильевич Гоголь",
+            "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:N.Gogol_by_F.Moller_(1840,_Tretyakov_gallery).jpg",
+            "portraitRights": {
+              "status": "public-domain",
+              "licenseName": "Public domain",
+              "creator": "Otto Friedrich Theodor von Möller",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:N.Gogol_by_F.Moller_(1840,_Tretyakov_gallery).jpg",
+              "checkedAt": "2026-08-31"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "url": "/assets/writer-portraits/q189665.webp",
+      "source": "public/assets/writer-portraits/q189665.webp",
+      "bytes": 15420,
+      "sourceSha256": "65023106fd69700bf505329ec02e30f128a54e3b5c50500c0c84df2fad50c7bb",
+      "inNativeBaseList": false,
+      "existingCanonicalRecords": [
+        {
+          "key": "russia:goncharov",
+          "record": {
+            "portrait": "assets/writer-portraits/q189665.webp",
+            "portraitAlt": "Портрет: Иван Александрович Гончаров",
+            "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Ivan_Goncharov_(1880).jpg",
+            "portraitRights": {
+              "status": "public-domain",
+              "licenseName": "Public domain",
+              "creator": "Constantin Shapiro; source: Russian State Library",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ivan_Goncharov_(1880).jpg",
+              "checkedAt": "2026-08-31"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "url": "/assets/writer-portraits/q46599.webp",
+      "source": "public/assets/writer-portraits/q46599.webp",
+      "bytes": 28302,
+      "sourceSha256": "83eddc5816184266c9a075a2ee360012bf56155f63cebdda4b4fbab800501205",
+      "inNativeBaseList": false,
+      "existingCanonicalRecords": [
+        {
+          "key": "russia:lermontov",
+          "record": {
+            "portrait": "assets/writer-portraits/q46599.webp",
+            "portraitAlt": "Портрет: Михаил Юрьевич Лермонтов",
+            "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Mikhail_lermontov.jpg",
+            "portraitRights": {
+              "status": "public-domain",
+              "licenseName": "Public domain",
+              "creator": "Petr Zabolotskiy",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mikhail_lermontov.jpg",
+              "checkedAt": "2026-08-31"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "url": "/assets/writer-portraits/q42831.webp",
+      "source": "public/assets/writer-portraits/q42831.webp",
+      "bytes": 15776,
+      "sourceSha256": "9af8bd6ae5b4997b8a4a307d28255fceea54fe4537fc1051d107fb6468412017",
+      "inNativeBaseList": false,
+      "existingCanonicalRecords": [
+        {
+          "key": "russia:turgenev",
+          "record": {
+            "portrait": "assets/writer-portraits/q42831.webp",
+            "portraitAlt": "Портрет: Иван Сергеевич Тургенев",
+            "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Turgenev_1859.jpg",
+            "portraitRights": {
+              "status": "public-domain",
+              "licenseName": "CC0",
+              "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+              "creator": "Andrey Denyer",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Turgenev_1859.jpg",
+              "checkedAt": "2026-08-31"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "url": "/assets/writer-portraits/q314212.webp",
+      "source": "public/assets/writer-portraits/q314212.webp",
+      "bytes": 33846,
+      "sourceSha256": "4ba64c5d5fe607b89b02bb0dbe6a9503a5118ff8c6d9fc8a0b4d889b350868d1",
+      "inNativeBaseList": false,
+      "existingCanonicalRecords": [
+        {
+          "key": "russia:afanasiy_fet",
+          "record": {
+            "portrait": "assets/writer-portraits/q314212.webp",
+            "portraitAlt": "Портрет: Афанасий Афанасьевич Фет",
+            "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:%D0%90%D1%84%D0%B0%D0%BD%D0%B0%D1%81%D0%B8%D0%B9_%D0%A4%D0%B5%D1%82_-_1860-%D0%B5.jpg",
+            "portraitRights": {
+              "status": "public-domain",
+              "licenseName": "Public domain",
+              "creator": "Andrey Denyer",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:%D0%90%D1%84%D0%B0%D0%BD%D0%B0%D1%81%D0%B8%D0%B9_%D0%A4%D0%B5%D1%82_-_1860-%D0%B5.jpg",
+              "checkedAt": "2026-08-31"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "url": "/assets/writer-portraits/q208003.webp",
+      "source": "public/assets/writer-portraits/q208003.webp",
+      "bytes": 19132,
+      "sourceSha256": "4d1b22a60d8293879a620844b0f904b971694a3fa959b19cdc27a0a36bf33092",
+      "inNativeBaseList": false,
+      "existingCanonicalRecords": [
+        {
+          "key": "russia:nekrasov",
+          "record": {
+            "portrait": "assets/writer-portraits/q208003.webp",
+            "portraitAlt": "Портрет: Николай Алексеевич Некрасов",
+            "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Nikolay_Nekrasov_2cr.jpg",
+            "portraitRights": {
+              "status": "public-domain",
+              "licenseName": "Public domain",
+              "creator": "Vezenberg & Co.",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nikolay_Nekrasov_2cr.jpg",
+              "checkedAt": "2026-08-31"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "url": "/assets/writer-portraits/q171976.webp",
+      "source": "public/assets/writer-portraits/q171976.webp",
+      "bytes": 33492,
+      "sourceSha256": "72d118e182ab7f224ef6fc80fbb775af20a705069c7df434419286f823fc134e",
+      "inNativeBaseList": false,
+      "existingCanonicalRecords": [
+        {
+          "key": "russia:ostrovsky",
+          "record": {
+            "portrait": "assets/writer-portraits/q171976.webp",
+            "portraitAlt": "Портрет: Александр Николаевич Островский",
+            "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Aleksandr_Nikolaevich_Ostrovsky,_half-length_portrait,_facing_front_LCCN99615567.jpg",
+            "portraitRights": {
+              "status": "public-domain",
+              "licenseName": "Public domain",
+              "creator": "Vezenberg & Co.; source: Library of Congress",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aleksandr_Nikolaevich_Ostrovsky,_half-length_portrait,_facing_front_LCCN99615567.jpg",
+              "checkedAt": "2026-08-31"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "url": "/assets/writer-portraits/q211785.webp",
+      "source": "public/assets/writer-portraits/q211785.webp",
+      "bytes": 32000,
+      "sourceSha256": "104fc620e67e0e8f767dd69ad4488b2a29fa3b1d187a1a591ffdd7bf5f8f5ab6",
+      "inNativeBaseList": false,
+      "existingCanonicalRecords": [
+        {
+          "key": "russia:saltykov-shchedrin",
+          "record": {
+            "portrait": "assets/writer-portraits/q211785.webp",
+            "portraitAlt": "Портрет: Михаил Евграфович Салтыков-Щедрин",
+            "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Mikhail_Evgrafovich_Saltykov-Shchedrin,_head-and-shoulders_portrait,_facing_left_LCCN99615562.jpg",
+            "portraitRights": {
+              "status": "public-domain",
+              "licenseName": "Public domain",
+              "creator": "Vezenberg & Co.; source: Library of Congress",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mikhail_Evgrafovich_Saltykov-Shchedrin,_head-and-shoulders_portrait,_facing_left_LCCN99615562.jpg",
+              "checkedAt": "2026-08-31"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "url": "/assets/writer-portraits/q209004.webp",
+      "source": "public/assets/writer-portraits/q209004.webp",
+      "bytes": 21266,
+      "sourceSha256": "60e33921191473fef472bba6778d90dae28c06b6762e2b03ea70e4667fbb5e72",
+      "inNativeBaseList": false,
+      "existingCanonicalRecords": [
+        {
+          "key": "russia:leskov",
+          "record": {
+            "portrait": "assets/writer-portraits/q209004.webp",
+            "portraitAlt": "Портрет: Николай Семёнович Лесков",
+            "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Stebnitski_i,_head-and-shoulders_portrait,_facing_left_LCCN99615548.jpg",
+            "portraitRights": {
+              "status": "public-domain",
+              "licenseName": "Public domain",
+              "creator": "Vezenberg & Co.; source: Library of Congress",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Stebnitski_i,_head-and-shoulders_portrait,_facing_left_LCCN99615548.jpg",
+              "checkedAt": "2026-08-31"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "url": "/assets/writer-portraits/q5685.webp",
+      "source": "public/assets/writer-portraits/q5685.webp",
+      "bytes": 31470,
+      "sourceSha256": "7a12b965b68f980ec040f64d783733b718788082665e0dd8de54bf6cd25534ff",
+      "inNativeBaseList": false,
+      "existingCanonicalRecords": [
+        {
+          "key": "russia:chekhov",
+          "record": {
+            "portrait": "assets/writer-portraits/q5685.webp",
+            "portraitAlt": "Портрет: Антон Павлович Чехов",
+            "portraitSourceUrl": "https://commons.wikimedia.org/wiki/File:Anton_Checkov_signed_Cabinet_Photograph,_1899_(cropped).jpg",
+            "portraitRights": {
+              "status": "public-domain",
+              "licenseName": "PD-old-100-expired plus United States pre-1931 public domain",
+              "licenseUrl": "https://commons.wikimedia.org/wiki/Template:PD-old-100-expired",
+              "creator": "Unattributed; attributed by Christie's to Alexander Pavlovich Chekhov",
+              "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anton_Checkov_signed_Cabinet_Photograph,_1899_(cropped).jpg",
+              "checkedAt": "2026-08-31"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "inference": "Lazy country writer-list image loading is timing dependent. Requests are real; absence from native base selection is deterministic. Initial a1 lack of requests did not prove full country portrait closure.",
+  "sourceUnmodified": true,
+  "existingRightsOnly": true,
+  "newRightsApprovalCreated": false
+}

@@ -9,11 +9,12 @@ import { verifyPwaArtifact } from "./verify-pwa-artifact.mjs";
 import { generatePwaShellFiles } from "./pwa-shell.mjs";
 import { PWA_BOOTSTRAP_ENTRIES, bootstrapSourcePath, pwaAuthoritySha256 } from "./pwa-artifact.mjs";
 import { normalizePwaWorkerConfig } from "../../src/pwa/serviceWorkerRuntime.js";
+import { PWA_PORTRAIT_SELECTION_PATH } from "./pwa-portrait-selection.mjs";
 
 const roots = [];
 const sha = bytes => createHash("sha256").update(bytes).digest("hex");
 const json = value => JSON.stringify(value, null, 2) + "\n";
-async function fixture({ qa = false, configured = false } = {}) {
+async function fixture({ qa = false, configured = false, portrait = false, stalePortraitPin = false } = {}) {
   await mkdir(".tmp", { recursive: true });
   const root = await mkdtemp(path.resolve(".tmp/pwa-audit-test-"));
   roots.push(root);
@@ -31,8 +32,11 @@ async function fixture({ qa = false, configured = false } = {}) {
   }
   if (authoritySource) await write(authoritySource.path, json(authority), root);
   const workerSource = "export function installPwaWorker(worker, config) { worker.addEventListener('message', () => config); }\n";
-  const inputs = new Set(["src/main.tsx", "src/pwa/serviceWorkerRuntime.js", "src/pwa/qaSceneProbe.ts", "index.html", "vite.config.ts", "vite.pwa.config.ts", "tsconfig.json", "package.json", "package-lock.json", "scripts/mobile/build-pwa.mjs", "scripts/mobile/pwa-artifact.mjs", "scripts/mobile/pwa-shell.mjs", ...PWA_BOOTSTRAP_ENTRIES.map(bootstrapSourcePath)]);
+  const inputs = new Set(["src/main.tsx", "src/pwa/serviceWorkerRuntime.js", "src/pwa/qaSceneProbe.ts", "index.html", "vite.config.ts", "vite.pwa.config.ts", "tsconfig.json", "package.json", "package-lock.json", "scripts/mobile/build-pwa.mjs", "scripts/mobile/pwa-artifact.mjs", "scripts/mobile/pwa-shell.mjs", "scripts/mobile/pwa-portrait-selection.mjs", PWA_PORTRAIT_SELECTION_PATH, ...PWA_BOOTSTRAP_ENTRIES.map(bootstrapSourcePath)]);
   for (const filename of inputs) await write(filename, filename === "src/pwa/serviceWorkerRuntime.js" ? workerSource : filename.endsWith(".json") ? "{}\n" : "fixture input " + filename, root);
+  const portraitBytes = Buffer.from("synthetic portrait bytes for integrity tests");
+  const portraitPin = { output: "assets/writer-portraits/q1.webp", source: "public/assets/writer-portraits/q1.webp", sourceSha256: sha(portraitBytes), transformation: "none" };
+  await write(PWA_PORTRAIT_SELECTION_PATH, json({ schemaVersion: 1, files: portrait ? [{ ...portraitPin, ...(stalePortraitPin ? { sourceSha256: "0".repeat(64) } : {}) }] : [] }), root);
   const sourceFiles = [];
   for (const filename of [...inputs].sort()) sourceFiles.push({ path: filename, sha256: sha(await readFile(path.join(root, filename))) });
   const sourceInputs = { sha256: sha(json(sourceFiles)), files: sourceFiles };
@@ -44,6 +48,11 @@ async function fixture({ qa = false, configured = false } = {}) {
   await write("brand/probpera-logo.png", logo);
   await write("public/brand/probpera-logo.png", logo, root);
   const provenance = { schemaVersion: 1, sourceCommit: checkpoint, files: [{ output: "brand/probpera-logo.png", source: "public/brand/probpera-logo.png", sourceSha256: sha(logo), transformation: "none" }] };
+  if (portrait) {
+    await write(portraitPin.output, portraitBytes);
+    await write(portraitPin.source, portraitBytes, root);
+    provenance.files.push(portraitPin);
+  }
   for (const size of [192, 512]) {
     await write(`icons/icon-${size}.png`, await sharp(logo).resize(size, size, { fit: "contain", background: { r: 0, g: 0, b: 0, alpha: 0 } }).png().toBuffer());
     provenance.files.push({ output: `icons/icon-${size}.png`, source: "public/brand/probpera-logo.png", sourceSha256: sha(logo), transformation: `resize-contain-${size}-png`, purpose: "any" });
@@ -112,7 +121,7 @@ async function fixture({ qa = false, configured = false } = {}) {
   }
   await refreshInventory();
   const audit = options => verifyPwaArtifact({ rootDir: root, ...options });
-  return { root, output, artifact, config, vite, ownership, provenance, git, audit, write, refreshInventory, refreshIdentities, replaceTracked };
+  return { root, output, artifact, config, vite, ownership, provenance, portraitPin, git, audit, write, refreshInventory, refreshIdentities, replaceTracked };
 }
 afterEach(async () => {
   for (const root of roots.splice(0)) {
@@ -121,6 +130,43 @@ afterEach(async () => {
   }
 });
 const codes = result => result.findings.map(finding => finding.code);
+
+describe("canonical PWA portrait artifact closure", () => {
+  it("accepts the same source-pinned portrait in actual output, provenance and offline bootstrap", async () => {
+    const result = await (await fixture({ portrait: true })).audit();
+    expect(result.findings).toEqual([]);
+    expect(result.pass).toBe(true);
+  });
+
+  it("rejects a portrait omitted from the offline core despite an otherwise consistent artifact", async () => {
+    const env = await fixture({ portrait: true });
+    env.config.files = env.config.files.filter(file => file.url !== "/planet/" + env.portraitPin.output);
+    await env.refreshIdentities();
+    expect([...new Set(codes(await env.audit()))]).toEqual(["PORTRAIT_COVERAGE"]);
+  });
+
+  it("rejects a stale native portrait pin even when source, output and provenance agree with each other", async () => {
+    const env = await fixture({ portrait: true, stalePortraitPin: true });
+    expect([...new Set(codes(await env.audit()))]).toEqual(["PORTRAIT_PIN"]);
+  });
+
+  it("rejects a missing selected portrait source", async () => {
+    const env = await fixture({ portrait: true });
+    await rm(path.join(env.root, env.portraitPin.source));
+    expect(codes(await env.audit())).toContain("PORTRAIT_PIN");
+  });
+
+  it("rejects a packaged portrait that has no native selection pin", async () => {
+    const env = await fixture();
+    const filename = "assets/writer-portraits/unselected.webp", bytes = Buffer.from("unselected fixture");
+    await env.write(filename, bytes);
+    await env.write("public/" + filename, bytes, env.root);
+    env.provenance.files.push({ output: filename, source: "public/" + filename, sourceSha256: sha(bytes), transformation: "none" });
+    await env.write("asset-provenance.json", json(env.provenance));
+    await env.refreshInventory();
+    expect([...new Set(codes(await env.audit()))]).toEqual(["PORTRAIT_SELECTION"]);
+  });
+});
 
 describe("independent actual-file preparation audit", () => {
   it.each([

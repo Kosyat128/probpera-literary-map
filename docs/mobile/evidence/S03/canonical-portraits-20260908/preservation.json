@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "preservedAt": "2026-09-08T11:10:15.543Z",
+  "purpose": "Lossless preservation of the completed canonical portrait selection audit and update helper; the audit was not rerun.",
+  "auditRerun": false,
+  "sourceOrManifestMutation": false,
+  "originalReferencesRetained": true,
+  "sourceProof": {
+    "inputFiles": 263,
+    "before": "docs/mobile/evidence/S03/canonical-portraits-20260908/source-before.json",
+    "after": "docs/mobile/evidence/S03/canonical-portraits-20260908/source-after.json",
+    "existingCorpusEvidence": "docs/mobile/evidence/S03/biography-review-20260908/corpus/result.json",
+    "runtimeExportCopied": false
+  },
+  "files": [
+    {
+      "source": ".tmp/s03-canonical-portrait-closure-20260908/result.json",
+      "destination": "docs/mobile/evidence/S03/canonical-portraits-20260908/result.json",
+      "bytes": 575261,
+      "sourceSha256": "55f35734f1a6465cddf50dc02a585bd9084993c861127302c2fd11ef8cc7517a",
+      "destinationSha256": "55f35734f1a6465cddf50dc02a585bd9084993c861127302c2fd11ef8cc7517a"
+    },
+    {
+      "source": ".tmp/s03-canonical-portrait-closure-20260908/source-before.json",
+      "destination": "docs/mobile/evidence/S03/canonical-portraits-20260908/source-before.json",
+      "bytes": 42588,
+      "sourceSha256": "2d2751864527cb129eeb748c18bcbfc46bfc83a4f8b2df78e4975f373b2b0965",
+      "destinationSha256": "2d2751864527cb129eeb748c18bcbfc46bfc83a4f8b2df78e4975f373b2b0965"
+    },
+    {
+      "source": ".tmp/s03-canonical-portrait-closure-20260908/source-after.json",
+      "destination": "docs/mobile/evidence/S03/canonical-portraits-20260908/source-after.json",
+      "bytes": 42588,
+      "sourceSha256": "2d2751864527cb129eeb748c18bcbfc46bfc83a4f8b2df78e4975f373b2b0965",
+      "destinationSha256": "2d2751864527cb129eeb748c18bcbfc46bfc83a4f8b2df78e4975f373b2b0965"
+    },
+    {
+      "source": ".tmp/s03-canonical-portrait-closure-20260908/native-base-assets.before.json",
+      "destination": "docs/mobile/evidence/S03/canonical-portraits-20260908/native-base-assets.before.json",
+      "bytes": 69956,
+      "sourceSha256": "c1f42e5c8d8afd58102d24faa434a1b01a77129f97bc11ac59fe8ce5e4ca4268",
+      "destinationSha256": "c1f42e5c8d8afd58102d24faa434a1b01a77129f97bc11ac59fe8ce5e4ca4268"
+    },
+    {
+      "source": ".tmp/s03-canonical-portrait-closure-20260908/native-base-assets.after.json",
+      "destination": "docs/mobile/evidence/S03/canonical-portraits-20260908/native-base-assets.after.json",
+      "bytes": 323537,
+      "sourceSha256": "80c3561b3e4011625acb6a176811f1b751194abcb9df52e44209b992f55c0a4e",
+      "destinationSha256": "80c3561b3e4011625acb6a176811f1b751194abcb9df52e44209b992f55c0a4e"
+    },
+    {
+      "source": ".tmp/native-bootstrap/update-canonical-portrait-closure-20260908.mjs",
+      "destination": "docs/mobile/evidence/S03/canonical-portraits-20260908/update-canonical-portrait-closure-20260908.mjs",
+      "bytes": 9206,
+      "sourceSha256": "64841c91fc19916e5bf10b1db16edacf19dfcafaeb78b6863f8a635d586790bb",
+      "destinationSha256": "64841c91fc19916e5bf10b1db16edacf19dfcafaeb78b6863f8a635d586790bb"
+    }
+  ]
+}
