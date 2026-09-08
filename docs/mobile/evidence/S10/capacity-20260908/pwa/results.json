@@ -1,0 +1,127 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=.tmp/s10-capacity-pwa-20260908/playwright.capacity.config.mjs",
+      "--project=pwa-desktop"
+    ],
+    "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\s10-capacity-pwa-20260908\\playwright.capacity.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+    "failOnFlakyTests": false,
+    "forbidOnly": true,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/.tmp/pwa-cross-engine-results/pwa-capacity-20260908-a1/artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "pwa-desktop",
+        "name": "pwa-desktop",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "controlled-pwa.spec.mjs"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\pwa-cross-engine-results\\pwa-capacity-20260908-a1\\results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "controlled-pwa.spec.mjs",
+      "file": "controlled-pwa.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "expanded portrait base installs and verifies real offline bytes with saved graphics and bilingual scene",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "pwa-desktop",
+              "projectName": "pwa-desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 31797,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T12:55:28.733Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "expanded-portrait-offline-evidence",
+                      "contentType": "application/json",
+                      "body": "ewogICJsb2NhbFFhT25seSI6IHRydWUsCiAgImJ1aWxkSWQiOiAiYjEzZWMyMGVjNDJkYmQxZDI3ZDgxODkzMjIwMGZiMjAwYzUyNTJhYTVlNjljZmYzM2RhODg2MTNiNDRiOWE1YSIsCiAgIm1hbmlmZXN0RmlsZXMiOiAxMzM5LAogICJtYW5pZmVzdEJ5dGVzIjogNjY0NjAxNzUsCiAgIm1hbmlmZXN0UG9ydHJhaXRzIjogMTAxMSwKICAiY2hlY2tzIjogWwogICAgewogICAgICAic3RhdHVzIjogImNvbXBsZXRlIiwKICAgICAgImVuZ2luZUJ1aWxkSWQiOiAiYjEzZWMyMGVjNDJkYmQxZDI3ZDgxODkzMjIwMGZiMjAwYzUyNTJhYTVlNjljZmYzM2RhODg2MTNiNDRiOWE1YSIsCiAgICAgICJhY3RpdmVCdWlsZElkIjogImIxM2VjMjBlYzQyZGJkMWQyN2Q4MTg5MzIyMDBmYjIwMGM1MjUyYWE1ZTY5Y2ZmMzNkYTg4NjEzYjQ0YjlhNWEiLAogICAgICAiZmlsZUNvdW50IjogMTMzOSwKICAgICAgImJ5dGVzIjogNjY0NjAxNzUsCiAgICAgICJkdXJhdGlvbk1zIjogMTQzMiwKICAgICAgIm5ldHdvcmtBdHRlbXB0cyI6IDAKICAgIH0KICBdLAogICJwb3J0cmFpdHMiOiBbCiAgICB7CiAgICAgICJsb2NhbGUiOiAicnUiLAogICAgICAic3JjIjogImh0dHA6Ly8xMjcuMC4wLjE6NDI5Ni9wbGFuZXQvYXNzZXRzL3dyaXRlci1wb3J0cmFpdHMvcTQ1MDg3LndlYnAiLAogICAgICAid2lkdGgiOiAzODQsCiAgICAgICJoZWlnaHQiOiA0ODAKICAgIH0sCiAgICB7CiAgICAgICJsb2NhbGUiOiAiZW4iLAogICAgICAic3JjIjogImh0dHA6Ly8xMjcuMC4wLjE6NDI5Ni9wbGFuZXQvYXNzZXRzL3dyaXRlci1wb3J0cmFpdHMvcTk5MS53ZWJwIiwKICAgICAgIndpZHRoIjogMzg0LAogICAgICAiaGVpZ2h0IjogNDgwCiAgICB9CiAgXSwKICAiY29sZExhdW5jaGVzIjogWwogICAgewogICAgICAibG9jYWxlIjogInJ1IiwKICAgICAgImZvbGxvd2VkQnkiOiAiZW4iLAogICAgICAic2FtZUNhbnZhc1JlbmRlcmVyQ2FtZXJhU2NlbmUiOiB0cnVlLAogICAgICAic2VsZWN0ZWRXcml0ZXIiOiAiZG9zdG9ldnNreSIsCiAgICAgICJzYXZlZFF1YWxpdHkiOiAiYmFsYW5jZWQiCiAgICB9LAogICAgewogICAgICAibG9jYWxlIjogImVuIiwKICAgICAgInNlbGVjdGVkV3JpdGVyIjogImRvc3RvZXZza3kiLAogICAgICAic2F2ZWRRdWFsaXR5IjogImJhbGFuY2VkIiwKICAgICAgIm5ld0RvY3VtZW50IjogdHJ1ZQogICAgfQogIF0sCiAgImVycm9ycyI6IFtdLAogICJhc3NldEZhaWx1cmVzIjogW10sCiAgImFjdHVhbFNlcnZpY2VXb3JrZXIiOiB0cnVlLAogICJjYWNoZU11dGF0aW9uQnlUZXN0IjogZmFsc2UsCiAgImFjdHVhbE9zSW5zdGFsbGF0aW9uIjogZmFsc2UsCiAgInJlbGVhc2VSZWFkeSI6IGZhbHNlCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e57d1aee4d9d53cc8f3-964e6489bbc115e1f06f",
+          "file": "controlled-pwa.spec.mjs",
+          "line": 191,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-08T12:55:28.164Z",
+    "duration": 33603.952,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

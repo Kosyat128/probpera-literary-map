@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "runId": "pwa-capacity-20260908-a1",
+  "localQaOnly": true,
+  "origin": "http://127.0.0.1:4296",
+  "artifact": {
+    "buildId": "b13ec20ec42dbd1d27d818932200fb200c5252aa5e69cff33da88613b44b9a5a",
+    "sourceCommit": "069a2c6e6d8d890b956ae35fdff92ed619ee8493",
+    "sourceInputsSha256": "3759efbf485eb39d5dbdf5c1ff512828e4b32d18702aeb387e292250c628449e",
+    "authoritySha256": "a3c7d7d11f22ee614fdbaad743ad5805d6e595cd39b1ef24858a29cc95e161c2",
+    "localQaAuthority": true,
+    "releaseReady": false
+  },
+  "planned": {
+    "sourceBuilds": 1,
+    "strictArtifactAudits": 1,
+    "browserExecutions": 1
+  },
+  "limits": [
+    "Ephemeral signer exists only in this local process. No provider/payment or installed OS evidence.",
+    "One new Vite/worker build for compiled search fields and cancellable batched preparation in the existing globe and shared search. Previous a22183b0 and all historical evidence remain archived. Only one existing expanded-portrait install/readiness/offline case runs to verify the changed bundle under the actual worker; no full appearance/repair suite is rerun. Mounted React preparation lifecycle, synthetic capacity measurements and native-source search interaction are separate evidence."
+  ]
+}

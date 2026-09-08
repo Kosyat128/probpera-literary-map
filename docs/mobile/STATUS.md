@@ -1,15 +1,21 @@
 # V12 status — 2026-09-08
 
 <!-- s10-capacity:begin -->
-Compiled search and cooperative index preparation are source-validated.
-Synthetic10000: atlas median795.845→6.908ms, shared-fields940.917→6.292ms;
-all matched keys/scores agree with exact prior engine. This is desktop engine
-capacity, not production catalog/device certification. Initial and between-batch
-host yields replace the measured~823ms monolithic preparation; stale builds abort.
-80 unique units, final static and2 actual-browser cases passed.
-Fresh Android/PWA build follows this source checkpoint.
-Evidence: evidence/S10/capacity-20260908/result.json. First-open S03; S10 in progress.
-Full content/child/alias/collection/device gates open; frozen iOS83 unchanged.
+Source 069a2c6e6d8d890b956ae35fdff92ed619ee8493: precompiled atlas/shared search and cancellable
+cooperative preparation; active-locale sorting and canonical actions preserved.
+Synthetic10000 desktop engine median: atlas795.845→6.908ms, shared940.917→6.292ms;
+all scored keys match exact prior engine. Initial/between-batch host yields
+replace monolithic preparation. This is not full catalog/device certification.
+80 unique units, final static and2 actual-browser cases passed: canonical globe
+RUEN book search and separate real React10000-row locale/cancel/retry fixture.
+Android/dev 7e302703: strict build, offline Gradle, APK bytes/signature.
+APK: .tmp/native-builds/android-dev/capacity-7e302703/app-dev-debug.apk.
+Controlled local-QA PWA b13ec20e: strict audit and1 actual cold-RUEN/offline case.
+Both artifacts bind exact current source and existing canonical title registry.
+Evidence: evidence/S10/capacity-20260908/result.json. Publication gate admits4 books.
+First-open S03; S10 in progress. Full aliases/child/collection/content/biographies,
+edition covers/owner workflow/Planetka and device/release gates remain open.
+Frozen iOS83 unchanged/pending; no production actions. Earlier blocks are history.
 <!-- s10-capacity:end -->
 
 <!-- s10-search:begin -->

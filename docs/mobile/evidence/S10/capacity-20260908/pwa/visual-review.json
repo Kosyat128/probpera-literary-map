@@ -1,0 +1,21 @@
+{
+  "recordedAt": "2026-09-08T12:58:53.6455219+00:00",
+  "scope": "Actual local-QA PWA RU/EN screenshots after compiled/cooperative search change",
+  "sourceCommit": "069a2c6e6d8d890b956ae35fdff92ed619ee8493",
+  "buildId": "b13ec20ec42dbd1d27d818932200fb200c5252aa5e69cff33da88613b44b9a5a",
+  "detail": "original 2560x1440",
+  "review": "Assistant visual inspection; no new concrete defect observed. Existing globe and portraits render; localized primary controls and offline notices are readable. Existing English editorial-review notice does not certify full English content.",
+  "images": [
+    {
+      "path": "docs/mobile/evidence/S10/capacity-20260908/pwa/expanded-offline-english-writer.png",
+      "sha256": "1b021c84b21ae15a3d421dfc97896dba3dbb40c58d3dd2bb835d0bb092786c2f"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/capacity-20260908/pwa/expanded-offline-russian-writer-list.png",
+      "sha256": "5f71cf6886f2653b97b5f8f4c71862b15d136d687a127649254ab595ed8ba28e"
+    }
+  ],
+  "ownerApproval": false,
+  "exactRcScreenshots": false,
+  "releaseReady": false
+}

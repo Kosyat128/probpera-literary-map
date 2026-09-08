@@ -1,0 +1,295 @@
+{
+  "schemaVersion": 1,
+  "stage": "S10",
+  "recordedAt": "2026-09-08T12:56:21.111Z",
+  "runId": "pwa-capacity-20260908-a1",
+  "sourceCommit": "069a2c6e6d8d890b956ae35fdff92ed619ee8493",
+  "buildId": "b13ec20ec42dbd1d27d818932200fb200c5252aa5e69cff33da88613b44b9a5a",
+  "status": "LOCAL_QA_PWA_BUILD_AUDIT_AND_AFFECTED_BROWSER_PASSED",
+  "strictArtifactAuditPassed": true,
+  "statistics": {
+    "startTime": "2026-09-08T12:55:28.164Z",
+    "duration": 33603.952,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "sourceUnchanged": true,
+  "browserTestsRun": true,
+  "browserExecutions": 1,
+  "browserProof": [
+    {
+      "title": "expanded portrait base installs and verifies real offline bytes with saved graphics and bilingual scene",
+      "project": "pwa-desktop",
+      "status": "passed",
+      "durationMs": 31797,
+      "errors": []
+    }
+  ],
+  "artifact": {
+    "path": ".tmp/pwa-artifacts/b13ec20e-capacity-20260908-a1",
+    "files": 1367,
+    "bytes": 70172613,
+    "artifactSha256": "7139cc3a0c9c626c8cee8b72e41d7d05fe4f64406bf91e9f4777dafd2f4c15ee",
+    "exactCopiesVerified": true
+  },
+  "preservedFiles": [
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-capacity-20260908-a1/session.json",
+      "path": "docs/mobile/evidence/S10/capacity-20260908/pwa/session.json",
+      "bytes": 1254,
+      "sha256": "b5a620d1316f8fdaaf4e7aa68bf7908bfc472f13f8dba026c3dd58b2dbf0cd48"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-capacity-20260908-a1/source-before.json",
+      "path": "docs/mobile/evidence/S10/capacity-20260908/pwa/source-before.json",
+      "bytes": 138266,
+      "sha256": "3759efbf485eb39d5dbdf5c1ff512828e4b32d18702aeb387e292250c628449e"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-capacity-20260908-a1/source-after.json",
+      "path": "docs/mobile/evidence/S10/capacity-20260908/pwa/source-after.json",
+      "bytes": 138266,
+      "sha256": "3759efbf485eb39d5dbdf5c1ff512828e4b32d18702aeb387e292250c628449e"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-capacity-20260908-a1/source-comparison.json",
+      "path": "docs/mobile/evidence/S10/capacity-20260908/pwa/source-comparison.json",
+      "bytes": 205,
+      "sha256": "bed795dcb3f09fb0be259d05058ad105d880842c33bc9b6bc5a2dd45d2845c3e"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-capacity-20260908-a1/support-before.json",
+      "path": "docs/mobile/evidence/S10/capacity-20260908/pwa/support-before.json",
+      "bytes": 1036,
+      "sha256": "a9bbc9f4deec75b5ff7443a773912daaa01c2d2ab9394c5820154b32cdc2d2a1"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-capacity-20260908-a1/support-after.json",
+      "path": "docs/mobile/evidence/S10/capacity-20260908/pwa/support-after.json",
+      "bytes": 1036,
+      "sha256": "a9bbc9f4deec75b5ff7443a773912daaa01c2d2ab9394c5820154b32cdc2d2a1"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-capacity-20260908-a1/strict-artifact-audit.json",
+      "path": "docs/mobile/evidence/S10/capacity-20260908/pwa/strict-artifact-audit.json",
+      "bytes": 795,
+      "sha256": "ecd19f7bf761d28373fcddddc821d14f872fa2142580a5976fe3d6ad7a2548bd"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-capacity-20260908-a1/strict-artifact-audit-execution.json",
+      "path": "docs/mobile/evidence/S10/capacity-20260908/pwa/strict-artifact-audit-execution.json",
+      "bytes": 168,
+      "sha256": "0c6497b37d3c9a0941b982323438d426ed2c6b34e034c8a83a31f11ea2701a85"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-capacity-20260908-a1/server-closed.json",
+      "path": "docs/mobile/evidence/S10/capacity-20260908/pwa/server-closed.json",
+      "bytes": 93,
+      "sha256": "31f307f100eb4b686f91a57cf8f3ae31b6c126b4e8739163d07b3c6ee39b18b7"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-capacity-20260908-a1/run-result.json",
+      "path": "docs/mobile/evidence/S10/capacity-20260908/pwa/run-result.json",
+      "bytes": 678,
+      "sha256": "e1c406d3388eed8139716aa78bd77749dc00d4c09658c7e3fe042c26211086eb"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-capacity-20260908-a1/discovery.json",
+      "path": "docs/mobile/evidence/S10/capacity-20260908/pwa/discovery.json",
+      "bytes": 269,
+      "sha256": "3a6a4bed659766c7a41471d1adf03fe2b08e3bb63bee18b2f2b3e753c2731b22"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-capacity-20260908-a1/discovery-execution.json",
+      "path": "docs/mobile/evidence/S10/capacity-20260908/pwa/discovery-execution.json",
+      "bytes": 303,
+      "sha256": "003f5eae3b52f8638e5b23db3eb2f6e78c93190a4ca61a363bd277553083790d"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-capacity-20260908-a1/browser-run-execution.json",
+      "path": "docs/mobile/evidence/S10/capacity-20260908/pwa/browser-run-execution.json",
+      "bytes": 268,
+      "sha256": "48d35b8133aeb611c101dd960dfba529381322cd07a9366994fda19f0de56ced"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-capacity-20260908-a1/results.json",
+      "path": "docs/mobile/evidence/S10/capacity-20260908/pwa/results.json",
+      "bytes": 5656,
+      "sha256": "495a5b8ed30553d625d33616bd10f0308fb2ede088f468850b2719c40733e2cc"
+    },
+    {
+      "source": "dist-pwa/artifact.json",
+      "path": "docs/mobile/evidence/S10/capacity-20260908/pwa/artifact.json",
+      "bytes": 388049,
+      "sha256": "7139cc3a0c9c626c8cee8b72e41d7d05fe4f64406bf91e9f4777dafd2f4c15ee"
+    },
+    {
+      "source": ".tmp/s10-capacity-pwa-20260908/prior-a221-before-capacity.json",
+      "path": "docs/mobile/evidence/S10/capacity-20260908/pwa/prior-a221-before-capacity.json",
+      "bytes": 233699,
+      "sha256": "356299db06cabe6358cd44b0583106ae0cceabfdf8cb013239be5071eca753c3"
+    },
+    {
+      "source": ".tmp/s10-capacity-pwa-20260908/preparation.json",
+      "path": "docs/mobile/evidence/S10/capacity-20260908/pwa/preparation.json",
+      "bytes": 3413,
+      "sha256": "e70fe136a95f4feddee3ae305f0e520e68de71f40540d22bc93aaae68d40f9a2"
+    },
+    {
+      "source": ".tmp/s10-capacity-pwa-20260908/pipeline-a1-execution.json",
+      "path": "docs/mobile/evidence/S10/capacity-20260908/pwa/pipeline-a1-execution.json",
+      "bytes": 267,
+      "sha256": "9d584d5cc7c82f4dbcccb6f76793662b05ce3b6387f31062c7d0cb84d67c0762"
+    },
+    {
+      "source": ".tmp/s10-capacity-pwa-20260908/run-pwa-capacity.mjs",
+      "path": "docs/mobile/evidence/S10/capacity-20260908/pwa/helpers/run-pwa-capacity.mjs",
+      "bytes": 10683,
+      "sha256": "f251f0ab9375c20d7870293bf3c1a73a5bcdb1b8ad0966760b46befeb09add36"
+    },
+    {
+      "source": ".tmp/s10-capacity-pwa-20260908/run-pwa-capacity.ps1",
+      "path": "docs/mobile/evidence/S10/capacity-20260908/pwa/helpers/run-pwa-capacity.ps1",
+      "bytes": 1094,
+      "sha256": "d336cedc50803b98b82e7c1fcc86d18a016a5aee0867109ca8b4c4834d70b2e4"
+    },
+    {
+      "source": ".tmp/s10-capacity-pwa-20260908/preserve-pwa-capacity.mjs",
+      "path": "docs/mobile/evidence/S10/capacity-20260908/pwa/helpers/preserve-pwa-capacity.mjs",
+      "bytes": 10185,
+      "sha256": "6bc9d08753e9acc3d91eba98e97febcbb337eb2471af11250a7edd59b1b9d807"
+    },
+    {
+      "source": ".tmp/s10-capacity-pwa-20260908/park-a221-before-capacity.mjs",
+      "path": "docs/mobile/evidence/S10/capacity-20260908/pwa/helpers/park-a221-before-capacity.mjs",
+      "bytes": 4537,
+      "sha256": "4a0ef02cec1069bdefca979959f2f3b4ece1f1fc067feb3be6ae4119ebe7b860"
+    },
+    {
+      "source": ".tmp/s10-capacity-pwa-20260908/playwright.capacity.config.mjs",
+      "path": "docs/mobile/evidence/S10/capacity-20260908/pwa/helpers/playwright.capacity.config.mjs",
+      "bytes": 542,
+      "sha256": "789ff8f12912679dd30e625dda38749ba83db04d4e6a7424fc312bb6f167557d"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-capacity-20260908-a1/strict-artifact-audit.log",
+      "path": "docs/mobile/evidence/S10/capacity-20260908/pwa/strict-artifact-audit-log.json",
+      "bytes": 1191,
+      "sha256": "af18363bffab5a10180be097d36c2c33e07f3832cfd6b76dd3aaad16a9b7dd06",
+      "rawBytes": 795,
+      "rawSha256": "ecd19f7bf761d28373fcddddc821d14f872fa2142580a5976fe3d6ad7a2548bd",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-capacity-20260908-a1/strict-artifact-audit.stdout.log",
+      "path": "docs/mobile/evidence/S10/capacity-20260908/pwa/strict-artifact-audit.stdout-log.json",
+      "bytes": 1198,
+      "sha256": "c998f833b3a488d6181a943a6a39910483aa4490878276e3b2f63b331c48d088",
+      "rawBytes": 795,
+      "rawSha256": "ecd19f7bf761d28373fcddddc821d14f872fa2142580a5976fe3d6ad7a2548bd",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-capacity-20260908-a1/strict-artifact-audit.stderr.log",
+      "path": "docs/mobile/evidence/S10/capacity-20260908/pwa/strict-artifact-audit.stderr-log.json",
+      "bytes": 338,
+      "sha256": "0c75f130c38c4451339e3999592f21f6309d03813651acd57c84d857f0bba3c7",
+      "rawBytes": 0,
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-capacity-20260908-a1/discovery.log",
+      "path": "docs/mobile/evidence/S10/capacity-20260908/pwa/discovery-log.json",
+      "bytes": 3545,
+      "sha256": "30363339c2ba46ba5bec6c70cd02451b78bdbf350ba1d69d824a1e3ec4db04ba",
+      "rawBytes": 2889,
+      "rawSha256": "0f9f8cd3dd799a6a164a5d457f5311295a56150effe80137b3bfe9f5ec04a99a",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-capacity-20260908-a1/discovery.stdout.log",
+      "path": "docs/mobile/evidence/S10/capacity-20260908/pwa/discovery.stdout-log.json",
+      "bytes": 3552,
+      "sha256": "4ef38ec9c7cd624f5b56f7b2e699dc67de3b3ace52e1f79af84a2827544c28ca",
+      "rawBytes": 2889,
+      "rawSha256": "0f9f8cd3dd799a6a164a5d457f5311295a56150effe80137b3bfe9f5ec04a99a",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-capacity-20260908-a1/discovery.stderr.log",
+      "path": "docs/mobile/evidence/S10/capacity-20260908/pwa/discovery.stderr-log.json",
+      "bytes": 326,
+      "sha256": "845994d20a3baa108ab990913ba26bba08695847b0f3f943ac356b733861490e",
+      "rawBytes": 0,
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-capacity-20260908-a1/browser-run.log",
+      "path": "docs/mobile/evidence/S10/capacity-20260908/pwa/browser-run-log.json",
+      "bytes": 730,
+      "sha256": "ba23cfab1b6dea473aa387baed4a2df1d30ea3dfae13f6065fed4ab45ec6870b",
+      "rawBytes": 397,
+      "rawSha256": "b44f8961d063dd77ca4de33022f89540b3a85277cdd2ce9906122a52f01eba9f",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-capacity-20260908-a1/browser-run.stdout.log",
+      "path": "docs/mobile/evidence/S10/capacity-20260908/pwa/browser-run.stdout-log.json",
+      "bytes": 571,
+      "sha256": "f424aea0708d214c74112ca337d5b3106f0ba9ce68ad03dceb0e69653d167c81",
+      "rawBytes": 233,
+      "rawSha256": "114afaeba48a61957a26b4777e6371c46bbce9899e8a721982a258ba156d3039",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-capacity-20260908-a1/browser-run.stderr.log",
+      "path": "docs/mobile/evidence/S10/capacity-20260908/pwa/browser-run.stderr-log.json",
+      "bytes": 496,
+      "sha256": "40f28613d289c845d18c682fdcb40f04cb430e684c21645df98f25bd73f9181b",
+      "rawBytes": 164,
+      "rawSha256": "48790ef9bff0f9103713460bbb5d252241051fa5bc93963c2eeb7115713a6235",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/s10-capacity-pwa-20260908/pipeline-a1.log",
+      "path": "docs/mobile/evidence/S10/capacity-20260908/pwa/pipeline-a1-log.json",
+      "bytes": 13986,
+      "sha256": "856a27e4156dea80ff84c84a321c712ad5794a2f319916f4196fa41646b198d0",
+      "rawBytes": 13375,
+      "rawSha256": "2d54915b28e9e4717c73a74a239f4a0eb73f5e3da5a17f3d37e0552a91074799",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-capacity-20260908-a1/results.json#expanded-portrait-offline-evidence",
+      "path": "docs/mobile/evidence/S10/capacity-20260908/pwa/expanded-portrait-offline-evidence.json",
+      "bytes": 1358,
+      "sha256": "b31ed80bdd17576d504420480bf45b8744731d5240151a26ae9967b0ee2ba3fd"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-capacity-20260908-a1/artifacts/controlled-pwa-expanded-po-1aabd-raphics-and-bilingual-scene-pwa-desktop/expanded-offline-english-writer.png",
+      "path": "docs/mobile/evidence/S10/capacity-20260908/pwa/expanded-offline-english-writer.png",
+      "bytes": 2362243,
+      "sha256": "1b021c84b21ae15a3d421dfc97896dba3dbb40c58d3dd2bb835d0bb092786c2f"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-capacity-20260908-a1/artifacts/controlled-pwa-expanded-po-1aabd-raphics-and-bilingual-scene-pwa-desktop/expanded-offline-russian-writer-list.png",
+      "path": "docs/mobile/evidence/S10/capacity-20260908/pwa/expanded-offline-russian-writer-list.png",
+      "bytes": 2369033,
+      "sha256": "5f71cf6886f2653b97b5f8f4c71862b15d136d687a127649254ab595ed8ba28e"
+    }
+  ],
+  "stageAccepted": false,
+  "releaseReady": false,
+  "copyReviewStatus": "draft",
+  "actualOsInstallation": false,
+  "realPaymentProviderConfigured": false,
+  "limits": [
+    "Fresh local QA Vite/worker build, strict audit, byte-exact archive and one existing desktop worker/expanded-portrait offline case for the changed compiled and asynchronously prepared search bundle. No old appearance, repair, recovery or full browser suite rerun.",
+    "The separate native-source search interaction proof does not constitute PWA interaction, production distribution, physical GPU or APK evidence.",
+    "Local ephemeral QA authority does not establish a real merchant/payment, legal/editorial approval, owner acceptance or release readiness."
+  ]
+}

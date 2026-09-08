@@ -5,7 +5,7 @@
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
   "headSha": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-08T12:52:27.151Z",
+  "updatedAt": "2026-09-08T12:57:36.349Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -540,7 +540,8 @@
         "docs/mobile/evidence/S03/biography-review-20260908/pwa/result.json",
         "docs/mobile/evidence/S03/canonical-portraits-20260908/result.json",
         "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/result.json",
-        "docs/mobile/evidence/S10/search-20260908/pwa/result.json"
+        "docs/mobile/evidence/S10/search-20260908/pwa/result.json",
+        "docs/mobile/evidence/S10/capacity-20260908/pwa/result.json"
       ],
       "externalBlockers": []
     },
@@ -852,7 +853,8 @@
         "docs/mobile/evidence/S04/appearance-quality-android-20260908/result.json",
         "docs/mobile/evidence/S04/biography-review-android-20260908/result.json",
         "docs/mobile/evidence/S04/graphics-profiles-android-20260908/result.json",
-        "docs/mobile/evidence/S04/search-android-20260908/result.json"
+        "docs/mobile/evidence/S04/search-android-20260908/result.json",
+        "docs/mobile/evidence/S04/capacity-android-20260908/result.json"
       ],
       "externalBlockers": []
     },
@@ -1608,7 +1610,9 @@
         "docs/mobile/evidence/S04/search-android-20260908/result.json",
         "docs/mobile/evidence/S10/search-20260908/pwa/result.json",
         "docs/mobile/evidence/S10/capacity-20260908/entry.json",
-        "docs/mobile/evidence/S10/capacity-20260908/result.json"
+        "docs/mobile/evidence/S10/capacity-20260908/result.json",
+        "docs/mobile/evidence/S04/capacity-android-20260908/result.json",
+        "docs/mobile/evidence/S10/capacity-20260908/pwa/result.json"
       ],
       "externalBlockers": []
     },
@@ -10587,7 +10591,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Build fresh Android/dev and controlled local-QA PWA from the committed S10 compiled/cooperative search source. Final units/static and two affected actual-browser cases passed; exact engine benchmark retained without repetition. Preserve prior Android40d1a1b5/PWAa22183b0 and frozen iOS83. First-open remains S03; no production catalog capacity/content/device/stage acceptance.",
+    "nextAction": "Continue routed open work from committed S10 capacity069a2c6e. Existing atlas/shared search compiles once, prepares in cooperative cancellable batches, keeps exact matching and uses active-locale ordering. Desktop engine10000 synthetic records and real mounted React cancellation/locale/retry are verified; this does not add production books or certify device latency. 80unique units, final static, actual globe RUEN book browser and actual hook fixture passed; exact Android/dev and local-QA PWA preserved, coldRUEN/offline PWA case passed. Do not replay unchanged green checks or benchmark. Next internal S10/S08 work: explicit reviewed native/transliteration alias contract and separate child index/history/cache, then collection/passport and content delivery/owner edition-cover correction. Current publication gate admits four books; never promote held records or invent evidence/English titles. First-open S03 remains. Full bilingual content/biographies, nearly10k real catalog, Planetka/3D and device/store/legal/release gates remain open. Frozen iOS83 unchanged/pending; no production actions.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -11734,12 +11738,49 @@
       "releaseReady": false
     },
     "s10SearchCapacity": {
-      "status": "SOURCE_VALIDATION_PASSED",
+      "status": "SOURCE_AND_LOCAL_ARTIFACT_VALIDATION_PASSED",
       "evidence": "docs/mobile/evidence/S10/capacity-20260908/result.json",
-      "sha256": "69edcbc6d44c4410c5d502ff1826d6686d9a8084a0d0abebbd79914f299b1d3b",
+      "sha256": "dd3477eee52511d4fa1fb3d69a07267370919506ab7d327396e5923d5be064a0",
+      "sourceCommit": "069a2c6e6d8d890b956ae35fdff92ed619ee8493",
+      "sourceInputsCurrent": true,
       "uniqueUnitPasses": 80,
       "sourceBrowserPasses": 2,
-      "syntheticCapacity": 10000,
+      "nativeArtifact": {
+        "evidence": "docs/mobile/evidence/S04/capacity-android-20260908/result.json",
+        "sha256": "82db1b7c5347b40e6bdfb71d85532e3a92d8834a2f4c6109c6b2b1d5fa5be2c9",
+        "buildId": "7e30270370324e65a384c9e21c5f9e991e1ddbe4bcc1c503994e016726ab76a6",
+        "sourceCommit": "069a2c6e6d8d890b956ae35fdff92ed619ee8493",
+        "sourceInputsSha256": "d38d76ff83241653182f309587aab0e43cf3188c64addfd0950fcb8a6e0c49fd",
+        "runtime": ".tmp/native-builds/android-dev/capacity-7e302703/runtime",
+        "apk": {
+          "path": ".tmp/native-builds/android-dev/capacity-7e302703/app-dev-debug.apk",
+          "bytes": 63698560,
+          "sha256": "292d71f039ceeb75086c495af7126434cc557a9b3956a830e728308981d6f565"
+        },
+        "strictAudit": true,
+        "binaryAudit": true,
+        "copiesVerified": true,
+        "currentSource": true,
+        "installedRuntimeTested": false
+      },
+      "pwaArtifact": {
+        "evidence": "docs/mobile/evidence/S10/capacity-20260908/pwa/result.json",
+        "sha256": "f3a7f322e07a13902c679dec5726824277c7e01a46b97032b0f526ae37fea829",
+        "buildId": "b13ec20ec42dbd1d27d818932200fb200c5252aa5e69cff33da88613b44b9a5a",
+        "sourceCommit": "069a2c6e6d8d890b956ae35fdff92ed619ee8493",
+        "sourceInputsSha256": "3759efbf485eb39d5dbdf5c1ff512828e4b32d18702aeb387e292250c628449e",
+        "runtime": ".tmp/pwa-artifacts/b13ec20e-capacity-20260908-a1",
+        "artifactSha256": "7139cc3a0c9c626c8cee8b72e41d7d05fe4f64406bf91e9f4777dafd2f4c15ee",
+        "files": 1367,
+        "bytes": 70172613,
+        "strictAudit": true,
+        "copiesVerified": true,
+        "localQaAuthority": true,
+        "currentSource": true,
+        "browserExecutions": 1,
+        "browserPassed": true,
+        "physicalDeviceTested": false
+      },
       "stageAccepted": false,
       "releaseReady": false
     }

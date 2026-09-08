@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "originalPath": ".tmp/pwa-cross-engine-results/pwa-capacity-20260908-a1/browser-run.stdout.log",
+  "originalBytes": 233,
+  "originalSha256": "114afaeba48a61957a26b4777e6371c46bbce9899e8a721982a258ba156d3039",
+  "reconstruction": "UTF-8 encode text exactly, without newline normalization",
+  "text": "\nRunning 1 test using 1 worker\n\n  ok 1 [pwa-desktop] › tests\\pwa\\controlled-pwa.spec.mjs:191:1 › expanded portrait base installs and verifies real offline bytes with saved graphics and bilingual scene (31.8s)\n\n  1 passed (33.6s)\n"
+}

@@ -483,3 +483,11 @@
   index, retain retry and one current shared promise. Browser lifecycle evidence
   uses explicitly synthetic records; canonical book/globe evidence remains
   separate. No production catalog, memory/FPS/device or stage acceptance follows.
+
+- D096: Source069a2c6e is compiled as Android/dev 7e302703 and
+  controlled local-QA PWA b13ec20e. Exact source/registry and
+  immutable APK/PWA copies are verified; one actual coldRUEN/offline PWA case
+  exercises the new prepared-search modules. Desktop synthetic10000 engine
+  latency and mounted React scheduling/cancellation evidence are separate from
+  current public catalog coverage (four books), actual installed devices, full
+  English content, child/collection/alias completion and release acceptance.

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "runId": "pwa-capacity-20260908-a1",
+  "sourceCommit": "069a2c6e6d8d890b956ae35fdff92ed619ee8493",
+  "buildId": "b13ec20ec42dbd1d27d818932200fb200c5252aa5e69cff33da88613b44b9a5a",
+  "strictArtifactAuditPassed": true,
+  "browserTestsRun": true,
+  "browserExecutions": 1,
+  "statistics": {
+    "startTime": "2026-09-08T12:55:28.164Z",
+    "duration": 33603.952,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "browserExitCode": 0,
+  "failure": null,
+  "sourceUnchanged": true,
+  "pass": true,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "installedRuntimeVerified": false,
+  "productionActionsPerformed": false
+}
