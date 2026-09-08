@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T09:30:19.705Z",
+  "sourceCommit": "96690a486cfd39519481b2e9274adfca9602114c",
+  "androidEvidence": "docs/mobile/evidence/S04/appearance-quality-android-20260908/result.json",
+  "androidEvidenceSha256": "6e241b485b6834b497fa66adfcf23c568bc09539af52504b7eb62aa827d11112",
+  "pwaEvidence": "docs/mobile/evidence/S03/offline-repair-20260908/a5/result.json",
+  "pwaEvidenceSha256": "6a73bd29e696fde2daec77bd19aec96cabcdd13e684421a7e847cbbd7f08c172",
+  "failedPwaEvidence": "docs/mobile/evidence/S03/offline-repair-20260908/a4/result.json",
+  "failedPwaEvidenceSha256": "99ca60ec1613154e24cdb7f3c171f0039dedf06360912f1cb39f2453bdfa6f9c",
+  "buildSourceCommits": {
+    "android": "1f9bae113129d00828dc1b0714e9002b1ff1f63f",
+    "pwa": "96690a486cfd39519481b2e9274adfca9602114c"
+  },
+  "selectedInputs": [
+    "src/App.tsx",
+    "src/components/LiteraryGlobe.tsx",
+    "src/host/planetAppearance.ts",
+    "src/host/planetAppearance.css",
+    "src/atlas/atlasSheetGesture.ts",
+    "src/atlas/useAtlasSheetGesture.ts",
+    "src/atlas/atlasSheetGesture.css"
+  ],
+  "artifactSourceValidation": [
+    {
+      "buildId": "17b6fc88d0b9fe7f14e67f9200e2796b85598392a05d66261137fe18af39a980",
+      "sourceCommit": "1f9bae113129d00828dc1b0714e9002b1ff1f63f",
+      "sourceInputsSha256": "4379341a41baa8b733c7560637d3dfb95025577ef6ecd489f1d164a3db73f26a",
+      "files": 971,
+      "allCurrentHashesMatch": true,
+      "validatedAgainstSourceCommit": "96690a486cfd39519481b2e9274adfca9602114c",
+      "runtimeEquivalentToCurrentSource": true,
+      "buildCommitEqualsCurrentCommit": false
+    },
+    {
+      "buildId": "7855b5cf22339bd0f12969f87a9ba9a97e38840daf9d36e42cde3f3b698ed40f",
+      "sourceCommit": "96690a486cfd39519481b2e9274adfca9602114c",
+      "sourceInputsSha256": "9d7726d6b8e3868ac0d080caa7610408c313e0cdf8fa3cdf0e11bf4cd9ece5dd",
+      "files": 970,
+      "allCurrentHashesMatch": true,
+      "validatedAgainstSourceCommit": "96690a486cfd39519481b2e9274adfca9602114c",
+      "runtimeEquivalentToCurrentSource": true,
+      "buildCommitEqualsCurrentCommit": true
+    }
+  ],
+  "allArtifactSourceInputsValidated": true,
+  "uniqueSourceFilesHashed": 978,
+  "artifactSourceMatches": true,
+  "reusedRepairUnit": {
+    "evidence": "docs/mobile/evidence/S03/offline-repair-20260908/unit-result.json",
+    "sha256": "7f780594a6e556491ad629b44d552e52299b45a6b52e48ed9803878da02d92f8",
+    "passed": 306
+  },
+  "firstOpenCriterion": "S03.acceptance",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "testsOrBuildsRepeated": false
+}

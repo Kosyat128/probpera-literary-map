@@ -1,0 +1,22 @@
+[
+  {
+    "path": "tests/pwa/controlled-pwa.spec.mjs",
+    "sha256": "b4d03bfab96dbefd9bc7d81280b2df4ef35432d6e82c285f0a87d3be8c95b0a5"
+  },
+  {
+    "path": "tests/pwa/support/local-server.mjs",
+    "sha256": "5961d3e61339bb8e44704d804acbad99041706645377c9f9bf28b6676f1c5c1e"
+  },
+  {
+    "path": "tests/pwa/support/cross-engine-server.mjs",
+    "sha256": "51d6ba7b0b71e0008dc650812e11d7ded327e5607316af330c0757eef011bbb6"
+  },
+  {
+    "path": "playwright.pwa-current.config.mjs",
+    "sha256": "a1dd4f348dff085913e9b3241902bf1617b9fe170e49cbd88565a74f054c7749"
+  },
+  {
+    "path": ".tmp/s03-offline-repair-20260908/playwright.repair.config.mjs",
+    "sha256": "1ddd6774e48a267f813073cfbe37a818e9543596381f1d754807f55cc9c908fe"
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "actualBrowserExecutions": 0,
+  "selectedTests": [
+    {
+      "title": "device preparation restores real offline bytes and keeps simulated browser decisions truthful",
+      "project": "pwa-desktop"
+    },
+    {
+      "title": "device preparation restores real offline bytes and keeps simulated browser decisions truthful",
+      "project": "pwa-mobile"
+    }
+  ]
+}

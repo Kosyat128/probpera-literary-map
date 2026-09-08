@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "runId": "pwa-offline-repair-20260908-a5",
+  "localQaOnly": true,
+  "origin": "http://127.0.0.1:4296",
+  "artifact": {
+    "buildId": "7855b5cf22339bd0f12969f87a9ba9a97e38840daf9d36e42cde3f3b698ed40f",
+    "sourceCommit": "96690a486cfd39519481b2e9274adfca9602114c",
+    "sourceInputsSha256": "9d7726d6b8e3868ac0d080caa7610408c313e0cdf8fa3cdf0e11bf4cd9ece5dd",
+    "authoritySha256": "b8deccd6629a31f62989e4432974d37fd9dc204fb56663c1dac0a60617f2d6b0",
+    "localQaAuthority": true,
+    "releaseReady": false
+  },
+  "planned": {
+    "oneScenario": true,
+    "projects": [
+      "pwa-desktop",
+      "pwa-mobile"
+    ],
+    "executions": 2,
+    "workers": 1,
+    "retries": 0
+  },
+  "limits": [
+    "Ephemeral signer exists only in this local process. No provider/payment or installed OS evidence.",
+    "One new build includes already bundled canonical edition textures and exact version aliases in the verified offline cache. Previous051,3eb and991 remain archived."
+  ]
+}

@@ -385,3 +385,16 @@
 +  worker/resource bounds. Keep both failed receipts and rerun only their two
 +  cases after the necessary new PWA build. Android17b6 source1f9bae11 remains
 +  separately identified; PWA-only builder/tests are outside its971 input set.
+
+- D085: Current source 96690a486cfd39519481b2e9274adfca9602114c is validated against Android/dev
+  17b6fc88, built at 1f9bae113129d00828dc1b0714e9002b1ff1f63f, and controlled PWA
+  7855b5cf, built at 96690a486cfd39519481b2e9274adfca9602114c. Every recorded artifact
+  source input matches current bytes; native runtime equivalence does not
+  imply identical build commits or a repeated Android build. Failed PWA a4
+  exposed an actual cold-offline edition texture/cache-manifest omission;
+  the final PWA includes the existing bundled textures/version aliases.
+  All failed and historical receipts remain intact. Native browser bindings
+  and storage/installation choices are simulated; actual R3F/CSS, worker/cache/network
+  and APK bytes are inspected. No physical-device, bilingual editorial or
+  release acceptance follows. Nearly10k capacity, AI biography review/stale and
+  EN edition-cover gaps remain explicit; no new iOS payload or production action.

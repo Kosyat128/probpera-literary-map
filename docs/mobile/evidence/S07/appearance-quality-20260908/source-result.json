@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "recordedAt": "2026-09-08T09:30:19.705Z",
+  "recordedAt": "2026-09-08T09:04:32.850Z",
   "stage": "S07",
   "status": "SELECTED_WORKING_VALIDATION_PASSED",
   "sourceCheckpointBeforeChanges": "55a195b997a569b5a3aef692f7e8cf27d2a35b37",
@@ -70,7 +70,7 @@
         "reason": "Compact-select-only CSS completion and its assertions are covered by the upcoming two existing final-PWA cases. Native a5 receipt keeps its exact earlier source hashes; no native rerun is claimed."
       }
     ],
-    "compactSelectCompletionValidation": "Covered by the two-existing-case final PWA run, desktop compact-select assertions and root review; native a5 keeps earlier CSS identity."
+    "compactSelectCompletionValidation": "Pending the two existing final-PWA cases; not claimed by native a5."
   },
   "history": [
     "a1/result.json",
@@ -82,11 +82,11 @@
   "limitations": [
     "Existing rich mode is not completion of V12 full High/Balanced/Economy tiers or measured device performance.",
     "The selected actual CSS checks and nine token contrast tests do not certify every screen or all accessibility requirements.",
-    "Android/dev retains its build source 1f9bae113129d00828dc1b0714e9002b1ff1f63f; every recorded runtime input matches current 96690a486cfd39519481b2e9274adfca9602114c. The local-QA PWA is built at 96690a486cfd39519481b2e9274adfca9602114c. No installed-device, release or frozen iOS83 refresh is established.",
+    "New Android/PWA artifacts are pending this committed source; a7828499/3eb567d6 and frozen iOS83 keep historical identities.",
     "Planetka/child/commerce/verified bilingual content/device/owner/release gates remain open."
   ],
-  "newNativeArtifactProduced": true,
-  "newPwaArtifactProduced": true,
+  "newNativeArtifactProduced": false,
+  "newPwaArtifactProduced": false,
   "stageAccepted": false,
   "releaseReady": false,
   "ownerContentFollowUp": {
@@ -97,49 +97,5 @@
     "englishBiographyEditorialGateOpen": true,
     "localeSpecificEditionCoversImplemented": false,
     "ownerContentEditingDelivered": false
-  },
-  "sourceCommit": "96690a486cfd39519481b2e9274adfca9602114c",
-  "nativeArtifactEvidence": "docs/mobile/evidence/S04/appearance-quality-android-20260908/result.json",
-  "nativeArtifactBuildId": "17b6fc88d0b9fe7f14e67f9200e2796b85598392a05d66261137fe18af39a980",
-  "pwaArtifactEvidence": "docs/mobile/evidence/S03/offline-repair-20260908/a5/result.json",
-  "pwaArtifactBuildId": "7855b5cf22339bd0f12969f87a9ba9a97e38840daf9d36e42cde3f3b698ed40f",
-  "artifactBuildSourceCommits": {
-    "android": "1f9bae113129d00828dc1b0714e9002b1ff1f63f",
-    "pwa": "96690a486cfd39519481b2e9274adfca9602114c"
-  },
-  "artifactSourceValidation": [
-    {
-      "buildId": "17b6fc88d0b9fe7f14e67f9200e2796b85598392a05d66261137fe18af39a980",
-      "sourceCommit": "1f9bae113129d00828dc1b0714e9002b1ff1f63f",
-      "sourceInputsSha256": "4379341a41baa8b733c7560637d3dfb95025577ef6ecd489f1d164a3db73f26a",
-      "files": 971,
-      "allCurrentHashesMatch": true,
-      "validatedAgainstSourceCommit": "96690a486cfd39519481b2e9274adfca9602114c",
-      "runtimeEquivalentToCurrentSource": true,
-      "buildCommitEqualsCurrentCommit": false
-    },
-    {
-      "buildId": "7855b5cf22339bd0f12969f87a9ba9a97e38840daf9d36e42cde3f3b698ed40f",
-      "sourceCommit": "96690a486cfd39519481b2e9274adfca9602114c",
-      "sourceInputsSha256": "9d7726d6b8e3868ac0d080caa7610408c313e0cdf8fa3cdf0e11bf4cd9ece5dd",
-      "files": 970,
-      "allCurrentHashesMatch": true,
-      "validatedAgainstSourceCommit": "96690a486cfd39519481b2e9274adfca9602114c",
-      "runtimeEquivalentToCurrentSource": true,
-      "buildCommitEqualsCurrentCommit": true
-    }
-  ],
-  "nativeRuntimeEquivalentToCurrentSource": true,
-  "pwaManifestCorrection": {
-    "failedAttemptEvidence": "docs/mobile/evidence/S03/offline-repair-20260908/a4/result.json",
-    "sha256": "99ca60ec1613154e24cdb7f3c171f0039dedf06360912f1cb39f2453bdfa6f9c",
-    "buildId": "991973aa7cb2dde03c8acfbf5c39da110150da8fd31e08ce563c69e74cb95536",
-    "cause": "Actual cold-offline edition texture/version aliases were omitted from the verified PWA cache manifest; existing bundled assets were added to the build manifest.",
-    "finalPassingEvidence": "docs/mobile/evidence/S03/offline-repair-20260908/a5/result.json",
-    "browserAssertionsWeakened": false,
-    "nativeRebuildRequired": false
-  },
-  "finalPwaVisualEvidence": "final-pwa-visual-review.json",
-  "sourceCheckpointEvidence": "source-result.json",
-  "sourceCheckpointSha256": "b906158f5e390d58ce77262358be9ec5a267f840243e230d687b206b0278b6aa"
+  }
 }

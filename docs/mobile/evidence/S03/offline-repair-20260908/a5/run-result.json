@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "runId": "pwa-offline-repair-20260908-a5",
+  "sourceCommit": "96690a486cfd39519481b2e9274adfca9602114c",
+  "buildId": "7855b5cf22339bd0f12969f87a9ba9a97e38840daf9d36e42cde3f3b698ed40f",
+  "strictArtifactAuditPassed": true,
+  "browserExitCode": 0,
+  "statistics": {
+    "startTime": "2026-09-08T09:26:25.836Z",
+    "duration": 60921.839,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "failure": null,
+  "sourceUnchanged": true,
+  "pass": true,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "installedRuntimeVerified": false,
+  "productionActionsPerformed": false
+}

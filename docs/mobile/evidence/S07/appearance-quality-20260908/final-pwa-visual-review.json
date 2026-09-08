@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-09-08T09:30:19.108Z",
+  "sourceCommit": "96690a486cfd39519481b2e9274adfca9602114c",
+  "buildId": "7855b5cf22339bd0f12969f87a9ba9a97e38840daf9d36e42cde3f3b698ed40f",
+  "selectedScreensReviewed": true,
+  "method": "Root inspected these four actual final-run PNG files with view_image.",
+  "files": [
+    {
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a5/screenshots/controlled-pwa-device-prep-5879c--browser-decisions-truthful-pwa-desktop--device-compact-edition-earth.png",
+      "bytes": 566623,
+      "sha256": "81411563a5428da40f0e108059648e1b6b42c0d1994138d3a0d2eb7703b0b0f4"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a5/screenshots/controlled-pwa-device-prep-5879c--browser-decisions-truthful-pwa-mobile--device-en-repaired.png",
+      "bytes": 222554,
+      "sha256": "b434a790662d1f54bf12c95dadf8fa4d0caf9cc36c77f3fe8c55304795e9b303"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a5/screenshots/controlled-pwa-device-prep-5879c--browser-decisions-truthful-pwa-mobile--device-repaired-cold-en.png",
+      "bytes": 1200599,
+      "sha256": "ba13650ba5980e4de038b560b9b238beb40c96a221b20d4775ecc8443d2c7ac8"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a5/screenshots/controlled-pwa-device-prep-5879c--browser-decisions-truthful-pwa-mobile--device-repaired-cold-ru.png",
+      "bytes": 226593,
+      "sha256": "5747cea3e0eeea786064e22b271c2ea83e52c09e4c5f339be00f8fcf2c4a560f"
+    }
+  ],
+  "observations": [
+    "Desktop NASA compact select, globe controls and country surface follow the blue palette; their geometry remains readable.",
+    "English repair help has separated Check/Restore actions, readable status and a consistent light surface with blue controls.",
+    "Cold English launch shows the selected NASA globe, English controls and saved-access notice, without the launch curtain or edition-load error.",
+    "Cold Russian launch retains the existing collection/help state, Russian offline/access copy and readable controls without the launch curtain."
+  ],
+  "limits": [
+    "Selected visual inspection, not all-screen or physical-device acceptance.",
+    "Real browser-rendered application; installation/storage decisions are simulated. Copy review and complete bilingual catalog remain open.",
+    "No store screenshot, exact release-candidate or production-readiness claim."
+  ],
+  "stageAccepted": false,
+  "releaseReady": false
+}

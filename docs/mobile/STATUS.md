@@ -1,23 +1,27 @@
 # V12 status — 2026-09-08
 
 <!-- s07-appearance-quality:begin -->
-Appearance and rich-default source:1f9bae113129d00828dc1b0714e9002b1ff1f63f.
-Android/dev17b6fc88 built once; strict/Gradle/APK checks passed, actualdevice
-not tested. Preserve its exact source identity and validate runtime equivalence
-instead of rebuilding it for PWA-only builder/tests.
-PWA991973aa strict audit passed but BOTH a4 cases failed on cold EN NASA:
-nondefault textures existed in inventory, outside the guaranteed worker cache.
-Saved choice remained intact; canonical loader showed a real fallback warning.
-The PWA-only correction now includes20 existing pinned texture files and exact
-version aliases for all9 available editions and RU/EN modern maps. Three scoped
-unit tests passed; worker protocol/512files/64MiB/16MiB limits unchanged.
-Fresh PWA a5 and the SAME2cases are next; no successful native/unit/static replay.
-Evidence: evidence/S03/offline-editions-20260908/source-result.json;
-evidence/S03/offline-repair-20260908/a4/result.json;
-evidence/S04/appearance-quality-android-20260908/result.json.
-Nearly10k books, reviewed EN biographies, edition-specific EN covers and owner
-corrections remain open in GLOBE_APPLICATION_CONTRACT.md/content-follow-up.md.
-Full High/Balanced/Economy, Planetka, installed devices and release remain open.
+Current source 96690a486cfd39519481b2e9274adfca9602114c: rich graphics default and edition-derived
+application appearance. Nine palettes,12 units, shared static checks and one
+actual native-binding Chrome case (three styles +390px) passed. Prior failed
+attempts and their corrections remain preserved; no full-suite replay.
+Android/dev 17b6fc88: strict build, offline Gradle, APK binary checks
+and exact copies passed. Build source: 1f9bae113129d00828dc1b0714e9002b1ff1f63f.
+All recorded native inputs match current source; no rebuild was required.
+APK: .tmp/native-builds/android-dev/appearance-quality-17b6fc88/app-dev-debug.apk.
+PWA 7855b5cf at 96690a486cfd39519481b2e9274adfca9602114c: strict artifact plus2 affected desktop/mobile cases;
+real worker/cache/network repair, live theme/RU/EN and cold offline RU/EN.
+Selected final screenshots reviewed after launch removal. Local QA only.
+Evidence: evidence/S07/appearance-quality-20260908/result.json;
+evidence/S04/appearance-quality-android-20260908/result.json;
+evidence/S03/offline-repair-20260908/a5/result.json.
+Failed PWA a4 retains its actual cold-offline texture-manifest failure.
+The final PWA manifest includes the already bundled edition textures/aliases.
+Earlier a7828499/3eb567d6 and older blocks retain historical identities.
+Full High/Balanced/Economy, Planetka and all global gates remain open.
+Nearly10k catalog, English biography editorial/stale acceptance, specific EN
+edition covers and owner updates: see content-follow-up.md in this evidence.
+No complete bilingual catalog, installed-device, stage or release acceptance.
 <!-- s07-appearance-quality:end -->
 
 <!-- s07-country-sheet:begin -->
