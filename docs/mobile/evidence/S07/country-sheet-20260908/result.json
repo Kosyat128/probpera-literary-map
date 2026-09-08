@@ -67,13 +67,18 @@
       "sha256": "9c5f9ae3a5dda1136f20d2d47733f6e6e3b0b85dfee1cadc69645f66bc1bcea4"
     }
   ],
-  "newNativeArtifactProduced": false,
-  "newPwaArtifactProduced": false,
+  "newNativeArtifactProduced": true,
+  "newPwaArtifactProduced": true,
   "fullStageAccepted": false,
   "releaseReady": false,
   "limitations": [
     "Two focused Chrome touch cases with reduced motion, not installed Android/iOS touch or the full suite.",
-    "PWA capped geometry has source review; the new repair build/browser run is still pending.",
+    "PWA help and repair are checked on the final artifact; native touch cases do not establish PWA-specific drag geometry.",
     "Planetka, child-mode policy, commerce, factual bilingual editorial approval, physical devices and later stage gates remain open."
-  ]
+  ],
+  "nativeArtifactEvidence": "docs/mobile/evidence/S04/country-sheet-android-20260908/result.json",
+  "nativeArtifactBuildId": "a7828499ac68bbe7d499bc8002045b8b1d46451e33ee708414bdddf9ddc79331",
+  "nativeArtifactSourceCommit": "c62309ce86b5aade4465e27a4b2d23f6cb870fd3",
+  "pwaArtifactEvidence": "docs/mobile/evidence/S03/offline-repair-20260908/a3/result.json",
+  "pwaArtifactBuildId": "3eb567d665f5abf340838a1c1866a36147be4d3e7e5ee425f8484735f32794ab"
 }

@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "originalPath": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a3/browser-run.log",
+  "originalBytes": 721,
+  "originalSha256": "7202195029e48fe19bbb669f21bf4b0a7830221cf53f1901409e05a8b2ac46bf",
+  "reconstruction": "UTF-8 encode text exactly, without newline normalization",
+  "text": "\nRunning 2 tests using 1 worker\n\n(node:37544) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n  ok 1 [pwa-desktop] › tests\\pwa\\controlled-pwa.spec.mjs:191:1 › device preparation restores real offline bytes and keeps simulated browser decisions truthful (30.1s)\n(node:19288) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n  ok 2 [pwa-mobile] › tests\\pwa\\controlled-pwa.spec.mjs:191:1 › device preparation restores real offline bytes and keeps simulated browser decisions truthful (34.2s)\n\n  2 passed (1.2m)\n"
+}

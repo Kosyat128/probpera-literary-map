@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "runId": "pwa-offline-repair-20260908-a1",
+  "sourceCommit": "c62309ce86b5aade4465e27a4b2d23f6cb870fd3",
+  "buildId": null,
+  "strictArtifactAuditPassed": false,
+  "browserExitCode": null,
+  "statistics": null,
+  "failure": {
+    "name": "Error",
+    "message": "Local QA build failed: 1"
+  },
+  "sourceUnchanged": true,
+  "pass": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "installedRuntimeVerified": false,
+  "productionActionsPerformed": false
+}

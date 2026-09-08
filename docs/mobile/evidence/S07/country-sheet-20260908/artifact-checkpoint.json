@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T08:15:26.478Z",
+  "sourceCommit": "c62309ce86b5aade4465e27a4b2d23f6cb870fd3",
+  "androidEvidence": "docs/mobile/evidence/S04/country-sheet-android-20260908/result.json",
+  "androidEvidenceSha256": "29d74c8269c9a9f0ef6827a8935bb74cb09eb8770fb7cf9c18536d99c4d8aa8c",
+  "pwaEvidence": "docs/mobile/evidence/S03/offline-repair-20260908/a3/result.json",
+  "pwaEvidenceSha256": "7cd9a319fc5bb82547aab9279b83c00b1d77a1c5ae31afd753c963ad32aad318",
+  "artifactSourceMatches": true,
+  "firstOpenCriterion": "S03.acceptance",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "validationNote": "Identity comparison and checkpoint update only; successful builds and tests were not repeated."
+}

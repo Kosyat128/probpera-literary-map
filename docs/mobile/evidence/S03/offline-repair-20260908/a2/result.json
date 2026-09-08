@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "stage": "S03",
+  "recordedAt": "2026-09-08T08:07:45.299Z",
+  "runId": "pwa-offline-repair-20260908-a2",
+  "sourceCommit": "c62309ce86b5aade4465e27a4b2d23f6cb870fd3",
+  "buildId": "7115e0d11b58cf4af16e709e9255db6a3dda3a2066aaa6fe38eb2ee3a9ae01f3",
+  "status": "SELECTED_WORKING_VALIDATION_FAILED",
+  "strictArtifactAuditPassed": true,
+  "statistics": {
+    "startTime": "2026-09-08T08:06:44.727Z",
+    "duration": 117.14999999999998,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "sourceUnchanged": true,
+  "executions": [],
+  "artifact": {
+    "path": ".tmp/pwa-artifacts/7115e0d1-offline-repair-20260908-a2",
+    "files": 363,
+    "bytes": 41480060,
+    "artifactSha256": "dde03de1c4519c906de12d8b597ecd17f4b35fdd4fca42246f7f240cba84ff98",
+    "exactCopiesVerified": true
+  },
+  "preservedFiles": [
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a2/results.json",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a2/results.json",
+      "bytes": 2930,
+      "sha256": "5861b02956203936148201e79b002fbd0b482bf941cbbaf3e94af270e4b9aea4"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a2/session.json",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a2/session.json",
+      "bytes": 929,
+      "sha256": "c872568d69619df8f344979e3080bd93ed7589a6e8a4a9ccfcdc538ebb3c86c4"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a2/source-before.json",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a2/source-before.json",
+      "bytes": 136315,
+      "sha256": "021964cd2cec3a49fee60e702a8ca7f7619277be8622a1ed8f239bdcda753576"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a2/source-after.json",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a2/source-after.json",
+      "bytes": 136315,
+      "sha256": "021964cd2cec3a49fee60e702a8ca7f7619277be8622a1ed8f239bdcda753576"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a2/source-comparison.json",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a2/source-comparison.json",
+      "bytes": 205,
+      "sha256": "943d653c3092d0bdafe6162f316f5e63b04230f1987be81532f2d7d1a3d3f809"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a2/support-before.json",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a2/support-before.json",
+      "bytes": 735,
+      "sha256": "7c808b163ebae186e9ed81eceda6554001e50b349315fe9a610605b97987c885"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a2/support-after.json",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a2/support-after.json",
+      "bytes": 735,
+      "sha256": "7c808b163ebae186e9ed81eceda6554001e50b349315fe9a610605b97987c885"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a2/strict-artifact-audit.json",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a2/strict-artifact-audit.json",
+      "bytes": 792,
+      "sha256": "3a63f1994e2257317f3a78a0fcc15d794e855a242586c8ee825e449a2d5c99a7"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a2/strict-artifact-audit-execution.json",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a2/strict-artifact-audit-execution.json",
+      "bytes": 168,
+      "sha256": "72071cd85477230fc51a12356c756f0c380a7a90d6cedd6afd645ed1888cd025"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a2/browser-run-execution.json",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a2/browser-run-execution.json",
+      "bytes": 238,
+      "sha256": "925687a3f0831c38db01f209a511fb8795d4c6c5ffb14f7f79ee53ffca210a60"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a2/server-closed.json",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a2/server-closed.json",
+      "bytes": 93,
+      "sha256": "9895dccd5a3f9ee7e1adeed854a0dfe772f12fc0c6f8b25b4d5c13369d5384cd"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a2/run-result.json",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a2/run-result.json",
+      "bytes": 641,
+      "sha256": "b65ab47aae607f0fe206787e5405874a8635a445b23c348742cc6960ee9f31fa"
+    },
+    {
+      "source": "dist-pwa/artifact.json",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a2/artifact.json",
+      "bytes": 213325,
+      "sha256": "dde03de1c4519c906de12d8b597ecd17f4b35fdd4fca42246f7f240cba84ff98"
+    },
+    {
+      "source": ".tmp/s03-offline-repair-20260908/run-pwa-repair.mjs",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a2/helpers/run-pwa-repair.mjs",
+      "bytes": 8380,
+      "sha256": "43fae71c066bd1a12265b2c9d533c593f6838a6523de4aa86ae03d5686d09035"
+    },
+    {
+      "source": ".tmp/s03-offline-repair-20260908/run-pwa-repair.ps1",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a2/helpers/run-pwa-repair.ps1",
+      "bytes": 1070,
+      "sha256": "ca191b906596c53b46dd43cae61441f2415c63758812ab30efe60c0b7541f072"
+    },
+    {
+      "source": ".tmp/s03-offline-repair-20260908/playwright.repair.config.mjs",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a2/helpers/playwright.repair.config.mjs",
+      "bytes": 536,
+      "sha256": "ec7ebf2b801e23f0afe9ba908f1d53747772ec97d3e5f15e0d18791d6a7324d2"
+    },
+    {
+      "source": ".tmp/s03-offline-repair-20260908/preserve-pwa-repair.mjs",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a2/helpers/preserve-pwa-repair.mjs",
+      "bytes": 9678,
+      "sha256": "e112e43642ca986e487244a458834fad5c0d15ce8303bb5b2eafbea0e8db7a29"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a2/strict-artifact-audit.log",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a2/strict-artifact-audit-log.json",
+      "bytes": 1194,
+      "sha256": "b0bf94255e5e545049af9b0ca2d5f3d0989ad15c1f671a12ff764ed8d93b3da0",
+      "rawBytes": 792,
+      "rawSha256": "3a63f1994e2257317f3a78a0fcc15d794e855a242586c8ee825e449a2d5c99a7",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a2/browser-run.log",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a2/browser-run-log.json",
+      "bytes": 353,
+      "sha256": "c8e2b67e2e99c372ee57bde84e074dae8acb9442bafad72310cb3e63fa14595f",
+      "rawBytes": 23,
+      "rawSha256": "bef44b71926303f638fcf3917875642de7e01f8828d85d994561945390fde863",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/s03-offline-repair-20260908/pipeline-a2.log",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a2/pipeline-a2-log.json",
+      "bytes": 13860,
+      "sha256": "e6b2ec4b31f969ac20dd781611d36d680bf31de7e7e22aa130bbb434a586b770",
+      "rawBytes": 13249,
+      "rawSha256": "3535516a07283a924a32b8012925b501574c49ec6ae9f6117707c7c210b67b6a",
+      "lossless": true
+    }
+  ],
+  "stageAccepted": false,
+  "releaseReady": false,
+  "copyReviewStatus": "draft",
+  "actualOsInstallation": false,
+  "realPaymentProviderConfigured": false,
+  "limits": [
+    "Only the selected device scenario in two Chrome viewports; original errors are preserved.",
+    "Actual app/worker/cache/network; installation and storage permission choices remain explicit browser fixtures.",
+    "Cold reloads create new documents. Canvas identity is checked only across locale and repair within the existing document."
+  ]
+}

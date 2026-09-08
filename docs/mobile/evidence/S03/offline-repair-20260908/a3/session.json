@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "runId": "pwa-offline-repair-20260908-a3",
+  "localQaOnly": true,
+  "origin": "http://127.0.0.1:4296",
+  "artifact": {
+    "buildId": "3eb567d665f5abf340838a1c1866a36147be4d3e7e5ee425f8484735f32794ab",
+    "sourceCommit": "c62309ce86b5aade4465e27a4b2d23f6cb870fd3",
+    "sourceInputsSha256": "021964cd2cec3a49fee60e702a8ca7f7619277be8622a1ed8f239bdcda753576",
+    "authoritySha256": "d207a2bb999879f569c8c4e8fc7a9af1d31c069deb9639c9e8ae52cb3b56d967",
+    "localQaAuthority": true,
+    "releaseReady": false
+  },
+  "planned": {
+    "oneScenario": true,
+    "projects": [
+      "pwa-desktop",
+      "pwa-mobile"
+    ],
+    "executions": 2,
+    "workers": 1,
+    "retries": 0
+  },
+  "limits": [
+    "Ephemeral signer exists only in this local process. No provider/payment or installed OS evidence.",
+    "One new build for the changed offline-repair and shared source. Previous051 remains archived."
+  ]
+}

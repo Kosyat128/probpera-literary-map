@@ -348,3 +348,13 @@
   settles. Missing trusted rollback metadata is not reconstructed by guess.
   Unit306 combined passes and static checks are source evidence; build/browser
   proof follows. New RU/EN copy stays draft; no payment authority is invented.
+
+- D080: Source c62309ce86b5aade4465e27a4b2d23f6cb870fd3 is compiled as Android/dev
+  a7828499 and controlled PWA 3eb567d6. Exact artifacts and focused browser
+  evidence are preserved separately from prior532/051 and frozen iOS83. PWA a1
+  failed on scoped Git ownership before producing an artifact; a2 built and
+  audited but selected zero tests due to an anchored harness filter. Its local
+  signer was already closed, so a3 required a fresh QA build after discovery
+  verified exactly two cases. Product source and Android/static/touch results
+  stayed unchanged. Local QA authority, simulated browser installation/storage
+  choices and APK static inspection do not establish production or device gates.

@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "status": "INFRASTRUCTURE_STARTUP_FAILED",
+  "runId": "pwa-offline-repair-20260908-a1",
+  "sourceCommit": "c62309ce86b5aade4465e27a4b2d23f6cb870fd3",
+  "buildId": null,
+  "actualCompilationCompleted": false,
+  "browserExecutions": 0,
+  "cause": "Inner source builder git rev-parse lacked scoped safe.directory under elevated user; rejected before compilation.",
+  "correction": "Exact checkout passed via child-process-only GIT_CONFIG_COUNT/KEY_0/VALUE_0; no global config or product changes.",
+  "reports": [
+    {
+      "source": ".tmp\\pwa-cross-engine-results\\pwa-offline-repair-20260908-a1\\source-before.json",
+      "path": "docs\\mobile\\evidence\\S03\\offline-repair-20260908\\a1\\source-before.json",
+      "sha256": "021964cd2cec3a49fee60e702a8ca7f7619277be8622a1ed8f239bdcda753576",
+      "bytes": 136315
+    },
+    {
+      "source": ".tmp\\pwa-cross-engine-results\\pwa-offline-repair-20260908-a1\\source-after.json",
+      "path": "docs\\mobile\\evidence\\S03\\offline-repair-20260908\\a1\\source-after.json",
+      "sha256": "021964cd2cec3a49fee60e702a8ca7f7619277be8622a1ed8f239bdcda753576",
+      "bytes": 136315
+    },
+    {
+      "source": ".tmp\\pwa-cross-engine-results\\pwa-offline-repair-20260908-a1\\support-before.json",
+      "path": "docs\\mobile\\evidence\\S03\\offline-repair-20260908\\a1\\support-before.json",
+      "sha256": "7c808b163ebae186e9ed81eceda6554001e50b349315fe9a610605b97987c885",
+      "bytes": 735
+    },
+    {
+      "source": ".tmp\\pwa-cross-engine-results\\pwa-offline-repair-20260908-a1\\support-after.json",
+      "path": "docs\\mobile\\evidence\\S03\\offline-repair-20260908\\a1\\support-after.json",
+      "sha256": "7c808b163ebae186e9ed81eceda6554001e50b349315fe9a610605b97987c885",
+      "bytes": 735
+    },
+    {
+      "source": ".tmp\\pwa-cross-engine-results\\pwa-offline-repair-20260908-a1\\source-comparison.json",
+      "path": "docs\\mobile\\evidence\\S03\\offline-repair-20260908\\a1\\source-comparison.json",
+      "sha256": "943d653c3092d0bdafe6162f316f5e63b04230f1987be81532f2d7d1a3d3f809",
+      "bytes": 205
+    },
+    {
+      "source": ".tmp\\pwa-cross-engine-results\\pwa-offline-repair-20260908-a1\\run-result.json",
+      "path": "docs\\mobile\\evidence\\S03\\offline-repair-20260908\\a1\\run-result.json",
+      "sha256": "0280ffb4a28c2cc0026a03ff42227c916f99fde6dabf8b26d39864aff5a82aca",
+      "bytes": 492
+    }
+  ],
+  "stageAccepted": false,
+  "releaseReady": false
+}

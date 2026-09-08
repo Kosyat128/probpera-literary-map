@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T08:15:26.478Z",
+  "stage": "S03",
+  "status": "SELECTED_WORKING_VALIDATION_PASSED",
+  "sourceCommit": "c62309ce86b5aade4465e27a4b2d23f6cb870fd3",
+  "unitEvidence": "unit-result.json",
+  "sourceEvidence": "source-result.json",
+  "sharedStaticEvidence": "docs/mobile/evidence/S07/country-sheet-20260908/static/static-checks.json",
+  "combinedUnitPasses": 306,
+  "browserEvidence": "docs/mobile/evidence/S03/offline-repair-20260908/a3/result.json",
+  "browserEvidenceSha256": "7cd9a319fc5bb82547aab9279b83c00b1d77a1c5ae31afd753c963ad32aad318",
+  "browser": {
+    "passed": 2,
+    "failed": 0,
+    "actualWorkerCacheNetwork": true,
+    "coldLocales": [
+      "ru",
+      "en"
+    ],
+    "sourceUnchanged": true,
+    "scope": "Two affected Chrome viewport executions. Same live scene across repair/locale; cold reloads correctly create new documents.",
+    "installationAndStorageChoicesSimulated": true,
+    "actualOsInstallation": false
+  },
+  "artifact": {
+    "path": ".tmp/pwa-artifacts/3eb567d6-offline-repair-20260908-a3",
+    "files": 363,
+    "bytes": 41480060,
+    "artifactSha256": "7e72666fa85ab49c02ba27cca949fff7ba488d8018845cc6bfbdc8413d4fb509",
+    "exactCopiesVerified": true,
+    "buildId": "3eb567d665f5abf340838a1c1866a36147be4d3e7e5ee425f8484735f32794ab",
+    "sourceCommit": "c62309ce86b5aade4465e27a4b2d23f6cb870fd3",
+    "sourceInputsSha256": "021964cd2cec3a49fee60e702a8ca7f7619277be8622a1ed8f239bdcda753576",
+    "localQaAuthority": true
+  },
+  "history": [
+    "a1/result.json",
+    "a2/result.json"
+  ],
+  "priorArtifact": "prior-051-archive.json",
+  "buildHistory": "a1 failed on Git ownership before producing an artifact. a2 built and audited but selected zero browser cases because of a harness filter; its disposable signer was closed. a3 rebuilds with a fresh local QA authority after a two-case discovery guard. Runtime source is unchanged.",
+  "copyReviewStatus": "draft",
+  "fullSuiteRun": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "rootVisualReview": {
+    "observed": "Mobile restored RU/EN content is readable. Check and Restore buttons touch vertically and need spacing. The cold EN screenshot was taken during the translucent launch exit; await launch removal for the next screenshot.",
+    "followUp": "Apply these presentation/fixture corrections with the new owner-requested high-quality default, then build and verify that changed slice."
+  },
+  "limitations": [
+    "Local QA authority and browser fixtures do not establish merchant integration, production access or installed OS behavior.",
+    "English factual content, bilingual editorial and later child/commerce/device/release gates remain open."
+  ]
+}

@@ -1,0 +1,224 @@
+{
+  "localQaOnly": true,
+  "buildId": "3eb567d665f5abf340838a1c1866a36147be4d3e7e5ee425f8484735f32794ab",
+  "ownedCacheEntry": {
+    "url": "/planet/en/",
+    "bytes": 2623,
+    "sha256": "56b6fd7a3eb3589651b2adfc241eb6aef73caa53dbf298dfed8e4f6288156424",
+    "kind": "shell",
+    "aliases": []
+  },
+  "simulatedApis": [
+    "beforeinstallprompt.prompt/userChoice",
+    "StorageManager.persist/persisted"
+  ],
+  "actualOsInstallation": false,
+  "checks": [
+    {
+      "locale": "ru",
+      "networkAttempts": 0,
+      "status": "complete",
+      "engineBuildId": "3eb567d665f5abf340838a1c1866a36147be4d3e7e5ee425f8484735f32794ab",
+      "activeBuildId": "3eb567d665f5abf340838a1c1866a36147be4d3e7e5ee425f8484735f32794ab",
+      "fileCount": 317,
+      "bytes": 20101103
+    },
+    {
+      "locale": "en",
+      "networkAttempts": 0,
+      "status": "incomplete",
+      "engineBuildId": "3eb567d665f5abf340838a1c1866a36147be4d3e7e5ee425f8484735f32794ab",
+      "activeBuildId": "3eb567d665f5abf340838a1c1866a36147be4d3e7e5ee425f8484735f32794ab"
+    },
+    {
+      "locale": "ru",
+      "networkAttempts": 0,
+      "status": "complete",
+      "engineBuildId": "3eb567d665f5abf340838a1c1866a36147be4d3e7e5ee425f8484735f32794ab",
+      "activeBuildId": "3eb567d665f5abf340838a1c1866a36147be4d3e7e5ee425f8484735f32794ab",
+      "fileCount": 317,
+      "bytes": 20101103
+    }
+  ],
+  "repairs": [
+    {
+      "locale": "ru",
+      "networkAttempts": 1,
+      "urls": [
+        "http://127.0.0.1:4296/planet/en/"
+      ],
+      "status": "complete",
+      "engineBuildId": "3eb567d665f5abf340838a1c1866a36147be4d3e7e5ee425f8484735f32794ab",
+      "activeBuildId": "3eb567d665f5abf340838a1c1866a36147be4d3e7e5ee425f8484735f32794ab",
+      "fileCount": 317,
+      "bytes": 20101103,
+      "repairedFiles": 1,
+      "repairedBytes": 2623
+    }
+  ],
+  "screenshots": [
+    "device-ru-complete.png",
+    "device-en-simulated-install-accepted.png",
+    "device-en-incomplete.png",
+    "device-en-simulated-persistence-denied.png",
+    "device-ru-repaired.png",
+    "device-en-repaired.png",
+    "device-repaired-cold-ru.png",
+    "device-repaired-cold-en.png"
+  ],
+  "headerBounds": [
+    {
+      "phase": "complete",
+      "locale": "ru",
+      "viewport": {
+        "width": 412,
+        "height": 839
+      },
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 412,
+        "height": 75
+      }
+    },
+    {
+      "phase": "simulated-install-accepted",
+      "locale": "en",
+      "viewport": {
+        "width": 412,
+        "height": 839
+      },
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 412,
+        "height": 75
+      }
+    },
+    {
+      "phase": "incomplete",
+      "locale": "en",
+      "viewport": {
+        "width": 412,
+        "height": 839
+      },
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 412,
+        "height": 75
+      }
+    },
+    {
+      "phase": "simulated-persistence-denied",
+      "locale": "en",
+      "viewport": {
+        "width": 412,
+        "height": 839
+      },
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 412,
+        "height": 75
+      }
+    },
+    {
+      "phase": "retained-incomplete-and-denied",
+      "locale": "ru",
+      "viewport": {
+        "width": 412,
+        "height": 839
+      },
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 412,
+        "height": 75
+      }
+    },
+    {
+      "phase": "real-offline-repair-complete",
+      "locale": "ru",
+      "viewport": {
+        "width": 412,
+        "height": 839
+      },
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 412,
+        "height": 75
+      }
+    },
+    {
+      "phase": "repair-result-survives-locale",
+      "locale": "en",
+      "viewport": {
+        "width": 412,
+        "height": 839
+      },
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 412,
+        "height": 75
+      }
+    },
+    {
+      "phase": "complete",
+      "locale": "ru",
+      "viewport": {
+        "width": 412,
+        "height": 839
+      },
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 412,
+        "height": 75
+      }
+    },
+    {
+      "phase": "collection-reopened",
+      "locale": "ru",
+      "viewport": {
+        "width": 412,
+        "height": 839
+      },
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 412,
+        "height": 75
+      }
+    }
+  ],
+  "coldOffline": [
+    {
+      "language": "ru",
+      "country": "russia",
+      "canvasCount": 1,
+      "savedAccess": "saved"
+    },
+    {
+      "language": "en",
+      "country": "russia",
+      "canvasCount": 1,
+      "savedAccess": "saved"
+    }
+  ],
+  "simulatedDecisions": {
+    "prompts": [
+      {
+        "userActivation": true
+      }
+    ],
+    "persistence": [
+      {
+        "userActivation": true
+      }
+    ]
+  },
+  "restoredSha256": "56b6fd7a3eb3589651b2adfc241eb6aef73caa53dbf298dfed8e4f6288156424"
+}

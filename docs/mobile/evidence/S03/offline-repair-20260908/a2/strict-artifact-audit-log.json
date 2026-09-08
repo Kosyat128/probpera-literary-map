@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "originalPath": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a2/strict-artifact-audit.log",
+  "originalBytes": 792,
+  "originalSha256": "3a63f1994e2257317f3a78a0fcc15d794e855a242586c8ee825e449a2d5c99a7",
+  "reconstruction": "UTF-8 encode text exactly, without newline normalization",
+  "text": "{\n  \"pass\": true,\n  \"identity\": {\n    \"buildId\": \"7115e0d11b58cf4af16e709e9255db6a3dda3a2066aaa6fe38eb2ee3a9ae01f3\",\n    \"sourceCommit\": \"c62309ce86b5aade4465e27a4b2d23f6cb870fd3\",\n    \"localQaAuthority\": true\n  },\n  \"counts\": {\n    \"files\": 363,\n    \"bytes\": 41480060,\n    \"bootstrapFiles\": 317,\n    \"bootstrapBytes\": 20101103,\n    \"sourceInputs\": 968,\n    \"publicSources\": 292,\n    \"scripts\": 42\n  },\n  \"findings\": [],\n  \"releaseReady\": false,\n  \"limitations\": [\n    \"Preparation integrity and current source-input freshness only; not an RC, editorial/rights approval, entitlement authority or deployment approval.\",\n    \"Static module/HTML/worker configuration checks do not prove browser behavior or arbitrary executable equivalence; real browser and native gates remain required.\"\n  ]\n}\n"
+}

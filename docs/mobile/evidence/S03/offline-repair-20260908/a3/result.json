@@ -1,0 +1,328 @@
+{
+  "schemaVersion": 1,
+  "stage": "S03",
+  "recordedAt": "2026-09-08T08:12:33.743Z",
+  "runId": "pwa-offline-repair-20260908-a3",
+  "sourceCommit": "c62309ce86b5aade4465e27a4b2d23f6cb870fd3",
+  "buildId": "3eb567d665f5abf340838a1c1866a36147be4d3e7e5ee425f8484735f32794ab",
+  "status": "SELECTED_WORKING_VALIDATION_PASSED",
+  "strictArtifactAuditPassed": true,
+  "statistics": {
+    "startTime": "2026-09-08T08:10:59.250Z",
+    "duration": 69595.45,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "sourceUnchanged": true,
+  "executions": [
+    {
+      "title": "device preparation restores real offline bytes and keeps simulated browser decisions truthful",
+      "project": "pwa-desktop",
+      "expectedStatus": "passed",
+      "status": "passed",
+      "durationMs": 30111,
+      "errors": [],
+      "attachments": [
+        {
+          "name": "device-preparation-evidence",
+          "contentType": "application/json",
+          "body": "ewogICJsb2NhbFFhT25seSI6IHRydWUsCiAgImJ1aWxkSWQiOiAiM2ViNTY3ZDY2NWY1YWJmMzQwODM4YTFjMTg2NmEzNjE0N2JlNGQzZTdlNWVlNDI1Zjg0ODQ3MzVmMzI3OTRhYiIsCiAgIm93bmVkQ2FjaGVFbnRyeSI6IHsKICAgICJ1cmwiOiAiL3BsYW5ldC9lbi8iLAogICAgImJ5dGVzIjogMjYyMywKICAgICJzaGEyNTYiOiAiNTZiNmZkN2EzZWIzNTg5NjUxYjJhZGZjMjQxZWI2YWVmNzNjYWE1M2RiZjI5OGRmZWQ4ZTRmNjI4ODE1NjQyNCIsCiAgICAia2luZCI6ICJzaGVsbCIsCiAgICAiYWxpYXNlcyI6IFtdCiAgfSwKICAic2ltdWxhdGVkQXBpcyI6IFsKICAgICJiZWZvcmVpbnN0YWxscHJvbXB0LnByb21wdC91c2VyQ2hvaWNlIiwKICAgICJTdG9yYWdlTWFuYWdlci5wZXJzaXN0L3BlcnNpc3RlZCIKICBdLAogICJhY3R1YWxPc0luc3RhbGxhdGlvbiI6IGZhbHNlLAogICJjaGVja3MiOiBbCiAgICB7CiAgICAgICJsb2NhbGUiOiAicnUiLAogICAgICAibmV0d29ya0F0dGVtcHRzIjogMCwKICAgICAgInN0YXR1cyI6ICJjb21wbGV0ZSIsCiAgICAgICJlbmdpbmVCdWlsZElkIjogIjNlYjU2N2Q2NjVmNWFiZjM0MDgzOGExYzE4NjZhMzYxNDdiZTRkM2U3ZTVlZTQyNWY4NDg0NzM1ZjMyNzk0YWIiLAogICAgICAiYWN0aXZlQnVpbGRJZCI6ICIzZWI1NjdkNjY1ZjVhYmYzNDA4MzhhMWMxODY2YTM2MTQ3YmU0ZDNlN2U1ZWU0MjVmODQ4NDczNWYzMjc5NGFiIiwKICAgICAgImZpbGVDb3VudCI6IDMxNywKICAgICAgImJ5dGVzIjogMjAxMDExMDMKICAgIH0sCiAgICB7CiAgICAgICJsb2NhbGUiOiAiZW4iLAogICAgICAibmV0d29ya0F0dGVtcHRzIjogMCwKICAgICAgInN0YXR1cyI6ICJpbmNvbXBsZXRlIiwKICAgICAgImVuZ2luZUJ1aWxkSWQiOiAiM2ViNTY3ZDY2NWY1YWJmMzQwODM4YTFjMTg2NmEzNjE0N2JlNGQzZTdlNWVlNDI1Zjg0ODQ3MzVmMzI3OTRhYiIsCiAgICAgICJhY3RpdmVCdWlsZElkIjogIjNlYjU2N2Q2NjVmNWFiZjM0MDgzOGExYzE4NjZhMzYxNDdiZTRkM2U3ZTVlZTQyNWY4NDg0NzM1ZjMyNzk0YWIiCiAgICB9LAogICAgewogICAgICAibG9jYWxlIjogInJ1IiwKICAgICAgIm5ldHdvcmtBdHRlbXB0cyI6IDAsCiAgICAgICJzdGF0dXMiOiAiY29tcGxldGUiLAogICAgICAiZW5naW5lQnVpbGRJZCI6ICIzZWI1NjdkNjY1ZjVhYmYzNDA4MzhhMWMxODY2YTM2MTQ3YmU0ZDNlN2U1ZWU0MjVmODQ4NDczNWYzMjc5NGFiIiwKICAgICAgImFjdGl2ZUJ1aWxkSWQiOiAiM2ViNTY3ZDY2NWY1YWJmMzQwODM4YTFjMTg2NmEzNjE0N2JlNGQzZTdlNWVlNDI1Zjg0ODQ3MzVmMzI3OTRhYiIsCiAgICAgICJmaWxlQ291bnQiOiAzMTcsCiAgICAgICJieXRlcyI6IDIwMTAxMTAzCiAgICB9CiAgXSwKICAicmVwYWlycyI6IFsKICAgIHsKICAgICAgImxvY2FsZSI6ICJydSIsCiAgICAgICJuZXR3b3JrQXR0ZW1wdHMiOiAxLAogICAgICAidXJscyI6IFsKICAgICAgICAiaHR0cDovLzEyNy4wLjAuMTo0Mjk2L3BsYW5ldC9lbi8iCiAgICAgIF0sCiAgICAgICJzdGF0dXMiOiAiY29tcGxldGUiLAogICAgICAiZW5naW5lQnVpbGRJZCI6ICIzZWI1NjdkNjY1ZjVhYmYzNDA4MzhhMWMxODY2YTM2MTQ3YmU0ZDNlN2U1ZWU0MjVmODQ4NDczNWYzMjc5NGFiIiwKICAgICAgImFjdGl2ZUJ1aWxkSWQiOiAiM2ViNTY3ZDY2NWY1YWJmMzQwODM4YTFjMTg2NmEzNjE0N2JlNGQzZTdlNWVlNDI1Zjg0ODQ3MzVmMzI3OTRhYiIsCiAgICAgICJmaWxlQ291bnQiOiAzMTcsCiAgICAgICJieXRlcyI6IDIwMTAxMTAzLAogICAgICAicmVwYWlyZWRGaWxlcyI6IDEsCiAgICAgICJyZXBhaXJlZEJ5dGVzIjogMjYyMwogICAgfQogIF0sCiAgInNjcmVlbnNob3RzIjogWwogICAgImRldmljZS1ydS1jb21wbGV0ZS5wbmciLAogICAgImRldmljZS1lbi1zaW11bGF0ZWQtaW5zdGFsbC1hY2NlcHRlZC5wbmciLAogICAgImRldmljZS1lbi1pbmNvbXBsZXRlLnBuZyIsCiAgICAiZGV2aWNlLWVuLXNpbXVsYXRlZC1wZXJzaXN0ZW5jZS1kZW5pZWQucG5nIiwKICAgICJkZXZpY2UtcnUtcmVwYWlyZWQucG5nIiwKICAgICJkZXZpY2UtZW4tcmVwYWlyZWQucG5nIiwKICAgICJkZXZpY2UtcmVwYWlyZWQtY29sZC1ydS5wbmciLAogICAgImRldmljZS1yZXBhaXJlZC1jb2xkLWVuLnBuZyIKICBdLAogICJoZWFkZXJCb3VuZHMiOiBbCiAgICB7CiAgICAgICJwaGFzZSI6ICJjb21wbGV0ZSIsCiAgICAgICJsb2NhbGUiOiAicnUiLAogICAgICAidmlld3BvcnQiOiB7CiAgICAgICAgIndpZHRoIjogMTI4MCwKICAgICAgICAiaGVpZ2h0IjogNzIwCiAgICAgIH0sCiAgICAgICJib3VuZHMiOiB7CiAgICAgICAgIngiOiA0NjAsCiAgICAgICAgInkiOiAwLAogICAgICAgICJ3aWR0aCI6IDgyMCwKICAgICAgICAiaGVpZ2h0IjogNzUKICAgICAgfQogICAgfSwKICAgIHsKICAgICAgInBoYXNlIjogInNpbXVsYXRlZC1pbnN0YWxsLWFjY2VwdGVkIiwKICAgICAgImxvY2FsZSI6ICJlbiIsCiAgICAgICJ2aWV3cG9ydCI6IHsKICAgICAgICAid2lkdGgiOiAxMjgwLAogICAgICAgICJoZWlnaHQiOiA3MjAKICAgICAgfSwKICAgICAgImJvdW5kcyI6IHsKICAgICAgICAieCI6IDQ2MCwKICAgICAgICAieSI6IDAsCiAgICAgICAgIndpZHRoIjogODIwLAogICAgICAgICJoZWlnaHQiOiA3NQogICAgICB9CiAgICB9LAogICAgewogICAgICAicGhhc2UiOiAiaW5jb21wbGV0ZSIsCiAgICAgICJsb2NhbGUiOiAiZW4iLAogICAgICAidmlld3BvcnQiOiB7CiAgICAgICAgIndpZHRoIjogMTI4MCwKICAgICAgICAiaGVpZ2h0IjogNzIwCiAgICAgIH0sCiAgICAgICJib3VuZHMiOiB7CiAgICAgICAgIngiOiA0NjAsCiAgICAgICAgInkiOiAwLAogICAgICAgICJ3aWR0aCI6IDgyMCwKICAgICAgICAiaGVpZ2h0IjogNzUKICAgICAgfQogICAgfSwKICAgIHsKICAgICAgInBoYXNlIjogInNpbXVsYXRlZC1wZXJzaXN0ZW5jZS1kZW5pZWQiLAogICAgICAibG9jYWxlIjogImVuIiwKICAgICAgInZpZXdwb3J0IjogewogICAgICAgICJ3aWR0aCI6IDEyODAsCiAgICAgICAgImhlaWdodCI6IDcyMAogICAgICB9LAogICAgICAiYm91bmRzIjogewogICAgICAgICJ4IjogNDYwLAogICAgICAgICJ5IjogMCwKICAgICAgICAid2lkdGgiOiA4MjAsCiAgICAgICAgImhlaWdodCI6IDc1CiAgICAgIH0KICAgIH0sCiAgICB7CiAgICAgICJwaGFzZSI6ICJyZXRhaW5lZC1pbmNvbXBsZXRlLWFuZC1kZW5pZWQiLAogICAgICAibG9jYWxlIjogInJ1IiwKICAgICAgInZpZXdwb3J0IjogewogICAgICAgICJ3aWR0aCI6IDEyODAsCiAgICAgICAgImhlaWdodCI6IDcyMAogICAgICB9LAogICAgICAiYm91bmRzIjogewogICAgICAgICJ4IjogNDYwLAogICAgICAgICJ5IjogMCwKICAgICAgICAid2lkdGgiOiA4MjAsCiAgICAgICAgImhlaWdodCI6IDc1CiAgICAgIH0KICAgIH0sCiAgICB7CiAgICAgICJwaGFzZSI6ICJyZWFsLW9mZmxpbmUtcmVwYWlyLWNvbXBsZXRlIiwKICAgICAgImxvY2FsZSI6ICJydSIsCiAgICAgICJ2aWV3cG9ydCI6IHsKICAgICAgICAid2lkdGgiOiAxMjgwLAogICAgICAgICJoZWlnaHQiOiA3MjAKICAgICAgfSwKICAgICAgImJvdW5kcyI6IHsKICAgICAgICAieCI6IDQ2MCwKICAgICAgICAieSI6IDAsCiAgICAgICAgIndpZHRoIjogODIwLAogICAgICAgICJoZWlnaHQiOiA3NQogICAgICB9CiAgICB9LAogICAgewogICAgICAicGhhc2UiOiAicmVwYWlyLXJlc3VsdC1zdXJ2aXZlcy1sb2NhbGUiLAogICAgICAibG9jYWxlIjogImVuIiwKICAgICAgInZpZXdwb3J0IjogewogICAgICAgICJ3aWR0aCI6IDEyODAsCiAgICAgICAgImhlaWdodCI6IDcyMAogICAgICB9LAogICAgICAiYm91bmRzIjogewogICAgICAgICJ4IjogNDYwLAogICAgICAgICJ5IjogMCwKICAgICAgICAid2lkdGgiOiA4MjAsCiAgICAgICAgImhlaWdodCI6IDc1CiAgICAgIH0KICAgIH0sCiAgICB7CiAgICAgICJwaGFzZSI6ICJjb21wbGV0ZSIsCiAgICAgICJsb2NhbGUiOiAicnUiLAogICAgICAidmlld3BvcnQiOiB7CiAgICAgICAgIndpZHRoIjogMTI4MCwKICAgICAgICAiaGVpZ2h0IjogNzIwCiAgICAgIH0sCiAgICAgICJib3VuZHMiOiB7CiAgICAgICAgIngiOiA0NjAsCiAgICAgICAgInkiOiAwLAogICAgICAgICJ3aWR0aCI6IDgyMCwKICAgICAgICAiaGVpZ2h0IjogNzUKICAgICAgfQogICAgfSwKICAgIHsKICAgICAgInBoYXNlIjogImNvbGxlY3Rpb24tcmVvcGVuZWQiLAogICAgICAibG9jYWxlIjogInJ1IiwKICAgICAgInZpZXdwb3J0IjogewogICAgICAgICJ3aWR0aCI6IDEyODAsCiAgICAgICAgImhlaWdodCI6IDcyMAogICAgICB9LAogICAgICAiYm91bmRzIjogewogICAgICAgICJ4IjogNDYwLAogICAgICAgICJ5IjogMCwKICAgICAgICAid2lkdGgiOiA4MjAsCiAgICAgICAgImhlaWdodCI6IDc1CiAgICAgIH0KICAgIH0KICBdLAogICJjb2xkT2ZmbGluZSI6IFsKICAgIHsKICAgICAgImxhbmd1YWdlIjogInJ1IiwKICAgICAgImNvdW50cnkiOiAicnVzc2lhIiwKICAgICAgImNhbnZhc0NvdW50IjogMSwKICAgICAgInNhdmVkQWNjZXNzIjogInNhdmVkIgogICAgfSwKICAgIHsKICAgICAgImxhbmd1YWdlIjogImVuIiwKICAgICAgImNvdW50cnkiOiAicnVzc2lhIiwKICAgICAgImNhbnZhc0NvdW50IjogMSwKICAgICAgInNhdmVkQWNjZXNzIjogInNhdmVkIgogICAgfQogIF0sCiAgInNpbXVsYXRlZERlY2lzaW9ucyI6IHsKICAgICJwcm9tcHRzIjogWwogICAgICB7CiAgICAgICAgInVzZXJBY3RpdmF0aW9uIjogdHJ1ZQogICAgICB9CiAgICBdLAogICAgInBlcnNpc3RlbmNlIjogWwogICAgICB7CiAgICAgICAgInVzZXJBY3RpdmF0aW9uIjogdHJ1ZQogICAgICB9CiAgICBdCiAgfSwKICAicmVzdG9yZWRTaGEyNTYiOiAiNTZiNmZkN2EzZWIzNTg5NjUxYjJhZGZjMjQxZWI2YWVmNzNjYWE1M2RiZjI5OGRmZWQ4ZTRmNjI4ODE1NjQyNCIKfQ=="
+        }
+      ]
+    },
+    {
+      "title": "device preparation restores real offline bytes and keeps simulated browser decisions truthful",
+      "project": "pwa-mobile",
+      "expectedStatus": "passed",
+      "status": "passed",
+      "durationMs": 34237,
+      "errors": [],
+      "attachments": [
+        {
+          "name": "device-preparation-evidence",
+          "contentType": "application/json",
+          "body": "ewogICJsb2NhbFFhT25seSI6IHRydWUsCiAgImJ1aWxkSWQiOiAiM2ViNTY3ZDY2NWY1YWJmMzQwODM4YTFjMTg2NmEzNjE0N2JlNGQzZTdlNWVlNDI1Zjg0ODQ3MzVmMzI3OTRhYiIsCiAgIm93bmVkQ2FjaGVFbnRyeSI6IHsKICAgICJ1cmwiOiAiL3BsYW5ldC9lbi8iLAogICAgImJ5dGVzIjogMjYyMywKICAgICJzaGEyNTYiOiAiNTZiNmZkN2EzZWIzNTg5NjUxYjJhZGZjMjQxZWI2YWVmNzNjYWE1M2RiZjI5OGRmZWQ4ZTRmNjI4ODE1NjQyNCIsCiAgICAia2luZCI6ICJzaGVsbCIsCiAgICAiYWxpYXNlcyI6IFtdCiAgfSwKICAic2ltdWxhdGVkQXBpcyI6IFsKICAgICJiZWZvcmVpbnN0YWxscHJvbXB0LnByb21wdC91c2VyQ2hvaWNlIiwKICAgICJTdG9yYWdlTWFuYWdlci5wZXJzaXN0L3BlcnNpc3RlZCIKICBdLAogICJhY3R1YWxPc0luc3RhbGxhdGlvbiI6IGZhbHNlLAogICJjaGVja3MiOiBbCiAgICB7CiAgICAgICJsb2NhbGUiOiAicnUiLAogICAgICAibmV0d29ya0F0dGVtcHRzIjogMCwKICAgICAgInN0YXR1cyI6ICJjb21wbGV0ZSIsCiAgICAgICJlbmdpbmVCdWlsZElkIjogIjNlYjU2N2Q2NjVmNWFiZjM0MDgzOGExYzE4NjZhMzYxNDdiZTRkM2U3ZTVlZTQyNWY4NDg0NzM1ZjMyNzk0YWIiLAogICAgICAiYWN0aXZlQnVpbGRJZCI6ICIzZWI1NjdkNjY1ZjVhYmYzNDA4MzhhMWMxODY2YTM2MTQ3YmU0ZDNlN2U1ZWU0MjVmODQ4NDczNWYzMjc5NGFiIiwKICAgICAgImZpbGVDb3VudCI6IDMxNywKICAgICAgImJ5dGVzIjogMjAxMDExMDMKICAgIH0sCiAgICB7CiAgICAgICJsb2NhbGUiOiAiZW4iLAogICAgICAibmV0d29ya0F0dGVtcHRzIjogMCwKICAgICAgInN0YXR1cyI6ICJpbmNvbXBsZXRlIiwKICAgICAgImVuZ2luZUJ1aWxkSWQiOiAiM2ViNTY3ZDY2NWY1YWJmMzQwODM4YTFjMTg2NmEzNjE0N2JlNGQzZTdlNWVlNDI1Zjg0ODQ3MzVmMzI3OTRhYiIsCiAgICAgICJhY3RpdmVCdWlsZElkIjogIjNlYjU2N2Q2NjVmNWFiZjM0MDgzOGExYzE4NjZhMzYxNDdiZTRkM2U3ZTVlZTQyNWY4NDg0NzM1ZjMyNzk0YWIiCiAgICB9LAogICAgewogICAgICAibG9jYWxlIjogInJ1IiwKICAgICAgIm5ldHdvcmtBdHRlbXB0cyI6IDAsCiAgICAgICJzdGF0dXMiOiAiY29tcGxldGUiLAogICAgICAiZW5naW5lQnVpbGRJZCI6ICIzZWI1NjdkNjY1ZjVhYmYzNDA4MzhhMWMxODY2YTM2MTQ3YmU0ZDNlN2U1ZWU0MjVmODQ4NDczNWYzMjc5NGFiIiwKICAgICAgImFjdGl2ZUJ1aWxkSWQiOiAiM2ViNTY3ZDY2NWY1YWJmMzQwODM4YTFjMTg2NmEzNjE0N2JlNGQzZTdlNWVlNDI1Zjg0ODQ3MzVmMzI3OTRhYiIsCiAgICAgICJmaWxlQ291bnQiOiAzMTcsCiAgICAgICJieXRlcyI6IDIwMTAxMTAzCiAgICB9CiAgXSwKICAicmVwYWlycyI6IFsKICAgIHsKICAgICAgImxvY2FsZSI6ICJydSIsCiAgICAgICJuZXR3b3JrQXR0ZW1wdHMiOiAxLAogICAgICAidXJscyI6IFsKICAgICAgICAiaHR0cDovLzEyNy4wLjAuMTo0Mjk2L3BsYW5ldC9lbi8iCiAgICAgIF0sCiAgICAgICJzdGF0dXMiOiAiY29tcGxldGUiLAogICAgICAiZW5naW5lQnVpbGRJZCI6ICIzZWI1NjdkNjY1ZjVhYmYzNDA4MzhhMWMxODY2YTM2MTQ3YmU0ZDNlN2U1ZWU0MjVmODQ4NDczNWYzMjc5NGFiIiwKICAgICAgImFjdGl2ZUJ1aWxkSWQiOiAiM2ViNTY3ZDY2NWY1YWJmMzQwODM4YTFjMTg2NmEzNjE0N2JlNGQzZTdlNWVlNDI1Zjg0ODQ3MzVmMzI3OTRhYiIsCiAgICAgICJmaWxlQ291bnQiOiAzMTcsCiAgICAgICJieXRlcyI6IDIwMTAxMTAzLAogICAgICAicmVwYWlyZWRGaWxlcyI6IDEsCiAgICAgICJyZXBhaXJlZEJ5dGVzIjogMjYyMwogICAgfQogIF0sCiAgInNjcmVlbnNob3RzIjogWwogICAgImRldmljZS1ydS1jb21wbGV0ZS5wbmciLAogICAgImRldmljZS1lbi1zaW11bGF0ZWQtaW5zdGFsbC1hY2NlcHRlZC5wbmciLAogICAgImRldmljZS1lbi1pbmNvbXBsZXRlLnBuZyIsCiAgICAiZGV2aWNlLWVuLXNpbXVsYXRlZC1wZXJzaXN0ZW5jZS1kZW5pZWQucG5nIiwKICAgICJkZXZpY2UtcnUtcmVwYWlyZWQucG5nIiwKICAgICJkZXZpY2UtZW4tcmVwYWlyZWQucG5nIiwKICAgICJkZXZpY2UtcmVwYWlyZWQtY29sZC1ydS5wbmciLAogICAgImRldmljZS1yZXBhaXJlZC1jb2xkLWVuLnBuZyIKICBdLAogICJoZWFkZXJCb3VuZHMiOiBbCiAgICB7CiAgICAgICJwaGFzZSI6ICJjb21wbGV0ZSIsCiAgICAgICJsb2NhbGUiOiAicnUiLAogICAgICAidmlld3BvcnQiOiB7CiAgICAgICAgIndpZHRoIjogNDEyLAogICAgICAgICJoZWlnaHQiOiA4MzkKICAgICAgfSwKICAgICAgImJvdW5kcyI6IHsKICAgICAgICAieCI6IDAsCiAgICAgICAgInkiOiAwLAogICAgICAgICJ3aWR0aCI6IDQxMiwKICAgICAgICAiaGVpZ2h0IjogNzUKICAgICAgfQogICAgfSwKICAgIHsKICAgICAgInBoYXNlIjogInNpbXVsYXRlZC1pbnN0YWxsLWFjY2VwdGVkIiwKICAgICAgImxvY2FsZSI6ICJlbiIsCiAgICAgICJ2aWV3cG9ydCI6IHsKICAgICAgICAid2lkdGgiOiA0MTIsCiAgICAgICAgImhlaWdodCI6IDgzOQogICAgICB9LAogICAgICAiYm91bmRzIjogewogICAgICAgICJ4IjogMCwKICAgICAgICAieSI6IDAsCiAgICAgICAgIndpZHRoIjogNDEyLAogICAgICAgICJoZWlnaHQiOiA3NQogICAgICB9CiAgICB9LAogICAgewogICAgICAicGhhc2UiOiAiaW5jb21wbGV0ZSIsCiAgICAgICJsb2NhbGUiOiAiZW4iLAogICAgICAidmlld3BvcnQiOiB7CiAgICAgICAgIndpZHRoIjogNDEyLAogICAgICAgICJoZWlnaHQiOiA4MzkKICAgICAgfSwKICAgICAgImJvdW5kcyI6IHsKICAgICAgICAieCI6IDAsCiAgICAgICAgInkiOiAwLAogICAgICAgICJ3aWR0aCI6IDQxMiwKICAgICAgICAiaGVpZ2h0IjogNzUKICAgICAgfQogICAgfSwKICAgIHsKICAgICAgInBoYXNlIjogInNpbXVsYXRlZC1wZXJzaXN0ZW5jZS1kZW5pZWQiLAogICAgICAibG9jYWxlIjogImVuIiwKICAgICAgInZpZXdwb3J0IjogewogICAgICAgICJ3aWR0aCI6IDQxMiwKICAgICAgICAiaGVpZ2h0IjogODM5CiAgICAgIH0sCiAgICAgICJib3VuZHMiOiB7CiAgICAgICAgIngiOiAwLAogICAgICAgICJ5IjogMCwKICAgICAgICAid2lkdGgiOiA0MTIsCiAgICAgICAgImhlaWdodCI6IDc1CiAgICAgIH0KICAgIH0sCiAgICB7CiAgICAgICJwaGFzZSI6ICJyZXRhaW5lZC1pbmNvbXBsZXRlLWFuZC1kZW5pZWQiLAogICAgICAibG9jYWxlIjogInJ1IiwKICAgICAgInZpZXdwb3J0IjogewogICAgICAgICJ3aWR0aCI6IDQxMiwKICAgICAgICAiaGVpZ2h0IjogODM5CiAgICAgIH0sCiAgICAgICJib3VuZHMiOiB7CiAgICAgICAgIngiOiAwLAogICAgICAgICJ5IjogMCwKICAgICAgICAid2lkdGgiOiA0MTIsCiAgICAgICAgImhlaWdodCI6IDc1CiAgICAgIH0KICAgIH0sCiAgICB7CiAgICAgICJwaGFzZSI6ICJyZWFsLW9mZmxpbmUtcmVwYWlyLWNvbXBsZXRlIiwKICAgICAgImxvY2FsZSI6ICJydSIsCiAgICAgICJ2aWV3cG9ydCI6IHsKICAgICAgICAid2lkdGgiOiA0MTIsCiAgICAgICAgImhlaWdodCI6IDgzOQogICAgICB9LAogICAgICAiYm91bmRzIjogewogICAgICAgICJ4IjogMCwKICAgICAgICAieSI6IDAsCiAgICAgICAgIndpZHRoIjogNDEyLAogICAgICAgICJoZWlnaHQiOiA3NQogICAgICB9CiAgICB9LAogICAgewogICAgICAicGhhc2UiOiAicmVwYWlyLXJlc3VsdC1zdXJ2aXZlcy1sb2NhbGUiLAogICAgICAibG9jYWxlIjogImVuIiwKICAgICAgInZpZXdwb3J0IjogewogICAgICAgICJ3aWR0aCI6IDQxMiwKICAgICAgICAiaGVpZ2h0IjogODM5CiAgICAgIH0sCiAgICAgICJib3VuZHMiOiB7CiAgICAgICAgIngiOiAwLAogICAgICAgICJ5IjogMCwKICAgICAgICAid2lkdGgiOiA0MTIsCiAgICAgICAgImhlaWdodCI6IDc1CiAgICAgIH0KICAgIH0sCiAgICB7CiAgICAgICJwaGFzZSI6ICJjb21wbGV0ZSIsCiAgICAgICJsb2NhbGUiOiAicnUiLAogICAgICAidmlld3BvcnQiOiB7CiAgICAgICAgIndpZHRoIjogNDEyLAogICAgICAgICJoZWlnaHQiOiA4MzkKICAgICAgfSwKICAgICAgImJvdW5kcyI6IHsKICAgICAgICAieCI6IDAsCiAgICAgICAgInkiOiAwLAogICAgICAgICJ3aWR0aCI6IDQxMiwKICAgICAgICAiaGVpZ2h0IjogNzUKICAgICAgfQogICAgfSwKICAgIHsKICAgICAgInBoYXNlIjogImNvbGxlY3Rpb24tcmVvcGVuZWQiLAogICAgICAibG9jYWxlIjogInJ1IiwKICAgICAgInZpZXdwb3J0IjogewogICAgICAgICJ3aWR0aCI6IDQxMiwKICAgICAgICAiaGVpZ2h0IjogODM5CiAgICAgIH0sCiAgICAgICJib3VuZHMiOiB7CiAgICAgICAgIngiOiAwLAogICAgICAgICJ5IjogMCwKICAgICAgICAid2lkdGgiOiA0MTIsCiAgICAgICAgImhlaWdodCI6IDc1CiAgICAgIH0KICAgIH0KICBdLAogICJjb2xkT2ZmbGluZSI6IFsKICAgIHsKICAgICAgImxhbmd1YWdlIjogInJ1IiwKICAgICAgImNvdW50cnkiOiAicnVzc2lhIiwKICAgICAgImNhbnZhc0NvdW50IjogMSwKICAgICAgInNhdmVkQWNjZXNzIjogInNhdmVkIgogICAgfSwKICAgIHsKICAgICAgImxhbmd1YWdlIjogImVuIiwKICAgICAgImNvdW50cnkiOiAicnVzc2lhIiwKICAgICAgImNhbnZhc0NvdW50IjogMSwKICAgICAgInNhdmVkQWNjZXNzIjogInNhdmVkIgogICAgfQogIF0sCiAgInNpbXVsYXRlZERlY2lzaW9ucyI6IHsKICAgICJwcm9tcHRzIjogWwogICAgICB7CiAgICAgICAgInVzZXJBY3RpdmF0aW9uIjogdHJ1ZQogICAgICB9CiAgICBdLAogICAgInBlcnNpc3RlbmNlIjogWwogICAgICB7CiAgICAgICAgInVzZXJBY3RpdmF0aW9uIjogdHJ1ZQogICAgICB9CiAgICBdCiAgfSwKICAicmVzdG9yZWRTaGEyNTYiOiAiNTZiNmZkN2EzZWIzNTg5NjUxYjJhZGZjMjQxZWI2YWVmNzNjYWE1M2RiZjI5OGRmZWQ4ZTRmNjI4ODE1NjQyNCIKfQ=="
+        }
+      ]
+    }
+  ],
+  "artifact": {
+    "path": ".tmp/pwa-artifacts/3eb567d6-offline-repair-20260908-a3",
+    "files": 363,
+    "bytes": 41480060,
+    "artifactSha256": "7e72666fa85ab49c02ba27cca949fff7ba488d8018845cc6bfbdc8413d4fb509",
+    "exactCopiesVerified": true
+  },
+  "preservedFiles": [
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a3/results.json",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a3/results.json",
+      "bytes": 18938,
+      "sha256": "6608c83bdc3e3c2c4f8f5ba4cc410c17d88aef2d50d7543aa66deb0f3972e50e"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a3/session.json",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a3/session.json",
+      "bytes": 929,
+      "sha256": "70b160ce2626468537737764416845d93058b67c5d2e8ec7e2d7de890245b1ee"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a3/source-before.json",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a3/source-before.json",
+      "bytes": 136315,
+      "sha256": "021964cd2cec3a49fee60e702a8ca7f7619277be8622a1ed8f239bdcda753576"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a3/source-after.json",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a3/source-after.json",
+      "bytes": 136315,
+      "sha256": "021964cd2cec3a49fee60e702a8ca7f7619277be8622a1ed8f239bdcda753576"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a3/source-comparison.json",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a3/source-comparison.json",
+      "bytes": 205,
+      "sha256": "943d653c3092d0bdafe6162f316f5e63b04230f1987be81532f2d7d1a3d3f809"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a3/browser-discovery.json",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a3/browser-discovery.json",
+      "bytes": 371,
+      "sha256": "3f6181ece6db90ffc42d1411e7f89148ad16e6a2c5497b101afbcbaa0339b318"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a3/browser-discovery-execution.json",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a3/browser-discovery-execution.json",
+      "bytes": 275,
+      "sha256": "1ff373220f0b3e2ac4cf82799d2afe229d6147a300db827c960de1c06f934ed6"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a3/support-before.json",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a3/support-before.json",
+      "bytes": 735,
+      "sha256": "9fbb176aa5a368fc085fa7472017de33595100e2cae7fb954d25f344b8b6db75"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a3/support-after.json",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a3/support-after.json",
+      "bytes": 735,
+      "sha256": "9fbb176aa5a368fc085fa7472017de33595100e2cae7fb954d25f344b8b6db75"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a3/strict-artifact-audit.json",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a3/strict-artifact-audit.json",
+      "bytes": 792,
+      "sha256": "d022c9f26c4a9c022d2a74f976f5d66a4650cd99d6a7c5e0349151445f145fba"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a3/strict-artifact-audit-execution.json",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a3/strict-artifact-audit-execution.json",
+      "bytes": 168,
+      "sha256": "902f5ab7ec8047d074886169c2b83d69e73a40a0808397f7aec956fed0f32ddd"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a3/browser-run-execution.json",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a3/browser-run-execution.json",
+      "bytes": 239,
+      "sha256": "8cf7d284b5c9973176fb2c8367069d01d190ed910a16024003de69c0654cf04e"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a3/server-closed.json",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a3/server-closed.json",
+      "bytes": 93,
+      "sha256": "9a97154398ee3e1e40a66ce6a7c394a3ecf3172c9ea2063401374c6a01246d54"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a3/run-result.json",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a3/run-result.json",
+      "bytes": 630,
+      "sha256": "cccadf48b95484afa1ff2da988b5297e21de6e766a0b2d27be85e0e047e1a01f"
+    },
+    {
+      "source": "dist-pwa/artifact.json",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a3/artifact.json",
+      "bytes": 213325,
+      "sha256": "7e72666fa85ab49c02ba27cca949fff7ba488d8018845cc6bfbdc8413d4fb509"
+    },
+    {
+      "source": ".tmp/s03-offline-repair-20260908/run-pwa-repair.mjs",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a3/helpers/run-pwa-repair.mjs",
+      "bytes": 9430,
+      "sha256": "45044a23ab993ec28613c5efc9114ad271c1e4cc06ed96a9be853502fedafb20"
+    },
+    {
+      "source": ".tmp/s03-offline-repair-20260908/run-pwa-repair.ps1",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a3/helpers/run-pwa-repair.ps1",
+      "bytes": 1070,
+      "sha256": "89a4355e3c281b3af411ba7267c631805b8b81fc80aa3b46a2d9c1703df26bd6"
+    },
+    {
+      "source": ".tmp/s03-offline-repair-20260908/playwright.repair.config.mjs",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a3/helpers/playwright.repair.config.mjs",
+      "bytes": 534,
+      "sha256": "1ddd6774e48a267f813073cfbe37a818e9543596381f1d754807f55cc9c908fe"
+    },
+    {
+      "source": ".tmp/s03-offline-repair-20260908/preserve-pwa-repair.mjs",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a3/helpers/preserve-pwa-repair.mjs",
+      "bytes": 9777,
+      "sha256": "f0714a8ad6ffde2c0536078defe9d34a7e808b8991adea21b8207d1382b60c3e"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a3/strict-artifact-audit.log",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a3/strict-artifact-audit-log.json",
+      "bytes": 1194,
+      "sha256": "242799ff116d2538e0b2bafad9c3529d0cdeddedfcf984b000eb588873d33ad9",
+      "rawBytes": 792,
+      "rawSha256": "d022c9f26c4a9c022d2a74f976f5d66a4650cd99d6a7c5e0349151445f145fba",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a3/browser-run.log",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a3/browser-run-log.json",
+      "bytes": 1065,
+      "sha256": "11ef94ba49d8ba9b7d89ecdc9e4a67dd417cc3f6174d27512c4556e739c547bf",
+      "rawBytes": 721,
+      "rawSha256": "7202195029e48fe19bbb669f21bf4b0a7830221cf53f1901409e05a8b2ac46bf",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a3/browser-discovery.log",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a3/browser-discovery-log.json",
+      "bytes": 4845,
+      "sha256": "f0982b3ed8876e809d3e163deb6e1a964b3d361751159166bab86e336ecddaa0",
+      "rawBytes": 4070,
+      "rawSha256": "d5d6f6f6f6e9127f225ea8ec47fdf3be814616ba986cb2d142fe9ec414decf05",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/s03-offline-repair-20260908/pipeline-a3.log",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a3/pipeline-a3-log.json",
+      "bytes": 13850,
+      "sha256": "e54be5d5821d16386602e3f1e77e66cd9d94a48f8c2103cb2de786ebdc2d5404",
+      "rawBytes": 13239,
+      "rawSha256": "c82a6aa37c8caa8eab4a20e2073f52cfa291e5e5f389ded0bf0e72f629f4bbc9",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a3/artifacts/controlled-pwa-device-prep-5879c--browser-decisions-truthful-pwa-desktop/device-en-incomplete.png",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a3/screenshots/controlled-pwa-device-prep-5879c--browser-decisions-truthful-pwa-desktop--device-en-incomplete.png",
+      "bytes": 504365,
+      "sha256": "a1f5f2e96448676b2698776b550af21d4429a22f35b4614f878030ebeab24c2b"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a3/artifacts/controlled-pwa-device-prep-5879c--browser-decisions-truthful-pwa-desktop/device-en-repaired.png",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a3/screenshots/controlled-pwa-device-prep-5879c--browser-decisions-truthful-pwa-desktop--device-en-repaired.png",
+      "bytes": 512253,
+      "sha256": "f8a361462413e907a314ebfb4420a3ff63a27bda0ec09d78a52e91ad43b42434"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a3/artifacts/controlled-pwa-device-prep-5879c--browser-decisions-truthful-pwa-desktop/device-en-simulated-install-accepted.png",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a3/screenshots/controlled-pwa-device-prep-5879c--browser-decisions-truthful-pwa-desktop--device-en-simulated-install-accepted.png",
+      "bytes": 501657,
+      "sha256": "1af717bfcb5c645df7519611b2ea3ff27cf8e122eb6ebac4aac1004bb3a79061"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a3/artifacts/controlled-pwa-device-prep-5879c--browser-decisions-truthful-pwa-desktop/device-en-simulated-persistence-denied.png",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a3/screenshots/controlled-pwa-device-prep-5879c--browser-decisions-truthful-pwa-desktop--device-en-simulated-persistence-denied.png",
+      "bytes": 518906,
+      "sha256": "ec7655d1af3bacf8930f0cd9c75c4fb743565072554314096ea407cd19c06f87"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a3/artifacts/controlled-pwa-device-prep-5879c--browser-decisions-truthful-pwa-desktop/device-repaired-cold-en.png",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a3/screenshots/controlled-pwa-device-prep-5879c--browser-decisions-truthful-pwa-desktop--device-repaired-cold-en.png",
+      "bytes": 721051,
+      "sha256": "4855302eeb916bef3cdcc8e098b0dec31db072c4c2fd6a16d25ef31a4f070bdb"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a3/artifacts/controlled-pwa-device-prep-5879c--browser-decisions-truthful-pwa-desktop/device-repaired-cold-ru.png",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a3/screenshots/controlled-pwa-device-prep-5879c--browser-decisions-truthful-pwa-desktop--device-repaired-cold-ru.png",
+      "bytes": 532920,
+      "sha256": "80c07005ce78092af646bd6342ed4397da0867fc2b4babbbc59afde3a01c8225"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a3/artifacts/controlled-pwa-device-prep-5879c--browser-decisions-truthful-pwa-desktop/device-ru-complete.png",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a3/screenshots/controlled-pwa-device-prep-5879c--browser-decisions-truthful-pwa-desktop--device-ru-complete.png",
+      "bytes": 519699,
+      "sha256": "85f1fef1e9608a22f6b040f81e33e7215911f1b9bb1a71ce7d3f6afe23d0e177"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a3/artifacts/controlled-pwa-device-prep-5879c--browser-decisions-truthful-pwa-desktop/device-ru-repaired.png",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a3/screenshots/controlled-pwa-device-prep-5879c--browser-decisions-truthful-pwa-desktop--device-ru-repaired.png",
+      "bytes": 519407,
+      "sha256": "285ce8bb54154e390acb2f2a490d588d87a7ee7e20310afd18d7db16dbf618c1"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a3/artifacts/controlled-pwa-device-prep-5879c--browser-decisions-truthful-pwa-mobile/device-en-incomplete.png",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a3/screenshots/controlled-pwa-device-prep-5879c--browser-decisions-truthful-pwa-mobile--device-en-incomplete.png",
+      "bytes": 225204,
+      "sha256": "06556b905af5b7f7a94a9119e2d47e04d5d74e0a80d1936a83a97ee11efffd04"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a3/artifacts/controlled-pwa-device-prep-5879c--browser-decisions-truthful-pwa-mobile/device-en-repaired.png",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a3/screenshots/controlled-pwa-device-prep-5879c--browser-decisions-truthful-pwa-mobile--device-en-repaired.png",
+      "bytes": 221590,
+      "sha256": "3e7bfb9d6c8df3eacebfa49bb3edce21a6d5e056be97e80cf54db1278e083794"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a3/artifacts/controlled-pwa-device-prep-5879c--browser-decisions-truthful-pwa-mobile/device-en-simulated-install-accepted.png",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a3/screenshots/controlled-pwa-device-prep-5879c--browser-decisions-truthful-pwa-mobile--device-en-simulated-install-accepted.png",
+      "bytes": 199359,
+      "sha256": "843826adcc78b0b1e8d3e54bf78584c1a21a67f38dddf08c5fd8edefe66481ea"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a3/artifacts/controlled-pwa-device-prep-5879c--browser-decisions-truthful-pwa-mobile/device-en-simulated-persistence-denied.png",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a3/screenshots/controlled-pwa-device-prep-5879c--browser-decisions-truthful-pwa-mobile--device-en-simulated-persistence-denied.png",
+      "bytes": 233071,
+      "sha256": "e30f01d7386e0b5ee8324bee3084d40307dc6168a2611e3a41507e820aa5a8d0"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a3/artifacts/controlled-pwa-device-prep-5879c--browser-decisions-truthful-pwa-mobile/device-repaired-cold-en.png",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a3/screenshots/controlled-pwa-device-prep-5879c--browser-decisions-truthful-pwa-mobile--device-repaired-cold-en.png",
+      "bytes": 2017974,
+      "sha256": "fa1d082dd0ec7689c18de1874b40c446f76b21889a54a0c04f2ff9f84bd407cf"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a3/artifacts/controlled-pwa-device-prep-5879c--browser-decisions-truthful-pwa-mobile/device-repaired-cold-ru.png",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a3/screenshots/controlled-pwa-device-prep-5879c--browser-decisions-truthful-pwa-mobile--device-repaired-cold-ru.png",
+      "bytes": 226717,
+      "sha256": "cf2ec01d2ab1977d978f41e4803799c87a377a4874caff3ded1804d452cf286f"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a3/artifacts/controlled-pwa-device-prep-5879c--browser-decisions-truthful-pwa-mobile/device-ru-complete.png",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a3/screenshots/controlled-pwa-device-prep-5879c--browser-decisions-truthful-pwa-mobile--device-ru-complete.png",
+      "bytes": 203083,
+      "sha256": "8ec85a8cd40125e5dc3aa8351ef1d26550c64ad0af0790a7d1c3df9d5294acfd"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a3/artifacts/controlled-pwa-device-prep-5879c--browser-decisions-truthful-pwa-mobile/device-ru-repaired.png",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a3/screenshots/controlled-pwa-device-prep-5879c--browser-decisions-truthful-pwa-mobile--device-ru-repaired.png",
+      "bytes": 230143,
+      "sha256": "21959c5cb7962856d6c178da52807d69bc35d930580cbb4459880d27fa8aacd0"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a3/results.json#attachment/pwa-desktop",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a3/device/pwa-desktop.json",
+      "bytes": 4963,
+      "sha256": "f1641735b8afd733c6cda811456aa870965db3f82995473312dddfe1e3a571e2"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a3/results.json#attachment/pwa-mobile",
+      "path": "docs/mobile/evidence/S03/offline-repair-20260908/a3/device/pwa-mobile.json",
+      "bytes": 4936,
+      "sha256": "2e15af16fc914d095654d15361e1b5b5a99b9e518c7c6b38aa3ba64af8926954"
+    }
+  ],
+  "stageAccepted": false,
+  "releaseReady": false,
+  "copyReviewStatus": "draft",
+  "actualOsInstallation": false,
+  "realPaymentProviderConfigured": false,
+  "limits": [
+    "Only the selected device scenario in two Chrome viewports; original errors are preserved.",
+    "Actual app/worker/cache/network; installation and storage permission choices remain explicit browser fixtures.",
+    "Cold reloads create new documents. Canvas identity is checked only across locale and repair within the existing document."
+  ]
+}

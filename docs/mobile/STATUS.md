@@ -1,16 +1,21 @@
 # V12 status — 2026-09-08
 
 <!-- s07-country-sheet:begin -->
-Current source: existing country sheet now supports direct touch drag/snap.
-Six focused units, shared TypeScript/boundary checks and two real Chrome touch
-cases passed with unchanged971 inputs. Same globe/camera/selection retained.
-Evidence: evidence/S07/country-sheet-20260908/result.json.
-S03 explicit offline repair source has306 combined unit passes; its real PWA
-build and affected browser cases are next, not yet passed. UI copy is draft.
-Evidence: evidence/S03/offline-repair-20260908/source-result.json.
-Android532 and PWA051 below are historical source-bound artifacts; they exclude
-these changes. Earlier evidence blocks remain historical. iOS83 stays frozen
-and awaits its existing publication approval. No stage or release acceptance.
+Current source c62309ce86b5aade4465e27a4b2d23f6cb870fd3: direct country-sheet touch and explicit offline repair.
+S07:6 units +2 actual Chrome touch cases. S03:306 combined scoped units +2
+affected final-PWA browser cases. One shared TypeScript/boundary execution.
+Same globe/camera/selection survive live repair, language and sheet changes;
+cold RU/EN offline documents each load their own single canonical globe.
+Android a7828499: strict build, cached offline Gradle, actual APK byte checks
+and exact preservation passed. APK: .tmp/native-builds/android-dev/country-sheet-a7828499/app-dev-debug.apk.
+PWA 3eb567d6: strict artifact +2 real worker/cache/network cases,
+local QA authority only. Artifact: .tmp/pwa-artifacts/3eb567d6-offline-repair-20260908-a3.
+Evidence: evidence/S07/country-sheet-20260908/result.json;
+evidence/S03/offline-repair-20260908/result.json;
+evidence/S04/country-sheet-android-20260908/result.json.
+Earlier artifact blocks below are historical. Android532, PWA051 and frozen
+iOS83 keep exact old identities; iOS83 still awaits its existing approval.
+New RU/EN copy remains draft. No installed-device, stage or release acceptance.
 <!-- s07-country-sheet:end -->
 
 The canonical Literary Planet is the sole application home. Orange launch ->

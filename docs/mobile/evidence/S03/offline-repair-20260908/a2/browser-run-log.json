@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "originalPath": ".tmp/pwa-cross-engine-results/pwa-offline-repair-20260908-a2/browser-run.log",
+  "originalBytes": 23,
+  "originalSha256": "bef44b71926303f638fcf3917875642de7e01f8828d85d994561945390fde863",
+  "reconstruction": "UTF-8 encode text exactly, without newline normalization",
+  "text": "Error: No tests found\n\n"
+}

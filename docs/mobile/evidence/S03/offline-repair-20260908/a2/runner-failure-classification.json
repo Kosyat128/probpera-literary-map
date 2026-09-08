@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "kind": "HARNESS_DISCOVERY_FAILURE",
+  "actualBrowserExecutions": 0,
+  "actualBuildCompleted": true,
+  "strictAuditPassed": true,
+  "buildId": "7115e0d11b58cf4af16e709e9255db6a3dda3a2066aaa6fe38eb2ee3a9ae01f3",
+  "cause": "Anchored grep did not match Playwright full titles containing project/file context; no tests found.",
+  "correction": "Remove anchors from the unique scenario title filter; keep exact testMatch and two existing projects.",
+  "ephemeralSignerClosed": true,
+  "stageAccepted": false,
+  "releaseReady": false
+}

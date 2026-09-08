@@ -1,0 +1,8 @@
+{
+  "sourceCommit": "c62309ce86b5aade4465e27a4b2d23f6cb870fd3",
+  "exitCode": 1,
+  "log": ".tmp/s03-offline-repair-20260908/pipeline-a1.log",
+  "buildAndBrowserInvoked": true,
+  "stageAccepted": false,
+  "releaseReady": false
+}
