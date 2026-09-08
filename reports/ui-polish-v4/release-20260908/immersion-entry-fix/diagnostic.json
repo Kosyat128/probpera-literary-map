@@ -1,0 +1,68 @@
+{
+  "status": "targeted_software_passed_attempt0_cause_pending",
+  "recordedAt": "2026-09-08T17:13:47.6725870+00:00",
+  "ci": {
+    "runId": "34250351238",
+    "log": "../ci-5aaf-failed.log",
+    "attempt0": "Launch click returned but immersive attribute was not observed within 10s. Root trace inspection pending; cause not established.",
+    "retry1": "The 45s deadline expired in launch.click after repeated site-header logo and Canvas pointer interceptions, explicitly recorded in the local CI log."
+  },
+  "change": {
+    "file": "tests/e2e/literary-planet-immersion.spec.mjs",
+    "sha256": "17fddf15f12aa41674ebc2e627684f704d42b50da8771ee7009790cc9b20845e",
+    "diff": "helper-review.txt",
+    "scope": "enterFromEmbedded only",
+    "before": "scrollIntoViewIfNeeded(); focus(); ordinary click",
+    "after": "Atomic instant centering plus focus({preventScroll:true}), full viewport ratio 1 assertion, ordinary click",
+    "precedent": "Exact centering/focus sequence already used by the first immersion entry test in this spec",
+    "preserved": [
+      "No force click or DOM click substitution for entry",
+      "All existing immersive/idle/dialog/aria-modal/URL/Canvas assertions",
+      "Repeated Close idempotence assertions",
+      "Reduced-motion style and entry/exit assertions",
+      "Existing overall 45000ms and assertion deadlines"
+    ],
+    "productChanged": false
+  },
+  "validation": {
+    "nodeCheck": "passed",
+    "gitDiffCheck": "passed",
+    "exitCode": 0,
+    "config": ".tmp/playwright-software-gpu.config.mjs",
+    "preview": "http://127.0.0.1:4186",
+    "renderer": "ANGLE SwiftShader",
+    "workers": 1,
+    "retries": 0,
+    "results": "software-results.json",
+    "log": "software.log",
+    "stats": {
+      "startTime": "2026-09-08T17:12:14.273Z",
+      "duration": 32894.984,
+      "expected": 2,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "executed": [
+      {
+        "title": "repeated Close is idempotent and cannot pop past the embedded entry",
+        "project": "desktop-chromium",
+        "timeoutMs": 45000,
+        "status": "passed",
+        "durationMs": 16525,
+        "retry": 0,
+        "errors": []
+      },
+      {
+        "title": "reduced motion enters and exits immersion without transition states",
+        "project": "desktop-chromium",
+        "timeoutMs": 45000,
+        "status": "passed",
+        "durationMs": 14786,
+        "retry": 0,
+        "errors": []
+      }
+    ],
+    "limits": "Only these two desktop cases ran. No browser replay, other test family, product change, build or CI-green claim."
+  }
+}

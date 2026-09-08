@@ -46,8 +46,15 @@ async function enterFromEmbedded(page) {
     '[data-atlas-action="enter-immersive"]'
   );
   await expect(launch).toBeVisible();
-  await launch.scrollIntoViewIfNeeded();
-  await launch.focus();
+  await launch.evaluate(element => {
+    const bounds = element.getBoundingClientRect();
+    window.scrollTo({
+      top: window.scrollY + bounds.top - window.innerHeight / 2 + bounds.height / 2,
+      behavior: "instant",
+    });
+    element.focus({ preventScroll: true });
+  });
+  await expect(launch).toBeInViewport({ ratio: 1 });
   await launch.click();
 
   await expect(atlas.experience).toHaveAttribute(
