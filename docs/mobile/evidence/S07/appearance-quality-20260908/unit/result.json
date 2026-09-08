@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "kind": "selected-appearance-unit-evidence",
+  "recordedAt": "2026-09-08T08:32:44.683Z",
+  "stage": "S07",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "status": "SELECTED_UNIT_VALIDATION_PASSED",
+  "tests": {
+    "passed": 12,
+    "failed": 0,
+    "skipped": 0
+  },
+  "scope": "One focused unit file: nine edition palettes and three appearance projection ownership cases. Not a global suite or actual DOM/CSS/Canvas validation.",
+  "report": {
+    "path": "docs/mobile/evidence/S07/appearance-quality-20260908/unit/vitest.json",
+    "bytes": 4600,
+    "sha256": "1ca62fcd69d39ffde8ddd7163e4593dca20f8084d16450e21525afcb3b3e3769",
+    "original": ".tmp/planet-appearance-20260908-unit.json",
+    "exactCopyVerified": true
+  },
+  "execution": {
+    "command": "node node_modules/vitest/vitest.mjs run src/host/planetAppearance.test.ts --reporter=json --outputFile=.tmp/planet-appearance-20260908-unit.json",
+    "initialAttempt": {
+      "phase": "startup",
+      "exitCode": 1,
+      "testsStarted": false,
+      "reason": "Sandbox esbuild could not read the parent directory or resolve vitest.config.ts; tool output reported Access is denied.",
+      "standaloneTranscriptCaptured": false
+    },
+    "completedAttempt": {
+      "exitCode": 0,
+      "environment": "Approved local execution outside filesystem sandbox",
+      "stdoutObserved": "JSON report written to C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/.tmp/planet-appearance-20260908-unit.json",
+      "standaloneTranscriptCaptured": false
+    },
+    "testsRerunDuringPreservation": false
+  },
+  "sourceAfter": {
+    "observedAt": "2026-09-08T08:32:44.683Z",
+    "observationScope": "Current helper and test bytes observed after the unit run. No before/during source snapshot was captured; temporal source identity is not proved by this receipt.",
+    "files": [
+      {
+        "source": "src/host/planetAppearance.ts",
+        "bytes": 4116,
+        "sha256": "a6b00fce26fdcf5d73ea847ded3fb265d10f023997f3f7bac08da9c1c1b0df10",
+        "preserved": "docs/mobile/evidence/S07/appearance-quality-20260908/unit/planetAppearance.ts.source.json",
+        "preservedBytes": 4704,
+        "preservedSha256": "33b20bcbcf3d2e8a1b3a11bd8a31a14bb437e69b49b03a223a1c7e03c04e01c4"
+      },
+      {
+        "source": "src/host/planetAppearance.test.ts",
+        "bytes": 4695,
+        "sha256": "ff975dfa6d6f4ed15fd4180e83aea3da454dd0cb7c95481c4f178a8545bc68d6",
+        "preserved": "docs/mobile/evidence/S07/appearance-quality-20260908/unit/planetAppearance.test.ts.source.json",
+        "preservedBytes": 5271,
+        "preservedSha256": "8dd7f530230dd7903d489ab1fc09f9e51183c5b1159952ce8e6a507983e11099"
+      }
+    ]
+  },
+  "limitations": [
+    "First startup failure and successful stdout were available in tool output only; no standalone raw log files were captured or reconstructed.",
+    "Later CSS adjustments are not inputs to this unit test and require separate browser evidence."
+  ]
+}

@@ -99,6 +99,7 @@
 .pwa-device button:focus-visible { outline: 3px solid #4b087c; outline-offset: 3px; }
 .pwa-device button:disabled { opacity: .65; cursor: progress; }
 .pwa-device__actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+.pwa-device__cards > section > button + .pwa-device__actions { margin-top: .75rem; }
 .pwa-device__note { font-size: .9rem; }
 .pwa-device dl { margin-block: .75rem; }
 .pwa-device dl > div { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .25rem 1rem; }

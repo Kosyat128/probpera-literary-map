@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T09:04:32.850Z",
+  "stage": "S07",
+  "status": "SELECTED_WORKING_VALIDATION_PASSED",
+  "sourceCheckpointBeforeChanges": "55a195b997a569b5a3aef692f7e8cf27d2a35b37",
+  "ownerDecisions": [
+    "Application starts with High, superseding V12 document23 Balanced default.",
+    "Entire application appearance follows the committed globe edition."
+  ],
+  "implemented": [
+    "Application explicitly selects the richest existing render path despite low CPU/memory/Save-Data hints; reduced motion remains separate.",
+    "Nine palettes project from the existing committed globe edition to the application and its existing filter portal. Pending/failed texture changes retain prior appearance.",
+    "Search, country, collection, cards, reader/help chrome and controls use scoped light/dark palette tokens. No artwork tint, new globe or separate edition owner.",
+    "Mobile sheet contrast, collection card width/full titles, control/status/placeholder contrast and PWA Check/Restore spacing are corrected."
+  ],
+  "units": {
+    "passed": 12,
+    "failed": 0,
+    "evidence": "unit/result.json",
+    "scope": "One focused unit file: nine edition palettes and three appearance projection ownership cases. Not a global suite or actual DOM/CSS/Canvas validation.",
+    "observationLimit": "Current helper and test bytes observed after the unit run. No before/during source snapshot was captured; temporal source identity is not proved by this receipt."
+  },
+  "static": {
+    "evidence": "static/static-checks.json",
+    "executionCount": 1,
+    "typeScriptPassed": true,
+    "boundariesPassed": true,
+    "postStaticChanges": [
+      {
+        "path": "src/host/planetAppearance.css",
+        "checkedSha256": "1e485f22acb8faf5400f134eb25c4644b0efa0d7799a80c29891666b2b701240",
+        "currentSha256": "57c46af2e0704da55e2054e9d09f2b8d408c4428c002e8faf2fe60663e066329",
+        "reason": "CSS visual corrections or browser-only fixture refinement; TypeScript and unit inputs unchanged. Final affected browser receipt covers the new bytes."
+      },
+      {
+        "path": "tests/host/native-planet.spec.mjs",
+        "checkedSha256": "c68cc703f7a81996daba84b91b94a5b53dbaa215d66e0abc79c2cdd9b72b02f9",
+        "currentSha256": "8a8c99d0bff926114a3b9fccea81d5be365ff0cc9720d0d8a48144f94bd80e9e",
+        "reason": "CSS visual corrections or browser-only fixture refinement; TypeScript and unit inputs unchanged. Final affected browser receipt covers the new bytes."
+      },
+      {
+        "path": "tests/pwa/controlled-pwa.spec.mjs",
+        "checkedSha256": "3c75504c8c2a9ef7c8e2292355cd85d4dc00167c0275d81dcc41274f7ab31974",
+        "currentSha256": "b4d03bfab96dbefd9bc7d81280b2df4ef35432d6e82c285f0a87d3be8c95b0a5",
+        "reason": "CSS visual corrections or browser-only fixture refinement; TypeScript and unit inputs unchanged. Final affected browser receipt covers the new bytes."
+      }
+    ]
+  },
+  "browser": {
+    "evidence": "a5/result.json",
+    "sha256": "43f8f60846c8c61214cac1c200d1812f47982fcda9452416d98506c47266728d",
+    "passed": 1,
+    "failed": 0,
+    "sourceFiles": 974,
+    "unchanged": true,
+    "deviceHintsSimulated": true,
+    "actualRenderer": true,
+    "editionStyles": [
+      "antique",
+      "earth",
+      "modern"
+    ],
+    "viewportScope": "Desktop plus one narrow mobile header check; not a physical device.",
+    "postNativeChanges": [
+      {
+        "path": "src/host/planetAppearance.css",
+        "nativeCheckedSha256": "40cf458248106f56ae5bebe28f3542231e5dd98d3c37bbd0b0e6d8a21658e406",
+        "currentSha256": "57c46af2e0704da55e2054e9d09f2b8d408c4428c002e8faf2fe60663e066329",
+        "reason": "Compact-select-only CSS completion and its assertions are covered by the upcoming two existing final-PWA cases. Native a5 receipt keeps its exact earlier source hashes; no native rerun is claimed."
+      }
+    ],
+    "compactSelectCompletionValidation": "Pending the two existing final-PWA cases; not claimed by native a5."
+  },
+  "history": [
+    "a1/result.json",
+    "a2/result.json",
+    "a3/result.json",
+    "a4/result.json"
+  ],
+  "failureHistoryNote": "a1 exposed an incorrect fixture trigger plus visual contrast/card issues. a2 reached real nested filters but the collection panel intercepted their close button. a3 passed after fixing the portal layer; root visual review then found residual purple scroll cues and zoom badge. a4 failed a new arrow visibility assertion because the canonical 981-1325px layout deliberately substitutes a compact select. a5 uses 1440px plus the same 390px check to cover the corrected CSS without weakening the assertions. All prior receipts remain intact; no clicks were forced.",
+  "limitations": [
+    "Existing rich mode is not completion of V12 full High/Balanced/Economy tiers or measured device performance.",
+    "The selected actual CSS checks and nine token contrast tests do not certify every screen or all accessibility requirements.",
+    "New Android/PWA artifacts are pending this committed source; a7828499/3eb567d6 and frozen iOS83 keep historical identities.",
+    "Planetka/child/commerce/verified bilingual content/device/owner/release gates remain open."
+  ],
+  "newNativeArtifactProduced": false,
+  "newPwaArtifactProduced": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "ownerContentFollowUp": {
+    "evidence": "content-follow-up.md",
+    "readOnly": true,
+    "approximateRequestedBooks": 10000,
+    "exactCatalogCountVerified": false,
+    "englishBiographyEditorialGateOpen": true,
+    "localeSpecificEditionCoversImplemented": false,
+    "ownerContentEditingDelivered": false
+  }
+}

@@ -5,7 +5,7 @@
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
   "headSha": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-08T08:15:26.478Z",
+  "updatedAt": "2026-09-08T09:04:32.850Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -1164,7 +1164,8 @@
       "lastGreenCommands": [],
       "artifacts": [
         "docs/mobile/evidence/S07/country-sheet-20260908/entry.json",
-        "docs/mobile/evidence/S07/country-sheet-20260908/result.json"
+        "docs/mobile/evidence/S07/country-sheet-20260908/result.json",
+        "docs/mobile/evidence/S07/appearance-quality-20260908/result.json"
       ],
       "externalBlockers": []
     },
@@ -10557,7 +10558,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Apply the new explicit owner decision: application defaults to high quality, overriding V12 Balanced default. Use the existing richest render path without automatic economy; full manual High/Balanced/Economy remains future S06. Also fix the observed PWA Check/Restore button spacing and await launch exit for cold screenshots. Validate only changed scopes and preserve source-bound a7828499/3eb567d6. S03.acceptance stays first-open; frozen iOS83 approval pending.",
+    "nextAction": "Build fresh Android/dev and one final controlled PWA from the committed high-default/appearance source. Run only the affected PWA desktop/mobile cases and preserve final visuals. Keep the completed native appearance case/unit/static evidence, recording CSS/fixture-only deltas honestly. S03 first-open; S06 full quality tiers/Planetka and other gates remain open; frozen iOS83 publication still pending.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -10784,7 +10785,7 @@
         "offlineGradleBuild": true,
         "apkBinaryAudit": true,
         "preservationCopiesVerified": true,
-        "currentSource": true,
+        "currentSource": false,
         "includesS05FirstJourney": true,
         "includesNativeActivity": true,
         "includesCountrySheetGestures": true,
@@ -10793,7 +10794,7 @@
         "stageAccepted": false,
         "releaseReady": false
       },
-      "nativeArtifactCurrentSource": true,
+      "nativeArtifactCurrentSource": false,
       "nativeArtifactHistory": [
         {
           "evidence": "docs/mobile/evidence/S04/android-globe-panels-20260908/result.json",
@@ -11298,7 +11299,7 @@
       "status": "SELECTED_WORKING_VALIDATION_PASSED",
       "unitPasses": 6,
       "selectedBrowserPasses": 2,
-      "nativeArtifactCurrentSource": true,
+      "nativeArtifactCurrentSource": false,
       "stageAccepted": false,
       "releaseReady": false,
       "nativeArtifactEvidence": "docs/mobile/evidence/S04/country-sheet-android-20260908/result.json",
@@ -11319,9 +11320,22 @@
       "artifactSha256": "7e72666fa85ab49c02ba27cca949fff7ba488d8018845cc6bfbdc8413d4fb509",
       "artifactPath": ".tmp/pwa-artifacts/3eb567d6-offline-repair-20260908-a3",
       "sourceCommit": "c62309ce86b5aade4465e27a4b2d23f6cb870fd3",
-      "currentSource": true,
+      "currentSource": false,
       "localQaAuthority": true,
       "copyReviewStatus": "draft",
+      "stageAccepted": false,
+      "releaseReady": false
+    },
+    "s07AppearanceQuality": {
+      "evidence": "docs/mobile/evidence/S07/appearance-quality-20260908/result.json",
+      "sha256": "b906158f5e390d58ce77262358be9ec5a267f840243e230d687b206b0278b6aa",
+      "status": "SELECTED_WORKING_VALIDATION_PASSED",
+      "unitPasses": 12,
+      "selectedBrowserPasses": 1,
+      "newNativeArtifactProduced": false,
+      "newPwaArtifactProduced": false,
+      "fullQualityTiersImplemented": false,
+      "defaultQuality": "richest-existing-path",
       "stageAccepted": false,
       "releaseReady": false
     }

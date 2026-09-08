@@ -125,14 +125,14 @@ test.afterEach(async ({}, testInfo) => {
   }
 });
 
-async function open({ route = "/", language = "ru", viewport = { width: 1280, height: 800 }, reducedMotion = "reduce", safeArea, preferences = {}, hasTouch = false, isMobile = false, observeSheetGesture = false } = {}) {
-  const page = await browser.newPage({ viewport, reducedMotion, hasTouch, isMobile });
+async function open({ route = "/", language = "ru", viewport = { width: 1280, height: 800 }, reducedMotion = "reduce", safeArea, preferences = {}, hasTouch = false, isMobile = false, observeSheetGesture = false, deviceScaleFactor = 1, capabilityHints } = {}) {
+  const page = await browser.newPage({ viewport, reducedMotion, hasTouch, isMobile, deviceScaleFactor });
   page.setDefaultTimeout(15_000);
   const errors = [], consoleErrors = [], externalRequests = [], missingResources = [];
   const preferenceMemory = new Map([["probpera-interface-language", language], ...Object.entries(preferences)]);
   const preferenceOperations = [];
   const fixture = { page, errors, consoleErrors, externalRequests, missingResources, preferenceMemory, preferenceOperations,
-    browserCapabilities: { hasTouch, isMobile, reducedMotion } };
+    browserCapabilities: { hasTouch, isMobile, reducedMotion, deviceScaleFactor, ...(capabilityHints ? { simulatedCapabilityHints: capabilityHints } : {}) } };
   activeFixtures.add(fixture);
   // Simulated OS persistence lives outside the document. Reload therefore tests
   // the real adapter's whitelist/readback and the real welcome initialization.
@@ -151,6 +151,16 @@ async function open({ route = "/", language = "ru", viewport = { width: 1280, he
     await session.send("Emulation.setSafeAreaInsetsOverride", { insets: safeArea });
   }
   await page.addInitScript(value => {
+    if (value.capabilityHints) {
+      for (const name of ["deviceMemory", "hardwareConcurrency"]) {
+        Object.defineProperty(navigator, name, { configurable: true, get: () => value.capabilityHints[name] });
+      }
+      if (navigator.connection) {
+        Object.defineProperty(navigator.connection, "saveData", { configurable: true, get: () => value.capabilityHints.saveData });
+      } else {
+        Object.defineProperty(navigator, "connection", { configurable: true, value: { saveData: value.capabilityHints.saveData } });
+      }
+    }
     window.__nativePlanetInitial = value;
     window.__nativePlanetVisibleHeroFrames = 0;
     window.__nativePlanetWelcomeFrames = { visible: 0, beforeRealSceneReady: 0, duringLaunch: 0, maxCanvasCount: 0 };
@@ -223,7 +233,7 @@ async function open({ route = "/", language = "ru", viewport = { width: 1280, he
       requestAnimationFrame(observe);
     };
     requestAnimationFrame(observe);
-  }, { language, observeSheetGesture });
+  }, { language, observeSheetGesture, capabilityHints });
   await page.route("**/*", async request => {
     const url = new URL(request.request().url());
     if (url.origin !== origin) { externalRequests.push(url.href); await request.abort(); return; }
@@ -315,6 +325,8 @@ async function captureEvidence(fixture, testInfo, name, extra = {}) {
         nativeLifecycleEvents: window.__nativePlanetHarness?.lifecycleEvents() ?? [],
         countrySheetEvents: window.__nativePlanetSheetEvents ?? [],
         countrySheetMeasurements: window.__nativePlanetSheetMeasurements ?? [],
+        graphicsObservations: window.__nativePlanetGraphicsObservations ?? [],
+        appearanceObservations: window.__nativePlanetAppearanceObservations ?? [],
         canvasCount: document.querySelectorAll("#atlas canvas").length,
         documentCanvasCount: document.querySelectorAll("canvas").length,
         native: describe(".native-planet-app, .native-planet-launch, .native-planet-panel"),
@@ -364,6 +376,290 @@ test("native first screen is the actual immersive globe and RU/EN retains writer
       expect(url.searchParams.get("writer")).toBe("dostoevsky");
       await evidence(fixture, testInfo, "native-entry-" + language, { locales: ["ru", "en", "ru"], selectedCountry: "russia", selectedWriter: "dostoevsky", sameCanvasRendererCameraScene: true, cameraPose: selectedCameraPose, cameraPoseDecimalPrecision: 5 });
     }
+  } finally { await original.dispose(); }
+});
+
+async function nativeGraphicsEvidence(page, phase) {
+  return page.evaluate(phase => {
+    const current = window.__nativePlanetHarness.scenes().find(value => document.querySelector("#atlas").contains(value.canvas));
+    const pointVertexCounts = [];
+    current.scene.traverse(object => { if (object.isPoints) pointVertexCounts.push(object.geometry.getAttribute("position").count); });
+    const result = { phase, hints: { saveData: navigator.connection?.saveData, deviceMemory: navigator.deviceMemory,
+      hardwareConcurrency: navigator.hardwareConcurrency }, browserPixelRatio: devicePixelRatio,
+      rendererPixelRatio: current.renderer.getPixelRatio(), pointVertexCounts,
+      drawingBuffer: { width: current.canvas.width, height: current.canvas.height },
+      economical: document.querySelector("[data-atlas-experience]")?.getAttribute("data-atlas-economical"),
+      reducedMotion: matchMedia("(prefers-reduced-motion: reduce)").matches };
+    (window.__nativePlanetGraphicsObservations ??= []).push(result);
+    return result;
+  }, phase);
+}
+
+async function applicationAppearanceEvidence(page, phase) {
+  return page.evaluate(phase => {
+    const selectors = { chrome: ".atlas-immersive-chrome", controls: ".globe-controls", searchField: "#country-search", searchSurface: ".atlas-heading .search-field",
+      searchResults: "#country-results", country: ".atlas-country-presentation .country-panel", countryToggle: ".atlas-country-sheet-toggle",
+      collection: ".native-planet-panel", collectionHeader: ".native-planet-panel__header", archiveHeading: ".book-archive-heading",
+      archiveCard: ".archive-book-card", filterDrawer: "#book-archive-advanced-filters",
+      editionArrow: '.globe-edition-scroll-cue[data-visible="true"] button', scaleFeedback: ".globe-scale-feedback",
+      previousEditionFade: ".globe-edition-scroll-cue.is-previous", nextEditionFade: ".globe-edition-scroll-cue.is-next" };
+    const surfaces = {};
+    for (const [name, selector] of Object.entries(selectors)) {
+      const element = document.querySelector(selector);
+      if (!element) { surfaces[name] = null; continue; }
+      const style = getComputedStyle(element), bounds = element.getBoundingClientRect();
+      surfaces[name] = { backgroundColor: style.backgroundColor, backgroundImage: style.backgroundImage,
+        color: style.color, borderColor: style.borderColor, outlineColor: style.outlineColor,
+        bounds: bounds.toJSON(), visible: Boolean(bounds.width && bounds.height && style.display !== "none" && style.visibility !== "hidden") };
+    }
+    const themedAttributes = element => element ? Object.fromEntries([...element.attributes]
+      .filter(attribute => /(?:theme|appearance|palette|globe-style|globe-edition|planet-(?:portal-)?edition)/u.test(attribute.name))
+      .map(attribute => [attribute.name, attribute.value])) : {};
+    const app = document.querySelector(".native-planet-app"), appStyle = getComputedStyle(app);
+    const tokens = Object.fromEntries(["space", "chrome", "chrome-raised", "surface", "card", "ink", "accent", "accent-strong", "on-dark"]
+      .map(name => [name, appStyle.getPropertyValue("--planet-" + name).trim()]));
+    const textContrasts = {};
+    const rgb = value => value.match(/[\d.]+/gu)?.map(Number) ?? [];
+    const luminance = values => values.slice(0, 3).map(value => value / 255)
+      .map(value => value <= .04045 ? value / 12.92 : ((value + .055) / 1.055) ** 2.4)
+      .reduce((sum, value, index) => sum + value * [.2126, .7152, .0722][index], 0);
+    for (const [name, selector] of Object.entries({ randomAction: ".book-shelf-controls__random span", cardStatus: ".archive-book-copy .editorial-state", fallbackAuthor: ".archive-book-cover:not(.has-image) small" })) {
+      const element = document.querySelector(selector);
+      if (!element) continue;
+      const foreground = getComputedStyle(element).color;
+      let backgroundElement = element;
+      while (backgroundElement && (rgb(getComputedStyle(backgroundElement).backgroundColor)[3] ?? 1) !== 1) backgroundElement = backgroundElement.parentElement;
+      if (!backgroundElement) continue;
+      const background = getComputedStyle(backgroundElement).backgroundColor;
+      const [light, dark] = [luminance(rgb(foreground)), luminance(rgb(background))].sort((a, b) => b - a);
+      const bounds = element.getBoundingClientRect();
+      textContrasts[name] = { selector, foreground, background, backgroundElement: backgroundElement.className,
+        backgroundImage: getComputedStyle(backgroundElement).backgroundImage,
+        ratio: (light + .05) / (dark + .05), bounds: bounds.toJSON(), opacity: getComputedStyle(element).opacity };
+    }
+    const bookCards = [...document.querySelectorAll(".native-planet-panel .archive-book-card")].map(card => {
+      const title = card.querySelector(".archive-book-copy h3");
+      return { bounds: card.getBoundingClientRect().toJSON(), title: title ? { text: title.textContent,
+        bounds: title.getBoundingClientRect().toJSON(), clientWidth: title.clientWidth, scrollWidth: title.scrollWidth,
+        clientHeight: title.clientHeight, scrollHeight: title.scrollHeight } : null,
+        actions: [...card.querySelectorAll(".archive-book-actions button")].map(button => ({
+          label: button.getAttribute("aria-label") ?? button.textContent, bounds: button.getBoundingClientRect().toJSON() })) };
+    });
+    const result = { phase, language: document.documentElement.lang, surfaces, tokens, textContrasts, bookCards,
+      rootAttributes: themedAttributes(document.documentElement), bodyAttributes: themedAttributes(document.body),
+      appAttributes: themedAttributes(app),
+      globeAttributes: themedAttributes(document.querySelector("#atlas .literary-globe")) };
+    (window.__nativePlanetAppearanceObservations ??= []).push(result);
+    return result;
+  }, phase);
+}
+
+function expectAppearanceSurface(appearance, name, background, foreground) {
+  const surface = appearance.surfaces[name];
+  const channels = token => {
+    expect(token).toMatch(/^#[0-9a-f]{6}$/iu);
+    return [1, 3, 5].map(offset => Number.parseInt(token.slice(offset, offset + 2), 16));
+  };
+  const back = channels(appearance.tokens[background]), front = channels(appearance.tokens[foreground]);
+  expect(surface.visible, name + " is rendered").toBe(true);
+  expect(surface.backgroundColor, name + " uses the committed edition surface").toBe("rgb(" + back.join(", ") + ")");
+  expect(surface.color, name + " uses the committed edition foreground").toBe("rgb(" + front.join(", ") + ")");
+  const luminance = values => values.map(value => value / 255).map(value => value <= .04045 ? value / 12.92 : ((value + .055) / 1.055) ** 2.4)
+    .reduce((sum, value, index) => sum + value * [.2126, .7152, .0722][index], 0);
+  const [light, dark] = [luminance(back), luminance(front)].sort((a, b) => b - a);
+  expect((light + .05) / (dark + .05), name + " text contrast on its actual opaque surface").toBeGreaterThanOrEqual(4.5);
+}
+
+test("native application defaults to rich graphics under low-resource hints while respecting reduced motion and RU/EN scene identity", async ({}, testInfo) => {
+  const fixture = await open({ route: "/?country=russia&writer=dostoevsky#atlas", reducedMotion: "no-preference", deviceScaleFactor: 2,
+    viewport: { width: 1440, height: 800 },
+    capabilityHints: { saveData: true, deviceMemory: 2, hardwareConcurrency: 2 } });
+  const { page } = fixture;
+  const original = await captureScene(page);
+  try {
+    await showWriter(page);
+    await expect(page.locator("#atlas .literary-globe")).toHaveAttribute("data-globe-camera-phase", "idle");
+    const initial = await nativeGraphicsEvidence(page, "initial-low-resource-hints");
+    expect(initial.hints).toEqual({ saveData: true, deviceMemory: 2, hardwareConcurrency: 2 });
+    expect(initial.browserPixelRatio).toBe(2);
+    expect(initial.economical).toBe("false");
+    expect(initial.rendererPixelRatio).toBe(1.5);
+    expect(initial.pointVertexCounts).toContain(2400);
+    expect(initial.reducedMotion).toBe(false);
+    const pose = await settledCameraPose(original);
+    const locales = [];
+    for (const language of ["en", "ru"]) {
+      await page.locator(".native-planet-app .interface-language-control button").filter({ hasText: language.toUpperCase() }).click();
+      await expect(page.locator("html")).toHaveAttribute("lang", language);
+      await expect.poll(() => page.evaluate(() => window.__nativePlanetHarness.savedLanguage())).toBe(language);
+      await showWriter(page);
+      await retained(page, original);
+      expect(await cameraPose(original)).toEqual(pose);
+      expect(new URL(page.url()).searchParams.get("country")).toBe("russia");
+      expect(new URL(page.url()).searchParams.get("writer")).toBe("dostoevsky");
+      const graphics = await nativeGraphicsEvidence(page, "locale-" + language);
+      expect(graphics.economical).toBe("false");
+      expect(graphics.rendererPixelRatio).toBe(1.5);
+      expect(graphics.pointVertexCounts).toContain(2400);
+      locales.push(graphics);
+    }
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await expect(page.locator("[data-atlas-experience]")).toHaveAttribute("data-atlas-reduced-motion", "true");
+    await expect(page.locator("#atlas .literary-globe")).toHaveAttribute("data-globe-auto-rotate", "reduced-motion");
+    expect((await nativeGlobeRuntime(page)).autoRotate).toBe(false);
+    const reduced = await nativeGraphicsEvidence(page, "reduced-motion-rich-rendering");
+    expect(reduced.reducedMotion).toBe(true);
+    expect(reduced.economical).toBe("false");
+    expect(reduced.rendererPixelRatio).toBe(1.5);
+    expect(reduced.pointVertexCounts).toContain(2400);
+    await retained(page, original);
+    expect(await settledCameraPose(original)).toEqual(pose);
+    await evidence(fixture, testInfo, "native-rich-default-low-hints", { initial, locales, reduced, unchangedCameraPose: pose,
+      selectedCountry: "russia", selectedWriter: "dostoevsky", sameCanvasRendererCameraScene: true,
+      graphicsScope: "Existing rich renderer mode; full High/Balanced/Economy profile system remains future work",
+      capabilityFixture: "Browser hints and devicePixelRatio emulated before mount, not a physical low-memory GPU or performance guarantee" });
+    const appearances = [];
+    for (const [edition, style] of [["rand-mcnally-1887", "antique"], ["nasa-blue-marble", "earth"], ["natural-earth-2026", "modern"]]) {
+      const globe = page.locator("#atlas .literary-globe");
+      if (await globe.getAttribute("data-globe-edition") !== edition) {
+        const select = page.locator(".globe-edition-compact-select select");
+        if (await select.isVisible()) await select.selectOption(edition);
+        else {
+          const option = page.locator('button[data-globe-edition-option="' + edition + '"]');
+          if (!await option.isVisible()) await page.locator('[data-globe-control="edition-rail-toggle"]').click();
+          await option.click();
+        }
+      }
+      await expect(globe).toHaveAttribute("data-globe-edition", edition);
+      await expect(globe).toHaveAttribute("data-globe-style", style);
+      await expect(page.locator(".native-planet-app")).toHaveAttribute("data-planet-edition", edition);
+      await expect(globe).toHaveAttribute("data-globe-edition-transition", "idle");
+      if (style === "earth") {
+        await page.locator(".native-planet-app .interface-language-control button").filter({ hasText: "EN" }).click();
+        await expect(page.locator("html")).toHaveAttribute("lang", "en");
+      }
+      await retained(page, original);
+      expect(await settledCameraPose(original)).toEqual(pose);
+      const graphics = await nativeGraphicsEvidence(page, "appearance-" + style);
+      expect(graphics.economical).toBe("false");
+      expect(graphics.rendererPixelRatio).toBe(1.5);
+      expect(graphics.pointVertexCounts).toContain(2400);
+
+      const editionToggle = page.locator('[data-globe-control="edition-rail-toggle"]');
+      if (await editionToggle.getAttribute("aria-expanded") !== "true") await editionToggle.click();
+      await expect(page.locator("#globe-edition-rail")).toHaveAttribute("aria-hidden", "false");
+      await expect(page.locator('.globe-edition-scroll-cue[data-visible="true"] button').first()).toBeVisible();
+      await page.mouse.move(0, 0);
+      const editionControls = await applicationAppearanceEvidence(page, style + "-edition-controls");
+      for (const surface of ["editionArrow", "scaleFeedback"]) expectAppearanceSurface(editionControls, surface, "chrome", "on-dark");
+      for (const surface of ["previousEditionFade", "nextEditionFade"]) {
+        expect(editionControls.surfaces[surface].backgroundImage).toContain(editionControls.surfaces.chrome.backgroundColor);
+      }
+      await page.locator('[data-atlas-action="toggle-search"]').click();
+      await page.locator("#country-search").fill("Достоевский");
+      await expect(page.locator('#country-results [role="option"]').filter({ hasText: /Достоевск|Dostoevsk/iu }).first()).toBeVisible();
+      const search = await applicationAppearanceEvidence(page, style + "-search");
+      for (const surface of ["chrome", "searchSurface", "searchResults"]) expectAppearanceSurface(search, surface, "chrome", "on-dark");
+      expectAppearanceSurface(search, "country", "surface", "ink");
+      await evidence(fixture, testInfo, "native-appearance-" + style + "-search", { appearance: search, graphics, editionControls,
+        committedEdition: edition, sameCanvasRendererCameraScene: true });
+      await page.keyboard.press("Escape");
+
+      await page.locator('[data-atlas-action="open-collection"]').click();
+      const panel = page.locator(".native-planet-panel");
+      await expect(panel).toBeVisible();
+      await expect(panel.locator(".book-archive-heading")).toBeVisible();
+      await expect(panel.locator(".archive-book-card").first()).toBeVisible();
+      const collection = await applicationAppearanceEvidence(page, style + "-collection");
+      for (const surface of ["collection", "collectionHeader"]) expectAppearanceSurface(collection, surface, "surface", "ink");
+      expectAppearanceSurface(collection, "archiveCard", "chrome-raised", "on-dark");
+      expect(collection.surfaces.archiveHeading.visible).toBe(true);
+      expect(collection.tokens).toEqual(search.tokens);
+      for (const name of ["randomAction", "cardStatus", "fallbackAuthor"]) expect(collection.textContrasts[name].ratio, name + " actual text contrast").toBeGreaterThanOrEqual(4.5);
+      for (const card of collection.bookCards) {
+        expect(card.title.scrollWidth, card.title.text + " title is not horizontally clipped").toBeLessThanOrEqual(card.title.clientWidth + 1);
+        expect(card.title.scrollHeight, card.title.text + " full title remains readable").toBeLessThanOrEqual(card.title.clientHeight + 1);
+        for (const action of card.actions) {
+          expect(action.bounds.left, action.label + " remains inside its card").toBeGreaterThanOrEqual(card.bounds.left);
+          expect(action.bounds.right, action.label + " remains inside its card").toBeLessThanOrEqual(card.bounds.right);
+          expect(action.bounds.bottom, action.label + " remains inside its card").toBeLessThanOrEqual(card.bounds.bottom);
+        }
+      }
+      await evidence(fixture, testInfo, "native-appearance-" + style + "-collection", { appearance: collection,
+        committedEdition: edition, sameCanvasRendererCameraScene: true });
+      if (style === "modern") {
+        await panel.getByRole("button", { name: "Advanced filters", exact: true }).click();
+        const drawer = page.locator("#book-archive-advanced-filters");
+        await expect(drawer).toBeVisible();
+        await expect(page.locator("body")).toHaveAttribute("data-planet-portal-edition", edition);
+        const closeFilters = drawer.getByRole("button", { name: "Close filters", exact: true });
+        await expect(closeFilters).toBeFocused();
+        await page.keyboard.press("Tab");
+        expect(await drawer.evaluate(element => element.contains(document.activeElement))).toBe(true);
+        await page.keyboard.press("Shift+Tab");
+        await expect(closeFilters).toBeFocused();
+        const keyboardFocus = await closeFilters.evaluate(element => ({ focused: document.activeElement === element,
+          outline: getComputedStyle(element).outline, color: getComputedStyle(element).color,
+          backgroundColor: getComputedStyle(element).backgroundColor }));
+        const portal = await applicationAppearanceEvidence(page, "modern-advanced-filter-portal");
+        expectAppearanceSurface(portal, "filterDrawer", "surface", "ink");
+        expect(portal.tokens).toEqual(collection.tokens);
+        await evidence(fixture, testInfo, "native-appearance-modern-filter-portal", { appearance: portal, keyboardFocus, committedEdition: edition });
+        await closeFilters.click();
+        await expect(drawer).toBeHidden();
+        await expect(panel.getByRole("button", { name: "Advanced filters", exact: true })).toBeFocused();
+      }
+      await panel.getByRole("button", { name: /^(?:Вернуться к планете|Return to the planet)$/u }).click();
+      await expect(panel).toBeHidden();
+      await retained(page, original);
+      expect(await settledCameraPose(original)).toEqual(pose);
+      expect(new URL(page.url()).searchParams.get("country")).toBe("russia");
+      expect(new URL(page.url()).searchParams.get("writer")).toBe("dostoevsky");
+      appearances.push({ edition, style, search, collection, editionControls });
+    }
+    const paint = surface => JSON.stringify([surface.backgroundColor, surface.backgroundImage, surface.color]);
+    for (const surface of ["chrome", "searchSurface", "searchResults"]) {
+      expect(new Set(appearances.map(appearance => paint(appearance.search.surfaces[surface]))).size, surface + " follows all three canonical appearances").toBe(3);
+    }
+    for (const surface of ["collection", "collectionHeader", "archiveCard"]) {
+      expect(new Set(appearances.map(appearance => paint(appearance.collection.surfaces[surface]))).size, surface + " follows all three canonical appearances").toBe(3);
+    }
+    await page.setViewportSize({ width: 390, height: 844 });
+    const narrowSession = await page.context().newCDPSession(page);
+    await narrowSession.send("Emulation.setSafeAreaInsetsOverride", { insets: { top: 59, bottom: 34, left: 0, right: 0 } });
+    try {
+      await retained(page, original);
+      await page.mouse.move(0, 0);
+      await expect(page.locator(".atlas-country-sheet-toggle")).toBeVisible();
+      const narrow = await applicationAppearanceEvidence(page, "modern-narrow-header");
+      expectAppearanceSurface(narrow, "chrome", "chrome", "on-dark");
+      expectAppearanceSurface(narrow, "countryToggle", "chrome", "on-dark");
+      for (const surface of ["editionArrow", "scaleFeedback"]) expectAppearanceSurface(narrow, surface, "chrome", "on-dark");
+      const header = page.locator(".atlas-immersive-chrome");
+      const headerBounds = await header.boundingBox();
+      expect(headerBounds.y).toBeGreaterThanOrEqual(59);
+      expect(headerBounds.x).toBeGreaterThanOrEqual(0);
+      expect(headerBounds.x + headerBounds.width).toBeLessThanOrEqual(390);
+      const buttons = [];
+      for (const button of await header.locator("button").all()) {
+        if (!await button.isVisible()) continue;
+        const bounds = await button.boundingBox();
+        expect(bounds.width).toBeGreaterThanOrEqual(44);
+        expect(bounds.height).toBeGreaterThanOrEqual(44);
+        expect(bounds.x).toBeGreaterThanOrEqual(headerBounds.x);
+        expect(bounds.x + bounds.width).toBeLessThanOrEqual(headerBounds.x + headerBounds.width);
+        buttons.push({ label: await button.getAttribute("aria-label") ?? await button.innerText(), bounds });
+      }
+      expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390);
+      await evidence(fixture, testInfo, "native-appearance-modern-narrow-header", { appearance: narrow, header: headerBounds, buttons,
+        safeArea: { top: 59, bottom: 34 }, geometryScope: "Actual Chrome CSS viewport and safe-area emulation, not an installed mobile OS",
+        sameCanvasRendererCameraScene: true });
+    } finally { await narrowSession.detach(); }
+    await page.setViewportSize({ width: 1440, height: 800 });
+    await retained(page, original);
+    await evidence(fixture, testInfo, "native-appearance-quality-preserved", { appearances, unchangedCameraPoseBeforeViewportResize: pose,
+      finalCameraPose: await settledCameraPose(original), viewportResizeScope: "Same camera object retained; viewport changes may reframe presentation",
+      selectedCountry: "russia", selectedWriter: "dostoevsky", locale: "en", sameCanvasRendererCameraScene: true });
   } finally { await original.dispose(); }
 });
 

@@ -189,6 +189,7 @@ test("cold offline RU and EN launch preserve country and load first-use search",
 });
 
 test("device preparation restores real offline bytes and keeps simulated browser decisions truthful", async ({ page, context }, testInfo) => {
+  const desktopCompact = testInfo.project.name === "pwa-desktop";
   // Only installation/persistence decisions are simulated. The signed access,
   // app, globe, service worker, manifest, cached bytes and hash checks are real.
   // These disposable browser fixtures never invoke an OS installation prompt.
@@ -229,6 +230,7 @@ test("device preparation restores real offline bytes and keeps simulated browser
         ...(data.status === "complete" ? { fileCount: data.fileCount, bytes: data.bytes } : {}) });
     });
   });
+  if (desktopCompact) await page.setViewportSize({ width: 1280, height: page.viewportSize().height });
   await openAuthorized(page);
   const marker = await installed(page);
   const target = marker.manifest.files.find(file => file.kind === "shell" && file.url === marker.manifest.entrypoints.en);
@@ -256,8 +258,74 @@ test("device preparation restores real offline bytes and keeps simulated browser
   let restored = false;
   const evidence = { localQaOnly: true, buildId: marker.manifest.buildId, ownedCacheEntry: target,
     simulatedApis: ["beforeinstallprompt.prompt/userChoice", "StorageManager.persist/persisted"],
-    actualOsInstallation: false, checks: [], repairs: [], screenshots: [], headerBounds: [], coldOffline: [] };
+    actualOsInstallation: false, checks: [], repairs: [], screenshots: [], headerBounds: [], actionSpacing: [], themes: [], compactEdition: [], coldOffline: [] };
+  const globe = page.locator("#atlas .literary-globe");
+  const compactEditionEvidence = async (style, edition) => {
+    if (!desktopCompact) return;
+    expect(page.viewportSize().width).toBe(1280);
+    expect(new URL(page.url()).searchParams.get("country")).toBe("russia");
+    await expect(page.locator(".atlas-experience-surface")).toHaveAttribute("data-atlas-panel-state", "open");
+    await expect(page.locator('.atlas-country-presentation[data-atlas-country="russia"] .country-panel:not(.panel-loading)')).toBeVisible();
+    await expect(globe).toHaveAttribute("data-globe-edition", edition);
+    await expect(page.locator(".native-planet-app")).toHaveAttribute("data-planet-edition", edition);
+    const select = globe.locator(".globe-edition-compact-select select");
+    await expect(select).toBeVisible();
+    await expect(select).toHaveValue(edition);
+    // Hover has its own intentional raised color. Measure the settled base
+    // palette with the real pointer away, without overriding CSS or focus.
+    await page.mouse.move(0, 0);
+    const readColors = () => select.evaluate(element => {
+      const css = getComputedStyle(element);
+      const token = name => {
+        const hex = css.getPropertyValue(name).trim();
+        if (!/^#[a-f0-9]{6}$/i.test(hex)) throw new Error("Expected opaque palette token: " + name);
+        return "rgb(" + [1, 3, 5].map(index => Number.parseInt(hex.slice(index, index + 2), 16)).join(", ") + ")";
+      };
+      const luminance = color => {
+        const rgb = color.match(/^rgb\((\d+), (\d+), (\d+)\)$/);
+        if (!rgb) throw new Error("Expected an opaque rendered palette color");
+        const channels = rgb.slice(1).map(Number).map(value => value / 255)
+          .map(value => value <= .04045 ? value / 12.92 : ((value + .055) / 1.055) ** 2.4);
+        return channels[0] * .2126 + channels[1] * .7152 + channels[2] * .0722;
+      };
+      const text = css.color, background = css.backgroundColor;
+      const foregroundLuminance = luminance(text), backgroundLuminance = luminance(background);
+      return { value: element.value, text, background, backgroundImage: css.backgroundImage,
+        expectedText: token("--planet-on-dark"), expectedBackground: token("--planet-chrome"),
+        hovered: element.matches(":hover"), height: element.getBoundingClientRect().height,
+        contrastRatio: (Math.max(foregroundLuminance, backgroundLuminance) + .05)
+          / (Math.min(foregroundLuminance, backgroundLuminance) + .05),
+        options: [...element.options].map(option => ({ value: option.value,
+          text: getComputedStyle(option).color, background: getComputedStyle(option).backgroundColor })) };
+    });
+    await expect.poll(async () => {
+      const colors = await readColors();
+      return colors.background === colors.expectedBackground && colors.text === colors.expectedText
+        && colors.backgroundImage === "none" && !colors.hovered;
+    }).toBe(true);
+    const colors = await readColors();
+    expect(colors.contrastRatio).toBeGreaterThanOrEqual(4.5);
+    expect(colors.height).toBeGreaterThanOrEqual(44);
+    expect(colors.options.length).toBeGreaterThan(1);
+    for (const option of colors.options) {
+      expect(option.text).toBe(colors.expectedText);
+      expect(option.background).toBe(colors.expectedBackground);
+    }
+    await hitTarget(select);
+    await expect(page.locator("canvas")).toHaveCount(1);
+    expect(await scene.evaluate(original => {
+      const current = window.__literaryPlanetQaScenes().find(item => item.canvas === original.canvas);
+      return original.canvas.isConnected && current?.renderer === original.renderer
+        && current?.camera === original.camera && current?.scene === original.scene;
+    })).toBe(true);
+    evidence.compactEdition.push({ style, edition, viewport: page.viewportSize(), country: "russia",
+      countryPanelOpen: true, sameCanvasRendererCameraScene: true, nativeOsPopupCaptured: false, ...colors });
+    const filename = "device-compact-edition-" + style + ".png";
+    await page.screenshot({ path: testInfo.outputPath(filename), fullPage: false });
+    evidence.screenshots.push(filename);
+  };
   try {
+    await compactEditionEvidence("antique", "rand-mcnally-1887");
     // Offer before opening Help; its later mount must not lose the deferred event.
     await page.evaluate(() => window.__pwaDeviceQa.offerPrompt());
     expect(await page.evaluate(() => window.__pwaDeviceQa.prompts.length)).toBe(0);
@@ -271,6 +339,42 @@ test("device preparation restores real offline bytes and keeps simulated browser
     const nodes = await page.evaluateHandle(() => ({ header: document.querySelector(".native-planet-panel__header"),
       help: document.querySelector(".pwa-help details"), device: document.querySelector(".pwa-device") }));
     const readiness = device.locator("[data-pwa-offline-readiness]");
+    const helpColors = () => help.evaluate(element => {
+      const card = element.querySelector("[data-pwa-offline-readiness]").parentElement;
+      const button = card.querySelector("button");
+      return { helpBackground: getComputedStyle(element).backgroundColor,
+        cardBackground: getComputedStyle(card).backgroundColor, cardText: getComputedStyle(card).color,
+        buttonBackground: getComputedStyle(button).backgroundColor, buttonText: getComputedStyle(button).color };
+    });
+    await expect(globe).toHaveAttribute("data-globe-style", "antique");
+    await expect(page.locator(".native-planet-app")).toHaveAttribute("data-planet-edition", "rand-mcnally-1887");
+    const antiqueColors = await helpColors();
+    evidence.themes.push({ phase: "initial", style: "antique", colors: antiqueColors });
+    // Change the actual canonical globe edition through its existing controls.
+    // Help stays mounted; the app theme must follow the committed globe style.
+    await header.getByRole("button", { name: "Вернуться к планете", exact: true }).click();
+    await expect(collection).toBeHidden();
+    const editionSelect = globe.locator(".globe-edition-compact-select select");
+    if (await editionSelect.isVisible()) {
+      await editionSelect.selectOption("nasa-blue-marble");
+    } else {
+      if (await globe.getAttribute("data-globe-edition-rail") === "hidden") {
+        await globe.locator('[data-globe-control="edition-rail-toggle"]').click();
+      }
+      await globe.locator('[data-globe-edition-option="nasa-blue-marble"]').click();
+    }
+    await expect(globe).toHaveAttribute("data-globe-edition", "nasa-blue-marble");
+    await expect(globe).toHaveAttribute("data-globe-style", "earth");
+    await expect(globe).toHaveAttribute("data-globe-edition-transition", "idle");
+    await expect(page.locator(".native-planet-app")).toHaveAttribute("data-planet-edition", "nasa-blue-marble");
+    await compactEditionEvidence("earth", "nasa-blue-marble");
+    await page.locator('[data-atlas-action="open-collection"]').click();
+    await expect(device).toBeVisible();
+    const earthColors = await helpColors();
+    expect(earthColors.helpBackground).not.toBe(antiqueColors.helpBackground);
+    expect(earthColors.cardBackground).not.toBe(antiqueColors.cardBackground);
+    expect(earthColors.buttonBackground).not.toBe(antiqueColors.buttonBackground);
+    evidence.themes.push({ phase: "actual-edition-change", style: "earth", edition: "nasa-blue-marble", colors: earthColors });
     await expect(readiness).toHaveAttribute("data-pwa-offline-readiness", "unchecked");
     expect(await page.evaluate(() => ({ prompts: window.__pwaDeviceQa.prompts.length,
       persistence: window.__pwaDeviceQa.persistence.length, checks: window.__pwaDeviceQa.readiness.length })))
@@ -288,6 +392,21 @@ test("device preparation restores real offline bytes and keeps simulated browser
       expect(await nodes.evaluate(original => original.header === document.querySelector(".native-planet-panel__header")
         && original.help === document.querySelector(".pwa-help details") && original.help.open
         && original.device === document.querySelector(".pwa-device"))).toBe(true);
+      await expect(globe).toHaveAttribute("data-globe-edition", "nasa-blue-marble");
+      await expect(globe).toHaveAttribute("data-globe-style", "earth");
+      await expect(page.locator(".native-planet-app")).toHaveAttribute("data-planet-edition", "nasa-blue-marble");
+      expect(await helpColors()).toEqual(earthColors);
+      const spacing = await readiness.evaluate(element => {
+        const card = element.parentElement;
+        const check = card.querySelector(":scope > button").getBoundingClientRect();
+        const repair = card.querySelector(".pwa-device__actions > button").getBoundingClientRect();
+        return { gap: repair.top - check.bottom, checkHeight: check.height, repairHeight: repair.height };
+      });
+      expect(spacing.gap).toBeGreaterThanOrEqual(8);
+      expect(spacing.checkHeight).toBeGreaterThanOrEqual(44);
+      expect(spacing.repairHeight).toBeGreaterThanOrEqual(44);
+      evidence.actionSpacing.push({ phase, locale, ...spacing });
+      evidence.themes.push({ phase, locale, style: "earth", colors: earthColors });
       await expect(header).toBeInViewport({ ratio: 1 });
       await hitTarget(header.getByRole("button", { name: locale === "ru" ? "Вернуться к планете" : "Return to the planet", exact: true }));
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
@@ -405,10 +524,18 @@ test("device preparation restores real offline bytes and keeps simulated browser
       await expect(page.locator("[data-pwa-authorized]")).toBeVisible();
       await expect(page.locator("#atlas canvas")).toHaveCount(1);
       await expect.poll(() => page.evaluate(() => window.__literaryPlanetQaScenes?.().filter(item => document.querySelector("#atlas")?.contains(item.canvas)).length)).toBe(1);
+      await expect(page.locator("#atlas .literary-globe")).toHaveAttribute("data-globe-webgl-context", "ready", { timeout: 45_000 });
+      // Canvas creation precedes the real launch curtain's exit. Capture the
+      // usable cold-start surface only after its overlay and input lock leave.
+      await expect(page.locator(".native-planet-launch")).toHaveCount(0);
+      await expect(page.locator("#atlas .literary-globe")).toHaveAttribute("data-globe-edition", "nasa-blue-marble");
+      await expect(page.locator("#atlas .literary-globe")).toHaveAttribute("data-globe-style", "earth");
+      await expect(page.locator(".native-planet-app")).toHaveAttribute("data-planet-edition", "nasa-blue-marble");
       const cold = await page.evaluate(() => ({ language: document.documentElement.lang,
         country: new URL(location.href).searchParams.get("country"), canvasCount: document.querySelectorAll("canvas").length,
+        launchOverlayCount: document.querySelectorAll(".native-planet-launch").length,
         savedAccess: document.querySelector("[data-pwa-access-verification]")?.getAttribute("data-pwa-access-verification") }));
-      expect(cold).toMatchObject({ language, country: "russia", canvasCount: 1, savedAccess: "saved" });
+      expect(cold).toMatchObject({ language, country: "russia", canvasCount: 1, launchOverlayCount: 0, savedAccess: "saved" });
       evidence.coldOffline.push(cold); await screenshot("device-repaired-cold-" + language);
     }
   } finally {

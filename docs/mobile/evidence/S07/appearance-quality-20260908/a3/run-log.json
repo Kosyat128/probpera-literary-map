@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "kind": "lossless-utf8-log",
+  "originalRelativePath": ".tmp/s07-appearance-quality-20260908/a3/run.log",
+  "bytes": 402,
+  "sha256": "15a47bcd96074abecef2804d0cd2c25397c57e5d01c0663cfb152172d6fb0daf",
+  "encoding": "utf8",
+  "text": "\nRunning 1 test using 1 worker\n\n(node:33256) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n  ok 1 tests\\host\\native-planet.spec.mjs:471:1 › native application defaults to rich graphics under low-resource hints while respecting reduced motion and RU/EN scene identity (28.5s)\n\n  1 passed (31.9s)\n"
+}

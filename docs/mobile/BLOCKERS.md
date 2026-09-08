@@ -1,5 +1,19 @@
 # V12 blockers and pending work
 
+<!-- s07-appearance-quality:begin -->
+LATEST SOURCE: owner-selected rich graphics default and edition-derived
+application appearance. Nine palettes,12 scoped units, one shared static
+execution and one actual native-binding Chrome case (three styles) passed.
+CSS/fixture corrections and all prior attempts are preserved.
+Evidence: evidence/S07/appearance-quality-20260908/result.json.
+Fresh Android/PWA builds and final PWA theme/help/repair screenshots are next.
+Artifacts a7828499/3eb567d6 below predate this source. Earlier blocks remain
+historical. Full High/Balanced/Economy, Planetka and global gates remain open.
+Owner also requires nearly10k canonical books, reviewed EN biographies and
+later edition-specific EN covers; see GLOBE_APPLICATION_CONTRACT.md. Full-catalog
+capacity and owner content updates are not accepted by the small test selection.
+<!-- s07-appearance-quality:end -->
+
 <!-- s07-country-sheet:begin -->
 Current source c62309ce86b5aade4465e27a4b2d23f6cb870fd3: direct country-sheet touch and explicit offline repair.
 S07:6 units +2 actual Chrome touch cases. S03:306 combined scoped units +2

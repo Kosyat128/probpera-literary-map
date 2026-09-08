@@ -1,0 +1,309 @@
+{
+  "schemaVersion": 1,
+  "stage": "S07",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "runId": "appearance-quality-20260908-a1",
+  "sourceCommit": "55a195b997a569b5a3aef692f7e8cf27d2a35b37",
+  "scope": "Canonical App/R3F/CSS in Chrome with simulated low-resource browser hints and devicePixelRatio2, injected Android OS plugins; actual rich rendering and committed whole-app appearance, not a physical-device performance or native-artifact claim.",
+  "statistics": {
+    "startTime": "2026-09-08T08:33:22.410Z",
+    "duration": 41894.88,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "selectionErrorBeforeFixture": false,
+  "tests": [
+    {
+      "title": "native application defaults to rich graphics under low-resource hints while respecting reduced motion and RU/EN scene identity",
+      "status": "failed",
+      "durationMs": 38657,
+      "errors": [
+        "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.native-planet-panel').locator('button[aria-controls=\"book-archive-advanced-filters\"]')\u001b[22m\n\n\n  539 |         committedEdition: edition, sameCanvasRendererCameraScene: true });\n  540 |       if (style === \"modern\") {\n> 541 |         await panel.locator('button[aria-controls=\"book-archive-advanced-filters\"]').click();\n      |                                                                                      ^\n  542 |         const drawer = page.locator(\"#book-archive-advanced-filters\");\n  543 |         await expect(drawer).toBeVisible();\n  544 |         await expect(page.locator(\"body\")).toHaveAttribute(\"data-planet-portal-edition\", edition);\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs:541:86"
+      ],
+      "attachments": [
+        {
+          "name": "native-rich-default-low-hints",
+          "path": "case-1/native-rich-default-low-hints.json"
+        },
+        {
+          "name": "native-rich-default-low-hints-screenshot",
+          "path": "case-1/native-rich-default-low-hints-screenshot.png"
+        },
+        {
+          "name": "native-appearance-antique-search",
+          "path": "case-1/native-appearance-antique-search.json"
+        },
+        {
+          "name": "native-appearance-antique-search-screenshot",
+          "path": "case-1/native-appearance-antique-search-screenshot.png"
+        },
+        {
+          "name": "native-appearance-antique-collection",
+          "path": "case-1/native-appearance-antique-collection.json"
+        },
+        {
+          "name": "native-appearance-antique-collection-screenshot",
+          "path": "case-1/native-appearance-antique-collection-screenshot.png"
+        },
+        {
+          "name": "native-appearance-earth-search",
+          "path": "case-1/native-appearance-earth-search.json"
+        },
+        {
+          "name": "native-appearance-earth-search-screenshot",
+          "path": "case-1/native-appearance-earth-search-screenshot.png"
+        },
+        {
+          "name": "native-appearance-earth-collection",
+          "path": "case-1/native-appearance-earth-collection.json"
+        },
+        {
+          "name": "native-appearance-earth-collection-screenshot",
+          "path": "case-1/native-appearance-earth-collection-screenshot.png"
+        },
+        {
+          "name": "native-appearance-modern-search",
+          "path": "case-1/native-appearance-modern-search.json"
+        },
+        {
+          "name": "native-appearance-modern-search-screenshot",
+          "path": "case-1/native-appearance-modern-search-screenshot.png"
+        },
+        {
+          "name": "native-appearance-modern-collection",
+          "path": "case-1/native-appearance-modern-collection.json"
+        },
+        {
+          "name": "native-appearance-modern-collection-screenshot",
+          "path": "case-1/native-appearance-modern-collection-screenshot.png"
+        },
+        {
+          "name": "native-final-failed",
+          "path": "case-1/native-final-failed.json"
+        },
+        {
+          "name": "native-final-failed-screenshot",
+          "path": "case-1/native-final-failed-screenshot.png"
+        }
+      ]
+    }
+  ],
+  "sourceComparison": {
+    "sourceFiles": 974,
+    "unchangedDuringRun": true,
+    "changed": [],
+    "supplementalNativeSelection": {
+      "path": "scripts/mobile/native-base-assets.json",
+      "beforeSha256": "c1f42e5c8d8afd58102d24faa434a1b01a77129f97bc11ac59fe8ce5e4ca4268",
+      "afterSha256": "c1f42e5c8d8afd58102d24faa434a1b01a77129f97bc11ac59fe8ce5e4ca4268",
+      "unchanged": true
+    }
+  },
+  "runContext": {
+    "runId": "appearance-quality-20260908-a1",
+    "sourceCommit": "55a195b997a569b5a3aef692f7e8cf27d2a35b37",
+    "selectedScenarios": 1,
+    "grep": "native application defaults to rich graphics",
+    "sourceFiles": 974,
+    "previousSnapshotFiles": 971,
+    "addedSourcePaths": [
+      "src/host/planetAppearance.css",
+      "src/host/planetAppearance.ts",
+      "src/host/planetAppearance.test.ts"
+    ],
+    "nativeSelectionSha256": "c1f42e5c8d8afd58102d24faa434a1b01a77129f97bc11ac59fe8ce5e4ca4268",
+    "browserFixture": {
+      "channel": "chrome",
+      "capabilityHints": {
+        "saveData": true,
+        "deviceMemory": 2,
+        "hardwareConcurrency": 2
+      },
+      "deviceScaleFactor": 2,
+      "physicalDevice": false,
+      "OSPluginsInjected": true,
+      "realAppR3F": true
+    },
+    "scope": "Existing rich default plus three canonical globe editions across real search/country/Collection and a body portal; one focused case, no previous suite replay or artifact build."
+  },
+  "preservedFiles": [
+    {
+      "path": "source-before.json",
+      "source": ".tmp/s07-appearance-quality-20260908/a1/source-before.json",
+      "bytes": 137144,
+      "sha256": "69373e7fdcf85d897202e18d176b5a9f4efb5ecac643f7e9b7f95f55e84f93e5"
+    },
+    {
+      "path": "source-after.json",
+      "source": ".tmp/s07-appearance-quality-20260908/a1/source-after.json",
+      "bytes": 137144,
+      "sha256": "69373e7fdcf85d897202e18d176b5a9f4efb5ecac643f7e9b7f95f55e84f93e5"
+    },
+    {
+      "path": "source-comparison.json",
+      "source": ".tmp/s07-appearance-quality-20260908/a1/source-comparison.json",
+      "bytes": 363,
+      "sha256": "09e0c2c40350bebeecd9465a0104aef469cdd88dd594a8d2c0d0b4201aab94b8"
+    },
+    {
+      "path": "run-context.json",
+      "source": ".tmp/s07-appearance-quality-20260908/a1/run-context.json",
+      "bytes": 951,
+      "sha256": "e85a4bc37de3e9a211d9bd915d3476b69707dcbed4aa58d7557be37f370e412c"
+    },
+    {
+      "path": "browser-results.json",
+      "source": ".tmp/native-planet-browser-results/appearance-quality-20260908-a1/results.json",
+      "bytes": 425723,
+      "sha256": "b5ea0f7ff2b9d9789a87362e924c65b5d4c3714fc938bf2e47ea917f0133d62a"
+    },
+    {
+      "path": "case-1/native-rich-default-low-hints.json",
+      "source": "Exact decoded Playwright attachment: native-rich-default-low-hints",
+      "bytes": 14022,
+      "sha256": "920df3973017cc96c4d68f6cd4fd49e38d7e4ee8292790f709a05eaa9dd9c801"
+    },
+    {
+      "path": "case-1/native-rich-default-low-hints-screenshot.png",
+      "source": ".tmp/native-planet-browser-results/appearance-quality-20260908-a1/artifacts/native-planet-native-appli-e5295-on-and-RU-EN-scene-identity/attachments/native-rich-default-low-hints-screenshot-5a725971038e81c89cf045c4b4f1ec3a349803ca.png",
+      "bytes": 2841154,
+      "sha256": "9ae63f962e4be14d577d320c22272d3d321c445704ba0008a79d54211abbb4a6"
+    },
+    {
+      "path": "case-1/native-appearance-antique-search.json",
+      "source": "Exact decoded Playwright attachment: native-appearance-antique-search",
+      "bytes": 21652,
+      "sha256": "aa48007780d332024c05dc779878792e5ca046979e9c1eb6b59b976bede2d784"
+    },
+    {
+      "path": "case-1/native-appearance-antique-search-screenshot.png",
+      "source": ".tmp/native-planet-browser-results/appearance-quality-20260908-a1/artifacts/native-planet-native-appli-e5295-on-and-RU-EN-scene-identity/attachments/native-appearance-antique-search-screenshot-df7e613f097ae2daafdfe0dc6b7659aa82193e34.png",
+      "bytes": 2529186,
+      "sha256": "7374d60e5127d8bc1ecba924278a79e16d7aa2ce008202b9a2d4c0a7a9883a08"
+    },
+    {
+      "path": "case-1/native-appearance-antique-collection.json",
+      "source": "Exact decoded Playwright attachment: native-appearance-antique-collection",
+      "bytes": 33543,
+      "sha256": "6c9731e17038a84a10d9e70366f24d4fd6254c79c1c3a9338d1f3a6f1513ad0f"
+    },
+    {
+      "path": "case-1/native-appearance-antique-collection-screenshot.png",
+      "source": ".tmp/native-planet-browser-results/appearance-quality-20260908-a1/artifacts/native-planet-native-appli-e5295-on-and-RU-EN-scene-identity/attachments/native-appearance-antique-collection-screenshot-425b9456c033480184ccb2cfe9587d55ca264a55.png",
+      "bytes": 2234716,
+      "sha256": "4f5d3931ccfa1b23a901c22c9a1c0ea642376af9882ccd5cb7123d382e522465"
+    },
+    {
+      "path": "case-1/native-appearance-earth-search.json",
+      "source": "Exact decoded Playwright attachment: native-appearance-earth-search",
+      "bytes": 37530,
+      "sha256": "9dae7a1a0f2ad1bddeb3219381442a45d32d253b97bffb0e03c797f2be6abf2f"
+    },
+    {
+      "path": "case-1/native-appearance-earth-search-screenshot.png",
+      "source": ".tmp/native-planet-browser-results/appearance-quality-20260908-a1/artifacts/native-planet-native-appli-e5295-on-and-RU-EN-scene-identity/attachments/native-appearance-earth-search-screenshot-f824e96d998ea67aaab18dbb3c1f0b193acf5c86.png",
+      "bytes": 1741957,
+      "sha256": "dcabaf875d12695ce27f1ad0a6d5efe3da52374207998dfe85bf3a1969bb8c56"
+    },
+    {
+      "path": "case-1/native-appearance-earth-collection.json",
+      "source": "Exact decoded Playwright attachment: native-appearance-earth-collection",
+      "bytes": 42849,
+      "sha256": "aeade284f51693037862be2ea007be9b9504c7975eea9a135ac87496cada4e24"
+    },
+    {
+      "path": "case-1/native-appearance-earth-collection-screenshot.png",
+      "source": ".tmp/native-planet-browser-results/appearance-quality-20260908-a1/artifacts/native-planet-native-appli-e5295-on-and-RU-EN-scene-identity/attachments/native-appearance-earth-collection-screenshot-180edd5bf0bf18680ef5a603d4dd76b79d0e2d80.png",
+      "bytes": 1781105,
+      "sha256": "09b4c46cc44e9e8efb68a27c2562754668d27f3ea41498daa6374b455d529400"
+    },
+    {
+      "path": "case-1/native-appearance-modern-search.json",
+      "source": "Exact decoded Playwright attachment: native-appearance-modern-search",
+      "bytes": 50774,
+      "sha256": "8595adb328965c4039718dbb3ef6fe1dcbe3907d2ce670f2aa02e101fa0d1acb"
+    },
+    {
+      "path": "case-1/native-appearance-modern-search-screenshot.png",
+      "source": ".tmp/native-planet-browser-results/appearance-quality-20260908-a1/artifacts/native-planet-native-appli-e5295-on-and-RU-EN-scene-identity/attachments/native-appearance-modern-search-screenshot-196765c46e13be14e994110a8e04fb5269b9c538.png",
+      "bytes": 2003999,
+      "sha256": "f216dfb33887ce46b6981a2f35dba3a3336481e461693b866d128ba78db09ec0"
+    },
+    {
+      "path": "case-1/native-appearance-modern-collection.json",
+      "source": "Exact decoded Playwright attachment: native-appearance-modern-collection",
+      "bytes": 56098,
+      "sha256": "45ea331b07ec97f67540f2523a47c70ce14bc60f0e8f3abb657c74fb82ba994e"
+    },
+    {
+      "path": "case-1/native-appearance-modern-collection-screenshot.png",
+      "source": ".tmp/native-planet-browser-results/appearance-quality-20260908-a1/artifacts/native-planet-native-appli-e5295-on-and-RU-EN-scene-identity/attachments/native-appearance-modern-collection-screenshot-dc50141b2037c2cb6af6028b3a3449386289ac8c.png",
+      "bytes": 1901583,
+      "sha256": "d61fb8017bca748c5afcf813606d98a609354418664b40357e4f290842d811bc"
+    },
+    {
+      "path": "case-1/native-final-failed.json",
+      "source": "Exact decoded Playwright attachment: native-final-failed",
+      "bytes": 52714,
+      "sha256": "e976b17b14e46ecc55ec7ec267b7cdc7475d9ee479f84f968cc2e7c433ca6b2b"
+    },
+    {
+      "path": "case-1/native-final-failed-screenshot.png",
+      "source": ".tmp/native-planet-browser-results/appearance-quality-20260908-a1/artifacts/native-planet-native-appli-e5295-on-and-RU-EN-scene-identity/attachments/native-final-failed-screenshot-7fcc11c26ee48fec6c88cffaf222c3295d9694be.png",
+      "bytes": 1907921,
+      "sha256": "d6a99945d922346fd1c8662b7a3cbdbea981362c7045c4ea573fca19b1177d23"
+    },
+    {
+      "path": "run-log.json",
+      "source": ".tmp/s07-appearance-quality-20260908/a1/run.log",
+      "bytes": 7925,
+      "sha256": "20309cc4cb543d5c8a0733daabef1493eae9c7020ab60c44dc14944beb2824d0"
+    }
+  ],
+  "losslessRunLog": {
+    "path": "run-log.json",
+    "bytes": 7512,
+    "sha256": "14bc4ed4016a211b88355abf227b16a75374c8b4ab0b70283b58cb3230043153",
+    "roundTripVerified": true
+  },
+  "limitations": [
+    "This preserves the exact attempt, including failures; it is not stage acceptance.",
+    "No OS installation, native/PWA artifact, production publication, trace.zip or compiled source payload included.",
+    "Only existing evidence was copied and checked by hash; no tests rerun for preservation."
+  ],
+  "diagnosis": {
+    "outcome": "FAILED_FIXTURE_TRIGGER",
+    "cause": "The test used aria-controls before opening the filter drawer. Canonical BookShelfControls.tsx only sets that attribute while advancedFiltersOpen; the actual closed trigger already has the accessible name Advanced filters.",
+    "sourceReference": "src/components/BookShelfControls.tsx:502",
+    "preservedResultUnchanged": "Original browser status remains failed; no later pass is substituted.",
+    "priorReachedChecks": [
+      "Actual low-resource hints, rich DPR1.5 and 2400-vertex Points geometry.",
+      "RU/EN and reduced-motion policy with one retained scene and settled camera pose.",
+      "All three committed editions in actual chrome, search, country and Collection surfaces, token equality and main surface text contrast."
+    ],
+    "notReached": [
+      "Advanced-filter portal open and paint assertions.",
+      "Final all-style comparison and terminal state receipt."
+    ]
+  },
+  "visualReview": {
+    "inspectedActualPngs": [
+      "case-1/native-appearance-antique-search-screenshot.png",
+      "case-1/native-appearance-earth-collection-screenshot.png",
+      "case-1/native-appearance-modern-collection-screenshot.png"
+    ],
+    "findings": [
+      "Canonical globe remains behind the real Collection and changes edition. Search and Collection adopt brown, blue and green palettes.",
+      "Surprise me has white text on a bright accent, while verified status becomes dark against the dark card. These are material visual contrast concerns, not accepted by the earlier main-surface checks.",
+      "Fallback-cover author uses a bright accent on a light field; native Collection cards retain three cramped columns with heavily truncated titles/actions.",
+      "Root and theme owner were notified before another attempt; actual component-level contrast and card geometry assertions are added for the affected rerun."
+    ],
+    "limitations": [
+      "Existing content-language indicators, four currently available archive works, source editorial statuses and RU covers in EN UI do not establish global bilingual content acceptance.",
+      "This is actual App/CSS/R3F in Chrome with injected native OS boundary, not an installed device or a complete performance profile system."
+    ]
+  }
+}

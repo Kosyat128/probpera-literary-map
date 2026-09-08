@@ -1,0 +1,983 @@
+{
+  "schemaVersion": 1,
+  "stage": "S07",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "runId": "appearance-quality-20260908-a5",
+  "sourceCommit": "55a195b997a569b5a3aef692f7e8cf27d2a35b37",
+  "scope": "Canonical App/R3F/CSS in Chrome with simulated low-resource browser hints and devicePixelRatio2, injected Android OS plugins; actual rich rendering and committed whole-app appearance, not a physical-device performance or native-artifact claim.",
+  "statistics": {
+    "startTime": "2026-09-08T08:56:54.006Z",
+    "duration": 32474.166999999998,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "selectionErrorBeforeFixture": false,
+  "tests": [
+    {
+      "title": "native application defaults to rich graphics under low-resource hints while respecting reduced motion and RU/EN scene identity",
+      "status": "passed",
+      "durationMs": 29295,
+      "errors": [],
+      "attachments": [
+        {
+          "name": "native-rich-default-low-hints",
+          "path": "case-1/native-rich-default-low-hints.json"
+        },
+        {
+          "name": "native-rich-default-low-hints-screenshot",
+          "path": "case-1/native-rich-default-low-hints-screenshot.png"
+        },
+        {
+          "name": "native-appearance-antique-search",
+          "path": "case-1/native-appearance-antique-search.json"
+        },
+        {
+          "name": "native-appearance-antique-search-screenshot",
+          "path": "case-1/native-appearance-antique-search-screenshot.png"
+        },
+        {
+          "name": "native-appearance-antique-collection",
+          "path": "case-1/native-appearance-antique-collection.json"
+        },
+        {
+          "name": "native-appearance-antique-collection-screenshot",
+          "path": "case-1/native-appearance-antique-collection-screenshot.png"
+        },
+        {
+          "name": "native-appearance-earth-search",
+          "path": "case-1/native-appearance-earth-search.json"
+        },
+        {
+          "name": "native-appearance-earth-search-screenshot",
+          "path": "case-1/native-appearance-earth-search-screenshot.png"
+        },
+        {
+          "name": "native-appearance-earth-collection",
+          "path": "case-1/native-appearance-earth-collection.json"
+        },
+        {
+          "name": "native-appearance-earth-collection-screenshot",
+          "path": "case-1/native-appearance-earth-collection-screenshot.png"
+        },
+        {
+          "name": "native-appearance-modern-search",
+          "path": "case-1/native-appearance-modern-search.json"
+        },
+        {
+          "name": "native-appearance-modern-search-screenshot",
+          "path": "case-1/native-appearance-modern-search-screenshot.png"
+        },
+        {
+          "name": "native-appearance-modern-collection",
+          "path": "case-1/native-appearance-modern-collection.json"
+        },
+        {
+          "name": "native-appearance-modern-collection-screenshot",
+          "path": "case-1/native-appearance-modern-collection-screenshot.png"
+        },
+        {
+          "name": "native-appearance-modern-filter-portal",
+          "path": "case-1/native-appearance-modern-filter-portal.json"
+        },
+        {
+          "name": "native-appearance-modern-filter-portal-screenshot",
+          "path": "case-1/native-appearance-modern-filter-portal-screenshot.png"
+        },
+        {
+          "name": "native-appearance-modern-narrow-header",
+          "path": "case-1/native-appearance-modern-narrow-header.json"
+        },
+        {
+          "name": "native-appearance-modern-narrow-header-screenshot",
+          "path": "case-1/native-appearance-modern-narrow-header-screenshot.png"
+        },
+        {
+          "name": "native-appearance-quality-preserved",
+          "path": "case-1/native-appearance-quality-preserved.json"
+        },
+        {
+          "name": "native-appearance-quality-preserved-screenshot",
+          "path": "case-1/native-appearance-quality-preserved-screenshot.png"
+        },
+        {
+          "name": "native-final-passed",
+          "path": "case-1/native-final-passed.json"
+        },
+        {
+          "name": "native-final-passed-screenshot",
+          "path": "case-1/native-final-passed-screenshot.png"
+        }
+      ]
+    }
+  ],
+  "sourceComparison": {
+    "sourceFiles": 974,
+    "unchangedDuringRun": true,
+    "changed": [],
+    "supplementalNativeSelection": {
+      "path": "scripts/mobile/native-base-assets.json",
+      "beforeSha256": "c1f42e5c8d8afd58102d24faa434a1b01a77129f97bc11ac59fe8ce5e4ca4268",
+      "afterSha256": "c1f42e5c8d8afd58102d24faa434a1b01a77129f97bc11ac59fe8ce5e4ca4268",
+      "unchanged": true
+    }
+  },
+  "runContext": {
+    "runId": "appearance-quality-20260908-a5",
+    "sourceCommit": "55a195b997a569b5a3aef692f7e8cf27d2a35b37",
+    "selectedScenarios": 1,
+    "grep": "native application defaults to rich graphics",
+    "sourceFiles": 974,
+    "previousSnapshotFiles": 971,
+    "addedSourcePaths": [
+      "src/host/planetAppearance.css",
+      "src/host/planetAppearance.ts",
+      "src/host/planetAppearance.test.ts"
+    ],
+    "nativeSelectionSha256": "c1f42e5c8d8afd58102d24faa434a1b01a77129f97bc11ac59fe8ce5e4ca4268",
+    "browserFixture": {
+      "channel": "chrome",
+      "capabilityHints": {
+        "saveData": true,
+        "deviceMemory": 2,
+        "hardwareConcurrency": 2
+      },
+      "deviceScaleFactor": 2,
+      "physicalDevice": false,
+      "OSPluginsInjected": true,
+      "realAppR3F": true
+    },
+    "scope": "Existing rich default plus three canonical globe editions across real search/country/Collection and a body portal; one focused case, no previous suite replay or artifact build."
+  },
+  "preservedFiles": [
+    {
+      "path": "source-before.json",
+      "source": ".tmp/s07-appearance-quality-20260908/a5/source-before.json",
+      "bytes": 137144,
+      "sha256": "f379b5b842bdc49f94a805c44285a4d590f6e29d2eafaa590086031bae176aea"
+    },
+    {
+      "path": "source-after.json",
+      "source": ".tmp/s07-appearance-quality-20260908/a5/source-after.json",
+      "bytes": 137144,
+      "sha256": "f379b5b842bdc49f94a805c44285a4d590f6e29d2eafaa590086031bae176aea"
+    },
+    {
+      "path": "source-comparison.json",
+      "source": ".tmp/s07-appearance-quality-20260908/a5/source-comparison.json",
+      "bytes": 363,
+      "sha256": "09e0c2c40350bebeecd9465a0104aef469cdd88dd594a8d2c0d0b4201aab94b8"
+    },
+    {
+      "path": "run-context.json",
+      "source": ".tmp/s07-appearance-quality-20260908/a5/run-context.json",
+      "bytes": 951,
+      "sha256": "2638c257ca31980f1b47d6308420c6933887c681795347fdd49ce372529b3628"
+    },
+    {
+      "path": "browser-results.json",
+      "source": ".tmp/native-planet-browser-results/appearance-quality-20260908-a5/results.json",
+      "bytes": 1418754,
+      "sha256": "8f3f7857f18a55bae373351f823fd02bf2fb7597aa47ecea9a6b9bbcab728107"
+    },
+    {
+      "path": "case-1/native-rich-default-low-hints.json",
+      "source": "Exact decoded Playwright attachment: native-rich-default-low-hints",
+      "bytes": 14034,
+      "sha256": "68d38e3a70969dcbb2c55a8c4ad4431dee7efda25295d9c4893583a2ae1fb2a5"
+    },
+    {
+      "path": "case-1/native-rich-default-low-hints-screenshot.png",
+      "source": ".tmp/native-planet-browser-results/appearance-quality-20260908-a5/artifacts/native-planet-native-appli-e5295-on-and-RU-EN-scene-identity/attachments/native-rich-default-low-hints-screenshot-b3ffdac92cdc5a1569dda91696ebd4f7cc9e4edb.png",
+      "bytes": 2990713,
+      "sha256": "31b512dfea84a09a8b792a39f39172beb8d45b856d5d01c92f7319be1ce87696"
+    },
+    {
+      "path": "case-1/native-appearance-antique-search.json",
+      "source": "Exact decoded Playwright attachment: native-appearance-antique-search",
+      "bytes": 32408,
+      "sha256": "4f1c9784dbfc1d64e18b4fd5d3e842d01a044cef394a659c517e3ff0935526c2"
+    },
+    {
+      "path": "case-1/native-appearance-antique-search-screenshot.png",
+      "source": ".tmp/native-planet-browser-results/appearance-quality-20260908-a5/artifacts/native-planet-native-appli-e5295-on-and-RU-EN-scene-identity/attachments/native-appearance-antique-search-screenshot-c1381bc91e04d6ca22019097d59c264305fc9b8c.png",
+      "bytes": 2816255,
+      "sha256": "f2e87bbe90817215a1d3283ea6673148d1016740e4bf94999874690ada7638e5"
+    },
+    {
+      "path": "case-1/native-appearance-antique-collection.json",
+      "source": "Exact decoded Playwright attachment: native-appearance-antique-collection",
+      "bytes": 49536,
+      "sha256": "97c5ba525d4f338e23ea19abcde24163867fd528efcccc4619227f37ba15dadf"
+    },
+    {
+      "path": "case-1/native-appearance-antique-collection-screenshot.png",
+      "source": ".tmp/native-planet-browser-results/appearance-quality-20260908-a5/artifacts/native-planet-native-appli-e5295-on-and-RU-EN-scene-identity/attachments/native-appearance-antique-collection-screenshot-37ee0e61e989bb627a4ed84198dbdc32662e9c2f.png",
+      "bytes": 2391261,
+      "sha256": "26887332bf2dc32b1247ea5d0a12d42d8741944e8118ae46a741c65920689823"
+    },
+    {
+      "path": "case-1/native-appearance-earth-search.json",
+      "source": "Exact decoded Playwright attachment: native-appearance-earth-search",
+      "bytes": 76222,
+      "sha256": "2f29bc5299e7936c0572e13f4f8948c09e398448950196fe57bbcdab4d5e7031"
+    },
+    {
+      "path": "case-1/native-appearance-earth-search-screenshot.png",
+      "source": ".tmp/native-planet-browser-results/appearance-quality-20260908-a5/artifacts/native-planet-native-appli-e5295-on-and-RU-EN-scene-identity/attachments/native-appearance-earth-search-screenshot-d2608092746a27fa114834516d0f30930fdef0a6.png",
+      "bytes": 1921373,
+      "sha256": "949fcc858ff93ba23d6d5f5eba502b4768bf295291878e7f2ff5058100a52138"
+    },
+    {
+      "path": "case-1/native-appearance-earth-collection.json",
+      "source": "Exact decoded Playwright attachment: native-appearance-earth-collection",
+      "bytes": 79818,
+      "sha256": "9926900d1c85397c8ac6fe7945193e106d5443c2c423f7856b3caaf2df1ebb91"
+    },
+    {
+      "path": "case-1/native-appearance-earth-collection-screenshot.png",
+      "source": ".tmp/native-planet-browser-results/appearance-quality-20260908-a5/artifacts/native-planet-native-appli-e5295-on-and-RU-EN-scene-identity/attachments/native-appearance-earth-collection-screenshot-3d40b5819f3e89e15be2ea7b15ea575eff798227.png",
+      "bytes": 1793934,
+      "sha256": "54888844a4a9adc662d8845e108212ca5f77741ef9a7a9b5838fda64afd5321b"
+    },
+    {
+      "path": "case-1/native-appearance-modern-search.json",
+      "source": "Exact decoded Playwright attachment: native-appearance-modern-search",
+      "bytes": 109619,
+      "sha256": "49188b1a5304478214f2a014c7e5076a13d9a992a70fad5042342c9b45f462c2"
+    },
+    {
+      "path": "case-1/native-appearance-modern-search-screenshot.png",
+      "source": ".tmp/native-planet-browser-results/appearance-quality-20260908-a5/artifacts/native-planet-native-appli-e5295-on-and-RU-EN-scene-identity/attachments/native-appearance-modern-search-screenshot-1f02d1598f439990f8c41c5e11c4394602c6e16d.png",
+      "bytes": 2214507,
+      "sha256": "984ae3de301bf43c9ece8743052937bb2cffcca270b7872c9d77a2cb5d23e837"
+    },
+    {
+      "path": "case-1/native-appearance-modern-collection.json",
+      "source": "Exact decoded Playwright attachment: native-appearance-modern-collection",
+      "bytes": 113214,
+      "sha256": "4ccef49fc9dcfd330ff4fe0f1b49eeb033ef234800771a3c4e8f1d713803f160"
+    },
+    {
+      "path": "case-1/native-appearance-modern-collection-screenshot.png",
+      "source": ".tmp/native-planet-browser-results/appearance-quality-20260908-a5/artifacts/native-planet-native-appli-e5295-on-and-RU-EN-scene-identity/attachments/native-appearance-modern-collection-screenshot-5c8da807acd5ddaf871f248b4bac86850f4b45f5.png",
+      "bytes": 1943108,
+      "sha256": "fcf3638337e3643f84eb3057d488d99d1df9e08db5e4c23587804f2ea5d03830"
+    },
+    {
+      "path": "case-1/native-appearance-modern-filter-portal.json",
+      "source": "Exact decoded Playwright attachment: native-appearance-modern-filter-portal",
+      "bytes": 125371,
+      "sha256": "ebf089fd43765328ccbf11fd7378482f31aa02675351bbf95a81f2533042c13b"
+    },
+    {
+      "path": "case-1/native-appearance-modern-filter-portal-screenshot.png",
+      "source": ".tmp/native-planet-browser-results/appearance-quality-20260908-a5/artifacts/native-planet-native-appli-e5295-on-and-RU-EN-scene-identity/attachments/native-appearance-modern-filter-portal-screenshot-21a3ba90169cd8f1cdfaad8d47536b660ab2ac12.png",
+      "bytes": 809428,
+      "sha256": "d839ab36bc7ccf257d3f4b971439a7e2c31f89b68eb228d1abc1f46be9eb5882"
+    },
+    {
+      "path": "case-1/native-appearance-modern-narrow-header.json",
+      "source": "Exact decoded Playwright attachment: native-appearance-modern-narrow-header",
+      "bytes": 135627,
+      "sha256": "f580891e92b0ab9b1c5ffca0cdc78dc48f9be416a0fd798693d68ab20ff921a7"
+    },
+    {
+      "path": "case-1/native-appearance-modern-narrow-header-screenshot.png",
+      "source": ".tmp/native-planet-browser-results/appearance-quality-20260908-a5/artifacts/native-planet-native-appli-e5295-on-and-RU-EN-scene-identity/attachments/native-appearance-modern-narrow-header-screenshot-b0e9f8574f14912f87c43b8bcd467b783287c49e.png",
+      "bytes": 1000885,
+      "sha256": "b8092d7b06f6d8cc80662bc37c55f4906bd84b0085a3fea2b1bde2fa4a23cece"
+    },
+    {
+      "path": "case-1/native-appearance-quality-preserved.json",
+      "source": "Exact decoded Playwright attachment: native-appearance-quality-preserved",
+      "bytes": 192382,
+      "sha256": "24bccc6bfbe260be013cf2c36527fde914514838692ce7e84fc9a91aafc5a4f0"
+    },
+    {
+      "path": "case-1/native-appearance-quality-preserved-screenshot.png",
+      "source": ".tmp/native-planet-browser-results/appearance-quality-20260908-a5/artifacts/native-planet-native-appli-e5295-on-and-RU-EN-scene-identity/attachments/native-appearance-quality-preserved-screenshot-73ddb27c952e0067b5ad4de647ea18e48cb30e4d.png",
+      "bytes": 2228928,
+      "sha256": "5453de39a1ba3df1dd144d4bfdf51930dc3bab7029b06881a976062ceadec83a"
+    },
+    {
+      "path": "case-1/native-final-passed.json",
+      "source": "Exact decoded Playwright attachment: native-final-passed",
+      "bytes": 127034,
+      "sha256": "5d8e61b4b33bd3ef34cd07a63dc77aafe2c550930e7cf4c32ab515715629bb3a"
+    },
+    {
+      "path": "case-1/native-final-passed-screenshot.png",
+      "source": ".tmp/native-planet-browser-results/appearance-quality-20260908-a5/artifacts/native-planet-native-appli-e5295-on-and-RU-EN-scene-identity/attachments/native-final-passed-screenshot-58655c9e9651cd64878dfabebd7348753d8bcd21.png",
+      "bytes": 2224006,
+      "sha256": "02ce87a266cfb99f577a054c6c9bc49e9995d070d0d9bfdf934237a9b4d6fa36"
+    },
+    {
+      "path": "run-log.json",
+      "source": ".tmp/s07-appearance-quality-20260908/a5/run.log",
+      "bytes": 676,
+      "sha256": "62433d0570d156695f091615cfa6c9288ec78fe3c27a3e7194c75f4fc4e9f058"
+    }
+  ],
+  "losslessRunLog": {
+    "path": "run-log.json",
+    "bytes": 401,
+    "sha256": "716f17b8e7fb73ee57965ec1cb930a8ab3a9af2a6f335162ecf79ac0377d330f",
+    "roundTripVerified": true
+  },
+  "limitations": [
+    "This preserves the exact attempt, including failures; it is not stage acceptance.",
+    "No OS installation, native/PWA artifact, production publication, trace.zip or compiled source payload included.",
+    "Only existing evidence was copied and checked by hash; no tests rerun for preservation."
+  ],
+  "deltaFromA3": [
+    "src/host/planetAppearance.css",
+    "tests/host/native-planet.spec.mjs"
+  ],
+  "deltaFromA4": [
+    "tests/host/native-planet.spec.mjs"
+  ],
+  "completedAssertions": [
+    "Real R3F renderer uses existing rich mode despite injected saveData=true/deviceMemory2/hardwareConcurrency2: DPR1.5 at browser DPR2 and 2400-vertex starfield.",
+    "Existing same Canvas, renderer, camera, scene, Russia/Dostoevsky selection and exact five-decimal settled camera pose through RU→EN→RU and three committed editions.",
+    "User reduced-motion setting remains effective: actual controls autoRotate=false and existing reduced-motion policy; rich renderer mode is unchanged.",
+    "Canonical antique/earth/modern editions propagate actual token-matching backgrounds and foregrounds into chrome, search, country, Collection and catalog cards.",
+    "Actual normal-text contrast for random action, verified status and honest fallback author exceeds4.5 across all three palettes; full rendered titles and actions fit native Collection cards.",
+    "Real body advanced-filter portal adopts the selected palette, appears above Collection, retains keyboard focus through Tab/Shift+Tab, accepts an ordinary Close click and restores focus to its original trigger.",
+    "At390 CSS pixels, existing modern global toolbar and mobile country handle retain matching opaque theme, six44px controls and top59 safe-area clearance without document overflow; same scene objects survive resize.",
+    "At1440px use the actual canonical edition rail, which is intentionally replaced by a compact select at981–1325px with an open country panel. No product geometry is overridden.",
+    "Across three palettes and the390px receipt, actual visible arrow and Zoom badge have exact chrome/on-dark computed colors with text contrast>=4.5; both cue gradients derive from the same actual chrome color."
+  ],
+  "graphicsReceipt": {
+    "initial": {
+      "phase": "initial-low-resource-hints",
+      "hints": {
+        "saveData": true,
+        "deviceMemory": 2,
+        "hardwareConcurrency": 2
+      },
+      "browserPixelRatio": 2,
+      "rendererPixelRatio": 1.5,
+      "pointVertexCounts": [
+        2400
+      ],
+      "drawingBuffer": {
+        "width": 2160,
+        "height": 1200
+      },
+      "economical": "false",
+      "reducedMotion": false
+    },
+    "locales": [
+      {
+        "phase": "locale-en",
+        "hints": {
+          "saveData": true,
+          "deviceMemory": 2,
+          "hardwareConcurrency": 2
+        },
+        "browserPixelRatio": 2,
+        "rendererPixelRatio": 1.5,
+        "pointVertexCounts": [
+          2400
+        ],
+        "drawingBuffer": {
+          "width": 2160,
+          "height": 1200
+        },
+        "economical": "false",
+        "reducedMotion": false
+      },
+      {
+        "phase": "locale-ru",
+        "hints": {
+          "saveData": true,
+          "deviceMemory": 2,
+          "hardwareConcurrency": 2
+        },
+        "browserPixelRatio": 2,
+        "rendererPixelRatio": 1.5,
+        "pointVertexCounts": [
+          2400
+        ],
+        "drawingBuffer": {
+          "width": 2160,
+          "height": 1200
+        },
+        "economical": "false",
+        "reducedMotion": false
+      }
+    ],
+    "reduced": {
+      "phase": "reduced-motion-rich-rendering",
+      "hints": {
+        "saveData": true,
+        "deviceMemory": 2,
+        "hardwareConcurrency": 2
+      },
+      "browserPixelRatio": 2,
+      "rendererPixelRatio": 1.5,
+      "pointVertexCounts": [
+        2400
+      ],
+      "drawingBuffer": {
+        "width": 2160,
+        "height": 1200
+      },
+      "economical": "false",
+      "reducedMotion": true
+    },
+    "stablePose": {
+      "position": [
+        -0.22336,
+        2.58914,
+        -1.37654
+      ],
+      "quaternion": [
+        0.04119,
+        0.85577,
+        0.51108,
+        -0.06898
+      ],
+      "zoom": 1
+    },
+    "finalPose": {
+      "position": [
+        -0.22336,
+        2.58914,
+        -1.37654
+      ],
+      "quaternion": [
+        0.04119,
+        0.85577,
+        0.51108,
+        -0.06898
+      ],
+      "zoom": 1
+    },
+    "viewportResizeScope": "Same camera object retained; viewport changes may reframe presentation",
+    "initialViewport": {
+      "width": 1440,
+      "height": 800
+    },
+    "noNewQualityTierUi": true,
+    "fullHighBalancedEconomyProfilesComplete": false
+  },
+  "componentContrastReceipts": [
+    {
+      "style": "antique",
+      "tokens": {
+        "space": "#140c0d",
+        "chrome": "#271715",
+        "chrome-raised": "#3c331b",
+        "surface": "#fff8e4",
+        "card": "#fffcf2",
+        "ink": "#321d1b",
+        "accent": "#e2bb60",
+        "accent-strong": "#584920",
+        "on-dark": "#fff5d2"
+      },
+      "ratios": {
+        "randomAction": 8.055703703512231,
+        "cardStatus": 6.845591893882367,
+        "fallbackAuthor": 8.56421117081939
+      },
+      "fullTitleCardCount": 4
+    },
+    {
+      "style": "earth",
+      "tokens": {
+        "space": "#050b1b",
+        "chrome": "#0b152e",
+        "chrome-raised": "#102f53",
+        "surface": "#f3f9f8",
+        "card": "#f7fdff",
+        "ink": "#111b3a",
+        "accent": "#53b7f1",
+        "accent-strong": "#144377",
+        "on-dark": "#e4f7ff"
+      },
+      "ratios": {
+        "randomAction": 9.074420190931436,
+        "cardStatus": 6.057997664269584,
+        "fallbackAuthor": 9.742285491909595
+      },
+      "fullTitleCardCount": 4
+    },
+    {
+      "style": "modern",
+      "tokens": {
+        "space": "#071019",
+        "chrome": "#0e1e2b",
+        "chrome-raised": "#0f3b30",
+        "surface": "#f0fcf2",
+        "card": "#f5fffb",
+        "ink": "#142536",
+        "accent": "#4ed6a2",
+        "accent-strong": "#125541",
+        "on-dark": "#ddfff2"
+      },
+      "ratios": {
+        "randomAction": 8.18696593773383,
+        "cardStatus": 6.789320549949709,
+        "fallbackAuthor": 8.569614305876653
+      },
+      "fullTitleCardCount": 4
+    }
+  ],
+  "editionControls": [
+    {
+      "style": "antique",
+      "phase": "antique-edition-controls",
+      "tokens": {
+        "space": "#140c0d",
+        "chrome": "#271715",
+        "chrome-raised": "#3c331b",
+        "surface": "#fff8e4",
+        "card": "#fffcf2",
+        "ink": "#321d1b",
+        "accent": "#e2bb60",
+        "accent-strong": "#584920",
+        "on-dark": "#fff5d2"
+      },
+      "surfaces": {
+        "editionArrow": {
+          "backgroundColor": "rgb(39, 23, 21)",
+          "backgroundImage": "none",
+          "color": "rgb(255, 245, 210)",
+          "borderColor": "rgba(226, 187, 96, 0.5)",
+          "outlineColor": "rgb(255, 245, 210)",
+          "bounds": {
+            "x": 80,
+            "y": 88,
+            "width": 44,
+            "height": 44,
+            "top": 88,
+            "right": 124,
+            "bottom": 132,
+            "left": 80
+          },
+          "visible": true
+        },
+        "scaleFeedback": {
+          "backgroundColor": "rgb(39, 23, 21)",
+          "backgroundImage": "none",
+          "color": "rgb(255, 245, 210)",
+          "borderColor": "rgba(226, 187, 96, 0.5)",
+          "outlineColor": "rgb(255, 245, 210)",
+          "bounds": {
+            "x": 555.1875,
+            "y": 620,
+            "width": 120.8125,
+            "height": 21,
+            "top": 620,
+            "right": 676,
+            "bottom": 641,
+            "left": 555.1875
+          },
+          "visible": true
+        },
+        "previousEditionFade": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(90deg, rgb(39, 23, 21) 25%, rgba(0, 0, 0, 0))",
+          "color": "rgb(255, 248, 237)",
+          "borderColor": "rgb(255, 248, 237)",
+          "outlineColor": "rgb(255, 248, 237)",
+          "bounds": {
+            "x": 80,
+            "y": 85,
+            "width": 56,
+            "height": 50,
+            "top": 85,
+            "right": 136,
+            "bottom": 135,
+            "left": 80
+          },
+          "visible": true
+        },
+        "nextEditionFade": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(270deg, rgb(39, 23, 21) 25%, rgba(0, 0, 0, 0))",
+          "color": "rgb(255, 248, 237)",
+          "borderColor": "rgb(255, 248, 237)",
+          "outlineColor": "rgb(255, 248, 237)",
+          "bounds": {
+            "x": 910,
+            "y": 85,
+            "width": 56,
+            "height": 50,
+            "top": 85,
+            "right": 966,
+            "bottom": 135,
+            "left": 910
+          },
+          "visible": true
+        }
+      }
+    },
+    {
+      "style": "earth",
+      "phase": "earth-edition-controls",
+      "tokens": {
+        "space": "#050b1b",
+        "chrome": "#0b152e",
+        "chrome-raised": "#102f53",
+        "surface": "#f3f9f8",
+        "card": "#f7fdff",
+        "ink": "#111b3a",
+        "accent": "#53b7f1",
+        "accent-strong": "#144377",
+        "on-dark": "#e4f7ff"
+      },
+      "surfaces": {
+        "editionArrow": {
+          "backgroundColor": "rgb(11, 21, 46)",
+          "backgroundImage": "none",
+          "color": "rgb(228, 247, 255)",
+          "borderColor": "rgba(83, 183, 241, 0.5)",
+          "outlineColor": "rgb(228, 247, 255)",
+          "bounds": {
+            "x": 80,
+            "y": 88,
+            "width": 44,
+            "height": 44,
+            "top": 88,
+            "right": 124,
+            "bottom": 132,
+            "left": 80
+          },
+          "visible": true
+        },
+        "scaleFeedback": {
+          "backgroundColor": "rgb(11, 21, 46)",
+          "backgroundImage": "none",
+          "color": "rgb(228, 247, 255)",
+          "borderColor": "rgba(83, 183, 241, 0.5)",
+          "outlineColor": "rgb(228, 247, 255)",
+          "bounds": {
+            "x": 580.109375,
+            "y": 620,
+            "width": 95.890625,
+            "height": 21,
+            "top": 620,
+            "right": 676,
+            "bottom": 641,
+            "left": 580.109375
+          },
+          "visible": true
+        },
+        "previousEditionFade": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(90deg, rgb(11, 21, 46) 25%, rgba(0, 0, 0, 0))",
+          "color": "rgb(255, 248, 237)",
+          "borderColor": "rgb(255, 248, 237)",
+          "outlineColor": "rgb(255, 248, 237)",
+          "bounds": {
+            "x": 80,
+            "y": 85,
+            "width": 56,
+            "height": 50,
+            "top": 85,
+            "right": 136,
+            "bottom": 135,
+            "left": 80
+          },
+          "visible": true
+        },
+        "nextEditionFade": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(270deg, rgb(11, 21, 46) 25%, rgba(0, 0, 0, 0))",
+          "color": "rgb(255, 248, 237)",
+          "borderColor": "rgb(255, 248, 237)",
+          "outlineColor": "rgb(255, 248, 237)",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "visible": false
+        }
+      }
+    },
+    {
+      "style": "modern",
+      "phase": "modern-edition-controls",
+      "tokens": {
+        "space": "#071019",
+        "chrome": "#0e1e2b",
+        "chrome-raised": "#0f3b30",
+        "surface": "#f0fcf2",
+        "card": "#f5fffb",
+        "ink": "#142536",
+        "accent": "#4ed6a2",
+        "accent-strong": "#125541",
+        "on-dark": "#ddfff2"
+      },
+      "surfaces": {
+        "editionArrow": {
+          "backgroundColor": "rgb(14, 30, 43)",
+          "backgroundImage": "none",
+          "color": "rgb(221, 255, 242)",
+          "borderColor": "rgba(78, 214, 162, 0.5)",
+          "outlineColor": "rgb(221, 255, 242)",
+          "bounds": {
+            "x": 80,
+            "y": 88,
+            "width": 44,
+            "height": 44,
+            "top": 88,
+            "right": 124,
+            "bottom": 132,
+            "left": 80
+          },
+          "visible": true
+        },
+        "scaleFeedback": {
+          "backgroundColor": "rgb(14, 30, 43)",
+          "backgroundImage": "none",
+          "color": "rgb(221, 255, 242)",
+          "borderColor": "rgba(78, 214, 162, 0.5)",
+          "outlineColor": "rgb(221, 255, 242)",
+          "bounds": {
+            "x": 580.109375,
+            "y": 620,
+            "width": 95.890625,
+            "height": 21,
+            "top": 620,
+            "right": 676,
+            "bottom": 641,
+            "left": 580.109375
+          },
+          "visible": true
+        },
+        "previousEditionFade": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(90deg, rgb(14, 30, 43) 25%, rgba(0, 0, 0, 0))",
+          "color": "rgb(255, 248, 237)",
+          "borderColor": "rgb(255, 248, 237)",
+          "outlineColor": "rgb(255, 248, 237)",
+          "bounds": {
+            "x": 80,
+            "y": 85,
+            "width": 56,
+            "height": 50,
+            "top": 85,
+            "right": 136,
+            "bottom": 135,
+            "left": 80
+          },
+          "visible": true
+        },
+        "nextEditionFade": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(270deg, rgb(14, 30, 43) 25%, rgba(0, 0, 0, 0))",
+          "color": "rgb(255, 248, 237)",
+          "borderColor": "rgb(255, 248, 237)",
+          "outlineColor": "rgb(255, 248, 237)",
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "left": 0
+          },
+          "visible": false
+        }
+      }
+    }
+  ],
+  "portalKeyboardFocus": {
+    "focused": true,
+    "outline": "rgb(18, 85, 65) solid 2px",
+    "color": "rgb(20, 37, 54)",
+    "backgroundColor": "rgb(245, 255, 251)"
+  },
+  "narrowReceipt": {
+    "header": {
+      "x": 8,
+      "y": 59,
+      "width": 374,
+      "height": 52
+    },
+    "buttons": [
+      {
+        "label": "Search the Literary Planet",
+        "bounds": {
+          "x": 35,
+          "y": 64,
+          "width": 67.65625,
+          "height": 44
+        }
+      },
+      {
+        "label": "Globe filters",
+        "bounds": {
+          "x": 104.65625,
+          "y": 64,
+          "width": 67.671875,
+          "height": 44
+        }
+      },
+      {
+        "label": "Random literary journey",
+        "bounds": {
+          "x": 174.328125,
+          "y": 64,
+          "width": 67.65625,
+          "height": 44
+        }
+      },
+      {
+        "label": "Russian",
+        "bounds": {
+          "x": 244.984375,
+          "y": 64,
+          "width": 44,
+          "height": 44
+        }
+      },
+      {
+        "label": "English",
+        "bounds": {
+          "x": 289.984375,
+          "y": 64,
+          "width": 44,
+          "height": 44
+        }
+      },
+      {
+        "label": "Collection",
+        "bounds": {
+          "x": 336.984375,
+          "y": 64,
+          "width": 44,
+          "height": 44
+        }
+      }
+    ],
+    "safeArea": {
+      "top": 59,
+      "bottom": 34
+    },
+    "geometryScope": "Actual Chrome CSS viewport and safe-area emulation, not an installed mobile OS",
+    "countryToggle": {
+      "backgroundColor": "rgb(14, 30, 43)",
+      "backgroundImage": "none",
+      "color": "rgb(221, 255, 242)",
+      "borderColor": "rgb(78, 214, 162)",
+      "outlineColor": "rgb(221, 255, 242)",
+      "bounds": {
+        "x": 8,
+        "y": 702,
+        "width": 374,
+        "height": 108,
+        "top": 702,
+        "right": 382,
+        "bottom": 810,
+        "left": 8
+      },
+      "visible": true
+    },
+    "editionArrow": {
+      "backgroundColor": "rgb(14, 30, 43)",
+      "backgroundImage": "none",
+      "color": "rgb(221, 255, 242)",
+      "borderColor": "rgba(78, 214, 162, 0.5)",
+      "outlineColor": "rgb(221, 255, 242)",
+      "bounds": {
+        "x": 8,
+        "y": 131,
+        "width": 44,
+        "height": 44,
+        "top": 131,
+        "right": 52,
+        "bottom": 175,
+        "left": 8
+      },
+      "visible": true
+    },
+    "scaleFeedback": {
+      "backgroundColor": "rgb(14, 30, 43)",
+      "backgroundImage": "none",
+      "color": "rgb(221, 255, 242)",
+      "borderColor": "rgba(78, 214, 162, 0.5)",
+      "outlineColor": "rgb(221, 255, 242)",
+      "bounds": {
+        "x": 281.109375,
+        "y": 586,
+        "width": 95.890625,
+        "height": 21,
+        "top": 586,
+        "right": 377,
+        "bottom": 607,
+        "left": 281.109375
+      },
+      "visible": true
+    }
+  },
+  "runtimeDiagnosticCounts": {
+    "pageErrors": 0,
+    "externalRequests": 0,
+    "missingResources": 0,
+    "consoleMessagesCapturedAsErrors": 1
+  },
+  "runtimeDiagnosticNote": "Existing React development warning about fetchPriority is preserved in raw consoleErrors; no runtime page error, missing selected asset or external request occurred.",
+  "previousAttempts": [
+    {
+      "path": "../a1/result.json",
+      "status": "failed",
+      "reason": "Fixture used open-only aria-controls before opening; visual contrast and card-layout concerns also preserved."
+    },
+    {
+      "path": "../a2/result.json",
+      "status": "failed",
+      "reason": "Actual body filter portal beneath Collection blocked normal Close interaction."
+    },
+    {
+      "path": "../a3/result.json",
+      "status": "passed",
+      "reason": "First completed full quality/theme case; retained unchanged before root found residual arrow/Zoom appearance."
+    },
+    {
+      "path": "../a4/result.json",
+      "status": "failed",
+      "reason": "New fixture wrongly demanded visible arrows at the canonical compact-select1280px breakpoint; no source regression."
+    }
+  ],
+  "visualReview": {
+    "inspectedActualPngs": [
+      "case-1/native-appearance-modern-narrow-header-screenshot.png",
+      "case-1/native-appearance-earth-search-screenshot.png"
+    ],
+    "findings": [
+      "The actual390px modern screen shows dark green arrow buttons, matching fades and Zoom badge, alongside the existing themed global toolbar and country handle.",
+      "The1440px earth screen shows blue search/chrome and the real blue rail arrow/Zoom feedback around the same selected globe.",
+      "The source-defined 1440px framing yields Zoom167% for this selected country, while the earlier1280px fixture yielded161%; exact scene/pose preservation is asserted within each fixed viewport, not across different starting widths."
+    ],
+    "limitations": [
+      "Three representative canonical appearances are browser-covered; remaining edition palettes have the separate scoped unit evidence, not nine browser runs.",
+      "Chrome capability hints, DPR, CSS viewport and safe areas are simulated; renderer geometry, scene objects, App behavior, CSS paint and user clicks are real.",
+      "Source-scoped evidence does not certify installed Android/iOS/PWA artifacts, physical-device performance, every screen, Planetka, full quality profiles or global bilingual content.",
+      "Source editorial statuses, four currently eligible archive works and original RU covers remain unchanged; no new factual or legal approval is implied.",
+      "The distinct981–1325px compact edition selector was not recolored by this arrow/Zoom slice; its authored purple background was observed in preserved a4 and explicitly reported to root. This evidence does not claim every application pixel or screen is now themed."
+    ]
+  },
+  "preservation": {
+    "copiedFiles": 28,
+    "actualPngs": 11,
+    "exactBytesCheckedDuringCopy": true,
+    "losslessUtf8LogRoundTrip": true,
+    "sourceOrFixtureModifiedForPreservation": false,
+    "noTracesSecretsOrCompiledBundlesCopied": true
+  }
+}

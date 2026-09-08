@@ -1,0 +1,27 @@
+{
+  "runId": "appearance-quality-20260908-a4",
+  "sourceCommit": "55a195b997a569b5a3aef692f7e8cf27d2a35b37",
+  "selectedScenarios": 1,
+  "grep": "native application defaults to rich graphics",
+  "sourceFiles": 974,
+  "previousSnapshotFiles": 971,
+  "addedSourcePaths": [
+    "src/host/planetAppearance.css",
+    "src/host/planetAppearance.ts",
+    "src/host/planetAppearance.test.ts"
+  ],
+  "nativeSelectionSha256": "c1f42e5c8d8afd58102d24faa434a1b01a77129f97bc11ac59fe8ce5e4ca4268",
+  "browserFixture": {
+    "channel": "chrome",
+    "capabilityHints": {
+      "saveData": true,
+      "deviceMemory": 2,
+      "hardwareConcurrency": 2
+    },
+    "deviceScaleFactor": 2,
+    "physicalDevice": false,
+    "OSPluginsInjected": true,
+    "realAppR3F": true
+  },
+  "scope": "Existing rich default plus three canonical globe editions across real search/country/Collection and a body portal; one focused case, no previous suite replay or artifact build."
+}

@@ -358,3 +358,22 @@
   verified exactly two cases. Product source and Android/static/touch results
   stayed unchanged. Local QA authority, simulated browser installation/storage
   choices and APK static inspection do not establish production or device gates.
+
+- D081: The owner explicitly requests High at application startup, overriding
+  the V12 document23 Balanced default. Select the richest existing path without
+  automatic Economy from CPU/memory/Save-Data; retain reduced-motion and future
+  manual choice. Do not claim full V12 High assets/effects or device benchmarks.
+
+- D082: Application colors derive from LiteraryGlobe renderedEditionId after
+  successful commit, including existing body-portaled filters. CSS projection
+  owns no selection state and restores only its own still-current values.
+  Preserve light reading surfaces, accessible contrast, native-panel card width
+  and authored images. The final affected browser validates CSS fixes; unchanged
+  TypeScript/unit suites are not repeated for CSS or browser-fixture changes.
+
+- D083: The owner clarifies a final canonical catalog of nearly10k books,
+  reviewed English biographies and possible later original English edition
+  covers. Preserve shared identities and edition/language/source/rights mapping.
+  The small browser selection proves no full-catalog capacity or complete EN
+  content; no-programming owner corrections remain required, not delivered.
+  Bundled offline cover changes currently enter through a new app build.

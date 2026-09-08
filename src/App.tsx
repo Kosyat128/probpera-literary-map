@@ -676,6 +676,9 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
   }, [largestArchivesOpen]);
   const atlasExperience = useAtlasExperience({
     applicationRoot: isPlanetApplication,
+    // Owner-selected app default: use the richest existing scene independently
+    // of device heuristics. Reduced motion remains a separate accessibility rule.
+    economical: isPlanetApplication ? false : undefined,
     urlSelection: {
       filter: atlasFilter,
       countryId: selectedCountry?.id ?? null,

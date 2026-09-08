@@ -13,6 +13,8 @@ import {
   type RefObject,
 } from "react";
 import * as THREE from "three";
+import { installPlanetAppearance } from "../host/planetAppearance";
+import "../host/planetAppearance.css";
 
 import type { Country, Writer } from "../data/countries";
 import Button from "../ui/Button";
@@ -2042,6 +2044,10 @@ export default function LiteraryGlobe({
     programs: 0,
   });
   const containerRef = useRef<HTMLDivElement | null>(null);
+  useLayoutEffect(() => {
+    const globe = containerRef.current;
+    return globe ? installPlanetAppearance(globe, renderedEditionId) : undefined;
+  }, [renderedEditionId]);
   const [globeVisible, setGlobeVisible] = useState(false);
   const [documentVisible, setDocumentVisible] = useState(
     () => document.visibilityState !== "hidden"

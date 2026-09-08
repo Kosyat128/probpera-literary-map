@@ -1,0 +1,180 @@
+{
+  "schemaVersion": 1,
+  "stage": "S07",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "runId": "appearance-quality-20260908-a4",
+  "sourceCommit": "55a195b997a569b5a3aef692f7e8cf27d2a35b37",
+  "scope": "Canonical App/R3F/CSS in Chrome with simulated low-resource browser hints and devicePixelRatio2, injected Android OS plugins; actual rich rendering and committed whole-app appearance, not a physical-device performance or native-artifact claim.",
+  "statistics": {
+    "startTime": "2026-09-08T08:54:31.025Z",
+    "duration": 29999.765000000003,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "selectionErrorBeforeFixture": false,
+  "tests": [
+    {
+      "title": "native application defaults to rich graphics under low-resource hints while respecting reduced motion and RU/EN scene identity",
+      "status": "failed",
+      "durationMs": 26885,
+      "errors": [
+        "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.globe-edition-scroll-cue[data-visible=\"true\"] button').first()\nExpected: visible\nReceived: hidden\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.globe-edition-scroll-cue[data-visible=\"true\"] button').first()\u001b[22m\n\u001b[2m    32 × locator resolved to <button type=\"button\" aria-controls=\"globe-edition-rail\" aria-label=\"Предыдущие издания глобуса\">…</button>\u001b[22m\n\u001b[2m       - unexpected value \"hidden\"\u001b[22m\n\n\n  548 |       if (await editionToggle.getAttribute(\"aria-expanded\") !== \"true\") await editionToggle.click();\n  549 |       await expect(page.locator(\"#globe-edition-rail\")).toHaveAttribute(\"aria-hidden\", \"false\");\n> 550 |       await expect(page.locator('.globe-edition-scroll-cue[data-visible=\"true\"] button').first()).toBeVisible();\n      |                                                                                                   ^\n  551 |       await page.mouse.move(0, 0);\n  552 |       const editionControls = await applicationAppearanceEvidence(page, style + \"-edition-controls\");\n  553 |       for (const surface of [\"editionArrow\", \"scaleFeedback\"]) expectAppearanceSurface(editionControls, surface, \"chrome\", \"on-dark\");\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs:550:99"
+      ],
+      "attachments": [
+        {
+          "name": "native-rich-default-low-hints",
+          "path": "case-1/native-rich-default-low-hints.json"
+        },
+        {
+          "name": "native-rich-default-low-hints-screenshot",
+          "path": "case-1/native-rich-default-low-hints-screenshot.png"
+        },
+        {
+          "name": "native-final-failed",
+          "path": "case-1/native-final-failed.json"
+        },
+        {
+          "name": "native-final-failed-screenshot",
+          "path": "case-1/native-final-failed-screenshot.png"
+        }
+      ]
+    }
+  ],
+  "sourceComparison": {
+    "sourceFiles": 974,
+    "unchangedDuringRun": true,
+    "changed": [],
+    "supplementalNativeSelection": {
+      "path": "scripts/mobile/native-base-assets.json",
+      "beforeSha256": "c1f42e5c8d8afd58102d24faa434a1b01a77129f97bc11ac59fe8ce5e4ca4268",
+      "afterSha256": "c1f42e5c8d8afd58102d24faa434a1b01a77129f97bc11ac59fe8ce5e4ca4268",
+      "unchanged": true
+    }
+  },
+  "runContext": {
+    "runId": "appearance-quality-20260908-a4",
+    "sourceCommit": "55a195b997a569b5a3aef692f7e8cf27d2a35b37",
+    "selectedScenarios": 1,
+    "grep": "native application defaults to rich graphics",
+    "sourceFiles": 974,
+    "previousSnapshotFiles": 971,
+    "addedSourcePaths": [
+      "src/host/planetAppearance.css",
+      "src/host/planetAppearance.ts",
+      "src/host/planetAppearance.test.ts"
+    ],
+    "nativeSelectionSha256": "c1f42e5c8d8afd58102d24faa434a1b01a77129f97bc11ac59fe8ce5e4ca4268",
+    "browserFixture": {
+      "channel": "chrome",
+      "capabilityHints": {
+        "saveData": true,
+        "deviceMemory": 2,
+        "hardwareConcurrency": 2
+      },
+      "deviceScaleFactor": 2,
+      "physicalDevice": false,
+      "OSPluginsInjected": true,
+      "realAppR3F": true
+    },
+    "scope": "Existing rich default plus three canonical globe editions across real search/country/Collection and a body portal; one focused case, no previous suite replay or artifact build."
+  },
+  "preservedFiles": [
+    {
+      "path": "source-before.json",
+      "source": ".tmp/s07-appearance-quality-20260908/a4/source-before.json",
+      "bytes": 137144,
+      "sha256": "7b619f09478499f492130fa2edf5bd1c319f8492394a86e97c9566010266325c"
+    },
+    {
+      "path": "source-after.json",
+      "source": ".tmp/s07-appearance-quality-20260908/a4/source-after.json",
+      "bytes": 137144,
+      "sha256": "7b619f09478499f492130fa2edf5bd1c319f8492394a86e97c9566010266325c"
+    },
+    {
+      "path": "source-comparison.json",
+      "source": ".tmp/s07-appearance-quality-20260908/a4/source-comparison.json",
+      "bytes": 363,
+      "sha256": "09e0c2c40350bebeecd9465a0104aef469cdd88dd594a8d2c0d0b4201aab94b8"
+    },
+    {
+      "path": "run-context.json",
+      "source": ".tmp/s07-appearance-quality-20260908/a4/run-context.json",
+      "bytes": 951,
+      "sha256": "7ed765007e045b1a91238e861f456cf415acb2dbe9553100edc8b665631ad0a8"
+    },
+    {
+      "path": "browser-results.json",
+      "source": ".tmp/native-planet-browser-results/appearance-quality-20260908-a4/results.json",
+      "bytes": 46695,
+      "sha256": "c8abc04923cc0ed5096c2664a39e7ad1a27e0a520516940e2847829a9ff5fde6"
+    },
+    {
+      "path": "case-1/native-rich-default-low-hints.json",
+      "source": "Exact decoded Playwright attachment: native-rich-default-low-hints",
+      "bytes": 14034,
+      "sha256": "429874fadf4b1520dfea1edd3050e4430aec54f85fb8e2db77698405ec51d1eb"
+    },
+    {
+      "path": "case-1/native-rich-default-low-hints-screenshot.png",
+      "source": ".tmp/native-planet-browser-results/appearance-quality-20260908-a4/artifacts/native-planet-native-appli-e5295-on-and-RU-EN-scene-identity/attachments/native-rich-default-low-hints-screenshot-52e1f0770f9b16348aa0b16663250fb3927b4d97.png",
+      "bytes": 2832045,
+      "sha256": "f5a020c840740641088d04ba0797414b98befea8a7a3acc3a07641b22f118481"
+    },
+    {
+      "path": "case-1/native-final-failed.json",
+      "source": "Exact decoded Playwright attachment: native-final-failed",
+      "bytes": 12763,
+      "sha256": "47f802d6d92dcb7a5596a4b3ea37a79bb885fa25f83166f9b59e1a765d88c04d"
+    },
+    {
+      "path": "case-1/native-final-failed-screenshot.png",
+      "source": ".tmp/native-planet-browser-results/appearance-quality-20260908-a4/artifacts/native-planet-native-appli-e5295-on-and-RU-EN-scene-identity/attachments/native-final-failed-screenshot-b078eb53a81d0fff1143b37685594be8faee0862.png",
+      "bytes": 2824071,
+      "sha256": "30313a5ac67fc687c25367497142f56e2af764ccd7d0391577169f79f9f7fb46"
+    },
+    {
+      "path": "run-log.json",
+      "source": ".tmp/s07-appearance-quality-20260908/a4/run.log",
+      "bytes": 4346,
+      "sha256": "2be263fe99705eeac0913cbb206e1f493508ff243173094425a7ab536886ded7"
+    }
+  ],
+  "losslessRunLog": {
+    "path": "run-log.json",
+    "bytes": 3960,
+    "sha256": "4bfc9151ef92d61f3eab58d1b6e93c6762386de4145c77e1ff844a4eff69af51",
+    "roundTripVerified": true
+  },
+  "limitations": [
+    "This preserves the exact attempt, including failures; it is not stage acceptance.",
+    "No OS installation, native/PWA artifact, production publication, trace.zip or compiled source payload included.",
+    "Only existing evidence was copied and checked by hash; no tests rerun for preservation."
+  ],
+  "diagnosis": {
+    "outcome": "FAILED_FIXTURE_BREAKPOINT_ASSUMPTION",
+    "cause": "The new visible-arrow assertion used the existing1280px fixture. Canonical CSS deliberately hides edition arrows at981–1325px while the country panel is open and presents its native compact edition select. The arrow was correctly hidden; this failure is not a source regression.",
+    "sourceReferences": [
+      "src/index.css:22413",
+      "src/index.css:22426",
+      "src/index.css:22432"
+    ],
+    "fixtureCorrection": "Start this single affected case at1440px, where the real edition rail and arrows are available, retain the same390px responsive receipt, then return to1440px. Keep every visual, quality, state and interaction assertion.",
+    "sourceMutationRequired": false,
+    "assertedQualityChecksReached": true,
+    "narrowAndThemeCompletionChecksReached": false
+  },
+  "visualReview": {
+    "inspectedActualPngs": [
+      "case-1/native-final-failed-screenshot.png"
+    ],
+    "findings": [
+      "The actual1280px country panel and compact edition chip are visible. The arrow demanded by the new fixture check is absent as the canonical breakpoint specifies."
+    ],
+    "previousPassedEvidence": "../a3/result.json",
+    "previousPassModified": false
+  }
+}

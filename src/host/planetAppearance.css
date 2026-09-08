@@ -1,0 +1,377 @@
+/* Application appearance follows the canonical globe edition. No geometry,
+   artwork, renderer settings, language state or website theme is changed. */
+:is(.native-planet-app[data-planet-edition], body[data-planet-portal-edition] > .book-shelf-frame__filter-backdrop) {
+  --paper: var(--planet-surface);
+  --cream: var(--planet-surface);
+  --cream-deep: var(--planet-card);
+  --ink: var(--planet-ink);
+  --muted: var(--planet-muted);
+  --line: var(--planet-line);
+  --violet-950: var(--planet-ink);
+  --violet-900: var(--planet-ink);
+  --violet-850: var(--planet-chrome);
+  --violet-800: var(--planet-accent-strong);
+  --violet-700: var(--planet-accent-strong);
+  --violet-600: var(--planet-accent-strong);
+  --orange: var(--planet-accent);
+  --orange-soft: var(--planet-accent);
+  --orange-deep: var(--planet-accent-strong);
+  --ui-primary: var(--planet-accent-strong);
+  --ui-primary-hover: var(--planet-accent-strong);
+  --ui-primary-active: var(--planet-ink);
+  --ui-text-muted-light: var(--planet-muted);
+  --ui-text-muted-dark: var(--planet-muted-dark);
+  --ui-focus-color: var(--planet-accent-strong);
+  --ui-focus-ring: 0 0 0 3px var(--planet-surface);
+  color: var(--planet-ink);
+  accent-color: var(--planet-accent-strong);
+}
+.native-planet-app[data-planet-edition] { background: var(--planet-space); }
+.native-planet-app[data-planet-edition] .atlas-experience-surface {
+  background-color: var(--planet-space);
+  background-image: radial-gradient(ellipse at 55% 42%, rgba(var(--planet-accent-rgb), .12), transparent 65%);
+}
+.native-planet-app[data-planet-edition] .atlas-ambient-halo {
+  background: radial-gradient(ellipse, rgba(var(--planet-accent-rgb), .18), transparent 68%);
+}
+
+/* Opaque UI surfaces make foreground contrast independent of moving stars. */
+.native-planet-app[data-planet-edition] :is(
+  .atlas-immersive-chrome, .atlas-heading .country-search, .atlas-heading .search-field,
+  .atlas-heading .search-results, .atlas-toolbar,
+  .globe-style-switch, .globe-style-switch-toggle, .globe-controls,
+  .globe-edition-info-dialog, .globe-loading,
+  .book-shelf-frame, .book-shelf-frame__search-rail, .book-shelf-frame__active-rail,
+  .book-shelf-frame__navigation, .book-shelf-frame__detail, .book-collection-dialog
+) {
+  --ui-focus-color: var(--planet-accent);
+  --ui-focus-ring: 0 0 0 3px var(--planet-chrome);
+  --orange-deep: var(--planet-accent);
+  --ink: var(--planet-on-dark);
+  --muted: var(--planet-muted-dark);
+  color: var(--planet-on-dark);
+  background: var(--planet-chrome);
+  border-color: rgba(var(--planet-accent-rgb), .45);
+}
+.native-planet-app[data-planet-edition] .atlas-immersive-chrome {
+  --atlas-chrome-state: var(--planet-accent-rgb);
+}
+.native-planet-app[data-planet-edition] :is(.atlas-immersive-chrome nav > *, .atlas-immersive-identity) {
+  --atlas-control-accent: var(--planet-accent-rgb);
+  background: transparent;
+}
+.native-planet-app[data-planet-edition] .atlas-immersive-chrome::after {
+  background: linear-gradient(90deg, transparent, var(--planet-accent), transparent);
+}
+.native-planet-app[data-planet-edition] :is(
+  .atlas-immersive-chrome button, .atlas-toolbar button, .globe-controls button,
+  .atlas-heading .search-results button
+) {
+  color: var(--planet-on-dark);
+  border-color: rgba(var(--planet-accent-rgb), .5);
+}
+.native-planet-app[data-planet-edition] :is(
+  .atlas-immersive-chrome button, .atlas-toolbar button, .globe-controls button,
+  .atlas-heading .search-results button
+):is(:hover, [aria-expanded="true"], .is-active) {
+  color: var(--planet-on-dark);
+  background: var(--planet-chrome-raised);
+  border-color: var(--planet-accent);
+}
+.native-planet-app[data-planet-edition] :is(
+  .atlas-immersive-chrome .ui-action__icon, .atlas-heading .search-field-icon
+) { color: var(--planet-accent); }
+.native-planet-app[data-planet-edition] :is(
+  .atlas-heading .search-field input, .atlas-heading .search-results button strong,
+  .atlas-immersive-identity strong
+) { color: var(--planet-on-dark); }
+.native-planet-app[data-planet-edition] :is(
+  .atlas-heading .country-search > label, .atlas-heading .search-caption,
+  .atlas-heading .search-field kbd, .atlas-heading .search-results button small,
+  .atlas-immersive-identity small
+) { color: var(--planet-muted-dark); }
+.native-planet-app[data-planet-edition] .atlas-heading input::placeholder { color: var(--planet-muted-dark); }
+
+/* The rail's scroll cues and zoom badge are siblings of the themed controls. */
+.native-planet-app[data-planet-edition] :is(.globe-edition-scroll-cue button, .globe-scale-feedback) {
+  --ui-focus-color: var(--planet-accent);
+  color: var(--planet-on-dark);
+  background: var(--planet-chrome);
+  border-color: rgba(var(--planet-accent-rgb), .5);
+}
+.native-planet-app[data-planet-edition] .globe-edition-scroll-cue button:hover {
+  color: var(--planet-on-dark);
+  background: var(--planet-chrome-raised);
+  border-color: var(--planet-accent);
+}
+.native-planet-app[data-planet-edition] .globe-edition-scroll-cue button:focus-visible {
+  outline-color: var(--planet-accent);
+}
+.native-planet-app[data-planet-edition] .globe-edition-scroll-cue.is-previous {
+  background: linear-gradient(90deg, var(--planet-chrome) 25%, transparent);
+}
+.native-planet-app[data-planet-edition] .globe-edition-scroll-cue.is-next {
+  background: linear-gradient(270deg, var(--planet-chrome) 25%, transparent);
+}
+
+/* The canonical medium-width layout substitutes this native select for the
+   edition rail. Match that layout's specificity without changing its geometry. */
+.native-planet-app[data-planet-edition] .atlas-experience-surface .literary-globe .globe-edition-compact-select {
+  --ui-focus-color: var(--planet-accent);
+}
+.native-planet-app[data-planet-edition] .atlas-experience-surface .literary-globe .globe-edition-compact-select select {
+  color-scheme: dark;
+  color: var(--planet-on-dark);
+  background: var(--planet-chrome);
+  border-color: var(--planet-accent);
+}
+.native-planet-app[data-planet-edition] .atlas-experience-surface .literary-globe .globe-edition-compact-select select:not(:disabled):hover {
+  background: var(--planet-chrome-raised);
+  border-color: var(--planet-accent);
+  box-shadow: 0 16px 42px rgba(0, 0, 0, .4), 0 0 0 3px rgba(var(--planet-accent-rgb), .12);
+}
+.native-planet-app[data-planet-edition] .atlas-experience-surface .literary-globe .globe-edition-compact-select select:focus-visible {
+  border-color: var(--planet-accent);
+  outline-color: var(--planet-accent);
+}
+.native-planet-app[data-planet-edition] .atlas-experience-surface .literary-globe .globe-edition-compact-select option {
+  color: var(--planet-on-dark);
+  background: var(--planet-chrome);
+}
+.native-planet-app[data-planet-edition] .atlas-experience-surface .literary-globe .globe-edition-compact-select::after {
+  border-color: var(--planet-accent);
+}
+
+/* The mobile sheet header remains an opaque dark control above light content.
+   The canonical secondary/dark button is otherwise translucent on that paper. */
+.native-planet-app[data-planet-edition] .atlas-country-sheet-toggle {
+  --ui-focus-color: var(--planet-accent);
+  --ui-focus-ring: 0 0 0 3px var(--planet-chrome);
+  color: var(--planet-on-dark);
+  background: var(--planet-chrome);
+  border-color: var(--planet-accent);
+}
+.native-planet-app[data-planet-edition] .atlas-country-sheet-toggle:not(:disabled):hover {
+  color: var(--planet-on-dark);
+  background: var(--planet-chrome-raised);
+  border-color: var(--planet-accent);
+}
+.native-planet-app[data-planet-edition] .atlas-country-sheet-copy strong { color: var(--planet-on-dark); }
+.native-planet-app[data-planet-edition] .atlas-country-sheet-copy small { color: var(--planet-muted-dark); }
+.native-planet-app[data-planet-edition] .atlas-country-sheet-handle { background: var(--planet-accent); }
+.native-planet-app[data-planet-edition] .atlas-country-sheet-action {
+  color: var(--planet-accent);
+  background: var(--planet-chrome-raised);
+  border-color: var(--planet-accent);
+}
+
+/* Collection, welcome and help retain a quiet, light reading surface. */
+.native-planet-app[data-planet-edition] :is(
+  .native-planet-panel, .native-planet-panel__header, .book-archive-section,
+  .atlas-country-presentation, .country-panel, .country-panel .writer-detail,
+  .planet-welcome, .pwa-help, .pwa-access__refresh, .connectivity-status,
+  .book-dossier-reader, .article-reader-paper
+) {
+  --ui-focus-color: var(--planet-accent-strong);
+  --ui-focus-ring: 0 0 0 3px var(--planet-surface);
+  --ink: var(--planet-ink);
+  --muted: var(--planet-muted);
+  --orange-deep: var(--planet-accent-strong);
+  color: var(--planet-ink);
+  background: var(--planet-surface);
+  border-color: var(--planet-line);
+}
+.native-planet-app[data-planet-edition] :is(
+  .pwa-device__cards > section, .native-planet-panel__header .interface-language-control,
+  .book-dossier-reader__header, .book-dossier-reader__pager, .recent-history
+) {
+  color: var(--planet-ink);
+  background: var(--planet-card);
+  border-color: var(--planet-line);
+}
+.native-planet-app[data-planet-edition] .country-panel :is(
+  .panel-topline, .writer-row, .country-verification-summary, .country-metric,
+  .writer-detail-tabs, .writer-record-section
+) { color: var(--planet-ink); background: var(--planet-card); border-color: var(--planet-line); }
+.native-planet-app[data-planet-edition] .country-panel :is(
+  h2, h3, h4, .country-metrics strong, .writer-name, .writer-detail-name
+) { color: var(--planet-ink); }
+.native-planet-app[data-planet-edition] .country-panel :is(
+  .country-description, .country-heading p, .archive-code, .country-metrics span,
+  .country-verification-summary small, .writer-era
+) { color: var(--planet-muted); }
+.native-planet-app[data-planet-edition] .country-panel :is(button, .eyebrow, .writer-detail a) {
+  color: var(--planet-accent-strong);
+}
+.native-planet-app[data-planet-edition] .country-panel button {
+  background: var(--planet-card); border-color: var(--planet-line);
+}
+.native-planet-app[data-planet-edition] .country-panel button:is(:hover, .is-active, :focus-visible) {
+  color: var(--planet-ink); background: var(--planet-accent); border-color: var(--planet-accent-strong);
+}
+.native-planet-app[data-planet-edition] .country-panel .writer-row.is-active {
+  box-shadow: inset 3px 0 var(--planet-accent-strong);
+}
+.native-planet-app[data-planet-edition] :is(.pwa-device button, .planet-welcome .ui-action--primary),
+.native-planet-app[data-planet-edition] .planet-welcome .ui-action--primary:is(:hover, :active),
+.native-planet-app[data-planet-edition] .native-planet-panel__header .interface-language-control button.is-active {
+  color: var(--planet-on-dark);
+  background: var(--planet-accent-strong);
+  border-color: var(--planet-accent-strong);
+}
+.native-planet-app[data-planet-edition] :is(
+  .book-dossier-reader button, .book-dossier-reader__page a, .pwa-help a,
+  .native-planet-panel__header .interface-language-control button:not(.is-active)
+) { color: var(--planet-accent-strong); }
+.native-planet-app[data-planet-edition] :is(
+  .book-dossier-reader__page dt, .book-dossier-reader__eyebrow, .book-archive-heading p
+) { color: var(--planet-muted); }
+.native-planet-app[data-planet-edition] .book-dossier-reader :is(button, input, nav, dl > div) {
+  border-color: var(--planet-line);
+  accent-color: var(--planet-accent-strong);
+}
+.native-planet-app[data-planet-edition] .book-dossier-reader button:is(:hover, [aria-pressed="true"], [aria-current]) {
+  background: var(--planet-card);
+  border-color: var(--planet-accent-strong);
+}
+.native-planet-app[data-planet-edition] :is(.book-archive-section, .book-shelf-frame) {
+  --book-shelf-base: var(--planet-space);
+  --book-shelf-secondary: var(--planet-chrome);
+  --book-shelf-accent: var(--planet-accent);
+  --book-shelf-paper: var(--planet-on-dark);
+  --book-shelf-ink: var(--planet-ink);
+  --book-shelf-surface: var(--planet-chrome-raised);
+  --book-shelf-light: var(--planet-accent);
+}
+.native-planet-app[data-planet-edition] .book-shelf-frame__library-backdrop { background-image: none; }
+.native-planet-app[data-planet-edition] .book-shelf-frame__atmosphere {
+  background: radial-gradient(ellipse at 40% 20%, rgba(var(--planet-accent-rgb), .08), transparent 65%);
+}
+.native-planet-app[data-planet-edition] :is(.archive-book-card, .book-detail-card, .book-shelf-frame__collection) {
+  color: var(--planet-on-dark);
+  background: var(--planet-chrome-raised);
+  border-color: rgba(var(--planet-accent-rgb), .45);
+}
+.native-planet-app[data-planet-edition] :is(
+  .archive-book-copy h3, .book-detail-copy h3, .book-detail-copy dd,
+  .book-detail-copy > p, .book-collection-dialog h2
+) { color: var(--planet-on-dark); }
+.native-planet-app[data-planet-edition] :is(
+  .archive-book-copy > p, .archive-book-copy > span, .book-detail-copy dt,
+  .book-detail-toolbar__label, .book-original-title
+) { color: var(--planet-muted-dark); }
+.native-planet-app[data-planet-edition] :is(
+  .book-shelf-frame input:not([type="checkbox"]), .book-shelf-frame select,
+  .book-shelf-frame__navigation button, .archive-book-actions button, .book-detail-actions button
+) {
+  color: var(--planet-on-dark);
+  background: var(--planet-chrome);
+  border-color: rgba(var(--planet-accent-rgb), .6);
+}
+.native-planet-app[data-planet-edition] :is(
+  .book-shelf-frame__navigation button.is-primary, .archive-book-actions button.is-saved,
+  .book-detail-actions button.is-saved, .book-shelf-frame__filter-chip
+) { color: var(--planet-ink); background: var(--planet-accent); }
+
+/* The discovery action uses the dark accent, not white on the bright glow. */
+.native-planet-app[data-planet-edition] .book-shelf-controls button.book-shelf-controls__random,
+.native-planet-app[data-planet-edition] .book-shelf-controls button.book-shelf-controls__random:not(:disabled):is(:hover, :active) {
+  color: var(--planet-on-dark);
+  background: var(--planet-accent-strong);
+  border-color: var(--planet-accent);
+}
+.native-planet-app[data-planet-edition] .archive-book-actions .editorial-state {
+  color: var(--planet-muted-dark);
+}
+.native-planet-app[data-planet-edition] .archive-book-actions .editorial-state:is(.is-verified, .is-reviewed) {
+  color: var(--planet-accent);
+}
+.native-planet-app[data-planet-edition] .archive-book-cover:not(.has-image) {
+  color: var(--planet-ink);
+  background: var(--planet-card);
+}
+.native-planet-app[data-planet-edition] .archive-book-cover:not(.has-image) :is(small, span) {
+  color: var(--planet-accent-strong);
+}
+.native-planet-app[data-planet-edition] .book-archive-heading .section-kicker {
+  color: var(--planet-accent-strong);
+}
+
+/* This collection lives in a side panel even on a wide display. Its available
+   width, not the website viewport breakpoint, determines readable card columns. */
+.native-planet-app[data-planet-edition] .native-planet-panel .book-shelf-frame__catalog {
+  container: planet-catalog / inline-size;
+  color: var(--planet-ink);
+  background: var(--planet-surface);
+}
+.native-planet-app[data-planet-edition] .native-planet-panel .book-archive-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+}
+.native-planet-app[data-planet-edition] .native-planet-panel .archive-book-card {
+  grid-template-columns: clamp(4.5rem, 30%, 7.875rem) minmax(0, 1fr);
+}
+.native-planet-app[data-planet-edition] .native-planet-panel .archive-book-copy h3 {
+  display: block;
+  min-height: 0;
+  overflow: visible;
+  -webkit-line-clamp: unset;
+}
+@container planet-catalog (max-width: 24rem) {
+  .native-planet-app[data-planet-edition] .native-planet-panel .archive-book-copy { padding: 12px; }
+  .native-planet-app[data-planet-edition] .native-planet-panel .archive-book-cover:not(.has-image) { padding: 12px 8px; }
+}
+
+/* Existing body portal: keep the same palette without setting a website theme. */
+body[data-planet-portal-edition] > .book-shelf-frame__filter-backdrop {
+  /* This nested dialog must sit above the application's collection panel. */
+  z-index: 1200;
+  --ui-focus-color: var(--planet-accent-strong);
+  --book-shelf-ink: var(--planet-ink);
+  color: var(--planet-ink);
+  background: rgba(0, 0, 0, .7);
+}
+body[data-planet-portal-edition] > .book-shelf-frame__filter-backdrop .book-shelf-frame__filter-drawer {
+  color: var(--planet-ink);
+  background: var(--planet-surface);
+  border-color: var(--planet-line);
+}
+body[data-planet-portal-edition] > .book-shelf-frame__filter-backdrop :is(button, select, input) {
+  color: var(--planet-ink);
+  background: var(--planet-card);
+  border-color: var(--planet-accent-strong);
+  accent-color: var(--planet-accent-strong);
+}
+body[data-planet-portal-edition] > .book-shelf-frame__filter-backdrop :is(legend, label, h3) { color: var(--planet-ink); }
+body[data-planet-portal-edition] > .book-shelf-frame__filter-backdrop .book-shelf-filter-drawer__header span { color: var(--planet-accent-strong); }
+.native-planet-app[data-planet-edition] :focus-visible,
+body[data-planet-portal-edition] > .book-shelf-frame__filter-backdrop :focus-visible {
+  outline-color: var(--ui-focus-color);
+}
+.native-planet-app[data-planet-edition] ::selection { color: var(--planet-ink); background: var(--planet-accent); }
+
+/* Animate only paint on stable reading surfaces. Existing sheet height,
+   toolbar visibility and camera motion retain their own transition contracts. */
+.native-planet-app[data-planet-edition] :is(
+  .native-planet-panel__header, .book-archive-section, .book-dossier-reader,
+  .pwa-help, .pwa-device__cards > section
+) { transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease; }
+
+@media (prefers-reduced-motion: reduce) {
+  .native-planet-app[data-planet-edition] :is(
+    .native-planet-panel__header, .book-archive-section, .book-dossier-reader,
+    .pwa-help, .pwa-device__cards > section
+  ) {
+    transition: none;
+  }
+}
+@media (forced-colors: active) {
+  .native-planet-app[data-planet-edition], body[data-planet-portal-edition] > .book-shelf-frame__filter-backdrop {
+    --planet-space: Canvas !important; --planet-chrome: Canvas !important; --planet-chrome-raised: Canvas !important;
+    --planet-surface: Canvas !important; --planet-card: Canvas !important;
+    --planet-ink: CanvasText !important; --planet-on-dark: CanvasText !important;
+    --planet-muted: CanvasText !important; --planet-muted-dark: CanvasText !important;
+    --planet-accent: Highlight !important; --planet-accent-strong: LinkText !important; --planet-line: ButtonText !important;
+  }
+  .native-planet-app[data-planet-edition] :focus-visible,
+  body[data-planet-portal-edition] > .book-shelf-frame__filter-backdrop :focus-visible { outline-color: Highlight; }
+}
