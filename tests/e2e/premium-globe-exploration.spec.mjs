@@ -377,6 +377,23 @@ test("edition rail moves focus without changing the rendered edition", async ({
     localStorage.setItem("probpera.globe-edition.v2", "rand-mcnally-1887");
   });
   const { globe } = await openAtlas(page);
+  // This case tests edition focus and pointer access. Keep the real scene in
+  // demand mode so the CI software GPU does not consume the interaction budget.
+  // Auto rotation has its own lifecycle coverage below.
+  const auto = globe.locator('[data-globe-control="auto-rotate"]');
+  if ((await auto.getAttribute("aria-pressed")) === "true") {
+    await auto.evaluate((element) => {
+      const box = element.getBoundingClientRect();
+      window.scrollTo({
+        top: window.scrollY + box.top - window.innerHeight / 2 + box.height / 2,
+        behavior: "instant",
+      });
+    });
+    await expect(auto).toBeInViewport({ ratio: 1 });
+    await auto.click();
+  }
+  await expect(auto).toHaveAttribute("aria-pressed", "false");
+  await expect(globe).toHaveAttribute("data-globe-frame-mode", "demand");
   const randMcNally = globe.locator(
     '[data-globe-edition-option="rand-mcnally-1887"]'
   );
