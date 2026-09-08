@@ -1,0 +1,108 @@
+{
+  "recordedAt": "2026-09-08T14:03:35.418Z",
+  "sourceSha256": "39324a8c1698df015cb3beaf8244d727d803aaa4ed65242e00610cfb9794ca9e",
+  "readerContractBodyByteIdentical": true,
+  "readerPerCaseTimeoutMs": 180000,
+  "interpretation": "Four separate complete RU/EN desktop/mobile reader contracts and one portrait setup contract. Local software GPU, not full CI or production verification.",
+  "records": [
+    {
+      "path": "software-results.json",
+      "stats": {
+        "startTime": "2026-09-08T13:54:25.386Z",
+        "duration": 184114.66199999998,
+        "expected": 2,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "tests": [
+        {
+          "title": "illustrated book preserves every page, renders illustrations and supports accessible navigation (ru)",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 96981,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "title": "illustrated book preserves every page, renders illustrations and supports accessible navigation (en)",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 85234,
+              "retry": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "software-mobile-results.json",
+      "stats": {
+        "startTime": "2026-09-08T13:58:21.767Z",
+        "duration": 111494.42300000001,
+        "expected": 2,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "tests": [
+        {
+          "title": "illustrated book preserves every page, renders illustrations and supports accessible navigation (ru)",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 55488,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "title": "illustrated book preserves every page, renders illustrations and supports accessible navigation (en)",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 54170,
+              "retry": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "portrait-software-results.json",
+      "stats": {
+        "startTime": "2026-09-08T14:01:21.559Z",
+        "duration": 11618.213,
+        "expected": 1,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "tests": [
+        {
+          "title": "архив и изображения сохраняют desktop-сетку и исходные пропорции",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 10145,
+              "retry": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

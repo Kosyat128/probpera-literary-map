@@ -285,11 +285,13 @@ async function assertGeometry(page, book, widths) {
   }
 }
 
-fixtureTest("illustrated book preserves every page, renders illustrations and supports accessible navigation", async ({ page, request, baseURL, isMobile }, testInfo) => {
-  test.setTimeout(180_000);
-  await installEnvironment(page);
-  const url = await fixtureArticleUrl(request, baseURL);
-  for (const locale of ["ru", "en"]) {
+// Each locale owns a complete navigation/content contract and its original budget.
+// Combining both accumulated more than 180s on the CI software GPU.
+for (const locale of ["ru", "en"]) {
+  fixtureTest(`illustrated book preserves every page, renders illustrations and supports accessible navigation (${locale})`, async ({ page, request, baseURL, isMobile }, testInfo) => {
+    test.setTimeout(180_000);
+    await installEnvironment(page);
+    const url = await fixtureArticleUrl(request, baseURL);
     await page.unrouteAll({ behavior: "wait" });
     const content = await prepare(page, locale);
     await page.setViewportSize({ width: isMobile ? 390 : 1440, height: 1000 });
@@ -371,8 +373,8 @@ fixtureTest("illustrated book preserves every page, renders illustrations and su
     await page.emulateMedia({ reducedMotion: "no-preference" });
     await next.click();
     await expectPage(book, imagePages.get(portrait) + 1);
-  }
-});
+  });
+}
 
 fixtureTest("a delayed illustration fills the existing book without blocking reading or resetting its page", async ({ page, request, baseURL, isMobile }, testInfo) => {
   test.setTimeout(60_000);

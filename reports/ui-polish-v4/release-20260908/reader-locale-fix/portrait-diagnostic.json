@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "status": "targeted_software_passed_ci_not_rerun",
+  "recordedAt": "2026-09-08T16:58:09.466671+03:00",
+  "ci": {
+    "runId": "34229916452",
+    "headPrefix": "ddc59fc2",
+    "artifactId": "10059185207",
+    "artifactPath": "reports/ui-polish-v4/main-integration/quality34229916452-browser.zip",
+    "traceEntry": "test-results/webgl-1/archive-search-calendar-ар-9b3cf--сетку-и-исходные-пропорции-desktop-chromium/trace.zip",
+    "testFile": "tests/e2e/archive-search-calendar.spec.mjs",
+    "originalTestLine": 88,
+    "originalAssertionLine": 120,
+    "observedFailure": {
+      "objectFit": "cover",
+      "sameBounds": false
+    },
+    "retryPassedReportedByRoot": true
+  },
+  "observed": {
+    "lastPointerInput": {
+      "callId": "call@62",
+      "control": "Каталог",
+      "x": 243.13,
+      "y": 494.85
+    },
+    "laterPointerMoveBeforeAssertion": false,
+    "authorScreencastTimestampMs": 19602.41,
+    "firstPortraitBoundsFromScreencastApproxCssPx": {
+      "left": 58,
+      "right": 378,
+      "top": 377,
+      "bottom": 780
+    },
+    "pointerInsideFirstPortraitByScreencast": true,
+    "currentSrcEmptySnapshotTimestampsMs": [
+      19497.469,
+      19506.205
+    ],
+    "portraitNetworkStartTimestampMs": 19512.665,
+    "portraitAsset": "assets/writer-portraits/q991.webp",
+    "portraitResponseStatus": 200,
+    "computedTransformAndNumericBoundsCaptured": false,
+    "actualImageCompleteAndDecodedStateCaptured": false
+  },
+  "sourceContract": {
+    "hoverSelector": ".author-showcase button:hover .author-showcase-portrait img",
+    "stylePath": "src/index.css",
+    "transformLine": 6946,
+    "transform": "scale(1.025)",
+    "transitionDurationMs": 200,
+    "transitionTokenLine": 40,
+    "imageSizing": "absolute inset 0; width and height 100%; object-fit cover",
+    "mediaTransform": "No matching portrait wrapper scale in reviewed rules"
+  },
+  "interpretation": "The retained pointer falls inside the first portrait after scrolling. The intended hover transform can violate the baseline image/media bounds comparison. Image visibility also preceded resource readiness. Actual numeric transform/bounds and decode state were not recorded, so their exact contribution is not proven by this trace.",
+  "change": {
+    "file": "tests/e2e/archive-search-calendar.spec.mjs",
+    "added": "Move pointer to (0,0); require a real closest .author-showcase button with :hover false; require complete/naturalWidth and successful decode; poll original bounds/object-fit contract.",
+    "unchanged": [
+      "Desktop archive grid has exactly 3 columns",
+      "Portrait object-fit is cover",
+      "Both portrait width/height differences are <=1 CSS pixel",
+      "Search book-cover object-fit is contain",
+      "Test timeout remains 90000 ms",
+      "expect.poll uses existing 10000 ms project expect timeout"
+    ],
+    "productFilesChangedByThisFix": false,
+    "sourceSha256AtRecording": "94719d65d12a864fc1b762e12551072092da6934f660ff56cc00d3522f5f5da6"
+  },
+  "validation": {
+    "nodeCheck": "passed",
+    "gitDiffCheck": "passed",
+    "browser": "passed_single_desktop_software_case",
+    "ci": "not_rerun",
+    "productBug": "not_established",
+    "targetedResult": {
+      "resultPath": "reports/ui-polish-v4/release-20260908/reader-locale-fix/portrait-software-results.json",
+      "logPath": "reports/ui-polish-v4/release-20260908/reader-locale-fix/portrait-software.log",
+      "resultSha256": "9d8b15e8060fe5a1f0ace1ad7ba622066f506ee55661ec724be7c454ef252a0e",
+      "exitCode": 0,
+      "stats": {
+        "startTime": "2026-09-08T14:01:21.559Z",
+        "duration": 11618.213,
+        "expected": 1,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "project": "desktop-chromium",
+      "testFile": "archive-search-calendar.spec.mjs",
+      "title": "архив и изображения сохраняют desktop-сетку и исходные пропорции",
+      "testStartTime": "2026-09-08T14:01:22.047Z",
+      "testDurationMs": 10145,
+      "testStatus": "passed",
+      "errors": [],
+      "retry": 0,
+      "workers": 1,
+      "configuredRetries": 0,
+      "preview": "http://127.0.0.1:4186",
+      "config": ".tmp/playwright-software-gpu.config.mjs",
+      "renderer": "ANGLE SwiftShader",
+      "frozenTestSourceUnchanged": true,
+      "scope": "One executed desktop test, not full CI or a production acceptance run."
+    },
+    "recordedAt": "2026-09-08T14:02:52.1110474+00:00"
+  }
+}
