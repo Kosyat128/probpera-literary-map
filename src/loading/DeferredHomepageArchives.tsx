@@ -26,6 +26,7 @@ type BookArchiveComponentProps = {
   requestedBook?: BookArchiveEntry | null;
   requestedBookReturnFocus?: HTMLElement | null;
   onRequestedBookHandled?: () => void;
+  registerNativeBack?: (handler: () => boolean) => () => void;
 };
 
 type BookArchiveComponent = ComponentType<BookArchiveComponentProps>;

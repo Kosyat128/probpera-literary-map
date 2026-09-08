@@ -17,12 +17,12 @@ import type { CommunityView } from "./community/CommunityHub";
 import { isControlledWebEdition } from "./platform/distribution";
 import { usePlatformServices } from "./platform/PlatformServices";
 import {
-  createNativeBackBroker,
-  createNativeNavigationIntake,
   type NativeNavigationContext,
   type NativeNavigationIntent,
   type NativeNavigationResolution,
 } from "./host/NativeNavigation";
+import { useNativeNavigation, type NativeNavigationController } from "./host/useNativeNavigation";
+import { nativeNavigationEntryState, nativeNavigationTarget } from "./host/nativeNavigationTarget";
 import { useRecentHistory } from "./planet/RecentHistory";
 import RecentHistoryPanel from "./components/RecentHistoryPanel";
 import { useAuth } from "./community/AuthContext";
@@ -610,19 +610,12 @@ export default function App() {
   const atlasFilterClusterRef = useRef<HTMLDivElement>(null);
   const atlasArchivesToggleRef = useRef<HTMLButtonElement>(null);
   const randomAtlasHistoryRef = useRef<string[]>([]);
-  const nativeNavigationControllerRef = useRef<ReturnType<typeof createNativeNavigationIntake<NativeResolvedNavigation>> | null>(null);
-  const nativeBackCanGoBackRef = useRef<boolean | null>(null);
-  const nativeNavigationResolveRef = useRef<((intent: NativeNavigationIntent, context: NativeNavigationContext) => Promise<NativeNavigationResolution<NativeResolvedNavigation>>) | null>(null);
-  const nativeNavigationApplyRef = useRef<((value: NativeResolvedNavigation, intent: NativeNavigationIntent, context: NativeNavigationContext) => "applied" | "declined") | null>(null);
-  const nativeBackStateRef = useRef({
-    globalSearchOpen: false,
-    communityOpen: false,
-    bookOpen: false,
-    immersive: false,
-    largestArchivesOpen: false,
-    atlasSearchOpen: false,
-    atlasFiltersOpen: false,
-  });
+  const nativeNavigationControllerRef = useRef<NativeNavigationController<NativeResolvedNavigation> | null>(null);
+  const nativeBookBackRef = useRef<(() => boolean) | null>(null);
+  const registerNativeBookBack = useCallback((handler: () => boolean) => {
+    nativeBookBackRef.current = handler;
+    return () => { if (nativeBookBackRef.current === handler) nativeBookBackRef.current = null; };
+  }, []);
   const cancelNativeNavigation = useCallback(() => {
     nativeNavigationControllerRef.current?.cancelPending();
   }, []);
@@ -650,14 +643,6 @@ export default function App() {
   const syncAtlasExperienceFromUrl = atlasExperience.syncFromUrl;
   const commitAtlasExperienceUrlSelection =
     atlasExperience.commitUrlSelection;
-  const nativeBackActionsRef = useRef<{
-    closeGlobalSearch: () => void;
-    closeCommunity: () => void;
-    closeLargestArchives: () => boolean;
-    closeAtlasSearch: () => void;
-    dispatchAtlas: typeof atlasExperience.dispatch;
-    requestAtlasExit: typeof atlasExperience.requestExit;
-  } | null>(null);
   const atlasImmersive = atlasExperience.state.view === "immersive";
   const atlasSheetContentCollapsed =
     atlasExperience.compactSheet &&
@@ -1795,21 +1780,12 @@ export default function App() {
     cancelNativeNavigation();
     setCommunityOpen(false);
   }, [cancelNativeNavigation]);
-  nativeBackActionsRef.current = {
-    closeGlobalSearch,
-    closeCommunity,
-    closeLargestArchives: closeLargestArchivesOnEscape,
-    closeAtlasSearch,
-    dispatchAtlas: atlasExperienceDispatch,
-    requestAtlasExit: atlasExperience.requestExit,
-  };
-
   /**
    * Native URL opens are resolved against the same loaded catalogue used by the
    * visible globe and book archive. The intake owns only the untrusted input
    * queue; it never becomes a second router, locale store or entitlement source.
    */
-  nativeNavigationResolveRef.current = async (intent, context) => {
+  const resolveNativeNavigation = async (intent: NativeNavigationIntent, context: NativeNavigationContext): Promise<NativeNavigationResolution<NativeResolvedNavigation>> => {
     if (context.signal.aborted || !countryArchive.length || bookRuntimeStatus !== "ready") {
       return { status: "unavailable" };
     }
@@ -1841,189 +1817,62 @@ export default function App() {
     return { status: "ready", value: Object.freeze({ country, writer, book }) };
   };
 
-  nativeNavigationApplyRef.current = (value, intent, context) => {
-    if (context.signal.aborted || typeof window === "undefined") return "declined";
-    try {
-      const target = new URL(intent.canonicalUrl);
-      const nextRelative = `${target.pathname}${target.search}${target.hash}`;
-      const currentRelative = `${window.location.pathname}${window.location.search}${window.location.hash}`;
-      if (currentRelative !== nextRelative) {
-        // The URL was strictly validated before this point; only its same-origin
-        // path/query/hash is placed in the native WebView history.
-        window.history.pushState(window.history.state, "", nextRelative);
-      }
-      if (intent.language && intent.language !== language) setLanguage(intent.language);
-      applyAtlasUrlSelection();
-      // A book-only deep link derives its country/writer from the canonical book
-      // record, then keeps the URL's book and shelf query intact via replaceState.
-      if (value.book && value.country) {
-        setAtlasFilter(intent.atlas.filter ?? "all");
-        setSelectedCountry(value.country);
-        setSelectedWriter(value.writer);
-        commitAtlasExperienceUrlSelection({
-          filter: intent.atlas.filter ?? "all",
-          countryId: value.country.id,
-          writerId: value.writer?.id ?? null,
-        }, "replace");
-      }
-      window.dispatchEvent(new Event("probpera:navigation"));
-      window.dispatchEvent(new Event("popstate"));
-      return "applied";
-    } catch {
-      return "declined";
+  const applyNativeNavigation = (_value: NativeResolvedNavigation, intent: NativeNavigationIntent, context: NativeNavigationContext): "applied" | "declined" => {
+    if (context.signal.aborted) return "declined";
+    const next = nativeNavigationTarget(window.location.href, intent);
+    const current = window.location.pathname + window.location.search + window.location.hash;
+    if (current !== next.relative) {
+      const state = next.localeOnly ? window.history.state : nativeNavigationEntryState(window.history.state);
+      window.history[next.localeOnly ? "replaceState" : "pushState"](state, "", next.relative);
     }
+    if (intent.language && intent.language !== language) setLanguage(intent.language);
+    // A locale-only link must never run atlas/book restoration or clear a search.
+    if (!next.localeOnly) window.dispatchEvent(new PopStateEvent("popstate", { state: window.history.state }));
+    window.dispatchEvent(new Event("probpera:navigation"));
+    if (intent.section || intent.bookKey) {
+      window.requestAnimationFrame(() => scrollToDeferredHashTarget(window.location.hash));
+    }
+    return "applied";
   };
 
-  const nativeNavigation = useMemo(() => {
-    const source = platformServices.navigation;
-    if (!source) return null;
-    return createNativeNavigationIntake<NativeResolvedNavigation>({
-      source,
-      resolve: (intent, context) => nativeNavigationResolveRef.current?.(intent, context)
-        ?? Promise.resolve({ status: "unavailable" as const }),
-      apply: (value, intent, context) => nativeNavigationApplyRef.current?.(value, intent, context) ?? "declined",
-    });
-  }, [platformServices.navigation]);
-  nativeNavigationControllerRef.current = nativeNavigation;
-
-  const nativeBackBroker = useMemo(() => {
-    const source = platformServices.navigation;
-    if (!source?.subscribeBack) return null;
-    return createNativeBackBroker({
-      history: {
-        canGoBack: () => nativeBackCanGoBackRef.current === true || window.history.length > 1,
-        goBack: () => window.history.back(),
-      },
-    });
-  }, [platformServices.navigation]);
-  nativeBackStateRef.current = {
-    globalSearchOpen,
-    communityOpen,
-    bookOpen: Boolean(
-      typeof window !== "undefined" &&
-      (new URLSearchParams(window.location.search).has("book") ||
-        document.querySelector(".archive-book-detail"))
-    ),
-    immersive: atlasExperience.state.view === "immersive" || atlasExperience.state.transition === "preparing",
-    largestArchivesOpen,
-    atlasSearchOpen,
-    atlasFiltersOpen: atlasExperience.state.filtersOpen,
-  };
-
-  useEffect(() => {
-    if (!nativeNavigation) return undefined;
-    nativeNavigation.start();
-    return () => nativeNavigation.dispose();
-  }, [nativeNavigation]);
+  useNativeNavigation({
+    source: platformServices.navigation,
+    readiness: {
+      bootstrap: archiveDataStatus === "error" || bookRuntimeStatus === "error" ? "failed"
+        : archiveDataStatus === "ready" && bookRuntimeStatus === "ready" ? "ready" : "pending",
+      // This shell has no child profile yet; this permits only the publication-
+      // checked routes above and does not grant a purchase or child-mode approval.
+      policy: "allowed",
+    },
+    resolve: resolveNativeNavigation,
+    apply: applyNativeNavigation,
+    goBack: () => window.history.back(),
+    handleBack: () => {
+      if (globalSearchOpen) { closeGlobalSearch(); return "handled"; }
+      if (communityOpen) { closeCommunity(); return "handled"; }
+      if (nativeBookBackRef.current?.()) return "handled";
+      if (closeLargestArchivesOnEscape()) return "handled";
+      if (atlasSearchOpen) {
+        closeAtlasSearch();
+        window.requestAnimationFrame(() => atlasExperience.searchButtonRef.current?.focus({ preventScroll: true }));
+        return "handled";
+      }
+      if (atlasExperience.state.filtersOpen) {
+        atlasExperienceDispatch({ type: "CLOSE_FILTERS" });
+        window.requestAnimationFrame(() => atlasExperience.filtersButtonRef.current?.focus({ preventScroll: true }));
+        return "handled";
+      }
+      if (atlasImmersive || atlasExperience.state.transition === "preparing") {
+        atlasExperience.requestExit("escape");
+        return "handled";
+      }
+      return "unhandled";
+    },
+  }, nativeNavigationControllerRef);
 
   useEffect(() => {
-    if (!platformServices.navigation || directArticleRoute) return;
-    // Native base edition needs the same canonical index before it can resolve
-    // an incoming country, writer or work link. This is not a second catalogue.
-    requestBookRuntime();
+    if (platformServices.navigation && !directArticleRoute) requestBookRuntime();
   }, [directArticleRoute, platformServices.navigation, requestBookRuntime]);
-
-  useEffect(() => {
-    if (!nativeNavigation) return;
-    const bootstrap = archiveDataStatus === "error" || bookRuntimeStatus === "error"
-      ? "failed"
-      : archiveDataStatus === "ready" && bookRuntimeStatus === "ready"
-        ? "ready"
-        : "pending";
-    nativeNavigation.setReadiness({ bootstrap, policy: "allowed" });
-  }, [archiveDataStatus, bookRuntimeStatus, nativeNavigation]);
-
-  useEffect(() => {
-    if (!nativeBackBroker || !platformServices.navigation?.subscribeBack) return undefined;
-    let alive = true;
-    let handle: { remove(): void | Promise<void> } | null = null;
-    const callback = (event: { canGoBack: boolean }) => {
-      if (!alive) return;
-      nativeBackCanGoBackRef.current = event.canGoBack;
-      void nativeBackBroker.requestBack();
-    };
-    void Promise.resolve(platformServices.navigation.subscribeBack(callback)).then(
-      (next) => {
-        if (!alive) {
-          void Promise.resolve(next.remove()).catch(() => undefined);
-          return;
-        }
-        handle = next;
-      },
-      () => undefined
-    );
-    return () => {
-      alive = false;
-      const current = handle;
-      handle = null;
-      if (current) void Promise.resolve(current.remove()).catch(() => undefined);
-    };
-  }, [nativeBackBroker, platformServices.navigation]);
-
-  useEffect(() => {
-    if (!nativeBackBroker) return undefined;
-    const state = nativeBackStateRef;
-    const closeGlobal = nativeBackBroker.register({
-      id: "global-search",
-      priority: 1000,
-      handle: () => state.current.globalSearchOpen
-        ? (nativeBackActionsRef.current?.closeGlobalSearch(), "handled")
-        : "unhandled",
-    });
-    const closeCommunityLayer = nativeBackBroker.register({
-      id: "community",
-      priority: 990,
-      handle: () => state.current.communityOpen
-        ? (nativeBackActionsRef.current?.closeCommunity(), "handled")
-        : "unhandled",
-    });
-    const closeBook = nativeBackBroker.register({
-      id: "book-detail",
-      priority: 900,
-      handle: () => {
-        if (!state.current.bookOpen) return "unhandled";
-        cancelNativeNavigation();
-        const next = new URL(window.location.href);
-        next.searchParams.delete("book");
-        next.searchParams.delete("archiveShelf");
-        window.history.replaceState(window.history.state, "", `${next.pathname}${next.search}${next.hash}`);
-        window.dispatchEvent(new Event("popstate"));
-        window.dispatchEvent(new Event("probpera:navigation"));
-        return "handled";
-      },
-    });
-    const closeLargest = nativeBackBroker.register({
-      id: "atlas-largest",
-      priority: 850,
-      handle: () => state.current.largestArchivesOpen && nativeBackActionsRef.current?.closeLargestArchives()
-        ? "handled"
-        : "unhandled",
-    });
-    const closeAtlasOverlay = nativeBackBroker.register({
-      id: "atlas-overlay",
-      priority: 800,
-      handle: () => {
-        if (!state.current.atlasSearchOpen && !state.current.atlasFiltersOpen) return "unhandled";
-        cancelNativeNavigation();
-        nativeBackActionsRef.current?.closeAtlasSearch();
-        nativeBackActionsRef.current?.dispatchAtlas({ type: "CLOSE_FILTERS" });
-        return "handled";
-      },
-    });
-    const exitImmersive = nativeBackBroker.register({
-      id: "atlas-immersive",
-      priority: 700,
-      handle: () => {
-        if (!state.current.immersive) return "unhandled";
-        cancelNativeNavigation();
-        nativeBackActionsRef.current?.requestAtlasExit("history");
-        return "handled";
-      },
-    });
-    return () => {
-      closeGlobal(); closeCommunityLayer(); closeBook(); closeLargest(); closeAtlasOverlay(); exitImmersive();
-    };
-  }, [cancelNativeNavigation, nativeBackBroker]);
 
   const readerName =
     user?.user_metadata?.display_name || user?.email?.split("@")[0] || "";
@@ -3358,6 +3207,7 @@ export default function App() {
           requestedBook={requestedBook}
           requestedBookReturnFocus={requestedBookReturnFocusRef.current}
           onRequestedBookHandled={handleRequestedBookHandled}
+          registerNativeBack={platformServices.navigation?.subscribeBack ? registerNativeBookBack : undefined}
           onBookSelect={selectBookWriterAndCountry}
         />
 

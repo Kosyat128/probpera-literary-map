@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "kind": "s04-native-navigation-followup",
+  "checkedAt": "2026-09-08T01:47:50.955Z",
+  "status": "WORKING_VALIDATION",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "source": {
+    "parentCommit": "2dd6f1f66a129394b0715ac7ff43244978d18f43",
+    "workingTreeChangesIncluded": true,
+    "files": [
+      {
+        "path": "src/App.tsx",
+        "bytes": 158257,
+        "sha256": "33654ca0f66ad0ce2a94742e255c5c7b4197341b30625f682e7d5519c6540441"
+      },
+      {
+        "path": "src/host/useNativeNavigation.ts",
+        "bytes": 3514,
+        "sha256": "7e261d298362b65ebf58833210c379a8164e456d4cc4e17105776baa0fba6861"
+      },
+      {
+        "path": "src/host/nativeNavigationTarget.ts",
+        "bytes": 2525,
+        "sha256": "c35ed174eee96ac9559bf7de0a4f9f0e1574e85af302067fe5e157b2f3e8d7a0"
+      },
+      {
+        "path": "src/host/nativeNavigationTarget.test.ts",
+        "bytes": 3826,
+        "sha256": "28293dee9aa98dc97ae18467b9c1527a10c161d0ceca46d89b55eec2ec26b381"
+      },
+      {
+        "path": "src/components/BookArchiveSection.tsx",
+        "bytes": 209967,
+        "sha256": "6b8c1cdeaa8253df529cd55cd437793eb808a0c1129518fdd0612f831bb17bf8"
+      },
+      {
+        "path": "src/loading/DeferredHomepageArchives.tsx",
+        "bytes": 12890,
+        "sha256": "24f3251b21ede8d8dcbbccdcc25ae2918ebc1aeb1b8b6f5fdd679bb1e347953f"
+      },
+      {
+        "path": "src/utils/imageDelivery.ts",
+        "bytes": 962,
+        "sha256": "d60a3086893b95c26958c291faf8319423f1bf30c24cefb814d32b905f43ff4d"
+      },
+      {
+        "path": "src/utils/imageDeliveryControlled.ts",
+        "bytes": 885,
+        "sha256": "d2f20cd20221fa22a664f198be0035039a4624fbbc86a5315e36bf4a5ad65fac"
+      },
+      {
+        "path": "src/utils/imageDeliveryControlled.test.ts",
+        "bytes": 3513,
+        "sha256": "8e69e2d7936e06e8ce56076cbf0f84caccccbc2b777b4aabc57bad54c0b468f6"
+      },
+      {
+        "path": "tests/host/native-navigation.spec.mjs",
+        "bytes": 12308,
+        "sha256": "5f4e69e06e8f989503dc90350e0e5254813fe1f68f805e76441a43c52c5b47b8"
+      },
+      {
+        "path": "playwright.native-navigation.config.mjs",
+        "bytes": 310,
+        "sha256": "918e3d472337c910cb88a36b38720b022811347ce3e35f514a1810f6c8cb6c69"
+      }
+    ]
+  },
+  "supersedesClaimsIn": "docs/mobile/evidence/S04/native-navigation-working-validation.json",
+  "fixes": [
+    "Each StrictMode effect lifetime owns a fresh native intake and Back subscription.",
+    "Locale-only links replace the locale path and retain query/hash/selection/history; no atlas/book restoration is dispatched.",
+    "Back and newer user language/input cancel late navigation; native canGoBack=false is authoritative.",
+    "Canonical book close owns its animation, history and focus; immersive Back uses the real exit callback.",
+    "New entity/section entries return to the locale homepage and drop stale book/immersive Back markers without changing unrelated state.",
+    "Warm section destinations request their deferred scroll target.",
+    "Controlled image delivery uses selected canonical originals, avoiding optimized derivatives absent from bundled assets."
+  ],
+  "correction": "Earlier review speculated a native direct-article bootstrap deadlock. Controlled native builds disable that route predicate; no such runtime failure is claimed and unnecessary loader changes were removed.",
+  "validation": {
+    "unitRuns": [
+      {
+        "command": "node node_modules/vitest/vitest.mjs run src/host/NativeNavigation.test.ts src/host/nativeNavigationTarget.test.ts --configLoader runner --maxWorkers=1",
+        "tests": 119,
+        "files": 2,
+        "status": "PASS",
+        "scope": "First follow-up before the additional history/path fix"
+      },
+      {
+        "command": "node node_modules/vitest/vitest.mjs run src/host/nativeNavigationTarget.test.ts src/components/bookContextNavigation.test.ts src/utils/atlasUrlState.test.ts --configLoader runner --maxWorkers=1",
+        "tests": 19,
+        "files": 3,
+        "status": "PASS",
+        "scope": "Final URL/history merge plus canonical book/atlas regression"
+      },
+      {
+        "command": "node node_modules/vitest/vitest.mjs run src/utils/imageDelivery.test.ts src/utils/imageDeliveryControlled.test.ts src/utils/articleImageDelivery.test.ts --configLoader runner --maxWorkers=2",
+        "tests": 13,
+        "files": 3,
+        "status": "PASS"
+      }
+    ],
+    "browser": {
+      "command": "node node_modules/@playwright/test/cli.js test --config playwright.native-navigation.config.mjs",
+      "status": "PASS",
+      "tests": 4,
+      "durationSeconds": 6.4,
+      "scope": "Real React StrictMode hook/provider in Chrome with explicit native SDK doubles and a canvas DOM probe. Not LiteraryGlobe or a device."
+    },
+    "types": {
+      "command": "node node_modules/typescript/bin/tsc --noEmit",
+      "status": "PASS"
+    },
+    "boundaries": "docs/mobile/evidence/S04/navigation-followup-20260908/platform-boundaries.json",
+    "native": {
+      "identity": {
+        "buildId": "46ebba56e96efeaa04123785445b48b1424ad735d6231b283d5cdef19f6116a4",
+        "sourceCommit": "2dd6f1f66a129394b0715ac7ff43244978d18f43",
+        "platform": "android",
+        "channel": "dev"
+      },
+      "strictAudit": "docs/mobile/evidence/S04/navigation-followup-20260908/native-artifact-audit.json",
+      "build": {
+        "pass": true,
+        "startedAt": "2026-09-08T01:44:17.0974191+00:00",
+        "durationSeconds": 34.369158,
+        "task": ":app:assembleDevDebug",
+        "offline": true,
+        "deviceTested": false,
+        "releaseReady": false,
+        "actionableTasks": 167,
+        "executed": 22,
+        "upToDate": 145
+      },
+      "apk": {
+        "path": "apps/mobile/android/app/build/outputs/apk/dev/debug/app-dev-debug.apk",
+        "bytes": 33744892,
+        "sha256": "8244b5022bf89373890254204ce06bdf9226a382d33d75f21422802db830d502",
+        "preservedPath": ".tmp/native-builds/android-dev/46ebba56/app-dev-debug.apk"
+      },
+      "preservedRuntime": ".tmp/native-builds/android-dev/46ebba56/runtime",
+      "binaryAudit": "docs/mobile/evidence/S04/navigation-followup-20260908/android-dev-apk-verification.json"
+    },
+    "failuresPreserved": [
+      {
+        "log": ".tmp/native-bootstrap/native-refresh-20260908.log",
+        "cause": "Sandbox esbuild parent-directory read denied; approved escalation resolved."
+      },
+      {
+        "log": ".tmp/native-bootstrap/native-refresh-20260908-elevated.log",
+        "cause": "Escalated Git ownership exception; process-scoped exact safe.directory resolved."
+      },
+      {
+        "log": ".tmp/native-bootstrap/native-refresh-20260908-final-build.log",
+        "cause": "Incorrect CLI flags rejected before build; rerun used required positional arguments."
+      },
+      {
+        "scope": "New Chrome hook fixture initial attempt",
+        "cause": "Sandbox esbuild setup access denied; approved escalation passed four tests."
+      }
+    ]
+  },
+  "limits": [
+    "Android devDebug compilation and binary inspection, not installed-device/emulator runtime, production signing or store readiness.",
+    "The historical iOS simulator compilation remains a separate source projection. No refreshed iOS build or launch is claimed.",
+    "Native bootstrap/publication fences are wired; child and commerce policy integration remains open.",
+    "Image fix covers the 12 selected mapped originals with exact canonical bytes; eight unselected local mapped images and full media/editorial/rights coverage are not accepted.",
+    "S03/S04 and all later stage/global localization/release gates remain open; no production action or human approval is implied."
+  ]
+}

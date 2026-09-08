@@ -1,0 +1,9 @@
+{
+  "pass": true,
+  "startedAt": "2026-09-08T01:44:17.0974191+00:00",
+  "durationSeconds": 34.369158,
+  "task": ":app:assembleDevDebug",
+  "offline": true,
+  "deviceTested": false,
+  "releaseReady": false
+}

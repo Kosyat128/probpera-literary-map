@@ -5,7 +5,7 @@
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
   "headSha": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-06T02:33:31.511Z",
+  "updatedAt": "2026-09-08T01:47:50.961Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -527,7 +527,8 @@
         "docs/mobile/evidence/S03/saved-access-verification.json",
         "docs/mobile/evidence/S03/saved-verification-artifact-regression.json",
         "docs/mobile/evidence/S03/cross-engine-artifact-preservation.json",
-        "docs/mobile/evidence/S04/pwa-preparation/result.json"
+        "docs/mobile/evidence/S04/pwa-preparation/result.json",
+        "docs/mobile/evidence/S03/deletion-processor-current-validation.json"
       ],
       "externalBlockers": []
     },
@@ -809,7 +810,15 @@
           "notes": "Adult navigation prioritizes Planet. Shared feature presentation precedes integrated RU/EN layout, recovery and accessibility validation."
         }
       ],
-      "lastGreenCommands": [],
+      "lastGreenCommands": [
+        "node node_modules/vitest/vitest.mjs run src/host/nativeNavigationTarget.test.ts src/components/bookContextNavigation.test.ts src/utils/atlasUrlState.test.ts --configLoader runner --maxWorkers=1",
+        "node node_modules/vitest/vitest.mjs run src/utils/imageDelivery.test.ts src/utils/imageDeliveryControlled.test.ts src/utils/articleImageDelivery.test.ts --configLoader runner --maxWorkers=2",
+        "node node_modules/@playwright/test/cli.js test --config playwright.native-navigation.config.mjs",
+        "node node_modules/typescript/bin/tsc --noEmit",
+        "node scripts/mobile/platform-boundaries.mjs",
+        "node scripts/mobile/build-native.mjs android dev",
+        "node scripts/mobile/verify-native-artifact.mjs"
+      ],
       "artifacts": [
         "docs/mobile/evidence/S04/parallel-safe-entry.json",
         "docs/mobile/evidence/S04/native-entry-source-review.json",
@@ -820,7 +829,8 @@
         "docs/mobile/evidence/S04/native-brand-resources-preparation.json",
         "docs/mobile/evidence/S04/working-native-implementation.json",
         "docs/mobile/evidence/S04/ios-project-sync-review.json",
-        "docs/mobile/evidence/S04/cloud-ios-working-validation.json"
+        "docs/mobile/evidence/S04/cloud-ios-working-validation.json",
+        "docs/mobile/evidence/S04/navigation-followup-20260908/result.json"
       ],
       "externalBlockers": []
     },
@@ -10531,7 +10541,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Continue S03 first-open and S04: perform bounded PWA OS installation/relaunch where an isolated disposable environment is available; audit current-main image delivery, rebuild fresh separate native/PWA candidates, and observe installed Android/iOS simulator lifecycle. Preserve historical evidence and keep S03/S04 unaccepted until their required evidence passes.",
+    "nextAction": "S03 first-open: build a fresh isolated PWA authority/candidate and run only affected canonical globe/locale/offline cases. Android 46ebba56 dev APK is rebuilt and audited; actual installed Android/iOS simulator and OS PWA lifecycle remain open. Preserve historical artifacts and keep S03/S04 unaccepted.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",

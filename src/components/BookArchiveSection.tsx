@@ -236,6 +236,7 @@ type Props = {
   requestedBook?: BookArchiveEntry | null;
   requestedBookReturnFocus?: HTMLElement | null;
   onRequestedBookHandled?: () => void;
+  registerNativeBack?: (handler: () => boolean) => () => void;
 };
 
 const shelfKeyboardInstructions = {
@@ -553,6 +554,7 @@ export default function BookArchiveSection({
   requestedBook,
   requestedBookReturnFocus,
   onRequestedBookHandled,
+  registerNativeBack,
 }: Props) {
   const { record: recordRecent } = useRecentHistory();
   const [initialNavigationContext] = useState(
@@ -999,6 +1001,12 @@ export default function BookArchiveSection({
     shelfState.phase,
     shelfState.requestId,
   ]);
+  useEffect(() => registerNativeBack?.(() => {
+    if (!selectedBookRef.current && !pendingBookCloseRef.current) return false;
+    // Reuse the actual close transition, shelf restoration, history and focus.
+    closeBookDetail();
+    return true;
+  }), [closeBookDetail, registerNativeBack]);
   useEffect(() => {
     if (viewMode === "shelf") return;
     const pendingClose = pendingBookCloseRef.current;

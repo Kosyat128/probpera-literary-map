@@ -208,3 +208,14 @@
   Never replace the historical public QA authority to compensate for its stopped
   memory-only signer. Later child/offline/entitlement stages remain open without
   creating circular acceptance dependencies for early platform foundations.
+
+- D053: Native navigation effect ownership is per React lifetime. Locale-only
+  navigation retains the canonical selection/scene/history. New entity entries
+  clear only old navigation-owned history markers. Back delegates to canonical
+  book/atlas close behavior and cancels pending input even at root.
+- D054: Controlled bundles use canonical original images already selected by
+  the build; missing optimized variants are not runtime URLs. This does not
+  broaden media rights or claim complete content coverage.
+- D055: Refresh evidence uses changed-surface tests and cached offline Gradle
+  compilation. Android46ebba56 is independently bound to actual APK bytes;
+  no device or release claim follows. Historical artifacts/failures remain.

@@ -1,3 +1,9 @@
+CURRENT 2026-09-08: navigation/image follow-up is validated; fresh Android/dev
+46ebba56 APK and runtime are preserved under .tmp/native-builds/android-dev/46ebba56.
+Read evidence/S04/navigation-followup-20260908/result.json. Next: fresh isolated
+PWA candidate and bounded actual-globe/locale/offline checks; never overwrite
+the historical default QA authority/control files or invent its stopped signer.
+
 USER RESUMED: "Продолжай". The prior pause is lifted.
 Current canonical-main integration checkpoint:72a62b314ecd50ea2c6f128af7134ee4ae3e1944.
 Actual cloud iOS compilation273f400d succeeded; preserve distinct source identities.
@@ -14,7 +20,7 @@ entry. No global requirement passed and releaseReady:false.
 
 Canonical main5d3f6fb is incorporated through three further cherry-picks and
 adaptation72a62b31.969 selected tests/61 files, types/boundaries/typography and39
-local SQL checks passed. No post-main artifact rebuild or full suite is claimed.
+local SQL checks passed. Android46ebba56 is a post-main rebuild; no fresh full suite or iOS rebuild is claimed.
 S03 working0afad090 and saved-verification e2530cc6 are committed.
 Full4479 unit run predates later bounded fixes. Fresh PWA b006c275 passed20
 actual Chrome scenarios and335-file audit with real offline Dostoevsky/work and
@@ -27,7 +33,7 @@ S04 now has a real compiled and independently verified Android dev APK:
 SHA256:3a4cccecf310a7b2eabef22426d96fe78033e89bdca058249383e30d2b17cf20.
 167 executed Gradle tasks; no installed device test. Android bundle fa9dd4a0 is
 preserved in .tmp/native-previous-8e4f8e08-37e6-4965-a2ab-b8c00230a03a.
-Current dist-native is iOS/dev e7921e30 and must not be synced into Android.
+Historical dist-native was iOS/dev e7921e30. Current dist-native is Android/dev46ebba56.
 Its320 files and native project sync passed. This local artifact is distinct
 from the successful cloud binary. ios-project-sync-review corrects the intake: app SPM exact
 8.5.1, not from-range. Original wrong report is retained in evidence/history.

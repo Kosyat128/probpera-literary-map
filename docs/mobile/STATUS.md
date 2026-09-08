@@ -1,5 +1,7 @@
 Resumed on the user's explicit instruction "Продолжай".
-Native working checkpoint: 83a69a8c (canonical deep-link and Android Back wiring).
+Native navigation follow-up 2026-09-08: StrictMode, locale, Back and history
+fixes are validated; fresh Android46ebba56 dev APK built and audited.
+Evidence: evidence/S04/navigation-followup-20260908/result.json.
 The authorized cloud iOS Simulator build succeeded at273f400d; independent binary
 verification passed. Actual simulator launch is the next separate runtime gate.
 
@@ -12,13 +14,14 @@ No global requirement is PASSED. releaseReady:false.
 Canonical main5d3f6fb61e170bcc8fd64062c6283a7c75b5f144 is incorporated by three
 further provenance-preserving cherry-picks and adaptation through72a62b31.
 Its affected regression passed969 selected tests/61 files, types, boundaries,
-typography and39 local SQL checks. Existing binaries predate this integration;
-controlled image coverage and fresh builds remain work. The earlier f406a7de
+typography and39 local SQL checks. The historical binaries predate this integration. Fresh Android46ebba56
+includes it and the controlled-image fix; fresh PWA/iOS/runtime work remains. The earlier f406a7de
 integration and its test identities remain preserved. Accepted
 headSha remains S02:6305df5fe671718c78b38af1ccc2bafbbdd44346. Working checkpoints
 0afad090 and e2530cc6 preserve S03 integration and saved-verification behavior;
 neither accepts S03. Current S04 evidence records working source beyond e2530cc6;
-native URL/Back integration is implemented and awaits fresh artifact/runtime evidence.
+native URL/Back follow-up now has fresh Android artifact evidence; installed
+runtime evidence remains open.
 
 S03 measured results:
 
@@ -54,7 +57,7 @@ S04 implemented and measured:
   verification passed. No installed-device run has been observed.
 - Android fa9dd4a0 and iOS e7921e30 each passed strict native artifact audit.
   Both actual syncs passed. iOS320 declared files match, plus2 empty Cordova
-  compatibility files. Current dist-native is iOS; do not sync it into Android.
+  compatibility files. Those are historical candidates. Current dist-native is Android/dev46ebba56.
 - Canonical brand assets replace stock icons/splashes; resource compilation,
   safe-area geometry and exact hashes passed. Native RU/EN resource strings and
   iOS privacy/project structure are preserved. Text review remains incomplete.
@@ -103,3 +106,15 @@ translation/legal approval or release readiness is fabricated.
 
 No production deploy, Submit, Release, merge, store mutation or production data
 write has been performed. Historical evidence is not silently reclassified.
+
+2026-09-08 focused follow-up: 119 initial navigation tests; 19 final URL/history
+regression tests; 13 image-delivery tests; 4 actual Chrome hook tests passed.
+Counts overlap and are not a fresh full suite. Final types/boundaries passed.
+Android devDebug:167 tasks,22 executed/145 reused;33,744,892-byte APK preserved
+at .tmp/native-builds/android-dev/46ebba56/app-dev-debug.apk. All321 bundled
+files matched; compiled RU/EN, DEX, ZIP, debug signature and alignment passed.
+SHA256:8244b5022bf89373890254204ce06bdf9226a382d33d75f21422802db830d502.
+The historical191 unit tests did not establish StrictMode integration behavior;
+new evidence explicitly corrects those earlier broad claims.
+The interrupted safe-reader deletion checkpoint records130 prior-run tests/5 files;
+no repeat run or broader account-deletion completion is claimed.
