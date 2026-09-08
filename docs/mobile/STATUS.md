@@ -130,3 +130,12 @@ preserved under .tmp/pwa-artifacts/b006c275-before-20260908-a; default authority
 and control files remain unchanged. Current dist-pwa is7c35eb3e; its ephemeral
 signer ended with the test run. Next separate work is authorized cloud iOS
 simulator launch of the existing public payload. S03/S04 remain IN_PROGRESS.
+
+2026-09-08 iOS runtime follow-up: public CI branch advanced nonforce from
+273f400d to9eacf983 after exact2-file comparison. Only existing workflow/helper
+changed; the rest of the authorized74-file historical source projection remains.
+Local helper62 tests,8 shell-block syntax checks and8 bounded selector/PID
+assertions passed. Cloud run34178911693/job101913771012 is IN_PROGRESS.
+It will create separate RU/EN iPhone simulators, check installed bytes, launch,
+observe liveness and capture actual screens. Screenshot visual review remains
+pending; no runtime or current-main iOS success is claimed at this checkpoint.

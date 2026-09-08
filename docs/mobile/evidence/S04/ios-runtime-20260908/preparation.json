@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T02:08:40.986Z",
+  "kind": "s04-authorized-ios-simulator-runtime-working-preparation",
+  "status": "REMOTE_RUN_IN_PROGRESS",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "publication": {
+    "repository": "Kosyat128/probpera-literary-map",
+    "branch": "codex/literary-planet-v12-ios-ci",
+    "publicParent": "273f400d8f07a57269f391dfc13d7e802c9071f2",
+    "files": [
+      {
+        "path": ".github/workflows/mobile-ios-simulator.yml",
+        "bytes": 9531,
+        "sha256": "238a11cc3384b6ac63bff84c138513528b6aa97223833214e6d0468208a2202d",
+        "blobSha": "60052416e1054ce8c36cd8ddb71ec56c8e581e02"
+      },
+      {
+        "path": "scripts/mobile/ios-simulator-build.mjs",
+        "bytes": 23133,
+        "sha256": "b689fdb6a6a24e440b8046bd6d9fa54b7d1ea2ec26e74068abc519b7fd10e5ce",
+        "blobSha": "4103559dd648ee8438ae5e4e7b43d218eb2cb0df"
+      }
+    ],
+    "scope": "Only existing public workflow/helper updated to run isolated simulator smoke on the same authorized historical source payload.",
+    "authorization": "Existing explicit approval to publish prepared source and run test iOS build; no new app/content payload, private history, production action or store submission.",
+    "productionActionsPerformed": false,
+    "internalHistoryIncluded": false,
+    "currentMainCandidate": false,
+    "publicCommit": "9eacf9834b9949453fa8d9457ec19ae93cd2c4c1",
+    "publicTree": "79185156f020edeb6c7be1d9376747a463fc3891",
+    "compareVerified": true,
+    "changedFiles": 2,
+    "onlyOnePublicParent": true,
+    "forceUpdate": false
+  },
+  "run": {
+    "id": 34178911693,
+    "jobId": 101913771012,
+    "url": "https://github.com/Kosyat128/probpera-literary-map/actions/runs/34178911693",
+    "status": "in_progress",
+    "conclusion": null
+  },
+  "validation": {
+    "helperTests": {
+      "command": "node node_modules/vitest/vitest.mjs run scripts/mobile/ios-simulator-build.test.mjs --configLoader runner --maxWorkers=1",
+      "passed": 62,
+      "failed": 0
+    },
+    "nodeSyntax": "PASS",
+    "workflowBashBlocks": {
+      "passed": 8,
+      "failed": 0
+    },
+    "targetAndPidAssertions": {
+      "passed": 8,
+      "failed": 0
+    },
+    "publicBeforeMatchesLocalBaseAfterLfNormalization": true
+  },
+  "scope": "The existing authorized historical 74-file source projection remains unchanged except the already-public workflow/helper. New local navigation/current-main App changes are NOT included in this public delta.",
+  "pending": [
+    "Actual cloud build, simulator boot/install/launch/liveness and screenshot capture results.",
+    "Visual review of exact produced RU/EN screenshots; a PID or nonuniform image alone does not prove rendered/localized UI."
+  ],
+  "limitations": [
+    "Fresh iPhone simulators only, not iPad/physical devices, current-main source, globe state preservation, final accessibility or release acceptance.",
+    "No production signing, store/deploy/Submit/Release/merge or internal archive/history publication."
+  ],
+  "transport": "gh read-only API verified the live ref and exact 2-file compare. Its create-tree attempt returned401 with no authentication; the already connected GitHub app successfully created the reviewed tree/commit and nonforce-updated only the authorized CI branch. No token was requested or exposed."
+}

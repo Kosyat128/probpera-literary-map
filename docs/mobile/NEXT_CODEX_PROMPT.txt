@@ -1,3 +1,9 @@
+ACTIVE CLOUD RUN:34178911693, job101913771012, public commit9eacf983.
+Read evidence/S04/ios-runtime-20260908/preparation.json. Do not duplicate the
+run or republish the current private App tree. Only two existing public CI
+files changed over273f400d. Next retrieve exact evidence and visually inspect
+actual RU/EN screens. Current local native/PWA fixes are a different candidate.
+
 CURRENT PWA 2026-09-08: completed the fresh bounded regression. Read
 evidence/S03/current-pwa-20260908/result.json before any rebuild. Do not repeat
 unchanged green checks. Dist-pwa7c35eb3e and archived46210d8e are distinct

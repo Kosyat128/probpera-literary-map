@@ -111,6 +111,15 @@ jobs:
           # https://github.com/actions/upload-artifact#permission-loss
           tar -czf .tmp/ios-simulator-ci/App-simulator.app.tar.gz -C "$RUNNER_TEMP/ios-derived/Build/Products/Debug-iphonesimulator" App.app
 
+      - name: Boot, install, launch and capture the same app in Russian and English
+        # https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPInternational/TestingYourInternationalApp/TestingYourInternationalApp.html
+        # The helper records installed simctl help before executing its commands.
+        # Only fresh owned simulators are touched; screenshots require visual review.
+        timeout-minutes: 12
+        run: |
+          set -euo pipefail
+          node scripts/mobile/ios-simulator-build.mjs smoke
+
       - name: Preserve diagnostics and checksums, including failed builds
         id: evidence
         if: always()
@@ -156,6 +165,12 @@ jobs:
             .tmp/ios-simulator-ci/App-simulator.app.zip
             .tmp/ios-simulator-ci/App-simulator.app.tar.gz
             .tmp/ios-simulator-ci/ios-build.xcresult.zip
+            .tmp/ios-simulator-ci/simctl-help.txt
+            .tmp/ios-simulator-ci/simulator-runtime.json
+            .tmp/ios-simulator-ci/simulator-ru.log
+            .tmp/ios-simulator-ci/simulator-en.log
+            .tmp/ios-simulator-ci/simulator-ru.png
+            .tmp/ios-simulator-ci/simulator-en.png
             .tmp/ios-simulator-ci/checksums.json
           if-no-files-found: error
           include-hidden-files: true

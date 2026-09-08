@@ -225,3 +225,10 @@
   only the corrected failed scenario is rerun on identical product sources
   with a new temporary authority. Do not reclassify this as a single12 PASS run
   or copy private QA traces/control tokens into release evidence.
+
+- D057: Existing source/test authorization covers the two already-public CI
+  files extended to run disposable RU/EN simulators. Compare exact public
+  parent/tree/files before nonforce branch update. Preserve the remaining
+  historical app payload; never publish internal current-source history.
+  PID/liveness and captured PNGs require independent visual inspection before
+  claiming visible localized UI. No production or stage acceptance follows.
