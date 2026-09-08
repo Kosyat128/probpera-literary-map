@@ -1,0 +1,313 @@
+{
+  "schemaVersion": 1,
+  "stage": "S03",
+  "recordedAt": "2026-09-08T11:23:01.855Z",
+  "runId": "pwa-graphics-quality-20260908-a1",
+  "sourceCommit": "632a60c36ce117e210010da1ab77432280f5fa10",
+  "buildId": "8521b4e54ab24b32c030ed4938c6df9136728752d5a86632cc00b35fdeee427b",
+  "status": "LOCAL_QA_PWA_BUILD_AUDIT_AND_AFFECTED_BROWSER_PASSED",
+  "strictArtifactAuditPassed": true,
+  "statistics": {
+    "startTime": "2026-09-08T11:20:01.260Z",
+    "duration": 48414.887,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "sourceUnchanged": true,
+  "browserTestsRun": true,
+  "browserExecutions": 1,
+  "browserProof": [
+    {
+      "title": "expanded portrait base installs and verifies real offline bytes with saved graphics and bilingual scene",
+      "project": "pwa-desktop",
+      "status": "passed",
+      "durationMs": 46127,
+      "errors": []
+    }
+  ],
+  "artifact": {
+    "path": ".tmp/pwa-artifacts/8521b4e5-graphics-quality-20260908-a1",
+    "files": 1367,
+    "bytes": 70142310,
+    "artifactSha256": "25de7d6454d276239dbb683b282ccefffe08b0f551963c5b9050085dc8b6bdaf",
+    "exactCopiesVerified": true
+  },
+  "preservedFiles": [
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-graphics-quality-20260908-a1/session.json",
+      "path": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/session.json",
+      "bytes": 1047,
+      "sha256": "c3fae559a97eb9099c2d51100ae5d1af2261d3f08ebafc3e008d9ab3819fb4fb"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-graphics-quality-20260908-a1/source-before.json",
+      "path": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/source-before.json",
+      "bytes": 137710,
+      "sha256": "9249e6fc774dba10a213398c33b741b8f2f923041c7ac655597dd4852f01c2e6"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-graphics-quality-20260908-a1/source-after.json",
+      "path": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/source-after.json",
+      "bytes": 137710,
+      "sha256": "9249e6fc774dba10a213398c33b741b8f2f923041c7ac655597dd4852f01c2e6"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-graphics-quality-20260908-a1/source-comparison.json",
+      "path": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/source-comparison.json",
+      "bytes": 205,
+      "sha256": "b091f548b84d75ccf10ea628b7ecce8a5456a941db68edbb50b5645e3995ed73"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-graphics-quality-20260908-a1/support-before.json",
+      "path": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/support-before.json",
+      "bytes": 916,
+      "sha256": "27d6d93007cf23acbb777691e79ca771ea00e42b27d502c872ba94972aa6746d"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-graphics-quality-20260908-a1/support-after.json",
+      "path": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/support-after.json",
+      "bytes": 916,
+      "sha256": "27d6d93007cf23acbb777691e79ca771ea00e42b27d502c872ba94972aa6746d"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-graphics-quality-20260908-a1/strict-artifact-audit.json",
+      "path": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/strict-artifact-audit.json",
+      "bytes": 795,
+      "sha256": "dfcd558ba84096a786f6e9941a88c6618713639433d93b994a362072f13d7770"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-graphics-quality-20260908-a1/strict-artifact-audit-execution.json",
+      "path": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/strict-artifact-audit-execution.json",
+      "bytes": 168,
+      "sha256": "7f18a367266f001879fdbd1cfea4a585940085bceda5cd056e69f07da855cd07"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-graphics-quality-20260908-a1/server-closed.json",
+      "path": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/server-closed.json",
+      "bytes": 93,
+      "sha256": "6bf1b879ad2ef2f40a6c826071af15998cd908b59309fecd799a9ecbffb8974a"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-graphics-quality-20260908-a1/run-result.json",
+      "path": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/run-result.json",
+      "bytes": 686,
+      "sha256": "540737cec1a4867224886a307bd9f72ac3e8fb01d91d361b2714b80cd880c5dd"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-graphics-quality-20260908-a1/discovery.json",
+      "path": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/discovery.json",
+      "bytes": 269,
+      "sha256": "3a6a4bed659766c7a41471d1adf03fe2b08e3bb63bee18b2f2b3e753c2731b22"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-graphics-quality-20260908-a1/discovery-execution.json",
+      "path": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/discovery-execution.json",
+      "bytes": 312,
+      "sha256": "8762eb4f00b23de47189e01ee5878e2ce56de41aa4df56e2435c587a1c6bf4b6"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-graphics-quality-20260908-a1/browser-run-execution.json",
+      "path": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/browser-run-execution.json",
+      "bytes": 276,
+      "sha256": "2b44a2831592044c34ac6f456c34243fb9dff4232f3275bda8a933ae93283d21"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-graphics-quality-20260908-a1/results.json",
+      "path": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/results.json",
+      "bytes": 5688,
+      "sha256": "3be04ae91348c56d773aefe46321db85d1bb4e1bc7efb4c7def4df47e3b3737b"
+    },
+    {
+      "source": "dist-pwa/artifact.json",
+      "path": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/artifact.json",
+      "bytes": 387437,
+      "sha256": "25de7d6454d276239dbb683b282ccefffe08b0f551963c5b9050085dc8b6bdaf"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-pwa-20260908/prior-8609-before-graphics-quality.json",
+      "path": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/prior-8609-before-graphics-quality.json",
+      "bytes": 61331,
+      "sha256": "3e8d28fb44f412a1a4b3e146dc15076985354a2f53e102a09a80cc6a917b5f3e"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-pwa-20260908/outer-shell-encoding-infrastructure.json",
+      "path": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/outer-shell-encoding-infrastructure.json",
+      "bytes": 1061,
+      "sha256": "182139e8660e327ea55cc641901f78eab73d18b4f7362b307de94d8f6f6f0701"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-pwa-20260908/preservation-parent-infrastructure.json",
+      "path": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/preservation-parent-infrastructure.json",
+      "bytes": 512,
+      "sha256": "3d4def858a3f1b21a9fbbca265478c9f2f1e0d60580b5601a85358b6f7b7cbdd"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-pwa-20260908/pipeline-a1-execution.json",
+      "path": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/pipeline-a1-execution.json",
+      "bytes": 275,
+      "sha256": "f1e1ef02773e0c5a467d4f342a002f0637f2f6c043f3b8cecf5494ceae18ae0b"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-pwa-20260908/expanded-portrait-browser-preparation.json",
+      "path": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/expanded-portrait-browser-preparation.json",
+      "bytes": 1407,
+      "sha256": "b145da85c413ea0aa76bc6e871e62d74c4331bf29ec4902d628c8aa21453b878"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-pwa-20260908/renderer-settling-preparation.json",
+      "path": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/renderer-settling-preparation.json",
+      "bytes": 421,
+      "sha256": "a440711f26f0af647794727800abd5a7a841290d97b982150f54c54689f20e79"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-pwa-20260908/run-pwa-graphics-quality.mjs",
+      "path": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/helpers/run-pwa-graphics-quality.mjs",
+      "bytes": 10615,
+      "sha256": "263659759795791b9484e6593a67a4bb42fc9e87e371cd8d9972ddc007ea9cb6"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-pwa-20260908/run-pwa-graphics-quality.ps1",
+      "path": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/helpers/run-pwa-graphics-quality.ps1",
+      "bytes": 1134,
+      "sha256": "5fd726549e7125f773d8af9630bceed17e59ebc88394bd3ea174fee851e4ad2f"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-pwa-20260908/preserve-pwa-graphics-quality.mjs",
+      "path": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/helpers/preserve-pwa-graphics-quality.mjs",
+      "bytes": 10269,
+      "sha256": "636a6f67315980eecec1be45f066a87072e43bfe24ec57b2312ee212339cb39d"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-pwa-20260908/park-8609-before-graphics-quality.mjs",
+      "path": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/helpers/park-8609-before-graphics-quality.mjs",
+      "bytes": 4578,
+      "sha256": "b80b4cd474c3876460db959ccf59ef0409804cea8239efd27463dc28d438f0a4"
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-pwa-20260908/playwright.graphics.config.mjs",
+      "path": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/helpers/playwright.graphics.config.mjs",
+      "bytes": 542,
+      "sha256": "789ff8f12912679dd30e625dda38749ba83db04d4e6a7424fc312bb6f167557d"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-graphics-quality-20260908-a1/strict-artifact-audit.log",
+      "path": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/strict-artifact-audit-log.json",
+      "bytes": 1199,
+      "sha256": "81db779ae4e0317b64106a40c5a39bb48a03fe2bc8b31c78942cd08190780d5d",
+      "rawBytes": 795,
+      "rawSha256": "dfcd558ba84096a786f6e9941a88c6618713639433d93b994a362072f13d7770",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-graphics-quality-20260908-a1/strict-artifact-audit.stdout.log",
+      "path": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/strict-artifact-audit.stdout-log.json",
+      "bytes": 1206,
+      "sha256": "6be87bb7b36a123667eadfbee3b569d878efe7b99097c8933207486b2c24a0c4",
+      "rawBytes": 795,
+      "rawSha256": "dfcd558ba84096a786f6e9941a88c6618713639433d93b994a362072f13d7770",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-graphics-quality-20260908-a1/strict-artifact-audit.stderr.log",
+      "path": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/strict-artifact-audit.stderr-log.json",
+      "bytes": 346,
+      "sha256": "c9495452694f2cdd4394609f0dda8f1923e94cc440776bc5f08014de67d84b3c",
+      "rawBytes": 0,
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-graphics-quality-20260908-a1/discovery.log",
+      "path": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/discovery-log.json",
+      "bytes": 3577,
+      "sha256": "cd25cf2359ab9ba06ce4e1bc46a0fb2950f2ec1652b88e2ed1caf3dad589fa73",
+      "rawBytes": 2913,
+      "rawSha256": "af5af80743cab417e2aa5facd2b7994b7326351c1bd82b516d9963dcd5748502",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-graphics-quality-20260908-a1/discovery.stdout.log",
+      "path": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/discovery.stdout-log.json",
+      "bytes": 3584,
+      "sha256": "d7eb555d4d0bc469b9ecf22ed0089b8807f19267698557f2c92a2187dfa82b7c",
+      "rawBytes": 2913,
+      "rawSha256": "af5af80743cab417e2aa5facd2b7994b7326351c1bd82b516d9963dcd5748502",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-graphics-quality-20260908-a1/discovery.stderr.log",
+      "path": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/discovery.stderr-log.json",
+      "bytes": 334,
+      "sha256": "066cb1c4768642263487fe2e7dd6f7c4c3efe6aeb51e1073d5a5ea28191a7274",
+      "rawBytes": 0,
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-graphics-quality-20260908-a1/browser-run.log",
+      "path": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/browser-run-log.json",
+      "bytes": 738,
+      "sha256": "ea346feb2b4fec60cabaa3f6609481a199cb95547bd246d85cc8dadcbc49db7f",
+      "rawBytes": 397,
+      "rawSha256": "29c93dbb4d5e62d65f4dfa2d1d31774f4bbdd3df71b295b02b6b981c5aad02f5",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-graphics-quality-20260908-a1/browser-run.stdout.log",
+      "path": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/browser-run.stdout-log.json",
+      "bytes": 579,
+      "sha256": "e175ecd00fc83d5a90f3286f14ca99a19ac555070c778eaf1460512ff1f5f67a",
+      "rawBytes": 233,
+      "rawSha256": "86dd690a24ce079d84ad41edf950ad0f19230699984d10ffac7466324a095714",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-graphics-quality-20260908-a1/browser-run.stderr.log",
+      "path": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/browser-run.stderr-log.json",
+      "bytes": 504,
+      "sha256": "085f1f3cfe1942e9f2085aba7ba9118e8cf7b946675530e22e7ff02aa48baf62",
+      "rawBytes": 164,
+      "rawSha256": "c543ce47df854bd82411d95c5a52897c463f38df7148b6ac0243c550f584b3df",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/s03-graphics-quality-pwa-20260908/pipeline-a1.log",
+      "path": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/pipeline-a1-log.json",
+      "bytes": 14003,
+      "sha256": "d87191799fddacf6c5a6cb233ad0d53877cd9e6e8ded3e8c86e10660437c9ae1",
+      "rawBytes": 13384,
+      "rawSha256": "c06649bc174263b77a40a1f83b5a7d250a70ffcdd3c66d26a0dd5e27a71be82e",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-graphics-quality-20260908-a1/results.json#expanded-portrait-offline-evidence",
+      "path": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/expanded-portrait-offline-evidence.json",
+      "bytes": 1358,
+      "sha256": "a689cd41e287c1b423c65647a29db43bb3aebb00a92eab644cae4d2f52fcd927"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-graphics-quality-20260908-a1/artifacts/controlled-pwa-expanded-po-1aabd-raphics-and-bilingual-scene-pwa-desktop/expanded-offline-english-writer.png",
+      "path": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/expanded-offline-english-writer.png",
+      "bytes": 2362243,
+      "sha256": "bfe1a765647a4b9405b7e2cb2cc872bda0ecdd9303cfce72e35fd13fd2ad314a"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-graphics-quality-20260908-a1/artifacts/controlled-pwa-expanded-po-1aabd-raphics-and-bilingual-scene-pwa-desktop/expanded-offline-russian-writer-list.png",
+      "path": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/expanded-offline-russian-writer-list.png",
+      "bytes": 2368480,
+      "sha256": "27c304c54a6a0db36ab7a44de9711f6e65d6e0122b72fdb0f9f0dedb8b7961ca"
+    }
+  ],
+  "stageAccepted": false,
+  "releaseReady": false,
+  "copyReviewStatus": "draft",
+  "actualOsInstallation": false,
+  "realPaymentProviderConfigured": false,
+  "limits": [
+    "Fresh local QA Vite/worker build, strict audit, byte-exact archive and one affected desktop expanded-portrait offline case. No old appearance, repair, recovery or full browser suite rerun.",
+    "The separate native-source graphics profile/browser proof is not a production artifact, physical GPU or APK claim.",
+    "Local ephemeral QA authority does not establish a real merchant/payment, legal/editorial approval, owner acceptance or release readiness."
+  ]
+}

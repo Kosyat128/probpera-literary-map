@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T11:25:09.697Z",
+  "sourceCommit": "632a60c36ce117e210010da1ab77432280f5fa10",
+  "sourceInputsCurrent": true,
+  "sourceInputCounts": {
+    "android": 977,
+    "pwa": 978,
+    "uniqueVerifiedIncludingFocusedTests": 993
+  },
+  "android": {
+    "evidence": "docs/mobile/evidence/S04/graphics-profiles-android-20260908/result.json",
+    "sha256": "5198961c3bccc87ac00782c12df2ca96ceac9dddd8f00109906b17ea19dbb7f2",
+    "buildId": "9af7764d0134f9799d1ad857b756fe984f469571e6ef7b5bcf528f9e6913d575",
+    "sourceInputsSha256": "7f26a8caba4f8e20cd1d951da652c0b8a4c35a0cb4956c1a3b6db7fec49a05e3",
+    "runtime": ".tmp/native-builds/android-dev/graphics-profiles-9af7764d/runtime",
+    "apk": {
+      "path": ".tmp/native-builds/android-dev/graphics-profiles-9af7764d/app-dev-debug.apk",
+      "bytes": 63271572,
+      "sha256": "589fde44edb91c562c45ac2aa06a84546e488542172ae604fe73d654b87e31c0"
+    },
+    "strictAudit": true,
+    "binaryAudit": true,
+    "copiesVerified": true,
+    "installedRuntimeTested": false
+  },
+  "pwa": {
+    "evidence": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/result.json",
+    "sha256": "bf715264906553872b6e91fc53fa734732408a840e41c8207685ec3f0065e596",
+    "buildId": "8521b4e54ab24b32c030ed4938c6df9136728752d5a86632cc00b35fdeee427b",
+    "sourceInputsSha256": "9249e6fc774dba10a213398c33b741b8f2f923041c7ac655597dd4852f01c2e6",
+    "runtime": ".tmp/pwa-artifacts/8521b4e5-graphics-quality-20260908-a1",
+    "artifactSha256": "25de7d6454d276239dbb683b282ccefffe08b0f551963c5b9050085dc8b6bdaf",
+    "files": 1367,
+    "bytes": 70142310,
+    "strictAudit": true,
+    "copiesVerified": true,
+    "localQaAuthority": true,
+    "browserExecutions": 1,
+    "browserPassed": true,
+    "physicalDeviceTested": false
+  },
+  "sourceBrowser": {
+    "evidence": "docs/mobile/evidence/S06/graphics-quality-20260908/browser/result.json",
+    "passed": 1,
+    "sameNativeSourceInputs": true,
+    "nativePluginsSimulated": true
+  },
+  "portraitParity": {
+    "filesPerArtifact": 1011,
+    "exactSameBytes": true,
+    "newArtOrRightsApprovals": 0
+  },
+  "acceptanceStateUnchanged": true,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false
+}

@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "recordedAt": "2026-09-08T11:25:09.697Z",
+  "recordedAt": "2026-09-08T11:15:54.322Z",
   "stage": "S06",
-  "status": "SOURCE_AND_LOCAL_ARTIFACT_VALIDATION_PASSED",
+  "status": "FOCUSED_SOURCE_VALIDATION_PASSED",
   "sourceCheckpointBeforeChanges": "c942a43a1f199b83c62bb943e29365f3be59e3e4",
   "sourceFiles": [
     {
@@ -186,8 +186,8 @@
     "Browser a2 failed on missing canonical Russian list portraits. The full current portrait closure was packaged; a3 passed without suppressing console/network errors.",
     "The selector received a final uppercase-path refusal fix; only its six tests were repeated."
   ],
-  "newNativeArtifactProduced": true,
-  "newPwaArtifactProduced": true,
+  "newNativeArtifactProduced": false,
+  "newPwaArtifactProduced": false,
   "copies": [
     {
       "source": ".tmp/s06-graphics-quality-20260908/unit-a1/result.json",
@@ -828,15 +828,5 @@
   ],
   "stageAccepted": false,
   "releaseReady": false,
-  "productionActionsPerformed": false,
-  "sourceCommit": "632a60c36ce117e210010da1ab77432280f5fa10",
-  "sourceCheckpointEvidence": "source-result.json",
-  "sourceCheckpointSha256": "1e6e02dca52362ba358725e116eadd600ed47e2447a8342d619170d18378a76e",
-  "artifactCheckpointEvidence": "artifact-checkpoint.json",
-  "artifactCheckpointSha256": "ec92fa5e0163437fc498bc77f5c0fb5759ec7a82ce2c90767b1d7d6a914c2a3c",
-  "nativeArtifactEvidence": "docs/mobile/evidence/S04/graphics-profiles-android-20260908/result.json",
-  "pwaArtifactEvidence": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/result.json",
-  "nativeBuildId": "9af7764d0134f9799d1ad857b756fe984f469571e6ef7b5bcf528f9e6913d575",
-  "pwaBuildId": "8521b4e54ab24b32c030ed4938c6df9136728752d5a86632cc00b35fdeee427b",
-  "artifactRuntimeLimit": "Actual built PWA desktop offline case plus audited Android/dev APK and source-browser behavior; no installed Android/iOS or exact release candidate."
+  "productionActionsPerformed": false
 }

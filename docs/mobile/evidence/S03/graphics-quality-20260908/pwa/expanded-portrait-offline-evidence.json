@@ -1,0 +1,53 @@
+{
+  "localQaOnly": true,
+  "buildId": "8521b4e54ab24b32c030ed4938c6df9136728752d5a86632cc00b35fdeee427b",
+  "manifestFiles": 1339,
+  "manifestBytes": 66430484,
+  "manifestPortraits": 1011,
+  "checks": [
+    {
+      "status": "complete",
+      "engineBuildId": "8521b4e54ab24b32c030ed4938c6df9136728752d5a86632cc00b35fdeee427b",
+      "activeBuildId": "8521b4e54ab24b32c030ed4938c6df9136728752d5a86632cc00b35fdeee427b",
+      "fileCount": 1339,
+      "bytes": 66430484,
+      "durationMs": 1985,
+      "networkAttempts": 0
+    }
+  ],
+  "portraits": [
+    {
+      "locale": "ru",
+      "src": "http://127.0.0.1:4296/planet/assets/writer-portraits/q45087.webp",
+      "width": 384,
+      "height": 480
+    },
+    {
+      "locale": "en",
+      "src": "http://127.0.0.1:4296/planet/assets/writer-portraits/q991.webp",
+      "width": 384,
+      "height": 480
+    }
+  ],
+  "coldLaunches": [
+    {
+      "locale": "ru",
+      "followedBy": "en",
+      "sameCanvasRendererCameraScene": true,
+      "selectedWriter": "dostoevsky",
+      "savedQuality": "balanced"
+    },
+    {
+      "locale": "en",
+      "selectedWriter": "dostoevsky",
+      "savedQuality": "balanced",
+      "newDocument": true
+    }
+  ],
+  "errors": [],
+  "assetFailures": [],
+  "actualServiceWorker": true,
+  "cacheMutationByTest": false,
+  "actualOsInstallation": false,
+  "releaseReady": false
+}

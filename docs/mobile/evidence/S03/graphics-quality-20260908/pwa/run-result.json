@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "runId": "pwa-graphics-quality-20260908-a1",
+  "sourceCommit": "632a60c36ce117e210010da1ab77432280f5fa10",
+  "buildId": "8521b4e54ab24b32c030ed4938c6df9136728752d5a86632cc00b35fdeee427b",
+  "strictArtifactAuditPassed": true,
+  "browserTestsRun": true,
+  "browserExecutions": 1,
+  "statistics": {
+    "startTime": "2026-09-08T11:20:01.260Z",
+    "duration": 48414.887,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "browserExitCode": 0,
+  "failure": null,
+  "sourceUnchanged": true,
+  "pass": true,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "installedRuntimeVerified": false,
+  "productionActionsPerformed": false
+}

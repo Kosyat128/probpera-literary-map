@@ -5,7 +5,7 @@
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
   "headSha": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-08T11:15:54.322Z",
+  "updatedAt": "2026-09-08T11:25:09.697Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -538,7 +538,8 @@
         "docs/mobile/evidence/S03/offline-repair-20260908/a5/result.json",
         "docs/mobile/evidence/S03/biography-review-20260908/result.json",
         "docs/mobile/evidence/S03/biography-review-20260908/pwa/result.json",
-        "docs/mobile/evidence/S03/canonical-portraits-20260908/result.json"
+        "docs/mobile/evidence/S03/canonical-portraits-20260908/result.json",
+        "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/result.json"
       ],
       "externalBlockers": []
     },
@@ -848,7 +849,8 @@
         "docs/mobile/evidence/S04/ios-globe-projection-20260908/result.json",
         "docs/mobile/evidence/S04/country-sheet-android-20260908/result.json",
         "docs/mobile/evidence/S04/appearance-quality-android-20260908/result.json",
-        "docs/mobile/evidence/S04/biography-review-android-20260908/result.json"
+        "docs/mobile/evidence/S04/biography-review-android-20260908/result.json",
+        "docs/mobile/evidence/S04/graphics-profiles-android-20260908/result.json"
       ],
       "externalBlockers": []
     },
@@ -1066,7 +1068,8 @@
       "lastGreenCommands": [],
       "artifacts": [
         "docs/mobile/evidence/S06/graphics-quality-20260908/entry.json",
-        "docs/mobile/evidence/S06/graphics-quality-20260908/result.json"
+        "docs/mobile/evidence/S06/graphics-quality-20260908/result.json",
+        "docs/mobile/evidence/S06/graphics-quality-20260908/artifact-checkpoint.json"
       ],
       "externalBlockers": []
     },
@@ -10570,7 +10573,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Build fresh Android/dev and controlled PWA from the committed S06 graphics/current canonical portrait source, then run exactly one built-PWA offline/quality/RUEN case. Preserve prior6611/8609 and frozen iOS83. 122 unique focused tests, final static and one source-browser case passed; do not replay unchanged suites. First-open remains S03. Full English content, nearly10k capacity, edition covers, Planetka, physical-device and release gates remain open.",
+    "nextAction": "Continue routed open stages from source632a60c3. Saved High/Balanced/Economy has122 focused tests, final static, native source-browser1PASS and actual built-PWA expanded portrait/offline/quality/RUEN1PASS. Android9af7764d/PWA8521b4e5 include identical1011 existing portraits. Do not replay green suites. S03 remains first-open; English coverage, nearly10k catalog, EN edition covers/owner workflow, Planetka/full3D tiers, physical devices and release gates remain open. Frozen iOS83 unchanged/pending.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -10787,38 +10790,40 @@
       "evidence": "docs/mobile/evidence/S04/globe-entry-20260908/result.json",
       "coreBrowserCases": 3,
       "nativeArtifactRefreshed": true,
-      "nativeArtifactEvidence": "docs/mobile/evidence/S04/biography-review-android-20260908/result.json",
+      "nativeArtifactEvidence": "docs/mobile/evidence/S04/graphics-profiles-android-20260908/result.json",
       "nativeArtifact": {
         "platform": "android",
         "channel": "dev",
-        "sourceCommit": "308d8366c24f8b9f47ada304b43856c327890d43",
-        "buildId": "6611b76bcd73daf6c39017f7ca1067d8fb52c8927b1fbd21055efc8e27117a50",
-        "sourceInputsSha256": "dea3876d9feb40027815206f14073c8af87ee3b13cacf2bd9b7a80ba0a624196",
-        "runtime": ".tmp/native-builds/android-dev/biography-review-6611b76b/runtime",
+        "sourceCommit": "632a60c36ce117e210010da1ab77432280f5fa10",
+        "buildId": "9af7764d0134f9799d1ad857b756fe984f469571e6ef7b5bcf528f9e6913d575",
+        "sourceInputsSha256": "7f26a8caba4f8e20cd1d951da652c0b8a4c35a0cb4956c1a3b6db7fec49a05e3",
+        "runtime": ".tmp/native-builds/android-dev/graphics-profiles-9af7764d/runtime",
         "apk": {
-          "path": ".tmp/native-builds/android-dev/biography-review-6611b76b/app-dev-debug.apk",
-          "bytes": 35535481,
-          "sha256": "d1d62d3b1eb61f915f16ac5f5057e1b66bcac00526d16a856d3513840f41688d"
+          "path": ".tmp/native-builds/android-dev/graphics-profiles-9af7764d/app-dev-debug.apk",
+          "bytes": 63271572,
+          "sha256": "589fde44edb91c562c45ac2aa06a84546e488542172ae604fe73d654b87e31c0"
         },
         "nativeStrictAudit": true,
         "offlineGradleBuild": true,
         "apkBinaryAudit": true,
         "preservationCopiesVerified": true,
-        "currentSource": false,
-        "runtimeEquivalentToCurrentSource": false,
-        "validatedAgainstSourceCommit": "308d8366c24f8b9f47ada304b43856c327890d43",
+        "currentSource": true,
+        "runtimeEquivalentToCurrentSource": true,
+        "validatedAgainstSourceCommit": "632a60c36ce117e210010da1ab77432280f5fa10",
         "buildCommitEqualsValidatedSourceCommit": true,
         "includesS05FirstJourney": true,
         "includesNativeActivity": true,
         "includesCountrySheetGestures": true,
         "includesRichDefaultAndEditionAppearance": true,
         "includesBiographyReviewAndStaleGate": true,
+        "includesSavedGraphicsProfiles": true,
+        "canonicalPortraitFiles": 1011,
         "installedRuntimeTested": false,
         "exactReleaseCandidate": false,
         "stageAccepted": false,
         "releaseReady": false
       },
-      "nativeArtifactCurrentSource": false,
+      "nativeArtifactCurrentSource": true,
       "nativeArtifactHistory": [
         {
           "evidence": "docs/mobile/evidence/S04/android-globe-panels-20260908/result.json",
@@ -10959,6 +10964,39 @@
             "includesNativeActivity": true,
             "includesCountrySheetGestures": true,
             "includesRichDefaultAndEditionAppearance": true,
+            "installedRuntimeTested": false,
+            "exactReleaseCandidate": false,
+            "stageAccepted": false,
+            "releaseReady": false
+          }
+        },
+        {
+          "evidence": "docs/mobile/evidence/S04/biography-review-android-20260908/result.json",
+          "artifact": {
+            "platform": "android",
+            "channel": "dev",
+            "sourceCommit": "308d8366c24f8b9f47ada304b43856c327890d43",
+            "buildId": "6611b76bcd73daf6c39017f7ca1067d8fb52c8927b1fbd21055efc8e27117a50",
+            "sourceInputsSha256": "dea3876d9feb40027815206f14073c8af87ee3b13cacf2bd9b7a80ba0a624196",
+            "runtime": ".tmp/native-builds/android-dev/biography-review-6611b76b/runtime",
+            "apk": {
+              "path": ".tmp/native-builds/android-dev/biography-review-6611b76b/app-dev-debug.apk",
+              "bytes": 35535481,
+              "sha256": "d1d62d3b1eb61f915f16ac5f5057e1b66bcac00526d16a856d3513840f41688d"
+            },
+            "nativeStrictAudit": true,
+            "offlineGradleBuild": true,
+            "apkBinaryAudit": true,
+            "preservationCopiesVerified": true,
+            "currentSource": false,
+            "runtimeEquivalentToCurrentSource": false,
+            "validatedAgainstSourceCommit": "308d8366c24f8b9f47ada304b43856c327890d43",
+            "buildCommitEqualsValidatedSourceCommit": true,
+            "includesS05FirstJourney": true,
+            "includesNativeActivity": true,
+            "includesCountrySheetGestures": true,
+            "includesRichDefaultAndEditionAppearance": true,
+            "includesBiographyReviewAndStaleGate": true,
             "installedRuntimeTested": false,
             "exactReleaseCandidate": false,
             "stageAccepted": false,
@@ -11530,13 +11568,49 @@
       }
     },
     "s06GraphicsQuality": {
-      "status": "FOCUSED_SOURCE_VALIDATION_PASSED",
+      "status": "SOURCE_AND_LOCAL_ARTIFACT_VALIDATION_PASSED",
       "evidence": "docs/mobile/evidence/S06/graphics-quality-20260908/result.json",
-      "sha256": "1e6e02dca52362ba358725e116eadd600ed47e2447a8342d619170d18378a76e",
+      "sha256": "034a295633d8045be5a4cb83d87cf2b3973bd9faa8c550db22aebba155717e92",
       "uniqueUnitPasses": 122,
       "sourceBrowserPasses": 1,
       "stageAccepted": false,
-      "releaseReady": false
+      "releaseReady": false,
+      "sourceCommit": "632a60c36ce117e210010da1ab77432280f5fa10",
+      "sourceInputsCurrent": true,
+      "nativeArtifact": {
+        "evidence": "docs/mobile/evidence/S04/graphics-profiles-android-20260908/result.json",
+        "sha256": "5198961c3bccc87ac00782c12df2ca96ceac9dddd8f00109906b17ea19dbb7f2",
+        "buildId": "9af7764d0134f9799d1ad857b756fe984f469571e6ef7b5bcf528f9e6913d575",
+        "sourceInputsSha256": "7f26a8caba4f8e20cd1d951da652c0b8a4c35a0cb4956c1a3b6db7fec49a05e3",
+        "runtime": ".tmp/native-builds/android-dev/graphics-profiles-9af7764d/runtime",
+        "apk": {
+          "path": ".tmp/native-builds/android-dev/graphics-profiles-9af7764d/app-dev-debug.apk",
+          "bytes": 63271572,
+          "sha256": "589fde44edb91c562c45ac2aa06a84546e488542172ae604fe73d654b87e31c0"
+        },
+        "strictAudit": true,
+        "binaryAudit": true,
+        "copiesVerified": true,
+        "installedRuntimeTested": false
+      },
+      "pwaArtifact": {
+        "evidence": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/result.json",
+        "sha256": "bf715264906553872b6e91fc53fa734732408a840e41c8207685ec3f0065e596",
+        "buildId": "8521b4e54ab24b32c030ed4938c6df9136728752d5a86632cc00b35fdeee427b",
+        "sourceInputsSha256": "9249e6fc774dba10a213398c33b741b8f2f923041c7ac655597dd4852f01c2e6",
+        "runtime": ".tmp/pwa-artifacts/8521b4e5-graphics-quality-20260908-a1",
+        "artifactSha256": "25de7d6454d276239dbb683b282ccefffe08b0f551963c5b9050085dc8b6bdaf",
+        "files": 1367,
+        "bytes": 70142310,
+        "strictAudit": true,
+        "copiesVerified": true,
+        "localQaAuthority": true,
+        "browserExecutions": 1,
+        "browserPassed": true,
+        "physicalDeviceTested": false
+      },
+      "newNativeArtifactProduced": true,
+      "newPwaArtifactProduced": true
     },
     "s03CanonicalPortraits": {
       "evidence": "docs/mobile/evidence/S03/canonical-portraits-20260908/result.json",
@@ -11545,10 +11619,49 @@
       "addedFiles": 1003,
       "addedBytes": 27831946,
       "sourceInputsCurrent": true,
-      "nativeBuildPending": true,
-      "pwaBuildPending": true,
+      "nativeBuildPending": false,
+      "pwaBuildPending": false,
       "stageAccepted": false,
-      "releaseReady": false
+      "releaseReady": false,
+      "sourceCommit": "632a60c36ce117e210010da1ab77432280f5fa10",
+      "nativeArtifact": {
+        "evidence": "docs/mobile/evidence/S04/graphics-profiles-android-20260908/result.json",
+        "sha256": "5198961c3bccc87ac00782c12df2ca96ceac9dddd8f00109906b17ea19dbb7f2",
+        "buildId": "9af7764d0134f9799d1ad857b756fe984f469571e6ef7b5bcf528f9e6913d575",
+        "sourceInputsSha256": "7f26a8caba4f8e20cd1d951da652c0b8a4c35a0cb4956c1a3b6db7fec49a05e3",
+        "runtime": ".tmp/native-builds/android-dev/graphics-profiles-9af7764d/runtime",
+        "apk": {
+          "path": ".tmp/native-builds/android-dev/graphics-profiles-9af7764d/app-dev-debug.apk",
+          "bytes": 63271572,
+          "sha256": "589fde44edb91c562c45ac2aa06a84546e488542172ae604fe73d654b87e31c0"
+        },
+        "strictAudit": true,
+        "binaryAudit": true,
+        "copiesVerified": true,
+        "installedRuntimeTested": false
+      },
+      "pwaArtifact": {
+        "evidence": "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/result.json",
+        "sha256": "bf715264906553872b6e91fc53fa734732408a840e41c8207685ec3f0065e596",
+        "buildId": "8521b4e54ab24b32c030ed4938c6df9136728752d5a86632cc00b35fdeee427b",
+        "sourceInputsSha256": "9249e6fc774dba10a213398c33b741b8f2f923041c7ac655597dd4852f01c2e6",
+        "runtime": ".tmp/pwa-artifacts/8521b4e5-graphics-quality-20260908-a1",
+        "artifactSha256": "25de7d6454d276239dbb683b282ccefffe08b0f551963c5b9050085dc8b6bdaf",
+        "files": 1367,
+        "bytes": 70142310,
+        "strictAudit": true,
+        "copiesVerified": true,
+        "localQaAuthority": true,
+        "browserExecutions": 1,
+        "browserPassed": true,
+        "physicalDeviceTested": false
+      },
+      "portraitParity": {
+        "filesPerArtifact": 1011,
+        "exactSameBytes": true,
+        "newArtOrRightsApprovals": 0
+      },
+      "actualPwaOfflineBrowserPassed": true
     }
   },
   "externalOwnerInputsStatus": {

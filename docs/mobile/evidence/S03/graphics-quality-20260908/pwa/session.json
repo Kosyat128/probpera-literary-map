@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "runId": "pwa-graphics-quality-20260908-a1",
+  "localQaOnly": true,
+  "origin": "http://127.0.0.1:4296",
+  "artifact": {
+    "buildId": "8521b4e54ab24b32c030ed4938c6df9136728752d5a86632cc00b35fdeee427b",
+    "sourceCommit": "632a60c36ce117e210010da1ab77432280f5fa10",
+    "sourceInputsSha256": "9249e6fc774dba10a213398c33b741b8f2f923041c7ac655597dd4852f01c2e6",
+    "authoritySha256": "9c14df1b3240419936e0d40a3ec23ea7e856924f4b11f4e694210703d7cbe3d4",
+    "localQaAuthority": true,
+    "releaseReady": false
+  },
+  "planned": {
+    "sourceBuilds": 1,
+    "strictArtifactAudits": 1,
+    "browserExecutions": 1
+  },
+  "limits": [
+    "Ephemeral signer exists only in this local process. No provider/payment or installed OS evidence.",
+    "One new Vite/worker build for explicit persisted High/Balanced/Economy application graphics settings. Previous8609 and all historical evidence remain archived. Only one expanded-portrait install/readiness/offline case runs; no previous full appearance/repair suite is rerun."
+  ]
+}

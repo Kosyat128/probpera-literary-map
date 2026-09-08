@@ -433,3 +433,10 @@
   offline file count to2048; keep64MiB total,16MiB per file and512KiB marker
   limits unchanged. This is S03 package completion for current portraits, not
   new rights approval, all-content coverage or stage/device acceptance.
+
+- D090: Source632a60c3 is compiled as Android/dev9af7764d
+  and local-QA PWA8521b4e5. Exact portrait parity, strict build/source
+  checks and preservation passed. The PWA has one actual built-runtime
+  expanded offline/quality/RUEN browser case; Android has APK byte/signature
+  checks plus separate native-source browser evidence. Keep these boundaries
+  distinct from installed devices, human review, frozen iOS83 or release.

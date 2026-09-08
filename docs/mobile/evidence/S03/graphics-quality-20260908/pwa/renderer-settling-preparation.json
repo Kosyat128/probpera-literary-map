@@ -1,0 +1,8 @@
+{
+  "status": "PREPARED_NOT_EXECUTED",
+  "path": "tests/pwa/controlled-pwa.spec.mjs",
+  "beforeSha256": "0e95d28652422e29422abb3f5db37f591ba9de836c381b4828e5b278ad985398",
+  "afterSha256": "0bd4e12dfb6147dabc35416a3e10bade59e8cea2ed2914654de4d5ee7b6b31bb",
+  "change": "Bounded polling observes actual R3F DPR/star buffer after DOM metadata commits; exact1.25/1600 expectations unchanged",
+  "nativeA3Unaffected": true
+}

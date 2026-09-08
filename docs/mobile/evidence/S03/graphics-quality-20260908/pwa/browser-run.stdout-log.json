@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "originalPath": ".tmp/pwa-cross-engine-results/pwa-graphics-quality-20260908-a1/browser-run.stdout.log",
+  "originalBytes": 233,
+  "originalSha256": "86dd690a24ce079d84ad41edf950ad0f19230699984d10ffac7466324a095714",
+  "reconstruction": "UTF-8 encode text exactly, without newline normalization",
+  "text": "\nRunning 1 test using 1 worker\n\n  ok 1 [pwa-desktop] › tests\\pwa\\controlled-pwa.spec.mjs:191:1 › expanded portrait base installs and verifies real offline bytes with saved graphics and bilingual scene (46.1s)\n\n  1 passed (48.4s)\n"
+}

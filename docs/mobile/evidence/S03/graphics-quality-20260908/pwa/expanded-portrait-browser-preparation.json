@@ -1,0 +1,36 @@
+{
+  "status": "PREPARED_NOT_EXECUTED",
+  "scope": "One new controlled PWA build +strict audit+one affected actual browser, after exact1 discovery. No old suites.",
+  "inputs": [
+    "scripts/mobile/native-base-assets.json",
+    "scripts/mobile/pwa-portrait-selection.mjs"
+  ],
+  "files": [
+    {
+      "path": ".tmp/s03-graphics-quality-pwa-20260908/run-pwa-graphics-quality.mjs",
+      "sha256": "263659759795791b9484e6593a67a4bb42fc9e87e371cd8d9972ddc007ea9cb6"
+    },
+    {
+      "path": ".tmp/s03-graphics-quality-pwa-20260908/run-pwa-graphics-quality.ps1",
+      "sha256": "296a207c8fd9534534265e620c361e0b36cdb1f49b7678dbfb35080f904cee8f"
+    },
+    {
+      "path": ".tmp/s03-graphics-quality-pwa-20260908/preserve-pwa-graphics-quality.mjs",
+      "sha256": "f9dfa5149841ab71e22fe5311759110c4a729e24eacbec68fca5de3238b06cdf"
+    },
+    {
+      "path": ".tmp/s03-graphics-quality-pwa-20260908/playwright.graphics.config.mjs",
+      "sha256": "789ff8f12912679dd30e625dda38749ba83db04d4e6a7424fc312bb6f167557d"
+    },
+    {
+      "path": ".tmp/s03-graphics-quality-pwa-20260908/park-8609-before-graphics-quality.mjs",
+      "sha256": "b80b4cd474c3876460db959ccf59ef0409804cea8239efd27463dc28d438f0a4"
+    }
+  ],
+  "test": {
+    "path": "tests/pwa/controlled-pwa.spec.mjs",
+    "sha256": "0e95d28652422e29422abb3f5db37f591ba9de836c381b4828e5b278ad985398"
+  },
+  "buildsRun": 0,
+  "browserExecutions": 0
+}

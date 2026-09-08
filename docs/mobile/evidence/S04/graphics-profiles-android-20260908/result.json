@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-08T11:19:13.232Z",
+  "kind": "android-graphics-profiles-dev-apk-preservation",
+  "status": "BUILD_AND_BINARY_INSPECTION_PASSED",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "sourceCommit": "632a60c36ce117e210010da1ab77432280f5fa10",
+  "buildId": "9af7764d0134f9799d1ad857b756fe984f469571e6ef7b5bcf528f9e6913d575",
+  "sourceInputsSha256": "7f26a8caba4f8e20cd1d951da652c0b8a4c35a0cb4956c1a3b6db7fec49a05e3",
+  "artifact": {
+    "path": ".tmp/native-builds/android-dev/graphics-profiles-9af7764d/runtime",
+    "metadata": "docs/mobile/evidence/S04/graphics-profiles-android-20260908/native-artifact.json",
+    "sha256": "d4f4c5b97c8ba9c426c6f63da3a70b19c099ca9df7a892562fd4da5423857536"
+  },
+  "apk": {
+    "path": ".tmp/native-builds/android-dev/graphics-profiles-9af7764d/app-dev-debug.apk",
+    "bytes": 63271572,
+    "sha256": "589fde44edb91c562c45ac2aa06a84546e488542172ae604fe73d654b87e31c0"
+  },
+  "validation": {
+    "sourceBehavior": "docs/mobile/evidence/S06/graphics-quality-20260908",
+    "nativeStrictAudit": {
+      "path": "docs/mobile/evidence/S04/graphics-profiles-android-20260908/native-artifact-audit.json",
+      "pass": true,
+      "files": 1348
+    },
+    "build": {
+      "pass": true,
+      "sourceCommit": "632a60c36ce117e210010da1ab77432280f5fa10",
+      "buildId": "9af7764d0134f9799d1ad857b756fe984f469571e6ef7b5bcf528f9e6913d575",
+      "startedAt": "2026-09-08T11:18:13.4184688+00:00",
+      "durationSeconds": 38.6473956,
+      "task": ":app:assembleDevDebug",
+      "offline": true,
+      "actionableTasks": 167,
+      "executed": 22,
+      "upToDate": 145,
+      "fromCache": 0,
+      "deviceTested": false,
+      "releaseReady": false,
+      "report": "docs/mobile/evidence/S04/graphics-profiles-android-20260908/build-run.json"
+    },
+    "binaryAudit": {
+      "path": "docs/mobile/evidence/S04/graphics-profiles-android-20260908/android-dev-apk-verification.json",
+      "pass": true,
+      "bundledAssetsExpected": 1348,
+      "bundledAssetsMatched": 1347,
+      "omittedValidationMetadata": [
+        ".vite/manifest.json"
+      ],
+      "selectableLocales": [
+        "en",
+        "ru"
+      ],
+      "debugSignature": true,
+      "alignment": true
+    },
+    "preservedCopies": "docs/mobile/evidence/S04/graphics-profiles-android-20260908/copy-verification.json",
+    "completedBuildsOrTestsRepeated": false
+  },
+  "reports": [
+    {
+      "source": ".tmp/graphics-profiles-android-20260908/android-dev-apk-aapt2-badging.txt",
+      "path": "docs/mobile/evidence/S04/graphics-profiles-android-20260908/android-dev-apk-aapt2-badging.txt",
+      "bytes": 5374,
+      "sha256": "71d3971e95e33d7023aa682bdc475572397866ef1ec75ecaf4f31cb9794fac73"
+    },
+    {
+      "source": ".tmp/graphics-profiles-android-20260908/android-dev-apk-locales.txt",
+      "path": "docs/mobile/evidence/S04/graphics-profiles-android-20260908/android-dev-apk-locales.txt",
+      "bytes": 323,
+      "sha256": "e417b96725691c86cc6103223f08367d7454894043884c0e8d1142e519de5200"
+    },
+    {
+      "source": ".tmp/graphics-profiles-android-20260908/android-dev-apk-manifest.txt",
+      "path": "docs/mobile/evidence/S04/graphics-profiles-android-20260908/android-dev-apk-manifest.txt",
+      "bytes": 8836,
+      "sha256": "4903cac6b08900e6b96f58e832f9a2a50c88643ee0d0c37625628c9018afa4ec"
+    },
+    {
+      "source": ".tmp/graphics-profiles-android-20260908/android-dev-apk-signature.txt",
+      "path": "docs/mobile/evidence/S04/graphics-profiles-android-20260908/android-dev-apk-signature.txt",
+      "bytes": 972,
+      "sha256": "8289f86c685f73de50fb3de8bd8f791e4f708dcbd81bf82caaf76b3cd4b650c1"
+    },
+    {
+      "source": ".tmp/graphics-profiles-android-20260908/android-dev-apk-verification.json",
+      "path": "docs/mobile/evidence/S04/graphics-profiles-android-20260908/android-dev-apk-verification.json",
+      "bytes": 7326,
+      "sha256": "3407c0af207ab3e7e0f7e5cbd7916b6307094c54dbe084586c5f80a30b22760a"
+    },
+    {
+      "source": ".tmp/graphics-profiles-android-20260908/android-dev-apk-zip-entries.json",
+      "path": "docs/mobile/evidence/S04/graphics-profiles-android-20260908/android-dev-apk-zip-entries.json",
+      "bytes": 440382,
+      "sha256": "986ca81950c1e1cf144bc4a86febcbff44987d6adf2285fefb40a4ac606e7b4c"
+    },
+    {
+      "source": ".tmp/graphics-profiles-android-20260908/android-dev-apk-zipalign.txt",
+      "path": "docs/mobile/evidence/S04/graphics-profiles-android-20260908/android-dev-apk-zipalign.txt",
+      "bytes": 122954,
+      "sha256": "99fc99b4c740403a71e73e1adbc9b286c3d319744643e765830458fc0a7b38c4"
+    },
+    {
+      "source": ".tmp/graphics-profiles-android-20260908/build-run.json",
+      "path": "docs/mobile/evidence/S04/graphics-profiles-android-20260908/build-run.json",
+      "bytes": 447,
+      "sha256": "0d47620684d19d23bc86b14147d9bf5fad105ba0f55bf333a5ceed51bbc62e39"
+    },
+    {
+      "source": ".tmp/graphics-profiles-android-20260908/native-artifact-audit.json",
+      "path": "docs/mobile/evidence/S04/graphics-profiles-android-20260908/native-artifact-audit.json",
+      "bytes": 1070,
+      "sha256": "36fdc3583e6f610cd9174079ec80c824333a887553a8fcccec95e415a88f3451"
+    },
+    {
+      "source": ".tmp/graphics-profiles-android-20260908/apk-verifier-transcript.json",
+      "path": "docs/mobile/evidence/S04/graphics-profiles-android-20260908/apk-verifier-transcript.json",
+      "bytes": 7527,
+      "sha256": "3b87ea725aee385b246e0d975e497b136c8516ec6fc356bcf77794cd10051ad6"
+    },
+    {
+      "source": "dist-native/artifact.json",
+      "path": "docs/mobile/evidence/S04/graphics-profiles-android-20260908/native-artifact.json",
+      "bytes": 666071,
+      "sha256": "d4f4c5b97c8ba9c426c6f63da3a70b19c099ca9df7a892562fd4da5423857536"
+    },
+    {
+      "source": ".tmp/native-bootstrap/verify-graphics-profiles-android-20260908.mjs",
+      "path": "docs/mobile/evidence/S04/graphics-profiles-android-20260908/verify-graphics-profiles-android-20260908.mjs",
+      "bytes": 14252,
+      "sha256": "814b9fe81799e3c4a5927e9f2d235143cc778bde925596d4c2702d0aee95ea0b"
+    },
+    {
+      "source": ".tmp/native-bootstrap/build-graphics-profiles-android-20260908.ps1",
+      "path": "docs/mobile/evidence/S04/graphics-profiles-android-20260908/build-graphics-profiles-android-20260908.ps1",
+      "bytes": 6168,
+      "sha256": "71fbfa0444a89c09e75a2837d517a29f493a4f2cd11c90122c95681913dcddf1"
+    },
+    {
+      "source": ".tmp/native-bootstrap/preserve-graphics-profiles-android-20260908.mjs",
+      "path": "docs/mobile/evidence/S04/graphics-profiles-android-20260908/preserve-graphics-profiles-android-20260908.mjs",
+      "bytes": 9940,
+      "sha256": "86cf9e57afef064e0a89102d8996b07f6c88791a71abdeacf9af2398a208a2ab"
+    }
+  ],
+  "transcripts": [
+    {
+      "path": "docs/mobile/evidence/S04/graphics-profiles-android-20260908/native-build-transcript.json",
+      "bytes": 13850,
+      "sha256": "1db0139677c5b70c4662d7fbf8638b8afb449ff690dd3180f52dc4b2413f71aa",
+      "original": ".tmp/graphics-profiles-android-20260908/native-build.log",
+      "originalBytes": 13252,
+      "originalSha256": "221152ecea380be2dd64d2f3fe295a9f305e86fc5531682f00ebc5927b75dea4"
+    },
+    {
+      "path": "docs/mobile/evidence/S04/graphics-profiles-android-20260908/sync-android-transcript.json",
+      "bytes": 865,
+      "sha256": "23b4063f08ac5ca238e6a0428e167f38412a3ead6efbdffe6a83f25569d0385b",
+      "original": ".tmp/graphics-profiles-android-20260908/sync-android.log",
+      "originalBytes": 542,
+      "originalSha256": "4499cd36b43b3c6e84b75fe3415ca1bff380f1ebb8a6cd62fa3fbcbadc0317a3"
+    },
+    {
+      "path": "docs/mobile/evidence/S04/graphics-profiles-android-20260908/assemble-dev-debug-transcript.json",
+      "bytes": 14683,
+      "sha256": "7d9ce88291a105288caecfb2fe9d12a59fa11d5c349da5cb4ea1336af4c46612",
+      "original": ".tmp/graphics-profiles-android-20260908/assemble-dev-debug.log",
+      "originalBytes": 13917,
+      "originalSha256": "f296e46628590bfdf414fb1cf3095b2de3d79283d46423713eeaf55147251aec"
+    }
+  ],
+  "boundaries": [
+    "Source 632a60c36ce117e210010da1ab77432280f5fa10 is this exact graphics-profiles devDebug snapshot; all prior Android and iOS artifacts remain distinct and unmodified.",
+    "This exact devDebug APK was compiled and statically inspected; it was not installed or exercised on an Android emulator or physical device.",
+    "Chrome native-binding fixtures and CDP safe-area overrides are not installed Android/iOS runtime evidence or exact-RC screenshots.",
+    "Graphics quality and preference behavior has separate source-bound unit/integration evidence under docs/mobile/evidence/S06/graphics-quality-20260908; it is not installed Android runtime validation, a physical-device graphics benchmark or exact-RC screenshots.",
+    "S03/S04/S05/S06/S07 and global bilingual/content/child/commerce/rights/owner/release gates remain open. No production signing, deploy, store action, merge or owner approval is implied."
+  ]
+}

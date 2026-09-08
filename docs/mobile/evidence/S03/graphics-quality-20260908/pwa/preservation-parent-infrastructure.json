@@ -1,0 +1,10 @@
+{
+  "status": "PRESERVATION_PARENT_DIRECTORY_INFRASTRUCTURE_FAILURE",
+  "observedExitCode": 1,
+  "observedError": "ENOENT while creating new evidence pwa child under not-yet-existing graphics-quality-20260908 parent",
+  "observationSource": "exec_command tool output; no raw child log retained",
+  "correction": "Created exact new parent under verified real workspace docs/mobile/evidence/S03; no overwrite or recursive operation",
+  "buildReruns": 0,
+  "browserReruns": 0,
+  "validationResultUnchanged": true
+}

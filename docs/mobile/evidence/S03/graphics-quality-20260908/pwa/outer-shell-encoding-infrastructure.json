@@ -1,0 +1,18 @@
+{
+  "status": "OUTER_SHELL_PARSER_INFRASTRUCTURE_FAILURE",
+  "command": "powershell -NoProfile -File .tmp/s03-graphics-quality-pwa-20260908/run-pwa-graphics-quality.ps1 -ExpectedSourceCommit 632a60c36ce117e210010da1ab77432280f5fa10",
+  "observedToolExitCode": 1,
+  "observedError": "Windows PowerShell parser error at line3 Cyrillic checkout path: Unexpected token; no script statement executed",
+  "rawChildLogsAvailable": false,
+  "observationSource": "exec_command tool output; no raw transcript claimed",
+  "buildsRun": 0,
+  "signersStarted": 0,
+  "discoveryRuns": 0,
+  "browserExecutions": 0,
+  "correction": "Prefix UTF-8 BOM so Windows PowerShell5 correctly parses existing Cyrillic literal; exact remaining bytes unchanged",
+  "beforeSha256": "296a207c8fd9534534265e620c361e0b36cdb1f49b7678dbfb35080f904cee8f",
+  "afterSha256": "5fd726549e7125f773d8af9630bceed17e59ebc88394bd3ea174fee851e4ad2f",
+  "sourceUnmodified": true,
+  "oldArtifactParkingSucceeded": true,
+  "previousRuntime": "86096d6415c05646e47679ee98a411862cb6ba296caa56ce86a5747bd5e00955"
+}

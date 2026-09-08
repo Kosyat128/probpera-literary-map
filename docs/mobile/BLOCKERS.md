@@ -1,21 +1,20 @@
 # V12 blockers and pending work
 
 <!-- s06-graphics-quality:begin -->
-High/Balanced/Economy implemented and source-validated; High remains default.
-One Canvas/renderer/camera/atlas and canonical country/writer state retained.
-Saved latest choice, bounded confirmation/retry, RU/EN and reduced motion.
-Actual320px/200% text, keyboard and return control passed.
-122 unique focused tests, final TypeScript/boundaries and one source-browser
-case passed. Initial failed receipts and their actual fixes are preserved.
-S03 packaging fix: same1011 canonical local portraits in native/PWA selection;
-1003 existing files added,27,831,946B. No new artwork or rights approval.
-Fresh Android and built-PWA offline verification pending this source commit.
-Evidence: evidence/S06/graphics-quality-20260908/result.json and
-evidence/S03/canonical-portraits-20260908/result.json.
-First-open stays S03; S06 is in progress, not accepted. Earlier blocks below
-retain historical source/artifact identities. Full asset/Planetka tiers,
-English coverage, nearly10k/edition cover workflows and device/release gates
-remain open; frozen iOS83 unchanged/pending.
+Source 632a60c36ce117e210010da1ab77432280f5fa10: saved High/Balanced/Economy, defaultHigh.
+Same Canvas/renderer/camera/country/writer; RU/EN, reduced motion and
+320px/200% text/keyboard/return behavior source-validated.
+122 unique focused tests and final TypeScript/platform boundaries passed.
+Native source-browser1PASS; actual built-PWA offline/portraits/quality/RUEN1PASS.
+Android/dev 9af7764d: strict audit, offline Gradle, APK bytes/signature/alignment.
+APK: .tmp/native-builds/android-dev/graphics-profiles-9af7764d/app-dev-debug.apk.
+Controlled local-QA PWA 8521b4e5: strict audit, real worker/cache browser and exact archive.
+Both builds contain identical1011 existing canonical portrait files.
+Evidence: evidence/S06/graphics-quality-20260908/result.json.
+S03 remains first-open; S06 in progress. No installed device or RC acceptance.
+Full English content, nearly10k/edition cover owner workflows, Planetka/3D
+asset tiers and device/store/legal/release gates remain open.
+Frozen iOS83 unchanged/pending. Earlier blocks below are historical snapshots.
 <!-- s06-graphics-quality:end -->
 
 <!-- s03-biography-review:begin -->
