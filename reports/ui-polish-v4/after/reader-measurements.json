@@ -1,0 +1,95 @@
+{
+  "url": "http://127.0.0.1:4186/probpera-literary-map/stati/russkiy-yazyk/15-krylatyh-vyrazheniy-prishedshih-k-niz-biblii/",
+  "results": [
+    {
+      "width": 1440,
+      "languageWeights": [
+        "400",
+        "400"
+      ],
+      "metrics": [
+        {
+          "text": "-просмотров",
+          "font": "13px",
+          "weight": "400",
+          "height": 96
+        },
+        {
+          "text": "11минут чтения",
+          "font": "13px",
+          "weight": "400",
+          "height": 96
+        },
+        {
+          "text": "1 803слов",
+          "font": "13px",
+          "weight": "400",
+          "height": 96
+        },
+        {
+          "text": "17смысловых разделов",
+          "font": "13px",
+          "weight": "400",
+          "height": 96
+        },
+        {
+          "text": "16иллюстраций",
+          "font": "13px",
+          "weight": "400",
+          "height": 96
+        }
+      ],
+      "book": {
+        "controls": 2,
+        "contentCharacters": 14474,
+        "transform": "none",
+        "columns": "2"
+      }
+    },
+    {
+      "width": 390,
+      "languageWeights": [
+        "400",
+        "400"
+      ],
+      "metrics": [
+        {
+          "text": "-просмотров",
+          "font": "13px",
+          "weight": "400",
+          "height": 84
+        },
+        {
+          "text": "11минут чтения",
+          "font": "13px",
+          "weight": "400",
+          "height": 84
+        },
+        {
+          "text": "1 803слов",
+          "font": "13px",
+          "weight": "400",
+          "height": 99.375
+        },
+        {
+          "text": "17смысловых разделов",
+          "font": "13px",
+          "weight": "400",
+          "height": 99.375
+        },
+        {
+          "text": "16иллюстраций",
+          "font": "13px",
+          "weight": "400",
+          "height": 84
+        }
+      ],
+      "book": {
+        "controls": 2,
+        "contentCharacters": 14474,
+        "transform": "none",
+        "columns": "1"
+      }
+    }
+  ]
+}

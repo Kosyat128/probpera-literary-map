@@ -52,31 +52,23 @@ function collectBrowserDiagnostics(page: Page): BrowserDiagnostics {
 }
 
 async function firstArticleHref(page: Page) {
-  return page.locator("a[href]").evaluateAll((links) => {
-    const canonicalHref = document
-      .querySelector<HTMLLinkElement>('link[rel="canonical"]')
-      ?.getAttribute("href");
-    const canonicalOrigin = canonicalHref
-      ? new URL(canonicalHref, window.location.href).origin
-      : window.location.origin;
-
+  return page.locator('[aria-labelledby="archive-publications"] a[href]').evaluateAll((links) => {
+    const archiveOffset = window.location.pathname.indexOf('/stati/');
+    const localBase = archiveOffset >= 0 ? window.location.pathname.slice(0, archiveOffset) : '';
     for (const link of links) {
       const rawHref = link.getAttribute("href");
       if (!rawHref) continue;
       const url = new URL(rawHref, window.location.href);
-      if (
-        url.origin !== window.location.origin &&
-        url.origin !== canonicalOrigin
-      ) {
-        continue;
-      }
       const segments = url.pathname.split("/").filter(Boolean);
       const journalIndex = segments.indexOf("stati");
       if (journalIndex < 0) continue;
       if (segments.length - journalIndex < 3) continue;
       if (url.pathname.includes("/page-")) continue;
+      // The archive preserves production canonical URLs. Exercise the same real
+      // article in this preview, including its project base, without remote I/O.
+      const articlePath = '/' + segments.slice(journalIndex).join('/') + '/';
       return new URL(
-        `${url.pathname}${url.search}${url.hash}`,
+        `${localBase}${articlePath}${url.search}${url.hash}`,
         window.location.origin
       ).href;
     }
@@ -97,6 +89,13 @@ async function expectNoHorizontalOverflow(page: Page) {
   ).toBeLessThanOrEqual(2);
 }
 
+async function journalHrefFromHome(page: Page) {
+  const link = page.locator('.magazine-hero a[href$="/stati/"]');
+  await expect(link).toHaveCount(1);
+  // Use the real public link, including a project preview base when present.
+  return link.evaluate((element) => (element as HTMLAnchorElement).href);
+}
+
 test("reader can open the journal and a real article without runtime failures", async ({
   page,
 }) => {
@@ -108,7 +107,7 @@ test("reader can open the journal and a real article without runtime failures", 
   await expect(page.locator("main").first()).toBeVisible();
   await expect(page.locator(".static-home-fallback")).toHaveCount(0);
 
-  const journalResponse = await page.goto("/stati/", {
+  const journalResponse = await page.goto(await journalHrefFromHome(page), {
     waitUntil: "domcontentloaded",
   });
   expect(journalResponse?.status()).toBeLessThan(400);
@@ -145,7 +144,7 @@ test("home and journal remain inside a narrow mobile viewport", async ({ page })
   );
   expect(focusMoved).toBe(true);
 
-  const journalResponse = await page.goto("/stati/", {
+  const journalResponse = await page.goto(await journalHrefFromHome(page), {
     waitUntil: "domcontentloaded",
   });
   expect(journalResponse?.status()).toBeLessThan(400);

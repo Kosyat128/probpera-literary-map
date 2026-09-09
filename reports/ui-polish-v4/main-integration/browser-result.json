@@ -1,0 +1,2235 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\node_modules\\playwright\\cli.js",
+      "test",
+      "tests/e2e/article-book-pagination.spec.mjs",
+      "tests/e2e/reader-extended-accessibility.spec.mjs",
+      "tests/e2e/article-book-reading.spec.mjs",
+      "tests/e2e/article-book-zoom.spec.mjs",
+      "tests/e2e/ui-polish-controls.spec.mjs",
+      "tests/e2e/ui-polish-backgrounds.spec.mjs",
+      "--grep",
+      "article-book-pagination|reader-extended-accessibility|ui-polish-controls|ui-polish-backgrounds|illustrated book preserves every page|a delayed illustration|WebGL failure retains|physical article book enlarges|real vocabulary.*100%",
+      "--workers=1",
+      "--output=reports/ui-polish-v4/main-integration/browser-artifacts",
+      "--reporter=list,json"
+    ],
+    "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\playwright.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/probpera-typography/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/probpera-typography/reports/ui-polish-v4/main-integration/browser-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-chromium",
+        "name": "desktop-chromium",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/probpera-typography/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/probpera-typography/reports/ui-polish-v4/main-integration/browser-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile-chromium",
+        "name": "mobile-chromium",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/probpera-typography/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run preview -- --host 127.0.0.1 --port 4186",
+      "url": "http://127.0.0.1:4186",
+      "reuseExistingServer": true,
+      "timeout": 60000,
+      "env": {
+        "ALLUSERSPROFILE": "C:\\ProgramData",
+        "APPDATA": "C:\\Users\\User\\AppData\\Roaming",
+        "asl.log": "Destination=file",
+        "BROWSERSLIST_IGNORE_OLD_DATA": "true",
+        "CODEX_APP_TOOLS_PIPE_PATH": "\\\\.\\pipe\\codex-browser-use-87b1562b-f967-4e64-a4e8-cbd0419ae162",
+        "CODEX_CI": "1",
+        "CODEX_HOME": "D:\\CodexData\\.codex",
+        "CODEX_INTERNAL_ORIGINATOR_OVERRIDE": "Codex Desktop",
+        "CODEX_MCP_NODE_PATH": "C:\\Users\\User\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\b474a88d5d105afa\\bin\\node.exe",
+        "CODEX_PERMISSION_PROFILE": ":workspace",
+        "CODEX_SAGE_BACKFILL_TRACKER_TAB_REUSE": "1",
+        "CODEX_SANDBOX_NETWORK_DISABLED": "1",
+        "CODEX_SESSION_ID": "01a07eb0-c75a-70a0-8991-77a88d21385c",
+        "CODEX_SHELL": "1",
+        "CODEX_THREAD_ID": "01a07eb0-c75a-70a0-8991-77a88d21385c",
+        "COLORTERM": "",
+        "CommonProgramFiles": "C:\\Program Files\\Common Files",
+        "CommonProgramFiles(x86)": "C:\\Program Files (x86)\\Common Files",
+        "CommonProgramW6432": "C:\\Program Files\\Common Files",
+        "COMPUTERNAME": "MAGICBOOK",
+        "ComSpec": "C:\\WINDOWS\\system32\\cmd.exe",
+        "DISABLE_AUTO_UPDATE": "true",
+        "DriverData": "C:\\Windows\\System32\\Drivers\\DriverData",
+        "GH_PAGER": "cat",
+        "GIT_PAGER": "cat",
+        "HOMEDRIVE": "C:",
+        "HOMEPATH": "\\Users\\User",
+        "LANG": "C.UTF-8",
+        "LC_ALL": "C.UTF-8",
+        "LC_CTYPE": "C.UTF-8",
+        "LOCALAPPDATA": "C:\\Users\\User\\AppData\\Local",
+        "LOGONSERVER": "\\\\MAGICBOOK",
+        "LOG_FORMAT": "json",
+        "NO_COLOR": "1",
+        "NUMBER_OF_PROCESSORS": "16",
+        "OneDrive": "C:\\Users\\User\\OneDrive",
+        "OS": "Windows_NT",
+        "PAGER": "cat",
+        "Path": "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell;D:\\CodexData\\.codex\\tmp\\arg0\\codex-arg0rRqpl4;D:\\CodexData\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\libheif\\libheif\\bin;D:\\CodexData\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\jxrlib\\jxrlib\\bin;D:\\CodexData\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin;C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\bin\\override;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\dotnet\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\GitHub CLI\\;C:\\Program Files\\nodejs\\;C:\\Users\\User\\AppData\\Local\\Programs\\Python\\Launcher\\;C:\\Users\\User\\AppData\\Local\\Programs\\OpenAI\\Codex\\bin;C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell;C:\\Users\\User\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\User\\.dotnet\\tools;C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\User\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\User\\AppData\\Local\\Programs\\nodejs;C:\\Users\\User\\AppData\\Roaming\\npm;C:\\Users\\User\\.dotnet\\tools;C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\bin\\fallback;C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin;C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\git\\cmd;C:\\Users\\User\\AppData\\Local\\OpenAI\\Codex\\bin\\c60635126245daef;C:\\Users\\User\\AppData\\Local\\OpenAI\\Codex\\bin\\8e5b6932251c2c1c",
+        "PATHEXT": ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.CPL",
+        "PLAYWRIGHT_JSON_OUTPUT_FILE": "reports/ui-polish-v4/main-integration/browser-result.json",
+        "PLAYWRIGHT_PORT": "4186",
+        "PLAYWRIGHT_REUSE_SERVER": "true",
+        "PROCESSOR_ARCHITECTURE": "AMD64",
+        "PROCESSOR_IDENTIFIER": "AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD",
+        "PROCESSOR_LEVEL": "25",
+        "PROCESSOR_REVISION": "5000",
+        "ProgramData": "C:\\ProgramData",
+        "ProgramFiles": "C:\\Program Files",
+        "ProgramFiles(x86)": "C:\\Program Files (x86)",
+        "ProgramW6432": "C:\\Program Files",
+        "PSModulePath": "C:\\Users\\User\\Documents\\PowerShell\\Modules;C:\\Program Files\\PowerShell\\Modules;c:\\users\\user\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\Modules;C:\\Users\\User\\Documents\\WindowsPowerShell\\Modules;C:\\Program Files\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules",
+        "PUBLIC": "C:\\Users\\Public",
+        "RUST_LOG": "warn",
+        "SHELL": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "SystemDrive": "C:",
+        "SystemRoot": "C:\\WINDOWS",
+        "TEMP": "D:\\CodexData\\Temp",
+        "TERM": "dumb",
+        "TMP": "D:\\CodexData\\Temp",
+        "USERDOMAIN": "MAGICBOOK",
+        "USERDOMAIN_ROAMINGPROFILE": "MAGICBOOK",
+        "USERNAME": "User",
+        "USERPROFILE": "C:\\Users\\User",
+        "VBOX_HWVIRTEX_IGNORE_SVM_IN_USE": "1",
+        "windir": "C:\\WINDOWS",
+        "XDG_CACHE_HOME": "D:\\CodexData\\.cache",
+        "ZSH_TMUX_AUTOSTART": "false",
+        "ZSH_TMUX_AUTOSTARTED": "true",
+        "PUBLIC_SITE_BASE_PATH": "/probpera-literary-map/"
+      }
+    }
+  },
+  "suites": [
+    {
+      "title": "article-book-pagination.spec.mjs",
+      "file": "article-book-pagination.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "canonical book keeps the source fragment through reflow, sizing, mode changes and reopening",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 24068,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-article-book-reader]').locator('[data-article-book-page]')\nTimeout: 10000ms\n\u001b[32m- Expected substring  - 3\u001b[39m\n\u001b[31m+ Received string     + 1\u001b[39m\n\n\u001b[32m- менной речи.\u001b[39m\n\u001b[32m-\u001b[39m\n\u001b[32m- 1. Запретн\u001b[39m\n\u001b[31m+ \u001b[7mражениях библейского происхождения, объясним их первоначальный смысл, раскроем современное значение и покажем, как они используются в совре\u001b[27mменной речи.1. Запретн\u001b[7mый плодЗначениеТак называют нечто особенно желанное именно потому, что оно недоступно или находится под строгим запретом.Происхождение\u001b[27m\u001b[39m\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-article-book-reader]').locator('[data-article-book-page]')\u001b[22m\n\u001b[2m    23 × locator resolved to <div data-article-book-page=\"cms-50978dc4-c80f-4bc6-aed0-7e9fd693193a-page-3\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"ражениях библейского происхождения, объясним их первоначальный смысл, раскроем современное значение и покажем, как они используются в современной речи.1. Запретный плодЗначениеТак называют нечто особенно желанное именно потому, что оно недоступно или находится под строгим запретом.Происхождение\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-article-book-reader]').locator('[data-article-book-page]')\nTimeout: 10000ms\n\u001b[32m- Expected substring  - 3\u001b[39m\n\u001b[31m+ Received string     + 1\u001b[39m\n\n\u001b[32m- менной речи.\u001b[39m\n\u001b[32m-\u001b[39m\n\u001b[32m- 1. Запретн\u001b[39m\n\u001b[31m+ \u001b[7mражениях библейского происхождения, объясним их первоначальный смысл, раскроем современное значение и покажем, как они используются в совре\u001b[27mменной речи.1. Запретн\u001b[7mый плодЗначениеТак называют нечто особенно желанное именно потому, что оно недоступно или находится под строгим запретом.Происхождение\u001b[27m\u001b[39m\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-article-book-reader]').locator('[data-article-book-page]')\u001b[22m\n\u001b[2m    23 × locator resolved to <div data-article-book-page=\"cms-50978dc4-c80f-4bc6-aed0-7e9fd693193a-page-3\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"ражениях библейского происхождения, объясним их первоначальный смысл, раскроем современное значение и покажем, как они используются в современной речи.1. Запретный плодЗначениеТак называют нечто особенно желанное именно потому, что оно недоступно или находится под строгим запретом.Происхождение\"\u001b[22m\n\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\article-book-pagination.spec.mjs:39:26",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\article-book-pagination.spec.mjs",
+                      "column": 26,
+                      "line": 39
+                    },
+                    "snippet": "  37 |   await ready(book);\n  38 |   await expect(book).toHaveAttribute(\"data-reading-anchor\", anchor);\n> 39 |   await expect(semantic).toContainText(fragment);\n     |                          ^\n  40 |   const countBeforeFont = Number(await book.getAttribute(\"data-page-count\"));\n  41 |   await page.getByRole(\"button\", { name: \"Увеличить шрифт\", exact: true }).click();\n  42 |   await expect.poll(async () => Number(await book.getAttribute(\"data-page-count\"))).toBeGreaterThan(countBeforeFont);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\article-book-pagination.spec.mjs",
+                        "column": 26,
+                        "line": 39
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-article-book-reader]').locator('[data-article-book-page]')\nTimeout: 10000ms\n\u001b[32m- Expected substring  - 3\u001b[39m\n\u001b[31m+ Received string     + 1\u001b[39m\n\n\u001b[32m- менной речи.\u001b[39m\n\u001b[32m-\u001b[39m\n\u001b[32m- 1. Запретн\u001b[39m\n\u001b[31m+ \u001b[7mражениях библейского происхождения, объясним их первоначальный смысл, раскроем современное значение и покажем, как они используются в совре\u001b[27mменной речи.1. Запретн\u001b[7mый плодЗначениеТак называют нечто особенно желанное именно потому, что оно недоступно или находится под строгим запретом.Происхождение\u001b[27m\u001b[39m\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-article-book-reader]').locator('[data-article-book-page]')\u001b[22m\n\u001b[2m    23 × locator resolved to <div data-article-book-page=\"cms-50978dc4-c80f-4bc6-aed0-7e9fd693193a-page-3\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"ражениях библейского происхождения, объясним их первоначальный смысл, раскроем современное значение и покажем, как они используются в современной речи.1. Запретный плодЗначениеТак называют нечто особенно желанное именно потому, что оно недоступно или находится под строгим запретом.Происхождение\"\u001b[22m\n\n\n  37 |   await ready(book);\n  38 |   await expect(book).toHaveAttribute(\"data-reading-anchor\", anchor);\n> 39 |   await expect(semantic).toContainText(fragment);\n     |                          ^\n  40 |   const countBeforeFont = Number(await book.getAttribute(\"data-page-count\"));\n  41 |   await page.getByRole(\"button\", { name: \"Увеличить шрифт\", exact: true }).click();\n  42 |   await expect.poll(async () => Number(await book.getAttribute(\"data-page-count\"))).toBeGreaterThan(countBeforeFont);\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\article-book-pagination.spec.mjs:39:26"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T07:59:38.372Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\main-integration\\browser-artifacts\\article-book-pagination-ca-fae55--mode-changes-and-reopening-desktop-chromium\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\main-integration\\browser-artifacts\\article-book-pagination-ca-fae55--mode-changes-and-reopening-desktop-chromium\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\main-integration\\browser-artifacts\\article-book-pagination-ca-fae55--mode-changes-and-reopening-desktop-chromium\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\article-book-pagination.spec.mjs",
+                    "column": 26,
+                    "line": 39
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "e4c4ca943362690c92e4-043add4da0472b07b3b7",
+          "file": "article-book-pagination.spec.mjs",
+          "line": 14,
+          "column": 1
+        },
+        {
+          "title": "archive CTA opens the canonical book and reader metrics and layers preserve focus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12243,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:00:04.307Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e4c4ca943362690c92e4-c5b029a501654191ae58",
+          "file": "article-book-pagination.spec.mjs",
+          "line": 69,
+          "column": 1
+        },
+        {
+          "title": "canonical book keeps the source fragment through reflow, sizing, mode changes and reopening",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 27466,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-article-book-reader]').locator('[data-article-book-page]')\nTimeout: 10000ms\n\u001b[32m- Expected substring  - 3\u001b[39m\n\u001b[31m+ Received string     + 1\u001b[39m\n\n\u001b[32m- менной речи.\u001b[39m\n\u001b[32m-\u001b[39m\n\u001b[32m- 1. Запретн\u001b[39m\n\u001b[31m+ \u001b[7mражениях библейского происхождения, объясним их первоначальный смысл, раскроем современное значение и покажем, как они используются в совре\u001b[27mменной речи.1. Запретн\u001b[7mый плодЗначениеТак называют нечто особенно желанное именно потому, что оно недоступно или находится под строгим запретом.Происхождение\u001b[27m\u001b[39m\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-article-book-reader]').locator('[data-article-book-page]')\u001b[22m\n\u001b[2m    23 × locator resolved to <div data-article-book-page=\"cms-50978dc4-c80f-4bc6-aed0-7e9fd693193a-page-3\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"ражениях библейского происхождения, объясним их первоначальный смысл, раскроем современное значение и покажем, как они используются в современной речи.1. Запретный плодЗначениеТак называют нечто особенно желанное именно потому, что оно недоступно или находится под строгим запретом.Происхождение\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-article-book-reader]').locator('[data-article-book-page]')\nTimeout: 10000ms\n\u001b[32m- Expected substring  - 3\u001b[39m\n\u001b[31m+ Received string     + 1\u001b[39m\n\n\u001b[32m- менной речи.\u001b[39m\n\u001b[32m-\u001b[39m\n\u001b[32m- 1. Запретн\u001b[39m\n\u001b[31m+ \u001b[7mражениях библейского происхождения, объясним их первоначальный смысл, раскроем современное значение и покажем, как они используются в совре\u001b[27mменной речи.1. Запретн\u001b[7mый плодЗначениеТак называют нечто особенно желанное именно потому, что оно недоступно или находится под строгим запретом.Происхождение\u001b[27m\u001b[39m\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-article-book-reader]').locator('[data-article-book-page]')\u001b[22m\n\u001b[2m    23 × locator resolved to <div data-article-book-page=\"cms-50978dc4-c80f-4bc6-aed0-7e9fd693193a-page-3\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"ражениях библейского происхождения, объясним их первоначальный смысл, раскроем современное значение и покажем, как они используются в современной речи.1. Запретный плодЗначениеТак называют нечто особенно желанное именно потому, что оно недоступно или находится под строгим запретом.Происхождение\"\u001b[22m\n\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\article-book-pagination.spec.mjs:39:26",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\article-book-pagination.spec.mjs",
+                      "column": 26,
+                      "line": 39
+                    },
+                    "snippet": "  37 |   await ready(book);\n  38 |   await expect(book).toHaveAttribute(\"data-reading-anchor\", anchor);\n> 39 |   await expect(semantic).toContainText(fragment, { useInnerText: true });\n     |                          ^\n  40 |   const countBeforeFont = Number(await book.getAttribute(\"data-page-count\"));\n  41 |   await page.getByRole(\"button\", { name: \"Увеличить шрифт\", exact: true }).click();\n  42 |   await expect.poll(async () => Number(await book.getAttribute(\"data-page-count\"))).toBeGreaterThan(countBeforeFont);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\article-book-pagination.spec.mjs",
+                        "column": 26,
+                        "line": 39
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-article-book-reader]').locator('[data-article-book-page]')\nTimeout: 10000ms\n\u001b[32m- Expected substring  - 3\u001b[39m\n\u001b[31m+ Received string     + 1\u001b[39m\n\n\u001b[32m- менной речи.\u001b[39m\n\u001b[32m-\u001b[39m\n\u001b[32m- 1. Запретн\u001b[39m\n\u001b[31m+ \u001b[7mражениях библейского происхождения, объясним их первоначальный смысл, раскроем современное значение и покажем, как они используются в совре\u001b[27mменной речи.1. Запретн\u001b[7mый плодЗначениеТак называют нечто особенно желанное именно потому, что оно недоступно или находится под строгим запретом.Происхождение\u001b[27m\u001b[39m\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-article-book-reader]').locator('[data-article-book-page]')\u001b[22m\n\u001b[2m    23 × locator resolved to <div data-article-book-page=\"cms-50978dc4-c80f-4bc6-aed0-7e9fd693193a-page-3\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"ражениях библейского происхождения, объясним их первоначальный смысл, раскроем современное значение и покажем, как они используются в современной речи.1. Запретный плодЗначениеТак называют нечто особенно желанное именно потому, что оно недоступно или находится под строгим запретом.Происхождение\"\u001b[22m\n\n\n  37 |   await ready(book);\n  38 |   await expect(book).toHaveAttribute(\"data-reading-anchor\", anchor);\n> 39 |   await expect(semantic).toContainText(fragment, { useInnerText: true });\n     |                          ^\n  40 |   const countBeforeFont = Number(await book.getAttribute(\"data-page-count\"));\n  41 |   await page.getByRole(\"button\", { name: \"Увеличить шрифт\", exact: true }).click();\n  42 |   await expect.poll(async () => Number(await book.getAttribute(\"data-page-count\"))).toBeGreaterThan(countBeforeFont);\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\article-book-pagination.spec.mjs:39:26"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:03:14.561Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\main-integration\\browser-artifacts\\article-book-pagination-ca-fae55--mode-changes-and-reopening-mobile-chromium\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\main-integration\\browser-artifacts\\article-book-pagination-ca-fae55--mode-changes-and-reopening-mobile-chromium\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\main-integration\\browser-artifacts\\article-book-pagination-ca-fae55--mode-changes-and-reopening-mobile-chromium\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\article-book-pagination.spec.mjs",
+                    "column": 26,
+                    "line": 39
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "e4c4ca943362690c92e4-1bcdd96e9350d23fadb7",
+          "file": "article-book-pagination.spec.mjs",
+          "line": 14,
+          "column": 1
+        },
+        {
+          "title": "archive CTA opens the canonical book and reader metrics and layers preserve focus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16720,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:03:44.464Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e4c4ca943362690c92e4-0f49c2acdd308337cb1a",
+          "file": "article-book-pagination.spec.mjs",
+          "line": 69,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "article-book-reading.spec.mjs",
+      "file": "article-book-reading.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "real vocabulary illustrations stay with their own numbered entries at 100% font size",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 23238,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:00:16.933Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "real-vocabulary-image-associations",
+                      "contentType": "application/json",
+                      "body": "WwogIHsKICAgICJ3aWR0aCI6IDE0NDAsCiAgICAiZm9udFNjYWxlIjogMSwKICAgICJwYWdlQ291bnQiOiAyOCwKICAgICJhc3NvY2lhdGlvbnMiOiBbCiAgICAgIHsKICAgICAgICAiaGVhZGluZyI6ICIxLiDQk9Cw0LPQsNGA0LrQsCIsCiAgICAgICAgInBhZ2UiOiA0LAogICAgICAgICJzb3VyY2UiOiAiL3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9tZWRpYS9vcHRpbWl6ZWQvOTU5MzlhZGM5OGExNjEwOGY1MDNkNjk1LTEyMDB3LndlYnAiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaGVhZGluZyI6ICIyLiDQk9Cw0LTQu9C40LLRi9C5IiwKICAgICAgICAicGFnZSI6IDUsCiAgICAgICAgInNvdXJjZSI6ICIvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL21lZGlhL29wdGltaXplZC8wMDcxYzVlNDNmODI4MmQ4ZmJhMmI0MWEtMTIwMHcud2VicCIKICAgICAgfSwKICAgICAgewogICAgICAgICJoZWFkaW5nIjogIjMuINCT0LDQu9Cw0L3RgtC90YvQuSIsCiAgICAgICAgInBhZ2UiOiA2LAogICAgICAgICJzb3VyY2UiOiAiL3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9tZWRpYS9vcHRpbWl6ZWQvM2UyZTE5M2E3YzU1Nzg1OGQyNTEzZmY1LTEyMDB3LndlYnAiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaGVhZGluZyI6ICI0LiDQk9Cw0YDRhtC10LLQsNGC0YwiLAogICAgICAgICJwYWdlIjogNywKICAgICAgICAic291cmNlIjogIi9wcm9icGVyYS1saXRlcmFyeS1tYXAvbWVkaWEvb3B0aW1pemVkLzU4MmIzNWI1NjdjYTQxM2VlYTA3MGFiMC0xMjAwdy53ZWJwIgogICAgICB9LAogICAgICB7CiAgICAgICAgImhlYWRpbmciOiAiNS4g0JPQsNGC0YwiLAogICAgICAgICJwYWdlIjogOCwKICAgICAgICAic291cmNlIjogIi9wcm9icGVyYS1saXRlcmFyeS1tYXAvbWVkaWEvb3B0aW1pemVkL2ZhMTgzZjJhYmZjYWYxOWFiYjgyMmVjNy0xMjAwdy53ZWJwIgogICAgICB9LAogICAgICB7CiAgICAgICAgImhlYWRpbmciOiAiNi4g0JPQtdC00L7QvdC40LfQvCIsCiAgICAgICAgInBhZ2UiOiA5LAogICAgICAgICJzb3VyY2UiOiAiL3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9tZWRpYS9vcHRpbWl6ZWQvZjQxMWMxZDdkOTY1NDFjODY3M2JkMWM2LTEyODB3LndlYnAiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaGVhZGluZyI6ICI3LiDQk9C10L3QtdC30LjRgSIsCiAgICAgICAgInBhZ2UiOiAxMCwKICAgICAgICAic291cmNlIjogIi9wcm9icGVyYS1saXRlcmFyeS1tYXAvbWVkaWEvb3B0aW1pemVkLzcyOTA0Nzg5ZTE2MDFjOGVmZjc0YTNhMS0xMjAwdy53ZWJwIgogICAgICB9LAogICAgICB7CiAgICAgICAgImhlYWRpbmciOiAiOC4g0JPQtdC+0LPQu9C40YQiLAogICAgICAgICJwYWdlIjogMTEsCiAgICAgICAgInNvdXJjZSI6ICIvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL21lZGlhL29wdGltaXplZC9lZDE0ZmYxM2U1MDVjMzFkNjdhOTM5MzAtMTIwMHcud2VicCIKICAgICAgfSwKICAgICAgewogICAgICAgICJoZWFkaW5nIjogIjkuINCT0LXRgNCw0LvRjNC00LjQutCwIiwKICAgICAgICAicGFnZSI6IDEyLAogICAgICAgICJzb3VyY2UiOiAiL3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9tZWRpYS9vcHRpbWl6ZWQvODFlN2Y3MDdjNGIxMzI5MzE1MjBlNjBlLTEyMDB3LndlYnAiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaGVhZGluZyI6ICIxMC4g0JPQtdGA0LzQtdC90LXQstGC0LjQutCwIiwKICAgICAgICAicGFnZSI6IDEzLAogICAgICAgICJzb3VyY2UiOiAiL3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9tZWRpYS9vcHRpbWl6ZWQvMWU4YzRhN2I1NTE2ZjJlMDJkNmRjNGIwLTEyODB3LndlYnAiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaGVhZGluZyI6ICIxMS4g0JPQuNC/0Y7RgCIsCiAgICAgICAgInBhZ2UiOiAxNCwKICAgICAgICAic291cmNlIjogIi9wcm9icGVyYS1saXRlcmFyeS1tYXAvbWVkaWEvb3B0aW1pemVkL2M3NWY3NTJiZGM4ZTAxN2IwNTUzMTA1ZS0xMjgwdy53ZWJwIgogICAgICB9LAogICAgICB7CiAgICAgICAgImhlYWRpbmciOiAiMTIuINCT0LvQsNC30LXRgiIsCiAgICAgICAgInBhZ2UiOiAxNSwKICAgICAgICAic291cmNlIjogIi9wcm9icGVyYS1saXRlcmFyeS1tYXAvbWVkaWEvb3B0aW1pemVkLzFhNWM1NTdmYzVmZDlkNTUzNDUwOWRiYS0xMjAwdy53ZWJwIgogICAgICB9LAogICAgICB7CiAgICAgICAgImhlYWRpbmciOiAiMTMuINCT0LXQvNCw0YLQvtC70L7Qs9C40Y8iLAogICAgICAgICJwYWdlIjogMTYsCiAgICAgICAgInNvdXJjZSI6ICIvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL21lZGlhL29wdGltaXplZC8yMGI0ZTMwMWQyNWJlNWYzMWRiYmZiOWYtMTIwMHcud2VicCIKICAgICAgfSwKICAgICAgewogICAgICAgICJoZWFkaW5nIjogIjE0LiDQk9C+0LHQtdC70LXQvSIsCiAgICAgICAgInBhZ2UiOiAxNywKICAgICAgICAic291cmNlIjogIi9wcm9icGVyYS1saXRlcmFyeS1tYXAvbWVkaWEvb3B0aW1pemVkL2M2YmU5ODhiZjc3ODE5ZTJlOGQxMDMxNi0xMjgwdy53ZWJwIgogICAgICB9LAogICAgICB7CiAgICAgICAgImhlYWRpbmciOiAiMTUuINCT0L7QtNC40L3QsCIsCiAgICAgICAgInBhZ2UiOiAxOCwKICAgICAgICAic291cmNlIjogIi9wcm9icGVyYS1saXRlcmFyeS1tYXAvbWVkaWEvb3B0aW1pemVkLzIyMGI0NzRkMTZhZGZmNDE2YjZkNTg2MC0xMjAwdy53ZWJwIgogICAgICB9LAogICAgICB7CiAgICAgICAgImhlYWRpbmciOiAiMTYuINCT0L7Qu9Cz0L7RhNCwIiwKICAgICAgICAicGFnZSI6IDE5LAogICAgICAgICJzb3VyY2UiOiAiL3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9tZWRpYS9vcHRpbWl6ZWQvNjc1YjA0OWEzNGVmOGRjMDg0YjBhYjc2LTEyMDB3LndlYnAiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaGVhZGluZyI6ICIxNy4g0JPQvtC70L7RgdC70L7QstC90YvQuSIsCiAgICAgICAgInBhZ2UiOiAyMCwKICAgICAgICAic291cmNlIjogIi9wcm9icGVyYS1saXRlcmFyeS1tYXAvbWVkaWEvb3B0aW1pemVkLzVkZWQ3NWM2MThkZDI2M2Q1NjMzNGI2MC0xMjAwdy53ZWJwIgogICAgICB9LAogICAgICB7CiAgICAgICAgImhlYWRpbmciOiAiMTguINCT0L7QvNC+0L0iLAogICAgICAgICJwYWdlIjogMjEsCiAgICAgICAgInNvdXJjZSI6ICIvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL21lZGlhL29wdGltaXplZC83MDBkOWQxOTczNzZiNjViNTZiMjYwZjYtMTI4MHcud2VicCIKICAgICAgfSwKICAgICAgewogICAgICAgICJoZWFkaW5nIjogIjE5LiDQk9C+0YDQvdC40LvQviIsCiAgICAgICAgInBhZ2UiOiAyMiwKICAgICAgICAic291cmNlIjogIi9wcm9icGVyYS1saXRlcmFyeS1tYXAvbWVkaWEvb3B0aW1pemVkL2ZkMjg5MTVlN2JiNWEzODc0M2FiMGU4Yy0xMjAwdy53ZWJwIgogICAgICB9LAogICAgICB7CiAgICAgICAgImhlYWRpbmciOiAiMjAuINCT0YDQsNGB0YHQuNGA0L7QstCw0YLRjCIsCiAgICAgICAgInBhZ2UiOiAyMywKICAgICAgICAic291cmNlIjogIi9wcm9icGVyYS1saXRlcmFyeS1tYXAvbWVkaWEvb3B0aW1pemVkL2E5ODhhNDZlNDZhNjRjNzU3YWExOGJiNC0xMjAwdy53ZWJwIgogICAgICB9LAogICAgICB7CiAgICAgICAgImhlYWRpbmciOiAiMjEuINCT0YDQsNGE0L7Qu9C+0LPQuNGPIiwKICAgICAgICAicGFnZSI6IDI0LAogICAgICAgICJzb3VyY2UiOiAiL3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9tZWRpYS9vcHRpbWl6ZWQvMDAwMTA1ZjJmYjI0M2Q3MjVhY2NjN2U4LTEyMDB3LndlYnAiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaGVhZGluZyI6ICIyMi4g0JPRgNC+0LMiLAogICAgICAgICJwYWdlIjogMjUsCiAgICAgICAgInNvdXJjZSI6ICIvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL21lZGlhL29wdGltaXplZC8wMjFjMWZjYWQzODQ2YWU3M2FlZTA0ZjAtMTIwMHcud2VicCIKICAgICAgfSwKICAgICAgewogICAgICAgICJoZWFkaW5nIjogIjIzLiDQk9GA0L7RgiIsCiAgICAgICAgInBhZ2UiOiAyNiwKICAgICAgICAic291cmNlIjogIi9wcm9icGVyYS1saXRlcmFyeS1tYXAvbWVkaWEvb3B0aW1pemVkL2MwNmM5Y2YzMTNiMTQ1YWU2Yzk5NDVjMi0xMjAwdy53ZWJwIgogICAgICB9LAogICAgICB7CiAgICAgICAgImhlYWRpbmciOiAiMjQuINCT0YDQvtGC0LXRgdC6IiwKICAgICAgICAicGFnZSI6IDI3LAogICAgICAgICJzb3VyY2UiOiAiL3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9tZWRpYS9vcHRpbWl6ZWQvNTdhYzI4YTlhOGUxZTRkZWYwMDI2ZGNkLTExNzd3LndlYnAiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaGVhZGluZyI6ICIyNS4g0JPRgNGR0LfQsCIsCiAgICAgICAgInBhZ2UiOiAyOCwKICAgICAgICAic291cmNlIjogIi9wcm9icGVyYS1saXRlcmFyeS1tYXAvbWVkaWEvb3B0aW1pemVkL2Q4ZTBlYWJiZTQzOGI5YWY1ZGNiMGI1Yi0xMjAwdy53ZWJwIgogICAgICB9CiAgICBdCiAgfQpd"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "edc5acac2e9546f16ec8-4860dfd8c2f6d42c6f39",
+          "file": "article-book-reading.spec.mjs",
+          "line": 38,
+          "column": 3
+        },
+        {
+          "title": "illustrated book preserves every page, renders illustrations and supports accessible navigation",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 11632,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m2\u001b[39m\nReceived: \u001b[31m0\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m2\u001b[39m\nReceived: \u001b[31m0\u001b[39m\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\article-book-reading.spec.mjs:351:29",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\article-book-reading.spec.mjs",
+                      "column": 29,
+                      "line": 351
+                    },
+                    "snippet": "  349 |     const title = locale === \"en\" ? source.translations.en.title : source.title;\n  350 |     expect(compactText(pageTexts.join(\"\"))).toBe(compactText(title + expectedText));\n> 351 |     expect(imagePages.size).toBe(2);\n      |                             ^\n  352 |     expect(imagePages.get(cover)).toBeGreaterThan(imagePages.get(portrait));\n  353 |     for (const src of [portrait, cover]) {\n  354 |       await expect.poll(() => page.evaluate(path => window.__articleBookImageDraws.some(value => value.src.endsWith(path)), src), { timeout: 15_000 }).toBe(true);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\article-book-reading.spec.mjs",
+                        "column": 29,
+                        "line": 351
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m2\u001b[39m\nReceived: \u001b[31m0\u001b[39m\n\n  349 |     const title = locale === \"en\" ? source.translations.en.title : source.title;\n  350 |     expect(compactText(pageTexts.join(\"\"))).toBe(compactText(title + expectedText));\n> 351 |     expect(imagePages.size).toBe(2);\n      |                             ^\n  352 |     expect(imagePages.get(cover)).toBeGreaterThan(imagePages.get(portrait));\n  353 |     for (const src of [portrait, cover]) {\n  354 |       await expect.poll(() => page.evaluate(path => window.__articleBookImageDraws.some(value => value.src.endsWith(path)), src), { timeout: 15_000 }).toBe(true);\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\article-book-reading.spec.mjs:351:29"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:00:40.193Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\main-integration\\browser-artifacts\\article-book-reading-illus-6ab07-ports-accessible-navigation-desktop-chromium\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\main-integration\\browser-artifacts\\article-book-reading-illus-6ab07-ports-accessible-navigation-desktop-chromium\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\main-integration\\browser-artifacts\\article-book-reading-illus-6ab07-ports-accessible-navigation-desktop-chromium\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\article-book-reading.spec.mjs",
+                    "column": 29,
+                    "line": 351
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "edc5acac2e9546f16ec8-3278eeb7e511e387b1fa",
+          "file": "article-book-reading.spec.mjs",
+          "line": 288,
+          "column": 1
+        },
+        {
+          "title": "a delayed illustration fills the existing book without blocking reading or resetting its page",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 12967,
+                  "error": {
+                    "message": "Error: a noninitial page contains the slow illustration\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m-1\u001b[39m",
+                    "stack": "Error: a noninitial page contains the slow illustration\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m-1\u001b[39m\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\article-book-reading.spec.mjs:434:80",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\article-book-reading.spec.mjs",
+                      "column": 80,
+                      "line": 434
+                    },
+                    "snippet": "  432 |     }\n  433 |   }\n> 434 |   expect(illustrationPage, \"a noninitial page contains the slow illustration\").toBeGreaterThan(0);\n      |                                                                                ^\n  435 |   expect(respondedAt, \"reading and page navigation work while the illustration is pending\").toBe(0);\n  436 |   expect(await page.evaluate(path => window.__articleBookImageDraws.some(value => value.src.endsWith(path)), portrait)).toBe(false);\n  437 |   await canvas.evaluate(element => { window.__delayedArticleBookCanvas = element; });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\article-book-reading.spec.mjs",
+                        "column": 80,
+                        "line": 434
+                      },
+                      "message": "Error: a noninitial page contains the slow illustration\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m-1\u001b[39m\n\n  432 |     }\n  433 |   }\n> 434 |   expect(illustrationPage, \"a noninitial page contains the slow illustration\").toBeGreaterThan(0);\n      |                                                                                ^\n  435 |   expect(respondedAt, \"reading and page navigation work while the illustration is pending\").toBe(0);\n  436 |   expect(await page.evaluate(path => window.__articleBookImageDraws.some(value => value.src.endsWith(path)), portrait)).toBe(false);\n  437 |   await canvas.evaluate(element => { window.__delayedArticleBookCanvas = element; });\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\article-book-reading.spec.mjs:434:80"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:00:53.794Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\main-integration\\browser-artifacts\\article-book-reading-a-del-4f9fc-ading-or-resetting-its-page-desktop-chromium\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\main-integration\\browser-artifacts\\article-book-reading-a-del-4f9fc-ading-or-resetting-its-page-desktop-chromium\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\main-integration\\browser-artifacts\\article-book-reading-a-del-4f9fc-ading-or-resetting-its-page-desktop-chromium\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\article-book-reading.spec.mjs",
+                    "column": 80,
+                    "line": 434
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "edc5acac2e9546f16ec8-088d50055fc807aec62f",
+          "file": "article-book-reading.spec.mjs",
+          "line": 377,
+          "column": 1
+        },
+        {
+          "title": "WebGL failure retains the complete illustrated article and responsive reading",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5245,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:01:08.578Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "edc5acac2e9546f16ec8-ad406bfc8a264a5db228",
+          "file": "article-book-reading.spec.mjs",
+          "line": 470,
+          "column": 1
+        },
+        {
+          "title": "real vocabulary illustrations stay with their own numbered entries at 100% font size",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 14743,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:04:01.754Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "real-vocabulary-image-associations",
+                      "contentType": "application/json",
+                      "body": "WwogIHsKICAgICJ3aWR0aCI6IDMyMCwKICAgICJmb250U2NhbGUiOiAxLAogICAgInBhZ2VDb3VudCI6IDI4LAogICAgImFzc29jaWF0aW9ucyI6IFsKICAgICAgewogICAgICAgICJoZWFkaW5nIjogIjEuINCT0LDQs9Cw0YDQutCwIiwKICAgICAgICAicGFnZSI6IDQsCiAgICAgICAgInNvdXJjZSI6ICIvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL21lZGlhL29wdGltaXplZC85NTkzOWFkYzk4YTE2MTA4ZjUwM2Q2OTUtMTIwMHcud2VicCIKICAgICAgfSwKICAgICAgewogICAgICAgICJoZWFkaW5nIjogIjIuINCT0LDQtNC70LjQstGL0LkiLAogICAgICAgICJwYWdlIjogNSwKICAgICAgICAic291cmNlIjogIi9wcm9icGVyYS1saXRlcmFyeS1tYXAvbWVkaWEvb3B0aW1pemVkLzAwNzFjNWU0M2Y4MjgyZDhmYmEyYjQxYS0xMjAwdy53ZWJwIgogICAgICB9LAogICAgICB7CiAgICAgICAgImhlYWRpbmciOiAiMy4g0JPQsNC70LDQvdGC0L3Ri9C5IiwKICAgICAgICAicGFnZSI6IDYsCiAgICAgICAgInNvdXJjZSI6ICIvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL21lZGlhL29wdGltaXplZC8zZTJlMTkzYTdjNTU3ODU4ZDI1MTNmZjUtMTIwMHcud2VicCIKICAgICAgfSwKICAgICAgewogICAgICAgICJoZWFkaW5nIjogIjQuINCT0LDRgNGG0LXQstCw0YLRjCIsCiAgICAgICAgInBhZ2UiOiA3LAogICAgICAgICJzb3VyY2UiOiAiL3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9tZWRpYS9vcHRpbWl6ZWQvNTgyYjM1YjU2N2NhNDEzZWVhMDcwYWIwLTEyMDB3LndlYnAiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaGVhZGluZyI6ICI1LiDQk9Cw0YLRjCIsCiAgICAgICAgInBhZ2UiOiA4LAogICAgICAgICJzb3VyY2UiOiAiL3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9tZWRpYS9vcHRpbWl6ZWQvZmExODNmMmFiZmNhZjE5YWJiODIyZWM3LTEyMDB3LndlYnAiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaGVhZGluZyI6ICI2LiDQk9C10LTQvtC90LjQt9C8IiwKICAgICAgICAicGFnZSI6IDksCiAgICAgICAgInNvdXJjZSI6ICIvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL21lZGlhL29wdGltaXplZC9mNDExYzFkN2Q5NjU0MWM4NjczYmQxYzYtMTI4MHcud2VicCIKICAgICAgfSwKICAgICAgewogICAgICAgICJoZWFkaW5nIjogIjcuINCT0LXQvdC10LfQuNGBIiwKICAgICAgICAicGFnZSI6IDEwLAogICAgICAgICJzb3VyY2UiOiAiL3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9tZWRpYS9vcHRpbWl6ZWQvNzI5MDQ3ODllMTYwMWM4ZWZmNzRhM2ExLTEyMDB3LndlYnAiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaGVhZGluZyI6ICI4LiDQk9C10L7Qs9C70LjRhCIsCiAgICAgICAgInBhZ2UiOiAxMSwKICAgICAgICAic291cmNlIjogIi9wcm9icGVyYS1saXRlcmFyeS1tYXAvbWVkaWEvb3B0aW1pemVkL2VkMTRmZjEzZTUwNWMzMWQ2N2E5MzkzMC0xMjAwdy53ZWJwIgogICAgICB9LAogICAgICB7CiAgICAgICAgImhlYWRpbmciOiAiOS4g0JPQtdGA0LDQu9GM0LTQuNC60LAiLAogICAgICAgICJwYWdlIjogMTIsCiAgICAgICAgInNvdXJjZSI6ICIvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL21lZGlhL29wdGltaXplZC84MWU3ZjcwN2M0YjEzMjkzMTUyMGU2MGUtMTIwMHcud2VicCIKICAgICAgfSwKICAgICAgewogICAgICAgICJoZWFkaW5nIjogIjEwLiDQk9C10YDQvNC10L3QtdCy0YLQuNC60LAiLAogICAgICAgICJwYWdlIjogMTMsCiAgICAgICAgInNvdXJjZSI6ICIvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL21lZGlhL29wdGltaXplZC8xZThjNGE3YjU1MTZmMmUwMmQ2ZGM0YjAtMTI4MHcud2VicCIKICAgICAgfSwKICAgICAgewogICAgICAgICJoZWFkaW5nIjogIjExLiDQk9C40L/RjtGAIiwKICAgICAgICAicGFnZSI6IDE0LAogICAgICAgICJzb3VyY2UiOiAiL3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9tZWRpYS9vcHRpbWl6ZWQvYzc1Zjc1MmJkYzhlMDE3YjA1NTMxMDVlLTEyODB3LndlYnAiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaGVhZGluZyI6ICIxMi4g0JPQu9Cw0LfQtdGCIiwKICAgICAgICAicGFnZSI6IDE1LAogICAgICAgICJzb3VyY2UiOiAiL3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9tZWRpYS9vcHRpbWl6ZWQvMWE1YzU1N2ZjNWZkOWQ1NTM0NTA5ZGJhLTEyMDB3LndlYnAiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaGVhZGluZyI6ICIxMy4g0JPQtdC80LDRgtC+0LvQvtCz0LjRjyIsCiAgICAgICAgInBhZ2UiOiAxNiwKICAgICAgICAic291cmNlIjogIi9wcm9icGVyYS1saXRlcmFyeS1tYXAvbWVkaWEvb3B0aW1pemVkLzIwYjRlMzAxZDI1YmU1ZjMxZGJiZmI5Zi0xMjAwdy53ZWJwIgogICAgICB9LAogICAgICB7CiAgICAgICAgImhlYWRpbmciOiAiMTQuINCT0L7QsdC10LvQtdC9IiwKICAgICAgICAicGFnZSI6IDE3LAogICAgICAgICJzb3VyY2UiOiAiL3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9tZWRpYS9vcHRpbWl6ZWQvYzZiZTk4OGJmNzc4MTllMmU4ZDEwMzE2LTEyODB3LndlYnAiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaGVhZGluZyI6ICIxNS4g0JPQvtC00LjQvdCwIiwKICAgICAgICAicGFnZSI6IDE4LAogICAgICAgICJzb3VyY2UiOiAiL3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9tZWRpYS9vcHRpbWl6ZWQvMjIwYjQ3NGQxNmFkZmY0MTZiNmQ1ODYwLTEyMDB3LndlYnAiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaGVhZGluZyI6ICIxNi4g0JPQvtC70LPQvtGE0LAiLAogICAgICAgICJwYWdlIjogMTksCiAgICAgICAgInNvdXJjZSI6ICIvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL21lZGlhL29wdGltaXplZC82NzViMDQ5YTM0ZWY4ZGMwODRiMGFiNzYtMTIwMHcud2VicCIKICAgICAgfSwKICAgICAgewogICAgICAgICJoZWFkaW5nIjogIjE3LiDQk9C+0LvQvtGB0LvQvtCy0L3Ri9C5IiwKICAgICAgICAicGFnZSI6IDIwLAogICAgICAgICJzb3VyY2UiOiAiL3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9tZWRpYS9vcHRpbWl6ZWQvNWRlZDc1YzYxOGRkMjYzZDU2MzM0YjYwLTEyMDB3LndlYnAiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaGVhZGluZyI6ICIxOC4g0JPQvtC80L7QvSIsCiAgICAgICAgInBhZ2UiOiAyMSwKICAgICAgICAic291cmNlIjogIi9wcm9icGVyYS1saXRlcmFyeS1tYXAvbWVkaWEvb3B0aW1pemVkLzcwMGQ5ZDE5NzM3NmI2NWI1NmIyNjBmNi0xMjgwdy53ZWJwIgogICAgICB9LAogICAgICB7CiAgICAgICAgImhlYWRpbmciOiAiMTkuINCT0L7RgNC90LjQu9C+IiwKICAgICAgICAicGFnZSI6IDIyLAogICAgICAgICJzb3VyY2UiOiAiL3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9tZWRpYS9vcHRpbWl6ZWQvZmQyODkxNWU3YmI1YTM4NzQzYWIwZThjLTEyMDB3LndlYnAiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaGVhZGluZyI6ICIyMC4g0JPRgNCw0YHRgdC40YDQvtCy0LDRgtGMIiwKICAgICAgICAicGFnZSI6IDIzLAogICAgICAgICJzb3VyY2UiOiAiL3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9tZWRpYS9vcHRpbWl6ZWQvYTk4OGE0NmU0NmE2NGM3NTdhYTE4YmI0LTEyMDB3LndlYnAiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaGVhZGluZyI6ICIyMS4g0JPRgNCw0YTQvtC70L7Qs9C40Y8iLAogICAgICAgICJwYWdlIjogMjQsCiAgICAgICAgInNvdXJjZSI6ICIvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL21lZGlhL29wdGltaXplZC8wMDAxMDVmMmZiMjQzZDcyNWFjY2M3ZTgtMTIwMHcud2VicCIKICAgICAgfSwKICAgICAgewogICAgICAgICJoZWFkaW5nIjogIjIyLiDQk9GA0L7QsyIsCiAgICAgICAgInBhZ2UiOiAyNSwKICAgICAgICAic291cmNlIjogIi9wcm9icGVyYS1saXRlcmFyeS1tYXAvbWVkaWEvb3B0aW1pemVkLzAyMWMxZmNhZDM4NDZhZTczYWVlMDRmMC0xMjAwdy53ZWJwIgogICAgICB9LAogICAgICB7CiAgICAgICAgImhlYWRpbmciOiAiMjMuINCT0YDQvtGCIiwKICAgICAgICAicGFnZSI6IDI2LAogICAgICAgICJzb3VyY2UiOiAiL3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9tZWRpYS9vcHRpbWl6ZWQvYzA2YzljZjMxM2IxNDVhZTZjOTk0NWMyLTEyMDB3LndlYnAiCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiaGVhZGluZyI6ICIyNC4g0JPRgNC+0YLQtdGB0LoiLAogICAgICAgICJwYWdlIjogMjcsCiAgICAgICAgInNvdXJjZSI6ICIvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL21lZGlhL29wdGltaXplZC81N2FjMjhhOWE4ZTFlNGRlZjAwMjZkY2QtMTE3N3cud2VicCIKICAgICAgfSwKICAgICAgewogICAgICAgICJoZWFkaW5nIjogIjI1LiDQk9GA0ZHQt9CwIiwKICAgICAgICAicGFnZSI6IDI4LAogICAgICAgICJzb3VyY2UiOiAiL3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9tZWRpYS9vcHRpbWl6ZWQvZDhlMGVhYmJlNDM4YjlhZjVkY2IwYjViLTEyMDB3LndlYnAiCiAgICAgIH0KICAgIF0KICB9Cl0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "edc5acac2e9546f16ec8-22869fb6d6ff0b234ff5",
+          "file": "article-book-reading.spec.mjs",
+          "line": 38,
+          "column": 3
+        },
+        {
+          "title": "illustrated book preserves every page, renders illustrations and supports accessible navigation",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 7318,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m2\u001b[39m\nReceived: \u001b[31m0\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m2\u001b[39m\nReceived: \u001b[31m0\u001b[39m\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\article-book-reading.spec.mjs:351:29",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\article-book-reading.spec.mjs",
+                      "column": 29,
+                      "line": 351
+                    },
+                    "snippet": "  349 |     const title = locale === \"en\" ? source.translations.en.title : source.title;\n  350 |     expect(compactText(pageTexts.join(\"\"))).toBe(compactText(title + expectedText));\n> 351 |     expect(imagePages.size).toBe(2);\n      |                             ^\n  352 |     expect(imagePages.get(cover)).toBeGreaterThan(imagePages.get(portrait));\n  353 |     for (const src of [portrait, cover]) {\n  354 |       await expect.poll(() => page.evaluate(path => window.__articleBookImageDraws.some(value => value.src.endsWith(path)), src), { timeout: 15_000 }).toBe(true);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\article-book-reading.spec.mjs",
+                        "column": 29,
+                        "line": 351
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m2\u001b[39m\nReceived: \u001b[31m0\u001b[39m\n\n  349 |     const title = locale === \"en\" ? source.translations.en.title : source.title;\n  350 |     expect(compactText(pageTexts.join(\"\"))).toBe(compactText(title + expectedText));\n> 351 |     expect(imagePages.size).toBe(2);\n      |                             ^\n  352 |     expect(imagePages.get(cover)).toBeGreaterThan(imagePages.get(portrait));\n  353 |     for (const src of [portrait, cover]) {\n  354 |       await expect.poll(() => page.evaluate(path => window.__articleBookImageDraws.some(value => value.src.endsWith(path)), src), { timeout: 15_000 }).toBe(true);\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\article-book-reading.spec.mjs:351:29"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:04:16.521Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\main-integration\\browser-artifacts\\article-book-reading-illus-6ab07-ports-accessible-navigation-mobile-chromium\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\main-integration\\browser-artifacts\\article-book-reading-illus-6ab07-ports-accessible-navigation-mobile-chromium\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\main-integration\\browser-artifacts\\article-book-reading-illus-6ab07-ports-accessible-navigation-mobile-chromium\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\article-book-reading.spec.mjs",
+                    "column": 29,
+                    "line": 351
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "edc5acac2e9546f16ec8-fd8c5f34473ed522a524",
+          "file": "article-book-reading.spec.mjs",
+          "line": 288,
+          "column": 1
+        },
+        {
+          "title": "a delayed illustration fills the existing book without blocking reading or resetting its page",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 9615,
+                  "error": {
+                    "message": "Error: a noninitial page contains the slow illustration\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m-1\u001b[39m",
+                    "stack": "Error: a noninitial page contains the slow illustration\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m-1\u001b[39m\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\article-book-reading.spec.mjs:434:80",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\article-book-reading.spec.mjs",
+                      "column": 80,
+                      "line": 434
+                    },
+                    "snippet": "  432 |     }\n  433 |   }\n> 434 |   expect(illustrationPage, \"a noninitial page contains the slow illustration\").toBeGreaterThan(0);\n      |                                                                                ^\n  435 |   expect(respondedAt, \"reading and page navigation work while the illustration is pending\").toBe(0);\n  436 |   expect(await page.evaluate(path => window.__articleBookImageDraws.some(value => value.src.endsWith(path)), portrait)).toBe(false);\n  437 |   await canvas.evaluate(element => { window.__delayedArticleBookCanvas = element; });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\article-book-reading.spec.mjs",
+                        "column": 80,
+                        "line": 434
+                      },
+                      "message": "Error: a noninitial page contains the slow illustration\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m-1\u001b[39m\n\n  432 |     }\n  433 |   }\n> 434 |   expect(illustrationPage, \"a noninitial page contains the slow illustration\").toBeGreaterThan(0);\n      |                                                                                ^\n  435 |   expect(respondedAt, \"reading and page navigation work while the illustration is pending\").toBe(0);\n  436 |   expect(await page.evaluate(path => window.__articleBookImageDraws.some(value => value.src.endsWith(path)), portrait)).toBe(false);\n  437 |   await canvas.evaluate(element => { window.__delayedArticleBookCanvas = element; });\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\article-book-reading.spec.mjs:434:80"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:04:25.589Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\main-integration\\browser-artifacts\\article-book-reading-a-del-4f9fc-ading-or-resetting-its-page-mobile-chromium\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\main-integration\\browser-artifacts\\article-book-reading-a-del-4f9fc-ading-or-resetting-its-page-mobile-chromium\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\main-integration\\browser-artifacts\\article-book-reading-a-del-4f9fc-ading-or-resetting-its-page-mobile-chromium\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\article-book-reading.spec.mjs",
+                    "column": 80,
+                    "line": 434
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "edc5acac2e9546f16ec8-2b98187bc28d60713b82",
+          "file": "article-book-reading.spec.mjs",
+          "line": 377,
+          "column": 1
+        },
+        {
+          "title": "WebGL failure retains the complete illustrated article and responsive reading",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5039,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:04:36.873Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "edc5acac2e9546f16ec8-156f41baafdc5efa425b",
+          "file": "article-book-reading.spec.mjs",
+          "line": 470,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "article-book-zoom.spec.mjs",
+      "file": "article-book-zoom.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "the physical article book enlarges, pans and resets without repagination or accidental page turns",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13839,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:01:14.242Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "book-zoom-geometry",
+                      "contentType": "application/json",
+                      "body": "ewogICJiYXNlbGluZSI6IHsKICAgICJ3aWR0aCI6IDE0MzgsCiAgICAiaGVpZ2h0IjogNzQwCiAgfSwKICAicGFnZUNvdW50IjogIjI4IiwKICAiZWRnZXMiOiB7CiAgICAicmlnaHRSZW1haW5pbmciOiAwLAogICAgImJvdHRvbVJlbWFpbmluZyI6IDAKICB9LAogICJnZW9tZXRyeSI6IHsKICAgICJvdmVyZmxvdyI6IDAsCiAgICAicmVhZGVyT3ZlcmZsb3ciOiAwLAogICAgImNvbnRyb2xzIjogWwogICAgICB7CiAgICAgICAgIndpZHRoIjogNDQsCiAgICAgICAgImhlaWdodCI6IDQ0CiAgICAgIH0sCiAgICAgIHsKICAgICAgICAid2lkdGgiOiA2NCwKICAgICAgICAiaGVpZ2h0IjogNDQKICAgICAgfSwKICAgICAgewogICAgICAgICJ3aWR0aCI6IDQ0LAogICAgICAgICJoZWlnaHQiOiA0NAogICAgICB9LAogICAgICB7CiAgICAgICAgIndpZHRoIjogOTIuMTU2MjUsCiAgICAgICAgImhlaWdodCI6IDQ0CiAgICAgIH0sCiAgICAgIHsKICAgICAgICAid2lkdGgiOiAxMDMsCiAgICAgICAgImhlaWdodCI6IDQ0CiAgICAgIH0sCiAgICAgIHsKICAgICAgICAid2lkdGgiOiAxMDEuMzQzNzUsCiAgICAgICAgImhlaWdodCI6IDQ0CiAgICAgIH0KICAgIF0sCiAgICAicGFuIjogewogICAgICAibGVmdCI6IDAsCiAgICAgICJ0b3AiOiAwCiAgICB9CiAgfQp9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2105625e5031dbbf7187-e46a6947049aeff1d91c",
+          "file": "article-book-zoom.spec.mjs",
+          "line": 6,
+          "column": 1
+        },
+        {
+          "title": "the physical article book enlarges, pans and resets without repagination or accidental page turns",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9292,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:04:42.299Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "book-zoom-geometry",
+                      "contentType": "application/json",
+                      "body": "ewogICJiYXNlbGluZSI6IHsKICAgICJ3aWR0aCI6IDMxOCwKICAgICJoZWlnaHQiOiA1ODAKICB9LAogICJwYWdlQ291bnQiOiAiMjgiLAogICJlZGdlcyI6IHsKICAgICJyaWdodFJlbWFpbmluZyI6IDAsCiAgICAiYm90dG9tUmVtYWluaW5nIjogMAogIH0sCiAgImdlb21ldHJ5IjogewogICAgIm92ZXJmbG93IjogMCwKICAgICJyZWFkZXJPdmVyZmxvdyI6IDAsCiAgICAiY29udHJvbHMiOiBbCiAgICAgIHsKICAgICAgICAid2lkdGgiOiA0NCwKICAgICAgICAiaGVpZ2h0IjogNDQKICAgICAgfSwKICAgICAgewogICAgICAgICJ3aWR0aCI6IDY0LAogICAgICAgICJoZWlnaHQiOiA0NAogICAgICB9LAogICAgICB7CiAgICAgICAgIndpZHRoIjogNDQsCiAgICAgICAgImhlaWdodCI6IDQ0CiAgICAgIH0sCiAgICAgIHsKICAgICAgICAid2lkdGgiOiA4NC4xNTYyNSwKICAgICAgICAiaGVpZ2h0IjogNDQKICAgICAgfSwKICAgICAgewogICAgICAgICJ3aWR0aCI6IDk1LAogICAgICAgICJoZWlnaHQiOiA0NAogICAgICB9LAogICAgICB7CiAgICAgICAgIndpZHRoIjogOTMuMzQzNzUsCiAgICAgICAgImhlaWdodCI6IDQ0CiAgICAgIH0KICAgIF0sCiAgICAicGFuIjogewogICAgICAibGVmdCI6IDAsCiAgICAgICJ0b3AiOiAwCiAgICB9CiAgfQp9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2105625e5031dbbf7187-0b4e713ef94d5618a64c",
+          "file": "article-book-zoom.spec.mjs",
+          "line": 6,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "reader-extended-accessibility.spec.mjs",
+      "file": "reader-extended-accessibility.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "disabled community runtime exposes honest state and preserves form text without writes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3525,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:01:28.121Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "540dc7c85b8fabdcd45b-712a90cc2da4d1715d3c",
+          "file": "reader-extended-accessibility.spec.mjs",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "real reader and canonical semantic page retain expanded text spacing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7584,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:01:31.666Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "text-spacing.json",
+                      "contentType": "application/json",
+                      "body": "WwogIHsKICAgICJ3aWR0aCI6IDE0NDAsCiAgICAicmVhZGVyT3ZlcmZsb3ciOiAwLAogICAgImJhck92ZXJmbG93IjogMCwKICAgICJjb250ZW50T3ZlcmZsb3ciOiAwLAogICAgImxpbmVIZWlnaHQiOiAxLjUsCiAgICAibGV0dGVyU3BhY2luZyI6IDAuMTIsCiAgICAid29yZFNwYWNpbmciOiAwLjE2CiAgfSwKICB7CiAgICAid2lkdGgiOiAzOTAsCiAgICAicmVhZGVyT3ZlcmZsb3ciOiAwLAogICAgImJhck92ZXJmbG93IjogMCwKICAgICJjb250ZW50T3ZlcmZsb3ciOiAwLAogICAgImxpbmVIZWlnaHQiOiAxLjUsCiAgICAibGV0dGVyU3BhY2luZyI6IDAuMTIsCiAgICAid29yZFNwYWNpbmciOiAwLjE2CiAgfSwKICB7CiAgICAid2lkdGgiOiAzOTAsCiAgICAicmVhZGVyT3ZlcmZsb3ciOiAwLAogICAgImJhck92ZXJmbG93IjogMCwKICAgICJjb250ZW50T3ZlcmZsb3ciOiAwLAogICAgImxpbmVIZWlnaHQiOiAxLjUsCiAgICAibGV0dGVyU3BhY2luZyI6IDAuMTIsCiAgICAid29yZFNwYWNpbmciOiAwLjE2CiAgfQpd"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "540dc7c85b8fabdcd45b-ba30116c422e74df751e",
+          "file": "reader-extended-accessibility.spec.mjs",
+          "line": 40,
+          "column": 1
+        },
+        {
+          "title": "request-only complex table and verse retain semantic contents and keyboard scrolling",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1882,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:01:39.268Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "540dc7c85b8fabdcd45b-7331322960fea4086bcb",
+          "file": "reader-extended-accessibility.spec.mjs",
+          "line": 97,
+          "column": 1
+        },
+        {
+          "title": "print media exposes the full source once and preserves canonical book position",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 3613,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: <= \u001b[32m1\u001b[39m\nReceived:    \u001b[31m24639\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: <= \u001b[32m1\u001b[39m\nReceived:    \u001b[31m24639\u001b[39m\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\reader-extended-accessibility.spec.mjs:180:57",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\reader-extended-accessibility.spec.mjs",
+                      "column": 57,
+                      "line": 180
+                    },
+                    "snippet": "  178 |   expect(geometry.readerPosition, \"the reader shell must not clip the printed article\").not.toBe(\"fixed\");\n  179 |   expect(geometry.scrollOverflow).toBe(\"visible\");\n> 180 |   expect(geometry.scrollHeight - geometry.clientHeight).toBeLessThanOrEqual(1);\n      |                                                         ^\n  181 |   await expect(book).toHaveAttribute(\"data-reading-anchor\", savedPosition);\n  182 |   await page.emulateMedia({ media: \"screen\" });\n  183 |   await expect(book).toBeVisible();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\reader-extended-accessibility.spec.mjs",
+                        "column": 57,
+                        "line": 180
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: <= \u001b[32m1\u001b[39m\nReceived:    \u001b[31m24639\u001b[39m\n\n  178 |   expect(geometry.readerPosition, \"the reader shell must not clip the printed article\").not.toBe(\"fixed\");\n  179 |   expect(geometry.scrollOverflow).toBe(\"visible\");\n> 180 |   expect(geometry.scrollHeight - geometry.clientHeight).toBeLessThanOrEqual(1);\n      |                                                         ^\n  181 |   await expect(book).toHaveAttribute(\"data-reading-anchor\", savedPosition);\n  182 |   await page.emulateMedia({ media: \"screen\" });\n  183 |   await expect(book).toBeVisible();\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\reader-extended-accessibility.spec.mjs:180:57"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:01:41.168Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "print-media.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJ0ZXh0TGVuZ3RoIjogMTQ0NzQsCiAgImNvbnRlbnRIZWlnaHQiOiAyMTc3NS4zNzUsCiAgImNvbHVtbnMiOiAiYXV0byIsCiAgInJlbmRlcmVyRGlzcGxheSI6ICJub25lIiwKICAicmVhZGVyUG9zaXRpb24iOiAic3RhdGljIiwKICAic2Nyb2xsT3ZlcmZsb3ciOiAidmlzaWJsZSIsCiAgInNjcm9sbEhlaWdodCI6IDI1MjkzLAogICJjbGllbnRIZWlnaHQiOiA2NTQKfQ=="
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\main-integration\\browser-artifacts\\reader-extended-accessibil-2e8a0-ves-canonical-book-position-desktop-chromium\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\main-integration\\browser-artifacts\\reader-extended-accessibil-2e8a0-ves-canonical-book-position-desktop-chromium\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\main-integration\\browser-artifacts\\reader-extended-accessibil-2e8a0-ves-canonical-book-position-desktop-chromium\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\reader-extended-accessibility.spec.mjs",
+                    "column": 57,
+                    "line": 180
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "540dc7c85b8fabdcd45b-723cd529f9eba89326ba",
+          "file": "reader-extended-accessibility.spec.mjs",
+          "line": 140,
+          "column": 1
+        },
+        {
+          "title": "disabled community runtime exposes honest state and preserves form text without writes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4034,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:04:51.631Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "540dc7c85b8fabdcd45b-0920bc5693fdab056209",
+          "file": "reader-extended-accessibility.spec.mjs",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "real reader and canonical semantic page retain expanded text spacing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4199,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:04:55.682Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "text-spacing.json",
+                      "contentType": "application/json",
+                      "body": "WwogIHsKICAgICJ3aWR0aCI6IDE0NDAsCiAgICAicmVhZGVyT3ZlcmZsb3ciOiAwLAogICAgImJhck92ZXJmbG93IjogMCwKICAgICJjb250ZW50T3ZlcmZsb3ciOiAwLAogICAgImxpbmVIZWlnaHQiOiAxLjUsCiAgICAibGV0dGVyU3BhY2luZyI6IDAuMTIsCiAgICAid29yZFNwYWNpbmciOiAwLjE2CiAgfSwKICB7CiAgICAid2lkdGgiOiAzOTAsCiAgICAicmVhZGVyT3ZlcmZsb3ciOiAwLAogICAgImJhck92ZXJmbG93IjogMCwKICAgICJjb250ZW50T3ZlcmZsb3ciOiAwLAogICAgImxpbmVIZWlnaHQiOiAxLjUsCiAgICAibGV0dGVyU3BhY2luZyI6IDAuMTIsCiAgICAid29yZFNwYWNpbmciOiAwLjE2CiAgfSwKICB7CiAgICAid2lkdGgiOiAzOTAsCiAgICAicmVhZGVyT3ZlcmZsb3ciOiAwLAogICAgImJhck92ZXJmbG93IjogMCwKICAgICJjb250ZW50T3ZlcmZsb3ciOiAwLAogICAgImxpbmVIZWlnaHQiOiAxLjUsCiAgICAibGV0dGVyU3BhY2luZyI6IDAuMTIsCiAgICAid29yZFNwYWNpbmciOiAwLjE2CiAgfQpd"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "540dc7c85b8fabdcd45b-1799a4ee5441db3b0cb1",
+          "file": "reader-extended-accessibility.spec.mjs",
+          "line": 40,
+          "column": 1
+        },
+        {
+          "title": "request-only complex table and verse retain semantic contents and keyboard scrolling",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2299,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:04:59.896Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "540dc7c85b8fabdcd45b-98bde671cff7375bded7",
+          "file": "reader-extended-accessibility.spec.mjs",
+          "line": 97,
+          "column": 1
+        },
+        {
+          "title": "print media exposes the full source once and preserves canonical book position",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 3424,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: <= \u001b[32m1\u001b[39m\nReceived:    \u001b[31m29223\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: <= \u001b[32m1\u001b[39m\nReceived:    \u001b[31m29223\u001b[39m\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\reader-extended-accessibility.spec.mjs:180:57",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\reader-extended-accessibility.spec.mjs",
+                      "column": 57,
+                      "line": 180
+                    },
+                    "snippet": "  178 |   expect(geometry.readerPosition, \"the reader shell must not clip the printed article\").not.toBe(\"fixed\");\n  179 |   expect(geometry.scrollOverflow).toBe(\"visible\");\n> 180 |   expect(geometry.scrollHeight - geometry.clientHeight).toBeLessThanOrEqual(1);\n      |                                                         ^\n  181 |   await expect(book).toHaveAttribute(\"data-reading-anchor\", savedPosition);\n  182 |   await page.emulateMedia({ media: \"screen\" });\n  183 |   await expect(book).toBeVisible();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\reader-extended-accessibility.spec.mjs",
+                        "column": 57,
+                        "line": 180
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: <= \u001b[32m1\u001b[39m\nReceived:    \u001b[31m29223\u001b[39m\n\n  178 |   expect(geometry.readerPosition, \"the reader shell must not clip the printed article\").not.toBe(\"fixed\");\n  179 |   expect(geometry.scrollOverflow).toBe(\"visible\");\n> 180 |   expect(geometry.scrollHeight - geometry.clientHeight).toBeLessThanOrEqual(1);\n      |                                                         ^\n  181 |   await expect(book).toHaveAttribute(\"data-reading-anchor\", savedPosition);\n  182 |   await page.emulateMedia({ media: \"screen\" });\n  183 |   await expect(book).toBeVisible();\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\reader-extended-accessibility.spec.mjs:180:57"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:05:02.212Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "print-media.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJ0ZXh0TGVuZ3RoIjogMTQ0NzQsCiAgImNvbnRlbnRIZWlnaHQiOiAyNDEzNS45ODQzNzUsCiAgImNvbHVtbnMiOiAiYXV0byIsCiAgInJlbmRlcmVyRGlzcGxheSI6ICJub25lIiwKICAicmVhZGVyUG9zaXRpb24iOiAic3RhdGljIiwKICAic2Nyb2xsT3ZlcmZsb3ciOiAidmlzaWJsZSIsCiAgInNjcm9sbEhlaWdodCI6IDI5OTYyLAogICJjbGllbnRIZWlnaHQiOiA3MzkKfQ=="
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\main-integration\\browser-artifacts\\reader-extended-accessibil-2e8a0-ves-canonical-book-position-mobile-chromium\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\main-integration\\browser-artifacts\\reader-extended-accessibil-2e8a0-ves-canonical-book-position-mobile-chromium\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\main-integration\\browser-artifacts\\reader-extended-accessibil-2e8a0-ves-canonical-book-position-mobile-chromium\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\reader-extended-accessibility.spec.mjs",
+                    "column": 57,
+                    "line": 180
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "540dc7c85b8fabdcd45b-e30fd504300fda541a0d",
+          "file": "reader-extended-accessibility.spec.mjs",
+          "line": 140,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "ui-polish-backgrounds.spec.mjs",
+      "file": "ui-polish-backgrounds.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "V4 artwork remains outside controls and follows real section bounds at 1440",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10986,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:01:46.602Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "brush-bounds-1440",
+                      "contentType": "application/json",
+                      "body": "ewogICJ3aWR0aCI6IDE0NDAsCiAgImVhcmx5IjogWwogICAgImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIKICBdLAogICJtZWFzdXJlbWVudHMiOiBbCiAgICB7CiAgICAgICJpZCI6ICJhdGxhcyIsCiAgICAgICJoZWlnaHQiOiAxNDYzLjEyNSwKICAgICAgImJvdHRvbURlbHRhIjogMCwKICAgICAgImFydGlmaWNpYWxKb2lucyI6IDAsCiAgICAgICJwb2ludGVyIjogIm5vbmUiLAogICAgICAiaGlkZGVuIjogInRydWUiLAogICAgICAiaW1hZ2VzIjogWwogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogNjAwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDU0LjI4MTI1LAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA2MDAsCiAgICAgICAgICAiY29sb3IiOiAid2hpdGUiCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDExNDAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogODQwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiAxNDksCiAgICAgICAgICAiY29sb3IiOiAib3JhbmdlIgogICAgICAgIH0KICAgICAgXSwKICAgICAgImdyYWRpZW50cyI6ICJub25lIiwKICAgICAgIm92ZXJsYXlPdmVyZmxvdyI6ICJ2aXNpYmxlIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImJvb2stZGF5IiwKICAgICAgImhlaWdodCI6IDEwMTAuMzI4MTI1LAogICAgICAiYm90dG9tRGVsdGEiOiAwLAogICAgICAiYXJ0aWZpY2lhbEpvaW5zIjogMCwKICAgICAgInBvaW50ZXIiOiAibm9uZSIsCiAgICAgICJoaWRkZW4iOiAidHJ1ZSIsCiAgICAgICJpbWFnZXMiOiBbCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiA2MDAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogNDcwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA5My41NjI1LAogICAgICAgICAgImNvbG9yIjogIndoaXRlIgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiAxMTQwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDg0MCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogMjE0LjI4MTI1LAogICAgICAgICAgImNvbG9yIjogIm9yYW5nZSIKICAgICAgICB9CiAgICAgIF0sCiAgICAgICJncmFkaWVudHMiOiAibm9uZSIsCiAgICAgICJvdmVybGF5T3ZlcmZsb3ciOiAidmlzaWJsZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJib29rcyIsCiAgICAgICJoZWlnaHQiOiAxMzQwLjQwNjI1LAogICAgICAiYm90dG9tRGVsdGEiOiAwLAogICAgICAiYXJ0aWZpY2lhbEpvaW5zIjogMCwKICAgICAgInBvaW50ZXIiOiAibm9uZSIsCiAgICAgICJoaWRkZW4iOiAidHJ1ZSIsCiAgICAgICJpbWFnZXMiOiBbCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiA2MDAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogNTQuMjgxMjUsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDYwMCwKICAgICAgICAgICJjb2xvciI6ICJ2aW9sZXQiCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDExNDAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogNzUwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiAyNjQuMjgxMjUsCiAgICAgICAgICAiY29sb3IiOiAib3JhbmdlIgogICAgICAgIH0KICAgICAgXSwKICAgICAgImdyYWRpZW50cyI6ICJub25lIiwKICAgICAgIm92ZXJsYXlPdmVyZmxvdyI6ICJ2aXNpYmxlIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImZlYXR1cmVkLWpvdXJuYWwiLAogICAgICAiaGVpZ2h0IjogODgxLAogICAgICAiYm90dG9tRGVsdGEiOiAwLAogICAgICAiYXJ0aWZpY2lhbEpvaW5zIjogMCwKICAgICAgInBvaW50ZXIiOiAibm9uZSIsCiAgICAgICJoaWRkZW4iOiAidHJ1ZSIsCiAgICAgICJpbWFnZXMiOiBbCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiA2MDAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogNDAwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA4My41NjI1LAogICAgICAgICAgImNvbG9yIjogIndoaXRlIgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiAxMTQwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDg0MCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogMjE0LjI4MTI1LAogICAgICAgICAgImNvbG9yIjogIm9yYW5nZSIKICAgICAgICB9CiAgICAgIF0sCiAgICAgICJncmFkaWVudHMiOiAibm9uZSIsCiAgICAgICJvdmVybGF5T3ZlcmZsb3ciOiAidmlzaWJsZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJyZWFkZXItZGlzY3Vzc2lvbiIsCiAgICAgICJoZWlnaHQiOiA2MjkuMDMxMjUsCiAgICAgICJib3R0b21EZWx0YSI6IDAsCiAgICAgICJhcnRpZmljaWFsSm9pbnMiOiAwLAogICAgICAicG9pbnRlciI6ICJub25lIiwKICAgICAgImhpZGRlbiI6ICJ0cnVlIiwKICAgICAgImltYWdlcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDYwMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiA1NC4yODEyNSwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogNDY4Ljc5Njg3NSwKICAgICAgICAgICJjb2xvciI6ICJ2aW9sZXQiCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDExNDAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogODQwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiAyMTQuMjgxMjUsCiAgICAgICAgICAiY29sb3IiOiAib3JhbmdlIgogICAgICAgIH0KICAgICAgXSwKICAgICAgImdyYWRpZW50cyI6ICJub25lIiwKICAgICAgIm92ZXJsYXlPdmVyZmxvdyI6ICJ2aXNpYmxlIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImpvdXJuYWwiLAogICAgICAiaGVpZ2h0IjogMzMxNC40Njg3NSwKICAgICAgImJvdHRvbURlbHRhIjogMCwKICAgICAgImFydGlmaWNpYWxKb2lucyI6IDAsCiAgICAgICJwb2ludGVyIjogIm5vbmUiLAogICAgICAiaGlkZGVuIjogInRydWUiLAogICAgICAiaW1hZ2VzIjogWwogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogNjAwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDQ1MCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogNzguNTYyNSwKICAgICAgICAgICJjb2xvciI6ICJ3aGl0ZSIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogMTE0MCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiA4NDAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDIxNC4yODEyNSwKICAgICAgICAgICJjb2xvciI6ICJvcmFuZ2UiCiAgICAgICAgfQogICAgICBdLAogICAgICAiZ3JhZGllbnRzIjogIm5vbmUiLAogICAgICAib3ZlcmxheU92ZXJmbG93IjogInZpc2libGUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAiYXV0aG9ycyIsCiAgICAgICJoZWlnaHQiOiA3NDEsCiAgICAgICJib3R0b21EZWx0YSI6IDAsCiAgICAgICJhcnRpZmljaWFsSm9pbnMiOiAwLAogICAgICAicG9pbnRlciI6ICJub25lIiwKICAgICAgImhpZGRlbiI6ICJ0cnVlIiwKICAgICAgImltYWdlcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDYwMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiA1NC4yODEyNSwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogNTE5LjE3MTg3NSwKICAgICAgICAgICJjb2xvciI6ICJ2aW9sZXQiCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDExNDAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogODYwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiAxMDQsCiAgICAgICAgICAiY29sb3IiOiAib3JhbmdlIgogICAgICAgIH0KICAgICAgXSwKICAgICAgImdyYWRpZW50cyI6ICJub25lIiwKICAgICAgIm92ZXJsYXlPdmVyZmxvdyI6ICJ2aXNpYmxlIgogICAgfSwKICAgIHsKICAgICAgImlkIjogInNlY3Rpb25zIiwKICAgICAgImhlaWdodCI6IDE0MjguOTg0Mzc1LAogICAgICAiYm90dG9tRGVsdGEiOiAwLAogICAgICAiYXJ0aWZpY2lhbEpvaW5zIjogMCwKICAgICAgInBvaW50ZXIiOiAibm9uZSIsCiAgICAgICJoaWRkZW4iOiAidHJ1ZSIsCiAgICAgICJpbWFnZXMiOiBbCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiA2MDAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogNDgwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA4OC41NjI1LAogICAgICAgICAgImNvbG9yIjogIndoaXRlIgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiAxMTQwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDgyMCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogMjE0LjI4MTI1LAogICAgICAgICAgImNvbG9yIjogIm9yYW5nZSIKICAgICAgICB9CiAgICAgIF0sCiAgICAgICJncmFkaWVudHMiOiAibm9uZSIsCiAgICAgICJvdmVybGF5T3ZlcmZsb3ciOiAidmlzaWJsZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJjYWxlbmRhciIsCiAgICAgICJoZWlnaHQiOiAxMTg0LjA3ODEyNSwKICAgICAgImJvdHRvbURlbHRhIjogMCwKICAgICAgImFydGlmaWNpYWxKb2lucyI6IDAsCiAgICAgICJwb2ludGVyIjogIm5vbmUiLAogICAgICAiaGlkZGVuIjogInRydWUiLAogICAgICAiaW1hZ2VzIjogWwogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogNjAwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDU0LjI4MTI1LAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA2MDAsCiAgICAgICAgICAiY29sb3IiOiAidmlvbGV0IgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiAxMTQwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDg0MCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogMjE0LjI4MTI1LAogICAgICAgICAgImNvbG9yIjogIm9yYW5nZSIKICAgICAgICB9CiAgICAgIF0sCiAgICAgICJncmFkaWVudHMiOiAibm9uZSIsCiAgICAgICJvdmVybGF5T3ZlcmZsb3ciOiAidmlzaWJsZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJlZGl0b3JpYWwtcG9saWN5IiwKICAgICAgImhlaWdodCI6IDYzNC4xNTYyNSwKICAgICAgImJvdHRvbURlbHRhIjogMCwKICAgICAgImFydGlmaWNpYWxKb2lucyI6IDAsCiAgICAgICJwb2ludGVyIjogIm5vbmUiLAogICAgICAiaGlkZGVuIjogInRydWUiLAogICAgICAiaW1hZ2VzIjogWwogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogNjAwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDQwMCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogOTMuNTYyNSwKICAgICAgICAgICJjb2xvciI6ICJ3aGl0ZSIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogMTE0MCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiA4NDAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDIxNC4yODEyNSwKICAgICAgICAgICJjb2xvciI6ICJvcmFuZ2UiCiAgICAgICAgfQogICAgICBdLAogICAgICAiZ3JhZGllbnRzIjogIm5vbmUiLAogICAgICAib3ZlcmxheU92ZXJmbG93IjogInZpc2libGUiCiAgICB9CiAgXSwKICAiaGVpZ2h0Q2hhbmdlIjogWwogICAgMzMxNC40Njg3NSwKICAgIDc4OS45Njg3NQogIF0KfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "398feaa804a845a82b80-463b49d105d22f9c54ae",
+          "file": "ui-polish-backgrounds.spec.mjs",
+          "line": 20,
+          "column": 50
+        },
+        {
+          "title": "V4 artwork remains outside controls and follows real section bounds at 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9597,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:01:57.953Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "brush-bounds-390",
+                      "contentType": "application/json",
+                      "body": "ewogICJ3aWR0aCI6IDM5MCwKICAiZWFybHkiOiBbCiAgICAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIgogIF0sCiAgIm1lYXN1cmVtZW50cyI6IFsKICAgIHsKICAgICAgImlkIjogImF0bGFzIiwKICAgICAgImhlaWdodCI6IDEzNTYuODEyNSwKICAgICAgImJvdHRvbURlbHRhIjogMCwKICAgICAgImFydGlmaWNpYWxKb2lucyI6IDAsCiAgICAgICJwb2ludGVyIjogIm5vbmUiLAogICAgICAiaGlkZGVuIjogInRydWUiLAogICAgICAiaW1hZ2VzIjogWwogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogMzMwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDE3Ljg1MTU2MjUsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDMzMCwKICAgICAgICAgICJjb2xvciI6ICJ3aGl0ZSIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogNTEwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDM1MCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogNTguMjgxMjUsCiAgICAgICAgICAiY29sb3IiOiAib3JhbmdlIgogICAgICAgIH0KICAgICAgXSwKICAgICAgImdyYWRpZW50cyI6ICJub25lIiwKICAgICAgIm92ZXJsYXlPdmVyZmxvdyI6ICJ2aXNpYmxlIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImJvb2stZGF5IiwKICAgICAgImhlaWdodCI6IDIyMzkuMjUsCiAgICAgICJib3R0b21EZWx0YSI6IDAsCiAgICAgICJhcnRpZmljaWFsSm9pbnMiOiAwLAogICAgICAicG9pbnRlciI6ICJub25lIiwKICAgICAgImhpZGRlbiI6ICJ0cnVlIiwKICAgICAgImltYWdlcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDMzMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiAyNDAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDQ5LjcwMzEyNSwKICAgICAgICAgICJjb2xvciI6ICJ3aGl0ZSIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogNTEwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDM1MCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogODkuMjgxMjUsCiAgICAgICAgICAiY29sb3IiOiAib3JhbmdlIgogICAgICAgIH0KICAgICAgXSwKICAgICAgImdyYWRpZW50cyI6ICJub25lIiwKICAgICAgIm92ZXJsYXlPdmVyZmxvdyI6ICJ2aXNpYmxlIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImJvb2tzIiwKICAgICAgImhlaWdodCI6IDE1MzMuOTA2MjUsCiAgICAgICJib3R0b21EZWx0YSI6IDAsCiAgICAgICJhcnRpZmljaWFsSm9pbnMiOiAwLAogICAgICAicG9pbnRlciI6ICJub25lIiwKICAgICAgImhpZGRlbiI6ICJ0cnVlIiwKICAgICAgImltYWdlcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDMzMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiAxNy44NTE1NjI1LAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiAzMzAsCiAgICAgICAgICAiY29sb3IiOiAidmlvbGV0IgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiA1MTAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogMzUwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA4OS4yODEyNSwKICAgICAgICAgICJjb2xvciI6ICJvcmFuZ2UiCiAgICAgICAgfQogICAgICBdLAogICAgICAiZ3JhZGllbnRzIjogIm5vbmUiLAogICAgICAib3ZlcmxheU92ZXJmbG93IjogInZpc2libGUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAiZmVhdHVyZWQtam91cm5hbCIsCiAgICAgICJoZWlnaHQiOiAyNjc4LjA3ODEyNSwKICAgICAgImJvdHRvbURlbHRhIjogMCwKICAgICAgImFydGlmaWNpYWxKb2lucyI6IDAsCiAgICAgICJwb2ludGVyIjogIm5vbmUiLAogICAgICAiaGlkZGVuIjogInRydWUiLAogICAgICAiaW1hZ2VzIjogWwogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogMzMwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDI0MCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogNDkuNzAzMTI1LAogICAgICAgICAgImNvbG9yIjogIndoaXRlIgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiA1MTAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogMzUwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA4OS4yODEyNSwKICAgICAgICAgICJjb2xvciI6ICJvcmFuZ2UiCiAgICAgICAgfQogICAgICBdLAogICAgICAiZ3JhZGllbnRzIjogIm5vbmUiLAogICAgICAib3ZlcmxheU92ZXJmbG93IjogInZpc2libGUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAicmVhZGVyLWRpc2N1c3Npb24iLAogICAgICAiaGVpZ2h0IjogMTA5NS4zNzUsCiAgICAgICJib3R0b21EZWx0YSI6IDAsCiAgICAgICJhcnRpZmljaWFsSm9pbnMiOiAwLAogICAgICAicG9pbnRlciI6ICJub25lIiwKICAgICAgImhpZGRlbiI6ICJ0cnVlIiwKICAgICAgImltYWdlcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDMzMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiAxNy44NTE1NjI1LAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiAzMzAsCiAgICAgICAgICAiY29sb3IiOiAidmlvbGV0IgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiA1MTAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogMzUwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA4OS4yODEyNSwKICAgICAgICAgICJjb2xvciI6ICJvcmFuZ2UiCiAgICAgICAgfQogICAgICBdLAogICAgICAiZ3JhZGllbnRzIjogIm5vbmUiLAogICAgICAib3ZlcmxheU92ZXJmbG93IjogInZpc2libGUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAiam91cm5hbCIsCiAgICAgICJoZWlnaHQiOiA3ODcxLjY1NjI1LAogICAgICAiYm90dG9tRGVsdGEiOiAwLAogICAgICAiYXJ0aWZpY2lhbEpvaW5zIjogMCwKICAgICAgInBvaW50ZXIiOiAibm9uZSIsCiAgICAgICJoaWRkZW4iOiAidHJ1ZSIsCiAgICAgICJpbWFnZXMiOiBbCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiAzMzAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogMjQwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA0OS43MDMxMjUsCiAgICAgICAgICAiY29sb3IiOiAid2hpdGUiCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDUxMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiAzNTAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDg5LjI4MTI1LAogICAgICAgICAgImNvbG9yIjogIm9yYW5nZSIKICAgICAgICB9CiAgICAgIF0sCiAgICAgICJncmFkaWVudHMiOiAibm9uZSIsCiAgICAgICJvdmVybGF5T3ZlcmZsb3ciOiAidmlzaWJsZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJhdXRob3JzIiwKICAgICAgImhlaWdodCI6IDIxOTguODc1LAogICAgICAiYm90dG9tRGVsdGEiOiAwLAogICAgICAiYXJ0aWZpY2lhbEpvaW5zIjogMCwKICAgICAgInBvaW50ZXIiOiAibm9uZSIsCiAgICAgICJoaWRkZW4iOiAidHJ1ZSIsCiAgICAgICJpbWFnZXMiOiBbCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiAzMzAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogMTcuODUxNTYyNSwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogMzMwLAogICAgICAgICAgImNvbG9yIjogInZpb2xldCIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogNTEwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDM1MCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogNTguMjgxMjUsCiAgICAgICAgICAiY29sb3IiOiAib3JhbmdlIgogICAgICAgIH0KICAgICAgXSwKICAgICAgImdyYWRpZW50cyI6ICJub25lIiwKICAgICAgIm92ZXJsYXlPdmVyZmxvdyI6ICJ2aXNpYmxlIgogICAgfSwKICAgIHsKICAgICAgImlkIjogInNlY3Rpb25zIiwKICAgICAgImhlaWdodCI6IDMyNzAuMTI1LAogICAgICAiYm90dG9tRGVsdGEiOiAwLAogICAgICAiYXJ0aWZpY2lhbEpvaW5zIjogMCwKICAgICAgInBvaW50ZXIiOiAibm9uZSIsCiAgICAgICJoaWRkZW4iOiAidHJ1ZSIsCiAgICAgICJpbWFnZXMiOiBbCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiAzMzAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogMjUwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA0OS43MDMxMjUsCiAgICAgICAgICAiY29sb3IiOiAid2hpdGUiCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDUxMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiAzNDUsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDg5LjI4MTI1LAogICAgICAgICAgImNvbG9yIjogIm9yYW5nZSIKICAgICAgICB9CiAgICAgIF0sCiAgICAgICJncmFkaWVudHMiOiAibm9uZSIsCiAgICAgICJvdmVybGF5T3ZlcmZsb3ciOiAidmlzaWJsZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJjYWxlbmRhciIsCiAgICAgICJoZWlnaHQiOiAxNjY1LjI1LAogICAgICAiYm90dG9tRGVsdGEiOiAwLAogICAgICAiYXJ0aWZpY2lhbEpvaW5zIjogMCwKICAgICAgInBvaW50ZXIiOiAibm9uZSIsCiAgICAgICJoaWRkZW4iOiAidHJ1ZSIsCiAgICAgICJpbWFnZXMiOiBbCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiAzMzAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogMTcuODUxNTYyNSwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogMzMwLAogICAgICAgICAgImNvbG9yIjogInZpb2xldCIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogNTEwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDM1MCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogODkuMjgxMjUsCiAgICAgICAgICAiY29sb3IiOiAib3JhbmdlIgogICAgICAgIH0KICAgICAgXSwKICAgICAgImdyYWRpZW50cyI6ICJub25lIiwKICAgICAgIm92ZXJsYXlPdmVyZmxvdyI6ICJ2aXNpYmxlIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImVkaXRvcmlhbC1wb2xpY3kiLAogICAgICAiaGVpZ2h0IjogOTgxLjUzMTI1LAogICAgICAiYm90dG9tRGVsdGEiOiAwLAogICAgICAiYXJ0aWZpY2lhbEpvaW5zIjogMCwKICAgICAgInBvaW50ZXIiOiAibm9uZSIsCiAgICAgICJoaWRkZW4iOiAidHJ1ZSIsCiAgICAgICJpbWFnZXMiOiBbCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiAzMzAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogMjQwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA0OS43MDMxMjUsCiAgICAgICAgICAiY29sb3IiOiAid2hpdGUiCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDUxMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiAzNTAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDg5LjI4MTI1LAogICAgICAgICAgImNvbG9yIjogIm9yYW5nZSIKICAgICAgICB9CiAgICAgIF0sCiAgICAgICJncmFkaWVudHMiOiAibm9uZSIsCiAgICAgICJvdmVybGF5T3ZlcmZsb3ciOiAidmlzaWJsZSIKICAgIH0KICBdLAogICJoZWlnaHRDaGFuZ2UiOiBbCiAgICA3ODcxLjY1NjI1LAogICAgMTAxMS4wNzgxMjUKICBdCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "398feaa804a845a82b80-2f13e1793acc7a239589",
+          "file": "ui-polish-backgrounds.spec.mjs",
+          "line": 20,
+          "column": 50
+        },
+        {
+          "title": "V4 artwork remains outside controls and follows real section bounds at 320",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6663,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:02:07.567Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "brush-bounds-320",
+                      "contentType": "application/json",
+                      "body": "ewogICJ3aWR0aCI6IDMyMCwKICAiZWFybHkiOiBbCiAgICAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIgogIF0sCiAgIm1lYXN1cmVtZW50cyI6IFsKICAgIHsKICAgICAgImlkIjogImF0bGFzIiwKICAgICAgImhlaWdodCI6IDEzODMuODc1LAogICAgICAiYm90dG9tRGVsdGEiOiAwLAogICAgICAiYXJ0aWZpY2lhbEpvaW5zIjogMCwKICAgICAgInBvaW50ZXIiOiAibm9uZSIsCiAgICAgICJoaWRkZW4iOiAidHJ1ZSIsCiAgICAgICJpbWFnZXMiOiBbCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiAzMzAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogMTcuODUxNTYyNSwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogMzMwLAogICAgICAgICAgImNvbG9yIjogIndoaXRlIgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiA1MTAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogMzIwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA1OC4yODEyNSwKICAgICAgICAgICJjb2xvciI6ICJvcmFuZ2UiCiAgICAgICAgfQogICAgICBdLAogICAgICAiZ3JhZGllbnRzIjogIm5vbmUiLAogICAgICAib3ZlcmxheU92ZXJmbG93IjogInZpc2libGUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAiYm9vay1kYXkiLAogICAgICAiaGVpZ2h0IjogMjQyMS4xNTYyNSwKICAgICAgImJvdHRvbURlbHRhIjogMCwKICAgICAgImFydGlmaWNpYWxKb2lucyI6IDAsCiAgICAgICJwb2ludGVyIjogIm5vbmUiLAogICAgICAiaGlkZGVuIjogInRydWUiLAogICAgICAiaW1hZ2VzIjogWwogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogMzMwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDI0MCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogNDkuNzAzMTI1LAogICAgICAgICAgImNvbG9yIjogIndoaXRlIgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiA1MTAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogMzIwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA4OS4yODEyNSwKICAgICAgICAgICJjb2xvciI6ICJvcmFuZ2UiCiAgICAgICAgfQogICAgICBdLAogICAgICAiZ3JhZGllbnRzIjogIm5vbmUiLAogICAgICAib3ZlcmxheU92ZXJmbG93IjogInZpc2libGUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAiYm9va3MiLAogICAgICAiaGVpZ2h0IjogMTU2MC4yOTY4NzUsCiAgICAgICJib3R0b21EZWx0YSI6IDAsCiAgICAgICJhcnRpZmljaWFsSm9pbnMiOiAwLAogICAgICAicG9pbnRlciI6ICJub25lIiwKICAgICAgImhpZGRlbiI6ICJ0cnVlIiwKICAgICAgImltYWdlcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDMzMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiAxNy44NTE1NjI1LAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiAzMzAsCiAgICAgICAgICAiY29sb3IiOiAidmlvbGV0IgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiA1MTAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogMzIwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA4OS4yODEyNSwKICAgICAgICAgICJjb2xvciI6ICJvcmFuZ2UiCiAgICAgICAgfQogICAgICBdLAogICAgICAiZ3JhZGllbnRzIjogIm5vbmUiLAogICAgICAib3ZlcmxheU92ZXJmbG93IjogInZpc2libGUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAiZmVhdHVyZWQtam91cm5hbCIsCiAgICAgICJoZWlnaHQiOiAyNTk0LjI4MTI1LAogICAgICAiYm90dG9tRGVsdGEiOiAwLAogICAgICAiYXJ0aWZpY2lhbEpvaW5zIjogMCwKICAgICAgInBvaW50ZXIiOiAibm9uZSIsCiAgICAgICJoaWRkZW4iOiAidHJ1ZSIsCiAgICAgICJpbWFnZXMiOiBbCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiAzMzAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogMjQwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA0OS43MDMxMjUsCiAgICAgICAgICAiY29sb3IiOiAid2hpdGUiCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDUxMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiAzMjAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDg5LjI4MTI1LAogICAgICAgICAgImNvbG9yIjogIm9yYW5nZSIKICAgICAgICB9CiAgICAgIF0sCiAgICAgICJncmFkaWVudHMiOiAibm9uZSIsCiAgICAgICJvdmVybGF5T3ZlcmZsb3ciOiAidmlzaWJsZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJyZWFkZXItZGlzY3Vzc2lvbiIsCiAgICAgICJoZWlnaHQiOiAxMjczLjg0Mzc1LAogICAgICAiYm90dG9tRGVsdGEiOiAwLAogICAgICAiYXJ0aWZpY2lhbEpvaW5zIjogMCwKICAgICAgInBvaW50ZXIiOiAibm9uZSIsCiAgICAgICJoaWRkZW4iOiAidHJ1ZSIsCiAgICAgICJpbWFnZXMiOiBbCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiAzMzAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogMTcuODUxNTYyNSwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogMzMwLAogICAgICAgICAgImNvbG9yIjogInZpb2xldCIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogNTEwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDMyMCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogODkuMjgxMjUsCiAgICAgICAgICAiY29sb3IiOiAib3JhbmdlIgogICAgICAgIH0KICAgICAgXSwKICAgICAgImdyYWRpZW50cyI6ICJub25lIiwKICAgICAgIm92ZXJsYXlPdmVyZmxvdyI6ICJ2aXNpYmxlIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImpvdXJuYWwiLAogICAgICAiaGVpZ2h0IjogODA4OC41LAogICAgICAiYm90dG9tRGVsdGEiOiAwLAogICAgICAiYXJ0aWZpY2lhbEpvaW5zIjogMCwKICAgICAgInBvaW50ZXIiOiAibm9uZSIsCiAgICAgICJoaWRkZW4iOiAidHJ1ZSIsCiAgICAgICJpbWFnZXMiOiBbCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiAzMzAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogMjQwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA0OS43MDMxMjUsCiAgICAgICAgICAiY29sb3IiOiAid2hpdGUiCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDUxMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiAzMjAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDg5LjI4MTI1LAogICAgICAgICAgImNvbG9yIjogIm9yYW5nZSIKICAgICAgICB9CiAgICAgIF0sCiAgICAgICJncmFkaWVudHMiOiAibm9uZSIsCiAgICAgICJvdmVybGF5T3ZlcmZsb3ciOiAidmlzaWJsZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJhdXRob3JzIiwKICAgICAgImhlaWdodCI6IDE5MzguODc1LAogICAgICAiYm90dG9tRGVsdGEiOiAwLAogICAgICAiYXJ0aWZpY2lhbEpvaW5zIjogMCwKICAgICAgInBvaW50ZXIiOiAibm9uZSIsCiAgICAgICJoaWRkZW4iOiAidHJ1ZSIsCiAgICAgICJpbWFnZXMiOiBbCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiAzMzAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogMTcuODUxNTYyNSwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogMzMwLAogICAgICAgICAgImNvbG9yIjogInZpb2xldCIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogNTEwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDMyMCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogNTguMjgxMjUsCiAgICAgICAgICAiY29sb3IiOiAib3JhbmdlIgogICAgICAgIH0KICAgICAgXSwKICAgICAgImdyYWRpZW50cyI6ICJub25lIiwKICAgICAgIm92ZXJsYXlPdmVyZmxvdyI6ICJ2aXNpYmxlIgogICAgfSwKICAgIHsKICAgICAgImlkIjogInNlY3Rpb25zIiwKICAgICAgImhlaWdodCI6IDM2ODguMzI4MTI1LAogICAgICAiYm90dG9tRGVsdGEiOiAwLAogICAgICAiYXJ0aWZpY2lhbEpvaW5zIjogMCwKICAgICAgInBvaW50ZXIiOiAibm9uZSIsCiAgICAgICJoaWRkZW4iOiAidHJ1ZSIsCiAgICAgICJpbWFnZXMiOiBbCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiAzMzAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogMjUwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA0OS43MDMxMjUsCiAgICAgICAgICAiY29sb3IiOiAid2hpdGUiCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDUxMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiAzMjAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDg5LjI4MTI1LAogICAgICAgICAgImNvbG9yIjogIm9yYW5nZSIKICAgICAgICB9CiAgICAgIF0sCiAgICAgICJncmFkaWVudHMiOiAibm9uZSIsCiAgICAgICJvdmVybGF5T3ZlcmZsb3ciOiAidmlzaWJsZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJjYWxlbmRhciIsCiAgICAgICJoZWlnaHQiOiAxNjk4LjUzMTI1LAogICAgICAiYm90dG9tRGVsdGEiOiAwLAogICAgICAiYXJ0aWZpY2lhbEpvaW5zIjogMCwKICAgICAgInBvaW50ZXIiOiAibm9uZSIsCiAgICAgICJoaWRkZW4iOiAidHJ1ZSIsCiAgICAgICJpbWFnZXMiOiBbCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiAzMzAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogMTcuODUxNTYyNSwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogMzMwLAogICAgICAgICAgImNvbG9yIjogInZpb2xldCIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogNTEwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDMyMCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogODkuMjgxMjUsCiAgICAgICAgICAiY29sb3IiOiAib3JhbmdlIgogICAgICAgIH0KICAgICAgXSwKICAgICAgImdyYWRpZW50cyI6ICJub25lIiwKICAgICAgIm92ZXJsYXlPdmVyZmxvdyI6ICJ2aXNpYmxlIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImVkaXRvcmlhbC1wb2xpY3kiLAogICAgICAiaGVpZ2h0IjogMTA3MCwKICAgICAgImJvdHRvbURlbHRhIjogMCwKICAgICAgImFydGlmaWNpYWxKb2lucyI6IDAsCiAgICAgICJwb2ludGVyIjogIm5vbmUiLAogICAgICAiaGlkZGVuIjogInRydWUiLAogICAgICAiaW1hZ2VzIjogWwogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogMzMwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDI0MCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogNDkuNzAzMTI1LAogICAgICAgICAgImNvbG9yIjogIndoaXRlIgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiA1MTAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogMzIwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA4OS4yODEyNSwKICAgICAgICAgICJjb2xvciI6ICJvcmFuZ2UiCiAgICAgICAgfQogICAgICBdLAogICAgICAiZ3JhZGllbnRzIjogIm5vbmUiLAogICAgICAib3ZlcmxheU92ZXJmbG93IjogInZpc2libGUiCiAgICB9CiAgXSwKICAiaGVpZ2h0Q2hhbmdlIjogWwogICAgODA4OC41LAogICAgMTExMC4yMzQzNzUKICBdCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "398feaa804a845a82b80-c2bd67708490fa3aa895",
+          "file": "ui-polish-backgrounds.spec.mjs",
+          "line": 20,
+          "column": 50
+        },
+        {
+          "title": "V4 artwork remains outside controls and follows real section bounds at 768",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6848,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:02:14.247Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "brush-bounds-768",
+                      "contentType": "application/json",
+                      "body": "ewogICJ3aWR0aCI6IDc2OCwKICAiZWFybHkiOiBbCiAgICAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIgogIF0sCiAgIm1lYXN1cmVtZW50cyI6IFsKICAgIHsKICAgICAgImlkIjogImF0bGFzIiwKICAgICAgImhlaWdodCI6IDE0MzIuMzEyNSwKICAgICAgImJvdHRvbURlbHRhIjogMCwKICAgICAgImFydGlmaWNpYWxKb2lucyI6IDAsCiAgICAgICJwb2ludGVyIjogIm5vbmUiLAogICAgICAiaGlkZGVuIjogInRydWUiLAogICAgICAiaW1hZ2VzIjogWwogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogNjAwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDU0LjI4MTI1LAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA2MDAsCiAgICAgICAgICAiY29sb3IiOiAid2hpdGUiCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDg0MCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiA1NDAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDE0OSwKICAgICAgICAgICJjb2xvciI6ICJvcmFuZ2UiCiAgICAgICAgfQogICAgICBdLAogICAgICAiZ3JhZGllbnRzIjogIm5vbmUiLAogICAgICAib3ZlcmxheU92ZXJmbG93IjogInZpc2libGUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAiYm9vay1kYXkiLAogICAgICAiaGVpZ2h0IjogMTQyNS4xMDkzNzUsCiAgICAgICJib3R0b21EZWx0YSI6IDAsCiAgICAgICJhcnRpZmljaWFsSm9pbnMiOiAwLAogICAgICAicG9pbnRlciI6ICJub25lIiwKICAgICAgImhpZGRlbiI6ICJ0cnVlIiwKICAgICAgImltYWdlcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDYwMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiA0NzAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDkzLjU2MjUsCiAgICAgICAgICAiY29sb3IiOiAid2hpdGUiCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDg0MCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiA1NDAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDEwMCwKICAgICAgICAgICJjb2xvciI6ICJvcmFuZ2UiCiAgICAgICAgfQogICAgICBdLAogICAgICAiZ3JhZGllbnRzIjogIm5vbmUiLAogICAgICAib3ZlcmxheU92ZXJmbG93IjogInZpc2libGUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAiYm9va3MiLAogICAgICAiaGVpZ2h0IjogMTQ0NS4xMjUsCiAgICAgICJib3R0b21EZWx0YSI6IDAsCiAgICAgICJhcnRpZmljaWFsSm9pbnMiOiAwLAogICAgICAicG9pbnRlciI6ICJub25lIiwKICAgICAgImhpZGRlbiI6ICJ0cnVlIiwKICAgICAgImltYWdlcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDYwMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiA1NC4yODEyNSwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogNjAwLAogICAgICAgICAgImNvbG9yIjogInZpb2xldCIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogODQwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDQ1MCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogMTUwLAogICAgICAgICAgImNvbG9yIjogIm9yYW5nZSIKICAgICAgICB9CiAgICAgIF0sCiAgICAgICJncmFkaWVudHMiOiAibm9uZSIsCiAgICAgICJvdmVybGF5T3ZlcmZsb3ciOiAidmlzaWJsZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJmZWF0dXJlZC1qb3VybmFsIiwKICAgICAgImhlaWdodCI6IDE0NDIuMzU5Mzc1LAogICAgICAiYm90dG9tRGVsdGEiOiAwLAogICAgICAiYXJ0aWZpY2lhbEpvaW5zIjogMCwKICAgICAgInBvaW50ZXIiOiAibm9uZSIsCiAgICAgICJoaWRkZW4iOiAidHJ1ZSIsCiAgICAgICJpbWFnZXMiOiBbCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiA2MDAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogNDAwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA4My41NjI1LAogICAgICAgICAgImNvbG9yIjogIndoaXRlIgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiA4NDAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogNTQwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiAxMDAsCiAgICAgICAgICAiY29sb3IiOiAib3JhbmdlIgogICAgICAgIH0KICAgICAgXSwKICAgICAgImdyYWRpZW50cyI6ICJub25lIiwKICAgICAgIm92ZXJsYXlPdmVyZmxvdyI6ICJ2aXNpYmxlIgogICAgfSwKICAgIHsKICAgICAgImlkIjogInJlYWRlci1kaXNjdXNzaW9uIiwKICAgICAgImhlaWdodCI6IDcxNy41LAogICAgICAiYm90dG9tRGVsdGEiOiAwLAogICAgICAiYXJ0aWZpY2lhbEpvaW5zIjogMCwKICAgICAgInBvaW50ZXIiOiAibm9uZSIsCiAgICAgICJoaWRkZW4iOiAidHJ1ZSIsCiAgICAgICJpbWFnZXMiOiBbCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiA2MDAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogNTQuMjgxMjUsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDUwOC41OTM3NSwKICAgICAgICAgICJjb2xvciI6ICJ2aW9sZXQiCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDg0MCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiA1NDAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDEwMCwKICAgICAgICAgICJjb2xvciI6ICJvcmFuZ2UiCiAgICAgICAgfQogICAgICBdLAogICAgICAiZ3JhZGllbnRzIjogIm5vbmUiLAogICAgICAib3ZlcmxheU92ZXJmbG93IjogInZpc2libGUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAiam91cm5hbCIsCiAgICAgICJoZWlnaHQiOiA1MjAyLjMyODEyNSwKICAgICAgImJvdHRvbURlbHRhIjogMCwKICAgICAgImFydGlmaWNpYWxKb2lucyI6IDAsCiAgICAgICJwb2ludGVyIjogIm5vbmUiLAogICAgICAiaGlkZGVuIjogInRydWUiLAogICAgICAiaW1hZ2VzIjogWwogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogNjAwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDQ1MCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogNzguNTYyNSwKICAgICAgICAgICJjb2xvciI6ICJ3aGl0ZSIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogODQwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDU0MCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogMTAwLAogICAgICAgICAgImNvbG9yIjogIm9yYW5nZSIKICAgICAgICB9CiAgICAgIF0sCiAgICAgICJncmFkaWVudHMiOiAibm9uZSIsCiAgICAgICJvdmVybGF5T3ZlcmZsb3ciOiAidmlzaWJsZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJhdXRob3JzIiwKICAgICAgImhlaWdodCI6IDExMDguMDMxMjUsCiAgICAgICJib3R0b21EZWx0YSI6IDAsCiAgICAgICJhcnRpZmljaWFsSm9pbnMiOiAwLAogICAgICAicG9pbnRlciI6ICJub25lIiwKICAgICAgImhpZGRlbiI6ICJ0cnVlIiwKICAgICAgImltYWdlcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDYwMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiA1NC4yODEyNSwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogNjAwLAogICAgICAgICAgImNvbG9yIjogInZpb2xldCIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogODQwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDU2MCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogMTA0LAogICAgICAgICAgImNvbG9yIjogIm9yYW5nZSIKICAgICAgICB9CiAgICAgIF0sCiAgICAgICJncmFkaWVudHMiOiAibm9uZSIsCiAgICAgICJvdmVybGF5T3ZlcmZsb3ciOiAidmlzaWJsZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJzZWN0aW9ucyIsCiAgICAgICJoZWlnaHQiOiAyMDExLjE0MDYyNSwKICAgICAgImJvdHRvbURlbHRhIjogMCwKICAgICAgImFydGlmaWNpYWxKb2lucyI6IDAsCiAgICAgICJwb2ludGVyIjogIm5vbmUiLAogICAgICAiaGlkZGVuIjogInRydWUiLAogICAgICAiaW1hZ2VzIjogWwogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogNjAwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDQ4MCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogODguNTYyNSwKICAgICAgICAgICJjb2xvciI6ICJ3aGl0ZSIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogODQwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDUyMCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogMTAwLAogICAgICAgICAgImNvbG9yIjogIm9yYW5nZSIKICAgICAgICB9CiAgICAgIF0sCiAgICAgICJncmFkaWVudHMiOiAibm9uZSIsCiAgICAgICJvdmVybGF5T3ZlcmZsb3ciOiAidmlzaWJsZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJjYWxlbmRhciIsCiAgICAgICJoZWlnaHQiOiAxNTU0LjQ1MzEyNSwKICAgICAgImJvdHRvbURlbHRhIjogMCwKICAgICAgImFydGlmaWNpYWxKb2lucyI6IDAsCiAgICAgICJwb2ludGVyIjogIm5vbmUiLAogICAgICAiaGlkZGVuIjogInRydWUiLAogICAgICAiaW1hZ2VzIjogWwogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogNjAwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDU0LjI4MTI1LAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA2MDAsCiAgICAgICAgICAiY29sb3IiOiAidmlvbGV0IgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiA4NDAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogNTQwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiAxMDAsCiAgICAgICAgICAiY29sb3IiOiAib3JhbmdlIgogICAgICAgIH0KICAgICAgXSwKICAgICAgImdyYWRpZW50cyI6ICJub25lIiwKICAgICAgIm92ZXJsYXlPdmVyZmxvdyI6ICJ2aXNpYmxlIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImVkaXRvcmlhbC1wb2xpY3kiLAogICAgICAiaGVpZ2h0IjogNzk1LjQwNjI1LAogICAgICAiYm90dG9tRGVsdGEiOiAwLAogICAgICAiYXJ0aWZpY2lhbEpvaW5zIjogMCwKICAgICAgInBvaW50ZXIiOiAibm9uZSIsCiAgICAgICJoaWRkZW4iOiAidHJ1ZSIsCiAgICAgICJpbWFnZXMiOiBbCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiA2MDAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogNDAwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA5My41NjI1LAogICAgICAgICAgImNvbG9yIjogIndoaXRlIgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiA4NDAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogNTQwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiAxMDAsCiAgICAgICAgICAiY29sb3IiOiAib3JhbmdlIgogICAgICAgIH0KICAgICAgXSwKICAgICAgImdyYWRpZW50cyI6ICJub25lIiwKICAgICAgIm92ZXJsYXlPdmVyZmxvdyI6ICJ2aXNpYmxlIgogICAgfQogIF0sCiAgImhlaWdodENoYW5nZSI6IFsKICAgIDUyMDIuMzI4MTI1LAogICAgODE0LjA0Njg3NQogIF0KfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "398feaa804a845a82b80-d15405fee1c2e7243873",
+          "file": "ui-polish-backgrounds.spec.mjs",
+          "line": 20,
+          "column": 50
+        },
+        {
+          "title": "V4 artwork remains outside controls and follows real section bounds at 1920",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7623,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:02:21.112Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "brush-bounds-1920",
+                      "contentType": "application/json",
+                      "body": "ewogICJ3aWR0aCI6IDE5MjAsCiAgImVhcmx5IjogWwogICAgImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIKICBdLAogICJtZWFzdXJlbWVudHMiOiBbCiAgICB7CiAgICAgICJpZCI6ICJhdGxhcyIsCiAgICAgICJoZWlnaHQiOiAxNDYzLjEyNSwKICAgICAgImJvdHRvbURlbHRhIjogMCwKICAgICAgImFydGlmaWNpYWxKb2lucyI6IDAsCiAgICAgICJwb2ludGVyIjogIm5vbmUiLAogICAgICAiaGlkZGVuIjogInRydWUiLAogICAgICAiaW1hZ2VzIjogWwogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogNjAwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDU0LjI4MTI1LAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA2MDAsCiAgICAgICAgICAiY29sb3IiOiAid2hpdGUiCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDExNDAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogODQwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiAxNDksCiAgICAgICAgICAiY29sb3IiOiAib3JhbmdlIgogICAgICAgIH0KICAgICAgXSwKICAgICAgImdyYWRpZW50cyI6ICJub25lIiwKICAgICAgIm92ZXJsYXlPdmVyZmxvdyI6ICJ2aXNpYmxlIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImJvb2stZGF5IiwKICAgICAgImhlaWdodCI6IDEwMTEuNTYyNSwKICAgICAgImJvdHRvbURlbHRhIjogMCwKICAgICAgImFydGlmaWNpYWxKb2lucyI6IDAsCiAgICAgICJwb2ludGVyIjogIm5vbmUiLAogICAgICAiaGlkZGVuIjogInRydWUiLAogICAgICAiaW1hZ2VzIjogWwogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogNjAwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDQ3MCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogOTMuNTYyNSwKICAgICAgICAgICJjb2xvciI6ICJ3aGl0ZSIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogMTE0MCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiA4NDAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDIxNC4yODEyNSwKICAgICAgICAgICJjb2xvciI6ICJvcmFuZ2UiCiAgICAgICAgfQogICAgICBdLAogICAgICAiZ3JhZGllbnRzIjogIm5vbmUiLAogICAgICAib3ZlcmxheU92ZXJmbG93IjogInZpc2libGUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAiYm9va3MiLAogICAgICAiaGVpZ2h0IjogMTUxOS4yODEyNSwKICAgICAgImJvdHRvbURlbHRhIjogMCwKICAgICAgImFydGlmaWNpYWxKb2lucyI6IDAsCiAgICAgICJwb2ludGVyIjogIm5vbmUiLAogICAgICAiaGlkZGVuIjogInRydWUiLAogICAgICAiaW1hZ2VzIjogWwogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogNjAwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDU0LjI4MTI1LAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA2MDAsCiAgICAgICAgICAiY29sb3IiOiAidmlvbGV0IgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInVybCI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2JyYW5kL3VpLXBvbGlzaC12NC9vcmFuZ2Utc3Ryb2tlLndlYnAiLAogICAgICAgICAgIm5hdHVyYWxXaWR0aCI6IDEzNDQsCiAgICAgICAgICAid2lkdGgiOiAxMTQwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDc1MCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogMjY0LjI4MTI1LAogICAgICAgICAgImNvbG9yIjogIm9yYW5nZSIKICAgICAgICB9CiAgICAgIF0sCiAgICAgICJncmFkaWVudHMiOiAibm9uZSIsCiAgICAgICJvdmVybGF5T3ZlcmZsb3ciOiAidmlzaWJsZSIKICAgIH0sCiAgICB7CiAgICAgICJpZCI6ICJmZWF0dXJlZC1qb3VybmFsIiwKICAgICAgImhlaWdodCI6IDk0MS44MjgxMjUsCiAgICAgICJib3R0b21EZWx0YSI6IDAsCiAgICAgICJhcnRpZmljaWFsSm9pbnMiOiAwLAogICAgICAicG9pbnRlciI6ICJub25lIiwKICAgICAgImhpZGRlbiI6ICJ0cnVlIiwKICAgICAgImltYWdlcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDYwMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiA0MDAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDgzLjU2MjUsCiAgICAgICAgICAiY29sb3IiOiAid2hpdGUiCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDExNDAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogODQwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiAyMTQuMjgxMjUsCiAgICAgICAgICAiY29sb3IiOiAib3JhbmdlIgogICAgICAgIH0KICAgICAgXSwKICAgICAgImdyYWRpZW50cyI6ICJub25lIiwKICAgICAgIm92ZXJsYXlPdmVyZmxvdyI6ICJ2aXNpYmxlIgogICAgfSwKICAgIHsKICAgICAgImlkIjogInJlYWRlci1kaXNjdXNzaW9uIiwKICAgICAgImhlaWdodCI6IDYwNC40Njg3NSwKICAgICAgImJvdHRvbURlbHRhIjogMCwKICAgICAgImFydGlmaWNpYWxKb2lucyI6IDAsCiAgICAgICJwb2ludGVyIjogIm5vbmUiLAogICAgICAiaGlkZGVuIjogInRydWUiLAogICAgICAiaW1hZ2VzIjogWwogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogNjAwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDU0LjI4MTI1LAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA0NTcuNzM0Mzc1LAogICAgICAgICAgImNvbG9yIjogInZpb2xldCIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogMTE0MCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiA4NDAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDIxNC4yODEyNSwKICAgICAgICAgICJjb2xvciI6ICJvcmFuZ2UiCiAgICAgICAgfQogICAgICBdLAogICAgICAiZ3JhZGllbnRzIjogIm5vbmUiLAogICAgICAib3ZlcmxheU92ZXJmbG93IjogInZpc2libGUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAiam91cm5hbCIsCiAgICAgICJoZWlnaHQiOiAzMjg5LjI2NTYyNSwKICAgICAgImJvdHRvbURlbHRhIjogMCwKICAgICAgImFydGlmaWNpYWxKb2lucyI6IDAsCiAgICAgICJwb2ludGVyIjogIm5vbmUiLAogICAgICAiaGlkZGVuIjogInRydWUiLAogICAgICAiaW1hZ2VzIjogWwogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogNjAwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDQ1MCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogNzguNTYyNSwKICAgICAgICAgICJjb2xvciI6ICJ3aGl0ZSIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogMTE0MCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiA4NDAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDIxNC4yODEyNSwKICAgICAgICAgICJjb2xvciI6ICJvcmFuZ2UiCiAgICAgICAgfQogICAgICBdLAogICAgICAiZ3JhZGllbnRzIjogIm5vbmUiLAogICAgICAib3ZlcmxheU92ZXJmbG93IjogInZpc2libGUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAiYXV0aG9ycyIsCiAgICAgICJoZWlnaHQiOiA3NjQuNjg3NSwKICAgICAgImJvdHRvbURlbHRhIjogMCwKICAgICAgImFydGlmaWNpYWxKb2lucyI6IDAsCiAgICAgICJwb2ludGVyIjogIm5vbmUiLAogICAgICAiaGlkZGVuIjogInRydWUiLAogICAgICAiaW1hZ2VzIjogWwogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogNjAwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDU0LjI4MTI1LAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiA1MjkuODI4MTI1LAogICAgICAgICAgImNvbG9yIjogInZpb2xldCIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogMTE0MCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiA4NjAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDEwNCwKICAgICAgICAgICJjb2xvciI6ICJvcmFuZ2UiCiAgICAgICAgfQogICAgICBdLAogICAgICAiZ3JhZGllbnRzIjogIm5vbmUiLAogICAgICAib3ZlcmxheU92ZXJmbG93IjogInZpc2libGUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAic2VjdGlvbnMiLAogICAgICAiaGVpZ2h0IjogMTMzOS41NzgxMjUsCiAgICAgICJib3R0b21EZWx0YSI6IDAsCiAgICAgICJhcnRpZmljaWFsSm9pbnMiOiAwLAogICAgICAicG9pbnRlciI6ICJub25lIiwKICAgICAgImhpZGRlbiI6ICJ0cnVlIiwKICAgICAgImltYWdlcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDYwMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiA0ODAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDg4LjU2MjUsCiAgICAgICAgICAiY29sb3IiOiAid2hpdGUiCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDExNDAsCiAgICAgICAgICAidmlzaWJsZVdpZHRoIjogODIwLAogICAgICAgICAgInZpc2libGVIZWlnaHQiOiAyMTQuMjgxMjUsCiAgICAgICAgICAiY29sb3IiOiAib3JhbmdlIgogICAgICAgIH0KICAgICAgXSwKICAgICAgImdyYWRpZW50cyI6ICJub25lIiwKICAgICAgIm92ZXJsYXlPdmVyZmxvdyI6ICJ2aXNpYmxlIgogICAgfSwKICAgIHsKICAgICAgImlkIjogImNhbGVuZGFyIiwKICAgICAgImhlaWdodCI6IDEyMDIuMzQzNzUsCiAgICAgICJib3R0b21EZWx0YSI6IDAsCiAgICAgICJhcnRpZmljaWFsSm9pbnMiOiAwLAogICAgICAicG9pbnRlciI6ICJub25lIiwKICAgICAgImhpZGRlbiI6ICJ0cnVlIiwKICAgICAgImltYWdlcyI6IFsKICAgICAgICB7CiAgICAgICAgICAidXJsIjogImh0dHA6Ly8xMjcuMC4wLjE6NDE4Ni9wcm9icGVyYS1saXRlcmFyeS1tYXAvYnJhbmQvdWktcG9saXNoLXY0L29yYW5nZS1zdHJva2Uud2VicCIsCiAgICAgICAgICAibmF0dXJhbFdpZHRoIjogMTM0NCwKICAgICAgICAgICJ3aWR0aCI6IDYwMCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiA1NC4yODEyNSwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogNjAwLAogICAgICAgICAgImNvbG9yIjogInZpb2xldCIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogMTE0MCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiA4NDAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDIxNC4yODEyNSwKICAgICAgICAgICJjb2xvciI6ICJvcmFuZ2UiCiAgICAgICAgfQogICAgICBdLAogICAgICAiZ3JhZGllbnRzIjogIm5vbmUiLAogICAgICAib3ZlcmxheU92ZXJmbG93IjogInZpc2libGUiCiAgICB9LAogICAgewogICAgICAiaWQiOiAiZWRpdG9yaWFsLXBvbGljeSIsCiAgICAgICJoZWlnaHQiOiA2MzkuNSwKICAgICAgImJvdHRvbURlbHRhIjogMCwKICAgICAgImFydGlmaWNpYWxKb2lucyI6IDAsCiAgICAgICJwb2ludGVyIjogIm5vbmUiLAogICAgICAiaGlkZGVuIjogInRydWUiLAogICAgICAiaW1hZ2VzIjogWwogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogNjAwLAogICAgICAgICAgInZpc2libGVXaWR0aCI6IDQwMCwKICAgICAgICAgICJ2aXNpYmxlSGVpZ2h0IjogOTMuNTYyNSwKICAgICAgICAgICJjb2xvciI6ICJ3aGl0ZSIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzEyNy4wLjAuMTo0MTg2L3Byb2JwZXJhLWxpdGVyYXJ5LW1hcC9icmFuZC91aS1wb2xpc2gtdjQvb3JhbmdlLXN0cm9rZS53ZWJwIiwKICAgICAgICAgICJuYXR1cmFsV2lkdGgiOiAxMzQ0LAogICAgICAgICAgIndpZHRoIjogMTE0MCwKICAgICAgICAgICJ2aXNpYmxlV2lkdGgiOiA4NDAsCiAgICAgICAgICAidmlzaWJsZUhlaWdodCI6IDIxNC4yODEyNSwKICAgICAgICAgICJjb2xvciI6ICJvcmFuZ2UiCiAgICAgICAgfQogICAgICBdLAogICAgICAiZ3JhZGllbnRzIjogIm5vbmUiLAogICAgICAib3ZlcmxheU92ZXJmbG93IjogInZpc2libGUiCiAgICB9CiAgXSwKICAiaGVpZ2h0Q2hhbmdlIjogWwogICAgMzI4OS4yNjU2MjUsCiAgICA4MTguNQogIF0KfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "398feaa804a845a82b80-b7e2bc9ed5ea1aa06b46",
+          "file": "ui-polish-backgrounds.spec.mjs",
+          "line": 20,
+          "column": 50
+        },
+        {
+          "title": "V4 decoration failure and changed neighbours preserve content and navigation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4133,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:02:28.752Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "398feaa804a845a82b80-9b568c5042c86bf0428c",
+          "file": "ui-polish-backgrounds.spec.mjs",
+          "line": 91,
+          "column": 1
+        },
+        {
+          "title": "V4 artwork remains outside controls and follows real section bounds at 1440",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Widths are explicit in this composition test.",
+                  "location": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\ui-polish-backgrounds.spec.mjs",
+                    "line": 21,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "skipped",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "skipped",
+                  "duration": 562,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:05:07.398Z",
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Widths are explicit in this composition test.",
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\ui-polish-backgrounds.spec.mjs",
+                        "line": 21,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "398feaa804a845a82b80-af19e7f3494cccf36ee2",
+          "file": "ui-polish-backgrounds.spec.mjs",
+          "line": 20,
+          "column": 50
+        },
+        {
+          "title": "V4 artwork remains outside controls and follows real section bounds at 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Widths are explicit in this composition test.",
+                  "location": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\ui-polish-backgrounds.spec.mjs",
+                    "line": 21,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "skipped",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "skipped",
+                  "duration": 266,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:05:08.317Z",
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Widths are explicit in this composition test.",
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\ui-polish-backgrounds.spec.mjs",
+                        "line": 21,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "398feaa804a845a82b80-948f20ab68bb55ca78f6",
+          "file": "ui-polish-backgrounds.spec.mjs",
+          "line": 20,
+          "column": 50
+        },
+        {
+          "title": "V4 artwork remains outside controls and follows real section bounds at 320",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Widths are explicit in this composition test.",
+                  "location": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\ui-polish-backgrounds.spec.mjs",
+                    "line": 21,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "skipped",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "skipped",
+                  "duration": 290,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:05:08.600Z",
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Widths are explicit in this composition test.",
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\ui-polish-backgrounds.spec.mjs",
+                        "line": 21,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "398feaa804a845a82b80-95ecf75ac4e1284aaf57",
+          "file": "ui-polish-backgrounds.spec.mjs",
+          "line": 20,
+          "column": 50
+        },
+        {
+          "title": "V4 artwork remains outside controls and follows real section bounds at 768",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Widths are explicit in this composition test.",
+                  "location": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\ui-polish-backgrounds.spec.mjs",
+                    "line": 21,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "skipped",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "skipped",
+                  "duration": 294,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:05:08.917Z",
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Widths are explicit in this composition test.",
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\ui-polish-backgrounds.spec.mjs",
+                        "line": 21,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "398feaa804a845a82b80-8c8d356e78b8e6f4d178",
+          "file": "ui-polish-backgrounds.spec.mjs",
+          "line": 20,
+          "column": 50
+        },
+        {
+          "title": "V4 artwork remains outside controls and follows real section bounds at 1920",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Widths are explicit in this composition test.",
+                  "location": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\ui-polish-backgrounds.spec.mjs",
+                    "line": 21,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "skipped",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "skipped",
+                  "duration": 283,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:05:09.229Z",
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Widths are explicit in this composition test.",
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\ui-polish-backgrounds.spec.mjs",
+                        "line": 21,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "398feaa804a845a82b80-306805869319f9ca74d9",
+          "file": "ui-polish-backgrounds.spec.mjs",
+          "line": 20,
+          "column": 50
+        },
+        {
+          "title": "V4 decoration failure and changed neighbours preserve content and navigation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [
+                {
+                  "type": "skip",
+                  "location": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\ui-polish-backgrounds.spec.mjs",
+                    "line": 92,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "skipped",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "skipped",
+                  "duration": 292,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:05:09.537Z",
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\ui-polish-backgrounds.spec.mjs",
+                        "line": 92,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "398feaa804a845a82b80-f4f6913adc75cedd7810",
+          "file": "ui-polish-backgrounds.spec.mjs",
+          "line": 91,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "ui-polish-controls.spec.mjs",
+      "file": "ui-polish-controls.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "F13 WebGL creation failure preserves country search and article reading",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5590,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:02:32.930Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e224795f3abf86c2b7e-dfab2afd5074e0c01482",
+          "file": "ui-polish-controls.spec.mjs",
+          "line": 15,
+          "column": 1
+        },
+        {
+          "title": "R05 panels, zoom, resize and immersive return at 1440px",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9822,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:02:38.537Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e224795f3abf86c2b7e-3d8ba07880fa3b34a81c",
+          "file": "ui-polish-controls.spec.mjs",
+          "line": 48,
+          "column": 3
+        },
+        {
+          "title": "R04 archive, shelf search, random selection and centered navigation at 1440px",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9860,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:02:48.386Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e224795f3abf86c2b7e-802d3080b6296dcb50b8",
+          "file": "ui-polish-controls.spec.mjs",
+          "line": 184,
+          "column": 3
+        },
+        {
+          "title": "R05 panels, zoom, resize and immersive return at 390px",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7053,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:02:58.265Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e224795f3abf86c2b7e-b3c5305bb89d24c71d40",
+          "file": "ui-polish-controls.spec.mjs",
+          "line": 48,
+          "column": 3
+        },
+        {
+          "title": "R04 archive, shelf search, random selection and centered navigation at 390px",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7005,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:03:05.335Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e224795f3abf86c2b7e-e7d988d7afd130d179a6",
+          "file": "ui-polish-controls.spec.mjs",
+          "line": 184,
+          "column": 3
+        },
+        {
+          "title": "F13 WebGL creation failure preserves country search and article reading",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6076,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:05:09.863Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e224795f3abf86c2b7e-d033229b7c9799bf9c52",
+          "file": "ui-polish-controls.spec.mjs",
+          "line": 15,
+          "column": 1
+        },
+        {
+          "title": "R05 panels, zoom, resize and immersive return at 1440px",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13131,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:05:15.955Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e224795f3abf86c2b7e-42e451ff071afff682e9",
+          "file": "ui-polish-controls.spec.mjs",
+          "line": 48,
+          "column": 3
+        },
+        {
+          "title": "R04 archive, shelf search, random selection and centered navigation at 1440px",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12965,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:05:29.115Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e224795f3abf86c2b7e-a5cb735ec496a0c2462d",
+          "file": "ui-polish-controls.spec.mjs",
+          "line": 184,
+          "column": 3
+        },
+        {
+          "title": "R05 panels, zoom, resize and immersive return at 390px",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7748,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:05:42.096Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e224795f3abf86c2b7e-55c542b6a4c59e15153a",
+          "file": "ui-polish-controls.spec.mjs",
+          "line": 48,
+          "column": 3
+        },
+        {
+          "title": "R04 archive, shelf search, random selection and centered navigation at 390px",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9547,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:05:49.858Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e224795f3abf86c2b7e-9732c84f7b663ca62525",
+          "file": "ui-polish-controls.spec.mjs",
+          "line": 184,
+          "column": 3
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-08T07:59:37.475Z",
+    "duration": 382608.725,
+    "expected": 30,
+    "skipped": 6,
+    "unexpected": 8,
+    "flaky": 0
+  }
+}

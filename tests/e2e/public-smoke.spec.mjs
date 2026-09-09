@@ -4,6 +4,7 @@ import { readFileSync } from "node:fs";
 
 import { createImageDeliveryResolver } from "../../src/utils/imageDeliveryModel.ts";
 import { articleFromSitemap } from "./helpers/article-route.mjs";
+import { clickAtlasDiscoveryControl } from "./helpers/atlas-discovery.mjs";
 
 const imageManifest = JSON.parse(readFileSync(new URL("../../src/data/imageDelivery.generated.json", import.meta.url), "utf8"));
 
@@ -539,6 +540,8 @@ test("поиск глобуса сохраняет запрос при лени�
   });
   await page.goto("/#atlas");
   const search = page.locator("#country-search");
+  await clickAtlasDiscoveryControl(page.locator('#atlas .atlas-embedded-discovery [data-atlas-action="toggle-search"]'));
+  await expect(search).toBeVisible();
   await search.fill("Морской волк");
   await expect(search).toHaveValue("Морской волк");
   const results = page.locator("#country-results");
@@ -559,6 +562,9 @@ test("режим чтения не имеет горизонтального р�
   await page.locator(".article-library-grid article a").first().click();
   const reader = page.locator(".article-reader");
   await expect(reader).toBeVisible();
+  // The default illustrated book has its own layout; exercise the text mode
+  // through its actual control before inspecting the text shell.
+  await reader.getByRole("button", { name: "Светлый режим", exact: true }).click();
   await expect(reader.locator(".article-reader-lead h1")).toBeVisible();
 
   const overflow = await reader.evaluate(
@@ -568,8 +574,9 @@ test("режим чтения не имеет горизонтального р�
 
   const visibleRecommendations = await reader
     .locator(
-      ".article-reader-related button:visible strong, .article-reader-more button:visible strong"
+      ".article-reader-related a:visible strong, .article-reader-more a:visible strong"
     )
     .allTextContents();
+  expect(visibleRecommendations.length).toBeGreaterThan(0);
   expect(new Set(visibleRecommendations).size).toBe(visibleRecommendations.length);
 });

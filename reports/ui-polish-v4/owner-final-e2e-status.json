@@ -1,0 +1,41 @@
+{
+  "started": "2026-09-08T05:31:04.326Z",
+  "finished": "2026-09-08T05:40:37.115Z",
+  "exitCode": 1,
+  "savedFullRun": {
+    "passed": 174,
+    "failed": 31,
+    "skipped": 25
+  },
+  "failedOccurrencesCovered": 31,
+  "uniqueFailedTitles": 18,
+  "changedSpecs": [
+    "article-book-pagination.spec.mjs",
+    "reader-extended-accessibility.spec.mjs",
+    "ui-polish-backgrounds.spec.mjs",
+    "ui-polish-controls.spec.mjs"
+  ],
+  "extra": [
+    "keyboard candidate selects the optical-centre country without replacing Canvas",
+    "coarse embedded globe preserves page pan until explicit full control",
+    "embedded atlas enters one-canvas immersion and Escape restores scroll and focus"
+  ],
+  "files": [
+    "tests/e2e/globe-runtime.spec.mjs",
+    "tests/e2e/globe-visual-regression.spec.mjs",
+    "tests/e2e/home-first-paint.spec.mjs",
+    "tests/e2e/literary-news-production.spec.mjs",
+    "tests/e2e/literary-planet-immersion.spec.mjs",
+    "tests/e2e/premium-globe-exploration.spec.mjs",
+    "tests/e2e/public-reader-journey.spec.ts",
+    "tests/e2e/public-smoke.spec.mjs",
+    "tests/e2e/responsive-reader-globe.spec.mjs",
+    "tests/e2e/stage5b-art-direction.spec.mjs",
+    "tests/e2e/stage5c-layout-community.spec.mjs",
+    "tests/e2e/reader-extended-accessibility.spec.mjs",
+    "tests/e2e/article-book-pagination.spec.mjs",
+    "tests/e2e/ui-polish-backgrounds.spec.mjs",
+    "tests/e2e/ui-polish-controls.spec.mjs"
+  ],
+  "grep": "atlas URL restores selections, supports history and mounts the index on demand|globe filters update the collection without rebuilding the 3D atlas|selected Indonesia remains centered after the focus animation|keeps premium chrome and country cards aligned at desktop and mobile sizes|статический архив журнала не скрывается защитой главной|public news loads near the book feature and follows language and visitor dates|premium globe controls stay balanced and inside every viewport|atlas controls wrap without overlap and rich count matches the collection|immersive random journey respects the current collection and recent picks|Nobel layer keeps selection and its explicit article action separate|reader can open the journal and a real article without runtime failures|home and journal remain inside a narrow mobile viewport|поиск глобуса сохраняет запрос при ленивой загрузке и не раскрывает непубличную книгу|globe search metadata and instructions stay readable inside 320-1720px|Stage 5B desktop RU roles and surfaces stay inside the approved scale|Stage 5B mobile EN roles reflow without overflow|Stage 5C keeps the final homepage structure and card geometry|real reader keeps text and controls with expanded text spacing|article-book-pagination\\.spec\\.mjs|reader-extended-accessibility\\.spec\\.mjs|ui-polish-backgrounds\\.spec\\.mjs|ui-polish-controls\\.spec\\.mjs|keyboard candidate selects the optical-centre country without replacing Canvas|coarse embedded globe preserves page pan until explicit full control|embedded atlas enters one-canvas immersion and Escape restores scroll and focus"
+}

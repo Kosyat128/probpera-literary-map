@@ -1,0 +1,532 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\node_modules\\playwright\\cli.js",
+      "test",
+      "tests/e2e/literary-planet-immersion.spec.mjs",
+      "tests/e2e/premium-globe-exploration.spec.mjs",
+      "--grep",
+      "embedded atlas enters one-canvas immersion and Escape restores scroll and focus|keyboard candidate selects the optical-centre country without replacing Canvas|atlas controls wrap without overlap and rich count matches the collection",
+      "--workers=1",
+      "--output=reports/ui-polish-v4/owner-final-e2e-addendum-artifacts",
+      "--reporter=list,json"
+    ],
+    "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\playwright.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/probpera-typography/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/probpera-typography/reports/ui-polish-v4/owner-final-e2e-addendum-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-chromium",
+        "name": "desktop-chromium",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/probpera-typography/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/probpera-typography/reports/ui-polish-v4/owner-final-e2e-addendum-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile-chromium",
+        "name": "mobile-chromium",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/probpera-typography/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run preview -- --host 127.0.0.1 --port 4186",
+      "url": "http://127.0.0.1:4186",
+      "reuseExistingServer": true,
+      "timeout": 60000,
+      "env": {
+        "ALLUSERSPROFILE": "C:\\ProgramData",
+        "APPDATA": "C:\\Users\\User\\AppData\\Roaming",
+        "asl.log": "Destination=file",
+        "CODEX_APP_TOOLS_PIPE_PATH": "\\\\.\\pipe\\codex-browser-use-87b1562b-f967-4e64-a4e8-cbd0419ae162",
+        "CODEX_CI": "1",
+        "CODEX_HOME": "D:\\CodexData\\.codex",
+        "CODEX_INTERNAL_ORIGINATOR_OVERRIDE": "Codex Desktop",
+        "CODEX_MCP_NODE_PATH": "C:\\Users\\User\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\b474a88d5d105afa\\bin\\node.exe",
+        "CODEX_PERMISSION_PROFILE": ":workspace",
+        "CODEX_SAGE_BACKFILL_TRACKER_TAB_REUSE": "1",
+        "CODEX_SANDBOX_NETWORK_DISABLED": "1",
+        "CODEX_SESSION_ID": "01a07eb0-c75a-70a0-8991-77a88d21385c",
+        "CODEX_SHELL": "1",
+        "CODEX_THREAD_ID": "01a07eb0-c75a-70a0-8991-77a88d21385c",
+        "COLORTERM": "",
+        "CommonProgramFiles": "C:\\Program Files\\Common Files",
+        "CommonProgramFiles(x86)": "C:\\Program Files (x86)\\Common Files",
+        "CommonProgramW6432": "C:\\Program Files\\Common Files",
+        "COMPUTERNAME": "MAGICBOOK",
+        "ComSpec": "C:\\WINDOWS\\system32\\cmd.exe",
+        "DISABLE_AUTO_UPDATE": "true",
+        "DriverData": "C:\\Windows\\System32\\Drivers\\DriverData",
+        "GH_PAGER": "cat",
+        "GIT_PAGER": "cat",
+        "HOMEDRIVE": "C:",
+        "HOMEPATH": "\\Users\\User",
+        "LANG": "C.UTF-8",
+        "LC_ALL": "C.UTF-8",
+        "LC_CTYPE": "C.UTF-8",
+        "LOCALAPPDATA": "C:\\Users\\User\\AppData\\Local",
+        "LOGONSERVER": "\\\\MAGICBOOK",
+        "LOG_FORMAT": "json",
+        "NO_COLOR": "1",
+        "NUMBER_OF_PROCESSORS": "16",
+        "OneDrive": "C:\\Users\\User\\OneDrive",
+        "OS": "Windows_NT",
+        "PAGER": "cat",
+        "Path": "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell;D:\\CodexData\\.codex\\tmp\\arg0\\codex-arg0rRqpl4;D:\\CodexData\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\libheif\\libheif\\bin;D:\\CodexData\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\jxrlib\\jxrlib\\bin;D:\\CodexData\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin;C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\bin\\override;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\dotnet\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\GitHub CLI\\;C:\\Program Files\\nodejs\\;C:\\Users\\User\\AppData\\Local\\Programs\\Python\\Launcher\\;C:\\Users\\User\\AppData\\Local\\Programs\\OpenAI\\Codex\\bin;C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell;C:\\Users\\User\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\User\\.dotnet\\tools;C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\User\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\User\\AppData\\Local\\Programs\\nodejs;C:\\Users\\User\\AppData\\Roaming\\npm;C:\\Users\\User\\.dotnet\\tools;C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\bin\\fallback;C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin;C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\git\\cmd;C:\\Users\\User\\AppData\\Local\\OpenAI\\Codex\\bin\\c60635126245daef;C:\\Users\\User\\AppData\\Local\\OpenAI\\Codex\\bin\\8e5b6932251c2c1c",
+        "PATHEXT": ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.CPL",
+        "PLAYWRIGHT_JSON_OUTPUT_FILE": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\owner-final-e2e-addendum-result.json",
+        "PLAYWRIGHT_PORT": "4186",
+        "PLAYWRIGHT_REUSE_SERVER": "true",
+        "PROCESSOR_ARCHITECTURE": "AMD64",
+        "PROCESSOR_IDENTIFIER": "AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD",
+        "PROCESSOR_LEVEL": "25",
+        "PROCESSOR_REVISION": "5000",
+        "ProgramData": "C:\\ProgramData",
+        "ProgramFiles": "C:\\Program Files",
+        "ProgramFiles(x86)": "C:\\Program Files (x86)",
+        "ProgramW6432": "C:\\Program Files",
+        "PSModulePath": "C:\\Users\\User\\Documents\\PowerShell\\Modules;C:\\Program Files\\PowerShell\\Modules;c:\\users\\user\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\Modules;C:\\Users\\User\\Documents\\WindowsPowerShell\\Modules;C:\\Program Files\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules",
+        "PUBLIC": "C:\\Users\\Public",
+        "RUST_LOG": "warn",
+        "SHELL": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "SystemDrive": "C:",
+        "SystemRoot": "C:\\WINDOWS",
+        "TEMP": "D:\\CodexData\\Temp",
+        "TERM": "dumb",
+        "TMP": "D:\\CodexData\\Temp",
+        "USERDOMAIN": "MAGICBOOK",
+        "USERDOMAIN_ROAMINGPROFILE": "MAGICBOOK",
+        "USERNAME": "User",
+        "USERPROFILE": "C:\\Users\\User",
+        "VBOX_HWVIRTEX_IGNORE_SVM_IN_USE": "1",
+        "windir": "C:\\WINDOWS",
+        "XDG_CACHE_HOME": "D:\\CodexData\\.cache",
+        "ZSH_TMUX_AUTOSTART": "false",
+        "ZSH_TMUX_AUTOSTARTED": "true",
+        "PUBLIC_SITE_BASE_PATH": "/probpera-literary-map/"
+      }
+    }
+  },
+  "suites": [
+    {
+      "title": "literary-planet-immersion.spec.mjs",
+      "file": "literary-planet-immersion.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "embedded atlas enters one-canvas immersion and Escape restores scroll and focus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8060,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:44:20.240Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "802a26569ab74421746b-d474bf45423bd75cce53",
+          "file": "literary-planet-immersion.spec.mjs",
+          "line": 112,
+          "column": 1
+        },
+        {
+          "title": "embedded atlas enters one-canvas immersion and Escape restores scroll and focus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "Desktop covers the full modal keyboard contract.",
+                  "location": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\literary-planet-immersion.spec.mjs",
+                    "line": 117,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "skipped",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "skipped",
+                  "duration": 520,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:45:11.578Z",
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "Desktop covers the full modal keyboard contract.",
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\literary-planet-immersion.spec.mjs",
+                        "line": 117,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "802a26569ab74421746b-a41eba196448b5ad26ab",
+          "file": "literary-planet-immersion.spec.mjs",
+          "line": 112,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "premium-globe-exploration.spec.mjs",
+      "file": "premium-globe-exploration.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "keyboard candidate selects the optical-centre country without replacing Canvas",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 18356,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 10000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 10000ms exceeded while waiting on the predicate\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\premium-globe-exploration.spec.mjs:299:38",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\premium-globe-exploration.spec.mjs",
+                      "column": 38,
+                      "line": 299
+                    },
+                    "snippet": "  297 |     page.locator('canvas[data-stage4-canvas-identity=\"stable\"]')\n  298 |   ).toHaveCount(1);\n> 299 |   await expect.poll(canvasFitsStage).toBe(true);\n      |                                      ^\n  300 |   const after = await canvas.boundingBox();\n  301 |   expect(Math.abs((after?.width ?? 0) - (before?.width ?? 0))).toBeLessThan(2);\n  302 |   // The selected mobile stage reserves additional space for its country sheet."
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\premium-globe-exploration.spec.mjs",
+                        "column": 38,
+                        "line": 299
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\nCall Log:\n- Timeout 10000ms exceeded while waiting on the predicate\n\n  297 |     page.locator('canvas[data-stage4-canvas-identity=\"stable\"]')\n  298 |   ).toHaveCount(1);\n> 299 |   await expect.poll(canvasFitsStage).toBe(true);\n      |                                      ^\n  300 |   const after = await canvas.boundingBox();\n  301 |   expect(Math.abs((after?.width ?? 0) - (before?.width ?? 0))).toBeLessThan(2);\n  302 |   // The selected mobile stage reserves additional space for its country sheet.\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\premium-globe-exploration.spec.mjs:299:38"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:44:28.690Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\owner-final-e2e-addendum-artifacts\\premium-globe-exploration--f4acd-ry-without-replacing-Canvas-desktop-chromium\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\owner-final-e2e-addendum-artifacts\\premium-globe-exploration--f4acd-ry-without-replacing-Canvas-desktop-chromium\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\owner-final-e2e-addendum-artifacts\\premium-globe-exploration--f4acd-ry-without-replacing-Canvas-desktop-chromium\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\premium-globe-exploration.spec.mjs",
+                    "column": 38,
+                    "line": 299
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "ca75044de9e303299adf-3c9f77ca31b1e5e47a63",
+          "file": "premium-globe-exploration.spec.mjs",
+          "line": 219,
+          "column": 1
+        },
+        {
+          "title": "atlas controls wrap without overlap and rich count matches the collection",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 19800,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#atlas').locator('.atlas-experience-surface')\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('#atlas').locator('.atlas-experience-surface')\u001b[22m\n\u001b[2m    9 × locator resolved to <div role=\"dialog\" tabindex=\"-1\" aria-modal=\"true\" data-atlas-experience=\"\" data-atlas-quiet=\"false\" data-atlas-view=\"immersive\" data-atlas-proximity=\"idle\" data-atlas-transition=\"idle\" data-atlas-economical=\"false\" data-atlas-search-open=\"false\" data-atlas-filters-open=\"false\" data-atlas-panel-state=\"closed\" class=\"atlas-experience-surface\" data-atlas-reduced-motion=\"false\" data-atlas-entry-source=\"embedded\" data-atlas-sheet-state=\"collapsed\" aria-labelledby=\"atlas-heading-title\">…</div>\u001b[22m\n\u001b[2m      - unexpected value \"false\"\u001b[22m\n\u001b[2m    14 × locator resolved to <div role=\"dialog\" tabindex=\"-1\" aria-modal=\"true\" data-atlas-quiet=\"true\" data-atlas-experience=\"\" data-atlas-view=\"immersive\" data-atlas-proximity=\"idle\" data-atlas-transition=\"idle\" data-atlas-economical=\"false\" data-atlas-search-open=\"false\" data-atlas-filters-open=\"false\" data-atlas-panel-state=\"closed\" class=\"atlas-experience-surface\" data-atlas-reduced-motion=\"false\" data-atlas-entry-source=\"embedded\" data-atlas-sheet-state=\"collapsed\" aria-labelledby=\"atlas-heading-title\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"false\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#atlas').locator('.atlas-experience-surface')\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('#atlas').locator('.atlas-experience-surface')\u001b[22m\n\u001b[2m    9 × locator resolved to <div role=\"dialog\" tabindex=\"-1\" aria-modal=\"true\" data-atlas-experience=\"\" data-atlas-quiet=\"false\" data-atlas-view=\"immersive\" data-atlas-proximity=\"idle\" data-atlas-transition=\"idle\" data-atlas-economical=\"false\" data-atlas-search-open=\"false\" data-atlas-filters-open=\"false\" data-atlas-panel-state=\"closed\" class=\"atlas-experience-surface\" data-atlas-reduced-motion=\"false\" data-atlas-entry-source=\"embedded\" data-atlas-sheet-state=\"collapsed\" aria-labelledby=\"atlas-heading-title\">…</div>\u001b[22m\n\u001b[2m      - unexpected value \"false\"\u001b[22m\n\u001b[2m    14 × locator resolved to <div role=\"dialog\" tabindex=\"-1\" aria-modal=\"true\" data-atlas-quiet=\"true\" data-atlas-experience=\"\" data-atlas-view=\"immersive\" data-atlas-proximity=\"idle\" data-atlas-transition=\"idle\" data-atlas-economical=\"false\" data-atlas-search-open=\"false\" data-atlas-filters-open=\"false\" data-atlas-panel-state=\"closed\" class=\"atlas-experience-surface\" data-atlas-reduced-motion=\"false\" data-atlas-entry-source=\"embedded\" data-atlas-sheet-state=\"collapsed\" aria-labelledby=\"atlas-heading-title\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"false\"\u001b[22m\n\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\premium-globe-exploration.spec.mjs:611:25",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\premium-globe-exploration.spec.mjs",
+                      "column": 25,
+                      "line": 611
+                    },
+                    "snippet": "  609 |   await expect(surface).toHaveAttribute(\"data-atlas-view\", \"immersive\");\n  610 |   await surface.locator('[data-atlas-action=\"toggle-filters\"]').click();\n> 611 |   await expect(surface).toHaveAttribute(\"data-atlas-filters-open\", \"true\");\n      |                         ^\n  612 |   await archivesToggle.click();\n  613 |   await expect(archivesToggle).toHaveAttribute(\"aria-expanded\", \"true\");\n  614 |   await page.keyboard.press(\"Escape\");"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\premium-globe-exploration.spec.mjs",
+                        "column": 25,
+                        "line": 611
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#atlas').locator('.atlas-experience-surface')\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('#atlas').locator('.atlas-experience-surface')\u001b[22m\n\u001b[2m    9 × locator resolved to <div role=\"dialog\" tabindex=\"-1\" aria-modal=\"true\" data-atlas-experience=\"\" data-atlas-quiet=\"false\" data-atlas-view=\"immersive\" data-atlas-proximity=\"idle\" data-atlas-transition=\"idle\" data-atlas-economical=\"false\" data-atlas-search-open=\"false\" data-atlas-filters-open=\"false\" data-atlas-panel-state=\"closed\" class=\"atlas-experience-surface\" data-atlas-reduced-motion=\"false\" data-atlas-entry-source=\"embedded\" data-atlas-sheet-state=\"collapsed\" aria-labelledby=\"atlas-heading-title\">…</div>\u001b[22m\n\u001b[2m      - unexpected value \"false\"\u001b[22m\n\u001b[2m    14 × locator resolved to <div role=\"dialog\" tabindex=\"-1\" aria-modal=\"true\" data-atlas-quiet=\"true\" data-atlas-experience=\"\" data-atlas-view=\"immersive\" data-atlas-proximity=\"idle\" data-atlas-transition=\"idle\" data-atlas-economical=\"false\" data-atlas-search-open=\"false\" data-atlas-filters-open=\"false\" data-atlas-panel-state=\"closed\" class=\"atlas-experience-surface\" data-atlas-reduced-motion=\"false\" data-atlas-entry-source=\"embedded\" data-atlas-sheet-state=\"collapsed\" aria-labelledby=\"atlas-heading-title\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"false\"\u001b[22m\n\n\n  609 |   await expect(surface).toHaveAttribute(\"data-atlas-view\", \"immersive\");\n  610 |   await surface.locator('[data-atlas-action=\"toggle-filters\"]').click();\n> 611 |   await expect(surface).toHaveAttribute(\"data-atlas-filters-open\", \"true\");\n      |                         ^\n  612 |   await archivesToggle.click();\n  613 |   await expect(archivesToggle).toHaveAttribute(\"aria-expanded\", \"true\");\n  614 |   await page.keyboard.press(\"Escape\");\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\premium-globe-exploration.spec.mjs:611:25"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:44:49.074Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\owner-final-e2e-addendum-artifacts\\premium-globe-exploration--30196-ount-matches-the-collection-desktop-chromium\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\owner-final-e2e-addendum-artifacts\\premium-globe-exploration--30196-ount-matches-the-collection-desktop-chromium\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\owner-final-e2e-addendum-artifacts\\premium-globe-exploration--30196-ount-matches-the-collection-desktop-chromium\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\premium-globe-exploration.spec.mjs",
+                    "column": 25,
+                    "line": 611
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "ca75044de9e303299adf-efee7fe3f3496915b17a",
+          "file": "premium-globe-exploration.spec.mjs",
+          "line": 480,
+          "column": 1
+        },
+        {
+          "title": "keyboard candidate selects the optical-centre country without replacing Canvas",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6193,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:45:12.465Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ca75044de9e303299adf-45895f7d755e7a4d09d3",
+          "file": "premium-globe-exploration.spec.mjs",
+          "line": 219,
+          "column": 1
+        },
+        {
+          "title": "atlas controls wrap without overlap and rich count matches the collection",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 18111,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#atlas').locator('.atlas-experience-surface')\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('#atlas').locator('.atlas-experience-surface')\u001b[22m\n\u001b[2m    9 × locator resolved to <div role=\"dialog\" tabindex=\"-1\" aria-modal=\"true\" data-atlas-experience=\"\" data-atlas-quiet=\"false\" data-atlas-view=\"immersive\" data-atlas-proximity=\"idle\" data-atlas-transition=\"idle\" data-atlas-economical=\"false\" data-atlas-search-open=\"false\" data-atlas-filters-open=\"false\" data-atlas-panel-state=\"closed\" class=\"atlas-experience-surface\" data-atlas-reduced-motion=\"false\" data-atlas-entry-source=\"embedded\" data-atlas-sheet-state=\"collapsed\" aria-labelledby=\"atlas-heading-title\">…</div>\u001b[22m\n\u001b[2m      - unexpected value \"false\"\u001b[22m\n\u001b[2m    14 × locator resolved to <div role=\"dialog\" tabindex=\"-1\" aria-modal=\"true\" data-atlas-quiet=\"true\" data-atlas-experience=\"\" data-atlas-view=\"immersive\" data-atlas-proximity=\"idle\" data-atlas-transition=\"idle\" data-atlas-economical=\"false\" data-atlas-search-open=\"false\" data-atlas-filters-open=\"false\" data-atlas-panel-state=\"closed\" class=\"atlas-experience-surface\" data-atlas-reduced-motion=\"false\" data-atlas-entry-source=\"embedded\" data-atlas-sheet-state=\"collapsed\" aria-labelledby=\"atlas-heading-title\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"false\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#atlas').locator('.atlas-experience-surface')\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('#atlas').locator('.atlas-experience-surface')\u001b[22m\n\u001b[2m    9 × locator resolved to <div role=\"dialog\" tabindex=\"-1\" aria-modal=\"true\" data-atlas-experience=\"\" data-atlas-quiet=\"false\" data-atlas-view=\"immersive\" data-atlas-proximity=\"idle\" data-atlas-transition=\"idle\" data-atlas-economical=\"false\" data-atlas-search-open=\"false\" data-atlas-filters-open=\"false\" data-atlas-panel-state=\"closed\" class=\"atlas-experience-surface\" data-atlas-reduced-motion=\"false\" data-atlas-entry-source=\"embedded\" data-atlas-sheet-state=\"collapsed\" aria-labelledby=\"atlas-heading-title\">…</div>\u001b[22m\n\u001b[2m      - unexpected value \"false\"\u001b[22m\n\u001b[2m    14 × locator resolved to <div role=\"dialog\" tabindex=\"-1\" aria-modal=\"true\" data-atlas-quiet=\"true\" data-atlas-experience=\"\" data-atlas-view=\"immersive\" data-atlas-proximity=\"idle\" data-atlas-transition=\"idle\" data-atlas-economical=\"false\" data-atlas-search-open=\"false\" data-atlas-filters-open=\"false\" data-atlas-panel-state=\"closed\" class=\"atlas-experience-surface\" data-atlas-reduced-motion=\"false\" data-atlas-entry-source=\"embedded\" data-atlas-sheet-state=\"collapsed\" aria-labelledby=\"atlas-heading-title\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"false\"\u001b[22m\n\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\premium-globe-exploration.spec.mjs:611:25",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\premium-globe-exploration.spec.mjs",
+                      "column": 25,
+                      "line": 611
+                    },
+                    "snippet": "  609 |   await expect(surface).toHaveAttribute(\"data-atlas-view\", \"immersive\");\n  610 |   await surface.locator('[data-atlas-action=\"toggle-filters\"]').click();\n> 611 |   await expect(surface).toHaveAttribute(\"data-atlas-filters-open\", \"true\");\n      |                         ^\n  612 |   await archivesToggle.click();\n  613 |   await expect(archivesToggle).toHaveAttribute(\"aria-expanded\", \"true\");\n  614 |   await page.keyboard.press(\"Escape\");"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\premium-globe-exploration.spec.mjs",
+                        "column": 25,
+                        "line": 611
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('#atlas').locator('.atlas-experience-surface')\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('#atlas').locator('.atlas-experience-surface')\u001b[22m\n\u001b[2m    9 × locator resolved to <div role=\"dialog\" tabindex=\"-1\" aria-modal=\"true\" data-atlas-experience=\"\" data-atlas-quiet=\"false\" data-atlas-view=\"immersive\" data-atlas-proximity=\"idle\" data-atlas-transition=\"idle\" data-atlas-economical=\"false\" data-atlas-search-open=\"false\" data-atlas-filters-open=\"false\" data-atlas-panel-state=\"closed\" class=\"atlas-experience-surface\" data-atlas-reduced-motion=\"false\" data-atlas-entry-source=\"embedded\" data-atlas-sheet-state=\"collapsed\" aria-labelledby=\"atlas-heading-title\">…</div>\u001b[22m\n\u001b[2m      - unexpected value \"false\"\u001b[22m\n\u001b[2m    14 × locator resolved to <div role=\"dialog\" tabindex=\"-1\" aria-modal=\"true\" data-atlas-quiet=\"true\" data-atlas-experience=\"\" data-atlas-view=\"immersive\" data-atlas-proximity=\"idle\" data-atlas-transition=\"idle\" data-atlas-economical=\"false\" data-atlas-search-open=\"false\" data-atlas-filters-open=\"false\" data-atlas-panel-state=\"closed\" class=\"atlas-experience-surface\" data-atlas-reduced-motion=\"false\" data-atlas-entry-source=\"embedded\" data-atlas-sheet-state=\"collapsed\" aria-labelledby=\"atlas-heading-title\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"false\"\u001b[22m\n\n\n  609 |   await expect(surface).toHaveAttribute(\"data-atlas-view\", \"immersive\");\n  610 |   await surface.locator('[data-atlas-action=\"toggle-filters\"]').click();\n> 611 |   await expect(surface).toHaveAttribute(\"data-atlas-filters-open\", \"true\");\n      |                         ^\n  612 |   await archivesToggle.click();\n  613 |   await expect(archivesToggle).toHaveAttribute(\"aria-expanded\", \"true\");\n  614 |   await page.keyboard.press(\"Escape\");\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\premium-globe-exploration.spec.mjs:611:25"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T05:45:18.674Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\owner-final-e2e-addendum-artifacts\\premium-globe-exploration--30196-ount-matches-the-collection-mobile-chromium\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\owner-final-e2e-addendum-artifacts\\premium-globe-exploration--30196-ount-matches-the-collection-mobile-chromium\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\owner-final-e2e-addendum-artifacts\\premium-globe-exploration--30196-ount-matches-the-collection-mobile-chromium\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\premium-globe-exploration.spec.mjs",
+                    "column": 25,
+                    "line": 611
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "ca75044de9e303299adf-78642003df3efa0b2b43",
+          "file": "premium-globe-exploration.spec.mjs",
+          "line": 480,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-08T05:44:19.405Z",
+    "duration": 79100.651,
+    "expected": 2,
+    "skipped": 1,
+    "unexpected": 3,
+    "flaky": 0
+  }
+}

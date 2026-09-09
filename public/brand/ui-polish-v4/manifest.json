@@ -1,0 +1,66 @@
+{
+  "recipe": "Owner latest revision: three times previous stroke widths, contrasting colors in separated edge locations. Strokes do not combine into multicolor boundary strips. No full-panel paintings or generated joins.",
+  "tool": "built-in image_gen for orange extraction followed by neutral-matte alpha cleanup. CSS tints the same high-resolution alpha white or violet without raster enlargement. Original R07 white extraction retained as source evidence.",
+  "files": [
+    {
+      "file": "orange-stroke.webp",
+      "source": "reports/ui-polish-v4/assets/orange-extraction-source.png",
+      "sourceSha256": "7f220609aaa0a9918d45e2ebf74206e308217df45349f170ab3c48858b7a5d4e",
+      "operation": {
+        "crop": {
+          "left": 45,
+          "top": 0,
+          "width": 1415,
+          "height": 543
+        },
+        "matte": "neutral matte cancellation (R-B)/255; unpremultiplied original orange",
+        "resizeWidth": 1415,
+        "withoutEnlargement": true,
+        "quality": 96,
+        "alphaQuality": 100
+      },
+      "width": 1344,
+      "height": 512,
+      "hasAlpha": true,
+      "bytes": 284052,
+      "outputSha256": "498a831349dad8d9d2ce0440f35b73b564b8af0784b3041a007575f4c8f39033"
+    },
+    {
+      "file": "white-stroke.webp",
+      "source": "backgrounds/R07_read_purple.jpg",
+      "sourceSha256": "617f5a509450a3f226d45e11d710cb50f81e7d06536ed58adc9c222f99080508",
+      "operation": {
+        "crop": {
+          "left": 0,
+          "top": 0,
+          "width": 620,
+          "height": 610
+        },
+        "matte": "original white pigment coverage from minimum channel; violet background excluded",
+        "resizeWidth": 1415,
+        "withoutEnlargement": true,
+        "quality": 96,
+        "alphaQuality": 100
+      },
+      "width": 493,
+      "height": 610,
+      "hasAlpha": true,
+      "bytes": 62536,
+      "outputSha256": "be7df1f53c55f2721d661f7d17a6bbe61f145f02b6f216548cf9ee08d93e4ad1"
+    }
+  ],
+  "deliveryBytes": 346588,
+  "runtimeBytes": 284052,
+  "placement": {
+    "atlas": "orange upper right; white along the middle of the right edge; solid violet left",
+    "violetSections": "orange and white in separate corners or side margins, with different positions in adjacent sections",
+    "whiteSections": "orange at an outer corner and violet vertically along a separate side margin"
+  },
+  "sizing": {
+    "desktopOrange": "clamp(840px,81vw,1140px)",
+    "desktopSecondary": 600,
+    "mobileOrange": 510,
+    "mobileSecondary": 330,
+    "scaleFromPrevious": 3
+  }
+}

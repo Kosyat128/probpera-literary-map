@@ -1,0 +1,16 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.screenshot: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator('#books').locator('.book-shelf-navigation')
+
+    at C:\Users\User\Documents\ChatGPT\Работа по сайту\probpera-typography\.tmp\capture-ui-main-final2.mjs:29:49 {
+  log: [
+    "  - waiting for locator('#books').locator('.book-shelf-navigation')"
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v24.20.0

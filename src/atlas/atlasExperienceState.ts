@@ -78,8 +78,8 @@ export function createAtlasExperienceState(
   };
 }
 
-function isImmersiveInteractive(state: AtlasExperienceState) {
-  return state.view === "immersive" && state.transition !== "exiting";
+function isOverlayInteractive(state: AtlasExperienceState) {
+  return state.transition !== "exiting" && state.transition !== "preparing";
 }
 
 function enterImmersive(
@@ -156,7 +156,7 @@ function syncView(
 }
 
 function toggleSearch(state: AtlasExperienceState) {
-  if (!isImmersiveInteractive(state)) return state;
+  if (!isOverlayInteractive(state)) return state;
   if (state.searchOpen) return { ...state, searchOpen: false };
   return {
     ...state,
@@ -167,7 +167,7 @@ function toggleSearch(state: AtlasExperienceState) {
 }
 
 function toggleFilters(state: AtlasExperienceState) {
-  if (!isImmersiveInteractive(state)) return state;
+  if (!isOverlayInteractive(state)) return state;
   if (state.filtersOpen) return { ...state, filtersOpen: false };
   return {
     ...state,
@@ -205,7 +205,7 @@ export function atlasExperienceReducer(
       return syncView(state, event.view, event.source, event.reducedMotion);
 
     case "OPEN_SEARCH":
-      if (!isImmersiveInteractive(state) || state.searchOpen) return state;
+      if (!isOverlayInteractive(state) || state.searchOpen) return state;
       return {
         ...state,
         searchOpen: true,
@@ -221,7 +221,7 @@ export function atlasExperienceReducer(
       return toggleSearch(state);
 
     case "OPEN_FILTERS":
-      if (!isImmersiveInteractive(state) || state.filtersOpen) return state;
+      if (!isOverlayInteractive(state) || state.filtersOpen) return state;
       return {
         ...state,
         searchOpen: false,

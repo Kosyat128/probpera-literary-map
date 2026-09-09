@@ -1,0 +1,35 @@
+{
+  "round": 2,
+  "started": "2026-09-08T05:53:34.931Z",
+  "finished": "2026-09-08T05:54:09.093Z",
+  "exitCode": 0,
+  "signal": null,
+  "sourceSha256": "9d483cf13525dbfe5d320e07eaf251692913d62bea7de214ba451aac0e560280",
+  "sourceSha256After": "9d483cf13525dbfe5d320e07eaf251692913d62bea7de214ba451aac0e560280",
+  "baseResultSha256": "0135c5788195a2a015c7043e4900d30a87528cd0b8a4a8d990a197f0fccb835a",
+  "baseStatusSha256": "885bbcad5777db9542e8b22f26b0df1b2f3c9f0107dcf3b6990f776729af27e5",
+  "baseResultFile": "owner-final-e2e-result.json",
+  "baseStatusFile": "owner-final-e2e-status.json",
+  "baseEvidenceUnchanged": true,
+  "priorResultFile": "owner-final-e2e-addendum-result.json",
+  "priorStatusFile": "owner-final-e2e-addendum-status.json",
+  "priorResultSha256": "a248b68d731350b826129e419c5947c02f15a90d3b63865cd0b520d9035af397",
+  "priorStatusSha256": "afafb901f0f895a9353794365b1dcb6fd5c2704b409735f0559673d27285e155",
+  "priorEvidenceUnchanged": true,
+  "log": "owner-final-e2e-addendum-2.log",
+  "selectors": [
+    "tests/e2e/premium-globe-exploration.spec.mjs",
+    "--grep",
+    "keyboard candidate selects the optical-centre country without replacing Canvas|atlas controls wrap without overlap and rich count matches the collection"
+  ],
+  "args": [
+    "node_modules/playwright/cli.js",
+    "test",
+    "tests/e2e/premium-globe-exploration.spec.mjs",
+    "--grep",
+    "keyboard candidate selects the optical-centre country without replacing Canvas|atlas controls wrap without overlap and rich count matches the collection",
+    "--workers=1",
+    "--output=reports/ui-polish-v4/owner-final-e2e-addendum-2-artifacts",
+    "--reporter=list,json"
+  ]
+}

@@ -1,0 +1,781 @@
+
+Running 78 tests using 1 worker
+
+(node:17444) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [desktop-chromium] › tests\e2e\article-book-pagination.spec.mjs:38:1 › existing article book preserves content and turns through both boundaries (2.5s)
+  ok  2 [desktop-chromium] › tests\e2e\article-book-pagination.spec.mjs:67:1 › book keeps a content anchor through reflow, font sizing and reopening (3.8s)
+  ok  3 [desktop-chromium] › tests\e2e\article-book-pagination.spec.mjs:109:1 › book keyboard, horizontal swipe and reduced motion remain usable (2.0s)
+  ok  4 [desktop-chromium] › tests\e2e\article-book-pagination.spec.mjs:123:1 › archive CTA opens that article in book mode and reader layers return focus (6.0s)
+  ok  5 [desktop-chromium] › tests\e2e\globe-runtime.spec.mjs:247:1 › atlas URL restores selections, supports history and mounts the index on demand (7.1s)
+  ok  6 [desktop-chromium] › tests\e2e\globe-runtime.spec.mjs:284:1 › globe filters update the collection without rebuilding the 3D atlas (9.1s)
+  ok  7 [desktop-chromium] › tests\e2e\globe-runtime.spec.mjs:345:1 › selected Indonesia remains centered after the focus animation (16.6s)
+  ok  8 [desktop-chromium] › tests\e2e\globe-visual-regression.spec.mjs:119:3 › globe visual regression › keeps premium chrome and country cards aligned at desktop and mobile sizes (4.6s)
+  ok  9 [desktop-chromium] › tests\e2e\home-first-paint.spec.mjs:69:1 › статический архив журнала не скрывается защитой главной (630ms)
+  ok 10 [desktop-chromium] › tests\e2e\literary-news-production.spec.mjs:45:1 › public news loads near the book feature and follows language and visitor dates (7.5s)
+  x  11 [desktop-chromium] › tests\e2e\literary-planet-immersion.spec.mjs:112:1 › embedded atlas enters one-canvas immersion and Escape restores scroll and focus (20.7s)
+(node:46540) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 12 [desktop-chromium] › tests\e2e\literary-planet-immersion.spec.mjs:456:1 › premium globe controls stay balanced and inside every viewport (9.7s)
+  ok 13 [desktop-chromium] › tests\e2e\premium-globe-exploration.spec.mjs:219:1 › keyboard candidate selects the optical-centre country without replacing Canvas (8.4s)
+  x  14 [desktop-chromium] › tests\e2e\premium-globe-exploration.spec.mjs:465:1 › atlas controls wrap without overlap and rich count matches the collection (15.0s)
+(node:48672) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 15 [desktop-chromium] › tests\e2e\premium-globe-exploration.spec.mjs:604:1 › immersive random journey respects the current collection and recent picks (10.0s)
+  ok 16 [desktop-chromium] › tests\e2e\premium-globe-exploration.spec.mjs:665:1 › coarse embedded globe preserves page pan until explicit full control (4.2s)
+  ok 17 [desktop-chromium] › tests\e2e\premium-globe-exploration.spec.mjs:962:1 › Nobel layer keeps selection and its explicit article action separate (8.0s)
+  x  18 [desktop-chromium] › tests\e2e\public-reader-journey.spec.ts:107:1 › reader can open the journal and a real article without runtime failures (2.2s)
+(node:18908) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 19 [desktop-chromium] › tests\e2e\public-reader-journey.spec.ts:140:1 › home and journal remain inside a narrow mobile viewport (1.7s)
+  ok 20 [desktop-chromium] › tests\e2e\public-smoke.spec.mjs:522:1 › поиск глобуса сохраняет запрос при ленивой загрузке и не раскрывает непубличную книгу (4.9s)
+  ok 21 [desktop-chromium] › tests\e2e\reader-extended-accessibility.spec.mjs:7:1 › disabled community runtime exposes honest state and preserves form text without writes (3.4s)
+  ok 22 [desktop-chromium] › tests\e2e\reader-extended-accessibility.spec.mjs:40:1 › real reader keeps text and controls with expanded text spacing (2.4s)
+  ok 23 [desktop-chromium] › tests\e2e\reader-extended-accessibility.spec.mjs:99:1 › request-only complex table and verse retain semantic contents and keyboard scrolling (1.8s)
+  ok 24 [desktop-chromium] › tests\e2e\reader-extended-accessibility.spec.mjs:142:1 › print media exposes full book text beyond the screen page (1.6s)
+  ok 25 [desktop-chromium] › tests\e2e\responsive-reader-globe.spec.mjs:375:1 › globe search metadata and instructions stay readable inside 320-1720px (6.4s)
+  ok 26 [desktop-chromium] › tests\e2e\stage5b-art-direction.spec.mjs:132:1 › Stage 5B desktop RU roles and surfaces stay inside the approved scale (11.7s)
+  ok 27 [desktop-chromium] › tests\e2e\stage5b-art-direction.spec.mjs:156:1 › Stage 5B mobile EN roles reflow without overflow (6.4s)
+  ok 28 [desktop-chromium] › tests\e2e\stage5c-layout-community.spec.mjs:311:1 › Stage 5C keeps the final homepage structure and card geometry (5.4s)
+  ok 29 [desktop-chromium] › tests\e2e\ui-polish-backgrounds.spec.mjs:20:50 › V4 artwork remains outside controls and follows real section bounds at 1440 (8.5s)
+  x  30 [desktop-chromium] › tests\e2e\ui-polish-backgrounds.spec.mjs:20:50 › V4 artwork remains outside controls and follows real section bounds at 390 (3.6s)
+(node:41520) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  31 [desktop-chromium] › tests\e2e\ui-polish-backgrounds.spec.mjs:20:50 › V4 artwork remains outside controls and follows real section bounds at 320 (4.5s)
+(node:26080) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  32 [desktop-chromium] › tests\e2e\ui-polish-backgrounds.spec.mjs:20:50 › V4 artwork remains outside controls and follows real section bounds at 768 (4.1s)
+(node:34744) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 33 [desktop-chromium] › tests\e2e\ui-polish-backgrounds.spec.mjs:20:50 › V4 artwork remains outside controls and follows real section bounds at 1920 (12.8s)
+  ok 34 [desktop-chromium] › tests\e2e\ui-polish-backgrounds.spec.mjs:91:1 › V4 decoration failure and changed neighbours preserve content and navigation (4.2s)
+  ok 35 [desktop-chromium] › tests\e2e\ui-polish-controls.spec.mjs:15:1 › F13 WebGL creation failure preserves country search and article reading (5.7s)
+  ok 36 [desktop-chromium] › tests\e2e\ui-polish-controls.spec.mjs:48:3 › R05 panels, zoom, resize and immersive return at 1440px (9.8s)
+  x  37 [desktop-chromium] › tests\e2e\ui-polish-controls.spec.mjs:156:3 › R04 archive, shelf search, random selection and centered navigation at 1440px (2.2m)
+(node:19596) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 38 [desktop-chromium] › tests\e2e\ui-polish-controls.spec.mjs:48:3 › R05 panels, zoom, resize and immersive return at 390px (7.5s)
+  ok 39 [desktop-chromium] › tests\e2e\ui-polish-controls.spec.mjs:156:3 › R04 archive, shelf search, random selection and centered navigation at 390px (8.1s)
+(node:35808) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 40 [mobile-chromium] › tests\e2e\article-book-pagination.spec.mjs:38:1 › existing article book preserves content and turns through both boundaries (2.8s)
+  ok 41 [mobile-chromium] › tests\e2e\article-book-pagination.spec.mjs:67:1 › book keeps a content anchor through reflow, font sizing and reopening (4.6s)
+  ok 42 [mobile-chromium] › tests\e2e\article-book-pagination.spec.mjs:109:1 › book keyboard, horizontal swipe and reduced motion remain usable (2.2s)
+  x  43 [mobile-chromium] › tests\e2e\article-book-pagination.spec.mjs:123:1 › archive CTA opens that article in book mode and reader layers return focus (3.1s)
+(node:38300) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 44 [mobile-chromium] › tests\e2e\globe-runtime.spec.mjs:247:1 › atlas URL restores selections, supports history and mounts the index on demand (7.3s)
+  ok 45 [mobile-chromium] › tests\e2e\globe-runtime.spec.mjs:284:1 › globe filters update the collection without rebuilding the 3D atlas (7.8s)
+  x  46 [mobile-chromium] › tests\e2e\globe-runtime.spec.mjs:345:1 › selected Indonesia remains centered after the focus animation (17.7s)
+(node:48056) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 47 [mobile-chromium] › tests\e2e\globe-visual-regression.spec.mjs:119:3 › globe visual regression › keeps premium chrome and country cards aligned at desktop and mobile sizes (7.1s)
+  ok 48 [mobile-chromium] › tests\e2e\home-first-paint.spec.mjs:69:1 › статический архив журнала не скрывается защитой главной (734ms)
+  ok 49 [mobile-chromium] › tests\e2e\literary-news-production.spec.mjs:45:1 › public news loads near the book feature and follows language and visitor dates (7.1s)
+  -  50 [mobile-chromium] › tests\e2e\literary-planet-immersion.spec.mjs:112:1 › embedded atlas enters one-canvas immersion and Escape restores scroll and focus
+  -  51 [mobile-chromium] › tests\e2e\literary-planet-immersion.spec.mjs:456:1 › premium globe controls stay balanced and inside every viewport
+  x  52 [mobile-chromium] › tests\e2e\premium-globe-exploration.spec.mjs:219:1 › keyboard candidate selects the optical-centre country without replacing Canvas (6.0s)
+(node:45280) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  53 [mobile-chromium] › tests\e2e\premium-globe-exploration.spec.mjs:465:1 › atlas controls wrap without overlap and rich count matches the collection (16.5s)
+(node:16468) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 54 [mobile-chromium] › tests\e2e\premium-globe-exploration.spec.mjs:604:1 › immersive random journey respects the current collection and recent picks (8.1s)
+  ok 55 [mobile-chromium] › tests\e2e\premium-globe-exploration.spec.mjs:665:1 › coarse embedded globe preserves page pan until explicit full control (13.5s)
+  ok 56 [mobile-chromium] › tests\e2e\premium-globe-exploration.spec.mjs:962:1 › Nobel layer keeps selection and its explicit article action separate (7.3s)
+  x  57 [mobile-chromium] › tests\e2e\public-reader-journey.spec.ts:107:1 › reader can open the journal and a real article without runtime failures (2.2s)
+(node:42912) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 58 [mobile-chromium] › tests\e2e\public-reader-journey.spec.ts:140:1 › home and journal remain inside a narrow mobile viewport (2.7s)
+  ok 59 [mobile-chromium] › tests\e2e\public-smoke.spec.mjs:522:1 › поиск глобуса сохраняет запрос при ленивой загрузке и не раскрывает непубличную книгу (5.4s)
+  ok 60 [mobile-chromium] › tests\e2e\reader-extended-accessibility.spec.mjs:7:1 › disabled community runtime exposes honest state and preserves form text without writes (4.2s)
+  ok 61 [mobile-chromium] › tests\e2e\reader-extended-accessibility.spec.mjs:40:1 › real reader keeps text and controls with expanded text spacing (3.4s)
+  ok 62 [mobile-chromium] › tests\e2e\reader-extended-accessibility.spec.mjs:99:1 › request-only complex table and verse retain semantic contents and keyboard scrolling (3.4s)
+  ok 63 [mobile-chromium] › tests\e2e\reader-extended-accessibility.spec.mjs:142:1 › print media exposes full book text beyond the screen page (2.8s)
+  ok 64 [mobile-chromium] › tests\e2e\responsive-reader-globe.spec.mjs:375:1 › globe search metadata and instructions stay readable inside 320-1720px (14.5s)
+  ok 65 [mobile-chromium] › tests\e2e\stage5b-art-direction.spec.mjs:132:1 › Stage 5B desktop RU roles and surfaces stay inside the approved scale (16.9s)
+  ok 66 [mobile-chromium] › tests\e2e\stage5b-art-direction.spec.mjs:156:1 › Stage 5B mobile EN roles reflow without overflow (8.0s)
+  ok 67 [mobile-chromium] › tests\e2e\stage5c-layout-community.spec.mjs:311:1 › Stage 5C keeps the final homepage structure and card geometry (4.7s)
+  -  68 [mobile-chromium] › tests\e2e\ui-polish-backgrounds.spec.mjs:20:50 › V4 artwork remains outside controls and follows real section bounds at 1440
+  -  69 [mobile-chromium] › tests\e2e\ui-polish-backgrounds.spec.mjs:20:50 › V4 artwork remains outside controls and follows real section bounds at 390
+  -  70 [mobile-chromium] › tests\e2e\ui-polish-backgrounds.spec.mjs:20:50 › V4 artwork remains outside controls and follows real section bounds at 320
+  -  71 [mobile-chromium] › tests\e2e\ui-polish-backgrounds.spec.mjs:20:50 › V4 artwork remains outside controls and follows real section bounds at 768
+  -  72 [mobile-chromium] › tests\e2e\ui-polish-backgrounds.spec.mjs:20:50 › V4 artwork remains outside controls and follows real section bounds at 1920
+  -  73 [mobile-chromium] › tests\e2e\ui-polish-backgrounds.spec.mjs:91:1 › V4 decoration failure and changed neighbours preserve content and navigation
+  ok 74 [mobile-chromium] › tests\e2e\ui-polish-controls.spec.mjs:15:1 › F13 WebGL creation failure preserves country search and article reading (6.1s)
+  ok 75 [mobile-chromium] › tests\e2e\ui-polish-controls.spec.mjs:48:3 › R05 panels, zoom, resize and immersive return at 1440px (12.1s)
+  x  76 [mobile-chromium] › tests\e2e\ui-polish-controls.spec.mjs:156:3 › R04 archive, shelf search, random selection and centered navigation at 1440px (2.1m)
+(node:4264) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  77 [mobile-chromium] › tests\e2e\ui-polish-controls.spec.mjs:48:3 › R05 panels, zoom, resize and immersive return at 390px (2.0m)
+(node:17608) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 78 [mobile-chromium] › tests\e2e\ui-polish-controls.spec.mjs:156:3 › R04 archive, shelf search, random selection and centered navigation at 390px (11.7s)
+
+
+  1) [desktop-chromium] › tests\e2e\literary-planet-immersion.spec.mjs:112:1 › embedded atlas enters one-canvas immersion and Escape restores scroll and focus 
+
+    Error: expect(received).toBeCloseTo(expected, precision)
+
+    Expected: 1075
+    Received: 375
+
+    Expected precision:    -1
+    Expected difference: < 5
+    Received difference:   700
+
+    Call Log:
+    - Timeout 10000ms exceeded while waiting on the predicate
+
+      224 |   await expect
+      225 |     .poll(() => page.evaluate(() => window.scrollY))
+    > 226 |     .toBeCloseTo(scrollBefore, -1);
+          |      ^
+      227 | });
+      228 |
+      229 | test("country selection replaces the immersive entry and survives Back/Forward without remounting Canvas", async ({
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\probpera-typography\tests\e2e\literary-planet-immersion.spec.mjs:226:6
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    reports\ui-polish-v4\owner-revision-e2e-artifacts\literary-planet-immersion--69cfd-e-restores-scroll-and-focus-desktop-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: reports\ui-polish-v4\owner-revision-e2e-artifacts\literary-planet-immersion--69cfd-e-restores-scroll-and-focus-desktop-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    reports\ui-polish-v4\owner-revision-e2e-artifacts\literary-planet-immersion--69cfd-e-restores-scroll-and-focus-desktop-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace reports\ui-polish-v4\owner-revision-e2e-artifacts\literary-planet-immersion--69cfd-e-restores-scroll-and-focus-desktop-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [desktop-chromium] › tests\e2e\premium-globe-exploration.spec.mjs:465:1 › atlas controls wrap without overlap and rich count matches the collection 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator:  locator('#atlas').locator('.atlas-filters')
+    Expected: visible
+    Received: hidden
+    Timeout:  10000ms
+
+    Call log:
+      - Expect "toBeVisible" with timeout 10000ms
+      - waiting for locator('#atlas').locator('.atlas-filters')
+        22 × locator resolved to <div class="atlas-filters" id="atlas-filter-panel">…</div>
+           - unexpected value "hidden"
+
+
+      539 |   await atlas.locator('.atlas-embedded-discovery [data-atlas-action="toggle-filters"]').click();
+      540 |   await expect(atlas.locator(".country-search")).toBeHidden();
+    > 541 |   await expect(filters).toBeVisible();
+          |                         ^
+      542 |   expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBeLessThanOrEqual(1);
+      543 |
+      544 |   const rich = filters.locator('[data-atlas-filter="rich"]');
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\probpera-typography\tests\e2e\premium-globe-exploration.spec.mjs:541:25
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    reports\ui-polish-v4\owner-revision-e2e-artifacts\premium-globe-exploration--30196-ount-matches-the-collection-desktop-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: reports\ui-polish-v4\owner-revision-e2e-artifacts\premium-globe-exploration--30196-ount-matches-the-collection-desktop-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    reports\ui-polish-v4\owner-revision-e2e-artifacts\premium-globe-exploration--30196-ount-matches-the-collection-desktop-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace reports\ui-polish-v4\owner-revision-e2e-artifacts\premium-globe-exploration--30196-ount-matches-the-collection-desktop-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [desktop-chromium] › tests\e2e\public-reader-journey.spec.ts:107:1 › reader can open the journal and a real article without runtime failures 
+
+    Error: journal must expose at least one canonical article link
+
+    expect(received).toBeTruthy()
+
+    Received: null
+
+      123 |
+      124 |   const articleHref = await firstArticleHref(page);
+    > 125 |   expect(articleHref, "journal must expose at least one canonical article link").toBeTruthy();
+          |                                                                                  ^
+      126 |
+      127 |   const articleResponse = await page.goto(articleHref!, {
+      128 |     waitUntil: "domcontentloaded",
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\probpera-typography\tests\e2e\public-reader-journey.spec.ts:125:82
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    reports\ui-polish-v4\owner-revision-e2e-artifacts\public-reader-journey-read-0021f-le-without-runtime-failures-desktop-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: reports\ui-polish-v4\owner-revision-e2e-artifacts\public-reader-journey-read-0021f-le-without-runtime-failures-desktop-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    reports\ui-polish-v4\owner-revision-e2e-artifacts\public-reader-journey-read-0021f-le-without-runtime-failures-desktop-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace reports\ui-polish-v4\owner-revision-e2e-artifacts\public-reader-journey-read-0021f-le-without-runtime-failures-desktop-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [desktop-chromium] › tests\e2e\ui-polish-backgrounds.spec.mjs:20:50 › V4 artwork remains outside controls and follows real section bounds at 390 
+
+    Error: expect(received).toBeCloseTo(expected, precision)
+
+    Expected: 510
+    Received: 390
+
+    Expected precision:    0
+    Expected difference: < 0.5
+    Received difference:   120
+
+      59 |     const orange = result.images.find(img => img.color === 'orange');
+      60 |     const secondary = result.images.find(img => img.color !== 'orange');
+    > 61 |     expect(orange.width).toBeCloseTo(width <= 680 ? 510 : Math.min(1140, Math.max(840, width * .81)), 0);
+         |                          ^
+      62 |     expect(secondary.width).toBeCloseTo(width <= 680 ? 330 : 600, 0);
+      63 |     expect(result.gradients).toBe('none');
+      64 |     measurements.push(result);
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\probpera-typography\tests\e2e\ui-polish-backgrounds.spec.mjs:61:26
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    reports\ui-polish-v4\owner-revision-e2e-artifacts\ui-polish-backgrounds-V4-a-19e35--real-section-bounds-at-390-desktop-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: reports\ui-polish-v4\owner-revision-e2e-artifacts\ui-polish-backgrounds-V4-a-19e35--real-section-bounds-at-390-desktop-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    reports\ui-polish-v4\owner-revision-e2e-artifacts\ui-polish-backgrounds-V4-a-19e35--real-section-bounds-at-390-desktop-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace reports\ui-polish-v4\owner-revision-e2e-artifacts\ui-polish-backgrounds-V4-a-19e35--real-section-bounds-at-390-desktop-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) [desktop-chromium] › tests\e2e\ui-polish-backgrounds.spec.mjs:20:50 › V4 artwork remains outside controls and follows real section bounds at 320 
+
+    Error: expect(received).toBeCloseTo(expected, precision)
+
+    Expected: 510
+    Received: 320
+
+    Expected precision:    0
+    Expected difference: < 0.5
+    Received difference:   190
+
+      59 |     const orange = result.images.find(img => img.color === 'orange');
+      60 |     const secondary = result.images.find(img => img.color !== 'orange');
+    > 61 |     expect(orange.width).toBeCloseTo(width <= 680 ? 510 : Math.min(1140, Math.max(840, width * .81)), 0);
+         |                          ^
+      62 |     expect(secondary.width).toBeCloseTo(width <= 680 ? 330 : 600, 0);
+      63 |     expect(result.gradients).toBe('none');
+      64 |     measurements.push(result);
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\probpera-typography\tests\e2e\ui-polish-backgrounds.spec.mjs:61:26
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    reports\ui-polish-v4\owner-revision-e2e-artifacts\ui-polish-backgrounds-V4-a-f10c3--real-section-bounds-at-320-desktop-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: reports\ui-polish-v4\owner-revision-e2e-artifacts\ui-polish-backgrounds-V4-a-f10c3--real-section-bounds-at-320-desktop-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    reports\ui-polish-v4\owner-revision-e2e-artifacts\ui-polish-backgrounds-V4-a-f10c3--real-section-bounds-at-320-desktop-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace reports\ui-polish-v4\owner-revision-e2e-artifacts\ui-polish-backgrounds-V4-a-f10c3--real-section-bounds-at-320-desktop-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) [desktop-chromium] › tests\e2e\ui-polish-backgrounds.spec.mjs:20:50 › V4 artwork remains outside controls and follows real section bounds at 768 
+
+    Error: expect(received).toBeCloseTo(expected, precision)
+
+    Expected: 840
+    Received: 768
+
+    Expected precision:    0
+    Expected difference: < 0.5
+    Received difference:   72
+
+      59 |     const orange = result.images.find(img => img.color === 'orange');
+      60 |     const secondary = result.images.find(img => img.color !== 'orange');
+    > 61 |     expect(orange.width).toBeCloseTo(width <= 680 ? 510 : Math.min(1140, Math.max(840, width * .81)), 0);
+         |                          ^
+      62 |     expect(secondary.width).toBeCloseTo(width <= 680 ? 330 : 600, 0);
+      63 |     expect(result.gradients).toBe('none');
+      64 |     measurements.push(result);
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\probpera-typography\tests\e2e\ui-polish-backgrounds.spec.mjs:61:26
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    reports\ui-polish-v4\owner-revision-e2e-artifacts\ui-polish-backgrounds-V4-a-429c5--real-section-bounds-at-768-desktop-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: reports\ui-polish-v4\owner-revision-e2e-artifacts\ui-polish-backgrounds-V4-a-429c5--real-section-bounds-at-768-desktop-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    reports\ui-polish-v4\owner-revision-e2e-artifacts\ui-polish-backgrounds-V4-a-429c5--real-section-bounds-at-768-desktop-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace reports\ui-polish-v4\owner-revision-e2e-artifacts\ui-polish-backgrounds-V4-a-429c5--real-section-bounds-at-768-desktop-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  7) [desktop-chromium] › tests\e2e\ui-polish-controls.spec.mjs:156:3 › R04 archive, shelf search, random selection and centered navigation at 1440px 
+
+    Test timeout of 120000ms exceeded.
+
+    Error: locator.click: Test timeout of 120000ms exceeded.
+    Call log:
+      - waiting for locator('#books').locator('.book-shelf-controls').getByRole('button', { name: 'Весь архив', exact: true })
+        - locator resolved to <button type="button" class="book-shelf-controls__archive">Весь архив</button>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <h4>КНИГИ</h4> from <div class="book-shelf-controls__search-group">…</div> subtree intercepts pointer events
+        - retrying click action
+        - waiting 20ms
+        2 × waiting for element to be visible, enabled and stable
+          - element is not stable
+        - retrying click action
+          - waiting 100ms
+        - waiting for element to be visible, enabled and stable
+        - element is not stable
+      3 × retrying click action
+          - waiting 500ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <h4>КНИГИ</h4> from <div class="book-shelf-controls__search-group">…</div> subtree intercepts pointer events
+      59 × retrying click action
+           - waiting 500ms
+           - waiting for element to be visible, enabled and stable
+           - element is visible, enabled and stable
+           - scrolling into view if needed
+           - done scrolling
+           - <header class="site-header">…</header> intercepts pointer events
+         - retrying click action
+           - waiting 500ms
+           - waiting for element to be visible, enabled and stable
+           - element is visible, enabled and stable
+           - scrolling into view if needed
+           - done scrolling
+           - <header class="site-header">…</header> intercepts pointer events
+         - retrying click action
+           - waiting 500ms
+           - waiting for element to be visible, enabled and stable
+           - element is visible, enabled and stable
+           - scrolling into view if needed
+           - done scrolling
+           - <h4>КНИГИ</h4> from <div class="book-shelf-controls__search-group">…</div> subtree intercepts pointer events
+         - retrying click action
+           - waiting 500ms
+           - waiting for element to be visible, enabled and stable
+           - element is visible, enabled and stable
+           - scrolling into view if needed
+           - done scrolling
+           - <h4>КНИГИ</h4> from <div class="book-shelf-controls__search-group">…</div> subtree intercepts pointer events
+      2 × retrying click action
+          - waiting 500ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <header class="site-header">…</header> intercepts pointer events
+      - retrying click action
+        - waiting 500ms
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - <h4>КНИГИ</h4> from <div class="book-shelf-controls__search-group">…</div> subtree intercepts pointer events
+      - retrying click action
+        - waiting 500ms
+
+
+      167 |     await search.fill('1984');
+      168 |     await expect(books.locator('.archive-book-card').filter({ hasText: '1984' }).first()).toBeVisible();
+    > 169 |     await controls.getByRole('button', { name: 'Весь архив', exact: true }).click();
+          |                                                                             ^
+      170 |     await expect(search).toHaveValue('');
+      171 |     await controls.getByRole('button', { name: 'ПОЛКА', exact: false }).click();
+      172 |     await expect(books.locator('.book-shelf-scene canvas')).toBeVisible({ timeout: 60000 });
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\probpera-typography\tests\e2e\ui-polish-controls.spec.mjs:169:77
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    reports\ui-polish-v4\owner-revision-e2e-artifacts\ui-polish-controls-R04-arc-0d642-ntered-navigation-at-1440px-desktop-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: reports\ui-polish-v4\owner-revision-e2e-artifacts\ui-polish-controls-R04-arc-0d642-ntered-navigation-at-1440px-desktop-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    reports\ui-polish-v4\owner-revision-e2e-artifacts\ui-polish-controls-R04-arc-0d642-ntered-navigation-at-1440px-desktop-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace reports\ui-polish-v4\owner-revision-e2e-artifacts\ui-polish-controls-R04-arc-0d642-ntered-navigation-at-1440px-desktop-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  8) [mobile-chromium] › tests\e2e\article-book-pagination.spec.mjs:123:1 › archive CTA opens that article in book mode and reader layers return focus 
+
+    Error: locator.scrollIntoViewIfNeeded: Element is not attached to the DOM
+    Call log:
+      - attempting scroll into view action
+        - waiting for element to be stable
+
+
+      128 |   await page.addInitScript(() => localStorage.setItem("probpera-display-mode", "light"));
+      129 |   await page.goto(journal.href);
+    > 130 |   await page.locator("#journal").scrollIntoViewIfNeeded();
+          |                                  ^
+      131 |   const trigger = page.locator(".article-library-grid > article > a").first();
+      132 |   const title = await trigger.locator("h3").innerText();
+      133 |   const href = await trigger.getAttribute("href");
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\probpera-typography\tests\e2e\article-book-pagination.spec.mjs:130:34
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    reports\ui-polish-v4\owner-revision-e2e-artifacts\article-book-pagination-ar-c0e22--reader-layers-return-focus-mobile-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: reports\ui-polish-v4\owner-revision-e2e-artifacts\article-book-pagination-ar-c0e22--reader-layers-return-focus-mobile-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    reports\ui-polish-v4\owner-revision-e2e-artifacts\article-book-pagination-ar-c0e22--reader-layers-return-focus-mobile-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace reports\ui-polish-v4\owner-revision-e2e-artifacts\article-book-pagination-ar-c0e22--reader-layers-return-focus-mobile-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  9) [mobile-chromium] › tests\e2e\globe-runtime.spec.mjs:345:1 › selected Indonesia remains centered after the focus animation 
+
+    Error: expect(received).toBeLessThan(expected)
+
+    Expected: < 0.9
+    Received:   25.723171291225793
+
+      438 |   const stillFocused = await canvas.screenshot();
+      439 |
+    > 440 |   expect(await meanPixelDifference(focused, stillFocused)).toBeLessThan(0.9);
+          |                                                            ^
+      441 |
+      442 |   await page
+      443 |     .locator(".site-header .interface-language-control")
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\probpera-typography\tests\e2e\globe-runtime.spec.mjs:440:60
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    reports\ui-polish-v4\owner-revision-e2e-artifacts\globe-runtime-selected-Ind-7afa7-d-after-the-focus-animation-mobile-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: reports\ui-polish-v4\owner-revision-e2e-artifacts\globe-runtime-selected-Ind-7afa7-d-after-the-focus-animation-mobile-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    reports\ui-polish-v4\owner-revision-e2e-artifacts\globe-runtime-selected-Ind-7afa7-d-after-the-focus-animation-mobile-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace reports\ui-polish-v4\owner-revision-e2e-artifacts\globe-runtime-selected-Ind-7afa7-d-after-the-focus-animation-mobile-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  10) [mobile-chromium] › tests\e2e\premium-globe-exploration.spec.mjs:219:1 › keyboard candidate selects the optical-centre country without replacing Canvas 
+
+    Error: expect(received).toBeLessThan(expected)
+
+    Expected: < 2
+    Received:   120
+
+      288 |   const after = await canvas.boundingBox();
+      289 |   expect(Math.abs((after?.width ?? 0) - (before?.width ?? 0))).toBeLessThan(2);
+    > 290 |   expect(Math.abs((after?.height ?? 0) - (before?.height ?? 0))).toBeLessThan(2);
+          |                                                                  ^
+      291 | });
+      292 |
+      293 | test("edition buttons commit only the texture that actually rendered", async ({
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\probpera-typography\tests\e2e\premium-globe-exploration.spec.mjs:290:66
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    reports\ui-polish-v4\owner-revision-e2e-artifacts\premium-globe-exploration--f4acd-ry-without-replacing-Canvas-mobile-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: reports\ui-polish-v4\owner-revision-e2e-artifacts\premium-globe-exploration--f4acd-ry-without-replacing-Canvas-mobile-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    reports\ui-polish-v4\owner-revision-e2e-artifacts\premium-globe-exploration--f4acd-ry-without-replacing-Canvas-mobile-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace reports\ui-polish-v4\owner-revision-e2e-artifacts\premium-globe-exploration--f4acd-ry-without-replacing-Canvas-mobile-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  11) [mobile-chromium] › tests\e2e\premium-globe-exploration.spec.mjs:465:1 › atlas controls wrap without overlap and rich count matches the collection 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator:  locator('#atlas').locator('.atlas-filters')
+    Expected: visible
+    Received: hidden
+    Timeout:  10000ms
+
+    Call log:
+      - Expect "toBeVisible" with timeout 10000ms
+      - waiting for locator('#atlas').locator('.atlas-filters')
+        22 × locator resolved to <div class="atlas-filters" id="atlas-filter-panel">…</div>
+           - unexpected value "hidden"
+
+
+      539 |   await atlas.locator('.atlas-embedded-discovery [data-atlas-action="toggle-filters"]').click();
+      540 |   await expect(atlas.locator(".country-search")).toBeHidden();
+    > 541 |   await expect(filters).toBeVisible();
+          |                         ^
+      542 |   expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBeLessThanOrEqual(1);
+      543 |
+      544 |   const rich = filters.locator('[data-atlas-filter="rich"]');
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\probpera-typography\tests\e2e\premium-globe-exploration.spec.mjs:541:25
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    reports\ui-polish-v4\owner-revision-e2e-artifacts\premium-globe-exploration--30196-ount-matches-the-collection-mobile-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: reports\ui-polish-v4\owner-revision-e2e-artifacts\premium-globe-exploration--30196-ount-matches-the-collection-mobile-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    reports\ui-polish-v4\owner-revision-e2e-artifacts\premium-globe-exploration--30196-ount-matches-the-collection-mobile-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace reports\ui-polish-v4\owner-revision-e2e-artifacts\premium-globe-exploration--30196-ount-matches-the-collection-mobile-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  12) [mobile-chromium] › tests\e2e\public-reader-journey.spec.ts:107:1 › reader can open the journal and a real article without runtime failures 
+
+    Error: journal must expose at least one canonical article link
+
+    expect(received).toBeTruthy()
+
+    Received: null
+
+      123 |   await expect(page.locator("h1").first()).toBeVisible();
+      124 |   await expect(page.locator('link[rel="canonical"]')).toHaveCount(1);
+    > 125 |
+          | ^
+      126 |   await page.waitForTimeout(250);
+      127 |   expect(diagnostics.pageErrors).toEqual([]);
+      128 |   expect(diagnostics.failedSameOriginRequests).toEqual([]);
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\probpera-typography\tests\e2e\public-reader-journey.spec.ts:125:82
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    reports\ui-polish-v4\owner-revision-e2e-artifacts\public-reader-journey-read-0021f-le-without-runtime-failures-mobile-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: reports\ui-polish-v4\owner-revision-e2e-artifacts\public-reader-journey-read-0021f-le-without-runtime-failures-mobile-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    reports\ui-polish-v4\owner-revision-e2e-artifacts\public-reader-journey-read-0021f-le-without-runtime-failures-mobile-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace reports\ui-polish-v4\owner-revision-e2e-artifacts\public-reader-journey-read-0021f-le-without-runtime-failures-mobile-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  13) [mobile-chromium] › tests\e2e\ui-polish-controls.spec.mjs:156:3 › R04 archive, shelf search, random selection and centered navigation at 1440px 
+
+    Test timeout of 120000ms exceeded.
+
+    Error: locator.click: Test timeout of 120000ms exceeded.
+    Call log:
+      - waiting for locator('#books').locator('.book-shelf-controls').getByRole('button', { name: 'Весь архив', exact: true })
+        - locator resolved to <button type="button" class="book-shelf-controls__archive">Весь архив</button>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <h4>КНИГИ</h4> from <div class="book-shelf-controls__search-group">…</div> subtree intercepts pointer events
+        - retrying click action
+        - waiting 20ms
+        2 × waiting for element to be visible, enabled and stable
+          - element is not stable
+        - retrying click action
+          - waiting 100ms
+        - waiting for element to be visible, enabled and stable
+        - element is not stable
+      3 × retrying click action
+          - waiting 500ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <h4>КНИГИ</h4> from <div class="book-shelf-controls__search-group">…</div> subtree intercepts pointer events
+      57 × retrying click action
+           - waiting 500ms
+           - waiting for element to be visible, enabled and stable
+           - element is visible, enabled and stable
+           - scrolling into view if needed
+           - done scrolling
+           - <header class="site-header">…</header> intercepts pointer events
+         - retrying click action
+           - waiting 500ms
+           - waiting for element to be visible, enabled and stable
+           - element is visible, enabled and stable
+           - scrolling into view if needed
+           - done scrolling
+           - <header class="site-header">…</header> intercepts pointer events
+         - retrying click action
+           - waiting 500ms
+           - waiting for element to be visible, enabled and stable
+           - element is visible, enabled and stable
+           - scrolling into view if needed
+           - done scrolling
+           - <h4>КНИГИ</h4> from <div class="book-shelf-controls__search-group">…</div> subtree intercepts pointer events
+         - retrying click action
+           - waiting 500ms
+           - waiting for element to be visible, enabled and stable
+           - element is visible, enabled and stable
+           - scrolling into view if needed
+           - done scrolling
+           - <h4>КНИГИ</h4> from <div class="book-shelf-controls__search-group">…</div> subtree intercepts pointer events
+      - retrying click action
+        - waiting 500ms
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - <header class="site-header">…</header> intercepts pointer events
+      - retrying click action
+        - waiting 500ms
+
+
+      167 |     const books = page.locator('#books');
+      168 |     await books.scrollIntoViewIfNeeded();
+    > 169 |     const controls = books.locator('.book-shelf-controls');
+          |                                                            ^
+      170 |     await expect(controls).toBeVisible({ timeout: 60000 });
+      171 |     const archive = controls.getByRole('button', { name: 'Весь архив', exact: true });
+      172 |     await archive.click();
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\probpera-typography\tests\e2e\ui-polish-controls.spec.mjs:169:77
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    reports\ui-polish-v4\owner-revision-e2e-artifacts\ui-polish-controls-R04-arc-0d642-ntered-navigation-at-1440px-mobile-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: reports\ui-polish-v4\owner-revision-e2e-artifacts\ui-polish-controls-R04-arc-0d642-ntered-navigation-at-1440px-mobile-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    reports\ui-polish-v4\owner-revision-e2e-artifacts\ui-polish-controls-R04-arc-0d642-ntered-navigation-at-1440px-mobile-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace reports\ui-polish-v4\owner-revision-e2e-artifacts\ui-polish-controls-R04-arc-0d642-ntered-navigation-at-1440px-mobile-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  14) [mobile-chromium] › tests\e2e\ui-polish-controls.spec.mjs:48:3 › R05 panels, zoom, resize and immersive return at 390px 
+
+    Test timeout of 120000ms exceeded.
+
+    Error: locator.click: Test timeout of 120000ms exceeded.
+    Call log:
+      - waiting for locator('#atlas').locator('.literary-globe[data-globe-webgl-context="ready"]').locator('[data-globe-control="zoom-in"]')
+        - locator resolved to <button type="button" aria-keyshortcuts="+" data-globe-control="zoom-in" title="Увеличить масштаб глобуса" aria-describedby="globe-scale-feedback" aria-label="Увеличить масштаб глобуса. Текущий масштаб 110%" class="ui-icon-button ui-icon-button--md ui-icon-button--dark">…</button>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <button type="button" aria-pressed="false" data-globe-control="touch-activation" class="ui-action ui-action--secondary ui-action--md ui-action--dark globe-touch-activation">…</button> intercepts pointer events
+        - retrying click action
+        - waiting 20ms
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - <button type="button" aria-pressed="false" data-globe-control="touch-activation" class="ui-action ui-action--secondary ui-action--md ui-action--dark globe-touch-activation">…</button> intercepts pointer events
+      2 × retrying click action
+          - waiting 100ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <button class="" type="button" aria-pressed="false" title="Английский язык" aria-label="Английский язык">EN</button> from <header class="site-header">…</header> subtree intercepts pointer events
+      54 × retrying click action
+           - waiting 500ms
+           - waiting for element to be visible, enabled and stable
+           - element is visible, enabled and stable
+           - scrolling into view if needed
+           - done scrolling
+           - <button type="button" aria-pressed="false" data-globe-control="touch-activation" class="ui-action ui-action--secondary ui-action--md ui-action--dark globe-touch-activation">…</button> intercepts pointer events
+         - retrying click action
+           - waiting 500ms
+           - waiting for element to be visible, enabled and stable
+           - element is visible, enabled and stable
+           - scrolling into view if needed
+           - done scrolling
+           - <button type="button" aria-pressed="false" data-globe-control="touch-activation" class="ui-action ui-action--secondary ui-action--md ui-action--dark globe-touch-activation">…</button> intercepts pointer events
+         - retrying click action
+           - waiting 500ms
+           - waiting for element to be visible, enabled and stable
+           - element is visible, enabled and stable
+           - scrolling into view if needed
+           - done scrolling
+           - <button class="" type="button" aria-pressed="false" title="Английский язык" aria-label="Английский язык">EN</button> from <header class="site-header">…</header> subtree intercepts pointer events
+         - retrying click action
+           - waiting 500ms
+           - waiting for element to be visible, enabled and stable
+           - element is visible, enabled and stable
+           - scrolling into view if needed
+           - done scrolling
+           - <button class="" type="button" aria-pressed="false" title="Английский язык" aria-label="Английский язык">EN</button> from <header class="site-header">…</header> subtree intercepts pointer events
+      - retrying click action
+        - waiting 500ms
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - <button type="button" aria-pressed="false" data-globe-control="touch-activation" class="ui-action ui-action--secondary ui-action--md ui-action--dark globe-touch-activation">…</button> intercepts pointer events
+      - retrying click action
+        - waiting 500ms
+
+
+      130 |     const canvas = globe.locator('canvas');
+      131 |     await canvas.evaluate(element => { element.dataset.polishIdentity = 'preserved'; });
+    > 132 |     await page.setViewportSize({ width: width === 1440 ? 768 : 320, height: 900 });
+          |                  ^
+      133 |     await expect(canvas).toHaveAttribute('data-polish-identity', 'preserved');
+      134 |     expect(new URL(page.url()).searchParams.get('country')).toBe(selectedCountry);
+      135 |     const scale = globe.locator('#globe-scale-feedback');
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\probpera-typography\tests\e2e\ui-polish-controls.spec.mjs:132:18
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    reports\ui-polish-v4\owner-revision-e2e-artifacts\ui-polish-controls-R05-pan-a7dd8-d-immersive-return-at-390px-mobile-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: reports\ui-polish-v4\owner-revision-e2e-artifacts\ui-polish-controls-R05-pan-a7dd8-d-immersive-return-at-390px-mobile-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    reports\ui-polish-v4\owner-revision-e2e-artifacts\ui-polish-controls-R05-pan-a7dd8-d-immersive-return-at-390px-mobile-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace reports\ui-polish-v4\owner-revision-e2e-artifacts\ui-polish-controls-R05-pan-a7dd8-d-immersive-return-at-390px-mobile-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  14 failed
+    [desktop-chromium] › tests\e2e\literary-planet-immersion.spec.mjs:112:1 › embedded atlas enters one-canvas immersion and Escape restores scroll and focus 
+    [desktop-chromium] › tests\e2e\premium-globe-exploration.spec.mjs:465:1 › atlas controls wrap without overlap and rich count matches the collection 
+    [desktop-chromium] › tests\e2e\public-reader-journey.spec.ts:107:1 › reader can open the journal and a real article without runtime failures 
+    [desktop-chromium] › tests\e2e\ui-polish-backgrounds.spec.mjs:20:50 › V4 artwork remains outside controls and follows real section bounds at 390 
+    [desktop-chromium] › tests\e2e\ui-polish-backgrounds.spec.mjs:20:50 › V4 artwork remains outside controls and follows real section bounds at 320 
+    [desktop-chromium] › tests\e2e\ui-polish-backgrounds.spec.mjs:20:50 › V4 artwork remains outside controls and follows real section bounds at 768 
+    [desktop-chromium] › tests\e2e\ui-polish-controls.spec.mjs:156:3 › R04 archive, shelf search, random selection and centered navigation at 1440px 
+    [mobile-chromium] › tests\e2e\article-book-pagination.spec.mjs:123:1 › archive CTA opens that article in book mode and reader layers return focus 
+    [mobile-chromium] › tests\e2e\globe-runtime.spec.mjs:345:1 › selected Indonesia remains centered after the focus animation 
+    [mobile-chromium] › tests\e2e\premium-globe-exploration.spec.mjs:219:1 › keyboard candidate selects the optical-centre country without replacing Canvas 
+    [mobile-chromium] › tests\e2e\premium-globe-exploration.spec.mjs:465:1 › atlas controls wrap without overlap and rich count matches the collection 
+    [mobile-chromium] › tests\e2e\public-reader-journey.spec.ts:107:1 › reader can open the journal and a real article without runtime failures 
+    [mobile-chromium] › tests\e2e\ui-polish-controls.spec.mjs:156:3 › R04 archive, shelf search, random selection and centered navigation at 1440px 
+    [mobile-chromium] › tests\e2e\ui-polish-controls.spec.mjs:48:3 › R05 panels, zoom, resize and immersive return at 390px 
+  8 skipped
+  56 passed (15.5m)

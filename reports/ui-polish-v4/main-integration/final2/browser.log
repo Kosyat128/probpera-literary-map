@@ -1,0 +1,19 @@
+
+Running 10 tests using 1 worker
+
+(node:34284) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [desktop-chromium] › tests\e2e\article-book-pagination.spec.mjs:14:1 › canonical book keeps the source fragment through reflow, sizing, mode changes and reopening (32.5s)
+  ok  2 [desktop-chromium] › tests\e2e\article-book-pagination.spec.mjs:96:1 › archive CTA opens the canonical book and reader metrics and layers preserve focus (11.2s)
+  ok  3 [desktop-chromium] › tests\e2e\article-book-reading.spec.mjs:288:1 › illustrated book preserves every page, renders illustrations and supports accessible navigation (42.1s)
+  ok  4 [desktop-chromium] › tests\e2e\article-book-reading.spec.mjs:377:1 › a delayed illustration fills the existing book without blocking reading or resetting its page (10.2s)
+  ok  5 [desktop-chromium] › tests\e2e\reader-extended-accessibility.spec.mjs:140:1 › print media exposes the full source once and preserves canonical book position (4.0s)
+(node:36016) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  6 [mobile-chromium] › tests\e2e\article-book-pagination.spec.mjs:14:1 › canonical book keeps the source fragment through reflow, sizing, mode changes and reopening (29.3s)
+  ok  7 [mobile-chromium] › tests\e2e\article-book-pagination.spec.mjs:96:1 › archive CTA opens the canonical book and reader metrics and layers preserve focus (9.0s)
+  ok  8 [mobile-chromium] › tests\e2e\article-book-reading.spec.mjs:288:1 › illustrated book preserves every page, renders illustrations and supports accessible navigation (23.7s)
+  ok  9 [mobile-chromium] › tests\e2e\article-book-reading.spec.mjs:377:1 › a delayed illustration fills the existing book without blocking reading or resetting its page (11.5s)
+  ok 10 [mobile-chromium] › tests\e2e\reader-extended-accessibility.spec.mjs:140:1 › print media exposes the full source once and preserves canonical book position (4.4s)
+
+  10 passed (3.1m)

@@ -1,0 +1,489 @@
+{
+  "generatedAt": "2026-09-08T05:59:58.675Z",
+  "status": "LOCAL_QA_PASSED_WITH_DOCUMENTED_LIMITS",
+  "candidate": {
+    "date": "2026-09-08T05:26:33.821Z",
+    "sourceSha256": "9d483cf13525dbfe5d320e07eaf251692913d62bea7de214ba451aac0e560280",
+    "sourceMismatches": []
+  },
+  "gates": {
+    "sourceCurrent": true,
+    "buildPassed": true,
+    "lintPassed": true,
+    "unitFailureClosure": true,
+    "e2ePassed": true,
+    "afterFresh": true,
+    "seamPassed": true,
+    "protectedSnapshotPassed": true,
+    "assetTotalsValid": true,
+    "shelfPassed": true,
+    "shelfOrderPassed": true,
+    "searchPassed": true
+  },
+  "pending": [],
+  "build": {
+    "result": {
+      "Domain": 0,
+      "DomainBudget": 0,
+      "Preview": 0,
+      "Finished": "2026-09-08T05:27:22.224Z",
+      "Scope": "Final CSS-only touch-control contrast correction after the complete successful source build; unchanged TypeScript and assets retain their preceding checks.",
+      "Log": "owner-revision-css-rebuild.log"
+    },
+    "file": "owner-revision-build-results.json"
+  },
+  "lint": {
+    "result": {
+      "ExitCode": 0,
+      "Scope": "Current source freeze, including touch layout, App pointer handling, shelf dropdown and unclamped brush widths",
+      "Finished": "2026-09-08T05:22:59.5510400Z",
+      "Log": "owner-final-lint.log"
+    },
+    "file": "owner-final-lint-status.json"
+  },
+  "unit": {
+    "full": {
+      "files": {
+        "passed": 529,
+        "failed": 1,
+        "skipped": 3,
+        "line": "Test Files  1 failed | 529 passed | 3 skipped (533)"
+      },
+      "tests": {
+        "passed": 3109,
+        "failed": 2,
+        "skipped": 4,
+        "line": "Tests  2 failed | 3109 passed | 4 skipped (3115)"
+      }
+    },
+    "governance": {
+      "files": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "line": "Test Files  2 passed (2)"
+      },
+      "tests": {
+        "passed": 24,
+        "failed": 0,
+        "skipped": 0,
+        "line": "Tests  24 passed (24)"
+      }
+    },
+    "scopedGuardClosure": true
+  },
+  "checkReuse": {
+    "record": {
+      "sourceSha256": "9d483cf13525dbfe5d320e07eaf251692913d62bea7de214ba451aac0e560280",
+      "recordedAt": "2026-09-08T05:29:29.288Z",
+      "BeforeSourceSnapshot": "source-before-touch-contrast.json",
+      "beforeSourceSha256": "383ff8da6ea5a3ba076ff8516e4812f875d5d2a3bae0894cc8dc496c83f4fe29",
+      "changedPaths": [
+        "src/styles/ui-polish-controls.css"
+      ],
+      "observedScope": "Exact source-manifest delta after the latest complete lint, governance and source build: only src/styles/ui-polish-controls.css. Root reports the delta changes touch button colors, with no typography or geometry change. Current candidate file hashes were verified when recording this reuse. Original check timestamps remain unchanged; this is not a fresh full test run.",
+      "lint": {
+        "status": "reused_unchanged_typescript_current_css_audit",
+        "originalFinished": "2026-09-08T05:22:59.5510400Z",
+        "currentCssAuditLog": "owner-revision-css-rebuild.log"
+      },
+      "governance": {
+        "status": "reused_outside_guarded_paths",
+        "log": "owner-final-governance.log",
+        "allowedPathsHash": "6e37223830434b26ee44d1b01abe24b9ab8292da4817c1404e44f9ca8149a0a0"
+      }
+    },
+    "file": "owner-revision-check-reuse.json",
+    "reuseScopeValid": true,
+    "lintReused": true,
+    "governanceReused": true,
+    "beforeSource": {
+      "file": "source-before-touch-contrast.json",
+      "date": "2026-09-08T05:22:25.747Z",
+      "sourceSha256": "383ff8da6ea5a3ba076ff8516e4812f875d5d2a3bae0894cc8dc496c83f4fe29",
+      "modified": "2026-09-08T05:22:25.750Z"
+    },
+    "snapshotScopeValid": true,
+    "changedSourcePaths": [
+      "src/styles/ui-polish-controls.css"
+    ],
+    "allowedPathsHash": "6e37223830434b26ee44d1b01abe24b9ab8292da4817c1404e44f9ca8149a0a0",
+    "allowedPathsHashEncoding": "UTF-8 JSON.stringify(actualManifest.allowedPaths), ordered, no terminal newline",
+    "currentCssAudit": {
+      "file": "owner-revision-css-rebuild.log",
+      "modified": "2026-09-08T05:27:22.213Z",
+      "passed": true
+    },
+    "originalLintFinished": "2026-09-08T05:22:59.5510400Z",
+    "originalGovernanceModified": "2026-09-08T05:23:07.215Z"
+  },
+  "e2e": {
+    "stats": {
+      "startTime": "2026-09-08T05:31:04.884Z",
+      "duration": 572200.405,
+      "expected": 65,
+      "skipped": 8,
+      "unexpected": 5,
+      "flaky": 0
+    },
+    "isListOnly": false,
+    "completedRun": true,
+    "baseUsable": true,
+    "baseUnresolved": [
+      {
+        "file": "literary-planet-immersion.spec.mjs",
+        "title": "embedded atlas enters one-canvas immersion and Escape restores scroll and focus",
+        "project": "desktop-chromium",
+        "status": "unexpected"
+      },
+      {
+        "file": "premium-globe-exploration.spec.mjs",
+        "title": "keyboard candidate selects the optical-centre country without replacing Canvas",
+        "project": "desktop-chromium",
+        "status": "unexpected"
+      },
+      {
+        "file": "premium-globe-exploration.spec.mjs",
+        "title": "atlas controls wrap without overlap and rich count matches the collection",
+        "project": "desktop-chromium",
+        "status": "unexpected"
+      },
+      {
+        "file": "premium-globe-exploration.spec.mjs",
+        "title": "keyboard candidate selects the optical-centre country without replacing Canvas",
+        "project": "mobile-chromium",
+        "status": "unexpected"
+      },
+      {
+        "file": "premium-globe-exploration.spec.mjs",
+        "title": "atlas controls wrap without overlap and rich count matches the collection",
+        "project": "mobile-chromium",
+        "status": "unexpected"
+      }
+    ],
+    "originalFailureCount": 31,
+    "notClosed": [],
+    "addendaChainValid": true,
+    "addenda": [
+      {
+        "round": 1,
+        "result": "owner-final-e2e-addendum-result.json",
+        "status": "owner-final-e2e-addendum-status.json",
+        "log": "owner-final-e2e-addendum.log",
+        "resultSha256": "a248b68d731350b826129e419c5947c02f15a90d3b63865cd0b520d9035af397",
+        "statusSha256": "afafb901f0f895a9353794365b1dcb6fd5c2704b409735f0559673d27285e155",
+        "stats": {
+          "startTime": "2026-09-08T05:44:19.405Z",
+          "duration": 79100.651,
+          "expected": 2,
+          "skipped": 1,
+          "unexpected": 3,
+          "flaky": 0
+        },
+        "record": {
+          "started": "2026-09-08T05:44:18.808Z",
+          "finished": "2026-09-08T05:45:38.539Z",
+          "exitCode": 1,
+          "signal": null,
+          "sourceSha256": "9d483cf13525dbfe5d320e07eaf251692913d62bea7de214ba451aac0e560280",
+          "sourceSha256After": "9d483cf13525dbfe5d320e07eaf251692913d62bea7de214ba451aac0e560280",
+          "baseResultSha256": "0135c5788195a2a015c7043e4900d30a87528cd0b8a4a8d990a197f0fccb835a",
+          "baseStatusSha256": "885bbcad5777db9542e8b22f26b0df1b2f3c9f0107dcf3b6990f776729af27e5",
+          "baseResultFile": "owner-final-e2e-result.json",
+          "baseStatusFile": "owner-final-e2e-status.json",
+          "baseEvidenceUnchanged": true,
+          "log": "owner-final-e2e-addendum.log",
+          "selectors": [
+            "tests/e2e/literary-planet-immersion.spec.mjs",
+            "tests/e2e/premium-globe-exploration.spec.mjs",
+            "--grep",
+            "embedded atlas enters one-canvas immersion and Escape restores scroll and focus|keyboard candidate selects the optical-centre country without replacing Canvas|atlas controls wrap without overlap and rich count matches the collection"
+          ],
+          "args": [
+            "node_modules/playwright/cli.js",
+            "test",
+            "tests/e2e/literary-planet-immersion.spec.mjs",
+            "tests/e2e/premium-globe-exploration.spec.mjs",
+            "--grep",
+            "embedded atlas enters one-canvas immersion and Escape restores scroll and focus|keyboard candidate selects the optical-centre country without replacing Canvas|atlas controls wrap without overlap and rich count matches the collection",
+            "--workers=1",
+            "--output=reports/ui-polish-v4/owner-final-e2e-addendum-artifacts",
+            "--reporter=list,json"
+          ]
+        },
+        "listOnly": false,
+        "contextValid": true,
+        "completed": true,
+        "usable": true
+      },
+      {
+        "round": 2,
+        "result": "owner-final-e2e-addendum-2-result.json",
+        "status": "owner-final-e2e-addendum-2-status.json",
+        "log": "owner-final-e2e-addendum-2.log",
+        "resultSha256": "0d9e4183c14e43f35e16b342437963a312bac002620f37c992f7886603cf97ce",
+        "statusSha256": "119109c0c0a0f8733efc198f8dcfdd332be0d4c3e258c8aec30ff9964f4c9ea6",
+        "stats": {
+          "startTime": "2026-09-08T05:53:35.615Z",
+          "duration": 33454.061,
+          "expected": 4,
+          "skipped": 0,
+          "unexpected": 0,
+          "flaky": 0
+        },
+        "record": {
+          "round": 2,
+          "started": "2026-09-08T05:53:34.931Z",
+          "finished": "2026-09-08T05:54:09.093Z",
+          "exitCode": 0,
+          "signal": null,
+          "sourceSha256": "9d483cf13525dbfe5d320e07eaf251692913d62bea7de214ba451aac0e560280",
+          "sourceSha256After": "9d483cf13525dbfe5d320e07eaf251692913d62bea7de214ba451aac0e560280",
+          "baseResultSha256": "0135c5788195a2a015c7043e4900d30a87528cd0b8a4a8d990a197f0fccb835a",
+          "baseStatusSha256": "885bbcad5777db9542e8b22f26b0df1b2f3c9f0107dcf3b6990f776729af27e5",
+          "baseResultFile": "owner-final-e2e-result.json",
+          "baseStatusFile": "owner-final-e2e-status.json",
+          "baseEvidenceUnchanged": true,
+          "priorResultFile": "owner-final-e2e-addendum-result.json",
+          "priorStatusFile": "owner-final-e2e-addendum-status.json",
+          "priorResultSha256": "a248b68d731350b826129e419c5947c02f15a90d3b63865cd0b520d9035af397",
+          "priorStatusSha256": "afafb901f0f895a9353794365b1dcb6fd5c2704b409735f0559673d27285e155",
+          "priorEvidenceUnchanged": true,
+          "log": "owner-final-e2e-addendum-2.log",
+          "selectors": [
+            "tests/e2e/premium-globe-exploration.spec.mjs",
+            "--grep",
+            "keyboard candidate selects the optical-centre country without replacing Canvas|atlas controls wrap without overlap and rich count matches the collection"
+          ],
+          "args": [
+            "node_modules/playwright/cli.js",
+            "test",
+            "tests/e2e/premium-globe-exploration.spec.mjs",
+            "--grep",
+            "keyboard candidate selects the optical-centre country without replacing Canvas|atlas controls wrap without overlap and rich count matches the collection",
+            "--workers=1",
+            "--output=reports/ui-polish-v4/owner-final-e2e-addendum-2-artifacts",
+            "--reporter=list,json"
+          ]
+        },
+        "listOnly": false,
+        "contextValid": true,
+        "completed": true,
+        "usable": true
+      }
+    ],
+    "unresolvedAfterAddendum": [],
+    "closedBaseFailures": [
+      {
+        "file": "literary-planet-immersion.spec.mjs",
+        "title": "embedded atlas enters one-canvas immersion and Escape restores scroll and focus",
+        "project": "desktop-chromium",
+        "status": "unexpected"
+      },
+      {
+        "file": "premium-globe-exploration.spec.mjs",
+        "title": "keyboard candidate selects the optical-centre country without replacing Canvas",
+        "project": "desktop-chromium",
+        "status": "unexpected"
+      },
+      {
+        "file": "premium-globe-exploration.spec.mjs",
+        "title": "atlas controls wrap without overlap and rich count matches the collection",
+        "project": "desktop-chromium",
+        "status": "unexpected"
+      },
+      {
+        "file": "premium-globe-exploration.spec.mjs",
+        "title": "keyboard candidate selects the optical-centre country without replacing Canvas",
+        "project": "mobile-chromium",
+        "status": "unexpected"
+      },
+      {
+        "file": "premium-globe-exploration.spec.mjs",
+        "title": "atlas controls wrap without overlap and rich count matches the collection",
+        "project": "mobile-chromium",
+        "status": "unexpected"
+      }
+    ]
+  },
+  "after": {
+    "captureDate": "2026-09-08T05:28:37.997Z",
+    "missingOrStaleFrames": [],
+    "geometryPassed": true
+  },
+  "seam": {
+    "status": "passed",
+    "captureDate": "2026-09-08T05:28:37.997Z",
+    "sourceSha256": "9d483cf13525dbfe5d320e07eaf251692913d62bea7de214ba451aac0e560280",
+    "widths": [
+      1440,
+      390
+    ],
+    "regions": 13,
+    "boundaries": 12,
+    "reviewedBy": "root mobile; reader_controls desktop",
+    "reviewedAt": "2026-09-08T05:42:37.719Z",
+    "scope": "24 bounded boundary images only; runtime is separate",
+    "technicalVerification": {
+      "status": "passed_selected_runtime_scope",
+      "evidence": "benchmark-result.json#technicalVerification",
+      "uniqueExecutedClosed": 70,
+      "legitimateSkips": 8,
+      "sourceSha256": "9d483cf13525dbfe5d320e07eaf251692913d62bea7de214ba451aac0e560280",
+      "scope": "Separate executed-test evidence; the visual scope above is unchanged"
+    }
+  },
+  "protected": {
+    "checkedAt": "2026-09-08T04:16:48.839Z",
+    "count": 1451,
+    "passed": true,
+    "scope": "Last dated protected snapshot; later authorized controls remain a separate source scope. This is not a new protected audit."
+  },
+  "assets": {
+    "runtime": 284052,
+    "disk": 346588,
+    "manifestDisk": 346588
+  },
+  "limitations": [
+    "F11: локальная отключённая форма проверена без реальных записей. Live success/error, pending duplicate suppression и очистка после отправки not_verified; disabled success actions not_applicable.",
+    "Safari/WebKit, Firefox, физические устройства, экранная клавиатура, физический screen reader и принтер not_verified.",
+    "Полевые p75 LCP/INP/CLS, production HTTP404, все внешние медиа и все сложные опубликованные материалы not_verified.",
+    "Skipped учитываются отдельно. Исторический полный набор и точечное закрытие ошибок не объединяются в выдуманный новый полный прогон.",
+    "Ничего не публикуется в production этим helper. Локальная приёмка не является разрешением на публикацию."
+  ],
+  "inputs": {
+    "candidate": {
+      "file": "candidate-source.json",
+      "modified": "2026-09-08T05:26:33.824Z"
+    },
+    "build": {
+      "file": "owner-revision-build-results.json",
+      "modified": "2026-09-08T05:47:20.819Z"
+    },
+    "lint": {
+      "file": "owner-final-lint-status.json",
+      "modified": "2026-09-08T05:22:59.567Z"
+    },
+    "e2e": {
+      "file": "owner-final-e2e-result.json",
+      "modified": "2026-09-08T05:40:37.096Z"
+    },
+    "e2eStatus": {
+      "file": "owner-final-e2e-status.json",
+      "modified": "2026-09-08T05:40:37.117Z"
+    },
+    "e2eAddendum": {
+      "file": "owner-final-e2e-addendum-result.json",
+      "modified": "2026-09-08T05:45:38.512Z"
+    },
+    "e2eAddendumStatus": {
+      "file": "owner-final-e2e-addendum-status.json",
+      "modified": "2026-09-08T05:45:38.540Z"
+    },
+    "e2eAddendumLog": {
+      "file": "owner-final-e2e-addendum.log",
+      "modified": "2026-09-08T05:45:38.509Z"
+    },
+    "e2eAddenda": {
+      "file": "owner-final-e2e-addenda.json",
+      "modified": "2026-09-08T05:54:09.105Z"
+    },
+    "plan": {
+      "file": "owner-revision-e2e-plan.json",
+      "modified": "2026-09-08T05:31:04.326Z"
+    },
+    "wholeUnit": {
+      "file": "final-complete-unit.log",
+      "modified": "2026-09-08T03:21:06.317Z"
+    },
+    "governance": {
+      "file": "owner-final-governance.log",
+      "modified": "2026-09-08T05:23:07.215Z"
+    },
+    "wholeE2e": {
+      "file": "final-complete-e2e.log",
+      "modified": "2026-09-08T04:03:00.006Z"
+    },
+    "protected": {
+      "file": "benchmark/protected-content-check.json",
+      "modified": "2026-09-08T04:16:48.842Z"
+    },
+    "after": {
+      "file": "after/measurements.json",
+      "modified": "2026-09-08T05:29:37.101Z"
+    },
+    "seam": {
+      "file": "benchmark/final-seam-review.json",
+      "modified": "2026-09-08T05:58:20.862Z"
+    },
+    "benchmark": {
+      "file": "benchmark/benchmark-result.json",
+      "modified": "2026-09-08T05:59:16.075Z"
+    },
+    "shelf": {
+      "file": "shelf-logical/result.json",
+      "modified": "2026-09-08T04:30:46.374Z"
+    },
+    "shelfLayout": {
+      "file": "shelf-logical/layout-result.json",
+      "modified": "2026-09-08T04:33:49.447Z"
+    },
+    "search": {
+      "file": "search-reveal-atlas-anchor-fixed/results.json",
+      "modified": "2026-09-08T04:38:25.208Z"
+    },
+    "reuse": {
+      "file": "owner-revision-check-reuse.json",
+      "modified": "2026-09-08T05:29:29.293Z"
+    },
+    "guardManifest": {
+      "file": "../../scripts/governance/ui-polish-v4-controls-20260908.json",
+      "modified": "2026-09-08T04:39:19.999Z"
+    }
+  },
+  "ledgerProjection": {
+    "rowCount": 37,
+    "ids": [
+      "R01",
+      "R02",
+      "R03",
+      "R04",
+      "R05",
+      "R06",
+      "R07",
+      "R08",
+      "R09",
+      "R10",
+      "R11",
+      "R12",
+      "R13",
+      "F01",
+      "F02",
+      "F03",
+      "F04",
+      "F05",
+      "F06",
+      "F07",
+      "F08",
+      "F09",
+      "F10",
+      "F11",
+      "F12",
+      "F13",
+      "F14",
+      "F15",
+      "F16",
+      "F17",
+      "F18",
+      "F19",
+      "F20",
+      "F21",
+      "F22",
+      "F23",
+      "F24"
+    ],
+    "staleRowProgress": [],
+    "staleAssetBytes": false,
+    "retainedExternalLimits": true
+  }
+}

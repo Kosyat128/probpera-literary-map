@@ -127,8 +127,8 @@ describe("atlasExperienceReducer", () => {
     ).toEqual(createAtlasExperienceState());
   });
 
-  it("keeps search and filters mutually exclusive", () => {
-    const initial = immersiveIdle();
+  it.each(["embedded", "immersive"] as const)("keeps search and filters mutually exclusive in %s mode", (view) => {
+    const initial = view === "embedded" ? createAtlasExperienceState() : immersiveIdle();
     const search = atlasExperienceReducer(initial, { type: "OPEN_SEARCH" });
     expect(search).toMatchObject({ searchOpen: true, filtersOpen: false });
 

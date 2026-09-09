@@ -174,8 +174,8 @@ test("globe controls expose correctly ordered touch targets", async ({ page }) =
       )
     )
     .toEqual([
-      "zoom-in",
       "zoom-out",
+      "zoom-in",
       "auto-rotate",
       "reset",
       "edition-info",
@@ -194,11 +194,11 @@ test("globe controls expose correctly ordered touch targets", async ({ page }) =
 
   await expect(controls.nth(0)).toHaveAttribute(
     "aria-label",
-    /^Увеличить масштаб глобуса\. Текущий масштаб \d+%$/u
+    /^Уменьшить масштаб глобуса\. Текущий масштаб \d+%$/u
   );
   await expect(controls.nth(1)).toHaveAttribute(
     "aria-label",
-    /^Уменьшить масштаб глобуса\. Текущий масштаб \d+%$/u
+    /^Увеличить масштаб глобуса\. Текущий масштаб \d+%$/u
   );
   await expect(controls.nth(2)).toHaveAttribute(
     "aria-label",

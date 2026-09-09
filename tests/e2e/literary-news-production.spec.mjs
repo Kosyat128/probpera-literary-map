@@ -77,8 +77,10 @@ test("public news loads near the book feature and follows language and visitor d
   await expect(panel.locator(".literary-news__summary")).toHaveText("The reviewed English version.");
   await expect(panel.locator(".literary-news__item-footer a")).toHaveAttribute("href", "https://example.org/first");
   await page.evaluate(() => { window.location.hash = "about"; });
-  await expect(page.locator(".news-editorial-context")).toHaveAttribute("open", "");
-  await expect(page.locator(".news-editorial-context #about")).toBeVisible();
+  // R08 moves the same editorial card out of news details into the discussion.
+  await expect(page).toHaveURL(/#about$/u);
+  await expect(page.locator("#about")).toHaveCount(1);
+  await expect(page.locator("#reader-discussion > .journal-engagement > #about.editorial-standard")).toBeVisible();
 });
 
 test("a failed refresh preserves reviewed stories and new arrivals wait for the reader", async ({ page }) => {

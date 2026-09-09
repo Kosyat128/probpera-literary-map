@@ -1,0 +1,576 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\node_modules\\playwright\\cli.js",
+      "test",
+      "tests/e2e/article-book-pagination.spec.mjs",
+      "tests/e2e/reader-extended-accessibility.spec.mjs",
+      "tests/e2e/article-book-reading.spec.mjs",
+      "tests/e2e/article-book-zoom.spec.mjs",
+      "tests/e2e/ui-polish-controls.spec.mjs",
+      "tests/e2e/ui-polish-backgrounds.spec.mjs",
+      "--grep",
+      "canonical book keeps the source fragment|illustrated book preserves every page|a delayed illustration|print media exposes the full source",
+      "--workers=1",
+      "--output=reports/ui-polish-v4/main-integration/final/browser-artifacts",
+      "--reporter=list,json"
+    ],
+    "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\playwright.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/probpera-typography/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/probpera-typography/reports/ui-polish-v4/main-integration/final/browser-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-chromium",
+        "name": "desktop-chromium",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/probpera-typography/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/probpera-typography/reports/ui-polish-v4/main-integration/final/browser-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile-chromium",
+        "name": "mobile-chromium",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/probpera-typography/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run preview -- --host 127.0.0.1 --port 4186",
+      "url": "http://127.0.0.1:4186",
+      "reuseExistingServer": true,
+      "timeout": 60000,
+      "env": {
+        "ALLUSERSPROFILE": "C:\\ProgramData",
+        "APPDATA": "C:\\Users\\User\\AppData\\Roaming",
+        "asl.log": "Destination=file",
+        "CODEX_APP_TOOLS_PIPE_PATH": "\\\\.\\pipe\\codex-browser-use-87b1562b-f967-4e64-a4e8-cbd0419ae162",
+        "CODEX_CI": "1",
+        "CODEX_HOME": "D:\\CodexData\\.codex",
+        "CODEX_INTERNAL_ORIGINATOR_OVERRIDE": "Codex Desktop",
+        "CODEX_MCP_NODE_PATH": "C:\\Users\\User\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\b474a88d5d105afa\\bin\\node.exe",
+        "CODEX_PERMISSION_PROFILE": ":workspace",
+        "CODEX_SAGE_BACKFILL_TRACKER_TAB_REUSE": "1",
+        "CODEX_SANDBOX_NETWORK_DISABLED": "1",
+        "CODEX_SESSION_ID": "01a07eb0-c75a-70a0-8991-77a88d21385c",
+        "CODEX_SHELL": "1",
+        "CODEX_THREAD_ID": "01a07eb0-c75a-70a0-8991-77a88d21385c",
+        "COLORTERM": "",
+        "CommonProgramFiles": "C:\\Program Files\\Common Files",
+        "CommonProgramFiles(x86)": "C:\\Program Files (x86)\\Common Files",
+        "CommonProgramW6432": "C:\\Program Files\\Common Files",
+        "COMPUTERNAME": "MAGICBOOK",
+        "ComSpec": "C:\\WINDOWS\\system32\\cmd.exe",
+        "DISABLE_AUTO_UPDATE": "true",
+        "DriverData": "C:\\Windows\\System32\\Drivers\\DriverData",
+        "GH_PAGER": "cat",
+        "GIT_PAGER": "cat",
+        "HOMEDRIVE": "C:",
+        "HOMEPATH": "\\Users\\User",
+        "LANG": "C.UTF-8",
+        "LC_ALL": "C.UTF-8",
+        "LC_CTYPE": "C.UTF-8",
+        "LOCALAPPDATA": "C:\\Users\\User\\AppData\\Local",
+        "LOGONSERVER": "\\\\MAGICBOOK",
+        "LOG_FORMAT": "json",
+        "NO_COLOR": "1",
+        "NUMBER_OF_PROCESSORS": "16",
+        "OneDrive": "C:\\Users\\User\\OneDrive",
+        "OS": "Windows_NT",
+        "PAGER": "cat",
+        "Path": "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell;D:\\CodexData\\.codex\\tmp\\arg0\\codex-arg0rRqpl4;D:\\CodexData\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\libheif\\libheif\\bin;D:\\CodexData\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\jxrlib\\jxrlib\\bin;D:\\CodexData\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin;C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\bin\\override;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\dotnet\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\GitHub CLI\\;C:\\Program Files\\nodejs\\;C:\\Users\\User\\AppData\\Local\\Programs\\Python\\Launcher\\;C:\\Users\\User\\AppData\\Local\\Programs\\OpenAI\\Codex\\bin;C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell;C:\\Users\\User\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\User\\.dotnet\\tools;C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\User\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\User\\AppData\\Local\\Programs\\nodejs;C:\\Users\\User\\AppData\\Roaming\\npm;C:\\Users\\User\\.dotnet\\tools;C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\bin\\fallback;C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin;C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\git\\cmd;C:\\Users\\User\\AppData\\Local\\OpenAI\\Codex\\bin\\c60635126245daef;C:\\Users\\User\\AppData\\Local\\OpenAI\\Codex\\bin\\8e5b6932251c2c1c",
+        "PATHEXT": ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.CPL",
+        "PLAYWRIGHT_JSON_OUTPUT_FILE": "reports/ui-polish-v4/main-integration/final/browser-result.json",
+        "PLAYWRIGHT_PORT": "4186",
+        "PLAYWRIGHT_REUSE_SERVER": "true",
+        "PROCESSOR_ARCHITECTURE": "AMD64",
+        "PROCESSOR_IDENTIFIER": "AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD",
+        "PROCESSOR_LEVEL": "25",
+        "PROCESSOR_REVISION": "5000",
+        "ProgramData": "C:\\ProgramData",
+        "ProgramFiles": "C:\\Program Files",
+        "ProgramFiles(x86)": "C:\\Program Files (x86)",
+        "ProgramW6432": "C:\\Program Files",
+        "PSModulePath": "C:\\Users\\User\\Documents\\PowerShell\\Modules;C:\\Program Files\\PowerShell\\Modules;c:\\users\\user\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\Modules;C:\\Users\\User\\Documents\\WindowsPowerShell\\Modules;C:\\Program Files\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules",
+        "PUBLIC": "C:\\Users\\Public",
+        "RUST_LOG": "warn",
+        "SHELL": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "SystemDrive": "C:",
+        "SystemRoot": "C:\\WINDOWS",
+        "TEMP": "D:\\CodexData\\Temp",
+        "TERM": "dumb",
+        "TMP": "D:\\CodexData\\Temp",
+        "USERDOMAIN": "MAGICBOOK",
+        "USERDOMAIN_ROAMINGPROFILE": "MAGICBOOK",
+        "USERNAME": "User",
+        "USERPROFILE": "C:\\Users\\User",
+        "VBOX_HWVIRTEX_IGNORE_SVM_IN_USE": "1",
+        "windir": "C:\\WINDOWS",
+        "XDG_CACHE_HOME": "D:\\CodexData\\.cache",
+        "ZSH_TMUX_AUTOSTART": "false",
+        "ZSH_TMUX_AUTOSTARTED": "true",
+        "PUBLIC_SITE_BASE_PATH": "/probpera-literary-map/"
+      }
+    }
+  },
+  "suites": [
+    {
+      "title": "article-book-pagination.spec.mjs",
+      "file": "article-book-pagination.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "canonical book keeps the source fragment through reflow, sizing, mode changes and reopening",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 34971,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-article-book-reader]')\nExpected: \u001b[32m\"article-book:v1:ru:block-2:\u001b[7m194\u001b[27m\"\u001b[39m\nReceived: \u001b[31m\"article-book:v1:ru:block-2:\u001b[7m55\u001b[27m\"\u001b[39m\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-article-book-reader]')\u001b[22m\n\u001b[2m    23 × locator resolved to <section lang=\"ru\" tabindex=\"0\" data-page-index=\"2\" data-page-count=\"61\" data-renderer=\"three\" data-book-ready=\"true\" data-book-view-scale=\"1\" class=\"article-book-reader\" data-article-book-reader=\"\" aria-label=\"Иллюстрированная книга\" data-reading-anchor=\"article-book:v1:ru:block-2:55\">…</section>\u001b[22m\n\u001b[2m       - unexpected value \"article-book:v1:ru:block-2:55\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-article-book-reader]')\nExpected: \u001b[32m\"article-book:v1:ru:block-2:\u001b[7m194\u001b[27m\"\u001b[39m\nReceived: \u001b[31m\"article-book:v1:ru:block-2:\u001b[7m55\u001b[27m\"\u001b[39m\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-article-book-reader]')\u001b[22m\n\u001b[2m    23 × locator resolved to <section lang=\"ru\" tabindex=\"0\" data-page-index=\"2\" data-page-count=\"61\" data-renderer=\"three\" data-book-ready=\"true\" data-book-view-scale=\"1\" class=\"article-book-reader\" data-article-book-reader=\"\" aria-label=\"Иллюстрированная книга\" data-reading-anchor=\"article-book:v1:ru:block-2:55\">…</section>\u001b[22m\n\u001b[2m       - unexpected value \"article-book:v1:ru:block-2:55\"\u001b[22m\n\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\article-book-pagination.spec.mjs:63:22",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\article-book-pagination.spec.mjs",
+                      "column": 22,
+                      "line": 63
+                    },
+                    "snippet": "  61 |   await page.getByRole(\"button\", { name: \"Режим печатной книги\", exact: true }).click();\n  62 |   await ready(book);\n> 63 |   await expect(book).toHaveAttribute(\"data-reading-anchor\", anchor);\n     |                      ^\n  64 |   await book.locator(\"summary\").click();\n  65 |   await expect(semantic).toContainText(fragment, { useInnerText: true });\n  66 |   await expect(content).toHaveText(originalText);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\article-book-pagination.spec.mjs",
+                        "column": 22,
+                        "line": 63
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-article-book-reader]')\nExpected: \u001b[32m\"article-book:v1:ru:block-2:\u001b[7m194\u001b[27m\"\u001b[39m\nReceived: \u001b[31m\"article-book:v1:ru:block-2:\u001b[7m55\u001b[27m\"\u001b[39m\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-article-book-reader]')\u001b[22m\n\u001b[2m    23 × locator resolved to <section lang=\"ru\" tabindex=\"0\" data-page-index=\"2\" data-page-count=\"61\" data-renderer=\"three\" data-book-ready=\"true\" data-book-view-scale=\"1\" class=\"article-book-reader\" data-article-book-reader=\"\" aria-label=\"Иллюстрированная книга\" data-reading-anchor=\"article-book:v1:ru:block-2:55\">…</section>\u001b[22m\n\u001b[2m       - unexpected value \"article-book:v1:ru:block-2:55\"\u001b[22m\n\n\n  61 |   await page.getByRole(\"button\", { name: \"Режим печатной книги\", exact: true }).click();\n  62 |   await ready(book);\n> 63 |   await expect(book).toHaveAttribute(\"data-reading-anchor\", anchor);\n     |                      ^\n  64 |   await book.locator(\"summary\").click();\n  65 |   await expect(semantic).toContainText(fragment, { useInnerText: true });\n  66 |   await expect(content).toHaveText(originalText);\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\article-book-pagination.spec.mjs:63:22"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:09:35.890Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\main-integration\\final\\browser-artifacts\\article-book-pagination-ca-fae55--mode-changes-and-reopening-desktop-chromium\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\main-integration\\final\\browser-artifacts\\article-book-pagination-ca-fae55--mode-changes-and-reopening-desktop-chromium\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\main-integration\\final\\browser-artifacts\\article-book-pagination-ca-fae55--mode-changes-and-reopening-desktop-chromium\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\article-book-pagination.spec.mjs",
+                    "column": 22,
+                    "line": 63
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "e4c4ca943362690c92e4-043add4da0472b07b3b7",
+          "file": "article-book-pagination.spec.mjs",
+          "line": 14,
+          "column": 1
+        },
+        {
+          "title": "canonical book keeps the source fragment through reflow, sizing, mode changes and reopening",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 39232,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-article-book-reader]')\nExpected: \u001b[32m\"article-book:v1:ru:block-2:\u001b[7m194\u001b[27m\"\u001b[39m\nReceived: \u001b[31m\"article-book:v1:ru:block-2:\u001b[7m55\u001b[27m\"\u001b[39m\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-article-book-reader]')\u001b[22m\n\u001b[2m    23 × locator resolved to <section lang=\"ru\" tabindex=\"0\" data-page-index=\"2\" data-page-count=\"61\" data-renderer=\"three\" data-book-ready=\"true\" data-book-view-scale=\"1\" class=\"article-book-reader\" data-article-book-reader=\"\" aria-label=\"Иллюстрированная книга\" data-reading-anchor=\"article-book:v1:ru:block-2:55\">…</section>\u001b[22m\n\u001b[2m       - unexpected value \"article-book:v1:ru:block-2:55\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-article-book-reader]')\nExpected: \u001b[32m\"article-book:v1:ru:block-2:\u001b[7m194\u001b[27m\"\u001b[39m\nReceived: \u001b[31m\"article-book:v1:ru:block-2:\u001b[7m55\u001b[27m\"\u001b[39m\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-article-book-reader]')\u001b[22m\n\u001b[2m    23 × locator resolved to <section lang=\"ru\" tabindex=\"0\" data-page-index=\"2\" data-page-count=\"61\" data-renderer=\"three\" data-book-ready=\"true\" data-book-view-scale=\"1\" class=\"article-book-reader\" data-article-book-reader=\"\" aria-label=\"Иллюстрированная книга\" data-reading-anchor=\"article-book:v1:ru:block-2:55\">…</section>\u001b[22m\n\u001b[2m       - unexpected value \"article-book:v1:ru:block-2:55\"\u001b[22m\n\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\article-book-pagination.spec.mjs:63:22",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\article-book-pagination.spec.mjs",
+                      "column": 22,
+                      "line": 63
+                    },
+                    "snippet": "  61 |   await page.getByRole(\"button\", { name: \"Режим печатной книги\", exact: true }).click();\n  62 |   await ready(book);\n> 63 |   await expect(book).toHaveAttribute(\"data-reading-anchor\", anchor);\n     |                      ^\n  64 |   await book.locator(\"summary\").click();\n  65 |   await expect(semantic).toContainText(fragment, { useInnerText: true });\n  66 |   await expect(content).toHaveText(originalText);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\article-book-pagination.spec.mjs",
+                        "column": 22,
+                        "line": 63
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-article-book-reader]')\nExpected: \u001b[32m\"article-book:v1:ru:block-2:\u001b[7m194\u001b[27m\"\u001b[39m\nReceived: \u001b[31m\"article-book:v1:ru:block-2:\u001b[7m55\u001b[27m\"\u001b[39m\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-article-book-reader]')\u001b[22m\n\u001b[2m    23 × locator resolved to <section lang=\"ru\" tabindex=\"0\" data-page-index=\"2\" data-page-count=\"61\" data-renderer=\"three\" data-book-ready=\"true\" data-book-view-scale=\"1\" class=\"article-book-reader\" data-article-book-reader=\"\" aria-label=\"Иллюстрированная книга\" data-reading-anchor=\"article-book:v1:ru:block-2:55\">…</section>\u001b[22m\n\u001b[2m       - unexpected value \"article-book:v1:ru:block-2:55\"\u001b[22m\n\n\n  61 |   await page.getByRole(\"button\", { name: \"Режим печатной книги\", exact: true }).click();\n  62 |   await ready(book);\n> 63 |   await expect(book).toHaveAttribute(\"data-reading-anchor\", anchor);\n     |                      ^\n  64 |   await book.locator(\"summary\").click();\n  65 |   await expect(semantic).toContainText(fragment, { useInnerText: true });\n  66 |   await expect(content).toHaveText(originalText);\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\article-book-pagination.spec.mjs:63:22"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:11:23.560Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\main-integration\\final\\browser-artifacts\\article-book-pagination-ca-fae55--mode-changes-and-reopening-mobile-chromium\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\main-integration\\final\\browser-artifacts\\article-book-pagination-ca-fae55--mode-changes-and-reopening-mobile-chromium\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\reports\\ui-polish-v4\\main-integration\\final\\browser-artifacts\\article-book-pagination-ca-fae55--mode-changes-and-reopening-mobile-chromium\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\probpera-typography\\tests\\e2e\\article-book-pagination.spec.mjs",
+                    "column": 22,
+                    "line": 63
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "e4c4ca943362690c92e4-1bcdd96e9350d23fadb7",
+          "file": "article-book-pagination.spec.mjs",
+          "line": 14,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "article-book-reading.spec.mjs",
+      "file": "article-book-reading.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "illustrated book preserves every page, renders illustrations and supports accessible navigation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 49765,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:10:13.828Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "edc5acac2e9546f16ec8-3278eeb7e511e387b1fa",
+          "file": "article-book-reading.spec.mjs",
+          "line": 288,
+          "column": 1
+        },
+        {
+          "title": "a delayed illustration fills the existing book without blocking reading or resetting its page",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11096,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:11:04.037Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "delayed-image-evidence",
+                      "contentType": "application/json",
+                      "body": "ewogICJsYXRlbmN5TXMiOiA4MDE1LAogICJpbGx1c3RyYXRpb25QYWdlIjogMywKICAicGFnZUNvdW50IjogNywKICAic2F2ZWRQcm9ncmVzcyI6IDUwLAogICJkcmF3cyI6IFsKICAgIHsKICAgICAgInNyYyI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2Jvb2stcmVhZGluZy1maXh0dXJlL3NoYWtlc3BlYXJlLmpwZyIsCiAgICAgICJjb21wbGV0ZSI6IHRydWUsCiAgICAgICJuYXR1cmFsV2lkdGgiOiA1MDAsCiAgICAgICJuYXR1cmFsSGVpZ2h0IjogNjM3LAogICAgICAic291cmNlUmF0aW8iOiAwLjc4NDkyOTM1NjM1NzkyNzgsCiAgICAgICJyZW5kZXJlZFJhdGlvIjogMC43ODQ5MjkzNTYzNTc5Mjc3CiAgICB9CiAgXSwKICAic2FtZUNhbnZhcyI6IHRydWUsCiAgImhvdFVwZGF0ZXMiOiBbXQp9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "edc5acac2e9546f16ec8-088d50055fc807aec62f",
+          "file": "article-book-reading.spec.mjs",
+          "line": 377,
+          "column": 1
+        },
+        {
+          "title": "illustrated book preserves every page, renders illustrations and supports accessible navigation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 31338,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:12:06.442Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "edc5acac2e9546f16ec8-fd8c5f34473ed522a524",
+          "file": "article-book-reading.spec.mjs",
+          "line": 288,
+          "column": 1
+        },
+        {
+          "title": "a delayed illustration fills the existing book without blocking reading or resetting its page",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11459,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:12:38.342Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "delayed-image-evidence",
+                      "contentType": "application/json",
+                      "body": "ewogICJsYXRlbmN5TXMiOiA4MDA3LAogICJpbGx1c3RyYXRpb25QYWdlIjogMywKICAicGFnZUNvdW50IjogNywKICAic2F2ZWRQcm9ncmVzcyI6IDUwLAogICJkcmF3cyI6IFsKICAgIHsKICAgICAgInNyYyI6ICJodHRwOi8vMTI3LjAuMC4xOjQxODYvcHJvYnBlcmEtbGl0ZXJhcnktbWFwL2Jvb2stcmVhZGluZy1maXh0dXJlL3NoYWtlc3BlYXJlLmpwZyIsCiAgICAgICJjb21wbGV0ZSI6IHRydWUsCiAgICAgICJuYXR1cmFsV2lkdGgiOiA1MDAsCiAgICAgICJuYXR1cmFsSGVpZ2h0IjogNjM3LAogICAgICAic291cmNlUmF0aW8iOiAwLjc4NDkyOTM1NjM1NzkyNzgsCiAgICAgICJyZW5kZXJlZFJhdGlvIjogMC43ODQ5MjkzNTYzNTc5Mjc3CiAgICB9CiAgXSwKICAic2FtZUNhbnZhcyI6IHRydWUsCiAgImhvdFVwZGF0ZXMiOiBbXQp9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "edc5acac2e9546f16ec8-2b98187bc28d60713b82",
+          "file": "article-book-reading.spec.mjs",
+          "line": 377,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "reader-extended-accessibility.spec.mjs",
+      "file": "reader-extended-accessibility.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "print media exposes the full source once and preserves canonical book position",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5826,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:11:15.195Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "print-media.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJ0ZXh0TGVuZ3RoIjogMTQ0NzQsCiAgImNvbnRlbnRIZWlnaHQiOiAyMTc3NS4zNzUsCiAgImNvbHVtbnMiOiAiYXV0byIsCiAgInJlbmRlcmVyRGlzcGxheSI6ICJub25lIiwKICAicmVhZGVyUG9zaXRpb24iOiAic3RhdGljIiwKICAic2Nyb2xsT3ZlcmZsb3ciOiAidmlzaWJsZSIsCiAgInNjcm9sbEhlaWdodCI6IDI1MjkzLAogICJjbGllbnRIZWlnaHQiOiAyNTI5Mwp9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "540dc7c85b8fabdcd45b-723cd529f9eba89326ba",
+          "file": "reader-extended-accessibility.spec.mjs",
+          "line": 140,
+          "column": 1
+        },
+        {
+          "title": "print media exposes the full source once and preserves canonical book position",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chromium",
+              "projectName": "mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4302,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T08:12:49.862Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "print-media.json",
+                      "contentType": "application/json",
+                      "body": "ewogICJ0ZXh0TGVuZ3RoIjogMTQ0NzQsCiAgImNvbnRlbnRIZWlnaHQiOiAyNDEzNS45ODQzNzUsCiAgImNvbHVtbnMiOiAiYXV0byIsCiAgInJlbmRlcmVyRGlzcGxheSI6ICJub25lIiwKICAicmVhZGVyUG9zaXRpb24iOiAic3RhdGljIiwKICAic2Nyb2xsT3ZlcmZsb3ciOiAidmlzaWJsZSIsCiAgInNjcm9sbEhlaWdodCI6IDI5OTYyLAogICJjbGllbnRIZWlnaHQiOiAyOTk2Mgp9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "540dc7c85b8fabdcd45b-e30fd504300fda541a0d",
+          "file": "reader-extended-accessibility.spec.mjs",
+          "line": 140,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-08T08:09:34.759Z",
+    "duration": 199979.543,
+    "expected": 6,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

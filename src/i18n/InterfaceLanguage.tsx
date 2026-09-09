@@ -1215,7 +1215,7 @@ const englishInterfaceText: Record<string, string> = {
   "Недавно проверенные": "Recently reviewed",
   "Недоступно: проверенные профили аудитории отсутствуют": "Unavailable: no verified audience profiles",
   "Открыть книгу": "Open book",
-  "Нажмите на корешок - книга выйдет вперёд, а справа откроются описание и сведения.":
+  "Нажмите на корешок - книга выйдет вперёд, и откроются описание и сведения.":
     "Select a spine to bring the book forward and open its description and details.",
   "Перелистнуть страницу": "Turn page",
   "Открыть полку автора": "Open writer shelf",
@@ -1378,6 +1378,9 @@ const englishInterfaceText: Record<string, string> = {
   "Навигация по редакционным страницам": "Editorial page navigation",
   "Предыдущая страница": "Previous page",
   "Следующая страница": "Next page",
+  "Страницы статьи": "Article pages",
+  "Перелистывание статьи": "Article pagination",
+  "Страница {page} из {total}": "Page {page} of {total}",
   "Управлять полками": "Manage shelves",
   "Добавить на полку": "Add to shelf",
   "В избранном": "In favourites",

@@ -1,6 +1,6 @@
 @layer site-typography {
-/* User-preserved Header and Hero: original system fonts and inherited metrics. */
-.topline, .site-header, .mobile-nav, .magazine-hero {
+/* User-preserved Header/Hero and the explicitly matching footer brand. */
+.topline, .site-header, .mobile-nav, .magazine-hero, .footer-brand > a {
 --sans: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
 --serif: Georgia, "Times New Roman", serif;
 --font-ui: var(--sans);
@@ -35,8 +35,10 @@ font-family: inherit;
 font-kerning: auto;
 }
 .site-header .interface-language-control button {
-  font-size: 10px;
-  font-weight: 900;
+  /* Historical header family from before 0a348bd4; independent of UI buttons. */
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 400;
   transition:
     color 160ms ease,
     background 160ms ease,
@@ -45,5 +47,43 @@ font-kerning: auto;
 .site-header .display-mode-control button small {
   font-size: 10px;
   font-weight: 900;
+}
+/* The footer repeats the desktop masthead, including on narrow screens. */
+.footer-brand > a {
+  display: inline-flex;
+  width: max-content;
+  max-width: 100%;
+  gap: 13px;
+}
+.footer-brand > a img {
+  width: 55px;
+  height: 55px;
+  flex-shrink: 0;
+  box-shadow: 0 8px 24px rgba(22, 1, 38, 0.24);
+}
+.footer-brand > a span {
+  display: block;
+}
+.footer-brand > a strong {
+  font-family: var(--serif);
+  font-size: 23px;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.02em;
+}
+.footer-brand > a small {
+  margin-top: 3px;
+  color: rgba(255, 255, 255, 0.61);
+  font-family: var(--sans);
+  font-size: 8px;
+  font-weight: 800;
+  line-height: normal;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+@media (max-width: 680px) {
+.site-header .interface-language-control button {
+    font-size: 12px;
+}
 }
 }

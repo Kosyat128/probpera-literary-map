@@ -1,0 +1,22 @@
+{
+  "started": "2026-09-08T07:59:36.820Z",
+  "finished": "2026-09-08T08:06:00.123Z",
+  "exitCode": 1,
+  "sourceSha256": "ba185ceb68cb3aa31a7a7094d16a84cac8e9623e2955da16e9b4b01c683c4ffe",
+  "sourceSha256After": "ba185ceb68cb3aa31a7a7094d16a84cac8e9623e2955da16e9b4b01c683c4ffe",
+  "args": [
+    "node_modules/playwright/cli.js",
+    "test",
+    "tests/e2e/article-book-pagination.spec.mjs",
+    "tests/e2e/reader-extended-accessibility.spec.mjs",
+    "tests/e2e/article-book-reading.spec.mjs",
+    "tests/e2e/article-book-zoom.spec.mjs",
+    "tests/e2e/ui-polish-controls.spec.mjs",
+    "tests/e2e/ui-polish-backgrounds.spec.mjs",
+    "--grep",
+    "article-book-pagination|reader-extended-accessibility|ui-polish-controls|ui-polish-backgrounds|illustrated book preserves every page|a delayed illustration|WebGL failure retains|physical article book enlarges|real vocabulary.*100%",
+    "--workers=1",
+    "--output=reports/ui-polish-v4/main-integration/browser-artifacts",
+    "--reporter=list,json"
+  ]
+}

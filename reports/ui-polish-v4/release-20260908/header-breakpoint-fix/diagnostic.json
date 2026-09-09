@@ -1,0 +1,110 @@
+{
+  "status": "compiled_targeted_and_boundary_visual_passed_ci_pending",
+  "recordedAt": "2026-09-08T18:01:46.4918722+03:00",
+  "ciEvidence": {
+    "runId": "34235910726",
+    "headPrefix": "6383",
+    "file": "tests/e2e/public-doc-refinements.spec.mjs",
+    "testLine": 123,
+    "assertionLine": 153,
+    "title": "desktop header actions remain fully visible around the compact breakpoint",
+    "failedAttempts": 2,
+    "viewportWidth": 1521,
+    "actionsRight": 1524,
+    "overflowCssPx": 3,
+    "source": "Root inspected CI result; no duplicate artifact download."
+  },
+  "change": {
+    "file": "src/index.css",
+    "line": 13649,
+    "before": "@media (max-width: 1520px)",
+    "after": "@media (max-width: 1600px)",
+    "scope": "Retain the existing compact search/social state through 1600px. Full header restores at 1601px. No font, label, button, logo or grid redesign.",
+    "testAssertions": "Original test and tolerances unchanged",
+    "sourceSha256AtRecording": "d4cfc692db5659ee2737e8793e22d21c6c94eedb8e22189dd7b7e8accf705d07"
+  },
+  "probe": {
+    "file": "probe.json",
+    "renderer": "ANGLE SwiftShader",
+    "preview": "http://127.0.0.1:4186/",
+    "method": "Original preview plus the exact candidate compact media declarations inserted for measurement; original system font and a diagnostic Arial override.",
+    "widths": [
+      1451,
+      1470,
+      1499,
+      1504,
+      1520,
+      1521,
+      1600,
+      1601,
+      1660
+    ],
+    "measurements": 36,
+    "candidateOverflows": 0,
+    "baselineOverflows": 0,
+    "arial1521BeforeActionsRight": 1514.203125,
+    "arial1521CandidateActionsRight": 1460.171875,
+    "arial1601CandidateActionsRight": 1536.96875,
+    "socialsRestoredAt1601": true,
+    "limits": "Windows original/Arial did not reproduce the exact Linux overflow; font fallback remains a supported risk, not a proven sole cause. This probe is not the compiled-source test."
+  },
+  "validation": {
+    "diffCheck": "passed",
+    "compiledTargetedTest": {
+      "status": "passed",
+      "result": "compiled-results.json",
+      "log": "compiled.log",
+      "stats": {
+        "startTime": "2026-09-08T15:03:43.711Z",
+        "duration": 6337.923,
+        "expected": 1,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "test": "Unchanged public-doc-refinements.spec.mjs:123",
+      "workers": 1,
+      "retries": 0,
+      "renderer": "ANGLE SwiftShader",
+      "exitCode": 0
+    },
+    "fullCI": "Not rerun by this bounded task; targeted local pass is not CI green.",
+    "compiledBoundary": {
+      "status": "passed",
+      "geometry": "compiled-geometry.json",
+      "cssOverride": false,
+      "measurements": [
+        {
+          "width": 1521,
+          "actionsLeft": 1233.578125,
+          "actionsRight": 1460.171875,
+          "readerLeft": 1363.890625,
+          "readerRight": 1460.171875,
+          "navRight": 1207.734375,
+          "socialsVisible": false,
+          "screenshot": "header-1521.png",
+          "passed": true
+        },
+        {
+          "width": 1601,
+          "actionsLeft": 1062.328125,
+          "actionsRight": 1536.96875,
+          "readerLeft": 1440.6875,
+          "readerRight": 1536.96875,
+          "navRight": 1035.125,
+          "socialsVisible": true,
+          "screenshot": "header-1601.png",
+          "passed": true
+        }
+      ],
+      "visualReview": "Both actual compiled header PNGs inspected. Navigation, actions and reader button remain inside the viewport with no overlap.",
+      "screenshots": [
+        "header-1521.png",
+        "header-1601.png"
+      ],
+      "reviewedAt": "2026-09-08T15:05:14.0630432+00:00"
+    },
+    "frozenCssUnchanged": true,
+    "buildResult": "../header-fit-fix/build-result.json"
+  }
+}

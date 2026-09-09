@@ -62,6 +62,9 @@ export function useReadingProgress(kind: ReadingKind, id: string) {
   const [restoredProgress, setRestoredProgress] = useState<number | null>(() =>
     readProgress(kind, id)?.progress ?? null
   );
+  const [restoredPositionHint, setRestoredPositionHint] = useState<string | undefined>(() =>
+    readProgress(kind, id)?.positionHint
+  );
   const timerRef = useRef<number>();
   const pendingRef = useRef<{ progress: number; positionHint?: string } | null>(
     null
@@ -88,6 +91,7 @@ export function useReadingProgress(kind: ReadingKind, id: string) {
   useEffect(() => {
     const local = readProgress(kind, id);
     setRestoredProgress(local?.progress ?? null);
+    setRestoredPositionHint(local?.positionHint);
     if (!configured || !supabase || !user) return;
 
     let active = true;
@@ -109,6 +113,7 @@ export function useReadingProgress(kind: ReadingKind, id: string) {
         );
         writeProgress(kind, id, next, data.position_hint || undefined);
         setRestoredProgress(next);
+        setRestoredPositionHint(data.position_hint || undefined);
       });
 
     return () => {
@@ -146,5 +151,5 @@ export function useReadingProgress(kind: ReadingKind, id: string) {
     [saveProgress]
   );
 
-  return { restoredProgress, saveProgress, markCompleted };
+  return { restoredProgress, restoredPositionHint, saveProgress, markCompleted };
 }

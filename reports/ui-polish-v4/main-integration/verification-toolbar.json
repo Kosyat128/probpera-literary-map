@@ -1,0 +1,109 @@
+{
+  "date": "2026-09-08T08:43:41.291Z",
+  "base": "5d3f6fb61e170bcc8fd64062c6283a7c75b5f144",
+  "sourceSha256": "7a2849f0d5bd7478760a30071bf78acacafdfc0604e09a1817c4fb8657e6337b",
+  "unchangedSource": true,
+  "changes": [
+    {
+      "from": "ba185ceb68cb3aa31a7a7094d16a84cac8e9623e2955da16e9b4b01c683c4ffe",
+      "to": "0af2d67668451c7e0234a18d2584430975ce7b031dd18423b79237e80aca8803",
+      "paths": [
+        "src/styles/article-book-pagination.css"
+      ]
+    },
+    {
+      "from": "0af2d67668451c7e0234a18d2584430975ce7b031dd18423b79237e80aca8803",
+      "to": "7544c08c956e3b8402dd630a53048d4c692e953907dbc58f9f60d5adbb959b20",
+      "paths": [
+        "src/components/ArticleReader.tsx"
+      ]
+    },
+    {
+      "from": "7544c08c956e3b8402dd630a53048d4c692e953907dbc58f9f60d5adbb959b20",
+      "to": "1f73e8830bd13d3a2e3bcfdf3bead4d8a5814e9c36be388ee187a86b51fe0150",
+      "paths": [
+        "src/styles/ui-polish-controls.css"
+      ]
+    },
+    {
+      "from": "1f73e8830bd13d3a2e3bcfdf3bead4d8a5814e9c36be388ee187a86b51fe0150",
+      "to": "7a2849f0d5bd7478760a30071bf78acacafdfc0604e09a1817c4fb8657e6337b",
+      "paths": [
+        "src/styles/ui-polish-controls.css"
+      ]
+    }
+  ],
+  "runs": [
+    {
+      "path": "browser-result.json",
+      "stats": {
+        "startTime": "2026-09-08T07:59:37.475Z",
+        "duration": 382608.725,
+        "expected": 30,
+        "skipped": 6,
+        "unexpected": 8,
+        "flaky": 0
+      }
+    },
+    {
+      "path": "final/browser-result.json",
+      "stats": {
+        "startTime": "2026-09-08T08:09:34.759Z",
+        "duration": 199979.543,
+        "expected": 6,
+        "skipped": 0,
+        "unexpected": 2,
+        "flaky": 0
+      }
+    },
+    {
+      "path": "final2/browser-result.json",
+      "stats": {
+        "startTime": "2026-09-08T08:19:07.057Z",
+        "duration": 183002.551,
+        "expected": 10,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    {
+      "path": "final2/fallback-result.json",
+      "stats": {
+        "startTime": "2026-09-08T08:24:08.398Z",
+        "duration": 14544.314,
+        "expected": 2,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    {
+      "path": "toolbar/browser-result.json",
+      "stats": {
+        "startTime": "2026-09-08T08:36:51.143Z",
+        "duration": 47994.50399999999,
+        "expected": 4,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    {
+      "path": "toolbar-final/browser-result.json",
+      "stats": {
+        "startTime": "2026-09-08T08:42:19.915Z",
+        "duration": 46247.2,
+        "expected": 4,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    }
+  ],
+  "uniqueCases": 44,
+  "uniqueExecuted": 38,
+  "skipped": 6,
+  "unresolved": [],
+  "scope": "Targeted integration validation only; historical complete-suite results remain separate."
+}

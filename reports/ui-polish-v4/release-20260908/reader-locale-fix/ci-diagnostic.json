@@ -1,0 +1,87 @@
+{
+  "recordedAt": "2026-09-08T13:57:53.805Z",
+  "run": 34229916452,
+  "job": 102073307743,
+  "head": "ddc59fc26c0162342ae1124d7e397609b0df20b6",
+  "runConclusion": "failure",
+  "codeqlSummary": {
+    "conclusion": "success",
+    "newAlerts": 0
+  },
+  "premium": {
+    "shardsCompleted": 22,
+    "passed": 28,
+    "failed": 0,
+    "flaky": 0,
+    "skipped": 0
+  },
+  "webgl": {
+    "shardsCompleted": 1,
+    "shardCount": 6,
+    "passed": 30,
+    "failed": 1,
+    "flaky": 1,
+    "skipped": 1
+  },
+  "notRun": [
+    "WebGL shards 2-6",
+    "Remaining browser regression",
+    "Final production dependency audit"
+  ],
+  "failure": {
+    "file": "tests/e2e/article-book-reading.spec.mjs",
+    "originalLine": 288,
+    "title": "illustrated book preserves every page, renders illustrations and supports accessible navigation",
+    "project": "desktop-chromium",
+    "overallTimeoutMs": 180000,
+    "interpretation": "Two complete locale contracts accumulated beyond the shared overall deadline. Trace showed successful real navigation with no pointer interception.",
+    "attempts": [
+      {
+        "retry": 0,
+        "ruStartsAtSeconds": 0.215,
+        "enStartsAtSeconds": 94.324,
+        "finalMotionChangeSeconds": [
+          174.587,
+          174.598
+        ],
+        "finalNextClickSeconds": [
+          174.599,
+          175.645
+        ],
+        "finalAssertionsCompletedAtSeconds": 184.462,
+        "teardownStartsAtSeconds": 180.012,
+        "finalNextClickSucceeded": true,
+        "pointerInterceptionObserved": false
+      },
+      {
+        "retry": 1,
+        "ruStartsAtSeconds": 0.426,
+        "enStartsAtSeconds": 97.741,
+        "portraitSelectAndPageAssertCompletedAtSeconds": 179.527,
+        "remainingPageAssertionsCompletedAtSeconds": 181.214,
+        "teardownStartsAtSeconds": 180.217,
+        "screenshotSeconds": [
+          182.437,
+          183.383
+        ],
+        "finalMotionChangeSeconds": [
+          183.384,
+          183.395
+        ],
+        "finalNextCallAtSeconds": 183.396,
+        "finalNextReachedBrowser": false,
+        "pointerInterceptionObserved": false
+      }
+    ],
+    "correction": "Register the same complete contract separately for ru and en, retaining every assertion and the original 180-second per-test budget."
+  },
+  "flaky": {
+    "file": "tests/e2e/archive-search-calendar.spec.mjs",
+    "originalLine": 88,
+    "assertionLine": 120,
+    "summary": "Portrait baseline bounds were captured with hover and image readiness uncontrolled; retry passed. See portrait-diagnostic.json."
+  },
+  "sourceSha256": "39324a8c1698df015cb3beaf8244d727d803aaa4ed65242e00610cfb9794ca9e",
+  "productChanged": false,
+  "browserFixValidation": "pending in separate local result files; not a full CI pass"
+}

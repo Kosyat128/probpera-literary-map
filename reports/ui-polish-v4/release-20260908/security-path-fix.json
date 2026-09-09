@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "status": "local_bounded_checks_passed",
+  "recordedAt": "2026-09-08T13:04:41.7845682+00:00",
+  "executedAt": null,
+  "durationMs": null,
+  "executionTimeNote": "Execution time and duration were not separately recorded. recordedAt is the evidence write time.",
+  "sourcePath": "scripts/capture-ui-polish-v4.mjs",
+  "sourceSha256AtRecording": "1bac2af34fc41c7d9e96272a338ec3ea1d52240e9c7bb907a4ae7a69e562603a",
+  "harnessPath": ".tmp/security-path-fix-check.cjs",
+  "harnessSha256": "20bfe57546fb60405ffab5212c8bd35a5d65a20294c4f8ff3757b0b7e7046dce",
+  "harnessPersistence": "Exact previously executed stdin check saved locally; not rerun during evidence recording.",
+  "method": "TypeScript AST extraction of resolveCaptureOutputDirectory only, evaluated with node:vm and win32/posix path APIs. The capture script was not imported or executed.",
+  "assertions": {
+    "passed": 75,
+    "failed": 0,
+    "win32": {
+      "acceptedNames": 7,
+      "rejectedInputs": 26,
+      "forcedContainmentDestinations": 5,
+      "total": 38
+    },
+    "posix": {
+      "acceptedNames": 7,
+      "rejectedInputs": 26,
+      "forcedContainmentDestinations": 4,
+      "total": 37
+    }
+  },
+  "observedOutput": {
+    "pathAssertions": 75,
+    "platforms": [
+      "win32",
+      "posix"
+    ],
+    "acceptedExamples": [
+      "before",
+      "after",
+      "working",
+      "owner-working",
+      "release-20260908"
+    ],
+    "negativeCoverage": "traversal, absolute, drive-relative, UNC/device, separators, ADS, suffix confusion, CR/LF, NUL, bounds, resolved root/sibling/cross-drive",
+    "nodeCheck": "passed",
+    "browserLaunched": false
+  },
+  "additionalObservedCheck": "git diff --check -- scripts/capture-ui-polish-v4.mjs passed",
+  "limits": [
+    "Pure-function path checks and syntax validation only.",
+    "No browser, full CI or CodeQL analysis was executed by this check.",
+    "CodeQL clearance is not established by this evidence.",
+    "Containment covers strict leaf validation and resolved lexical paths, not physical symlink resolution.",
+    "Local evidence only; no stage, commit or push."
+  ],
+  "rerunForEvidence": false
+}

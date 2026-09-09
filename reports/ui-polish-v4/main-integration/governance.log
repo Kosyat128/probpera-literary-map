@@ -1,0 +1,25 @@
+
+ RUN  v4.1.10 C:/Users/User/Documents/ChatGPT/Работа по сайту/probpera-typography
+
+ ❯ scripts/lib/stage5-content-data-lock.test.mjs (21 tests | 1 failed) 6764ms
+     × projects only the five exact bookshelf UI translations and matching generated catalog entries 114ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  scripts/lib/stage5-content-data-lock.test.mjs > Stage 5 owner and production-pipeline governance locks > projects only the five exact bookshelf UI translations and matching generated catalog entries
+AssertionError: expected [Function] to throw error including 'Missing, duplicate or changed bookshe…' but got 'Missing or duplicate reviewed reading…'
+
+Expected: "Missing, duplicate or changed bookshelf interface catalog entry"
+Received: "Missing or duplicate reviewed reading-design delta: apps/admin/catalog-assets/interface-copy-catalog.json:7"
+
+ ❯ scripts/lib/stage5-content-data-lock.test.mjs:766:106
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 20 passed (21)
+   Start at  10:47:53
+   Duration  7.53s (transform 170ms, setup 0ms, import 509ms, tests 6.76s, environment 0ms)
+

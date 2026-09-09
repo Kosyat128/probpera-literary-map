@@ -54,6 +54,9 @@ import { cmsEntityMarker } from "../cms/directEditBridge";
 import { CmsPageBanners } from "./CmsSiteChrome";
 import { cmsTypographyTargetKey } from "../data/cms/siteTypography";
 
+import { restoreReaderTrigger, readReaderTrigger } from "../editorial/readerFocus";
+import "../styles/article-book-pagination.css";
+
 const ArticleBookReader = lazy(() => import("./ArticleBookReader"));
 
 type ArticleMediaItem = {
@@ -295,6 +298,9 @@ export default function ArticleReader({
   onClose,
   onOpen,
 }: Props) {
+  const onCloseRef = useRef(onClose);
+  onCloseRef.current = onClose;
+  const [returnTrigger] = useState(readReaderTrigger);
   const dialogRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLAnchorElement>(null);
   const lightboxRef = useRef<HTMLDivElement>(null);
@@ -303,6 +309,9 @@ export default function ArticleReader({
   const scrollRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const restoredArticleRef = useRef("");
+  const bookPositionHintRef = useRef<string | null>();
+  const restoringModeScrollRef = useRef(false);
+  const textScrollIntentRef = useRef(false);
   const returnedBookFocusKey = readArticleBookFocusKey();
   const bookNavigationContext = useMemo(
     readArticleBookNavigationContext,
@@ -317,7 +326,7 @@ export default function ArticleReader({
   const progressRef = useRef(progress);
   progressRef.current = progress;
   const bookRestoreSequenceRef = useRef(0);
-  const [bookRestoreRequest, setBookRestoreRequest] = useState<{ id: number; articleId: string; progress: number }>();
+  const [bookRestoreRequest, setBookRestoreRequest] = useState<{ id: number; articleId: string; progress: number; positionHint?: string }>();
   const [fontScale, setFontScale] = useState(1);
   const [activeHeadingId, setActiveHeadingId] = useState("");
   const [activeMediaIndex, setActiveMediaIndex] = useState<number | null>(null);
@@ -364,10 +373,12 @@ export default function ArticleReader({
     (item) => item.kind === "article" && item.id === article.id
   );
   const isSaved = Boolean(savedArticle);
-  const { restoredProgress, saveProgress, markCompleted } = useReadingProgress(
+  const { restoredProgress, restoredPositionHint, saveProgress, markCompleted } = useReadingProgress(
     "article",
     article.id
   );
+  const resumableBookHint = restoredProgress !== null && restoredProgress >= 3 && restoredProgress < 96
+    ? restoredPositionHint : undefined;
 
   useEffect(() => {
     let active = true;
@@ -425,21 +436,22 @@ export default function ArticleReader({
     document.body.style.overflow = "hidden";
     const handleKeydown = (event: KeyboardEvent) => {
       if (lightboxRef.current) return;
-      if (event.key === "Escape") onClose();
+      if (event.key === "Escape") onCloseRef.current();
       if (event.key !== "Tab" || !dialogRef.current) return;
 
       const focusable = [
         ...dialogRef.current.querySelectorAll<HTMLElement>(
           'a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),summary,[tabindex]:not([tabindex="-1"])'
         ),
-      ].filter((element) => element.getClientRects().length > 0);
+      ].filter(element => element.getClientRects().length > 0 &&
+        getComputedStyle(element).visibility !== "hidden" && !element.closest("[inert]"));
       if (!focusable.length) return;
       const first = focusable[0];
       const last = focusable[focusable.length - 1];
-      if (event.shiftKey && document.activeElement === first) {
+      if (event.shiftKey && (document.activeElement === first || !dialogRef.current.contains(document.activeElement))) {
         event.preventDefault();
         last.focus();
-      } else if (!event.shiftKey && document.activeElement === last) {
+      } else if (!event.shiftKey && (document.activeElement === last || !dialogRef.current.contains(document.activeElement))) {
         event.preventDefault();
         first.focus();
       }
@@ -452,13 +464,15 @@ export default function ArticleReader({
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", handleKeydown);
       if (focusFrame) window.cancelAnimationFrame(focusFrame);
-      previouslyFocused?.focus();
+      restoreReaderTrigger(returnTrigger, previouslyFocused);
     };
-  }, [article.id, onClose, returnedBookFocusKey]);
+  }, [article.id, returnedBookFocusKey, returnTrigger]);
 
   useEffect(() => {
     setProgress(0);
     setBookRestoreRequest(undefined);
+    bookPositionHintRef.current = undefined;
+    textScrollIntentRef.current = false;
     setActiveHeadingId("");
     setActiveMediaIndex(null);
     setResumedFrom(null);
@@ -751,7 +765,10 @@ export default function ArticleReader({
       restoredArticleRef.current === restoreMarker ||
       restoredArticleRef.current === `resume:${article.id}`
     ) return;
+    let releaseFrame = 0;
     const frame = window.requestAnimationFrame(() => {
+      restoringModeScrollRef.current = true;
+      textScrollIntentRef.current = false;
       restoredArticleRef.current = restoreMarker;
       const available = element.scrollHeight - element.clientHeight;
       const fallbackVisible = element.querySelector('[data-article-book-reader][data-renderer="text"]');
@@ -763,17 +780,24 @@ export default function ArticleReader({
         behavior: "auto",
       });
       setProgress(progressToRestore);
-      setBookRestoreRequest({ id: ++bookRestoreSequenceRef.current, articleId: article.id, progress: progressToRestore });
+      bookPositionHintRef.current = resumableBookHint || null;
+      setBookRestoreRequest({ id: ++bookRestoreSequenceRef.current, articleId: article.id, progress: progressToRestore, positionHint: resumableBookHint });
       setResumedFrom(resumable ? progressToRestore : null);
       if (resumable && savedArticle?.status === "saved") {
         setReadingStatus(article.id, "article", "reading");
       }
+      releaseFrame = window.requestAnimationFrame(() => { restoringModeScrollRef.current = false; });
     });
-    return () => window.cancelAnimationFrame(frame);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.cancelAnimationFrame(releaseFrame);
+      restoringModeScrollRef.current = false;
+    };
   }, [
     article.id,
     articleDocument,
     restoredProgress,
+    resumableBookHint,
     savedArticle?.status,
     setReadingStatus,
     mode,
@@ -783,22 +807,31 @@ export default function ArticleReader({
     const previousMode = previousModeRef.current;
     previousModeRef.current = mode;
     if (previousMode === mode) return;
+    textScrollIntentRef.current = false;
+    restoringModeScrollRef.current = true;
+    let releaseFrame = 0;
     const frame = window.requestAnimationFrame(() => {
       const element = scrollRef.current;
       if (!element) return;
       element.scrollTop = mode === "book" ? 0 :
         Math.max(0, element.scrollHeight - element.clientHeight) * progressRef.current / 100;
+      releaseFrame = window.requestAnimationFrame(() => { restoringModeScrollRef.current = false; });
     });
-    return () => window.cancelAnimationFrame(frame);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.cancelAnimationFrame(releaseFrame);
+      restoringModeScrollRef.current = false;
+    };
   }, [mode]);
 
-  const handleBookProgress = useCallback((next: number) => {
+  const handleBookProgress = useCallback((next: number, positionHint?: string) => {
+    bookPositionHintRef.current = positionHint || null;
     setProgress(next);
     if (next >= 96) {
-      markCompleted();
+      markCompleted(positionHint);
       if (savedArticle && savedArticle.status !== "finished") setReadingStatus(article.id, "article", "finished");
     } else {
-      saveProgress(next);
+      saveProgress(next, positionHint);
       if (next >= 3 && savedArticle?.status === "saved") setReadingStatus(article.id, "article", "reading");
     }
   }, [article.id, markCompleted, saveProgress, savedArticle, setReadingStatus]);
@@ -811,10 +844,19 @@ export default function ArticleReader({
     });
   }, []);
 
+  const beginTextScroll = (target: EventTarget | null) => {
+    if (target instanceof Element && target.closest('input,select,textarea,[contenteditable="true"]')) return;
+    textScrollIntentRef.current = true;
+  };
+
   const handleScroll = () => {
+    // Restoration, font/image reflow and focus movement can all emit native
+    // scroll events. Only reader navigation may replace a saved source anchor.
+    if (!textScrollIntentRef.current || restoringModeScrollRef.current || window.matchMedia("print").matches) return;
     const element = scrollRef.current;
     if (!element) return;
     if (bookModeActive && !element.querySelector('[data-article-book-reader][data-renderer="text"]')) return;
+    bookPositionHintRef.current = null;
     const available = element.scrollHeight - element.clientHeight;
     const next =
       available > 0
@@ -835,6 +877,7 @@ export default function ArticleReader({
   };
 
   const jumpToHeading = (headingId: string) => {
+    textScrollIntentRef.current = true;
     setTocOpen(false);
     const root = scrollRef.current;
     const target = root?.querySelector<HTMLElement>(`#${CSS.escape(headingId)}`);
@@ -1046,7 +1089,13 @@ export default function ArticleReader({
         </nav>
       </header>
 
-      <div className="article-reader-scroll" ref={scrollRef} onScroll={handleScroll}>
+      <div className="article-reader-scroll" ref={scrollRef} onScroll={handleScroll}
+        onWheel={event => beginTextScroll(event.target)}
+        onTouchStart={event => beginTextScroll(event.target)}
+        onPointerDown={event => beginTextScroll(event.target)}
+        onKeyDown={event => {
+          if (["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End", " ", "Tab"].includes(event.key)) beginTextScroll(event.target);
+        }}>
         <CmsPageBanners />
         {bookModeActive && <Suspense fallback={<div className="article-reader-loading" role="status"><p>{language === "en" ? "Opening the illustrated book…" : "Открываем книгу с иллюстрациями…"}</p></div>}>
           <ArticleBookReader
@@ -1058,6 +1107,7 @@ export default function ArticleReader({
             locale={language}
             fontScale={fontScale}
             initialProgress={progress}
+            initialPositionHint={bookPositionHintRef.current === undefined ? resumableBookHint : bookPositionHintRef.current || undefined}
             restoreRequest={bookRestoreRequest}
             onProgress={handleBookProgress}
             onFallback={handleBookFallback}
@@ -1070,7 +1120,7 @@ export default function ArticleReader({
             }}
           />
         </Suspense>}
-        <div hidden={bookModeActive}>
+        <div className="article-reader-text-shell" hidden={bookModeActive}>
         <main className="article-reader-layout">
           <aside className={`article-reader-toc${tocOpen ? " is-open" : ""}`}>
             {headingItems.length > 0 && <button className="article-reader-toc-toggle" type="button" aria-expanded={tocOpen} aria-controls="article-reader-contents" onClick={() => setTocOpen((value) => !value)}>
@@ -1197,6 +1247,8 @@ export default function ArticleReader({
                     <button
                       type="button"
                       onClick={() => {
+                        bookPositionHintRef.current = null;
+                        textScrollIntentRef.current = true;
                         scrollRef.current?.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
                         setResumedFrom(null);
                         saveProgress(0);

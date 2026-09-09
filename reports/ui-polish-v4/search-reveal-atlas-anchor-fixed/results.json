@@ -1,0 +1,157 @@
+[
+  {
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "atOpen": {
+      "y": 153.625,
+      "scrollY": 1157,
+      "margin": "124px",
+      "parents": [
+        {
+          "className": "search-field",
+          "overflow": "visible",
+          "scrollTop": 0,
+          "clientHeight": 46,
+          "scrollHeight": 46
+        },
+        {
+          "className": "country-search is-open",
+          "overflow": "visible",
+          "scrollTop": 0,
+          "clientHeight": 182,
+          "scrollHeight": 182
+        },
+        {
+          "className": "atlas-heading",
+          "overflow": "visible",
+          "scrollTop": 0,
+          "clientHeight": 0,
+          "scrollHeight": 0
+        },
+        {
+          "className": "atlas-intro",
+          "overflow": "visible",
+          "scrollTop": 0,
+          "clientHeight": 474,
+          "scrollHeight": 474
+        },
+        {
+          "className": "atlas-experience-surface",
+          "overflow": "visible",
+          "scrollTop": 0,
+          "clientHeight": 1448,
+          "scrollHeight": 1518
+        },
+        {
+          "className": "atlas-experience-anchor",
+          "overflow": "visible",
+          "scrollTop": 0,
+          "clientHeight": 1448,
+          "scrollHeight": 1518
+        },
+        {
+          "className": "atlas-experience-slot",
+          "overflow": "visible",
+          "scrollTop": 0,
+          "clientHeight": 1448,
+          "scrollHeight": 1518
+        },
+        {
+          "className": "atlas-section brush-surface cms-core-editable is-violet",
+          "overflow": "visible",
+          "scrollTop": 0,
+          "clientHeight": 1581,
+          "scrollHeight": 1583
+        }
+      ]
+    },
+    "header": {
+      "x": 0,
+      "y": 0,
+      "width": 390,
+      "height": 58,
+      "right": 390,
+      "bottom": 58
+    },
+    "mobileNav": {
+      "x": 0,
+      "y": 58,
+      "width": 390,
+      "height": 53,
+      "right": 390,
+      "bottom": 111
+    },
+    "stickyBottom": 111,
+    "input": {
+      "x": 65,
+      "y": 153.625,
+      "width": 261,
+      "height": 44,
+      "right": 326,
+      "bottom": 197.625
+    },
+    "list": {
+      "x": 18,
+      "y": 207.625,
+      "width": 354,
+      "height": 320,
+      "right": 372,
+      "bottom": 527.625
+    },
+    "option": {
+      "x": 29,
+      "y": 250.8125,
+      "width": 317,
+      "height": 47,
+      "right": 346,
+      "bottom": 297.8125
+    },
+    "stage": {
+      "x": 18,
+      "y": 551.625,
+      "width": 354,
+      "height": 880,
+      "right": 372,
+      "bottom": 1431.625
+    },
+    "inputClear": true,
+    "firstResultClear": true,
+    "resultsClear": true,
+    "stageGap": 24,
+    "focused": "country-search",
+    "scrollY": 1157,
+    "scrollCalls": [
+      {
+        "method": "focus",
+        "target": "country-search",
+        "args": [
+          {
+            "preventScroll": true
+          }
+        ],
+        "y": 1126,
+        "stack": "Error\n    at owner.<computed> [as focus] (<anonymous>:6:164)\n    at http://127.0.0.1:5186/probpera-literary-map/src/App.tsx?t=1788842295159:3049:49"
+      },
+      {
+        "method": "scrollIntoView",
+        "target": "country-search is-open",
+        "args": [
+          {
+            "block": "start",
+            "behavior": "instant"
+          }
+        ],
+        "y": 1126,
+        "stack": "Error\n    at owner.<computed> [as scrollIntoView] (<anonymous>:6:164)\n    at http://127.0.0.1:5186/probpera-literary-map/src/App.tsx?t=1788842295159:3051:79"
+      }
+    ],
+    "keyboard": {
+      "scrollY": 1157,
+      "scrollTop": 627,
+      "activeInsideList": true,
+      "focused": true
+    }
+  }
+]

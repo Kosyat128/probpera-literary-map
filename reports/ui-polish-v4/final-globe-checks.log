@@ -1,0 +1,13 @@
+
+[WebServer] (node:27316) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 2 tests using 1 worker
+
+(node:21432) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/2] [desktop-chromium] › tests\e2e\ui-polish-controls.spec.mjs:15:1 › F13 WebGL creation failure preserves country search and article reading
+[2/2] [desktop-chromium] › tests\e2e\ui-polish-controls.spec.mjs:48:3 › R05 panels, zoom, resize and immersive return at 1440px
+  2 passed (30.3s)

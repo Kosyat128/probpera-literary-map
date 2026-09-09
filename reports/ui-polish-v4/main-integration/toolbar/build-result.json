@@ -1,0 +1,203 @@
+{
+  "started": "2026-09-08T08:35:27.050Z",
+  "base": "5d3f6fb61e170bcc8fd64062c6283a7c75b5f144",
+  "sourceSha256": "1f73e8830bd13d3a2e3bcfdf3bead4d8a5814e9c36be388ee187a86b51fe0150",
+  "files": [
+    {
+      "path": "public/brand/ui-polish-v4/manifest.json",
+      "sha256": "3ccbaf9b0e8aaa40e7fd8c2dc97b772e7faf599874fcb7f2255572d6e0b0e26e"
+    },
+    {
+      "path": "public/brand/ui-polish-v4/orange-stroke.webp",
+      "sha256": "498a831349dad8d9d2ce0440f35b73b564b8af0784b3041a007575f4c8f39033"
+    },
+    {
+      "path": "public/brand/ui-polish-v4/white-stroke.webp",
+      "sha256": "be7df1f53c55f2721d661f7d17a6bbe61f145f02b6f216548cf9ee08d93e4ad1"
+    },
+    {
+      "path": "scripts/audit-typography.mjs",
+      "sha256": "38a43d0a728f09df5cdf46f3636a70496e700d9662080ef7a3bc9c8e20aa7f48"
+    },
+    {
+      "path": "scripts/audit-typography.test.mjs",
+      "sha256": "6bb781cfa6e2795d861a8fac4a418611d1431c1bb14f97a850c7eb9ee64bbd73"
+    },
+    {
+      "path": "scripts/build-ui-polish-backgrounds.mjs",
+      "sha256": "fe0d65e7a2de29f3fbec522a1b5463b9320dbebaf886baeae9cd278597084557"
+    },
+    {
+      "path": "scripts/capture-ui-polish-v4.mjs",
+      "sha256": "56449e641b17d50ae05d8942edf9a3a42c9fff249b3757238de3548526ed00f3"
+    },
+    {
+      "path": "scripts/governance/ui-polish-reading-integration-20260908.json",
+      "sha256": "b0cb6eaba46c8a0c4a7ab08439ef356a89b8090e7da0323cb5a251e5e9b5b369"
+    },
+    {
+      "path": "scripts/governance/ui-polish-v4-controls-20260908.json",
+      "sha256": "62ba5ba728844c704077c92770113b8e8032ea112dea9cc2ca7955ccb52614e4"
+    },
+    {
+      "path": "scripts/lib/stage5-content-data-lock.test.mjs",
+      "sha256": "52599ce05f733692007af28516897ab85a2d22c68fd118381350598f00086d93"
+    },
+    {
+      "path": "src/App.tsx",
+      "sha256": "abf3257a7e8ff7b019978c4d99bbd5b649587010ebdef71c1c0470ddc07f9e03"
+    },
+    {
+      "path": "src/articles/articleBookPosition.test.ts",
+      "sha256": "79441c1dfe88138a991fd16aea5fa11495e77e1eeca8e474d637bc1381b309dd"
+    },
+    {
+      "path": "src/articles/articleBookPosition.ts",
+      "sha256": "5b6ed52de9dc3cbe6ca5c5196ac24789367273d17d54b1acd6d80b19d4195dd0"
+    },
+    {
+      "path": "src/atlas/atlasExperienceState.test.ts",
+      "sha256": "ecf10541594a85124564a507a5dfe19b64ca9b0cfd67fe56440267681f63bb39"
+    },
+    {
+      "path": "src/atlas/atlasExperienceState.ts",
+      "sha256": "928efca8d665aa693b77268cbbf75f0e37e7537e4fe2fb25d65e334b9f62e98d"
+    },
+    {
+      "path": "src/components/ArticleBookReader.tsx",
+      "sha256": "e9300faf38e44a456f497c4738d0355e6d8d2d28f97532d2993e47837466d356"
+    },
+    {
+      "path": "src/components/ArticleLibrarySection.tsx",
+      "sha256": "21526e67dfd53db26868436911be4ebb5e9671ab2000d2d83cae00532fa0836e"
+    },
+    {
+      "path": "src/components/ArticleReader.tsx",
+      "sha256": "48d2295bfe2f50caaf4b1d52d4a7af718f7c541805f8fa6732f1306aaed51608"
+    },
+    {
+      "path": "src/components/AtlasExperienceChrome.tsx",
+      "sha256": "96992e444726104a1c06fa603439a3d54005c4b5407402d332caed941c3c4fb9"
+    },
+    {
+      "path": "src/components/AtlasSearchCombobox.test.tsx",
+      "sha256": "2813dcc59fc4d990824d0500bb71caabcb3cf157370aee184e53f6c24ca76492"
+    },
+    {
+      "path": "src/components/AtlasSearchCombobox.tsx",
+      "sha256": "1ae689c4630a4d9c583f12d13a7676432304cf0e9ab67fed35e6873d16bcc552"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "sha256": "8d7619c25378a4a024c13a53d10b09ab0b1422d6c393071146fc471ea2926466"
+    },
+    {
+      "path": "src/components/BookShelfControls.tsx",
+      "sha256": "a115c90d895201156d254fb0a17205d6f0961947ee7fdae7900075693c33c688"
+    },
+    {
+      "path": "src/components/BrushBackdrop.tsx",
+      "sha256": "b4d90076de2a9de097b6b3c6d2876de63c30fe963806cd5e9a907a2207c4e0b6"
+    },
+    {
+      "path": "src/components/GlobeCanvasErrorBoundary.tsx",
+      "sha256": "de2830d883cee6b7a55f97705deaac2fa16b33eac8dbfdd2a6eb73aa1d4feb10"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "sha256": "7804b455dfbf9cb50f57c1f12519e9c958af5e4e48fc2a99eeb4026047637cae"
+    },
+    {
+      "path": "src/components/globeAccessibility.test.ts",
+      "sha256": "9206bb4dce811cc6f2e122a833824329fc578a09c60b6260bb1982a6c407dfac"
+    },
+    {
+      "path": "src/editorial/readerFocus.ts",
+      "sha256": "a384f440b4ee657b07a5ac280aaffdbaee9066f9a501b62d8ccf20795d2734ce"
+    },
+    {
+      "path": "src/hooks/useReadingProgress.ts",
+      "sha256": "e9ed6964b1f88f00b4b3d7fd520d75e478dac22330163e4dcf60c501ae26588b"
+    },
+    {
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "sha256": "e9d0851dc0c50d7c48f651e0751a055e76d19e6379eb5166b6e1176d236f24d6"
+    },
+    {
+      "path": "src/styles/article-book-pagination.css",
+      "sha256": "868c9ce7b0c45ccc80ab6768ab6f67011ccf117ce555560d946c1b7cb4dab706"
+    },
+    {
+      "path": "src/styles/brush-flow.css",
+      "sha256": "145d26c9c75ed76800a517101afed974431d59f0a8027a540e090ce1fe364911"
+    },
+    {
+      "path": "src/styles/header-preserved.css",
+      "sha256": "8b867be29757f812ccbab4f3817d67777294301a9c490b1f3b9a78b12a69f2b3"
+    },
+    {
+      "path": "src/styles/shelf-polish.css",
+      "sha256": "bbe8fe3ecaa4ca66b1496256535708864184602e23fbd29e2c5b0c447a1e35be"
+    },
+    {
+      "path": "src/styles/ui-polish-controls.css",
+      "sha256": "d654af9fbd0b926ae607c3967193f6b78c0b4b4320503a0a2d4e7bd6ae6e5767"
+    }
+  ],
+  "steps": [
+    {
+      "script": "node_modules/vite/bin/vite.js",
+      "args": [
+        "build"
+      ],
+      "exitCode": 0
+    },
+    {
+      "script": "scripts/build-article-pages.mjs",
+      "args": [],
+      "exitCode": 0
+    },
+    {
+      "script": "scripts/check-deployed-release-head.mjs",
+      "args": [
+        "--write"
+      ],
+      "exitCode": 0
+    },
+    {
+      "script": "scripts/audit-domain-release.mjs",
+      "args": [],
+      "exitCode": 0
+    },
+    {
+      "script": "scripts/audit-seo-release.mjs",
+      "args": [],
+      "exitCode": 0
+    },
+    {
+      "script": "scripts/audit-performance-budget.mjs",
+      "args": [],
+      "exitCode": 0
+    },
+    {
+      "script": "node_modules/vite/bin/vite.js",
+      "args": [
+        "build"
+      ],
+      "exitCode": 0
+    },
+    {
+      "script": "scripts/build-article-pages.mjs",
+      "args": [],
+      "exitCode": 0
+    },
+    {
+      "script": "scripts/audit-book-dossier-delivery.mjs",
+      "args": [],
+      "exitCode": 0
+    }
+  ],
+  "unchangedSource": true,
+  "exitCode": 0,
+  "finished": "2026-09-08T08:36:34.208Z"
+}

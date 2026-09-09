@@ -1,0 +1,46 @@
+
+> literary-map@0.1.0 test
+> vitest run --maxWorkers=4
+
+
+ RUN  v4.1.10 C:/Users/User/Documents/ChatGPT/Работа по сайту/probpera-typography
+
+ ❯ scripts/lib/stage5-content-data-lock.test.mjs (19 tests | 2 failed) 3215ms
+     × bounds the explicitly requested V4 control/background fragments without refreshing immutable hashes 49ms
+     × keeps Header/Hero owner CSS rules unchanged 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  scripts/lib/stage5-content-data-lock.test.mjs > Stage 5 owner and production-pipeline governance locks > bounds the explicitly requested V4 control/background fragments without refreshing immutable hashes
+Error: Missing or duplicate V4 UI delta: src/styles/header-preserved.css
+ ❯ projectApprovedUiPolish scripts/lib/stage5-content-data-lock.test.mjs:36:55
+     34|   for (const delta of deltas) {
+     35|     if (delta.path !== relativePath) continue;
+     36|     if (result.split(delta.after).length !== 2) throw new Error(`Missi…
+       |                                                       ^
+     37|     result = result.replace(delta.after, delta.before);
+     38|   }
+ ❯ scripts/lib/stage5-content-data-lock.test.mjs:560:25
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  scripts/lib/stage5-content-data-lock.test.mjs > Stage 5 owner and production-pipeline governance locks > keeps Header/Hero owner CSS rules unchanged
+Error: Missing or duplicate V4 UI delta: src/styles/header-preserved.css
+ ❯ projectApprovedUiPolish scripts/lib/stage5-content-data-lock.test.mjs:36:55
+     34|   for (const delta of deltas) {
+     35|     if (delta.path !== relativePath) continue;
+     36|     if (result.split(delta.after).length !== 2) throw new Error(`Missi…
+       |                                                       ^
+     37|     result = result.replace(delta.after, delta.before);
+     38|   }
+ ❯ ownerCssFingerprint scripts/lib/stage5-content-data-lock.test.mjs:408:5
+ ❯ scripts/lib/stage5-content-data-lock.test.mjs:941:12
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed | 529 passed | 3 skipped (533)
+      Tests  2 failed | 3109 passed | 4 skipped (3115)
+   Start at  06:19:05
+   Duration  120.85s (transform 19.54s, setup 0ms, import 167.47s, tests 94.77s, environment 108ms)
+

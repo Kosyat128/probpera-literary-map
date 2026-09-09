@@ -17,6 +17,8 @@ test("calendar keeps readable date states and every compact-day event remains re
 
     const today = calendar.locator('.calendar-day[aria-current="date"]');
     await expect(today).toBeEnabled();
+    // Compare settled date colors on both sides of the existing hover check.
+    await today.evaluate((element) => element.getAnimations().forEach((animation) => animation.finish()));
     const todayBackground = await today.evaluate((element) => getComputedStyle(element).backgroundColor);
     await today.hover();
     await today.evaluate((element) => element.getAnimations().forEach((animation) => animation.finish()));
@@ -70,6 +72,7 @@ test("calendar keeps readable date states and every compact-day event remains re
     expect(lastIsInside).toBe(true);
 
     const selected = calendar.locator('.calendar-day[aria-pressed="true"]');
+    await selected.evaluate((element) => element.getAnimations().forEach((animation) => animation.finish()));
     const selectedBackground = await selected.evaluate((element) => getComputedStyle(element).backgroundColor);
     await selected.hover();
     await selected.evaluate((element) => element.getAnimations().forEach((animation) => animation.finish()));

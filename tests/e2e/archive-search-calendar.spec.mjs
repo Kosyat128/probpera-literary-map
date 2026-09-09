@@ -102,9 +102,24 @@ test("архив и изображения сохраняют desktop-сетку
   ).toBe(3);
 
   await page.locator("#authors").scrollIntoViewIfNeeded();
+  // Scrolling can place the previous Catalog click over a portrait's hover zoom.
+  await page.mouse.move(0, 0);
   const portrait = page.locator(".author-showcase-portrait img").first();
   await expect(portrait).toBeVisible({ timeout: 20_000 });
-  const portraitContract = await portrait.evaluate((image) => {
+  await expect.poll(() => portrait.evaluate((image) => {
+    const button = image.closest(".author-showcase button");
+    return button ? button.matches(":hover") : null;
+  })).toBe(false);
+  await expect.poll(() => portrait.evaluate(async (image) => {
+    if (!image.complete || image.naturalWidth === 0) return false;
+    try {
+      await image.decode();
+      return true;
+    } catch {
+      return false;
+    }
+  })).toBe(true);
+  await expect.poll(() => portrait.evaluate((image) => {
     const media = image.closest(".author-showcase-portrait");
     const imageBox = image.getBoundingClientRect();
     const mediaBox = media?.getBoundingClientRect();
@@ -116,8 +131,7 @@ test("архив и изображения сохраняют desktop-сетку
           Math.abs(imageBox.height - mediaBox.height) <= 1
       ),
     };
-  });
-  expect(portraitContract).toEqual({ objectFit: "cover", sameBounds: true });
+  })).toEqual({ objectFit: "cover", sameBounds: true });
 
   await page.getByRole("button", { name: "Открыть единый поиск" }).click();
   const search = page.getByRole("searchbox", {

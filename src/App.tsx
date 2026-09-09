@@ -23,6 +23,9 @@ import BrandArrowIcon from "./components/BrandArrowIcon";
 import BrandBookIcon from "./components/BrandBookIcon";
 import BrandExternalLinkIcon from "./components/BrandExternalLinkIcon";
 import BrandSearchIcon from "./components/BrandSearchIcon";
+import BrandFilterIcon from "./components/BrandFilterIcon";
+import "./styles/ui-polish-controls.css";
+import "./styles/shelf-polish.css";
 import BrandWidescreenIcon from "./components/BrandWidescreenIcon";
 import AtlasSearchCombobox from "./components/AtlasSearchCombobox";
 import AtlasExperienceChrome from "./components/AtlasExperienceChrome";
@@ -115,6 +118,7 @@ import {
   type DeferredLoadStatus,
 } from "./loading/nearViewportActivation";
 import "./styles/stage5-loading-shells.css";
+import BrushBackdrop from "./components/BrushBackdrop";
 import DeferredLiteraryNewsPanel from "./news/DeferredLiteraryNewsPanel";
 import "./styles/book-month-news-composition.css";
 
@@ -561,7 +565,6 @@ export default function App() {
   const [articleCount, setArticleCount] = useState(0);
   const [generatedEditorialQueue, setGeneratedEditorialQueue] = useState(0);
   const [search, setSearch] = useState("");
-  const [searchOpen, setSearchOpen] = useState(false);
   const [atlasFilter, setAtlasFilter] = useState<AtlasFilter>(
     () => readAtlasUrlState().filter
   );
@@ -581,6 +584,8 @@ export default function App() {
     useState<CommunityView>("account");
   const atlasRef = useRef<HTMLElement>(null);
   const atlasSearchInputRef = useRef<HTMLInputElement>(null);
+  const atlasEmbeddedSearchButtonRef = useRef<HTMLButtonElement>(null);
+  const atlasEmbeddedFiltersButtonRef = useRef<HTMLButtonElement>(null);
   const atlasActiveFilterRef = useRef<HTMLButtonElement>(null);
   const atlasFilterClusterRef = useRef<HTMLDivElement>(null);
   const atlasArchivesToggleRef = useRef<HTMLButtonElement>(null);
@@ -613,12 +618,10 @@ export default function App() {
   const atlasSheetContentCollapsed =
     atlasExperience.compactSheet &&
     atlasExperience.state.sheetState === "collapsed";
-  const atlasSearchOpen = atlasImmersive
-    ? atlasExperience.state.searchOpen
-    : searchOpen;
+  const atlasSearchOpen = atlasExperience.state.searchOpen;
 
   useEffect(() => {
-    if (atlasImmersive && !atlasExperience.state.filtersOpen) {
+    if (!atlasExperience.state.filtersOpen) {
       setLargestArchivesOpen(false);
     }
   }, [atlasExperience.state.filtersOpen, atlasImmersive]);
@@ -636,19 +639,14 @@ export default function App() {
 
   const setAtlasSearchVisibility = useCallback(
     (open: boolean) => {
-      if (atlasImmersive) {
-        atlasExperienceDispatch({
-          type: open ? "OPEN_SEARCH" : "CLOSE_SEARCH",
-        });
-      } else {
-        setSearchOpen(open);
-      }
+      atlasExperienceDispatch({
+        type: open ? "OPEN_SEARCH" : "CLOSE_SEARCH",
+      });
     },
-    [atlasExperienceDispatch, atlasImmersive]
+    [atlasExperienceDispatch]
   );
 
   const closeAtlasSearch = useCallback(() => {
-    setSearchOpen(false);
     atlasExperienceDispatch({ type: "CLOSE_SEARCH" });
   }, [atlasExperienceDispatch]);
 
@@ -2239,7 +2237,7 @@ export default function App() {
         </Suspense>
 
         <section
-          className={`atlas-section${coreHomepageSectionClass(coreAtlas)}`}
+          className={`atlas-section brush-surface${coreHomepageSectionClass(coreAtlas)}`}
           id="atlas"
           ref={atlasRef}
           data-atlas-immersive={String(atlasImmersive)}
@@ -2251,6 +2249,7 @@ export default function App() {
             { kind: "image", label: "Фон литературной планеты" }
           )}
         >
+          <BrushBackdrop source="read" rightOnly />
           <div
             ref={atlasExperience.placeholderRef}
             className="atlas-experience-slot"
@@ -2263,6 +2262,19 @@ export default function App() {
               <div
                 ref={atlasExperience.surfaceRef}
                 className="atlas-experience-surface"
+                onKeyDown={(event) => {
+                  if (atlasImmersive || event.key !== "Escape" || largestArchivesOpen) return;
+                  const trigger = atlasSearchOpen
+                    ? atlasEmbeddedSearchButtonRef.current
+                    : atlasExperience.state.filtersOpen
+                      ? atlasEmbeddedFiltersButtonRef.current
+                      : null;
+                  if (!trigger) return;
+                  event.preventDefault();
+                  event.stopPropagation();
+                  atlasExperienceDispatch({ type: "CLOSE_OVERLAYS" });
+                  trigger.focus({ preventScroll: true });
+                }}
                 aria-labelledby={atlasImmersive ? "atlas-heading-title" : undefined}
                 data-atlas-experience=""
                 data-atlas-view={atlasExperience.state.view}
@@ -2293,6 +2305,8 @@ export default function App() {
                       window.requestAnimationFrame(() =>
                         atlasSearchInputRef.current?.focus({ preventScroll: true })
                       );
+                    } else {
+                      atlasExperience.searchButtonRef.current?.focus({ preventScroll: true });
                     }
                   }}
                   onFiltersToggle={() => {
@@ -2391,7 +2405,14 @@ export default function App() {
               }
               endAdornment={<kbd>↵</kbd>}
               onValueChange={updateAtlasSearch}
-              onOpenChange={(open) => setAtlasSearchVisibility(open)}
+              onOpenChange={(open, reason) => {
+                setAtlasSearchVisibility(open);
+                if (!open && reason === "escape") {
+                  (atlasImmersive
+                    ? atlasExperience.searchButtonRef
+                    : atlasEmbeddedSearchButtonRef).current?.focus({ preventScroll: true });
+                }
+              }}
               onSelect={(result) => selectAtlasSearchResult(result)}
               renderOption={(result) => (
                 <>
@@ -2591,6 +2612,50 @@ export default function App() {
                   atlasExperience.enter("embedded", event.currentTarget)
                 }
               />
+              {!atlasImmersive && (
+                <div className="atlas-embedded-discovery" role="group" aria-label={t("Литературная планета")}>
+                  <IconButton
+                    ref={atlasEmbeddedFiltersButtonRef}
+                    icon={<BrandFilterIcon />}
+                    size="md"
+                    surface="dark"
+                    aria-label={t("Все страны")}
+                    title={t("Все страны")}
+                    aria-expanded={atlasExperience.state.filtersOpen}
+                    aria-controls="atlas-filter-panel"
+                    data-atlas-action="toggle-filters"
+                    onMouseDown={(event) => event.preventDefault()}
+                    onClick={() => {
+                      const nextOpen = !atlasExperience.state.filtersOpen;
+                      atlasExperienceDispatch({ type: "TOGGLE_FILTERS" });
+                      if (nextOpen) window.requestAnimationFrame(() => atlasActiveFilterRef.current?.focus({ preventScroll: true }));
+                    }}
+                  />
+                  <IconButton
+                    ref={atlasEmbeddedSearchButtonRef}
+                    icon={<BrandSearchIcon />}
+                    size="md"
+                    surface="dark"
+                    aria-label={t("Поиск по Литературной планете")}
+                    title={t("Поиск")}
+                    aria-expanded={atlasSearchOpen}
+                    aria-controls="country-search"
+                    data-atlas-action="toggle-search"
+                    onMouseDown={(event) => event.preventDefault()}
+                    onClick={() => {
+                      const nextOpen = !atlasSearchOpen;
+                      setAtlasSearchVisibility(nextOpen);
+                      window.requestAnimationFrame(() => {
+                        const target = nextOpen ? atlasSearchInputRef.current : atlasEmbeddedSearchButtonRef.current;
+                        target?.focus({ preventScroll: true });
+                        if (nextOpen) {
+                          target?.closest(".country-search")?.scrollIntoView({ block: "start", behavior: "instant" });
+                        }
+                      });
+                    }}
+                  />
+                </div>
+              )}
               <div className="atlas-ornaments" aria-hidden="true">
                 <span className="atlas-coordinate">
                   <small>{globeCoordinateContext?.label || t("Архив мира")}</small>
@@ -2822,7 +2887,7 @@ export default function App() {
 
         <section
           ref={setBookDayActivationNode}
-          className={`daily-grid painted-paper-section has-literary-news${coreHomepageSectionClass(coreBookMonth)}`}
+          className={`daily-grid painted-paper-section has-literary-news brush-surface${coreHomepageSectionClass(coreBookMonth)}`}
           id="book-day"
           style={coreHomepageSectionStyle(coreBookMonth)}
           {...cmsCoreFieldMarker(
@@ -2832,6 +2897,7 @@ export default function App() {
             { kind: "image", label: "Фон блока книги месяца" }
           )}
         >
+          <BrushBackdrop source="sections" />
           <article
             className="book-of-day"
             {...(bookOfMonth
@@ -3027,10 +3093,6 @@ export default function App() {
             </div>
           </article>
           </div>
-            <details className="news-editorial-context">
-              <summary>{t("Редакционный стандарт")}</summary>
-              {editorialStandardCard}
-            </details>
         </section>
 
         <DeferredBookArchive
@@ -3051,7 +3113,7 @@ export default function App() {
         />
 
         <section
-          className={`editorial-section${coreHomepageSectionClass(coreFeaturedJournal)}`}
+          className={`editorial-section brush-surface${coreHomepageSectionClass(coreFeaturedJournal)}`}
           id="featured-journal"
           style={coreHomepageSectionStyle(coreFeaturedJournal)}
           {...cmsCoreFieldMarker(
@@ -3061,6 +3123,7 @@ export default function App() {
             { kind: "image", label: "Фон материалов журнала" }
           )}
         >
+          <BrushBackdrop source="read" />
           <header className="section-heading">
             <div>
               <span
@@ -3163,27 +3226,32 @@ export default function App() {
               </article>
             ))}
           </div>
+        </section>
+
+        <section id="reader-discussion" className="brush-surface" aria-labelledby="reader-discussion-title">
+          <BrushBackdrop source="discussion" />
           <div className="journal-engagement">
             <div>
               <span className="section-kicker">{t("Обсуждение номера")}</span>
-              <h3>{t("Статья заканчивается, разговор - продолжается")}</h3>
+              <h3 id="reader-discussion-title">{t("Статья заканчивается, разговор - продолжается")}</h3>
               <p>
                 {t(
                   "Оценки и комментарии привязаны к конкретной публикации. Авторский текст остаётся неизменным, а читательская дискуссия живёт отдельно."
                 )}
               </p>
-            </div>
             <ArticleEngagement
               articleSlug="opinion-hells-angels"
               compact
             />
+            </div>
+            {editorialStandardCard}
           </div>
         </section>
 
         <DeferredArticleLibrary onArticleCountReady={setArticleCount} />
 
         <section
-          className={`authors-section painted-paper-section${coreHomepageSectionClass(coreAuthors)}`}
+          className={`authors-section painted-paper-section brush-surface${coreHomepageSectionClass(coreAuthors)}`}
           id="authors"
           style={coreHomepageSectionStyle(coreAuthors)}
           {...cmsCoreFieldMarker(
@@ -3193,6 +3261,7 @@ export default function App() {
             { kind: "image", label: "Фон блока писателей" }
           )}
         >
+          <BrushBackdrop source="authors" />
           <header className="section-heading">
             <div>
               <span
@@ -3280,7 +3349,7 @@ export default function App() {
         </section>
 
         <section
-          className={`sections-directory${coreHomepageSectionClass(coreSections)}`}
+          className={`sections-directory brush-surface${coreHomepageSectionClass(coreSections)}`}
           id="sections"
           style={coreHomepageSectionStyle(coreSections)}
           {...cmsCoreFieldMarker(
@@ -3290,6 +3359,7 @@ export default function App() {
             { kind: "image", label: "Фон каталога разделов" }
           )}
         >
+          <BrushBackdrop source="sections" />
           <header className="section-heading">
             <div>
               <span
@@ -3371,7 +3441,7 @@ export default function App() {
 
         <section
           id="calendar"
-          className={`calendar-section painted-paper-section${coreHomepageSectionClass(coreCalendar)}`}
+          className={`calendar-section painted-paper-section brush-surface${coreHomepageSectionClass(coreCalendar)}`}
           style={coreHomepageSectionStyle(coreCalendar)}
           {...cmsCoreFieldMarker(
             "calendar",
@@ -3380,6 +3450,7 @@ export default function App() {
             { kind: "image", label: "Фон литературного календаря" }
           )}
         >
+          <BrushBackdrop source="calendar" />
           <Suspense
             fallback={
               <div className="calendar-card">
@@ -3560,7 +3631,7 @@ export default function App() {
         </section>
 
         <section
-          className={`trust-center${coreHomepageSectionClass(coreTrust)}`}
+          className={`trust-center brush-surface${coreHomepageSectionClass(coreTrust)}`}
           id="editorial-policy"
           style={coreHomepageSectionStyle(coreTrust)}
           {...cmsCoreFieldMarker(
@@ -3570,6 +3641,7 @@ export default function App() {
             { kind: "image", label: "Фон редакционной политики" }
           )}
         >
+          <BrushBackdrop source="sections" />
           <header className="section-heading">
             <div>
               <span

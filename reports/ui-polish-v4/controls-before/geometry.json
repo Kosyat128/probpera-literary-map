@@ -1,0 +1,50 @@
+[
+  {
+    "width": 1440,
+    "name": "globe",
+    "geometry": {
+      "width": 1440,
+      "height": 1309.28125,
+      "pageWidth": 1440,
+      "viewportWidth": 1440
+    }
+  },
+  {
+    "width": 1440,
+    "name": "shelf",
+    "geometry": {
+      "width": 1440,
+      "height": 1190.8125,
+      "pageWidth": 1440,
+      "viewportWidth": 1440
+    }
+  },
+  {
+    "width": 1440,
+    "errors": []
+  },
+  {
+    "width": 390,
+    "name": "globe",
+    "geometry": {
+      "width": 390,
+      "height": 1485.5625,
+      "pageWidth": 390,
+      "viewportWidth": 390
+    }
+  },
+  {
+    "width": 390,
+    "name": "shelf",
+    "geometry": {
+      "width": 390,
+      "height": 1363.3125,
+      "pageWidth": 390,
+      "viewportWidth": 390
+    }
+  },
+  {
+    "width": 390,
+    "errors": []
+  }
+]

@@ -1,0 +1,138 @@
+
+Running 6 tests using 1 worker
+
+(node:40680) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [desktop-chromium] › tests\e2e\literary-planet-immersion.spec.mjs:112:1 › embedded atlas enters one-canvas immersion and Escape restores scroll and focus (8.1s)
+  x  2 [desktop-chromium] › tests\e2e\premium-globe-exploration.spec.mjs:219:1 › keyboard candidate selects the optical-centre country without replacing Canvas (18.4s)
+(node:19736) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  3 [desktop-chromium] › tests\e2e\premium-globe-exploration.spec.mjs:480:1 › atlas controls wrap without overlap and rich count matches the collection (19.8s)
+(node:34628) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  -  4 [mobile-chromium] › tests\e2e\literary-planet-immersion.spec.mjs:112:1 › embedded atlas enters one-canvas immersion and Escape restores scroll and focus
+  ok 5 [mobile-chromium] › tests\e2e\premium-globe-exploration.spec.mjs:219:1 › keyboard candidate selects the optical-centre country without replacing Canvas (6.2s)
+  x  6 [mobile-chromium] › tests\e2e\premium-globe-exploration.spec.mjs:480:1 › atlas controls wrap without overlap and rich count matches the collection (18.1s)
+
+
+  1) [desktop-chromium] › tests\e2e\premium-globe-exploration.spec.mjs:219:1 › keyboard candidate selects the optical-centre country without replacing Canvas 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+    Call Log:
+    - Timeout 10000ms exceeded while waiting on the predicate
+
+      297 |     page.locator('canvas[data-stage4-canvas-identity="stable"]')
+      298 |   ).toHaveCount(1);
+    > 299 |   await expect.poll(canvasFitsStage).toBe(true);
+          |                                      ^
+      300 |   const after = await canvas.boundingBox();
+      301 |   expect(Math.abs((after?.width ?? 0) - (before?.width ?? 0))).toBeLessThan(2);
+      302 |   // The selected mobile stage reserves additional space for its country sheet.
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\probpera-typography\tests\e2e\premium-globe-exploration.spec.mjs:299:38
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    reports\ui-polish-v4\owner-final-e2e-addendum-artifacts\premium-globe-exploration--f4acd-ry-without-replacing-Canvas-desktop-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: reports\ui-polish-v4\owner-final-e2e-addendum-artifacts\premium-globe-exploration--f4acd-ry-without-replacing-Canvas-desktop-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    reports\ui-polish-v4\owner-final-e2e-addendum-artifacts\premium-globe-exploration--f4acd-ry-without-replacing-Canvas-desktop-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace reports\ui-polish-v4\owner-final-e2e-addendum-artifacts\premium-globe-exploration--f4acd-ry-without-replacing-Canvas-desktop-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [desktop-chromium] › tests\e2e\premium-globe-exploration.spec.mjs:480:1 › atlas controls wrap without overlap and rich count matches the collection 
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator:  locator('#atlas').locator('.atlas-experience-surface')
+    Expected: "true"
+    Received: "false"
+    Timeout:  10000ms
+
+    Call log:
+      - Expect "toHaveAttribute" with timeout 10000ms
+      - waiting for locator('#atlas').locator('.atlas-experience-surface')
+        9 × locator resolved to <div role="dialog" tabindex="-1" aria-modal="true" data-atlas-experience="" data-atlas-quiet="false" data-atlas-view="immersive" data-atlas-proximity="idle" data-atlas-transition="idle" data-atlas-economical="false" data-atlas-search-open="false" data-atlas-filters-open="false" data-atlas-panel-state="closed" class="atlas-experience-surface" data-atlas-reduced-motion="false" data-atlas-entry-source="embedded" data-atlas-sheet-state="collapsed" aria-labelledby="atlas-heading-title">…</div>
+          - unexpected value "false"
+        14 × locator resolved to <div role="dialog" tabindex="-1" aria-modal="true" data-atlas-quiet="true" data-atlas-experience="" data-atlas-view="immersive" data-atlas-proximity="idle" data-atlas-transition="idle" data-atlas-economical="false" data-atlas-search-open="false" data-atlas-filters-open="false" data-atlas-panel-state="closed" class="atlas-experience-surface" data-atlas-reduced-motion="false" data-atlas-entry-source="embedded" data-atlas-sheet-state="collapsed" aria-labelledby="atlas-heading-title">…</div>
+           - unexpected value "false"
+
+
+      609 |   await expect(surface).toHaveAttribute("data-atlas-view", "immersive");
+      610 |   await surface.locator('[data-atlas-action="toggle-filters"]').click();
+    > 611 |   await expect(surface).toHaveAttribute("data-atlas-filters-open", "true");
+          |                         ^
+      612 |   await archivesToggle.click();
+      613 |   await expect(archivesToggle).toHaveAttribute("aria-expanded", "true");
+      614 |   await page.keyboard.press("Escape");
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\probpera-typography\tests\e2e\premium-globe-exploration.spec.mjs:611:25
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    reports\ui-polish-v4\owner-final-e2e-addendum-artifacts\premium-globe-exploration--30196-ount-matches-the-collection-desktop-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: reports\ui-polish-v4\owner-final-e2e-addendum-artifacts\premium-globe-exploration--30196-ount-matches-the-collection-desktop-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    reports\ui-polish-v4\owner-final-e2e-addendum-artifacts\premium-globe-exploration--30196-ount-matches-the-collection-desktop-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace reports\ui-polish-v4\owner-final-e2e-addendum-artifacts\premium-globe-exploration--30196-ount-matches-the-collection-desktop-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [mobile-chromium] › tests\e2e\premium-globe-exploration.spec.mjs:480:1 › atlas controls wrap without overlap and rich count matches the collection 
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator:  locator('#atlas').locator('.atlas-experience-surface')
+    Expected: "true"
+    Received: "false"
+    Timeout:  10000ms
+
+    Call log:
+      - Expect "toHaveAttribute" with timeout 10000ms
+      - waiting for locator('#atlas').locator('.atlas-experience-surface')
+        9 × locator resolved to <div role="dialog" tabindex="-1" aria-modal="true" data-atlas-experience="" data-atlas-quiet="false" data-atlas-view="immersive" data-atlas-proximity="idle" data-atlas-transition="idle" data-atlas-economical="false" data-atlas-search-open="false" data-atlas-filters-open="false" data-atlas-panel-state="closed" class="atlas-experience-surface" data-atlas-reduced-motion="false" data-atlas-entry-source="embedded" data-atlas-sheet-state="collapsed" aria-labelledby="atlas-heading-title">…</div>
+          - unexpected value "false"
+        14 × locator resolved to <div role="dialog" tabindex="-1" aria-modal="true" data-atlas-quiet="true" data-atlas-experience="" data-atlas-view="immersive" data-atlas-proximity="idle" data-atlas-transition="idle" data-atlas-economical="false" data-atlas-search-open="false" data-atlas-filters-open="false" data-atlas-panel-state="closed" class="atlas-experience-surface" data-atlas-reduced-motion="false" data-atlas-entry-source="embedded" data-atlas-sheet-state="collapsed" aria-labelledby="atlas-heading-title">…</div>
+           - unexpected value "false"
+
+
+      609 |   await expect(surface).toHaveAttribute("data-atlas-view", "immersive");
+      610 |   await surface.locator('[data-atlas-action="toggle-filters"]').click();
+    > 611 |   await expect(surface).toHaveAttribute("data-atlas-filters-open", "true");
+          |                         ^
+      612 |   await archivesToggle.click();
+      613 |   await expect(archivesToggle).toHaveAttribute("aria-expanded", "true");
+      614 |   await page.keyboard.press("Escape");
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\probpera-typography\tests\e2e\premium-globe-exploration.spec.mjs:611:25
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    reports\ui-polish-v4\owner-final-e2e-addendum-artifacts\premium-globe-exploration--30196-ount-matches-the-collection-mobile-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: reports\ui-polish-v4\owner-final-e2e-addendum-artifacts\premium-globe-exploration--30196-ount-matches-the-collection-mobile-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    reports\ui-polish-v4\owner-final-e2e-addendum-artifacts\premium-globe-exploration--30196-ount-matches-the-collection-mobile-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace reports\ui-polish-v4\owner-final-e2e-addendum-artifacts\premium-globe-exploration--30196-ount-matches-the-collection-mobile-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3 failed
+    [desktop-chromium] › tests\e2e\premium-globe-exploration.spec.mjs:219:1 › keyboard candidate selects the optical-centre country without replacing Canvas 
+    [desktop-chromium] › tests\e2e\premium-globe-exploration.spec.mjs:480:1 › atlas controls wrap without overlap and rich count matches the collection 
+    [mobile-chromium] › tests\e2e\premium-globe-exploration.spec.mjs:480:1 › atlas controls wrap without overlap and rich count matches the collection 
+  1 skipped
+  2 passed (1.3m)

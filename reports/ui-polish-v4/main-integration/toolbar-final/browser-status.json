@@ -1,0 +1,22 @@
+{
+  "started": "2026-09-08T08:42:19.259Z",
+  "finished": "2026-09-08T08:43:06.194Z",
+  "exitCode": 0,
+  "sourceSha256": "7a2849f0d5bd7478760a30071bf78acacafdfc0604e09a1817c4fb8657e6337b",
+  "sourceSha256After": "7a2849f0d5bd7478760a30071bf78acacafdfc0604e09a1817c4fb8657e6337b",
+  "args": [
+    "node_modules/playwright/cli.js",
+    "test",
+    "tests/e2e/article-book-pagination.spec.mjs",
+    "tests/e2e/reader-extended-accessibility.spec.mjs",
+    "tests/e2e/article-book-reading.spec.mjs",
+    "tests/e2e/article-book-zoom.spec.mjs",
+    "tests/e2e/ui-polish-controls.spec.mjs",
+    "tests/e2e/ui-polish-backgrounds.spec.mjs",
+    "--grep",
+    "R05 panels",
+    "--workers=1",
+    "--output=reports/ui-polish-v4/main-integration/toolbar-final/browser-artifacts",
+    "--reporter=list,json"
+  ]
+}

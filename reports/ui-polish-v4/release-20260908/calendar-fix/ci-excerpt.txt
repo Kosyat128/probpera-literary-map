@@ -1,0 +1,32 @@
+verify	Run WebGL-heavy regression checks serially	2026-09-08T15:36:26.1181766Z ##[group]WebGL regression shard 1/6
+verify	Run WebGL-heavy regression checks serially	2026-09-08T15:50:08.5450074Z   1 skipped
+verify	Run WebGL-heavy regression checks serially	2026-09-08T15:50:08.5450252Z   32 passed (13.7m)
+verify	Run WebGL-heavy regression checks serially	2026-09-08T15:50:08.6504167Z ##[notice]  1 skipped
+verify	Run WebGL-heavy regression checks serially	  32 passed (13.7m)
+verify	Run WebGL-heavy regression checks serially	2026-09-08T15:50:08.6675409Z ##[group]WebGL regression shard 2/6
+verify	Run WebGL-heavy regression checks serially	2026-09-08T15:54:25.5917521Z   1 skipped
+verify	Run WebGL-heavy regression checks serially	2026-09-08T15:54:25.5917752Z   32 passed (4.3m)
+verify	Run WebGL-heavy regression checks serially	2026-09-08T15:54:25.6467102Z ##[notice]  1 skipped
+verify	Run WebGL-heavy regression checks serially	  32 passed (4.3m)
+verify	Run WebGL-heavy regression checks serially	2026-09-08T15:54:25.6704477Z ##[group]WebGL regression shard 3/6
+verify	Run WebGL-heavy regression checks serially	2026-09-08T16:02:59.8517936Z   1 skipped
+verify	Run WebGL-heavy regression checks serially	2026-09-08T16:02:59.8518225Z   32 passed (8.6m)
+verify	Run WebGL-heavy regression checks serially	2026-09-08T16:03:00.2456086Z ##[notice]  1 skipped
+verify	Run WebGL-heavy regression checks serially	  32 passed (8.6m)
+verify	Run WebGL-heavy regression checks serially	2026-09-08T16:03:00.2690550Z ##[group]WebGL regression shard 4/6
+verify	Run WebGL-heavy regression checks serially	    Expected: "oklab(0.705383 0.119281 0.13621)"
+verify	Run WebGL-heavy regression checks serially	    Received: "rgb(246, 117, 24)"
+verify	Run WebGL-heavy regression checks serially	    > 76 |     await expect(selected).toHaveCSS("background-color", selectedBackground);
+verify	Run WebGL-heavy regression checks serially	    Expected: "oklab(0.705414 0.119268 0.136197)"
+verify	Run WebGL-heavy regression checks serially	2026-09-08T16:12:57.4148083Z     Expected: "oklab(0.705383 0.119281 0.13621)"
+verify	Run WebGL-heavy regression checks serially	2026-09-08T16:12:57.4148387Z     Received: "rgb(246, 117, 24)"
+verify	Run WebGL-heavy regression checks serially	2026-09-08T16:12:57.4152716Z     > 76 |     await expect(selected).toHaveCSS("background-color", selectedBackground);
+verify	Run WebGL-heavy regression checks serially	2026-09-08T16:12:57.4161559Z     Expected: "oklab(0.705414 0.119268 0.136197)"
+verify	Run WebGL-heavy regression checks serially	2026-09-08T16:12:57.4161793Z     Received: "rgb(246, 117, 24)"
+verify	Run WebGL-heavy regression checks serially	2026-09-08T16:12:57.4167375Z     > 76 |     await expect(selected).toHaveCSS("background-color", selectedBackground);
+verify	Run WebGL-heavy regression checks serially	2026-09-08T16:12:57.4175874Z   1 failed
+verify	Run WebGL-heavy regression checks serially	2026-09-08T16:12:57.4176874Z   5 skipped
+verify	Run WebGL-heavy regression checks serially	2026-09-08T16:12:57.4177031Z   27 passed (9.9m)
+verify	Run WebGL-heavy regression checks serially	2026-09-08T16:12:57.5536664Z ##[notice]  1 failed
+verify	Run WebGL-heavy regression checks serially	  5 skipped
+verify	Run WebGL-heavy regression checks serially	  27 passed (9.9m)

@@ -194,9 +194,18 @@ export default function AtlasSearchCombobox<T extends AtlasComboboxItem>({
     if (!open || activeIndex < 0) return;
     const activeResult = results[activeIndex];
     if (!activeResult) return;
-    optionRefs.current
-      .get(activeResult.key)
-      ?.scrollIntoView({ block: "nearest" });
+    const option = optionRefs.current.get(activeResult.key);
+    const listbox = option?.closest<HTMLElement>("[data-atlas-search-listbox]");
+    if (!option || !listbox) return;
+    const optionBounds = option.getBoundingClientRect();
+    const listBounds = listbox.getBoundingClientRect();
+    const visibleTop = listBounds.top + listbox.clientTop;
+    const visibleBottom = visibleTop + listbox.clientHeight;
+    if (optionBounds.top < visibleTop) {
+      listbox.scrollTop -= visibleTop - optionBounds.top;
+    } else if (optionBounds.bottom > visibleBottom) {
+      listbox.scrollTop += optionBounds.bottom - visibleBottom;
+    }
   }, [activeIndex, open, results]);
 
   const requestOpen = useCallback(

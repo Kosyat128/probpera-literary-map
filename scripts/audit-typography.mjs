@@ -11,6 +11,9 @@ const requiredRoles = [".article-copy h3", ".library-card-copy h3", ".share-link
 // Explicit 2026-09-04 user exception: preserve the existing Header/Hero. These
 // roots do not include reader, atlas, footer-brand or arbitrary nested controls.
 const preservedRoot = /^\.(?:topline|site-header|mobile-nav|magazine-hero|brand|sections-menu|articles-menu|reader-button|global-search-trigger|hero-editorial|hero-actions|hero-proof|hero-cover|primary-action|secondary-action)(?![\w-])/u;
+// Explicit 2026-09-08 request: only the footer logo link repeats the masthead.
+// Footer prose, navigation and other stylesheets retain the canonical rules.
+const preservedFooterBrand = /^\.footer-brand>a(?: (?:img|span|strong|small))?$/u;
 const preservedAliases = {
   "--sans": '"Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif',
   "--serif": 'Georgia, "Times New Roman", serif',
@@ -157,7 +160,8 @@ export function auditTypography(sources) {
       const ownsSize = selectors.some((selector) => ownsRole(selector, owned));
       const isFullText = selectors.some(fullText);
       const preserved = ["src/index.css", "src/styles/header-preserved.css"].includes(file) &&
-        selectors.length > 0 && selectors.every((selector) => preservedRoot.test(normalizeSelector(selector)));
+        selectors.length > 0 && selectors.every((selector) => preservedRoot.test(normalizeSelector(selector)) ||
+          (file === "src/styles/header-preserved.css" && preservedFooterBrand.test(normalizeSelector(selector))));
       const preservedIsland = preserved && file === "src/styles/header-preserved.css";
       const fail = (message) => add(file, declaration, `${message}: ${prop}: ${value}${parent.selector ? ` (${parent.selector.replace(/\s+/gu, " ")})` : ""}`);
 

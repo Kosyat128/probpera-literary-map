@@ -1,0 +1,237 @@
+{
+  "id": "OWNER-UI-POLISH-V4-CONTROLS-20260908",
+  "interfaceAdditions": [
+    {
+      "source": "Страницы статьи",
+      "english": "Article pages"
+    },
+    {
+      "source": "Перелистывание статьи",
+      "english": "Article pagination"
+    },
+    {
+      "source": "Страница {page} из {total}",
+      "english": "Page {page} of {total}"
+    }
+  ],
+  "interfaceRenames": [
+    {
+      "before": "Нажмите на корешок - книга выйдет вперёд, а справа откроются описание и сведения.",
+      "after": "Нажмите на корешок - книга выйдет вперёд, и откроются описание и сведения.",
+      "english": "Select a spine to bring the book forward and open its description and details."
+    }
+  ],
+  "sourceBaselineSha": "f6ec0cbdb48b8e9877c766b3cdb8cdafb4b76316",
+  "authorization": "Explicit user request 2026-09-08: R01 normal RU/EN with the historical header font family, footer brand matching the preserved masthead, R04 shelf controls, R05 globe UI geometry, F13 local scene failure containment, and outer atlas/books backgrounds; no publication authorized.",
+  "allowedPaths": [
+    "src/atlas/atlasExperienceState.ts",
+    "src/components/AtlasExperienceChrome.tsx",
+    "src/components/AtlasSearchCombobox.tsx",
+    "src/components/BookArchiveSection.tsx",
+    "src/components/BookShelfControls.tsx",
+    "src/components/LiteraryGlobe.tsx",
+    "src/styles/header-preserved.css"
+  ],
+  "protectedBoundary": "No camera, UV, globe model, skins, geographic data, book records, renderer, spine or cover changes are projected. Historical global fingerprints are retained.",
+  "sourceBaselines": {
+    "src/atlas/atlasExperienceState.ts": "d75d2696248e6851fa25e059de8cdc435926142f1a7cd021ea2ed114245038cf",
+    "src/components/AtlasExperienceChrome.tsx": "b396d959d9ab5c186746ac2f8e3880d5c474b8e721b9778b0b97913c2ec113a2",
+    "src/components/AtlasSearchCombobox.tsx": "c84128a93d92c422e0f0471ad9c033816cc71834997762aac7705ece0700ba53",
+    "src/components/BookArchiveSection.tsx": "46f548903f03a0303e021a01bb82caa24a6b362f255e159b275cfbe3af13f79f",
+    "src/components/BookShelfControls.tsx": "4de9aa65bd63d50dcf89e87be78527131209814961391973192094db0145ec74",
+    "src/components/LiteraryGlobe.tsx": "c99b82d1a1da222de87d65bb0b3f827028d8ec9679d3055eab022da24bcbe9e8",
+    "src/styles/header-preserved.css": "3f740a75a0a7cc74a957d56891da0805a43bd9415fcf9901552360a5e9330b9d"
+  },
+  "projections": [
+    {
+      "path": "src/atlas/atlasExperienceState.ts",
+      "before": "  };\n}\n\nfunction isImmersiveInteractive(state: AtlasExperienceState) {\n  return state.view === \"immersive\" && state.transition !== \"exiting\";\n}\n\nfunction enterImmersive(\n",
+      "after": "  };\n}\n\nfunction isOverlayInteractive(state: AtlasExperienceState) {\n  return state.transition !== \"exiting\" && state.transition !== \"preparing\";\n}\n\nfunction enterImmersive(\n"
+    },
+    {
+      "path": "src/atlas/atlasExperienceState.ts",
+      "before": "}\n\nfunction toggleSearch(state: AtlasExperienceState) {\n  if (!isImmersiveInteractive(state)) return state;\n  if (state.searchOpen) return { ...state, searchOpen: false };\n  return {\n    ...state,\n",
+      "after": "}\n\nfunction toggleSearch(state: AtlasExperienceState) {\n  if (!isOverlayInteractive(state)) return state;\n  if (state.searchOpen) return { ...state, searchOpen: false };\n  return {\n    ...state,\n"
+    },
+    {
+      "path": "src/atlas/atlasExperienceState.ts",
+      "before": "}\n\nfunction toggleFilters(state: AtlasExperienceState) {\n  if (!isImmersiveInteractive(state)) return state;\n  if (state.filtersOpen) return { ...state, filtersOpen: false };\n  return {\n    ...state,\n",
+      "after": "}\n\nfunction toggleFilters(state: AtlasExperienceState) {\n  if (!isOverlayInteractive(state)) return state;\n  if (state.filtersOpen) return { ...state, filtersOpen: false };\n  return {\n    ...state,\n"
+    },
+    {
+      "path": "src/atlas/atlasExperienceState.ts",
+      "before": "      return syncView(state, event.view, event.source, event.reducedMotion);\n\n    case \"OPEN_SEARCH\":\n      if (!isImmersiveInteractive(state) || state.searchOpen) return state;\n      return {\n        ...state,\n        searchOpen: true,\n",
+      "after": "      return syncView(state, event.view, event.source, event.reducedMotion);\n\n    case \"OPEN_SEARCH\":\n      if (!isOverlayInteractive(state) || state.searchOpen) return state;\n      return {\n        ...state,\n        searchOpen: true,\n"
+    },
+    {
+      "path": "src/atlas/atlasExperienceState.ts",
+      "before": "      return toggleSearch(state);\n\n    case \"OPEN_FILTERS\":\n      if (!isImmersiveInteractive(state) || state.filtersOpen) return state;\n      return {\n        ...state,\n        searchOpen: false,\n",
+      "after": "      return toggleSearch(state);\n\n    case \"OPEN_FILTERS\":\n      if (!isOverlayInteractive(state) || state.filtersOpen) return state;\n      return {\n        ...state,\n        searchOpen: false,\n"
+    },
+    {
+      "path": "src/components/AtlasExperienceChrome.tsx",
+      "before": "          </div>\n        </div>\n        <nav aria-label={t(\"Литературная планета\")}>\n          <Button\n            ref={searchButtonRef}\n            className=\"atlas-immersive-search-toggle\"\n            size=\"md\"\n            surface=\"dark\"\n            variant=\"secondary\"\n            startIcon={<BrandSearchIcon />}\n            aria-expanded={searchOpen}\n            aria-controls=\"atlas-search-panel\"\n            aria-label={t(\"Поиск по Литературной планете\")}\n            data-atlas-action=\"toggle-search\"\n            onClick={onSearchToggle}\n          >\n            {t(\"Поиск\")}\n          </Button>\n          <Button\n            ref={filtersButtonRef}\n            className=\"atlas-immersive-filter-toggle\"\n            size=\"md\"\n            surface=\"dark\"\n            variant=\"secondary\"\n            startIcon={<BrandFilterIcon />}\n            aria-expanded={filtersOpen}\n            aria-controls=\"atlas-filter-panel\"\n            aria-label={t(\"Фильтры глобуса\")}\n            data-atlas-action=\"toggle-filters\"\n            onClick={onFiltersToggle}\n          >\n            {t(\"Фильтры глобуса\")}\n          </Button>\n          <Button\n            className=\"atlas-immersive-random\"\n            size=\"md\"\n",
+      "after": "          </div>\n        </div>\n        <nav aria-label={t(\"Литературная планета\")}>\n          <IconButton\n            ref={filtersButtonRef}\n            className=\"atlas-immersive-filter-toggle\"\n            size=\"md\"\n            surface=\"dark\"\n            icon={<BrandFilterIcon />}\n            aria-expanded={filtersOpen}\n            aria-controls=\"atlas-filter-panel\"\n            aria-label={t(\"Все страны\")}\n            data-atlas-action=\"toggle-filters\"\n            onClick={onFiltersToggle}\n          />\n          <IconButton\n            ref={searchButtonRef}\n            className=\"atlas-immersive-search-toggle\"\n            size=\"md\"\n            surface=\"dark\"\n            icon={<BrandSearchIcon />}\n            aria-expanded={searchOpen}\n            aria-controls=\"atlas-search-panel\"\n            aria-label={t(\"Поиск по Литературной планете\")}\n            data-atlas-action=\"toggle-search\"\n            onMouseDown={(event) => event.preventDefault()}\n            onClick={onSearchToggle}\n          />\n          <Button\n            className=\"atlas-immersive-random\"\n            size=\"md\"\n"
+    },
+    {
+      "path": "src/components/AtlasSearchCombobox.tsx",
+      "before": "    if (!open || activeIndex < 0) return;\n    const activeResult = results[activeIndex];\n    if (!activeResult) return;\n    optionRefs.current\n      .get(activeResult.key)\n      ?.scrollIntoView({ block: \"nearest\" });\n  }, [activeIndex, open, results]);\n\n  const requestOpen = useCallback(\n",
+      "after": "    if (!open || activeIndex < 0) return;\n    const activeResult = results[activeIndex];\n    if (!activeResult) return;\n    const option = optionRefs.current.get(activeResult.key);\n    const listbox = option?.closest<HTMLElement>(\"[data-atlas-search-listbox]\");\n    if (!option || !listbox) return;\n    const optionBounds = option.getBoundingClientRect();\n    const listBounds = listbox.getBoundingClientRect();\n    const visibleTop = listBounds.top + listbox.clientTop;\n    const visibleBottom = visibleTop + listbox.clientHeight;\n    if (optionBounds.top < visibleTop) {\n      listbox.scrollTop -= visibleTop - optionBounds.top;\n    } else if (optionBounds.bottom > visibleBottom) {\n      listbox.scrollTop += optionBounds.bottom - visibleBottom;\n    }\n  }, [activeIndex, open, results]);\n\n  const requestOpen = useCallback(\n"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "before": "} from \"./BookShelfControls\";\nimport BookShelfQualityMenu from \"./BookShelfQualityMenu\";\nimport BookShelfFrame from \"./BookShelfFrame\";\nimport BookShelfProgressRail from \"./BookShelfProgressRail\";\nimport BookShelfScene, {\n  type BookShelfSceneAppearance,\n",
+      "after": "} from \"./BookShelfControls\";\nimport BookShelfQualityMenu from \"./BookShelfQualityMenu\";\nimport BookShelfFrame from \"./BookShelfFrame\";\nimport BrushBackdrop from \"./BrushBackdrop\";\nimport BookShelfProgressRail from \"./BookShelfProgressRail\";\nimport BookShelfScene, {\n  type BookShelfSceneAppearance,\n"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "before": "  return (\n    <section\n      ref={archiveSectionRef}\n      className={`book-archive-section${coreHomepageSectionClass(\n        coreBookArchive\n      )}`}\n      id=\"books\"\n",
+      "after": "  return (\n    <section\n      ref={archiveSectionRef}\n      className={`book-archive-section brush-surface${coreHomepageSectionClass(\n        coreBookArchive\n      )}`}\n      id=\"books\"\n"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "before": "        { kind: \"image\", label: \"Фон книжного архива\" }\n      )}\n    >\n      <header className=\"book-archive-heading\">\n        <div>\n          <span\n",
+      "after": "        { kind: \"image\", label: \"Фон книжного архива\" }\n      )}\n    >\n      <BrushBackdrop source=\"authors\" />\n      <header className=\"book-archive-heading\">\n        <div>\n          <span\n"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "before": "            }}\n            shelfLabel={shelfTabLabel}\n            catalogLabel={catalogTabLabel}\n            randomLabel={t(\"Наугад\")}\n            randomDescription={t(\n              \"Выбрать случайное произведение из всего архива\"\n",
+      "after": "            }}\n            shelfLabel={shelfTabLabel}\n            catalogLabel={catalogTabLabel}\n            archiveLabel={t(\"Весь архив\")}\n            onOpenArchive={() => {\n              changeActiveShelf(BOOK_COLLECTION_ALL_SHELF_ID);\n              setQuery(\"\");\n              setFilterState(normalizeBookArchiveFilterState());\n              setSearchScope(\"archive\");\n              setViewMode(\"catalog\");\n            }}\n            randomLabel={t(\"Наугад\")}\n            randomDescription={t(\n              \"Выбрать случайное произведение из всего архива\"\n"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "before": "                    openBookDetail(item.book, event.currentTarget);\n                  }}\n                  aria-label={`${t(\"Выберите книгу\")}. ${t(\n                    \"Нажмите на корешок - книга выйдет вперёд, а справа откроются описание и сведения.\"\n                  )}`}\n                >\n                  <BrandBookIcon />\n",
+      "after": "                    openBookDetail(item.book, event.currentTarget);\n                  }}\n                  aria-label={`${t(\"Выберите книгу\")}. ${t(\n                    \"Нажмите на корешок - книга выйдет вперёд, и откроются описание и сведения.\"\n                  )}`}\n                >\n                  <BrandBookIcon />\n"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "before": "                    <strong>{t(\"Выберите книгу\")}</strong>\n                    <small>\n                      {t(\n                        \"Нажмите на корешок - книга выйдет вперёд, а справа откроются описание и сведения.\"\n                      )}\n                    </small>\n                  </span>\n",
+      "after": "                    <strong>{t(\"Выберите книгу\")}</strong>\n                    <small>\n                      {t(\n                        \"Нажмите на корешок - книга выйдет вперёд, и откроются описание и сведения.\"\n                      )}\n                    </small>\n                  </span>\n"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "before": "            <span>{t(\"Назад\")}</span>\n          </button>\n          <div className=\"book-shelf-navigation__position\">\n            <button\n              className=\"is-edge\"\n              type=\"button\"\n              onClick={() => focusBookAt(0)}\n              disabled={navigationLocked || !shelfNavigation.canMovePrevious}\n              aria-label={t(\"Первая книга\")}\n            >\n              <span aria-hidden=\"true\">|</span>\n              <BrandArrowIcon />\n            </button>\n            <button\n              className=\"book-shelf-navigation__batch\"\n              type=\"button\"\n              onClick={() => focusBookAt(shelfNavigation.pagePreviousIndex)}\n              disabled={navigationLocked || !shelfNavigation.canMovePagePrevious}\n",
+      "after": "            <span>{t(\"Назад\")}</span>\n          </button>\n          <div className=\"book-shelf-navigation__position\">\n            <div className=\"book-shelf-navigation__steps\">\n            <button\n              className=\"book-shelf-navigation__batch is-previous\"\n              type=\"button\"\n              onClick={() => focusBookAt(shelfNavigation.pagePreviousIndex)}\n              disabled={navigationLocked || !shelfNavigation.canMovePagePrevious}\n"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "before": "              <span>13</span>\n            </button>\n            <button\n              className=\"book-shelf-navigation__single\"\n              type=\"button\"\n              onClick={() => focusBookAt(shelfNavigation.previousIndex)}\n              disabled={navigationLocked || !shelfNavigation.canMovePrevious}\n",
+      "after": "              <span>13</span>\n            </button>\n            <button\n              className=\"book-shelf-navigation__single is-previous\"\n              type=\"button\"\n              onClick={() => focusBookAt(shelfNavigation.previousIndex)}\n              disabled={navigationLocked || !shelfNavigation.canMovePrevious}\n"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "before": "                <small>{t(\"Полка пуста\")}</small>\n              )}\n            </span>\n            <BookShelfProgressRail\n              focusIndex={shelfNavigation.focusIndex}\n              total={shelfNavigation.total}\n              label={t(\"Позиция на книжной полке\")}\n              valueText={(current, total) =>\n                `${number(current)} ${t(\"из\")} ${number(total)}`\n              }\n              onFocusIndexChange={focusBookAt}\n            />\n            <button\n              className=\"book-shelf-navigation__single\"\n              type=\"button\"\n",
+      "after": "                <small>{t(\"Полка пуста\")}</small>\n              )}\n            </span>\n            <button\n              className=\"book-shelf-navigation__single\"\n              type=\"button\"\n"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "before": "              <span>13</span>\n              <BrandArrowIcon />\n            </button>\n            <button\n              className=\"is-edge\"\n              type=\"button\"\n",
+      "after": "              <span>13</span>\n              <BrandArrowIcon />\n            </button>\n            </div>\n            <div className=\"book-shelf-navigation__scrub\">\n            <button\n              className=\"is-edge\"\n              type=\"button\"\n              onClick={() => focusBookAt(0)}\n              disabled={navigationLocked || !shelfNavigation.canMovePrevious}\n              aria-label={t(\"Первая книга\")}\n            >\n              <svg className=\"book-shelf-navigation__skip-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\">\n                <path d=\"M7 5v14M17 6l-6 6 6 6\" />\n              </svg>\n            </button>\n            <BookShelfProgressRail\n              focusIndex={shelfNavigation.focusIndex}\n              total={shelfNavigation.total}\n              label={t(\"Позиция на книжной полке\")}\n              valueText={(current, total) =>\n                `${number(current)} ${t(\"из\")} ${number(total)}`\n              }\n              onFocusIndexChange={focusBookAt}\n            />\n            <button\n              className=\"is-edge\"\n              type=\"button\"\n"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "before": "              }\n              aria-label={t(\"Последняя книга\")}\n            >\n              <BrandArrowIcon />\n              <span aria-hidden=\"true\">|</span>\n            </button>\n          </div>\n          <div className=\"book-shelf-navigation__actions\">\n            <button\n",
+      "after": "              }\n              aria-label={t(\"Последняя книга\")}\n            >\n              <svg className=\"book-shelf-navigation__skip-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\">\n                <path d=\"M17 5v14M7 6l6 6-6 6\" />\n              </svg>\n            </button>\n            </div>\n          </div>\n          <div className=\"book-shelf-navigation__actions\">\n            <button\n"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "before": "              }\n              disabled={!navigationActionBook}\n            >\n              <span aria-hidden=\"true\">＋</span>\n              <span>{language === \"en\" ? \"Add to shelf\" : \"Добавить на полку\"}</span>\n            </button>\n          </div>\n",
+      "after": "              }\n              disabled={!navigationActionBook}\n            >\n              <BrandPlusIcon />\n              <span>{language === \"en\" ? \"Add to shelf\" : \"Добавить на полку\"}</span>\n            </button>\n          </div>\n"
+    },
+    {
+      "path": "src/components/BookShelfControls.tsx",
+      "before": "  onViewModeChange: (mode: BookShelfViewMode) => void;\n  shelfLabel: string;\n  catalogLabel: string;\n  randomLabel: string;\n  randomDescription: string;\n  randomDisabled: boolean;\n",
+      "after": "  onViewModeChange: (mode: BookShelfViewMode) => void;\n  shelfLabel: string;\n  catalogLabel: string;\n  archiveLabel?: string;\n  onOpenArchive?: () => void;\n  randomLabel: string;\n  randomDescription: string;\n  randomDisabled: boolean;\n"
+    },
+    {
+      "path": "src/components/BookShelfControls.tsx",
+      "before": "  onViewModeChange,\n  shelfLabel,\n  catalogLabel,\n  randomLabel,\n  randomDescription,\n  randomDisabled,\n",
+      "after": "  onViewModeChange,\n  shelfLabel,\n  catalogLabel,\n  archiveLabel,\n  onOpenArchive,\n  randomLabel,\n  randomDescription,\n  randomDisabled,\n"
+    },
+    {
+      "path": "src/components/BookShelfControls.tsx",
+      "before": "\n  return (\n    <div className=\"book-archive-toolbar book-shelf-controls\">\n      <div className=\"book-shelf-controls__topline\">\n        {collectionControl ? <div className=\"book-shelf-controls__collection\">{collectionControl}</div> : null}\n        <div className=\"book-shelf-controls__search-group\">\n        <label className=\"book-shelf-controls__search\" htmlFor={controlId}>\n",
+      "after": "\n  return (\n    <div className=\"book-archive-toolbar book-shelf-controls\">\n      <div\n        className=\"book-shelf-controls__topline\"\n        onMouseDownCapture={(event) => {\n          // Mobile results occupy a row. Keep it in place until the clicked\n          // action receives its click, instead of moving that action on blur.\n          if (!suggestionsOpen || !(event.target instanceof Element)) return;\n          const button = event.target.closest(\"button\");\n          if (button && !suggestionsRef.current?.contains(button)) event.preventDefault();\n        }}\n        onClickCapture={(event) => {\n          if (!suggestionsOpen || !(event.target instanceof Element)) return;\n          const button = event.target.closest(\"button\");\n          if (!button || suggestionsRef.current?.contains(button)) return;\n          dismissSuggestions();\n          button.focus({ preventScroll: true });\n        }}\n      >\n        {collectionControl ? <div className=\"book-shelf-controls__collection\">{collectionControl}</div> : null}\n        <div className=\"book-shelf-controls__search-group\">\n        <label className=\"book-shelf-controls__search\" htmlFor={controlId}>\n"
+    },
+    {
+      "path": "src/components/BookShelfControls.tsx",
+      "before": "      ) : null}\n        </div>\n\n        <div className=\"book-shelf-controls__views\" role=\"group\" aria-label={catalogLabel}>\n          <button\n            type=\"button\"\n",
+      "after": "      ) : null}\n        </div>\n\n        <div className=\"book-shelf-controls__view-actions\">\n        <div className=\"book-shelf-controls__views\" role=\"group\" aria-label={catalogLabel}>\n          <button\n            type=\"button\"\n"
+    },
+    {
+      "path": "src/components/BookShelfControls.tsx",
+      "before": "            </svg>\n            <span>{catalogLabel}</span>\n          </button>\n        </div>\n        <div className=\"book-filter-panel\">\n          <span className=\"book-shelf-controls__visually-hidden\">\n",
+      "after": "            </svg>\n            <span>{catalogLabel}</span>\n          </button>\n        </div>\n          {onOpenArchive && <button type=\"button\" className=\"book-shelf-controls__archive\" onClick={onOpenArchive}>{archiveLabel}</button>}\n        </div>\n        <div className=\"book-filter-panel\">\n          <span className=\"book-shelf-controls__visually-hidden\">\n"
+    },
+    {
+      "path": "src/components/BookShelfControls.tsx",
+      "before": "            <BrandFilterIcon />\n          </button>\n        </div>\n        <button\n          type=\"button\"\n          className=\"book-shelf-controls__random\"\n",
+      "after": "            <BrandFilterIcon />\n          </button>\n        </div>\n        {settingsControl ? <div className=\"book-shelf-controls__settings\">{settingsControl}</div> : null}\n        <button\n          type=\"button\"\n          className=\"book-shelf-controls__random\"\n"
+    },
+    {
+      "path": "src/components/BookShelfControls.tsx",
+      "before": "          <BrandSparkleIcon />\n          <span>{randomLabel}</span>\n        </button>\n        {settingsControl ? <div className=\"book-shelf-controls__settings\">{settingsControl}</div> : null}\n      </div>\n\n\n",
+      "after": "          <BrandSparkleIcon />\n          <span>{randomLabel}</span>\n        </button>\n      </div>\n\n\n"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "before": "import BrandResetIcon from \"./BrandResetIcon\";\nimport BrandRotateIcon from \"./BrandRotateIcon\";\nimport WriterPortrait from \"./WriterPortrait\";\nimport NobelMarkerLayer, { type NobelLayerHover } from \"./NobelMarkerLayer\";\nimport GlobeCameraRig, {\n  globeCameraIntentKey,\n",
+      "after": "import BrandResetIcon from \"./BrandResetIcon\";\nimport BrandRotateIcon from \"./BrandRotateIcon\";\nimport WriterPortrait from \"./WriterPortrait\";\nimport GlobeCanvasErrorBoundary from \"./GlobeCanvasErrorBoundary\";\nimport NobelMarkerLayer, { type NobelLayerHover } from \"./NobelMarkerLayer\";\nimport GlobeCameraRig, {\n  globeCameraIntentKey,\n"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "before": "      }\n      style={{ touchAction: touchActivationPolicy.touchAction }}\n    >\n      <Canvas\n        key={webglRecoveryGeneration}\n        camera={GLOBE_CAMERA_CONFIG}\n",
+      "after": "      }\n      style={{ touchAction: touchActivationPolicy.touchAction }}\n    >\n      <GlobeCanvasErrorBoundary\n        key={webglRecoveryGeneration}\n        fallback={\n          <div className=\"globe-loading\" role=\"status\">\n            <span aria-hidden=\"true\">✦</span>\n            <p>{t(\"Используйте текстовый указатель стран ниже\")}</p>\n          </div>\n        }\n      >\n      <Canvas\n        key={webglRecoveryGeneration}\n        camera={GLOBE_CAMERA_CONFIG}\n"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "before": "          touchInteractionEnabled={touchActivationPolicy.controlsEnabled}\n        />\n      </Canvas>\n\n      <div className=\"globe-edition-transition\" aria-hidden=\"true\">\n        <span />\n",
+      "after": "          touchInteractionEnabled={touchActivationPolicy.controlsEnabled}\n        />\n      </Canvas>\n      </GlobeCanvasErrorBoundary>\n\n      <div className=\"globe-edition-transition\" aria-hidden=\"true\">\n        <span />\n"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "before": "        role=\"group\"\n        aria-label={t(\"Управление глобусом\")}\n      >\n        <IconButton\n          icon={<BrandPlusIcon />}\n          surface=\"dark\"\n          data-globe-control=\"zoom-in\"\n          aria-label={`${t(\"Увеличить масштаб глобуса\")}. ${t(\"Текущий масштаб\")} ${number(globeScalePercent)}%`}\n          aria-describedby=\"globe-scale-feedback\"\n          aria-keyshortcuts=\"+\"\n          title={t(\"Увеличить масштаб глобуса\")}\n          disabled={zoomInDisabled}\n          onClick={() =>\n            requestGlobeControl({ type: \"zoom\", direction: \"in\" })\n          }\n        />\n        <IconButton\n          icon={<BrandMinusIcon />}\n          surface=\"dark\"\n",
+      "after": "        role=\"group\"\n        aria-label={t(\"Управление глобусом\")}\n      >\n        <IconButton\n          icon={<BrandMinusIcon />}\n          surface=\"dark\"\n"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "before": "            requestGlobeControl({ type: \"zoom\", direction: \"out\" })\n          }\n        />\n        <Button\n          surface=\"dark\"\n          variant=\"text\"\n",
+      "after": "            requestGlobeControl({ type: \"zoom\", direction: \"out\" })\n          }\n        />\n        <output id=\"globe-scale-feedback\" className=\"globe-scale-feedback\" aria-label={t(\"Текущий масштаб\")}>\n          {number(globeScalePercent)}%\n        </output>\n        <IconButton\n          icon={<BrandPlusIcon />}\n          surface=\"dark\"\n          data-globe-control=\"zoom-in\"\n          aria-label={`${t(\"Увеличить масштаб глобуса\")}. ${t(\"Текущий масштаб\")} ${number(globeScalePercent)}%`}\n          aria-describedby=\"globe-scale-feedback\"\n          aria-keyshortcuts=\"+\"\n          title={t(\"Увеличить масштаб глобуса\")}\n          disabled={zoomInDisabled}\n          onClick={() =>\n            requestGlobeControl({ type: \"zoom\", direction: \"in\" })\n          }\n        />\n        <Button\n          surface=\"dark\"\n          variant=\"text\"\n"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "before": "        <Button\n          surface=\"dark\"\n          variant=\"text\"\n          data-globe-control=\"edition-info\"\n          aria-label={t(\"Источник и права текущего издания глобуса\")}\n          title={t(\"Источник и права\")}\n",
+      "after": "        <Button\n          surface=\"dark\"\n          variant=\"text\"\n          startIcon={\n            <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" strokeWidth=\"1.8\" aria-hidden=\"true\">\n              <circle cx=\"12\" cy=\"12\" r=\"8.5\" />\n              <path d=\"M12 10.5v6M12 7.5h.01\" strokeLinecap=\"round\" />\n            </svg>\n          }\n          data-globe-control=\"edition-info\"\n          aria-label={t(\"Источник и права текущего издания глобуса\")}\n          title={t(\"Источник и права\")}\n"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "before": "        >\n          <small>{t(\"Источник\")}</small>\n        </Button>\n        <span className=\"globe-navigation-label\" aria-hidden=\"true\">\n          {t(\"Интерактивный глобус · ручная навигация\")}\n        </span>\n        <output id=\"globe-scale-feedback\" className=\"globe-scale-feedback\">\n          {t(\"Масштаб\")} {number(globeScalePercent)}%\n        </output>\n      </div>\n\n      <IconButton\n        ref={editionRailToggleRef}\n",
+      "after": "        >\n          <small>{t(\"Источник\")}</small>\n        </Button>\n      </div>\n      <span className=\"globe-navigation-label\" aria-hidden=\"true\">\n        {t(\"Интерактивный глобус · ручная навигация\")}\n      </span>\n\n      <IconButton\n        ref={editionRailToggleRef}\n"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "before": "        onClick={openEditionRailFromToggle}\n      />\n\n      <div\n        className=\"globe-edition-scroll-cue is-previous\"\n        data-visible={editionRailScroll.canScrollLeft}\n",
+      "after": "        onClick={openEditionRailFromToggle}\n      />\n\n      <div className=\"globe-edition-controls\" data-visible={editionRailVisible}>\n      <div\n        className=\"globe-edition-scroll-cue is-previous\"\n        data-visible={editionRailScroll.canScrollLeft}\n"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "before": "          ))}\n        </select>\n      </label>\n\n      <span\n        className={`globe-style-status${visualStyleError ? \" is-error\" : \"\"}`}\n",
+      "after": "          ))}\n        </select>\n      </label>\n      </div>\n\n      <span\n        className={`globe-style-status${visualStyleError ? \" is-error\" : \"\"}`}\n"
+    },
+    {
+      "path": "src/styles/header-preserved.css",
+      "before": "@layer site-typography {\n/* User-preserved Header and Hero: original system fonts and inherited metrics. */\n.topline, .site-header, .mobile-nav, .magazine-hero {\n--sans: \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, \"Helvetica Neue\", Arial, sans-serif;\n--serif: Georgia, \"Times New Roman\", serif;\n--font-ui: var(--sans);\n",
+      "after": "@layer site-typography {\n/* User-preserved Header/Hero and the explicitly matching footer brand. */\n.topline, .site-header, .mobile-nav, .magazine-hero, .footer-brand > a {\n--sans: \"Segoe UI\", system-ui, -apple-system, BlinkMacSystemFont, \"Helvetica Neue\", Arial, sans-serif;\n--serif: Georgia, \"Times New Roman\", serif;\n--font-ui: var(--sans);\n"
+    },
+    {
+      "path": "src/styles/header-preserved.css",
+      "before": "font-kerning: auto;\n}\n.site-header .interface-language-control button {\n  font-size: 7px;\n  font-weight: 900;\n  transition:\n    color 160ms ease,\n    background 160ms ease,\n",
+      "after": "font-kerning: auto;\n}\n.site-header .interface-language-control button {\n  /* Historical header family from before 0a348bd4; independent of UI buttons. */\n  font-family: var(--sans);\n  font-size: 12px;\n  font-weight: 400;\n  transition:\n    color 160ms ease,\n    background 160ms ease,\n"
+    },
+    {
+      "path": "src/styles/header-preserved.css",
+      "before": "  font-size: 8px;\n  font-weight: 900;\n}\n@media (max-width: 680px) {\n.site-header .interface-language-control button {\n    font-size: 10px;\n}\n}\n}\n",
+      "after": "  font-size: 8px;\n  font-weight: 900;\n}\n/* The footer repeats the desktop masthead, including on narrow screens. */\n.footer-brand > a {\n  display: inline-flex;\n  width: max-content;\n  max-width: 100%;\n  gap: 13px;\n}\n.footer-brand > a img {\n  width: 55px;\n  height: 55px;\n  flex-shrink: 0;\n  box-shadow: 0 8px 24px rgba(22, 1, 38, 0.24);\n}\n.footer-brand > a span {\n  display: block;\n}\n.footer-brand > a strong {\n  font-family: var(--serif);\n  font-size: 23px;\n  font-weight: 500;\n  line-height: normal;\n  letter-spacing: 0.02em;\n}\n.footer-brand > a small {\n  margin-top: 3px;\n  color: rgba(255, 255, 255, 0.61);\n  font-family: var(--sans);\n  font-size: 8px;\n  font-weight: 800;\n  line-height: normal;\n  letter-spacing: 0.18em;\n  text-transform: uppercase;\n}\n@media (max-width: 680px) {\n.site-header .interface-language-control button {\n    font-size: 12px;\n}\n}\n}\n"
+    }
+  ]
+}

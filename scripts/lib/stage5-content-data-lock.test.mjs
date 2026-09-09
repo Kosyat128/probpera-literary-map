@@ -24,6 +24,44 @@ const printer = ts.createPrinter({ newLine: ts.NewLineKind.LineFeed });
 const bookshelfRefinement = JSON.parse(readFileSync(
   path.join(root, "scripts/governance/bookshelf-owner-refinement-20260905.json"), "utf8"
 ));
+const uiPolishControls = JSON.parse(readFileSync(
+  path.join(root, "scripts/governance/ui-polish-v4-controls-20260908.json"), "utf8"
+));
+const uiReadingIntegration = JSON.parse(readFileSync(
+  path.join(root, "scripts/governance/ui-polish-reading-integration-20260908.json"), "utf8"
+));
+const integratedUiProjections = uiPolishControls.projections.map((delta, index) => {
+  const overrides = uiReadingIntegration.overrides.filter(entry => entry.projectionIndex === index);
+  if (overrides.length > 1) throw new Error("Duplicate UI/reading integration context");
+  if (!overrides.length) return delta;
+  const override = overrides[0];
+  if (override.path !== delta.path || sha256(delta.before) !== override.originalBeforeSha256 ||
+    sha256(delta.after) !== override.originalAfterSha256) throw new Error("Changed historical UI/reading integration context");
+  return { ...delta, before: override.before, after: override.after };
+});
+
+// The user's V4 request changes these exact UI fragments. Project them before
+// the older owner refinements, retaining every historical immutable hash.
+function projectApprovedUiPolish(relativePath, source, deltas = integratedUiProjections) {
+  let result = source;
+  for (const delta of deltas) {
+    if (delta.path !== relativePath) continue;
+    if (result.split(delta.after).length !== 2) throw new Error(`Missing or duplicate V4 UI delta: ${relativePath}`);
+    result = result.replace(delta.after, delta.before);
+  }
+  return result;
+}
+
+function projectUiBeforeReading(relativePath, source) {
+  if (relativePath === "apps/admin/catalog-assets/interface-copy-catalog.json") {
+    return `${JSON.stringify(projectApprovedUiCatalog(JSON.parse(source)), null, 2)}\n`;
+  }
+  return projectApprovedUiPolish(relativePath, source);
+}
+
+function projectIntegratedReading(relativePath, source) {
+  return projectReviewedReadingDesign(relativePath, projectUiBeforeReading(relativePath, source));
+}
 
 function projectApprovedBookshelfRefinement(relativePath, source, deltas = bookshelfRefinement.projections) {
   let result = source;
@@ -63,7 +101,7 @@ function canonicalJson(value) {
 
 function canonicalContent(absolutePath) {
   const extension = path.extname(absolutePath).toLocaleLowerCase("en");
-  const text = projectReviewedReadingDesign(repositoryPath(absolutePath), readFileSync(absolutePath, "utf8")
+  const text = projectIntegratedReading(repositoryPath(absolutePath), readFileSync(absolutePath, "utf8")
     .replace(/^\uFEFF/u, "")
     .replace(/\r\n/gu, "\n"));
   if (extension === ".json" || extension === ".geojson") {
@@ -217,7 +255,12 @@ function sortedTranslationPairs(entries) {
 
 function projectApprovedBookshelfInterfacePairs(entries) {
   const projected = new Map(entries);
-  for (const { source, english } of bookshelfRefinement.interfaceAdditions) {
+  for (const { before, after, english } of uiPolishControls.interfaceRenames) {
+    if (projected.has(before) || projected.get(after) !== english) throw new Error("Missing or changed V4 shelf hint rename");
+    projected.delete(after);
+    projected.set(before, english);
+  }
+  for (const { source, english } of [...bookshelfRefinement.interfaceAdditions, ...uiPolishControls.interfaceAdditions]) {
     if (projected.get(source) !== english) throw new Error("Missing or changed bookshelf interface pair");
     projected.delete(source);
   }
@@ -228,9 +271,9 @@ function projectApprovedBookshelfInterfacePairs(entries) {
   return pairs;
 }
 
-function projectApprovedBookshelfInterfaceCatalog(catalog) {
+function projectApprovedUiCatalog(catalog) {
   const allowedKeys = new Set();
-  for (const { source, english } of bookshelfRefinement.interfaceAdditions) {
+  for (const { source, english } of uiPolishControls.interfaceAdditions) {
     const key = `interface.${source}`;
     const expected = { key, group: "Весь интерфейс", label: source, defaultRu: source, defaultEn: english, multiline: false };
     const found = catalog.filter(entry => entry.key === key);
@@ -239,7 +282,41 @@ function projectApprovedBookshelfInterfaceCatalog(catalog) {
     }
     allowedKeys.add(key);
   }
-  const projected = catalog.filter(entry => !allowedKeys.has(entry.key));
+  let projected = catalog.filter(entry => !allowedKeys.has(entry.key));
+  for (const { before, after, english } of uiPolishControls.interfaceRenames) {
+    const currentKey = `interface.${after}`;
+    const previousKey = `interface.${before}`;
+    const found = projected.filter(entry => entry.key === currentKey);
+    const expected = { key: currentKey, group: "Весь интерфейс", label: after, defaultRu: after, defaultEn: english, multiline: false };
+    if (projected.some(entry => entry.key === previousKey) || found.length !== 1 || canonicalJsonSha256(found[0]) !== canonicalJsonSha256(expected)) {
+      throw new Error("Missing, duplicate or changed V4 shelf hint catalog rename");
+    }
+    projected = projected.map(entry => entry.key === currentKey ? { ...entry, key: previousKey, label: before, defaultRu: before } : entry);
+  }
+  return projected;
+}
+
+function projectApprovedBookshelfInterfaceCatalog(catalog) {
+  // Remove only the exact V4 entries first so the immutable reading manifest
+  // sees its reviewed neighboring records, including the five older shelf keys.
+  const uiBaseline = projectApprovedUiCatalog(catalog);
+  const allowedKeys = new Set();
+  // Validate those context keys before the reading projection needs them; a
+  // missing, duplicate or changed shelf entry retains its exact owner error.
+  for (const { source, english } of bookshelfRefinement.interfaceAdditions) {
+    const key = `interface.${source}`;
+    const expected = { key, group: "Весь интерфейс", label: source, defaultRu: source, defaultEn: english, multiline: false };
+    const found = uiBaseline.filter(entry => entry.key === key);
+    if (found.length !== 1 || canonicalJsonSha256(found[0]) !== canonicalJsonSha256(expected)) {
+      throw new Error("Missing, duplicate or changed bookshelf interface catalog entry");
+    }
+    allowedKeys.add(key);
+  }
+  const readingBaseline = JSON.parse(projectReviewedReadingDesign(
+    "apps/admin/catalog-assets/interface-copy-catalog.json",
+    `${JSON.stringify(uiBaseline, null, 2)}\n`
+  ));
+  const projected = readingBaseline.filter(entry => !allowedKeys.has(entry.key));
   const historical = stage5FinalInterfaceCopyAttestation.catalog;
   if (projected.length !== historical.entries || jsonSha256(projected.map(({ key }) => key)) !== historical.keysSha256 ||
     canonicalJsonSha256(projected) !== historical.contentSha256) throw new Error("Unreviewed catalog change outside bookshelf additions");
@@ -354,13 +431,13 @@ function readStage5D1I18nFixture() {
 
 function readInterfaceCopyCatalog() {
   const catalog = JSON.parse(
-    projectReviewedReadingDesign("apps/admin/catalog-assets/interface-copy-catalog.json", readFileSync(
+    readFileSync(
       path.join(
         root,
         "apps/admin/catalog-assets/interface-copy-catalog.json"
       ),
       "utf8"
-    ))
+    )
   );
   if (!Array.isArray(catalog)) {
     throw new Error("interface-copy catalog must remain an array");
@@ -383,6 +460,38 @@ function exactClassTokenPattern(classToken) {
   return new RegExp(`(^|[^\\w-])\\.${escaped}(?![\\w-])`, "u");
 }
 
+// The owner-requested button placement fix retains the existing compact group
+// through 1600px. Reverse only this exact reviewed block for historical hashes.
+const approvedHeaderCompactBefore = [
+  "@media (max-width: 1520px) {",
+  "  .global-search-trigger {",
+  "    width: 38px;",
+  "    justify-content: center;",
+  "    padding: 0;",
+  "  }",
+  "",
+  "  .global-search-trigger small,",
+  "  .global-search-trigger kbd {",
+  "    display: none;",
+  "  }",
+  "",
+  "  .header-actions .header-socials {",
+  "    display: none;",
+  "  }",
+  "}",
+].join("\n");
+const approvedHeaderCompactAfter =
+  "/* Keep fallback-font navigation clear before restoring the full action group. */\n" +
+  approvedHeaderCompactBefore.replace("max-width: 1520px", "max-width: 1600px");
+
+function projectApprovedHeaderCompact(relativePath, source) {
+  if (relativePath !== "src/index.css") return source;
+  if (source.split(approvedHeaderCompactAfter).length !== 2) {
+    throw new Error("Missing, duplicate or changed reviewed header compact delta");
+  }
+  return source.replace(approvedHeaderCompactAfter, approvedHeaderCompactBefore);
+}
+
 function ownerCssFingerprint() {
   // The historical registry omitted the Articles trigger despite protecting
   // its Sections counterpart; freeze both while excluding popup contents.
@@ -391,7 +500,8 @@ function ownerCssFingerprint() {
   );
   const patterns = classTokens.map(exactClassTokenPattern);
   const preservedRules = parseCss(
-    projectReviewedReadingDesign("src/styles/header-preserved.css", readFileSync(path.join(root, "src/styles/header-preserved.css"), "utf8"))
+    projectIntegratedReading("src/styles/header-preserved.css",
+      readFileSync(path.join(root, "src/styles/header-preserved.css"), "utf8").replace(/\r\n/gu, "\n"))
       .replace(/\/\*[\s\S]*?\*\//gu, ""),
     "src/styles/header-preserved.css"
   );
@@ -405,7 +515,8 @@ function ownerCssFingerprint() {
     )).toBe(true);
   }
   const rules = parseCss(
-    projectReviewedReadingDesign("src/index.css", readFileSync(path.join(root, "src/index.css"), "utf8")),
+    projectReviewedReadingDesign("src/index.css", projectApprovedHeaderCompact("src/index.css",
+      readFileSync(path.join(root, "src/index.css"), "utf8").replace(/\r\n?/gu, "\n"))),
     "src/index.css"
   )
     .filter((rule) => patterns.some((pattern) => pattern.test(rule.selector)))
@@ -529,7 +640,8 @@ describe("Stage 5 owner and production-pipeline governance locks", () => {
       "apps/admin/catalog-assets/interface-copy-catalog.json",
     ]);
     for (const delta of readingDesignAttestation.projections) {
-      const source = readFileSync(path.join(root, delta.path), "utf8").replace(/\r\n?/gu, "\n");
+      const source = projectUiBeforeReading(delta.path,
+        readFileSync(path.join(root, delta.path), "utf8").replace(/\r\n?/gu, "\n"));
       expect(() => projectReviewedReadingDesign(delta.path, source.replace(delta.after, delta.before))).toThrow("Missing or duplicate reviewed reading-design delta");
       expect(() => projectReviewedReadingDesign(delta.path, source + delta.after)).toThrow("Missing or duplicate reviewed reading-design delta");
       const unreviewed = "\n/* Unreviewed change must remain fingerprinted. */\n";
@@ -559,6 +671,88 @@ describe("Stage 5 owner and production-pipeline governance locks", () => {
     expect(stepPosition).toBeLessThan(source.indexOf("- name: Configure GitHub Pages"));
   });
 
+  it("bounds the explicitly requested V4 control/background fragments without refreshing immutable hashes", () => {
+    expect(uiPolishControls.id).toBe("OWNER-UI-POLISH-V4-CONTROLS-20260908");
+    expect(uiPolishControls.sourceBaselineSha).toBe("f6ec0cbdb48b8e9877c766b3cdb8cdafb4b76316");
+    expect(uiPolishControls.allowedPaths).toEqual([
+      "src/atlas/atlasExperienceState.ts",
+      "src/components/AtlasExperienceChrome.tsx",
+      "src/components/AtlasSearchCombobox.tsx",
+      "src/components/BookArchiveSection.tsx",
+      "src/components/BookShelfControls.tsx",
+      "src/components/LiteraryGlobe.tsx",
+      "src/styles/header-preserved.css",
+    ]);
+    expect([...new Set(uiPolishControls.projections.map(delta => delta.path))]).toEqual(uiPolishControls.allowedPaths);
+    expect(uiPolishControls.projections).toHaveLength(38);
+    for (const relativePath of uiPolishControls.allowedPaths) {
+      const source = readFileSync(path.join(root, relativePath), "utf8").replace(/\r\n/gu, "\n");
+      const projected = projectIntegratedReading(relativePath, source);
+      expect(createHash("sha256").update(projected).digest("hex")).toBe(uiPolishControls.sourceBaselines[relativePath]);
+      expect(projectIntegratedReading(relativePath, source + "\n")).toBe(projected + "\n");
+      for (const delta of integratedUiProjections.filter(delta => delta.path === relativePath)) {
+        expect(delta.before).not.toBe(delta.after);
+        expect(() => projectApprovedUiPolish(relativePath, source + delta.after)).toThrow("Missing or duplicate V4 UI delta");
+        expect(() => projectApprovedUiPolish(relativePath, source.replace(delta.after, ""))).toThrow("Missing or duplicate V4 UI delta");
+        expect(() => projectApprovedUiPolish(relativePath, source.replace(delta.after, delta.after.replace(/\S/u, "?")))).toThrow("Missing or duplicate V4 UI delta");
+      }
+    }
+    expect(projectApprovedUiPolish("src/components/GlobeCameraRig.tsx", "protected camera")).toBe("protected camera");
+    expect(projectApprovedUiPolish("src/data/bookArchive.ts", "protected books")).toBe("protected books");
+  });
+
+  it("integrates only two Header contexts while preserving both exact owner manifests", () => {
+    expect(jsonSha256(uiReadingIntegration)).toBe("895f4c6115f8f11f8933c8fe39cf914c251d12f7e28b78ee5d6a0aef98de3d86");
+    expect(uiReadingIntegration).toMatchObject({
+      schemaVersion: 1,
+      id: "UI-POLISH-READING-MAIN-INTEGRATION-20260908",
+      mainSha: "5d3f6fb6",
+      uiCheckpointSha: "88a0830a",
+      uiAttestationSha256: "8f8313646f36009e7aad07ed7b159201236f78a727188c984105f37cb8c61332",
+      readingAttestationSha256: "48a8b26d60093d8123a102c4f5affad746981428b408afe86b048e252ce314d2",
+    });
+    expect(jsonSha256(uiPolishControls)).toBe(uiReadingIntegration.uiAttestationSha256);
+    expect(jsonSha256(readingDesignAttestation)).toBe(uiReadingIntegration.readingAttestationSha256);
+    expect(uiReadingIntegration.overrides.map(({ projectionIndex, path: relativePath }) =>
+      [projectionIndex, relativePath])).toEqual([
+      [36, "src/styles/header-preserved.css"],
+      [37, "src/styles/header-preserved.css"],
+    ]);
+    expect(integratedUiProjections.slice(0, 36)).toEqual(uiPolishControls.projections.slice(0, 36));
+  });
+
+  it("projects only the three V4 article-reader translations with matching catalog entries", () => {
+    expect(uiPolishControls.interfaceAdditions).toEqual([
+      { source: "Страницы статьи", english: "Article pages" },
+      { source: "Перелистывание статьи", english: "Article pagination" },
+      { source: "Страница {page} из {total}", english: "Page {page} of {total}" },
+    ]);
+    expect(uiPolishControls.interfaceRenames).toEqual([{
+      before: "Нажмите на корешок - книга выйдет вперёд, а справа откроются описание и сведения.",
+      after: "Нажмите на корешок - книга выйдет вперёд, и откроются описание и сведения.",
+      english: "Select a spine to bring the book forward and open its description and details.",
+    }]);
+    const { entries } = readEnglishInterfaceText();
+    const { catalog } = readInterfaceCopyCatalog();
+    for (const { before, after, english } of uiPolishControls.interfaceRenames) {
+      expect(() => projectApprovedBookshelfInterfacePairs(new Map([...entries, [after, "unreviewed hint"]]))).toThrow("Missing or changed V4 shelf hint rename");
+      expect(() => projectApprovedBookshelfInterfacePairs(new Map([...entries, [before, english]]))).toThrow("Missing or changed V4 shelf hint rename");
+      const renamed = catalog.find(entry => entry.key === `interface.${after}`);
+      expect(() => projectApprovedBookshelfInterfaceCatalog([...catalog, renamed])).toThrow("Missing, duplicate or changed V4 shelf hint catalog rename");
+      expect(() => projectApprovedBookshelfInterfaceCatalog(catalog.map(entry => entry === renamed ? { ...entry, defaultEn: "unreviewed hint" } : entry))).toThrow("Missing, duplicate or changed V4 shelf hint catalog rename");
+    }
+    for (const { source } of uiPolishControls.interfaceAdditions) {
+      const missing = new Map(entries);
+      missing.delete(source);
+      expect(() => projectApprovedBookshelfInterfacePairs(missing)).toThrow("Missing or changed bookshelf interface pair");
+      expect(() => projectApprovedBookshelfInterfacePairs(new Map([...entries, [source, "unreviewed translation"]]))).toThrow("Missing or changed bookshelf interface pair");
+      const key = `interface.${source}`;
+      expect(() => projectApprovedBookshelfInterfaceCatalog(catalog.filter(entry => entry.key !== key))).toThrow("Missing, duplicate or changed bookshelf interface catalog entry");
+      expect(() => projectApprovedBookshelfInterfaceCatalog([...catalog, catalog.find(entry => entry.key === key)])).toThrow("Missing, duplicate or changed bookshelf interface catalog entry");
+      expect(() => projectApprovedBookshelfInterfaceCatalog(catalog.map(entry => entry.key === key ? { ...entry, defaultEn: "unreviewed translation" } : entry))).toThrow("Missing, duplicate or changed bookshelf interface catalog entry");
+    }
+  });
+
   it("bounds the owner-requested bookshelf UI and private progress refinement", () => {
     expect(bookshelfRefinement.sourceMainSha).toBe("0a348bd4202e3fa1558d88183549f7576a361c4b");
     expect([...new Set(bookshelfRefinement.projections.map(delta => delta.path))]).toEqual([
@@ -566,7 +760,8 @@ describe("Stage 5 owner and production-pipeline governance locks", () => {
     ]);
     expect(bookshelfRefinement.ownerReferenceSha256).toBe("5330fd14a4c180700a8c7e82db161542aba7c09f3973ccdfe46d0cf17e907ffb");
     for (const relativePath of new Set(bookshelfRefinement.projections.map(delta => delta.path))) {
-      const source = readFileSync(path.join(root, relativePath), "utf8").replace(/\r\n/gu, "\n");
+      const source = projectApprovedUiPolish(relativePath,
+        readFileSync(path.join(root, relativePath), "utf8").replace(/\r\n/gu, "\n"));
       const projected = projectApprovedBookshelfRefinement(relativePath, source);
       expect(projectApprovedBookshelfRefinement(relativePath, source + "\n")).toBe(projected + "\n");
       const deltas = bookshelfRefinement.projections.filter(entry => entry.path === relativePath);
@@ -774,7 +969,8 @@ describe("Stage 5 owner and production-pipeline governance locks", () => {
       attestation.interfaceLanguage.codeOutsideInitializerSha256
     );
     for (const [source, english] of sortedApprovedPairs) {
-      expect(interfaceState.entries.get(source)).toBe(english);
+      const renamed = uiPolishControls.interfaceRenames.find(entry => entry.before === source);
+      expect(interfaceState.entries.get(renamed?.after ?? source)).toBe(english);
     }
     const finalPairs = projectApprovedBookshelfInterfacePairs(interfaceState.entries);
     expect(finalPairs).toHaveLength(
@@ -891,6 +1087,24 @@ describe("Stage 5 owner and production-pipeline governance locks", () => {
       files: 9,
       sha256: "5f9a3fc115e4022b6a128cb592191b8e0a3c317e55e383e5b95651d45f97e383",
     });
+  });
+
+  it("projects only the reviewed header compact breakpoint while retaining every declaration", () => {
+    const source = readFileSync(path.join(root, "src/index.css"), "utf8").replace(/\r\n?/gu, "\n");
+    const projected = projectApprovedHeaderCompact("src/index.css", source);
+    expect(projected).toBe(source.replace(approvedHeaderCompactAfter, approvedHeaderCompactBefore));
+    for (const invalid of [
+      source.replace(approvedHeaderCompactAfter, ""),
+      source + approvedHeaderCompactAfter,
+      source.replace(approvedHeaderCompactAfter, approvedHeaderCompactAfter.replace("1600px", "1601px")),
+      source.replace(approvedHeaderCompactAfter, approvedHeaderCompactAfter.replace("38px", "39px")),
+    ]) {
+      expect(() => projectApprovedHeaderCompact("src/index.css", invalid))
+        .toThrow("Missing, duplicate or changed reviewed header compact delta");
+    }
+    const unrelated = "\n.site-header { padding: 1px; }\n";
+    expect(projectApprovedHeaderCompact("src/index.css", source + unrelated)).toBe(projected + unrelated);
+    expect(projectApprovedHeaderCompact("src/styles/header-preserved.css", source)).toBe(source);
   });
 
   it("keeps Header/Hero owner CSS rules unchanged", () => {

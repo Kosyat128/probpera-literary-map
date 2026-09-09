@@ -85,7 +85,7 @@ describe("AtlasSearchCombobox", () => {
     expect(markup).not.toContain('role="listbox"');
   });
 
-  it("keeps Escape priority, active scrolling, and pointer-safe selection in source", () => {
+  it("keeps Escape priority and pointer-safe selection in source", () => {
     const source = readFileSync(
       new URL("./AtlasSearchCombobox.tsx", import.meta.url),
       "utf8"
@@ -94,7 +94,7 @@ describe("AtlasSearchCombobox", () => {
     expect(source).toContain('event.key === "Escape"');
     expect(source).toContain("event.stopPropagation()");
     expect(source).toContain("onEscapeWhenClosed");
-    expect(source).toContain('scrollIntoView({ block: "nearest" })');
+    // Actual listbox scrolling and a stationary viewport are covered by R05 E2E.
     expect(source).toContain("onPointerEnter={() => activate(index)}");
     expect(source).toContain('event.pointerType === "mouse"');
   });

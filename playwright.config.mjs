@@ -18,6 +18,7 @@ const suite = process.env.PLAYWRIGHT_SUITE;
 const premiumGlobeSpec = "**/premium-globe-exploration.spec.mjs";
 // Homepage navigation and layout checks also activate the real globe while scrolling.
 const webglRegressionSpecs = [
+  "**/article-book-pagination.spec.mjs",
   "**/archive-search-calendar.spec.mjs",
   "**/calendar-design-quality.spec.mjs",
   "**/article-book-reading.spec.mjs",
@@ -30,6 +31,7 @@ const webglRegressionSpecs = [
   "**/navigation-layout.spec.mjs",
   "**/public-doc-refinements.spec.mjs",
   "**/public-smoke.spec.mjs",
+  "**/reader-extended-accessibility.spec.mjs",
   "**/responsive-reader-globe.spec.mjs",
   "**/stage5-baseline.spec.mjs",
   "**/stage5b-art-direction.spec.mjs",
@@ -38,6 +40,8 @@ const webglRegressionSpecs = [
   // Its real Canvas must share the serial GPU lane with the other WebGL checks.
   "**/typography-and-card-geometry.spec.mjs",
   "**/ui-foundation.spec.mjs",
+  "**/ui-polish-backgrounds.spec.mjs",
+  "**/ui-polish-controls.spec.mjs",
 ];
 
 function suiteSelectionFor(name) {

@@ -16,10 +16,10 @@ const compactText = value => value.replace(/\s/gu, "");
 const textDigest = value => createHash("sha256").update(compactText(value)).digest("hex");
 const imageManifest = JSON.parse(readFileSync(new URL("../../src/data/imageDelivery.generated.json", import.meta.url), "utf8"));
 
-function deliveredCoverUrl(articleUrl) {
+function deliveredImageUrl(articleUrl, imageSource = source.imageUrl) {
   const articlePath = new URL(source.url).pathname;
   const basePath = new URL(articleUrl).pathname.slice(0, -articlePath.length) + "/";
-  return createImageDeliveryResolver(imageManifest, basePath).url(source.imageUrl, 1280);
+  return createImageDeliveryResolver(imageManifest, basePath).url(imageSource, 1280);
 }
 
 async function fixtureArticleUrl(request, baseURL, article = source) {
@@ -285,11 +285,13 @@ async function assertGeometry(page, book, widths) {
   }
 }
 
-fixtureTest("illustrated book preserves every page, renders illustrations and supports accessible navigation", async ({ page, request, baseURL, isMobile }, testInfo) => {
-  test.setTimeout(180_000);
-  await installEnvironment(page);
-  const url = await fixtureArticleUrl(request, baseURL);
-  for (const locale of ["ru", "en"]) {
+// Each locale owns a complete navigation/content contract and its original budget.
+// Combining both accumulated more than 180s on the CI software GPU.
+for (const locale of ["ru", "en"]) {
+  fixtureTest(`illustrated book preserves every page, renders illustrations and supports accessible navigation (${locale})`, async ({ page, request, baseURL, isMobile }, testInfo) => {
+    test.setTimeout(180_000);
+    await installEnvironment(page);
+    const url = await fixtureArticleUrl(request, baseURL);
     await page.unrouteAll({ behavior: "wait" });
     const content = await prepare(page, locale);
     await page.setViewportSize({ width: isMobile ? 390 : 1440, height: 1000 });
@@ -300,7 +302,7 @@ fixtureTest("illustrated book preserves every page, renders illustrations and su
     await expectPage(book, 0);
     const backdrop = book.locator("[data-article-book-backdrop]");
     await expect(backdrop).toBeVisible();
-    expect(await backdrop.evaluate(element => getComputedStyle(element).backgroundImage)).toContain(deliveredCoverUrl(url));
+    expect(await backdrop.evaluate(element => getComputedStyle(element).backgroundImage)).toContain(deliveredImageUrl(url));
     const count = Number(await book.getAttribute("data-page-count"));
     expect(count).toBeGreaterThan(3);
     const next = book.getByRole("button", { name: locale === "en" ? "Next page" : "Следующая страница", exact: true });
@@ -336,7 +338,7 @@ fixtureTest("illustrated book preserves every page, renders illustrations and su
       await expect(current).toBeVisible();
       pageTexts.push(await current.textContent());
       for (const src of [portrait, cover]) {
-        const image = current.locator(`img[src="${src}"]`);
+        const image = current.locator(`img[src="${deliveredImageUrl(url, src)}"]`);
         if (await image.count()) {
           await image.scrollIntoViewIfNeeded();
           await expect(image).toBeVisible();
@@ -371,8 +373,8 @@ fixtureTest("illustrated book preserves every page, renders illustrations and su
     await page.emulateMedia({ reducedMotion: "no-preference" });
     await next.click();
     await expectPage(book, imagePages.get(portrait) + 1);
-  }
-});
+  });
+}
 
 fixtureTest("a delayed illustration fills the existing book without blocking reading or resetting its page", async ({ page, request, baseURL, isMobile }, testInfo) => {
   test.setTimeout(60_000);
@@ -426,7 +428,7 @@ fixtureTest("a delayed illustration fills the existing book without blocking rea
   for (let index = 1; index < count; index++) {
     await book.locator("select").selectOption(String(index));
     await expectPage(book, index);
-    if (await book.locator(`[data-article-book-page] img[src="${portrait}"]`).count()) {
+    if (await book.locator(`[data-article-book-page] img[src="${deliveredImageUrl(url, portrait)}"]`).count()) {
       illustrationPage = index;
       break;
     }
@@ -512,7 +514,7 @@ fixtureTest("WebGL failure retains the complete illustrated article and responsi
     await expect.poll(() => fallback.evaluate(element => parseFloat(getComputedStyle(element).fontSize))).toBe(initialFontSize);
     const title = locale === "en" ? source.translations.en.title : source.title;
     await expect(fallback.getByRole("heading", { name: title, level: 1, exact: true })).toBeVisible();
-    await expect(fallback.locator(`img[src="${deliveredCoverUrl(url)}"]`)).toBeVisible();
+    await expect(fallback.locator(`img[src="${deliveredImageUrl(url)}"]`)).toBeVisible();
     for (const passage of [content.first, content.middle, content.last]) await expect(fallback).toContainText(passage);
     const expectedText = await page.evaluate(html => new DOMParser().parseFromString(html, "text/html").body.textContent, content.html);
     expect(compactText(await fallback.textContent())).toBe(compactText(title + expectedText));
@@ -523,7 +525,9 @@ fixtureTest("WebGL failure retains the complete illustrated article and responsi
       await expect.poll(() => image.evaluate(element => element.complete && element.naturalWidth > 0)).toBe(true);
     }
     await assertGeometry(page, book, isMobile ? [390, 320] : [1440, 390, 320]);
-    await page.locator(".article-reader-scroll").evaluate(element => element.scrollTo({ top: element.scrollHeight, behavior: "instant" }));
+    await book.focus();
+    await expect(book).toBeFocused();
+    await page.keyboard.press("End");
     await expect.poll(() => page.evaluate(id => JSON.parse(localStorage.getItem("probpera-reading-progress") || "{}")[`article:${id}`]?.progress || 0, source.id)).toBeGreaterThanOrEqual(96);
     await expect.poll(() => page.locator(".article-reader-scroll").evaluate(element => element.scrollHeight - element.clientHeight - element.scrollTop)).toBeLessThanOrEqual(2);
   }

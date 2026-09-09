@@ -1,0 +1,202 @@
+{
+  "date": "2026-09-08T10:50:02.249Z",
+  "sourceSha256": "39324a8c1698df015cb3beaf8244d727d803aaa4ed65242e00610cfb9794ca9e",
+  "records": [
+    {
+      "path": "browser-normal-final.json",
+      "stats": {
+        "startTime": "2026-09-08T10:39:27.121Z",
+        "duration": 16650.192,
+        "expected": 2,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "tests": [
+        {
+          "title": "Nobel layer keeps selection and its explicit article action separate",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 6674,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "title": "Nobel layer keeps selection and its explicit article action separate",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 7248,
+              "retry": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "browser-discovery-normal.json",
+      "stats": {
+        "startTime": "2026-09-08T10:48:41.475Z",
+        "duration": 48030.895,
+        "expected": 6,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "tests": [
+        {
+          "title": "atlas controls wrap without overlap and discovery panels stay exclusive",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 4970,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "title": "rich collection count and archive navigation stay consistent",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 7018,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "title": "immersive archive Escape closes its popover before the filter panel",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 8775,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "title": "atlas controls wrap without overlap and discovery panels stay exclusive",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 7455,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "title": "rich collection count and archive navigation stay consistent",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 7507,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "title": "immersive archive Escape closes its popover before the filter panel",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 8027,
+              "retry": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "browser-software-nobel.json",
+      "stats": {
+        "startTime": "2026-09-08T10:45:17.171Z",
+        "duration": 69800.557,
+        "expected": 2,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "tests": [
+        {
+          "title": "Nobel layer keeps selection and its explicit article action separate",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 22997,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "title": "Nobel layer keeps selection and its explicit article action separate",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 31627,
+              "retry": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "browser-software-writer.json",
+      "stats": {
+        "startTime": "2026-09-08T10:46:52.617Z",
+        "duration": 90476.27100000001,
+        "expected": 2,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "tests": [
+        {
+          "title": "writer selection stays still until explicit Show on globe",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 27690,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "title": "writer selection stays still until explicit Show on globe",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 47074,
+              "retry": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

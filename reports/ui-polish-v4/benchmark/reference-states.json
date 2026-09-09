@@ -1,0 +1,591 @@
+[
+  {
+    "slug": "emergence-reading",
+    "url": "https://emergencemagazine.org/essay/a-seasonal-practice-of-fermentation/",
+    "accessedAt": "2026-09-08T01:54:12.870Z",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "httpStatus": 200,
+    "screenshot": "emergence-reading-1440.png",
+    "data": {
+      "scrollY": 1017,
+      "pageWidth": 1440,
+      "viewportWidth": 1440,
+      "visibleControls": [
+        {
+          "tag": "BUTTON",
+          "text": "Stories",
+          "type": "button"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Play",
+          "type": "button"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Contributor Bios",
+          "type": "button"
+        },
+        {
+          "tag": "INPUT",
+          "text": "Enter Your Email Address",
+          "type": "email"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Submit",
+          "type": "submit"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Close",
+          "type": "button"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Rewind",
+          "type": "button"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Toggle play",
+          "type": "button"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Forward",
+          "type": "button"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "type": "radio"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "type": "radio"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "type": "radio"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "type": "radio"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Submit",
+          "type": "submit"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "type": "text"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "type": "checkbox"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "type": "checkbox"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "type": "checkbox"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "type": "checkbox"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "type": "checkbox"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "type": "checkbox"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "type": "checkbox"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "type": "checkbox"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "type": "checkbox"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "type": "checkbox"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "type": "checkbox"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "type": "email"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "",
+          "type": "submit"
+        }
+      ],
+      "fontFaces": [
+        {
+          "family": "swiper-icons",
+          "status": "unloaded"
+        },
+        {
+          "family": "GT America",
+          "status": "unloaded"
+        },
+        {
+          "family": "GT America",
+          "status": "unloaded"
+        },
+        {
+          "family": "GT America",
+          "status": "loaded"
+        },
+        {
+          "family": "GT America",
+          "status": "loaded"
+        },
+        {
+          "family": "GT America",
+          "status": "loaded"
+        },
+        {
+          "family": "GT America",
+          "status": "loaded"
+        },
+        {
+          "family": "GT America Mono",
+          "status": "unloaded"
+        },
+        {
+          "family": "Courier Prime Sans",
+          "status": "loaded"
+        },
+        {
+          "family": "Bradford",
+          "status": "unloaded"
+        },
+        {
+          "family": "Bradford",
+          "status": "unloaded"
+        },
+        {
+          "family": "Bradford",
+          "status": "unloaded"
+        },
+        {
+          "family": "Bradford",
+          "status": "loaded"
+        },
+        {
+          "family": "Bradford",
+          "status": "loaded"
+        },
+        {
+          "family": "Bradford",
+          "status": "loaded"
+        },
+        {
+          "family": "Bradford",
+          "status": "unloaded"
+        },
+        {
+          "family": "Bradford",
+          "status": "unloaded"
+        },
+        {
+          "family": "Bradford",
+          "status": "unloaded"
+        },
+        {
+          "family": "BradfordMono",
+          "status": "unloaded"
+        },
+        {
+          "family": "WindsorD-Bol",
+          "status": "loaded"
+        },
+        {
+          "family": "Pica",
+          "status": "unloaded"
+        },
+        {
+          "family": "Pica",
+          "status": "unloaded"
+        },
+        {
+          "family": "Century Schoolbook BT",
+          "status": "unloaded"
+        },
+        {
+          "family": "KTF Rublena",
+          "status": "unloaded"
+        },
+        {
+          "family": "TRJN Da Vinci",
+          "status": "unloaded"
+        },
+        {
+          "family": "TimesNRSeven",
+          "status": "unloaded"
+        },
+        {
+          "family": "TimesNRSeven",
+          "status": "unloaded"
+        },
+        {
+          "family": "TimesLTStd-Semibold",
+          "status": "unloaded"
+        },
+        {
+          "family": "Elementa",
+          "status": "unloaded"
+        }
+      ],
+      "images": []
+    },
+    "status": "captured_requires_visual_review"
+  },
+  {
+    "slug": "pudding-transition",
+    "url": "https://pudding.cool/2026/05/similes/",
+    "accessedAt": "2026-09-08T01:54:24.101Z",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "httpStatus": 200,
+    "screenshot": "pudding-transition-1440.png",
+    "data": {
+      "scrollY": 2909,
+      "pageWidth": 1440,
+      "viewportWidth": 1440,
+      "visibleControls": [],
+      "fontFaces": [
+        {
+          "family": "Atlas Grotesk",
+          "status": "loaded"
+        },
+        {
+          "family": "Atlas Grotesk",
+          "status": "loaded"
+        },
+        {
+          "family": "Tiempos Text",
+          "status": "loaded"
+        },
+        {
+          "family": "Tiempos Text",
+          "status": "loaded"
+        }
+      ],
+      "images": [
+        {
+          "alt": "Illustration of Shakespeare, stacking blocks with words to form the quote “To be or not to be, that is the question.”",
+          "complete": true,
+          "naturalWidth": 2000
+        }
+      ]
+    },
+    "chartScreenshot": "pudding-chart-1440.png",
+    "status": "captured_requires_visual_review"
+  },
+  {
+    "slug": "emergence-reading",
+    "url": "https://emergencemagazine.org/essay/a-seasonal-practice-of-fermentation/",
+    "accessedAt": "2026-09-08T01:54:35.148Z",
+    "viewport": {
+      "width": 390,
+      "height": 1000
+    },
+    "httpStatus": 200,
+    "screenshot": "emergence-reading-390.png",
+    "data": {
+      "scrollY": 1652,
+      "pageWidth": 390,
+      "viewportWidth": 390,
+      "visibleControls": [
+        {
+          "tag": "BUTTON",
+          "text": "",
+          "type": "button"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Play",
+          "type": "button"
+        },
+        {
+          "tag": "INPUT",
+          "text": "Enter Your Email Address",
+          "type": "email"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Submit",
+          "type": "submit"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Close",
+          "type": "button"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Toggle play",
+          "type": "button"
+        },
+        {
+          "tag": "INPUT",
+          "text": "Seek",
+          "type": "range"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "type": "radio"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "type": "radio"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "type": "radio"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "type": "radio"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Submit",
+          "type": "submit"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "type": "text"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "type": "checkbox"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "type": "checkbox"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "type": "checkbox"
+        },
+        {
+          "tag": "INPUT",
+          "text": "",
+          "type": "checkbox"
+        }
+      ],
+      "fontFaces": [
+        {
+          "family": "swiper-icons",
+          "status": "unloaded"
+        },
+        {
+          "family": "GT America",
+          "status": "unloaded"
+        },
+        {
+          "family": "GT America",
+          "status": "unloaded"
+        },
+        {
+          "family": "GT America",
+          "status": "loaded"
+        },
+        {
+          "family": "GT America",
+          "status": "loaded"
+        },
+        {
+          "family": "GT America",
+          "status": "loaded"
+        },
+        {
+          "family": "GT America",
+          "status": "loaded"
+        },
+        {
+          "family": "GT America Mono",
+          "status": "unloaded"
+        },
+        {
+          "family": "Courier Prime Sans",
+          "status": "loaded"
+        },
+        {
+          "family": "Bradford",
+          "status": "unloaded"
+        },
+        {
+          "family": "Bradford",
+          "status": "unloaded"
+        },
+        {
+          "family": "Bradford",
+          "status": "unloaded"
+        },
+        {
+          "family": "Bradford",
+          "status": "loaded"
+        },
+        {
+          "family": "Bradford",
+          "status": "loaded"
+        },
+        {
+          "family": "Bradford",
+          "status": "loaded"
+        },
+        {
+          "family": "Bradford",
+          "status": "unloaded"
+        },
+        {
+          "family": "Bradford",
+          "status": "unloaded"
+        },
+        {
+          "family": "Bradford",
+          "status": "unloaded"
+        },
+        {
+          "family": "BradfordMono",
+          "status": "unloaded"
+        },
+        {
+          "family": "WindsorD-Bol",
+          "status": "loaded"
+        },
+        {
+          "family": "Pica",
+          "status": "unloaded"
+        },
+        {
+          "family": "Pica",
+          "status": "unloaded"
+        },
+        {
+          "family": "Century Schoolbook BT",
+          "status": "unloaded"
+        },
+        {
+          "family": "KTF Rublena",
+          "status": "unloaded"
+        },
+        {
+          "family": "TRJN Da Vinci",
+          "status": "unloaded"
+        },
+        {
+          "family": "TimesNRSeven",
+          "status": "unloaded"
+        },
+        {
+          "family": "TimesNRSeven",
+          "status": "unloaded"
+        },
+        {
+          "family": "TimesLTStd-Semibold",
+          "status": "unloaded"
+        },
+        {
+          "family": "Elementa",
+          "status": "unloaded"
+        }
+      ],
+      "images": []
+    },
+    "status": "captured_requires_visual_review"
+  },
+  {
+    "slug": "pudding-transition",
+    "url": "https://pudding.cool/2026/05/similes/",
+    "accessedAt": "2026-09-08T01:54:45.968Z",
+    "viewport": {
+      "width": 390,
+      "height": 1000
+    },
+    "httpStatus": 200,
+    "screenshot": "pudding-transition-390.png",
+    "data": {
+      "scrollY": 2505,
+      "pageWidth": 390,
+      "viewportWidth": 390,
+      "visibleControls": [],
+      "fontFaces": [
+        {
+          "family": "Atlas Grotesk",
+          "status": "loaded"
+        },
+        {
+          "family": "Atlas Grotesk",
+          "status": "loaded"
+        },
+        {
+          "family": "Tiempos Text",
+          "status": "loaded"
+        },
+        {
+          "family": "Tiempos Text",
+          "status": "loaded"
+        }
+      ],
+      "images": [
+        {
+          "alt": "Illustration of Shakespeare, stacking blocks with words to form the quote “To be or not to be, that is the question.”",
+          "complete": true,
+          "naturalWidth": 2000
+        }
+      ]
+    },
+    "chartScreenshot": "pudding-chart-390.png",
+    "status": "captured_requires_visual_review"
+  }
+]

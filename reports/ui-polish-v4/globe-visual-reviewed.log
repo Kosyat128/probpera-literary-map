@@ -1,0 +1,20 @@
+
+Running 2 tests using 1 worker
+
+
+
+(node:2396) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[1/2] [desktop-chromium] › tests\e2e\globe-visual-regression.spec.mjs:119:3 › globe visual regression › keeps premium chrome and country cards aligned at desktop and mobile sizes
+[desktop-chromium] › tests\e2e\globe-visual-regression.spec.mjs:119:3 › globe visual regression › keeps premium chrome and country cards aligned at desktop and mobile sizes
+C:\Users\User\Documents\ChatGPT\Работа по сайту\probpera-typography\tests\e2e\globe-visual-regression.spec.mjs-snapshots\globe-desktop-top-chrome-edition-rail.png is re-generated, writing actual.
+
+(node:39148) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[2/2] [mobile-chromium] › tests\e2e\globe-visual-regression.spec.mjs:119:3 › globe visual regression › keeps premium chrome and country cards aligned at desktop and mobile sizes
+[mobile-chromium] › tests\e2e\globe-visual-regression.spec.mjs:119:3 › globe visual regression › keeps premium chrome and country cards aligned at desktop and mobile sizes
+C:\Users\User\Documents\ChatGPT\Работа по сайту\probpera-typography\tests\e2e\globe-visual-regression.spec.mjs-snapshots\globe-mobile-top-chrome-edition-rail.png is re-generated, writing actual.
+
+  2 passed (16.8s)

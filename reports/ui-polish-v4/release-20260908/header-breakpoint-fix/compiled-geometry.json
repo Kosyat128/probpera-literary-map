@@ -1,0 +1,30 @@
+{
+  "startedAt": "2026-09-08T15:04:24.505Z",
+  "url": "http://127.0.0.1:4186/",
+  "measurements": [
+    {
+      "width": 1521,
+      "actionsLeft": 1233.578125,
+      "actionsRight": 1460.171875,
+      "readerLeft": 1363.890625,
+      "readerRight": 1460.171875,
+      "navRight": 1207.734375,
+      "socialsVisible": false,
+      "screenshot": "header-1521.png",
+      "passed": true
+    },
+    {
+      "width": 1601,
+      "actionsLeft": 1062.328125,
+      "actionsRight": 1536.96875,
+      "readerLeft": 1440.6875,
+      "readerRight": 1536.96875,
+      "navRight": 1035.125,
+      "socialsVisible": true,
+      "screenshot": "header-1601.png",
+      "passed": true
+    }
+  ],
+  "cssOverride": false,
+  "finishedAt": "2026-09-08T15:04:27.839Z"
+}

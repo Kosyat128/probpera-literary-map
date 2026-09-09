@@ -1,0 +1,3049 @@
+{
+  "capturedAt": "2026-09-08T12:40:58.245Z",
+  "sourceSha256": "39324a8c1698df015cb3beaf8244d727d803aaa4ed65242e00610cfb9794ca9e",
+  "interpretation": "Historical normal batch: 174 passed, 3 failed, 24 skipped. The three failures have separate software-rendering closures. Targeted software runs: 7 passed, no retries or skips. This is not a fresh complete-suite pass or production verification.",
+  "records": [
+    {
+      "path": "runtime-fix/surfaces-software.json",
+      "stats": {
+        "startTime": "2026-09-08T11:59:59.278Z",
+        "duration": 93116.495,
+        "expected": 2,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "tests": [
+        {
+          "file": "globe-runtime.spec.mjs",
+          "line": 155,
+          "title": "all globe surfaces use the same seamless star background",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 30591,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "globe-runtime.spec.mjs",
+          "line": 155,
+          "title": "all globe surfaces use the same seamless star background",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 28604,
+              "retry": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "runtime-fix/filters-software.json",
+      "stats": {
+        "startTime": "2026-09-08T12:02:50.223Z",
+        "duration": 150427.55800000002,
+        "expected": 2,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "tests": [
+        {
+          "file": "globe-runtime.spec.mjs",
+          "line": 300,
+          "title": "globe filters update the collection without rebuilding the 3D atlas",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 65359,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "globe-runtime.spec.mjs",
+          "line": 300,
+          "title": "globe filters update the collection without rebuilding the 3D atlas",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 70018,
+              "retry": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "runtime-fix/immersive-geometry-software.json",
+      "stats": {
+        "startTime": "2026-09-08T12:34:18.549Z",
+        "duration": 22621.274,
+        "expected": 1,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "tests": [
+        {
+          "file": "literary-planet-immersion.spec.mjs",
+          "line": 463,
+          "title": "premium globe controls stay balanced and inside every viewport",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 20552,
+              "retry": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "runtime-fix/reader-mode-software.json",
+      "stats": {
+        "startTime": "2026-09-08T12:39:22.457Z",
+        "duration": 24872.586,
+        "expected": 2,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "tests": [
+        {
+          "file": "public-smoke.spec.mjs",
+          "line": 560,
+          "title": "режим чтения не имеет горизонтального разрыва и не повторяет рекомендации",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 5528,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "public-smoke.spec.mjs",
+          "line": 560,
+          "title": "режим чтения не имеет горизонтального разрыва и не повторяет рекомендации",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 16474,
+              "retry": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "remaining-webgl-normal/shard-2.json",
+      "stats": {
+        "startTime": "2026-09-08T12:09:47.392Z",
+        "duration": 148508.15899999999,
+        "expected": 30,
+        "skipped": 1,
+        "unexpected": 2,
+        "flaky": 0
+      },
+      "tests": [
+        {
+          "file": "literary-planet-immersion.spec.mjs",
+          "line": 236,
+          "title": "country selection replaces the immersive entry and survives Back/Forward without remounting Canvas",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 11000,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "literary-planet-immersion.spec.mjs",
+          "line": 309,
+          "title": "the default Hero CTA opens the existing atlas surface directly",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 4482,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "literary-planet-immersion.spec.mjs",
+          "line": 362,
+          "title": "a direct immersive URL closes by replace without adding or consuming history",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 3658,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "literary-planet-immersion.spec.mjs",
+          "line": 418,
+          "title": "embedded launch stays touch-safe beside the edition rail on every layout",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 7991,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "literary-planet-immersion.spec.mjs",
+          "line": 463,
+          "title": "premium globe controls stay balanced and inside every viewport",
+          "project": "desktop-chromium",
+          "status": "unexpected",
+          "results": [
+            {
+              "status": "failed",
+              "duration": 5520,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "literary-planet-immersion.spec.mjs",
+          "line": 635,
+          "title": "responsive exit remeasures the current embedded slot instead of using the entry height",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 6972,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "literary-planet-immersion.spec.mjs",
+          "line": 668,
+          "title": "mobile country archive is a collapsed, expandable bottom sheet over the stable globe",
+          "project": "desktop-chromium",
+          "status": "skipped",
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 271,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "literary-planet-immersion.spec.mjs",
+          "line": 731,
+          "title": "repeated Close is idempotent and cannot pop past the embedded entry",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 6832,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "literary-planet-immersion.spec.mjs",
+          "line": 750,
+          "title": "reduced motion enters and exits immersion without transition states",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 4527,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "navigation-layout.spec.mjs",
+          "line": 3,
+          "title": "sticky navigation keeps anchor headings visible and never widens the page",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 4146,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "public-doc-refinements.spec.mjs",
+          "line": 3,
+          "title": "book of the month and the section directory keep a coherent desktop grid",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 3415,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "public-doc-refinements.spec.mjs",
+          "line": 61,
+          "title": "mobile search overlay remains compact, scrollable and keyboard-safe",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 3218,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "public-doc-refinements.spec.mjs",
+          "line": 123,
+          "title": "desktop header actions remain fully visible around the compact breakpoint",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 2158,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "public-doc-refinements.spec.mjs",
+          "line": 160,
+          "title": "globe controls expose correctly ordered touch targets",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 3027,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "public-smoke.spec.mjs",
+          "line": 27,
+          "title": "главная загружается без критических ошибок и горизонтального разрыва",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 1551,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "public-smoke.spec.mjs",
+          "line": 37,
+          "title": "обложка и заголовок героя сохраняют редакционный макет",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 1872,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "public-smoke.spec.mjs",
+          "line": 106,
+          "title": "календарь, форум и редакция используют разные заставки",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 1545,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "public-smoke.spec.mjs",
+          "line": 140,
+          "title": "главная не содержит критических нарушений доступности",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 3358,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "public-smoke.spec.mjs",
+          "line": 149,
+          "title": "статья из карты сайта открывается и имеет корректную структуру",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 1139,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "public-smoke.spec.mjs",
+          "line": 156,
+          "title": "длинные источники остаются внутри листа статьи",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 1599,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "public-smoke.spec.mjs",
+          "line": 247,
+          "title": "прямой URL статьи возвращает к полному журналу",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 3744,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "public-smoke.spec.mjs",
+          "line": 297,
+          "title": "редакционные изображения сохраняют пропорции в ридере, галерее и слайдере",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 2136,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "public-smoke.spec.mjs",
+          "line": 370,
+          "title": "лайтбокс удерживает Tab, закрывается по Escape и возвращает фокус",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 1959,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "public-smoke.spec.mjs",
+          "line": 411,
+          "title": "глобус загружается только после приближения к атласу и принимает управление",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 8055,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "public-smoke.spec.mjs",
+          "line": 535,
+          "title": "поиск глобуса сохраняет запрос при ленивой загрузке и не раскрывает непубличную книгу",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 3913,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "public-smoke.spec.mjs",
+          "line": 560,
+          "title": "режим чтения не имеет горизонтального разрыва и не повторяет рекомендации",
+          "project": "desktop-chromium",
+          "status": "unexpected",
+          "results": [
+            {
+              "status": "failed",
+              "duration": 13392,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "reader-extended-accessibility.spec.mjs",
+          "line": 7,
+          "title": "disabled community runtime exposes honest state and preserves form text without writes",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 3434,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "reader-extended-accessibility.spec.mjs",
+          "line": 40,
+          "title": "real reader and canonical semantic page retain expanded text spacing",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 7995,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "reader-extended-accessibility.spec.mjs",
+          "line": 97,
+          "title": "request-only complex table and verse retain semantic contents and keyboard scrolling",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 1609,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "reader-extended-accessibility.spec.mjs",
+          "line": 140,
+          "title": "print media exposes the full source once and preserves canonical book position",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 7354,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "responsive-reader-globe.spec.mjs",
+          "line": 9,
+          "title": "ArticleReader keeps its controls and long title inside 320-1720px",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 1987,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "responsive-reader-globe.spec.mjs",
+          "line": 141,
+          "title": "mobile header keeps search and 44px actions in two compact sticky rows",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 4708,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "responsive-reader-globe.spec.mjs",
+          "line": 201,
+          "title": "ArticleReader lower panels stay readable in light and book modes",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 2122,
+              "retry": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "remaining-webgl-normal/shard-3.json",
+      "stats": {
+        "startTime": "2026-09-08T12:12:43.264Z",
+        "duration": 234540.409,
+        "expected": 31,
+        "skipped": 1,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "tests": [
+        {
+          "file": "responsive-reader-globe.spec.mjs",
+          "line": 376,
+          "title": "globe search metadata and instructions stay readable inside 320-1720px",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 6266,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "stage5-baseline.spec.mjs",
+          "line": 21,
+          "title": "bookshelf empty clicks return closed books without treating orbit or drag as dismissal",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 13187,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "stage5-baseline.spec.mjs",
+          "line": 21,
+          "title": "bookshelf empty clicks return open books without treating orbit or drag as dismissal",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 9707,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "stage5-baseline.spec.mjs",
+          "line": 90,
+          "title": "phase 5C pins the current public database order without horizontal overflow",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 4060,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "stage5-baseline.spec.mjs",
+          "line": 123,
+          "title": "200 percent equivalent reflow and forced colors keep controls reachable",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 2057,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "stage5b-art-direction.spec.mjs",
+          "line": 132,
+          "title": "Stage 5B desktop RU roles and surfaces retain the approved scale and 13px editorial labels",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 8108,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "stage5b-art-direction.spec.mjs",
+          "line": 158,
+          "title": "Stage 5B mobile EN roles and 13px editorial labels reflow without overflow",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 5133,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "stage5c-layout-community.spec.mjs",
+          "line": 311,
+          "title": "Stage 5C keeps the final homepage structure and card geometry",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 3280,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "typography-and-card-geometry.spec.mjs",
+          "line": 57,
+          "title": "ru: complete card text, footer geometry and local fonts at ten widths",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 6478,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "typography-and-card-geometry.spec.mjs",
+          "line": 98,
+          "title": "ru: archive and reader reflow, body scale and heading isolation",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 11823,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "typography-and-card-geometry.spec.mjs",
+          "line": 57,
+          "title": "en: complete card text, footer geometry and local fonts at ten widths",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 7805,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "typography-and-card-geometry.spec.mjs",
+          "line": 98,
+          "title": "en: archive and reader reflow, body scale and heading isolation",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 8432,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "typography-and-card-geometry.spec.mjs",
+          "line": 153,
+          "title": "Japanese card controls keep their geometry through focus, hover, active and copied states",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 2256,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "typography-and-card-geometry.spec.mjs",
+          "line": 192,
+          "title": "published CMS typography wins over defaults and the layout supports 200/400 percent reflow",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 3471,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "typography-and-card-geometry.spec.mjs",
+          "line": 215,
+          "title": "project directory keeps complete copy and a consistent action label",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 4788,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "typography-and-card-geometry.spec.mjs",
+          "line": 252,
+          "title": "ru: directory content never overlaps before or after expanding at wide viewports",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 9696,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "typography-and-card-geometry.spec.mjs",
+          "line": 252,
+          "title": "en: directory content never overlaps before or after expanding at wide viewports",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 8688,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "ui-foundation.spec.mjs",
+          "line": 20,
+          "title": "foundation controls keep geometry and the page does not overflow",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 25216,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "ui-foundation.spec.mjs",
+          "line": 67,
+          "title": "core controls expose hover, keyboard focus, pressed and disabled states",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 3686,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "ui-foundation.spec.mjs",
+          "line": 93,
+          "title": "reduced motion disables foundation transitions and keeps loading geometry",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 1531,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "ui-polish-backgrounds.spec.mjs",
+          "line": 20,
+          "title": "V4 artwork remains outside controls and follows real section bounds at 1440",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 7756,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "ui-polish-backgrounds.spec.mjs",
+          "line": 20,
+          "title": "V4 artwork remains outside controls and follows real section bounds at 390",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 6039,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "ui-polish-backgrounds.spec.mjs",
+          "line": 20,
+          "title": "V4 artwork remains outside controls and follows real section bounds at 320",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 6019,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "ui-polish-backgrounds.spec.mjs",
+          "line": 20,
+          "title": "V4 artwork remains outside controls and follows real section bounds at 768",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 6539,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "ui-polish-backgrounds.spec.mjs",
+          "line": 20,
+          "title": "V4 artwork remains outside controls and follows real section bounds at 1920",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 8989,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "ui-polish-backgrounds.spec.mjs",
+          "line": 91,
+          "title": "V4 decoration failure and changed neighbours preserve content and navigation",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 4695,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "ui-polish-controls.spec.mjs",
+          "line": 16,
+          "title": "F13 WebGL creation failure preserves country search and article reading",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 6224,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "ui-polish-controls.spec.mjs",
+          "line": 49,
+          "title": "R05 panels, zoom, resize and immersive return at 1440px",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 12177,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "ui-polish-controls.spec.mjs",
+          "line": 185,
+          "title": "R04 archive, shelf search, random selection and centered navigation at 1440px",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 9384,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "ui-polish-controls.spec.mjs",
+          "line": 49,
+          "title": "R05 panels, zoom, resize and immersive return at 390px",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 6570,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "ui-polish-controls.spec.mjs",
+          "line": 185,
+          "title": "R04 archive, shelf search, random selection and centered navigation at 390px",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 7407,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "archive-search-calendar.spec.mjs",
+          "line": 46,
+          "title": "календарь открывает и фокусирует карточку выбранного писателя",
+          "project": "mobile-chromium",
+          "status": "skipped",
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 554,
+              "retry": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "remaining-webgl-normal/shard-4.json",
+      "stats": {
+        "startTime": "2026-09-08T12:17:12.866Z",
+        "duration": 346072.398,
+        "expected": 27,
+        "skipped": 5,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "tests": [
+        {
+          "file": "archive-search-calendar.spec.mjs",
+          "line": 65,
+          "title": "единый поиск доступен, находит Достоевского по латинице и завершает загрузку",
+          "project": "mobile-chromium",
+          "status": "skipped",
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 683,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "archive-search-calendar.spec.mjs",
+          "line": 88,
+          "title": "архив и изображения сохраняют desktop-сетку и исходные пропорции",
+          "project": "mobile-chromium",
+          "status": "skipped",
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 406,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "archive-search-calendar.spec.mjs",
+          "line": 132,
+          "title": "архив публикует 46 проверенных книг и не раскрывает редакционную очередь",
+          "project": "mobile-chromium",
+          "status": "skipped",
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 403,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "archive-search-calendar.spec.mjs",
+          "line": 199,
+          "title": "на мобильном архив и изображения не растягиваются",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 6140,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "archive-search-calendar.spec.mjs",
+          "line": 293,
+          "title": "статус, сохранение и детали книг не пересекаются на адаптивных ширинах",
+          "project": "mobile-chromium",
+          "status": "skipped",
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 524,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "article-book-pagination.spec.mjs",
+          "line": 14,
+          "title": "canonical book keeps the source fragment through reflow, sizing, mode changes and reopening",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 27649,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "article-book-pagination.spec.mjs",
+          "line": 96,
+          "title": "archive CTA opens the canonical book and reader metrics and layers preserve focus",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 8701,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "article-book-reading.spec.mjs",
+          "line": 38,
+          "title": "real vocabulary illustrations stay with their own numbered entries at 100% font size",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 11780,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "article-book-reading.spec.mjs",
+          "line": 38,
+          "title": "real vocabulary illustrations stay with their own numbered entries at 90% font size",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 10655,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "article-book-reading.spec.mjs",
+          "line": 38,
+          "title": "real vocabulary illustrations stay with their own numbered entries at 130% font size",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 13080,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "article-book-reading.spec.mjs",
+          "line": 288,
+          "title": "illustrated book preserves every page, renders illustrations and supports accessible navigation",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 19582,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "article-book-reading.spec.mjs",
+          "line": 377,
+          "title": "a delayed illustration fills the existing book without blocking reading or resetting its page",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 10780,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "article-book-reading.spec.mjs",
+          "line": 470,
+          "title": "WebGL failure retains the complete illustrated article and responsive reading",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 5395,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "article-book-zoom.spec.mjs",
+          "line": 6,
+          "title": "the physical article book enlarges, pans and resets without repagination or accidental page turns",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 6731,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "calendar-design-quality.spec.mjs",
+          "line": 3,
+          "title": "calendar keeps readable date states and every compact-day event remains reachable",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 10845,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "globe-runtime.spec.mjs",
+          "line": 67,
+          "title": "globe preloads near the viewport but renders only while visible",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 5204,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "globe-runtime.spec.mjs",
+          "line": 89,
+          "title": "globe edition preview reuses decoded texture assets",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 9572,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "globe-runtime.spec.mjs",
+          "line": 157,
+          "title": "all globe surfaces use the same seamless star background",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 10201,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "globe-runtime.spec.mjs",
+          "line": 249,
+          "title": "atlas URL restores selections, supports history and mounts the index on demand",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 7363,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "globe-runtime.spec.mjs",
+          "line": 286,
+          "title": "globe filters update the collection without rebuilding the 3D atlas",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 10502,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "globe-runtime.spec.mjs",
+          "line": 321,
+          "title": "globe honors reduced motion without presenting auto-rotation as active",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 5529,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "globe-runtime.spec.mjs",
+          "line": 347,
+          "title": "selected Indonesia remains centered after the focus animation",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 14774,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "globe-visual-regression.spec.mjs",
+          "line": 119,
+          "title": "keeps premium chrome and country cards aligned at desktop and mobile sizes",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 5186,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "image-delivery.spec.mjs",
+          "line": 121,
+          "title": "real published illustrations remain local and responsive: cms-e6bf64b8-53eb-419d-a2e2-0e2e00acf9d8",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 3581,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "image-delivery.spec.mjs",
+          "line": 121,
+          "title": "real published illustrations remain local and responsive: cms-4c60932a-cd7d-4e43-a83f-5b38dc3e0b02",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 3759,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "image-delivery.spec.mjs",
+          "line": 121,
+          "title": "real published illustrations remain local and responsive: cms-0743e614-19bc-4c3d-8eba-7d43fac78d58",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 2832,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "image-delivery.spec.mjs",
+          "line": 121,
+          "title": "real published illustrations remain local and responsive: cms-bf8881fc-b705-407d-af19-2ff9a14d2720",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 5307,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "image-delivery.spec.mjs",
+          "line": 155,
+          "title": "homepage images load from top to bottom with external image servers blocked",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 108012,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "literary-news-production.spec.mjs",
+          "line": 45,
+          "title": "public news loads near the book feature and follows language and visitor dates",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 4616,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "literary-news-production.spec.mjs",
+          "line": 86,
+          "title": "a failed refresh preserves reviewed stories and new arrivals wait for the reader",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 5218,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "literary-news-production.spec.mjs",
+          "line": 112,
+          "title": "an unavailable news chunk leaves the homepage usable and offers recovery",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 5417,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "literary-planet-immersion.spec.mjs",
+          "line": 112,
+          "title": "embedded atlas enters one-canvas immersion and Escape restores scroll and focus",
+          "project": "mobile-chromium",
+          "status": "skipped",
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 353,
+              "retry": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "remaining-webgl-normal/shard-5.json",
+      "stats": {
+        "startTime": "2026-09-08T12:23:54.214Z",
+        "duration": 117903.689,
+        "expected": 23,
+        "skipped": 8,
+        "unexpected": 1,
+        "flaky": 0
+      },
+      "tests": [
+        {
+          "file": "literary-planet-immersion.spec.mjs",
+          "line": 236,
+          "title": "country selection replaces the immersive entry and survives Back/Forward without remounting Canvas",
+          "project": "mobile-chromium",
+          "status": "skipped",
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 516,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "literary-planet-immersion.spec.mjs",
+          "line": 309,
+          "title": "the default Hero CTA opens the existing atlas surface directly",
+          "project": "mobile-chromium",
+          "status": "skipped",
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 270,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "literary-planet-immersion.spec.mjs",
+          "line": 362,
+          "title": "a direct immersive URL closes by replace without adding or consuming history",
+          "project": "mobile-chromium",
+          "status": "skipped",
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 269,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "literary-planet-immersion.spec.mjs",
+          "line": 418,
+          "title": "embedded launch stays touch-safe beside the edition rail on every layout",
+          "project": "mobile-chromium",
+          "status": "skipped",
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 249,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "literary-planet-immersion.spec.mjs",
+          "line": 463,
+          "title": "premium globe controls stay balanced and inside every viewport",
+          "project": "mobile-chromium",
+          "status": "skipped",
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 269,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "literary-planet-immersion.spec.mjs",
+          "line": 635,
+          "title": "responsive exit remeasures the current embedded slot instead of using the entry height",
+          "project": "mobile-chromium",
+          "status": "skipped",
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 255,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "literary-planet-immersion.spec.mjs",
+          "line": 668,
+          "title": "mobile country archive is a collapsed, expandable bottom sheet over the stable globe",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 6920,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "literary-planet-immersion.spec.mjs",
+          "line": 731,
+          "title": "repeated Close is idempotent and cannot pop past the embedded entry",
+          "project": "mobile-chromium",
+          "status": "skipped",
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 293,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "literary-planet-immersion.spec.mjs",
+          "line": 750,
+          "title": "reduced motion enters and exits immersion without transition states",
+          "project": "mobile-chromium",
+          "status": "skipped",
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 265,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "navigation-layout.spec.mjs",
+          "line": 3,
+          "title": "sticky navigation keeps anchor headings visible and never widens the page",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 3891,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "public-doc-refinements.spec.mjs",
+          "line": 3,
+          "title": "book of the month and the section directory keep a coherent desktop grid",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 5249,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "public-doc-refinements.spec.mjs",
+          "line": 61,
+          "title": "mobile search overlay remains compact, scrollable and keyboard-safe",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 4104,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "public-doc-refinements.spec.mjs",
+          "line": 123,
+          "title": "desktop header actions remain fully visible around the compact breakpoint",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 4285,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "public-doc-refinements.spec.mjs",
+          "line": 160,
+          "title": "globe controls expose correctly ordered touch targets",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 4762,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "public-smoke.spec.mjs",
+          "line": 27,
+          "title": "главная загружается без критических ошибок и горизонтального разрыва",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 2263,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "public-smoke.spec.mjs",
+          "line": 37,
+          "title": "обложка и заголовок героя сохраняют редакционный макет",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 2843,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "public-smoke.spec.mjs",
+          "line": 106,
+          "title": "календарь, форум и редакция используют разные заставки",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 2270,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "public-smoke.spec.mjs",
+          "line": 140,
+          "title": "главная не содержит критических нарушений доступности",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 4106,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "public-smoke.spec.mjs",
+          "line": 149,
+          "title": "статья из карты сайта открывается и имеет корректную структуру",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 1449,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "public-smoke.spec.mjs",
+          "line": 156,
+          "title": "длинные источники остаются внутри листа статьи",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 1713,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "public-smoke.spec.mjs",
+          "line": 247,
+          "title": "прямой URL статьи возвращает к полному журналу",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 4107,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "public-smoke.spec.mjs",
+          "line": 297,
+          "title": "редакционные изображения сохраняют пропорции в ридере, галерее и слайдере",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 1933,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "public-smoke.spec.mjs",
+          "line": 370,
+          "title": "лайтбокс удерживает Tab, закрывается по Escape и возвращает фокус",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 2243,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "public-smoke.spec.mjs",
+          "line": 411,
+          "title": "глобус загружается только после приближения к атласу и принимает управление",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 7930,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "public-smoke.spec.mjs",
+          "line": 535,
+          "title": "поиск глобуса сохраняет запрос при ленивой загрузке и не раскрывает непубличную книгу",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 5732,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "public-smoke.spec.mjs",
+          "line": 560,
+          "title": "режим чтения не имеет горизонтального разрыва и не повторяет рекомендации",
+          "project": "mobile-chromium",
+          "status": "unexpected",
+          "results": [
+            {
+              "status": "failed",
+              "duration": 14636,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "reader-extended-accessibility.spec.mjs",
+          "line": 7,
+          "title": "disabled community runtime exposes honest state and preserves form text without writes",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 4433,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "reader-extended-accessibility.spec.mjs",
+          "line": 40,
+          "title": "real reader and canonical semantic page retain expanded text spacing",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 9332,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "reader-extended-accessibility.spec.mjs",
+          "line": 97,
+          "title": "request-only complex table and verse retain semantic contents and keyboard scrolling",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 2712,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "reader-extended-accessibility.spec.mjs",
+          "line": 140,
+          "title": "print media exposes the full source once and preserves canonical book position",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 3732,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "responsive-reader-globe.spec.mjs",
+          "line": 9,
+          "title": "ArticleReader keeps its controls and long title inside 320-1720px",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 2889,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "responsive-reader-globe.spec.mjs",
+          "line": 141,
+          "title": "mobile header keeps search and 44px actions in two compact sticky rows",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 5646,
+              "retry": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "remaining-webgl-normal/shard-6.json",
+      "stats": {
+        "startTime": "2026-09-08T12:26:18.107Z",
+        "duration": 199023.165,
+        "expected": 26,
+        "skipped": 6,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "tests": [
+        {
+          "file": "responsive-reader-globe.spec.mjs",
+          "line": 201,
+          "title": "ArticleReader lower panels stay readable in light and book modes",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 5269,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "responsive-reader-globe.spec.mjs",
+          "line": 376,
+          "title": "globe search metadata and instructions stay readable inside 320-1720px",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 10863,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "stage5-baseline.spec.mjs",
+          "line": 21,
+          "title": "bookshelf empty clicks return closed books without treating orbit or drag as dismissal",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 9393,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "stage5-baseline.spec.mjs",
+          "line": 21,
+          "title": "bookshelf empty clicks return open books without treating orbit or drag as dismissal",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 8362,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "stage5-baseline.spec.mjs",
+          "line": 90,
+          "title": "phase 5C pins the current public database order without horizontal overflow",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 3786,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "stage5-baseline.spec.mjs",
+          "line": 123,
+          "title": "200 percent equivalent reflow and forced colors keep controls reachable",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 2773,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "stage5b-art-direction.spec.mjs",
+          "line": 132,
+          "title": "Stage 5B desktop RU roles and surfaces retain the approved scale and 13px editorial labels",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 12973,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "stage5b-art-direction.spec.mjs",
+          "line": 158,
+          "title": "Stage 5B mobile EN roles and 13px editorial labels reflow without overflow",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 5833,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "stage5c-layout-community.spec.mjs",
+          "line": 311,
+          "title": "Stage 5C keeps the final homepage structure and card geometry",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 4903,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "typography-and-card-geometry.spec.mjs",
+          "line": 57,
+          "title": "ru: complete card text, footer geometry and local fonts at ten widths",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 7925,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "typography-and-card-geometry.spec.mjs",
+          "line": 98,
+          "title": "ru: archive and reader reflow, body scale and heading isolation",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 9408,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "typography-and-card-geometry.spec.mjs",
+          "line": 57,
+          "title": "en: complete card text, footer geometry and local fonts at ten widths",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 6356,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "typography-and-card-geometry.spec.mjs",
+          "line": 98,
+          "title": "en: archive and reader reflow, body scale and heading isolation",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 7758,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "typography-and-card-geometry.spec.mjs",
+          "line": 153,
+          "title": "Japanese card controls keep their geometry through focus, hover, active and copied states",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 2141,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "typography-and-card-geometry.spec.mjs",
+          "line": 192,
+          "title": "published CMS typography wins over defaults and the layout supports 200/400 percent reflow",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 1786,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "typography-and-card-geometry.spec.mjs",
+          "line": 215,
+          "title": "project directory keeps complete copy and a consistent action label",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 5544,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "typography-and-card-geometry.spec.mjs",
+          "line": 252,
+          "title": "ru: directory content never overlaps before or after expanding at wide viewports",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 8481,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "typography-and-card-geometry.spec.mjs",
+          "line": 252,
+          "title": "en: directory content never overlaps before or after expanding at wide viewports",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 8501,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "ui-foundation.spec.mjs",
+          "line": 20,
+          "title": "foundation controls keep geometry and the page does not overflow",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 27047,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "ui-foundation.spec.mjs",
+          "line": 67,
+          "title": "core controls expose hover, keyboard focus, pressed and disabled states",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 4788,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "ui-foundation.spec.mjs",
+          "line": 93,
+          "title": "reduced motion disables foundation transitions and keeps loading geometry",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 2046,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "ui-polish-backgrounds.spec.mjs",
+          "line": 20,
+          "title": "V4 artwork remains outside controls and follows real section bounds at 1440",
+          "project": "mobile-chromium",
+          "status": "skipped",
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 306,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "ui-polish-backgrounds.spec.mjs",
+          "line": 20,
+          "title": "V4 artwork remains outside controls and follows real section bounds at 390",
+          "project": "mobile-chromium",
+          "status": "skipped",
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 341,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "ui-polish-backgrounds.spec.mjs",
+          "line": 20,
+          "title": "V4 artwork remains outside controls and follows real section bounds at 320",
+          "project": "mobile-chromium",
+          "status": "skipped",
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 333,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "ui-polish-backgrounds.spec.mjs",
+          "line": 20,
+          "title": "V4 artwork remains outside controls and follows real section bounds at 768",
+          "project": "mobile-chromium",
+          "status": "skipped",
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 307,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "ui-polish-backgrounds.spec.mjs",
+          "line": 20,
+          "title": "V4 artwork remains outside controls and follows real section bounds at 1920",
+          "project": "mobile-chromium",
+          "status": "skipped",
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 320,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "ui-polish-backgrounds.spec.mjs",
+          "line": 91,
+          "title": "V4 decoration failure and changed neighbours preserve content and navigation",
+          "project": "mobile-chromium",
+          "status": "skipped",
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 337,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "ui-polish-controls.spec.mjs",
+          "line": 16,
+          "title": "F13 WebGL creation failure preserves country search and article reading",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 4871,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "ui-polish-controls.spec.mjs",
+          "line": 49,
+          "title": "R05 panels, zoom, resize and immersive return at 1440px",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 11691,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "ui-polish-controls.spec.mjs",
+          "line": 185,
+          "title": "R04 archive, shelf search, random selection and centered navigation at 1440px",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 8787,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "ui-polish-controls.spec.mjs",
+          "line": 49,
+          "title": "R05 panels, zoom, resize and immersive return at 390px",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 7139,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "ui-polish-controls.spec.mjs",
+          "line": 185,
+          "title": "R04 archive, shelf search, random selection and centered navigation at 390px",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 5528,
+              "retry": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "remaining-regression-normal/results.json",
+      "stats": {
+        "startTime": "2026-09-08T12:30:20.127Z",
+        "duration": 92428.291,
+        "expected": 37,
+        "skipped": 3,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "tests": [
+        {
+          "file": "book-archive-history.spec.mjs",
+          "line": 14,
+          "title": "switching book details keeps one history entry and close returns to the archive",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 6321,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "book-archive-history.spec.mjs",
+          "line": 14,
+          "title": "switching book details keeps one history entry and close returns to the archive",
+          "project": "mobile-chromium",
+          "status": "skipped",
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 579,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "cms-direct-edit.spec.mjs",
+          "line": 5,
+          "title": "редактор выбирает текст внутри фона главной и сохраняет прямое редактирование полей",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 2652,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "cms-direct-edit.spec.mjs",
+          "line": 5,
+          "title": "редактор выбирает текст внутри фона главной и сохраняет прямое редактирование полей",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 6801,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "community-browser.spec.mjs",
+          "line": 40,
+          "title": "личный кабинет удерживает фокус, блокирует фон и возвращает управление",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 2473,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "community-browser.spec.mjs",
+          "line": 71,
+          "title": "форма входа и регистрации сохраняет понятные поля и безопасное отключённое состояние",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 2607,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "community-browser.spec.mjs",
+          "line": 130,
+          "title": "форум и вход переключаются внутри одного модального окна без потери состояния",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 2664,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "community-browser.spec.mjs",
+          "line": 158,
+          "title": "мобильный кабинет помещается в экран и сохраняет безопасные размеры полей",
+          "project": "desktop-chromium",
+          "status": "skipped",
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 363,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "community-browser.spec.mjs",
+          "line": 40,
+          "title": "личный кабинет удерживает фокус, блокирует фон и возвращает управление",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 3202,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "community-browser.spec.mjs",
+          "line": 71,
+          "title": "форма входа и регистрации сохраняет понятные поля и безопасное отключённое состояние",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 2849,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "community-browser.spec.mjs",
+          "line": 130,
+          "title": "форум и вход переключаются внутри одного модального окна без потери состояния",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 2940,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "community-browser.spec.mjs",
+          "line": 158,
+          "title": "мобильный кабинет помещается в экран и сохраняет безопасные размеры полей",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 2495,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "header-hero-polish.spec.mjs",
+          "line": 26,
+          "title": "RU and EN hero copy, calls to action and proof stay readable across the matrix",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 23278,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "header-hero-polish.spec.mjs",
+          "line": 69,
+          "title": "mobile controls and the original lower navigation remain reachable",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 4558,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "header-hero-polish.spec.mjs",
+          "line": 99,
+          "title": "desktop menus stay viewport-safe and return keyboard focus on Escape",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 7742,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "header-hero-polish.spec.mjs",
+          "line": 122,
+          "title": "section mega-menu shares title and description rows without clipping text",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 2791,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "header-hero-polish.spec.mjs",
+          "line": 172,
+          "title": "protected header bands, Hero art direction and reduced motion remain deterministic",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 11721,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "header-hero-polish.spec.mjs",
+          "line": 228,
+          "title": "footer menu keeps the approved tighter vertical rhythm",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 2324,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "header-hero-polish.spec.mjs",
+          "line": 26,
+          "title": "RU and EN hero copy, calls to action and proof stay readable across the matrix",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 25738,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "header-hero-polish.spec.mjs",
+          "line": 69,
+          "title": "mobile controls and the original lower navigation remain reachable",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 5763,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "header-hero-polish.spec.mjs",
+          "line": 99,
+          "title": "desktop menus stay viewport-safe and return keyboard focus on Escape",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 9975,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "header-hero-polish.spec.mjs",
+          "line": 122,
+          "title": "section mega-menu shares title and description rows without clipping text",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 3986,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "header-hero-polish.spec.mjs",
+          "line": 172,
+          "title": "protected header bands, Hero art direction and reduced motion remain deterministic",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 13219,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "header-hero-polish.spec.mjs",
+          "line": 228,
+          "title": "footer menu keeps the approved tighter vertical rhythm",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 4442,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "home-first-paint.spec.mjs",
+          "line": 4,
+          "title": "главная не показывает SEO-заглушку до загрузки CSS и приложения",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 1668,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "home-first-paint.spec.mjs",
+          "line": 42,
+          "title": "без JavaScript главная сохраняет доступную статическую версию",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 719,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "home-first-paint.spec.mjs",
+          "line": 69,
+          "title": "статический архив журнала не скрывается защитой главной",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 852,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "home-first-paint.spec.mjs",
+          "line": 4,
+          "title": "главная не показывает SEO-заглушку до загрузки CSS и приложения",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 2064,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "home-first-paint.spec.mjs",
+          "line": 42,
+          "title": "без JavaScript главная сохраняет доступную статическую версию",
+          "project": "mobile-chromium",
+          "status": "skipped",
+          "results": [
+            {
+              "status": "skipped",
+              "duration": 2,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "home-first-paint.spec.mjs",
+          "line": 69,
+          "title": "статический архив журнала не скрывается защитой главной",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 809,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "image-upload-optimization.spec.mjs",
+          "line": 57,
+          "title": "a 2MB editorial image gets smaller while retaining resolution and visible detail",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 1595,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "image-upload-optimization.spec.mjs",
+          "line": 75,
+          "title": "transparent pixels and EXIF portrait orientation survive optimization",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 963,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "image-upload-optimization.spec.mjs",
+          "line": 90,
+          "title": "animation and already smaller originals keep their bytes; unsafe input is rejected",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 516,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "image-upload-optimization.spec.mjs",
+          "line": 57,
+          "title": "a 2MB editorial image gets smaller while retaining resolution and visible detail",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 1455,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "image-upload-optimization.spec.mjs",
+          "line": 75,
+          "title": "transparent pixels and EXIF portrait orientation survive optimization",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 1061,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "image-upload-optimization.spec.mjs",
+          "line": 90,
+          "title": "animation and already smaller originals keep their bytes; unsafe input is rejected",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 468,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "public-reader-journey.spec.ts",
+          "line": 99,
+          "title": "reader can open the journal and a real article without runtime failures",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 3317,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "public-reader-journey.spec.ts",
+          "line": 132,
+          "title": "home and journal remain inside a narrow mobile viewport",
+          "project": "desktop-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 2179,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "public-reader-journey.spec.ts",
+          "line": 99,
+          "title": "reader can open the journal and a real article without runtime failures",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 3572,
+              "retry": 0
+            }
+          ]
+        },
+        {
+          "file": "public-reader-journey.spec.ts",
+          "line": 132,
+          "title": "home and journal remain inside a narrow mobile viewport",
+          "project": "mobile-chromium",
+          "status": "expected",
+          "results": [
+            {
+              "status": "passed",
+              "duration": 2111,
+              "retry": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,352 @@
+
+Running 44 tests using 1 worker
+
+(node:34172) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x   1 [desktop-chromium] › tests\e2e\article-book-pagination.spec.mjs:14:1 › canonical book keeps the source fragment through reflow, sizing, mode changes and reopening (24.1s)
+(node:47480) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  2 [desktop-chromium] › tests\e2e\article-book-pagination.spec.mjs:69:1 › archive CTA opens the canonical book and reader metrics and layers preserve focus (12.2s)
+  ok  3 [desktop-chromium] › tests\e2e\article-book-reading.spec.mjs:38:3 › real vocabulary illustrations stay with their own numbered entries at 100% font size (23.2s)
+  x   4 [desktop-chromium] › tests\e2e\article-book-reading.spec.mjs:288:1 › illustrated book preserves every page, renders illustrations and supports accessible navigation (11.6s)
+(node:33532) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x   5 [desktop-chromium] › tests\e2e\article-book-reading.spec.mjs:377:1 › a delayed illustration fills the existing book without blocking reading or resetting its page (13.0s)
+(node:30360) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  6 [desktop-chromium] › tests\e2e\article-book-reading.spec.mjs:470:1 › WebGL failure retains the complete illustrated article and responsive reading (5.2s)
+  ok  7 [desktop-chromium] › tests\e2e\article-book-zoom.spec.mjs:6:1 › the physical article book enlarges, pans and resets without repagination or accidental page turns (13.8s)
+  ok  8 [desktop-chromium] › tests\e2e\reader-extended-accessibility.spec.mjs:7:1 › disabled community runtime exposes honest state and preserves form text without writes (3.5s)
+  ok  9 [desktop-chromium] › tests\e2e\reader-extended-accessibility.spec.mjs:40:1 › real reader and canonical semantic page retain expanded text spacing (7.6s)
+  ok 10 [desktop-chromium] › tests\e2e\reader-extended-accessibility.spec.mjs:97:1 › request-only complex table and verse retain semantic contents and keyboard scrolling (1.9s)
+  x  11 [desktop-chromium] › tests\e2e\reader-extended-accessibility.spec.mjs:140:1 › print media exposes the full source once and preserves canonical book position (3.6s)
+(node:34628) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 12 [desktop-chromium] › tests\e2e\ui-polish-backgrounds.spec.mjs:20:50 › V4 artwork remains outside controls and follows real section bounds at 1440 (11.0s)
+  ok 13 [desktop-chromium] › tests\e2e\ui-polish-backgrounds.spec.mjs:20:50 › V4 artwork remains outside controls and follows real section bounds at 390 (9.6s)
+  ok 14 [desktop-chromium] › tests\e2e\ui-polish-backgrounds.spec.mjs:20:50 › V4 artwork remains outside controls and follows real section bounds at 320 (6.7s)
+  ok 15 [desktop-chromium] › tests\e2e\ui-polish-backgrounds.spec.mjs:20:50 › V4 artwork remains outside controls and follows real section bounds at 768 (6.8s)
+  ok 16 [desktop-chromium] › tests\e2e\ui-polish-backgrounds.spec.mjs:20:50 › V4 artwork remains outside controls and follows real section bounds at 1920 (7.6s)
+  ok 17 [desktop-chromium] › tests\e2e\ui-polish-backgrounds.spec.mjs:91:1 › V4 decoration failure and changed neighbours preserve content and navigation (4.1s)
+  ok 18 [desktop-chromium] › tests\e2e\ui-polish-controls.spec.mjs:15:1 › F13 WebGL creation failure preserves country search and article reading (5.6s)
+  ok 19 [desktop-chromium] › tests\e2e\ui-polish-controls.spec.mjs:48:3 › R05 panels, zoom, resize and immersive return at 1440px (9.8s)
+  ok 20 [desktop-chromium] › tests\e2e\ui-polish-controls.spec.mjs:184:3 › R04 archive, shelf search, random selection and centered navigation at 1440px (9.9s)
+  ok 21 [desktop-chromium] › tests\e2e\ui-polish-controls.spec.mjs:48:3 › R05 panels, zoom, resize and immersive return at 390px (7.1s)
+  ok 22 [desktop-chromium] › tests\e2e\ui-polish-controls.spec.mjs:184:3 › R04 archive, shelf search, random selection and centered navigation at 390px (7.0s)
+(node:45612) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  23 [mobile-chromium] › tests\e2e\article-book-pagination.spec.mjs:14:1 › canonical book keeps the source fragment through reflow, sizing, mode changes and reopening (27.5s)
+(node:10120) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 24 [mobile-chromium] › tests\e2e\article-book-pagination.spec.mjs:69:1 › archive CTA opens the canonical book and reader metrics and layers preserve focus (16.7s)
+  ok 25 [mobile-chromium] › tests\e2e\article-book-reading.spec.mjs:38:3 › real vocabulary illustrations stay with their own numbered entries at 100% font size (14.7s)
+  x  26 [mobile-chromium] › tests\e2e\article-book-reading.spec.mjs:288:1 › illustrated book preserves every page, renders illustrations and supports accessible navigation (7.3s)
+(node:34724) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  27 [mobile-chromium] › tests\e2e\article-book-reading.spec.mjs:377:1 › a delayed illustration fills the existing book without blocking reading or resetting its page (9.6s)
+(node:13920) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 28 [mobile-chromium] › tests\e2e\article-book-reading.spec.mjs:470:1 › WebGL failure retains the complete illustrated article and responsive reading (5.0s)
+  ok 29 [mobile-chromium] › tests\e2e\article-book-zoom.spec.mjs:6:1 › the physical article book enlarges, pans and resets without repagination or accidental page turns (9.3s)
+  ok 30 [mobile-chromium] › tests\e2e\reader-extended-accessibility.spec.mjs:7:1 › disabled community runtime exposes honest state and preserves form text without writes (4.0s)
+  ok 31 [mobile-chromium] › tests\e2e\reader-extended-accessibility.spec.mjs:40:1 › real reader and canonical semantic page retain expanded text spacing (4.2s)
+  ok 32 [mobile-chromium] › tests\e2e\reader-extended-accessibility.spec.mjs:97:1 › request-only complex table and verse retain semantic contents and keyboard scrolling (2.3s)
+  x  33 [mobile-chromium] › tests\e2e\reader-extended-accessibility.spec.mjs:140:1 › print media exposes the full source once and preserves canonical book position (3.4s)
+(node:46412) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  -  34 [mobile-chromium] › tests\e2e\ui-polish-backgrounds.spec.mjs:20:50 › V4 artwork remains outside controls and follows real section bounds at 1440
+  -  35 [mobile-chromium] › tests\e2e\ui-polish-backgrounds.spec.mjs:20:50 › V4 artwork remains outside controls and follows real section bounds at 390
+  -  36 [mobile-chromium] › tests\e2e\ui-polish-backgrounds.spec.mjs:20:50 › V4 artwork remains outside controls and follows real section bounds at 320
+  -  37 [mobile-chromium] › tests\e2e\ui-polish-backgrounds.spec.mjs:20:50 › V4 artwork remains outside controls and follows real section bounds at 768
+  -  38 [mobile-chromium] › tests\e2e\ui-polish-backgrounds.spec.mjs:20:50 › V4 artwork remains outside controls and follows real section bounds at 1920
+  -  39 [mobile-chromium] › tests\e2e\ui-polish-backgrounds.spec.mjs:91:1 › V4 decoration failure and changed neighbours preserve content and navigation
+  ok 40 [mobile-chromium] › tests\e2e\ui-polish-controls.spec.mjs:15:1 › F13 WebGL creation failure preserves country search and article reading (6.1s)
+  ok 41 [mobile-chromium] › tests\e2e\ui-polish-controls.spec.mjs:48:3 › R05 panels, zoom, resize and immersive return at 1440px (13.1s)
+  ok 42 [mobile-chromium] › tests\e2e\ui-polish-controls.spec.mjs:184:3 › R04 archive, shelf search, random selection and centered navigation at 1440px (13.0s)
+  ok 43 [mobile-chromium] › tests\e2e\ui-polish-controls.spec.mjs:48:3 › R05 panels, zoom, resize and immersive return at 390px (7.7s)
+  ok 44 [mobile-chromium] › tests\e2e\ui-polish-controls.spec.mjs:184:3 › R04 archive, shelf search, random selection and centered navigation at 390px (9.5s)
+
+
+  1) [desktop-chromium] › tests\e2e\article-book-pagination.spec.mjs:14:1 › canonical book keeps the source fragment through reflow, sizing, mode changes and reopening 
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: locator('[data-article-book-reader]').locator('[data-article-book-page]')
+    Timeout: 10000ms
+    - Expected substring  - 3
+    + Received string     + 1
+
+    - менной речи.
+    -
+    - 1. Запретн
+    + ражениях библейского происхождения, объясним их первоначальный смысл, раскроем современное значение и покажем, как они используются в современной речи.1. Запретный плодЗначениеТак называют нечто особенно желанное именно потому, что оно недоступно или находится под строгим запретом.Происхождение
+
+    Call log:
+      - Expect "toContainText" with timeout 10000ms
+      - waiting for locator('[data-article-book-reader]').locator('[data-article-book-page]')
+        23 × locator resolved to <div data-article-book-page="cms-50978dc4-c80f-4bc6-aed0-7e9fd693193a-page-3">…</div>
+           - unexpected value "ражениях библейского происхождения, объясним их первоначальный смысл, раскроем современное значение и покажем, как они используются в современной речи.1. Запретный плодЗначениеТак называют нечто особенно желанное именно потому, что оно недоступно или находится под строгим запретом.Происхождение"
+
+
+      37 |   await ready(book);
+      38 |   await expect(book).toHaveAttribute("data-reading-anchor", anchor);
+    > 39 |   await expect(semantic).toContainText(fragment);
+         |                          ^
+      40 |   const countBeforeFont = Number(await book.getAttribute("data-page-count"));
+      41 |   await page.getByRole("button", { name: "Увеличить шрифт", exact: true }).click();
+      42 |   await expect.poll(async () => Number(await book.getAttribute("data-page-count"))).toBeGreaterThan(countBeforeFont);
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\probpera-typography\tests\e2e\article-book-pagination.spec.mjs:39:26
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    reports\ui-polish-v4\main-integration\browser-artifacts\article-book-pagination-ca-fae55--mode-changes-and-reopening-desktop-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: reports\ui-polish-v4\main-integration\browser-artifacts\article-book-pagination-ca-fae55--mode-changes-and-reopening-desktop-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    reports\ui-polish-v4\main-integration\browser-artifacts\article-book-pagination-ca-fae55--mode-changes-and-reopening-desktop-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace reports\ui-polish-v4\main-integration\browser-artifacts\article-book-pagination-ca-fae55--mode-changes-and-reopening-desktop-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [desktop-chromium] › tests\e2e\article-book-reading.spec.mjs:288:1 › illustrated book preserves every page, renders illustrations and supports accessible navigation 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 2
+    Received: 0
+
+      349 |     const title = locale === "en" ? source.translations.en.title : source.title;
+      350 |     expect(compactText(pageTexts.join(""))).toBe(compactText(title + expectedText));
+    > 351 |     expect(imagePages.size).toBe(2);
+          |                             ^
+      352 |     expect(imagePages.get(cover)).toBeGreaterThan(imagePages.get(portrait));
+      353 |     for (const src of [portrait, cover]) {
+      354 |       await expect.poll(() => page.evaluate(path => window.__articleBookImageDraws.some(value => value.src.endsWith(path)), src), { timeout: 15_000 }).toBe(true);
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\probpera-typography\tests\e2e\article-book-reading.spec.mjs:351:29
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    reports\ui-polish-v4\main-integration\browser-artifacts\article-book-reading-illus-6ab07-ports-accessible-navigation-desktop-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: reports\ui-polish-v4\main-integration\browser-artifacts\article-book-reading-illus-6ab07-ports-accessible-navigation-desktop-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    reports\ui-polish-v4\main-integration\browser-artifacts\article-book-reading-illus-6ab07-ports-accessible-navigation-desktop-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace reports\ui-polish-v4\main-integration\browser-artifacts\article-book-reading-illus-6ab07-ports-accessible-navigation-desktop-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [desktop-chromium] › tests\e2e\article-book-reading.spec.mjs:377:1 › a delayed illustration fills the existing book without blocking reading or resetting its page 
+
+    Error: a noninitial page contains the slow illustration
+
+    expect(received).toBeGreaterThan(expected)
+
+    Expected: > 0
+    Received:   -1
+
+      432 |     }
+      433 |   }
+    > 434 |   expect(illustrationPage, "a noninitial page contains the slow illustration").toBeGreaterThan(0);
+          |                                                                                ^
+      435 |   expect(respondedAt, "reading and page navigation work while the illustration is pending").toBe(0);
+      436 |   expect(await page.evaluate(path => window.__articleBookImageDraws.some(value => value.src.endsWith(path)), portrait)).toBe(false);
+      437 |   await canvas.evaluate(element => { window.__delayedArticleBookCanvas = element; });
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\probpera-typography\tests\e2e\article-book-reading.spec.mjs:434:80
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    reports\ui-polish-v4\main-integration\browser-artifacts\article-book-reading-a-del-4f9fc-ading-or-resetting-its-page-desktop-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: reports\ui-polish-v4\main-integration\browser-artifacts\article-book-reading-a-del-4f9fc-ading-or-resetting-its-page-desktop-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    reports\ui-polish-v4\main-integration\browser-artifacts\article-book-reading-a-del-4f9fc-ading-or-resetting-its-page-desktop-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace reports\ui-polish-v4\main-integration\browser-artifacts\article-book-reading-a-del-4f9fc-ading-or-resetting-its-page-desktop-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [desktop-chromium] › tests\e2e\reader-extended-accessibility.spec.mjs:140:1 › print media exposes the full source once and preserves canonical book position 
+
+    Error: expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 1
+    Received:    24639
+
+      178 |   expect(geometry.readerPosition, "the reader shell must not clip the printed article").not.toBe("fixed");
+      179 |   expect(geometry.scrollOverflow).toBe("visible");
+    > 180 |   expect(geometry.scrollHeight - geometry.clientHeight).toBeLessThanOrEqual(1);
+          |                                                         ^
+      181 |   await expect(book).toHaveAttribute("data-reading-anchor", savedPosition);
+      182 |   await page.emulateMedia({ media: "screen" });
+      183 |   await expect(book).toBeVisible();
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\probpera-typography\tests\e2e\reader-extended-accessibility.spec.mjs:180:57
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    reports\ui-polish-v4\main-integration\browser-artifacts\reader-extended-accessibil-2e8a0-ves-canonical-book-position-desktop-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: reports\ui-polish-v4\main-integration\browser-artifacts\reader-extended-accessibil-2e8a0-ves-canonical-book-position-desktop-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    reports\ui-polish-v4\main-integration\browser-artifacts\reader-extended-accessibil-2e8a0-ves-canonical-book-position-desktop-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace reports\ui-polish-v4\main-integration\browser-artifacts\reader-extended-accessibil-2e8a0-ves-canonical-book-position-desktop-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) [mobile-chromium] › tests\e2e\article-book-pagination.spec.mjs:14:1 › canonical book keeps the source fragment through reflow, sizing, mode changes and reopening 
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: locator('[data-article-book-reader]').locator('[data-article-book-page]')
+    Timeout: 10000ms
+    - Expected substring  - 3
+    + Received string     + 1
+
+    - менной речи.
+    -
+    - 1. Запретн
+    + ражениях библейского происхождения, объясним их первоначальный смысл, раскроем современное значение и покажем, как они используются в современной речи.1. Запретный плодЗначениеТак называют нечто особенно желанное именно потому, что оно недоступно или находится под строгим запретом.Происхождение
+
+    Call log:
+      - Expect "toContainText" with timeout 10000ms
+      - waiting for locator('[data-article-book-reader]').locator('[data-article-book-page]')
+        23 × locator resolved to <div data-article-book-page="cms-50978dc4-c80f-4bc6-aed0-7e9fd693193a-page-3">…</div>
+           - unexpected value "ражениях библейского происхождения, объясним их первоначальный смысл, раскроем современное значение и покажем, как они используются в современной речи.1. Запретный плодЗначениеТак называют нечто особенно желанное именно потому, что оно недоступно или находится под строгим запретом.Происхождение"
+
+
+      37 |   await ready(book);
+      38 |   await expect(book).toHaveAttribute("data-reading-anchor", anchor);
+    > 39 |   await expect(semantic).toContainText(fragment, { useInnerText: true });
+         |                          ^
+      40 |   const countBeforeFont = Number(await book.getAttribute("data-page-count"));
+      41 |   await page.getByRole("button", { name: "Увеличить шрифт", exact: true }).click();
+      42 |   await expect.poll(async () => Number(await book.getAttribute("data-page-count"))).toBeGreaterThan(countBeforeFont);
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\probpera-typography\tests\e2e\article-book-pagination.spec.mjs:39:26
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    reports\ui-polish-v4\main-integration\browser-artifacts\article-book-pagination-ca-fae55--mode-changes-and-reopening-mobile-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: reports\ui-polish-v4\main-integration\browser-artifacts\article-book-pagination-ca-fae55--mode-changes-and-reopening-mobile-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    reports\ui-polish-v4\main-integration\browser-artifacts\article-book-pagination-ca-fae55--mode-changes-and-reopening-mobile-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace reports\ui-polish-v4\main-integration\browser-artifacts\article-book-pagination-ca-fae55--mode-changes-and-reopening-mobile-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) [mobile-chromium] › tests\e2e\article-book-reading.spec.mjs:288:1 › illustrated book preserves every page, renders illustrations and supports accessible navigation 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 2
+    Received: 0
+
+      349 |     const title = locale === "en" ? source.translations.en.title : source.title;
+      350 |     expect(compactText(pageTexts.join(""))).toBe(compactText(title + expectedText));
+    > 351 |     expect(imagePages.size).toBe(2);
+          |                             ^
+      352 |     expect(imagePages.get(cover)).toBeGreaterThan(imagePages.get(portrait));
+      353 |     for (const src of [portrait, cover]) {
+      354 |       await expect.poll(() => page.evaluate(path => window.__articleBookImageDraws.some(value => value.src.endsWith(path)), src), { timeout: 15_000 }).toBe(true);
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\probpera-typography\tests\e2e\article-book-reading.spec.mjs:351:29
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    reports\ui-polish-v4\main-integration\browser-artifacts\article-book-reading-illus-6ab07-ports-accessible-navigation-mobile-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: reports\ui-polish-v4\main-integration\browser-artifacts\article-book-reading-illus-6ab07-ports-accessible-navigation-mobile-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    reports\ui-polish-v4\main-integration\browser-artifacts\article-book-reading-illus-6ab07-ports-accessible-navigation-mobile-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace reports\ui-polish-v4\main-integration\browser-artifacts\article-book-reading-illus-6ab07-ports-accessible-navigation-mobile-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  7) [mobile-chromium] › tests\e2e\article-book-reading.spec.mjs:377:1 › a delayed illustration fills the existing book without blocking reading or resetting its page 
+
+    Error: a noninitial page contains the slow illustration
+
+    expect(received).toBeGreaterThan(expected)
+
+    Expected: > 0
+    Received:   -1
+
+      432 |     }
+      433 |   }
+    > 434 |   expect(illustrationPage, "a noninitial page contains the slow illustration").toBeGreaterThan(0);
+          |                                                                                ^
+      435 |   expect(respondedAt, "reading and page navigation work while the illustration is pending").toBe(0);
+      436 |   expect(await page.evaluate(path => window.__articleBookImageDraws.some(value => value.src.endsWith(path)), portrait)).toBe(false);
+      437 |   await canvas.evaluate(element => { window.__delayedArticleBookCanvas = element; });
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\probpera-typography\tests\e2e\article-book-reading.spec.mjs:434:80
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    reports\ui-polish-v4\main-integration\browser-artifacts\article-book-reading-a-del-4f9fc-ading-or-resetting-its-page-mobile-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: reports\ui-polish-v4\main-integration\browser-artifacts\article-book-reading-a-del-4f9fc-ading-or-resetting-its-page-mobile-chromium\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    reports\ui-polish-v4\main-integration\browser-artifacts\article-book-reading-a-del-4f9fc-ading-or-resetting-its-page-mobile-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace reports\ui-polish-v4\main-integration\browser-artifacts\article-book-reading-a-del-4f9fc-ading-or-resetting-its-page-mobile-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  8) [mobile-chromium] › tests\e2e\reader-extended-accessibility.spec.mjs:140:1 › print media exposes the full source once and preserves canonical book position 
+
+    Error: expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 1
+    Received:    29223
+
+      178 |   expect(geometry.readerPosition, "the reader shell must not clip the printed article").not.toBe("fixed");
+      179 |   expect(geometry.scrollOverflow).toBe("visible");
+    > 180 |   expect(geometry.scrollHeight - geometry.clientHeight).toBeLessThanOrEqual(1);
+          |                                                         ^
+      181 |   await expect(book).toHaveAttribute("data-reading-anchor", savedPosition);
+      182 |   await page.emulateMedia({ media: "screen" });
+      183 |   await expect(book).toBeVisible();
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\probpera-typography\tests\e2e\reader-extended-accessibility.spec.mjs:180:57
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    reports\ui-polish-v4\main-integration\browser-artifacts\reader-extended-accessibil-2e8a0-ves-canonical-book-position-mobile-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: reports\ui-polish-v4\main-integration\browser-artifacts\reader-extended-accessibil-2e8a0-ves-canonical-book-position-mobile-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    reports\ui-polish-v4\main-integration\browser-artifacts\reader-extended-accessibil-2e8a0-ves-canonical-book-position-mobile-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace reports\ui-polish-v4\main-integration\browser-artifacts\reader-extended-accessibil-2e8a0-ves-canonical-book-position-mobile-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  8 failed
+    [desktop-chromium] › tests\e2e\article-book-pagination.spec.mjs:14:1 › canonical book keeps the source fragment through reflow, sizing, mode changes and reopening 
+    [desktop-chromium] › tests\e2e\article-book-reading.spec.mjs:288:1 › illustrated book preserves every page, renders illustrations and supports accessible navigation 
+    [desktop-chromium] › tests\e2e\article-book-reading.spec.mjs:377:1 › a delayed illustration fills the existing book without blocking reading or resetting its page 
+    [desktop-chromium] › tests\e2e\reader-extended-accessibility.spec.mjs:140:1 › print media exposes the full source once and preserves canonical book position 
+    [mobile-chromium] › tests\e2e\article-book-pagination.spec.mjs:14:1 › canonical book keeps the source fragment through reflow, sizing, mode changes and reopening 
+    [mobile-chromium] › tests\e2e\article-book-reading.spec.mjs:288:1 › illustrated book preserves every page, renders illustrations and supports accessible navigation 
+    [mobile-chromium] › tests\e2e\article-book-reading.spec.mjs:377:1 › a delayed illustration fills the existing book without blocking reading or resetting its page 
+    [mobile-chromium] › tests\e2e\reader-extended-accessibility.spec.mjs:140:1 › print media exposes the full source once and preserves canonical book position 
+  6 skipped
+  30 passed (6.4m)
