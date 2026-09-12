@@ -112,20 +112,25 @@ const reviewedCanonMergeCases = [
   },
 ] as const;
 const editorialSeries = [
-  ["Три мушкетёра", 1844, "verified"],
-  ["Вишнёвый сад", 1904, "verified"],
-  ["Морской волк", 1904, "verified"],
+  ["Три мушкетёра", 1844, "draft"],
+  ["Вишнёвый сад", 1904, "draft"],
+  ["Морской волк", 1904, "draft"],
   ["1984", 1949, "verified"],
   ["Хоббит, или Туда и обратно", 1937, "verified"],
-  ["Отцы и дети", 1862, "verified"],
+  ["Отцы и дети", 1862, "draft"],
 ] as const;
+const retainedDraftEnglishTitles: Record<string, string> = {
+  "usa:william_faulkner:the-sound-and-the-fury-editorial": "The Sound and the Fury",
+  "usa:john_steinbeck:the-grapes-of-wrath-editorial": "The Grapes of Wrath",
+  "usa:ernest_hemingway:for-whom-the-bell-tolls-editorial": "For Whom the Bell Tolls",
+};
 
 describe("редакционная серия книжного архива", () => {
   it("сохраняет полный corpus baseline и все проверенные safe merge/reject", () => {
-    expect(rawArchive).toHaveLength(10_057);
-    expect(archive).toHaveLength(9_761);
+    expect(rawArchive).toHaveLength(10_059);
+    expect(archive).toHaveLength(9_763);
     expect(rawArchive.length - archive.length).toBe(296);
-    expect(archive.filter(isPublicBook)).toHaveLength(56);
+    expect(archive.filter(isPublicBook)).toHaveLength(69);
   });
 
   it("applies reviewed identity resolutions without promoting held dates", () => {
@@ -295,6 +300,15 @@ describe("редакционная серия книжного архива", ()
               ...(survivorBefore.localizedTitles || {}),
             }
           : undefined;
+      const retainedEnglishTitle = retainedDraftEnglishTitles[into];
+      if (retainedEnglishTitle && expectedTranslations?.en) {
+        // This translation is a new pending synopsis. Before the identity merge
+        // only its canonical Russian fallback was available; the retained
+        // English source title becomes available in the enriched record.
+        expect(expectedTranslations.en.title).toBe(survivorBefore.title);
+        expect(expectedTranslations.en).toMatchObject({ status: "draft", retainedCatalogSource: "R49N-20260912" });
+        expectedTranslations.en = { ...expectedTranslations.en, title: retainedEnglishTitle };
+      }
       expect(survivorAfter.translations).toEqual(expectedTranslations);
       expect(survivorAfter.localizedTitles).toEqual(expectedLocalizedTitles);
 
@@ -556,6 +570,12 @@ describe("редакционная серия книжного архива", ()
       expect(book?.writerName).toBeTruthy();
       expect(book?.coverRights?.status).toBe("editorial-original");
       expect(book?.editorial?.status).toBe(editorialStatus);
+      if (editorialStatus === "draft") {
+        expect(isPublicBook(book!)).toBe(false);
+        for (const locale of ["ru", "en"] as const) {
+          expect(book?.translations?.[locale]).toMatchObject({ status: "draft", retainedCatalogSource: "R49N-20260912" });
+        }
+      }
 
       const coverPath = fileURLToPath(
         new URL(`../../public/${book?.coverUrl}`, import.meta.url)

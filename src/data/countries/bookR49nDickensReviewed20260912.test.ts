@@ -78,7 +78,7 @@ describe("independently reviewed R49N Dickens profiles", () => {
     }
   });
 
-  it("preserves the complete key set, all 9751 non-target records and protected fields of the ten targets", () => {
+  it("preserves protected fields of the original ten targets within the separately audited common package", () => {
     const canonical = (value: unknown): unknown => Array.isArray(value)
       ? value.map(canonical)
       : value && typeof value === "object"
@@ -87,21 +87,14 @@ describe("independently reviewed R49N Dickens profiles", () => {
     const objectHash = (value: unknown) => hash(JSON.stringify(canonical(value)));
     const aggregate = (pairs: [string, string][]) => hash(pairs.sort(([a], [b]) => a < b ? -1 : a > b ? 1 : 0).map(([key, sha]) => `${key}\0${sha}\n`).join(""));
     const targetKeys = new Set(attestation.runtime.newReadyKeys);
-    const nonTargets = archive.filter((book) => !targetKeys.has(keyOf(book)));
     const protectedFields = new Set(attestation.runtime.protectedTargetFields);
-    expect(archive).toHaveLength(attestation.runtime.canonicalCount);
-    expect(hash(archive.map(keyOf).sort().join("\n") + "\n")).toBe(attestation.runtime.canonicalKeysSha256);
-    expect(nonTargets).toHaveLength(attestation.runtime.nonTargetCount);
-    expect(aggregate(nonTargets.map(({ country, writer, ...book }) => [
-      `${book.countryId}:${book.writerId}:${book.id}`, objectHash(book),
-    ]))).toBe(attestation.runtime.nonTargetRecordsSha256);
+    // Global key-set, ready-set and non-target hashes are now asserted by
+    // bookR49nPackageReviewed20260912.test.ts against the original 46 baseline.
+    expect(archive.filter((book) => targetKeys.has(keyOf(book)))).toHaveLength(10);
     expect(aggregate(archive.filter((book) => targetKeys.has(keyOf(book))).map((book) => [
       keyOf(book), objectHash(Object.fromEntries(Object.entries(book).filter(([field, value]) => protectedFields.has(field) && value !== undefined))),
     ]))).toBe(attestation.runtime.protectedTargetFieldsSha256);
-    expect(archive.filter(isPublicBook).map(keyOf).sort()).toEqual([
-      ...attestation.runtime.beforeReadyKeys, ...attestation.runtime.newReadyKeys,
-    ].sort());
-    expect(archive.filter(isPublicBook)).toHaveLength(attestation.runtime.afterReadyCount);
+
   });
 
   it("preserves later cover, edition, identity and other unrelated enrichment without mutating the input", () => {

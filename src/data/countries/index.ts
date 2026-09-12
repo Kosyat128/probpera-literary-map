@@ -10,6 +10,8 @@ import { mergeWriterBiographyEnglishTranslations } from "./writerBiographyEnglis
 import { mergeArticleReferencedBooks } from "./articleReferencedBooks";
 import { mergeVerifiedBookSupplements } from "./verifiedBookSupplements";
 import { mergeUserSuppliedBookWorkSupplementsBatch20260820 } from "./userSuppliedBookWorkSupplementsBatch20260820";
+import { mergeBookR49nStoweRecovered20260912 } from "./bookR49nStoweRecovered20260912";
+import { mergeBookR49nAlcottDraft20260912 } from "./bookR49nAlcottDraft20260912";
 import {
   applyCmsCountryProfileOverrides,
   applyCmsWriterProfileOverrides,
@@ -487,8 +489,12 @@ const countriesBeforeWriterBiographyCorrections: Country[] =
  * quarantine must not remove or rename pending book cards: those records stay
  * in the editorial queue until the books themselves are reviewed.
  */
+export const bookArchiveSourceCountries: Country[] = countriesBeforeWriterBiographyCorrections;
+
 export const bookArchiveCountries: Country[] =
-  countriesBeforeWriterBiographyCorrections;
+  mergeBookR49nAlcottDraft20260912(
+    mergeBookR49nStoweRecovered20260912(bookArchiveSourceCountries)
+  );
 
 /** Stable pre-review source used by SHA-pinned claim-review tests. */
 export const writerBiographyFactReviewSourceCountries: Country[] =

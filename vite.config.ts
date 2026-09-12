@@ -45,6 +45,12 @@ export default defineConfig(({ mode }) => {
             if (moduleId.includes("vite/preload-helper")) {
               return "vite-preload-helper";
             }
+            // Keep retained synopsis data in three bounded dependencies of the
+            // lazy archive. The facade still applies the same exact RU/EN text.
+            const retainedDraftPart = moduleId.match(
+              /\/src\/data\/countries\/bookR49nRetainedDrafts20260912Data(0[1-3])\.ts$/u
+            )?.[1];
+            if (retainedDraftPart) return `book-retained-drafts-${retainedDraftPart}`;
             if (moduleId.includes("/books.generated.json")) return "book-catalog";
             if (moduleId.includes("/writerPortraits.generated.json")) {
               return "writer-portraits-data";

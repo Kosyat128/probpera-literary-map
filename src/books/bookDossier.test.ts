@@ -28,6 +28,21 @@ async function approved(input = fixture()) {
 }
 
 describe("finite dossier publication", () => {
+  it.each(["ru", "en"] as const)("keeps a retained pending synopsis labelled through both %s renderers without promoting facts", locale => {
+    const profile = { locale, title: "Retained title", description: "Retained synopsis.", sourceLanguage: locale,
+      status: "draft" as const, method: "editorial-original" as const, sourceUrls: [], retainedCatalogSource: "R49N-20260912" };
+    const legacy = buildBookEditorialDocument({ bookKey: "test:writer:pending", locale, themeVersion: "test",
+      title: profile.title, writer: "Writer", catalogSynopsis: { value: profile.description, reviewStatus: "pending" } });
+    const dossier = buildBookDossierFromEditorial(legacy, { descriptionProfile: profile });
+    const pages = toBookEditorialDocument(dossier).pages;
+    expect(pages.map(page => page.id)).toEqual(["identity", "catalog-synopsis", "legal-reading"]);
+    expect(pages[1]).toMatchObject({ paragraphs: [profile.description], eyebrow: locale === "ru" ? "Пока не проверено" : "Not yet reviewed", sources: [], rows: [] });
+    expect(dossier.profile).toBeNull();
+    expect(dossier.tier).toBeNull();
+    expect(JSON.stringify(dossier)).not.toContain('"verified":true');
+    expect(buildBookDossierFromEditorial(legacy, { descriptionProfile: { ...profile, retainedCatalogSource: undefined } as WorkTranslationProfile }).pages.some(page => page.id === "catalog-synopsis")).toBe(false);
+    expect(buildBookDossierFromEditorial(legacy, { descriptionProfile: { ...profile, description: "A different text." } }).pages.some(page => page.id === "catalog-synopsis")).toBe(false);
+  });
   it("stops the available progress prefix at a hidden checkpoint and never skips ahead", async () => {
     const record = await approved(bookDossierHiddenProgressFixture());
     const { bank, issues } = await compileBookDossierVariantBank(record, { now });

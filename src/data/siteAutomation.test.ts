@@ -12,7 +12,7 @@ describe("automatic site counters", () => {
     expect(countries).toHaveLength(200);
     expect(writers.length).toBeGreaterThan(100);
     expect(books.length).toBeGreaterThan(100);
-    expect(books).toHaveLength(9_761);
+    expect(books).toHaveLength(9_763);
     const isolatedCountryTotal = bookArchiveCountries.reduce(
       (total, country) => total + buildBookArchive([country]).length,
       0

@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-09-12",
+  "reviewer": "Codex article_counts",
+  "reviewerKind": "AI",
+  "humanReview": false,
+  "scope": "Reuse retained source-backed profiles and exact annotations; no prose rewriting or web refetch. New isolated book-only country transform. Root owns package wiring.",
+  "source": {
+    "masterSha256": "f441344f6b4367684c8f5ec39f746f12c079ff05e5130b3183e06bab7c359674",
+    "originalZipSha256": "977f25072022cb7275242b030836326f8f30c97423697b60081859d8ce17fb69",
+    "historicalProfile": {
+      "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+      "path": "src/data/countries/bookVerifiedAdditionsBatch20260904.ts",
+      "sha256": "d4a8a5f7484a2c52c540561b7236707b3a56f0c19e3646c72fe5f0808139dabd"
+    },
+    "evaluatedRegistrySha256": "c8d2b6862c47c3215295951d2c5d1c406913b9879c616f1d8b787c6e05029f6c",
+    "localHead": "4ed87afa5aef95a650be213c982da5cf662f7469",
+    "workingTreePackageInProgress": true
+  },
+  "materialized": [
+    {
+      "recordKey": "usa:harriet_beecher_stowe:uncle-toms-cabin",
+      "module": "src/data/countries/bookR49nStoweRecovered20260912.ts",
+      "masterPointer": "/records/9644",
+      "profileSha256": "108a81b8410ecc1313b5400cc57d497a4fd166b7db610796d17b73024fe90866",
+      "selectedTexts": {
+        "ru": "10ef92d8a4d3a4242fb12994fab900cebc858a788816f34ef59484d1c2790d0e",
+        "en": "f3d2a647af1c673b6482289d08d52f3988a54560cdf3009fa3ec9deaf0380783"
+      },
+      "textSelection": "Exact independently reviewed 2026-09-04 MASTER RU/EN pair retained, no later text substitution.",
+      "historicalReviewDatesPreserved": true,
+      "authorshipPreserved": true,
+      "firstPublicationScope": "1852 first complete book, distinct from1851 start of serialization.",
+      "editionScope": "RU title independent RSL/AST; EN title GB market NLI1852 and Penguin/Everyman1995. NLI institution country is not publication market.",
+      "canonicalIdentity": {
+        "status": "accepted-mapping",
+        "recordKey": "usa:harriet_beecher_stowe:uncle-toms-cabin",
+        "sourceTitleAliasExact": "Uncle Tom’s Cabin; or, Life Among the Lowly.",
+        "expectedArchiveFields": {
+          "title": "Хижина дяди Тома",
+          "originalTitle": "Uncle Tom's Cabin; or, Life Among the Lowly",
+          "firstPublished": 1852
+        },
+        "reasonRu": "Добавленная и проверенная карточка романа Стоу однозначно соответствует исходному произведению в реестре LoC; прежний запрет на создание дубля сохраняется, а исследовательская запись теперь ссылается на существующую карточку."
+      },
+      "newCanonClaims": false,
+      "newCover": false,
+      "writerAddedToBookCorpusOnly": true,
+      "writerFields": [
+        "id",
+        "name",
+        "country",
+        "language",
+        "workDetails"
+      ],
+      "biographyFieldsAdded": [],
+      "requiredWiring": "mergeBookR49nStoweRecovered20260912(bookArchiveCountries input); never add to public countries or reviewed1684 biography corpus.",
+      "actualCurrentGateIssues": [],
+      "publicBook": true
+    }
+  ],
+  "retainedNotMaterialized": [
+    {
+      "recordKey": "germany:theodor_mommsen:history-of-rome",
+      "issueId": "R03-I03",
+      "semanticFinding": "NEB000199_000009_003506955 and RSL01003506955 identify the same national record. Retained R03 review rejects their independence; no status-only promotion. Same-language synopsis primary bindings absent.",
+      "actualCurrentGateIssues": [
+        "publication:перевод ru не прошёл редакционную проверку",
+        "publication:перевод en не прошёл редакционную проверку"
+      ],
+      "proseChanged": false
+    },
+    {
+      "recordKey": "russia:chekhov:article-series-6yjp93",
+      "issueId": "R05-I01",
+      "semanticFinding": "The exact R05 RU/EN annotations agree with retained full-story reading notes R05-S01 and R05-S02. This AI comparison is against saved notes, not a new web reading. Preserve historical title manifestations separately from the1915 London text source.",
+      "textHashes": {
+        "ru": "44460b3d7f6b6455d0dc1ea96ae4cb00f734de6b9f1acbb1c77d40a9ee548fbe",
+        "en": "e55644cccae0470b6bb3b3cfd9b2e4086357416ac4715dd250975a831cd3148d"
+      },
+      "sourcePointers": [
+        "MASTER#/restartSourceReadings/61",
+        "MASTER#/restartSourceReadings/62"
+      ],
+      "actualPreparedGateIssues": [
+        "ru-description-fact-source-2-authority-role-not-allowed",
+        "en-description-fact-source-2-authority-role-not-allowed"
+      ],
+      "remaining": "Project Gutenberg literary text has no allowed description-fact role in current registry. Its ebooks catalog record must not be relabeled as a text reading.",
+      "preparedProfile": "D:/CodexData/Temp/probpera-r49n-editorial-review-20260912/chekhov-classics-retained-prepared-profile.json",
+      "proseChanged": false,
+      "disposition": "hold-source-role-admission; do not expand Project Gutenberg roles for this release"
+    },
+    {
+      "recordKey": "usa:louisa_may_alcott:little-women",
+      "issueId": "R03-I04",
+      "canonicalIdentity": {
+        "status": "accepted-mapping",
+        "recordKey": "usa:louisa_may_alcott:little-women",
+        "sourceTitleAliasExact": "Little Women, or, Meg, Jo, Beth, and Amy.",
+        "expectedArchiveFields": {
+          "title": "Маленькие женщины",
+          "originalTitle": "Little Women, or, Meg, Jo, Beth, and Amy",
+          "firstPublished": 1868
+        },
+        "reasonRu": "Созданная черновая карточка соответствует первой части 1868 года и отдельному профилю Олкотт. Сопоставление с LoC закрывает отсутствие карточки, но не разрешает её публикацию: библиографическое доказательство английского заглавия заданного объёма пока недостаточно."
+      },
+      "semanticFinding": "Exact work scope remains the standalone1868 Part I. R03/R35 notes retain missing national EN title evidence for this scope; a combined1870 PartsI+II record is not a substitute.",
+      "actualCurrentGateIssues": [
+        "publication:перевод ru не прошёл редакционную проверку",
+        "publication:нет даты проверки перевода ru",
+        "publication:перевод en не прошёл редакционную проверку",
+        "publication:нет даты проверки перевода en",
+        "missing-en-published-title-evidence",
+        "en-description-fact-source-2-authority-not-registered",
+        "en-description-two-independent-authorities-required"
+      ],
+      "proseChanged": false
+    }
+  ],
+  "runtimeReceipt": {
+    "baselineDefinition": "Current package country corpus with the isolated new Stowe writer removed only in memory; compares existing records under identical current registry and overlays.",
+    "beforeRecords": 9761,
+    "afterRecords": 9762,
+    "newKeys": [
+      "usa:harriet_beecher_stowe:uncle-toms-cabin"
+    ],
+    "existingChanged": [],
+    "existingReadyBefore": 68,
+    "existingReadyPreserved": 68,
+    "afterReady": 69,
+    "publicWriterCorpusContainsStowe": false,
+    "publicWriterCorpusMutated": false,
+    "descriptionHashContext": "Actual RU text SHA256 supplied for linked EN translation validation."
+  },
+  "validation": {
+    "unitFile": "src/data/countries/bookR49nStoweRecovered20260912.test.ts",
+    "passedTests": 4,
+    "fullSuiteRun": false,
+    "productionBuildRun": false,
+    "typeScriptNoEmit": "passed after local primarySourceUrls typing; shared types and evidence rules unchanged"
+  },
+  "publicationPerformed": false,
+  "retainedCorpus": {
+    "currentPairs": 1546,
+    "currentTexts": 3092,
+    "explicitSourceBoundVersionsAfterRecovery": 3085,
+    "originalVersionsWithoutSourceIds": 7,
+    "allCurrentProseAndHistoricalVariantsPreserved": true,
+    "nonpublicationMeaning": "Pending source-role admission, exact manifestation evidence or metadata transfer does not mean the existing annotations are absent, discarded or rewritten.",
+    "inventory": "D:/CodexData/Temp/probpera-r49n-readiness-inventory-20260912/summary-compact.json",
+    "inventoryBaselines": {
+      "remoteMainAtAudit": "ba3336a0:46 ready",
+      "localCheckpointBeforePackage": "4ed87afa:56 ready",
+      "currentPreparedWorkingPackage": "69 ready;9762 records;not published"
+    }
+  }
+}

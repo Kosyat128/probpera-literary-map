@@ -54,6 +54,7 @@ export type BookEditorialPageInput = Readonly<{
   country?: BookEditorialVerifiedValue<string>;
   metadata?: readonly BookEditorialMetadata[];
   description?: BookEditorialVerifiedValue<string>;
+  catalogSynopsis?: Readonly<{ value: string; reviewStatus: "pending" }>;
   sourceRights?: readonly BookEditorialSourceRights[];
 }>;
 
@@ -105,6 +106,8 @@ type EditorialLabels = Readonly<{
   language: string;
   country: string;
   description: string;
+  synopsis: string;
+  pending: string;
   provenance: string;
   metadata: Readonly<Record<BookEditorialMetadataKind, string>>;
   usage: Readonly<Record<BookEditorialSourceRights["usage"], string>>;
@@ -119,6 +122,8 @@ const labels: Readonly<Record<BookEditorialLocale, EditorialLabels>> = {
     language: "Язык оригинала",
     country: "Страна",
     description: "Редакционное описание",
+    synopsis: "Аннотация",
+    pending: "Пока не проверено",
     provenance: "Источники и права",
     metadata: {
       publisher: "Издатель",
@@ -143,6 +148,8 @@ const labels: Readonly<Record<BookEditorialLocale, EditorialLabels>> = {
     language: "Original language",
     country: "Country",
     description: "Editorial description",
+    synopsis: "Synopsis",
+    pending: "Not yet reviewed",
     provenance: "Sources and rights",
     metadata: {
       publisher: "Publisher",
@@ -314,7 +321,8 @@ function normalizedSources(
 /**
  * Builds short, finite editorial matter. It never accepts or manufactures the
  * work text: optional facts enter only through runtime-checked `verified`
- * records, and absent fields simply produce no row/page.
+ * records. A separately authorized catalogue synopsis retains its pending label;
+ * absent fields simply produce no row/page.
  */
 export function buildBookEditorialDocument(
   input: BookEditorialPageInput
@@ -425,6 +433,19 @@ export function buildBookEditorialDocument(
   }
 
   const sources = normalizedSources(input.sourceRights, locale);
+  const catalogSynopsis = !description && input.catalogSynopsis?.reviewStatus === "pending"
+    ? normalizedText(input.catalogSynopsis.value, 20_000)
+    : "";
+  if (catalogSynopsis) {
+    pages.push(freezePage({
+      id: "catalog-synopsis",
+      eyebrow: selectedLabels.pending,
+      title: selectedLabels.synopsis,
+      rows: [],
+      paragraphs: [catalogSynopsis],
+      sources: [],
+    }, pages.length));
+  }
   if (sources.length > 0) {
     pages.push(
       freezePage(

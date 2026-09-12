@@ -7112,6 +7112,14 @@
     "multiline": false
   },
   {
+    "key": "interface.Пока не проверено",
+    "group": "Весь интерфейс",
+    "label": "Пока не проверено",
+    "defaultRu": "Пока не проверено",
+    "defaultEn": "Not yet reviewed",
+    "multiline": false
+  },
+  {
     "key": "interface.Пока нет опубликованных переводов на английский язык",
     "group": "Весь интерфейс",
     "label": "Пока нет опубликованных переводов на английский язык",
@@ -7294,6 +7302,14 @@
     "defaultRu": "Полный архив публикаций",
     "defaultEn": "Complete publication archive",
     "multiline": false
+  },
+  {
+    "key": "interface.Полный каталог произведений и готовые аннотации. У каждой карточки указан статус редакционной проверки.",
+    "group": "Весь интерфейс",
+    "label": "Полный каталог произведений и готовые аннотации. У каждой карточки указан статус редакционной проверки.",
+    "defaultRu": "Полный каталог произведений и готовые аннотации. У каждой карточки указан статус редакционной проверки.",
+    "defaultEn": "The complete catalog with available synopses. Each book shows its editorial review status.",
+    "multiline": true
   },
   {
     "key": "interface.Пользователь просит редакцию проверить эту публикацию форума.",
@@ -8477,6 +8493,22 @@
     "label": "Режим печатной книги",
     "defaultRu": "Режим печатной книги",
     "defaultEn": "Printed book mode",
+    "multiline": false
+  },
+  {
+    "key": "interface.результат",
+    "group": "Весь интерфейс",
+    "label": "результат",
+    "defaultRu": "результат",
+    "defaultEn": "result",
+    "multiline": false
+  },
+  {
+    "key": "interface.результата",
+    "group": "Весь интерфейс",
+    "label": "результата",
+    "defaultRu": "результата",
+    "defaultEn": "results",
     "multiline": false
   },
   {

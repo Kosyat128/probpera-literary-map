@@ -116,6 +116,10 @@ const reviewedMigrations = [
     "20260905_article_publication_permissions.sql",
     "1f9b4b9a9efb00488010cb6719cb36967a395038089b2ca3091657e144f0fcc8",
   ],
+  [
+    "20260912_literary_work_evidence_v2_registry_rotation.sql",
+    "01a7fc62c731d01c2ea6912dc4ed770bf5cbe4d696122feb4fee401987ff4220",
+  ],
 ];
 
 const reviewedHotfixes = [
@@ -438,8 +442,10 @@ begin
       and control.validator_sha256 =
         'f2ef2c46ae78be553a190057f8833c5661dc1cbcc1902564708effa7f6db0026'
       and control.canon_registry_version = 'world-canon-2026-09-v2'
-      and control.canon_registry_sha256 =
-        'd0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef'
+      and control.canon_registry_sha256 in (
+        'd0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef',
+        'c8d2b6862c47c3215295951d2c5d1c406913b9879c616f1d8b787c6e05029f6c'
+      )
   ) then
     raise exception 'Evidence V2 validator or canon registry pin is not frozen';
   end if;
@@ -502,8 +508,35 @@ begin
     or to_regprocedure('public.create_literary_archive_release(text,text,integer,integer,integer,text,jsonb,text,integer,text,boolean,jsonb)') is null
     or to_regprocedure('public.stage_literary_archive_release_batch(uuid,integer,jsonb)') is null
     or to_regprocedure('public.commit_literary_archive_release(uuid,text)') is null
+    or to_regprocedure('public.get_literary_work_evidence_v2_registry_transition()') is null
+    or to_regprocedure('public.get_literary_work_evidence_v2_rotation_snapshot()') is null
+    or to_regprocedure('public.prepare_literary_archive_registry_rotation(uuid)') is null
+    or to_regprocedure('public.assert_literary_archive_registry_rotation(uuid)') is null
+    or to_regprocedure('public.prepare_literary_archive_reviewed_writer_reference(uuid)') is null
+    or to_regprocedure('public.prepare_literary_archive_draft_writer_reference(uuid)') is null
     or to_regprocedure('public.premium_machine_translation_ready()') is null then
     raise exception 'Required editorial RPC is missing after reconciliation';
+  end if;
+
+  -- The old active pin is allowed only while the exact forward atomic
+  -- capability is installed. Migration itself never invalidates live proofs.
+  if not exists (
+    select 1 from pg_catalog.pg_attrdef value
+    join pg_catalog.pg_attribute attribute
+      on attribute.attrelid = value.adrelid and attribute.attnum = value.adnum
+    where value.adrelid = 'public.literary_work_evidence_v2_controls'::regclass
+      and attribute.attname = 'canon_registry_sha256'
+      and pg_catalog.pg_get_expr(value.adbin, value.adrelid) =
+        '''c8d2b6862c47c3215295951d2c5d1c406913b9879c616f1d8b787c6e05029f6c''::text'
+  ) or position('perform public.prepare_literary_archive_registry_rotation(target.id);'
+    in pg_catalog.pg_get_functiondef('public.commit_literary_archive_release(uuid,text)'::regprocedure)) = 0
+    or position('perform public.assert_literary_archive_registry_rotation(target.id);'
+    in pg_catalog.pg_get_functiondef('public.commit_literary_archive_release(uuid,text)'::regprocedure)) = 0
+    or has_function_privilege('service_role', 'public.prepare_literary_archive_registry_rotation(uuid)', 'EXECUTE')
+    or has_function_privilege('service_role', 'public.assert_literary_archive_registry_rotation(uuid)', 'EXECUTE')
+    or has_function_privilege('service_role', 'public.prepare_literary_archive_reviewed_writer_reference(uuid)', 'EXECUTE')
+    or has_function_privilege('service_role', 'public.prepare_literary_archive_draft_writer_reference(uuid)', 'EXECUTE') then
+    raise exception 'Reviewed atomic registry rotation capability is incomplete';
   end if;
 
   select count(*) into recorded_migrations

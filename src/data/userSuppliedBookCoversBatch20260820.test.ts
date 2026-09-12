@@ -133,11 +133,11 @@ describe("пользовательские редакционные обложк
       expect(JSON.stringify(work)).not.toMatch(/isbn[-_ ]?1[03]/iu);
     }
 
-    expect(archive).toHaveLength(9_761);
-    expect(baseline).toHaveLength(9_761);
-    expect(archive.filter(isPublicBook)).toHaveLength(56);
-    expect(baseline.filter(isPublicBook)).toHaveLength(56);
-    expect(archive.filter((book) => !isPublicBook(book))).toHaveLength(9_705);
+    expect(archive).toHaveLength(9_763);
+    expect(baseline).toHaveLength(9_763);
+    expect(archive.filter(isPublicBook)).toHaveLength(69);
+    expect(baseline.filter(isPublicBook)).toHaveLength(69);
+    expect(archive.filter((book) => !isPublicBook(book))).toHaveLength(9_694);
   });
 
   it("применяет только 31 primary и оставляет 12 secondary вне публичного overlay", () => {

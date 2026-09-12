@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
+import { projectReviewedR49nPackage } from "./reviewed-r49n-package.mjs";
 import {
   isReviewedR49nDickensAddition,
   projectReviewedR49nDickens,
@@ -11,7 +12,9 @@ import {
 const sha = (source) => createHash("sha256").update(source).digest("hex");
 const canonical = (value) => Array.isArray(value) ? value.map(canonical) : value && typeof value === "object"
   ? Object.fromEntries(Object.keys(value).sort().map((key) => [key, canonical(value[key])])) : value;
-const read = (file) => readFileSync(file, "utf8").replace(/\r\n?/gu, "\n");
+const read = (file) => projectReviewedR49nPackage(
+  file, readFileSync(file, "utf8").replace(/\r\n?/gu, "\n")
+);
 
 describe("September 12 independently reviewed Dickens publication scope", () => {
   it("pins this new review independently of historical UI/catalog attestations", () => {

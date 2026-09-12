@@ -22,7 +22,6 @@ import {
   shouldUseClientNavigation,
 } from "../utils/articleRoutes";
 import CountryFlagIcon from "./CountryFlagIcon";
-import { getPublicWriterWorkTitles } from "../data/bookArchive";
 import { selectWriterBiographyForDisplay } from "../data/writerBiographyDisplay";
 import {
   selectWriterDisplayName,
@@ -86,6 +85,8 @@ function FollowBellIcon({ active = false }: { active?: boolean }) {
 
 type WriterPanelProps = {
   country: Country;
+  catalogWorkCount: number | null;
+  catalogWorkCountLoading?: boolean;
   selectedWriter?: Writer | null;
   focusRequestId?: number;
   onWriterSelect?: (writer: Writer) => void;
@@ -157,6 +158,8 @@ function relatedArticlesFor(writer: Writer, language: "ru" | "en") {
 
 export default function WriterPanel({
   country,
+  catalogWorkCount,
+  catalogWorkCountLoading = false,
   selectedWriter,
   focusRequestId,
   onWriterSelect,
@@ -621,22 +624,18 @@ export default function WriterPanel({
                 ])}
           </span>
         </button>
-        <div className="country-metric country-metric--static">
+        <div className="country-metric country-metric--static country-metric--works" aria-busy={catalogWorkCountLoading}>
           {(() => {
-            const worksCount = uniqueValues(
-              writers.flatMap((writer) =>
-                getPublicWriterWorkTitles(writer, language)
-              )
-            ).length;
+            const worksCount = catalogWorkCount;
             return (
               <>
-                <strong>{number(worksCount)}</strong>
+                <strong>{worksCount === null ? catalogWorkCountLoading ? "…" : "—" : number(worksCount)}</strong>
                 <span>
                   {language === "en"
                     ? worksCount === 1
                       ? "work"
                       : "works"
-                    : pluralRu(worksCount, [
+                    : pluralRu(worksCount ?? 0, [
                         "произведение",
                         "произведения",
                         "произведений",
