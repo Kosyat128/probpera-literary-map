@@ -21,22 +21,29 @@ function hasExistingOriginalDescription(profile: WorkTranslationProfile | undefi
     normalized(profile.description) === paragraph);
 }
 
+function hasRetainedCatalogSynopsis(profile: WorkTranslationProfile | undefined, paragraph: string, locale: string) {
+  const retained = profile as (WorkTranslationProfile & { retainedCatalogSource?: string }) | undefined;
+  return Boolean(retained?.locale === locale && retained.retainedCatalogSource === "R49N-20260912" &&
+    normalized(retained.description).slice(0, 20_000).trim() === paragraph);
+}
+
 /** Existing approved catalogue material is an honest compact fallback, not a new human-reviewed CORE release. */
 export function buildBookDossierFromEditorial(input: BookEditorialDocument, extras: LegacyExtras = {}): BookDossierDocumentV2 {
   const english = input.locale === "en";
   const pages: BookDossierPage[] = [];
-  const templates: Record<string, BookDossierTemplate> = { identity: "title", details: "passport", description: "essay", provenance: "sources" };
+  const templates: Record<string, BookDossierTemplate> = { identity: "title", details: "passport", description: "essay", "catalog-synopsis": "essay", provenance: "sources" };
   const version = `${BOOK_DOSSIER_DATA_VERSION}-catalogue`;
-  const order = ["identity", "description", "details", "provenance"];
+  const order = ["identity", "description", "catalog-synopsis", "details", "provenance"];
   for (const page of [...input.pages].sort((left, right) => order.indexOf(left.id) - order.indexOf(right.id))) {
     if (page.id === "description" && !hasExistingOriginalDescription(extras.descriptionProfile, page.paragraphs[0] || "", input.locale)) continue;
+    if (page.id === "catalog-synopsis" && !hasRetainedCatalogSynopsis(extras.descriptionProfile, page.paragraphs[0] || "", input.locale)) continue;
     const anchor = { sectionId: page.id, blockId: `${page.id}-content`, dossierVersion: version, locale: input.locale, readingMode: "BEFORE_READING" as const };
     const sources = page.sources.filter(source => isBookDossierUrl(source.sourceUrl)).map((source, index) => ({
       id: source.id || `${page.id}-source-${index}`, provider: source.provider, title: source.provider,
       sourceUrl: source.sourceUrl, usageLabel: english ? "Reference source" : "Справочный источник",
     }));
     if (page.id !== "identity" && !page.rows.length && !page.paragraphs.length && !sources.length) continue;
-    const kind = page.id === "description" ? "editorial" : page.id === "provenance" ? "sources" : "metadata";
+    const kind = ["description", "catalog-synopsis"].includes(page.id) ? "editorial" : page.id === "provenance" ? "sources" : "metadata";
     const rows = page.rows.map((row, index) => ({ ...row, id: row.id || `${page.id}-row-${row.kind}-${index}` }));
     const block: BookDossierPublicBlock = {
       id: anchor.blockId, sectionId: page.id, kind, title: page.title, paragraphs: page.paragraphs,

@@ -1,0 +1,903 @@
+{
+  "schemaVersion": 1,
+  "id": "BOOK-R49N-COMMON-PACKAGE-20260912",
+  "authorizedOn": "2026-09-12",
+  "authorization": "Owner explicitly requested one complete canonical catalog with reviewed/pending labels and the retained descriptions displayed as pending; approved source recovery, minimal header/library corrections and guarded publication. Old Dickens/UI/migration pins remain unchanged.",
+  "humanReview": false,
+  "baselineSourceCommitSha": "4ed87afa5aef95a650be213c982da5cf662f7469",
+  "historicalDataBaselineCommitSha": "61169576b38a250415060348b5bae96f57d3ffae",
+  "inputArchiveSha256": "977f25072022cb7275242b030836326f8f30c97423697b60081859d8ce17fb69",
+  "inputMasterSha256": "f441344f6b4367684c8f5ec39f746f12c079ff05e5130b3183e06bab7c359674",
+  "editorialReview": {
+    "path": "reports/book-r49n-package-reviewed-20260912.json",
+    "canonicalJsonSha256": "02171f0b07410ad8321db2b6782a416add6ed1a1cf31ee6574945c8d86def575"
+  },
+  "textHashProfile": "sha256-utf8-with-crlf-and-cr-normalized-to-lf",
+  "allowedProjectionPaths": [
+    ".github/workflows/reconcile-production-database.yml",
+    "apps/admin/catalog-assets/editorial-catalog.json",
+    "apps/admin/catalog-assets/interface-copy-catalog.json",
+    "apps/admin/lib/editorial-catalog.ts",
+    "data/book-canon-source-registry.json",
+    "scripts/archive-source.ts",
+    "scripts/database/build-production-migration-plan.mjs",
+    "scripts/import-user-supplied-book-covers.mjs",
+    "scripts/import-user-supplied-book-covers-2026-08-13.mjs",
+    "scripts/import-user-supplied-book-covers-2026-08-20.mjs",
+    "scripts/sync-literary-archive.mjs",
+    "src/App.tsx",
+    "src/books/bookDossierLegacyAdapter.ts",
+    "src/books/bookEditorialPages.ts",
+    "src/components/BookArchiveSection.tsx",
+    "src/components/BookShelfControls.tsx",
+    "src/components/GlobalSearch.tsx",
+    "src/components/WriterPanel.tsx",
+    "src/data/bookArchive.ts",
+    "src/data/bookArchiveQueue.ts",
+    "src/data/countries/index.ts",
+    "src/i18n/InterfaceLanguage.tsx",
+    "src/search/globalSearchIndex.ts",
+    "vite.config.ts"
+  ],
+  "sourceBaselines": {
+    ".github/workflows/reconcile-production-database.yml": "bc386ea8234d580bc8722ed97c1c078f77b70ae4524daccbaa77acd633e711a0",
+    "apps/admin/catalog-assets/editorial-catalog.json": "0c8b02d0d269dc86ac4d7d10d4188fae04609ee4076a8031cd3451b73d39bbbf",
+    "apps/admin/catalog-assets/interface-copy-catalog.json": "2032668ddf32b604f1b507ccdaca732ff1947378413f5991128b0dbeb9ae224d",
+    "apps/admin/lib/editorial-catalog.ts": "06e826dd86f399277117a0853c8efa794a8c081e1ed754aa985c49fad157d204",
+    "data/book-canon-source-registry.json": "d0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef",
+    "scripts/archive-source.ts": "249190b01e9e530e678c4fc4e6ff32eed5b6a23aa23d1be199e7a14fd0879ce0",
+    "scripts/database/build-production-migration-plan.mjs": "a694f303938215a5bfd81a9c98a9f539fd307bbfddbfb38d831152e06b9a6320",
+    "scripts/import-user-supplied-book-covers.mjs": "fc0fcb52bba8e58a37743f17db2c4307b64dd0b0dad3a5f82bc23946b94a91e4",
+    "scripts/import-user-supplied-book-covers-2026-08-13.mjs": "5a2f4ed2cc61b24e5b460c560c52e4cdc6395eee07e6d23002a84fee24f2ed48",
+    "scripts/import-user-supplied-book-covers-2026-08-20.mjs": "e724001765a8a87c9349c2d584e85dd8613a93ff3a81c7802b6b894396f05c2d",
+    "scripts/sync-literary-archive.mjs": "50f7786dff15183f474ba4d2912e90a5ec16e24d9b5c2a3a6ddcd51849080472",
+    "src/App.tsx": "06e6dbd491f8dbbd51ce9c6546ec722afd030c1a76926f7fbbb18c3f58b8a07c",
+    "src/books/bookDossierLegacyAdapter.ts": "8148e4e280a55be8ffcc70e3c4b9b16d7a98ba00f9442559a395a473aae6c0fe",
+    "src/books/bookEditorialPages.ts": "4bcf854c7b05c1f5bcc6ef9b7c4719b41aefd13e703d6e58a565b1b0f1f3d078",
+    "src/components/BookArchiveSection.tsx": "36f06ae7fb6f47ac777e246c483ba898250f9c58b7a20be3f312fb66772b480e",
+    "src/components/BookShelfControls.tsx": "18f63320c767c9f4339e0891835c27835bf56f4513a96f90dcc45b89ebcdafae",
+    "src/components/GlobalSearch.tsx": "333a31cc53e82a31ad91f55331189c919cca85a147dfd691157967992cd1d71b",
+    "src/components/WriterPanel.tsx": "31cd0f07289c62a78581df3a61d42a0d7c4d162049b29d7d0aefe93488c566f3",
+    "src/data/bookArchive.ts": "45240ce52489d4a9e16b30e6e67200825c05e75c7b63d550f0031efa0e7e6c78",
+    "src/data/bookArchiveQueue.ts": "f025392d854c687454a6d9f47d645ee83842fa733d52d33a00cb7148df68362d",
+    "src/data/countries/index.ts": "faf8d240a24c11339306b950d6741470c7750e3febd9d4b89c4111f7666fb420",
+    "src/i18n/InterfaceLanguage.tsx": "c381b15d71ac72cf6d55ccd11b35dd2ff0edd48535fe506dc4613ecde0b3814d",
+    "src/search/globalSearchIndex.ts": "50190ac24f53df14eed2ce1fbeb8b7055b98a47390c306d4ac6608e38dc4f628",
+    "vite.config.ts": "984840b0b8855df1e1ec582ec39fe575fb20c72214ecc218ff4e17587c8c1850"
+  },
+  "additions": [
+    {
+      "path": "src/data/countries/bookR49nExistingReviewed20260912.ts",
+      "recordKeys": [
+        "france:jules_verne:the-mysterious-island-editorial",
+        "france:jules_verne:openlibrary-works-ol1099513w",
+        "france:jules_verne:openlibrary-works-ol1100007w",
+        "france:jules_verne:openlibrary-works-ol1099280w",
+        "france:jules_verne:openlibrary-works-ol1099479w",
+        "france:jules_verne:openlibrary-works-ol1099630w",
+        "france:jules_verne:openlibrary-works-ol1099364w",
+        "russia:turgenev:article-series-men9bv",
+        "russia:buninin:the-village",
+        "russia:tolstoy:article-series-zqpjjm",
+        "usa:jack_london:article-catalog-1hfivd6",
+        "usa:jack_london:article-catalog-2s2iy7"
+      ],
+      "scope": "12 existing strictly Evidence-ready profiles; original reviewed prose and historical provenance preserved",
+      "sha256": "5b88df47f391a8ca905602aeac242155dff043655ee85055a491501a70880a0e"
+    },
+    {
+      "path": "src/data/countries/bookR49nStoweRecovered20260912.ts",
+      "recordKeys": [
+        "usa:harriet_beecher_stowe:uncle-toms-cabin"
+      ],
+      "scope": "one strictly Evidence-ready recovered book; no public biography",
+      "sha256": "0b389d7bff632de896eb576b9872073fd4ff4de03fce7ae4419d2d0ca5af1adf"
+    },
+    {
+      "path": "src/data/countries/bookR49nAlcottDraft20260912.ts",
+      "recordKeys": [
+        "usa:louisa_may_alcott:little-women"
+      ],
+      "scope": "first narrative 1868; draft metadata/book identity, no new verification or public biography",
+      "sha256": "86b9b2c0ff05a5c7722ed9e4b7cab06832e94bad6b4c522d0bdb5a6847f990b7"
+    },
+    {
+      "path": "src/data/countries/bookR49nRetainedDrafts20260912.ts",
+      "recordCount": 1494,
+      "scope": "2988 exact current retained synopses with pending marker; explicit protected set of 69 reviewed keys",
+      "sha256": "bffa62f7aab5fd77813887eab7bb09b3a7951ad04e631fb842b6c39e13580cc7"
+    },
+    {
+      "path": "src/data/countries/bookR49nRetainedDrafts20260912Data01.ts",
+      "recordCount": 498,
+      "scope": "Exact retained synopsis partition; no independent promotion or code",
+      "sha256": "5892f3b36062acaf628dcbffb11360584a8dc0a39b6ef6ad16d5850b111af3b7"
+    },
+    {
+      "path": "src/data/countries/bookR49nRetainedDrafts20260912Data02.ts",
+      "recordCount": 498,
+      "scope": "Exact retained synopsis partition; no independent promotion or code",
+      "sha256": "b6f3e277895354cb68daca6791d769260d8111ccec6bf58916bd976811356150"
+    },
+    {
+      "path": "src/data/countries/bookR49nRetainedDrafts20260912Data03.ts",
+      "recordCount": 498,
+      "scope": "Exact retained synopsis partition; no independent promotion or code",
+      "sha256": "064a86fd3867ca5e0731ba8d97f0de8630356347b7bcaf6ff9111b8f2c9e271e"
+    }
+  ],
+  "registry": {
+    "path": "data/book-canon-source-registry.json",
+    "beforeSha256": "d0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef",
+    "afterSha256": "c8d2b6862c47c3215295951d2c5d1c406913b9879c616f1d8b787c6e05029f6c",
+    "addedAuthorities": [
+      {
+        "authorityId": "centre-international-jules-verne",
+        "provider": "centre-international-jules-verne",
+        "authorityCountryId": "france",
+        "independenceGroup": "centre-international-jules-verne",
+        "tier": "B",
+        "allowedRoles": [
+          "description-fact"
+        ],
+        "domains": [
+          "jules-verne.net"
+        ],
+        "markets": [
+          "FR"
+        ]
+      },
+      {
+        "authorityId": "rvb",
+        "provider": "russian-virtual-library",
+        "authorityCountryId": "russia",
+        "independenceGroup": "russian-virtual-library",
+        "tier": "B",
+        "allowedRoles": [
+          "title-critical-edition",
+          "description-fact"
+        ],
+        "domains": [
+          "rvb.ru"
+        ],
+        "markets": [
+          "RU"
+        ]
+      },
+      {
+        "authorityId": "nyrb",
+        "provider": "new-york-review-books",
+        "authorityCountryId": "usa",
+        "independenceGroup": "new-york-review-books",
+        "tier": "B",
+        "allowedRoles": [
+          "title-publisher",
+          "description-fact"
+        ],
+        "domains": [
+          "nyrb.com"
+        ],
+        "markets": [
+          "US"
+        ]
+      },
+      {
+        "authorityId": "national-library-of-ireland",
+        "provider": "national-library-of-ireland",
+        "authorityCountryId": "ireland",
+        "independenceGroup": "national-library-of-ireland",
+        "tier": "A",
+        "allowedRoles": [
+          "title-national-record",
+          "description-fact"
+        ],
+        "domains": [
+          "nli.ie"
+        ],
+        "markets": [
+          "GB",
+          "IE",
+          "US"
+        ]
+      },
+      {
+        "authorityId": "bunin-museum-yelets",
+        "provider": "bunin-literary-memorial-museum-yelets",
+        "authorityCountryId": "russia",
+        "independenceGroup": "yelets-city-local-history-museum",
+        "tier": "B",
+        "allowedRoles": [
+          "description-fact"
+        ],
+        "domains": [
+          "ar.culture.ru"
+        ],
+        "markets": [
+          "RU"
+        ]
+      },
+      {
+        "authorityId": "alma-books",
+        "provider": "alma-books-bloomsbury",
+        "authorityCountryId": "england",
+        "independenceGroup": "bloomsbury-publishing",
+        "tier": "B",
+        "allowedRoles": [
+          "title-publisher",
+          "description-fact"
+        ],
+        "domains": [
+          "bloomsbury.com"
+        ],
+        "markets": [
+          "GB",
+          "US"
+        ]
+      },
+      {
+        "authorityId": "us-national-park-service",
+        "provider": "united-states-national-park-service",
+        "authorityCountryId": "usa",
+        "independenceGroup": "united-states-national-park-service",
+        "tier": "B",
+        "allowedRoles": [
+          "description-fact"
+        ],
+        "domains": [
+          "nps.gov"
+        ],
+        "markets": [
+          "US"
+        ]
+      }
+    ]
+  },
+  "projections": [
+    {
+      "id": "R49N-PACKAGE-001",
+      "path": ".github/workflows/reconcile-production-database.yml",
+      "before": "            echo \"# Production database reconciliation\"\n            echo\n            printf '%s\\n' \"- Repository SHA: $EXPECTED_MAIN_SHA\"\n            echo \"- Migration range: 20260808_article_translations through 20260905_article_publication_permissions\"\n            echo \"- Guard: exact reviewed SHA-256 allowlist\"\n          } > reconciliation/summary.md\n\n",
+      "after": "            echo \"# Production database reconciliation\"\n            echo\n            printf '%s\\n' \"- Repository SHA: $EXPECTED_MAIN_SHA\"\n            echo \"- Migration range: 20260808_article_translations through 20260912_literary_work_evidence_v2_registry_rotation\"\n            echo \"- Guard: exact reviewed SHA-256 allowlist\"\n          } > reconciliation/summary.md\n\n"
+    },
+    {
+      "id": "R49N-PACKAGE-002",
+      "path": ".github/workflows/reconcile-production-database.yml",
+      "before": "          bash scripts/database/supabase-database-safety.sh verify-production \\\n            reconciliation/verify.sql \\\n            reconciliation/production-verification.txt\n          expected='schema_health=20260902_zz_article_working_drafts_health;outbox=true;outbox_rpc=true;article_bundle_rpc=true;publication_triggers=true;staff_editorial_read_policies=true;revision_history=true;work_translations=true;work_cover_artworks=true;literary_work_authorship=true;literary_work_evidence_v2=true;literary_archive_atomic_release=true;country_overrides=true;writer_overrides=true;homepage_move=true;tags_updated_at=true;media_studio_lifecycle=true;media_usage_graph=true;media_safe_replace_rpc=true;site_typography_engine=true;site_studio_engine=true;visual_direct_edit_v2=true;staff_owner_invariant=true;data_studio_integrity=true;translation_operations=true;admin_mutation_guards=true;admin_analytics_reporting=true;admin_ops_observability=true;article_working_drafts=true;article_publication_rbac=true;article_translation_rbac=true;article_working_draft_promotion_cas=true;migration_ledger=true;premium_machine_translation=true;editor_autosaves=true;editor_autosave_rpc=true;ledger_entries=35;invalid_indexes=0'\n          printf '%s\\n' \"$expected\" > reconciliation/production-verification-expected.txt\n          actual=\"$(tr -d '\\r\\n' < reconciliation/production-verification.txt)\"\n          [[ \"$actual\" == \"$expected\" ]] || {\n",
+      "after": "          bash scripts/database/supabase-database-safety.sh verify-production \\\n            reconciliation/verify.sql \\\n            reconciliation/production-verification.txt\n          expected='schema_health=20260902_zz_article_working_drafts_health;outbox=true;outbox_rpc=true;article_bundle_rpc=true;publication_triggers=true;staff_editorial_read_policies=true;revision_history=true;work_translations=true;work_cover_artworks=true;literary_work_authorship=true;literary_work_evidence_v2=true;literary_archive_atomic_release=true;country_overrides=true;writer_overrides=true;homepage_move=true;tags_updated_at=true;media_studio_lifecycle=true;media_usage_graph=true;media_safe_replace_rpc=true;site_typography_engine=true;site_studio_engine=true;visual_direct_edit_v2=true;staff_owner_invariant=true;data_studio_integrity=true;translation_operations=true;admin_mutation_guards=true;admin_analytics_reporting=true;admin_ops_observability=true;article_working_drafts=true;article_publication_rbac=true;article_translation_rbac=true;article_working_draft_promotion_cas=true;migration_ledger=true;premium_machine_translation=true;editor_autosaves=true;editor_autosave_rpc=true;ledger_entries=36;invalid_indexes=0'\n          printf '%s\\n' \"$expected\" > reconciliation/production-verification-expected.txt\n          actual=\"$(tr -d '\\r\\n' < reconciliation/production-verification.txt)\"\n          [[ \"$actual\" == \"$expected\" ]] || {\n"
+    },
+    {
+      "id": "R49N-PACKAGE-003",
+      "path": "apps/admin/catalog-assets/editorial-catalog.json",
+      "before": "              \"Охота за «Красным Октябрём»\"\n            ]\n          }\n        }\n      ]\n    },\n",
+      "after": "              \"Охота за «Красным Октябрём»\"\n            ]\n          }\n        },\n        {\n          \"id\": \"harriet_beecher_stowe\",\n          \"label\": \"Гарриет Бичер-Стоу\",\n          \"fields\": {\n            \"name\": \"Гарриет Бичер-Стоу\",\n            \"country\": \"usa\",\n            \"language\": \"английский\"\n          }\n        },\n        {\n          \"id\": \"louisa_may_alcott\",\n          \"label\": \"Луиза Мэй Олкотт\",\n          \"fields\": {\n            \"name\": \"Луиза Мэй Олкотт\",\n            \"country\": \"usa\",\n            \"language\": \"английский\"\n          }\n        }\n      ]\n    },\n"
+    },
+    {
+      "id": "R49N-PACKAGE-004",
+      "path": "apps/admin/catalog-assets/interface-copy-catalog.json",
+      "before": "    \"defaultEn\": \"Search publications\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Пока нет опубликованных переводов на английский язык\",\n    \"group\": \"Весь интерфейс\",\n",
+      "after": "    \"defaultEn\": \"Search publications\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Пока не проверено\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Пока не проверено\",\n    \"defaultRu\": \"Пока не проверено\",\n    \"defaultEn\": \"Not yet reviewed\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Пока нет опубликованных переводов на английский язык\",\n    \"group\": \"Весь интерфейс\",\n"
+    },
+    {
+      "id": "R49N-PACKAGE-005",
+      "path": "apps/admin/catalog-assets/interface-copy-catalog.json",
+      "before": "    \"defaultEn\": \"Complete publication archive\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Пользователь просит редакцию проверить эту публикацию форума.\",\n    \"group\": \"Весь интерфейс\",\n",
+      "after": "    \"defaultEn\": \"Complete publication archive\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Полный каталог произведений и готовые аннотации. У каждой карточки указан статус редакционной проверки.\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Полный каталог произведений и готовые аннотации. У каждой карточки указан статус редакционной проверки.\",\n    \"defaultRu\": \"Полный каталог произведений и готовые аннотации. У каждой карточки указан статус редакционной проверки.\",\n    \"defaultEn\": \"The complete catalog with available synopses. Each book shows its editorial review status.\",\n    \"multiline\": true\n  },\n  {\n    \"key\": \"interface.Пользователь просит редакцию проверить эту публикацию форума.\",\n    \"group\": \"Весь интерфейс\",\n"
+    },
+    {
+      "id": "R49N-PACKAGE-006",
+      "path": "apps/admin/catalog-assets/interface-copy-catalog.json",
+      "before": "    \"defaultEn\": \"Printed book mode\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.результатов\",\n    \"group\": \"Весь интерфейс\",\n",
+      "after": "    \"defaultEn\": \"Printed book mode\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.результат\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"результат\",\n    \"defaultRu\": \"результат\",\n    \"defaultEn\": \"result\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.результата\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"результата\",\n    \"defaultRu\": \"результата\",\n    \"defaultEn\": \"results\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.результатов\",\n    \"group\": \"Весь интерфейс\",\n"
+    },
+    {
+      "id": "R49N-PACKAGE-007",
+      "path": "apps/admin/lib/editorial-catalog.ts",
+      "before": "import { parseStoredWriterBiographyTranslations } from \"./writer-biography-edit\";\n\nconst EXPECTED_COUNTRY_COUNT = 200;\nconst EXPECTED_WRITER_COUNT = 1_684;\n\nexport type EditorialCatalogWriter = {\n  id: string;\n",
+      "after": "import { parseStoredWriterBiographyTranslations } from \"./writer-biography-edit\";\n\nconst EXPECTED_COUNTRY_COUNT = 200;\nconst EXPECTED_WRITER_COUNT = 1_686;\nconst BOOK_AUTHOR_REFERENCES: Readonly<Record<string, string>> = {\n  \"usa/harriet_beecher_stowe\": \"Гарриет Бичер-Стоу\",\n  \"usa/louisa_may_alcott\": \"Луиза Мэй Олкотт\",\n};\n\nexport type EditorialCatalogWriter = {\n  id: string;\n"
+    },
+    {
+      "id": "R49N-PACKAGE-008",
+      "path": "apps/admin/lib/editorial-catalog.ts",
+      "before": "      const biographies = parseStoredWriterBiographyTranslations(\n        writerFields.biographyTranslations\n      );\n      if (!biographies.ru) {\n        throw new Error(\n          `Editorial catalog writer is missing structured RU: ${id}/${writerId}`\n        );\n",
+      "after": "      const biographies = parseStoredWriterBiographyTranslations(\n        writerFields.biographyTranslations\n      );\n      // These two source-backed book identities have no public biography.\n      // Their exact minimal shape must not let ordinary biography loss pass.\n      const referenceName = BOOK_AUTHOR_REFERENCES[`${id}/${writerId}`];\n      const bookAuthorReference = Boolean(\n        referenceName && writer.label === referenceName &&\n        writerFields.name === referenceName && writerFields.country === \"usa\" &&\n        writerFields.language === \"английский\" &&\n        Object.keys(writerFields).sort().join(\",\") === \"country,language,name\"\n      );\n      if (!biographies.ru && !bookAuthorReference) {\n        throw new Error(\n          `Editorial catalog writer is missing structured RU: ${id}/${writerId}`\n        );\n"
+    },
+    {
+      "id": "R49N-PACKAGE-009",
+      "path": "data/book-canon-source-registry.json",
+      "before": "      \"markets\": [\n        \"US\"\n      ]\n    }\n  ],\n  \"sources\": [\n",
+      "after": "      \"markets\": [\n        \"US\"\n      ]\n    },\n    {\n      \"authorityId\": \"centre-international-jules-verne\",\n      \"provider\": \"centre-international-jules-verne\",\n      \"authorityCountryId\": \"france\",\n      \"independenceGroup\": \"centre-international-jules-verne\",\n      \"tier\": \"B\",\n      \"allowedRoles\": [\n        \"description-fact\"\n      ],\n      \"domains\": [\n        \"jules-verne.net\"\n      ],\n      \"markets\": [\n        \"FR\"\n      ]\n    },\n    {\n      \"authorityId\": \"rvb\",\n      \"provider\": \"russian-virtual-library\",\n      \"authorityCountryId\": \"russia\",\n      \"independenceGroup\": \"russian-virtual-library\",\n      \"tier\": \"B\",\n      \"allowedRoles\": [\n        \"title-critical-edition\",\n        \"description-fact\"\n      ],\n      \"domains\": [\n        \"rvb.ru\"\n      ],\n      \"markets\": [\n        \"RU\"\n      ]\n    },\n    {\n      \"authorityId\": \"nyrb\",\n      \"provider\": \"new-york-review-books\",\n      \"authorityCountryId\": \"usa\",\n      \"independenceGroup\": \"new-york-review-books\",\n      \"tier\": \"B\",\n      \"allowedRoles\": [\n        \"title-publisher\",\n        \"description-fact\"\n      ],\n      \"domains\": [\n        \"nyrb.com\"\n      ],\n      \"markets\": [\n        \"US\"\n      ]\n    },\n    {\n      \"authorityId\": \"national-library-of-ireland\",\n      \"provider\": \"national-library-of-ireland\",\n      \"authorityCountryId\": \"ireland\",\n      \"independenceGroup\": \"national-library-of-ireland\",\n      \"tier\": \"A\",\n      \"allowedRoles\": [\n        \"title-national-record\",\n        \"description-fact\"\n      ],\n      \"domains\": [\n        \"nli.ie\"\n      ],\n      \"markets\": [\n        \"GB\",\n        \"IE\",\n        \"US\"\n      ]\n    },\n    {\n      \"authorityId\": \"bunin-museum-yelets\",\n      \"provider\": \"bunin-literary-memorial-museum-yelets\",\n      \"authorityCountryId\": \"russia\",\n      \"independenceGroup\": \"yelets-city-local-history-museum\",\n      \"tier\": \"B\",\n      \"allowedRoles\": [\n        \"description-fact\"\n      ],\n      \"domains\": [\n        \"ar.culture.ru\"\n      ],\n      \"markets\": [\n        \"RU\"\n      ]\n    },\n    {\n      \"authorityId\": \"alma-books\",\n      \"provider\": \"alma-books-bloomsbury\",\n      \"authorityCountryId\": \"england\",\n      \"independenceGroup\": \"bloomsbury-publishing\",\n      \"tier\": \"B\",\n      \"allowedRoles\": [\n        \"title-publisher\",\n        \"description-fact\"\n      ],\n      \"domains\": [\n        \"bloomsbury.com\"\n      ],\n      \"markets\": [\n        \"GB\",\n        \"US\"\n      ]\n    },\n    {\n      \"authorityId\": \"us-national-park-service\",\n      \"provider\": \"united-states-national-park-service\",\n      \"authorityCountryId\": \"usa\",\n      \"independenceGroup\": \"united-states-national-park-service\",\n      \"tier\": \"B\",\n      \"allowedRoles\": [\n        \"description-fact\"\n      ],\n      \"domains\": [\n        \"nps.gov\"\n      ],\n      \"markets\": [\n        \"US\"\n      ]\n    }\n  ],\n  \"sources\": [\n"
+    },
+    {
+      "id": "R49N-PACKAGE-010",
+      "path": "scripts/archive-source.ts",
+      "before": "import {\n  bookArchiveCountries,\n  countries,\n  editorialCatalogCountries,\n} from \"../src/data/countries/index\";\nimport { calculateArchiveStatistics } from \"../src/data/archiveStatistics\";\nimport { buildBookArchive } from \"../src/data/bookArchive\";\nimport { auditCountryArchive } from \"../src/data/countries/editorialAudit\";\nimport {\n  bookPublicationIssues,\n",
+      "after": "import {\n  bookArchiveCountries,\n  bookArchiveSourceCountries,\n  countries,\n  editorialCatalogCountries,\n} from \"../src/data/countries/index\";\nimport { calculateArchiveStatistics } from \"../src/data/archiveStatistics\";\nimport { buildBookArchive } from \"../src/data/bookArchive\";\nimport { mergeBookR49nStoweRecovered20260912 } from \"../src/data/countries/bookR49nStoweRecovered20260912\";\nimport { mergeBookR49nAlcottDraft20260912 } from \"../src/data/countries/bookR49nAlcottDraft20260912\";\nimport { auditCountryArchive } from \"../src/data/countries/editorialAudit\";\nimport {\n  bookPublicationIssues,\n"
+    },
+    {
+      "id": "R49N-PACKAGE-011",
+      "path": "scripts/archive-source.ts",
+      "before": "} from \"../src/data/countries/writerBiographyLegacyCorrections\";\n\nexport const archiveCountries = countries;\nexport const archiveEditorialCatalogCountries = editorialCatalogCountries;\nexport const archiveBooks = buildBookArchive(bookArchiveCountries);\nexport const archiveRawBooks = buildBookArchive(bookArchiveCountries, {\n  includeReviewedGenerated: false,\n  applyEnrichmentActions: false,\n  includeUserSuppliedCovers: false,\n});\n",
+      "after": "} from \"../src/data/countries/writerBiographyLegacyCorrections\";\n\nexport const archiveCountries = countries;\n// Keep the book's author identity available to the private editorial tools.\n// Its separate public biography remains subject to the existing writer review.\nexport const archiveEditorialCatalogCountries =\n  mergeBookR49nAlcottDraft20260912(\n    mergeBookR49nStoweRecovered20260912(editorialCatalogCountries)\n  );\nexport const archiveBooks = buildBookArchive(bookArchiveCountries);\n// Classification and historical identity merges consume the pre-R49N source.\n// The current public catalogue above includes the complete retained package.\nexport const archiveRawBooks = buildBookArchive(bookArchiveSourceCountries, {\n  includeReviewedGenerated: false,\n  includeR49nCatalog: false,\n  applyEnrichmentActions: false,\n  includeUserSuppliedCovers: false,\n});\n"
+    },
+    {
+      "id": "R49N-PACKAGE-012",
+      "path": "scripts/database/build-production-migration-plan.mjs",
+      "before": "    \"20260905_article_publication_permissions.sql\",\n    \"1f9b4b9a9efb00488010cb6719cb36967a395038089b2ca3091657e144f0fcc8\",\n  ],\n];\n\nconst reviewedHotfixes = [\n",
+      "after": "    \"20260905_article_publication_permissions.sql\",\n    \"1f9b4b9a9efb00488010cb6719cb36967a395038089b2ca3091657e144f0fcc8\",\n  ],\n  [\n    \"20260912_literary_work_evidence_v2_registry_rotation.sql\",\n    \"01a7fc62c731d01c2ea6912dc4ed770bf5cbe4d696122feb4fee401987ff4220\",\n  ],\n];\n\nconst reviewedHotfixes = [\n"
+    },
+    {
+      "id": "R49N-PACKAGE-013",
+      "path": "scripts/database/build-production-migration-plan.mjs",
+      "before": "      and control.validator_sha256 =\n        'f2ef2c46ae78be553a190057f8833c5661dc1cbcc1902564708effa7f6db0026'\n      and control.canon_registry_version = 'world-canon-2026-09-v2'\n      and control.canon_registry_sha256 =\n        'd0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef'\n  ) then\n    raise exception 'Evidence V2 validator or canon registry pin is not frozen';\n  end if;\n",
+      "after": "      and control.validator_sha256 =\n        'f2ef2c46ae78be553a190057f8833c5661dc1cbcc1902564708effa7f6db0026'\n      and control.canon_registry_version = 'world-canon-2026-09-v2'\n      and control.canon_registry_sha256 in (\n        'd0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef',\n        'c8d2b6862c47c3215295951d2c5d1c406913b9879c616f1d8b787c6e05029f6c'\n      )\n  ) then\n    raise exception 'Evidence V2 validator or canon registry pin is not frozen';\n  end if;\n"
+    },
+    {
+      "id": "R49N-PACKAGE-014",
+      "path": "scripts/database/build-production-migration-plan.mjs",
+      "before": "    or to_regprocedure('public.create_literary_archive_release(text,text,integer,integer,integer,text,jsonb,text,integer,text,boolean,jsonb)') is null\n    or to_regprocedure('public.stage_literary_archive_release_batch(uuid,integer,jsonb)') is null\n    or to_regprocedure('public.commit_literary_archive_release(uuid,text)') is null\n    or to_regprocedure('public.premium_machine_translation_ready()') is null then\n    raise exception 'Required editorial RPC is missing after reconciliation';\n  end if;\n\n  select count(*) into recorded_migrations\n  from public.probpera_schema_migrations actual\n  join (values\n",
+      "after": "    or to_regprocedure('public.create_literary_archive_release(text,text,integer,integer,integer,text,jsonb,text,integer,text,boolean,jsonb)') is null\n    or to_regprocedure('public.stage_literary_archive_release_batch(uuid,integer,jsonb)') is null\n    or to_regprocedure('public.commit_literary_archive_release(uuid,text)') is null\n    or to_regprocedure('public.get_literary_work_evidence_v2_registry_transition()') is null\n    or to_regprocedure('public.get_literary_work_evidence_v2_rotation_snapshot()') is null\n    or to_regprocedure('public.prepare_literary_archive_registry_rotation(uuid)') is null\n    or to_regprocedure('public.assert_literary_archive_registry_rotation(uuid)') is null\n    or to_regprocedure('public.prepare_literary_archive_reviewed_writer_reference(uuid)') is null\n    or to_regprocedure('public.prepare_literary_archive_draft_writer_reference(uuid)') is null\n    or to_regprocedure('public.premium_machine_translation_ready()') is null then\n    raise exception 'Required editorial RPC is missing after reconciliation';\n  end if;\n\n  -- The old active pin is allowed only while the exact forward atomic\n  -- capability is installed. Migration itself never invalidates live proofs.\n  if not exists (\n    select 1 from pg_catalog.pg_attrdef value\n    join pg_catalog.pg_attribute attribute\n      on attribute.attrelid = value.adrelid and attribute.attnum = value.adnum\n    where value.adrelid = 'public.literary_work_evidence_v2_controls'::regclass\n      and attribute.attname = 'canon_registry_sha256'\n      and pg_catalog.pg_get_expr(value.adbin, value.adrelid) =\n        '''c8d2b6862c47c3215295951d2c5d1c406913b9879c616f1d8b787c6e05029f6c''::text'\n  ) or position('perform public.prepare_literary_archive_registry_rotation(target.id);'\n    in pg_catalog.pg_get_functiondef('public.commit_literary_archive_release(uuid,text)'::regprocedure)) = 0\n    or position('perform public.assert_literary_archive_registry_rotation(target.id);'\n    in pg_catalog.pg_get_functiondef('public.commit_literary_archive_release(uuid,text)'::regprocedure)) = 0\n    or has_function_privilege('service_role', 'public.prepare_literary_archive_registry_rotation(uuid)', 'EXECUTE')\n    or has_function_privilege('service_role', 'public.assert_literary_archive_registry_rotation(uuid)', 'EXECUTE')\n    or has_function_privilege('service_role', 'public.prepare_literary_archive_reviewed_writer_reference(uuid)', 'EXECUTE')\n    or has_function_privilege('service_role', 'public.prepare_literary_archive_draft_writer_reference(uuid)', 'EXECUTE') then\n    raise exception 'Reviewed atomic registry rotation capability is incomplete';\n  end if;\n\n  select count(*) into recorded_migrations\n  from public.probpera_schema_migrations actual\n  join (values\n"
+    },
+    {
+      "id": "R49N-PACKAGE-015",
+      "path": "scripts/import-user-supplied-book-covers.mjs",
+      "before": "    absWorkingDir: projectRoot,\n    stdin: {\n      contents: `\n        import { bookArchiveCountries } from \"./src/data/countries/index.ts\";\n        import { buildBookArchive } from \"./src/data/bookArchive.ts\";\n        import { isPublicBook } from \"./src/data/bookQuality.ts\";\n\n        export const baseline = buildBookArchive(bookArchiveCountries, {\n          includeUserSuppliedCovers: false,\n        });\n        export const current = buildBookArchive(bookArchiveCountries);\n        export const baselinePublicCount = baseline.filter(isPublicBook).length;\n        export const currentPublicCount = current.filter(isPublicBook).length;\n      `,\n",
+      "after": "    absWorkingDir: projectRoot,\n    stdin: {\n      contents: `\n        import { bookArchiveSourceCountries as bookArchiveCountries } from \"./src/data/countries/index.ts\";\n        import { buildBookArchive } from \"./src/data/bookArchive.ts\";\n        import { isPublicBook } from \"./src/data/bookQuality.ts\";\n\n        export const baseline = buildBookArchive(bookArchiveCountries, {\n          includeUserSuppliedCovers: false,\n          includeR49nCatalog: false,\n        });\n        export const current = buildBookArchive(bookArchiveCountries, { includeR49nCatalog: false });\n        export const baselinePublicCount = baseline.filter(isPublicBook).length;\n        export const currentPublicCount = current.filter(isPublicBook).length;\n      `,\n"
+    },
+    {
+      "id": "R49N-PACKAGE-016",
+      "path": "scripts/import-user-supplied-book-covers-2026-08-13.mjs",
+      "before": "    absWorkingDir: projectRoot,\n    stdin: {\n      contents: [\n        'import { bookArchiveCountries } from \"./src/data/countries/index.ts\";',\n        'import { buildBookArchive } from \"./src/data/bookArchive.ts\";',\n        'import { isPublicBook } from \"./src/data/bookQuality.ts\";',\n        \"export const baseline = buildBookArchive(bookArchiveCountries, { includeUserSuppliedCovers: false });\",\n        \"export const current = buildBookArchive(bookArchiveCountries);\",\n        \"export const baselinePublicCount = baseline.filter(isPublicBook).length;\",\n        \"export const currentPublicCount = current.filter(isPublicBook).length;\",\n      ].join(\"\\n\"),\n",
+      "after": "    absWorkingDir: projectRoot,\n    stdin: {\n      contents: [\n        'import { bookArchiveSourceCountries as bookArchiveCountries } from \"./src/data/countries/index.ts\";',\n        'import { buildBookArchive } from \"./src/data/bookArchive.ts\";',\n        'import { isPublicBook } from \"./src/data/bookQuality.ts\";',\n        \"export const baseline = buildBookArchive(bookArchiveCountries, { includeUserSuppliedCovers: false, includeR49nCatalog: false });\",\n        \"export const current = buildBookArchive(bookArchiveCountries, { includeR49nCatalog: false });\",\n        \"export const baselinePublicCount = baseline.filter(isPublicBook).length;\",\n        \"export const currentPublicCount = current.filter(isPublicBook).length;\",\n      ].join(\"\\n\"),\n"
+    },
+    {
+      "id": "R49N-PACKAGE-017",
+      "path": "scripts/import-user-supplied-book-covers-2026-08-20.mjs",
+      "before": "      absWorkingDir: projectRoot,\n      stdin: {\n        contents: [\n          'import { bookArchiveCountries } from \"./src/data/countries/index.ts\";',\n          'import { buildBookArchive } from \"./src/data/bookArchive.ts\";',\n          'import { isPublicBook } from \"./src/data/bookQuality.ts\";',\n          'import { userSuppliedBookWorkBatch20260820Count } from \"./src/data/countries/userSuppliedBookWorkSupplementsBatch20260820.ts\";',\n          'export const baseline = buildBookArchive(bookArchiveCountries, { includeUserSuppliedCovers: false });',\n          'export const current = buildBookArchive(bookArchiveCountries);',\n          'export const baselinePublicCount = baseline.filter(isPublicBook).length;',\n          'export const currentPublicCount = current.filter(isPublicBook).length;',\n          'export { userSuppliedBookWorkBatch20260820Count };',\n",
+      "after": "      absWorkingDir: projectRoot,\n      stdin: {\n        contents: [\n          'import { bookArchiveSourceCountries as bookArchiveCountries } from \"./src/data/countries/index.ts\";',\n          'import { buildBookArchive } from \"./src/data/bookArchive.ts\";',\n          'import { isPublicBook } from \"./src/data/bookQuality.ts\";',\n          'import { userSuppliedBookWorkBatch20260820Count } from \"./src/data/countries/userSuppliedBookWorkSupplementsBatch20260820.ts\";',\n          'export const baseline = buildBookArchive(bookArchiveCountries, { includeUserSuppliedCovers: false, includeR49nCatalog: false });',\n          'export const current = buildBookArchive(bookArchiveCountries, { includeR49nCatalog: false });',\n          'export const baselinePublicCount = baseline.filter(isPublicBook).length;',\n          'export const currentPublicCount = current.filter(isPublicBook).length;',\n          'export { userSuppliedBookWorkBatch20260820Count };',\n"
+    },
+    {
+      "id": "R49N-PACKAGE-018",
+      "path": "scripts/sync-literary-archive.mjs",
+      "before": "\nimport { build } from \"esbuild\";\nimport { authorshipRowsFromArchive } from \"./lib/book-authorship-roundtrip.mjs\";\nimport {\n  BOOK_EVIDENCE_V2_CONTRACT,\n  BOOK_EVIDENCE_V2_SCHEMA_VERSION,\n",
+      "after": "\nimport { build } from \"esbuild\";\nimport { authorshipRowsFromArchive } from \"./lib/book-authorship-roundtrip.mjs\";\nimport {\n  buildEvidenceV2RegistryRotation,\n  buildEvidenceV2ReviewedWriterReference,\n  buildEvidenceV2DraftWriterReference,\n  evidenceV2RegistryPreflightIdentity,\n} from \"./lib/book-evidence-v2-registry-rotation.mjs\";\nimport {\n  BOOK_EVIDENCE_V2_CONTRACT,\n  BOOK_EVIDENCE_V2_SCHEMA_VERSION,\n"
+    },
+    {
+      "id": "R49N-PACKAGE-019",
+      "path": "scripts/sync-literary-archive.mjs",
+      "before": "      );\n    }\n  }\n  const { data: evidenceHealth, error: healthRpcError } = await supabase.rpc(\n    \"assert_literary_work_evidence_v2_health\",\n    {\n",
+      "after": "      );\n    }\n  }\n  const { data: control, error: controlError } = await supabase\n    .from(\"literary_work_evidence_v2_controls\")\n    .select(\"singleton,enforcement_enabled,contract_version,validator_id,validator_version,validator_sha256,canon_registry_version,canon_registry_sha256\")\n    .eq(\"singleton\", true).single();\n  if (controlError) throw new Error(`Evidence V2 control read failed: ${controlError.message}`);\n  let transitionCapability = null;\n  if (control?.canon_registry_sha256 !== canonRegistrySha256) {\n    const { data, error } = await supabase.rpc(\"get_literary_work_evidence_v2_registry_transition\");\n    if (error) throw new Error(`Evidence V2 registry transition is unavailable: ${error.message}`);\n    transitionCapability = data;\n  }\n  const registryIdentity = evidenceV2RegistryPreflightIdentity(control, {\n    validatorSha256, canonRegistrySha256, canonRegistryVersion: canonRegistry.registryVersion,\n  }, transitionCapability);\n  if (postflightOnly && registryIdentity.rotation) {\n    throw new Error(\"Archive postflight requires the committed target registry identity.\");\n  }\n  const { data: evidenceHealth, error: healthRpcError } = await supabase.rpc(\n    \"assert_literary_work_evidence_v2_health\",\n    {\n"
+    },
+    {
+      "id": "R49N-PACKAGE-020",
+      "path": "scripts/sync-literary-archive.mjs",
+      "before": "      p_expected_validator_version: BOOK_EVIDENCE_V2_VALIDATOR_VERSION,\n      p_expected_validator_sha256: validatorSha256,\n      p_expected_canon_registry_version: canonRegistry.registryVersion,\n      p_expected_canon_registry_sha256: canonRegistrySha256,\n    }\n  );\n  if (healthRpcError) {\n",
+      "after": "      p_expected_validator_version: BOOK_EVIDENCE_V2_VALIDATOR_VERSION,\n      p_expected_validator_sha256: validatorSha256,\n      p_expected_canon_registry_version: canonRegistry.registryVersion,\n      p_expected_canon_registry_sha256: registryIdentity.activeRegistrySha256,\n    }\n  );\n  if (healthRpcError) {\n"
+    },
+    {
+      "id": "R49N-PACKAGE-021",
+      "path": "scripts/sync-literary-archive.mjs",
+      "before": "  console.log(\n    `Database preflight passed: ${requiredRelations.length} required relations, the exact service-role Evidence V2 contract and the hash RPC are valid; no writes performed.`\n  );\n  return evidenceHealth;\n}\n\nconst { createClient } = await import(\"@supabase/supabase-js\");\n",
+      "after": "  console.log(\n    `Database preflight passed: ${requiredRelations.length} required relations, the exact service-role Evidence V2 contract and the hash RPC are valid; no writes performed.`\n  );\n  return { ...evidenceHealth, registryRotation: registryIdentity.rotation };\n}\n\nconst { createClient } = await import(\"@supabase/supabase-js\");\n"
+    },
+    {
+      "id": "R49N-PACKAGE-022",
+      "path": "scripts/sync-literary-archive.mjs",
+      "before": "const evidenceHealth = await preflightDatabaseContract(supabase);\nconst preconditionBefore = await readAtomicPrecondition(supabase);\nconst atomicEnableEvidenceV2 =\n  enableEvidenceV2 || evidenceHealth.enforcementEnabled;\nif (\n  atomicEnableEvidenceV2 &&\n  preconditionBefore.cmsLockedUnattestedPredecessorLegacyIds.length\n",
+      "after": "const evidenceHealth = await preflightDatabaseContract(supabase);\nconst preconditionBefore = await readAtomicPrecondition(supabase);\nconst atomicEnableEvidenceV2 =\n  enableEvidenceV2 || evidenceHealth.enforcementEnabled || Boolean(evidenceHealth.registryRotation);\nif (\n  atomicEnableEvidenceV2 &&\n  preconditionBefore.cmsLockedUnattestedPredecessorLegacyIds.length\n"
+    },
+    {
+      "id": "R49N-PACKAGE-023",
+      "path": "scripts/sync-literary-archive.mjs",
+      "before": "  );\n}\n\nconst targetManifestSha256 =\n  literaryArchiveReleaseTargetManifestSha256(releaseItems);\nconst sourceRevision = fullHash(\n",
+      "after": "  );\n}\n\nconst reviewedWriterReference = buildEvidenceV2ReviewedWriterReference(releaseItems);\nconst draftWriterReference = buildEvidenceV2DraftWriterReference(releaseItems);\nlet registryRotation = null;\nif (evidenceHealth.registryRotation) {\n  const { data: snapshot, error } = await supabase.rpc(\"get_literary_work_evidence_v2_rotation_snapshot\");\n  if (error) throw new Error(`Evidence V2 registry snapshot failed: ${error.message}`);\n  registryRotation = buildEvidenceV2RegistryRotation({\n    snapshot,\n    expectedCmsLegacyIds: precondition.cmsLockedPredecessorLegacyIds,\n    releaseItems,\n    canonRegistry,\n    canonRegistrySha256,\n    validatorSha256,\n    issuesForWork: source.bookEvidenceV2Issues,\n  });\n}\n\nconst targetManifestSha256 =\n  literaryArchiveReleaseTargetManifestSha256(releaseItems);\nconst sourceRevision = fullHash(\n"
+    },
+    {
+      "id": "R49N-PACKAGE-024",
+      "path": "scripts/sync-literary-archive.mjs",
+      "before": "    predecessorExpectation.expectedPredecessorPublicManifestSha256,\n    validatorSha256,\n    canonRegistrySha256,\n    atomicEnableEvidenceV2 ? \"enable-evidence-v2\" : \"preserve-evidence-v2\",\n  ].join(\"\\n\")\n);\n",
+      "after": "    predecessorExpectation.expectedPredecessorPublicManifestSha256,\n    validatorSha256,\n    canonRegistrySha256,\n    ...(registryRotation ? [canonicalLiteraryArchiveReleasePayload(registryRotation)] : []),\n    ...(reviewedWriterReference ? [canonicalLiteraryArchiveReleasePayload(reviewedWriterReference)] : []),\n    ...(draftWriterReference ? [canonicalLiteraryArchiveReleasePayload(draftWriterReference)] : []),\n    atomicEnableEvidenceV2 ? \"enable-evidence-v2\" : \"preserve-evidence-v2\",\n  ].join(\"\\n\")\n);\n"
+    },
+    {
+      "id": "R49N-PACKAGE-025",
+      "path": "scripts/sync-literary-archive.mjs",
+      "before": "  targetWorks: releaseItems.length,\n  preservedCmsLockedWorks: lockedWorks.length,\n  childEditPreservation: precondition.childEditPreservation,\n};\n\nconsole.log(\n",
+      "after": "  targetWorks: releaseItems.length,\n  preservedCmsLockedWorks: lockedWorks.length,\n  childEditPreservation: precondition.childEditPreservation,\n  ...(registryRotation ? { evidenceV2RegistryRotation: registryRotation } : {}),\n  ...(reviewedWriterReference ? { reviewedWriterReference } : {}),\n  ...(draftWriterReference ? { draftWriterReference } : {}),\n};\n\nconsole.log(\n"
+    },
+    {
+      "id": "R49N-PACKAGE-026",
+      "path": "src/App.tsx",
+      "before": "  ]);\n\n  useEffect(() => {\n    if (!globalSearchOpen) return;\n    requestBookRuntime();\n  }, [globalSearchOpen, requestBookRuntime]);\n\n  useEffect(() => {\n    const openSearch = (event: KeyboardEvent) => {\n",
+      "after": "  ]);\n\n  useEffect(() => {\n    if (!globalSearchOpen && !selectedCountry) return;\n    requestBookRuntime();\n  }, [globalSearchOpen, selectedCountry, requestBookRuntime]);\n\n  useEffect(() => {\n    const openSearch = (event: KeyboardEvent) => {\n"
+    },
+    {
+      "id": "R49N-PACKAGE-027",
+      "path": "src/App.tsx",
+      "before": "  // canonical editorial queue. Stable keys promote a record in place rather\n  // than adding a second card for the same country/writer/work relation.\n  const totalWorks = bookArchive.length;\n  const editorialAudit = useMemo(\n    () => auditCountryArchive(countryArchive),\n    [countryArchive]\n",
+      "after": "  // canonical editorial queue. Stable keys promote a record in place rather\n  // than adding a second card for the same country/writer/work relation.\n  const totalWorks = bookArchive.length;\n  const selectedCountryWorkCount = useMemo(\n    () => bookRuntimeStatus === \"ready\" && selectedCountry\n      ? bookArchive.filter(book => book.countryId === selectedCountry.id).length\n      : null,\n    [bookArchive, bookRuntimeStatus, selectedCountry]\n  );\n  const editorialAudit = useMemo(\n    () => auditCountryArchive(countryArchive),\n    [countryArchive]\n"
+    },
+    {
+      "id": "R49N-PACKAGE-028",
+      "path": "src/App.tsx",
+      "before": "    }\n\n    if (bookArchiveRuntime) {\n      for (const book of verifiedBookArchive) {\n        const displayedBook =\n          bookArchiveRuntime.presentBookArchiveEntry(book, language);\n        results.push({\n",
+      "after": "    }\n\n    if (bookArchiveRuntime) {\n      for (const book of bookArchive) {\n        const displayedBook =\n          bookArchiveRuntime.presentBookArchiveEntry(book, language);\n        results.push({\n"
+    },
+    {
+      "id": "R49N-PACKAGE-029",
+      "path": "src/App.tsx",
+      "before": "              selectBookWriterName(book, language, t(\"Автор\")),\n              countryName(book.country.code, book.countryName),\n              displayedBook.description,\n              ...selectBookMetadataLabels(book, language, t),\n            ]\n              .filter(Boolean)\n              .join(\" \")\n",
+      "after": "              selectBookWriterName(book, language, t(\"Автор\")),\n              countryName(book.country.code, book.countryName),\n              displayedBook.description,\n              ...(isPublicBook(book) ? selectBookMetadataLabels(book, language, t) : []),\n            ]\n              .filter(Boolean)\n              .join(\" \")\n"
+    },
+    {
+      "id": "R49N-PACKAGE-030",
+      "path": "src/App.tsx",
+      "before": "    }\n\n    return results;\n  }, [bookArchiveRuntime, countryArchive, countryName, language, t, verifiedBookArchive]);\n\n  useEffect(() => {\n    if (\n",
+      "after": "    }\n\n    return results;\n  }, [bookArchiveRuntime, countryArchive, countryName, language, t, bookArchive]);\n\n  useEffect(() => {\n    if (\n"
+    },
+    {
+      "id": "R49N-PACKAGE-031",
+      "path": "src/App.tsx",
+      "before": "    book: BookArchiveEntry,\n    returnFocus: HTMLElement | null = null\n  ) => {\n    if (!isPublicBook(book)) return;\n    requestBookRuntime();\n    setBookLoadRequested(true);\n    requestedBookReturnFocusRef.current = returnFocus;\n",
+      "after": "    book: BookArchiveEntry,\n    returnFocus: HTMLElement | null = null\n  ) => {\n    requestBookRuntime();\n    setBookLoadRequested(true);\n    requestedBookReturnFocusRef.current = returnFocus;\n"
+    },
+    {
+      "id": "R49N-PACKAGE-032",
+      "path": "src/App.tsx",
+      "before": "      workId: string,\n      returnFocus: HTMLElement\n    ) => {\n      const book = verifiedBookArchive.find(\n        (entry) =>\n          entry.countryId === countryId &&\n          entry.writerId === writerId &&\n",
+      "after": "      workId: string,\n      returnFocus: HTMLElement\n    ) => {\n      const book = bookArchive.find(\n        (entry) =>\n          entry.countryId === countryId &&\n          entry.writerId === writerId &&\n"
+    },
+    {
+      "id": "R49N-PACKAGE-033",
+      "path": "src/App.tsx",
+      "before": "      }\n      openResolvedWriterWork(book, returnFocus);\n    },\n    [openResolvedWriterWork, requestBookRuntime, verifiedBookArchive]\n  );\n\n  useEffect(() => {\n    if (!pendingWriterWork || bookRuntimeStatus !== \"ready\") return;\n    const book = verifiedBookArchive.find(\n      (entry) =>\n        entry.countryId === pendingWriterWork.countryId &&\n        entry.writerId === pendingWriterWork.writerId &&\n",
+      "after": "      }\n      openResolvedWriterWork(book, returnFocus);\n    },\n    [openResolvedWriterWork, requestBookRuntime, bookArchive]\n  );\n\n  useEffect(() => {\n    if (!pendingWriterWork || bookRuntimeStatus !== \"ready\") return;\n    const book = bookArchive.find(\n      (entry) =>\n        entry.countryId === pendingWriterWork.countryId &&\n        entry.writerId === pendingWriterWork.writerId &&\n"
+    },
+    {
+      "id": "R49N-PACKAGE-034",
+      "path": "src/App.tsx",
+      "before": "    bookRuntimeStatus,\n    openResolvedWriterWork,\n    pendingWriterWork,\n    verifiedBookArchive,\n  ]);\n\n  const selectCountry = useCallback(\n",
+      "after": "    bookRuntimeStatus,\n    openResolvedWriterWork,\n    pendingWriterWork,\n    bookArchive,\n  ]);\n\n  const selectCountry = useCallback(\n"
+    },
+    {
+      "id": "R49N-PACKAGE-035",
+      "path": "src/App.tsx",
+      "before": "                            t(\"Автор\")\n                          )} · ${\n                            isPublicBook(result.book)\n                              ? t(\"проверено\")\n                              : t(\"не проверено\")\n                          }`}\n                  </small>\n                </>\n",
+      "after": "                            t(\"Автор\")\n                          )} · ${\n                            isPublicBook(result.book)\n                              ? t(\"Проверено редакцией\")\n                              : t(\"Пока не проверено\")\n                          }`}\n                  </small>\n                </>\n"
+    },
+    {
+      "id": "R49N-PACKAGE-036",
+      "path": "src/App.tsx",
+      "before": "                    <WriterPanel\n                      key={selectedCountry.id}\n                      country={selectedCountry}\n                      selectedWriter={selectedWriter}\n                      focusRequestId={\n                        writerFocusRequest?.countryId === selectedCountry.id &&\n",
+      "after": "                    <WriterPanel\n                      key={selectedCountry.id}\n                      country={selectedCountry}\n                      catalogWorkCount={selectedCountryWorkCount}\n                      catalogWorkCountLoading={bookRuntimeStatus === \"idle\" || bookRuntimeStatus === \"loading\"}\n                      selectedWriter={selectedWriter}\n                      focusRequestId={\n                        writerFocusRequest?.countryId === selectedCountry.id &&\n"
+    },
+    {
+      "id": "R49N-PACKAGE-037",
+      "path": "src/App.tsx",
+      "before": "        </section>\n\n        <DeferredBookArchive\n          books={verifiedBookArchive}\n          countries={countryArchive}\n          archiveStatus={bookRuntimeStatus}\n          forceLoad={\n",
+      "after": "        </section>\n\n        <DeferredBookArchive\n          books={bookArchive}\n          countries={countryArchive}\n          archiveStatus={bookRuntimeStatus}\n          forceLoad={\n"
+    },
+    {
+      "id": "R49N-PACKAGE-038",
+      "path": "src/App.tsx",
+      "before": "            <GlobalSearch\n              open\n              countries={countryArchive}\n              books={verifiedBookArchive}\n              onClose={closeGlobalSearch}\n              onCountrySelect={(country, writer) =>\n                writer\n",
+      "after": "            <GlobalSearch\n              open\n              countries={countryArchive}\n              books={bookArchive}\n              onClose={closeGlobalSearch}\n              onCountrySelect={(country, writer) =>\n                writer\n"
+    },
+    {
+      "id": "R49N-PACKAGE-039",
+      "path": "src/books/bookDossierLegacyAdapter.ts",
+      "before": "    normalized(profile.description) === paragraph);\n}\n\n/** Existing approved catalogue material is an honest compact fallback, not a new human-reviewed CORE release. */\nexport function buildBookDossierFromEditorial(input: BookEditorialDocument, extras: LegacyExtras = {}): BookDossierDocumentV2 {\n  const english = input.locale === \"en\";\n  const pages: BookDossierPage[] = [];\n  const templates: Record<string, BookDossierTemplate> = { identity: \"title\", details: \"passport\", description: \"essay\", provenance: \"sources\" };\n  const version = `${BOOK_DOSSIER_DATA_VERSION}-catalogue`;\n  const order = [\"identity\", \"description\", \"details\", \"provenance\"];\n  for (const page of [...input.pages].sort((left, right) => order.indexOf(left.id) - order.indexOf(right.id))) {\n    if (page.id === \"description\" && !hasExistingOriginalDescription(extras.descriptionProfile, page.paragraphs[0] || \"\", input.locale)) continue;\n    const anchor = { sectionId: page.id, blockId: `${page.id}-content`, dossierVersion: version, locale: input.locale, readingMode: \"BEFORE_READING\" as const };\n    const sources = page.sources.filter(source => isBookDossierUrl(source.sourceUrl)).map((source, index) => ({\n      id: source.id || `${page.id}-source-${index}`, provider: source.provider, title: source.provider,\n      sourceUrl: source.sourceUrl, usageLabel: english ? \"Reference source\" : \"Справочный источник\",\n    }));\n    if (page.id !== \"identity\" && !page.rows.length && !page.paragraphs.length && !sources.length) continue;\n    const kind = page.id === \"description\" ? \"editorial\" : page.id === \"provenance\" ? \"sources\" : \"metadata\";\n    const rows = page.rows.map((row, index) => ({ ...row, id: row.id || `${page.id}-row-${row.kind}-${index}` }));\n    const block: BookDossierPublicBlock = {\n      id: anchor.blockId, sectionId: page.id, kind, title: page.title, paragraphs: page.paragraphs,\n",
+      "after": "    normalized(profile.description) === paragraph);\n}\n\nfunction hasRetainedCatalogSynopsis(profile: WorkTranslationProfile | undefined, paragraph: string, locale: string) {\n  const retained = profile as (WorkTranslationProfile & { retainedCatalogSource?: string }) | undefined;\n  return Boolean(retained?.locale === locale && retained.retainedCatalogSource === \"R49N-20260912\" &&\n    normalized(retained.description).slice(0, 20_000).trim() === paragraph);\n}\n\n/** Existing approved catalogue material is an honest compact fallback, not a new human-reviewed CORE release. */\nexport function buildBookDossierFromEditorial(input: BookEditorialDocument, extras: LegacyExtras = {}): BookDossierDocumentV2 {\n  const english = input.locale === \"en\";\n  const pages: BookDossierPage[] = [];\n  const templates: Record<string, BookDossierTemplate> = { identity: \"title\", details: \"passport\", description: \"essay\", \"catalog-synopsis\": \"essay\", provenance: \"sources\" };\n  const version = `${BOOK_DOSSIER_DATA_VERSION}-catalogue`;\n  const order = [\"identity\", \"description\", \"catalog-synopsis\", \"details\", \"provenance\"];\n  for (const page of [...input.pages].sort((left, right) => order.indexOf(left.id) - order.indexOf(right.id))) {\n    if (page.id === \"description\" && !hasExistingOriginalDescription(extras.descriptionProfile, page.paragraphs[0] || \"\", input.locale)) continue;\n    if (page.id === \"catalog-synopsis\" && !hasRetainedCatalogSynopsis(extras.descriptionProfile, page.paragraphs[0] || \"\", input.locale)) continue;\n    const anchor = { sectionId: page.id, blockId: `${page.id}-content`, dossierVersion: version, locale: input.locale, readingMode: \"BEFORE_READING\" as const };\n    const sources = page.sources.filter(source => isBookDossierUrl(source.sourceUrl)).map((source, index) => ({\n      id: source.id || `${page.id}-source-${index}`, provider: source.provider, title: source.provider,\n      sourceUrl: source.sourceUrl, usageLabel: english ? \"Reference source\" : \"Справочный источник\",\n    }));\n    if (page.id !== \"identity\" && !page.rows.length && !page.paragraphs.length && !sources.length) continue;\n    const kind = [\"description\", \"catalog-synopsis\"].includes(page.id) ? \"editorial\" : page.id === \"provenance\" ? \"sources\" : \"metadata\";\n    const rows = page.rows.map((row, index) => ({ ...row, id: row.id || `${page.id}-row-${row.kind}-${index}` }));\n    const block: BookDossierPublicBlock = {\n      id: anchor.blockId, sectionId: page.id, kind, title: page.title, paragraphs: page.paragraphs,\n"
+    },
+    {
+      "id": "R49N-PACKAGE-040",
+      "path": "src/books/bookEditorialPages.ts",
+      "before": "  country?: BookEditorialVerifiedValue<string>;\n  metadata?: readonly BookEditorialMetadata[];\n  description?: BookEditorialVerifiedValue<string>;\n  sourceRights?: readonly BookEditorialSourceRights[];\n}>;\n\n",
+      "after": "  country?: BookEditorialVerifiedValue<string>;\n  metadata?: readonly BookEditorialMetadata[];\n  description?: BookEditorialVerifiedValue<string>;\n  catalogSynopsis?: Readonly<{ value: string; reviewStatus: \"pending\" }>;\n  sourceRights?: readonly BookEditorialSourceRights[];\n}>;\n\n"
+    },
+    {
+      "id": "R49N-PACKAGE-041",
+      "path": "src/books/bookEditorialPages.ts",
+      "before": "  language: string;\n  country: string;\n  description: string;\n  provenance: string;\n  metadata: Readonly<Record<BookEditorialMetadataKind, string>>;\n  usage: Readonly<Record<BookEditorialSourceRights[\"usage\"], string>>;\n",
+      "after": "  language: string;\n  country: string;\n  description: string;\n  synopsis: string;\n  pending: string;\n  provenance: string;\n  metadata: Readonly<Record<BookEditorialMetadataKind, string>>;\n  usage: Readonly<Record<BookEditorialSourceRights[\"usage\"], string>>;\n"
+    },
+    {
+      "id": "R49N-PACKAGE-042",
+      "path": "src/books/bookEditorialPages.ts",
+      "before": "    language: \"Язык оригинала\",\n    country: \"Страна\",\n    description: \"Редакционное описание\",\n    provenance: \"Источники и права\",\n    metadata: {\n      publisher: \"Издатель\",\n",
+      "after": "    language: \"Язык оригинала\",\n    country: \"Страна\",\n    description: \"Редакционное описание\",\n    synopsis: \"Аннотация\",\n    pending: \"Пока не проверено\",\n    provenance: \"Источники и права\",\n    metadata: {\n      publisher: \"Издатель\",\n"
+    },
+    {
+      "id": "R49N-PACKAGE-043",
+      "path": "src/books/bookEditorialPages.ts",
+      "before": "    language: \"Original language\",\n    country: \"Country\",\n    description: \"Editorial description\",\n    provenance: \"Sources and rights\",\n    metadata: {\n      publisher: \"Publisher\",\n",
+      "after": "    language: \"Original language\",\n    country: \"Country\",\n    description: \"Editorial description\",\n    synopsis: \"Synopsis\",\n    pending: \"Not yet reviewed\",\n    provenance: \"Sources and rights\",\n    metadata: {\n      publisher: \"Publisher\",\n"
+    },
+    {
+      "id": "R49N-PACKAGE-044",
+      "path": "src/books/bookEditorialPages.ts",
+      "before": "/**\n * Builds short, finite editorial matter. It never accepts or manufactures the\n * work text: optional facts enter only through runtime-checked `verified`\n * records, and absent fields simply produce no row/page.\n */\nexport function buildBookEditorialDocument(\n  input: BookEditorialPageInput\n",
+      "after": "/**\n * Builds short, finite editorial matter. It never accepts or manufactures the\n * work text: optional facts enter only through runtime-checked `verified`\n * records. A separately authorized catalogue synopsis retains its pending label;\n * absent fields simply produce no row/page.\n */\nexport function buildBookEditorialDocument(\n  input: BookEditorialPageInput\n"
+    },
+    {
+      "id": "R49N-PACKAGE-045",
+      "path": "src/books/bookEditorialPages.ts",
+      "before": "  }\n\n  const sources = normalizedSources(input.sourceRights, locale);\n  if (sources.length > 0) {\n    pages.push(\n      freezePage(\n",
+      "after": "  }\n\n  const sources = normalizedSources(input.sourceRights, locale);\n  const catalogSynopsis = !description && input.catalogSynopsis?.reviewStatus === \"pending\"\n    ? normalizedText(input.catalogSynopsis.value, 20_000)\n    : \"\";\n  if (catalogSynopsis) {\n    pages.push(freezePage({\n      id: \"catalog-synopsis\",\n      eyebrow: selectedLabels.pending,\n      title: selectedLabels.synopsis,\n      rows: [],\n      paragraphs: [catalogSynopsis],\n      sources: [],\n    }, pages.length));\n  }\n  if (sources.length > 0) {\n    pages.push(\n      freezePage(\n"
+    },
+    {
+      "id": "R49N-PACKAGE-046",
+      "path": "src/components/BookArchiveSection.tsx",
+      "before": "} from \"../data/cms/homepage\";\nimport { useReadingLibrary } from \"../hooks/useReadingLibrary\";\nimport { useBookCollections } from \"../hooks/useBookCollections\";\nimport { useInterfaceLanguage } from \"../i18n/InterfaceLanguage\";\nimport {\n  articlePath,\n  navigateToArticle,\n",
+      "after": "} from \"../data/cms/homepage\";\nimport { useReadingLibrary } from \"../hooks/useReadingLibrary\";\nimport { useBookCollections } from \"../hooks/useBookCollections\";\nimport { selectInterfacePlural, useInterfaceLanguage } from \"../i18n/InterfaceLanguage\";\nimport {\n  articlePath,\n  navigateToArticle,\n"
+    },
+    {
+      "id": "R49N-PACKAGE-047",
+      "path": "src/components/BookArchiveSection.tsx",
+      "before": "\n  const visibleItems = filteredItems.slice(0, visibleCount);\n  const coreBookArchive = getCoreHomepageSection(\"book-archive\");\n  const collectionSceneSettings = useMemo(() => {\n    const collection = collectionShelfSelection.activeOption.collection;\n    if (!collection) return coreBookArchive?.visualSettings;\n",
+      "after": "\n  const visibleItems = filteredItems.slice(0, visibleCount);\n  const coreBookArchive = getCoreHomepageSection(\"book-archive\");\n  const legacyLibraryDescription = \"Произведения связаны с карточками писателей и литературными традициями стран. Расширенные сведения публикуются только после редакционной проверки.\";\n  const fullLibraryDescription = \"Полный каталог произведений и готовые аннотации. У каждой карточки указан статус редакционной проверки.\";\n  const libraryDescription = coreBookArchive?.description && coreBookArchive.description !== legacyLibraryDescription\n    ? coreBookArchive.description\n    : fullLibraryDescription;\n  const collectionSceneSettings = useMemo(() => {\n    const collection = collectionShelfSelection.activeOption.collection;\n    if (!collection) return coreBookArchive?.visualSettings;\n"
+    },
+    {
+      "id": "R49N-PACKAGE-048",
+      "path": "src/components/BookArchiveSection.tsx",
+      "before": "        verified && selectedBookText.description\n          ? { value: selectedBookText.description, verified: true }\n          : undefined,\n      sourceRights,\n    });\n  }, [\n",
+      "after": "        verified && selectedBookText.description\n          ? { value: selectedBookText.description, verified: true }\n          : undefined,\n      catalogSynopsis: !verified && selectedBookText.descriptionSource === \"candidate-translation\"\n        ? { value: selectedBookText.description, reviewStatus: \"pending\" }\n        : undefined,\n      sourceRights,\n    });\n  }, [\n"
+    },
+    {
+      "id": "R49N-PACKAGE-049",
+      "path": "src/components/BookArchiveSection.tsx",
+      "before": "  }\n  for (const status of filterState.editorialStatuses) {\n    const label =\n      status === \"verified\" ? t(\"Проверено редакцией\") : t(\"Не проверено\");\n    pushChip(\"status:\" + status, label, () =>\n      updateFilterState({\n        editorialStatuses: filterState.editorialStatuses.filter(\n",
+      "after": "  }\n  for (const status of filterState.editorialStatuses) {\n    const label =\n      status === \"verified\" ? t(\"Проверено редакцией\") : t(\"Пока не проверено\");\n    pushChip(\"status:\" + status, label, () =>\n      updateFilterState({\n        editorialStatuses: filterState.editorialStatuses.filter(\n"
+    },
+    {
+      "id": "R49N-PACKAGE-050",
+      "path": "src/components/BookArchiveSection.tsx",
+      "before": "              navigationIndex + 1\n            )} ${t(\"из\")} ${number(navigationCount)}. ${\n              collectionShelfSelection.activeOption.title\n            }. ${number(filteredItems.length)} ${t(\"результатов\")}.`\n          : t(\"В архиве нет книг по выбранным условиям\");\n\n  return (\n",
+      "after": "              navigationIndex + 1\n            )} ${t(\"из\")} ${number(navigationCount)}. ${\n              collectionShelfSelection.activeOption.title\n            }. ${number(filteredItems.length)} ${t(selectInterfacePlural(filteredItems.length, language, [\"результат\", \"результата\", \"результатов\"]))}.`\n          : t(\"В архиве нет книг по выбранным условиям\");\n\n  return (\n"
+    },
+    {
+      "id": "R49N-PACKAGE-051",
+      "path": "src/components/BookArchiveSection.tsx",
+      "before": "            {...cmsCoreFieldMarker(\n              \"book-archive\",\n              \"description\",\n              coreBookArchive?.description ||\n                \"Произведения связаны с карточками писателей и литературными традициями стран. Расширенные сведения публикуются только после редакционной проверки.\",\n              { kind: \"textarea\", label: \"Описание библиотеки\" }\n            )}\n          >\n            {language === \"ru\" && coreBookArchive?.description\n              ? coreBookArchive.description\n              : t(\n                  \"Произведения связаны с карточками писателей и литературными традициями стран. Расширенные сведения публикуются только после редакционной проверки.\"\n                )}\n          </p>\n        </div>\n        <div className=\"book-archive-total\">\n          <strong>{number(queue.counts.total)}</strong>\n          <span>{t(\"произведений из единой базы стран\")}</span>\n        </div>\n      </header>\n\n",
+      "after": "            {...cmsCoreFieldMarker(\n              \"book-archive\",\n              \"description\",\n              libraryDescription,\n              { kind: \"textarea\", label: \"Описание библиотеки\" }\n            )}\n          >\n            {language === \"ru\" ? libraryDescription : t(fullLibraryDescription)}\n          </p>\n        </div>\n        <div className=\"book-archive-total\">\n          <strong>{number(queue.counts.total)}</strong>\n          <span>{t(\"произведений из единой базы стран\")}</span>\n          <span className=\"book-archive-reviewed-count\" data-count={queue.counts.verified}>\n            {number(queue.counts.verified)} · {t(\"Проверено редакцией\")}\n          </span>\n          <span className=\"book-archive-pending-count\" data-count={queue.counts.pending}>\n            {number(queue.counts.pending)} · {t(\"Пока не проверено\")}\n          </span>\n        </div>\n      </header>\n\n"
+    },
+    {
+      "id": "R49N-PACKAGE-052",
+      "path": "src/components/BookArchiveSection.tsx",
+      "before": "              setRandomAnnouncement(\"\");\n              applyQuickFilter(id as BookArchiveQuickPreset);\n            }}\n            resultCountLabel={`${number(filteredItems.length)} ${t(\"результатов\")}`}\n            formatCount={number}\n            onOpenAdvancedFilters={openAdvancedFilters}\n            advancedFiltersLabel={t(\"Расширенные фильтры\")}\n",
+      "after": "              setRandomAnnouncement(\"\");\n              applyQuickFilter(id as BookArchiveQuickPreset);\n            }}\n            resultCountLabel={`${number(filteredItems.length)} ${t(selectInterfacePlural(filteredItems.length, language, [\"результат\", \"результата\", \"результатов\"]))}`}\n            formatCount={number}\n            onOpenAdvancedFilters={openAdvancedFilters}\n            advancedFiltersLabel={t(\"Расширенные фильтры\")}\n"
+    },
+    {
+      "id": "R49N-PACKAGE-053",
+      "path": "src/components/BookArchiveSection.tsx",
+      "before": "            <span className=\"section-kicker\">\n              {selectedItem?.status === \"verified\"\n                ? t(\"Проверено редакцией\")\n                : t(\"Не проверено\")}\n            </span>\n            <h3\n              {...cmsBookFieldAttributes(\n",
+      "after": "            <span className=\"section-kicker\">\n              {selectedItem?.status === \"verified\"\n                ? t(\"Проверено редакцией\")\n                : t(\"Пока не проверено\")}\n            </span>\n            <h3\n              {...cmsBookFieldAttributes(\n"
+    },
+    {
+      "id": "R49N-PACKAGE-054",
+      "path": "src/components/BookArchiveSection.tsx",
+      "before": "                  className={`editorial-state is-${item.status === \"verified\" ? \"verified\" : \"draft\"}`}\n                >\n                  {item.status === \"verified\"\n                    ? t(\"проверено\")\n                    : t(\"Не проверено\")}\n                </span>\n                <button\n                  className={\n",
+      "after": "                  className={`editorial-state is-${item.status === \"verified\" ? \"verified\" : \"draft\"}`}\n                >\n                  {item.status === \"verified\"\n                    ? t(\"Проверено редакцией\")\n                    : t(\"Пока не проверено\")}\n                </span>\n                <button\n                  className={\n"
+    },
+    {
+      "id": "R49N-PACKAGE-055",
+      "path": "src/components/BookArchiveSection.tsx",
+      "before": "                        <span>\n                          {status === \"verified\"\n                            ? t(\"Проверено редакцией\")\n                            : t(\"Не проверено\")}\n                        </span>\n                      </label>\n                    ))}\n",
+      "after": "                        <span>\n                          {status === \"verified\"\n                            ? t(\"Проверено редакцией\")\n                            : t(\"Пока не проверено\")}\n                        </span>\n                      </label>\n                    ))}\n"
+    },
+    {
+      "id": "R49N-PACKAGE-056",
+      "path": "src/components/BookShelfControls.tsx",
+      "before": "  const searchLabelId = `${controlId}-label`;\n  const listboxId = `${controlId}-listbox`;\n  const suggestionsRef = useRef<HTMLDivElement>(null);\n  const suggestionCount = countSuggestionOptions(suggestions);\n  const suggestionsAvailable =\n    suggestions !== undefined && suggestions !== null && suggestions !== false;\n",
+      "after": "  const searchLabelId = `${controlId}-label`;\n  const listboxId = `${controlId}-listbox`;\n  const suggestionsRef = useRef<HTMLDivElement>(null);\n  const pointerInteractionRef = useRef(false);\n  const pendingPointerBlurRef = useRef(false);\n  const suggestionCount = countSuggestionOptions(suggestions);\n  const suggestionsAvailable =\n    suggestions !== undefined && suggestions !== null && suggestions !== false;\n"
+    },
+    {
+      "id": "R49N-PACKAGE-057",
+      "path": "src/components/BookShelfControls.tsx",
+      "before": "  );\n  const suggestionsOpen = suggestionsAvailable && !suggestionsDismissed;\n\n  useEffect(() => {\n    setSuggestionsDismissed(false);\n    setActiveSuggestionIndex(suggestionCount > 0 ? 0 : -1);\n",
+      "after": "  );\n  const suggestionsOpen = suggestionsAvailable && !suggestionsDismissed;\n\n  useEffect(() => {\n    if (!suggestionsOpen) return;\n    const beginPointer = () => { pointerInteractionRef.current = true; };\n    const finishPointer = () => {\n      pointerInteractionRef.current = false;\n      if (!pendingPointerBlurRef.current) return;\n      pendingPointerBlurRef.current = false;\n      setSuggestionsDismissed(true);\n      setActiveSuggestionIndex(-1);\n    };\n    document.addEventListener(\"pointerdown\", beginPointer, true);\n    document.addEventListener(\"click\", finishPointer, true);\n    document.addEventListener(\"pointercancel\", finishPointer, true);\n    document.addEventListener(\"keydown\", finishPointer, true);\n    window.addEventListener(\"blur\", finishPointer);\n    return () => {\n      document.removeEventListener(\"pointerdown\", beginPointer, true);\n      document.removeEventListener(\"click\", finishPointer, true);\n      document.removeEventListener(\"pointercancel\", finishPointer, true);\n      document.removeEventListener(\"keydown\", finishPointer, true);\n      window.removeEventListener(\"blur\", finishPointer);\n      pointerInteractionRef.current = false;\n      pendingPointerBlurRef.current = false;\n    };\n  }, [suggestionsOpen]);\n\n  useEffect(() => {\n    setSuggestionsDismissed(false);\n    setActiveSuggestionIndex(suggestionCount > 0 ? 0 : -1);\n"
+    },
+    {
+      "id": "R49N-PACKAGE-058",
+      "path": "src/components/BookShelfControls.tsx",
+      "before": "                ) {\n                  return;\n                }\n                setSuggestionsDismissed(true);\n                setActiveSuggestionIndex(-1);\n              }}\n",
+      "after": "                ) {\n                  return;\n                }\n                // Keep the results row in place until an outside pointer click\n                // has its target. Removing it on blur can move a book card\n                // between pointerdown and pointerup and discard that click.\n                if (pointerInteractionRef.current) {\n                  pendingPointerBlurRef.current = true;\n                  return;\n                }\n                setSuggestionsDismissed(true);\n                setActiveSuggestionIndex(-1);\n              }}\n"
+    },
+    {
+      "id": "R49N-PACKAGE-059",
+      "path": "src/components/GlobalSearch.tsx",
+      "before": "                      {selectBookWriterName(book, language, t(\"Автор\"))} ·{\" \"}\n                      {countryName(book.country.code, book.countryName)} ·{\" \"}\n                      {isPublicBook(book)\n                        ? t(\"проверено\")\n                        : t(\"Не проверено\")}\n                    </small>\n                  </button>\n                ))}\n",
+      "after": "                      {selectBookWriterName(book, language, t(\"Автор\"))} ·{\" \"}\n                      {countryName(book.country.code, book.countryName)} ·{\" \"}\n                      {isPublicBook(book)\n                        ? t(\"Проверено редакцией\")\n                        : t(\"Пока не проверено\")}\n                    </small>\n                  </button>\n                ))}\n"
+    },
+    {
+      "id": "R49N-PACKAGE-060",
+      "path": "src/components/WriterPanel.tsx",
+      "before": "  shouldUseClientNavigation,\n} from \"../utils/articleRoutes\";\nimport CountryFlagIcon from \"./CountryFlagIcon\";\nimport { getPublicWriterWorkTitles } from \"../data/bookArchive\";\nimport { selectWriterBiographyForDisplay } from \"../data/writerBiographyDisplay\";\nimport {\n  selectWriterDisplayName,\n",
+      "after": "  shouldUseClientNavigation,\n} from \"../utils/articleRoutes\";\nimport CountryFlagIcon from \"./CountryFlagIcon\";\nimport { selectWriterBiographyForDisplay } from \"../data/writerBiographyDisplay\";\nimport {\n  selectWriterDisplayName,\n"
+    },
+    {
+      "id": "R49N-PACKAGE-061",
+      "path": "src/components/WriterPanel.tsx",
+      "before": "\ntype WriterPanelProps = {\n  country: Country;\n  selectedWriter?: Writer | null;\n  focusRequestId?: number;\n  onWriterSelect?: (writer: Writer) => void;\n",
+      "after": "\ntype WriterPanelProps = {\n  country: Country;\n  catalogWorkCount: number | null;\n  catalogWorkCountLoading?: boolean;\n  selectedWriter?: Writer | null;\n  focusRequestId?: number;\n  onWriterSelect?: (writer: Writer) => void;\n"
+    },
+    {
+      "id": "R49N-PACKAGE-062",
+      "path": "src/components/WriterPanel.tsx",
+      "before": "\nexport default function WriterPanel({\n  country,\n  selectedWriter,\n  focusRequestId,\n  onWriterSelect,\n",
+      "after": "\nexport default function WriterPanel({\n  country,\n  catalogWorkCount,\n  catalogWorkCountLoading = false,\n  selectedWriter,\n  focusRequestId,\n  onWriterSelect,\n"
+    },
+    {
+      "id": "R49N-PACKAGE-063",
+      "path": "src/components/WriterPanel.tsx",
+      "before": "                ])}\n          </span>\n        </button>\n        <div className=\"country-metric country-metric--static\">\n          {(() => {\n            const worksCount = uniqueValues(\n              writers.flatMap((writer) =>\n                getPublicWriterWorkTitles(writer, language)\n              )\n            ).length;\n            return (\n              <>\n                <strong>{number(worksCount)}</strong>\n                <span>\n                  {language === \"en\"\n                    ? worksCount === 1\n                      ? \"work\"\n                      : \"works\"\n                    : pluralRu(worksCount, [\n                        \"произведение\",\n                        \"произведения\",\n                        \"произведений\",\n",
+      "after": "                ])}\n          </span>\n        </button>\n        <div className=\"country-metric country-metric--static country-metric--works\" aria-busy={catalogWorkCountLoading}>\n          {(() => {\n            const worksCount = catalogWorkCount;\n            return (\n              <>\n                <strong>{worksCount === null ? catalogWorkCountLoading ? \"…\" : \"—\" : number(worksCount)}</strong>\n                <span>\n                  {language === \"en\"\n                    ? worksCount === 1\n                      ? \"work\"\n                      : \"works\"\n                    : pluralRu(worksCount ?? 0, [\n                        \"произведение\",\n                        \"произведения\",\n                        \"произведений\",\n"
+    },
+    {
+      "id": "R49N-PACKAGE-064",
+      "path": "src/data/bookArchive.ts",
+      "before": "import { applyBookEvidenceV2ExpansionBatch01Work } from \"./countries/bookEvidenceV2ExpansionBatch01\";\nimport { applyBookEvidenceV2LegacyVerifiedReaudit01Work } from \"./countries/bookEvidenceV2LegacyVerifiedReaudit01\";\nimport { applyBookR49nDickensReviewed20260912Work } from \"./countries/bookR49nDickensReviewed20260912\";\n\nexport type BookArchiveEntry = WorkProfile & {\n  countryId: string;\n",
+      "after": "import { applyBookEvidenceV2ExpansionBatch01Work } from \"./countries/bookEvidenceV2ExpansionBatch01\";\nimport { applyBookEvidenceV2LegacyVerifiedReaudit01Work } from \"./countries/bookEvidenceV2LegacyVerifiedReaudit01\";\nimport { applyBookR49nDickensReviewed20260912Work } from \"./countries/bookR49nDickensReviewed20260912\";\nimport { applyBookR49nExistingReviewed20260912Work } from \"./countries/bookR49nExistingReviewed20260912\";\nimport { applyBookR49nRetainedDrafts20260912Work } from \"./countries/bookR49nRetainedDrafts20260912\";\n\nexport type BookArchiveEntry = WorkProfile & {\n  countryId: string;\n"
+    },
+    {
+      "id": "R49N-PACKAGE-065",
+      "path": "src/data/bookArchive.ts",
+      "before": "\nexport type BuildBookArchiveOptions = {\n  includeReviewedGenerated?: boolean;\n  applyEnrichmentActions?: boolean;\n  includeUserSuppliedCovers?: boolean;\n  writerProfileOverrides?: Record<string, CmsWriterProfileOverride>;\n",
+      "after": "\nexport type BuildBookArchiveOptions = {\n  includeReviewedGenerated?: boolean;\n  /** Keep enrichment classification independent of the later R49N catalogue. */\n  includeR49nCatalog?: boolean;\n  applyEnrichmentActions?: boolean;\n  includeUserSuppliedCovers?: boolean;\n  writerProfileOverrides?: Record<string, CmsWriterProfileOverride>;\n"
+    },
+    {
+      "id": "R49N-PACKAGE-066",
+      "path": "src/data/bookArchive.ts",
+      "before": "  options: BuildBookArchiveOptions = {}\n): BookArchiveEntry[] {\n  const includeReviewedGenerated = options.includeReviewedGenerated !== false;\n  const shouldApplyEnrichmentActions = options.applyEnrichmentActions !== false;\n  const includeUserSuppliedCovers = options.includeUserSuppliedCovers !== false;\n  const writerProfileOverrides =\n",
+      "after": "  options: BuildBookArchiveOptions = {}\n): BookArchiveEntry[] {\n  const includeReviewedGenerated = options.includeReviewedGenerated !== false;\n  const includeR49nCatalog = options.includeR49nCatalog !== false;\n  const shouldApplyEnrichmentActions = options.applyEnrichmentActions !== false;\n  const includeUserSuppliedCovers = options.includeUserSuppliedCovers !== false;\n  const writerProfileOverrides =\n"
+    },
+    {
+      "id": "R49N-PACKAGE-067",
+      "path": "src/data/bookArchive.ts",
+      "before": "          writer.id,\n          expandedWork\n        );\n        // Final publication guard: keep this after every public/expansion\n        // overlay so a later enrichment cannot re-promote a held legacy card.\n        const work = applyBookEvidenceV2LegacyVerifiedReaudit01Work(\n          country.id,\n          writer.id,\n          reviewedWork\n        );\n        const workId = `${country.id}:${writer.id}:${work.id}`;\n        const edition = (\n",
+      "after": "          writer.id,\n          expandedWork\n        );\n        const recoveredWork = applyBookR49nExistingReviewed20260912Work(\n          country.id,\n          writer.id,\n          reviewedWork\n        );\n        const retainedDraftWork = applyBookR49nRetainedDrafts20260912Work(\n          country.id,\n          writer.id,\n          recoveredWork\n        );\n        // Final publication guard: keep this after every public/expansion\n        // overlay so a later enrichment cannot re-promote a held legacy card.\n        const work = applyBookEvidenceV2LegacyVerifiedReaudit01Work(\n          country.id,\n          writer.id,\n          includeR49nCatalog ? retainedDraftWork : expandedWork\n        );\n        const workId = `${country.id}:${writer.id}:${work.id}`;\n        const edition = (\n"
+    },
+    {
+      "id": "R49N-PACKAGE-068",
+      "path": "src/data/bookArchiveQueue.ts",
+      "before": "} from \"./bookArchive\";\nimport { selectBookText } from \"./bookLocalization\";\nimport { isPublicBook } from \"./bookQuality\";\nimport type { WorkLocale } from \"./countries/types\";\n\nexport type BookArchiveQueueStatus = \"verified\" | \"pending\";\n\n",
+      "after": "} from \"./bookArchive\";\nimport { selectBookText } from \"./bookLocalization\";\nimport { isPublicBook } from \"./bookQuality\";\nimport type { WorkLocale, WorkTranslationProfile } from \"./countries/types\";\n\nexport type BookArchiveQueueStatus = \"verified\" | \"pending\";\n\n"
+    },
+    {
+      "id": "R49N-PACKAGE-069",
+      "path": "src/data/bookArchiveQueue.ts",
+      "before": "    | \"candidate-translation\"\n    | \"canonical-title\"\n    | \"placeholder\";\n  descriptionSource: \"verified-translation\" | \"empty\";\n};\n\nexport type BookVerificationPredicate = (book: BookArchiveEntry) => boolean;\n",
+      "after": "    | \"candidate-translation\"\n    | \"canonical-title\"\n    | \"placeholder\";\n  descriptionSource: \"verified-translation\" | \"candidate-translation\" | \"empty\";\n};\n\nexport type BookVerificationPredicate = (book: BookArchiveEntry) => boolean;\n"
+    },
+    {
+      "id": "R49N-PACKAGE-070",
+      "path": "src/data/bookArchiveQueue.ts",
+      "before": "const queueCopy = {\n  ru: {\n    verified: \"Проверено редакцией\",\n    pending: \"Не проверено\",\n    untitled: \"Название уточняется\",\n  },\n  en: {\n    verified: \"Editorially verified\",\n    pending: \"Not verified\",\n    untitled: \"Title pending review\",\n  },\n} as const;\n",
+      "after": "const queueCopy = {\n  ru: {\n    verified: \"Проверено редакцией\",\n    pending: \"Пока не проверено\",\n    untitled: \"Название уточняется\",\n  },\n  en: {\n    verified: \"Editorially verified\",\n    pending: \"Not yet reviewed\",\n    untitled: \"Title pending review\",\n  },\n} as const;\n"
+    },
+    {
+      "id": "R49N-PACKAGE-071",
+      "path": "src/data/bookArchiveQueue.ts",
+      "before": "}\n\n/**\n * Splits the complete canonical archive into the visitor-ready verified set\n * and the editorial queue. Stable archive keys keep the country/writer/work\n * relation intact and make a later promotion a move, never a copy.\n */\nexport function classifyBookArchiveQueue(\n",
+      "after": "}\n\n/**\n * Labels the complete visible canonical archive by editorial verification.\n * Stable archive keys keep the country/writer/work\n * relation intact and make a later promotion a move, never a copy.\n */\nexport function classifyBookArchiveQueue(\n"
+    },
+    {
+      "id": "R49N-PACKAGE-072",
+      "path": "src/data/bookArchiveQueue.ts",
+      "before": "}\n\n/**\n * Only a book that passed the shared publication gate may expose its title or\n * localized editorial description. Pending records receive a neutral label so\n * draft bibliographic claims cannot leak through visitor-facing queue views.\n */\nexport function presentBookArchiveQueueItem(\n  item: BookArchiveQueueItem,\n  locale: WorkLocale\n): BookArchiveQueuePresentation {\n  const copy = queueCopy[locale];\n  const localized = selectBookText(item.book, locale);\n  const localizedTitle =\n    item.status === \"verified\" ? localized.title.trim() : \"\";\n  const canonicalTitle =\n    item.status === \"verified\"\n      ? locale === \"en\"\n        ? [\n            item.book.originalTitle,\n            item.book.title,\n",
+      "after": "}\n\n/**\n * Catalog visibility is independent of editorial verification. Present only\n * the public title and requested-locale synopsis fields; private editorial\n * notes and evidence-review payloads never become visitor copy.\n */\nexport function presentBookArchiveQueueItem(\n  item: BookArchiveQueueItem,\n  locale: WorkLocale\n): BookArchiveQueuePresentation {\n  const copy = queueCopy[locale];\n  const verified = item.status === \"verified\";\n  const localized = selectBookText(item.book, locale);\n  const localizedTitle = localized.title.trim();\n  const canonicalTitle =\n    locale === \"en\"\n        ? [\n            item.book.originalTitle,\n            item.book.title,\n"
+    },
+    {
+      "id": "R49N-PACKAGE-073",
+      "path": "src/data/bookArchiveQueue.ts",
+      "before": "              (title) =>\n                /\\p{Script=Latin}/u.test(title) &&\n                !/\\p{Script=Cyrillic}/u.test(title)\n            ) || \"\"\n        : item.book.title.trim()\n      : \"\";\n  const verifiedDescription =\n    item.status === \"verified\" ? localized.description.trim() : \"\";\n\n  const title = localizedTitle || canonicalTitle || copy.untitled;\n  const titleSource = localizedTitle\n    ? \"verified-translation\"\n    : canonicalTitle\n      ? \"canonical-title\"\n      : \"placeholder\";\n\n  return {\n    title,\n    description: verifiedDescription,\n    statusLabel:\n      item.status === \"verified\" ? copy.verified : copy.pending,\n    titleSource,\n    descriptionSource: verifiedDescription\n      ? \"verified-translation\"\n      : \"empty\",\n  };\n}\n",
+      "after": "              (title) =>\n                /\\p{Script=Latin}/u.test(title) &&\n                !/\\p{Script=Cyrillic}/u.test(title)\n            ) || item.book.originalTitle?.trim() || item.book.title.trim()\n        : item.book.title.trim();\n  const translation = item.book.translations?.[locale] as\n    | (WorkTranslationProfile & { retainedCatalogSource?: string })\n    | undefined;\n  const description =\n    verified || translation?.retainedCatalogSource === \"R49N-20260912\"\n      ? localized.description.trim()\n      : \"\";\n\n  const title = localizedTitle || canonicalTitle || copy.untitled;\n  const titleSource = localizedTitle\n    ? verified ? \"verified-translation\" : \"candidate-translation\"\n    : canonicalTitle\n      ? \"canonical-title\"\n      : \"placeholder\";\n\n  return {\n    title,\n    description,\n    statusLabel:\n      verified ? copy.verified : copy.pending,\n    titleSource,\n    descriptionSource: description\n      ? verified ? \"verified-translation\" : \"candidate-translation\"\n      : \"empty\",\n  };\n}\n"
+    },
+    {
+      "id": "R49N-PACKAGE-074",
+      "path": "src/data/countries/index.ts",
+      "before": "import { mergeArticleReferencedBooks } from \"./articleReferencedBooks\";\nimport { mergeVerifiedBookSupplements } from \"./verifiedBookSupplements\";\nimport { mergeUserSuppliedBookWorkSupplementsBatch20260820 } from \"./userSuppliedBookWorkSupplementsBatch20260820\";\nimport {\n  applyCmsCountryProfileOverrides,\n  applyCmsWriterProfileOverrides,\n",
+      "after": "import { mergeArticleReferencedBooks } from \"./articleReferencedBooks\";\nimport { mergeVerifiedBookSupplements } from \"./verifiedBookSupplements\";\nimport { mergeUserSuppliedBookWorkSupplementsBatch20260820 } from \"./userSuppliedBookWorkSupplementsBatch20260820\";\nimport { mergeBookR49nStoweRecovered20260912 } from \"./bookR49nStoweRecovered20260912\";\nimport { mergeBookR49nAlcottDraft20260912 } from \"./bookR49nAlcottDraft20260912\";\nimport {\n  applyCmsCountryProfileOverrides,\n  applyCmsWriterProfileOverrides,\n"
+    },
+    {
+      "id": "R49N-PACKAGE-075",
+      "path": "src/data/countries/index.ts",
+      "before": " * quarantine must not remove or rename pending book cards: those records stay\n * in the editorial queue until the books themselves are reviewed.\n */\nexport const bookArchiveCountries: Country[] =\n  countriesBeforeWriterBiographyCorrections;\n\n/** Stable pre-review source used by SHA-pinned claim-review tests. */\nexport const writerBiographyFactReviewSourceCountries: Country[] =\n",
+      "after": " * quarantine must not remove or rename pending book cards: those records stay\n * in the editorial queue until the books themselves are reviewed.\n */\nexport const bookArchiveSourceCountries: Country[] = countriesBeforeWriterBiographyCorrections;\n\nexport const bookArchiveCountries: Country[] =\n  mergeBookR49nAlcottDraft20260912(\n    mergeBookR49nStoweRecovered20260912(bookArchiveSourceCountries)\n  );\n\n/** Stable pre-review source used by SHA-pinned claim-review tests. */\nexport const writerBiographyFactReviewSourceCountries: Country[] =\n"
+    },
+    {
+      "id": "R49N-PACKAGE-076",
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "before": "  \"Фильтры библиотеки\": \"Library filters\",\n  \"Отбор архива\": \"Archive selection\",\n  \"результатов\": \"results\",\n  \"Все связанные произведения\": \"All linked works\",\n  \"Весь архив\": \"Complete archive\",\n  \"Карточки с подтверждёнными данными\": \"Records with verified metadata\",\n",
+      "after": "  \"Фильтры библиотеки\": \"Library filters\",\n  \"Отбор архива\": \"Archive selection\",\n  \"результатов\": \"results\",\n  \"результат\": \"result\",\n  \"результата\": \"results\",\n  \"Все связанные произведения\": \"All linked works\",\n  \"Весь архив\": \"Complete archive\",\n  \"Карточки с подтверждёнными данными\": \"Records with verified metadata\",\n"
+    },
+    {
+      "id": "R49N-PACKAGE-077",
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "before": "    \"Editorial image from a related article · not the cover of a specific edition\",\n  \"Проверено редакцией\": \"Editorially verified\",\n  \"Не проверено\": \"Not verified\",\n  \"не проверено\": \"not verified\",\n  \"Редакционная карточка\": \"Editorial record\",\n  \"Архивная запись\": \"Archive record\",\n",
+      "after": "    \"Editorial image from a related article · not the cover of a specific edition\",\n  \"Проверено редакцией\": \"Editorially verified\",\n  \"Не проверено\": \"Not verified\",\n  \"Пока не проверено\": \"Not yet reviewed\",\n  \"Полный каталог произведений и готовые аннотации. У каждой карточки указан статус редакционной проверки.\": \"The complete catalog with available synopses. Each book shows its editorial review status.\",\n  \"не проверено\": \"not verified\",\n  \"Редакционная карточка\": \"Editorial record\",\n  \"Архивная запись\": \"Archive record\",\n"
+    },
+    {
+      "id": "R49N-PACKAGE-078",
+      "path": "src/search/globalSearchIndex.ts",
+      "before": "  }\n\n  for (const book of books) {\n    if (!isPublicBook(book)) continue;\n    const displayedBook = presentBookArchiveEntry(book, language);\n    const writerName = selectBookWriterName(\n      book,\n",
+      "after": "  }\n\n  for (const book of books) {\n    const displayedBook = presentBookArchiveEntry(book, language);\n    const writerName = selectBookWriterName(\n      book,\n"
+    },
+    {
+      "id": "R49N-PACKAGE-079",
+      "path": "src/search/globalSearchIndex.ts",
+      "before": "      book.country.code,\n      book.countryName\n    );\n    const verifiedMetadata = [\n      displayedBook.description,\n      selectBookOriginalLanguage(book, language),\n      ...selectBookMetadataLabels(book, language, translate),\n    ];\n    const key = bookArchiveKey(\n      book.countryId,\n      book.writerId,\n",
+      "after": "      book.country.code,\n      book.countryName\n    );\n    const verifiedMetadata = isPublicBook(book) ? [\n      displayedBook.description,\n      selectBookOriginalLanguage(book, language),\n      ...selectBookMetadataLabels(book, language, translate),\n    ] : [displayedBook.description];\n    const key = bookArchiveKey(\n      book.countryId,\n      book.writerId,\n"
+    },
+    {
+      "id": "R49N-PACKAGE-080",
+      "path": "vite.config.ts",
+      "before": "            if (moduleId.includes(\"vite/preload-helper\")) {\n              return \"vite-preload-helper\";\n            }\n            if (moduleId.includes(\"/books.generated.json\")) return \"book-catalog\";\n            if (moduleId.includes(\"/writerPortraits.generated.json\")) {\n              return \"writer-portraits-data\";\n",
+      "after": "            if (moduleId.includes(\"vite/preload-helper\")) {\n              return \"vite-preload-helper\";\n            }\n            // Keep retained synopsis data in three bounded dependencies of the\n            // lazy archive. The facade still applies the same exact RU/EN text.\n            const retainedDraftPart = moduleId.match(\n              /\\/src\\/data\\/countries\\/bookR49nRetainedDrafts20260912Data(0[1-3])\\.ts$/u\n            )?.[1];\n            if (retainedDraftPart) return `book-retained-drafts-${retainedDraftPart}`;\n            if (moduleId.includes(\"/books.generated.json\")) return \"book-catalog\";\n            if (moduleId.includes(\"/writerPortraits.generated.json\")) {\n              return \"writer-portraits-data\";\n"
+    }
+  ],
+  "runtime": {
+    "hashProfile": "sha256-recursively-key-sorted-json; aggregates are sorted key + NUL + recordSha256 + LF",
+    "beforeCanonicalCount": 9761,
+    "canonicalCount": 9763,
+    "beforeCanonicalKeysSha256": "4809678e8a9b2621b09a470b9eb65e11cb9981ddc9be0afec6415e8c0719e3a9",
+    "canonicalKeysSha256": "a0d686d7ccb61402285d55bcbf49f0d7b1db7d274351bd1b0ec0c87dbd3bf201",
+    "beforeReadyKeys": [
+      "austria:franz_kafka:openlibrary-works-ol498556w",
+      "canada:margaret_atwood:openlibrary-works-ol675783w",
+      "canada:yann_martel:life-of-pi",
+      "england:aldous_huxley:brave-new-world-editorial",
+      "england:charles_dickens:a-tale-of-two-cities",
+      "england:david_mitchell:ghostwritten",
+      "england:david_mitchell:number9dream",
+      "england:david_mitchell:slade-house",
+      "england:david_mitchell:the-bone-clocks",
+      "england:david_mitchell:the-thousand-autumns-of-jacob-de-zoet",
+      "england:george_orwell:animal-farm-editorial",
+      "england:george_orwell:nineteen-eighty-four",
+      "england:h_g_wells:ann-veronica",
+      "england:h_g_wells:men-like-gods",
+      "england:h_g_wells:the-first-men-in-the-moon",
+      "england:h_g_wells:the-food-of-the-gods",
+      "england:h_g_wells:the-history-of-mr-polly",
+      "england:h_g_wells:the-world-set-free",
+      "england:h_g_wells:when-the-sleeper-wakes",
+      "england:j_r_r_tolkien:openlibrary-works-ol27448w",
+      "england:j_r_r_tolkien:the-hobbit",
+      "england:jane_austen:pride-and-prejudice",
+      "england:john_galsworthy:the-forsyte-saga",
+      "england:william_shakespeare:hamlet",
+      "france:flaubert:madame-bovary",
+      "france:saint_exupery:openlibrary-works-ol10263w",
+      "france:victor_hugo:les-miserables",
+      "germany:thomas_mann:buddenbrooks-editorial",
+      "norway:knut_hamsun:growth-of-the-soil",
+      "poland:wladyslaw_reymont:the-peasants",
+      "russia:chekhov:the-black-monk",
+      "russia:chekhov:the-duel",
+      "russia:chekhov:the-lady-with-the-dog",
+      "russia:chekhov:the-man-in-a-case",
+      "russia:chekhov:uncle-vanya",
+      "russia:dostoevsky:crime-and-punishment",
+      "russia:tolstoy:war-and-peace",
+      "spain:miguel_de_cervantes:openlibrary-works-ol15272537w",
+      "usa:ernest_hemingway:the-old-man-and-the-sea",
+      "usa:francis_scott_fitzgerald:the-great-gatsby",
+      "usa:harper_lee:to-kill-a-mockingbird-editorial",
+      "usa:herman_melville:moby-dick",
+      "usa:jerome_david_salinger:the-catcher-in-the-rye-editorial",
+      "usa:ray_bradbury:fahrenheit-451-editorial",
+      "usa:suzanne_collins:the-hunger-games",
+      "usa:vladimir_nabokov:lolita-editorial"
+    ],
+    "beforeReadyCount": 46,
+    "newReadyKeys": [
+      "england:charles_dickens:article-series-1tdjfsi",
+      "england:charles_dickens:david-copperfield-editorial",
+      "england:charles_dickens:great-expectations",
+      "england:charles_dickens:oliver-twist-editorial",
+      "england:charles_dickens:openlibrary-works-ol13114895w",
+      "england:charles_dickens:openlibrary-works-ol14868510w",
+      "england:charles_dickens:openlibrary-works-ol14869167w",
+      "england:charles_dickens:openlibrary-works-ol32466w",
+      "england:charles_dickens:openlibrary-works-ol8193387w",
+      "england:charles_dickens:openlibrary-works-ol8300174w",
+      "france:jules_verne:openlibrary-works-ol1099280w",
+      "france:jules_verne:openlibrary-works-ol1099364w",
+      "france:jules_verne:openlibrary-works-ol1099479w",
+      "france:jules_verne:openlibrary-works-ol1099513w",
+      "france:jules_verne:openlibrary-works-ol1099630w",
+      "france:jules_verne:openlibrary-works-ol1100007w",
+      "france:jules_verne:the-mysterious-island-editorial",
+      "russia:buninin:the-village",
+      "russia:tolstoy:article-series-zqpjjm",
+      "russia:turgenev:article-series-men9bv",
+      "usa:harriet_beecher_stowe:uncle-toms-cabin",
+      "usa:jack_london:article-catalog-1hfivd6",
+      "usa:jack_london:article-catalog-2s2iy7"
+    ],
+    "afterReadyCount": 69,
+    "nonTargetCount": 9739,
+    "nonTargetRecordsSha256": "7af34c73e4ba1d5620f832cb172d21d79ac0a540062eeeb4741d590a46f8fb01",
+    "protectedTargetFields": [
+      "id",
+      "title",
+      "sourceUrl",
+      "authorship",
+      "alternateTitles",
+      "genres",
+      "tags",
+      "externalIds",
+      "distinctions",
+      "canon",
+      "coverUrl",
+      "coverThumbnailUrl",
+      "coverSourceUrl",
+      "coverRights",
+      "edition"
+    ],
+    "protectedExistingTargetKeys": [
+      "england:charles_dickens:article-series-1tdjfsi",
+      "england:charles_dickens:david-copperfield-editorial",
+      "england:charles_dickens:great-expectations",
+      "england:charles_dickens:oliver-twist-editorial",
+      "england:charles_dickens:openlibrary-works-ol13114895w",
+      "england:charles_dickens:openlibrary-works-ol14868510w",
+      "england:charles_dickens:openlibrary-works-ol14869167w",
+      "england:charles_dickens:openlibrary-works-ol32466w",
+      "england:charles_dickens:openlibrary-works-ol8193387w",
+      "england:charles_dickens:openlibrary-works-ol8300174w",
+      "france:jules_verne:openlibrary-works-ol1099280w",
+      "france:jules_verne:openlibrary-works-ol1099364w",
+      "france:jules_verne:openlibrary-works-ol1099479w",
+      "france:jules_verne:openlibrary-works-ol1099513w",
+      "france:jules_verne:openlibrary-works-ol1099630w",
+      "france:jules_verne:openlibrary-works-ol1100007w",
+      "france:jules_verne:the-mysterious-island-editorial",
+      "russia:buninin:the-village",
+      "russia:tolstoy:article-series-zqpjjm",
+      "russia:turgenev:article-series-men9bv",
+      "usa:jack_london:article-catalog-1hfivd6",
+      "usa:jack_london:article-catalog-2s2iy7"
+    ],
+    "protectedTargetFieldsSha256": "4df990c3f8fff27201543b2bd91132c145b8b03d494739754459a204dd8fb1d9",
+    "addedRecordKeys": [
+      "usa:harriet_beecher_stowe:uncle-toms-cabin",
+      "usa:louisa_may_alcott:little-women"
+    ],
+    "addedRecordsSha256": "1e267d3da9d310e6fe429375a60b5e0bfb393e4b09ba6bccdcd72f605bc869de",
+    "catalogOnlyWriter": {
+      "countryId": "usa",
+      "writerId": "harriet_beecher_stowe",
+      "sha256": "90c2066ef42b1575d669bbdb1b0a3e04d3c176470d635f52135605bb7ff8d6e2",
+      "publicBiographyAllowed": false
+    },
+    "nonTargetRecordCount": 8246,
+    "pendingCount": 9694,
+    "retainedPendingPairCount": 1494
+  },
+  "sourceAfterSha256": {
+    ".github/workflows/reconcile-production-database.yml": "6df884319beff972fc3602127a7ea39d1ca4d13bf72c1c3000a41d9038ac2f60",
+    "apps/admin/catalog-assets/editorial-catalog.json": "177bb3e634acd41ec5d5133cc830cebcd2e9029b4e6d859562af599a263e30ab",
+    "apps/admin/catalog-assets/interface-copy-catalog.json": "f8d5d90881c969690414bbffd040a5bd4c29ce547bace4990e028be899112263",
+    "apps/admin/lib/editorial-catalog.ts": "940b06f92c33cac9108c19fc36e0d345e695c4685e557b947ee99ef802445d2f",
+    "data/book-canon-source-registry.json": "c8d2b6862c47c3215295951d2c5d1c406913b9879c616f1d8b787c6e05029f6c",
+    "scripts/archive-source.ts": "dc3f9101c020e0058eed45d7b63ee2080ecaf0f575efd667df05d8d85a78ac1e",
+    "scripts/database/build-production-migration-plan.mjs": "463194e6bf14903013d156d61733ae2db387d171bb4ec8fbdadf6ef16b520e50",
+    "scripts/import-user-supplied-book-covers.mjs": "606cb64fe9734fce086a343bb54612f5bcf7817afa54701e7137dae3238e55c2",
+    "scripts/import-user-supplied-book-covers-2026-08-13.mjs": "851951b349ccec82276f1a6a4ed8dfd8dbae09fc3df1375b9e68cb2aa9ed9774",
+    "scripts/import-user-supplied-book-covers-2026-08-20.mjs": "70b0443c017f75e9faeeae00ade2d5c72216481c0cd69933337a83a54ffb123d",
+    "scripts/sync-literary-archive.mjs": "bdc784a760f5a9357bdf6455709c57d4cfb40df057da604d53b2f7e50440a280",
+    "src/App.tsx": "334ab1dadf4260110db2a76a20ef1c755f95b12ed919d30ca6faf5800df9b3cb",
+    "src/books/bookDossierLegacyAdapter.ts": "0f13e242171c4f50a72d453992e0d1b85ab9cac4c5b6d579b7ad538e1a2537c5",
+    "src/books/bookEditorialPages.ts": "e78e746262a11e4d9ed78f2994c069b9df4fb43729b096f39410697c9ed0242a",
+    "src/components/BookArchiveSection.tsx": "a3b92b4a50c5d18a5df4c59bdf1d543c354c721adc92282b3aa6f81faa47357a",
+    "src/components/BookShelfControls.tsx": "381f233540c8b3bf6419ccde77e0c015d99e345847b8c30244640bf4d1c3d847",
+    "src/components/GlobalSearch.tsx": "b22882d67ca1389afa8e2f93adaf0509b2f8aca4427e6c95cf4b127ec80e4993",
+    "src/components/WriterPanel.tsx": "429bb1ef55f26101e816533713203acc3dfe49370045acfc7cc5d92019701fbf",
+    "src/data/bookArchive.ts": "6d2bffa98854fdcbfedc43897c99686479e076b7511c412235ba05128083c19e",
+    "src/data/bookArchiveQueue.ts": "e2ca36b51d47a325063d7a62bc18b6f3dd4d13090390624c498c2f95206960d2",
+    "src/data/countries/index.ts": "981178294c635b4439bde9202cb023feddeef973dd0e868fbe7549068632e7a1",
+    "src/i18n/InterfaceLanguage.tsx": "e8319b4b768b814955ad85f3881fa01207bd939a11a411862463c84b295ff21a",
+    "src/search/globalSearchIndex.ts": "d8e73f1c4298883140091c82c2c059699e514619e69e43077b90c5d7211f0d89",
+    "vite.config.ts": "842cd92af6da0d0a419ca1f1fded001816fc52286842829018e5d0f5f02565d5"
+  }
+}

@@ -45,7 +45,7 @@ describe("private admin catalog assets", () => {
         (total, country) => total + country.writers.length,
         0
       )
-    ).toBe(1_684);
+    ).toBe(1_686);
   });
 
   it("exports every structured writer biography without catalog loss", async () => {
@@ -67,14 +67,39 @@ describe("private admin catalog assets", () => {
       )
     );
 
-    expect(expected.size).toBe(1_684);
+    expect(expected.size).toBe(1_686);
     expect(actual.size).toBe(expected.size);
+    const bookReferences = new Set([
+      "usa:harriet_beecher_stowe", "usa:louisa_may_alcott",
+    ]);
+    expect([...expected.values()].filter(Boolean)).toHaveLength(1_684);
     for (const [key, translations] of expected) {
+      if (bookReferences.has(key)) {
+        expect(translations, `${key} has no fabricated biography`).toBeUndefined();
+        expect(actual.get(key)).toBeUndefined();
+        continue;
+      }
       expect(translations, `${key} must have structured biographies`).toBeTruthy();
       expect(translations?.ru, `${key} must have structured RU`).toBeTruthy();
       expect(actual.get(key), `${key} must be present in the closed catalog`).toEqual(
         translations
       );
+    }
+  });
+
+  it("accepts only the exact two minimal book-author identities without biographies", async () => {
+    const text = await readAdminCatalogText("editorial-catalog.json", { namespace: null });
+    for (const change of [
+      (writer: { id: string; fields: Record<string, unknown> }) => { writer.id = "unreviewed_author"; },
+      (writer: { id: string; fields: Record<string, unknown> }) => { writer.fields.name = "Different author"; },
+      (writer: { id: string; fields: Record<string, unknown> }) => { writer.fields.biography = "Unreviewed biography"; },
+      (writer: { id: string; fields: Record<string, unknown> }) => { writer.fields.biographyTranslations = { en: { text: "Unreviewed" } }; },
+    ]) {
+      const source = JSON.parse(text);
+      const writer = source.countries.find((country: { id: string }) => country.id === "usa")
+        .writers.find((candidate: { id: string }) => candidate.id === "harriet_beecher_stowe");
+      change(writer);
+      expect(() => parseEditorialCatalog(JSON.stringify(source))).toThrow("missing structured RU");
     }
   });
 

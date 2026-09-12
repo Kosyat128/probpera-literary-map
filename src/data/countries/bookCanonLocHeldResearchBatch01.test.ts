@@ -245,7 +245,7 @@ describe("LoC held research production overlay batch 01", () => {
       visitorVisible: 0,
       publicationEffect: 0,
       canonClaims: 0,
-      unresolvedWriterLinks: 13,
+      unresolvedWriterLinks: 11,
       unresolvedAuthorities: 2,
     });
     expect(
@@ -255,6 +255,20 @@ describe("LoC held research production overlay batch 01", () => {
         )
       )
     ).toBe(true);
+    for (const candidateId of [
+      "harriet-beecher-stowe-uncle-toms-cabin",
+      "louisa-may-alcott-little-women",
+    ]) {
+      const entry = bookCanonResearchCatalog.find((candidate) => candidate.candidateId === candidateId);
+      expect(entry).toMatchObject({
+        unresolvedWriterLinks: [],
+        integrationStatus: "research-hold",
+        publicationEffect: "none",
+        work: { editorial: { status: "draft" } },
+      });
+      expect(entry?.work.localizedTitles).toBeUndefined();
+      expect(entry?.work.canon).toBeUndefined();
+    }
   });
 
   it("keeps the research modules outside the visitor archive import graph", async () => {

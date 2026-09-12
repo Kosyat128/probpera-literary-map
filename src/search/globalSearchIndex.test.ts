@@ -454,7 +454,7 @@ describe("shared global search index", () => {
 });
 
 describe("publication and loading gates", () => {
-  it("never indexes pending books or their draft metadata as public search text", () => {
+  it("indexes pending canonical titles while excluding unreviewed metadata and private notes", () => {
     const country = makeCountry("quality", 1);
     const pending = {
       ...makeBook("pending", country, "Pending Card"),
@@ -483,7 +483,7 @@ describe("publication and loading gates", () => {
       "Pending Card",
       HEADER_GLOBAL_SEARCH_PROFILE
     );
-    expect(titleResult.groups.books).toEqual([]);
+    expect(titleResult.groups.books.map(({ book }) => book.id)).toEqual(["pending"]);
   });
 
   it("keeps English writer and article release gates unchanged", () => {

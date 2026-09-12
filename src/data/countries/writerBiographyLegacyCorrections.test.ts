@@ -821,16 +821,25 @@ describe("legacy writer biography curation", () => {
         country.writers.map((writer) => key(country.id, writer.id))
       )
     );
+    const isCatalogOnlyStowe = (book: { countryId: string; writerId: string; id: string }) =>
+      `${book.countryId}:${book.writerId}:${book.id}` ===
+        "usa:harriet_beecher_stowe:uncle-toms-cabin";
+    const catalogOnlyStowe = archive.filter(isCatalogOnlyStowe);
+    const isCatalogOnlyAlcott = (book: { countryId: string; writerId: string; id: string }) =>
+      `${book.countryId}:${book.writerId}:${book.id}` ===
+        "usa:louisa_may_alcott:little-women";
+    const catalogOnlyAlcott = archive.filter(isCatalogOnlyAlcott);
     const booksWhoseWriterCardIsQuarantined = archive.filter(
-      (book) => !publicWriterKeys.has(key(book.countryId, book.writerId))
+      (book) => !publicWriterKeys.has(key(book.countryId, book.writerId)) &&
+        !isCatalogOnlyStowe(book) && !isCatalogOnlyAlcott(book)
     );
     const publicTargets = archive.map((book) =>
       resolveBookArchivePublicTarget(countries, book)
     );
 
-    expect(archive).toHaveLength(9_761);
-    expect(publicArchive).toHaveLength(56);
-    expect(archive.filter((book) => !isPublicBook(book))).toHaveLength(9_705);
+    expect(archive).toHaveLength(9_763);
+    expect(publicArchive).toHaveLength(69);
+    expect(archive.filter((book) => !isPublicBook(book))).toHaveLength(9_694);
     const bremerBooks = archive
       .filter(
         (book) =>
@@ -840,10 +849,16 @@ describe("legacy writer biography curation", () => {
     expect(bremerBooks).toEqual(["Соседи", "Герта"]);
     expect(bremerBooks).not.toContain("Герцогиня Финляндская");
     expect(booksWhoseWriterCardIsQuarantined).toHaveLength(63);
+    expect(catalogOnlyStowe).toHaveLength(1);
+    expect(isPublicBook(catalogOnlyStowe[0])).toBe(true);
+    expect(resolveBookArchivePublicTarget(countries, catalogOnlyStowe[0])).toBeNull();
+    expect(catalogOnlyAlcott).toHaveLength(1);
+    expect(isPublicBook(catalogOnlyAlcott[0])).toBe(false);
+    expect(resolveBookArchivePublicTarget(countries, catalogOnlyAlcott[0])).toBeNull();
     expect(booksWhoseWriterCardIsQuarantined.every((book) => !isPublicBook(book))).toBe(
       true
     );
-    expect(publicTargets.filter((target) => !target)).toHaveLength(63);
+    expect(publicTargets.filter((target) => !target)).toHaveLength(65);
     expect(
       publicTargets
         .filter((target) => target)

@@ -149,7 +149,7 @@ describe("проверенное ядро книжной базы", () => {
     const publicBooks = buildPublicBookArchive(bookArchiveCountries);
 
     expect(books.length).toBeGreaterThan(publicBooks.length);
-    expect(publicBooks).toHaveLength(56);
+    expect(publicBooks).toHaveLength(69);
     expect(publicBooks.every(isPublicBook)).toBe(true);
     expect(
       publicBooks.some(

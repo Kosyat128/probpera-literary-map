@@ -24,6 +24,7 @@ const D1_DYNAMIC_LABEL_CONSTANTS = new Set([
   "relationLabels",
   "sortLabels",
   "searchGroupLabels",
+  "fullLibraryDescription",
 ]);
 
 const IDENTICAL_SYMBOL_ALLOWLIST = new Set(["1900-1945", "1946-1999"]);
@@ -81,6 +82,10 @@ function collectLocalDynamicLabels(
   }
 
   const initializer = unwrapExpression(declaration.initializer);
+  if (ts.isStringLiteralLike(initializer)) {
+    phrases.add(initializer.text);
+    return;
+  }
   if (
     declaration.name.text === "archiveFilters" &&
     ts.isArrayLiteralExpression(initializer)
@@ -129,6 +134,14 @@ function collectD1ComponentPhrases() {
 
       if (ts.isVariableDeclaration(node)) {
         collectLocalDynamicLabels(node, phrases);
+      }
+
+      if (ts.isCallExpression(node) && ts.isIdentifier(node.expression) &&
+        node.expression.text === "selectInterfacePlural" && node.arguments[2]) {
+        const forms = unwrapExpression(node.arguments[2]);
+        if (ts.isArrayLiteralExpression(forms)) {
+          for (const form of forms.elements) addStringInitializer(phrases, form);
+        }
       }
 
       ts.forEachChild(node, visit);
@@ -222,9 +235,13 @@ describe("Stage 5D-1 English interface coverage", () => {
       expect(componentPhrases.has(source)).toBe(false);
       expect(hasInterfaceTranslation(source)).toBe(true);
     }
-    expect(componentPhrases.size).toBe(216);
+    for (const label of ["Пока не проверено", "Проверено редакцией", "результат", "результата", "результатов"]) {
+      expect(componentPhrases.has(label)).toBe(true);
+    }
+    // Include the named catalog introduction and all locale-aware count forms.
+    expect(componentPhrases.size).toBe(217);
     expect(controlledOptionLabels.size).toBe(61);
-    expect(inventory.size).toBe(277);
+    expect(inventory.size).toBe(278);
     expect(
       [...IDENTICAL_SYMBOL_ALLOWLIST].filter((phrase) => !inventory.has(phrase))
     ).toEqual([]);
@@ -239,7 +256,7 @@ describe("Stage 5D-1 English interface coverage", () => {
       .filter((phrase) => hasInterfaceTranslation(phrase))
       .filter((phrase) => translateInterfaceText(phrase, "en") === phrase);
 
-    expect(translatable).toHaveLength(275);
+    expect(translatable).toHaveLength(276);
     expect(missing).toEqual([]);
     expect(untranslated).toEqual([]);
   });

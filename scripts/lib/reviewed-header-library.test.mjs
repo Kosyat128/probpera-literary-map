@@ -5,9 +5,12 @@ import {
   headerLibraryAttestation,
   projectReviewedHeaderLibrary,
 } from "./reviewed-header-library.mjs";
+import { projectReviewedR49nPackage } from "./reviewed-r49n-package.mjs";
 
 const sha256 = source => createHash("sha256").update(source).digest("hex");
-const read = relativePath => readFileSync(relativePath, "utf8").replace(/\r\n?/gu, "\n");
+const read = relativePath => projectReviewedR49nPackage(
+  relativePath, readFileSync(relativePath, "utf8").replace(/\r\n?/gu, "\n")
+);
 
 describe("September 12 owner-approved header and library governance", () => {
   it("pins the new review independently of every existing historical attestation", () => {

@@ -3,8 +3,8 @@
 Версия реестра: world-canon-2026-09-v2; дата аудита снимков: 2026-09-02.
 
 - Статус реестра: in-progress; завершение не заявлено.
-- Произведений в архиве: 9761; стран в архиве: 191.
-- Контролируемых авторитетов: 72; списков источников: 3.
+- Произведений в архиве: 9763; стран в архиве: 191.
+- Контролируемых авторитетов: 79; списков источников: 3.
 - Транскрибировано списков: 3; списков с завершённой ручной adjudication: 0.
 - Проверенных снимков с content SHA-256: 2.
 - Снимков без проверенного content SHA-256: 1.
@@ -92,6 +92,13 @@
 - **hachette-book-group-us** - provider `hachette-book-group-us`, tier B, independence group `hachette-book-group-us`, domains: hachettebookgroup.com.
 - **harper-lee-official** - provider `harper-lee-official-work-site`, tier B, independence group `harpercollins-publishing-group`, domains: tokillamockingbird.com.
 - **scholastic-us** - provider `scholastic-press-us`, tier B, independence group `scholastic-publishing-group`, domains: scholastic.com.
+- **centre-international-jules-verne** - provider `centre-international-jules-verne`, tier B, independence group `centre-international-jules-verne`, domains: jules-verne.net.
+- **rvb** - provider `russian-virtual-library`, tier B, independence group `russian-virtual-library`, domains: rvb.ru.
+- **nyrb** - provider `new-york-review-books`, tier B, independence group `new-york-review-books`, domains: nyrb.com.
+- **national-library-of-ireland** - provider `national-library-of-ireland`, tier A, independence group `national-library-of-ireland`, domains: nli.ie.
+- **bunin-museum-yelets** - provider `bunin-literary-memorial-museum-yelets`, tier B, independence group `yelets-city-local-history-museum`, domains: ar.culture.ru.
+- **alma-books** - provider `alma-books-bloomsbury`, tier B, independence group `bloomsbury-publishing`, domains: bloomsbury.com.
+- **us-national-park-service** - provider `united-states-national-park-service`, tier B, independence group `united-states-national-park-service`, domains: nps.gov.
 
 ## Снимки источников
 

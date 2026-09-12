@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { installObservers } from "../../scripts/lib/bookshelf-physics-observer.mjs";
 
 async function openBookCatalog(page) {
   await page.goto("/#books");
@@ -42,6 +43,121 @@ async function selectVerifiedBooks(page) {
   await expect(verified).toHaveAttribute("aria-pressed", "true");
   await closeArchiveFilters(page, dialog);
 }
+
+test("книга из каталога открывается первым нажатием при раскрытых подсказках поиска", async ({
+  page,
+  isMobile,
+}) => {
+  await openBookCatalog(page);
+  const search = page.getByRole("combobox", {
+    name: "Поиск по книге, автору или стране",
+    exact: true,
+  });
+  await search.fill("Хижина дяди Тома");
+  await expect(search).toHaveAttribute("aria-expanded", "true");
+  await search.press("Tab");
+  await expect(search).toHaveAttribute("aria-expanded", "false");
+  await search.focus();
+  await expect(search).toHaveAttribute("aria-expanded", "true");
+  await search.press("Escape");
+  await expect(search).toHaveAttribute("aria-expanded", "false");
+  await search.click();
+  await expect(search).toHaveAttribute("aria-expanded", "true");
+
+  const card = page.locator(".archive-book-card").filter({ hasText: "Хижина дяди Тома" });
+  await expect(card).toHaveCount(1);
+  await expect(card).toContainText("Гарриет Бичер-Стоу");
+  const details = card.locator(".archive-book-detail");
+  if (isMobile) await details.tap();
+  else await details.click();
+
+  const detail = page.locator("#book-archive-detail");
+  await expect(detail).toBeVisible();
+  await expect(detail).toContainText("Когда у мистера Шелби возникают денежные трудности");
+  await expect(page).toHaveURL(/book=usa%3Aharriet_beecher_stowe%3Auncle-toms-cabin/u);
+  await expect(detail.getByRole("button", { name: "Гарриет Бичер-Стоу", exact: true })).toHaveCount(0);
+});
+
+for (const locale of ["ru", "en"]) {
+  test(`страна показывает общее количество книг независимо от проверки (${locale})`, async ({ page, isMobile }, testInfo) => {
+    await page.addInitScript(language => localStorage.setItem("probpera-interface-language", language), locale);
+    await page.goto("/?country=greece#atlas");
+    const panel = page.locator('.atlas-country-presentation[data-atlas-country="greece"]');
+    if (isMobile) await panel.locator(".atlas-country-sheet-toggle").click();
+    const metric = panel.locator(".country-metric--works");
+    await expect(metric.locator("strong")).toHaveText("23", { timeout: 20_000 });
+    await expect(metric).toHaveAttribute("aria-busy", "false");
+    await expect(metric.locator("span")).toHaveText(locale === "ru" ? "произведения" : "works");
+    await expect(metric).toBeVisible();
+    await metric.scrollIntoViewIfNeeded();
+    await metric.screenshot({ path: testInfo.outputPath(`greece-catalog-count-${locale}.png`) });
+    expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBeLessThanOrEqual(1);
+  });
+
+  test(`готовая непроверенная аннотация доступна в полном каталоге (${locale})`, async ({ page, isMobile }, testInfo) => {
+    await page.addInitScript(language => localStorage.setItem("probpera-interface-language", language), locale);
+    await page.goto("/#books");
+    const catalog = page.locator(".book-shelf-controls__views button").nth(1);
+    await expect(catalog).toBeVisible({ timeout: 20_000 });
+    await catalog.click();
+    await expect(page.locator(".book-archive-reviewed-count")).toHaveAttribute("data-count", "69");
+    await expect(page.locator(".book-archive-pending-count")).toHaveAttribute("data-count", "9694");
+    const totals = page.locator(".book-archive-total");
+    expect(await totals.evaluate(element => element.scrollWidth - element.clientWidth)).toBeLessThanOrEqual(1);
+    await totals.screenshot({ path: testInfo.outputPath(`library-counts-${locale}.png`) });
+    const search = page.locator(".book-shelf-controls input[role=combobox]");
+    const title = locale === "ru" ? "Маленькие женщины" : "Little Women";
+    const status = locale === "ru" ? "Пока не проверено" : "Not yet reviewed";
+    await search.fill(title);
+    const card = page.locator(".archive-book-card").filter({ hasText: title });
+    await expect(card).toHaveCount(1);
+    await expect(card.locator(".editorial-state")).toHaveText(status);
+    const button = card.locator(".archive-book-detail");
+    if (isMobile) await button.tap();
+    else await button.click();
+    const detail = page.locator("#book-archive-detail");
+    await expect(detail).toBeVisible();
+    await expect(detail.locator(".book-detail-copy > .section-kicker")).toHaveText(status);
+    await expect(detail).toContainText(locale === "ru"
+      ? "Четыре сестры Марч — Мег, Джо, Бет и Эми"
+      : "The four March sisters—Meg, Jo, Beth and Amy");
+    await expect(page).toHaveURL(/book=usa%3Alouisa_may_alcott%3Alittle-women/u);
+    const reader = detail.locator(".book-dossier-reader");
+    await reader.getByRole("button", { name: locale === "ru" ? "Следующий раздел" : "Next section", exact: true }).click();
+    await expect(reader.locator(".book-dossier-reader__eyebrow")).toHaveText(status);
+    await expect(reader).toContainText(locale === "ru" ? "Четыре сестры Марч" : "The four March sisters");
+    await expect(detail.getByRole("button", { name: locale === "ru" ? "Луиза Мэй Олкотт" : "Louisa May Alcott", exact: true })).toHaveCount(0);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBeLessThanOrEqual(1);
+  });
+}
+
+test("3D-книга показывает готовую аннотацию с отметкой о непроверенном статусе", async ({ page, isMobile }) => {
+  test.skip(Boolean(isMobile), "One real 3D rendering contract; bilingual mobile text is covered above");
+  await page.addInitScript(`(${installObservers.toString()})(); window.__REACT_DEVTOOLS_GLOBAL_HOOK__.renderers = new Map();`);
+  await page.goto("/#books");
+  const search = page.locator(".book-shelf-controls input[role=combobox]");
+  await expect(search).toBeVisible({ timeout: 20_000 });
+  await search.fill("Маленькие женщины");
+  await search.press("Escape");
+  const workspace = page.locator(".book-shelf-frame__workspace");
+  await workspace.scrollIntoViewIfNeeded();
+  await page.waitForFunction(() => window.__shelfAudit.read()?.books.length === 1 && window.__shelfAudit.read()?.pendingFrames === 0);
+  const point = await page.evaluate(() => window.__shelfAudit.read().books[0]);
+  await page.mouse.click(point.x, point.y);
+  await page.waitForFunction(() => window.__shelfAudit.read()?.phase === "INSPECTION_CLOSED");
+  await page.locator(".book-detail-open-cover").click();
+  await page.waitForFunction(() => window.__shelfAudit.read()?.phase === "BOOK_OPEN");
+  const reader = page.locator(".book-dossier-reader");
+  await reader.getByRole("button", { name: "Следующий раздел", exact: true }).click();
+  await expect(reader.locator(".book-dossier-reader__eyebrow")).toHaveText("Пока не проверено");
+  await expect(reader).toContainText("Четыре сестры Марч");
+  await expect.poll(() => page.evaluate(() => window.__shelfAudit.read()?.pageIndex)).toBeGreaterThan(0);
+  const rendered = await page.evaluate(() => {
+    const data = window.__shelfAudit.sceneData();
+    return data.books.find(book => book.selectedBookKey === book.layout.spec.key)?.editorialDocument?.pages;
+  });
+  expect(rendered.some(item => item.eyebrow === "Пока не проверено" && item.paragraphs.some(text => text.includes("Четыре сестры Марч")))).toBe(true);
+});
 
 test("календарь открывает и фокусирует карточку выбранного писателя", async ({
   page,
@@ -143,7 +259,7 @@ test("архив и изображения сохраняют desktop-сетку
   await expect(cover).toHaveCSS("object-fit", "contain");
 });
 
-test("архив публикует 56 проверенных книг и не раскрывает редакционную очередь", async ({
+test("архив показывает полный каталог и разделяет проверенные и непроверенные карточки", async ({
   page,
   isMobile,
 }) => {
@@ -151,25 +267,25 @@ test("архив публикует 56 проверенных книг и не �
   await openBookCatalog(page);
   const resultCount = page.locator(".book-filter-panel > span");
 
-  await expect(resultCount).toHaveText(/^56\s+результатов$/u, {
+  await expect(resultCount).toHaveText(/^9\s?763\s+результата$/u, {
     timeout: 40_000,
   });
   const filterDialog = await openArchiveFilters(page);
-  const pending = filterDialog.getByLabel("Не проверено", { exact: true });
+  await expect(page.locator(".book-archive-reviewed-count")).toHaveAttribute("data-count", "69");
+  await expect(page.locator(".book-archive-pending-count")).toHaveAttribute("data-count", "9694");
+  const pending = filterDialog.getByLabel("Пока не проверено", { exact: true });
   await expect(pending).toBeVisible();
   await pending.check();
   await expect(pending).toBeChecked();
   await closeArchiveFilters(page, filterDialog);
-  await expect(resultCount).toHaveText(/^0\s+результатов$/u);
-  await expect(page.locator(".archive-book-card")).toHaveCount(0);
-  await expect(page.locator(".book-archive-empty")).toContainText(
-    "Ничего не найдено"
-  );
+  await expect(resultCount).toHaveText(/^9\s?694\s+результата$/u);
+  await expect(page.locator(".archive-book-card").first()).toBeVisible();
+  await expect(page.locator(".archive-book-card .editorial-state").first()).toHaveText("Пока не проверено");
 
   await selectVerifiedBooks(page);
-  await expect(resultCount).toHaveText(/^56\s+результатов$/u);
+  await expect(resultCount).toHaveText(/^69\s+результатов$/u);
   await expect(page.locator(".archive-book-card .editorial-state").first()).toHaveText(
-    "проверено"
+    "Проверено редакцией"
   );
 
   const actionAlignment = await page

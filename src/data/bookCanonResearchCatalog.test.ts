@@ -7,6 +7,7 @@ import {
   bookCanonResearchCatalog,
   bookCanonResearchCatalogSummary,
   buildBookCanonResearchCatalog,
+  summarizeBookCanonResearchCatalog,
 } from "./bookCanonResearchCatalog";
 import {
   buildBookArchive,
@@ -21,7 +22,7 @@ import {
   bookCanonAdditionsBatch01Overlay,
   buildBookCanonAdditionsBatch01Overlay,
 } from "./countries/bookCanonAdditionsBatch01";
-import { bookArchiveCountries } from "./countries/index";
+import { bookArchiveCountries, bookArchiveSourceCountries } from "./countries/index";
 
 const expectedResearchTitles = [
   "Двенадцать стульев",
@@ -50,7 +51,10 @@ describe("production canon research catalog", () => {
     expect(batch01CatalogEntries.map((entry) => entry.work.title)).toEqual(
       expectedResearchTitles
     );
-    expect(bookCanonResearchCatalogSummary).toEqual({
+    const historicalSummary = summarizeBookCanonResearchCatalog(
+      buildBookCanonResearchCatalog(bookArchiveSourceCountries)
+    );
+    expect(historicalSummary).toEqual({
       total: 13,
       draftAdditions: 12,
       acceptedMappings: 1,
@@ -60,6 +64,10 @@ describe("production canon research catalog", () => {
       canonClaims: 0,
       unresolvedWriterLinks: 13,
       unresolvedAuthorities: 2,
+    });
+    expect(bookCanonResearchCatalogSummary).toEqual({
+      ...historicalSummary,
+      unresolvedWriterLinks: 11,
     });
 
     for (const entry of batch01CatalogEntries) {
@@ -90,6 +98,22 @@ describe("production canon research catalog", () => {
     expect(rebuilt.map((entry) => entry.candidateId)).toEqual(
       bookCanonResearchCatalog.map((entry) => entry.candidateId)
     );
+  });
+
+  it("resolves only the two supplied archive-author identities without promoting the historical research records", () => {
+    const historical = buildBookCanonResearchCatalog(bookArchiveSourceCountries);
+    const resolved = bookCanonResearchCatalog.flatMap((entry, index) => {
+      const before = historical[index]!;
+      expect(entry.candidateId).toBe(before.candidateId);
+      expect(entry.work).toEqual(before.work);
+      expect(isPublicBook(entry.work)).toBe(false);
+      const remaining = new Set(entry.unresolvedWriterLinks.map((link) => link.key));
+      return before.unresolvedWriterLinks.filter((link) => !remaining.has(link.key)).map((link) => link.key);
+    });
+    expect(resolved.sort()).toEqual([
+      "usa:harriet_beecher_stowe",
+      "usa:louisa_may_alcott",
+    ]);
   });
 
   it("keeps all missing writer and proposed-authority links explicit", () => {

@@ -1,0 +1,3775 @@
+{
+  "schemaVersion": 1,
+  "id": "R49N-COMMON-REVIEWED-PACKAGE-20260912",
+  "checkedAt": "2026-09-12T12:32:51.297Z",
+  "humanReview": false,
+  "fullWorkRead": false,
+  "publicationApproved": false,
+  "scope": "One complete canonical catalog display: 9763 entries labelled as 69 Evidence-ready reviewed and 9694 pending. Retain ready reviewed profiles and publish 1494 exact retained RU/EN synopsis pairs only as pending; source registries and EvidenceV2 remain strict.",
+  "inputArchiveSha256": "977f25072022cb7275242b030836326f8f30c97423697b60081859d8ce17fb69",
+  "inputMasterSha256": "f441344f6b4367684c8f5ec39f746f12c079ff05e5130b3183e06bab7c359674",
+  "earlierDickensReview": {
+    "path": "reports/book-r49n-dickens-reviewed-20260912.json",
+    "sha256": "f85c62c018298e6ee5f344c447ac45f41e6e821a689ad15f923f7c354b362a79",
+    "attestationPath": "scripts/governance/book-r49n-dickens-reviewed-20260912.json",
+    "attestationSha256": "e7b875db1307fdbdc17bbe9329559bc9dc289d2dc735a8aa362f8beb086db259"
+  },
+  "existingRecovery": {
+    "schemaVersion": 1,
+    "id": "r49n-existing-012-candidate-20260912",
+    "createdAt": "2026-09-12T12:15:15.116Z",
+    "humanReview": false,
+    "fullWorkRead": false,
+    "publicationApproved": false,
+    "sourceMasterSha256": "f441344f6b4367684c8f5ec39f746f12c079ff05e5130b3183e06bab7c359674",
+    "modulePath": "src/data/countries/bookR49nExistingReviewed20260912.ts",
+    "moduleSha256": "5b88df47f391a8ca905602aeac242155dff043655ee85055a491501a70880a0e",
+    "registry": {
+      "path": "data/book-canon-source-registry.json",
+      "beforeSha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79",
+      "afterSha256": "c8d2b6862c47c3215295951d2c5d1c406913b9879c616f1d8b787c6e05029f6c",
+      "addedAuthorities": [
+        {
+          "authorityId": "centre-international-jules-verne",
+          "provider": "centre-international-jules-verne",
+          "authorityCountryId": "france",
+          "independenceGroup": "centre-international-jules-verne",
+          "tier": "B",
+          "allowedRoles": [
+            "description-fact"
+          ],
+          "domains": [
+            "jules-verne.net"
+          ],
+          "markets": [
+            "FR"
+          ]
+        },
+        {
+          "authorityId": "rvb",
+          "provider": "russian-virtual-library",
+          "authorityCountryId": "russia",
+          "independenceGroup": "russian-virtual-library",
+          "tier": "B",
+          "allowedRoles": [
+            "title-critical-edition",
+            "description-fact"
+          ],
+          "domains": [
+            "rvb.ru"
+          ],
+          "markets": [
+            "RU"
+          ]
+        },
+        {
+          "authorityId": "nyrb",
+          "provider": "new-york-review-books",
+          "authorityCountryId": "usa",
+          "independenceGroup": "new-york-review-books",
+          "tier": "B",
+          "allowedRoles": [
+            "title-publisher",
+            "description-fact"
+          ],
+          "domains": [
+            "nyrb.com"
+          ],
+          "markets": [
+            "US"
+          ]
+        },
+        {
+          "authorityId": "national-library-of-ireland",
+          "provider": "national-library-of-ireland",
+          "authorityCountryId": "ireland",
+          "independenceGroup": "national-library-of-ireland",
+          "tier": "A",
+          "allowedRoles": [
+            "title-national-record",
+            "description-fact"
+          ],
+          "domains": [
+            "nli.ie"
+          ],
+          "markets": [
+            "GB",
+            "IE",
+            "US"
+          ]
+        },
+        {
+          "authorityId": "bunin-museum-yelets",
+          "provider": "bunin-literary-memorial-museum-yelets",
+          "authorityCountryId": "russia",
+          "independenceGroup": "yelets-city-local-history-museum",
+          "tier": "B",
+          "allowedRoles": [
+            "description-fact"
+          ],
+          "domains": [
+            "ar.culture.ru"
+          ],
+          "markets": [
+            "RU"
+          ]
+        },
+        {
+          "authorityId": "alma-books",
+          "provider": "alma-books-bloomsbury",
+          "authorityCountryId": "england",
+          "independenceGroup": "bloomsbury-publishing",
+          "tier": "B",
+          "allowedRoles": [
+            "title-publisher",
+            "description-fact"
+          ],
+          "domains": [
+            "bloomsbury.com"
+          ],
+          "markets": [
+            "GB",
+            "US"
+          ]
+        },
+        {
+          "authorityId": "us-national-park-service",
+          "provider": "united-states-national-park-service",
+          "authorityCountryId": "usa",
+          "independenceGroup": "united-states-national-park-service",
+          "tier": "B",
+          "allowedRoles": [
+            "description-fact"
+          ],
+          "domains": [
+            "nps.gov"
+          ],
+          "markets": [
+            "US"
+          ]
+        }
+      ],
+      "sourceSnapshots": [
+        "53a6797e8e957657d8129697a857f90e1031b549",
+        "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2"
+      ],
+      "existingAuthorityObjectsChanged": 0,
+      "registryMetadataChanged": 0,
+      "canonAdjudicationsChanged": 0
+    },
+    "recordKeys": [
+      "france:jules_verne:the-mysterious-island-editorial",
+      "france:jules_verne:openlibrary-works-ol1099513w",
+      "france:jules_verne:openlibrary-works-ol1100007w",
+      "france:jules_verne:openlibrary-works-ol1099280w",
+      "france:jules_verne:openlibrary-works-ol1099479w",
+      "france:jules_verne:openlibrary-works-ol1099630w",
+      "france:jules_verne:openlibrary-works-ol1099364w",
+      "russia:turgenev:article-series-men9bv",
+      "russia:buninin:the-village",
+      "russia:tolstoy:article-series-zqpjjm",
+      "usa:jack_london:article-catalog-1hfivd6",
+      "usa:jack_london:article-catalog-2s2iy7"
+    ],
+    "records": [
+      {
+        "recordKey": "france:jules_verne:the-mysterious-island-editorial",
+        "sourceMasterPointer": "/records/3547",
+        "masterRecordSha256": "e6272d54b955eb6e5823a6001c0388e804a2a45b0f78bc65b59684d9acafefd0",
+        "reusedDescriptionSha256ByLocale": {
+          "ru": "5a0008f1b86f92473b3887b4e04b55ae659d1f44d7956e43bfe31b6be64991c2",
+          "en": "7ffb1e562098b35bbaf748fac14e690b911c38377597a8d6d86b481eb909468a"
+        },
+        "historicProvenance": {
+          "ru": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "ru",
+            "sourceCountry": "france",
+            "sourceUrls": [
+              "https://eksmo.ru/book/tainstvennyy-ostrov-ITD953417/",
+              "https://www.penguinrandomhouse.com/books/292932/the-mysterious-island-by-jules-verne/",
+              "https://jules-verne.net/l-oeuvre/les-voyages-extraordinaires/1874-1875-1-l-ile-mysterieuse/"
+            ],
+            "primarySourceUrls": [
+              "https://eksmo.ru/book/tainstvennyy-ostrov-ITD953417/"
+            ],
+            "transformations": [
+              "condensed",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / review_ru_public_gaps",
+            "createdAt": "2026-09-05",
+            "reviewedBy": "Codex AI /root (independent review)",
+            "reviewedAt": "2026-09-05"
+          },
+          "en": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "en",
+            "sourceCountry": "france",
+            "sourceUrls": [
+              "https://eksmo.ru/book/tainstvennyy-ostrov-ITD953417/",
+              "https://www.penguinrandomhouse.com/books/292932/the-mysterious-island-by-jules-verne/",
+              "https://jules-verne.net/l-oeuvre/les-voyages-extraordinaires/1874-1875-1-l-ile-mysterieuse/"
+            ],
+            "primarySourceUrls": [
+              "https://www.penguinrandomhouse.com/books/292932/the-mysterious-island-by-jules-verne/"
+            ],
+            "transformations": [
+              "condensed",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / review_ru_public_gaps",
+            "createdAt": "2026-09-05",
+            "reviewedBy": "Codex AI /root (independent review)",
+            "reviewedAt": "2026-09-05"
+          }
+        },
+        "candidateProvenance": {
+          "ru": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "ru",
+            "sourceCountry": "france",
+            "sourceUrls": [
+              "https://eksmo.ru/book/tainstvennyy-ostrov-ITD953417/",
+              "https://www.penguinrandomhouse.com/books/292932/the-mysterious-island-by-jules-verne/",
+              "https://jules-verne.net/l-oeuvre/les-voyages-extraordinaires/1874-1875-1-l-ile-mysterieuse/"
+            ],
+            "primarySourceUrls": [
+              "https://eksmo.ru/book/tainstvennyy-ostrov-ITD953417/"
+            ],
+            "transformations": [
+              "condensed",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / review_ru_public_gaps",
+            "createdAt": "2026-09-05",
+            "reviewedBy": "Codex AI /root (independent review)",
+            "reviewedAt": "2026-09-05"
+          },
+          "en": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "en",
+            "sourceCountry": "france",
+            "sourceUrls": [
+              "https://eksmo.ru/book/tainstvennyy-ostrov-ITD953417/",
+              "https://www.penguinrandomhouse.com/books/292932/the-mysterious-island-by-jules-verne/",
+              "https://jules-verne.net/l-oeuvre/les-voyages-extraordinaires/1874-1875-1-l-ile-mysterieuse/"
+            ],
+            "primarySourceUrls": [
+              "https://www.penguinrandomhouse.com/books/292932/the-mysterious-island-by-jules-verne/"
+            ],
+            "transformations": [
+              "condensed",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / review_ru_public_gaps",
+            "createdAt": "2026-09-05",
+            "reviewedBy": "Codex AI /root (independent review)",
+            "reviewedAt": "2026-09-05"
+          }
+        },
+        "historicalProof": {
+          "key": "france:jules_verne:the-mysterious-island-editorial",
+          "localeProofs": {
+            "ru": {
+              "descriptionSha256": "5a0008f1b86f92473b3887b4e04b55ae659d1f44d7956e43bfe31b6be64991c2",
+              "exactHistoricalTextMatches": [
+                {
+                  "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+                  "path": "reports/book-verne-independent-review-20260905.json",
+                  "sha256": "4709f0699e5ad923c56c0982984f0ce6a905b701c7426b0d875a4b85a743bafa",
+                  "pointer": "/records/3/locales/ru/exactText"
+                }
+              ]
+            },
+            "en": {
+              "descriptionSha256": "7ffb1e562098b35bbaf748fac14e690b911c38377597a8d6d86b481eb909468a",
+              "exactHistoricalTextMatches": [
+                {
+                  "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+                  "path": "reports/book-verne-independent-review-20260905.json",
+                  "sha256": "4709f0699e5ad923c56c0982984f0ce6a905b701c7426b0d875a4b85a743bafa",
+                  "pointer": "/records/3/locales/en/exactText"
+                }
+              ]
+            }
+          },
+          "neededAuthorities": [
+            "centre-international-jules-verne"
+          ]
+        },
+        "sourceReplacement": null,
+        "firstPublished": 1874,
+        "humanReview": false,
+        "fullWorkRead": false,
+        "publicationApproved": false
+      },
+      {
+        "recordKey": "france:jules_verne:openlibrary-works-ol1099513w",
+        "sourceMasterPointer": "/records/3548",
+        "masterRecordSha256": "ace114d4cbf92ab85e14ec58c39fc2f11d133ee5e536307ffe6e2aee7679fe7a",
+        "reusedDescriptionSha256ByLocale": {
+          "ru": "5254d8ff0b71996458a35494b2abf52048a05aa11bdfd45e9e224e019d0a32d7",
+          "en": "5eabf9c8e2bf36210e04225c46d60d03490d08cb135b68950e28265ff79db041"
+        },
+        "historicProvenance": {
+          "ru": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "ru",
+            "sourceCountry": "france",
+            "sourceUrls": [
+              "https://azbooka.ru/books/pyteshestvie-k-tsentry-zemli-vokryg-sveta-v-vosemdesyat-dney",
+              "https://www.penguinrandomhouse.com/books/832262/journey-to-the-centre-of-the-earth-by-jules-verne/",
+              "https://jules-verne.net/l-oeuvre/les-voyages-extraordinaires/1864-voyage-au-centre-de-la-terre/"
+            ],
+            "primarySourceUrls": [
+              "https://azbooka.ru/books/pyteshestvie-k-tsentry-zemli-vokryg-sveta-v-vosemdesyat-dney"
+            ],
+            "transformations": [
+              "condensed",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / review_ru_public_gaps",
+            "createdAt": "2026-09-05",
+            "reviewedBy": "Codex AI /root (independent review)",
+            "reviewedAt": "2026-09-05"
+          },
+          "en": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "en",
+            "sourceCountry": "france",
+            "sourceUrls": [
+              "https://azbooka.ru/books/pyteshestvie-k-tsentry-zemli-vokryg-sveta-v-vosemdesyat-dney",
+              "https://www.penguinrandomhouse.com/books/832262/journey-to-the-centre-of-the-earth-by-jules-verne/",
+              "https://jules-verne.net/l-oeuvre/les-voyages-extraordinaires/1864-voyage-au-centre-de-la-terre/"
+            ],
+            "primarySourceUrls": [
+              "https://www.penguinrandomhouse.com/books/832262/journey-to-the-centre-of-the-earth-by-jules-verne/"
+            ],
+            "transformations": [
+              "condensed",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / review_ru_public_gaps",
+            "createdAt": "2026-09-05",
+            "reviewedBy": "Codex AI /root (independent review)",
+            "reviewedAt": "2026-09-05"
+          }
+        },
+        "candidateProvenance": {
+          "ru": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "ru",
+            "sourceCountry": "france",
+            "sourceUrls": [
+              "https://azbooka.ru/books/pyteshestvie-k-tsentry-zemli-vokryg-sveta-v-vosemdesyat-dney",
+              "https://www.penguinrandomhouse.com/books/832262/journey-to-the-centre-of-the-earth-by-jules-verne/",
+              "https://jules-verne.net/l-oeuvre/les-voyages-extraordinaires/1864-voyage-au-centre-de-la-terre/"
+            ],
+            "primarySourceUrls": [
+              "https://azbooka.ru/books/pyteshestvie-k-tsentry-zemli-vokryg-sveta-v-vosemdesyat-dney"
+            ],
+            "transformations": [
+              "condensed",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / review_ru_public_gaps",
+            "createdAt": "2026-09-05",
+            "reviewedBy": "Codex AI /root (independent review)",
+            "reviewedAt": "2026-09-05"
+          },
+          "en": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "en",
+            "sourceCountry": "france",
+            "sourceUrls": [
+              "https://azbooka.ru/books/pyteshestvie-k-tsentry-zemli-vokryg-sveta-v-vosemdesyat-dney",
+              "https://www.penguinrandomhouse.com/books/832262/journey-to-the-centre-of-the-earth-by-jules-verne/",
+              "https://jules-verne.net/l-oeuvre/les-voyages-extraordinaires/1864-voyage-au-centre-de-la-terre/"
+            ],
+            "primarySourceUrls": [
+              "https://www.penguinrandomhouse.com/books/832262/journey-to-the-centre-of-the-earth-by-jules-verne/"
+            ],
+            "transformations": [
+              "condensed",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / review_ru_public_gaps",
+            "createdAt": "2026-09-05",
+            "reviewedBy": "Codex AI /root (independent review)",
+            "reviewedAt": "2026-09-05"
+          }
+        },
+        "historicalProof": {
+          "key": "france:jules_verne:openlibrary-works-ol1099513w",
+          "localeProofs": {
+            "ru": {
+              "descriptionSha256": "5254d8ff0b71996458a35494b2abf52048a05aa11bdfd45e9e224e019d0a32d7",
+              "exactHistoricalTextMatches": [
+                {
+                  "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+                  "path": "reports/book-verne-independent-review-20260905.json",
+                  "sha256": "4709f0699e5ad923c56c0982984f0ce6a905b701c7426b0d875a4b85a743bafa",
+                  "pointer": "/records/0/locales/ru/exactText"
+                }
+              ]
+            },
+            "en": {
+              "descriptionSha256": "5eabf9c8e2bf36210e04225c46d60d03490d08cb135b68950e28265ff79db041",
+              "exactHistoricalTextMatches": [
+                {
+                  "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+                  "path": "reports/book-verne-independent-review-20260905.json",
+                  "sha256": "4709f0699e5ad923c56c0982984f0ce6a905b701c7426b0d875a4b85a743bafa",
+                  "pointer": "/records/0/locales/en/exactText"
+                }
+              ]
+            }
+          },
+          "neededAuthorities": [
+            "centre-international-jules-verne"
+          ]
+        },
+        "sourceReplacement": null,
+        "firstPublished": 1864,
+        "humanReview": false,
+        "fullWorkRead": false,
+        "publicationApproved": false
+      },
+      {
+        "recordKey": "france:jules_verne:openlibrary-works-ol1100007w",
+        "sourceMasterPointer": "/records/3549",
+        "masterRecordSha256": "0d579c323a8c4aabacfe218dcdd8a1318375f0fcb3a9277f738251929cd2372a",
+        "reusedDescriptionSha256ByLocale": {
+          "ru": "9c1f2fbe551a16d2791963fa9bfca39f278beb5b6204420aadfc506153301cbd",
+          "en": "d695f55d738aa5e72950dbc576a12311ac44d0c63834927169f32a178e8890a3"
+        },
+        "historicProvenance": {
+          "ru": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "ru",
+            "sourceCountry": "france",
+            "sourceUrls": [
+              "https://azbooka.ru/books/pyteshestvie-k-tsentry-zemli-vokryg-sveta-v-vosemdesyat-dney",
+              "https://www.penguinrandomhouse.com/books/832259/around-the-world-in-eighty-days-by-jules-verne/",
+              "https://jules-verne.net/l-oeuvre/les-voyages-extraordinaires/1872-1873-1-le-tour-du-monde-en-quatre-vingts-jours/"
+            ],
+            "primarySourceUrls": [
+              "https://azbooka.ru/books/pyteshestvie-k-tsentry-zemli-vokryg-sveta-v-vosemdesyat-dney"
+            ],
+            "transformations": [
+              "condensed",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / review_ru_public_gaps",
+            "createdAt": "2026-09-05",
+            "reviewedBy": "Codex AI /root (independent review)",
+            "reviewedAt": "2026-09-05"
+          },
+          "en": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "en",
+            "sourceCountry": "france",
+            "sourceUrls": [
+              "https://azbooka.ru/books/pyteshestvie-k-tsentry-zemli-vokryg-sveta-v-vosemdesyat-dney",
+              "https://www.penguinrandomhouse.com/books/832259/around-the-world-in-eighty-days-by-jules-verne/",
+              "https://jules-verne.net/l-oeuvre/les-voyages-extraordinaires/1872-1873-1-le-tour-du-monde-en-quatre-vingts-jours/"
+            ],
+            "primarySourceUrls": [
+              "https://www.penguinrandomhouse.com/books/832259/around-the-world-in-eighty-days-by-jules-verne/"
+            ],
+            "transformations": [
+              "condensed",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / review_ru_public_gaps",
+            "createdAt": "2026-09-05",
+            "reviewedBy": "Codex AI /root (independent review)",
+            "reviewedAt": "2026-09-05"
+          }
+        },
+        "candidateProvenance": {
+          "ru": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "ru",
+            "sourceCountry": "france",
+            "sourceUrls": [
+              "https://azbooka.ru/books/pyteshestvie-k-tsentry-zemli-vokryg-sveta-v-vosemdesyat-dney",
+              "https://www.penguinrandomhouse.com/books/832259/around-the-world-in-eighty-days-by-jules-verne/",
+              "https://jules-verne.net/l-oeuvre/les-voyages-extraordinaires/1872-1873-1-le-tour-du-monde-en-quatre-vingts-jours/"
+            ],
+            "primarySourceUrls": [
+              "https://azbooka.ru/books/pyteshestvie-k-tsentry-zemli-vokryg-sveta-v-vosemdesyat-dney"
+            ],
+            "transformations": [
+              "condensed",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / review_ru_public_gaps",
+            "createdAt": "2026-09-05",
+            "reviewedBy": "Codex AI /root (independent review)",
+            "reviewedAt": "2026-09-05"
+          },
+          "en": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "en",
+            "sourceCountry": "france",
+            "sourceUrls": [
+              "https://azbooka.ru/books/pyteshestvie-k-tsentry-zemli-vokryg-sveta-v-vosemdesyat-dney",
+              "https://www.penguinrandomhouse.com/books/832259/around-the-world-in-eighty-days-by-jules-verne/",
+              "https://jules-verne.net/l-oeuvre/les-voyages-extraordinaires/1872-1873-1-le-tour-du-monde-en-quatre-vingts-jours/"
+            ],
+            "primarySourceUrls": [
+              "https://www.penguinrandomhouse.com/books/832259/around-the-world-in-eighty-days-by-jules-verne/"
+            ],
+            "transformations": [
+              "condensed",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / review_ru_public_gaps",
+            "createdAt": "2026-09-05",
+            "reviewedBy": "Codex AI /root (independent review)",
+            "reviewedAt": "2026-09-05"
+          }
+        },
+        "historicalProof": {
+          "key": "france:jules_verne:openlibrary-works-ol1100007w",
+          "localeProofs": {
+            "ru": {
+              "descriptionSha256": "9c1f2fbe551a16d2791963fa9bfca39f278beb5b6204420aadfc506153301cbd",
+              "exactHistoricalTextMatches": [
+                {
+                  "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+                  "path": "reports/book-verne-independent-review-20260905.json",
+                  "sha256": "4709f0699e5ad923c56c0982984f0ce6a905b701c7426b0d875a4b85a743bafa",
+                  "pointer": "/records/1/locales/ru/exactText"
+                }
+              ]
+            },
+            "en": {
+              "descriptionSha256": "d695f55d738aa5e72950dbc576a12311ac44d0c63834927169f32a178e8890a3",
+              "exactHistoricalTextMatches": [
+                {
+                  "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+                  "path": "reports/book-verne-independent-review-20260905.json",
+                  "sha256": "4709f0699e5ad923c56c0982984f0ce6a905b701c7426b0d875a4b85a743bafa",
+                  "pointer": "/records/1/locales/en/exactText"
+                }
+              ]
+            }
+          },
+          "neededAuthorities": [
+            "centre-international-jules-verne"
+          ]
+        },
+        "sourceReplacement": null,
+        "firstPublished": 1872,
+        "humanReview": false,
+        "fullWorkRead": false,
+        "publicationApproved": false
+      },
+      {
+        "recordKey": "france:jules_verne:openlibrary-works-ol1099280w",
+        "sourceMasterPointer": "/records/3550",
+        "masterRecordSha256": "c8a1567d8de871cac001ace5c1867588e47adb861cc68d7636809326b8fa0c0f",
+        "reusedDescriptionSha256ByLocale": {
+          "ru": "2ae21cb68ec8e1e8b6d23f961e2e1d53b53661d97ccd894a1cfcbaf7d90c94ec",
+          "en": "f79bb2e87732e01ac6bad9e59b9925de5c9cb48c95e315af6cb70b6fd7114a99"
+        },
+        "historicProvenance": {
+          "ru": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "ru",
+            "sourceCountry": "france",
+            "sourceUrls": [
+              "https://ast.ru/book/dvadtsat-tysyach-le-pod-vodoy-840711/",
+              "https://ast.ru/book/dvadtsat-tysyach-le-pod-vodoy-718086/",
+              "https://www.penguin.co.uk/books/259451/twenty-thousand-leagues-under-the-sea-by-jules-verne/9780241198773",
+              "https://jules-verne.net/l-oeuvre/les-voyages-extraordinaires/1869-1870-vingt-mille-lieues-sous-les-mers/"
+            ],
+            "primarySourceUrls": [
+              "https://ast.ru/book/dvadtsat-tysyach-le-pod-vodoy-840711/",
+              "https://ast.ru/book/dvadtsat-tysyach-le-pod-vodoy-718086/"
+            ],
+            "transformations": [
+              "condensed",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / review_ru_public_gaps",
+            "createdAt": "2026-09-05",
+            "reviewedBy": "Codex AI /root (independent review)",
+            "reviewedAt": "2026-09-05"
+          },
+          "en": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "en",
+            "sourceCountry": "france",
+            "sourceUrls": [
+              "https://ast.ru/book/dvadtsat-tysyach-le-pod-vodoy-840711/",
+              "https://ast.ru/book/dvadtsat-tysyach-le-pod-vodoy-718086/",
+              "https://www.penguin.co.uk/books/259451/twenty-thousand-leagues-under-the-sea-by-jules-verne/9780241198773",
+              "https://jules-verne.net/l-oeuvre/les-voyages-extraordinaires/1869-1870-vingt-mille-lieues-sous-les-mers/"
+            ],
+            "primarySourceUrls": [
+              "https://www.penguin.co.uk/books/259451/twenty-thousand-leagues-under-the-sea-by-jules-verne/9780241198773"
+            ],
+            "transformations": [
+              "condensed",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / review_ru_public_gaps",
+            "createdAt": "2026-09-05",
+            "reviewedBy": "Codex AI /root (independent review)",
+            "reviewedAt": "2026-09-05"
+          }
+        },
+        "candidateProvenance": {
+          "ru": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "ru",
+            "sourceCountry": "france",
+            "sourceUrls": [
+              "https://ast.ru/book/dvadtsat-tysyach-le-pod-vodoy-840711/",
+              "https://ast.ru/book/dvadtsat-tysyach-le-pod-vodoy-718086/",
+              "https://www.penguin.co.uk/books/259451/twenty-thousand-leagues-under-the-sea-by-jules-verne/9780241198773",
+              "https://jules-verne.net/l-oeuvre/les-voyages-extraordinaires/1869-1870-vingt-mille-lieues-sous-les-mers/"
+            ],
+            "primarySourceUrls": [
+              "https://ast.ru/book/dvadtsat-tysyach-le-pod-vodoy-840711/",
+              "https://ast.ru/book/dvadtsat-tysyach-le-pod-vodoy-718086/"
+            ],
+            "transformations": [
+              "condensed",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / review_ru_public_gaps",
+            "createdAt": "2026-09-05",
+            "reviewedBy": "Codex AI /root (independent review)",
+            "reviewedAt": "2026-09-05"
+          },
+          "en": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "en",
+            "sourceCountry": "france",
+            "sourceUrls": [
+              "https://ast.ru/book/dvadtsat-tysyach-le-pod-vodoy-840711/",
+              "https://ast.ru/book/dvadtsat-tysyach-le-pod-vodoy-718086/",
+              "https://www.penguin.co.uk/books/259451/twenty-thousand-leagues-under-the-sea-by-jules-verne/9780241198773",
+              "https://jules-verne.net/l-oeuvre/les-voyages-extraordinaires/1869-1870-vingt-mille-lieues-sous-les-mers/"
+            ],
+            "primarySourceUrls": [
+              "https://www.penguin.co.uk/books/259451/twenty-thousand-leagues-under-the-sea-by-jules-verne/9780241198773"
+            ],
+            "transformations": [
+              "condensed",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / review_ru_public_gaps",
+            "createdAt": "2026-09-05",
+            "reviewedBy": "Codex AI /root (independent review)",
+            "reviewedAt": "2026-09-05"
+          }
+        },
+        "historicalProof": {
+          "key": "france:jules_verne:openlibrary-works-ol1099280w",
+          "localeProofs": {
+            "ru": {
+              "descriptionSha256": "2ae21cb68ec8e1e8b6d23f961e2e1d53b53661d97ccd894a1cfcbaf7d90c94ec",
+              "exactHistoricalTextMatches": [
+                {
+                  "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+                  "path": "reports/book-verne-independent-review-20260905.json",
+                  "sha256": "4709f0699e5ad923c56c0982984f0ce6a905b701c7426b0d875a4b85a743bafa",
+                  "pointer": "/records/2/locales/ru/exactText"
+                }
+              ]
+            },
+            "en": {
+              "descriptionSha256": "f79bb2e87732e01ac6bad9e59b9925de5c9cb48c95e315af6cb70b6fd7114a99",
+              "exactHistoricalTextMatches": [
+                {
+                  "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+                  "path": "reports/book-verne-independent-review-20260905.json",
+                  "sha256": "4709f0699e5ad923c56c0982984f0ce6a905b701c7426b0d875a4b85a743bafa",
+                  "pointer": "/records/2/locales/en/exactText"
+                }
+              ]
+            }
+          },
+          "neededAuthorities": [
+            "centre-international-jules-verne"
+          ]
+        },
+        "sourceReplacement": null,
+        "firstPublished": 1869,
+        "humanReview": false,
+        "fullWorkRead": false,
+        "publicationApproved": false
+      },
+      {
+        "recordKey": "france:jules_verne:openlibrary-works-ol1099479w",
+        "sourceMasterPointer": "/records/3551",
+        "masterRecordSha256": "7c489ec9fbfbe10571c5f224cc7247b22842c356db4d5c218e369b6e166a875b",
+        "reusedDescriptionSha256ByLocale": {
+          "ru": "82e760cd558197bc35bf42851406ea5667e61996f82655776c0b6cf5faca7bd8",
+          "en": "39535cf6a0ec17dd2681ff716334727aea1ed7b48e8ae5c48322329da4fef859"
+        },
+        "historicProvenance": {
+          "ru": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "ru",
+            "sourceCountry": "france",
+            "sourceUrls": [
+              "https://ast.ru/book/s-zemli-na-lunu-vokrug-luny-873380/",
+              "https://www.simonandschuster.com/books/From-the-Earth-to-the-Moon-and-Around-the-Moon/Jules-Verne/The-Jules-Verne-Collection/9781665934244",
+              "https://jules-verne.net/l-oeuvre/les-voyages-extraordinaires/1865-de-la-terre-a-la-lune/"
+            ],
+            "primarySourceUrls": [
+              "https://ast.ru/book/s-zemli-na-lunu-vokrug-luny-873380/"
+            ],
+            "transformations": [
+              "condensed",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / review_ru_public_gaps",
+            "createdAt": "2026-09-05",
+            "reviewedBy": "Codex AI /root (independent review)",
+            "reviewedAt": "2026-09-05"
+          },
+          "en": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "en",
+            "sourceCountry": "france",
+            "sourceUrls": [
+              "https://ast.ru/book/s-zemli-na-lunu-vokrug-luny-873380/",
+              "https://www.simonandschuster.com/books/From-the-Earth-to-the-Moon-and-Around-the-Moon/Jules-Verne/The-Jules-Verne-Collection/9781665934244",
+              "https://jules-verne.net/l-oeuvre/les-voyages-extraordinaires/1865-de-la-terre-a-la-lune/"
+            ],
+            "primarySourceUrls": [
+              "https://www.simonandschuster.com/books/From-the-Earth-to-the-Moon-and-Around-the-Moon/Jules-Verne/The-Jules-Verne-Collection/9781665934244"
+            ],
+            "transformations": [
+              "condensed",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / review_ru_public_gaps",
+            "createdAt": "2026-09-05",
+            "reviewedBy": "Codex AI /root (independent review)",
+            "reviewedAt": "2026-09-05"
+          }
+        },
+        "candidateProvenance": {
+          "ru": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "ru",
+            "sourceCountry": "france",
+            "sourceUrls": [
+              "https://ast.ru/book/s-zemli-na-lunu-vokrug-luny-873380/",
+              "https://www.simonandschuster.com/books/From-the-Earth-to-the-Moon-and-Around-the-Moon/Jules-Verne/The-Jules-Verne-Collection/9781665934244",
+              "https://jules-verne.net/l-oeuvre/les-voyages-extraordinaires/1865-de-la-terre-a-la-lune/"
+            ],
+            "primarySourceUrls": [
+              "https://ast.ru/book/s-zemli-na-lunu-vokrug-luny-873380/"
+            ],
+            "transformations": [
+              "condensed",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / review_ru_public_gaps",
+            "createdAt": "2026-09-05",
+            "reviewedBy": "Codex AI /root (independent review)",
+            "reviewedAt": "2026-09-05"
+          },
+          "en": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "en",
+            "sourceCountry": "france",
+            "sourceUrls": [
+              "https://ast.ru/book/s-zemli-na-lunu-vokrug-luny-873380/",
+              "https://www.simonandschuster.com/books/From-the-Earth-to-the-Moon-and-Around-the-Moon/Jules-Verne/The-Jules-Verne-Collection/9781665934244",
+              "https://jules-verne.net/l-oeuvre/les-voyages-extraordinaires/1865-de-la-terre-a-la-lune/"
+            ],
+            "primarySourceUrls": [
+              "https://www.simonandschuster.com/books/From-the-Earth-to-the-Moon-and-Around-the-Moon/Jules-Verne/The-Jules-Verne-Collection/9781665934244"
+            ],
+            "transformations": [
+              "condensed",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / review_ru_public_gaps",
+            "createdAt": "2026-09-05",
+            "reviewedBy": "Codex AI /root (independent review)",
+            "reviewedAt": "2026-09-05"
+          }
+        },
+        "historicalProof": {
+          "key": "france:jules_verne:openlibrary-works-ol1099479w",
+          "localeProofs": {
+            "ru": {
+              "descriptionSha256": "82e760cd558197bc35bf42851406ea5667e61996f82655776c0b6cf5faca7bd8",
+              "exactHistoricalTextMatches": [
+                {
+                  "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+                  "path": "reports/book-verne-independent-review-20260905.json",
+                  "sha256": "4709f0699e5ad923c56c0982984f0ce6a905b701c7426b0d875a4b85a743bafa",
+                  "pointer": "/records/4/locales/ru/exactText"
+                }
+              ]
+            },
+            "en": {
+              "descriptionSha256": "39535cf6a0ec17dd2681ff716334727aea1ed7b48e8ae5c48322329da4fef859",
+              "exactHistoricalTextMatches": [
+                {
+                  "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+                  "path": "reports/book-verne-independent-review-20260905.json",
+                  "sha256": "4709f0699e5ad923c56c0982984f0ce6a905b701c7426b0d875a4b85a743bafa",
+                  "pointer": "/records/4/locales/en/exactText"
+                }
+              ]
+            }
+          },
+          "neededAuthorities": [
+            "centre-international-jules-verne"
+          ]
+        },
+        "sourceReplacement": null,
+        "firstPublished": 1865,
+        "humanReview": false,
+        "fullWorkRead": false,
+        "publicationApproved": false
+      },
+      {
+        "recordKey": "france:jules_verne:openlibrary-works-ol1099630w",
+        "sourceMasterPointer": "/records/3553",
+        "masterRecordSha256": "b620f689fcabbf5b890f5def745aace572ac49c4a50f5e736cb3de13756ba842",
+        "reusedDescriptionSha256ByLocale": {
+          "ru": "82f4f87742966325784fec58e5328bbfed981722ab88f95a1060beb109324d2e",
+          "en": "8796fe330be3ab2491d057c8e8b6c032b9d26bd3651575bd426980c6c011c097"
+        },
+        "historicProvenance": {
+          "ru": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "ru",
+            "sourceCountry": "france",
+            "sourceUrls": [
+              "https://azbooka.ru/books/plavychiy-ostrov-robyr-zavoevatel-vlastelin-mira-s-ill",
+              "https://www.simonandschuster.com/books/The-Master-of-the-World/Jules-Verne/Essential-Gothic-SF-Dark-Fantasy/9780857756909",
+              "https://jules-verne.net/exposer-l-oeuvre/les-expositions-pedagogiques/les-machines-de-jules-verne/"
+            ],
+            "primarySourceUrls": [
+              "https://azbooka.ru/books/plavychiy-ostrov-robyr-zavoevatel-vlastelin-mira-s-ill"
+            ],
+            "transformations": [
+              "condensed",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / review_ru_public_gaps",
+            "createdAt": "2026-09-05",
+            "reviewedBy": "Codex AI /root (independent review)",
+            "reviewedAt": "2026-09-05"
+          },
+          "en": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "en",
+            "sourceCountry": "france",
+            "sourceUrls": [
+              "https://azbooka.ru/books/plavychiy-ostrov-robyr-zavoevatel-vlastelin-mira-s-ill",
+              "https://www.simonandschuster.com/books/The-Master-of-the-World/Jules-Verne/Essential-Gothic-SF-Dark-Fantasy/9780857756909",
+              "https://jules-verne.net/exposer-l-oeuvre/les-expositions-pedagogiques/les-machines-de-jules-verne/"
+            ],
+            "primarySourceUrls": [
+              "https://www.simonandschuster.com/books/The-Master-of-the-World/Jules-Verne/Essential-Gothic-SF-Dark-Fantasy/9780857756909"
+            ],
+            "transformations": [
+              "condensed",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / review_ru_public_gaps",
+            "createdAt": "2026-09-05",
+            "reviewedBy": "Codex AI /root (independent review)",
+            "reviewedAt": "2026-09-05"
+          }
+        },
+        "candidateProvenance": {
+          "ru": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "ru",
+            "sourceCountry": "france",
+            "sourceUrls": [
+              "https://azbooka.ru/books/plavychiy-ostrov-robyr-zavoevatel-vlastelin-mira-s-ill",
+              "https://www.simonandschuster.com/books/The-Master-of-the-World/Jules-Verne/Essential-Gothic-SF-Dark-Fantasy/9780857756909",
+              "https://jules-verne.net/exposer-l-oeuvre/les-expositions-pedagogiques/les-machines-de-jules-verne/"
+            ],
+            "primarySourceUrls": [
+              "https://azbooka.ru/books/plavychiy-ostrov-robyr-zavoevatel-vlastelin-mira-s-ill"
+            ],
+            "transformations": [
+              "condensed",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / review_ru_public_gaps",
+            "createdAt": "2026-09-05",
+            "reviewedBy": "Codex AI /root (independent review)",
+            "reviewedAt": "2026-09-05"
+          },
+          "en": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "en",
+            "sourceCountry": "france",
+            "sourceUrls": [
+              "https://azbooka.ru/books/plavychiy-ostrov-robyr-zavoevatel-vlastelin-mira-s-ill",
+              "https://www.simonandschuster.com/books/The-Master-of-the-World/Jules-Verne/Essential-Gothic-SF-Dark-Fantasy/9780857756909",
+              "https://jules-verne.net/exposer-l-oeuvre/les-expositions-pedagogiques/les-machines-de-jules-verne/"
+            ],
+            "primarySourceUrls": [
+              "https://www.simonandschuster.com/books/The-Master-of-the-World/Jules-Verne/Essential-Gothic-SF-Dark-Fantasy/9780857756909"
+            ],
+            "transformations": [
+              "condensed",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / review_ru_public_gaps",
+            "createdAt": "2026-09-05",
+            "reviewedBy": "Codex AI /root (independent review)",
+            "reviewedAt": "2026-09-05"
+          }
+        },
+        "historicalProof": {
+          "key": "france:jules_verne:openlibrary-works-ol1099630w",
+          "localeProofs": {
+            "ru": {
+              "descriptionSha256": "82f4f87742966325784fec58e5328bbfed981722ab88f95a1060beb109324d2e",
+              "exactHistoricalTextMatches": [
+                {
+                  "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+                  "path": "reports/book-verne-independent-review-20260905.json",
+                  "sha256": "4709f0699e5ad923c56c0982984f0ce6a905b701c7426b0d875a4b85a743bafa",
+                  "pointer": "/records/7/locales/ru/exactText"
+                }
+              ]
+            },
+            "en": {
+              "descriptionSha256": "8796fe330be3ab2491d057c8e8b6c032b9d26bd3651575bd426980c6c011c097",
+              "exactHistoricalTextMatches": [
+                {
+                  "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+                  "path": "reports/book-verne-independent-review-20260905.json",
+                  "sha256": "4709f0699e5ad923c56c0982984f0ce6a905b701c7426b0d875a4b85a743bafa",
+                  "pointer": "/records/7/locales/en/exactText"
+                }
+              ]
+            }
+          },
+          "neededAuthorities": [
+            "centre-international-jules-verne"
+          ]
+        },
+        "sourceReplacement": null,
+        "firstPublished": 1904,
+        "humanReview": false,
+        "fullWorkRead": false,
+        "publicationApproved": false
+      },
+      {
+        "recordKey": "france:jules_verne:openlibrary-works-ol1099364w",
+        "sourceMasterPointer": "/records/3555",
+        "masterRecordSha256": "ab87db104f4bb8ebca82f9816c61f0ea242437023ddd7bce2563a1c08584d0a4",
+        "reusedDescriptionSha256ByLocale": {
+          "ru": "047f1ed3af62a10e20413e9c5c7aaece6b96e14b85b95b5fcb2cc10fff8a8e6c",
+          "en": "5a7c20c0733c96ec5bbca132804f01d7b8f1bde97f4bc95c78c4c1affe3c266a"
+        },
+        "historicProvenance": {
+          "ru": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "ru",
+            "sourceCountry": "france",
+            "sourceUrls": [
+              "https://ast.ru/book/deti-kapitana-granta-834206/",
+              "https://ast.ru/book/deti-kapitana-granta-013140/",
+              "https://www.simonandschuster.com/books/In-Search-of-the-Castaways/Jules-Verne/The-Jules-Verne-Collection/9781665934350",
+              "https://jules-verne.net/l-oeuvre/les-voyages-extraordinaires/1865-1867-les-enfants-du-capitaine-grant/"
+            ],
+            "primarySourceUrls": [
+              "https://ast.ru/book/deti-kapitana-granta-834206/",
+              "https://ast.ru/book/deti-kapitana-granta-013140/"
+            ],
+            "transformations": [
+              "condensed",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / review_ru_public_gaps",
+            "createdAt": "2026-09-05",
+            "reviewedBy": "Codex AI /root (independent review)",
+            "reviewedAt": "2026-09-05"
+          },
+          "en": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "en",
+            "sourceCountry": "france",
+            "sourceUrls": [
+              "https://ast.ru/book/deti-kapitana-granta-834206/",
+              "https://ast.ru/book/deti-kapitana-granta-013140/",
+              "https://www.simonandschuster.com/books/In-Search-of-the-Castaways/Jules-Verne/The-Jules-Verne-Collection/9781665934350",
+              "https://jules-verne.net/l-oeuvre/les-voyages-extraordinaires/1865-1867-les-enfants-du-capitaine-grant/"
+            ],
+            "primarySourceUrls": [
+              "https://www.simonandschuster.com/books/In-Search-of-the-Castaways/Jules-Verne/The-Jules-Verne-Collection/9781665934350"
+            ],
+            "transformations": [
+              "condensed",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / review_ru_public_gaps",
+            "createdAt": "2026-09-05",
+            "reviewedBy": "Codex AI /root (independent review)",
+            "reviewedAt": "2026-09-05"
+          }
+        },
+        "candidateProvenance": {
+          "ru": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "ru",
+            "sourceCountry": "france",
+            "sourceUrls": [
+              "https://ast.ru/book/deti-kapitana-granta-834206/",
+              "https://ast.ru/book/deti-kapitana-granta-013140/",
+              "https://www.simonandschuster.com/books/In-Search-of-the-Castaways/Jules-Verne/The-Jules-Verne-Collection/9781665934350",
+              "https://jules-verne.net/l-oeuvre/les-voyages-extraordinaires/1865-1867-les-enfants-du-capitaine-grant/"
+            ],
+            "primarySourceUrls": [
+              "https://ast.ru/book/deti-kapitana-granta-834206/",
+              "https://ast.ru/book/deti-kapitana-granta-013140/"
+            ],
+            "transformations": [
+              "condensed",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / review_ru_public_gaps",
+            "createdAt": "2026-09-05",
+            "reviewedBy": "Codex AI /root (independent review)",
+            "reviewedAt": "2026-09-05"
+          },
+          "en": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "en",
+            "sourceCountry": "france",
+            "sourceUrls": [
+              "https://ast.ru/book/deti-kapitana-granta-834206/",
+              "https://ast.ru/book/deti-kapitana-granta-013140/",
+              "https://www.simonandschuster.com/books/In-Search-of-the-Castaways/Jules-Verne/The-Jules-Verne-Collection/9781665934350",
+              "https://jules-verne.net/l-oeuvre/les-voyages-extraordinaires/1865-1867-les-enfants-du-capitaine-grant/"
+            ],
+            "primarySourceUrls": [
+              "https://www.simonandschuster.com/books/In-Search-of-the-Castaways/Jules-Verne/The-Jules-Verne-Collection/9781665934350"
+            ],
+            "transformations": [
+              "condensed",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / review_ru_public_gaps",
+            "createdAt": "2026-09-05",
+            "reviewedBy": "Codex AI /root (independent review)",
+            "reviewedAt": "2026-09-05"
+          }
+        },
+        "historicalProof": {
+          "key": "france:jules_verne:openlibrary-works-ol1099364w",
+          "localeProofs": {
+            "ru": {
+              "descriptionSha256": "047f1ed3af62a10e20413e9c5c7aaece6b96e14b85b95b5fcb2cc10fff8a8e6c",
+              "exactHistoricalTextMatches": [
+                {
+                  "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+                  "path": "reports/book-verne-independent-review-20260905.json",
+                  "sha256": "4709f0699e5ad923c56c0982984f0ce6a905b701c7426b0d875a4b85a743bafa",
+                  "pointer": "/records/6/locales/ru/exactText"
+                }
+              ]
+            },
+            "en": {
+              "descriptionSha256": "5a7c20c0733c96ec5bbca132804f01d7b8f1bde97f4bc95c78c4c1affe3c266a",
+              "exactHistoricalTextMatches": [
+                {
+                  "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+                  "path": "reports/book-verne-independent-review-20260905.json",
+                  "sha256": "4709f0699e5ad923c56c0982984f0ce6a905b701c7426b0d875a4b85a743bafa",
+                  "pointer": "/records/6/locales/en/exactText"
+                }
+              ]
+            }
+          },
+          "neededAuthorities": [
+            "centre-international-jules-verne"
+          ]
+        },
+        "sourceReplacement": null,
+        "firstPublished": 1865,
+        "humanReview": false,
+        "fullWorkRead": false,
+        "publicationApproved": false
+      },
+      {
+        "recordKey": "russia:turgenev:article-series-men9bv",
+        "sourceMasterPointer": "/records/6985",
+        "masterRecordSha256": "5f29e8039222445ef2bf6c6443bb910075f325953e42cf89d474682942f9a7ae",
+        "reusedDescriptionSha256ByLocale": {
+          "ru": "e708813c30867d2799d794ac9af083481715dadb6e8c7cc0c6ee761393ee81c7",
+          "en": "90c7a8dbc22f5ecee08a82e90ca1bc204b829b85ed244562eeefe9e44544be06"
+        },
+        "historicProvenance": {
+          "ru": {
+            "origin": "article-adapted",
+            "sourceLanguage": "ru",
+            "sourceCountry": "russia",
+            "sourceUrls": [
+              "https://rvb.ru/turgenev/01text/vol_07/01text/0191-02.htm",
+              "https://rvb.ru/turgenev/02comm/0191.htm",
+              "https://probpera.ru/stati/knizhnyy-gid/sem-nepopulyarnyh-shedevrov-velikih-pisateley-o-kotoryh-i-vy-navernyaka-ne-slyshali-chast-5/",
+              "https://www.nyrb.com/products/smoke-1"
+            ],
+            "primarySourceUrls": [
+              "https://rvb.ru/turgenev/01text/vol_07/01text/0191-02.htm",
+              "https://rvb.ru/turgenev/02comm/0191.htm"
+            ],
+            "sourceArticle": {
+              "articleId": "cms-db3ab5d8-4d2f-41a3-8369-8fab1df44d86",
+              "url": "https://probpera.ru/stati/knizhnyy-gid/sem-nepopulyarnyh-shedevrov-velikih-pisateley-o-kotoryh-i-vy-navernyaka-ne-slyshali-chast-5/",
+              "revisionId": "f2edb7f23f41408feb091ff540dbf5c8a8ee9bd42972469126f861fd2eb46e77",
+              "sourceHash": "307595117fb2295ffb9c28599ba808cad7083248837d66f04dafa0755e353577",
+              "excerptHash": "6a8ccf6a4f882b8f2262b66a1457199cf744f95fd045a6621eba7f08080b6991"
+            },
+            "transformations": [
+              "condensed",
+              "deduplicated",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-owned-article",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / root and check_release",
+            "createdAt": "2026-09-04",
+            "reviewedBy": "Codex AI / research_white_guard (independent review)",
+            "reviewedAt": "2026-09-04"
+          },
+          "en": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "en",
+            "sourceCountry": "russia",
+            "sourceUrls": [
+              "https://www.nyrb.com/products/smoke-1",
+              "https://probpera.ru/stati/knizhnyy-gid/sem-nepopulyarnyh-shedevrov-velikih-pisateley-o-kotoryh-i-vy-navernyaka-ne-slyshali-chast-5/",
+              "https://rvb.ru/turgenev/01text/vol_07/01text/0191-02.htm",
+              "https://rvb.ru/turgenev/02comm/0191.htm"
+            ],
+            "primarySourceUrls": [
+              "https://www.nyrb.com/products/smoke-1"
+            ],
+            "translatedFromLocale": "ru",
+            "translatedFromSourceHash": "e708813c30867d2799d794ac9af083481715dadb6e8c7cc0c6ee761393ee81c7",
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / root and check_release",
+            "createdAt": "2026-09-04",
+            "reviewedBy": "Codex AI / research_white_guard (independent review)",
+            "reviewedAt": "2026-09-04"
+          }
+        },
+        "candidateProvenance": {
+          "ru": {
+            "origin": "article-adapted",
+            "sourceLanguage": "ru",
+            "sourceCountry": "russia",
+            "sourceUrls": [
+              "https://rvb.ru/turgenev/01text/vol_07/01text/0191-02.htm",
+              "https://rvb.ru/turgenev/02comm/0191.htm",
+              "https://probpera.ru/stati/knizhnyy-gid/sem-nepopulyarnyh-shedevrov-velikih-pisateley-o-kotoryh-i-vy-navernyaka-ne-slyshali-chast-5/",
+              "https://www.nyrb.com/products/smoke-1"
+            ],
+            "primarySourceUrls": [
+              "https://rvb.ru/turgenev/01text/vol_07/01text/0191-02.htm",
+              "https://rvb.ru/turgenev/02comm/0191.htm"
+            ],
+            "sourceArticle": {
+              "articleId": "cms-db3ab5d8-4d2f-41a3-8369-8fab1df44d86",
+              "url": "https://probpera.ru/stati/knizhnyy-gid/sem-nepopulyarnyh-shedevrov-velikih-pisateley-o-kotoryh-i-vy-navernyaka-ne-slyshali-chast-5/",
+              "revisionId": "f2edb7f23f41408feb091ff540dbf5c8a8ee9bd42972469126f861fd2eb46e77",
+              "sourceHash": "307595117fb2295ffb9c28599ba808cad7083248837d66f04dafa0755e353577",
+              "excerptHash": "6a8ccf6a4f882b8f2262b66a1457199cf744f95fd045a6621eba7f08080b6991"
+            },
+            "transformations": [
+              "condensed",
+              "deduplicated",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-owned-article",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / root and check_release",
+            "createdAt": "2026-09-04",
+            "reviewedBy": "Codex AI / research_white_guard (independent review)",
+            "reviewedAt": "2026-09-04"
+          },
+          "en": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "en",
+            "sourceCountry": "russia",
+            "sourceUrls": [
+              "https://www.nyrb.com/products/smoke-1",
+              "https://probpera.ru/stati/knizhnyy-gid/sem-nepopulyarnyh-shedevrov-velikih-pisateley-o-kotoryh-i-vy-navernyaka-ne-slyshali-chast-5/",
+              "https://rvb.ru/turgenev/01text/vol_07/01text/0191-02.htm",
+              "https://rvb.ru/turgenev/02comm/0191.htm"
+            ],
+            "primarySourceUrls": [
+              "https://www.nyrb.com/products/smoke-1"
+            ],
+            "translatedFromLocale": "ru",
+            "translatedFromSourceHash": "e708813c30867d2799d794ac9af083481715dadb6e8c7cc0c6ee761393ee81c7",
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / root and check_release",
+            "createdAt": "2026-09-04",
+            "reviewedBy": "Codex AI / research_white_guard (independent review)",
+            "reviewedAt": "2026-09-04"
+          }
+        },
+        "historicalProof": {
+          "key": "russia:turgenev:article-series-men9bv",
+          "localeProofs": {
+            "ru": {
+              "descriptionSha256": "e708813c30867d2799d794ac9af083481715dadb6e8c7cc0c6ee761393ee81c7",
+              "exactHistoricalTextMatches": [
+                {
+                  "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+                  "path": "reports/book-research-2026-09-04-independent-review.json",
+                  "sha256": "a87f4b96b05fcd37475109bff82855ce64667f70d53761f5f9bb71da95e0e26a",
+                  "pointer": "/works/1/approvedSynopses/ru"
+                }
+              ]
+            },
+            "en": {
+              "descriptionSha256": "90c7a8dbc22f5ecee08a82e90ca1bc204b829b85ed244562eeefe9e44544be06",
+              "exactHistoricalTextMatches": [
+                {
+                  "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+                  "path": "reports/book-research-2026-09-04-independent-review.json",
+                  "sha256": "a87f4b96b05fcd37475109bff82855ce64667f70d53761f5f9bb71da95e0e26a",
+                  "pointer": "/works/1/approvedSynopses/en"
+                }
+              ]
+            }
+          },
+          "neededAuthorities": [
+            "rvb",
+            "nyrb",
+            "national-library-of-ireland"
+          ]
+        },
+        "sourceReplacement": null,
+        "firstPublished": 1867,
+        "humanReview": false,
+        "fullWorkRead": false,
+        "publicationApproved": false
+      },
+      {
+        "recordKey": "russia:buninin:the-village",
+        "sourceMasterPointer": "/records/7166",
+        "masterRecordSha256": "6dca33b540bd639034cafbe1f736d366102bc35ae8d4b30ba413bd94f8054d02",
+        "reusedDescriptionSha256ByLocale": {
+          "ru": "189b37a2babc75d34112f0520a224de53f00445f7624d3e40b981cf9a4f5dc7a",
+          "en": "3fd12d92f88ef46aba60f209bdbe749d3f41a8debdc0676daad015f00fe5f21b"
+        },
+        "historicProvenance": {
+          "ru": {
+            "origin": "article-adapted",
+            "sourceLanguage": "ru",
+            "sourceCountry": "russia",
+            "sourceUrls": [
+              "https://ar.culture.ru/ru/subject/derevnya",
+              "https://feb-web.ru/feb/ivl/vl8/vl8-0542.htm?cmd=p",
+              "https://probpera.ru/stati/knizhnyy-gid/sem-nepopulyarnyh-shedevrov-velikih-pisateley-o-kotoryh-i-vy-navernyaka-ne-slyshali-chast-3/",
+              "https://www.bloomsbury.com/uk/village-9781847492838/"
+            ],
+            "primarySourceUrls": [
+              "https://ar.culture.ru/ru/subject/derevnya",
+              "https://feb-web.ru/feb/ivl/vl8/vl8-0542.htm?cmd=p"
+            ],
+            "sourceArticle": {
+              "articleId": "cms-192bc665-3461-422c-adee-d25fb394385c",
+              "url": "https://probpera.ru/stati/knizhnyy-gid/sem-nepopulyarnyh-shedevrov-velikih-pisateley-o-kotoryh-i-vy-navernyaka-ne-slyshali-chast-3/",
+              "revisionId": "cb0b5dc674ae32dffec4dab9e48cf647be050900b36956429e8071afcf648624",
+              "sourceHash": "9f7abf1d7c150b8555c2b8860ef3f3d80908ae27a9725249529e1178b05048b8",
+              "excerptHash": "8714c0e30ca323f13fdf1d3bdd03f1cd696f0efcb0987ee8fad7854f5149c93e"
+            },
+            "transformations": [
+              "condensed",
+              "deduplicated",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-owned-article",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / root and check_release",
+            "createdAt": "2026-09-04",
+            "reviewedBy": "Codex AI / research_white_guard (independent review)",
+            "reviewedAt": "2026-09-04"
+          },
+          "en": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "en",
+            "sourceCountry": "russia",
+            "sourceUrls": [
+              "https://www.bloomsbury.com/uk/village-9781847492838/",
+              "https://probpera.ru/stati/knizhnyy-gid/sem-nepopulyarnyh-shedevrov-velikih-pisateley-o-kotoryh-i-vy-navernyaka-ne-slyshali-chast-3/",
+              "https://ar.culture.ru/ru/subject/derevnya",
+              "https://feb-web.ru/feb/ivl/vl8/vl8-0542.htm?cmd=p"
+            ],
+            "primarySourceUrls": [
+              "https://www.bloomsbury.com/uk/village-9781847492838/"
+            ],
+            "translatedFromLocale": "ru",
+            "translatedFromSourceHash": "189b37a2babc75d34112f0520a224de53f00445f7624d3e40b981cf9a4f5dc7a",
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / root and check_release",
+            "createdAt": "2026-09-04",
+            "reviewedBy": "Codex AI / research_white_guard (independent review)",
+            "reviewedAt": "2026-09-04"
+          }
+        },
+        "candidateProvenance": {
+          "ru": {
+            "origin": "article-adapted",
+            "sourceLanguage": "ru",
+            "sourceCountry": "russia",
+            "sourceUrls": [
+              "https://ar.culture.ru/ru/subject/derevnya",
+              "https://feb-web.ru/feb/ivl/vl8/vl8-0542.htm?cmd=p",
+              "https://probpera.ru/stati/knizhnyy-gid/sem-nepopulyarnyh-shedevrov-velikih-pisateley-o-kotoryh-i-vy-navernyaka-ne-slyshali-chast-3/",
+              "https://www.bloomsbury.com/uk/village-9781847492838/"
+            ],
+            "primarySourceUrls": [
+              "https://ar.culture.ru/ru/subject/derevnya",
+              "https://feb-web.ru/feb/ivl/vl8/vl8-0542.htm?cmd=p"
+            ],
+            "sourceArticle": {
+              "articleId": "cms-192bc665-3461-422c-adee-d25fb394385c",
+              "url": "https://probpera.ru/stati/knizhnyy-gid/sem-nepopulyarnyh-shedevrov-velikih-pisateley-o-kotoryh-i-vy-navernyaka-ne-slyshali-chast-3/",
+              "revisionId": "cb0b5dc674ae32dffec4dab9e48cf647be050900b36956429e8071afcf648624",
+              "sourceHash": "9f7abf1d7c150b8555c2b8860ef3f3d80908ae27a9725249529e1178b05048b8",
+              "excerptHash": "8714c0e30ca323f13fdf1d3bdd03f1cd696f0efcb0987ee8fad7854f5149c93e"
+            },
+            "transformations": [
+              "condensed",
+              "deduplicated",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-owned-article",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / root and check_release",
+            "createdAt": "2026-09-04",
+            "reviewedBy": "Codex AI / research_white_guard (independent review)",
+            "reviewedAt": "2026-09-04"
+          },
+          "en": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "en",
+            "sourceCountry": "russia",
+            "sourceUrls": [
+              "https://www.bloomsbury.com/uk/village-9781847492838/",
+              "https://probpera.ru/stati/knizhnyy-gid/sem-nepopulyarnyh-shedevrov-velikih-pisateley-o-kotoryh-i-vy-navernyaka-ne-slyshali-chast-3/",
+              "https://ar.culture.ru/ru/subject/derevnya",
+              "https://feb-web.ru/feb/ivl/vl8/vl8-0542.htm?cmd=p"
+            ],
+            "primarySourceUrls": [
+              "https://www.bloomsbury.com/uk/village-9781847492838/"
+            ],
+            "translatedFromLocale": "ru",
+            "translatedFromSourceHash": "189b37a2babc75d34112f0520a224de53f00445f7624d3e40b981cf9a4f5dc7a",
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / root and check_release",
+            "createdAt": "2026-09-04",
+            "reviewedBy": "Codex AI / research_white_guard (independent review)",
+            "reviewedAt": "2026-09-04"
+          }
+        },
+        "historicalProof": {
+          "key": "russia:buninin:the-village",
+          "localeProofs": {
+            "ru": {
+              "descriptionSha256": "189b37a2babc75d34112f0520a224de53f00445f7624d3e40b981cf9a4f5dc7a",
+              "exactHistoricalTextMatches": [
+                {
+                  "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+                  "path": "reports/book-research-2026-09-04-independent-review.json",
+                  "sha256": "a87f4b96b05fcd37475109bff82855ce64667f70d53761f5f9bb71da95e0e26a",
+                  "pointer": "/works/0/approvedSynopses/ru"
+                }
+              ]
+            },
+            "en": {
+              "descriptionSha256": "3fd12d92f88ef46aba60f209bdbe749d3f41a8debdc0676daad015f00fe5f21b",
+              "exactHistoricalTextMatches": [
+                {
+                  "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+                  "path": "reports/book-research-2026-09-04-independent-review.json",
+                  "sha256": "a87f4b96b05fcd37475109bff82855ce64667f70d53761f5f9bb71da95e0e26a",
+                  "pointer": "/works/0/approvedSynopses/en"
+                }
+              ]
+            }
+          },
+          "neededAuthorities": [
+            "bunin-museum-yelets",
+            "alma-books"
+          ]
+        },
+        "sourceReplacement": null,
+        "firstPublished": 1910,
+        "humanReview": false,
+        "fullWorkRead": false,
+        "publicationApproved": false
+      },
+      {
+        "recordKey": "russia:tolstoy:article-series-zqpjjm",
+        "sourceMasterPointer": "/records/7066",
+        "masterRecordSha256": "3acfceaee658c9fb791f020a7b8cefcf94e6db17ce1d6c461bf00583ee5bde5f",
+        "reusedDescriptionSha256ByLocale": {
+          "ru": "48b5d6007f80fee70ce647d29ab0686c77b3cfdf167577585d01fff6305cf48b",
+          "en": "1c107df558180cf769feda1bd1d754d993d325078ffe3abfd891ae9fd9cfa5fa"
+        },
+        "historicProvenance": {
+          "ru": {
+            "origin": "article-adapted",
+            "sourceLanguage": "ru",
+            "sourceCountry": "russia",
+            "sourceUrls": [
+              "https://tolstoy.ru/online/90/34/",
+              "https://probpera.ru/stati/o-literature/sem-maloizvestnyh-rasskazov-imenityh-pisateley-kotorye-sleduet-prochitat-kazhdomu-l-n-tolstoy/",
+              "https://www.gutenberg.org/files/243/243-h/243-h.htm"
+            ],
+            "primarySourceUrls": [
+              "https://tolstoy.ru/online/90/34/"
+            ],
+            "sourceArticle": {
+              "articleId": "cms-766846e2-a653-465e-a4b4-ce327a22696f",
+              "url": "https://probpera.ru/stati/o-literature/sem-maloizvestnyh-rasskazov-imenityh-pisateley-kotorye-sleduet-prochitat-kazhdomu-l-n-tolstoy/",
+              "revisionId": "5a3574570e446af11c1ee561fe315372fafd1ffa7dd75717b75938c7a49264d2",
+              "sourceHash": "b82906459f57f1bfc156f9be1d4853f01927c91f751df0d3880ee16852155d16",
+              "excerptHash": "17db52ebc99f90eaa479674d7cf599726acac96bafe8dfa07d4239e4ed7b798c"
+            },
+            "transformations": [
+              "condensed",
+              "deduplicated",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-owned-article",
+              "copiedSourceText": false
+            },
+            "author": "Редакция «Пробы Пера»",
+            "createdAt": "2026-09-02",
+            "reviewedBy": "Codex AI /root (independent review)",
+            "reviewedAt": "2026-09-05"
+          },
+          "en": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "en",
+            "sourceCountry": "russia",
+            "sourceUrls": [
+              "https://www.gutenberg.org/files/243/243-h/243-h.htm",
+              "https://probpera.ru/stati/o-literature/sem-maloizvestnyh-rasskazov-imenityh-pisateley-kotorye-sleduet-prochitat-kazhdomu-l-n-tolstoy/",
+              "https://tolstoy.ru/online/90/34/"
+            ],
+            "primarySourceUrls": [
+              "https://www.gutenberg.org/files/243/243-h/243-h.htm"
+            ],
+            "translatedFromLocale": "ru",
+            "translatedFromSourceHash": "48b5d6007f80fee70ce647d29ab0686c77b3cfdf167577585d01fff6305cf48b",
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Редакция «Пробы Пера»",
+            "createdAt": "2026-09-02",
+            "reviewedBy": "Codex AI /root (independent review)",
+            "reviewedAt": "2026-09-05"
+          }
+        },
+        "candidateProvenance": {
+          "ru": {
+            "origin": "article-adapted",
+            "sourceLanguage": "ru",
+            "sourceCountry": "russia",
+            "sourceUrls": [
+              "https://tolstoy.ru/online/90/34/",
+              "https://probpera.ru/stati/o-literature/sem-maloizvestnyh-rasskazov-imenityh-pisateley-kotorye-sleduet-prochitat-kazhdomu-l-n-tolstoy/",
+              "https://www.penguin.co.uk/books/35513/the-death-of-ivan-ilyich-and-other-stories-by-leo-tolstoy-intro--anthony-briggs-edited-and-trans-by--anthony-briggs-edited-and-trans-by--ronald-wilks-edited-and-trans-by-david-mcduff/9780140449617"
+            ],
+            "sourceArticle": {
+              "articleId": "cms-766846e2-a653-465e-a4b4-ce327a22696f",
+              "url": "https://probpera.ru/stati/o-literature/sem-maloizvestnyh-rasskazov-imenityh-pisateley-kotorye-sleduet-prochitat-kazhdomu-l-n-tolstoy/",
+              "revisionId": "5a3574570e446af11c1ee561fe315372fafd1ffa7dd75717b75938c7a49264d2",
+              "sourceHash": "b82906459f57f1bfc156f9be1d4853f01927c91f751df0d3880ee16852155d16",
+              "excerptHash": "17db52ebc99f90eaa479674d7cf599726acac96bafe8dfa07d4239e4ed7b798c"
+            },
+            "transformations": [
+              "condensed",
+              "deduplicated",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-owned-article",
+              "copiedSourceText": false
+            },
+            "author": "Редакция «Пробы Пера»",
+            "createdAt": "2026-09-02",
+            "reviewedBy": "Codex AI /root (independent review)",
+            "reviewedAt": "2026-09-05",
+            "primarySourceUrls": [
+              "https://tolstoy.ru/online/90/34/"
+            ]
+          },
+          "en": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "en",
+            "sourceCountry": "russia",
+            "sourceUrls": [
+              "https://probpera.ru/stati/o-literature/sem-maloizvestnyh-rasskazov-imenityh-pisateley-kotorye-sleduet-prochitat-kazhdomu-l-n-tolstoy/",
+              "https://tolstoy.ru/online/90/34/",
+              "https://www.penguin.co.uk/books/35513/the-death-of-ivan-ilyich-and-other-stories-by-leo-tolstoy-intro--anthony-briggs-edited-and-trans-by--anthony-briggs-edited-and-trans-by--ronald-wilks-edited-and-trans-by-david-mcduff/9780140449617"
+            ],
+            "translatedFromLocale": "ru",
+            "translatedFromSourceHash": "48b5d6007f80fee70ce647d29ab0686c77b3cfdf167577585d01fff6305cf48b",
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Редакция «Пробы Пера»",
+            "createdAt": "2026-09-02",
+            "reviewedBy": "Codex AI /root (independent review)",
+            "reviewedAt": "2026-09-05",
+            "primarySourceUrls": [
+              "https://www.penguin.co.uk/books/35513/the-death-of-ivan-ilyich-and-other-stories-by-leo-tolstoy-intro--anthony-briggs-edited-and-trans-by--anthony-briggs-edited-and-trans-by--ronald-wilks-edited-and-trans-by-david-mcduff/9780140449617"
+            ]
+          }
+        },
+        "historicalProof": null,
+        "sourceReplacement": {
+          "retiredDescriptionBinding": {
+            "before": {
+              "provider": "Project Gutenberg / published English literary text",
+              "authorityId": "project-gutenberg",
+              "authorityTier": "B",
+              "country": "usa",
+              "market": "US",
+              "language": "English",
+              "recordKind": "authoritative-work-page",
+              "recordId": "PG-243-PRIMARY-TEXT",
+              "url": "https://www.gutenberg.org/files/243/243-h/243-h.htm",
+              "fields": [
+                "identity",
+                "authorship",
+                "description"
+              ],
+              "usage": "reference-only",
+              "retrievedAt": "2026-09-05"
+            },
+            "after": {
+              "provider": "Project Gutenberg / published English literary text",
+              "authorityId": "project-gutenberg",
+              "authorityTier": "B",
+              "country": "usa",
+              "market": "US",
+              "language": "English",
+              "recordKind": "authoritative-work-page",
+              "recordId": "PG-243-PRIMARY-TEXT",
+              "url": "https://www.gutenberg.org/files/243/243-h/243-h.htm",
+              "fields": [
+                "identity",
+                "authorship"
+              ],
+              "usage": "reference-only",
+              "retrievedAt": "2026-09-05"
+            }
+          },
+          "newSource": {
+            "provider": "penguin-books-uk",
+            "authorityId": "penguin-uk",
+            "authorityTier": "B",
+            "country": "england",
+            "market": "GB",
+            "language": "English",
+            "recordKind": "publisher-catalog",
+            "recordId": "ISBN-9780140449617",
+            "url": "https://www.penguin.co.uk/books/35513/the-death-of-ivan-ilyich-and-other-stories-by-leo-tolstoy-intro--anthony-briggs-edited-and-trans-by--anthony-briggs-edited-and-trans-by--ronald-wilks-edited-and-trans-by-david-mcduff/9780140449617",
+            "fields": [
+              "identity",
+              "authorship",
+              "description"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-09-12"
+          },
+          "oldDescriptionProvenance": {
+            "ru": {
+              "origin": "article-adapted",
+              "sourceLanguage": "ru",
+              "sourceCountry": "russia",
+              "sourceUrls": [
+                "https://tolstoy.ru/online/90/34/",
+                "https://probpera.ru/stati/o-literature/sem-maloizvestnyh-rasskazov-imenityh-pisateley-kotorye-sleduet-prochitat-kazhdomu-l-n-tolstoy/",
+                "https://www.gutenberg.org/files/243/243-h/243-h.htm"
+              ],
+              "primarySourceUrls": [
+                "https://tolstoy.ru/online/90/34/"
+              ],
+              "sourceArticle": {
+                "articleId": "cms-766846e2-a653-465e-a4b4-ce327a22696f",
+                "url": "https://probpera.ru/stati/o-literature/sem-maloizvestnyh-rasskazov-imenityh-pisateley-kotorye-sleduet-prochitat-kazhdomu-l-n-tolstoy/",
+                "revisionId": "5a3574570e446af11c1ee561fe315372fafd1ffa7dd75717b75938c7a49264d2",
+                "sourceHash": "b82906459f57f1bfc156f9be1d4853f01927c91f751df0d3880ee16852155d16",
+                "excerptHash": "17db52ebc99f90eaa479674d7cf599726acac96bafe8dfa07d4239e4ed7b798c"
+              },
+              "transformations": [
+                "condensed",
+                "deduplicated",
+                "spoiler-limited",
+                "style-edited"
+              ],
+              "rights": {
+                "textOrigin": "project-owned-article",
+                "copiedSourceText": false
+              },
+              "author": "Редакция «Пробы Пера»",
+              "createdAt": "2026-09-02",
+              "reviewedBy": "Codex AI /root (independent review)",
+              "reviewedAt": "2026-09-05"
+            },
+            "en": {
+              "origin": "official-source-synthesis",
+              "sourceLanguage": "en",
+              "sourceCountry": "russia",
+              "sourceUrls": [
+                "https://www.gutenberg.org/files/243/243-h/243-h.htm",
+                "https://probpera.ru/stati/o-literature/sem-maloizvestnyh-rasskazov-imenityh-pisateley-kotorye-sleduet-prochitat-kazhdomu-l-n-tolstoy/",
+                "https://tolstoy.ru/online/90/34/"
+              ],
+              "primarySourceUrls": [
+                "https://www.gutenberg.org/files/243/243-h/243-h.htm"
+              ],
+              "translatedFromLocale": "ru",
+              "translatedFromSourceHash": "48b5d6007f80fee70ce647d29ab0686c77b3cfdf167577585d01fff6305cf48b",
+              "rights": {
+                "textOrigin": "project-original",
+                "copiedSourceText": false
+              },
+              "author": "Редакция «Пробы Пера»",
+              "createdAt": "2026-09-02",
+              "reviewedBy": "Codex AI /root (independent review)",
+              "reviewedAt": "2026-09-05"
+            }
+          },
+          "newDescriptionProvenance": {
+            "ru": {
+              "origin": "article-adapted",
+              "sourceLanguage": "ru",
+              "sourceCountry": "russia",
+              "sourceUrls": [
+                "https://tolstoy.ru/online/90/34/",
+                "https://probpera.ru/stati/o-literature/sem-maloizvestnyh-rasskazov-imenityh-pisateley-kotorye-sleduet-prochitat-kazhdomu-l-n-tolstoy/",
+                "https://www.penguin.co.uk/books/35513/the-death-of-ivan-ilyich-and-other-stories-by-leo-tolstoy-intro--anthony-briggs-edited-and-trans-by--anthony-briggs-edited-and-trans-by--ronald-wilks-edited-and-trans-by-david-mcduff/9780140449617"
+              ],
+              "sourceArticle": {
+                "articleId": "cms-766846e2-a653-465e-a4b4-ce327a22696f",
+                "url": "https://probpera.ru/stati/o-literature/sem-maloizvestnyh-rasskazov-imenityh-pisateley-kotorye-sleduet-prochitat-kazhdomu-l-n-tolstoy/",
+                "revisionId": "5a3574570e446af11c1ee561fe315372fafd1ffa7dd75717b75938c7a49264d2",
+                "sourceHash": "b82906459f57f1bfc156f9be1d4853f01927c91f751df0d3880ee16852155d16",
+                "excerptHash": "17db52ebc99f90eaa479674d7cf599726acac96bafe8dfa07d4239e4ed7b798c"
+              },
+              "transformations": [
+                "condensed",
+                "deduplicated",
+                "spoiler-limited",
+                "style-edited"
+              ],
+              "rights": {
+                "textOrigin": "project-owned-article",
+                "copiedSourceText": false
+              },
+              "author": "Редакция «Пробы Пера»",
+              "createdAt": "2026-09-02",
+              "reviewedBy": "Codex AI /root (independent review)",
+              "reviewedAt": "2026-09-05"
+            },
+            "en": {
+              "origin": "official-source-synthesis",
+              "sourceLanguage": "en",
+              "sourceCountry": "russia",
+              "sourceUrls": [
+                "https://probpera.ru/stati/o-literature/sem-maloizvestnyh-rasskazov-imenityh-pisateley-kotorye-sleduet-prochitat-kazhdomu-l-n-tolstoy/",
+                "https://tolstoy.ru/online/90/34/",
+                "https://www.penguin.co.uk/books/35513/the-death-of-ivan-ilyich-and-other-stories-by-leo-tolstoy-intro--anthony-briggs-edited-and-trans-by--anthony-briggs-edited-and-trans-by--ronald-wilks-edited-and-trans-by-david-mcduff/9780140449617"
+              ],
+              "translatedFromLocale": "ru",
+              "translatedFromSourceHash": "48b5d6007f80fee70ce647d29ab0686c77b3cfdf167577585d01fff6305cf48b",
+              "rights": {
+                "textOrigin": "project-original",
+                "copiedSourceText": false
+              },
+              "author": "Редакция «Пробы Пера»",
+              "createdAt": "2026-09-02",
+              "reviewedBy": "Codex AI /root (independent review)",
+              "reviewedAt": "2026-09-05"
+            }
+          },
+          "archiveOnlyPrimarySourceUrlsRemoved": true,
+          "newPrimaryFactSourceByLocale": {
+            "ru": [
+              "https://tolstoy.ru/online/90/34/"
+            ],
+            "en": [
+              "https://www.penguin.co.uk/books/35513/the-death-of-ivan-ilyich-and-other-stories-by-leo-tolstoy-intro--anthony-briggs-edited-and-trans-by--anthony-briggs-edited-and-trans-by--ronald-wilks-edited-and-trans-by-david-mcduff/9780140449617"
+            ]
+          }
+        },
+        "firstPublished": 1911,
+        "humanReview": false,
+        "fullWorkRead": false,
+        "publicationApproved": false
+      },
+      {
+        "recordKey": "usa:jack_london:article-catalog-1hfivd6",
+        "sourceMasterPointer": "/records/8711",
+        "masterRecordSha256": "9bbe8f5f1556fe925dd7c09170e72f4d452c2c1b0152fc596429bce078130c72",
+        "reusedDescriptionSha256ByLocale": {
+          "ru": "e8698e851ef01887b6e66344f039940f9e56ce5df2f6bef5791a320ffa916549",
+          "en": "2f3ed90a6f5840ade28f95e5701a4b20622cbb1b60b63207855c74a4e0432bec"
+        },
+        "historicProvenance": {
+          "ru": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "ru",
+            "sourceCountry": "usa",
+            "sourceUrls": [
+              "https://eksmo.ru/book/zheleznaya-pyata-ITD1421733/",
+              "https://www.gutenberg.org/files/1164/1164-h/1164-h.htm"
+            ],
+            "primarySourceUrls": [
+              "https://eksmo.ru/book/zheleznaya-pyata-ITD1421733/"
+            ],
+            "transformations": [
+              "condensed",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / london_bilingual_batch",
+            "createdAt": "2026-09-05",
+            "reviewedBy": "Codex AI / review_ru_public_gaps",
+            "reviewedAt": "2026-09-05"
+          },
+          "en": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "en",
+            "sourceCountry": "usa",
+            "sourceUrls": [
+              "https://eksmo.ru/book/zheleznaya-pyata-ITD1421733/",
+              "https://www.gutenberg.org/files/1164/1164-h/1164-h.htm"
+            ],
+            "primarySourceUrls": [
+              "https://www.gutenberg.org/files/1164/1164-h/1164-h.htm"
+            ],
+            "transformations": [
+              "condensed",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / london_bilingual_batch",
+            "createdAt": "2026-09-05",
+            "reviewedBy": "Codex AI / review_ru_public_gaps",
+            "reviewedAt": "2026-09-05"
+          }
+        },
+        "candidateProvenance": {
+          "ru": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "ru",
+            "sourceCountry": "usa",
+            "sourceUrls": [
+              "https://eksmo.ru/book/zheleznaya-pyata-ITD1421733/",
+              "https://www.penguinrandomhouse.com/books/296408/the-iron-heel-by-jack-london-edited-with-an-introduction-by-jonathan-auerbach-notes-by-jordan-schugar/"
+            ],
+            "transformations": [
+              "condensed",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / london_bilingual_batch",
+            "createdAt": "2026-09-05",
+            "reviewedBy": "Codex AI / review_ru_public_gaps",
+            "reviewedAt": "2026-09-05",
+            "primarySourceUrls": [
+              "https://eksmo.ru/book/zheleznaya-pyata-ITD1421733/"
+            ]
+          },
+          "en": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "en",
+            "sourceCountry": "usa",
+            "sourceUrls": [
+              "https://eksmo.ru/book/zheleznaya-pyata-ITD1421733/",
+              "https://www.penguinrandomhouse.com/books/296408/the-iron-heel-by-jack-london-edited-with-an-introduction-by-jonathan-auerbach-notes-by-jordan-schugar/"
+            ],
+            "transformations": [
+              "condensed",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / london_bilingual_batch",
+            "createdAt": "2026-09-05",
+            "reviewedBy": "Codex AI / review_ru_public_gaps",
+            "reviewedAt": "2026-09-05",
+            "primarySourceUrls": [
+              "https://www.penguinrandomhouse.com/books/296408/the-iron-heel-by-jack-london-edited-with-an-introduction-by-jonathan-auerbach-notes-by-jordan-schugar/"
+            ]
+          }
+        },
+        "historicalProof": null,
+        "sourceReplacement": {
+          "retiredDescriptionBinding": {
+            "before": {
+              "provider": "project-gutenberg",
+              "authorityId": "project-gutenberg",
+              "authorityTier": "B",
+              "country": "usa",
+              "language": "en",
+              "recordKind": "authoritative-work-page",
+              "recordId": "gutenberg-1164",
+              "url": "https://www.gutenberg.org/files/1164/1164-h/1164-h.htm",
+              "fields": [
+                "identity",
+                "authorship",
+                "description"
+              ],
+              "usage": "reference-only",
+              "retrievedAt": "2026-09-05"
+            },
+            "after": {
+              "provider": "project-gutenberg",
+              "authorityId": "project-gutenberg",
+              "authorityTier": "B",
+              "country": "usa",
+              "language": "en",
+              "recordKind": "authoritative-work-page",
+              "recordId": "gutenberg-1164",
+              "url": "https://www.gutenberg.org/files/1164/1164-h/1164-h.htm",
+              "fields": [
+                "identity",
+                "authorship"
+              ],
+              "usage": "reference-only",
+              "retrievedAt": "2026-09-05"
+            }
+          },
+          "newSource": {
+            "provider": "penguin-random-house",
+            "authorityId": "penguin-random-house",
+            "authorityTier": "B",
+            "country": "usa",
+            "market": "US",
+            "language": "English",
+            "recordKind": "publisher-catalog",
+            "recordId": "PRH-296408",
+            "url": "https://www.penguinrandomhouse.com/books/296408/the-iron-heel-by-jack-london-edited-with-an-introduction-by-jonathan-auerbach-notes-by-jordan-schugar/",
+            "fields": [
+              "identity",
+              "authorship",
+              "description"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-09-12"
+          },
+          "oldDescriptionProvenance": {
+            "ru": {
+              "origin": "official-source-synthesis",
+              "sourceLanguage": "ru",
+              "sourceCountry": "usa",
+              "sourceUrls": [
+                "https://eksmo.ru/book/zheleznaya-pyata-ITD1421733/",
+                "https://www.gutenberg.org/files/1164/1164-h/1164-h.htm"
+              ],
+              "primarySourceUrls": [
+                "https://eksmo.ru/book/zheleznaya-pyata-ITD1421733/"
+              ],
+              "transformations": [
+                "condensed",
+                "spoiler-limited",
+                "style-edited"
+              ],
+              "rights": {
+                "textOrigin": "project-original",
+                "copiedSourceText": false
+              },
+              "author": "Codex AI / london_bilingual_batch",
+              "createdAt": "2026-09-05",
+              "reviewedBy": "Codex AI / review_ru_public_gaps",
+              "reviewedAt": "2026-09-05"
+            },
+            "en": {
+              "origin": "official-source-synthesis",
+              "sourceLanguage": "en",
+              "sourceCountry": "usa",
+              "sourceUrls": [
+                "https://eksmo.ru/book/zheleznaya-pyata-ITD1421733/",
+                "https://www.gutenberg.org/files/1164/1164-h/1164-h.htm"
+              ],
+              "primarySourceUrls": [
+                "https://www.gutenberg.org/files/1164/1164-h/1164-h.htm"
+              ],
+              "transformations": [
+                "condensed",
+                "spoiler-limited",
+                "style-edited"
+              ],
+              "rights": {
+                "textOrigin": "project-original",
+                "copiedSourceText": false
+              },
+              "author": "Codex AI / london_bilingual_batch",
+              "createdAt": "2026-09-05",
+              "reviewedBy": "Codex AI / review_ru_public_gaps",
+              "reviewedAt": "2026-09-05"
+            }
+          },
+          "newDescriptionProvenance": {
+            "ru": {
+              "origin": "official-source-synthesis",
+              "sourceLanguage": "ru",
+              "sourceCountry": "usa",
+              "sourceUrls": [
+                "https://eksmo.ru/book/zheleznaya-pyata-ITD1421733/",
+                "https://www.penguinrandomhouse.com/books/296408/the-iron-heel-by-jack-london-edited-with-an-introduction-by-jonathan-auerbach-notes-by-jordan-schugar/"
+              ],
+              "transformations": [
+                "condensed",
+                "spoiler-limited",
+                "style-edited"
+              ],
+              "rights": {
+                "textOrigin": "project-original",
+                "copiedSourceText": false
+              },
+              "author": "Codex AI / london_bilingual_batch",
+              "createdAt": "2026-09-05",
+              "reviewedBy": "Codex AI / review_ru_public_gaps",
+              "reviewedAt": "2026-09-05"
+            },
+            "en": {
+              "origin": "official-source-synthesis",
+              "sourceLanguage": "en",
+              "sourceCountry": "usa",
+              "sourceUrls": [
+                "https://eksmo.ru/book/zheleznaya-pyata-ITD1421733/",
+                "https://www.penguinrandomhouse.com/books/296408/the-iron-heel-by-jack-london-edited-with-an-introduction-by-jonathan-auerbach-notes-by-jordan-schugar/"
+              ],
+              "transformations": [
+                "condensed",
+                "spoiler-limited",
+                "style-edited"
+              ],
+              "rights": {
+                "textOrigin": "project-original",
+                "copiedSourceText": false
+              },
+              "author": "Codex AI / london_bilingual_batch",
+              "createdAt": "2026-09-05",
+              "reviewedBy": "Codex AI / review_ru_public_gaps",
+              "reviewedAt": "2026-09-05"
+            }
+          },
+          "archiveOnlyPrimarySourceUrlsRemoved": true,
+          "newPrimaryFactSourceByLocale": {
+            "ru": [
+              "https://eksmo.ru/book/zheleznaya-pyata-ITD1421733/"
+            ],
+            "en": [
+              "https://www.penguinrandomhouse.com/books/296408/the-iron-heel-by-jack-london-edited-with-an-introduction-by-jonathan-auerbach-notes-by-jordan-schugar/"
+            ]
+          }
+        },
+        "firstPublished": 1908,
+        "humanReview": false,
+        "fullWorkRead": false,
+        "publicationApproved": false
+      },
+      {
+        "recordKey": "usa:jack_london:article-catalog-2s2iy7",
+        "sourceMasterPointer": "/records/8713",
+        "masterRecordSha256": "ddfe333978cfefde2b5a9ef070019f3e7dda061956fbf9c1c387304883fc8cb1",
+        "reusedDescriptionSha256ByLocale": {
+          "ru": "ffd7bdd3bff8067aa5c368b4a1262252f062b090af272883e174b1c2ac17fa73",
+          "en": "0bec865400453c13cb381473928a7eaf78a537fa52ac428f554c2b76c43bee39"
+        },
+        "historicProvenance": {
+          "ru": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "ru",
+            "sourceCountry": "usa",
+            "sourceUrls": [
+              "https://azbooka.ru/books/lynnaya-dolina",
+              "https://www.gutenberg.org/files/1449/1449-h/1449-h.htm"
+            ],
+            "primarySourceUrls": [
+              "https://azbooka.ru/books/lynnaya-dolina"
+            ],
+            "transformations": [
+              "condensed",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / london_bilingual_batch",
+            "createdAt": "2026-09-05",
+            "reviewedBy": "Codex AI / review_ru_public_gaps",
+            "reviewedAt": "2026-09-05"
+          },
+          "en": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "en",
+            "sourceCountry": "usa",
+            "sourceUrls": [
+              "https://azbooka.ru/books/lynnaya-dolina",
+              "https://www.gutenberg.org/files/1449/1449-h/1449-h.htm"
+            ],
+            "primarySourceUrls": [
+              "https://www.gutenberg.org/files/1449/1449-h/1449-h.htm"
+            ],
+            "transformations": [
+              "condensed",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / london_bilingual_batch",
+            "createdAt": "2026-09-05",
+            "reviewedBy": "Codex AI / review_ru_public_gaps",
+            "reviewedAt": "2026-09-05"
+          }
+        },
+        "candidateProvenance": {
+          "ru": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "ru",
+            "sourceCountry": "usa",
+            "sourceUrls": [
+              "https://azbooka.ru/books/lynnaya-dolina",
+              "https://www.simonandschuster.com/books/The-Valley-of-the-Moon/Jack-London/9781633551619"
+            ],
+            "transformations": [
+              "condensed",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / london_bilingual_batch",
+            "createdAt": "2026-09-05",
+            "reviewedBy": "Codex AI / review_ru_public_gaps",
+            "reviewedAt": "2026-09-05",
+            "primarySourceUrls": [
+              "https://azbooka.ru/books/lynnaya-dolina"
+            ]
+          },
+          "en": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "en",
+            "sourceCountry": "usa",
+            "sourceUrls": [
+              "https://azbooka.ru/books/lynnaya-dolina",
+              "https://www.simonandschuster.com/books/The-Valley-of-the-Moon/Jack-London/9781633551619"
+            ],
+            "transformations": [
+              "condensed",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI / london_bilingual_batch",
+            "createdAt": "2026-09-05",
+            "reviewedBy": "Codex AI / review_ru_public_gaps",
+            "reviewedAt": "2026-09-05",
+            "primarySourceUrls": [
+              "https://www.simonandschuster.com/books/The-Valley-of-the-Moon/Jack-London/9781633551619"
+            ]
+          }
+        },
+        "historicalProof": null,
+        "sourceReplacement": {
+          "retiredDescriptionBinding": {
+            "before": {
+              "provider": "project-gutenberg",
+              "authorityId": "project-gutenberg",
+              "authorityTier": "B",
+              "country": "usa",
+              "language": "en",
+              "recordKind": "authoritative-work-page",
+              "recordId": "gutenberg-1449",
+              "url": "https://www.gutenberg.org/files/1449/1449-h/1449-h.htm",
+              "fields": [
+                "identity",
+                "authorship",
+                "description"
+              ],
+              "usage": "reference-only",
+              "retrievedAt": "2026-09-05"
+            },
+            "after": {
+              "provider": "project-gutenberg",
+              "authorityId": "project-gutenberg",
+              "authorityTier": "B",
+              "country": "usa",
+              "language": "en",
+              "recordKind": "authoritative-work-page",
+              "recordId": "gutenberg-1449",
+              "url": "https://www.gutenberg.org/files/1449/1449-h/1449-h.htm",
+              "fields": [
+                "identity",
+                "authorship"
+              ],
+              "usage": "reference-only",
+              "retrievedAt": "2026-09-05"
+            }
+          },
+          "newSource": {
+            "provider": "simon-and-schuster-us",
+            "authorityId": "simon-schuster-us",
+            "authorityTier": "B",
+            "country": "usa",
+            "market": "US",
+            "language": "English",
+            "recordKind": "publisher-catalog",
+            "recordId": "ISBN-9781633551619",
+            "url": "https://www.simonandschuster.com/books/The-Valley-of-the-Moon/Jack-London/9781633551619",
+            "fields": [
+              "identity",
+              "authorship",
+              "description"
+            ],
+            "usage": "reference-only",
+            "retrievedAt": "2026-09-12"
+          },
+          "oldDescriptionProvenance": {
+            "ru": {
+              "origin": "official-source-synthesis",
+              "sourceLanguage": "ru",
+              "sourceCountry": "usa",
+              "sourceUrls": [
+                "https://azbooka.ru/books/lynnaya-dolina",
+                "https://www.gutenberg.org/files/1449/1449-h/1449-h.htm"
+              ],
+              "primarySourceUrls": [
+                "https://azbooka.ru/books/lynnaya-dolina"
+              ],
+              "transformations": [
+                "condensed",
+                "spoiler-limited",
+                "style-edited"
+              ],
+              "rights": {
+                "textOrigin": "project-original",
+                "copiedSourceText": false
+              },
+              "author": "Codex AI / london_bilingual_batch",
+              "createdAt": "2026-09-05",
+              "reviewedBy": "Codex AI / review_ru_public_gaps",
+              "reviewedAt": "2026-09-05"
+            },
+            "en": {
+              "origin": "official-source-synthesis",
+              "sourceLanguage": "en",
+              "sourceCountry": "usa",
+              "sourceUrls": [
+                "https://azbooka.ru/books/lynnaya-dolina",
+                "https://www.gutenberg.org/files/1449/1449-h/1449-h.htm"
+              ],
+              "primarySourceUrls": [
+                "https://www.gutenberg.org/files/1449/1449-h/1449-h.htm"
+              ],
+              "transformations": [
+                "condensed",
+                "spoiler-limited",
+                "style-edited"
+              ],
+              "rights": {
+                "textOrigin": "project-original",
+                "copiedSourceText": false
+              },
+              "author": "Codex AI / london_bilingual_batch",
+              "createdAt": "2026-09-05",
+              "reviewedBy": "Codex AI / review_ru_public_gaps",
+              "reviewedAt": "2026-09-05"
+            }
+          },
+          "newDescriptionProvenance": {
+            "ru": {
+              "origin": "official-source-synthesis",
+              "sourceLanguage": "ru",
+              "sourceCountry": "usa",
+              "sourceUrls": [
+                "https://azbooka.ru/books/lynnaya-dolina",
+                "https://www.simonandschuster.com/books/The-Valley-of-the-Moon/Jack-London/9781633551619"
+              ],
+              "transformations": [
+                "condensed",
+                "spoiler-limited",
+                "style-edited"
+              ],
+              "rights": {
+                "textOrigin": "project-original",
+                "copiedSourceText": false
+              },
+              "author": "Codex AI / london_bilingual_batch",
+              "createdAt": "2026-09-05",
+              "reviewedBy": "Codex AI / review_ru_public_gaps",
+              "reviewedAt": "2026-09-05"
+            },
+            "en": {
+              "origin": "official-source-synthesis",
+              "sourceLanguage": "en",
+              "sourceCountry": "usa",
+              "sourceUrls": [
+                "https://azbooka.ru/books/lynnaya-dolina",
+                "https://www.simonandschuster.com/books/The-Valley-of-the-Moon/Jack-London/9781633551619"
+              ],
+              "transformations": [
+                "condensed",
+                "spoiler-limited",
+                "style-edited"
+              ],
+              "rights": {
+                "textOrigin": "project-original",
+                "copiedSourceText": false
+              },
+              "author": "Codex AI / london_bilingual_batch",
+              "createdAt": "2026-09-05",
+              "reviewedBy": "Codex AI / review_ru_public_gaps",
+              "reviewedAt": "2026-09-05"
+            }
+          },
+          "archiveOnlyPrimarySourceUrlsRemoved": true,
+          "newPrimaryFactSourceByLocale": {
+            "ru": [
+              "https://azbooka.ru/books/lynnaya-dolina"
+            ],
+            "en": [
+              "https://www.simonandschuster.com/books/The-Valley-of-the-Moon/Jack-London/9781633551619"
+            ]
+          }
+        },
+        "firstPublished": 1913,
+        "humanReview": false,
+        "fullWorkRead": false,
+        "publicationApproved": false
+      }
+    ],
+    "stoweDraftCandidateFile": "D:/CodexData/Temp/probpera-r49n-editorial-review-20260912/stowe-missing-writer-draft-candidate.json",
+    "scope": "Only 12 existing profile candidates and seven explicit authority registrations; no wiring, governance, historical pins, SQL or publication. All 24 module and 2 separate Stowe description strings reuse MASTER exactly.",
+    "finalFiles": [
+      {
+        "path": "src/data/countries/bookR49nExistingReviewed20260912.ts",
+        "sha256": "5b88df47f391a8ca905602aeac242155dff043655ee85055a491501a70880a0e",
+        "bytes": 266866
+      },
+      {
+        "path": "src/data/countries/bookR49nExistingReviewed20260912.test.ts",
+        "sha256": "f7741c4c647d04bd47cb80c628728cac3ab6d6653ed6665910d4b26aefbe7a57",
+        "bytes": 21470
+      },
+      {
+        "path": "data/book-canon-source-registry.json",
+        "sha256": "c8d2b6862c47c3215295951d2c5d1c406913b9879c616f1d8b787c6e05029f6c",
+        "bytes": 402353
+      }
+    ],
+    "validation": {
+      "focusedTestCommand": "npx vitest run src/data/countries/bookR49nExistingReviewed20260912.test.ts --configLoader runner --no-cache",
+      "focusedTests": 16,
+      "focusedPassed": 16,
+      "typecheckCommand": "npx tsc --noEmit",
+      "typecheckPassed": true,
+      "diffCheckPassed": true,
+      "actualEvidenceV2ReadyCandidates": 12,
+      "sourceTextShaChecks": 24,
+      "historicalLocalizedTitleProfileShaChecks": 12,
+      "registryExistingRolesUnchanged": true,
+      "stoweProfileIncludedInRuntimeModule": false,
+      "wiringChangedByThisTask": false,
+      "fullWiredRuntimeVerification": "Deferred to root after final integration; no global ready-count claim is added by this module-only task."
+    },
+    "proofArtifacts": [
+      {
+        "path": "D:/CodexData/Temp/probpera-r49n-editorial-review-20260912/legacy94f8c6ca-comparison-016.json",
+        "sha256": "cf9fd2b271ecb5bb2b93bebdb410d8890f0c7ee14cf647e432f298e33795d7ff"
+      },
+      {
+        "path": "D:/CodexData/Temp/probpera-r49n-editorial-review-20260912/source-replacements-004-overlay-candidate.json",
+        "sha256": "ccdfb42597909ef3aa04e8277cb1d14ec93c7c08a95674e7edf65dd24a350f23"
+      },
+      {
+        "path": "D:/CodexData/Temp/probpera-r49n-editorial-review-20260912/source-replacements-004-report.json",
+        "sha256": "14991f62f1b4fcc039be1162afebe6287a72f079046684670f00a5faedce496e"
+      },
+      {
+        "path": "D:/CodexData/Temp/probpera-r49n-editorial-review-20260912/stowe-missing-writer-draft-candidate.json",
+        "sha256": "b6b691c039a1b65c2b5b21636c243f1a56445a9f41973a70930d2a9787bcc1cd"
+      }
+    ],
+    "lawfulAttestationNeeded": {
+      "oldPinsChanged": false,
+      "baselineRegistrySha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79",
+      "newRegistrySha256": "c8d2b6862c47c3215295951d2c5d1c406913b9879c616f1d8b787c6e05029f6c",
+      "newModuleAndFocusedTestHashes": [
+        {
+          "path": "src/data/countries/bookR49nExistingReviewed20260912.ts",
+          "sha256": "5b88df47f391a8ca905602aeac242155dff043655ee85055a491501a70880a0e",
+          "bytes": 266866
+        },
+        {
+          "path": "src/data/countries/bookR49nExistingReviewed20260912.test.ts",
+          "sha256": "f7741c4c647d04bd47cb80c628728cac3ab6d6653ed6665910d4b26aefbe7a57",
+          "bytes": 21470
+        }
+      ],
+      "projection": "Add a new owner-authorized attestation for exactly these seven inserted authority objects and this new module. Verify all original registry metadata, existing authority objects and inventory/adjudication rows unchanged. The new projection must reverse only the exact attested seven-object insertion before existing historical fingerprints; reject missing/duplicate/altered objects. Keep existing registry identities and all historical migration/governance pins unchanged.",
+      "integrationScope": "Root adds the exact bookArchive import/call before the final legacy publication guard and attests final runtime key set, non-target record hashes, protected fields and complete ready-set preservation. Add a forward reviewed DB registry/validator identity rotation and new book attestations through the existing guarded release, not by editing historical SQL.",
+      "registryProtectedBy": "scripts/lib/stage5-content-data-lock.test.mjs and scripts/stage5-baseline-registry.mjs content/data fingerprints; production Evidence V2 attestations additionally bind canonRegistrySha256.",
+      "excludedChanges": [
+        "Gutenberg/Open Road description-role expansions",
+        "old optional-primary gate changes",
+        "old joint-title gate extension",
+        "LoC item adjudications",
+        "Stowe writer creation",
+        "any SQL or production write"
+      ]
+    },
+    "finishedAt": "2026-09-12T12:19:21.760Z"
+  },
+  "retainedTextProofs": [
+    {
+      "key": "france:jules_verne:the-mysterious-island-editorial",
+      "localeProofs": {
+        "ru": {
+          "descriptionSha256": "5a0008f1b86f92473b3887b4e04b55ae659d1f44d7956e43bfe31b6be64991c2",
+          "exactHistoricalTextMatches": [
+            {
+              "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+              "path": "reports/book-verne-independent-review-20260905.json",
+              "sha256": "4709f0699e5ad923c56c0982984f0ce6a905b701c7426b0d875a4b85a743bafa",
+              "pointer": "/records/3/locales/ru/exactText"
+            }
+          ]
+        },
+        "en": {
+          "descriptionSha256": "7ffb1e562098b35bbaf748fac14e690b911c38377597a8d6d86b481eb909468a",
+          "exactHistoricalTextMatches": [
+            {
+              "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+              "path": "reports/book-verne-independent-review-20260905.json",
+              "sha256": "4709f0699e5ad923c56c0982984f0ce6a905b701c7426b0d875a4b85a743bafa",
+              "pointer": "/records/3/locales/en/exactText"
+            }
+          ]
+        }
+      },
+      "neededAuthorities": [
+        "centre-international-jules-verne"
+      ]
+    },
+    {
+      "key": "france:jules_verne:openlibrary-works-ol1099513w",
+      "localeProofs": {
+        "ru": {
+          "descriptionSha256": "5254d8ff0b71996458a35494b2abf52048a05aa11bdfd45e9e224e019d0a32d7",
+          "exactHistoricalTextMatches": [
+            {
+              "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+              "path": "reports/book-verne-independent-review-20260905.json",
+              "sha256": "4709f0699e5ad923c56c0982984f0ce6a905b701c7426b0d875a4b85a743bafa",
+              "pointer": "/records/0/locales/ru/exactText"
+            }
+          ]
+        },
+        "en": {
+          "descriptionSha256": "5eabf9c8e2bf36210e04225c46d60d03490d08cb135b68950e28265ff79db041",
+          "exactHistoricalTextMatches": [
+            {
+              "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+              "path": "reports/book-verne-independent-review-20260905.json",
+              "sha256": "4709f0699e5ad923c56c0982984f0ce6a905b701c7426b0d875a4b85a743bafa",
+              "pointer": "/records/0/locales/en/exactText"
+            }
+          ]
+        }
+      },
+      "neededAuthorities": [
+        "centre-international-jules-verne"
+      ]
+    },
+    {
+      "key": "france:jules_verne:openlibrary-works-ol1100007w",
+      "localeProofs": {
+        "ru": {
+          "descriptionSha256": "9c1f2fbe551a16d2791963fa9bfca39f278beb5b6204420aadfc506153301cbd",
+          "exactHistoricalTextMatches": [
+            {
+              "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+              "path": "reports/book-verne-independent-review-20260905.json",
+              "sha256": "4709f0699e5ad923c56c0982984f0ce6a905b701c7426b0d875a4b85a743bafa",
+              "pointer": "/records/1/locales/ru/exactText"
+            }
+          ]
+        },
+        "en": {
+          "descriptionSha256": "d695f55d738aa5e72950dbc576a12311ac44d0c63834927169f32a178e8890a3",
+          "exactHistoricalTextMatches": [
+            {
+              "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+              "path": "reports/book-verne-independent-review-20260905.json",
+              "sha256": "4709f0699e5ad923c56c0982984f0ce6a905b701c7426b0d875a4b85a743bafa",
+              "pointer": "/records/1/locales/en/exactText"
+            }
+          ]
+        }
+      },
+      "neededAuthorities": [
+        "centre-international-jules-verne"
+      ]
+    },
+    {
+      "key": "france:jules_verne:openlibrary-works-ol1099280w",
+      "localeProofs": {
+        "ru": {
+          "descriptionSha256": "2ae21cb68ec8e1e8b6d23f961e2e1d53b53661d97ccd894a1cfcbaf7d90c94ec",
+          "exactHistoricalTextMatches": [
+            {
+              "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+              "path": "reports/book-verne-independent-review-20260905.json",
+              "sha256": "4709f0699e5ad923c56c0982984f0ce6a905b701c7426b0d875a4b85a743bafa",
+              "pointer": "/records/2/locales/ru/exactText"
+            }
+          ]
+        },
+        "en": {
+          "descriptionSha256": "f79bb2e87732e01ac6bad9e59b9925de5c9cb48c95e315af6cb70b6fd7114a99",
+          "exactHistoricalTextMatches": [
+            {
+              "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+              "path": "reports/book-verne-independent-review-20260905.json",
+              "sha256": "4709f0699e5ad923c56c0982984f0ce6a905b701c7426b0d875a4b85a743bafa",
+              "pointer": "/records/2/locales/en/exactText"
+            }
+          ]
+        }
+      },
+      "neededAuthorities": [
+        "centre-international-jules-verne"
+      ]
+    },
+    {
+      "key": "france:jules_verne:openlibrary-works-ol1099479w",
+      "localeProofs": {
+        "ru": {
+          "descriptionSha256": "82e760cd558197bc35bf42851406ea5667e61996f82655776c0b6cf5faca7bd8",
+          "exactHistoricalTextMatches": [
+            {
+              "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+              "path": "reports/book-verne-independent-review-20260905.json",
+              "sha256": "4709f0699e5ad923c56c0982984f0ce6a905b701c7426b0d875a4b85a743bafa",
+              "pointer": "/records/4/locales/ru/exactText"
+            }
+          ]
+        },
+        "en": {
+          "descriptionSha256": "39535cf6a0ec17dd2681ff716334727aea1ed7b48e8ae5c48322329da4fef859",
+          "exactHistoricalTextMatches": [
+            {
+              "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+              "path": "reports/book-verne-independent-review-20260905.json",
+              "sha256": "4709f0699e5ad923c56c0982984f0ce6a905b701c7426b0d875a4b85a743bafa",
+              "pointer": "/records/4/locales/en/exactText"
+            }
+          ]
+        }
+      },
+      "neededAuthorities": [
+        "centre-international-jules-verne"
+      ]
+    },
+    {
+      "key": "france:jules_verne:openlibrary-works-ol1099630w",
+      "localeProofs": {
+        "ru": {
+          "descriptionSha256": "82f4f87742966325784fec58e5328bbfed981722ab88f95a1060beb109324d2e",
+          "exactHistoricalTextMatches": [
+            {
+              "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+              "path": "reports/book-verne-independent-review-20260905.json",
+              "sha256": "4709f0699e5ad923c56c0982984f0ce6a905b701c7426b0d875a4b85a743bafa",
+              "pointer": "/records/7/locales/ru/exactText"
+            }
+          ]
+        },
+        "en": {
+          "descriptionSha256": "8796fe330be3ab2491d057c8e8b6c032b9d26bd3651575bd426980c6c011c097",
+          "exactHistoricalTextMatches": [
+            {
+              "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+              "path": "reports/book-verne-independent-review-20260905.json",
+              "sha256": "4709f0699e5ad923c56c0982984f0ce6a905b701c7426b0d875a4b85a743bafa",
+              "pointer": "/records/7/locales/en/exactText"
+            }
+          ]
+        }
+      },
+      "neededAuthorities": [
+        "centre-international-jules-verne"
+      ]
+    },
+    {
+      "key": "france:jules_verne:openlibrary-works-ol1099364w",
+      "localeProofs": {
+        "ru": {
+          "descriptionSha256": "047f1ed3af62a10e20413e9c5c7aaece6b96e14b85b95b5fcb2cc10fff8a8e6c",
+          "exactHistoricalTextMatches": [
+            {
+              "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+              "path": "reports/book-verne-independent-review-20260905.json",
+              "sha256": "4709f0699e5ad923c56c0982984f0ce6a905b701c7426b0d875a4b85a743bafa",
+              "pointer": "/records/6/locales/ru/exactText"
+            }
+          ]
+        },
+        "en": {
+          "descriptionSha256": "5a7c20c0733c96ec5bbca132804f01d7b8f1bde97f4bc95c78c4c1affe3c266a",
+          "exactHistoricalTextMatches": [
+            {
+              "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+              "path": "reports/book-verne-independent-review-20260905.json",
+              "sha256": "4709f0699e5ad923c56c0982984f0ce6a905b701c7426b0d875a4b85a743bafa",
+              "pointer": "/records/6/locales/en/exactText"
+            }
+          ]
+        }
+      },
+      "neededAuthorities": [
+        "centre-international-jules-verne"
+      ]
+    },
+    {
+      "key": "russia:turgenev:article-series-men9bv",
+      "localeProofs": {
+        "ru": {
+          "descriptionSha256": "e708813c30867d2799d794ac9af083481715dadb6e8c7cc0c6ee761393ee81c7",
+          "exactHistoricalTextMatches": [
+            {
+              "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+              "path": "reports/book-research-2026-09-04-independent-review.json",
+              "sha256": "a87f4b96b05fcd37475109bff82855ce64667f70d53761f5f9bb71da95e0e26a",
+              "pointer": "/works/1/approvedSynopses/ru"
+            }
+          ]
+        },
+        "en": {
+          "descriptionSha256": "90c7a8dbc22f5ecee08a82e90ca1bc204b829b85ed244562eeefe9e44544be06",
+          "exactHistoricalTextMatches": [
+            {
+              "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+              "path": "reports/book-research-2026-09-04-independent-review.json",
+              "sha256": "a87f4b96b05fcd37475109bff82855ce64667f70d53761f5f9bb71da95e0e26a",
+              "pointer": "/works/1/approvedSynopses/en"
+            }
+          ]
+        }
+      },
+      "neededAuthorities": [
+        "rvb",
+        "nyrb",
+        "national-library-of-ireland"
+      ]
+    },
+    {
+      "key": "russia:buninin:the-village",
+      "localeProofs": {
+        "ru": {
+          "descriptionSha256": "189b37a2babc75d34112f0520a224de53f00445f7624d3e40b981cf9a4f5dc7a",
+          "exactHistoricalTextMatches": [
+            {
+              "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+              "path": "reports/book-research-2026-09-04-independent-review.json",
+              "sha256": "a87f4b96b05fcd37475109bff82855ce64667f70d53761f5f9bb71da95e0e26a",
+              "pointer": "/works/0/approvedSynopses/ru"
+            }
+          ]
+        },
+        "en": {
+          "descriptionSha256": "3fd12d92f88ef46aba60f209bdbe749d3f41a8debdc0676daad015f00fe5f21b",
+          "exactHistoricalTextMatches": [
+            {
+              "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+              "path": "reports/book-research-2026-09-04-independent-review.json",
+              "sha256": "a87f4b96b05fcd37475109bff82855ce64667f70d53761f5f9bb71da95e0e26a",
+              "pointer": "/works/0/approvedSynopses/en"
+            }
+          ]
+        }
+      },
+      "neededAuthorities": [
+        "bunin-museum-yelets",
+        "alma-books"
+      ]
+    },
+    {
+      "key": "usa:harriet_beecher_stowe:uncle-toms-cabin",
+      "localeProofs": {
+        "ru": {
+          "descriptionSha256": "10ef92d8a4d3a4242fb12994fab900cebc858a788816f34ef59484d1c2790d0e",
+          "exactHistoricalTextMatches": [
+            {
+              "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+              "path": "reports/book-research-2026-09-04-uncle-tom.json",
+              "sha256": "15a87dfe333b97046c037dc2a05658c4e6bdf79f930db79eea9c05006164e130",
+              "pointer": "/finalDescriptions/ru"
+            }
+          ]
+        },
+        "en": {
+          "descriptionSha256": "f3d2a647af1c673b6482289d08d52f3988a54560cdf3009fa3ec9deaf0380783",
+          "exactHistoricalTextMatches": [
+            {
+              "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+              "path": "reports/book-research-2026-09-04-uncle-tom.json",
+              "sha256": "15a87dfe333b97046c037dc2a05658c4e6bdf79f930db79eea9c05006164e130",
+              "pointer": "/finalDescriptions/en"
+            }
+          ]
+        }
+      },
+      "neededAuthorities": [
+        "national-library-of-ireland",
+        "us-national-park-service"
+      ]
+    }
+  ],
+  "authorityProofs": [
+    {
+      "authorityId": "alma-books",
+      "targetKeys": [
+        "russia:buninin:the-village"
+      ],
+      "neededForRegistrationOnlyTen": true,
+      "classification": "Missing registration of an already-used named institutional source; no source-domain or authorityId substitution proposed.",
+      "allowedRoles": [
+        "title-publisher",
+        "description-fact"
+      ],
+      "domains": [
+        "bloomsbury.com"
+      ],
+      "independenceGroup": "bloomsbury-publishing",
+      "historicalProofRefs": [
+        {
+          "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+          "path": "reports/book-research-2026-09-04-independent-review.json",
+          "sha256": "a87f4b96b05fcd37475109bff82855ce64667f70d53761f5f9bb71da95e0e26a",
+          "pointer": "/sources/3",
+          "url": "https://www.bloomsbury.com/uk/village-9781847492838/",
+          "organization": "Alma Books / Bloomsbury",
+          "access": "web-open full publisher page read"
+        }
+      ]
+    },
+    {
+      "authorityId": "bunin-museum-yelets",
+      "targetKeys": [
+        "russia:buninin:the-village"
+      ],
+      "neededForRegistrationOnlyTen": true,
+      "classification": "Missing registration of an already-used named institutional source; no source-domain or authorityId substitution proposed.",
+      "allowedRoles": [
+        "description-fact"
+      ],
+      "domains": [
+        "ar.culture.ru"
+      ],
+      "independenceGroup": "yelets-city-local-history-museum",
+      "historicalProofRefs": [
+        {
+          "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+          "path": "reports/book-research-2026-09-04-independent-review.json",
+          "sha256": "a87f4b96b05fcd37475109bff82855ce64667f70d53761f5f9bb71da95e0e26a",
+          "pointer": "/sources/5",
+          "url": "https://ar.culture.ru/ru/subject/derevnya",
+          "organization": "Елецкий городской краеведческий музей; collection Литературно-мемориальный музей И. А. Бунина, ARTEFACT",
+          "access": "web-open official museum exhibit content read"
+        }
+      ]
+    },
+    {
+      "authorityId": "rvb",
+      "targetKeys": [
+        "russia:turgenev:article-series-men9bv"
+      ],
+      "neededForRegistrationOnlyTen": true,
+      "classification": "Missing registration of an already-used named institutional source; no source-domain or authorityId substitution proposed.",
+      "allowedRoles": [
+        "title-critical-edition",
+        "description-fact"
+      ],
+      "domains": [
+        "rvb.ru"
+      ],
+      "independenceGroup": "russian-virtual-library",
+      "historicalProofRefs": [
+        {
+          "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+          "path": "reports/book-research-2026-09-04-independent-review.json",
+          "sha256": "a87f4b96b05fcd37475109bff82855ce64667f70d53761f5f9bb71da95e0e26a",
+          "pointer": "/sources/6",
+          "url": "https://rvb.ru/turgenev/01text/vol_07/01text/0191-01.htm",
+          "organization": "РВБ; Тургенев, Полное собрание сочинений и писем, Наука, 1981, т. 7",
+          "access": "web-open original literary text read"
+        },
+        {
+          "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+          "path": "reports/book-research-2026-09-04-independent-review.json",
+          "sha256": "a87f4b96b05fcd37475109bff82855ce64667f70d53761f5f9bb71da95e0e26a",
+          "pointer": "/sources/7",
+          "url": "https://rvb.ru/turgenev/01text/vol_07/01text/0191-02.htm",
+          "organization": "РВБ; Тургенев, Полное собрание сочинений и писем, Наука, 1981, т. 7",
+          "access": "web-open original literary text read"
+        },
+        {
+          "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+          "path": "reports/book-research-2026-09-04-independent-review.json",
+          "sha256": "a87f4b96b05fcd37475109bff82855ce64667f70d53761f5f9bb71da95e0e26a",
+          "pointer": "/sources/8",
+          "url": "https://rvb.ru/turgenev/01text/vol_07/01text/0191-08.htm",
+          "organization": "РВБ; Тургенев, Полное собрание сочинений и писем, Наука, 1981, т. 7",
+          "access": "web-open original literary text read"
+        },
+        {
+          "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+          "path": "reports/book-research-2026-09-04-independent-review.json",
+          "sha256": "a87f4b96b05fcd37475109bff82855ce64667f70d53761f5f9bb71da95e0e26a",
+          "pointer": "/sources/9",
+          "url": "https://rvb.ru/turgenev/02comm/0191.htm",
+          "organization": "РВБ; commentary by Е. И. Кийко",
+          "access": "web-open scholarly commentary read"
+        }
+      ]
+    },
+    {
+      "authorityId": "nyrb",
+      "targetKeys": [
+        "russia:turgenev:article-series-men9bv"
+      ],
+      "neededForRegistrationOnlyTen": true,
+      "classification": "Missing registration of an already-used named institutional source; no source-domain or authorityId substitution proposed.",
+      "allowedRoles": [
+        "title-publisher",
+        "description-fact"
+      ],
+      "domains": [
+        "nyrb.com"
+      ],
+      "independenceGroup": "new-york-review-books",
+      "historicalProofRefs": [
+        {
+          "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+          "path": "reports/book-research-2026-09-04-independent-review.json",
+          "sha256": "a87f4b96b05fcd37475109bff82855ce64667f70d53761f5f9bb71da95e0e26a",
+          "pointer": "/sources/10",
+          "url": "https://www.nyrb.com/products/smoke-1",
+          "organization": "New York Review Books",
+          "access": "web-open official publisher page read"
+        }
+      ]
+    },
+    {
+      "authorityId": "us-national-park-service",
+      "targetKeys": [
+        "usa:harriet_beecher_stowe:uncle-toms-cabin"
+      ],
+      "neededForRegistrationOnlyTen": true,
+      "classification": "Missing registration of an already-used named institutional source; no source-domain or authorityId substitution proposed.",
+      "allowedRoles": [
+        "description-fact"
+      ],
+      "domains": [
+        "nps.gov"
+      ],
+      "independenceGroup": "united-states-national-park-service",
+      "historicalProofRefs": [
+        {
+          "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+          "path": "reports/book-research-2026-09-04-uncle-tom.json",
+          "sha256": "15a87dfe333b97046c037dc2a05658c4e6bdf79f930db79eea9c05006164e130",
+          "pointer": "/sources/8",
+          "url": "https://www.nps.gov/people/harriet-beecher-stowe.htm",
+          "observation": "Live official historical-biography page confirms birth14June1811inLitchfield,death1July1896inHartford, antislavery activity and1852two-volume book. Proposed new authority for runtime. Do not use its unrelated1854date for AKeytoUncleTomsCabin without correction; that claim is outside this draft."
+        }
+      ]
+    },
+    {
+      "authorityId": "national-library-of-ireland",
+      "targetKeys": [
+        "russia:turgenev:article-series-men9bv",
+        "russia:tolstoy:article-series-k1mlo9",
+        "usa:harriet_beecher_stowe:uncle-toms-cabin"
+      ],
+      "neededForRegistrationOnlyTen": true,
+      "classification": "Missing registration of an already-used named institutional source; no source-domain or authorityId substitution proposed.",
+      "allowedRoles": [
+        "title-national-record",
+        "description-fact"
+      ],
+      "domains": [
+        "nli.ie"
+      ],
+      "independenceGroup": "national-library-of-ireland",
+      "historicalProofRefs": [
+        {
+          "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+          "path": "reports/book-research-2026-09-04-independent-review.json",
+          "sha256": "a87f4b96b05fcd37475109bff82855ce64667f70d53761f5f9bb71da95e0e26a",
+          "pointer": "/sources/12",
+          "url": "https://catalogue.nli.ie/Record/vtls000462765",
+          "organization": "National Library of Ireland",
+          "access": "full indexed primary catalogue fields independently read"
+        },
+        {
+          "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+          "path": "reports/book-research-2026-09-04-uncle-tom.json",
+          "sha256": "15a87dfe333b97046c037dc2a05658c4e6bdf79f930db79eea9c05006164e130",
+          "pointer": "/sources/1",
+          "url": "https://catalogue.nli.ie/Record/vtls000157656/StaffViewMARC",
+          "observation": "Full live official MARC page independently read by root and research agent. MARC001vtls000157656,003IeDuNL,008eng,245title/responsibility,260LondonJ.Cassell1852,300extent. Notes mention original issue in13parts; the catalogued bound book is one complete Work, not13newWorks. Cataloging provenance040DLC is preserved as a dependency on LoC; NLI and Penguin UK are independent of each other, while NLI and LoC must not be counted as two independent title signals for this manifestation."
+        }
+      ]
+    },
+    {
+      "authorityId": "centre-international-jules-verne",
+      "targetKeys": [
+        "france:jules_verne:the-mysterious-island-editorial",
+        "france:jules_verne:openlibrary-works-ol1099513w",
+        "france:jules_verne:openlibrary-works-ol1100007w",
+        "france:jules_verne:openlibrary-works-ol1099280w",
+        "france:jules_verne:openlibrary-works-ol1099479w",
+        "france:jules_verne:openlibrary-works-ol1099380w",
+        "france:jules_verne:openlibrary-works-ol1099630w",
+        "france:jules_verne:openlibrary-works-ol1099364w"
+      ],
+      "neededForRegistrationOnlyTen": true,
+      "classification": "Missing registration of an already-used named institutional source; no source-domain or authorityId substitution proposed.",
+      "allowedRoles": [
+        "description-fact"
+      ],
+      "domains": [
+        "jules-verne.net"
+      ],
+      "independenceGroup": "centre-international-jules-verne",
+      "historicalProofRefs": [
+        {
+          "file": "claimed-ready-current-failures-022.json",
+          "pointer": "/sourceReads/21",
+          "url": "https://jules-verne.net/l-oeuvre/les-voyages-extraordinaires/1874-1875-1-l-ile-mysterieuse/",
+          "readOn": "2026-09-12",
+          "readTextSha256": "34074eec64fe7a45ee9c04dbb1178a30de6e6b8d74b4cd9c573bc81753499f24",
+          "scope": "Previously read CIJV work/exhibition page. Corroborating French-origin facts; not a claim to have read a complete literary work."
+        },
+        {
+          "file": "claimed-ready-current-failures-022.json",
+          "pointer": "/sourceReads/22",
+          "url": "https://jules-verne.net/l-oeuvre/les-voyages-extraordinaires/1864-voyage-au-centre-de-la-terre/",
+          "readOn": "2026-09-12",
+          "readTextSha256": "7e0db5e909c880b2144bc379d33e432924d1fa967ab6653a039c5c2d5265808c",
+          "scope": "Previously read CIJV work/exhibition page. Corroborating French-origin facts; not a claim to have read a complete literary work."
+        },
+        {
+          "file": "claimed-ready-current-failures-022.json",
+          "pointer": "/sourceReads/23",
+          "url": "https://jules-verne.net/l-oeuvre/les-voyages-extraordinaires/1872-1873-1-le-tour-du-monde-en-quatre-vingts-jours/",
+          "readOn": "2026-09-12",
+          "readTextSha256": "8f7671afa3ce20e9c2824800769532fe2a54844f6de841279ef6b22201ab3239",
+          "scope": "Previously read CIJV work/exhibition page. Corroborating French-origin facts; not a claim to have read a complete literary work."
+        },
+        {
+          "file": "claimed-ready-current-failures-022.json",
+          "pointer": "/sourceReads/24",
+          "url": "https://jules-verne.net/l-oeuvre/les-voyages-extraordinaires/1869-1870-vingt-mille-lieues-sous-les-mers/",
+          "readOn": "2026-09-12",
+          "readTextSha256": "05c12e152565b6db7e0498a5bea060456bfad6287820a37665d4e5b8639b6a18",
+          "scope": "Previously read CIJV work/exhibition page. Corroborating French-origin facts; not a claim to have read a complete literary work."
+        },
+        {
+          "file": "claimed-ready-current-failures-022.json",
+          "pointer": "/sourceReads/25",
+          "url": "https://jules-verne.net/l-oeuvre/les-voyages-extraordinaires/1865-de-la-terre-a-la-lune/",
+          "readOn": "2026-09-12",
+          "readTextSha256": "921c70203662be36ab0c6066face42e1a68b51f9b078d473e680028ad735d424",
+          "scope": "Previously read CIJV work/exhibition page. Corroborating French-origin facts; not a claim to have read a complete literary work."
+        },
+        {
+          "file": "claimed-ready-current-failures-022.json",
+          "pointer": "/sourceReads/26",
+          "url": "https://jules-verne.net/l-oeuvre/les-voyages-extraordinaires/1863-cinq-semaines-en-ballon/",
+          "readOn": "2026-09-12",
+          "readTextSha256": "798c80a40f5966f202981cf6436c26ce0422c1f8143be879aca0ea96bf3c547a",
+          "scope": "Previously read CIJV work/exhibition page. Corroborating French-origin facts; not a claim to have read a complete literary work."
+        },
+        {
+          "file": "claimed-ready-current-failures-022.json",
+          "pointer": "/sourceReads/27",
+          "url": "https://jules-verne.net/exposer-l-oeuvre/les-expositions-pedagogiques/les-machines-de-jules-verne/",
+          "readOn": "2026-09-12",
+          "readTextSha256": "650f1f0c9213ae44279106304c59f4be3d96f9553ef5caaf5045bfd5536fadc5",
+          "scope": "Previously read CIJV work/exhibition page. Corroborating French-origin facts; not a claim to have read a complete literary work."
+        },
+        {
+          "file": "claimed-ready-current-failures-022.json",
+          "pointer": "/sourceReads/28",
+          "url": "https://jules-verne.net/l-oeuvre/les-voyages-extraordinaires/1865-1867-les-enfants-du-capitaine-grant/",
+          "readOn": "2026-09-12",
+          "readTextSha256": "41609ba82acca183670df9503184a869e3478611765c506500c502a3c72a37f1",
+          "scope": "Previously read CIJV work/exhibition page. Corroborating French-origin facts; not a claim to have read a complete literary work."
+        }
+      ]
+    }
+  ],
+  "stoweRecovery": {
+    "path": "reports/book-r49n-retained-profile-recovery-20260912.json",
+    "sha256": "2702cf0e1dfa3fdf43a69661bc04a09550d2ca25af1e049bf4035a984a948495",
+    "review": {
+      "schemaVersion": 1,
+      "reviewedAt": "2026-09-12",
+      "reviewer": "Codex article_counts",
+      "reviewerKind": "AI",
+      "humanReview": false,
+      "scope": "Reuse retained source-backed profiles and exact annotations; no prose rewriting or web refetch. New isolated book-only country transform. Root owns package wiring.",
+      "source": {
+        "masterSha256": "f441344f6b4367684c8f5ec39f746f12c079ff05e5130b3183e06bab7c359674",
+        "originalZipSha256": "977f25072022cb7275242b030836326f8f30c97423697b60081859d8ce17fb69",
+        "historicalProfile": {
+          "gitRef": "94f8c6caecb3703e5a0d5ea7ecc90e155b1c10c2",
+          "path": "src/data/countries/bookVerifiedAdditionsBatch20260904.ts",
+          "sha256": "d4a8a5f7484a2c52c540561b7236707b3a56f0c19e3646c72fe5f0808139dabd"
+        },
+        "evaluatedRegistrySha256": "c8d2b6862c47c3215295951d2c5d1c406913b9879c616f1d8b787c6e05029f6c",
+        "localHead": "4ed87afa5aef95a650be213c982da5cf662f7469",
+        "workingTreePackageInProgress": true
+      },
+      "materialized": [
+        {
+          "recordKey": "usa:harriet_beecher_stowe:uncle-toms-cabin",
+          "module": "src/data/countries/bookR49nStoweRecovered20260912.ts",
+          "masterPointer": "/records/9644",
+          "profileSha256": "108a81b8410ecc1313b5400cc57d497a4fd166b7db610796d17b73024fe90866",
+          "selectedTexts": {
+            "ru": "10ef92d8a4d3a4242fb12994fab900cebc858a788816f34ef59484d1c2790d0e",
+            "en": "f3d2a647af1c673b6482289d08d52f3988a54560cdf3009fa3ec9deaf0380783"
+          },
+          "textSelection": "Exact independently reviewed 2026-09-04 MASTER RU/EN pair retained, no later text substitution.",
+          "historicalReviewDatesPreserved": true,
+          "authorshipPreserved": true,
+          "firstPublicationScope": "1852 first complete book, distinct from1851 start of serialization.",
+          "editionScope": "RU title independent RSL/AST; EN title GB market NLI1852 and Penguin/Everyman1995. NLI institution country is not publication market.",
+          "canonicalIdentity": {
+            "status": "accepted-mapping",
+            "recordKey": "usa:harriet_beecher_stowe:uncle-toms-cabin",
+            "sourceTitleAliasExact": "Uncle Tom’s Cabin; or, Life Among the Lowly.",
+            "expectedArchiveFields": {
+              "title": "Хижина дяди Тома",
+              "originalTitle": "Uncle Tom's Cabin; or, Life Among the Lowly",
+              "firstPublished": 1852
+            },
+            "reasonRu": "Добавленная и проверенная карточка романа Стоу однозначно соответствует исходному произведению в реестре LoC; прежний запрет на создание дубля сохраняется, а исследовательская запись теперь ссылается на существующую карточку."
+          },
+          "newCanonClaims": false,
+          "newCover": false,
+          "writerAddedToBookCorpusOnly": true,
+          "writerFields": [
+            "id",
+            "name",
+            "country",
+            "language",
+            "workDetails"
+          ],
+          "biographyFieldsAdded": [],
+          "requiredWiring": "mergeBookR49nStoweRecovered20260912(bookArchiveCountries input); never add to public countries or reviewed1684 biography corpus.",
+          "actualCurrentGateIssues": [],
+          "publicBook": true
+        }
+      ],
+      "retainedNotMaterialized": [
+        {
+          "recordKey": "germany:theodor_mommsen:history-of-rome",
+          "issueId": "R03-I03",
+          "semanticFinding": "NEB000199_000009_003506955 and RSL01003506955 identify the same national record. Retained R03 review rejects their independence; no status-only promotion. Same-language synopsis primary bindings absent.",
+          "actualCurrentGateIssues": [
+            "publication:перевод ru не прошёл редакционную проверку",
+            "publication:перевод en не прошёл редакционную проверку"
+          ],
+          "proseChanged": false
+        },
+        {
+          "recordKey": "russia:chekhov:article-series-6yjp93",
+          "issueId": "R05-I01",
+          "semanticFinding": "The exact R05 RU/EN annotations agree with retained full-story reading notes R05-S01 and R05-S02. This AI comparison is against saved notes, not a new web reading. Preserve historical title manifestations separately from the1915 London text source.",
+          "textHashes": {
+            "ru": "44460b3d7f6b6455d0dc1ea96ae4cb00f734de6b9f1acbb1c77d40a9ee548fbe",
+            "en": "e55644cccae0470b6bb3b3cfd9b2e4086357416ac4715dd250975a831cd3148d"
+          },
+          "sourcePointers": [
+            "MASTER#/restartSourceReadings/61",
+            "MASTER#/restartSourceReadings/62"
+          ],
+          "actualPreparedGateIssues": [
+            "ru-description-fact-source-2-authority-role-not-allowed",
+            "en-description-fact-source-2-authority-role-not-allowed"
+          ],
+          "remaining": "Project Gutenberg literary text has no allowed description-fact role in current registry. Its ebooks catalog record must not be relabeled as a text reading.",
+          "preparedProfile": "D:/CodexData/Temp/probpera-r49n-editorial-review-20260912/chekhov-classics-retained-prepared-profile.json",
+          "proseChanged": false,
+          "disposition": "hold-source-role-admission; do not expand Project Gutenberg roles for this release"
+        },
+        {
+          "recordKey": "usa:louisa_may_alcott:little-women",
+          "issueId": "R03-I04",
+          "canonicalIdentity": {
+            "status": "accepted-mapping",
+            "recordKey": "usa:louisa_may_alcott:little-women",
+            "sourceTitleAliasExact": "Little Women, or, Meg, Jo, Beth, and Amy.",
+            "expectedArchiveFields": {
+              "title": "Маленькие женщины",
+              "originalTitle": "Little Women, or, Meg, Jo, Beth, and Amy",
+              "firstPublished": 1868
+            },
+            "reasonRu": "Созданная черновая карточка соответствует первой части 1868 года и отдельному профилю Олкотт. Сопоставление с LoC закрывает отсутствие карточки, но не разрешает её публикацию: библиографическое доказательство английского заглавия заданного объёма пока недостаточно."
+          },
+          "semanticFinding": "Exact work scope remains the standalone1868 Part I. R03/R35 notes retain missing national EN title evidence for this scope; a combined1870 PartsI+II record is not a substitute.",
+          "actualCurrentGateIssues": [
+            "publication:перевод ru не прошёл редакционную проверку",
+            "publication:нет даты проверки перевода ru",
+            "publication:перевод en не прошёл редакционную проверку",
+            "publication:нет даты проверки перевода en",
+            "missing-en-published-title-evidence",
+            "en-description-fact-source-2-authority-not-registered",
+            "en-description-two-independent-authorities-required"
+          ],
+          "proseChanged": false
+        }
+      ],
+      "runtimeReceipt": {
+        "baselineDefinition": "Current package country corpus with the isolated new Stowe writer removed only in memory; compares existing records under identical current registry and overlays.",
+        "beforeRecords": 9761,
+        "afterRecords": 9762,
+        "newKeys": [
+          "usa:harriet_beecher_stowe:uncle-toms-cabin"
+        ],
+        "existingChanged": [],
+        "existingReadyBefore": 68,
+        "existingReadyPreserved": 68,
+        "afterReady": 69,
+        "publicWriterCorpusContainsStowe": false,
+        "publicWriterCorpusMutated": false,
+        "descriptionHashContext": "Actual RU text SHA256 supplied for linked EN translation validation."
+      },
+      "validation": {
+        "unitFile": "src/data/countries/bookR49nStoweRecovered20260912.test.ts",
+        "passedTests": 4,
+        "fullSuiteRun": false,
+        "productionBuildRun": false,
+        "typeScriptNoEmit": "passed after local primarySourceUrls typing; shared types and evidence rules unchanged"
+      },
+      "publicationPerformed": false,
+      "retainedCorpus": {
+        "currentPairs": 1546,
+        "currentTexts": 3092,
+        "explicitSourceBoundVersionsAfterRecovery": 3085,
+        "originalVersionsWithoutSourceIds": 7,
+        "allCurrentProseAndHistoricalVariantsPreserved": true,
+        "nonpublicationMeaning": "Pending source-role admission, exact manifestation evidence or metadata transfer does not mean the existing annotations are absent, discarded or rewritten.",
+        "inventory": "D:/CodexData/Temp/probpera-r49n-readiness-inventory-20260912/summary-compact.json",
+        "inventoryBaselines": {
+          "remoteMainAtAudit": "ba3336a0:46 ready",
+          "localCheckpointBeforePackage": "4ed87afa:56 ready",
+          "currentPreparedWorkingPackage": "69 ready;9762 records;not published"
+        }
+      }
+    }
+  },
+  "runtimeValidation": {
+    "beforeCount": 9761,
+    "afterCount": 9763,
+    "beforeReady": 46,
+    "afterReady": 69,
+    "previousReadyPreserved": 46,
+    "newReadyKeys": [
+      "england:charles_dickens:article-series-1tdjfsi",
+      "england:charles_dickens:david-copperfield-editorial",
+      "england:charles_dickens:great-expectations",
+      "england:charles_dickens:oliver-twist-editorial",
+      "england:charles_dickens:openlibrary-works-ol13114895w",
+      "england:charles_dickens:openlibrary-works-ol14868510w",
+      "england:charles_dickens:openlibrary-works-ol14869167w",
+      "england:charles_dickens:openlibrary-works-ol32466w",
+      "england:charles_dickens:openlibrary-works-ol8193387w",
+      "england:charles_dickens:openlibrary-works-ol8300174w",
+      "france:jules_verne:openlibrary-works-ol1099280w",
+      "france:jules_verne:openlibrary-works-ol1099364w",
+      "france:jules_verne:openlibrary-works-ol1099479w",
+      "france:jules_verne:openlibrary-works-ol1099513w",
+      "france:jules_verne:openlibrary-works-ol1099630w",
+      "france:jules_verne:openlibrary-works-ol1100007w",
+      "france:jules_verne:the-mysterious-island-editorial",
+      "russia:buninin:the-village",
+      "russia:tolstoy:article-series-zqpjjm",
+      "russia:turgenev:article-series-men9bv",
+      "usa:harriet_beecher_stowe:uncle-toms-cabin",
+      "usa:jack_london:article-catalog-1hfivd6",
+      "usa:jack_london:article-catalog-2s2iy7"
+    ],
+    "nonTargetCount": 8246,
+    "nonTargetRecordsChanged": 0,
+    "protectedExistingTargets": 22,
+    "protectedFieldsChanged": 0,
+    "newWriterPublishedInGlobe": false,
+    "pendingCount": 9694,
+    "retainedPendingPairCount": 1494,
+    "allReviewedRecordsPassEvidenceV2": true,
+    "displayPermissionDoesNotConferEvidenceApproval": true
+  },
+  "retainedDraftDisplay": {
+    "path": "reports/book-r49n-retained-drafts-20260912.json",
+    "sha256": "a95ed3cfb6f5a9482f76119a46fe6c8d014309af38daef66821c388df99c5b1e",
+    "counts": {
+      "sourceCurrentCards": 1546,
+      "sourceCurrentTexts": 3092,
+      "reviewedProfilesPreserved": 69,
+      "currentReviewedPairsPreserved": 52,
+      "appliedPendingPairs": 1494,
+      "appliedPendingTexts": 2988,
+      "existingPendingRecordsChanged": 1493,
+      "canonicalBefore": 9762,
+      "canonicalAfter": 9763,
+      "reviewedAfter": 69,
+      "pendingAfter": 9694
+    },
+    "proseRewritten": false,
+    "newHumanApproval": false,
+    "evidenceV2ApprovalGranted": false
+  },
+  "pointerInteractionFix": {
+    "date": "2026-09-12",
+    "cause": "The search input blur synchronously removed the in-flow suggestions row between pointerdown and pointerup. The catalog card moved, so the browser discarded its click. Toolbar-only protection did not cover catalog cards.",
+    "control": "Closing suggestions with Escape before ordinary card click produced detail andpushState on unmodified source.",
+    "fix": "Track the current pointer interaction while suggestions are open; defer blur dismissal until click has a target or the interaction is cancelled. Tab and Escape remain immediate. No force clicks, delays or increased timeouts.",
+    "validation": {
+      "desktopClick": "PASS",
+      "mobileTouchTap": "PASS",
+      "keyboardTab": "PASS",
+      "keyboardEscape": "PASS",
+      "detailTextAndBookUrl": "PASS",
+      "uncheckedWriterBiographyNotExposed": "PASS",
+      "targetedE2ETests": 2,
+      "typeScriptNoEmit": "PASS"
+    },
+    "test": "tests/e2e/archive-search-calendar.spec.mjs:46",
+    "evidenceDirectory": ".tmp/book-result-regression-results",
+    "files": [
+      {
+        "file": "src/components/BookShelfControls.tsx",
+        "sha256": "a9b6bc9fe8f036a0595670fa6de8121f1c167c519075b441e20b6b57a8c30d33",
+        "lfSha256": "381f233540c8b3bf6419ccde77e0c015d99e345847b8c30244640bf4d1c3d847"
+      },
+      {
+        "file": "src/data/countries/bookR49nStoweRecovered20260912.ts",
+        "sha256": "0b389d7bff632de896eb576b9872073fd4ff4de03fce7ae4419d2d0ca5af1adf",
+        "lfSha256": "0b389d7bff632de896eb576b9872073fd4ff4de03fce7ae4419d2d0ca5af1adf"
+      },
+      {
+        "file": "reports/book-r49n-retained-profile-recovery-20260912.json",
+        "sha256": "2702cf0e1dfa3fdf43a69661bc04a09550d2ca25af1e049bf4035a984a948495",
+        "lfSha256": "2702cf0e1dfa3fdf43a69661bc04a09550d2ca25af1e049bf4035a984a948495"
+      }
+    ]
+  },
+  "atomicRegistryTransition": {
+    "report": {
+      "path": "reports/book-evidence-v2-registry-rotation-20260912.md",
+      "sha256": "ac58cd6486119b1f87030b649dcf09c1da429bfc9dd54490493fb48d60247ca0"
+    },
+    "migration": {
+      "path": "supabase/migrations/20260912_literary_work_evidence_v2_registry_rotation.sql",
+      "sha256": "01a7fc62c731d01c2ea6912dc4ed770bf5cbe4d696122feb4fee401987ff4220"
+    },
+    "receipt": {
+      "schema": "registry-rotation-local-sql-receipt-v1",
+      "runtime": "PGlite0.5.8",
+      "pass": true,
+      "statements": 177,
+      "migrationSha256": "01a7fc62c731d01c2ea6912dc4ed770bf5cbe4d696122feb4fee401987ff4220",
+      "fixtureSha256": "2097cdbe61a8c6f98fca48d37933f9991841bcf2a552163754123dc0bdfa46a1",
+      "executedAt": "2026-09-12T12:57:28.787Z",
+      "productionAccess": false,
+      "dockerCiStillRequired": true
+    },
+    "historicalMigrationsChanged": false,
+    "enforcementBypassed": false
+  },
+  "privateAuthorReferences": {
+    "beforeCount": 1684,
+    "afterCount": 1686,
+    "existingRecordsChanged": [],
+    "added": [
+      {
+        "key": "usa:harriet_beecher_stowe",
+        "record": {
+          "id": "harriet_beecher_stowe",
+          "label": "Гарриет Бичер-Стоу",
+          "fields": {
+            "name": "Гарриет Бичер-Стоу",
+            "country": "usa",
+            "language": "английский"
+          }
+        },
+        "sha256": "4b72ff783fc765e3e2c9f74da0ad6f3676033573da11233b130079e3e268d212"
+      },
+      {
+        "key": "usa:louisa_may_alcott",
+        "record": {
+          "id": "louisa_may_alcott",
+          "label": "Луиза Мэй Олкотт",
+          "fields": {
+            "name": "Луиза Мэй Олкотт",
+            "country": "usa",
+            "language": "английский"
+          }
+        },
+        "sha256": "06cad30385a891e1c96c3a32c85f67dbe0ab092de85ba3e8cd5a95554370efaa"
+      }
+    ],
+    "newPublicBiographies": 0
+  },
+  "sourceAfterSha256": {
+    ".github/workflows/reconcile-production-database.yml": "6df884319beff972fc3602127a7ea39d1ca4d13bf72c1c3000a41d9038ac2f60",
+    "apps/admin/catalog-assets/editorial-catalog.json": "177bb3e634acd41ec5d5133cc830cebcd2e9029b4e6d859562af599a263e30ab",
+    "apps/admin/catalog-assets/interface-copy-catalog.json": "f8d5d90881c969690414bbffd040a5bd4c29ce547bace4990e028be899112263",
+    "apps/admin/lib/editorial-catalog.ts": "940b06f92c33cac9108c19fc36e0d345e695c4685e557b947ee99ef802445d2f",
+    "data/book-canon-source-registry.json": "c8d2b6862c47c3215295951d2c5d1c406913b9879c616f1d8b787c6e05029f6c",
+    "scripts/archive-source.ts": "dc3f9101c020e0058eed45d7b63ee2080ecaf0f575efd667df05d8d85a78ac1e",
+    "scripts/database/build-production-migration-plan.mjs": "463194e6bf14903013d156d61733ae2db387d171bb4ec8fbdadf6ef16b520e50",
+    "scripts/import-user-supplied-book-covers.mjs": "606cb64fe9734fce086a343bb54612f5bcf7817afa54701e7137dae3238e55c2",
+    "scripts/import-user-supplied-book-covers-2026-08-13.mjs": "851951b349ccec82276f1a6a4ed8dfd8dbae09fc3df1375b9e68cb2aa9ed9774",
+    "scripts/import-user-supplied-book-covers-2026-08-20.mjs": "70b0443c017f75e9faeeae00ade2d5c72216481c0cd69933337a83a54ffb123d",
+    "scripts/sync-literary-archive.mjs": "bdc784a760f5a9357bdf6455709c57d4cfb40df057da604d53b2f7e50440a280",
+    "src/App.tsx": "334ab1dadf4260110db2a76a20ef1c755f95b12ed919d30ca6faf5800df9b3cb",
+    "src/books/bookDossierLegacyAdapter.ts": "0f13e242171c4f50a72d453992e0d1b85ab9cac4c5b6d579b7ad538e1a2537c5",
+    "src/books/bookEditorialPages.ts": "e78e746262a11e4d9ed78f2994c069b9df4fb43729b096f39410697c9ed0242a",
+    "src/components/BookArchiveSection.tsx": "a3b92b4a50c5d18a5df4c59bdf1d543c354c721adc92282b3aa6f81faa47357a",
+    "src/components/BookShelfControls.tsx": "381f233540c8b3bf6419ccde77e0c015d99e345847b8c30244640bf4d1c3d847",
+    "src/components/GlobalSearch.tsx": "b22882d67ca1389afa8e2f93adaf0509b2f8aca4427e6c95cf4b127ec80e4993",
+    "src/components/WriterPanel.tsx": "429bb1ef55f26101e816533713203acc3dfe49370045acfc7cc5d92019701fbf",
+    "src/data/bookArchive.ts": "6d2bffa98854fdcbfedc43897c99686479e076b7511c412235ba05128083c19e",
+    "src/data/bookArchiveQueue.ts": "e2ca36b51d47a325063d7a62bc18b6f3dd4d13090390624c498c2f95206960d2",
+    "src/data/countries/index.ts": "981178294c635b4439bde9202cb023feddeef973dd0e868fbe7549068632e7a1",
+    "src/i18n/InterfaceLanguage.tsx": "e8319b4b768b814955ad85f3881fa01207bd939a11a411862463c84b295ff21a",
+    "src/search/globalSearchIndex.ts": "d8e73f1c4298883140091c82c2c059699e514619e69e43077b90c5d7211f0d89",
+    "vite.config.ts": "842cd92af6da0d0a419ca1f1fded001816fc52286842829018e5d0f5f02565d5"
+  },
+  "fullCatalogUi": {
+    "schemaVersion": 1,
+    "reviewedAt": "2026-09-12T13:11:24.843Z",
+    "preview": "http://127.0.0.1:5200",
+    "scope": "Full canonical visitor catalog and retained pending synopses, separate from editorial verification; pointer-click regression; matching accessible and 3D synopsis pages.",
+    "catalog": {
+      "total": 9763,
+      "reviewed": 69,
+      "pending": 9694,
+      "retainedPendingPairs": 1494,
+      "retainedPendingTexts": 2988,
+      "reviewedProfilesPreserved": true,
+      "evidenceGatesChanged": false
+    },
+    "validation": {
+      "affectedUnitTests": {
+        "passed": 57,
+        "files": 6,
+        "logs": [
+          ".tmp/full-catalog-units.log",
+          ".tmp/full-catalog-queue-final.log"
+        ],
+        "note": "Initial fallback fixture selected an R49-retained profile; made fallback-only fixture explicit, then its seven tests passed."
+      },
+      "typecheck": {
+        "passed": true,
+        "log": ".tmp/full-catalog-tsc-final.log"
+      },
+      "browser": {
+        "passed": 8,
+        "skipped": 2,
+        "locales": [
+          "ru",
+          "en"
+        ],
+        "devices": [
+          "desktop-chromium",
+          "mobile-chromium"
+        ],
+        "logs": [
+          ".tmp/full-catalog-e2e.log",
+          ".tmp/full-catalog-e2e-final.log"
+        ],
+        "checks": [
+          "Reviewed Stowe opens on first pointer click or mobile tap despite active autocomplete; Tab/Escape retained",
+          "Pending Alcott RU/EN retained annotation and clear status in catalog/detail/accessibility reader",
+          "No unchecked book-only writer biography link",
+          "9763 total,69 reviewed,9694 pending; all/pending/reviewed filters",
+          "Rendered 3D book opens and navigates to retained pending synopsis; actual scene page document includes matching label and text",
+          "RU/EN totals screenshots visually inspected; totals/document have no horizontal overflow"
+        ],
+        "initialFailuresResolved": [
+          "Test-only React DevTools observer needed renderers Map for Vite Refresh",
+          "Existing result count used invariant Russian plural; now uses existing locale-aware plural selector"
+        ]
+      }
+    },
+    "dictionaryAdded": {
+      "Пока не проверено": "Not yet reviewed",
+      "Полный каталог произведений и готовые аннотации. У каждой карточки указан статус редакционной проверки.": "The complete catalog with available synopses. Each book shows its editorial review status.",
+      "результат": "result",
+      "результата": "results"
+    },
+    "files": [
+      {
+        "path": "src/App.tsx",
+        "sha256": "0fa1023c3783a0c224ed02bde6de2bd40ee3c86daec7e666963496571be8f04d",
+        "sha256Lf": "334ab1dadf4260110db2a76a20ef1c755f95b12ed919d30ca6faf5800df9b3cb"
+      },
+      {
+        "path": "src/components/BookArchiveSection.tsx",
+        "sha256": "149bf0ecc3481edc0a2773cc84a07042345db67d4f4bce318f86c20858b22209",
+        "sha256Lf": "a3b92b4a50c5d18a5df4c59bdf1d543c354c721adc92282b3aa6f81faa47357a"
+      },
+      {
+        "path": "src/components/BookShelfControls.tsx",
+        "sha256": "a9b6bc9fe8f036a0595670fa6de8121f1c167c519075b441e20b6b57a8c30d33",
+        "sha256Lf": "381f233540c8b3bf6419ccde77e0c015d99e345847b8c30244640bf4d1c3d847"
+      },
+      {
+        "path": "src/components/GlobalSearch.tsx",
+        "sha256": "cbca9788f35a3859782c5292c12414170acd34e27ecb2f1359df7142c6af46c8",
+        "sha256Lf": "b22882d67ca1389afa8e2f93adaf0509b2f8aca4427e6c95cf4b127ec80e4993"
+      },
+      {
+        "path": "src/data/bookArchiveQueue.ts",
+        "sha256": "1e907b8e982b8af07ad6c39fa3ac274830b914b1a6425e4ddc3370141c140c89",
+        "sha256Lf": "e2ca36b51d47a325063d7a62bc18b6f3dd4d13090390624c498c2f95206960d2"
+      },
+      {
+        "path": "src/search/globalSearchIndex.ts",
+        "sha256": "9731ab847e545f89ebd27f625135a1b3bc2c2dc004b68632a6e0bd9c9c1a37e1",
+        "sha256Lf": "d8e73f1c4298883140091c82c2c059699e514619e69e43077b90c5d7211f0d89"
+      },
+      {
+        "path": "src/i18n/InterfaceLanguage.tsx",
+        "sha256": "53f0fa5f6c52b1b65563b3ca4bdda729d72a3e83c6a497c20b5cbaaf88d41816",
+        "sha256Lf": "e8319b4b768b814955ad85f3881fa01207bd939a11a411862463c84b295ff21a"
+      },
+      {
+        "path": "src/books/bookEditorialPages.ts",
+        "sha256": "4d902cac90dc850fafe9832d66b09a4ffc94100dcf86aa07c5e57af2b7a54924",
+        "sha256Lf": "e78e746262a11e4d9ed78f2994c069b9df4fb43729b096f39410697c9ed0242a"
+      },
+      {
+        "path": "src/books/bookDossierLegacyAdapter.ts",
+        "sha256": "c86cc87e2f4540fa68923f2d138533fffcf6bea204a1b198f2c027f15f4390f1",
+        "sha256Lf": "0f13e242171c4f50a72d453992e0d1b85ab9cac4c5b6d579b7ad538e1a2537c5"
+      },
+      {
+        "path": "src/data/bookArchiveQueue.test.ts",
+        "sha256": "ddf570b1c90e89ffe5adabe701964aead1b68fea9759cc430f98fac477d83568",
+        "sha256Lf": "e0b7e80fb665db68ef8dc0ff19c1950fa468cbbca6d920a7ae752d3c6f25b829"
+      },
+      {
+        "path": "src/data/bookPublicSurfaceGate.test.ts",
+        "sha256": "deb0bcec05c1204a0db0406762137f5541400346235ab18b239bb6d9b1804ffe",
+        "sha256Lf": "a31b1f47c3832326d63b15389aafae9a31b4ced148fb5290ca86e1f293d834ac"
+      },
+      {
+        "path": "src/search/globalSearchIndex.test.ts",
+        "sha256": "1eb04591a475a38cd474431bfeaa6e29c651faf3a09bcc8c672f8d51c143e251",
+        "sha256Lf": "65b83dff79d903808a9a29eac8601944a0803806ec18deb0b2e047ec3353c8a4"
+      },
+      {
+        "path": "src/books/bookDossier.test.ts",
+        "sha256": "ea81c60145d2e6637881241d5af30083749bfcb7d4a8f95b54e68c20f947e875",
+        "sha256Lf": "d610fa656a5e28171122f633457d90d289dcc627638d65149a21cd0c9c41c704"
+      },
+      {
+        "path": "tests/e2e/archive-search-calendar.spec.mjs",
+        "sha256": "3ee81be040f9cf30d54e05db440b67fe5de7597a67d2c972957d85b07b9f4ffa",
+        "sha256Lf": "6b020aded3f162979239324f8f20cd503f33caca7fb32470376a3c8a883b58e8"
+      },
+      {
+        "path": "src/components/WriterPanel.tsx",
+        "sha256": "0f17fbadadcb8cc71f2b2fe7eff11eedbf86204a5b1fd6899f2c6269e5a64d6d",
+        "sha256Lf": "429bb1ef55f26101e816533713203acc3dfe49370045acfc7cc5d92019701fbf"
+      },
+      {
+        "path": "src/components/countryCatalogCounts.test.tsx",
+        "sha256": "bf6e3c1c14628a75db839c32c57837142453197689aac6a057b3b373b607934f",
+        "sha256Lf": "bf6e3c1c14628a75db839c32c57837142453197689aac6a057b3b373b607934f"
+      },
+      {
+        "path": "src/components/writerPanelAccessibility.test.ts",
+        "sha256": "bc727696e5773e3eda727687578d5a17a53b9a645bb21fa3d0747afcaa32f41d",
+        "sha256Lf": "439743a0e6b575963080802f227ca2ce6bae7ec879f6900b61fec71e74dbacd9"
+      }
+    ],
+    "countryCounterFollowup": {
+      "receipt": ".tmp/country-catalog-count-final-receipt.json",
+      "reviewedAt": "2026-09-12T13:25:00.768Z"
+    }
+  },
+  "countryCatalogCounts": {
+    "schemaVersion": 1,
+    "reviewedAt": "2026-09-12T13:25:00.768Z",
+    "scope": "Country total comes from the same canonical archive as the library, not a subset of checked writer profiles.",
+    "priorAudit": ".tmp/country-catalog-count-consistency.json",
+    "priorMismatchCountries": 191,
+    "priorZeroCountriesWithBooks": 182,
+    "example": {
+      "country": "greece",
+      "before": 0,
+      "after": 23,
+      "reviewed": 0
+    },
+    "loading": "Ellipsis only while loading; unavailable dash; loaded zero is distinct.",
+    "biographyScopeChanged": false,
+    "countryMetricNavigation": "Static as before; no new route or link.",
+    "validation": {
+      "units": {
+        "passed": 14,
+        "files": 2,
+        "log": ".tmp/country-counts-units.log"
+      },
+      "typecheck": {
+        "passed": true,
+        "log": ".tmp/country-counts-tsc.log"
+      },
+      "browser": {
+        "passed": 4,
+        "locales": [
+          "ru",
+          "en"
+        ],
+        "devices": [
+          "desktop-chromium",
+          "mobile-chromium"
+        ],
+        "logs": [
+          ".tmp/country-counts-e2e.log",
+          ".tmp/country-counts-e2e-mobile-final.log"
+        ],
+        "note": "Initial mobile screenshot targeted the default collapsed sheet. Final test expands via the existing public button and checks metric visibility before screenshot.",
+        "overflow": 0
+      }
+    },
+    "files": [
+      {
+        "path": "src/App.tsx",
+        "sha256": "0fa1023c3783a0c224ed02bde6de2bd40ee3c86daec7e666963496571be8f04d",
+        "sha256Lf": "334ab1dadf4260110db2a76a20ef1c755f95b12ed919d30ca6faf5800df9b3cb"
+      },
+      {
+        "path": "src/components/WriterPanel.tsx",
+        "sha256": "0f17fbadadcb8cc71f2b2fe7eff11eedbf86204a5b1fd6899f2c6269e5a64d6d",
+        "sha256Lf": "429bb1ef55f26101e816533713203acc3dfe49370045acfc7cc5d92019701fbf"
+      },
+      {
+        "path": "src/components/countryCatalogCounts.test.tsx",
+        "sha256": "bf6e3c1c14628a75db839c32c57837142453197689aac6a057b3b373b607934f",
+        "sha256Lf": "bf6e3c1c14628a75db839c32c57837142453197689aac6a057b3b373b607934f"
+      },
+      {
+        "path": "src/components/writerPanelAccessibility.test.ts",
+        "sha256": "bc727696e5773e3eda727687578d5a17a53b9a645bb21fa3d0747afcaa32f41d",
+        "sha256Lf": "439743a0e6b575963080802f227ca2ce6bae7ec879f6900b61fec71e74dbacd9"
+      },
+      {
+        "path": "tests/e2e/archive-search-calendar.spec.mjs",
+        "sha256": "3ee81be040f9cf30d54e05db440b67fe5de7597a67d2c972957d85b07b9f4ffa",
+        "sha256Lf": "6b020aded3f162979239324f8f20cd503f33caca7fb32470376a3c8a883b58e8"
+      }
+    ]
+  },
+  "adminCatalogCompatibility": {
+    "sourcePath": "apps/admin/lib/editorial-catalog.ts",
+    "sha256": "940b06f92c33cac9108c19fc36e0d345e695c4685e557b947ee99ef802445d2f",
+    "scope": "Only the exact Stowe and Alcott book identities may omit a biography, and only with the three name/country/language fields. All other 1684 records retain required structured Russian biography; malformed and unknown identities reject.",
+    "rootReportedValidation": {
+      "passedTests": 9,
+      "mutationCases": [
+        "unknown identity",
+        "wrong name",
+        "extra unchecked biography field",
+        "malformed translations"
+      ]
+    },
+    "publicBiographyApprovalGranted": false
+  },
+  "historicalCoverChecks": {
+    "command": "npm run covers:user:check",
+    "status": "PASS",
+    "scope": "All three dated imports use bookArchiveSourceCountries and includeR49nCatalog:false for both cover/no-cover snapshots. Their original 9761/46/9715 invariants and all asset/decision checks remain unchanged.",
+    "checkOnly": true,
+    "sourceArchive": {
+      "canonical": 9761,
+      "reviewed": 46,
+      "pending": 9715
+    },
+    "validation": [
+      "2026-08-11:54 imported,6 existing preserved,2 ambiguous,14 unmatched",
+      "2026-08-13:51 imported,6 existing preserved,33 unmatched,1 rights quarantine",
+      "2026-08-20:43 artworks for41 works,31 primary,12 secondary,17 created works",
+      "148 user covers excluded from generated article recommendations"
+    ],
+    "unchangedFiles": [
+      {
+        "path": "src/data/countries/generated/userSuppliedBookCovers.generated.json",
+        "sha256": "760a49fff4b4152545758ebbc360b90e1fd82739950d606a43289ec26df9a627"
+      },
+      {
+        "path": "src/data/countries/generated/userSuppliedBookCoversBatch20260813.generated.json",
+        "sha256": "39ac684ee6ec504cc717e235e266bac3306aa346ed007a9cd209692962a9ae14"
+      },
+      {
+        "path": "src/data/countries/generated/userSuppliedBookCoversBatch20260820.generated.json",
+        "sha256": "fd8e5811fb6172cf9d8aa732f0aeede06f6ed71a16b05f8759e7badb315cf3ad"
+      },
+      {
+        "path": "reports/user-supplied-book-cover-import-2026-08-11.json",
+        "sha256": "4e7e310a63e9c27fe03e721baed76ace443a97d18a611fc637bc76eea586f2ce"
+      },
+      {
+        "path": "reports/user-supplied-book-cover-import-2026-08-11.md",
+        "sha256": "c26015505f03f68312df1cd6f6b5eff7f444874a77a36c58b4f82e196a01d528"
+      },
+      {
+        "path": "reports/user-supplied-book-cover-import-2026-08-13.json",
+        "sha256": "a2131499a2a71a2c4a8bc95b09115459aef0e29c0275933996b2785112dc00fe"
+      },
+      {
+        "path": "reports/user-supplied-book-cover-import-2026-08-13.md",
+        "sha256": "cacf548f9f525e8f5c4121a94253b2f272bedd5d0a73b8faa157f35d0742511e"
+      },
+      {
+        "path": "reports/user-supplied-book-cover-import-2026-08-20.json",
+        "sha256": "e9fa6c4148f3f77e64f53189b94f56548921e932ce47d77dfa12ea448899a723"
+      },
+      {
+        "path": "reports/user-supplied-book-cover-import-2026-08-20.md",
+        "sha256": "8e70b55084bc512a6ade687baaccc598f8220d55dc8aca40c38f2fd6c197f61f"
+      }
+    ],
+    "coverAssetsChanged": [],
+    "newCoverPublication": false
+  }
+}

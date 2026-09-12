@@ -84,6 +84,9 @@ const manifest = JSON.parse(
 ) as SynopsisManifest;
 const archive = buildBookArchive(bookArchiveCountries, {
   includeUserSuppliedCovers: false,
+  // These assertions pin this batch's original texts and provenance before
+  // separately reviewed R49 profiles and retained pending synopses are applied.
+  includeR49nCatalog: false,
 });
 
 function sha256(value: string | Buffer) {
@@ -446,5 +449,43 @@ describe("project-owned article synopsis batch 01", () => {
       expect(work.translations?.en?.status).toBe("draft");
       expect(isPublicBook(work)).toBe(false);
     }
+  });
+
+  it("keeps the nine retained replacements pending and separates the three later independently reviewed profiles", () => {
+    const current = new Map(buildBookArchive(bookArchiveCountries, {
+      includeUserSuppliedCovers: false,
+    }).map((work) => [bookArchiveKey(work.countryId, work.writerId, work.id), work]));
+    const separatelyReviewed = new Set([
+      "russia:buninin:the-village",
+      "russia:turgenev:article-series-men9bv",
+      "russia:tolstoy:article-series-zqpjjm",
+    ]);
+    let retainedCount = 0;
+    for (const record of bookArticleSynopsisBatch01Records) {
+      const key = record.identity.recordKey;
+      const work = current.get(key)!;
+      expect(work, key).toBeDefined();
+      expect(work.title, key).toBe(record.identity.expectedTitle);
+      if (separatelyReviewed.has(key)) {
+        expect(isPublicBook(work), key).toBe(true);
+        expect(work.editorial?.status, key).toBe("reviewed");
+        continue;
+      }
+      retainedCount += 1;
+      expect(work.editorial?.status, key).toBe("draft");
+      expect(isPublicBook(work), key).toBe(false);
+      for (const locale of ["ru", "en"] as const) {
+        const translation = work.translations?.[locale];
+        expect(translation, `${key}:${locale}`).toMatchObject({
+          status: "draft",
+          sourceLanguage: locale,
+          method: "editorial-original",
+          retainedCatalogSource: "R49N-20260912",
+        });
+        expect(translation?.descriptionProvenance, `${key}:${locale}`).toBeUndefined();
+        expect(translation?.reviewedAt, `${key}:${locale}`).toBeUndefined();
+      }
+    }
+    expect(retainedCount).toBe(9);
   });
 });

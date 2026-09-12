@@ -4,7 +4,7 @@ import {
 } from "./bookArchive";
 import { selectBookText } from "./bookLocalization";
 import { isPublicBook } from "./bookQuality";
-import type { WorkLocale } from "./countries/types";
+import type { WorkLocale, WorkTranslationProfile } from "./countries/types";
 
 export type BookArchiveQueueStatus = "verified" | "pending";
 
@@ -34,7 +34,7 @@ export type BookArchiveQueuePresentation = {
     | "candidate-translation"
     | "canonical-title"
     | "placeholder";
-  descriptionSource: "verified-translation" | "empty";
+  descriptionSource: "verified-translation" | "candidate-translation" | "empty";
 };
 
 export type BookVerificationPredicate = (book: BookArchiveEntry) => boolean;
@@ -42,12 +42,12 @@ export type BookVerificationPredicate = (book: BookArchiveEntry) => boolean;
 const queueCopy = {
   ru: {
     verified: "Проверено редакцией",
-    pending: "Не проверено",
+    pending: "Пока не проверено",
     untitled: "Название уточняется",
   },
   en: {
     verified: "Editorially verified",
-    pending: "Not verified",
+    pending: "Not yet reviewed",
     untitled: "Title pending review",
   },
 } as const;
@@ -76,8 +76,8 @@ function compareQueueItems(
 }
 
 /**
- * Splits the complete canonical archive into the visitor-ready verified set
- * and the editorial queue. Stable archive keys keep the country/writer/work
+ * Labels the complete visible canonical archive by editorial verification.
+ * Stable archive keys keep the country/writer/work
  * relation intact and make a later promotion a move, never a copy.
  */
 export function classifyBookArchiveQueue(
@@ -110,21 +110,20 @@ export function classifyBookArchiveQueue(
 }
 
 /**
- * Only a book that passed the shared publication gate may expose its title or
- * localized editorial description. Pending records receive a neutral label so
- * draft bibliographic claims cannot leak through visitor-facing queue views.
+ * Catalog visibility is independent of editorial verification. Present only
+ * the public title and requested-locale synopsis fields; private editorial
+ * notes and evidence-review payloads never become visitor copy.
  */
 export function presentBookArchiveQueueItem(
   item: BookArchiveQueueItem,
   locale: WorkLocale
 ): BookArchiveQueuePresentation {
   const copy = queueCopy[locale];
+  const verified = item.status === "verified";
   const localized = selectBookText(item.book, locale);
-  const localizedTitle =
-    item.status === "verified" ? localized.title.trim() : "";
+  const localizedTitle = localized.title.trim();
   const canonicalTitle =
-    item.status === "verified"
-      ? locale === "en"
+    locale === "en"
         ? [
             item.book.originalTitle,
             item.book.title,
@@ -135,27 +134,31 @@ export function presentBookArchiveQueueItem(
               (title) =>
                 /\p{Script=Latin}/u.test(title) &&
                 !/\p{Script=Cyrillic}/u.test(title)
-            ) || ""
-        : item.book.title.trim()
+            ) || item.book.originalTitle?.trim() || item.book.title.trim()
+        : item.book.title.trim();
+  const translation = item.book.translations?.[locale] as
+    | (WorkTranslationProfile & { retainedCatalogSource?: string })
+    | undefined;
+  const description =
+    verified || translation?.retainedCatalogSource === "R49N-20260912"
+      ? localized.description.trim()
       : "";
-  const verifiedDescription =
-    item.status === "verified" ? localized.description.trim() : "";
 
   const title = localizedTitle || canonicalTitle || copy.untitled;
   const titleSource = localizedTitle
-    ? "verified-translation"
+    ? verified ? "verified-translation" : "candidate-translation"
     : canonicalTitle
       ? "canonical-title"
       : "placeholder";
 
   return {
     title,
-    description: verifiedDescription,
+    description,
     statusLabel:
-      item.status === "verified" ? copy.verified : copy.pending,
+      verified ? copy.verified : copy.pending,
     titleSource,
-    descriptionSource: verifiedDescription
-      ? "verified-translation"
+    descriptionSource: description
+      ? verified ? "verified-translation" : "candidate-translation"
       : "empty",
   };
 }

@@ -15,7 +15,7 @@ describe("book archive editorial queue", () => {
     const queue = classifyBookArchiveQueue(canonicalArchive);
     const keys = queue.all.map((item) => item.key);
 
-    expect(queue.counts).toEqual({ total: 9_761, verified: 56, pending: 9_705 });
+    expect(queue.counts).toEqual({ total: 9_763, verified: 69, pending: 9_694 });
     expect(queue.counts.total).toBe(canonicalArchive.length);
     expect(queue.counts.verified + queue.counts.pending).toBe(
       queue.counts.total
@@ -46,12 +46,12 @@ describe("book archive editorial queue", () => {
     expect(after.verified.some(({ key }) => key === promotedKey)).toBe(true);
   });
 
-  it("never presents an unverified title or description as editorial copy", () => {
-    const pendingBook = canonicalArchive.find(
+  it("shows pending catalog names without substituting private notes or generic descriptions", () => {
+    const source = canonicalArchive.find(
       (book) => !isPublicBook(book) && Boolean(book.description?.trim())
     );
-
-    expect(pendingBook).toBeDefined();
+    expect(source).toBeDefined();
+    const pendingBook = { ...source!, translations: undefined };
 
     const queue = classifyBookArchiveQueue([pendingBook!]);
     const ru = presentBookArchiveQueueItem(queue.pending[0], "ru");
@@ -63,15 +63,15 @@ describe("book archive editorial queue", () => {
     expect(en.description).toBe("");
     expect(ru.descriptionSource).toBe("empty");
     expect(en.descriptionSource).toBe("empty");
-    expect(ru.title).toBe("Название уточняется");
-    expect(en.title).toBe("Title pending review");
-    expect(ru.titleSource).toBe("placeholder");
-    expect(en.titleSource).toBe("placeholder");
-    expect(ru.statusLabel).toBe("Не проверено");
-    expect(en.statusLabel).toBe("Not verified");
+    expect(ru.title).toBe(pendingBook!.title);
+    expect(en.title).toBeTruthy();
+    expect(ru.titleSource).toBe("canonical-title");
+    expect(en.titleSource).toBe("canonical-title");
+    expect(ru.statusLabel).toBe("Пока не проверено");
+    expect(en.statusLabel).toBe("Not yet reviewed");
   });
 
-  it("does not expose an unverified Cyrillic title as an English localization", () => {
+  it("preserves an original-script catalog name without inventing an English title or synopsis", () => {
     const source = canonicalArchive[0];
     const pending = {
       ...source,
@@ -84,8 +84,31 @@ describe("book archive editorial queue", () => {
     const queue = classifyBookArchiveQueue([pending], () => false);
     const english = presentBookArchiveQueueItem(queue.pending[0], "en");
 
-    expect(english.title).toBe("Title pending review");
-    expect(english.title).not.toMatch(/\p{Script=Cyrillic}/u);
+    expect(english.title).toBe("Название без проверенного перевода");
+    expect(english.titleSource).toBe("canonical-title");
+    expect(english.description).toBe("");
+    expect(english.statusLabel).toBe("Not yet reviewed");
+  });
+
+  it("publishes explicitly retained RU/EN synopsis candidates with their pending status and keeps private notes out", () => {
+    const source = canonicalArchive[0];
+    const translations = {
+      ru: { locale: "ru" as const, title: "Сохранённая книга", description: "Готовая русская аннотация.", sourceLanguage: "ru", status: "draft" as const, method: "editorial-original" as const, sourceUrls: ["https://example.org/ru"], retainedCatalogSource: "R49N-20260912" },
+      en: { locale: "en" as const, title: "Retained Book", description: "The retained English synopsis.", sourceLanguage: "en", status: "draft" as const, method: "editorial-original" as const, sourceUrls: ["https://example.org/en"], retainedCatalogSource: "R49N-20260912" },
+    };
+    const book = { ...source, translations, description: "PRIVATE top-level fallback", editorial: { status: "draft" as const, notes: "PRIVATE editorial decision" } };
+    const item = classifyBookArchiveQueue([book], () => false).pending[0];
+    for (const locale of ["ru", "en"] as const) {
+      const shown = presentBookArchiveQueueItem(item, locale);
+      expect(shown.title).toBe(translations[locale].title);
+      expect(shown.description).toBe(translations[locale].description);
+      expect(shown.descriptionSource).toBe("candidate-translation");
+      expect(shown.statusLabel).toBe(locale === "ru" ? "Пока не проверено" : "Not yet reviewed");
+      expect(JSON.stringify(shown)).not.toContain("PRIVATE");
+    }
+    const unsigned = { ...book, translations: { ...translations, ru: { ...translations.ru, retainedCatalogSource: undefined } } };
+    expect(presentBookArchiveQueueItem(classifyBookArchiveQueue([unsigned], () => false).pending[0], "ru").description).toBe("");
+    expect(isPublicBook(book)).toBe(false);
   });
 
   it("keeps a nominally verified record pending when it fails the public gate", () => {

@@ -38,6 +38,8 @@ import { applyBookEvidenceV2PublicQuarantine01Work } from "./countries/bookEvide
 import { applyBookEvidenceV2ExpansionBatch01Work } from "./countries/bookEvidenceV2ExpansionBatch01";
 import { applyBookEvidenceV2LegacyVerifiedReaudit01Work } from "./countries/bookEvidenceV2LegacyVerifiedReaudit01";
 import { applyBookR49nDickensReviewed20260912Work } from "./countries/bookR49nDickensReviewed20260912";
+import { applyBookR49nExistingReviewed20260912Work } from "./countries/bookR49nExistingReviewed20260912";
+import { applyBookR49nRetainedDrafts20260912Work } from "./countries/bookR49nRetainedDrafts20260912";
 
 export type BookArchiveEntry = WorkProfile & {
   countryId: string;
@@ -172,6 +174,8 @@ function legacyWorkId(writerId: string, title: string, index: number) {
 
 export type BuildBookArchiveOptions = {
   includeReviewedGenerated?: boolean;
+  /** Keep enrichment classification independent of the later R49N catalogue. */
+  includeR49nCatalog?: boolean;
   applyEnrichmentActions?: boolean;
   includeUserSuppliedCovers?: boolean;
   writerProfileOverrides?: Record<string, CmsWriterProfileOverride>;
@@ -615,6 +619,7 @@ export function buildBookArchive(
   options: BuildBookArchiveOptions = {}
 ): BookArchiveEntry[] {
   const includeReviewedGenerated = options.includeReviewedGenerated !== false;
+  const includeR49nCatalog = options.includeR49nCatalog !== false;
   const shouldApplyEnrichmentActions = options.applyEnrichmentActions !== false;
   const includeUserSuppliedCovers = options.includeUserSuppliedCovers !== false;
   const writerProfileOverrides =
@@ -712,12 +717,22 @@ export function buildBookArchive(
           writer.id,
           expandedWork
         );
+        const recoveredWork = applyBookR49nExistingReviewed20260912Work(
+          country.id,
+          writer.id,
+          reviewedWork
+        );
+        const retainedDraftWork = applyBookR49nRetainedDrafts20260912Work(
+          country.id,
+          writer.id,
+          recoveredWork
+        );
         // Final publication guard: keep this after every public/expansion
         // overlay so a later enrichment cannot re-promote a held legacy card.
         const work = applyBookEvidenceV2LegacyVerifiedReaudit01Work(
           country.id,
           writer.id,
-          reviewedWork
+          includeR49nCatalog ? retainedDraftWork : expandedWork
         );
         const workId = `${country.id}:${writer.id}:${work.id}`;
         const edition = (

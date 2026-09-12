@@ -15,6 +15,11 @@ import {
   reviewedR49nDickensAdditionPaths,
 } from "./reviewed-r49n-dickens.mjs";
 import {
+  isReviewedR49nPackageAddition,
+  projectReviewedR49nPackage,
+  reviewedR49nPackageAdditionPaths,
+} from "./reviewed-r49n-package.mjs";
+import {
   adminArticlePublicationPermissionsAttestation,
   bookDatabaseEditorialOwnerAttestation,
   currentIntegrationGovernanceFingerprintRegistry,
@@ -38,7 +43,8 @@ function readGovernanceSource(absolutePath, encoding) {
   return projectReviewedHeaderLibrary(
     relativePath,
     projectReviewedR49nDickens(relativePath,
-      projectReviewedDependencySecurity(relativePath, readFileSync(absolutePath, encoding)))
+      projectReviewedR49nPackage(relativePath,
+        projectReviewedDependencySecurity(relativePath, readFileSync(absolutePath, encoding))))
   );
 }
 
@@ -236,6 +242,10 @@ function fingerprint(paths, include) {
         .filter((absolutePath) => {
           const relativePath = repositoryPath(absolutePath);
           if (!include(relativePath)) return false;
+          if (reviewedR49nPackageAdditionPaths.has(relativePath) &&
+            isReviewedR49nPackageAddition(relativePath, readFileSync(absolutePath, "utf8"))) {
+            return false;
+          }
           return !reviewedR49nDickensAdditionPaths.has(relativePath) ||
             !isReviewedR49nDickensAddition(relativePath, readFileSync(absolutePath, "utf8"));
         })

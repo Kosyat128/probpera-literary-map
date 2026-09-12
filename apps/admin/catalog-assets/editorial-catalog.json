@@ -117861,6 +117861,24 @@
               "Охота за «Красным Октябрём»"
             ]
           }
+        },
+        {
+          "id": "harriet_beecher_stowe",
+          "label": "Гарриет Бичер-Стоу",
+          "fields": {
+            "name": "Гарриет Бичер-Стоу",
+            "country": "usa",
+            "language": "английский"
+          }
+        },
+        {
+          "id": "louisa_may_alcott",
+          "label": "Луиза Мэй Олкотт",
+          "fields": {
+            "name": "Луиза Мэй Олкотт",
+            "country": "usa",
+            "language": "английский"
+          }
         }
       ]
     },
