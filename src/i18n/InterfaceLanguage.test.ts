@@ -61,8 +61,8 @@ describe("interface language", () => {
       "Literary Planet"
     );
     expect(translateInterfaceText("Статьи", "en")).toBe("Articles");
-    expect(translateInterfaceText("Книжный архив", "en")).toBe(
-      "Book archive"
+    expect(translateInterfaceText("Библиотека «Проба Пера»", "en")).toBe(
+      "Proba Pera Library"
     );
   });
 

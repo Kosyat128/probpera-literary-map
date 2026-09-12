@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 
 import { cmsSiteContent } from "./site.generated";
+import { coreSectionTitle } from "./coreSectionTitle";
 import { cmsHomepageVisualCssProperties } from "./homepageVisualSettings";
 import { mediaFocusPosition } from "../../utils/mediaFocus";
 
@@ -78,7 +79,7 @@ export function getCoreHomepageSection(
     if (settings.coreSectionKey !== key) continue;
     return {
       key,
-      title: textValue(block.title),
+      title: coreSectionTitle(key, block.title),
       eyebrow: textValue(settings.eyebrow),
       description:
         textValue(settings.description) || textValue(settings.copy),

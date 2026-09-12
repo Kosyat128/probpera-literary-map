@@ -16,7 +16,7 @@ export default async function BookDossiersPage({ searchParams }: { searchParams:
   const requested = supabase && query.book ? await supabase.from("book_dossiers").select("book_key,locale,record").eq("book_key", query.book).eq("locale", query.locale || "ru").maybeSingle() : null;
   const selected = requested?.data;
   return <>
-    <header className="page-heading"><div><span className="eyebrow">Книжный архив</span><h1>Редакционные досье</h1>
+    <header className="page-heading"><div><span className="eyebrow">Библиотека «Проба Пера»</span><h1>Редакционные досье</h1>
       <p>Конечные разделы для чтения на сайте и в 3D. Факты, права, перевод и качество подтверждаются отдельно. Полные тексты, цитаты и сторонние изображения здесь не публикуются.</p>
       <Link href="/library">К произведениям и изданиям</Link></div></header>
     {!result || result.error ? <p role="alert" className="form-message">Хранилище досье пока недоступно. Для этого раздела требуется миграция book_dossiers_v2; существующий каталог продолжает работать.</p> : <>

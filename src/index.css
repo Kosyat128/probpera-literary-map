@@ -13646,7 +13646,7 @@ html[data-theme="book"] .calendar-heading h3 {
   font-size: var(--type-caption);
 }
 
-/* Keep fallback-font navigation clear before restoring the full action group. */
+/* Compact the search label while preserving access to every header action. */
 @media (max-width: 1600px) {
   .global-search-trigger {
     width: 38px;
@@ -13656,10 +13656,6 @@ html[data-theme="book"] .calendar-heading h3 {
 
   .global-search-trigger small,
   .global-search-trigger kbd {
-    display: none;
-  }
-
-  .header-actions .header-socials {
     display: none;
   }
 }
@@ -19972,7 +19968,7 @@ html[data-theme="book"] .calendar-heading h3 {
   }
 
   .atlas-experience-surface[data-atlas-view="embedded"] .atlas-country-presentation {
-    top: 56px;
+    top: 16px;
   }
 
   .atlas-experience-surface[data-atlas-view="embedded"] .atlas-filters {
@@ -21940,7 +21936,7 @@ html[data-theme="book"] .calendar-heading h3 {
   gap: 8px;
   align-items: center;
   overflow: hidden;
-  transform: translateY(2px);
+  transform: none;
 }
 
 .country-panel .panel-topline .eyebrow {
@@ -22699,21 +22695,89 @@ html[data-theme="book"] .calendar-heading h3 {
   pointer-events: none;
 }
 
-/* Country cards: an opaque sticky masthead, explicit action affordances, and
+/* Country cards: an integrated sticky masthead, explicit action affordances, and
    compact mobile tabs that never sacrifice the complete label. */
 .country-panel {
+  padding-top: 0;
   scroll-padding-top: 72px;
 }
 
 .country-panel .panel-topline {
   top: 0;
+  min-height: 64px;
+  margin-inline: -27px;
+  padding: 8px 27px;
   background:
     linear-gradient(90deg, #fffdf8, #faf2e7);
+  border-width: 0 0 1px;
+  border-radius: 0;
+  box-shadow: none;
   backdrop-filter: none;
+}
+
+@media (max-width: 680px) {
+  .country-panel .panel-topline {
+    margin-inline: -17px;
+    padding-inline: 17px;
+  }
 }
 
 .country-metrics > .country-metric {
   position: relative;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  align-content: center;
+  justify-items: center;
+  row-gap: 4px;
+  padding-block: 12px;
+  text-align: center;
+}
+
+.country-metrics > .country-metric > :is(strong, span) {
+  align-self: center;
+  margin: 0;
+  text-align: center;
+}
+
+.country-metrics > .country-metric > span {
+  max-width: 100%;
+}
+
+.country-metrics > .country-metric.is-active > span::after {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  margin: 0;
+}
+
+@media (min-width: 361px) and (max-width: 420px) {
+  .country-metrics {
+    gap: 6px;
+  }
+
+  .country-metrics > .country-metric {
+    padding-inline: 2px;
+  }
+
+  .country-metrics > .country-metric > span {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 361px) and (max-width: 374px) {
+  .country-metrics {
+    gap: 4px;
+  }
+
+  .country-metrics > .country-metric {
+    padding-inline: 0;
+  }
+}
+
+@media (max-width: 360px) {
+  .country-metrics > .country-metric {
+    grid-template-rows: auto auto;
+  }
 }
 
 .country-metrics > .country-metric--static {

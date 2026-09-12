@@ -18,6 +18,9 @@
 
   .articles-mega-menu {
     width: min(880px, calc(100vw - 36px));
+    grid-template-rows: max-content max-content max-content;
+    max-height: none;
+    overflow: hidden;
   }
 
   .sections-mega-menu > header,
@@ -41,9 +44,7 @@
     gap: 8px;
   }
 
-  .sections-mega-menu .sections-mega-groups,
-  .articles-mega-menu .articles-mega-content,
-  .articles-mega-menu .articles-mega-loading {
+  .sections-mega-menu .sections-mega-groups {
     min-width: 0;
     min-height: 0;
     overflow-y: auto;
@@ -86,14 +87,30 @@
   }
 
   .articles-mega-menu .articles-mega-content {
-    grid-template-columns: minmax(0, 1.05fr) minmax(330px, 0.95fr);
+    grid-template-columns: minmax(0, 0.36fr) minmax(0, 0.64fr);
+    min-width: 0;
+    min-height: 0;
+    overflow: visible;
   }
 
   .articles-mega-menu .articles-mega-lead {
+    grid-template-rows: auto 1fr;
     min-width: 0;
+    min-height: 0;
+  }
+
+  .articles-mega-menu .articles-mega-lead-media {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    opacity: 1;
+  }
+
+  .articles-mega-menu .articles-mega-lead::after {
+    display: none;
   }
 
   .articles-mega-menu .articles-mega-lead-media > img {
+    position: absolute;
     object-fit: cover;
     object-position: center;
   }
@@ -103,9 +120,10 @@
   }
 
   .articles-mega-menu .articles-mega-lead > div {
+    align-content: start;
     gap: 8px;
     min-width: 0;
-    padding: 24px;
+    padding: 16px;
   }
 
   .articles-mega-menu .articles-mega-lead strong,
@@ -118,6 +136,7 @@
     grid-auto-rows: auto;
     align-content: stretch;
     min-width: 0;
+    overflow: visible;
   }
 
   .articles-mega-menu .articles-mega-content > section a {
@@ -126,7 +145,7 @@
     gap: 6px;
     align-items: start;
     min-height: 44px;
-    padding: 16px;
+    padding: 14px;
   }
 
   .articles-mega-menu .articles-mega-content > section:empty {
@@ -135,6 +154,44 @@
 
   .articles-mega-menu .articles-mega-content:has(> section:empty) {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .articles-mega-menu .articles-mega-content:has(> section:empty) .articles-mega-lead {
+    grid-template-columns: minmax(0, 0.36fr) minmax(0, 0.64fr);
+    grid-template-rows: auto;
+  }
+
+  .articles-mega-menu .articles-mega-content:has(> section:empty) .articles-mega-lead-media {
+    align-self: start;
+  }
+
+  /* Short displays show fewer complete previews with the full archive below. */
+  @media (max-height: 740px) {
+    .articles-mega-menu > header {
+      padding-block: 12px;
+    }
+
+    .articles-mega-menu .articles-mega-lead-media {
+      height: 96px;
+      aspect-ratio: auto;
+    }
+
+    .articles-mega-menu .articles-mega-lead > div {
+      gap: 6px;
+      padding: 12px;
+    }
+
+    .articles-mega-menu .articles-mega-content > section a {
+      padding: 12px;
+    }
+
+    .articles-mega-menu .articles-mega-content > section a:nth-child(n + 5) {
+      display: none;
+    }
+
+    .articles-mega-menu > footer {
+      padding-block: 2px;
+    }
   }
 
   .sections-mega-menu > footer,

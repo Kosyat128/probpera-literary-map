@@ -29,7 +29,7 @@ import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { saveBookEditionAction, updateBookEditionAction } from "./actions";
 import { saveVisualEntityFieldFormAction } from "../visual-entity-actions";
 
-export const metadata = { title: "Книжный архив" };
+export const metadata = { title: "Библиотека «Проба Пера»" };
 
 type LibrarySearchParams = {
   isbn?: string;
@@ -509,7 +509,7 @@ export default async function LibraryPage({
       <header className="page-heading">
         <div>
           <span className="eyebrow">Произведение → иллюстрация / точное издание → обложка</span>
-          <h1>Книжный архив</h1>
+          <h1>Библиотека «Проба Пера»</h1>
           <Link href="/library/dossiers">Редакционные досье книг</Link>
           <p>
             Обложка издания всегда привязана к точному ISBN, источнику и правам.

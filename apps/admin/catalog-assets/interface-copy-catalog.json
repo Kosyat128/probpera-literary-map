@@ -376,14 +376,6 @@
     "multiline": false
   },
   {
-    "key": "interface.Авторский архив · 167 материалов",
-    "group": "Весь интерфейс",
-    "label": "Авторский архив · 167 материалов",
-    "defaultRu": "Авторский архив · 167 материалов",
-    "defaultEn": "Editorial archive · 167 publications",
-    "multiline": false
-  },
-  {
     "key": "interface.Авторский архив временно недоступен",
     "group": "Весь интерфейс",
     "label": "Авторский архив временно недоступен",
@@ -757,6 +749,30 @@
     "label": "Бестселлеры XXI века",
     "defaultRu": "Бестселлеры XXI века",
     "defaultEn": "21st-century bestsellers",
+    "multiline": false
+  },
+  {
+    "key": "interface.Библиотека «Проба Пера»",
+    "group": "Весь интерфейс",
+    "label": "Библиотека «Проба Пера»",
+    "defaultRu": "Библиотека «Проба Пера»",
+    "defaultEn": "Proba Pera Library",
+    "multiline": false
+  },
+  {
+    "key": "interface.Библиотека временно недоступна",
+    "group": "Весь интерфейс",
+    "label": "Библиотека временно недоступна",
+    "defaultRu": "Библиотека временно недоступна",
+    "defaultEn": "The library is temporarily unavailable",
+    "multiline": false
+  },
+  {
+    "key": "interface.Библиотека загрузится при приближении",
+    "group": "Весь интерфейс",
+    "label": "Библиотека загрузится при приближении",
+    "defaultRu": "Библиотека загрузится при приближении",
+    "defaultEn": "The library will load as you approach",
     "multiline": false
   },
   {
@@ -1224,14 +1240,6 @@
     "multiline": false
   },
   {
-    "key": "interface.Весь книжный архив",
-    "group": "Весь интерфейс",
-    "label": "Весь книжный архив",
-    "defaultRu": "Весь книжный архив",
-    "defaultEn": "Complete book archive",
-    "multiline": false
-  },
-  {
     "key": "interface.Взрослые",
     "group": "Весь интерфейс",
     "label": "Взрослые",
@@ -1485,6 +1493,14 @@
     "label": "Вступить в литературный клуб",
     "defaultRu": "Вступить в литературный клуб",
     "defaultEn": "Join the literary club",
+    "multiline": false
+  },
+  {
+    "key": "interface.Вся библиотека",
+    "group": "Весь интерфейс",
+    "label": "Вся библиотека",
+    "defaultRu": "Вся библиотека",
+    "defaultEn": "Entire library",
     "multiline": false
   },
   {
@@ -2333,6 +2349,14 @@
     "label": "Заголовок будущей публикации",
     "defaultRu": "Заголовок будущей публикации",
     "defaultEn": "Future publication title",
+    "multiline": false
+  },
+  {
+    "key": "interface.Загружаем библиотеку…",
+    "group": "Весь интерфейс",
+    "label": "Загружаем библиотеку…",
+    "defaultRu": "Загружаем библиотеку…",
+    "defaultEn": "Loading the library…",
     "multiline": false
   },
   {
@@ -3621,30 +3645,6 @@
     "label": "Книги, от которых не оторваться",
     "defaultRu": "Книги, от которых не оторваться",
     "defaultEn": "Unputdownable books",
-    "multiline": false
-  },
-  {
-    "key": "interface.Книжный архив",
-    "group": "Весь интерфейс",
-    "label": "Книжный архив",
-    "defaultRu": "Книжный архив",
-    "defaultEn": "Book archive",
-    "multiline": false
-  },
-  {
-    "key": "interface.Книжный архив временно недоступен",
-    "group": "Весь интерфейс",
-    "label": "Книжный архив временно недоступен",
-    "defaultRu": "Книжный архив временно недоступен",
-    "defaultEn": "The book archive is temporarily unavailable",
-    "multiline": false
-  },
-  {
-    "key": "interface.Книжный архив загрузится при приближении",
-    "group": "Весь интерфейс",
-    "label": "Книжный архив загрузится при приближении",
-    "defaultRu": "Книжный архив загрузится при приближении",
-    "defaultEn": "The book archive will load as you approach",
     "multiline": false
   },
   {
@@ -7000,11 +7000,11 @@
     "multiline": false
   },
   {
-    "key": "interface.Подсказки всего книжного архива",
+    "key": "interface.Подсказки всей библиотеки",
     "group": "Весь интерфейс",
-    "label": "Подсказки всего книжного архива",
-    "defaultRu": "Подсказки всего книжного архива",
-    "defaultEn": "Complete book archive suggestions",
+    "label": "Подсказки всей библиотеки",
+    "defaultRu": "Подсказки всей библиотеки",
+    "defaultEn": "Suggestions from the entire library",
     "multiline": false
   },
   {
@@ -7165,6 +7165,14 @@
     "label": "Показать всех нобелевских лауреатов этой страны на глобусе",
     "defaultRu": "Показать всех нобелевских лауреатов этой страны на глобусе",
     "defaultEn": "Show all of this country’s Nobel laureates on the globe",
+    "multiline": false
+  },
+  {
+    "key": "interface.Показать ещё",
+    "group": "Весь интерфейс",
+    "label": "Показать ещё",
+    "defaultRu": "Показать ещё",
+    "defaultEn": "Show more",
     "multiline": false
   },
   {
@@ -8176,11 +8184,11 @@
     "multiline": false
   },
   {
-    "key": "interface.Расширенные фильтры книжного архива",
+    "key": "interface.Расширенные фильтры библиотеки",
     "group": "Весь интерфейс",
-    "label": "Расширенные фильтры книжного архива",
-    "defaultRu": "Расширенные фильтры книжного архива",
-    "defaultEn": "Advanced book archive filters",
+    "label": "Расширенные фильтры библиотеки",
+    "defaultRu": "Расширенные фильтры библиотеки",
+    "defaultEn": "Advanced library filters",
     "multiline": false
   },
   {
@@ -8496,19 +8504,19 @@
     "multiline": false
   },
   {
+    "key": "interface.Результаты поиска по всей библиотеке",
+    "group": "Весь интерфейс",
+    "label": "Результаты поиска по всей библиотеке",
+    "defaultRu": "Результаты поиска по всей библиотеке",
+    "defaultEn": "Search results across the entire library",
+    "multiline": false
+  },
+  {
     "key": "interface.Результаты поиска по всему журналу",
     "group": "Весь интерфейс",
     "label": "Результаты поиска по всему журналу",
     "defaultRu": "Результаты поиска по всему журналу",
     "defaultEn": "Journal-wide search results",
-    "multiline": false
-  },
-  {
-    "key": "interface.Результаты поиска по всему книжному архиву",
-    "group": "Весь интерфейс",
-    "label": "Результаты поиска по всему книжному архиву",
-    "defaultRu": "Результаты поиска по всему книжному архиву",
-    "defaultEn": "Complete book archive search results",
     "multiline": false
   },
   {
@@ -9309,14 +9317,6 @@
     "label": "Собираем каталог разделов…",
     "defaultRu": "Собираем каталог разделов…",
     "defaultEn": "Building the section directory…",
-    "multiline": false
-  },
-  {
-    "key": "interface.Собираем книжный архив…",
-    "group": "Весь интерфейс",
-    "label": "Собираем книжный архив…",
-    "defaultRu": "Собираем книжный архив…",
-    "defaultEn": "Building the book archive…",
     "multiline": false
   },
   {
@@ -10816,19 +10816,19 @@
     "multiline": false
   },
   {
+    "key": "interface.Фильтры библиотеки",
+    "group": "Весь интерфейс",
+    "label": "Фильтры библиотеки",
+    "defaultRu": "Фильтры библиотеки",
+    "defaultEn": "Library filters",
+    "multiline": false
+  },
+  {
     "key": "interface.Фильтры глобуса",
     "group": "Весь интерфейс",
     "label": "Фильтры глобуса",
     "defaultRu": "Фильтры глобуса",
     "defaultEn": "Globe filters",
-    "multiline": false
-  },
-  {
-    "key": "interface.Фильтры книжного архива",
-    "group": "Весь интерфейс",
-    "label": "Фильтры книжного архива",
-    "defaultRu": "Фильтры книжного архива",
-    "defaultEn": "Book archive filters",
     "multiline": false
   },
   {
