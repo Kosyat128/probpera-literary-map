@@ -125,7 +125,7 @@ describe("редакционная серия книжного архива", ()
     expect(rawArchive).toHaveLength(10_057);
     expect(archive).toHaveLength(9_761);
     expect(rawArchive.length - archive.length).toBe(296);
-    expect(archive.filter(isPublicBook)).toHaveLength(46);
+    expect(archive.filter(isPublicBook)).toHaveLength(56);
   });
 
   it("applies reviewed identity resolutions without promoting held dates", () => {

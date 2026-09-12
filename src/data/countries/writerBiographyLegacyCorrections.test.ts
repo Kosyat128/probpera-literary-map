@@ -829,8 +829,8 @@ describe("legacy writer biography curation", () => {
     );
 
     expect(archive).toHaveLength(9_761);
-    expect(publicArchive).toHaveLength(46);
-    expect(archive.filter((book) => !isPublicBook(book))).toHaveLength(9_715);
+    expect(publicArchive).toHaveLength(56);
+    expect(archive.filter((book) => !isPublicBook(book))).toHaveLength(9_705);
     const bremerBooks = archive
       .filter(
         (book) =>

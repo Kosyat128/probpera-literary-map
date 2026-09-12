@@ -143,7 +143,7 @@ test("архив и изображения сохраняют desktop-сетку
   await expect(cover).toHaveCSS("object-fit", "contain");
 });
 
-test("архив публикует 46 проверенных книг и не раскрывает редакционную очередь", async ({
+test("архив публикует 56 проверенных книг и не раскрывает редакционную очередь", async ({
   page,
   isMobile,
 }) => {
@@ -151,7 +151,7 @@ test("архив публикует 46 проверенных книг и не �
   await openBookCatalog(page);
   const resultCount = page.locator(".book-filter-panel > span");
 
-  await expect(resultCount).toHaveText(/^46\s+результатов$/u, {
+  await expect(resultCount).toHaveText(/^56\s+результатов$/u, {
     timeout: 40_000,
   });
   const filterDialog = await openArchiveFilters(page);
@@ -167,7 +167,7 @@ test("архив публикует 46 проверенных книг и не �
   );
 
   await selectVerifiedBooks(page);
-  await expect(resultCount).toHaveText(/^46\s+результатов$/u);
+  await expect(resultCount).toHaveText(/^56\s+результатов$/u);
   await expect(page.locator(".archive-book-card .editorial-state").first()).toHaveText(
     "проверено"
   );

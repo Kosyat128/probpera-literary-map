@@ -10,6 +10,11 @@ import { projectReviewedReadingDesign, readingDesignAttestation } from "./review
 import { projectReviewedHeaderLibrary } from "./reviewed-header-library.mjs";
 import { projectReviewedDependencySecurity } from "./reviewed-dependency-security.mjs";
 import {
+  isReviewedR49nDickensAddition,
+  projectReviewedR49nDickens,
+  reviewedR49nDickensAdditionPaths,
+} from "./reviewed-r49n-dickens.mjs";
+import {
   adminArticlePublicationPermissionsAttestation,
   bookDatabaseEditorialOwnerAttestation,
   currentIntegrationGovernanceFingerprintRegistry,
@@ -32,7 +37,8 @@ function readGovernanceSource(absolutePath, encoding) {
   const relativePath = path.relative(root, absolutePath).replaceAll("\\", "/");
   return projectReviewedHeaderLibrary(
     relativePath,
-    projectReviewedDependencySecurity(relativePath, readFileSync(absolutePath, encoding))
+    projectReviewedR49nDickens(relativePath,
+      projectReviewedDependencySecurity(relativePath, readFileSync(absolutePath, encoding)))
   );
 }
 
@@ -227,9 +233,12 @@ function fingerprint(paths, include) {
     ...new Set(
       paths
         .flatMap((entry) => walk(path.join(root, entry)))
-        .filter((absolutePath) =>
-          include(repositoryPath(absolutePath))
-        )
+        .filter((absolutePath) => {
+          const relativePath = repositoryPath(absolutePath);
+          if (!include(relativePath)) return false;
+          return !reviewedR49nDickensAdditionPaths.has(relativePath) ||
+            !isReviewedR49nDickensAddition(relativePath, readFileSync(absolutePath, "utf8"));
+        })
     ),
   ]
     .sort((first, second) =>

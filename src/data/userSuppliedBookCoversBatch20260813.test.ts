@@ -113,8 +113,8 @@ describe("пользовательские редакционные обложк
 
     expect(archive).toHaveLength(9_761);
     expect(baseline).toHaveLength(9_761);
-    expect(archive.filter(isPublicBook)).toHaveLength(46);
-    expect(baseline.filter(isPublicBook)).toHaveLength(46);
+    expect(archive.filter(isPublicBook)).toHaveLength(56);
+    expect(baseline.filter(isPublicBook)).toHaveLength(56);
   });
 
   it("фиксирует каждую запись архива ровно в одной категории решения", async () => {

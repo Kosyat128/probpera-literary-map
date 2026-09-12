@@ -1,0 +1,1859 @@
+{
+  "schemaVersion": 1,
+  "batchId": "r49n-dickens-reviewed-20260912",
+  "humanReview": false,
+  "reviewer": "Codex AI /root/article_counts (independent editorial review)",
+  "checkedAt": "2026-09-12",
+  "workCount": 10,
+  "descriptionCount": 20,
+  "source": {
+    "archiveName": "BOOK_DATABASE_FULL_R49N_20260912.zip",
+    "archiveSha256": "977f25072022cb7275242b030836326f8f30c97423697b60081859d8ce17fb69",
+    "masterPath": "01_DATABASE/BOOK_DATABASE_MASTER.json",
+    "masterSha256": "f441344f6b4367684c8f5ec39f746f12c079ff05e5130b3183e06bab7c359674",
+    "masterHashMethod": "sha256-exact-file-bytes",
+    "recordHashMethod": "sha256-utf8-json-recursively-sorted-object-keys",
+    "reviewArtifactSha256": "25e73ad71a03bd2a7b29ac94ac408582f909fcc3b816ef59989ad5c256fd21e3",
+    "selectionArtifactSha256": "72df7de47c2fa1f4a2ba3f98b4939875777059c63b2944d397e14de7da2acd2f",
+    "inputPrioritySha256": "1b07f90bdebf50113459ce1ccb1da900ebdb178416a700675290a3a8dc0bb8ef"
+  },
+  "scope": "Independent AI review of ten master description pairs against primary work-specific publisher annotations; preserves historical national-catalog/publisher title evidence without claiming a new full bibliographic re-audit. Current R35 candidates were compared, never automatically selected because of their array order or recency. No complete-work reading or human review is claimed.",
+  "originalIndependentReviewScope": "Independent comparison of existing master RU/EN descriptions and available R49N current candidates against work-specific publisher annotations; selective national-catalog analytic checks for Old Curiosity Shop and Barnaby Rudge. No complete-work reading, full title-chain re-audit, application, merge or publication performed.",
+  "selection": {
+    "retainedMasterPairs": 10,
+    "currentR35PairsCompared": 9,
+    "inheritedWithoutR49CurrentPairs": 1,
+    "currentR35PairsSelected": 0,
+    "newCanonicalKeys": 0,
+    "existingOurMutualFriendKey": "england:charles_dickens:article-series-1tdjfsi"
+  },
+  "copiedFields": [
+    "firstPublished",
+    "originalTitle",
+    "originalLanguage",
+    "description",
+    "localizedTitles",
+    "translations",
+    "sources",
+    "editorial"
+  ],
+  "preservedFields": [
+    "id",
+    "title",
+    "sourceUrl",
+    "authorship",
+    "alternateTitles",
+    "genres",
+    "tags",
+    "externalIds",
+    "distinctions",
+    "canon",
+    "coverUrl",
+    "coverThumbnailUrl",
+    "coverSourceUrl",
+    "coverRights",
+    "edition"
+  ],
+  "canon": {
+    "claimAdded": false,
+    "reason": "All ten master and current records have no canon claim. Existing bookCanonEvidenceIssues explicitly permits absence of a positive canon claim; title, independent authority and description provenance gates still apply unchanged.",
+    "validator": "src/data/bookEvidence.ts#bookCanonEvidenceIssues",
+    "registryChanged": false,
+    "validatorsChanged": false
+  },
+  "baseline": {
+    "canonicalCount": 9761,
+    "readyCount": 46,
+    "readyKeys": [
+      "austria:franz_kafka:openlibrary-works-ol498556w",
+      "canada:margaret_atwood:openlibrary-works-ol675783w",
+      "canada:yann_martel:life-of-pi",
+      "england:aldous_huxley:brave-new-world-editorial",
+      "england:charles_dickens:a-tale-of-two-cities",
+      "england:david_mitchell:ghostwritten",
+      "england:david_mitchell:number9dream",
+      "england:david_mitchell:slade-house",
+      "england:david_mitchell:the-bone-clocks",
+      "england:david_mitchell:the-thousand-autumns-of-jacob-de-zoet",
+      "england:george_orwell:animal-farm-editorial",
+      "england:george_orwell:nineteen-eighty-four",
+      "england:h_g_wells:ann-veronica",
+      "england:h_g_wells:men-like-gods",
+      "england:h_g_wells:the-first-men-in-the-moon",
+      "england:h_g_wells:the-food-of-the-gods",
+      "england:h_g_wells:the-history-of-mr-polly",
+      "england:h_g_wells:the-world-set-free",
+      "england:h_g_wells:when-the-sleeper-wakes",
+      "england:j_r_r_tolkien:openlibrary-works-ol27448w",
+      "england:j_r_r_tolkien:the-hobbit",
+      "england:jane_austen:pride-and-prejudice",
+      "england:john_galsworthy:the-forsyte-saga",
+      "england:william_shakespeare:hamlet",
+      "france:flaubert:madame-bovary",
+      "france:saint_exupery:openlibrary-works-ol10263w",
+      "france:victor_hugo:les-miserables",
+      "germany:thomas_mann:buddenbrooks-editorial",
+      "norway:knut_hamsun:growth-of-the-soil",
+      "poland:wladyslaw_reymont:the-peasants",
+      "russia:chekhov:the-black-monk",
+      "russia:chekhov:the-duel",
+      "russia:chekhov:the-lady-with-the-dog",
+      "russia:chekhov:the-man-in-a-case",
+      "russia:chekhov:uncle-vanya",
+      "russia:dostoevsky:crime-and-punishment",
+      "russia:tolstoy:war-and-peace",
+      "spain:miguel_de_cervantes:openlibrary-works-ol15272537w",
+      "usa:ernest_hemingway:the-old-man-and-the-sea",
+      "usa:francis_scott_fitzgerald:the-great-gatsby",
+      "usa:harper_lee:to-kill-a-mockingbird-editorial",
+      "usa:herman_melville:moby-dick",
+      "usa:jerome_david_salinger:the-catcher-in-the-rye-editorial",
+      "usa:ray_bradbury:fahrenheit-451-editorial",
+      "usa:suzanne_collins:the-hunger-games",
+      "usa:vladimir_nabokov:lolita-editorial"
+    ]
+  },
+  "records": [
+    {
+      "recordKey": "england:charles_dickens:great-expectations",
+      "reviewKey": "england:charles_dickens:great-expectations",
+      "reviewer": "/root/article_counts",
+      "reviewKind": "independent-ai-editorial-review",
+      "checkedAt": "2026-09-12",
+      "masterRecordSha256": "acc2b36c67b01a6c1c69417915bbb622aff48952339e927b4904d7d2a0f3b39e",
+      "comparedCurrentVersionIds": [
+        "EDV-00872",
+        "EDV-00873"
+      ],
+      "recommendedTexts": {
+        "ru": {
+          "decision": "retain-master-description",
+          "text": "Таинственный покровитель открывает юному Пипу, выросшему в семье кузнеца, путь в высшее общество. Мечтая стать джентльменом и добиться любви Эстеллы, он пытается понять, кому обязан своим новым положением и чего стоят его большие надежды.",
+          "textSha256": "fd75c05d48f85491066814d7ee39c4da10ad7d61c185054d8be6546effab7b09",
+          "inputPath": "masterRecord.translations.ru.description",
+          "sourceUrls": [
+            "https://eksmo.ru/book/bolshie-nadezhdy-ITD1329579/"
+          ],
+          "supportedClaims": [
+            "Пип вырос в семье кузнеца; неизвестный покровитель открывает ему доступ в высшее общество.",
+            "Стремление стать джентльменом, любовь к Эстелле и тайна покровителя составляют прямо названную издателем завязку."
+          ],
+          "factVerdict": "supported-within-publisher-synopsis-scope",
+          "title": "Большие надежды"
+        },
+        "en": {
+          "decision": "retain-master-description",
+          "text": "An unknown benefactor gives the orphan Pip the means to become a gentleman, bringing the life he has dreamed of since meeting Estella within reach. In London, his pursuit of status and her love draws him away from the people and values he once cherished, until the truth about his patron unsettles his ambitions.",
+          "textSha256": "49fc28478bdd55a9e2c18bf4822c56622af5eed629d2255146c3a5c0295004bf",
+          "inputPath": "masterRecord.translations.en.description",
+          "sourceUrls": [
+            "https://www.penguinrandomhouse.com/books/326623/great-expectations-by-charles-dickens/"
+          ],
+          "supportedClaims": [
+            "Pip is an orphan supported by a mysterious benefactor and hopes to win Estella.",
+            "London society estranges him from earlier values; discovery of the benefactor challenges his ambition."
+          ],
+          "factVerdict": "supported-within-publisher-synopsis-scope",
+          "title": "Great Expectations"
+        }
+      },
+      "editorialDecision": "retain-existing-master-ru-en",
+      "requiredTextChanges": [],
+      "notesRu": [
+        "Сохранить более компактные master описания, подтверждённые раздельными RU/EN издательскими аннотациями.",
+        "Старый URL Эксмо ITD1176840 не открылся через web; новый издательский URL ITD1329579 содержит ту же сюжетную основу. Это дополнительное подтверждение сюжета, а не замена исторической библиографической записи."
+      ],
+      "sourceReadings": [
+        {
+          "url": "https://eksmo.ru/book/bolshie-nadezhdy-ITD1329579/",
+          "locale": "ru",
+          "accessMethod": "web.open publisher page text",
+          "checkedAt": "2026-09-12",
+          "scope": "Work-specific publisher synopsis paragraphs; reader reviews and other-book recommendations excluded",
+          "rawPageSnapshotSaved": false
+        },
+        {
+          "url": "https://www.penguinrandomhouse.com/books/326623/great-expectations-by-charles-dickens/",
+          "locale": "en",
+          "accessMethod": "web.open publisher page text",
+          "checkedAt": "2026-09-12",
+          "scope": "Work-specific publisher synopsis paragraphs; reader reviews and other-book recommendations excluded",
+          "rawPageSnapshotSaved": false
+        }
+      ],
+      "currentMainEvidenceReady": false,
+      "rootMasterEvidenceReady": true,
+      "publicationRecommendation": "eligible-for-root-final-validation",
+      "fullWorkRead": false,
+      "humanReviewClaimed": false,
+      "bibliographicChainFullyReaudited": false,
+      "sourceMasterPointer": "/records/2306",
+      "sourceMasterStatus": {
+        "status": "verified",
+        "reviewedAt": "2026-09-05"
+      },
+      "preservedOriginalDescriptionProvenance": {
+        "ru": {
+          "origin": "official-source-synthesis",
+          "sourceLanguage": "ru",
+          "sourceCountry": "england",
+          "sourceUrls": [
+            "https://eksmo.ru/amp/book/bolshie-nadezhdy-ITD1176840/",
+            "https://www.penguinrandomhouse.com/books/326623/great-expectations-by-charles-dickens/",
+            "https://www.penguin.co.uk/books/395982/great-expectations-by-dickens-charles/9780099511571"
+          ],
+          "primarySourceUrls": [
+            "https://eksmo.ru/amp/book/bolshie-nadezhdy-ITD1176840/"
+          ],
+          "transformations": [
+            "condensed",
+            "spoiler-limited",
+            "style-edited"
+          ],
+          "rights": {
+            "textOrigin": "project-original",
+            "copiedSourceText": false
+          },
+          "author": "Codex AI / review_ru_public_gaps",
+          "createdAt": "2026-09-05",
+          "reviewedBy": "Codex AI /root (independent review)",
+          "reviewedAt": "2026-09-05"
+        },
+        "en": {
+          "origin": "official-source-synthesis",
+          "sourceLanguage": "en",
+          "sourceCountry": "england",
+          "sourceUrls": [
+            "https://eksmo.ru/amp/book/bolshie-nadezhdy-ITD1176840/",
+            "https://www.penguinrandomhouse.com/books/326623/great-expectations-by-charles-dickens/",
+            "https://www.penguin.co.uk/books/395982/great-expectations-by-dickens-charles/9780099511571"
+          ],
+          "primarySourceUrls": [
+            "https://www.penguinrandomhouse.com/books/326623/great-expectations-by-charles-dickens/"
+          ],
+          "transformations": [
+            "condensed",
+            "spoiler-limited",
+            "style-edited"
+          ],
+          "rights": {
+            "textOrigin": "project-original",
+            "copiedSourceText": false
+          },
+          "author": "Codex AI / review_ru_public_gaps",
+          "createdAt": "2026-09-05",
+          "reviewedBy": "Codex AI /root (independent review)",
+          "reviewedAt": "2026-09-05"
+        }
+      },
+      "firstPublicationReview": {
+        "before": 1861,
+        "after": 1860,
+        "year": 1860,
+        "period": "1860-12-01 to 1861-08-03",
+        "meaning": "first-serial-publication",
+        "url": "https://www.penguinrandomhouse.com/books/326623/great-expectations-by-charles-dickens/9780451531186/readers-guide/",
+        "authorityId": "penguin-random-house",
+        "provider": "penguin-random-house",
+        "country": "usa",
+        "access": "publisher reading guide, direct page read",
+        "note": "Serial begins in 1860; the same guide separately dates the book edition to July 1861.",
+        "checkedAt": "2026-09-12",
+        "humanReview": false
+      },
+      "application": {
+        "humanReview": false,
+        "aiReviewer": "Codex AI /root/article_counts (independent editorial review)",
+        "checkedAt": "2026-09-12",
+        "status": "reviewed",
+        "currentCandidateSelected": false,
+        "existingKeyReused": true
+      }
+    },
+    {
+      "recordKey": "england:charles_dickens:oliver-twist-editorial",
+      "reviewKey": "england:charles_dickens:oliver-twist-editorial",
+      "reviewer": "/root/article_counts",
+      "reviewKind": "independent-ai-editorial-review",
+      "checkedAt": "2026-09-12",
+      "masterRecordSha256": "8e1e726d296c7ad2ff28b2526fe18a589c7c89433a021ae589d3eff0e5241fbb",
+      "comparedCurrentVersionIds": [
+        "EDV-00874",
+        "EDV-00875"
+      ],
+      "recommendedTexts": {
+        "ru": {
+          "decision": "retain-master-description",
+          "text": "Маленький сирота Оливер Твист вырастает в приюте, а затем попадает в шайку, где его пытаются научить воровству. Его злоключения раскрывают мир трущоб, в котором детская беззащитность сталкивается с нищетой и преступностью.",
+          "textSha256": "9f2c033f2aa1ee63d63a374dea903c16c7fd6dffdf48111eae8571165a1a7e43",
+          "inputPath": "masterRecord.translations.ru.description",
+          "sourceUrls": [
+            "https://azbooka.ru/books/priklyucheniya-olivera-tvista-oomn"
+          ],
+          "supportedClaims": [
+            "Маленький сирота Оливер воспитывается в приюте, затем попадает в шайку воров.",
+            "Издатель прямо связывает его злоключения с нищетой, трущобами и преступностью."
+          ],
+          "factVerdict": "supported-within-publisher-synopsis-scope",
+          "title": "Приключения Оливера Твиста"
+        },
+        "en": {
+          "decision": "retain-master-description",
+          "text": "Raised in a workhouse, the orphan Oliver Twist runs away to London and encounters a criminal world that includes Fagin and the violent Bill Sikes. Dickens combines the suspense of a detective story with a protest against the conditions surrounding a vulnerable child.",
+          "textSha256": "1c737c1a74291ea6ab96334b8519643de65a416ab379299a853ba6a31cbad70f",
+          "inputPath": "masterRecord.translations.en.description",
+          "sourceUrls": [
+            "https://www.penguinrandomhouse.com/books/295088/oliver-twist-by-charles-dickens/"
+          ],
+          "supportedClaims": [
+            "The publisher describes a workhouse orphan who runs away to London and encounters Fagin and Bill Sikes.",
+            "The description identifies social protest and detective-story elements."
+          ],
+          "factVerdict": "supported-within-publisher-synopsis-scope",
+          "title": "Oliver Twist"
+        }
+      },
+      "editorialDecision": "retain-existing-master-ru-en",
+      "requiredTextChanges": [],
+      "notesRu": [
+        "RU «приют» сохранён как нейтральное обобщение издательского текста; EN workhouse остаётся исторически точным.",
+        "Current добавляет хозяина-гробовщика и промежуточные события: они не нужны для уже подтверждённой компактной master аннотации.",
+        "Локализованное RU заглавие «Приключения Оливера Твиста» совпадает с заглавием издателя."
+      ],
+      "sourceReadings": [
+        {
+          "url": "https://azbooka.ru/books/priklyucheniya-olivera-tvista-oomn",
+          "locale": "ru",
+          "accessMethod": "web.open publisher page text",
+          "checkedAt": "2026-09-12",
+          "scope": "Work-specific publisher synopsis paragraphs; reader reviews and other-book recommendations excluded",
+          "rawPageSnapshotSaved": false
+        },
+        {
+          "url": "https://www.penguinrandomhouse.com/books/295088/oliver-twist-by-charles-dickens/",
+          "locale": "en",
+          "accessMethod": "web.open publisher page text",
+          "checkedAt": "2026-09-12",
+          "scope": "Work-specific publisher synopsis paragraphs; reader reviews and other-book recommendations excluded",
+          "rawPageSnapshotSaved": false
+        }
+      ],
+      "currentMainEvidenceReady": false,
+      "rootMasterEvidenceReady": true,
+      "publicationRecommendation": "eligible-for-root-final-validation",
+      "fullWorkRead": false,
+      "humanReviewClaimed": false,
+      "bibliographicChainFullyReaudited": false,
+      "sourceMasterPointer": "/records/2307",
+      "sourceMasterStatus": {
+        "status": "verified",
+        "reviewedAt": "2026-09-05"
+      },
+      "preservedOriginalDescriptionProvenance": {
+        "ru": {
+          "origin": "official-source-synthesis",
+          "sourceLanguage": "ru",
+          "sourceCountry": "england",
+          "sourceUrls": [
+            "https://azbooka.ru/books/priklyucheniya-olivera-tvista-oomn",
+            "https://www.penguinrandomhouse.com/books/295088/oliver-twist-by-charles-dickens/",
+            "https://www.penguin.co.uk/books/55733/oliver-twist-by-dickens-charles/9780141192499"
+          ],
+          "primarySourceUrls": [
+            "https://azbooka.ru/books/priklyucheniya-olivera-tvista-oomn"
+          ],
+          "transformations": [
+            "condensed",
+            "spoiler-limited",
+            "style-edited"
+          ],
+          "rights": {
+            "textOrigin": "project-original",
+            "copiedSourceText": false
+          },
+          "author": "Codex AI / review_ru_public_gaps",
+          "createdAt": "2026-09-05",
+          "reviewedBy": "Codex AI /root (independent review)",
+          "reviewedAt": "2026-09-05"
+        },
+        "en": {
+          "origin": "official-source-synthesis",
+          "sourceLanguage": "en",
+          "sourceCountry": "england",
+          "sourceUrls": [
+            "https://azbooka.ru/books/priklyucheniya-olivera-tvista-oomn",
+            "https://www.penguinrandomhouse.com/books/295088/oliver-twist-by-charles-dickens/",
+            "https://www.penguin.co.uk/books/55733/oliver-twist-by-dickens-charles/9780141192499"
+          ],
+          "primarySourceUrls": [
+            "https://www.penguinrandomhouse.com/books/295088/oliver-twist-by-charles-dickens/"
+          ],
+          "transformations": [
+            "condensed",
+            "spoiler-limited",
+            "style-edited"
+          ],
+          "rights": {
+            "textOrigin": "project-original",
+            "copiedSourceText": false
+          },
+          "author": "Codex AI / review_ru_public_gaps",
+          "createdAt": "2026-09-05",
+          "reviewedBy": "Codex AI /root (independent review)",
+          "reviewedAt": "2026-09-05"
+        }
+      },
+      "firstPublicationReview": {
+        "before": null,
+        "after": 1837,
+        "year": 1837,
+        "period": "1837-1839",
+        "meaning": "first-serial-publication",
+        "url": "https://www.collections.dickensmuseum.com/object-aa2",
+        "provider": "Charles Dickens Museum",
+        "country": "england",
+        "access": "museum collection record AA2",
+        "note": "Museum identifies the first monthly instalments in Bentley's Miscellany, separately from later bound editions.",
+        "checkedAt": "2026-09-12",
+        "humanReview": false
+      },
+      "application": {
+        "humanReview": false,
+        "aiReviewer": "Codex AI /root/article_counts (independent editorial review)",
+        "checkedAt": "2026-09-12",
+        "status": "reviewed",
+        "currentCandidateSelected": false,
+        "existingKeyReused": true
+      }
+    },
+    {
+      "recordKey": "england:charles_dickens:david-copperfield-editorial",
+      "reviewKey": "england:charles_dickens:david-copperfield-editorial",
+      "reviewer": "/root/article_counts",
+      "reviewKind": "independent-ai-editorial-review",
+      "checkedAt": "2026-09-12",
+      "masterRecordSha256": "5a7ae0138482242846ede78667f82096b01634d2b6d880fe2128f65ab5fe15f1",
+      "comparedCurrentVersionIds": [
+        "EDV-00876",
+        "EDV-00877"
+      ],
+      "recommendedTexts": {
+        "ru": {
+          "decision": "retain-master-description",
+          "text": "Дэвид Копперфилд с детства сталкивается с жестокостью учителей, корыстью фабрикантов и равнодушием окружающего мира. Противостоять этим испытаниям ему помогают доброта, внутренняя стойкость и талант писателя, открывающий возможность иной жизни.",
+          "textSha256": "f0cdf8a3b08d3b81fecaf7cf19ff673042cb835b4e0e51a99801b16fd525a493",
+          "inputPath": "masterRecord.translations.ru.description",
+          "sourceUrls": [
+            "https://azbooka.ru/books/devid-kopperfild-tftk"
+          ],
+          "supportedClaims": [
+            "Издатель описывает детство среди жестоких учителей, корыстных фабрикантов и равнодушных представителей закона.",
+            "Нравственная стойкость и писательский талант обозначены как путь героя к иной жизни."
+          ],
+          "factVerdict": "supported-within-publisher-synopsis-scope",
+          "title": "Дэвид Копперфилд"
+        },
+        "en": {
+          "decision": "retain-master-description",
+          "text": "David Copperfield grows up amid poverty and unhappiness, searching through successive adventures for a place in the world. The account of his childhood and youth follows the discovery of a vocation that will make him a successful writer.",
+          "textSha256": "d6f9a6959f0bdb5d2563c65b740fffca9e65363f1e02187d78caa185d22fe3e1",
+          "inputPath": "masterRecord.translations.en.description",
+          "sourceUrls": [
+            "https://www.penguinrandomhouse.com/books/297629/david-copperfield-by-charles-dickens/"
+          ],
+          "supportedClaims": [
+            "The publisher describes poverty and an unhappy childhood.",
+            "The story leads through the young man’s adventures to his vocation as a writer."
+          ],
+          "factVerdict": "supported-within-publisher-synopsis-scope",
+          "title": "David Copperfield"
+        }
+      },
+      "editorialDecision": "retain-existing-master-ru-en",
+      "requiredTextChanges": [],
+      "notesRu": [
+        "Master не повторяет рекламное преувеличение издателя о «величайшем писателе Англии».",
+        "В тексте и локализованном заглавии сохраняется единое «Копперфилд», подтверждённое выбранным русским изданием."
+      ],
+      "sourceReadings": [
+        {
+          "url": "https://azbooka.ru/books/devid-kopperfild-tftk",
+          "locale": "ru",
+          "accessMethod": "web.open publisher page text",
+          "checkedAt": "2026-09-12",
+          "scope": "Work-specific publisher synopsis paragraphs; reader reviews and other-book recommendations excluded",
+          "rawPageSnapshotSaved": false
+        },
+        {
+          "url": "https://www.penguinrandomhouse.com/books/297629/david-copperfield-by-charles-dickens/",
+          "locale": "en",
+          "accessMethod": "web.open publisher page text",
+          "checkedAt": "2026-09-12",
+          "scope": "Work-specific publisher synopsis paragraphs; reader reviews and other-book recommendations excluded",
+          "rawPageSnapshotSaved": false
+        }
+      ],
+      "currentMainEvidenceReady": false,
+      "rootMasterEvidenceReady": true,
+      "publicationRecommendation": "eligible-for-root-final-validation",
+      "fullWorkRead": false,
+      "humanReviewClaimed": false,
+      "bibliographicChainFullyReaudited": false,
+      "sourceMasterPointer": "/records/2308",
+      "sourceMasterStatus": {
+        "status": "verified",
+        "reviewedAt": "2026-09-05"
+      },
+      "preservedOriginalDescriptionProvenance": {
+        "ru": {
+          "origin": "official-source-synthesis",
+          "sourceLanguage": "ru",
+          "sourceCountry": "england",
+          "sourceUrls": [
+            "https://azbooka.ru/books/devid-kopperfild-tftk",
+            "https://www.penguinrandomhouse.com/books/297629/david-copperfield-by-charles-dickens/",
+            "https://www.penguin.co.uk/books/256481/david-copperfield-by-dickens-charles/9780141394640"
+          ],
+          "primarySourceUrls": [
+            "https://azbooka.ru/books/devid-kopperfild-tftk"
+          ],
+          "transformations": [
+            "condensed",
+            "spoiler-limited",
+            "style-edited"
+          ],
+          "rights": {
+            "textOrigin": "project-original",
+            "copiedSourceText": false
+          },
+          "author": "Codex AI / review_ru_public_gaps",
+          "createdAt": "2026-09-05",
+          "reviewedBy": "Codex AI /root (independent review)",
+          "reviewedAt": "2026-09-05"
+        },
+        "en": {
+          "origin": "official-source-synthesis",
+          "sourceLanguage": "en",
+          "sourceCountry": "england",
+          "sourceUrls": [
+            "https://azbooka.ru/books/devid-kopperfild-tftk",
+            "https://www.penguinrandomhouse.com/books/297629/david-copperfield-by-charles-dickens/",
+            "https://www.penguin.co.uk/books/256481/david-copperfield-by-dickens-charles/9780141394640"
+          ],
+          "primarySourceUrls": [
+            "https://www.penguinrandomhouse.com/books/297629/david-copperfield-by-charles-dickens/"
+          ],
+          "transformations": [
+            "condensed",
+            "spoiler-limited",
+            "style-edited"
+          ],
+          "rights": {
+            "textOrigin": "project-original",
+            "copiedSourceText": false
+          },
+          "author": "Codex AI / review_ru_public_gaps",
+          "createdAt": "2026-09-05",
+          "reviewedBy": "Codex AI /root (independent review)",
+          "reviewedAt": "2026-09-05"
+        }
+      },
+      "firstPublicationReview": {
+        "before": null,
+        "after": 1849,
+        "year": 1849,
+        "period": "1849-05 to 1850-11",
+        "meaning": "first-serial-publication",
+        "url": "https://www.collections.dickensmuseum.com/object--lib-6126",
+        "provider": "Charles Dickens Museum",
+        "country": "england",
+        "access": "museum collection record [lib]6126, direct page read",
+        "note": "The museum dates the monthly parts to May 1849-November 1850. Its separate [lib]1256 record dates the bound first edition to 1850.",
+        "checkedAt": "2026-09-12",
+        "humanReview": false
+      },
+      "application": {
+        "humanReview": false,
+        "aiReviewer": "Codex AI /root/article_counts (independent editorial review)",
+        "checkedAt": "2026-09-12",
+        "status": "reviewed",
+        "currentCandidateSelected": false,
+        "existingKeyReused": true
+      }
+    },
+    {
+      "recordKey": "england:charles_dickens:article-series-1tdjfsi",
+      "reviewKey": "england:charles_dickens:article-series-1tdjfsi",
+      "reviewer": "/root/article_counts",
+      "reviewKind": "independent-ai-editorial-review",
+      "checkedAt": "2026-09-12",
+      "masterRecordSha256": "c17a0b9de8ad3c792496bd908ae191ae41a9aba3282293ffec3ab8cfb638eb8f",
+      "comparedCurrentVersionIds": [],
+      "recommendedTexts": {
+        "ru": {
+          "decision": "retain-master-description",
+          "text": "Наследника богатого лондонского подрядчика Джона Гармона объявляют погибшим, а Белла Уилфер, девушка из бедной семьи, мечтает о выгодном замужестве. Подмены личности, маскировка и разоблачения превращают их историю в запутанную интригу, за которой встают вопросы о подлинном лице человека и свободе его выбора.",
+          "textSha256": "59ff069ed05aa64c8d629027c7dabde1d6b063f624e0999223bd2a52d058a8d6",
+          "inputPath": "masterRecord.translations.ru.description",
+          "sourceUrls": [
+            "https://azbooka.ru/books/nash-obshchiy-drug"
+          ],
+          "supportedClaims": [
+            "Наследник Джон Гармон считается погибшим; Белла Уилфер происходит из бедной семьи и рассчитывает на выгодный брак.",
+            "Подмены личности и разоблачения прямо описаны издателем; вопросы о подлинном я и выборе представлены как темы романа."
+          ],
+          "factVerdict": "supported-within-publisher-synopsis-scope",
+          "title": "Наш общий друг"
+        },
+        "en": {
+          "decision": "retain-master-description",
+          "text": "When a body recovered from the Thames is taken for that of John Harmon, his expected inheritance passes to the kindly dustman Boffin. Around this reversal, Dickens brings together Bella Wilfer, ambitious social climbers and the inhabitants of a darker London in a satire of Victorian society.",
+          "textSha256": "01b58a575649751f00308db3fea016d040f3636b43a93fd3f5f00b678c41ceec",
+          "inputPath": "masterRecord.translations.en.description",
+          "sourceUrls": [
+            "https://www.penguin.co.uk/books/34295/our-mutual-friend-by-dickens-charles/9780141920290"
+          ],
+          "supportedClaims": [
+            "A body from the Thames is presumed to be John Harmon; the inheritance passes to Boffin.",
+            "Bella Wilfer, social climbing and dark London form the publisher’s account of the novel’s satire."
+          ],
+          "factVerdict": "supported-within-publisher-synopsis-scope",
+          "title": "Our Mutual Friend"
+        }
+      },
+      "editorialDecision": "retain-existing-master-ru-en",
+      "requiredTextChanges": [],
+      "notesRu": [
+        "Это inherited-only запись: в editorialUnified.current/history текста для данного ключа нет. Использовать существующие master RU/EN, а не создавать отсутствующий вариант R49N.",
+        "В 9751 исходных records другой ключ с заглавием Our Mutual Friend/«Наш общий друг» не найден. Автоматическое объединение ключей не выполнялось."
+      ],
+      "sourceReadings": [
+        {
+          "url": "https://azbooka.ru/books/nash-obshchiy-drug",
+          "locale": "ru",
+          "accessMethod": "web.open publisher page text",
+          "checkedAt": "2026-09-12",
+          "scope": "Work-specific publisher synopsis paragraphs; reader reviews and other-book recommendations excluded",
+          "rawPageSnapshotSaved": false
+        },
+        {
+          "url": "https://www.penguin.co.uk/books/34295/our-mutual-friend-by-dickens-charles/9780141920290",
+          "locale": "en",
+          "accessMethod": "web.open publisher page text",
+          "checkedAt": "2026-09-12",
+          "scope": "Work-specific publisher synopsis paragraphs; reader reviews and other-book recommendations excluded",
+          "rawPageSnapshotSaved": false
+        }
+      ],
+      "currentMainEvidenceReady": false,
+      "rootMasterEvidenceReady": true,
+      "publicationRecommendation": "eligible-for-root-final-validation",
+      "fullWorkRead": false,
+      "humanReviewClaimed": false,
+      "bibliographicChainFullyReaudited": false,
+      "sourceMasterPointer": "/records/2309",
+      "sourceMasterStatus": {
+        "status": "verified",
+        "reviewedAt": "2026-09-05"
+      },
+      "preservedOriginalDescriptionProvenance": {
+        "ru": {
+          "origin": "official-source-synthesis",
+          "sourceLanguage": "ru",
+          "sourceCountry": "england",
+          "sourceUrls": [
+            "https://azbooka.ru/books/nash-obshchiy-drug",
+            "https://www.penguinrandomhouse.com/books/260144/our-mutual-friend-by-charles-dickens/",
+            "https://www.penguin.co.uk/books/34295/our-mutual-friend-by-dickens-charles/9780141920290"
+          ],
+          "primarySourceUrls": [
+            "https://azbooka.ru/books/nash-obshchiy-drug"
+          ],
+          "transformations": [
+            "condensed",
+            "spoiler-limited",
+            "style-edited"
+          ],
+          "rights": {
+            "textOrigin": "project-original",
+            "copiedSourceText": false
+          },
+          "author": "Codex AI / review_ru_public_gaps",
+          "createdAt": "2026-09-05",
+          "reviewedBy": "Codex AI /root (independent review)",
+          "reviewedAt": "2026-09-05"
+        },
+        "en": {
+          "origin": "official-source-synthesis",
+          "sourceLanguage": "en",
+          "sourceCountry": "england",
+          "sourceUrls": [
+            "https://azbooka.ru/books/nash-obshchiy-drug",
+            "https://www.penguinrandomhouse.com/books/260144/our-mutual-friend-by-charles-dickens/",
+            "https://www.penguin.co.uk/books/34295/our-mutual-friend-by-dickens-charles/9780141920290"
+          ],
+          "primarySourceUrls": [
+            "https://www.penguinrandomhouse.com/books/260144/our-mutual-friend-by-charles-dickens/"
+          ],
+          "transformations": [
+            "condensed",
+            "spoiler-limited",
+            "style-edited"
+          ],
+          "rights": {
+            "textOrigin": "project-original",
+            "copiedSourceText": false
+          },
+          "author": "Codex AI / review_ru_public_gaps",
+          "createdAt": "2026-09-05",
+          "reviewedBy": "Codex AI /root (independent review)",
+          "reviewedAt": "2026-09-05"
+        }
+      },
+      "firstPublicationReview": {
+        "before": null,
+        "after": 1864,
+        "year": 1864,
+        "period": "1864-1865",
+        "meaning": "first-serial-publication",
+        "url": "https://azbooka.ru/books/nash-obshchiy-drug",
+        "authorityId": "azbooka",
+        "provider": "azbooka-atticus",
+        "country": "russia",
+        "access": "publisher annotation, direct page read",
+        "note": "Publisher dates the first publication to the 1864-1865 span; record keeps the beginning of that publication, not a modern edition year.",
+        "checkedAt": "2026-09-12",
+        "humanReview": false
+      },
+      "application": {
+        "humanReview": false,
+        "aiReviewer": "Codex AI /root/article_counts (independent editorial review)",
+        "checkedAt": "2026-09-12",
+        "status": "reviewed",
+        "currentCandidateSelected": false,
+        "existingKeyReused": true
+      }
+    },
+    {
+      "recordKey": "england:charles_dickens:openlibrary-works-ol32466w",
+      "reviewKey": "england:charles_dickens:openlibrary-works-ol32466w",
+      "reviewer": "/root/article_counts",
+      "reviewKind": "independent-ai-editorial-review",
+      "checkedAt": "2026-09-12",
+      "masterRecordSha256": "a383dace7f2565b7a257fefd0c33242d39307466344f12c2a16298ef862931fa",
+      "comparedCurrentVersionIds": [
+        "EDV-00880",
+        "EDV-00881"
+      ],
+      "recommendedTexts": {
+        "ru": {
+          "decision": "retain-master-description",
+          "text": "Скупой и нелюдимый Скрудж встречается со святочными духами, которые помогают ему увидеть возможность иной жизни. Его преображение превращает рождественскую историю в притчу о том, как равнодушие к окружающим уступает место доброте и готовности помогать людям.",
+          "textSha256": "e1c264be22f34ac0b9e34f09fd57642d73f62cdd8b2a4d8de2d5b0cc18fddea1",
+          "inputPath": "masterRecord.translations.ru.description",
+          "sourceUrls": [
+            "https://azbooka.ru/books/rozhdestvenskie-povesti"
+          ],
+          "supportedClaims": [
+            "Аннотация сборника отдельно называет Скруджа и посещение святочного духа.",
+            "Преображение чёрствого человека и возникновение доброты составляют прямо названную смысловую основу."
+          ],
+          "factVerdict": "supported-within-publisher-synopsis-scope",
+          "title": "Рождественская песнь"
+        },
+        "en": {
+          "decision": "retain-master-description",
+          "text": "On Christmas Eve, the bitter and friendless Ebenezer Scrooge is taken on a frightening journey by three ghosts. Their visions of his past, present and future expose the consequences of his conduct and lead him toward a new affection for the people around him.",
+          "textSha256": "68bf3c2f4aa867b4585fe3b150509c75f94ecdb8643294d55d884477225d4ac3",
+          "inputPath": "masterRecord.translations.en.description",
+          "sourceUrls": [
+            "https://www.penguinrandomhouse.com/books/322498/a-christmas-carol-by-charles-dickens/9780141324524/"
+          ],
+          "supportedClaims": [
+            "The publisher names Scrooge, Christmas Eve and three ghosts.",
+            "The visions cover past, present and future and lead him toward affection for other people."
+          ],
+          "factVerdict": "supported-within-publisher-synopsis-scope",
+          "title": "A Christmas Carol"
+        }
+      },
+      "editorialDecision": "retain-existing-master-ru-en",
+      "requiredTextChanges": [],
+      "notesRu": [
+        "Русский источник — аннотация сборника, которая явно выделяет эпизод со Скруджем; аннотация не используется как доказательство, что весь сборник является отдельной повестью A Christmas Carol.",
+        "Master ограничивается этим конкретным произведением и не переносит сюжеты «Сверчка за очагом» или других повестей.",
+        "Сюжетное исправление не требуется; исходная самостоятельная цепочка title evidence сохраняется и не заменяется сборником."
+      ],
+      "sourceReadings": [
+        {
+          "url": "https://azbooka.ru/books/rozhdestvenskie-povesti",
+          "locale": "ru",
+          "accessMethod": "web.open publisher page text",
+          "checkedAt": "2026-09-12",
+          "scope": "Work-specific publisher synopsis paragraphs; reader reviews and other-book recommendations excluded",
+          "rawPageSnapshotSaved": false
+        },
+        {
+          "url": "https://www.penguinrandomhouse.com/books/322498/a-christmas-carol-by-charles-dickens/9780141324524/",
+          "locale": "en",
+          "accessMethod": "web.open publisher page text",
+          "checkedAt": "2026-09-12",
+          "scope": "Work-specific publisher synopsis paragraphs; reader reviews and other-book recommendations excluded",
+          "rawPageSnapshotSaved": false
+        }
+      ],
+      "currentMainEvidenceReady": false,
+      "rootMasterEvidenceReady": true,
+      "publicationRecommendation": "eligible-for-root-final-validation",
+      "fullWorkRead": false,
+      "humanReviewClaimed": false,
+      "bibliographicChainFullyReaudited": false,
+      "sourceMasterPointer": "/records/2312",
+      "sourceMasterStatus": {
+        "status": "verified",
+        "reviewedAt": "2026-09-05"
+      },
+      "preservedOriginalDescriptionProvenance": {
+        "ru": {
+          "origin": "official-source-synthesis",
+          "sourceLanguage": "ru",
+          "sourceCountry": "england",
+          "sourceUrls": [
+            "https://azbooka.ru/books/rozhdestvenskie-povesti",
+            "https://azbooka.ru/books/rozhdestvenskaya-yelka",
+            "https://www.penguinrandomhouse.com/books/322498/a-christmas-carol-by-charles-dickens/9780141324524/",
+            "https://www.penguin.co.uk/books/184003/a-christmas-carol-by-charles-dickens/9780141973920"
+          ],
+          "primarySourceUrls": [
+            "https://azbooka.ru/books/rozhdestvenskie-povesti",
+            "https://azbooka.ru/books/rozhdestvenskaya-yelka"
+          ],
+          "transformations": [
+            "condensed",
+            "spoiler-limited",
+            "style-edited"
+          ],
+          "rights": {
+            "textOrigin": "project-original",
+            "copiedSourceText": false
+          },
+          "author": "Codex AI / review_ru_public_gaps",
+          "createdAt": "2026-09-05",
+          "reviewedBy": "Codex AI /root (independent review)",
+          "reviewedAt": "2026-09-05"
+        },
+        "en": {
+          "origin": "official-source-synthesis",
+          "sourceLanguage": "en",
+          "sourceCountry": "england",
+          "sourceUrls": [
+            "https://azbooka.ru/books/rozhdestvenskie-povesti",
+            "https://azbooka.ru/books/rozhdestvenskaya-yelka",
+            "https://www.penguinrandomhouse.com/books/322498/a-christmas-carol-by-charles-dickens/9780141324524/",
+            "https://www.penguin.co.uk/books/184003/a-christmas-carol-by-charles-dickens/9780141973920"
+          ],
+          "primarySourceUrls": [
+            "https://www.penguinrandomhouse.com/books/322498/a-christmas-carol-by-charles-dickens/9780141324524/"
+          ],
+          "transformations": [
+            "condensed",
+            "spoiler-limited",
+            "style-edited"
+          ],
+          "rights": {
+            "textOrigin": "project-original",
+            "copiedSourceText": false
+          },
+          "author": "Codex AI / review_ru_public_gaps",
+          "createdAt": "2026-09-05",
+          "reviewedBy": "Codex AI /root (independent review)",
+          "reviewedAt": "2026-09-05"
+        }
+      },
+      "firstPublicationReview": {
+        "before": 1843,
+        "after": 1843,
+        "year": 1843,
+        "meaning": "first-book-publication",
+        "url": "https://www.penguinrandomhouse.com/books/326623/great-expectations-by-charles-dickens/",
+        "authorityId": "penguin-random-house",
+        "provider": "penguin-random-house",
+        "country": "usa",
+        "access": "publisher author chronology",
+        "note": "Unchanged current year; publisher chronology explicitly lists A Christmas Carol (1843).",
+        "checkedAt": "2026-09-12",
+        "humanReview": false
+      },
+      "application": {
+        "humanReview": false,
+        "aiReviewer": "Codex AI /root/article_counts (independent editorial review)",
+        "checkedAt": "2026-09-12",
+        "status": "reviewed",
+        "currentCandidateSelected": false,
+        "existingKeyReused": true
+      }
+    },
+    {
+      "recordKey": "england:charles_dickens:openlibrary-works-ol8193387w",
+      "reviewKey": "england:charles_dickens:openlibrary-works-ol8193387w",
+      "reviewer": "/root/article_counts",
+      "reviewKind": "independent-ai-editorial-review",
+      "checkedAt": "2026-09-12",
+      "masterRecordSha256": "6a78b15de294e00ac93e429feceb1cd6263b1630cd392eec3785d39a1af85ddf",
+      "comparedCurrentVersionIds": [
+        "EDV-00882",
+        "EDV-00883"
+      ],
+      "recommendedTexts": {
+        "ru": {
+          "decision": "retain-master-description",
+          "text": "В промышленном Кокстауне Томас Грэдграйнд воспитывает детей в поклонении фактам и расчёту, не оставляя места чувствам. Когда жизнь его повзрослевших сына и дочери оказывается под угрозой разрушения, поддержку семье приносит Сесси, дочь бродячего циркача.",
+          "textSha256": "ce09385e2dc2d0bef258e991820b76c15f96b5afa914b844328ed26ba46df10b",
+          "inputPath": "masterRecord.translations.ru.description",
+          "sourceUrls": [
+            "https://azbooka.ru/books/tyazhelye-vremena-6v3v"
+          ],
+          "supportedClaims": [
+            "Промышленный город назван Кокстауном; Томас Грэдграйнд строит воспитание на фактах и расчёте.",
+            "Сесси — дочь циркового артиста; она поддерживает Луизу в семейном кризисе."
+          ],
+          "factVerdict": "supported-within-publisher-synopsis-scope",
+          "title": "Тяжелые времена"
+        },
+        "en": {
+          "decision": "retain-master-description",
+          "text": "In the industrial town of Coketown, Thomas Gradgrind builds his teaching around facts, statistics and obedience, suppressing curiosity and feeling. The damage this philosophy does to his own family turns a story of education into a sharp examination of a society governed by calculation.",
+          "textSha256": "f088750017c6b7b99627fc2525b9747ab313236146f32bf00a3d627cb025d503",
+          "inputPath": "masterRecord.translations.en.description",
+          "sourceUrls": [
+            "https://www.penguin.co.uk/books/56169/hard-times-by-dickens-charles/9780141920061"
+          ],
+          "supportedClaims": [
+            "Gradgrind suppresses imagination and feeling in his school and family.",
+            "The consequences for Louisa and Tom demonstrate the harm of this educational philosophy."
+          ],
+          "factVerdict": "supported-within-publisher-synopsis-scope",
+          "title": "Hard Times"
+        }
+      },
+      "editorialDecision": "retain-existing-master-ru-en",
+      "requiredTextChanges": [],
+      "notesRu": [
+        "Master «Кокстаун» соответствует русским издателям; current «Коктаун» не выбран.",
+        "URL АСТ870745 дал cache miss при прямом открытии, но доступный индекс издателя подтверждает исходную аннотацию; отдельно прочитана страница Азбуки как свежая дополнительная RU опора.",
+        "Master сохраняет обобщение семейного кризиса и не раскрывает преступление Тома."
+      ],
+      "sourceReadings": [
+        {
+          "url": "https://azbooka.ru/books/tyazhelye-vremena-6v3v",
+          "locale": "ru",
+          "accessMethod": "web.open publisher page text",
+          "checkedAt": "2026-09-12",
+          "scope": "Work-specific publisher synopsis paragraphs; reader reviews and other-book recommendations excluded",
+          "rawPageSnapshotSaved": false
+        },
+        {
+          "url": "https://www.penguin.co.uk/books/56169/hard-times-by-dickens-charles/9780141920061",
+          "locale": "en",
+          "accessMethod": "web.open publisher page text",
+          "checkedAt": "2026-09-12",
+          "scope": "Work-specific publisher synopsis paragraphs; reader reviews and other-book recommendations excluded",
+          "rawPageSnapshotSaved": false
+        }
+      ],
+      "currentMainEvidenceReady": false,
+      "rootMasterEvidenceReady": true,
+      "publicationRecommendation": "eligible-for-root-final-validation",
+      "fullWorkRead": false,
+      "humanReviewClaimed": false,
+      "bibliographicChainFullyReaudited": false,
+      "sourceMasterPointer": "/records/2313",
+      "sourceMasterStatus": {
+        "status": "verified",
+        "reviewedAt": "2026-09-05"
+      },
+      "preservedOriginalDescriptionProvenance": {
+        "ru": {
+          "origin": "official-source-synthesis",
+          "sourceLanguage": "ru",
+          "sourceCountry": "england",
+          "sourceUrls": [
+            "https://ast.ru/book/tyazhelye-vremena-870745/",
+            "https://www.penguinrandomhouse.com/books/326690/hard-times-by-charles-dickens/",
+            "https://www.penguin.co.uk/books/56169/hard-times-by-dickens-charles/9780141920061"
+          ],
+          "primarySourceUrls": [
+            "https://ast.ru/book/tyazhelye-vremena-870745/"
+          ],
+          "transformations": [
+            "condensed",
+            "spoiler-limited",
+            "style-edited"
+          ],
+          "rights": {
+            "textOrigin": "project-original",
+            "copiedSourceText": false
+          },
+          "author": "Codex AI / review_ru_public_gaps",
+          "createdAt": "2026-09-05",
+          "reviewedBy": "Codex AI /root (independent review)",
+          "reviewedAt": "2026-09-05"
+        },
+        "en": {
+          "origin": "official-source-synthesis",
+          "sourceLanguage": "en",
+          "sourceCountry": "england",
+          "sourceUrls": [
+            "https://ast.ru/book/tyazhelye-vremena-870745/",
+            "https://www.penguinrandomhouse.com/books/326690/hard-times-by-charles-dickens/",
+            "https://www.penguin.co.uk/books/56169/hard-times-by-dickens-charles/9780141920061"
+          ],
+          "primarySourceUrls": [
+            "https://www.penguinrandomhouse.com/books/326690/hard-times-by-charles-dickens/"
+          ],
+          "transformations": [
+            "condensed",
+            "spoiler-limited",
+            "style-edited"
+          ],
+          "rights": {
+            "textOrigin": "project-original",
+            "copiedSourceText": false
+          },
+          "author": "Codex AI / review_ru_public_gaps",
+          "createdAt": "2026-09-05",
+          "reviewedBy": "Codex AI /root (independent review)",
+          "reviewedAt": "2026-09-05"
+        }
+      },
+      "firstPublicationReview": {
+        "before": 1854,
+        "after": 1854,
+        "year": 1854,
+        "meaning": "first-publication-year",
+        "url": "https://www.penguinrandomhouse.com/books/326623/great-expectations-by-charles-dickens/",
+        "authorityId": "penguin-random-house",
+        "provider": "penguin-random-house",
+        "country": "usa",
+        "access": "publisher author chronology",
+        "note": "Unchanged current year; publisher chronology explicitly lists Hard Times (1854). No claim about a particular edition date is added.",
+        "checkedAt": "2026-09-12",
+        "humanReview": false
+      },
+      "application": {
+        "humanReview": false,
+        "aiReviewer": "Codex AI /root/article_counts (independent editorial review)",
+        "checkedAt": "2026-09-12",
+        "status": "reviewed",
+        "currentCandidateSelected": false,
+        "existingKeyReused": true
+      }
+    },
+    {
+      "recordKey": "england:charles_dickens:openlibrary-works-ol14868510w",
+      "reviewKey": "england:charles_dickens:openlibrary-works-ol14868510w",
+      "reviewer": "/root/article_counts",
+      "reviewKind": "independent-ai-editorial-review",
+      "checkedAt": "2026-09-12",
+      "masterRecordSha256": "fc6459a2cd876bd736fb25e3a7a18e15b27d41b3d5534ddf08d77b61ffed4209",
+      "comparedCurrentVersionIds": [
+        "EDV-00884",
+        "EDV-00885"
+      ],
+      "recommendedTexts": {
+        "ru": {
+          "decision": "retain-master-description",
+          "text": "Сирота Эстер Саммерсон оказывается под опекой мистера Джарндиса и поселяется в его поместье, связанном с запутанной судебной тяжбой. Среди новых знакомых, личных драм и криминальных интриг она приближается к семейной тайне, которая касается её самой.",
+          "textSha256": "73c7e4d2aca329e2c56f19a55ea850027e7fd339124632e6930f19d354929e17",
+          "inputPath": "masterRecord.translations.ru.description",
+          "sourceUrls": [
+            "https://azbooka.ru/books/kholodnyy-dom"
+          ],
+          "supportedClaims": [
+            "Эстер Саммерсон находится под опекой Джарндиса и поселяется в поместье, связанном с тяжбой.",
+            "Одна из семейных тайн касается самой Эстер; конкретная разгадка в аннотации не раскрыта."
+          ],
+          "factVerdict": "supported-within-publisher-synopsis-scope",
+          "title": "Холодный дом"
+        },
+        "en": {
+          "decision": "retain-master-description",
+          "text": "The seemingly endless case of Jarndyce and Jarndyce entangles successive generations in hopes of an inheritance, while Esther Summerson watches its human cost. Beyond the lawyers' arguments, mysteries of lost children, blackmail and murder expose a London whose injustices reach far outside the courtroom.",
+          "textSha256": "6d1b2e8f4f72dae4f4d693c35b8fb548219d7a0f485d856906ec1289421895f1",
+          "inputPath": "masterRecord.translations.en.description",
+          "sourceUrls": [
+            "https://www.penguinrandomhouse.com/books/40432/bleak-house-by-charles-dickens-introduction-by-barbara-hardy/"
+          ],
+          "supportedClaims": [
+            "The Jarndyce lawsuit lasts for generations and shapes hopes of inheritance.",
+            "The publisher specifically names lost children, blackmail and murder among the mysteries beyond the legal case."
+          ],
+          "factVerdict": "supported-within-publisher-synopsis-scope",
+          "title": "Bleak House"
+        }
+      },
+      "editorialDecision": "retain-existing-master-ru-en",
+      "requiredTextChanges": [],
+      "notesRu": [
+        "Master остаётся яснее более абстрактного current текста; оба действительных сюжетных ряда присутствуют без раскрытия семейной тайны."
+      ],
+      "sourceReadings": [
+        {
+          "url": "https://azbooka.ru/books/kholodnyy-dom",
+          "locale": "ru",
+          "accessMethod": "web.open publisher page text",
+          "checkedAt": "2026-09-12",
+          "scope": "Work-specific publisher synopsis paragraphs; reader reviews and other-book recommendations excluded",
+          "rawPageSnapshotSaved": false
+        },
+        {
+          "url": "https://www.penguinrandomhouse.com/books/40432/bleak-house-by-charles-dickens-introduction-by-barbara-hardy/",
+          "locale": "en",
+          "accessMethod": "web.open publisher page text",
+          "checkedAt": "2026-09-12",
+          "scope": "Work-specific publisher synopsis paragraphs; reader reviews and other-book recommendations excluded",
+          "rawPageSnapshotSaved": false
+        }
+      ],
+      "currentMainEvidenceReady": false,
+      "rootMasterEvidenceReady": true,
+      "publicationRecommendation": "eligible-for-root-final-validation",
+      "fullWorkRead": false,
+      "humanReviewClaimed": false,
+      "bibliographicChainFullyReaudited": false,
+      "sourceMasterPointer": "/records/2314",
+      "sourceMasterStatus": {
+        "status": "verified",
+        "reviewedAt": "2026-09-05"
+      },
+      "preservedOriginalDescriptionProvenance": {
+        "ru": {
+          "origin": "official-source-synthesis",
+          "sourceLanguage": "ru",
+          "sourceCountry": "england",
+          "sourceUrls": [
+            "https://azbooka.ru/books/kholodnyy-dom",
+            "https://www.penguinrandomhouse.com/books/40432/bleak-house-by-charles-dickens-introduction-by-barbara-hardy/",
+            "https://www.penguin.co.uk/books/372827/bleak-house-by-dickenscharles/9781857150087"
+          ],
+          "primarySourceUrls": [
+            "https://azbooka.ru/books/kholodnyy-dom"
+          ],
+          "transformations": [
+            "condensed",
+            "spoiler-limited",
+            "style-edited"
+          ],
+          "rights": {
+            "textOrigin": "project-original",
+            "copiedSourceText": false
+          },
+          "author": "Codex AI / review_ru_public_gaps",
+          "createdAt": "2026-09-05",
+          "reviewedBy": "Codex AI /root (independent review)",
+          "reviewedAt": "2026-09-05"
+        },
+        "en": {
+          "origin": "official-source-synthesis",
+          "sourceLanguage": "en",
+          "sourceCountry": "england",
+          "sourceUrls": [
+            "https://azbooka.ru/books/kholodnyy-dom",
+            "https://www.penguinrandomhouse.com/books/40432/bleak-house-by-charles-dickens-introduction-by-barbara-hardy/",
+            "https://www.penguin.co.uk/books/372827/bleak-house-by-dickenscharles/9781857150087"
+          ],
+          "primarySourceUrls": [
+            "https://www.penguinrandomhouse.com/books/40432/bleak-house-by-charles-dickens-introduction-by-barbara-hardy/"
+          ],
+          "transformations": [
+            "condensed",
+            "spoiler-limited",
+            "style-edited"
+          ],
+          "rights": {
+            "textOrigin": "project-original",
+            "copiedSourceText": false
+          },
+          "author": "Codex AI / review_ru_public_gaps",
+          "createdAt": "2026-09-05",
+          "reviewedBy": "Codex AI /root (independent review)",
+          "reviewedAt": "2026-09-05"
+        }
+      },
+      "firstPublicationReview": {
+        "before": 1850,
+        "after": 1852,
+        "year": 1852,
+        "period": "1852-1853",
+        "meaning": "first-serial-publication",
+        "url": "https://www.penguin.co.uk/books/372827/bleak-house-by-dickenscharles/9781857150087",
+        "authorityId": "penguin-uk",
+        "provider": "penguin-books-uk",
+        "country": "england",
+        "access": "publisher annotation, direct page read",
+        "note": "Publisher explicitly dates the first monthly parts to 1852-1853; 1850 in the current catalog was incorrect.",
+        "checkedAt": "2026-09-12",
+        "humanReview": false
+      },
+      "application": {
+        "humanReview": false,
+        "aiReviewer": "Codex AI /root/article_counts (independent editorial review)",
+        "checkedAt": "2026-09-12",
+        "status": "reviewed",
+        "currentCandidateSelected": false,
+        "existingKeyReused": true
+      }
+    },
+    {
+      "recordKey": "england:charles_dickens:openlibrary-works-ol14869167w",
+      "reviewKey": "england:charles_dickens:openlibrary-works-ol14869167w",
+      "reviewer": "/root/article_counts",
+      "reviewKind": "independent-ai-editorial-review",
+      "checkedAt": "2026-09-12",
+      "masterRecordSha256": "ac5f8b52e3cf7f06f7ef244c5cdbd820b8015115ef08879434347e3e0edd6115",
+      "comparedCurrentVersionIds": [
+        "EDV-00886",
+        "EDV-00887"
+      ],
+      "recommendedTexts": {
+        "ru": {
+          "decision": "retain-master-description",
+          "text": "Маленькую Нелл и её деда, увлечённого карточной игрой, преследует жестокий ростовщик Квилп. В этой истории о столкновении добра и зла бытовая реальность соседствует с готическими тайнами и гротескными, почти сказочными образами.",
+          "textSha256": "217c999f8f42c3d9f5be2bcf5f337b64e1c436ad78455064997708baccbf0ef9",
+          "inputPath": "masterRecord.translations.ru.description",
+          "sourceUrls": [
+            "https://eksmo.ru/book/lavka-drevnostey-ITD1259885/"
+          ],
+          "supportedClaims": [
+            "Издатель называет маленькую Нелл, её деда-картёжника и преследующего их ростовщика Квилпа.",
+            "Сочетание бытового реализма, готики, гротеска и противопоставление добра и зла прямо описаны издателем."
+          ],
+          "factVerdict": "supported-within-publisher-synopsis-scope",
+          "title": "Лавка древностей"
+        },
+        "en": {
+          "decision": "retain-master-description",
+          "text": "Little Nell and her ailing grandfather face persecution by the cruel Quilp, whose malice makes their already precarious lives increasingly dangerous. Around their harrowing story, Dickens creates an exuberant company of comic and grotesque characters, bringing moments of humour into a world of suffering.",
+          "textSha256": "ab74b98334944373ca512e60619a57e4dff7a47056bbe9f546fece991b01a384",
+          "inputPath": "masterRecord.translations.en.description",
+          "sourceUrls": [
+            "https://www.penguinrandomhouse.com/books/40471/the-old-curiosity-shop-by-charles-dickens-introduction-by-peter-washington/"
+          ],
+          "supportedClaims": [
+            "The publisher describes Little Nell, her ailing grandfather and their persecution by Quilp.",
+            "The account combines suffering and suspense with comic, grotesque supporting characters."
+          ],
+          "factVerdict": "supported-within-publisher-synopsis-scope",
+          "title": "The Old Curiosity Shop"
+        }
+      },
+      "editorialDecision": "retain-existing-master-ru-en",
+      "requiredTextChanges": [],
+      "notesRu": [
+        "Аннотации не сообщают финальную судьбу Нелл.",
+        "РГБ01005592950 действительно содержит аналитическую строку том7 «Лавка древностей», 1958; каталог собрания не принят за неподтверждённое отдельное издание."
+      ],
+      "sourceReadings": [
+        {
+          "url": "https://eksmo.ru/book/lavka-drevnostey-ITD1259885/",
+          "locale": "ru",
+          "accessMethod": "web.open publisher page text",
+          "checkedAt": "2026-09-12",
+          "scope": "Work-specific publisher synopsis paragraphs; reader reviews and other-book recommendations excluded",
+          "rawPageSnapshotSaved": false
+        },
+        {
+          "url": "https://www.penguinrandomhouse.com/books/40471/the-old-curiosity-shop-by-charles-dickens-introduction-by-peter-washington/",
+          "locale": "en",
+          "accessMethod": "web.open publisher page text",
+          "checkedAt": "2026-09-12",
+          "scope": "Work-specific publisher synopsis paragraphs; reader reviews and other-book recommendations excluded",
+          "rawPageSnapshotSaved": false
+        }
+      ],
+      "currentMainEvidenceReady": false,
+      "rootMasterEvidenceReady": true,
+      "publicationRecommendation": "eligible-for-root-final-validation",
+      "fullWorkRead": false,
+      "humanReviewClaimed": false,
+      "bibliographicChainFullyReaudited": false,
+      "sourceMasterPointer": "/records/2318",
+      "sourceMasterStatus": {
+        "status": "verified",
+        "reviewedAt": "2026-09-05"
+      },
+      "preservedOriginalDescriptionProvenance": {
+        "ru": {
+          "origin": "official-source-synthesis",
+          "sourceLanguage": "ru",
+          "sourceCountry": "england",
+          "sourceUrls": [
+            "https://eksmo.ru/book/lavka-drevnostey-ITD1259885/",
+            "https://www.penguinrandomhouse.com/books/40471/the-old-curiosity-shop-by-charles-dickens-introduction-by-peter-washington/",
+            "https://www.penguin.co.uk/books/406700/the-old-curiosity-shop-by-dickens-charles/9781448128419"
+          ],
+          "primarySourceUrls": [
+            "https://eksmo.ru/book/lavka-drevnostey-ITD1259885/"
+          ],
+          "transformations": [
+            "condensed",
+            "spoiler-limited",
+            "style-edited"
+          ],
+          "rights": {
+            "textOrigin": "project-original",
+            "copiedSourceText": false
+          },
+          "author": "Codex AI / review_ru_public_gaps",
+          "createdAt": "2026-09-05",
+          "reviewedBy": "Codex AI /root (independent review)",
+          "reviewedAt": "2026-09-05"
+        },
+        "en": {
+          "origin": "official-source-synthesis",
+          "sourceLanguage": "en",
+          "sourceCountry": "england",
+          "sourceUrls": [
+            "https://eksmo.ru/book/lavka-drevnostey-ITD1259885/",
+            "https://www.penguinrandomhouse.com/books/40471/the-old-curiosity-shop-by-charles-dickens-introduction-by-peter-washington/",
+            "https://www.penguin.co.uk/books/406700/the-old-curiosity-shop-by-dickens-charles/9781448128419"
+          ],
+          "primarySourceUrls": [
+            "https://www.penguinrandomhouse.com/books/40471/the-old-curiosity-shop-by-charles-dickens-introduction-by-peter-washington/"
+          ],
+          "transformations": [
+            "condensed",
+            "spoiler-limited",
+            "style-edited"
+          ],
+          "rights": {
+            "textOrigin": "project-original",
+            "copiedSourceText": false
+          },
+          "author": "Codex AI / review_ru_public_gaps",
+          "createdAt": "2026-09-05",
+          "reviewedBy": "Codex AI /root (independent review)",
+          "reviewedAt": "2026-09-05"
+        }
+      },
+      "firstPublicationReview": {
+        "before": 1800,
+        "after": 1840,
+        "year": 1840,
+        "period": "1840-1841",
+        "meaning": "first-serial-publication",
+        "url": "https://dickensmuseum.com/blogs/charles-dickens-museum/112183174-a-hidden-tribute-to-shakespeare",
+        "provider": "Charles Dickens Museum",
+        "country": "england",
+        "access": "museum collection research, direct page read",
+        "note": "Museum identifies serial publication in Master Humphrey's Clock in 1840-1841; the placeholder 1800 was incorrect.",
+        "checkedAt": "2026-09-12",
+        "humanReview": false
+      },
+      "application": {
+        "humanReview": false,
+        "aiReviewer": "Codex AI /root/article_counts (independent editorial review)",
+        "checkedAt": "2026-09-12",
+        "status": "reviewed",
+        "currentCandidateSelected": false,
+        "existingKeyReused": true
+      }
+    },
+    {
+      "recordKey": "england:charles_dickens:openlibrary-works-ol13114895w",
+      "reviewKey": "england:charles_dickens:openlibrary-works-ol13114895w",
+      "reviewer": "/root/article_counts",
+      "reviewKind": "independent-ai-editorial-review",
+      "checkedAt": "2026-09-12",
+      "masterRecordSha256": "14e80baaa522cfaa45e9b88ee87c6bc08ad5f5bb1a7b4c23813a37e60f57af26",
+      "comparedCurrentVersionIds": [
+        "EDV-00888",
+        "EDV-00889"
+      ],
+      "recommendedTexts": {
+        "ru": {
+          "decision": "retain-master-description",
+          "text": "После смерти отца Николас Никльби по воле богатого дяди становится учителем в йоркширской школе для мальчиков. Столкнувшись с жестоким обращением с воспитанниками, он покидает школу вместе со Смайком, отказываясь принять порядки, превращающие детство в мучение.",
+          "textSha256": "08516822e604da8fcebed6f522eebc732efd00026350ccb9af7f5c929891eccb",
+          "inputPath": "masterRecord.translations.ru.description",
+          "sourceUrls": [
+            "https://azbooka.ru/books/zhizn-i-priklyucheniya-nikolasa-niklbi"
+          ],
+          "supportedClaims": [
+            "После смерти отца дядя Ральф направляет Николаса учителем в йоркширскую школу.",
+            "Николас отвергает жестокость школы и уходит вместе со Смайком."
+          ],
+          "factVerdict": "supported-within-publisher-synopsis-scope",
+          "title": "Жизнь и приключения Николаса Никльби"
+        },
+        "en": {
+          "decision": "retain-master-description",
+          "text": "After his father's death leaves the family penniless, Nicholas Nickleby turns to Uncle Ralph for help, only to find an enemy determined to persecute him. Work at a brutal boys' school and adventures with a theatrical family carry Nicholas through a world in which generosity struggles against exploitation.",
+          "textSha256": "6f92291b08f398fd74884698c17c83f1cb3e00a660f09df0bd14315484d66140",
+          "inputPath": "masterRecord.translations.en.description",
+          "sourceUrls": [
+            "https://www.penguinrandomhouse.com/books/40454/nicholas-nickleby-by-charles-dickens-introduction-by-john-carey/"
+          ],
+          "supportedClaims": [
+            "Nicholas seeks help from Uncle Ralph after his father’s death, but faces persecution.",
+            "The publisher names the cruel school and a later spell with the Crummles theatrical troupe."
+          ],
+          "factVerdict": "supported-within-publisher-synopsis-scope",
+          "title": "Nicholas Nickleby"
+        }
+      },
+      "editorialDecision": "retain-existing-master-ru-en",
+      "requiredTextChanges": [],
+      "notesRu": [
+        "Master раскрывает начальный нравственный выбор Николаса, но не семейную тайну Ральфа.",
+        "Разница между более полным историческим RU заглавием и кратким EN Nicholas Nickleby соответствует выбранным издательским заглавиям."
+      ],
+      "sourceReadings": [
+        {
+          "url": "https://azbooka.ru/books/zhizn-i-priklyucheniya-nikolasa-niklbi",
+          "locale": "ru",
+          "accessMethod": "web.open publisher page text",
+          "checkedAt": "2026-09-12",
+          "scope": "Work-specific publisher synopsis paragraphs; reader reviews and other-book recommendations excluded",
+          "rawPageSnapshotSaved": false
+        },
+        {
+          "url": "https://www.penguinrandomhouse.com/books/40454/nicholas-nickleby-by-charles-dickens-introduction-by-john-carey/",
+          "locale": "en",
+          "accessMethod": "web.open publisher page text",
+          "checkedAt": "2026-09-12",
+          "scope": "Work-specific publisher synopsis paragraphs; reader reviews and other-book recommendations excluded",
+          "rawPageSnapshotSaved": false
+        }
+      ],
+      "currentMainEvidenceReady": false,
+      "rootMasterEvidenceReady": true,
+      "publicationRecommendation": "eligible-for-root-final-validation",
+      "fullWorkRead": false,
+      "humanReviewClaimed": false,
+      "bibliographicChainFullyReaudited": false,
+      "sourceMasterPointer": "/records/2327",
+      "sourceMasterStatus": {
+        "status": "verified",
+        "reviewedAt": "2026-09-05"
+      },
+      "preservedOriginalDescriptionProvenance": {
+        "ru": {
+          "origin": "official-source-synthesis",
+          "sourceLanguage": "ru",
+          "sourceCountry": "england",
+          "sourceUrls": [
+            "https://azbooka.ru/books/zhizn-i-priklyucheniya-nikolasa-niklbi",
+            "https://www.penguinrandomhouse.com/books/40454/nicholas-nickleby-by-charles-dickens-introduction-by-john-carey/",
+            "https://www.penguin.co.uk/books/34302/nicholas-nickleby-by-dickens-charles/9780141920221"
+          ],
+          "primarySourceUrls": [
+            "https://azbooka.ru/books/zhizn-i-priklyucheniya-nikolasa-niklbi"
+          ],
+          "transformations": [
+            "condensed",
+            "spoiler-limited",
+            "style-edited"
+          ],
+          "rights": {
+            "textOrigin": "project-original",
+            "copiedSourceText": false
+          },
+          "author": "Codex AI / review_ru_public_gaps",
+          "createdAt": "2026-09-05",
+          "reviewedBy": "Codex AI /root (independent review)",
+          "reviewedAt": "2026-09-05"
+        },
+        "en": {
+          "origin": "official-source-synthesis",
+          "sourceLanguage": "en",
+          "sourceCountry": "england",
+          "sourceUrls": [
+            "https://azbooka.ru/books/zhizn-i-priklyucheniya-nikolasa-niklbi",
+            "https://www.penguinrandomhouse.com/books/40454/nicholas-nickleby-by-charles-dickens-introduction-by-john-carey/",
+            "https://www.penguin.co.uk/books/34302/nicholas-nickleby-by-dickens-charles/9780141920221"
+          ],
+          "primarySourceUrls": [
+            "https://www.penguinrandomhouse.com/books/40454/nicholas-nickleby-by-charles-dickens-introduction-by-john-carey/"
+          ],
+          "transformations": [
+            "condensed",
+            "spoiler-limited",
+            "style-edited"
+          ],
+          "rights": {
+            "textOrigin": "project-original",
+            "copiedSourceText": false
+          },
+          "author": "Codex AI / review_ru_public_gaps",
+          "createdAt": "2026-09-05",
+          "reviewedBy": "Codex AI /root (independent review)",
+          "reviewedAt": "2026-09-05"
+        }
+      },
+      "firstPublicationReview": {
+        "before": 1800,
+        "after": 1838,
+        "year": 1838,
+        "period": "1838-1839",
+        "meaning": "first-serial-publication",
+        "url": "https://dickensmuseum.com/blogs/explore/nicholas-nickleby-manuscript",
+        "provider": "Charles Dickens Museum",
+        "country": "england",
+        "access": "museum manuscript research, direct page read",
+        "note": "Museum explicitly dates monthly publication to 1838-1839; the placeholder 1800 was incorrect.",
+        "checkedAt": "2026-09-12",
+        "humanReview": false
+      },
+      "application": {
+        "humanReview": false,
+        "aiReviewer": "Codex AI /root/article_counts (independent editorial review)",
+        "checkedAt": "2026-09-12",
+        "status": "reviewed",
+        "currentCandidateSelected": false,
+        "existingKeyReused": true
+      }
+    },
+    {
+      "recordKey": "england:charles_dickens:openlibrary-works-ol8300174w",
+      "reviewKey": "england:charles_dickens:openlibrary-works-ol8300174w",
+      "reviewer": "/root/article_counts",
+      "reviewKind": "independent-ai-editorial-review",
+      "checkedAt": "2026-09-12",
+      "masterRecordSha256": "4d802ba1b690cf690b02f1839815e87558006951461e995ae9bf021915d99837",
+      "comparedCurrentVersionIds": [
+        "EDV-00890",
+        "EDV-00891"
+      ],
+      "recommendedTexts": {
+        "ru": {
+          "decision": "retain-master-description",
+          "text": "Во время антикатолического мятежа в Лондоне 1780 года простодушный Барнеби Радж оказывается втянут в массовое насилие. Религиозная вражда переплетается с историей влюблённых из враждующих семей и тайной давних убийств, связывающей настоящее героев с их прошлым.",
+          "textSha256": "50c6592d83e4abc44e48310e8f884e08735d0f86cba8d6e10e7e4fb723ea88f8",
+          "inputPath": "masterRecord.translations.ru.description",
+          "sourceUrls": [
+            "https://azbooka.ru/books/barnebi-radzh-hevz"
+          ],
+          "supportedClaims": [
+            "Издатель относит мятеж к Лондону1780 года и отдельно описывает втянутого в него героя.",
+            "Религиозный конфликт связан с враждой семей, любовным сюжетом и тайной прошлых убийств."
+          ],
+          "factVerdict": "supported-within-publisher-synopsis-scope",
+          "title": "Барнеби Радж"
+        },
+        "en": {
+          "decision": "retain-master-description",
+          "text": "An old murder mystery and the troubled past of Barnaby Rudge become entangled with the Gordon Riots of 1780, as London descends into mob violence. Conflicts between families and between Protestants and Catholics give this historical novel the menace and suspense of a Gothic melodrama.",
+          "textSha256": "a72acf7521818861db7e675d80e253648012a2d150fa0b86c77d0c948b5041b0",
+          "inputPath": "masterRecord.translations.en.description",
+          "sourceUrls": [
+            "https://www.penguinrandomhouse.com/books/286307/barnaby-rudge-by-charles-dickens/"
+          ],
+          "supportedClaims": [
+            "The publisher dates the Gordon Riots to1780 and describes mob violence in London.",
+            "Family conflicts and older murders frame the novel’s historical and Gothic elements."
+          ],
+          "factVerdict": "supported-within-publisher-synopsis-scope",
+          "title": "Barnaby Rudge"
+        }
+      },
+      "editorialDecision": "retain-existing-master-ru-en",
+      "requiredTextChanges": [],
+      "notesRu": [
+        "Издатель RU пишет о трёх давних убийствах, EN — о начальном двойном убийстве. Master не фиксирует число и тем самым не смешивает разные раскрывающиеся обстоятельства; current числовую формулировку не переносить.",
+        "Имя «Барнеби» сохранено по выбранному RU заглавию; current «Барнаби» создаёт лишнее расхождение.",
+        "РГБ01005592950 содержит аналитическую строку том8 «Барнеби Радж», 1958."
+      ],
+      "sourceReadings": [
+        {
+          "url": "https://azbooka.ru/books/barnebi-radzh-hevz",
+          "locale": "ru",
+          "accessMethod": "web.open publisher page text",
+          "checkedAt": "2026-09-12",
+          "scope": "Work-specific publisher synopsis paragraphs; reader reviews and other-book recommendations excluded",
+          "rawPageSnapshotSaved": false
+        },
+        {
+          "url": "https://www.penguinrandomhouse.com/books/286307/barnaby-rudge-by-charles-dickens/",
+          "locale": "en",
+          "accessMethod": "web.open publisher page text",
+          "checkedAt": "2026-09-12",
+          "scope": "Work-specific publisher synopsis paragraphs; reader reviews and other-book recommendations excluded",
+          "rawPageSnapshotSaved": false
+        }
+      ],
+      "currentMainEvidenceReady": false,
+      "rootMasterEvidenceReady": true,
+      "publicationRecommendation": "eligible-for-root-final-validation",
+      "fullWorkRead": false,
+      "humanReviewClaimed": false,
+      "bibliographicChainFullyReaudited": false,
+      "sourceMasterPointer": "/records/2328",
+      "sourceMasterStatus": {
+        "status": "verified",
+        "reviewedAt": "2026-09-05"
+      },
+      "preservedOriginalDescriptionProvenance": {
+        "ru": {
+          "origin": "official-source-synthesis",
+          "sourceLanguage": "ru",
+          "sourceCountry": "england",
+          "sourceUrls": [
+            "https://azbooka.ru/books/barnebi-radzh-hevz",
+            "https://www.penguinrandomhouse.com/books/286307/barnaby-rudge-by-charles-dickens/",
+            "https://www.penguin.co.uk/books/34458/barnaby-rudge-by-ed-john-bowen-charles-dickens/9780141903897"
+          ],
+          "primarySourceUrls": [
+            "https://azbooka.ru/books/barnebi-radzh-hevz"
+          ],
+          "transformations": [
+            "condensed",
+            "spoiler-limited",
+            "style-edited"
+          ],
+          "rights": {
+            "textOrigin": "project-original",
+            "copiedSourceText": false
+          },
+          "author": "Codex AI / review_ru_public_gaps",
+          "createdAt": "2026-09-05",
+          "reviewedBy": "Codex AI /root (independent review)",
+          "reviewedAt": "2026-09-05"
+        },
+        "en": {
+          "origin": "official-source-synthesis",
+          "sourceLanguage": "en",
+          "sourceCountry": "england",
+          "sourceUrls": [
+            "https://azbooka.ru/books/barnebi-radzh-hevz",
+            "https://www.penguinrandomhouse.com/books/286307/barnaby-rudge-by-charles-dickens/",
+            "https://www.penguin.co.uk/books/34458/barnaby-rudge-by-ed-john-bowen-charles-dickens/9780141903897"
+          ],
+          "primarySourceUrls": [
+            "https://www.penguinrandomhouse.com/books/286307/barnaby-rudge-by-charles-dickens/"
+          ],
+          "transformations": [
+            "condensed",
+            "spoiler-limited",
+            "style-edited"
+          ],
+          "rights": {
+            "textOrigin": "project-original",
+            "copiedSourceText": false
+          },
+          "author": "Codex AI / review_ru_public_gaps",
+          "createdAt": "2026-09-05",
+          "reviewedBy": "Codex AI /root (independent review)",
+          "reviewedAt": "2026-09-05"
+        }
+      },
+      "firstPublicationReview": {
+        "before": 1840,
+        "after": 1841,
+        "year": 1841,
+        "period": "1841-02 to 1841-11",
+        "meaning": "first-serial-publication",
+        "url": "https://searcharchives.bl.uk/?q=040-000001309&sort=hierarchy",
+        "authorityId": "british-library",
+        "provider": "british-library",
+        "country": "england",
+        "access": "indexed primary archive record Add MS 88903/1/7; direct open returned internal error",
+        "note": "British Library scope note explicitly dates serial publication in Master Humphrey's Clock from February to November 1841. The manuscript/contract dates include 1840 and must not replace publication chronology.",
+        "checkedAt": "2026-09-12",
+        "humanReview": false
+      },
+      "application": {
+        "humanReview": false,
+        "aiReviewer": "Codex AI /root/article_counts (independent editorial review)",
+        "checkedAt": "2026-09-12",
+        "status": "reviewed",
+        "currentCandidateSelected": false,
+        "existingKeyReused": true
+      }
+    }
+  ],
+  "validation": {
+    "checkedAt": "2026-09-12",
+    "scope": "Local source integration only; no build, generated catalog update, publication, merge, or deployment performed.",
+    "runtime": {
+      "canonicalCount": 9761,
+      "keySetPreserved": true,
+      "nonTargetCount": 9751,
+      "nonTargetChanged": [],
+      "protectedChanged": [],
+      "beforeReady": 46,
+      "preservedReady": 46,
+      "newReady": [
+        "england:charles_dickens:article-series-1tdjfsi",
+        "england:charles_dickens:david-copperfield-editorial",
+        "england:charles_dickens:great-expectations",
+        "england:charles_dickens:oliver-twist-editorial",
+        "england:charles_dickens:openlibrary-works-ol13114895w",
+        "england:charles_dickens:openlibrary-works-ol14868510w",
+        "england:charles_dickens:openlibrary-works-ol14869167w",
+        "england:charles_dickens:openlibrary-works-ol32466w",
+        "england:charles_dickens:openlibrary-works-ol8193387w",
+        "england:charles_dickens:openlibrary-works-ol8300174w"
+      ],
+      "afterReady": 56,
+      "targetResults": [
+        {
+          "key": "england:charles_dickens:great-expectations",
+          "sha256": "a1c1cb62bba520333675d48e44f855c7c647465306adcd304e22286cae0df82f",
+          "public": true,
+          "issues": [],
+          "ready": true
+        },
+        {
+          "key": "england:charles_dickens:oliver-twist-editorial",
+          "sha256": "bcc408170351fc938b1ddbbf4e025bb6a4e0b295a99a388de8816ea4c11088db",
+          "public": true,
+          "issues": [],
+          "ready": true
+        },
+        {
+          "key": "england:charles_dickens:david-copperfield-editorial",
+          "sha256": "2a93763cb21bd5c18b4e61a40b77678a173591dc8f08cb827612e2dd4339e9f0",
+          "public": true,
+          "issues": [],
+          "ready": true
+        },
+        {
+          "key": "england:charles_dickens:article-series-1tdjfsi",
+          "sha256": "b9891b271e5e06bda5406247d36698ee5f8d444229e9f226a34899517c6318ea",
+          "public": true,
+          "issues": [],
+          "ready": true
+        },
+        {
+          "key": "england:charles_dickens:openlibrary-works-ol32466w",
+          "sha256": "4491789be88fa6b4cf3d048887e059f0cb34ff3c3c7e1b7f2545110a877d29f2",
+          "public": true,
+          "issues": [],
+          "ready": true
+        },
+        {
+          "key": "england:charles_dickens:openlibrary-works-ol8193387w",
+          "sha256": "f4f47eee41cc10fbcff1cca25fc24fa278501d17b800fb71465d071e8b1f1e42",
+          "public": true,
+          "issues": [],
+          "ready": true
+        },
+        {
+          "key": "england:charles_dickens:openlibrary-works-ol14868510w",
+          "sha256": "9b4478655337f2552d6279aabda0c300dc2262b327b55ecc99205ccf78c55d20",
+          "public": true,
+          "issues": [],
+          "ready": true
+        },
+        {
+          "key": "england:charles_dickens:openlibrary-works-ol14869167w",
+          "sha256": "2e65856ac0ff7955896fc8ba6d7a2b236ff37132484973c2201d0dc9e5d566c2",
+          "public": true,
+          "issues": [],
+          "ready": true
+        },
+        {
+          "key": "england:charles_dickens:openlibrary-works-ol13114895w",
+          "sha256": "622a3ddef2be0099e4af76ea16802adeeb063d56a737a224842a107f2cf89d0d",
+          "public": true,
+          "issues": [],
+          "ready": true
+        },
+        {
+          "key": "england:charles_dickens:openlibrary-works-ol8300174w",
+          "sha256": "c0cff72519b35aa5aae5f244d92b772cbc48f4c1ad6fbc3438c8f7880812ed47",
+          "public": true,
+          "issues": [],
+          "ready": true
+        }
+      ]
+    },
+    "typecheck": {
+      "command": "node node_modules/typescript/bin/tsc --noEmit",
+      "status": "passed"
+    },
+    "unitTests": {
+      "runner": "vitest run --configLoader native",
+      "uniqueFiles": 11,
+      "uniqueTests": 156,
+      "newDickensTests": 16,
+      "status": "passed-after-updating-authorized-count-fixtures",
+      "note": "Previously affected 155 tests passed; the final targeted run validates the new complete-runtime receipt and all relevant historical/new governance guards.",
+      "finalTargetedRun": {
+        "files": 5,
+        "tests": 68,
+        "status": "passed"
+      }
+    },
+    "e2e": {
+      "path": "tests/e2e/archive-search-calendar.spec.mjs",
+      "countsUpdated": [
+        "46 -> 56"
+      ],
+      "filtersChanged": false,
+      "executed": false,
+      "reason": "Generated public/admin catalogs and build intentionally deferred to root integration."
+    },
+    "governance": {
+      "status": "passed-with-separate-r49n-owner-attestation",
+      "historicalPinsChanged": false,
+      "testsPassed": 52,
+      "testsFailed": 0,
+      "attestationPath": "scripts/governance/book-r49n-dickens-reviewed-20260912.json",
+      "initialWithoutAttestation": {
+        "status": "new-owner-attestation-required",
+        "historicalPinsChanged": false,
+        "testsPassed": 46,
+        "testsFailed": 2,
+        "failures": [
+          {
+            "file": "scripts/lib/stage5-content-data-lock.test.mjs",
+            "line": 627,
+            "scope": "canonical country, book and writer records",
+            "expected": {
+              "files": 557,
+              "sha256": "35947967c805bb1a6973c702b296ffd1a56e28cac512b9635bb9cd2a162dbb55"
+            },
+            "actual": {
+              "files": 558,
+              "sha256": "67f4ab49f98d66f755a760d6609e9c106d9581d162ab469f65f2a5367c44679d"
+            },
+            "cause": "Exactly one new scoped Dickens source overlay."
+          },
+          {
+            "file": "scripts/lib/stage5-content-data-lock.test.mjs",
+            "line": 902,
+            "scope": "BOOK-ARCHIVE-OWNER-LOCK",
+            "expected": {
+              "files": 9,
+              "sha256": "5f9a3fc115e4022b6a128cb592191b8e0a3c317e55e383e5b95651d45f97e383"
+            },
+            "actual": {
+              "files": 9,
+              "sha256": "93c961473375006afd66fcd6427eec2a3f0ccaec9af13f94eaa72e67e9d1ee59"
+            },
+            "cause": "Exact new overlay import and application before the existing final legacy quarantine guard."
+          }
+        ]
+      }
+    },
+    "checkedSourceSha256": {
+      "src/data/countries/bookR49nDickensReviewed20260912.ts": "7d6e7f67e68cd547f7db6f688bab92b341635a9b6a58beadb99a5b7bf1277bff",
+      "src/data/countries/bookR49nDickensReviewed20260912.test.ts": "4ea30fdaee6581ab5ede8e020963d95fe54874ef071359e9b05354aaea7240f7",
+      "src/data/bookArchive.ts": "032da5571f8bf81a63f8b004ed9f7be9354348c4f3c31cbc51316ab401e8d578",
+      "src/data/bookArchive.test.ts": "9735bb027ccbeecd34cc832e569afc854b406a7d1e703e1bb359a8ff48959266",
+      "src/data/bookArchiveQueue.test.ts": "8372364b1f81f99344d283d588a09d70d37f5b1893cad6487cbb4690efd81cda",
+      "src/data/userSuppliedBookCovers.test.ts": "f809234dfc29a168afcd5bb78d1669240660fbfdfaa3e97f19b909e7a88d7ed5",
+      "src/data/userSuppliedBookCoversBatch20260813.test.ts": "b73dde6ccd14d304dc85d0483173643c43b257c987e006ce24d52b9c21f33659",
+      "src/data/userSuppliedBookCoversBatch20260820.test.ts": "51265f6a3e18b70a06e57ec42a0f707bdb5ba47f0d8c6ce69e085cad83acdc71",
+      "src/data/verifiedBookSupplements.test.ts": "7ae0e00218544d9185ab6cdc6356c8fe6be056667947115c8d70a4af6c9e730f",
+      "src/data/countries/writerBiographyLegacyCorrections.test.ts": "69ba7817688389291cbee4b26265c9dbdf57660893b067b693c4d28a57ce7e15",
+      "tests/e2e/archive-search-calendar.spec.mjs": "07ff87df38975534f3405c76d874bdaf99bc621a5d2275d0afe8820f5dd6c71c",
+      "scripts/governance/book-r49n-dickens-reviewed-20260912.json": "e7b875db1307fdbdc17bbe9329559bc9dc289d2dc735a8aa362f8beb086db259",
+      "scripts/lib/reviewed-r49n-dickens.mjs": "bca9f185c116923e8339ce7ce45f917bb521daa6c2c89f1d5a76baa4b87aee42",
+      "scripts/lib/reviewed-r49n-dickens.test.mjs": "6ca44fe0cca4487192daa4b8a90028315f9ba2e048e54d8ee246aa2d06b5d5c3",
+      "scripts/lib/stage5-content-data-lock.test.mjs": "725d576fc26f92bff908efbefe956dd7150a6ed4eecce125ac4081ea3960b4fa"
+    }
+  }
+}
