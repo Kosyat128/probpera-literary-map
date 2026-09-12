@@ -15,7 +15,7 @@ describe("book archive editorial queue", () => {
     const queue = classifyBookArchiveQueue(canonicalArchive);
     const keys = queue.all.map((item) => item.key);
 
-    expect(queue.counts).toEqual({ total: 9_761, verified: 46, pending: 9_715 });
+    expect(queue.counts).toEqual({ total: 9_761, verified: 56, pending: 9_705 });
     expect(queue.counts.total).toBe(canonicalArchive.length);
     expect(queue.counts.verified + queue.counts.pending).toBe(
       queue.counts.total

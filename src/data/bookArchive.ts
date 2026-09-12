@@ -37,6 +37,7 @@ import { applyBookEvidenceV2PublicHolds01Work } from "./countries/bookEvidenceV2
 import { applyBookEvidenceV2PublicQuarantine01Work } from "./countries/bookEvidenceV2PublicQuarantine01";
 import { applyBookEvidenceV2ExpansionBatch01Work } from "./countries/bookEvidenceV2ExpansionBatch01";
 import { applyBookEvidenceV2LegacyVerifiedReaudit01Work } from "./countries/bookEvidenceV2LegacyVerifiedReaudit01";
+import { applyBookR49nDickensReviewed20260912Work } from "./countries/bookR49nDickensReviewed20260912";
 
 export type BookArchiveEntry = WorkProfile & {
   countryId: string;
@@ -706,12 +707,17 @@ export function buildBookArchive(
             )
           )
         );
+        const reviewedWork = applyBookR49nDickensReviewed20260912Work(
+          country.id,
+          writer.id,
+          expandedWork
+        );
         // Final publication guard: keep this after every public/expansion
         // overlay so a later enrichment cannot re-promote a held legacy card.
         const work = applyBookEvidenceV2LegacyVerifiedReaudit01Work(
           country.id,
           writer.id,
-          expandedWork
+          reviewedWork
         );
         const workId = `${country.id}:${writer.id}:${work.id}`;
         const edition = (

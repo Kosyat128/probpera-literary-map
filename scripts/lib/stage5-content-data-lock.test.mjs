@@ -9,6 +9,11 @@ import { parseCss } from "../audit-stage5-baseline.mjs";
 import { projectReviewedReadingDesign, readingDesignAttestation } from "./reviewed-reading-design.mjs";
 import { projectReviewedHeaderLibrary } from "./reviewed-header-library.mjs";
 import {
+  isReviewedR49nDickensAddition,
+  projectReviewedR49nDickens,
+  reviewedR49nDickensAdditionPaths,
+} from "./reviewed-r49n-dickens.mjs";
+import {
   adminArticlePublicationPermissionsAttestation,
   bookDatabaseEditorialOwnerAttestation,
   currentIntegrationGovernanceFingerprintRegistry,
@@ -28,9 +33,10 @@ const printer = ts.createPrinter({ newLine: ts.NewLineKind.LineFeed });
 // boundary; existing manifests, historical hashes and negative tests stay intact.
 function readGovernanceSource(absolutePath, encoding) {
   if (encoding !== "utf8") throw new Error("Governance source must be UTF-8 text");
+  const relativePath = path.relative(root, absolutePath).replaceAll("\\", "/");
   return projectReviewedHeaderLibrary(
-    path.relative(root, absolutePath).replaceAll("\\", "/"),
-    readFileSync(absolutePath, encoding)
+    relativePath,
+    projectReviewedR49nDickens(relativePath, readFileSync(absolutePath, encoding))
   );
 }
 
@@ -225,9 +231,12 @@ function fingerprint(paths, include) {
     ...new Set(
       paths
         .flatMap((entry) => walk(path.join(root, entry)))
-        .filter((absolutePath) =>
-          include(repositoryPath(absolutePath))
-        )
+        .filter((absolutePath) => {
+          const relativePath = repositoryPath(absolutePath);
+          if (!include(relativePath)) return false;
+          return !reviewedR49nDickensAdditionPaths.has(relativePath) ||
+            !isReviewedR49nDickensAddition(relativePath, readFileSync(absolutePath, "utf8"));
+        })
     ),
   ]
     .sort((first, second) =>
