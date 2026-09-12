@@ -3,7 +3,7 @@
   "id": "HEADER-LIBRARY-OWNER-REFINEMENT-20260912",
   "authorizedOn": "2026-09-12",
   "baselineMainSha": "ba3336a05d83ff653984a43300bf4805e578b629",
-  "authorization": "The owner requested restoration of the right-hand social/Boosty actions and prior language control, Proba Pera Library naming, accurate publication counts, and a compact article menu; database publication remains paused pending a corrected archive.",
+  "authorization": "The owner requested restoration of desktop social and Boosty actions and the prior language control, Proba Pera Library naming, accurate publication counts, a complete compact article menu, a country-card masthead integrated and aligned with the left controls, the former fact ornament size, and centered country metric values and labels. Book editorial review and publication are separately authorized and remain subject to Evidence V2.",
   "allowedPaths": [
     ".github/workflows/dispatch-premium-database-reconciliation.yml",
     "apps/admin/app/(dashboard)/homepage/page.tsx",
@@ -24,6 +24,7 @@
     "src/i18n/InterfaceLanguage.tsx",
     "src/index.css",
     "src/loading/DeferredHomepageArchives.tsx",
+    "src/styles/book-month-news-composition.css",
     "src/styles/header-preserved.css",
     "src/styles/navigation-panels.css",
     "src/styles/site-typography.css"
@@ -48,6 +49,7 @@
     "src/i18n/InterfaceLanguage.tsx": "efb32519e5f2ea571f6ca392cd2573f3e8990a26bf163c54f82402793b5b4412",
     "src/index.css": "598ace409b7315b67ff389a96eb84fa87a417b1f35107f00e6810cae1a053aa3",
     "src/loading/DeferredHomepageArchives.tsx": "c5618851eb42ad6144d4c3f4cbe03ccb3bbf9c6332aaacc2578dd5f65b67523c",
+    "src/styles/book-month-news-composition.css": "ed7d9785df44b81b7b2f8d6ab934ef7480b7e5cec022b507e3e1d687c96a9a13",
     "src/styles/header-preserved.css": "61722182a4d3b6a09af4707694b03c2c138f4737b4ad4ccd958a63112ac48b7f",
     "src/styles/navigation-panels.css": "321b6b856f3c2742efeb1afba200e4f74abcd094eca29183340ef8405432ce60",
     "src/styles/site-typography.css": "b1aeac79c1e732e1d761b8ccc008cda5d437c0058e51b381ee10b9880ecac526"
@@ -56,7 +58,7 @@
     {
       "id": ".github/workflows/dispatch-premium-database-reconciliation.yml:1",
       "path": ".github/workflows/dispatch-premium-database-reconciliation.yml",
-      "reason": "Exclude only the named UI helpers and their tests from automatic database dispatch while the user has paused database work; preserve every archive dependency trigger.",
+      "reason": "Exclude only named presentation helpers that do not feed the literary database release, while preserving every archive dependency trigger.",
       "before": "      - \"scripts/lib/book-evidence-v2-attestations.mjs\"\n      - \"scripts/lib/literary-archive-atomic-release.mjs\"\n      - \"scripts/database/verify-book-cover-batch-20260820.mjs\"\n      - \"scripts/database/build-production-migration-plan.mjs\"\n      - \"src/data/**\"\n      - \"data/book-canon-source-registry.json\"\n      - \"package.json\"\n      - \"package-lock.json\"\n      - \".github/workflows/reconcile-production-database.yml\"\n\n",
       "after": "      - \"scripts/lib/book-evidence-v2-attestations.mjs\"\n      - \"scripts/lib/literary-archive-atomic-release.mjs\"\n      - \"scripts/database/verify-book-cover-batch-20260820.mjs\"\n      - \"scripts/database/build-production-migration-plan.mjs\"\n      - \"src/data/**\"\n      # These presentation helpers do not feed the literary database release.\n      - \"!src/data/articles/publicationStats.ts\"\n      - \"!src/data/articles/publicationStats.test.ts\"\n      - \"!src/data/cms/homepage.ts\"\n      - \"!src/data/cms/homepage.test.ts\"\n      - \"!src/data/cms/coreSectionTitle.ts\"\n      - \"data/book-canon-source-registry.json\"\n      - \"package.json\"\n      - \"package-lock.json\"\n      - \".github/workflows/reconcile-production-database.yml\"\n\n"
     },
@@ -469,16 +471,30 @@
     {
       "id": "src/index.css:1",
       "path": "src/index.css",
-      "reason": "Restore desktop social and Boosty actions and the earlier header language control while keeping the narrow mobile header compact.",
-      "before": "  margin-top: 12px;\n  color: #746177;\n  font-size: var(--type-caption);\n}\n\n/* Keep fallback-font navigation clear before restoring the full action group. */\n@media (max-width: 1600px) {\n  .global-search-trigger {\n    width: 38px;\n    justify-content: center;\n    padding: 0;\n",
-      "after": "  margin-top: 12px;\n  color: #746177;\n  font-size: var(--type-caption);\n}\n\n/* Compact the search label while preserving access to every header action. */\n@media (max-width: 1600px) {\n  .global-search-trigger {\n    width: 38px;\n    justify-content: center;\n    padding: 0;\n"
+      "reason": "Restore the reviewed compact menu and integrate the country-card masthead with aligned controls and centered metric values and labels at desktop and mobile widths.",
+      "before": "\n.editorial-workbench-preview output {\n  display: block;\n  margin-top: 12px;\n  color: #746177;\n  font-size: var(--type-caption);\n}\n\n/* Keep fallback-font navigation clear before restoring the full action group. */\n@media (max-width: 1600px) {\n  .global-search-trigger {\n    width: 38px;\n    justify-content: center;\n    padding: 0;\n  }\n\n  .global-search-trigger small,\n  .global-search-trigger kbd {\n    display: none;\n  }\n\n  .header-actions .header-socials {\n    display: none;\n  }\n}\n\n@media (max-width: 1100px) {\n  .book-of-day {\n    grid-row: auto;\n    min-height: 520px;\n  }\n\n",
+      "after": "\n.editorial-workbench-preview output {\n  display: block;\n  margin-top: 12px;\n  color: #746177;\n  font-size: var(--type-caption);\n}\n\n/* Compact the search label while preserving access to every header action. */\n@media (max-width: 1600px) {\n  .global-search-trigger {\n    width: 38px;\n    justify-content: center;\n    padding: 0;\n  }\n\n  .global-search-trigger small,\n  .global-search-trigger kbd {\n    display: none;\n  }\n}\n\n@media (max-width: 1100px) {\n  .book-of-day {\n    grid-row: auto;\n    min-height: 520px;\n  }\n\n"
     },
     {
       "id": "src/index.css:2",
       "path": "src/index.css",
-      "reason": "Restore desktop social and Boosty actions and the earlier header language control while keeping the narrow mobile header compact.",
-      "before": "\n  .global-search-trigger small,\n  .global-search-trigger kbd {\n    display: none;\n  }\n\n  .header-actions .header-socials {\n    display: none;\n  }\n}\n\n@media (max-width: 1100px) {\n  .book-of-day {\n    grid-row: auto;\n",
-      "after": "\n  .global-search-trigger small,\n  .global-search-trigger kbd {\n    display: none;\n  }\n}\n\n@media (max-width: 1100px) {\n  .book-of-day {\n    grid-row: auto;\n"
+      "reason": "Restore the reviewed compact menu and integrate the country-card masthead with aligned controls and centered metric values and labels at desktop and mobile widths.",
+      "before": "    top: 56px;\n  }\n\n  .atlas-experience-surface[data-atlas-view=\"embedded\"] .globe-copy {\n    top: 79px;\n  }\n\n  .atlas-experience-surface[data-atlas-view=\"embedded\"] .atlas-country-presentation {\n    top: 56px;\n  }\n\n  .atlas-experience-surface[data-atlas-view=\"embedded\"] .atlas-filters {\n    justify-content: safe center;\n  }\n\n  .atlas-experience-surface[data-atlas-view=\"immersive\"][data-atlas-panel-state=\"open\"] .globe-style-switch-toggle {\n    right: calc(max(18px, env(safe-area-inset-right)) + 458px);\n",
+      "after": "    top: 56px;\n  }\n\n  .atlas-experience-surface[data-atlas-view=\"embedded\"] .globe-copy {\n    top: 79px;\n  }\n\n  .atlas-experience-surface[data-atlas-view=\"embedded\"] .atlas-country-presentation {\n    top: 16px;\n  }\n\n  .atlas-experience-surface[data-atlas-view=\"embedded\"] .atlas-filters {\n    justify-content: safe center;\n  }\n\n  .atlas-experience-surface[data-atlas-view=\"immersive\"][data-atlas-panel-state=\"open\"] .globe-style-switch-toggle {\n    right: calc(max(18px, env(safe-area-inset-right)) + 458px);\n"
+    },
+    {
+      "id": "src/index.css:3",
+      "path": "src/index.css",
+      "reason": "Restore the reviewed compact menu and integrate the country-card masthead with aligned controls and centered metric values and labels at desktop and mobile widths.",
+      "before": "\n.country-panel .panel-topline > div {\n  display: flex;\n  min-width: 0;\n  height: 44px;\n  gap: 8px;\n  align-items: center;\n  overflow: hidden;\n  transform: translateY(2px);\n}\n\n.country-panel .panel-topline .eyebrow {\n  min-width: 0;\n  overflow: hidden;\n  font-size: var(--type-caption);\n  line-height: 1.2;\n  letter-spacing: 0.075em;\n",
+      "after": "\n.country-panel .panel-topline > div {\n  display: flex;\n  min-width: 0;\n  height: 44px;\n  gap: 8px;\n  align-items: center;\n  overflow: hidden;\n  transform: none;\n}\n\n.country-panel .panel-topline .eyebrow {\n  min-width: 0;\n  overflow: hidden;\n  font-size: var(--type-caption);\n  line-height: 1.2;\n  letter-spacing: 0.075em;\n"
+    },
+    {
+      "id": "src/index.css:4",
+      "path": "src/index.css",
+      "reason": "Restore the reviewed compact menu and integrate the country-card masthead with aligned controls and centered metric values and labels at desktop and mobile widths.",
+      "before": "  .globe-edition-scroll-cue,\n  .globe-edition-compact-select,\n  .globe-touch-activation\n) {\n  visibility: hidden;\n  pointer-events: none;\n}\n\n/* Country cards: an opaque sticky masthead, explicit action affordances, and\n   compact mobile tabs that never sacrifice the complete label. */\n.country-panel {\n  scroll-padding-top: 72px;\n}\n\n.country-panel .panel-topline {\n  top: 0;\n  background:\n    linear-gradient(90deg, #fffdf8, #faf2e7);\n  backdrop-filter: none;\n}\n\n.country-metrics > .country-metric {\n  position: relative;\n}\n\n.country-metrics > .country-metric--static {\n  cursor: default;\n}\n\n.country-metrics > .country-metric--action:not(:disabled)::after {\n  position: absolute;\n",
+      "after": "  .globe-edition-scroll-cue,\n  .globe-edition-compact-select,\n  .globe-touch-activation\n) {\n  visibility: hidden;\n  pointer-events: none;\n}\n\n/* Country cards: an integrated sticky masthead, explicit action affordances, and\n   compact mobile tabs that never sacrifice the complete label. */\n.country-panel {\n  padding-top: 0;\n  scroll-padding-top: 72px;\n}\n\n.country-panel .panel-topline {\n  top: 0;\n  min-height: 64px;\n  margin-inline: -27px;\n  padding: 8px 27px;\n  background:\n    linear-gradient(90deg, #fffdf8, #faf2e7);\n  border-width: 0 0 1px;\n  border-radius: 0;\n  box-shadow: none;\n  backdrop-filter: none;\n}\n\n@media (max-width: 680px) {\n  .country-panel .panel-topline {\n    margin-inline: -17px;\n    padding-inline: 17px;\n  }\n}\n\n.country-metrics > .country-metric {\n  position: relative;\n  grid-template-columns: minmax(0, 1fr);\n  align-items: center;\n  align-content: center;\n  justify-items: center;\n  row-gap: 4px;\n  padding-block: 12px;\n  text-align: center;\n}\n\n.country-metrics > .country-metric > :is(strong, span) {\n  align-self: center;\n  margin: 0;\n  text-align: center;\n}\n\n.country-metrics > .country-metric > span {\n  max-width: 100%;\n}\n\n.country-metrics > .country-metric.is-active > span::after {\n  position: absolute;\n  top: 10px;\n  left: 10px;\n  margin: 0;\n}\n\n@media (min-width: 361px) and (max-width: 420px) {\n  .country-metrics {\n    gap: 6px;\n  }\n\n  .country-metrics > .country-metric {\n    padding-inline: 2px;\n  }\n\n  .country-metrics > .country-metric > span {\n    font-size: 12px;\n  }\n}\n\n@media (min-width: 361px) and (max-width: 374px) {\n  .country-metrics {\n    gap: 4px;\n  }\n\n  .country-metrics > .country-metric {\n    padding-inline: 0;\n  }\n}\n\n@media (max-width: 360px) {\n  .country-metrics > .country-metric {\n    grid-template-rows: auto auto;\n  }\n}\n\n.country-metrics > .country-metric--static {\n  cursor: default;\n}\n\n.country-metrics > .country-metric--action:not(:disabled)::after {\n  position: absolute;\n"
     },
     {
       "id": "src/loading/DeferredHomepageArchives.tsx:1",
@@ -486,6 +502,27 @@
       "reason": "Use the owner-requested library name in loading and error states and remove the obsolete article-count callback.",
       "before": "            aria-live=\"polite\"\n          >\n            <span aria-hidden=\"true\">✦</span>\n            <strong id=\"stage5-books-loading-title\">\n              {effectiveStatus === \"error\"\n                ? t(\"Книжный архив временно недоступен\")\n                : effectiveStatus === \"idle\"\n                  ? t(\"Книжный архив загрузится при приближении\")\n                  : t(\"Собираем книжный архив…\")}\n            </strong>\n            <p>\n              {t(\n                \"Место полки уже зарезервировано, поэтому страница не сдвинется.\"\n              )}\n",
       "after": "            aria-live=\"polite\"\n          >\n            <span aria-hidden=\"true\">✦</span>\n            <strong id=\"stage5-books-loading-title\">\n              {effectiveStatus === \"error\"\n                ? t(\"Библиотека временно недоступна\")\n                : effectiveStatus === \"idle\"\n                  ? t(\"Библиотека загрузится при приближении\")\n                  : t(\"Загружаем библиотеку…\")}\n            </strong>\n            <p>\n              {t(\n                \"Место полки уже зарезервировано, поэтому страница не сдвинется.\"\n              )}\n"
+    },
+    {
+      "id": "src/styles/book-month-news-composition.css:1",
+      "path": "src/styles/book-month-news-composition.css",
+      "reason": "Restore the owner-requested original fact ornament size while keeping adjacent text unobstructed.",
+      "before": "  bottom: -100px;\n  border-color: rgba(226, 186, 142, 0.12);\n  pointer-events: none;\n}\n\n#book-day.has-literary-news .book-fact-copy {\n  position: relative;\n  z-index: 1;\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n  min-width: 0;\n}\n\n#book-day.has-literary-news .book-fact-card .section-kicker {\n  display: block;\n  padding-right: 40px;\n  color: #edb67b;\n}\n\n#book-day.has-literary-news .book-fact-card h3 {\n  max-width: calc(100% - 38px);\n  margin: 10px 0 12px;\n  color: #fff6ec;\n}\n\n#book-day.has-literary-news .book-fact-card p {\n  max-width: 52ch;\n  margin: 0 0 20px;\n  color: #e1d3e4;\n",
+      "after": "  bottom: -100px;\n  border-color: rgba(226, 186, 142, 0.12);\n  pointer-events: none;\n}\n\n#book-day.has-literary-news .book-fact-copy {\n  position: relative;\n  z-index: 1;\n  display: block;\n  height: auto;\n  min-width: 0;\n}\n\n#book-day.has-literary-news .book-fact-card .section-kicker {\n  display: block;\n  padding-right: 0;\n  color: #edb67b;\n}\n\n#book-day.has-literary-news .book-fact-card h3 {\n  max-width: 100%;\n  margin: 10px 0 12px;\n  color: #fff6ec;\n}\n\n#book-day.has-literary-news .book-fact-card p {\n  max-width: 52ch;\n  margin: 0 0 20px;\n  color: #e1d3e4;\n"
+    },
+    {
+      "id": "src/styles/book-month-news-composition.css:2",
+      "path": "src/styles/book-month-news-composition.css",
+      "reason": "Restore the owner-requested original fact ornament size while keeping adjacent text unobstructed.",
+      "before": "\n#book-day.has-literary-news .book-fact-card a:focus-visible {\n  outline: 2px solid #f2bd83;\n  outline-offset: 5px;\n  border-radius: 2px;\n}\n\n#book-day.has-literary-news .book-fact-orbit {\n  position: absolute;\n  top: 25px;\n  right: 24px;\n  width: 36px;\n  height: 36px;\n  margin: 0;\n  color: #f2bd83;\n  opacity: 0.65;\n  pointer-events: none;\n}\n\n#book-day.has-literary-news .book-fact-orbit::before,\n#book-day.has-literary-news .book-fact-orbit::after {\n  width: 36px;\n  height: 26px;\n  inset: 5px 0;\n  border-color: rgba(242, 189, 131, 0.45);\n}\n\n#book-day.has-literary-news .book-fact-orbit i {\n  width: 4px;\n  height: 4px;\n  top: 4px;\n  right: 2px;\n}\n\n#book-day.has-literary-news > .news-editorial-context {\n  grid-column: 2;\n  min-width: 0;\n  color: var(--muted, #74636e);\n}\n\n",
+      "after": "\n#book-day.has-literary-news .book-fact-card a:focus-visible {\n  outline: 2px solid #f2bd83;\n  outline-offset: 5px;\n  border-radius: 2px;\n}\n\n#book-day.has-literary-news .book-fact-orbit {\n  position: relative;\n  float: right;\n  width: 78px;\n  height: 78px;\n  margin: 0 0 14px 24px;\n  color: #f2bd83;\n  opacity: 1;\n  pointer-events: none;\n}\n\n#book-day.has-literary-news .book-fact-orbit::before,\n#book-day.has-literary-news .book-fact-orbit::after {\n  border-color: rgba(242, 189, 131, 0.45);\n}\n\n#book-day.has-literary-news .book-fact-orbit i {\n  width: 8px;\n  height: 8px;\n  top: 6px;\n  right: -5px;\n}\n\n#book-day.has-literary-news > .news-editorial-context {\n  grid-column: 2;\n  min-width: 0;\n  color: var(--muted, #74636e);\n}\n\n"
+    },
+    {
+      "id": "src/styles/book-month-news-composition.css:3",
+      "path": "src/styles/book-month-news-composition.css",
+      "reason": "Restore the owner-requested original fact ornament size while keeping adjacent text unobstructed.",
+      "before": "    grid-template-rows: auto;\n  }\n\n  #book-day.has-literary-news > .news-editorial-context {\n    grid-column: 1 / -1;\n  }\n}\n\n@media (max-width: 680px) {\n  #book-day.has-literary-news > .book-month-supporting {\n    grid-template-columns: minmax(0, 1fr);\n    gap: 16px;\n  }\n\n  #book-day.has-literary-news .book-fact-card {\n    min-height: 0;\n    padding: 24px 20px;\n  }\n\n  #book-day.has-literary-news .book-fact-card h3 {\n    max-width: calc(100% - 25px);\n  }\n\n  #book-day.has-literary-news .book-fact-orbit {\n    right: 18px;\n    top: 22px;\n  }\n}\n}\n",
+      "after": "    grid-template-rows: auto;\n  }\n\n  #book-day.has-literary-news > .news-editorial-context {\n    grid-column: 1 / -1;\n  }\n}\n\n@media (max-width: 800px) {\n  #book-day.has-literary-news .book-fact-orbit {\n    width: 58px;\n    height: 58px;\n  }\n}\n\n@media (max-width: 680px) {\n  #book-day.has-literary-news > .book-month-supporting {\n    grid-template-columns: minmax(0, 1fr);\n    gap: 16px;\n  }\n\n  #book-day.has-literary-news .book-fact-card {\n    min-height: 0;\n    padding: 24px 20px;\n  }\n\n  #book-day.has-literary-news .book-fact-card h3 {\n    max-width: 100%;\n  }\n\n  #book-day.has-literary-news .book-fact-orbit {\n    margin-left: 18px;\n  }\n}\n}\n"
     },
     {
       "id": "src/styles/header-preserved.css:1",

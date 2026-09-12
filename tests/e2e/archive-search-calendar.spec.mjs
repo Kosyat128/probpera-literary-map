@@ -19,7 +19,7 @@ async function openArchiveFilters(page) {
   await trigger.click();
   await expect(trigger).toHaveAttribute("aria-expanded", "true");
   const dialog = page.getByRole("dialog", {
-    name: "Расширенные фильтры книжного архива",
+    name: "Расширенные фильтры библиотеки",
     exact: true,
   });
   await expect(dialog).toBeVisible();

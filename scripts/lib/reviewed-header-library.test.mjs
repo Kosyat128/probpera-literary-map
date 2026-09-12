@@ -11,7 +11,7 @@ const read = relativePath => readFileSync(relativePath, "utf8").replace(/\r\n?/g
 
 describe("September 12 owner-approved header and library governance", () => {
   it("pins the new review independently of every existing historical attestation", () => {
-    expect(sha256(JSON.stringify(headerLibraryAttestation))).toBe("43204b613a20f147f5b0888c62484e98e6db059aa1d26fb9f62ea413a29a2091");
+    expect(sha256(JSON.stringify(headerLibraryAttestation))).toBe("dfa2034d0eea799a0fd6b4cd1594bbdb231ce3b208b4ab61213916adb4ea9d8a");
     expect(headerLibraryAttestation).toMatchObject({
       schemaVersion: 1,
       id: "HEADER-LIBRARY-OWNER-REFINEMENT-20260912",
