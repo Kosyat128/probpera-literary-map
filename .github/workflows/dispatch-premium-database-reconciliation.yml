@@ -31,6 +31,12 @@ on:
       - "scripts/database/verify-book-cover-batch-20260820.mjs"
       - "scripts/database/build-production-migration-plan.mjs"
       - "src/data/**"
+      # These presentation helpers do not feed the literary database release.
+      - "!src/data/articles/publicationStats.ts"
+      - "!src/data/articles/publicationStats.test.ts"
+      - "!src/data/cms/homepage.ts"
+      - "!src/data/cms/homepage.test.ts"
+      - "!src/data/cms/coreSectionTitle.ts"
       - "data/book-canon-source-registry.json"
       - "package.json"
       - "package-lock.json"

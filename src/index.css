@@ -13646,7 +13646,7 @@ html[data-theme="book"] .calendar-heading h3 {
   font-size: var(--type-caption);
 }
 
-/* Keep fallback-font navigation clear before restoring the full action group. */
+/* Compact the search label while preserving access to every header action. */
 @media (max-width: 1600px) {
   .global-search-trigger {
     width: 38px;
@@ -13656,10 +13656,6 @@ html[data-theme="book"] .calendar-heading h3 {
 
   .global-search-trigger small,
   .global-search-trigger kbd {
-    display: none;
-  }
-
-  .header-actions .header-socials {
     display: none;
   }
 }

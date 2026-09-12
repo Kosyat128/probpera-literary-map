@@ -50,7 +50,6 @@ type Props = {
   open: boolean;
   countries: Country[];
   books: BookArchiveEntry[];
-  articleCount: number;
   onClose: () => void;
   onCountrySelect: (country: Country, writer?: Writer) => void;
   onBookSelect: (book: BookArchiveEntry) => void;
@@ -72,7 +71,6 @@ export default function GlobalSearch({
   open,
   countries,
   books,
-  articleCount,
   onClose,
   onCountrySelect,
   onBookSelect,
@@ -461,7 +459,7 @@ export default function GlobalSearch({
               ? t("Подключаем редакционный архив…")
               : searchLoadError
                 ? t("Редакционный архив временно недоступен")
-              : `${number(countries.length)} ${t(selectInterfacePlural(countries.length, language, ["страна", "страны", "стран"]))} · ${number(books.length)} ${t(selectInterfacePlural(books.length, language, ["произведение", "произведения", "произведений"]))} · ${number(language === "en" ? (searchIndex?.articleCount || 0) : articleCount)} ${t(selectInterfacePlural(language === "en" ? (searchIndex?.articleCount || 0) : articleCount, language, ["статья", "статьи", "статей"]))}`}
+              : `${number(countries.length)} ${t(selectInterfacePlural(countries.length, language, ["страна", "страны", "стран"]))} · ${number(books.length)} ${t(selectInterfacePlural(books.length, language, ["произведение", "произведения", "произведений"]))} · ${number(searchIndex?.articleCount ?? 0)} ${t(selectInterfacePlural(searchIndex?.articleCount ?? 0, language, ["статья", "статьи", "статей"]))}`}
           </span>
           <small>{t("Поиск выполняется внутри сайта")}</small>
         </footer>

@@ -1,0 +1,554 @@
+{
+  "schemaVersion": 1,
+  "id": "HEADER-LIBRARY-OWNER-REFINEMENT-20260912",
+  "authorizedOn": "2026-09-12",
+  "baselineMainSha": "ba3336a05d83ff653984a43300bf4805e578b629",
+  "authorization": "The owner requested restoration of the right-hand social/Boosty actions and prior language control, Proba Pera Library naming, accurate publication counts, and a compact article menu; database publication remains paused pending a corrected archive.",
+  "allowedPaths": [
+    ".github/workflows/dispatch-premium-database-reconciliation.yml",
+    "apps/admin/app/(dashboard)/homepage/page.tsx",
+    "apps/admin/app/(dashboard)/library/dossiers/page.tsx",
+    "apps/admin/app/(dashboard)/library/page.tsx",
+    "apps/admin/app/(dashboard)/translations/page.tsx",
+    "apps/admin/catalog-assets/interface-copy-catalog.json",
+    "src/App.tsx",
+    "src/components/ArticleLibrarySection.tsx",
+    "src/components/ArticleReader.tsx",
+    "src/components/BookArchiveSection.tsx",
+    "src/components/GlobalSearch.tsx",
+    "src/components/HeaderArticlesMenu.tsx",
+    "src/components/SectionsDirectory.tsx",
+    "src/components/WriterPanel.tsx",
+    "src/data/articles/publicationStats.ts",
+    "src/data/cms/homepage.ts",
+    "src/i18n/InterfaceLanguage.tsx",
+    "src/index.css",
+    "src/loading/DeferredHomepageArchives.tsx",
+    "src/styles/header-preserved.css",
+    "src/styles/navigation-panels.css",
+    "src/styles/site-typography.css"
+  ],
+  "sourceBaselines": {
+    ".github/workflows/dispatch-premium-database-reconciliation.yml": "83314ffe8eef8912ffe1a13478e9888b5e3338d9422380e831e2d521ff07c51c",
+    "apps/admin/app/(dashboard)/homepage/page.tsx": "1d391ae0081bc70d040ba25f0dfa856e56b115b2dd19ce9dd4cbfef8b89d45d4",
+    "apps/admin/app/(dashboard)/library/dossiers/page.tsx": "4d2df50cd4a74e6e6bd291ad22f18c46faec320ee811e11383ddfaa9c5ae47d7",
+    "apps/admin/app/(dashboard)/library/page.tsx": "a870d3626fedc3fbeb2088df31991be302035577435191e21eaa7e3f4df5fca5",
+    "apps/admin/app/(dashboard)/translations/page.tsx": "6c25c83c72d567ca11ace95858291fee2ac70dfb75104cb6e09c4980c0ccd49f",
+    "apps/admin/catalog-assets/interface-copy-catalog.json": "4e454acae1b7c365f4437b253cae31f84e3380f64d1859374d4d88d1448274ab",
+    "src/App.tsx": "09677c8e63b25d8eda5affab5b46986de763a50c666f34f692a577d5891a1e53",
+    "src/components/ArticleLibrarySection.tsx": "aead8615e8f611bbfaa40028192ed596fc62f0d25847da55767aac590f1a9ce1",
+    "src/components/ArticleReader.tsx": "c3ce96600040d3bd92f9cbe167c80b0d620928ab7bf5e200f9d0556b1be3eb41",
+    "src/components/BookArchiveSection.tsx": "b80875403ac185e579bdbba248f190f02a5f17cb8a82a80d197eface5619640b",
+    "src/components/GlobalSearch.tsx": "ff79274cc24820090ddee617d0a3db11d1be2c86cc7efdd5bbbdfd08d7650f11",
+    "src/components/HeaderArticlesMenu.tsx": "4007ede3c40cd32921a3029c0b20ca75ec57060a4d556f7e728d8cdc3b2da157",
+    "src/components/SectionsDirectory.tsx": "ca74e0a4beb81a8d7b043f51694eb1e97206f9bf71e05d9fb356bae4807f7556",
+    "src/components/WriterPanel.tsx": "d92d9a7ec7b1444a0f3903d15571558a6c4e277b242493e4b5786650d7a89926",
+    "src/data/articles/publicationStats.ts": "16d3dae209c6a37e04912e85f68e857aa1edffd03ba3fce9103d898a5c644160",
+    "src/data/cms/homepage.ts": "1f24985c268c6fa17451fc5627b41b290a5450c47dbae642b5f94a8e9e0804ed",
+    "src/i18n/InterfaceLanguage.tsx": "efb32519e5f2ea571f6ca392cd2573f3e8990a26bf163c54f82402793b5b4412",
+    "src/index.css": "598ace409b7315b67ff389a96eb84fa87a417b1f35107f00e6810cae1a053aa3",
+    "src/loading/DeferredHomepageArchives.tsx": "c5618851eb42ad6144d4c3f4cbe03ccb3bbf9c6332aaacc2578dd5f65b67523c",
+    "src/styles/header-preserved.css": "61722182a4d3b6a09af4707694b03c2c138f4737b4ad4ccd958a63112ac48b7f",
+    "src/styles/navigation-panels.css": "321b6b856f3c2742efeb1afba200e4f74abcd094eca29183340ef8405432ce60",
+    "src/styles/site-typography.css": "b1aeac79c1e732e1d761b8ccc008cda5d437c0058e51b381ee10b9880ecac526"
+  },
+  "projections": [
+    {
+      "id": ".github/workflows/dispatch-premium-database-reconciliation.yml:1",
+      "path": ".github/workflows/dispatch-premium-database-reconciliation.yml",
+      "reason": "Exclude only the named UI helpers and their tests from automatic database dispatch while the user has paused database work; preserve every archive dependency trigger.",
+      "before": "      - \"scripts/lib/book-evidence-v2-attestations.mjs\"\n      - \"scripts/lib/literary-archive-atomic-release.mjs\"\n      - \"scripts/database/verify-book-cover-batch-20260820.mjs\"\n      - \"scripts/database/build-production-migration-plan.mjs\"\n      - \"src/data/**\"\n      - \"data/book-canon-source-registry.json\"\n      - \"package.json\"\n      - \"package-lock.json\"\n      - \".github/workflows/reconcile-production-database.yml\"\n\n",
+      "after": "      - \"scripts/lib/book-evidence-v2-attestations.mjs\"\n      - \"scripts/lib/literary-archive-atomic-release.mjs\"\n      - \"scripts/database/verify-book-cover-batch-20260820.mjs\"\n      - \"scripts/database/build-production-migration-plan.mjs\"\n      - \"src/data/**\"\n      # These presentation helpers do not feed the literary database release.\n      - \"!src/data/articles/publicationStats.ts\"\n      - \"!src/data/articles/publicationStats.test.ts\"\n      - \"!src/data/cms/homepage.ts\"\n      - \"!src/data/cms/homepage.test.ts\"\n      - \"!src/data/cms/coreSectionTitle.ts\"\n      - \"data/book-canon-source-registry.json\"\n      - \"package.json\"\n      - \"package-lock.json\"\n      - \".github/workflows/reconcile-production-database.yml\"\n\n"
+    },
+    {
+      "id": "apps/admin/app/(dashboard)/homepage/page.tsx:1",
+      "path": "apps/admin/app/(dashboard)/homepage/page.tsx",
+      "reason": "Use the owner-requested Proba Pera Library name in homepage editing controls.",
+      "before": "import HomepageVisualPreview from \"@/components/HomepageVisualPreview\";\nimport type { HomepagePreviewSection } from \"@/components/HomepageVisualPreview\";\nimport { AdminDependencyState } from \"@/components/AdminStatusState\";\nimport { createServerSupabaseClient } from \"@/lib/supabase/server\";\nimport { adminEnv } from \"@/lib/env\";\nimport { safePublicSiteHref, safePublicSiteOrigin } from \"@/lib/public-link-boundary\";\nimport {\n  homepageImagePositions,\n  readHomepageVisualSettings,\n} from \"@/lib/homepage-visual-settings\";\n",
+      "after": "import HomepageVisualPreview from \"@/components/HomepageVisualPreview\";\nimport type { HomepagePreviewSection } from \"@/components/HomepageVisualPreview\";\nimport { AdminDependencyState } from \"@/components/AdminStatusState\";\nimport { createServerSupabaseClient } from \"@/lib/supabase/server\";\nimport { adminEnv } from \"@/lib/env\";\nimport { coreSectionTitle } from \"@/lib/core-section-title\";\nimport { safePublicSiteHref, safePublicSiteOrigin } from \"@/lib/public-link-boundary\";\nimport {\n  homepageImagePositions,\n  readHomepageVisualSettings,\n} from \"@/lib/homepage-visual-settings\";\n"
+    },
+    {
+      "id": "apps/admin/app/(dashboard)/homepage/page.tsx:2",
+      "path": "apps/admin/app/(dashboard)/homepage/page.tsx",
+      "reason": "Use the owner-requested Proba Pera Library name in homepage editing controls.",
+      "before": "    buttonUrl: \"#editorial-policy\",\n    backgroundStyle: \"paper\",\n  },\n  {\n    key: \"book-archive\",\n    label: \"Книжный архив\",\n    eyebrow: \"Книги, авторы, страны\",\n    title: \"Книжный архив\",\n    description:\n      \"Произведения, авторы и страны связаны в единую проверенную редакционную коллекцию.\",\n    buttonText: \"\",\n    buttonUrl: \"#books\",\n    backgroundStyle: \"violet\",\n",
+      "after": "    buttonUrl: \"#editorial-policy\",\n    backgroundStyle: \"paper\",\n  },\n  {\n    key: \"book-archive\",\n    label: \"Библиотека «Проба Пера»\",\n    eyebrow: \"Книги, авторы, страны\",\n    title: \"Библиотека «Проба Пера»\",\n    description:\n      \"Произведения, авторы и страны связаны в единую проверенную редакционную коллекцию.\",\n    buttonText: \"\",\n    buttonUrl: \"#books\",\n    backgroundStyle: \"violet\",\n"
+    },
+    {
+      "id": "apps/admin/app/(dashboard)/homepage/page.tsx:3",
+      "path": "apps/admin/app/(dashboard)/homepage/page.tsx",
+      "reason": "Use the owner-requested Proba Pera Library name in homepage editing controls.",
+      "before": "  settings: ReturnType<typeof readBookArchiveSceneSettings>;\n  visualSettings: ReturnType<typeof readHomepageVisualSettings>;\n}) {\n  return (\n    <fieldset className=\"settings-stack\">\n      <legend>Сцена книжного архива</legend>\n      <p>\n        Доступны только проверенные пресеты и числовые параметры. Произвольные\n        CSS, HTML, JavaScript и шейдеры не сохраняются.\n      </p>\n      <div className=\"dashboard-grid\">\n",
+      "after": "  settings: ReturnType<typeof readBookArchiveSceneSettings>;\n  visualSettings: ReturnType<typeof readHomepageVisualSettings>;\n}) {\n  return (\n    <fieldset className=\"settings-stack\">\n      <legend>Сцена библиотеки</legend>\n      <p>\n        Доступны только проверенные пресеты и числовые параметры. Произвольные\n        CSS, HTML, JavaScript и шейдеры не сохраняются.\n      </p>\n      <div className=\"dashboard-grid\">\n"
+    },
+    {
+      "id": "apps/admin/app/(dashboard)/homepage/page.tsx:4",
+      "path": "apps/admin/app/(dashboard)/homepage/page.tsx",
+      "reason": "Use the owner-requested Proba Pera Library name in homepage editing controls.",
+      "before": "  );\n  const coreBlockByKey = new Map(\n    blocks\n      .map((block) => {\n        const key = settingText(settingsObject(block.settings), \"coreSectionKey\");\n        return key ? [key, block] as const : null;\n      })\n      .filter((entry): entry is NonNullable<typeof entry> => Boolean(entry))\n  );\n  const customBlocks = blocks.filter(\n    (block) =>\n",
+      "after": "  );\n  const coreBlockByKey = new Map(\n    blocks\n      .map((block) => {\n        const key = settingText(settingsObject(block.settings), \"coreSectionKey\");\n        return key\n          ? [key, { ...block, title: coreSectionTitle(key, block.title) }] as const\n          : null;\n      })\n      .filter((entry): entry is NonNullable<typeof entry> => Boolean(entry))\n  );\n  const customBlocks = blocks.filter(\n    (block) =>\n"
+    },
+    {
+      "id": "apps/admin/app/(dashboard)/library/dossiers/page.tsx:1",
+      "path": "apps/admin/app/(dashboard)/library/dossiers/page.tsx",
+      "reason": "Use the owner-requested library terminology in dossier controls.",
+      "before": "  const supabase = await createServerSupabaseClient();\n  const result = supabase ? await supabase.from(\"book_dossiers\").select(\"book_key,locale,revision,record\").order(\"updated_at\", { ascending: false }).limit(50) : null;\n  const requested = supabase && query.book ? await supabase.from(\"book_dossiers\").select(\"book_key,locale,record\").eq(\"book_key\", query.book).eq(\"locale\", query.locale || \"ru\").maybeSingle() : null;\n  const selected = requested?.data;\n  return <>\n    <header className=\"page-heading\"><div><span className=\"eyebrow\">Книжный архив</span><h1>Редакционные досье</h1>\n      <p>Конечные разделы для чтения на сайте и в 3D. Факты, права, перевод и качество подтверждаются отдельно. Полные тексты, цитаты и сторонние изображения здесь не публикуются.</p>\n      <Link href=\"/library\">К произведениям и изданиям</Link></div></header>\n    {!result || result.error ? <p role=\"alert\" className=\"form-message\">Хранилище досье пока недоступно. Для этого раздела требуется миграция book_dossiers_v2; существующий каталог продолжает работать.</p> : <>\n      <nav aria-label=\"Последние досье\"><Link href=\"/library/dossiers\">Новое досье</Link>{result.data.map(row => <p key={`${row.book_key}:${row.locale}`}><Link href={`/library/dossiers?book=${encodeURIComponent(row.book_key)}&locale=${row.locale}`}>{row.record?.draft?.title || row.book_key} ({row.locale})</Link> · {row.record?.status} · v{row.revision}</p>)}</nav>\n      {query.book && (!selected || requested?.error) ? <p role=\"alert\">Запрошенное досье не найдено или недоступно. Обновите список.</p> : <BookDossierEditor key={`${selected?.book_key || \"new\"}:${selected?.locale || \"ru\"}`} initial={(selected?.record || null) as BookDossierRecord | null} canPublish={session.role !== \"editor\"} />}\n",
+      "after": "  const supabase = await createServerSupabaseClient();\n  const result = supabase ? await supabase.from(\"book_dossiers\").select(\"book_key,locale,revision,record\").order(\"updated_at\", { ascending: false }).limit(50) : null;\n  const requested = supabase && query.book ? await supabase.from(\"book_dossiers\").select(\"book_key,locale,record\").eq(\"book_key\", query.book).eq(\"locale\", query.locale || \"ru\").maybeSingle() : null;\n  const selected = requested?.data;\n  return <>\n    <header className=\"page-heading\"><div><span className=\"eyebrow\">Библиотека «Проба Пера»</span><h1>Редакционные досье</h1>\n      <p>Конечные разделы для чтения на сайте и в 3D. Факты, права, перевод и качество подтверждаются отдельно. Полные тексты, цитаты и сторонние изображения здесь не публикуются.</p>\n      <Link href=\"/library\">К произведениям и изданиям</Link></div></header>\n    {!result || result.error ? <p role=\"alert\" className=\"form-message\">Хранилище досье пока недоступно. Для этого раздела требуется миграция book_dossiers_v2; существующий каталог продолжает работать.</p> : <>\n      <nav aria-label=\"Последние досье\"><Link href=\"/library/dossiers\">Новое досье</Link>{result.data.map(row => <p key={`${row.book_key}:${row.locale}`}><Link href={`/library/dossiers?book=${encodeURIComponent(row.book_key)}&locale=${row.locale}`}>{row.record?.draft?.title || row.book_key} ({row.locale})</Link> · {row.record?.status} · v{row.revision}</p>)}</nav>\n      {query.book && (!selected || requested?.error) ? <p role=\"alert\">Запрошенное досье не найдено или недоступно. Обновите список.</p> : <BookDossierEditor key={`${selected?.book_key || \"new\"}:${selected?.locale || \"ru\"}`} initial={(selected?.record || null) as BookDossierRecord | null} canPublish={session.role !== \"editor\"} />}\n"
+    },
+    {
+      "id": "apps/admin/app/(dashboard)/library/page.tsx:1",
+      "path": "apps/admin/app/(dashboard)/library/page.tsx",
+      "reason": "Use the owner-requested library name in the existing administration screen.",
+      "before": "import { AdminDependencyState } from \"@/components/AdminStatusState\";\nimport { createServerSupabaseClient } from \"@/lib/supabase/server\";\nimport { saveBookEditionAction, updateBookEditionAction } from \"./actions\";\nimport { saveVisualEntityFieldFormAction } from \"../visual-entity-actions\";\n\nexport const metadata = { title: \"Книжный архив\" };\n\ntype LibrarySearchParams = {\n  isbn?: string;\n  error?: string;\n  notice?: string;\n",
+      "after": "import { AdminDependencyState } from \"@/components/AdminStatusState\";\nimport { createServerSupabaseClient } from \"@/lib/supabase/server\";\nimport { saveBookEditionAction, updateBookEditionAction } from \"./actions\";\nimport { saveVisualEntityFieldFormAction } from \"../visual-entity-actions\";\n\nexport const metadata = { title: \"Библиотека «Проба Пера»\" };\n\ntype LibrarySearchParams = {\n  isbn?: string;\n  error?: string;\n  notice?: string;\n"
+    },
+    {
+      "id": "apps/admin/app/(dashboard)/library/page.tsx:2",
+      "path": "apps/admin/app/(dashboard)/library/page.tsx",
+      "reason": "Use the owner-requested library name in the existing administration screen.",
+      "before": "  return (\n    <>\n      <header className=\"page-heading\">\n        <div>\n          <span className=\"eyebrow\">Произведение → иллюстрация / точное издание → обложка</span>\n          <h1>Книжный архив</h1>\n          <Link href=\"/library/dossiers\">Редакционные досье книг</Link>\n          <p>\n            Обложка издания всегда привязана к точному ISBN, источнику и правам.\n            Редакционная иллюстрация хранится отдельно на уровне произведения и не\n            считается обложкой конкретного издания.\n",
+      "after": "  return (\n    <>\n      <header className=\"page-heading\">\n        <div>\n          <span className=\"eyebrow\">Произведение → иллюстрация / точное издание → обложка</span>\n          <h1>Библиотека «Проба Пера»</h1>\n          <Link href=\"/library/dossiers\">Редакционные досье книг</Link>\n          <p>\n            Обложка издания всегда привязана к точному ISBN, источнику и правам.\n            Редакционная иллюстрация хранится отдельно на уровне произведения и не\n            считается обложкой конкретного издания.\n"
+    },
+    {
+      "id": "apps/admin/app/(dashboard)/translations/page.tsx:1",
+      "path": "apps/admin/app/(dashboard)/translations/page.tsx",
+      "reason": "Use the owner-requested library terminology in translation controls.",
+      "before": "          </TranslationSubmitButton>\n        </form>\n\n        <form className=\"panel settings-stack\" action={translatePremiumLibraryBatchAction}>\n          <BackfillCursorFields query={query} />\n          <span className=\"eyebrow\">Книжный архив</span>\n          <h2>Премиальный EN книг</h2>\n          <p>\n            До четырёх проверенных RU-карточек за запуск. Ручной reviewed/verified EN\n            имеет абсолютный приоритет и не заменяется моделью. Позиция обхода сохраняется\n            между пакетами, поэтому архив постепенно проходит целиком.\n",
+      "after": "          </TranslationSubmitButton>\n        </form>\n\n        <form className=\"panel settings-stack\" action={translatePremiumLibraryBatchAction}>\n          <BackfillCursorFields query={query} />\n          <span className=\"eyebrow\">Библиотека «Проба Пера»</span>\n          <h2>Премиальный EN книг</h2>\n          <p>\n            До четырёх проверенных RU-карточек за запуск. Ручной reviewed/verified EN\n            имеет абсолютный приоритет и не заменяется моделью. Позиция обхода сохраняется\n            между пакетами, поэтому архив постепенно проходит целиком.\n"
+    },
+    {
+      "id": "apps/admin/catalog-assets/interface-copy-catalog.json:1",
+      "path": "apps/admin/catalog-assets/interface-copy-catalog.json",
+      "reason": "Keep generated RU/EN interface records aligned with the exact library renames and removal of the obsolete fixed publication count.",
+      "before": "    \"label\": \"Авторский архив\",\n    \"defaultRu\": \"Авторский архив\",\n    \"defaultEn\": \"Author archive\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Авторский архив · 167 материалов\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Авторский архив · 167 материалов\",\n    \"defaultRu\": \"Авторский архив · 167 материалов\",\n    \"defaultEn\": \"Editorial archive · 167 publications\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Авторский архив временно недоступен\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Авторский архив временно недоступен\",\n    \"defaultRu\": \"Авторский архив временно недоступен\",\n",
+      "after": "    \"label\": \"Авторский архив\",\n    \"defaultRu\": \"Авторский архив\",\n    \"defaultEn\": \"Author archive\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Авторский архив временно недоступен\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Авторский архив временно недоступен\",\n    \"defaultRu\": \"Авторский архив временно недоступен\",\n"
+    },
+    {
+      "id": "apps/admin/catalog-assets/interface-copy-catalog.json:2",
+      "path": "apps/admin/catalog-assets/interface-copy-catalog.json",
+      "reason": "Keep generated RU/EN interface records aligned with the exact library renames and removal of the obsolete fixed publication count.",
+      "before": "    \"label\": \"Бестселлеры XXI века\",\n    \"defaultRu\": \"Бестселлеры XXI века\",\n    \"defaultEn\": \"21st-century bestsellers\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Библиотека Конгресса\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Библиотека Конгресса\",\n    \"defaultRu\": \"Библиотека Конгресса\",\n",
+      "after": "    \"label\": \"Бестселлеры XXI века\",\n    \"defaultRu\": \"Бестселлеры XXI века\",\n    \"defaultEn\": \"21st-century bestsellers\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Библиотека «Проба Пера»\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Библиотека «Проба Пера»\",\n    \"defaultRu\": \"Библиотека «Проба Пера»\",\n    \"defaultEn\": \"Proba Pera Library\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Библиотека временно недоступна\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Библиотека временно недоступна\",\n    \"defaultRu\": \"Библиотека временно недоступна\",\n    \"defaultEn\": \"The library is temporarily unavailable\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Библиотека загрузится при приближении\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Библиотека загрузится при приближении\",\n    \"defaultRu\": \"Библиотека загрузится при приближении\",\n    \"defaultEn\": \"The library will load as you approach\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Библиотека Конгресса\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Библиотека Конгресса\",\n    \"defaultRu\": \"Библиотека Конгресса\",\n"
+    },
+    {
+      "id": "apps/admin/catalog-assets/interface-copy-catalog.json:3",
+      "path": "apps/admin/catalog-assets/interface-copy-catalog.json",
+      "reason": "Keep generated RU/EN interface records aligned with the exact library renames and removal of the obsolete fixed publication count.",
+      "before": "    \"label\": \"Весь журнал\",\n    \"defaultRu\": \"Весь журнал\",\n    \"defaultEn\": \"Explore the journal\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Весь книжный архив\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Весь книжный архив\",\n    \"defaultRu\": \"Весь книжный архив\",\n    \"defaultEn\": \"Complete book archive\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Взрослые\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Взрослые\",\n    \"defaultRu\": \"Взрослые\",\n",
+      "after": "    \"label\": \"Весь журнал\",\n    \"defaultRu\": \"Весь журнал\",\n    \"defaultEn\": \"Explore the journal\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Взрослые\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Взрослые\",\n    \"defaultRu\": \"Взрослые\",\n"
+    },
+    {
+      "id": "apps/admin/catalog-assets/interface-copy-catalog.json:4",
+      "path": "apps/admin/catalog-assets/interface-copy-catalog.json",
+      "reason": "Keep generated RU/EN interface records aligned with the exact library renames and removal of the obsolete fixed publication count.",
+      "before": "    \"label\": \"Вступить в литературный клуб\",\n    \"defaultRu\": \"Вступить в литературный клуб\",\n    \"defaultEn\": \"Join the literary club\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Вход и регистрация\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Вход и регистрация\",\n    \"defaultRu\": \"Вход и регистрация\",\n",
+      "after": "    \"label\": \"Вступить в литературный клуб\",\n    \"defaultRu\": \"Вступить в литературный клуб\",\n    \"defaultEn\": \"Join the literary club\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Вся библиотека\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Вся библиотека\",\n    \"defaultRu\": \"Вся библиотека\",\n    \"defaultEn\": \"Entire library\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Вход и регистрация\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Вход и регистрация\",\n    \"defaultRu\": \"Вход и регистрация\",\n"
+    },
+    {
+      "id": "apps/admin/catalog-assets/interface-copy-catalog.json:5",
+      "path": "apps/admin/catalog-assets/interface-copy-catalog.json",
+      "reason": "Keep generated RU/EN interface records aligned with the exact library renames and removal of the obsolete fixed publication count.",
+      "before": "    \"label\": \"Заголовок будущей публикации\",\n    \"defaultRu\": \"Заголовок будущей публикации\",\n    \"defaultEn\": \"Future publication title\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Загружается издание\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Загружается издание\",\n    \"defaultRu\": \"Загружается издание\",\n",
+      "after": "    \"label\": \"Заголовок будущей публикации\",\n    \"defaultRu\": \"Заголовок будущей публикации\",\n    \"defaultEn\": \"Future publication title\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Загружаем библиотеку…\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Загружаем библиотеку…\",\n    \"defaultRu\": \"Загружаем библиотеку…\",\n    \"defaultEn\": \"Loading the library…\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Загружается издание\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Загружается издание\",\n    \"defaultRu\": \"Загружается издание\",\n"
+    },
+    {
+      "id": "apps/admin/catalog-assets/interface-copy-catalog.json:6",
+      "path": "apps/admin/catalog-assets/interface-copy-catalog.json",
+      "reason": "Keep generated RU/EN interface records aligned with the exact library renames and removal of the obsolete fixed publication count.",
+      "before": "    \"label\": \"Книги, от которых не оторваться\",\n    \"defaultRu\": \"Книги, от которых не оторваться\",\n    \"defaultEn\": \"Unputdownable books\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Книжный архив\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Книжный архив\",\n    \"defaultRu\": \"Книжный архив\",\n    \"defaultEn\": \"Book archive\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Книжный архив временно недоступен\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Книжный архив временно недоступен\",\n    \"defaultRu\": \"Книжный архив временно недоступен\",\n    \"defaultEn\": \"The book archive is temporarily unavailable\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Книжный архив загрузится при приближении\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Книжный архив загрузится при приближении\",\n    \"defaultRu\": \"Книжный архив загрузится при приближении\",\n    \"defaultEn\": \"The book archive will load as you approach\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Книжный гид и подборки\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Книжный гид и подборки\",\n    \"defaultRu\": \"Книжный гид и подборки\",\n",
+      "after": "    \"label\": \"Книги, от которых не оторваться\",\n    \"defaultRu\": \"Книги, от которых не оторваться\",\n    \"defaultEn\": \"Unputdownable books\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Книжный гид и подборки\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Книжный гид и подборки\",\n    \"defaultRu\": \"Книжный гид и подборки\",\n"
+    },
+    {
+      "id": "apps/admin/catalog-assets/interface-copy-catalog.json:7",
+      "path": "apps/admin/catalog-assets/interface-copy-catalog.json",
+      "reason": "Keep generated RU/EN interface records aligned with the exact library renames and removal of the obsolete fixed publication count.",
+      "before": "    \"defaultRu\": \"Подсказки библиотеки\",\n    \"defaultEn\": \"Library suggestions\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Подсказки всего книжного архива\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Подсказки всего книжного архива\",\n    \"defaultRu\": \"Подсказки всего книжного архива\",\n    \"defaultEn\": \"Complete book archive suggestions\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Подсказки единого каталога\",\n    \"group\": \"Весь интерфейс\",\n",
+      "after": "    \"defaultRu\": \"Подсказки библиотеки\",\n    \"defaultEn\": \"Library suggestions\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Подсказки всей библиотеки\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Подсказки всей библиотеки\",\n    \"defaultRu\": \"Подсказки всей библиотеки\",\n    \"defaultEn\": \"Suggestions from the entire library\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Подсказки единого каталога\",\n    \"group\": \"Весь интерфейс\",\n"
+    },
+    {
+      "id": "apps/admin/catalog-assets/interface-copy-catalog.json:8",
+      "path": "apps/admin/catalog-assets/interface-copy-catalog.json",
+      "reason": "Keep generated RU/EN interface records aligned with the exact library renames and removal of the obsolete fixed publication count.",
+      "before": "    \"label\": \"Показать всех нобелевских лауреатов этой страны на глобусе\",\n    \"defaultRu\": \"Показать всех нобелевских лауреатов этой страны на глобусе\",\n    \"defaultEn\": \"Show all of this country’s Nobel laureates on the globe\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Показать ещё 12\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Показать ещё 12\",\n    \"defaultRu\": \"Показать ещё 12\",\n",
+      "after": "    \"label\": \"Показать всех нобелевских лауреатов этой страны на глобусе\",\n    \"defaultRu\": \"Показать всех нобелевских лауреатов этой страны на глобусе\",\n    \"defaultEn\": \"Show all of this country’s Nobel laureates on the globe\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Показать ещё\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Показать ещё\",\n    \"defaultRu\": \"Показать ещё\",\n    \"defaultEn\": \"Show more\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Показать ещё 12\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Показать ещё 12\",\n    \"defaultRu\": \"Показать ещё 12\",\n"
+    },
+    {
+      "id": "apps/admin/catalog-assets/interface-copy-catalog.json:9",
+      "path": "apps/admin/catalog-assets/interface-copy-catalog.json",
+      "reason": "Keep generated RU/EN interface records aligned with the exact library renames and removal of the obsolete fixed publication count.",
+      "before": "    \"defaultRu\": \"Расширенные фильтры\",\n    \"defaultEn\": \"Advanced filters\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Расширенные фильтры книжного архива\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Расширенные фильтры книжного архива\",\n    \"defaultRu\": \"Расширенные фильтры книжного архива\",\n    \"defaultEn\": \"Advanced book archive filters\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Регистрация принята. Проверьте почту и подтвердите адрес - после этого можно войти.\",\n    \"group\": \"Весь интерфейс\",\n",
+      "after": "    \"defaultRu\": \"Расширенные фильтры\",\n    \"defaultEn\": \"Advanced filters\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Расширенные фильтры библиотеки\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Расширенные фильтры библиотеки\",\n    \"defaultRu\": \"Расширенные фильтры библиотеки\",\n    \"defaultEn\": \"Advanced library filters\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Регистрация принята. Проверьте почту и подтвердите адрес - после этого можно войти.\",\n    \"group\": \"Весь интерфейс\",\n"
+    },
+    {
+      "id": "apps/admin/catalog-assets/interface-copy-catalog.json:10",
+      "path": "apps/admin/catalog-assets/interface-copy-catalog.json",
+      "reason": "Keep generated RU/EN interface records aligned with the exact library renames and removal of the obsolete fixed publication count.",
+      "before": "    \"defaultRu\": \"Результаты поиска по библиотеке\",\n    \"defaultEn\": \"Library search results\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Результаты поиска по всему журналу\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Результаты поиска по всему журналу\",\n    \"defaultRu\": \"Результаты поиска по всему журналу\",\n    \"defaultEn\": \"Journal-wide search results\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Результаты поиска по всему книжному архиву\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Результаты поиска по всему книжному архиву\",\n    \"defaultRu\": \"Результаты поиска по всему книжному архиву\",\n    \"defaultEn\": \"Complete book archive search results\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Результаты поиска по текущей полке\",\n    \"group\": \"Весь интерфейс\",\n",
+      "after": "    \"defaultRu\": \"Результаты поиска по библиотеке\",\n    \"defaultEn\": \"Library search results\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Результаты поиска по всей библиотеке\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Результаты поиска по всей библиотеке\",\n    \"defaultRu\": \"Результаты поиска по всей библиотеке\",\n    \"defaultEn\": \"Search results across the entire library\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Результаты поиска по всему журналу\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Результаты поиска по всему журналу\",\n    \"defaultRu\": \"Результаты поиска по всему журналу\",\n    \"defaultEn\": \"Journal-wide search results\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Результаты поиска по текущей полке\",\n    \"group\": \"Весь интерфейс\",\n"
+    },
+    {
+      "id": "apps/admin/catalog-assets/interface-copy-catalog.json:11",
+      "path": "apps/admin/catalog-assets/interface-copy-catalog.json",
+      "reason": "Keep generated RU/EN interface records aligned with the exact library renames and removal of the obsolete fixed publication count.",
+      "before": "    \"label\": \"Собираем каталог разделов…\",\n    \"defaultRu\": \"Собираем каталог разделов…\",\n    \"defaultEn\": \"Building the section directory…\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Собираем книжный архив…\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Собираем книжный архив…\",\n    \"defaultRu\": \"Собираем книжный архив…\",\n    \"defaultEn\": \"Building the book archive…\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Собираем литературные даты…\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Собираем литературные даты…\",\n    \"defaultRu\": \"Собираем литературные даты…\",\n",
+      "after": "    \"label\": \"Собираем каталог разделов…\",\n    \"defaultRu\": \"Собираем каталог разделов…\",\n    \"defaultEn\": \"Building the section directory…\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Собираем литературные даты…\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Собираем литературные даты…\",\n    \"defaultRu\": \"Собираем литературные даты…\",\n"
+    },
+    {
+      "id": "apps/admin/catalog-assets/interface-copy-catalog.json:12",
+      "path": "apps/admin/catalog-assets/interface-copy-catalog.json",
+      "reason": "Keep generated RU/EN interface records aligned with the exact library renames and removal of the obsolete fixed publication count.",
+      "before": "    \"defaultRu\": \"философия\",\n    \"defaultEn\": \"philosophy\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Фильтры глобуса\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Фильтры глобуса\",\n    \"defaultRu\": \"Фильтры глобуса\",\n    \"defaultEn\": \"Globe filters\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Фильтры книжного архива\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Фильтры книжного архива\",\n    \"defaultRu\": \"Фильтры книжного архива\",\n    \"defaultEn\": \"Book archive filters\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Фильтры применяются по правилу И между категориями и ИЛИ внутри категории. Непроверенные метаданные не угадываются.\",\n    \"group\": \"Весь интерфейс\",\n",
+      "after": "    \"defaultRu\": \"философия\",\n    \"defaultEn\": \"philosophy\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Фильтры библиотеки\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Фильтры библиотеки\",\n    \"defaultRu\": \"Фильтры библиотеки\",\n    \"defaultEn\": \"Library filters\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Фильтры глобуса\",\n    \"group\": \"Весь интерфейс\",\n    \"label\": \"Фильтры глобуса\",\n    \"defaultRu\": \"Фильтры глобуса\",\n    \"defaultEn\": \"Globe filters\",\n    \"multiline\": false\n  },\n  {\n    \"key\": \"interface.Фильтры применяются по правилу И между категориями и ИЛИ внутри категории. Непроверенные метаданные не угадываются.\",\n    \"group\": \"Весь интерфейс\",\n"
+    },
+    {
+      "id": "src/App.tsx:1",
+      "path": "src/App.tsx",
+      "reason": "Rename the library consistently and derive header publication counts from the actual localized article catalog.",
+      "before": "  CmsHomepageBanners,\n  CmsNavigationLinks,\n} from \"./components/CmsSiteChrome\";\nimport SocialLinks from \"./components/SocialLinks\";\nimport type { Country, Writer } from \"./data/countries\";\nimport { isNobelLaureate } from \"./data/nobel\";\nimport { selectWriterBiography } from \"./data/writerBiography\";\nimport type { BookArchiveEntry } from \"./data/bookArchive\";\nimport { isPublicBook } from \"./data/bookQuality\";\nimport {\n",
+      "after": "  CmsHomepageBanners,\n  CmsNavigationLinks,\n} from \"./components/CmsSiteChrome\";\nimport SocialLinks from \"./components/SocialLinks\";\nimport type { Country, Writer } from \"./data/countries\";\nimport { articlePublicationCounts, loadArticlePublicationCounts } from \"./data/articles/publicationStats\";\nimport { isNobelLaureate } from \"./data/nobel\";\nimport { selectWriterBiography } from \"./data/writerBiography\";\nimport type { BookArchiveEntry } from \"./data/bookArchive\";\nimport { isPublicBook } from \"./data/bookQuality\";\nimport {\n"
+    },
+    {
+      "id": "src/App.tsx:2",
+      "path": "src/App.tsx",
+      "reason": "Rename the library consistently and derive header publication counts from the actual localized article catalog.",
+      "before": "    articleSections: [\"writers-world\"] as const,\n  },\n  {\n    id: \"books\",\n    group: \"Энциклопедия\",\n    title: \"Книжный архив\",\n    copy: \"Книги связаны с авторами, странами, эпохами и статьями журнала - с фильтрами и редакционной проверкой обложек.\",\n    href: \"#books\",\n    image:\n      \"https://static.tildacdn.com/tild6239-6339-4864-b864-333636623730/Dj.webp\",\n    articleSections: [\"book-opinions\", \"book-guides\"] as const,\n",
+      "after": "    articleSections: [\"writers-world\"] as const,\n  },\n  {\n    id: \"books\",\n    group: \"Энциклопедия\",\n    title: \"Библиотека «Проба Пера»\",\n    copy: \"Книги связаны с авторами, странами, эпохами и статьями журнала - с фильтрами и редакционной проверкой обложек.\",\n    href: \"#books\",\n    image:\n      \"https://static.tildacdn.com/tild6239-6339-4864-b864-333636623730/Dj.webp\",\n    articleSections: [\"book-opinions\", \"book-guides\"] as const,\n"
+    },
+    {
+      "id": "src/App.tsx:3",
+      "path": "src/App.tsx",
+      "reason": "Rename the library consistently and derive header publication counts from the actual localized article catalog.",
+      "before": "    initialHashIntent(BOOK_SHELF_HASH_TARGETS) || addressRequestsBook()\n  );\n  const [bookArchiveRetryToken, setBookArchiveRetryToken] = useState(0);\n  const [pendingWriterWork, setPendingWriterWork] =\n    useState<PendingWriterWork | null>(null);\n  const [articleCount, setArticleCount] = useState(0);\n  const [generatedEditorialQueue, setGeneratedEditorialQueue] = useState(0);\n  const [search, setSearch] = useState(\"\");\n  const [atlasFilter, setAtlasFilter] = useState<AtlasFilter>(\n    () => readAtlasUrlState().filter\n  );\n",
+      "after": "    initialHashIntent(BOOK_SHELF_HASH_TARGETS) || addressRequestsBook()\n  );\n  const [bookArchiveRetryToken, setBookArchiveRetryToken] = useState(0);\n  const [pendingWriterWork, setPendingWriterWork] =\n    useState<PendingWriterWork | null>(null);\n  const [publicationCounts, setPublicationCounts] = useState<ReturnType<\n    typeof articlePublicationCounts\n  > | null>(null);\n  const articleCount = publicationCounts?.[language] ?? null;\n\n  useEffect(() => {\n    let current = true;\n    const loadCounts = () => {\n      loadArticlePublicationCounts()\n        .then((counts) => {\n          if (current) setPublicationCounts(counts);\n        })\n        .catch(() => {\n          // The journal remains available for a later retry after a load error.\n        });\n    };\n    const idle = typeof window.requestIdleCallback === \"function\"\n      ? window.requestIdleCallback(loadCounts, { timeout: 2000 })\n      : window.setTimeout(loadCounts, 500);\n    return () => {\n      current = false;\n      if (typeof window.cancelIdleCallback === \"function\") window.cancelIdleCallback(idle);\n      else window.clearTimeout(idle);\n    };\n  }, []);\n  const [generatedEditorialQueue, setGeneratedEditorialQueue] = useState(0);\n  const [search, setSearch] = useState(\"\");\n  const [atlasFilter, setAtlasFilter] = useState<AtlasFilter>(\n    () => readAtlasUrlState().filter\n  );\n"
+    },
+    {
+      "id": "src/App.tsx:4",
+      "path": "src/App.tsx",
+      "reason": "Rename the library consistently and derive header publication counts from the actual localized article catalog.",
+      "before": "    <div className=\"magazine-app\" data-typography-component=\"magazine\">\n      <div className=\"topline\">\n        <span>{t(\"Литературный журнал и энциклопедия\")}</span>\n        <p>{t(\"Архив пополняется ежедневно\")}</p>\n        <div aria-label={t(\"Проба Пера в цифрах\")}>\n          <span>{articleCount ? number(articleCount) : \"…\"} {t(\"публикаций\")}</span>\n          <span>\n            {archiveStatistics.countries ? number(archiveStatistics.countries) : \"…\"}{\" \"}\n            {t(\"стран\")}\n          </span>\n        </div>\n",
+      "after": "    <div className=\"magazine-app\" data-typography-component=\"magazine\">\n      <div className=\"topline\">\n        <span>{t(\"Литературный журнал и энциклопедия\")}</span>\n        <p>{t(\"Архив пополняется ежедневно\")}</p>\n        <div aria-label={t(\"Проба Пера в цифрах\")}>\n          <span>{articleCount === null ? t(\"Журнал\") : `${number(articleCount)} ${t(selectInterfacePlural(articleCount, language, [\"публикация\", \"публикации\", \"публикаций\"]))}`}</span>\n          <span>\n            {archiveStatistics.countries ? number(archiveStatistics.countries) : \"…\"}{\" \"}\n            {t(\"стран\")}\n          </span>\n        </div>\n"
+    },
+    {
+      "id": "src/App.tsx:5",
+      "path": "src/App.tsx",
+      "reason": "Rename the library consistently and derive header publication counts from the actual localized article catalog.",
+      "before": "              ) : (\n                <>\n                  <span>\n                    {bookOfMonth\n                      ? writerName(bookOfMonth.writer, t(\"Автор\"), language)\n                      : t(\"Книжный архив\")}\n                  </span>\n                  <strong>{bookOfMonthText?.title || t(\"Книга месяца\")}</strong>\n                  <i>✦</i>\n                </>\n              )}\n",
+      "after": "              ) : (\n                <>\n                  <span>\n                    {bookOfMonth\n                      ? writerName(bookOfMonth.writer, t(\"Автор\"), language)\n                      : t(\"Библиотека «Проба Пера»\")}\n                  </span>\n                  <strong>{bookOfMonthText?.title || t(\"Книга месяца\")}</strong>\n                  <i>✦</i>\n                </>\n              )}\n"
+    },
+    {
+      "id": "src/App.tsx:6",
+      "path": "src/App.tsx",
+      "reason": "Rename the library consistently and derive header publication counts from the actual localized article catalog.",
+      "before": "            </div>\n            {editorialStandardCard}\n          </div>\n        </section>\n\n        <DeferredArticleLibrary onArticleCountReady={setArticleCount} />\n\n        <section\n          className={`authors-section painted-paper-section brush-surface${coreHomepageSectionClass(coreAuthors)}`}\n          id=\"authors\"\n          style={coreHomepageSectionStyle(coreAuthors)}\n",
+      "after": "            </div>\n            {editorialStandardCard}\n          </div>\n        </section>\n\n        <DeferredArticleLibrary />\n\n        <section\n          className={`authors-section painted-paper-section brush-surface${coreHomepageSectionClass(coreAuthors)}`}\n          id=\"authors\"\n          style={coreHomepageSectionStyle(coreAuthors)}\n"
+    },
+    {
+      "id": "src/App.tsx:7",
+      "path": "src/App.tsx",
+      "reason": "Rename the library consistently and derive header publication counts from the actual localized article catalog.",
+      "before": "            </section>\n            <section>\n              <h2>{t(\"Энциклопедия\")}</h2>\n              <a href=\"#atlas\">{t(\"Литературная планета\")}</a>\n              <a href=\"#authors\">{t(\"Писатели\")}</a>\n              <a href=\"#books\">{t(\"Книжный архив\")}</a>\n              <a href=\"#calendar\">{t(\"Календарь событий\")}</a>\n              <a href=\"#about\">{t(\"Редакционный стандарт\")}</a>\n              <a href=\"#editorial-policy\">{t(\"Источники и фактчекинг\")}</a>\n              <a href=\"#editorial-policy\">{t(\"Исправления и авторские права\")}</a>\n            </section>\n",
+      "after": "            </section>\n            <section>\n              <h2>{t(\"Энциклопедия\")}</h2>\n              <a href=\"#atlas\">{t(\"Литературная планета\")}</a>\n              <a href=\"#authors\">{t(\"Писатели\")}</a>\n              <a href=\"#books\">{t(\"Библиотека «Проба Пера»\")}</a>\n              <a href=\"#calendar\">{t(\"Календарь событий\")}</a>\n              <a href=\"#about\">{t(\"Редакционный стандарт\")}</a>\n              <a href=\"#editorial-policy\">{t(\"Источники и фактчекинг\")}</a>\n              <a href=\"#editorial-policy\">{t(\"Исправления и авторские права\")}</a>\n            </section>\n"
+    },
+    {
+      "id": "src/App.tsx:8",
+      "path": "src/App.tsx",
+      "reason": "Rename the library consistently and derive header publication counts from the actual localized article catalog.",
+      "before": "          >\n            <GlobalSearch\n              open\n              countries={countryArchive}\n              books={verifiedBookArchive}\n              articleCount={articleCount}\n              onClose={closeGlobalSearch}\n              onCountrySelect={(country, writer) =>\n                writer\n                  ? selectWriterAndFocus(country, writer)\n                  : selectCountry(country, true)\n",
+      "after": "          >\n            <GlobalSearch\n              open\n              countries={countryArchive}\n              books={verifiedBookArchive}\n              onClose={closeGlobalSearch}\n              onCountrySelect={(country, writer) =>\n                writer\n                  ? selectWriterAndFocus(country, writer)\n                  : selectCountry(country, true)\n"
+    },
+    {
+      "id": "src/components/ArticleLibrarySection.tsx:1",
+      "path": "src/components/ArticleLibrarySection.tsx",
+      "reason": "Use the actual localized article count without an unrelated fixed total.",
+      "before": "  articleCatalog,\n  type ArticleCatalogEntry,\n} from \"../data/articles/catalog\";\nimport { mediaFocusStyle } from \"../utils/mediaFocus\";\nimport { articleCatalogEntryForLanguage } from \"../data/articles/localization\";\nimport { PUBLIC_ARCHIVE_ARTICLE_COUNT } from \"../data/articles/publicationStats\";\nimport {\n  articleIdFromPath,\n  articlePath,\n  journalPath,\n  journalSectionFromPath,\n",
+      "after": "  articleCatalog,\n  type ArticleCatalogEntry,\n} from \"../data/articles/catalog\";\nimport { mediaFocusStyle } from \"../utils/mediaFocus\";\nimport { articleCatalogEntryForLanguage } from \"../data/articles/localization\";\nimport {\n  articleIdFromPath,\n  articlePath,\n  journalPath,\n  journalSectionFromPath,\n"
+    },
+    {
+      "id": "src/components/ArticleLibrarySection.tsx:2",
+      "path": "src/components/ArticleLibrarySection.tsx",
+      "reason": "Use the actual localized article count without an unrelated fixed total.",
+      "before": "        const localized = articleCatalogEntryForLanguage(article, language);\n        return localized ? [localized] : [];\n      }),\n    [language]\n  );\n  const archiveArticleCount =\n    language === \"ru\"\n      ? PUBLIC_ARCHIVE_ARTICLE_COUNT\n      : localizedArticleCatalog.length;\n  const [sectionId, setSectionId] = useState(sectionFromAddress);\n  const [seriesId, setSeriesId] = useState(seriesFromAddress);\n  const [search, setSearch] = useState(\"\");\n  const [visibleCount, setVisibleCount] = useState(12);\n  const [selectedId, setSelectedId] = useState<string | null>(() =>\n",
+      "after": "        const localized = articleCatalogEntryForLanguage(article, language);\n        return localized ? [localized] : [];\n      }),\n    [language]\n  );\n  const archiveArticleCount = localizedArticleCatalog.length;\n  const [sectionId, setSectionId] = useState(sectionFromAddress);\n  const [seriesId, setSeriesId] = useState(seriesFromAddress);\n  const [search, setSearch] = useState(\"\");\n  const [visibleCount, setVisibleCount] = useState(12);\n  const [selectedId, setSelectedId] = useState<string | null>(() =>\n"
+    },
+    {
+      "id": "src/components/ArticleLibrarySection.tsx:3",
+      "path": "src/components/ArticleLibrarySection.tsx",
+      "reason": "Use the actual localized article count without an unrelated fixed total.",
+      "before": "          <button\n            className=\"article-library-more\"\n            type=\"button\"\n            onClick={() => setVisibleCount((value) => value + 12)}\n          >\n            {t(\"Показать ещё 12 материалов\")}\n            <span>\n              {Math.min(visibleCount, filtered.length)} / {filtered.length}\n            </span>\n          </button>\n        )}\n      </section>\n\n",
+      "after": "          <button\n            className=\"article-library-more\"\n            type=\"button\"\n            onClick={() => setVisibleCount((value) => value + 12)}\n          >\n            {t(\"Показать ещё\")} {number(Math.min(12, filtered.length - visibleCount))}\n            <span>\n              {number(Math.min(visibleCount, filtered.length))} / {number(filtered.length)}\n            </span>\n          </button>\n        )}\n      </section>\n\n"
+    },
+    {
+      "id": "src/components/ArticleReader.tsx:1",
+      "path": "src/components/ArticleReader.tsx",
+      "reason": "Use the owner-requested library terminology in article reading controls.",
+      "before": "                      {language === \"en\" ? \"Continue with the books\" : \"Продолжить с книгами\"}\n                    </h2>\n                  </div>\n                  <p>\n                    {language === \"en\"\n                      ? \"Verified works mentioned in the text and available in the literary archive.\"\n                      : \"Проверенные произведения, упомянутые в тексте и доступные в книжном архиве.\"}\n                  </p>\n                </header>\n                <div>\n                  {localizedMentionedBooks.map((book) => (\n                    <a\n",
+      "after": "                      {language === \"en\" ? \"Continue with the books\" : \"Продолжить с книгами\"}\n                    </h2>\n                  </div>\n                  <p>\n                    {language === \"en\"\n                      ? \"Verified works mentioned in the text and available in the library.\"\n                      : \"Проверенные произведения, упомянутые в тексте и доступные в библиотеке.\"}\n                  </p>\n                </header>\n                <div>\n                  {localizedMentionedBooks.map((book) => (\n                    <a\n"
+    },
+    {
+      "id": "src/components/BookArchiveSection.tsx:1",
+      "path": "src/components/BookArchiveSection.tsx",
+      "reason": "Use the owner-requested Proba Pera Library name and matching accessible labels.",
+      "before": "        <div className=\"book-shelf-search-results__summary\">\n          <strong>\n            {searchScope === \"global\"\n              ? t(\"Подсказки единого каталога\")\n              : searchScope === \"archive\"\n                ? t(\"Подсказки всего книжного архива\")\n              : t(\"Подсказки библиотеки\")}\n          </strong>\n          <span>\n            {number(activeSearchResponse.totalMatches)} {t(\"совпадений\")}\n          </span>\n",
+      "after": "        <div className=\"book-shelf-search-results__summary\">\n          <strong>\n            {searchScope === \"global\"\n              ? t(\"Подсказки единого каталога\")\n              : searchScope === \"archive\"\n                ? t(\"Подсказки всей библиотеки\")\n              : t(\"Подсказки библиотеки\")}\n          </strong>\n          <span>\n            {number(activeSearchResponse.totalMatches)} {t(\"совпадений\")}\n          </span>\n"
+    },
+    {
+      "id": "src/components/BookArchiveSection.tsx:2",
+      "path": "src/components/BookArchiveSection.tsx",
+      "reason": "Use the owner-requested Proba Pera Library name and matching accessible labels.",
+      "before": "              <ul\n                aria-label={\n                  searchScope === \"global\"\n                    ? t(\"Результаты поиска по всему журналу\")\n                    : searchScope === \"archive\"\n                      ? t(\"Результаты поиска по всему книжному архиву\")\n                      : t(\"Результаты поиска по текущей полке\")\n                }\n              >\n                {suggestionGroup.results.map((result) => (\n                  <li key={result.key}>\n",
+      "after": "              <ul\n                aria-label={\n                  searchScope === \"global\"\n                    ? t(\"Результаты поиска по всему журналу\")\n                    : searchScope === \"archive\"\n                      ? t(\"Результаты поиска по всей библиотеке\")\n                      : t(\"Результаты поиска по текущей полке\")\n                }\n              >\n                {suggestionGroup.results.map((result) => (\n                  <li key={result.key}>\n"
+    },
+    {
+      "id": "src/components/BookArchiveSection.tsx:3",
+      "path": "src/components/BookArchiveSection.tsx",
+      "reason": "Use the owner-requested Proba Pera Library name and matching accessible labels.",
+      "before": "      style={coreHomepageSectionStyle(coreBookArchive)}\n      {...cmsCoreFieldMarker(\n        \"book-archive\",\n        \"backgroundMediaId\",\n        coreBookArchive?.backgroundImageUrl || \"\",\n        { kind: \"image\", label: \"Фон книжного архива\" }\n      )}\n    >\n      <BrushBackdrop source=\"authors\" />\n      <header className=\"book-archive-heading\">\n        <div>\n",
+      "after": "      style={coreHomepageSectionStyle(coreBookArchive)}\n      {...cmsCoreFieldMarker(\n        \"book-archive\",\n        \"backgroundMediaId\",\n        coreBookArchive?.backgroundImageUrl || \"\",\n        { kind: \"image\", label: \"Фон библиотеки\" }\n      )}\n    >\n      <BrushBackdrop source=\"authors\" />\n      <header className=\"book-archive-heading\">\n        <div>\n"
+    },
+    {
+      "id": "src/components/BookArchiveSection.tsx:4",
+      "path": "src/components/BookArchiveSection.tsx",
+      "reason": "Use the owner-requested Proba Pera Library name and matching accessible labels.",
+      "before": "            className=\"section-kicker\"\n            {...cmsCoreFieldMarker(\n              \"book-archive\",\n              \"eyebrow\",\n              coreBookArchive?.eyebrow || \"Книги, авторы, страны\",\n              { label: \"Надзаголовок книжного архива\" }\n            )}\n          >\n            {language === \"ru\" && coreBookArchive?.eyebrow\n              ? coreBookArchive.eyebrow\n              : t(\"Книги, авторы, страны\")}\n          </span>\n          <h2\n            {...cmsCoreFieldMarker(\n              \"book-archive\",\n              \"title\",\n              coreBookArchive?.title || \"Книжный архив\",\n              { label: \"Заголовок книжного архива\" }\n            )}\n          >\n            {language === \"ru\" && coreBookArchive?.title\n              ? coreBookArchive.title\n              : t(\"Книжный архив\")}\n          </h2>\n          <p\n            {...cmsCoreFieldMarker(\n              \"book-archive\",\n              \"description\",\n              coreBookArchive?.description ||\n                \"Произведения связаны с карточками писателей и литературными традициями стран. Расширенные сведения публикуются только после редакционной проверки.\",\n              { kind: \"textarea\", label: \"Описание книжного архива\" }\n            )}\n          >\n            {language === \"ru\" && coreBookArchive?.description\n              ? coreBookArchive.description\n              : t(\n",
+      "after": "            className=\"section-kicker\"\n            {...cmsCoreFieldMarker(\n              \"book-archive\",\n              \"eyebrow\",\n              coreBookArchive?.eyebrow || \"Книги, авторы, страны\",\n              { label: \"Надзаголовок библиотеки\" }\n            )}\n          >\n            {language === \"ru\" && coreBookArchive?.eyebrow\n              ? coreBookArchive.eyebrow\n              : t(\"Книги, авторы, страны\")}\n          </span>\n          <h2\n            {...cmsCoreFieldMarker(\n              \"book-archive\",\n              \"title\",\n              coreBookArchive?.title || \"Библиотека «Проба Пера»\",\n              { label: \"Заголовок библиотеки\" }\n            )}\n          >\n            {language === \"ru\" && coreBookArchive?.title\n              ? coreBookArchive.title\n              : t(\"Библиотека «Проба Пера»\")}\n          </h2>\n          <p\n            {...cmsCoreFieldMarker(\n              \"book-archive\",\n              \"description\",\n              coreBookArchive?.description ||\n                \"Произведения связаны с карточками писателей и литературными традициями стран. Расширенные сведения публикуются только после редакционной проверки.\",\n              { kind: \"textarea\", label: \"Описание библиотеки\" }\n            )}\n          >\n            {language === \"ru\" && coreBookArchive?.description\n              ? coreBookArchive.description\n              : t(\n"
+    },
+    {
+      "id": "src/components/BookArchiveSection.tsx:5",
+      "path": "src/components/BookArchiveSection.tsx",
+      "reason": "Use the owner-requested Proba Pera Library name and matching accessible labels.",
+      "before": "                    shelfDispatch({ type: \"inspection-closed\", requestId })\n                  }\n                  onShelfRestored={handleShelfRestored}\n                  onContextRestored={handleShelfContextRestored}\n                  onFailure={handleShelfFailure}\n                  sceneLabel={t(\"Книжный архив\")}\n                  loadingLabel={t(\"Собираем виртуальную полку…\")}\n                  emptyLabel={t(\"На этой полке пока нет книг\")}\n                  openBookLabel={t(\"Открыть книгу\")}\n                  pageTurnLabel={t(\"Перелистнуть страницу\")}\n                  closeInspectionLabel={t(\"Закрыть карточку книги\")}\n",
+      "after": "                    shelfDispatch({ type: \"inspection-closed\", requestId })\n                  }\n                  onShelfRestored={handleShelfRestored}\n                  onContextRestored={handleShelfContextRestored}\n                  onFailure={handleShelfFailure}\n                  sceneLabel={t(\"Библиотека «Проба Пера»\")}\n                  loadingLabel={t(\"Собираем виртуальную полку…\")}\n                  emptyLabel={t(\"На этой полке пока нет книг\")}\n                  openBookLabel={t(\"Открыть книгу\")}\n                  pageTurnLabel={t(\"Перелистнуть страницу\")}\n                  closeInspectionLabel={t(\"Закрыть карточку книги\")}\n"
+    },
+    {
+      "id": "src/components/BookArchiveSection.tsx:6",
+      "path": "src/components/BookArchiveSection.tsx",
+      "reason": "Use the owner-requested Proba Pera Library name and matching accessible labels.",
+      "before": "            ref={filterDrawerRef}\n            className=\"book-shelf-frame__filter-drawer\"\n            id=\"book-archive-advanced-filters\"\n            role=\"dialog\"\n            aria-modal={advancedFiltersOpen ? \"true\" : undefined}\n            aria-label={t(\"Расширенные фильтры книжного архива\")}\n            hidden={!advancedFiltersOpen}\n          >\n            <header className=\"book-shelf-filter-drawer__header\">\n              <div>\n                <span>{t(\"Точный отбор\")}</span>\n",
+      "after": "            ref={filterDrawerRef}\n            className=\"book-shelf-frame__filter-drawer\"\n            id=\"book-archive-advanced-filters\"\n            role=\"dialog\"\n            aria-modal={advancedFiltersOpen ? \"true\" : undefined}\n            aria-label={t(\"Расширенные фильтры библиотеки\")}\n            hidden={!advancedFiltersOpen}\n          >\n            <header className=\"book-shelf-filter-drawer__header\">\n              <div>\n                <span>{t(\"Точный отбор\")}</span>\n"
+    },
+    {
+      "id": "src/components/GlobalSearch.tsx:1",
+      "path": "src/components/GlobalSearch.tsx",
+      "reason": "Use actual article search results and the owner-requested library terminology.",
+      "before": "\ntype Props = {\n  open: boolean;\n  countries: Country[];\n  books: BookArchiveEntry[];\n  articleCount: number;\n  onClose: () => void;\n  onCountrySelect: (country: Country, writer?: Writer) => void;\n  onBookSelect: (book: BookArchiveEntry) => void;\n};\n\n",
+      "after": "\ntype Props = {\n  open: boolean;\n  countries: Country[];\n  books: BookArchiveEntry[];\n  onClose: () => void;\n  onCountrySelect: (country: Country, writer?: Writer) => void;\n  onBookSelect: (book: BookArchiveEntry) => void;\n};\n\n"
+    },
+    {
+      "id": "src/components/GlobalSearch.tsx:2",
+      "path": "src/components/GlobalSearch.tsx",
+      "reason": "Use actual article search results and the owner-requested library terminology.",
+      "before": "\nexport default function GlobalSearch({\n  open,\n  countries,\n  books,\n  articleCount,\n  onClose,\n  onCountrySelect,\n  onBookSelect,\n}: Props) {\n  const dialogRef = useRef<HTMLDivElement>(null);\n",
+      "after": "\nexport default function GlobalSearch({\n  open,\n  countries,\n  books,\n  onClose,\n  onCountrySelect,\n  onBookSelect,\n}: Props) {\n  const dialogRef = useRef<HTMLDivElement>(null);\n"
+    },
+    {
+      "id": "src/components/GlobalSearch.tsx:3",
+      "path": "src/components/GlobalSearch.tsx",
+      "reason": "Use actual article search results and the owner-requested library terminology.",
+      "before": "          <span>\n            {articlesLoading\n              ? t(\"Подключаем редакционный архив…\")\n              : searchLoadError\n                ? t(\"Редакционный архив временно недоступен\")\n              : `${number(countries.length)} ${t(selectInterfacePlural(countries.length, language, [\"страна\", \"страны\", \"стран\"]))} · ${number(books.length)} ${t(selectInterfacePlural(books.length, language, [\"произведение\", \"произведения\", \"произведений\"]))} · ${number(language === \"en\" ? (searchIndex?.articleCount || 0) : articleCount)} ${t(selectInterfacePlural(language === \"en\" ? (searchIndex?.articleCount || 0) : articleCount, language, [\"статья\", \"статьи\", \"статей\"]))}`}\n          </span>\n          <small>{t(\"Поиск выполняется внутри сайта\")}</small>\n        </footer>\n      </div>\n    </div>\n",
+      "after": "          <span>\n            {articlesLoading\n              ? t(\"Подключаем редакционный архив…\")\n              : searchLoadError\n                ? t(\"Редакционный архив временно недоступен\")\n              : `${number(countries.length)} ${t(selectInterfacePlural(countries.length, language, [\"страна\", \"страны\", \"стран\"]))} · ${number(books.length)} ${t(selectInterfacePlural(books.length, language, [\"произведение\", \"произведения\", \"произведений\"]))} · ${number(searchIndex?.articleCount ?? 0)} ${t(selectInterfacePlural(searchIndex?.articleCount ?? 0, language, [\"статья\", \"статьи\", \"статей\"]))}`}\n          </span>\n          <small>{t(\"Поиск выполняется внутри сайта\")}</small>\n        </footer>\n      </div>\n    </div>\n"
+    },
+    {
+      "id": "src/components/HeaderArticlesMenu.tsx:1",
+      "path": "src/components/HeaderArticlesMenu.tsx",
+      "reason": "Show actual localized publication counts and retain compact article-menu navigation.",
+      "before": "import { useCallback, useEffect, useMemo, useRef, useState } from \"react\";\nimport { publicImageAttributes, publicImageUrl } from \"../utils/imageDelivery\";\n\nimport type { ArticleCatalogEntry } from \"../data/articles/catalog\";\nimport { articleCatalogEntryForLanguage } from \"../data/articles/localization\";\nimport { PUBLIC_ARCHIVE_ARTICLE_COUNT } from \"../data/articles/publicationStats\";\nimport {\n  articlePath,\n  journalPath,\n  navigateToArticle,\n  navigateToJournal,\n  shouldUseClientNavigation,\n} from \"../utils/articleRoutes\";\nimport {\n  translateInterfaceText,\n  type InterfaceLanguage,\n} from \"../i18n/InterfaceLanguage\";\n\nconst russianMonths: Record<string, number> = {\n",
+      "after": "import { useCallback, useEffect, useMemo, useRef, useState } from \"react\";\nimport { publicImageAttributes, publicImageUrl } from \"../utils/imageDelivery\";\n\nimport type { ArticleCatalogEntry } from \"../data/articles/catalog\";\nimport { articleCatalogEntryForLanguage } from \"../data/articles/localization\";\nimport {\n  articlePath,\n  journalPath,\n  navigateToArticle,\n  navigateToJournal,\n  shouldUseClientNavigation,\n} from \"../utils/articleRoutes\";\nimport {\n  selectInterfacePlural,\n  translateInterfaceText,\n  type InterfaceLanguage,\n} from \"../i18n/InterfaceLanguage\";\n\nconst russianMonths: Record<string, number> = {\n"
+    },
+    {
+      "id": "src/components/HeaderArticlesMenu.tsx:2",
+      "path": "src/components/HeaderArticlesMenu.tsx",
+      "reason": "Show actual localized publication counts and retain compact article-menu navigation.",
+      "before": "  language?: InterfaceLanguage;\n};\n\nexport default function HeaderArticlesMenu({ language = \"ru\" }: Props) {\n  const [articles, setArticles] = useState<ArticleCatalogEntry[]>([]);\n  const [loading, setLoading] = useState(false);\n  const closeTimer = useRef<number | null>(null);\n  const detailsRef = useRef<HTMLDetailsElement>(null);\n  const t = useCallback(\n    (text: string) => translateInterfaceText(text, language),\n",
+      "after": "  language?: InterfaceLanguage;\n};\n\nexport default function HeaderArticlesMenu({ language = \"ru\" }: Props) {\n  const [articles, setArticles] = useState<ArticleCatalogEntry[]>([]);\n  const [loaded, setLoaded] = useState(false);\n  const [loading, setLoading] = useState(false);\n  const closeTimer = useRef<number | null>(null);\n  const detailsRef = useRef<HTMLDetailsElement>(null);\n  const t = useCallback(\n    (text: string) => translateInterfaceText(text, language),\n"
+    },
+    {
+      "id": "src/components/HeaderArticlesMenu.tsx:3",
+      "path": "src/components/HeaderArticlesMenu.tsx",
+      "reason": "Show actual localized publication counts and retain compact article-menu navigation.",
+      "before": "    document.addEventListener(\"pointerdown\", closeFromOutside, true);\n    return () => document.removeEventListener(\"pointerdown\", closeFromOutside, true);\n  }, []);\n\n  const loadArticles = useCallback(() => {\n    if (articles.length || loading) return;\n    setLoading(true);\n    import(\"../data/articles/catalog\")\n      .then(({ articleCatalog }) => setArticles(articleCatalog))\n      .finally(() => setLoading(false));\n  }, [articles.length, loading]);\n\n  const localizedArticles = useMemo(\n    () =>\n      articles.flatMap((article) => {\n        const localized = articleCatalogEntryForLanguage(article, language);\n",
+      "after": "    document.addEventListener(\"pointerdown\", closeFromOutside, true);\n    return () => document.removeEventListener(\"pointerdown\", closeFromOutside, true);\n  }, []);\n\n  const loadArticles = useCallback(() => {\n    if (loaded || loading) return;\n    setLoading(true);\n    import(\"../data/articles/catalog\")\n      .then(({ articleCatalog }) => {\n        setArticles(articleCatalog);\n        setLoaded(true);\n      })\n      .catch(() => setLoaded(false))\n      .finally(() => setLoading(false));\n  }, [loaded, loading]);\n\n  const localizedArticles = useMemo(\n    () =>\n      articles.flatMap((article) => {\n        const localized = articleCatalogEntryForLanguage(article, language);\n"
+    },
+    {
+      "id": "src/components/HeaderArticlesMenu.tsx:4",
+      "path": "src/components/HeaderArticlesMenu.tsx",
+      "reason": "Show actual localized publication counts and retain compact article-menu navigation.",
+      "before": "          </div>\n        ) : (\n          <div className=\"articles-mega-loading\">\n            {loading\n              ? t(\"Подключаем редакционный архив…\")\n              : language === \"en\" && articles.length > 0\n                ? t(\"Пока нет опубликованных переводов на английский язык\")\n                : t(\"Наведите, чтобы открыть публикации\")}\n          </div>\n        )}\n\n        <footer>\n          <span>\n            {localizedArticles.length\n              ? language === \"en\"\n                ? `${localizedArticles.length} ${\n                    localizedArticles.length === 1 ? \"publication\" : \"publications\"\n                  } in the archive`\n                : `${PUBLIC_ARCHIVE_ARTICLE_COUNT} материалов в архиве`\n              : t(\"Полный архив журнала\")}\n          </span>\n          <a\n            href={journalPath()}\n            onClick={(event) => {\n",
+      "after": "          </div>\n        ) : (\n          <div className=\"articles-mega-loading\">\n            {loading\n              ? t(\"Подключаем редакционный архив…\")\n              : language === \"en\" && loaded\n                ? t(\"Пока нет опубликованных переводов на английский язык\")\n                : t(\"Наведите, чтобы открыть публикации\")}\n          </div>\n        )}\n\n        <footer>\n          <span>\n            {loaded\n              ? `${new Intl.NumberFormat(language === \"ru\" ? \"ru-RU\" : \"en-GB\").format(localizedArticles.length)} ${t(selectInterfacePlural(localizedArticles.length, language, [\"материал в архиве\", \"материала в архиве\", \"материалов в архиве\"]))}`\n              : t(\"Полный архив журнала\")}\n          </span>\n          <a\n            href={journalPath()}\n            onClick={(event) => {\n"
+    },
+    {
+      "id": "src/components/SectionsDirectory.tsx:1",
+      "path": "src/components/SectionsDirectory.tsx",
+      "reason": "Remove the obsolete fixed publication count from section navigation.",
+      "before": "import { useMemo, useState, type CSSProperties, type MouseEvent } from \"react\";\nimport { publicImageUrl } from \"../utils/imageDelivery\";\n\nimport { articleCatalog } from \"../data/articles/catalog\";\nimport { articleCatalogEntryForLanguage } from \"../data/articles/localization\";\nimport { PUBLIC_ARCHIVE_ARTICLE_COUNT } from \"../data/articles/publicationStats\";\nimport { useInterfaceLanguage } from \"../i18n/InterfaceLanguage\";\nimport {\n  articlePath,\n  journalPath,\n  navigateToJournal,\n",
+      "after": "import { useMemo, useState, type CSSProperties, type MouseEvent } from \"react\";\nimport { publicImageUrl } from \"../utils/imageDelivery\";\n\nimport { articleCatalog } from \"../data/articles/catalog\";\nimport { articleCatalogEntryForLanguage } from \"../data/articles/localization\";\nimport { useInterfaceLanguage } from \"../i18n/InterfaceLanguage\";\nimport {\n  articlePath,\n  journalPath,\n  navigateToJournal,\n"
+    },
+    {
+      "id": "src/components/SectionsDirectory.tsx:2",
+      "path": "src/components/SectionsDirectory.tsx",
+      "reason": "Remove the obsolete fixed publication count from section navigation.",
+      "before": "  const hiddenSectionCount = sectionCards.length - visibleSectionCards.length;\n\n  return (\n    <div className=\"sections-directory-grid\" id=\"sections-directory-list\">\n      {visibleSectionCards.map(({ section, publications, latest, series }) => {\n        const publicationCount =\n          language === \"ru\" && section.metric === \"all-articles\"\n            ? PUBLIC_ARCHIVE_ARTICLE_COUNT\n            : publications.length;\n        const liveLabel =\n          section.id === \"atlas\"\n            ? language === \"en\"\n              ? `${number(countryCount)} countries`\n              : `${number(countryCount)} стран`\n",
+      "after": "  const hiddenSectionCount = sectionCards.length - visibleSectionCards.length;\n\n  return (\n    <div className=\"sections-directory-grid\" id=\"sections-directory-list\">\n      {visibleSectionCards.map(({ section, publications, latest, series }) => {\n        const publicationCount = publications.length;\n        const liveLabel =\n          section.id === \"atlas\"\n            ? language === \"en\"\n              ? `${number(countryCount)} countries`\n              : `${number(countryCount)} стран`\n"
+    },
+    {
+      "id": "src/components/WriterPanel.tsx:1",
+      "path": "src/components/WriterPanel.tsx",
+      "reason": "Use the owner-requested library terminology in writer navigation.",
+      "before": "                              </span>\n                              {onWorkSelect && (\n                                <button\n                                  className=\"writer-record-open-book\"\n                                  type=\"button\"\n                                  aria-label={`${t(\"Книжный архив\")}: ${work.title}`}\n                                  onClick={(event) =>\n                                    onWorkSelect(\n                                      country.id,\n                                      activeWriter.id,\n                                      work.id,\n                                      event.currentTarget\n                                    )\n                                  }\n                                >\n                                  {t(\"Книжный архив\")} <span aria-hidden=\"true\">→</span>\n                                </button>\n                              )}\n                              {work.sourceUrl && (\n                                <a\n                                  href={work.sourceUrl}\n",
+      "after": "                              </span>\n                              {onWorkSelect && (\n                                <button\n                                  className=\"writer-record-open-book\"\n                                  type=\"button\"\n                                  aria-label={`${t(\"Библиотека «Проба Пера»\")}: ${work.title}`}\n                                  onClick={(event) =>\n                                    onWorkSelect(\n                                      country.id,\n                                      activeWriter.id,\n                                      work.id,\n                                      event.currentTarget\n                                    )\n                                  }\n                                >\n                                  {t(\"Библиотека «Проба Пера»\")} <span aria-hidden=\"true\">→</span>\n                                </button>\n                              )}\n                              {work.sourceUrl && (\n                                <a\n                                  href={work.sourceUrl}\n"
+    },
+    {
+      "id": "src/data/articles/publicationStats.ts:1",
+      "path": "src/data/articles/publicationStats.ts",
+      "reason": "Replace the stale fixed publication total with a count of the same localized catalog that supplies article cards.",
+      "before": "// Editorial counter shown in the Russian-language public archive. It is kept\n// separately from the client-side article snapshot used to render cards.\nexport const PUBLIC_ARCHIVE_ARTICLE_COUNT = 167;\n",
+      "after": "import type { ArticleCatalogEntry } from \"./catalog\";\nimport { articleCatalogEntryForLanguage } from \"./localization\";\n\n// Count the same merged, publication-gated snapshot that supplies public cards.\nexport function articlePublicationCounts(catalog: readonly ArticleCatalogEntry[]) {\n  return {\n    ru: catalog.length,\n    en: catalog.filter((article) => articleCatalogEntryForLanguage(article, \"en\"))\n      .length,\n  };\n}\n\nexport function loadArticlePublicationCounts() {\n  return import(\"./catalog\").then(({ articleCatalog }) =>\n    articlePublicationCounts(articleCatalog)\n  );\n}\n"
+    },
+    {
+      "id": "src/data/cms/homepage.ts:1",
+      "path": "src/data/cms/homepage.ts",
+      "reason": "Normalize the old default library heading while retaining custom CMS titles.",
+      "before": "import type { CSSProperties } from \"react\";\n\nimport { cmsSiteContent } from \"./site.generated\";\nimport { cmsHomepageVisualCssProperties } from \"./homepageVisualSettings\";\nimport { mediaFocusPosition } from \"../../utils/mediaFocus\";\n\nexport type CoreHomepageSectionKey =\n  | \"hero\"\n",
+      "after": "import type { CSSProperties } from \"react\";\n\nimport { cmsSiteContent } from \"./site.generated\";\nimport { coreSectionTitle } from \"./coreSectionTitle\";\nimport { cmsHomepageVisualCssProperties } from \"./homepageVisualSettings\";\nimport { mediaFocusPosition } from \"../../utils/mediaFocus\";\n\nexport type CoreHomepageSectionKey =\n  | \"hero\"\n"
+    },
+    {
+      "id": "src/data/cms/homepage.ts:2",
+      "path": "src/data/cms/homepage.ts",
+      "reason": "Normalize the old default library heading while retaining custom CMS titles.",
+      "before": "  for (const block of homepageBlocks) {\n    const settings = objectValue(block.settings);\n    if (settings.coreSectionKey !== key) continue;\n    return {\n      key,\n      title: textValue(block.title),\n      eyebrow: textValue(settings.eyebrow),\n      description:\n        textValue(settings.description) || textValue(settings.copy),\n      buttonText: textValue(settings.buttonText),\n      buttonUrl: textValue(settings.buttonUrl),\n",
+      "after": "  for (const block of homepageBlocks) {\n    const settings = objectValue(block.settings);\n    if (settings.coreSectionKey !== key) continue;\n    return {\n      key,\n      title: coreSectionTitle(key, block.title),\n      eyebrow: textValue(settings.eyebrow),\n      description:\n        textValue(settings.description) || textValue(settings.copy),\n      buttonText: textValue(settings.buttonText),\n      buttonUrl: textValue(settings.buttonUrl),\n"
+    },
+    {
+      "id": "src/i18n/InterfaceLanguage.tsx:1",
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "reason": "Keep one existing RU/EN localization source for the exact library and article-control copy changes.",
+      "before": "  \"Язык и редкие слова\": \"Language and rare words\",\n  \"Литературные истории\": \"Literary stories\",\n  \"Рассказы и литературные истории\": \"Stories and literary histories\",\n  \"Авторские рассказы и эссе, судьбы произведений, писательские замыслы и культурные открытия.\":\n    \"Original stories and essays, the lives of works, writers' ideas and cultural discoveries.\",\n  \"Книжный архив\": \"Book archive\",\n  \"Литературный календарь\": \"Literary calendar\",\n  \"Указатель писателей\": \"Writers index\",\n  \"Быстрый вход в биографии, произведения и литературные связи авторов из энциклопедии.\":\n    \"A direct route to biographies, works and literary connections across the encyclopedia.\",\n  \"Обсуждения книг, статей, переводов и экранизаций с общей системой рейтинга и профилей.\":\n",
+      "after": "  \"Язык и редкие слова\": \"Language and rare words\",\n  \"Литературные истории\": \"Literary stories\",\n  \"Рассказы и литературные истории\": \"Stories and literary histories\",\n  \"Авторские рассказы и эссе, судьбы произведений, писательские замыслы и культурные открытия.\":\n    \"Original stories and essays, the lives of works, writers' ideas and cultural discoveries.\",\n  \"Библиотека «Проба Пера»\": \"Proba Pera Library\",\n  \"Литературный календарь\": \"Literary calendar\",\n  \"Указатель писателей\": \"Writers index\",\n  \"Быстрый вход в биографии, произведения и литературные связи авторов из энциклопедии.\":\n    \"A direct route to biographies, works and literary connections across the encyclopedia.\",\n  \"Обсуждения книг, статей, переводов и экранизаций с общей системой рейтинга и профилей.\":\n"
+    },
+    {
+      "id": "src/i18n/InterfaceLanguage.tsx:2",
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "reason": "Keep one existing RU/EN localization source for the exact library and article-control copy changes.",
+      "before": "  \"Произведения связаны с карточками писателей и литературными традициями стран. Расширенные сведения публикуются только после редакционной проверки.\":\n    \"Works are connected to writer profiles and national literary traditions. Extended information is published only after editorial review.\",\n  \"произведений из единой базы стран\": \"works from the unified country archive\",\n  \"Поиск по книге, автору или стране\": \"Search by book, writer or country\",\n  \"Например, Достоевский или Япония\": \"For example, Dostoevsky or Japan\",\n  \"Фильтры книжного архива\": \"Book archive filters\",\n  \"Отбор архива\": \"Archive selection\",\n  \"результатов\": \"results\",\n  \"Все связанные произведения\": \"All linked works\",\n  \"Весь архив\": \"Complete archive\",\n  \"Карточки с подтверждёнными данными\": \"Records with verified metadata\",\n",
+      "after": "  \"Произведения связаны с карточками писателей и литературными традициями стран. Расширенные сведения публикуются только после редакционной проверки.\":\n    \"Works are connected to writer profiles and national literary traditions. Extended information is published only after editorial review.\",\n  \"произведений из единой базы стран\": \"works from the unified country archive\",\n  \"Поиск по книге, автору или стране\": \"Search by book, writer or country\",\n  \"Например, Достоевский или Япония\": \"For example, Dostoevsky or Japan\",\n  \"Фильтры библиотеки\": \"Library filters\",\n  \"Отбор архива\": \"Archive selection\",\n  \"результатов\": \"results\",\n  \"Все связанные произведения\": \"All linked works\",\n  \"Весь архив\": \"Complete archive\",\n  \"Карточки с подтверждёнными данными\": \"Records with verified metadata\",\n"
+    },
+    {
+      "id": "src/i18n/InterfaceLanguage.tsx:3",
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "reason": "Keep one existing RU/EN localization source for the exact library and article-control copy changes.",
+      "before": "    \"Classic cartographic atlas, 2026 edition. Cartography: Natural Earth.\",\n  \"Полное имя, проверяемые даты, человеческая биография, ключевые произведения и открытые источники. Сомнительные сведения не маскируются уверенным тоном.\":\n    \"Full names, verifiable dates, human biographies, major works and open sources. Uncertain claims are never disguised by a confident tone.\",\n  \"Интересный факт о книге\": \"A notable book fact\",\n  \"Проверить источник\": \"Check the source\",\n  \"Собираем книжный архив…\": \"Building the book archive…\",\n  \"Новые публикации\": \"New publications\",\n  \"Читать в «Пробе Пера»\": \"Read in Proba Pera\",\n  \"Читать статью\": \"Read article\",\n  \"Все материалы рубрики\": \"All articles in this section\",\n  \"Обсуждение номера\": \"Issue discussion\",\n",
+      "after": "    \"Classic cartographic atlas, 2026 edition. Cartography: Natural Earth.\",\n  \"Полное имя, проверяемые даты, человеческая биография, ключевые произведения и открытые источники. Сомнительные сведения не маскируются уверенным тоном.\":\n    \"Full names, verifiable dates, human biographies, major works and open sources. Uncertain claims are never disguised by a confident tone.\",\n  \"Интересный факт о книге\": \"A notable book fact\",\n  \"Проверить источник\": \"Check the source\",\n  \"Загружаем библиотеку…\": \"Loading the library…\",\n  \"Новые публикации\": \"New publications\",\n  \"Читать в «Пробе Пера»\": \"Read in Proba Pera\",\n  \"Читать статью\": \"Read article\",\n  \"Все материалы рубрики\": \"All articles in this section\",\n  \"Обсуждение номера\": \"Issue discussion\",\n"
+    },
+    {
+      "id": "src/i18n/InterfaceLanguage.tsx:4",
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "reason": "Keep one existing RU/EN localization source for the exact library and article-control copy changes.",
+      "before": "  \"Вход и регистрация\": \"Sign in and register\",\n  \"Связаться с редакцией\": \"Contact the editors\",\n  Контакты: \"Contacts\",\n  \"Независимый литературный журнал\": \"Independent literary journal\",\n  \"«Проба Пера»\": \"Proba Pera\",\n  \"Авторский архив · 167 материалов\": \"Editorial archive · 167 publications\",\n  \"Журнал, выстроенный для чтения\": \"A journal designed for reading\",\n  \"Мнения о книгах, литературные эссе, биографии, экранизации и языковые наблюдения собраны в единую редакционную библиотеку.\":\n    \"Book reviews, literary essays, biographies, adaptations and observations on language form one editorial library.\",\n  \"Поиск по публикациям\": \"Search publications\",\n  \"Название, тема или рубрика…\": \"Title, subject or section…\",\n",
+      "after": "  \"Вход и регистрация\": \"Sign in and register\",\n  \"Связаться с редакцией\": \"Contact the editors\",\n  Контакты: \"Contacts\",\n  \"Независимый литературный журнал\": \"Independent literary journal\",\n  \"«Проба Пера»\": \"Proba Pera\",\n  \"Показать ещё\": \"Show more\",\n  \"Журнал, выстроенный для чтения\": \"A journal designed for reading\",\n  \"Мнения о книгах, литературные эссе, биографии, экранизации и языковые наблюдения собраны в единую редакционную библиотеку.\":\n    \"Book reviews, literary essays, biographies, adaptations and observations on language form one editorial library.\",\n  \"Поиск по публикациям\": \"Search publications\",\n  \"Название, тема или рубрика…\": \"Title, subject or section…\",\n"
+    },
+    {
+      "id": "src/i18n/InterfaceLanguage.tsx:5",
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "reason": "Keep one existing RU/EN localization source for the exact library and article-control copy changes.",
+      "before": "  \"Полка пуста\": \"The shelf is empty\",\n  \"Предыдущая книга\": \"Previous book\",\n  \"Предыдущие 13 произведений\": \"Previous 13 works\",\n  \"РЕДАКЦИОННЫЕ ПОЛКИ\": \"EDITORIAL SHELVES\",\n  \"Расширенные фильтры\": \"Advanced filters\",\n  \"Расширенные фильтры книжного архива\": \"Advanced book archive filters\",\n  \"Редакционная релевантность\": \"Editorial relevance\",\n  \"Редакционный порядок\": \"Editorial order\",\n  \"Редакционный статус\": \"Editorial status\",\n  \"Результаты поиска по библиотеке\": \"Library search results\",\n  \"Результаты поиска по всему журналу\": \"Journal-wide search results\",\n",
+      "after": "  \"Полка пуста\": \"The shelf is empty\",\n  \"Предыдущая книга\": \"Previous book\",\n  \"Предыдущие 13 произведений\": \"Previous 13 works\",\n  \"РЕДАКЦИОННЫЕ ПОЛКИ\": \"EDITORIAL SHELVES\",\n  \"Расширенные фильтры\": \"Advanced filters\",\n  \"Расширенные фильтры библиотеки\": \"Advanced library filters\",\n  \"Редакционная релевантность\": \"Editorial relevance\",\n  \"Редакционный порядок\": \"Editorial order\",\n  \"Редакционный статус\": \"Editorial status\",\n  \"Результаты поиска по библиотеке\": \"Library search results\",\n  \"Результаты поиска по всему журналу\": \"Journal-wide search results\",\n"
+    },
+    {
+      "id": "src/i18n/InterfaceLanguage.tsx:6",
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "reason": "Keep one existing RU/EN localization source for the exact library and article-control copy changes.",
+      "before": "  \"Только сохранённые книги\": \"Saved books only\",\n  \"Поиск временно недоступен\": \"Search is temporarily unavailable\",\n  \"Книги на полке сохранены без изменений.\":\n    \"The books on this shelf remain unchanged.\",\n  \"Повторить поиск\": \"Retry search\",\n  \"Подсказки всего книжного архива\": \"Complete book archive suggestions\",\n  \"Результаты поиска по всему книжному архиву\":\n    \"Complete book archive search results\",\n  \"Результаты поиска по текущей полке\": \"Current shelf search results\",\n  \"Открыты сведения о книге\": \"Book details open\",\n  \"Состояние книжной полки\": \"Bookshelf status\",\n  \"Весь книжный архив\": \"Complete book archive\",\n  \"Пока нет полок\": \"No shelves yet\",\n  \"Подборка обновляется\": \"Updating selection\",\n  \"Пока пусто\": \"Empty for now\",\n  \"Настроить полку\": \"Customise shelf\",\n  Качество: \"Quality\",\n",
+      "after": "  \"Только сохранённые книги\": \"Saved books only\",\n  \"Поиск временно недоступен\": \"Search is temporarily unavailable\",\n  \"Книги на полке сохранены без изменений.\":\n    \"The books on this shelf remain unchanged.\",\n  \"Повторить поиск\": \"Retry search\",\n  \"Подсказки всей библиотеки\": \"Suggestions from the entire library\",\n  \"Результаты поиска по всей библиотеке\":\n    \"Search results across the entire library\",\n  \"Результаты поиска по текущей полке\": \"Current shelf search results\",\n  \"Открыты сведения о книге\": \"Book details open\",\n  \"Состояние книжной полки\": \"Bookshelf status\",\n  \"Вся библиотека\": \"Entire library\",\n  \"Пока нет полок\": \"No shelves yet\",\n  \"Подборка обновляется\": \"Updating selection\",\n  \"Пока пусто\": \"Empty for now\",\n  \"Настроить полку\": \"Customise shelf\",\n  Качество: \"Quality\",\n"
+    },
+    {
+      "id": "src/i18n/InterfaceLanguage.tsx:7",
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "reason": "Keep one existing RU/EN localization source for the exact library and article-control copy changes.",
+      "before": "  \"Редакционный архив временно недоступен\":\n    \"The editorial archive is temporarily unavailable\",\n  \"Литературную планету не удалось открыть\": \"Literary Planet could not be opened\",\n  \"Глобус загрузится при приближении\": \"The globe will load as you approach\",\n  \"Повторить загрузку\": \"Retry loading\",\n  \"Книжный архив временно недоступен\":\n    \"The book archive is temporarily unavailable\",\n  \"Книжный архив загрузится при приближении\":\n    \"The book archive will load as you approach\",\n  \"Место полки уже зарезервировано, поэтому страница не сдвинется.\":\n    \"The shelf space is already reserved, so the page will not shift.\",\n  \"Авторский архив временно недоступен\":\n    \"The editorial archive is temporarily unavailable\",\n  \"Журнал загрузится при приближении\": \"The journal will load as you approach\",\n",
+      "after": "  \"Редакционный архив временно недоступен\":\n    \"The editorial archive is temporarily unavailable\",\n  \"Литературную планету не удалось открыть\": \"Literary Planet could not be opened\",\n  \"Глобус загрузится при приближении\": \"The globe will load as you approach\",\n  \"Повторить загрузку\": \"Retry loading\",\n  \"Библиотека временно недоступна\":\n    \"The library is temporarily unavailable\",\n  \"Библиотека загрузится при приближении\":\n    \"The library will load as you approach\",\n  \"Место полки уже зарезервировано, поэтому страница не сдвинется.\":\n    \"The shelf space is already reserved, so the page will not shift.\",\n  \"Авторский архив временно недоступен\":\n    \"The editorial archive is temporarily unavailable\",\n  \"Журнал загрузится при приближении\": \"The journal will load as you approach\",\n"
+    },
+    {
+      "id": "src/index.css:1",
+      "path": "src/index.css",
+      "reason": "Restore desktop social and Boosty actions and the earlier header language control while keeping the narrow mobile header compact.",
+      "before": "  margin-top: 12px;\n  color: #746177;\n  font-size: var(--type-caption);\n}\n\n/* Keep fallback-font navigation clear before restoring the full action group. */\n@media (max-width: 1600px) {\n  .global-search-trigger {\n    width: 38px;\n    justify-content: center;\n    padding: 0;\n",
+      "after": "  margin-top: 12px;\n  color: #746177;\n  font-size: var(--type-caption);\n}\n\n/* Compact the search label while preserving access to every header action. */\n@media (max-width: 1600px) {\n  .global-search-trigger {\n    width: 38px;\n    justify-content: center;\n    padding: 0;\n"
+    },
+    {
+      "id": "src/index.css:2",
+      "path": "src/index.css",
+      "reason": "Restore desktop social and Boosty actions and the earlier header language control while keeping the narrow mobile header compact.",
+      "before": "\n  .global-search-trigger small,\n  .global-search-trigger kbd {\n    display: none;\n  }\n\n  .header-actions .header-socials {\n    display: none;\n  }\n}\n\n@media (max-width: 1100px) {\n  .book-of-day {\n    grid-row: auto;\n",
+      "after": "\n  .global-search-trigger small,\n  .global-search-trigger kbd {\n    display: none;\n  }\n}\n\n@media (max-width: 1100px) {\n  .book-of-day {\n    grid-row: auto;\n"
+    },
+    {
+      "id": "src/loading/DeferredHomepageArchives.tsx:1",
+      "path": "src/loading/DeferredHomepageArchives.tsx",
+      "reason": "Use the owner-requested library name in loading and error states and remove the obsolete article-count callback.",
+      "before": "            aria-live=\"polite\"\n          >\n            <span aria-hidden=\"true\">✦</span>\n            <strong id=\"stage5-books-loading-title\">\n              {effectiveStatus === \"error\"\n                ? t(\"Книжный архив временно недоступен\")\n                : effectiveStatus === \"idle\"\n                  ? t(\"Книжный архив загрузится при приближении\")\n                  : t(\"Собираем книжный архив…\")}\n            </strong>\n            <p>\n              {t(\n                \"Место полки уже зарезервировано, поэтому страница не сдвинется.\"\n              )}\n",
+      "after": "            aria-live=\"polite\"\n          >\n            <span aria-hidden=\"true\">✦</span>\n            <strong id=\"stage5-books-loading-title\">\n              {effectiveStatus === \"error\"\n                ? t(\"Библиотека временно недоступна\")\n                : effectiveStatus === \"idle\"\n                  ? t(\"Библиотека загрузится при приближении\")\n                  : t(\"Загружаем библиотеку…\")}\n            </strong>\n            <p>\n              {t(\n                \"Место полки уже зарезервировано, поэтому страница не сдвинется.\"\n              )}\n"
+    },
+    {
+      "id": "src/styles/header-preserved.css:1",
+      "path": "src/styles/header-preserved.css",
+      "reason": "Restore desktop social and Boosty actions, compact mobile header, and a complete article menu within the available viewport.",
+      "before": ".site-header :is(button, input, select, textarea), .mobile-nav :is(button, input, select, textarea), .magazine-hero :is(button, input, select, textarea) {\nfont-family: inherit;\nfont-kerning: auto;\n}\n.site-header .interface-language-control button {\n  /* Historical header family from before 0a348bd4; independent of UI buttons. */\n  font-family: var(--sans);\n  font-size: 12px;\n  font-weight: 400;\n  transition:\n    color 160ms ease,\n    background 160ms ease,\n    box-shadow 160ms ease;\n}\n",
+      "after": ".site-header :is(button, input, select, textarea), .mobile-nav :is(button, input, select, textarea), .magazine-hero :is(button, input, select, textarea) {\nfont-family: inherit;\nfont-kerning: auto;\n}\n.site-header .interface-language-control button {\n  /* Restore the compact, bold switch from the approved reading release. */\n  font-family: var(--sans);\n  font-size: 10px;\n  font-weight: 900;\n  transition:\n    color 160ms ease,\n    background 160ms ease,\n    box-shadow 160ms ease;\n}\n"
+    },
+    {
+      "id": "src/styles/header-preserved.css:2",
+      "path": "src/styles/header-preserved.css",
+      "reason": "Restore desktop social and Boosty actions, compact mobile header, and a complete article menu within the available viewport.",
+      "before": "  font-weight: 800;\n  line-height: normal;\n  letter-spacing: 0.18em;\n  text-transform: uppercase;\n}\n@media (max-width: 680px) {\n.site-header .interface-language-control button {\n    font-size: 12px;\n}\n}\n}\n",
+      "after": "  font-weight: 800;\n  line-height: normal;\n  letter-spacing: 0.18em;\n  text-transform: uppercase;\n}\n/* Keep all five destinations in the desktop and tablet masthead. */\n.site-header .header-socials {\n  display: flex;\n  flex: 0 0 auto;\n  flex-wrap: nowrap;\n}\n\n@media (min-width: 1261px) and (max-width: 1520px),\n  (pointer: coarse) and (min-width: 1261px) and (max-width: 1700px) {\n  :root {\n    --sticky-navigation-offset: 136px;\n  }\n\n  .site-header {\n    grid-template-columns: minmax(220px, 1fr) auto;\n    grid-template-areas: \"brand actions\" \"navigation navigation\";\n    row-gap: 0;\n  }\n\n  .site-header > .brand { grid-area: brand; }\n  .site-header > .header-actions { grid-area: actions; }\n  .site-header > nav {\n    grid-area: navigation;\n    min-height: 44px;\n  }\n}\n\n@media (min-width: 681px) and (max-width: 900px) {\n  :root {\n    --sticky-navigation-offset: 192px;\n  }\n\n  .site-header {\n    grid-template-columns: minmax(0, 1fr);\n    grid-template-rows: 55px 44px;\n    align-content: center;\n    height: 128px;\n    row-gap: 4px;\n  }\n\n  .site-header > .header-actions {\n    justify-self: end;\n  }\n\n  .mobile-nav { top: 128px; }\n}\n\n/* Phones keep the compact masthead; the same five links remain in the footer. */\n@media (max-width: 680px) {\n  .site-header .header-socials {\n    display: none;\n  }\n}\n\n@media (pointer: coarse) {\n  .site-header .header-socials a,\n  .site-header .global-search-trigger,\n  .site-header .reader-button {\n    min-width: 44px;\n    min-height: 44px;\n  }\n\n  .site-header .interface-language-control {\n    min-width: 90px;\n    height: 44px;\n    padding: 0;\n  }\n\n  .site-header .interface-language-control button {\n    min-width: 44px;\n    height: 44px;\n    padding: 0;\n  }\n}\n}\n"
+    },
+    {
+      "id": "src/styles/navigation-panels.css:1",
+      "path": "src/styles/navigation-panels.css",
+      "reason": "Fit complete article-menu cards and archive navigation within both tall and short screens.",
+      "before": "    width: min(920px, calc(100vw - 36px));\n  }\n\n  .articles-mega-menu {\n    width: min(880px, calc(100vw - 36px));\n  }\n\n  .sections-mega-menu > header,\n  .articles-mega-menu > header {\n    display: grid;\n",
+      "after": "    width: min(920px, calc(100vw - 36px));\n  }\n\n  .articles-mega-menu {\n    width: min(880px, calc(100vw - 36px));\n    grid-template-rows: max-content max-content max-content;\n    max-height: none;\n    overflow: hidden;\n  }\n\n  .sections-mega-menu > header,\n  .articles-mega-menu > header {\n    display: grid;\n"
+    },
+    {
+      "id": "src/styles/navigation-panels.css:2",
+      "path": "src/styles/navigation-panels.css",
+      "reason": "Fit complete article-menu cards and archive navigation within both tall and short screens.",
+      "before": "  .articles-mega-menu > header > div {\n    min-width: 0;\n    gap: 8px;\n  }\n\n  .sections-mega-menu .sections-mega-groups,\n  .articles-mega-menu .articles-mega-content,\n  .articles-mega-menu .articles-mega-loading {\n    min-width: 0;\n    min-height: 0;\n    overflow-y: auto;\n    overscroll-behavior: contain;\n  }\n",
+      "after": "  .articles-mega-menu > header > div {\n    min-width: 0;\n    gap: 8px;\n  }\n\n  .sections-mega-menu .sections-mega-groups {\n    min-width: 0;\n    min-height: 0;\n    overflow-y: auto;\n    overscroll-behavior: contain;\n  }\n"
+    },
+    {
+      "id": "src/styles/navigation-panels.css:3",
+      "path": "src/styles/navigation-panels.css",
+      "reason": "Fit complete article-menu cards and archive navigation within both tall and short screens.",
+      "before": "    min-height: 44px;\n    padding: 6px 12px;\n  }\n\n  .articles-mega-menu .articles-mega-content {\n    grid-template-columns: minmax(0, 1.05fr) minmax(330px, 0.95fr);\n  }\n\n  .articles-mega-menu .articles-mega-lead {\n    min-width: 0;\n  }\n\n  .articles-mega-menu .articles-mega-lead-media > img {\n    object-fit: cover;\n    object-position: center;\n  }\n\n  .articles-mega-menu .articles-mega-lead-media > span {\n    display: none;\n  }\n\n  .articles-mega-menu .articles-mega-lead > div {\n    gap: 8px;\n    min-width: 0;\n    padding: 24px;\n  }\n\n  .articles-mega-menu .articles-mega-lead strong,\n  .articles-mega-menu .articles-mega-lead p {\n    margin: 0;\n",
+      "after": "    min-height: 44px;\n    padding: 6px 12px;\n  }\n\n  .articles-mega-menu .articles-mega-content {\n    grid-template-columns: minmax(0, 0.36fr) minmax(0, 0.64fr);\n    min-width: 0;\n    min-height: 0;\n    overflow: visible;\n  }\n\n  .articles-mega-menu .articles-mega-lead {\n    grid-template-rows: auto 1fr;\n    min-width: 0;\n    min-height: 0;\n  }\n\n  .articles-mega-menu .articles-mega-lead-media {\n    position: relative;\n    aspect-ratio: 16 / 9;\n    opacity: 1;\n  }\n\n  .articles-mega-menu .articles-mega-lead::after {\n    display: none;\n  }\n\n  .articles-mega-menu .articles-mega-lead-media > img {\n    position: absolute;\n    object-fit: cover;\n    object-position: center;\n  }\n\n  .articles-mega-menu .articles-mega-lead-media > span {\n    display: none;\n  }\n\n  .articles-mega-menu .articles-mega-lead > div {\n    align-content: start;\n    gap: 8px;\n    min-width: 0;\n    padding: 16px;\n  }\n\n  .articles-mega-menu .articles-mega-lead strong,\n  .articles-mega-menu .articles-mega-lead p {\n    margin: 0;\n"
+    },
+    {
+      "id": "src/styles/navigation-panels.css:4",
+      "path": "src/styles/navigation-panels.css",
+      "reason": "Fit complete article-menu cards and archive navigation within both tall and short screens.",
+      "before": "  .articles-mega-menu .articles-mega-content > section {\n    grid-template-columns: repeat(2, minmax(0, 1fr));\n    grid-auto-rows: auto;\n    align-content: stretch;\n    min-width: 0;\n  }\n\n  .articles-mega-menu .articles-mega-content > section a {\n    grid-row: span 3;\n    grid-template-rows: subgrid;\n    gap: 6px;\n    align-items: start;\n    min-height: 44px;\n    padding: 16px;\n  }\n\n  .articles-mega-menu .articles-mega-content > section:empty {\n    display: none;\n  }\n\n  .articles-mega-menu .articles-mega-content:has(> section:empty) {\n    grid-template-columns: minmax(0, 1fr);\n  }\n\n  .sections-mega-menu > footer,\n  .articles-mega-menu > footer {\n    display: flex;\n    flex-wrap: wrap;\n    gap: 8px 20px;\n",
+      "after": "  .articles-mega-menu .articles-mega-content > section {\n    grid-template-columns: repeat(2, minmax(0, 1fr));\n    grid-auto-rows: auto;\n    align-content: stretch;\n    min-width: 0;\n    overflow: visible;\n  }\n\n  .articles-mega-menu .articles-mega-content > section a {\n    grid-row: span 3;\n    grid-template-rows: subgrid;\n    gap: 6px;\n    align-items: start;\n    min-height: 44px;\n    padding: 14px;\n  }\n\n  .articles-mega-menu .articles-mega-content > section:empty {\n    display: none;\n  }\n\n  .articles-mega-menu .articles-mega-content:has(> section:empty) {\n    grid-template-columns: minmax(0, 1fr);\n  }\n\n  .articles-mega-menu .articles-mega-content:has(> section:empty) .articles-mega-lead {\n    grid-template-columns: minmax(0, 0.36fr) minmax(0, 0.64fr);\n    grid-template-rows: auto;\n  }\n\n  .articles-mega-menu .articles-mega-content:has(> section:empty) .articles-mega-lead-media {\n    align-self: start;\n  }\n\n  /* Short displays show fewer complete previews with the full archive below. */\n  @media (max-height: 740px) {\n    .articles-mega-menu > header {\n      padding-block: 12px;\n    }\n\n    .articles-mega-menu .articles-mega-lead-media {\n      height: 96px;\n      aspect-ratio: auto;\n    }\n\n    .articles-mega-menu .articles-mega-lead > div {\n      gap: 6px;\n      padding: 12px;\n    }\n\n    .articles-mega-menu .articles-mega-content > section a {\n      padding: 12px;\n    }\n\n    .articles-mega-menu .articles-mega-content > section a:nth-child(n + 5) {\n      display: none;\n    }\n\n    .articles-mega-menu > footer {\n      padding-block: 2px;\n    }\n  }\n\n  .sections-mega-menu > footer,\n  .articles-mega-menu > footer {\n    display: flex;\n    flex-wrap: wrap;\n    gap: 8px 20px;\n"
+    },
+    {
+      "id": "src/styles/site-typography.css:1",
+      "path": "src/styles/site-typography.css",
+      "reason": "Keep compact article-menu type readable while fitting complete cards within the available viewport.",
+      "before": "    --sans: \"Onest Local\", \"Segoe UI\", system-ui, sans-serif;\n    --serif: var(--sans);\n    /* Compact type scale for the original 880px/920px navigation panels. */\n    --type-menu-label: .75rem;\n    --type-menu-title: 1.5rem;\n    --type-menu-item: .9375rem;\n    --type-menu-copy: .8125rem;\n    --type-menu-meta: .75rem;\n    --font-ui: var(--sans);\n    --font-editorial: var(--serif);\n",
+      "after": "    --sans: \"Onest Local\", \"Segoe UI\", system-ui, sans-serif;\n    --serif: var(--sans);\n    /* Compact type scale for the original 880px/920px navigation panels. */\n    --type-menu-label: .75rem;\n    --type-menu-title: 1.5rem;\n    --type-menu-lead-title: 1.25rem;\n    --type-menu-item: .9375rem;\n    --type-menu-copy: .8125rem;\n    --type-menu-meta: .75rem;\n    --font-ui: var(--sans);\n    --font-editorial: var(--serif);\n"
+    },
+    {
+      "id": "src/styles/site-typography.css:2",
+      "path": "src/styles/site-typography.css",
+      "reason": "Keep compact article-menu type readable while fitting complete cards within the available viewport.",
+      "before": "    text-wrap: pretty;\n  }\n\n  .articles-mega-lead strong {\n    font-family: var(--font-editorial);\n    font-size: var(--type-menu-title);\n    font-weight: 500;\n    line-height: 1.2;\n    text-wrap: pretty;\n  }\n\n  .sections-mega-menu > header p,\n  .articles-mega-menu > header p,\n",
+      "after": "    text-wrap: pretty;\n  }\n\n  .articles-mega-lead strong {\n    font-family: var(--font-editorial);\n    font-size: var(--type-menu-lead-title);\n    font-weight: 500;\n    line-height: 1.25;\n    text-wrap: pretty;\n  }\n\n  .sections-mega-menu > header p,\n  .articles-mega-menu > header p,\n"
+    },
+    {
+      "id": "src/styles/site-typography.css:3",
+      "path": "src/styles/site-typography.css",
+      "reason": "Keep compact article-menu type readable while fitting complete cards within the available viewport.",
+      "before": "    font-weight: 400;\n    line-height: var(--type-leading-ui);\n    text-wrap: pretty;\n  }\n\n  .articles-mega-content > section span,\n  .articles-mega-menu > footer > span {\n    color: var(--type-muted-light);\n    font-family: var(--font-ui);\n    font-size: var(--type-menu-meta);\n",
+      "after": "    font-weight: 400;\n    line-height: var(--type-leading-ui);\n    text-wrap: pretty;\n  }\n\n  @media (max-height: 740px) {\n    .articles-mega-lead {\n      --type-menu-lead-title: 1.125rem;\n      --type-menu-copy: .75rem;\n    }\n\n    .articles-mega-lead p {\n      line-height: 1.35;\n    }\n  }\n\n  .articles-mega-content > section span,\n  .articles-mega-menu > footer > span {\n    color: var(--type-muted-light);\n    font-family: var(--font-ui);\n    font-size: var(--type-menu-meta);\n"
+    }
+  ]
+}

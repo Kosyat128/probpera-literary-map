@@ -141,10 +141,10 @@ export function DeferredBookArchive({
             <span aria-hidden="true">✦</span>
             <strong id="stage5-books-loading-title">
               {effectiveStatus === "error"
-                ? t("Книжный архив временно недоступен")
+                ? t("Библиотека временно недоступна")
                 : effectiveStatus === "idle"
-                  ? t("Книжный архив загрузится при приближении")
-                  : t("Собираем книжный архив…")}
+                  ? t("Библиотека загрузится при приближении")
+                  : t("Загружаем библиотеку…")}
             </strong>
             <p>
               {t(

@@ -52,6 +52,7 @@ import {
 } from "./components/CmsSiteChrome";
 import SocialLinks from "./components/SocialLinks";
 import type { Country, Writer } from "./data/countries";
+import { articlePublicationCounts, loadArticlePublicationCounts } from "./data/articles/publicationStats";
 import { isNobelLaureate } from "./data/nobel";
 import { selectWriterBiography } from "./data/writerBiography";
 import type { BookArchiveEntry } from "./data/bookArchive";
@@ -398,7 +399,7 @@ const sectionLinks = [
   {
     id: "books",
     group: "Энциклопедия",
-    title: "Книжный архив",
+    title: "Библиотека «Проба Пера»",
     copy: "Книги связаны с авторами, странами, эпохами и статьями журнала - с фильтрами и редакционной проверкой обложек.",
     href: "#books",
     image:
@@ -562,7 +563,31 @@ export default function App() {
   const [bookArchiveRetryToken, setBookArchiveRetryToken] = useState(0);
   const [pendingWriterWork, setPendingWriterWork] =
     useState<PendingWriterWork | null>(null);
-  const [articleCount, setArticleCount] = useState(0);
+  const [publicationCounts, setPublicationCounts] = useState<ReturnType<
+    typeof articlePublicationCounts
+  > | null>(null);
+  const articleCount = publicationCounts?.[language] ?? null;
+
+  useEffect(() => {
+    let current = true;
+    const loadCounts = () => {
+      loadArticlePublicationCounts()
+        .then((counts) => {
+          if (current) setPublicationCounts(counts);
+        })
+        .catch(() => {
+          // The journal remains available for a later retry after a load error.
+        });
+    };
+    const idle = typeof window.requestIdleCallback === "function"
+      ? window.requestIdleCallback(loadCounts, { timeout: 2000 })
+      : window.setTimeout(loadCounts, 500);
+    return () => {
+      current = false;
+      if (typeof window.cancelIdleCallback === "function") window.cancelIdleCallback(idle);
+      else window.clearTimeout(idle);
+    };
+  }, []);
   const [generatedEditorialQueue, setGeneratedEditorialQueue] = useState(0);
   const [search, setSearch] = useState("");
   const [atlasFilter, setAtlasFilter] = useState<AtlasFilter>(
@@ -1891,7 +1916,7 @@ export default function App() {
         <span>{t("Литературный журнал и энциклопедия")}</span>
         <p>{t("Архив пополняется ежедневно")}</p>
         <div aria-label={t("Проба Пера в цифрах")}>
-          <span>{articleCount ? number(articleCount) : "…"} {t("публикаций")}</span>
+          <span>{articleCount === null ? t("Журнал") : `${number(articleCount)} ${t(selectInterfacePlural(articleCount, language, ["публикация", "публикации", "публикаций"]))}`}</span>
           <span>
             {archiveStatistics.countries ? number(archiveStatistics.countries) : "…"}{" "}
             {t("стран")}
@@ -2952,7 +2977,7 @@ export default function App() {
                   <span>
                     {bookOfMonth
                       ? writerName(bookOfMonth.writer, t("Автор"), language)
-                      : t("Книжный архив")}
+                      : t("Библиотека «Проба Пера»")}
                   </span>
                   <strong>{bookOfMonthText?.title || t("Книга месяца")}</strong>
                   <i>✦</i>
@@ -3248,7 +3273,7 @@ export default function App() {
           </div>
         </section>
 
-        <DeferredArticleLibrary onArticleCountReady={setArticleCount} />
+        <DeferredArticleLibrary />
 
         <section
           className={`authors-section painted-paper-section brush-surface${coreHomepageSectionClass(coreAuthors)}`}
@@ -3798,7 +3823,7 @@ export default function App() {
               <h2>{t("Энциклопедия")}</h2>
               <a href="#atlas">{t("Литературная планета")}</a>
               <a href="#authors">{t("Писатели")}</a>
-              <a href="#books">{t("Книжный архив")}</a>
+              <a href="#books">{t("Библиотека «Проба Пера»")}</a>
               <a href="#calendar">{t("Календарь событий")}</a>
               <a href="#about">{t("Редакционный стандарт")}</a>
               <a href="#editorial-policy">{t("Источники и фактчекинг")}</a>
@@ -3855,7 +3880,6 @@ export default function App() {
               open
               countries={countryArchive}
               books={verifiedBookArchive}
-              articleCount={articleCount}
               onClose={closeGlobalSearch}
               onCountrySelect={(country, writer) =>
                 writer

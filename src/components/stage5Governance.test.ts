@@ -5,6 +5,7 @@ import path from "node:path";
 import * as ts from "typescript";
 import { describe, expect, it } from "vitest";
 import { projectReviewedReadingDesign } from "../../scripts/lib/reviewed-reading-design.mjs";
+import { projectReviewedHeaderLibrary } from "../../scripts/lib/reviewed-header-library.mjs";
 
 type ParsedSource = {
   absolutePath: string;
@@ -20,7 +21,7 @@ const printer = ts.createPrinter({ newLine: ts.NewLineKind.LineFeed });
 
 function parseSource(relativePath: string): ParsedSource {
   const absolutePath = path.join(root, relativePath);
-  const text = readFileSync(absolutePath, "utf8").replace(/\r\n/gu, "\n");
+  const text = projectReviewedHeaderLibrary(relativePath, readFileSync(absolutePath, "utf8"));
   return parseSourceText(relativePath, text);
 }
 

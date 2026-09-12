@@ -35,10 +35,10 @@ font-family: inherit;
 font-kerning: auto;
 }
 .site-header .interface-language-control button {
-  /* Historical header family from before 0a348bd4; independent of UI buttons. */
+  /* Restore the compact, bold switch from the approved reading release. */
   font-family: var(--sans);
-  font-size: 12px;
-  font-weight: 400;
+  font-size: 10px;
+  font-weight: 900;
   transition:
     color 160ms ease,
     background 160ms ease,
@@ -81,9 +81,78 @@ font-kerning: auto;
   letter-spacing: 0.18em;
   text-transform: uppercase;
 }
-@media (max-width: 680px) {
-.site-header .interface-language-control button {
-    font-size: 12px;
+/* Keep all five destinations in the desktop and tablet masthead. */
+.site-header .header-socials {
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: nowrap;
 }
+
+@media (min-width: 1261px) and (max-width: 1520px),
+  (pointer: coarse) and (min-width: 1261px) and (max-width: 1700px) {
+  :root {
+    --sticky-navigation-offset: 136px;
+  }
+
+  .site-header {
+    grid-template-columns: minmax(220px, 1fr) auto;
+    grid-template-areas: "brand actions" "navigation navigation";
+    row-gap: 0;
+  }
+
+  .site-header > .brand { grid-area: brand; }
+  .site-header > .header-actions { grid-area: actions; }
+  .site-header > nav {
+    grid-area: navigation;
+    min-height: 44px;
+  }
+}
+
+@media (min-width: 681px) and (max-width: 900px) {
+  :root {
+    --sticky-navigation-offset: 192px;
+  }
+
+  .site-header {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: 55px 44px;
+    align-content: center;
+    height: 128px;
+    row-gap: 4px;
+  }
+
+  .site-header > .header-actions {
+    justify-self: end;
+  }
+
+  .mobile-nav { top: 128px; }
+}
+
+/* Phones keep the compact masthead; the same five links remain in the footer. */
+@media (max-width: 680px) {
+  .site-header .header-socials {
+    display: none;
+  }
+}
+
+@media (pointer: coarse) {
+  .site-header .header-socials a,
+  .site-header .global-search-trigger,
+  .site-header .reader-button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .site-header .interface-language-control {
+    min-width: 90px;
+    height: 44px;
+    padding: 0;
+  }
+
+  .site-header .interface-language-control button {
+    min-width: 44px;
+    height: 44px;
+    padding: 0;
+  }
 }
 }

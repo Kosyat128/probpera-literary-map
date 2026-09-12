@@ -215,7 +215,7 @@ describe("Stage 5D-1 English interface coverage", () => {
       expect(translateInterfaceText(source, "en")).toBe(english);
     }
     for (const source of [
-      "Весь книжный архив",
+      "Вся библиотека",
       "Во всём журнале",
       "Случайное произведение",
     ]) {

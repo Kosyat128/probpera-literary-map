@@ -7,6 +7,7 @@ import { describe, expect, it } from "vitest";
 
 import { parseCss } from "../audit-stage5-baseline.mjs";
 import { projectReviewedReadingDesign, readingDesignAttestation } from "./reviewed-reading-design.mjs";
+import { projectReviewedHeaderLibrary } from "./reviewed-header-library.mjs";
 import {
   adminArticlePublicationPermissionsAttestation,
   bookDatabaseEditorialOwnerAttestation,
@@ -21,13 +22,25 @@ import {
 
 const root = path.resolve(process.cwd());
 const printer = ts.createPrinter({ newLine: ts.NewLineKind.LineFeed });
-const bookshelfRefinement = JSON.parse(readFileSync(
+
+// All older governance assertions receive the exact main state from before the
+// September 12 owner request. Only attested fragments are reversed at this read
+// boundary; existing manifests, historical hashes and negative tests stay intact.
+function readGovernanceSource(absolutePath, encoding) {
+  if (encoding !== "utf8") throw new Error("Governance source must be UTF-8 text");
+  return projectReviewedHeaderLibrary(
+    path.relative(root, absolutePath).replaceAll("\\", "/"),
+    readFileSync(absolutePath, encoding)
+  );
+}
+
+const bookshelfRefinement = JSON.parse(readGovernanceSource(
   path.join(root, "scripts/governance/bookshelf-owner-refinement-20260905.json"), "utf8"
 ));
-const uiPolishControls = JSON.parse(readFileSync(
+const uiPolishControls = JSON.parse(readGovernanceSource(
   path.join(root, "scripts/governance/ui-polish-v4-controls-20260908.json"), "utf8"
 ));
-const uiReadingIntegration = JSON.parse(readFileSync(
+const uiReadingIntegration = JSON.parse(readGovernanceSource(
   path.join(root, "scripts/governance/ui-polish-reading-integration-20260908.json"), "utf8"
 ));
 const integratedUiProjections = uiPolishControls.projections.map((delta, index) => {
@@ -101,7 +114,7 @@ function canonicalJson(value) {
 
 function canonicalContent(absolutePath) {
   const extension = path.extname(absolutePath).toLocaleLowerCase("en");
-  const text = projectIntegratedReading(repositoryPath(absolutePath), readFileSync(absolutePath, "utf8")
+  const text = projectIntegratedReading(repositoryPath(absolutePath), readGovernanceSource(absolutePath, "utf8")
     .replace(/^\uFEFF/u, "")
     .replace(/\r\n/gu, "\n"));
   if (extension === ".json" || extension === ".geojson") {
@@ -344,7 +357,7 @@ function staticPropertyName(property, sourceFile) {
 
 function readEnglishInterfaceText() {
   const absolutePath = path.join(root, "src/i18n/InterfaceLanguage.tsx");
-  const text = projectReviewedReadingDesign("src/i18n/InterfaceLanguage.tsx", readFileSync(absolutePath, "utf8")
+  const text = projectReviewedReadingDesign("src/i18n/InterfaceLanguage.tsx", readGovernanceSource(absolutePath, "utf8")
     .replace(/^\uFEFF/u, "")
     .replace(/\r\n?/gu, "\n"));
   const sourceFile = ts.createSourceFile(
@@ -422,7 +435,7 @@ function readEnglishInterfaceText() {
 
 function readStage5D1I18nFixture() {
   return JSON.parse(
-    readFileSync(
+    readGovernanceSource(
       path.join(root, stage5D1AdditiveI18nAttestation.fixturePath),
       "utf8"
     )
@@ -431,7 +444,7 @@ function readStage5D1I18nFixture() {
 
 function readInterfaceCopyCatalog() {
   const catalog = JSON.parse(
-    readFileSync(
+    readGovernanceSource(
       path.join(
         root,
         "apps/admin/catalog-assets/interface-copy-catalog.json"
@@ -501,7 +514,7 @@ function ownerCssFingerprint() {
   const patterns = classTokens.map(exactClassTokenPattern);
   const preservedRules = parseCss(
     projectIntegratedReading("src/styles/header-preserved.css",
-      readFileSync(path.join(root, "src/styles/header-preserved.css"), "utf8").replace(/\r\n/gu, "\n"))
+      readGovernanceSource(path.join(root, "src/styles/header-preserved.css"), "utf8").replace(/\r\n/gu, "\n"))
       .replace(/\/\*[\s\S]*?\*\//gu, ""),
     "src/styles/header-preserved.css"
   );
@@ -516,7 +529,7 @@ function ownerCssFingerprint() {
   }
   const rules = parseCss(
     projectReviewedReadingDesign("src/index.css", projectApprovedHeaderCompact("src/index.css",
-      readFileSync(path.join(root, "src/index.css"), "utf8").replace(/\r\n?/gu, "\n"))),
+      readGovernanceSource(path.join(root, "src/index.css"), "utf8").replace(/\r\n?/gu, "\n"))),
     "src/index.css"
   )
     .filter((rule) => patterns.some((pattern) => pattern.test(rule.selector)))
@@ -641,7 +654,7 @@ describe("Stage 5 owner and production-pipeline governance locks", () => {
     ]);
     for (const delta of readingDesignAttestation.projections) {
       const source = projectUiBeforeReading(delta.path,
-        readFileSync(path.join(root, delta.path), "utf8").replace(/\r\n?/gu, "\n"));
+        readGovernanceSource(path.join(root, delta.path), "utf8").replace(/\r\n?/gu, "\n"));
       expect(() => projectReviewedReadingDesign(delta.path, source.replace(delta.after, delta.before))).toThrow("Missing or duplicate reviewed reading-design delta");
       expect(() => projectReviewedReadingDesign(delta.path, source + delta.after)).toThrow("Missing or duplicate reviewed reading-design delta");
       const unreviewed = "\n/* Unreviewed change must remain fingerprinted. */\n";
@@ -652,7 +665,7 @@ describe("Stage 5 owner and production-pipeline governance locks", () => {
 
   it("projects only the exact authorized public news deployment and verification", () => {
     const workflowPath = ".github/workflows/deploy-pages.yml";
-    const source = readFileSync(path.join(root, workflowPath), "utf8").replace(/\r\n?/gu, "\n");
+    const source = readGovernanceSource(path.join(root, workflowPath), "utf8").replace(/\r\n?/gu, "\n");
     const projected = projectApprovedNewsDeployment(workflowPath, source);
     expect(projected).not.toContain("Deploy and verify the public literary news API");
     expect(() => projectApprovedNewsDeployment(workflowPath, projected))
@@ -686,7 +699,7 @@ describe("Stage 5 owner and production-pipeline governance locks", () => {
     expect([...new Set(uiPolishControls.projections.map(delta => delta.path))]).toEqual(uiPolishControls.allowedPaths);
     expect(uiPolishControls.projections).toHaveLength(38);
     for (const relativePath of uiPolishControls.allowedPaths) {
-      const source = readFileSync(path.join(root, relativePath), "utf8").replace(/\r\n/gu, "\n");
+      const source = readGovernanceSource(path.join(root, relativePath), "utf8").replace(/\r\n/gu, "\n");
       const projected = projectIntegratedReading(relativePath, source);
       expect(createHash("sha256").update(projected).digest("hex")).toBe(uiPolishControls.sourceBaselines[relativePath]);
       expect(projectIntegratedReading(relativePath, source + "\n")).toBe(projected + "\n");
@@ -761,7 +774,7 @@ describe("Stage 5 owner and production-pipeline governance locks", () => {
     expect(bookshelfRefinement.ownerReferenceSha256).toBe("5330fd14a4c180700a8c7e82db161542aba7c09f3973ccdfe46d0cf17e907ffb");
     for (const relativePath of new Set(bookshelfRefinement.projections.map(delta => delta.path))) {
       const source = projectApprovedUiPolish(relativePath,
-        readFileSync(path.join(root, relativePath), "utf8").replace(/\r\n/gu, "\n"));
+        readGovernanceSource(path.join(root, relativePath), "utf8").replace(/\r\n/gu, "\n"));
       const projected = projectApprovedBookshelfRefinement(relativePath, source);
       expect(projectApprovedBookshelfRefinement(relativePath, source + "\n")).toBe(projected + "\n");
       const deltas = bookshelfRefinement.projections.filter(entry => entry.path === relativePath);
@@ -825,11 +838,11 @@ describe("Stage 5 owner and production-pipeline governance locks", () => {
       ".github/workflows/reconcile-production-database.yml",
       ".github/workflows/reconcile-production-database.yml",
     ]);
-    const migration = readFileSync(path.join(root, attestation.migrationPath), "utf8")
+    const migration = readGovernanceSource(path.join(root, attestation.migrationPath), "utf8")
       .replace(/\r\n/gu, "\n");
     expect(sha256(migration)).toBe(attestation.migrationSha256);
     for (const delta of attestation.projections) {
-      const source = readFileSync(path.join(root, delta.path), "utf8")
+      const source = readGovernanceSource(path.join(root, delta.path), "utf8")
         .replace(/\r\n/gu, "\n");
       expect(() => projectApprovedAdminPublicationDelta(
         delta.path, source.replace(delta.after, delta.before)
@@ -905,7 +918,7 @@ describe("Stage 5 owner and production-pipeline governance locks", () => {
       "initial-language-storage-read",
       "language-selection-storage-write",
     ]);
-    const source = readFileSync(path.join(root, attestation.path), "utf8")
+    const source = readGovernanceSource(path.join(root, attestation.path), "utf8")
       .replace(/\r\n?/gu, "\n");
     for (const delta of attestation.projections) {
       expect(() => projectApprovedInterfaceStorageDelta(
@@ -1090,7 +1103,7 @@ describe("Stage 5 owner and production-pipeline governance locks", () => {
   });
 
   it("projects only the reviewed header compact breakpoint while retaining every declaration", () => {
-    const source = readFileSync(path.join(root, "src/index.css"), "utf8").replace(/\r\n?/gu, "\n");
+    const source = readGovernanceSource(path.join(root, "src/index.css"), "utf8").replace(/\r\n?/gu, "\n");
     const projected = projectApprovedHeaderCompact("src/index.css", source);
     expect(projected).toBe(source.replace(approvedHeaderCompactAfter, approvedHeaderCompactBefore));
     for (const invalid of [
