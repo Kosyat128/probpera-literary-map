@@ -31,7 +31,7 @@ const tiptapDependencies = [
 
 describe("September 12 dependency security forward review", () => {
   it("pins the bounded package patch, unchanged early audit and complete browser matrix", () => {
-    expect(sha256(JSON.stringify(dependencySecurityAttestation))).toBe("7208d62183fcacb9eb0385731114c62579027b438a6d158532d29cbe5d11152a");
+    expect(sha256(JSON.stringify(dependencySecurityAttestation))).toBe("a019f91983b719d33840260482ccc979f351b51f039ff53fe4ef1e20c13489d8");
     expect(dependencySecurityAttestation).toMatchObject({
       schemaVersion: 1,
       id: "DEPENDENCY-SECURITY-REVIEWED-20260912",
@@ -46,7 +46,7 @@ describe("September 12 dependency security forward review", () => {
     const ids = dependencySecurityAttestation.projections.map(delta => delta.id);
     expect(new Set(ids).size).toBe(ids.length);
     const reportSource = read("reports/dependency-security-reviewed-20260912.json");
-    expect(sha256(reportSource)).toBe("624bee1eec5e6e532fe4959fd28b3cb7eba581e32eedef60b1eaec863e8a4b2c");
+    expect(sha256(reportSource)).toBe("110b98488570fd3de3c6876e31c3026ff7fdcbb004fddf936777e0a64d026dbd");
     const report = JSON.parse(reportSource);
     expect(report.manifest.sha256).toBe(sha256(read(report.manifest.path)));
     expect(report.sourceFileHashes).toEqual(dependencySecurityAttestation.reviewedSources);

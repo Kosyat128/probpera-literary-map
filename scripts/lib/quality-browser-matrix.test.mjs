@@ -16,8 +16,8 @@ const baseline = parseDocument(execFileSync("git", [
   "show", `cfbd444b279c4aa7a5abe44a661cf16815253b5d:${workflowPath}`,
 ], { cwd: root, encoding: "utf8" })).toJSON();
 const bash = process.platform === "win32"
-  ? path.join(process.env.ProgramFiles || "C:/Program Files", "Git/bin/bash.exe")
-  : "bash";
+  ? "C:/Program Files/Git/bin/bash.exe"
+  : "/bin/bash";
 
 function recordedCommands(lane, fail = false) {
   // Execute the actual workflow shell, replacing only npm with a recorder.

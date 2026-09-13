@@ -110,7 +110,9 @@ export async function inspectWellsEvidence({
   const workId = initialWork.id;
   async function readHash() {
     const { data } = await get("rpc/literary_work_evidence_v2_content_sha256", { target_work_id: workId });
-    requireCondition(SHA256.test(data || ""), "The work hash RPC returned an invalid hash.");
+    if (typeof data !== "string" || data.length !== 64 || !/^[0-9a-f]{64}$/u.test(data)) {
+      throw new Error("The work hash RPC returned an invalid hash.");
+    }
     return data;
   }
   async function readBundle() {

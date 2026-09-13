@@ -156,6 +156,14 @@ test("rejects a changed content hash", async () => {
   await assert.rejects(inspectWellsEvidence({ ...OPTIONS, ...database }), /Evidence changed during inspection/u);
 });
 
+test("rejects malformed or non-string hash responses before collecting evidence", async () => {
+  for (const body of [42, [], [HASH], { hash: HASH }, "", HASH.slice(1), HASH + "a", "g".repeat(64), HASH + "\n", "../../unexpected.json"]) {
+    const database = mockDatabase(fixture(), ({ table }) => table.startsWith("rpc/") ? { body } : undefined);
+    await assert.rejects(inspectWellsEvidence({ ...OPTIONS, ...database }), /work hash RPC returned an invalid hash/u);
+    assert.deepEqual(database.calls.map(({ table }) => table), ["literary_works", "rpc/literary_work_evidence_v2_content_sha256"]);
+  }
+});
+
 test("rejects changed related rows even if a hash response is stale", async () => {
   let reads = 0;
   const database = mockDatabase(fixture(), ({ table, body }) => {

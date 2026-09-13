@@ -346,7 +346,7 @@
   "workflowReview": {
     "sourceSha256": "a29c911bccc1f8f7949f7d7beb3fb4c8bb8b307cfdc7e160b8df0bea118c1337",
     "testPath": "scripts/lib/quality-browser-matrix.test.mjs",
-    "testSha256": "32634a52b3ae40c2a18fa65fbc3345ee2ad8070a6bccc3a7c87dadcb3436b16d",
+    "testSha256": "b2975ea59015f416cc8cbe96794533376dbec1cc88e898cb7c567ec8e89d62c5",
     "prerequisiteJob": "preflight",
     "browserLanes": 6,
     "maxParallelJobs": 4,

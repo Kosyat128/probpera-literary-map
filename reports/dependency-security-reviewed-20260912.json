@@ -7,7 +7,7 @@
   "baselineMainSha": "cfbd444b279c4aa7a5abe44a661cf16815253b5d",
   "manifest": {
     "path": "scripts/governance/dependency-security-reviewed-20260912.json",
-    "sha256": "d321dcf19c63f820cb125d0451ce641288afa9328a6f2f2b00963cf38b8cfaa1"
+    "sha256": "f1a8361822601a0d1b9761d1a6ebce7bb0a00a13c9d05a45a8055fa21718811c"
   },
   "scope": "Patch all existing admin Tiptap pins from 3.30.4 to 3.30.5 and root sharp from 0.35.3 to 0.35.4. Keep unrelated locked packages unchanged. Run the identical mandatory production audit directly after npm ci in the complete preflight; distribute all 22 premium shards, 6 WebGL shards and the remaining regression suite over six dependent browser lanes with at most four concurrent jobs. Share checksum-verified audited build inputs and retain the mandatory verify check, which rejects every failed, cancelled, skipped or missing prerequisite result.",
   "sourceFileHashes": {
@@ -113,7 +113,7 @@
   "workflowReview": {
     "sourceSha256": "a29c911bccc1f8f7949f7d7beb3fb4c8bb8b307cfdc7e160b8df0bea118c1337",
     "testPath": "scripts/lib/quality-browser-matrix.test.mjs",
-    "testSha256": "32634a52b3ae40c2a18fa65fbc3345ee2ad8070a6bccc3a7c87dadcb3436b16d",
+    "testSha256": "b2975ea59015f416cc8cbe96794533376dbec1cc88e898cb7c567ec8e89d62c5",
     "prerequisiteJob": "preflight",
     "browserLanes": 6,
     "maxParallelJobs": 4,
@@ -200,5 +200,26 @@
       ]
     },
     "environmentNote": "Exact patched dependencies resolved through isolated runtime junctions. Windows esbuild ancestor-read restriction required scoped escalation for local server/browser only."
+  },
+  "codeqlFollowUp": {
+    "reviewedSourceHead": "223f10304c9cf5b560b4f384f9b2575c1c282b06",
+    "analysisId": 1769094931,
+    "matrix": {
+      "alerts": [
+        277,
+        278
+      ],
+      "source": "process.env.ProgramFiles supplied the executable and existence-check path.",
+      "correction": "Use fixed absolute Bash paths C:/Program Files/Git/bin/bash.exe and /bin/bash, with no environment-derived executable."
+    },
+    "wellsInspection": {
+      "alert": 276,
+      "firstDetectedAt": "2026-09-12T11:26:14Z",
+      "source": "The response from the fixed-work content-hash RPC flows into databaseContentSha256 in the serialized inspection artifact.",
+      "correction": "Require a string of exactly 64 lowercase hexadecimal characters directly before returning the hash; reject arrays, objects, other types and trailing newlines.",
+      "outputBoundary": "The tool intentionally retains a JSON evidence snapshot at a fixed repository-relative .json path and fixed checksum path, with exclusive creation and mode 0600. It never executes the artifact or accepts a network-supplied output path. GET-only single-work scope, secret filtering and repeated consistency checks remain.",
+      "scope": "The inspection guard is outside the four dependency-security source projections and does not update historical attestation pins."
+    },
+    "status": "Local corrections require CodeQL on the next commit. No alert dismissal, suppression, rule exclusion or security-gate change was performed."
   }
 }
