@@ -41,6 +41,10 @@ describe("Evidence V2 release gate", () => {
     expect(triggers("data/book-canon-source-registry.json")).toBe(true);
     expect(triggers("scripts/sync-literary-archive.mjs")).toBe(true);
     expect(triggers("supabase/migrations/20260902_literary_work_evidence_v2_attestations.sql")).toBe(true);
+    expect(triggers("supabase/migrations/20260914_literary_archive_editorial_references.sql")).toBe(true);
+    expect(triggers("reports/literary-archive-reference-catalog-20260914.json")).toBe(true);
+    expect(triggers("scripts/lib/literary-archive-reference-catalog.mjs")).toBe(true);
+    expect(triggers("scripts/build-literary-archive-reference-catalog.mjs")).toBe(true);
     expect(triggers("src/data/articles/publicationStats.ts")).toBe(false);
     expect(triggers("src/data/cms/homepage.ts")).toBe(false);
     expect(triggers("src/data/cms/coreSectionTitle.ts")).toBe(false);

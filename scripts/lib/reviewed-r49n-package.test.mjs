@@ -2,9 +2,10 @@ import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import {
-  isReviewedR49nPackageAddition, projectReviewedR49nPackage,
+  isReviewedR49nPackageAddition, projectReviewedR49nPackage, projectPublishedR49nPackage,
   r49nPackageAttestation, reviewedR49nPackageSourceSha256,
 } from "./reviewed-r49n-package.mjs";
+import { projectReviewedReferenceRelease } from "./reviewed-reference-release.mjs";
 
 const read = path => readFileSync(path, "utf8").replace(/\r\n?/gu, "\n");
 const sha = value => createHash("sha256").update(value).digest("hex");
@@ -62,10 +63,12 @@ describe("R49N common package additive governance", () => {
   });
 
   it.each(r49nPackageAttestation.allowedProjectionPaths)("reverses only exact additions in %s", path => {
-    const source = read(path), projected = projectReviewedR49nPackage(path, source);
+    const current = read(path), source = projectReviewedReferenceRelease(path, current);
+    const projected = projectPublishedR49nPackage(path, source);
+    expect(projectReviewedR49nPackage(path, current)).toBe(projected);
     expect(reviewedR49nPackageSourceSha256(projected)).toBe(r49nPackageAttestation.sourceBaselines[path]);
     const unrelated = "\n/* Unreviewed change must remain visible to the old lock. */\n";
-    expect(projectReviewedR49nPackage(path, source + unrelated)).toBe(projected + unrelated);
+    expect(projectPublishedR49nPackage(path, source + unrelated)).toBe(projected + unrelated);
     expect(reviewedR49nPackageSourceSha256(projected + unrelated))
       .not.toBe(r49nPackageAttestation.sourceBaselines[path]);
     for (const delta of r49nPackageAttestation.projections.filter(delta => delta.path === path)) {
@@ -73,7 +76,7 @@ describe("R49N common package additive governance", () => {
         source.replace(delta.after, ""), source + delta.after,
         source.replace(delta.after, delta.after.replace(/\S/u, "?")),
       ]) {
-        expect(() => projectReviewedR49nPackage(path, changed))
+        expect(() => projectPublishedR49nPackage(path, changed))
           .toThrow("Missing or duplicate reviewed R49N package delta");
       }
     }

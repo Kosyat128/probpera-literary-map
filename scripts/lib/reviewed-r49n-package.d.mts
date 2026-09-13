@@ -11,3 +11,4 @@ export const reviewedR49nPackageAdditionPaths: Set<string>;
 export function reviewedR49nPackageSourceSha256(source: string): string;
 export function isReviewedR49nPackageAddition(relativePath: string, source: string): boolean;
 export function projectReviewedR49nPackage(relativePath: string, source: string): string;
+export function projectPublishedR49nPackage(relativePath: string, source: string): string;

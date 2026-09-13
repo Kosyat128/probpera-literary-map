@@ -1,0 +1,161 @@
+{
+  "id": "LIBRARY-REFERENCE-RELEASE-20260914",
+  "reviewedAt": "2026-09-13T22:40:19.783Z",
+  "baselineSourceCommitSha": "3cf9060888cb95cfe900cf695bf2666f4c93590a",
+  "humanReview": false,
+  "productionApplied": false,
+  "priorMigrationPinsChanged": false,
+  "existingEditorialRowsChanged": false,
+  "evidenceApprovalGranted": false,
+  "unusedReferencesInserted": false,
+  "reservedWriterProofsPreserved": true,
+  "wholeReleaseRollbackPreserved": true,
+  "problem": {
+    "runId": 34785304211,
+    "attempt": 2,
+    "stagedReleaseId": "40344c69-a996-49c7-aa88-1da2980e6190",
+    "error": "Reviewed writer country reference is missing or archived",
+    "archiveCommitted": false,
+    "interpretation": "Legacy migration backfill includes only previously referenced database identities; the failed first USA guard does not prove all other required country/writer references exist. Missing versus archived USA was not independently read in this review."
+  },
+  "scope": {
+    "countries": 191,
+    "writers": 1681,
+    "archiveFallbackWriters": 47,
+    "target": {
+      "works": 9763,
+      "workKeysSha256": "af30dc0cf4e1da46cd2ace0c2a5d57bbb1bdab3f658fa008a82d786a585c66a5",
+      "countries": 191,
+      "writers": 1681,
+      "linkedAuthorRows": 2
+    },
+    "referenceData": "Only unchanged canonical identity labels/id/ISO; no biographies, new prose, verification states or invented English names.",
+    "insertions": "Only absent references required by the validated staged primary works and linked authors; existing and unused rows remain unchanged.",
+    "reservedWriters": [
+      "usa:harriet_beecher_stowe",
+      "usa:louisa_may_alcott"
+    ],
+    "archived": "Required archived rows stop the transaction; no reactivation."
+  },
+  "implementationReview": {
+    "reviewer": "Codex independent implementation reviewer",
+    "findings": "No material scope, ACL or transaction-boundary issue found in the reviewed helper.",
+    "proof": "Pinned exact payload text SHA before JSON parse; intact staged canonical payload hashes and complete target; required primary and linked author FK coverage.",
+    "authorization": "Private helper revoked from public/anon/authenticated/service_role; service-role plus atomic-commit context checked internally; unchanged outer manifest and live-state guards.",
+    "concurrency": "Countries then writers SHARE ROW EXCLUSIVE NOWAIT; existing whole archive commit transaction owns inserts and rollback.",
+    "legacyProofs": "Stowe and Alcott insertion remains exclusively in unchanged staged-proof helpers; published37 SQL files are immutable.",
+    "idempotence": "Committed retry remains handled by the existing outer commit before this initializer."
+  },
+  "provenance": {
+    "artifactPath": "reports/literary-archive-reference-catalog-20260914.json",
+    "artifactSha256Lf": "306cfdd28dda66130b3ee2c95bc1abf9821e50a938379cc9065aa69a2244be53",
+    "payloadSha256": "df634b2a54d67df1fbd46b5cda33ddff926a337630bb6246290ff06e33b25c0b",
+    "sourceCommitSha": "3cf9060888cb95cfe900cf695bf2666f4c93590a",
+    "gitBlobVerification": {
+      "path": ".tmp/reference-catalog-source-provenance-20260914.json",
+      "sha256Lf": "086992c283062f1a455eff02f0f7f9fbf6c8a95fbd41f049b4014d07b250f999",
+      "sourceFiles": 288,
+      "privateCatalogs": 1,
+      "matched": 289,
+      "drift": []
+    }
+  },
+  "validation": {
+    "status": "Source review, independent historical git-blob provenance and local in-memory SQL fixture complete; deployment remains separate release evidence.",
+    "localSqlFixture": {
+      "path": ".tmp/reference-initializer-pglite-20260914.json",
+      "sha256Lf": "cd0ac0e95d847c33a1c443d216f22909ad2c1b01242b9d0163bcabfc01f4ae95",
+      "runtime": "Existing in-memory PostgreSQL/PGlite",
+      "statements": 183,
+      "markerPresent": true,
+      "scale": {
+        "countries": 191,
+        "writerTuples": 1681,
+        "fullScaleItems": 9762,
+        "insertedWriters": 1679,
+        "initializerMilliseconds": 412
+      },
+      "productionWrites": false,
+      "limitations": "In-memory PGlite evidence; the local Docker integration case was skipped. Production execution is not claimed."
+    },
+    "tests": "Additive governance pins exact current source to published3cf and then the existing R49/historical baselines. Original R49 negative assertions remain on their original published boundary."
+  },
+  "files": [
+    {
+      "path": ".github/workflows/dispatch-premium-database-reconciliation.yml",
+      "sha256Lf": "dce6827e97de091bbb1d663e30f1a85f15961abc9e5a519c064f3652f4bc6420"
+    },
+    {
+      "path": ".github/workflows/reconcile-production-database.yml",
+      "sha256Lf": "5305f0871f0b67d511af98e6b5a6bbad703191e35b05023ea012b67d316a1c94"
+    },
+    {
+      "path": "reports/literary-archive-reference-catalog-20260914.json",
+      "sha256Lf": "306cfdd28dda66130b3ee2c95bc1abf9821e50a938379cc9065aa69a2244be53"
+    },
+    {
+      "path": "scripts/build-literary-archive-reference-catalog.mjs",
+      "sha256Lf": "c4ead012bf14c2e7aa7474dea381cfa292f2463c9335f03cfece83bf8e4a67b5"
+    },
+    {
+      "path": "scripts/database/build-production-migration-plan.mjs",
+      "sha256Lf": "9adab9675a61c87472871fbcaf290700e55694c843061de2712a6ff1467dfa0f"
+    },
+    {
+      "path": "scripts/database/fixtures/build-literary-archive-reference-fixture.mjs",
+      "sha256Lf": "e1239b19c1ca74fa7ca7ee5204639d837ac84b1926be6742bb5c5b9067749113"
+    },
+    {
+      "path": "scripts/database/fixtures/literary-archive-editorial-references.sql",
+      "sha256Lf": "45f624acb5e0e13f00052bc7021602b14f7054dd955b25b285643540233ff3ee"
+    },
+    {
+      "path": "scripts/database/literary-archive-editorial-references.integration.test.mjs",
+      "sha256Lf": "80fed7ceef6717405ab629d147949f02ee98e231793ef7d4b2aa9cd7e1514278"
+    },
+    {
+      "path": "scripts/database/production-migration-plan.test.mjs",
+      "sha256Lf": "a02623c31fd6e2205c690d1f5b5d65ac1aaa01bff10391db39b279f9f38623e5"
+    },
+    {
+      "path": "scripts/lib/book-evidence-release-gate.test.mjs",
+      "sha256Lf": "eaa7032778c49190b4059cf3de476e2da998786bf60121f1f19119f6a97b8a8a"
+    },
+    {
+      "path": "scripts/lib/literary-archive-reference-catalog.mjs",
+      "sha256Lf": "0c5f19e8ccf4d9f7d9f64a6a4cb54bb45b963a7f6ccfb51e563bf8742685e168"
+    },
+    {
+      "path": "scripts/lib/literary-archive-reference-catalog.test.mjs",
+      "sha256Lf": "78060ee89cf04ddbad698bc44766e7d28294fbb820906723de09d752442a3de3"
+    },
+    {
+      "path": "scripts/lib/reviewed-r49n-package.d.mts",
+      "sha256Lf": "4f02e2653cefa3d309acb134daecca3492e66845ff7197a449443249f0e5dd00"
+    },
+    {
+      "path": "scripts/lib/reviewed-r49n-package.mjs",
+      "sha256Lf": "a7dd08a61be2f9ce90d7c8a2824bc50182663eca36bfab1786bd6f186a451126"
+    },
+    {
+      "path": "scripts/lib/reviewed-r49n-package.test.mjs",
+      "sha256Lf": "554d50b34e833270bbb58ff4a575ba3bb49646bfd17f5ba9f0c8a0cd1538054b"
+    },
+    {
+      "path": "scripts/lib/reviewed-reference-release.d.mts",
+      "sha256Lf": "600821ef7045afa3353742502a587f78ab8b65ac8dcbb6ea8d8056858aa9ce03"
+    },
+    {
+      "path": "scripts/lib/reviewed-reference-release.mjs",
+      "sha256Lf": "cf9485ad2deca2bbfaf55e4a437350c5bf4c33379f9af46be133663b33ab4a41"
+    },
+    {
+      "path": "scripts/sync-literary-archive.mjs",
+      "sha256Lf": "504e0dd612b4f0a42e95f726fbdd185227f6ce64c06d0bb11761e8b14e4be0b1"
+    },
+    {
+      "path": "supabase/migrations/20260914_literary_archive_editorial_references.sql",
+      "sha256Lf": "00bdde32a431322e4c86eaa1f069ff287eac4acc011923dd2454a463f42cad21"
+    }
+  ]
+}

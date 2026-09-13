@@ -1,0 +1,267 @@
+{
+  "id": "LIBRARY-REFERENCE-RELEASE-20260914",
+  "baselineSourceCommitSha": "3cf9060888cb95cfe900cf695bf2666f4c93590a",
+  "reviewStatus": "source-reviewed",
+  "allowedProjectionPaths": [
+    ".github/workflows/dispatch-premium-database-reconciliation.yml",
+    ".github/workflows/reconcile-production-database.yml",
+    "scripts/database/build-production-migration-plan.mjs",
+    "scripts/sync-literary-archive.mjs"
+  ],
+  "sourceBaselines": {
+    ".github/workflows/dispatch-premium-database-reconciliation.yml": "58d587697881e3869a74eb0e110d49b984c2c1015a20c41048ea836a90151be7",
+    ".github/workflows/reconcile-production-database.yml": "204183f53a25c0d81f1ff78e92ed405a37616c6a95d9a57a2f9e1068814d349a",
+    "scripts/database/build-production-migration-plan.mjs": "48b7c4d8f744c9dc78bd0e5f73b5957c399a309af97dd44c6589724bcda02dad",
+    "scripts/sync-literary-archive.mjs": "bdc784a760f5a9357bdf6455709c57d4cfb40df057da604d53b2f7e50440a280"
+  },
+  "reviewedSourceSha256": {
+    ".github/workflows/dispatch-premium-database-reconciliation.yml": "dce6827e97de091bbb1d663e30f1a85f15961abc9e5a519c064f3652f4bc6420",
+    ".github/workflows/reconcile-production-database.yml": "5305f0871f0b67d511af98e6b5a6bbad703191e35b05023ea012b67d316a1c94",
+    "scripts/database/build-production-migration-plan.mjs": "9adab9675a61c87472871fbcaf290700e55694c843061de2712a6ff1467dfa0f",
+    "scripts/sync-literary-archive.mjs": "504e0dd612b4f0a42e95f726fbdd185227f6ce64c06d0bb11761e8b14e4be0b1"
+  },
+  "historicalArtifacts": [
+    {
+      "path": "scripts/governance/book-r49n-package-reviewed-20260912.json",
+      "sha256Lf": "09ba0a3762cc4a811b3a99c2e07f3e94f9401fb076247499edde5b8af6bc8db3"
+    },
+    {
+      "path": "reports/book-r49n-package-reviewed-20260912.json",
+      "sha256Lf": "7abc9164f9a39d2bd92534f1034fca59ca4db6eb2502b70385bda8c540b9fd36"
+    },
+    {
+      "path": "scripts/governance/book-r49n-dickens-reviewed-20260912.json",
+      "sha256Lf": "e7b875db1307fdbdc17bbe9329559bc9dc289d2dc735a8aa362f8beb086db259"
+    },
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256Lf": "c8d2b6862c47c3215295951d2c5d1c406913b9879c616f1d8b787c6e05029f6c"
+    },
+    {
+      "path": "apps/admin/catalog-assets/editorial-catalog.json",
+      "sha256Lf": "177bb3e634acd41ec5d5133cc830cebcd2e9029b4e6d859562af599a263e30ab"
+    }
+  ],
+  "historicalMigrations": [
+    {
+      "path": "supabase/migrations/20260808_article_translations.sql",
+      "sha256Lf": "37915d5aa77a4d647ea8bc9b84923b8c07fe148e7c6f301cabf5bb685909d372"
+    },
+    {
+      "path": "supabase/migrations/20260808_book_translations_and_import_staging.sql",
+      "sha256Lf": "2f7896316307c678c9139f8849ca4cb9930baea5bfc86c3441f281b17203b744"
+    },
+    {
+      "path": "supabase/migrations/20260812_homepage_block_revisions.sql",
+      "sha256Lf": "f261d7249c4aaf2a6db20ad8a5b2a587d00e417b8cadcd1f1b4ae7d496ba1a22"
+    },
+    {
+      "path": "supabase/migrations/20260812_writer_and_work_revisions.sql",
+      "sha256Lf": "76d9b65a2fc37aa03ffda3b293b09011dfaf316baa1c2153afaecd334c5c135f"
+    },
+    {
+      "path": "supabase/migrations/20260813_editorial_database_admin.sql",
+      "sha256Lf": "fb28408f56efe29c6173395af3d78c58f46cc8a766249e08f3d8b7ed91588819"
+    },
+    {
+      "path": "supabase/migrations/20260813_homepage_atomic_move.sql",
+      "sha256Lf": "34cd8a00b8ae55c0a3126226a597c06c6d0f1d653b8095806d4372496905a185"
+    },
+    {
+      "path": "supabase/migrations/20260813_tags_updated_at.sql",
+      "sha256Lf": "e7e7475d11af036a3cabf55a7f35831d7da5a8a18745979be26313e33f8386e7"
+    },
+    {
+      "path": "supabase/migrations/20260813_unified_revision_history.sql",
+      "sha256Lf": "e851c9e2a8d4a4af2760be2798de40a59dcc2ce4ada35e8ca49209f87b81c42e"
+    },
+    {
+      "path": "supabase/migrations/20260814_publication_outbox_and_schema_health.sql",
+      "sha256Lf": "795274d300104dcf41edb43fb5fd8e7079badb14bf5747f9d0190021a914456e"
+    },
+    {
+      "path": "supabase/migrations/20260820_homepage_book_month_editorial_choice.sql",
+      "sha256Lf": "436bb25b4513ed451320489278fda8670a1e4ada9f66b065fd6b734ba84c729f"
+    },
+    {
+      "path": "supabase/migrations/20260820_literary_work_cover_artworks.sql",
+      "sha256Lf": "e39ba6da664bcb2c3b4c5c78fa1e6ff6f46d420453d5575e113b92635e1f5c58"
+    },
+    {
+      "path": "supabase/migrations/20260822_staff_editorial_read_rls.sql",
+      "sha256Lf": "c50cda9a947cda1769c6aa36db81181dda988738e5dcf0ff7f2711d43faf03c9"
+    },
+    {
+      "path": "supabase/migrations/20260822_zz_atomic_article_bundle.sql",
+      "sha256Lf": "5df4f2068349ba210c560005ef1145bdb32be15e389fef2a5ec4642a73c12acc"
+    },
+    {
+      "path": "supabase/migrations/20260823_premium_machine_translation.sql",
+      "sha256Lf": "fd72bca7069130c777c8dbd9751f70f41d82b1d820562984e2a5ee6433491ba6"
+    },
+    {
+      "path": "supabase/migrations/20260827_reader_book_collections.sql",
+      "sha256Lf": "b8f7e004e0c094e67bfc1d3aa5f50071cdc7ad32a7718969666717ba8dc199e4"
+    },
+    {
+      "path": "supabase/migrations/20260828_reader_book_collection_icons.sql",
+      "sha256Lf": "27d6bc4beceef9f09e7811b0a5cd34d94874202083ee5ff038b78c00ce178019"
+    },
+    {
+      "path": "supabase/migrations/20260828_zz_editor_autosaves.sql",
+      "sha256Lf": "353ee5e767850c4818d60f9a957d5991689bf2886c41b21599f69678e7b041af"
+    },
+    {
+      "path": "supabase/migrations/20260830_media_studio_lifecycle.sql",
+      "sha256Lf": "3cb8717f0cf4f4b6a718591d2759c0c73008e35eaf9c3c09a1e0fd19f65ef837"
+    },
+    {
+      "path": "supabase/migrations/20260830_zz_site_typography_engine.sql",
+      "sha256Lf": "097f70aefd34278167a7c275db36cdb1182732a22eabfaa5d609be18512bde20"
+    },
+    {
+      "path": "supabase/migrations/20260901_zz_admin_analytics_reporting.sql",
+      "sha256Lf": "c1f9c7314c127d5a6a9c2113e84b8cf05dc6bb60052e96c00b317a9228f03d75"
+    },
+    {
+      "path": "supabase/migrations/20260901_zz_data_studio_integrity.sql",
+      "sha256Lf": "976134c7e7f64c4dd66a4afccef5a59e1af29b437c299cf9e3f3cc5fec7b3911"
+    },
+    {
+      "path": "supabase/migrations/20260901_zz_site_studio_engine.sql",
+      "sha256Lf": "4350165699a2e88dde7eece9bc57bc154ec6ba8b3b82933cbfd4b9fe514f4675"
+    },
+    {
+      "path": "supabase/migrations/20260901_zz_staff_owner_invariant.sql",
+      "sha256Lf": "8bc034b04540f835337ca6edc1f8b1c797d4b3064569778cc6bdb4e4501f3067"
+    },
+    {
+      "path": "supabase/migrations/20260901_zz_translation_operations.sql",
+      "sha256Lf": "481f1887cee0f28fed054a5bbae95260e33ef96a3ae059d307a8573d4eed16f7"
+    },
+    {
+      "path": "supabase/migrations/20260901_zz_translation_operations_runtime.sql",
+      "sha256Lf": "502d34ca1bcd30f79ccdbc10f238201daf89b8a36cc9a3cabf8cdc5e8ac25248"
+    },
+    {
+      "path": "supabase/migrations/20260901_zz_visual_direct_edit_v2.sql",
+      "sha256Lf": "38347f54fbe152e89cf392d517e3d3a6e1d389b50b3510611a7fd3b4a66157ed"
+    },
+    {
+      "path": "supabase/migrations/20260901_zzz_admin_mutation_guards.sql",
+      "sha256Lf": "21432b83209e353857d183b667c923bb47624a173276cf618515984ab4f200b9"
+    },
+    {
+      "path": "supabase/migrations/20260901_zzzz_admin_ops_observability.sql",
+      "sha256Lf": "d40c42e752641bdefe4a41bc6b079aa9c00c9f8bf37546051a4a28cca6b913b6"
+    },
+    {
+      "path": "supabase/migrations/20260901_zzzzzz_admin_completion_health.sql",
+      "sha256Lf": "dda44cc2f3248cf54621e07d17a701095ecea92193832371636618217531711f"
+    },
+    {
+      "path": "supabase/migrations/20260902_article_working_drafts.sql",
+      "sha256Lf": "3426ae0a6b234aa903670dde6efbd34f84c27a3f47f495fe454d593c95b66c72"
+    },
+    {
+      "path": "supabase/migrations/20260902_zz_article_working_drafts_health.sql",
+      "sha256Lf": "72259c999de34611ac9bb3bddd3d1374b62b43cfa1eb9a4f11fabfeb5bd20460"
+    },
+    {
+      "path": "supabase/migrations/20260902_literary_work_authorship.sql",
+      "sha256Lf": "79dd77139c128f22b184043665f39c76bc10bbbc895cabfc0d84c4d8d3e195bd"
+    },
+    {
+      "path": "supabase/migrations/20260902_literary_work_evidence_v2_attestations.sql",
+      "sha256Lf": "26e1e0cb57368c772a02d397e5df0cb2960725a7ad05ae35fbc299ddf41c4966"
+    },
+    {
+      "path": "supabase/migrations/20260902_zz_literary_archive_atomic_release.sql",
+      "sha256Lf": "a03f27a42fc6e7607dae6c46cb52292798ffc4eb931c470bfc2e9a481ebb1ef9"
+    },
+    {
+      "path": "supabase/migrations/20260905_article_publication_permissions.sql",
+      "sha256Lf": "1f9b4b9a9efb00488010cb6719cb36967a395038089b2ca3091657e144f0fcc8"
+    },
+    {
+      "path": "supabase/migrations/20260912_literary_work_evidence_v2_registry_rotation.sql",
+      "sha256Lf": "2fbcba184a4f7f7eb8e0ab49737540c42614d3f1d0755914f485bd5c0e04f525"
+    },
+    {
+      "path": "supabase/migrations/20260913_wells_editorial_evidence_repair.sql",
+      "sha256Lf": "769353bbf60790b6a5113a5d76ee23cb7ce0e84e3100a7d3eac86c7113d09c70"
+    }
+  ],
+  "reviewedReport": {
+    "path": "reports/library-reference-release-reviewed-20260914.json",
+    "sha256Lf": "59fc1d2bfad443020893e7ce9a76a77bf87901548681079a4a2449be6ca0361d"
+  },
+  "projections": [
+    {
+      "id": "REFERENCE-RELEASE-001",
+      "path": ".github/workflows/dispatch-premium-database-reconciliation.yml",
+      "before": "      - \"supabase/migrations/20260902_article_working_drafts.sql\"\n      - \"supabase/migrations/20260902_zz_article_working_drafts_health.sql\"\n      - \"supabase/migrations/20260902_literary_work_authorship.sql\"\n      - \"supabase/migrations/20260902_literary_work_evidence_v2_attestations.sql\"\n      - \"supabase/migrations/20260902_zz_literary_archive_atomic_release.sql\"\n      - \"scripts/sync-literary-archive.mjs\"\n      - \"scripts/lib/book-authorship-roundtrip.mjs\"\n      - \"scripts/lib/book-evidence-v2-attestations.mjs\"\n      - \"scripts/lib/literary-archive-atomic-release.mjs\"\n      - \"scripts/database/verify-book-cover-batch-20260820.mjs\"\n",
+      "after": "      - \"supabase/migrations/20260902_article_working_drafts.sql\"\n      - \"supabase/migrations/20260902_zz_article_working_drafts_health.sql\"\n      - \"supabase/migrations/20260902_literary_work_authorship.sql\"\n      - \"supabase/migrations/20260902_literary_work_evidence_v2_attestations.sql\"\n      - \"supabase/migrations/20260902_zz_literary_archive_atomic_release.sql\"\n      - \"supabase/migrations/20260914_literary_archive_editorial_references.sql\"\n      - \"reports/literary-archive-reference-catalog-20260914.json\"\n      - \"scripts/lib/literary-archive-reference-catalog.mjs\"\n      - \"scripts/build-literary-archive-reference-catalog.mjs\"\n      - \"scripts/sync-literary-archive.mjs\"\n      - \"scripts/lib/book-authorship-roundtrip.mjs\"\n      - \"scripts/lib/book-evidence-v2-attestations.mjs\"\n      - \"scripts/lib/literary-archive-atomic-release.mjs\"\n      - \"scripts/database/verify-book-cover-batch-20260820.mjs\"\n"
+    },
+    {
+      "id": "REFERENCE-RELEASE-002",
+      "path": ".github/workflows/reconcile-production-database.yml",
+      "before": "            --repository-sha \"$EXPECTED_MAIN_SHA\"\n          {\n            echo \"# Production database reconciliation\"\n            echo\n            printf '%s\\n' \"- Repository SHA: $EXPECTED_MAIN_SHA\"\n            echo \"- Migration range: 20260808_article_translations through 20260913_wells_editorial_evidence_repair\"\n            echo \"- Guard: exact reviewed SHA-256 allowlist\"\n          } > reconciliation/summary.md\n\n      - name: Verify production database identity\n        env:\n",
+      "after": "            --repository-sha \"$EXPECTED_MAIN_SHA\"\n          {\n            echo \"# Production database reconciliation\"\n            echo\n            printf '%s\\n' \"- Repository SHA: $EXPECTED_MAIN_SHA\"\n            echo \"- Migration range: 20260808_article_translations through 20260914_literary_archive_editorial_references\"\n            echo \"- Guard: exact reviewed SHA-256 allowlist\"\n          } > reconciliation/summary.md\n\n      - name: Verify production database identity\n        env:\n"
+    },
+    {
+      "id": "REFERENCE-RELEASE-003",
+      "path": ".github/workflows/reconcile-production-database.yml",
+      "before": "        run: |\n          set -Eeuo pipefail\n          bash scripts/database/supabase-database-safety.sh verify-production \\\n            reconciliation/verify.sql \\\n            reconciliation/production-verification.txt\n          expected='schema_health=20260902_zz_article_working_drafts_health;outbox=true;outbox_rpc=true;article_bundle_rpc=true;publication_triggers=true;staff_editorial_read_policies=true;revision_history=true;work_translations=true;work_cover_artworks=true;literary_work_authorship=true;literary_work_evidence_v2=true;literary_archive_atomic_release=true;country_overrides=true;writer_overrides=true;homepage_move=true;tags_updated_at=true;media_studio_lifecycle=true;media_usage_graph=true;media_safe_replace_rpc=true;site_typography_engine=true;site_studio_engine=true;visual_direct_edit_v2=true;staff_owner_invariant=true;data_studio_integrity=true;translation_operations=true;admin_mutation_guards=true;admin_analytics_reporting=true;admin_ops_observability=true;article_working_drafts=true;article_publication_rbac=true;article_translation_rbac=true;article_working_draft_promotion_cas=true;migration_ledger=true;premium_machine_translation=true;editor_autosaves=true;editor_autosave_rpc=true;ledger_entries=37;invalid_indexes=0'\n          printf '%s\\n' \"$expected\" > reconciliation/production-verification-expected.txt\n          actual=\"$(tr -d '\\r\\n' < reconciliation/production-verification.txt)\"\n          [[ \"$actual\" == \"$expected\" ]] || {\n            echo \"::error::Production verification did not return the exact current-schema contract.\"\n            exit 1\n",
+      "after": "        run: |\n          set -Eeuo pipefail\n          bash scripts/database/supabase-database-safety.sh verify-production \\\n            reconciliation/verify.sql \\\n            reconciliation/production-verification.txt\n          expected='schema_health=20260902_zz_article_working_drafts_health;outbox=true;outbox_rpc=true;article_bundle_rpc=true;publication_triggers=true;staff_editorial_read_policies=true;revision_history=true;work_translations=true;work_cover_artworks=true;literary_work_authorship=true;literary_work_evidence_v2=true;literary_archive_atomic_release=true;country_overrides=true;writer_overrides=true;homepage_move=true;tags_updated_at=true;media_studio_lifecycle=true;media_usage_graph=true;media_safe_replace_rpc=true;site_typography_engine=true;site_studio_engine=true;visual_direct_edit_v2=true;staff_owner_invariant=true;data_studio_integrity=true;translation_operations=true;admin_mutation_guards=true;admin_analytics_reporting=true;admin_ops_observability=true;article_working_drafts=true;article_publication_rbac=true;article_translation_rbac=true;article_working_draft_promotion_cas=true;migration_ledger=true;premium_machine_translation=true;editor_autosaves=true;editor_autosave_rpc=true;ledger_entries=38;invalid_indexes=0'\n          printf '%s\\n' \"$expected\" > reconciliation/production-verification-expected.txt\n          actual=\"$(tr -d '\\r\\n' < reconciliation/production-verification.txt)\"\n          [[ \"$actual\" == \"$expected\" ]] || {\n            echo \"::error::Production verification did not return the exact current-schema contract.\"\n            exit 1\n"
+    },
+    {
+      "id": "REFERENCE-RELEASE-004",
+      "path": "scripts/database/build-production-migration-plan.mjs",
+      "before": "  ],\n  [\n    \"20260913_wells_editorial_evidence_repair.sql\",\n    \"769353bbf60790b6a5113a5d76ee23cb7ce0e84e3100a7d3eac86c7113d09c70\",\n  ],\n];\n\nconst reviewedHotfixes = [\n  [\n    \"20260821_articles_staff_read_rls.sql\",\n",
+      "after": "  ],\n  [\n    \"20260913_wells_editorial_evidence_repair.sql\",\n    \"769353bbf60790b6a5113a5d76ee23cb7ce0e84e3100a7d3eac86c7113d09c70\",\n  ],\n  [\n    \"20260914_literary_archive_editorial_references.sql\",\n    \"00bdde32a431322e4c86eaa1f069ff287eac4acc011923dd2454a463f42cad21\",\n  ],\n];\n\nconst reviewedHotfixes = [\n  [\n    \"20260821_articles_staff_read_rls.sql\",\n"
+    },
+    {
+      "id": "REFERENCE-RELEASE-005",
+      "path": "scripts/database/build-production-migration-plan.mjs",
+      "before": "    or to_regprocedure('public.get_literary_work_evidence_v2_rotation_snapshot()') is null\n    or to_regprocedure('public.prepare_literary_archive_registry_rotation(uuid)') is null\n    or to_regprocedure('public.assert_literary_archive_registry_rotation(uuid)') is null\n    or to_regprocedure('public.prepare_literary_archive_reviewed_writer_reference(uuid)') is null\n    or to_regprocedure('public.prepare_literary_archive_draft_writer_reference(uuid)') is null\n    or to_regprocedure('public.repair_wells_editorial_evidence_20260913(jsonb)') is null\n    or to_regprocedure('public.premium_machine_translation_ready()') is null then\n    raise exception 'Required editorial RPC is missing after reconciliation';\n  end if;\n\n",
+      "after": "    or to_regprocedure('public.get_literary_work_evidence_v2_rotation_snapshot()') is null\n    or to_regprocedure('public.prepare_literary_archive_registry_rotation(uuid)') is null\n    or to_regprocedure('public.assert_literary_archive_registry_rotation(uuid)') is null\n    or to_regprocedure('public.prepare_literary_archive_reviewed_writer_reference(uuid)') is null\n    or to_regprocedure('public.prepare_literary_archive_draft_writer_reference(uuid)') is null\n    or to_regprocedure('public.prepare_literary_archive_editorial_references_20260914(uuid)') is null\n    or to_regprocedure('public.repair_wells_editorial_evidence_20260913(jsonb)') is null\n    or to_regprocedure('public.premium_machine_translation_ready()') is null then\n    raise exception 'Required editorial RPC is missing after reconciliation';\n  end if;\n\n"
+    },
+    {
+      "id": "REFERENCE-RELEASE-006",
+      "path": "scripts/database/build-production-migration-plan.mjs",
+      "before": "    or position('description-origin-contract-20260913: exact frozen-validator origin/method binding.'\n      in pg_catalog.pg_get_functiondef('public.attest_literary_work_evidence_v2(uuid,text,jsonb,jsonb,text,date)'::regprocedure)) = 0 then\n    raise exception 'Reviewed Wells repair service-only capability is incomplete';\n  end if;\n\n  select count(*) into recorded_migrations\n  from public.probpera_schema_migrations actual\n  join (values\n${values}\n  ) as expected(version, migration_sha256)\n",
+      "after": "    or position('description-origin-contract-20260913: exact frozen-validator origin/method binding.'\n      in pg_catalog.pg_get_functiondef('public.attest_literary_work_evidence_v2(uuid,text,jsonb,jsonb,text,date)'::regprocedure)) = 0 then\n    raise exception 'Reviewed Wells repair service-only capability is incomplete';\n  end if;\n\n  if position('perform public.prepare_literary_archive_editorial_references_20260914(target.id);'\n    in pg_catalog.pg_get_functiondef('public.commit_literary_archive_release(uuid,text)'::regprocedure)) = 0\n    or has_function_privilege('service_role', 'public.prepare_literary_archive_editorial_references_20260914(uuid)', 'EXECUTE')\n    or has_function_privilege('anon', 'public.prepare_literary_archive_editorial_references_20260914(uuid)', 'EXECUTE')\n    or has_function_privilege('authenticated', 'public.prepare_literary_archive_editorial_references_20260914(uuid)', 'EXECUTE') then\n    raise exception 'Reviewed atomic editorial reference initialization capability is incomplete';\n  end if;\n\n  select count(*) into recorded_migrations\n  from public.probpera_schema_migrations actual\n  join (values\n${values}\n  ) as expected(version, migration_sha256)\n"
+    },
+    {
+      "id": "REFERENCE-RELEASE-007",
+      "path": "scripts/sync-literary-archive.mjs",
+      "before": "import { pathToFileURL, fileURLToPath } from \"node:url\";\nimport { isDeepStrictEqual } from \"node:util\";\n\nimport { build } from \"esbuild\";\nimport { authorshipRowsFromArchive } from \"./lib/book-authorship-roundtrip.mjs\";\nimport {\n  buildEvidenceV2RegistryRotation,\n  buildEvidenceV2ReviewedWriterReference,\n  buildEvidenceV2DraftWriterReference,\n  evidenceV2RegistryPreflightIdentity,\n",
+      "after": "import { pathToFileURL, fileURLToPath } from \"node:url\";\nimport { isDeepStrictEqual } from \"node:util\";\n\nimport { build } from \"esbuild\";\nimport { authorshipRowsFromArchive } from \"./lib/book-authorship-roundtrip.mjs\";\nimport {\n  buildLiteraryArchiveReferenceMetadata,\n  referenceItemsFromArchive,\n  LITERARY_ARCHIVE_REFERENCE_ARTIFACT,\n} from \"./lib/literary-archive-reference-catalog.mjs\";\nimport {\n  buildEvidenceV2RegistryRotation,\n  buildEvidenceV2ReviewedWriterReference,\n  buildEvidenceV2DraftWriterReference,\n  evidenceV2RegistryPreflightIdentity,\n"
+    },
+    {
+      "id": "REFERENCE-RELEASE-008",
+      "path": "scripts/sync-literary-archive.mjs",
+      "before": "    issuesForWork: source.bookEvidenceV2Issues,\n    validatorSha256,\n  }\n);\nconst works = workRows(syncArchive);\nif (coverBatch20260820 && works.length !== 41) {\n  throw new Error(`Batch 2026-08-20 canonical coverage is ${works.length}, expected 41.`);\n}\nconst covers = archive.filter((book) =>\n  Boolean(\n",
+      "after": "    issuesForWork: source.bookEvidenceV2Issues,\n    validatorSha256,\n  }\n);\nconst works = workRows(syncArchive);\nconst referenceCatalogArtifact = JSON.parse(await readFile(\n  path.join(repositoryRoot, LITERARY_ARCHIVE_REFERENCE_ARTIFACT), \"utf8\"\n));\nbuildLiteraryArchiveReferenceMetadata(referenceItemsFromArchive(syncArchive), referenceCatalogArtifact);\nif (coverBatch20260820 && works.length !== 41) {\n  throw new Error(`Batch 2026-08-20 canonical coverage is ${works.length}, expected 41.`);\n}\nconst covers = archive.filter((book) =>\n  Boolean(\n"
+    },
+    {
+      "id": "REFERENCE-RELEASE-009",
+      "path": "scripts/sync-literary-archive.mjs",
+      "before": "  );\n}\n\nconst reviewedWriterReference = buildEvidenceV2ReviewedWriterReference(releaseItems);\nconst draftWriterReference = buildEvidenceV2DraftWriterReference(releaseItems);\nlet registryRotation = null;\nif (evidenceHealth.registryRotation) {\n  const { data: snapshot, error } = await supabase.rpc(\"get_literary_work_evidence_v2_rotation_snapshot\");\n  if (error) throw new Error(`Evidence V2 registry snapshot failed: ${error.message}`);\n  registryRotation = buildEvidenceV2RegistryRotation({\n",
+      "after": "  );\n}\n\nconst reviewedWriterReference = buildEvidenceV2ReviewedWriterReference(releaseItems);\nconst draftWriterReference = buildEvidenceV2DraftWriterReference(releaseItems);\nconst referenceCatalog = buildLiteraryArchiveReferenceMetadata(releaseItems, referenceCatalogArtifact);\nlet registryRotation = null;\nif (evidenceHealth.registryRotation) {\n  const { data: snapshot, error } = await supabase.rpc(\"get_literary_work_evidence_v2_rotation_snapshot\");\n  if (error) throw new Error(`Evidence V2 registry snapshot failed: ${error.message}`);\n  registryRotation = buildEvidenceV2RegistryRotation({\n"
+    },
+    {
+      "id": "REFERENCE-RELEASE-010",
+      "path": "scripts/sync-literary-archive.mjs",
+      "before": "    validatorSha256,\n    canonRegistrySha256,\n    ...(registryRotation ? [canonicalLiteraryArchiveReleasePayload(registryRotation)] : []),\n    ...(reviewedWriterReference ? [canonicalLiteraryArchiveReleasePayload(reviewedWriterReference)] : []),\n    ...(draftWriterReference ? [canonicalLiteraryArchiveReleasePayload(draftWriterReference)] : []),\n    atomicEnableEvidenceV2 ? \"enable-evidence-v2\" : \"preserve-evidence-v2\",\n  ].join(\"\\n\")\n);\nconst releaseKey = `books:${sourceRevision}`;\nconst releaseMetadata = {\n",
+      "after": "    validatorSha256,\n    canonRegistrySha256,\n    ...(registryRotation ? [canonicalLiteraryArchiveReleasePayload(registryRotation)] : []),\n    ...(reviewedWriterReference ? [canonicalLiteraryArchiveReleasePayload(reviewedWriterReference)] : []),\n    ...(draftWriterReference ? [canonicalLiteraryArchiveReleasePayload(draftWriterReference)] : []),\n    canonicalLiteraryArchiveReleasePayload(referenceCatalog),\n    atomicEnableEvidenceV2 ? \"enable-evidence-v2\" : \"preserve-evidence-v2\",\n  ].join(\"\\n\")\n);\nconst releaseKey = `books:${sourceRevision}`;\nconst releaseMetadata = {\n"
+    },
+    {
+      "id": "REFERENCE-RELEASE-011",
+      "path": "scripts/sync-literary-archive.mjs",
+      "before": "  preservedCmsLockedWorks: lockedWorks.length,\n  childEditPreservation: precondition.childEditPreservation,\n  ...(registryRotation ? { evidenceV2RegistryRotation: registryRotation } : {}),\n  ...(reviewedWriterReference ? { reviewedWriterReference } : {}),\n  ...(draftWriterReference ? { draftWriterReference } : {}),\n};\n\nconsole.log(\n  `Atomic target verified: ${releaseItems.length} unlocked works, ${lockedWorks.length} CMS-locked works preserved, ${targetPredecessorLegacyIds.length} target predecessor-public works, staging manifest ${targetManifestSha256}, logical target manifest ${logicalTargetManifestSha256}.`\n);\n",
+      "after": "  preservedCmsLockedWorks: lockedWorks.length,\n  childEditPreservation: precondition.childEditPreservation,\n  ...(registryRotation ? { evidenceV2RegistryRotation: registryRotation } : {}),\n  ...(reviewedWriterReference ? { reviewedWriterReference } : {}),\n  ...(draftWriterReference ? { draftWriterReference } : {}),\n  referenceCatalog,\n};\n\nconsole.log(\n  `Atomic target verified: ${releaseItems.length} unlocked works, ${lockedWorks.length} CMS-locked works preserved, ${targetPredecessorLegacyIds.length} target predecessor-public works, staging manifest ${targetManifestSha256}, logical target manifest ${logicalTargetManifestSha256}.`\n);\n"
+    }
+  ]
+}

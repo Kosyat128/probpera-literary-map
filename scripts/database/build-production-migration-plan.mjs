@@ -124,6 +124,10 @@ const reviewedMigrations = [
     "20260913_wells_editorial_evidence_repair.sql",
     "769353bbf60790b6a5113a5d76ee23cb7ce0e84e3100a7d3eac86c7113d09c70",
   ],
+  [
+    "20260914_literary_archive_editorial_references.sql",
+    "00bdde32a431322e4c86eaa1f069ff287eac4acc011923dd2454a463f42cad21",
+  ],
 ];
 
 const reviewedHotfixes = [
@@ -518,6 +522,7 @@ begin
     or to_regprocedure('public.assert_literary_archive_registry_rotation(uuid)') is null
     or to_regprocedure('public.prepare_literary_archive_reviewed_writer_reference(uuid)') is null
     or to_regprocedure('public.prepare_literary_archive_draft_writer_reference(uuid)') is null
+    or to_regprocedure('public.prepare_literary_archive_editorial_references_20260914(uuid)') is null
     or to_regprocedure('public.repair_wells_editorial_evidence_20260913(jsonb)') is null
     or to_regprocedure('public.premium_machine_translation_ready()') is null then
     raise exception 'Required editorial RPC is missing after reconciliation';
@@ -550,6 +555,14 @@ begin
     or position('description-origin-contract-20260913: exact frozen-validator origin/method binding.'
       in pg_catalog.pg_get_functiondef('public.attest_literary_work_evidence_v2(uuid,text,jsonb,jsonb,text,date)'::regprocedure)) = 0 then
     raise exception 'Reviewed Wells repair service-only capability is incomplete';
+  end if;
+
+  if position('perform public.prepare_literary_archive_editorial_references_20260914(target.id);'
+    in pg_catalog.pg_get_functiondef('public.commit_literary_archive_release(uuid,text)'::regprocedure)) = 0
+    or has_function_privilege('service_role', 'public.prepare_literary_archive_editorial_references_20260914(uuid)', 'EXECUTE')
+    or has_function_privilege('anon', 'public.prepare_literary_archive_editorial_references_20260914(uuid)', 'EXECUTE')
+    or has_function_privilege('authenticated', 'public.prepare_literary_archive_editorial_references_20260914(uuid)', 'EXECUTE') then
+    raise exception 'Reviewed atomic editorial reference initialization capability is incomplete';
   end if;
 
   select count(*) into recorded_migrations
