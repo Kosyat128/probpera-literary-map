@@ -15,7 +15,7 @@ const canonical = value => Array.isArray(value) ? value.map(canonical)
 describe("R49N common package additive governance", () => {
   it("pins the common packet without replacing the historical Dickens attestation", () => {
     expect(sha(JSON.stringify(r49nPackageAttestation))).toBe(
-      "e627cd30e1b63744516995e60652162bf0e8b5115679883555a70eac50f3467b"
+      "932f3b3d81d4f3db0fc901f9b31bf3719490afffd0b11549f87f094611f398e8"
     );
     expect(sha(JSON.stringify(JSON.parse(read("scripts/governance/book-r49n-dickens-reviewed-20260912.json")))))
       .toBe("2fd2b7dbbb6fe34040aba24e6dfef4a8498d6a01f4ae753698715abe72c408f6");

@@ -10,7 +10,7 @@
   "inputMasterSha256": "f441344f6b4367684c8f5ec39f746f12c079ff05e5130b3183e06bab7c359674",
   "editorialReview": {
     "path": "reports/book-r49n-package-reviewed-20260912.json",
-    "canonicalJsonSha256": "596dd8874d754c57c07ad579c4a69c5b5d266ff43fd4e77d230613560f470336"
+    "canonicalJsonSha256": "9026447943ae0b6f1c52b9102e79de8fd0a301e8acd0f1bd9819d87a09d87a32"
   },
   "textHashProfile": "sha256-utf8-with-crlf-and-cr-normalized-to-lf",
   "allowedProjectionPaths": [

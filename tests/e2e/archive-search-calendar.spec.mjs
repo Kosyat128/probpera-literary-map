@@ -141,8 +141,37 @@ test("3D-книга показывает готовую аннотацию с о
   await search.press("Escape");
   const workspace = page.locator(".book-shelf-frame__workspace");
   await workspace.scrollIntoViewIfNeeded();
-  await page.waitForFunction(() => window.__shelfAudit.read()?.books.length === 1 && window.__shelfAudit.read()?.pendingFrames === 0);
-  const point = await page.evaluate(() => window.__shelfAudit.read().books[0]);
+  await page.evaluate(() => document.fonts.ready);
+  await workspace.scrollIntoViewIfNeeded();
+  const bookKey = "usa:louisa_may_alcott:little-women";
+  await page.waitForFunction(key => {
+    const audit = window.__shelfAudit.read();
+    const state = window.__shelfAudit.sceneData()?.state;
+    if (!state) return false;
+    const rect = state.gl.domElement.getBoundingClientRect();
+    // The observer uses this live rectangle; R3F's scroll measurement is debounced.
+    const hitCoordinatesReady = ["left", "top", "width", "height"].every(
+      field => Math.abs(state.size[field] - rect[field]) < 1
+    );
+    return audit?.books.length === 1 && audit.books[0].key === key &&
+      audit.phase === "SHELF_IDLE" && audit.pendingFrames === 0 && hitCoordinatesReady;
+  }, bookKey);
+  const initialPoint = await page.evaluate(() => window.__shelfAudit.read().books[0]);
+  await page.mouse.move(initialPoint.x, initialPoint.y);
+  // Hover pulls the spine forward. Wait for that real pose before sampling again.
+  await page.waitForFunction(key => {
+    const data = window.__shelfAudit.sceneData();
+    const audit = window.__shelfAudit.read();
+    const book = data?.books.find(item => item.layout.spec.key === key);
+    return book?.group.position.z > 0.05 && audit?.phase === "SHELF_IDLE" &&
+      audit.pendingFrames === 0 && data.state.gl.domElement.style.cursor === "pointer";
+  }, bookKey);
+  const point = await page.evaluate(key => {
+    const book = window.__shelfAudit.read().books.find(item => item.key === key);
+    const canvas = window.__shelfAudit.sceneData().state.gl.domElement;
+    return { ...book, hitsCanvas: document.elementFromPoint(book.x, book.y) === canvas };
+  }, bookKey);
+  expect(point.hitsCanvas).toBe(true);
   await page.mouse.click(point.x, point.y);
   await page.waitForFunction(() => window.__shelfAudit.read()?.phase === "INSPECTION_CLOSED");
   await page.locator(".book-detail-open-cover").click();

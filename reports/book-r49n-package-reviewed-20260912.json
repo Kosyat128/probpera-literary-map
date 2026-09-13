@@ -3593,6 +3593,96 @@
           "Test-only React DevTools observer needed renderers Map for Vite Refresh",
           "Existing result count used invariant Russian plural; now uses existing locale-aware plural selector"
         ]
+      },
+      "seaWolfPendingSearchRegression": {
+        "previousPackageObjectSha256": "e627cd30e1b63744516995e60652162bf0e8b5115679883555a70eac50f3467b",
+        "previousPackageReportCanonicalSha256": "596dd8874d754c57c07ad579c4a69c5b5d266ff43fd4e77d230613560f470336",
+        "sourceCommitSha": "56aac62d302f82be672f8d9f35868a83792b6605",
+        "failedCiRunId": 34780796849,
+        "failedCiJobId": 103788482567,
+        "cause": "The historical smoke test expected no Sea Wolf result, but the full canonical catalogue intentionally exposes pending titles with an explicit review status.",
+        "correctedTest": {
+          "path": "tests/e2e/public-smoke.spec.mjs",
+          "sha256Lf": "7a0e76ed3ab268fcf373fadb970e4838310b9855a225f67256e7bd4686ebac49"
+        },
+        "browser": {
+          "passed": 2,
+          "failed": 0,
+          "projects": [
+            "desktop-chromium",
+            "mobile-chromium"
+          ],
+          "command": "node node_modules/@playwright/test/cli.js test --config .tmp/e2e-sea-wolf-catalogue.config.mjs",
+          "log": ".tmp/sea-wolf-catalogue-browser-final-20260913.log",
+          "build": "Plain Vite production build from unchanged source and generated inputs in .tmp/sea-wolf-catalogue-dist; no domain, CMS or image pipeline refresh.",
+          "checks": [
+            "Original 800ms hashed-country lazy-load interception retained; query remains unchanged before and after results load.",
+            "Exactly one option has the exact Sea Wolf title and Jack London pending-review metadata.",
+            "The first desktop click or mobile tap opens the exact Sea Wolf detail with its explicit pending status and no verified label."
+          ],
+          "initialSelectorCorrection": "The existing option aria-label contains only the title; pending author/status metadata is asserted independently against its exact small element text."
+        },
+        "privateMetadataExclusion": {
+          "path": "src/search/globalSearchIndex.test.ts",
+          "sha256Lf": "65b83dff79d903808a9a29eac8601944a0803806ec18deb0b2e047ec3353c8a4",
+          "test": "indexes pending canonical titles while excluding unreviewed metadata and private notes",
+          "passed": 1,
+          "sourceUnchanged": true
+        },
+        "runtimeSourceChanged": false,
+        "generatedDataChanged": false,
+        "immutableArtifactCount": 9,
+        "immutableArtifactPinsChanged": false
+      },
+      "littleWomenShelfReadiness": {
+        "failedCiRunId": 34780796849,
+        "failedCiJobId": 103788482577,
+        "previousTestSha256Lf": "d03dd46ce0a3531bbfca3fed138b009a249ff98dea3da6be351148a323802c29",
+        "observation": "The previous CI timed out waiting for INSPECTION_CLOSED after its single mouse click. Source inspection confirmed that the old readiness check did not require matching R3F and live canvas coordinates or a settled hover pose; the exact cause of that CI failure remains unproven.",
+        "receiptPath": ".tmp/little-women-readiness-receipt-20260914.json",
+        "receipt": {
+          "contract": "little-women-one-click-readiness-20260914",
+          "sourcePath": "tests/e2e/archive-search-calendar.spec.mjs",
+          "sourceSha256Lf": "359ba1f24e5343aae6a055fc9733a003af916b2e8bae891f45c2c5d49aa35e01",
+          "trackedScope": [
+            "tests/e2e/archive-search-calendar.spec.mjs"
+          ],
+          "runtimeChanged": false,
+          "runtimeDist": ".tmp/sea-wolf-catalogue-dist",
+          "runtimeCommit": "56aac62d",
+          "testProject": "desktop-chromium",
+          "testTitle": "3D-книга показывает готовую аннотацию с отметкой о непроверенном статусе",
+          "actualCasesRun": 1,
+          "passed": 1,
+          "failed": 0,
+          "retries": 0,
+          "realMouseClicks": 1,
+          "testDurationSeconds": 14,
+          "totalDurationSeconds": 15.7,
+          "originalTestRerun": false,
+          "ciRootCauseProven": false,
+          "readiness": [
+            "fonts-ready",
+            "exact-book-key-and-SHELF_IDLE",
+            "R3F-frame-queue-idle",
+            "R3F-size-matches-live-canvas-rect",
+            "real-hover-pose-settled",
+            "resampled-same-key-spine-centre",
+            "canvas-hit-at-click-point"
+          ],
+          "unchangedAssertions": [
+            "INSPECTION_CLOSED",
+            "BOOK_OPEN",
+            "pending editorial label",
+            "retained description",
+            "pageIndex advance",
+            "rendered 3D editorial document"
+          ],
+          "preliminaryInfrastructureAttempts": [
+            "initial grep selected no cases",
+            "owned preview reuse configured before sole test run"
+          ]
+        }
       }
     },
     "dictionaryAdded": {
@@ -3670,7 +3760,7 @@
       {
         "path": "tests/e2e/archive-search-calendar.spec.mjs",
         "sha256": "3ee81be040f9cf30d54e05db440b67fe5de7597a67d2c972957d85b07b9f4ffa",
-        "sha256Lf": "d03dd46ce0a3531bbfca3fed138b009a249ff98dea3da6be351148a323802c29"
+        "sha256Lf": "359ba1f24e5343aae6a055fc9733a003af916b2e8bae891f45c2c5d49aa35e01"
       },
       {
         "path": "src/components/WriterPanel.tsx",
@@ -3686,6 +3776,10 @@
         "path": "src/components/writerPanelAccessibility.test.ts",
         "sha256": "bc727696e5773e3eda727687578d5a17a53b9a645bb21fa3d0747afcaa32f41d",
         "sha256Lf": "439743a0e6b575963080802f227ca2ce6bae7ec879f6900b61fec71e74dbacd9"
+      },
+      {
+        "path": "tests/e2e/public-smoke.spec.mjs",
+        "sha256Lf": "7a0e76ed3ab268fcf373fadb970e4838310b9855a225f67256e7bd4686ebac49"
       }
     ],
     "countryCounterFollowup": {
@@ -4071,7 +4165,7 @@
       },
       {
         "path": "tests/e2e/archive-search-calendar.spec.mjs",
-        "sha256Lf": "d03dd46ce0a3531bbfca3fed138b009a249ff98dea3da6be351148a323802c29",
+        "sha256Lf": "359ba1f24e5343aae6a055fc9733a003af916b2e8bae891f45c2c5d49aa35e01",
         "beforeSha256Lf": "6b020aded3f162979239324f8f20cd503f33caca7fb32470376a3c8a883b58e8"
       }
     ],
