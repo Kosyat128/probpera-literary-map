@@ -101,13 +101,13 @@ describe("Stage 5F demand-owned loading graph", () => {
     expect(archives).toContain('import("../data/articles/catalog")');
   });
 
-  it("loads book data near the monthly feature without mounting Shelf UI", () => {
+  it("loads book data for the monthly feature, search, or selected country without mounting Shelf UI", () => {
     const app = source("src/App.tsx");
 
     expect(app).toContain("ref={setBookDayActivationNode}");
     expect(app).toContain("onActivate: requestBookRuntime");
     expect(app).toMatch(
-      /if \(!globalSearchOpen\) return;[\s\S]*requestBookRuntime\(\);/u
+      /if \(!globalSearchOpen && !selectedCountry\) return;\s*requestBookRuntime\(\);\s*\}, \[globalSearchOpen, selectedCountry, requestBookRuntime\]\);/u
     );
   });
 

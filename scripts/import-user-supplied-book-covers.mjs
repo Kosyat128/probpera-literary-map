@@ -352,14 +352,15 @@ async function sourceArchive() {
     absWorkingDir: projectRoot,
     stdin: {
       contents: `
-        import { bookArchiveCountries } from "./src/data/countries/index.ts";
+        import { bookArchiveSourceCountries as bookArchiveCountries } from "./src/data/countries/index.ts";
         import { buildBookArchive } from "./src/data/bookArchive.ts";
         import { isPublicBook } from "./src/data/bookQuality.ts";
 
         export const baseline = buildBookArchive(bookArchiveCountries, {
           includeUserSuppliedCovers: false,
+          includeR49nCatalog: false,
         });
-        export const current = buildBookArchive(bookArchiveCountries);
+        export const current = buildBookArchive(bookArchiveCountries, { includeR49nCatalog: false });
         export const baselinePublicCount = baseline.filter(isPublicBook).length;
         export const currentPublicCount = current.filter(isPublicBook).length;
       `,

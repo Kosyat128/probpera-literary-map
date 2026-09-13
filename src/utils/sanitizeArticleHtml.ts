@@ -10,6 +10,8 @@ import {
   editorialImageDataAttributes,
   editorialImageElementStyle,
   editorialImageFigureStyle,
+  editorialInlineImageSizes,
+  editorialInlineImageAspectRatio,
   normalizeEditorialImagePublicAttributes,
   safeEditorialMediaUrl,
   type EditorialImagePublicAttributes,
@@ -640,12 +642,14 @@ export function sanitizeArticleHtml(source: string) {
       normalizeInlineEditorialImage(image, document);
       const source = image.getAttribute("src") || "";
       if (!source) return;
-      const delivery = publicImageAttributes(source, 1280, "(max-width: 1000px) calc(100vw - 48px), 880px");
+      const delivery = publicImageAttributes(source, 1280, editorialInlineImageSizes(sourceImageAttributes(image)));
       image.setAttribute("src", delivery.src);
       if (delivery.width && delivery.height) {
         image.width = delivery.width;
         image.height = delivery.height;
         image.dataset.originalSrc = originalImageUrl(source);
+        const ratio = editorialInlineImageAspectRatio(sourceImageAttributes(image), delivery.width, delivery.height);
+        if (ratio) image.style.aspectRatio = ratio;
       }
       if (delivery.srcSet) {
         image.srcset = delivery.srcSet;

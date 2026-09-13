@@ -7,6 +7,12 @@ import { isDeepStrictEqual } from "node:util";
 import { build } from "esbuild";
 import { authorshipRowsFromArchive } from "./lib/book-authorship-roundtrip.mjs";
 import {
+  buildEvidenceV2RegistryRotation,
+  buildEvidenceV2ReviewedWriterReference,
+  buildEvidenceV2DraftWriterReference,
+  evidenceV2RegistryPreflightIdentity,
+} from "./lib/book-evidence-v2-registry-rotation.mjs";
+import {
   BOOK_EVIDENCE_V2_CONTRACT,
   BOOK_EVIDENCE_V2_SCHEMA_VERSION,
   BOOK_EVIDENCE_V2_VALIDATOR_SOURCE_FILES,
@@ -515,6 +521,23 @@ async function preflightDatabaseContract(supabase) {
       );
     }
   }
+  const { data: control, error: controlError } = await supabase
+    .from("literary_work_evidence_v2_controls")
+    .select("singleton,enforcement_enabled,contract_version,validator_id,validator_version,validator_sha256,canon_registry_version,canon_registry_sha256")
+    .eq("singleton", true).single();
+  if (controlError) throw new Error(`Evidence V2 control read failed: ${controlError.message}`);
+  let transitionCapability = null;
+  if (control?.canon_registry_sha256 !== canonRegistrySha256) {
+    const { data, error } = await supabase.rpc("get_literary_work_evidence_v2_registry_transition");
+    if (error) throw new Error(`Evidence V2 registry transition is unavailable: ${error.message}`);
+    transitionCapability = data;
+  }
+  const registryIdentity = evidenceV2RegistryPreflightIdentity(control, {
+    validatorSha256, canonRegistrySha256, canonRegistryVersion: canonRegistry.registryVersion,
+  }, transitionCapability);
+  if (postflightOnly && registryIdentity.rotation) {
+    throw new Error("Archive postflight requires the committed target registry identity.");
+  }
   const { data: evidenceHealth, error: healthRpcError } = await supabase.rpc(
     "assert_literary_work_evidence_v2_health",
     {
@@ -522,7 +545,7 @@ async function preflightDatabaseContract(supabase) {
       p_expected_validator_version: BOOK_EVIDENCE_V2_VALIDATOR_VERSION,
       p_expected_validator_sha256: validatorSha256,
       p_expected_canon_registry_version: canonRegistry.registryVersion,
-      p_expected_canon_registry_sha256: canonRegistrySha256,
+      p_expected_canon_registry_sha256: registryIdentity.activeRegistrySha256,
     }
   );
   if (healthRpcError) {
@@ -586,7 +609,7 @@ async function preflightDatabaseContract(supabase) {
   console.log(
     `Database preflight passed: ${requiredRelations.length} required relations, the exact service-role Evidence V2 contract and the hash RPC are valid; no writes performed.`
   );
-  return evidenceHealth;
+  return { ...evidenceHealth, registryRotation: registryIdentity.rotation };
 }
 
 const { createClient } = await import("@supabase/supabase-js");
@@ -800,7 +823,7 @@ async function fetchUnlockedContentHashes(client, unlockedWorks) {
 const evidenceHealth = await preflightDatabaseContract(supabase);
 const preconditionBefore = await readAtomicPrecondition(supabase);
 const atomicEnableEvidenceV2 =
-  enableEvidenceV2 || evidenceHealth.enforcementEnabled;
+  enableEvidenceV2 || evidenceHealth.enforcementEnabled || Boolean(evidenceHealth.registryRotation);
 if (
   atomicEnableEvidenceV2 &&
   preconditionBefore.cmsLockedUnattestedPredecessorLegacyIds.length
@@ -1053,6 +1076,23 @@ if (atomicEnableEvidenceV2 && unattestedTargetPredecessors.length) {
   );
 }
 
+const reviewedWriterReference = buildEvidenceV2ReviewedWriterReference(releaseItems);
+const draftWriterReference = buildEvidenceV2DraftWriterReference(releaseItems);
+let registryRotation = null;
+if (evidenceHealth.registryRotation) {
+  const { data: snapshot, error } = await supabase.rpc("get_literary_work_evidence_v2_rotation_snapshot");
+  if (error) throw new Error(`Evidence V2 registry snapshot failed: ${error.message}`);
+  registryRotation = buildEvidenceV2RegistryRotation({
+    snapshot,
+    expectedCmsLegacyIds: precondition.cmsLockedPredecessorLegacyIds,
+    releaseItems,
+    canonRegistry,
+    canonRegistrySha256,
+    validatorSha256,
+    issuesForWork: source.bookEvidenceV2Issues,
+  });
+}
+
 const targetManifestSha256 =
   literaryArchiveReleaseTargetManifestSha256(releaseItems);
 const sourceRevision = fullHash(
@@ -1066,6 +1106,9 @@ const sourceRevision = fullHash(
     predecessorExpectation.expectedPredecessorPublicManifestSha256,
     validatorSha256,
     canonRegistrySha256,
+    ...(registryRotation ? [canonicalLiteraryArchiveReleasePayload(registryRotation)] : []),
+    ...(reviewedWriterReference ? [canonicalLiteraryArchiveReleasePayload(reviewedWriterReference)] : []),
+    ...(draftWriterReference ? [canonicalLiteraryArchiveReleasePayload(draftWriterReference)] : []),
     atomicEnableEvidenceV2 ? "enable-evidence-v2" : "preserve-evidence-v2",
   ].join("\n")
 );
@@ -1083,6 +1126,9 @@ const releaseMetadata = {
   targetWorks: releaseItems.length,
   preservedCmsLockedWorks: lockedWorks.length,
   childEditPreservation: precondition.childEditPreservation,
+  ...(registryRotation ? { evidenceV2RegistryRotation: registryRotation } : {}),
+  ...(reviewedWriterReference ? { reviewedWriterReference } : {}),
+  ...(draftWriterReference ? { draftWriterReference } : {}),
 };
 
 console.log(

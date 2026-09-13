@@ -532,7 +532,7 @@ test("глобус загружается только после приближ
   expect(errors).toEqual([]);
 });
 
-test("поиск глобуса сохраняет запрос при ленивой загрузке и не раскрывает непубличную книгу", async ({ page }) => {
+test("поиск глобуса сохраняет запрос при ленивой загрузке и открывает непроверенную книгу с её статусом", async ({ page, isMobile }) => {
   test.setTimeout(90_000);
   await page.route(/\/assets\/countries-[^/?]+\.js(?:\?.*)?$/u, async (route) => {
     await new Promise((resolve) => setTimeout(resolve, 800));
@@ -546,15 +546,24 @@ test("поиск глобуса сохраняет запрос при лени�
   await expect(search).toHaveValue("Морской волк");
   const results = page.locator("#country-results");
   await expect(results).toBeVisible();
-  await expect(
-    page.getByRole("option", { name: /^Морской волк/u })
-  ).toHaveCount(0);
-  await expect(results.getByRole("status")).toHaveText(
-    "Ничего не найдено в выбранной коллекции.",
-    { timeout: 30_000 }
-  );
+  const seaWolf = results.getByRole("option", {
+    name: "Морской волк",
+    exact: true,
+  });
+  await expect(seaWolf).toHaveCount(1, { timeout: 30_000 });
+  await expect(results.getByRole("option")).toHaveCount(1);
+  await expect(seaWolf.locator("small")).toHaveText("Книга · Джек Лондон · Пока не проверено");
   await expect(results).not.toHaveAttribute("aria-busy", "true");
+  await expect(search).toHaveValue("Морской волк");
+  await expect(seaWolf.getByText("Проверено редакцией", { exact: true })).toHaveCount(0);
   await expect(page.locator(".book-detail-copy h3")).toHaveCount(0);
+  if (isMobile) await seaWolf.tap();
+  else await seaWolf.click();
+  const detail = page.locator("#book-archive-detail");
+  await expect(detail).toBeVisible();
+  await expect(detail.getByRole("heading", { name: "Морской волк", exact: true, level: 3 })).toBeVisible();
+  await expect(detail.locator(".book-detail-copy > .section-kicker")).toHaveText("Пока не проверено");
+  await expect(detail.getByText("Проверено редакцией", { exact: true })).toHaveCount(0);
 });
 
 test("режим чтения не имеет горизонтального разрыва и не повторяет рекомендации", async ({ page }) => {

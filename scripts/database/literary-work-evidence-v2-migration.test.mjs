@@ -106,9 +106,13 @@ describe("literary-work Evidence V2 production boundary", () => {
     expect(migration).toContain(
       `default '${validatorSha256}'`
     );
+    // Historical migration bytes keep their original identity. The forward
+    // default is checked against today's canonical registry independently.
     expect(migration).toContain(
-      `default '${canonRegistrySha256}'`
+      "default 'd0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef'"
     );
+    expect(read("supabase/migrations/20260912_literary_work_evidence_v2_registry_rotation.sql"))
+      .toContain(`set default\n    '${canonRegistrySha256}'`);
     expect(migration).toContain(
       `default '${BOOK_EVIDENCE_V2_VALIDATOR_VERSION}'`
     );
@@ -455,7 +459,7 @@ describe("literary-work Evidence V2 production boundary", () => {
     });
 
     expect(review.candidates).toHaveLength(46);
-    expect(review.rejected).toHaveLength(9_715);
+    expect(review.rejected).toHaveLength(9_717);
     expect(failures).toEqual([]);
 
     const lifeOfPi = archive.find(

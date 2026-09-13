@@ -5,10 +5,10 @@
   "completionStatus": "in-progress",
   "countryCoverageStatus": "not-derived-from-authority-jurisdiction-or-source-list-size",
   "summary": {
-    "archiveWorks": 9761,
+    "archiveWorks": 9763,
     "archiveCountries": 191,
-    "controlledAuthorities": 72,
-    "authorityJurisdictions": 12,
+    "controlledAuthorities": 79,
+    "authorityJurisdictions": 13,
     "sourceLists": 3,
     "researchSourceLists": 0,
     "transcribedSourceLists": 3,
@@ -104,6 +104,7 @@
       "england",
       "france",
       "germany",
+      "ireland",
       "norway",
       "poland",
       "russia",
@@ -1276,6 +1277,125 @@
       ],
       "domains": [
         "scholastic.com"
+      ],
+      "markets": [
+        "US"
+      ]
+    },
+    {
+      "authorityId": "centre-international-jules-verne",
+      "provider": "centre-international-jules-verne",
+      "authorityCountryId": "france",
+      "independenceGroup": "centre-international-jules-verne",
+      "tier": "B",
+      "allowedRoles": [
+        "description-fact"
+      ],
+      "domains": [
+        "jules-verne.net"
+      ],
+      "markets": [
+        "FR"
+      ]
+    },
+    {
+      "authorityId": "rvb",
+      "provider": "russian-virtual-library",
+      "authorityCountryId": "russia",
+      "independenceGroup": "russian-virtual-library",
+      "tier": "B",
+      "allowedRoles": [
+        "title-critical-edition",
+        "description-fact"
+      ],
+      "domains": [
+        "rvb.ru"
+      ],
+      "markets": [
+        "RU"
+      ]
+    },
+    {
+      "authorityId": "nyrb",
+      "provider": "new-york-review-books",
+      "authorityCountryId": "usa",
+      "independenceGroup": "new-york-review-books",
+      "tier": "B",
+      "allowedRoles": [
+        "title-publisher",
+        "description-fact"
+      ],
+      "domains": [
+        "nyrb.com"
+      ],
+      "markets": [
+        "US"
+      ]
+    },
+    {
+      "authorityId": "national-library-of-ireland",
+      "provider": "national-library-of-ireland",
+      "authorityCountryId": "ireland",
+      "independenceGroup": "national-library-of-ireland",
+      "tier": "A",
+      "allowedRoles": [
+        "title-national-record",
+        "description-fact"
+      ],
+      "domains": [
+        "nli.ie"
+      ],
+      "markets": [
+        "GB",
+        "IE",
+        "US"
+      ]
+    },
+    {
+      "authorityId": "bunin-museum-yelets",
+      "provider": "bunin-literary-memorial-museum-yelets",
+      "authorityCountryId": "russia",
+      "independenceGroup": "yelets-city-local-history-museum",
+      "tier": "B",
+      "allowedRoles": [
+        "description-fact"
+      ],
+      "domains": [
+        "ar.culture.ru"
+      ],
+      "markets": [
+        "RU"
+      ]
+    },
+    {
+      "authorityId": "alma-books",
+      "provider": "alma-books-bloomsbury",
+      "authorityCountryId": "england",
+      "independenceGroup": "bloomsbury-publishing",
+      "tier": "B",
+      "allowedRoles": [
+        "title-publisher",
+        "description-fact"
+      ],
+      "domains": [
+        "bloomsbury.com"
+      ],
+      "markets": [
+        "GB",
+        "US"
+      ]
+    },
+    {
+      "authorityId": "us-national-park-service",
+      "provider": "united-states-national-park-service",
+      "authorityCountryId": "usa",
+      "independenceGroup": "united-states-national-park-service",
+      "tier": "B",
+      "allowedRoles": [
+        "description-fact"
+      ],
+      "domains": [
+        "nps.gov"
       ],
       "markets": [
         "US"

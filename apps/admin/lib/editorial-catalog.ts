@@ -5,7 +5,11 @@ import {
 import { parseStoredWriterBiographyTranslations } from "./writer-biography-edit";
 
 const EXPECTED_COUNTRY_COUNT = 200;
-const EXPECTED_WRITER_COUNT = 1_684;
+const EXPECTED_WRITER_COUNT = 1_686;
+const BOOK_AUTHOR_REFERENCES: Readonly<Record<string, string>> = {
+  "usa/harriet_beecher_stowe": "Гарриет Бичер-Стоу",
+  "usa/louisa_may_alcott": "Луиза Мэй Олкотт",
+};
 
 export type EditorialCatalogWriter = {
   id: string;
@@ -95,7 +99,16 @@ export function parseEditorialCatalog(source: string): EditorialCatalog {
       const biographies = parseStoredWriterBiographyTranslations(
         writerFields.biographyTranslations
       );
-      if (!biographies.ru) {
+      // These two source-backed book identities have no public biography.
+      // Their exact minimal shape must not let ordinary biography loss pass.
+      const referenceName = BOOK_AUTHOR_REFERENCES[`${id}/${writerId}`];
+      const bookAuthorReference = Boolean(
+        referenceName && writer.label === referenceName &&
+        writerFields.name === referenceName && writerFields.country === "usa" &&
+        writerFields.language === "английский" &&
+        Object.keys(writerFields).sort().join(",") === "country,language,name"
+      );
+      if (!biographies.ru && !bookAuthorReference) {
         throw new Error(
           `Editorial catalog writer is missing structured RU: ${id}/${writerId}`
         );

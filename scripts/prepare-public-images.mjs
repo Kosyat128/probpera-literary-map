@@ -8,6 +8,7 @@ import sharp from "sharp";
 import ts from "typescript";
 import { compactImageDeliveryManifest, partitionImageDeliveryManifest } from "./lib/compact-image-delivery.mjs";
 import { createSerialWriteQueue, writeJsonAtomically } from "./lib/atomic-json-write.mjs";
+import { hasSmallEditorialImageWidth } from "../src/utils/editorialImagePresentation.ts";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const absolute = value => path.resolve(root, value);
@@ -22,6 +23,7 @@ const cacheDirectory = ".tmp/public-images";
 const imageFields = /^(?:image|imageUrl|dzenImageUrl|ogImageUrl|backgroundImageUrl|background_image_url|coverUrl|cover_external_url|portrait|poster|thumbnailUrl)$/iu;
 const rasterOrVector = /\.(?:png|jpe?g|webp|avif|gif|svg|tiff?|bmp)(?:[?#].*)?$/iu;
 const sourceContexts = new Map();
+const smallInlineSources = new Set();
 const argv = process.argv.slice(2);
 const limitArgument = argv.find(value => value.startsWith("--limit="));
 const limit = limitArgument ? Number(limitArgument.split("=")[1]) : Infinity;
@@ -46,19 +48,21 @@ function normalizedImageSource(raw) {
   return source;
 }
 
-function addSource(raw, context) {
+function addSource(raw, context, smallInlineImage = false) {
   const source = normalizedImageSource(raw);
   if (!source) return;
   const contexts = sourceContexts.get(source) || new Set();
   contexts.add(context);
   sourceContexts.set(source, contexts);
+  if (smallInlineImage) smallInlineSources.add(source);
 }
 
 function htmlSources(html, context, collect = addSource) {
   const $ = load(html, {}, false);
   $("img[src],video[poster],image[href]").each((_, node) => {
     const element = $(node);
-    collect(element.attr("src") || element.attr("poster") || element.attr("href"), context);
+    collect(element.attr("src") || element.attr("poster") || element.attr("href"), context,
+      node.tagName === "img" && hasSmallEditorialImageWidth(element.attr()));
   });
   $("[style]").each((_, node) => backgroundSources($(node).attr("style") || "", context, collect));
 }
@@ -86,6 +90,15 @@ export function extractPublicImageReferences(value) {
   return [...references];
 }
 
+export function extractSmallInlineImageReferences(value) {
+  const references = new Set();
+  jsonSources(value, "document", (raw, _context, small) => {
+    const source = normalizedImageSource(raw);
+    if (source && small) references.add(source);
+  });
+  return [...references];
+}
+
 async function walk(directory, accept) {
   const files = [];
   for (const item of await readdir(absolute(directory), { withFileTypes: true })) {
@@ -98,6 +111,7 @@ async function walk(directory, accept) {
 
 export async function collectPublicImageSources() {
   sourceContexts.clear();
+  smallInlineSources.clear();
   const articleFiles = [...await walk("public/articles", name => name.endsWith(".json")), ...await walk("public/cms", name => name.endsWith(".json"))];
   for (const filename of articleFiles) jsonSources(JSON.parse(await readFile(absolute(filename), "utf8")), filename);
   const typedFiles = ["src/App.tsx", "src/components/HeaderArticlesMenu.tsx", "src/data/cms/site.generated.ts"];
@@ -112,7 +126,7 @@ export async function collectPublicImageSources() {
     backgroundSources(source, filename);
   }
   for (const filename of ["src/index.css", ...await walk("src/styles", name => name.endsWith(".css"))]) backgroundSources(await readFile(absolute(filename), "utf8"), filename);
-  return [...sourceContexts].map(([sourceUrl, contexts]) => ({ sourceUrl, contexts: [...contexts].sort() })).sort((a, b) => a.sourceUrl.localeCompare(b.sourceUrl));
+  return [...sourceContexts].map(([sourceUrl, contexts]) => ({ sourceUrl, contexts: [...contexts].sort(), ...(smallInlineSources.has(sourceUrl) ? { smallInlineImage: true } : {}) })).sort((a, b) => a.sourceUrl.localeCompare(b.sourceUrl));
 }
 
 async function seedExistingOriginals() {
@@ -160,8 +174,44 @@ async function sourceBytes(sourceUrl) {
 }
 
 const processing = new Map();
-async function prepareRenditions(bytes, hash) {
-  if (processing.has(hash)) return processing.get(hash);
+export function smallInlineRenditionWidths(source, metadata) {
+  if (!source.smallInlineImage || metadata.format === "svg" || (metadata.pages || 1) > 1) return [];
+  return [160, 320].filter(width => width <= metadata.width && width * metadata.height / metadata.width <= 8192);
+}
+
+export function missingSmallInlineRenditions(source, record) {
+  if (record.flags?.includes("animation-preserved")) return [];
+  return smallInlineRenditionWidths(source, record.source).filter(width => !record.outputs.some(output => output.width === width));
+}
+
+async function encodeRasterRendition(bytes, width) {
+  return sharp(bytes, { limitInputPixels: false }).rotate()
+    .resize({ width, height: 8192, fit: "inside", withoutEnlargement: true })
+    .webp({ quality: 90, effort: 5, smartSubsample: true }).toBuffer({ resolveWithObject: true });
+}
+
+async function saveRendition(buffer, hash, width, height, extension, suffix = `${width}w`) {
+  const src = `media/optimized/${hash.slice(0, 24)}-${suffix}.${extension}`;
+  await writeFile(absolute(`public/${src}`), buffer);
+  return { src, width, height, bytes: buffer.length, sha256: digest(buffer) };
+}
+
+/** Extend a ready checkpoint without rewriting its reviewed large renditions. */
+export async function extendSmallInlineRenditions(source, record, bytes, save = saveRendition) {
+  const widths = missingSmallInlineRenditions(source, record);
+  if (!widths.length) return record;
+  if (digest(bytes) !== record.source.sha256) throw new Error("Source differs from the ready image checkpoint");
+  const outputs = [...record.outputs];
+  for (const width of widths) {
+    const { data, info } = await encodeRasterRendition(bytes, width);
+    outputs.push(await save(data, record.source.sha256, info.width, info.height, "webp"));
+  }
+  return { ...record, outputs: outputs.sort((left, right) => left.width - right.width) };
+}
+
+async function prepareRenditions(bytes, hash, source) {
+  const processingKey = `${hash}:${Boolean(source.smallInlineImage)}`;
+  if (processing.has(processingKey)) return processing.get(processingKey);
   const promise = (async () => {
     const metadata = await sharp(bytes, { limitInputPixels: false }).metadata();
     const native = metadata.autoOrient || metadata;
@@ -176,20 +226,16 @@ async function prepareRenditions(bytes, hash) {
     if (unchanged) flags.push(metadata.format === "svg" ? "vector-preserved" : "animation-preserved");
     const variants = [];
     async function save(buffer, targetWidth, targetHeight, extension, suffix = `${targetWidth}w`) {
-      const src = `media/optimized/${hash.slice(0, 24)}-${suffix}.${extension}`;
-      await writeFile(absolute(`public/${src}`), buffer);
-      return { src, width: targetWidth, height: targetHeight, bytes: buffer.length, sha256: digest(buffer) };
+      return saveRendition(buffer, hash, targetWidth, targetHeight, extension, suffix);
     }
     if (unchanged) {
       const nativeFile = await save(bytes, width, height, format, "original");
       return { width, height, format, hasAlpha: Boolean(metadata.hasAlpha), hasTransparency, flags, variants: [nativeFile], largest: nativeFile };
     }
-    const targets = [...new Set([640, 1280, 1920, ...(!oversized ? [width] : [])].filter(size => size <= width))];
+    const targets = [...new Set([...smallInlineRenditionWidths(source, { ...metadata, width, height }), 640, 1280, 1920, ...(!oversized ? [width] : [])].filter(size => size <= width))];
     if (!targets.length) targets.push(width);
     for (const target of targets.sort((a, b) => a - b)) {
-      const { data, info } = await sharp(bytes, { limitInputPixels: false }).rotate()
-        .resize({ width: target, height: 8192, fit: "inside", withoutEnlargement: true })
-        .webp({ quality: 90, effort: 5, smartSubsample: true }).toBuffer({ resolveWithObject: true });
+      const { data, info } = await encodeRasterRendition(bytes, target);
       if (info.width === width && info.height === height && bytes.length <= data.length) variants.push(await save(bytes, width, height, format, "original"));
       else variants.push(await save(data, info.width, info.height, "webp"));
     }
@@ -197,7 +243,7 @@ async function prepareRenditions(bytes, hash) {
     const largest = variants.toSorted((a, b) => b.width * b.height - a.width * a.height)[0];
     return { width, height, format, hasAlpha: Boolean(metadata.hasAlpha), hasTransparency, flags, variants, largest };
   })();
-  processing.set(hash, promise);
+  processing.set(processingKey, promise);
   return promise;
 }
 
@@ -219,6 +265,34 @@ async function readyCheckpoint(source) {
     await Promise.all(checkpoint.outputs.map(output => stat(absolute(`public/${output.src}`))));
     return { ...checkpoint, contexts: source.contexts, cached: true };
   } catch { return null; }
+}
+
+export async function preparePublicImageRecord(source, {
+  loadCheckpoint = readyCheckpoint,
+  acquire = sourceBytes,
+  storeCheckpoint = (source, record) => atomicJson(`${cacheDirectory}/checkpoints/${digest(source.sourceUrl)}.json`, record),
+} = {}) {
+  const sourceStarted = Date.now();
+  const ready = await loadCheckpoint(source);
+  if (ready && !missingSmallInlineRenditions(source, ready).length) return ready;
+  let record;
+  try {
+    const acquired = await acquire(source.sourceUrl);
+    const hash = digest(acquired.bytes);
+    if (ready) {
+      record = { ...await extendSmallInlineRenditions(source, ready, acquired.bytes), cached: false, downloaded: acquired.downloaded, attempts: acquired.attempts, elapsedMs: Date.now() - sourceStarted };
+    } else {
+      const prepared = await prepareRenditions(acquired.bytes, hash, source);
+      record = { pipelineVersion: 1, sourceUrl: source.sourceUrl, contexts: source.contexts, status: "ready", source: { sha256: hash, bytes: acquired.bytes.length, width: prepared.width, height: prepared.height, format: prepared.format, hasAlpha: prepared.hasAlpha, hasTransparency: prepared.hasTransparency }, largest: prepared.largest, outputs: prepared.variants, flags: prepared.flags, downloaded: acquired.downloaded, attempts: acquired.attempts, elapsedMs: Date.now() - sourceStarted };
+    }
+  } catch (error) {
+    // A thumbnail upgrade must not discard an already reviewed large-image map.
+    // Stop before replacing its checkpoint or publishing a partial runtime.
+    if (ready) throw error;
+    record = { pipelineVersion: 1, sourceUrl: source.sourceUrl, contexts: source.contexts, status: "failed", error: error.message, cause: error.cause?.code, elapsedMs: Date.now() - sourceStarted };
+  }
+  await storeCheckpoint(source, record);
+  return record;
 }
 
 function runtimeEntry(record) {
@@ -263,6 +337,7 @@ async function checkInventory(inventory) {
     const record = known.get(source.sourceUrl);
     if (!record) { errors.push(`Unaccounted source: ${source.sourceUrl}`); continue; }
     if (record.status !== "ready") continue;
+    if (missingSmallInlineRenditions(source, record).length) errors.push(`Missing small inline renditions: ${source.sourceUrl}`);
     if (JSON.stringify(runtime[source.sourceUrl]) !== JSON.stringify(runtimeEntry(record))) errors.push(`Runtime entry differs: ${source.sourceUrl}`);
   }
   const outputs = new Map(report.images.filter(record => record.status === "ready").flatMap(record => record.outputs.map(output => [output.src, output])));
@@ -314,17 +389,7 @@ async function main() {
   async function worker() {
     while (next < selected.length) {
       const source = selected[next++];
-      const sourceStarted = Date.now();
-      let record = await readyCheckpoint(source);
-      if (!record) {
-        try {
-          const acquired = await sourceBytes(source.sourceUrl);
-          const hash = digest(acquired.bytes);
-          const prepared = await prepareRenditions(acquired.bytes, hash);
-          record = { pipelineVersion: 1, sourceUrl: source.sourceUrl, contexts: source.contexts, status: "ready", source: { sha256: hash, bytes: acquired.bytes.length, width: prepared.width, height: prepared.height, format: prepared.format, hasAlpha: prepared.hasAlpha, hasTransparency: prepared.hasTransparency }, largest: prepared.largest, outputs: prepared.variants, flags: prepared.flags, downloaded: acquired.downloaded, attempts: acquired.attempts, elapsedMs: Date.now() - sourceStarted };
-        } catch (error) { record = { pipelineVersion: 1, sourceUrl: source.sourceUrl, contexts: source.contexts, status: "failed", error: error.message, cause: error.cause?.code, elapsedMs: Date.now() - sourceStarted }; }
-        await atomicJson(`${cacheDirectory}/checkpoints/${digest(source.sourceUrl)}.json`, record);
-      }
+      const record = await preparePublicImageRecord(source);
       records.push(record);
       if (records.length % 20 === 0) {
         if (!argv.includes("--quiet")) console.log(JSON.stringify(reportSummary(records, inventory.length, started)));

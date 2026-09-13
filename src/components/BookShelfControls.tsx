@@ -279,6 +279,8 @@ export default function BookShelfControls({
   const searchLabelId = `${controlId}-label`;
   const listboxId = `${controlId}-listbox`;
   const suggestionsRef = useRef<HTMLDivElement>(null);
+  const pointerInteractionRef = useRef(false);
+  const pendingPointerBlurRef = useRef(false);
   const suggestionCount = countSuggestionOptions(suggestions);
   const suggestionsAvailable =
     suggestions !== undefined && suggestions !== null && suggestions !== false;
@@ -287,6 +289,32 @@ export default function BookShelfControls({
     suggestionCount > 0 ? 0 : -1
   );
   const suggestionsOpen = suggestionsAvailable && !suggestionsDismissed;
+
+  useEffect(() => {
+    if (!suggestionsOpen) return;
+    const beginPointer = () => { pointerInteractionRef.current = true; };
+    const finishPointer = () => {
+      pointerInteractionRef.current = false;
+      if (!pendingPointerBlurRef.current) return;
+      pendingPointerBlurRef.current = false;
+      setSuggestionsDismissed(true);
+      setActiveSuggestionIndex(-1);
+    };
+    document.addEventListener("pointerdown", beginPointer, true);
+    document.addEventListener("click", finishPointer, true);
+    document.addEventListener("pointercancel", finishPointer, true);
+    document.addEventListener("keydown", finishPointer, true);
+    window.addEventListener("blur", finishPointer);
+    return () => {
+      document.removeEventListener("pointerdown", beginPointer, true);
+      document.removeEventListener("click", finishPointer, true);
+      document.removeEventListener("pointercancel", finishPointer, true);
+      document.removeEventListener("keydown", finishPointer, true);
+      window.removeEventListener("blur", finishPointer);
+      pointerInteractionRef.current = false;
+      pendingPointerBlurRef.current = false;
+    };
+  }, [suggestionsOpen]);
 
   useEffect(() => {
     setSuggestionsDismissed(false);
@@ -419,6 +447,13 @@ export default function BookShelfControls({
                   nextTarget instanceof Node &&
                   suggestionsRef.current?.contains(nextTarget)
                 ) {
+                  return;
+                }
+                // Keep the results row in place until an outside pointer click
+                // has its target. Removing it on blur can move a book card
+                // between pointerdown and pointerup and discard that click.
+                if (pointerInteractionRef.current) {
+                  pendingPointerBlurRef.current = true;
                   return;
                 }
                 setSuggestionsDismissed(true);

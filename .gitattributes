@@ -3,6 +3,7 @@ public/cms/*.json text eol=lf
 public/cms/articles/*.json text eol=lf
 data/book-canon-snapshots/*.html.bin binary
 apps/admin/lib/*.generated.json text eol=lf
+apps/admin/catalog-assets/*.json text eol=lf
 data/*manifest.json text eol=lf
 reports/*.json text eol=lf
 reports/*.md text eol=lf
@@ -28,3 +29,5 @@ scripts/run-historical-globe-builder.mjs text eol=lf
 scripts/lib/cassini-*.test.mjs text eol=lf
 scripts/lib/historical-globe-proof.test.mjs text eol=lf
 src/data/countries/generated/*.json text eol=lf
+scripts/database/fixtures/book-canon-source-registry-before-r49n.json text eol=lf
+scripts/database/fixtures/wells-editorial-repair-content-20260913.jsonb.txt text eol=lf

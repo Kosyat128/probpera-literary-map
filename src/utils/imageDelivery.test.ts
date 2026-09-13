@@ -27,4 +27,20 @@ describe("public image delivery", () => {
     expect(resolver.url("brand/a.svg")).toBe("/journal/brand/a.svg");
     expect(resolver.url("data:image/png;base64,abcd")).toBe("data:image/png;base64,abcd");
   });
+  it("retains full fallback and book/lightbox resolution when thumbnail variants are added", () => {
+    const withThumbnails = createImageDeliveryResolver({
+      [original]: { src: "media/full.webp", width: 2000, height: 1000, variants: [
+        { src: "media/thumb160.webp", width: 160, height: 80 },
+        { src: "media/thumb320.webp", width: 320, height: 160 },
+        { src: "media/small.webp", width: 640, height: 320 },
+        { src: "media/medium.webp", width: 1280, height: 640 },
+      ] },
+    }, "/journal/");
+    expect(withThumbnails.attributes(original, 1280, "auto, 880px").src).toBe(resolver.attributes(original, 1280).src);
+    expect(withThumbnails.original("/journal/media/thumb160.webp")).toBe(original);
+    expect(withThumbnails.url("/journal/media/thumb160.webp", 1900)).toBe("/journal/media/full.webp");
+    expect(withThumbnails.url(original, 640)).toBe(resolver.url(original, 640));
+    expect(withThumbnails.attributes(original).width).toBe(2000);
+    expect(withThumbnails.attributes(original).height).toBe(1000);
+  });
 });

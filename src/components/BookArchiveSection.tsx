@@ -163,7 +163,7 @@ import {
 } from "../data/cms/homepage";
 import { useReadingLibrary } from "../hooks/useReadingLibrary";
 import { useBookCollections } from "../hooks/useBookCollections";
-import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
+import { selectInterfacePlural, useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import {
   articlePath,
   navigateToArticle,
@@ -2022,6 +2022,11 @@ export default function BookArchiveSection({
 
   const visibleItems = filteredItems.slice(0, visibleCount);
   const coreBookArchive = getCoreHomepageSection("book-archive");
+  const legacyLibraryDescription = "Произведения связаны с карточками писателей и литературными традициями стран. Расширенные сведения публикуются только после редакционной проверки.";
+  const fullLibraryDescription = "Полный каталог произведений и готовые аннотации. У каждой карточки указан статус редакционной проверки.";
+  const libraryDescription = coreBookArchive?.description && coreBookArchive.description !== legacyLibraryDescription
+    ? coreBookArchive.description
+    : fullLibraryDescription;
   const collectionSceneSettings = useMemo(() => {
     const collection = collectionShelfSelection.activeOption.collection;
     if (!collection) return coreBookArchive?.visualSettings;
@@ -2831,6 +2836,9 @@ export default function BookArchiveSection({
         verified && selectedBookText.description
           ? { value: selectedBookText.description, verified: true }
           : undefined,
+      catalogSynopsis: !verified && selectedBookText.descriptionSource === "candidate-translation"
+        ? { value: selectedBookText.description, reviewStatus: "pending" }
+        : undefined,
       sourceRights,
     });
   }, [
@@ -3647,7 +3655,7 @@ export default function BookArchiveSection({
   }
   for (const status of filterState.editorialStatuses) {
     const label =
-      status === "verified" ? t("Проверено редакцией") : t("Не проверено");
+      status === "verified" ? t("Проверено редакцией") : t("Пока не проверено");
     pushChip("status:" + status, label, () =>
       updateFilterState({
         editorialStatuses: filterState.editorialStatuses.filter(
@@ -3835,7 +3843,7 @@ export default function BookArchiveSection({
               navigationIndex + 1
             )} ${t("из")} ${number(navigationCount)}. ${
               collectionShelfSelection.activeOption.title
-            }. ${number(filteredItems.length)} ${t("результатов")}.`
+            }. ${number(filteredItems.length)} ${t(selectInterfacePlural(filteredItems.length, language, ["результат", "результата", "результатов"]))}.`
           : t("В архиве нет книг по выбранным условиям");
 
   return (
@@ -3885,21 +3893,22 @@ export default function BookArchiveSection({
             {...cmsCoreFieldMarker(
               "book-archive",
               "description",
-              coreBookArchive?.description ||
-                "Произведения связаны с карточками писателей и литературными традициями стран. Расширенные сведения публикуются только после редакционной проверки.",
+              libraryDescription,
               { kind: "textarea", label: "Описание библиотеки" }
             )}
           >
-            {language === "ru" && coreBookArchive?.description
-              ? coreBookArchive.description
-              : t(
-                  "Произведения связаны с карточками писателей и литературными традициями стран. Расширенные сведения публикуются только после редакционной проверки."
-                )}
+            {language === "ru" ? libraryDescription : t(fullLibraryDescription)}
           </p>
         </div>
         <div className="book-archive-total">
           <strong>{number(queue.counts.total)}</strong>
           <span>{t("произведений из единой базы стран")}</span>
+          <span className="book-archive-reviewed-count" data-count={queue.counts.verified}>
+            {number(queue.counts.verified)} · {t("Проверено редакцией")}
+          </span>
+          <span className="book-archive-pending-count" data-count={queue.counts.pending}>
+            {number(queue.counts.pending)} · {t("Пока не проверено")}
+          </span>
         </div>
       </header>
 
@@ -4039,7 +4048,7 @@ export default function BookArchiveSection({
               setRandomAnnouncement("");
               applyQuickFilter(id as BookArchiveQuickPreset);
             }}
-            resultCountLabel={`${number(filteredItems.length)} ${t("результатов")}`}
+            resultCountLabel={`${number(filteredItems.length)} ${t(selectInterfacePlural(filteredItems.length, language, ["результат", "результата", "результатов"]))}`}
             formatCount={number}
             onOpenAdvancedFilters={openAdvancedFilters}
             advancedFiltersLabel={t("Расширенные фильтры")}
@@ -4234,7 +4243,7 @@ export default function BookArchiveSection({
             <span className="section-kicker">
               {selectedItem?.status === "verified"
                 ? t("Проверено редакцией")
-                : t("Не проверено")}
+                : t("Пока не проверено")}
             </span>
             <h3
               {...cmsBookFieldAttributes(
@@ -4838,8 +4847,8 @@ export default function BookArchiveSection({
                   className={`editorial-state is-${item.status === "verified" ? "verified" : "draft"}`}
                 >
                   {item.status === "verified"
-                    ? t("проверено")
-                    : t("Не проверено")}
+                    ? t("Проверено редакцией")
+                    : t("Пока не проверено")}
                 </span>
                 <button
                   className={
@@ -5348,7 +5357,7 @@ export default function BookArchiveSection({
                         <span>
                           {status === "verified"
                             ? t("Проверено редакцией")
-                            : t("Не проверено")}
+                            : t("Пока не проверено")}
                         </span>
                       </label>
                     ))}

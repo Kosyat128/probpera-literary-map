@@ -37,6 +37,9 @@ import { applyBookEvidenceV2PublicHolds01Work } from "./countries/bookEvidenceV2
 import { applyBookEvidenceV2PublicQuarantine01Work } from "./countries/bookEvidenceV2PublicQuarantine01";
 import { applyBookEvidenceV2ExpansionBatch01Work } from "./countries/bookEvidenceV2ExpansionBatch01";
 import { applyBookEvidenceV2LegacyVerifiedReaudit01Work } from "./countries/bookEvidenceV2LegacyVerifiedReaudit01";
+import { applyBookR49nDickensReviewed20260912Work } from "./countries/bookR49nDickensReviewed20260912";
+import { applyBookR49nExistingReviewed20260912Work } from "./countries/bookR49nExistingReviewed20260912";
+import { applyBookR49nRetainedDrafts20260912Work } from "./countries/bookR49nRetainedDrafts20260912";
 
 export type BookArchiveEntry = WorkProfile & {
   countryId: string;
@@ -171,6 +174,8 @@ function legacyWorkId(writerId: string, title: string, index: number) {
 
 export type BuildBookArchiveOptions = {
   includeReviewedGenerated?: boolean;
+  /** Keep enrichment classification independent of the later R49N catalogue. */
+  includeR49nCatalog?: boolean;
   applyEnrichmentActions?: boolean;
   includeUserSuppliedCovers?: boolean;
   writerProfileOverrides?: Record<string, CmsWriterProfileOverride>;
@@ -614,6 +619,7 @@ export function buildBookArchive(
   options: BuildBookArchiveOptions = {}
 ): BookArchiveEntry[] {
   const includeReviewedGenerated = options.includeReviewedGenerated !== false;
+  const includeR49nCatalog = options.includeR49nCatalog !== false;
   const shouldApplyEnrichmentActions = options.applyEnrichmentActions !== false;
   const includeUserSuppliedCovers = options.includeUserSuppliedCovers !== false;
   const writerProfileOverrides =
@@ -625,8 +631,12 @@ export function buildBookArchive(
         writer,
         writerProfileOverrides
       );
+      const cmsWorks = cmsLiteraryWorkProfilesForWriter(country.id, writer.id);
+      const publicCmsWorkIds = new Set(
+        cmsWorks.filter(isPublicBook).map((work) => work.id)
+      );
       const candidateGroups = [
-        cmsLiteraryWorkProfilesForWriter(country.id, writer.id),
+        cmsWorks,
         includeReviewedGenerated
           ? reviewedBooksForWriter(country.id, writer.id)
           : [],
@@ -706,12 +716,44 @@ export function buildBookArchive(
             )
           )
         );
+        const reviewedWork = applyBookR49nDickensReviewed20260912Work(
+          country.id,
+          writer.id,
+          expandedWork
+        );
+        const recoveredWork = applyBookR49nExistingReviewed20260912Work(
+          country.id,
+          writer.id,
+          reviewedWork
+        );
+        // A published CMS edit keeps priority over the retained R49N draft.
+        // The exact ID is scoped to this writer; final holds still run below.
+        const retainedDraftWork = publicCmsWorkIds.has(recoveredWork.id)
+          ? recoveredWork
+          : applyBookR49nRetainedDrafts20260912Work(
+              country.id,
+              writer.id,
+              recoveredWork
+            );
+        // Keep the reviewed Wells CMS edition after the older static synopsis
+        // overlays. Require exported V2 metadata so the older CMS snapshot
+        // still uses the reviewed fallback; strict release validation remains.
+        const reviewedWellsCmsWork =
+          country.id === "england" && writer.id === "h_g_wells" &&
+          candidate.id === "when-the-sleeper-wakes" && publicCmsWorkIds.has(candidate.id)
+            ? cmsWorks.find((cmsWork) =>
+                cmsWork.id === candidate.id && isPublicBook(cmsWork) &&
+                cmsWork.localizedTitles?.ru && cmsWork.localizedTitles?.en &&
+                cmsWork.translations?.ru?.titleEvidence && cmsWork.translations?.en?.titleEvidence &&
+                cmsWork.translations.ru.descriptionProvenance && cmsWork.translations.en.descriptionProvenance
+              )
+            : undefined;
         // Final publication guard: keep this after every public/expansion
         // overlay so a later enrichment cannot re-promote a held legacy card.
         const work = applyBookEvidenceV2LegacyVerifiedReaudit01Work(
           country.id,
           writer.id,
-          expandedWork
+          reviewedWellsCmsWork || (includeR49nCatalog ? retainedDraftWork : expandedWork)
         );
         const workId = `${country.id}:${writer.id}:${work.id}`;
         const edition = (

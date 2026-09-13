@@ -4,6 +4,33 @@ const imageFits = new Set(["contain", "cover"]);
 const imageAppearances = new Set(["clean", "frame", "shadow"]);
 const imageReveals = new Set(["none", "fade-up", "zoom"]);
 
+export const articleImageFallbackSizes = "(max-width: 1000px) calc(100vw - 48px), 880px";
+
+/** Only explicitly authored, valid small widths request extra thumbnail files. */
+export function hasSmallEditorialImageWidth(attributes: Record<string, string | undefined>) {
+  return /^(?:[2-4]\d|50)$/u.test((attributes["data-image-width"] || "").trim());
+}
+
+export function editorialInlineImageSizes(attributes: Record<string, string | undefined>) {
+  // These images are lazy and have intrinsic dimensions. HTML auto-sizes uses
+  // their actual CSS slot, including frame padding, with the existing fallback.
+  // https://html.spec.whatwg.org/dev/images.html#sizes-attributes
+  return hasSmallEditorialImageWidth(attributes)
+    ? `auto, ${articleImageFallbackSizes}`
+    : articleImageFallbackSizes;
+}
+
+export function editorialInlineImageAspectRatio(
+  attributes: Record<string, string | undefined>, width: number, height: number
+) {
+  if (!hasSmallEditorialImageWidth(attributes) ||
+      normalizeEditorialImagePublicAttributes(attributes).aspect !== "auto" ||
+      !Number.isFinite(width) || !Number.isFinite(height) || width <= 0 || height <= 0) return undefined;
+  // auto-sizes contains intrinsic size; keep the native ratio when the existing
+  // authored "auto" CSS would otherwise fall back to a 150px intrinsic height.
+  return `${width} / ${height}`;
+}
+
 export const editorialImageDataAttributes = [
   "data-media-id",
   "data-caption",

@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "id": "BOOK-R49N-DICKENS-EDITORIAL-20260912",
+  "authorizedOn": "2026-09-12",
+  "authorization": "Owner requested independent editorial completion and publication of the latest user-supplied BOOK_DATABASE_FULL_R49N_20260912.zip. This attestation covers only the ten individually reviewed Dickens records and their existing archive hook.",
+  "humanReview": false,
+  "aiReviewer": "Codex AI /root/article_counts (independent editorial review)",
+  "baselineSourceCommitSha": "61169576b38a250415060348b5bae96f57d3ffae",
+  "inputArchiveSha256": "977f25072022cb7275242b030836326f8f30c97423697b60081859d8ce17fb69",
+  "inputMasterSha256": "f441344f6b4367684c8f5ec39f746f12c079ff05e5130b3183e06bab7c359674",
+  "editorialReview": {
+    "path": "reports/book-r49n-dickens-reviewed-20260912.json",
+    "projection": "records.{recordKey,masterRecordSha256,recommendedTexts,sourceReadings,preservedOriginalDescriptionProvenance,firstPublicationReview,application}",
+    "canonicalJsonSha256": "66b58b94a3e9abd73fb2affd30f460c999231b412b0499fbc821358ad666d6f9"
+  },
+  "textHashProfile": "sha256-utf8-with-crlf-and-cr-normalized-to-lf",
+  "allowedProjectionPaths": [
+    "src/data/bookArchive.ts"
+  ],
+  "sourceBaselines": {
+    "src/data/bookArchive.ts": "158ede420f615ebbee2a5405267d3db2061e3197bac25e240dc9491fc43b5f9e"
+  },
+  "additions": [
+    {
+      "path": "src/data/countries/bookR49nDickensReviewed20260912.ts",
+      "sha256": "7d6e7f67e68cd547f7db6f688bab92b341635a9b6a58beadb99a5b7bf1277bff",
+      "recordKeys": [
+        "england:charles_dickens:article-series-1tdjfsi",
+        "england:charles_dickens:david-copperfield-editorial",
+        "england:charles_dickens:great-expectations",
+        "england:charles_dickens:oliver-twist-editorial",
+        "england:charles_dickens:openlibrary-works-ol13114895w",
+        "england:charles_dickens:openlibrary-works-ol14868510w",
+        "england:charles_dickens:openlibrary-works-ol14869167w",
+        "england:charles_dickens:openlibrary-works-ol32466w",
+        "england:charles_dickens:openlibrary-works-ol8193387w",
+        "england:charles_dickens:openlibrary-works-ol8300174w"
+      ]
+    }
+  ],
+  "projections": [
+    {
+      "id": "r49n-dickens-overlay-import",
+      "path": "src/data/bookArchive.ts",
+      "before": "import { applyBookEvidenceV2LegacyVerifiedReaudit01Work } from \"./countries/bookEvidenceV2LegacyVerifiedReaudit01\";\n",
+      "after": "import { applyBookEvidenceV2LegacyVerifiedReaudit01Work } from \"./countries/bookEvidenceV2LegacyVerifiedReaudit01\";\nimport { applyBookR49nDickensReviewed20260912Work } from \"./countries/bookR49nDickensReviewed20260912\";\n"
+    },
+    {
+      "id": "r49n-dickens-before-final-legacy-guard",
+      "path": "src/data/bookArchive.ts",
+      "before": "        // Final publication guard: keep this after every public/expansion\n        // overlay so a later enrichment cannot re-promote a held legacy card.\n        const work = applyBookEvidenceV2LegacyVerifiedReaudit01Work(\n          country.id,\n          writer.id,\n          expandedWork\n        );\n",
+      "after": "        const reviewedWork = applyBookR49nDickensReviewed20260912Work(\n          country.id,\n          writer.id,\n          expandedWork\n        );\n        // Final publication guard: keep this after every public/expansion\n        // overlay so a later enrichment cannot re-promote a held legacy card.\n        const work = applyBookEvidenceV2LegacyVerifiedReaudit01Work(\n          country.id,\n          writer.id,\n          reviewedWork\n        );\n"
+    }
+  ],
+  "runtime": {
+    "hashProfile": "sha256-recursively-key-sorted-json; aggregates are sorted key + NUL + recordSha256 + LF",
+    "canonicalCount": 9761,
+    "canonicalKeysSha256": "4809678e8a9b2621b09a470b9eb65e11cb9981ddc9be0afec6415e8c0719e3a9",
+    "nonTargetCount": 9751,
+    "nonTargetRecordsSha256": "4fab28fd739e35c781789799158b6680ce1037a20fbef904d85928204e6c9588",
+    "protectedTargetFields": [
+      "id",
+      "title",
+      "sourceUrl",
+      "authorship",
+      "alternateTitles",
+      "genres",
+      "tags",
+      "externalIds",
+      "distinctions",
+      "canon",
+      "coverUrl",
+      "coverThumbnailUrl",
+      "coverSourceUrl",
+      "coverRights",
+      "edition"
+    ],
+    "protectedTargetFieldsSha256": "da89e96185d113d5497205b305e8766f50e30e6a99fddc6d82d6f2818c7cd946",
+    "beforeReadyCount": 46,
+    "beforeReadyKeys": [
+      "austria:franz_kafka:openlibrary-works-ol498556w",
+      "canada:margaret_atwood:openlibrary-works-ol675783w",
+      "canada:yann_martel:life-of-pi",
+      "england:aldous_huxley:brave-new-world-editorial",
+      "england:charles_dickens:a-tale-of-two-cities",
+      "england:david_mitchell:ghostwritten",
+      "england:david_mitchell:number9dream",
+      "england:david_mitchell:slade-house",
+      "england:david_mitchell:the-bone-clocks",
+      "england:david_mitchell:the-thousand-autumns-of-jacob-de-zoet",
+      "england:george_orwell:animal-farm-editorial",
+      "england:george_orwell:nineteen-eighty-four",
+      "england:h_g_wells:ann-veronica",
+      "england:h_g_wells:men-like-gods",
+      "england:h_g_wells:the-first-men-in-the-moon",
+      "england:h_g_wells:the-food-of-the-gods",
+      "england:h_g_wells:the-history-of-mr-polly",
+      "england:h_g_wells:the-world-set-free",
+      "england:h_g_wells:when-the-sleeper-wakes",
+      "england:j_r_r_tolkien:openlibrary-works-ol27448w",
+      "england:j_r_r_tolkien:the-hobbit",
+      "england:jane_austen:pride-and-prejudice",
+      "england:john_galsworthy:the-forsyte-saga",
+      "england:william_shakespeare:hamlet",
+      "france:flaubert:madame-bovary",
+      "france:saint_exupery:openlibrary-works-ol10263w",
+      "france:victor_hugo:les-miserables",
+      "germany:thomas_mann:buddenbrooks-editorial",
+      "norway:knut_hamsun:growth-of-the-soil",
+      "poland:wladyslaw_reymont:the-peasants",
+      "russia:chekhov:the-black-monk",
+      "russia:chekhov:the-duel",
+      "russia:chekhov:the-lady-with-the-dog",
+      "russia:chekhov:the-man-in-a-case",
+      "russia:chekhov:uncle-vanya",
+      "russia:dostoevsky:crime-and-punishment",
+      "russia:tolstoy:war-and-peace",
+      "spain:miguel_de_cervantes:openlibrary-works-ol15272537w",
+      "usa:ernest_hemingway:the-old-man-and-the-sea",
+      "usa:francis_scott_fitzgerald:the-great-gatsby",
+      "usa:harper_lee:to-kill-a-mockingbird-editorial",
+      "usa:herman_melville:moby-dick",
+      "usa:jerome_david_salinger:the-catcher-in-the-rye-editorial",
+      "usa:ray_bradbury:fahrenheit-451-editorial",
+      "usa:suzanne_collins:the-hunger-games",
+      "usa:vladimir_nabokov:lolita-editorial"
+    ],
+    "newReadyKeys": [
+      "england:charles_dickens:article-series-1tdjfsi",
+      "england:charles_dickens:david-copperfield-editorial",
+      "england:charles_dickens:great-expectations",
+      "england:charles_dickens:oliver-twist-editorial",
+      "england:charles_dickens:openlibrary-works-ol13114895w",
+      "england:charles_dickens:openlibrary-works-ol14868510w",
+      "england:charles_dickens:openlibrary-works-ol14869167w",
+      "england:charles_dickens:openlibrary-works-ol32466w",
+      "england:charles_dickens:openlibrary-works-ol8193387w",
+      "england:charles_dickens:openlibrary-works-ol8300174w"
+    ],
+    "afterReadyCount": 56,
+    "registryModified": false,
+    "evidenceValidatorsModified": false
+  }
+}

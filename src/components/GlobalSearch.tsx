@@ -414,8 +414,8 @@ export default function GlobalSearch({
                       {selectBookWriterName(book, language, t("Автор"))} ·{" "}
                       {countryName(book.country.code, book.countryName)} ·{" "}
                       {isPublicBook(book)
-                        ? t("проверено")
-                        : t("Не проверено")}
+                        ? t("Проверено редакцией")
+                        : t("Пока не проверено")}
                     </small>
                   </button>
                 ))}

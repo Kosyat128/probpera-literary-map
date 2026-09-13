@@ -598,7 +598,6 @@ export function createGlobalSearchIndex({
   }
 
   for (const book of books) {
-    if (!isPublicBook(book)) continue;
     const displayedBook = presentBookArchiveEntry(book, language);
     const writerName = selectBookWriterName(
       book,
@@ -609,11 +608,11 @@ export function createGlobalSearchIndex({
       book.country.code,
       book.countryName
     );
-    const verifiedMetadata = [
+    const verifiedMetadata = isPublicBook(book) ? [
       displayedBook.description,
       selectBookOriginalLanguage(book, language),
       ...selectBookMetadataLabels(book, language, translate),
-    ];
+    ] : [displayedBook.description];
     const key = bookArchiveKey(
       book.countryId,
       book.writerId,
