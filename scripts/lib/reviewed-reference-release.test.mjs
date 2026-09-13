@@ -16,11 +16,12 @@ const protectedPaths = [
   ".github/workflows/reconcile-production-database.yml",
   "scripts/database/build-production-migration-plan.mjs",
   "scripts/sync-literary-archive.mjs",
+  "tests/e2e/archive-search-calendar.spec.mjs",
 ];
 
 describe("September 14 additive canonical-reference release governance", () => {
   it("pins a separate maintenance review against the published main boundary", () => {
-    expect(sha(JSON.stringify(referenceReleaseAttestation))).toBe("3957434c003c6be362b8dc30559490e1c3530aaaa81aaa4e47eb18724e6aa379");
+    expect(sha(JSON.stringify(referenceReleaseAttestation))).toBe("aefcfd1e1ad3d9e8aaabf3c6079749da0f7cae3bb99f70ccfbbca9c6998b1395");
     expect(referenceReleaseAttestation).toMatchObject({
       id: "LIBRARY-REFERENCE-RELEASE-20260914",
       baselineSourceCommitSha: "3cf9060888cb95cfe900cf695bf2666f4c93590a",
@@ -88,6 +89,14 @@ describe("September 14 additive canonical-reference release governance", () => {
       expect(projectReviewedReferenceRelease(path, text)).toBe(text);
       expect(projectReviewedReferenceRelease(path, text + "changed\n")).toBe(text + "changed\n");
     }
+  });
+
+  it("extends only the diagnosed desktop 3D case budget and preserves every existing assertion", () => {
+    const path = "tests/e2e/archive-search-calendar.spec.mjs";
+    const current = read(path), previous = projectReviewedReferenceRelease(path, current);
+    const anchor = '  test.skip(Boolean(isMobile), "One real 3D rendering contract; bilingual mobile text is covered above");\n';
+    expect(previous.split(anchor)).toHaveLength(2);
+    expect(current).toBe(previous.replace(anchor, anchor + "  test.setTimeout(90_000);\n"));
   });
 
   it("binds the exact reviewed implementation and records no production completion claim", () => {

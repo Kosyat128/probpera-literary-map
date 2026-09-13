@@ -8,6 +8,8 @@ import {
 import { projectReviewedReferenceRelease } from "./reviewed-reference-release.mjs";
 
 const read = path => readFileSync(path, "utf8").replace(/\r\n?/gu, "\n");
+const readPublishedBrowserContract = path => path === "tests/e2e/archive-search-calendar.spec.mjs"
+  ? projectReviewedReferenceRelease(path, read(path)) : read(path);
 const sha = value => createHash("sha256").update(value).digest("hex");
 const canonical = value => Array.isArray(value) ? value.map(canonical)
   : value && typeof value === "object"
@@ -179,11 +181,11 @@ describe("R49N common package additive governance", () => {
     expect(hyphens).toMatchObject({ runtimeTextChanged: false, importedSourceBytesChanged: false, historicalPinsChanged: false, focusedTestsPassed: 13 });
     expect(hyphens.protectedFiles).toHaveLength(9);
     for (const file of [...hyphens.protectedFiles, ...hyphens.files, ...hyphens.literalSerialization])
-      expect(sha(read(file.path))).toBe(file.sha256Lf);
+      expect(sha(readPublishedBrowserContract(file.path))).toBe(file.sha256Lf);
     expect(report.compactEditorialImageRepair.files).toHaveLength(8);
     for (const file of report.compactEditorialImageRepair.files)
       expect(sha(read(file.path))).toBe(file.sha256Lf);
-    for (const file of report.fullCatalogUi.files) expect(sha(read(file.path))).toBe(file.sha256Lf);
+    for (const file of report.fullCatalogUi.files) expect(sha(readPublishedBrowserContract(file.path))).toBe(file.sha256Lf);
     expect(report.historicalCoverChecks).toMatchObject({ status: "PASS", checkOnly: true, newCoverPublication: false, coverAssetsChanged: [] });
     for (const file of report.historicalCoverChecks.unchangedFiles) expect(sha(read(file.path))).toBe(file.sha256);
     expect(report.adminCatalogCompatibility.publicBiographyApprovalGranted).toBe(false);

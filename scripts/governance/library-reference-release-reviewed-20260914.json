@@ -6,19 +6,22 @@
     ".github/workflows/dispatch-premium-database-reconciliation.yml",
     ".github/workflows/reconcile-production-database.yml",
     "scripts/database/build-production-migration-plan.mjs",
-    "scripts/sync-literary-archive.mjs"
+    "scripts/sync-literary-archive.mjs",
+    "tests/e2e/archive-search-calendar.spec.mjs"
   ],
   "sourceBaselines": {
     ".github/workflows/dispatch-premium-database-reconciliation.yml": "58d587697881e3869a74eb0e110d49b984c2c1015a20c41048ea836a90151be7",
     ".github/workflows/reconcile-production-database.yml": "204183f53a25c0d81f1ff78e92ed405a37616c6a95d9a57a2f9e1068814d349a",
     "scripts/database/build-production-migration-plan.mjs": "48b7c4d8f744c9dc78bd0e5f73b5957c399a309af97dd44c6589724bcda02dad",
-    "scripts/sync-literary-archive.mjs": "bdc784a760f5a9357bdf6455709c57d4cfb40df057da604d53b2f7e50440a280"
+    "scripts/sync-literary-archive.mjs": "bdc784a760f5a9357bdf6455709c57d4cfb40df057da604d53b2f7e50440a280",
+    "tests/e2e/archive-search-calendar.spec.mjs": "359ba1f24e5343aae6a055fc9733a003af916b2e8bae891f45c2c5d49aa35e01"
   },
   "reviewedSourceSha256": {
     ".github/workflows/dispatch-premium-database-reconciliation.yml": "dce6827e97de091bbb1d663e30f1a85f15961abc9e5a519c064f3652f4bc6420",
     ".github/workflows/reconcile-production-database.yml": "5305f0871f0b67d511af98e6b5a6bbad703191e35b05023ea012b67d316a1c94",
     "scripts/database/build-production-migration-plan.mjs": "9adab9675a61c87472871fbcaf290700e55694c843061de2712a6ff1467dfa0f",
-    "scripts/sync-literary-archive.mjs": "504e0dd612b4f0a42e95f726fbdd185227f6ce64c06d0bb11761e8b14e4be0b1"
+    "scripts/sync-literary-archive.mjs": "504e0dd612b4f0a42e95f726fbdd185227f6ce64c06d0bb11761e8b14e4be0b1",
+    "tests/e2e/archive-search-calendar.spec.mjs": "9a1e441ac653ae239a7e0515697f6022c0ab8f75850838b93ef39ee4c2a9fe8e"
   },
   "historicalArtifacts": [
     {
@@ -194,7 +197,7 @@
   ],
   "reviewedReport": {
     "path": "reports/library-reference-release-reviewed-20260914.json",
-    "sha256Lf": "59fc1d2bfad443020893e7ce9a76a77bf87901548681079a4a2449be6ca0361d"
+    "sha256Lf": "66d4df9bea22d58a8e6ff3f68ec057c97faa62b2340103840c11a3817935dd8d"
   },
   "projections": [
     {
@@ -262,6 +265,12 @@
       "path": "scripts/sync-literary-archive.mjs",
       "before": "  preservedCmsLockedWorks: lockedWorks.length,\n  childEditPreservation: precondition.childEditPreservation,\n  ...(registryRotation ? { evidenceV2RegistryRotation: registryRotation } : {}),\n  ...(reviewedWriterReference ? { reviewedWriterReference } : {}),\n  ...(draftWriterReference ? { draftWriterReference } : {}),\n};\n\nconsole.log(\n  `Atomic target verified: ${releaseItems.length} unlocked works, ${lockedWorks.length} CMS-locked works preserved, ${targetPredecessorLegacyIds.length} target predecessor-public works, staging manifest ${targetManifestSha256}, logical target manifest ${logicalTargetManifestSha256}.`\n);\n",
       "after": "  preservedCmsLockedWorks: lockedWorks.length,\n  childEditPreservation: precondition.childEditPreservation,\n  ...(registryRotation ? { evidenceV2RegistryRotation: registryRotation } : {}),\n  ...(reviewedWriterReference ? { reviewedWriterReference } : {}),\n  ...(draftWriterReference ? { draftWriterReference } : {}),\n  referenceCatalog,\n};\n\nconsole.log(\n  `Atomic target verified: ${releaseItems.length} unlocked works, ${lockedWorks.length} CMS-locked works preserved, ${targetPredecessorLegacyIds.length} target predecessor-public works, staging manifest ${targetManifestSha256}, logical target manifest ${logicalTargetManifestSha256}.`\n);\n"
+    },
+    {
+      "id": "REFERENCE-RELEASE-012",
+      "path": "tests/e2e/archive-search-calendar.spec.mjs",
+      "before": "  });\n}\n\ntest(\"3D-книга показывает готовую аннотацию с отметкой о непроверенном статусе\", async ({ page, isMobile }) => {\n  test.skip(Boolean(isMobile), \"One real 3D rendering contract; bilingual mobile text is covered above\");\n  await page.addInitScript(`(${installObservers.toString()})(); window.__REACT_DEVTOOLS_GLOBAL_HOOK__.renderers = new Map();`);\n  await page.goto(\"/#books\");\n  const search = page.locator(\".book-shelf-controls input[role=combobox]\");\n  await expect(search).toBeVisible({ timeout: 20_000 });\n  await search.fill(\"Маленькие женщины\");\n",
+      "after": "  });\n}\n\ntest(\"3D-книга показывает готовую аннотацию с отметкой о непроверенном статусе\", async ({ page, isMobile }) => {\n  test.skip(Boolean(isMobile), \"One real 3D rendering contract; bilingual mobile text is covered above\");\n  test.setTimeout(90_000);\n  await page.addInitScript(`(${installObservers.toString()})(); window.__REACT_DEVTOOLS_GLOBAL_HOOK__.renderers = new Map();`);\n  await page.goto(\"/#books\");\n  const search = page.locator(\".book-shelf-controls input[role=combobox]\");\n  await expect(search).toBeVisible({ timeout: 20_000 });\n  await search.fill(\"Маленькие женщины\");\n"
     }
   ]
 }

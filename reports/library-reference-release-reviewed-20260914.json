@@ -1,6 +1,6 @@
 {
   "id": "LIBRARY-REFERENCE-RELEASE-20260914",
-  "reviewedAt": "2026-09-13T22:40:19.783Z",
+  "reviewedAt": "2026-09-13T22:49:56.222Z",
   "baselineSourceCommitSha": "3cf9060888cb95cfe900cf695bf2666f4c93590a",
   "humanReview": false,
   "productionApplied": false,
@@ -59,6 +59,50 @@
       "matched": 289,
       "drift": []
     }
+  },
+  "browserCaseBudget": {
+    "path": "tests/e2e/archive-search-calendar.spec.mjs",
+    "sourceCommitSha": "3cf9060888cb95cfe900cf695bf2666f4c93590a",
+    "runId": 34785299322,
+    "lane": "webgl-1",
+    "traceReceipt": {
+      "path": ".tmp/main-little-women-traces-20260914/compact-timeline.json",
+      "sha256Lf": "888c1408e9a77299b3088482126830e34b7129a5c1c3d7254ac20b9381f3631a"
+    },
+    "attempts": [
+      {
+        "attempt": "initial",
+        "readinessMilliseconds": 17,
+        "bookOpenCompletedAtMilliseconds": 37196,
+        "nextSectionClickCompletedAtMilliseconds": 44997,
+        "error": "Test timeout of 45000ms exceeded."
+      },
+      {
+        "attempt": "retry1",
+        "readinessMilliseconds": 12,
+        "bookOpenCompletedAtMilliseconds": 38990,
+        "nextSectionClickCompletedAtMilliseconds": 45803,
+        "error": "Test timeout of 45000ms exceeded."
+      }
+    ],
+    "change": "Add only test.setTimeout(90_000) after the existing mobile skip for the Little Women 3D case.",
+    "previousWholeCaseBudgetMilliseconds": 45000,
+    "reviewedWholeCaseBudgetMilliseconds": 90000,
+    "assertionsChanged": false,
+    "perAssertionTimeoutsChanged": false,
+    "readinessChanged": false,
+    "applicationRuntimeChanged": false,
+    "localCase": {
+      "passed": 1,
+      "project": "desktop-chromium",
+      "workers": 1,
+      "retries": 0,
+      "durationSeconds": 13.4,
+      "snapshot": ".tmp/sea-wolf-catalogue-dist",
+      "evidence": ".tmp/little-women-budget-browser-20260914.log",
+      "limitation": "Focused case against an existing local dist snapshot; integrated release CI remains required."
+    },
+    "limitation": "Both traces report exhaustion of the global case budget after a successful single click and book opening. The underlying CI slowdown remains unproven; this does not claim a runtime performance improvement."
   },
   "validation": {
     "status": "Source review, independent historical git-blob provenance and local in-memory SQL fixture complete; deployment remains separate release evidence.",
@@ -139,7 +183,7 @@
     },
     {
       "path": "scripts/lib/reviewed-r49n-package.test.mjs",
-      "sha256Lf": "554d50b34e833270bbb58ff4a575ba3bb49646bfd17f5ba9f0c8a0cd1538054b"
+      "sha256Lf": "27600cb31512123308a62170ea584e441c00c38a08eb6414f4ddb848cfbe1d9b"
     },
     {
       "path": "scripts/lib/reviewed-reference-release.d.mts",
@@ -156,6 +200,10 @@
     {
       "path": "supabase/migrations/20260914_literary_archive_editorial_references.sql",
       "sha256Lf": "00bdde32a431322e4c86eaa1f069ff287eac4acc011923dd2454a463f42cad21"
+    },
+    {
+      "path": "tests/e2e/archive-search-calendar.spec.mjs",
+      "sha256Lf": "9a1e441ac653ae239a7e0515697f6022c0ab8f75850838b93ef39ee4c2a9fe8e"
     }
   ]
 }
