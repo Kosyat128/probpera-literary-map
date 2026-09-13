@@ -8,6 +8,7 @@ import { describe, expect, it } from "vitest";
 import { parseCss } from "../audit-stage5-baseline.mjs";
 import { projectReviewedReadingDesign, readingDesignAttestation } from "./reviewed-reading-design.mjs";
 import { projectReviewedHeaderLibrary } from "./reviewed-header-library.mjs";
+import { projectReviewedDependencySecurity } from "./reviewed-dependency-security.mjs";
 import {
   adminArticlePublicationPermissionsAttestation,
   bookDatabaseEditorialOwnerAttestation,
@@ -28,9 +29,10 @@ const printer = ts.createPrinter({ newLine: ts.NewLineKind.LineFeed });
 // boundary; existing manifests, historical hashes and negative tests stay intact.
 function readGovernanceSource(absolutePath, encoding) {
   if (encoding !== "utf8") throw new Error("Governance source must be UTF-8 text");
+  const relativePath = path.relative(root, absolutePath).replaceAll("\\", "/");
   return projectReviewedHeaderLibrary(
-    path.relative(root, absolutePath).replaceAll("\\", "/"),
-    readFileSync(absolutePath, encoding)
+    relativePath,
+    projectReviewedDependencySecurity(relativePath, readFileSync(absolutePath, encoding))
   );
 }
 

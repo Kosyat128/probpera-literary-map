@@ -16,12 +16,11 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  verify:
+  preflight:
     runs-on: ubuntu-latest
-    # The measured prefix through WebGL shard 1 already took 36m29s.
-    # Leave room for five more software-GPU shards and failure diagnostics.
-    # Individual test and assertion timeouts remain unchanged.
     timeout-minutes: 120
+    outputs:
+      browser_inputs_sha256: ${{ steps.browser_inputs.outputs.sha256 }}
 
     steps:
       - name: Checkout repository
@@ -38,6 +37,9 @@ jobs:
 
       - name: Install exact dependencies
         run: npm ci
+
+      - name: Check production dependencies
+        run: npm audit --omit=dev --audit-level=high
 
       - name: Check types and admin code
         run: npm run lint
@@ -66,51 +68,143 @@ jobs:
       - name: Enforce production performance budget
         run: npm run performance:audit
 
+      - name: Package the audited browser inputs
+        id: browser_inputs
+        run: |
+          set -euo pipefail
+          mkdir -p .tmp
+          # The public assets are already present in dist; keep a single copy.
+          tar -czf .tmp/browser-quality-inputs.tar.gz \
+            dist src/data/imageDelivery.generated.json reports/public-image-delivery.json
+          echo "sha256=$(sha256sum .tmp/browser-quality-inputs.tar.gz | cut -d ' ' -f 1)" >> "$GITHUB_OUTPUT"
+
+      - name: Share the audited browser inputs
+        uses: actions/upload-artifact@v7
+        with:
+          name: browser-quality-inputs
+          path: .tmp/browser-quality-inputs.tar.gz
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 2
+
+  browser:
+    name: Browser / ${{ matrix.id }}
+    needs: preflight
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        include:
+          # Keep the previously prioritized shard first in its premium bucket.
+          - id: premium-1
+            suite: premium-globe
+            shards: "21 1 2 3 4 5 6 7 8 9 10"
+          - id: premium-2
+            suite: premium-globe
+            shards: "11 12 13 14 15 16 17 18 19 20 22"
+          - id: webgl-1
+            suite: webgl-regression
+            shards: "1 2"
+          - id: webgl-2
+            suite: webgl-regression
+            shards: "3 4"
+          - id: webgl-3
+            suite: webgl-regression
+            shards: "5 6"
+          - id: regression
+            suite: regression
+            shards: ""
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install exact dependencies
+        run: npm ci
+
+      - name: Download the audited browser inputs
+        uses: actions/download-artifact@v5
+        with:
+          name: browser-quality-inputs
+          path: .tmp
+
+      - name: Restore the audited browser inputs
+        env:
+          BROWSER_INPUTS_SHA256: ${{ needs.preflight.outputs.browser_inputs_sha256 }}
+        run: |
+          set -euo pipefail
+          printf '%s  %s\n' "$BROWSER_INPUTS_SHA256" '.tmp/browser-quality-inputs.tar.gz' | sha256sum --check --strict
+          tar -xzf .tmp/browser-quality-inputs.tar.gz
+          # Image-delivery tests inspect the same export and renditions on disk.
+          mkdir -p public/cms public/media/optimized
+          cp -a dist/cms/. public/cms/
+          cp -a dist/media/optimized/. public/media/optimized/
+
       - name: Install browser quality tools
         run: npx playwright install --with-deps chromium
 
-      - name: Run premium globe browser and mobile checks
+      - name: Run browser checks
         env:
-          PLAYWRIGHT_SUITE: premium-globe
+          PLAYWRIGHT_SUITE: ${{ matrix.suite }}
+          PLAYWRIGHT_SHARDS: ${{ matrix.shards }}
         run: |
           set -euo pipefail
-          for shard in 21 {1..20} 22; do
-            echo "::group::Premium globe shard ${shard}/22"
-            PLAYWRIGHT_HTML_OUTPUT_DIR="playwright-report/premium-${shard}" \
-              npm run test:e2e -- --shard="${shard}/22" --workers=1 --output="test-results/premium-${shard}"
+          case "$PLAYWRIGHT_SUITE" in
+            premium-globe) total=22; prefix=premium ;;
+            webgl-regression) total=6; prefix=webgl ;;
+            regression)
+              export PLAYWRIGHT_HTML_OUTPUT_DIR=playwright-report/regression
+              npm run test:e2e -- --output=test-results/regression
+              exit 0
+              ;;
+            *) echo 'Unknown browser suite' >&2; exit 1 ;;
+          esac
+          test -n "$PLAYWRIGHT_SHARDS"
+          # Each shard still receives a fresh Chromium/software-GPU process.
+          for shard in $PLAYWRIGHT_SHARDS; do
+            echo "::group::Browser ${prefix} shard ${shard}/${total}"
+            PLAYWRIGHT_HTML_OUTPUT_DIR="playwright-report/${prefix}-${shard}" \
+              npm run test:e2e -- --shard="${shard}/${total}" --workers=1 --output="test-results/${prefix}-${shard}"
             echo "::endgroup::"
           done
-
-      - name: Run WebGL-heavy regression checks serially
-        env:
-          PLAYWRIGHT_SUITE: webgl-regression
-        run: |
-          set -euo pipefail
-          # Recycle Chromium and its software GPU between bounded groups.
-          # A single long-lived browser slows down after many real 3D scenes.
-          for shard in {1..6}; do
-            echo "::group::WebGL regression shard ${shard}/6"
-            PLAYWRIGHT_HTML_OUTPUT_DIR="playwright-report/webgl-${shard}" \
-              npm run test:e2e -- --shard="${shard}/6" --workers=1 --output="test-results/webgl-${shard}"
-            echo "::endgroup::"
-          done
-
-      - name: Run remaining browser, mobile and accessibility checks in parallel
-        env:
-          PLAYWRIGHT_SUITE: regression
-          PLAYWRIGHT_HTML_OUTPUT_DIR: playwright-report/regression
-        run: npm run test:e2e -- --output=test-results/regression
 
       - name: Upload browser diagnostics on failure
         if: failure() || cancelled()
         uses: actions/upload-artifact@v7
         with:
-          name: browser-quality-report
+          name: browser-quality-report-${{ matrix.id }}
           path: |
             playwright-report
             test-results
           if-no-files-found: ignore
           retention-days: 14
 
-      - name: Check production dependencies
-        run: npm audit --omit=dev --audit-level=high
+  verify:
+    # Keep the existing required check; skipped or cancelled jobs cannot pass it.
+    if: ${{ always() }}
+    needs: [preflight, browser]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Require every quality job to succeed
+        env:
+          PREFLIGHT_RESULT: ${{ needs.preflight.result }}
+          BROWSER_RESULT: ${{ needs.browser.result }}
+        run: |
+          node --input-type=module <<'NODE'
+          const results = [process.env.PREFLIGHT_RESULT, process.env.BROWSER_RESULT];
+          if (results.some(result => result !== 'success')) {
+            console.error('Required quality jobs did not all succeed:', results.join(', '));
+            process.exit(1);
+          }
+          console.log('All preflight and browser matrix jobs succeeded.');
+          NODE
