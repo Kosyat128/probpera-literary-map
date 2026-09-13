@@ -10,7 +10,7 @@
   "inputMasterSha256": "f441344f6b4367684c8f5ec39f746f12c079ff05e5130b3183e06bab7c359674",
   "editorialReview": {
     "path": "reports/book-r49n-package-reviewed-20260912.json",
-    "canonicalJsonSha256": "02171f0b07410ad8321db2b6782a416add6ed1a1cf31ee6574945c8d86def575"
+    "canonicalJsonSha256": "61e917eae932d03f8040bae5a0a76e8893aab644ce6a9daf00174fcb2b276ca0"
   },
   "textHashProfile": "sha256-utf8-with-crlf-and-cr-normalized-to-lf",
   "allowedProjectionPaths": [
@@ -653,7 +653,7 @@
       "id": "R49N-PACKAGE-067",
       "path": "src/data/bookArchive.ts",
       "before": "          writer.id,\n          expandedWork\n        );\n        // Final publication guard: keep this after every public/expansion\n        // overlay so a later enrichment cannot re-promote a held legacy card.\n        const work = applyBookEvidenceV2LegacyVerifiedReaudit01Work(\n          country.id,\n          writer.id,\n          reviewedWork\n        );\n        const workId = `${country.id}:${writer.id}:${work.id}`;\n        const edition = (\n",
-      "after": "          writer.id,\n          expandedWork\n        );\n        const recoveredWork = applyBookR49nExistingReviewed20260912Work(\n          country.id,\n          writer.id,\n          reviewedWork\n        );\n        const retainedDraftWork = applyBookR49nRetainedDrafts20260912Work(\n          country.id,\n          writer.id,\n          recoveredWork\n        );\n        // Final publication guard: keep this after every public/expansion\n        // overlay so a later enrichment cannot re-promote a held legacy card.\n        const work = applyBookEvidenceV2LegacyVerifiedReaudit01Work(\n          country.id,\n          writer.id,\n          includeR49nCatalog ? retainedDraftWork : expandedWork\n        );\n        const workId = `${country.id}:${writer.id}:${work.id}`;\n        const edition = (\n"
+      "after": "          writer.id,\n          expandedWork\n        );\n        const recoveredWork = applyBookR49nExistingReviewed20260912Work(\n          country.id,\n          writer.id,\n          reviewedWork\n        );\n        // A published CMS edit keeps priority over the retained R49N draft.\n        // The exact ID is scoped to this writer; final holds still run below.\n        const retainedDraftWork = publicCmsWorkIds.has(recoveredWork.id)\n          ? recoveredWork\n          : applyBookR49nRetainedDrafts20260912Work(\n              country.id,\n              writer.id,\n              recoveredWork\n            );\n        // Final publication guard: keep this after every public/expansion\n        // overlay so a later enrichment cannot re-promote a held legacy card.\n        const work = applyBookEvidenceV2LegacyVerifiedReaudit01Work(\n          country.id,\n          writer.id,\n          includeR49nCatalog ? retainedDraftWork : expandedWork\n        );\n        const workId = `${country.id}:${writer.id}:${work.id}`;\n        const edition = (\n"
     },
     {
       "id": "R49N-PACKAGE-068",
@@ -732,6 +732,12 @@
       "path": "vite.config.ts",
       "before": "            if (moduleId.includes(\"vite/preload-helper\")) {\n              return \"vite-preload-helper\";\n            }\n            if (moduleId.includes(\"/books.generated.json\")) return \"book-catalog\";\n            if (moduleId.includes(\"/writerPortraits.generated.json\")) {\n              return \"writer-portraits-data\";\n",
       "after": "            if (moduleId.includes(\"vite/preload-helper\")) {\n              return \"vite-preload-helper\";\n            }\n            // Keep retained synopsis data in three bounded dependencies of the\n            // lazy archive. The facade still applies the same exact RU/EN text.\n            const retainedDraftPart = moduleId.match(\n              /\\/src\\/data\\/countries\\/bookR49nRetainedDrafts20260912Data(0[1-3])\\.ts$/u\n            )?.[1];\n            if (retainedDraftPart) return `book-retained-drafts-${retainedDraftPart}`;\n            if (moduleId.includes(\"/books.generated.json\")) return \"book-catalog\";\n            if (moduleId.includes(\"/writerPortraits.generated.json\")) {\n              return \"writer-portraits-data\";\n"
+    },
+    {
+      "id": "R49N-PACKAGE-081",
+      "path": "src/data/bookArchive.ts",
+      "before": "      const candidateGroups = [\n        cmsLiteraryWorkProfilesForWriter(country.id, writer.id),\n        includeReviewedGenerated\n",
+      "after": "      const cmsWorks = cmsLiteraryWorkProfilesForWriter(country.id, writer.id);\n      const publicCmsWorkIds = new Set(\n        cmsWorks.filter(isPublicBook).map((work) => work.id)\n      );\n      const candidateGroups = [\n        cmsWorks,\n        includeReviewedGenerated\n"
     }
   ],
   "runtime": {

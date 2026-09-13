@@ -46,9 +46,9 @@ database URL должен быть direct endpoint этого проекта л�
    manifest и редактированный отчёт в GitHub Artifact; сбой загрузки
    останавливает job;
 5. восстанавливает копию в изолированный PostgreSQL-контейнер;
-6. на восстановленной копии одной транзакцией применяет строго 35
-   проверенную миграцию от `20260808_article_translations` до
-   `20260905_article_publication_permissions`;
+6. на восстановленной копии одной транзакцией применяет строго 36
+   проверенных миграций от `20260808_article_translations` до
+   `20260912_literary_work_evidence_v2_registry_rotation`;
 7. проверяет ledger, 21 outbox-триггер, наличие work-level artwork, индексы,
    покрытие переводов, staff-only политики чтения, приватные рабочие черновики
    опубликованных статей и RPC `get_editorial_schema_health()`;
@@ -67,7 +67,7 @@ production mutation.
 Текущий точный health-контракт после согласования:
 
 - версия `20260902_zz_article_working_drafts_health`;
-- 35 записей в `probpera_schema_migrations`;
+- 36 записей в `probpera_schema_migrations`;
 - все 21 публикационный триггер;
 - staff-only чтение `articles`, `article_translations` и `media_assets`;
 - таблица `article_working_drafts` с FORCE RLS, единственной staff-only

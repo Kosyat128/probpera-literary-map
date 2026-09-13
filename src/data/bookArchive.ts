@@ -631,8 +631,12 @@ export function buildBookArchive(
         writer,
         writerProfileOverrides
       );
+      const cmsWorks = cmsLiteraryWorkProfilesForWriter(country.id, writer.id);
+      const publicCmsWorkIds = new Set(
+        cmsWorks.filter(isPublicBook).map((work) => work.id)
+      );
       const candidateGroups = [
-        cmsLiteraryWorkProfilesForWriter(country.id, writer.id),
+        cmsWorks,
         includeReviewedGenerated
           ? reviewedBooksForWriter(country.id, writer.id)
           : [],
@@ -722,11 +726,15 @@ export function buildBookArchive(
           writer.id,
           reviewedWork
         );
-        const retainedDraftWork = applyBookR49nRetainedDrafts20260912Work(
-          country.id,
-          writer.id,
-          recoveredWork
-        );
+        // A published CMS edit keeps priority over the retained R49N draft.
+        // The exact ID is scoped to this writer; final holds still run below.
+        const retainedDraftWork = publicCmsWorkIds.has(recoveredWork.id)
+          ? recoveredWork
+          : applyBookR49nRetainedDrafts20260912Work(
+              country.id,
+              writer.id,
+              recoveredWork
+            );
         // Final publication guard: keep this after every public/expansion
         // overlay so a later enrichment cannot re-promote a held legacy card.
         const work = applyBookEvidenceV2LegacyVerifiedReaudit01Work(

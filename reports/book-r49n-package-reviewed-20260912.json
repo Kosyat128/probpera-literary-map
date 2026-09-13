@@ -3771,5 +3771,33 @@
     ],
     "coverAssetsChanged": [],
     "newCoverPublication": false
+  },
+  "cmsRetainedPrecedence": {
+    "reviewedOn": "2026-09-13",
+    "scope": "Skip only the R49N retained-draft overlay for an exact same-country/same-writer CMS work that passes the unchanged isPublicBook predicate. Earlier overlays and the final legacy quarantine remain unchanged.",
+    "previousPackageReportCanonicalSha256": "02171f0b07410ad8321db2b6782a416add6ed1a1cf31ee6574945c8d86def575",
+    "source": {
+      "path": "src/data/bookArchive.ts",
+      "beforeSha256Lf": "6d2bffa98854fdcbfedc43897c99686479e076b7511c412235ba05128083c19e",
+      "afterSha256Lf": "1989a468abb51b134af6fb8a4186918f9726db6cb84b1c0b1d7ca5c245cfa402"
+    },
+    "test": {
+      "path": "src/data/bookR49nCmsRetainedGuard20260913.test.ts",
+      "sha256Lf": "f0def19d9eebad3f706ba038f6cf968c691d6615ef83ec89edefc3bca6cf7cf1",
+      "passed": 4
+    },
+    "currentSnapshot": {
+      "exportedCmsWorks": 17,
+      "retainedKeyIntersection": 0,
+      "catalogCount": 9763,
+      "reviewedCount": 69,
+      "pendingCount": 9694,
+      "retainedPairs": 1494
+    },
+    "workProfileSchemaChanged": false,
+    "evidenceContractChanged": false,
+    "genericDraftTextExposed": false,
+    "historicalQuarantinePreserved": true,
+    "publicApprovalGranted": false
   }
 }
