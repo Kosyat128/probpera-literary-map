@@ -36,7 +36,7 @@ describe("country work metric uses the full canonical catalog", () => {
     const loading = metric(null, true);
     expect(loading.find("strong").text()).toBe("…");
     expect(loading.attr("aria-busy")).toBe("true");
-    expect(metric(null).find("strong").text()).toBe("—");
+    expect(metric(null).find("strong").text()).toBe("\u2014");
     expect(metric(0).find("strong").text()).toBe("0");
   });
 });

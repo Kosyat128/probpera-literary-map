@@ -10,7 +10,7 @@
   "inputMasterSha256": "f441344f6b4367684c8f5ec39f746f12c079ff05e5130b3183e06bab7c359674",
   "editorialReview": {
     "path": "reports/book-r49n-package-reviewed-20260912.json",
-    "canonicalJsonSha256": "c31109674be646ebbc2e855684bb2a8e4f760248683a67dd0d93ac4433467143"
+    "canonicalJsonSha256": "596dd8874d754c57c07ad579c4a69c5b5d266ff43fd4e77d230613560f470336"
   },
   "textHashProfile": "sha256-utf8-with-crlf-and-cr-normalized-to-lf",
   "allowedProjectionPaths": [
@@ -629,7 +629,7 @@
       "id": "R49N-PACKAGE-063",
       "path": "src/components/WriterPanel.tsx",
       "before": "                ])}\n          </span>\n        </button>\n        <div className=\"country-metric country-metric--static\">\n          {(() => {\n            const worksCount = uniqueValues(\n              writers.flatMap((writer) =>\n                getPublicWriterWorkTitles(writer, language)\n              )\n            ).length;\n            return (\n              <>\n                <strong>{number(worksCount)}</strong>\n                <span>\n                  {language === \"en\"\n                    ? worksCount === 1\n                      ? \"work\"\n                      : \"works\"\n                    : pluralRu(worksCount, [\n                        \"произведение\",\n                        \"произведения\",\n                        \"произведений\",\n",
-      "after": "                ])}\n          </span>\n        </button>\n        <div className=\"country-metric country-metric--static country-metric--works\" aria-busy={catalogWorkCountLoading}>\n          {(() => {\n            const worksCount = catalogWorkCount;\n            return (\n              <>\n                <strong>{worksCount === null ? catalogWorkCountLoading ? \"…\" : \"—\" : number(worksCount)}</strong>\n                <span>\n                  {language === \"en\"\n                    ? worksCount === 1\n                      ? \"work\"\n                      : \"works\"\n                    : pluralRu(worksCount ?? 0, [\n                        \"произведение\",\n                        \"произведения\",\n                        \"произведений\",\n"
+      "after": "                ])}\n          </span>\n        </button>\n        <div className=\"country-metric country-metric--static country-metric--works\" aria-busy={catalogWorkCountLoading}>\n          {(() => {\n            const worksCount = catalogWorkCount;\n            return (\n              <>\n                <strong>{worksCount === null ? catalogWorkCountLoading ? \"…\" : \"\\u2014\" : number(worksCount)}</strong>\n                <span>\n                  {language === \"en\"\n                    ? worksCount === 1\n                      ? \"work\"\n                      : \"works\"\n                    : pluralRu(worksCount ?? 0, [\n                        \"произведение\",\n                        \"произведения\",\n                        \"произведений\",\n"
     },
     {
       "id": "R49N-PACKAGE-064",
@@ -910,7 +910,7 @@
     "src/components/BookArchiveSection.tsx": "a3b92b4a50c5d18a5df4c59bdf1d543c354c721adc92282b3aa6f81faa47357a",
     "src/components/BookShelfControls.tsx": "381f233540c8b3bf6419ccde77e0c015d99e345847b8c30244640bf4d1c3d847",
     "src/components/GlobalSearch.tsx": "b22882d67ca1389afa8e2f93adaf0509b2f8aca4427e6c95cf4b127ec80e4993",
-    "src/components/WriterPanel.tsx": "429bb1ef55f26101e816533713203acc3dfe49370045acfc7cc5d92019701fbf",
+    "src/components/WriterPanel.tsx": "c4726d0cf2008272616a3cf36ed1a4b6841c53d69894d1af98e92a0130cc40fb",
     "src/data/bookArchive.ts": "738fe1a320790fa9971ae367079499ae1f9e5af05ed6fa756ad9d493b06f98c2",
     "src/data/bookArchiveQueue.ts": "e2ca36b51d47a325063d7a62bc18b6f3dd4d13090390624c498c2f95206960d2",
     "src/data/countries/index.ts": "981178294c635b4439bde9202cb023feddeef973dd0e868fbe7549068632e7a1",

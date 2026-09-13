@@ -3530,7 +3530,7 @@
     "src/components/BookArchiveSection.tsx": "a3b92b4a50c5d18a5df4c59bdf1d543c354c721adc92282b3aa6f81faa47357a",
     "src/components/BookShelfControls.tsx": "381f233540c8b3bf6419ccde77e0c015d99e345847b8c30244640bf4d1c3d847",
     "src/components/GlobalSearch.tsx": "b22882d67ca1389afa8e2f93adaf0509b2f8aca4427e6c95cf4b127ec80e4993",
-    "src/components/WriterPanel.tsx": "429bb1ef55f26101e816533713203acc3dfe49370045acfc7cc5d92019701fbf",
+    "src/components/WriterPanel.tsx": "c4726d0cf2008272616a3cf36ed1a4b6841c53d69894d1af98e92a0130cc40fb",
     "src/data/bookArchive.ts": "738fe1a320790fa9971ae367079499ae1f9e5af05ed6fa756ad9d493b06f98c2",
     "src/data/bookArchiveQueue.ts": "e2ca36b51d47a325063d7a62bc18b6f3dd4d13090390624c498c2f95206960d2",
     "src/data/countries/index.ts": "981178294c635b4439bde9202cb023feddeef973dd0e868fbe7549068632e7a1",
@@ -3670,17 +3670,17 @@
       {
         "path": "tests/e2e/archive-search-calendar.spec.mjs",
         "sha256": "3ee81be040f9cf30d54e05db440b67fe5de7597a67d2c972957d85b07b9f4ffa",
-        "sha256Lf": "6b020aded3f162979239324f8f20cd503f33caca7fb32470376a3c8a883b58e8"
+        "sha256Lf": "d03dd46ce0a3531bbfca3fed138b009a249ff98dea3da6be351148a323802c29"
       },
       {
         "path": "src/components/WriterPanel.tsx",
         "sha256": "0f17fbadadcb8cc71f2b2fe7eff11eedbf86204a5b1fd6899f2c6269e5a64d6d",
-        "sha256Lf": "429bb1ef55f26101e816533713203acc3dfe49370045acfc7cc5d92019701fbf"
+        "sha256Lf": "c4726d0cf2008272616a3cf36ed1a4b6841c53d69894d1af98e92a0130cc40fb"
       },
       {
         "path": "src/components/countryCatalogCounts.test.tsx",
         "sha256": "bf6e3c1c14628a75db839c32c57837142453197689aac6a057b3b373b607934f",
-        "sha256Lf": "bf6e3c1c14628a75db839c32c57837142453197689aac6a057b3b373b607934f"
+        "sha256Lf": "1860d3f7bf6e5d9949a0b64efd9e1e74f0b885f5eecfd71353a01d2f0be46f20"
       },
       {
         "path": "src/components/writerPanelAccessibility.test.ts",
@@ -3911,7 +3911,7 @@
     "files": [
       {
         "path": "reports/wells-editorial-repair-20260913.md",
-        "sha256Lf": "5bd3455cfd00412ce811e52f518c6811d52b8e0e532722381f4728786c97e014"
+        "sha256Lf": "c536be4fe2b40da4e1fd5e4e8a2df361bbbcddb981dcc250c637e7851fdea2df"
       },
       {
         "path": "scripts/database/repair-wells-editorial-evidence-20260913.mjs",
@@ -4001,5 +4001,261 @@
     ],
     "browserPrecisionCorrection": "Round measured DOMRect values to 0.001px before the unchanged 96/180px image and 44px control thresholds; four visual PNG baselines remain unchanged.",
     "productionPublicationClaimed": false
+  },
+  "hyphenPolicyIntegration": {
+    "previousPackageObjectSha256": "75019b2000c1a18dd04103bfd1a35269d254d04ac4cdc881e6f6956867946404",
+    "previousPackageReportCanonicalSha256": "c31109674be646ebbc2e855684bb2a8e4f760248683a67dd0d93ac4433467143",
+    "scope": "Nine exact source artifacts retain their reviewed bytes; hash mismatch fails before normalization. All ordinary UI and newly written prose remain under the existing short-hyphen check.",
+    "protectedFiles": [
+      {
+        "path": "reports/book-r49n-dickens-reviewed-20260912.json",
+        "sha256Lf": "f85c62c018298e6ee5f344c447ac45f41e6e821a689ad15f923f7c354b362a79"
+      },
+      {
+        "path": "reports/book-r49n-retained-drafts-20260912.json",
+        "sha256Lf": "a95ed3cfb6f5a9482f76119a46fe6c8d014309af38daef66821c388df99c5b1e"
+      },
+      {
+        "path": "scripts/database/fixtures/book-canon-source-registry-before-r49n.json",
+        "sha256Lf": "d0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef"
+      },
+      {
+        "path": "src/data/countries/bookR49nDickensReviewed20260912.ts",
+        "sha256Lf": "7d6e7f67e68cd547f7db6f688bab92b341635a9b6a58beadb99a5b7bf1277bff"
+      },
+      {
+        "path": "src/data/countries/bookR49nAlcottDraft20260912.ts",
+        "sha256Lf": "86b9b2c0ff05a5c7722ed9e4b7cab06832e94bad6b4c522d0bdb5a6847f990b7"
+      },
+      {
+        "path": "src/data/countries/bookR49nExistingReviewed20260912.ts",
+        "sha256Lf": "5b88df47f391a8ca905602aeac242155dff043655ee85055a491501a70880a0e"
+      },
+      {
+        "path": "src/data/countries/bookR49nRetainedDrafts20260912Data01.ts",
+        "sha256Lf": "5892f3b36062acaf628dcbffb11360584a8dc0a39b6ef6ad16d5850b111af3b7"
+      },
+      {
+        "path": "src/data/countries/bookR49nRetainedDrafts20260912Data02.ts",
+        "sha256Lf": "b6f3e277895354cb68daca6791d769260d8111ccec6bf58916bd976811356150"
+      },
+      {
+        "path": "src/data/countries/bookR49nRetainedDrafts20260912Data03.ts",
+        "sha256Lf": "064a86fd3867ca5e0731ba8d97f0de8630356347b7bcaf6ff9111b8f2c9e271e"
+      }
+    ],
+    "files": [
+      {
+        "path": "scripts/normalize-short-hyphens.mjs",
+        "sha256Lf": "ee927099c640734a070a98323c2785219a880cd852f4c0297250c5783b6683d3"
+      },
+      {
+        "path": "scripts/lib/short-hyphen-exact-source.mjs",
+        "sha256Lf": "d6ada545a72df7105ba447ea01ff3ca1d4f03fbd3186aab2ff42459580e627c4"
+      },
+      {
+        "path": "scripts/lib/short-hyphen-exact-source.test.mjs",
+        "sha256Lf": "c576aad0fe77b43f9d5c04ed3e2a902dbe11c5d0482b6e768e7f84ccd04dc496"
+      }
+    ],
+    "literalSerialization": [
+      {
+        "path": "src/components/WriterPanel.tsx",
+        "sha256Lf": "c4726d0cf2008272616a3cf36ed1a4b6841c53d69894d1af98e92a0130cc40fb",
+        "beforeSha256Lf": "429bb1ef55f26101e816533713203acc3dfe49370045acfc7cc5d92019701fbf"
+      },
+      {
+        "path": "src/components/countryCatalogCounts.test.tsx",
+        "sha256Lf": "1860d3f7bf6e5d9949a0b64efd9e1e74f0b885f5eecfd71353a01d2f0be46f20",
+        "beforeSha256Lf": "bf6e3c1c14628a75db839c32c57837142453197689aac6a057b3b373b607934f"
+      },
+      {
+        "path": "tests/e2e/archive-search-calendar.spec.mjs",
+        "sha256Lf": "d03dd46ce0a3531bbfca3fed138b009a249ff98dea3da6be351148a323802c29",
+        "beforeSha256Lf": "6b020aded3f162979239324f8f20cd503f33caca7fb32470376a3c8a883b58e8"
+      }
+    ],
+    "governanceSerialization": "JSON Unicode escapes preserve parsed projection strings and their existing canonical pin semantics.",
+    "runtimeTextChanged": false,
+    "importedSourceBytesChanged": false,
+    "historicalPinsChanged": false,
+    "focusedTestsPassed": 13,
+    "fullLint": {
+      "command": "npm run lint",
+      "passed": true,
+      "publicAndAdminTypesPassed": true,
+      "typographyIssues": 0
+    }
+  },
+  "compactEditorialImageRepair": {
+    "generatedAt": "2026-09-13T20:22:51.505Z",
+    "status": "source-and-real-browser-verified",
+    "files": [
+      {
+        "path": "scripts/prepare-public-images.mjs",
+        "sha256Lf": "d18e8f9310b03e0bc5324757034a92f4976c1edc4f8e3f16772588b5e076ee6d"
+      },
+      {
+        "path": "scripts/prepare-public-images.test.mjs",
+        "sha256Lf": "dd7379a7a1eab09a2172a8207fb81a48c310b8e6f1908d10c8b877b41a2689c8"
+      },
+      {
+        "path": "scripts/lib/public-image-delivery.mjs",
+        "sha256Lf": "e16ad45e2d2c4359ce20adb8d829d4abf5ee9f3a608d987e5c5998e51303879b"
+      },
+      {
+        "path": "scripts/lib/public-image-delivery.test.mjs",
+        "sha256Lf": "074574c8df85fb29a3a88e09d6cb051171a47a5229ab577e7c00e9c698913bea"
+      },
+      {
+        "path": "src/utils/editorialImagePresentation.ts",
+        "sha256Lf": "687ff082446494a665dcf51cfd491a70dfcdaf1d0b47bbd74c00a3f7aa357502"
+      },
+      {
+        "path": "src/utils/editorialImagePresentation.test.ts",
+        "sha256Lf": "1bdae5f860651ad9153f0eae6150019885b3a8e5f25dc3132b60f99e732c9f6b"
+      },
+      {
+        "path": "src/utils/sanitizeArticleHtml.ts",
+        "sha256Lf": "5aade6ff49894f69a7a2236fe3aaa1a3a610b733c8762d47c376d6f4f69d49c3"
+      },
+      {
+        "path": "src/utils/imageDelivery.test.ts",
+        "sha256Lf": "f7b945e27253e6086aef9f6a829ed0cb795f8bb2da3b4ea27f7807078fb79540"
+      }
+    ],
+    "problem": "Ten inline covers authored at 20% width rendered 46.796875px each in a 390px viewport but downloaded 640w images totaling 1531952 bytes.",
+    "implementation": {
+      "eligibility": "Explicit valid integer data-image-width from 20 through 50 on inline img elements in current CMS/legacy HTML; exact source URLs deduplicated. No article or source allowlist.",
+      "renditions": "Adds 160/320 only for eligible static rasters without upscaling. SVG and animation preserved; existing quality 90 and 640/1280/1920/native variants retained.",
+      "checkpoint": "Appends missing widths only; existing output bytes, hashes, and largest entry preserved. An unavailable or mismatched source aborts a ready checkpoint upgrade before any checkpoint replacement or runtime publication.",
+      "runtime": "Small lazy images use sizes=auto with the existing full column fallback; explicit native aspect ratio applies only to authored auto aspect. Fixed crop ratios, 20% figure width, full fallback src, original source and book/lightbox resolution retained.",
+      "static": "The same auto sizes and native aspect guard apply in the static public HTML renderer. Attribute preservation, lazy loading, full fallback and original link are covered by focused tests."
+    },
+    "focusedTests": {
+      "command": "node node_modules/vitest/vitest.mjs run scripts/prepare-public-images.test.mjs scripts/lib/public-image-delivery.test.mjs src/utils/editorialImagePresentation.test.ts src/utils/imageDelivery.test.ts",
+      "files": 4,
+      "passed": 23
+    },
+    "frozen167GeneratedAssetsUnchanged": true,
+    "sourceCmsRowsAndAuthoredTextUnchanged": true,
+    "stylesheetsUnchanged": true,
+    "fresh169Publication": {
+      "eligibleSources": 10,
+      "additionalFiles": 20,
+      "additionalBytesMeasured": 575766,
+      "generatedOnlyUnderTmp": true,
+      "note": "The local frozen 167-article snapshot contains zero eligible images. Fresh deployment inventory discovers 10 currently live CMS sources and generates 20 small files automatically. Those files are not committed to public."
+    },
+    "browser": {
+      "method": "Six isolated Chrome runs using the current client sanitizer bundle, exact live CSS, actual 10 source cover images and live before variants; a fresh context for each before/after. Local fixture only, production unchanged.",
+      "sourceContentSha256": "8f7cec153ef730baeb009ed868809f44b67d385d80adf0998a3a77c593440350",
+      "css": "https://probpera.ru/assets/index-DQ4Cun8Q.css",
+      "fullOutputsPreserved": true,
+      "comparisons": [
+        {
+          "viewport": {
+            "width": 390,
+            "height": 844,
+            "dpr": 1
+          },
+          "beforeBytes": 1531952,
+          "afterBytes": 126952,
+          "reductionPercent": 91.71,
+          "widthUnchanged": true,
+          "heightUnchanged": true,
+          "authoredFigureStyleUnchanged": true,
+          "fallbackSourceUnchanged": true,
+          "originalSourceUnchanged": true,
+          "allDecoded": true,
+          "selectedWidths": [
+            160,
+            160,
+            160,
+            160,
+            160,
+            160,
+            160,
+            160,
+            160,
+            160
+          ]
+        },
+        {
+          "viewport": {
+            "width": 1547,
+            "height": 900,
+            "dpr": 1
+          },
+          "beforeBytes": 4014582,
+          "afterBytes": 126952,
+          "reductionPercent": 96.84,
+          "widthUnchanged": true,
+          "heightUnchanged": true,
+          "authoredFigureStyleUnchanged": true,
+          "fallbackSourceUnchanged": true,
+          "originalSourceUnchanged": true,
+          "allDecoded": true,
+          "selectedWidths": [
+            160,
+            160,
+            160,
+            160,
+            160,
+            160,
+            160,
+            160,
+            160,
+            160
+          ]
+        },
+        {
+          "viewport": {
+            "width": 390,
+            "height": 844,
+            "dpr": 2
+          },
+          "beforeBytes": 4014582,
+          "afterBytes": 126952,
+          "reductionPercent": 96.84,
+          "widthUnchanged": true,
+          "heightUnchanged": true,
+          "authoredFigureStyleUnchanged": true,
+          "fallbackSourceUnchanged": true,
+          "originalSourceUnchanged": true,
+          "allDecoded": true,
+          "selectedWidths": [
+            160,
+            160,
+            160,
+            160,
+            160,
+            160,
+            160,
+            160,
+            160,
+            160
+          ]
+        }
+      ],
+      "proofPath": ".tmp/small-inline-images-20260913/browser-proof.json",
+      "proofSha256": "e91e026654c2062ced680960e437eab22dfc13ae701fcc6cfff613011b2c064c",
+      "screenshotPath": ".tmp/small-inline-images-20260913/after-mobile.png"
+    },
+    "standards": "https://html.spec.whatwg.org/dev/images.html#sizes-attributes",
+    "priorReadOnlyLiveAudit": {
+      "releaseSha": "7b4f4f523889034b5325fedfea69e453bbde8a9d",
+      "ruVisible": 169,
+      "enVisible": 1,
+      "localImageUrlsChecked": 3920,
+      "upstreamOriginalUrlsChecked": 26,
+      "failedUrls": 0,
+      "knownRenditionSizeMismatches": 0,
+      "inlineImages": 1594,
+      "all169ArticleDocumentsAndPagesPassed": true,
+      "menuBlank": "Image captured before decoding; the EN image returned HTTP 200 (25020 bytes) and decoded by 892ms.",
+      "receipt": "C:/Users/User/Documents/ChatGPT/Работа по сайту/probpera-library-header-20260912/.tmp/live-image-audit-20260913/summary.json",
+      "receiptSha256": "074464fab1d9b2c1df4478e5cc2b76d7f67edc6f240cd60f9310328deda9fe9a"
+    }
   }
 }

@@ -15,7 +15,7 @@ const canonical = value => Array.isArray(value) ? value.map(canonical)
 describe("R49N common package additive governance", () => {
   it("pins the common packet without replacing the historical Dickens attestation", () => {
     expect(sha(JSON.stringify(r49nPackageAttestation))).toBe(
-      "75019b2000c1a18dd04103bfd1a35269d254d04ac4cdc881e6f6956867946404"
+      "e627cd30e1b63744516995e60652162bf0e8b5115679883555a70eac50f3467b"
     );
     expect(sha(JSON.stringify(JSON.parse(read("scripts/governance/book-r49n-dickens-reviewed-20260912.json")))))
       .toBe("2fd2b7dbbb6fe34040aba24e6dfef4a8498d6a01f4ae753698715abe72c408f6");
@@ -172,6 +172,14 @@ describe("R49N common package additive governance", () => {
       humanReview: false, fullWorkRead: false, productionApplied: false });
     expect(repair.validation.receipt).toMatchObject({ validationIssues: [], attestationCandidates: 1, databaseMutation: false });
     expect(report.releaseIntegration.historicalCheckpointTag).toBe("codex/books-r49n-checkpoint-20260912-459f2d70");
+    const hyphens = report.hyphenPolicyIntegration;
+    expect(hyphens).toMatchObject({ runtimeTextChanged: false, importedSourceBytesChanged: false, historicalPinsChanged: false, focusedTestsPassed: 13 });
+    expect(hyphens.protectedFiles).toHaveLength(9);
+    for (const file of [...hyphens.protectedFiles, ...hyphens.files, ...hyphens.literalSerialization])
+      expect(sha(read(file.path))).toBe(file.sha256Lf);
+    expect(report.compactEditorialImageRepair.files).toHaveLength(8);
+    for (const file of report.compactEditorialImageRepair.files)
+      expect(sha(read(file.path))).toBe(file.sha256Lf);
     for (const file of report.fullCatalogUi.files) expect(sha(read(file.path))).toBe(file.sha256Lf);
     expect(report.historicalCoverChecks).toMatchObject({ status: "PASS", checkOnly: true, newCoverPublication: false, coverAssetsChanged: [] });
     for (const file of report.historicalCoverChecks.unchangedFiles) expect(sha(read(file.path))).toBe(file.sha256);

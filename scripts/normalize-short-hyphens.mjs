@@ -3,9 +3,11 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { normalizeShortHyphens } from "./lib/short-hyphens.mjs";
+import { isShortHyphenExactSource, loadShortHyphenExactSources } from "./lib/short-hyphen-exact-source.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const write = process.argv.includes("--write");
+const protectedExactSources = loadShortHyphenExactSources(projectRoot);
 const ignoredDirectories = new Set([
   ".git",
   ".cache",
@@ -63,6 +65,7 @@ for (const absolutePath of await filesIn(projectRoot)) {
   // Their dedicated snapshot checks are stricter than the editorial dash policy.
   if (exactSourceTranscriptionFiles.has(absolutePath)) continue;
   const source = await fs.readFile(absolutePath, "utf8");
+  if (isShortHyphenExactSource(path.relative(projectRoot, absolutePath), source, protectedExactSources)) continue;
   const normalized = normalizeShortHyphens(source);
   if (normalized === source) continue;
   changed.push(path.relative(projectRoot, absolutePath));

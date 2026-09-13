@@ -6,9 +6,31 @@ import {
   canonicalEditorialImageData,
   editorialImageElementStyle,
   editorialImageFigureStyle,
+  editorialInlineImageSizes,
+  editorialInlineImageAspectRatio,
+  hasSmallEditorialImageWidth,
   normalizeEditorialImagePublicAttributes,
   safeEditorialMediaUrl,
 } from "./editorialImagePresentation";
+
+describe("small editorial image delivery", () => {
+  it("uses rendered lazy-image slots only for explicitly authored small widths", () => {
+    for (const width of ["20", "35", "50"]) {
+      expect(hasSmallEditorialImageWidth({ "data-image-width": width })).toBe(true);
+      expect(editorialInlineImageSizes({ "data-image-width": width })).toBe("auto, (max-width: 1000px) calc(100vw - 48px), 880px");
+    }
+    for (const width of [undefined, "", "19", "51", "100", "20px", "NaN", "-20"]) {
+      expect(hasSmallEditorialImageWidth({ "data-image-width": width })).toBe(false);
+      expect(editorialInlineImageSizes({ "data-image-width": width })).toBe("(max-width: 1000px) calc(100vw - 48px), 880px");
+    }
+  });
+  it("preserves native geometry for auto-sized images without overriding authored crop ratios", () => {
+    expect(editorialInlineImageAspectRatio({ "data-image-width": "20", "data-image-aspect": "auto" }, 1024, 1536)).toBe("1024 / 1536");
+    expect(editorialInlineImageAspectRatio({ "data-image-width": "20", "data-image-aspect": "1-1" }, 1024, 1536)).toBeUndefined();
+    expect(editorialInlineImageAspectRatio({ "data-image-width": "100" }, 1024, 1536)).toBeUndefined();
+    expect(editorialInlineImageAspectRatio({ "data-image-width": "20" }, 0, 1536)).toBeUndefined();
+  });
+});
 
 const sanitizerSource = readFileSync(
   new URL("./sanitizeArticleHtml.ts", import.meta.url),

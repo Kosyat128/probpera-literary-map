@@ -119,8 +119,8 @@ for (const locale of ["ru", "en"]) {
     await expect(detail).toBeVisible();
     await expect(detail.locator(".book-detail-copy > .section-kicker")).toHaveText(status);
     await expect(detail).toContainText(locale === "ru"
-      ? "Четыре сестры Марч — Мег, Джо, Бет и Эми"
-      : "The four March sisters—Meg, Jo, Beth and Amy");
+      ? "Четыре сестры Марч \u2014 Мег, Джо, Бет и Эми"
+      : "The four March sisters\u2014Meg, Jo, Beth and Amy");
     await expect(page).toHaveURL(/book=usa%3Alouisa_may_alcott%3Alittle-women/u);
     const reader = detail.locator(".book-dossier-reader");
     await reader.getByRole("button", { name: locale === "ru" ? "Следующий раздел" : "Next section", exact: true }).click();

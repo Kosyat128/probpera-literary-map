@@ -6,8 +6,8 @@ This repair creates two genuinely new, independently reviewed AI synopses. Both 
 
 ## Editorial evidence
 
-- [Owen Holland, University of Oxford Research Archive](https://ora.ox.ac.uk/objects/uuid%3Af17390d8-6d28-41e3-8be6-a075ea0db593): selected manuscript passages on pp. 8–10 and 13–14 support the long sleep, nominal ownership of half the world, the Council, Ostrog's political manipulation and Graham's later independent alignment. The study distinguishes the 1899 original from the 1910 revision.
-- [Broadview Press](https://broadviewpress.com/product/when-the-sleeper-wakes/): the official publisher synopsis supports Graham's awakening in a transformed London and the developing revolution. Its 1897–2100 chronology is 203 years; “two centuries” in the new synopsis is a deliberate rounding.
+- [Owen Holland, University of Oxford Research Archive](https://ora.ox.ac.uk/objects/uuid%3Af17390d8-6d28-41e3-8be6-a075ea0db593): selected manuscript passages on pp. 8-10 and 13-14 support the long sleep, nominal ownership of half the world, the Council, Ostrog's political manipulation and Graham's later independent alignment. The study distinguishes the 1899 original from the 1910 revision.
+- [Broadview Press](https://broadviewpress.com/product/when-the-sleeper-wakes/): the official publisher synopsis supports Graham's awakening in a transformed London and the developing revolution. Its 1897-2100 chronology is 203 years; “two centuries” in the new synopsis is a deliberate rounding.
 - The figurehead/agency wording is a restrained synopsis interpretation. No definite ending is asserted. No full reading of the novel or the research paper, human review, or exhaustive plagiarism search is claimed. The reviewer found no distinctive verbatim borrowing from the selected passages.
 - RU/EN publication-title evidence is retained from the separately dated 2 September bibliographic review. The Russian display title is corrected from `Когда спящий проснётся` to the exact documented `Когда спящий проснется`; national-catalogue fields are not respelled to fit the previous display. National-record access was not freshly certified in this pass.
 

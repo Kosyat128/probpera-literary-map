@@ -629,7 +629,7 @@ export default function WriterPanel({
             const worksCount = catalogWorkCount;
             return (
               <>
-                <strong>{worksCount === null ? catalogWorkCountLoading ? "…" : "—" : number(worksCount)}</strong>
+                <strong>{worksCount === null ? catalogWorkCountLoading ? "…" : "\u2014" : number(worksCount)}</strong>
                 <span>
                   {language === "en"
                     ? worksCount === 1
