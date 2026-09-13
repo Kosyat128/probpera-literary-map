@@ -7,6 +7,11 @@ import { isDeepStrictEqual } from "node:util";
 import { build } from "esbuild";
 import { authorshipRowsFromArchive } from "./lib/book-authorship-roundtrip.mjs";
 import {
+  buildLiteraryArchiveReferenceMetadata,
+  referenceItemsFromArchive,
+  LITERARY_ARCHIVE_REFERENCE_ARTIFACT,
+} from "./lib/literary-archive-reference-catalog.mjs";
+import {
   buildEvidenceV2RegistryRotation,
   buildEvidenceV2ReviewedWriterReference,
   buildEvidenceV2DraftWriterReference,
@@ -431,6 +436,10 @@ const evidenceV2Review = evidenceV2AttestationCandidatesFromArchive(
   }
 );
 const works = workRows(syncArchive);
+const referenceCatalogArtifact = JSON.parse(await readFile(
+  path.join(repositoryRoot, LITERARY_ARCHIVE_REFERENCE_ARTIFACT), "utf8"
+));
+buildLiteraryArchiveReferenceMetadata(referenceItemsFromArchive(syncArchive), referenceCatalogArtifact);
 if (coverBatch20260820 && works.length !== 41) {
   throw new Error(`Batch 2026-08-20 canonical coverage is ${works.length}, expected 41.`);
 }
@@ -1078,6 +1087,7 @@ if (atomicEnableEvidenceV2 && unattestedTargetPredecessors.length) {
 
 const reviewedWriterReference = buildEvidenceV2ReviewedWriterReference(releaseItems);
 const draftWriterReference = buildEvidenceV2DraftWriterReference(releaseItems);
+const referenceCatalog = buildLiteraryArchiveReferenceMetadata(releaseItems, referenceCatalogArtifact);
 let registryRotation = null;
 if (evidenceHealth.registryRotation) {
   const { data: snapshot, error } = await supabase.rpc("get_literary_work_evidence_v2_rotation_snapshot");
@@ -1109,6 +1119,7 @@ const sourceRevision = fullHash(
     ...(registryRotation ? [canonicalLiteraryArchiveReleasePayload(registryRotation)] : []),
     ...(reviewedWriterReference ? [canonicalLiteraryArchiveReleasePayload(reviewedWriterReference)] : []),
     ...(draftWriterReference ? [canonicalLiteraryArchiveReleasePayload(draftWriterReference)] : []),
+    canonicalLiteraryArchiveReleasePayload(referenceCatalog),
     atomicEnableEvidenceV2 ? "enable-evidence-v2" : "preserve-evidence-v2",
   ].join("\n")
 );
@@ -1129,6 +1140,7 @@ const releaseMetadata = {
   ...(registryRotation ? { evidenceV2RegistryRotation: registryRotation } : {}),
   ...(reviewedWriterReference ? { reviewedWriterReference } : {}),
   ...(draftWriterReference ? { draftWriterReference } : {}),
+  referenceCatalog,
 };
 
 console.log(

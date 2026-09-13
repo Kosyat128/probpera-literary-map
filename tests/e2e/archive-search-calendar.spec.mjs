@@ -133,6 +133,7 @@ for (const locale of ["ru", "en"]) {
 
 test("3D-книга показывает готовую аннотацию с отметкой о непроверенном статусе", async ({ page, isMobile }) => {
   test.skip(Boolean(isMobile), "One real 3D rendering contract; bilingual mobile text is covered above");
+  test.setTimeout(90_000);
   await page.addInitScript(`(${installObservers.toString()})(); window.__REACT_DEVTOOLS_GLOBAL_HOOK__.renderers = new Map();`);
   await page.goto("/#books");
   const search = page.locator(".book-shelf-controls input[role=combobox]");

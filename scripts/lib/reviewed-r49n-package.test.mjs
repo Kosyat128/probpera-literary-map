@@ -2,11 +2,14 @@ import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import {
-  isReviewedR49nPackageAddition, projectReviewedR49nPackage,
+  isReviewedR49nPackageAddition, projectReviewedR49nPackage, projectPublishedR49nPackage,
   r49nPackageAttestation, reviewedR49nPackageSourceSha256,
 } from "./reviewed-r49n-package.mjs";
+import { projectReviewedReferenceRelease } from "./reviewed-reference-release.mjs";
 
 const read = path => readFileSync(path, "utf8").replace(/\r\n?/gu, "\n");
+const readPublishedBrowserContract = path => path === "tests/e2e/archive-search-calendar.spec.mjs"
+  ? projectReviewedReferenceRelease(path, read(path)) : read(path);
 const sha = value => createHash("sha256").update(value).digest("hex");
 const canonical = value => Array.isArray(value) ? value.map(canonical)
   : value && typeof value === "object"
@@ -62,10 +65,12 @@ describe("R49N common package additive governance", () => {
   });
 
   it.each(r49nPackageAttestation.allowedProjectionPaths)("reverses only exact additions in %s", path => {
-    const source = read(path), projected = projectReviewedR49nPackage(path, source);
+    const current = read(path), source = projectReviewedReferenceRelease(path, current);
+    const projected = projectPublishedR49nPackage(path, source);
+    expect(projectReviewedR49nPackage(path, current)).toBe(projected);
     expect(reviewedR49nPackageSourceSha256(projected)).toBe(r49nPackageAttestation.sourceBaselines[path]);
     const unrelated = "\n/* Unreviewed change must remain visible to the old lock. */\n";
-    expect(projectReviewedR49nPackage(path, source + unrelated)).toBe(projected + unrelated);
+    expect(projectPublishedR49nPackage(path, source + unrelated)).toBe(projected + unrelated);
     expect(reviewedR49nPackageSourceSha256(projected + unrelated))
       .not.toBe(r49nPackageAttestation.sourceBaselines[path]);
     for (const delta of r49nPackageAttestation.projections.filter(delta => delta.path === path)) {
@@ -73,7 +78,7 @@ describe("R49N common package additive governance", () => {
         source.replace(delta.after, ""), source + delta.after,
         source.replace(delta.after, delta.after.replace(/\S/u, "?")),
       ]) {
-        expect(() => projectReviewedR49nPackage(path, changed))
+        expect(() => projectPublishedR49nPackage(path, changed))
           .toThrow("Missing or duplicate reviewed R49N package delta");
       }
     }
@@ -176,11 +181,11 @@ describe("R49N common package additive governance", () => {
     expect(hyphens).toMatchObject({ runtimeTextChanged: false, importedSourceBytesChanged: false, historicalPinsChanged: false, focusedTestsPassed: 13 });
     expect(hyphens.protectedFiles).toHaveLength(9);
     for (const file of [...hyphens.protectedFiles, ...hyphens.files, ...hyphens.literalSerialization])
-      expect(sha(read(file.path))).toBe(file.sha256Lf);
+      expect(sha(readPublishedBrowserContract(file.path))).toBe(file.sha256Lf);
     expect(report.compactEditorialImageRepair.files).toHaveLength(8);
     for (const file of report.compactEditorialImageRepair.files)
       expect(sha(read(file.path))).toBe(file.sha256Lf);
-    for (const file of report.fullCatalogUi.files) expect(sha(read(file.path))).toBe(file.sha256Lf);
+    for (const file of report.fullCatalogUi.files) expect(sha(readPublishedBrowserContract(file.path))).toBe(file.sha256Lf);
     expect(report.historicalCoverChecks).toMatchObject({ status: "PASS", checkOnly: true, newCoverPublication: false, coverAssetsChanged: [] });
     for (const file of report.historicalCoverChecks.unchangedFiles) expect(sha(read(file.path))).toBe(file.sha256);
     expect(report.adminCatalogCompatibility.publicBiographyApprovalGranted).toBe(false);
