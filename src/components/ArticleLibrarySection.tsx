@@ -8,7 +8,6 @@ import {
 } from "../data/articles/catalog";
 import { mediaFocusStyle } from "../utils/mediaFocus";
 import { articleCatalogEntryForLanguage } from "../data/articles/localization";
-import { PUBLIC_ARCHIVE_ARTICLE_COUNT } from "../data/articles/publicationStats";
 import {
   articleIdFromPath,
   articlePath,
@@ -228,10 +227,7 @@ export default function ArticleLibrarySection({
       }),
     [language]
   );
-  const archiveArticleCount =
-    language === "ru"
-      ? PUBLIC_ARCHIVE_ARTICLE_COUNT
-      : localizedArticleCatalog.length;
+  const archiveArticleCount = localizedArticleCatalog.length;
   const [sectionId, setSectionId] = useState(sectionFromAddress);
   const [seriesId, setSeriesId] = useState(seriesFromAddress);
   const [search, setSearch] = useState("");
@@ -625,9 +621,9 @@ export default function ArticleLibrarySection({
             type="button"
             onClick={() => setVisibleCount((value) => value + 12)}
           >
-            {t("Показать ещё 12 материалов")}
+            {t("Показать ещё")} {number(Math.min(12, filtered.length - visibleCount))}
             <span>
-              {Math.min(visibleCount, filtered.length)} / {filtered.length}
+              {number(Math.min(visibleCount, filtered.length))} / {number(filtered.length)}
             </span>
           </button>
         )}

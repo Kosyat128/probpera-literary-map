@@ -3,7 +3,6 @@ import { publicImageUrl } from "../utils/imageDelivery";
 
 import { articleCatalog } from "../data/articles/catalog";
 import { articleCatalogEntryForLanguage } from "../data/articles/localization";
-import { PUBLIC_ARCHIVE_ARTICLE_COUNT } from "../data/articles/publicationStats";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import {
   articlePath,
@@ -204,10 +203,7 @@ export default function SectionsDirectory({
   return (
     <div className="sections-directory-grid" id="sections-directory-list">
       {visibleSectionCards.map(({ section, publications, latest, series }) => {
-        const publicationCount =
-          language === "ru" && section.metric === "all-articles"
-            ? PUBLIC_ARCHIVE_ARTICLE_COUNT
-            : publications.length;
+        const publicationCount = publications.length;
         const liveLabel =
           section.id === "atlas"
             ? language === "en"

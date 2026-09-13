@@ -1035,6 +1035,7 @@
     /* Compact type scale for the original 880px/920px navigation panels. */
     --type-menu-label: .75rem;
     --type-menu-title: 1.5rem;
+    --type-menu-lead-title: 1.25rem;
     --type-menu-item: .9375rem;
     --type-menu-copy: .8125rem;
     --type-menu-meta: .75rem;
@@ -1068,9 +1069,9 @@
 
   .articles-mega-lead strong {
     font-family: var(--font-editorial);
-    font-size: var(--type-menu-title);
+    font-size: var(--type-menu-lead-title);
     font-weight: 500;
-    line-height: 1.2;
+    line-height: 1.25;
     text-wrap: pretty;
   }
 
@@ -1091,6 +1092,17 @@
     font-weight: 400;
     line-height: var(--type-leading-ui);
     text-wrap: pretty;
+  }
+
+  @media (max-height: 740px) {
+    .articles-mega-lead {
+      --type-menu-lead-title: 1.125rem;
+      --type-menu-copy: .75rem;
+    }
+
+    .articles-mega-lead p {
+      line-height: 1.35;
+    }
   }
 
   .articles-mega-content > section span,

@@ -1,0 +1,70 @@
+name: Inspect Wells evidence (read only)
+
+on:
+  workflow_dispatch:
+    inputs:
+      expected_main_sha:
+        description: "Exact 40-character main SHA for the single Wells evidence inspection"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: production-wells-evidence-inspection
+  cancel-in-progress: false
+
+jobs:
+  inspect:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: production
+    steps:
+      - name: Checkout the selected main commit
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Validate the exact main invocation
+        env:
+          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -Eeuo pipefail
+          [[ "$EXPECTED_MAIN_SHA" =~ ^[0-9a-f]{40}$ ]]
+          [[ "$GITHUB_SHA" == "$EXPECTED_MAIN_SHA" ]]
+          [[ "$(git rev-parse HEAD)" == "$EXPECTED_MAIN_SHA" ]]
+          [[ "$(gh api "repos/$GITHUB_REPOSITORY/git/ref/heads/main" --jq '.object.sha')" == "$EXPECTED_MAIN_SHA" ]]
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Test the read-only inspection boundary
+        run: node --test scripts/lib/wells-evidence-inspection.node-test.mjs
+
+      - name: Read only the protected Wells evidence
+        env:
+          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
+          SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: node scripts/inspect-wells-evidence.mjs --expected-main-sha "$EXPECTED_MAIN_SHA"
+
+      - name: Verify the evidence artifact checksum
+        working-directory: reconciliation/wells-evidence-inspection
+        run: sha256sum --check SHA256SUMS
+
+      - name: Retain only the single-book inspection
+        uses: actions/upload-artifact@v7
+        with:
+          name: wells-evidence-inspection-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            reconciliation/wells-evidence-inspection/wells-evidence.json
+            reconciliation/wells-evidence-inspection/SHA256SUMS
+          if-no-files-found: error
+          retention-days: 7

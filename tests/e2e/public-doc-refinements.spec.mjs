@@ -120,40 +120,106 @@ test("mobile search overlay remains compact, scrollable and keyboard-safe", asyn
   await expect(searchTrigger).toBeFocused();
 });
 
-test("desktop header actions remain fully visible around the compact breakpoint", async ({
+test("header social links and language controls remain reachable across responsive layouts", async ({
   page,
 }) => {
   test.setTimeout(90_000);
   await page.goto("/");
+  await page.evaluate(() => document.fonts.ready);
 
-  for (const width of [1451, 1470, 1499, 1504, 1520, 1521]) {
-    await page.setViewportSize({ width, height: 800 });
-    const geometry = await page.locator(".site-header").evaluate((header) => {
-      const actions = header.querySelector(".header-actions");
-      const readerButton = header.querySelector(".reader-button");
-      const socials = actions?.querySelector(".header-socials");
-      if (!actions || !readerButton || !socials) return null;
-      const viewportLeft = 0;
-      const viewportRight = window.innerWidth;
-      const actionsBox = actions.getBoundingClientRect();
-      const readerBox = readerButton.getBoundingClientRect();
-      return {
-        actionsLeft: actionsBox.left,
-        actionsRight: actionsBox.right,
-        readerLeft: readerBox.left,
-        readerRight: readerBox.right,
-        socialsVisible: getComputedStyle(socials).display !== "none",
-        viewportLeft,
-        viewportRight,
-      };
-    });
+  for (const locale of ["ru", "en"]) {
+    await page.locator(".site-header .interface-language-control button").nth(locale === "ru" ? 0 : 1).click();
+    await expect(page.locator("html")).toHaveAttribute("lang", locale);
+    for (const width of [320, 390, 680, 681, 768, 900, 901, 1260, 1280, 1366, 1520, 1521, 1547, 1600, 1601, 1700, 1701, 1920]) {
+      await page.setViewportSize({ width, height: 800 });
+      const geometry = await page.locator(".site-header").evaluate((header) => {
+        const actions = header.querySelector(".header-actions");
+        const readerButton = header.querySelector(".reader-button");
+        const socials = actions?.querySelector(".header-socials");
+        const language = actions?.querySelector(".interface-language-control");
+        const mobileNav = document.querySelector(".mobile-nav");
+        if (!actions || !readerButton || !socials || !language || !mobileNav) return null;
+        const viewportLeft = 0;
+        const viewportRight = window.innerWidth;
+        const actionsBox = actions.getBoundingClientRect();
+        const readerBox = readerButton.getBoundingClientRect();
+        return {
+          actionsLeft: actionsBox.left,
+          actionsRight: actionsBox.right,
+          readerLeft: readerBox.left,
+          readerRight: readerBox.right,
+          socialsVisible: getComputedStyle(socials).display !== "none",
+          footerSocialLinks: [...document.querySelectorAll(".footer-brand .header-socials a")].map(link => ({
+            visible: !!link.getClientRects().length,
+            href: link.href,
+          })),
+          links: [...socials.querySelectorAll("a")].map(link => ({
+            visible: !!link.getClientRects().length,
+            href: link.href,
+            ...link.getBoundingClientRect().toJSON(),
+          })),
+          languageButtons: [...language.querySelectorAll("button")].map(button => ({
+            fontSize: getComputedStyle(button).fontSize,
+            fontWeight: getComputedStyle(button).fontWeight,
+            ...button.getBoundingClientRect().toJSON(),
+          })),
+          coarsePointer: matchMedia("(pointer: coarse)").matches,
+          controls: [header.querySelector(".brand"), header.querySelector(":scope > nav"), ...actions.children]
+            .filter(element => element && getComputedStyle(element).display !== "none")
+            .map(element => ({ selector: element.className || element.tagName, ...element.getBoundingClientRect().toJSON() })),
+          headerBottom: header.getBoundingClientRect().bottom,
+          mobileVisible: getComputedStyle(mobileNav).display !== "none",
+          mobileTop: mobileNav.getBoundingClientRect().top,
+          overflow: document.documentElement.scrollWidth - innerWidth,
+          viewportLeft,
+          viewportRight,
+        };
+      });
 
-    expect(geometry).not.toBeNull();
-    expect(geometry.actionsLeft).toBeGreaterThanOrEqual(geometry.viewportLeft);
-    expect(geometry.actionsRight).toBeLessThanOrEqual(geometry.viewportRight);
-    expect(geometry.readerLeft).toBeGreaterThanOrEqual(geometry.viewportLeft);
-    expect(geometry.readerRight).toBeLessThanOrEqual(geometry.viewportRight);
-    if (width <= 1520) expect(geometry.socialsVisible).toBe(false);
+      expect(geometry).not.toBeNull();
+      expect(geometry.actionsLeft).toBeGreaterThanOrEqual(geometry.viewportLeft);
+      expect(geometry.actionsRight).toBeLessThanOrEqual(geometry.viewportRight);
+      expect(geometry.readerLeft).toBeGreaterThanOrEqual(geometry.viewportLeft);
+      expect(geometry.readerRight).toBeLessThanOrEqual(geometry.viewportRight);
+      expect(geometry.socialsVisible, `${locale}/${width}`).toBe(width > 680);
+      expect(geometry.links).toHaveLength(5);
+      expect(geometry.links.every(link => link.visible === (width > 680))).toBe(true);
+      expect(geometry.links.some(link => new URL(link.href).hostname === "boosty.to")).toBe(true);
+      expect(geometry.footerSocialLinks).toHaveLength(5);
+      expect(geometry.footerSocialLinks.every(link => link.visible)).toBe(true);
+      expect(geometry.footerSocialLinks.some(link => new URL(link.href).hostname === "boosty.to")).toBe(true);
+      expect(geometry.overflow, `${locale}/${width}`).toBeLessThanOrEqual(1);
+      for (const control of geometry.controls) {
+        expect(control.left, `${locale}/${width} ${control.selector}`).toBeGreaterThanOrEqual(0);
+        expect(control.right, `${locale}/${width} ${control.selector}`).toBeLessThanOrEqual(width);
+      }
+      for (const [index, first] of geometry.controls.entries()) {
+        for (const second of geometry.controls.slice(index + 1)) {
+          const overlap = first.left < second.right - 1 && first.right > second.left + 1 && first.top < second.bottom - 1 && first.bottom > second.top + 1;
+          expect(overlap, `${locale}/${width} ${first.selector} / ${second.selector}`).toBe(false);
+        }
+      }
+      for (const button of geometry.languageButtons) {
+        expect(button.fontSize).toBe("10px");
+        expect(button.fontWeight).toBe("900");
+      }
+      if (width <= 680 || geometry.coarsePointer) {
+        for (const control of [...geometry.links.filter(link => link.visible), ...geometry.languageButtons]) {
+          expect(control.width, `${locale}/${width}`).toBeGreaterThanOrEqual(44);
+          expect(control.height, `${locale}/${width}`).toBeGreaterThanOrEqual(44);
+        }
+      }
+      if (geometry.mobileVisible) expect(geometry.mobileTop).toBeGreaterThanOrEqual(geometry.headerBottom - 1);
+      if ([320, 768, 1280, 1547, 1701].includes(width)) {
+        await page.evaluate(() => window.scrollTo({ top: 200, behavior: "instant" }));
+        await expect.poll(() => page.locator(".site-header").evaluate(header => header.getBoundingClientRect().top)).toBe(0);
+        if (geometry.mobileVisible) {
+          const stickyGap = await page.locator(".mobile-nav").evaluate(nav => nav.getBoundingClientRect().top - document.querySelector(".site-header").getBoundingClientRect().bottom);
+          expect(Math.abs(stickyGap), `${locale}/${width} sticky navigation`).toBeLessThanOrEqual(1);
+        }
+        await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
+      }
+    }
   }
 });
 

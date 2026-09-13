@@ -1116,7 +1116,7 @@ export default function WriterPanel({
                                 <button
                                   className="writer-record-open-book"
                                   type="button"
-                                  aria-label={`${t("Книжный архив")}: ${work.title}`}
+                                  aria-label={`${t("Библиотека «Проба Пера»")}: ${work.title}`}
                                   onClick={(event) =>
                                     onWorkSelect(
                                       country.id,
@@ -1126,7 +1126,7 @@ export default function WriterPanel({
                                     )
                                   }
                                 >
-                                  {t("Книжный архив")} <span aria-hidden="true">→</span>
+                                  {t("Библиотека «Проба Пера»")} <span aria-hidden="true">→</span>
                                 </button>
                               )}
                               {work.sourceUrl && (

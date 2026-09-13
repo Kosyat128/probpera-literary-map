@@ -1438,8 +1438,8 @@ export default function ArticleReader({
                   </div>
                   <p>
                     {language === "en"
-                      ? "Verified works mentioned in the text and available in the literary archive."
-                      : "Проверенные произведения, упомянутые в тексте и доступные в книжном архиве."}
+                      ? "Verified works mentioned in the text and available in the library."
+                      : "Проверенные произведения, упомянутые в тексте и доступные в библиотеке."}
                   </p>
                 </header>
                 <div>

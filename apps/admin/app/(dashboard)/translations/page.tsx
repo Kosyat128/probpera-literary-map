@@ -387,7 +387,7 @@ export default async function PremiumTranslationsPage({
 
         <form className="panel settings-stack" action={translatePremiumLibraryBatchAction}>
           <BackfillCursorFields query={query} />
-          <span className="eyebrow">Книжный архив</span>
+          <span className="eyebrow">Библиотека «Проба Пера»</span>
           <h2>Премиальный EN книг</h2>
           <p>
             До четырёх проверенных RU-карточек за запуск. Ручной reviewed/verified EN

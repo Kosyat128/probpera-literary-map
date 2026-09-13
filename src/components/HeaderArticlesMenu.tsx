@@ -3,7 +3,6 @@ import { publicImageAttributes, publicImageUrl } from "../utils/imageDelivery";
 
 import type { ArticleCatalogEntry } from "../data/articles/catalog";
 import { articleCatalogEntryForLanguage } from "../data/articles/localization";
-import { PUBLIC_ARCHIVE_ARTICLE_COUNT } from "../data/articles/publicationStats";
 import {
   articlePath,
   journalPath,
@@ -12,6 +11,7 @@ import {
   shouldUseClientNavigation,
 } from "../utils/articleRoutes";
 import {
+  selectInterfacePlural,
   translateInterfaceText,
   type InterfaceLanguage,
 } from "../i18n/InterfaceLanguage";
@@ -54,6 +54,7 @@ type Props = {
 
 export default function HeaderArticlesMenu({ language = "ru" }: Props) {
   const [articles, setArticles] = useState<ArticleCatalogEntry[]>([]);
+  const [loaded, setLoaded] = useState(false);
   const [loading, setLoading] = useState(false);
   const closeTimer = useRef<number | null>(null);
   const detailsRef = useRef<HTMLDetailsElement>(null);
@@ -88,12 +89,16 @@ export default function HeaderArticlesMenu({ language = "ru" }: Props) {
   }, []);
 
   const loadArticles = useCallback(() => {
-    if (articles.length || loading) return;
+    if (loaded || loading) return;
     setLoading(true);
     import("../data/articles/catalog")
-      .then(({ articleCatalog }) => setArticles(articleCatalog))
+      .then(({ articleCatalog }) => {
+        setArticles(articleCatalog);
+        setLoaded(true);
+      })
+      .catch(() => setLoaded(false))
       .finally(() => setLoading(false));
-  }, [articles.length, loading]);
+  }, [loaded, loading]);
 
   const localizedArticles = useMemo(
     () =>
@@ -250,7 +255,7 @@ export default function HeaderArticlesMenu({ language = "ru" }: Props) {
           <div className="articles-mega-loading">
             {loading
               ? t("Подключаем редакционный архив…")
-              : language === "en" && articles.length > 0
+              : language === "en" && loaded
                 ? t("Пока нет опубликованных переводов на английский язык")
                 : t("Наведите, чтобы открыть публикации")}
           </div>
@@ -258,12 +263,8 @@ export default function HeaderArticlesMenu({ language = "ru" }: Props) {
 
         <footer>
           <span>
-            {localizedArticles.length
-              ? language === "en"
-                ? `${localizedArticles.length} ${
-                    localizedArticles.length === 1 ? "publication" : "publications"
-                  } in the archive`
-                : `${PUBLIC_ARCHIVE_ARTICLE_COUNT} материалов в архиве`
+            {loaded
+              ? `${new Intl.NumberFormat(language === "ru" ? "ru-RU" : "en-GB").format(localizedArticles.length)} ${t(selectInterfacePlural(localizedArticles.length, language, ["материал в архиве", "материала в архиве", "материалов в архиве"]))}`
               : t("Полный архив журнала")}
           </span>
           <a

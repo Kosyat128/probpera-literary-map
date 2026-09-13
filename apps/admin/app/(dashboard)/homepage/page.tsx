@@ -8,6 +8,7 @@ import type { HomepagePreviewSection } from "@/components/HomepageVisualPreview"
 import { AdminDependencyState } from "@/components/AdminStatusState";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { adminEnv } from "@/lib/env";
+import { coreSectionTitle } from "@/lib/core-section-title";
 import { safePublicSiteHref, safePublicSiteOrigin } from "@/lib/public-link-boundary";
 import {
   homepageImagePositions,
@@ -102,9 +103,9 @@ const coreSectionDefaults = [
   },
   {
     key: "book-archive",
-    label: "Книжный архив",
+    label: "Библиотека «Проба Пера»",
     eyebrow: "Книги, авторы, страны",
-    title: "Книжный архив",
+    title: "Библиотека «Проба Пера»",
     description:
       "Произведения, авторы и страны связаны в единую проверенную редакционную коллекцию.",
     buttonText: "",
@@ -282,7 +283,7 @@ function BookArchiveSceneControls({
 }) {
   return (
     <fieldset className="settings-stack">
-      <legend>Сцена книжного архива</legend>
+      <legend>Сцена библиотеки</legend>
       <p>
         Доступны только проверенные пресеты и числовые параметры. Произвольные
         CSS, HTML, JavaScript и шейдеры не сохраняются.
@@ -555,7 +556,9 @@ export default async function HomepagePage({
     blocks
       .map((block) => {
         const key = settingText(settingsObject(block.settings), "coreSectionKey");
-        return key ? [key, block] as const : null;
+        return key
+          ? [key, { ...block, title: coreSectionTitle(key, block.title) }] as const
+          : null;
       })
       .filter((entry): entry is NonNullable<typeof entry> => Boolean(entry))
   );

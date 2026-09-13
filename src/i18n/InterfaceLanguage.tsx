@@ -157,7 +157,7 @@ const englishInterfaceText: Record<string, string> = {
   "Рассказы и литературные истории": "Stories and literary histories",
   "Авторские рассказы и эссе, судьбы произведений, писательские замыслы и культурные открытия.":
     "Original stories and essays, the lives of works, writers' ideas and cultural discoveries.",
-  "Книжный архив": "Book archive",
+  "Библиотека «Проба Пера»": "Proba Pera Library",
   "Литературный календарь": "Literary calendar",
   "Указатель писателей": "Writers index",
   "Быстрый вход в биографии, произведения и литературные связи авторов из энциклопедии.":
@@ -268,7 +268,7 @@ const englishInterfaceText: Record<string, string> = {
   "произведений из единой базы стран": "works from the unified country archive",
   "Поиск по книге, автору или стране": "Search by book, writer or country",
   "Например, Достоевский или Япония": "For example, Dostoevsky or Japan",
-  "Фильтры книжного архива": "Book archive filters",
+  "Фильтры библиотеки": "Library filters",
   "Отбор архива": "Archive selection",
   "результатов": "results",
   "Все связанные произведения": "All linked works",
@@ -602,7 +602,7 @@ const englishInterfaceText: Record<string, string> = {
     "Full names, verifiable dates, human biographies, major works and open sources. Uncertain claims are never disguised by a confident tone.",
   "Интересный факт о книге": "A notable book fact",
   "Проверить источник": "Check the source",
-  "Собираем книжный архив…": "Building the book archive…",
+  "Загружаем библиотеку…": "Loading the library…",
   "Новые публикации": "New publications",
   "Читать в «Пробе Пера»": "Read in Proba Pera",
   "Читать статью": "Read article",
@@ -670,7 +670,7 @@ const englishInterfaceText: Record<string, string> = {
   Контакты: "Contacts",
   "Независимый литературный журнал": "Independent literary journal",
   "«Проба Пера»": "Proba Pera",
-  "Авторский архив · 167 материалов": "Editorial archive · 167 publications",
+  "Показать ещё": "Show more",
   "Журнал, выстроенный для чтения": "A journal designed for reading",
   "Мнения о книгах, литературные эссе, биографии, экранизации и языковые наблюдения собраны в единую редакционную библиотеку.":
     "Book reviews, literary essays, biographies, adaptations and observations on language form one editorial library.",
@@ -1233,7 +1233,7 @@ const englishInterfaceText: Record<string, string> = {
   "Предыдущие 13 произведений": "Previous 13 works",
   "РЕДАКЦИОННЫЕ ПОЛКИ": "EDITORIAL SHELVES",
   "Расширенные фильтры": "Advanced filters",
-  "Расширенные фильтры книжного архива": "Advanced book archive filters",
+  "Расширенные фильтры библиотеки": "Advanced library filters",
   "Редакционная релевантность": "Editorial relevance",
   "Редакционный порядок": "Editorial order",
   "Редакционный статус": "Editorial status",
@@ -1353,13 +1353,13 @@ const englishInterfaceText: Record<string, string> = {
   "Книги на полке сохранены без изменений.":
     "The books on this shelf remain unchanged.",
   "Повторить поиск": "Retry search",
-  "Подсказки всего книжного архива": "Complete book archive suggestions",
-  "Результаты поиска по всему книжному архиву":
-    "Complete book archive search results",
+  "Подсказки всей библиотеки": "Suggestions from the entire library",
+  "Результаты поиска по всей библиотеке":
+    "Search results across the entire library",
   "Результаты поиска по текущей полке": "Current shelf search results",
   "Открыты сведения о книге": "Book details open",
   "Состояние книжной полки": "Bookshelf status",
-  "Весь книжный архив": "Complete book archive",
+  "Вся библиотека": "Entire library",
   "Пока нет полок": "No shelves yet",
   "Подборка обновляется": "Updating selection",
   "Пока пусто": "Empty for now",
@@ -1456,10 +1456,10 @@ const englishInterfaceText: Record<string, string> = {
   "Литературную планету не удалось открыть": "Literary Planet could not be opened",
   "Глобус загрузится при приближении": "The globe will load as you approach",
   "Повторить загрузку": "Retry loading",
-  "Книжный архив временно недоступен":
-    "The book archive is temporarily unavailable",
-  "Книжный архив загрузится при приближении":
-    "The book archive will load as you approach",
+  "Библиотека временно недоступна":
+    "The library is temporarily unavailable",
+  "Библиотека загрузится при приближении":
+    "The library will load as you approach",
   "Место полки уже зарезервировано, поэтому страница не сдвинется.":
     "The shelf space is already reserved, so the page will not shift.",
   "Авторский архив временно недоступен":

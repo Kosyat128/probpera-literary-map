@@ -1,3 +1,17 @@
-// Editorial counter shown in the Russian-language public archive. It is kept
-// separately from the client-side article snapshot used to render cards.
-export const PUBLIC_ARCHIVE_ARTICLE_COUNT = 167;
+import type { ArticleCatalogEntry } from "./catalog";
+import { articleCatalogEntryForLanguage } from "./localization";
+
+// Count the same merged, publication-gated snapshot that supplies public cards.
+export function articlePublicationCounts(catalog: readonly ArticleCatalogEntry[]) {
+  return {
+    ru: catalog.length,
+    en: catalog.filter((article) => articleCatalogEntryForLanguage(article, "en"))
+      .length,
+  };
+}
+
+export function loadArticlePublicationCounts() {
+  return import("./catalog").then(({ articleCatalog }) =>
+    articlePublicationCounts(articleCatalog)
+  );
+}

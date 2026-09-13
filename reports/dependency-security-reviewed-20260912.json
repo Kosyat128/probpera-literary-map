@@ -1,0 +1,225 @@
+{
+  "schemaVersion": 1,
+  "id": "DEPENDENCY-SECURITY-REVIEW-RECEIPT-20260912",
+  "reviewedOn": "2026-09-12",
+  "reviewType": "AI code review with tool-executed checks",
+  "humanReviewClaim": false,
+  "baselineMainSha": "cfbd444b279c4aa7a5abe44a661cf16815253b5d",
+  "manifest": {
+    "path": "scripts/governance/dependency-security-reviewed-20260912.json",
+    "sha256": "f1a8361822601a0d1b9761d1a6ebce7bb0a00a13c9d05a45a8055fa21718811c"
+  },
+  "scope": "Patch all existing admin Tiptap pins from 3.30.4 to 3.30.5 and root sharp from 0.35.3 to 0.35.4. Keep unrelated locked packages unchanged. Run the identical mandatory production audit directly after npm ci in the complete preflight; distribute all 22 premium shards, 6 WebGL shards and the remaining regression suite over six dependent browser lanes with at most four concurrent jobs. Share checksum-verified audited build inputs and retain the mandatory verify check, which rejects every failed, cancelled, skipped or missing prerequisite result.",
+  "sourceFileHashes": {
+    ".github/workflows/quality.yml": "a29c911bccc1f8f7949f7d7beb3fb4c8bb8b307cfdc7e160b8df0bea118c1337",
+    "apps/admin/package.json": "782d32ba20266076c2fd0ba7b4cab62220520ed23bfbcf1544d6c90648843280",
+    "package-lock.json": "f8fa586724f215d32d5465280af7ff415eeb4a1de5850d3ac942e2fe043f2cb1",
+    "package.json": "248a4a424bbe00c4967d4d0e9cad16ec700c7fcf88368f099399cab80ff06793"
+  },
+  "packageChanges": {
+    "baseHead": "cfbd444b279c4aa7a5abe44a661cf16815253b5d",
+    "files": [
+      {
+        "path": "package.json",
+        "sha256": "248a4a424bbe00c4967d4d0e9cad16ec700c7fcf88368f099399cab80ff06793"
+      },
+      {
+        "path": "apps/admin/package.json",
+        "sha256": "782d32ba20266076c2fd0ba7b4cab62220520ed23bfbcf1544d6c90648843280"
+      },
+      {
+        "path": "package-lock.json",
+        "sha256": "f8fa586724f215d32d5465280af7ff415eeb4a1de5850d3ac942e2fe043f2cb1"
+      }
+    ],
+    "changedLockEntries": 61,
+    "tiptapPackages": 32,
+    "tiptapVersion": "3.30.5",
+    "sharpVersion": "0.35.4",
+    "sharpFamilyEntries": 27,
+    "unrelatedLockEntries": "exact HEAD",
+    "miniflareDevOnlySharp": "unchanged 0.35.2",
+    "validation": {
+      "productionAudit": {
+        "command": "npm audit --omit=dev --audit-level=high",
+        "exitCode": 0,
+        "vulnerabilities": {
+          "info": 0,
+          "low": 0,
+          "moderate": 0,
+          "high": 0,
+          "critical": 0,
+          "total": 0
+        },
+        "report": ".tmp/ui-production-dependency-audit-after.json"
+      },
+      "isolatedOfflineLockValidation": {
+        "exitCode": 0,
+        "lockfileByteIdentical": true,
+        "nodeModulesCreated": false
+      },
+      "diffCheck": "PASS",
+      "runtimeValidation": "delegated to root isolated installation"
+    },
+    "sources": [
+      "https://github.com/advisories/GHSA-j95f-988m-3j2f",
+      "https://github.com/advisories/GHSA-rgj7-g3m4-5g8c",
+      "https://registry.npmjs.org/%40tiptap%2Fcore/3.30.5",
+      "https://registry.npmjs.org/sharp/0.35.4"
+    ],
+    "npmMetadataCacheCaveat": "npm 11.19 lock-only in junction worktree attempted unlink of hidden node_modules/.package-lock.json and received EPERM; no package installation or scripts requested. Earlier elevated lock-only commands may have invalidated this internal metadata cache. All final npm validation ran in isolated directory without node_modules."
+  },
+  "productionAudit": {
+    "command": "npm audit --omit=dev --audit-level=high",
+    "exitCode": 0,
+    "artifactPath": ".tmp/ui-production-dependency-audit-after.json",
+    "artifactSha256": "797fb8ac258cd5fe553896514f22bf5ad4878d403e300bc73f7d40100ff83cca",
+    "result": {
+      "auditReportVersion": 2,
+      "vulnerabilities": {},
+      "metadata": {
+        "vulnerabilities": {
+          "info": 0,
+          "low": 0,
+          "moderate": 0,
+          "high": 0,
+          "critical": 0,
+          "total": 0
+        },
+        "dependencies": {
+          "prod": 213,
+          "dev": 527,
+          "optional": 179,
+          "peer": 0,
+          "peerOptional": 0,
+          "total": 775
+        }
+      }
+    }
+  },
+  "validation": {
+    "isolatedLockValidation": "Offline npm package-lock-only validation passed; lock bytes unchanged; no node_modules created.",
+    "sourceProjections": "All four paths reverse to their exact cfbd444b source bytes. Missing, duplicated or changed reviewed fragments fail; unrelated changes remain visible.",
+    "historicalGovernance": "Stage5 data/content locks and existing header-library governance passed without historical pin changes.",
+    "workflow": "The unchanged mandatory audit directly follows npm ci in preflight. All prior preflight commands and every browser shard are preserved. Six dependent matrix lanes share a checksum-verified build; the required verify aggregator accepts only successful preflight and browser results. The executable workflow contract checks all 25 success/failure/cancelled/skipped/missing result combinations.",
+    "r49Integration": "The four pre-security files at 4ed87afa5aef95a650be213c982da5cf662f7469 equal the cfbd444b baselines byte for byte. Apply the security projection before the R49 package, Dickens and header projections when combining branches."
+  },
+  "release": {
+    "committedByThisReview": false,
+    "pushedByThisReview": false,
+    "productionDeployedByThisReview": false
+  },
+  "finalizedOn": "2026-09-13",
+  "workflowReview": {
+    "sourceSha256": "a29c911bccc1f8f7949f7d7beb3fb4c8bb8b307cfdc7e160b8df0bea118c1337",
+    "testPath": "scripts/lib/quality-browser-matrix.test.mjs",
+    "testSha256": "b2975ea59015f416cc8cbe96794533376dbec1cc88e898cb7c567ec8e89d62c5",
+    "prerequisiteJob": "preflight",
+    "browserLanes": 6,
+    "maxParallelJobs": 4,
+    "premiumShards": 22,
+    "webglShards": 6,
+    "regressionCommands": 1,
+    "auditedInputs": {
+      "packedPaths": [
+        "dist",
+        "src/data/imageDelivery.generated.json",
+        "reports/public-image-delivery.json"
+      ],
+      "restoredPublicPaths": [
+        "public/cms from dist/cms",
+        "public/media/optimized from dist/media/optimized"
+      ],
+      "sha256": "preflight output checked before extraction"
+    },
+    "requiredCheck": "verify",
+    "requiredResults": {
+      "preflight": "success",
+      "browser": "success"
+    },
+    "historicalContractCheck": {
+      "testFiles": 2,
+      "testsPassed": 6,
+      "command": "node node_modules/vitest/vitest.mjs run scripts/lib/quality-browser-matrix.test.mjs scripts/lib/playwright-suite-classification.test.mjs --configLoader native",
+      "coverage": {
+        "premiumShards": 22,
+        "webglShards": 6,
+        "regressionCommands": 1,
+        "maxParallelJobs": 4,
+        "aggregatorResultCombinations": 25
+      }
+    },
+    "fullCiMatrix": "Must run on the final commit before merge; this local review does not certify CI or production."
+  },
+  "runtimeValidation": {
+    "receiptPath": ".tmp/security-dependency-validation-receipt.json",
+    "receiptSha256": "fdaf296c2103f36fbf5a18ef9ef679af9a2c2a69c91e857491466498462b0729",
+    "checkedAt": "2026-09-12T14:01:48.848Z",
+    "lockSha256": "f8fa586724f215d32d5465280af7ff415eeb4a1de5850d3ac942e2fe043f2cb1",
+    "packages": [
+      {
+        "name": "@tiptap/core",
+        "version": "3.30.5"
+      },
+      {
+        "name": "@tiptap/react",
+        "version": "3.30.5"
+      },
+      {
+        "name": "@tiptap/starter-kit",
+        "version": "3.30.5"
+      },
+      {
+        "name": "sharp",
+        "version": "0.35.4"
+      },
+      {
+        "name": "react",
+        "version": "18.3.1"
+      },
+      {
+        "name": "next",
+        "version": "16.3.3"
+      }
+    ],
+    "unitTests": {
+      "files": 8,
+      "passed": 31,
+      "log": ".tmp/security-deps-targeted-units.log"
+    },
+    "browser": {
+      "passed": 4,
+      "project": "desktop-chromium",
+      "origin": "http://127.0.0.1:5201",
+      "log": ".tmp/security-deps-browser.log",
+      "editor": "Actual Editor with production RichEditorExtensions, EditorialBlock, ArticleTextTone and ArticleTypographyScope. Edit and reopen HTML/JSON are deep-equal; bilingual prose, links, image caption/media metadata, typography and table survive. No page errors.",
+      "images": [
+        "2MB PNG -> WebP,1200x600 retained,smaller bytes,PSNR>38dB",
+        "PNG alpha preserved byte-for-byte; JPEG EXIF orientation preserved,mean pixel difference<4",
+        "Animated WebP frames+bytes preserved; already smaller source preserved; disallowed input rejected"
+      ]
+    },
+    "environmentNote": "Exact patched dependencies resolved through isolated runtime junctions. Windows esbuild ancestor-read restriction required scoped escalation for local server/browser only."
+  },
+  "codeqlFollowUp": {
+    "reviewedSourceHead": "223f10304c9cf5b560b4f384f9b2575c1c282b06",
+    "analysisId": 1769094931,
+    "matrix": {
+      "alerts": [
+        277,
+        278
+      ],
+      "source": "process.env.ProgramFiles supplied the executable and existence-check path.",
+      "correction": "Use fixed absolute Bash paths C:/Program Files/Git/bin/bash.exe and /bin/bash, with no environment-derived executable."
+    },
+    "wellsInspection": {
+      "alert": 276,
+      "firstDetectedAt": "2026-09-12T11:26:14Z",
+      "source": "The response from the fixed-work content-hash RPC flows into databaseContentSha256 in the serialized inspection artifact.",
+      "correction": "Require a string of exactly 64 lowercase hexadecimal characters directly before returning the hash; reject arrays, objects, other types and trailing newlines.",
+      "outputBoundary": "The tool intentionally retains a JSON evidence snapshot at a fixed repository-relative .json path and fixed checksum path, with exclusive creation and mode 0600. It never executes the artifact or accepts a network-supplied output path. GET-only single-work scope, secret filtering and repeated consistency checks remain.",
+      "scope": "The inspection guard is outside the four dependency-security source projections and does not update historical attestation pins."
+    },
+    "status": "Local corrections require CodeQL on the next commit. No alert dismissal, suppression, rule exclusion or security-gate change was performed."
+  }
+}

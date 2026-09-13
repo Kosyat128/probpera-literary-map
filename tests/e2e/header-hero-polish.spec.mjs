@@ -225,6 +225,65 @@ test("protected header bands, Hero art direction and reduced motion remain deter
   expect(motion.socialAnimation === "none" || motion.socialIterations === "1").toBe(true);
 });
 
+test("publication showcase fits complete previews without nested or panel scrolling", async ({ page }) => {
+  for (const locale of ["ru", "en"]) {
+    await openHomepage(page, 1547, 900, locale);
+    for (const [width, height] of [[1280, 600], [1280, 720], [1366, 768], [1547, 900], [1920, 1080]]) {
+      await page.setViewportSize({ width, height });
+      const summary = page.locator(".articles-menu > summary");
+      const panel = page.locator(".articles-mega-menu");
+      await summary.focus();
+      await page.keyboard.press("Enter");
+      await expect(panel).toBeVisible();
+      await expect(panel.locator(".articles-mega-lead")).toBeVisible();
+      const geometry = await panel.evaluate(element => {
+        const box = node => node.getBoundingClientRect().toJSON();
+        const content = element.querySelector(".articles-mega-content");
+        const list = content.querySelector("section");
+        const lead = content.querySelector(".articles-mega-lead");
+        const cards = [...list.querySelectorAll("a")].filter(card => card.getClientRects().length);
+        return {
+          panel: box(element),
+          image: box(lead.querySelector("img")),
+          cards: cards.map(box),
+          cardCount: list.querySelectorAll("a").length,
+          footer: box(element.querySelector("footer")),
+          scroll: [element, content, list].map(node => node.scrollHeight - node.clientHeight),
+          text: [lead, ...cards].flatMap(card => [...card.querySelectorAll("strong, p, small, em, section span")].flatMap(copy => {
+            const range = document.createRange();
+            range.selectNodeContents(copy);
+            return [...range.getClientRects()].filter(rect => rect.width > 0).map(rect => ({
+              bounds: box(card),
+              left: rect.left, right: rect.right, top: rect.top, bottom: rect.bottom,
+            }));
+          })),
+        };
+      });
+      expect(geometry.panel.left, `${locale}/${width}/${height}`).toBeGreaterThanOrEqual(0);
+      expect(geometry.panel.right).toBeLessThanOrEqual(width);
+      expect(geometry.panel.bottom, `${locale}/${width}/${height}`).toBeLessThanOrEqual(height);
+      for (const overflow of geometry.scroll) expect(overflow).toBeLessThanOrEqual(1);
+      expect(geometry.image.width).toBeLessThan(geometry.panel.width * .4);
+      expect(geometry.image.height).toBeLessThanOrEqual(height <= 740 ? 96 : 180);
+      expect(geometry.cards).toHaveLength(Math.min(geometry.cardCount, height <= 740 ? 4 : 6));
+      for (const card of geometry.cards) expect(card.bottom).toBeLessThanOrEqual(geometry.footer.top + 1);
+      for (const text of geometry.text) {
+        expect(text.left).toBeGreaterThanOrEqual(text.bounds.left - 1);
+        expect(text.right).toBeLessThanOrEqual(text.bounds.right + 1);
+        expect(text.top).toBeGreaterThanOrEqual(text.bounds.top - 1);
+        expect(text.bottom).toBeLessThanOrEqual(text.bounds.bottom + 1);
+      }
+      await expect(panel.locator("footer a")).toBeVisible();
+      await expect(panel.locator("footer a")).toHaveAttribute("href", /\/stati\/$/u);
+      await page.keyboard.press("Escape");
+      await expect(panel).not.toBeVisible();
+    }
+    await page.setViewportSize({ width: 1260, height: 600 });
+    await expect(page.locator(".articles-menu > summary")).not.toBeVisible();
+    await expect(page.locator('.mobile-nav a[href*="journal"]')).toBeVisible();
+  }
+});
+
 test("footer menu keeps the approved tighter vertical rhythm", async ({ page }) => {
   await openHomepage(page, 1440, 900);
   const columns = page.locator(".footer-map > section");

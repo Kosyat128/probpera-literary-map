@@ -3741,7 +3741,7 @@ export default function BookArchiveSection({
             {searchScope === "global"
               ? t("Подсказки единого каталога")
               : searchScope === "archive"
-                ? t("Подсказки всего книжного архива")
+                ? t("Подсказки всей библиотеки")
               : t("Подсказки библиотеки")}
           </strong>
           <span>
@@ -3757,7 +3757,7 @@ export default function BookArchiveSection({
                   searchScope === "global"
                     ? t("Результаты поиска по всему журналу")
                     : searchScope === "archive"
-                      ? t("Результаты поиска по всему книжному архиву")
+                      ? t("Результаты поиска по всей библиотеке")
                       : t("Результаты поиска по текущей полке")
                 }
               >
@@ -3850,7 +3850,7 @@ export default function BookArchiveSection({
         "book-archive",
         "backgroundMediaId",
         coreBookArchive?.backgroundImageUrl || "",
-        { kind: "image", label: "Фон книжного архива" }
+        { kind: "image", label: "Фон библиотеки" }
       )}
     >
       <BrushBackdrop source="authors" />
@@ -3862,7 +3862,7 @@ export default function BookArchiveSection({
               "book-archive",
               "eyebrow",
               coreBookArchive?.eyebrow || "Книги, авторы, страны",
-              { label: "Надзаголовок книжного архива" }
+              { label: "Надзаголовок библиотеки" }
             )}
           >
             {language === "ru" && coreBookArchive?.eyebrow
@@ -3873,13 +3873,13 @@ export default function BookArchiveSection({
             {...cmsCoreFieldMarker(
               "book-archive",
               "title",
-              coreBookArchive?.title || "Книжный архив",
-              { label: "Заголовок книжного архива" }
+              coreBookArchive?.title || "Библиотека «Проба Пера»",
+              { label: "Заголовок библиотеки" }
             )}
           >
             {language === "ru" && coreBookArchive?.title
               ? coreBookArchive.title
-              : t("Книжный архив")}
+              : t("Библиотека «Проба Пера»")}
           </h2>
           <p
             {...cmsCoreFieldMarker(
@@ -3887,7 +3887,7 @@ export default function BookArchiveSection({
               "description",
               coreBookArchive?.description ||
                 "Произведения связаны с карточками писателей и литературными традициями стран. Расширенные сведения публикуются только после редакционной проверки.",
-              { kind: "textarea", label: "Описание книжного архива" }
+              { kind: "textarea", label: "Описание библиотеки" }
             )}
           >
             {language === "ru" && coreBookArchive?.description
@@ -4671,7 +4671,7 @@ export default function BookArchiveSection({
                   onShelfRestored={handleShelfRestored}
                   onContextRestored={handleShelfContextRestored}
                   onFailure={handleShelfFailure}
-                  sceneLabel={t("Книжный архив")}
+                  sceneLabel={t("Библиотека «Проба Пера»")}
                   loadingLabel={t("Собираем виртуальную полку…")}
                   emptyLabel={t("На этой полке пока нет книг")}
                   openBookLabel={t("Открыть книгу")}
@@ -5095,7 +5095,7 @@ export default function BookArchiveSection({
             id="book-archive-advanced-filters"
             role="dialog"
             aria-modal={advancedFiltersOpen ? "true" : undefined}
-            aria-label={t("Расширенные фильтры книжного архива")}
+            aria-label={t("Расширенные фильтры библиотеки")}
             hidden={!advancedFiltersOpen}
           >
             <header className="book-shelf-filter-drawer__header">
