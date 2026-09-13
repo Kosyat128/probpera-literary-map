@@ -3393,25 +3393,90 @@
   "atomicRegistryTransition": {
     "report": {
       "path": "reports/book-evidence-v2-registry-rotation-20260912.md",
-      "sha256": "ac58cd6486119b1f87030b649dcf09c1da429bfc9dd54490493fb48d60247ca0"
+      "sha256": "5d5ddc36c5ff67c61771c091ffa6d5c649ae3737eef51f5991d5fb39074fc9b6"
     },
     "migration": {
       "path": "supabase/migrations/20260912_literary_work_evidence_v2_registry_rotation.sql",
-      "sha256": "01a7fc62c731d01c2ea6912dc4ed770bf5cbe4d696122feb4fee401987ff4220"
+      "sha256": "2fbcba184a4f7f7eb8e0ab49737540c42614d3f1d0755914f485bd5c0e04f525"
     },
     "receipt": {
       "schema": "registry-rotation-local-sql-receipt-v1",
-      "runtime": "PGlite0.5.8",
+      "runtime": "PGlite 0.5.8",
       "pass": true,
-      "statements": 177,
-      "migrationSha256": "01a7fc62c731d01c2ea6912dc4ed770bf5cbe4d696122feb4fee401987ff4220",
-      "fixtureSha256": "2097cdbe61a8c6f98fca48d37933f9991841bcf2a552163754123dc0bdfa46a1",
-      "executedAt": "2026-09-12T12:57:28.787Z",
+      "statements": 219,
+      "migrationSha256": "2fbcba184a4f7f7eb8e0ab49737540c42614d3f1d0755914f485bd5c0e04f525",
+      "fixtureSha256": "46c1a12ecfcc9f6b9c45ff94195a652e8f22b091b08c4db419fae298ab1b2077",
+      "executedAt": "2026-09-13T19:32:14.922Z",
       "productionAccess": false,
       "dockerCiStillRequired": true
     },
     "historicalMigrationsChanged": false,
-    "enforcementBypassed": false
+    "enforcementBypassed": false,
+    "previousUnpublishedRevision": {
+      "report": {
+        "path": "reports/book-evidence-v2-registry-rotation-20260912.md",
+        "sha256": "ac58cd6486119b1f87030b649dcf09c1da429bfc9dd54490493fb48d60247ca0"
+      },
+      "migration": {
+        "path": "supabase/migrations/20260912_literary_work_evidence_v2_registry_rotation.sql",
+        "sha256": "01a7fc62c731d01c2ea6912dc4ed770bf5cbe4d696122feb4fee401987ff4220"
+      },
+      "receipt": {
+        "schema": "registry-rotation-local-sql-receipt-v1",
+        "runtime": "PGlite0.5.8",
+        "pass": true,
+        "statements": 177,
+        "migrationSha256": "01a7fc62c731d01c2ea6912dc4ed770bf5cbe4d696122feb4fee401987ff4220",
+        "fixtureSha256": "2097cdbe61a8c6f98fca48d37933f9991841bcf2a552163754123dc0bdfa46a1",
+        "executedAt": "2026-09-12T12:57:28.787Z",
+        "productionAccess": false,
+        "dockerCiStillRequired": true
+      },
+      "historicalMigrationsChanged": false,
+      "enforcementBypassed": false
+    },
+    "hashContractRevision": {
+      "reviewedOn": "2026-09-13",
+      "scope": "Exact PostgreSQL contentText; whole staged-item transport hashes; exact coverageText hash and parsed equality; locked live JSONB re-attestation preserves numeric scale.",
+      "files": [
+        {
+          "path": "scripts/lib/book-evidence-v2-registry-rotation.mjs",
+          "sha256Lf": "fac9274483144e64ce7e3daa45fd82a288e8b4fce082d6b464806624214ce951"
+        },
+        {
+          "path": "scripts/lib/book-evidence-v2-registry-rotation.test.mjs",
+          "sha256Lf": "5e300ff087d3ab31a84722d8bb9dfcbed3f48edc1cef5cec30a43eaddc6473eb"
+        },
+        {
+          "path": "scripts/database/book-evidence-v2-registry-rotation.integration.test.mjs",
+          "sha256Lf": "d12867045be13dd3cac563005f6883c3d3b2f9a5f4099ee8757a1417fa5cc9a4"
+        },
+        {
+          "path": "scripts/database/fixtures/book-evidence-v2-registry-rotation-contract.sql",
+          "sha256Lf": "46c1a12ecfcc9f6b9c45ff94195a652e8f22b091b08c4db419fae298ab1b2077"
+        },
+        {
+          "path": "scripts/database/book-evidence-v2-registry-transport.integration.test.mjs",
+          "sha256Lf": "5303cd563014bab3b432687905c4e79b6b32663b3a4042f6c32dcb6b8c22fbb1"
+        },
+        {
+          "path": "scripts/database/fixtures/book-evidence-v2-registry-transport.mjs",
+          "sha256Lf": "052a0690d5f85d459ae0a3d043e453d7bfa35ebabd48bb20b58d469193f67767"
+        }
+      ],
+      "javascriptUnitTestsPassed": 10,
+      "sqlSourceTestsPassed": 3,
+      "transportReceipt": {
+        "postgresRuntime": "PGlite existing local runtime, memory only",
+        "productionWrites": false,
+        "contentTextVerified": true,
+        "numericScalePreserved": true,
+        "writerReferencesVerified": 2,
+        "coverageTextVerified": true,
+        "staleTextAndContentRejected": true
+      },
+      "dockerCiStillRequired": true
+    }
   },
   "privateAuthorReferences": {
     "beforeCount": 1684,
@@ -3448,13 +3513,13 @@
     "newPublicBiographies": 0
   },
   "sourceAfterSha256": {
-    ".github/workflows/reconcile-production-database.yml": "6df884319beff972fc3602127a7ea39d1ca4d13bf72c1c3000a41d9038ac2f60",
+    ".github/workflows/reconcile-production-database.yml": "204183f53a25c0d81f1ff78e92ed405a37616c6a95d9a57a2f9e1068814d349a",
     "apps/admin/catalog-assets/editorial-catalog.json": "177bb3e634acd41ec5d5133cc830cebcd2e9029b4e6d859562af599a263e30ab",
     "apps/admin/catalog-assets/interface-copy-catalog.json": "f8d5d90881c969690414bbffd040a5bd4c29ce547bace4990e028be899112263",
     "apps/admin/lib/editorial-catalog.ts": "940b06f92c33cac9108c19fc36e0d345e695c4685e557b947ee99ef802445d2f",
     "data/book-canon-source-registry.json": "c8d2b6862c47c3215295951d2c5d1c406913b9879c616f1d8b787c6e05029f6c",
     "scripts/archive-source.ts": "dc3f9101c020e0058eed45d7b63ee2080ecaf0f575efd667df05d8d85a78ac1e",
-    "scripts/database/build-production-migration-plan.mjs": "463194e6bf14903013d156d61733ae2db387d171bb4ec8fbdadf6ef16b520e50",
+    "scripts/database/build-production-migration-plan.mjs": "48b7c4d8f744c9dc78bd0e5f73b5957c399a309af97dd44c6589724bcda02dad",
     "scripts/import-user-supplied-book-covers.mjs": "606cb64fe9734fce086a343bb54612f5bcf7817afa54701e7137dae3238e55c2",
     "scripts/import-user-supplied-book-covers-2026-08-13.mjs": "851951b349ccec82276f1a6a4ed8dfd8dbae09fc3df1375b9e68cb2aa9ed9774",
     "scripts/import-user-supplied-book-covers-2026-08-20.mjs": "70b0443c017f75e9faeeae00ade2d5c72216481c0cd69933337a83a54ffb123d",
@@ -3466,7 +3531,7 @@
     "src/components/BookShelfControls.tsx": "381f233540c8b3bf6419ccde77e0c015d99e345847b8c30244640bf4d1c3d847",
     "src/components/GlobalSearch.tsx": "b22882d67ca1389afa8e2f93adaf0509b2f8aca4427e6c95cf4b127ec80e4993",
     "src/components/WriterPanel.tsx": "429bb1ef55f26101e816533713203acc3dfe49370045acfc7cc5d92019701fbf",
-    "src/data/bookArchive.ts": "6d2bffa98854fdcbfedc43897c99686479e076b7511c412235ba05128083c19e",
+    "src/data/bookArchive.ts": "738fe1a320790fa9971ae367079499ae1f9e5af05ed6fa756ad9d493b06f98c2",
     "src/data/bookArchiveQueue.ts": "e2ca36b51d47a325063d7a62bc18b6f3dd4d13090390624c498c2f95206960d2",
     "src/data/countries/index.ts": "981178294c635b4439bde9202cb023feddeef973dd0e868fbe7549068632e7a1",
     "src/i18n/InterfaceLanguage.tsx": "e8319b4b768b814955ad85f3881fa01207bd939a11a411862463c84b295ff21a",
@@ -3799,5 +3864,142 @@
     "genericDraftTextExposed": false,
     "historicalQuarantinePreserved": true,
     "publicApprovalGranted": false
+  },
+  "wellsEditorialRepair": {
+    "reviewedOn": "2026-09-13",
+    "previousPackageReportCanonicalSha256": "61e917eae932d03f8040bae5a0a76e8893aab644ce6a9daf00174fcb2b276ca0",
+    "packet": {
+      "path": "reports/wells-editorial-repair-20260913.json",
+      "sha256Lf": "fefe16526d951f0f1e0d1a35030cad80d1a1ab4b04ee76415dc2a2687b3123ec"
+    },
+    "validation": {
+      "path": "reports/wells-editorial-repair-validation-20260913.json",
+      "sha256Lf": "91f22d158b69a4f0f6d3f1fb2b3a2cd01e5e64d3bdebf06a25af1ddd14c2bd29",
+      "receipt": {
+        "contract": "wells-editorial-repair-20260913",
+        "sourceArtifactSha256": "45c92cd1c07755f02215823c2bbcb98046b3f68f0b037dd904994fc0dbb94b48",
+        "sourceMainSha": "7b4f4f523889034b5325fedfea69e453bbde8a9d",
+        "beforeContentSha256": "d91a7f950bd540ffaf36f9566f343b4f5c20e83f24610c741e5430bda569872a",
+        "afterContentSha256": "2a4ed4469ce7d6dc2af7f29ff04a0b94a612fc26eba0849887ed0eb5dc8febf4",
+        "packetFileSha256": "fefe16526d951f0f1e0d1a35030cad80d1a1ab4b04ee76415dc2a2687b3123ec",
+        "packetPostgresSha256": "015b97ada9cd080a67b5bea05c022405d1787faa1eea6540f4092b7ef41f774c",
+        "evidencePostgresSha256": "9d4eadf20031b749bb247dc60eef0bf8c2707c9cd28d5c27d30842229b87127d",
+        "descriptionSha256": {
+          "ru": "cb9830cb0d06ff0770a517537473fde7c9b6d11d9b1889e74204d5f251acdcf3",
+          "en": "838685987575a6866d94b33e33798d2057e3d8f8d1d4c46cfc79d194fd4aeefc"
+        },
+        "validationIssues": [],
+        "attestationCandidates": 1,
+        "databaseMutation": false,
+        "originalDescriptionsArchived": true,
+        "activeWorkDescriptionPreserved": true,
+        "originalAuthorshipNotInferred": true,
+        "humanReview": false,
+        "fullWorkRead": false
+      }
+    },
+    "migration": {
+      "path": "supabase/migrations/20260913_wells_editorial_evidence_repair.sql",
+      "sha256": "769353bbf60790b6a5113a5d76ee23cb7ce0e84e3100a7d3eac86c7113d09c70"
+    },
+    "sqlReceipt": {
+      "runtime": "Existing in-memory PostgreSQL/PGlite",
+      "productionWrites": false,
+      "statements": 98,
+      "markerPresent": true
+    },
+    "files": [
+      {
+        "path": "reports/wells-editorial-repair-20260913.md",
+        "sha256Lf": "5bd3455cfd00412ce811e52f518c6811d52b8e0e532722381f4728786c97e014"
+      },
+      {
+        "path": "scripts/database/repair-wells-editorial-evidence-20260913.mjs",
+        "sha256Lf": "5f36bdb743a6a5fc3bd8ba8eabbe02a2fa1c00840725b96fcc61f9cdec93e6ec"
+      },
+      {
+        "path": "scripts/database/repair-wells-editorial-evidence-20260913.test.mjs",
+        "sha256Lf": "e2743a3cfefb64cd49087f241b2485b31dc6163f2e9750e2dfc4671c6131064b"
+      },
+      {
+        "path": "scripts/database/fixtures/book-canon-source-registry-before-r49n.json",
+        "sha256Lf": "d0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef"
+      },
+      {
+        "path": "scripts/database/fixtures/wells-editorial-repair-content-20260913.jsonb.txt",
+        "sha256Lf": "2a4ed4469ce7d6dc2af7f29ff04a0b94a612fc26eba0849887ed0eb5dc8febf4"
+      },
+      {
+        "path": "scripts/database/wells-editorial-evidence-repair.integration.test.mjs",
+        "sha256Lf": "3b1f1a425368b80a8d1752669e75dcb77effb886d8bc9bd84faf2779dd08768d"
+      },
+      {
+        "path": "scripts/database/fixtures/build-wells-editorial-repair-fixture.mjs",
+        "sha256Lf": "0fb94b64f000b0aeece1c49d3e07edfa40938a627ccaaa69ad07d1e9bc6f299c"
+      },
+      {
+        "path": "scripts/database/fixtures/wells-editorial-evidence-repair.sql",
+        "sha256Lf": "fcd4caf8c35e523c6d05fbf51eb8f13d183a664493e06cd6bab199f3a168e401"
+      }
+    ],
+    "runnerTestsPassed": 10,
+    "schemaMigrations": 37,
+    "publishedHistoricalMigrations": 35,
+    "historicalMigrationPinsChanged": false,
+    "originalDescriptionsArchived": true,
+    "activeWorkDescriptionPreserved": true,
+    "originalAuthorshipInferred": false,
+    "humanReview": false,
+    "fullWorkRead": false,
+    "productionApplied": false,
+    "transactionBoundary": "One exact Wells editorial repair and old-registry attestation before archive preflight; full archive plus registry rotation remains one subsequent atomic commit. Successful Wells repair remains if later archive preflight fails."
+  },
+  "cmsWellsPriority": {
+    "scope": "Only the actual same-writer public Wells CMS profile with exported V2 title/provenance metadata survives older static synopsis overlays. Final LegacyReaudit remains last; current old CMS fallback and 9763/69/9694 snapshot remain unchanged.",
+    "source": {
+      "path": "src/data/bookArchive.ts",
+      "sha256Lf": "738fe1a320790fa9971ae367079499ae1f9e5af05ed6fa756ad9d493b06f98c2",
+      "beforeSha256Lf": "1989a468abb51b134af6fb8a4186918f9726db6cb84b1c0b1d7ca5c245cfa402"
+    },
+    "test": {
+      "path": "src/data/bookCmsWellsPriority20260913.test.ts",
+      "sha256Lf": "19917a21ac1463a73ffe0c293a4435895dc30e54a21fae55ce9f80005e5bb7a0",
+      "passed": 4
+    },
+    "combinedCmsAndLegacyTestsPassed": 10,
+    "publicTypecheckPassed": true,
+    "finalLegacyQuarantinePreserved": true,
+    "currentCatalogCount": 9763,
+    "currentReviewedCount": 69,
+    "currentPendingCount": 9694
+  },
+  "releaseIntegration": {
+    "previousPackageObjectSha256": "e93c4b3224fd38d9c416e7eae8c148defe598d3ac35c1df6cce2839c006beea1",
+    "previousPackageReportCanonicalSha256": "61e917eae932d03f8040bae5a0a76e8893aab644ce6a9daf00174fcb2b276ca0",
+    "historicalCheckpointTag": "codex/books-r49n-checkpoint-20260912-459f2d70",
+    "supportingFiles": [
+      {
+        "path": ".gitattributes",
+        "sha256Lf": "531e4d3960dd9253d17ee578563cddf1a6aec498794257fae459d4b65db3049d",
+        "beforeSha256Lf": "bc12a386d8d2c5c4347e43a095eff0912f7573e31ff06376aec12567fea25b99"
+      },
+      {
+        "path": "docs/PRODUCTION_DATABASE_RECONCILIATION_RU.md",
+        "sha256Lf": "07d70f680bf0a134891775ea8822e206b2df9976bb53719cc6477190370d21aa",
+        "beforeSha256Lf": "98be6b7deeea094b7dcdffc52a941ffd923f2b424947d0a44729a42a8e5b0209"
+      },
+      {
+        "path": "tests/e2e/header-hero-polish.spec.mjs",
+        "sha256Lf": "ec82dcd0fe087d4ba8be5783d4fed847fea7f8eead3f8082dca38fa328bff953",
+        "beforeSha256Lf": "4a56261c2f43713e8387da68504f469c1495e6a6ff59826d6c28f09163901551"
+      },
+      {
+        "path": "tests/e2e/public-doc-refinements.spec.mjs",
+        "sha256Lf": "e4e26140ecf5982b184b89d3b505d55d1abcbf9fe5707a47069ddbb9a6830144",
+        "beforeSha256Lf": "49b9d4ddb87f4adae1c82fe0afb68d6434ed8c7fa0c142f6b7a6d97c751e3c66"
+      }
+    ],
+    "browserPrecisionCorrection": "Round measured DOMRect values to 0.001px before the unchanged 96/180px image and 44px control thresholds; four visual PNG baselines remain unchanged.",
+    "productionPublicationClaimed": false
   }
 }

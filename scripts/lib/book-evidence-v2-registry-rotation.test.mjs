@@ -4,7 +4,7 @@ import { describe, expect, it } from "vitest";
 import { buildBookArchive } from "../../src/data/bookArchive.ts";
 import { bookArchiveCountries } from "../../src/data/countries/index.ts";
 import { bookEvidenceV2Issues } from "../../src/data/bookEvidence.ts";
-import { canonicalLiteraryArchiveReleasePayload } from "./literary-archive-atomic-release.mjs";
+import { canonicalLiteraryArchiveReleasePayload, encodeLiteraryArchiveReleaseItem } from "./literary-archive-atomic-release.mjs";
 import {
   BOOK_EVIDENCE_V2_REGISTRY_TRANSITION as transition,
   BOOK_EVIDENCE_V2_REVIEWED_WRITER_REFERENCE as writerReference,
@@ -25,6 +25,12 @@ const control = { singleton: true, enforcement_enabled: true,
   canon_registry_version: transition.canonRegistryVersion,
   canon_registry_sha256: transition.expectedOldSha256 };
 const hash = (value) => createHash("sha256").update(canonicalLiteraryArchiveReleasePayload(value)).digest("hex");
+const textHash = (value) => createHash("sha256").update(value).digest("hex");
+function refreshContentText(cms) {
+  cms.contentText = JSON.stringify(cms.content, null, 2);
+  cms.contentSha256 = textHash(cms.contentText);
+  return cms;
+}
 const book = buildBookArchive(bookArchiveCountries).find((work) =>
   work.countryId === "england" && work.writerId === "charles_dickens" && work.id === "great-expectations");
 
@@ -57,9 +63,9 @@ function snapshot() {
     })),
     editions: [], artworks: [],
   }));
-  return { workId: "00000000-0000-4000-8000-000000000001", legacyId,
+  return refreshContentText({ workId: "00000000-0000-4000-8000-000000000001", legacyId,
     updatedAt: "2026-09-12T00:00:00Z", isCmsLocked: true,
-    content, contentSha256: hash(content) };
+    content });
 }
 function input(cms = snapshot()) {
   return { snapshot: { contract: transition.contract, priorPublicLegacyIds: [cms.legacyId], cmsLockedWorks: [cms] },
@@ -95,25 +101,42 @@ describe("exact Evidence V2 registry transition", () => {
     expect(proof.evidence.descriptions.en.reviewedBy).toBe(book.translations.en.descriptionProvenance.reviewedBy);
     expect(cms).toEqual(before);
     expect(result.coverageSha256).toBe(hash({ priorPublicLegacyIds: result.priorPublicLegacyIds, cmsLockedProofs: result.cmsLockedProofs }));
+    expect(textHash(result.coverageText)).toBe(result.coverageSha256);
+    expect(JSON.parse(result.coverageText)).toEqual({ priorPublicLegacyIds: result.priorPublicLegacyIds, cmsLockedProofs: result.cmsLockedProofs });
   });
   it("blocks missing private CMS provenance even when the local reviewed card exists", () => {
     const cms = snapshot();
     cms.content.work.metadata = {};
     for (const row of cms.content.translations) row.metadata = {};
-    cms.contentSha256 = hash(cms.content);
+    refreshContentText(cms);
     expect(() => buildEvidenceV2RegistryRotation(input(cms))).toThrow(/CMS registry rotation validation failed/u);
   });
   it("rejects stale content hashes, unlocked rows, incomplete projections and duplicate locales", () => {
     for (const mutate of [
       (cms) => { cms.content.work.title = "Unexpected edit"; },
       (cms) => { cms.isCmsLocked = false; },
-      (cms) => { delete cms.content.artworks; cms.contentSha256 = hash(cms.content); },
-      (cms) => { cms.content.translations.push(cms.content.translations[0]); cms.contentSha256 = hash(cms.content); },
+      (cms) => { delete cms.content.artworks; refreshContentText(cms); },
+      (cms) => { cms.content.translations.push(cms.content.translations[0]); refreshContentText(cms); },
       (cms) => { cms.legacyId = "other:writer:book"; },
+      (cms) => { delete cms.contentText; },
+      (cms) => { cms.contentText = "{"; cms.contentSha256 = textHash(cms.contentText); },
+      (cms) => { cms.contentText += " "; },
     ]) {
       const cms = snapshot(); mutate(cms);
       expect(() => evidenceV2ProfileFromLiveContent(cms)).toThrow();
     }
+  });
+  it("binds original JSONB text including numeric scale to the complete parsed projection", () => {
+    const cms = snapshot();
+    cms.content.work.metadata.decimal = 1;
+    refreshContentText(cms);
+    cms.contentText = cms.contentText.replace('"decimal": 1', '"decimal": 1.00');
+    cms.contentSha256 = textHash(cms.contentText);
+    expect(evidenceV2ProfileFromLiveContent(cms).title).toBe(book.title);
+    expect(cms.contentSha256).not.toBe(hash(cms.content));
+    const changed = structuredClone(cms);
+    changed.content.work.metadata.decimal = 2;
+    expect(() => evidenceV2ProfileFromLiveContent(changed)).toThrow(/parsed projection/u);
   });
   it("requires complete unique predecessor and CMS coverage", () => {
     const args = input();
@@ -134,25 +157,29 @@ describe("exact Evidence V2 registry transition", () => {
   });
   it("binds the sole new reviewed writer reference to its exact staged evidence", () => {
     expect(buildEvidenceV2ReviewedWriterReference([])).toBeNull();
-    const item = { legacyId: writerReference.workKey,
-      work: { country_id: writerReference.countryId, writer_id: writerReference.writerId },
+    const item = { ordinal: 0, legacyId: writerReference.workKey,
+      work: { legacy_id: writerReference.workKey, country_id: writerReference.countryId, writer_id: writerReference.writerId },
       attestation: { evidence: { recordKey: writerReference.workKey,
         validation: { status: "passed", issues: [], validatorSha256: transition.validatorSha256,
           canonRegistrySha256: transition.targetSha256 } } } };
     expect(buildEvidenceV2ReviewedWriterReference([item])).toEqual({
-      ...writerReference, stagedProofSha256: hash(item.attestation),
+      ...writerReference, stagedItemSha256: encodeLiteraryArchiveReleaseItem(item).payloadSha256,
     });
+    expect(buildEvidenceV2ReviewedWriterReference([{ ...item, preservedMetadata: { revision: 2 } }]).stagedItemSha256)
+      .not.toBe(buildEvidenceV2ReviewedWriterReference([item]).stagedItemSha256);
     expect(() => buildEvidenceV2ReviewedWriterReference([{ ...item, attestation: null }])).toThrow(/exact fresh/u);
     expect(() => buildEvidenceV2ReviewedWriterReference([item, item])).toThrow(/exact fresh/u);
     expect(() => buildEvidenceV2ReviewedWriterReference([{ ...item, work: { ...item.work, country_id: "england" } }])).toThrow(/exact fresh/u);
   });
   it("binds Alcott only as the unverified 1868 draft, without inventing an attestation", () => {
     expect(buildEvidenceV2DraftWriterReference([])).toBeNull();
-    const item = { legacyId: draftReference.workKey,
-      work: { country_id: "usa", writer_id: "louisa_may_alcott", editorial_status: "draft", first_published: 1868 },
+    const item = { ordinal: 1, legacyId: draftReference.workKey,
+      work: { legacy_id: draftReference.workKey, country_id: "usa", writer_id: "louisa_may_alcott", editorial_status: "draft", first_published: 1868 },
       expectedContent: { work: { legacyId: draftReference.workKey, firstPublished: 1868 } }, attestation: null };
     expect(buildEvidenceV2DraftWriterReference([item])).toEqual({ ...draftReference,
-      stagedContentSha256: hash(item.expectedContent) });
+      stagedItemSha256: encodeLiteraryArchiveReleaseItem(item).payloadSha256 });
+    expect(buildEvidenceV2DraftWriterReference([{ ...item, preservedMetadata: { revision: 2 } }]).stagedItemSha256)
+      .not.toBe(buildEvidenceV2DraftWriterReference([item]).stagedItemSha256);
     for (const patch of [{ editorial_status: "verified" }, { first_published: 1870 }, { writer_id: "other" }]) {
       expect(() => buildEvidenceV2DraftWriterReference([{ ...item, work: { ...item.work, ...patch } }])).toThrow(/unverified 1868/u);
     }

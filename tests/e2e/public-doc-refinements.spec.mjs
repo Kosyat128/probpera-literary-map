@@ -205,8 +205,9 @@ test("header social links and language controls remain reachable across responsi
       }
       if (width <= 680 || geometry.coarsePointer) {
         for (const control of [...geometry.links.filter(link => link.visible), ...geometry.languageButtons]) {
-          expect(control.width, `${locale}/${width}`).toBeGreaterThanOrEqual(44);
-          expect(control.height, `${locale}/${width}`).toBeGreaterThanOrEqual(44);
+          // Preserve the 44px target while removing DOMRect float noise.
+          expect(Math.round(control.width * 1000) / 1000, `${locale}/${width}`).toBeGreaterThanOrEqual(44);
+          expect(Math.round(control.height * 1000) / 1000, `${locale}/${width}`).toBeGreaterThanOrEqual(44);
         }
       }
       if (geometry.mobileVisible) expect(geometry.mobileTop).toBeGreaterThanOrEqual(geometry.headerBottom - 1);

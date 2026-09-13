@@ -81,6 +81,7 @@ begin
         'workId', work.id, 'legacyId', work.legacy_id,
         'updatedAt', work.updated_at, 'isCmsLocked', work.is_cms_locked,
         'contentSha256', public.literary_work_evidence_v2_content_sha256(work.id),
+        'contentText', public.literary_work_evidence_v2_content(work.id)::text,
         'content', public.literary_work_evidence_v2_content(work.id)
       ) order by work.legacy_id collate "C")
       from public.literary_works work
@@ -109,6 +110,7 @@ as $$
 declare
   reference jsonb;
   item jsonb;
+  item_sha256 text;
 begin
   if coalesce((select auth.role()), '') <> 'service_role'
     or current_setting('probpera.literary_archive_atomic_release', true) is distinct from 'on' then
@@ -117,7 +119,7 @@ begin
   select metadata -> 'reviewedWriterReference' into reference
   from public.literary_archive_releases where id = p_release_id;
   if reference is null then return; end if;
-  if (reference - 'stagedProofSha256') is distinct from jsonb_build_object(
+  if (reference - 'stagedItemSha256') is distinct from jsonb_build_object(
     'contract', 'book-evidence-v2-reviewed-writer-reference-20260912',
     'countryId', 'usa', 'writerId', 'harriet_beecher_stowe',
     'nameRu', 'Гарриет Бичер-Стоу', 'nameEn', 'Harriet Beecher Stowe',
@@ -125,7 +127,7 @@ begin
   ) then
     raise exception 'Writer reference is outside the reviewed exact identity' using errcode = '23514';
   end if;
-  select payload into item from public.literary_archive_release_items
+  select payload, payload_sha256 into item, item_sha256 from public.literary_archive_release_items
   where release_id = p_release_id and legacy_id = 'usa:harriet_beecher_stowe:uncle-toms-cabin';
   if not found
     or item #>> '{work,country_id}' is distinct from 'usa'
@@ -137,8 +139,7 @@ begin
       'f2ef2c46ae78be553a190057f8833c5661dc1cbcc1902564708effa7f6db0026'
     or item #>> '{attestation,evidence,validation,canonRegistrySha256}' is distinct from
       'c8d2b6862c47c3215295951d2c5d1c406913b9879c616f1d8b787c6e05029f6c'
-    or reference ->> 'stagedProofSha256' is distinct from
-      public.literary_work_evidence_v2_sha256((item -> 'attestation')::text) then
+    or reference ->> 'stagedItemSha256' is distinct from item_sha256 then
     raise exception 'Writer reference lacks the exact fresh staged work proof' using errcode = '23514';
   end if;
   -- NOWAIT avoids waiting in the opposite order to an interactive editorial
@@ -158,7 +159,7 @@ begin
   insert into public.editorial_writers(country_id, id, name_ru, name_en, source, metadata)
   values('usa', 'harriet_beecher_stowe', 'Гарриет Бичер-Стоу', 'Harriet Beecher Stowe', 'editorial-catalog',
     jsonb_build_object('reviewedReferenceContract', reference ->> 'contract',
-      'workKey', reference ->> 'workKey', 'stagedProofSha256', reference ->> 'stagedProofSha256'));
+      'workKey', reference ->> 'workKey', 'stagedItemSha256', reference ->> 'stagedItemSha256'));
 end;
 $$;
 
@@ -178,6 +179,7 @@ as $$
 declare
   reference jsonb;
   item jsonb;
+  item_sha256 text;
 begin
   if coalesce((select auth.role()), '') <> 'service_role'
     or current_setting('probpera.literary_archive_atomic_release', true) is distinct from 'on' then
@@ -186,7 +188,7 @@ begin
   select metadata -> 'draftWriterReference' into reference
   from public.literary_archive_releases where id = p_release_id;
   if reference is null then return; end if;
-  if (reference - 'stagedContentSha256') is distinct from jsonb_build_object(
+  if (reference - 'stagedItemSha256') is distinct from jsonb_build_object(
     'contract', 'book-evidence-v2-draft-writer-reference-20260912',
     'countryId', 'usa', 'writerId', 'louisa_may_alcott',
     'nameRu', 'Луиза Мэй Олкотт', 'nameEn', 'Louisa May Alcott',
@@ -195,7 +197,7 @@ begin
   ) then
     raise exception 'Draft writer reference is outside the reviewed exact source identity' using errcode = '23514';
   end if;
-  select payload into item from public.literary_archive_release_items
+  select payload, payload_sha256 into item, item_sha256 from public.literary_archive_release_items
   where release_id = p_release_id and legacy_id = 'usa:louisa_may_alcott:little-women';
   if not found or item #>> '{work,country_id}' is distinct from 'usa'
     or item #>> '{work,writer_id}' is distinct from 'louisa_may_alcott'
@@ -203,8 +205,7 @@ begin
     or item #>> '{work,first_published}' is distinct from '1868'
     or item #>> '{expectedContent,work,legacyId}' is distinct from 'usa:louisa_may_alcott:little-women'
     or item -> 'attestation' is distinct from 'null'::jsonb
-    or reference ->> 'stagedContentSha256' is distinct from
-      public.literary_work_evidence_v2_sha256((item -> 'expectedContent')::text) then
+    or reference ->> 'stagedItemSha256' is distinct from item_sha256 then
     raise exception 'Draft writer reference lacks the exact unverified 1868 staged content' using errcode = '23514';
   end if;
   lock table public.editorial_writers in share row exclusive mode nowait;
@@ -222,7 +223,8 @@ begin
   insert into public.editorial_writers(country_id, id, name_ru, name_en, source, metadata)
   values('usa', 'louisa_may_alcott', 'Луиза Мэй Олкотт', 'Louisa May Alcott', 'editorial-catalog',
     jsonb_build_object('draftReferenceContract', reference ->> 'contract',
-      'sourceRecordSha256', reference ->> 'sourceRecordSha256', 'workKey', reference ->> 'workKey'));
+      'sourceRecordSha256', reference ->> 'sourceRecordSha256', 'workKey', reference ->> 'workKey',
+      'stagedItemSha256', reference ->> 'stagedItemSha256'));
 end;
 $$;
 
@@ -243,6 +245,7 @@ declare
   control public.literary_work_evidence_v2_controls%rowtype;
   rotation jsonb;
   transition jsonb;
+  coverage jsonb;
   prior_keys jsonb;
   cms_keys jsonb;
   proof jsonb;
@@ -266,7 +269,7 @@ begin
   end if;
   transition := public.get_literary_work_evidence_v2_registry_transition();
   if jsonb_typeof(rotation) is distinct from 'object'
-    or (rotation - array['priorPublicLegacyIds', 'cmsLockedProofs', 'coverageSha256']) is distinct from transition
+    or (rotation - array['priorPublicLegacyIds', 'cmsLockedProofs', 'coverageText', 'coverageSha256']) is distinct from transition
     or control.contract_version is distinct from transition ->> 'contractVersion'
     or control.validator_id is distinct from transition ->> 'validator'
     or control.validator_version is distinct from transition ->> 'validatorVersion'
@@ -282,11 +285,24 @@ begin
   end if;
   if jsonb_typeof(rotation -> 'priorPublicLegacyIds') is distinct from 'array'
     or jsonb_typeof(rotation -> 'cmsLockedProofs') is distinct from 'array'
+    or jsonb_typeof(rotation -> 'coverageText') is distinct from 'string'
     or rotation ->> 'coverageSha256' is distinct from public.literary_work_evidence_v2_sha256(
-      jsonb_build_object('priorPublicLegacyIds', rotation -> 'priorPublicLegacyIds',
-        'cmsLockedProofs', rotation -> 'cmsLockedProofs')::text
+      rotation ->> 'coverageText'
     ) then
     raise exception 'Registry rotation proof coverage checksum is invalid' using errcode = '23514';
+  end if;
+  -- Bind the transported UTF-8 bytes and their parsed value independently.
+  -- PostgreSQL JSONB text and JavaScript canonical JSON have different bytes.
+  begin
+    coverage := (rotation ->> 'coverageText')::jsonb;
+  exception when invalid_text_representation then
+    raise exception 'Registry rotation proof coverage text is invalid JSON' using errcode = '23514';
+  end;
+  if coverage is distinct from jsonb_build_object(
+    'priorPublicLegacyIds', rotation -> 'priorPublicLegacyIds',
+    'cmsLockedProofs', rotation -> 'cmsLockedProofs'
+  ) then
+    raise exception 'Registry rotation proof coverage text does not match its content' using errcode = '23514';
   end if;
   select coalesce(jsonb_agg(work.legacy_id order by work.legacy_id collate "C"), '[]'::jsonb)
   into prior_keys from public.literary_works work
@@ -336,9 +352,12 @@ begin
     raise exception 'Registry rotation control changed' using errcode = '40001';
   end if;
   for proof in select value from jsonb_array_elements(rotation -> 'cmsLockedProofs') loop
+    -- The preceding hash/content guards ran under the outer table locks. Reuse
+    -- the live JSONB value so the unchanged attester also retains numeric scale.
     perform public.attest_literary_work_evidence_v2(
       (proof ->> 'workId')::uuid, proof ->> 'expectedContentSha256',
-      proof -> 'expectedContent', proof -> 'evidence', proof ->> 'reviewer',
+      public.literary_work_evidence_v2_content((proof ->> 'workId')::uuid),
+      proof -> 'evidence', proof ->> 'reviewer',
       (proof ->> 'reviewedAt')::date
     );
   end loop;

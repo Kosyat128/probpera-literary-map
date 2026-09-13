@@ -1,0 +1,896 @@
+{
+  "contract": "wells-editorial-repair-20260913",
+  "workId": "d48b285b-8278-4551-91d7-30b3703df154",
+  "legacyId": "england:h_g_wells:when-the-sleeper-wakes",
+  "expectedUpdatedAt": "2026-09-02T10:35:12.294003+00:00",
+  "beforeContentSha256": "d91a7f950bd540ffaf36f9566f343b4f5c20e83f24610c741e5430bda569872a",
+  "beforeContent": {
+    "work": {
+      "legacyId": "england:h_g_wells:when-the-sleeper-wakes",
+      "countryId": "england",
+      "writerId": "h_g_wells",
+      "title": "Когда спящий проснётся",
+      "slug": "when-the-sleeper-wakes-c42896129c",
+      "originalTitle": "When the Sleeper Wakes",
+      "firstPublished": 1899,
+      "originalLanguage": "английский",
+      "genres": [
+        "научно-фантастический роман",
+        "антиутопия"
+      ],
+      "tags": [
+        "будущее",
+        "власть",
+        "массовое общество",
+        "революция",
+        "редакционно проверено",
+        "обложка из пользовательского редакционного архива 2026-08-20"
+      ],
+      "description": "Грэм впадает в необычайно долгий сон и просыпается через целых два столетия владельцем огромного состояния, на котором держится мировая власть. Его пробуждение ввергает сложившееся общество в политический кризис. Теперь главный герой обязан взять всё в свои руки и восстановить справедливость или умереть!",
+      "sourceUrl": "https://openlibrary.org/works/OL52151W",
+      "editorialStatus": "verified",
+      "reviewedAt": "2026-08-20",
+      "metadata": {
+        "writerName": "Герберт Джордж Уэллс",
+        "countryName": "Англия",
+        "distinctions": []
+      },
+      "authorshipKind": null
+    },
+    "translations": [
+      {
+        "locale": "en",
+        "title": "When the Sleeper Wakes",
+        "description": "Graham falls into an extraordinary sleep and wakes two centuries later as the legal owner of a fortune underpinning global power. His return becomes a political crisis and a test of whether a symbol of liberation can act independently of those who control his image.",
+        "sourceLanguage": "en",
+        "method": "editorial-original",
+        "status": "verified",
+        "sourceUrls": [
+          "https://openlibrary.org/works/OL52151W",
+          "https://www.gutenberg.org/ebooks/author/30?sort_order=downloads"
+        ],
+        "reviewedAt": "2026-08-20",
+        "metadata": {}
+      },
+      {
+        "locale": "ru",
+        "title": "Когда спящий проснётся",
+        "description": "Грэм впадает в необычайно долгий сон и просыпается через два столетия владельцем состояния, на котором держится мировая власть. Его пробуждение превращается в политический кризис и проверку того, способен ли символ освобождения действовать самостоятельно.",
+        "sourceLanguage": "ru",
+        "method": "editorial-original",
+        "status": "verified",
+        "sourceUrls": [
+          "https://openlibrary.org/works/OL52151W",
+          "https://www.gutenberg.org/ebooks/author/30?sort_order=downloads"
+        ],
+        "reviewedAt": "2026-08-20",
+        "metadata": {}
+      }
+    ],
+    "sources": [
+      {
+        "provider": "Open Library",
+        "url": "https://openlibrary.org/works/OL52151W",
+        "fields": [
+          "identity",
+          "authorship",
+          "title",
+          "original-title",
+          "publication-year",
+          "language"
+        ],
+        "license": null,
+        "usage": "structured-data",
+        "retrievedAt": "2026-08-20",
+        "metadata": {}
+      },
+      {
+        "provider": "Project Gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/author/30?sort_order=downloads",
+        "fields": [
+          "identity",
+          "authorship",
+          "title",
+          "language"
+        ],
+        "license": null,
+        "usage": "reference-only",
+        "retrievedAt": "2026-08-20",
+        "metadata": {}
+      }
+    ],
+    "externalIds": [
+      {
+        "scheme": "openlibrary",
+        "value": "OL52151W",
+        "sourceUrl": "https://openlibrary.org/works/OL52151W"
+      }
+    ],
+    "authors": [],
+    "editions": [],
+    "artworks": [
+      {
+        "coverUrl": "brand/book-covers/when-sleeper-wakes-20260820-editorial.webp",
+        "thumbnailUrl": "brand/book-covers/thumbs/when-sleeper-wakes-20260820-editorial.webp",
+        "coverWidth": 720,
+        "coverHeight": 1080,
+        "thumbnailWidth": 360,
+        "thumbnailHeight": 540,
+        "rightsStatus": "editorial-original",
+        "coverSourceUrl": "https://probpera.ru/brand/book-covers/when-sleeper-wakes-20260820-editorial.webp",
+        "rightsCheckedAt": "2026-08-20",
+        "sourceArchiveSha256": "0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3",
+        "sourceImageSha256": "e0d4495babd26069730bb1b36050cd9d328c9298d3ae29db4c7bb607e4baaa58",
+        "sourceFilename": "ChatGPT Image 19 авг. 2026 г., 17_44_57 (5).png",
+        "sourceRelativePath": "ChatGPT Image 19 авг. 2026 г., 17_44_57 (5).png",
+        "sourceIndex": 35,
+        "isPrimary": true,
+        "provenance": {
+          "kind": "user-supplied",
+          "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.",
+          "matchBasis": "exact-author-and-title",
+          "imageSha256": "e0d4495babd26069730bb1b36050cd9d328c9298d3ae29db4c7bb607e4baaa58",
+          "sourceIndex": 35,
+          "archiveSha256": "0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3",
+          "sourceEvidence": "chatgpt-image-filename",
+          "sourceFilename": "ChatGPT Image 19 авг. 2026 г., 17_44_57 (5).png",
+          "sourceRelativePath": "ChatGPT Image 19 авг. 2026 г., 17_44_57 (5).png"
+        }
+      }
+    ]
+  },
+  "afterContentSha256": "2a4ed4469ce7d6dc2af7f29ff04a0b94a612fc26eba0849887ed0eb5dc8febf4",
+  "afterContent": {
+    "work": {
+      "legacyId": "england:h_g_wells:when-the-sleeper-wakes",
+      "countryId": "england",
+      "writerId": "h_g_wells",
+      "title": "Когда спящий проснется",
+      "slug": "when-the-sleeper-wakes-c42896129c",
+      "originalTitle": "When the Sleeper Wakes",
+      "firstPublished": 1899,
+      "originalLanguage": "английский",
+      "genres": [
+        "научно-фантастический роман",
+        "антиутопия"
+      ],
+      "tags": [
+        "будущее",
+        "власть",
+        "массовое общество",
+        "революция",
+        "редакционно проверено",
+        "обложка из пользовательского редакционного архива 2026-08-20"
+      ],
+      "description": "Грэм впадает в необычайно долгий сон и просыпается через целых два столетия владельцем огромного состояния, на котором держится мировая власть. Его пробуждение ввергает сложившееся общество в политический кризис. Теперь главный герой обязан взять всё в свои руки и восстановить справедливость или умереть!",
+      "sourceUrl": "https://openlibrary.org/works/OL52151W",
+      "editorialStatus": "verified",
+      "reviewedAt": "2026-08-20",
+      "metadata": {
+        "writerName": "Герберт Джордж Уэллс",
+        "countryName": "Англия",
+        "distinctions": [],
+        "localizedTitles": {
+          "ru": {
+            "entityKind": "expression",
+            "expressionId": "england:h_g_wells:when-the-sleeper-wakes:ru",
+            "locale": "ru",
+            "value": "Когда спящий проснется",
+            "status": "verified-published",
+            "expressionLanguage": "ru",
+            "market": "RU",
+            "selectionRule": "earliest-authorized-edition",
+            "selectionNote": "НЭБ/РГБ и РНБ независимо фиксируют заглавие «Когда спящий проснется» и перевод Екатерины Прейс в издании 1909 года, предшествующем авторской переработке 1910 года; форма с «ё» не подставляется редакционно.",
+            "evidence": [
+              {
+                "entityKind": "manifestation",
+                "manifestationId": "neb-003995369-original-1909",
+                "sourceUrl": "https://rusneb.ru/catalog/000199_000009_003995369/",
+                "provider": "Национальная электронная библиотека / РГБ",
+                "authorityId": "neb",
+                "authorityTier": "A",
+                "recordKind": "national-bibliography",
+                "recordId": "NEB-003995369",
+                "catalogTitleExact": "Когда спящий проснется",
+                "locale": "ru",
+                "market": "RU",
+                "expressionLanguage": "ru",
+                "publisher": "Шиповник",
+                "publicationYear": 1909,
+                "translator": "Екатерина Прейс",
+                "editionStatement": "На обложке дата: 1908",
+                "retrievedAt": "2026-09-02",
+                "checkedAt": "2026-09-02",
+                "checkedBy": "Probpera editorial research"
+              },
+              {
+                "entityKind": "manifestation",
+                "manifestationId": "nlr-005263873",
+                "sourceUrl": "https://primo.nlr.ru/primo-explore/fulldisplay?docid=07NLR_LMS005263873&context=L&vid=07NLR_VU1&lang=ru_RU",
+                "provider": "Российская национальная библиотека",
+                "authorityId": "nlr",
+                "authorityTier": "A",
+                "recordKind": "national-bibliography",
+                "recordId": "NLR-005263873",
+                "catalogTitleExact": "Когда спящий проснется",
+                "locale": "ru",
+                "market": "RU",
+                "expressionLanguage": "ru",
+                "publisher": "Шиповник",
+                "publicationYear": 1909,
+                "translator": "Екатерина Прейс",
+                "editionStatement": "Собрание сочинений, том 2",
+                "retrievedAt": "2026-09-02",
+                "checkedAt": "2026-09-02",
+                "checkedBy": "Probpera editorial research"
+              }
+            ]
+          },
+          "en": {
+            "entityKind": "expression",
+            "expressionId": "england:h_g_wells:when-the-sleeper-wakes:en",
+            "locale": "en",
+            "value": "When the Sleeper Wakes",
+            "status": "verified-published",
+            "expressionLanguage": "en",
+            "market": "US",
+            "selectionRule": "earliest-authorized-edition",
+            "selectionNote": "The 1899 Library of Congress manifestation and Project Gutenberg ebook 775 identify the original text as When the Sleeper Wakes; the later revised title The Sleeper Awakes is deliberately excluded.",
+            "evidence": [
+              {
+                "entityKind": "manifestation",
+                "manifestationId": "loc-99002363-original-1899",
+                "sourceUrl": "https://lccn.loc.gov/99002363",
+                "provider": "Library of Congress",
+                "authorityId": "loc",
+                "authorityTier": "A",
+                "recordKind": "national-bibliography",
+                "recordId": "LOC-99002363",
+                "catalogTitleExact": "When the Sleeper Wakes",
+                "locale": "en",
+                "market": "US",
+                "expressionLanguage": "en",
+                "publisher": "Harper & Brothers",
+                "publicationYear": 1899,
+                "editionStatement": "New York and London edition; OCLC 2338373",
+                "retrievedAt": "2026-09-02",
+                "checkedAt": "2026-09-02",
+                "checkedBy": "Probpera editorial research"
+              },
+              {
+                "entityKind": "manifestation",
+                "manifestationId": "project-gutenberg-ebook-775",
+                "sourceUrl": "https://www.gutenberg.org/ebooks/775",
+                "provider": "Project Gutenberg",
+                "authorityId": "project-gutenberg",
+                "authorityTier": "B",
+                "recordKind": "publisher-catalog",
+                "recordId": "PG-EBOOK-775",
+                "catalogTitleExact": "When the Sleeper Wakes",
+                "locale": "en",
+                "market": "US",
+                "expressionLanguage": "en",
+                "publisher": "Project Gutenberg",
+                "publicationYear": 1997,
+                "editionStatement": "Public-domain ebook preserving the original title",
+                "retrievedAt": "2026-09-02",
+                "checkedAt": "2026-09-02",
+                "checkedBy": "Probpera editorial research"
+              }
+            ]
+          }
+        },
+        "wellsEditorialRepair20260913": {
+          "contract": "wells-editorial-repair-20260913",
+          "beforeContentSha256": "d91a7f950bd540ffaf36f9566f343b4f5c20e83f24610c741e5430bda569872a",
+          "previousWorkTitle": "Когда спящий проснётся",
+          "previousTranslations": [
+            {
+              "locale": "en",
+              "title": "When the Sleeper Wakes",
+              "description": "Graham falls into an extraordinary sleep and wakes two centuries later as the legal owner of a fortune underpinning global power. His return becomes a political crisis and a test of whether a symbol of liberation can act independently of those who control his image.",
+              "sourceLanguage": "en",
+              "method": "editorial-original",
+              "status": "verified",
+              "sourceUrls": [
+                "https://openlibrary.org/works/OL52151W",
+                "https://www.gutenberg.org/ebooks/author/30?sort_order=downloads"
+              ],
+              "reviewedAt": "2026-08-20",
+              "metadata": {}
+            },
+            {
+              "locale": "ru",
+              "title": "Когда спящий проснётся",
+              "description": "Грэм впадает в необычайно долгий сон и просыпается через два столетия владельцем состояния, на котором держится мировая власть. Его пробуждение превращается в политический кризис и проверку того, способен ли символ освобождения действовать самостоятельно.",
+              "sourceLanguage": "ru",
+              "method": "editorial-original",
+              "status": "verified",
+              "sourceUrls": [
+                "https://openlibrary.org/works/OL52151W",
+                "https://www.gutenberg.org/ebooks/author/30?sort_order=downloads"
+              ],
+              "reviewedAt": "2026-08-20",
+              "metadata": {}
+            }
+          ],
+          "reviewer": "Codex AI /root/security_governance_finish",
+          "reviewedAt": "2026-09-13",
+          "reason": "New bilingual source-based synopses; original authorship was undocumented. Prior text preserved without retrospective authorship claims."
+        }
+      },
+      "authorshipKind": null
+    },
+    "translations": [
+      {
+        "locale": "en",
+        "title": "When the Sleeper Wakes",
+        "description": "Graham awakens after two centuries of sleep to find himself immensely wealthy in a transformed London. Others have controlled his fortune, and rival political forces now seek to use his return. The novel follows his struggle to understand this future society and decide whether he will remain a figurehead or act for himself.",
+        "sourceLanguage": "en",
+        "method": "editorial-original",
+        "status": "verified",
+        "sourceUrls": [
+          "https://openlibrary.org/works/OL52151W",
+          "https://www.gutenberg.org/ebooks/author/30?sort_order=downloads",
+          "https://lccn.loc.gov/99002363",
+          "https://www.gutenberg.org/ebooks/775",
+          "https://broadviewpress.com/product/when-the-sleeper-wakes/",
+          "https://ora.ox.ac.uk/objects/uuid%3Af17390d8-6d28-41e3-8be6-a075ea0db593"
+        ],
+        "reviewedAt": "2026-09-13",
+        "metadata": {
+          "titleEvidence": {
+            "entityKind": "expression",
+            "expressionId": "england:h_g_wells:when-the-sleeper-wakes:en",
+            "locale": "en",
+            "value": "When the Sleeper Wakes",
+            "status": "verified-published",
+            "expressionLanguage": "en",
+            "market": "US",
+            "selectionRule": "earliest-authorized-edition",
+            "selectionNote": "The 1899 Library of Congress manifestation and Project Gutenberg ebook 775 identify the original text as When the Sleeper Wakes; the later revised title The Sleeper Awakes is deliberately excluded.",
+            "evidence": [
+              {
+                "entityKind": "manifestation",
+                "manifestationId": "loc-99002363-original-1899",
+                "sourceUrl": "https://lccn.loc.gov/99002363",
+                "provider": "Library of Congress",
+                "authorityId": "loc",
+                "authorityTier": "A",
+                "recordKind": "national-bibliography",
+                "recordId": "LOC-99002363",
+                "catalogTitleExact": "When the Sleeper Wakes",
+                "locale": "en",
+                "market": "US",
+                "expressionLanguage": "en",
+                "publisher": "Harper & Brothers",
+                "publicationYear": 1899,
+                "editionStatement": "New York and London edition; OCLC 2338373",
+                "retrievedAt": "2026-09-02",
+                "checkedAt": "2026-09-02",
+                "checkedBy": "Probpera editorial research"
+              },
+              {
+                "entityKind": "manifestation",
+                "manifestationId": "project-gutenberg-ebook-775",
+                "sourceUrl": "https://www.gutenberg.org/ebooks/775",
+                "provider": "Project Gutenberg",
+                "authorityId": "project-gutenberg",
+                "authorityTier": "B",
+                "recordKind": "publisher-catalog",
+                "recordId": "PG-EBOOK-775",
+                "catalogTitleExact": "When the Sleeper Wakes",
+                "locale": "en",
+                "market": "US",
+                "expressionLanguage": "en",
+                "publisher": "Project Gutenberg",
+                "publicationYear": 1997,
+                "editionStatement": "Public-domain ebook preserving the original title",
+                "retrievedAt": "2026-09-02",
+                "checkedAt": "2026-09-02",
+                "checkedBy": "Probpera editorial research"
+              }
+            ]
+          },
+          "descriptionProvenance": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "en",
+            "sourceCountry": "england",
+            "sourceUrls": [
+              "https://broadviewpress.com/product/when-the-sleeper-wakes/",
+              "https://ora.ox.ac.uk/objects/uuid%3Af17390d8-6d28-41e3-8be6-a075ea0db593"
+            ],
+            "transformations": [
+              "condensed",
+              "deduplicated",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI /root",
+            "createdAt": "2026-09-13",
+            "reviewedBy": "Codex AI /root/security_governance_finish",
+            "reviewedAt": "2026-09-13"
+          }
+        }
+      },
+      {
+        "locale": "ru",
+        "title": "Когда спящий проснется",
+        "description": "После двух веков сна Грэм просыпается в Лондоне будущего. Накопленные за это время богатства сделали его номинальным хозяином половины мира, но властью распоряжаются другие. Борьба вокруг его пробуждения заставляет героя разобраться в устройстве нового общества и решить, чьи интересы он готов защищать.",
+        "sourceLanguage": "ru",
+        "method": "editorial-original",
+        "status": "verified",
+        "sourceUrls": [
+          "https://openlibrary.org/works/OL52151W",
+          "https://www.gutenberg.org/ebooks/author/30?sort_order=downloads",
+          "https://rusneb.ru/catalog/000199_000009_003995369/",
+          "https://primo.nlr.ru/primo-explore/fulldisplay?docid=07NLR_LMS005263873&context=L&vid=07NLR_VU1&lang=ru_RU",
+          "https://broadviewpress.com/product/when-the-sleeper-wakes/",
+          "https://ora.ox.ac.uk/objects/uuid%3Af17390d8-6d28-41e3-8be6-a075ea0db593"
+        ],
+        "reviewedAt": "2026-09-13",
+        "metadata": {
+          "titleEvidence": {
+            "entityKind": "expression",
+            "expressionId": "england:h_g_wells:when-the-sleeper-wakes:ru",
+            "locale": "ru",
+            "value": "Когда спящий проснется",
+            "status": "verified-published",
+            "expressionLanguage": "ru",
+            "market": "RU",
+            "selectionRule": "earliest-authorized-edition",
+            "selectionNote": "НЭБ/РГБ и РНБ независимо фиксируют заглавие «Когда спящий проснется» и перевод Екатерины Прейс в издании 1909 года, предшествующем авторской переработке 1910 года; форма с «ё» не подставляется редакционно.",
+            "evidence": [
+              {
+                "entityKind": "manifestation",
+                "manifestationId": "neb-003995369-original-1909",
+                "sourceUrl": "https://rusneb.ru/catalog/000199_000009_003995369/",
+                "provider": "Национальная электронная библиотека / РГБ",
+                "authorityId": "neb",
+                "authorityTier": "A",
+                "recordKind": "national-bibliography",
+                "recordId": "NEB-003995369",
+                "catalogTitleExact": "Когда спящий проснется",
+                "locale": "ru",
+                "market": "RU",
+                "expressionLanguage": "ru",
+                "publisher": "Шиповник",
+                "publicationYear": 1909,
+                "translator": "Екатерина Прейс",
+                "editionStatement": "На обложке дата: 1908",
+                "retrievedAt": "2026-09-02",
+                "checkedAt": "2026-09-02",
+                "checkedBy": "Probpera editorial research"
+              },
+              {
+                "entityKind": "manifestation",
+                "manifestationId": "nlr-005263873",
+                "sourceUrl": "https://primo.nlr.ru/primo-explore/fulldisplay?docid=07NLR_LMS005263873&context=L&vid=07NLR_VU1&lang=ru_RU",
+                "provider": "Российская национальная библиотека",
+                "authorityId": "nlr",
+                "authorityTier": "A",
+                "recordKind": "national-bibliography",
+                "recordId": "NLR-005263873",
+                "catalogTitleExact": "Когда спящий проснется",
+                "locale": "ru",
+                "market": "RU",
+                "expressionLanguage": "ru",
+                "publisher": "Шиповник",
+                "publicationYear": 1909,
+                "translator": "Екатерина Прейс",
+                "editionStatement": "Собрание сочинений, том 2",
+                "retrievedAt": "2026-09-02",
+                "checkedAt": "2026-09-02",
+                "checkedBy": "Probpera editorial research"
+              }
+            ]
+          },
+          "descriptionProvenance": {
+            "origin": "official-source-synthesis",
+            "sourceLanguage": "en",
+            "sourceCountry": "england",
+            "sourceUrls": [
+              "https://broadviewpress.com/product/when-the-sleeper-wakes/",
+              "https://ora.ox.ac.uk/objects/uuid%3Af17390d8-6d28-41e3-8be6-a075ea0db593"
+            ],
+            "transformations": [
+              "condensed",
+              "deduplicated",
+              "spoiler-limited",
+              "style-edited"
+            ],
+            "rights": {
+              "textOrigin": "project-original",
+              "copiedSourceText": false
+            },
+            "author": "Codex AI /root",
+            "createdAt": "2026-09-13",
+            "reviewedBy": "Codex AI /root/security_governance_finish",
+            "reviewedAt": "2026-09-13"
+          }
+        }
+      }
+    ],
+    "sources": [
+      {
+        "provider": "Broadview Press",
+        "url": "https://broadviewpress.com/product/when-the-sleeper-wakes/",
+        "fields": [
+          "identity",
+          "authorship",
+          "original-title",
+          "publication-year",
+          "description"
+        ],
+        "license": null,
+        "usage": "reference-only",
+        "retrievedAt": "2026-09-13",
+        "metadata": {
+          "authorityId": "broadview-press",
+          "authorityTier": "B",
+          "country": "canada",
+          "language": "en",
+          "recordKind": "authoritative-work-page",
+          "recordId": "ISBN-9781554813520"
+        }
+      },
+      {
+        "provider": "Library of Congress",
+        "url": "https://lccn.loc.gov/99002363",
+        "fields": [
+          "title",
+          "publication-year",
+          "language",
+          "market"
+        ],
+        "license": null,
+        "usage": "reference-only",
+        "retrievedAt": "2026-09-02",
+        "metadata": {
+          "authorityId": "loc",
+          "authorityTier": "A",
+          "market": "US",
+          "language": "en",
+          "recordKind": "national-bibliography",
+          "recordId": "LOC-99002363"
+        }
+      },
+      {
+        "provider": "Open Library",
+        "url": "https://openlibrary.org/works/OL52151W",
+        "fields": [
+          "identity",
+          "authorship",
+          "title",
+          "original-title",
+          "publication-year",
+          "language"
+        ],
+        "license": null,
+        "usage": "structured-data",
+        "retrievedAt": "2026-08-20",
+        "metadata": {}
+      },
+      {
+        "provider": "Project Gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/775",
+        "fields": [
+          "title",
+          "publication-year",
+          "language",
+          "market"
+        ],
+        "license": null,
+        "usage": "reference-only",
+        "retrievedAt": "2026-09-02",
+        "metadata": {
+          "authorityId": "project-gutenberg",
+          "authorityTier": "B",
+          "market": "US",
+          "language": "en",
+          "recordKind": "publisher-catalog",
+          "recordId": "PG-EBOOK-775"
+        }
+      },
+      {
+        "provider": "Project Gutenberg",
+        "url": "https://www.gutenberg.org/ebooks/author/30?sort_order=downloads",
+        "fields": [
+          "identity",
+          "authorship",
+          "title",
+          "language"
+        ],
+        "license": null,
+        "usage": "reference-only",
+        "retrievedAt": "2026-08-20",
+        "metadata": {}
+      },
+      {
+        "provider": "University of Oxford Research Archive",
+        "url": "https://ora.ox.ac.uk/objects/uuid%3Af17390d8-6d28-41e3-8be6-a075ea0db593",
+        "fields": [
+          "identity",
+          "authorship",
+          "original-title",
+          "publication-year",
+          "description"
+        ],
+        "license": null,
+        "usage": "reference-only",
+        "retrievedAt": "2026-09-13",
+        "metadata": {
+          "authorityId": "university-of-oxford",
+          "authorityTier": "B",
+          "country": "england",
+          "language": "en",
+          "recordKind": "authoritative-work-page",
+          "recordId": "ORA-uuid-f17390d8-6d28-41e3-8be6-a075ea0db593"
+        }
+      },
+      {
+        "provider": "Национальная электронная библиотека / РГБ",
+        "url": "https://rusneb.ru/catalog/000199_000009_003995369/",
+        "fields": [
+          "title",
+          "publication-year",
+          "language",
+          "market"
+        ],
+        "license": null,
+        "usage": "reference-only",
+        "retrievedAt": "2026-09-02",
+        "metadata": {
+          "authorityId": "neb",
+          "authorityTier": "A",
+          "market": "RU",
+          "language": "ru",
+          "recordKind": "national-bibliography",
+          "recordId": "NEB-003995369"
+        }
+      },
+      {
+        "provider": "Российская национальная библиотека",
+        "url": "https://primo.nlr.ru/primo-explore/fulldisplay?docid=07NLR_LMS005263873&context=L&vid=07NLR_VU1&lang=ru_RU",
+        "fields": [
+          "title",
+          "publication-year",
+          "language",
+          "market"
+        ],
+        "license": null,
+        "usage": "reference-only",
+        "retrievedAt": "2026-09-02",
+        "metadata": {
+          "authorityId": "nlr",
+          "authorityTier": "A",
+          "market": "RU",
+          "language": "ru",
+          "recordKind": "national-bibliography",
+          "recordId": "NLR-005263873"
+        }
+      }
+    ],
+    "externalIds": [
+      {
+        "scheme": "openlibrary",
+        "value": "OL52151W",
+        "sourceUrl": "https://openlibrary.org/works/OL52151W"
+      }
+    ],
+    "authors": [],
+    "editions": [],
+    "artworks": [
+      {
+        "coverUrl": "brand/book-covers/when-sleeper-wakes-20260820-editorial.webp",
+        "thumbnailUrl": "brand/book-covers/thumbs/when-sleeper-wakes-20260820-editorial.webp",
+        "coverWidth": 720,
+        "coverHeight": 1080,
+        "thumbnailWidth": 360,
+        "thumbnailHeight": 540,
+        "rightsStatus": "editorial-original",
+        "coverSourceUrl": "https://probpera.ru/brand/book-covers/when-sleeper-wakes-20260820-editorial.webp",
+        "rightsCheckedAt": "2026-08-20",
+        "sourceArchiveSha256": "0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3",
+        "sourceImageSha256": "e0d4495babd26069730bb1b36050cd9d328c9298d3ae29db4c7bb607e4baaa58",
+        "sourceFilename": "ChatGPT Image 19 авг. 2026 г., 17_44_57 (5).png",
+        "sourceRelativePath": "ChatGPT Image 19 авг. 2026 г., 17_44_57 (5).png",
+        "sourceIndex": 35,
+        "isPrimary": true,
+        "provenance": {
+          "kind": "user-supplied",
+          "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.",
+          "matchBasis": "exact-author-and-title",
+          "imageSha256": "e0d4495babd26069730bb1b36050cd9d328c9298d3ae29db4c7bb607e4baaa58",
+          "sourceIndex": 35,
+          "archiveSha256": "0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3",
+          "sourceEvidence": "chatgpt-image-filename",
+          "sourceFilename": "ChatGPT Image 19 авг. 2026 г., 17_44_57 (5).png",
+          "sourceRelativePath": "ChatGPT Image 19 авг. 2026 г., 17_44_57 (5).png"
+        }
+      }
+    ]
+  },
+  "evidence": {
+    "contractVersion": "book-evidence-v2",
+    "recordKey": "england:h_g_wells:when-the-sleeper-wakes",
+    "validation": {
+      "validator": "src/data/bookEvidence.ts#bookEvidenceV2Issues",
+      "validatorVersion": "book-evidence-v2-validator-v1",
+      "validatorSha256": "f2ef2c46ae78be553a190057f8833c5661dc1cbcc1902564708effa7f6db0026",
+      "status": "passed",
+      "issues": [],
+      "canonRegistryVersion": "world-canon-2026-09-v2",
+      "canonRegistrySha256": "d0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef",
+      "reviewer": "Codex AI /root/security_governance_finish",
+      "reviewedAt": "2026-09-13"
+    },
+    "localizedTitles": {
+      "ru": {
+        "entityKind": "expression",
+        "expressionId": "england:h_g_wells:when-the-sleeper-wakes:ru",
+        "locale": "ru",
+        "value": "Когда спящий проснется",
+        "status": "verified-published",
+        "expressionLanguage": "ru",
+        "market": "RU",
+        "selectionRule": "earliest-authorized-edition",
+        "selectionNote": "НЭБ/РГБ и РНБ независимо фиксируют заглавие «Когда спящий проснется» и перевод Екатерины Прейс в издании 1909 года, предшествующем авторской переработке 1910 года; форма с «ё» не подставляется редакционно.",
+        "evidence": [
+          {
+            "entityKind": "manifestation",
+            "manifestationId": "neb-003995369-original-1909",
+            "sourceUrl": "https://rusneb.ru/catalog/000199_000009_003995369/",
+            "provider": "Национальная электронная библиотека / РГБ",
+            "authorityId": "neb",
+            "authorityTier": "A",
+            "recordKind": "national-bibliography",
+            "recordId": "NEB-003995369",
+            "catalogTitleExact": "Когда спящий проснется",
+            "locale": "ru",
+            "market": "RU",
+            "expressionLanguage": "ru",
+            "publisher": "Шиповник",
+            "publicationYear": 1909,
+            "translator": "Екатерина Прейс",
+            "editionStatement": "На обложке дата: 1908",
+            "retrievedAt": "2026-09-02",
+            "checkedAt": "2026-09-02",
+            "checkedBy": "Probpera editorial research"
+          },
+          {
+            "entityKind": "manifestation",
+            "manifestationId": "nlr-005263873",
+            "sourceUrl": "https://primo.nlr.ru/primo-explore/fulldisplay?docid=07NLR_LMS005263873&context=L&vid=07NLR_VU1&lang=ru_RU",
+            "provider": "Российская национальная библиотека",
+            "authorityId": "nlr",
+            "authorityTier": "A",
+            "recordKind": "national-bibliography",
+            "recordId": "NLR-005263873",
+            "catalogTitleExact": "Когда спящий проснется",
+            "locale": "ru",
+            "market": "RU",
+            "expressionLanguage": "ru",
+            "publisher": "Шиповник",
+            "publicationYear": 1909,
+            "translator": "Екатерина Прейс",
+            "editionStatement": "Собрание сочинений, том 2",
+            "retrievedAt": "2026-09-02",
+            "checkedAt": "2026-09-02",
+            "checkedBy": "Probpera editorial research"
+          }
+        ]
+      },
+      "en": {
+        "entityKind": "expression",
+        "expressionId": "england:h_g_wells:when-the-sleeper-wakes:en",
+        "locale": "en",
+        "value": "When the Sleeper Wakes",
+        "status": "verified-published",
+        "expressionLanguage": "en",
+        "market": "US",
+        "selectionRule": "earliest-authorized-edition",
+        "selectionNote": "The 1899 Library of Congress manifestation and Project Gutenberg ebook 775 identify the original text as When the Sleeper Wakes; the later revised title The Sleeper Awakes is deliberately excluded.",
+        "evidence": [
+          {
+            "entityKind": "manifestation",
+            "manifestationId": "loc-99002363-original-1899",
+            "sourceUrl": "https://lccn.loc.gov/99002363",
+            "provider": "Library of Congress",
+            "authorityId": "loc",
+            "authorityTier": "A",
+            "recordKind": "national-bibliography",
+            "recordId": "LOC-99002363",
+            "catalogTitleExact": "When the Sleeper Wakes",
+            "locale": "en",
+            "market": "US",
+            "expressionLanguage": "en",
+            "publisher": "Harper & Brothers",
+            "publicationYear": 1899,
+            "editionStatement": "New York and London edition; OCLC 2338373",
+            "retrievedAt": "2026-09-02",
+            "checkedAt": "2026-09-02",
+            "checkedBy": "Probpera editorial research"
+          },
+          {
+            "entityKind": "manifestation",
+            "manifestationId": "project-gutenberg-ebook-775",
+            "sourceUrl": "https://www.gutenberg.org/ebooks/775",
+            "provider": "Project Gutenberg",
+            "authorityId": "project-gutenberg",
+            "authorityTier": "B",
+            "recordKind": "publisher-catalog",
+            "recordId": "PG-EBOOK-775",
+            "catalogTitleExact": "When the Sleeper Wakes",
+            "locale": "en",
+            "market": "US",
+            "expressionLanguage": "en",
+            "publisher": "Project Gutenberg",
+            "publicationYear": 1997,
+            "editionStatement": "Public-domain ebook preserving the original title",
+            "retrievedAt": "2026-09-02",
+            "checkedAt": "2026-09-02",
+            "checkedBy": "Probpera editorial research"
+          }
+        ]
+      }
+    },
+    "descriptions": {
+      "ru": {
+        "origin": "official-source-synthesis",
+        "sourceLanguage": "en",
+        "sourceCountry": "england",
+        "sourceUrls": [
+          "https://broadviewpress.com/product/when-the-sleeper-wakes/",
+          "https://ora.ox.ac.uk/objects/uuid%3Af17390d8-6d28-41e3-8be6-a075ea0db593"
+        ],
+        "transformations": [
+          "condensed",
+          "deduplicated",
+          "spoiler-limited",
+          "style-edited"
+        ],
+        "rights": {
+          "textOrigin": "project-original",
+          "copiedSourceText": false
+        },
+        "author": "Codex AI /root",
+        "createdAt": "2026-09-13",
+        "reviewedBy": "Codex AI /root/security_governance_finish",
+        "reviewedAt": "2026-09-13",
+        "descriptionSha256": "cb9830cb0d06ff0770a517537473fde7c9b6d11d9b1889e74204d5f251acdcf3"
+      },
+      "en": {
+        "origin": "official-source-synthesis",
+        "sourceLanguage": "en",
+        "sourceCountry": "england",
+        "sourceUrls": [
+          "https://broadviewpress.com/product/when-the-sleeper-wakes/",
+          "https://ora.ox.ac.uk/objects/uuid%3Af17390d8-6d28-41e3-8be6-a075ea0db593"
+        ],
+        "transformations": [
+          "condensed",
+          "deduplicated",
+          "spoiler-limited",
+          "style-edited"
+        ],
+        "rights": {
+          "textOrigin": "project-original",
+          "copiedSourceText": false
+        },
+        "author": "Codex AI /root",
+        "createdAt": "2026-09-13",
+        "reviewedBy": "Codex AI /root/security_governance_finish",
+        "reviewedAt": "2026-09-13",
+        "descriptionSha256": "838685987575a6866d94b33e33798d2057e3d8f8d1d4c46cfc79d194fd4aeefc"
+      }
+    },
+    "canon": null
+  },
+  "reviewer": "Codex AI /root/security_governance_finish",
+  "reviewedAt": "2026-09-13"
+}

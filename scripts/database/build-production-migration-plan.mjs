@@ -118,7 +118,11 @@ const reviewedMigrations = [
   ],
   [
     "20260912_literary_work_evidence_v2_registry_rotation.sql",
-    "01a7fc62c731d01c2ea6912dc4ed770bf5cbe4d696122feb4fee401987ff4220",
+    "2fbcba184a4f7f7eb8e0ab49737540c42614d3f1d0755914f485bd5c0e04f525",
+  ],
+  [
+    "20260913_wells_editorial_evidence_repair.sql",
+    "769353bbf60790b6a5113a5d76ee23cb7ce0e84e3100a7d3eac86c7113d09c70",
   ],
 ];
 
@@ -514,6 +518,7 @@ begin
     or to_regprocedure('public.assert_literary_archive_registry_rotation(uuid)') is null
     or to_regprocedure('public.prepare_literary_archive_reviewed_writer_reference(uuid)') is null
     or to_regprocedure('public.prepare_literary_archive_draft_writer_reference(uuid)') is null
+    or to_regprocedure('public.repair_wells_editorial_evidence_20260913(jsonb)') is null
     or to_regprocedure('public.premium_machine_translation_ready()') is null then
     raise exception 'Required editorial RPC is missing after reconciliation';
   end if;
@@ -537,6 +542,14 @@ begin
     or has_function_privilege('service_role', 'public.prepare_literary_archive_reviewed_writer_reference(uuid)', 'EXECUTE')
     or has_function_privilege('service_role', 'public.prepare_literary_archive_draft_writer_reference(uuid)', 'EXECUTE') then
     raise exception 'Reviewed atomic registry rotation capability is incomplete';
+  end if;
+
+  if not has_function_privilege('service_role', 'public.repair_wells_editorial_evidence_20260913(jsonb)', 'EXECUTE')
+    or has_function_privilege('anon', 'public.repair_wells_editorial_evidence_20260913(jsonb)', 'EXECUTE')
+    or has_function_privilege('authenticated', 'public.repair_wells_editorial_evidence_20260913(jsonb)', 'EXECUTE')
+    or position('description-origin-contract-20260913: exact frozen-validator origin/method binding.'
+      in pg_catalog.pg_get_functiondef('public.attest_literary_work_evidence_v2(uuid,text,jsonb,jsonb,text,date)'::regprocedure)) = 0 then
+    raise exception 'Reviewed Wells repair service-only capability is incomplete';
   end if;
 
   select count(*) into recorded_migrations

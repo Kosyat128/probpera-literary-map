@@ -35,7 +35,8 @@ create table public.literary_works (
 );
 create table public.literary_work_evidence_v2_attestations(work_id uuid primary key, registry_sha text);
 create table public.literary_archive_releases(id uuid primary key, metadata jsonb, enable_evidence_v2 boolean, status text);
-create table public.literary_archive_release_items(release_id uuid, legacy_id text, payload jsonb);
+create table public.literary_archive_release_items(release_id uuid, legacy_id text, payload jsonb,
+  canonical_payload text not null, payload_sha256 text not null);
 create function public.literary_work_evidence_v2_sha256(p_value text) returns text language sql immutable as $$
   select encode(sha256(convert_to(p_value, 'UTF8')), 'hex');
 $$;
@@ -59,6 +60,7 @@ create function public.attest_literary_work_evidence_v2(
 begin
   if p_content is distinct from public.literary_work_evidence_v2_content(p_work_id)
     or p_hash is distinct from public.literary_work_evidence_v2_content_sha256(p_work_id)
+    or p_hash is distinct from public.literary_work_evidence_v2_sha256(p_content::text)
     or p_evidence #>> '{validation,canonRegistrySha256}' is distinct from
       (select canon_registry_sha256 from public.literary_work_evidence_v2_controls where singleton) then
     raise exception 'fixture attestation rejects stale proof';
@@ -90,6 +92,12 @@ begin
   lock table public.literary_works, public.literary_work_evidence_v2_attestations,
     public.literary_work_evidence_v2_controls in share row exclusive mode;
   perform set_config('probpera.literary_archive_atomic_release', 'on', true);
+  -- The published outer commit validates this transport before either new hook.
+  if exists(select 1 from public.literary_archive_release_items item where item.release_id = target.id
+    and (item.payload_sha256 <> public.literary_work_evidence_v2_sha256(item.canonical_payload)
+      or item.payload is distinct from item.canonical_payload::jsonb)) then
+    raise exception 'fixture staged transport does not match its content';
+  end if;
   set constraints all deferred;
 
   -- Full replacement semantics: fixture simulates the unchanged ordinary write path.
@@ -131,9 +139,18 @@ begin if p_ok is distinct from true then raise exception 'ASSERTION FAILED: %', 
 $$;
 create function public.fixture_refresh_coverage() returns void language sql as $$
   update public.literary_archive_releases set metadata = jsonb_set(metadata,
+    '{evidenceV2RegistryRotation,coverageText}', to_jsonb(jsonb_build_object(
+      'priorPublicLegacyIds', metadata #> '{evidenceV2RegistryRotation,priorPublicLegacyIds}',
+      'cmsLockedProofs', metadata #> '{evidenceV2RegistryRotation,cmsLockedProofs}')::text));
+  update public.literary_archive_releases set metadata = jsonb_set(metadata,
     '{evidenceV2RegistryRotation,coverageSha256}', to_jsonb(public.literary_work_evidence_v2_sha256(
-      jsonb_build_object('priorPublicLegacyIds', metadata #> '{evidenceV2RegistryRotation,priorPublicLegacyIds}',
-        'cmsLockedProofs', metadata #> '{evidenceV2RegistryRotation,cmsLockedProofs}')::text)));
+      metadata #>> '{evidenceV2RegistryRotation,coverageText}')));
+$$;
+create function public.fixture_stage_item(p_key text, p_payload jsonb, p_text text default null)
+returns void language sql as $$
+  insert into public.literary_archive_release_items values(
+    '00000000-0000-4000-8000-000000000010', p_key, p_payload,
+    coalesce(p_text, p_payload::text), public.literary_work_evidence_v2_sha256(coalesce(p_text, p_payload::text)));
 $$;
 create function public.fixture_reset() returns void language plpgsql as $$
 declare
@@ -152,7 +169,7 @@ begin
   update public.literary_work_evidence_v2_controls set enforcement_enabled = true,
     canon_registry_sha256 = 'd0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef';
   insert into public.literary_works(id,legacy_id,is_cms_locked,updated_at,content,predecessor_public) values
-    ('00000000-0000-4000-8000-000000000001', 'country:writer:cms', true, '2026-09-12', '{"text":"CMS original"}', true),
+    ('00000000-0000-4000-8000-000000000001', 'country:writer:cms', true, '2026-09-12', '{"text":"CMS original","scale":1.00}', true),
     ('00000000-0000-4000-8000-000000000002', 'country:writer:unlocked', false, '2026-09-12', '{"text":"unlocked old"}', true);
   insert into public.literary_work_evidence_v2_attestations select id,
     'd0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef' from public.literary_works;
@@ -172,8 +189,7 @@ begin
         'priorPublicLegacyIds', '["country:writer:cms","country:writer:unlocked"]'::jsonb,
         'cmsLockedProofs', jsonb_build_array(proof))), true, 'staging');
   perform public.fixture_refresh_coverage();
-  insert into public.literary_archive_release_items values (
-    '00000000-0000-4000-8000-000000000010', 'country:writer:unlocked', jsonb_build_object(
+  perform public.fixture_stage_item('country:writer:unlocked', jsonb_build_object(
       'expectedContent', '{"text":"unlocked new"}'::jsonb,
       'attestation', jsonb_build_object('evidence', jsonb_build_object(
         'recordKey', 'country:writer:unlocked', 'validation', jsonb_build_object(
@@ -189,14 +205,14 @@ begin
     'validation', jsonb_build_object('status', 'passed', 'issues', '[]'::jsonb,
       'validatorSha256', 'f2ef2c46ae78be553a190057f8833c5661dc1cbcc1902564708effa7f6db0026',
       'canonRegistrySha256', 'c8d2b6862c47c3215295951d2c5d1c406913b9879c616f1d8b787c6e05029f6c')));
-  insert into public.literary_archive_release_items values(
-    '00000000-0000-4000-8000-000000000010', 'usa:harriet_beecher_stowe:uncle-toms-cabin',
+  perform public.fixture_stage_item('usa:harriet_beecher_stowe:uncle-toms-cabin',
     jsonb_build_object('work', jsonb_build_object('country_id','usa', 'writer_id','harriet_beecher_stowe', 'editorial_status','verified'),
       'expectedContent', '{"text":"Reviewed Stowe work"}'::jsonb, 'attestation', proof));
   update public.literary_archive_releases set metadata = metadata || jsonb_build_object('reviewedWriterReference',
     jsonb_build_object('contract','book-evidence-v2-reviewed-writer-reference-20260912',
       'countryId','usa', 'writerId','harriet_beecher_stowe', 'nameRu','Гарриет Бичер-Стоу', 'nameEn','Harriet Beecher Stowe',
-      'workKey','usa:harriet_beecher_stowe:uncle-toms-cabin', 'stagedProofSha256', public.literary_work_evidence_v2_sha256(proof::text)));
+      'workKey','usa:harriet_beecher_stowe:uncle-toms-cabin', 'stagedItemSha256',
+      (select payload_sha256 from public.literary_archive_release_items where legacy_id='usa:harriet_beecher_stowe:uncle-toms-cabin')));
 end;
 $$;
 create function public.fixture_expect_failure(p_message text) returns void language plpgsql as $$
@@ -214,15 +230,15 @@ create function public.fixture_add_alcott() returns void language plpgsql as $$
 declare
   content jsonb := '{"work":{"legacyId":"usa:louisa_may_alcott:little-women","firstPublished":1868},"text":"Original supplied annotation"}';
 begin
-  insert into public.literary_archive_release_items values(
-    '00000000-0000-4000-8000-000000000010', 'usa:louisa_may_alcott:little-women',
+  perform public.fixture_stage_item('usa:louisa_may_alcott:little-women',
     jsonb_build_object('work', jsonb_build_object('country_id','usa', 'writer_id','louisa_may_alcott',
       'editorial_status','draft', 'first_published',1868), 'expectedContent', content, 'attestation', 'null'::jsonb));
   update public.literary_archive_releases set metadata = metadata || jsonb_build_object('draftWriterReference',
     jsonb_build_object('contract','book-evidence-v2-draft-writer-reference-20260912',
       'countryId','usa', 'writerId','louisa_may_alcott', 'nameRu','Луиза Мэй Олкотт', 'nameEn','Louisa May Alcott',
       'workKey','usa:louisa_may_alcott:little-women', 'sourceRecordSha256','b21364f9bb413707c39e6023ebec3de5fa0b1da41e38f2f670cef3795badd231',
-      'stagedContentSha256',public.literary_work_evidence_v2_sha256(content::text)));
+      'stagedItemSha256',
+      (select payload_sha256 from public.literary_archive_release_items where legacy_id='usa:louisa_may_alcott:little-women')));
 end;
 $$;
 
@@ -237,6 +253,12 @@ select public.fixture_assert(not has_function_privilege('anon',
   'public.get_literary_work_evidence_v2_rotation_snapshot()', 'EXECUTE'), 'CMS snapshot is private');
 select public.fixture_reset();
 select public.fixture_assert(jsonb_array_length(public.get_literary_work_evidence_v2_rotation_snapshot() -> 'cmsLockedWorks') = 1, 'snapshot contains only locked public work');
+select public.fixture_assert((select snapshot ->> 'contentText' = content::text
+  and (snapshot ->> 'contentText')::jsonb = snapshot -> 'content'
+  and public.literary_work_evidence_v2_sha256(snapshot ->> 'contentText') = snapshot ->> 'contentSha256'
+  from public.literary_works cross join lateral
+    (select public.get_literary_work_evidence_v2_rotation_snapshot() #> '{cmsLockedWorks,0}' as snapshot) value
+  where is_cms_locked), 'CMS snapshot binds the exact database text and parsed content');
 
 -- Old public and CMS coverage are not replaceable with a claimed count.
 delete from public.literary_archive_release_items;
@@ -253,6 +275,50 @@ select public.fixture_expect_failure('predecessor coverage changed');
 select public.fixture_reset();
 update public.literary_archive_releases set metadata = jsonb_set(metadata, '{evidenceV2RegistryRotation,coverageSha256}', '"bad"');
 select public.fixture_expect_failure('coverage checksum is invalid');
+select public.fixture_reset();
+update public.literary_archive_releases set metadata = metadata #- '{evidenceV2RegistryRotation,coverageText}';
+select public.fixture_expect_failure('coverage checksum is invalid');
+select public.fixture_reset();
+update public.literary_archive_releases set metadata = jsonb_set(metadata,
+  '{evidenceV2RegistryRotation,coverageText}', 'null');
+select public.fixture_expect_failure('coverage checksum is invalid');
+select public.fixture_reset();
+update public.literary_archive_releases set metadata = jsonb_set(jsonb_set(metadata,
+  '{evidenceV2RegistryRotation,coverageText}', '"not JSON"'),
+  '{evidenceV2RegistryRotation,coverageSha256}', to_jsonb(public.literary_work_evidence_v2_sha256('not JSON')));
+select public.fixture_expect_failure('coverage text is invalid JSON');
+select public.fixture_reset();
+update public.literary_archive_releases set metadata = jsonb_set(jsonb_set(metadata,
+  '{evidenceV2RegistryRotation,coverageText}', '"{}"'),
+  '{evidenceV2RegistryRotation,coverageSha256}', to_jsonb(public.literary_work_evidence_v2_sha256('{}')));
+select public.fixture_expect_failure('coverage text does not match its content');
+select public.fixture_reset();
+update public.literary_archive_releases set metadata = jsonb_set(metadata,
+  '{evidenceV2RegistryRotation,coverageText}', to_jsonb(' ' || (metadata #>> '{evidenceV2RegistryRotation,coverageText}')));
+select public.fixture_expect_failure('coverage checksum is invalid');
+
+-- A valid alternate JSON representation must bind its own bytes, not JSONB::text.
+select public.fixture_reset();
+update public.literary_archive_releases set metadata = jsonb_set(metadata,
+  '{evidenceV2RegistryRotation,coverageText}', to_jsonb(' ' || (metadata #>> '{evidenceV2RegistryRotation,coverageText}')));
+update public.literary_archive_releases set metadata = jsonb_set(metadata,
+  '{evidenceV2RegistryRotation,coverageSha256}', to_jsonb(public.literary_work_evidence_v2_sha256(
+    metadata #>> '{evidenceV2RegistryRotation,coverageText}')));
+select public.commit_literary_archive_release('00000000-0000-4000-8000-000000000010', 'fixture');
+
+-- JavaScript can parse 1.00 as 1. The snapshot hash still binds the database
+-- value, which must be passed unchanged into the published strict attester.
+select public.fixture_reset();
+update public.literary_archive_releases set metadata = jsonb_set(metadata,
+  '{evidenceV2RegistryRotation,cmsLockedProofs,0,expectedContent,scale}', '1');
+select public.fixture_refresh_coverage();
+select public.fixture_assert((select public.literary_work_evidence_v2_sha256(
+  (metadata #> '{evidenceV2RegistryRotation,cmsLockedProofs,0,expectedContent}')::text)
+  <> metadata #>> '{evidenceV2RegistryRotation,cmsLockedProofs,0,expectedContentSha256}'
+  from public.literary_archive_releases), 'numeric scale regression has different serialized bytes');
+select public.commit_literary_archive_release('00000000-0000-4000-8000-000000000010', 'fixture');
+select public.fixture_assert((select content::text like '%1.00%' and public.is_literary_work_evidence_v2_attested(id)
+  from public.literary_works where is_cms_locked), 'CMS numeric scale is preserved through the strict attester');
 
 -- Exact live content, timestamp, active identity and existing CMS proof matter.
 select public.fixture_reset();
@@ -328,7 +394,16 @@ select public.fixture_expect_failure('Existing Stowe writer reference conflicts'
 select public.fixture_assert((select name_ru='Different manual name' from public.editorial_writers), 'conflicting manual identity preserved');
 select public.fixture_reset();
 select public.fixture_add_stowe();
-update public.literary_archive_releases set metadata=jsonb_set(metadata,'{reviewedWriterReference,stagedProofSha256}','"invalid"');
+update public.literary_archive_releases set metadata=jsonb_set(metadata,'{reviewedWriterReference,stagedItemSha256}','"invalid"');
+select public.fixture_expect_failure('Writer reference lacks the exact fresh staged work proof');
+select public.fixture_reset();
+select public.fixture_add_stowe();
+update public.literary_archive_release_items set payload=jsonb_set(payload,'{expectedContent,text}','"substituted Stowe text"')
+  where legacy_id='usa:harriet_beecher_stowe:uncle-toms-cabin';
+select public.fixture_expect_failure('fixture staged transport does not match its content');
+update public.literary_archive_release_items set canonical_payload=payload::text,
+  payload_sha256=public.literary_work_evidence_v2_sha256(payload::text)
+  where legacy_id='usa:harriet_beecher_stowe:uncle-toms-cabin';
 select public.fixture_expect_failure('Writer reference lacks the exact fresh staged work proof');
 
 -- The second explicit identity only admits the supplied draft; it cannot grant
@@ -342,10 +417,28 @@ select public.fixture_reset();
 select public.fixture_add_alcott();
 update public.literary_archive_release_items set payload=jsonb_set(payload,'{work,editorial_status}','"verified"')
   where legacy_id='usa:louisa_may_alcott:little-women';
+update public.literary_archive_release_items set canonical_payload=payload::text,
+  payload_sha256=public.literary_work_evidence_v2_sha256(payload::text)
+  where legacy_id='usa:louisa_may_alcott:little-women';
+update public.literary_archive_releases set metadata=jsonb_set(metadata,'{draftWriterReference,stagedItemSha256}',
+  (select to_jsonb(payload_sha256) from public.literary_archive_release_items where legacy_id='usa:louisa_may_alcott:little-women'));
 select public.fixture_expect_failure('Draft writer reference lacks the exact unverified 1868 staged content');
 select public.fixture_reset();
 select public.fixture_add_alcott();
 update public.literary_archive_release_items set payload=jsonb_set(payload,'{work,first_published}','1870')
+  where legacy_id='usa:louisa_may_alcott:little-women';
+update public.literary_archive_release_items set canonical_payload=payload::text,
+  payload_sha256=public.literary_work_evidence_v2_sha256(payload::text)
+  where legacy_id='usa:louisa_may_alcott:little-women';
+update public.literary_archive_releases set metadata=jsonb_set(metadata,'{draftWriterReference,stagedItemSha256}',
+  (select to_jsonb(payload_sha256) from public.literary_archive_release_items where legacy_id='usa:louisa_may_alcott:little-women'));
+select public.fixture_expect_failure('Draft writer reference lacks the exact unverified 1868 staged content');
+select public.fixture_reset();
+select public.fixture_add_alcott();
+update public.literary_archive_release_items set payload=jsonb_set(payload,'{expectedContent,text}','"substituted Alcott text"')
+  where legacy_id='usa:louisa_may_alcott:little-women';
+update public.literary_archive_release_items set canonical_payload=payload::text,
+  payload_sha256=public.literary_work_evidence_v2_sha256(payload::text)
   where legacy_id='usa:louisa_may_alcott:little-women';
 select public.fixture_expect_failure('Draft writer reference lacks the exact unverified 1868 staged content');
 select public.fixture_reset();

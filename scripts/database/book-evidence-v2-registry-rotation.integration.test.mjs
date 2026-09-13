@@ -29,6 +29,9 @@ describe("forward Evidence V2 registry SQL boundary", () => {
     expect(commit.split(afterAnchor)).toHaveLength(2);
     expect(commit).toContain("CMS lock or stale live content blocks archive release");
     expect(commit.indexOf(beforeAnchor)).toBeGreaterThan(commit.indexOf("CMS lock or stale live content blocks archive release"));
+    expect(commit).toMatch(/item\.payload_sha256 <>\s+public\.literary_work_evidence_v2_sha256\(item\.canonical_payload\)/u);
+    expect(commit).toContain("item.payload is distinct from item.canonical_payload::jsonb");
+    expect(commit.indexOf(beforeAnchor)).toBeGreaterThan(commit.indexOf("item.payload_sha256 <>"));
     expect(commit.indexOf(afterAnchor)).toBeGreaterThan(commit.indexOf("perform public.attest_literary_work_evidence_v2("));
     expect(commit.indexOf(afterAnchor)).toBeLessThan(commit.indexOf("into invalid_attestation_count"));
     expect(commit.indexOf("if target.status = 'committed'")).toBeLessThan(commit.indexOf(beforeAnchor));
@@ -44,6 +47,17 @@ describe("forward Evidence V2 registry SQL boundary", () => {
     expect(migration).not.toMatch(/^\s*(?:commit|rollback|begin)\s*;/gimu);
     expect(sql).not.toContain("-- __REGISTRY_ROTATION_MIGRATION__");
     expect(sql.match(/do \$literary_archive_registry_rotation_hooks\$/gu)).toHaveLength(2);
+  });
+  it("binds exact transported bytes and parsed content without reserializing staged JSON in SQL", () => {
+    expect(migration).toContain("'contentText', public.literary_work_evidence_v2_content(work.id)::text");
+    expect(migration.match(/select payload, payload_sha256 into item, item_sha256/gu)).toHaveLength(2);
+    expect(migration.match(/reference ->> 'stagedItemSha256' is distinct from item_sha256/gu)).toHaveLength(2);
+    expect(migration).not.toMatch(/stagedProofSha256|stagedContentSha256/u);
+    expect(migration).toContain("jsonb_typeof(rotation -> 'coverageText') is distinct from 'string'");
+    expect(migration).toContain("public.literary_work_evidence_v2_sha256(\n      rotation ->> 'coverageText'\n    )");
+    expect(migration).toContain("coverage := (rotation ->> 'coverageText')::jsonb");
+    expect(migration).toContain("if coverage is distinct from jsonb_build_object(");
+    expect(migration).toContain("public.literary_work_evidence_v2_content((proof ->> 'workId')::uuid)");
   });
   integrationTest("executes the exact forward migration twice and tests stale snapshots, prior-public coverage, rollback, enforcement and idempotency in PostgreSQL", () => {
     if (dockerProbe.status !== 0) throw new Error("Docker is required for the CI registry rotation contract");

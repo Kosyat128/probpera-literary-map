@@ -46,9 +46,9 @@ database URL должен быть direct endpoint этого проекта л�
    manifest и редактированный отчёт в GitHub Artifact; сбой загрузки
    останавливает job;
 5. восстанавливает копию в изолированный PostgreSQL-контейнер;
-6. на восстановленной копии одной транзакцией применяет строго 36
+6. на восстановленной копии одной транзакцией применяет строго 37
    проверенных миграций от `20260808_article_translations` до
-   `20260912_literary_work_evidence_v2_registry_rotation`;
+   `20260913_wells_editorial_evidence_repair`;
 7. проверяет ledger, 21 outbox-триггер, наличие work-level artwork, индексы,
    покрытие переводов, staff-only политики чтения, приватные рабочие черновики
    опубликованных статей и RPC `get_editorial_schema_health()`;
@@ -67,7 +67,7 @@ production mutation.
 Текущий точный health-контракт после согласования:
 
 - версия `20260902_zz_article_working_drafts_health`;
-- 36 записей в `probpera_schema_migrations`;
+- 37 записей в `probpera_schema_migrations`;
 - все 21 публикационный триггер;
 - staff-only чтение `articles`, `article_translations` и `media_assets`;
 - таблица `article_working_drafts` с FORCE RLS, единственной staff-only
@@ -132,12 +132,22 @@ Evidence V2/atomic-release схемы. В environment `production` дополн�
 `VITE_SUPABASE_URL`, не выводится в лог.
 
 После schema verification workflow проверяет закреплённый production API,
-устанавливает lockfile-зависимости, выполняет read-only preflight полного
-архива и повторно сверяет вершину `main`. Затем ровно один вызов `--apply`
+устанавливает lockfile-зависимости и повторно сверяет вершину `main`. Затем
+service-only RPC `repair_wells_editorial_evidence_20260913(jsonb)` применяет
+точно закреплённый пакет `reports/wells-editorial-repair-20260913.json`:
+новые RU/EN-аннотации с отдельной AI-проверкой, сохранением исходных переводов
+в metadata, исходного `work.description`, CMS-lock и обложек. Перед изменением
+RPC проверяет точные UUID, timestamp, SHA-256 содержимого и старую Evidence V2
+identity; исправление и его attestation проходят одной транзакцией. Повторный
+вызов принимает только неизменённый уже исправленный и аттестованный результат.
+
+После этой отдельной редакционной транзакции workflow выполняет read-only
+preflight полного архива и снова сверяет вершину `main`. Затем ровно один вызов `--apply`
 загружает приватные bounded batches и меняет live-таблицы только одним
 DB-side commit. Частичная публикация batch обложек запрещена. Ошибка до commit
-оставляет прежний архив, а ошибка после ответа commit может оставить только
-полностью зафиксированный атомарный результат.
+оставляет прежний статический архив; уже завершённое исправление Wells остаётся
+в базе и подтверждается отдельным redacted receipt. Ошибка после ответа archive
+commit может оставить только полностью зафиксированный атомарный результат.
 
 Перед первым destructive commit миграция отдельно восстанавливает историческую
 принадлежность ручных правок дочерних строк по двум production-журналам:

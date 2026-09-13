@@ -1,0 +1,22 @@
+{
+  "contract": "wells-editorial-repair-20260913",
+  "sourceArtifactSha256": "45c92cd1c07755f02215823c2bbcb98046b3f68f0b037dd904994fc0dbb94b48",
+  "sourceMainSha": "7b4f4f523889034b5325fedfea69e453bbde8a9d",
+  "beforeContentSha256": "d91a7f950bd540ffaf36f9566f343b4f5c20e83f24610c741e5430bda569872a",
+  "afterContentSha256": "2a4ed4469ce7d6dc2af7f29ff04a0b94a612fc26eba0849887ed0eb5dc8febf4",
+  "packetFileSha256": "fefe16526d951f0f1e0d1a35030cad80d1a1ab4b04ee76415dc2a2687b3123ec",
+  "packetPostgresSha256": "015b97ada9cd080a67b5bea05c022405d1787faa1eea6540f4092b7ef41f774c",
+  "evidencePostgresSha256": "9d4eadf20031b749bb247dc60eef0bf8c2707c9cd28d5c27d30842229b87127d",
+  "descriptionSha256": {
+    "ru": "cb9830cb0d06ff0770a517537473fde7c9b6d11d9b1889e74204d5f251acdcf3",
+    "en": "838685987575a6866d94b33e33798d2057e3d8f8d1d4c46cfc79d194fd4aeefc"
+  },
+  "validationIssues": [],
+  "attestationCandidates": 1,
+  "databaseMutation": false,
+  "originalDescriptionsArchived": true,
+  "activeWorkDescriptionPreserved": true,
+  "originalAuthorshipNotInferred": true,
+  "humanReview": false,
+  "fullWorkRead": false
+}

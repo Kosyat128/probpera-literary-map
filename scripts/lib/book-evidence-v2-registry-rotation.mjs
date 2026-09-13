@@ -4,7 +4,10 @@ import {
   bindEvidenceV2AttestationPayloads,
   evidenceV2AttestationCandidatesFromArchive,
 } from "./book-evidence-v2-attestations.mjs";
-import { canonicalLiteraryArchiveReleasePayload } from "./literary-archive-atomic-release.mjs";
+import {
+  canonicalLiteraryArchiveReleasePayload,
+  encodeLiteraryArchiveReleaseItem,
+} from "./literary-archive-atomic-release.mjs";
 
 export const BOOK_EVIDENCE_V2_REGISTRY_TRANSITION = Object.freeze({
   contract: "book-evidence-v2-registry-rotation-20260912",
@@ -17,8 +20,7 @@ export const BOOK_EVIDENCE_V2_REGISTRY_TRANSITION = Object.freeze({
   targetSha256: "c8d2b6862c47c3215295951d2c5d1c406913b9879c616f1d8b787c6e05029f6c",
 });
 const transition = BOOK_EVIDENCE_V2_REGISTRY_TRANSITION;
-const hash = (value) => createHash("sha256")
-  .update(canonicalLiteraryArchiveReleasePayload(value), "utf8").digest("hex");
+const textHash = (value) => createHash("sha256").update(value, "utf8").digest("hex");
 const object = (value) => value && typeof value === "object" && !Array.isArray(value);
 const cOrder = (a, b) => Buffer.compare(Buffer.from(a), Buffer.from(b));
 
@@ -42,7 +44,7 @@ export function buildEvidenceV2ReviewedWriterReference(releaseItems) {
       evidence.validation.canonRegistrySha256 !== transition.targetSha256) {
     throw new Error("Reviewed Stowe writer reference requires the exact fresh staged work proof.");
   }
-  return { ...identity, stagedProofSha256: hash(item.attestation) };
+  return { ...identity, stagedItemSha256: encodeLiteraryArchiveReleaseItem(item).payloadSha256 };
 }
 
 export const BOOK_EVIDENCE_V2_DRAFT_WRITER_REFERENCE = Object.freeze({
@@ -65,7 +67,7 @@ export function buildEvidenceV2DraftWriterReference(releaseItems) {
       item.attestation !== null || item.expectedContent?.work?.legacyId !== identity.workKey) {
     throw new Error("Alcott draft reference requires the exact source-bound unverified 1868 work.");
   }
-  return { ...identity, stagedContentSha256: hash(item.expectedContent) };
+  return { ...identity, stagedItemSha256: encodeLiteraryArchiveReleaseItem(item).payloadSha256 };
 }
 
 /** Accept only the installed, reviewed transition; health still uses the active pin. */
@@ -102,10 +104,23 @@ export function evidenceV2ProfileFromLiveContent(snapshot) {
       ["artworks", "authors", "editions", "externalIds", "sources", "translations"]
         .some((field) => !Array.isArray(content[field])) ||
       !/^[0-9a-f]{64}$/u.test(snapshot.contentSha256 || "") ||
-      hash(content) !== snapshot.contentSha256 ||
+      typeof snapshot.contentText !== "string" ||
+      textHash(snapshot.contentText) !== snapshot.contentSha256 ||
       !/^[0-9a-f-]{36}$/u.test(snapshot.workId || "") ||
       !Number.isFinite(Date.parse(snapshot.updatedAt)) || snapshot.isCmsLocked !== true) {
     throw new Error("CMS rotation snapshot is incomplete or does not match its content hash.");
+  }
+  // The DB hash covers jsonb::text, whose key order, spacing and numeric scale
+  // differ from JSON.stringify. Bind its exact bytes to the parsed projection;
+  // never reconstruct a presumed PostgreSQL representation in JavaScript.
+  let serializedContent;
+  try {
+    serializedContent = JSON.parse(snapshot.contentText);
+  } catch {
+    throw new Error("CMS rotation content text is not valid JSON.");
+  }
+  if (!isDeepStrictEqual(serializedContent, content)) {
+    throw new Error("CMS rotation content text differs from its parsed projection.");
   }
   const work = content.work;
   const prefix = `${work.countryId}:${work.writerId}:`;
@@ -193,5 +208,6 @@ export function buildEvidenceV2RegistryRotation({ snapshot, expectedCmsLegacyIds
     ...proof, legacyId: cms[index].legacyId, expectedUpdatedAt: cms[index].updatedAt,
   })).sort((a, b) => cOrder(a.legacyId, b.legacyId));
   const coverage = { priorPublicLegacyIds: [...prior].sort(cOrder), cmsLockedProofs };
-  return { ...transition, ...coverage, coverageSha256: hash(coverage) };
+  const coverageText = canonicalLiteraryArchiveReleasePayload(coverage);
+  return { ...transition, ...coverage, coverageText, coverageSha256: textHash(coverageText) };
 }

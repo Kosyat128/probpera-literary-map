@@ -264,7 +264,8 @@ test("publication showcase fits complete previews without nested or panel scroll
       expect(geometry.panel.bottom, `${locale}/${width}/${height}`).toBeLessThanOrEqual(height);
       for (const overflow of geometry.scroll) expect(overflow).toBeLessThanOrEqual(1);
       expect(geometry.image.width).toBeLessThan(geometry.panel.width * .4);
-      expect(geometry.image.height).toBeLessThanOrEqual(height <= 740 ? 96 : 180);
+      // DOMRect includes floating-point transform noise below one CSS subpixel.
+      expect(Math.round(geometry.image.height * 1000) / 1000).toBeLessThanOrEqual(height <= 740 ? 96 : 180);
       expect(geometry.cards).toHaveLength(Math.min(geometry.cardCount, height <= 740 ? 4 : 6));
       for (const card of geometry.cards) expect(card.bottom).toBeLessThanOrEqual(geometry.footer.top + 1);
       for (const text of geometry.text) {

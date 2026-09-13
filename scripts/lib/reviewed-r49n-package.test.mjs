@@ -15,7 +15,7 @@ const canonical = value => Array.isArray(value) ? value.map(canonical)
 describe("R49N common package additive governance", () => {
   it("pins the common packet without replacing the historical Dickens attestation", () => {
     expect(sha(JSON.stringify(r49nPackageAttestation))).toBe(
-      "e93c4b3224fd38d9c416e7eae8c148defe598d3ac35c1df6cce2839c006beea1"
+      "75019b2000c1a18dd04103bfd1a35269d254d04ac4cdc881e6f6956867946404"
     );
     expect(sha(JSON.stringify(JSON.parse(read("scripts/governance/book-r49n-dickens-reviewed-20260912.json")))))
       .toBe("2fd2b7dbbb6fe34040aba24e6dfef4a8498d6a01f4ae753698715abe72c408f6");
@@ -145,13 +145,33 @@ describe("R49N common package additive governance", () => {
     expect(sha(read(report.retainedDraftDisplay.path))).toBe(report.retainedDraftDisplay.sha256);
     expect(report.retainedDraftDisplay).toMatchObject({ proseRewritten: false, newHumanApproval: false, evidenceV2ApprovalGranted: false });
     expect(sha(read(report.atomicRegistryTransition.migration.path))).toBe(report.atomicRegistryTransition.migration.sha256);
+    expect(sha(read(report.atomicRegistryTransition.report.path))).toBe(report.atomicRegistryTransition.report.sha256);
+    expect(report.atomicRegistryTransition.previousUnpublishedRevision.migration.sha256)
+      .toBe("01a7fc62c731d01c2ea6912dc4ed770bf5cbe4d696122feb4fee401987ff4220");
+    expect(report.atomicRegistryTransition.previousUnpublishedRevision.receipt.statements).toBe(177);
+    expect(report.atomicRegistryTransition.receipt).toMatchObject({ pass: true, statements: 219, productionAccess: false, dockerCiStillRequired: true });
+    for (const file of report.atomicRegistryTransition.hashContractRevision.files)
+      expect(sha(read(file.path))).toBe(file.sha256Lf);
     expect(report.privateAuthorReferences).toMatchObject({ beforeCount: 1684, afterCount: 1686, existingRecordsChanged: [], newPublicBiographies: 0 });
     expect(report.fullCatalogUi.catalog).toMatchObject({ total: 9763, reviewed: 69, pending: 9694, evidenceGatesChanged: false });
     const cmsGuard = report.cmsRetainedPrecedence;
-    expect(sha(read(cmsGuard.source.path))).toBe(cmsGuard.source.afterSha256Lf);
+    const wellsCms = report.cmsWellsPriority;
+    expect(wellsCms.source.beforeSha256Lf).toBe(cmsGuard.source.afterSha256Lf);
+    expect(sha(read(wellsCms.source.path))).toBe(wellsCms.source.sha256Lf);
+    expect(sha(read(wellsCms.test.path))).toBe(wellsCms.test.sha256Lf);
+    expect(wellsCms).toMatchObject({ finalLegacyQuarantinePreserved: true, currentCatalogCount: 9763, currentReviewedCount: 69, currentPendingCount: 9694 });
     expect(sha(read(cmsGuard.test.path))).toBe(cmsGuard.test.sha256Lf);
     expect(cmsGuard.currentSnapshot).toMatchObject({ exportedCmsWorks: 17, retainedKeyIntersection: 0, catalogCount: 9763, reviewedCount: 69, pendingCount: 9694, retainedPairs: 1494 });
     expect(cmsGuard).toMatchObject({ workProfileSchemaChanged: false, evidenceContractChanged: false, genericDraftTextExposed: false, historicalQuarantinePreserved: true, publicApprovalGranted: false });
+    const repair = report.wellsEditorialRepair;
+    expect(sha(read(repair.migration.path))).toBe(repair.migration.sha256);
+    for (const file of [repair.packet, repair.validation, ...repair.files, ...report.releaseIntegration.supportingFiles])
+      expect(sha(read(file.path))).toBe(file.sha256Lf);
+    expect(repair).toMatchObject({ schemaMigrations: 37, publishedHistoricalMigrations: 35, historicalMigrationPinsChanged: false,
+      originalDescriptionsArchived: true, activeWorkDescriptionPreserved: true, originalAuthorshipInferred: false,
+      humanReview: false, fullWorkRead: false, productionApplied: false });
+    expect(repair.validation.receipt).toMatchObject({ validationIssues: [], attestationCandidates: 1, databaseMutation: false });
+    expect(report.releaseIntegration.historicalCheckpointTag).toBe("codex/books-r49n-checkpoint-20260912-459f2d70");
     for (const file of report.fullCatalogUi.files) expect(sha(read(file.path))).toBe(file.sha256Lf);
     expect(report.historicalCoverChecks).toMatchObject({ status: "PASS", checkOnly: true, newCoverPublication: false, coverAssetsChanged: [] });
     for (const file of report.historicalCoverChecks.unchangedFiles) expect(sha(read(file.path))).toBe(file.sha256);

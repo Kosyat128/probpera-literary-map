@@ -735,12 +735,25 @@ export function buildBookArchive(
               writer.id,
               recoveredWork
             );
+        // Keep the reviewed Wells CMS edition after the older static synopsis
+        // overlays. Require exported V2 metadata so the older CMS snapshot
+        // still uses the reviewed fallback; strict release validation remains.
+        const reviewedWellsCmsWork =
+          country.id === "england" && writer.id === "h_g_wells" &&
+          candidate.id === "when-the-sleeper-wakes" && publicCmsWorkIds.has(candidate.id)
+            ? cmsWorks.find((cmsWork) =>
+                cmsWork.id === candidate.id && isPublicBook(cmsWork) &&
+                cmsWork.localizedTitles?.ru && cmsWork.localizedTitles?.en &&
+                cmsWork.translations?.ru?.titleEvidence && cmsWork.translations?.en?.titleEvidence &&
+                cmsWork.translations.ru.descriptionProvenance && cmsWork.translations.en.descriptionProvenance
+              )
+            : undefined;
         // Final publication guard: keep this after every public/expansion
         // overlay so a later enrichment cannot re-promote a held legacy card.
         const work = applyBookEvidenceV2LegacyVerifiedReaudit01Work(
           country.id,
           writer.id,
-          includeR49nCatalog ? retainedDraftWork : expandedWork
+          reviewedWellsCmsWork || (includeR49nCatalog ? retainedDraftWork : expandedWork)
         );
         const workId = `${country.id}:${writer.id}:${work.id}`;
         const edition = (
