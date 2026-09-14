@@ -19,7 +19,7 @@ const paths = [
 
 describe("Native archive read additive governance", () => {
   it("pins only explicit read-query repairs and two historical adapter changes", () => {
-    expect(sha(JSON.stringify(nativeArchiveReadAttestation))).toBe("d161d017ebbfbc542af5f72c493804f7cf8bd510669bd070efc73746d86717ea");
+    expect(sha(JSON.stringify(nativeArchiveReadAttestation))).toBe("8c363a4c1e88f6a8c46b163b6937a7c357611bfdfe8a9d218866f869bb17b686");
     expect(nativeArchiveReadAttestation).toMatchObject({
       id: "LIBRARY-NATIVE-READ-REVIEWED-20260914",
       baselineSourceCommitSha: "bc765b4b39d41462e0c7f711d5cdc6ffeb589dbe",

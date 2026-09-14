@@ -228,7 +228,7 @@ describe("atomic archive reviewed-cover postflight", () => {
       .toHaveLength(1);
     expect(source.match(/node scripts\/sync-literary-archive\.mjs --preflight/gu))
       .toHaveLength(1);
-    expect(source.match(/node scripts\/sync-literary-archive\.mjs --postflight/gu))
+    expect(source.match(/node scripts\/database\/verify-literary-archive-postflight\.mjs/gu))
       .toHaveLength(1);
     expect(source.match(/--receipt-file reconciliation\/literary-archive-release-receipt\.json/gu))
       .toHaveLength(2);

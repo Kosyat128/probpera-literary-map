@@ -29,6 +29,14 @@
     "snapshotOutputUnchanged": true,
     "source": "Approved focused exporter fixture and shared query tests; no new publication eligibility or access scope."
   },
+  "coverWorkflowContractCompatibility": {
+    "path": "scripts/database/verify-book-cover-batch-20260820.test.mjs",
+    "sourceCommitSha": "9c6c2b157c93e3d8b4d15d2997ff312940baf53c",
+    "beforeSha256Lf": "6372d931ce160dd9b17e726c9e66dab317f785d4515ca7e2e5335f822e473dcb",
+    "afterSha256Lf": "497259e3a3957d567ba3c66638d647f8ce0bcb45833104b45e96eb9603b99b26",
+    "change": "Only the expected postflight command changes to the fixed native verifier. Existing single-apply, complete-archive, receipt, main guard, ordering and cover checks remain unchanged.",
+    "historicalProjectionRequired": false
+  },
   "allowedOperations": [
     "precondition",
     "postflight"
@@ -173,6 +181,10 @@
     {
       "path": "scripts/lib/public-work-source-fetch.test.mjs",
       "sha256Lf": "007ac25f211d5023168edb9b45fb32d1073a1cf51754ca8a96fa565ffaf744f1"
+    },
+    {
+      "path": "scripts/database/verify-book-cover-batch-20260820.test.mjs",
+      "sha256Lf": "497259e3a3957d567ba3c66638d647f8ce0bcb45833104b45e96eb9603b99b26"
     }
   ]
 }
