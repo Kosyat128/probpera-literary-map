@@ -6,6 +6,7 @@ import { isDeepStrictEqual } from "node:util";
 
 import { build } from "esbuild";
 import { authorshipRowsFromArchive } from "./lib/book-authorship-roundtrip.mjs";
+import { createNativeArchiveCommitClient } from "./lib/literary-archive-database-commit.mjs";
 import {
   buildLiteraryArchiveReferenceMetadata,
   referenceItemsFromArchive,
@@ -48,6 +49,7 @@ const bundlePath = path.join(cacheDirectory, "literary-archive-source.mjs");
 const ATOMIC_WORKFLOW_RECEIPT_SCHEMA =
   "literary-archive-workflow-receipt-v2";
 const applyChanges = process.argv.includes("--apply");
+const commitViaDatabase = process.argv.includes("--commit-via-database");
 const preflightOnly = process.argv.includes("--preflight");
 const postflightOnly = process.argv.includes("--postflight");
 const coverBatch20260820 = process.argv.includes("--batch-2026-08-20");
@@ -91,6 +93,9 @@ if ([applyChanges, preflightOnly, postflightOnly].filter(Boolean).length > 1) {
     "Choose at most one database mode: --preflight, --postflight or --apply."
   );
 }
+if (commitViaDatabase && !applyChanges) {
+  throw new Error("--commit-via-database is valid only with --apply.");
+}
 if ((applyChanges || postflightOnly) && coverBatch20260820) {
   throw new Error(
     "Atomic apply/postflight always covers the complete archive; batch-only publication is forbidden."
@@ -107,6 +112,9 @@ try {
   process.loadEnvFile(path.join(repositoryRoot, ".env.local"));
 } catch {
   // В CI переменные передаются окружением; локальный файл необязателен.
+}
+if (commitViaDatabase && !process.env.SUPABASE_DB_URL?.trim()) {
+  throw new Error("--commit-via-database requires SUPABASE_DB_URL.");
 }
 
 function stableHash(value) {
@@ -1193,7 +1201,8 @@ if (preflightOnly) {
 }
 
 const releaseResult = await publishLiteraryArchiveAtomicRelease({
-  supabase,
+  supabase: commitViaDatabase ? createNativeArchiveCommitClient(supabase, { logger: console.info }) : supabase,
+  rpcAttempts: commitViaDatabase ? 1 : 3,
   items: releaseItems,
   expectedPrecondition: precondition,
   releaseKey,

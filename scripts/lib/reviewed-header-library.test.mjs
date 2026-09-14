@@ -6,10 +6,11 @@ import {
   projectReviewedHeaderLibrary,
 } from "./reviewed-header-library.mjs";
 import { projectReviewedR49nPackage } from "./reviewed-r49n-package.mjs";
+import { projectReviewedHeaderShowcase } from "./reviewed-header-showcase.mjs";
 
 const sha256 = source => createHash("sha256").update(source).digest("hex");
 const read = relativePath => projectReviewedR49nPackage(
-  relativePath, readFileSync(relativePath, "utf8").replace(/\r\n?/gu, "\n")
+  relativePath, projectReviewedHeaderShowcase(relativePath, readFileSync(relativePath, "utf8"))
 );
 
 describe("September 12 owner-approved header and library governance", () => {

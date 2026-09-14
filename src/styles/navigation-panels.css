@@ -87,7 +87,7 @@
   }
 
   .articles-mega-menu .articles-mega-content {
-    grid-template-columns: minmax(0, 0.36fr) minmax(0, 0.64fr);
+    grid-template-columns: minmax(0, 0.34fr) minmax(0, 0.66fr);
     min-width: 0;
     min-height: 0;
     overflow: visible;
@@ -111,8 +111,12 @@
 
   .articles-mega-menu .articles-mega-lead-media > img {
     position: absolute;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
+  }
+
+  .articles-mega-menu .articles-mega-lead:hover .articles-mega-lead-media > img {
+    transform: none;
   }
 
   .articles-mega-menu .articles-mega-lead-media > span {
@@ -123,7 +127,7 @@
     align-content: start;
     gap: 8px;
     min-width: 0;
-    padding: 16px;
+    padding: 12px;
   }
 
   .articles-mega-menu .articles-mega-lead strong,
@@ -145,7 +149,7 @@
     gap: 6px;
     align-items: start;
     min-height: 44px;
-    padding: 14px;
+    padding: 12px;
   }
 
   .articles-mega-menu .articles-mega-content > section:empty {
@@ -165,32 +169,39 @@
     align-self: start;
   }
 
-  /* Short displays show fewer complete previews with the full archive below. */
+  /* Keep the complete image and all six previews together on shorter displays. */
   @media (max-height: 740px) {
     .articles-mega-menu > header {
-      padding-block: 12px;
+      padding-block: 6px;
+    }
+
+    .articles-mega-menu > header > div {
+      gap: 4px;
     }
 
     .articles-mega-menu .articles-mega-lead-media {
-      height: 96px;
-      aspect-ratio: auto;
+      width: min(100%, calc(clamp(120px, 100dvh - 480px, 168px) * 16 / 9));
+      justify-self: center;
     }
 
     .articles-mega-menu .articles-mega-lead > div {
-      gap: 6px;
-      padding: 12px;
+      gap: 4px;
+      padding: 8px;
     }
 
     .articles-mega-menu .articles-mega-content > section a {
-      padding: 12px;
+      gap: 4px;
+      padding: 8px 12px;
     }
 
-    .articles-mega-menu .articles-mega-content > section a:nth-child(n + 5) {
-      display: none;
-    }
-
-    .articles-mega-menu > footer {
+    .articles-menu .articles-mega-menu > footer {
       padding-block: 2px;
+    }
+  }
+
+  @media (max-height: 640px) {
+    .articles-mega-menu .articles-mega-content > section a {
+      padding-block: 4px;
     }
   }
 

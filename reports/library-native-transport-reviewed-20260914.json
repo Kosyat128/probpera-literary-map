@@ -1,0 +1,295 @@
+{
+  "id": "LIBRARY-NATIVE-TRANSPORT-20260914",
+  "reviewedAt": "2026-09-14T00:05:34.936Z",
+  "baselineSourceCommitSha": "d6c7849ccc5285e17c6da9ef147fecc9fdd0f000",
+  "authorization": "The owner authorized completion and publication of the full reviewed literary archive. Replace only the final commit transport after the exact-main release failed during the atomic RPC; keep the existing function and publication proof gates.",
+  "humanReview": false,
+  "productionApplied": false,
+  "historicalPinsChanged": false,
+  "coreCommitFunctionChanged": false,
+  "migrationFilesChanged": false,
+  "globalOrRoleTimeoutsChanged": false,
+  "humanIdentityImpersonated": false,
+  "databaseRowsDirectlyModifiedByTransport": false,
+  "broadSourceExclusionsAdded": false,
+  "diagnosis": {
+    "runId": 34790152436,
+    "attempt": 1,
+    "sourceCommitSha": "d6c7849ccc5285e17c6da9ef147fecc9fdd0f000",
+    "releaseId": "03c96aa5-e4e3-40fd-a5eb-c959767b9bf3",
+    "all98BatchesStaged": true,
+    "commitAttempts": 3,
+    "message": "canceling statement due to statement timeout",
+    "schemaMigrationLedger": 38,
+    "isolatedRestoreArticles": 183,
+    "isolatedRestoreUuidStubs": 2,
+    "wellsStatus": "already-repaired",
+    "archiveCommitReceiptPresent": false,
+    "exactCommitPhaseEstablished": false,
+    "actualProductionTimeoutSettingsRead": false,
+    "fullCorePerformanceMeasured": false,
+    "evidence": {
+      "artifactId": 10327852133,
+      "artifactName": "production-db-reconciliation-evidence-34790152436-1",
+      "redactedOnly": true,
+      "diagnosisSha256Lf": "52854dc3a9c5c8c464c26e9d228a76a3e66e4eabf8d21296d24e09857bf7a2fe",
+      "verificationSha256Lf": "a9f4a441ff64e07e79bce5b6f50f5bf168c47b0a2e88f099c6e8b60319b458a9"
+    },
+    "limitation": "The documented service-role timeout fallback is consistent with the observed intervals; neither the actual production setting nor the slow internal phase was read. The earlier initializer measurement does not benchmark the full atomic commit."
+  },
+  "scope": {
+    "runtimePaths": [
+      ".github/workflows/reconcile-production-database.yml",
+      "scripts/database/supabase-database-safety.sh",
+      "scripts/sync-literary-archive.mjs"
+    ],
+    "newClient": "scripts/lib/literary-archive-database-commit.mjs",
+    "fixedSql": "scripts/database/literary-archive-native-commit.sql",
+    "testOnlyDelta": "Increment the checked number of explicit remote --dbname arguments for the one additional fixed client.",
+    "mode": "Explicit --apply --commit-via-database; default REST mode remains available.",
+    "transport": "Only commit_literary_archive_release is intercepted; all other RPC calls delegate to the existing client.",
+    "retryPolicy": "The explicit native run uses one RPC attempt and has no automatic native-to-REST fallback. Existing REST mode retains three attempts."
+  },
+  "guards": {
+    "sqlInput": "Fixed SQL file and exactly two canonical string arguments: UUID and SHA-256. No arbitrary SQL input.",
+    "target": "Existing production project, single-host, database, TLS and pre-pulled image identity checks.",
+    "transaction": "One psql transaction with ON_ERROR_STOP; local statement timeout 5min, lock timeout 15s and service-only role claims, with auth.uid required null.",
+    "output": "One bounded JSON envelope bound to the requested UUID and manifest, then the unchanged full JS committed receipt and postflight validation.",
+    "failure": "SQL, connection, timeout and receipt errors fail closed; no partial direct row writes or alternate function.",
+    "permissions": "No migration, GRANT, global timeout, role timeout or function configuration changes."
+  },
+  "governance": {
+    "projectedPaths": [
+      ".github/workflows/reconcile-production-database.yml",
+      "scripts/database/production-migration-plan.test.mjs",
+      "scripts/database/supabase-database-safety.sh",
+      "scripts/lib/reviewed-header-showcase.test.mjs",
+      "scripts/lib/reviewed-r49n-package.test.mjs",
+      "scripts/lib/reviewed-reference-release.test.mjs",
+      "scripts/lib/stage5-content-data-lock.test.mjs",
+      "scripts/sync-literary-archive.mjs"
+    ],
+    "mainBoundaryPaths": [
+      ".github/workflows/reconcile-production-database.yml",
+      "scripts/database/production-migration-plan.test.mjs",
+      "scripts/database/supabase-database-safety.sh",
+      "scripts/sync-literary-archive.mjs"
+    ],
+    "localShowcaseAdapterPaths": [
+      "scripts/lib/reviewed-header-showcase.test.mjs",
+      "scripts/lib/reviewed-r49n-package.test.mjs",
+      "scripts/lib/reviewed-reference-release.test.mjs",
+      "scripts/lib/stage5-content-data-lock.test.mjs"
+    ],
+    "localShowcaseBoundary": {
+      "artifacts": [
+        {
+          "path": "scripts/governance/header-showcase-owner-refinement-20260914.json",
+          "sha256Lf": "9fbab0e71e9aa66df8bfe656aa05db67506c3ff8f71c3218b1aaac897d6a3204"
+        },
+        {
+          "path": "reports/header-showcase-owner-refinement-20260914.json",
+          "sha256Lf": "8827505e33620f9dd4873e0cf746d136d4f2cc5b6771acb21bb23c7f368ee47d"
+        }
+      ],
+      "focusedTestsPassed": 9,
+      "files": [
+        {
+          "path": "scripts/lib/reviewed-header-library.test.mjs",
+          "sha256Lf": "aa6de35778197c1420793f872887d7379d4d957a8268361abd549a7000e11980"
+        },
+        {
+          "path": "scripts/lib/reviewed-header-showcase.test.mjs",
+          "sha256Lf": "b4a497da0fe03d4a163b455d1a67413a34a7a800e53560bc9e5f9884b62622ef"
+        },
+        {
+          "path": "scripts/lib/reviewed-r49n-package.test.mjs",
+          "sha256Lf": "eba1b7382284015604160fe4ec449b307874a698786eab8ea35c0264ad8fe605"
+        },
+        {
+          "path": "scripts/lib/reviewed-reference-release.test.mjs",
+          "sha256Lf": "6ab82ac25acc9eb82fe938a785c29a936aabb0e3212fc85279138d6d201ce835"
+        },
+        {
+          "path": "scripts/lib/stage5-content-data-lock.test.mjs",
+          "sha256Lf": "064fbfaa39e32693352724292243895ee8cfa84085657b6c9228d69513dbdc54"
+        }
+      ]
+    },
+    "order": "Native exact projection runs before the reviewed showcase and published reference/R49 source reads. The four necessary read adapters retain each existing expected hash and negative test.",
+    "priorExpectedHashesChanged": false
+  },
+  "validation": {
+    "sourceReview": "Independent inspection of the fixed SQL, validated two-argument proxy, shell target/image checks, workflow credentials and CLI mode guard.",
+    "focusedReceipt": {
+      "path": ".tmp/native-archive-transport-source-validation-20260914.json",
+      "sha256Lf": "a3620c9296a8a82c7dffb0088d0a853a38b7a1e70d20203b421398e04ea1ae4b"
+    },
+    "limitations": "Local fixture tests do not prove the production full-core duration. Exact-main CI and the production commit/postflight receipt remain required.",
+    "focused": {
+      "recordedAt": "2026-09-14T00:05:30.476Z",
+      "productionActions": false,
+      "fullArchiveCoreBenchmark": false,
+      "sourceOwnerFocusedRun": {
+        "reportedBy": "Root implementation owner, stable source message",
+        "command": "node node_modules/vitest/vitest.mjs run scripts/lib/literary-archive-database-commit.test.mjs scripts/database/literary-archive-atomic-sync.test.mjs scripts/database/production-migration-plan.test.mjs scripts/database/literary-archive-native-commit.integration.test.mjs",
+        "passed": 40,
+        "skipped": 1,
+        "exitCode": 0,
+        "durationMs": 1840,
+        "localStart": "2026-09-14 03:02:58 Europe/Moscow",
+        "skipReason": "No local Docker; the real native psql test is mandatory in CI.",
+        "bashSyntaxExitCode": 0,
+        "subsequentNarrowChange": "Sync adds the safe console.info timing logger; two atomic-sync source assertions updated accordingly.",
+        "finalAtomicSyncRun": {
+          "reportedBy": "Book implementation owner after final logger source freeze",
+          "passed": 13,
+          "exitCode": 0,
+          "sourceLfSha256": "5b17f2fd9da7fa939f4b5428e086fdcd79cebd764d7a2e5c70dd3976a2db1e4a"
+        }
+      },
+      "supplementalPglite": {
+        "path": ".tmp/native-commit-pglite-20260914.json",
+        "sha256Lf": "b55e6271cc2ce64ce4d671d29e6e4ac648bcadc8393d04e2def10f9fc647405d",
+        "status": "pass",
+        "runtime": "Existing PGlite PostgreSQL",
+        "productionActions": false,
+        "nativePsqlCoveredBy": "required Docker PostgreSQL integration in CI",
+        "scope": "Transport and transaction fixture only; not full archive core benchmark",
+        "fixedSqlLfSha256": "4823313ace3fd091d93780fd3cf1f9348f05b5d8edca3dce9f5cc36de5f6ca0f",
+        "checks": [
+          "exact SQL settings before two-argument service invocation",
+          "same-session role and all local settings restored after commit",
+          "committed retry idempotent",
+          "post-insert failure rolls back all writes",
+          "anon and authenticated execute denied",
+          "service-only execute grant",
+          "human UID rejected before RPC"
+        ],
+        "envelope": {
+          "receipt": {
+            "releaseId": "10000000-0000-4000-8000-000000000001",
+            "manifestSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "alreadyCommitted": false
+          },
+          "elapsedMs": 9,
+          "transport": "native-postgres"
+        },
+        "restored": {
+          "role": "postgres",
+          "statement_timeout": 9000,
+          "lock_timeout": 3000,
+          "claims": "{}",
+          "claim_role": ""
+        },
+        "finalStoredRows": 1
+      },
+      "files": [
+        {
+          "path": "scripts/lib/literary-archive-database-commit.mjs",
+          "sha256Lf": "c2322067f4794763c04753118e5f3b1b9f1fb5e1d9327c6d4d8bfc3a9af81ab9"
+        },
+        {
+          "path": "scripts/lib/literary-archive-database-commit.test.mjs",
+          "sha256Lf": "ea8ffea9755e47f9ded865db2cbacdc6411b9df0523a5aaff2dfe1038461ebce"
+        },
+        {
+          "path": "scripts/database/literary-archive-native-commit.sql",
+          "sha256Lf": "4823313ace3fd091d93780fd3cf1f9348f05b5d8edca3dce9f5cc36de5f6ca0f"
+        },
+        {
+          "path": "scripts/database/supabase-database-safety.sh",
+          "sha256Lf": "036a21ada6a7dd115d5a928087d36bd8aa9fa651603c322a916506e4ee890496"
+        },
+        {
+          "path": "scripts/database/production-migration-plan.test.mjs",
+          "sha256Lf": "98f4e0945c8424e544d6442cec86e69991343775771fd95d6cf0a943cfc946e1"
+        },
+        {
+          "path": "scripts/sync-literary-archive.mjs",
+          "sha256Lf": "3b372188b914411a89c23d147259198168ef909d1f72c225b17a04656e68417c"
+        },
+        {
+          "path": ".github/workflows/reconcile-production-database.yml",
+          "sha256Lf": "5e1ae1bdfbb4d118d992f1b846f94457f69e768f1bb7304ee17b5e67ecf662c5"
+        },
+        {
+          "path": "scripts/database/literary-archive-atomic-sync.test.mjs",
+          "sha256Lf": "5b17f2fd9da7fa939f4b5428e086fdcd79cebd764d7a2e5c70dd3976a2db1e4a"
+        }
+      ]
+    }
+  },
+  "sources": [
+    {
+      "url": "https://supabase.com/docs/guides/database/postgres/timeouts",
+      "supports": "REST timeout ceiling, default service-role fallback and direct/session alternative."
+    },
+    {
+      "url": "https://docs.postgrest.org/en/stable/references/transactions.html#hoisted-function-settings",
+      "supports": "Scoped function settings and request transaction behavior."
+    }
+  ],
+  "files": [
+    {
+      "path": ".github/workflows/reconcile-production-database.yml",
+      "sha256Lf": "5e1ae1bdfbb4d118d992f1b846f94457f69e768f1bb7304ee17b5e67ecf662c5"
+    },
+    {
+      "path": "scripts/database/fixtures/literary-archive-native-commit.sql",
+      "sha256Lf": "3f8e703616a444a5377c730cc4bf30d2cfd8427ca4b59b9e6eb692eef4fb4352"
+    },
+    {
+      "path": "scripts/database/literary-archive-atomic-sync.test.mjs",
+      "sha256Lf": "5b17f2fd9da7fa939f4b5428e086fdcd79cebd764d7a2e5c70dd3976a2db1e4a"
+    },
+    {
+      "path": "scripts/database/literary-archive-native-commit.integration.test.mjs",
+      "sha256Lf": "c100b013ce6a8e101171691ce65df31875a0c6f35418c6a176c387654e676c85"
+    },
+    {
+      "path": "scripts/database/literary-archive-native-commit.sql",
+      "sha256Lf": "4823313ace3fd091d93780fd3cf1f9348f05b5d8edca3dce9f5cc36de5f6ca0f"
+    },
+    {
+      "path": "scripts/database/production-migration-plan.test.mjs",
+      "sha256Lf": "98f4e0945c8424e544d6442cec86e69991343775771fd95d6cf0a943cfc946e1"
+    },
+    {
+      "path": "scripts/database/supabase-database-safety.sh",
+      "sha256Lf": "036a21ada6a7dd115d5a928087d36bd8aa9fa651603c322a916506e4ee890496"
+    },
+    {
+      "path": "scripts/lib/literary-archive-database-commit.mjs",
+      "sha256Lf": "c2322067f4794763c04753118e5f3b1b9f1fb5e1d9327c6d4d8bfc3a9af81ab9"
+    },
+    {
+      "path": "scripts/lib/literary-archive-database-commit.test.mjs",
+      "sha256Lf": "ea8ffea9755e47f9ded865db2cbacdc6411b9df0523a5aaff2dfe1038461ebce"
+    },
+    {
+      "path": "scripts/lib/reviewed-header-showcase.test.mjs",
+      "sha256Lf": "edd6ee869a8e3e838fffc371c4ce82e4e44943a9bc3f4918a2c91b8d3094640f"
+    },
+    {
+      "path": "scripts/lib/reviewed-native-archive-transport.mjs",
+      "sha256Lf": "8085f14b46440566c41427345fa4cd9a725f147454b805dd9a3e481bc222914e"
+    },
+    {
+      "path": "scripts/lib/reviewed-r49n-package.test.mjs",
+      "sha256Lf": "7129eac1c61e577f2f4dfe95a085460464643dac80e5fe33afc37d14b54a96fc"
+    },
+    {
+      "path": "scripts/lib/reviewed-reference-release.test.mjs",
+      "sha256Lf": "55f0b4234816b0d0a407b1f3d3de50b97760437838208b9a85d4868d2f983da6"
+    },
+    {
+      "path": "scripts/lib/stage5-content-data-lock.test.mjs",
+      "sha256Lf": "2072075e9e57deeaef5652d789606421647b08e717d53bf3171ced800ef69624"
+    },
+    {
+      "path": "scripts/sync-literary-archive.mjs",
+      "sha256Lf": "3b372188b914411a89c23d147259198168ef909d1f72c225b17a04656e68417c"
+    }
+  ]
+}

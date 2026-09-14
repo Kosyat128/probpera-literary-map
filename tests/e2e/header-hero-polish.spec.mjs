@@ -245,6 +245,7 @@ test("publication showcase fits complete previews without nested or panel scroll
         return {
           panel: box(element),
           image: box(lead.querySelector("img")),
+          imageFit: getComputedStyle(lead.querySelector("img")).objectFit,
           cards: cards.map(box),
           cardCount: list.querySelectorAll("a").length,
           footer: box(element.querySelector("footer")),
@@ -264,9 +265,9 @@ test("publication showcase fits complete previews without nested or panel scroll
       expect(geometry.panel.bottom, `${locale}/${width}/${height}`).toBeLessThanOrEqual(height);
       for (const overflow of geometry.scroll) expect(overflow).toBeLessThanOrEqual(1);
       expect(geometry.image.width).toBeLessThan(geometry.panel.width * .4);
-      // DOMRect includes floating-point transform noise below one CSS subpixel.
-      expect(Math.round(geometry.image.height * 1000) / 1000).toBeLessThanOrEqual(height <= 740 ? 96 : 180);
-      expect(geometry.cards).toHaveLength(Math.min(geometry.cardCount, height <= 740 ? 4 : 6));
+      expect(geometry.imageFit).toBe("contain");
+      expect(geometry.image.width / geometry.image.height).toBeCloseTo(16 / 9, 2);
+      expect(geometry.cards).toHaveLength(Math.min(geometry.cardCount, 6));
       for (const card of geometry.cards) expect(card.bottom).toBeLessThanOrEqual(geometry.footer.top + 1);
       for (const text of geometry.text) {
         expect(text.left).toBeGreaterThanOrEqual(text.bounds.left - 1);

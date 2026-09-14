@@ -1,0 +1,365 @@
+{
+  "id": "LIBRARY-NATIVE-TRANSPORT-20260914",
+  "baselineSourceCommitSha": "d6c7849ccc5285e17c6da9ef147fecc9fdd0f000",
+  "reviewStatus": "source-reviewed",
+  "allowedProjectionPaths": [
+    ".github/workflows/reconcile-production-database.yml",
+    "scripts/database/production-migration-plan.test.mjs",
+    "scripts/database/supabase-database-safety.sh",
+    "scripts/lib/reviewed-header-showcase.test.mjs",
+    "scripts/lib/reviewed-r49n-package.test.mjs",
+    "scripts/lib/reviewed-reference-release.test.mjs",
+    "scripts/lib/stage5-content-data-lock.test.mjs",
+    "scripts/sync-literary-archive.mjs"
+  ],
+  "sourceBoundaryKinds": {
+    ".github/workflows/reconcile-production-database.yml": "published-main-d6",
+    "scripts/database/production-migration-plan.test.mjs": "published-main-d6",
+    "scripts/database/supabase-database-safety.sh": "published-main-d6",
+    "scripts/lib/reviewed-header-showcase.test.mjs": "reviewed-local-showcase-adapter",
+    "scripts/lib/reviewed-r49n-package.test.mjs": "reviewed-local-showcase-adapter",
+    "scripts/lib/reviewed-reference-release.test.mjs": "reviewed-local-showcase-adapter",
+    "scripts/lib/stage5-content-data-lock.test.mjs": "reviewed-local-showcase-adapter",
+    "scripts/sync-literary-archive.mjs": "published-main-d6"
+  },
+  "sourceBaselines": {
+    ".github/workflows/reconcile-production-database.yml": "5305f0871f0b67d511af98e6b5a6bbad703191e35b05023ea012b67d316a1c94",
+    "scripts/database/production-migration-plan.test.mjs": "a02623c31fd6e2205c690d1f5b5d65ac1aaa01bff10391db39b279f9f38623e5",
+    "scripts/database/supabase-database-safety.sh": "eafa771376dc2a9e833aed2a5ef18b304e72bb3c3d6882d8621e6c4d6c1afbd3",
+    "scripts/lib/reviewed-header-showcase.test.mjs": "b4a497da0fe03d4a163b455d1a67413a34a7a800e53560bc9e5f9884b62622ef",
+    "scripts/lib/reviewed-r49n-package.test.mjs": "eba1b7382284015604160fe4ec449b307874a698786eab8ea35c0264ad8fe605",
+    "scripts/lib/reviewed-reference-release.test.mjs": "6ab82ac25acc9eb82fe938a785c29a936aabb0e3212fc85279138d6d201ce835",
+    "scripts/lib/stage5-content-data-lock.test.mjs": "064fbfaa39e32693352724292243895ee8cfa84085657b6c9228d69513dbdc54",
+    "scripts/sync-literary-archive.mjs": "504e0dd612b4f0a42e95f726fbdd185227f6ce64c06d0bb11761e8b14e4be0b1"
+  },
+  "reviewedSourceSha256": {
+    ".github/workflows/reconcile-production-database.yml": "5e1ae1bdfbb4d118d992f1b846f94457f69e768f1bb7304ee17b5e67ecf662c5",
+    "scripts/database/production-migration-plan.test.mjs": "98f4e0945c8424e544d6442cec86e69991343775771fd95d6cf0a943cfc946e1",
+    "scripts/database/supabase-database-safety.sh": "036a21ada6a7dd115d5a928087d36bd8aa9fa651603c322a916506e4ee890496",
+    "scripts/lib/reviewed-header-showcase.test.mjs": "edd6ee869a8e3e838fffc371c4ce82e4e44943a9bc3f4918a2c91b8d3094640f",
+    "scripts/lib/reviewed-r49n-package.test.mjs": "7129eac1c61e577f2f4dfe95a085460464643dac80e5fe33afc37d14b54a96fc",
+    "scripts/lib/reviewed-reference-release.test.mjs": "55f0b4234816b0d0a407b1f3d3de50b97760437838208b9a85d4868d2f983da6",
+    "scripts/lib/stage5-content-data-lock.test.mjs": "2072075e9e57deeaef5652d789606421647b08e717d53bf3171ced800ef69624",
+    "scripts/sync-literary-archive.mjs": "3b372188b914411a89c23d147259198168ef909d1f72c225b17a04656e68417c"
+  },
+  "historicalArtifacts": [
+    {
+      "path": "scripts/governance/header-library-owner-refinement-20260912.json",
+      "sha256Lf": "eb0df84d46bdded81f3e820fd7479ec3d8462a4920c6208348acda6900945cc4"
+    },
+    {
+      "path": "scripts/governance/reading-design-owner-refinement-20260906.json",
+      "sha256Lf": "a1758055e0460243995099296944e32e96ae5cbd0d1b1b324b18b9a6fe31c419"
+    },
+    {
+      "path": "scripts/governance/book-r49n-package-reviewed-20260912.json",
+      "sha256Lf": "09ba0a3762cc4a811b3a99c2e07f3e94f9401fb076247499edde5b8af6bc8db3"
+    },
+    {
+      "path": "reports/book-r49n-package-reviewed-20260912.json",
+      "sha256Lf": "7abc9164f9a39d2bd92534f1034fca59ca4db6eb2502b70385bda8c540b9fd36"
+    },
+    {
+      "path": "scripts/governance/book-r49n-dickens-reviewed-20260912.json",
+      "sha256Lf": "e7b875db1307fdbdc17bbe9329559bc9dc289d2dc735a8aa362f8beb086db259"
+    },
+    {
+      "path": "scripts/governance/library-reference-release-reviewed-20260914.json",
+      "sha256Lf": "8d778ed94422a29f05e812a33d6f5ec94f09c58863652c5fc316f84c49d648d8"
+    },
+    {
+      "path": "reports/library-reference-release-reviewed-20260914.json",
+      "sha256Lf": "66d4df9bea22d58a8e6ff3f68ec057c97faa62b2340103840c11a3817935dd8d"
+    },
+    {
+      "path": "scripts/governance/header-showcase-owner-refinement-20260914.json",
+      "sha256Lf": "9fbab0e71e9aa66df8bfe656aa05db67506c3ff8f71c3218b1aaac897d6a3204"
+    },
+    {
+      "path": "reports/header-showcase-owner-refinement-20260914.json",
+      "sha256Lf": "8827505e33620f9dd4873e0cf746d136d4f2cc5b6771acb21bb23c7f368ee47d"
+    }
+  ],
+  "historicalMigrations": [
+    {
+      "path": "supabase/migrations/20260808_article_translations.sql",
+      "sha256Lf": "37915d5aa77a4d647ea8bc9b84923b8c07fe148e7c6f301cabf5bb685909d372"
+    },
+    {
+      "path": "supabase/migrations/20260808_book_translations_and_import_staging.sql",
+      "sha256Lf": "2f7896316307c678c9139f8849ca4cb9930baea5bfc86c3441f281b17203b744"
+    },
+    {
+      "path": "supabase/migrations/20260812_homepage_block_revisions.sql",
+      "sha256Lf": "f261d7249c4aaf2a6db20ad8a5b2a587d00e417b8cadcd1f1b4ae7d496ba1a22"
+    },
+    {
+      "path": "supabase/migrations/20260812_writer_and_work_revisions.sql",
+      "sha256Lf": "76d9b65a2fc37aa03ffda3b293b09011dfaf316baa1c2153afaecd334c5c135f"
+    },
+    {
+      "path": "supabase/migrations/20260813_editorial_database_admin.sql",
+      "sha256Lf": "fb28408f56efe29c6173395af3d78c58f46cc8a766249e08f3d8b7ed91588819"
+    },
+    {
+      "path": "supabase/migrations/20260813_homepage_atomic_move.sql",
+      "sha256Lf": "34cd8a00b8ae55c0a3126226a597c06c6d0f1d653b8095806d4372496905a185"
+    },
+    {
+      "path": "supabase/migrations/20260813_tags_updated_at.sql",
+      "sha256Lf": "e7e7475d11af036a3cabf55a7f35831d7da5a8a18745979be26313e33f8386e7"
+    },
+    {
+      "path": "supabase/migrations/20260813_unified_revision_history.sql",
+      "sha256Lf": "e851c9e2a8d4a4af2760be2798de40a59dcc2ce4ada35e8ca49209f87b81c42e"
+    },
+    {
+      "path": "supabase/migrations/20260814_publication_outbox_and_schema_health.sql",
+      "sha256Lf": "795274d300104dcf41edb43fb5fd8e7079badb14bf5747f9d0190021a914456e"
+    },
+    {
+      "path": "supabase/migrations/20260820_homepage_book_month_editorial_choice.sql",
+      "sha256Lf": "436bb25b4513ed451320489278fda8670a1e4ada9f66b065fd6b734ba84c729f"
+    },
+    {
+      "path": "supabase/migrations/20260820_literary_work_cover_artworks.sql",
+      "sha256Lf": "e39ba6da664bcb2c3b4c5c78fa1e6ff6f46d420453d5575e113b92635e1f5c58"
+    },
+    {
+      "path": "supabase/migrations/20260822_staff_editorial_read_rls.sql",
+      "sha256Lf": "c50cda9a947cda1769c6aa36db81181dda988738e5dcf0ff7f2711d43faf03c9"
+    },
+    {
+      "path": "supabase/migrations/20260822_zz_atomic_article_bundle.sql",
+      "sha256Lf": "5df4f2068349ba210c560005ef1145bdb32be15e389fef2a5ec4642a73c12acc"
+    },
+    {
+      "path": "supabase/migrations/20260823_premium_machine_translation.sql",
+      "sha256Lf": "fd72bca7069130c777c8dbd9751f70f41d82b1d820562984e2a5ee6433491ba6"
+    },
+    {
+      "path": "supabase/migrations/20260827_reader_book_collections.sql",
+      "sha256Lf": "b8f7e004e0c094e67bfc1d3aa5f50071cdc7ad32a7718969666717ba8dc199e4"
+    },
+    {
+      "path": "supabase/migrations/20260828_reader_book_collection_icons.sql",
+      "sha256Lf": "27d6bc4beceef9f09e7811b0a5cd34d94874202083ee5ff038b78c00ce178019"
+    },
+    {
+      "path": "supabase/migrations/20260828_zz_editor_autosaves.sql",
+      "sha256Lf": "353ee5e767850c4818d60f9a957d5991689bf2886c41b21599f69678e7b041af"
+    },
+    {
+      "path": "supabase/migrations/20260830_media_studio_lifecycle.sql",
+      "sha256Lf": "3cb8717f0cf4f4b6a718591d2759c0c73008e35eaf9c3c09a1e0fd19f65ef837"
+    },
+    {
+      "path": "supabase/migrations/20260830_zz_site_typography_engine.sql",
+      "sha256Lf": "097f70aefd34278167a7c275db36cdb1182732a22eabfaa5d609be18512bde20"
+    },
+    {
+      "path": "supabase/migrations/20260901_zz_admin_analytics_reporting.sql",
+      "sha256Lf": "c1f9c7314c127d5a6a9c2113e84b8cf05dc6bb60052e96c00b317a9228f03d75"
+    },
+    {
+      "path": "supabase/migrations/20260901_zz_data_studio_integrity.sql",
+      "sha256Lf": "976134c7e7f64c4dd66a4afccef5a59e1af29b437c299cf9e3f3cc5fec7b3911"
+    },
+    {
+      "path": "supabase/migrations/20260901_zz_site_studio_engine.sql",
+      "sha256Lf": "4350165699a2e88dde7eece9bc57bc154ec6ba8b3b82933cbfd4b9fe514f4675"
+    },
+    {
+      "path": "supabase/migrations/20260901_zz_staff_owner_invariant.sql",
+      "sha256Lf": "8bc034b04540f835337ca6edc1f8b1c797d4b3064569778cc6bdb4e4501f3067"
+    },
+    {
+      "path": "supabase/migrations/20260901_zz_translation_operations.sql",
+      "sha256Lf": "481f1887cee0f28fed054a5bbae95260e33ef96a3ae059d307a8573d4eed16f7"
+    },
+    {
+      "path": "supabase/migrations/20260901_zz_translation_operations_runtime.sql",
+      "sha256Lf": "502d34ca1bcd30f79ccdbc10f238201daf89b8a36cc9a3cabf8cdc5e8ac25248"
+    },
+    {
+      "path": "supabase/migrations/20260901_zz_visual_direct_edit_v2.sql",
+      "sha256Lf": "38347f54fbe152e89cf392d517e3d3a6e1d389b50b3510611a7fd3b4a66157ed"
+    },
+    {
+      "path": "supabase/migrations/20260901_zzz_admin_mutation_guards.sql",
+      "sha256Lf": "21432b83209e353857d183b667c923bb47624a173276cf618515984ab4f200b9"
+    },
+    {
+      "path": "supabase/migrations/20260901_zzzz_admin_ops_observability.sql",
+      "sha256Lf": "d40c42e752641bdefe4a41bc6b079aa9c00c9f8bf37546051a4a28cca6b913b6"
+    },
+    {
+      "path": "supabase/migrations/20260901_zzzzzz_admin_completion_health.sql",
+      "sha256Lf": "dda44cc2f3248cf54621e07d17a701095ecea92193832371636618217531711f"
+    },
+    {
+      "path": "supabase/migrations/20260902_article_working_drafts.sql",
+      "sha256Lf": "3426ae0a6b234aa903670dde6efbd34f84c27a3f47f495fe454d593c95b66c72"
+    },
+    {
+      "path": "supabase/migrations/20260902_literary_work_authorship.sql",
+      "sha256Lf": "79dd77139c128f22b184043665f39c76bc10bbbc895cabfc0d84c4d8d3e195bd"
+    },
+    {
+      "path": "supabase/migrations/20260902_literary_work_evidence_v2_attestations.sql",
+      "sha256Lf": "26e1e0cb57368c772a02d397e5df0cb2960725a7ad05ae35fbc299ddf41c4966"
+    },
+    {
+      "path": "supabase/migrations/20260902_zz_article_working_drafts_health.sql",
+      "sha256Lf": "72259c999de34611ac9bb3bddd3d1374b62b43cfa1eb9a4f11fabfeb5bd20460"
+    },
+    {
+      "path": "supabase/migrations/20260902_zz_literary_archive_atomic_release.sql",
+      "sha256Lf": "a03f27a42fc6e7607dae6c46cb52292798ffc4eb931c470bfc2e9a481ebb1ef9"
+    },
+    {
+      "path": "supabase/migrations/20260905_article_publication_permissions.sql",
+      "sha256Lf": "1f9b4b9a9efb00488010cb6719cb36967a395038089b2ca3091657e144f0fcc8"
+    },
+    {
+      "path": "supabase/migrations/20260912_literary_work_evidence_v2_registry_rotation.sql",
+      "sha256Lf": "2fbcba184a4f7f7eb8e0ab49737540c42614d3f1d0755914f485bd5c0e04f525"
+    },
+    {
+      "path": "supabase/migrations/20260913_wells_editorial_evidence_repair.sql",
+      "sha256Lf": "769353bbf60790b6a5113a5d76ee23cb7ce0e84e3100a7d3eac86c7113d09c70"
+    },
+    {
+      "path": "supabase/migrations/20260914_literary_archive_editorial_references.sql",
+      "sha256Lf": "00bdde32a431322e4c86eaa1f069ff287eac4acc011923dd2454a463f42cad21"
+    }
+  ],
+  "unchangedCoreFiles": [
+    {
+      "path": "scripts/lib/literary-archive-atomic-release.mjs",
+      "sha256Lf": "a7fb0b641a18c6cdc9f7824803b614f9b0afec624e66689c63b824fd2f0aa44e"
+    },
+    {
+      "path": "scripts/lib/book-evidence-v2-attestations.mjs",
+      "sha256Lf": "6ef7e13e46b1cfd9cc1ee137c1d761f6d3065b703bdbe452ef0111562d98efd8"
+    },
+    {
+      "path": "scripts/lib/literary-archive-reference-catalog.mjs",
+      "sha256Lf": "0c5f19e8ccf4d9f7d9f64a6a4cb54bb45b963a7f6ccfb51e563bf8742685e168"
+    },
+    {
+      "path": "reports/literary-archive-reference-catalog-20260914.json",
+      "sha256Lf": "306cfdd28dda66130b3ee2c95bc1abf9821e50a938379cc9065aa69a2244be53"
+    },
+    {
+      "path": "scripts/database/build-production-migration-plan.mjs",
+      "sha256Lf": "9adab9675a61c87472871fbcaf290700e55694c843061de2712a6ff1467dfa0f"
+    },
+    {
+      "path": "scripts/lib/reviewed-r49n-package.mjs",
+      "sha256Lf": "a7dd08a61be2f9ce90d7c8a2824bc50182663eca36bfab1786bd6f186a451126"
+    },
+    {
+      "path": "scripts/lib/reviewed-reference-release.mjs",
+      "sha256Lf": "cf9485ad2deca2bbfaf55e4a437350c5bf4c33379f9af46be133663b33ab4a41"
+    },
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256Lf": "c8d2b6862c47c3215295951d2c5d1c406913b9879c616f1d8b787c6e05029f6c"
+    },
+    {
+      "path": "src/data/bookArchive.ts",
+      "sha256Lf": "738fe1a320790fa9971ae367079499ae1f9e5af05ed6fa756ad9d493b06f98c2"
+    }
+  ],
+  "reviewedReport": {
+    "path": "reports/library-native-transport-reviewed-20260914.json",
+    "sha256Lf": "93ea3084bcbe8f108be8ae3f502232e41c34a7d7726125caa0844e9bf73e6812"
+  },
+  "projections": [
+    {
+      "id": "NATIVE-ARCHIVE-TRANSPORT-001",
+      "path": ".github/workflows/reconcile-production-database.yml",
+      "before": "          }\n\n      - name: Publish the full literary archive in one atomic commit\n        env:\n          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}\n          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}\n        run: |\n          set -Eeuo pipefail\n          node scripts/sync-literary-archive.mjs --apply \\\n            --enable-evidence-v2 \\\n            --receipt-file reconciliation/literary-archive-release-receipt.json\n          echo \"- Full literary archive atomic release: committed\" >> reconciliation/summary.md\n\n      - name: Run the read-only atomic archive postflight\n",
+      "after": "          }\n\n      - name: Publish the full literary archive in one atomic commit\n        env:\n          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}\n          SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}\n          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}\n          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}\n        run: |\n          set -Eeuo pipefail\n          node scripts/sync-literary-archive.mjs --apply \\\n            --commit-via-database \\\n            --enable-evidence-v2 \\\n            --receipt-file reconciliation/literary-archive-release-receipt.json\n          echo \"- Full literary archive atomic release: committed\" >> reconciliation/summary.md\n\n      - name: Run the read-only atomic archive postflight\n"
+    },
+    {
+      "id": "NATIVE-ARCHIVE-TRANSPORT-002",
+      "path": "scripts/database/production-migration-plan.test.mjs",
+      "before": "  });\n\n  it(\"passes the validated database URI explicitly to every remote client\", () => {\n    expect(\n      helper.match(/--dbname=\"\\$SUPABASE_DB_URL\"/gu)\n    ).toHaveLength(5);\n    expect(helper).not.toContain(\"PGDATABASE\");\n    expect(helper).not.toMatch(/(?:echo|printf)[^\\n]*SUPABASE_DB_URL/iu);\n  });\n\n  it(\"pre-pulls once with bounded backoff and pins every later client to that local image\", () => {\n",
+      "after": "  });\n\n  it(\"passes the validated database URI explicitly to every remote client\", () => {\n    expect(\n      helper.match(/--dbname=\"\\$SUPABASE_DB_URL\"/gu)\n    ).toHaveLength(6);\n    expect(helper).not.toContain(\"PGDATABASE\");\n    expect(helper).not.toMatch(/(?:echo|printf)[^\\n]*SUPABASE_DB_URL/iu);\n  });\n\n  it(\"pre-pulls once with bounded backoff and pins every later client to that local image\", () => {\n"
+    },
+    {
+      "id": "NATIVE-ARCHIVE-TRANSPORT-003",
+      "path": "scripts/database/supabase-database-safety.sh",
+      "before": "  validate_database_url\n  pull_database_image\n  run_remote_psql \"$sql_file\" \"$output_file\"\n}\n\nusage() {\n  cat >&2 <<'EOF'\nUsage:\n  supabase-database-safety.sh validate-target\n  supabase-database-safety.sh dump OUTPUT AUTH_USER_IDS\n  supabase-database-safety.sh encrypt-verify INPUT ENCRYPTED VERIFIED\n  supabase-database-safety.sh restore-drill DUMP AUTH_USER_IDS [PLAN] [RESULT]\n  supabase-database-safety.sh apply-plan PLAN\n  supabase-database-safety.sh verify-production SQL OUTPUT\nEOF\n  exit 2\n}\n\ncase \"${1:-}\" in\n",
+      "after": "  validate_database_url\n  pull_database_image\n  run_remote_psql \"$sql_file\" \"$output_file\"\n}\n\ncommand_commit_archive() {\n  local release_id=\"$1\" manifest_sha256=\"$2\" sql_directory\n  [[ \"$release_id\" =~ ^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$ ]] \\\n    || die \"Archive release ID must be a canonical UUID.\"\n  [[ \"$manifest_sha256\" =~ ^[0-9a-f]{64}$ ]] \\\n    || die \"Archive manifest must be an exact SHA-256.\"\n  validate_database_url\n  pull_database_image\n  sql_directory=\"$(cd \"$(dirname \"${BASH_SOURCE[0]}\")\" && pwd -P)\"\n  [[ -s \"$sql_directory/literary-archive-native-commit.sql\" ]] \\\n    || die \"Fixed native archive commit SQL is missing.\"\n  docker run --rm \\\n    --env PGSSLMODE=require \\\n    --env PGCONNECT_TIMEOUT=20 \\\n    --volume \"$sql_directory:/probpera-sql:ro\" \\\n    --entrypoint psql \\\n    \"$DATABASE_IMAGE\" \\\n    --dbname=\"$SUPABASE_DB_URL\" \\\n    --no-psqlrc --quiet --tuples-only --no-align \\\n    --set=ON_ERROR_STOP=1 \\\n    --set=VERBOSITY=sqlstate \\\n    --set=\"release_id=$release_id\" \\\n    --set=\"manifest_sha256=$manifest_sha256\" \\\n    --single-transaction \\\n    --file /probpera-sql/literary-archive-native-commit.sql\n}\n\nusage() {\n  cat >&2 <<'EOF'\nUsage:\n  supabase-database-safety.sh validate-target\n  supabase-database-safety.sh dump OUTPUT AUTH_USER_IDS\n  supabase-database-safety.sh encrypt-verify INPUT ENCRYPTED VERIFIED\n  supabase-database-safety.sh restore-drill DUMP AUTH_USER_IDS [PLAN] [RESULT]\n  supabase-database-safety.sh apply-plan PLAN\n  supabase-database-safety.sh verify-production SQL OUTPUT\n  supabase-database-safety.sh commit-archive RELEASE_UUID MANIFEST_SHA256\nEOF\n  exit 2\n}\n\ncase \"${1:-}\" in\n"
+    },
+    {
+      "id": "NATIVE-ARCHIVE-TRANSPORT-004",
+      "path": "scripts/database/supabase-database-safety.sh",
+      "before": "    ;;\n  verify-production)\n    [[ \"$#\" -eq 3 ]] || usage\n    command_verify_production \"$2\" \"$3\"\n    ;;\n  *) usage ;;\nesac\n",
+      "after": "    ;;\n  verify-production)\n    [[ \"$#\" -eq 3 ]] || usage\n    command_verify_production \"$2\" \"$3\"\n    ;;\n  commit-archive)\n    [[ \"$#\" -eq 3 ]] || usage\n    command_commit_archive \"$2\" \"$3\"\n    ;;\n  *) usage ;;\nesac\n"
+    },
+    {
+      "id": "NATIVE-ARCHIVE-TRANSPORT-005",
+      "path": "scripts/lib/reviewed-header-showcase.test.mjs",
+      "before": "import { createHash } from \"node:crypto\";\nimport { readFileSync } from \"node:fs\";\nimport { describe, expect, it } from \"vitest\";\nimport { headerShowcaseAttestation, projectReviewedHeaderShowcase } from \"./reviewed-header-showcase.mjs\";\nimport { headerLibraryAttestation, projectReviewedHeaderLibrary } from \"./reviewed-header-library.mjs\";\n\nconst read = path => readFileSync(path, \"utf8\").replace(/\\r\\n?/gu, \"\\n\");\nconst sha = text => createHash(\"sha256\").update(text).digest(\"hex\");\nconst paths = [\n  \"scripts/lib/reviewed-r49n-package.test.mjs\",\n  \"src/index.css\",\n  \"src/styles/navigation-panels.css\",\n",
+      "after": "import { createHash } from \"node:crypto\";\nimport { readFileSync } from \"node:fs\";\nimport { describe, expect, it } from \"vitest\";\nimport { headerShowcaseAttestation, projectReviewedHeaderShowcase } from \"./reviewed-header-showcase.mjs\";\nimport { headerLibraryAttestation, projectReviewedHeaderLibrary } from \"./reviewed-header-library.mjs\";\nimport { projectReviewedNativeArchiveTransport } from \"./reviewed-native-archive-transport.mjs\";\n\nconst read = path => projectReviewedNativeArchiveTransport(path, readFileSync(path, \"utf8\"));\nconst sha = text => createHash(\"sha256\").update(text).digest(\"hex\");\nconst paths = [\n  \"scripts/lib/reviewed-r49n-package.test.mjs\",\n  \"src/index.css\",\n  \"src/styles/navigation-panels.css\",\n"
+    },
+    {
+      "id": "NATIVE-ARCHIVE-TRANSPORT-006",
+      "path": "scripts/lib/reviewed-r49n-package.test.mjs",
+      "before": "  isReviewedR49nPackageAddition, projectReviewedR49nPackage, projectPublishedR49nPackage,\n  r49nPackageAttestation, reviewedR49nPackageSourceSha256,\n} from \"./reviewed-r49n-package.mjs\";\nimport { projectReviewedReferenceRelease } from \"./reviewed-reference-release.mjs\";\nimport { projectReviewedHeaderShowcase } from \"./reviewed-header-showcase.mjs\";\n\nconst read = path => readFileSync(path, \"utf8\").replace(/\\r\\n?/gu, \"\\n\");\nconst readPublishedBrowserContract = path => path === \"tests/e2e/archive-search-calendar.spec.mjs\"\n  ? projectReviewedReferenceRelease(path, read(path)) : read(path);\nconst sha = value => createHash(\"sha256\").update(value).digest(\"hex\");\nconst canonical = value => Array.isArray(value) ? value.map(canonical)\n  : value && typeof value === \"object\"\n",
+      "after": "  isReviewedR49nPackageAddition, projectReviewedR49nPackage, projectPublishedR49nPackage,\n  r49nPackageAttestation, reviewedR49nPackageSourceSha256,\n} from \"./reviewed-r49n-package.mjs\";\nimport { projectReviewedReferenceRelease } from \"./reviewed-reference-release.mjs\";\nimport { projectReviewedHeaderShowcase } from \"./reviewed-header-showcase.mjs\";\nimport { projectReviewedNativeArchiveTransport } from \"./reviewed-native-archive-transport.mjs\";\n\nconst read = path => projectReviewedNativeArchiveTransport(path, readFileSync(path, \"utf8\"));\nconst readPublishedBrowserContract = path => path === \"tests/e2e/archive-search-calendar.spec.mjs\"\n  ? projectReviewedReferenceRelease(path, read(path)) : read(path);\nconst sha = value => createHash(\"sha256\").update(value).digest(\"hex\");\nconst canonical = value => Array.isArray(value) ? value.map(canonical)\n  : value && typeof value === \"object\"\n"
+    },
+    {
+      "id": "NATIVE-ARCHIVE-TRANSPORT-007",
+      "path": "scripts/lib/reviewed-reference-release.test.mjs",
+      "before": "import { createHash } from \"node:crypto\";\nimport { readFileSync } from \"node:fs\";\nimport { describe, expect, it } from \"vitest\";\nimport { projectReviewedHeaderShowcase } from \"./reviewed-header-showcase.mjs\";\nimport {\n  projectReviewedReferenceRelease, referenceReleaseAttestation,\n  reviewedReferenceReleaseSourceSha256,\n} from \"./reviewed-reference-release.mjs\";\nimport {\n  projectPublishedR49nPackage, projectReviewedR49nPackage, r49nPackageAttestation,\n} from \"./reviewed-r49n-package.mjs\";\n\nconst read = path => readFileSync(path, \"utf8\").replace(/\\r\\n?/gu, \"\\n\");\nconst sha = text => createHash(\"sha256\").update(text).digest(\"hex\");\nconst protectedPaths = [\n  \".github/workflows/dispatch-premium-database-reconciliation.yml\",\n  \".github/workflows/reconcile-production-database.yml\",\n  \"scripts/database/build-production-migration-plan.mjs\",\n",
+      "after": "import { createHash } from \"node:crypto\";\nimport { readFileSync } from \"node:fs\";\nimport { describe, expect, it } from \"vitest\";\nimport { projectReviewedHeaderShowcase } from \"./reviewed-header-showcase.mjs\";\nimport { projectReviewedNativeArchiveTransport } from \"./reviewed-native-archive-transport.mjs\";\nimport {\n  projectReviewedReferenceRelease, referenceReleaseAttestation,\n  reviewedReferenceReleaseSourceSha256,\n} from \"./reviewed-reference-release.mjs\";\nimport {\n  projectPublishedR49nPackage, projectReviewedR49nPackage, r49nPackageAttestation,\n} from \"./reviewed-r49n-package.mjs\";\n\nconst read = path => projectReviewedNativeArchiveTransport(path, readFileSync(path, \"utf8\"));\nconst sha = text => createHash(\"sha256\").update(text).digest(\"hex\");\nconst protectedPaths = [\n  \".github/workflows/dispatch-premium-database-reconciliation.yml\",\n  \".github/workflows/reconcile-production-database.yml\",\n  \"scripts/database/build-production-migration-plan.mjs\",\n"
+    },
+    {
+      "id": "NATIVE-ARCHIVE-TRANSPORT-008",
+      "path": "scripts/lib/stage5-content-data-lock.test.mjs",
+      "before": "\nimport { parseCss } from \"../audit-stage5-baseline.mjs\";\nimport { projectReviewedReadingDesign, readingDesignAttestation } from \"./reviewed-reading-design.mjs\";\nimport { projectReviewedHeaderLibrary } from \"./reviewed-header-library.mjs\";\nimport { projectReviewedHeaderShowcase } from \"./reviewed-header-showcase.mjs\";\nimport { projectReviewedDependencySecurity } from \"./reviewed-dependency-security.mjs\";\nimport {\n  isReviewedR49nDickensAddition,\n  projectReviewedR49nDickens,\n  reviewedR49nDickensAdditionPaths,\n",
+      "after": "\nimport { parseCss } from \"../audit-stage5-baseline.mjs\";\nimport { projectReviewedReadingDesign, readingDesignAttestation } from \"./reviewed-reading-design.mjs\";\nimport { projectReviewedHeaderLibrary } from \"./reviewed-header-library.mjs\";\nimport { projectReviewedHeaderShowcase } from \"./reviewed-header-showcase.mjs\";\nimport { projectReviewedNativeArchiveTransport } from \"./reviewed-native-archive-transport.mjs\";\nimport { projectReviewedDependencySecurity } from \"./reviewed-dependency-security.mjs\";\nimport {\n  isReviewedR49nDickensAddition,\n  projectReviewedR49nDickens,\n  reviewedR49nDickensAdditionPaths,\n"
+    },
+    {
+      "id": "NATIVE-ARCHIVE-TRANSPORT-009",
+      "path": "scripts/lib/stage5-content-data-lock.test.mjs",
+      "before": "  return projectReviewedHeaderLibrary(\n    relativePath,\n    projectReviewedR49nDickens(relativePath,\n      projectReviewedR49nPackage(relativePath,\n        projectReviewedDependencySecurity(relativePath,\n          projectReviewedHeaderShowcase(relativePath, readFileSync(absolutePath, encoding)))))\n  );\n}\n\nconst bookshelfRefinement = JSON.parse(readGovernanceSource(\n  path.join(root, \"scripts/governance/bookshelf-owner-refinement-20260905.json\"), \"utf8\"\n",
+      "after": "  return projectReviewedHeaderLibrary(\n    relativePath,\n    projectReviewedR49nDickens(relativePath,\n      projectReviewedR49nPackage(relativePath,\n        projectReviewedDependencySecurity(relativePath,\n          projectReviewedHeaderShowcase(relativePath,\n            projectReviewedNativeArchiveTransport(relativePath, readFileSync(absolutePath, encoding))))))\n  );\n}\n\nconst bookshelfRefinement = JSON.parse(readGovernanceSource(\n  path.join(root, \"scripts/governance/bookshelf-owner-refinement-20260905.json\"), \"utf8\"\n"
+    },
+    {
+      "id": "NATIVE-ARCHIVE-TRANSPORT-010",
+      "path": "scripts/sync-literary-archive.mjs",
+      "before": "import { pathToFileURL, fileURLToPath } from \"node:url\";\nimport { isDeepStrictEqual } from \"node:util\";\n\nimport { build } from \"esbuild\";\nimport { authorshipRowsFromArchive } from \"./lib/book-authorship-roundtrip.mjs\";\nimport {\n  buildLiteraryArchiveReferenceMetadata,\n  referenceItemsFromArchive,\n  LITERARY_ARCHIVE_REFERENCE_ARTIFACT,\n} from \"./lib/literary-archive-reference-catalog.mjs\";\n",
+      "after": "import { pathToFileURL, fileURLToPath } from \"node:url\";\nimport { isDeepStrictEqual } from \"node:util\";\n\nimport { build } from \"esbuild\";\nimport { authorshipRowsFromArchive } from \"./lib/book-authorship-roundtrip.mjs\";\nimport { createNativeArchiveCommitClient } from \"./lib/literary-archive-database-commit.mjs\";\nimport {\n  buildLiteraryArchiveReferenceMetadata,\n  referenceItemsFromArchive,\n  LITERARY_ARCHIVE_REFERENCE_ARTIFACT,\n} from \"./lib/literary-archive-reference-catalog.mjs\";\n"
+    },
+    {
+      "id": "NATIVE-ARCHIVE-TRANSPORT-011",
+      "path": "scripts/sync-literary-archive.mjs",
+      "before": "const cacheDirectory = path.join(repositoryRoot, \"scripts\", \".cache\");\nconst bundlePath = path.join(cacheDirectory, \"literary-archive-source.mjs\");\nconst ATOMIC_WORKFLOW_RECEIPT_SCHEMA =\n  \"literary-archive-workflow-receipt-v2\";\nconst applyChanges = process.argv.includes(\"--apply\");\nconst preflightOnly = process.argv.includes(\"--preflight\");\nconst postflightOnly = process.argv.includes(\"--postflight\");\nconst coverBatch20260820 = process.argv.includes(\"--batch-2026-08-20\");\nconst enableEvidenceV2 = process.argv.includes(\"--enable-evidence-v2\");\nconst receiptOptionIndexes = process.argv.flatMap((argument, index) =>\n",
+      "after": "const cacheDirectory = path.join(repositoryRoot, \"scripts\", \".cache\");\nconst bundlePath = path.join(cacheDirectory, \"literary-archive-source.mjs\");\nconst ATOMIC_WORKFLOW_RECEIPT_SCHEMA =\n  \"literary-archive-workflow-receipt-v2\";\nconst applyChanges = process.argv.includes(\"--apply\");\nconst commitViaDatabase = process.argv.includes(\"--commit-via-database\");\nconst preflightOnly = process.argv.includes(\"--preflight\");\nconst postflightOnly = process.argv.includes(\"--postflight\");\nconst coverBatch20260820 = process.argv.includes(\"--batch-2026-08-20\");\nconst enableEvidenceV2 = process.argv.includes(\"--enable-evidence-v2\");\nconst receiptOptionIndexes = process.argv.flatMap((argument, index) =>\n"
+    },
+    {
+      "id": "NATIVE-ARCHIVE-TRANSPORT-012",
+      "path": "scripts/sync-literary-archive.mjs",
+      "before": "if ([applyChanges, preflightOnly, postflightOnly].filter(Boolean).length > 1) {\n  throw new Error(\n    \"Choose at most one database mode: --preflight, --postflight or --apply.\"\n  );\n}\nif ((applyChanges || postflightOnly) && coverBatch20260820) {\n  throw new Error(\n    \"Atomic apply/postflight always covers the complete archive; batch-only publication is forbidden.\"\n  );\n}\n",
+      "after": "if ([applyChanges, preflightOnly, postflightOnly].filter(Boolean).length > 1) {\n  throw new Error(\n    \"Choose at most one database mode: --preflight, --postflight or --apply.\"\n  );\n}\nif (commitViaDatabase && !applyChanges) {\n  throw new Error(\"--commit-via-database is valid only with --apply.\");\n}\nif ((applyChanges || postflightOnly) && coverBatch20260820) {\n  throw new Error(\n    \"Atomic apply/postflight always covers the complete archive; batch-only publication is forbidden.\"\n  );\n}\n"
+    },
+    {
+      "id": "NATIVE-ARCHIVE-TRANSPORT-013",
+      "path": "scripts/sync-literary-archive.mjs",
+      "before": "try {\n  process.loadEnvFile(path.join(repositoryRoot, \".env.local\"));\n} catch {\n  // В CI переменные передаются окружением; локальный файл необязателен.\n}\n\nfunction stableHash(value) {\n  return createHash(\"sha256\").update(value).digest(\"hex\").slice(0, 10);\n}\n\n",
+      "after": "try {\n  process.loadEnvFile(path.join(repositoryRoot, \".env.local\"));\n} catch {\n  // В CI переменные передаются окружением; локальный файл необязателен.\n}\nif (commitViaDatabase && !process.env.SUPABASE_DB_URL?.trim()) {\n  throw new Error(\"--commit-via-database requires SUPABASE_DB_URL.\");\n}\n\nfunction stableHash(value) {\n  return createHash(\"sha256\").update(value).digest(\"hex\").slice(0, 10);\n}\n\n"
+    },
+    {
+      "id": "NATIVE-ARCHIVE-TRANSPORT-014",
+      "path": "scripts/sync-literary-archive.mjs",
+      "before": "  console.log(\"Preflight-only mode complete: database was not changed.\");\n  process.exit(0);\n}\n\nconst releaseResult = await publishLiteraryArchiveAtomicRelease({\n  supabase,\n  items: releaseItems,\n  expectedPrecondition: precondition,\n  releaseKey,\n  sourceRevision,\n  expectedPredecessorPublicCount:\n",
+      "after": "  console.log(\"Preflight-only mode complete: database was not changed.\");\n  process.exit(0);\n}\n\nconst releaseResult = await publishLiteraryArchiveAtomicRelease({\n  supabase: commitViaDatabase ? createNativeArchiveCommitClient(supabase, { logger: console.info }) : supabase,\n  rpcAttempts: commitViaDatabase ? 1 : 3,\n  items: releaseItems,\n  expectedPrecondition: precondition,\n  releaseKey,\n  sourceRevision,\n  expectedPredecessorPublicCount:\n"
+    }
+  ]
+}

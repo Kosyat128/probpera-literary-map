@@ -8,6 +8,8 @@ import { describe, expect, it } from "vitest";
 import { parseCss } from "../audit-stage5-baseline.mjs";
 import { projectReviewedReadingDesign, readingDesignAttestation } from "./reviewed-reading-design.mjs";
 import { projectReviewedHeaderLibrary } from "./reviewed-header-library.mjs";
+import { projectReviewedHeaderShowcase } from "./reviewed-header-showcase.mjs";
+import { projectReviewedNativeArchiveTransport } from "./reviewed-native-archive-transport.mjs";
 import { projectReviewedDependencySecurity } from "./reviewed-dependency-security.mjs";
 import {
   isReviewedR49nDickensAddition,
@@ -44,7 +46,9 @@ function readGovernanceSource(absolutePath, encoding) {
     relativePath,
     projectReviewedR49nDickens(relativePath,
       projectReviewedR49nPackage(relativePath,
-        projectReviewedDependencySecurity(relativePath, readFileSync(absolutePath, encoding))))
+        projectReviewedDependencySecurity(relativePath,
+          projectReviewedHeaderShowcase(relativePath,
+            projectReviewedNativeArchiveTransport(relativePath, readFileSync(absolutePath, encoding))))))
   );
 }
 

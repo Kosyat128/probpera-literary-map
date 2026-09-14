@@ -1,0 +1,129 @@
+{
+  "id": "HEADER-SHOWCASE-OWNER-REFINEMENT-20260914",
+  "baselineSourceCommitSha": "d6c7849ccc5285e17c6da9ef147fecc9fdd0f000",
+  "authorizedOn": "2026-09-14",
+  "reviewStatus": "source-reviewed",
+  "allowedProjectionPaths": [
+    "scripts/lib/reviewed-r49n-package.test.mjs",
+    "src/index.css",
+    "src/styles/navigation-panels.css",
+    "src/utils/editorialImagePresentation.test.ts",
+    "tests/e2e/header-hero-polish.spec.mjs"
+  ],
+  "sourceBaselines": {
+    "scripts/lib/reviewed-r49n-package.test.mjs": "27600cb31512123308a62170ea584e441c00c38a08eb6414f4ddb848cfbe1d9b",
+    "src/index.css": "ea57645e29f780fb693fd5ae7f7a5756e1f1e550954eb53a0444fa16c088ffdb",
+    "src/styles/navigation-panels.css": "3cad79c50d23482f8167400e29ef0b3eae3f1c2ff54d9e94c7f56f04e80b83a4",
+    "src/utils/editorialImagePresentation.test.ts": "1bdae5f860651ad9153f0eae6150019885b3a8e5f25dc3132b60f99e732c9f6b",
+    "tests/e2e/header-hero-polish.spec.mjs": "ec82dcd0fe087d4ba8be5783d4fed847fea7f8eead3f8082dca38fa328bff953"
+  },
+  "reviewedSourceSha256": {
+    "scripts/lib/reviewed-r49n-package.test.mjs": "eba1b7382284015604160fe4ec449b307874a698786eab8ea35c0264ad8fe605",
+    "src/index.css": "711f8ecf157a743143861bc5109f0080f6b8acae23a8ba0b5029f8910bbebcf7",
+    "src/styles/navigation-panels.css": "d5f1b3c443ed037543a1c97107864d6f6c61bb138146efa4ae278c8787c3108d",
+    "src/utils/editorialImagePresentation.test.ts": "66c518241c010ed0caa86499f30994f23b233e41e9d32f1d86d601747f1cf244",
+    "tests/e2e/header-hero-polish.spec.mjs": "2d5d8511b546aa47ce35453664659cf6ffa0cbe6b5628379c6e941a4455a2b92"
+  },
+  "historicalArtifacts": [
+    {
+      "path": "scripts/governance/header-library-owner-refinement-20260912.json",
+      "sha256Lf": "eb0df84d46bdded81f3e820fd7479ec3d8462a4920c6208348acda6900945cc4"
+    },
+    {
+      "path": "scripts/governance/reading-design-owner-refinement-20260906.json",
+      "sha256Lf": "a1758055e0460243995099296944e32e96ae5cbd0d1b1b324b18b9a6fe31c419"
+    },
+    {
+      "path": "scripts/governance/book-r49n-package-reviewed-20260912.json",
+      "sha256Lf": "09ba0a3762cc4a811b3a99c2e07f3e94f9401fb076247499edde5b8af6bc8db3"
+    },
+    {
+      "path": "reports/book-r49n-package-reviewed-20260912.json",
+      "sha256Lf": "7abc9164f9a39d2bd92534f1034fca59ca4db6eb2502b70385bda8c540b9fd36"
+    },
+    {
+      "path": "scripts/governance/book-r49n-dickens-reviewed-20260912.json",
+      "sha256Lf": "e7b875db1307fdbdc17bbe9329559bc9dc289d2dc735a8aa362f8beb086db259"
+    },
+    {
+      "path": "scripts/governance/library-reference-release-reviewed-20260914.json",
+      "sha256Lf": "8d778ed94422a29f05e812a33d6f5ec94f09c58863652c5fc316f84c49d648d8"
+    },
+    {
+      "path": "reports/library-reference-release-reviewed-20260914.json",
+      "sha256Lf": "66d4df9bea22d58a8e6ff3f68ec057c97faa62b2340103840c11a3817935dd8d"
+    }
+  ],
+  "reviewedReport": {
+    "path": "reports/header-showcase-owner-refinement-20260914.json",
+    "sha256Lf": "8827505e33620f9dd4873e0cf746d136d4f2cc5b6771acb21bb23c7f368ee47d"
+  },
+  "projections": [
+    {
+      "id": "HEADER-SHOWCASE-001",
+      "path": "scripts/lib/reviewed-r49n-package.test.mjs",
+      "before": "import {\n  isReviewedR49nPackageAddition, projectReviewedR49nPackage, projectPublishedR49nPackage,\n  r49nPackageAttestation, reviewedR49nPackageSourceSha256,\n} from \"./reviewed-r49n-package.mjs\";\nimport { projectReviewedReferenceRelease } from \"./reviewed-reference-release.mjs\";\n\nconst read = path => readFileSync(path, \"utf8\").replace(/\\r\\n?/gu, \"\\n\");\nconst readPublishedBrowserContract = path => path === \"tests/e2e/archive-search-calendar.spec.mjs\"\n  ? projectReviewedReferenceRelease(path, read(path)) : read(path);\nconst sha = value => createHash(\"sha256\").update(value).digest(\"hex\");\n",
+      "after": "import {\n  isReviewedR49nPackageAddition, projectReviewedR49nPackage, projectPublishedR49nPackage,\n  r49nPackageAttestation, reviewedR49nPackageSourceSha256,\n} from \"./reviewed-r49n-package.mjs\";\nimport { projectReviewedReferenceRelease } from \"./reviewed-reference-release.mjs\";\nimport { projectReviewedHeaderShowcase } from \"./reviewed-header-showcase.mjs\";\n\nconst read = path => readFileSync(path, \"utf8\").replace(/\\r\\n?/gu, \"\\n\");\nconst readPublishedBrowserContract = path => path === \"tests/e2e/archive-search-calendar.spec.mjs\"\n  ? projectReviewedReferenceRelease(path, read(path)) : read(path);\nconst sha = value => createHash(\"sha256\").update(value).digest(\"hex\");\n"
+    },
+    {
+      "id": "HEADER-SHOWCASE-002",
+      "path": "scripts/lib/reviewed-r49n-package.test.mjs",
+      "before": "    expect(cmsGuard.currentSnapshot).toMatchObject({ exportedCmsWorks: 17, retainedKeyIntersection: 0, catalogCount: 9763, reviewedCount: 69, pendingCount: 9694, retainedPairs: 1494 });\n    expect(cmsGuard).toMatchObject({ workProfileSchemaChanged: false, evidenceContractChanged: false, genericDraftTextExposed: false, historicalQuarantinePreserved: true, publicApprovalGranted: false });\n    const repair = report.wellsEditorialRepair;\n    expect(sha(read(repair.migration.path))).toBe(repair.migration.sha256);\n    for (const file of [repair.packet, repair.validation, ...repair.files, ...report.releaseIntegration.supportingFiles])\n      expect(sha(read(file.path))).toBe(file.sha256Lf);\n    expect(repair).toMatchObject({ schemaMigrations: 37, publishedHistoricalMigrations: 35, historicalMigrationPinsChanged: false,\n      originalDescriptionsArchived: true, activeWorkDescriptionPreserved: true, originalAuthorshipInferred: false,\n      humanReview: false, fullWorkRead: false, productionApplied: false });\n    expect(repair.validation.receipt).toMatchObject({ validationIssues: [], attestationCandidates: 1, databaseMutation: false });\n    expect(report.releaseIntegration.historicalCheckpointTag).toBe(\"codex/books-r49n-checkpoint-20260912-459f2d70\");\n",
+      "after": "    expect(cmsGuard.currentSnapshot).toMatchObject({ exportedCmsWorks: 17, retainedKeyIntersection: 0, catalogCount: 9763, reviewedCount: 69, pendingCount: 9694, retainedPairs: 1494 });\n    expect(cmsGuard).toMatchObject({ workProfileSchemaChanged: false, evidenceContractChanged: false, genericDraftTextExposed: false, historicalQuarantinePreserved: true, publicApprovalGranted: false });\n    const repair = report.wellsEditorialRepair;\n    expect(sha(read(repair.migration.path))).toBe(repair.migration.sha256);\n    for (const file of [repair.packet, repair.validation, ...repair.files, ...report.releaseIntegration.supportingFiles])\n      expect(sha(file.path === \"tests/e2e/header-hero-polish.spec.mjs\"\n        ? projectReviewedHeaderShowcase(file.path, read(file.path)) : read(file.path))).toBe(file.sha256Lf);\n    expect(repair).toMatchObject({ schemaMigrations: 37, publishedHistoricalMigrations: 35, historicalMigrationPinsChanged: false,\n      originalDescriptionsArchived: true, activeWorkDescriptionPreserved: true, originalAuthorshipInferred: false,\n      humanReview: false, fullWorkRead: false, productionApplied: false });\n    expect(repair.validation.receipt).toMatchObject({ validationIssues: [], attestationCandidates: 1, databaseMutation: false });\n    expect(report.releaseIntegration.historicalCheckpointTag).toBe(\"codex/books-r49n-checkpoint-20260912-459f2d70\");\n"
+    },
+    {
+      "id": "HEADER-SHOWCASE-003",
+      "path": "scripts/lib/reviewed-r49n-package.test.mjs",
+      "before": "    expect(hyphens.protectedFiles).toHaveLength(9);\n    for (const file of [...hyphens.protectedFiles, ...hyphens.files, ...hyphens.literalSerialization])\n      expect(sha(readPublishedBrowserContract(file.path))).toBe(file.sha256Lf);\n    expect(report.compactEditorialImageRepair.files).toHaveLength(8);\n    for (const file of report.compactEditorialImageRepair.files)\n      expect(sha(read(file.path))).toBe(file.sha256Lf);\n    for (const file of report.fullCatalogUi.files) expect(sha(readPublishedBrowserContract(file.path))).toBe(file.sha256Lf);\n    expect(report.historicalCoverChecks).toMatchObject({ status: \"PASS\", checkOnly: true, newCoverPublication: false, coverAssetsChanged: [] });\n    for (const file of report.historicalCoverChecks.unchangedFiles) expect(sha(read(file.path))).toBe(file.sha256);\n    expect(report.adminCatalogCompatibility.publicBiographyApprovalGranted).toBe(false);\n    expect(report.existingRecovery.records).toHaveLength(12);\n",
+      "after": "    expect(hyphens.protectedFiles).toHaveLength(9);\n    for (const file of [...hyphens.protectedFiles, ...hyphens.files, ...hyphens.literalSerialization])\n      expect(sha(readPublishedBrowserContract(file.path))).toBe(file.sha256Lf);\n    expect(report.compactEditorialImageRepair.files).toHaveLength(8);\n    for (const file of report.compactEditorialImageRepair.files)\n      expect(sha(file.path === \"src/utils/editorialImagePresentation.test.ts\"\n        ? projectReviewedHeaderShowcase(file.path, read(file.path)) : read(file.path))).toBe(file.sha256Lf);\n    for (const file of report.fullCatalogUi.files) expect(sha(readPublishedBrowserContract(file.path))).toBe(file.sha256Lf);\n    expect(report.historicalCoverChecks).toMatchObject({ status: \"PASS\", checkOnly: true, newCoverPublication: false, coverAssetsChanged: [] });\n    for (const file of report.historicalCoverChecks.unchangedFiles) expect(sha(read(file.path))).toBe(file.sha256);\n    expect(report.adminCatalogCompatibility.publicBiographyApprovalGranted).toBe(false);\n    expect(report.existingRecovery.records).toHaveLength(12);\n"
+    },
+    {
+      "id": "HEADER-SHOWCASE-004",
+      "path": "src/index.css",
+      "before": "  overflow-wrap: normal;\n  word-break: normal;\n}\n\n.article-reader-content :where(img, video, iframe, svg, canvas),\n.article-reader-content [style*=\"width\"] {\n  max-width: 100% !important;\n}\n\n.article-reader-content :not(pre) > code {\n  overflow-wrap: break-word;\n",
+      "after": "  overflow-wrap: normal;\n  word-break: normal;\n}\n\n.article-reader-content :where(img, video, iframe, svg, canvas),\n.article-reader-content [style*=\"width\"]:not(figure.article-inline-image) {\n  max-width: 100% !important;\n}\n\n.article-reader-content :not(pre) > code {\n  overflow-wrap: break-word;\n"
+    },
+    {
+      "id": "HEADER-SHOWCASE-005",
+      "path": "src/styles/navigation-panels.css",
+      "before": "    min-height: 44px;\n    padding: 6px 12px;\n  }\n\n  .articles-mega-menu .articles-mega-content {\n    grid-template-columns: minmax(0, 0.36fr) minmax(0, 0.64fr);\n    min-width: 0;\n    min-height: 0;\n    overflow: visible;\n  }\n\n",
+      "after": "    min-height: 44px;\n    padding: 6px 12px;\n  }\n\n  .articles-mega-menu .articles-mega-content {\n    grid-template-columns: minmax(0, 0.34fr) minmax(0, 0.66fr);\n    min-width: 0;\n    min-height: 0;\n    overflow: visible;\n  }\n\n"
+    },
+    {
+      "id": "HEADER-SHOWCASE-006",
+      "path": "src/styles/navigation-panels.css",
+      "before": "    display: none;\n  }\n\n  .articles-mega-menu .articles-mega-lead-media > img {\n    position: absolute;\n    object-fit: cover;\n    object-position: center;\n  }\n\n  .articles-mega-menu .articles-mega-lead-media > span {\n    display: none;\n  }\n\n  .articles-mega-menu .articles-mega-lead > div {\n    align-content: start;\n    gap: 8px;\n    min-width: 0;\n    padding: 16px;\n  }\n\n  .articles-mega-menu .articles-mega-lead strong,\n  .articles-mega-menu .articles-mega-lead p {\n    margin: 0;\n",
+      "after": "    display: none;\n  }\n\n  .articles-mega-menu .articles-mega-lead-media > img {\n    position: absolute;\n    object-fit: contain;\n    object-position: center;\n  }\n\n  .articles-mega-menu .articles-mega-lead:hover .articles-mega-lead-media > img {\n    transform: none;\n  }\n\n  .articles-mega-menu .articles-mega-lead-media > span {\n    display: none;\n  }\n\n  .articles-mega-menu .articles-mega-lead > div {\n    align-content: start;\n    gap: 8px;\n    min-width: 0;\n    padding: 12px;\n  }\n\n  .articles-mega-menu .articles-mega-lead strong,\n  .articles-mega-menu .articles-mega-lead p {\n    margin: 0;\n"
+    },
+    {
+      "id": "HEADER-SHOWCASE-007",
+      "path": "src/styles/navigation-panels.css",
+      "before": "    grid-row: span 3;\n    grid-template-rows: subgrid;\n    gap: 6px;\n    align-items: start;\n    min-height: 44px;\n    padding: 14px;\n  }\n\n  .articles-mega-menu .articles-mega-content > section:empty {\n    display: none;\n  }\n",
+      "after": "    grid-row: span 3;\n    grid-template-rows: subgrid;\n    gap: 6px;\n    align-items: start;\n    min-height: 44px;\n    padding: 12px;\n  }\n\n  .articles-mega-menu .articles-mega-content > section:empty {\n    display: none;\n  }\n"
+    },
+    {
+      "id": "HEADER-SHOWCASE-008",
+      "path": "src/styles/navigation-panels.css",
+      "before": "\n  .articles-mega-menu .articles-mega-content:has(> section:empty) .articles-mega-lead-media {\n    align-self: start;\n  }\n\n  /* Short displays show fewer complete previews with the full archive below. */\n  @media (max-height: 740px) {\n    .articles-mega-menu > header {\n      padding-block: 12px;\n    }\n\n    .articles-mega-menu .articles-mega-lead-media {\n      height: 96px;\n      aspect-ratio: auto;\n    }\n\n    .articles-mega-menu .articles-mega-lead > div {\n      gap: 6px;\n      padding: 12px;\n    }\n\n    .articles-mega-menu .articles-mega-content > section a {\n      padding: 12px;\n    }\n\n    .articles-mega-menu .articles-mega-content > section a:nth-child(n + 5) {\n      display: none;\n    }\n\n    .articles-mega-menu > footer {\n      padding-block: 2px;\n    }\n  }\n\n  .sections-mega-menu > footer,\n  .articles-mega-menu > footer {\n",
+      "after": "\n  .articles-mega-menu .articles-mega-content:has(> section:empty) .articles-mega-lead-media {\n    align-self: start;\n  }\n\n  /* Keep the complete image and all six previews together on shorter displays. */\n  @media (max-height: 740px) {\n    .articles-mega-menu > header {\n      padding-block: 6px;\n    }\n\n    .articles-mega-menu > header > div {\n      gap: 4px;\n    }\n\n    .articles-mega-menu .articles-mega-lead-media {\n      width: min(100%, calc(clamp(120px, 100dvh - 480px, 168px) * 16 / 9));\n      justify-self: center;\n    }\n\n    .articles-mega-menu .articles-mega-lead > div {\n      gap: 4px;\n      padding: 8px;\n    }\n\n    .articles-mega-menu .articles-mega-content > section a {\n      gap: 4px;\n      padding: 8px 12px;\n    }\n\n    .articles-menu .articles-mega-menu > footer {\n      padding-block: 2px;\n    }\n  }\n\n  @media (max-height: 640px) {\n    .articles-mega-menu .articles-mega-content > section a {\n      padding-block: 4px;\n    }\n  }\n\n  .sections-mega-menu > footer,\n  .articles-mega-menu > footer {\n"
+    },
+    {
+      "id": "HEADER-SHOWCASE-009",
+      "path": "src/utils/editorialImagePresentation.test.ts",
+      "before": "    );\n    expect(publicStyles).toContain(\"--editorial-image-width\");\n    expect(publicStyles).toContain(\"--editorial-image-max-width\");\n    expect(publicStyles).toContain(\"--editorial-focus-x\");\n    expect(publicStyles).toContain(\"max-width: min(var(--editorial-image-max-width, 100%), 100%)\");\n    expect(publicStyles).toContain(\".article-editorial-image.is-aspect-16-9\");\n    expect(publicStyles).toContain('[data-image-appearance=\"clean\"]');\n    expect(publicStyles).toContain('[data-image-appearance=\"shadow\"]');\n    expect(publicStyles).toContain('[data-image-reveal=\"fade-up\"]');\n    expect(publicStyles).toContain('[data-image-reveal=\"zoom\"]');\n",
+      "after": "    );\n    expect(publicStyles).toContain(\"--editorial-image-width\");\n    expect(publicStyles).toContain(\"--editorial-image-max-width\");\n    expect(publicStyles).toContain(\"--editorial-focus-x\");\n    expect(publicStyles).toContain(\"max-width: min(var(--editorial-image-max-width, 100%), 100%)\");\n    expect(publicStyles).toContain('.article-reader-content [style*=\"width\"]:not(figure.article-inline-image)');\n    expect(publicStyles).not.toContain('.article-reader-content [style*=\"width\"] {');\n    expect(publicStyles).toContain(\".article-editorial-image.is-aspect-16-9\");\n    expect(publicStyles).toContain('[data-image-appearance=\"clean\"]');\n    expect(publicStyles).toContain('[data-image-appearance=\"shadow\"]');\n    expect(publicStyles).toContain('[data-image-reveal=\"fade-up\"]');\n    expect(publicStyles).toContain('[data-image-reveal=\"zoom\"]');\n"
+    },
+    {
+      "id": "HEADER-SHOWCASE-010",
+      "path": "tests/e2e/header-hero-polish.spec.mjs",
+      "before": "        const lead = content.querySelector(\".articles-mega-lead\");\n        const cards = [...list.querySelectorAll(\"a\")].filter(card => card.getClientRects().length);\n        return {\n          panel: box(element),\n          image: box(lead.querySelector(\"img\")),\n          cards: cards.map(box),\n          cardCount: list.querySelectorAll(\"a\").length,\n          footer: box(element.querySelector(\"footer\")),\n          scroll: [element, content, list].map(node => node.scrollHeight - node.clientHeight),\n          text: [lead, ...cards].flatMap(card => [...card.querySelectorAll(\"strong, p, small, em, section span\")].flatMap(copy => {\n",
+      "after": "        const lead = content.querySelector(\".articles-mega-lead\");\n        const cards = [...list.querySelectorAll(\"a\")].filter(card => card.getClientRects().length);\n        return {\n          panel: box(element),\n          image: box(lead.querySelector(\"img\")),\n          imageFit: getComputedStyle(lead.querySelector(\"img\")).objectFit,\n          cards: cards.map(box),\n          cardCount: list.querySelectorAll(\"a\").length,\n          footer: box(element.querySelector(\"footer\")),\n          scroll: [element, content, list].map(node => node.scrollHeight - node.clientHeight),\n          text: [lead, ...cards].flatMap(card => [...card.querySelectorAll(\"strong, p, small, em, section span\")].flatMap(copy => {\n"
+    },
+    {
+      "id": "HEADER-SHOWCASE-011",
+      "path": "tests/e2e/header-hero-polish.spec.mjs",
+      "before": "      expect(geometry.panel.left, `${locale}/${width}/${height}`).toBeGreaterThanOrEqual(0);\n      expect(geometry.panel.right).toBeLessThanOrEqual(width);\n      expect(geometry.panel.bottom, `${locale}/${width}/${height}`).toBeLessThanOrEqual(height);\n      for (const overflow of geometry.scroll) expect(overflow).toBeLessThanOrEqual(1);\n      expect(geometry.image.width).toBeLessThan(geometry.panel.width * .4);\n      // DOMRect includes floating-point transform noise below one CSS subpixel.\n      expect(Math.round(geometry.image.height * 1000) / 1000).toBeLessThanOrEqual(height <= 740 ? 96 : 180);\n      expect(geometry.cards).toHaveLength(Math.min(geometry.cardCount, height <= 740 ? 4 : 6));\n      for (const card of geometry.cards) expect(card.bottom).toBeLessThanOrEqual(geometry.footer.top + 1);\n      for (const text of geometry.text) {\n        expect(text.left).toBeGreaterThanOrEqual(text.bounds.left - 1);\n        expect(text.right).toBeLessThanOrEqual(text.bounds.right + 1);\n        expect(text.top).toBeGreaterThanOrEqual(text.bounds.top - 1);\n",
+      "after": "      expect(geometry.panel.left, `${locale}/${width}/${height}`).toBeGreaterThanOrEqual(0);\n      expect(geometry.panel.right).toBeLessThanOrEqual(width);\n      expect(geometry.panel.bottom, `${locale}/${width}/${height}`).toBeLessThanOrEqual(height);\n      for (const overflow of geometry.scroll) expect(overflow).toBeLessThanOrEqual(1);\n      expect(geometry.image.width).toBeLessThan(geometry.panel.width * .4);\n      expect(geometry.imageFit).toBe(\"contain\");\n      expect(geometry.image.width / geometry.image.height).toBeCloseTo(16 / 9, 2);\n      expect(geometry.cards).toHaveLength(Math.min(geometry.cardCount, 6));\n      for (const card of geometry.cards) expect(card.bottom).toBeLessThanOrEqual(geometry.footer.top + 1);\n      for (const text of geometry.text) {\n        expect(text.left).toBeGreaterThanOrEqual(text.bounds.left - 1);\n        expect(text.right).toBeLessThanOrEqual(text.bounds.right + 1);\n        expect(text.top).toBeGreaterThanOrEqual(text.bounds.top - 1);\n"
+    }
+  ]
+}

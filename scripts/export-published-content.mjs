@@ -3,6 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { load } from "cheerio";
 import { applyEditorialPublicationFix } from "./editorial-publication-fixes.mjs";
+import { applyArticleReadingEditorialFix } from "./lib/article-reading-editorial-fixes-20260914.mjs";
 import {
   articleSectionSlug,
   normalizeArticlePublicMetadata,
@@ -578,6 +579,16 @@ function prepareArticleDocument(contentHtml, articleTitle = "", locale = "ru") {
   };
 }
 
+function prepareProjectedArticleDocument(article, locale = "ru") {
+  const prepared = prepareArticleDocument(article.content_html, article.title, locale);
+  const projected = applyArticleReadingEditorialFix({
+    ...prepared, id: article.article_id || article.id, locale,
+  });
+  return projected.contentHtml === prepared.contentHtml
+    ? prepared
+    : prepareArticleDocument(projected.contentHtml, article.title, locale);
+}
+
 function publicationLabel(value) {
   const date = value ? new Date(value) : new Date();
   const formatted = new Intl.DateTimeFormat("ru-RU", {
@@ -910,13 +921,17 @@ rawArticleTranslations.forEach((translation) => {
 const articleDocuments = [];
 
 const articles = rawArticles.map((rawArticle) => {
-  const article = applyEditorialPublicationFix(rawArticle);
+  // Normalize a detached publication projection. Raw CMS rows and translation
+  // approval/source identities remain available unchanged for snapshot validation.
+  const article = applyArticleReadingEditorialFix(
+    normalizeShortHyphensDeep(structuredClone(applyEditorialPublicationFix(rawArticle)))
+  );
   const category = relationValue(article.categories);
   const sectionId = category?.slug || "literary-essays";
   const sectionLabel = category?.name || "Материалы";
   const sourceSlug = article.slug;
   const slug = publicArticleSlug(article);
-  const document = prepareArticleDocument(article.content_html, article.title);
+  const document = prepareProjectedArticleDocument(article);
   const wordCount = document.plainText
     ? document.plainText.split(/\s+/gu).length
     : 0;
@@ -941,13 +956,11 @@ const articles = rawArticles.map((rawArticle) => {
     article.excerpt ||
     article.subtitle ||
     document.plainText.slice(0, 320);
-  const englishTranslation = englishTranslationByArticleId.get(article.id);
+  const englishTranslation = applyArticleReadingEditorialFix(
+    normalizeShortHyphensDeep(structuredClone(englishTranslationByArticleId.get(article.id)))
+  );
   const englishDocument = englishTranslation
-    ? prepareArticleDocument(
-        englishTranslation.content_html,
-        englishTranslation.title,
-        "en"
-      )
+    ? prepareProjectedArticleDocument(englishTranslation, "en")
     : null;
   const englishWordCount = englishDocument?.plainText
     ? englishDocument.plainText.split(/\s+/gu).length
@@ -995,7 +1008,7 @@ const articles = rawArticles.map((rawArticle) => {
         translationPublishedAt: englishTranslation.published_at || null,
       }
     : null;
-  const entry = normalizeArticlePublicMetadata({
+  const entry = applyArticleReadingEditorialFix(normalizeArticlePublicMetadata({
     id,
     source: "cms",
     legacyId: article.legacy_id || null,
@@ -1033,7 +1046,7 @@ const articles = rawArticles.map((rawArticle) => {
     ogImageUrl,
     allowIndexing: article.allow_indexing !== false,
     translations: englishEntry ? { en: englishEntry } : undefined,
-  });
+  }));
   const normalizedEnglishEntry = entry.translations?.en;
   const articleDocument = {
     ...entry,
