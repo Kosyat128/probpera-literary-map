@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "originalPath": ".tmp/pwa-cross-engine-results/pwa-bilingual-20260914-a1/strict-artifact-audit.stderr.log",
+  "originalBytes": 0,
+  "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "reconstruction": "UTF-8 encode text exactly, without newline normalization",
+  "text": ""
+}

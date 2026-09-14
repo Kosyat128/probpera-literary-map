@@ -1,0 +1,182 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-14T01:11:10.664Z",
+  "kind": "android-bilingual-dev-apk-preservation",
+  "status": "BUILD_AND_BINARY_INSPECTION_PASSED",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "sourceCommit": "aac560876ea5c500de0863ae6b815ac4cd2ab6c4",
+  "buildId": "8f32bb6c8e93dc8d9440c82c0ea63f2d055f301d80de8772e1f56b1ca812b9c1",
+  "sourceInputsSha256": "ac4ca809f46d6ba3e0d51ba10f689752a41988843f7c24b6eee0f44dcd5ec058",
+  "artifact": {
+    "path": ".tmp/native-builds/android-dev/bilingual-8f32bb6c/runtime",
+    "metadata": "docs/mobile/evidence/S04/bilingual-android-20260914/native-artifact.json",
+    "sha256": "e291a156f32053d20a30f0f8e1d1c77314ea46e563edc78c6c32804b0b304454"
+  },
+  "apk": {
+    "path": ".tmp/native-builds/android-dev/bilingual-8f32bb6c/app-dev-debug.apk",
+    "bytes": 63701031,
+    "sha256": "5c3c677ec850839d0a0726081e335cc876395016d3a562b59b3a08798b49cabe"
+  },
+  "validation": {
+    "sourceBehavior": "docs/mobile/evidence/S03/bilingual-foundations-20260914",
+    "nativeStrictAudit": {
+      "path": "docs/mobile/evidence/S04/bilingual-android-20260914/native-artifact-audit.json",
+      "pass": true,
+      "files": 1348
+    },
+    "build": {
+      "pass": true,
+      "sourceCommit": "aac560876ea5c500de0863ae6b815ac4cd2ab6c4",
+      "buildId": "8f32bb6c8e93dc8d9440c82c0ea63f2d055f301d80de8772e1f56b1ca812b9c1",
+      "registrySourceSha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79",
+      "startedAt": "2026-09-14T01:08:18.9505249+00:00",
+      "durationSeconds": 32.7704875,
+      "task": ":app:assembleDevDebug",
+      "offline": true,
+      "actionableTasks": 167,
+      "executed": 22,
+      "upToDate": 145,
+      "fromCache": 0,
+      "deviceTested": false,
+      "releaseReady": false,
+      "report": "docs/mobile/evidence/S04/bilingual-android-20260914/build-run.json"
+    },
+    "binaryAudit": {
+      "path": "docs/mobile/evidence/S04/bilingual-android-20260914/android-dev-apk-verification.json",
+      "pass": true,
+      "bundledAssetsExpected": 1348,
+      "bundledAssetsMatched": 1347,
+      "omittedValidationMetadata": [
+        ".vite/manifest.json"
+      ],
+      "selectableLocales": [
+        "en",
+        "ru"
+      ],
+      "debugSignature": true,
+      "alignment": true
+    },
+    "preservedCopies": "docs/mobile/evidence/S04/bilingual-android-20260914/copy-verification.json",
+    "completedBuildsOrTestsRepeated": false
+  },
+  "reports": [
+    {
+      "source": ".tmp/bilingual-android-20260914/android-dev-apk-aapt2-badging.txt",
+      "path": "docs/mobile/evidence/S04/bilingual-android-20260914/android-dev-apk-aapt2-badging.txt",
+      "bytes": 5374,
+      "sha256": "71d3971e95e33d7023aa682bdc475572397866ef1ec75ecaf4f31cb9794fac73"
+    },
+    {
+      "source": ".tmp/bilingual-android-20260914/android-dev-apk-locales.txt",
+      "path": "docs/mobile/evidence/S04/bilingual-android-20260914/android-dev-apk-locales.txt",
+      "bytes": 323,
+      "sha256": "e417b96725691c86cc6103223f08367d7454894043884c0e8d1142e519de5200"
+    },
+    {
+      "source": ".tmp/bilingual-android-20260914/android-dev-apk-manifest.txt",
+      "path": "docs/mobile/evidence/S04/bilingual-android-20260914/android-dev-apk-manifest.txt",
+      "bytes": 8836,
+      "sha256": "4903cac6b08900e6b96f58e832f9a2a50c88643ee0d0c37625628c9018afa4ec"
+    },
+    {
+      "source": ".tmp/bilingual-android-20260914/android-dev-apk-signature.txt",
+      "path": "docs/mobile/evidence/S04/bilingual-android-20260914/android-dev-apk-signature.txt",
+      "bytes": 972,
+      "sha256": "8289f86c685f73de50fb3de8bd8f791e4f708dcbd81bf82caaf76b3cd4b650c1"
+    },
+    {
+      "source": ".tmp/bilingual-android-20260914/android-dev-apk-verification.json",
+      "path": "docs/mobile/evidence/S04/bilingual-android-20260914/android-dev-apk-verification.json",
+      "bytes": 7286,
+      "sha256": "b56fad2ab6a7a9e7b0d3b9839f69735e3c4e0e7bd02e7438aac64e629c9585ad"
+    },
+    {
+      "source": ".tmp/bilingual-android-20260914/android-dev-apk-zip-entries.json",
+      "path": "docs/mobile/evidence/S04/bilingual-android-20260914/android-dev-apk-zip-entries.json",
+      "bytes": 440382,
+      "sha256": "ce062aae6ab204c2151de16d184db31453b06a948d93dd0389721b460d9bd088"
+    },
+    {
+      "source": ".tmp/bilingual-android-20260914/android-dev-apk-zipalign.txt",
+      "path": "docs/mobile/evidence/S04/bilingual-android-20260914/android-dev-apk-zipalign.txt",
+      "bytes": 122954,
+      "sha256": "e1d845ec369b76556b6a1ef6473322fbeb67ba5a876d66308de79bf205b95153"
+    },
+    {
+      "source": ".tmp/bilingual-android-20260914/build-run.json",
+      "path": "docs/mobile/evidence/S04/bilingual-android-20260914/build-run.json",
+      "bytes": 542,
+      "sha256": "f6172437afe159499626239172328caa8e776974db79f42e242869a5dc1e976e"
+    },
+    {
+      "source": ".tmp/bilingual-android-20260914/native-artifact-audit.json",
+      "path": "docs/mobile/evidence/S04/bilingual-android-20260914/native-artifact-audit.json",
+      "bytes": 1070,
+      "sha256": "1437c56ad4a86d4b8878766a5d5abd9e1502c50d0f4145d1c6bb54e822a5ebdb"
+    },
+    {
+      "source": ".tmp/bilingual-android-20260914/apk-verifier-transcript.json",
+      "path": "docs/mobile/evidence/S04/bilingual-android-20260914/apk-verifier-transcript.json",
+      "bytes": 878,
+      "sha256": "cf5dce2466d71eb6db98fda2e465781c7fab305e3f99638a979e333086f10886"
+    },
+    {
+      "source": "dist-native/artifact.json",
+      "path": "docs/mobile/evidence/S04/bilingual-android-20260914/native-artifact.json",
+      "bytes": 666992,
+      "sha256": "e291a156f32053d20a30f0f8e1d1c77314ea46e563edc78c6c32804b0b304454"
+    },
+    {
+      "source": ".tmp/v12-resume-20260914/verify-bilingual-android-20260914.mjs",
+      "path": "docs/mobile/evidence/S04/bilingual-android-20260914/verify-bilingual-android-20260914.mjs",
+      "bytes": 14236,
+      "sha256": "f0e362753073b9d0a93ca52667113955c8a0d0f1b6250521e721810c3d94f458"
+    },
+    {
+      "source": ".tmp/v12-resume-20260914/build-bilingual-android-20260914.ps1",
+      "path": "docs/mobile/evidence/S04/bilingual-android-20260914/build-bilingual-android-20260914.ps1",
+      "bytes": 8074,
+      "sha256": "53dd3cee37dc0a62ccc940f062ba6ff794b5b595f38b444dbe661afc211e65d7"
+    },
+    {
+      "source": ".tmp/v12-resume-20260914/preserve-bilingual-android-20260914.mjs",
+      "path": "docs/mobile/evidence/S04/bilingual-android-20260914/preserve-bilingual-android-20260914.mjs",
+      "bytes": 10305,
+      "sha256": "d96c1007994b047b7ee2a9ab6a67093e53301a76cd2be1e11dc6db5a4a22daaf"
+    }
+  ],
+  "transcripts": [
+    {
+      "path": "docs/mobile/evidence/S04/bilingual-android-20260914/native-build-transcript.json",
+      "bytes": 13842,
+      "sha256": "c4226c62f745172b51605e37d7e9c362f374146ade3756c32b52c77f65cab6c1",
+      "original": ".tmp/bilingual-android-20260914/native-build.log",
+      "originalBytes": 13252,
+      "originalSha256": "56d6ebd10cda08b6efa25bd904eeeac212faffd3ee06b3a93d023f4369cfabec"
+    },
+    {
+      "path": "docs/mobile/evidence/S04/bilingual-android-20260914/sync-android-transcript.json",
+      "bytes": 858,
+      "sha256": "8db5902c8160603e8c293ac045a066c4d45910432b923b141c94a3825140e06f",
+      "original": ".tmp/bilingual-android-20260914/sync-android.log",
+      "originalBytes": 543,
+      "originalSha256": "7b9b3f2c5e77f8535c0e3ce3a3a676d089d17e276ab1090675df5c647df16ea7"
+    },
+    {
+      "path": "docs/mobile/evidence/S04/bilingual-android-20260914/assemble-dev-debug-transcript.json",
+      "bytes": 14675,
+      "sha256": "2ec5aa5b8909c098b0a380a557e9144a5258d7d787d7a883966e5ebf0f925692",
+      "original": ".tmp/bilingual-android-20260914/assemble-dev-debug.log",
+      "originalBytes": 13917,
+      "originalSha256": "3554097b9dd8b9a5eae146c8ba7ddb9911a10f3eb8716d1a08f5a478a83c0ebf"
+    }
+  ],
+  "boundaries": [
+    "Source aac560876ea5c500de0863ae6b815ac4cd2ab6c4 is this exact canonical author search devDebug snapshot; all prior Android and iOS artifacts remain distinct and unmodified.",
+    "This exact devDebug APK was compiled and statically inspected; it was not installed or exercised on an Android emulator or physical device.",
+    "Chrome native-binding fixtures and CDP safe-area overrides are not installed Android/iOS runtime evidence or exact-RC screenshots.",
+    "Native recently-opened history behavior has separate source-bound unit/integration evidence under docs/mobile/evidence/S03/bilingual-foundations-20260914; it is not installed Android runtime validation, a physical-device graphics benchmark or exact-RC screenshots.",
+    "S03/S04/S05/S06/S07/S10 and global bilingual/content/child/commerce/rights/owner/release gates remain open. No production signing, deploy, store action, merge or owner approval is implied."
+  ]
+}

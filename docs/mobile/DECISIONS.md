@@ -530,3 +530,10 @@
   exact-input bilingual review; digest provision is not reviewer authentication
   or product release approval. Default/withdrawn artifacts remain noindex.
   These S03/S10 changes preserve the single globe and existing publication gates.
+
+- D102: Sourceaac56087 produced exact Android/dev8f32bb6c and local-QA
+  PWAe5ff862c. Pre-JS/disabled-JS RUEN recovery and same-scene offline author
+  search passed against the actual PWA bundle. Android compilation/signature/
+  byte audits passed; only relocated one-off helper references needed a local
+  invocation/preservation continuation, without repeating compilation or tests.
+  These are development/QA artifacts, not installed-device or release acceptance.

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "runId": "pwa-bilingual-20260914-a1",
+  "localQaOnly": true,
+  "origin": "http://127.0.0.1:4296",
+  "artifact": {
+    "buildId": "e5ff862c4780159c5ca80243701665d6e19e1cfbf804560d13c600883b3910d5",
+    "sourceCommit": "aac560876ea5c500de0863ae6b815ac4cd2ab6c4",
+    "sourceInputsSha256": "9a94378c694798b1b8334a5cc6569751985ed56462976c4d1a1d94fc201d0265",
+    "authoritySha256": "fcc5a55ad4f12d2d3c879b0fb0345a02f7d4dcff139790bea03d0f6fa1f9d361",
+    "localQaAuthority": true,
+    "releaseReady": false
+  },
+  "planned": {
+    "sourceBuilds": 1,
+    "strictArtifactAudits": 1,
+    "browserExecutions": 1
+  },
+  "limits": [
+    "Ephemeral signer exists only in this local process. No provider/payment or installed OS evidence.",
+    "One new Vite/worker build for canonical author search and orange accessible pre-JavaScript PWA launch. Prior runtimes remain archived. One actual desktop browser case verifies the built RUEN startup/recovery and retained offline globe/search; no old broad suite or benchmark is rerun."
+  ]
+}

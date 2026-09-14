@@ -1,0 +1,30 @@
+[
+  {
+    "path": "scripts/mobile/verify-pwa-artifact.mjs",
+    "sha256": "3dd3e65d10c389b86bc908bb6876bdd1b60eae5598b885140ca330e5f3a501a3"
+  },
+  {
+    "path": "tests/pwa/offline-catalog.spec.mjs",
+    "sha256": "52359bfc8039dbaa2f798205c63d4e41c5560298cd0ec196cd4067e5d8db7ea2"
+  },
+  {
+    "path": "playwright.pwa-current.config.mjs",
+    "sha256": "a1dd4f348dff085913e9b3241902bf1617b9fe170e49cbd88565a74f054c7749"
+  },
+  {
+    "path": ".tmp/v12-resume-20260914/playwright.bilingual.config.mjs",
+    "sha256": "5a74291086d3c88cac44639e479cd11248a158d1392e70d138d67562372f844b"
+  },
+  {
+    "path": "tests/pwa/support/local-server.mjs",
+    "sha256": "5961d3e61339bb8e44704d804acbad99041706645377c9f9bf28b6676f1c5c1e"
+  },
+  {
+    "path": "tests/pwa/support/cross-engine-server.mjs",
+    "sha256": "51d6ba7b0b71e0008dc650812e11d7ded327e5607316af330c0757eef011bbb6"
+  },
+  {
+    "path": ".tmp/v12-resume-20260914/run-pwa-bilingual.mjs",
+    "sha256": "f3d9d0ee42e97d83f1658867e6744b8c0b32cbbe21d2e89821735593f2fe34a1"
+  }
+]

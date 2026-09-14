@@ -1,0 +1,23 @@
+[
+  {
+    "source": "docs/mobile/evidence/S03/bilingual-foundations-20260914/pwa/results.json#pwa-bilingual-no-js-ru",
+    "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/pwa/pwa-bilingual-no-js-ru.png",
+    "bytes": 372280,
+    "sha256": "96a1a679ef88139525d7610f04988b279bbd3281cef9271cdf8eab97600babc7",
+    "reconstruction": "Exact decoded Playwright PNG attachment body; no image modification"
+  },
+  {
+    "source": "docs/mobile/evidence/S03/bilingual-foundations-20260914/pwa/results.json#pwa-bilingual-no-js-en",
+    "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/pwa/pwa-bilingual-no-js-en.png",
+    "bytes": 347978,
+    "sha256": "e0488bfeb749a65098319a23d82c07810e2c46f00c258db5def51df35832bb5a",
+    "reconstruction": "Exact decoded Playwright PNG attachment body; no image modification"
+  },
+  {
+    "source": "docs/mobile/evidence/S03/bilingual-foundations-20260914/pwa/results.json#pwa-bilingual-before-js-en",
+    "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/pwa/pwa-bilingual-before-js-en.png",
+    "bytes": 297251,
+    "sha256": "5e09cd45f8007541a2a5c29a424f0caec48695454911035e13477098255b3644",
+    "reconstruction": "Exact decoded Playwright PNG attachment body; no image modification"
+  }
+]

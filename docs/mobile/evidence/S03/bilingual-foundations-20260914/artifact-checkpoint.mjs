@@ -1,0 +1,36 @@
+import fs from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import {execFileSync} from 'node:child_process';
+import assert from 'node:assert/strict';
+import {verifyExecutionFiles} from '../../scripts/mobile/verify-state.mjs';
+const base='docs/mobile',out=base+'/evidence/S03/bilingual-foundations-20260914',android=base+'/evidence/S04/bilingual-android-20260914';
+const sourceCommit='aac560876ea5c500de0863ae6b815ac4cd2ab6c4';
+const json=v=>JSON.stringify(v,null,2)+'\n',sha=b=>createHash('sha256').update(b).digest('hex'),read=async p=>JSON.parse(await fs.readFile(p,'utf8'));
+const source=await read(out+'/source-result.json'), apk=await read(android+'/result.json'),pwa=await read(out+'/pwa/result.json');
+assert.equal(apk.sourceCommit,sourceCommit);assert.equal(pwa.sourceCommit,sourceCommit);assert.equal(pwa.strictArtifactAuditPassed,true);assert.equal(pwa.statistics.expected,1);assert.equal(pwa.statistics.unexpected,0);
+const union=new Map();
+for(const artifactPath of [apk.artifact.path+'/artifact.json',pwa.artifact.path+'/artifact.json']) {const artifact=await read(artifactPath);assert.equal(artifact.sourceCommit,sourceCommit);for(const input of artifact.sourceInputs.files){if(union.has(input.path))assert.equal(union.get(input.path),input.sha256);union.set(input.path,input.sha256);}}
+for(const input of await read(out+'/pwa/support-after.json'))union.set(input.path,input.sha256);
+for(const [path,expected] of union)assert.equal(sha(await fs.readFile(path)),expected,path);
+assert.equal(sha(await fs.readFile(apk.apk.path)),apk.apk.sha256);assert.equal(sha(await fs.readFile(apk.artifact.path+'/artifact.json')),apk.artifact.sha256);assert.equal(sha(await fs.readFile(pwa.artifact.path+'/artifact.json')),pwa.artifact.artifactSha256);
+const visualFiles=await read(out+'/pwa/screenshot-extraction.json');for(const f of visualFiles)assert.equal(sha(await fs.readFile(f.path)),f.sha256);
+await fs.writeFile(out+'/pwa/visual-review.json',json({recordedAt:new Date().toISOString(),status:'INSPECTED_AT_ORIGINAL_RESOLUTION',files:visualFiles,findings:['Canonical orange fills the viewport before JavaScript; original quill is retained.','Russian and English no-JavaScript recovery text and buttons remain contained/readable at390 CSS pixels.','No magazine startup navigation, fake globe or image mockup.'],sourceCommit,buildId:pwa.buildId,exactReleaseCandidate:false,installedOsEvidence:false}),{flag:'wx'});
+await fs.writeFile(android+'/resume-android-preservation.mjs',await fs.readFile('.tmp/v12-resume-20260914/resume-android-preservation.mjs'),{flag:'wx'});
+const result={...source,recordedAt:new Date().toISOString(),status:'LOCAL_SOURCE_AND_ARTIFACT_VALIDATION_PASSED',sourceCommit,
+ artifacts:{android:{buildId:apk.buildId,evidence:android+'/result.json',sha256:sha(await fs.readFile(android+'/result.json')),apk:apk.apk},pwa:{buildId:pwa.buildId,evidence:out+'/pwa/result.json',sha256:sha(await fs.readFile(out+'/pwa/result.json')),artifact:pwa.artifact}},
+ currentInputsVerified:union.size,actualPwaBrowserPasses:1,artifactVisualReview:out+'/pwa/visual-review.json',
+ next:'Start documented parallel-safe S08 canonical data projection and source-dependency export. Reuse existing fact/biography/title gates and identity; never mint missing translation lineage or approvals. No repeat of unchanged app source/browser/build checks.'};
+await fs.writeFile(out+'/result.json',json(result));
+const state=await read(base+'/AUTOPILOT_STATE.json');const protectedState=JSON.stringify({head:state.headSha,stages:state.stages.map(({artifacts,lastGreenCommands,...s})=>s),ios:state.verificationCache.s04IosGlobeProjection});
+state.verificationCache.s03BilingualFoundations={status:result.status,evidence:out+'/result.json',sha256:sha(json(result)),sourceCommit,finalPassingCases:result.validation.finalPassingCases,sourceBrowserPasses:1,pwaBrowserPasses:1,sourceInputsCurrent:true,stageAccepted:false,releaseReady:false};
+state.verificationCache.s04BilingualAndroid={status:apk.status,evidence:android+'/result.json',sha256:sha(await fs.readFile(android+'/result.json')),sourceCommit,buildId:apk.buildId,stageAccepted:false,releaseReady:false};
+const s04=state.stages.find(s=>s.id==='S04');s04.artifacts=[...new Set([...s04.artifacts,android+'/result.json'])];
+state.updatedAt=result.recordedAt;state.resume.nextAction=result.next+' First-open S03 unchanged; current publication gate admits4 books; no release/production action. Frozen iOS83 remains pending.';
+assert.equal(JSON.stringify({head:state.headSha,stages:state.stages.map(({artifacts,lastGreenCommands,...s})=>s),ios:state.verificationCache.s04IosGlobeProjection}),protectedState);
+await fs.writeFile(base+'/AUTOPILOT_STATE.json',json(state));
+const block='<!-- bilingual-foundations-20260914:begin -->\nSource '+sourceCommit+': canonical author search across RUEN,\norange PWA startup/recovery and exact-input public-locale review/sitemap pipeline.\n297 final passing cases, static and1 actual native-source RUEN browser passed.\nAndroid/dev '+apk.buildId.slice(0,8)+': compiled, signed debug APK and exact runtime bytes inspected.\nAPK: '+apk.apk.path+'.\nLocal-QA PWA '+pwa.buildId.slice(0,8)+': strict artifact and1 actual pre-JS/recovery/offline\nRUEN author-search case passed;3 original-resolution startup/recovery images inspected.\nBoth builds bind the exact same current source. Earlier artifacts remain preserved.\nEvidence: evidence/S03/bilingual-foundations-20260914/result.json.\nNext: parallel-safe S08 canonical content/dependency export. No repeated green builds.\nFirst-open S03; no stage acceptance. Four public books; actual editorial review,\nfull content/child/3D/commerce/device/release and frozen iOS83 remain open.\n<!-- bilingual-foundations-20260914:end -->';
+for(const name of ['STATUS.md','BLOCKERS.md','NEXT_CODEX_PROMPT.txt']){const filename=base+'/'+name;const content=(await fs.readFile(filename,'utf8')).replaceAll('\r\n','\n');await fs.writeFile(filename,content.replace(/<!-- bilingual-foundations-20260914:begin -->[\s\S]*?<!-- bilingual-foundations-20260914:end -->/u,block));}
+const decisions=base+'/DECISIONS.md';const previous=await fs.readFile(decisions,'utf8');assert.ok(!/^- D102:/mu.test(previous));await fs.writeFile(decisions,previous.trimEnd()+'\n\n- D102: Sourceaac56087 produced exact Android/dev8f32bb6c and local-QA\n  PWAe5ff862c. Pre-JS/disabled-JS RUEN recovery and same-scene offline author\n  search passed against the actual PWA bundle. Android compilation/signature/\n  byte audits passed; only relocated one-off helper references needed a local\n  invocation/preservation continuation, without repeating compilation or tests.\n  These are development/QA artifacts, not installed-device or release acceptance.\n');
+const verification=await verifyExecutionFiles(process.cwd());await fs.writeFile(out+'/final-state-verification.json',json(verification),{flag:'wx'});assert.equal(verification.pass,true,JSON.stringify(verification.errors));
+await fs.writeFile(out+'/artifact-checkpoint.mjs',await fs.readFile('.tmp/v12-resume-20260914/artifact-checkpoint.mjs'),{flag:'wx'});
+console.log(json({status:result.status,sourceCommit,android:apk.buildId,pwa:pwa.buildId,currentInputsVerified:union.size,stateVerification:verification.pass,firstOpen:state.currentCriterionId}));

@@ -1,0 +1,9 @@
+{
+  "recordedAt": "2026-09-14T01:11:09.212Z",
+  "reason": "One-off build/preservation helpers retained old native-bootstrap path after relocation. Compilation, strict runtime audit, aapt/signature/alignment all passed; correct verifier was invoked directly and passed.",
+  "sourceCommit": "aac560876ea5c500de0863ae6b815ac4cd2ab6c4",
+  "buildId": "8f32bb6c8e93dc8d9440c82c0ea63f2d055f301d80de8772e1f56b1ca812b9c1",
+  "action": "Resume exact preservation, accepting existing files only after byte comparison; no overwrite of different bytes",
+  "compilationRepeated": false,
+  "testsRepeated": false
+}

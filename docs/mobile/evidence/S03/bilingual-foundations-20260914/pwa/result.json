@@ -1,0 +1,276 @@
+{
+  "schemaVersion": 1,
+  "stage": "S03",
+  "recordedAt": "2026-09-14T01:09:45.333Z",
+  "runId": "pwa-bilingual-20260914-a1",
+  "sourceCommit": "aac560876ea5c500de0863ae6b815ac4cd2ab6c4",
+  "buildId": "e5ff862c4780159c5ca80243701665d6e19e1cfbf804560d13c600883b3910d5",
+  "status": "LOCAL_QA_PWA_BUILD_AUDIT_AND_AFFECTED_BROWSER_PASSED",
+  "strictArtifactAuditPassed": true,
+  "statistics": {
+    "startTime": "2026-09-14T01:08:24.499Z",
+    "duration": 36713.068999999996,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "sourceUnchanged": true,
+  "browserTestsRun": true,
+  "browserExecutions": 1,
+  "browserProof": [
+    {
+      "title": "orange PWA launch and bilingual recovery lead to the retained offline literary globe",
+      "project": "pwa-desktop",
+      "status": "passed",
+      "durationMs": 34698,
+      "errors": []
+    }
+  ],
+  "artifact": {
+    "path": ".tmp/pwa-artifacts/e5ff862c-bilingual-20260914-a1",
+    "files": 1367,
+    "bytes": 70184854,
+    "artifactSha256": "81aebbb288507f920bd8763bc148e5eda107d12d4c0aea136c282ab47ece5a76",
+    "exactCopiesVerified": true
+  },
+  "preservedFiles": [
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-bilingual-20260914-a1/session.json",
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/pwa/session.json",
+      "bytes": 1050,
+      "sha256": "daabc23df971f94ae66dd266e4b86fd27891ad75dcf3a3cdd6b883e8921407f8"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-bilingual-20260914-a1/source-before.json",
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/pwa/source-before.json",
+      "bytes": 138535,
+      "sha256": "9a94378c694798b1b8334a5cc6569751985ed56462976c4d1a1d94fc201d0265"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-bilingual-20260914-a1/source-after.json",
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/pwa/source-after.json",
+      "bytes": 138535,
+      "sha256": "9a94378c694798b1b8334a5cc6569751985ed56462976c4d1a1d94fc201d0265"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-bilingual-20260914-a1/source-comparison.json",
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/pwa/source-comparison.json",
+      "bytes": 205,
+      "sha256": "b5a097fd1bf067948f12297ffe2132bfab845ef9ef0006f85d52fba846ecc450"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-bilingual-20260914-a1/support-before.json",
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/pwa/support-before.json",
+      "bytes": 1027,
+      "sha256": "d379608e7d2eb885b1bcc105ec9af408204225b70671b2be1d0120f03e6f7f07"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-bilingual-20260914-a1/support-after.json",
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/pwa/support-after.json",
+      "bytes": 1027,
+      "sha256": "d379608e7d2eb885b1bcc105ec9af408204225b70671b2be1d0120f03e6f7f07"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-bilingual-20260914-a1/strict-artifact-audit.json",
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/pwa/strict-artifact-audit.json",
+      "bytes": 795,
+      "sha256": "d70e555bb7709078a0e44c820d9aaff7954ee6f8eadb055ce34fc9be70da15ce"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-bilingual-20260914-a1/strict-artifact-audit-execution.json",
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/pwa/strict-artifact-audit-execution.json",
+      "bytes": 168,
+      "sha256": "7f0ec427c45fd9a217e8695f0df648b7d9dd6bc9e5069e2f7e0c49119f052394"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-bilingual-20260914-a1/server-closed.json",
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/pwa/server-closed.json",
+      "bytes": 93,
+      "sha256": "416e3a3deb25d71a783637b0860d699f73cc8aa3228c4a61e5736905f72b357c"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-bilingual-20260914-a1/run-result.json",
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/pwa/run-result.json",
+      "bytes": 688,
+      "sha256": "0190bf573ff5a426739cfe049b7f60501829356e7e255e183dcccd3cabb23607"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-bilingual-20260914-a1/discovery.json",
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/pwa/discovery.json",
+      "bytes": 250,
+      "sha256": "3c637f8d2d2870944c18315ee7ae192d5835c0d9780e0fe81fe495bba0b5e6e0"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-bilingual-20260914-a1/discovery-execution.json",
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/pwa/discovery-execution.json",
+      "bytes": 299,
+      "sha256": "39ad259bcc5b238b35b56331e3bb83c5dcc4754ffe79b077546ecf8f40436e25"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-bilingual-20260914-a1/browser-run-execution.json",
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/pwa/browser-run-execution.json",
+      "bytes": 263,
+      "sha256": "fa482bb5dc53912fbb4dcccf482c4e26b3bf465520323c3b21b5ebc3160df02d"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-bilingual-20260914-a1/results.json",
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/pwa/results.json",
+      "bytes": 1361846,
+      "sha256": "eca998dd31ecc5dd9e4f688c6d74aeca95e773c795a6545dc6ba3a15c428d6e9"
+    },
+    {
+      "source": "dist-pwa/artifact.json",
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/pwa/artifact.json",
+      "bytes": 388351,
+      "sha256": "81aebbb288507f920bd8763bc148e5eda107d12d4c0aea136c282ab47ece5a76"
+    },
+    {
+      "source": ".tmp/v12-resume-20260914/prior-pwa.json",
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/pwa/prior-pwa.json",
+      "bytes": 233701,
+      "sha256": "e5d08ce1d3a3dec71bb09f31f5e818890588c28698352d8fe086738e86ff29a9"
+    },
+    {
+      "source": ".tmp/v12-resume-20260914/run-pwa-bilingual.mjs",
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/pwa/helpers/run-pwa-bilingual.mjs",
+      "bytes": 10423,
+      "sha256": "f3d9d0ee42e97d83f1658867e6744b8c0b32cbbe21d2e89821735593f2fe34a1"
+    },
+    {
+      "source": ".tmp/v12-resume-20260914/preserve-pwa-bilingual.mjs",
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/pwa/helpers/preserve-pwa-bilingual.mjs",
+      "bytes": 9730,
+      "sha256": "59fd3f0e0e3a102d662a09abbd7cb7cbfb3cb3471873e7d5e4afa935529ad85d"
+    },
+    {
+      "source": ".tmp/v12-resume-20260914/park-prior-pwa.mjs",
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/pwa/helpers/park-prior-pwa.mjs",
+      "bytes": 4520,
+      "sha256": "578f97ab6cb471fd390d6c2a427de5dfa24eae14c7d484c487c8fca26e571c07"
+    },
+    {
+      "source": ".tmp/v12-resume-20260914/playwright.bilingual.config.mjs",
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/pwa/helpers/playwright.bilingual.config.mjs",
+      "bytes": 524,
+      "sha256": "5a74291086d3c88cac44639e479cd11248a158d1392e70d138d67562372f844b"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-bilingual-20260914-a1/strict-artifact-audit.log",
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/pwa/strict-artifact-audit-log.json",
+      "bytes": 1192,
+      "sha256": "ce9d67bc250675d21a6dfa66c4c6dee43d05e5aa62395012dd77d66c7aa3796c",
+      "rawBytes": 795,
+      "rawSha256": "d70e555bb7709078a0e44c820d9aaff7954ee6f8eadb055ce34fc9be70da15ce",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-bilingual-20260914-a1/strict-artifact-audit.stdout.log",
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/pwa/strict-artifact-audit.stdout-log.json",
+      "bytes": 1199,
+      "sha256": "1fba10256004a0c1b816d4b150b835c37c2cd59b79494f6b330b153d9ff66eae",
+      "rawBytes": 795,
+      "rawSha256": "d70e555bb7709078a0e44c820d9aaff7954ee6f8eadb055ce34fc9be70da15ce",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-bilingual-20260914-a1/strict-artifact-audit.stderr.log",
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/pwa/strict-artifact-audit.stderr-log.json",
+      "bytes": 339,
+      "sha256": "2047559fd74a06b08205d26a60e944eadcc1b8aaa244b3b3ad2590f66d833007",
+      "rawBytes": 0,
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-bilingual-20260914-a1/discovery.log",
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/pwa/discovery-log.json",
+      "bytes": 3523,
+      "sha256": "0d4d19e22dcb7251a3e726c2143287be7569cdb8044f92193f6c85e360b01954",
+      "rawBytes": 2866,
+      "rawSha256": "26b2dadb6e8709c04947535a3e7f0c34cbf6c5ad74ec02ae2438ac2ac57c0c97",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-bilingual-20260914-a1/discovery.stdout.log",
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/pwa/discovery.stdout-log.json",
+      "bytes": 3530,
+      "sha256": "404363f46ed512a4f3674cdcc25c736b7f62aea0f0b4f838cf040e123bbc667e",
+      "rawBytes": 2866,
+      "rawSha256": "26b2dadb6e8709c04947535a3e7f0c34cbf6c5ad74ec02ae2438ac2ac57c0c97",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-bilingual-20260914-a1/discovery.stderr.log",
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/pwa/discovery.stderr-log.json",
+      "bytes": 327,
+      "sha256": "5637062b6c84c9a2d4ea69dd176e12c565eba0d6ef8ec98921d1d49ee2acaec4",
+      "rawBytes": 0,
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-bilingual-20260914-a1/browser-run.log",
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/pwa/browser-run-log.json",
+      "bytes": 713,
+      "sha256": "67c79ee2a98a1db843c453cd1e5fc82a64065ba66adbde46df82bfdc63db3f5d",
+      "rawBytes": 379,
+      "rawSha256": "efecdc6eb8f38349dc5a021970cde02bf0115d6d41ff489944a776d5c043fa30",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-bilingual-20260914-a1/browser-run.stdout.log",
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/pwa/browser-run.stdout-log.json",
+      "bytes": 554,
+      "sha256": "04c6c81c769bb8e4b073025031880ebe873c56fc1e28bd43e0d720fe7686782a",
+      "rawBytes": 215,
+      "rawSha256": "fd270e70eb301da934e50d93c9539a217892c3015c764119fb55025a89de55ac",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-bilingual-20260914-a1/browser-run.stderr.log",
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/pwa/browser-run.stderr-log.json",
+      "bytes": 497,
+      "sha256": "fae7b8f0d1eed3d725ebcbf4830b0d8b89e871d5403d69752d39343039ad8f00",
+      "rawBytes": 164,
+      "rawSha256": "f6be416b42634909414ade1e36ccd31db3c741cd806973742a337eed15e4557c",
+      "lossless": true
+    },
+    {
+      "source": "docs/mobile/evidence/S03/bilingual-foundations-20260914/pwa/results.json#pwa-bilingual-no-js-ru",
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/pwa/pwa-bilingual-no-js-ru.png",
+      "bytes": 372280,
+      "sha256": "96a1a679ef88139525d7610f04988b279bbd3281cef9271cdf8eab97600babc7",
+      "reconstruction": "Exact decoded Playwright PNG attachment body; no image modification"
+    },
+    {
+      "source": "docs/mobile/evidence/S03/bilingual-foundations-20260914/pwa/results.json#pwa-bilingual-no-js-en",
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/pwa/pwa-bilingual-no-js-en.png",
+      "bytes": 347978,
+      "sha256": "e0488bfeb749a65098319a23d82c07810e2c46f00c258db5def51df35832bb5a",
+      "reconstruction": "Exact decoded Playwright PNG attachment body; no image modification"
+    },
+    {
+      "source": "docs/mobile/evidence/S03/bilingual-foundations-20260914/pwa/results.json#pwa-bilingual-before-js-en",
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/pwa/pwa-bilingual-before-js-en.png",
+      "bytes": 297251,
+      "sha256": "5e09cd45f8007541a2a5c29a424f0caec48695454911035e13477098255b3644",
+      "reconstruction": "Exact decoded Playwright PNG attachment body; no image modification"
+    }
+  ],
+  "stageAccepted": false,
+  "releaseReady": false,
+  "copyReviewStatus": "draft",
+  "actualOsInstallation": false,
+  "realPaymentProviderConfigured": false,
+  "limits": [
+    "Fresh local QA Vite/worker build, strict audit, exact archive and one built PWA launch/recovery/offline author-search case.",
+    "Success screenshots are exact local-QA artifact captures, not store RC or installed native OS evidence.",
+    "Local ephemeral QA authority does not establish a real merchant/payment, legal/editorial approval, owner acceptance or release readiness."
+  ],
+  "screenshotExtraction": {
+    "count": 3,
+    "originalResultsUnchanged": true,
+    "testsOrBuildsRepeated": false
+  }
+}
