@@ -160,6 +160,7 @@ describe("public editorial image integration", () => {
     expect(publicStyles).toContain("max-width: min(var(--editorial-image-max-width, 100%), 100%)");
     expect(publicStyles).toContain('.article-reader-content [style*="width"]:not(figure.article-inline-image)');
     expect(publicStyles).not.toContain('.article-reader-content [style*="width"] {');
+    expect(publicStyles).toContain('.article-reader-content figure.article-inline-image:is(.is-wide, .is-full) {\n  max-width: min(var(--editorial-image-max-width, 100%), 100%) !important;\n}');
     expect(publicStyles).toContain(".article-editorial-image.is-aspect-16-9");
     expect(publicStyles).toContain('[data-image-appearance="clean"]');
     expect(publicStyles).toContain('[data-image-appearance="shadow"]');

@@ -39,7 +39,7 @@
     "scripts/database/literary-work-evidence-v2-migration.test.mjs": "2c0b4475f2fd99b8832d905b79316af63876e6db435e7a302405ce4cf2bfb4e8",
     "scripts/database/production-migration-plan.test.mjs": "a02623c31fd6e2205c690d1f5b5d65ac1aaa01bff10391db39b279f9f38623e5",
     "scripts/database/supabase-database-safety.sh": "eafa771376dc2a9e833aed2a5ef18b304e72bb3c3d6882d8621e6c4d6c1afbd3",
-    "scripts/lib/reviewed-header-showcase.test.mjs": "b4a497da0fe03d4a163b455d1a67413a34a7a800e53560bc9e5f9884b62622ef",
+    "scripts/lib/reviewed-header-showcase.test.mjs": "6372200c48e9c80faac830e9d7e1adaf768852753867c6998c3a03fe63cb5b5d",
     "scripts/lib/reviewed-r49n-package.test.mjs": "eba1b7382284015604160fe4ec449b307874a698786eab8ea35c0264ad8fe605",
     "scripts/lib/reviewed-reference-release.test.mjs": "6ab82ac25acc9eb82fe938a785c29a936aabb0e3212fc85279138d6d201ce835",
     "scripts/lib/stage5-content-data-lock.test.mjs": "064fbfaa39e32693352724292243895ee8cfa84085657b6c9228d69513dbdc54",
@@ -55,7 +55,7 @@
     "scripts/database/literary-work-evidence-v2-migration.test.mjs": "405867a06e462df13b94ed53dea4e0cd970439561a42aedb8e96732d57486f7c",
     "scripts/database/production-migration-plan.test.mjs": "98f4e0945c8424e544d6442cec86e69991343775771fd95d6cf0a943cfc946e1",
     "scripts/database/supabase-database-safety.sh": "036a21ada6a7dd115d5a928087d36bd8aa9fa651603c322a916506e4ee890496",
-    "scripts/lib/reviewed-header-showcase.test.mjs": "edd6ee869a8e3e838fffc371c4ce82e4e44943a9bc3f4918a2c91b8d3094640f",
+    "scripts/lib/reviewed-header-showcase.test.mjs": "3e270cd8dbc9bfec4540bf716e7cf31696aaec12374927567a5563f2b424a227",
     "scripts/lib/reviewed-r49n-package.test.mjs": "7129eac1c61e577f2f4dfe95a085460464643dac80e5fe33afc37d14b54a96fc",
     "scripts/lib/reviewed-reference-release.test.mjs": "55f0b4234816b0d0a407b1f3d3de50b97760437838208b9a85d4868d2f983da6",
     "scripts/lib/stage5-content-data-lock.test.mjs": "2072075e9e57deeaef5652d789606421647b08e717d53bf3171ced800ef69624",
@@ -97,11 +97,11 @@
     },
     {
       "path": "scripts/governance/header-showcase-owner-refinement-20260914.json",
-      "sha256Lf": "9fbab0e71e9aa66df8bfe656aa05db67506c3ff8f71c3218b1aaac897d6a3204"
+      "sha256Lf": "9e544a3990aade3dc9e2cc649b26cb116dfa7e7b875cbbadc513b97d18d673dd"
     },
     {
       "path": "reports/header-showcase-owner-refinement-20260914.json",
-      "sha256Lf": "8827505e33620f9dd4873e0cf746d136d4f2cc5b6771acb21bb23c7f368ee47d"
+      "sha256Lf": "61b9a070f56e1e34b52dd98301be475b971f2408d9295cd96ed9150e5f5b3c36"
     }
   ],
   "historicalMigrations": [
@@ -298,7 +298,7 @@
   ],
   "reviewedReport": {
     "path": "reports/library-native-transport-reviewed-20260914.json",
-    "sha256Lf": "034a1eed4050958ffd4b4b3cca5dc65fb8b8bedde3cc9c3cb31e9554a2a4a399"
+    "sha256Lf": "aba0f6216ca21f2bb104dd5e3c965a97133ab0c6dfe21be3dcc25034fe3fc34e"
   },
   "projections": [
     {

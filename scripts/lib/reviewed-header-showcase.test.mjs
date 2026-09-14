@@ -17,7 +17,7 @@ const paths = [
 
 describe("September 14 owner-approved complete article showcase", () => {
   it("pins the exact composition, authored image width, contracts and nested report adapter", () => {
-    expect(sha(JSON.stringify(headerShowcaseAttestation))).toBe("7601d8b81335278d6ea38a5dec001212d9b8fdecb67b173514e61b3a488598d3");
+    expect(sha(JSON.stringify(headerShowcaseAttestation))).toBe("d59b4fbf7dd9a554184a6b998840168b6aa8afff6246d5076bf4a0f6fab5e42d");
     expect(headerShowcaseAttestation).toMatchObject({
       id: "HEADER-SHOWCASE-OWNER-REFINEMENT-20260914",
       baselineSourceCommitSha: "d6c7849ccc5285e17c6da9ef147fecc9fdd0f000",

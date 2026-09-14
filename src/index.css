@@ -16809,6 +16809,10 @@ html[data-theme="book"] .calendar-heading h3 {
   max-width: 100% !important;
 }
 
+.article-reader-content figure.article-inline-image:is(.is-wide, .is-full) {
+  max-width: min(var(--editorial-image-max-width, 100%), 100%) !important;
+}
+
 .article-reader-content :not(pre) > code {
   overflow-wrap: break-word;
   word-break: normal;

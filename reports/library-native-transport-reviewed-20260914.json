@@ -1,6 +1,6 @@
 {
   "id": "LIBRARY-NATIVE-TRANSPORT-20260914",
-  "reviewedAt": "2026-09-14T00:38:31.162Z",
+  "reviewedAt": "2026-09-14T01:29:21.524Z",
   "baselineSourceCommitSha": "d6c7849ccc5285e17c6da9ef147fecc9fdd0f000",
   "authorization": "The owner authorized completion and publication of the full reviewed literary archive. Replace only the final commit transport after the exact-main release failed during the atomic RPC; keep the existing function and publication proof gates. The same release also requires isolating dated source regressions in six test files from a fresh CMS export while retaining independent checks of the actual current CMS records.",
   "humanReview": false,
@@ -203,11 +203,11 @@
       "artifacts": [
         {
           "path": "scripts/governance/header-showcase-owner-refinement-20260914.json",
-          "sha256Lf": "9fbab0e71e9aa66df8bfe656aa05db67506c3ff8f71c3218b1aaac897d6a3204"
+          "sha256Lf": "9e544a3990aade3dc9e2cc649b26cb116dfa7e7b875cbbadc513b97d18d673dd"
         },
         {
           "path": "reports/header-showcase-owner-refinement-20260914.json",
-          "sha256Lf": "8827505e33620f9dd4873e0cf746d136d4f2cc5b6771acb21bb23c7f368ee47d"
+          "sha256Lf": "61b9a070f56e1e34b52dd98301be475b971f2408d9295cd96ed9150e5f5b3c36"
         }
       ],
       "focusedTestsPassed": 9,
@@ -218,7 +218,7 @@
         },
         {
           "path": "scripts/lib/reviewed-header-showcase.test.mjs",
-          "sha256Lf": "b4a497da0fe03d4a163b455d1a67413a34a7a800e53560bc9e5f9884b62622ef"
+          "sha256Lf": "6372200c48e9c80faac830e9d7e1adaf768852753867c6998c3a03fe63cb5b5d"
         },
         {
           "path": "scripts/lib/reviewed-r49n-package.test.mjs",
@@ -232,7 +232,42 @@
           "path": "scripts/lib/stage5-content-data-lock.test.mjs",
           "sha256Lf": "064fbfaa39e32693352724292243895ee8cfa84085657b6c9228d69513dbdc54"
         }
-      ]
+      ],
+      "maintenance": {
+        "reason": "Follow the revised, still-unpublished UI packet after the confirmed default-wide figure overflow. Only its two artifact hashes and the current UI test object pin change; the four native read adapters and all published historical pins are identical.",
+        "originalBoundary": {
+          "path": ".tmp/showcase-adapter-boundary-before-native-20260914.json",
+          "sha256Lf": "22e46becc2afebd3ed00c4f224faaf9a4838244bc6132a5ec0fc6cfbffbd1154"
+        },
+        "priorUiArtifacts": [
+          {
+            "path": "scripts/governance/header-showcase-owner-refinement-20260914.json",
+            "sha256Lf": "9fbab0e71e9aa66df8bfe656aa05db67506c3ff8f71c3218b1aaac897d6a3204"
+          },
+          {
+            "path": "reports/header-showcase-owner-refinement-20260914.json",
+            "sha256Lf": "8827505e33620f9dd4873e0cf746d136d4f2cc5b6771acb21bb23c7f368ee47d"
+          }
+        ],
+        "currentUiArtifacts": [
+          {
+            "path": "scripts/governance/header-showcase-owner-refinement-20260914.json",
+            "sha256Lf": "9e544a3990aade3dc9e2cc649b26cb116dfa7e7b875cbbadc513b97d18d673dd"
+          },
+          {
+            "path": "reports/header-showcase-owner-refinement-20260914.json",
+            "sha256Lf": "61b9a070f56e1e34b52dd98301be475b971f2408d9295cd96ed9150e5f5b3c36"
+          }
+        ],
+        "priorUiTestBoundarySha256": "b4a497da0fe03d4a163b455d1a67413a34a7a800e53560bc9e5f9884b62622ef",
+        "currentUiTestBoundarySha256": "6372200c48e9c80faac830e9d7e1adaf768852753867c6998c3a03fe63cb5b5d",
+        "previousUiObjectSha256": "7601d8b81335278d6ea38a5dec001212d9b8fdecb67b173514e61b3a488598d3",
+        "currentUiObjectSha256": "d59b4fbf7dd9a554184a6b998840168b6aa8afff6246d5076bf4a0f6fab5e42d",
+        "sourceOwnerProof": {
+          "path": ".tmp/reader-wide-full-source-proof-20260914.json",
+          "sha256Lf": "dd7d3a116dce72d970a4ff8544a7b08df8e284cd384dcf86e8fb2e0c6db3158b"
+        }
+      }
     },
     "order": "Native exact projection runs before the reviewed showcase and published reference/R49 source reads. The four necessary read adapters retain each existing expected hash and negative test.",
     "priorExpectedHashesChanged": false
@@ -395,7 +430,7 @@
     },
     {
       "path": "scripts/lib/reviewed-header-showcase.test.mjs",
-      "sha256Lf": "edd6ee869a8e3e838fffc371c4ce82e4e44943a9bc3f4918a2c91b8d3094640f"
+      "sha256Lf": "3e270cd8dbc9bfec4540bf716e7cf31696aaec12374927567a5563f2b424a227"
     },
     {
       "path": "scripts/lib/reviewed-native-archive-transport.mjs",

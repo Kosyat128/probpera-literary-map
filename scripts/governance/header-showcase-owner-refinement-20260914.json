@@ -19,9 +19,9 @@
   },
   "reviewedSourceSha256": {
     "scripts/lib/reviewed-r49n-package.test.mjs": "eba1b7382284015604160fe4ec449b307874a698786eab8ea35c0264ad8fe605",
-    "src/index.css": "711f8ecf157a743143861bc5109f0080f6b8acae23a8ba0b5029f8910bbebcf7",
+    "src/index.css": "5e1790db1a50028c68954240c15b7ff4eb6dc84cdf3cbf340be8573fc90879cc",
     "src/styles/navigation-panels.css": "d5f1b3c443ed037543a1c97107864d6f6c61bb138146efa4ae278c8787c3108d",
-    "src/utils/editorialImagePresentation.test.ts": "66c518241c010ed0caa86499f30994f23b233e41e9d32f1d86d601747f1cf244",
+    "src/utils/editorialImagePresentation.test.ts": "dd3bb72b59f82fecb906793276e5d997def4549271140e795255d932698c238c",
     "tests/e2e/header-hero-polish.spec.mjs": "2d5d8511b546aa47ce35453664659cf6ffa0cbe6b5628379c6e941a4455a2b92"
   },
   "historicalArtifacts": [
@@ -56,7 +56,7 @@
   ],
   "reviewedReport": {
     "path": "reports/header-showcase-owner-refinement-20260914.json",
-    "sha256Lf": "8827505e33620f9dd4873e0cf746d136d4f2cc5b6771acb21bb23c7f368ee47d"
+    "sha256Lf": "61b9a070f56e1e34b52dd98301be475b971f2408d9295cd96ed9150e5f5b3c36"
   },
   "projections": [
     {
@@ -78,10 +78,10 @@
       "after": "    expect(hyphens.protectedFiles).toHaveLength(9);\n    for (const file of [...hyphens.protectedFiles, ...hyphens.files, ...hyphens.literalSerialization])\n      expect(sha(readPublishedBrowserContract(file.path))).toBe(file.sha256Lf);\n    expect(report.compactEditorialImageRepair.files).toHaveLength(8);\n    for (const file of report.compactEditorialImageRepair.files)\n      expect(sha(file.path === \"src/utils/editorialImagePresentation.test.ts\"\n        ? projectReviewedHeaderShowcase(file.path, read(file.path)) : read(file.path))).toBe(file.sha256Lf);\n    for (const file of report.fullCatalogUi.files) expect(sha(readPublishedBrowserContract(file.path))).toBe(file.sha256Lf);\n    expect(report.historicalCoverChecks).toMatchObject({ status: \"PASS\", checkOnly: true, newCoverPublication: false, coverAssetsChanged: [] });\n    for (const file of report.historicalCoverChecks.unchangedFiles) expect(sha(read(file.path))).toBe(file.sha256);\n    expect(report.adminCatalogCompatibility.publicBiographyApprovalGranted).toBe(false);\n    expect(report.existingRecovery.records).toHaveLength(12);\n"
     },
     {
-      "id": "HEADER-SHOWCASE-004",
       "path": "src/index.css",
-      "before": "  overflow-wrap: normal;\n  word-break: normal;\n}\n\n.article-reader-content :where(img, video, iframe, svg, canvas),\n.article-reader-content [style*=\"width\"] {\n  max-width: 100% !important;\n}\n\n.article-reader-content :not(pre) > code {\n  overflow-wrap: break-word;\n",
-      "after": "  overflow-wrap: normal;\n  word-break: normal;\n}\n\n.article-reader-content :where(img, video, iframe, svg, canvas),\n.article-reader-content [style*=\"width\"]:not(figure.article-inline-image) {\n  max-width: 100% !important;\n}\n\n.article-reader-content :not(pre) > code {\n  overflow-wrap: break-word;\n"
+      "before": "  overflow-wrap: normal;\n  word-break: normal;\n}\n\n.article-reader-content :where(img, video, iframe, svg, canvas),\n.article-reader-content [style*=\"width\"] {\n  max-width: 100% !important;\n}\n\n.article-reader-content :not(pre) > code {\n  overflow-wrap: break-word;\n  word-break: normal;\n}\n\n",
+      "after": "  overflow-wrap: normal;\n  word-break: normal;\n}\n\n.article-reader-content :where(img, video, iframe, svg, canvas),\n.article-reader-content [style*=\"width\"]:not(figure.article-inline-image) {\n  max-width: 100% !important;\n}\n\n.article-reader-content figure.article-inline-image:is(.is-wide, .is-full) {\n  max-width: min(var(--editorial-image-max-width, 100%), 100%) !important;\n}\n\n.article-reader-content :not(pre) > code {\n  overflow-wrap: break-word;\n  word-break: normal;\n}\n\n",
+      "id": "HEADER-SHOWCASE-004"
     },
     {
       "id": "HEADER-SHOWCASE-005",
@@ -108,10 +108,10 @@
       "after": "\n  .articles-mega-menu .articles-mega-content:has(> section:empty) .articles-mega-lead-media {\n    align-self: start;\n  }\n\n  /* Keep the complete image and all six previews together on shorter displays. */\n  @media (max-height: 740px) {\n    .articles-mega-menu > header {\n      padding-block: 6px;\n    }\n\n    .articles-mega-menu > header > div {\n      gap: 4px;\n    }\n\n    .articles-mega-menu .articles-mega-lead-media {\n      width: min(100%, calc(clamp(120px, 100dvh - 480px, 168px) * 16 / 9));\n      justify-self: center;\n    }\n\n    .articles-mega-menu .articles-mega-lead > div {\n      gap: 4px;\n      padding: 8px;\n    }\n\n    .articles-mega-menu .articles-mega-content > section a {\n      gap: 4px;\n      padding: 8px 12px;\n    }\n\n    .articles-menu .articles-mega-menu > footer {\n      padding-block: 2px;\n    }\n  }\n\n  @media (max-height: 640px) {\n    .articles-mega-menu .articles-mega-content > section a {\n      padding-block: 4px;\n    }\n  }\n\n  .sections-mega-menu > footer,\n  .articles-mega-menu > footer {\n"
     },
     {
-      "id": "HEADER-SHOWCASE-009",
       "path": "src/utils/editorialImagePresentation.test.ts",
       "before": "    );\n    expect(publicStyles).toContain(\"--editorial-image-width\");\n    expect(publicStyles).toContain(\"--editorial-image-max-width\");\n    expect(publicStyles).toContain(\"--editorial-focus-x\");\n    expect(publicStyles).toContain(\"max-width: min(var(--editorial-image-max-width, 100%), 100%)\");\n    expect(publicStyles).toContain(\".article-editorial-image.is-aspect-16-9\");\n    expect(publicStyles).toContain('[data-image-appearance=\"clean\"]');\n    expect(publicStyles).toContain('[data-image-appearance=\"shadow\"]');\n    expect(publicStyles).toContain('[data-image-reveal=\"fade-up\"]');\n    expect(publicStyles).toContain('[data-image-reveal=\"zoom\"]');\n",
-      "after": "    );\n    expect(publicStyles).toContain(\"--editorial-image-width\");\n    expect(publicStyles).toContain(\"--editorial-image-max-width\");\n    expect(publicStyles).toContain(\"--editorial-focus-x\");\n    expect(publicStyles).toContain(\"max-width: min(var(--editorial-image-max-width, 100%), 100%)\");\n    expect(publicStyles).toContain('.article-reader-content [style*=\"width\"]:not(figure.article-inline-image)');\n    expect(publicStyles).not.toContain('.article-reader-content [style*=\"width\"] {');\n    expect(publicStyles).toContain(\".article-editorial-image.is-aspect-16-9\");\n    expect(publicStyles).toContain('[data-image-appearance=\"clean\"]');\n    expect(publicStyles).toContain('[data-image-appearance=\"shadow\"]');\n    expect(publicStyles).toContain('[data-image-reveal=\"fade-up\"]');\n    expect(publicStyles).toContain('[data-image-reveal=\"zoom\"]');\n"
+      "after": "    );\n    expect(publicStyles).toContain(\"--editorial-image-width\");\n    expect(publicStyles).toContain(\"--editorial-image-max-width\");\n    expect(publicStyles).toContain(\"--editorial-focus-x\");\n    expect(publicStyles).toContain(\"max-width: min(var(--editorial-image-max-width, 100%), 100%)\");\n    expect(publicStyles).toContain('.article-reader-content [style*=\"width\"]:not(figure.article-inline-image)');\n    expect(publicStyles).not.toContain('.article-reader-content [style*=\"width\"] {');\n    expect(publicStyles).toContain('.article-reader-content figure.article-inline-image:is(.is-wide, .is-full) {\\n  max-width: min(var(--editorial-image-max-width, 100%), 100%) !important;\\n}');\n    expect(publicStyles).toContain(\".article-editorial-image.is-aspect-16-9\");\n    expect(publicStyles).toContain('[data-image-appearance=\"clean\"]');\n    expect(publicStyles).toContain('[data-image-appearance=\"shadow\"]');\n    expect(publicStyles).toContain('[data-image-reveal=\"fade-up\"]');\n    expect(publicStyles).toContain('[data-image-reveal=\"zoom\"]');\n",
+      "id": "HEADER-SHOWCASE-009"
     },
     {
       "id": "HEADER-SHOWCASE-010",
