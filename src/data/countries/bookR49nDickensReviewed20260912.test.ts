@@ -1,11 +1,13 @@
 import { createHash } from "node:crypto";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import canonRegistry from "../../../data/book-canon-source-registry.json";
 import review from "../../../reports/book-r49n-dickens-reviewed-20260912.json";
 import attestation from "../../../scripts/governance/book-r49n-dickens-reviewed-20260912.json";
 import { buildBookArchive, type BookArchiveEntry } from "../bookArchive";
 import { bookEvidenceV2Issues } from "../bookEvidence";
 import { isPublicBook } from "../bookQuality";
+import * as cmsOverrides from "../cms/editorialOverrides";
+import { historicalCmsLiteraryWorkProfilesForWriter } from "../cms/historicalLiteraryWorks20260912.test-support";
 import { bookArchiveCountries } from "./index";
 import {
   applyBookR49nDickensReviewed20260912Work,
@@ -79,6 +81,14 @@ describe("independently reviewed R49N Dickens profiles", () => {
   });
 
   it("preserves protected fields of the original ten targets within the separately audited common package", () => {
+    // Only this dated byte-proof uses its original CMS snapshot. The current
+    // ten profiles and all 46 prior Evidence records above remain unmocked.
+    const historicalArchive = (() => {
+      const lookup = vi.spyOn(cmsOverrides, "cmsLiteraryWorkProfilesForWriter")
+        .mockImplementation(historicalCmsLiteraryWorkProfilesForWriter);
+      try { return buildBookArchive(bookArchiveCountries); }
+      finally { lookup.mockRestore(); }
+    })();
     const canonical = (value: unknown): unknown => Array.isArray(value)
       ? value.map(canonical)
       : value && typeof value === "object"
@@ -91,7 +101,7 @@ describe("independently reviewed R49N Dickens profiles", () => {
     // Global key-set, ready-set and non-target hashes are now asserted by
     // bookR49nPackageReviewed20260912.test.ts against the original 46 baseline.
     expect(archive.filter((book) => targetKeys.has(keyOf(book)))).toHaveLength(10);
-    expect(aggregate(archive.filter((book) => targetKeys.has(keyOf(book))).map((book) => [
+    expect(aggregate(historicalArchive.filter((book) => targetKeys.has(keyOf(book))).map((book) => [
       keyOf(book), objectHash(Object.fromEntries(Object.entries(book).filter(([field, value]) => protectedFields.has(field) && value !== undefined))),
     ]))).toBe(attestation.runtime.protectedTargetFieldsSha256);
 

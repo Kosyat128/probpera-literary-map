@@ -12,6 +12,7 @@ const read = path => readFileSync(path, "utf8").replace(/\r\n?/gu, "\n");
 const sha = text => createHash("sha256").update(text).digest("hex");
 const paths = [
   ".github/workflows/reconcile-production-database.yml",
+  "scripts/database/literary-work-evidence-v2-migration.test.mjs",
   "scripts/database/production-migration-plan.test.mjs",
   "scripts/database/supabase-database-safety.sh",
   "scripts/lib/reviewed-header-showcase.test.mjs",
@@ -19,11 +20,16 @@ const paths = [
   "scripts/lib/reviewed-reference-release.test.mjs",
   "scripts/lib/stage5-content-data-lock.test.mjs",
   "scripts/sync-literary-archive.mjs",
+  "src/data/bookCmsWellsPriority20260913.test.ts",
+  "src/data/bookR49nPackageReviewed20260912.test.ts",
+  "src/data/countries/bookR49nDickensReviewed20260912.test.ts",
+  "src/data/countries/bookR49nRetainedDrafts20260912.test.ts",
+  "src/data/userSuppliedBookCoversBatch20260820.test.ts",
 ];
 
-describe("September 14 native final archive commit transport governance", () => {
+describe("September 14 native archive release and CMS test compatibility governance", () => {
   it("pins a separate exact transport repair against main and the reviewed UI adapter boundary", () => {
-    expect(sha(JSON.stringify(nativeArchiveTransportAttestation))).toBe("e0b75b279099a23af51770565869c317d49c8f739967378524c0450e68a39b3b");
+    expect(sha(JSON.stringify(nativeArchiveTransportAttestation))).toBe("58d9d23ea7bc890922bb9c3000b388ccae4ed801a89e12f9f53ce1dbc8abc19d");
     expect(nativeArchiveTransportAttestation).toMatchObject({
       id: "LIBRARY-NATIVE-TRANSPORT-20260914",
       baselineSourceCommitSha: "d6c7849ccc5285e17c6da9ef147fecc9fdd0f000",

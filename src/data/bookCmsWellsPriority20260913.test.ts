@@ -3,7 +3,9 @@ import { readFileSync } from "node:fs";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { buildBookArchive } from "./bookArchive";
 import { presentBookArchiveEntry } from "./bookArchiveQueue";
+import { bookEvidenceV2Issues } from "./bookEvidence";
 import { isPublicBook } from "./bookQuality";
+import canonRegistry from "../../data/book-canon-source-registry.json";
 import * as cmsOverrides from "./cms/editorialOverrides";
 import { bookArchiveCountries } from "./countries";
 import * as legacyReaudit from "./countries/bookEvidenceV2LegacyVerifiedReaudit01";
@@ -17,7 +19,12 @@ const england = bookArchiveCountries.find((country) => country.id === "england")
 const wells = england.writers.find((writer) => writer.id === "h_g_wells")!;
 const wellsCountry: Country = { ...england, writers: [wells] };
 const key = "when-the-sleeper-wakes";
-const baseline = buildBookArchive([wellsCountry]).find((work) => work.id === key)!;
+// Historical fallback must not become the newly exported CMS record it tests.
+const baseline = (() => {
+  const lookup = vi.spyOn(cmsOverrides, "cmsLiteraryWorkProfilesForWriter").mockReturnValue([]);
+  try { return buildBookArchive([wellsCountry]).find((work) => work.id === key)!; }
+  finally { lookup.mockRestore(); }
+})();
 
 function reviewedCmsWork(sourceContent = packet.afterContent): WorkProfile {
   const content = structuredClone(sourceContent);
@@ -43,6 +50,30 @@ function mockCmsWorks(writerId: string, works: WorkProfile[]) {
 afterEach(() => vi.restoreAllMocks());
 
 describe("reviewed Wells CMS content survives static archive overlays", () => {
+  it("preserves the currently exported qualified CMS record independently of the historical fallback", () => {
+    const currentCms = cmsOverrides.cmsLiteraryWorkProfilesForWriter("england", wells.id).find(work => work.id === key);
+    const qualified = currentCms && isPublicBook(currentCms) &&
+      currentCms.localizedTitles?.ru && currentCms.localizedTitles?.en &&
+      currentCms.translations?.ru?.titleEvidence && currentCms.translations?.en?.titleEvidence &&
+      currentCms.translations.ru.descriptionProvenance && currentCms.translations.en.descriptionProvenance;
+    if (qualified) {
+      expect(bookEvidenceV2Issues(currentCms, {
+        canonRegistry, recordKey: `england:h_g_wells:${key}`, originCountryIds: ["england"],
+        descriptionSha256ByLocale: {
+          ru: createHash("sha256").update(currentCms.translations!.ru!.description).digest("hex"),
+          en: createHash("sha256").update(currentCms.translations!.en!.description).digest("hex"),
+        },
+      })).toEqual([]);
+    }
+    const expected = qualified ? currentCms : baseline;
+    for (const includeR49nCatalog of [true, false]) {
+      const result = buildBookArchive([wellsCountry], { includeR49nCatalog }).find(work => work.id === key)!;
+      for (const field of ["title", "description", "translations", "localizedTitles", "sources", "editorial"] as const) {
+        expect(result[field], field).toEqual(expected[field]);
+      }
+    }
+  });
+
   it("preserves the exact repaired CMS text, sources, titles and provenance in both archive modes", () => {
     const cmsWork = reviewedCmsWork();
     const original = structuredClone(cmsWork);

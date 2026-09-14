@@ -1,8 +1,8 @@
 {
   "id": "LIBRARY-NATIVE-TRANSPORT-20260914",
-  "reviewedAt": "2026-09-14T00:05:34.936Z",
+  "reviewedAt": "2026-09-14T00:21:40.662Z",
   "baselineSourceCommitSha": "d6c7849ccc5285e17c6da9ef147fecc9fdd0f000",
-  "authorization": "The owner authorized completion and publication of the full reviewed literary archive. Replace only the final commit transport after the exact-main release failed during the atomic RPC; keep the existing function and publication proof gates.",
+  "authorization": "The owner authorized completion and publication of the full reviewed literary archive. Replace only the final commit transport after the exact-main release failed during the atomic RPC; keep the existing function and publication proof gates. The same release also requires isolating dated source regressions in six test files from a fresh CMS export while retaining independent checks of the actual current CMS records.",
   "humanReview": false,
   "productionApplied": false,
   "historicalPinsChanged": false,
@@ -50,6 +50,112 @@
     "transport": "Only commit_literary_archive_release is intercepted; all other RPC calls delegate to the existing client.",
     "retryPolicy": "The explicit native run uses one RPC attempt and has no automatic native-to-REST fallback. Existing REST mode retains three attempts."
   },
+  "freshCmsTestCompatibility": {
+    "paths": [
+      "scripts/database/literary-work-evidence-v2-migration.test.mjs",
+      "src/data/bookCmsWellsPriority20260913.test.ts",
+      "src/data/bookR49nPackageReviewed20260912.test.ts",
+      "src/data/countries/bookR49nDickensReviewed20260912.test.ts",
+      "src/data/countries/bookR49nRetainedDrafts20260912.test.ts",
+      "src/data/userSuppliedBookCoversBatch20260820.test.ts"
+    ],
+    "incident": {
+      "runId": 34790382320,
+      "sourceCommitSha": "d6c7849ccc5285e17c6da9ef147fecc9fdd0f000",
+      "failedStep": "Verify public site and editorial archive",
+      "failedTests": 8,
+      "failedFiles": 5,
+      "cause": "Fresh exported Wells CMS prose and metadata entered dated static source fixtures. The Wells baseline was computed from the same new CMS object being compared; R49 exact historical hashes and cover bibliography no longer represented their source checkpoint. The September 2 evidence fixture correctly rejected the later September 13 review date."
+    },
+    "additionalHistoricalAssertion": "The Dickens protected-field hash also describes the original source checkpoint; its selected text, real Evidence V2 and current record checks remain unmocked.",
+    "change": "Use explicit test-local CMS lookup fixtures while constructing dated source archives. Preserve every original expected hash, count, review date, cover and evidence assertion. Restore scoped spies immediately; partial mock factories retain all other original exports. The historical R49 fixture retains the exact 17 published CMS records from main d6. A separate unmocked current-CMS Wells test checks actual qualifying metadata and Evidence V2 in both archive modes.",
+    "historicalExpectedValuesChanged": false,
+    "runtimeSourcesChanged": false,
+    "generatedCmsFilesChanged": false,
+    "validatorChanged": false,
+    "globalTestSetupChanged": false,
+    "currentCmsAssertionsRemoved": false,
+    "productionEvidenceGateWeakened": false,
+    "limitations": "Historical fixture isolation is not proof of the current database. Qualified actual CMS still has to pass the real Evidence V2 validator and retain its exact text, source, title and editorial fields; draft, legacy fallback, writer collision and final quarantine tests remain.",
+    "validation": {
+      "receipt": {
+        "path": ".tmp/fresh-cms-regression-proof-20260914.json",
+        "sha256Lf": "5c5290946e57c0729ef7c662b2b0f6f93c4bd9fa82b5177ccc2e3d40ee46ba09"
+      },
+      "evidence": {
+        "contract": "fresh-cms-historical-proof-separation-20260914",
+        "networkRequests": 0,
+        "runtimeSourceEdits": false,
+        "generatedSourceEdits": false,
+        "historicalExpectedHashesChanged": false,
+        "historicalSource": {
+          "commit": "d6c7849ccc5285e17c6da9ef147fecc9fdd0f000",
+          "path": "src/data/cms/literaryWorks.generated.ts",
+          "blob": "edc523628dda4a9bffa81def971a3145ae470efd",
+          "sha256": "6634bf7a357e7b1cfd1859d1194b66f355a8d6b1814da8342d9c75c3adcff2dd",
+          "recordCount": 17,
+          "parser": "Exact generated JSON initializer; no code evaluation"
+        },
+        "scenarios": [
+          {
+            "snapshot": "Current checked-in CMS export",
+            "files": 6,
+            "passed": 51,
+            "failed": 0,
+            "durationSeconds": 7.76
+          },
+          {
+            "snapshot": "Same export with Wells replaced by approved repair packet afterContent through real evidence profile converter at generated-module boundary",
+            "files": 6,
+            "passed": 51,
+            "failed": 0,
+            "durationSeconds": 7.73,
+            "setup": ".tmp/fresh-wells-cms-20260914.setup.ts",
+            "config": ".tmp/fresh-wells-cms-20260914.vitest.config.ts",
+            "packetSha256": "fefe16526d951f0f1e0d1a35030cad80d1a1ab4b04ee76415dc2a2687b3123ec"
+          }
+        ],
+        "sourceLfSha256": {
+          "src/data/bookCmsWellsPriority20260913.test.ts": "794240bacf3f380b98c5fdeb1ba5a8c47123c90a864276d4ca9291705be4612e",
+          "src/data/bookR49nPackageReviewed20260912.test.ts": "5f6081f91305c2431cdee4cc05952d228fa966e1c7881f013e905192a29553d8",
+          "src/data/countries/bookR49nRetainedDrafts20260912.test.ts": "efc10b62e02552add26255186f507d896b5e08bb5df1245161c1c3f9840673ee",
+          "src/data/cms/historicalLiteraryWorks20260912.test-support.ts": "78b2c99c1e68bcf64285ea77f481f4f5723dd56600f427f56f83366d43e4e443"
+        },
+        "limitations": "Focused test contracts only. Fresh scenario is an in-memory module fixture, not a production export or live deployment claim."
+      }
+    },
+    "historicalFixture": {
+      "proof": {
+        "path": ".tmp/historical-cms-fixture-provenance-20260914.json",
+        "sha256Lf": "7516f54903338af391ce34ae185bcc000aec793c359768a16eb13f7139427840"
+      },
+      "status": "PASS",
+      "checkedAt": "2026-09-14T00:19:36.418Z",
+      "productionActions": false,
+      "generatedSourcesChanged": false,
+      "sourceCommitSha": "d6c7849ccc5285e17c6da9ef147fecc9fdd0f000",
+      "sourcePath": "src/data/cms/literaryWorks.generated.ts",
+      "sourceGitBlob": "edc523628dda4a9bffa81def971a3145ae470efd",
+      "sourceSha256": "6634bf7a357e7b1cfd1859d1194b66f355a8d6b1814da8342d9c75c3adcff2dd",
+      "records": 17,
+      "identitySetSha256": "9dfcddba4408f3b12a77af7226dcfc0b78344c1d30b440daee228d62ae1e65f1",
+      "helper": {
+        "path": "src/data/cms/historicalLiteraryWorks20260912.test-support.ts",
+        "sha256Lf": "78b2c99c1e68bcf64285ea77f481f4f5723dd56600f427f56f83366d43e4e443"
+      },
+      "mapper": {
+        "path": "src/data/cms/editorialOverrides.ts",
+        "sha256Lf": "9d569451e09cdd1706c3a63414a39cf1449c767afc24040ebad99bbe99c579da",
+        "unchangedFromCommit": true,
+        "fixturePassedAsExplicitThirdArgument": true
+      },
+      "fullHistoryWorkflows": [
+        ".github/workflows/quality.yml",
+        ".github/workflows/deploy-pages.yml"
+      ],
+      "limitations": "The historical fixture reads fixed Git bytes only for dated tests. It is not a CMS rollback, snapshot export or current database state proof."
+    }
+  },
   "guards": {
     "sqlInput": "Fixed SQL file and exactly two canonical string arguments: UUID and SHA-256. No arbitrary SQL input.",
     "target": "Existing production project, single-host, database, TLS and pre-pulled image identity checks.",
@@ -61,19 +167,31 @@
   "governance": {
     "projectedPaths": [
       ".github/workflows/reconcile-production-database.yml",
+      "scripts/database/literary-work-evidence-v2-migration.test.mjs",
       "scripts/database/production-migration-plan.test.mjs",
       "scripts/database/supabase-database-safety.sh",
       "scripts/lib/reviewed-header-showcase.test.mjs",
       "scripts/lib/reviewed-r49n-package.test.mjs",
       "scripts/lib/reviewed-reference-release.test.mjs",
       "scripts/lib/stage5-content-data-lock.test.mjs",
-      "scripts/sync-literary-archive.mjs"
+      "scripts/sync-literary-archive.mjs",
+      "src/data/bookCmsWellsPriority20260913.test.ts",
+      "src/data/bookR49nPackageReviewed20260912.test.ts",
+      "src/data/countries/bookR49nDickensReviewed20260912.test.ts",
+      "src/data/countries/bookR49nRetainedDrafts20260912.test.ts",
+      "src/data/userSuppliedBookCoversBatch20260820.test.ts"
     ],
     "mainBoundaryPaths": [
       ".github/workflows/reconcile-production-database.yml",
+      "scripts/database/literary-work-evidence-v2-migration.test.mjs",
       "scripts/database/production-migration-plan.test.mjs",
       "scripts/database/supabase-database-safety.sh",
-      "scripts/sync-literary-archive.mjs"
+      "scripts/sync-literary-archive.mjs",
+      "src/data/bookCmsWellsPriority20260913.test.ts",
+      "src/data/bookR49nPackageReviewed20260912.test.ts",
+      "src/data/countries/bookR49nDickensReviewed20260912.test.ts",
+      "src/data/countries/bookR49nRetainedDrafts20260912.test.ts",
+      "src/data/userSuppliedBookCoversBatch20260820.test.ts"
     ],
     "localShowcaseAdapterPaths": [
       "scripts/lib/reviewed-header-showcase.test.mjs",
@@ -252,6 +370,10 @@
       "sha256Lf": "4823313ace3fd091d93780fd3cf1f9348f05b5d8edca3dce9f5cc36de5f6ca0f"
     },
     {
+      "path": "scripts/database/literary-work-evidence-v2-migration.test.mjs",
+      "sha256Lf": "405867a06e462df13b94ed53dea4e0cd970439561a42aedb8e96732d57486f7c"
+    },
+    {
       "path": "scripts/database/production-migration-plan.test.mjs",
       "sha256Lf": "98f4e0945c8424e544d6442cec86e69991343775771fd95d6cf0a943cfc946e1"
     },
@@ -290,6 +412,30 @@
     {
       "path": "scripts/sync-literary-archive.mjs",
       "sha256Lf": "3b372188b914411a89c23d147259198168ef909d1f72c225b17a04656e68417c"
+    },
+    {
+      "path": "src/data/bookCmsWellsPriority20260913.test.ts",
+      "sha256Lf": "794240bacf3f380b98c5fdeb1ba5a8c47123c90a864276d4ca9291705be4612e"
+    },
+    {
+      "path": "src/data/bookR49nPackageReviewed20260912.test.ts",
+      "sha256Lf": "5f6081f91305c2431cdee4cc05952d228fa966e1c7881f013e905192a29553d8"
+    },
+    {
+      "path": "src/data/cms/historicalLiteraryWorks20260912.test-support.ts",
+      "sha256Lf": "78b2c99c1e68bcf64285ea77f481f4f5723dd56600f427f56f83366d43e4e443"
+    },
+    {
+      "path": "src/data/countries/bookR49nDickensReviewed20260912.test.ts",
+      "sha256Lf": "0ebc3fb18c4241567dad10efb351d14d9c69a3e3f077d5b67849989484a74795"
+    },
+    {
+      "path": "src/data/countries/bookR49nRetainedDrafts20260912.test.ts",
+      "sha256Lf": "efc10b62e02552add26255186f507d896b5e08bb5df1245161c1c3f9840673ee"
+    },
+    {
+      "path": "src/data/userSuppliedBookCoversBatch20260820.test.ts",
+      "sha256Lf": "654bb8505d5c9e339baccc24be1f5ef7b8e0e53a25d9da79693dd85b76d4643a"
     }
   ]
 }
