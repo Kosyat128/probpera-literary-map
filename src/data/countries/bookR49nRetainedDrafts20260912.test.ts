@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { buildBookArchive, resolveBookArchivePublicTarget } from "../bookArchive";
 import { isPublicBook } from "../bookQuality";
 import { bookArchiveCountries, countries } from "./index";
@@ -11,6 +11,8 @@ import {
 } from "./bookR49nRetainedDrafts20260912";
 import { mergeBookR49nAlcottDraft20260912 } from "./bookR49nAlcottDraft20260912";
 import type { WorkProfile } from "./types";
+import * as cmsOverrides from "../cms/editorialOverrides";
+import { historicalCmsLiteraryWorkProfilesForWriter } from "../cms/historicalLiteraryWorks20260912.test-support";
 
 const report = JSON.parse(readFileSync("reports/book-r49n-retained-drafts-20260912.json", "utf8"));
 const sha = (value: string) => createHash("sha256").update(value).digest("hex");
@@ -19,7 +21,13 @@ const canonical = (value: unknown): unknown => Array.isArray(value) ? value.map(
     ? Object.fromEntries(Object.entries(value).sort(([a], [b]) => a < b ? -1 : a > b ? 1 : 0).map(([key, item]) => [key, canonical(item)]))
     : value;
 const hash = (value: unknown) => sha(JSON.stringify(canonical(value)));
-const archive = buildBookArchive(bookArchiveCountries);
+// Preserve the original byte-proof, including its frozen public CMS records while CMS can publish later reviewed
+// editions. Their actual priority is verified separately without this stub.
+const archive = (() => {
+  const lookup = vi.spyOn(cmsOverrides, "cmsLiteraryWorkProfilesForWriter").mockImplementation(historicalCmsLiteraryWorkProfilesForWriter);
+  try { return buildBookArchive(bookArchiveCountries); }
+  finally { lookup.mockRestore(); }
+})();
 const keyOf = (book: typeof archive[number]) => [book.countryId, book.writerId, book.id].join(":");
 const byKey = new Map(archive.map(book => [keyOf(book), book]));
 const omitContext = ({ country, writer, ...book }: typeof archive[number]) => book;

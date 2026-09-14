@@ -3,7 +3,7 @@ import { readFile, readdir } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 
 import sharp from "sharp";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
 import { buildBookArchive, isCoverArtworkDisplayAllowed } from "./bookArchive";
 import { bookPublicationIssues, isPublicBook } from "./bookQuality";
@@ -17,6 +17,13 @@ import {
   userSuppliedBookCoverBatch20260820Manifest,
   userSuppliedBookCoverManifests,
 } from "./userSuppliedBookCovers";
+
+// This historical source/artwork regression must not consume a fresh CMS edit.
+// Accepted and private CMS profiles have separate archive-priority coverage.
+vi.mock("./cms/editorialOverrides", async (importOriginal) => ({
+  ...await importOriginal<typeof import("./cms/editorialOverrides")>(),
+  cmsLiteraryWorkProfilesForWriter: () => [],
+}));
 
 const archiveSha256 =
   "0ad2a8f1c49573d51418beA2acf023a36b87db6e767b75dc869aa92f59b05cd3".toLocaleLowerCase(

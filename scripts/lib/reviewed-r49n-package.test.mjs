@@ -6,8 +6,10 @@ import {
   r49nPackageAttestation, reviewedR49nPackageSourceSha256,
 } from "./reviewed-r49n-package.mjs";
 import { projectReviewedReferenceRelease } from "./reviewed-reference-release.mjs";
+import { projectReviewedHeaderShowcase } from "./reviewed-header-showcase.mjs";
+import { projectReviewedNativeArchiveTransport } from "./reviewed-native-archive-transport.mjs";
 
-const read = path => readFileSync(path, "utf8").replace(/\r\n?/gu, "\n");
+const read = path => projectReviewedNativeArchiveTransport(path, readFileSync(path, "utf8"));
 const readPublishedBrowserContract = path => path === "tests/e2e/archive-search-calendar.spec.mjs"
   ? projectReviewedReferenceRelease(path, read(path)) : read(path);
 const sha = value => createHash("sha256").update(value).digest("hex");
@@ -171,7 +173,8 @@ describe("R49N common package additive governance", () => {
     const repair = report.wellsEditorialRepair;
     expect(sha(read(repair.migration.path))).toBe(repair.migration.sha256);
     for (const file of [repair.packet, repair.validation, ...repair.files, ...report.releaseIntegration.supportingFiles])
-      expect(sha(read(file.path))).toBe(file.sha256Lf);
+      expect(sha(file.path === "tests/e2e/header-hero-polish.spec.mjs"
+        ? projectReviewedHeaderShowcase(file.path, read(file.path)) : read(file.path))).toBe(file.sha256Lf);
     expect(repair).toMatchObject({ schemaMigrations: 37, publishedHistoricalMigrations: 35, historicalMigrationPinsChanged: false,
       originalDescriptionsArchived: true, activeWorkDescriptionPreserved: true, originalAuthorshipInferred: false,
       humanReview: false, fullWorkRead: false, productionApplied: false });
@@ -184,7 +187,8 @@ describe("R49N common package additive governance", () => {
       expect(sha(readPublishedBrowserContract(file.path))).toBe(file.sha256Lf);
     expect(report.compactEditorialImageRepair.files).toHaveLength(8);
     for (const file of report.compactEditorialImageRepair.files)
-      expect(sha(read(file.path))).toBe(file.sha256Lf);
+      expect(sha(file.path === "src/utils/editorialImagePresentation.test.ts"
+        ? projectReviewedHeaderShowcase(file.path, read(file.path)) : read(file.path))).toBe(file.sha256Lf);
     for (const file of report.fullCatalogUi.files) expect(sha(readPublishedBrowserContract(file.path))).toBe(file.sha256Lf);
     expect(report.historicalCoverChecks).toMatchObject({ status: "PASS", checkOnly: true, newCoverPublication: false, coverAssetsChanged: [] });
     for (const file of report.historicalCoverChecks.unchangedFiles) expect(sha(read(file.path))).toBe(file.sha256);

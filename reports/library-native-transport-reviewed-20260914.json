@@ -1,0 +1,566 @@
+{
+  "id": "LIBRARY-NATIVE-TRANSPORT-20260914",
+  "reviewedAt": "2026-09-14T01:29:21.524Z",
+  "baselineSourceCommitSha": "d6c7849ccc5285e17c6da9ef147fecc9fdd0f000",
+  "authorization": "The owner authorized completion and publication of the full reviewed literary archive. Replace only the final commit transport after the exact-main release failed during the atomic RPC; keep the existing function and publication proof gates. The same release also requires isolating dated source regressions in six test files from a fresh CMS export while retaining independent checks of the actual current CMS records.",
+  "humanReview": false,
+  "productionApplied": false,
+  "historicalPinsChanged": false,
+  "coreCommitFunctionChanged": false,
+  "migrationFilesChanged": false,
+  "globalOrRoleTimeoutsChanged": false,
+  "humanIdentityImpersonated": false,
+  "databaseRowsDirectlyModifiedByTransport": false,
+  "broadSourceExclusionsAdded": false,
+  "diagnosis": {
+    "runId": 34790152436,
+    "attempt": 1,
+    "sourceCommitSha": "d6c7849ccc5285e17c6da9ef147fecc9fdd0f000",
+    "releaseId": "03c96aa5-e4e3-40fd-a5eb-c959767b9bf3",
+    "all98BatchesStaged": true,
+    "commitAttempts": 3,
+    "message": "canceling statement due to statement timeout",
+    "schemaMigrationLedger": 38,
+    "isolatedRestoreArticles": 183,
+    "isolatedRestoreUuidStubs": 2,
+    "wellsStatus": "already-repaired",
+    "archiveCommitReceiptPresent": false,
+    "exactCommitPhaseEstablished": false,
+    "actualProductionTimeoutSettingsRead": false,
+    "fullCorePerformanceMeasured": false,
+    "evidence": {
+      "artifactId": 10327852133,
+      "artifactName": "production-db-reconciliation-evidence-34790152436-1",
+      "redactedOnly": true,
+      "diagnosisSha256Lf": "52854dc3a9c5c8c464c26e9d228a76a3e66e4eabf8d21296d24e09857bf7a2fe",
+      "verificationSha256Lf": "a9f4a441ff64e07e79bce5b6f50f5bf168c47b0a2e88f099c6e8b60319b458a9"
+    },
+    "limitation": "The documented service-role timeout fallback is consistent with the observed intervals; neither the actual production setting nor the slow internal phase was read. The earlier initializer measurement does not benchmark the full atomic commit."
+  },
+  "scope": {
+    "runtimePaths": [
+      ".github/workflows/reconcile-production-database.yml",
+      "scripts/database/supabase-database-safety.sh",
+      "scripts/sync-literary-archive.mjs"
+    ],
+    "newClient": "scripts/lib/literary-archive-database-commit.mjs",
+    "fixedSql": "scripts/database/literary-archive-native-commit.sql",
+    "testOnlyDelta": "Increment the checked number of explicit remote --dbname arguments for the one additional fixed client.",
+    "mode": "Explicit --apply --commit-via-database; default REST mode remains available.",
+    "transport": "Only commit_literary_archive_release is intercepted; all other RPC calls delegate to the existing client.",
+    "retryPolicy": "The explicit native run uses one RPC attempt and has no automatic native-to-REST fallback. Existing REST mode retains three attempts."
+  },
+  "freshCmsTestCompatibility": {
+    "paths": [
+      "scripts/database/literary-work-evidence-v2-migration.test.mjs",
+      "src/data/bookCmsWellsPriority20260913.test.ts",
+      "src/data/bookR49nPackageReviewed20260912.test.ts",
+      "src/data/countries/bookR49nDickensReviewed20260912.test.ts",
+      "src/data/countries/bookR49nRetainedDrafts20260912.test.ts",
+      "src/data/userSuppliedBookCoversBatch20260820.test.ts"
+    ],
+    "incident": {
+      "runId": 34790382320,
+      "sourceCommitSha": "d6c7849ccc5285e17c6da9ef147fecc9fdd0f000",
+      "failedStep": "Verify public site and editorial archive",
+      "failedTests": 8,
+      "failedFiles": 5,
+      "cause": "Fresh exported Wells CMS prose and metadata entered dated static source fixtures. The Wells baseline was computed from the same new CMS object being compared; R49 exact historical hashes and cover bibliography no longer represented their source checkpoint. The September 2 evidence fixture correctly rejected the later September 13 review date."
+    },
+    "additionalHistoricalAssertion": "The Dickens protected-field hash also describes the original source checkpoint; its selected text, real Evidence V2 and current record checks remain unmocked.",
+    "change": "Use explicit test-local CMS lookup fixtures while constructing dated source archives. Preserve every original expected hash, count, review date, cover and evidence assertion. Restore scoped spies immediately; partial mock factories retain all other original exports. The historical R49 fixture retains the exact 17 published CMS records from main d6. A separate unmocked current-CMS Wells test checks actual qualifying metadata and Evidence V2 in both archive modes.",
+    "historicalExpectedValuesChanged": false,
+    "runtimeSourcesChanged": false,
+    "generatedCmsFilesChanged": false,
+    "validatorChanged": false,
+    "globalTestSetupChanged": false,
+    "currentCmsAssertionsRemoved": false,
+    "productionEvidenceGateWeakened": false,
+    "limitations": "Historical fixture isolation is not proof of the current database. Qualified actual CMS still has to pass the real Evidence V2 validator and retain its exact text, source, title and editorial fields; draft, legacy fallback, writer collision and final quarantine tests remain.",
+    "validation": {
+      "receipt": {
+        "path": ".tmp/fresh-cms-regression-proof-20260914.json",
+        "sha256Lf": "5c5290946e57c0729ef7c662b2b0f6f93c4bd9fa82b5177ccc2e3d40ee46ba09"
+      },
+      "evidence": {
+        "contract": "fresh-cms-historical-proof-separation-20260914",
+        "networkRequests": 0,
+        "runtimeSourceEdits": false,
+        "generatedSourceEdits": false,
+        "historicalExpectedHashesChanged": false,
+        "historicalSource": {
+          "commit": "d6c7849ccc5285e17c6da9ef147fecc9fdd0f000",
+          "path": "src/data/cms/literaryWorks.generated.ts",
+          "blob": "edc523628dda4a9bffa81def971a3145ae470efd",
+          "sha256": "6634bf7a357e7b1cfd1859d1194b66f355a8d6b1814da8342d9c75c3adcff2dd",
+          "recordCount": 17,
+          "parser": "Exact generated JSON initializer; no code evaluation"
+        },
+        "scenarios": [
+          {
+            "snapshot": "Current checked-in CMS export",
+            "files": 6,
+            "passed": 51,
+            "failed": 0,
+            "durationSeconds": 7.76
+          },
+          {
+            "snapshot": "Same export with Wells replaced by approved repair packet afterContent through real evidence profile converter at generated-module boundary",
+            "files": 6,
+            "passed": 51,
+            "failed": 0,
+            "durationSeconds": 7.73,
+            "setup": ".tmp/fresh-wells-cms-20260914.setup.ts",
+            "config": ".tmp/fresh-wells-cms-20260914.vitest.config.ts",
+            "packetSha256": "fefe16526d951f0f1e0d1a35030cad80d1a1ab4b04ee76415dc2a2687b3123ec"
+          }
+        ],
+        "sourceLfSha256": {
+          "src/data/bookCmsWellsPriority20260913.test.ts": "794240bacf3f380b98c5fdeb1ba5a8c47123c90a864276d4ca9291705be4612e",
+          "src/data/bookR49nPackageReviewed20260912.test.ts": "5f6081f91305c2431cdee4cc05952d228fa966e1c7881f013e905192a29553d8",
+          "src/data/countries/bookR49nRetainedDrafts20260912.test.ts": "efc10b62e02552add26255186f507d896b5e08bb5df1245161c1c3f9840673ee",
+          "src/data/cms/historicalLiteraryWorks20260912.test-support.ts": "78b2c99c1e68bcf64285ea77f481f4f5723dd56600f427f56f83366d43e4e443"
+        },
+        "limitations": "Focused test contracts only. Fresh scenario is an in-memory module fixture, not a production export or live deployment claim."
+      }
+    },
+    "historicalFixture": {
+      "proof": {
+        "path": ".tmp/historical-cms-fixture-provenance-20260914.json",
+        "sha256Lf": "7516f54903338af391ce34ae185bcc000aec793c359768a16eb13f7139427840"
+      },
+      "status": "PASS",
+      "checkedAt": "2026-09-14T00:19:36.418Z",
+      "productionActions": false,
+      "generatedSourcesChanged": false,
+      "sourceCommitSha": "d6c7849ccc5285e17c6da9ef147fecc9fdd0f000",
+      "sourcePath": "src/data/cms/literaryWorks.generated.ts",
+      "sourceGitBlob": "edc523628dda4a9bffa81def971a3145ae470efd",
+      "sourceSha256": "6634bf7a357e7b1cfd1859d1194b66f355a8d6b1814da8342d9c75c3adcff2dd",
+      "records": 17,
+      "identitySetSha256": "9dfcddba4408f3b12a77af7226dcfc0b78344c1d30b440daee228d62ae1e65f1",
+      "helper": {
+        "path": "src/data/cms/historicalLiteraryWorks20260912.test-support.ts",
+        "sha256Lf": "78b2c99c1e68bcf64285ea77f481f4f5723dd56600f427f56f83366d43e4e443"
+      },
+      "mapper": {
+        "path": "src/data/cms/editorialOverrides.ts",
+        "sha256Lf": "9d569451e09cdd1706c3a63414a39cf1449c767afc24040ebad99bbe99c579da",
+        "unchangedFromCommit": true,
+        "fixturePassedAsExplicitThirdArgument": true
+      },
+      "fullHistoryWorkflows": [
+        ".github/workflows/quality.yml",
+        ".github/workflows/deploy-pages.yml"
+      ],
+      "limitations": "The historical fixture reads fixed Git bytes only for dated tests. It is not a CMS rollback, snapshot export or current database state proof."
+    }
+  },
+  "guards": {
+    "sqlInput": "Fixed SQL file and exactly two canonical string arguments: UUID and SHA-256. No arbitrary SQL input.",
+    "target": "Existing production project, single-host, database, TLS and pre-pulled image identity checks.",
+    "transaction": "One psql transaction with ON_ERROR_STOP; local statement timeout 5min, lock timeout 15s and service-only role claims, with auth.uid required null.",
+    "output": "One bounded JSON envelope bound to the requested UUID and manifest, then the unchanged full JS committed receipt and postflight validation.",
+    "failure": "SQL, connection, timeout and receipt errors fail closed; no partial direct row writes or alternate function.",
+    "permissions": "No migration, GRANT, global timeout, role timeout or function configuration changes."
+  },
+  "governance": {
+    "projectedPaths": [
+      ".github/workflows/reconcile-production-database.yml",
+      "scripts/database/literary-work-evidence-v2-migration.test.mjs",
+      "scripts/database/production-migration-plan.test.mjs",
+      "scripts/database/supabase-database-safety.sh",
+      "scripts/lib/reviewed-header-showcase.test.mjs",
+      "scripts/lib/reviewed-r49n-package.test.mjs",
+      "scripts/lib/reviewed-reference-release.test.mjs",
+      "scripts/lib/stage5-content-data-lock.test.mjs",
+      "scripts/sync-literary-archive.mjs",
+      "src/data/bookCmsWellsPriority20260913.test.ts",
+      "src/data/bookR49nPackageReviewed20260912.test.ts",
+      "src/data/countries/bookR49nDickensReviewed20260912.test.ts",
+      "src/data/countries/bookR49nRetainedDrafts20260912.test.ts",
+      "src/data/userSuppliedBookCoversBatch20260820.test.ts"
+    ],
+    "mainBoundaryPaths": [
+      ".github/workflows/reconcile-production-database.yml",
+      "scripts/database/literary-work-evidence-v2-migration.test.mjs",
+      "scripts/database/production-migration-plan.test.mjs",
+      "scripts/database/supabase-database-safety.sh",
+      "scripts/sync-literary-archive.mjs",
+      "src/data/bookCmsWellsPriority20260913.test.ts",
+      "src/data/bookR49nPackageReviewed20260912.test.ts",
+      "src/data/countries/bookR49nDickensReviewed20260912.test.ts",
+      "src/data/countries/bookR49nRetainedDrafts20260912.test.ts",
+      "src/data/userSuppliedBookCoversBatch20260820.test.ts"
+    ],
+    "localShowcaseAdapterPaths": [
+      "scripts/lib/reviewed-header-showcase.test.mjs",
+      "scripts/lib/reviewed-r49n-package.test.mjs",
+      "scripts/lib/reviewed-reference-release.test.mjs",
+      "scripts/lib/stage5-content-data-lock.test.mjs"
+    ],
+    "localShowcaseBoundary": {
+      "artifacts": [
+        {
+          "path": "scripts/governance/header-showcase-owner-refinement-20260914.json",
+          "sha256Lf": "9e544a3990aade3dc9e2cc649b26cb116dfa7e7b875cbbadc513b97d18d673dd"
+        },
+        {
+          "path": "reports/header-showcase-owner-refinement-20260914.json",
+          "sha256Lf": "61b9a070f56e1e34b52dd98301be475b971f2408d9295cd96ed9150e5f5b3c36"
+        }
+      ],
+      "focusedTestsPassed": 9,
+      "files": [
+        {
+          "path": "scripts/lib/reviewed-header-library.test.mjs",
+          "sha256Lf": "aa6de35778197c1420793f872887d7379d4d957a8268361abd549a7000e11980"
+        },
+        {
+          "path": "scripts/lib/reviewed-header-showcase.test.mjs",
+          "sha256Lf": "6372200c48e9c80faac830e9d7e1adaf768852753867c6998c3a03fe63cb5b5d"
+        },
+        {
+          "path": "scripts/lib/reviewed-r49n-package.test.mjs",
+          "sha256Lf": "eba1b7382284015604160fe4ec449b307874a698786eab8ea35c0264ad8fe605"
+        },
+        {
+          "path": "scripts/lib/reviewed-reference-release.test.mjs",
+          "sha256Lf": "6ab82ac25acc9eb82fe938a785c29a936aabb0e3212fc85279138d6d201ce835"
+        },
+        {
+          "path": "scripts/lib/stage5-content-data-lock.test.mjs",
+          "sha256Lf": "064fbfaa39e32693352724292243895ee8cfa84085657b6c9228d69513dbdc54"
+        }
+      ],
+      "maintenance": {
+        "reason": "Follow the revised, still-unpublished UI packet after the confirmed default-wide figure overflow. Only its two artifact hashes and the current UI test object pin change; the four native read adapters and all published historical pins are identical.",
+        "originalBoundary": {
+          "path": ".tmp/showcase-adapter-boundary-before-native-20260914.json",
+          "sha256Lf": "22e46becc2afebd3ed00c4f224faaf9a4838244bc6132a5ec0fc6cfbffbd1154"
+        },
+        "priorUiArtifacts": [
+          {
+            "path": "scripts/governance/header-showcase-owner-refinement-20260914.json",
+            "sha256Lf": "9fbab0e71e9aa66df8bfe656aa05db67506c3ff8f71c3218b1aaac897d6a3204"
+          },
+          {
+            "path": "reports/header-showcase-owner-refinement-20260914.json",
+            "sha256Lf": "8827505e33620f9dd4873e0cf746d136d4f2cc5b6771acb21bb23c7f368ee47d"
+          }
+        ],
+        "currentUiArtifacts": [
+          {
+            "path": "scripts/governance/header-showcase-owner-refinement-20260914.json",
+            "sha256Lf": "9e544a3990aade3dc9e2cc649b26cb116dfa7e7b875cbbadc513b97d18d673dd"
+          },
+          {
+            "path": "reports/header-showcase-owner-refinement-20260914.json",
+            "sha256Lf": "61b9a070f56e1e34b52dd98301be475b971f2408d9295cd96ed9150e5f5b3c36"
+          }
+        ],
+        "priorUiTestBoundarySha256": "b4a497da0fe03d4a163b455d1a67413a34a7a800e53560bc9e5f9884b62622ef",
+        "currentUiTestBoundarySha256": "6372200c48e9c80faac830e9d7e1adaf768852753867c6998c3a03fe63cb5b5d",
+        "previousUiObjectSha256": "7601d8b81335278d6ea38a5dec001212d9b8fdecb67b173514e61b3a488598d3",
+        "currentUiObjectSha256": "d59b4fbf7dd9a554184a6b998840168b6aa8afff6246d5076bf4a0f6fab5e42d",
+        "sourceOwnerProof": {
+          "path": ".tmp/reader-wide-full-source-proof-20260914.json",
+          "sha256Lf": "dd7d3a116dce72d970a4ff8544a7b08df8e284cd384dcf86e8fb2e0c6db3158b"
+        }
+      }
+    },
+    "order": "Native exact projection runs before the reviewed showcase and published reference/R49 source reads. The four necessary read adapters retain each existing expected hash and negative test.",
+    "priorExpectedHashesChanged": false
+  },
+  "validation": {
+    "sourceReview": "Independent inspection of the fixed SQL, validated two-argument proxy, shell target/image checks, workflow credentials and CLI mode guard.",
+    "focusedReceipt": {
+      "path": ".tmp/native-archive-transport-source-validation-20260914.json",
+      "sha256Lf": "a3620c9296a8a82c7dffb0088d0a853a38b7a1e70d20203b421398e04ea1ae4b"
+    },
+    "limitations": "Local fixture tests do not prove the production full-core duration. Exact-main CI and the production commit/postflight receipt remain required.",
+    "focused": {
+      "recordedAt": "2026-09-14T00:05:30.476Z",
+      "productionActions": false,
+      "fullArchiveCoreBenchmark": false,
+      "sourceOwnerFocusedRun": {
+        "reportedBy": "Root implementation owner, stable source message",
+        "command": "node node_modules/vitest/vitest.mjs run scripts/lib/literary-archive-database-commit.test.mjs scripts/database/literary-archive-atomic-sync.test.mjs scripts/database/production-migration-plan.test.mjs scripts/database/literary-archive-native-commit.integration.test.mjs",
+        "passed": 40,
+        "skipped": 1,
+        "exitCode": 0,
+        "durationMs": 1840,
+        "localStart": "2026-09-14 03:02:58 Europe/Moscow",
+        "skipReason": "No local Docker; the real native psql test is mandatory in CI.",
+        "bashSyntaxExitCode": 0,
+        "subsequentNarrowChange": "Sync adds the safe console.info timing logger; two atomic-sync source assertions updated accordingly.",
+        "finalAtomicSyncRun": {
+          "reportedBy": "Book implementation owner after final logger source freeze",
+          "passed": 13,
+          "exitCode": 0,
+          "sourceLfSha256": "5b17f2fd9da7fa939f4b5428e086fdcd79cebd764d7a2e5c70dd3976a2db1e4a"
+        }
+      },
+      "supplementalPglite": {
+        "path": ".tmp/native-commit-pglite-20260914.json",
+        "sha256Lf": "b55e6271cc2ce64ce4d671d29e6e4ac648bcadc8393d04e2def10f9fc647405d",
+        "status": "pass",
+        "runtime": "Existing PGlite PostgreSQL",
+        "productionActions": false,
+        "nativePsqlCoveredBy": "required Docker PostgreSQL integration in CI",
+        "scope": "Transport and transaction fixture only; not full archive core benchmark",
+        "fixedSqlLfSha256": "4823313ace3fd091d93780fd3cf1f9348f05b5d8edca3dce9f5cc36de5f6ca0f",
+        "checks": [
+          "exact SQL settings before two-argument service invocation",
+          "same-session role and all local settings restored after commit",
+          "committed retry idempotent",
+          "post-insert failure rolls back all writes",
+          "anon and authenticated execute denied",
+          "service-only execute grant",
+          "human UID rejected before RPC"
+        ],
+        "envelope": {
+          "receipt": {
+            "releaseId": "10000000-0000-4000-8000-000000000001",
+            "manifestSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "alreadyCommitted": false
+          },
+          "elapsedMs": 9,
+          "transport": "native-postgres"
+        },
+        "restored": {
+          "role": "postgres",
+          "statement_timeout": 9000,
+          "lock_timeout": 3000,
+          "claims": "{}",
+          "claim_role": ""
+        },
+        "finalStoredRows": 1
+      },
+      "files": [
+        {
+          "path": "scripts/lib/literary-archive-database-commit.mjs",
+          "sha256Lf": "c2322067f4794763c04753118e5f3b1b9f1fb5e1d9327c6d4d8bfc3a9af81ab9"
+        },
+        {
+          "path": "scripts/lib/literary-archive-database-commit.test.mjs",
+          "sha256Lf": "ea8ffea9755e47f9ded865db2cbacdc6411b9df0523a5aaff2dfe1038461ebce"
+        },
+        {
+          "path": "scripts/database/literary-archive-native-commit.sql",
+          "sha256Lf": "4823313ace3fd091d93780fd3cf1f9348f05b5d8edca3dce9f5cc36de5f6ca0f"
+        },
+        {
+          "path": "scripts/database/supabase-database-safety.sh",
+          "sha256Lf": "036a21ada6a7dd115d5a928087d36bd8aa9fa651603c322a916506e4ee890496"
+        },
+        {
+          "path": "scripts/database/production-migration-plan.test.mjs",
+          "sha256Lf": "98f4e0945c8424e544d6442cec86e69991343775771fd95d6cf0a943cfc946e1"
+        },
+        {
+          "path": "scripts/sync-literary-archive.mjs",
+          "sha256Lf": "3b372188b914411a89c23d147259198168ef909d1f72c225b17a04656e68417c"
+        },
+        {
+          "path": ".github/workflows/reconcile-production-database.yml",
+          "sha256Lf": "5e1ae1bdfbb4d118d992f1b846f94457f69e768f1bb7304ee17b5e67ecf662c5"
+        },
+        {
+          "path": "scripts/database/literary-archive-atomic-sync.test.mjs",
+          "sha256Lf": "5b17f2fd9da7fa939f4b5428e086fdcd79cebd764d7a2e5c70dd3976a2db1e4a"
+        }
+      ]
+    }
+  },
+  "sources": [
+    {
+      "url": "https://supabase.com/docs/guides/database/postgres/timeouts",
+      "supports": "REST timeout ceiling, default service-role fallback and direct/session alternative."
+    },
+    {
+      "url": "https://docs.postgrest.org/en/stable/references/transactions.html#hoisted-function-settings",
+      "supports": "Scoped function settings and request transaction behavior."
+    }
+  ],
+  "files": [
+    {
+      "path": ".github/workflows/reconcile-production-database.yml",
+      "sha256Lf": "5e1ae1bdfbb4d118d992f1b846f94457f69e768f1bb7304ee17b5e67ecf662c5"
+    },
+    {
+      "path": "scripts/database/fixtures/literary-archive-native-commit.sql",
+      "sha256Lf": "3f8e703616a444a5377c730cc4bf30d2cfd8427ca4b59b9e6eb692eef4fb4352"
+    },
+    {
+      "path": "scripts/database/literary-archive-atomic-sync.test.mjs",
+      "sha256Lf": "92215b2a89e685149dd21da4da2f7eeed791fa563ba64cc325d76fa3ba6630d9"
+    },
+    {
+      "path": "scripts/database/literary-archive-native-commit.integration.test.mjs",
+      "sha256Lf": "c100b013ce6a8e101171691ce65df31875a0c6f35418c6a176c387654e676c85"
+    },
+    {
+      "path": "scripts/database/literary-archive-native-commit.sql",
+      "sha256Lf": "4823313ace3fd091d93780fd3cf1f9348f05b5d8edca3dce9f5cc36de5f6ca0f"
+    },
+    {
+      "path": "scripts/database/literary-work-evidence-v2-migration.test.mjs",
+      "sha256Lf": "405867a06e462df13b94ed53dea4e0cd970439561a42aedb8e96732d57486f7c"
+    },
+    {
+      "path": "scripts/database/production-migration-plan.test.mjs",
+      "sha256Lf": "98f4e0945c8424e544d6442cec86e69991343775771fd95d6cf0a943cfc946e1"
+    },
+    {
+      "path": "scripts/database/supabase-database-safety.sh",
+      "sha256Lf": "036a21ada6a7dd115d5a928087d36bd8aa9fa651603c322a916506e4ee890496"
+    },
+    {
+      "path": "scripts/lib/literary-archive-cli-mode.mjs",
+      "sha256Lf": "824ee5e54b610f92ea99774cd9956538010c7293b6ef8aece77823dd9305885f"
+    },
+    {
+      "path": "scripts/lib/literary-archive-database-commit.mjs",
+      "sha256Lf": "c2322067f4794763c04753118e5f3b1b9f1fb5e1d9327c6d4d8bfc3a9af81ab9"
+    },
+    {
+      "path": "scripts/lib/literary-archive-database-commit.test.mjs",
+      "sha256Lf": "ea8ffea9755e47f9ded865db2cbacdc6411b9df0523a5aaff2dfe1038461ebce"
+    },
+    {
+      "path": "scripts/lib/reviewed-header-showcase.test.mjs",
+      "sha256Lf": "3e270cd8dbc9bfec4540bf716e7cf31696aaec12374927567a5563f2b424a227"
+    },
+    {
+      "path": "scripts/lib/reviewed-native-archive-transport.mjs",
+      "sha256Lf": "8085f14b46440566c41427345fa4cd9a725f147454b805dd9a3e481bc222914e"
+    },
+    {
+      "path": "scripts/lib/reviewed-r49n-package.test.mjs",
+      "sha256Lf": "7129eac1c61e577f2f4dfe95a085460464643dac80e5fe33afc37d14b54a96fc"
+    },
+    {
+      "path": "scripts/lib/reviewed-reference-release.test.mjs",
+      "sha256Lf": "55f0b4234816b0d0a407b1f3d3de50b97760437838208b9a85d4868d2f983da6"
+    },
+    {
+      "path": "scripts/lib/stage5-content-data-lock.test.mjs",
+      "sha256Lf": "2072075e9e57deeaef5652d789606421647b08e717d53bf3171ced800ef69624"
+    },
+    {
+      "path": "scripts/sync-literary-archive.mjs",
+      "sha256Lf": "f04b898a273086292b9f87b664bf924149dc6ea777fef422f289ba877fdcfd92"
+    },
+    {
+      "path": "src/data/bookCmsWellsPriority20260913.test.ts",
+      "sha256Lf": "794240bacf3f380b98c5fdeb1ba5a8c47123c90a864276d4ca9291705be4612e"
+    },
+    {
+      "path": "src/data/bookR49nPackageReviewed20260912.test.ts",
+      "sha256Lf": "5f6081f91305c2431cdee4cc05952d228fa966e1c7881f013e905192a29553d8"
+    },
+    {
+      "path": "src/data/cms/historicalLiteraryWorks20260912.test-support.ts",
+      "sha256Lf": "78b2c99c1e68bcf64285ea77f481f4f5723dd56600f427f56f83366d43e4e443"
+    },
+    {
+      "path": "src/data/countries/bookR49nDickensReviewed20260912.test.ts",
+      "sha256Lf": "0ebc3fb18c4241567dad10efb351d14d9c69a3e3f077d5b67849989484a74795"
+    },
+    {
+      "path": "src/data/countries/bookR49nRetainedDrafts20260912.test.ts",
+      "sha256Lf": "efc10b62e02552add26255186f507d896b5e08bb5df1245161c1c3f9840673ee"
+    },
+    {
+      "path": "src/data/userSuppliedBookCoversBatch20260820.test.ts",
+      "sha256Lf": "654bb8505d5c9e339baccc24be1f5ef7b8e0e53a25d9da79693dd85b76d4643a"
+    }
+  ],
+  "cliGuardStaticExtraction": {
+    "receipt": {
+      "path": ".tmp/native-cli-static-extraction-20260914.json",
+      "sha256Lf": "acfe8f6c8c35892a240fa1c18cf4963436940de99dc49f795ff80555726b2e94"
+    },
+    "evidence": {
+      "recordedAt": "2026-09-14T00:38:25.879Z",
+      "baselineSourceCommitSha": "d6c7849ccc5285e17c6da9ef147fecc9fdd0f000",
+      "reviewedPrHeadBeforeFix": "4ccddccad4bf69c3b2e07d861910e56be8be8331",
+      "change": "Replace the test VM execution of tracked CLI source with regular imports of three pure functions also called by the actual CLI. Preserve the same four parsed flags and the original validation order, including native credentials after optional environment loading.",
+      "scope": "No SQL, shell, client transport, workflow, receipt validator, database or publication behavior change in this follow-up.",
+      "codeql": {
+        "alert": 282,
+        "rule": "js/code-injection",
+        "checkRunId": 103819484752,
+        "checkUrl": "https://github.com/Kosyat128/probpera-literary-map/runs/103819484752",
+        "originalAlertUrl": "https://github.com/Kosyat128/probpera-literary-map/security/code-scanning/282",
+        "originalSink": "scripts/database/literary-archive-atomic-sync.test.mjs:33 runInNewContext",
+        "sourceDynamicExecutionRemoved": true,
+        "newScanStatus": "pending",
+        "alertsDismissed": false,
+        "reviewThreadsResolved": false,
+        "scannerConfigurationChanged": false,
+        "exclusionsAdded": false
+      },
+      "sourceOwnerFocusedRun": {
+        "reportedBy": "Root implementation owner after final source freeze",
+        "command": "node node_modules/vitest/vitest.mjs run scripts/lib/literary-archive-database-commit.test.mjs scripts/database/literary-archive-atomic-sync.test.mjs",
+        "passed": 27,
+        "failed": 0,
+        "exitCode": 0,
+        "durationMs": 593,
+        "localStart": "2026-09-14 03:31:36 Europe/Moscow",
+        "syntax": "PASS",
+        "hyphenPolicy": "PASS",
+        "gitDiffCheck": "PASS"
+      },
+      "priorTransportProof": {
+        "receipt": {
+          "path": ".tmp/native-archive-transport-source-validation-20260914.json",
+          "sha256Lf": "a3620c9296a8a82c7dffb0088d0a853a38b7a1e70d20203b421398e04ea1ae4b"
+        },
+        "scope": "Earlier 40-pass/1-local-Docker-skip source-owner run and seven supplemental PGlite checks remain prior evidence for unchanged SQL, shell and client; this is not a rerun of that suite or production full-core proof.",
+        "unchangedFiles": [
+          {
+            "path": "scripts/lib/literary-archive-database-commit.mjs",
+            "sha256Lf": "c2322067f4794763c04753118e5f3b1b9f1fb5e1d9327c6d4d8bfc3a9af81ab9"
+          },
+          {
+            "path": "scripts/lib/literary-archive-database-commit.test.mjs",
+            "sha256Lf": "ea8ffea9755e47f9ded865db2cbacdc6411b9df0523a5aaff2dfe1038461ebce"
+          },
+          {
+            "path": "scripts/database/literary-archive-native-commit.sql",
+            "sha256Lf": "4823313ace3fd091d93780fd3cf1f9348f05b5d8edca3dce9f5cc36de5f6ca0f"
+          },
+          {
+            "path": "scripts/database/supabase-database-safety.sh",
+            "sha256Lf": "036a21ada6a7dd115d5a928087d36bd8aa9fa651603c322a916506e4ee890496"
+          },
+          {
+            "path": "scripts/database/production-migration-plan.test.mjs",
+            "sha256Lf": "98f4e0945c8424e544d6442cec86e69991343775771fd95d6cf0a943cfc946e1"
+          },
+          {
+            "path": ".github/workflows/reconcile-production-database.yml",
+            "sha256Lf": "5e1ae1bdfbb4d118d992f1b846f94457f69e768f1bb7304ee17b5e67ecf662c5"
+          }
+        ]
+      },
+      "files": [
+        {
+          "path": "scripts/lib/literary-archive-cli-mode.mjs",
+          "sha256Lf": "824ee5e54b610f92ea99774cd9956538010c7293b6ef8aece77823dd9305885f"
+        },
+        {
+          "path": "scripts/sync-literary-archive.mjs",
+          "sha256Lf": "f04b898a273086292b9f87b664bf924149dc6ea777fef422f289ba877fdcfd92"
+        },
+        {
+          "path": "scripts/database/literary-archive-atomic-sync.test.mjs",
+          "sha256Lf": "92215b2a89e685149dd21da4da2f7eeed791fa563ba64cc325d76fa3ba6630d9"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,335 @@
+{
+  "id": "HEADER-SHOWCASE-OWNER-REFINEMENT-20260914",
+  "reviewedAt": "2026-09-14T01:29:21.514Z",
+  "baselineSourceCommitSha": "d6c7849ccc5285e17c6da9ef147fecc9fdd0f000",
+  "browserProofSourceCommitSha": "f87d74214cd96f955f4af4ea80f82f3cfe864d13",
+  "authorization": "Current owner request: preserve the complete left article card and two right columns, show six selected previews, display the full image and keep the whole panel within the viewport without internal scrolling. The article-reading follow-up also authorizes preserving the existing authored image width by excluding canonical figures from one broad width override.",
+  "humanReview": false,
+  "productionApplied": false,
+  "historicalPinsChanged": false,
+  "articleTextChanged": false,
+  "articleSelectionChanged": false,
+  "imageDeliveryChanged": false,
+  "databaseSourcesChanged": false,
+  "broadSourceExclusionsAdded": false,
+  "scope": {
+    "runtimePaths": [
+      "src/index.css",
+      "src/styles/navigation-panels.css"
+    ],
+    "browserContractPath": "tests/e2e/header-hero-polish.spec.mjs",
+    "imageContractPath": "src/utils/editorialImagePresentation.test.ts",
+    "componentChanges": [],
+    "dataChanges": [],
+    "description": "Adjust only showcase columns, spacing and image fit; remove the short-window rule that hid the last two of six selected previews. Exclude canonical article figures from the generic inline-width max-width override so their existing authored cap applies. Existing dynamic counts, selection, typography and mobile navigation remain. Constrain default wide/full canonical figures to the article content while retaining their authored smaller maximum width, so removing the old generic override cannot activate the legacy 110px breakout."
+  },
+  "governance": {
+    "projectedPaths": [
+      "scripts/lib/reviewed-r49n-package.test.mjs",
+      "src/index.css",
+      "src/styles/navigation-panels.css",
+      "src/utils/editorialImagePresentation.test.ts",
+      "tests/e2e/header-hero-polish.spec.mjs"
+    ],
+    "sourceReadAdapters": [
+      "scripts/lib/stage5-content-data-lock.test.mjs",
+      "scripts/lib/reviewed-header-library.test.mjs"
+    ],
+    "nestedReportAdapters": [
+      "scripts/lib/reviewed-r49n-package.test.mjs",
+      "scripts/lib/reviewed-reference-release.test.mjs"
+    ],
+    "rationale": "The existing R49 report pins the changed browser test, and the reference report pins that R49 test. Reverse only the exact reviewed browser and report-adapter fragments before those unchanged expected hashes. Every other source byte remains checked.",
+    "priorExpectedHashesChanged": false
+  },
+  "implementationReview": {
+    "reviewer": "Codex independent governance reviewer",
+    "sourceReview": true,
+    "screenshotInspected": ".tmp/showcase-balanced-20260914/panel-1280x600.png",
+    "observation": "The inspected smallest desktop screenshot shows the complete left image and text, six previews in two columns, and the footer within the panel. Source review confirms hover does not enlarge and crop the contained image."
+  },
+  "evidence": {
+    "receipt": {
+      "path": ".tmp/showcase-balanced-20260914/receipt.json",
+      "sha256Lf": "083ac12fc64c1e5c392f3783f6e46c87783a5f843eae0139b19cf66ec4c18979"
+    },
+    "geometry": {
+      "path": ".tmp/showcase-balanced-20260914/geometry.json",
+      "sha256Lf": "a5971300618d5371c893db44be15989e7cdbe260facc30a9afc7a63c413dff4a"
+    },
+    "liveFixture": {
+      "url": "https://probpera.ru/cms/published-articles.json",
+      "count": 169,
+      "sha256": "87ef5ba72e2780b5618c778fe5189a11dec43e8606740316814d38d0729833d0",
+      "transport": "Browser-only replacement of generated CMS catalog module and withdrawals with the downloaded public snapshot; tracked generated files untouched."
+    },
+    "focused": {
+      "path": ".tmp/showcase-balanced-20260914/focused-result.json",
+      "stats": {
+        "startTime": "2026-09-13T23:13:06.331Z",
+        "duration": 18592.107,
+        "expected": 1,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "localCases": "One existing test covers RU and EN at five desktop sizes plus mobile fallback; final14.8s case, runner18.6s, exit0, workers1, retries0.",
+      "snapshot": "Checked-in CMS catalogue for the permanent E2E; separate live169 fixture supplies current publication geometry above."
+    },
+    "screenshots": [
+      {
+        "path": ".tmp/showcase-balanced-20260914/panel-1280x600.png",
+        "sha256": "0e709b5afb69f38629c17112f191c3cecff980bea0c67c40d27d1a8ac3154cb8"
+      },
+      {
+        "path": ".tmp/showcase-balanced-20260914/panel-1280x720.png",
+        "sha256": "28541c3ee04a626819a0a74e90c8323bf1cd83083c21edd9235788e65428025a"
+      },
+      {
+        "path": ".tmp/showcase-balanced-20260914/panel-1440x900.png",
+        "sha256": "d3ae5281710761eff267d69aadee60b1bfffff9b6e9d1e50f994680bc8b4e827"
+      },
+      {
+        "path": ".tmp/showcase-balanced-20260914/viewport-1100x800.png",
+        "sha256": "678061dbf52e189ebfb8201ec3c149a7c92a686d7cd778763bd2f77f052ac65e"
+      },
+      {
+        "path": ".tmp/showcase-balanced-20260914/viewport-1280x600.png",
+        "sha256": "cae60e3dfbbeb7f2b11ee3f9115d4ab337d61ae728d94d8e417b1b3d42e3af48"
+      },
+      {
+        "path": ".tmp/showcase-balanced-20260914/viewport-1280x720.png",
+        "sha256": "89cade9e311b65d28120897addab97a1f2a63aa5613ac50866ef2e567e272142"
+      },
+      {
+        "path": ".tmp/showcase-balanced-20260914/viewport-1440x900.png",
+        "sha256": "968e5e036322b2f38bf882f46e270d7c6ddecea5c004220b2d2df58cf82a55d8"
+      },
+      {
+        "path": ".tmp/showcase-balanced-20260914/viewport-390x844.png",
+        "sha256": "104b69cc87238d0817cbd3cfd6f54df7cbe0e51bb46b742f311695ee5ab13f1f"
+      }
+    ],
+    "limitations": "Local Chrome and Vite evidence. The permanent E2E uses the checked-in catalog; the separate browser fixture uses the current 169 published rows without changing tracked data. Integrated CI and exact-release live verification remain separate."
+  },
+  "authoredImageWidth": {
+    "initialSelectorValidation": {
+      "runtimeDelta": "Only the broad [style*=\"width\"] selector excludes figure.article-inline-image; the existing canonical max-width cap and overflow rules remain.",
+      "contractDelta": "Two assertions require the new selector and reject the previous broad selector.",
+      "receipt": {
+        "path": ".tmp/article-reading-proof-20260914/summary.json",
+        "sha256Lf": "809c82a3724dec41fa88c0406f715fafd62173bf5ae74611e3427076bbb8132a"
+      },
+      "localChrome": {
+        "passingCases": 8,
+        "desktopAuthoredWidth": 420,
+        "mobileFrameWidth": 324,
+        "mobileTinyImage": {
+          "width": 47,
+          "height": 70
+        },
+        "keyboardZoom": true
+      },
+      "limitations": "The article agent measured this selector with the existing production build plus the exact CSS override; integrated build and exact-release live validation are separate."
+    },
+    "runtimeDelta": "The canonical figure constraint retains authored caps and bounds the default wide/full figure geometry inside the article content. The generic inline-width exception stays in place for canonical figures.",
+    "contractDelta": "The existing image contract additionally binds the scoped figure constraint; no historical expected values or runtime data change.",
+    "regression": {
+      "sourceCommitSha": "fe06e7068d6ef6ffc37c3eff896a97e1e6ea9997",
+      "workflowRun": 34793942336,
+      "job": 103824298675,
+      "project": "mobile-chromium",
+      "test": "real reader and canonical semantic page retain expanded text spacing",
+      "failureViewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "firstAttemptOverflow": 55,
+      "retryOverflow": 55,
+      "cause": "Removing the old generic max-width:100%!important override exposed the pre-existing centered 110px is-wide breakout. All 15 captured inline figures had is-wide without has-custom-width.",
+      "diagnosis": {
+        "path": ".tmp/pr195-fe06-webgl3-diagnosis-20260914.json",
+        "sha256Lf": "e41354f7303e32cc5f0fb23b28e564bbd71c1914b70d9246dc61fa033683519c"
+      }
+    },
+    "finalSourceOwnerProof": {
+      "receipt": {
+        "path": ".tmp/reader-wide-full-source-proof-20260914.json",
+        "sha256Lf": "dd7d3a116dce72d970a4ff8544a7b08df8e284cd384dcf86e8fb2e0c6db3158b"
+      },
+      "evidence": {
+        "contract": "article-wide-full-content-width-20260914",
+        "cause": "Excluding canonical figures from the blanket max-width rule exposed the existing wide width(100% + 110px) rule. Its selector also outranks the mobile width override.",
+        "reproducedBeforeOverflowPx": {
+          "320": 8,
+          "390": 10,
+          "1440": 55
+        },
+        "afterOverflowPx": {
+          "320": 0,
+          "390": 0,
+          "1440": 0
+        },
+        "sourceLfSha256": {
+          "src/index.css": "5e1790db1a50028c68954240c15b7ff4eb6dc84cdf3cbf340be8573fc90879cc",
+          "src/utils/editorialImagePresentation.test.ts": "dd3bb72b59f82fecb906793276e5d997def4549271140e795255d932698c238c"
+        },
+        "validation": {
+          "existingImageContractUnitTestsPassed": 9,
+          "existingUnchangedMobilePlaywrightCasesPassed": 3,
+          "playwrightCases": [
+            "real reader and canonical semantic page retain expanded text spacing",
+            "ru: archive and reader reflow, body scale and heading isolation",
+            "en: archive and reader reflow, body scale and heading isolation"
+          ],
+          "playwrightDurationSeconds": 29.5,
+          "originalArticleBrowserCasesPassed": 8,
+          "authorPortraitFrameDesktopPx": 420,
+          "authorPortraitFrameMobilePx": 324,
+          "authorSmallCoverPercent": 20,
+          "zoomKeyboardEscapeAndPermanentTocAnchors": "preserved",
+          "diffCheck": "passed"
+        },
+        "proofMethod": "Existing saved sea-wolf-catalogue-dist runtime, read-only. HTTP responses include only exact current CSS delta; sitemap supplied from saved public document URLs because Vite-only fixture has no static sitemap. Original unchanged test files run against it. Separate eight-case authored-image proof additionally injects the already approved projected CMS catalog/document JSON, with no runtime function changes.",
+        "limits": "Focused local regression proof, not a rebuilt release or live deployment verification. Parent performs full CI.",
+        "productionWrites": 0,
+        "originalProofArtifactsRewritten": false
+      }
+    },
+    "limitations": "This is the focused CSS repair proof. Complete required CI and exact-release live verification remain separate."
+  },
+  "geometry": {
+    "snapshotCount": 169,
+    "errors": [],
+    "results": [
+      {
+        "width": 1440,
+        "height": 900,
+        "isDesktop": true,
+        "panelHeight": 547.453125,
+        "panelBottom": 699.453125,
+        "visibleCards": 6,
+        "imageFit": "contain",
+        "imageWidth": 298.515625,
+        "imageHeight": 167.90625,
+        "horizontalOverflow": 0,
+        "verticalOverflow": 0,
+        "textOverflows": 0
+      },
+      {
+        "width": 1280,
+        "height": 600,
+        "isDesktop": true,
+        "panelHeight": 438.671875,
+        "panelBottom": 590.671875,
+        "visibleCards": 6,
+        "imageFit": "contain",
+        "imageWidth": 213.328125,
+        "imageHeight": 119.984375,
+        "horizontalOverflow": 0,
+        "verticalOverflow": 0,
+        "textOverflows": 0
+      },
+      {
+        "width": 1280,
+        "height": 720,
+        "isDesktop": true,
+        "panelHeight": 479.453125,
+        "panelBottom": 631.453125,
+        "visibleCards": 6,
+        "imageFit": "contain",
+        "imageWidth": 298.515625,
+        "imageHeight": 167.90625,
+        "horizontalOverflow": 0,
+        "verticalOverflow": 0,
+        "textOverflows": 0
+      },
+      {
+        "width": 1100,
+        "height": 800,
+        "isDesktop": false,
+        "mobileJournalVisible": true,
+        "horizontalOverflow": 0
+      },
+      {
+        "width": 390,
+        "height": 844,
+        "isDesktop": false,
+        "mobileJournalVisible": true,
+        "horizontalOverflow": 0
+      }
+    ]
+  },
+  "files": [
+    {
+      "path": "scripts/lib/reviewed-header-library.test.mjs",
+      "sha256Lf": "aa6de35778197c1420793f872887d7379d4d957a8268361abd549a7000e11980"
+    },
+    {
+      "path": "scripts/lib/reviewed-header-showcase.mjs",
+      "sha256Lf": "e6506bd96e441fa3621741f6e21e8cdf6a45d29635b4467a159bb1402c239881"
+    },
+    {
+      "path": "scripts/lib/reviewed-r49n-package.test.mjs",
+      "sha256Lf": "eba1b7382284015604160fe4ec449b307874a698786eab8ea35c0264ad8fe605"
+    },
+    {
+      "path": "scripts/lib/reviewed-reference-release.test.mjs",
+      "sha256Lf": "6ab82ac25acc9eb82fe938a785c29a936aabb0e3212fc85279138d6d201ce835"
+    },
+    {
+      "path": "scripts/lib/stage5-content-data-lock.test.mjs",
+      "sha256Lf": "064fbfaa39e32693352724292243895ee8cfa84085657b6c9228d69513dbdc54"
+    },
+    {
+      "path": "src/index.css",
+      "sha256Lf": "5e1790db1a50028c68954240c15b7ff4eb6dc84cdf3cbf340be8573fc90879cc"
+    },
+    {
+      "path": "src/styles/navigation-panels.css",
+      "sha256Lf": "d5f1b3c443ed037543a1c97107864d6f6c61bb138146efa4ae278c8787c3108d"
+    },
+    {
+      "path": "src/utils/editorialImagePresentation.test.ts",
+      "sha256Lf": "dd3bb72b59f82fecb906793276e5d997def4549271140e795255d932698c238c"
+    },
+    {
+      "path": "tests/e2e/header-hero-polish.spec.mjs",
+      "sha256Lf": "2d5d8511b546aa47ce35453664659cf6ffa0cbe6b5628379c6e941a4455a2b92"
+    }
+  ],
+  "unchangedFiles": [
+    {
+      "path": "src/components/HeaderArticlesMenu.tsx",
+      "sha256Lf": "6fc7093e3dbc0a3a1f3b199e599f3223c9050ab521bded83b1edbfc6788bcb19"
+    },
+    {
+      "path": "src/data/articles/publicationStats.ts",
+      "sha256Lf": "6953a7a23001ea35dcde4a4827914a5f91e009218ead1ec0adea15d2ac33273a"
+    },
+    {
+      "path": "src/styles/site-typography.css",
+      "sha256Lf": "c36e17eb41af9e1fd94d6388eae2ae97da7e4d018b21083c41a1a6282c8371e0"
+    },
+    {
+      "path": "scripts/prepare-public-images.mjs",
+      "sha256Lf": "d18e8f9310b03e0bc5324757034a92f4976c1edc4f8e3f16772588b5e076ee6d"
+    },
+    {
+      "path": "scripts/lib/reviewed-header-library.mjs",
+      "sha256Lf": "3866801e0a0711b2fbc9a41619076e6e606897d799eb4f41d9ce5dd9d46543bf"
+    },
+    {
+      "path": "scripts/lib/reviewed-reading-design.mjs",
+      "sha256Lf": "8a55e93ec118c17b814f50f765d8c4a0168b8dbd3d8d9919ca152dc6ef22d021"
+    },
+    {
+      "path": "scripts/lib/reviewed-r49n-package.mjs",
+      "sha256Lf": "a7dd08a61be2f9ce90d7c8a2824bc50182663eca36bfab1786bd6f186a451126"
+    },
+    {
+      "path": "scripts/lib/reviewed-reference-release.mjs",
+      "sha256Lf": "cf9485ad2deca2bbfaf55e4a437350c5bf4c33379f9af46be133663b33ab4a41"
+    }
+  ]
+}

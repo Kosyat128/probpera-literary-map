@@ -6,6 +6,12 @@ import { isDeepStrictEqual } from "node:util";
 
 import { build } from "esbuild";
 import { authorshipRowsFromArchive } from "./lib/book-authorship-roundtrip.mjs";
+import { createNativeArchiveCommitClient } from "./lib/literary-archive-database-commit.mjs";
+import {
+  literaryArchiveDatabaseMode,
+  validateLiteraryArchiveDatabaseMode,
+  requireNativeArchiveDatabaseCredentials,
+} from "./lib/literary-archive-cli-mode.mjs";
 import {
   buildLiteraryArchiveReferenceMetadata,
   referenceItemsFromArchive,
@@ -47,9 +53,8 @@ const cacheDirectory = path.join(repositoryRoot, "scripts", ".cache");
 const bundlePath = path.join(cacheDirectory, "literary-archive-source.mjs");
 const ATOMIC_WORKFLOW_RECEIPT_SCHEMA =
   "literary-archive-workflow-receipt-v2";
-const applyChanges = process.argv.includes("--apply");
-const preflightOnly = process.argv.includes("--preflight");
-const postflightOnly = process.argv.includes("--postflight");
+const databaseMode = literaryArchiveDatabaseMode(process.argv);
+const { applyChanges, commitViaDatabase, preflightOnly, postflightOnly } = databaseMode;
 const coverBatch20260820 = process.argv.includes("--batch-2026-08-20");
 const enableEvidenceV2 = process.argv.includes("--enable-evidence-v2");
 const receiptOptionIndexes = process.argv.flatMap((argument, index) =>
@@ -86,11 +91,7 @@ if (receiptFile) {
   }
 }
 
-if ([applyChanges, preflightOnly, postflightOnly].filter(Boolean).length > 1) {
-  throw new Error(
-    "Choose at most one database mode: --preflight, --postflight or --apply."
-  );
-}
+validateLiteraryArchiveDatabaseMode(databaseMode);
 if ((applyChanges || postflightOnly) && coverBatch20260820) {
   throw new Error(
     "Atomic apply/postflight always covers the complete archive; batch-only publication is forbidden."
@@ -108,6 +109,7 @@ try {
 } catch {
   // В CI переменные передаются окружением; локальный файл необязателен.
 }
+requireNativeArchiveDatabaseCredentials(commitViaDatabase, process.env);
 
 function stableHash(value) {
   return createHash("sha256").update(value).digest("hex").slice(0, 10);
@@ -1193,7 +1195,8 @@ if (preflightOnly) {
 }
 
 const releaseResult = await publishLiteraryArchiveAtomicRelease({
-  supabase,
+  supabase: commitViaDatabase ? createNativeArchiveCommitClient(supabase, { logger: console.info }) : supabase,
+  rpcAttempts: commitViaDatabase ? 1 : 3,
   items: releaseItems,
   expectedPrecondition: precondition,
   releaseKey,

@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { buildBookArchive } from "../../src/data/bookArchive.ts";
 import { bookEvidenceV2Issues } from "../../src/data/bookEvidence.ts";
 import { bookArchiveCountries } from "../../src/data/countries/index.ts";
@@ -16,6 +16,13 @@ import {
   evidenceV2ValidatorImplementationSha256,
 } from "../lib/book-evidence-v2-attestations.mjs";
 import { canonicalLiteraryArchiveReleasePayload } from "../lib/literary-archive-atomic-release.mjs";
+
+// The September 2 attestation fixture deliberately freezes its review date.
+// Later reviewed CMS edits belong to the separate current-CMS release tests.
+vi.mock("../../src/data/cms/editorialOverrides", async (importOriginal) => ({
+  ...await importOriginal(),
+  cmsLiteraryWorkProfilesForWriter: () => [],
+}));
 
 const root = path.resolve(process.cwd());
 const raw = (file) => readFileSync(path.join(root, file));

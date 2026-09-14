@@ -1,6 +1,8 @@
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
+import { projectReviewedHeaderShowcase } from "./reviewed-header-showcase.mjs";
+import { projectReviewedNativeArchiveTransport } from "./reviewed-native-archive-transport.mjs";
 import {
   projectReviewedReferenceRelease, referenceReleaseAttestation,
   reviewedReferenceReleaseSourceSha256,
@@ -9,7 +11,7 @@ import {
   projectPublishedR49nPackage, projectReviewedR49nPackage, r49nPackageAttestation,
 } from "./reviewed-r49n-package.mjs";
 
-const read = path => readFileSync(path, "utf8").replace(/\r\n?/gu, "\n");
+const read = path => projectReviewedNativeArchiveTransport(path, readFileSync(path, "utf8"));
 const sha = text => createHash("sha256").update(text).digest("hex");
 const protectedPaths = [
   ".github/workflows/dispatch-premium-database-reconciliation.yml",
@@ -111,6 +113,7 @@ describe("September 14 additive canonical-reference release governance", () => {
       reservedWriterProofsPreserved: true, wholeReleaseRollbackPreserved: true,
     });
     expect(report.files.length).toBeGreaterThan(3);
-    for (const file of report.files) expect(sha(read(file.path))).toBe(file.sha256Lf);
+    for (const file of report.files) expect(sha(file.path === "scripts/lib/reviewed-r49n-package.test.mjs"
+      ? projectReviewedHeaderShowcase(file.path, read(file.path)) : read(file.path))).toBe(file.sha256Lf);
   });
 });

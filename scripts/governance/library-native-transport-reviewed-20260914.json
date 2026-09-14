@@ -1,0 +1,467 @@
+{
+  "id": "LIBRARY-NATIVE-TRANSPORT-20260914",
+  "baselineSourceCommitSha": "d6c7849ccc5285e17c6da9ef147fecc9fdd0f000",
+  "reviewStatus": "source-reviewed",
+  "allowedProjectionPaths": [
+    ".github/workflows/reconcile-production-database.yml",
+    "scripts/database/literary-work-evidence-v2-migration.test.mjs",
+    "scripts/database/production-migration-plan.test.mjs",
+    "scripts/database/supabase-database-safety.sh",
+    "scripts/lib/reviewed-header-showcase.test.mjs",
+    "scripts/lib/reviewed-r49n-package.test.mjs",
+    "scripts/lib/reviewed-reference-release.test.mjs",
+    "scripts/lib/stage5-content-data-lock.test.mjs",
+    "scripts/sync-literary-archive.mjs",
+    "src/data/bookCmsWellsPriority20260913.test.ts",
+    "src/data/bookR49nPackageReviewed20260912.test.ts",
+    "src/data/countries/bookR49nDickensReviewed20260912.test.ts",
+    "src/data/countries/bookR49nRetainedDrafts20260912.test.ts",
+    "src/data/userSuppliedBookCoversBatch20260820.test.ts"
+  ],
+  "sourceBoundaryKinds": {
+    ".github/workflows/reconcile-production-database.yml": "published-main-d6",
+    "scripts/database/literary-work-evidence-v2-migration.test.mjs": "published-main-d6",
+    "scripts/database/production-migration-plan.test.mjs": "published-main-d6",
+    "scripts/database/supabase-database-safety.sh": "published-main-d6",
+    "scripts/lib/reviewed-header-showcase.test.mjs": "reviewed-local-showcase-adapter",
+    "scripts/lib/reviewed-r49n-package.test.mjs": "reviewed-local-showcase-adapter",
+    "scripts/lib/reviewed-reference-release.test.mjs": "reviewed-local-showcase-adapter",
+    "scripts/lib/stage5-content-data-lock.test.mjs": "reviewed-local-showcase-adapter",
+    "scripts/sync-literary-archive.mjs": "published-main-d6",
+    "src/data/bookCmsWellsPriority20260913.test.ts": "published-main-d6",
+    "src/data/bookR49nPackageReviewed20260912.test.ts": "published-main-d6",
+    "src/data/countries/bookR49nDickensReviewed20260912.test.ts": "published-main-d6",
+    "src/data/countries/bookR49nRetainedDrafts20260912.test.ts": "published-main-d6",
+    "src/data/userSuppliedBookCoversBatch20260820.test.ts": "published-main-d6"
+  },
+  "sourceBaselines": {
+    ".github/workflows/reconcile-production-database.yml": "5305f0871f0b67d511af98e6b5a6bbad703191e35b05023ea012b67d316a1c94",
+    "scripts/database/literary-work-evidence-v2-migration.test.mjs": "2c0b4475f2fd99b8832d905b79316af63876e6db435e7a302405ce4cf2bfb4e8",
+    "scripts/database/production-migration-plan.test.mjs": "a02623c31fd6e2205c690d1f5b5d65ac1aaa01bff10391db39b279f9f38623e5",
+    "scripts/database/supabase-database-safety.sh": "eafa771376dc2a9e833aed2a5ef18b304e72bb3c3d6882d8621e6c4d6c1afbd3",
+    "scripts/lib/reviewed-header-showcase.test.mjs": "6372200c48e9c80faac830e9d7e1adaf768852753867c6998c3a03fe63cb5b5d",
+    "scripts/lib/reviewed-r49n-package.test.mjs": "eba1b7382284015604160fe4ec449b307874a698786eab8ea35c0264ad8fe605",
+    "scripts/lib/reviewed-reference-release.test.mjs": "6ab82ac25acc9eb82fe938a785c29a936aabb0e3212fc85279138d6d201ce835",
+    "scripts/lib/stage5-content-data-lock.test.mjs": "064fbfaa39e32693352724292243895ee8cfa84085657b6c9228d69513dbdc54",
+    "scripts/sync-literary-archive.mjs": "504e0dd612b4f0a42e95f726fbdd185227f6ce64c06d0bb11761e8b14e4be0b1",
+    "src/data/bookCmsWellsPriority20260913.test.ts": "19917a21ac1463a73ffe0c293a4435895dc30e54a21fae55ce9f80005e5bb7a0",
+    "src/data/bookR49nPackageReviewed20260912.test.ts": "253d706cfeb1439c5553fe48fd460f9eaae25ca3dc175bbe976f94493e9747e4",
+    "src/data/countries/bookR49nDickensReviewed20260912.test.ts": "0e2300074ab39bb9cc5ea04290fe5590f046661e0ba35e65eeb310c9860d12d2",
+    "src/data/countries/bookR49nRetainedDrafts20260912.test.ts": "ae20751c7ae8ffcf574ba7ea836f3879fe410916cda5510480d4db218bb66acc",
+    "src/data/userSuppliedBookCoversBatch20260820.test.ts": "1464e1b606634289a26397da27da6c4df5680e3d6f523cad93cfc80d6a4c5292"
+  },
+  "reviewedSourceSha256": {
+    ".github/workflows/reconcile-production-database.yml": "5e1ae1bdfbb4d118d992f1b846f94457f69e768f1bb7304ee17b5e67ecf662c5",
+    "scripts/database/literary-work-evidence-v2-migration.test.mjs": "405867a06e462df13b94ed53dea4e0cd970439561a42aedb8e96732d57486f7c",
+    "scripts/database/production-migration-plan.test.mjs": "98f4e0945c8424e544d6442cec86e69991343775771fd95d6cf0a943cfc946e1",
+    "scripts/database/supabase-database-safety.sh": "036a21ada6a7dd115d5a928087d36bd8aa9fa651603c322a916506e4ee890496",
+    "scripts/lib/reviewed-header-showcase.test.mjs": "3e270cd8dbc9bfec4540bf716e7cf31696aaec12374927567a5563f2b424a227",
+    "scripts/lib/reviewed-r49n-package.test.mjs": "7129eac1c61e577f2f4dfe95a085460464643dac80e5fe33afc37d14b54a96fc",
+    "scripts/lib/reviewed-reference-release.test.mjs": "55f0b4234816b0d0a407b1f3d3de50b97760437838208b9a85d4868d2f983da6",
+    "scripts/lib/stage5-content-data-lock.test.mjs": "2072075e9e57deeaef5652d789606421647b08e717d53bf3171ced800ef69624",
+    "scripts/sync-literary-archive.mjs": "f04b898a273086292b9f87b664bf924149dc6ea777fef422f289ba877fdcfd92",
+    "src/data/bookCmsWellsPriority20260913.test.ts": "794240bacf3f380b98c5fdeb1ba5a8c47123c90a864276d4ca9291705be4612e",
+    "src/data/bookR49nPackageReviewed20260912.test.ts": "5f6081f91305c2431cdee4cc05952d228fa966e1c7881f013e905192a29553d8",
+    "src/data/countries/bookR49nDickensReviewed20260912.test.ts": "0ebc3fb18c4241567dad10efb351d14d9c69a3e3f077d5b67849989484a74795",
+    "src/data/countries/bookR49nRetainedDrafts20260912.test.ts": "efc10b62e02552add26255186f507d896b5e08bb5df1245161c1c3f9840673ee",
+    "src/data/userSuppliedBookCoversBatch20260820.test.ts": "654bb8505d5c9e339baccc24be1f5ef7b8e0e53a25d9da79693dd85b76d4643a"
+  },
+  "historicalArtifacts": [
+    {
+      "path": "scripts/governance/header-library-owner-refinement-20260912.json",
+      "sha256Lf": "eb0df84d46bdded81f3e820fd7479ec3d8462a4920c6208348acda6900945cc4"
+    },
+    {
+      "path": "scripts/governance/reading-design-owner-refinement-20260906.json",
+      "sha256Lf": "a1758055e0460243995099296944e32e96ae5cbd0d1b1b324b18b9a6fe31c419"
+    },
+    {
+      "path": "scripts/governance/book-r49n-package-reviewed-20260912.json",
+      "sha256Lf": "09ba0a3762cc4a811b3a99c2e07f3e94f9401fb076247499edde5b8af6bc8db3"
+    },
+    {
+      "path": "reports/book-r49n-package-reviewed-20260912.json",
+      "sha256Lf": "7abc9164f9a39d2bd92534f1034fca59ca4db6eb2502b70385bda8c540b9fd36"
+    },
+    {
+      "path": "scripts/governance/book-r49n-dickens-reviewed-20260912.json",
+      "sha256Lf": "e7b875db1307fdbdc17bbe9329559bc9dc289d2dc735a8aa362f8beb086db259"
+    },
+    {
+      "path": "scripts/governance/library-reference-release-reviewed-20260914.json",
+      "sha256Lf": "8d778ed94422a29f05e812a33d6f5ec94f09c58863652c5fc316f84c49d648d8"
+    },
+    {
+      "path": "reports/library-reference-release-reviewed-20260914.json",
+      "sha256Lf": "66d4df9bea22d58a8e6ff3f68ec057c97faa62b2340103840c11a3817935dd8d"
+    },
+    {
+      "path": "scripts/governance/header-showcase-owner-refinement-20260914.json",
+      "sha256Lf": "9e544a3990aade3dc9e2cc649b26cb116dfa7e7b875cbbadc513b97d18d673dd"
+    },
+    {
+      "path": "reports/header-showcase-owner-refinement-20260914.json",
+      "sha256Lf": "61b9a070f56e1e34b52dd98301be475b971f2408d9295cd96ed9150e5f5b3c36"
+    }
+  ],
+  "historicalMigrations": [
+    {
+      "path": "supabase/migrations/20260808_article_translations.sql",
+      "sha256Lf": "37915d5aa77a4d647ea8bc9b84923b8c07fe148e7c6f301cabf5bb685909d372"
+    },
+    {
+      "path": "supabase/migrations/20260808_book_translations_and_import_staging.sql",
+      "sha256Lf": "2f7896316307c678c9139f8849ca4cb9930baea5bfc86c3441f281b17203b744"
+    },
+    {
+      "path": "supabase/migrations/20260812_homepage_block_revisions.sql",
+      "sha256Lf": "f261d7249c4aaf2a6db20ad8a5b2a587d00e417b8cadcd1f1b4ae7d496ba1a22"
+    },
+    {
+      "path": "supabase/migrations/20260812_writer_and_work_revisions.sql",
+      "sha256Lf": "76d9b65a2fc37aa03ffda3b293b09011dfaf316baa1c2153afaecd334c5c135f"
+    },
+    {
+      "path": "supabase/migrations/20260813_editorial_database_admin.sql",
+      "sha256Lf": "fb28408f56efe29c6173395af3d78c58f46cc8a766249e08f3d8b7ed91588819"
+    },
+    {
+      "path": "supabase/migrations/20260813_homepage_atomic_move.sql",
+      "sha256Lf": "34cd8a00b8ae55c0a3126226a597c06c6d0f1d653b8095806d4372496905a185"
+    },
+    {
+      "path": "supabase/migrations/20260813_tags_updated_at.sql",
+      "sha256Lf": "e7e7475d11af036a3cabf55a7f35831d7da5a8a18745979be26313e33f8386e7"
+    },
+    {
+      "path": "supabase/migrations/20260813_unified_revision_history.sql",
+      "sha256Lf": "e851c9e2a8d4a4af2760be2798de40a59dcc2ce4ada35e8ca49209f87b81c42e"
+    },
+    {
+      "path": "supabase/migrations/20260814_publication_outbox_and_schema_health.sql",
+      "sha256Lf": "795274d300104dcf41edb43fb5fd8e7079badb14bf5747f9d0190021a914456e"
+    },
+    {
+      "path": "supabase/migrations/20260820_homepage_book_month_editorial_choice.sql",
+      "sha256Lf": "436bb25b4513ed451320489278fda8670a1e4ada9f66b065fd6b734ba84c729f"
+    },
+    {
+      "path": "supabase/migrations/20260820_literary_work_cover_artworks.sql",
+      "sha256Lf": "e39ba6da664bcb2c3b4c5c78fa1e6ff6f46d420453d5575e113b92635e1f5c58"
+    },
+    {
+      "path": "supabase/migrations/20260822_staff_editorial_read_rls.sql",
+      "sha256Lf": "c50cda9a947cda1769c6aa36db81181dda988738e5dcf0ff7f2711d43faf03c9"
+    },
+    {
+      "path": "supabase/migrations/20260822_zz_atomic_article_bundle.sql",
+      "sha256Lf": "5df4f2068349ba210c560005ef1145bdb32be15e389fef2a5ec4642a73c12acc"
+    },
+    {
+      "path": "supabase/migrations/20260823_premium_machine_translation.sql",
+      "sha256Lf": "fd72bca7069130c777c8dbd9751f70f41d82b1d820562984e2a5ee6433491ba6"
+    },
+    {
+      "path": "supabase/migrations/20260827_reader_book_collections.sql",
+      "sha256Lf": "b8f7e004e0c094e67bfc1d3aa5f50071cdc7ad32a7718969666717ba8dc199e4"
+    },
+    {
+      "path": "supabase/migrations/20260828_reader_book_collection_icons.sql",
+      "sha256Lf": "27d6bc4beceef9f09e7811b0a5cd34d94874202083ee5ff038b78c00ce178019"
+    },
+    {
+      "path": "supabase/migrations/20260828_zz_editor_autosaves.sql",
+      "sha256Lf": "353ee5e767850c4818d60f9a957d5991689bf2886c41b21599f69678e7b041af"
+    },
+    {
+      "path": "supabase/migrations/20260830_media_studio_lifecycle.sql",
+      "sha256Lf": "3cb8717f0cf4f4b6a718591d2759c0c73008e35eaf9c3c09a1e0fd19f65ef837"
+    },
+    {
+      "path": "supabase/migrations/20260830_zz_site_typography_engine.sql",
+      "sha256Lf": "097f70aefd34278167a7c275db36cdb1182732a22eabfaa5d609be18512bde20"
+    },
+    {
+      "path": "supabase/migrations/20260901_zz_admin_analytics_reporting.sql",
+      "sha256Lf": "c1f9c7314c127d5a6a9c2113e84b8cf05dc6bb60052e96c00b317a9228f03d75"
+    },
+    {
+      "path": "supabase/migrations/20260901_zz_data_studio_integrity.sql",
+      "sha256Lf": "976134c7e7f64c4dd66a4afccef5a59e1af29b437c299cf9e3f3cc5fec7b3911"
+    },
+    {
+      "path": "supabase/migrations/20260901_zz_site_studio_engine.sql",
+      "sha256Lf": "4350165699a2e88dde7eece9bc57bc154ec6ba8b3b82933cbfd4b9fe514f4675"
+    },
+    {
+      "path": "supabase/migrations/20260901_zz_staff_owner_invariant.sql",
+      "sha256Lf": "8bc034b04540f835337ca6edc1f8b1c797d4b3064569778cc6bdb4e4501f3067"
+    },
+    {
+      "path": "supabase/migrations/20260901_zz_translation_operations.sql",
+      "sha256Lf": "481f1887cee0f28fed054a5bbae95260e33ef96a3ae059d307a8573d4eed16f7"
+    },
+    {
+      "path": "supabase/migrations/20260901_zz_translation_operations_runtime.sql",
+      "sha256Lf": "502d34ca1bcd30f79ccdbc10f238201daf89b8a36cc9a3cabf8cdc5e8ac25248"
+    },
+    {
+      "path": "supabase/migrations/20260901_zz_visual_direct_edit_v2.sql",
+      "sha256Lf": "38347f54fbe152e89cf392d517e3d3a6e1d389b50b3510611a7fd3b4a66157ed"
+    },
+    {
+      "path": "supabase/migrations/20260901_zzz_admin_mutation_guards.sql",
+      "sha256Lf": "21432b83209e353857d183b667c923bb47624a173276cf618515984ab4f200b9"
+    },
+    {
+      "path": "supabase/migrations/20260901_zzzz_admin_ops_observability.sql",
+      "sha256Lf": "d40c42e752641bdefe4a41bc6b079aa9c00c9f8bf37546051a4a28cca6b913b6"
+    },
+    {
+      "path": "supabase/migrations/20260901_zzzzzz_admin_completion_health.sql",
+      "sha256Lf": "dda44cc2f3248cf54621e07d17a701095ecea92193832371636618217531711f"
+    },
+    {
+      "path": "supabase/migrations/20260902_article_working_drafts.sql",
+      "sha256Lf": "3426ae0a6b234aa903670dde6efbd34f84c27a3f47f495fe454d593c95b66c72"
+    },
+    {
+      "path": "supabase/migrations/20260902_literary_work_authorship.sql",
+      "sha256Lf": "79dd77139c128f22b184043665f39c76bc10bbbc895cabfc0d84c4d8d3e195bd"
+    },
+    {
+      "path": "supabase/migrations/20260902_literary_work_evidence_v2_attestations.sql",
+      "sha256Lf": "26e1e0cb57368c772a02d397e5df0cb2960725a7ad05ae35fbc299ddf41c4966"
+    },
+    {
+      "path": "supabase/migrations/20260902_zz_article_working_drafts_health.sql",
+      "sha256Lf": "72259c999de34611ac9bb3bddd3d1374b62b43cfa1eb9a4f11fabfeb5bd20460"
+    },
+    {
+      "path": "supabase/migrations/20260902_zz_literary_archive_atomic_release.sql",
+      "sha256Lf": "a03f27a42fc6e7607dae6c46cb52292798ffc4eb931c470bfc2e9a481ebb1ef9"
+    },
+    {
+      "path": "supabase/migrations/20260905_article_publication_permissions.sql",
+      "sha256Lf": "1f9b4b9a9efb00488010cb6719cb36967a395038089b2ca3091657e144f0fcc8"
+    },
+    {
+      "path": "supabase/migrations/20260912_literary_work_evidence_v2_registry_rotation.sql",
+      "sha256Lf": "2fbcba184a4f7f7eb8e0ab49737540c42614d3f1d0755914f485bd5c0e04f525"
+    },
+    {
+      "path": "supabase/migrations/20260913_wells_editorial_evidence_repair.sql",
+      "sha256Lf": "769353bbf60790b6a5113a5d76ee23cb7ce0e84e3100a7d3eac86c7113d09c70"
+    },
+    {
+      "path": "supabase/migrations/20260914_literary_archive_editorial_references.sql",
+      "sha256Lf": "00bdde32a431322e4c86eaa1f069ff287eac4acc011923dd2454a463f42cad21"
+    }
+  ],
+  "unchangedCoreFiles": [
+    {
+      "path": "scripts/lib/literary-archive-atomic-release.mjs",
+      "sha256Lf": "a7fb0b641a18c6cdc9f7824803b614f9b0afec624e66689c63b824fd2f0aa44e"
+    },
+    {
+      "path": "scripts/lib/book-evidence-v2-attestations.mjs",
+      "sha256Lf": "6ef7e13e46b1cfd9cc1ee137c1d761f6d3065b703bdbe452ef0111562d98efd8"
+    },
+    {
+      "path": "scripts/lib/literary-archive-reference-catalog.mjs",
+      "sha256Lf": "0c5f19e8ccf4d9f7d9f64a6a4cb54bb45b963a7f6ccfb51e563bf8742685e168"
+    },
+    {
+      "path": "reports/literary-archive-reference-catalog-20260914.json",
+      "sha256Lf": "306cfdd28dda66130b3ee2c95bc1abf9821e50a938379cc9065aa69a2244be53"
+    },
+    {
+      "path": "scripts/database/build-production-migration-plan.mjs",
+      "sha256Lf": "9adab9675a61c87472871fbcaf290700e55694c843061de2712a6ff1467dfa0f"
+    },
+    {
+      "path": "scripts/lib/reviewed-r49n-package.mjs",
+      "sha256Lf": "a7dd08a61be2f9ce90d7c8a2824bc50182663eca36bfab1786bd6f186a451126"
+    },
+    {
+      "path": "scripts/lib/reviewed-reference-release.mjs",
+      "sha256Lf": "cf9485ad2deca2bbfaf55e4a437350c5bf4c33379f9af46be133663b33ab4a41"
+    },
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256Lf": "c8d2b6862c47c3215295951d2c5d1c406913b9879c616f1d8b787c6e05029f6c"
+    },
+    {
+      "path": "src/data/bookArchive.ts",
+      "sha256Lf": "738fe1a320790fa9971ae367079499ae1f9e5af05ed6fa756ad9d493b06f98c2"
+    }
+  ],
+  "reviewedReport": {
+    "path": "reports/library-native-transport-reviewed-20260914.json",
+    "sha256Lf": "aba0f6216ca21f2bb104dd5e3c965a97133ab0c6dfe21be3dcc25034fe3fc34e"
+  },
+  "projections": [
+    {
+      "id": "NATIVE-ARCHIVE-TRANSPORT-001",
+      "path": ".github/workflows/reconcile-production-database.yml",
+      "before": "          }\n\n      - name: Publish the full literary archive in one atomic commit\n        env:\n          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}\n          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}\n        run: |\n          set -Eeuo pipefail\n          node scripts/sync-literary-archive.mjs --apply \\\n            --enable-evidence-v2 \\\n            --receipt-file reconciliation/literary-archive-release-receipt.json\n          echo \"- Full literary archive atomic release: committed\" >> reconciliation/summary.md\n\n      - name: Run the read-only atomic archive postflight\n",
+      "after": "          }\n\n      - name: Publish the full literary archive in one atomic commit\n        env:\n          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}\n          SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}\n          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}\n          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}\n        run: |\n          set -Eeuo pipefail\n          node scripts/sync-literary-archive.mjs --apply \\\n            --commit-via-database \\\n            --enable-evidence-v2 \\\n            --receipt-file reconciliation/literary-archive-release-receipt.json\n          echo \"- Full literary archive atomic release: committed\" >> reconciliation/summary.md\n\n      - name: Run the read-only atomic archive postflight\n"
+    },
+    {
+      "id": "NATIVE-ARCHIVE-TRANSPORT-002",
+      "path": "scripts/database/literary-work-evidence-v2-migration.test.mjs",
+      "before": "import { readFileSync } from \"node:fs\";\nimport path from \"node:path\";\nimport { describe, expect, it } from \"vitest\";\nimport { buildBookArchive } from \"../../src/data/bookArchive.ts\";\nimport { bookEvidenceV2Issues } from \"../../src/data/bookEvidence.ts\";\nimport { bookArchiveCountries } from \"../../src/data/countries/index.ts\";\nimport {\n  BOOK_EVIDENCE_V2_CONTRACT,\n",
+      "after": "import { readFileSync } from \"node:fs\";\nimport path from \"node:path\";\nimport { describe, expect, it, vi } from \"vitest\";\nimport { buildBookArchive } from \"../../src/data/bookArchive.ts\";\nimport { bookEvidenceV2Issues } from \"../../src/data/bookEvidence.ts\";\nimport { bookArchiveCountries } from \"../../src/data/countries/index.ts\";\nimport {\n  BOOK_EVIDENCE_V2_CONTRACT,\n"
+    },
+    {
+      "id": "NATIVE-ARCHIVE-TRANSPORT-003",
+      "path": "scripts/database/literary-work-evidence-v2-migration.test.mjs",
+      "before": "  evidenceV2DatabaseContentProjection,\n  evidenceV2ValidatorImplementationSha256,\n} from \"../lib/book-evidence-v2-attestations.mjs\";\nimport { canonicalLiteraryArchiveReleasePayload } from \"../lib/literary-archive-atomic-release.mjs\";\n\nconst root = path.resolve(process.cwd());\nconst raw = (file) => readFileSync(path.join(root, file));\nconst read = (file) =>\n  raw(file).toString(\"utf8\").replace(/\\r\\n?/gu, \"\\n\");\nconst migration = read(\n",
+      "after": "  evidenceV2DatabaseContentProjection,\n  evidenceV2ValidatorImplementationSha256,\n} from \"../lib/book-evidence-v2-attestations.mjs\";\nimport { canonicalLiteraryArchiveReleasePayload } from \"../lib/literary-archive-atomic-release.mjs\";\n\n// The September 2 attestation fixture deliberately freezes its review date.\n// Later reviewed CMS edits belong to the separate current-CMS release tests.\nvi.mock(\"../../src/data/cms/editorialOverrides\", async (importOriginal) => ({\n  ...await importOriginal(),\n  cmsLiteraryWorkProfilesForWriter: () => [],\n}));\n\nconst root = path.resolve(process.cwd());\nconst raw = (file) => readFileSync(path.join(root, file));\nconst read = (file) =>\n  raw(file).toString(\"utf8\").replace(/\\r\\n?/gu, \"\\n\");\nconst migration = read(\n"
+    },
+    {
+      "id": "NATIVE-ARCHIVE-TRANSPORT-004",
+      "path": "scripts/database/production-migration-plan.test.mjs",
+      "before": "  });\n\n  it(\"passes the validated database URI explicitly to every remote client\", () => {\n    expect(\n      helper.match(/--dbname=\"\\$SUPABASE_DB_URL\"/gu)\n    ).toHaveLength(5);\n    expect(helper).not.toContain(\"PGDATABASE\");\n    expect(helper).not.toMatch(/(?:echo|printf)[^\\n]*SUPABASE_DB_URL/iu);\n  });\n\n  it(\"pre-pulls once with bounded backoff and pins every later client to that local image\", () => {\n",
+      "after": "  });\n\n  it(\"passes the validated database URI explicitly to every remote client\", () => {\n    expect(\n      helper.match(/--dbname=\"\\$SUPABASE_DB_URL\"/gu)\n    ).toHaveLength(6);\n    expect(helper).not.toContain(\"PGDATABASE\");\n    expect(helper).not.toMatch(/(?:echo|printf)[^\\n]*SUPABASE_DB_URL/iu);\n  });\n\n  it(\"pre-pulls once with bounded backoff and pins every later client to that local image\", () => {\n"
+    },
+    {
+      "id": "NATIVE-ARCHIVE-TRANSPORT-005",
+      "path": "scripts/database/supabase-database-safety.sh",
+      "before": "  validate_database_url\n  pull_database_image\n  run_remote_psql \"$sql_file\" \"$output_file\"\n}\n\nusage() {\n  cat >&2 <<'EOF'\nUsage:\n  supabase-database-safety.sh validate-target\n  supabase-database-safety.sh dump OUTPUT AUTH_USER_IDS\n  supabase-database-safety.sh encrypt-verify INPUT ENCRYPTED VERIFIED\n  supabase-database-safety.sh restore-drill DUMP AUTH_USER_IDS [PLAN] [RESULT]\n  supabase-database-safety.sh apply-plan PLAN\n  supabase-database-safety.sh verify-production SQL OUTPUT\nEOF\n  exit 2\n}\n\ncase \"${1:-}\" in\n",
+      "after": "  validate_database_url\n  pull_database_image\n  run_remote_psql \"$sql_file\" \"$output_file\"\n}\n\ncommand_commit_archive() {\n  local release_id=\"$1\" manifest_sha256=\"$2\" sql_directory\n  [[ \"$release_id\" =~ ^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$ ]] \\\n    || die \"Archive release ID must be a canonical UUID.\"\n  [[ \"$manifest_sha256\" =~ ^[0-9a-f]{64}$ ]] \\\n    || die \"Archive manifest must be an exact SHA-256.\"\n  validate_database_url\n  pull_database_image\n  sql_directory=\"$(cd \"$(dirname \"${BASH_SOURCE[0]}\")\" && pwd -P)\"\n  [[ -s \"$sql_directory/literary-archive-native-commit.sql\" ]] \\\n    || die \"Fixed native archive commit SQL is missing.\"\n  docker run --rm \\\n    --env PGSSLMODE=require \\\n    --env PGCONNECT_TIMEOUT=20 \\\n    --volume \"$sql_directory:/probpera-sql:ro\" \\\n    --entrypoint psql \\\n    \"$DATABASE_IMAGE\" \\\n    --dbname=\"$SUPABASE_DB_URL\" \\\n    --no-psqlrc --quiet --tuples-only --no-align \\\n    --set=ON_ERROR_STOP=1 \\\n    --set=VERBOSITY=sqlstate \\\n    --set=\"release_id=$release_id\" \\\n    --set=\"manifest_sha256=$manifest_sha256\" \\\n    --single-transaction \\\n    --file /probpera-sql/literary-archive-native-commit.sql\n}\n\nusage() {\n  cat >&2 <<'EOF'\nUsage:\n  supabase-database-safety.sh validate-target\n  supabase-database-safety.sh dump OUTPUT AUTH_USER_IDS\n  supabase-database-safety.sh encrypt-verify INPUT ENCRYPTED VERIFIED\n  supabase-database-safety.sh restore-drill DUMP AUTH_USER_IDS [PLAN] [RESULT]\n  supabase-database-safety.sh apply-plan PLAN\n  supabase-database-safety.sh verify-production SQL OUTPUT\n  supabase-database-safety.sh commit-archive RELEASE_UUID MANIFEST_SHA256\nEOF\n  exit 2\n}\n\ncase \"${1:-}\" in\n"
+    },
+    {
+      "id": "NATIVE-ARCHIVE-TRANSPORT-006",
+      "path": "scripts/database/supabase-database-safety.sh",
+      "before": "    ;;\n  verify-production)\n    [[ \"$#\" -eq 3 ]] || usage\n    command_verify_production \"$2\" \"$3\"\n    ;;\n  *) usage ;;\nesac\n",
+      "after": "    ;;\n  verify-production)\n    [[ \"$#\" -eq 3 ]] || usage\n    command_verify_production \"$2\" \"$3\"\n    ;;\n  commit-archive)\n    [[ \"$#\" -eq 3 ]] || usage\n    command_commit_archive \"$2\" \"$3\"\n    ;;\n  *) usage ;;\nesac\n"
+    },
+    {
+      "id": "NATIVE-ARCHIVE-TRANSPORT-007",
+      "path": "scripts/lib/reviewed-header-showcase.test.mjs",
+      "before": "import { createHash } from \"node:crypto\";\nimport { readFileSync } from \"node:fs\";\nimport { describe, expect, it } from \"vitest\";\nimport { headerShowcaseAttestation, projectReviewedHeaderShowcase } from \"./reviewed-header-showcase.mjs\";\nimport { headerLibraryAttestation, projectReviewedHeaderLibrary } from \"./reviewed-header-library.mjs\";\n\nconst read = path => readFileSync(path, \"utf8\").replace(/\\r\\n?/gu, \"\\n\");\nconst sha = text => createHash(\"sha256\").update(text).digest(\"hex\");\nconst paths = [\n  \"scripts/lib/reviewed-r49n-package.test.mjs\",\n  \"src/index.css\",\n  \"src/styles/navigation-panels.css\",\n",
+      "after": "import { createHash } from \"node:crypto\";\nimport { readFileSync } from \"node:fs\";\nimport { describe, expect, it } from \"vitest\";\nimport { headerShowcaseAttestation, projectReviewedHeaderShowcase } from \"./reviewed-header-showcase.mjs\";\nimport { headerLibraryAttestation, projectReviewedHeaderLibrary } from \"./reviewed-header-library.mjs\";\nimport { projectReviewedNativeArchiveTransport } from \"./reviewed-native-archive-transport.mjs\";\n\nconst read = path => projectReviewedNativeArchiveTransport(path, readFileSync(path, \"utf8\"));\nconst sha = text => createHash(\"sha256\").update(text).digest(\"hex\");\nconst paths = [\n  \"scripts/lib/reviewed-r49n-package.test.mjs\",\n  \"src/index.css\",\n  \"src/styles/navigation-panels.css\",\n"
+    },
+    {
+      "id": "NATIVE-ARCHIVE-TRANSPORT-008",
+      "path": "scripts/lib/reviewed-r49n-package.test.mjs",
+      "before": "  isReviewedR49nPackageAddition, projectReviewedR49nPackage, projectPublishedR49nPackage,\n  r49nPackageAttestation, reviewedR49nPackageSourceSha256,\n} from \"./reviewed-r49n-package.mjs\";\nimport { projectReviewedReferenceRelease } from \"./reviewed-reference-release.mjs\";\nimport { projectReviewedHeaderShowcase } from \"./reviewed-header-showcase.mjs\";\n\nconst read = path => readFileSync(path, \"utf8\").replace(/\\r\\n?/gu, \"\\n\");\nconst readPublishedBrowserContract = path => path === \"tests/e2e/archive-search-calendar.spec.mjs\"\n  ? projectReviewedReferenceRelease(path, read(path)) : read(path);\nconst sha = value => createHash(\"sha256\").update(value).digest(\"hex\");\nconst canonical = value => Array.isArray(value) ? value.map(canonical)\n  : value && typeof value === \"object\"\n",
+      "after": "  isReviewedR49nPackageAddition, projectReviewedR49nPackage, projectPublishedR49nPackage,\n  r49nPackageAttestation, reviewedR49nPackageSourceSha256,\n} from \"./reviewed-r49n-package.mjs\";\nimport { projectReviewedReferenceRelease } from \"./reviewed-reference-release.mjs\";\nimport { projectReviewedHeaderShowcase } from \"./reviewed-header-showcase.mjs\";\nimport { projectReviewedNativeArchiveTransport } from \"./reviewed-native-archive-transport.mjs\";\n\nconst read = path => projectReviewedNativeArchiveTransport(path, readFileSync(path, \"utf8\"));\nconst readPublishedBrowserContract = path => path === \"tests/e2e/archive-search-calendar.spec.mjs\"\n  ? projectReviewedReferenceRelease(path, read(path)) : read(path);\nconst sha = value => createHash(\"sha256\").update(value).digest(\"hex\");\nconst canonical = value => Array.isArray(value) ? value.map(canonical)\n  : value && typeof value === \"object\"\n"
+    },
+    {
+      "id": "NATIVE-ARCHIVE-TRANSPORT-009",
+      "path": "scripts/lib/reviewed-reference-release.test.mjs",
+      "before": "import { createHash } from \"node:crypto\";\nimport { readFileSync } from \"node:fs\";\nimport { describe, expect, it } from \"vitest\";\nimport { projectReviewedHeaderShowcase } from \"./reviewed-header-showcase.mjs\";\nimport {\n  projectReviewedReferenceRelease, referenceReleaseAttestation,\n  reviewedReferenceReleaseSourceSha256,\n} from \"./reviewed-reference-release.mjs\";\nimport {\n  projectPublishedR49nPackage, projectReviewedR49nPackage, r49nPackageAttestation,\n} from \"./reviewed-r49n-package.mjs\";\n\nconst read = path => readFileSync(path, \"utf8\").replace(/\\r\\n?/gu, \"\\n\");\nconst sha = text => createHash(\"sha256\").update(text).digest(\"hex\");\nconst protectedPaths = [\n  \".github/workflows/dispatch-premium-database-reconciliation.yml\",\n  \".github/workflows/reconcile-production-database.yml\",\n  \"scripts/database/build-production-migration-plan.mjs\",\n",
+      "after": "import { createHash } from \"node:crypto\";\nimport { readFileSync } from \"node:fs\";\nimport { describe, expect, it } from \"vitest\";\nimport { projectReviewedHeaderShowcase } from \"./reviewed-header-showcase.mjs\";\nimport { projectReviewedNativeArchiveTransport } from \"./reviewed-native-archive-transport.mjs\";\nimport {\n  projectReviewedReferenceRelease, referenceReleaseAttestation,\n  reviewedReferenceReleaseSourceSha256,\n} from \"./reviewed-reference-release.mjs\";\nimport {\n  projectPublishedR49nPackage, projectReviewedR49nPackage, r49nPackageAttestation,\n} from \"./reviewed-r49n-package.mjs\";\n\nconst read = path => projectReviewedNativeArchiveTransport(path, readFileSync(path, \"utf8\"));\nconst sha = text => createHash(\"sha256\").update(text).digest(\"hex\");\nconst protectedPaths = [\n  \".github/workflows/dispatch-premium-database-reconciliation.yml\",\n  \".github/workflows/reconcile-production-database.yml\",\n  \"scripts/database/build-production-migration-plan.mjs\",\n"
+    },
+    {
+      "id": "NATIVE-ARCHIVE-TRANSPORT-010",
+      "path": "scripts/lib/stage5-content-data-lock.test.mjs",
+      "before": "\nimport { parseCss } from \"../audit-stage5-baseline.mjs\";\nimport { projectReviewedReadingDesign, readingDesignAttestation } from \"./reviewed-reading-design.mjs\";\nimport { projectReviewedHeaderLibrary } from \"./reviewed-header-library.mjs\";\nimport { projectReviewedHeaderShowcase } from \"./reviewed-header-showcase.mjs\";\nimport { projectReviewedDependencySecurity } from \"./reviewed-dependency-security.mjs\";\nimport {\n  isReviewedR49nDickensAddition,\n  projectReviewedR49nDickens,\n  reviewedR49nDickensAdditionPaths,\n",
+      "after": "\nimport { parseCss } from \"../audit-stage5-baseline.mjs\";\nimport { projectReviewedReadingDesign, readingDesignAttestation } from \"./reviewed-reading-design.mjs\";\nimport { projectReviewedHeaderLibrary } from \"./reviewed-header-library.mjs\";\nimport { projectReviewedHeaderShowcase } from \"./reviewed-header-showcase.mjs\";\nimport { projectReviewedNativeArchiveTransport } from \"./reviewed-native-archive-transport.mjs\";\nimport { projectReviewedDependencySecurity } from \"./reviewed-dependency-security.mjs\";\nimport {\n  isReviewedR49nDickensAddition,\n  projectReviewedR49nDickens,\n  reviewedR49nDickensAdditionPaths,\n"
+    },
+    {
+      "id": "NATIVE-ARCHIVE-TRANSPORT-011",
+      "path": "scripts/lib/stage5-content-data-lock.test.mjs",
+      "before": "  return projectReviewedHeaderLibrary(\n    relativePath,\n    projectReviewedR49nDickens(relativePath,\n      projectReviewedR49nPackage(relativePath,\n        projectReviewedDependencySecurity(relativePath,\n          projectReviewedHeaderShowcase(relativePath, readFileSync(absolutePath, encoding)))))\n  );\n}\n\nconst bookshelfRefinement = JSON.parse(readGovernanceSource(\n  path.join(root, \"scripts/governance/bookshelf-owner-refinement-20260905.json\"), \"utf8\"\n",
+      "after": "  return projectReviewedHeaderLibrary(\n    relativePath,\n    projectReviewedR49nDickens(relativePath,\n      projectReviewedR49nPackage(relativePath,\n        projectReviewedDependencySecurity(relativePath,\n          projectReviewedHeaderShowcase(relativePath,\n            projectReviewedNativeArchiveTransport(relativePath, readFileSync(absolutePath, encoding))))))\n  );\n}\n\nconst bookshelfRefinement = JSON.parse(readGovernanceSource(\n  path.join(root, \"scripts/governance/bookshelf-owner-refinement-20260905.json\"), \"utf8\"\n"
+    },
+    {
+      "id": "NATIVE-ARCHIVE-TRANSPORT-012",
+      "path": "scripts/sync-literary-archive.mjs",
+      "before": "import { pathToFileURL, fileURLToPath } from \"node:url\";\nimport { isDeepStrictEqual } from \"node:util\";\n\nimport { build } from \"esbuild\";\nimport { authorshipRowsFromArchive } from \"./lib/book-authorship-roundtrip.mjs\";\nimport {\n  buildLiteraryArchiveReferenceMetadata,\n  referenceItemsFromArchive,\n  LITERARY_ARCHIVE_REFERENCE_ARTIFACT,\n} from \"./lib/literary-archive-reference-catalog.mjs\";\n",
+      "after": "import { pathToFileURL, fileURLToPath } from \"node:url\";\nimport { isDeepStrictEqual } from \"node:util\";\n\nimport { build } from \"esbuild\";\nimport { authorshipRowsFromArchive } from \"./lib/book-authorship-roundtrip.mjs\";\nimport { createNativeArchiveCommitClient } from \"./lib/literary-archive-database-commit.mjs\";\nimport {\n  literaryArchiveDatabaseMode,\n  validateLiteraryArchiveDatabaseMode,\n  requireNativeArchiveDatabaseCredentials,\n} from \"./lib/literary-archive-cli-mode.mjs\";\nimport {\n  buildLiteraryArchiveReferenceMetadata,\n  referenceItemsFromArchive,\n  LITERARY_ARCHIVE_REFERENCE_ARTIFACT,\n} from \"./lib/literary-archive-reference-catalog.mjs\";\n"
+    },
+    {
+      "id": "NATIVE-ARCHIVE-TRANSPORT-013",
+      "path": "scripts/sync-literary-archive.mjs",
+      "before": ");\nconst cacheDirectory = path.join(repositoryRoot, \"scripts\", \".cache\");\nconst bundlePath = path.join(cacheDirectory, \"literary-archive-source.mjs\");\nconst ATOMIC_WORKFLOW_RECEIPT_SCHEMA =\n  \"literary-archive-workflow-receipt-v2\";\nconst applyChanges = process.argv.includes(\"--apply\");\nconst preflightOnly = process.argv.includes(\"--preflight\");\nconst postflightOnly = process.argv.includes(\"--postflight\");\nconst coverBatch20260820 = process.argv.includes(\"--batch-2026-08-20\");\nconst enableEvidenceV2 = process.argv.includes(\"--enable-evidence-v2\");\nconst receiptOptionIndexes = process.argv.flatMap((argument, index) =>\n  argument === \"--receipt-file\" ? [index] : []\n);\n",
+      "after": ");\nconst cacheDirectory = path.join(repositoryRoot, \"scripts\", \".cache\");\nconst bundlePath = path.join(cacheDirectory, \"literary-archive-source.mjs\");\nconst ATOMIC_WORKFLOW_RECEIPT_SCHEMA =\n  \"literary-archive-workflow-receipt-v2\";\nconst databaseMode = literaryArchiveDatabaseMode(process.argv);\nconst { applyChanges, commitViaDatabase, preflightOnly, postflightOnly } = databaseMode;\nconst coverBatch20260820 = process.argv.includes(\"--batch-2026-08-20\");\nconst enableEvidenceV2 = process.argv.includes(\"--enable-evidence-v2\");\nconst receiptOptionIndexes = process.argv.flatMap((argument, index) =>\n  argument === \"--receipt-file\" ? [index] : []\n);\n"
+    },
+    {
+      "id": "NATIVE-ARCHIVE-TRANSPORT-014",
+      "path": "scripts/sync-literary-archive.mjs",
+      "before": "      \"--receipt-file must be a JSON file inside the reconciliation directory.\"\n    );\n  }\n}\n\nif ([applyChanges, preflightOnly, postflightOnly].filter(Boolean).length > 1) {\n  throw new Error(\n    \"Choose at most one database mode: --preflight, --postflight or --apply.\"\n  );\n}\nif ((applyChanges || postflightOnly) && coverBatch20260820) {\n  throw new Error(\n    \"Atomic apply/postflight always covers the complete archive; batch-only publication is forbidden.\"\n  );\n}\n",
+      "after": "      \"--receipt-file must be a JSON file inside the reconciliation directory.\"\n    );\n  }\n}\n\nvalidateLiteraryArchiveDatabaseMode(databaseMode);\nif ((applyChanges || postflightOnly) && coverBatch20260820) {\n  throw new Error(\n    \"Atomic apply/postflight always covers the complete archive; batch-only publication is forbidden.\"\n  );\n}\n"
+    },
+    {
+      "id": "NATIVE-ARCHIVE-TRANSPORT-015",
+      "path": "scripts/sync-literary-archive.mjs",
+      "before": "try {\n  process.loadEnvFile(path.join(repositoryRoot, \".env.local\"));\n} catch {\n  // В CI переменные передаются окружением; локальный файл необязателен.\n}\n\nfunction stableHash(value) {\n  return createHash(\"sha256\").update(value).digest(\"hex\").slice(0, 10);\n}\n\n",
+      "after": "try {\n  process.loadEnvFile(path.join(repositoryRoot, \".env.local\"));\n} catch {\n  // В CI переменные передаются окружением; локальный файл необязателен.\n}\nrequireNativeArchiveDatabaseCredentials(commitViaDatabase, process.env);\n\nfunction stableHash(value) {\n  return createHash(\"sha256\").update(value).digest(\"hex\").slice(0, 10);\n}\n\n"
+    },
+    {
+      "id": "NATIVE-ARCHIVE-TRANSPORT-016",
+      "path": "scripts/sync-literary-archive.mjs",
+      "before": "  console.log(\"Preflight-only mode complete: database was not changed.\");\n  process.exit(0);\n}\n\nconst releaseResult = await publishLiteraryArchiveAtomicRelease({\n  supabase,\n  items: releaseItems,\n  expectedPrecondition: precondition,\n  releaseKey,\n  sourceRevision,\n  expectedPredecessorPublicCount:\n",
+      "after": "  console.log(\"Preflight-only mode complete: database was not changed.\");\n  process.exit(0);\n}\n\nconst releaseResult = await publishLiteraryArchiveAtomicRelease({\n  supabase: commitViaDatabase ? createNativeArchiveCommitClient(supabase, { logger: console.info }) : supabase,\n  rpcAttempts: commitViaDatabase ? 1 : 3,\n  items: releaseItems,\n  expectedPrecondition: precondition,\n  releaseKey,\n  sourceRevision,\n  expectedPredecessorPublicCount:\n"
+    },
+    {
+      "id": "NATIVE-ARCHIVE-TRANSPORT-017",
+      "path": "src/data/bookCmsWellsPriority20260913.test.ts",
+      "before": "import { createHash } from \"node:crypto\";\nimport { readFileSync } from \"node:fs\";\nimport { afterEach, describe, expect, it, vi } from \"vitest\";\nimport { buildBookArchive } from \"./bookArchive\";\nimport { presentBookArchiveEntry } from \"./bookArchiveQueue\";\nimport { isPublicBook } from \"./bookQuality\";\nimport * as cmsOverrides from \"./cms/editorialOverrides\";\nimport { bookArchiveCountries } from \"./countries\";\nimport * as legacyReaudit from \"./countries/bookEvidenceV2LegacyVerifiedReaudit01\";\nimport type { Country, WorkProfile } from \"./countries/types\";\n\n",
+      "after": "import { createHash } from \"node:crypto\";\nimport { readFileSync } from \"node:fs\";\nimport { afterEach, describe, expect, it, vi } from \"vitest\";\nimport { buildBookArchive } from \"./bookArchive\";\nimport { presentBookArchiveEntry } from \"./bookArchiveQueue\";\nimport { bookEvidenceV2Issues } from \"./bookEvidence\";\nimport { isPublicBook } from \"./bookQuality\";\nimport canonRegistry from \"../../data/book-canon-source-registry.json\";\nimport * as cmsOverrides from \"./cms/editorialOverrides\";\nimport { bookArchiveCountries } from \"./countries\";\nimport * as legacyReaudit from \"./countries/bookEvidenceV2LegacyVerifiedReaudit01\";\nimport type { Country, WorkProfile } from \"./countries/types\";\n\n"
+    },
+    {
+      "id": "NATIVE-ARCHIVE-TRANSPORT-018",
+      "path": "src/data/bookCmsWellsPriority20260913.test.ts",
+      "before": "const packet = JSON.parse(readFileSync(new URL(\"../../reports/wells-editorial-repair-20260913.json\", import.meta.url), \"utf8\"));\nconst england = bookArchiveCountries.find((country) => country.id === \"england\")!;\nconst wells = england.writers.find((writer) => writer.id === \"h_g_wells\")!;\nconst wellsCountry: Country = { ...england, writers: [wells] };\nconst key = \"when-the-sleeper-wakes\";\nconst baseline = buildBookArchive([wellsCountry]).find((work) => work.id === key)!;\n\nfunction reviewedCmsWork(sourceContent = packet.afterContent): WorkProfile {\n  const content = structuredClone(sourceContent);\n  const contentText = JSON.stringify(content);\n  return evidenceV2ProfileFromLiveContent({\n",
+      "after": "const packet = JSON.parse(readFileSync(new URL(\"../../reports/wells-editorial-repair-20260913.json\", import.meta.url), \"utf8\"));\nconst england = bookArchiveCountries.find((country) => country.id === \"england\")!;\nconst wells = england.writers.find((writer) => writer.id === \"h_g_wells\")!;\nconst wellsCountry: Country = { ...england, writers: [wells] };\nconst key = \"when-the-sleeper-wakes\";\n// Historical fallback must not become the newly exported CMS record it tests.\nconst baseline = (() => {\n  const lookup = vi.spyOn(cmsOverrides, \"cmsLiteraryWorkProfilesForWriter\").mockReturnValue([]);\n  try { return buildBookArchive([wellsCountry]).find((work) => work.id === key)!; }\n  finally { lookup.mockRestore(); }\n})();\n\nfunction reviewedCmsWork(sourceContent = packet.afterContent): WorkProfile {\n  const content = structuredClone(sourceContent);\n  const contentText = JSON.stringify(content);\n  return evidenceV2ProfileFromLiveContent({\n"
+    },
+    {
+      "id": "NATIVE-ARCHIVE-TRANSPORT-019",
+      "path": "src/data/bookCmsWellsPriority20260913.test.ts",
+      "before": "}\n\nafterEach(() => vi.restoreAllMocks());\n\ndescribe(\"reviewed Wells CMS content survives static archive overlays\", () => {\n  it(\"preserves the exact repaired CMS text, sources, titles and provenance in both archive modes\", () => {\n    const cmsWork = reviewedCmsWork();\n    const original = structuredClone(cmsWork);\n    expect(isPublicBook(cmsWork)).toBe(true);\n    mockCmsWorks(wells.id, [cmsWork]);\n",
+      "after": "}\n\nafterEach(() => vi.restoreAllMocks());\n\ndescribe(\"reviewed Wells CMS content survives static archive overlays\", () => {\n  it(\"preserves the currently exported qualified CMS record independently of the historical fallback\", () => {\n    const currentCms = cmsOverrides.cmsLiteraryWorkProfilesForWriter(\"england\", wells.id).find(work => work.id === key);\n    const qualified = currentCms && isPublicBook(currentCms) &&\n      currentCms.localizedTitles?.ru && currentCms.localizedTitles?.en &&\n      currentCms.translations?.ru?.titleEvidence && currentCms.translations?.en?.titleEvidence &&\n      currentCms.translations.ru.descriptionProvenance && currentCms.translations.en.descriptionProvenance;\n    if (qualified) {\n      expect(bookEvidenceV2Issues(currentCms, {\n        canonRegistry, recordKey: `england:h_g_wells:${key}`, originCountryIds: [\"england\"],\n        descriptionSha256ByLocale: {\n          ru: createHash(\"sha256\").update(currentCms.translations!.ru!.description).digest(\"hex\"),\n          en: createHash(\"sha256\").update(currentCms.translations!.en!.description).digest(\"hex\"),\n        },\n      })).toEqual([]);\n    }\n    const expected = qualified ? currentCms : baseline;\n    for (const includeR49nCatalog of [true, false]) {\n      const result = buildBookArchive([wellsCountry], { includeR49nCatalog }).find(work => work.id === key)!;\n      for (const field of [\"title\", \"description\", \"translations\", \"localizedTitles\", \"sources\", \"editorial\"] as const) {\n        expect(result[field], field).toEqual(expected[field]);\n      }\n    }\n  });\n\n  it(\"preserves the exact repaired CMS text, sources, titles and provenance in both archive modes\", () => {\n    const cmsWork = reviewedCmsWork();\n    const original = structuredClone(cmsWork);\n    expect(isPublicBook(cmsWork)).toBe(true);\n    mockCmsWorks(wells.id, [cmsWork]);\n"
+    },
+    {
+      "id": "NATIVE-ARCHIVE-TRANSPORT-020",
+      "path": "src/data/bookR49nPackageReviewed20260912.test.ts",
+      "before": "import { createHash } from \"node:crypto\";\nimport { describe, expect, it } from \"vitest\";\nimport attestation from \"../../scripts/governance/book-r49n-package-reviewed-20260912.json\";\nimport canonRegistry from \"../../data/book-canon-source-registry.json\";\nimport { buildBookArchive, resolveBookArchivePublicTarget } from \"./bookArchive\";\nimport { bookEvidenceV2Issues } from \"./bookEvidence\";\nimport { isPublicBook } from \"./bookQuality\";\nimport { bookArchiveCountries, countries } from \"./countries\";\nimport { bookR49nRetainedDraftRecordKeys } from \"./countries/bookR49nRetainedDrafts20260912\";\n\nconst canonical = (value: unknown): unknown => Array.isArray(value) ? value.map(canonical)\n  : value && typeof value === \"object\"\n    ? Object.fromEntries(Object.entries(value).sort(([a], [b]) => a < b ? -1 : a > b ? 1 : 0)\n      .map(([key, item]) => [key, canonical(item)])) : value;\n",
+      "after": "import { createHash } from \"node:crypto\";\nimport { describe, expect, it, vi } from \"vitest\";\nimport attestation from \"../../scripts/governance/book-r49n-package-reviewed-20260912.json\";\nimport canonRegistry from \"../../data/book-canon-source-registry.json\";\nimport { buildBookArchive, resolveBookArchivePublicTarget } from \"./bookArchive\";\nimport { bookEvidenceV2Issues } from \"./bookEvidence\";\nimport { isPublicBook } from \"./bookQuality\";\nimport { bookArchiveCountries, countries } from \"./countries\";\nimport { bookR49nRetainedDraftRecordKeys } from \"./countries/bookR49nRetainedDrafts20260912\";\nimport * as cmsOverrides from \"./cms/editorialOverrides\";\nimport { historicalCmsLiteraryWorkProfilesForWriter } from \"./cms/historicalLiteraryWorks20260912.test-support\";\n\nconst canonical = (value: unknown): unknown => Array.isArray(value) ? value.map(canonical)\n  : value && typeof value === \"object\"\n    ? Object.fromEntries(Object.entries(value).sort(([a], [b]) => a < b ? -1 : a > b ? 1 : 0)\n      .map(([key, item]) => [key, canonical(item)])) : value;\n"
+    },
+    {
+      "id": "NATIVE-ARCHIVE-TRANSPORT-021",
+      "path": "src/data/bookR49nPackageReviewed20260912.test.ts",
+      "before": "const objectHash = (value: unknown) => sha(JSON.stringify(canonical(value)));\nconst aggregate = (pairs: [string, string][]) => sha(\n  pairs.sort(([a], [b]) => a < b ? -1 : a > b ? 1 : 0)\n    .map(([key, hash]) => `${key}\\0${hash}\\n`).join(\"\")\n);\nconst archive = buildBookArchive(bookArchiveCountries);\nconst keyOf = (book: { countryId: string; writerId: string; id: string }) =>\n  `${book.countryId}:${book.writerId}:${book.id}`;\nconst records = archive.map(({ country: _country, writer: _writer, ...book }) => book);\nconst byKey = new Map(records.map(book => [keyOf(book), book]));\nconst runtime = attestation.runtime;\n",
+      "after": "const objectHash = (value: unknown) => sha(JSON.stringify(canonical(value)));\nconst aggregate = (pairs: [string, string][]) => sha(\n  pairs.sort(([a], [b]) => a < b ? -1 : a > b ? 1 : 0)\n    .map(([key, hash]) => `${key}\\0${hash}\\n`).join(\"\")\n);\n// This packet attests the historical corpus, including its frozen public CMS records; live CMS priority has its\n// own unmocked contract in bookCmsWellsPriority20260913.test.ts.\nconst archive = (() => {\n  const lookup = vi.spyOn(cmsOverrides, \"cmsLiteraryWorkProfilesForWriter\").mockImplementation(historicalCmsLiteraryWorkProfilesForWriter);\n  try { return buildBookArchive(bookArchiveCountries); }\n  finally { lookup.mockRestore(); }\n})();\nconst keyOf = (book: { countryId: string; writerId: string; id: string }) =>\n  `${book.countryId}:${book.writerId}:${book.id}`;\nconst records = archive.map(({ country: _country, writer: _writer, ...book }) => book);\nconst byKey = new Map(records.map(book => [keyOf(book), book]));\nconst runtime = attestation.runtime;\n"
+    },
+    {
+      "id": "NATIVE-ARCHIVE-TRANSPORT-022",
+      "path": "src/data/countries/bookR49nDickensReviewed20260912.test.ts",
+      "before": "import { createHash } from \"node:crypto\";\nimport { describe, expect, it } from \"vitest\";\nimport canonRegistry from \"../../../data/book-canon-source-registry.json\";\nimport review from \"../../../reports/book-r49n-dickens-reviewed-20260912.json\";\nimport attestation from \"../../../scripts/governance/book-r49n-dickens-reviewed-20260912.json\";\nimport { buildBookArchive, type BookArchiveEntry } from \"../bookArchive\";\nimport { bookEvidenceV2Issues } from \"../bookEvidence\";\nimport { isPublicBook } from \"../bookQuality\";\nimport { bookArchiveCountries } from \"./index\";\nimport {\n  applyBookR49nDickensReviewed20260912Work,\n  bookR49nDickensReviewed20260912RecordKeys,\n} from \"./bookR49nDickensReviewed20260912\";\n",
+      "after": "import { createHash } from \"node:crypto\";\nimport { describe, expect, it, vi } from \"vitest\";\nimport canonRegistry from \"../../../data/book-canon-source-registry.json\";\nimport review from \"../../../reports/book-r49n-dickens-reviewed-20260912.json\";\nimport attestation from \"../../../scripts/governance/book-r49n-dickens-reviewed-20260912.json\";\nimport { buildBookArchive, type BookArchiveEntry } from \"../bookArchive\";\nimport { bookEvidenceV2Issues } from \"../bookEvidence\";\nimport { isPublicBook } from \"../bookQuality\";\nimport * as cmsOverrides from \"../cms/editorialOverrides\";\nimport { historicalCmsLiteraryWorkProfilesForWriter } from \"../cms/historicalLiteraryWorks20260912.test-support\";\nimport { bookArchiveCountries } from \"./index\";\nimport {\n  applyBookR49nDickensReviewed20260912Work,\n  bookR49nDickensReviewed20260912RecordKeys,\n} from \"./bookR49nDickensReviewed20260912\";\n"
+    },
+    {
+      "id": "NATIVE-ARCHIVE-TRANSPORT-023",
+      "path": "src/data/countries/bookR49nDickensReviewed20260912.test.ts",
+      "before": "      expect(bookEvidenceV2Issues(book, context(book)), key).toEqual([]);\n    }\n  });\n\n  it(\"preserves protected fields of the original ten targets within the separately audited common package\", () => {\n    const canonical = (value: unknown): unknown => Array.isArray(value)\n      ? value.map(canonical)\n      : value && typeof value === \"object\"\n        ? Object.fromEntries(Object.entries(value).sort(([a], [b]) => a < b ? -1 : a > b ? 1 : 0).map(([key, item]) => [key, canonical(item)]))\n        : value;\n",
+      "after": "      expect(bookEvidenceV2Issues(book, context(book)), key).toEqual([]);\n    }\n  });\n\n  it(\"preserves protected fields of the original ten targets within the separately audited common package\", () => {\n    // Only this dated byte-proof uses its original CMS snapshot. The current\n    // ten profiles and all 46 prior Evidence records above remain unmocked.\n    const historicalArchive = (() => {\n      const lookup = vi.spyOn(cmsOverrides, \"cmsLiteraryWorkProfilesForWriter\")\n        .mockImplementation(historicalCmsLiteraryWorkProfilesForWriter);\n      try { return buildBookArchive(bookArchiveCountries); }\n      finally { lookup.mockRestore(); }\n    })();\n    const canonical = (value: unknown): unknown => Array.isArray(value)\n      ? value.map(canonical)\n      : value && typeof value === \"object\"\n        ? Object.fromEntries(Object.entries(value).sort(([a], [b]) => a < b ? -1 : a > b ? 1 : 0).map(([key, item]) => [key, canonical(item)]))\n        : value;\n"
+    },
+    {
+      "id": "NATIVE-ARCHIVE-TRANSPORT-024",
+      "path": "src/data/countries/bookR49nDickensReviewed20260912.test.ts",
+      "before": "    const targetKeys = new Set(attestation.runtime.newReadyKeys);\n    const protectedFields = new Set(attestation.runtime.protectedTargetFields);\n    // Global key-set, ready-set and non-target hashes are now asserted by\n    // bookR49nPackageReviewed20260912.test.ts against the original 46 baseline.\n    expect(archive.filter((book) => targetKeys.has(keyOf(book)))).toHaveLength(10);\n    expect(aggregate(archive.filter((book) => targetKeys.has(keyOf(book))).map((book) => [\n      keyOf(book), objectHash(Object.fromEntries(Object.entries(book).filter(([field, value]) => protectedFields.has(field) && value !== undefined))),\n    ]))).toBe(attestation.runtime.protectedTargetFieldsSha256);\n\n  });\n\n",
+      "after": "    const targetKeys = new Set(attestation.runtime.newReadyKeys);\n    const protectedFields = new Set(attestation.runtime.protectedTargetFields);\n    // Global key-set, ready-set and non-target hashes are now asserted by\n    // bookR49nPackageReviewed20260912.test.ts against the original 46 baseline.\n    expect(archive.filter((book) => targetKeys.has(keyOf(book)))).toHaveLength(10);\n    expect(aggregate(historicalArchive.filter((book) => targetKeys.has(keyOf(book))).map((book) => [\n      keyOf(book), objectHash(Object.fromEntries(Object.entries(book).filter(([field, value]) => protectedFields.has(field) && value !== undefined))),\n    ]))).toBe(attestation.runtime.protectedTargetFieldsSha256);\n\n  });\n\n"
+    },
+    {
+      "id": "NATIVE-ARCHIVE-TRANSPORT-025",
+      "path": "src/data/countries/bookR49nRetainedDrafts20260912.test.ts",
+      "before": "import { createHash } from \"node:crypto\";\nimport { readFileSync } from \"node:fs\";\nimport { describe, expect, it } from \"vitest\";\nimport { buildBookArchive, resolveBookArchivePublicTarget } from \"../bookArchive\";\nimport { isPublicBook } from \"../bookQuality\";\nimport { bookArchiveCountries, countries } from \"./index\";\nimport {\n  applyBookR49nRetainedDrafts20260912Work,\n  bookR49nRetainedDraftRecordKeys,\n  bookR49nRetainedDraftsProtectedReviewedKeys,\n} from \"./bookR49nRetainedDrafts20260912\";\nimport { mergeBookR49nAlcottDraft20260912 } from \"./bookR49nAlcottDraft20260912\";\nimport type { WorkProfile } from \"./types\";\n\nconst report = JSON.parse(readFileSync(\"reports/book-r49n-retained-drafts-20260912.json\", \"utf8\"));\nconst sha = (value: string) => createHash(\"sha256\").update(value).digest(\"hex\");\nconst canonical = (value: unknown): unknown => Array.isArray(value) ? value.map(canonical)\n  : value && typeof value === \"object\"\n    ? Object.fromEntries(Object.entries(value).sort(([a], [b]) => a < b ? -1 : a > b ? 1 : 0).map(([key, item]) => [key, canonical(item)]))\n    : value;\nconst hash = (value: unknown) => sha(JSON.stringify(canonical(value)));\nconst archive = buildBookArchive(bookArchiveCountries);\nconst keyOf = (book: typeof archive[number]) => [book.countryId, book.writerId, book.id].join(\":\");\nconst byKey = new Map(archive.map(book => [keyOf(book), book]));\nconst omitContext = ({ country, writer, ...book }: typeof archive[number]) => book;\ntype Proof = { recordKey: string; locale: \"ru\" | \"en\"; textSha256: string; decision: string; sourceUrls: string[] };\nconst draftProofs: Proof[] = report.selectedVersions.filter((proof: Proof) => proof.decision === \"display-exact-retained-text-as-draft\");\n",
+      "after": "import { createHash } from \"node:crypto\";\nimport { readFileSync } from \"node:fs\";\nimport { describe, expect, it, vi } from \"vitest\";\nimport { buildBookArchive, resolveBookArchivePublicTarget } from \"../bookArchive\";\nimport { isPublicBook } from \"../bookQuality\";\nimport { bookArchiveCountries, countries } from \"./index\";\nimport {\n  applyBookR49nRetainedDrafts20260912Work,\n  bookR49nRetainedDraftRecordKeys,\n  bookR49nRetainedDraftsProtectedReviewedKeys,\n} from \"./bookR49nRetainedDrafts20260912\";\nimport { mergeBookR49nAlcottDraft20260912 } from \"./bookR49nAlcottDraft20260912\";\nimport type { WorkProfile } from \"./types\";\nimport * as cmsOverrides from \"../cms/editorialOverrides\";\nimport { historicalCmsLiteraryWorkProfilesForWriter } from \"../cms/historicalLiteraryWorks20260912.test-support\";\n\nconst report = JSON.parse(readFileSync(\"reports/book-r49n-retained-drafts-20260912.json\", \"utf8\"));\nconst sha = (value: string) => createHash(\"sha256\").update(value).digest(\"hex\");\nconst canonical = (value: unknown): unknown => Array.isArray(value) ? value.map(canonical)\n  : value && typeof value === \"object\"\n    ? Object.fromEntries(Object.entries(value).sort(([a], [b]) => a < b ? -1 : a > b ? 1 : 0).map(([key, item]) => [key, canonical(item)]))\n    : value;\nconst hash = (value: unknown) => sha(JSON.stringify(canonical(value)));\n// Preserve the original byte-proof, including its frozen public CMS records while CMS can publish later reviewed\n// editions. Their actual priority is verified separately without this stub.\nconst archive = (() => {\n  const lookup = vi.spyOn(cmsOverrides, \"cmsLiteraryWorkProfilesForWriter\").mockImplementation(historicalCmsLiteraryWorkProfilesForWriter);\n  try { return buildBookArchive(bookArchiveCountries); }\n  finally { lookup.mockRestore(); }\n})();\nconst keyOf = (book: typeof archive[number]) => [book.countryId, book.writerId, book.id].join(\":\");\nconst byKey = new Map(archive.map(book => [keyOf(book), book]));\nconst omitContext = ({ country, writer, ...book }: typeof archive[number]) => book;\ntype Proof = { recordKey: string; locale: \"ru\" | \"en\"; textSha256: string; decision: string; sourceUrls: string[] };\nconst draftProofs: Proof[] = report.selectedVersions.filter((proof: Proof) => proof.decision === \"display-exact-retained-text-as-draft\");\n"
+    },
+    {
+      "id": "NATIVE-ARCHIVE-TRANSPORT-026",
+      "path": "src/data/userSuppliedBookCoversBatch20260820.test.ts",
+      "before": "import { createHash } from \"node:crypto\";\nimport { readFile, readdir } from \"node:fs/promises\";\nimport { fileURLToPath } from \"node:url\";\n\nimport sharp from \"sharp\";\nimport { describe, expect, it } from \"vitest\";\n\nimport { buildBookArchive, isCoverArtworkDisplayAllowed } from \"./bookArchive\";\nimport { bookPublicationIssues, isPublicBook } from \"./bookQuality\";\nimport { bookArchiveCountries } from \"./countries\";\nimport batchManifestJson from \"./countries/generated/userSuppliedBookCoversBatch20260820.generated.json\";\n",
+      "after": "import { createHash } from \"node:crypto\";\nimport { readFile, readdir } from \"node:fs/promises\";\nimport { fileURLToPath } from \"node:url\";\n\nimport sharp from \"sharp\";\nimport { describe, expect, it, vi } from \"vitest\";\n\nimport { buildBookArchive, isCoverArtworkDisplayAllowed } from \"./bookArchive\";\nimport { bookPublicationIssues, isPublicBook } from \"./bookQuality\";\nimport { bookArchiveCountries } from \"./countries\";\nimport batchManifestJson from \"./countries/generated/userSuppliedBookCoversBatch20260820.generated.json\";\n"
+    },
+    {
+      "id": "NATIVE-ARCHIVE-TRANSPORT-027",
+      "path": "src/data/userSuppliedBookCoversBatch20260820.test.ts",
+      "before": "import {\n  userSuppliedBookCoverBatch20260820Manifest,\n  userSuppliedBookCoverManifests,\n} from \"./userSuppliedBookCovers\";\n\nconst archiveSha256 =\n  \"0ad2a8f1c49573d51418beA2acf023a36b87db6e767b75dc869aa92f59b05cd3\".toLocaleLowerCase(\n    \"en\"\n  );\nconst baseline = buildBookArchive(bookArchiveCountries, {\n",
+      "after": "import {\n  userSuppliedBookCoverBatch20260820Manifest,\n  userSuppliedBookCoverManifests,\n} from \"./userSuppliedBookCovers\";\n\n// This historical source/artwork regression must not consume a fresh CMS edit.\n// Accepted and private CMS profiles have separate archive-priority coverage.\nvi.mock(\"./cms/editorialOverrides\", async (importOriginal) => ({\n  ...await importOriginal<typeof import(\"./cms/editorialOverrides\")>(),\n  cmsLiteraryWorkProfilesForWriter: () => [],\n}));\n\nconst archiveSha256 =\n  \"0ad2a8f1c49573d51418beA2acf023a36b87db6e767b75dc869aa92f59b05cd3\".toLocaleLowerCase(\n    \"en\"\n  );\nconst baseline = buildBookArchive(bookArchiveCountries, {\n"
+    }
+  ]
+}

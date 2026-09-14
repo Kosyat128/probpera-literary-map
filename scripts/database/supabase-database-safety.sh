@@ -803,6 +803,33 @@ command_verify_production() {
   run_remote_psql "$sql_file" "$output_file"
 }
 
+command_commit_archive() {
+  local release_id="$1" manifest_sha256="$2" sql_directory
+  [[ "$release_id" =~ ^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$ ]] \
+    || die "Archive release ID must be a canonical UUID."
+  [[ "$manifest_sha256" =~ ^[0-9a-f]{64}$ ]] \
+    || die "Archive manifest must be an exact SHA-256."
+  validate_database_url
+  pull_database_image
+  sql_directory="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
+  [[ -s "$sql_directory/literary-archive-native-commit.sql" ]] \
+    || die "Fixed native archive commit SQL is missing."
+  docker run --rm \
+    --env PGSSLMODE=require \
+    --env PGCONNECT_TIMEOUT=20 \
+    --volume "$sql_directory:/probpera-sql:ro" \
+    --entrypoint psql \
+    "$DATABASE_IMAGE" \
+    --dbname="$SUPABASE_DB_URL" \
+    --no-psqlrc --quiet --tuples-only --no-align \
+    --set=ON_ERROR_STOP=1 \
+    --set=VERBOSITY=sqlstate \
+    --set="release_id=$release_id" \
+    --set="manifest_sha256=$manifest_sha256" \
+    --single-transaction \
+    --file /probpera-sql/literary-archive-native-commit.sql
+}
+
 usage() {
   cat >&2 <<'EOF'
 Usage:
@@ -812,6 +839,7 @@ Usage:
   supabase-database-safety.sh restore-drill DUMP AUTH_USER_IDS [PLAN] [RESULT]
   supabase-database-safety.sh apply-plan PLAN
   supabase-database-safety.sh verify-production SQL OUTPUT
+  supabase-database-safety.sh commit-archive RELEASE_UUID MANIFEST_SHA256
 EOF
   exit 2
 }
@@ -840,6 +868,10 @@ case "${1:-}" in
   verify-production)
     [[ "$#" -eq 3 ]] || usage
     command_verify_production "$2" "$3"
+    ;;
+  commit-archive)
+    [[ "$#" -eq 3 ]] || usage
+    command_commit_archive "$2" "$3"
     ;;
   *) usage ;;
 esac

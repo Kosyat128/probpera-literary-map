@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import attestation from "../../scripts/governance/book-r49n-package-reviewed-20260912.json";
 import canonRegistry from "../../data/book-canon-source-registry.json";
 import { buildBookArchive, resolveBookArchivePublicTarget } from "./bookArchive";
@@ -7,6 +7,8 @@ import { bookEvidenceV2Issues } from "./bookEvidence";
 import { isPublicBook } from "./bookQuality";
 import { bookArchiveCountries, countries } from "./countries";
 import { bookR49nRetainedDraftRecordKeys } from "./countries/bookR49nRetainedDrafts20260912";
+import * as cmsOverrides from "./cms/editorialOverrides";
+import { historicalCmsLiteraryWorkProfilesForWriter } from "./cms/historicalLiteraryWorks20260912.test-support";
 
 const canonical = (value: unknown): unknown => Array.isArray(value) ? value.map(canonical)
   : value && typeof value === "object"
@@ -18,7 +20,13 @@ const aggregate = (pairs: [string, string][]) => sha(
   pairs.sort(([a], [b]) => a < b ? -1 : a > b ? 1 : 0)
     .map(([key, hash]) => `${key}\0${hash}\n`).join("")
 );
-const archive = buildBookArchive(bookArchiveCountries);
+// This packet attests the historical corpus, including its frozen public CMS records; live CMS priority has its
+// own unmocked contract in bookCmsWellsPriority20260913.test.ts.
+const archive = (() => {
+  const lookup = vi.spyOn(cmsOverrides, "cmsLiteraryWorkProfilesForWriter").mockImplementation(historicalCmsLiteraryWorkProfilesForWriter);
+  try { return buildBookArchive(bookArchiveCountries); }
+  finally { lookup.mockRestore(); }
+})();
 const keyOf = (book: { countryId: string; writerId: string; id: string }) =>
   `${book.countryId}:${book.writerId}:${book.id}`;
 const records = archive.map(({ country: _country, writer: _writer, ...book }) => book);

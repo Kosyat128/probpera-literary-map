@@ -2,6 +2,11 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 import {
+  literaryArchiveDatabaseMode,
+  validateLiteraryArchiveDatabaseMode,
+  requireNativeArchiveDatabaseCredentials,
+} from "../lib/literary-archive-cli-mode.mjs";
+import {
   LITERARY_ARCHIVE_CHILD_EDIT_PRESERVATION_SCHEMA,
   LITERARY_ARCHIVE_RELEASE_CONTRACT,
   encodeLiteraryArchiveReleaseItem,
@@ -20,6 +25,15 @@ const read = (file) =>
   readFileSync(path.join(root, file), "utf8").replace(/\r\n?/gu, "\n");
 const syncSource = read("scripts/sync-literary-archive.mjs");
 const helperSource = read("scripts/lib/literary-archive-atomic-release.mjs");
+const reconciliationWorkflow = read(".github/workflows/reconcile-production-database.yml");
+
+// Import the actual CLI guards without evaluating source text or starting I/O.
+function archiveCliMode(args, env = {}) {
+  const mode = literaryArchiveDatabaseMode(args);
+  validateLiteraryArchiveDatabaseMode(mode);
+  requireNativeArchiveDatabaseCredentials(mode.commitViaDatabase, env);
+  return mode;
+}
 
 function item(ordinal) {
   const legacyId = `country:writer:work-${ordinal}`;
@@ -190,6 +204,47 @@ function publishArgs(client, items) {
 }
 
 describe("atomic literary archive sync integration", () => {
+  it("requires an explicit apply-only native commit mode and database credentials", () => {
+    expect(syncSource).toContain("const databaseMode = literaryArchiveDatabaseMode(process.argv);");
+    expect(syncSource).toContain("validateLiteraryArchiveDatabaseMode(databaseMode);");
+    expect(syncSource.indexOf("requireNativeArchiveDatabaseCredentials(commitViaDatabase, process.env);"))
+      .toBeGreaterThan(syncSource.indexOf("process.loadEnvFile("));
+    for (const args of [[], ["--preflight"], ["--postflight"]]) {
+      expect(() => archiveCliMode([...args, "--commit-via-database"]))
+        .toThrow("--commit-via-database is valid only with --apply.");
+    }
+    expect(() => archiveCliMode(["--apply", "--preflight", "--commit-via-database"]))
+      .toThrow("Choose at most one database mode");
+    for (const databaseUrl of [undefined, "", "  "]) {
+      expect(() => archiveCliMode(["--apply", "--commit-via-database"], { SUPABASE_DB_URL: databaseUrl }))
+        .toThrow("--commit-via-database requires SUPABASE_DB_URL.");
+    }
+    expect(archiveCliMode(["--apply", "--commit-via-database"], { SUPABASE_DB_URL: "postgresql://fixture.invalid/database" }).commitViaDatabase)
+      .toBe(true);
+    for (const args of [[], ["--apply"], ["--preflight"], ["--postflight", "--receipt-file", "reconciliation/test-receipt.json"]]) {
+      expect(archiveCliMode(args).commitViaDatabase).toBe(false);
+    }
+  });
+
+  it("selects native commit only for final publication and never retries that path automatically", () => {
+    const publish = syncSource.slice(syncSource.indexOf("const releaseResult = await publishLiteraryArchiveAtomicRelease({"));
+    expect(publish).toContain("supabase: commitViaDatabase ? createNativeArchiveCommitClient(supabase, { logger: console.info }) : supabase");
+    expect(publish).toContain("rpcAttempts: commitViaDatabase ? 1 : 3");
+    expect(syncSource.match(/createNativeArchiveCommitClient\(supabase,/gu)).toHaveLength(1);
+    const steps = reconciliationWorkflow.split(/\n      - name: /u);
+    const apply = steps.find(step => step.startsWith("Publish the full literary archive in one atomic commit"));
+    expect(apply).toContain("SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}");
+    expect(apply).toContain("SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}");
+    expect(apply).toContain("--commit-via-database");
+    expect(reconciliationWorkflow.match(/--commit-via-database/gu)).toHaveLength(1);
+    for (const name of ["Run the read-only full archive preflight", "Run the read-only atomic archive postflight"]) {
+      const step = steps.find(candidate => candidate.startsWith(name));
+      expect(step).toBeDefined();
+      expect(step).not.toContain("--commit-via-database");
+      expect(step).not.toContain("SUPABASE_DB_URL:");
+    }
+  });
+
   it("has no direct live mutation path and commits only after exact receipt verification", () => {
     expect(syncSource).not.toMatch(/\.(?:upsert|insert|delete)\(/u);
     expect(syncSource).not.toMatch(

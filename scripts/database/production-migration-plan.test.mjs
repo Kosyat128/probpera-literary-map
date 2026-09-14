@@ -378,7 +378,7 @@ describe("guarded production database reconciliation", () => {
   it("passes the validated database URI explicitly to every remote client", () => {
     expect(
       helper.match(/--dbname="\$SUPABASE_DB_URL"/gu)
-    ).toHaveLength(5);
+    ).toHaveLength(6);
     expect(helper).not.toContain("PGDATABASE");
     expect(helper).not.toMatch(/(?:echo|printf)[^\n]*SUPABASE_DB_URL/iu);
   });

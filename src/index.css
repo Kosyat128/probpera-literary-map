@@ -16805,8 +16805,12 @@ html[data-theme="book"] .calendar-heading h3 {
 }
 
 .article-reader-content :where(img, video, iframe, svg, canvas),
-.article-reader-content [style*="width"] {
+.article-reader-content [style*="width"]:not(figure.article-inline-image) {
   max-width: 100% !important;
+}
+
+.article-reader-content figure.article-inline-image:is(.is-wide, .is-full) {
+  max-width: min(var(--editorial-image-max-width, 100%), 100%) !important;
 }
 
 .article-reader-content :not(pre) > code {

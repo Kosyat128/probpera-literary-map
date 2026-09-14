@@ -318,10 +318,13 @@ jobs:
       - name: Publish the full literary archive in one atomic commit
         env:
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
         run: |
           set -Eeuo pipefail
           node scripts/sync-literary-archive.mjs --apply \
+            --commit-via-database \
             --enable-evidence-v2 \
             --receipt-file reconciliation/literary-archive-release-receipt.json
           echo "- Full literary archive atomic release: committed" >> reconciliation/summary.md
