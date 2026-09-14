@@ -59,7 +59,7 @@
     "scripts/lib/reviewed-r49n-package.test.mjs": "7129eac1c61e577f2f4dfe95a085460464643dac80e5fe33afc37d14b54a96fc",
     "scripts/lib/reviewed-reference-release.test.mjs": "55f0b4234816b0d0a407b1f3d3de50b97760437838208b9a85d4868d2f983da6",
     "scripts/lib/stage5-content-data-lock.test.mjs": "2072075e9e57deeaef5652d789606421647b08e717d53bf3171ced800ef69624",
-    "scripts/sync-literary-archive.mjs": "3b372188b914411a89c23d147259198168ef909d1f72c225b17a04656e68417c",
+    "scripts/sync-literary-archive.mjs": "f04b898a273086292b9f87b664bf924149dc6ea777fef422f289ba877fdcfd92",
     "src/data/bookCmsWellsPriority20260913.test.ts": "794240bacf3f380b98c5fdeb1ba5a8c47123c90a864276d4ca9291705be4612e",
     "src/data/bookR49nPackageReviewed20260912.test.ts": "5f6081f91305c2431cdee4cc05952d228fa966e1c7881f013e905192a29553d8",
     "src/data/countries/bookR49nDickensReviewed20260912.test.ts": "0ebc3fb18c4241567dad10efb351d14d9c69a3e3f077d5b67849989484a74795",
@@ -298,7 +298,7 @@
   ],
   "reviewedReport": {
     "path": "reports/library-native-transport-reviewed-20260914.json",
-    "sha256Lf": "ccc83d634aba718382e86d8d3ca9f41052cc32be79968fdb9160580056e5994f"
+    "sha256Lf": "034a1eed4050958ffd4b4b3cca5dc65fb8b8bedde3cc9c3cb31e9554a2a4a399"
   },
   "projections": [
     {
@@ -371,25 +371,25 @@
       "id": "NATIVE-ARCHIVE-TRANSPORT-012",
       "path": "scripts/sync-literary-archive.mjs",
       "before": "import { pathToFileURL, fileURLToPath } from \"node:url\";\nimport { isDeepStrictEqual } from \"node:util\";\n\nimport { build } from \"esbuild\";\nimport { authorshipRowsFromArchive } from \"./lib/book-authorship-roundtrip.mjs\";\nimport {\n  buildLiteraryArchiveReferenceMetadata,\n  referenceItemsFromArchive,\n  LITERARY_ARCHIVE_REFERENCE_ARTIFACT,\n} from \"./lib/literary-archive-reference-catalog.mjs\";\n",
-      "after": "import { pathToFileURL, fileURLToPath } from \"node:url\";\nimport { isDeepStrictEqual } from \"node:util\";\n\nimport { build } from \"esbuild\";\nimport { authorshipRowsFromArchive } from \"./lib/book-authorship-roundtrip.mjs\";\nimport { createNativeArchiveCommitClient } from \"./lib/literary-archive-database-commit.mjs\";\nimport {\n  buildLiteraryArchiveReferenceMetadata,\n  referenceItemsFromArchive,\n  LITERARY_ARCHIVE_REFERENCE_ARTIFACT,\n} from \"./lib/literary-archive-reference-catalog.mjs\";\n"
+      "after": "import { pathToFileURL, fileURLToPath } from \"node:url\";\nimport { isDeepStrictEqual } from \"node:util\";\n\nimport { build } from \"esbuild\";\nimport { authorshipRowsFromArchive } from \"./lib/book-authorship-roundtrip.mjs\";\nimport { createNativeArchiveCommitClient } from \"./lib/literary-archive-database-commit.mjs\";\nimport {\n  literaryArchiveDatabaseMode,\n  validateLiteraryArchiveDatabaseMode,\n  requireNativeArchiveDatabaseCredentials,\n} from \"./lib/literary-archive-cli-mode.mjs\";\nimport {\n  buildLiteraryArchiveReferenceMetadata,\n  referenceItemsFromArchive,\n  LITERARY_ARCHIVE_REFERENCE_ARTIFACT,\n} from \"./lib/literary-archive-reference-catalog.mjs\";\n"
     },
     {
       "id": "NATIVE-ARCHIVE-TRANSPORT-013",
       "path": "scripts/sync-literary-archive.mjs",
-      "before": "const cacheDirectory = path.join(repositoryRoot, \"scripts\", \".cache\");\nconst bundlePath = path.join(cacheDirectory, \"literary-archive-source.mjs\");\nconst ATOMIC_WORKFLOW_RECEIPT_SCHEMA =\n  \"literary-archive-workflow-receipt-v2\";\nconst applyChanges = process.argv.includes(\"--apply\");\nconst preflightOnly = process.argv.includes(\"--preflight\");\nconst postflightOnly = process.argv.includes(\"--postflight\");\nconst coverBatch20260820 = process.argv.includes(\"--batch-2026-08-20\");\nconst enableEvidenceV2 = process.argv.includes(\"--enable-evidence-v2\");\nconst receiptOptionIndexes = process.argv.flatMap((argument, index) =>\n",
-      "after": "const cacheDirectory = path.join(repositoryRoot, \"scripts\", \".cache\");\nconst bundlePath = path.join(cacheDirectory, \"literary-archive-source.mjs\");\nconst ATOMIC_WORKFLOW_RECEIPT_SCHEMA =\n  \"literary-archive-workflow-receipt-v2\";\nconst applyChanges = process.argv.includes(\"--apply\");\nconst commitViaDatabase = process.argv.includes(\"--commit-via-database\");\nconst preflightOnly = process.argv.includes(\"--preflight\");\nconst postflightOnly = process.argv.includes(\"--postflight\");\nconst coverBatch20260820 = process.argv.includes(\"--batch-2026-08-20\");\nconst enableEvidenceV2 = process.argv.includes(\"--enable-evidence-v2\");\nconst receiptOptionIndexes = process.argv.flatMap((argument, index) =>\n"
+      "before": ");\nconst cacheDirectory = path.join(repositoryRoot, \"scripts\", \".cache\");\nconst bundlePath = path.join(cacheDirectory, \"literary-archive-source.mjs\");\nconst ATOMIC_WORKFLOW_RECEIPT_SCHEMA =\n  \"literary-archive-workflow-receipt-v2\";\nconst applyChanges = process.argv.includes(\"--apply\");\nconst preflightOnly = process.argv.includes(\"--preflight\");\nconst postflightOnly = process.argv.includes(\"--postflight\");\nconst coverBatch20260820 = process.argv.includes(\"--batch-2026-08-20\");\nconst enableEvidenceV2 = process.argv.includes(\"--enable-evidence-v2\");\nconst receiptOptionIndexes = process.argv.flatMap((argument, index) =>\n  argument === \"--receipt-file\" ? [index] : []\n);\n",
+      "after": ");\nconst cacheDirectory = path.join(repositoryRoot, \"scripts\", \".cache\");\nconst bundlePath = path.join(cacheDirectory, \"literary-archive-source.mjs\");\nconst ATOMIC_WORKFLOW_RECEIPT_SCHEMA =\n  \"literary-archive-workflow-receipt-v2\";\nconst databaseMode = literaryArchiveDatabaseMode(process.argv);\nconst { applyChanges, commitViaDatabase, preflightOnly, postflightOnly } = databaseMode;\nconst coverBatch20260820 = process.argv.includes(\"--batch-2026-08-20\");\nconst enableEvidenceV2 = process.argv.includes(\"--enable-evidence-v2\");\nconst receiptOptionIndexes = process.argv.flatMap((argument, index) =>\n  argument === \"--receipt-file\" ? [index] : []\n);\n"
     },
     {
       "id": "NATIVE-ARCHIVE-TRANSPORT-014",
       "path": "scripts/sync-literary-archive.mjs",
-      "before": "if ([applyChanges, preflightOnly, postflightOnly].filter(Boolean).length > 1) {\n  throw new Error(\n    \"Choose at most one database mode: --preflight, --postflight or --apply.\"\n  );\n}\nif ((applyChanges || postflightOnly) && coverBatch20260820) {\n  throw new Error(\n    \"Atomic apply/postflight always covers the complete archive; batch-only publication is forbidden.\"\n  );\n}\n",
-      "after": "if ([applyChanges, preflightOnly, postflightOnly].filter(Boolean).length > 1) {\n  throw new Error(\n    \"Choose at most one database mode: --preflight, --postflight or --apply.\"\n  );\n}\nif (commitViaDatabase && !applyChanges) {\n  throw new Error(\"--commit-via-database is valid only with --apply.\");\n}\nif ((applyChanges || postflightOnly) && coverBatch20260820) {\n  throw new Error(\n    \"Atomic apply/postflight always covers the complete archive; batch-only publication is forbidden.\"\n  );\n}\n"
+      "before": "      \"--receipt-file must be a JSON file inside the reconciliation directory.\"\n    );\n  }\n}\n\nif ([applyChanges, preflightOnly, postflightOnly].filter(Boolean).length > 1) {\n  throw new Error(\n    \"Choose at most one database mode: --preflight, --postflight or --apply.\"\n  );\n}\nif ((applyChanges || postflightOnly) && coverBatch20260820) {\n  throw new Error(\n    \"Atomic apply/postflight always covers the complete archive; batch-only publication is forbidden.\"\n  );\n}\n",
+      "after": "      \"--receipt-file must be a JSON file inside the reconciliation directory.\"\n    );\n  }\n}\n\nvalidateLiteraryArchiveDatabaseMode(databaseMode);\nif ((applyChanges || postflightOnly) && coverBatch20260820) {\n  throw new Error(\n    \"Atomic apply/postflight always covers the complete archive; batch-only publication is forbidden.\"\n  );\n}\n"
     },
     {
       "id": "NATIVE-ARCHIVE-TRANSPORT-015",
       "path": "scripts/sync-literary-archive.mjs",
       "before": "try {\n  process.loadEnvFile(path.join(repositoryRoot, \".env.local\"));\n} catch {\n  // В CI переменные передаются окружением; локальный файл необязателен.\n}\n\nfunction stableHash(value) {\n  return createHash(\"sha256\").update(value).digest(\"hex\").slice(0, 10);\n}\n\n",
-      "after": "try {\n  process.loadEnvFile(path.join(repositoryRoot, \".env.local\"));\n} catch {\n  // В CI переменные передаются окружением; локальный файл необязателен.\n}\nif (commitViaDatabase && !process.env.SUPABASE_DB_URL?.trim()) {\n  throw new Error(\"--commit-via-database requires SUPABASE_DB_URL.\");\n}\n\nfunction stableHash(value) {\n  return createHash(\"sha256\").update(value).digest(\"hex\").slice(0, 10);\n}\n\n"
+      "after": "try {\n  process.loadEnvFile(path.join(repositoryRoot, \".env.local\"));\n} catch {\n  // В CI переменные передаются окружением; локальный файл необязателен.\n}\nrequireNativeArchiveDatabaseCredentials(commitViaDatabase, process.env);\n\nfunction stableHash(value) {\n  return createHash(\"sha256\").update(value).digest(\"hex\").slice(0, 10);\n}\n\n"
     },
     {
       "id": "NATIVE-ARCHIVE-TRANSPORT-016",

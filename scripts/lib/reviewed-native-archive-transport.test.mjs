@@ -29,7 +29,7 @@ const paths = [
 
 describe("September 14 native archive release and CMS test compatibility governance", () => {
   it("pins a separate exact transport repair against main and the reviewed UI adapter boundary", () => {
-    expect(sha(JSON.stringify(nativeArchiveTransportAttestation))).toBe("58d9d23ea7bc890922bb9c3000b388ccae4ed801a89e12f9f53ce1dbc8abc19d");
+    expect(sha(JSON.stringify(nativeArchiveTransportAttestation))).toBe("12209c56f249daeace4f97fb1001ed10adc277a11a09867d99aa9609908192a0");
     expect(nativeArchiveTransportAttestation).toMatchObject({
       id: "LIBRARY-NATIVE-TRANSPORT-20260914",
       baselineSourceCommitSha: "d6c7849ccc5285e17c6da9ef147fecc9fdd0f000",

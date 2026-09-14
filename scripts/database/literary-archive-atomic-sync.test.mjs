@@ -1,7 +1,11 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
-import { runInNewContext } from "node:vm";
 import { describe, expect, it } from "vitest";
+import {
+  literaryArchiveDatabaseMode,
+  validateLiteraryArchiveDatabaseMode,
+  requireNativeArchiveDatabaseCredentials,
+} from "../lib/literary-archive-cli-mode.mjs";
 import {
   LITERARY_ARCHIVE_CHILD_EDIT_PRESERVATION_SCHEMA,
   LITERARY_ARCHIVE_RELEASE_CONTRACT,
@@ -23,21 +27,12 @@ const syncSource = read("scripts/sync-literary-archive.mjs");
 const helperSource = read("scripts/lib/literary-archive-atomic-release.mjs");
 const reconciliationWorkflow = read(".github/workflows/reconcile-production-database.yml");
 
-// Execute the actual CLI guard block without loading archive data or making requests.
+// Import the actual CLI guards without evaluating source text or starting I/O.
 function archiveCliMode(args, env = {}) {
-  const guardSource = syncSource.slice(
-    syncSource.indexOf("const applyChanges ="),
-    syncSource.indexOf("function stableHash(")
-  );
-  return runInNewContext(
-    `${guardSource}\n({ applyChanges, commitViaDatabase, preflightOnly, postflightOnly });`,
-    {
-      path,
-      repositoryRoot: root,
-      process: { argv: ["node", "sync-literary-archive.mjs", ...args], env, loadEnvFile() {} },
-    },
-    { timeout: 1_000 }
-  );
+  const mode = literaryArchiveDatabaseMode(args);
+  validateLiteraryArchiveDatabaseMode(mode);
+  requireNativeArchiveDatabaseCredentials(mode.commitViaDatabase, env);
+  return mode;
 }
 
 function item(ordinal) {
@@ -210,6 +205,10 @@ function publishArgs(client, items) {
 
 describe("atomic literary archive sync integration", () => {
   it("requires an explicit apply-only native commit mode and database credentials", () => {
+    expect(syncSource).toContain("const databaseMode = literaryArchiveDatabaseMode(process.argv);");
+    expect(syncSource).toContain("validateLiteraryArchiveDatabaseMode(databaseMode);");
+    expect(syncSource.indexOf("requireNativeArchiveDatabaseCredentials(commitViaDatabase, process.env);"))
+      .toBeGreaterThan(syncSource.indexOf("process.loadEnvFile("));
     for (const args of [[], ["--preflight"], ["--postflight"]]) {
       expect(() => archiveCliMode([...args, "--commit-via-database"]))
         .toThrow("--commit-via-database is valid only with --apply.");

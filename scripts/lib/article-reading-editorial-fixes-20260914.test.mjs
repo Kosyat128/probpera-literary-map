@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { load } from "cheerio";
 import { describe, expect, it } from "vitest";
-import { normalizeConfirmedArticleHeading } from "./article-route-policy.mjs";
+import { prepareArticleDocument as prepare, prepareProjectedArticleDocument as prepareProjection } from "./article-document-preparation.mjs";
 import {
   applyArticleReadingEditorialFix, ARTICLE_READING_FIX_IDS,
   KNIGHTS_ARTICLE_ID, CENTURY_BOOKS_ARTICLE_ID, POETRY_ESSAY_ARTICLE_ID,
@@ -13,9 +13,6 @@ import reviewedCopy from "../fixtures/article-copy-refinement-20260914.json" wit
 const snapshot = (id) => JSON.parse(readFileSync(new URL(`../../public/cms/articles/cms-${id}.json`, import.meta.url), "utf8"));
 const images = (html) => { const $ = load(html); return $("img").toArray().map((img) => ({ ...img.attribs })); };
 const exporter = readFileSync(new URL("../export-published-content.mjs", import.meta.url), "utf8");
-// Execute the actual export's pure preparation functions without its network or file writes.
-const prepare = new Function("load", "normalizeConfirmedArticleHeading", `${exporter.slice(exporter.indexOf("function headingSlug("), exporter.indexOf("function publicationLabel("))}; return prepareArticleDocument;`)(load, normalizeConfirmedArticleHeading);
-const prepareProjection = new Function("load", "normalizeConfirmedArticleHeading", "applyArticleReadingEditorialFix", `${exporter.slice(exporter.indexOf("function headingSlug("), exporter.indexOf("function publicationLabel("))}; return prepareProjectedArticleDocument;`)(load, normalizeConfirmedArticleHeading, applyArticleReadingEditorialFix);
 const austerlitz = '<img src="https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08/2e38f799-d4a9-4554-b52b-63293b7e496e.webp" alt="Обложка «Аустерлиц»" class="article-image is-right is-aspect-auto is-fit-contain" data-media-id="f6d769ea-d5cd-4c92-bc0a-7556b01520cb" data-image-layout="right" data-image-width="20" data-image-aspect="auto" data-image-fit="contain" data-image-appearance="frame" data-image-reveal="none" data-focus-x="0.5000" data-focus-y="0.5000" data-lightbox="true" data-decorative="true" loading="lazy">';
 
 describe("reviewed article reading projection", () => {
