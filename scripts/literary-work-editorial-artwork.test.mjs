@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 
 import { describe, expect, it } from "vitest";
+import { literaryArchiveDatabaseMode } from "./lib/literary-archive-cli-mode.mjs";
 
 const migration = await readFile(
   new URL(
@@ -78,7 +79,13 @@ describe("work-level editorial artwork persistence", () => {
       syncSource.indexOf("publishLiteraryArchiveAtomicRelease({")
     );
     expect(syncSource).toContain('process.argv.includes("--batch-2026-08-20")');
-    expect(syncSource).toContain('process.argv.includes("--preflight")');
+    expect(syncSource).toContain("const databaseMode = literaryArchiveDatabaseMode(process.argv);");
+    expect(literaryArchiveDatabaseMode(["--preflight"])).toEqual({
+      applyChanges: false,
+      commitViaDatabase: false,
+      preflightOnly: true,
+      postflightOnly: false,
+    });
   });
 
   it("preserves archive and image provenance and emits a publication event", () => {
