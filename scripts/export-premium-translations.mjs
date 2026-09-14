@@ -14,6 +14,7 @@ import {
 } from "./lib/cms-publication-state.mjs";
 import { fetchCmsPublicationHead } from "./lib/cms-publication-head.mjs";
 import { collectPostgrestPages } from "./lib/postgrest-pagination.mjs";
+import { fetchPublicWorkSources } from "./lib/public-work-source-fetch.mjs";
 import { trustedSupabaseOrigin } from "./lib/trusted-server-url.mjs";
 import { applyPublishedWriterBiographyOverrides } from "./lib/writer-biography-public-overrides.mjs";
 import { normalizePublicWriterBiographyTranslations } from "./lib/writer-biography-public-profile.mjs";
@@ -850,7 +851,6 @@ const [
   writerOverrides,
   literaryWorks,
   workTranslations,
-  workSources,
 ] = await Promise.all([
   fetchTableRows(
     "country_profile_overrides",
@@ -893,17 +893,21 @@ const [
     publicSnapshotKey,
     true
   ),
+]);
+
+const workSources = await fetchPublicWorkSources(literaryWorks, workIds =>
   fetchTableRows(
     "literary_work_sources",
     {
       select:
         "work_id,provider,source_url,field_names,license_name,usage,retrieved_at,metadata",
+      work_id: workIds,
       order: "work_id.asc,provider.asc,source_url.asc",
     },
     publicSnapshotKey,
     true
-  ),
-]);
+  )
+);
 
 if (serviceRoleKey) {
   try {

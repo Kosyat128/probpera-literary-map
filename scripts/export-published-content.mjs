@@ -14,6 +14,7 @@ import {
 } from "./lib/cms-export-keys.mjs";
 import { staleManagedCmsArticleSnapshotNames } from "./lib/cms-article-snapshot-files.mjs";
 import { collectPostgrestPages } from "./lib/postgrest-pagination.mjs";
+import { fetchPublicWorkSources } from "./lib/public-work-source-fetch.mjs";
 import { dzenCoverForArticle } from "./lib/article-publication-images.mjs";
 import { extractSiteCopyFromHomepageBlocks } from "./site-copy-overrides.mjs";
 import { commitAtomicFileSet } from "./lib/atomic-file-set.mjs";
@@ -650,7 +651,6 @@ const [
   rawLiteraryWorkAuthorshipKinds,
   rawLiteraryWorkAuthors,
   rawLiteraryWorkTranslations,
-  rawLiteraryWorkSources,
   rawBookEditions,
   rawTypographyInputs,
   siteDesign,
@@ -742,11 +742,6 @@ const [
     editorial_status: "in.(reviewed,verified)",
     order: "work_id.asc,locale.asc",
   }, publicSnapshotKey),
-  fetchOptionalRows("literary_work_sources", {
-    select:
-      "work_id,provider,source_url,field_names,license_name,usage,retrieved_at,metadata",
-    order: "work_id.asc,provider.asc,source_url.asc",
-  }, publicSnapshotKey),
   fetchOptionalRows("book_editions", {
     select:
       "id,work_id,title,isbn_10,isbn_13,publisher,publication_year,language,cover_url,cover_source_url,cover_rights_status,license_name,license_url,creator,rights_holder,rights_checked_at,source_url,is_primary,updated_at",
@@ -759,6 +754,15 @@ const [
   fetchPublishedTypographyInputs(),
   fetchPublishedSiteDesign(),
 ]);
+
+const rawLiteraryWorkSources = await fetchPublicWorkSources(rawLiteraryWorks, workIds =>
+  fetchOptionalRows("literary_work_sources", {
+    select:
+      "work_id,provider,source_url,field_names,license_name,usage,retrieved_at,metadata",
+    work_id: workIds,
+    order: "work_id.asc,provider.asc,source_url.asc",
+  }, publicSnapshotKey)
+);
 
 const rawTypographyOverrides = rawTypographyInputs.overrides;
 const rawFontAssets = rawTypographyInputs.fonts;
