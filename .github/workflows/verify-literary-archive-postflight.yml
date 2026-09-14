@@ -1,0 +1,119 @@
+name: Verify committed literary archive (read only)
+
+on:
+  workflow_dispatch:
+    inputs:
+      expected_main_sha:
+        description: "Exact current main SHA running this read-only verifier"
+        required: true
+        type: string
+      receipt_run_id:
+        description: "Completed reconciliation run that produced the commit receipt"
+        required: true
+        type: string
+      receipt_run_attempt:
+        description: "Exact source run attempt"
+        required: true
+        default: "1"
+        type: string
+      receipt_source_sha:
+        description: "Exact main SHA of the source reconciliation run"
+        required: true
+        type: string
+      receipt_sha256:
+        description: "Exact SHA-256 of literary-archive-release-receipt.json"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: production-database-reconciliation
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment:
+      name: production
+    steps:
+      - name: Checkout the approved verifier
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Validate immutable main and source receipt
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
+          RECEIPT_RUN_ID: ${{ inputs.receipt_run_id }}
+          RECEIPT_RUN_ATTEMPT: ${{ inputs.receipt_run_attempt }}
+          RECEIPT_SOURCE_SHA: ${{ inputs.receipt_source_sha }}
+          RECEIPT_SHA256: ${{ inputs.receipt_sha256 }}
+        run: |
+          set -Eeuo pipefail
+          [[ "$EXPECTED_MAIN_SHA" =~ ^[0-9a-f]{40}$ ]]
+          [[ "$RECEIPT_SOURCE_SHA" =~ ^[0-9a-f]{40}$ ]]
+          [[ "$RECEIPT_SHA256" =~ ^[0-9a-f]{64}$ ]]
+          [[ "$RECEIPT_RUN_ID" =~ ^[1-9][0-9]{0,19}$ ]]
+          [[ "$RECEIPT_RUN_ATTEMPT" =~ ^[1-9][0-9]{0,4}$ ]]
+          [[ "$GITHUB_SHA" == "$EXPECTED_MAIN_SHA" ]]
+          [[ "$(git rev-parse HEAD)" == "$EXPECTED_MAIN_SHA" ]]
+          [[ "$(gh api "repos/$GITHUB_REPOSITORY/git/ref/heads/main" --jq '.object.sha')" == "$EXPECTED_MAIN_SHA" ]]
+          source_run="$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$RECEIPT_RUN_ID/attempts/$RECEIPT_RUN_ATTEMPT")"
+          jq -e --arg sha "$RECEIPT_SOURCE_SHA" --argjson attempt "$RECEIPT_RUN_ATTEMPT" '
+            .head_sha == $sha and .head_branch == "main" and .run_attempt == $attempt
+            and .status == "completed" and .event == "workflow_dispatch"
+            and .path == ".github/workflows/reconcile-production-database.yml"
+          ' <<< "$source_run" >/dev/null
+          artifact_name="production-db-reconciliation-evidence-$RECEIPT_RUN_ID-$RECEIPT_RUN_ATTEMPT"
+          artifacts="$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$RECEIPT_RUN_ID/artifacts?per_page=100")"
+          artifact_id="$(jq -er --arg name "$artifact_name" '
+            [.artifacts[] | select(.name == $name and .expired == false and .size_in_bytes < 131072)]
+            | if length == 1 then .[0].id else error("Expected one small redacted receipt artifact") end
+          ' <<< "$artifacts")"
+          [[ "$artifact_id" =~ ^[1-9][0-9]*$ ]]
+          archive="$RUNNER_TEMP/committed-literary-archive-receipt.zip"
+          gh api "repos/$GITHUB_REPOSITORY/actions/artifacts/$artifact_id/zip" > "$archive"
+          [[ "$(unzip -Z1 "$archive" | awk '$0 == "literary-archive-release-receipt.json" { count++ } END { print count+0 }')" == 1 ]]
+          mkdir -p reconciliation
+          unzip -p "$archive" literary-archive-release-receipt.json > reconciliation/literary-archive-release-receipt.json
+          actual="$(sha256sum reconciliation/literary-archive-release-receipt.json)"
+          [[ "${actual%% *}" == "$RECEIPT_SHA256" ]]
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install exact dependencies
+        run: npm ci
+
+      - name: Verify the committed target and existing cover subset
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          set -Eeuo pipefail
+          node scripts/database/verify-literary-archive-postflight.mjs \
+            --receipt-file reconciliation/literary-archive-release-receipt.json \
+            --output-file reconciliation/literary-archive-native-postflight.json
+          node scripts/database/verify-book-cover-batch-20260820.mjs
+          echo "Read-only committed archive postflight and reviewed cover subset: passed." >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Retain the verified read-only receipt
+        uses: actions/upload-artifact@v7
+        with:
+          name: literary-archive-postflight-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            reconciliation/literary-archive-release-receipt.json
+            reconciliation/literary-archive-native-postflight.json
+          if-no-files-found: error
+          retention-days: 7

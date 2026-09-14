@@ -83,6 +83,7 @@ describe("work-level editorial artwork persistence", () => {
     expect(literaryArchiveDatabaseMode(["--preflight"])).toEqual({
       applyChanges: false,
       commitViaDatabase: false,
+      readViaDatabase: false,
       preflightOnly: true,
       postflightOnly: false,
     });

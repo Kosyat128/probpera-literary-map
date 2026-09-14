@@ -7,6 +7,7 @@ import { isDeepStrictEqual } from "node:util";
 import { build } from "esbuild";
 import { authorshipRowsFromArchive } from "./lib/book-authorship-roundtrip.mjs";
 import { createNativeArchiveCommitClient } from "./lib/literary-archive-database-commit.mjs";
+import { createNativeArchiveReadClient } from "./lib/literary-archive-native-postflight.mjs";
 import {
   literaryArchiveDatabaseMode,
   validateLiteraryArchiveDatabaseMode,
@@ -54,7 +55,7 @@ const bundlePath = path.join(cacheDirectory, "literary-archive-source.mjs");
 const ATOMIC_WORKFLOW_RECEIPT_SCHEMA =
   "literary-archive-workflow-receipt-v2";
 const databaseMode = literaryArchiveDatabaseMode(process.argv);
-const { applyChanges, commitViaDatabase, preflightOnly, postflightOnly } = databaseMode;
+const { applyChanges, commitViaDatabase, readViaDatabase, preflightOnly, postflightOnly } = databaseMode;
 const coverBatch20260820 = process.argv.includes("--batch-2026-08-20");
 const enableEvidenceV2 = process.argv.includes("--enable-evidence-v2");
 const receiptOptionIndexes = process.argv.flatMap((argument, index) =>
@@ -109,7 +110,7 @@ try {
 } catch {
   // В CI переменные передаются окружением; локальный файл необязателен.
 }
-requireNativeArchiveDatabaseCredentials(commitViaDatabase, process.env);
+requireNativeArchiveDatabaseCredentials(commitViaDatabase, process.env, readViaDatabase);
 
 function stableHash(value) {
   return createHash("sha256").update(value).digest("hex").slice(0, 10);
@@ -630,6 +631,7 @@ const supabase = createClient(supabaseUrl, serviceRoleKey, {
     persistSession: false,
   },
 });
+const archiveRpcClient = readViaDatabase ? createNativeArchiveReadClient(supabase) : supabase;
 function rowsGroupedByWorkId(rows) {
   const grouped = new Map();
   for (const row of rows) {
@@ -832,7 +834,7 @@ async function fetchUnlockedContentHashes(client, unlockedWorks) {
 }
 
 const evidenceHealth = await preflightDatabaseContract(supabase);
-const preconditionBefore = await readAtomicPrecondition(supabase);
+const preconditionBefore = await readAtomicPrecondition(archiveRpcClient);
 const atomicEnableEvidenceV2 =
   enableEvidenceV2 || evidenceHealth.enforcementEnabled || Boolean(evidenceHealth.registryRotation);
 if (
@@ -875,7 +877,7 @@ if (localUnlockedScopeSha256 !== preconditionBefore.unlockedScopeSha256) {
     "Exact unlocked work snapshot does not match the server scope manifest."
   );
 }
-const precondition = await readAtomicPrecondition(supabase);
+const precondition = await readAtomicPrecondition(archiveRpcClient);
 if (!isDeepStrictEqual(precondition, preconditionBefore)) {
   throw new Error(
     "Atomic release precondition drifted while the exact live snapshot was read."
@@ -1167,7 +1169,7 @@ if (postflightOnly) {
       "Atomic workflow receipt is not bound to the exact local postflight target."
     );
   }
-  const postflightPrecondition = await readAtomicPrecondition(supabase);
+  const postflightPrecondition = await readAtomicPrecondition(archiveRpcClient);
   if (!isDeepStrictEqual(postflightPrecondition, precondition)) {
     throw new Error(
       "Atomic release precondition drifted before the exact live-target postflight."
@@ -1195,7 +1197,7 @@ if (preflightOnly) {
 }
 
 const releaseResult = await publishLiteraryArchiveAtomicRelease({
-  supabase: commitViaDatabase ? createNativeArchiveCommitClient(supabase, { logger: console.info }) : supabase,
+  supabase: commitViaDatabase ? createNativeArchiveCommitClient(archiveRpcClient, { logger: console.info }) : archiveRpcClient,
   rpcAttempts: commitViaDatabase ? 1 : 3,
   items: releaseItems,
   expectedPrecondition: precondition,

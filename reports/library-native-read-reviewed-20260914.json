@@ -1,0 +1,178 @@
+{
+  "id": "LIBRARY-NATIVE-READ-REVIEWED-20260914",
+  "baselineSourceCommitSha": "bc765b4b39d41462e0c7f711d5cdc6ffeb589dbe",
+  "reviewDate": "2026-09-14",
+  "historicalPinsChanged": false,
+  "historicalMigrationsChanged": false,
+  "atomicCommitChanged": false,
+  "editorialTextChanged": false,
+  "productionApplied": false,
+  "humanReview": false,
+  "broadSourceExclusionsAdded": false,
+  "problem": "The archive committed successfully in production, then its repeated REST precondition read exceeded the existing statement timeout. Reapplying that committed release is not a recovery operation.",
+  "productionEvidence": {
+    "runId": 34807219871,
+    "runAttempt": 1,
+    "sourceCommitSha": "bc765b4b39d41462e0c7f711d5cdc6ffeb589dbe",
+    "releaseId": "03c96aa5-e4e3-40fd-a5eb-c959767b9bf3",
+    "nativeCommitDurationMs": 28414,
+    "archiveCommitSucceeded": true,
+    "priorPostflightSucceeded": false,
+    "workflowReceiptSha256": "8c2463df73c5c8cc2ff6a165d98df608ea936e9a5ef3cf170b45d386177ba8e0"
+  },
+  "scope": "Two fixed native read operations, a main-only committed-receipt recovery workflow, explicit native precondition routing for future preflight/apply, and replacement of redundant reconciliation postflight reads with the existing full live-target assertion plus current Evidence V2 health and unchanged cover verification. Published source queries are limited to already-public parent IDs without changing the public RLS client or output. Two exact historical adapters retain prior published source locks.",
+  "publicSourceQueryRepair": {
+    "parentIdsPerBatch": 10,
+    "maximumConcurrency": 2,
+    "publicRlsUnchanged": true,
+    "publishedParentPredicateUnchanged": true,
+    "snapshotOutputUnchanged": true,
+    "source": "Approved focused exporter fixture and shared query tests; no new publication eligibility or access scope."
+  },
+  "allowedOperations": [
+    "precondition",
+    "postflight"
+  ],
+  "transaction": {
+    "readOnly": true,
+    "isolation": "repeatable read",
+    "statementTimeoutMs": 300000,
+    "lockTimeoutMs": 15000,
+    "role": "service_role",
+    "humanUid": null
+  },
+  "receiptBinding": {
+    "sourceMainRunAndAttemptVerified": true,
+    "exactArtifactReceiptSha256Required": true,
+    "committedReleaseUuidAndManifestRequired": true,
+    "durableStagedContentAssertion": true,
+    "logicalTargetMatchesCommittedMetadata": true,
+    "independentLocalTargetRebuild": false,
+    "limitation": "This verifies the exact already-committed historical receipt and durable staged content, with the current validator/registry identity. It does not rebuild a possibly newer local catalogue and does not claim a new import or publication."
+  },
+  "validation": {
+    "receiptSha256Lf": "41e4938349e8246c4a586946704bfee48d02a369b01bef617fa9f80b3e06b50d",
+    "receipt": {
+      "status": "passed",
+      "engine": "Actual local in-memory PGlite PostgreSQL",
+      "statements": 84,
+      "durationMs": 1757,
+      "result": {
+        "realPublishedAssertion": true,
+        "readOnly": true,
+        "repeatableRead": true,
+        "serviceOnly": true,
+        "nullUid": true,
+        "writeRejected": true,
+        "contentDriftRejected": true,
+        "childDriftRejected": true,
+        "evidenceIdentityRejected": true,
+        "logicalReceiptDriftRejected": true,
+        "logicalMetadataMissingRejected": true,
+        "preconditionNative": true,
+        "sessionRestored": true
+      },
+      "files": [
+        {
+          "path": "scripts/sync-literary-archive.mjs",
+          "sha256Lf": "ff8302e15554c346acb49b00a049c50815b2eebfaeb9010eeb65bc86c0d067be"
+        },
+        {
+          "path": "scripts/lib/literary-archive-cli-mode.mjs",
+          "sha256Lf": "51f3803b2480664e77cb29ec6d480fcfbbb75f26a0823acfd2cf9c14e863e202"
+        },
+        {
+          "path": "scripts/database/literary-archive-atomic-sync.test.mjs",
+          "sha256Lf": "f03ede41fe53fe41d176e493380d665e791fdfb060180dc3cf92057f795519c7"
+        },
+        {
+          "path": "scripts/literary-work-editorial-artwork.test.mjs",
+          "sha256Lf": "f5b246b98fcb5b45b68dfb77f2acbddcf109fddbd503a902ed09321ba8992174"
+        },
+        {
+          "path": "scripts/lib/literary-archive-native-postflight.test.mjs",
+          "sha256Lf": "d8e1a27f2191e43483f070a797a589c7712a445405860258cfdbe40fa2f089ff"
+        },
+        {
+          "path": "scripts/database/literary-archive-native-postflight.integration.test.mjs",
+          "sha256Lf": "3876efdd28bda79ff69f89396a1bd684f7321910ed9d2da7d8cdf3905b748ef3"
+        },
+        {
+          "path": "scripts/database/fixtures/literary-archive-native-postflight.mjs",
+          "sha256Lf": "41156359942e0f12888421318331c8bee58ed7c9098768f4077f993a07af144b"
+        }
+      ],
+      "scope": "Native transport and exact published assert function with minimal synthetic backing helpers; no production or complete archive dataset claim.",
+      "focusedVitest": {
+        "previousFourSuites": {
+          "passed": 25,
+          "skipped": 1,
+          "exitCode": 0
+        },
+        "latestNativeUnit": {
+          "passed": 7,
+          "skipped": 0,
+          "exitCode": 0
+        },
+        "skipReason": "Docker daemon unavailable locally; the same PostgreSQL transport exercise passed actual in-memory PGlite and Docker is mandatory in CI."
+      },
+      "scopedDiffCheck": "passed",
+      "fixedSqlSha256Lf": "a231604cc59658af9b698564c2ba0cbbcf86a55330a3faa0fde07b54fc01d0d5"
+    },
+    "limit": "Actual local PGlite exercises the unchanged published assertion using synthetic backing helpers. Docker PostgreSQL is mandatory in CI. No production read-only recovery or full catalogue performance result is claimed by this source review."
+  },
+  "files": [
+    {
+      "path": ".github/workflows/verify-literary-archive-postflight.yml",
+      "sha256Lf": "041a6da2ae1bf131ab8d302706a6248da8929a4a4f774a3d12eb886d1ee9d5ae"
+    },
+    {
+      "path": "scripts/database/literary-archive-native-postflight.sql",
+      "sha256Lf": "a231604cc59658af9b698564c2ba0cbbcf86a55330a3faa0fde07b54fc01d0d5"
+    },
+    {
+      "path": "scripts/database/verify-literary-archive-postflight.mjs",
+      "sha256Lf": "824e0f81056001ecfee13101cfd203702461fa0845cecdcdc9a918ee85b44e5f"
+    },
+    {
+      "path": "scripts/lib/literary-archive-native-postflight.mjs",
+      "sha256Lf": "21a8d982e318a2641af0136b6c0349b103c4004175ae58f82bd3e70b6fc913f6"
+    },
+    {
+      "path": "scripts/lib/literary-archive-native-postflight.test.mjs",
+      "sha256Lf": "d8e1a27f2191e43483f070a797a589c7712a445405860258cfdbe40fa2f089ff"
+    },
+    {
+      "path": "scripts/database/literary-archive-native-postflight.integration.test.mjs",
+      "sha256Lf": "3876efdd28bda79ff69f89396a1bd684f7321910ed9d2da7d8cdf3905b748ef3"
+    },
+    {
+      "path": "scripts/database/fixtures/literary-archive-native-postflight.mjs",
+      "sha256Lf": "41156359942e0f12888421318331c8bee58ed7c9098768f4077f993a07af144b"
+    },
+    {
+      "path": "scripts/literary-work-editorial-artwork.test.mjs",
+      "sha256Lf": "f5b246b98fcb5b45b68dfb77f2acbddcf109fddbd503a902ed09321ba8992174"
+    },
+    {
+      "path": "scripts/lib/reviewed-native-archive-read.mjs",
+      "sha256Lf": "902fb0b060a2f76ecfb417e08120d818b861f81332e79352ab293491499a419e"
+    },
+    {
+      "path": "scripts/export-published-content.mjs",
+      "sha256Lf": "2bfa22b063f387f08364e27fb6ca05a5840cc57b2fd48c5ce98f7316b5721cf7"
+    },
+    {
+      "path": "scripts/export-published-content.fixture.test.mjs",
+      "sha256Lf": "2a1f2ec06505c3afd84d3a0c3e77fec49b6883f53e9f4220ab2e96acc34ab43d"
+    },
+    {
+      "path": "scripts/lib/public-work-source-fetch.mjs",
+      "sha256Lf": "c9223ab3ec2db81ebb45b25fae8e33005ab98f07e6af870289941ea9e5663aa3"
+    },
+    {
+      "path": "scripts/lib/public-work-source-fetch.test.mjs",
+      "sha256Lf": "007ac25f211d5023168edb9b45fb32d1073a1cf51754ca8a96fa565ffaf744f1"
+    }
+  ]
+}

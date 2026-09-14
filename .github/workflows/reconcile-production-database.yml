@@ -298,8 +298,9 @@ jobs:
       - name: Run the read-only full archive preflight
         env:
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
-        run: node scripts/sync-literary-archive.mjs --preflight
+        run: node scripts/sync-literary-archive.mjs --preflight --read-via-database
 
       - name: Reconfirm the exact main tip before the archive commit
         env:
@@ -325,6 +326,7 @@ jobs:
           set -Eeuo pipefail
           node scripts/sync-literary-archive.mjs --apply \
             --commit-via-database \
+            --read-via-database \
             --enable-evidence-v2 \
             --receipt-file reconciliation/literary-archive-release-receipt.json
           echo "- Full literary archive atomic release: committed" >> reconciliation/summary.md
@@ -332,11 +334,13 @@ jobs:
       - name: Run the read-only atomic archive postflight
         env:
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
         run: |
           set -Eeuo pipefail
-          node scripts/sync-literary-archive.mjs --postflight \
-            --receipt-file reconciliation/literary-archive-release-receipt.json
+          node scripts/database/verify-literary-archive-postflight.mjs \
+            --receipt-file reconciliation/literary-archive-release-receipt.json \
+            --output-file reconciliation/literary-archive-native-postflight.json
           node scripts/database/verify-book-cover-batch-20260820.mjs
           echo "- Atomic archive postflight and reviewed cover subset: passed" >> reconciliation/summary.md
 
@@ -360,6 +364,7 @@ jobs:
             reconciliation/migration-manifest.json
             reconciliation/summary.md
             reconciliation/literary-archive-release-receipt.json
+            reconciliation/literary-archive-native-postflight.json
             reconciliation/wells-editorial-repair-receipt.json
             reconciliation/production-verification-expected.txt
             reconciliation/production-verification.txt

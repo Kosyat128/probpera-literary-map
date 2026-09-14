@@ -1026,7 +1026,7 @@ describe("guarded production database reconciliation", () => {
     ).toHaveLength(1);
     expect(
       workflowSource.match(
-        /node scripts\/sync-literary-archive\.mjs --postflight/gu
+        /node scripts\/database\/verify-literary-archive-postflight\.mjs/gu
       )
     ).toHaveLength(1);
     expect(
