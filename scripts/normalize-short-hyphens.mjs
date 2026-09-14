@@ -4,10 +4,13 @@ import { fileURLToPath } from "node:url";
 
 import { normalizeShortHyphens } from "./lib/short-hyphens.mjs";
 import { isShortHyphenExactSource, loadShortHyphenExactSources } from "./lib/short-hyphen-exact-source.mjs";
+import { loadCmsExactSourcePunctuation, normalizeCmsExactSourcePunctuation } from "./lib/cms-exact-source-punctuation.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const write = process.argv.includes("--write");
 const protectedExactSources = loadShortHyphenExactSources(projectRoot);
+let cmsExactSourceNotes;
+const getCmsExactSourceNotes = () => cmsExactSourceNotes ??= loadCmsExactSourcePunctuation(projectRoot);
 const ignoredDirectories = new Set([
   ".git",
   ".cache",
@@ -66,7 +69,8 @@ for (const absolutePath of await filesIn(projectRoot)) {
   if (exactSourceTranscriptionFiles.has(absolutePath)) continue;
   const source = await fs.readFile(absolutePath, "utf8");
   if (isShortHyphenExactSource(path.relative(projectRoot, absolutePath), source, protectedExactSources)) continue;
-  const normalized = normalizeShortHyphens(source);
+  const normalized = normalizeCmsExactSourcePunctuation(path.relative(projectRoot, absolutePath), source, getCmsExactSourceNotes)
+    ?? normalizeShortHyphens(source);
   if (normalized === source) continue;
   changed.push(path.relative(projectRoot, absolutePath));
   if (write) await fs.writeFile(absolutePath, normalized, "utf8");

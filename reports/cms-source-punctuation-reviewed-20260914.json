@@ -1,0 +1,98 @@
+{
+  "id": "CMS-SOURCE-PUNCTUATION-REVIEWED-20260914",
+  "baselineSourceCommitSha": "199a9c5b4209f1ea917e08ed96362a44fee6379e",
+  "reviewDate": "2026-09-14",
+  "historicalPinsChanged": false,
+  "historicalMigrationsChanged": false,
+  "exportedBytesChanged": false,
+  "databaseChanged": false,
+  "displayTextExceptionAdded": false,
+  "wholeGeneratedFileExemptionAdded": false,
+  "productionApplied": false,
+  "humanReview": false,
+  "protectedBookIdentities": 7,
+  "protectedFieldIdentities": 14,
+  "problem": "The current public CMS export preserves source punctuation in14 exact metadata fields for7 reviewed works. The repository-wide hyphen normalizer previously treated those source transcriptions as editorial display copy.",
+  "scope": "Only exact parsed metadata field values at approved book identities and field paths, independently bound to immutable reviewed source files, are preserved. Modified protected identities or values fail closed. Unknown fields and display text keep the existing hyphen policy. No database or exported snapshot is rewritten.",
+  "publishedCheckerPin": {
+    "path": "scripts/normalize-short-hyphens.mjs",
+    "sha256Lf": "ee927099c640734a070a98323c2785219a880cd852f4c0297250c5783b6683d3",
+    "reportPath": "reports/book-r49n-package-reviewed-20260912.json",
+    "entry": "hyphenPolicyIntegration.files"
+  },
+  "productionDiagnosis": {
+    "path": "public-cms-hyphen-diagnosis-20260914.json",
+    "sha256Lf": "f5937762478b5ac1c556265075ee60173b13a6017c7133711fb89764235b80e6",
+    "scope": "Read-only current public69works/138translations; not a stable complete export or later deployment claim."
+  },
+  "validation": {
+    "receiptSha256Lf": "769af0817d0555e881cf2ef5ea43372239cf1581df3ba8a8849a8425876111ed",
+    "receipt": {
+      "status": "passed",
+      "scope": "Local69-profile release-mapping fixture; its14 provenance strings match the independently fetched current69-public-work/138-translation RLS diagnosis. No full fresh CMS exporter/build or production mutation claimed.",
+      "sourceFixture": {
+        "path": ".tmp/full-cms-roundtrip-20260914.generated.json",
+        "sha256": "d1a79833870adde4855e7f74cfa825df463027a9f2ed947c25ce8809b7172307"
+      },
+      "liveProvenanceProof": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/05/01a07287-758c-7971-bafa-6fb523b64f71/public-cms-hyphen-diagnosis-20260914.json",
+        "sha256": "f5937762478b5ac1c556265075ee60173b13a6017c7133711fb89764235b80e6"
+      },
+      "proof": [
+        {
+          "path": "src/data/cms/literaryWorks.generated.ts",
+          "works": 69,
+          "verifiedExactFields": 14,
+          "allOriginalBytesPreserved": true,
+          "sameValueInDisplayAndUnknownMetadataNormalized": true,
+          "idempotent": true,
+          "originalArtifactSha256": "effb13ff970402767285ea52e5672fabe086f0796eba9c7607edc774a5da6afe"
+        },
+        {
+          "path": "public/cms/published-content.json",
+          "works": 69,
+          "verifiedExactFields": 14,
+          "allOriginalBytesPreserved": true,
+          "sameValueInDisplayAndUnknownMetadataNormalized": true,
+          "idempotent": true,
+          "originalArtifactSha256": "9dcf81bcffe7be789a38d204b31031d458366898e1aabcc8180c31b0db9db77a"
+        }
+      ],
+      "focusedValidation": {
+        "initialTestsPassed": 19,
+        "finalNewSuiteTestsPassed": 6,
+        "realIsolatedCheckWriteCheck": true,
+        "temporaryOutputsOnD": true
+      },
+      "files": [
+        {
+          "path": "scripts/normalize-short-hyphens.mjs",
+          "sha256Lf": "db128465139866906544fd7fb26b0fd7b5a54420588b3cb53fef7b04bd2328dc"
+        },
+        {
+          "path": "scripts/lib/cms-exact-source-punctuation.mjs",
+          "sha256Lf": "e17cb4d214d469445b80dfc1f7fbdc2220307316e898fd471dcfb9d8be32b87e"
+        },
+        {
+          "path": "scripts/lib/cms-exact-source-punctuation.test.mjs",
+          "sha256Lf": "6bc029f4d33f2156afc54e68c03280deab928070156e3be5365bb7361ae25057"
+        }
+      ]
+    },
+    "limit": "Local focused checks and saved live-field evidence; final Pages publication is not claimed by this source review."
+  },
+  "files": [
+    {
+      "path": "scripts/lib/cms-exact-source-punctuation.mjs",
+      "sha256Lf": "e17cb4d214d469445b80dfc1f7fbdc2220307316e898fd471dcfb9d8be32b87e"
+    },
+    {
+      "path": "scripts/lib/cms-exact-source-punctuation.test.mjs",
+      "sha256Lf": "6bc029f4d33f2156afc54e68c03280deab928070156e3be5365bb7361ae25057"
+    },
+    {
+      "path": "scripts/lib/reviewed-cms-source-punctuation.mjs",
+      "sha256Lf": "86400bd6dfbdb5b0187e9c0ece316505672fa32c6d782c4a6c6bc3bc019129f1"
+    }
+  ]
+}
