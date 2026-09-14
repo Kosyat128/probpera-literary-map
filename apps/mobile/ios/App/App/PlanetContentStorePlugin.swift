@@ -8,7 +8,7 @@ import Capacitor
 public class PlanetContentStorePlugin: CAPPlugin, CAPBridgedPlugin {
     public let identifier = "PlanetContentStorePlugin"
     public let jsName = "PlanetContentStore"
-    public let pluginMethods: [CAPPluginMethod] = ["read", "write", "list", "remove", "commit"].map {
+    public let pluginMethods: [CAPPluginMethod] = ["read", "write", "list", "remove", "commit", "capacity"].map {
         CAPPluginMethod(name: $0, returnType: CAPPluginReturnPromise)
     }
     private static let io = DispatchQueue(label: "ru.probpera.literaryplanet.content-store")
@@ -35,6 +35,15 @@ public class PlanetContentStorePlugin: CAPPlugin, CAPBridgedPlugin {
     private func generation(_ name: String) -> Bool { matches(name, Self.prefix + "[a-f0-9]{64}-[a-f0-9]{64}") }
     private func hash(_ bytes: Data) -> String { SHA256.hash(data: bytes).map { String(format: "%02x", $0) }.joined() }
     private func key(_ suffix: String) -> String { hash(Data(("https://localhost/__literary_content_qa__/" + suffix).utf8)) }
+    @objc func capacity(_ call: CAPPluginCall) {
+        queued(call) {
+            let volume = URL(fileURLWithPath: NSHomeDirectory(), isDirectory: true)
+            let values = try volume.resourceValues(forKeys: [.volumeAvailableCapacityForImportantUsageKey])
+            guard let available = values.volumeAvailableCapacityForImportantUsage else { throw Failure.invalid }
+            try self.require(available >= 0 && available <= 9007199254740991)
+            return ["availableBytes": NSNumber(value: available)]
+        }
+    }
     private func root() throws -> URL {
         let manager = FileManager.default
         let parent = try manager.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true).resolvingSymlinksInPath()

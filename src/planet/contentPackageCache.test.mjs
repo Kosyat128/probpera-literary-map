@@ -217,6 +217,73 @@ const transport = fixture => vi.fn(async url => {
 const download = (cache, fixture, fetch, prior = null, extras = {}) => cache.download({ ...fixture,
   expectedCurrentManifestSha256: prior, baseUrl: "https://content.test/packages/v2/", fetch, ...extras });
 
+describe("protected candidate removal", () => {
+  it("removes only an incomplete adult generation while retaining both selected versions, bootstrap and child data", async () => {
+    const { cache, storage } = setup(), v1 = contentPackageFixture(), v2 = contentPackageFixture(2), v3 = contentPackageFixture(3), child = contentPackageFixture(1, "child");
+    await save(cache, v1); await save(cache, v2, v1.manifestSha256); await save(cache, child);
+    await (await storage.open("literary-planet-bootstrap-v1")).put(origin + "/bootstrap", new Response("mandatory"));
+    const real = transport(v3), fetch = vi.fn(url => url.endsWith("/en/catalog.json") ? Promise.reject(new Error("offline")) : real(url));
+    expect(await download(cache, v3, fetch, v2.manifestSha256)).toMatchObject({ ok: false });
+    const candidate = storage.generation(v3.manifestSha256); expect(candidate).toBeTruthy();
+    const before = await storage.keys();
+    expect(await cache.discard(v3)).toMatchObject({ ok: true, removed: true, activationAllowed: false });
+    expect(await storage.keys()).toEqual(before.filter(name => name !== candidate));
+    assertBytes(await read(cache, v2), v2); assertBytes(await read(cache, v1), v1); assertBytes(await read(cache, child), child);
+    expect(await cache.discard(v3)).toMatchObject({ ok: true, removed: false });
+    const retry = transport(v3); expect(await download(cache, v3, retry, v2.manifestSha256)).toMatchObject({ ok: true });
+    expect(retry).toHaveBeenCalledTimes(3);
+  });
+  it("protects current and previous receipts even when selected bytes are corrupt", async () => {
+    const { cache, storage } = setup(), v1 = contentPackageFixture(), v2 = contentPackageFixture(2);
+    await save(cache, v1); await save(cache, v2, v1.manifestSha256);
+    storage.rows.get(storage.generation(v2.manifestSha256)).set(fileUrl("en/catalog.json"), new Response("corrupt"));
+    const keys = await storage.keys();
+    for (const fixture of [v1, v2]) expect(await cache.discard(fixture)).toMatchObject({ ok: false, reason: "content-generation-protected" });
+    expect(await storage.keys()).toEqual(keys); assertBytes(await read(cache, v1), v1);
+  });
+  it("waits for a concurrent download and rechecks its newly committed selection before deleting", async () => {
+    const { cache, another } = setup(), f = contentPackageFixture(), entered = deferred(), release = deferred(), real = transport(f);
+    const fetch = vi.fn(async url => { entered.resolve(); await release.promise; return real(url); });
+    const pending = download(cache, f, fetch); await entered.promise;
+    let removed = false; const cleanup = another().discard(f).then(result => { removed = true; return result; });
+    await Promise.resolve(); await Promise.resolve(); expect(removed).toBe(false);
+    release.resolve(); expect(await pending).toMatchObject({ ok: true });
+    expect(await cleanup).toMatchObject({ ok: false, reason: "content-generation-protected" }); assertBytes(await read(cache, f), f);
+  });
+  it("waits for a cancelled download to settle before deleting its partial generation", async () => {
+    const { cache, another, storage } = setup(), f = contentPackageFixture(), entered = deferred(), controller = new AbortController();
+    const fetch = vi.fn(() => { entered.resolve(); return new Promise(() => {}); });
+    const pending = download(cache, f, fetch, null, { signal: controller.signal }); await entered.promise;
+    const cleanup = another().discard(f); controller.abort();
+    expect(await pending).toMatchObject({ ok: false, reason: "cancelled" }); expect(await cleanup).toMatchObject({ ok: true, removed: true });
+    expect(storage.generation(f.manifestSha256)).toBeUndefined(); expect(await storage.selected()).toBeNull();
+  });
+  it("fails closed on malformed selection, invalid scope/pin, cancellation and storage refusal", async () => {
+    const { cache, storage } = setup(), v1 = contentPackageFixture(), v2 = contentPackageFixture(2);
+    await save(cache, v1);
+    const name = storage.generation(v1.manifestSha256).slice(0, -65), candidate = name + "-" + v2.manifestSha256;
+    await storage.open(candidate);
+    const original = storage.rows.get(name).get(selectionUrl); storage.rows.get(name).set(selectionUrl, new Response("{}"));
+    expect((await cache.discard(v2)).ok).toBe(false); expect(await storage.keys()).toContain(candidate);
+    storage.rows.get(name).set(selectionUrl, original);
+    const controller = new AbortController(); controller.abort();
+    for (const request of [{ ...v2, signal: controller.signal }, { ...v2, manifestSha256: "../" }, contentPackageFixture(1, "child")]) {
+      expect((await cache.discard(request)).ok).toBe(false); expect(await storage.keys()).toContain(candidate);
+    }
+    storage.delete = vi.fn(async () => false);
+    expect(await cache.discard(v2)).toMatchObject({ ok: false, reason: "content-removal-not-confirmed" });
+    assertBytes(await read(cache, v1), v1);
+  });
+  it("reports an already completed deletion truthfully after a late abort", async () => {
+    const { cache, storage } = setup(), f = contentPackageFixture(), controller = new AbortController();
+    await download(cache, f, vi.fn(async () => { throw new Error("offline"); }));
+    const remove = storage.delete.bind(storage);
+    storage.delete = async name => { const removed = await remove(name); controller.abort(); return removed; };
+    expect(await cache.discard({ ...f, signal: controller.signal })).toMatchObject({ ok: true, removed: true });
+    expect(storage.generation(f.manifestSha256)).toBeUndefined();
+  });
+});
+
 describe("resumable signed package download", () => {
   it.each(["signature", "manifest", "key", "prior"])("rejects unauthenticated or conflicting %s before fetching any data", async failure => {
     const { cache, storage } = setup(), v1 = contentPackageFixture(), v2 = contentPackageFixture(2), fetch = transport(v2);

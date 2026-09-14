@@ -26,6 +26,9 @@ export type ContentPackageReadResult = Rejection | {
   readonly ok: true; readonly manifestSha256: string; readonly envelope: ContentPackageEnvelope;
   readonly files: readonly ContentPackageBytes[]; readonly activationAllowed: false; readonly releaseReady: false;
 };
+export type ContentPackageDiscardResult = Rejection | {
+  readonly ok: true; readonly removed: boolean; readonly activationAllowed: false;
+};
 export interface ContentPackageCacheOptions {
   /** Current S08 signatures are QA candidates, and never production approval. */
   readonly allowLocalQa: true;
@@ -190,6 +193,29 @@ export function createContentPackageCache(options: ContentPackageCacheOptions) {
   }
 
   const api = {
+    /** Explicitly discard one adult candidate. Never remove a selected version,
+     * its rollback, another package/namespace, or the mandatory app bootstrap. */
+    async discard(request: ContentPackageReadRequest): Promise<ContentPackageDiscardResult> {
+      const signal = request.signal;
+      try {
+        const expected = normalizeContentPackageExpected(request.expected), hash = digest(request.manifestSha256);
+        if (expected.namespace !== "adult") fail("adult-download-controller-required");
+        const name = scope(expected), candidate = name + "-" + hash;
+        // Use the same lock order as downloads. A queued cleanup must recheck
+        // selection after a concurrent transfer has finished committing.
+        return await locked(name + ":download", signal, () => locked(name, signal, async () => {
+          const selected = await selection(name, signal);
+          if ([selected?.current.sha256, selected?.previous?.sha256].includes(hash)) fail("content-generation-protected");
+          cancelled(signal);
+          const removed = await storage!.delete(candidate);
+          // Native removal independently guards selection in its serial IO queue.
+          // A false result may mean either absent bytes or a concurrent protection.
+          if (!removed && (await storage!.keys()).includes(candidate)) fail("content-removal-not-confirmed");
+          // Deletion is the commit boundary; a late cancellation cannot undo it.
+          return Object.freeze({ ok: true, removed, activationAllowed: false });
+        }));
+      } catch (error) { return rejected(error, signal); }
+    },
     async save(request: ContentPackageSaveRequest): Promise<ContentPackageSaveResult> {
       const signal = request.signal;
       try {

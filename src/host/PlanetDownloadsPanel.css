@@ -16,6 +16,7 @@
 .planet-downloads li { min-width: 0; padding: 16px; background: var(--planet-surface, #fff8eb); border: 1px solid var(--planet-line, #d8cec0); border-radius: 12px; }
 .planet-downloads h3 { margin: 0 0 8px; font: inherit; font-weight: 700; }
 .planet-downloads__actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.planet-downloads__space { margin-block: 0 16px; }
 .planet-downloads button {
   min-width: 44px; min-height: 44px; max-width: 100%; padding: 10px 14px;
   border: 2px solid var(--planet-accent-strong, #713018); border-radius: 12px;

@@ -3,6 +3,7 @@ import type { ContentPackageLocks, ContentPackageStorage } from "../planet/conte
 
 /** Internal identifiers only. No native method accepts an arbitrary file path. */
 export interface NativeContentStoreBridge {
+  capacity?(): Promise<{ availableBytes: number }>;
   read(input: { name: string; key: string }): Promise<{ base64: string | null }>;
   write(input: { name: string; key: string; base64: string }): Promise<void>;
   list(): Promise<{ names: string[] }>;

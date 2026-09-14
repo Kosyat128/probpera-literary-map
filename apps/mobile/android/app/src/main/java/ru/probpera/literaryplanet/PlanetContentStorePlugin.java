@@ -2,6 +2,7 @@ package ru.probpera.literaryplanet;
 
 import androidx.core.util.AtomicFile;
 import android.util.Base64;
+import android.os.StatFs;
 import com.getcapacitor.JSArray;
 import com.getcapacitor.JSObject;
 import com.getcapacitor.Plugin;
@@ -54,6 +55,13 @@ public class PlanetContentStorePlugin extends Plugin {
         return result.toString();
     }
     private static String key(String suffix) throws Exception { return hash((URL + suffix).getBytes(StandardCharsets.UTF_8)); }
+    @PluginMethod public void capacity(PluginCall call) {
+        queued(call, () -> {
+            long available = new StatFs(getContext().getNoBackupFilesDir().getCanonicalPath()).getAvailableBytes();
+            require(available >= 0 && available <= 9007199254740991L);
+            JSObject result = new JSObject(); result.put("availableBytes", available); return result;
+        });
+    }
     private File root() throws Exception {
         File parent = getContext().getNoBackupFilesDir().getCanonicalFile();
         File target = new File(parent, "literary-planet-content-qa-v1");

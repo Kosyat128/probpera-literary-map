@@ -17,6 +17,7 @@ export interface WebAdapterDocument extends EventHost {
 }
 export interface WebAdapterNavigator {
   readonly locks?: NonNullable<WebContentHost["navigator"]>["locks"];
+  readonly storage?: NonNullable<WebContentHost["navigator"]>["storage"];
   readonly onLine?: boolean;
   readonly languages?: readonly string[];
   readonly language?: string;

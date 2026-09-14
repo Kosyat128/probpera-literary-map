@@ -394,9 +394,15 @@ test("downloads live in the actual globe collection and retain the scene through
     const panel = page.locator(".native-planet-panel"), downloads = panel.locator('[data-planet-downloads]');
     await downloads.locator("summary").click();
     await expect(downloads).toContainText("Дополнительных пакетов для загрузки пока нет.");
+    await downloads.getByRole("button", { name: "Проверить место", exact: true }).click();
+    // This source fixture intentionally has no native storage plugin. Missing
+    // native capacity must stay unavailable, with no browser fallback.
+    await expect(downloads.locator('[data-storage-space]')).toHaveAttribute("data-storage-space", "unavailable");
+    await expect(downloads.getByRole("button", { name: "Проверить место", exact: true })).toBeFocused();
     await panel.locator(".interface-language-control button").filter({ hasText: "EN" }).click();
     await expect(downloads.locator("summary")).toHaveText("Downloads");
     await expect(downloads).toContainText("There are no additional packages to download yet.");
+    await expect(downloads).toContainText("Available space could not be determined.");
     await retained(page, original);
     await panel.getByRole("button", { name: "Return to the planet", exact: true }).click();
     await page.locator('[data-atlas-action="open-collection"]').click();
