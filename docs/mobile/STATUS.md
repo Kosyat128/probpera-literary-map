@@ -1,5 +1,17 @@
 # V12 status — 2026-09-14
 
+<!-- s08-content-export-20260914:begin -->
+S08 canonical candidate exporter, durable stale propagation and separate QA content
+signature contract implemented. 112 focused tests across4 files and static checks passed.
+Exact canonical IDs retained; no facts or approval created. Missing immutable
+review bindings produce held IDs/reasons; stale units stay outside package files.
+Previous generations require an independently retained manifest hash and exact
+file inventory. Private QA keys are memory-only; activation remains disabled.
+Next: one committed-source canonical export and actual artifact inspection.
+Evidence: evidence/S08/content-export-20260914/result.json. No stage acceptance.
+First-open S03; Android8f32bb6c/PWAe5ff862c remain the unchanged UI artifacts.
+<!-- s08-content-export-20260914:end -->
+
 <!-- bilingual-foundations-20260914:begin -->
 Source aac560876ea5c500de0863ae6b815ac4cd2ab6c4: canonical author search across RUEN,
 orange PWA startup/recovery and exact-input public-locale review/sitemap pipeline.

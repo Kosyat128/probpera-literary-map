@@ -1,0 +1,28 @@
+{
+  "name": "unit",
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "src/planet/contentExport.test.ts",
+    "src/planet/contentDependencies.test.ts",
+    "scripts/mobile/content-package-signature.test.mjs",
+    "--reporter=json",
+    "--outputFile=docs/mobile/evidence/S08/content-export-20260914/unit-a1/vitest.json"
+  ],
+  "startedAt": "2026-09-14T01:39:30.904Z",
+  "durationMs": 6543,
+  "exitCode": 0,
+  "logs": {
+    "stdout": {
+      "text": "JSON report written to C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S08/content-export-20260914/unit-a1/vitest.json\n",
+      "bytes": 178,
+      "sha256": "4276c64bc6212b009dac7a73a50129b0a74b881f1c4ebc1cc0f21b48b3744c22"
+    },
+    "stderr": {
+      "text": "",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

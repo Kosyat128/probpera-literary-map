@@ -5,7 +5,7 @@
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
   "headSha": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-14T01:13:34.124Z",
+  "updatedAt": "2026-09-14T01:44:03.920Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -1199,11 +1199,11 @@
     {
       "id": "S08",
       "name": "Content export and signed manifests",
-      "status": "NOT_STARTED",
+      "status": "IN_PROGRESS",
       "criteria": [
         {
           "id": "S08.acceptance",
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "evidence": [],
           "commit": null,
           "lastValidatedAt": null,
@@ -1211,7 +1211,7 @@
         },
         {
           "id": "S08.BIL-020",
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "evidence": [],
           "commit": null,
           "lastValidatedAt": null,
@@ -1219,7 +1219,7 @@
         },
         {
           "id": "S08.BIL-021",
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "evidence": [],
           "commit": null,
           "lastValidatedAt": null,
@@ -1227,7 +1227,7 @@
         },
         {
           "id": "S08.BIL-022",
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "evidence": [],
           "commit": null,
           "lastValidatedAt": null,
@@ -1243,7 +1243,7 @@
         },
         {
           "id": "S08.BIL-099",
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "evidence": [],
           "commit": null,
           "lastValidatedAt": null,
@@ -1251,7 +1251,7 @@
         },
         {
           "id": "S08.BIL-101",
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "evidence": [],
           "commit": null,
           "lastValidatedAt": null,
@@ -1259,7 +1259,7 @@
         },
         {
           "id": "S08.CANON-004",
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "evidence": [],
           "commit": null,
           "lastValidatedAt": null,
@@ -1283,7 +1283,7 @@
         },
         {
           "id": "S08.CONTENT-002",
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "evidence": [],
           "commit": null,
           "lastValidatedAt": null,
@@ -1291,7 +1291,7 @@
         },
         {
           "id": "S08.CONTENT-003",
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "evidence": [],
           "commit": null,
           "lastValidatedAt": null,
@@ -1299,7 +1299,7 @@
         },
         {
           "id": "S08.CONTENT-004",
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "evidence": [],
           "commit": null,
           "lastValidatedAt": null,
@@ -1307,7 +1307,7 @@
         },
         {
           "id": "S08.CONTENT-005",
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "evidence": [],
           "commit": null,
           "lastValidatedAt": null,
@@ -1323,7 +1323,7 @@
         },
         {
           "id": "S08.CONTENT-010",
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "evidence": [],
           "commit": null,
           "lastValidatedAt": null,
@@ -1363,7 +1363,7 @@
         },
         {
           "id": "S08.PERF-007",
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "evidence": [],
           "commit": null,
           "lastValidatedAt": null,
@@ -1371,7 +1371,7 @@
         },
         {
           "id": "S08.SEC-003",
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "evidence": [],
           "commit": null,
           "lastValidatedAt": null,
@@ -1379,15 +1379,21 @@
         },
         {
           "id": "S08.SEC-008",
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "evidence": [],
           "commit": null,
           "lastValidatedAt": null,
           "notes": "Signed artifacts/manifests and anti-rollback. Boundary design and implementation precede executable security and artifact inspection gates."
         }
       ],
-      "lastGreenCommands": [],
-      "artifacts": [],
+      "lastGreenCommands": [
+        "112 focused passing tests across4 new files.",
+        "TypeScript and platform boundaries passed; new CLI syntax checked."
+      ],
+      "artifacts": [
+        "docs/mobile/evidence/S08/content-export-20260914/entry.json",
+        "docs/mobile/evidence/S08/content-export-20260914/result.json"
+      ],
       "externalBlockers": []
     },
     {
@@ -10604,7 +10610,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Start documented parallel-safe S08 canonical data projection and source-dependency export. Reuse existing fact/biography/title gates and identity; never mint missing translation lineage or approvals. No repeat of unchanged app source/browser/build checks. First-open S03 unchanged; current publication gate admits4 books; no release/production action. Frozen iOS83 remains pending.",
+    "nextAction": "Commit tested source; export one exact-source canonical adult candidate with ephemeral QA signing, preserve its manifest hash and inspect counts/held evidence. Validate the continuation path without repeating unchanged UI builds. First-open S03 unchanged; S08 remains partial.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -10726,6 +10732,12 @@
         "evidence": [
           "docs/mobile/evidence/S10/search-20260908/entry.json",
           "docs/mobile/GLOBE_APPLICATION_CONTRACT.md"
+        ]
+      },
+      "S08": {
+        "reason": "Deterministic offline data projection, source-dependency invalidation and purpose-separated QA signing can be implemented from the existing canonical public catalog and review gates without merchant/device/owner approval or deployment. This does not waive remaining S03 work.",
+        "evidence": [
+          "docs/mobile/evidence/S08/content-export-20260914/entry.json"
         ]
       }
     },
@@ -11862,6 +11874,14 @@
       "sha256": "657efffef237601fe447706015b3b10eba646acbb02216613e888385a941d8c6",
       "sourceCommit": "aac560876ea5c500de0863ae6b815ac4cd2ab6c4",
       "buildId": "8f32bb6c8e93dc8d9440c82c0ea63f2d055f301d80de8772e1f56b1ca812b9c1",
+      "stageAccepted": false,
+      "releaseReady": false
+    },
+    "s08ContentExport": {
+      "status": "SOURCE_VALIDATION_PASSED",
+      "evidence": "docs/mobile/evidence/S08/content-export-20260914/result.json",
+      "sha256": "abe09020b411324e5494f4d22ec706637ac2f180ee649dc5d5f309dc3c3afddf",
+      "passingCases": 112,
       "stageAccepted": false,
       "releaseReady": false
     }

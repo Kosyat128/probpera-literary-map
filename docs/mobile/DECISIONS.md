@@ -537,3 +537,18 @@
   byte audits passed; only relocated one-off helper references needed a local
   invocation/preservation continuation, without repeating compilation or tests.
   These are development/QA artifacts, not installed-device or release acceptance.
+
+- D103: S08 canonical content/dependency export proceeds under matrix69
+  parallel-safe entry after the validated bilingual foundation checkpoint.
+  It derives data from the existing public catalog and exact editorial gates,
+  reports missing immutable source bindings without inventing approval, and
+  separates QA content signatures from purchase authority. Current artifact
+  signatures/compilation are reused; no unchanged UI rebuild is justified by
+  export-only tooling. First-open S03 and release/child/device gates stay open.
+
+- D104: Canonical S08 exports retain persistent source-correction holds across
+  generations. Resuming requires an independently retained previous manifest
+  SHA and exact file inventory; observing a current hash cannot replace an
+  immutable review. English descriptions without target review remain held.
+  Dedicated QA content keys are ephemeral, unrelated to purchase authority.
+  Candidate signing is integrity evidence only, never editorial or release approval.
