@@ -1,3 +1,18 @@
+<!-- s11-lifecycle-pwa-20260914:begin -->
+Source06d8e852 produced local-QA PWA c6c50755. Strict artifact audit and actual
+cold offline RUEN download-panel navigation passed with the same canonical globe,
+Canvas, renderer, camera and scene. Exact1422-file/74,221,368B copy is preserved on D:
+D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s11/pwa-c6c50755
+Artifact SHA256:e2fae5ccdcea7eaa5aedf2985b3d74b802cc99b0c331866acc86748014b52984
+Evidence: evidence/S11/download-lifecycle-20260914/pwa-a1/result.json. One new actual
+artifact case supplements226 source units and4 source-browser cases, without replaying
+unchanged source suites. Both original-resolution artifact screenshots were inspected.
+Next: S11 free-space/optional-package storage controls and protected generation pruning.
+Native device/process-death checks stay open; ADB lists no devices, emulator absent.
+Android a83dfcd6 still predates this lifecycle source; frozen iOS83 is unchanged.
+First-open S03, QA activation, D107 final archives and stage/release gates remain open.
+<!-- s11-lifecycle-pwa-20260914:end -->
+
 <!-- s11-download-lifecycle-20260914:begin -->
 S11 download pause/recovery: 226 final unit cases, final type/platform checks and 4 actual
 Chrome cases passed. Manual pause and background/offline stop preserve verified files; resume

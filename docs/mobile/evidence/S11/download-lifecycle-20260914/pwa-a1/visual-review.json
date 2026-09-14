@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-14T11:52:21.949Z",
+  "buildId": "c6c50755a43ec051f38d7168ea47d8df260c09c854cb336aaebf22c4c4d7fb24",
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s11/pwa-a1/downloads-artifact-built-P-ba6df-ter-cold-offline-navigation/pwa-downloads-ru.png",
+      "bytes": 57656,
+      "sha256": "1c67124e1a7ae449eb9b5bacd1e0e92068eb663a7ce9cc973fe76b94c6940da5",
+      "viewedAtOriginalResolution": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s11/pwa-a1/downloads-artifact-built-P-ba6df-ter-cold-offline-navigation/pwa-downloads-en.png",
+      "bytes": 53782,
+      "sha256": "189853dfe6d318f3eff0d050abf43e7a229f7b7404450876791293bac627bf79",
+      "viewedAtOriginalResolution": true
+    }
+  ],
+  "pass": true,
+  "scope": "Actual built PWA in Chrome, 390x844, after cold offline RU and EN navigation.",
+  "observations": [
+    "The existing collection header, locale selector and close control remain visible.",
+    "Localized download disclosure and empty catalog wrap cleanly within the panel; scene ownership is verified separately by browser assertions.",
+    "The saved access/offline notices remain distinct from download availability."
+  ],
+  "stageAccepted": false,
+  "releaseReady": false
+}

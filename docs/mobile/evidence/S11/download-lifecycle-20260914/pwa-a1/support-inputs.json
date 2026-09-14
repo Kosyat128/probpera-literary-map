@@ -1,0 +1,26 @@
+{
+  "recordedAt": "2026-09-14T11:52:21.949Z",
+  "capturedAfterRun": true,
+  "files": [
+    {
+      "path": "tests/pwa/downloads-artifact.spec.mjs",
+      "sha256": "8c9a916d988a69acffe0de5dbe2b3bbfc21a1aa6c5b84b1bf2db3ea63b149b89"
+    },
+    {
+      "path": "docs/mobile/evidence/S11/download-lifecycle-20260914/pwa.config.mjs",
+      "sha256": "e937bacb5b03204dca309234cfbbfd09207585771c2927bab55463299b859725"
+    },
+    {
+      "path": "docs/mobile/evidence/S11/download-lifecycle-20260914/run-pwa.mjs",
+      "sha256": "831c6698ecf012b6df3aeef5c1ff7925dd85c47711fffde779e54b158a117db3"
+    },
+    {
+      "path": "tests/pwa/support/local-server.mjs",
+      "sha256": "5961d3e61339bb8e44704d804acbad99041706645377c9f9bf28b6676f1c5c1e"
+    },
+    {
+      "path": "scripts/mobile/verify-pwa-artifact.mjs",
+      "sha256": "12dfe1d4754b65450c1dd0bd4305255ee41581ae0874a03b0a4aa355466df5a9"
+    }
+  ]
+}
