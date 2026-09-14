@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S11/download-lifecycle-20260914/playwright.config.mjs"
+  ],
+  "startedAt": "2026-09-14T11:40:57.391Z",
+  "durationMs": 21332,
+  "exitCode": 1,
+  "logs": {
+    "stdout": {
+      "text": "\nRunning 2 tests using 1 worker\n\n\n\n[1/2] tests\\pwa\\download-lifecycle.spec.mjs:11:46 › downloads pause and recover through web, cancellation, corrupt bytes and restart\n[2/2] tests\\pwa\\download-lifecycle.spec.mjs:11:46 › downloads pause and recover through native-events, cancellation, corrupt bytes and restart\n  1) tests\\pwa\\download-lifecycle.spec.mjs:11:46 › downloads pause and recover through native-events, cancellation, corrupt bytes and restart \n\n    Error: expect(received).toBe(expected) // Object.is equality\n\n    Expected: 3\n    Received: 2\n\n    Call Log:\n    - Timeout 15000ms exceeded while waiting on the predicate\n\n      90 |     await page.locator('[data-planet-downloads] summary').click();\n      91 |     await page.getByRole('button', { name: 'Resume download', exact: true }).click();\n    > 92 |     await expect.poll(englishRequests).toBe(3);\n         |                                        ^\n      93 |     await page.evaluate(() => window.__setConnected(false));\n      94 |     await expect(row).toHaveAttribute('data-download-phase', 'paused');\n      95 |     await page.getByRole('button', { name: 'Resume download', exact: true }).click();\n        at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\download-lifecycle.spec.mjs:92:40\n\n    Error Context: D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s11\\browser-a1\\download-lifecycle-downloa-b4e82-n-corrupt-bytes-and-restart\\error-context.md\n\n\n  1 failed\n    tests\\pwa\\download-lifecycle.spec.mjs:11:46 › downloads pause and recover through native-events, cancellation, corrupt bytes and restart \n  1 passed (20.7s)\n",
+      "sha256": "20f15e9286f13d3902c7a30f87c8c6baa0f7e3be8cd6a46a00d57e3cf5446c96"
+    },
+    "stderr": {
+      "text": "(node:37472) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "sha256": "f530f711ca92e45172bf42e968078f3e925cb619871bf6726ad05ec8f936c999"
+    }
+  }
+}

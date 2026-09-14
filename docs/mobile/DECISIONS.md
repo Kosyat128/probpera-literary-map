@@ -662,3 +662,11 @@
   D: workspace to limit C: usage. No unchanged source/browser suites were repeated
   for packaging. Installed native execution, iOS compilation, content approval and
   all stage/release gates remain open; D107 final owner archives stay deferred.
+
+- D118: S11 foreground downloads pause on manual request, background or known offline
+  state and resume only by explicit user action. Preserve verified candidate files and
+  report any late atomic selection success truthfully. Keep a single existing platform
+  observation from the first operation until disposal: detaching on pause missed native
+  foreground events in actual Chrome source verification. No UI observer owns transfers.
+  226 unit and four browser cases pass; native callbacks remain injected and ADB lists
+  no devices. Refresh one PWA next. D107 final owner archives and release gates remain.

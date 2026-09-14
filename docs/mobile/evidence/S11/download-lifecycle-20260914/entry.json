@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-14T11:46:10.006Z",
+  "stage": "S11",
+  "checkpoint": "5f47a5d1888d61166181a874f7134e26a199eec5",
+  "precedingEntry": "docs/mobile/evidence/S11/download-controls-20260914/entry.json",
+  "scope": "Continue the recorded S11 parallel-safe lifecycle/recovery step with existing canonical platform services and signed byte cache.",
+  "requirementIds": [
+    "CONTENT-005",
+    "CONTENT-006",
+    "CONTENT-008",
+    "MOD-041",
+    "UX-006"
+  ],
+  "acceptedStateUnchanged": true,
+  "stageAccepted": false,
+  "releaseReady": false
+}

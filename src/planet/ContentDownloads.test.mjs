@@ -11,12 +11,22 @@ const descriptor = (f = contentPackageFixture()) => ({ id: "test", title: { ru: 
   envelope: f.envelope, expected: f.expected, manifestSha256: f.manifestSha256, previous: null, baseUrl: "https://packages.test/v1/" });
 const missing = { ok: false, activationAllowed: false, reason: "content-generation-not-selected" };
 const saved = { ok: true, activationAllowed: false, releaseReady: false };
-function setup(input = descriptor()) {
+function setup(input = descriptor(), lifecycle) {
   const cache = { read: vi.fn(async () => missing), download: vi.fn(async () => saved) };
   const createCache = vi.fn(() => cache), fetch = vi.fn();
-  return { cache, createCache, fetch, downloads: createContentDownloads({ descriptors: [input], createCache, fetch }) };
+  return { cache, createCache, fetch, downloads: createContentDownloads({ descriptors: [input], createCache, fetch, lifecycle }) };
 }
 const phase = downloads => downloads.getSnapshot().items[0].phase;
+function lifecycleFixture(initial = { visibility: "active", connectivity: "online" }) {
+  let snapshot = initial;
+  const listeners = new Set(), remove = vi.fn(listener => listeners.delete(listener));
+  return {
+    getSnapshot: () => snapshot,
+    subscribe: vi.fn(listener => { listeners.add(listener); return () => remove(listener); }),
+    publish(next) { snapshot = { ...snapshot, ...next }; for (const listener of [...listeners]) listener(); },
+    listeners, remove,
+  };
+}
 
 describe("platform-lifetime downloads", () => {
   it("does no constructor IO and preserves stable snapshots until an operation changes them", async () => {
@@ -51,6 +61,71 @@ describe("platform-lifetime downloads", () => {
     downloads.cancel("test"); expect(signal.aborted).toBe(true); expect(phase(downloads)).toBe("cancelling");
     wait.resolve(committed ? saved : { ...missing, reason: "cancelled" }); await pending;
     expect(phase(downloads)).toBe(committed ? "saved" : "cancelled");
+  });
+  it.each([false, true])("waits for IO settlement after pause and preserves late atomic commit=%s", async committed => {
+    const lifecycle = lifecycleFixture(), { downloads, cache } = setup(undefined, lifecycle), wait = deferred();
+    cache.download.mockImplementation(request => {
+      request.onProgress({ phase: "downloading", downloadedBytes: 100, cachedBytes: 10 }); return wait.promise;
+    });
+    expect(lifecycle.subscribe).not.toHaveBeenCalled();
+    const pending = downloads.download("test");
+    await vi.waitFor(() => expect(cache.download).toHaveBeenCalledOnce());
+    downloads.pause("test"); expect(phase(downloads)).toBe("pausing");
+    expect(cache.download.mock.calls[0][0].signal.aborted).toBe(true);
+    expect(downloads.download("test")).toBe(pending);
+    lifecycle.publish({ visibility: "background" }); lifecycle.publish({ visibility: "active" });
+    expect(cache.download).toHaveBeenCalledOnce();
+    wait.resolve(committed ? saved : missing); await pending;
+    expect(phase(downloads)).toBe(committed ? "saved" : "paused");
+    if (!committed) expect(downloads.getSnapshot().items[0].completedBytes).toBe(110);
+    expect(lifecycle.listeners.size).toBe(1); downloads.dispose();
+    expect(lifecycle.listeners.size).toBe(0); expect(lifecycle.remove).toHaveBeenCalledOnce();
+  });
+  it.each([{ visibility: "background" }, { connectivity: "offline" }])("pauses on host change %j, resumes only explicitly and keeps panel observers independent", async state => {
+    const lifecycle = lifecycleFixture(), { downloads, cache } = setup(undefined, lifecycle), wait = deferred();
+    cache.download.mockImplementationOnce(() => wait.promise);
+    const off = downloads.subscribe(vi.fn()), pending = downloads.download("test");
+    await vi.waitFor(() => expect(cache.download).toHaveBeenCalledOnce()); off();
+    lifecycle.publish(state); expect(phase(downloads)).toBe("pausing");
+    wait.resolve(missing); await pending; expect(phase(downloads)).toBe("paused");
+    lifecycle.publish({ visibility: "active", connectivity: "online" });
+    await Promise.resolve(); expect(cache.download).toHaveBeenCalledOnce();
+    await downloads.download("test"); expect(phase(downloads)).toBe("saved");
+    expect(cache.download).toHaveBeenCalledTimes(2); expect(lifecycle.subscribe).toHaveBeenCalledOnce();
+    downloads.dispose(); expect(lifecycle.listeners.size).toBe(0);
+  });
+  it.each([{ visibility: "background", connectivity: "online" }, { visibility: "active", connectivity: "offline" }])("blocks transfer before storage/network when host is %j", async state => {
+    const lifecycle = lifecycleFixture(state), { downloads, createCache, fetch } = setup(undefined, lifecycle);
+    await downloads.download("test"); expect(phase(downloads)).toBe("paused");
+    expect(createCache).not.toHaveBeenCalled(); expect(fetch).not.toHaveBeenCalled();
+    downloads.dispose(); expect(lifecycle.listeners.size).toBe(0);
+  });
+  it("allows local verification offline without restarting downloads", async () => {
+    const lifecycle = lifecycleFixture({ visibility: "active", connectivity: "offline" }), { downloads, cache } = setup(undefined, lifecycle);
+    cache.read.mockResolvedValue(saved); await downloads.check("test");
+    expect(phase(downloads)).toBe("saved"); expect(cache.download).not.toHaveBeenCalled();
+  });
+  it("cancellation wins over pause and cannot be undone by host events", async () => {
+    const lifecycle = lifecycleFixture(), { downloads, cache } = setup(undefined, lifecycle), wait = deferred();
+    cache.download.mockImplementationOnce(() => wait.promise);
+    const pending = downloads.download("test"); await vi.waitFor(() => expect(cache.download).toHaveBeenCalledOnce());
+    downloads.pause("test"); downloads.cancel("test"); lifecycle.publish({ visibility: "background" });
+    expect(phase(downloads)).toBe("cancelling"); wait.resolve(missing); await pending;
+    expect(phase(downloads)).toBe("cancelled");
+    await downloads.download("test"); expect(phase(downloads)).toBe("paused");
+    downloads.cancel("test"); expect(phase(downloads)).toBe("cancelled");
+  });
+  it("handles synchronous host pause, lifecycle errors, and disposal without leaking a subscription", async () => {
+    const lifecycle = lifecycleFixture();
+    lifecycle.subscribe.mockImplementation(listener => {
+      lifecycle.publish({ visibility: "background" }); listener(); return lifecycle.remove;
+    });
+    const { downloads, createCache } = setup(undefined, lifecycle);
+    await downloads.download("test"); expect(phase(downloads)).toBe("paused"); expect(createCache).not.toHaveBeenCalled();
+    expect(lifecycle.remove).not.toHaveBeenCalled(); downloads.dispose(); expect(lifecycle.remove).toHaveBeenCalledOnce();
+    lifecycle.subscribe.mockImplementation(() => { throw new Error("unavailable"); });
+    const unavailable = setup(undefined, lifecycle); await unavailable.downloads.download("test");
+    expect(phase(unavailable.downloads)).toBe("unavailable"); unavailable.downloads.dispose(); expect(createCache).not.toHaveBeenCalled();
   });
   it("rechecks persisted bytes after controller recreation and does not download valid saved bytes again", async () => {
     const { downloads, cache } = setup(); cache.read.mockResolvedValue(saved);

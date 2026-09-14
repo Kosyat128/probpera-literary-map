@@ -1,3 +1,15 @@
+<!-- s11-download-lifecycle-20260914:begin -->
+S11 download pause/recovery: 226 final unit cases, final type/platform checks and 4 actual
+Chrome cases passed. Manual pause and background/offline stop preserve verified files; resume
+is explicit. A real stale native snapshot failure was fixed by retaining one platform observer
+until disposal. Atomic completion wins over concurrent pause/cancel. RUEN panel/focus, changed
+candidate rejection, browser restart/offline and the canonical globe remain validated.
+Evidence: evidence/S11/download-lifecycle-20260914/result.json. Native callbacks were injected;
+ADB lists no connected devices, and no emulator is installed. No native/iOS execution claim.
+Next: refresh one PWA artifact from this committed source. Android a83dfcd6 and PWA0381b95f
+retain their previous source boundaries. QA activation, first-open S03 and D107 remain unchanged.
+<!-- s11-download-lifecycle-20260914:end -->
+
 <!-- s11-download-controls-android-20260914:begin -->
 Android/dev a83dfcd6 built from committed source aadc0f7f2cc8ea150f95c3b1bf8c156464b4aac8.
 Strict runtime audit, actual APK ZIP/CRC/resource equality, RUEN locales, debug signature,

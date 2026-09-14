@@ -141,14 +141,7 @@ export function createWebPlatformAdapter(
     browser?.removeEventListener("offline", refresh);
     documentHost?.removeEventListener("visibilitychange", refresh);
   }
-
-  return Object.freeze({
-    kind: "web" as const,
-    channel: "web" as const,
-    preferences,
-    downloads: options.downloads ?? createWebContentDownloads(browser),
-    getSnapshot,
-    subscribe(listener: () => void) {
+  function subscribe(listener: () => void) {
       const first = listeners.size === 0;
       listeners.set(listener, (listeners.get(listener) ?? 0) + 1);
       if (first) {
@@ -167,7 +160,15 @@ export function createWebPlatformAdapter(
         else listeners.delete(listener);
         if (!listeners.size) detach();
       };
-    },
+  }
+
+  return Object.freeze({
+    kind: "web" as const,
+    channel: "web" as const,
+    preferences,
+    downloads: options.downloads ?? createWebContentDownloads(browser, undefined, { getSnapshot, subscribe }),
+    getSnapshot,
+    subscribe,
     getSystemLanguages() {
       let languages: string[] = [];
       try {

@@ -5,7 +5,7 @@
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
   "headSha": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-14T11:25:51.772Z",
+  "updatedAt": "2026-09-14T11:46:10.006Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -1697,22 +1697,24 @@
           "status": "IN_PROGRESS",
           "evidence": [
             "docs/mobile/evidence/S11/content-intake-20260914/result.json",
-            "docs/mobile/evidence/S11/content-download-20260914/result.json"
+            "docs/mobile/evidence/S11/content-download-20260914/result.json",
+            "docs/mobile/evidence/S11/download-lifecycle-20260914/result.json"
           ],
           "commit": null,
           "lastValidatedAt": null,
-          "notes": "Signed content manifests. Canonical export/display comes before offline integrity and reviewed English equivalence. Portable QA verification and atomic derived cache are implemented and validated with the real preserved S08 exports. Full application/native transport and activation are not accepted. Signed whole-file network recovery passes real HTTP interruption, browser restart and two-document retry. Native/user-facing integration remains open."
+          "notes": "Signed content manifests. Canonical export/display comes before offline integrity and reviewed English equivalence. Portable QA verification and atomic derived cache are implemented and validated with the real preserved S08 exports. Full application/native transport and activation are not accepted. Signed whole-file network recovery passes real HTTP interruption, browser restart and two-document retry. Native/user-facing integration remains open. Download controls now pause on background/offline and resume explicitly from verified files; retained native observation fixes a browser-reproduced stale foreground state. Native device, complete content and full-stage acceptance remain open."
         },
         {
           "id": "S11.CONTENT-006",
           "status": "IN_PROGRESS",
           "evidence": [
             "docs/mobile/evidence/S11/content-intake-20260914/result.json",
-            "docs/mobile/evidence/S11/content-download-20260914/result.json"
+            "docs/mobile/evidence/S11/content-download-20260914/result.json",
+            "docs/mobile/evidence/S11/download-lifecycle-20260914/result.json"
           ],
           "commit": null,
           "lastValidatedAt": null,
-          "notes": "Atomic update/rollback. Canonical export/display comes before offline integrity and reviewed English equivalence. Portable QA verification and atomic derived cache are implemented and validated with the real preserved S08 exports. Full application/native transport and activation are not accepted. Signed whole-file network recovery passes real HTTP interruption, browser restart and two-document retry. Native/user-facing integration remains open."
+          "notes": "Atomic update/rollback. Canonical export/display comes before offline integrity and reviewed English equivalence. Portable QA verification and atomic derived cache are implemented and validated with the real preserved S08 exports. Full application/native transport and activation are not accepted. Signed whole-file network recovery passes real HTTP interruption, browser restart and two-document retry. Native/user-facing integration remains open. Download controls now pause on background/offline and resume explicitly from verified files; retained native observation fixes a browser-reproduced stale foreground state. Native device, complete content and full-stage acceptance remain open."
         },
         {
           "id": "S11.CONTENT-007",
@@ -1727,11 +1729,12 @@
           "status": "IN_PROGRESS",
           "evidence": [
             "docs/mobile/evidence/S11/install-resume-20260914/result.json",
-            "docs/mobile/evidence/S11/content-download-20260914/result.json"
+            "docs/mobile/evidence/S11/content-download-20260914/result.json",
+            "docs/mobile/evidence/S11/download-lifecycle-20260914/result.json"
           ],
           "commit": null,
           "lastValidatedAt": null,
-          "notes": "Interrupted download recovery. Canonical export/display comes before offline integrity and reviewed English equivalence. Public PWA first-install whole-file retry is implemented and tested. Full all-platform package/download recovery is not accepted. Signed whole-file network recovery passes real HTTP interruption, browser restart and two-document retry. Native/user-facing integration remains open."
+          "notes": "Interrupted download recovery. Canonical export/display comes before offline integrity and reviewed English equivalence. Public PWA first-install whole-file retry is implemented and tested. Full all-platform package/download recovery is not accepted. Signed whole-file network recovery passes real HTTP interruption, browser restart and two-document retry. Native/user-facing integration remains open. Download controls now pause on background/offline and resume explicitly from verified files; retained native observation fixes a browser-reproduced stale foreground state. Native device, complete content and full-stage acceptance remain open."
         },
         {
           "id": "S11.CONTENT-009",
@@ -1751,11 +1754,13 @@
         },
         {
           "id": "S11.MOD-041",
-          "status": "OPEN",
-          "evidence": [],
+          "status": "IN_PROGRESS",
+          "evidence": [
+            "docs/mobile/evidence/S11/download-lifecycle-20260914/result.json"
+          ],
           "commit": null,
           "lastValidatedAt": null,
-          "notes": "Offline and slow network cannot create endless loader or data corruption. Feature readiness is checked again in moderation against the exact candidate and localized dossier."
+          "notes": "Offline and slow network cannot create endless loader or data corruption. Feature readiness is checked again in moderation against the exact candidate and localized dossier. Download controls now pause on background/offline and resume explicitly from verified files; retained native observation fixes a browser-reproduced stale foreground state. Native device, complete content and full-stage acceptance remain open."
         },
         {
           "id": "S11.MOD-045",
@@ -1831,11 +1836,13 @@
         },
         {
           "id": "S11.UX-006",
-          "status": "OPEN",
-          "evidence": [],
+          "status": "IN_PROGRESS",
+          "evidence": [
+            "docs/mobile/evidence/S11/download-lifecycle-20260914/result.json"
+          ],
           "commit": null,
           "lastValidatedAt": null,
-          "notes": "All loading/empty/error/offline states. Shared feature presentation precedes integrated RU/EN layout, recovery and accessibility validation."
+          "notes": "All loading/empty/error/offline states. Shared feature presentation precedes integrated RU/EN layout, recovery and accessibility validation. Download controls now pause on background/offline and resume explicitly from verified files; retained native observation fixes a browser-reproduced stale foreground state. Native device, complete content and full-stage acceptance remain open."
         }
       ],
       "lastGreenCommands": [
@@ -1853,7 +1860,11 @@
         "node .tmp/s11-download-controls-20260914/run-checks.mjs globe a1",
         ".tmp/s11-download-controls-20260914/compile-android.ps1",
         ".tmp/s11-download-controls-20260914/build-android.ps1",
-        ".tmp/s11-download-controls-20260914/preserve-android.mjs"
+        ".tmp/s11-download-controls-20260914/preserve-android.mjs",
+        "node docs/mobile/evidence/S11/download-lifecycle-20260914/run-checks.mjs unit a4",
+        "node docs/mobile/evidence/S11/download-lifecycle-20260914/run-checks.mjs static a2",
+        "node docs/mobile/evidence/S11/download-lifecycle-20260914/run-checks.mjs browser a2",
+        "node docs/mobile/evidence/S11/download-lifecycle-20260914/run-checks.mjs globe a1"
       ],
       "artifacts": [
         "docs/mobile/evidence/S11/install-resume-20260914/entry.json",
@@ -1864,7 +1875,9 @@
         "docs/mobile/evidence/S11/content-download-20260914/result.json",
         "docs/mobile/evidence/S11/download-controls-20260914/entry.json",
         "docs/mobile/evidence/S11/download-controls-20260914/result.json",
-        "docs/mobile/evidence/S11/download-controls-android-20260914/result.json"
+        "docs/mobile/evidence/S11/download-controls-android-20260914/result.json",
+        "docs/mobile/evidence/S11/download-lifecycle-20260914/entry.json",
+        "docs/mobile/evidence/S11/download-lifecycle-20260914/result.json"
       ],
       "externalBlockers": []
     },
@@ -10665,7 +10678,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Continue S11 native storage execution/recovery and app pause/resume handling using the committed download controls. Android dev APK a83dfcd6 is preserved with exact source/runtime/binary proofs, but has no installed-device evidence; iOS source requires authorized macOS compilation and native capability checks. Refresh the PWA artifact after the next S11 integration slice, reusing passed source/Chrome evidence when unchanged. Keep QA candidates inactive. D107 final owner archive synchronization follows app implementation; no factual filling, store/deploy/merge or public CI upload.",
+    "nextAction": "Refresh and strictly audit one PWA artifact from the committed S11 lifecycle source, then test the actual offline RUEN globe/download panel and preserve exact bytes. Native storage/process-death execution needs an emulator or device; ADB currently lists none. Existing Android a83dfcd6 predates this lifecycle slice. Keep QA candidates inactive, D107 final archives deferred and all release/public CI actions gated.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -10696,7 +10709,8 @@
       "docs/mobile/evidence/S11/content-download-20260914/result.json",
       "docs/mobile/evidence/S11/download-controls-20260914/entry.json",
       "docs/mobile/evidence/S11/download-controls-20260914/result.json",
-      "docs/mobile/evidence/S11/download-controls-android-20260914/result.json"
+      "docs/mobile/evidence/S11/download-controls-android-20260914/result.json",
+      "docs/mobile/evidence/S11/download-lifecycle-20260914/result.json"
     ],
     "commands": [
       "node scripts/mobile/verify-requirements.mjs",
@@ -12182,7 +12196,9 @@
       "iosCompiled": false,
       "stageAccepted": false,
       "releaseReady": false,
-      "androidArtifact": "docs/mobile/evidence/S11/download-controls-android-20260914/result.json"
+      "androidArtifact": "docs/mobile/evidence/S11/download-controls-android-20260914/result.json",
+      "sourceInputsCurrent": false,
+      "successor": "docs/mobile/evidence/S11/download-lifecycle-20260914/result.json"
     },
     "s11AndroidDownloads": {
       "status": "BUILD_AND_ACTUAL_BINARY_INSPECTION_PASSED",
@@ -12198,6 +12214,18 @@
       "runtime": "D:/CodexData/.codex/visualizations/2026/09/04/01a06dd0-30ba-7fe1-9637-858d87ac1ff5/lpv12-a83dfcd6/runtime",
       "stageAccepted": false,
       "deviceTested": false,
+      "releaseReady": false
+    },
+    "s11DownloadLifecycle": {
+      "status": "SOURCE_LIFECYCLE_AND_BROWSER_RECOVERY_VALIDATED",
+      "evidence": "docs/mobile/evidence/S11/download-lifecycle-20260914/result.json",
+      "sha256": "8ad135f0c584864a0903465a685d79b25ba567faab569b9302babb56b1b6472f",
+      "sourceBaseCommit": "5f47a5d1888d61166181a874f7134e26a199eec5",
+      "passingUnitCases": 226,
+      "actualChromeCases": 4,
+      "sourceInputsCurrent": true,
+      "nativeDeviceTested": false,
+      "stageAccepted": false,
       "releaseReady": false
     }
   },

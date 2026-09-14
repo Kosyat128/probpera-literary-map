@@ -44,6 +44,6 @@ export async function createAndroidPlatformAdapter(options: AndroidPlatformAdapt
     subscribeBack: listener => bindings.app.addListener("backButton", listener),
     timeoutMs: options.timeoutMs, onFailure: options.onNavigationFailure,
   });
-  const downloads = createNativeContentDownloads(bindings.contentStore && bindings.core.isPluginAvailable("PlanetContentStore") ? bindings.contentStore : null);
+  const downloads = createNativeContentDownloads(bindings.contentStore && bindings.core.isPluginAvailable("PlanetContentStore") ? bindings.contentStore : null, { lifecycle: services });
   return Object.freeze({ services: Object.freeze({ ...services, navigation, downloads }), initialization });
 }
