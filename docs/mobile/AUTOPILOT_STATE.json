@@ -5,7 +5,7 @@
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
   "headSha": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-14T11:17:41.207Z",
+  "updatedAt": "2026-09-14T11:25:51.772Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -1851,7 +1851,9 @@
         "node .tmp/s11-download-controls-20260914/run-checks.mjs static a1",
         "node .tmp/s11-download-controls-20260914/run-checks.mjs browser a1",
         "node .tmp/s11-download-controls-20260914/run-checks.mjs globe a1",
-        ".tmp/s11-download-controls-20260914/compile-android.ps1"
+        ".tmp/s11-download-controls-20260914/compile-android.ps1",
+        ".tmp/s11-download-controls-20260914/build-android.ps1",
+        ".tmp/s11-download-controls-20260914/preserve-android.mjs"
       ],
       "artifacts": [
         "docs/mobile/evidence/S11/install-resume-20260914/entry.json",
@@ -1861,7 +1863,8 @@
         "docs/mobile/evidence/S11/content-download-20260914/entry.json",
         "docs/mobile/evidence/S11/content-download-20260914/result.json",
         "docs/mobile/evidence/S11/download-controls-20260914/entry.json",
-        "docs/mobile/evidence/S11/download-controls-20260914/result.json"
+        "docs/mobile/evidence/S11/download-controls-20260914/result.json",
+        "docs/mobile/evidence/S11/download-controls-android-20260914/result.json"
       ],
       "externalBlockers": []
     },
@@ -10662,7 +10665,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Build one refreshed Android/dev artifact from this committed source and inspect its actual APK bytes; preserve the earlier Android/PWA checkpoints. Continue S11 installed-host storage/recovery and platform pause/update handling. iOS source requires an authorized macOS build and native runtime checks, including crypto capability; current source/browser evidence is not installed-device acceptance. No production QA activation. Final canonical owner archive synchronization remains after app implementation under D107.",
+    "nextAction": "Continue S11 native storage execution/recovery and app pause/resume handling using the committed download controls. Android dev APK a83dfcd6 is preserved with exact source/runtime/binary proofs, but has no installed-device evidence; iOS source requires authorized macOS compilation and native capability checks. Refresh the PWA artifact after the next S11 integration slice, reusing passed source/Chrome evidence when unchanged. Keep QA candidates inactive. D107 final owner archive synchronization follows app implementation; no factual filling, store/deploy/merge or public CI upload.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -10692,7 +10695,8 @@
       "docs/mobile/evidence/S11/content-download-20260914/entry.json",
       "docs/mobile/evidence/S11/content-download-20260914/result.json",
       "docs/mobile/evidence/S11/download-controls-20260914/entry.json",
-      "docs/mobile/evidence/S11/download-controls-20260914/result.json"
+      "docs/mobile/evidence/S11/download-controls-20260914/result.json",
+      "docs/mobile/evidence/S11/download-controls-android-20260914/result.json"
     ],
     "commands": [
       "node scripts/mobile/verify-requirements.mjs",
@@ -12177,6 +12181,23 @@
       "androidJavaCompiled": true,
       "iosCompiled": false,
       "stageAccepted": false,
+      "releaseReady": false,
+      "androidArtifact": "docs/mobile/evidence/S11/download-controls-android-20260914/result.json"
+    },
+    "s11AndroidDownloads": {
+      "status": "BUILD_AND_ACTUAL_BINARY_INSPECTION_PASSED",
+      "evidence": "docs/mobile/evidence/S11/download-controls-android-20260914/result.json",
+      "sha256": "41a9831df225daa0904792b316e91bb8e7ab94418f2e597ce49b3f7b48141bf1",
+      "sourceCommit": "aadc0f7f2cc8ea150f95c3b1bf8c156464b4aac8",
+      "buildId": "a83dfcd65b3dc6c0f02edc73d7520803ba1bd07f7103ca89a36e204d3d64901f",
+      "apk": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/04/01a06dd0-30ba-7fe1-9637-858d87ac1ff5/lpv12-a83dfcd6/app-dev-debug.apk",
+        "bytes": 67232458,
+        "sha256": "3d0bffd7c1209ad26919b4ebec6202f1e237c1b09e3587e43a2b1a1b2c7a04af"
+      },
+      "runtime": "D:/CodexData/.codex/visualizations/2026/09/04/01a06dd0-30ba-7fe1-9637-858d87ac1ff5/lpv12-a83dfcd6/runtime",
+      "stageAccepted": false,
+      "deviceTested": false,
       "releaseReady": false
     }
   },

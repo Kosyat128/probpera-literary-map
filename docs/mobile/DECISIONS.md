@@ -654,3 +654,11 @@
   canonical scene; Android Java compilation passes. These do not certify native
   execution, iOS compilation or content activation. Keep production descriptor/trust
   catalogs empty and final owner archive sync after app implementation under D107.
+
+- D117: Build one combined Android/dev APK for S11 download controls and native
+  private storage from source aadc0f7f. Strict runtime and actual APK checks bind
+  a83dfcd6 to that source; DEX includes the locally registered store and AndroidX
+  atomic file implementation. Preserve exact APK/runtime copies on the authorized
+  D: workspace to limit C: usage. No unchanged source/browser suites were repeated
+  for packaging. Installed native execution, iOS compilation, content approval and
+  all stage/release gates remain open; D107 final owner archives stay deferred.

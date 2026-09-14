@@ -1,0 +1,262 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-14T11:25:51.772Z",
+  "kind": "android-download-controls-dev-apk-preservation",
+  "stage": "S11",
+  "status": "BUILD_AND_ACTUAL_BINARY_INSPECTION_PASSED",
+  "sourceCommit": "aadc0f7f2cc8ea150f95c3b1bf8c156464b4aac8",
+  "buildId": "a83dfcd65b3dc6c0f02edc73d7520803ba1bd07f7103ca89a36e204d3d64901f",
+  "sourceInputsSha256": "d01196da6ab154700cd165caaf4a653e451bcd0d8d010317f066f3db13ef3ecf",
+  "nativeSourceInputs": [
+    {
+      "path": "apps/mobile/android/.gitignore",
+      "sha256": "fe8c4e9acdf5a457081e492148a7bc1ba345cb3fda95a6a2bbb1d211533ece90"
+    },
+    {
+      "path": "apps/mobile/android/app/.gitignore",
+      "sha256": "99c54e51ee601a60fbde8016b2cbf717483bc2e92773be86c9247d02a7fa6ea4"
+    },
+    {
+      "path": "apps/mobile/android/app/build.gradle",
+      "sha256": "8d2c79e36aeacd77e2cc3068fd5dbf09389291c970e0c37179ef4791841e845c"
+    },
+    {
+      "path": "apps/mobile/android/app/capacitor.build.gradle",
+      "sha256": "00d3eb174206a523420609a3235fd739c6c45b12ebc6f6dda31687b53944c87d"
+    },
+    {
+      "path": "apps/mobile/android/app/proguard-rules.pro",
+      "sha256": "1cf8c57e8f79c250b0af9c1a5a4edad71a5c348a79ab70243b6bae086c150ad2"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/AndroidManifest.xml",
+      "sha256": "d45bf5a64a8e771105b5b1a2184b196aee46e0d7c2935d79d6b71bebc6c20caf"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/MainActivity.java",
+      "sha256": "a463dc4e87b2ea698b6657138a14d433c0f674336d6eca8dce30407950ba9c57"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetContentStorePlugin.java",
+      "sha256": "8571ad4f8b2979d7977f93028397f5231e2a1bd67b9f7754e6f25bf9177708d8"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/drawable-land-hdpi/splash.png",
+      "sha256": "41cbbc568bb360a84681d1ef4ba470c09993c18547f4b7f09f42de8d039059d5"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/drawable-land-mdpi/splash.png",
+      "sha256": "4feccc0dd7ee03ed57d1ab4d3bc97b23e05d93e9ec55cde44135bd7fa2c7d06c"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/drawable-land-xhdpi/splash.png",
+      "sha256": "51555e88ad31c4ac9ad8a1ca6e971d948332a907f107e0957bc69828d010325a"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/drawable-land-xxhdpi/splash.png",
+      "sha256": "ff1130bd95a9d3cae479c6e9d0ef294a4803f2cc9d0d757861b1a575a5fe5e40"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/drawable-land-xxxhdpi/splash.png",
+      "sha256": "54598cf67943455e55cf3d9dec0b1a6dcf455b99efe6227b9d868f58418dd465"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/drawable-port-hdpi/splash.png",
+      "sha256": "78a0de5069b2b0c21f71406f508dcf6329873cebfcfd2becd20d53e673d27b46"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/drawable-port-mdpi/splash.png",
+      "sha256": "6aa888101a497078614f668f09c7b705e62f8b2d5df0c8263e5593df5f9dd348"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/drawable-port-xhdpi/splash.png",
+      "sha256": "03e5339f0ef1edcc013ddcc2360dd97e4926485aeee3e6593bfcec729f7a0fde"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/drawable-port-xxhdpi/splash.png",
+      "sha256": "7bc2485cff17cf3b293fede8f343ee6e5a9b1c77a0ddb1b712dd7a16bdc5d0a9"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/drawable-port-xxxhdpi/splash.png",
+      "sha256": "1f330daeb98706e0939185b972e370a90a5afec07ebd75498dbe73701d47a270"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml",
+      "sha256": "8cd775ca03b52c7f6ac2a97689c8da4ed07e8092270f039fa3febce7a98864a3"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/drawable/ic_launcher_background.xml",
+      "sha256": "bc02ce505d0fb9aeddb8ee7d051fde3519f56637c1f2b86e6812b0dd8714c9a9"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/drawable/splash.png",
+      "sha256": "4feccc0dd7ee03ed57d1ab4d3bc97b23e05d93e9ec55cde44135bd7fa2c7d06c"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/layout/activity_main.xml",
+      "sha256": "5d770feb791313b947020cbfc57e5c733c556dac5e9e49261a1190e527073253"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml",
+      "sha256": "9c3a7e0a6515c6e1a7ae834a9ae430311ebc3241f7b2e5e7f0460aa690709a7c"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml",
+      "sha256": "9c3a7e0a6515c6e1a7ae834a9ae430311ebc3241f7b2e5e7f0460aa690709a7c"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-hdpi/ic_launcher.png",
+      "sha256": "429a4798e1eb0ace1d02311088dc95e3dc4b098de1910ed405c7632f19a002b6"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png",
+      "sha256": "3ee46031b42e469e3932ea71aa64e55f05a290db02b326c39f7ec3c6383b8e41"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png",
+      "sha256": "429a4798e1eb0ace1d02311088dc95e3dc4b098de1910ed405c7632f19a002b6"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-mdpi/ic_launcher.png",
+      "sha256": "ca35947d9144b858e03cfa72f4ecc50b89cbfd776fc63d819e5f8e799d3d12a1"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png",
+      "sha256": "0cb8c1d2700dd28a5dbd7c7a615f348942f47e3d0bc27696c59fd4aacb1bc51d"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png",
+      "sha256": "ca35947d9144b858e03cfa72f4ecc50b89cbfd776fc63d819e5f8e799d3d12a1"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png",
+      "sha256": "4c9d5dc6413d1d4b9c15e32c0c556a7b213fb04f237279714e8b08daf5d29958"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png",
+      "sha256": "5a1106df21364ff942eecabb8ff8e7c795f922b63cf3227cbd8b89fa6e37541b"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png",
+      "sha256": "4c9d5dc6413d1d4b9c15e32c0c556a7b213fb04f237279714e8b08daf5d29958"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png",
+      "sha256": "31ba5a377d1412005e75cb94e9ed59f488aa66d107c5a56dff004f8970f6a81b"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png",
+      "sha256": "973be00f28c78f7c985276f715a82863f85a63920eda57e7bfec24caf1487978"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png",
+      "sha256": "31ba5a377d1412005e75cb94e9ed59f488aa66d107c5a56dff004f8970f6a81b"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png",
+      "sha256": "682d42a97553720be3cdfcf20c43d57dfd46c28f924efdb48d59f7aa76013824"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png",
+      "sha256": "9d15dc51d13e869de8b44d3a1769c8d6e9e6003b9c2a73bbeac22626b302846c"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png",
+      "sha256": "682d42a97553720be3cdfcf20c43d57dfd46c28f924efdb48d59f7aa76013824"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/values-ru/strings.xml",
+      "sha256": "64ba7cf671ba7580727746eb9172dae4e5ad05ff3e7ba5f8abc696a58af3b6a6"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/values/ic_launcher_background.xml",
+      "sha256": "51c58896188ff626f1254e711b1f1caa1247ca67b1c338ca9bb1840ac9617764"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/values/strings.xml",
+      "sha256": "43ed1f0d14296b866760427d24dbfe7d3368892e0156bb4e952b1f4f12403195"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/values/styles.xml",
+      "sha256": "18ebba36575e9461347ee67361b23caf095f158ee85dbefe1b83a4669ba5bd6c"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/xml/file_paths.xml",
+      "sha256": "a46ed43ef65c90cb6778f4581decf3556e3f0055aad8f36d69dae16f9a0e99aa"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/xml/locales_config.xml",
+      "sha256": "80236fcd00f908a5e93f2e395ccd5c23654b8940379a063515dcd2eb638ac75f"
+    },
+    {
+      "path": "apps/mobile/android/build.gradle",
+      "sha256": "e2aa5075e1fcfd5e77c63eb8d662932b3c8586c927376b88a4986365af3b635f"
+    },
+    {
+      "path": "apps/mobile/android/capacitor.settings.gradle",
+      "sha256": "e05879a12085274c107a8006b33ada4e73e1592fd0fb79a9b70c24e069eb8ea5"
+    },
+    {
+      "path": "apps/mobile/android/gradle.properties",
+      "sha256": "bf36e92164e136e02c13728d219f9af8e8a386d491e61b9b66bf7d19df593488"
+    },
+    {
+      "path": "apps/mobile/android/gradle/wrapper/gradle-wrapper.jar",
+      "sha256": "7d3a4ac4de1c32b59bc6a4eb8ecb8e612ccd0cf1ae1e99f66902da64df296172"
+    },
+    {
+      "path": "apps/mobile/android/gradle/wrapper/gradle-wrapper.properties",
+      "sha256": "05fcb55a155233ee632da57149d1ba3cd39a001701ae00e0c20782fbaf6c378b"
+    },
+    {
+      "path": "apps/mobile/android/gradlew",
+      "sha256": "b187b4c52e749f5760afdd6fadc31b2a98ad35fb249bf0dff03b72650f320409"
+    },
+    {
+      "path": "apps/mobile/android/gradlew.bat",
+      "sha256": "1d297e00bd21de3ace22b4d7f2de1f9dfa858883d66bbf7c1ccbecccec8f4f3b"
+    },
+    {
+      "path": "apps/mobile/android/settings.gradle",
+      "sha256": "6ce098d15ebd69b44c4ecd786bca1bdc366340d2459b2af4d7bb0ab317aa9669"
+    },
+    {
+      "path": "apps/mobile/android/variables.gradle",
+      "sha256": "83d502c9ed8fcf1dd4791482067abeedbebae49fafe9cd14a8a1f5891deb0d88"
+    }
+  ],
+  "artifact": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/04/01a06dd0-30ba-7fe1-9637-858d87ac1ff5/lpv12-a83dfcd6/runtime",
+    "metadata": "docs/mobile/evidence/S11/download-controls-android-20260914/native-artifact.json",
+    "sha256": "3b94238562c086ad25895ec46ac5bc7f72b83c00cd8ccccf20cc555fb5eef5dd"
+  },
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/04/01a06dd0-30ba-7fe1-9637-858d87ac1ff5/lpv12-a83dfcd6/app-dev-debug.apk",
+    "bytes": 67232458,
+    "sha256": "3d0bffd7c1209ad26919b4ebec6202f1e237c1b09e3587e43a2b1a1b2c7a04af"
+  },
+  "validation": {
+    "sourceBehavior": "docs/mobile/evidence/S11/download-controls-20260914/result.json",
+    "strictRuntime": "docs/mobile/evidence/S11/download-controls-android-20260914/native-artifact-audit.json",
+    "build": "docs/mobile/evidence/S11/download-controls-android-20260914/build-run.json",
+    "binaryAudit": "docs/mobile/evidence/S11/download-controls-android-20260914/android-dev-apk-verification.json",
+    "copiedBytes": "docs/mobile/evidence/S11/download-controls-android-20260914/copy-verification.json",
+    "localContentStoreDex": "classes10.dex",
+    "bundledAssetsMatched": 1402,
+    "nativeBridgePackageMatched": true,
+    "nativeLocales": [
+      "en",
+      "ru"
+    ]
+  },
+  "nativeExecutionVerified": false,
+  "iosCompiled": false,
+  "sourceScreenshotsAreExactRc": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false,
+  "canonicalOwnerArchiveSyncPerformed": false,
+  "priorAndroidPreserved": "docs/mobile/evidence/S04/archive-search-android-20260914/result.json",
+  "pwaArtifactUnchanged": "0381b95fa2b6de6e0dd1340b28d885c496cb7ff6f6bca72d6e0cc1e0cf632354",
+  "nextAction": "Continue S11 native storage execution/recovery and app pause/resume handling using the committed download controls. Android dev APK a83dfcd6 is preserved with exact source/runtime/binary proofs, but has no installed-device evidence; iOS source requires authorized macOS compilation and native capability checks. Refresh the PWA artifact after the next S11 integration slice, reusing passed source/Chrome evidence when unchanged. Keep QA candidates inactive. D107 final owner archive synchronization follows app implementation; no factual filling, store/deploy/merge or public CI upload."
+}

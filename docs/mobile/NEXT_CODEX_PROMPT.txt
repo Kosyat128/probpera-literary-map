@@ -1,3 +1,15 @@
+<!-- s11-download-controls-android-20260914:begin -->
+Android/dev a83dfcd6 built from committed source aadc0f7f2cc8ea150f95c3b1bf8c156464b4aac8.
+Strict runtime audit, actual APK ZIP/CRC/resource equality, RUEN locales, debug signature,
+alignment and native DEX class checks passed. New PlanetContentStorePlugin is in classes10.dex.
+216 source unit cases and 4 Chrome cases remain valid; no unchanged suite was rerun for packaging.
+APK and runtime are preserved with exact copy hashes on D: under lpv12-a83dfcd6.
+Evidence: evidence/S11/download-controls-android-20260914/result.json. This is a dev APK,
+not installed-device, iOS, paid-content, store or RC acceptance. PWA0381b95f and prior
+Android048c8e1b/frozen iOS83 remain preserved. Next: native execution/pause/recovery; then
+a refreshed PWA artifact. First-open S03 and D107 deferred final owner archive sync remain.
+<!-- s11-download-controls-android-20260914:end -->
+
 <!-- s11-download-controls-20260914:begin -->
 S11 downloads are integrated into the existing planet collection in RU/EN, with shared theme tokens.
 The platform-lifetime controller survives locale/panel changes; explicit check/download/retry/cancel
