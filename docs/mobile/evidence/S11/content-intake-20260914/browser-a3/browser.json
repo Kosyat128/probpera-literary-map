@@ -1,0 +1,23 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=.tmp/s11-content-intake-20260914/playwright.config.mjs"
+  ],
+  "startedAt": "2026-09-14T10:18:02.688Z",
+  "durationMs": 12472,
+  "exitCode": 0,
+  "logs": {
+    "stdout": {
+      "text": "\nRunning 1 test using 1 worker\n\n\n\n[1/1] tests\\pwa\\content-package-cache.spec.mjs:42:1 › actual Chrome retains signed S08 RUEN bytes through failure, concurrent retry and browser restart offline\n  1 passed (11.2s)\n",
+      "bytes": 215,
+      "sha256": "6a160f33976cfbd5ac828c13dbd7d7424a939ba62218af87f5949155b498f9a8"
+    },
+    "stderr": {
+      "text": "(node:20472) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "bytes": 164,
+      "sha256": "cdab2a886714a9fe730f8d99716a67157fe796656f1a3dc6af19da29598c77a0"
+    }
+  }
+}

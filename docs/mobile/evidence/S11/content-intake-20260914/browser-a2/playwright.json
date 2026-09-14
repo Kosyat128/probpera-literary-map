@@ -1,0 +1,151 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=.tmp/s11-content-intake-20260914/playwright.config.mjs"
+    ],
+    "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\s11-content-intake-20260914\\playwright.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/.tmp/s11-content-intake-20260914/browser-output-a2",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "content-package-cache.spec.mjs"
+        ],
+        "timeout": 90000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S11\\content-intake-20260914\\browser-a2\\playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "content-package-cache.spec.mjs",
+      "file": "content-package-cache.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "actual Chrome retains signed S08 RUEN bytes through failure, concurrent retry and browser restart offline",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 3557,
+                  "error": {
+                    "message": "Error: {\"ok\":false,\"activationAllowed\":false,\"reason\":\"Failed to execute 'open' on 'CacheStorage': Unexpected internal error.\"}\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatchObject\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\n\u001b[32m- Expected  - 2\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[2m    \"activationAllowed\": false,\u001b[22m\n\u001b[32m-   \"ok\": true,\u001b[39m\n\u001b[32m-   \"previousManifestSha256\": null,\u001b[39m\n\u001b[31m+   \"ok\": false,\u001b[39m\n\u001b[2m  }\u001b[22m",
+                    "stack": "Error: {\"ok\":false,\"activationAllowed\":false,\"reason\":\"Failed to execute 'open' on 'CacheStorage': Unexpected internal error.\"}\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatchObject\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\n\u001b[32m- Expected  - 2\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[2m    \"activationAllowed\": false,\u001b[22m\n\u001b[32m-   \"ok\": true,\u001b[39m\n\u001b[32m-   \"previousManifestSha256\": null,\u001b[39m\n\u001b[31m+   \"ok\": false,\u001b[39m\n\u001b[2m  }\u001b[22m\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\content-package-cache.spec.mjs:90:68",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\content-package-cache.spec.mjs",
+                      "column": 68,
+                      "line": 90
+                    },
+                    "snippet": "  88 |     expect(result.capabilities).toMatchObject({ secureContext: true, cacheStorage: true, webLocks: true, webCrypto: true });\n  89 |     result.steps.first = await page.evaluate(f => window.__packageCache.save({ ...f, expectedCurrentManifestSha256: null }), first.fixture);\n> 90 |     expect(result.steps.first, JSON.stringify(result.steps.first)).toMatchObject({ ok: true, activationAllowed: false, previousManifestSha256: null });\n     |                                                                    ^\n  91 |     // Fault injection wraps a real Cache.put. Previous bytes and subsequent retry\n  92 |     // use the actual browser storage and cryptography, with no in-memory substitute.\n  93 |     result.steps.interrupted = await page.evaluate(async ({ fixture, prior }) => {"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\content-package-cache.spec.mjs",
+                        "column": 68,
+                        "line": 90
+                      },
+                      "message": "Error: {\"ok\":false,\"activationAllowed\":false,\"reason\":\"Failed to execute 'open' on 'CacheStorage': Unexpected internal error.\"}\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatchObject\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\n\u001b[32m- Expected  - 2\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[2m    \"activationAllowed\": false,\u001b[22m\n\u001b[32m-   \"ok\": true,\u001b[39m\n\u001b[32m-   \"previousManifestSha256\": null,\u001b[39m\n\u001b[31m+   \"ok\": false,\u001b[39m\n\u001b[2m  }\u001b[22m\n\n  88 |     expect(result.capabilities).toMatchObject({ secureContext: true, cacheStorage: true, webLocks: true, webCrypto: true });\n  89 |     result.steps.first = await page.evaluate(f => window.__packageCache.save({ ...f, expectedCurrentManifestSha256: null }), first.fixture);\n> 90 |     expect(result.steps.first, JSON.stringify(result.steps.first)).toMatchObject({ ok: true, activationAllowed: false, previousManifestSha256: null });\n     |                                                                    ^\n  91 |     // Fault injection wraps a real Cache.put. Previous bytes and subsequent retry\n  92 |     // use the actual browser storage and cryptography, with no in-memory substitute.\n  93 |     result.steps.interrupted = await page.evaluate(async ({ fixture, prior }) => {\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\content-package-cache.spec.mjs:90:68"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T10:16:44.024Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "content-package-cache-proof",
+                      "contentType": "application/json",
+                      "body": "ewogICJzb3VyY2VDb21taXQiOiAiODljZjU1OGQ3YmUzMTA1MDM2NzI0MjA1NjhiMWM3YTA0NWJkODMyNSIsCiAgInFhT25seSI6IHRydWUsCiAgInNvdXJjZUV4cG9ydHMiOiBbCiAgICB7CiAgICAgICJ2ZXJzaW9uIjogMSwKICAgICAgImluc3BlY3Rpb24iOiB7CiAgICAgICAgInBhdGgiOiAiZG9jcy9tb2JpbGUvZXZpZGVuY2UvUzA4L2NvbnRlbnQtZXhwb3J0LTIwMjYwOTE0L2V4cG9ydC1hMS9pbnNwZWN0aW9uLmpzb24iLAogICAgICAgICJzaGEyNTYiOiAiZjliZWI0OTkxNWFmOWI3ZmMyYTgzMzUxZGEzNzMxMTNhMWE4NmEyNzVmOTE3MmZkM2U2YjkzODZkMmFjMWRkNiIKICAgICAgfSwKICAgICAgImNhbm9uaWNhbE1hbmlmZXN0U2hhMjU2IjogIjA0NzBkNjVhNzdkNGZmNTJhODE5OTcxOTAxOWU3N2M0NDE1NThlNmQ5NWM5ZTAwMjViZDMzMDQ1NWM0OTViNzUiLAogICAgICAicmF3TWFuaWZlc3RTaGEyNTYiOiAiOWM3YzJmNDc4Mzk3YzQyNGVlNWNiNzllMWIzOGJhODFhMTIwNmJlYTc2MDRhZTdhNjFlNjdkMjQ5OWI4OGUxMSIsCiAgICAgICJjaGVja2VkIjogWwogICAgICAgIHsKICAgICAgICAgICJwYXRoIjogImRvY3MvbW9iaWxlL2V2aWRlbmNlL1MwOC9jb250ZW50LWV4cG9ydC0yMDI2MDkxNC9leHBvcnQtYTEvcWEtcHVibGljLWtleS5qc29uIiwKICAgICAgICAgICJieXRlcyI6IDMwMywKICAgICAgICAgICJzaGEyNTYiOiAiZGQwYWVlNDYwZTg3ZjBhODlkNmMzM2VlODAxOWMzNTI2YmNiYmZlOTYwYTg5NWM2ZTZmYTljZmY1MWE1NzU4YyIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJwYXRoIjogIi50bXAvY29udGVudC1leHBvcnRzL3MwOC0yMDI2MDkxNC1hMS9zaWduYXR1cmUuanNvbiIsCiAgICAgICAgICAiYnl0ZXMiOiAxMzI3LAogICAgICAgICAgInNoYTI1NiI6ICI0YzA4YjU5ODRlYjM0MzI1NmY0YjgwOGYxNjZjZWUwMTg0YWMwYWQ2MmI2YTVhOWEyOTQyMjMzZTQzY2RkM2QwIgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInBhdGgiOiAiLnRtcC9jb250ZW50LWV4cG9ydHMvczA4LTIwMjYwOTE0LWExL21hbmlmZXN0Lmpzb24iLAogICAgICAgICAgImJ5dGVzIjogOTg1LAogICAgICAgICAgInNoYTI1NiI6ICI5YzdjMmY0NzgzOTdjNDI0ZWU1Y2I3OWUxYjM4YmE4MWExMjA2YmVhNzYwNGFlN2E2MWU2N2QyNDk5Yjg4ZTExIgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInBhdGgiOiAiLnRtcC9jb250ZW50LWV4cG9ydHMvczA4LTIwMjYwOTE0LWExL3BhY2thZ2UvZGVwZW5kZW5jeS1pbmRleC5qc29uIiwKICAgICAgICAgICJieXRlcyI6IDk4MDExOCwKICAgICAgICAgICJzaGEyNTYiOiAiMzkyZmJiOTdkNjgzZDVkOTY5YWVhMjAxMzlhOTExMDQ5NDUyMzI1MTRiNjY1NzA4YTY1ZmIyNTY5NGI1YTY2NSIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJwYXRoIjogIi50bXAvY29udGVudC1leHBvcnRzL3MwOC0yMDI2MDkxNC1hMS9wYWNrYWdlL2VuL2NhdGFsb2cuanNvbiIsCiAgICAgICAgICAiYnl0ZXMiOiA2MDU3NzQsCiAgICAgICAgICAic2hhMjU2IjogImJjMjhkNGJlZTA4ZTg1YWIzZmRlN2M3MzhmZmY5YjYzMDEyNjQzNzc2ZTk3Njg2NWU2Mjc0ODI0NmYyYzY5ZjgiCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAicGF0aCI6ICIudG1wL2NvbnRlbnQtZXhwb3J0cy9zMDgtMjAyNjA5MTQtYTEvcGFja2FnZS9ydS9jYXRhbG9nLmpzb24iLAogICAgICAgICAgImJ5dGVzIjogMjYwNTg3NSwKICAgICAgICAgICJzaGEyNTYiOiAiYTJjYWQ2MmJmNGY1Yzc1NzljMDZmMjk5M2MwM2Q4ODMzZTQ3OTE2ZDIwODMzYzdjMmE5ZTg5YWM0YTlmOWFiMSIKICAgICAgICB9CiAgICAgIF0KICAgIH0sCiAgICB7CiAgICAgICJ2ZXJzaW9uIjogMiwKICAgICAgImluc3BlY3Rpb24iOiB7CiAgICAgICAgInBhdGgiOiAiZG9jcy9tb2JpbGUvZXZpZGVuY2UvUzA4L2NvbnRlbnQtZXhwb3J0LTIwMjYwOTE0L2V4cG9ydC1hMi9pbnNwZWN0aW9uLmpzb24iLAogICAgICAgICJzaGEyNTYiOiAiNzAzMWRlOWI1ODY1NjhmMjcyMWQ0ZTM2NDAwZmY1NGVhYmUzNjlkNWYzM2EzYjZmNWJjZDI2MmY0ODI4ZjFlYiIKICAgICAgfSwKICAgICAgImNhbm9uaWNhbE1hbmlmZXN0U2hhMjU2IjogImIwOGM2YjRmNTczZjY2ZGFjMDY3OWJhYjQyODI2Y2QwZjMwMGVkMzg2Y2U3ZmJjOWFmMjVmN2UyYjFhMWY4NmMiLAogICAgICAicmF3TWFuaWZlc3RTaGEyNTYiOiAiNmNmMGE4MmE2YmJlZmRlMTUzZDVlZThlMjNiMzhiN2QyNTMzYjY4MWNiOWNjMzQ4ZmQ4Njk3YWViZDdkMDg4YSIsCiAgICAgICJjaGVja2VkIjogWwogICAgICAgIHsKICAgICAgICAgICJwYXRoIjogImRvY3MvbW9iaWxlL2V2aWRlbmNlL1MwOC9jb250ZW50LWV4cG9ydC0yMDI2MDkxNC9leHBvcnQtYTIvcWEtcHVibGljLWtleS5qc29uIiwKICAgICAgICAgICJieXRlcyI6IDMwMywKICAgICAgICAgICJzaGEyNTYiOiAiZDU0ODVhMTQzODBkZjIyYTczYmIxMjk2NzkyNjZiYjRiODg4YjdkZDEzZTg3MDVjMGNkM2ZjYTFlZGI3ZDI1NiIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJwYXRoIjogIi50bXAvY29udGVudC1leHBvcnRzL3MwOC0yMDI2MDkxNC1hMi9zaWduYXR1cmUuanNvbiIsCiAgICAgICAgICAiYnl0ZXMiOiAxMzI0LAogICAgICAgICAgInNoYTI1NiI6ICIyNzI0MmJmZTliYzI5YjU1ZGRjYTcwMTQ2ZTgwYTFiOWQ1ZWU0ZTVlYTQ5OGJmOTRmODIzYjY2ZTU4NDYxYTE2IgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInBhdGgiOiAiLnRtcC9jb250ZW50LWV4cG9ydHMvczA4LTIwMjYwOTE0LWEyL21hbmlmZXN0Lmpzb24iLAogICAgICAgICAgImJ5dGVzIjogOTgyLAogICAgICAgICAgInNoYTI1NiI6ICI2Y2YwYTgyYTZiYmVmZGUxNTNkNWVlOGUyM2IzOGI3ZDI1MzNiNjgxY2I5Y2MzNDhmZDg2OTdhZWJkN2QwODhhIgogICAgICAgIH0sCiAgICAgICAgewogICAgICAgICAgInBhdGgiOiAiLnRtcC9jb250ZW50LWV4cG9ydHMvczA4LTIwMjYwOTE0LWEyL3BhY2thZ2UvZGVwZW5kZW5jeS1pbmRleC5qc29uIiwKICAgICAgICAgICJieXRlcyI6IDUxNSwKICAgICAgICAgICJzaGEyNTYiOiAiZWNhYjc5MjIwNTJjZDAwOTg2ODlmNWY5M2Q2OTQ2MTQ1NjhkYWU5OTUwZTUxNTRiMGIzYzg3ZTg2ZjhhMTg1NCIKICAgICAgICB9LAogICAgICAgIHsKICAgICAgICAgICJwYXRoIjogIi50bXAvY29udGVudC1leHBvcnRzL3MwOC0yMDI2MDkxNC1hMi9wYWNrYWdlL2VuL2NhdGFsb2cuanNvbiIsCiAgICAgICAgICAiYnl0ZXMiOiA2MDU3NzQsCiAgICAgICAgICAic2hhMjU2IjogImJjMjhkNGJlZTA4ZTg1YWIzZmRlN2M3MzhmZmY5YjYzMDEyNjQzNzc2ZTk3Njg2NWU2Mjc0ODI0NmYyYzY5ZjgiCiAgICAgICAgfSwKICAgICAgICB7CiAgICAgICAgICAicGF0aCI6ICIudG1wL2NvbnRlbnQtZXhwb3J0cy9zMDgtMjAyNjA5MTQtYTIvcGFja2FnZS9ydS9jYXRhbG9nLmpzb24iLAogICAgICAgICAgImJ5dGVzIjogMjYwNTg3NSwKICAgICAgICAgICJzaGEyNTYiOiAiYTJjYWQ2MmJmNGY1Yzc1NzljMDZmMjk5M2MwM2Q4ODMzZTQ3OTE2ZDIwODMzYzdjMmE5ZTg5YWM0YTlmOWFiMSIKICAgICAgICB9CiAgICAgIF0KICAgIH0KICBdLAogICJidW5kbGVTaGEyNTYiOiAiM2ZiNTdjODJkZWQwMzE2NTQ5MDUyZjlhYzg2OWE5MzJjZWNiYjg5YzcxZTI5NTdjNGJkZDRjNTNiMzE1YmJiNyIsCiAgImJ1bmRsZUlucHV0cyI6IFsKICAgICI8c3RkaW4+IiwKICAgICJub2RlX21vZHVsZXMvQG5vYmxlL2hhc2hlcy9lc20vX21kLmpzIiwKICAgICJub2RlX21vZHVsZXMvQG5vYmxlL2hhc2hlcy9lc20vX3U2NC5qcyIsCiAgICAibm9kZV9tb2R1bGVzL0Bub2JsZS9oYXNoZXMvZXNtL2NyeXB0by5qcyIsCiAgICAibm9kZV9tb2R1bGVzL0Bub2JsZS9oYXNoZXMvZXNtL3NoYTIuanMiLAogICAgIm5vZGVfbW9kdWxlcy9Abm9ibGUvaGFzaGVzL2VzbS91dGlscy5qcyIsCiAgICAic3JjL3BsYW5ldC9jb250ZW50UGFja2FnZUNhY2hlLnRzIiwKICAgICJzcmMvcGxhbmV0L2NvbnRlbnRQYWNrYWdlUHJvdG9jb2wubWpzIiwKICAgICJzcmMvcGxhbmV0L3ZlcmlmeUNvbnRlbnRQYWNrYWdlLnRzIgogIF0sCiAgInN0ZXBzIjogewogICAgImZpcnN0IjogewogICAgICAib2siOiBmYWxzZSwKICAgICAgImFjdGl2YXRpb25BbGxvd2VkIjogZmFsc2UsCiAgICAgICJyZWFzb24iOiAiRmFpbGVkIHRvIGV4ZWN1dGUgJ29wZW4nIG9uICdDYWNoZVN0b3JhZ2UnOiBVbmV4cGVjdGVkIGludGVybmFsIGVycm9yLiIKICAgIH0KICB9LAogICJjYXBhYmlsaXRpZXMiOiB7CiAgICAic2VjdXJlQ29udGV4dCI6IHRydWUsCiAgICAiY2FjaGVTdG9yYWdlIjogdHJ1ZSwKICAgICJ3ZWJMb2NrcyI6IHRydWUsCiAgICAid2ViQ3J5cHRvIjogdHJ1ZSwKICAgICJ1c2VyQWdlbnQiOiAiTW96aWxsYS81LjAgKFdpbmRvd3MgTlQgMTAuMDsgV2luNjQ7IHg2NCkgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgSGVhZGxlc3NDaHJvbWUvMTUzLjAuMC4wIFNhZmFyaS81MzcuMzYiCiAgfQp9Cg=="
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\s11-content-intake-20260914\\browser-output-a2\\content-package-cache-actu-bf256-and-browser-restart-offline\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\content-package-cache.spec.mjs",
+                    "column": 68,
+                    "line": 90
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "3cc0a49dc0281076d4b1-a9fd176fdf08e33d6888",
+          "file": "content-package-cache.spec.mjs",
+          "line": 41,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-14T10:16:43.212Z",
+    "duration": 4440.289,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

@@ -1,3 +1,15 @@
+<!-- s11-content-intake-20260914:begin -->
+S11 signed QA content integrity and atomic derived cache implemented.
+126 focused tests, TypeScript/platform boundaries and 1 actual Chrome scenario pass.
+Existing S08 RUEN packages survive a failed replacement, simultaneous tab retry
+and browser restart; offline reads verify current/previous bytes, corruption is denied.
+All candidates remain QA-only; no editorial, purchase or child activation is granted.
+Evidence: evidence/S11/content-intake-20260914/result.json. No full app rebuild repeated.
+Next: bounded package download transport/recovery and platform integration.
+Owner archives sync after application implementation (D107). First-open S03;
+S11 and release gates remain unaccepted. Android048c8e1b/PWA0381b95f and iOS83 preserved.
+<!-- s11-content-intake-20260914:end -->
+
 <!-- s11-install-resume-20260914:begin -->
 S11 entered in a documented parallel-safe scope for CONTENT-008.
 Public PWA first-install recovery reuses only whole verified candidate files.

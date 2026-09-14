@@ -1,0 +1,23 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=.tmp/s11-content-intake-20260914/playwright.config.mjs"
+  ],
+  "startedAt": "2026-09-14T10:15:00.849Z",
+  "durationMs": 7158,
+  "exitCode": 1,
+  "logs": {
+    "stdout": {
+      "text": "\nRunning 1 test using 1 worker\n\n\n\n[1/1] tests\\pwa\\content-package-cache.spec.mjs:41:1 › actual Chrome retains signed S08 RUEN bytes through failure, concurrent retry and browser restart offline\n  1) tests\\pwa\\content-package-cache.spec.mjs:41:1 › actual Chrome retains signed S08 RUEN bytes through failure, concurrent retry and browser restart offline \n\n    Error: expect(received).toMatchObject(expected)\n\n    - Expected  - 2\n    + Received  + 1\n\n      Object {\n        \"activationAllowed\": false,\n    -   \"ok\": true,\n    -   \"previousManifestSha256\": null,\n    +   \"ok\": false,\n      }\n\n      88 |     expect(result.capabilities).toMatchObject({ secureContext: true, cacheStorage: true, webLocks: true, webCrypto: true });\n      89 |     result.steps.first = await page.evaluate(f => window.__packageCache.save({ ...f, expectedCurrentManifestSha256: null }), first.fixture);\n    > 90 |     expect(result.steps.first).toMatchObject({ ok: true, activationAllowed: false, previousManifestSha256: null });\n         |                                ^\n      91 |     // Fault injection wraps a real Cache.put. Previous bytes and subsequent retry\n      92 |     // use the actual browser storage and cryptography, with no in-memory substitute.\n      93 |     result.steps.interrupted = await page.evaluate(async ({ fixture, prior }) => {\n        at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\content-package-cache.spec.mjs:90:32\n\n    Error Context: .tmp\\s11-content-intake-20260914\\browser-output-a1\\content-package-cache-actu-bf256-and-browser-restart-offline\\error-context.md\n\n\n  1 failed\n    tests\\pwa\\content-package-cache.spec.mjs:41:1 › actual Chrome retains signed S08 RUEN bytes through failure, concurrent retry and browser restart offline \n",
+      "bytes": 1805,
+      "sha256": "5ed6473d29f6adf89a2d8310fb0160d596d25d135a2b9e06126bc1223d62f1b6"
+    },
+    "stderr": {
+      "text": "(node:25088) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "bytes": 164,
+      "sha256": "0eaf1dd44427e11ee811827e9e401ad8ba79d40c7bd3099b37cb2495b847d42d"
+    }
+  }
+}

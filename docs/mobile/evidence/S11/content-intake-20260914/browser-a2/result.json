@@ -1,0 +1,188 @@
+{
+  "schemaVersion": 1,
+  "mode": "browser",
+  "startedAt": "2026-09-14T10:16:42.495Z",
+  "head": "521417dd5ffb793b1a91fc3d09bb1d154193b5dd",
+  "before": [
+    {
+      "path": ".tmp/s11-content-intake-20260914/playwright.config.mjs",
+      "sha256": "e0ee906784c225d8132d3133ab34cb1519ab45cb6c7d5aa585d82feeb051cbae"
+    },
+    {
+      "path": ".tmp/s11-content-intake-20260914/run-checks.mjs",
+      "sha256": "1e1cce74df3cbe8e5e024265cc4e50edf35609f7b2981ec36f2f97319bb087ec"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+    },
+    {
+      "path": "package.json",
+      "sha256": "90b392c205754f838b8bc7c4475bd475936be1078561bb218c437d151177869f"
+    },
+    {
+      "path": "scripts/mobile/content-export-input.mjs",
+      "sha256": "c5bde4131357eb1bcb81e11b502538342443572c8f70fa9885f78a84e1fb9db7"
+    },
+    {
+      "path": "scripts/mobile/content-export-input.test.mjs",
+      "sha256": "a1f7a8b6c514fdffa26be27423b8e9b2871935dea88e723aece518ece239b76e"
+    },
+    {
+      "path": "scripts/mobile/content-package-signature.mjs",
+      "sha256": "3526c98bf9d241760a6bc6a4355dca8d39ffcb83aedfe535c1f6e3b60a8e399d"
+    },
+    {
+      "path": "scripts/mobile/content-package-signature.test.mjs",
+      "sha256": "7f2416549054ffa50c13ca352b076a6f2ce726f121b0e17dfd6aad6baea47693"
+    },
+    {
+      "path": "src/planet/contentPackageCache.test.mjs",
+      "sha256": "067450a3a24f9a1597434bdcebc47f172c4ae4323f7bf9aa7542ca66e691269f"
+    },
+    {
+      "path": "src/planet/contentPackageCache.ts",
+      "sha256": "d7d2c16374db0f3bbc9789d5e4c7c55961f5009d200f3c969dea2248fed5a9b2"
+    },
+    {
+      "path": "src/planet/contentPackageProtocol.d.mts",
+      "sha256": "ca3c58f414de8ea7ff4f608984fa58bd662057fd8fa638764c99a7afde5cb4dc"
+    },
+    {
+      "path": "src/planet/contentPackageProtocol.mjs",
+      "sha256": "fb3708aa57b6ffec89dcf1142872d68a3821a614fe51b6696ebbfbf8b58d8d66"
+    },
+    {
+      "path": "src/planet/verifyContentPackage.test.mjs",
+      "sha256": "be2ce226147c922201b79877f3b29e62453048ed5a30cc618510f70e07be147b"
+    },
+    {
+      "path": "src/planet/verifyContentPackage.ts",
+      "sha256": "454fcec6d043400bd7e587dd4ba472f85119d62e22fdc67904229dbbd631502a"
+    },
+    {
+      "path": "tests/pwa/content-package-cache.spec.mjs",
+      "sha256": "624ec15816e1d51b2b59357b1bee283cbec580ff2ae918a2ce8d3936f9e347fe"
+    },
+    {
+      "path": "tests/support/content-package-fixtures.mjs",
+      "sha256": "8ae81e6cb376e853882f99d51655ca4bd16ce5ac2e8ff501e18ea2f99591e687"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "8d51a8c9266fe83bf17c076b51672753b3750a17520cd0d2c28a90cb8b21e0d6"
+    },
+    {
+      "path": "vitest.config.ts",
+      "sha256": "5c1e90985e77b35599e5bdaf77c74a1166949ec9c4f45d1c5f926c3f53bef90e"
+    }
+  ],
+  "after": [
+    {
+      "path": ".tmp/s11-content-intake-20260914/playwright.config.mjs",
+      "sha256": "e0ee906784c225d8132d3133ab34cb1519ab45cb6c7d5aa585d82feeb051cbae"
+    },
+    {
+      "path": ".tmp/s11-content-intake-20260914/run-checks.mjs",
+      "sha256": "1e1cce74df3cbe8e5e024265cc4e50edf35609f7b2981ec36f2f97319bb087ec"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+    },
+    {
+      "path": "package.json",
+      "sha256": "90b392c205754f838b8bc7c4475bd475936be1078561bb218c437d151177869f"
+    },
+    {
+      "path": "scripts/mobile/content-export-input.mjs",
+      "sha256": "c5bde4131357eb1bcb81e11b502538342443572c8f70fa9885f78a84e1fb9db7"
+    },
+    {
+      "path": "scripts/mobile/content-export-input.test.mjs",
+      "sha256": "a1f7a8b6c514fdffa26be27423b8e9b2871935dea88e723aece518ece239b76e"
+    },
+    {
+      "path": "scripts/mobile/content-package-signature.mjs",
+      "sha256": "3526c98bf9d241760a6bc6a4355dca8d39ffcb83aedfe535c1f6e3b60a8e399d"
+    },
+    {
+      "path": "scripts/mobile/content-package-signature.test.mjs",
+      "sha256": "7f2416549054ffa50c13ca352b076a6f2ce726f121b0e17dfd6aad6baea47693"
+    },
+    {
+      "path": "src/planet/contentPackageCache.test.mjs",
+      "sha256": "067450a3a24f9a1597434bdcebc47f172c4ae4323f7bf9aa7542ca66e691269f"
+    },
+    {
+      "path": "src/planet/contentPackageCache.ts",
+      "sha256": "d7d2c16374db0f3bbc9789d5e4c7c55961f5009d200f3c969dea2248fed5a9b2"
+    },
+    {
+      "path": "src/planet/contentPackageProtocol.d.mts",
+      "sha256": "ca3c58f414de8ea7ff4f608984fa58bd662057fd8fa638764c99a7afde5cb4dc"
+    },
+    {
+      "path": "src/planet/contentPackageProtocol.mjs",
+      "sha256": "fb3708aa57b6ffec89dcf1142872d68a3821a614fe51b6696ebbfbf8b58d8d66"
+    },
+    {
+      "path": "src/planet/verifyContentPackage.test.mjs",
+      "sha256": "be2ce226147c922201b79877f3b29e62453048ed5a30cc618510f70e07be147b"
+    },
+    {
+      "path": "src/planet/verifyContentPackage.ts",
+      "sha256": "454fcec6d043400bd7e587dd4ba472f85119d62e22fdc67904229dbbd631502a"
+    },
+    {
+      "path": "tests/pwa/content-package-cache.spec.mjs",
+      "sha256": "624ec15816e1d51b2b59357b1bee283cbec580ff2ae918a2ce8d3936f9e347fe"
+    },
+    {
+      "path": "tests/support/content-package-fixtures.mjs",
+      "sha256": "8ae81e6cb376e853882f99d51655ca4bd16ce5ac2e8ff501e18ea2f99591e687"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "8d51a8c9266fe83bf17c076b51672753b3750a17520cd0d2c28a90cb8b21e0d6"
+    },
+    {
+      "path": "vitest.config.ts",
+      "sha256": "5c1e90985e77b35599e5bdaf77c74a1166949ec9c4f45d1c5f926c3f53bef90e"
+    }
+  ],
+  "unchanged": true,
+  "executions": [
+    {
+      "name": "browser",
+      "exitCode": 1,
+      "durationMs": 5111,
+      "evidence": "docs/mobile/evidence/S11/content-intake-20260914/browser-a2/browser.json"
+    }
+  ],
+  "tests": {
+    "passed": 0,
+    "failed": 1,
+    "skipped": 0,
+    "flaky": 0,
+    "cases": 1,
+    "failures": [
+      {
+        "location": {
+          "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\content-package-cache.spec.mjs",
+          "column": 68,
+          "line": 90
+        },
+        "message": "Error: {\"ok\":false,\"activationAllowed\":false,\"reason\":\"Failed to execute 'open' on 'CacheStorage': Unexpected internal error.\"}\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatchObject\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\n\u001b[32m- Expected  - 2\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[2m    \"activationAllowed\": false,\u001b[22m\n\u001b[32m-   \"ok\": true,\u001b[39m\n\u001b[32m-   \"previousManifestSha256\": null,\u001b[39m\n\u001b[31m+   \"ok\": false,\u001b[39m\n\u001b[2m  }\u001b[22m\n\n  88 |     expect(result.capabilities).toMatchObject({ secureContext: true, cacheStorage: true, webLocks: true, webCrypto: true });\n  89 |     result.steps.first = await page.evaluate(f => window.__packageCache.save({ ...f, expectedCurrentManifestSha256: null }), first.fixture);\n> 90 |     expect(result.steps.first, JSON.stringify(result.steps.first)).toMatchObject({ ok: true, activationAllowed: false, previousManifestSha256: null });\n     |                                                                    ^\n  91 |     // Fault injection wraps a real Cache.put. Previous bytes and subsequent retry\n  92 |     // use the actual browser storage and cryptography, with no in-memory substitute.\n  93 |     result.steps.interrupted = await page.evaluate(async ({ fixture, prior }) => {\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\content-package-cache.spec.mjs:90:68"
+      }
+    ]
+  },
+  "proof": {
+    "path": "docs/mobile/evidence/S11/content-intake-20260914/browser-a2/content-package-cache-proof.json",
+    "bytes": 4561,
+    "sha256": "af87d672466ff30565b22cc5980cd65022a51d83638cd12f8df5e8ca03182a19"
+  },
+  "pass": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

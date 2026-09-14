@@ -625,3 +625,14 @@
   full PWA build after further S11 integration. Native/card/search artifacts stay
   preserved. No child/content/native/offline stage acceptance, no content filling;
   D107 final owner archive synchronization remains after app implementation.
+
+- D114: Share the S08 data-only protocol with an application WebCrypto verifier;
+  pin dedicated public content keys independently from transport and purchase keys.
+  Save QA bytes through a derived CacheStorage generation protected by Web Locks,
+  full RUEN readback and one atomic selection write; retain the previous generation.
+  Actual Chrome verifies preserved exports through interruption, tab concurrency,
+  browser restart and offline corruption rejection. Keep activationAllowed=false;
+  no canonical facts, editorial, child or ownership authority is added. Short dedicated
+  browser profiles avoid the observed Windows CacheStorage environment failure.
+  Continue bounded transport/platform integration before refreshed whole-app artifacts;
+  first-open S03 and D107 final owner archive synchronization remain unchanged.

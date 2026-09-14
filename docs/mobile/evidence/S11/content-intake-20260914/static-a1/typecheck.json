@@ -1,0 +1,22 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/typescript/bin/tsc",
+    "--noEmit"
+  ],
+  "startedAt": "2026-09-14T10:15:00.001Z",
+  "durationMs": 34866,
+  "exitCode": 2,
+  "logs": {
+    "stdout": {
+      "text": "src/planet/verifyContentPackage.ts(109,40): error TS18047: 'subtle' is possibly 'null'.\r\nsrc/planet/verifyContentPackage.ts(115,35): error TS18047: 'subtle' is possibly 'null'.\r\nsrc/planet/verifyContentPackage.ts(115,85): error TS2345: Argument of type 'CryptoKey | undefined' is not assignable to parameter of type 'CryptoKey'.\r\n  Type 'undefined' is not assignable to type 'CryptoKey'.\r\n",
+      "bytes": 389,
+      "sha256": "f85e06573eaa5cf8e18fa507336e754ad684494913568b52435f2d8ef9152ab2"
+    },
+    "stderr": {
+      "text": "",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

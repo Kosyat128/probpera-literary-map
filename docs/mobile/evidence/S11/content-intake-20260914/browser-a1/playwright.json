@@ -1,0 +1,146 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=.tmp/s11-content-intake-20260914/playwright.config.mjs"
+    ],
+    "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\s11-content-intake-20260914\\playwright.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/.tmp/s11-content-intake-20260914/browser-output-a1",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "content-package-cache.spec.mjs"
+        ],
+        "timeout": 90000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S11\\content-intake-20260914\\browser-a1\\playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "content-package-cache.spec.mjs",
+      "file": "content-package-cache.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "actual Chrome retains signed S08 RUEN bytes through failure, concurrent retry and browser restart offline",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 4076,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatchObject\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\n\u001b[32m- Expected  - 2\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[2m    \"activationAllowed\": false,\u001b[22m\n\u001b[32m-   \"ok\": true,\u001b[39m\n\u001b[32m-   \"previousManifestSha256\": null,\u001b[39m\n\u001b[31m+   \"ok\": false,\u001b[39m\n\u001b[2m  }\u001b[22m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatchObject\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\n\u001b[32m- Expected  - 2\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[2m    \"activationAllowed\": false,\u001b[22m\n\u001b[32m-   \"ok\": true,\u001b[39m\n\u001b[32m-   \"previousManifestSha256\": null,\u001b[39m\n\u001b[31m+   \"ok\": false,\u001b[39m\n\u001b[2m  }\u001b[22m\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\content-package-cache.spec.mjs:90:32",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\content-package-cache.spec.mjs",
+                      "column": 32,
+                      "line": 90
+                    },
+                    "snippet": "  88 |     expect(result.capabilities).toMatchObject({ secureContext: true, cacheStorage: true, webLocks: true, webCrypto: true });\n  89 |     result.steps.first = await page.evaluate(f => window.__packageCache.save({ ...f, expectedCurrentManifestSha256: null }), first.fixture);\n> 90 |     expect(result.steps.first).toMatchObject({ ok: true, activationAllowed: false, previousManifestSha256: null });\n     |                                ^\n  91 |     // Fault injection wraps a real Cache.put. Previous bytes and subsequent retry\n  92 |     // use the actual browser storage and cryptography, with no in-memory substitute.\n  93 |     result.steps.interrupted = await page.evaluate(async ({ fixture, prior }) => {"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\content-package-cache.spec.mjs",
+                        "column": 32,
+                        "line": 90
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatchObject\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\n\u001b[32m- Expected  - 2\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[2m    \"activationAllowed\": false,\u001b[22m\n\u001b[32m-   \"ok\": true,\u001b[39m\n\u001b[32m-   \"previousManifestSha256\": null,\u001b[39m\n\u001b[31m+   \"ok\": false,\u001b[39m\n\u001b[2m  }\u001b[22m\n\n  88 |     expect(result.capabilities).toMatchObject({ secureContext: true, cacheStorage: true, webLocks: true, webCrypto: true });\n  89 |     result.steps.first = await page.evaluate(f => window.__packageCache.save({ ...f, expectedCurrentManifestSha256: null }), first.fixture);\n> 90 |     expect(result.steps.first).toMatchObject({ ok: true, activationAllowed: false, previousManifestSha256: null });\n     |                                ^\n  91 |     // Fault injection wraps a real Cache.put. Previous bytes and subsequent retry\n  92 |     // use the actual browser storage and cryptography, with no in-memory substitute.\n  93 |     result.steps.interrupted = await page.evaluate(async ({ fixture, prior }) => {\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\content-package-cache.spec.mjs:90:32"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-14T10:15:03.893Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\s11-content-intake-20260914\\browser-output-a1\\content-package-cache-actu-bf256-and-browser-restart-offline\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\content-package-cache.spec.mjs",
+                    "column": 32,
+                    "line": 90
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "3cc0a49dc0281076d4b1-a9fd176fdf08e33d6888",
+          "file": "content-package-cache.spec.mjs",
+          "line": 41,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-14T10:15:02.386Z",
+    "duration": 5718.136,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

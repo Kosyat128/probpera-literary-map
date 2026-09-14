@@ -5,7 +5,7 @@
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
   "headSha": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-14T03:46:47.905Z",
+  "updatedAt": "2026-09-14T10:21:27.418Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -1694,19 +1694,23 @@
         },
         {
           "id": "S11.CONTENT-005",
-          "status": "OPEN",
-          "evidence": [],
+          "status": "IN_PROGRESS",
+          "evidence": [
+            "docs/mobile/evidence/S11/content-intake-20260914/result.json"
+          ],
           "commit": null,
           "lastValidatedAt": null,
-          "notes": "Signed content manifests. Canonical export/display comes before offline integrity and reviewed English equivalence."
+          "notes": "Signed content manifests. Canonical export/display comes before offline integrity and reviewed English equivalence. Portable QA verification and atomic derived cache are implemented and validated with the real preserved S08 exports. Full application/native transport and activation are not accepted."
         },
         {
           "id": "S11.CONTENT-006",
-          "status": "OPEN",
-          "evidence": [],
+          "status": "IN_PROGRESS",
+          "evidence": [
+            "docs/mobile/evidence/S11/content-intake-20260914/result.json"
+          ],
           "commit": null,
           "lastValidatedAt": null,
-          "notes": "Atomic update/rollback. Canonical export/display comes before offline integrity and reviewed English equivalence."
+          "notes": "Atomic update/rollback. Canonical export/display comes before offline integrity and reviewed English equivalence. Portable QA verification and atomic derived cache are implemented and validated with the real preserved S08 exports. Full application/native transport and activation are not accepted."
         },
         {
           "id": "S11.CONTENT-007",
@@ -1833,11 +1837,16 @@
       ],
       "lastGreenCommands": [
         "node .tmp/s11-install-resume-20260914/run-checks.mjs unit a1",
-        "node .tmp/s11-install-resume-20260914/run-checks.mjs browser a1"
+        "node .tmp/s11-install-resume-20260914/run-checks.mjs browser a1",
+        "node .tmp/s11-content-intake-20260914/run-checks.mjs unit a2",
+        "node .tmp/s11-content-intake-20260914/run-checks.mjs static a2",
+        "node .tmp/s11-content-intake-20260914/run-checks.mjs browser a3"
       ],
       "artifacts": [
         "docs/mobile/evidence/S11/install-resume-20260914/entry.json",
-        "docs/mobile/evidence/S11/install-resume-20260914/result.json"
+        "docs/mobile/evidence/S11/install-resume-20260914/result.json",
+        "docs/mobile/evidence/S11/content-intake-20260914/entry.json",
+        "docs/mobile/evidence/S11/content-intake-20260914/result.json"
       ],
       "externalBlockers": []
     },
@@ -10638,7 +10647,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Continue S11 with bounded signed content-package consumption/storage on the S08 canonical export contract; retain public PWA bootstrap recovery as a distinct tested layer. No owner archive population. Batch the next full PWA artifact refresh with the next affected runtime slice; existing PWA0381b95f includes the requested integrated card/search but predates install-resume. Android048c8e1b and frozen iOS83 stay preserved. Owner final canonical archive synchronization follows app implementation (D107). First-open S03 remains unchanged.",
+    "nextAction": "Continue S11 with bounded cancellable signed-package download transport and recovery wired to these verified cache contracts; integrate capabilities through the existing platform boundaries. Keep QA candidates outside production content activation. Batch full application artifacts only after an affected runtime integration. D107 final owner archive synchronization follows application implementation; no factual archive population. First-open S03 remains unchanged.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -10662,7 +10671,9 @@
       "docs/mobile/requirements/v12/22_ACCESSIBILITY_LOCALIZATION_AUDIO_RU.md",
       "docs/mobile/requirements/v12/23_PERFORMANCE_RELIABILITY_DEVICE_MATRIX_RU.md",
       "docs/mobile/evidence/S11/install-resume-20260914/entry.json",
-      "docs/mobile/evidence/S11/install-resume-20260914/result.json"
+      "docs/mobile/evidence/S11/install-resume-20260914/result.json",
+      "docs/mobile/evidence/S11/content-intake-20260914/entry.json",
+      "docs/mobile/evidence/S11/content-intake-20260914/result.json"
     ],
     "commands": [
       "node scripts/mobile/verify-requirements.mjs",
@@ -10779,7 +10790,8 @@
       "S11": {
         "reason": "Matrix69 permits previous stage complete OR documented parallel-safe entry. Existing S08 signed export and S10 shared exact-source PWA checkpoints are preserved. First-install interruption recovery is independent of unresolved editorial, native device and child gates.",
         "evidence": [
-          "docs/mobile/evidence/S11/install-resume-20260914/entry.json"
+          "docs/mobile/evidence/S11/install-resume-20260914/entry.json",
+          "docs/mobile/evidence/S11/content-intake-20260914/entry.json"
         ]
       }
     },
@@ -11940,7 +11952,9 @@
         }
       ],
       "stageAccepted": false,
-      "releaseReady": false
+      "releaseReady": false,
+      "sourceInputsCurrent": false,
+      "subsequentSourceChange": "S11 extracted shared data protocol; current Node compatibility and preserved S08 signatures/files passed. Original immutable export artifacts retain their exact source identity."
     },
     "ownerCatalogWorkflow": {
       "recordedAt": "2026-09-14T02:00:05.774Z",
@@ -12101,6 +12115,17 @@
       "sourceBaseCommit": "32dad95fde9aba390a5b15501f3aed07767b0fd3",
       "sourceInputsSha256": "77a203d5cf3f105d932eb4f8ed269c758d967691b3b674fddaef081b64bfac44",
       "passingUnitCases": 201,
+      "actualChromeCases": 1,
+      "stageAccepted": false,
+      "releaseReady": false
+    },
+    "s11ContentIntake": {
+      "status": "SOURCE_UNIT_AND_REAL_BROWSER_VALIDATION_PASSED",
+      "evidence": "docs/mobile/evidence/S11/content-intake-20260914/result.json",
+      "sha256": "c6f714bf7914679c32589659b2f40acb24f63baff0dfd22b2d262ec7cbde2f6f",
+      "sourceBaseCommit": "521417dd5ffb793b1a91fc3d09bb1d154193b5dd",
+      "sourceInputsSha256": "d9b91b17b74f975229e3fa40218ff2b701d48893cbdd08210083f9a6349cad00",
+      "passingUnitCases": 126,
       "actualChromeCases": 1,
       "stageAccepted": false,
       "releaseReady": false

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-14T10:21:27.418Z",
+  "stage": "S11",
+  "checkpoint": "521417dd5ffb793b1a91fc3d09bb1d154193b5dd",
+  "route": "S11-S15",
+  "precedingEntry": "docs/mobile/evidence/S11/install-resume-20260914/entry.json",
+  "requirementIds": [
+    "CONTENT-005",
+    "CONTENT-006"
+  ],
+  "basis": "Extend the documented parallel-safe S11 scope over the preserved S08 signed candidate protocol. Integrity and derived local storage are independent of unresolved editorial, child, purchase and device release gates. Matrix69 permits documented parallel-safe entry.",
+  "inputReused": "The immutable V12 intake and S11-S15 routed documents were read at this S11 entry; no unneeded stage documents loaded.",
+  "scope": [
+    "Shared data-only signature protocol and WebCrypto verification with separately pinned dedicated public content keys.",
+    "Derived QA byte cache with Web Locks, full RUEN readback, atomic selection and retained previous generation; no new catalog authority.",
+    "Actual Chrome imports the two preserved S08 exports, without new archive filling or regenerated signing keys."
+  ],
+  "acceptedStateUnchanged": true,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false
+}
