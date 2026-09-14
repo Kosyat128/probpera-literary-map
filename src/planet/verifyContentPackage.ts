@@ -2,6 +2,7 @@ import {
   CONTENT_PACKAGE_ENVIRONMENT, CONTENT_PACKAGE_PURPOSE,
   contentPackageCanonicalJson, contentPackageExact, contentPackageFileInventory, contentPackageHash,
   contentPackageSigningBytes, decodeContentPackageSignature, inspectContentPackageEnvelope, validateContentPackageKeyId,
+  type ContentPackageManifest,
 } from "./contentPackageProtocol.mjs";
 
 export interface ContentPackageTrustKey {
@@ -83,40 +84,68 @@ async function abortable<T>(operation: Promise<T>, signal?: AbortSignal): Promis
   });
 }
 
+type SignatureInput = Omit<ContentPackageVerificationInput, "files">;
+export interface ContentPackageManifestVerification extends ContentPackageVerification {
+  /** Signature authentication only; no downloaded file or editorial approval. */
+  readonly manifest: ContentPackageManifest | null;
+}
+function signatureContext(input: SignatureInput) {
+  const signal = input.signal;
+  if (signal?.aborted) fail("cancelled");
+  const { manifest, keyId, signature: encoded } = inspectContentPackageEnvelope(input.envelope, input.expected);
+  const trusted = normalizeContentPackageTrust(input.trustedKeys);
+  if (!trusted.some(key => key.keyId === keyId)) fail("unknown-content-key");
+  const signature = decodeContentPackageSignature(encoded), signingBytes = contentPackageSigningBytes(manifest, keyId);
+  const manifestHash = contentPackageHash(contentPackageCanonicalJson(manifest));
+  const subtle = input.subtle === undefined ? globalThis.crypto?.subtle : input.subtle;
+  return { signal, manifest, keyId, trusted, signature, signingBytes, manifestHash, subtle };
+}
+async function verifySignature(context: ReturnType<typeof signatureContext>) {
+  const { signal, trusted, keyId, signature, signingBytes, subtle } = context;
+  if (!subtle) fail("crypto-unavailable");
+  let selected: CryptoKey | undefined;
+  for (const key of trusted) {
+    let imported: CryptoKey;
+    try { imported = await abortable(subtle.importKey("jwk", { ...key.jwk }, { name: "ECDSA", namedCurve: "P-256" }, false, ["verify"]), signal); }
+    catch { fail(signal?.aborted ? "cancelled" : "invalid-trusted-content-key"); }
+    if (key.keyId === keyId) selected = imported!;
+  }
+  if (!selected) fail("unknown-content-key");
+  let valid: boolean;
+  try { valid = await abortable(subtle.verify({ name: "ECDSA", hash: "SHA-256" }, selected, signature, signingBytes), signal); }
+  catch { fail(signal?.aborted ? "cancelled" : "invalid-content-signature"); }
+  if (!valid!) fail("invalid-content-signature");
+  if (signal?.aborted) fail("cancelled");
+}
+function unverifiedResult() {
+  return { verified: false, activationAllowed: false as const, childModeEnabled: false as const,
+    releaseReady: false as const, environment: CONTENT_PACKAGE_ENVIRONMENT, manifestSha256: null as string | null, reason: null as string | null };
+}
+
+/** Authenticate the exact file inventory before issuing any data download. */
+export async function verifyContentPackageManifest(input: SignatureInput): Promise<ContentPackageManifestVerification> {
+  const result = { ...unverifiedResult(), manifest: null as ContentPackageManifest | null };
+  try {
+    const context = signatureContext(input);
+    await verifySignature(context);
+    result.verified = true; result.manifestSha256 = context.manifestHash; result.manifest = context.manifest;
+  } catch (error) { result.reason = error instanceof Error ? error.message : "invalid-package-input"; }
+  return Object.freeze(result);
+}
+
 /** Portable integrity verifier for the S08 data-only protocol. This cannot
  * approve editorial content, authorize a purchase or enable an adult/child view.
  * The returned digest is canonical JSON, not the pretty on-disk manifest hash. */
 export async function verifyContentPackage(input: ContentPackageVerificationInput): Promise<ContentPackageVerification> {
-  const signal = input.signal;
-  const result = { verified: false, activationAllowed: false as const, childModeEnabled: false as const,
-    releaseReady: false as const, environment: CONTENT_PACKAGE_ENVIRONMENT, manifestSha256: null as string | null, reason: null as string | null };
+  const result = unverifiedResult();
   try {
-    if (signal?.aborted) fail("cancelled");
-    const { manifest, keyId, signature: encoded } = inspectContentPackageEnvelope(input.envelope, input.expected);
-    const trusted = normalizeContentPackageTrust(input.trustedKeys);
-    if (!trusted.some(key => key.keyId === keyId)) fail("unknown-content-key");
-    const signature = decodeContentPackageSignature(encoded), signingBytes = contentPackageSigningBytes(manifest, keyId);
-    // Hash the bounded synchronous snapshot before awaiting crypto; later caller
-    // mutation cannot change the byte inventory whose signature is checked.
-    const inventory = contentPackageFileInventory(input.files, manifest);
-    if (contentPackageCanonicalJson(inventory) !== contentPackageCanonicalJson(manifest.files)) fail("package-file-integrity-mismatch");
-    const manifestHash = contentPackageHash(contentPackageCanonicalJson(manifest));
-    const subtle = input.subtle === undefined ? globalThis.crypto?.subtle : input.subtle;
-    if (!subtle) fail("crypto-unavailable");
-    let selected: CryptoKey | undefined;
-    for (const key of trusted) {
-      let imported: CryptoKey;
-      try { imported = await abortable(subtle.importKey("jwk", { ...key.jwk }, { name: "ECDSA", namedCurve: "P-256" }, false, ["verify"]), signal); }
-      catch { fail(signal?.aborted ? "cancelled" : "invalid-trusted-content-key"); }
-      if (key.keyId === keyId) selected = imported!;
-    }
-    if (!selected) fail("unknown-content-key");
-    let valid: boolean;
-    try { valid = await abortable(subtle.verify({ name: "ECDSA", hash: "SHA-256" }, selected, signature, signingBytes), signal); }
-    catch { fail(signal?.aborted ? "cancelled" : "invalid-content-signature"); }
-    if (!valid!) fail("invalid-content-signature");
-    if (signal?.aborted) fail("cancelled");
-    result.verified = true; result.manifestSha256 = manifestHash;
+    const context = signatureContext(input);
+    // Hash before the first async call; later caller mutation cannot change the
+    // byte inventory whose signature is checked.
+    const inventory = contentPackageFileInventory(input.files, context.manifest);
+    if (contentPackageCanonicalJson(inventory) !== contentPackageCanonicalJson(context.manifest.files)) fail("package-file-integrity-mismatch");
+    await verifySignature(context);
+    result.verified = true; result.manifestSha256 = context.manifestHash;
   } catch (error) { result.reason = error instanceof Error ? error.message : "invalid-package-input"; }
   return Object.freeze(result);
 }

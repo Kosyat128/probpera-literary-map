@@ -1,9 +1,16 @@
 import { describe, expect, it, vi } from "vitest";
-import { verifyContentPackage } from "./verifyContentPackage";
+import { verifyContentPackage, verifyContentPackageManifest } from "./verifyContentPackage";
 import { verifyContentPackageSignature } from "../../scripts/mobile/content-package-signature.mjs";
 import { contentPackageFixture, contentTestSubtle, otherPair } from "../../tests/support/content-package-fixtures.mjs";
 
 describe("portable signed content integrity", () => {
+  it("authenticates only the manifest before downloading without claiming file or child activation", async () => {
+    const f = contentPackageFixture(), result = await verifyContentPackageManifest(f);
+    expect(result).toMatchObject({ verified: true, manifestSha256: f.manifestSha256, manifest: f.envelope.manifest,
+      activationAllowed: false, childModeEnabled: false, releaseReady: false });
+    f.envelope.manifest.files[0].sha256 = "e".repeat(64);
+    expect(await verifyContentPackageManifest(f)).toMatchObject({ verified: false, reason: "invalid-content-signature", manifest: null, manifestSha256: null });
+  });
   it.each(["adult", "child"])("matches the Node signature verifier for the exact %s package without activation", async namespace => {
     const f = contentPackageFixture(2, namespace);
     const result = await verifyContentPackage(f);

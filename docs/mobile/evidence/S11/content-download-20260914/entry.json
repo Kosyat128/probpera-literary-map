@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-14T10:37:52.920Z",
+  "stage": "S11",
+  "checkpoint": "a523798e1f1342390fb679fa57248306374c652f",
+  "route": "S11-S15",
+  "precedingEntry": "docs/mobile/evidence/S11/content-intake-20260914/entry.json",
+  "requirementIds": [
+    "CONTENT-005",
+    "CONTENT-006",
+    "CONTENT-008"
+  ],
+  "basis": "Continue the documented parallel-safe S11 integrity/storage scope with explicit signed data transport. Existing canonical content and platform ownership remain intact; this does not certify unresolved editorial, child or release gates.",
+  "scope": [
+    "Authenticate a caller-pinned manifest before network; bounded credential-free JSON transfer, cancellation and idle timeout.",
+    "Persist exact whole verified candidate files, resume from a new document/browser and select only the fully verified RUEN generation.",
+    "Serialize downloads separately from short reads and writes so the prior generation remains readable during network activity."
+  ],
+  "acceptedStateUnchanged": true,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false
+}

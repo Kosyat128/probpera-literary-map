@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { createContentPackageCache } from "./contentPackageCache";
 import { contentPackageFixture } from "../../tests/support/content-package-fixtures.mjs";
 
@@ -206,5 +206,81 @@ describe("signed candidate byte cache", () => {
     release.resolve();
     expect(await pending).toMatchObject({ ok: true });
     assertBytes(await read(cache, original), original);
+  });
+});
+
+const transport = fixture => vi.fn(async url => {
+  const path = new URL(url).pathname.slice("/packages/v2/".length), file = fixture.files.find(file => file.path === path);
+  if (!file) throw new Error("unexpected-file");
+  return new Response(file.bytes, { headers: { "Content-Type": "application/json" } });
+});
+const download = (cache, fixture, fetch, prior = null, extras = {}) => cache.download({ ...fixture,
+  expectedCurrentManifestSha256: prior, baseUrl: "https://content.test/packages/v2/", fetch, ...extras });
+
+describe("resumable signed package download", () => {
+  it.each(["signature", "manifest", "key", "prior"])("rejects unauthenticated or conflicting %s before fetching any data", async failure => {
+    const { cache, storage } = setup(), v1 = contentPackageFixture(), v2 = contentPackageFixture(2), fetch = transport(v2);
+    await save(cache, v1); const writes = storage.writes.length;
+    if (failure === "signature") v2.envelope.signature = (v2.envelope.signature[0] === "A" ? "B" : "A") + v2.envelope.signature.slice(1);
+    if (failure === "manifest") v2.manifestSha256 = "e".repeat(64);
+    if (failure === "key") v2.envelope.keyId = "content-qa-unknown";
+    expect(await download(cache, v2, fetch, failure === "prior" ? null : v1.manifestSha256)).toMatchObject({ ok: false });
+    expect(fetch).not.toHaveBeenCalled(); expect(storage.writes).toHaveLength(writes);
+    assertBytes(await read(cache, v1), v1);
+  });
+  it("resumes exact whole files after a failed transfer and a fresh cache instance, refetching damaged candidates", async () => {
+    const { cache, another, storage } = setup(), v1 = contentPackageFixture(), v2 = contentPackageFixture(2), real = transport(v2);
+    await save(cache, v1);
+    const progress = [], fail = vi.fn(url => url.endsWith("/ru/catalog.json") ? Promise.reject(new Error("network-interrupted")) : real(url));
+    expect(await download(cache, v2, fail, v1.manifestSha256, { onProgress: value => progress.push(value) })).toMatchObject({ ok: false, reason: "network-interrupted" });
+    expect(progress.some(value => value.phase === "saved")).toBe(false);
+    assertBytes(await read(cache, v1), v1);
+    expect(await read(cache, v2)).toMatchObject({ ok: false, reason: "content-generation-not-selected" });
+    const candidate = storage.rows.get(storage.generation(v2.manifestSha256));
+    candidate.set(fileUrl("en/catalog.json"), new Response(v2.files[1].bytes.replace("Test", "Fake")));
+    const retry = transport(v2), completed = [];
+    expect(await download(another(), v2, retry, v1.manifestSha256, { onProgress: value => completed.push(value) })).toMatchObject({ ok: true });
+    expect(retry.mock.calls.map(([url]) => new URL(url).pathname)).toEqual(["/packages/v2/en/catalog.json", "/packages/v2/ru/catalog.json"]);
+    expect(completed.at(-1)).toMatchObject({ phase: "saved", cachedBytes: new TextEncoder().encode(v2.files[2].bytes).length });
+    expect(completed.at(-1).downloadedBytes + completed.at(-1).cachedBytes).toBe(completed.at(-1).totalBytes);
+    assertBytes(await read(cache, v2), v2); assertBytes(await read(cache, v1), v1);
+    const noNetwork = vi.fn(() => { throw new Error("unneeded-network"); });
+    expect(await download(another(), v2, noNetwork, v1.manifestSha256)).toMatchObject({ ok: true }); expect(noNetwork).not.toHaveBeenCalled();
+  });
+  it("keeps the previous generation readable during a stalled network call and preserves it after cancellation", async () => {
+    const { cache, another } = setup(), v1 = contentPackageFixture(), v2 = contentPackageFixture(2), entered = deferred(), controller = new AbortController();
+    await save(cache, v1);
+    const fetch = vi.fn(() => { entered.resolve(); return new Promise(() => {}); });
+    const pending = download(cache, v2, fetch, v1.manifestSha256, { signal: controller.signal });
+    await entered.promise;
+    assertBytes(await read(another(), v1), v1);
+    controller.abort();
+    expect(await pending).toMatchObject({ ok: false, reason: "cancelled" });
+    assertBytes(await read(another(), v1), v1);
+  });
+  it("serializes two downloading instances and serves the second from the verified first result", async () => {
+    const { cache, another } = setup(), f = contentPackageFixture(2), fetch = transport(f);
+    const outcomes = await Promise.all([download(cache, f, fetch), download(another(), f, fetch)]);
+    expect(outcomes.every(result => result.ok)).toBe(true); expect(fetch).toHaveBeenCalledTimes(3);
+    assertBytes(await read(cache, f), f);
+  });
+  it("does not overwrite a separately saved newer generation when a network response arrives late", async () => {
+    const { cache, another } = setup(), v1 = contentPackageFixture(), v2 = contentPackageFixture(2), v3 = contentPackageFixture(3);
+    await save(cache, v1); const entered = deferred(), release = deferred(), real = transport(v2);
+    const fetch = vi.fn(async (url, init) => { entered.resolve(); await release.promise; return real(url, init); });
+    const pending = download(cache, v2, fetch, v1.manifestSha256);
+    await entered.promise;
+    expect(await save(another(), v3, v1.manifestSha256)).toMatchObject({ ok: true });
+    release.resolve();
+    expect(await pending).toMatchObject({ ok: false, reason: "content-generation-conflict" });
+    assertBytes(await read(cache, v3), v3); assertBytes(await read(cache, v1), v1);
+  });
+  it("never persists or selects a same-size damaged download", async () => {
+    const { cache, storage } = setup(), f = contentPackageFixture(2), real = transport(f);
+    const fetch = vi.fn(async (url, init) => url.endsWith("/en/catalog.json")
+      ? new Response(f.files[1].bytes.replace("Test", "Fake"), { headers: { "Content-Type": "application/json" } }) : real(url, init));
+    expect(await download(cache, f, fetch)).toMatchObject({ ok: false, reason: "content-download-integrity-mismatch" });
+    expect(storage.rows.get(storage.generation(f.manifestSha256)).has(fileUrl("en/catalog.json"))).toBe(false);
+    expect(await storage.selected()).toBeNull();
   });
 });

@@ -1,3 +1,16 @@
+<!-- s11-content-download-20260914:begin -->
+S11 signed package network transfer and whole-file recovery implemented.
+92 focused cases, TypeScript/platform boundaries and 1 actual HTTP/Chrome scenario pass.
+After a real interrupted RU response and browser restart, the valid dependency file
+was reused; damaged EN and incomplete RU were refetched. Two tabs avoided duplicate
+downloads; both complete generations passed offline reads after another restart.
+Prior content remains readable during transfer. Requests omit cookies and referrer.
+All content remains QA-only; native adapters and user-facing download controls are next.
+Evidence: evidence/S11/content-download-20260914/result.json. No full app build repeated.
+Owner archives sync after app implementation (D107). First-open S03 and release gates
+remain unchanged; Android048c8e1b/PWA0381b95f and frozen iOS83 are preserved.
+<!-- s11-content-download-20260914:end -->
+
 <!-- s11-content-intake-20260914:begin -->
 S11 signed QA content integrity and atomic derived cache implemented.
 126 focused tests, TypeScript/platform boundaries and 1 actual Chrome scenario pass.

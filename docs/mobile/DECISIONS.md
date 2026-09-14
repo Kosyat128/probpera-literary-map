@@ -636,3 +636,12 @@
   browser profiles avoid the observed Windows CacheStorage environment failure.
   Continue bounded transport/platform integration before refreshed whole-app artifacts;
   first-open S03 and D107 final owner archive synchronization remain unchanged.
+
+- D115: Authenticate the pinned content manifest before fetching data. Bound
+  explicit JSON transfers, omit credentials/referrer, reject redirects, and support
+  cancellation and idle timeouts. Retain only whole hash-verified candidate files
+  for retries. Separate transfer and short storage locks so previous data remains
+  readable; keep final full RUEN selection atomic. Actual HTTP/Chrome proof covers
+  interruption, corrupted cached EN, two browser restarts, concurrent tab retry
+  and offline current/previous reads. Native storage and globe download controls
+  remain next; no QA activation, final content fill or release acceptance.

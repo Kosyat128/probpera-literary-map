@@ -2,9 +2,10 @@ import {
   CONTENT_PACKAGE_MAX_BYTES, CONTENT_PACKAGE_MAX_FILE_BYTES,
   contentPackageCanonicalJson, contentPackageExact, contentPackageHash, inspectContentPackageEnvelope,
   normalizeContentPackageExpected,
-  type ContentPackageBytes, type ContentPackageEnvelope, type ContentPackageExpected,
+  type ContentPackageBytes, type ContentPackageEnvelope, type ContentPackageExpected, type ContentPackageFile,
 } from "./contentPackageProtocol.mjs";
-import { normalizeContentPackageTrust, verifyContentPackage } from "./verifyContentPackage";
+import { normalizeContentPackageTrust, verifyContentPackage, verifyContentPackageManifest } from "./verifyContentPackage";
+import { downloadContentPackageFile, normalizeContentPackageBaseUrl, type ContentPackageFetch } from "./contentPackageTransport";
 
 const PREFIX = "literary-planet-content-qa-v1-";
 const SHA = /^[a-f0-9]{64}$/u;
@@ -44,6 +45,18 @@ export interface ContentPackageSaveRequest {
 }
 export interface ContentPackageReadRequest {
   readonly expected: ContentPackageExpected; readonly manifestSha256: string; readonly signal?: AbortSignal;
+}
+export interface ContentPackageDownloadProgress {
+  readonly phase: "downloading" | "verifying" | "saved";
+  readonly downloadedBytes: number; readonly cachedBytes: number; readonly totalBytes: number;
+  readonly path: string | null;
+}
+export interface ContentPackageDownloadRequest extends Omit<ContentPackageSaveRequest, "files"> {
+  readonly baseUrl: string;
+  /** Explicit data transport capability; constructors never start a download. */
+  readonly fetch: ContentPackageFetch;
+  readonly idleTimeoutMs?: number;
+  readonly onProgress?: (progress: ContentPackageDownloadProgress) => void;
 }
 
 function digest(value: unknown): string {
@@ -147,6 +160,19 @@ export function createContentPackageCache(options: ContentPackageCacheOptions) {
     if (!verification.verified || verification.manifestSha256 !== hash) fail(verification.reason ?? "cached-package-verification-failed");
     return { envelope: normalizedEnvelope, files };
   }
+  async function candidateFile(name: string, hash: string, file: ContentPackageFile, signal?: AbortSignal) {
+    const response = await storage!.match(fileUrl(file.path), { cacheName: name + "-" + hash });
+    cancelled(signal);
+    if (!response) return null;
+    try {
+      const bytes = await readBytes(response, file.bytes, signal);
+      return bytes.length === file.bytes && contentPackageHash(bytes) === file.sha256 ? bytes : null;
+    } catch (error) {
+      cancelled(signal);
+      if (error instanceof Error && ["incomplete-content-cache", "content-cache-byte-limit"].includes(error.message)) return null;
+      throw error;
+    }
+  }
   async function locked<T>(name: string, signal: AbortSignal | undefined, operation: () => Promise<T>): Promise<T> {
     cancelled(signal);
     if (!storage || !locks) return fail("content-cache-unavailable");
@@ -161,7 +187,7 @@ export function createContentPackageCache(options: ContentPackageCacheOptions) {
     }
   }
 
-  return Object.freeze({
+  const api = {
     async save(request: ContentPackageSaveRequest): Promise<ContentPackageSaveResult> {
       const signal = request.signal;
       try {
@@ -192,6 +218,8 @@ export function createContentPackageCache(options: ContentPackageCacheOptions) {
           const cacheName = name + "-" + hash, cache = await storage!.open(cacheName);
           for (const file of files) {
             cancelled(signal);
+            const record = parsed.manifest.files.find(record => record.path === file.path)!;
+            if (await candidateFile(name, hash, record, signal)) continue;
             // Cache.put is not cancellable. Keep the lock until each issued write
             // settles; cancellation can never race a second committing writer.
             await cache.put(fileUrl(file.path), new Response(file.bytes, { headers: { "Content-Type": "application/json" } }));
@@ -226,5 +254,67 @@ export function createContentPackageCache(options: ContentPackageCacheOptions) {
         });
       } catch (error) { return rejected(error, signal); }
     },
-  });
+    async download(request: ContentPackageDownloadRequest): Promise<ContentPackageSaveResult> {
+      const signal = request.signal;
+      try {
+        cancelled(signal);
+        const expected = normalizeContentPackageExpected(request.expected), hash = digest(request.manifestSha256);
+        const priorPin = request.expectedCurrentManifestSha256 === null ? null : digest(request.expectedCurrentManifestSha256);
+        const baseUrl = normalizeContentPackageBaseUrl(request.baseUrl), fetch = request.fetch;
+        const idleTimeoutMs = request.idleTimeoutMs, observer = request.onProgress;
+        if (typeof fetch !== "function") fail("content-download-unavailable");
+        const parsed = inspectContentPackageEnvelope(request.envelope, expected);
+        const envelope: ContentPackageEnvelope = { contract: "literary-planet-data-package-signature-v1", algorithm: "ES256",
+          keyId: parsed.keyId, manifest: parsed.manifest, signature: parsed.signature as string };
+        const authenticated = await verifyContentPackageManifest({ envelope, expected, trustedKeys, signal, subtle });
+        if (!authenticated.verified || authenticated.manifestSha256 !== hash) fail(authenticated.reason ?? "package-manifest-digest-mismatch");
+        const name = scope(expected), cacheName = name + "-" + hash, files: OwnedFile[] = [];
+        let downloadedBytes = 0, cachedBytes = 0;
+        const totalBytes = parsed.manifest.files.reduce((sum, file) => sum + file.bytes, 0);
+        const progress = (phase: ContentPackageDownloadProgress["phase"], path: string | null, currentBytes = 0) => {
+          try { observer?.(Object.freeze({ phase, path, downloadedBytes: downloadedBytes + currentBytes, cachedBytes, totalBytes })); }
+          catch { /* A UI observer does not own the transfer or its cancellation. */ }
+        };
+        const checkSelection = async () => {
+          const selected = await selection(name, signal), alreadySelected = selected?.current.sha256 === hash;
+          if (!alreadySelected && (selected?.current.sha256 ?? null) !== priorPin) fail("content-generation-conflict");
+          if (!alreadySelected && selected && expected.version <= selected.current.version) fail("content-version-not-newer");
+          return selected;
+        };
+        // Serialize downloads separately from short selection/write operations.
+        // Existing complete data stays readable while the network is pending.
+        return await locked(name + ":download", signal, async () => {
+          await locked(name, signal, async () => {
+            const selected = await checkSelection();
+            await prune(name, [hash, selected?.current.sha256, selected?.previous?.sha256].filter((value): value is string => !!value), signal);
+            await storage!.open(cacheName);
+          });
+          for (const file of parsed.manifest.files) {
+            cancelled(signal);
+            let bytes = await locked(name, signal, async () => { await checkSelection(); return candidateFile(name, hash, file, signal); });
+            if (bytes) { cachedBytes += bytes.length; progress("downloading", file.path); }
+            else {
+              progress("downloading", file.path);
+              bytes = await downloadContentPackageFile({ baseUrl, file, fetch, signal, idleTimeoutMs,
+                onBytes: count => progress("downloading", file.path, count) });
+              downloadedBytes += bytes.length;
+              const verifiedBytes = bytes;
+              await locked(name, signal, async () => {
+                await checkSelection();
+                const cache = await storage!.open(cacheName);
+                cancelled(signal);
+                await cache.put(fileUrl(file.path), new Response(verifiedBytes, { headers: { "Content-Type": "application/json" } }));
+              });
+            }
+            files.push({ path: file.path, bytes });
+          }
+          progress("verifying", null);
+          const saved = await api.save({ envelope, expected, files, manifestSha256: hash, expectedCurrentManifestSha256: priorPin, signal });
+          if (saved.ok) progress("saved", null);
+          return saved;
+        });
+      } catch (error) { return rejected(error, signal); }
+    },
+  };
+  return Object.freeze(api);
 }

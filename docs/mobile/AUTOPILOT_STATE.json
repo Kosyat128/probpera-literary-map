@@ -5,7 +5,7 @@
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
   "headSha": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-14T10:21:27.418Z",
+  "updatedAt": "2026-09-14T10:37:52.920Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -1696,21 +1696,23 @@
           "id": "S11.CONTENT-005",
           "status": "IN_PROGRESS",
           "evidence": [
-            "docs/mobile/evidence/S11/content-intake-20260914/result.json"
+            "docs/mobile/evidence/S11/content-intake-20260914/result.json",
+            "docs/mobile/evidence/S11/content-download-20260914/result.json"
           ],
           "commit": null,
           "lastValidatedAt": null,
-          "notes": "Signed content manifests. Canonical export/display comes before offline integrity and reviewed English equivalence. Portable QA verification and atomic derived cache are implemented and validated with the real preserved S08 exports. Full application/native transport and activation are not accepted."
+          "notes": "Signed content manifests. Canonical export/display comes before offline integrity and reviewed English equivalence. Portable QA verification and atomic derived cache are implemented and validated with the real preserved S08 exports. Full application/native transport and activation are not accepted. Signed whole-file network recovery passes real HTTP interruption, browser restart and two-document retry. Native/user-facing integration remains open."
         },
         {
           "id": "S11.CONTENT-006",
           "status": "IN_PROGRESS",
           "evidence": [
-            "docs/mobile/evidence/S11/content-intake-20260914/result.json"
+            "docs/mobile/evidence/S11/content-intake-20260914/result.json",
+            "docs/mobile/evidence/S11/content-download-20260914/result.json"
           ],
           "commit": null,
           "lastValidatedAt": null,
-          "notes": "Atomic update/rollback. Canonical export/display comes before offline integrity and reviewed English equivalence. Portable QA verification and atomic derived cache are implemented and validated with the real preserved S08 exports. Full application/native transport and activation are not accepted."
+          "notes": "Atomic update/rollback. Canonical export/display comes before offline integrity and reviewed English equivalence. Portable QA verification and atomic derived cache are implemented and validated with the real preserved S08 exports. Full application/native transport and activation are not accepted. Signed whole-file network recovery passes real HTTP interruption, browser restart and two-document retry. Native/user-facing integration remains open."
         },
         {
           "id": "S11.CONTENT-007",
@@ -1724,11 +1726,12 @@
           "id": "S11.CONTENT-008",
           "status": "IN_PROGRESS",
           "evidence": [
-            "docs/mobile/evidence/S11/install-resume-20260914/result.json"
+            "docs/mobile/evidence/S11/install-resume-20260914/result.json",
+            "docs/mobile/evidence/S11/content-download-20260914/result.json"
           ],
           "commit": null,
           "lastValidatedAt": null,
-          "notes": "Interrupted download recovery. Canonical export/display comes before offline integrity and reviewed English equivalence. Public PWA first-install whole-file retry is implemented and tested. Full all-platform package/download recovery is not accepted."
+          "notes": "Interrupted download recovery. Canonical export/display comes before offline integrity and reviewed English equivalence. Public PWA first-install whole-file retry is implemented and tested. Full all-platform package/download recovery is not accepted. Signed whole-file network recovery passes real HTTP interruption, browser restart and two-document retry. Native/user-facing integration remains open."
         },
         {
           "id": "S11.CONTENT-009",
@@ -1840,13 +1843,18 @@
         "node .tmp/s11-install-resume-20260914/run-checks.mjs browser a1",
         "node .tmp/s11-content-intake-20260914/run-checks.mjs unit a2",
         "node .tmp/s11-content-intake-20260914/run-checks.mjs static a2",
-        "node .tmp/s11-content-intake-20260914/run-checks.mjs browser a3"
+        "node .tmp/s11-content-intake-20260914/run-checks.mjs browser a3",
+        "node .tmp/s11-content-download-20260914/run-checks.mjs unit a1",
+        "node .tmp/s11-content-download-20260914/run-checks.mjs static a1",
+        "node .tmp/s11-content-download-20260914/run-checks.mjs browser a1"
       ],
       "artifacts": [
         "docs/mobile/evidence/S11/install-resume-20260914/entry.json",
         "docs/mobile/evidence/S11/install-resume-20260914/result.json",
         "docs/mobile/evidence/S11/content-intake-20260914/entry.json",
-        "docs/mobile/evidence/S11/content-intake-20260914/result.json"
+        "docs/mobile/evidence/S11/content-intake-20260914/result.json",
+        "docs/mobile/evidence/S11/content-download-20260914/entry.json",
+        "docs/mobile/evidence/S11/content-download-20260914/result.json"
       ],
       "externalBlockers": []
     },
@@ -10647,7 +10655,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Continue S11 with bounded cancellable signed-package download transport and recovery wired to these verified cache contracts; integrate capabilities through the existing platform boundaries. Keep QA candidates outside production content activation. Batch full application artifacts only after an affected runtime integration. D107 final owner archive synchronization follows application implementation; no factual archive population. First-open S03 remains unchanged.",
+    "nextAction": "Continue S11 by integrating verified package capabilities through the existing Web/native platform adapters and actual download controls around the persistent globe. Establish the native durable storage capability and localized recovery states without activating QA content or treating a CacheStorage browser proof as installed-device acceptance. D107 final owner archive synchronization follows application implementation; no factual archive population. First-open S03 remains unchanged.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -10673,7 +10681,9 @@
       "docs/mobile/evidence/S11/install-resume-20260914/entry.json",
       "docs/mobile/evidence/S11/install-resume-20260914/result.json",
       "docs/mobile/evidence/S11/content-intake-20260914/entry.json",
-      "docs/mobile/evidence/S11/content-intake-20260914/result.json"
+      "docs/mobile/evidence/S11/content-intake-20260914/result.json",
+      "docs/mobile/evidence/S11/content-download-20260914/entry.json",
+      "docs/mobile/evidence/S11/content-download-20260914/result.json"
     ],
     "commands": [
       "node scripts/mobile/verify-requirements.mjs",
@@ -10791,7 +10801,8 @@
         "reason": "Matrix69 permits previous stage complete OR documented parallel-safe entry. Existing S08 signed export and S10 shared exact-source PWA checkpoints are preserved. First-install interruption recovery is independent of unresolved editorial, native device and child gates.",
         "evidence": [
           "docs/mobile/evidence/S11/install-resume-20260914/entry.json",
-          "docs/mobile/evidence/S11/content-intake-20260914/entry.json"
+          "docs/mobile/evidence/S11/content-intake-20260914/entry.json",
+          "docs/mobile/evidence/S11/content-download-20260914/entry.json"
         ]
       }
     },
@@ -12127,6 +12138,19 @@
       "sourceInputsSha256": "d9b91b17b74f975229e3fa40218ff2b701d48893cbdd08210083f9a6349cad00",
       "passingUnitCases": 126,
       "actualChromeCases": 1,
+      "stageAccepted": false,
+      "releaseReady": false,
+      "sourceInputsCurrent": false,
+      "successor": "docs/mobile/evidence/S11/content-download-20260914/result.json"
+    },
+    "s11ContentDownload": {
+      "status": "SOURCE_UNIT_AND_REAL_HTTP_BROWSER_VALIDATION_PASSED",
+      "evidence": "docs/mobile/evidence/S11/content-download-20260914/result.json",
+      "sha256": "616589fb936f7fa1cb99c10f700dc7c6cffd37fd1d6284924bc6f5f1953df5a5",
+      "sourceBaseCommit": "a523798e1f1342390fb679fa57248306374c652f",
+      "sourceInputsSha256": "e51408d99395da4d866b89df3de3ef32516c5cb3664d33a755280acc67303cf6",
+      "passingUnitCases": 92,
+      "actualHttpChromeCases": 1,
       "stageAccepted": false,
       "releaseReady": false
     }

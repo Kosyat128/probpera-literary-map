@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-14T10:37:52.920Z",
+  "stage": "S11",
+  "status": "SOURCE_UNIT_AND_REAL_HTTP_BROWSER_VALIDATION_PASSED",
+  "sourceBaseCommit": "a523798e1f1342390fb679fa57248306374c652f",
+  "entry": "docs/mobile/evidence/S11/content-download-20260914/entry.json",
+  "requirementIds": [
+    "CONTENT-005",
+    "CONTENT-006",
+    "CONTENT-008"
+  ],
+  "sourceInputs": [
+    {
+      "path": "package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+    },
+    {
+      "path": "package.json",
+      "sha256": "90b392c205754f838b8bc7c4475bd475936be1078561bb218c437d151177869f"
+    },
+    {
+      "path": "scripts/mobile/content-export-input.mjs",
+      "sha256": "c5bde4131357eb1bcb81e11b502538342443572c8f70fa9885f78a84e1fb9db7"
+    },
+    {
+      "path": "scripts/mobile/content-package-signature.mjs",
+      "sha256": "3526c98bf9d241760a6bc6a4355dca8d39ffcb83aedfe535c1f6e3b60a8e399d"
+    },
+    {
+      "path": "src/planet/contentPackageCache.test.mjs",
+      "sha256": "3b5066c5d31f19deaef9a7981bd399974c4001236d079da359cadb845da72d68"
+    },
+    {
+      "path": "src/planet/contentPackageCache.ts",
+      "sha256": "c99b1fab9306ccf6c3cf4579ed6bd527da2471a296f1f26340091d0b2708f605"
+    },
+    {
+      "path": "src/planet/contentPackageProtocol.d.mts",
+      "sha256": "ca3c58f414de8ea7ff4f608984fa58bd662057fd8fa638764c99a7afde5cb4dc"
+    },
+    {
+      "path": "src/planet/contentPackageProtocol.mjs",
+      "sha256": "fb3708aa57b6ffec89dcf1142872d68a3821a614fe51b6696ebbfbf8b58d8d66"
+    },
+    {
+      "path": "src/planet/contentPackageTransport.test.mjs",
+      "sha256": "335aee6dbd9b93d43e01becfa025eabd12ea4e822366ec31b1922f3d58a8ddd6"
+    },
+    {
+      "path": "src/planet/contentPackageTransport.ts",
+      "sha256": "a89ee43cdd395a6dea03dc3268c6bc17ccfda7db14243244243bc18196f16d68"
+    },
+    {
+      "path": "src/planet/verifyContentPackage.test.mjs",
+      "sha256": "7e9888b0ee7719ba5525fd18a016c5355b2e52d4b6d6808ae7308c4314021488"
+    },
+    {
+      "path": "src/planet/verifyContentPackage.ts",
+      "sha256": "c3303190cfba0b1dd8361bcf05a49617b53a31edc6f4867f25abb89b131808a8"
+    },
+    {
+      "path": "tests/pwa/content-package-cache.spec.mjs",
+      "sha256": "28debe238fe21ea594d70836de6652bb20c62cdf40dac3bcac38be41e8475fa8"
+    },
+    {
+      "path": "tests/pwa/content-package-download.spec.mjs",
+      "sha256": "8ad0042f7e9985b119af1be3e0f54c082d2206524f5109ba5538391540408ca3"
+    },
+    {
+      "path": "tests/pwa/support/preserved-content-package.mjs",
+      "sha256": "a76d30a0b0512b1cff8300b8aa9c13b31d64167db00c10880ad5d1da0f2449ec"
+    },
+    {
+      "path": "tests/support/content-package-fixtures.mjs",
+      "sha256": "8ae81e6cb376e853882f99d51655ca4bd16ce5ac2e8ff501e18ea2f99591e687"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "8d51a8c9266fe83bf17c076b51672753b3750a17520cd0d2c28a90cb8b21e0d6"
+    },
+    {
+      "path": "vitest.config.ts",
+      "sha256": "5c1e90985e77b35599e5bdaf77c74a1166949ec9c4f45d1c5f926c3f53bef90e"
+    }
+  ],
+  "sourceInputsSha256": "e51408d99395da4d866b89df3de3ef32516c5cb3664d33a755280acc67303cf6",
+  "implementation": [
+    "src/planet/contentPackageTransport.ts",
+    "src/planet/verifyContentPackage.ts",
+    "src/planet/contentPackageCache.ts"
+  ],
+  "tests": [
+    "src/planet/contentPackageTransport.test.mjs",
+    "src/planet/verifyContentPackage.test.mjs",
+    "src/planet/contentPackageCache.test.mjs",
+    "tests/pwa/content-package-download.spec.mjs"
+  ],
+  "validation": {
+    "reports": [
+      "docs/mobile/evidence/S11/content-download-20260914/unit-a1/result.json",
+      "docs/mobile/evidence/S11/content-download-20260914/static-a1/result.json",
+      "docs/mobile/evidence/S11/content-download-20260914/browser-a1/result.json"
+    ],
+    "passingUnitCases": 92,
+    "unitFiles": 3,
+    "typecheck": true,
+    "platformBoundaries": true,
+    "actualHttpChromeCases": 1,
+    "browserProof": {
+      "path": "docs/mobile/evidence/S11/content-download-20260914/browser-a1/content-package-download-proof.json",
+      "bytes": 10506,
+      "sha256": "d825e39e0253df3e600fd4e7125200fe8fbbd1e0c9e25d2e589b7250b0bd9d28"
+    },
+    "retries": 0,
+    "browserRestarts": 2,
+    "regressionScope": "Existing cache/signature cases plus new manifest preflight and transfer cases. Unchanged Node signer/protocol tests retain the preceding 126-case checkpoint; test counts are not added as unique coverage.",
+    "notRepeated": "Unchanged worker bootstrap suite, full application/Android builds and screenshot cases."
+  },
+  "behavior": [
+    "Verify dedicated content signature and independently supplied canonical manifest hash before any data request.",
+    "Construct only JSON file URLs below the explicit HTTPS or QA loopback base. Omit cookies/referrer and prohibit redirects; enforce exact uncompressed byte lengths, SHA256, MIME, cancellation and idle timeouts.",
+    "Persist only whole hash-verified candidate files. A failed response never becomes a selected generation; retries rehash cached files and refetch only missing or corrupt ones.",
+    "Separate download locks from short selection/storage locks; existing complete data remains readable while another network request is stalled.",
+    "Concurrent documents share the retained files and compare prior generation receipts; a late transfer cannot overwrite a separately committed newer generation.",
+    "Final selection still requires the complete data-only RUEN verification and readback. All receipts remain local-qa and cannot authorize content, purchases or child mode."
+  ],
+  "limits": [
+    "Derived best-effort browser storage and whole-file retry, not byte-range resume or a guarantee against OS eviction.",
+    "Callable application modules with a real HTTP/Chrome harness; native adapters, user-facing controls and production package activation remain unintegrated.",
+    "Harness scripts load before offline mode; the preserved package bytes themselves are read with network disabled. No whole-application or exact-RC claim.",
+    "Existing S08 data is a preserved QA candidate, not the owner final archive or new editorial approval."
+  ],
+  "fullApplicationBuildRepeated": false,
+  "canonicalFactsChanged": false,
+  "editorialApprovalCreated": false,
+  "ownerWorkflow": "D107",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false,
+  "next": "Continue S11 by integrating verified package capabilities through the existing Web/native platform adapters and actual download controls around the persistent globe. Establish the native durable storage capability and localized recovery states without activating QA content or treating a CacheStorage browser proof as installed-device acceptance. D107 final owner archive synchronization follows application implementation; no factual archive population."
+}
