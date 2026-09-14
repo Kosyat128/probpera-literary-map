@@ -76,6 +76,7 @@ export function mountHostApp({ services, initialization }: InitializedHostPlatfo
       unmounted = true;
       languageStatus.dispose();
       services.recentHistory?.dispose?.();
+      services.downloads?.dispose();
       root.unmount();
     },
   });

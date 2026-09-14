@@ -22,6 +22,7 @@ import NativePlanetLaunch from "./host/NativePlanetLaunch";
 import PlanetWelcome from "./host/PlanetWelcome";
 import NativePlanetPanel from "./host/NativePlanetPanel";
 import PlanetGraphicsSettings from "./host/PlanetGraphicsSettings";
+import PlanetDownloadsPanel from "./host/PlanetDownloadsPanel";
 import { usePlanetGraphicsQuality } from "./host/planetGraphicsQuality";
 import { ProductNoticeSlot } from "./host/ProductNoticeHost";
 import {
@@ -2879,6 +2880,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
       <NativePlanetPanel open={nativeCollectionOpen} onClose={requestReturnToPlanet} onBack={handleNativePanelBack}
         globeRef={nativeGlobeRootRef} returnFocusRef={atlasExperience.closeButtonRef}>
         <PlanetGraphicsSettings value={graphics.qualityTier} onChange={graphics.selectQuality} saveState={graphics.saveState} />
+        {platformServices.downloads && <PlanetDownloadsPanel downloads={platformServices.downloads} />}
         {productHelp}
         {collectionContent}
       </NativePlanetPanel>

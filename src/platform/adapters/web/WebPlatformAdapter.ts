@@ -8,17 +8,20 @@ import {
   removeWebStorage,
   writeWebStorage,
 } from "../../../utils/safeWebStorage";
+import { createWebContentDownloads, type WebContentHost } from "./WebContentDownloads";
+import type { ContentDownloads } from "../../../planet/ContentDownloads";
 
 type EventHost = Pick<EventTarget, "addEventListener" | "removeEventListener">;
 export interface WebAdapterDocument extends EventHost {
   readonly visibilityState?: DocumentVisibilityState;
 }
 export interface WebAdapterNavigator {
+  readonly locks?: NonNullable<WebContentHost["navigator"]>["locks"];
   readonly onLine?: boolean;
   readonly languages?: readonly string[];
   readonly language?: string;
 }
-export interface WebAdapterWindow extends EventHost {
+export interface WebAdapterWindow extends EventHost, WebContentHost {
   readonly localStorage?: Storage;
   readonly sessionStorage?: Storage;
   readonly document?: WebAdapterDocument;
@@ -30,6 +33,8 @@ export interface WebPlatformAdapterOptions {
   readonly window?: WebAdapterWindow | null;
   readonly document?: WebAdapterDocument | null;
   readonly navigator?: WebAdapterNavigator | null;
+  /** Explicit controller injection for controlled UI tests. */
+  readonly downloads?: ContentDownloads;
 }
 
 // Exact existing non-secret preferences; this is not an arbitrary storage port.
@@ -141,6 +146,7 @@ export function createWebPlatformAdapter(
     kind: "web" as const,
     channel: "web" as const,
     preferences,
+    downloads: options.downloads ?? createWebContentDownloads(browser),
     getSnapshot,
     subscribe(listener: () => void) {
       const first = listeners.size === 0;

@@ -1,0 +1,277 @@
+{
+  "sourceCommit": "89cf558d7be310503672420568b1c7a045bd8325",
+  "qaOnly": true,
+  "sourceExports": [
+    {
+      "version": 1,
+      "inspection": {
+        "path": "docs/mobile/evidence/S08/content-export-20260914/export-a1/inspection.json",
+        "sha256": "f9beb49915af9b7fc2a83351da373113a1a86a275f9172fd3e6b9386d2ac1dd6"
+      },
+      "canonicalManifestSha256": "0470d65a77d4ff52a8199719019e77c441558e6d95c9e0025bd330455c495b75",
+      "rawManifestSha256": "9c7c2f478397c424ee5cb79e1b38ba81a1206bea7604ae7a61e67d2499b88e11",
+      "checked": [
+        {
+          "path": "docs/mobile/evidence/S08/content-export-20260914/export-a1/qa-public-key.json",
+          "bytes": 303,
+          "sha256": "dd0aee460e87f0a89d6c33ee8019c3526bcbbfe960a895c6e6fa9cff51a5758c"
+        },
+        {
+          "path": ".tmp/content-exports/s08-20260914-a1/signature.json",
+          "bytes": 1327,
+          "sha256": "4c08b5984eb343256f4b808f166cee0184ac0ad62b6a5a9a2942233e43cdd3d0"
+        },
+        {
+          "path": ".tmp/content-exports/s08-20260914-a1/manifest.json",
+          "bytes": 985,
+          "sha256": "9c7c2f478397c424ee5cb79e1b38ba81a1206bea7604ae7a61e67d2499b88e11"
+        },
+        {
+          "path": ".tmp/content-exports/s08-20260914-a1/package/dependency-index.json",
+          "bytes": 980118,
+          "sha256": "392fbb97d683d5d969aea20139a91104945232514b665708a65fb25694b5a665"
+        },
+        {
+          "path": ".tmp/content-exports/s08-20260914-a1/package/en/catalog.json",
+          "bytes": 605774,
+          "sha256": "bc28d4bee08e85ab3fde7c738fff9b63012643776e976865e62748246f2c69f8"
+        },
+        {
+          "path": ".tmp/content-exports/s08-20260914-a1/package/ru/catalog.json",
+          "bytes": 2605875,
+          "sha256": "a2cad62bf4f5c7579c06f2993c03d8833e47916d20833c7c2a9e89ac4a9f9ab1"
+        }
+      ]
+    },
+    {
+      "version": 2,
+      "inspection": {
+        "path": "docs/mobile/evidence/S08/content-export-20260914/export-a2/inspection.json",
+        "sha256": "7031de9b586568f2721d4e36400ff54eabe369d5f33a3b6f5bcd262f4828f1eb"
+      },
+      "canonicalManifestSha256": "b08c6b4f573f66dac0679bab42826cd0f300ed386ce7fbc9af25f7e2b1a1f86c",
+      "rawManifestSha256": "6cf0a82a6bbefde153d5ee8e23b38b7d2533b681cb9cc348fd8697aebd7d088a",
+      "checked": [
+        {
+          "path": "docs/mobile/evidence/S08/content-export-20260914/export-a2/qa-public-key.json",
+          "bytes": 303,
+          "sha256": "d5485a14380df22a73bb129679266bb4b888b7dd13e8705c0cd3fca1edb7d256"
+        },
+        {
+          "path": ".tmp/content-exports/s08-20260914-a2/signature.json",
+          "bytes": 1324,
+          "sha256": "27242bfe9bc29b55ddca70146e80a1b9d5ee4e5ea498bf94f823b66e58461a16"
+        },
+        {
+          "path": ".tmp/content-exports/s08-20260914-a2/manifest.json",
+          "bytes": 982,
+          "sha256": "6cf0a82a6bbefde153d5ee8e23b38b7d2533b681cb9cc348fd8697aebd7d088a"
+        },
+        {
+          "path": ".tmp/content-exports/s08-20260914-a2/package/dependency-index.json",
+          "bytes": 515,
+          "sha256": "ecab7922052cd0098689f5f93d694614568dae9950e5154b0b3c87e86f8a1854"
+        },
+        {
+          "path": ".tmp/content-exports/s08-20260914-a2/package/en/catalog.json",
+          "bytes": 605774,
+          "sha256": "bc28d4bee08e85ab3fde7c738fff9b63012643776e976865e62748246f2c69f8"
+        },
+        {
+          "path": ".tmp/content-exports/s08-20260914-a2/package/ru/catalog.json",
+          "bytes": 2605875,
+          "sha256": "a2cad62bf4f5c7579c06f2993c03d8833e47916d20833c7c2a9e89ac4a9f9ab1"
+        }
+      ]
+    }
+  ],
+  "profile": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\04\\01a06dd0-30ba-7fe1-9637-858d87ac1ff5\\s11-content-qa\\s11-DLwuUH",
+  "bundleSha256": "3d01d6e546f8f0852d46acfab52b2bda19f3d78dc7130a96b07bc60a0fd3c2da",
+  "bundleInputs": [
+    "<stdin>",
+    "node_modules/@noble/hashes/esm/_md.js",
+    "node_modules/@noble/hashes/esm/_u64.js",
+    "node_modules/@noble/hashes/esm/crypto.js",
+    "node_modules/@noble/hashes/esm/sha2.js",
+    "node_modules/@noble/hashes/esm/utils.js",
+    "src/planet/contentPackageCache.ts",
+    "src/planet/contentPackageProtocol.mjs",
+    "src/planet/contentPackageTransport.ts",
+    "src/planet/verifyContentPackage.ts"
+  ],
+  "steps": {
+    "first": {
+      "ok": true,
+      "manifestSha256": "0470d65a77d4ff52a8199719019e77c441558e6d95c9e0025bd330455c495b75",
+      "previousManifestSha256": null,
+      "activationAllowed": false,
+      "releaseReady": false,
+      "persistence": "best-effort"
+    },
+    "interrupted": {
+      "ok": false,
+      "activationAllowed": false,
+      "reason": "controlled-storage-quota"
+    },
+    "oldAfterFailure": {
+      "ok": true,
+      "manifestSha256": "0470d65a77d4ff52a8199719019e77c441558e6d95c9e0025bd330455c495b75",
+      "activationAllowed": false,
+      "releaseReady": false,
+      "files": [
+        {
+          "path": "dependency-index.json",
+          "bytes": 980118,
+          "sha256": "392fbb97d683d5d969aea20139a91104945232514b665708a65fb25694b5a665"
+        },
+        {
+          "path": "en/catalog.json",
+          "bytes": 605774,
+          "sha256": "bc28d4bee08e85ab3fde7c738fff9b63012643776e976865e62748246f2c69f8"
+        },
+        {
+          "path": "ru/catalog.json",
+          "bytes": 2605875,
+          "sha256": "a2cad62bf4f5c7579c06f2993c03d8833e47916d20833c7c2a9e89ac4a9f9ab1"
+        }
+      ]
+    },
+    "partialRead": {
+      "ok": false,
+      "activationAllowed": false,
+      "reason": "content-generation-not-selected"
+    },
+    "concurrentRetry": [
+      {
+        "ok": true,
+        "manifestSha256": "b08c6b4f573f66dac0679bab42826cd0f300ed386ce7fbc9af25f7e2b1a1f86c",
+        "previousManifestSha256": "0470d65a77d4ff52a8199719019e77c441558e6d95c9e0025bd330455c495b75",
+        "activationAllowed": false,
+        "releaseReady": false,
+        "persistence": "best-effort"
+      },
+      {
+        "ok": true,
+        "manifestSha256": "b08c6b4f573f66dac0679bab42826cd0f300ed386ce7fbc9af25f7e2b1a1f86c",
+        "previousManifestSha256": "0470d65a77d4ff52a8199719019e77c441558e6d95c9e0025bd330455c495b75",
+        "activationAllowed": false,
+        "releaseReady": false,
+        "persistence": "best-effort"
+      }
+    ],
+    "newAfterRetry": {
+      "ok": true,
+      "manifestSha256": "b08c6b4f573f66dac0679bab42826cd0f300ed386ce7fbc9af25f7e2b1a1f86c",
+      "activationAllowed": false,
+      "releaseReady": false,
+      "files": [
+        {
+          "path": "dependency-index.json",
+          "bytes": 515,
+          "sha256": "ecab7922052cd0098689f5f93d694614568dae9950e5154b0b3c87e86f8a1854"
+        },
+        {
+          "path": "en/catalog.json",
+          "bytes": 605774,
+          "sha256": "bc28d4bee08e85ab3fde7c738fff9b63012643776e976865e62748246f2c69f8"
+        },
+        {
+          "path": "ru/catalog.json",
+          "bytes": 2605875,
+          "sha256": "a2cad62bf4f5c7579c06f2993c03d8833e47916d20833c7c2a9e89ac4a9f9ab1"
+        }
+      ]
+    },
+    "currentAfterBrowserRestartOffline": {
+      "ok": true,
+      "manifestSha256": "b08c6b4f573f66dac0679bab42826cd0f300ed386ce7fbc9af25f7e2b1a1f86c",
+      "activationAllowed": false,
+      "releaseReady": false,
+      "files": [
+        {
+          "path": "dependency-index.json",
+          "bytes": 515,
+          "sha256": "ecab7922052cd0098689f5f93d694614568dae9950e5154b0b3c87e86f8a1854"
+        },
+        {
+          "path": "en/catalog.json",
+          "bytes": 605774,
+          "sha256": "bc28d4bee08e85ab3fde7c738fff9b63012643776e976865e62748246f2c69f8"
+        },
+        {
+          "path": "ru/catalog.json",
+          "bytes": 2605875,
+          "sha256": "a2cad62bf4f5c7579c06f2993c03d8833e47916d20833c7c2a9e89ac4a9f9ab1"
+        }
+      ]
+    },
+    "previousAfterBrowserRestartOffline": {
+      "ok": true,
+      "manifestSha256": "0470d65a77d4ff52a8199719019e77c441558e6d95c9e0025bd330455c495b75",
+      "activationAllowed": false,
+      "releaseReady": false,
+      "files": [
+        {
+          "path": "dependency-index.json",
+          "bytes": 980118,
+          "sha256": "392fbb97d683d5d969aea20139a91104945232514b665708a65fb25694b5a665"
+        },
+        {
+          "path": "en/catalog.json",
+          "bytes": 605774,
+          "sha256": "bc28d4bee08e85ab3fde7c738fff9b63012643776e976865e62748246f2c69f8"
+        },
+        {
+          "path": "ru/catalog.json",
+          "bytes": 2605875,
+          "sha256": "a2cad62bf4f5c7579c06f2993c03d8833e47916d20833c7c2a9e89ac4a9f9ab1"
+        }
+      ]
+    },
+    "corruptionDenied": {
+      "ok": false,
+      "activationAllowed": false,
+      "reason": "invalid-utf8-json-data"
+    },
+    "previousAfterCorruption": {
+      "ok": true,
+      "manifestSha256": "0470d65a77d4ff52a8199719019e77c441558e6d95c9e0025bd330455c495b75",
+      "activationAllowed": false,
+      "releaseReady": false,
+      "files": [
+        {
+          "path": "dependency-index.json",
+          "bytes": 980118,
+          "sha256": "392fbb97d683d5d969aea20139a91104945232514b665708a65fb25694b5a665"
+        },
+        {
+          "path": "en/catalog.json",
+          "bytes": 605774,
+          "sha256": "bc28d4bee08e85ab3fde7c738fff9b63012643776e976865e62748246f2c69f8"
+        },
+        {
+          "path": "ru/catalog.json",
+          "bytes": 2605875,
+          "sha256": "a2cad62bf4f5c7579c06f2993c03d8833e47916d20833c7c2a9e89ac4a9f9ab1"
+        }
+      ]
+    }
+  },
+  "capabilities": {
+    "secureContext": true,
+    "cacheStorage": true,
+    "webLocks": true,
+    "webCrypto": true,
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+  },
+  "offlineReadNetworkRequests": 0,
+  "browserRestarted": true,
+  "offlineLocales": [
+    "ru",
+    "en"
+  ],
+  "pageErrors": [],
+  "pass": true,
+  "stageAccepted": false,
+  "releaseReady": false
+}

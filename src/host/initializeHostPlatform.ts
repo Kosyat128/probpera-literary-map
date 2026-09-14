@@ -1,6 +1,7 @@
 import type { PlatformBackEvent, PlatformServices } from "../platform/ports";
 import type { HostAppBridge, HostAppState, HostListenerHandle, HostNetworkBridge, HostPreferenceBridge, HostPlatformServicesOptions } from "./HostPlatformServices";
 import type { NativeNavigationBridgeFailure } from "./NativeNavigationBridge";
+import type { NativeContentStoreBridge } from "./nativeContentStorage";
 
 export interface NativeHostAppBridge extends HostAppBridge {
   getAppLanguage(): Promise<unknown>;
@@ -21,6 +22,7 @@ export interface NativeHostBindings {
   readonly preferences: HostPreferenceBridge;
   readonly browser: { open(options: { url: string }): Promise<void> };
   readonly appLauncher: { openUrl(options: { url: string }): Promise<{ completed: boolean }> };
+  readonly contentStore?: NativeContentStoreBridge;
 }
 export interface NativeHostAdapterOptions {
   /** Explicit injection for native bootstrap tests; omitted uses real SDK bindings. */

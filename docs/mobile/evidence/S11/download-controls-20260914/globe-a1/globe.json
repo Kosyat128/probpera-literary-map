@@ -1,0 +1,23 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=.tmp/s11-download-controls-20260914/globe.config.mjs"
+  ],
+  "startedAt": "2026-09-14T11:10:30.162Z",
+  "durationMs": 13149,
+  "exitCode": 0,
+  "logs": {
+    "stdout": {
+      "text": "\nRunning 1 test using 1 worker\n\n\n\n[1/1] tests\\host\\native-planet.spec.mjs:387:1 › downloads live in the actual globe collection and retain the scene through RUEN and reopening\n  1 passed (12.3s)\n",
+      "bytes": 197,
+      "sha256": "1601ac2489ff6f82acfa4e9c5caa8ef18275f3ac701d5ee42dc6fe2f7a3c74f5"
+    },
+    "stderr": {
+      "text": "(node:18836) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "bytes": 164,
+      "sha256": "199ccf796998c27e51f1f7ead62aa0d3ba911ba9bb7b1169be050cb126c8c55d"
+    }
+  }
+}

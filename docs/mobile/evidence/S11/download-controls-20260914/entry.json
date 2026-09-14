@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-14T11:17:41.207Z",
+  "stage": "S11",
+  "route": "S11-S15",
+  "checkpoint": "29a66af79931d7efec85bc84e9330c52988fcb65",
+  "precedingEntry": "docs/mobile/evidence/S11/content-download-20260914/entry.json",
+  "requirementIds": [
+    "CONTENT-005",
+    "CONTENT-006",
+    "CONTENT-008"
+  ],
+  "basis": "Continue the documented parallel-safe signed byte transport scope through platform-lifetime controls and native private storage. No child, editorial, rights, purchase or stage acceptance is granted.",
+  "scope": [
+    "RUEN downloads in the existing globe collection; retain the platform controller through locale and panel changes.",
+    "Browser cache adapter and app-private Android/iOS byte ports; native serial IO, CAS receipts and protected current/previous pruning.",
+    "Actual HTTP/Chrome cancellation, recovery, offline browser restart, accessibility and canonical Canvas/renderer/camera continuity."
+  ],
+  "acceptedStateUnchanged": true,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false
+}

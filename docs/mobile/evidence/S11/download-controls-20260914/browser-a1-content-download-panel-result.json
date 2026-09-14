@@ -1,0 +1,68 @@
+{
+  "sourceFixture": true,
+  "installedNative": false,
+  "exactRc": false,
+  "activationAllowed": false,
+  "releaseReady": false,
+  "pass": true,
+  "requests": [
+    {
+      "path": "dependency-index.json",
+      "cookie": null,
+      "referrer": null
+    },
+    {
+      "path": "en/catalog.json",
+      "cookie": null,
+      "referrer": null
+    },
+    {
+      "path": "en/catalog.json",
+      "cookie": null,
+      "referrer": null
+    },
+    {
+      "path": "ru/catalog.json",
+      "cookie": null,
+      "referrer": null
+    }
+  ],
+  "cancelled": true,
+  "resumedVerifiedFiles": true,
+  "offlineAfterBrowserRestart": true,
+  "focusedButtonsRetained": true,
+  "accessibilityViolations": 0,
+  "mobileHorizontalOverflow": false,
+  "manifestSha256": "3d8d7d55627db1737913648a17977fe89471b18c0e897a9295e83be7e74c6c48",
+  "bundleInputs": [
+    "<stdin>",
+    "node_modules/@noble/hashes/esm/_md.js",
+    "node_modules/@noble/hashes/esm/_u64.js",
+    "node_modules/@noble/hashes/esm/crypto.js",
+    "node_modules/@noble/hashes/esm/sha2.js",
+    "node_modules/@noble/hashes/esm/utils.js",
+    "node_modules/react-dom/cjs/react-dom.development.js",
+    "node_modules/react-dom/client.js",
+    "node_modules/react-dom/index.js",
+    "node_modules/react-dom/node_modules/scheduler/cjs/scheduler.development.js",
+    "node_modules/react-dom/node_modules/scheduler/index.js",
+    "node_modules/react/cjs/react-jsx-runtime.development.js",
+    "node_modules/react/cjs/react.development.js",
+    "node_modules/react/index.js",
+    "node_modules/react/jsx-runtime.js",
+    "src/data/cms/site.generated.ts",
+    "src/data/cms/siteCopy.ts",
+    "src/host/PlanetDownloadsPanel.css",
+    "src/host/PlanetDownloadsPanel.tsx",
+    "src/i18n/InterfaceLanguage.tsx",
+    "src/planet/ContentDownloads.ts",
+    "src/planet/contentDownloadCatalog.ts",
+    "src/planet/contentPackageCache.ts",
+    "src/planet/contentPackageProtocol.mjs",
+    "src/planet/contentPackageTransport.ts",
+    "src/planet/verifyContentPackage.ts",
+    "src/platform/adapters/web/WebContentDownloads.ts",
+    "src/platform/distribution.ts",
+    "src/utils/shortHyphens.ts"
+  ]
+}

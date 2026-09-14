@@ -1,3 +1,16 @@
+<!-- s11-download-controls-20260914:begin -->
+S11 downloads are integrated into the existing planet collection in RU/EN, with shared theme tokens.
+The platform-lifetime controller survives locale/panel changes; explicit check/download/retry/cancel
+uses verified whole-file recovery. Native Android/iOS app-private storage source adds serial IO,
+CAS byte receipts and protected pruning. Android Java compiled offline; iOS and installed-device
+execution remain unverified. 216 focused unit cases, type/platform checks, 3 actual HTTP/Chrome
+cases and 1 actual canonical globe case passed; Canvas/renderer/camera identity stayed intact.
+All packages remain QA-only, with an empty production descriptor/key catalog. No factual filling.
+Evidence: evidence/S11/download-controls-20260914/result.json. Next: one refreshed Android/dev APK
+and actual byte inspection, then native pause/restart/recovery. D107 archive sync is deferred until
+app implementation. First-open S03 and all stage/release/owner gates remain unchanged.
+<!-- s11-download-controls-20260914:end -->
+
 <!-- s11-content-download-20260914:begin -->
 S11 signed package network transfer and whole-file recovery implemented.
 92 focused cases, TypeScript/platform boundaries and 1 actual HTTP/Chrome scenario pass.

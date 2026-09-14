@@ -1,0 +1,23 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=.tmp/s11-download-controls-20260914/playwright.config.mjs"
+  ],
+  "startedAt": "2026-09-14T11:10:30.073Z",
+  "durationMs": 22419,
+  "exitCode": 0,
+  "logs": {
+    "stdout": {
+      "text": "\nRunning 3 tests using 1 worker\n\n\n\n[1/3] tests\\pwa\\content-download-panel.spec.mjs:11:1 › download panel keeps a real transfer across RUEN and remount, cancels, retries and verifies offline after browser restart\n[2/3] tests\\pwa\\content-package-cache.spec.mjs:11:1 › actual Chrome retains signed S08 RUEN bytes through failure, concurrent retry and browser restart offline\n[3/3] tests\\pwa\\content-package-download.spec.mjs:10:1 › actual HTTP download resumes verified S08 files after browser restart and preserves both generations offline\n  3 passed (21.5s)\n",
+      "bytes": 563,
+      "sha256": "27973cfedfe4e7296d74622b6a1606777ab2cc7efaf4c2cdf2d40d2dedb05978"
+    },
+    "stderr": {
+      "text": "(node:31836) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "bytes": 164,
+      "sha256": "c55a736e7f96b0df16b25181a400c0adad0cd2a66990e405590079261ff7eb91"
+    }
+  }
+}

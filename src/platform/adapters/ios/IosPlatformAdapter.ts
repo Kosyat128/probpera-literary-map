@@ -1,4 +1,4 @@
-import { Capacitor } from "@capacitor/core";
+import { Capacitor, registerPlugin } from "@capacitor/core";
 import { App } from "@capacitor/app";
 import { Network } from "@capacitor/network";
 import { Preferences } from "@capacitor/preferences";
@@ -6,6 +6,8 @@ import { Browser } from "@capacitor/browser";
 import { AppLauncher } from "@capacitor/app-launcher";
 import { createHostPlatformServices } from "../../../host/HostPlatformServices";
 import { createNativeNavigationBridge } from "../../../host/NativeNavigationBridge";
+import { createNativeContentDownloads } from "../../../host/createNativeContentDownloads";
+import type { NativeContentStoreBridge } from "../../../host/nativeContentStorage";
 import {
   assertNativeHostBindings, initializeHostPlatform,
   type InitializedHostPlatform, type NativeHostAdapterOptions,
@@ -21,6 +23,7 @@ export async function createIosPlatformAdapter(options: IosPlatformAdapterOption
   if (!["dev", "appStore"].includes(channel)) throw new Error("Invalid iOS distribution channel");
   const bindings = options.bindings ?? {
     core: Capacitor, app: App, network: Network, preferences: Preferences, browser: Browser, appLauncher: AppLauncher,
+    contentStore: registerPlugin<NativeContentStoreBridge>("PlanetContentStore"),
   };
   assertNativeHostBindings(bindings, "ios");
   const initialization = await initializeHostPlatform({
@@ -40,5 +43,6 @@ export async function createIosPlatformAdapter(options: IosPlatformAdapterOption
     subscribeUrl: listener => bindings.app.addListener("appUrlOpen", listener),
     timeoutMs: options.timeoutMs, onFailure: options.onNavigationFailure,
   });
-  return Object.freeze({ services: Object.freeze({ ...services, navigation }), initialization });
+  const downloads = createNativeContentDownloads(bindings.contentStore && bindings.core.isPluginAvailable("PlanetContentStore") ? bindings.contentStore : null);
+  return Object.freeze({ services: Object.freeze({ ...services, navigation, downloads }), initialization });
 }

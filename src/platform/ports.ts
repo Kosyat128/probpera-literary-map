@@ -1,4 +1,5 @@
 import type { RecentHistoryStore } from "../planet/RecentHistory";
+import type { ContentDownloads } from "../planet/ContentDownloads";
 
 /** Platform capabilities; canonical selection, locale and scene state live elsewhere. */
 export type PlatformKind = "web" | "android" | "ios";
@@ -35,6 +36,8 @@ export interface PlatformServices {
   readonly preferences: PreferenceStore;
   /** Local adult references only; never a catalog, child store or entitlement. */
   readonly recentHistory?: RecentHistoryStore;
+  /** Platform-lifetime transfers; never an entitlement or catalog activation. */
+  readonly downloads?: ContentDownloads;
   /** Optional native input capability; absent in ordinary Web services. No constructor subscriptions. */
   readonly navigation?: PlatformNavigation;
   /** Snapshot identity must be stable until one of its values changes. */

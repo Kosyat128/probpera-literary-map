@@ -384,6 +384,32 @@ async function evidence(fixture, testInfo, name, extra = {}) {
   expect(await fixture.page.evaluate(() => window.__nativePlanetVisibleHeroFrames)).toBe(0);
 }
 
+test("downloads live in the actual globe collection and retain the scene through RUEN and reopening", async ({}, testInfo) => {
+  const fixture = await open({ route: "/?country=russia#atlas", viewport: { width: 390, height: 844 },
+    hasTouch: true, isMobile: true, preferences: { "probpera-planet-welcome-v1": "completed" } });
+  const { page } = fixture;
+  try {
+    await nativeRootReady(page); const original = await captureScene(page);
+    await page.locator('[data-atlas-action="open-collection"]').click();
+    const panel = page.locator(".native-planet-panel"), downloads = panel.locator('[data-planet-downloads]');
+    await downloads.locator("summary").click();
+    await expect(downloads).toContainText("Дополнительных пакетов для загрузки пока нет.");
+    await panel.locator(".interface-language-control button").filter({ hasText: "EN" }).click();
+    await expect(downloads.locator("summary")).toHaveText("Downloads");
+    await expect(downloads).toContainText("There are no additional packages to download yet.");
+    await retained(page, original);
+    await panel.getByRole("button", { name: "Return to the planet", exact: true }).click();
+    await page.locator('[data-atlas-action="open-collection"]').click();
+    await expect(downloads).toHaveAttribute("open", "");
+    await retained(page, original);
+    const colors = await downloads.evaluate(element => ({ ink: getComputedStyle(element).color, surface: getComputedStyle(element).backgroundColor,
+      expectedInk: getComputedStyle(element).getPropertyValue("--planet-ink").trim(), expectedSurface: getComputedStyle(element).getPropertyValue("--planet-card").trim() }));
+    expect(colors.expectedInk).not.toBe(""); expect(colors.expectedSurface).not.toBe("");
+    await evidence(fixture, testInfo, "downloads-canonical-globe-source", { sameCanvasRendererCameraScene: true, locales: ["ru", "en"],
+      emptyApprovedCatalog: true, productionPackageActivated: false, colors });
+  } finally { await page.close(); }
+});
+
 test("mobile globe search reveals the writer and restores Escape focus across RU and EN without replacing the scene", async ({}, testInfo) => {
   const fixture = await open({ route: "/?country=france#atlas", viewport: { width: 390, height: 844 },
     reducedMotion: "reduce", hasTouch: true, isMobile: true });

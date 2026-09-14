@@ -6,6 +6,7 @@ import {
 } from "./contentPackageProtocol.mjs";
 import { normalizeContentPackageTrust, verifyContentPackage, verifyContentPackageManifest } from "./verifyContentPackage";
 import { downloadContentPackageFile, normalizeContentPackageBaseUrl, type ContentPackageFetch } from "./contentPackageTransport";
+import type { ContentPackageLocks, ContentPackageStorage } from "./contentPackageStorage";
 
 const PREFIX = "literary-planet-content-qa-v1-";
 const SHA = /^[a-f0-9]{64}$/u;
@@ -30,9 +31,10 @@ export interface ContentPackageCacheOptions {
   readonly allowLocalQa: true;
   readonly origin: string;
   readonly trustedKeys: unknown;
-  readonly caches: CacheStorage | null;
-  /** Required cross-document coordination. No unsafe memory-lock fallback. */
-  readonly locks: Pick<LockManager, "request"> | null;
+  readonly caches: ContentPackageStorage | null;
+  /** Explicit platform coordination. Web uses Web Locks; native also requires
+   * atomic compare-and-swap and candidate validation in its native IO queue. */
+  readonly locks: ContentPackageLocks | null;
   readonly subtle?: SubtleCrypto | null;
 }
 export interface ContentPackageSaveRequest {
@@ -233,7 +235,18 @@ export function createContentPackageCache(options: ContentPackageCacheOptions) {
           const next: Selection = { schemaVersion: 1, current: { sha256: hash, version: expected.version }, previous };
           const index = await storage!.open(name);
           cancelled(signal);
-          await index.put(selectionUrl, metadataResponse(next));
+          if (storage!.commitSelection) {
+            const committed = await storage!.commitSelection({ name, url: selectionUrl,
+              expectedSha256: before ? contentPackageHash(contentPackageCanonicalJson(before)) : null,
+              json: contentPackageCanonicalJson(next), candidate: { name: cacheName, entries: [
+                ...parsed.manifest.files.map(file => ({ url: fileUrl(file.path), bytes: file.bytes, sha256: file.sha256 })),
+                ...[[envelopeUrl, envelope], [markerUrl, { schemaVersion: 1, state: "VERIFIED_CANDIDATE", manifestSha256: hash, activationAllowed: false }]].map(([key, value]) => {
+                  const source = contentPackageCanonicalJson(value);
+                  return { url: key as string, bytes: encoder.encode(source).byteLength, sha256: contentPackageHash(source) };
+                }),
+              ] } });
+            if (!committed) fail("content-generation-conflict");
+          } else await index.put(selectionUrl, metadataResponse(next));
           // This write is the commit boundary. A late abort cannot truthfully
           // turn an already stored selection into a reported rollback.
           if (!signal?.aborted) await prune(name, [hash, ...(previous ? [previous.sha256] : [])], signal).catch(() => undefined);

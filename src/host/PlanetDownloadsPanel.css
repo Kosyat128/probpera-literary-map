@@ -1,0 +1,35 @@
+.planet-downloads {
+  min-width: 0;
+  margin: 12px clamp(12px, 3vw, 40px);
+  padding: 4px 16px;
+  color: var(--planet-ink, #271b20);
+  background: var(--planet-card, #fffaf0);
+  border: 1px solid var(--planet-line, #d8cec0);
+  border-radius: 16px;
+  font-size: 1rem;
+  overflow-wrap: anywhere;
+}
+.planet-downloads > summary { min-height: 44px; box-sizing: border-box; padding-block: 12px; font-weight: 700; cursor: pointer; }
+.planet-downloads__body { min-width: 0; padding-block: 4px 12px; line-height: 1.55; }
+.planet-downloads p { margin: 0 0 12px; }
+.planet-downloads ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.planet-downloads li { min-width: 0; padding: 16px; background: var(--planet-surface, #fff8eb); border: 1px solid var(--planet-line, #d8cec0); border-radius: 12px; }
+.planet-downloads h3 { margin: 0 0 8px; font: inherit; font-weight: 700; }
+.planet-downloads__actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.planet-downloads button {
+  min-width: 44px; min-height: 44px; max-width: 100%; padding: 10px 14px;
+  border: 2px solid var(--planet-accent-strong, #713018); border-radius: 12px;
+  color: var(--planet-accent-strong, #713018); background: var(--planet-card, #fffaf0);
+  font: inherit; font-weight: 700; overflow-wrap: anywhere; cursor: pointer;
+}
+.planet-downloads button[aria-disabled="true"] { border-color: var(--planet-line, #d8cec0); color: var(--planet-ink, #271b20); cursor: default; }
+.planet-downloads :is(summary, button):focus-visible { outline: 3px solid var(--planet-accent-strong, #713018); outline-offset: 3px; }
+.planet-downloads__progress { display: grid; gap: 4px; margin-block: 0 12px; font-variant-numeric: tabular-nums; }
+.planet-downloads progress { width: 100%; height: 10px; accent-color: var(--planet-accent-strong, #713018); }
+@media (max-width: 360px) { .planet-downloads, .planet-downloads li { padding-inline: 12px; } }
+@media (forced-colors: active) {
+  .planet-downloads, .planet-downloads li { color: CanvasText; background: Canvas; border-color: CanvasText; }
+  .planet-downloads button { color: ButtonText; background: ButtonFace; border-color: ButtonText; }
+  .planet-downloads button[aria-disabled="true"] { color: GrayText; border-color: GrayText; }
+  .planet-downloads :is(summary, button):focus-visible { outline-color: Highlight; }
+}

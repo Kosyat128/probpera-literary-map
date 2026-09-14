@@ -5,7 +5,7 @@
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
   "headSha": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-14T10:37:52.920Z",
+  "updatedAt": "2026-09-14T11:17:41.207Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -1846,7 +1846,12 @@
         "node .tmp/s11-content-intake-20260914/run-checks.mjs browser a3",
         "node .tmp/s11-content-download-20260914/run-checks.mjs unit a1",
         "node .tmp/s11-content-download-20260914/run-checks.mjs static a1",
-        "node .tmp/s11-content-download-20260914/run-checks.mjs browser a1"
+        "node .tmp/s11-content-download-20260914/run-checks.mjs browser a1",
+        "node .tmp/s11-download-controls-20260914/run-checks.mjs unit a1",
+        "node .tmp/s11-download-controls-20260914/run-checks.mjs static a1",
+        "node .tmp/s11-download-controls-20260914/run-checks.mjs browser a1",
+        "node .tmp/s11-download-controls-20260914/run-checks.mjs globe a1",
+        ".tmp/s11-download-controls-20260914/compile-android.ps1"
       ],
       "artifacts": [
         "docs/mobile/evidence/S11/install-resume-20260914/entry.json",
@@ -1854,7 +1859,9 @@
         "docs/mobile/evidence/S11/content-intake-20260914/entry.json",
         "docs/mobile/evidence/S11/content-intake-20260914/result.json",
         "docs/mobile/evidence/S11/content-download-20260914/entry.json",
-        "docs/mobile/evidence/S11/content-download-20260914/result.json"
+        "docs/mobile/evidence/S11/content-download-20260914/result.json",
+        "docs/mobile/evidence/S11/download-controls-20260914/entry.json",
+        "docs/mobile/evidence/S11/download-controls-20260914/result.json"
       ],
       "externalBlockers": []
     },
@@ -10655,7 +10662,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Continue S11 by integrating verified package capabilities through the existing Web/native platform adapters and actual download controls around the persistent globe. Establish the native durable storage capability and localized recovery states without activating QA content or treating a CacheStorage browser proof as installed-device acceptance. D107 final owner archive synchronization follows application implementation; no factual archive population. First-open S03 remains unchanged.",
+    "nextAction": "Build one refreshed Android/dev artifact from this committed source and inspect its actual APK bytes; preserve the earlier Android/PWA checkpoints. Continue S11 installed-host storage/recovery and platform pause/update handling. iOS source requires an authorized macOS build and native runtime checks, including crypto capability; current source/browser evidence is not installed-device acceptance. No production QA activation. Final canonical owner archive synchronization remains after app implementation under D107.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -10683,7 +10690,9 @@
       "docs/mobile/evidence/S11/content-intake-20260914/entry.json",
       "docs/mobile/evidence/S11/content-intake-20260914/result.json",
       "docs/mobile/evidence/S11/content-download-20260914/entry.json",
-      "docs/mobile/evidence/S11/content-download-20260914/result.json"
+      "docs/mobile/evidence/S11/content-download-20260914/result.json",
+      "docs/mobile/evidence/S11/download-controls-20260914/entry.json",
+      "docs/mobile/evidence/S11/download-controls-20260914/result.json"
     ],
     "commands": [
       "node scripts/mobile/verify-requirements.mjs",
@@ -10802,7 +10811,8 @@
         "evidence": [
           "docs/mobile/evidence/S11/install-resume-20260914/entry.json",
           "docs/mobile/evidence/S11/content-intake-20260914/entry.json",
-          "docs/mobile/evidence/S11/content-download-20260914/entry.json"
+          "docs/mobile/evidence/S11/content-download-20260914/entry.json",
+          "docs/mobile/evidence/S11/download-controls-20260914/entry.json"
         ]
       }
     },
@@ -12151,6 +12161,21 @@
       "sourceInputsSha256": "e51408d99395da4d866b89df3de3ef32516c5cb3664d33a755280acc67303cf6",
       "passingUnitCases": 92,
       "actualHttpChromeCases": 1,
+      "stageAccepted": false,
+      "releaseReady": false,
+      "sourceInputsCurrent": false,
+      "successor": "docs/mobile/evidence/S11/download-controls-20260914/result.json"
+    },
+    "s11DownloadControls": {
+      "status": "DOWNLOAD_UI_SOURCE_BROWSER_AND_ANDROID_JAVA_VALIDATION_PASSED",
+      "evidence": "docs/mobile/evidence/S11/download-controls-20260914/result.json",
+      "sha256": "989d81b6a2ae4b24ce9c9caf5166baaadc087efea9e4cd101ab3ec3891912e26",
+      "sourceInputsSha256": "856ac02d6be1db61b5681b2ed931e9b614a57778f67896d10deff156c2ebb445",
+      "sourceBaseCommit": "29a66af79931d7efec85bc84e9330c52988fcb65",
+      "passingUnitCases": 216,
+      "actualChromeCases": 4,
+      "androidJavaCompiled": true,
+      "iosCompiled": false,
       "stageAccepted": false,
       "releaseReady": false
     }

@@ -645,3 +645,12 @@
   interruption, corrupted cached EN, two browser restarts, concurrent tab retry
   and offline current/previous reads. Native storage and globe download controls
   remain next; no QA activation, final content fill or release acceptance.
+
+- D116: Keep downloads in the existing themed globe collection and own transfers at
+  platform lifetime, independent of RUEN and panel lifecycle. Add private Android/iOS
+  byte ports; native serial IO rechecks signed byte receipts before atomic CAS, and
+  pruning protects current/previous generations. AndroidX AtomicFile covers first-write
+  interruption on API 24. Actual Chrome verifies UI recovery/accessibility and the
+  canonical scene; Android Java compilation passes. These do not certify native
+  execution, iOS compilation or content activation. Keep production descriptor/trust
+  catalogs empty and final owner archive sync after app implementation under D107.

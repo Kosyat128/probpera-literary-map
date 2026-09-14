@@ -1,0 +1,47 @@
+{
+  "pass": true,
+  "errors": [],
+  "releaseReady": false,
+  "internalRequirementsPassed": false,
+  "requirementCount": 342,
+  "bilingualCount": 107,
+  "allInternalComplete": false,
+  "completedStages": [
+    "S00",
+    "S01",
+    "S02"
+  ],
+  "firstOpen": {
+    "stageId": "S03",
+    "criterionId": "S03.acceptance"
+  },
+  "historicalStaleInputs": [
+    "package.json",
+    "package-lock.json",
+    "src/main.tsx",
+    "src/App.tsx",
+    "src/components/LiteraryGlobe.tsx",
+    "docs/mobile/PLATFORM_ARCHITECTURE.md",
+    "vitest.config.ts",
+    "playwright.config.mjs",
+    "scripts/lib/stage5-content-data-lock.test.mjs",
+    "src/components/BookShelfSceneCanvas.tsx",
+    "src/components/LiteraryWorldMap.tsx",
+    "src/data/cms/editorialOverrides.ts",
+    "src/data/countries/types.ts",
+    "src/data/countryLocalization.ts",
+    "src/data/writerBiography.ts",
+    "src/i18n/InterfaceLanguage.tsx",
+    "src/planet/selection.ts",
+    "src/platform/adapters/web/WebPlatformAdapter.test.ts",
+    "src/platform/adapters/web/WebPlatformAdapter.ts",
+    "src/platform/ports.ts",
+    "tests/e2e/header-hero-polish.spec.mjs",
+    "tests/e2e/literary-planet-immersion.spec.mjs",
+    "tests/e2e/platform-services.spec.mjs",
+    "tests/e2e/public-smoke.spec.mjs",
+    "vite.config.ts"
+  ],
+  "releaseActionsAuthorized": false,
+  "requirementsHash": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732"
+}
