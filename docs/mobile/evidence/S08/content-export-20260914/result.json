@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "recordedAt": "2026-09-14T01:44:03.920Z",
+  "recordedAt": "2026-09-14T01:49:19.363Z",
   "stage": "S08",
-  "status": "SOURCE_VALIDATION_PASSED",
+  "status": "LOCAL_SOURCE_AND_DATA_ARTIFACT_VALIDATION_PASSED",
   "sourceInputs": 1327,
   "sourceInputsSha256": "2255a5bed8e426bcc211686c3732e2a84b7c91880f2d67ec6f74e3d909761585",
   "sourceInputsCurrent": true,
@@ -31,7 +31,13 @@
       "static-a1/result.json"
     ],
     "syntax": "Node --check scripts/mobile/export-content.mjs passed",
-    "reuse": "Only new export/dependency/signature/previous-input suites and affected static checks. Existing Android/PWA UI source and screenshots unchanged; no UI rebuild or search benchmark repeated."
+    "reuse": "Only new export/dependency/signature/previous-input suites and affected static checks. Existing Android/PWA UI source and screenshots unchanged; no UI rebuild or search benchmark repeated.",
+    "realExports": 2,
+    "continuationVerified": true,
+    "retainedPreviousGeneration": true,
+    "exactLocaleBytesStable": true,
+    "diskSignaturesVerified": true,
+    "heldOrStaleTextInPackages": false
   },
   "reviewCorrections": [
     "Persist stale state across an identical later generation.",
@@ -44,5 +50,85 @@
   "stageAccepted": false,
   "releaseReady": false,
   "productionActionsPerformed": false,
-  "next": "Commit tested source; export one exact-source canonical adult candidate with ephemeral QA signing, preserve its manifest hash and inspect counts/held evidence. Validate the continuation path without repeating unchanged UI builds."
+  "next": "S09: fix existing book-to-writer navigation in the retained scene and remove unreviewed Russian capital fallback from English country details. Keep S08 runtime/child/complete review gates open; do not rebuild unchanged UI until an actual runtime change is tested.",
+  "sourceCommit": "89cf558d7be310503672420568b1c7a045bd8325",
+  "canonicalCandidate": {
+    "units": 4701,
+    "heldUnits": 41479,
+    "fields": {
+      "ru:country:name": 200,
+      "ru:work:description": 46,
+      "ru:work:title": 46,
+      "ru:writer:biography": 1684,
+      "ru:writer:name": 1684,
+      "en:work:title": 46,
+      "en:writer:name": 995
+    },
+    "scope": "Adult data candidates, including work archive records; counts are field units, not approved books or bilingual release coverage.",
+    "reviewedEnglishBiographyUnits": 0,
+    "englishDescriptionUnits": 0
+  },
+  "artifacts": [
+    {
+      "version": 1,
+      "output": ".tmp/content-exports/s08-20260914-a1",
+      "manifestSha256": "9c7c2f478397c424ee5cb79e1b38ba81a1206bea7604ae7a61e67d2499b88e11",
+      "sourceInputs": 293,
+      "sourceInputsSha256": "486b073e7b2c6849cfe45f52097c62c6d9d2c6670d7ec163a0d41d0d763effba",
+      "files": [
+        {
+          "path": "dependency-index.json",
+          "bytes": 980118,
+          "sha256": "392fbb97d683d5d969aea20139a91104945232514b665708a65fb25694b5a665"
+        },
+        {
+          "path": "en/catalog.json",
+          "bytes": 605774,
+          "sha256": "bc28d4bee08e85ab3fde7c738fff9b63012643776e976865e62748246f2c69f8"
+        },
+        {
+          "path": "ru/catalog.json",
+          "bytes": 2605875,
+          "sha256": "a2cad62bf4f5c7579c06f2993c03d8833e47916d20833c7c2a9e89ac4a9f9ab1"
+        }
+      ],
+      "signatureVerified": true,
+      "activationAllowed": false,
+      "releaseReady": false
+    },
+    {
+      "version": 2,
+      "output": ".tmp/content-exports/s08-20260914-a2",
+      "manifestSha256": "6cf0a82a6bbefde153d5ee8e23b38b7d2533b681cb9cc348fd8697aebd7d088a",
+      "sourceInputs": 293,
+      "sourceInputsSha256": "486b073e7b2c6849cfe45f52097c62c6d9d2c6670d7ec163a0d41d0d763effba",
+      "files": [
+        {
+          "path": "dependency-index.json",
+          "bytes": 515,
+          "sha256": "ecab7922052cd0098689f5f93d694614568dae9950e5154b0b3c87e86f8a1854"
+        },
+        {
+          "path": "en/catalog.json",
+          "bytes": 605774,
+          "sha256": "bc28d4bee08e85ab3fde7c738fff9b63012643776e976865e62748246f2c69f8"
+        },
+        {
+          "path": "ru/catalog.json",
+          "bytes": 2605875,
+          "sha256": "a2cad62bf4f5c7579c06f2993c03d8833e47916d20833c7c2a9e89ac4a9f9ab1"
+        }
+      ],
+      "signatureVerified": true,
+      "activationAllowed": false,
+      "releaseReady": false
+    }
+  ],
+  "artifactEvidence": "docs/mobile/evidence/S08/content-export-20260914/artifact-inspection.json",
+  "limits": [
+    "Adult candidates only; general/child production export and compatible runtime atomic activation/rollback remain open.",
+    "English names and published-title candidates are not comprehensive immutable bilingual editorial approval; country/biography/description missing bindings remain held.",
+    "Dedicated local QA signatures do not confer production authority; actual npm package bytes are not a hermetic audit, while imported repository bytes and dependency locks are recorded.",
+    "Current Android/PWA UI artifacts remain source aac56087, builds8f32bb6c/e5ff862c; export-only modules have no runtime import."
+  ]
 }

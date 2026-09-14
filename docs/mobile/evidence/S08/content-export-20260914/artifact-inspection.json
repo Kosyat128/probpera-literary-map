@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-14T01:47:42.407Z",
+  "pass": true,
+  "versions": [
+    {
+      "attempt": "a1",
+      "sourceCommit": "89cf558d7be310503672420568b1c7a045bd8325",
+      "version": 1,
+      "output": ".tmp/content-exports/s08-20260914-a1",
+      "manifestSha256": "9c7c2f478397c424ee5cb79e1b38ba81a1206bea7604ae7a61e67d2499b88e11",
+      "candidateSha256": "6d8a802f1953d74f15c128ae6d5a962d44c7434dddda5f463157bfc274e809bf",
+      "units": 4701,
+      "heldUnits": 41479,
+      "breakdown": {
+        "ru:country:name": 200,
+        "ru:work:description": 46,
+        "ru:work:title": 46,
+        "ru:writer:biography": 1684,
+        "ru:writer:name": 1684,
+        "en:work:title": 46,
+        "en:writer:name": 995
+      },
+      "sourceInputs": 293,
+      "diskSignatureVerified": true,
+      "heldTextPackaged": false,
+      "staleUnitsPackaged": false,
+      "publicJwkHasPrivateKey": false,
+      "dependencyProof": "actual imported repository bytes plus dependency lock; not a hermetic npm binary audit",
+      "stageAccepted": false,
+      "releaseReady": false
+    },
+    {
+      "attempt": "a2",
+      "sourceCommit": "89cf558d7be310503672420568b1c7a045bd8325",
+      "version": 2,
+      "output": ".tmp/content-exports/s08-20260914-a2",
+      "manifestSha256": "6cf0a82a6bbefde153d5ee8e23b38b7d2533b681cb9cc348fd8697aebd7d088a",
+      "candidateSha256": "6d8a802f1953d74f15c128ae6d5a962d44c7434dddda5f463157bfc274e809bf",
+      "units": 4701,
+      "heldUnits": 41479,
+      "breakdown": {
+        "ru:country:name": 200,
+        "ru:work:description": 46,
+        "ru:work:title": 46,
+        "ru:writer:biography": 1684,
+        "ru:writer:name": 1684,
+        "en:work:title": 46,
+        "en:writer:name": 995
+      },
+      "sourceInputs": 293,
+      "diskSignatureVerified": true,
+      "heldTextPackaged": false,
+      "staleUnitsPackaged": false,
+      "publicJwkHasPrivateKey": false,
+      "dependencyProof": "actual imported repository bytes plus dependency lock; not a hermetic npm binary audit",
+      "stageAccepted": false,
+      "releaseReady": false
+    }
+  ],
+  "canonicalCandidateUnchanged": true,
+  "localePayloadBytesUnchanged": true,
+  "previousGenerationPreserved": true,
+  "unnecessaryInvalidations": 0,
+  "stageAccepted": false,
+  "releaseReady": false
+}

@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "status": "LOCAL_QA_SIGNED_CANDIDATE_VERIFIED",
+  "sourceCommit": "89cf558d7be310503672420568b1c7a045bd8325",
+  "output": ".tmp/content-exports/s08-20260914-a1",
+  "version": 1,
+  "locales": [
+    "ru",
+    "en"
+  ],
+  "units": 4701,
+  "heldUnits": 41479,
+  "heldReasons": {
+    "country-name-source-binding-unverified": 200,
+    "work-not-public": 38860,
+    "english-description-target-review-binding-missing": 46,
+    "biography-not-public": 1664,
+    "canonical-name-not-eligible": 689,
+    "english-source-review-binding-missing": 20
+  },
+  "unitsByLocale": {
+    "ru": 3660,
+    "en": 1041
+  },
+  "packageUnitsByLocale": {
+    "ru": 3660,
+    "en": 1041
+  },
+  "excludedStaleUnits": 0,
+  "sourceInputs": 293,
+  "sourceInputsSha256": "486b073e7b2c6849cfe45f52097c62c6d9d2c6670d7ec163a0d41d0d763effba",
+  "toolEntrySha256": "1d2db184b160a0d0a368b591d80d93b4043ac206568c1d34459abe17379ff39c",
+  "toolBundleSha256": "d4fd5da03d0bfbf816862135f3045df50793fde058ae2c54d534c9dab85e3315",
+  "previous": null,
+  "changedUnits": 0,
+  "staleUnits": 0,
+  "tombstones": 0,
+  "files": [
+    {
+      "path": "dependency-index.json",
+      "bytes": 980118,
+      "sha256": "392fbb97d683d5d969aea20139a91104945232514b665708a65fb25694b5a665"
+    },
+    {
+      "path": "en/catalog.json",
+      "bytes": 605774,
+      "sha256": "bc28d4bee08e85ab3fde7c738fff9b63012643776e976865e62748246f2c69f8"
+    },
+    {
+      "path": "ru/catalog.json",
+      "bytes": 2605875,
+      "sha256": "a2cad62bf4f5c7579c06f2993c03d8833e47916d20833c7c2a9e89ac4a9f9ab1"
+    }
+  ],
+  "manifestSha256": "9c7c2f478397c424ee5cb79e1b38ba81a1206bea7604ae7a61e67d2499b88e11",
+  "signatureVerified": true,
+  "privateKeyPersisted": false,
+  "canonicalFactsChanged": false,
+  "editorialApprovalCreated": false,
+  "activationAllowed": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

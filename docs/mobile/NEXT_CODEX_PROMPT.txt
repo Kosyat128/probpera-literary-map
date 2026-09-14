@@ -2,15 +2,17 @@ Continue V12 in literary-planet-v12-work on
 codex/literary-planet-v12-bilingual-final-autopilot.
 
 <!-- s08-content-export-20260914:begin -->
-S08 canonical candidate exporter, durable stale propagation and separate QA content
-signature contract implemented. 112 focused tests across4 files and static checks passed.
-Exact canonical IDs retained; no facts or approval created. Missing immutable
-review bindings produce held IDs/reasons; stale units stay outside package files.
-Previous generations require an independently retained manifest hash and exact
-file inventory. Private QA keys are memory-only; activation remains disabled.
-Next: one committed-source canonical export and actual artifact inspection.
+Source 89cf558d7be310503672420568b1c7a045bd8325: S08 canonical candidate export,
+durable correction holds and dedicated QA content signatures validated.
+112 focused tests/static passed. Two real exports passed actual disk signature,
+file and source checks; pinned continuation retains the original version.
+4701 candidate fields;41479 held fields. These are not book/approval counts.
+EN biographies/descriptions with missing review bindings stay outside packages.
+Latest: .tmp/content-exports/s08-20260914-a2 (version2, QA only).
 Evidence: evidence/S08/content-export-20260914/result.json. No stage acceptance.
-First-open S03; Android8f32bb6c/PWAe5ff862c remain the unchanged UI artifacts.
+Next: S09 existing book-to-writer return and English country-field eligibility.
+First-open S03. Child/runtime atomic update/rollback/full editorial gates remain.
+Android8f32bb6c/PWAe5ff862c still bind unchanged UI sourceaac56087.
 <!-- s08-content-export-20260914:end -->
 
 <!-- bilingual-foundations-20260914:begin -->

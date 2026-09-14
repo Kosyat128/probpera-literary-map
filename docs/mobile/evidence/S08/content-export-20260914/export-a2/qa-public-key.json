@@ -1,0 +1,11 @@
+{
+  "keyId": "content-qa-6ab95a96-a18a-440c-ad98-318a832f134e",
+  "purpose": "literary-planet-content-data",
+  "environment": "local-qa",
+  "jwk": {
+    "kty": "EC",
+    "x": "7ETuBKZV-DGpABjf_ZLV3E_cq_OhArRCwPP6SjgMkvA",
+    "y": "mvp22CUKcNDx612Xo_0_CUuaqkUILXzNNfs_bPwTe2c",
+    "crv": "P-256"
+  }
+}

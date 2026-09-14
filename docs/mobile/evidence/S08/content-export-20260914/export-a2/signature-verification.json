@@ -1,0 +1,9 @@
+{
+  "verified": true,
+  "activationAllowed": false,
+  "childModeEnabled": false,
+  "releaseReady": false,
+  "environment": "local-qa",
+  "manifestSha256": "b08c6b4f573f66dac0679bab42826cd0f300ed386ce7fbc9af25f7e2b1a1f86c",
+  "reason": null
+}

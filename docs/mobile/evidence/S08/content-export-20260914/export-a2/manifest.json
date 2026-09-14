@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "contract": "literary-planet-data-package-v1",
+  "purpose": "literary-planet-content-data",
+  "environment": "local-qa",
+  "releaseReady": false,
+  "packageId": "literary-planet-adult-candidate",
+  "version": 2,
+  "sourceCommit": "89cf558d7be310503672420568b1c7a045bd8325",
+  "locales": [
+    "ru",
+    "en"
+  ],
+  "namespace": "adult",
+  "childPolicy": null,
+  "compatibility": {
+    "catalogSchemaVersion": 1,
+    "minimumReaderVersion": 1,
+    "maximumReaderVersion": 1
+  },
+  "files": [
+    {
+      "path": "dependency-index.json",
+      "bytes": 515,
+      "sha256": "ecab7922052cd0098689f5f93d694614568dae9950e5154b0b3c87e86f8a1854"
+    },
+    {
+      "path": "en/catalog.json",
+      "bytes": 605774,
+      "sha256": "bc28d4bee08e85ab3fde7c738fff9b63012643776e976865e62748246f2c69f8"
+    },
+    {
+      "path": "ru/catalog.json",
+      "bytes": 2605875,
+      "sha256": "a2cad62bf4f5c7579c06f2993c03d8833e47916d20833c7c2a9e89ac4a9f9ab1"
+    }
+  ]
+}

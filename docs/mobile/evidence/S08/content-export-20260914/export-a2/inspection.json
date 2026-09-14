@@ -1,0 +1,79 @@
+{
+  "attempt": "a2",
+  "sourceCommit": "89cf558d7be310503672420568b1c7a045bd8325",
+  "version": 2,
+  "output": ".tmp/content-exports/s08-20260914-a2",
+  "manifestSha256": "6cf0a82a6bbefde153d5ee8e23b38b7d2533b681cb9cc348fd8697aebd7d088a",
+  "candidateSha256": "6d8a802f1953d74f15c128ae6d5a962d44c7434dddda5f463157bfc274e809bf",
+  "units": 4701,
+  "heldUnits": 41479,
+  "breakdown": {
+    "ru:country:name": 200,
+    "ru:work:description": 46,
+    "ru:work:title": 46,
+    "ru:writer:biography": 1684,
+    "ru:writer:name": 1684,
+    "en:work:title": 46,
+    "en:writer:name": 995
+  },
+  "sourceInputs": 293,
+  "actualPreservedFiles": [
+    {
+      "path": "candidate.json",
+      "bytes": 20663780,
+      "sha256": "6d8a802f1953d74f15c128ae6d5a962d44c7434dddda5f463157bfc274e809bf"
+    },
+    {
+      "path": "manifest.json",
+      "bytes": 982,
+      "sha256": "6cf0a82a6bbefde153d5ee8e23b38b7d2533b681cb9cc348fd8697aebd7d088a"
+    },
+    {
+      "path": "package/dependency-index.json",
+      "bytes": 515,
+      "sha256": "ecab7922052cd0098689f5f93d694614568dae9950e5154b0b3c87e86f8a1854"
+    },
+    {
+      "path": "package/en/catalog.json",
+      "bytes": 605774,
+      "sha256": "bc28d4bee08e85ab3fde7c738fff9b63012643776e976865e62748246f2c69f8"
+    },
+    {
+      "path": "package/ru/catalog.json",
+      "bytes": 2605875,
+      "sha256": "a2cad62bf4f5c7579c06f2993c03d8833e47916d20833c7c2a9e89ac4a9f9ab1"
+    },
+    {
+      "path": "qa-public-key.json",
+      "bytes": 303,
+      "sha256": "d5485a14380df22a73bb129679266bb4b888b7dd13e8705c0cd3fca1edb7d256"
+    },
+    {
+      "path": "result.json",
+      "bytes": 2109,
+      "sha256": "92e9171432a9fec804f37f837e4c5f2da0986a5ad2afcdf7e3a394d8ca12ee4b"
+    },
+    {
+      "path": "signature-verification.json",
+      "bytes": 242,
+      "sha256": "f621da3278451df52ed88cc8551d0e59cd50a189f825225ef0c770450ab20ce7"
+    },
+    {
+      "path": "signature.json",
+      "bytes": 1324,
+      "sha256": "27242bfe9bc29b55ddca70146e80a1b9d5ee4e5ea498bf94f823b66e58461a16"
+    },
+    {
+      "path": "source-inputs.json",
+      "bytes": 41962,
+      "sha256": "486b073e7b2c6849cfe45f52097c62c6d9d2c6670d7ec163a0d41d0d763effba"
+    }
+  ],
+  "diskSignatureVerified": true,
+  "heldTextPackaged": false,
+  "staleUnitsPackaged": false,
+  "publicJwkHasPrivateKey": false,
+  "dependencyProof": "actual imported repository bytes plus dependency lock; not a hermetic npm binary audit",
+  "stageAccepted": false,
+  "releaseReady": false
+}

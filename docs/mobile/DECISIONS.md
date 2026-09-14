@@ -552,3 +552,10 @@
   immutable review. English descriptions without target review remain held.
   Dedicated QA content keys are ephemeral, unrelated to purchase authority.
   Candidate signing is integrity evidence only, never editorial or release approval.
+
+- D105: Source89cf558 produced two real adult canonical data generations.
+  Independent disk verification rechecks files and public-key signatures;
+  manifest-pinned continuation retains the prior version and identical RUEN
+  payload bytes without artificial invalidations. Field counts are candidate
+  scope, not book counts, English review coverage or production acceptance.
+  Existing Android/PWA builds need no repeat for unused export-only tooling.

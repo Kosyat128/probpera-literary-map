@@ -1,0 +1,33 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/mobile/export-content.mjs",
+    "--output",
+    ".tmp/content-exports/s08-20260914-a2",
+    "--source-commit",
+    "89cf558d7be310503672420568b1c7a045bd8325",
+    "--qa-sign",
+    "--previous",
+    ".tmp/content-exports/s08-20260914-a1/candidate.json",
+    "--previous-manifest-sha256",
+    "9c7c2f478397c424ee5cb79e1b38ba81a1206bea7604ae7a61e67d2499b88e11",
+    "--version",
+    "2"
+  ],
+  "sourceCommit": "89cf558d7be310503672420568b1c7a045bd8325",
+  "startedAt": "2026-09-14T01:46:34.430Z",
+  "durationMs": 3023,
+  "exitCode": 0,
+  "logs": {
+    "stdout": {
+      "text": "{\n  \"schemaVersion\": 1,\n  \"status\": \"LOCAL_QA_SIGNED_CANDIDATE_VERIFIED\",\n  \"sourceCommit\": \"89cf558d7be310503672420568b1c7a045bd8325\",\n  \"output\": \".tmp/content-exports/s08-20260914-a2\",\n  \"version\": 2,\n  \"locales\": [\n    \"ru\",\n    \"en\"\n  ],\n  \"units\": 4701,\n  \"heldUnits\": 41479,\n  \"heldReasons\": {\n    \"country-name-source-binding-unverified\": 200,\n    \"work-not-public\": 38860,\n    \"english-description-target-review-binding-missing\": 46,\n    \"biography-not-public\": 1664,\n    \"canonical-name-not-eligible\": 689,\n    \"english-source-review-binding-missing\": 20\n  },\n  \"unitsByLocale\": {\n    \"ru\": 3660,\n    \"en\": 1041\n  },\n  \"packageUnitsByLocale\": {\n    \"ru\": 3660,\n    \"en\": 1041\n  },\n  \"excludedStaleUnits\": 0,\n  \"sourceInputs\": 293,\n  \"sourceInputsSha256\": \"486b073e7b2c6849cfe45f52097c62c6d9d2c6670d7ec163a0d41d0d763effba\",\n  \"toolEntrySha256\": \"1d2db184b160a0d0a368b591d80d93b4043ac206568c1d34459abe17379ff39c\",\n  \"toolBundleSha256\": \"d4fd5da03d0bfbf816862135f3045df50793fde058ae2c54d534c9dab85e3315\",\n  \"previous\": {\n    \"path\": \".tmp/content-exports/s08-20260914-a1/candidate.json\",\n    \"sha256\": \"6d8a802f1953d74f15c128ae6d5a962d44c7434dddda5f463157bfc274e809bf\",\n    \"manifestSha256\": \"9c7c2f478397c424ee5cb79e1b38ba81a1206bea7604ae7a61e67d2499b88e11\"\n  },\n  \"changedUnits\": 0,\n  \"staleUnits\": 0,\n  \"tombstones\": 0,\n  \"files\": [\n    {\n      \"path\": \"dependency-index.json\",\n      \"bytes\": 515,\n      \"sha256\": \"ecab7922052cd0098689f5f93d694614568dae9950e5154b0b3c87e86f8a1854\"\n    },\n    {\n      \"path\": \"en/catalog.json\",\n      \"bytes\": 605774,\n      \"sha256\": \"bc28d4bee08e85ab3fde7c738fff9b63012643776e976865e62748246f2c69f8\"\n    },\n    {\n      \"path\": \"ru/catalog.json\",\n      \"bytes\": 2605875,\n      \"sha256\": \"a2cad62bf4f5c7579c06f2993c03d8833e47916d20833c7c2a9e89ac4a9f9ab1\"\n    }\n  ],\n  \"manifestSha256\": \"6cf0a82a6bbefde153d5ee8e23b38b7d2533b681cb9cc348fd8697aebd7d088a\",\n  \"signatureVerified\": true,\n  \"privateKeyPersisted\": false,\n  \"canonicalFactsChanged\": false,\n  \"editorialApprovalCreated\": false,\n  \"activationAllowed\": false,\n  \"stageAccepted\": false,\n  \"releaseReady\": false\n}\n",
+      "bytes": 2109,
+      "sha256": "92e9171432a9fec804f37f837e4c5f2da0986a5ad2afcdf7e3a394d8ca12ee4b"
+    },
+    "stderr": {
+      "text": "",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

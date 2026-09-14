@@ -5,7 +5,7 @@
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
   "headSha": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-14T01:44:03.920Z",
+  "updatedAt": "2026-09-14T01:49:19.363Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -1388,7 +1388,8 @@
       ],
       "lastGreenCommands": [
         "112 focused passing tests across4 new files.",
-        "TypeScript and platform boundaries passed; new CLI syntax checked."
+        "TypeScript and platform boundaries passed; new CLI syntax checked.",
+        "Two real canonical exports: actual disk signature/files/source inputs passed; exact pinned continuation preserves prior version and unchanged locale bytes."
       ],
       "artifacts": [
         "docs/mobile/evidence/S08/content-export-20260914/entry.json",
@@ -10610,7 +10611,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Commit tested source; export one exact-source canonical adult candidate with ephemeral QA signing, preserve its manifest hash and inspect counts/held evidence. Validate the continuation path without repeating unchanged UI builds. First-open S03 unchanged; S08 remains partial.",
+    "nextAction": "S09: fix existing book-to-writer navigation in the retained scene and remove unreviewed Russian capital fallback from English country details. Keep S08 runtime/child/complete review gates open; do not rebuild unchanged UI until an actual runtime change is tested. First-open S03 remains.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -11878,10 +11879,25 @@
       "releaseReady": false
     },
     "s08ContentExport": {
-      "status": "SOURCE_VALIDATION_PASSED",
+      "status": "LOCAL_SOURCE_AND_DATA_ARTIFACT_VALIDATION_PASSED",
+      "sourceCommit": "89cf558d7be310503672420568b1c7a045bd8325",
       "evidence": "docs/mobile/evidence/S08/content-export-20260914/result.json",
-      "sha256": "abe09020b411324e5494f4d22ec706637ac2f180ee649dc5d5f309dc3c3afddf",
+      "sha256": "a6bf3b966541448a24fb01b98369f234536794c98eb882bf1eed4fa537e3a524",
       "passingCases": 112,
+      "canonicalUnits": 4701,
+      "heldUnits": 41479,
+      "versions": [
+        {
+          "version": 1,
+          "output": ".tmp/content-exports/s08-20260914-a1",
+          "manifestSha256": "9c7c2f478397c424ee5cb79e1b38ba81a1206bea7604ae7a61e67d2499b88e11"
+        },
+        {
+          "version": 2,
+          "output": ".tmp/content-exports/s08-20260914-a2",
+          "manifestSha256": "6cf0a82a6bbefde153d5ee8e23b38b7d2533b681cb9cc348fd8697aebd7d088a"
+        }
+      ],
       "stageAccepted": false,
       "releaseReady": false
     }
