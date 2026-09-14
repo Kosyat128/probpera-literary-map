@@ -1,11 +1,12 @@
 import { readFileSync } from "node:fs";
+import { projectReviewedCmsSourcePunctuation } from "./reviewed-cms-source-punctuation.mjs";
 
 export const nativeArchiveReadAttestation = JSON.parse(readFileSync(
   new URL("../governance/library-native-read-reviewed-20260914.json", import.meta.url), "utf8"
 ));
 
 // Reverse only the exact native read transport and historical read adapters.
-export function projectReviewedNativeArchiveRead(relativePath, source) {
+export function projectPublishedNativeArchiveRead(relativePath, source) {
   let projected = source.replace(/\r\n?/gu, "\n");
   for (const delta of nativeArchiveReadAttestation.projections) {
     if (delta.path !== relativePath) continue;
@@ -15,4 +16,10 @@ export function projectReviewedNativeArchiveRead(relativePath, source) {
     projected = projected.replace(delta.after, delta.before);
   }
   return projected;
+}
+
+export function projectReviewedNativeArchiveRead(relativePath, source) {
+  return projectPublishedNativeArchiveRead(
+    relativePath, projectReviewedCmsSourcePunctuation(relativePath, source)
+  );
 }

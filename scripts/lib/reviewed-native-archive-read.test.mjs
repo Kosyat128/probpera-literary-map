@@ -1,10 +1,11 @@
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { nativeArchiveReadAttestation, projectReviewedNativeArchiveRead } from "./reviewed-native-archive-read.mjs";
+import { nativeArchiveReadAttestation, projectPublishedNativeArchiveRead as projectReviewedNativeArchiveRead } from "./reviewed-native-archive-read.mjs";
+import { projectReviewedCmsSourcePunctuation } from "./reviewed-cms-source-punctuation.mjs";
 import { draftStorageAttestation, projectPublishedDraftStorage, projectReviewedDraftStorage } from "./reviewed-draft-storage.mjs";
 
-const read = path => readFileSync(path, "utf8").replace(/\r\n?/gu, "\n");
+const read = path => projectReviewedCmsSourcePunctuation(path, readFileSync(path, "utf8"));
 const sha = text => createHash("sha256").update(text).digest("hex");
 const paths = [
   ".github/workflows/reconcile-production-database.yml",
