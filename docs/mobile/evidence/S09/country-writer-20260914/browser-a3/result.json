@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "runId": "s09-country-writer-20260914-a3",
+  "title": "native book author navigation closes the reader and reveals the canonical writer across RU and EN on the retained globe",
+  "head": "e18ed5a11d1dce988e2837d6897f6629a0223c7d",
+  "status": "SOURCE_BROWSER_PASSED",
+  "pass": true,
+  "sourceInputsSha256": "1a9117ab8c51a38a58d3d1cfcc2bc4a657de00d79abdbf4e54a0915e28f3aed8",
+  "sourceInputsUnchanged": true,
+  "statistics": {
+    "startTime": "2026-09-14T02:18:55.759Z",
+    "duration": 11144.604000000001,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "exitCode": 0,
+  "cases": [
+    {
+      "title": "native book author navigation closes the reader and reveals the canonical writer across RU and EN on the retained globe",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 8564,
+          "errors": []
+        }
+      ]
+    }
+  ],
+  "preserved": [
+    {
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/browser-a3/playwright.json",
+      "bytes": 323727,
+      "sha256": "5d45088bf76da528314a2c71970c26be44b7e3645ec5e783db113e7a92790d2f"
+    },
+    {
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/browser-a3/native-book-author-return-ru.json",
+      "bytes": 28854,
+      "sha256": "1b9dbba1eb3bf857faa2c7bf8085f2bf44147725edd527ffa1eff7326f8af353"
+    },
+    {
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/browser-a3/native-book-author-return-ru-screenshot.png",
+      "bytes": 326911,
+      "sha256": "697aea4b5f7bfbc230e31351b397a7f8a02064b4ef1109ecd5bd15d05a9a5685"
+    },
+    {
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/browser-a3/native-book-author-return-en.json",
+      "bytes": 36002,
+      "sha256": "bd207fb765c891819ce5d7116abedfa93e5bc401d52bccdd3ac94b47e37af291"
+    },
+    {
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/browser-a3/native-book-author-return-en-screenshot.png",
+      "bytes": 325261,
+      "sha256": "7ec1aa3bbf7609d044a0d0fb0d038aa36df31d081ef5750a6e3cf06f82de369a"
+    },
+    {
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/browser-a3/native-book-author-return-zambia-en-initial.json",
+      "bytes": 40482,
+      "sha256": "c42abc0ab4dac318ec8d0a2c67f6a72fd3d92a7f147bce75ab3c4b3c72a629c5"
+    },
+    {
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/browser-a3/native-book-author-return-zambia-en-initial-screenshot.png",
+      "bytes": 283822,
+      "sha256": "049864fd6d995142541d63cd33edb6fdd82051239a15f1f945e634fe8c9895ce"
+    },
+    {
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/browser-a3/native-book-author-return-zambia-ru-switched.json",
+      "bytes": 46962,
+      "sha256": "fa5caddc7512aa28ae3b53129371d29f02c22d31613dea4b4bb06d5406835c6d"
+    },
+    {
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/browser-a3/native-book-author-return-zambia-ru-switched-screenshot.png",
+      "bytes": 288697,
+      "sha256": "50925b40eab15db8904a8b8e7e0e16fbad14cc66b16f55e2d87aa0ef9078f146"
+    },
+    {
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/browser-a3/native-book-author-return-zambia-en-restored.json",
+      "bytes": 42300,
+      "sha256": "50244f40c1e8cadffb48e3ad68c2c14f38770db0f6ed8b5cc3f066957b7d08c2"
+    },
+    {
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/browser-a3/native-book-author-return-zambia-en-restored-screenshot.png",
+      "bytes": 283568,
+      "sha256": "3e9df4cd94956d8deea49ca5853a53430f8cf7392976f0a089f902bd15a36999"
+    },
+    {
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/browser-a3/native-final-passed.json",
+      "bytes": 42119,
+      "sha256": "6d9f9599b87abcd463fd182229c6073e3b014db0f29a3050ea74e330b6299efe"
+    },
+    {
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/browser-a3/native-final-passed-screenshot.png",
+      "bytes": 283568,
+      "sha256": "3e9df4cd94956d8deea49ca5853a53430f8cf7392976f0a089f902bd15a36999"
+    }
+  ],
+  "fixtureUsesCanonicalAppAndScene": true,
+  "actualInstalledRuntime": false,
+  "nativePluginsSimulated": true,
+  "stageAccepted": false,
+  "releaseReady": false
+}

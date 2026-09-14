@@ -179,6 +179,8 @@ type WriterFocusRequest = {
   token: number;
 };
 
+type BookWriterTarget = Pick<WriterFocusRequest, "countryId" | "writerId">;
+
 type PendingWriterWork = {
   countryId: string;
   writerId: string;
@@ -582,6 +584,14 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
   });
   const nativeGlobeRootRef = useRef<HTMLElement>(null);
   const nativeReturnRequestedRef = useRef(false);
+  const [nativeBookWriterTarget, setNativeBookWriterTarget] = useState<BookWriterTarget | null>(null);
+  const nativeBookWriterTargetRef = useRef<BookWriterTarget | null>(null);
+  const clearNativeBookWriterTarget = useCallback(() => {
+    if (!nativeBookWriterTargetRef.current) return;
+    nativeBookWriterTargetRef.current = null;
+    setNativeBookWriterTarget(null);
+    nativeReturnRequestedRef.current = false;
+  }, []);
   const closeNativeCollection = useCallback(() => {
     nativeReturnRequestedRef.current = false;
     setNativeCollectionOpen(false);
@@ -609,6 +619,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
   }, [recordRecent, selectedCountry?.id, selectedWriter?.id]);
   const [writerFocusRequest, setWriterFocusRequest] =
     useState<WriterFocusRequest | null>(null);
+  const writerFocusRequestSequenceRef = useRef(0);
   const [countryArchive, setCountryArchive] = useState<Country[]>([]);
   const [bookArchiveCountries, setBookArchiveCountries] = useState<Country[]>(
     []
@@ -680,8 +691,9 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     if (nativeReturnRequestedRef.current) closeNativeCollection();
   }, [closeNativeCollection]);
   const cancelNativeNavigation = useCallback(() => {
+    clearNativeBookWriterTarget();
     nativeNavigationControllerRef.current?.cancelPending();
-  }, []);
+  }, [clearNativeBookWriterTarget]);
   const globeFocusRequestIdRef = useRef(0);
   const atlasUrlInitializedRef = useRef(false);
   const sectionsMenuCloseTimer = useRef<number | null>(null);
@@ -1632,11 +1644,14 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
         // A focus token must not be consumed inside its collapsed, inert content.
         atlasExperienceDispatch({ type: "SET_SHEET_STATE", sheetState: "half" });
       }
-      setWriterFocusRequest((current) => ({
+      // Clearing a pending request during history restoration must not reuse a
+      // token already handled by the retained WriterPanel.
+      writerFocusRequestSequenceRef.current += 1;
+      setWriterFocusRequest({
         countryId: country.id,
         writerId: writer.id,
-        token: (current?.token || 0) + 1,
-      }));
+        token: writerFocusRequestSequenceRef.current,
+      });
     },
     [atlasExperience.compactSheet, atlasExperienceDispatch, isPlanetApplication, selectCountry]
   );
@@ -1650,10 +1665,30 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
         (item) => item.id === book.writerId
       );
       if (!country || !writer) return;
+      if (isPlanetApplication && focusAtlas) {
+        cancelNativeNavigation();
+        const target = { countryId: country.id, writerId: writer.id };
+        nativeBookWriterTargetRef.current = target;
+        setNativeBookWriterTarget(target);
+        requestReturnToPlanet();
+        return;
+      }
       selectCountry(country, focusAtlas, writer);
     },
-    [countryArchive, selectCountry]
+    [cancelNativeNavigation, countryArchive, isPlanetApplication, requestReturnToPlanet, selectCountry]
   );
+
+  useEffect(() => {
+    if (nativeCollectionOpen || !nativeBookWriterTarget ||
+      nativeBookWriterTargetRef.current !== nativeBookWriterTarget) return;
+    // The reader closes through its existing animation and history restoration.
+    // Select only after that boundary releases the globe; history.back() must
+    // not overwrite the explicit author destination or consume its focus early.
+    const country = countryArchive.find(item => item.id === nativeBookWriterTarget.countryId);
+    const writer = country?.writers.find(item => item.id === nativeBookWriterTarget.writerId);
+    clearNativeBookWriterTarget();
+    if (country && writer) selectWriterAndFocus(country, writer, "all");
+  }, [clearNativeBookWriterTarget, countryArchive, nativeBookWriterTarget, nativeCollectionOpen, selectWriterAndFocus]);
 
   const selectAtlasSearchResult = useCallback(
     (result: AtlasSearchResult) => {
@@ -1940,6 +1975,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
       window.history[next.localeOnly ? "replaceState" : "pushState"](state, "", next.relative);
     }
     if (isPlanetApplication && !next.localeOnly) {
+      clearNativeBookWriterTarget();
       setPlanetWelcomeSuppressed(true);
       nativeReturnRequestedRef.current = false;
       setNativeCollectionOpen(Boolean(intent.bookKey || intent.shelfId || intent.section === "books"));

@@ -437,6 +437,20 @@ export type CountryTimelineItem =
       description?: string;
     };
 
+/** Explicit acceptance of one exact country capital source/target pair.
+ * Historical machine-generation sourceHash is a separate provenance format. */
+export type CountryCapitalEditorialReviewProfile = {
+  schemaVersion: 1;
+  hashContract: "country-capital-review-v1";
+  decision: "approved" | "rejected" | "withdrawn";
+  reviewerType: "human";
+  reviewer: string;
+  reviewedAt: string;
+  evidenceRef: string;
+  sourceHash: string;
+  targetHash: string;
+};
+
 export type CountryEnglishTranslationProfile = {
   locale: "en";
   status: "reviewed" | "verified";
@@ -445,6 +459,7 @@ export type CountryEnglishTranslationProfile = {
   generatedAt?: string;
   model?: string;
   reviewerModel?: string | null;
+  capitalEditorialReview?: CountryCapitalEditorialReviewProfile;
   fields: {
     name?: string;
     region?: string;

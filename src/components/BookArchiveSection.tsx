@@ -979,6 +979,7 @@ export default function BookArchiveSection({
   );
   const closeBookDetail = useCallback(() => {
     if (
+      skipNextBookPopstateRef.current ||
       pendingBookCloseRef.current ||
       shelfState.phase === "INSPECTION_CLOSING" ||
       shelfState.phase === "SHELF_RESTORING"
@@ -1024,6 +1025,8 @@ export default function BookArchiveSection({
   ]);
   useEffect(() => registerNativeBack?.(() => {
     if (!nativePanelActive) return false;
+    // A cleared detail still owns Back until its history restoration completes.
+    if (skipNextBookPopstateRef.current) return true;
     if (advancedFiltersOpen) {
       closeAdvancedFilters();
       return true;

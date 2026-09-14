@@ -1,0 +1,25 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=playwright.native-planet.config.mjs",
+    "--grep",
+    "native book author navigation closes the reader and reveals the canonical writer across RU and EN on the retained globe"
+  ],
+  "startedAt": "2026-09-14T02:15:21.316Z",
+  "durationMs": 26002,
+  "exitCode": 1,
+  "logs": {
+    "stdout": {
+      "text": "\nRunning 1 test using 1 worker\n\n  x  1 tests\\host\\native-planet.spec.mjs:1621:1 › native book author navigation closes the reader and reveals the canonical writer across RU and EN on the retained globe (22.6s)\n\n\n  1) tests\\host\\native-planet.spec.mjs:1621:1 › native book author navigation closes the reader and reveals the canonical writer across RU and EN on the retained globe \n\n    Error: expect(locator).toBeInViewport() failed\n\n    Locator:  locator('.writer-detail').locator('h4')\n    Expected: in viewport\n    Received: viewport ratio 0\n    Timeout:  15000ms\n\n    Call log:\n      - Expect \"toBeInViewport\" with timeout 15000ms\n      - waiting for locator('.writer-detail').locator('h4')\n        33 × locator resolved to <h4 data-cms-kind=\"text\" data-cms-copy-key=\"\" data-cms-field=\"name\" data-cms-entity=\"writer\" data-cms-label=\"Имя писателя\" id=\"writer-biography-russia-heading\" data-cms-entity-id=\"russia:dostoevsky\" data-cms-key=\"writer.russia:dostoevsky.name\" data-cms-value=\"Фёдор Михайлович Достоевский\" data-cms-source-text=\"Фёдор Михайлович Достоевский\" data-cms-admin-href=\"/library?country_id=russia&writer_id=dostoevsky\">Fyodor Dostoevsky</h4>\n           - unexpected value \"viewport ratio 0\"\n\n\n      1704 |       // No sheet expansion or focus repair in the test: the navigation owns both.\n      1705 |       await expect(writer.locator(\"h4\")).toContainText(locale === \"ru\" ? /Достоевск/iu : /Dostoevsky/iu);\n    > 1706 |       await expect(writer.locator(\"h4\")).toBeInViewport();\n           |                                          ^\n      1707 |       await expect.poll(() => writer.evaluate(element => element.contains(document.activeElement))).toBe(true);\n      1708 |       await expect(page.locator(\".country-heading p\")).toHaveText(locale === \"ru\"\n      1709 |         ? \"Литературное наследие страны\" : \"The country’s literary heritage\");\n        at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs:1706:42\n\n    attachment #2: native-book-author-return-ru-screenshot (image/png) ─────────────────────────────\n    .tmp\\native-planet-browser-results\\s09-country-writer-20260914-a2\\artifacts\\native-planet-native-book--421f0-nd-EN-on-the-retained-globe\\attachments\\native-book-author-return-ru-screenshot-095806630ab938609ec4d940e50732cd83df0305.png\n    ────────────────────────────────────────────────────────────────────────────────────────────────\n\n    attachment #4: native-final-failed-screenshot (image/png) ──────────────────────────────────────\n    .tmp\\native-planet-browser-results\\s09-country-writer-20260914-a2\\artifacts\\native-planet-native-book--421f0-nd-EN-on-the-retained-globe\\attachments\\native-final-failed-screenshot-b83f4db37e880859f5dacef86c2f0967c2a6e229.png\n    ────────────────────────────────────────────────────────────────────────────────────────────────\n\n    Error Context: .tmp\\native-planet-browser-results\\s09-country-writer-20260914-a2\\artifacts\\native-planet-native-book--421f0-nd-EN-on-the-retained-globe\\error-context.md\n\n    Error Context: .tmp\\native-planet-browser-results\\s09-country-writer-20260914-a2\\artifacts\\native-planet-native-book--421f0-nd-EN-on-the-retained-globe\\error-context.md\n\n  1 failed\n    tests\\host\\native-planet.spec.mjs:1621:1 › native book author navigation closes the reader and reveals the canonical writer across RU and EN on the retained globe \n",
+      "bytes": 4034,
+      "sha256": "726b7af57033b9a001611a6e918c71dcebcf6751926a03f91a8fac4565c3df10"
+    },
+    "stderr": {
+      "text": "(node:5036) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "bytes": 163,
+      "sha256": "acb6900fc4d1764eee2e295579c472b9aacc43dedfb147121aa54a4d0d14d031"
+    }
+  }
+}

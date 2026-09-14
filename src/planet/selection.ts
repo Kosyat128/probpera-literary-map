@@ -3,6 +3,7 @@ export {
   countryForLanguage,
   countryWithActiveLanguage,
   selectCountryEnglishTranslation,
+  selectCountryCapital,
 } from "../data/countryLocalization";
 export {
   selectBookAuthorByline,

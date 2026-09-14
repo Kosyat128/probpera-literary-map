@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "runId": "s09-country-writer-20260914-a2",
+  "title": "native book author navigation closes the reader and reveals the canonical writer across RU and EN on the retained globe",
+  "head": "e18ed5a11d1dce988e2837d6897f6629a0223c7d",
+  "status": "SOURCE_BROWSER_FAILED",
+  "pass": false,
+  "sourceInputsSha256": "ee2aa2fcb112e919a3054cc0d5898b58eb1f86efb6515409b93d926d5810bf7a",
+  "sourceInputsUnchanged": true,
+  "statistics": {
+    "startTime": "2026-09-14T02:15:21.862Z",
+    "duration": 25339.269,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "exitCode": 1,
+  "cases": [
+    {
+      "title": "native book author navigation closes the reader and reveals the canonical writer across RU and EN on the retained globe",
+      "results": [
+        {
+          "status": "failed",
+          "duration": 22632,
+          "errors": [
+            {
+              "location": {
+                "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs",
+                "column": 42,
+                "line": 1706
+              },
+              "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeInViewport\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.writer-detail').locator('h4')\nExpected: in viewport\nReceived: viewport ratio 0\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeInViewport\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.writer-detail').locator('h4')\u001b[22m\n\u001b[2m    33 × locator resolved to <h4 data-cms-kind=\"text\" data-cms-copy-key=\"\" data-cms-field=\"name\" data-cms-entity=\"writer\" data-cms-label=\"Имя писателя\" id=\"writer-biography-russia-heading\" data-cms-entity-id=\"russia:dostoevsky\" data-cms-key=\"writer.russia:dostoevsky.name\" data-cms-value=\"Фёдор Михайлович Достоевский\" data-cms-source-text=\"Фёдор Михайлович Достоевский\" data-cms-admin-href=\"/library?country_id=russia&writer_id=dostoevsky\">Fyodor Dostoevsky</h4>\u001b[22m\n\u001b[2m       - unexpected value \"viewport ratio 0\"\u001b[22m\n\n\n  1704 |       // No sheet expansion or focus repair in the test: the navigation owns both.\n  1705 |       await expect(writer.locator(\"h4\")).toContainText(locale === \"ru\" ? /Достоевск/iu : /Dostoevsky/iu);\n> 1706 |       await expect(writer.locator(\"h4\")).toBeInViewport();\n       |                                          ^\n  1707 |       await expect.poll(() => writer.evaluate(element => element.contains(document.activeElement))).toBe(true);\n  1708 |       await expect(page.locator(\".country-heading p\")).toHaveText(locale === \"ru\"\n  1709 |         ? \"Литературное наследие страны\" : \"The country’s literary heritage\");\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs:1706:42"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "preserved": [
+    {
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/browser-a2/playwright.json",
+      "bytes": 95287,
+      "sha256": "8a39eaad00c5291a215b5ab9bde369be0c3356f137b05b8df39d56034060cbe2"
+    },
+    {
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/browser-a2/native-book-author-return-ru.json",
+      "bytes": 28869,
+      "sha256": "fe312b69d5822895f6f1f8a013e54c4a759f6309f471db836fd897587d32d772"
+    },
+    {
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/browser-a2/native-book-author-return-ru-screenshot.png",
+      "bytes": 326911,
+      "sha256": "697aea4b5f7bfbc230e31351b397a7f8a02064b4ef1109ecd5bd15d05a9a5685"
+    },
+    {
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/browser-a2/native-final-failed.json",
+      "bytes": 33693,
+      "sha256": "e585e5f510508cc157a69f1d0c1048cf0b1ab1b655eaf533e31f55934573b037"
+    },
+    {
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/browser-a2/native-final-failed-screenshot.png",
+      "bytes": 314339,
+      "sha256": "f3ebcd7b3c0c0fbfba23f9cb7901b22d076bedf5d0587b23ff28a1fc2d901f48"
+    }
+  ],
+  "fixtureUsesCanonicalAppAndScene": true,
+  "actualInstalledRuntime": false,
+  "nativePluginsSimulated": true,
+  "stageAccepted": false,
+  "releaseReady": false
+}

@@ -559,3 +559,24 @@
   payload bytes without artificial invalidations. Field counts are candidate
   scope, not book counts, English review coverage or production acceptance.
   Existing Android/PWA builds need no repeat for unused export-only tooling.
+
+- D106: S09 existing country/writer/work screens proceed under matrix69
+  parallel-safe entry. Restore the reader-to-author path on the same globe and
+  withhold unreviewed Russian country-field fallback from English details.
+  These UI corrections create no new factual translations or editorial approval.
+
+- D107: Owner is actively populating the work archive and requests final archive
+  synchronization after application implementation is complete. Continue runtime,
+  platform, navigation, mode and canonical-ingestion work now. Do not populate or
+  rewrite the owner's factual catalog in this app checkout. Final preparation
+  must ingest the then-current canonical archives, preserve entity IDs and user
+  state, and revalidate RUEN/search/offline/covers and exact build evidence.
+  Current candidate counts are development snapshots, not a fixed release scope.
+
+- D108: Book-to-writer selection follows the actual reader/history close
+  boundary; repeated Back cannot consume it early. Capital review binds exact
+  country/source/target values and survives existing export transport without
+  promotion of generation provenance into approval. Canonical Russia lacks a
+  capital field; tests preserve that fallback and use actual Zambia source
+  for the RUEN field check. The raw export has 46 candidate works; browser
+  visibility is separate. Owner final archives determine release scope.

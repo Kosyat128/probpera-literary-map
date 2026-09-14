@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-14T02:23:57.564Z",
+  "scope": "Native adapter with actual App and globe in desktop Chrome; not an installed Android/iOS device or release candidate.",
+  "pass": true,
+  "images": [
+    {
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/browser-a3/native-book-author-return-ru-screenshot.png",
+      "sha256": "697aea4b5f7bfbc230e31351b397a7f8a02064b4ef1109ecd5bd15d05a9a5685",
+      "bytes": 326911,
+      "viewedAtOriginalResolution": true
+    },
+    {
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/browser-a3/native-book-author-return-en-screenshot.png",
+      "sha256": "7ec1aa3bbf7609d044a0d0fb0d038aa36df31d081ef5750a6e3cf06f82de369a",
+      "bytes": 325261,
+      "viewedAtOriginalResolution": true
+    },
+    {
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/browser-a3/native-book-author-return-zambia-ru-switched-screenshot.png",
+      "sha256": "50925b40eab15db8904a8b8e7e0e16fbad14cc66b16f55e2d87aa0ef9078f146",
+      "bytes": 288697,
+      "viewedAtOriginalResolution": true
+    },
+    {
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/browser-a3/native-book-author-return-zambia-en-restored-screenshot.png",
+      "sha256": "3e9df4cd94956d8deea49ca5853a53430f8cf7392976f0a089f902bd15a36999",
+      "bytes": 283568,
+      "viewedAtOriginalResolution": true
+    }
+  ],
+  "observations": [
+    "RU and EN return reveal the canonical Dostoevsky writer heading within the mobile country sheet, with the retained globe and language controls visible.",
+    "Zambia displays the actual Russian capital field and the existing English heritage fallback when exact editorial approval is absent.",
+    "No reader overlay obscures the writer after return."
+  ],
+  "limitations": [
+    "Country prose and catalog publication coverage remain subject to existing content review gates.",
+    "This visual review covers the changed navigation and country-capital behavior, not acceptance of the full design or final archive."
+  ],
+  "stageAccepted": false,
+  "releaseReady": false
+}

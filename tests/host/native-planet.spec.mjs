@@ -1618,6 +1618,140 @@ test("opening and closing a canonical work returns to the same native globe", as
   } finally { await original.dispose(); }
 });
 
+test("native book author navigation closes the reader and reveals the canonical writer across RU and EN on the retained globe", async ({}, testInfo) => {
+  const fixture = await open({ route: "/?country=france#atlas", viewport: { width: 390, height: 844 },
+    reducedMotion: "reduce", hasTouch: true, isMobile: true });
+  const { page } = fixture;
+  const scene = await captureScene(page);
+  const key = "russia:dostoevsky:crime-and-punishment";
+  const panel = page.locator(".native-planet-panel");
+  const detail = panel.locator("#book-archive-detail");
+  const writer = page.locator(".writer-detail");
+  const observations = [];
+  try {
+    for (const locale of ["ru", "en"]) {
+      if (locale === "en") {
+        const pose = await settledCameraPose(scene);
+        const before = new URL(page.url());
+        await page.locator(".atlas-immersive-chrome .interface-language-control button").filter({ hasText: "EN" }).click();
+        await expect(page.locator("html")).toHaveAttribute("lang", "en");
+        await retained(page, scene);
+        expect(await cameraPose(scene)).toEqual(pose);
+        for (const field of ["country", "writer", "book"]) expect(new URL(page.url()).searchParams.get(field)).toBe(before.searchParams.get(field));
+      }
+      // Dostoevsky is outside this filter. The explicit author destination must
+      // reveal him, while opening a search result still retains the active filter.
+      await page.locator('[data-atlas-action="toggle-filters"]').click();
+      await page.locator('[data-atlas-filter="nobel"]').click();
+      await expect(page.locator('[data-atlas-filter="nobel"]')).toHaveAttribute("aria-pressed", "true");
+      await page.locator('[data-atlas-action="toggle-search"]').click();
+      const title = locale === "ru" ? "Преступление и наказание" : "Crime and Punishment";
+      await page.locator("#country-search").fill(title);
+      const option = page.locator('#country-results [data-option-key="book:' + key + '"]');
+      await expect(option).toHaveAccessibleName(title);
+      await option.click();
+      await expect(panel).toBeVisible();
+      await expect(detail).toBeVisible();
+      await expect(detail).toHaveAccessibleName(title);
+      await expect.poll(() => new URL(page.url()).searchParams.get("book")).toBe(key);
+      await expect(page.locator('[data-atlas-filter="nobel"]')).toHaveAttribute("aria-pressed", "true");
+      await retained(page, scene);
+
+      const author = detail.locator('[data-book-navigation-origin="book-author"]');
+      await expect(author).toHaveAccessibleName(locale === "ru" ? "Открыть автора и страну →" : "Open writer and country →");
+      if (locale === "en") {
+        // Hold the browser history boundary, not application state. Release the
+        // original back operation explicitly after another real native Back.
+        await page.evaluate(() => {
+          const original = history.back;
+          const descriptor = Object.getOwnPropertyDescriptor(history, "back");
+          const restore = () => {
+            if (descriptor) Object.defineProperty(history, "back", descriptor);
+            else delete history.back;
+          };
+          const gate = { calls: 0, restore, release: () => {
+            restore();
+            return new Promise(resolve => {
+              window.addEventListener("popstate", () => resolve(), { once: true });
+              original.call(history);
+            });
+          } };
+          Object.defineProperty(history, "back", { configurable: true, value: () => { gate.calls += 1; } });
+          window.__nativeBookAuthorBackGate = gate;
+        });
+      }
+      await author.click();
+      await expect(detail).toBeHidden();
+      if (locale === "en") {
+        await expect.poll(() => page.evaluate(() => window.__nativeBookAuthorBackGate.calls)).toBe(1);
+        await page.evaluate(async () => {
+          window.__nativePlanetHarness.back();
+          // Observe committed frames after the Back event without a timed sleep.
+          await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+        });
+        await expect(panel).toBeVisible();
+        await expect(detail).toBeHidden();
+        expect(new URL(page.url()).searchParams.get("book")).toBe(key);
+        expect(await page.evaluate(() => window.__nativeBookAuthorBackGate.calls)).toBe(1);
+        await page.evaluate(() => window.__nativeBookAuthorBackGate.release());
+      }
+      await expect(panel).toBeHidden();
+      await expect.poll(() => new URL(page.url()).searchParams.get("book")).toBeNull();
+      await expect.poll(() => new URL(page.url()).searchParams.get("country")).toBe("russia");
+      await expect.poll(() => new URL(page.url()).searchParams.get("writer")).toBe("dostoevsky");
+      await expect(page.locator('[data-atlas-filter="all"]')).toHaveAttribute("aria-pressed", "true");
+      await expect(page.locator(".atlas-country-presentation")).toHaveAttribute("data-atlas-sheet-state", "half");
+      // No sheet expansion or focus repair in the test: the navigation owns both.
+      await expect(writer.locator("h4")).toContainText(locale === "ru" ? /Достоевск/iu : /Dostoevsky/iu);
+      await expect(writer.locator("h4")).toBeInViewport();
+      await expect.poll(() => writer.evaluate(element => element.contains(document.activeElement))).toBe(true);
+      await expect(page.locator(".country-heading p")).toHaveText(locale === "ru"
+        ? "Литературное наследие страны" : "The country’s literary heritage");
+      await expect(page.locator('[data-atlas-experience]')).toHaveAttribute("data-atlas-view", "immersive");
+      await retained(page, scene);
+      observations.push({ locale, canonicalBookKey: key, countryId: "russia", writerId: "dostoevsky",
+        bookUrlCleared: true, readerAndCollectionClosed: true, restrictiveFilterCleared: true,
+        repeatedNativeBackDuringControlledHistoryRestore: locale === "en",
+        writerRevealedAndFocusedWithoutManualExpansion: true });
+      await evidence(fixture, testInfo, "native-book-author-return-" + locale, { ...observations.at(-1),
+        sameCanvasRendererCameraScene: true, actualCanonicalCatalog: true, nativeDeviceObserved: false });
+      await expect.poll(() => writer.evaluate(element => element.contains(document.activeElement))).toBe(true);
+    }
+    // The actual Russian catalogue gives Zambia a capital, unlike Russia.
+    // Select it through the existing country search, then test both locales.
+    await page.locator('[data-atlas-action="toggle-search"]').click();
+    await page.locator("#country-search").fill("Zambia");
+    await page.locator('#country-results [data-option-key="country:zambia"]').click();
+    await expect.poll(() => new URL(page.url()).searchParams.get("country")).toBe("zambia");
+    const sheetToggle = page.locator(".atlas-country-sheet-toggle");
+    if (await sheetToggle.getAttribute("aria-expanded") === "false") await sheetToggle.click();
+    await expect(page.locator(".country-heading p")).toBeVisible();
+    const countryPose = await settledCameraPose(scene);
+    const countryAddress = new URL(page.url());
+    for (const [locale, phase] of [["en", "initial"], ["ru", "switched"], ["en", "restored"]]) {
+      if (phase !== "initial") {
+        await page.locator(".atlas-immersive-chrome .interface-language-control button").filter({ hasText: locale.toUpperCase() }).click();
+      }
+      await expect(page.locator("html")).toHaveAttribute("lang", locale);
+      await expect(page.locator(".country-heading p")).toHaveText(locale === "ru"
+        ? "Столица: Лусака" : "The country’s literary heritage");
+      for (const field of ["country", "writer", "book"]) expect(new URL(page.url()).searchParams.get(field)).toBe(countryAddress.searchParams.get(field));
+      expect(await cameraPose(scene)).toEqual(countryPose);
+      await retained(page, scene);
+      await evidence(fixture, testInfo, "native-book-author-return-zambia-" + locale + "-" + phase, {
+        locale, countryId: "zambia", actualSourceCapital: "Лусака", unverifiedEnglishCapitalHidden: locale === "en",
+        canonicalSelectionRetained: true, sameCanvasRendererCameraScene: true, nativeDeviceObserved: false });
+    }
+    expect(fixture.consoleErrors).toEqual([]);
+  } finally {
+    await page.evaluate(() => {
+      window.__nativeBookAuthorBackGate?.restore();
+      delete window.__nativeBookAuthorBackGate;
+    });
+    await scene.dispose();
+  }
+});
+
 test("narrow reduced-motion native launch and search retain the actual globe without a homepage flash", async ({}, testInfo) => {
   const safeArea = { top: 59, bottom: 34, left: 0, right: 0 };
   const fixture = await open({ viewport: { width: 390, height: 844 }, reducedMotion: "reduce", safeArea });

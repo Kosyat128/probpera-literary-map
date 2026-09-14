@@ -1,0 +1,25 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=playwright.native-planet.config.mjs",
+    "--grep",
+    "native book author navigation closes the reader and reveals the canonical writer across RU and EN on the retained globe"
+  ],
+  "startedAt": "2026-09-14T02:07:43.283Z",
+  "durationMs": 25765,
+  "exitCode": 1,
+  "logs": {
+    "stdout": {
+      "text": "\nRunning 1 test using 1 worker\n\n  x  1 tests\\host\\native-planet.spec.mjs:1621:1 › native book author navigation closes the reader and reveals the canonical writer across RU and EN on the retained globe (21.1s)\n\n\n  1) tests\\host\\native-planet.spec.mjs:1621:1 › native book author navigation closes the reader and reveals the canonical writer across RU and EN on the retained globe \n\n    Error: expect(locator).toHaveText(expected) failed\n\n    Locator:  locator('.country-heading p')\n    Expected: \"Столица: Москва\"\n    Received: \"Литературное наследие страны\"\n    Timeout:  15000ms\n\n    Call log:\n      - Expect \"toHaveText\" with timeout 15000ms\n      - waiting for locator('.country-heading p')\n        33 × locator resolved to <p>Литературное наследие страны</p>\n           - unexpected value \"Литературное наследие страны\"\n\n\n      1706 |       await expect(writer.locator(\"h4\")).toBeInViewport();\n      1707 |       await expect.poll(() => writer.evaluate(element => element.contains(document.activeElement))).toBe(true);\n    > 1708 |       await expect(page.locator(\".country-heading p\")).toHaveText(locale === \"ru\"\n           |                                                        ^\n      1709 |         ? \"Столица: Москва\" : \"The country’s literary heritage\");\n      1710 |       await expect(page.locator('[data-atlas-experience]')).toHaveAttribute(\"data-atlas-view\", \"immersive\");\n      1711 |       await retained(page, scene);\n        at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs:1708:56\n\n    attachment #2: native-final-failed-screenshot (image/png) ──────────────────────────────────────\n    .tmp\\native-planet-browser-results\\s09-country-writer-20260914-a1\\artifacts\\native-planet-native-book--421f0-nd-EN-on-the-retained-globe\\attachments\\native-final-failed-screenshot-06fa364771119e67ed30962850af76dfc397cc13.png\n    ────────────────────────────────────────────────────────────────────────────────────────────────\n\n    Error Context: .tmp\\native-planet-browser-results\\s09-country-writer-20260914-a1\\artifacts\\native-planet-native-book--421f0-nd-EN-on-the-retained-globe\\error-context.md\n\n    Error Context: .tmp\\native-planet-browser-results\\s09-country-writer-20260914-a1\\artifacts\\native-planet-native-book--421f0-nd-EN-on-the-retained-globe\\error-context.md\n\n  1 failed\n    tests\\host\\native-planet.spec.mjs:1621:1 › native book author navigation closes the reader and reveals the canonical writer across RU and EN on the retained globe \n",
+      "bytes": 2918,
+      "sha256": "be7e00f6f201571fba660daa414cc71c4449303c4f907083d76291be603c212d"
+    },
+    "stderr": {
+      "text": "(node:23604) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "bytes": 164,
+      "sha256": "ca5fb4b304c300023c6640b974199b2d12f0da0450a489574a4bc53d94ea20d3"
+    }
+  }
+}

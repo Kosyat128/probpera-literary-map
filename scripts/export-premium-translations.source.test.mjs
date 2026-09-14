@@ -1,13 +1,63 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
+import * as ts from "typescript";
+import { normalizeCountryCapitalEditorialReview } from "../src/data/countryCapitalReview.mjs";
 
 const source = readFileSync(
   path.resolve(process.cwd(), "scripts/export-premium-translations.mjs"),
   "utf8"
 ).replace(/\r\n?/gu, "\n");
 
+// Evaluate only the actual pure country normalizer and its local helpers;
+// importing the exporter itself would run its environment/network lifecycle.
+function countryNormalizer() {
+  const parsed = ts.createSourceFile("export-premium-translations.mjs", source, ts.ScriptTarget.Latest, true, ts.ScriptKind.JS);
+  const functions = new Set(["objectValue", "stringValue", "optionalString", "safeStringList", "safeTimeline", "normalizeCountryTranslation"]);
+  const constants = new Set(["countryTranslationStatuses", "countryTranslationMethods", "cyrillicPattern"]);
+  const selected = [];
+  for (const statement of parsed.statements) {
+    if (ts.isFunctionDeclaration(statement) && functions.has(statement.name?.text)) {
+      selected.push(statement.getText(parsed)); functions.delete(statement.name.text);
+    } else if (ts.isVariableStatement(statement)) {
+      const names = statement.declarationList.declarations.map(declaration => declaration.name.getText(parsed));
+      if (names.length === 1 && constants.has(names[0])) { selected.push(statement.getText(parsed)); constants.delete(names[0]); }
+    }
+  }
+  if (functions.size || constants.size) throw new Error("Country normalizer source dependencies changed");
+  return new Function("normalizeCountryCapitalEditorialReview", selected.join("\n") + "\nreturn normalizeCountryTranslation;")(normalizeCountryCapitalEditorialReview);
+}
+
 describe("premium translation public export", () => {
+  it("transports the exact supplied capital review with the shared runtime parser and no generated acceptance", () => {
+    const normalize = countryNormalizer();
+    const review = { schemaVersion: 1, hashContract: "country-capital-review-v1", decision: "approved", reviewerType: "human",
+      reviewer: "Synthetic transport reviewer", reviewedAt: "2026-09-14", evidenceRef: "editorial-review:synthetic-transport",
+      sourceHash: "a".repeat(64), targetHash: "b".repeat(64) };
+    const profile = { locale: "en", status: "reviewed", method: "machine-translation", sourceHash: "legacy-generation-only",
+      fields: { name: "Synthetic country", capital: "Test Capital" }, capitalEditorialReview: review };
+    const result = normalize(profile);
+    expect(result.capitalEditorialReview).toEqual(review); expect(result.capitalEditorialReview).not.toBe(review);
+    expect(result.fields.capital).toBe("Test Capital"); expect(result.sourceHash).toBe("legacy-generation-only");
+    expect(normalize({ ...profile, capitalEditorialReview: undefined })).not.toHaveProperty("capitalEditorialReview");
+    expect(source).toContain('from "../src/data/countryCapitalReview.mjs"');
+  });
+
+  it("rejects malformed capital review transport while retaining withdrawal and rejection without promotion", () => {
+    const normalize = countryNormalizer();
+    const review = { schemaVersion: 1, hashContract: "country-capital-review-v1", decision: "withdrawn", reviewerType: "human",
+      reviewer: "Synthetic transport reviewer", reviewedAt: "2026-09-14", evidenceRef: "editorial-review:synthetic-transport",
+      sourceHash: "a".repeat(64), targetHash: "b".repeat(64) };
+    const profile = { locale: "en", status: "reviewed", method: "machine-translation", sourceHash: "legacy-generation-only",
+      fields: { name: "Synthetic country", capital: "Test Capital" } };
+    for (const decision of ["withdrawn", "rejected"]) {
+      expect(normalize({ ...profile, capitalEditorialReview: { ...review, decision } }).capitalEditorialReview.decision).toBe(decision);
+    }
+    expect(normalize({ ...profile, capitalEditorialReview: { ...review, reviewerType: "model" } })).not.toHaveProperty("capitalEditorialReview");
+    expect(normalize({ ...profile, capitalEditorialReview: { ...review, targetHash: "unbound" } })).not.toHaveProperty("capitalEditorialReview");
+    expect(normalize({ ...profile, capitalEditorialReview: { ...review, extra: true } })).not.toHaveProperty("capitalEditorialReview");
+  });
+
   it("uses the complete literary-work source identity", () => {
     expect(source).toContain(
       "literary_work_sources: (row) =>\n    `${row.work_id}:${row.provider}:${row.source_url}`"

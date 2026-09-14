@@ -1,5 +1,18 @@
 # V12 status — 2026-09-14
 
+<!-- s09-country-writer-20260914:begin -->
+S09 source validated: book-to-author return closes reader/history, restores the
+canonical writer and focus on the same globe, including repeated Back.
+Capital fields use one source/target review gate across RUEN/proxy/export.
+26 focused tests, static and 1 actual native-source RUEN browser passed.
+Real Zambia capital round trip verified; no guessed Russia capital added.
+Owner fills archives; final canonical sync follows app implementation (D107).
+Raw export includes 46 candidate works; browser/release scope is separate.
+Evidence: evidence/S09/country-writer-20260914/result.json. No stage acceptance.
+Next: one exact-source Android/dev and local-QA PWA, then offline return proof.
+First-open S03; child/full content/commerce/device/release gates remain open.
+<!-- s09-country-writer-20260914:end -->
+
 <!-- s08-content-export-20260914:begin -->
 Source 89cf558d7be310503672420568b1c7a045bd8325: S08 canonical candidate export,
 durable correction holds and dedicated QA content signatures validated.

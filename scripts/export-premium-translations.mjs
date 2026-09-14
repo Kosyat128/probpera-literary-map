@@ -17,6 +17,7 @@ import { collectPostgrestPages } from "./lib/postgrest-pagination.mjs";
 import { trustedSupabaseOrigin } from "./lib/trusted-server-url.mjs";
 import { applyPublishedWriterBiographyOverrides } from "./lib/writer-biography-public-overrides.mjs";
 import { normalizePublicWriterBiographyTranslations } from "./lib/writer-biography-public-profile.mjs";
+import { normalizeCountryCapitalEditorialReview } from "../src/data/countryCapitalReview.mjs";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const publicCmsDirectory = path.join(projectRoot, "public", "cms");
@@ -694,6 +695,9 @@ function normalizeCountryTranslation(value) {
   );
   if (!Object.keys(compactFields).length) return null;
   if (cyrillicPattern.test(JSON.stringify(compactFields))) return null;
+  // Preserve only a supplied, strictly shaped attestation. The runtime selector
+  // independently binds it to current canonical RU and exact exported EN text.
+  const capitalEditorialReview = normalizeCountryCapitalEditorialReview(row.capitalEditorialReview);
 
   return {
     locale: "en",
@@ -706,6 +710,7 @@ function normalizeCountryTranslation(value) {
       row.reviewerModel === null
         ? null
         : optionalString(row.reviewerModel, 120),
+    ...(capitalEditorialReview ? { capitalEditorialReview } : {}),
     fields: compactFields,
   };
 }

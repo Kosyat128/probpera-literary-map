@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-14T02:24:59.984Z",
+  "stage": "S09",
+  "status": "SOURCE_VALIDATION_PASSED",
+  "sourceInputs": 1333,
+  "sourceInputsSha256": "d07e9ed7ba19713be82b12120de0aab628893f13838f33efb611f169bb9aa38d",
+  "sourceInputsCurrent": true,
+  "implementation": [
+    "src/App.tsx",
+    "src/components/BookArchiveSection.tsx",
+    "src/components/WriterPanel.tsx",
+    "src/data/countryLocalization.ts",
+    "src/data/countryCapitalReview.mjs",
+    "src/data/countryCapitalReview.d.mts",
+    "src/data/countries/types.ts",
+    "src/planet/selection.ts",
+    "scripts/export-premium-translations.mjs"
+  ],
+  "behavior": [
+    "Book-to-author action queues exact current country/writer IDs, closes the reader through existing history/shelf transitions, then reveals/focuses the same writer and clears a restrictive filter on the retained globe.",
+    "Repeated Back is handled while the actual history restoration is pending. Unrelated navigation cancels the queued target; book search retains its focusAtlas=false behavior.",
+    "One capital selector preserves Russian source fields and requires separately supplied exact source/target human review before displaying an English capital. Missing or stale approval uses the existing localized heritage label.",
+    "Live proxies/snapshots retain raw canonical ownership; the existing translation exporter preserves normalized supplied approval/withdrawal metadata without creating review. No factual archive population."
+  ],
+  "validation": {
+    "passingUnitCases": 26,
+    "unitFiles": 2,
+    "units": "unit-a1/result.json",
+    "platformBoundaries": "static-a1/result.json",
+    "typecheck": "typecheck-a1/result.json",
+    "browser": "browser-a3/result.json",
+    "visual": "visual-review.json",
+    "repairs": [
+      "The first browser run exposed an incorrect test expectation: the canonical Russia record has no capital field. The existing Russian fallback is preserved, and the final test uses Zambia for actual source-backed capital behavior.",
+      "The second run found reuse of writer focus token1 after history cleared pending state. A monotonic ref now advances independently of pending focus, so a retained writer panel handles later author destinations."
+    ],
+    "reuse": "Country/transport unit inputs and platform imports stayed unchanged; only typecheck and the affected browser case repeated after the App-only focus-token fix. No unchanged benchmark or broad browser suite."
+  },
+  "ownerCatalogWorkflow": "Owner populates archives; synchronize then-current canonical archives after app implementation and before final release evidence (D107).",
+  "catalogScopeCorrection": {
+    "evidence": "docs/mobile/evidence/S08/content-export-20260914/catalog-scope-audit.json",
+    "rawCanonicalExportCandidateWorks": 46,
+    "note": "46 counts raw canonical export candidates, not browser-visible or release inventory. Runtime publication scope is audited separately; prior artifacts remain unchanged."
+  },
+  "canonicalFactsChanged": false,
+  "editorialApprovalCreated": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false,
+  "next": "Build one exact-source Android/dev and local-QA PWA. Verify actual offline RUEN book-to-writer return and country-field eligibility, then preserve artifacts. Owner archive final synchronization remains deferred as requested."
+}

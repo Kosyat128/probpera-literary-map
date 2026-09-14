@@ -146,6 +146,68 @@ async function selectedWorkInViewport(page, detail, testInfo, phase) {
   }
 }
 
+test("offline PWA book-to-writer return preserves the globe and eligible country facts across RU and EN", async ({ page, context, request }, testInfo) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await prepare(page, request);
+  await context.setOffline(true);
+  let scene;
+  try {
+    await page.goto("/planet/ru/?country=russia&writer=dostoevsky#atlas");
+    scene = await actualGlobe(page);
+    const toggle = page.locator(".atlas-country-sheet-toggle");
+    if (await toggle.getAttribute("aria-expanded") === "false") await toggle.click();
+    const writer = page.locator(".writer-detail"), detail = page.locator("#book-archive-detail");
+    const observations = [];
+    for (const locale of ["ru", "en"]) {
+      if (locale === "en") {
+        await page.locator(".atlas-immersive-chrome .interface-language-control button").filter({ hasText: "EN" }).click();
+      }
+      await expect(page.locator("html")).toHaveAttribute("lang", locale);
+      await expect(writer.locator("h4")).toContainText(locale === "ru" ? "Достоевский" : "Dostoevsky");
+      await writer.locator("#writer-biography-russia-tab-works").click();
+      const title = locale === "ru" ? "Преступление и наказание" : "Crime and Punishment";
+      await writer.locator("#writer-biography-russia-panel-works").getByRole("button", {
+        name: (locale === "ru" ? "Книжный архив: " : "Book archive: ") + title, exact: true,
+      }).click();
+      await expect(detail).toBeVisible();
+      await expect(detail.locator(".book-detail-copy h3")).toHaveText(title);
+      await expect.poll(() => new URL(page.url()).searchParams.get("book")).toBe("russia:dostoevsky:crime-and-punishment");
+      await detail.locator('[data-book-navigation-origin="book-author"]').click();
+      await expect(detail).toBeHidden();
+      await expect(page.locator(".native-planet-panel")).toBeHidden();
+      await expect.poll(() => new URL(page.url()).searchParams.get("book")).toBeNull();
+      await expect.poll(() => new URL(page.url()).searchParams.get("writer")).toBe("dostoevsky");
+      await expect.poll(() => new URL(page.url()).searchParams.get("country")).toBe("russia");
+      await expect.poll(() => new URL(page.url()).pathname).toBe(`/planet/${locale}/`);
+      await expect(toggle).toHaveAttribute("aria-expanded", "true");
+      await expect(writer).toBeVisible();
+      // This canonical Russia record has no capital field. Preserve its actual
+      // existing fallback; the source-backed capital round trip follows below.
+      await expect(page.locator(".country-heading p")).toHaveText(locale === "ru" ? "Литературное наследие страны" : "The country’s literary heritage");
+      await expect.poll(() => page.locator(".country-panel").evaluate(node => node.contains(document.activeElement))).toBe(true);
+      expect(await page.locator("#atlas").evaluate(node => node.inert)).toBe(false);
+      await retainedGlobe(page, scene);
+      await testInfo.attach(`pwa-country-writer-return-${locale}`, { body: await page.screenshot(), contentType: "image/png" });
+      observations.push({ locale, country: "russia", writer: "dostoevsky", readerClosed: true, collectionClosed: true,
+        writerRevealedByProduct: true, focusWithinCountryCard: true, sameCanvasRendererCameraScene: true, offline: true });
+    }
+    await page.locator('[data-atlas-action="toggle-search"]').click();
+    await page.locator("#country-search").fill("Zambia");
+    await page.locator('#country-results [data-option-key="country:zambia"]').click();
+    await expect.poll(() => new URL(page.url()).searchParams.get("country")).toBe("zambia");
+    if (await toggle.getAttribute("aria-expanded") === "false") await toggle.click();
+    for (const locale of ["en", "ru", "en"]) {
+      if (await page.locator("html").getAttribute("lang") !== locale) {
+        await page.locator(".atlas-immersive-chrome .interface-language-control button").filter({ hasText: locale.toUpperCase() }).click();
+      }
+      await expect(page.locator("html")).toHaveAttribute("lang", locale);
+      await expect(page.locator(".country-heading p")).toHaveText(locale === "ru" ? "Столица: Лусака" : "The country’s literary heritage");
+      await retainedGlobe(page, scene);
+    }
+    await testInfo.attach("pwa-country-writer-return-evidence", { body: JSON.stringify({ localQaOnly: true, observations }), contentType: "application/json" });
+  } finally { await scene?.dispose(); await context.setOffline(false); }
+});
+
 test("orange PWA launch and bilingual recovery lead to the retained offline literary globe", async ({ page, context, browser, request }, testInfo) => {
   await page.setViewportSize({ width: 390, height: 844 });
   const config = await readQaConfiguration();

@@ -25,6 +25,7 @@ import CountryFlagIcon from "./CountryFlagIcon";
 import type { BookArchiveEntry } from "../data/bookArchive";
 import { groupPublicBooksForCountry, writerBookLoadingCopy } from "./writerPanelBooks";
 import { selectWriterBiographyForDisplay } from "../data/writerBiographyDisplay";
+import { selectCountryCapital } from "../data/countryLocalization";
 import {
   selectWriterDisplayName,
   selectWriterYears,
@@ -182,6 +183,7 @@ export default function WriterPanel({
 }: WriterPanelProps) {
   const { language, t, countryName, number } = useInterfaceLanguage();
   const booksCopy = writerBookLoadingCopy[language];
+  const countryCapital = selectCountryCapital(country, language);
   const { toggle: toggleSubscription, isSubscribed } = useSubscriptions();
   const panelRef = useRef<HTMLElement>(null);
   const detailRef = useRef<HTMLElement>(null);
@@ -555,8 +557,8 @@ export default function WriterPanel({
         <div>
           <h2 id={countryHeadingId}>{countryName(country.code, country.name)}</h2>
           <p>
-            {country.capital
-              ? `${t("Столица")}: ${country.capital}`
+            {countryCapital
+              ? `${t("Столица")}: ${countryCapital}`
               : t("Литературное наследие страны")}
           </p>
         </div>

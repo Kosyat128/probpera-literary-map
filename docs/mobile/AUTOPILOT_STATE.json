@@ -5,7 +5,7 @@
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
   "headSha": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-14T01:49:19.363Z",
+  "updatedAt": "2026-09-14T02:24:59.984Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -1400,11 +1400,11 @@
     {
       "id": "S09",
       "name": "Country/writer/work screens",
-      "status": "NOT_STARTED",
+      "status": "IN_PROGRESS",
       "criteria": [
         {
           "id": "S09.acceptance",
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "evidence": [],
           "commit": null,
           "lastValidatedAt": null,
@@ -1539,8 +1539,15 @@
           "notes": "All loading/empty/error/offline states. Shared feature presentation precedes integrated RU/EN layout, recovery and accessibility validation."
         }
       ],
-      "lastGreenCommands": [],
-      "artifacts": [],
+      "lastGreenCommands": [
+        "26 focused country localization/export transport tests passed.",
+        "TypeScript/platform boundaries passed.",
+        "One actual native source-browser RUEN scenario: book-to-author, held history/Back boundary, same scene, focus and actual Zambia capital eligibility passed."
+      ],
+      "artifacts": [
+        "docs/mobile/evidence/S09/country-writer-20260914/entry.json",
+        "docs/mobile/evidence/S09/country-writer-20260914/result.json"
+      ],
       "externalBlockers": []
     },
     {
@@ -10611,7 +10618,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "S09: fix existing book-to-writer navigation in the retained scene and remove unreviewed Russian capital fallback from English country details. Keep S08 runtime/child/complete review gates open; do not rebuild unchanged UI until an actual runtime change is tested. First-open S03 remains.",
+    "nextAction": "Build one exact-source Android/dev and local-QA PWA. Verify actual offline RUEN book-to-writer return and country-field eligibility, then preserve artifacts. Owner archive final synchronization remains deferred as requested. First-open S03 remains; no stage acceptance.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -10739,6 +10746,12 @@
         "reason": "Deterministic offline data projection, source-dependency invalidation and purpose-separated QA signing can be implemented from the existing canonical public catalog and review gates without merchant/device/owner approval or deployment. This does not waive remaining S03 work.",
         "evidence": [
           "docs/mobile/evidence/S08/content-export-20260914/entry.json"
+        ]
+      },
+      "S09": {
+        "reason": "Existing country/writer/work screens can be corrected and validated against the current canonical catalog while editorial/child/commerce/device/release gates remain open. No external authority is required for scene-preserving navigation or withholding an unverified fallback.",
+        "evidence": [
+          "docs/mobile/evidence/S09/country-writer-20260914/entry.json"
         ]
       }
     },
@@ -11900,6 +11913,29 @@
       ],
       "stageAccepted": false,
       "releaseReady": false
+    },
+    "ownerCatalogWorkflow": {
+      "recordedAt": "2026-09-14T02:00:05.774Z",
+      "ownerInstruction": "Owner is filling the work archive; integrate all current canonical archives during final preparation after application implementation.",
+      "activeScope": "App functionality, platform integration and canonical ingestion contracts. No factual archive population in this checkout.",
+      "finalSync": "Use then-current owner canonical content; preserve country/writer/work IDs, references, favorites and navigation. Revalidate both locales, rights/cover records, offline/search and exact artifacts.",
+      "contentAcceptanceDeferred": true,
+      "releaseGatesWaived": false
+    },
+    "s09CountryWriter": {
+      "status": "SOURCE_VALIDATION_PASSED",
+      "evidence": "docs/mobile/evidence/S09/country-writer-20260914/result.json",
+      "sha256": "ad10e9ef1d60d4fbc34ede8d9ebade2dbe8a2a7d2a822ac66e4275b96ec341f4",
+      "passingUnitCases": 26,
+      "stageAccepted": false,
+      "releaseReady": false
+    },
+    "currentCatalogGate": {
+      "sourceCommit": "89cf558d7be310503672420568b1c7a045bd8325",
+      "rawCanonicalExportCandidateWorks": 46,
+      "evidence": "docs/mobile/evidence/S08/content-export-20260914/catalog-scope-audit.json",
+      "scope": "raw canonical export candidates; runtime visibility separately audited",
+      "finalScopeOwnedByUser": true
     }
   },
   "externalOwnerInputsStatus": {
