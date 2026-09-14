@@ -109,7 +109,7 @@ describe("guarded production database reconciliation", () => {
       const plan = readFileSync(planPath, "utf8");
       const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
       const verification = readFileSync(verificationPath, "utf8");
-      expect(manifest.migrations).toHaveLength(38);
+      expect(manifest.migrations).toHaveLength(39);
       expect(manifest.migrations.map((migration) => migration.filename)).toEqual([
         "20260808_article_translations.sql",
         "20260808_book_translations_and_import_staging.sql",
@@ -149,29 +149,35 @@ describe("guarded production database reconciliation", () => {
         "20260912_literary_work_evidence_v2_registry_rotation.sql",
         "20260913_wells_editorial_evidence_repair.sql",
         "20260914_literary_archive_editorial_references.sql",
+        "20260914_literary_translation_draft_storage.sql",
       ]);
       const migrationFilenames = manifest.migrations.map(
         (migration) => migration.filename
       );
-      expect(manifest.migrations.at(-4)).toEqual({
+      expect(manifest.migrations.at(-5)).toEqual({
         filename: "20260905_article_publication_permissions.sql",
         version: "20260905_article_publication_permissions",
         sha256: "1f9b4b9a9efb00488010cb6719cb36967a395038089b2ca3091657e144f0fcc8",
       });
-      expect(manifest.migrations.at(-3)).toEqual({
+      expect(manifest.migrations.at(-4)).toEqual({
         filename: "20260912_literary_work_evidence_v2_registry_rotation.sql",
         version: "20260912_literary_work_evidence_v2_registry_rotation",
         sha256: "2fbcba184a4f7f7eb8e0ab49737540c42614d3f1d0755914f485bd5c0e04f525",
       });
-      expect(manifest.migrations.at(-2)).toEqual({
+      expect(manifest.migrations.at(-3)).toEqual({
         filename: "20260913_wells_editorial_evidence_repair.sql",
         version: "20260913_wells_editorial_evidence_repair",
         sha256: "769353bbf60790b6a5113a5d76ee23cb7ce0e84e3100a7d3eac86c7113d09c70",
       });
-      expect(manifest.migrations.at(-1)).toEqual({
+      expect(manifest.migrations.at(-2)).toEqual({
         filename: "20260914_literary_archive_editorial_references.sql",
         version: "20260914_literary_archive_editorial_references",
         sha256: "00bdde32a431322e4c86eaa1f069ff287eac4acc011923dd2454a463f42cad21",
+      });
+      expect(manifest.migrations.at(-1)).toEqual({
+        filename: "20260914_literary_translation_draft_storage.sql",
+        version: "20260914_literary_translation_draft_storage",
+        sha256: "5f0ee4955409a7a19adfa7602a4603cb0e5b7eeb5523c7e1ec95aca1f0048978",
       });
       expect(plan).toContain("Reviewed Wells repair service-only capability is incomplete");
       expect(plan).toContain("public.repair_wells_editorial_evidence_20260913(jsonb)");
@@ -313,7 +319,7 @@ describe("guarded production database reconciliation", () => {
       expect(plan).not.toMatch(/^\s*(?:begin|commit|rollback)\s*;/gimu);
       expect(verification).toContain("public.get_editorial_schema_health()");
       expect(verification).toContain("ledger_entries=");
-      expect(verification).toContain("public.probpera_schema_migrations) >= 38");
+      expect(verification).toContain("public.probpera_schema_migrations) >= 39");
       expect(verification).toContain("work_cover_artworks=");
       expect(verification).toContain("literary_work_authorship=");
       expect(verification).toContain("literary_work_evidence_v2=");
@@ -821,10 +827,10 @@ describe("guarded production database reconciliation", () => {
     expect(workflowSource).toContain("git ls-remote --exit-code origin refs/heads/main");
     expect(workflowSource).toContain("actions/upload-artifact@v7");
     expect(workflowSource).toContain(
-      "Migration range: 20260808_article_translations through 20260914_literary_archive_editorial_references"
+      "Migration range: 20260808_article_translations through 20260914_literary_translation_draft_storage"
     );
     expect(workflowSource).toContain(
-      "schema_health=20260902_zz_article_working_drafts_health;outbox=true;outbox_rpc=true;article_bundle_rpc=true;publication_triggers=true;staff_editorial_read_policies=true;revision_history=true;work_translations=true;work_cover_artworks=true;literary_work_authorship=true;literary_work_evidence_v2=true;literary_archive_atomic_release=true;country_overrides=true;writer_overrides=true;homepage_move=true;tags_updated_at=true;media_studio_lifecycle=true;media_usage_graph=true;media_safe_replace_rpc=true;site_typography_engine=true;site_studio_engine=true;visual_direct_edit_v2=true;staff_owner_invariant=true;data_studio_integrity=true;translation_operations=true;admin_mutation_guards=true;admin_analytics_reporting=true;admin_ops_observability=true;article_working_drafts=true;article_publication_rbac=true;article_translation_rbac=true;article_working_draft_promotion_cas=true;migration_ledger=true;premium_machine_translation=true;editor_autosaves=true;editor_autosave_rpc=true;ledger_entries=38;invalid_indexes=0"
+      "schema_health=20260902_zz_article_working_drafts_health;outbox=true;outbox_rpc=true;article_bundle_rpc=true;publication_triggers=true;staff_editorial_read_policies=true;revision_history=true;work_translations=true;work_cover_artworks=true;literary_work_authorship=true;literary_work_evidence_v2=true;literary_archive_atomic_release=true;country_overrides=true;writer_overrides=true;homepage_move=true;tags_updated_at=true;media_studio_lifecycle=true;media_usage_graph=true;media_safe_replace_rpc=true;site_typography_engine=true;site_studio_engine=true;visual_direct_edit_v2=true;staff_owner_invariant=true;data_studio_integrity=true;translation_operations=true;admin_mutation_guards=true;admin_analytics_reporting=true;admin_ops_observability=true;article_working_drafts=true;article_publication_rbac=true;article_translation_rbac=true;article_working_draft_promotion_cas=true;migration_ledger=true;premium_machine_translation=true;editor_autosaves=true;editor_autosave_rpc=true;ledger_entries=39;invalid_indexes=0"
     );
     expect(dispatchWorkflowSource).toContain(
       '"supabase/migrations/20260828_zz_editor_autosaves.sql"'

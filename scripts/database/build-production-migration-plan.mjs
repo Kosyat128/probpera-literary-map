@@ -128,6 +128,10 @@ const reviewedMigrations = [
     "20260914_literary_archive_editorial_references.sql",
     "00bdde32a431322e4c86eaa1f069ff287eac4acc011923dd2454a463f42cad21",
   ],
+  [
+    "20260914_literary_translation_draft_storage.sql",
+    "5f0ee4955409a7a19adfa7602a4603cb0e5b7eeb5523c7e1ec95aca1f0048978",
+  ],
 ];
 
 const reviewedHotfixes = [

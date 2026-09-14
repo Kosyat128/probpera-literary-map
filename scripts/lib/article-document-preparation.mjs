@@ -11,7 +11,7 @@ export function headingSlug(value) {
     .slice(0, 72);
 }
 
-function imageAltLooksTechnical(value = "") {
+export function imageAltLooksTechnical(value = "") {
   const normalized = String(value).replace(/\s+/gu, " ").trim();
   return (
     !normalized ||

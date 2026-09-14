@@ -1,0 +1,130 @@
+{
+  "id": "LITERARY-TRANSLATION-DRAFT-STORAGE-20260914",
+  "baselineSourceCommitSha": "6dd83837571b434a066c0f0e952107b41149a11d",
+  "reviewDate": "2026-09-14",
+  "humanReview": false,
+  "productionApplied": false,
+  "historicalPinsChanged": false,
+  "historicalMigrationsChanged": false,
+  "editorialTextChanged": false,
+  "provenanceInvented": false,
+  "publicationGatesChanged": false,
+  "nativeTransportChanged": false,
+  "broadSourceExclusionsAdded": false,
+  "problem": "The exact release contains 89 unreviewed draft translations of 115..139 characters. The published storage CHECK rejects them before the atomic commit can finish.",
+  "productionEvidence": {
+    "runId": 34802038025,
+    "sqlstate": "23514",
+    "exactProductionConstraintKnown": false,
+    "limitation": "An isolated actual-schema insert reproduces the deterministic description CHECK violation. SQLSTATE-only production logs do not identify its first failing constraint or exclude later release guards."
+  },
+  "scope": "Add one storage CHECK migration and its reviewed plan entry; update the exact schema ledger/range and distinguish schema commit from archive commit in the workflow summary. Two governance adapters preserve every historical assertion and expected hash.",
+  "shortDraftPredicate": "editorial_status = 'draft' AND reviewed_at IS NULL AND char_length(description) BETWEEN 1 AND 139 AND description ~ '[^[:space:]]'",
+  "existingBranch": "char_length(description) BETWEEN 140 AND 900",
+  "publicationContract": "Both localized descriptions still require reviewed or verified status, trimmed length 140..900, existing source checks and current Evidence V2 attestation. No source text, metadata, approval or public visibility is changed by this migration.",
+  "schemaMigration": {
+    "filename": "20260914_literary_translation_draft_storage.sql",
+    "ordinal": 39,
+    "sha256Lf": "5f0ee4955409a7a19adfa7602a4603cb0e5b7eeb5523c7e1ec95aca1f0048978",
+    "validated": true,
+    "idempotent": true,
+    "unknownOrUnvalidatedPredecessorRejected": true
+  },
+  "sourceProof": {
+    "baselineGitBlobsVerified": true,
+    "protectedPaths": [
+      ".github/workflows/reconcile-production-database.yml",
+      "scripts/database/build-production-migration-plan.mjs",
+      "scripts/database/production-migration-plan.test.mjs",
+      "scripts/lib/reviewed-native-archive-transport.mjs",
+      "scripts/lib/reviewed-native-archive-transport.test.mjs"
+    ],
+    "all38HistoricalMigrationsVerified": true,
+    "retainedRows": 89,
+    "retainedWorks": 69,
+    "locales": {
+      "ru": 40,
+      "en": 49
+    },
+    "retainedSourceFiles": [
+      "src/data/countries/bookR49nRetainedDrafts20260912Data01.ts",
+      "src/data/countries/bookR49nRetainedDrafts20260912Data02.ts",
+      "src/data/countries/bookR49nRetainedDrafts20260912Data03.ts"
+    ]
+  },
+  "validation": {
+    "receiptSha256Lf": "1b721528f4f890a63307e5e9961154bda0e5e79a3af6d903eedfe100cceaa228",
+    "receipt": {
+      "contract": "literary-translation-draft-storage-pglite-20260914",
+      "status": "passed",
+      "engine": "Actual local in-memory PGlite PostgreSQL",
+      "counts": {
+        "translations": 3128,
+        "shortDrafts": 89,
+        "shortDraftWorks": 69
+      },
+      "statements": 25,
+      "durationMs": 1872,
+      "rolledBack": true,
+      "migrationSha256Lf": "5f0ee4955409a7a19adfa7602a4603cb0e5b7eeb5523c7e1ec95aca1f0048978",
+      "checks": [
+        "exact original schema rejects known139-character source with23514 nameddescriptionCHECK",
+        "old140/900 valid row bytes preserved",
+        "all3128 real prepared translations including89shortdrafts inserted unchanged",
+        "empty/space-only/901/reviewedshort/verifiedshort/shortdraftwithreviewdate rejected",
+        "failedpromotion23514 preservesdraft",
+        "targetreplay preservesconstraintOID andallrows",
+        "unknownormissingconstraint failsclosed",
+        "exact target NOT VALID predecessor rejects without mutation",
+        "short tab-only/newline-only/CRLF-only text rejects with23514",
+        "old140-character all-space row remains valid and unchanged",
+        "Changed status literal 'draft ' rejects; exact installed constraint definition and validation state remain unchanged"
+      ],
+      "limits": "Constraint storage fixture only; no production writes or full archive transaction/publication claim.",
+      "files": [
+        {
+          "path": "scripts/database/literary-translation-draft-storage.integration.test.mjs",
+          "sha256Lf": "6247f5f11aafd6a7a6679e176cd788d4992a2fb0657c29b92337df5bdaa42e78"
+        },
+        {
+          "path": "scripts/database/fixtures/build-literary-translation-draft-storage-fixture.mjs",
+          "sha256Lf": "baaa53b5031abdc448356a0a4eec9b7eed1929a7cfd45379c5d278e54be499b3"
+        },
+        {
+          "path": "scripts/database/fixtures/literary-translation-draft-storage.sql",
+          "sha256Lf": "760d52564ae222047abd2d0a8ade8270c88520d1eed781c63f26915bc4b2fa29"
+        }
+      ],
+      "focusedVitest": {
+        "passed": 1,
+        "skipped": 1,
+        "skipReason": "Docker daemon unavailable locally; this same SQL fixture is required on PostgreSQL17 in CI and passed locally via actual PGlite.",
+        "exitCode": 0
+      },
+      "scopedDiffCheck": "passed"
+    },
+    "limit": "Local PostgreSQL-compatible PGlite checks storage semantics and exact prepared rows. Real Docker PostgreSQL is mandatory in CI; production application and the full archive commit remain pending."
+  },
+  "files": [
+    {
+      "path": "supabase/migrations/20260914_literary_translation_draft_storage.sql",
+      "sha256Lf": "5f0ee4955409a7a19adfa7602a4603cb0e5b7eeb5523c7e1ec95aca1f0048978"
+    },
+    {
+      "path": "scripts/lib/reviewed-draft-storage.mjs",
+      "sha256Lf": "8d27758e69223f5cd926e5c251e9cb040626a89cae2c1233bd1bf55f13f37b4a"
+    },
+    {
+      "path": "scripts/database/literary-translation-draft-storage.integration.test.mjs",
+      "sha256Lf": "6247f5f11aafd6a7a6679e176cd788d4992a2fb0657c29b92337df5bdaa42e78"
+    },
+    {
+      "path": "scripts/database/fixtures/build-literary-translation-draft-storage-fixture.mjs",
+      "sha256Lf": "baaa53b5031abdc448356a0a4eec9b7eed1929a7cfd45379c5d278e54be499b3"
+    },
+    {
+      "path": "scripts/database/fixtures/literary-translation-draft-storage.sql",
+      "sha256Lf": "760d52564ae222047abd2d0a8ade8270c88520d1eed781c63f26915bc4b2fa29"
+    }
+  ]
+}

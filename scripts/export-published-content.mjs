@@ -1,7 +1,7 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { prepareProjectedArticleDocument } from "./lib/article-document-preparation.mjs";
+import { imageAltLooksTechnical, prepareProjectedArticleDocument } from "./lib/article-document-preparation.mjs";
 import { applyEditorialPublicationFix } from "./editorial-publication-fixes.mjs";
 import { applyArticleReadingEditorialFix } from "./lib/article-reading-editorial-fixes-20260914.mjs";
 import {
