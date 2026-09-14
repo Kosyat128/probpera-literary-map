@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-14T03:46:47.905Z",
+  "stage": "S11",
+  "status": "SOURCE_UNIT_AND_REAL_BROWSER_VALIDATION_PASSED",
+  "sourceBaseCommit": "32dad95fde9aba390a5b15501f3aed07767b0fd3",
+  "entry": "docs/mobile/evidence/S11/install-resume-20260914/entry.json",
+  "requirementIds": [
+    "CONTENT-008"
+  ],
+  "implementation": [
+    "src/pwa/serviceWorkerRuntime.js"
+  ],
+  "tests": [
+    "src/pwa/serviceWorkerRuntime.test.mjs",
+    "tests/pwa/install-resume.spec.mjs"
+  ],
+  "sourceInputs": [
+    {
+      "path": "src/pwa/serviceWorkerRuntime.js",
+      "sha256": "5be987183ac39c92673624932fc6a02b697085b0ac27b488fd0925d115cfdeaf"
+    },
+    {
+      "path": "src/pwa/serviceWorkerRuntime.test.mjs",
+      "sha256": "740b560764867757e66ff291d1ee2baae90ebf139cd35e50e66ad7e8e172034f"
+    },
+    {
+      "path": "src/pwa/pwaBootstrapBudgets.ts",
+      "sha256": "f3977c4f1b1ec2b167ee987da65d6bb793308c649dbe1efe7d6c5cc66ce76afa"
+    },
+    {
+      "path": "tests/pwa/install-resume.spec.mjs",
+      "sha256": "783c46975dafbaa0d4d4f57730837e2e78d347c09a8c8ed8869b74a170fa7256"
+    },
+    {
+      "path": "package.json",
+      "sha256": "90b392c205754f838b8bc7c4475bd475936be1078561bb218c437d151177869f"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+    },
+    {
+      "path": "vitest.config.ts",
+      "sha256": "5c1e90985e77b35599e5bdaf77c74a1166949ec9c4f45d1c5f926c3f53bef90e"
+    }
+  ],
+  "sourceInputsSha256": "77a203d5cf3f105d932eb4f8ed269c758d967691b3b674fddaef081b64bfac44",
+  "validation": {
+    "unit": "docs/mobile/evidence/S11/install-resume-20260914/unit-a1/result.json",
+    "passingUnitCases": 201,
+    "browser": "docs/mobile/evidence/S11/install-resume-20260914/browser-a1/result.json",
+    "actualChromeCases": 1,
+    "browserProof": {
+      "path": "docs/mobile/evidence/S11/install-resume-20260914/browser-a1/install-resume-proof.json",
+      "bytes": 1841,
+      "sha256": "bd5671383dce5292637b7dec70f5a55fa072348b7e812d51929c575dab39ab5c"
+    },
+    "reportRecovery": "docs/mobile/evidence/S11/install-resume-20260914/browser-a1/report-recovery.json",
+    "testHarnessOnlyCorrection": "Import node:path and make the reporter output path absolute; test commands, cases and source are unchanged.",
+    "additionalRunsForReportRecovery": 0
+  },
+  "behavior": [
+    "Interrupted first installation retains complete exact-hash files under a manifest-bound candidate.",
+    "Retry verifies cached files before reuse; damaged or missing files are fetched again, and all files are reverified before COMPLETE.",
+    "A new build removes obsolete recognized incomplete candidates, preserving completed, damaged-complete and unrelated caches.",
+    "Candidate content cannot be served or activated; completed current/previous builds retain their existing protections.",
+    "Same-worker concurrent install calls share one in-flight operation; the fixed-scope browser job queue serializes registrations. Candidate metadata is not a cross-context storage lock."
+  ],
+  "officialReference": {
+    "url": "https://w3c.github.io/ServiceWorker/#schedule-job-algorithm",
+    "checkedDate": "2026-09-14",
+    "scope": "Current W3C editor draft Schedule/Run/Finish Job and Install failure lifecycle, confirmed by the actual Chrome retry scenario."
+  },
+  "limits": [
+    "Whole-file retry, not byte-range downloads or a promise against browser storage eviction.",
+    "Public PWA bootstrap only; signed locale/audio/child downloadable packages and native downloads remain open.",
+    "Actual browser tested the bundled current worker with small transport fixtures; no full app build or RC claim."
+  ],
+  "fullApplicationBuildRepeated": false,
+  "canonicalFactsChanged": false,
+  "ownerWorkflow": "D107",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false,
+  "next": "Continue S11 with bounded signed content-package consumption/storage on the S08 canonical export contract; retain public PWA bootstrap recovery as a distinct tested layer. No owner archive population. Batch the next full PWA artifact refresh with the next affected runtime slice; existing PWA0381b95f includes the requested integrated card/search but predates install-resume. Android048c8e1b and frozen iOS83 stay preserved. Owner final canonical archive synchronization follows app implementation (D107)."
+}

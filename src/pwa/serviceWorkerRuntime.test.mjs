@@ -5,6 +5,7 @@ import { installPwaWorker, normalizePwaWorkerConfig } from "./serviceWorkerRunti
 const ORIGIN = "https://probpera.ru";
 const PREFIX = "literary-planet-pwa-v1-";
 const MARKER = ORIGIN + "/planet/__pwa_complete__";
+const CANDIDATE = ORIGIN + "/planet/__pwa_candidate__";
 const sha256 = (bytes) => createHash("sha256").update(bytes).digest("hex");
 const absolute = (input) => new URL(typeof input === "string" ? input : input.url, ORIGIN).href;
 
@@ -629,6 +630,12 @@ describe("isolated immutable PWA configuration", () => {
 });
 
 describe("atomic verified install and recovery", () => {
+  const failDownload = (env, pathname) => {
+    const normalFetch = env.worker.fetch.getMockImplementation();
+    env.worker.fetch.mockImplementation(request => new URL(request.url).pathname === pathname
+      ? Promise.reject(new Error("Interrupted download")) : normalFetch(request));
+  };
+  const downloadedPaths = env => env.worker.fetch.mock.calls.map(([request]) => new URL(request.url).pathname);
   it("installs a portrait-scale package and verifies its offline readiness without network on read", async () => {
     const pkg = shell();
     for (let index = pkg.config.files.length; index < 1339; index++) {
@@ -664,28 +671,39 @@ describe("atomic verified install and recovery", () => {
     expect(env.worker.clients.claim).toHaveBeenCalledOnce();
     expect(env.worker.skipWaiting).not.toHaveBeenCalled();
   });
-  it("does not write COMPLETE while an essential download is still pending", async () => {
+  it("joins duplicate installs and neither serves nor activates while an essential download is pending", async () => {
     const env = environment();
     let release;
-    let waiting = false;
+    let notifyWaiting;
+    const waiting = new Promise(resolve => { notifyWaiting = resolve; });
     const normalFetch = env.worker.fetch.getMockImplementation();
     env.worker.fetch.mockImplementation((request) => {
-      if (request.url.endsWith(".webp")) { waiting = true; return new Promise((resolve) => { release = resolve; }); }
+      if (request.url.endsWith(".webp")) return new Promise(resolve => { release = resolve; notifyWaiting(); });
       return normalFetch(request);
     });
     const installing = env.lifetime("install");
-    await vi.waitFor(() => expect(waiting).toBe(true));
+    const duplicate = env.lifetime("install");
+    await waiting;
     const cache = await env.caches.open(env.registration.cacheName);
     expect(await cache.match(MARKER)).toBeUndefined();
+    expect(await (await cache.match(CANDIDATE)).json()).toEqual({ schemaVersion: 1, state: "CANDIDATE", buildId: env.config.buildId, manifestSha256: sha256(JSON.stringify(normalizePwaWorkerConfig(env.config))) });
+    expect((await env.fetchRequest("/planet/en/", { mode: "navigate" })).type).toBe("error");
+    await expect(env.lifetime("activate")).rejects.toThrow("incomplete shell");
+    expect(env.worker.clients.claim).not.toHaveBeenCalled();
     release(new Response(env.bodies.get("/planet/textures/antique-world.webp")));
-    await installing;
+    await Promise.all([installing, duplicate]);
+    expect(env.worker.fetch).toHaveBeenCalledTimes(env.config.files.length);
     expect(await cache.match(MARKER)).toBeDefined();
+    expect(await cache.match(CANDIDATE)).toBeUndefined();
   });
-  it.each(["corrupt", "short", "quota", "marker quota", "network"])("failed %s update removes only the candidate and leaves the prior worker usable", async (failure) => {
+  it.each(["corrupt", "short", "quota", "marker quota", "network"])("failed %s update stays incomplete and leaves the prior worker untouched", async (failure) => {
     const storage = memoryCaches();
     const previous = environment(shell("a"), storage);
     await previous.lifetime("install");
     await previous.lifetime("activate");
+    const previousCache = storage.stores.get(previous.registration.cacheName);
+    const previousEntries = [...previousCache.entries];
+    previousCache.put.mockClear(); previousCache.delete.mockClear();
     const current = environment(shell("b"), storage);
     if (failure === "corrupt") current.worker.fetch.mockResolvedValue(new Response("different bytes"));
     if (failure === "short") current.worker.fetch.mockResolvedValue(new Response("x"));
@@ -693,35 +711,51 @@ describe("atomic verified install and recovery", () => {
     if (failure === "quota") storage.putFailure = (name, url) => name === current.registration.cacheName && url.endsWith("app-b.js");
     if (failure === "marker quota") storage.putFailure = (name, url) => name === current.registration.cacheName && url === MARKER;
     await expect(current.lifetime("install")).rejects.toThrow();
-    expect(storage.stores.has(current.registration.cacheName)).toBe(false);
+    const candidate = storage.stores.get(current.registration.cacheName);
+    expect(await candidate.match(CANDIDATE)).toBeDefined();
+    expect(await candidate.match(MARKER)).toBeUndefined();
+    if (failure === "marker quota") expect(candidate.entries.size).toBe(current.config.files.length + 1);
+    else expect(await candidate.match(ORIGIN + "/planet/assets/app-b.js")).toBeUndefined();
     expect(storage.stores.has(previous.registration.cacheName)).toBe(true);
+    expect([...previousCache.entries]).toEqual(previousEntries);
+    expect(previousCache.put).not.toHaveBeenCalled(); expect(previousCache.delete).not.toHaveBeenCalled();
     expect(await (await previous.fetchRequest("/planet/en/", { mode: "navigate" })).text()).toContain("EN a");
     expect(current.worker.skipWaiting).not.toHaveBeenCalled();
-    expect(storage.delete.mock.calls.map(([name]) => name)).toEqual([current.registration.cacheName]);
+    expect(storage.delete).not.toHaveBeenCalled();
   });
   it("rejects a same-size SHA mismatch", async () => {
     const env = environment();
     const original = env.bodies.get("/planet/ru/");
     env.bodies.set("/planet/ru/", original.replace("RU", "XX"));
     await expect(env.lifetime("install")).rejects.toThrow("integrity mismatch");
-    expect(env.caches.stores.has(env.registration.cacheName)).toBe(false);
+    const cache = env.caches.stores.get(env.registration.cacheName);
+    expect(await cache.match(MARKER)).toBeUndefined();
+    expect(await cache.match(ORIGIN + "/planet/ru/")).toBeUndefined();
   });
-  it("cancels an overlong response before retaining the candidate", async () => {
+  it("cancels an overlong response without retaining the failed file or marking COMPLETE", async () => {
     const env = environment();
     const cancel = vi.fn();
     env.worker.fetch.mockImplementation(async request => new Response(new ReadableStream({ start(controller) { controller.enqueue(new Uint8Array(4096)); }, cancel }), { headers: { "Content-Type": new URL(request.url).pathname.endsWith(".js") ? "text/javascript" : "text/html" } }));
     await expect(env.lifetime("install")).rejects.toThrow("byte budget");
     expect(cancel).toHaveBeenCalledOnce();
-    expect(env.caches.stores.has(env.registration.cacheName)).toBe(false);
+    const cache = env.caches.stores.get(env.registration.cacheName);
+    expect([...cache.entries.keys()]).toEqual([CANDIDATE]);
   });
   it("aborts a stalled install and never marks it complete", async () => {
     vi.useFakeTimers();
     const env = environment();
-    env.worker.fetch.mockImplementation((request) => new Promise((_resolve, reject) => request.signal.addEventListener("abort", () => reject(new Error("Aborted")))));
+    let notifyFetch;
+    const fetching = new Promise(resolve => { notifyFetch = resolve; });
+    env.worker.fetch.mockImplementation((request) => new Promise((_resolve, reject) => {
+      request.signal.addEventListener("abort", () => reject(new Error("Aborted")));
+      notifyFetch();
+    }));
     const result = env.lifetime("install").catch((error) => error);
+    await fetching;
     await vi.advanceTimersByTimeAsync(30_001);
     expect(await result).toBeInstanceOf(Error);
-    expect(env.caches.stores.has(env.registration.cacheName)).toBe(false);
+    const cache = env.caches.stores.get(env.registration.cacheName);
+    expect([...cache.entries.keys()]).toEqual([CANDIDATE]);
   });
   it.each(["no-store", "private"])("rejects %s responses even with matching bytes", async (policy) => {
     const env = environment();
@@ -749,7 +783,142 @@ describe("atomic verified install and recovery", () => {
     env.worker.fetch.mockImplementation((request) => new URL(request.url).pathname === pathname
       ? new Response(pkg.bodies.get(pathname), { headers: { "Content-Type": contentType } }) : normalFetch(request));
     await expect(env.lifetime("install")).rejects.toThrow("Content-Type");
-    expect(env.caches.stores.has(env.registration.cacheName)).toBe(false);
+    const cache = env.caches.stores.get(env.registration.cacheName);
+    expect(await cache.match(MARKER)).toBeUndefined();
+    expect(await cache.match(ORIGIN + pathname)).toBeUndefined();
+  });
+  it("resumes multiple failed registrations using only exact files from the same normalized manifest", async () => {
+    const storage = memoryCaches(), pkg = shell();
+    const first = environment(pkg, storage);
+    failDownload(first, "/planet/en/");
+    await expect(first.lifetime("install")).rejects.toThrow("Interrupted download");
+    expect(downloadedPaths(first)).toEqual(["/planet/assets/app-a.js", "/planet/en/"]);
+    const second = environment(pkg, storage);
+    failDownload(second, "/planet/ru/");
+    await expect(second.lifetime("install")).rejects.toThrow("Interrupted download");
+    expect(downloadedPaths(second)).toEqual(["/planet/en/", "/planet/ru/"]);
+    const cache = storage.stores.get(first.registration.cacheName);
+    expect(await cache.match(MARKER)).toBeUndefined();
+    const final = environment(pkg, storage);
+    await final.lifetime("install");
+    expect(downloadedPaths(final)).toEqual(["/planet/ru/", "/planet/textures/antique-world.webp"]);
+    expect(await cache.match(CANDIDATE)).toBeUndefined();
+    expect(await cache.keys()).toHaveLength(pkg.config.files.length + 1);
+    await final.lifetime("activate");
+    final.worker.fetch.mockClear();
+    for (const locale of ["ru", "en"]) expect(await (await final.fetchRequest(`/planet/${locale}/`, { mode: "navigate" })).text()).toContain(locale.toUpperCase() + " a");
+    expect(final.worker.fetch).not.toHaveBeenCalled();
+    expect(storage.delete).not.toHaveBeenCalled();
+  });
+  it("bounds failed builds to the latest candidate while preserving complete, damaged and unrelated caches", async () => {
+    const storage = memoryCaches(), previous = environment(shell("a"), storage);
+    await previous.lifetime("install"); await previous.lifetime("activate");
+    const previousCache = storage.stores.get(previous.registration.cacheName), previousEntries = [...previousCache.entries];
+    const unrelated = await storage.open("unrelated-app");
+    await unrelated.put(ORIGIN + "/unrelated", new Response("preserve"));
+    const damaged = await storage.open(PREFIX + "c".repeat(64));
+    await damaged.put(MARKER, new Response("damaged COMPLETE", { headers: { Vary: "Cookie" } }));
+    await damaged.put(CANDIDATE, new Response(JSON.stringify({ schemaVersion: 1, state: "CANDIDATE", buildId: "c".repeat(64), manifestSha256: "1".repeat(64) })));
+    const malformed = await storage.open(PREFIX + "d".repeat(64));
+    await malformed.put(CANDIDATE, new Response(JSON.stringify({ schemaVersion: 1, state: "CANDIDATE", buildId: "d".repeat(64), manifestSha256: ["1".repeat(64)] })));
+    for (const build of ["b", "e", "f"]) {
+      const attempt = environment(shell(build), storage);
+      failDownload(attempt, "/planet/textures/antique-world.webp");
+      await expect(attempt.lifetime("install")).rejects.toThrow("Interrupted download");
+      expect(await storage.keys()).toEqual([previous.registration.cacheName, "unrelated-app", PREFIX + "c".repeat(64), PREFIX + "d".repeat(64), attempt.registration.cacheName]);
+    }
+    expect(storage.delete.mock.calls.map(([name]) => name)).toEqual([PREFIX + "b".repeat(64), PREFIX + "e".repeat(64)]);
+    expect(storage.match).toHaveBeenCalledWith(MARKER, { cacheName: PREFIX + "c".repeat(64), ignoreVary: true });
+    expect([...previousCache.entries]).toEqual(previousEntries);
+    expect(await (await previous.fetchRequest("/planet/en/", { mode: "navigate" })).text()).toContain("EN a");
+    expect(await (await unrelated.match(ORIGIN + "/unrelated")).text()).toBe("preserve");
+  });
+  it("refuses a same-build conflicting candidate without changing its files or metadata", async () => {
+    const storage = memoryCaches(), first = environment(shell(), storage);
+    failDownload(first, "/planet/textures/antique-world.webp");
+    await expect(first.lifetime("install")).rejects.toThrow("Interrupted download");
+    const cache = storage.stores.get(first.registration.cacheName), before = [...cache.entries];
+    cache.put.mockClear(); cache.delete.mockClear();
+    const changed = shell();
+    changed.config.files.find(file => file.url.endsWith(".webp")).aliases = ["/planet/textures/antique-world.webp?v=different-binding"];
+    const conflicting = environment(changed, storage);
+    await expect(conflicting.lifetime("install")).rejects.toThrow("candidate is incompatible");
+    expect(conflicting.worker.fetch).not.toHaveBeenCalled();
+    expect(cache.put).not.toHaveBeenCalled(); expect(cache.delete).not.toHaveBeenCalled();
+    expect([...cache.entries]).toEqual(before);
+    expect(storage.delete).not.toHaveBeenCalled();
+  });
+  it.each(["hash", "MIME", "private"])("repairs a candidate with %s damage and prunes only its noncanonical entries", async damage => {
+    const storage = memoryCaches(), first = environment(shell(), storage);
+    failDownload(first, "/planet/textures/antique-world.webp");
+    await expect(first.lifetime("install")).rejects.toThrow("Interrupted download");
+    const cache = storage.stores.get(first.registration.cacheName), en = first.bodies.get("/planet/en/");
+    const untouched = [cache.entries.get(ORIGIN + "/planet/assets/app-a.js"), cache.entries.get(ORIGIN + "/planet/ru/")];
+    await cache.put(ORIGIN + "/planet/en/", new Response(damage === "hash" ? en.replace("EN", "XX") : en,
+      { headers: { "Content-Type": damage === "MIME" ? "text/plain" : "text/html", ...(damage === "private" ? { "Cache-Control": "private" } : {}) } }));
+    await cache.put(ORIGIN + "/planet/textures/antique-world.webp?v=sha256-canonical", new Response("unverified alias"));
+    await cache.put(ORIGIN + "/planet/unlisted", new Response("unlisted"));
+    const other = await storage.open("unrelated-app");
+    await other.put(ORIGIN + "/unrelated", new Response("preserve"));
+    const retry = environment(shell(), storage);
+    await retry.lifetime("install");
+    expect(downloadedPaths(retry)).toEqual(["/planet/en/", "/planet/textures/antique-world.webp"]);
+    expect([cache.entries.get(ORIGIN + "/planet/assets/app-a.js"), cache.entries.get(ORIGIN + "/planet/ru/")]).toEqual(untouched);
+    expect([...cache.entries.keys()].sort()).toEqual([...retry.config.files.map(file => ORIGIN + file.url), MARKER].sort());
+    expect(await (await other.match(ORIGIN + "/unrelated")).text()).toBe("preserve");
+    expect(storage.delete).not.toHaveBeenCalled();
+  });
+  it("revalidates all candidate files before COMPLETE and resumes a final eviction", async () => {
+    const env = environment(), cache = await env.caches.open(env.registration.cacheName);
+    const put = cache.put.getMockImplementation();
+    cache.put.mockImplementation(async (request, response) => {
+      await put(request, response);
+      if (absolute(request).endsWith(".webp")) await cache.delete(ORIGIN + "/planet/ru/");
+    });
+    await expect(env.lifetime("install")).rejects.toThrow("immutable public content");
+    expect(await cache.match(MARKER)).toBeUndefined();
+    expect(await cache.match(CANDIDATE)).toBeDefined();
+    cache.put.mockImplementation(put);
+    const retry = environment(shell(), env.caches);
+    await retry.lifetime("install");
+    expect(downloadedPaths(retry)).toEqual(["/planet/ru/"]);
+    expect(await cache.match(MARKER)).toBeDefined();
+  });
+  it("retries a failed COMPLETE write in the same worker without downloading verified files again", async () => {
+    const env = environment();
+    env.caches.putFailure = (_name, url) => url === MARKER;
+    await expect(env.lifetime("install")).rejects.toThrow("Quota exceeded");
+    const cache = env.caches.stores.get(env.registration.cacheName);
+    expect(await cache.match(CANDIDATE)).toBeDefined();
+    expect(await cache.match(MARKER)).toBeUndefined();
+    expect(await cache.keys()).toHaveLength(env.config.files.length + 1);
+    env.caches.putFailure = undefined; env.worker.fetch.mockClear();
+    await env.lifetime("install");
+    expect(env.worker.fetch).not.toHaveBeenCalled();
+    expect(await cache.match(MARKER)).toBeDefined();
+    expect(await cache.match(CANDIDATE)).toBeUndefined();
+  });
+  it("does not download files before a candidate binding can be persisted", async () => {
+    const env = environment();
+    env.caches.putFailure = (_name, url) => url === CANDIDATE;
+    await expect(env.lifetime("install")).rejects.toThrow("Quota exceeded");
+    expect(env.worker.fetch).not.toHaveBeenCalled();
+    expect(env.caches.stores.get(env.registration.cacheName).entries.size).toBe(0);
+    env.caches.putFailure = undefined;
+    await env.lifetime("install");
+    expect(env.worker.fetch).toHaveBeenCalledTimes(env.config.files.length);
+  });
+  it.each(["invalid JSON", "unknown fields", "oversized"])("refuses %s candidate metadata without adopting its bytes", async damage => {
+    const env = environment(), cache = await env.caches.open(env.registration.cacheName);
+    const marker = { schemaVersion: 1, state: "CANDIDATE", buildId: env.config.buildId, manifestSha256: sha256(JSON.stringify(normalizePwaWorkerConfig(env.config))) };
+    const text = damage === "invalid JSON" ? "{" : damage === "oversized" ? " ".repeat(1025) + JSON.stringify(marker) : JSON.stringify({ ...marker, extra: true });
+    await cache.put(CANDIDATE, new Response(text));
+    await cache.put(ORIGIN + "/planet/ru/", new Response(env.bodies.get("/planet/ru/"), { headers: { "Content-Type": "text/html" } }));
+    const before = [...cache.entries]; cache.put.mockClear(); cache.delete.mockClear();
+    await expect(env.lifetime("install")).rejects.toThrow();
+    expect(env.worker.fetch).not.toHaveBeenCalled();
+    expect(cache.put).not.toHaveBeenCalled(); expect(cache.delete).not.toHaveBeenCalled();
+    expect([...cache.entries]).toEqual(before);
   });
   it("does not overwrite an existing completed build on reinstall or caller config mutation", async () => {
     const env = environment();
@@ -758,6 +927,10 @@ describe("atomic verified install and recovery", () => {
     env.worker.fetch.mockRejectedValue(new Error("Offline"));
     await env.lifetime("install");
     expect(env.worker.fetch).toHaveBeenCalledTimes(env.config.files.length);
+    const fresh = environment(shell(), env.caches);
+    fresh.worker.fetch.mockRejectedValue(new Error("Offline"));
+    await fresh.lifetime("install");
+    expect(fresh.worker.fetch).not.toHaveBeenCalled();
     expect(env.caches.delete).not.toHaveBeenCalled();
   });
   it("preserves existing completed data if a conflicting manifest reuses its build ID", async () => {

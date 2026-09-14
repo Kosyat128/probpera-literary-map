@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "browser": "153.0.8010.37",
+  "sourceWorkerBundleSha256": "3ede0e5593a58f342bbd72fb087a0c46150031151bbe2d93fa382dc1899c88bf",
+  "initialCounts": {
+    "/planet/assets/app.js": 1,
+    "/planet/en/": 1,
+    "/planet/ru/": 1,
+    "/planet/textures/fixture.webp": 1
+  },
+  "finalCounts": {
+    "/planet/assets/app.js": 1,
+    "/planet/en/": 2,
+    "/planet/ru/": 1,
+    "/planet/textures/fixture.webp": 2
+  },
+  "partial": {
+    "paths": [
+      "/planet/__pwa_candidate__",
+      "/planet/assets/app.js",
+      "/planet/en/",
+      "/planet/ru/"
+    ],
+    "complete": false,
+    "active": false,
+    "controlled": false
+  },
+  "final": {
+    "state": "COMPLETE",
+    "activationSequence": 1,
+    "buildId": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "paths": [
+      "/planet/__pwa_complete__",
+      "/planet/assets/app.js",
+      "/planet/en/",
+      "/planet/ru/",
+      "/planet/textures/fixture.webp"
+    ],
+    "verified": [
+      {
+        "url": "/planet/assets/app.js",
+        "bytes": 40,
+        "sha256": "d00f96cd42c05ff5c93d9ff3f7e80b8719a491c68666bec42d0009bbaa5b7efd"
+      },
+      {
+        "url": "/planet/en/",
+        "bytes": 96,
+        "sha256": "a486e81fb25ddeb14970129130ecbd9765736ebbaff90d5f494c5c9fa373f27a"
+      },
+      {
+        "url": "/planet/ru/",
+        "bytes": 111,
+        "sha256": "cf2fd8db615a94e3aa261c5839f371b2fb8152e69caffc9f51bee5b840547ec6"
+      },
+      {
+        "url": "/planet/textures/fixture.webp",
+        "bytes": 33,
+        "sha256": "a53062d3dfdc2c5eb737bec245769fb7f26335c1954616a2c0c25146c74221cf"
+      }
+    ]
+  },
+  "offlineLocales": [
+    "ru",
+    "en"
+  ],
+  "scope": "Actual Chrome SW lifecycle with bundled current runtime and small transport fixtures; not a full application artifact or native/store acceptance."
+}

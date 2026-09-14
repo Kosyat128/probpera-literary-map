@@ -9,6 +9,8 @@ const PREFIX = "literary-planet-pwa-v1-";
 const SHA256 = /^[a-f0-9]{64}$/u;
 const SCOPE = "/planet/";
 const MARKER_PATH = SCOPE + "__pwa_complete__";
+const CANDIDATE_PATH = SCOPE + "__pwa_candidate__";
+const MAX_CANDIDATE_BYTES = 1024;
 const SELECTION_PATH = SCOPE + "__pwa_selection__";
 const CLIENT_PATH = SCOPE + "__pwa_client__/";
 const PRIVATE_PATH = /\/(?:api|auth|login|logout|license|licenses|entitlements|private|admin|cms|child|children|parent|purchase|billing|payments)(?:\/|$)/iu;
@@ -80,6 +82,7 @@ export function installPwaWorker(worker, input) {
   const config = normalizePwaWorkerConfig(input, origin);
   const cacheName = PREFIX + config.buildId;
   const markerUrl = new URL(MARKER_PATH, origin).href;
+  const candidateUrl = new URL(CANDIDATE_PATH, origin).href;
   const selectionUrl = new URL(SELECTION_PATH, origin).href;
   const generation = manifest => Object.freeze({ config: manifest, cacheName: PREFIX + manifest.buildId, entries: new Map(manifest.files.flatMap(file => [file.url, ...file.aliases].map(url => [url, file]))) });
   const engine = generation(config);
@@ -87,6 +90,7 @@ export function installPwaWorker(worker, input) {
   let selected = engine, selectionPromise, selectionInvalid = false, blockedClientId = null, rollbackPending = false;
   let offlineCheck = null;
   let offlineRepair = null;
+  let installPromise = null;
   let selectionEpoch = 0;
   const ResponseClass = worker.Response ?? Response;
   const RequestClass = worker.Request ?? Request;
@@ -226,23 +230,80 @@ export function installPwaWorker(worker, input) {
       return selected;
     })();
   }
-  async function install() {
+  async function readCandidate(response) {
+    if (!response) throw new Error("Installation candidate is missing");
+    const candidate = JSON.parse(new TextDecoder().decode(await readBounded(response, MAX_CANDIDATE_BYTES)));
+    exactKeys(candidate, ["schemaVersion", "state", "buildId", "manifestSha256"]);
+    if (candidate.schemaVersion !== 1 || candidate.state !== "CANDIDATE" || typeof candidate.buildId !== "string" || !SHA256.test(candidate.buildId) || typeof candidate.manifestSha256 !== "string" || !SHA256.test(candidate.manifestSha256)) throw new Error("Invalid installation candidate identity");
+    return candidate;
+  }
+  async function verifyCandidate(response) {
+    const candidate = await readCandidate(response);
+    if (candidate.buildId !== config.buildId || candidate.manifestSha256 !== await configHash()) throw new Error("Existing installation candidate is incompatible; do not overwrite it");
+  }
+  async function pruneObsoleteCandidates() {
+    // Different builds cannot resume each other's partial downloads. Delete only
+    // explicit candidates; preserve raw COMPLETE markers even when damaged.
+    for (const name of await worker.caches.keys()) {
+      if (name === cacheName || !new RegExp("^" + PREFIX + "[a-f0-9]{64}$", "u").test(name)) continue;
+      try {
+        if (await worker.caches.match(markerUrl, { cacheName: name, ignoreVary: true })) continue;
+        const candidate = await readCandidate(await worker.caches.match(candidateUrl, { cacheName: name }));
+        if (name !== PREFIX + candidate.buildId) continue;
+      } catch { continue; }
+      await worker.caches.delete(name);
+    }
+  }
+  async function populateCandidate() {
     const cache = await worker.caches.open(cacheName);
-    if (await cache.match(markerUrl)) {
+    if (await cache.match(markerUrl, { ignoreVary: true })) {
       if (await currentComplete(true)) return;
       throw new Error("Existing completed cache is incompatible or damaged; do not overwrite it");
     }
-    // This build's cache is a candidate until its final COMPLETE marker exists.
-    // Different build IDs and all other applications remain untouched on failure.
-    try {
-      for (const request of await cache.keys()) await cache.delete(request);
-      for (const file of config.files) await cache.put(new URL(file.url, origin).href, await download(file));
-      const marker = { state: "COMPLETE", manifestSha256: await configHash(), completedAt: Date.now(), activationSequence: 0, manifest: config };
-      await cache.put(markerUrl, new ResponseClass(JSON.stringify(marker), { headers: { "Content-Type": "application/json" } }));
-    } catch (error) {
-      await worker.caches.delete(cacheName).catch(() => undefined);
-      throw error;
+    const candidate = await cache.match(candidateUrl);
+    if (candidate) {
+      // The build ID alone does not bind a previous attempt's bytes or aliases.
+      // Refuse conflicting metadata without modifying that attempt.
+      await verifyCandidate(candidate);
     }
+    await pruneObsoleteCandidates();
+    if (!candidate) {
+      // Unbound leftovers cannot prove which manifest initiated the download.
+      for (const request of await cache.keys()) await cache.delete(request);
+      const marker = { schemaVersion: 1, state: "CANDIDATE", buildId: config.buildId, manifestSha256: await configHash() };
+      await cache.put(candidateUrl, new ResponseClass(JSON.stringify(marker), { headers: { "Content-Type": "application/json" } }));
+    }
+    const assertCandidate = async () => verifyCandidate(await worker.caches.match(candidateUrl, { cacheName }));
+    await assertCandidate();
+    const canonical = new Set(config.files.map(file => new URL(file.url, origin).href));
+    for (const request of await cache.keys()) {
+      if (request.url !== candidateUrl && !canonical.has(request.url)) await cache.delete(request);
+    }
+    // Keep only verified whole files across interruption. An incomplete candidate
+    // is never an active generation, and failures never delete a completed build.
+    for (const file of config.files) {
+      const url = new URL(file.url, origin).href;
+      const cached = await cache.match(url);
+      if (cached) {
+        try { await verifiedResponse(cached, file, config.buildId); continue; }
+        catch { await cache.delete(url); }
+      }
+      await cache.put(url, await download(file));
+    }
+    // A successful put is not proof that earlier entries survived eviction.
+    await assertCandidate();
+    await verifyCache(cacheName, config);
+    await assertCandidate();
+    const marker = { state: "COMPLETE", manifestSha256: await configHash(), completedAt: Date.now(), activationSequence: 0, manifest: config };
+    await cache.put(markerUrl, new ResponseClass(JSON.stringify(marker), { headers: { "Content-Type": "application/json" } }));
+    // Preserve resumability if writing COMPLETE fails; remove only afterwards.
+    await cache.delete(candidateUrl).catch(() => undefined);
+  }
+  function install() {
+    // Browser installation jobs serialize this fixed registration scope. This
+    // promise also joins duplicate listeners in this worker; it is not a lock
+    // against arbitrary external CacheStorage writers.
+    return installPromise ??= populateCandidate().finally(() => { installPromise = null; });
   }
   async function activate() {
     if (!await currentComplete(true)) throw new Error("Cannot activate an incomplete shell");

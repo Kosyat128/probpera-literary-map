@@ -1,3 +1,16 @@
+<!-- s11-install-resume-20260914:begin -->
+S11 entered in a documented parallel-safe scope for CONTENT-008.
+Public PWA first-install recovery reuses only whole verified candidate files.
+201 worker unit cases and1 actual Chrome SW retry scenario passed:
+new page after interruption, corrupted EN refetched, intact RU/app reused, then RUEN offline.
+Current/previous COMPLETE and child/access boundaries stay intact; candidate is not ready.
+No full app/native build repeated for this PWA-only change. Prior PWA0381b95f includes
+the requested integrated archive card/search but predates this retry implementation.
+Evidence: evidence/S11/install-resume-20260914/result.json.
+Next: signed content-package consumer/storage on S08 export; final owner archive sync after
+app implementation (D107). First-open S03; S11 and all release gates remain unaccepted.
+<!-- s11-install-resume-20260914:end -->
+
 <!-- opposite-locale-search-20260914:begin -->
 Existing opposite-locale author names enrich shared search while current labels,
 canonical IDs and publication/authorship gates remain authoritative.

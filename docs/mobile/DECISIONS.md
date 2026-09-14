@@ -615,3 +615,13 @@
   rights, owner or stage/release acceptance. Prepare a parallel-safe S11
   offline/download/sync entry on canonical exports; D107 final owner archive
   synchronization remains deferred until app implementation is complete.
+
+- D113: Enter S11 in the documented parallel-safe CONTENT-008 scope. Resume
+  interrupted public PWA base installs from whole hash-verified files, bound to
+  the normalized manifest; keep COMPLETE serving/activation atomic and preserve
+  prior completed generations. Candidate metadata does not claim a cross-global
+  lock. One worker unit suite and actual Chrome registration retry validate this
+  source slice. Existing0381b95f PWA predates this worker change; batch a future
+  full PWA build after further S11 integration. Native/card/search artifacts stay
+  preserved. No child/content/native/offline stage acceptance, no content filling;
+  D107 final owner archive synchronization remains after app implementation.

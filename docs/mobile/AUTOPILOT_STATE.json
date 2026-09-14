@@ -5,7 +5,7 @@
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
   "headSha": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-14T03:23:59.910Z",
+  "updatedAt": "2026-09-14T03:46:47.905Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -1658,7 +1658,7 @@
     {
       "id": "S11",
       "name": "Offline/download/sync",
-      "status": "NOT_STARTED",
+      "status": "IN_PROGRESS",
       "criteria": [
         {
           "id": "S11.acceptance",
@@ -1718,11 +1718,13 @@
         },
         {
           "id": "S11.CONTENT-008",
-          "status": "OPEN",
-          "evidence": [],
+          "status": "IN_PROGRESS",
+          "evidence": [
+            "docs/mobile/evidence/S11/install-resume-20260914/result.json"
+          ],
           "commit": null,
           "lastValidatedAt": null,
-          "notes": "Interrupted download recovery. Canonical export/display comes before offline integrity and reviewed English equivalence."
+          "notes": "Interrupted download recovery. Canonical export/display comes before offline integrity and reviewed English equivalence. Public PWA first-install whole-file retry is implemented and tested. Full all-platform package/download recovery is not accepted."
         },
         {
           "id": "S11.CONTENT-009",
@@ -1829,8 +1831,14 @@
           "notes": "All loading/empty/error/offline states. Shared feature presentation precedes integrated RU/EN layout, recovery and accessibility validation."
         }
       ],
-      "lastGreenCommands": [],
-      "artifacts": [],
+      "lastGreenCommands": [
+        "node .tmp/s11-install-resume-20260914/run-checks.mjs unit a1",
+        "node .tmp/s11-install-resume-20260914/run-checks.mjs browser a1"
+      ],
+      "artifacts": [
+        "docs/mobile/evidence/S11/install-resume-20260914/entry.json",
+        "docs/mobile/evidence/S11/install-resume-20260914/result.json"
+      ],
       "externalBlockers": []
     },
     {
@@ -10630,7 +10638,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Prepare a parallel-safe S11 offline/download/synchronization entry on the canonical export and dependency contracts, with disjoint file ownership and bounded validation. No factual archive population. Owner final canonical archive synchronization and complete RUEN/content/rights validation follow app implementation (D107). Preserve these artifacts and do not repeat unchanged builds or tests. First-open S03 and stage acceptance remain unchanged; frozen iOS83 stays pending. No production action.",
+    "nextAction": "Continue S11 with bounded signed content-package consumption/storage on the S08 canonical export contract; retain public PWA bootstrap recovery as a distinct tested layer. No owner archive population. Batch the next full PWA artifact refresh with the next affected runtime slice; existing PWA0381b95f includes the requested integrated card/search but predates install-resume. Android048c8e1b and frozen iOS83 stay preserved. Owner final canonical archive synchronization follows app implementation (D107). First-open S03 remains unchanged.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -10652,7 +10660,9 @@
       "docs/mobile/requirements/v12/18_CONTENT_DELIVERY_OFFLINE_SYNC_RU.md",
       "docs/mobile/requirements/v12/21_VISUAL_UX_CANON_RU.md",
       "docs/mobile/requirements/v12/22_ACCESSIBILITY_LOCALIZATION_AUDIO_RU.md",
-      "docs/mobile/requirements/v12/23_PERFORMANCE_RELIABILITY_DEVICE_MATRIX_RU.md"
+      "docs/mobile/requirements/v12/23_PERFORMANCE_RELIABILITY_DEVICE_MATRIX_RU.md",
+      "docs/mobile/evidence/S11/install-resume-20260914/entry.json",
+      "docs/mobile/evidence/S11/install-resume-20260914/result.json"
     ],
     "commands": [
       "node scripts/mobile/verify-requirements.mjs",
@@ -10764,6 +10774,12 @@
         "reason": "Existing country/writer/work screens can be corrected and validated against the current canonical catalog while editorial/child/commerce/device/release gates remain open. No external authority is required for scene-preserving navigation or withholding an unverified fallback.",
         "evidence": [
           "docs/mobile/evidence/S09/country-writer-20260914/entry.json"
+        ]
+      },
+      "S11": {
+        "reason": "Matrix69 permits previous stage complete OR documented parallel-safe entry. Existing S08 signed export and S10 shared exact-source PWA checkpoints are preserved. First-install interruption recovery is independent of unresolved editorial, native device and child gates.",
+        "evidence": [
+          "docs/mobile/evidence/S11/install-resume-20260914/entry.json"
         ]
       }
     },
@@ -12024,7 +12040,7 @@
       "stageAccepted": false,
       "releaseReady": false,
       "sourceCommit": "8bd5a8acc50a9c0f2c07aba9aa2251cae26d9904",
-      "sourceInputsCurrent": true,
+      "sourceInputsCurrent": false,
       "artifacts": {
         "android": {
           "evidence": "docs/mobile/evidence/S04/archive-search-android-20260914/result.json",
@@ -12066,7 +12082,8 @@
           "installedRuntimeTested": false
         }
       },
-      "pwaBrowserPasses": 1
+      "pwaBrowserPasses": 1,
+      "subsequentSourceChange": "S11 public PWA install-resume, outside the completed card/search behavior; saved artifacts retain their exact original source proof."
     },
     "s04ArchiveSearchAndroid": {
       "status": "BUILD_AND_BINARY_INSPECTION_PASSED",
@@ -12074,6 +12091,17 @@
       "sha256": "376a85baa9e29e8bd24285f028b09faafd88dd3af797f1e4e38ff0268950dd83",
       "sourceCommit": "8bd5a8acc50a9c0f2c07aba9aa2251cae26d9904",
       "buildId": "048c8e1b95f0c30a6da8e462156055579c5379b9c9c571e9655310822d418e7f",
+      "stageAccepted": false,
+      "releaseReady": false
+    },
+    "s11InstallResume": {
+      "status": "SOURCE_UNIT_AND_REAL_BROWSER_VALIDATION_PASSED",
+      "evidence": "docs/mobile/evidence/S11/install-resume-20260914/result.json",
+      "sha256": "08acc70f2a4baa5529586d72a45b6977da88815da93a78b81a86705dd3bc0e50",
+      "sourceBaseCommit": "32dad95fde9aba390a5b15501f3aed07767b0fd3",
+      "sourceInputsSha256": "77a203d5cf3f105d932eb4f8ed269c758d967691b3b674fddaef081b64bfac44",
+      "passingUnitCases": 201,
+      "actualChromeCases": 1,
       "stageAccepted": false,
       "releaseReady": false
     }

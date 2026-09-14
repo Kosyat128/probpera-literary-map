@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-14T03:46:07.951Z",
+  "reason": "Playwright resolved relative reporter output from the config directory. The actual test passed once; only report discovery failed.",
+  "originalReportPath": ".tmp/s11-install-resume-20260914/docs/mobile/evidence/S11/install-resume-20260914/browser-a1/playwright.json",
+  "reportSha256": "a77cb84d6eabe5154d35d5ac47d5cbf2cb8bb9b8338b90dc474e5b8d06fda3c1",
+  "additionalTestRuns": 0,
+  "runner": {
+    "path": ".tmp/s11-install-resume-20260914/run-checks.mjs",
+    "testedOriginal": "docs/mobile/evidence/S11/install-resume-20260914/browser-a1/run-checks-original.mjs",
+    "beforeSha256": "b0e0e06f4ba279ceeb9cbd9a022d658fcc0a6239f41c23e281bda30859fc5f15",
+    "afterSha256": "0b41efe673144598e6175f31d7fc22fd39711c8a0f61f5dabda3ba13f7a7de79",
+    "correction": "Import node:path and make the reporter output path absolute; test commands, cases and source are unchanged."
+  }
+}
