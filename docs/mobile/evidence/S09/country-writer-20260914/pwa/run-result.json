@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "runId": "pwa-country-writer-20260914-a1",
+  "sourceCommit": "604f919d9d92a942ce56b614bd4aa6bb79464c3c",
+  "buildId": "84163b52ca51ed7dcc8fce4aa3b8755ea7c020432610484477c8f5128e160586",
+  "strictArtifactAuditPassed": true,
+  "browserTestsRun": true,
+  "browserExecutions": 1,
+  "statistics": {
+    "startTime": "2026-09-14T02:28:37.542Z",
+    "duration": 28691.818,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "browserExitCode": 0,
+  "failure": null,
+  "sourceUnchanged": true,
+  "pass": true,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "installedRuntimeVerified": false,
+  "productionActionsPerformed": false
+}

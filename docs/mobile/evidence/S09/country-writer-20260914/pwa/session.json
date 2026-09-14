@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "runId": "pwa-country-writer-20260914-a1",
+  "localQaOnly": true,
+  "origin": "http://127.0.0.1:4296",
+  "artifact": {
+    "buildId": "84163b52ca51ed7dcc8fce4aa3b8755ea7c020432610484477c8f5128e160586",
+    "sourceCommit": "604f919d9d92a942ce56b614bd4aa6bb79464c3c",
+    "sourceInputsSha256": "86afb62512959380c950bae8808296198679bdfc45506d423a40aff50b21a4ca",
+    "authoritySha256": "713124ed32facd6c83d580dee5642476317bbf44537abb1d889524c68863eab8",
+    "localQaAuthority": true,
+    "releaseReady": false
+  },
+  "planned": {
+    "sourceBuilds": 1,
+    "strictArtifactAudits": 1,
+    "browserExecutions": 1
+  },
+  "limits": [
+    "Ephemeral signer exists only in this local process. No provider/payment or installed OS evidence.",
+    "One new Vite/worker build for country/writer return and eligible localized country facts. Prior runtimes remain archived. One actual desktop browser case verifies the built RUEN book-to-writer return and retained offline globe; no old broad suite or benchmark is rerun."
+  ]
+}

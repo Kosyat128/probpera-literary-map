@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "originalPath": ".tmp/pwa-cross-engine-results/pwa-country-writer-20260914-a1/strict-artifact-audit.log",
+  "originalBytes": 795,
+  "originalSha256": "c1b9640c84c451239e88e28b16dacda3bf57fbd3eba3567fcc6158919fdd34ea",
+  "reconstruction": "UTF-8 encode text exactly, without newline normalization",
+  "text": "{\n  \"pass\": true,\n  \"identity\": {\n    \"buildId\": \"84163b52ca51ed7dcc8fce4aa3b8755ea7c020432610484477c8f5128e160586\",\n    \"sourceCommit\": \"604f919d9d92a942ce56b614bd4aa6bb79464c3c\",\n    \"localQaAuthority\": true\n  },\n  \"counts\": {\n    \"files\": 1368,\n    \"bytes\": 70189981,\n    \"bootstrapFiles\": 1340,\n    \"bootstrapBytes\": 66475523,\n    \"sourceInputs\": 990,\n    \"publicSources\": 1295,\n    \"scripts\": 43\n  },\n  \"findings\": [],\n  \"releaseReady\": false,\n  \"limitations\": [\n    \"Preparation integrity and current source-input freshness only; not an RC, editorial/rights approval, entitlement authority or deployment approval.\",\n    \"Static module/HTML/worker configuration checks do not prove browser behavior or arbitrary executable equivalence; real browser and native gates remain required.\"\n  ]\n}\n"
+}

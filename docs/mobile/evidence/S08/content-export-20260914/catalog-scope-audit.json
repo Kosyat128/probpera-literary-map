@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-14T01:53:42.933Z",
+  "kind": "canonical-content-export-scope-audit",
+  "status": "PASS",
+  "sourceCommit": "89cf558d7be310503672420568b1c7a045bd8325",
+  "checkpointCommit": "e18ed5a11d1dce988e2837d6897f6629a0223c7d",
+  "exactExistingTool": {
+    "path": ".tmp/content-export-tools/463a7f60-4a6b-487d-a083-4ce2d358e648/projector.mjs",
+    "sha256": "d4fd5da03d0bfbf816862135f3045df50793fde058ae2c54d534c9dab85e3315",
+    "receiptPath": ".tmp/content-exports/s08-20260914-a1/result.json",
+    "receiptSha256": "6f3b275eeb400f95e278b3cf2e963cb908fd92cf103c8e72f632faf1e5a659b6"
+  },
+  "method": {
+    "execution": "Read existing exact-hash projector; expose existing catalog/gate bindings only in memory; no source or bundle files rewritten.",
+    "invokedGate": "buildBookArchive(input).filter(isPublicBook)",
+    "keyHashContract": "SHA256 of UTF8 JSON.stringify of lexically sorted canonical countryId:writerId:workId strings",
+    "testsRun": false,
+    "newBuildRun": false,
+    "networkUsed": false
+  },
+  "archiveInput": {
+    "source": "src/data/countries/index.ts bookArchiveCountries",
+    "countries": 200,
+    "allBooks": 9761,
+    "publicBooks": 46,
+    "keySetSha256": "6842ab32ebae32e8d718f259d453421821a020a5d5b9d9fd728f58fb2cc028cd"
+  },
+  "publicProfileInput": {
+    "source": "src/data/countries/index.ts countries",
+    "countries": 200,
+    "allBooks": 10558,
+    "publicBooks": 46,
+    "keySetSha256": "6842ab32ebae32e8d718f259d453421821a020a5d5b9d9fd728f58fb2cc028cd"
+  },
+  "candidate": {
+    "path": ".tmp/content-exports/s08-20260914-a1/candidate.json",
+    "sha256": "6d8a802f1953d74f15c128ae6d5a962d44c7434dddda5f463157bfc274e809bf",
+    "titlePairs": 46,
+    "ruDescriptions": 46,
+    "enDescriptions": 0,
+    "keySetSha256": "6842ab32ebae32e8d718f259d453421821a020a5d5b9d9fd728f58fb2cc028cd",
+    "allWorkKeysHaveCurrentPublicWriter": true,
+    "missingPublicWriterKeys": [],
+    "releaseReady": false
+  },
+  "keySetsEqual": true,
+  "historicalCounter": {
+    "evidence": "docs/mobile/evidence/S10/search-20260908/result.json",
+    "sourceCommit": "bda662c4779ac6852add6d6d6e94e36dfbb91f9a",
+    "publicBooks": 4,
+    "scope": "Browser alias-audit helper builds from countries; actual App builds from bookArchiveCountries.",
+    "helper": "tests/host/native-planet.spec.mjs:54",
+    "currentCounterCorrection": "The four records are a reproducible source-browser fixture decoding defect, not a stale historical counter or a raw-versus-public catalog distinction. The canonical UTF-8 gate admits 46 candidates; the existing fixture loads Unicode JavaScript regular expressions as windows-1252 and incorrectly admits only four. Historical artifacts are retained with this qualification.",
+    "historicalArtifactsRewritten": false
+  },
+  "narrowSourceDiff": {
+    "from": "bda662c4779ac6852add6d6d6e94e36dfbb91f9a",
+    "to": "89cf558d7be310503672420568b1c7a045bd8325",
+    "scopes": [
+      "src/data/countries",
+      "src/data/cms",
+      "src/data/countries.ts",
+      "src/data/countryLocalization.ts",
+      "src/data/bookArchive.ts",
+      "src/data/bookQuality.ts",
+      "src/data/bookEvidence.ts",
+      "data/book-canon-source-registry.json"
+    ],
+    "changedPaths": [],
+    "conclusion": "No canonical catalog or publication-gate source changes in these scopes. Writer quarantine does not explain the difference: all 46 candidate works have current public writer identities, and both current input keysets are equal."
+  },
+  "gateComparison": {
+    "app": [
+      "src/App.tsx:924 selects bookArchiveCountries",
+      "src/App.tsx:953 builds canonical archive",
+      "src/App.tsx:1011 filters isPublicBook"
+    ],
+    "export": [
+      "isPublicBook before projection",
+      "localizedBookTitleEvidenceIssues for exact locale title",
+      "bookDescriptionProvenanceIssues with actual Russian text hash and canonical origin context",
+      "English descriptions always held pending immutable target review"
+    ],
+    "additionalPublicationExclusionMissingObserved": false,
+    "assetOrFullTextRightsCertification": false
+  },
+  "limits": [
+    "This is a current canonical data/gate audit, not a new installed-device or browser execution.",
+    "The original full browser environment was not replayed. A bounded data-only comparison reproduces its exact four-key set solely through its missing UTF-8 declaration; see decodingFollowUp. Existing historical artifacts were not rewritten.",
+    "No new facts, title evidence, review approvals or rights were created. Candidate remains releaseReady false; production activation is unauthorized."
+  ],
+  "stageAccepted": false,
+  "productionActionsPerformed": false,
+  "decodingFollowUp": {
+    "recordedAt": "2026-09-14T02:34:05.159Z",
+    "sourceCheckpoint": "604f919d9d92a942ce56b614bd4aa6bb79464c3c",
+    "status": "CAUSE_REPRODUCED",
+    "rootCause": {
+      "kind": "source-browser-fixture-missing-utf8-declaration",
+      "htmlLocation": "tests/host/native-planet.spec.mjs:268",
+      "assetLocation": "tests/host/native-planet.spec.mjs:272",
+      "publicationPredicate": "src/data/bookQuality.ts:111",
+      "description": "Fixture HTML has no charset declaration; its HTML and JavaScript MIME types also omit charset. Chrome defaults the document and classic external script to windows-1252. The UTF-8 JavaScript bytes contain literal Cyrillic regular expressions, so decoding changes the publication predicate while escaped source strings remain intact.",
+      "rawCatalogOrExportDefectObserved": false,
+      "proxyDifferenceExplainsCount": false
+    },
+    "method": {
+      "kind": "bounded-data-only-browser-decoding-comparison",
+      "catalogImport": "src/data/countries bookArchiveCountries",
+      "gate": "buildBookArchive(bookArchiveCountries).filter(isPublicBook)",
+      "browser": "Chrome 153.0.8010.37",
+      "dataBundleSha256": "569dfbe806f54b1aa34dfb1b475f8e5f040287f56f610d9e784f6f2a830759df",
+      "delivery": "Same immutable bundle bytes served as text/javascript. Two otherwise identical text/html documents differ only by <meta charset=\"utf-8\">.",
+      "appMounted": false,
+      "canvasMounted": false,
+      "fullBrowserSuiteRun": false,
+      "appOrNativeBuildRun": false,
+      "inMemoryDataBundleCompiled": true,
+      "networkRequestsRoutedLocally": true,
+      "sourceEditsPerformed": false
+    },
+    "cases": [
+      {
+        "utf8Meta": false,
+        "documentCharacterSet": "windows-1252",
+        "allBooks": 9763,
+        "publicBooks": 4,
+        "canonicalKeys": [
+          "russia:dostoevsky:crime-and-punishment",
+          "usa:francis_scott_fitzgerald:the-great-gatsby",
+          "usa:herman_melville:moby-dick",
+          "usa:jerome_david_salinger:the-catcher-in-the-rye-editorial"
+        ],
+        "keySetSha256": "78d15040d1382189960f9129460ca059af56712fe4dcd92c06f16997d9f4d66f",
+        "pageErrors": []
+      },
+      {
+        "utf8Meta": true,
+        "documentCharacterSet": "UTF-8",
+        "allBooks": 9761,
+        "publicBooks": 46,
+        "keySetSha256": "6842ab32ebae32e8d718f259d453421821a020a5d5b9d9fd728f58fb2cc028cd",
+        "matchesExportCandidateKeySet": true,
+        "pageErrors": []
+      }
+    ],
+    "excludedCanonicalKeys": [
+      "austria:franz_kafka:openlibrary-works-ol498556w",
+      "canada:margaret_atwood:openlibrary-works-ol675783w",
+      "canada:yann_martel:life-of-pi",
+      "england:aldous_huxley:brave-new-world-editorial",
+      "england:charles_dickens:a-tale-of-two-cities",
+      "england:david_mitchell:ghostwritten",
+      "england:david_mitchell:number9dream",
+      "england:david_mitchell:slade-house",
+      "england:david_mitchell:the-bone-clocks",
+      "england:david_mitchell:the-thousand-autumns-of-jacob-de-zoet",
+      "england:george_orwell:animal-farm-editorial",
+      "england:george_orwell:nineteen-eighty-four",
+      "england:h_g_wells:ann-veronica",
+      "england:h_g_wells:men-like-gods",
+      "england:h_g_wells:the-first-men-in-the-moon",
+      "england:h_g_wells:the-food-of-the-gods",
+      "england:h_g_wells:the-history-of-mr-polly",
+      "england:h_g_wells:the-world-set-free",
+      "england:h_g_wells:when-the-sleeper-wakes",
+      "england:j_r_r_tolkien:openlibrary-works-ol27448w",
+      "england:j_r_r_tolkien:the-hobbit",
+      "england:jane_austen:pride-and-prejudice",
+      "england:john_galsworthy:the-forsyte-saga",
+      "england:william_shakespeare:hamlet",
+      "france:flaubert:madame-bovary",
+      "france:saint_exupery:openlibrary-works-ol10263w",
+      "france:victor_hugo:les-miserables",
+      "germany:thomas_mann:buddenbrooks-editorial",
+      "norway:knut_hamsun:growth-of-the-soil",
+      "poland:wladyslaw_reymont:the-peasants",
+      "russia:chekhov:the-black-monk",
+      "russia:chekhov:the-duel",
+      "russia:chekhov:the-lady-with-the-dog",
+      "russia:chekhov:the-man-in-a-case",
+      "russia:chekhov:uncle-vanya",
+      "russia:tolstoy:war-and-peace",
+      "spain:miguel_de_cervantes:openlibrary-works-ol15272537w",
+      "usa:ernest_hemingway:the-old-man-and-the-sea",
+      "usa:harper_lee:to-kill-a-mockingbird-editorial",
+      "usa:ray_bradbury:fahrenheit-451-editorial",
+      "usa:suzanne_collins:the-hunger-games",
+      "usa:vladimir_nabokov:lolita-editorial"
+    ],
+    "observedFalseRejectionSamples": [
+      {
+        "key": "austria:franz_kafka:openlibrary-works-ol498556w",
+        "withoutUtf8": [
+          "русское описание не содержит кириллицы"
+        ],
+        "withUtf8PublicationIssues": []
+      },
+      {
+        "key": "canada:margaret_atwood:openlibrary-works-ol675783w",
+        "withoutUtf8": [
+          "русское описание не содержит кириллицы"
+        ],
+        "withUtf8PublicationIssues": []
+      },
+      {
+        "key": "canada:yann_martel:life-of-pi",
+        "withoutUtf8": [
+          "русское описание не содержит кириллицы"
+        ],
+        "withUtf8PublicationIssues": []
+      },
+      {
+        "key": "england:william_shakespeare:hamlet",
+        "withoutUtf8": [
+          "русское описание не содержит кириллицы"
+        ],
+        "withUtf8PublicationIssues": []
+      }
+    ],
+    "additionalObservation": "Total built archive size also changes from 9761 to 9763 under wrong decoding; normalization and duplicate handling cannot be treated as reliable in this fixture. Exact affected normalization predicates were not separately audited.",
+    "priorEvidence": {
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/browser-a3/native-book-author-return-en.json",
+      "sha256": "bd207fb765c891819ce5d7116abedfa93e5bc401d52bccdd3ac94b47e37af291",
+      "observedCompleteArchiveCount": 4,
+      "displayedKeysMatchWithoutUtf8Case": true,
+      "sourceBrowserRuntimeCountIsNotAProductionInventoryClaim": true
+    },
+    "sourcePins": [
+      {
+        "path": "tests/host/native-planet.spec.mjs",
+        "sha256": "110b209caec82a5878640bfe7326ceb65442b98d898c31aeecff50c4cde24df7"
+      },
+      {
+        "path": "src/data/bookQuality.ts",
+        "sha256": "eefcd1d589684d2fb16995c5158355005a968ac325b80502842a050d749ffd77"
+      },
+      {
+        "path": "src/data/bookArchive.ts",
+        "sha256": "4ce49f1e712cd2448fa0d8f798655294972c33622ef2b73fd4ed4f0244822884"
+      },
+      {
+        "path": "src/data/countries.ts",
+        "sha256": "9701375417f014c7424974ca450297141341a08abe1daeab4bbe5b294ab5dcc9"
+      },
+      {
+        "path": "index.html",
+        "sha256": "ce34a0b7619651211f542f1e9578522cfe6598636eb1f7349c1ea370e6f5e6d8"
+      }
+    ],
+    "recommendedCorrection": "Declare UTF-8 in fixture HTML and text resource response MIME types; record document.characterSet and compare the actual canonical keyset in a scoped corrected source-browser rerun. Do not change catalog facts, publication approvals or source gates.",
+    "productionBoundary": "Root index.html already declares UTF-8. This finding concerns the source-browser fixture; it is not evidence that an installed or deployed production binary has the same decoding defect. No approval, title evidence, translation or right was created.",
+    "limits": [
+      "This is a data-only causal reproduction, not a replay of the entire App or historical native fixture.",
+      "Old source-browser artifacts remain unchanged and require this decoding qualification; corrected full-App evidence is a separate root-owned checkpoint.",
+      "Candidate output remains releaseReady false; no catalog release is authorized."
+    ]
+  }
+}

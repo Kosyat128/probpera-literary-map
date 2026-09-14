@@ -1,0 +1,262 @@
+{
+  "schemaVersion": 1,
+  "stage": "S09",
+  "recordedAt": "2026-09-14T02:29:30.215Z",
+  "runId": "pwa-country-writer-20260914-a1",
+  "sourceCommit": "604f919d9d92a942ce56b614bd4aa6bb79464c3c",
+  "buildId": "84163b52ca51ed7dcc8fce4aa3b8755ea7c020432610484477c8f5128e160586",
+  "status": "LOCAL_QA_PWA_BUILD_AUDIT_AND_AFFECTED_BROWSER_PASSED",
+  "strictArtifactAuditPassed": true,
+  "statistics": {
+    "startTime": "2026-09-14T02:28:37.542Z",
+    "duration": 28691.818,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "sourceUnchanged": true,
+  "browserTestsRun": true,
+  "browserExecutions": 1,
+  "browserProof": [
+    {
+      "title": "offline PWA book-to-writer return preserves the globe and eligible country facts across RU and EN",
+      "project": "pwa-desktop",
+      "status": "passed",
+      "durationMs": 26866,
+      "errors": []
+    }
+  ],
+  "artifact": {
+    "path": ".tmp/pwa-artifacts/84163b52-country-writer-20260914-a1",
+    "files": 1368,
+    "bytes": 70189981,
+    "artifactSha256": "05fc61ced3f18d97c4985eff7534537b05f94200984a448cdc4d4eb5586c7b71",
+    "exactCopiesVerified": true
+  },
+  "preservedFiles": [
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-country-writer-20260914-a1/session.json",
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/pwa/session.json",
+      "bytes": 1040,
+      "sha256": "7421f2fd313be5c89ee1aa02c3820d26fa6091496fbb8a13f1b651a2aafd5038"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-country-writer-20260914-a1/source-before.json",
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/pwa/source-before.json",
+      "bytes": 139362,
+      "sha256": "86afb62512959380c950bae8808296198679bdfc45506d423a40aff50b21a4ca"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-country-writer-20260914-a1/source-after.json",
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/pwa/source-after.json",
+      "bytes": 139362,
+      "sha256": "86afb62512959380c950bae8808296198679bdfc45506d423a40aff50b21a4ca"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-country-writer-20260914-a1/source-comparison.json",
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/pwa/source-comparison.json",
+      "bytes": 205,
+      "sha256": "0df57f75653eed0d90c1cff6a2abfb69d4d9c577aba4e1786a8a38aa8246aaec"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-country-writer-20260914-a1/support-before.json",
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/pwa/support-before.json",
+      "bytes": 1038,
+      "sha256": "c1daae49b265574a1b83bc5d92277382e41a8fe95fae33c954589ee83e2c927b"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-country-writer-20260914-a1/support-after.json",
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/pwa/support-after.json",
+      "bytes": 1038,
+      "sha256": "c1daae49b265574a1b83bc5d92277382e41a8fe95fae33c954589ee83e2c927b"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-country-writer-20260914-a1/strict-artifact-audit.json",
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/pwa/strict-artifact-audit.json",
+      "bytes": 795,
+      "sha256": "c1b9640c84c451239e88e28b16dacda3bf57fbd3eba3567fcc6158919fdd34ea"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-country-writer-20260914-a1/strict-artifact-audit-execution.json",
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/pwa/strict-artifact-audit-execution.json",
+      "bytes": 168,
+      "sha256": "f41aa6a3b3f062960c1cf57cd7d14c6bb68c11dfab1f314ed75a24cfefbbad91"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-country-writer-20260914-a1/server-closed.json",
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/pwa/server-closed.json",
+      "bytes": 93,
+      "sha256": "0d3d5c1b7cb5bffae1d9c19d0fc725c4b61b2b82ba400a9a73caf22918ff7394"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-country-writer-20260914-a1/run-result.json",
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/pwa/run-result.json",
+      "bytes": 684,
+      "sha256": "3ff2aeea26cef949ace66adf55f2a23e99f9bce39582dc12aa041bf131728338"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-country-writer-20260914-a1/discovery.json",
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/pwa/discovery.json",
+      "bytes": 263,
+      "sha256": "274bebbb4b4d9699db821368a698551404bbb2d47ceadccb59c366cfbb11a958"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-country-writer-20260914-a1/discovery-execution.json",
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/pwa/discovery-execution.json",
+      "bytes": 312,
+      "sha256": "2b6531a592dbbd27d36e7e67dd7a17623ca27ca40563e7d01c15c4b87d109700"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-country-writer-20260914-a1/browser-run-execution.json",
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/pwa/browser-run-execution.json",
+      "bytes": 276,
+      "sha256": "f6edcc3d9ca9fc40901ab4fce81382dd11d59faf2f9c737f33b03c53ece8e680"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-country-writer-20260914-a1/results.json",
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/pwa/results.json",
+      "bytes": 1758170,
+      "sha256": "9e6c4ca1bf4f71cb71d6eb8a919954bfa9e9e2b0954abf23c7b301824d131660"
+    },
+    {
+      "source": "dist-pwa/artifact.json",
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/pwa/artifact.json",
+      "bytes": 389452,
+      "sha256": "05fc61ced3f18d97c4985eff7534537b05f94200984a448cdc4d4eb5586c7b71"
+    },
+    {
+      "source": ".tmp/s09-country-writer-20260914/prior-pwa.json",
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/pwa/prior-pwa.json",
+      "bytes": 233708,
+      "sha256": "5205e3d38ca4a5945fc2f8340237d760d3c4bbefbf305ad803e21593667135a2"
+    },
+    {
+      "source": ".tmp/s09-country-writer-20260914/run-pwa.mjs",
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/pwa/helpers/run-pwa.mjs",
+      "bytes": 10458,
+      "sha256": "2c1b2a7b3b79d6583613ab0e4b34f6810d80472e7db389200f04fa24097222fc"
+    },
+    {
+      "source": ".tmp/s09-country-writer-20260914/preserve-pwa.mjs",
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/pwa/helpers/preserve-pwa.mjs",
+      "bytes": 10164,
+      "sha256": "319e203b2387a620b34a08f7f3e4dc5f4a6379d074115adbe51353f9c76e1ca2"
+    },
+    {
+      "source": ".tmp/s09-country-writer-20260914/park-prior-pwa.mjs",
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/pwa/helpers/park-prior-pwa.mjs",
+      "bytes": 4542,
+      "sha256": "e3a0eec9d664a5288830cf32eaa7c729fe2385a97c4ad4ae0906991ee9c78289"
+    },
+    {
+      "source": ".tmp/s09-country-writer-20260914/playwright.country-writer.config.mjs",
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/pwa/helpers/playwright.country-writer.config.mjs",
+      "bytes": 537,
+      "sha256": "0705eca5b0d7a0c68495eb831976c16d81a0513db3b0edadfeed291348aa2166"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-country-writer-20260914-a1/strict-artifact-audit.log",
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/pwa/strict-artifact-audit-log.json",
+      "bytes": 1197,
+      "sha256": "1fae26384159bc1a6a5cdc647dded24002b507e98c407dbbb6246aca856ecd30",
+      "rawBytes": 795,
+      "rawSha256": "c1b9640c84c451239e88e28b16dacda3bf57fbd3eba3567fcc6158919fdd34ea",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-country-writer-20260914-a1/strict-artifact-audit.stdout.log",
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/pwa/strict-artifact-audit.stdout-log.json",
+      "bytes": 1204,
+      "sha256": "86009a3412fd74c68ffbc27069f22b44f9140f118dc6429a04124f5e0b17eb44",
+      "rawBytes": 795,
+      "rawSha256": "c1b9640c84c451239e88e28b16dacda3bf57fbd3eba3567fcc6158919fdd34ea",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-country-writer-20260914-a1/strict-artifact-audit.stderr.log",
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/pwa/strict-artifact-audit.stderr-log.json",
+      "bytes": 344,
+      "sha256": "730959fb856716f86945f732df6045cc84fbaabdad8897e1f9a67dc08c765609",
+      "rawBytes": 0,
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-country-writer-20260914-a1/discovery.log",
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/pwa/discovery-log.json",
+      "bytes": 3572,
+      "sha256": "11ece7365fa8b582736d9686fe1835bd008e97335297cf886b0205c644062d99",
+      "rawBytes": 2910,
+      "rawSha256": "da17b56f0b02d1e8418f78847a08f6cd2f1c8238910435fbff5db7a5dde76d53",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-country-writer-20260914-a1/discovery.stdout.log",
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/pwa/discovery.stdout-log.json",
+      "bytes": 3579,
+      "sha256": "a79815273789595643ebdc912d680fe7d697201415bc0d0a447bcee640fdadbc",
+      "rawBytes": 2910,
+      "rawSha256": "da17b56f0b02d1e8418f78847a08f6cd2f1c8238910435fbff5db7a5dde76d53",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-country-writer-20260914-a1/discovery.stderr.log",
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/pwa/discovery.stderr-log.json",
+      "bytes": 332,
+      "sha256": "16b2d102eff44d163885c6dad91aab7f8b76b2dff727724711bdb64d399c6ffb",
+      "rawBytes": 0,
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-country-writer-20260914-a1/browser-run.log",
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/pwa/browser-run-log.json",
+      "bytes": 731,
+      "sha256": "b1f36af9cff940452174f2873e15a9e9d6f84cf621c00f46768e5764c03b8997",
+      "rawBytes": 392,
+      "rawSha256": "5d63b0d78f0ba8751402786b4739fb4f4ead2733c22b119d1c74b6cb3188377c",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-country-writer-20260914-a1/browser-run.stdout.log",
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/pwa/browser-run.stdout-log.json",
+      "bytes": 572,
+      "sha256": "7146f0446504b6627ddeebbc5ba3e351b5bb22dfa518cd5b092d8711274b83c4",
+      "rawBytes": 228,
+      "rawSha256": "fba690721cf2330ac0c05cd87ac7a693c5932c5edb06cf4521893013ca18daea",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-country-writer-20260914-a1/browser-run.stderr.log",
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/pwa/browser-run.stderr-log.json",
+      "bytes": 502,
+      "sha256": "703450cd6e2908c211e75fed22d88d509a78d7fd14f4ebcf9dadc745137e75d2",
+      "rawBytes": 164,
+      "rawSha256": "89320effd5940672b06788f263cf0164d495a013053dc9a87933907b08ab402e",
+      "lossless": true
+    },
+    {
+      "source": "exact Playwright attachment body",
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/pwa/pwa-country-writer-return-ru.png",
+      "bytes": 636443,
+      "sha256": "6dc32c8abf8ac10ae2397cd47266288277c82291bf7c99c6a0e126eb727b6c52"
+    },
+    {
+      "source": "exact Playwright attachment body",
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/pwa/pwa-country-writer-return-en.png",
+      "bytes": 678531,
+      "sha256": "bb6eb1b7eab06e6c73571ec12a16afe1a0cf4c0bdf102d1e457220bd25c9a079"
+    }
+  ],
+  "stageAccepted": false,
+  "releaseReady": false,
+  "copyReviewStatus": "draft",
+  "actualOsInstallation": false,
+  "realPaymentProviderConfigured": false,
+  "limits": [
+    "Fresh local QA Vite/worker build, strict audit, exact archive and one built PWA country/writer navigation and offline locale case.",
+    "Success screenshots are exact local-QA artifact captures, not store RC or installed native OS evidence.",
+    "Local ephemeral QA authority does not establish a real merchant/payment, legal/editorial approval, owner acceptance or release readiness."
+  ]
+}

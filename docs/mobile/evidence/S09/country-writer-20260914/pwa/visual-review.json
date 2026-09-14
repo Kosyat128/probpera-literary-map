@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-14T02:30:39.483Z",
+  "pass": true,
+  "sourceCommit": "604f919d9d92a942ce56b614bd4aa6bb79464c3c",
+  "buildId": "84163b52ca51ed7dcc8fce4aa3b8755ea7c020432610484477c8f5128e160586",
+  "images": [
+    {
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/pwa/pwa-country-writer-return-ru.png",
+      "sha256": "6dc32c8abf8ac10ae2397cd47266288277c82291bf7c99c6a0e126eb727b6c52",
+      "bytes": 636443,
+      "viewedAtOriginalResolution": true
+    },
+    {
+      "path": "docs/mobile/evidence/S09/country-writer-20260914/pwa/pwa-country-writer-return-en.png",
+      "sha256": "bb6eb1b7eab06e6c73571ec12a16afe1a0cf4c0bdf102d1e457220bd25c9a079",
+      "bytes": 678531,
+      "viewedAtOriginalResolution": true
+    }
+  ],
+  "scope": "Actual built local-QA PWA in Chrome, cold reloaded offline, 390x844 CSS pixels at device scale2.",
+  "observations": [
+    "Both locales reveal the same canonical writer profile heading and keep the globe visible after closing the book reader.",
+    "Language controls, country sheet and offline access messages are readable in the selected locale.",
+    "The temporary reader and collection do not cover the destination writer."
+  ],
+  "limitations": [
+    "QA entitlement fixture, not a production purchase or reviewer session.",
+    "Not an installed native device or exact release candidate screenshot.",
+    "Full content and final owner archives remain outside this bounded navigation validation."
+  ],
+  "stageAccepted": false,
+  "releaseReady": false
+}

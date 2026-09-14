@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "originalPath": ".tmp/pwa-cross-engine-results/pwa-country-writer-20260914-a1/browser-run.log",
+  "originalBytes": 392,
+  "originalSha256": "5d63b0d78f0ba8751402786b4739fb4f4ead2733c22b119d1c74b6cb3188377c",
+  "reconstruction": "UTF-8 encode text exactly, without newline normalization",
+  "text": "\nRunning 1 test using 1 worker\n\n(node:37528) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n  ok 1 [pwa-desktop] › tests\\pwa\\offline-catalog.spec.mjs:149:1 › offline PWA book-to-writer return preserves the globe and eligible country facts across RU and EN (26.9s)\n\n  1 passed (28.7s)\n"
+}

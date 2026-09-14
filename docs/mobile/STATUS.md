@@ -1,15 +1,19 @@
 # V12 status — 2026-09-14
 
 <!-- s09-country-writer-20260914:begin -->
-S09 source validated: book-to-author return closes reader/history, restores the
-canonical writer and focus on the same globe, including repeated Back.
-Capital fields use one source/target review gate across RUEN/proxy/export.
-26 focused tests, static and 1 actual native-source RUEN browser passed.
-Real Zambia capital round trip verified; no guessed Russia capital added.
+Source 604f919d9d92a942ce56b614bd4aa6bb79464c3c: book-to-author return closes reader/history,
+restores the canonical writer and focus on the same globe, including repeated Back.
+Country capital fields share exact source/target review eligibility across RUEN/proxy/export.
+26 focused tests, type/platform checks and 1 actual native-source browser passed.
+Android/dev 0ecb9b49: compiled APK, debug signature and exact runtime bytes inspected.
+APK: .tmp/native-builds/android-dev/country-writer-0ecb9b49/app-dev-debug.apk.
+Local-QA PWA 84163b52: strict artifact audit and 1 actual offline RUEN
+book-to-writer/country-field case passed; 2 original-resolution screenshots inspected.
+Both artifacts bind the same source. No installed-device or release acceptance.
 Owner fills archives; final canonical sync follows app implementation (D107).
-Raw export includes 46 candidate works; browser/release scope is separate.
+Raw export includes 46 candidate works; source fixture/browser/release scope is separate.
 Evidence: evidence/S09/country-writer-20260914/result.json. No stage acceptance.
-Next: one exact-source Android/dev and local-QA PWA, then offline return proof.
+Next: bounded S10 opposite-locale writer-name search on existing canonical data.
 First-open S03; child/full content/commerce/device/release gates remain open.
 <!-- s09-country-writer-20260914:end -->
 

@@ -580,3 +580,10 @@
   capital field; tests preserve that fallback and use actual Zambia source
   for the RUEN field check. The raw export has 46 candidate works; browser
   visibility is separate. Owner final archives determine release scope.
+
+- D109: Source604f919 produced exact Android/dev0ecb9b49 and local-QA
+  PWA84163b52. The real PWA passed offline RUEN book-to-author return and
+  source-backed country-capital eligibility on the retained scene. Android
+  compilation/signature/byte audits passed. These are development/QA artifacts,
+  not installed-device or release acceptance. Owner archive filling continues
+  independently; final canonical synchronization follows app implementation.

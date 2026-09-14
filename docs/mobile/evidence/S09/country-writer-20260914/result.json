@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "recordedAt": "2026-09-14T02:24:59.984Z",
+  "recordedAt": "2026-09-14T02:32:52.984Z",
   "stage": "S09",
-  "status": "SOURCE_VALIDATION_PASSED",
+  "status": "LOCAL_SOURCE_AND_ARTIFACT_VALIDATION_PASSED",
   "sourceInputs": 1333,
   "sourceInputsSha256": "d07e9ed7ba19713be82b12120de0aab628893f13838f33efb611f169bb9aa38d",
   "sourceInputsCurrent": true,
@@ -48,5 +48,33 @@
   "stageAccepted": false,
   "releaseReady": false,
   "productionActionsPerformed": false,
-  "next": "Build one exact-source Android/dev and local-QA PWA. Verify actual offline RUEN book-to-writer return and country-field eligibility, then preserve artifacts. Owner archive final synchronization remains deferred as requested."
+  "next": "Continue bounded S10 opposite-locale canonical writer-name search on existing data. Preserve current artifacts; rebuild only after the next validated runtime checkpoint. Owner fills archives; final canonical sync and full content validation follow app implementation (D107).",
+  "sourceCommit": "604f919d9d92a942ce56b614bd4aa6bb79464c3c",
+  "artifacts": {
+    "android": {
+      "buildId": "0ecb9b499fc16f007e7c3499649cb6f015fbd12aa942b64ae061f3490bb7f7b3",
+      "evidence": "docs/mobile/evidence/S04/country-writer-android-20260914/result.json",
+      "sha256": "7d693989b2860fe8e780bd749e73ffe7febc4a015e9b79c4d5176d3aeff73805",
+      "apk": {
+        "path": ".tmp/native-builds/android-dev/country-writer-0ecb9b49/app-dev-debug.apk",
+        "bytes": 63874823,
+        "sha256": "f400c8d76624ee2069ff4fe09c5e2a6d63ed9c4ae524ec9f583e054e4ed4bffe"
+      }
+    },
+    "pwa": {
+      "buildId": "84163b52ca51ed7dcc8fce4aa3b8755ea7c020432610484477c8f5128e160586",
+      "evidence": "docs/mobile/evidence/S09/country-writer-20260914/pwa/result.json",
+      "sha256": "3a504ba62b30dbb3ba9a82e29e6aa1bf9eed3b3761ff9ece8367194ddc5fea9e",
+      "artifact": {
+        "path": ".tmp/pwa-artifacts/84163b52-country-writer-20260914-a1",
+        "files": 1368,
+        "bytes": 70189981,
+        "artifactSha256": "05fc61ced3f18d97c4985eff7534537b05f94200984a448cdc4d4eb5586c7b71",
+        "exactCopiesVerified": true
+      }
+    }
+  },
+  "currentInputsVerified": 1001,
+  "actualPwaBrowserPasses": 1,
+  "artifactVisualReview": "docs/mobile/evidence/S09/country-writer-20260914/pwa/visual-review.json"
 }

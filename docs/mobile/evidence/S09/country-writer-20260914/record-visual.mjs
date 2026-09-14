@@ -1,0 +1,7 @@
+import fs from 'node:fs/promises';
+import { createHash } from 'node:crypto';
+const out='docs/mobile/evidence/S09/country-writer-20260914';
+const names=['native-book-author-return-ru-screenshot.png','native-book-author-return-en-screenshot.png','native-book-author-return-zambia-ru-switched-screenshot.png','native-book-author-return-zambia-en-restored-screenshot.png'];
+const images=[];
+for(const name of names){const path=out+'/browser-a3/'+name;const bytes=await fs.readFile(path);images.push({path,sha256:createHash('sha256').update(bytes).digest('hex'),bytes:bytes.length,viewedAtOriginalResolution:true});}
+await fs.writeFile(out+'/visual-review.json',JSON.stringify({schemaVersion:1,recordedAt:new Date().toISOString(),scope:'Native adapter with actual App and globe in desktop Chrome; not an installed Android/iOS device or release candidate.',pass:true,images,observations:['RU and EN return reveal the canonical Dostoevsky writer heading within the mobile country sheet, with the retained globe and language controls visible.','Zambia displays the actual Russian capital field and the existing English heritage fallback when exact editorial approval is absent.','No reader overlay obscures the writer after return.'],limitations:['Country prose and catalog publication coverage remain subject to existing content review gates.','This visual review covers the changed navigation and country-capital behavior, not acceptance of the full design or final archive.'],stageAccepted:false,releaseReady:false},null,2)+'\n',{flag:'wx'});

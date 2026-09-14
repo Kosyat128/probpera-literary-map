@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "originalPath": ".tmp/pwa-cross-engine-results/pwa-country-writer-20260914-a1/browser-run.stdout.log",
+  "originalBytes": 228,
+  "originalSha256": "fba690721cf2330ac0c05cd87ac7a693c5932c5edb06cf4521893013ca18daea",
+  "reconstruction": "UTF-8 encode text exactly, without newline normalization",
+  "text": "\nRunning 1 test using 1 worker\n\n  ok 1 [pwa-desktop] › tests\\pwa\\offline-catalog.spec.mjs:149:1 › offline PWA book-to-writer return preserves the globe and eligible country facts across RU and EN (26.9s)\n\n  1 passed (28.7s)\n"
+}

@@ -1,0 +1,7 @@
+import fs from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+const out='docs/mobile/evidence/S09/country-writer-20260914/pwa';
+const result=JSON.parse(await fs.readFile(out+'/result.json','utf8'));
+const images=[];
+for(const locale of ['ru','en']){const path=out+'/pwa-country-writer-return-'+locale+'.png';const bytes=await fs.readFile(path);images.push({path,sha256:createHash('sha256').update(bytes).digest('hex'),bytes:bytes.length,viewedAtOriginalResolution:true});}
+await fs.writeFile(out+'/visual-review.json',JSON.stringify({schemaVersion:1,recordedAt:new Date().toISOString(),pass:true,sourceCommit:'604f919d9d92a942ce56b614bd4aa6bb79464c3c',buildId:'84163b52ca51ed7dcc8fce4aa3b8755ea7c020432610484477c8f5128e160586',images,scope:'Actual built local-QA PWA in Chrome, cold reloaded offline, 390x844 CSS pixels at device scale2.',observations:['Both locales reveal the same canonical writer profile heading and keep the globe visible after closing the book reader.','Language controls, country sheet and offline access messages are readable in the selected locale.','The temporary reader and collection do not cover the destination writer.'],limitations:['QA entitlement fixture, not a production purchase or reviewer session.','Not an installed native device or exact release candidate screenshot.','Full content and final owner archives remain outside this bounded navigation validation.'],stageAccepted:false,releaseReady:false},null,2)+'\n',{flag:'wx'});
