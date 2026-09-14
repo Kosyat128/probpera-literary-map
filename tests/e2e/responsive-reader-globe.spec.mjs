@@ -376,6 +376,8 @@ test("ArticleReader lower panels stay readable in light and book modes", async (
 test("globe search metadata and instructions stay readable inside 320-1720px", async ({
   page,
 }) => {
+  // Six viewport changes share one software-GPU session; retain the individual assertion limits.
+  test.setTimeout(90_000);
   await page.goto("/");
   await expect(page.locator("#atlas")).toBeVisible();
 
