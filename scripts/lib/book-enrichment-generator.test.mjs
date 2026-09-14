@@ -85,6 +85,8 @@ function runCheck() {
 
 describe("book enrichment generator", () => {
   it("is idempotent when a reviewed promotion output is loaded again", () => {
+    const currentCmsPath = path.join(projectRoot, "src/data/cms/literaryWorks.generated.ts");
+    const currentCmsBefore = readFileSync(currentCmsPath);
     const before = digestOutputs();
     const first = runCheck();
     const afterFirst = digestOutputs();
@@ -95,6 +97,11 @@ describe("book enrichment generator", () => {
     expect(second.status, second.stderr || second.stdout).toBe(0);
     expect(afterFirst).toEqual(before);
     expect(afterSecond).toEqual(before);
+    // The classifier pins its old source inside the private bundle; fresh
+    // public CMS input remains untouched and is still used by runtime audits.
+    expect(readFileSync(currentCmsPath)).toEqual(currentCmsBefore);
+    expect(JSON.parse(first.stdout).archiveRecords).toBe(10_057);
+    expect(JSON.parse(second.stdout)).toEqual(JSON.parse(first.stdout));
 
     const manifest = JSON.parse(readFileSync(outputPaths[0], "utf8"));
     const reviewed = JSON.parse(readFileSync(outputPaths[3], "utf8"));

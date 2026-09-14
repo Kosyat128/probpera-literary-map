@@ -1,0 +1,540 @@
+{
+  "id": "PREMIUM-TITLE-EVIDENCE-REVIEWED-20260914",
+  "baselineSourceCommitSha": "4b8983e60c07d3bb0f4607ce41e5b3d322d82563",
+  "reviewStatus": "source-reviewed",
+  "allowedProjectionPaths": [
+    "scripts/export-premium-translations.mjs",
+    "scripts/export-published-content.fixture.test.mjs",
+    "scripts/lib/reviewed-cms-source-punctuation.mjs",
+    "scripts/lib/reviewed-cms-source-punctuation.test.mjs",
+    "scripts/lib/reviewed-native-archive-read.test.mjs"
+  ],
+  "sourceBaselines": {
+    "scripts/export-premium-translations.mjs": "26097777c48b1f884e86a71b75b9eee006ccbf8df7733ac5ab8b9c39345228d2",
+    "scripts/export-published-content.fixture.test.mjs": "2a1f2ec06505c3afd84d3a0c3e77fec49b6883f53e9f4220ab2e96acc34ab43d",
+    "scripts/lib/reviewed-cms-source-punctuation.mjs": "86400bd6dfbdb5b0187e9c0ece316505672fa32c6d782c4a6c6bc3bc019129f1",
+    "scripts/lib/reviewed-cms-source-punctuation.test.mjs": "9579b34a8739b00479b3cd6c740ec35fe423328066c4e83103bcdad37ef4f176",
+    "scripts/lib/reviewed-native-archive-read.test.mjs": "45e74f1cc9ea5ec38626c4facc69cb5cdf458c91142040ed89baf9743c291686"
+  },
+  "reviewedSourceSha256": {
+    "scripts/export-premium-translations.mjs": "9ad7d90532bd0d458b6666c25d93c31f1f4153a938e3961bbd26ae3a2feba083",
+    "scripts/export-published-content.fixture.test.mjs": "b1cf00cafaf402066042ffe65ecb00237d060823c3a9db280fc835d92f3b799a",
+    "scripts/lib/reviewed-cms-source-punctuation.mjs": "e0f01f0e7f7514df9da288efca5af0672d2d33f576593d6191c3d97d4dfc1029",
+    "scripts/lib/reviewed-cms-source-punctuation.test.mjs": "aa9bf771b4bc335b0b5dd97a39c052e3530b7f79907e87faa43bf31feb0ea120",
+    "scripts/lib/reviewed-native-archive-read.test.mjs": "f3a4a8bc63eed0e7677160bbc804abb6ece32cc6eb990377b273cce73fc95733"
+  },
+  "historicalArtifacts": [
+    {
+      "path": "scripts/governance/header-library-owner-refinement-20260912.json",
+      "sha256Lf": "eb0df84d46bdded81f3e820fd7479ec3d8462a4920c6208348acda6900945cc4"
+    },
+    {
+      "path": "scripts/governance/reading-design-owner-refinement-20260906.json",
+      "sha256Lf": "a1758055e0460243995099296944e32e96ae5cbd0d1b1b324b18b9a6fe31c419"
+    },
+    {
+      "path": "scripts/governance/book-r49n-package-reviewed-20260912.json",
+      "sha256Lf": "09ba0a3762cc4a811b3a99c2e07f3e94f9401fb076247499edde5b8af6bc8db3"
+    },
+    {
+      "path": "reports/book-r49n-package-reviewed-20260912.json",
+      "sha256Lf": "7abc9164f9a39d2bd92534f1034fca59ca4db6eb2502b70385bda8c540b9fd36"
+    },
+    {
+      "path": "scripts/governance/book-r49n-dickens-reviewed-20260912.json",
+      "sha256Lf": "e7b875db1307fdbdc17bbe9329559bc9dc289d2dc735a8aa362f8beb086db259"
+    },
+    {
+      "path": "scripts/governance/library-reference-release-reviewed-20260914.json",
+      "sha256Lf": "8d778ed94422a29f05e812a33d6f5ec94f09c58863652c5fc316f84c49d648d8"
+    },
+    {
+      "path": "reports/library-reference-release-reviewed-20260914.json",
+      "sha256Lf": "66d4df9bea22d58a8e6ff3f68ec057c97faa62b2340103840c11a3817935dd8d"
+    },
+    {
+      "path": "scripts/governance/header-showcase-owner-refinement-20260914.json",
+      "sha256Lf": "9e544a3990aade3dc9e2cc649b26cb116dfa7e7b875cbbadc513b97d18d673dd"
+    },
+    {
+      "path": "reports/header-showcase-owner-refinement-20260914.json",
+      "sha256Lf": "61b9a070f56e1e34b52dd98301be475b971f2408d9295cd96ed9150e5f5b3c36"
+    },
+    {
+      "path": "scripts/governance/library-native-transport-reviewed-20260914.json",
+      "sha256Lf": "2fcd9382a1946e4bd42a7f9be334fd07ad917b13143b037cc848b0310a64100f"
+    },
+    {
+      "path": "reports/library-native-transport-reviewed-20260914.json",
+      "sha256Lf": "aba0f6216ca21f2bb104dd5e3c965a97133ab0c6dfe21be3dcc25034fe3fc34e"
+    },
+    {
+      "path": "scripts/governance/literary-translation-draft-storage-reviewed-20260914.json",
+      "sha256Lf": "45ab790c71a1ac8061a51692d505db2e7f149450c2e5be46601b56c81366dc20"
+    },
+    {
+      "path": "reports/literary-translation-draft-storage-reviewed-20260914.json",
+      "sha256Lf": "dba89506026817fe8a53965c40db63785a3e7fee148c3d98bdb657d9846d2c0b"
+    },
+    {
+      "path": "scripts/governance/library-native-read-reviewed-20260914.json",
+      "sha256Lf": "f7aba486a885037c9fc14f42cf6377299a21a7a805f3dde0810738652d531067"
+    },
+    {
+      "path": "reports/library-native-read-reviewed-20260914.json",
+      "sha256Lf": "b38d9a4057cac1f2d514d0066c81c81b1610ff8c0dcc1f29aab941d319bfcc9e"
+    },
+    {
+      "path": "scripts/governance/cms-source-punctuation-reviewed-20260914.json",
+      "sha256Lf": "0237d3fe3c607d6a0aff6fe7246a3270e2d068082cf41af92500eff1dc6f21b6"
+    },
+    {
+      "path": "reports/cms-source-punctuation-reviewed-20260914.json",
+      "sha256Lf": "d21c2e3eb94abb321f0d6506ee9f43ccc96cc3731d47c8f9ba17c8bc26d7b90d"
+    }
+  ],
+  "historicalMigrations": [
+    {
+      "path": "supabase/migrations/20260808_article_translations.sql",
+      "sha256Lf": "37915d5aa77a4d647ea8bc9b84923b8c07fe148e7c6f301cabf5bb685909d372"
+    },
+    {
+      "path": "supabase/migrations/20260808_book_translations_and_import_staging.sql",
+      "sha256Lf": "2f7896316307c678c9139f8849ca4cb9930baea5bfc86c3441f281b17203b744"
+    },
+    {
+      "path": "supabase/migrations/20260812_homepage_block_revisions.sql",
+      "sha256Lf": "f261d7249c4aaf2a6db20ad8a5b2a587d00e417b8cadcd1f1b4ae7d496ba1a22"
+    },
+    {
+      "path": "supabase/migrations/20260812_writer_and_work_revisions.sql",
+      "sha256Lf": "76d9b65a2fc37aa03ffda3b293b09011dfaf316baa1c2153afaecd334c5c135f"
+    },
+    {
+      "path": "supabase/migrations/20260813_editorial_database_admin.sql",
+      "sha256Lf": "fb28408f56efe29c6173395af3d78c58f46cc8a766249e08f3d8b7ed91588819"
+    },
+    {
+      "path": "supabase/migrations/20260813_homepage_atomic_move.sql",
+      "sha256Lf": "34cd8a00b8ae55c0a3126226a597c06c6d0f1d653b8095806d4372496905a185"
+    },
+    {
+      "path": "supabase/migrations/20260813_tags_updated_at.sql",
+      "sha256Lf": "e7e7475d11af036a3cabf55a7f35831d7da5a8a18745979be26313e33f8386e7"
+    },
+    {
+      "path": "supabase/migrations/20260813_unified_revision_history.sql",
+      "sha256Lf": "e851c9e2a8d4a4af2760be2798de40a59dcc2ce4ada35e8ca49209f87b81c42e"
+    },
+    {
+      "path": "supabase/migrations/20260814_publication_outbox_and_schema_health.sql",
+      "sha256Lf": "795274d300104dcf41edb43fb5fd8e7079badb14bf5747f9d0190021a914456e"
+    },
+    {
+      "path": "supabase/migrations/20260820_homepage_book_month_editorial_choice.sql",
+      "sha256Lf": "436bb25b4513ed451320489278fda8670a1e4ada9f66b065fd6b734ba84c729f"
+    },
+    {
+      "path": "supabase/migrations/20260820_literary_work_cover_artworks.sql",
+      "sha256Lf": "e39ba6da664bcb2c3b4c5c78fa1e6ff6f46d420453d5575e113b92635e1f5c58"
+    },
+    {
+      "path": "supabase/migrations/20260822_staff_editorial_read_rls.sql",
+      "sha256Lf": "c50cda9a947cda1769c6aa36db81181dda988738e5dcf0ff7f2711d43faf03c9"
+    },
+    {
+      "path": "supabase/migrations/20260822_zz_atomic_article_bundle.sql",
+      "sha256Lf": "5df4f2068349ba210c560005ef1145bdb32be15e389fef2a5ec4642a73c12acc"
+    },
+    {
+      "path": "supabase/migrations/20260823_premium_machine_translation.sql",
+      "sha256Lf": "fd72bca7069130c777c8dbd9751f70f41d82b1d820562984e2a5ee6433491ba6"
+    },
+    {
+      "path": "supabase/migrations/20260827_reader_book_collections.sql",
+      "sha256Lf": "b8f7e004e0c094e67bfc1d3aa5f50071cdc7ad32a7718969666717ba8dc199e4"
+    },
+    {
+      "path": "supabase/migrations/20260828_reader_book_collection_icons.sql",
+      "sha256Lf": "27d6bc4beceef9f09e7811b0a5cd34d94874202083ee5ff038b78c00ce178019"
+    },
+    {
+      "path": "supabase/migrations/20260828_zz_editor_autosaves.sql",
+      "sha256Lf": "353ee5e767850c4818d60f9a957d5991689bf2886c41b21599f69678e7b041af"
+    },
+    {
+      "path": "supabase/migrations/20260830_media_studio_lifecycle.sql",
+      "sha256Lf": "3cb8717f0cf4f4b6a718591d2759c0c73008e35eaf9c3c09a1e0fd19f65ef837"
+    },
+    {
+      "path": "supabase/migrations/20260830_zz_site_typography_engine.sql",
+      "sha256Lf": "097f70aefd34278167a7c275db36cdb1182732a22eabfaa5d609be18512bde20"
+    },
+    {
+      "path": "supabase/migrations/20260901_zz_admin_analytics_reporting.sql",
+      "sha256Lf": "c1f9c7314c127d5a6a9c2113e84b8cf05dc6bb60052e96c00b317a9228f03d75"
+    },
+    {
+      "path": "supabase/migrations/20260901_zz_data_studio_integrity.sql",
+      "sha256Lf": "976134c7e7f64c4dd66a4afccef5a59e1af29b437c299cf9e3f3cc5fec7b3911"
+    },
+    {
+      "path": "supabase/migrations/20260901_zz_site_studio_engine.sql",
+      "sha256Lf": "4350165699a2e88dde7eece9bc57bc154ec6ba8b3b82933cbfd4b9fe514f4675"
+    },
+    {
+      "path": "supabase/migrations/20260901_zz_staff_owner_invariant.sql",
+      "sha256Lf": "8bc034b04540f835337ca6edc1f8b1c797d4b3064569778cc6bdb4e4501f3067"
+    },
+    {
+      "path": "supabase/migrations/20260901_zz_translation_operations.sql",
+      "sha256Lf": "481f1887cee0f28fed054a5bbae95260e33ef96a3ae059d307a8573d4eed16f7"
+    },
+    {
+      "path": "supabase/migrations/20260901_zz_translation_operations_runtime.sql",
+      "sha256Lf": "502d34ca1bcd30f79ccdbc10f238201daf89b8a36cc9a3cabf8cdc5e8ac25248"
+    },
+    {
+      "path": "supabase/migrations/20260901_zz_visual_direct_edit_v2.sql",
+      "sha256Lf": "38347f54fbe152e89cf392d517e3d3a6e1d389b50b3510611a7fd3b4a66157ed"
+    },
+    {
+      "path": "supabase/migrations/20260901_zzz_admin_mutation_guards.sql",
+      "sha256Lf": "21432b83209e353857d183b667c923bb47624a173276cf618515984ab4f200b9"
+    },
+    {
+      "path": "supabase/migrations/20260901_zzzz_admin_ops_observability.sql",
+      "sha256Lf": "d40c42e752641bdefe4a41bc6b079aa9c00c9f8bf37546051a4a28cca6b913b6"
+    },
+    {
+      "path": "supabase/migrations/20260901_zzzzzz_admin_completion_health.sql",
+      "sha256Lf": "dda44cc2f3248cf54621e07d17a701095ecea92193832371636618217531711f"
+    },
+    {
+      "path": "supabase/migrations/20260902_article_working_drafts.sql",
+      "sha256Lf": "3426ae0a6b234aa903670dde6efbd34f84c27a3f47f495fe454d593c95b66c72"
+    },
+    {
+      "path": "supabase/migrations/20260902_literary_work_authorship.sql",
+      "sha256Lf": "79dd77139c128f22b184043665f39c76bc10bbbc895cabfc0d84c4d8d3e195bd"
+    },
+    {
+      "path": "supabase/migrations/20260902_literary_work_evidence_v2_attestations.sql",
+      "sha256Lf": "26e1e0cb57368c772a02d397e5df0cb2960725a7ad05ae35fbc299ddf41c4966"
+    },
+    {
+      "path": "supabase/migrations/20260902_zz_article_working_drafts_health.sql",
+      "sha256Lf": "72259c999de34611ac9bb3bddd3d1374b62b43cfa1eb9a4f11fabfeb5bd20460"
+    },
+    {
+      "path": "supabase/migrations/20260902_zz_literary_archive_atomic_release.sql",
+      "sha256Lf": "a03f27a42fc6e7607dae6c46cb52292798ffc4eb931c470bfc2e9a481ebb1ef9"
+    },
+    {
+      "path": "supabase/migrations/20260905_article_publication_permissions.sql",
+      "sha256Lf": "1f9b4b9a9efb00488010cb6719cb36967a395038089b2ca3091657e144f0fcc8"
+    },
+    {
+      "path": "supabase/migrations/20260912_literary_work_evidence_v2_registry_rotation.sql",
+      "sha256Lf": "2fbcba184a4f7f7eb8e0ab49737540c42614d3f1d0755914f485bd5c0e04f525"
+    },
+    {
+      "path": "supabase/migrations/20260913_wells_editorial_evidence_repair.sql",
+      "sha256Lf": "769353bbf60790b6a5113a5d76ee23cb7ce0e84e3100a7d3eac86c7113d09c70"
+    },
+    {
+      "path": "supabase/migrations/20260914_literary_archive_editorial_references.sql",
+      "sha256Lf": "00bdde32a431322e4c86eaa1f069ff287eac4acc011923dd2454a463f42cad21"
+    },
+    {
+      "path": "supabase/migrations/20260914_literary_translation_draft_storage.sql",
+      "sha256Lf": "5f0ee4955409a7a19adfa7602a4603cb0e5b7eeb5523c7e1ec95aca1f0048978"
+    }
+  ],
+  "unchangedCoreFiles": [
+    {
+      "path": "scripts/lib/literary-archive-atomic-release.mjs",
+      "sha256Lf": "a7fb0b641a18c6cdc9f7824803b614f9b0afec624e66689c63b824fd2f0aa44e"
+    },
+    {
+      "path": "scripts/lib/book-evidence-v2-attestations.mjs",
+      "sha256Lf": "6ef7e13e46b1cfd9cc1ee137c1d761f6d3065b703bdbe452ef0111562d98efd8"
+    },
+    {
+      "path": "scripts/lib/literary-archive-reference-catalog.mjs",
+      "sha256Lf": "0c5f19e8ccf4d9f7d9f64a6a4cb54bb45b963a7f6ccfb51e563bf8742685e168"
+    },
+    {
+      "path": "reports/literary-archive-reference-catalog-20260914.json",
+      "sha256Lf": "306cfdd28dda66130b3ee2c95bc1abf9821e50a938379cc9065aa69a2244be53"
+    },
+    {
+      "path": "scripts/lib/reviewed-r49n-package.mjs",
+      "sha256Lf": "a7dd08a61be2f9ce90d7c8a2824bc50182663eca36bfab1786bd6f186a451126"
+    },
+    {
+      "path": "scripts/lib/reviewed-reference-release.mjs",
+      "sha256Lf": "cf9485ad2deca2bbfaf55e4a437350c5bf4c33379f9af46be133663b33ab4a41"
+    },
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256Lf": "c8d2b6862c47c3215295951d2c5d1c406913b9879c616f1d8b787c6e05029f6c"
+    },
+    {
+      "path": "src/data/bookArchive.ts",
+      "sha256Lf": "738fe1a320790fa9971ae367079499ae1f9e5af05ed6fa756ad9d493b06f98c2"
+    },
+    {
+      "path": "scripts/database/fixtures/literary-archive-native-commit.sql",
+      "sha256Lf": "3f8e703616a444a5377c730cc4bf30d2cfd8427ca4b59b9e6eb692eef4fb4352"
+    },
+    {
+      "path": "scripts/database/literary-archive-native-commit.integration.test.mjs",
+      "sha256Lf": "c100b013ce6a8e101171691ce65df31875a0c6f35418c6a176c387654e676c85"
+    },
+    {
+      "path": "scripts/database/literary-archive-native-commit.sql",
+      "sha256Lf": "4823313ace3fd091d93780fd3cf1f9348f05b5d8edca3dce9f5cc36de5f6ca0f"
+    },
+    {
+      "path": "scripts/database/literary-work-evidence-v2-migration.test.mjs",
+      "sha256Lf": "405867a06e462df13b94ed53dea4e0cd970439561a42aedb8e96732d57486f7c"
+    },
+    {
+      "path": "scripts/database/supabase-database-safety.sh",
+      "sha256Lf": "036a21ada6a7dd115d5a928087d36bd8aa9fa651603c322a916506e4ee890496"
+    },
+    {
+      "path": "scripts/lib/literary-archive-database-commit.mjs",
+      "sha256Lf": "c2322067f4794763c04753118e5f3b1b9f1fb5e1d9327c6d4d8bfc3a9af81ab9"
+    },
+    {
+      "path": "scripts/lib/literary-archive-database-commit.test.mjs",
+      "sha256Lf": "ea8ffea9755e47f9ded865db2cbacdc6411b9df0523a5aaff2dfe1038461ebce"
+    },
+    {
+      "path": "scripts/lib/reviewed-header-showcase.test.mjs",
+      "sha256Lf": "3e270cd8dbc9bfec4540bf716e7cf31696aaec12374927567a5563f2b424a227"
+    },
+    {
+      "path": "scripts/lib/reviewed-r49n-package.test.mjs",
+      "sha256Lf": "7129eac1c61e577f2f4dfe95a085460464643dac80e5fe33afc37d14b54a96fc"
+    },
+    {
+      "path": "scripts/lib/reviewed-reference-release.test.mjs",
+      "sha256Lf": "55f0b4234816b0d0a407b1f3d3de50b97760437838208b9a85d4868d2f983da6"
+    },
+    {
+      "path": "scripts/lib/stage5-content-data-lock.test.mjs",
+      "sha256Lf": "2072075e9e57deeaef5652d789606421647b08e717d53bf3171ced800ef69624"
+    },
+    {
+      "path": "src/data/bookCmsWellsPriority20260913.test.ts",
+      "sha256Lf": "794240bacf3f380b98c5fdeb1ba5a8c47123c90a864276d4ca9291705be4612e"
+    },
+    {
+      "path": "src/data/bookR49nPackageReviewed20260912.test.ts",
+      "sha256Lf": "5f6081f91305c2431cdee4cc05952d228fa966e1c7881f013e905192a29553d8"
+    },
+    {
+      "path": "src/data/cms/historicalLiteraryWorks20260912.test-support.ts",
+      "sha256Lf": "78b2c99c1e68bcf64285ea77f481f4f5723dd56600f427f56f83366d43e4e443"
+    },
+    {
+      "path": "src/data/countries/bookR49nDickensReviewed20260912.test.ts",
+      "sha256Lf": "0ebc3fb18c4241567dad10efb351d14d9c69a3e3f077d5b67849989484a74795"
+    },
+    {
+      "path": "src/data/countries/bookR49nRetainedDrafts20260912.test.ts",
+      "sha256Lf": "efc10b62e02552add26255186f507d896b5e08bb5df1245161c1c3f9840673ee"
+    },
+    {
+      "path": "src/data/userSuppliedBookCoversBatch20260820.test.ts",
+      "sha256Lf": "654bb8505d5c9e339baccc24be1f5ef7b8e0e53a25d9da79693dd85b76d4643a"
+    },
+    {
+      "path": "src/data/countries/bookR49nRetainedDrafts20260912Data01.ts",
+      "sha256Lf": "5892f3b36062acaf628dcbffb11360584a8dc0a39b6ef6ad16d5850b111af3b7"
+    },
+    {
+      "path": "src/data/countries/bookR49nRetainedDrafts20260912Data02.ts",
+      "sha256Lf": "b6f3e277895354cb68daca6791d769260d8111ccec6bf58916bd976811356150"
+    },
+    {
+      "path": "src/data/countries/bookR49nRetainedDrafts20260912Data03.ts",
+      "sha256Lf": "064a86fd3867ca5e0731ba8d97f0de8630356347b7bcaf6ff9111b8f2c9e271e"
+    },
+    {
+      "path": "supabase/migrations/20260914_literary_translation_draft_storage.sql",
+      "sha256Lf": "5f0ee4955409a7a19adfa7602a4603cb0e5b7eeb5523c7e1ec95aca1f0048978"
+    },
+    {
+      "path": "scripts/database/literary-translation-draft-storage.integration.test.mjs",
+      "sha256Lf": "6247f5f11aafd6a7a6679e176cd788d4992a2fb0657c29b92337df5bdaa42e78"
+    },
+    {
+      "path": "scripts/database/fixtures/build-literary-translation-draft-storage-fixture.mjs",
+      "sha256Lf": "baaa53b5031abdc448356a0a4eec9b7eed1929a7cfd45379c5d278e54be499b3"
+    },
+    {
+      "path": "scripts/database/fixtures/literary-translation-draft-storage.sql",
+      "sha256Lf": "760d52564ae222047abd2d0a8ade8270c88520d1eed781c63f26915bc4b2fa29"
+    },
+    {
+      "path": ".github/workflows/verify-literary-archive-postflight.yml",
+      "sha256Lf": "041a6da2ae1bf131ab8d302706a6248da8929a4a4f774a3d12eb886d1ee9d5ae"
+    },
+    {
+      "path": "scripts/database/literary-archive-native-postflight.sql",
+      "sha256Lf": "a231604cc59658af9b698564c2ba0cbbcf86a55330a3faa0fde07b54fc01d0d5"
+    },
+    {
+      "path": "scripts/database/verify-literary-archive-postflight.mjs",
+      "sha256Lf": "824e0f81056001ecfee13101cfd203702461fa0845cecdcdc9a918ee85b44e5f"
+    },
+    {
+      "path": "scripts/lib/literary-archive-native-postflight.mjs",
+      "sha256Lf": "21a8d982e318a2641af0136b6c0349b103c4004175ae58f82bd3e70b6fc913f6"
+    },
+    {
+      "path": "scripts/lib/literary-archive-native-postflight.test.mjs",
+      "sha256Lf": "d8e1a27f2191e43483f070a797a589c7712a445405860258cfdbe40fa2f089ff"
+    },
+    {
+      "path": "scripts/database/literary-archive-native-postflight.integration.test.mjs",
+      "sha256Lf": "3876efdd28bda79ff69f89396a1bd684f7321910ed9d2da7d8cdf3905b748ef3"
+    },
+    {
+      "path": "scripts/database/fixtures/literary-archive-native-postflight.mjs",
+      "sha256Lf": "41156359942e0f12888421318331c8bee58ed7c9098768f4077f993a07af144b"
+    },
+    {
+      "path": "scripts/literary-work-editorial-artwork.test.mjs",
+      "sha256Lf": "f5b246b98fcb5b45b68dfb77f2acbddcf109fddbd503a902ed09321ba8992174"
+    },
+    {
+      "path": "scripts/export-published-content.mjs",
+      "sha256Lf": "2bfa22b063f387f08364e27fb6ca05a5840cc57b2fd48c5ce98f7316b5721cf7"
+    },
+    {
+      "path": "scripts/lib/public-work-source-fetch.mjs",
+      "sha256Lf": "c9223ab3ec2db81ebb45b25fae8e33005ab98f07e6af870289941ea9e5663aa3"
+    },
+    {
+      "path": "scripts/lib/public-work-source-fetch.test.mjs",
+      "sha256Lf": "007ac25f211d5023168edb9b45fb32d1073a1cf51754ca8a96fa565ffaf744f1"
+    },
+    {
+      "path": "scripts/database/verify-book-cover-batch-20260820.test.mjs",
+      "sha256Lf": "497259e3a3957d567ba3c66638d647f8ce0bcb45833104b45e96eb9603b99b26"
+    },
+    {
+      "path": "src/data/bookEvidence.ts",
+      "sha256Lf": "2f8c93a27abeb9cb05cc62db72f80605e84024a24069a3330bd3b7bbef141681"
+    },
+    {
+      "path": "src/data/cms/editorialOverrides.ts",
+      "sha256Lf": "9d569451e09cdd1706c3a63414a39cf1449c767afc24040ebad99bbe99c579da"
+    },
+    {
+      "path": "scripts/lib/reviewed-native-archive-read.mjs",
+      "sha256Lf": "fe4d2d4da2c93cd3fc538c1d11686faf3805b8ff6ffdf6c6387f815623ee31a4"
+    }
+  ],
+  "reviewedReport": {
+    "path": "reports/premium-title-evidence-reviewed-20260914.json",
+    "sha256Lf": "5402dc2e3bfcc9c24e832096e32da14c3d8d7922bb007efc5dd58535ac585c33"
+  },
+  "projections": [
+    {
+      "id": "premium-title-01",
+      "path": "scripts/export-premium-translations.mjs",
+      "before": "  \"authorship\",\n  \"title\",\n  \"original-title\",\n  \"publication-year\",\n  \"language\",\n  \"genre\",\n",
+      "after": "  \"authorship\",\n  \"title\",\n  \"original-title\",\n  \"container-title\",\n  \"contained-title\",\n  \"publication-year\",\n  \"language\",\n  \"genre\",\n"
+    },
+    {
+      "id": "premium-title-02",
+      "path": "scripts/export-premium-translations.mjs",
+      "before": "  \"current-complete-authorized-edition\",\n  \"original-market-title\",\n]);\nconst workDescriptionOrigins = new Set([\n  \"article-adapted\",\n  \"official-source-synthesis\",\n",
+      "after": "  \"current-complete-authorized-edition\",\n  \"original-market-title\",\n]);\nconst workTitleRelations = new Set([\"principal\", \"contained-work\"]);\nconst workContainedInFields = new Set([\"contents-note\", \"table-of-contents\"]);\nconst workDescriptionOrigins = new Set([\n  \"article-adapted\",\n  \"official-source-synthesis\",\n"
+    },
+    {
+      "id": "premium-title-03",
+      "path": "scripts/export-premium-translations.mjs",
+      "before": "  );\n  const recordId = stringValue(row.recordId, 300);\n  const catalogTitleExact = stringValue(row.catalogTitleExact, 300);\n  const locale = enumStringValue(row.locale, workLocales);\n  const market = stringValue(row.market, 80);\n  const expressionLanguage = stringValue(row.expressionLanguage, 120);\n",
+      "after": "  );\n  const recordId = stringValue(row.recordId, 300);\n  const catalogTitleExact = stringValue(row.catalogTitleExact, 300);\n  const titleRelation = row.titleRelation === undefined\n    ? undefined : enumStringValue(row.titleRelation, workTitleRelations);\n  const analyticTitleExact = optionalString(row.analyticTitleExact, 300);\n  const containerTitleExact = optionalString(row.containerTitleExact, 300);\n  const containedInField = enumStringValue(row.containedInField, workContainedInFields);\n  if (row.titleRelation !== undefined && !titleRelation) return null;\n  if (titleRelation === \"contained-work\") {\n    if (!analyticTitleExact || !containerTitleExact || !containedInField) return null;\n  } else if ([\"analyticTitleExact\", \"containerTitleExact\", \"containedInField\"]\n    .some((field) => row[field] !== undefined)) {\n    return null;\n  }\n  const locale = enumStringValue(row.locale, workLocales);\n  const market = stringValue(row.market, 80);\n  const expressionLanguage = stringValue(row.expressionLanguage, 120);\n"
+    },
+    {
+      "id": "premium-title-04",
+      "path": "scripts/export-premium-translations.mjs",
+      "before": "    recordKind,\n    recordId,\n    catalogTitleExact,\n    locale,\n    market,\n    expressionLanguage,\n",
+      "after": "    recordKind,\n    recordId,\n    catalogTitleExact,\n    ...(titleRelation ? { titleRelation } : {}),\n    ...(titleRelation === \"contained-work\"\n      ? { analyticTitleExact, containerTitleExact, containedInField } : {}),\n    locale,\n    market,\n    expressionLanguage,\n"
+    },
+    {
+      "id": "premium-title-05",
+      "path": "scripts/export-published-content.fixture.test.mjs",
+      "before": "import { afterEach, describe, expect, it, vi } from \"vitest\";\n\nconst boundary = vi.hoisted(() => ({ commit: vi.fn(), files: new Map() }));\nvi.mock(\"./lib/atomic-file-set.mjs\", () => ({ commitAtomicFileSet: boundary.commit }));\n",
+      "after": "import { afterEach, describe, expect, it, vi } from \"vitest\";\nimport { assertPublicationMetadata } from \"./lib/cms-publication-state.mjs\";\n\nconst boundary = vi.hoisted(() => ({ commit: vi.fn(), files: new Map() }));\nvi.mock(\"./lib/atomic-file-set.mjs\", () => ({ commitAtomicFileSet: boundary.commit }));\n"
+    },
+    {
+      "id": "premium-title-06",
+      "path": "scripts/export-published-content.fixture.test.mjs",
+      "before": "      work_id: work.id, provider, source_url: `https://example.test/${work.id}`,\n      field_names: [\"title\"], license_name: \"CC0\", usage: \"reference-only\", retrieved_at: \"2026-09-14\", metadata: {},\n    })));\n    Object.assign(tables, { articles, article_translations: translations, literary_works: works, literary_work_sources: sources });\n    let publicParentsRead = false;\n    const sourceBatches = [];\n    const fetchFixture = vi.fn(async (input, init) => {\n",
+      "after": "      work_id: work.id, provider, source_url: `https://example.test/${work.id}`,\n      field_names: [\"title\"], license_name: \"CC0\", usage: \"reference-only\", retrieved_at: \"2026-09-14\", metadata: {},\n    })));\n    const evidenceCases = [\n      { relation: \"contained-work\", field: \"contents-note\", valid: true },\n      { relation: \"contained-work\", field: \"table-of-contents\", valid: true },\n      { relation: \"unsupported\", field: \"contents-note\", valid: false },\n      { relation: \"contained-work\", field: \"unreviewed-note\", valid: false },\n      { relation: \"contained-work\", field: \"contents-note\", omit: \"analyticTitleExact\", valid: false },\n      { relation: \"contained-work\", field: \"contents-note\", omit: \"containerTitleExact\", valid: false },\n      { relation: \"contained-work\", omit: \"containedInField\", valid: false },\n      { relation: \"principal\", field: \"contents-note\", valid: false },\n    ];\n    const workTranslations = evidenceCases.map((testCase, index) => {\n      const work = works[index];\n      const evidence = {\n        entityKind: \"manifestation\", manifestationId: `fixture-manifestation-${index}`,\n        sourceUrl: `https://example.test/catalog/${index}`, provider: \"Fixture catalog\",\n        authorityId: \"fixture-authority\", authorityTier: \"A\", recordKind: \"national-bibliography\",\n        recordId: `fixture-record-${index}`, catalogTitleExact: \"Collected works\",\n        titleRelation: testCase.relation, analyticTitleExact: work.title,\n        containerTitleExact: \"Collected works\", containedInField: testCase.field,\n        locale: \"ru\", market: \"RU\", expressionLanguage: \"ru\",\n        retrievedAt: \"2026-09-14\", checkedAt: \"2026-09-14\", checkedBy: \"Fixture reviewer\",\n      };\n      if (testCase.omit) delete evidence[testCase.omit];\n      const titleEvidence = {\n        entityKind: \"expression\", expressionId: `${work.legacy_id}:ru`, locale: \"ru\",\n        value: work.title, status: \"verified-published\", expressionLanguage: \"ru\", market: \"RU\",\n        selectionRule: \"authoritative-uniform-title\", evidence: [evidence],\n      };\n      work.metadata = { localizedTitles: { ru: titleEvidence } };\n      return { work_id: work.id, locale: \"ru\", title: work.title,\n        description: \"A fixture description for testing export preservation of bibliographic evidence without changing the reviewed source, its identity, its language, or its publication status.\",\n        source_language: \"ru\", translation_method: \"editorial-original\", editorial_status: \"reviewed\",\n        source_urls: [evidence.sourceUrl], reviewed_at: \"2026-09-14\", metadata: { titleEvidence } };\n    });\n    for (const source of sources.filter(source => source.work_id === works[0].id)) {\n      source.field_names = [\"title\", \"container-title\", \"contained-title\"];\n    }\n    Object.assign(tables, { articles, article_translations: translations, literary_works: works, literary_work_sources: sources });\n    tables.literary_work_translations = workTranslations;\n    let publicParentsRead = false;\n    const sourceBatches = [];\n    const fetchFixture = vi.fn(async (input, init) => {\n"
+    },
+    {
+      "id": "premium-title-07",
+      "path": "scripts/export-published-content.fixture.test.mjs",
+      "before": "    }\n    for (const work of works) {\n      expect(snapshot.literaryWorksByLegacyId[work.legacy_id].sources).toEqual([\"A source\", \"B source\"].map(provider => ({\n        provider, url: `https://example.test/${work.id}`, fields: [\"title\"], license: \"CC0\", usage: \"reference-only\", retrievedAt: \"2026-09-14\",\n      })));\n    }\n    sourceBatches.length = 0;\n",
+      "after": "    }\n    for (const work of works) {\n      expect(snapshot.literaryWorksByLegacyId[work.legacy_id].sources).toEqual([\"A source\", \"B source\"].map(provider => ({\n        provider, url: `https://example.test/${work.id}`,\n        fields: work.id === works[0].id ? [\"title\", \"container-title\", \"contained-title\"] : [\"title\"],\n        license: \"CC0\", usage: \"reference-only\", retrievedAt: \"2026-09-14\",\n      })));\n    }\n    sourceBatches.length = 0;\n"
+    },
+    {
+      "id": "premium-title-08",
+      "path": "scripts/export-published-content.fixture.test.mjs",
+      "before": "    expect(sourceBatches.map(ids => ids.length)).toEqual([10, 10, 10, 10, 1]);\n    const premiumWrites = boundary.commit.mock.calls[1][0].writes;\n    const enriched = JSON.parse(premiumWrites.find(write => write.path.endsWith(\"published-content.json\")).content);\n    expect(enriched).toEqual(snapshot);\n  });\n});\n",
+      "after": "    expect(sourceBatches.map(ids => ids.length)).toEqual([10, 10, 10, 10, 1]);\n    const premiumWrites = boundary.commit.mock.calls[1][0].writes;\n    const enriched = JSON.parse(premiumWrites.find(write => write.path.endsWith(\"published-content.json\")).content);\n    const expected = structuredClone(snapshot);\n    evidenceCases.forEach((testCase, index) => {\n      const key = works[index].legacy_id, work = enriched.literaryWorksByLegacyId[key];\n      if (testCase.valid) {\n        expect(work.localizedTitles).toEqual(snapshot.literaryWorksByLegacyId[key].localizedTitles);\n        expect(work.translations.ru.titleEvidence).toEqual(work.localizedTitles.ru);\n      } else {\n        expect(work.localizedTitles).toBeUndefined();\n        expect(work.translations.ru.titleEvidence).toBeUndefined();\n        delete expected.literaryWorksByLegacyId[key].localizedTitles;\n        delete expected.literaryWorksByLegacyId[key].translations.ru.titleEvidence;\n      }\n    });\n    // Invalid evidence changes the content hash, while every other article,\n    // source, translation and publication-head field remains identical.\n    expect(assertPublicationMetadata(enriched)).toEqual(enriched.publication);\n    expected.publication.contentSha256 = enriched.publication.contentSha256;\n    expect(enriched).toEqual(expected);\n  });\n});\n"
+    },
+    {
+      "id": "premium-title-09",
+      "path": "scripts/lib/reviewed-cms-source-punctuation.mjs",
+      "before": "import { readFileSync } from \"node:fs\";\n\nexport const cmsSourcePunctuationAttestation = JSON.parse(readFileSync(\n  new URL(\"../governance/cms-source-punctuation-reviewed-20260914.json\", import.meta.url), \"utf8\"\n));\n\n// Preserve published source locks by reversing only explicitly reviewed bytes.\nexport function projectReviewedCmsSourcePunctuation(relativePath, source) {\n  let projected = source.replace(/\\r\\n?/gu, \"\\n\");\n  for (const delta of cmsSourcePunctuationAttestation.projections) {\n    if (delta.path !== relativePath) continue;\n",
+      "after": "import { readFileSync } from \"node:fs\";\nimport { projectReviewedPremiumTitleEvidence } from \"./reviewed-premium-title-evidence.mjs\";\n\nexport const cmsSourcePunctuationAttestation = JSON.parse(readFileSync(\n  new URL(\"../governance/cms-source-punctuation-reviewed-20260914.json\", import.meta.url), \"utf8\"\n));\n\n// Preserve published source locks by reversing only explicitly reviewed bytes.\nexport function projectPublishedCmsSourcePunctuation(relativePath, source) {\n  let projected = source.replace(/\\r\\n?/gu, \"\\n\");\n  for (const delta of cmsSourcePunctuationAttestation.projections) {\n    if (delta.path !== relativePath) continue;\n"
+    },
+    {
+      "id": "premium-title-10",
+      "path": "scripts/lib/reviewed-cms-source-punctuation.mjs",
+      "before": "  }\n  return projected;\n}\n",
+      "after": "  }\n  return projected;\n}\n\nexport function projectReviewedCmsSourcePunctuation(relativePath, source) {\n  return projectPublishedCmsSourcePunctuation(\n    relativePath, projectReviewedPremiumTitleEvidence(relativePath, source)\n  );\n}\n"
+    },
+    {
+      "id": "premium-title-11",
+      "path": "scripts/lib/reviewed-cms-source-punctuation.test.mjs",
+      "before": "import { createHash } from \"node:crypto\";\nimport { readFileSync } from \"node:fs\";\nimport { describe, expect, it } from \"vitest\";\nimport { cmsSourcePunctuationAttestation, projectReviewedCmsSourcePunctuation } from \"./reviewed-cms-source-punctuation.mjs\";\nimport { nativeArchiveReadAttestation, projectPublishedNativeArchiveRead, projectReviewedNativeArchiveRead } from \"./reviewed-native-archive-read.mjs\";\n\nconst read = path => readFileSync(path, \"utf8\").replace(/\\r\\n?/gu, \"\\n\");\nconst sha = text => createHash(\"sha256\").update(text).digest(\"hex\");\nconst paths = [\"scripts/lib/reviewed-native-archive-read.mjs\",\n  \"scripts/lib/reviewed-native-archive-read.test.mjs\", \"scripts/normalize-short-hyphens.mjs\"];\n",
+      "after": "import { createHash } from \"node:crypto\";\nimport { readFileSync } from \"node:fs\";\nimport { describe, expect, it } from \"vitest\";\nimport { cmsSourcePunctuationAttestation, projectPublishedCmsSourcePunctuation as projectReviewedCmsSourcePunctuation } from \"./reviewed-cms-source-punctuation.mjs\";\nimport { projectReviewedPremiumTitleEvidence } from \"./reviewed-premium-title-evidence.mjs\";\nimport { nativeArchiveReadAttestation, projectPublishedNativeArchiveRead, projectReviewedNativeArchiveRead } from \"./reviewed-native-archive-read.mjs\";\n\nconst read = path => projectReviewedPremiumTitleEvidence(path, readFileSync(path, \"utf8\"));\nconst sha = text => createHash(\"sha256\").update(text).digest(\"hex\");\nconst paths = [\"scripts/lib/reviewed-native-archive-read.mjs\",\n  \"scripts/lib/reviewed-native-archive-read.test.mjs\", \"scripts/normalize-short-hyphens.mjs\"];\n"
+    },
+    {
+      "id": "premium-title-12",
+      "path": "scripts/lib/reviewed-cms-source-punctuation.test.mjs",
+      "before": "\n  it.each(paths)(\"restores exact historical bytes and rejects missing, duplicate or changed deltas in %s\", path => {\n    const source = read(path), previous = projectReviewedCmsSourcePunctuation(path, source);\n    expect(sha(source)).toBe(cmsSourcePunctuationAttestation.reviewedSourceSha256[path]);\n    expect(sha(previous)).toBe(cmsSourcePunctuationAttestation.sourceBaselines[path]);\n    expect(projectReviewedCmsSourcePunctuation(path, source.replaceAll(\"\\n\", \"\\r\\n\"))).toBe(previous);\n    expect(projectReviewedNativeArchiveRead(path, source)).toBe(projectPublishedNativeArchiveRead(path, previous));\n    expect(projectReviewedCmsSourcePunctuation(path, source + \"\\nUnreviewed\\n\")).toBe(previous + \"\\nUnreviewed\\n\");\n    expect(sha(previous + \"\\nUnreviewed\\n\")).not.toBe(cmsSourcePunctuationAttestation.sourceBaselines[path]);\n    for (const delta of cmsSourcePunctuationAttestation.projections.filter(delta => delta.path === path)) {\n",
+      "after": "\n  it.each(paths)(\"restores exact historical bytes and rejects missing, duplicate or changed deltas in %s\", path => {\n    const source = read(path), previous = projectReviewedCmsSourcePunctuation(path, source);\n    const currentSource = readFileSync(path, \"utf8\").replace(/\\r\\n?/gu, \"\\n\");\n    expect(sha(source)).toBe(cmsSourcePunctuationAttestation.reviewedSourceSha256[path]);\n    expect(sha(previous)).toBe(cmsSourcePunctuationAttestation.sourceBaselines[path]);\n    expect(projectReviewedCmsSourcePunctuation(path, source.replaceAll(\"\\n\", \"\\r\\n\"))).toBe(previous);\n    expect(projectReviewedNativeArchiveRead(path, currentSource)).toBe(projectPublishedNativeArchiveRead(path, previous));\n    expect(projectReviewedCmsSourcePunctuation(path, source + \"\\nUnreviewed\\n\")).toBe(previous + \"\\nUnreviewed\\n\");\n    expect(sha(previous + \"\\nUnreviewed\\n\")).not.toBe(cmsSourcePunctuationAttestation.sourceBaselines[path]);\n    for (const delta of cmsSourcePunctuationAttestation.projections.filter(delta => delta.path === path)) {\n"
+    },
+    {
+      "id": "premium-title-13",
+      "path": "scripts/lib/reviewed-cms-source-punctuation.test.mjs",
+      "before": "      for (const changed of [source.replace(delta.after, \"\"), source + delta.after,\n        source.replace(delta.after, delta.after.replace(/\\S/u, \"?\"))]) {\n        expect(() => projectReviewedCmsSourcePunctuation(path, changed)).toThrow(\"Missing or duplicate reviewed CMS punctuation delta\");\n        expect(() => projectReviewedNativeArchiveRead(path, changed)).toThrow(\"Missing or duplicate reviewed CMS punctuation delta\");\n      }\n    }\n",
+      "after": "      for (const changed of [source.replace(delta.after, \"\"), source + delta.after,\n        source.replace(delta.after, delta.after.replace(/\\S/u, \"?\"))]) {\n        expect(() => projectReviewedCmsSourcePunctuation(path, changed)).toThrow(\"Missing or duplicate reviewed CMS punctuation delta\");\n      }\n      for (const changed of [currentSource.replace(delta.after, \"\"), currentSource + delta.after,\n        currentSource.replace(delta.after, delta.after.replace(/\\S/u, \"?\"))]) {\n        expect(() => projectReviewedNativeArchiveRead(path, changed)).toThrow(\"Missing or duplicate reviewed CMS punctuation delta\");\n      }\n    }\n"
+    },
+    {
+      "id": "premium-title-14",
+      "path": "scripts/lib/reviewed-native-archive-read.test.mjs",
+      "before": "\n  it.each(paths)(\"restores exact published bytes and fails closed on altered fragments in %s\", path => {\n    const source = read(path), previous = projectReviewedNativeArchiveRead(path, source);\n    expect(sha(source)).toBe(nativeArchiveReadAttestation.reviewedSourceSha256[path]);\n    expect(sha(previous)).toBe(nativeArchiveReadAttestation.sourceBaselines[path]);\n    expect(projectReviewedNativeArchiveRead(path, source.replaceAll(\"\\n\", \"\\r\\n\"))).toBe(previous);\n    expect(projectReviewedDraftStorage(path, source)).toBe(projectPublishedDraftStorage(path, previous));\n    const unrelated = \"\\n/* Unreviewed source changes remain visible. */\\n\";\n    expect(projectReviewedNativeArchiveRead(path, source + unrelated)).toBe(previous + unrelated);\n    expect(sha(previous + unrelated)).not.toBe(nativeArchiveReadAttestation.sourceBaselines[path]);\n",
+      "after": "\n  it.each(paths)(\"restores exact published bytes and fails closed on altered fragments in %s\", path => {\n    const source = read(path), previous = projectReviewedNativeArchiveRead(path, source);\n    const currentSource = readFileSync(path, \"utf8\").replace(/\\r\\n?/gu, \"\\n\");\n    expect(sha(source)).toBe(nativeArchiveReadAttestation.reviewedSourceSha256[path]);\n    expect(sha(previous)).toBe(nativeArchiveReadAttestation.sourceBaselines[path]);\n    expect(projectReviewedNativeArchiveRead(path, source.replaceAll(\"\\n\", \"\\r\\n\"))).toBe(previous);\n    expect(projectReviewedDraftStorage(path, currentSource)).toBe(projectPublishedDraftStorage(path, previous));\n    const unrelated = \"\\n/* Unreviewed source changes remain visible. */\\n\";\n    expect(projectReviewedNativeArchiveRead(path, source + unrelated)).toBe(previous + unrelated);\n    expect(sha(previous + unrelated)).not.toBe(nativeArchiveReadAttestation.sourceBaselines[path]);\n"
+    },
+    {
+      "id": "premium-title-15",
+      "path": "scripts/lib/reviewed-native-archive-read.test.mjs",
+      "before": "      for (const changed of [source.replace(delta.after, \"\"), source + delta.after,\n        source.replace(delta.after, delta.after.replace(/\\S/u, \"?\"))]) {\n        expect(() => projectReviewedNativeArchiveRead(path, changed)).toThrow(\"Missing or duplicate reviewed native-read delta\");\n        expect(() => projectReviewedDraftStorage(path, changed)).toThrow(\"Missing or duplicate reviewed native-read delta\");\n      }\n    }\n",
+      "after": "      for (const changed of [source.replace(delta.after, \"\"), source + delta.after,\n        source.replace(delta.after, delta.after.replace(/\\S/u, \"?\"))]) {\n        expect(() => projectReviewedNativeArchiveRead(path, changed)).toThrow(\"Missing or duplicate reviewed native-read delta\");\n      }\n      for (const changed of [currentSource.replace(delta.after, \"\"), currentSource + delta.after,\n        currentSource.replace(delta.after, delta.after.replace(/\\S/u, \"?\"))]) {\n        expect(() => projectReviewedDraftStorage(path, changed)).toThrow(\"Missing or duplicate reviewed native-read delta\");\n      }\n    }\n"
+    }
+  ]
+}

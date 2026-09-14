@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
@@ -91,6 +92,22 @@ const archive = buildBookArchive(bookArchiveCountries, {
 
 function sha256(value: string | Buffer) {
   return createHash("sha256").update(value).digest("hex");
+}
+
+const historicalRevisions = new Map<string, CanonicalArticleRevision>();
+function historicalArticleRevision(documentPath: string) {
+  // The synopsis evidence names the original article revision. A fresh export
+  // can legitimately contain the later reviewed copy/layout projection.
+  if (!/^cms\/articles\/cms-[a-f0-9-]{36}\.json$/u.test(documentPath)) {
+    throw new Error(`Unexpected historical article path: ${documentPath}`);
+  }
+  if (!historicalRevisions.has(documentPath)) {
+    const bytes = execFileSync("git", ["show",
+      `d6c7849ccc5285e17c6da9ef147fecc9fdd0f000:public/${documentPath}`,
+    ], { cwd: repositoryRoot, maxBuffer: 128 * 1024 });
+    historicalRevisions.set(documentPath, JSON.parse(bytes.toString("utf8")) as CanonicalArticleRevision);
+  }
+  return historicalRevisions.get(documentPath)!;
 }
 
 function archiveWork(recordKey: string): WorkProfile {
@@ -218,15 +235,7 @@ describe("project-owned article synopsis batch 01", () => {
       });
       expect(occurrence!.excerpt.characters).toBeGreaterThanOrEqual(140);
 
-      const revisionPath = resolve(
-        repositoryRoot,
-        "public",
-        record.identity.revisionDocumentPath,
-      );
-      const revisionBytes = readFileSync(revisionPath);
-      const article = JSON.parse(
-        revisionBytes.toString("utf8"),
-      ) as CanonicalArticleRevision;
+      const article = historicalArticleRevision(record.identity.revisionDocumentPath);
       expect(articleSynopsisRevisionSha256(article)).toBe(
         record.identity.revisionSha256,
       );
@@ -350,16 +359,7 @@ describe("project-owned article synopsis batch 01", () => {
 
   it("stores rewritten synopsis prose rather than copied article excerpts", () => {
     for (const record of bookArticleSynopsisBatch01Records) {
-      const revision = JSON.parse(
-        readFileSync(
-          resolve(
-            repositoryRoot,
-            "public",
-            record.identity.revisionDocumentPath,
-          ),
-          "utf8",
-        ),
-      ) as CanonicalArticleRevision;
+      const revision = historicalArticleRevision(record.identity.revisionDocumentPath);
       const { excerptText } = sectionTextAfterHeading(
         revision.contentHtml,
         record.identity.headingId,

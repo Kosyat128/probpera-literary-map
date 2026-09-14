@@ -1,10 +1,11 @@
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { cmsSourcePunctuationAttestation, projectReviewedCmsSourcePunctuation } from "./reviewed-cms-source-punctuation.mjs";
+import { cmsSourcePunctuationAttestation, projectPublishedCmsSourcePunctuation as projectReviewedCmsSourcePunctuation } from "./reviewed-cms-source-punctuation.mjs";
+import { projectReviewedPremiumTitleEvidence } from "./reviewed-premium-title-evidence.mjs";
 import { nativeArchiveReadAttestation, projectPublishedNativeArchiveRead, projectReviewedNativeArchiveRead } from "./reviewed-native-archive-read.mjs";
 
-const read = path => readFileSync(path, "utf8").replace(/\r\n?/gu, "\n");
+const read = path => projectReviewedPremiumTitleEvidence(path, readFileSync(path, "utf8"));
 const sha = text => createHash("sha256").update(text).digest("hex");
 const paths = ["scripts/lib/reviewed-native-archive-read.mjs",
   "scripts/lib/reviewed-native-archive-read.test.mjs", "scripts/normalize-short-hyphens.mjs"];
@@ -26,10 +27,11 @@ describe("CMS source punctuation additive governance", () => {
 
   it.each(paths)("restores exact historical bytes and rejects missing, duplicate or changed deltas in %s", path => {
     const source = read(path), previous = projectReviewedCmsSourcePunctuation(path, source);
+    const currentSource = readFileSync(path, "utf8").replace(/\r\n?/gu, "\n");
     expect(sha(source)).toBe(cmsSourcePunctuationAttestation.reviewedSourceSha256[path]);
     expect(sha(previous)).toBe(cmsSourcePunctuationAttestation.sourceBaselines[path]);
     expect(projectReviewedCmsSourcePunctuation(path, source.replaceAll("\n", "\r\n"))).toBe(previous);
-    expect(projectReviewedNativeArchiveRead(path, source)).toBe(projectPublishedNativeArchiveRead(path, previous));
+    expect(projectReviewedNativeArchiveRead(path, currentSource)).toBe(projectPublishedNativeArchiveRead(path, previous));
     expect(projectReviewedCmsSourcePunctuation(path, source + "\nUnreviewed\n")).toBe(previous + "\nUnreviewed\n");
     expect(sha(previous + "\nUnreviewed\n")).not.toBe(cmsSourcePunctuationAttestation.sourceBaselines[path]);
     for (const delta of cmsSourcePunctuationAttestation.projections.filter(delta => delta.path === path)) {
@@ -39,6 +41,9 @@ describe("CMS source punctuation additive governance", () => {
       for (const changed of [source.replace(delta.after, ""), source + delta.after,
         source.replace(delta.after, delta.after.replace(/\S/u, "?"))]) {
         expect(() => projectReviewedCmsSourcePunctuation(path, changed)).toThrow("Missing or duplicate reviewed CMS punctuation delta");
+      }
+      for (const changed of [currentSource.replace(delta.after, ""), currentSource + delta.after,
+        currentSource.replace(delta.after, delta.after.replace(/\S/u, "?"))]) {
         expect(() => projectReviewedNativeArchiveRead(path, changed)).toThrow("Missing or duplicate reviewed CMS punctuation delta");
       }
     }
