@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "originalPath": ".tmp/pwa-cross-engine-results/pwa-archive-search-20260914-a1/browser-run.stdout.log",
+  "originalBytes": 232,
+  "originalSha256": "cb9731787877715a254288fc109965d7e8263069208a730ff22c6b1e93cf246b",
+  "reconstruction": "UTF-8 encode text exactly, without newline normalization",
+  "text": "\nRunning 1 test using 1 worker\n\n  ok 1 [pwa-desktop] › tests\\pwa\\offline-catalog.spec.mjs:149:1 › offline PWA cross-language author search and book return retain the globe and integrated archive card (26.3s)\n\n  1 passed (27.8s)\n"
+}

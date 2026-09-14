@@ -1,53 +1,6 @@
 {
   "schemaVersion": 1,
   "recordedAt": "2026-09-14T03:23:59.910Z",
-  "stage": "S09",
-  "status": "LOCAL_SOURCE_AND_ARTIFACT_VALIDATION_PASSED",
-  "sourceInputsSha256": "a3633803a157b8d79f612216f8efa27629c06a5e6405b4ae7d99a0b7a60169dd",
-  "implementation": [
-    "src/index.css",
-    "scripts/mobile/native-base-assets.json",
-    "scripts/mobile/pwa-portrait-selection.mjs",
-    "scripts/mobile/build-pwa.mjs",
-    "scripts/mobile/verify-pwa-artifact.mjs",
-    "src/pwa/pwaBootstrapBudgets.ts"
-  ],
-  "behavior": [
-    "Canonical live full-width sticky archive masthead is integrated into the existing card, preserving sheet, close, focus and theme ownership.",
-    "All 33 current eligible local cover pairs share hash-pinned native/PWA packaging; current metadata and original bytes are preserved.",
-    "Source browser now declares UTF-8 for document and textual resources; Cyrillic matching sees the actual catalog instead of the old incorrectly decoded four-work subset."
-  ],
-  "validation": {
-    "unitFiles": 3,
-    "passingUnitCases": 287,
-    "typecheck": "typecheck-a1/result.json",
-    "browser": "browser-a2/result.json",
-    "visual": "visual-review.json",
-    "sourceInputsCurrent": true,
-    "failedAttempt": "browser-a1/result.json",
-    "repair": "UTF-8 corrected the publication gate and exposed missing packaged covers. Added the complete current eligible local closure without suppressing missing-resource assertions."
-  },
-  "coverSelection": {
-    "evidence": "docs/mobile/evidence/S09/archive-header-20260914/cover-closure/audit.json",
-    "manifestSha256": "b2c706b1f89a844af8505120184a5b2ee11f04247ed674ebf29da824bd978506",
-    "selectedPublicAssets": 1343,
-    "addedFiles": 54,
-    "addedBytes": 3944574,
-    "eligibleLocalCoverPairs": 33,
-    "newRightsApproval": false
-  },
-  "bootstrapBudget": {
-    "oldBytes": 67108864,
-    "newBytes": 75497472,
-    "priorActualBytes": 66475523,
-    "addedCoverBytes": 3944574,
-    "basis": "Previous exact PWA core plus current eligible cover closure exceeds the prior engineering bound. Routed23 requires measured bounded budgets; it sets no64MiB maximum. Keep2048files,16MiB/file,512KiBmarker and all signed content-package limits unchanged. Future large owner archives require separate content packages."
-  },
-  "canonicalFactsChanged": false,
-  "ownerCatalogWorkflow": "Owner fills archives; final canonical synchronization follows app implementation (D107).",
-  "stageAccepted": false,
-  "releaseReady": false,
-  "next": "Prepare a parallel-safe S11 offline/download/synchronization entry on the canonical export and dependency contracts, with disjoint file ownership and bounded validation. No factual archive population. Owner final canonical archive synchronization and complete RUEN/content/rights validation follow app implementation (D107). Preserve these artifacts and do not repeat unchanged builds or tests.",
   "sourceCommit": "8bd5a8acc50a9c0f2c07aba9aa2251cae26d9904",
   "artifacts": {
     "android": {
@@ -90,7 +43,7 @@
       "installedRuntimeTested": false
     }
   },
-  "artifactSourceProof": {
+  "sourceProof": {
     "currentInputsVerified": 1345,
     "currentSourceBytesMatched": true,
     "headerImplementationPins": [
@@ -130,8 +83,7 @@
     "additionalBrowserRuns": 0,
     "scope": "Local source/artifact integrity and already recorded browser/visual evidence; no editorial, rights or release approval."
   },
-  "combinedArtifactCheckpoint": "docs/mobile/evidence/S10/opposite-locale-search-20260914/result.json",
-  "actualPwaBrowserPasses": 1,
-  "artifactVisualReview": "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/visual-review.json",
-  "productionActionsPerformed": false
+  "acceptedStateUnchanged": true,
+  "stageAccepted": false,
+  "releaseReady": false
 }

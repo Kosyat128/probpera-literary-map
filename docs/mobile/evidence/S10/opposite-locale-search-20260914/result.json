@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "recordedAt": "2026-09-14T03:01:23.952Z",
+  "recordedAt": "2026-09-14T03:23:59.910Z",
   "stage": "S10",
-  "status": "SOURCE_VALIDATED_ARTIFACT_REFRESH_PENDING",
+  "status": "LOCAL_SOURCE_AND_ARTIFACT_VALIDATION_PASSED",
   "sourceInputs": [
     {
       "path": "data/book-canon-source-registry.json",
@@ -5369,5 +5369,90 @@
   "ownerCatalogWorkflow": "Owner fills archives; final canonical synchronization and full content review follow app implementation (D107).",
   "stageAccepted": false,
   "releaseReady": false,
-  "next": "Build one combined exact-source Android/dev and local-QA PWA with integrated archive header, complete current local cover pins and opposite-locale author search. Run the single combined actual offline RUEN search/return case; preserve exact artifacts and screenshots."
+  "next": "Prepare a parallel-safe S11 offline/download/synchronization entry on the canonical export and dependency contracts, with disjoint file ownership and bounded validation. No factual archive population. Owner final canonical archive synchronization and complete RUEN/content/rights validation follow app implementation (D107). Preserve these artifacts and do not repeat unchanged builds or tests.",
+  "sourceCommit": "8bd5a8acc50a9c0f2c07aba9aa2251cae26d9904",
+  "artifacts": {
+    "android": {
+      "evidence": "docs/mobile/evidence/S04/archive-search-android-20260914/result.json",
+      "sha256": "376a85baa9e29e8bd24285f028b09faafd88dd3af797f1e4e38ff0268950dd83",
+      "sourceCommit": "8bd5a8acc50a9c0f2c07aba9aa2251cae26d9904",
+      "buildId": "048c8e1b95f0c30a6da8e462156055579c5379b9c9c571e9655310822d418e7f",
+      "sourceInputsSha256": "40e5e24a33a11ae76be315d6f61ec92e310384070e63d70558e9736da6fadac2",
+      "runtime": ".tmp/native-builds/android-dev/archive-search-048c8e1b/runtime",
+      "artifactSha256": "51299e332a2c3dd4043d61a8924dee30c545f5674db048f6f51f27dfc0e0428c",
+      "apk": {
+        "path": ".tmp/native-builds/android-dev/archive-search-048c8e1b/app-dev-debug.apk",
+        "bytes": 67273954,
+        "sha256": "dff8a1cb9be527dec533ae79b9db68aa12867bd975b6076b19c39fdcf53afa2d"
+      },
+      "strictAudit": true,
+      "binaryAudit": true,
+      "copiesVerified": true,
+      "installedRuntimeTested": false
+    },
+    "pwa": {
+      "evidence": "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/result.json",
+      "sha256": "a7fe1fe8097607a8930a5bbbabe1abc47d2469263a8b17db42d74240c556d45b",
+      "sourceCommit": "8bd5a8acc50a9c0f2c07aba9aa2251cae26d9904",
+      "buildId": "0381b95fa2b6de6e0dd1340b28d885c496cb7ff6f6bca72d6e0cc1e0cf632354",
+      "sourceInputsSha256": "afd8a524f937fca934a58cbe8a879c9d5d1450c16b4f84e4a58adbf580f4532c",
+      "artifact": {
+        "path": ".tmp/pwa-artifacts/0381b95f-archive-search-20260914-a1",
+        "files": 1422,
+        "bytes": 74182431,
+        "artifactSha256": "2e82f9fbf43a120923bda34bda53d28b58308d63bc162fba59133e5cbf9c888a",
+        "exactCopiesVerified": true
+      },
+      "strictAudit": true,
+      "browserExecutions": 1,
+      "browserPassed": true,
+      "localQaAuthority": true,
+      "artifactVisualReview": "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/visual-review.json",
+      "artifactVisualReviewSha256": "5849006a1bfe935727532ab07143971b762b34b83c27ce579e6fcd493e775393",
+      "installedRuntimeTested": false
+    }
+  },
+  "artifactSourceProof": {
+    "currentInputsVerified": 1345,
+    "currentSourceBytesMatched": true,
+    "headerImplementationPins": [
+      {
+        "path": "src/index.css",
+        "sha256": "abeefa5620f8589d0e0f34d38120970315df8f95a0e7d5009d21222e932e5a35"
+      },
+      {
+        "path": "scripts/mobile/native-base-assets.json",
+        "sha256": "b2c706b1f89a844af8505120184a5b2ee11f04247ed674ebf29da824bd978506"
+      },
+      {
+        "path": "scripts/mobile/pwa-portrait-selection.mjs",
+        "sha256": "76cc89b0711ada41940acdf15f38b76328e24f8b7f011d8255743ea81a17f95b"
+      },
+      {
+        "path": "scripts/mobile/build-pwa.mjs",
+        "sha256": "f9c6dd13010be24e9bb49f1ac5eabad48a521753f072e46300ec28be5bb441a9"
+      },
+      {
+        "path": "scripts/mobile/verify-pwa-artifact.mjs",
+        "sha256": "12dfe1d4754b65450c1dd0bd4305255ee41581ae0874a03b0a4aa355466df5a9"
+      },
+      {
+        "path": "src/pwa/pwaBootstrapBudgets.ts",
+        "sha256": "f3977c4f1b1ec2b167ee987da65d6bb793308c649dbe1efe7d6c5cc66ce76afa"
+      }
+    ],
+    "canonicalRegistry": {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    },
+    "actualApkAndRawMetadataVerified": true,
+    "preservationInventoriesAndPinnedAuditReportsVerified": true,
+    "completedAuditsReused": true,
+    "additionalBuilds": 0,
+    "additionalBrowserRuns": 0,
+    "scope": "Local source/artifact integrity and already recorded browser/visual evidence; no editorial, rights or release approval."
+  },
+  "actualPwaBrowserPasses": 1,
+  "artifactVisualReview": "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/visual-review.json",
+  "productionActionsPerformed": false
 }

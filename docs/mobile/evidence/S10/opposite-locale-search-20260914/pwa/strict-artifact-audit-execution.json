@@ -1,0 +1,9 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/mobile/verify-pwa-artifact.mjs",
+    "--allow-qa"
+  ],
+  "exitCode": 0,
+  "durationMs": 5229
+}

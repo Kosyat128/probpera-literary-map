@@ -1,0 +1,268 @@
+{
+  "schemaVersion": 1,
+  "stage": "S10",
+  "recordedAt": "2026-09-14T03:14:27.078Z",
+  "runId": "pwa-archive-search-20260914-a1",
+  "sourceCommit": "8bd5a8acc50a9c0f2c07aba9aa2251cae26d9904",
+  "buildId": "0381b95fa2b6de6e0dd1340b28d885c496cb7ff6f6bca72d6e0cc1e0cf632354",
+  "status": "LOCAL_QA_PWA_BUILD_AUDIT_AND_AFFECTED_BROWSER_PASSED",
+  "strictArtifactAuditPassed": true,
+  "statistics": {
+    "startTime": "2026-09-14T03:08:04.628Z",
+    "duration": 27834.237,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "sourceUnchanged": true,
+  "browserTestsRun": true,
+  "browserExecutions": 1,
+  "browserProof": [
+    {
+      "title": "offline PWA cross-language author search and book return retain the globe and integrated archive card",
+      "project": "pwa-desktop",
+      "status": "passed",
+      "durationMs": 26321,
+      "errors": []
+    }
+  ],
+  "artifact": {
+    "path": ".tmp/pwa-artifacts/0381b95f-archive-search-20260914-a1",
+    "files": 1422,
+    "bytes": 74182431,
+    "artifactSha256": "2e82f9fbf43a120923bda34bda53d28b58308d63bc162fba59133e5cbf9c888a",
+    "exactCopiesVerified": true
+  },
+  "preservedFiles": [
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-archive-search-20260914-a1/session.json",
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/session.json",
+      "bytes": 1082,
+      "sha256": "00bca03ec0d95369100464fa8abbee08d701c3da035d8b098f7f7890f12b9a92"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-archive-search-20260914-a1/source-before.json",
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/source-before.json",
+      "bytes": 139362,
+      "sha256": "afd8a524f937fca934a58cbe8a879c9d5d1450c16b4f84e4a58adbf580f4532c"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-archive-search-20260914-a1/source-after.json",
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/source-after.json",
+      "bytes": 139362,
+      "sha256": "afd8a524f937fca934a58cbe8a879c9d5d1450c16b4f84e4a58adbf580f4532c"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-archive-search-20260914-a1/source-comparison.json",
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/source-comparison.json",
+      "bytes": 205,
+      "sha256": "a6415e630f4737ea925f1cabcdc4112f59f3f768afdf55b12b32ce9fcc708914"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-archive-search-20260914-a1/support-before.json",
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/support-before.json",
+      "bytes": 1054,
+      "sha256": "10367ff3ab2083d23a168a2b882ec2c2064fcdc0711e1fdb9fb094554dba3778"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-archive-search-20260914-a1/support-after.json",
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/support-after.json",
+      "bytes": 1054,
+      "sha256": "10367ff3ab2083d23a168a2b882ec2c2064fcdc0711e1fdb9fb094554dba3778"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-archive-search-20260914-a1/strict-artifact-audit.json",
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/strict-artifact-audit.json",
+      "bytes": 795,
+      "sha256": "c6fd78ef16392249ab0de865051725f2c7241642ad7df5dbac15e44e788fa5d6"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-archive-search-20260914-a1/strict-artifact-audit-execution.json",
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/strict-artifact-audit-execution.json",
+      "bytes": 168,
+      "sha256": "50b0245274647e06dc7787fc9df9fd1e46dc7a0b162bfed48283d43a8cbbb338"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-archive-search-20260914-a1/server-closed.json",
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/server-closed.json",
+      "bytes": 93,
+      "sha256": "55aba768898b8163a5c0b741829c2dc9f6f0f5ae80c3a66549691cf0bdccfe09"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-archive-search-20260914-a1/run-result.json",
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/run-result.json",
+      "bytes": 684,
+      "sha256": "6ce28c83d2e7a28627eba4fde98468489294c690cbb09bdfc64b1738f677e315"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-archive-search-20260914-a1/discovery.json",
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/discovery.json",
+      "bytes": 267,
+      "sha256": "4c1f8862fdf7972170535df7221f446a6eefc31208aec5def4461eb0b41efbcb"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-archive-search-20260914-a1/discovery-execution.json",
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/discovery-execution.json",
+      "bytes": 319,
+      "sha256": "ad5ed9de408c245e51a994f61fd4ad32640b73ba3c43ae166c74919f3ec01445"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-archive-search-20260914-a1/browser-run-execution.json",
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/browser-run-execution.json",
+      "bytes": 284,
+      "sha256": "5fc5810bbe24d939e0b9ae1fb398d7d1ab146a6050bb45eb0f6c559fd6d4a266"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-archive-search-20260914-a1/results.json",
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/results.json",
+      "bytes": 1735958,
+      "sha256": "9352d3136ff12a47a4e116c3f3df7b96c15e55155b442f9d1e0a010d5f02b434"
+    },
+    {
+      "source": "dist-pwa/artifact.json",
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/artifact.json",
+      "bytes": 399852,
+      "sha256": "2e82f9fbf43a120923bda34bda53d28b58308d63bc162fba59133e5cbf9c888a"
+    },
+    {
+      "source": ".tmp/s10-opposite-locale-search-20260914/prior-pwa.json",
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/prior-pwa.json",
+      "bytes": 233886,
+      "sha256": "8ba322a5d5f5b68b466951b20ca1385fdd3ef84aa3b4d2963c2f916301b17263"
+    },
+    {
+      "source": ".tmp/s10-opposite-locale-search-20260914/preparation.json",
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/preparation.json",
+      "bytes": 5704,
+      "sha256": "57d4ea427bd1530d176397dc5d0fc8bf5f5e9bfc13a6f480adb780104e8bae71"
+    },
+    {
+      "source": ".tmp/s10-opposite-locale-search-20260914/run-pwa.mjs",
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/helpers/run-pwa.mjs",
+      "bytes": 10590,
+      "sha256": "fa611422e112094cc5a1f7d22654021f59e8f76946d6f2f8e47f29b0993fbc48"
+    },
+    {
+      "source": ".tmp/s10-opposite-locale-search-20260914/preserve-pwa.mjs",
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/helpers/preserve-pwa.mjs",
+      "bytes": 10247,
+      "sha256": "7775cd17719c7329bac6ff87394410ab62cbd0feb1a7d1f3a77d1490030530ce"
+    },
+    {
+      "source": ".tmp/s10-opposite-locale-search-20260914/park-prior-pwa.mjs",
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/helpers/park-prior-pwa.mjs",
+      "bytes": 4560,
+      "sha256": "48c244ff9a2ecf7e15cd1d41b36bc55181b6ee5e0c0580a65fa99be201e2d130"
+    },
+    {
+      "source": ".tmp/s10-opposite-locale-search-20260914/playwright.archive-search.config.mjs",
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/helpers/playwright.archive-search.config.mjs",
+      "bytes": 541,
+      "sha256": "fa0d50e363760e5341fde3de3c4d237f62d440bc447a5a704723301b5c509842"
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-archive-search-20260914-a1/strict-artifact-audit.log",
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/strict-artifact-audit-log.json",
+      "bytes": 1197,
+      "sha256": "2ab6190057944797dd66ab6ce345486c696b8f628536288dcd43c3ff92f37430",
+      "rawBytes": 795,
+      "rawSha256": "c6fd78ef16392249ab0de865051725f2c7241642ad7df5dbac15e44e788fa5d6",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-archive-search-20260914-a1/strict-artifact-audit.stdout.log",
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/strict-artifact-audit.stdout-log.json",
+      "bytes": 1204,
+      "sha256": "d420da5cdc9dcb1d862bc10639b9fda80f7810a9df847c57a40290094a2caa6a",
+      "rawBytes": 795,
+      "rawSha256": "c6fd78ef16392249ab0de865051725f2c7241642ad7df5dbac15e44e788fa5d6",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-archive-search-20260914-a1/strict-artifact-audit.stderr.log",
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/strict-artifact-audit.stderr-log.json",
+      "bytes": 344,
+      "sha256": "7b33166dc467a1f01ec7d54ace5cf50f03d2924af9bc396798d5d59c13b5a9b5",
+      "rawBytes": 0,
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-archive-search-20260914-a1/discovery.log",
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/discovery-log.json",
+      "bytes": 3592,
+      "sha256": "d8be5e045ab71ea13004c920d1ca2fd23014159fffde0a10cfdea18f969663cc",
+      "rawBytes": 2930,
+      "rawSha256": "8e60db76ec497a980b06446aaf22003536bcc4bf38983ccee2702fb49d50b900",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-archive-search-20260914-a1/discovery.stdout.log",
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/discovery.stdout-log.json",
+      "bytes": 3599,
+      "sha256": "294799f6411531466de0dd47a0cd71d78255cc0c113729f89c094f6ccd5d68f2",
+      "rawBytes": 2930,
+      "rawSha256": "8e60db76ec497a980b06446aaf22003536bcc4bf38983ccee2702fb49d50b900",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-archive-search-20260914-a1/discovery.stderr.log",
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/discovery.stderr-log.json",
+      "bytes": 332,
+      "sha256": "4101b33cce2d14c3b8a88de2c81d691df6a810eef0ded722f26857f8371b8b63",
+      "rawBytes": 0,
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-archive-search-20260914-a1/browser-run.log",
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/browser-run-log.json",
+      "bytes": 735,
+      "sha256": "d7f96782548a45b82c17debb680bdf4b76aac418c55dbe66c8b3fefe595b1693",
+      "rawBytes": 396,
+      "rawSha256": "2f82170ff1b106cb18464f811628e01710e46ba33f5aadc1f9689e5ede0d0587",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-archive-search-20260914-a1/browser-run.stdout.log",
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/browser-run.stdout-log.json",
+      "bytes": 576,
+      "sha256": "6ab31d8a0857c8577301f78b75db156cf8b7b8bdf00d89ec5ef90b07e8f2fc87",
+      "rawBytes": 232,
+      "rawSha256": "cb9731787877715a254288fc109965d7e8263069208a730ff22c6b1e93cf246b",
+      "lossless": true
+    },
+    {
+      "source": ".tmp/pwa-cross-engine-results/pwa-archive-search-20260914-a1/browser-run.stderr.log",
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/browser-run.stderr-log.json",
+      "bytes": 502,
+      "sha256": "54c17eb5b40bd7701fe3227e0d1e3328d29be588ec570ed5f0d3e88bb031fa8f",
+      "rawBytes": 164,
+      "rawSha256": "0e70ab7da096923c5b830c0469870b6e74f0ae13ba3410fa951dd8e85f902b6c",
+      "lossless": true
+    },
+    {
+      "source": "exact Playwright attachment body",
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/pwa-country-writer-return-ru.png",
+      "bytes": 624744,
+      "sha256": "e6c5c23b8efeb71f23c68d16b85f99649b770465f75f0f103fe2ed9ed16468fb"
+    },
+    {
+      "source": "exact Playwright attachment body",
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/pwa-country-writer-return-en.png",
+      "bytes": 673398,
+      "sha256": "d8fb6f6ccee5042d523b5d495fd18fb1c83c3b4a9bcaf1dd0a6ab57d1b4fc5dc"
+    }
+  ],
+  "stageAccepted": false,
+  "releaseReady": false,
+  "copyReviewStatus": "draft",
+  "actualOsInstallation": false,
+  "realPaymentProviderConfigured": false,
+  "limits": [
+    "Fresh local QA Vite/worker build, strict audit, exact archive and one built PWA cross-language author search, integrated archive-card navigation and offline locale case.",
+    "Success screenshots are exact local-QA artifact captures, not store RC or installed native OS evidence.",
+    "Local ephemeral QA authority does not establish a real merchant/payment, legal/editorial approval, owner acceptance or release readiness."
+  ]
+}

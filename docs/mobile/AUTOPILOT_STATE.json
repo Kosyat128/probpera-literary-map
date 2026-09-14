@@ -5,7 +5,7 @@
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
   "headSha": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-14T03:01:23.952Z",
+  "updatedAt": "2026-09-14T03:23:59.910Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -863,7 +863,8 @@
         "docs/mobile/evidence/S04/capacity-android-20260908/result.json",
         "docs/mobile/evidence/S04/history-android-20260908/result.json",
         "docs/mobile/evidence/S04/bilingual-android-20260914/result.json",
-        "docs/mobile/evidence/S04/country-writer-android-20260914/result.json"
+        "docs/mobile/evidence/S04/country-writer-android-20260914/result.json",
+        "docs/mobile/evidence/S04/archive-search-android-20260914/result.json"
       ],
       "externalBlockers": []
     },
@@ -1543,13 +1544,16 @@
       "lastGreenCommands": [
         "287 focused PWA pin/worker/registration tests and TypeScript passed.",
         "UTF-8 native-source RUEN book/writer/country scenario passed with all selected images available.",
-        "3 actual original-resolution archive-header screenshots inspected against the live canonical site."
+        "3 actual original-resolution archive-header screenshots inspected against the live canonical site.",
+        "Same combined exact-source Android/dev and local-QA PWA retained; one actual offline RUEN author-search/book-return case and two original-resolution artifact screenshots passed."
       ],
       "artifacts": [
         "docs/mobile/evidence/S09/country-writer-20260914/entry.json",
         "docs/mobile/evidence/S09/country-writer-20260914/result.json",
         "docs/mobile/evidence/S09/country-writer-20260914/pwa/result.json",
-        "docs/mobile/evidence/S09/archive-header-20260914/result.json"
+        "docs/mobile/evidence/S09/archive-header-20260914/result.json",
+        "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/result.json",
+        "docs/mobile/evidence/S10/opposite-locale-search-20260914/result.json"
       ],
       "externalBlockers": []
     },
@@ -1626,7 +1630,8 @@
       "lastGreenCommands": [
         "58 focused search cases passed; only10 cases repeated after a test-only readonly typing fix.",
         "Final TypeScript passed.",
-        "Actual UTF-8 native-source RUEN opposite-locale name/patronymic search selected the same writer/work IDs on the retained scene."
+        "Actual UTF-8 native-source RUEN opposite-locale name/patronymic search selected the same writer/work IDs on the retained scene.",
+        "Same combined exact-source Android/dev and local-QA PWA retained; one actual offline RUEN author-search/book-return case and two original-resolution artifact screenshots passed."
       ],
       "artifacts": [
         "docs/mobile/evidence/S10/search-20260908/entry.json",
@@ -1644,7 +1649,9 @@
         "docs/mobile/evidence/S10/history-20260908/pwa/result.json",
         "docs/mobile/evidence/S03/bilingual-foundations-20260914/result.json",
         "docs/mobile/evidence/S10/opposite-locale-search-20260914/entry.json",
-        "docs/mobile/evidence/S10/opposite-locale-search-20260914/result.json"
+        "docs/mobile/evidence/S10/opposite-locale-search-20260914/result.json",
+        "docs/mobile/evidence/S04/archive-search-android-20260914/result.json",
+        "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/result.json"
       ],
       "externalBlockers": []
     },
@@ -10623,7 +10630,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Build one combined exact-source Android/dev and local-QA PWA with integrated archive header, complete current local cover pins and opposite-locale author search. Run the single combined actual offline RUEN search/return case; preserve exact artifacts and screenshots. First-open S03 unchanged; current preserved Android/PWA artifacts still604f919.",
+    "nextAction": "Prepare a parallel-safe S11 offline/download/synchronization entry on the canonical export and dependency contracts, with disjoint file ownership and bounded validation. No factual archive population. Owner final canonical archive synchronization and complete RUEN/content/rights validation follow app implementation (D107). Preserve these artifacts and do not repeat unchanged builds or tests. First-open S03 and stage acceptance remain unchanged; frozen iOS83 stays pending. No production action.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -11956,20 +11963,117 @@
       "releaseReady": false
     },
     "s09ArchiveHeader": {
-      "status": "SOURCE_VALIDATED_ARTIFACT_REFRESH_PENDING",
+      "status": "LOCAL_SOURCE_AND_ARTIFACT_VALIDATION_PASSED",
       "evidence": "docs/mobile/evidence/S09/archive-header-20260914/result.json",
-      "sha256": "e7fdc3c436886854e9cf2ce938857882f04bbaa256915a84933f996683d28d94",
+      "sha256": "55b027fc378dca21f7ef7f9484b14c410d9b068af2c5264594ea81b058160ca7",
       "passingUnitCases": 287,
       "sourceBrowserPasses": 1,
       "stageAccepted": false,
-      "releaseReady": false
+      "releaseReady": false,
+      "sourceCommit": "8bd5a8acc50a9c0f2c07aba9aa2251cae26d9904",
+      "implementationInputsCurrent": true,
+      "artifacts": {
+        "android": {
+          "evidence": "docs/mobile/evidence/S04/archive-search-android-20260914/result.json",
+          "sha256": "376a85baa9e29e8bd24285f028b09faafd88dd3af797f1e4e38ff0268950dd83",
+          "sourceCommit": "8bd5a8acc50a9c0f2c07aba9aa2251cae26d9904",
+          "buildId": "048c8e1b95f0c30a6da8e462156055579c5379b9c9c571e9655310822d418e7f",
+          "sourceInputsSha256": "40e5e24a33a11ae76be315d6f61ec92e310384070e63d70558e9736da6fadac2",
+          "runtime": ".tmp/native-builds/android-dev/archive-search-048c8e1b/runtime",
+          "artifactSha256": "51299e332a2c3dd4043d61a8924dee30c545f5674db048f6f51f27dfc0e0428c",
+          "apk": {
+            "path": ".tmp/native-builds/android-dev/archive-search-048c8e1b/app-dev-debug.apk",
+            "bytes": 67273954,
+            "sha256": "dff8a1cb9be527dec533ae79b9db68aa12867bd975b6076b19c39fdcf53afa2d"
+          },
+          "strictAudit": true,
+          "binaryAudit": true,
+          "copiesVerified": true,
+          "installedRuntimeTested": false
+        },
+        "pwa": {
+          "evidence": "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/result.json",
+          "sha256": "a7fe1fe8097607a8930a5bbbabe1abc47d2469263a8b17db42d74240c556d45b",
+          "sourceCommit": "8bd5a8acc50a9c0f2c07aba9aa2251cae26d9904",
+          "buildId": "0381b95fa2b6de6e0dd1340b28d885c496cb7ff6f6bca72d6e0cc1e0cf632354",
+          "sourceInputsSha256": "afd8a524f937fca934a58cbe8a879c9d5d1450c16b4f84e4a58adbf580f4532c",
+          "artifact": {
+            "path": ".tmp/pwa-artifacts/0381b95f-archive-search-20260914-a1",
+            "files": 1422,
+            "bytes": 74182431,
+            "artifactSha256": "2e82f9fbf43a120923bda34bda53d28b58308d63bc162fba59133e5cbf9c888a",
+            "exactCopiesVerified": true
+          },
+          "strictAudit": true,
+          "browserExecutions": 1,
+          "browserPassed": true,
+          "localQaAuthority": true,
+          "artifactVisualReview": "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/visual-review.json",
+          "artifactVisualReviewSha256": "5849006a1bfe935727532ab07143971b762b34b83c27ce579e6fcd493e775393",
+          "installedRuntimeTested": false
+        }
+      },
+      "pwaBrowserPasses": 1
     },
     "s10OppositeLocaleSearch": {
-      "status": "SOURCE_VALIDATED_ARTIFACT_REFRESH_PENDING",
+      "status": "LOCAL_SOURCE_AND_ARTIFACT_VALIDATION_PASSED",
       "evidence": "docs/mobile/evidence/S10/opposite-locale-search-20260914/result.json",
-      "sha256": "ab96e6a87de3df2a640175ee8019f3bec1b9b37bdf9a5944756a3374ecc7c297",
+      "sha256": "10019c7ed29eba92a88a97288db36259efde12815436c5dd2262b60b30ea8fea",
       "finalPassingUnitCases": 58,
       "sourceBrowserPasses": 1,
+      "stageAccepted": false,
+      "releaseReady": false,
+      "sourceCommit": "8bd5a8acc50a9c0f2c07aba9aa2251cae26d9904",
+      "sourceInputsCurrent": true,
+      "artifacts": {
+        "android": {
+          "evidence": "docs/mobile/evidence/S04/archive-search-android-20260914/result.json",
+          "sha256": "376a85baa9e29e8bd24285f028b09faafd88dd3af797f1e4e38ff0268950dd83",
+          "sourceCommit": "8bd5a8acc50a9c0f2c07aba9aa2251cae26d9904",
+          "buildId": "048c8e1b95f0c30a6da8e462156055579c5379b9c9c571e9655310822d418e7f",
+          "sourceInputsSha256": "40e5e24a33a11ae76be315d6f61ec92e310384070e63d70558e9736da6fadac2",
+          "runtime": ".tmp/native-builds/android-dev/archive-search-048c8e1b/runtime",
+          "artifactSha256": "51299e332a2c3dd4043d61a8924dee30c545f5674db048f6f51f27dfc0e0428c",
+          "apk": {
+            "path": ".tmp/native-builds/android-dev/archive-search-048c8e1b/app-dev-debug.apk",
+            "bytes": 67273954,
+            "sha256": "dff8a1cb9be527dec533ae79b9db68aa12867bd975b6076b19c39fdcf53afa2d"
+          },
+          "strictAudit": true,
+          "binaryAudit": true,
+          "copiesVerified": true,
+          "installedRuntimeTested": false
+        },
+        "pwa": {
+          "evidence": "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/result.json",
+          "sha256": "a7fe1fe8097607a8930a5bbbabe1abc47d2469263a8b17db42d74240c556d45b",
+          "sourceCommit": "8bd5a8acc50a9c0f2c07aba9aa2251cae26d9904",
+          "buildId": "0381b95fa2b6de6e0dd1340b28d885c496cb7ff6f6bca72d6e0cc1e0cf632354",
+          "sourceInputsSha256": "afd8a524f937fca934a58cbe8a879c9d5d1450c16b4f84e4a58adbf580f4532c",
+          "artifact": {
+            "path": ".tmp/pwa-artifacts/0381b95f-archive-search-20260914-a1",
+            "files": 1422,
+            "bytes": 74182431,
+            "artifactSha256": "2e82f9fbf43a120923bda34bda53d28b58308d63bc162fba59133e5cbf9c888a",
+            "exactCopiesVerified": true
+          },
+          "strictAudit": true,
+          "browserExecutions": 1,
+          "browserPassed": true,
+          "localQaAuthority": true,
+          "artifactVisualReview": "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/visual-review.json",
+          "artifactVisualReviewSha256": "5849006a1bfe935727532ab07143971b762b34b83c27ce579e6fcd493e775393",
+          "installedRuntimeTested": false
+        }
+      },
+      "pwaBrowserPasses": 1
+    },
+    "s04ArchiveSearchAndroid": {
+      "status": "BUILD_AND_BINARY_INSPECTION_PASSED",
+      "evidence": "docs/mobile/evidence/S04/archive-search-android-20260914/result.json",
+      "sha256": "376a85baa9e29e8bd24285f028b09faafd88dd3af797f1e4e38ff0268950dd83",
+      "sourceCommit": "8bd5a8acc50a9c0f2c07aba9aa2251cae26d9904",
+      "buildId": "048c8e1b95f0c30a6da8e462156055579c5379b9c9c571e9655310822d418e7f",
       "stageAccepted": false,
       "releaseReady": false
     }

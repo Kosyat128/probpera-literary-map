@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-14T03:16:10.051Z",
+  "pass": true,
+  "sourceCommit": "8bd5a8acc50a9c0f2c07aba9aa2251cae26d9904",
+  "buildId": "0381b95fa2b6de6e0dd1340b28d885c496cb7ff6f6bca72d6e0cc1e0cf632354",
+  "images": [
+    {
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/pwa-country-writer-return-ru.png",
+      "sha256": "e6c5c23b8efeb71f23c68d16b85f99649b770465f75f0f103fe2ed9ed16468fb",
+      "bytes": 624744,
+      "viewedAtOriginalResolution": true
+    },
+    {
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/pwa/pwa-country-writer-return-en.png",
+      "sha256": "d8fb6f6ccee5042d523b5d495fd18fb1c83c3b4a9bcaf1dd0a6ab57d1b4fc5dc",
+      "bytes": 673398,
+      "viewedAtOriginalResolution": true
+    }
+  ],
+  "scope": "Actual built local-QA PWA offline in Chrome,390x844 CSS pixels/device scale2; not installed native or release candidate.",
+  "observations": [
+    "The archive masthead spans the country card width and remains flush beneath its controls, with a readable RU/EN title and accessible close button.",
+    "Opposite-locale name search and book-to-writer return reveal the same canonical writer; both screenshots show the destination heading within the available country sheet.",
+    "The retained globe and localized offline-access notices remain visible."
+  ],
+  "limitations": [
+    "QA entitlement authority; no real purchase, owner approval or release acceptance.",
+    "Final owner archives and full RUEN editorial coverage remain pending the separate final synchronization."
+  ],
+  "stageAccepted": false,
+  "releaseReady": false
+}

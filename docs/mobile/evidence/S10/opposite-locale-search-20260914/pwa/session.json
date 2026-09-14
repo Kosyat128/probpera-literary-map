@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "runId": "pwa-archive-search-20260914-a1",
+  "localQaOnly": true,
+  "origin": "http://127.0.0.1:4296",
+  "artifact": {
+    "buildId": "0381b95fa2b6de6e0dd1340b28d885c496cb7ff6f6bca72d6e0cc1e0cf632354",
+    "sourceCommit": "8bd5a8acc50a9c0f2c07aba9aa2251cae26d9904",
+    "sourceInputsSha256": "afd8a524f937fca934a58cbe8a879c9d5d1450c16b4f84e4a58adbf580f4532c",
+    "authoritySha256": "780e67bcfff6e7df770d01d7de183747e4c69286ef12e1b0c8f943b8b8b01dfd",
+    "localQaAuthority": true,
+    "releaseReady": false
+  },
+  "planned": {
+    "sourceBuilds": 1,
+    "strictArtifactAudits": 1,
+    "browserExecutions": 1
+  },
+  "limits": [
+    "Ephemeral signer exists only in this local process. No provider/payment or installed OS evidence.",
+    "One new Vite/worker build for canonical cross-language author search and the integrated archive card. Prior runtimes remain archived. One actual desktop browser case verifies the built RUEN author search, book return, integrated archive card and retained offline globe; no old broad suite or benchmark is rerun."
+  ]
+}

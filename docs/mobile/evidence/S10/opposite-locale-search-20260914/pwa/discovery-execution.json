@@ -1,0 +1,13 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=.tmp/s10-opposite-locale-search-20260914/playwright.archive-search.config.mjs",
+    "--project=pwa-desktop",
+    "--list",
+    "--reporter=json"
+  ],
+  "exitCode": 0,
+  "durationMs": 860
+}

@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-14T03:14:27.079Z",
+  "reason": "ENOSPC during extra runtime copy; completed source build/audit/browser were not repeated",
+  "recoveredWrites": [
+    {
+      "path": ".tmp/pwa-artifacts/0381b95f-archive-search-20260914-a1/assets/writer-portraits/q464207.webp",
+      "previousBytes": 0,
+      "expectedBytes": 58730,
+      "previousSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expectedSha256": "53c003f68a6a3563cff53d4301f235b1f771c6a55019cb7206a86454fbd88dec"
+    }
+  ],
+  "generatedIntermediatesRemovedBytes": 150308463,
+  "finalApksRetained": true,
+  "buildsRepeated": false,
+  "testsRepeated": false
+}

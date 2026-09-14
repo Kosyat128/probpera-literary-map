@@ -604,3 +604,14 @@
   translations, title evidence or IDs are created. Reuse valid source-browser
   results after a test-only readonly adaptation, and refresh Android/PWA once
   with the separately validated integrated header and cover package correction.
+
+- D112: Source 8bd5a8acc50a9c0f2c07aba9aa2251cae26d9904 produced one combined Android/dev
+  048c8e1b and local-QA PWA 0381b95f for the integrated archive header,
+  shared pinned cover closure and opposite-locale canonical author search.
+  Current source pins, exact APK/raw artifact hashes, preserved audit/copy reports
+  and actual offline RUEN search/return with original-resolution images agree.
+  S09 and S10 reference these same artifacts; no duplicate builds or test-count
+  inflation. These are development/QA proofs, not installed-device, editorial,
+  rights, owner or stage/release acceptance. Prepare a parallel-safe S11
+  offline/download/sync entry on canonical exports; D107 final owner archive
+  synchronization remains deferred until app implementation is complete.

@@ -1,0 +1,6 @@
+N: android=http://schemas.android.com/apk/res/android (line=2)
+  E: locale-config (line=2)
+      E: locale (line=3)
+        A: http://schemas.android.com/apk/res/android:name(0x01010003)="en" (Raw: "en")
+      E: locale (line=4)
+        A: http://schemas.android.com/apk/res/android:name(0x01010003)="ru" (Raw: "ru")

@@ -1,0 +1,92 @@
+{
+  "recordedAt": "2026-09-14T03:22:53.4793913Z",
+  "audit": ".tmp/native-runtime-duplicate-audit-20260914-a1.json",
+  "auditSha256": "e2e16169228a50ebeb0909011cf8f7844d22d60e667f9f49add98bba46fa6c3a",
+  "scope": "Only fully duplicated generated native-previous runtime trees. Canonical runtime counterparts, APKs, source, SDK, user data and evidence retained.",
+  "freeBytesBefore": 145801216,
+  "logicalBytesRemoved": 499615083,
+  "entries": [
+    {
+      "target": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-previous-f3504b6f-bbd5-4409-8bd3-2f5352b311be",
+      "retained": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-builds\\android-dev\\46ebba56\\runtime",
+      "artifactSha256": "d6852f594cf5452d41fea1edf7a39407f1b1c3eacd3cbbd3519da2df98e51229",
+      "fullTreeSha256": "cdab6727f06fd551092fd37aefc47686c4cee6414533383095845ffd2cbd8a22",
+      "files": 322,
+      "bytes": 38409081,
+      "removed": true
+    },
+    {
+      "target": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-previous-e34dec25-fad9-4b5c-818a-6181d6174cf9",
+      "retained": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-builds\\android-dev\\first-journey-7b631c49\\runtime",
+      "artifactSha256": "be37909b9acf16535370e20645786281dea45fc432e51a983aa3f55f97e54fcb",
+      "fullTreeSha256": "ec1cc5a91172f8b4f209f368b7be8bbf4b7049c7380be99482ffe3e0769387f7",
+      "files": 343,
+      "bytes": 39949596,
+      "removed": true
+    },
+    {
+      "target": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-previous-e17ccb4a-f0b7-4a38-b624-fd4a9cca00fc",
+      "retained": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-builds\\android-dev\\graphics-profiles-9af7764d\\runtime",
+      "artifactSha256": "d4f4c5b97c8ba9c426c6f63da3a70b19c099ca9df7a892562fd4da5423857536",
+      "fullTreeSha256": "1c42762dad353dbd242e2f6df6a5e922e4f10c7bfa65d9e26810d479b154ebc8",
+      "files": 1348,
+      "bytes": 68240006,
+      "removed": true
+    },
+    {
+      "target": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-previous-dfe4a740-6c56-47ec-9bfd-eccf89916d07",
+      "retained": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-builds\\android-dev\\capacity-7e302703\\runtime",
+      "artifactSha256": "abd42cf2bd365536c8346e72bc6f18a2076d4d73e8aeaba0357a7173efbf6f11",
+      "fullTreeSha256": "fa89b6d6a31f42304bf282538ed6a979c89dbadccd54f96ad447099d1ff78a0e",
+      "files": 1348,
+      "bytes": 68270192,
+      "removed": true
+    },
+    {
+      "target": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-previous-bcdeb95f-6fb9-4ce2-b555-9a5a3220e2e5",
+      "retained": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-builds\\android-dev\\74201a08\\runtime",
+      "artifactSha256": "d7ef75cfd1eb21f17093b357d7696b1cd4cf5206f6aefccf59b3bca4b991fc24",
+      "fullTreeSha256": "64b973376894902d6d4bf3fdee0a6f984ac87e7601f2edccd613980221c5784c",
+      "files": 343,
+      "bytes": 39941682,
+      "removed": true
+    },
+    {
+      "target": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-previous-b6ee77a3-e754-447b-884e-508534b944d1",
+      "retained": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-builds\\android-dev\\bilingual-8f32bb6c\\runtime",
+      "artifactSha256": "e291a156f32053d20a30f0f8e1d1c77314ea46e563edc78c6c32804b0b304454",
+      "fullTreeSha256": "59a9c7162bd088aeebe062f6e6eefc0bf06cfc3de4054f411cdfc95767d308e7",
+      "files": 1348,
+      "bytes": 68282422,
+      "removed": true
+    },
+    {
+      "target": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-previous-b4ac5836-d6ff-4678-9cc6-ac955a0a17e0",
+      "retained": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-builds\\android-dev\\country-writer-0ecb9b49\\runtime",
+      "artifactSha256": "dcda0377d1bc821743285bff48eb5525b5fb2cf1e422c36d431a93ec260bd112",
+      "fullTreeSha256": "e68212164668ddf39bd0df664ef708d3f76793ee73a329979d85393a88548e5d",
+      "files": 1349,
+      "bytes": 68287375,
+      "removed": true
+    },
+    {
+      "target": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-previous-9680ea39-ff2d-4990-b2d5-7df476a7e1f6",
+      "retained": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-builds\\android-dev\\search-40d1a1b5\\runtime",
+      "artifactSha256": "b4be37eadf150166b9b9f8f0c3bdc5f40f58b58b3410a908f6ad3206a2bc0180",
+      "fullTreeSha256": "61bc525fd1b2b02054f72b79f0014ee23be30e349979c0b838180f1267965343",
+      "files": 1348,
+      "bytes": 68266840,
+      "removed": true
+    },
+    {
+      "target": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-previous-92729707-869f-4091-8b53-685400d5e445",
+      "retained": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-builds\\android-dev\\native-activity-532d99d6\\runtime",
+      "artifactSha256": "33c2e5912b732760d3a94edf86e3118f081afc3bb5fa67a9298d0501d6d0cf60",
+      "fullTreeSha256": "cb63551415c21b93f9b58ce6627041c7ffbbf238204163d25a322932a8e31fd6",
+      "files": 344,
+      "bytes": 39967889,
+      "removed": true
+    }
+  ],
+  "freeBytesAfter": 660873216
+}

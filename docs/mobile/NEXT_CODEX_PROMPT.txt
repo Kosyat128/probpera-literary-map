@@ -1,29 +1,34 @@
 <!-- opposite-locale-search-20260914:begin -->
-S10 source: existing Russian/English author names enrich the shared search index
-while labels, canonical IDs, publication and authorship gates stay unchanged.
-58 final passing cases across3 files;10 repeated after a test-only type fix.
-Final TypeScript and1 actual native-source RUEN search/navigation case passed;
-4 original-resolution screenshots inspected. Integrated archive header retained.
-Next: one combined exact-source Android/PWA build including the header/cover
-correction, then actual offline RUEN search/return evidence. Existing builds
-remain preserved and do not include these latest changes yet.
+Existing opposite-locale author names enrich shared search while current labels,
+canonical IDs and publication/authorship gates remain authoritative.
+58 final search cases; only 10 repeated after a test-only typing fix. Final typecheck
+and 1 actual native-source RUEN search/navigation case passed.
+Android/dev 048c8e1b: compiled APK, strict runtime and binary/copy audits passed.
+APK: .tmp/native-builds/android-dev/archive-search-048c8e1b/app-dev-debug.apk.
+Local-QA PWA 0381b95f: strict audit, actual offline RUEN search/return
+and 2 original-resolution screenshots passed. Both artifacts bind source 8bd5a8acc50a9c0f2c07aba9aa2251cae26d9904.
+The same builds include the integrated archive header and current selected cover pairs.
 Owner fills archives; final canonical sync follows app implementation (D107).
+Next: prepare parallel-safe S11 offline/download/sync entry on canonical exports.
 Evidence: evidence/S10/opposite-locale-search-20260914/result.json.
-First-open S03; all unfulfilled content/child/device/commerce/release gates remain.
+First-open S03; content/child/device/commerce/legal/release gates remain open.
 <!-- opposite-locale-search-20260914:end -->
 
 <!-- archive-header-20260914:begin -->
-Owner requested the Literary Archive bar integrated into the card as on the live site.
-Canonical full-width sticky CSS ported; RUEN writer return, close and same scene preserved.
-Source fixture UTF-8 fixed; old four-work browser count was caused by text decoding.
-Current canonical46 public works include33 eligible local cover pairs;54 missing files
-are now pinned in shared native/PWA selection, preserving existing metadata/bytes.
-287 focused PWA tests, TypeScript and1 corrected actual native-source RUEN case passed.
-3 original-resolution screenshots inspected; new runtime artifacts are pending.
-Bounded PWA core cap72MiB accounts for3,944,574B of missing covers; content-package
-limits stay separate. Owner final archives sync after app implementation (D107).
-Next: bounded S10 names, then one combined Android/PWA build; no unchanged rebuild.
-Evidence: evidence/S09/archive-header-20260914/result.json. First-open S03; no acceptance.
+The live canonical full-width Literary Archive masthead is integrated into the card.
+RUEN close/focus/book return and theme/scene ownership are retained.
+UTF-8 source decoding was corrected; the old four-work fixture count was invalid.
+The current development snapshot contains 33 eligible local cover pairs; 54 missing
+files are shared hash-pinned native/PWA inputs, preserving bytes and rights metadata.
+287 focused cases, typecheck and the actual native-source RUEN case passed.
+Android/dev 048c8e1b: compiled APK, strict runtime and binary/copy audits passed.
+APK: .tmp/native-builds/android-dev/archive-search-048c8e1b/app-dev-debug.apk.
+Local-QA PWA 0381b95f: strict audit, actual offline RUEN search/return
+and 2 original-resolution screenshots passed. Both artifacts bind source 8bd5a8acc50a9c0f2c07aba9aa2251cae26d9904.
+These are the SAME combined S10 artifacts, including opposite-locale author search.
+Bounded bootstrap cap remains 72 MiB; large final archives use separate content packages.
+Owner final archives sync after app implementation (D107); no factual archive filling.
+Evidence: evidence/S09/archive-header-20260914/result.json. First-open S03; no stage acceptance.
 <!-- archive-header-20260914:end -->
 
 Continue V12 in literary-planet-v12-work on
