@@ -505,6 +505,16 @@ describe("independent actual-file preparation audit", () => {
 });
 
 describe("installed identity, actual image bytes and shell resources", () => {
+  it.each(["forced language", "forced route"])("rejects a neutral startup with %s despite consistent hashes", async mutation => {
+    const env = await fixture();
+    const html = await readFile(path.join(env.output, "index.html"), "utf8");
+    const changed = mutation === "forced language"
+      ? html.replace('lang=""', 'lang="ru"')
+      : html.replace("<html ", '<html data-route-language="ru" ');
+    expect(changed).not.toBe(html);
+    await env.replaceTracked("index.html", changed);
+    expect(codes(await env.audit())).toContain("SHELL_IDENTITY");
+  });
   it("reports malformed manifest icon metadata without invoking supplied JSON properties", async () => {
     const env = await fixture();
     const manifest = JSON.parse(await readFile(path.join(env.output, "en/manifest.webmanifest"), "utf8"));

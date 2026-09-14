@@ -1,6 +1,7 @@
+import { readFileSync } from "node:fs";
 import { load } from "cheerio";
 import { describe, expect, it } from "vitest";
-import { generatePwaShellFiles } from "./pwa-shell.mjs";
+import { generatePwaShellFiles, PWA_SHELL_COPY } from "./pwa-shell.mjs";
 
 const builtHtml = `<!doctype html><html lang="ru" data-react-shell><head>
 <title>Old journal title</title><meta name="description" content="Old journal description">
@@ -18,8 +19,8 @@ const builtHtml = `<!doctype html><html lang="ru" data-react-shell><head>
 </head><body onload="oldHandler()"><div id="root"><article data-static-seo>Old article fallback</article></div></body></html>`;
 
 const copy = {
-  ru: { brand: "Литературная планета", journal: "Читать журнал", og: "ru_RU" },
-  en: { brand: "Literary Planet", journal: "Read the journal", og: "en_US" },
+  ru: { brand: "Литературная планета", opening: "Открываем «Литературную планету»…", open: "Открыть «Литературную планету»", language: "Русский", og: "ru_RU" },
+  en: { brand: "Literary Planet", opening: "Opening Literary Planet…", open: "Open Literary Planet", language: "English", og: "en_US" },
 };
 
 describe("isolated canonical PWA shell generation", () => {
@@ -40,12 +41,15 @@ describe("isolated canonical PWA shell generation", () => {
     const $ = load(files[`${locale}/index.html`]);
     const other = locale === "ru" ? "en" : "ru";
     expect($("html").attr("lang")).toBe(locale);
+    expect($("body").attr("lang")).toBeUndefined();
     expect($("html").attr("data-route-language")).toBe(locale);
     expect($("title").text()).toBe(copy[locale].brand);
     expect($("h1").text()).toBe(copy[locale].brand);
-    expect($("body").text()).toContain(copy[locale].journal);
+    expect($('[role="status"]').text()).toBe(copy[locale].opening);
+    expect($('[role="status"]').attr("aria-live")).toBe("polite");
+    expect($('[role="status"]').attr("aria-atomic")).toBe("true");
     expect($("body").text()).not.toContain(copy[other].brand);
-    expect($("body").text()).not.toContain(copy[other].journal);
+    expect($("body").text()).not.toContain(copy[other].opening);
     expect($('meta[property="og:locale"]').attr("content")).toBe(copy[locale].og);
     expect($('meta[property="og:title"]').attr("content")).toBe(copy[locale].brand);
     expect($('meta[name="twitter:title"]').attr("content")).toBe(copy[locale].brand);
@@ -56,9 +60,12 @@ describe("isolated canonical PWA shell generation", () => {
     expect($("#root > main[data-pwa-startup-shell]")).toHaveLength(1);
     expect($("img")).toHaveLength(1);
     expect($("img").attr("src")).toBe("/planet/brand/probpera-logo.png");
-    expect($("img").attr("width")).toBe("48");
+    expect($("img").attr("width")).toBe("56");
+    expect($("img").attr("height")).toBe("56");
     expect($("img").attr("alt")).toBe("");
-    expect($('a[href="https://probpera.ru/stati/"]').attr("rel")).toBe("noopener noreferrer");
+    expect($("img").attr("aria-hidden")).toBe("true");
+    expect($("canvas, iframe, nav")).toHaveLength(0);
+    expect($("a").map((_, node) => $(node).attr("href")).get()).toEqual([`/planet/${locale}/`]);
   });
 
   it("keeps reciprocal language routes and one neutral x-default on every entry", () => {
@@ -76,14 +83,18 @@ describe("isolated canonical PWA shell generation", () => {
   it("leaves neutral launch language unforced and exposes working native-language choices", () => {
     const files = generatePwaShellFiles({ builtHtml });
     const $ = load(files["index.html"]);
+    expect($("html").attr("lang")).toBe("");
+    expect($("body").attr("lang")).toBeUndefined();
     expect($("html").attr("data-route-language")).toBeUndefined();
     expect($("html").attr("data-pwa-neutral-entry")).toBe("");
     for (const locale of ["ru", "en"]) {
       const link = $(`a[href="/planet/${locale}/"]`);
       expect(link.attr("lang")).toBe(locale);
       expect(link.attr("hreflang")).toBe(locale);
-      expect(link.text()).toBe(copy[locale].brand);
+      expect(link.text()).toBe(copy[locale].language);
+      expect(link.closest("details")).toHaveLength(1);
       expect($("h1").find(`[lang="${locale}"]`).text()).toBe(copy[locale].brand);
+      expect($('[role="status"]').find(`[lang="${locale}"]`).text()).toBe(copy[locale].opening);
     }
     expect($('meta[property="og:locale"]')).toHaveLength(0);
   });
@@ -118,6 +129,7 @@ describe("isolated canonical PWA shell generation", () => {
       expect(manifest.lang).toBe(locale ?? undefined);
       expect(manifest.name).toBe(locale ? copy[locale].brand : "Литературная планета / Literary Planet");
       expect(manifest.theme_color).toBe("#f67518");
+      expect(manifest.background_color).toBe("#f67518");
       expect(manifest.icons).toEqual([
         { src: "/planet/icons/icon-192.png", sizes: "192x192", type: "image/png", purpose: "any" },
         { src: "/planet/icons/icon-512.png", sizes: "512x512", type: "image/png", purpose: "any" },
@@ -133,7 +145,9 @@ describe("isolated canonical PWA shell generation", () => {
     expect($("title").text()).toBe(`404 | ${copy[locale].brand}`);
     expect($("body").text()).toContain("404");
     expect($("script, link[rel=modulepreload]")).toHaveLength(0);
-    expect($(`a[href="/planet/${locale}/"]`).text()).toBe(copy[locale].brand);
+    expect($(`a[href="/planet/${locale}/"]`).text()).toBe(copy[locale].open);
+    expect($("body").text()).toContain(PWA_SHELL_COPY.locales[locale].notFound);
+    expect($('[role="status"], details, noscript')).toHaveLength(0);
     expect($('link[rel="canonical"]').attr("href")).toBe(`https://probpera.ru/planet/${locale}/404.html`);
     expect($('link[hreflang="x-default"]').attr("href")).toBe("https://probpera.ru/planet/404.html");
     expect($('meta[name="robots"]').attr("content")).toContain("noindex");
@@ -142,12 +156,64 @@ describe("isolated canonical PWA shell generation", () => {
   it("supplies compact safe-area styles without remote resources or hidden fallbacks", () => {
     const files = generatePwaShellFiles({ builtHtml });
     const css = files["pwa-shell.css"];
-    expect(css).toContain("env(safe-area-inset-top)");
-    expect(css).toContain("env(safe-area-inset-left)");
+    expect(css).toContain("env(safe-area-inset-top,0px)");
+    expect(css).toContain("env(safe-area-inset-left,0px)");
     expect(css).toContain("#f67518");
     expect(css).toContain(":focus-visible");
     expect(css).toContain("min-height:44px");
+    expect(css).toContain("min-width:44px");
+    expect(css).toContain("overflow-wrap:anywhere");
+    expect(css).toContain("@media(prefers-reduced-motion:reduce)");
+    expect(css).toContain("@media(forced-colors:active)");
+    expect(css).toContain("outline-color:Highlight");
+    expect(css).not.toMatch(/@keyframes|overflow:hidden|(?:^|[;{])height:100svh[;}]/u);
     expect(css).not.toMatch(/url\(|@import|visibility:hidden|opacity:0/u);
+  });
+
+  it("matches the native launch color, quill size and authored opening without importing its runtime", () => {
+    const nativeCss = readFileSync(new URL("../../src/host/planetLaunch.css", import.meta.url), "utf8");
+    const nativeComponent = readFileSync(new URL("../../src/host/NativePlanetLaunch.tsx", import.meta.url), "utf8");
+    const interfaceSource = readFileSync(new URL("../../src/i18n/InterfaceLanguage.tsx", import.meta.url), "utf8");
+    const files = generatePwaShellFiles({ builtHtml });
+    const nativeOrange = /\.native-planet-launch\s*\{[^}]*\bbackground:\s*(#[a-f0-9]{6})/u.exec(nativeCss)?.[1];
+    expect(nativeOrange).toBeTruthy();
+    expect(JSON.parse(files["manifest.webmanifest"]).background_color).toBe(nativeOrange);
+    expect(files["pwa-shell.css"]).toContain(`background:${nativeOrange}`);
+    expect(nativeComponent).toContain('brand/probpera-logo.png');
+    expect(nativeComponent).toContain('width="56"');
+    expect(nativeComponent).toContain(copy.ru.opening);
+    expect(interfaceSource).toContain(`"${copy.ru.opening}": "${copy.en.opening}"`);
+    expect(files["index.html"]).not.toMatch(/NativePlanetLaunch|<canvas|<iframe/iu);
+  });
+
+  it.each([null, "ru", "en"])("retains permanent local recovery for %s when the module cannot start", locale => {
+    const files = generatePwaShellFiles({ builtHtml });
+    const html = files[`${locale ? locale + "/" : ""}index.html`];
+    const $ = load(html);
+    const recovery = $("details[data-pwa-startup-recovery]");
+    expect(recovery).toHaveLength(1);
+    expect(recovery.attr("open")).toBeUndefined();
+    expect(recovery.children("summary")).toHaveLength(1);
+    expect(recovery.children("summary").text()).not.toBe("");
+    expect(recovery.find("a").map((_, node) => $(node).attr("href")).get()).toEqual(
+      (locale ? [locale] : ["ru", "en"]).map(language => `/planet/${language}/`),
+    );
+    const withoutScripts = load(html, { scriptingEnabled: false });
+    const noScript = withoutScripts("noscript [data-pwa-startup-noscript]");
+    expect(noScript).toHaveLength(1);
+    for (const language of locale ? [locale] : ["ru", "en"]) {
+      expect(noScript.text()).toContain(PWA_SHELL_COPY.locales[language].noScript);
+      expect(recovery.text()).toContain(PWA_SHELL_COPY.locales[language].recoveryHelp);
+    }
+    expect($("a[href]").filter((_, node) => !$(node).attr("href").startsWith("/planet/"))).toHaveLength(0);
+    expect($("script:not([src]), [onclick], [onerror], [hidden]")).toHaveLength(0);
+    expect(html).not.toMatch(/Читать журнал|Read the journal|\/stati\/|javascript:|setTimeout/iu);
+  });
+
+  it("keeps new recovery copy explicitly draft and never claims its generation is an approval", () => {
+    expect(PWA_SHELL_COPY).toMatchObject({ reviewStatus: "draft", productionReady: false });
+    expect(Object.keys(PWA_SHELL_COPY.locales)).toEqual(["ru", "en"]);
+    expect(Object.keys(PWA_SHELL_COPY.locales.ru).sort()).toEqual(Object.keys(PWA_SHELL_COPY.locales.en).sort());
   });
 
   it.each([

@@ -1,4 +1,6 @@
 import { load } from "cheerio";
+import { createHash } from "node:crypto";
+import { evaluatePublicLocaleReview } from "./public-locale-review.mjs";
 
 const ORIGIN = "https://probpera.ru";
 // Copied from the existing authored interface dictionary, with source parity tests.
@@ -16,6 +18,12 @@ const COPY = Object.freeze({
     error: "This page encountered an error", home: "Return home",
   },
 });
+
+export function publicLocaleCopyInput() {
+  const bytes = JSON.stringify(COPY);
+  return { path: "source/public-locale-copy.json", bytes: Buffer.byteLength(bytes),
+    sha256: createHash("sha256").update(bytes).digest("hex") };
+}
 
 function structuredData(language) {
   const canonical = `${ORIGIN}/${language}/`;
@@ -84,13 +92,13 @@ function parseCanonicalHome(builtHtml) {
   return { html: $.html(), image };
 }
 
-function localePage(html, language, image) {
+function localePage(html, language, image, review) {
   const $ = load(html);
   const copy = COPY[language];
   const route = `/${language}/`;
   const canonical = `${ORIGIN}${route}`;
   $("html").attr({ lang: language, "data-route-language": language, "data-public-locale-entry": "" });
-  $('meta[property^="og:"],meta[name^="twitter:"],meta[name="description"],meta[name="robots"],meta[name="author"],meta[http-equiv="refresh"],link[rel="canonical"],link[rel="alternate"],title').remove();
+  $('meta[property^="og:"],meta[name^="twitter:"],meta[name="description"],meta[name="robots"],meta[name="public-locale-indexing"],meta[name="author"],meta[http-equiv="refresh"],link[rel="canonical"],link[rel="alternate"],title').remove();
   const add = (tag, attributes, text) => {
     const node = $(`<${tag}>`).attr(attributes);
     if (text !== undefined) node.text(text);
@@ -98,7 +106,12 @@ function localePage(html, language, image) {
   };
   add("title", {}, copy.brand);
   add("meta", { name: "description", content: copy.description });
-  add("meta", { name: "robots", content: "noindex,follow" });
+  add("meta", { name: "robots", content: review.indexingAllowed ? "index,follow" : "noindex,follow" });
+  if (review.indexingAllowed) add("meta", { name: "public-locale-indexing", content: JSON.stringify({
+    schemaVersion: 1, contract: "validated-public-locale-build-v1", locales: ["ru", "en"],
+    inputsSha256: review.inputsSha256, reviewSha256: review.reviewSha256,
+    moduleSource: $('script[type="module"]').attr("src"),
+  }) });
   add("link", { rel: "canonical", href: canonical });
   for (const locale of ["ru", "en"]) {
     add("link", { rel: "alternate", hreflang: locale, href: `${ORIGIN}/${locale}/` });
@@ -124,12 +137,14 @@ function localePage(html, language, image) {
     class: "static-article-fallback static-home-fallback", "data-localized-home-fallback": "",
   });
   const article = $("<article>");
-  article.append($("<h1>").text(copy.brand));
-  article.append($("<p>").text(copy.description));
-  const navigation = $("<nav>").attr("aria-label", copy.navigation);
-  for (const [href, label] of [
-    [`${route}#atlas`, copy.globe], ["/stati/", copy.journal], [`${route}#books`, copy.books],
-  ]) navigation.append($("<a>").attr("href", href).text(label));
+  const reviewedBody = review.indexingAllowed ? review.bodies[language] : null;
+  article.append($("<h1>").text(reviewedBody?.heading ?? copy.brand));
+  for (const paragraph of reviewedBody?.paragraphs ?? [copy.description]) article.append($("<p>").text(paragraph));
+  const navigation = $("<nav>").attr("aria-label", reviewedBody?.navigationLabel ?? copy.navigation);
+  const links = reviewedBody?.links ?? [
+    { path: `${route}#atlas`, label: copy.globe }, { path: "/stati/", label: copy.journal }, { path: `${route}#books`, label: copy.books },
+  ];
+  for (const { path: href, label } of links) navigation.append($("<a>").attr("href", href).text(label));
   article.append(navigation);
   main.append(article);
   $("body").attr("lang", language).empty().append($("<div>").attr("id", "root").append(main));
@@ -141,6 +156,8 @@ function notFoundPage(html, language) {
   const copy = COPY[language];
   const canonical = `${ORIGIN}/${language}/404.html`;
   $("html").attr("data-public-locale-not-found", "");
+  $('meta[name="public-locale-indexing"]').remove();
+  $('meta[name="robots"]').attr("content", "noindex,follow");
   $('script, link[rel="modulepreload"], link[rel="preload"][as="script"]').remove();
   $("title").text(`404 · ${copy.brand}`);
   $('meta[name="description"], meta[property="og:description"], meta[name="twitter:description"]').attr("content", copy.error);
@@ -161,36 +178,65 @@ function notFoundPage(html, language) {
   return `${$.html()}\n`;
 }
 
-/** Pure local preparation. A boolean cannot substitute for reviewed release evidence. */
-export function generatePublicLocalePages({ builtHtml, releaseReady = false }) {
+/** The filesystem writer independently captures sourceSnapshot. This pure
+ * renderer validates the supplied contract; it cannot verify declared files. */
+export function generatePublicLocalePages({ builtHtml, releaseReady = false, sourceSnapshot, review, provisionedReviewSha256 }) {
   if (releaseReady !== false) {
-    throw new Error("Public locale indexing requires a future validated bilingual review-artifact contract");
+    throw new Error("Public locale indexing requires a validated bilingual review-artifact contract; product releaseReady remains false");
   }
   const canonical = parseCanonicalHome(builtHtml);
   const files = {};
-  const reviewGate = { state: "OPEN", releaseReady: false, requiredEvidence: [
+  let evaluation = { indexingAllowed: false, diagnostics: ["review-missing"] };
+  if (review !== undefined || provisionedReviewSha256 !== undefined) {
+    evaluation = evaluatePublicLocaleReview({ snapshot: sourceSnapshot, review, provisionedReviewSha256 });
+    const expectedCopy = publicLocaleCopyInput();
+    const actualHtml = createHash("sha256").update(builtHtml).digest("hex");
+    if (sourceSnapshot?.builtHtml?.sha256 !== actualHtml || sourceSnapshot?.builtHtml?.bytes !== Buffer.byteLength(builtHtml)
+      || !sourceSnapshot?.copy?.some(entry => entry.path === expectedCopy.path && entry.bytes === expectedCopy.bytes && entry.sha256 === expectedCopy.sha256)) {
+      evaluation = { ...evaluation, indexingAllowed: false, bodies: null,
+        diagnostics: [...evaluation.diagnostics, "renderer-inputs-mismatch"] };
+    }
+  }
+  const reviewGate = { state: evaluation.indexingAllowed ? "VALIDATED_LOCAL_PAGE_INDEXING" : "OPEN", releaseReady: false,
+    indexingAllowed: evaluation.indexingAllowed, scope: "public-localized-homepages-only",
+    reviewerAuthentication: "not-performed", diagnostics: evaluation.diagnostics,
+    ...(evaluation.inputsSha256 ? { inputsSha256: evaluation.inputsSha256 } : {}),
+    ...(evaluation.reviewSha256 ? { reviewSha256: evaluation.reviewSha256 } : {}), requiredEvidence: [
     "reviewed-bilingual-critical-content", "source-bound-editorial-review", "validated-release-artifact",
   ] };
   const excluded = [];
+  const entries = [];
   for (const locale of ["ru", "en"]) {
-    const home = localePage(canonical.html, locale, canonical.image);
+    const home = localePage(canonical.html, locale, canonical.image, evaluation);
     files[`${locale}/index.html`] = home;
     files[`${locale}/404.html`] = notFoundPage(home, locale);
     files[`${locale}/structured-data.json`] = json(structuredData(locale));
     const candidates = [
-      { url: `${ORIGIN}/${locale}/`, locale, kind: "home", reason: "bilingual-release-gates-open" },
+      ...(!evaluation.indexingAllowed ? [{ url: `${ORIGIN}/${locale}/`, locale, kind: "home", reason: "bilingual-release-gates-open" }] : []),
       { url: `${ORIGIN}/${locale}/404.html`, locale, kind: "not-found", reason: "error-page-never-indexable" },
     ];
     files[`${locale}/sitemap.preparation.json`] = json({ schemaVersion: 1,
       generatedBy: "public-locale-pages", recordType: "localized-sitemap-preparation", locale,
-      reviewGate, indexableEntries: [], excludedCandidates: candidates,
+      reviewGate, indexableEntries: evaluation.indexingAllowed ? [`${ORIGIN}/${locale}/`] : [], excludedCandidates: candidates,
       alternates: { ru: `${ORIGIN}/ru/`, en: `${ORIGIN}/en/`, "x-default": `${ORIGIN}/` },
     });
     excluded.push(...candidates);
+    if (evaluation.indexingAllowed) entries.push({ url: `${ORIGIN}/${locale}/`, locale, kind: "home" });
   }
+  // An owned empty XML is also written on withdrawal by the filesystem writer.
+  // The canonical root sitemap is never edited or silently linked here.
+  if (evaluation.indexingAllowed) files["sitemap-locales.xml"] = publicLocaleSitemapXml(entries);
   return {
     files,
-    sitemap: { version: 1, reviewGate, entries: [], excluded },
+    sitemap: { version: 1, reviewGate, entries, excluded },
     notFound: { ru: "/ru/404.html", en: "/en/404.html", hostStatusRoutingConfigured: false },
   };
+}
+
+export function publicLocaleSitemapXml(entries = []) {
+  const urls = entries.map(entry => `  <url><loc>${entry.url}</loc>`
+    + ["ru", "en", "x-default"].map(locale => `<xhtml:link rel="alternate" hreflang="${locale}" href="${ORIGIN}/${locale === "x-default" ? "" : `${locale}/`}"/>`).join("")
+    + "</url>");
+  return '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
+    + urls.join("\n") + "\n</urlset>\n";
 }

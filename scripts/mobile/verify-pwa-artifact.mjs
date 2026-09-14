@@ -391,7 +391,7 @@ export async function verifyPwaArtifact({ rootDir = process.cwd(), artifactDir =
       if (!contents.has(filename)) { add("MISSING_SHELL", filename, "Every explicit locale and neutral recovery shell is required."); continue; }
       const $ = load(contents.get(filename).toString("utf8"));
       const suffix = notFound ? "404.html" : "";
-      if ($("html").attr("lang") !== (locale ?? "ru") || (locale ? $("html").attr("data-route-language") !== locale : $("html").attr("data-pwa-neutral-entry") === undefined) || $("#root").length !== 1 || $("base").length || !/^noindex(?:,|$)/u.test($('meta[name="robots"]').attr("content") ?? "")) add("SHELL_IDENTITY", filename, "Shell language, root ownership and unpublished indexing policy are invalid.");
+      if ($("html").attr("lang") !== (locale ?? "") || (locale ? $("html").attr("data-route-language") !== locale : $("html").attr("data-pwa-neutral-entry") === undefined || $("html").attr("data-route-language") !== undefined) || $("#root").length !== 1 || $("base").length || !/^noindex(?:,|$)/u.test($('meta[name="robots"]').attr("content") ?? "")) add("SHELL_IDENTITY", filename, "Shell language, root ownership and unpublished indexing policy are invalid.");
       const canonical = $('link[rel="canonical"]');
       if (canonical.length !== 1 || canonical.attr("href") !== ORIGIN + SCOPE + prefix + suffix) add("SHELL_CANONICAL", filename, "Canonical URL must identify this exact shell.");
       for (const language of ["ru", "en", "x-default"]) {

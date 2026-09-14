@@ -2,11 +2,33 @@ import { load } from "cheerio";
 import { artifactPath, PWA_SCOPE } from "./pwa-artifact.mjs";
 
 const JOURNAL_ORIGIN = "https://probpera.ru";
-// Exact existing interface copy in src/i18n/InterfaceLanguage.tsx.
-const COPY = Object.freeze({
-  ru: { brand: "Литературная планета", journal: "Читать журнал", ogLocale: "ru_RU" },
-  en: { brand: "Literary Planet", journal: "Read the journal", ogLocale: "en_US" },
+// Brand and opening pairs retain the existing interface copy.
+// Additional recovery text remains a draft; generation never supplies approval.
+export const PWA_SHELL_COPY = Object.freeze({
+  source: "authored-interface-and-ai-draft", reviewStatus: "draft", productionReady: false,
+  locales: Object.freeze({
+    ru: Object.freeze({
+      brand: "Литературная планета", opening: "Открываем «Литературную планету»…", ogLocale: "ru_RU",
+      language: "Русский",
+      recovery: "Если приложение не открывается",
+      recoveryHelp: "Попробуйте открыть приложение снова. Если не помогло, проверьте подключение к интернету и настройки браузера.",
+      noScript: "Для работы приложения нужен JavaScript. Включите его в настройках браузера, затем откройте приложение снова.",
+      notFound: "Страница не найдена. Вернитесь к «Литературной планете».",
+      open: "Открыть «Литературную планету»",
+    }),
+    en: Object.freeze({
+      brand: "Literary Planet", opening: "Opening Literary Planet…", ogLocale: "en_US",
+      language: "English",
+      recovery: "If the app does not open",
+      recoveryHelp: "Try opening the app again. If that does not help, check your internet connection and browser settings.",
+      noScript: "The app needs JavaScript. Enable it in your browser settings, then open the app again.",
+      notFound: "Page not found. Return to Literary Planet.",
+      open: "Open Literary Planet",
+    }),
+  }),
 });
+const COPY = PWA_SHELL_COPY.locales;
+const LAUNCH_ORANGE = "#f67518";
 const NEUTRAL_NAME = `${COPY.ru.brand} / ${COPY.en.brand}`;
 
 function scopedAsset(value) {
@@ -52,18 +74,47 @@ function builtResources(builtHtml) {
   return resources;
 }
 
-const SHELL_CSS = `/* Temporary markup inside the canonical React root. */
-.pwa-startup{box-sizing:border-box;min-height:100svh;padding:max(1rem,env(safe-area-inset-top)) max(1rem,env(safe-area-inset-right)) max(1rem,env(safe-area-inset-bottom)) max(1rem,env(safe-area-inset-left));color:#262029;background:#fff;font:1rem/1.5 system-ui,sans-serif}
+const SHELL_CSS = `/* Temporary markup inside the canonical React root; no scene or animation. */
+html[data-react-shell]{background:${LAUNCH_ORANGE}}
+html[data-react-shell]>body{margin:0}
+html[data-react-shell]>body:has(>#root>[data-pwa-startup-shell]){background:${LAUNCH_ORANGE}}
+.pwa-startup{box-sizing:border-box;position:relative;min-height:100vh;min-height:100svh;display:grid;place-items:center;padding:calc(env(safe-area-inset-top,0px) + 96px) calc(env(safe-area-inset-right,0px) + 28px) calc(env(safe-area-inset-bottom,0px) + 48px) calc(env(safe-area-inset-left,0px) + 28px);color:#1a062b;background:${LAUNCH_ORANGE};background-image:radial-gradient(ellipse at 38% 30%,rgb(255 209 140 / 30%),transparent 65%);font:1rem/1.5 system-ui,sans-serif}
 .pwa-startup *{box-sizing:border-box}
-.pwa-startup-brand{display:flex;align-items:center;gap:.75rem;max-width:42rem}
-.pwa-startup-logo{display:block;width:48px;height:48px;flex:none;object-fit:contain}
-.pwa-startup h1{margin:0;font-size:clamp(1.25rem,4vw,1.75rem);line-height:1.25}
-.pwa-startup-links{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.5rem;padding:0;list-style:none}
-.pwa-startup a{display:inline-flex;align-items:center;min-height:44px;padding:.5rem .75rem;border:2px solid #f67518;border-radius:.5rem;color:#262029;background:#fff;text-decoration:underline;text-underline-offset:.2em}
-.pwa-startup a:focus-visible{outline:3px solid #4b087c;outline-offset:3px}
-.pwa-startup-status{margin:1.5rem 0 0;font-size:1.25rem}
-@media(forced-colors:active){.pwa-startup a{border-color:ButtonText}}
+.pwa-startup-logo{position:absolute;top:calc(env(safe-area-inset-top,0px) + 20px);left:calc(env(safe-area-inset-left,0px) + 24px);display:block;width:56px;height:56px;object-fit:contain}
+.pwa-startup-copy{width:min(100%,32rem);min-width:0;text-align:center;overflow-wrap:anywhere}
+.pwa-startup h1{margin:0;color:inherit;font-family:var(--font-editorial,Georgia,serif);font-size:clamp(2.25rem,8vw,4.5rem);font-weight:500;line-height:1.08;letter-spacing:-.035em;text-wrap:balance}
+.pwa-startup [data-pwa-language-fragment]{display:block}
+.pwa-startup [data-pwa-language-fragment]+[data-pwa-language-fragment]{margin-top:.75rem}
+.pwa-startup-status{margin:1.5rem 0 0;font-size:.875rem}
+.pwa-startup-recovery{margin-top:2rem;text-align:start;font-size:.875rem}
+.pwa-startup-recovery summary{min-width:44px;min-height:44px;padding:.625rem .75rem;cursor:pointer;text-decoration:underline;text-underline-offset:.2em}
+.pwa-startup-recovery p{margin:.75rem 0}
+.pwa-startup-links{display:flex;flex-wrap:wrap;justify-content:center;gap:.75rem;margin:1rem 0 0;padding:0;list-style:none}
+.pwa-startup a{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:.5rem .75rem;border:2px solid currentColor;border-radius:.5rem;color:inherit;background:transparent;text-decoration:underline;text-underline-offset:.2em}
+.pwa-startup a:focus-visible,.pwa-startup summary:focus-visible{outline:3px solid #4b087c;outline-offset:3px}
+.pwa-startup-noscript{margin-top:1.5rem;text-align:start}
+.pwa-startup-copy:has(>noscript>.pwa-startup-noscript)>.pwa-startup-status{display:none}
+@media(prefers-reduced-motion:reduce){.pwa-startup,.pwa-startup *{animation:none;transition:none;scroll-behavior:auto}}
+@media(forced-colors:active){html[data-react-shell],html[data-react-shell]>body:has(>#root>[data-pwa-startup-shell]),.pwa-startup{color:CanvasText;background:Canvas}.pwa-startup a{color:LinkText;border-color:LinkText}.pwa-startup a:focus-visible,.pwa-startup summary:focus-visible{outline-color:Highlight}}
 `;
+
+function localizedText($, target, key, locale) {
+  if (locale) target.text(COPY[locale][key]);
+  else for (const language of ["ru", "en"]) {
+    target.append($("<span>").attr({ lang: language, "data-pwa-language-fragment": "" }).text(COPY[language][key]));
+  }
+  return target;
+}
+
+function recoveryLinks($, locale) {
+  const links = $("<ul>").attr("class", "pwa-startup-links");
+  for (const language of locale ? [locale] : ["ru", "en"]) {
+    links.append($("<li>").append($("<a>").attr({
+      href: `${PWA_SCOPE}${language}/`, lang: language, hreflang: language,
+    }).text(locale ? COPY[language].open : COPY[language].language)));
+  }
+  return links;
+}
 
 function shellHtml({ locale, notFound, resources, logo, icon192, icon512 }) {
   const $ = load("<!doctype html><html><head></head><body><div id=\"root\"></div></body></html>");
@@ -73,7 +124,11 @@ function shellHtml({ locale, notFound, resources, logo, icon192, icon512 }) {
   const suffix = notFound ? "404.html" : "";
   const pagePath = `${PWA_SCOPE}${locale ? `${locale}/` : ""}${suffix}`;
   const manifestPath = `${PWA_SCOPE}${locale ? `${locale}/` : ""}manifest.webmanifest`;
-  $("html").attr({ lang: locale ?? "ru", "data-react-shell": "" });
+  // An empty HTML language denotes unknown until the existing provider resolves
+  // saved/system preferences. Every neutral-entry text fragment declares its own.
+  $("html").attr({ lang: locale ?? "", "data-react-shell": "" });
+  // Body inherits HTML language; a fixed body value would mask later RU/EN
+  // switches made by the existing PwaLocaleMetadata consumer.
   if (locale) $("html").attr("data-route-language", locale);
   else $("html").attr("data-pwa-neutral-entry", "");
 
@@ -86,7 +141,7 @@ function shellHtml({ locale, notFound, resources, logo, icon192, icon512 }) {
   add("meta", { name: "viewport", content: "width=device-width, initial-scale=1.0, viewport-fit=cover" });
   add("meta", { name: "robots", content: "noindex,nofollow" });
   add("meta", { name: "referrer", content: "strict-origin-when-cross-origin" });
-  add("meta", { name: "theme-color", content: "#f67518" });
+  add("meta", { name: "theme-color", content: LAUNCH_ORANGE });
   add("meta", { name: "description", content: name });
   add("title", {}, title);
   add("link", { rel: "canonical", href: `${JOURNAL_ORIGIN}${pagePath}` });
@@ -118,29 +173,28 @@ function shellHtml({ locale, notFound, resources, logo, icon192, icon512 }) {
   if (!notFound) for (const resource of resources) add(resource.tag, resource.attrs);
   add("link", { rel: "stylesheet", href: `${PWA_SCOPE}pwa-shell.css` });
 
-  const main = $("<main>").attr({ class: "pwa-startup", "data-pwa-startup-shell": "" });
-  const brand = $("<header>").attr("class", "pwa-startup-brand");
-  brand.append($("<img>").attr({ class: "pwa-startup-logo", src: logo, width: "48", height: "48", alt: "" }));
-  const heading = $("<h1>");
-  if (locale) heading.text(name);
-  else {
-    heading.append($("<span>").attr("lang", "ru").text(COPY.ru.brand));
-    heading.append(" / ");
-    heading.append($("<span>").attr("lang", "en").text(COPY.en.brand));
+  const main = $("<main>").attr({ class: "pwa-startup", "data-pwa-startup-shell": notFound ? "not-found" : "loading" });
+  main.append($("<img>").attr({ class: "pwa-startup-logo", src: logo, width: "56", height: "56", alt: "", "aria-hidden": "true" }));
+  const content = $("<div>").attr("class", "pwa-startup-copy");
+  content.append(localizedText($, $("<h1>"), "brand", locale));
+  if (notFound) {
+    content.append($("<p>").text("404"));
+    content.append(localizedText($, $("<p>"), "notFound", locale));
+    content.append(recoveryLinks($, locale));
+  } else {
+    content.append(localizedText($, $("<p>").attr({ class: "pwa-startup-status", role: "status", "aria-live": "polite", "aria-atomic": "true" }), "opening", locale));
+    // Native <details> works even if the canonical module never loads. It makes
+    // no network diagnosis and adds neither a timer nor an executable fallback.
+    const recovery = $("<details>").attr({ class: "pwa-startup-recovery", "data-pwa-startup-recovery": "" });
+    recovery.append(localizedText($, $("<summary>"), "recovery", locale));
+    recovery.append(localizedText($, $("<p>"), "recoveryHelp", locale));
+    recovery.append(recoveryLinks($, locale));
+    content.append(recovery);
+    const noScript = $("<div>").attr({ class: "pwa-startup-noscript", "data-pwa-startup-noscript": "" });
+    noScript.append(localizedText($, $("<p>"), "noScript", locale));
+    content.append($("<noscript>").append(noScript));
   }
-  brand.append(heading);
-  main.append(brand);
-  if (notFound) main.append($("<p>").attr("class", "pwa-startup-status").text("404"));
-  const links = $("<ul>").attr("class", "pwa-startup-links");
-  for (const language of locale ? [locale] : ["ru", "en"]) {
-    if (!locale || notFound) links.append($("<li>").append(
-      $("<a>").attr({ href: `${PWA_SCOPE}${language}/`, lang: language, hreflang: language }).text(COPY[language].brand)
-    ));
-    links.append($("<li>").append($("<a>").attr({
-      href: `${JOURNAL_ORIGIN}/stati/`, lang: language, target: "_blank", rel: "noopener noreferrer",
-    }).text(COPY[language].journal)));
-  }
-  main.append(links);
+  main.append(content);
   $("#root").append(main);
   return `${$.html()}\n`;
 }
@@ -154,7 +208,7 @@ function manifest(locale, icon192, icon512) {
     name, short_name: name,
     ...(locale ? { lang: locale } : {}),
     dir: "ltr", display: "standalone",
-    background_color: "#ffffff", theme_color: "#f67518",
+    background_color: LAUNCH_ORANGE, theme_color: LAUNCH_ORANGE,
     icons: [
       { src: icon192, sizes: "192x192", type: "image/png", purpose: "any" },
       { src: icon512, sizes: "512x512", type: "image/png", purpose: "any" },

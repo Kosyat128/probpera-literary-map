@@ -1773,6 +1773,59 @@ test("mobile globe book search resolves evidence-backed RU and EN titles to the 
   } finally { await original.dispose(); }
 });
 
+test("mobile globe book search resolves canonical author patronymics in RU and EN on the retained scene", async ({}, testInfo) => {
+  const fixture = await open({ route: "/?country=france#atlas", viewport: { width: 390, height: 844 },
+    reducedMotion: "reduce", hasTouch: true, isMobile: true });
+  const { page } = fixture;
+  const scene = await captureScene(page);
+  const key = "russia:dostoevsky:crime-and-punishment";
+  const input = page.locator("#country-search");
+  const panel = page.locator(".native-planet-panel");
+  const observations = [];
+  try {
+    for (const locale of ["ru", "en"]) {
+      if (locale === "en") {
+        const pose = await settledCameraPose(scene);
+        const before = new URL(page.url());
+        await page.locator(".atlas-immersive-chrome .interface-language-control button").filter({ hasText: "EN" }).click();
+        await expect(page.locator("html")).toHaveAttribute("lang", "en");
+        await retained(page, scene);
+        expect(await cameraPose(scene)).toEqual(pose);
+        for (const field of ["country", "writer", "book"]) expect(new URL(page.url()).searchParams.get(field)).toBe(before.searchParams.get(field));
+      }
+      const title = locale === "ru" ? "Преступление и наказание" : "Crime and Punishment";
+      const queryOnlyUrl = page.url();
+      await page.locator('[data-atlas-action="toggle-search"]').click();
+      await expect(input).toBeFocused();
+      const option = page.locator('#country-results [data-option-key="book:' + key + '"]');
+      for (const query of ["Михайлович", "Mikhailovich"]) {
+        await input.fill(query);
+        await expect(option).toHaveCount(1);
+        await expect(option).toBeVisible();
+        await expect(option).toHaveAccessibleName(title);
+        expect(page.url()).toBe(queryOnlyUrl);
+        observations.push({ locale, query, title, canonicalBookKey: key });
+      }
+      await evidence(fixture, testInfo, "native-author-search-" + locale, { locale, query: "Mikhailovich", title, canonicalBookKey: key });
+      await option.click();
+      const detail = panel.locator("#book-archive-detail");
+      await expect(detail).toBeVisible();
+      await expect(detail).toHaveAccessibleName(title);
+      await expect.poll(() => new URL(page.url()).searchParams.get("book")).toBe(key);
+      expect(new URL(page.url()).searchParams.get("country")).toBe("russia");
+      expect(new URL(page.url()).searchParams.get("writer")).toBe("dostoevsky");
+      await retained(page, scene);
+      await panel.getByRole("button", { name: locale === "ru" ? "Вернуться к планете" : "Return to the planet", exact: true }).click();
+      await expect(panel).toBeHidden();
+      await expect.poll(() => new URL(page.url()).searchParams.get("book")).toBeNull();
+    }
+    expect(fixture.consoleErrors).toEqual([]);
+    await retained(page, scene);
+    await evidence(fixture, testInfo, "native-author-search-complete", { observations,
+      actualCanonicalCatalog: true, sameCanvasRendererCameraScene: true, nativeDeviceObserved: false });
+  } finally { await scene.dispose(); }
+});
+
 test("native recent history persists canonical writer and work across RU and EN reload and clears locally", async ({}, testInfo) => {
   const fixture = await open({ route: "/?country=russia&writer=dostoevsky#atlas", viewport: { width: 390, height: 844 },
     reducedMotion: "reduce", hasTouch: true, isMobile: true, preferences: { "probpera-planet-welcome-v1": "completed" } });

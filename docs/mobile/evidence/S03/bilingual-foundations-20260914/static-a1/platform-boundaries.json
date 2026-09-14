@@ -1,0 +1,22 @@
+{
+  "name": "platform-boundaries",
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/mobile/platform-boundaries.mjs"
+  ],
+  "startedAt": "2026-09-14T00:59:52.293Z",
+  "durationMs": 7262,
+  "exitCode": 0,
+  "logs": {
+    "stdout": {
+      "text": "{\n  \"pass\": true,\n  \"sourceFileCount\": 893,\n  \"webReachableFileCount\": 517,\n  \"auditedRuntimeFileCount\": 527,\n  \"importCount\": 1986,\n  \"webEntries\": [\n    \"src/main.tsx\"\n  ],\n  \"adapterRoots\": [\n    \"src/platform/adapters/android\",\n    \"src/platform/adapters/ios\"\n  ],\n  \"canonicalSceneFiles\": {\n    \"LiteraryWorldMap\": \"src/components/LiteraryWorldMap.tsx\",\n    \"LiteraryGlobe\": \"src/components/LiteraryGlobe.tsx\",\n    \"GlobeCameraRig\": \"src/components/GlobeCameraRig.tsx\"\n  },\n  \"canvasOwnerFiles\": [\n    \"src/components/LiteraryGlobe.tsx\",\n    \"src/components/BookShelfSceneCanvas.tsx\"\n  ],\n  \"canvasSites\": [\n    {\n      \"file\": \"src/components/BookShelfSceneCanvas.tsx\",\n      \"line\": 503\n    },\n    {\n      \"file\": \"src/components/LiteraryGlobe.tsx\",\n      \"line\": 3007\n    }\n  ],\n  \"nativeConfigs\": [\n    \"capacitor.config.json\"\n  ],\n  \"findings\": [],\n  \"limitations\": [\n    \"Static source ownership does not prove a single active globe/Canvas/renderer or preserved runtime identity; browser and native tests must verify those invariants.\",\n    \"Third-party package contents, bundler plugins, generated artifacts, injected scripts and installed native binaries require separate build/artifact audits.\",\n    \"Dependency resolution/loader enforcement covers reachable web and native-adapter runtime graphs; inactive source is still scanned for native SDK imports and duplicate scene ownership.\",\n    \"Computed module loaders and non-static native runtime configuration fail closed; this is not a general JavaScript data-flow proof.\"\n  ]\n}\n",
+      "bytes": 1544,
+      "sha256": "a450c7a23316e069277e014a568daf56ab137bbc8ebf0ffce47b153d2bc6bc47"
+    },
+    "stderr": {
+      "text": "",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

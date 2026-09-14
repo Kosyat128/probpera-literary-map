@@ -1,0 +1,23 @@
+{
+  "recordedAt": "2026-09-14T01:03:59.075Z",
+  "status": "INSPECTED_AT_ORIGINAL_RESOLUTION",
+  "files": [
+    {
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/browser-a1/native-author-search-ru-screenshot.png",
+      "bytes": 228838,
+      "sha256": "470f7c77f7ca12a22770c716d338c02dee6ad547bec64618a22891efddeffec8"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/browser-a1/native-author-search-en-screenshot.png",
+      "bytes": 289803,
+      "sha256": "4f8cd01def77591ba9da0d79306e5f2b5f46a211c069678814c42415c1d54e15"
+    }
+  ],
+  "findings": [
+    "Both locale screens retain canonical globe and one scene.",
+    "Patronymic query shows localized canonical book and writer labels without English title guesses.",
+    "Search rows, labels, localized controls and active globe palette remain readable and contained at390px."
+  ],
+  "mockScreenshots": false,
+  "exactReleaseCandidate": false
+}

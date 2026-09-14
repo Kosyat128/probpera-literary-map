@@ -521,3 +521,12 @@
   Exact APK/runtime copies and one affected real offline PWA history scenario
   are verified. This completes the bounded history/persistence working slice,
   not native installed-device, child mode, translation review or stage acceptance.
+
+- D101: Canonical current author fields are hidden inputs to the existing atlas/shared
+  indexes and deterministic transliteration, gated by current profile and title
+  evidence. They do not replace public display names or create new title facts.
+  PWA starts orange before JavaScript, with neutral language inheritance and
+  local bilingual recovery. Public locale indexing requires separately supplied
+  exact-input bilingual review; digest provision is not reviewer authentication
+  or product release approval. Default/withdrawn artifacts remain noindex.
+  These S03/S10 changes preserve the single globe and existing publication gates.

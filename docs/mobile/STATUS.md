@@ -1,4 +1,17 @@
-# V12 status — 2026-09-08
+# V12 status — 2026-09-14
+
+<!-- bilingual-foundations-20260914:begin -->
+Current source: canonical author patronymic search across RUEN; orange PWA startup
+and accessible recovery; exact-input public-locale review/sitemap pipeline.
+297 final passing cases across7 files, static and1 actual native-source
+RUEN browser case passed. Original-resolution search screenshots inspected.
+Real editorial approval was not created; new recovery copy remains draft.
+Prior Android186fa925/PWA8b5204ed remain preserved historical artifacts.
+Next: fresh committed-source Android/dev and local-QA PWA launch/offline check.
+Evidence: evidence/S03/bilingual-foundations-20260914/result.json.
+First-open S03; no stage acceptance. Four public books, full content/child/3D/
+commerce/device/release work and frozen iOS83 remain open. No production actions.
+<!-- bilingual-foundations-20260914:end -->
 
 <!-- s10-history:begin -->
 Source deaea6c77adb274fed8cb8f524e87cfa433a037c: adult native Recently opened and truthful collection persistence.

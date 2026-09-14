@@ -65,6 +65,53 @@ function metadata($) {
 afterEach(() => { vi.unstubAllGlobals(); edition.controlled = false; });
 
 describe("public localized entry metadata follows the existing provider", () => {
+  function indexedFixture(transform = value => value) {
+    const $ = load(files["ru/index.html"]);
+    const marker = transform({ schemaVersion: 1, contract: "validated-public-locale-build-v1", locales: ["ru", "en"],
+      inputsSha256: "1".repeat(64), reviewSha256: "2".repeat(64), moduleSource: "/assets/main.js" });
+    $('meta[name="robots"]').attr("content", "index,follow");
+    $("head").append($("<meta>").attr({ name: "public-locale-indexing", content: JSON.stringify(marker) }));
+    return fixture("/ru/?writer=synthetic#atlas", $.html());
+  }
+
+  it("preserves the validated trusted build marker and indexability on the retained document through locale switches", () => {
+    const current = indexedFixture(); const marker = current.$('meta[name="public-locale-indexing"]').attr("content");
+    const body = current.$("body").html();
+    syncPublicLocaleMetadata("en"); syncPublicLocaleMetadata("ru");
+    expect(current.$('meta[name="robots"]').attr("content")).toBe("index,follow");
+    expect(current.$('meta[name="public-locale-indexing"]').attr("content")).toBe(marker);
+    expect(current.$("body").html()).toBe(body);
+    expect(current.target.location.href).toBe("https://local-review.invalid/ru/?writer=synthetic#atlas");
+    expect(current.target.history.state).toBe(current.state);
+  });
+
+  it.each(["unknown", "partial", "bad-digest", "wrong-module", "missing-marker", "duplicate-marker"])("keeps %s build markers noindex", mode => {
+    const current = indexedFixture(value => {
+      if (mode === "unknown") value.contract = "another-contract";
+      if (mode === "partial") value.locales = ["en"];
+      if (mode === "bad-digest") value.inputsSha256 = "approved";
+      if (mode === "wrong-module") value.moduleSource = "/assets/other.js";
+      return value;
+    });
+    if (mode === "missing-marker") current.$('meta[name="public-locale-indexing"]').remove();
+    if (mode === "duplicate-marker") current.$("head").append(current.$('meta[name="public-locale-indexing"]').clone());
+    syncPublicLocaleMetadata("en");
+    expect(current.$('meta[name="robots"]').attr("content")).toBe("noindex,follow");
+  });
+
+  it.each(["marker", "runtime"])("withdraws the document admission after a changed %s and never revives it on restoration", mode => {
+    const current = indexedFixture(); syncPublicLocaleMetadata("en");
+    const selector = mode === "marker" ? 'meta[name="public-locale-indexing"]' : 'script[type="module"]';
+    const attribute = mode === "marker" ? "content" : "src";
+    const before = current.$(selector).attr(attribute);
+    current.$(selector).attr(attribute, mode === "marker" ? "{}" : "/assets/changed.js");
+    syncPublicLocaleMetadata("ru");
+    expect(current.$('meta[name="robots"]').attr("content")).toBe("noindex,follow");
+    current.$(selector).attr(attribute, before);
+    syncPublicLocaleMetadata("en");
+    expect(current.$('meta[name="robots"]').attr("content")).toBe("noindex,follow");
+  });
+
   it.each(["ru", "en"])("matches the %s generated metadata and changes no rendered content", language => {
     const current = fixture(language === "ru" ? "/en/?country=RU&writer=Q123&book=x%2Fy#atlas" : "/ru/?country=RU&writer=Q123&book=x%2Fy#atlas", files[language === "ru" ? "en/index.html" : "ru/index.html"]);
     const beforeBody = current.$("body").html();

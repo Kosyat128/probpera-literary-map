@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "runId": "v12-resume-20260914-a1",
+  "title": "mobile globe book search resolves canonical author patronymics in RU and EN on the retained scene",
+  "head": "65a3aba1e19a2726f35dadd1d150aab6125ed406",
+  "status": "SOURCE_BROWSER_PASSED",
+  "pass": true,
+  "sourceInputsSha256": "f26edc4360c4d26042bc92fb37eb0b1209931466bcb8c8fff313e20dae0a1e3d",
+  "sourceInputsUnchanged": true,
+  "statistics": {
+    "startTime": "2026-09-14T01:00:06.898Z",
+    "duration": 12661.294,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "exitCode": 0,
+  "cases": [
+    {
+      "title": "mobile globe book search resolves canonical author patronymics in RU and EN on the retained scene",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 8258,
+          "errors": []
+        }
+      ]
+    }
+  ],
+  "preserved": [
+    {
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/browser-a1/playwright.json",
+      "bytes": 122570,
+      "sha256": "9e2b53eb0726bfefed801e64c45c6598dabfc532bd3ceb561095e25b06ccd38f"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/browser-a1/native-author-search-ru.json",
+      "bytes": 12424,
+      "sha256": "c9aebf23c4352f80e745e05422aba2ddf7014644a6c08e54db292e5202a1201d"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/browser-a1/native-author-search-ru-screenshot.png",
+      "bytes": 228838,
+      "sha256": "470f7c77f7ca12a22770c716d338c02dee6ad547bec64618a22891efddeffec8"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/browser-a1/native-author-search-en.json",
+      "bytes": 21922,
+      "sha256": "0b6f94732347b07d168232b1ede00b8e3f901c87e53f83ac8046b60f234ff6dc"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/browser-a1/native-author-search-en-screenshot.png",
+      "bytes": 289803,
+      "sha256": "4f8cd01def77591ba9da0d79306e5f2b5f46a211c069678814c42415c1d54e15"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/browser-a1/native-author-search-complete.json",
+      "bytes": 26734,
+      "sha256": "2f57bcaec0f0001acfdf28332be5f7a25579972a8e2d3a9bacdd1cd274c00ca0"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/browser-a1/native-author-search-complete-screenshot.png",
+      "bytes": 395404,
+      "sha256": "3243437a374a5ca156b7c407c62124da7362dff9deff0922bfe1a039d6e8f886"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/browser-a1/native-final-passed.json",
+      "bytes": 26062,
+      "sha256": "5fa2b79d732799aceefcd89c0bf3d584cd5e649b1d3f2a894dc9cd1385609552"
+    },
+    {
+      "path": "docs/mobile/evidence/S03/bilingual-foundations-20260914/browser-a1/native-final-passed-screenshot.png",
+      "bytes": 395404,
+      "sha256": "3243437a374a5ca156b7c407c62124da7362dff9deff0922bfe1a039d6e8f886"
+    }
+  ],
+  "fixtureUsesCanonicalAppAndScene": true,
+  "actualInstalledRuntime": false,
+  "nativePluginsSimulated": true,
+  "stageAccepted": false,
+  "releaseReady": false
+}

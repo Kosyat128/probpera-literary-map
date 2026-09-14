@@ -9,6 +9,42 @@ const metadataByLanguage = {
   en: { title: "Proba Pera", description: "Literary journal and encyclopedia", ogLocale: "en_US", alternate: "ru_RU" },
 } as const;
 
+const indexedDocuments = new WeakMap<Document, string | null>();
+
+/** The build writer validates the independently provisioned source-bound
+ * review. Runtime recognizes that exact trusted document contract, not the
+ * identity or authority of a reviewer. Unknown/changed markers fail closed. */
+function documentIndexingAllowed(document: Document) {
+  const markers = document.head.querySelectorAll('meta[name="public-locale-indexing"]');
+  const marker = markers.length === 1 ? markers[0].getAttribute("content") : null;
+  if (indexedDocuments.has(document) && (marker === null || indexedDocuments.get(document) !== marker)) {
+    indexedDocuments.set(document, null);
+    return false;
+  }
+  let valid = false;
+  try {
+    const value = marker ? JSON.parse(marker) : null;
+    const modules = document.head.querySelectorAll('script[type="module"][src]');
+    const robots = document.head.querySelectorAll('meta[name="robots"]');
+    valid = value !== null && typeof value === "object" && !Array.isArray(value)
+      && Object.keys(value).sort().join(",") === "contract,inputsSha256,locales,moduleSource,reviewSha256,schemaVersion"
+      && value.schemaVersion === 1 && value.contract === "validated-public-locale-build-v1"
+      && Array.isArray(value.locales) && value.locales.join(",") === "ru,en" && value.locales.length === 2
+      && /^[a-f0-9]{64}$/u.test(value.inputsSha256) && /^[a-f0-9]{64}$/u.test(value.reviewSha256)
+      && typeof value.moduleSource === "string" && modules.length === 1
+      && modules[0].getAttribute("src") === value.moduleSource
+      && robots.length === 1 && robots[0].getAttribute("content") === "index,follow"
+      && document.documentElement.getAttribute("data-public-locale-entry") !== null;
+    if (valid) {
+      const url = new URL(value.moduleSource, `${canonicalJournalOrigin}/`);
+      valid = url.origin === canonicalJournalOrigin && !url.username && !url.password && !url.hash
+        && url.pathname.endsWith(".js");
+    }
+  } catch { valid = false; }
+  indexedDocuments.set(document, valid ? marker : null);
+  return valid;
+}
+
 function structuredData(language: InterfaceLanguage) {
   const metadata = metadataByLanguage[language];
   const canonical = `${canonicalJournalOrigin}/${language}/`;
@@ -31,6 +67,7 @@ export function syncPublicLocaleMetadata(language: InterfaceLanguage) {
   const route = `/${language}/`;
   const canonical = `${canonicalJournalOrigin}${route}`;
   const metadata = metadataByLanguage[language];
+  const indexingAllowed = documentIndexingAllowed(document);
   if (location.pathname !== route) {
     history.replaceState(history.state, "", `${route}${location.search}${location.hash}`);
   }
@@ -45,7 +82,7 @@ export function syncPublicLocaleMetadata(language: InterfaceLanguage) {
   setHeadMetadataValue(document, "link", "hreflang", "x-default", "href", `${canonicalJournalOrigin}/`);
   for (const [name, content] of Object.entries({
     description: metadata.description,
-    robots: "noindex,follow",
+    robots: indexingAllowed ? "index,follow" : "noindex,follow",
     "twitter:card": "summary",
     "twitter:title": metadata.title,
     "twitter:description": metadata.description,

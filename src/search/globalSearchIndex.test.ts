@@ -400,6 +400,32 @@ describe("shared global search index", () => {
     expect(searchGlobalSearchIndex(makeIndex({ books }), "Unreviewed Mutation").groups.books).toEqual([]);
   });
 
+  it.each<WorkLocale>(["ru", "en"])("uses current canonical author names in %s book search without changing its title or actions", locale => {
+    const country = makeCountry("author-fields", 1);
+    country.writers[0].name = "Условный Михайлович";
+    country.writers[0].fullName = "Synthetic Current Author";
+    const book = makeVerifiedBook("author-work", country, "Visible Localized Anchor");
+    book.writer = { ...book.writer, name: "Отображаемая подпись", fullName: "Synthetic Visible Byline" };
+    book.writerName = "Synthetic Visible Byline";
+    // Synthetic evidence exercises the real gate; no catalog facts are changed.
+    addSyntheticTitleEvidence(book, locale, "Visible Localized Anchor");
+    const index = makeIndex({ countries: [country], books: [book], language: locale });
+    for (const query of ["Михайлович", "Mikhailovich"]) {
+      const result = searchGlobalSearchIndex(index, query, BOOKS_GLOBAL_SEARCH_PROFILE);
+      expect(result.groups.books).toHaveLength(1);
+      const found = result.groups.books[0];
+      expect(found.book).toBe(book);
+      expect(found.label).toBe("Visible Localized Anchor");
+      expect(found.bookKey).toBe("author-fields:writer-author-fields-0:author-work");
+      expect(found.activateAction).toEqual({ type: "open-book", bookKey: found.bookKey });
+      expect(result.suggestions.some(item => item.key === found.key)).toBe(true);
+    }
+    const withdrawn = { ...country, writers: [] };
+    expect(searchGlobalSearchIndex(makeIndex({ countries: [withdrawn], books: [book], language: locale }), "Mikhailovich").groups.books).toEqual([]);
+    delete book.localizedTitles?.[locale];
+    expect(searchGlobalSearchIndex(makeIndex({ countries: [country], books: [book], language: locale }), "Mikhailovich").groups.books).toEqual([]);
+  });
+
   it("does not infer an opposite title alias from publication status alone", () => {
     const country = makeCountry("no-title-evidence", 1);
     const book = makeVerifiedBook("not-an-alias", country, "Visible Anchor");

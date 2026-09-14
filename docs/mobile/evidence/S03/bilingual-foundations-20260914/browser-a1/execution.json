@@ -1,0 +1,25 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=playwright.native-planet.config.mjs",
+    "--grep",
+    "mobile globe book search resolves canonical author patronymics in RU and EN on the retained scene"
+  ],
+  "startedAt": "2026-09-14T01:00:06.108Z",
+  "durationMs": 13583,
+  "exitCode": 0,
+  "logs": {
+    "stdout": {
+      "text": "\nRunning 1 test using 1 worker\n\n  ok 1 tests\\host\\native-planet.spec.mjs:1776:1 › mobile globe book search resolves canonical author patronymics in RU and EN on the retained scene (8.3s)\n\n  1 passed (12.7s)\n",
+      "bytes": 209,
+      "sha256": "5f4307a8b8e3284f83552d3f3cbfdb4dbc9a3aee0472a21ad4702ff7f05770a7"
+    },
+    "stderr": {
+      "text": "(node:7568) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "bytes": 163,
+      "sha256": "6c67db742a915c3866190442c14dc9e6e66892f44bd3e2b7128f600ae08167c4"
+    }
+  }
+}

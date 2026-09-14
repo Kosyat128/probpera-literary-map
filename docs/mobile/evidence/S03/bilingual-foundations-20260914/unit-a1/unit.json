@@ -1,0 +1,32 @@
+{
+  "name": "unit",
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "src/data/bookAuthorSearch.test.ts",
+    "src/search/globalSearchIndex.test.ts",
+    "scripts/mobile/public-locale-review.test.mjs",
+    "scripts/mobile/public-locale-pages.test.mjs",
+    "src/i18n/PublicLocaleMetadata.test.mjs",
+    "scripts/mobile/pwa-shell.test.mjs",
+    "scripts/mobile/verify-pwa-artifact.test.mjs",
+    "--reporter=json",
+    "--outputFile=docs/mobile/evidence/S03/bilingual-foundations-20260914/unit-a1/vitest.json"
+  ],
+  "startedAt": "2026-09-14T00:59:31.593Z",
+  "durationMs": 59638,
+  "exitCode": 1,
+  "logs": {
+    "stdout": {
+      "text": "JSON report written to C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S03/bilingual-foundations-20260914/unit-a1/vitest.json\n",
+      "bytes": 185,
+      "sha256": "e44c9ddc3572f5fe4b86123cdd550a42a3fe3769e692f776ac4c274b665f2b5f"
+    },
+    "stderr": {
+      "text": "",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-14T00:51:21.021Z",
+  "resumedHead": "65a3aba1e19a2726f35dadd1d150aab6125ed406",
+  "priorRuntimeSource": "deaea6c77adb274fed8cb8f524e87cfa433a037c",
+  "firstOpenCriterion": "S03.acceptance",
+  "requirementIntegrity": {
+    "pass": true,
+    "checksumEntries": 194,
+    "manifestFiles": 191,
+    "bindingDocuments": 173
+  },
+  "scope": [
+    "S10 hidden current canonical author fields in existing atlas/shared search",
+    "S03 orange PWA pre-JavaScript and OS launch with bilingual recovery",
+    "S03 exact-input bilingual page review consumption and localized sitemap generation"
+  ],
+  "limits": [
+    "No factual catalog or editorial approval mutation",
+    "No repeated 10000-row benchmark or broad unrelated suites",
+    "Current publication gate admits four works",
+    "Frozen iOS83 unchanged and pending",
+    "No production actions"
+  ],
+  "stageAccepted": false,
+  "releaseReady": false
+}

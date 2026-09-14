@@ -6,6 +6,7 @@ import {
 import { presentBookArchiveEntry } from "../data/bookArchiveQueue";
 import { isPublicBook } from "../data/bookQuality";
 import { getEvidenceBackedOppositeLocaleBookTitleAliases } from "../data/bookSearchAliases";
+import { createBookAuthorSearchResolver } from "../data/bookAuthorSearch";
 import {
   selectBookMetadataLabels,
   selectBookOriginalLanguage,
@@ -563,6 +564,7 @@ function* globalSearchDocuments({
   articles = [],
   extensions = [],
 }: CreateGlobalSearchIndexOptions, counts: { articleCount: number }): Generator<GlobalSearchDocumentInput | null> {
+  const bookAuthorNames = createBookAuthorSearchResolver(countries, language);
   for (const country of countries) {
     const localizedCountryName = countryName(country.code, country.name);
     yield {
@@ -660,6 +662,7 @@ function* globalSearchDocuments({
       continue;
     }
     const displayedBook = presentBookArchiveEntry(book, language);
+    const currentAuthorNames = bookAuthorNames(book);
     const oppositeLocaleTitleAliases =
       getEvidenceBackedOppositeLocaleBookTitleAliases(book, language);
     const writerName = selectBookWriterName(
@@ -706,13 +709,14 @@ function* globalSearchDocuments({
       ],
       secondaryValues: [
         localizedCountryName,
+        ...currentAuthorNames,
         ...(book.alternateTitles || []),
         ...oppositeLocaleTitleAliases,
         ...verifiedMetadata,
       ],
       suggestionFields: {
         title: [displayedBook.title],
-        writer: [writerName],
+        writer: [writerName, ...currentAuthorNames],
         original: [book.originalTitle],
         alternate: [...(book.alternateTitles || []), ...oppositeLocaleTitleAliases],
         country: [

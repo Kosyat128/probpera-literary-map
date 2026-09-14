@@ -77,6 +77,7 @@ import { isNobelLaureate } from "./data/nobel";
 import type { BookArchiveEntry } from "./data/bookArchive";
 import { isPublicBook } from "./data/bookQuality";
 import { getEvidenceBackedOppositeLocaleBookTitleAliases } from "./data/bookSearchAliases";
+import { createBookAuthorSearchResolver } from "./data/bookAuthorSearch";
 import { auditCountryArchive } from "./data/countries/editorialAudit";
 import {
   coreHomepageSectionClass,
@@ -1182,6 +1183,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
   }, [applyAtlasUrlSelection]);
 
   const atlasSearchSource = useMemo(() => function* (): Generator<AtlasSearchResult> {
+    const bookAuthorNames = createBookAuthorSearchResolver(countryArchive, language);
     for (const country of countryArchive) {
       const localizedCountryName = countryName(country.code, country.name);
       yield {
@@ -1253,6 +1255,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
               book.originalTitle,
               ...(book.alternateTitles || []),
               ...getEvidenceBackedOppositeLocaleBookTitleAliases(book, language),
+              ...bookAuthorNames(book),
               selectBookWriterName(book, language, t("Автор")),
               countryName(book.country.code, book.countryName),
               displayedBook.description,

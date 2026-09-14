@@ -146,6 +146,88 @@ async function selectedWorkInViewport(page, detail, testInfo, phase) {
   }
 }
 
+test("orange PWA launch and bilingual recovery lead to the retained offline literary globe", async ({ page, context, browser, request }, testInfo) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  const config = await readQaConfiguration();
+  const reset = await request.post(config.origin + "/__pwa_qa__/control", { headers: { Authorization: "Bearer " + config.controlToken }, data: { action: "reset" } });
+  expect(reset.status()).toBe(200);
+  const staticContext = await browser.newContext({ javaScriptEnabled: false, baseURL: config.origin,
+    viewport: { width: 390, height: 844 }, reducedMotion: "reduce", colorScheme: "light" });
+  const staticPage = await staticContext.newPage();
+  const observations = [];
+  try {
+    for (const locale of ["ru", "en"]) {
+      await staticPage.goto(`/planet/${locale}/`);
+      await expect(staticPage.locator("html")).toHaveAttribute("lang", locale);
+      await expect(staticPage.locator("[data-pwa-startup-noscript]")).toBeVisible();
+      await expect(staticPage.locator(".pwa-startup-status")).toBeHidden();
+      await expect(staticPage.locator('a[href*="/stati/"]')).toHaveCount(0);
+      expect(await staticPage.locator("body").evaluate(node => getComputedStyle(node).backgroundColor)).toBe("rgb(246, 117, 24)");
+      await staticPage.locator("[data-pwa-startup-recovery] summary").click();
+      const recovery = staticPage.locator(`[data-pwa-startup-recovery] a[href="/planet/${locale}/"]`);
+      await expect(recovery).toBeVisible();
+      const box = await recovery.boundingBox();
+      expect(box.height).toBeGreaterThanOrEqual(44);
+      await testInfo.attach(`pwa-bilingual-no-js-${locale}`, { body: await staticPage.screenshot(), contentType: "image/png" });
+      observations.push({ phase: "no-js", locale, recovery: await recovery.getAttribute("href"), orangeSurface: true });
+    }
+    await staticPage.goto("/planet/");
+    await expect(staticPage.locator("html")).toHaveAttribute("lang", "");
+    await expect(staticPage.locator("html")).not.toHaveAttribute("data-route-language");
+    await staticPage.goto("/planet/en/404.html");
+    await expect(staticPage.locator('[data-pwa-startup-shell="not-found"]')).toBeVisible();
+    await expect(staticPage.locator("script")).toHaveCount(0);
+    await expect(staticPage.locator('[data-pwa-startup-shell="not-found"]')).toContainText("Page not found. Return to Literary Planet.");
+    await staticPage.emulateMedia({ forcedColors: "active" });
+    await expect(staticPage.locator('a[href="/planet/en/"]')).toBeVisible();
+    expect(await staticPage.locator("main").evaluate(node => getComputedStyle(node).backgroundColor)).toBe("rgb(255, 255, 255)");
+  } finally { await staticContext.close(); }
+
+  let resumeModules;
+  const modulesReady = new Promise(resolve => { resumeModules = resolve; });
+  await page.route("**/planet/assets/*.js", async route => { await modulesReady; await route.continue(); });
+  try {
+    await page.goto("/planet/en/?country=france#atlas", { waitUntil: "commit" });
+    await expect(page.locator('[data-pwa-startup-shell="loading"]')).toBeVisible();
+    await expect(page.locator(".pwa-startup-status")).toHaveText("Opening Literary Planet…");
+    await expect(page.locator("canvas")).toHaveCount(0);
+    await expect(page.locator("body")).toHaveCSS("background-color", "rgb(246, 117, 24)");
+    const logo = page.locator(".pwa-startup-logo");
+    await expect.poll(() => logo.evaluate(image => image.complete && image.naturalWidth > 0)).toBe(true);
+    await testInfo.attach("pwa-bilingual-before-js-en", { body: await page.screenshot(), contentType: "image/png" });
+  } finally { resumeModules(); }
+  const scene = await actualGlobe(page);
+  try {
+    await expect.poll(() => page.evaluate(() => navigator.serviceWorker.controller?.scriptURL ?? ""), { timeout: 60_000 }).toBe(config.origin + "/planet/sw.js");
+    await page.unroute("**/planet/assets/*.js");
+    await context.setOffline(true);
+    const input = page.locator("#country-search");
+    const key = "russia:dostoevsky:crime-and-punishment";
+    for (const locale of ["en", "ru"]) {
+      if (locale === "ru") {
+        await page.locator(".atlas-immersive-chrome .interface-language-control button").filter({ hasText: "RU" }).click();
+        await expect(page.locator("html")).toHaveAttribute("lang", "ru");
+      }
+      await page.locator('[data-atlas-action="toggle-search"]').click();
+      await input.fill(locale === "en" ? "Михайлович" : "Mikhailovich");
+      const option = page.locator('#country-results [data-option-key="book:' + key + '"]');
+      const title = locale === "en" ? "Crime and Punishment" : "Преступление и наказание";
+      await expect(option).toHaveAccessibleName(title);
+      await option.click();
+      const panel = page.locator(".native-planet-panel");
+      await expect(panel.locator("#book-archive-detail")).toHaveAccessibleName(title);
+      await expect.poll(() => new URL(page.url()).searchParams.get("book")).toBe(key);
+      await retainedGlobe(page, scene);
+      await panel.getByRole("button", { name: locale === "ru" ? "Вернуться к планете" : "Return to the planet", exact: true }).click();
+      await expect(panel).toBeHidden();
+      await expect.poll(() => new URL(page.url()).searchParams.get("book")).toBeNull();
+      observations.push({ phase: "offline-author-search", locale, title, key, sameGlobe: true });
+    }
+    await testInfo.attach("pwa-bilingual-complete", { body: JSON.stringify({ actualBuiltArtifact: true, observations,
+      isolatedServiceWorker: true, singleGlobe: true, installedOsObserved: false }), contentType: "application/json" });
+  } finally { await context.setOffline(false); await scene.dispose(); }
+});
+
 test("cold offline writer biography and works use the canonical catalog", async ({ page, context, request, isMobile }) => {
   await prepare(page, request);
   await context.setOffline(true);

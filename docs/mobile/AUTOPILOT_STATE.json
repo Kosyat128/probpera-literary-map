@@ -5,7 +5,7 @@
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
   "headSha": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-08T14:05:45.766Z",
+  "updatedAt": "2026-09-14T01:05:40.052Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -511,7 +511,11 @@
           "notes": "Installable paid Web/PWA with safe Service Worker. A shared web build is insufficient; actual platform artifacts and lifecycle tests establish acceptance."
         }
       ],
-      "lastGreenCommands": [],
+      "lastGreenCommands": [
+        "Affected bilingual foundations: 297 final passing cases across7 files; only2 affected suites repeated.",
+        "TypeScript and platform boundaries passed.",
+        "Actual native App source browser: RUEN canonical author patronymic search and retained scene passed."
+      ],
       "artifacts": [
         "docs/mobile/evidence/S03/canonical-integration-working-unit-regression.json",
         "docs/mobile/evidence/S03/canonical-integration-working-artifact-audit.json",
@@ -542,7 +546,8 @@
         "docs/mobile/evidence/S03/graphics-quality-20260908/pwa/result.json",
         "docs/mobile/evidence/S10/search-20260908/pwa/result.json",
         "docs/mobile/evidence/S10/capacity-20260908/pwa/result.json",
-        "docs/mobile/evidence/S10/history-20260908/pwa/result.json"
+        "docs/mobile/evidence/S10/history-20260908/pwa/result.json",
+        "docs/mobile/evidence/S03/bilingual-foundations-20260914/result.json"
       ],
       "externalBlockers": []
     },
@@ -1601,9 +1606,9 @@
         }
       ],
       "lastGreenCommands": [
-        "Focused native/Web history and collections: 184 unit passes.",
-        "Final TypeScript and platform-boundaries: pass",
-        "Actual App browser: native history RUEN/reload/clear and unavailable-IndexedDB collections: 2 pass"
+        "Affected bilingual foundations: 297 final passing cases across7 files; only2 affected suites repeated.",
+        "TypeScript and platform boundaries passed.",
+        "Actual native App source browser: RUEN canonical author patronymic search and retained scene passed."
       ],
       "artifacts": [
         "docs/mobile/evidence/S10/search-20260908/entry.json",
@@ -1618,7 +1623,8 @@
         "docs/mobile/evidence/S10/history-20260908/collection-follow-up.json",
         "docs/mobile/evidence/S10/history-20260908/result.json",
         "docs/mobile/evidence/S04/history-android-20260908/result.json",
-        "docs/mobile/evidence/S10/history-20260908/pwa/result.json"
+        "docs/mobile/evidence/S10/history-20260908/pwa/result.json",
+        "docs/mobile/evidence/S03/bilingual-foundations-20260914/result.json"
       ],
       "externalBlockers": []
     },
@@ -10597,7 +10603,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Continue routed work from committed S10 adult native history and collection persistence sourcedeaea6c7. History uses the installed OS bridge and bounded canonical IDs; real RUEN navigation/reload/clear verified. Collections distinguish device persistence/session fallback/sync failure without destructive rollback. 184 focused units, static and2 native source-browser cases pass; exact Android/dev and local-QA PWA retained with affected real PWA history case. Do not repeat unchanged green tests/builds/search benchmark. First-open S03 remains. Next internal work: evidence-bound native/transliteration aliases, separate child profile/index/history/cache and canonical content/correction delivery; full RUEN biographies/content, final near10k catalog, Planetka/3D/passport/store and device/legal/release acceptance remain open. Current publication gate admits four books; no invented translations/approvals/rights. Frozen iOS83 unchanged/pending. No production actions.",
+    "nextAction": "Build one exact-source Android/dev and one local-QA PWA; exercise real pre-JS recovery and offline author search on retained scene. Then proceed to S08 canonical content dependency/export work independently of unavailable review/device credentials. First-open S03 unchanged; no stage or product acceptance. Frozen iOS83 unchanged/pending.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -11834,6 +11840,15 @@
         "browserPassed": true,
         "physicalDeviceTested": false
       },
+      "stageAccepted": false,
+      "releaseReady": false
+    },
+    "s03BilingualFoundations": {
+      "status": "SOURCE_VALIDATION_PASSED",
+      "evidence": "docs/mobile/evidence/S03/bilingual-foundations-20260914/result.json",
+      "sha256": "6261ffe8e56c3330f2589321cd60726419382851061379830a33cd4386e0acfd",
+      "finalPassingCases": 297,
+      "sourceInputsCurrent": true,
       "stageAccepted": false,
       "releaseReady": false
     }

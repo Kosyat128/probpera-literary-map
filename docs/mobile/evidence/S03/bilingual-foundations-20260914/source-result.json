@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-14T01:05:40.052Z",
+  "status": "SOURCE_VALIDATION_PASSED",
+  "stage": "S03",
+  "parallelStage": "S10",
+  "sourceInputsSha256": "0ea4ed70e709d51c966dc8210f2eded2d983a75610898f9eec12bf45c4b889ce",
+  "sourceInputsCurrent": true,
+  "implementation": [
+    "src/data/bookAuthorSearch.ts",
+    "src/App.tsx",
+    "src/search/globalSearchIndex.ts",
+    "scripts/mobile/pwa-shell.mjs",
+    "scripts/mobile/verify-pwa-artifact.mjs",
+    "scripts/mobile/public-locale-review.mjs",
+    "scripts/mobile/public-locale-pages.mjs",
+    "scripts/mobile/write-public-locale-pages.mjs",
+    "src/i18n/PublicLocaleMetadata.tsx"
+  ],
+  "behavior": [
+    "Existing atlas/shared indexes reuse current canonical author names and existing transliteration, with exact current profile and published-title gates; visible titles and activation keys unchanged.",
+    "PWA pre-JavaScript and OS surface use canonical orange and original quill, local bilingual recovery, neutral language inheritance and inert404.",
+    "Public locale review consumption independently hashes actual complete contained build and fixed copy; separate explicit review digest and both locale/owner records required. Missing/stale/rejected review stays noindex. Approved test fixture creates real localized sitemap; withdrawal empties owned XML without overwriting root sitemap. Runtime preserves validated trusted build disposition."
+  ],
+  "validation": {
+    "finalPassingCases": 297,
+    "totalExecutions": 371,
+    "finalFiles": 7,
+    "unitReports": [
+      "unit-a1/vitest.json",
+      "unit-repair-a1/vitest.json"
+    ],
+    "static": "static-a1/result.json",
+    "nativeSourceBrowser": "browser-a1/result.json",
+    "visual": "visual-review.json",
+    "repairs": [
+      "22 canonical fixture clones rejected Proxy objects; materialize data once without changing production resolver.",
+      "Account recovery pages retain existing noindex,nofollow; corrected test expectation.",
+      "Required actual social preview resources added to snapshot gate with2 targeted cases."
+    ],
+    "reuse": "Original static and native-browser runtime inputs unchanged. Only the fixture/test and Node writer changed afterwards; their two affected suites passed76 cases. No broad suite or10000-row benchmark repeated."
+  },
+  "editorialApprovalCreated": false,
+  "canonicalFactsChanged": false,
+  "newCopyReviewStatus": "draft",
+  "currentPublicBooks": 4,
+  "firstOpenCriterion": "S03.acceptance",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false,
+  "next": "Build one exact-source Android/dev and one local-QA PWA; exercise real pre-JS recovery and offline author search on retained scene. Then proceed to S08 canonical content dependency/export work independently of unavailable review/device credentials."
+}

@@ -5,8 +5,9 @@ import { fileURLToPath } from "node:url";
 import { load } from "cheerio";
 import * as ts from "typescript";
 import { afterAll, describe, expect, it } from "vitest";
-import { generatePublicLocalePages } from "./public-locale-pages.mjs";
-import { writePublicLocalePages } from "./write-public-locale-pages.mjs";
+import { generatePublicLocalePages, publicLocaleCopyInput } from "./public-locale-pages.mjs";
+import { writePublicLocalePages, capturePublicLocaleSourceSnapshot } from "./write-public-locale-pages.mjs";
+import { createPublicLocaleReviewSnapshot, publicLocaleReviewDigest } from "./public-locale-review.mjs";
 import { generatePlanetAccountPages } from "./account-pages.mjs";
 
 const builtHtml = `<!doctype html><html lang="ru" data-react-shell><head>
@@ -23,6 +24,26 @@ const builtHtml = `<!doctype html><html lang="ru" data-react-shell><head>
 <script type="module" crossorigin src="/assets/main-123.js"></script>
 <link rel="stylesheet" href="/assets/main-123.css"><link rel="modulepreload" crossorigin href="/assets/vendor-123.js">
 </head><body lang="ru"><div id="root"><main data-static-seo>Old unreviewed article list</main></div></body></html>`;
+
+// Synthetic contract fixtures only; no actual editorial or owner approval.
+function approvedFixture(snapshot) {
+  const approval = { status: "approved", identity: "synthetic-test-reviewer", reviewedAt: "2026-09-14", evidenceRef: "fixture-only" };
+  return { schemaVersion: 1, contract: "public-locale-review-v1", inputs: snapshot,
+    inputsSha256: publicLocaleReviewDigest(snapshot), ownerReview: { ...approval }, locales: {
+      ru: { editorialReview: { ...approval }, body: { heading: "Тестовая планета", paragraphs: ["Тестовое описание литературной планеты."],
+        navigationLabel: "Тестовая навигация", links: [{ path: "/ru/#atlas", label: "Открыть планету" }] } },
+      en: { editorialReview: { ...approval }, body: { heading: "Test planet", paragraphs: ["A synthetic description of the literary planet."],
+        navigationLabel: "Test navigation", links: [{ path: "/en/#atlas", label: "Open the planet" }] } },
+    } };
+}
+
+function pureReviewFixture() {
+  const record = path => ({ path, bytes: 1, sha256: "1".repeat(64) });
+  const sourceSnapshot = createPublicLocaleReviewSnapshot({ builtHtml, assets: [record("assets/main-123.js")],
+    content: [record("catalog.json")], copy: [publicLocaleCopyInput()] });
+  const review = approvedFixture(sourceSnapshot);
+  return { builtHtml, sourceSnapshot, review, provisionedReviewSha256: publicLocaleReviewDigest(review) };
+}
 
 function interfaceDictionary() {
   const source = ts.createSourceFile("InterfaceLanguage.tsx", readFileSync(new URL("../../src/i18n/InterfaceLanguage.tsx", import.meta.url), "utf8"), ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
@@ -41,6 +62,41 @@ function interfaceDictionary() {
 }
 
 describe("public RU/EN canonical homepage preparation", () => {
+  it("renders explicitly provisioned source-exact reviewed bodies and reciprocal XML without releasing the product", () => {
+    const input = pureReviewFixture(); const result = generatePublicLocalePages(input);
+    expect(result.sitemap.reviewGate).toMatchObject({ indexingAllowed: true, releaseReady: false, reviewerAuthentication: "not-performed" });
+    for (const locale of ["ru", "en"]) {
+      const $ = load(result.files[`${locale}/index.html`]);
+      expect($("h1").text()).toBe(input.review.locales[locale].body.heading);
+      expect($("main p").text()).toBe(input.review.locales[locale].body.paragraphs[0]);
+      expect($('meta[name="robots"]').attr("content")).toBe("index,follow");
+      expect(JSON.parse($('meta[name="public-locale-indexing"]').attr("content")))
+        .toMatchObject({ contract: "validated-public-locale-build-v1", inputsSha256: input.review.inputsSha256, moduleSource: "/assets/main-123.js" });
+      const recovery = load(result.files[`${locale}/404.html`]);
+      expect(recovery('meta[name="robots"]').attr("content")).toBe("noindex,follow");
+      expect(recovery('meta[name="public-locale-indexing"]')).toHaveLength(0);
+    }
+    const xml = load(result.files["sitemap-locales.xml"], { xmlMode: true });
+    expect(xml("url > loc").map((_, node) => xml(node).text()).get()).toEqual(["https://probpera.ru/ru/", "https://probpera.ru/en/"]);
+    expect(xml("url").first().children().filter((_, node) => node.name === "xhtml:link").map((_, node) => xml(node).attr("hreflang")).get())
+      .toEqual(["ru", "en", "x-default"]);
+  });
+
+  it.each(["stale-html", "stale-copy", "missing-pin", "rejected", "partial", "unsafe-body"])("keeps %s review fail-closed", mode => {
+    const input = pureReviewFixture();
+    if (mode === "stale-html") input.builtHtml = input.builtHtml.replace("Old homepage", "Changed homepage");
+    if (mode === "stale-copy") input.sourceSnapshot.copy[0].sha256 = "9".repeat(64);
+    if (mode === "missing-pin") delete input.provisionedReviewSha256;
+    if (mode === "rejected") input.review.locales.en.editorialReview.status = "rejected";
+    if (mode === "partial") delete input.review.locales.en;
+    if (mode === "unsafe-body") input.review.locales.en.body.paragraphs[0] = "<img src=x onerror=alert(1)>";
+    if (["rejected", "partial", "unsafe-body"].includes(mode)) input.provisionedReviewSha256 = publicLocaleReviewDigest(input.review);
+    const result = generatePublicLocalePages(input);
+    expect(result.sitemap.reviewGate.indexingAllowed).toBe(false);
+    expect(result.sitemap.reviewGate.diagnostics.length).toBeGreaterThan(0);
+    expect(result.files["sitemap-locales.xml"]).toBeUndefined();
+    expect(load(result.files["en/index.html"])('meta[name="robots"]').attr("content")).toBe("noindex,follow");
+  });
   it("returns two locale homes, recovery pages and schema/sitemap artifacts while excluding all drafts", () => {
     const result = generatePublicLocalePages({ builtHtml });
     expect(Object.keys(result.files)).toEqual(["ru/index.html", "ru/404.html", "ru/structured-data.json", "ru/sitemap.preparation.json",
@@ -209,6 +265,16 @@ describe("actual public locale artifact writer", () => {
     await writeFile(path.join(directory, "sitemap.xml"), xml);
     return directory;
   }
+  async function completeOutput(xml = sitemap) {
+    const directory = await output(xml);
+    for (const [relative, bytes] of Object.entries({ "assets/main-123.js": "export {};", "assets/vendor-123.js": "export const fixture = true;",
+      "assets/main-123.css": "body { color: black; }", "site.webmanifest": "{}", "brand/probpera-logo.png": "synthetic-image",
+      "og-v3.webp": "synthetic-social-image", "catalog.json": '{"fixture":true}' })) {
+      await mkdir(path.dirname(path.join(directory, relative)), { recursive: true });
+      await writeFile(path.join(directory, relative), bytes);
+    }
+    return directory;
+  }
   afterAll(async () => {
     const resolvedBase = await realpath(base);
     for (const directory of directories) {
@@ -230,6 +296,83 @@ describe("actual public locale artifact writer", () => {
     for (const [file, content] of Object.entries(generatePlanetAccountPages({ builtHtml }).files)) expect(await readFile(path.join(directory, file), "utf8")).toBe(content);
     expect(await writePublicLocalePages({ directory })).toEqual(first);
     expect(JSON.parse(await readFile(path.join(directory, "locale-routes.json"), "utf8"))).toEqual(first);
+  });
+
+  it("independently hashes the complete build, remains stable across owned-output reruns, and withdraws owned XML", async () => {
+    const directory = await completeOutput();
+    const snapshot = await capturePublicLocaleSourceSnapshot({ directory });
+    expect(snapshot.assets.map(entry => entry.path)).toContain("assets/vendor-123.js");
+    expect(snapshot.content.map(entry => entry.path)).toContain("catalog.json");
+    const review = approvedFixture(snapshot); const provisionedReviewSha256 = publicLocaleReviewDigest(review);
+    const approved = await writePublicLocalePages({ directory, review, provisionedReviewSha256 });
+    expect(approved.sitemap.reviewGate.indexingAllowed).toBe(true);
+    expect(approved.artifacts.filter(entry => entry.indexable).map(entry => entry.path)).toEqual(["ru/index.html", "en/index.html"]);
+    expect(await capturePublicLocaleSourceSnapshot({ directory })).toEqual(snapshot);
+    expect(await writePublicLocalePages({ directory, review, provisionedReviewSha256 })).toEqual(approved);
+    expect(await readFile(path.join(directory, "sitemap.xml"), "utf8")).toBe(sitemap);
+    await writeFile(path.join(directory, "assets/vendor-123.js"), "export const fixture = false;");
+    const stale = await writePublicLocalePages({ directory, review, provisionedReviewSha256 });
+    expect(stale.sitemap.reviewGate).toMatchObject({ indexingAllowed: false, diagnostics: ["review-inputs-stale"] });
+    expect(load(await readFile(path.join(directory, "sitemap-locales.xml"), "utf8"), { xmlMode: true })("url")).toHaveLength(0);
+    expect(load(await readFile(path.join(directory, "en/index.html"), "utf8"))('meta[name="robots"]').attr("content")).toBe("noindex,follow");
+    expect(load(await readFile(path.join(directory, "en/planet-account/index.html"), "utf8"))('meta[name="robots"]').attr("content")).toBe("noindex,nofollow");
+  });
+
+  it.each([
+    ['meta[property="og:image"]', "./social-preview.webp"],
+    ['meta[name="twitter:image"]', "https://probpera.ru/social-preview.webp"],
+  ])("requires the actual contained social image selected by %s", async (selector, reference) => {
+    const directory = await completeOutput();
+    const $ = load(builtHtml); $(selector).attr("content", reference);
+    await writeFile(path.join(directory, "index.html"), $.html());
+    await expect(capturePublicLocaleSourceSnapshot({ directory })).rejects.toThrow("missing or noncanonical build input");
+    await writeFile(path.join(directory, "social-preview.webp"), "synthetic-additional-social-image");
+    const snapshot = await capturePublicLocaleSourceSnapshot({ directory });
+    expect(snapshot.content.map(entry => entry.path)).toContain("social-preview.webp");
+  });
+
+  it("binds new unrelated localized content and detects missing entry runtime files", async () => {
+    const directory = await completeOutput();
+    const review = approvedFixture(await capturePublicLocaleSourceSnapshot({ directory }));
+    const provisionedReviewSha256 = publicLocaleReviewDigest(review);
+    await mkdir(path.join(directory, "en"));
+    await writeFile(path.join(directory, "en/existing-editorial.json"), '{"existing":true}');
+    const stale = await writePublicLocalePages({ directory, review, provisionedReviewSha256 });
+    expect(stale.sitemap.reviewGate.diagnostics).toContain("review-inputs-stale");
+    expect((await capturePublicLocaleSourceSnapshot({ directory })).content.map(entry => entry.path)).toContain("en/existing-editorial.json");
+    await unlink(path.join(directory, "assets/main-123.js"));
+    const incomplete = await writePublicLocalePages({ directory, review, provisionedReviewSha256 });
+    expect(incomplete.sitemap.reviewGate.indexingAllowed).toBe(false);
+    expect(incomplete.sitemap.reviewGate.diagnostics.join(" ")).toContain("missing or noncanonical build input");
+  });
+
+  it("validates owned XML replacements through the root sitemap graph when review is withdrawn", async () => {
+    const index = '<sitemapindex><sitemap><loc>https://probpera.ru/sitemap-locales.xml</loc></sitemap></sitemapindex>';
+    const directory = await completeOutput(index);
+    const review = approvedFixture(await capturePublicLocaleSourceSnapshot({ directory }));
+    await writePublicLocalePages({ directory, review, provisionedReviewSha256: publicLocaleReviewDigest(review) });
+    const withdrawn = await writePublicLocalePages({ directory });
+    expect(withdrawn.checkedSitemaps).toBe(2);
+    expect(withdrawn.sitemap.entries).toEqual([]);
+    expect(await readFile(path.join(directory, "sitemap.xml"), "utf8")).toBe(index);
+    expect(load(await readFile(path.join(directory, "sitemap-locales.xml"), "utf8"), { xmlMode: true })("url")).toHaveLength(0);
+  });
+
+  it("permits only reviewed canonical homes already in the root sitemap and rejects withdrawal before writes", async () => {
+    const xml = '<urlset><url><loc>https://probpera.ru/en/</loc></url></urlset>';
+    const directory = await completeOutput(xml);
+    const review = approvedFixture(await capturePublicLocaleSourceSnapshot({ directory }));
+    await writePublicLocalePages({ directory, review, provisionedReviewSha256: publicLocaleReviewDigest(review) });
+    await expect(writePublicLocalePages({ directory })).rejects.toThrow("Unreviewed locale shell");
+    expect(await readFile(path.join(directory, "sitemap.xml"), "utf8")).toBe(xml);
+  });
+
+  it("does not overwrite or ignore an unowned localized XML file", async () => {
+    const directory = await output();
+    const xml = '<urlset><url><loc>https://probpera.ru/en/</loc></url></urlset>';
+    await writeFile(path.join(directory, "sitemap-locales.xml"), xml);
+    await expect(writePublicLocalePages({ directory })).rejects.toThrow("unowned or changed locale artifact");
+    expect(await readFile(path.join(directory, "sitemap-locales.xml"), "utf8")).toBe(xml);
   });
 
   it.each(["https://probpera.ru/en/", "https://probpera.ru/ru/404.html", "https://probpera.ru/%65n/?q=1",
