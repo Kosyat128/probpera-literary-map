@@ -1,3 +1,17 @@
+<!-- opposite-locale-search-20260914:begin -->
+S10 source: existing Russian/English author names enrich the shared search index
+while labels, canonical IDs, publication and authorship gates stay unchanged.
+58 final passing cases across3 files;10 repeated after a test-only type fix.
+Final TypeScript and1 actual native-source RUEN search/navigation case passed;
+4 original-resolution screenshots inspected. Integrated archive header retained.
+Next: one combined exact-source Android/PWA build including the header/cover
+correction, then actual offline RUEN search/return evidence. Existing builds
+remain preserved and do not include these latest changes yet.
+Owner fills archives; final canonical sync follows app implementation (D107).
+Evidence: evidence/S10/opposite-locale-search-20260914/result.json.
+First-open S03; all unfulfilled content/child/device/commerce/release gates remain.
+<!-- opposite-locale-search-20260914:end -->
+
 <!-- archive-header-20260914:begin -->
 Owner requested the Literary Archive bar integrated into the card as on the live site.
 Canonical full-width sticky CSS ported; RUEN writer return, close and same scene preserved.

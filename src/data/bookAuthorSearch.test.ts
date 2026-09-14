@@ -43,6 +43,8 @@ describe("current canonical book author search fields", () => {
     expect(fields).toContain("Фёдор Михайлович Достоевский");
     expect(literarySearchMatches("Михайлович", fields)).toBe(true);
     expect(literarySearchMatches("Mikhailovich", fields)).toBe(true);
+    expect(literarySearchMatches("Fyodor Dostoevsky", fields)).toBe(true);
+    expect(literarySearchMatches("Фёдор Михайлович Достоевский", fields)).toBe(true);
     expect(fields).not.toContain(book.id);
     expect(fields).not.toContain(book.translations!.en!.title);
     expect(fields).not.toContain(book.translations!.ru!.title);

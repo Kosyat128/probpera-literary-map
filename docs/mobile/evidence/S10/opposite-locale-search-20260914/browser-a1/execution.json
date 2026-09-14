@@ -1,0 +1,25 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=playwright.native-planet.config.mjs",
+    "--grep",
+    "mobile globe search resolves canonical opposite-locale author names and patronymics in RU and EN on the retained scene"
+  ],
+  "startedAt": "2026-09-14T02:57:06.862Z",
+  "durationMs": 13150,
+  "exitCode": 0,
+  "logs": {
+    "stdout": {
+      "text": "\nRunning 1 test using 1 worker\n\n  ok 1 tests\\host\\native-planet.spec.mjs:1911:1 › mobile globe search resolves canonical opposite-locale author names and patronymics in RU and EN on the retained scene (8.2s)\n\n  1 passed (12.1s)\n",
+      "bytes": 230,
+      "sha256": "01bd48eacf5cd61afb65463d469777e4a9cf38ed215482ca86528e2614de71e4"
+    },
+    "stderr": {
+      "text": "(node:36120) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "bytes": 164,
+      "sha256": "e79a91bfe6067e9fbb639201825a4635b8f8f93bd55f12b0cba682c02aa6702b"
+    }
+  }
+}

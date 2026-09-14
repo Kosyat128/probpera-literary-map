@@ -597,3 +597,10 @@
   preserve other limits and test malformed/overflow replies. Final large owner
   archives use a separate bounded integration. Batch the next Android/PWA
   artifact refresh after the independently validated S10 name-search correction.
+
+- D111: Use one hidden writer-name helper for globe/global/book search.
+  Opposite-locale forms must come from the existing supported selector and
+  cannot rescue a current-language ineligible or removed author. No new names,
+  translations, title evidence or IDs are created. Reuse valid source-browser
+  results after a test-only readonly adaptation, and refresh Android/PWA once
+  with the separately validated integrated header and cover package correction.

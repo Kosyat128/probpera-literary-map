@@ -2,7 +2,7 @@ import { describe, expect, it, vi } from "vitest";
 
 import type { BookArchiveEntry } from "../data/bookArchive";
 import type { ArticleCatalogEntry } from "../data/articles/catalog";
-import type { Country, Writer } from "../data/countries";
+import { countries as canonicalCountries, type Country, type Writer } from "../data/countries";
 import type { WorkLocale } from "../data/countries/types";
 import * as literarySearch from "../utils/literarySearch";
 import {
@@ -334,6 +334,27 @@ describe("shared global search index", () => {
       compileFields.mockRestore();
       compileQuery.mockRestore();
     }
+  });
+
+  it.each<WorkLocale>(["ru", "en"])("indexes the existing opposite-locale writer name in %s with unchanged canonical actions", locale => {
+    const sourceCountry = canonicalCountries.find(country => country.id === "russia")!;
+    const sourceWriter = sourceCountry.writers.find(writer => writer.id === "dostoevsky")!;
+    const country = { ...sourceCountry, writers: [sourceWriter] };
+    const index = makeIndex({ countries: [country], language: locale });
+    for (const query of ["Fyodor Dostoevsky", "Фёдор Михайлович Достоевский"]) {
+      const result = searchGlobalSearchIndex(index, query);
+      expect(result.groups.writers).toHaveLength(1);
+      const found = result.groups.writers[0];
+      expect(found.writer).toBe(sourceWriter);
+      expect(found.label).toBe(locale === "ru" ? "Фёдор Михайлович Достоевский" : "Fyodor Dostoevsky");
+      expect(found.key).toBe("writer:russia:dostoevsky");
+      expect(found.activateAction).toEqual({
+        type: "select-writer", authorKey: "russia:dostoevsky", countryId: "russia", writerId: "dostoevsky",
+      });
+      expect(result.suggestions.some(item => item.key === found.key)).toBe(true);
+    }
+    const withoutWriter = makeIndex({ countries: [{ ...country, writers: [] }], language: locale });
+    expect(searchGlobalSearchIndex(withoutWriter, "Fyodor Dostoevsky").groups.writers).toEqual([]);
   });
 
   it("preserves per-field stopwords, distributed words, and transliteration", () => {

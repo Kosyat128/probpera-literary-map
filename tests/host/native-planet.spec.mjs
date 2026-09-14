@@ -1908,7 +1908,7 @@ test("mobile globe book search resolves evidence-backed RU and EN titles to the 
   } finally { await original.dispose(); }
 });
 
-test("mobile globe book search resolves canonical author patronymics in RU and EN on the retained scene", async ({}, testInfo) => {
+test("mobile globe search resolves canonical opposite-locale author names and patronymics in RU and EN on the retained scene", async ({}, testInfo) => {
   const fixture = await open({ route: "/?country=france#atlas", viewport: { width: 390, height: 844 },
     reducedMotion: "reduce", hasTouch: true, isMobile: true });
   const { page } = fixture;
@@ -1929,19 +1929,39 @@ test("mobile globe book search resolves canonical author patronymics in RU and E
         for (const field of ["country", "writer", "book"]) expect(new URL(page.url()).searchParams.get(field)).toBe(before.searchParams.get(field));
       }
       const title = locale === "ru" ? "Преступление и наказание" : "Crime and Punishment";
+      const oppositeName = locale === "ru" ? "Fyodor Dostoevsky" : "Фёдор Михайлович Достоевский";
+      const writerName = locale === "ru" ? "Фёдор Михайлович Достоевский" : "Fyodor Dostoevsky";
       const queryOnlyUrl = page.url();
       await page.locator('[data-atlas-action="toggle-search"]').click();
       await expect(input).toBeFocused();
       const option = page.locator('#country-results [data-option-key="book:' + key + '"]');
-      for (const query of ["Михайлович", "Mikhailovich"]) {
+      const writerOption = page.locator('#country-results [data-option-key="writer:russia:dostoevsky"]');
+      for (const query of ["Михайлович", "Mikhailovich", oppositeName]) {
         await input.fill(query);
         await expect(option).toHaveCount(1);
         await expect(option).toBeVisible();
         await expect(option).toHaveAccessibleName(title);
+        await expect(writerOption).toHaveCount(1);
+        await expect(writerOption).toHaveAccessibleName(writerName);
         expect(page.url()).toBe(queryOnlyUrl);
         observations.push({ locale, query, title, canonicalBookKey: key });
       }
-      await evidence(fixture, testInfo, "native-author-search-" + locale, { locale, query: "Mikhailovich", title, canonicalBookKey: key });
+      await evidence(fixture, testInfo, "native-author-search-" + locale, { locale, query: oppositeName, title, canonicalBookKey: key,
+        canonicalWriterKey: "writer:russia:dostoevsky" });
+      await writerOption.click();
+      await expect.poll(() => new URL(page.url()).searchParams.get("country")).toBe("russia");
+      await expect.poll(() => new URL(page.url()).searchParams.get("writer")).toBe("dostoevsky");
+      expect(new URL(page.url()).searchParams.get("book")).toBeNull();
+      await expect(page.locator(".atlas-country-presentation")).toHaveAttribute("data-atlas-sheet-state", "half");
+      await expect(page.locator(".writer-detail h4")).toHaveText(writerName);
+      await expect(page.locator(".writer-detail h4")).toBeInViewport();
+      await expect(page.locator(".writer-detail")).toBeFocused();
+      await retained(page, scene);
+      await evidence(fixture, testInfo, "native-author-search-writer-" + locale, { locale, query: oppositeName,
+        canonicalWriterKey: "writer:russia:dostoevsky", sameCanvasRendererCameraScene: true });
+      await page.locator('[data-atlas-action="toggle-search"]').click();
+      await input.fill(oppositeName);
+      await expect(option).toHaveAccessibleName(title);
       await option.click();
       const detail = panel.locator("#book-archive-detail");
       await expect(detail).toBeVisible();

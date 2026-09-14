@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import { countries } from "../data/countries";
 import { matches, writerSearchLabel } from "./GlobalSearch";
+import { writerSearchNames } from "../utils/writerSearchLabel";
 
 describe("GlobalSearch word matching", () => {
   it("does not treat one-letter conjunctions as matches", () => {
@@ -46,5 +47,34 @@ describe("GlobalSearch word matching", () => {
         "en"
       )
     ).toBeNull();
+  });
+});
+
+describe("canonical cross-language writer search fields", () => {
+  const writer = countries.find(country => country.id === "russia")!.writers
+    .find(value => value.id === "dostoevsky")!;
+
+  it.each(["ru", "en"] as const)("finds existing names in %s without relabeling the writer", locale => {
+    const label = writerSearchLabel(writer, locale);
+    const fields = writerSearchNames(writer, locale);
+    for (const query of ["Fyodor Dostoevsky", "Фёдор Михайлович Достоевский", "Mikhailovich"]) {
+      expect(matches(query, [...fields])).toBe(true);
+    }
+    expect(matches("Fyodor DifferentPerson", [...fields])).toBe(false);
+    expect(writerSearchLabel(writer, locale)).toBe(label);
+    expect(fields[0]).toBe(label);
+    expect(fields).not.toContain(writer.id);
+  });
+
+  it("keeps an unavailable current-locale writer ineligible and does not infer an English name", () => {
+    const writer = { id: "synthetic-unreviewed-writer", name: "Условный автор" };
+    expect(writerSearchNames(writer, "en")).toEqual([]);
+    expect(writerSearchNames(writer, "ru")).toEqual(["Условный автор"]);
+  });
+
+  it("preserves an explicit bilingual credit without duplicate aliases or changes", () => {
+    const writer = Object.freeze({ id: "", name: "Условная группа", fullName: "Synthetic Collective" });
+    expect(writerSearchNames(writer, "ru")).toEqual(["Условная группа", "Synthetic Collective"]);
+    expect(writerSearchNames(writer, "en")).toEqual(["Synthetic Collective", "Условная группа"]);
   });
 });

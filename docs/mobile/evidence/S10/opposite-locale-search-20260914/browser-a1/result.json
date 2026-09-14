@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "runId": "s10-opposite-locale-search-20260914-a1",
+  "title": "mobile globe search resolves canonical opposite-locale author names and patronymics in RU and EN on the retained scene",
+  "head": "d56904c079483c269d2b47852b86e748c98f7c43",
+  "status": "SOURCE_BROWSER_PASSED",
+  "pass": true,
+  "sourceInputsSha256": "499bd525c8f0f93d77cda157a3a7f69fce2547be8af69774e0a020750ed43ddd",
+  "sourceInputsUnchanged": true,
+  "statistics": {
+    "startTime": "2026-09-14T02:57:07.762Z",
+    "duration": 12123.116,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "exitCode": 0,
+  "cases": [
+    {
+      "title": "mobile globe search resolves canonical opposite-locale author names and patronymics in RU and EN on the retained scene",
+      "results": [
+        {
+          "status": "passed",
+          "duration": 8185,
+          "errors": []
+        }
+      ]
+    }
+  ],
+  "preserved": [
+    {
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/browser-a1/playwright.json",
+      "bytes": 230980,
+      "sha256": "3f7d8cb8fa755ec98f1d3c98f937c00eb42870574ac182a6c1718c12c8a40733"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/browser-a1/native-author-search-ru.json",
+      "bytes": 12487,
+      "sha256": "b7943b48ceae2b2f43db894742ffed9e3471b5ad7631c149055a8ec094f63878"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/browser-a1/native-author-search-ru-screenshot.png",
+      "bytes": 293229,
+      "sha256": "26fefe90ce50435e9f0b71532869cdcb21d5f0f49e34d26c27561d44373f94af"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/browser-a1/native-author-search-writer-ru.json",
+      "bytes": 15618,
+      "sha256": "95a2951e35621b0be39421ee89346f8a177a78e1bd58c95ac928bd66086d22bb"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/browser-a1/native-author-search-writer-ru-screenshot.png",
+      "bytes": 325220,
+      "sha256": "5abebc55ae4a4b3c66f3e9d375f802df8debaff5d360d2b41693cbb7dc9b281b"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/browser-a1/native-author-search-en.json",
+      "bytes": 29104,
+      "sha256": "d781a2e4f54cbb7698b98c0aa055727074a8cb9f6a6eedfc32e28570f2e39ae2"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/browser-a1/native-author-search-en-screenshot.png",
+      "bytes": 292730,
+      "sha256": "a15106653723b11ad507467ebb515d0cadc75a9e937ba82bafe22d0df6211a9d"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/browser-a1/native-author-search-writer-en.json",
+      "bytes": 31835,
+      "sha256": "148777b307b8a67c2bdb1ee819d1cd4b9cfde310d34864457650f42b2778c2ea"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/browser-a1/native-author-search-writer-en-screenshot.png",
+      "bytes": 322560,
+      "sha256": "720ef87c6646f6b63fb432a45f22b98fffa21d912e7e6a86c1875eb7555b5980"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/browser-a1/native-author-search-complete.json",
+      "bytes": 39596,
+      "sha256": "4bc48681097f1ccfa1d5788b58b304d6a70dfec9efd87818254a6b290a31e2dc"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/browser-a1/native-author-search-complete-screenshot.png",
+      "bytes": 395404,
+      "sha256": "3243437a374a5ca156b7c407c62124da7362dff9deff0922bfe1a039d6e8f886"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/browser-a1/native-final-passed.json",
+      "bytes": 38591,
+      "sha256": "104c7bc77c90f83925b1c3ac23c5269e3befe48d3f606236a864d925718bff37"
+    },
+    {
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/browser-a1/native-final-passed-screenshot.png",
+      "bytes": 395404,
+      "sha256": "3243437a374a5ca156b7c407c62124da7362dff9deff0922bfe1a039d6e8f886"
+    }
+  ],
+  "fixtureUsesCanonicalAppAndScene": true,
+  "actualInstalledRuntime": false,
+  "nativePluginsSimulated": true,
+  "stageAccepted": false,
+  "releaseReady": false
+}

@@ -5,7 +5,7 @@
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
   "headSha": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-14T02:54:28.091Z",
+  "updatedAt": "2026-09-14T03:01:23.952Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -1576,7 +1576,7 @@
         },
         {
           "id": "S10.BIL-036",
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "evidence": [],
           "commit": null,
           "lastValidatedAt": null,
@@ -1584,7 +1584,7 @@
         },
         {
           "id": "S10.BIL-037",
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "evidence": [],
           "commit": null,
           "lastValidatedAt": null,
@@ -1624,9 +1624,9 @@
         }
       ],
       "lastGreenCommands": [
-        "Affected bilingual foundations: 297 final passing cases across7 files; only2 affected suites repeated.",
-        "TypeScript and platform boundaries passed.",
-        "Actual native App source browser: RUEN canonical author patronymic search and retained scene passed."
+        "58 focused search cases passed; only10 cases repeated after a test-only readonly typing fix.",
+        "Final TypeScript passed.",
+        "Actual UTF-8 native-source RUEN opposite-locale name/patronymic search selected the same writer/work IDs on the retained scene."
       ],
       "artifacts": [
         "docs/mobile/evidence/S10/search-20260908/entry.json",
@@ -1642,7 +1642,9 @@
         "docs/mobile/evidence/S10/history-20260908/result.json",
         "docs/mobile/evidence/S04/history-android-20260908/result.json",
         "docs/mobile/evidence/S10/history-20260908/pwa/result.json",
-        "docs/mobile/evidence/S03/bilingual-foundations-20260914/result.json"
+        "docs/mobile/evidence/S03/bilingual-foundations-20260914/result.json",
+        "docs/mobile/evidence/S10/opposite-locale-search-20260914/entry.json",
+        "docs/mobile/evidence/S10/opposite-locale-search-20260914/result.json"
       ],
       "externalBlockers": []
     },
@@ -10621,7 +10623,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Apply prepared bounded S10 opposite-locale writer-search patch, run only affected checks, then build one combined exact-source Android/PWA checkpoint including this archive-header and cover correction. First-open S03 unchanged. Old exact artifacts are preserved and do not include these source corrections yet.",
+    "nextAction": "Build one combined exact-source Android/dev and local-QA PWA with integrated archive header, complete current local cover pins and opposite-locale author search. Run the single combined actual offline RUEN search/return case; preserve exact artifacts and screenshots. First-open S03 unchanged; current preserved Android/PWA artifacts still604f919.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -11958,6 +11960,15 @@
       "evidence": "docs/mobile/evidence/S09/archive-header-20260914/result.json",
       "sha256": "e7fdc3c436886854e9cf2ce938857882f04bbaa256915a84933f996683d28d94",
       "passingUnitCases": 287,
+      "sourceBrowserPasses": 1,
+      "stageAccepted": false,
+      "releaseReady": false
+    },
+    "s10OppositeLocaleSearch": {
+      "status": "SOURCE_VALIDATED_ARTIFACT_REFRESH_PENDING",
+      "evidence": "docs/mobile/evidence/S10/opposite-locale-search-20260914/result.json",
+      "sha256": "ab96e6a87de3df2a640175ee8019f3bec1b9b37bdf9a5944756a3374ecc7c297",
+      "finalPassingUnitCases": 58,
       "sourceBrowserPasses": 1,
       "stageAccepted": false,
       "releaseReady": false

@@ -25,7 +25,7 @@ import {
   type CompiledLiterarySearchQuery,
   type LiterarySearchValue,
 } from "../utils/literarySearch";
-import { writerSearchLabel } from "../utils/writerSearchLabel";
+import { writerSearchLabel, writerSearchNames } from "../utils/writerSearchLabel";
 import { mapSearchIndexInBatches } from "../utils/prepareSearchIndex";
 export const globalSearchGroups = [
   "books",
@@ -610,6 +610,7 @@ function* globalSearchDocuments({
         continue;
       }
       const authorKey = [country.id, writer.id].join(":");
+      const authorNames = writerSearchNames(writer, language);
       yield {
         result: {
           kind: "writer",
@@ -626,9 +627,7 @@ function* globalSearchDocuments({
           },
         },
         primaryValues: [
-          label,
-          writer.name,
-          writer.fullName,
+          ...authorNames,
           ...getPublicWriterWorkTitles(writer, language),
         ],
         secondaryValues: [
@@ -650,7 +649,7 @@ function* globalSearchDocuments({
           country.code,
         ],
         suggestionFields: {
-          writer: [label, writer.name, writer.fullName],
+          writer: [...authorNames],
         },
       };
     }

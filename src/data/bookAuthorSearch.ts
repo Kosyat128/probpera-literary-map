@@ -2,7 +2,7 @@ import {
   authorities,
   registryVersion,
 } from "../../data/book-canon-source-registry.json";
-import { writerSearchLabel } from "../utils/writerSearchLabel";
+import { writerSearchNames } from "../utils/writerSearchLabel";
 import type { BookArchiveEntry } from "./bookArchive";
 import { localizedBookTitleEvidenceIssues } from "./bookEvidence";
 import { isPublicBook } from "./bookQuality";
@@ -15,11 +15,6 @@ function uniqueNames(values: readonly (string | undefined)[]): readonly string[]
   return [...new Set(values
     .map(value => value?.trim())
     .filter((value): value is string => Boolean(value)))];
-}
-
-function profileNames(writer: WriterProfile, locale: WorkLocale): readonly string[] {
-  const label = writerSearchLabel(writer, locale);
-  return label ? uniqueNames([label, writer.name, writer.fullName]) : noNames;
 }
 
 /**
@@ -45,7 +40,7 @@ export function createBookAuthorSearchResolver(
     for (const writer of country.writers) {
       byWriter.set(
         writer.id,
-        byWriter.has(writer.id) ? noNames : profileNames(writer, locale)
+        byWriter.has(writer.id) ? noNames : writerSearchNames(writer, locale)
       );
     }
     byCountry.set(country.id, byWriter);
@@ -88,7 +83,7 @@ export function createBookAuthorSearchResolver(
           name: author.creditNames?.ru,
           fullName: author.creditNames?.en,
         };
-        names.push(...profileNames(creditProfile, locale));
+        names.push(...writerSearchNames(creditProfile, locale));
       }
     }
     return uniqueNames(names);

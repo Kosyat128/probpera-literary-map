@@ -1,0 +1,37 @@
+{
+  "recordedAt": "2026-09-14T03:01:23.950Z",
+  "pass": true,
+  "images": [
+    {
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/browser-a1/native-author-search-ru-screenshot.png",
+      "sha256": "26fefe90ce50435e9f0b71532869cdcb21d5f0f49e34d26c27561d44373f94af",
+      "bytes": 293229,
+      "viewedAtOriginalResolution": true
+    },
+    {
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/browser-a1/native-author-search-en-screenshot.png",
+      "sha256": "a15106653723b11ad507467ebb515d0cadc75a9e937ba82bafe22d0df6211a9d",
+      "bytes": 292730,
+      "viewedAtOriginalResolution": true
+    },
+    {
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/browser-a1/native-author-search-writer-ru-screenshot.png",
+      "sha256": "5abebc55ae4a4b3c66f3e9d375f802df8debaff5d360d2b41693cbb7dc9b281b",
+      "bytes": 325220,
+      "viewedAtOriginalResolution": true
+    },
+    {
+      "path": "docs/mobile/evidence/S10/opposite-locale-search-20260914/browser-a1/native-author-search-writer-en-screenshot.png",
+      "sha256": "720ef87c6646f6b63fb432a45f22b98fffa21d912e7e6a86c1875eb7555b5980",
+      "bytes": 322560,
+      "viewedAtOriginalResolution": true
+    }
+  ],
+  "scope": "Actual canonical App/native adapter and retained globe in Chrome, not installed device or release candidate.",
+  "observations": [
+    "English full-name input in RU yields Russian book/writer labels; Russian full-name input in EN yields English labels.",
+    "Activating each writer result reveals the existing canonical writer with the integrated archive header visible."
+  ],
+  "stageAccepted": false,
+  "releaseReady": false
+}

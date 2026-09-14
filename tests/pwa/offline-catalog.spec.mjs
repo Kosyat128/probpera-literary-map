@@ -146,7 +146,7 @@ async function selectedWorkInViewport(page, detail, testInfo, phase) {
   }
 }
 
-test("offline PWA book-to-writer return preserves the globe and eligible country facts across RU and EN", async ({ page, context, request }, testInfo) => {
+test("offline PWA cross-language author search and book return retain the globe and integrated archive card", async ({ page, context, request }, testInfo) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await prepare(page, request);
   await context.setOffline(true);
@@ -164,6 +164,15 @@ test("offline PWA book-to-writer return preserves the globe and eligible country
       }
       await expect(page.locator("html")).toHaveAttribute("lang", locale);
       await expect(writer.locator("h4")).toContainText(locale === "ru" ? "Достоевский" : "Dostoevsky");
+      const oppositeName = locale === "ru" ? "Fyodor Dostoevsky" : "Фёдор Михайлович Достоевский";
+      await page.locator('[data-atlas-action="toggle-search"]').click();
+      await page.locator("#country-search").fill(oppositeName);
+      const writerOption = page.locator('#country-results [data-option-key="writer:russia:dostoevsky"]');
+      await expect(writerOption).toHaveAccessibleName(locale === "ru" ? "Фёдор Михайлович Достоевский" : "Fyodor Dostoevsky");
+      await expect(page.locator('#country-results [data-option-key="book:russia:dostoevsky:crime-and-punishment"]')).toHaveAccessibleName(locale === "ru" ? "Преступление и наказание" : "Crime and Punishment");
+      await writerOption.click();
+      await expect(writer.locator("h4")).toBeInViewport();
+      await retainedGlobe(page, scene);
       await writer.locator("#writer-biography-russia-tab-works").click();
       const title = locale === "ru" ? "Преступление и наказание" : "Crime and Punishment";
       await writer.locator("#writer-biography-russia-panel-works").getByRole("button", {
@@ -181,6 +190,7 @@ test("offline PWA book-to-writer return preserves the globe and eligible country
       await expect.poll(() => new URL(page.url()).pathname).toBe(`/planet/${locale}/`);
       await expect(toggle).toHaveAttribute("aria-expanded", "true");
       await expect(writer).toBeVisible();
+      await expect(writer.locator("h4")).toBeInViewport();
       // This canonical Russia record has no capital field. Preserve its actual
       // existing fallback; the source-backed capital round trip follows below.
       await expect(page.locator(".country-heading p")).toHaveText(locale === "ru" ? "Литературное наследие страны" : "The country’s literary heritage");
@@ -188,7 +198,7 @@ test("offline PWA book-to-writer return preserves the globe and eligible country
       expect(await page.locator("#atlas").evaluate(node => node.inert)).toBe(false);
       await retainedGlobe(page, scene);
       await testInfo.attach(`pwa-country-writer-return-${locale}`, { body: await page.screenshot(), contentType: "image/png" });
-      observations.push({ locale, country: "russia", writer: "dostoevsky", readerClosed: true, collectionClosed: true,
+      observations.push({ locale, oppositeName, canonicalSearchIds: true, country: "russia", writer: "dostoevsky", readerClosed: true, collectionClosed: true,
         writerRevealedByProduct: true, focusWithinCountryCard: true, sameCanvasRendererCameraScene: true, offline: true });
     }
     await page.locator('[data-atlas-action="toggle-search"]').click();

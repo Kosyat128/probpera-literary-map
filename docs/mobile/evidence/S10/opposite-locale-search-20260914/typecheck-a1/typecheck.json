@@ -1,0 +1,23 @@
+{
+  "name": "typecheck",
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/typescript/bin/tsc",
+    "--noEmit"
+  ],
+  "startedAt": "2026-09-14T02:57:00.789Z",
+  "durationMs": 23678,
+  "exitCode": 2,
+  "logs": {
+    "stdout": {
+      "text": "src/components/GlobalSearch.test.ts(61,29): error TS2345: Argument of type 'readonly string[]' is not assignable to parameter of type 'LiterarySearchValue[]'.\r\n  The type 'readonly string[]' is 'readonly' and cannot be assigned to the mutable type 'LiterarySearchValue[]'.\r\nsrc/components/GlobalSearch.test.ts(63,46): error TS2345: Argument of type 'readonly string[]' is not assignable to parameter of type 'LiterarySearchValue[]'.\r\n  The type 'readonly string[]' is 'readonly' and cannot be assigned to the mutable type 'LiterarySearchValue[]'.\r\n",
+      "bytes": 548,
+      "sha256": "e816d446780ce71763446fbd572d15548a1d724a33fbfed55ac74d9937c9183f"
+    },
+    "stderr": {
+      "text": "",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

@@ -117,7 +117,7 @@ import {
   readAtlasUrlState,
   type AtlasUrlFilter,
 } from "./utils/atlasUrlState";
-import { writerSearchLabel } from "./utils/writerSearchLabel";
+import { writerSearchLabel, writerSearchNames } from "./utils/writerSearchLabel";
 import ActionLink from "./ui/ActionLink";
 import Button from "./ui/Button";
 import IconButton from "./ui/IconButton";
@@ -1231,9 +1231,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
           label,
           searchText: normalizeLiterarySearch(
             [
-              label,
-              writer.name,
-              writer.fullName,
+              ...writerSearchNames(writer, language),
               writer.movement,
               writer.literaryEra,
               writer.nationality,
