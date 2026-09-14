@@ -1,0 +1,25 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=playwright.native-planet.config.mjs",
+    "--grep",
+    "native book author navigation closes the reader and reveals the canonical writer across RU and EN on the retained globe"
+  ],
+  "startedAt": "2026-09-14T02:40:21.800Z",
+  "durationMs": 9255,
+  "exitCode": 1,
+  "logs": {
+    "stdout": {
+      "text": "\nRunning 1 test using 1 worker\n\n  x  1 tests\\host\\native-planet.spec.mjs:1622:1 › native book author navigation closes the reader and reveals the canonical writer across RU and EN on the retained globe (5.8s)\n\n\n  1) tests\\host\\native-planet.spec.mjs:1622:1 › native book author navigation closes the reader and reveals the canonical writer across RU and EN on the retained globe \n\n    Error: expect(received).toEqual(expected) // deep equality\n\n    - Expected  - 1\n    + Received  + 4\n\n    - Array []\n    + Array [\n    +   \"/brand/book-covers/thumbs/fahrenheit-451-editorial.webp\",\n    +   \"/brand/book-covers/thumbs/buddenbrooks-editorial.webp\",\n    + ]\n\n      381 |   expect(fixture.errors).toEqual([]);\n      382 |   expect(fixture.externalRequests).toEqual([]);\n    > 383 |   expect(fixture.missingResources).toEqual([]);\n          |                                    ^\n      384 |   expect(await fixture.page.evaluate(() => window.__nativePlanetVisibleHeroFrames)).toBe(0);\n      385 | }\n      386 |\n        at evidence (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs:383:36)\n        at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs:1717:7\n\n    attachment #2: native-book-author-return-ru-screenshot (image/png) ─────────────────────────────\n    .tmp\\native-planet-browser-results\\s09-archive-header-20260914-a1\\artifacts\\native-planet-native-book--421f0-nd-EN-on-the-retained-globe\\attachments\\native-book-author-return-ru-screenshot-6014ba912a74d31d9d89221edcba9521cdb49807.png\n    ────────────────────────────────────────────────────────────────────────────────────────────────\n\n    attachment #4: native-final-failed-screenshot (image/png) ──────────────────────────────────────\n    .tmp\\native-planet-browser-results\\s09-archive-header-20260914-a1\\artifacts\\native-planet-native-book--421f0-nd-EN-on-the-retained-globe\\attachments\\native-final-failed-screenshot-a0a5919a5a10665598f1d1cb8969c43033ba6675.png\n    ────────────────────────────────────────────────────────────────────────────────────────────────\n\n    Error Context: .tmp\\native-planet-browser-results\\s09-archive-header-20260914-a1\\artifacts\\native-planet-native-book--421f0-nd-EN-on-the-retained-globe\\error-context.md\n\n    Error Context: .tmp\\native-planet-browser-results\\s09-archive-header-20260914-a1\\artifacts\\native-planet-native-book--421f0-nd-EN-on-the-retained-globe\\error-context.md\n\n  1 failed\n    tests\\host\\native-planet.spec.mjs:1622:1 › native book author navigation closes the reader and reveals the canonical writer across RU and EN on the retained globe \n",
+      "bytes": 3218,
+      "sha256": "6c812738e17e05a59466a856f695cf555c81470c36332f25bf20484caa76c5d4"
+    },
+    "stderr": {
+      "text": "(node:28424) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "bytes": 164,
+      "sha256": "cc5a31c4da0268cf41296db62ca710e60786a6ca699614dd3a2b5241224b2aff"
+    }
+  }
+}

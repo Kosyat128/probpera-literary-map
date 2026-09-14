@@ -8,7 +8,7 @@ import { build as bundle } from "esbuild";
 import sharp from "sharp";
 import { artifactPath, bootstrapClosure, createPwaModuleOwnershipPlugin, containedFile, PWA_SCOPE, PWA_BOOTSTRAP_ENTRIES, CANONICAL_BOOK_SOURCE_REGISTRY, scopeCanonicalCssUrls, loadPwaAuthority, pwaAuthoritySha256, previousPwaGeneration } from "./pwa-artifact.mjs";
 import { generatePwaShellFiles } from "./pwa-shell.mjs";
-import { PWA_PORTRAIT_SELECTION_PATH, selectPwaPortraitAssets, assertPwaPortraitCopy } from "./pwa-portrait-selection.mjs";
+import { PWA_PORTRAIT_SELECTION_PATH, selectPwaPortraitAssets, assertPwaPortraitCopy, selectPwaBookCoverAssets, assertPwaBookCoverCopy } from "./pwa-portrait-selection.mjs";
 import { PWA_BOOTSTRAP_MAX_FILES, PWA_BOOTSTRAP_MAX_FILE_BYTES, PWA_BOOTSTRAP_MAX_TOTAL_BYTES } from "../../src/pwa/pwaBootstrapBudgets.ts";
 import { GLOBE_EDITIONS, DEFAULT_GLOBE_EDITION_ID } from "../../src/components/globeEditions.ts";
 
@@ -56,7 +56,9 @@ async function captureSourceInputs() {
   return { sha256: digest(json(files)), files };
 }
 const sourceInputs = await captureSourceInputs();
-const portraitSelection = selectPwaPortraitAssets(JSON.parse((await containedFile(root, PWA_PORTRAIT_SELECTION_PATH)).bytes));
+const assetSelection = JSON.parse((await containedFile(root, PWA_PORTRAIT_SELECTION_PATH)).bytes);
+const portraitSelection = selectPwaPortraitAssets(assetSelection);
+const bookCoverSelection = selectPwaBookCoverAssets(assetSelection);
 const scratch = path.join(root, ".tmp");
 await mkdir(scratch, { recursive: true });
 if (await realpath(scratch) !== scratch) throw new Error("PWA scratch must be a real directory in this checkout");
@@ -87,28 +89,33 @@ async function walk(directory, prefix = "") {
   }
   return result.sort();
 }
-async function copyPublic(relative, core = true, portraitPin = null) {
+async function copyPublic(relative, core = true) {
   const previous = provenance.find(item => item.output === relative);
-  let input;
-  if (portraitPin) {
-    input = await containedFile(root, portraitPin.source);
-    let existing;
-    try { existing = await containedFile(staging, relative); }
-    catch (error) { if (error.code !== "ENOENT") throw error; }
-    assertPwaPortraitCopy(portraitPin, { sourceBytes: input.bytes, outputBytes: existing?.bytes, provenance: previous });
-  }
   if (previous) {
     if (core) essential.add(relative);
     return;
   }
-  input ??= await containedFile(path.join(root, "public"), relative);
-  if (portraitPin) {
-    const filename = path.join(staging, relative);
-    await mkdir(path.dirname(filename), { recursive: true });
-    await writeFile(filename, input.bytes, { flag: "wx" });
-  } else await write(relative, input.bytes);
+  const input = await containedFile(path.join(root, "public"), relative);
+  await write(relative, input.bytes);
   provenance.push({ output: relative, source: "public/" + relative, sourceSha256: input.sha256, transformation: "none" });
   if (core) essential.add(relative);
+}
+
+async function copyPinnedPublic(pin, assertCopy) {
+  const input = await containedFile(root, pin.source);
+  const previous = provenance.find(item => item.output.toLowerCase() === pin.output.toLowerCase());
+  let existing;
+  try { existing = await containedFile(staging, pin.output); }
+  catch (error) { if (error.code !== "ENOENT") throw error; }
+  // An earlier CSS/public copy never bypasses the independently selected pin.
+  assertCopy(pin, { sourceBytes: input.bytes, outputBytes: existing?.bytes, provenance: previous });
+  if (!previous) {
+    const filename = path.join(staging, pin.output);
+    await mkdir(path.dirname(filename), { recursive: true });
+    await writeFile(filename, input.bytes, { flag: "wx" });
+    provenance.push({ ...pin });
+  }
+  essential.add(pin.output);
 }
 
 const bootstrapEntries = [...PWA_BOOTSTRAP_ENTRIES, ...(localQaAuthority ? ["src/pwa/qaSceneProbe.ts"] : [])];
@@ -149,24 +156,10 @@ for (const asset of [
   "brand/atlas-side-brushes.webp", "brand/atlas-side-brushes-mobile.webp",
   "brand/alfred-nobel-medallion.png", "articles/book-mentions.json",
 ]) await copyPublic(asset);
-// The same hash-pinned native portraits belong to the verified offline core.
+// The same hash-pinned native portraits and covers belong to the offline core.
 // Copy original bytes and provenance without changing editorial/rights status.
-for (const pin of portraitSelection) await copyPublic(pin.output, true, pin);
-// Keep the existing canonical book-cover selection unchanged.
-for (const asset of [
-  "brand/book-covers/crime-and-punishment-editorial.webp",
-  "brand/book-covers/thumbs/crime-and-punishment-editorial.webp",
-  "brand/book-covers/the-catcher-in-the-rye-editorial.webp",
-  "brand/book-covers/thumbs/the-catcher-in-the-rye-editorial.webp",
-  "brand/book-covers/nineteen-eighty-four-editorial.webp",
-  "brand/book-covers/thumbs/nineteen-eighty-four-editorial.webp",
-  "brand/book-covers/tale-of-two-cities-editorial.webp",
-  "brand/book-covers/thumbs/tale-of-two-cities-editorial.webp",
-  "brand/book-covers/ann-veronica-20260820-editorial.webp",
-  "brand/book-covers/thumbs/ann-veronica-20260820-editorial.webp",
-  "brand/book-covers/brave-new-world-editorial.webp",
-  "brand/book-covers/thumbs/brave-new-world-editorial.webp",
-]) await copyPublic(asset);
+for (const pin of portraitSelection) await copyPinnedPublic(pin, assertPwaPortraitCopy);
+for (const pin of bookCoverSelection) await copyPinnedPublic(pin, assertPwaBookCoverCopy);
 for (const asset of await walk(path.join(root, "public/fonts/editorial"))) {
   await copyPublic("fonts/editorial/" + asset, asset.endsWith(".woff2"));
 }

@@ -1,0 +1,33 @@
+{
+  "recordedAt": "2026-09-14T02:54:28.088Z",
+  "pass": true,
+  "images": [
+    {
+      "path": "docs/mobile/evidence/S09/archive-header-20260914/browser-a2/native-book-author-return-ru-screenshot.png",
+      "sha256": "ee6a2a5f340c5b1f4f98d8754c6e6b5faa2fe0879db775929813be50be07bad5",
+      "bytes": 325098,
+      "viewedAtOriginalResolution": true
+    },
+    {
+      "path": "docs/mobile/evidence/S09/archive-header-20260914/browser-a2/native-book-author-return-en-screenshot.png",
+      "sha256": "720ef87c6646f6b63fb432a45f22b98fffa21d912e7e6a86c1875eb7555b5980",
+      "bytes": 322560,
+      "viewedAtOriginalResolution": true
+    },
+    {
+      "path": "docs/mobile/evidence/S09/archive-header-20260914/browser-a2/native-book-author-return-zambia-en-restored-screenshot.png",
+      "sha256": "50c75e826b15255d351b3498067849a0a3f29c5b5d71d341dafbdcea1e1369bd",
+      "bytes": 282208,
+      "viewedAtOriginalResolution": true
+    }
+  ],
+  "scope": "Actual native App source in Chrome; not installed device or release candidate.",
+  "observations": [
+    "The Literary Archive bar spans the country card edge to edge, flush below the sheet controls, in RU and EN.",
+    "Separate rounded floating border/shadow is removed; the existing localized close button remains visible.",
+    "Writer heading remains visible after actual book/history return; Zambia country details align below the integrated bar."
+  ],
+  "canonicalReference": "docs/mobile/evidence/S09/archive-header-20260914/live-reference.json",
+  "stageAccepted": false,
+  "releaseReady": false
+}

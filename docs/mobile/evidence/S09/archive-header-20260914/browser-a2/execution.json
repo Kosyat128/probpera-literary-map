@@ -1,0 +1,25 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=playwright.native-planet.config.mjs",
+    "--grep",
+    "native book author navigation closes the reader and reveals the canonical writer across RU and EN on the retained globe"
+  ],
+  "startedAt": "2026-09-14T02:52:18.541Z",
+  "durationMs": 14860,
+  "exitCode": 0,
+  "logs": {
+    "stdout": {
+      "text": "\nRunning 1 test using 1 worker\n\n  ok 1 tests\\host\\native-planet.spec.mjs:1622:1 › native book author navigation closes the reader and reveals the canonical writer across RU and EN on the retained globe (10.5s)\n\n  1 passed (14.0s)\n",
+      "bytes": 232,
+      "sha256": "14b53da7945262f212664299ccf5ed1cda5dc8e6b2fa33d59834968cd2a487f9"
+    },
+    "stderr": {
+      "text": "(node:8056) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "bytes": 163,
+      "sha256": "db76836fbf1ad3a9f5c61b90218ccfe1d4cdbd965eded82d77f3896db202c338"
+    }
+  }
+}

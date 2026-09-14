@@ -1,3 +1,17 @@
+<!-- archive-header-20260914:begin -->
+Owner requested the Literary Archive bar integrated into the card as on the live site.
+Canonical full-width sticky CSS ported; RUEN writer return, close and same scene preserved.
+Source fixture UTF-8 fixed; old four-work browser count was caused by text decoding.
+Current canonical46 public works include33 eligible local cover pairs;54 missing files
+are now pinned in shared native/PWA selection, preserving existing metadata/bytes.
+287 focused PWA tests, TypeScript and1 corrected actual native-source RUEN case passed.
+3 original-resolution screenshots inspected; new runtime artifacts are pending.
+Bounded PWA core cap72MiB accounts for3,944,574B of missing covers; content-package
+limits stay separate. Owner final archives sync after app implementation (D107).
+Next: bounded S10 names, then one combined Android/PWA build; no unchanged rebuild.
+Evidence: evidence/S09/archive-header-20260914/result.json. First-open S03; no acceptance.
+<!-- archive-header-20260914:end -->
+
 # V12 blockers and pending work
 
 <!-- s09-country-writer-20260914:begin -->

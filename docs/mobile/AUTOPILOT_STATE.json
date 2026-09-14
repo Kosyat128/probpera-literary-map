@@ -5,7 +5,7 @@
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
   "headSha": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-14T02:32:52.984Z",
+  "updatedAt": "2026-09-14T02:54:28.091Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -1541,15 +1541,15 @@
         }
       ],
       "lastGreenCommands": [
-        "26 focused country localization/export transport tests passed.",
-        "TypeScript/platform boundaries passed.",
-        "One actual native source-browser RUEN scenario: book-to-author, held history/Back boundary, same scene, focus and actual Zambia capital eligibility passed.",
-        "Exact-source Android dev APK compiled and byte-inspected; actual local-QA PWA offline RUEN country/writer case passed."
+        "287 focused PWA pin/worker/registration tests and TypeScript passed.",
+        "UTF-8 native-source RUEN book/writer/country scenario passed with all selected images available.",
+        "3 actual original-resolution archive-header screenshots inspected against the live canonical site."
       ],
       "artifacts": [
         "docs/mobile/evidence/S09/country-writer-20260914/entry.json",
         "docs/mobile/evidence/S09/country-writer-20260914/result.json",
-        "docs/mobile/evidence/S09/country-writer-20260914/pwa/result.json"
+        "docs/mobile/evidence/S09/country-writer-20260914/pwa/result.json",
+        "docs/mobile/evidence/S09/archive-header-20260914/result.json"
       ],
       "externalBlockers": []
     },
@@ -10621,7 +10621,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Continue bounded S10 opposite-locale canonical writer-name search on existing data. Preserve current artifacts; rebuild only after the next validated runtime checkpoint. Owner fills archives; final canonical sync and full content validation follow app implementation (D107). First-open S03 unchanged; no stage acceptance or production action. Frozen iOS83 remains pending.",
+    "nextAction": "Apply prepared bounded S10 opposite-locale writer-search patch, run only affected checks, then build one combined exact-source Android/PWA checkpoint including this archive-header and cover correction. First-open S03 unchanged. Old exact artifacts are preserved and do not include these source corrections yet.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -11950,6 +11950,15 @@
       "sha256": "7d693989b2860fe8e780bd749e73ffe7febc4a015e9b79c4d5176d3aeff73805",
       "sourceCommit": "604f919d9d92a942ce56b614bd4aa6bb79464c3c",
       "buildId": "0ecb9b499fc16f007e7c3499649cb6f015fbd12aa942b64ae061f3490bb7f7b3",
+      "stageAccepted": false,
+      "releaseReady": false
+    },
+    "s09ArchiveHeader": {
+      "status": "SOURCE_VALIDATED_ARTIFACT_REFRESH_PENDING",
+      "evidence": "docs/mobile/evidence/S09/archive-header-20260914/result.json",
+      "sha256": "e7fdc3c436886854e9cf2ce938857882f04bbaa256915a84933f996683d28d94",
+      "passingUnitCases": 287,
+      "sourceBrowserPasses": 1,
       "stageAccepted": false,
       "releaseReady": false
     }

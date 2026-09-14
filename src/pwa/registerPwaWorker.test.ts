@@ -1,5 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { registerPwaWorker, type PwaWorkerController, type PwaWorkerOptions } from "./registerPwaWorker";
+import { PWA_BOOTSTRAP_MAX_TOTAL_BYTES } from "./pwaBootstrapBudgets";
 
 const ORIGIN = "https://probpera.ru";
 const BUILD = "b".repeat(64);
@@ -445,7 +446,7 @@ describe("explicit read-only offline readiness", () => {
     if (reason === "wrong active") overrides.activeBuildId = PREVIOUS;
     if (reason === "wrong status") overrides.status = "ready";
     if (reason === "invalid count") overrides.fileCount = 2049;
-    if (reason === "invalid bytes") overrides.bytes = 64 * 1024 * 1024 + 1;
+    if (reason === "invalid bytes") overrides.bytes = PWA_BOOTSTRAP_MAX_TOTAL_BYTES + 1;
     if (reason === "incomplete with counts") overrides.status = "incomplete";
     if (reason === "unknown fields") overrides.entitled = true;
     readinessReply(env, overrides, reason === "wrong source" ? new FakeWorker() : env.worker, reason === "wrong origin" ? "https://other.test" : ORIGIN);

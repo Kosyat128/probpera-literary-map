@@ -10,7 +10,7 @@ import { build as bundle } from "esbuild";
 import { PWA_BOOTSTRAP_ENTRIES, CANONICAL_BOOK_SOURCE_REGISTRY, bootstrapSourcePath, bootstrapManifestKeys, normalizePwaAuthority, pwaAuthoritySha256, loadPwaAuthority } from "./pwa-artifact.mjs";
 import { normalizePwaWorkerConfig } from "../../src/pwa/serviceWorkerRuntime.js";
 import { PWA_BOOTSTRAP_MAX_FILES, PWA_BOOTSTRAP_MAX_FILE_BYTES, PWA_BOOTSTRAP_MAX_TOTAL_BYTES } from "../../src/pwa/pwaBootstrapBudgets.ts";
-import { PWA_PORTRAIT_SELECTION_PATH, PWA_PORTRAIT_PREFIX, selectPwaPortraitAssets } from "./pwa-portrait-selection.mjs";
+import { PWA_PORTRAIT_SELECTION_PATH, PWA_PORTRAIT_PREFIX, PWA_BOOK_COVER_PREFIX, selectPwaPortraitAssets, selectPwaBookCoverAssets } from "./pwa-portrait-selection.mjs";
 import { bookDossierStaticIssues } from "../audit-book-dossier-delivery.mjs";
 
 const SCOPE = "/planet/";
@@ -350,25 +350,33 @@ export async function verifyPwaArtifact({ rootDir = process.cwd(), artifactDir =
       } else throw new Error("Unsupported public transformation");
     } catch { add("ASSET_PROVENANCE", record?.output ?? "asset-provenance.json", "Public asset requires contained current source and exact copy/approved icon transformation."); }
   }
+  const pinnedAssetScopes = [
+    { prefix: PWA_PORTRAIT_PREFIX, label: "portrait", code: "PORTRAIT", select: selectPwaPortraitAssets },
+    { prefix: PWA_BOOK_COVER_PREFIX, label: "book cover", code: "COVER", select: selectPwaBookCoverAssets },
+  ];
   try {
     const selectionBytes = await regular(root, PWA_PORTRAIT_SELECTION_PATH);
-    if (inputMap.get(PWA_PORTRAIT_SELECTION_PATH) !== digest(selectionBytes)) throw new Error("Portrait selection must match the recorded source-input snapshot");
-    const portraits = selectPwaPortraitAssets(JSON.parse(selectionBytes));
-    const selected = new Set(portraits.map(pin => pin.output));
+    if (inputMap.get(PWA_PORTRAIT_SELECTION_PATH) !== digest(selectionBytes)) throw new Error("Canonical asset selection must match the recorded source-input snapshot");
+    const selection = JSON.parse(selectionBytes);
     const records = new Map((Array.isArray(provenance?.files) ? provenance.files : []).map(record => [record?.output, record]));
-    for (const pin of portraits) {
-      const record = records.get(pin.output);
-      if (!actual.has(pin.output) || !bootstrap.has(pin.output) || !publicOutputs.has(pin.output) || !record) {
-        add("PORTRAIT_COVERAGE", pin.output, "Every selected canonical portrait must belong to the actual, traced offline bootstrap.");
-      } else if (!sameJson(record, pin) || actual.get(pin.output).sha256 !== pin.sourceSha256
-        || bootstrap.get(pin.output).sha256 !== pin.sourceSha256 || publicSourceHashes.get(pin.source) !== pin.sourceSha256) {
-        add("PORTRAIT_PIN", pin.output, "Portrait source, output, provenance and offline bytes must match the canonical native selection pin.");
+    for (const scope of pinnedAssetScopes) try {
+      const pins = scope.select(selection), selected = new Set(pins.map(pin => pin.output));
+      for (const pin of pins) {
+        const record = records.get(pin.output);
+        if (!actual.has(pin.output) || !bootstrap.has(pin.output) || !publicOutputs.has(pin.output) || !record) {
+          add(scope.code + "_COVERAGE", pin.output, "Every selected canonical " + scope.label + " must belong to the actual, traced offline bootstrap.");
+        } else if (!sameJson(record, pin) || actual.get(pin.output).sha256 !== pin.sourceSha256
+          || bootstrap.get(pin.output).sha256 !== pin.sourceSha256 || publicSourceHashes.get(pin.source) !== pin.sourceSha256) {
+          add(scope.code + "_PIN", pin.output, "Canonical " + scope.label + " source, output, provenance and offline bytes must match the native selection pin.");
+        }
       }
-    }
-    for (const filename of actual.keys()) if (filename.startsWith(PWA_PORTRAIT_PREFIX) && !selected.has(filename)) {
-      add("PORTRAIT_SELECTION", filename, "A packaged portrait is absent from the canonical native selection.");
-    }
-  } catch (error) { add("PORTRAIT_SELECTION", PWA_PORTRAIT_SELECTION_PATH, error.message); }
+      for (const filename of actual.keys()) if (filename.toLowerCase().startsWith(scope.prefix) && !selected.has(filename)) {
+        add(scope.code + "_SELECTION", filename, "A packaged " + scope.label + " is absent from the canonical native selection.");
+      }
+    } catch (error) { add(scope.code + "_SELECTION", PWA_PORTRAIT_SELECTION_PATH, error.message); }
+  } catch (error) {
+    for (const scope of pinnedAssetScopes) add(scope.code + "_SELECTION", PWA_PORTRAIT_SELECTION_PATH, error.message);
+  }
   const generatedOutputs = new Set(["artifact.json", "bootstrap-integrity.json", "module-ownership.json", "asset-provenance.json", "license-authority.json", "rollback-manifest.json", "sw.js", "_headers", ".vite/manifest.json", "pwa-shell.css"]);
   for (const prefix of ["", "ru/", "en/"]) for (const name of ["index.html", "404.html", "manifest.webmanifest"]) generatedOutputs.add(prefix + name);
   for (const filename of actual.keys()) if (!generatedOutputs.has(filename) && !emittedModules.has(filename) && !publicOutputs.has(filename)) add("ASSET_PROVENANCE_COVERAGE", filename, "Output is neither a built module, generated shell material nor a traced canonical public asset.");

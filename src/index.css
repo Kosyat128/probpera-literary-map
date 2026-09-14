@@ -22701,13 +22701,20 @@ html[data-theme="book"] .calendar-heading h3 {
 /* Country cards: an opaque sticky masthead, explicit action affordances, and
    compact mobile tabs that never sacrifice the complete label. */
 .country-panel {
+  padding-top: 0;
   scroll-padding-top: 72px;
 }
 
 .country-panel .panel-topline {
   top: 0;
+  min-height: 64px;
+  margin-inline: -27px;
+  padding: 8px 27px;
   background:
     linear-gradient(90deg, #fffdf8, #faf2e7);
+  border-width: 0 0 1px;
+  border-radius: 0;
+  box-shadow: none;
   backdrop-filter: none;
 }
 
@@ -22801,6 +22808,11 @@ html[data-theme="book"] .calendar-heading h3 {
 }
 
 @media (max-width: 680px) {
+  .country-panel .panel-topline {
+    margin-inline: -17px;
+    padding-inline: 17px;
+  }
+
   .atlas-experience-surface[data-atlas-view="immersive"] {
     --atlas-mobile-dock-gutter: var(--atlas-globe-mobile-gutter);
     --atlas-globe-rail-width: auto;

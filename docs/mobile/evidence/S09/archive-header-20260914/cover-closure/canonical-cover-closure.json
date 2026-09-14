@@ -1,0 +1,1887 @@
+{
+  "schemaVersion": 1,
+  "scope": "Derived exact current canonical public editorial cover pairs; not a factual database or rights approval.",
+  "sourceCommit": "cdd21cac08d4bf6e9c8752cf5cbf3b01583a7ec0",
+  "sourcePinsSha256": "589c8d082a0442676dd1f73b339fc0ddf327fc22615593e5544af6ddd38e0300",
+  "publicBookKeys": [
+    "austria:franz_kafka:openlibrary-works-ol498556w",
+    "canada:margaret_atwood:openlibrary-works-ol675783w",
+    "canada:yann_martel:life-of-pi",
+    "england:aldous_huxley:brave-new-world-editorial",
+    "england:charles_dickens:a-tale-of-two-cities",
+    "england:david_mitchell:ghostwritten",
+    "england:david_mitchell:number9dream",
+    "england:david_mitchell:slade-house",
+    "england:david_mitchell:the-bone-clocks",
+    "england:david_mitchell:the-thousand-autumns-of-jacob-de-zoet",
+    "england:george_orwell:animal-farm-editorial",
+    "england:george_orwell:nineteen-eighty-four",
+    "england:h_g_wells:ann-veronica",
+    "england:h_g_wells:men-like-gods",
+    "england:h_g_wells:the-first-men-in-the-moon",
+    "england:h_g_wells:the-food-of-the-gods",
+    "england:h_g_wells:the-history-of-mr-polly",
+    "england:h_g_wells:the-world-set-free",
+    "england:h_g_wells:when-the-sleeper-wakes",
+    "england:j_r_r_tolkien:openlibrary-works-ol27448w",
+    "england:j_r_r_tolkien:the-hobbit",
+    "england:jane_austen:pride-and-prejudice",
+    "england:john_galsworthy:the-forsyte-saga",
+    "england:william_shakespeare:hamlet",
+    "france:flaubert:madame-bovary",
+    "france:saint_exupery:openlibrary-works-ol10263w",
+    "france:victor_hugo:les-miserables",
+    "germany:thomas_mann:buddenbrooks-editorial",
+    "norway:knut_hamsun:growth-of-the-soil",
+    "poland:wladyslaw_reymont:the-peasants",
+    "russia:chekhov:the-black-monk",
+    "russia:chekhov:the-duel",
+    "russia:chekhov:the-lady-with-the-dog",
+    "russia:chekhov:the-man-in-a-case",
+    "russia:chekhov:uncle-vanya",
+    "russia:dostoevsky:crime-and-punishment",
+    "russia:tolstoy:war-and-peace",
+    "spain:miguel_de_cervantes:openlibrary-works-ol15272537w",
+    "usa:ernest_hemingway:the-old-man-and-the-sea",
+    "usa:francis_scott_fitzgerald:the-great-gatsby",
+    "usa:harper_lee:to-kill-a-mockingbird-editorial",
+    "usa:herman_melville:moby-dick",
+    "usa:jerome_david_salinger:the-catcher-in-the-rye-editorial",
+    "usa:ray_bradbury:fahrenheit-451-editorial",
+    "usa:suzanne_collins:the-hunger-games",
+    "usa:vladimir_nabokov:lolita-editorial"
+  ],
+  "publicBookKeySetSha256": "6842ab32ebae32e8d718f259d453421821a020a5d5b9d9fd728f58fb2cc028cd",
+  "records": [
+    {
+      "key": "england:aldous_huxley:brave-new-world-editorial",
+      "coverRights": {
+        "status": "editorial-original",
+        "licenseName": "Редакционное оформление «Пробы Пера»",
+        "creator": "Редакция «Пробы Пера»",
+        "rightsHolder": "Проба Пера",
+        "sourceUrl": "brand/book-covers/brave-new-world-editorial.webp",
+        "checkedAt": "2026-08-02",
+        "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+      },
+      "existingReportRecord": {
+        "file": "england.ts",
+        "coverUrl": "brand/book-covers/brave-new-world-editorial.webp",
+        "coverSourceUrl": "brand/book-covers/brave-new-world-editorial.webp",
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/brave-new-world-editorial.webp",
+        "checkedAt": "2026-08-02",
+        "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания.",
+        "displayAllowed": true,
+        "issues": []
+      },
+      "full": {
+        "output": "brand/book-covers/brave-new-world-editorial.webp",
+        "source": "public/brand/book-covers/brave-new-world-editorial.webp",
+        "sourceSha256": "81c3e253221525d5450ee87749fe8ad8a1113382030be902f2048550f656d634",
+        "transformation": "none"
+      },
+      "thumbnail": {
+        "output": "brand/book-covers/thumbs/brave-new-world-editorial.webp",
+        "source": "public/brand/book-covers/thumbs/brave-new-world-editorial.webp",
+        "sourceSha256": "8a967c4b8736962060a3de7bcc26a4b39997662a154572ffd621f789e3669a83",
+        "transformation": "none"
+      },
+      "bytes": 160214
+    },
+    {
+      "key": "england:charles_dickens:a-tale-of-two-cities",
+      "coverRights": {
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/tale-of-two-cities-editorial.webp",
+        "checkedAt": "2026-08-13",
+        "note": "Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания."
+      },
+      "existingReportRecord": {
+        "file": "generated/userSuppliedBookCoversBatch20260813.generated.json",
+        "coverUrl": "brand/book-covers/tale-of-two-cities-editorial.webp",
+        "coverSourceUrl": "brand/book-covers/tale-of-two-cities-editorial.webp",
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/tale-of-two-cities-editorial.webp",
+        "checkedAt": "2026-08-13",
+        "coverWidth": 720,
+        "coverHeight": 1080,
+        "coverThumbnailWidth": 360,
+        "coverThumbnailHeight": 540,
+        "provenance": {
+          "kind": "user-supplied",
+          "archiveSha256": "2f6f57c33c94dff8fc2423a9db2caa3ac58603b9843b549fbe3b9db59553234f",
+          "imageSha256": "2b2338995c2995da06ba84e6591c23308928d6336c3b9aef9e3959a2f782b670",
+          "sourceFilename": "ChatGPT Image 13 авг. 2026 г., 04_58_20 (7).png",
+          "sourceIndex": 98,
+          "matchBasis": "exact-author-and-title",
+          "sourceEvidence": "chatgpt-image-filename",
+          "note": "Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания."
+        },
+        "note": "Предоставленная пользователем редакционная иллюстрация, созданная в ChatGPT; не является обложкой конкретного издательского издания.",
+        "displayAllowed": true,
+        "issues": []
+      },
+      "full": {
+        "output": "brand/book-covers/tale-of-two-cities-editorial.webp",
+        "source": "public/brand/book-covers/tale-of-two-cities-editorial.webp",
+        "sourceSha256": "a3498dbe0033956ac2237ce0385f5d117afa37c3dcc7d3a89f6eb53a8897b77b",
+        "transformation": "none"
+      },
+      "thumbnail": {
+        "output": "brand/book-covers/thumbs/tale-of-two-cities-editorial.webp",
+        "source": "public/brand/book-covers/thumbs/tale-of-two-cities-editorial.webp",
+        "sourceSha256": "d83efc0280b46832c0e7ece8726c59975bc7e852317ae948dc7656a1c203ea36",
+        "transformation": "none"
+      },
+      "bytes": 137910
+    },
+    {
+      "key": "england:david_mitchell:ghostwritten",
+      "coverRights": {
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/ghostwritten-20260820-editorial.webp",
+        "checkedAt": "2026-08-20",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN."
+      },
+      "existingReportRecord": {
+        "file": "generated/userSuppliedBookCoversBatch20260820.generated.json",
+        "coverUrl": "brand/book-covers/ghostwritten-20260820-editorial.webp",
+        "coverSourceUrl": "brand/book-covers/ghostwritten-20260820-editorial.webp",
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/ghostwritten-20260820-editorial.webp",
+        "checkedAt": "2026-08-20",
+        "coverWidth": 720,
+        "coverHeight": 1080,
+        "coverThumbnailWidth": 360,
+        "coverThumbnailHeight": 540,
+        "provenance": {
+          "kind": "user-supplied",
+          "archiveSha256": "0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3",
+          "imageSha256": "f3f2ee4049bf9e91edea2e89faa18f4b618e5e86df4aff8dcbf77a86d43b1873",
+          "sourceFilename": "ChatGPT Image 19 авг. 2026 г., 17_55_03 (1).png",
+          "sourceRelativePath": "Лучшие книги Митчелла/ChatGPT Image 19 авг. 2026 г., 17_55_03 (1).png",
+          "sourceIndex": 1,
+          "matchBasis": "exact-author-and-title",
+          "sourceEvidence": "chatgpt-image-filename",
+          "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN."
+        },
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.",
+        "displayAllowed": true,
+        "issues": []
+      },
+      "full": {
+        "output": "brand/book-covers/ghostwritten-20260820-editorial.webp",
+        "source": "public/brand/book-covers/ghostwritten-20260820-editorial.webp",
+        "sourceSha256": "c3750b654af96c340e034fb57e5b361e1be0f94b9e1829628526e85e2f061190",
+        "transformation": "none"
+      },
+      "thumbnail": {
+        "output": "brand/book-covers/thumbs/ghostwritten-20260820-editorial.webp",
+        "source": "public/brand/book-covers/thumbs/ghostwritten-20260820-editorial.webp",
+        "sourceSha256": "c5de839b8424ff5dacffbf59183a9eb95a2830266688b3c54fd8ccb371650fb6",
+        "transformation": "none"
+      },
+      "bytes": 82752
+    },
+    {
+      "key": "england:david_mitchell:number9dream",
+      "coverRights": {
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/number9dream-20260820-editorial.webp",
+        "checkedAt": "2026-08-20",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN."
+      },
+      "existingReportRecord": {
+        "file": "generated/userSuppliedBookCoversBatch20260820.generated.json",
+        "coverUrl": "brand/book-covers/number9dream-20260820-editorial.webp",
+        "coverSourceUrl": "brand/book-covers/number9dream-20260820-editorial.webp",
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/number9dream-20260820-editorial.webp",
+        "checkedAt": "2026-08-20",
+        "coverWidth": 720,
+        "coverHeight": 1080,
+        "coverThumbnailWidth": 360,
+        "coverThumbnailHeight": 540,
+        "provenance": {
+          "kind": "user-supplied",
+          "archiveSha256": "0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3",
+          "imageSha256": "6a5ab5ab61bd5b4767ab349195692d7ef875f1eb667fc6bd87d9977054f75fbd",
+          "sourceFilename": "ChatGPT Image 19 авг. 2026 г., 17_55_04 (2).png",
+          "sourceRelativePath": "Лучшие книги Митчелла/ChatGPT Image 19 авг. 2026 г., 17_55_04 (2).png",
+          "sourceIndex": 2,
+          "matchBasis": "exact-author-and-title",
+          "sourceEvidence": "chatgpt-image-filename",
+          "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN."
+        },
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.",
+        "displayAllowed": true,
+        "issues": []
+      },
+      "full": {
+        "output": "brand/book-covers/number9dream-20260820-editorial.webp",
+        "source": "public/brand/book-covers/number9dream-20260820-editorial.webp",
+        "sourceSha256": "bb24dbdbb32db897793e85e3b6aca3750ab49e8154842bd6af404ed0e64b1c1a",
+        "transformation": "none"
+      },
+      "thumbnail": {
+        "output": "brand/book-covers/thumbs/number9dream-20260820-editorial.webp",
+        "source": "public/brand/book-covers/thumbs/number9dream-20260820-editorial.webp",
+        "sourceSha256": "90c758378e8d706f49d3f839824d19257a64c4c37596ea84e991a9c9bf270a5b",
+        "transformation": "none"
+      },
+      "bytes": 94092
+    },
+    {
+      "key": "england:david_mitchell:slade-house",
+      "coverRights": {
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/slade-house-20260820-editorial.webp",
+        "checkedAt": "2026-08-20",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN."
+      },
+      "existingReportRecord": {
+        "file": "generated/userSuppliedBookCoversBatch20260820.generated.json",
+        "coverUrl": "brand/book-covers/slade-house-20260820-editorial.webp",
+        "coverSourceUrl": "brand/book-covers/slade-house-20260820-editorial.webp",
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/slade-house-20260820-editorial.webp",
+        "checkedAt": "2026-08-20",
+        "coverWidth": 720,
+        "coverHeight": 1080,
+        "coverThumbnailWidth": 360,
+        "coverThumbnailHeight": 540,
+        "provenance": {
+          "kind": "user-supplied",
+          "archiveSha256": "0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3",
+          "imageSha256": "f71033a7f7fd2ba4e232876609fb436ccc509ce0fac3b8296dae9f4a5382d78b",
+          "sourceFilename": "ChatGPT Image 19 авг. 2026 г., 17_55_06 (7).png",
+          "sourceRelativePath": "Лучшие книги Митчелла/ChatGPT Image 19 авг. 2026 г., 17_55_06 (7).png",
+          "sourceIndex": 7,
+          "matchBasis": "verified-russian-title",
+          "sourceEvidence": "chatgpt-image-filename",
+          "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN."
+        },
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.",
+        "displayAllowed": true,
+        "issues": []
+      },
+      "full": {
+        "output": "brand/book-covers/slade-house-20260820-editorial.webp",
+        "source": "public/brand/book-covers/slade-house-20260820-editorial.webp",
+        "sourceSha256": "9508fca6b8877a81608c5fa196dc9d0ed591412071c068115bd017c25712776f",
+        "transformation": "none"
+      },
+      "thumbnail": {
+        "output": "brand/book-covers/thumbs/slade-house-20260820-editorial.webp",
+        "source": "public/brand/book-covers/thumbs/slade-house-20260820-editorial.webp",
+        "sourceSha256": "5869633ba7c2cd3be9105cb523d78bddc7668ff707368c472ffbbe27ce0bc1b1",
+        "transformation": "none"
+      },
+      "bytes": 45256
+    },
+    {
+      "key": "england:david_mitchell:the-bone-clocks",
+      "coverRights": {
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/bone-clocks-20260820-editorial.webp",
+        "checkedAt": "2026-08-20",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN."
+      },
+      "existingReportRecord": {
+        "file": "generated/userSuppliedBookCoversBatch20260820.generated.json",
+        "coverUrl": "brand/book-covers/bone-clocks-20260820-editorial.webp",
+        "coverSourceUrl": "brand/book-covers/bone-clocks-20260820-editorial.webp",
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/bone-clocks-20260820-editorial.webp",
+        "checkedAt": "2026-08-20",
+        "coverWidth": 720,
+        "coverHeight": 1080,
+        "coverThumbnailWidth": 360,
+        "coverThumbnailHeight": 540,
+        "provenance": {
+          "kind": "user-supplied",
+          "archiveSha256": "0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3",
+          "imageSha256": "2c4dba79cc307ea8a2ce42d0980d9759f155620ccec15946f5c4f03737368b34",
+          "sourceFilename": "ChatGPT Image 19 авг. 2026 г., 17_55_06 (9).png",
+          "sourceRelativePath": "Лучшие книги Митчелла/ChatGPT Image 19 авг. 2026 г., 17_55_06 (9).png",
+          "sourceIndex": 9,
+          "matchBasis": "verified-russian-title",
+          "sourceEvidence": "chatgpt-image-filename",
+          "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN."
+        },
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.",
+        "displayAllowed": true,
+        "issues": []
+      },
+      "full": {
+        "output": "brand/book-covers/bone-clocks-20260820-editorial.webp",
+        "source": "public/brand/book-covers/bone-clocks-20260820-editorial.webp",
+        "sourceSha256": "331e12aa75737f56294962bb2790a14593fa448d8ece6ac0692de3c64694e8f2",
+        "transformation": "none"
+      },
+      "thumbnail": {
+        "output": "brand/book-covers/thumbs/bone-clocks-20260820-editorial.webp",
+        "source": "public/brand/book-covers/thumbs/bone-clocks-20260820-editorial.webp",
+        "sourceSha256": "09dae9a14a07ec9adc34df3fdfdd7c290d0f3dbb8fbcb0b8179d6938df74996d",
+        "transformation": "none"
+      },
+      "bytes": 47040
+    },
+    {
+      "key": "england:david_mitchell:the-thousand-autumns-of-jacob-de-zoet",
+      "coverRights": {
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/thousand-autumns-jacob-de-zoet-20260820-editorial.webp",
+        "checkedAt": "2026-08-20",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN."
+      },
+      "existingReportRecord": {
+        "file": "generated/userSuppliedBookCoversBatch20260820.generated.json",
+        "coverUrl": "brand/book-covers/thousand-autumns-jacob-de-zoet-20260820-editorial.webp",
+        "coverSourceUrl": "brand/book-covers/thousand-autumns-jacob-de-zoet-20260820-editorial.webp",
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/thousand-autumns-jacob-de-zoet-20260820-editorial.webp",
+        "checkedAt": "2026-08-20",
+        "coverWidth": 720,
+        "coverHeight": 1080,
+        "coverThumbnailWidth": 360,
+        "coverThumbnailHeight": 540,
+        "provenance": {
+          "kind": "user-supplied",
+          "archiveSha256": "0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3",
+          "imageSha256": "5f1db49d376574260f9a679f670009f5e34eb77ea79080e74b4aca58417feb89",
+          "sourceFilename": "ChatGPT Image 19 авг. 2026 г., 17_55_05 (5).png",
+          "sourceRelativePath": "Лучшие книги Митчелла/ChatGPT Image 19 авг. 2026 г., 17_55_05 (5).png",
+          "sourceIndex": 5,
+          "matchBasis": "exact-author-and-title",
+          "sourceEvidence": "chatgpt-image-filename",
+          "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN."
+        },
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.",
+        "displayAllowed": true,
+        "issues": []
+      },
+      "full": {
+        "output": "brand/book-covers/thousand-autumns-jacob-de-zoet-20260820-editorial.webp",
+        "source": "public/brand/book-covers/thousand-autumns-jacob-de-zoet-20260820-editorial.webp",
+        "sourceSha256": "1d7eed4bf3bf4e33779b3268b26ce12fb9da7bab3a05dd8e6a7ed2a576572dcb",
+        "transformation": "none"
+      },
+      "thumbnail": {
+        "output": "brand/book-covers/thumbs/thousand-autumns-jacob-de-zoet-20260820-editorial.webp",
+        "source": "public/brand/book-covers/thumbs/thousand-autumns-jacob-de-zoet-20260820-editorial.webp",
+        "sourceSha256": "01fd2c863e10b91d1ce4e52a4515f38c1aec058de9b713732d0ad51dfd4a8bac",
+        "transformation": "none"
+      },
+      "bytes": 61354
+    },
+    {
+      "key": "england:george_orwell:animal-farm-editorial",
+      "coverRights": {
+        "status": "editorial-original",
+        "licenseName": "Редакционное оформление «Пробы Пера»",
+        "creator": "Редакция «Пробы Пера»",
+        "rightsHolder": "Проба Пера",
+        "sourceUrl": "brand/book-covers/animal-farm-editorial.webp",
+        "checkedAt": "2026-08-02",
+        "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+      },
+      "existingReportRecord": {
+        "file": "england.ts",
+        "coverUrl": "brand/book-covers/animal-farm-editorial.webp",
+        "coverSourceUrl": "brand/book-covers/animal-farm-editorial.webp",
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/animal-farm-editorial.webp",
+        "checkedAt": "2026-08-02",
+        "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания.",
+        "displayAllowed": true,
+        "issues": []
+      },
+      "full": {
+        "output": "brand/book-covers/animal-farm-editorial.webp",
+        "source": "public/brand/book-covers/animal-farm-editorial.webp",
+        "sourceSha256": "64d0b8be9e1822742029079b3167ac71ff4ea3faf245988f13bb7910d690c561",
+        "transformation": "none"
+      },
+      "thumbnail": {
+        "output": "brand/book-covers/thumbs/animal-farm-editorial.webp",
+        "source": "public/brand/book-covers/thumbs/animal-farm-editorial.webp",
+        "sourceSha256": "058868a94e09dd5f6167723d8ea392b6a5a2cecb0e618ac420848da948bb7b41",
+        "transformation": "none"
+      },
+      "bytes": 174518
+    },
+    {
+      "key": "england:george_orwell:nineteen-eighty-four",
+      "coverRights": {
+        "status": "editorial-original",
+        "licenseName": "Редакционное оформление «Пробы Пера»",
+        "creator": "Редакция «Пробы Пера»",
+        "rightsHolder": "Проба Пера",
+        "sourceUrl": "brand/book-covers/nineteen-eighty-four-editorial.webp",
+        "checkedAt": "2026-07-30",
+        "note": "Собственная художественная обложка сайта; не является воспроизведением конкретного издательского тиража."
+      },
+      "existingReportRecord": {
+        "file": "england.ts",
+        "coverUrl": "brand/book-covers/nineteen-eighty-four-editorial.webp",
+        "coverSourceUrl": "brand/book-covers/nineteen-eighty-four-editorial.webp",
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/nineteen-eighty-four-editorial.webp",
+        "checkedAt": "2026-07-30",
+        "note": "Собственная художественная обложка сайта; не является воспроизведением конкретного издательского тиража.",
+        "displayAllowed": true,
+        "issues": []
+      },
+      "full": {
+        "output": "brand/book-covers/nineteen-eighty-four-editorial.webp",
+        "source": "public/brand/book-covers/nineteen-eighty-four-editorial.webp",
+        "sourceSha256": "cca8d3f684191027c40a1664d05c0939aebf82ffc7d72cb21b9159d0ee559d01",
+        "transformation": "none"
+      },
+      "thumbnail": {
+        "output": "brand/book-covers/thumbs/nineteen-eighty-four-editorial.webp",
+        "source": "public/brand/book-covers/thumbs/nineteen-eighty-four-editorial.webp",
+        "sourceSha256": "346360d7794d342af53dbac086b858dd3f0ca70730d28ed4159f29211a0f7a6b",
+        "transformation": "none"
+      },
+      "bytes": 396196
+    },
+    {
+      "key": "england:h_g_wells:ann-veronica",
+      "coverRights": {
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/ann-veronica-20260820-editorial.webp",
+        "checkedAt": "2026-08-20",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN."
+      },
+      "existingReportRecord": {
+        "file": "generated/userSuppliedBookCoversBatch20260820.generated.json",
+        "coverUrl": "brand/book-covers/ann-veronica-20260820-editorial.webp",
+        "coverSourceUrl": "brand/book-covers/ann-veronica-20260820-editorial.webp",
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/ann-veronica-20260820-editorial.webp",
+        "checkedAt": "2026-08-20",
+        "coverWidth": 720,
+        "coverHeight": 1080,
+        "coverThumbnailWidth": 360,
+        "coverThumbnailHeight": 540,
+        "provenance": {
+          "kind": "user-supplied",
+          "archiveSha256": "0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3",
+          "imageSha256": "d6c61844bc73125d6e21563102164a0423eac1eaaf1297abe19d6924c341fdde",
+          "sourceFilename": "ChatGPT Image 19 авг. 2026 г., 22_10_28 (2).png",
+          "sourceRelativePath": "ChatGPT Image 19 авг. 2026 г., 22_10_28 (2).png",
+          "sourceIndex": 42,
+          "matchBasis": "exact-author-and-title",
+          "sourceEvidence": "chatgpt-image-filename",
+          "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN."
+        },
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.",
+        "displayAllowed": true,
+        "issues": []
+      },
+      "full": {
+        "output": "brand/book-covers/ann-veronica-20260820-editorial.webp",
+        "source": "public/brand/book-covers/ann-veronica-20260820-editorial.webp",
+        "sourceSha256": "b4fc87654fd8041ee554b70eb10aa08cdc50f7a75f84cd3057b63f329e812e18",
+        "transformation": "none"
+      },
+      "thumbnail": {
+        "output": "brand/book-covers/thumbs/ann-veronica-20260820-editorial.webp",
+        "source": "public/brand/book-covers/thumbs/ann-veronica-20260820-editorial.webp",
+        "sourceSha256": "04f4364f85fdb4cd4115ea07be103d36ab9bbf2001d0ff7dc13e3d64d8acfd85",
+        "transformation": "none"
+      },
+      "bytes": 63796
+    },
+    {
+      "key": "england:h_g_wells:men-like-gods",
+      "coverRights": {
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/men-like-gods-20260820-editorial.webp",
+        "checkedAt": "2026-08-20",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN."
+      },
+      "existingReportRecord": {
+        "file": "generated/userSuppliedBookCoversBatch20260820.generated.json",
+        "coverUrl": "brand/book-covers/men-like-gods-20260820-editorial.webp",
+        "coverSourceUrl": "brand/book-covers/men-like-gods-20260820-editorial.webp",
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/men-like-gods-20260820-editorial.webp",
+        "checkedAt": "2026-08-20",
+        "coverWidth": 720,
+        "coverHeight": 1080,
+        "coverThumbnailWidth": 360,
+        "coverThumbnailHeight": 540,
+        "provenance": {
+          "kind": "user-supplied",
+          "archiveSha256": "0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3",
+          "imageSha256": "5e74ed2538481011a6cd8c4ebcd5920a2789afec224d2b79dcdf14a4019d0292",
+          "sourceFilename": "ChatGPT Image 19 авг. 2026 г., 17_44_59 (10).png",
+          "sourceRelativePath": "ChatGPT Image 19 авг. 2026 г., 17_44_59 (10).png",
+          "sourceIndex": 40,
+          "matchBasis": "exact-author-and-title",
+          "sourceEvidence": "chatgpt-image-filename",
+          "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN."
+        },
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.",
+        "displayAllowed": true,
+        "issues": []
+      },
+      "full": {
+        "output": "brand/book-covers/men-like-gods-20260820-editorial.webp",
+        "source": "public/brand/book-covers/men-like-gods-20260820-editorial.webp",
+        "sourceSha256": "df604f197afe8a22a159843a7e3ab2a23af4a049c519577a153bfc5279d1ff0b",
+        "transformation": "none"
+      },
+      "thumbnail": {
+        "output": "brand/book-covers/thumbs/men-like-gods-20260820-editorial.webp",
+        "source": "public/brand/book-covers/thumbs/men-like-gods-20260820-editorial.webp",
+        "sourceSha256": "b0d304c28b4ee04fa7033b410b9d6e662aa0241f8c5f3e9537f8d13ce72ea10a",
+        "transformation": "none"
+      },
+      "bytes": 65486
+    },
+    {
+      "key": "england:h_g_wells:the-first-men-in-the-moon",
+      "coverRights": {
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/first-men-in-moon-20260820-editorial.webp",
+        "checkedAt": "2026-08-20",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN."
+      },
+      "existingReportRecord": {
+        "file": "generated/userSuppliedBookCoversBatch20260820.generated.json",
+        "coverUrl": "brand/book-covers/first-men-in-moon-20260820-editorial.webp",
+        "coverSourceUrl": "brand/book-covers/first-men-in-moon-20260820-editorial.webp",
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/first-men-in-moon-20260820-editorial.webp",
+        "checkedAt": "2026-08-20",
+        "coverWidth": 720,
+        "coverHeight": 1080,
+        "coverThumbnailWidth": 360,
+        "coverThumbnailHeight": 540,
+        "provenance": {
+          "kind": "user-supplied",
+          "archiveSha256": "0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3",
+          "imageSha256": "36bee097b385bedbf20bf4d6c5583cb8283cd440918b19065822cb2a64767db4",
+          "sourceFilename": "ChatGPT Image 19 авг. 2026 г., 17_44_58 (6).png",
+          "sourceRelativePath": "ChatGPT Image 19 авг. 2026 г., 17_44_58 (6).png",
+          "sourceIndex": 36,
+          "matchBasis": "exact-author-and-title",
+          "sourceEvidence": "chatgpt-image-filename",
+          "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN."
+        },
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.",
+        "displayAllowed": true,
+        "issues": []
+      },
+      "full": {
+        "output": "brand/book-covers/first-men-in-moon-20260820-editorial.webp",
+        "source": "public/brand/book-covers/first-men-in-moon-20260820-editorial.webp",
+        "sourceSha256": "4db4ca9911ff861f9d7e3b6b511f1304af90c28a271847ac3b890f676892026a",
+        "transformation": "none"
+      },
+      "thumbnail": {
+        "output": "brand/book-covers/thumbs/first-men-in-moon-20260820-editorial.webp",
+        "source": "public/brand/book-covers/thumbs/first-men-in-moon-20260820-editorial.webp",
+        "sourceSha256": "43ee1633da546e4ca291952a2e1e2f30d130d00e569cc8633b030d12c0b94699",
+        "transformation": "none"
+      },
+      "bytes": 89036
+    },
+    {
+      "key": "england:h_g_wells:the-food-of-the-gods",
+      "coverRights": {
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/food-of-gods-wells-20260820-editorial.webp",
+        "checkedAt": "2026-08-20",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN."
+      },
+      "existingReportRecord": {
+        "file": "generated/userSuppliedBookCoversBatch20260820.generated.json",
+        "coverUrl": "brand/book-covers/food-of-gods-wells-20260820-editorial.webp",
+        "coverSourceUrl": "brand/book-covers/food-of-gods-wells-20260820-editorial.webp",
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/food-of-gods-wells-20260820-editorial.webp",
+        "checkedAt": "2026-08-20",
+        "coverWidth": 720,
+        "coverHeight": 1080,
+        "coverThumbnailWidth": 360,
+        "coverThumbnailHeight": 540,
+        "provenance": {
+          "kind": "user-supplied",
+          "archiveSha256": "0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3",
+          "imageSha256": "48f2f9f60f846df926bde08e2aac57b4147bdbf1a41a4eecc52c767fcbc86a2b",
+          "sourceFilename": "ChatGPT Image 19 авг. 2026 г., 17_44_58 (7).png",
+          "sourceRelativePath": "ChatGPT Image 19 авг. 2026 г., 17_44_58 (7).png",
+          "sourceIndex": 37,
+          "matchBasis": "exact-author-and-title",
+          "sourceEvidence": "chatgpt-image-filename",
+          "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN."
+        },
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.",
+        "displayAllowed": true,
+        "issues": []
+      },
+      "full": {
+        "output": "brand/book-covers/food-of-gods-wells-20260820-editorial.webp",
+        "source": "public/brand/book-covers/food-of-gods-wells-20260820-editorial.webp",
+        "sourceSha256": "1c421c6d39fca78e25d74b30406c1ef34a8d709764305fdeac2dce2a38c5985b",
+        "transformation": "none"
+      },
+      "thumbnail": {
+        "output": "brand/book-covers/thumbs/food-of-gods-wells-20260820-editorial.webp",
+        "source": "public/brand/book-covers/thumbs/food-of-gods-wells-20260820-editorial.webp",
+        "sourceSha256": "98ac7e4f5616b76c0828145b5285762bd076a95cc6fd6055986dea4e7d1064e6",
+        "transformation": "none"
+      },
+      "bytes": 81714
+    },
+    {
+      "key": "england:h_g_wells:the-history-of-mr-polly",
+      "coverRights": {
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/history-mr-polly-20260820-editorial.webp",
+        "checkedAt": "2026-08-20",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN."
+      },
+      "existingReportRecord": {
+        "file": "generated/userSuppliedBookCoversBatch20260820.generated.json",
+        "coverUrl": "brand/book-covers/history-mr-polly-20260820-editorial.webp",
+        "coverSourceUrl": "brand/book-covers/history-mr-polly-20260820-editorial.webp",
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/history-mr-polly-20260820-editorial.webp",
+        "checkedAt": "2026-08-20",
+        "coverWidth": 720,
+        "coverHeight": 1080,
+        "coverThumbnailWidth": 360,
+        "coverThumbnailHeight": 540,
+        "provenance": {
+          "kind": "user-supplied",
+          "archiveSha256": "0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3",
+          "imageSha256": "15b56974651b0590b09225001307f8302a43f19774fda33889df770f84bad765",
+          "sourceFilename": "ChatGPT Image 19 авг. 2026 г., 22_10_29 (3).png",
+          "sourceRelativePath": "ChatGPT Image 19 авг. 2026 г., 22_10_29 (3).png",
+          "sourceIndex": 43,
+          "matchBasis": "exact-author-and-title",
+          "sourceEvidence": "chatgpt-image-filename",
+          "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN."
+        },
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.",
+        "displayAllowed": true,
+        "issues": []
+      },
+      "full": {
+        "output": "brand/book-covers/history-mr-polly-20260820-editorial.webp",
+        "source": "public/brand/book-covers/history-mr-polly-20260820-editorial.webp",
+        "sourceSha256": "746b0ca2792415c46a167c2ba3ec3ac86b38a85eb536e1560ee1b2ba2967fa5d",
+        "transformation": "none"
+      },
+      "thumbnail": {
+        "output": "brand/book-covers/thumbs/history-mr-polly-20260820-editorial.webp",
+        "source": "public/brand/book-covers/thumbs/history-mr-polly-20260820-editorial.webp",
+        "sourceSha256": "43ab9a5fd4d2dfb89bd6202760ff44d922a212d65e49380696110e6b236d5f74",
+        "transformation": "none"
+      },
+      "bytes": 60030
+    },
+    {
+      "key": "england:h_g_wells:the-world-set-free",
+      "coverRights": {
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/world-set-free-20260820-editorial.webp",
+        "checkedAt": "2026-08-20",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN."
+      },
+      "existingReportRecord": {
+        "file": "generated/userSuppliedBookCoversBatch20260820.generated.json",
+        "coverUrl": "brand/book-covers/world-set-free-20260820-editorial.webp",
+        "coverSourceUrl": "brand/book-covers/world-set-free-20260820-editorial.webp",
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/world-set-free-20260820-editorial.webp",
+        "checkedAt": "2026-08-20",
+        "coverWidth": 720,
+        "coverHeight": 1080,
+        "coverThumbnailWidth": 360,
+        "coverThumbnailHeight": 540,
+        "provenance": {
+          "kind": "user-supplied",
+          "archiveSha256": "0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3",
+          "imageSha256": "b0b9b30bfb4cca9e837862031516f88a5df4876e926f1d6697f092ba3d92d80f",
+          "sourceFilename": "ChatGPT Image 19 авг. 2026 г., 17_44_59 (9).png",
+          "sourceRelativePath": "ChatGPT Image 19 авг. 2026 г., 17_44_59 (9).png",
+          "sourceIndex": 39,
+          "matchBasis": "exact-author-and-title",
+          "sourceEvidence": "chatgpt-image-filename",
+          "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN."
+        },
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.",
+        "displayAllowed": true,
+        "issues": []
+      },
+      "full": {
+        "output": "brand/book-covers/world-set-free-20260820-editorial.webp",
+        "source": "public/brand/book-covers/world-set-free-20260820-editorial.webp",
+        "sourceSha256": "3825d661da0f43d67d82d21c66b797f6e30b364b36503b918ecb60ec2b7ab168",
+        "transformation": "none"
+      },
+      "thumbnail": {
+        "output": "brand/book-covers/thumbs/world-set-free-20260820-editorial.webp",
+        "source": "public/brand/book-covers/thumbs/world-set-free-20260820-editorial.webp",
+        "sourceSha256": "db57f6eaa166b3f7f025d3d47abf233ee007e8d2cf45f2955eb8da7df4e8f128",
+        "transformation": "none"
+      },
+      "bytes": 72990
+    },
+    {
+      "key": "england:h_g_wells:when-the-sleeper-wakes",
+      "coverRights": {
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/when-sleeper-wakes-20260820-editorial.webp",
+        "checkedAt": "2026-08-20",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN."
+      },
+      "existingReportRecord": {
+        "file": "generated/userSuppliedBookCoversBatch20260820.generated.json",
+        "coverUrl": "brand/book-covers/when-sleeper-wakes-20260820-editorial.webp",
+        "coverSourceUrl": "brand/book-covers/when-sleeper-wakes-20260820-editorial.webp",
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/when-sleeper-wakes-20260820-editorial.webp",
+        "checkedAt": "2026-08-20",
+        "coverWidth": 720,
+        "coverHeight": 1080,
+        "coverThumbnailWidth": 360,
+        "coverThumbnailHeight": 540,
+        "provenance": {
+          "kind": "user-supplied",
+          "archiveSha256": "0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3",
+          "imageSha256": "e0d4495babd26069730bb1b36050cd9d328c9298d3ae29db4c7bb607e4baaa58",
+          "sourceFilename": "ChatGPT Image 19 авг. 2026 г., 17_44_57 (5).png",
+          "sourceRelativePath": "ChatGPT Image 19 авг. 2026 г., 17_44_57 (5).png",
+          "sourceIndex": 35,
+          "matchBasis": "exact-author-and-title",
+          "sourceEvidence": "chatgpt-image-filename",
+          "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN."
+        },
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.",
+        "displayAllowed": true,
+        "issues": []
+      },
+      "full": {
+        "output": "brand/book-covers/when-sleeper-wakes-20260820-editorial.webp",
+        "source": "public/brand/book-covers/when-sleeper-wakes-20260820-editorial.webp",
+        "sourceSha256": "07d083672febcfcef70fe77de2f6f228e48d0150978819bb3cf3fc4d32e9c5d9",
+        "transformation": "none"
+      },
+      "thumbnail": {
+        "output": "brand/book-covers/thumbs/when-sleeper-wakes-20260820-editorial.webp",
+        "source": "public/brand/book-covers/thumbs/when-sleeper-wakes-20260820-editorial.webp",
+        "sourceSha256": "a3632a0f029830ca1d0fde046fd81ef27fed36563c0358d76ffa306876774166",
+        "transformation": "none"
+      },
+      "bytes": 75932
+    },
+    {
+      "key": "england:j_r_r_tolkien:the-hobbit",
+      "coverRights": {
+        "status": "editorial-original",
+        "licenseName": "Редакционное оформление «Пробы Пера»",
+        "creator": "Редакция «Пробы Пера»",
+        "rightsHolder": "Проба Пера",
+        "sourceUrl": "brand/book-covers/hobbit-editorial.webp",
+        "checkedAt": "2026-08-01",
+        "note": "Собственная художественная обложка сайта; не является воспроизведением конкретного издательского тиража."
+      },
+      "existingReportRecord": {
+        "file": "england.ts",
+        "coverUrl": "brand/book-covers/hobbit-editorial.webp",
+        "coverSourceUrl": "brand/book-covers/hobbit-editorial.webp",
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/hobbit-editorial.webp",
+        "checkedAt": "2026-08-01",
+        "note": "Собственная художественная обложка сайта; не является воспроизведением конкретного издательского тиража.",
+        "displayAllowed": true,
+        "issues": []
+      },
+      "full": {
+        "output": "brand/book-covers/hobbit-editorial.webp",
+        "source": "public/brand/book-covers/hobbit-editorial.webp",
+        "sourceSha256": "6f950eda49c1cb44cc9d31c3de449a5ec8a3658675d797e1fba271978f63405d",
+        "transformation": "none"
+      },
+      "thumbnail": {
+        "output": "brand/book-covers/thumbs/hobbit-editorial.webp",
+        "source": "public/brand/book-covers/thumbs/hobbit-editorial.webp",
+        "sourceSha256": "78a5bfb15d6ee0a92dbdbbc1ab878c887f6038f1157de56e0e3453755b4eb814",
+        "transformation": "none"
+      },
+      "bytes": 562390
+    },
+    {
+      "key": "england:william_shakespeare:hamlet",
+      "coverRights": {
+        "status": "editorial-original",
+        "licenseName": "Редакционное оформление «Пробы Пера»",
+        "creator": "Редакция «Пробы Пера»",
+        "rightsHolder": "Проба Пера",
+        "sourceUrl": "brand/book-covers/hamlet-editorial.webp",
+        "checkedAt": "2026-08-01",
+        "note": "Собственная художественная обложка сайта; не воспроизводит конкретное издательское оформление."
+      },
+      "existingReportRecord": {
+        "file": "england.ts",
+        "coverUrl": "brand/book-covers/hamlet-editorial.webp",
+        "coverSourceUrl": "brand/book-covers/hamlet-editorial.webp",
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/hamlet-editorial.webp",
+        "checkedAt": "2026-08-01",
+        "note": "Собственная художественная обложка сайта; не воспроизводит конкретное издательское оформление.",
+        "displayAllowed": true,
+        "issues": []
+      },
+      "full": {
+        "output": "brand/book-covers/hamlet-editorial.webp",
+        "source": "public/brand/book-covers/hamlet-editorial.webp",
+        "sourceSha256": "83c50513dee3ec402b522b7f370ee969586151f863a8f86c09183e705cebcc04",
+        "transformation": "none"
+      },
+      "thumbnail": {
+        "output": "brand/book-covers/thumbs/hamlet-editorial.webp",
+        "source": "public/brand/book-covers/thumbs/hamlet-editorial.webp",
+        "sourceSha256": "391141118e538fd3058c1d707ddfdad7b4fe7f23e98b8ead971a171938625bd3",
+        "transformation": "none"
+      },
+      "bytes": 311024
+    },
+    {
+      "key": "france:flaubert:madame-bovary",
+      "coverRights": {
+        "status": "editorial-original",
+        "licenseName": "Редакционное оформление «Пробы Пера»",
+        "creator": "Редакция «Пробы Пера»",
+        "rightsHolder": "Проба Пера",
+        "sourceUrl": "brand/book-covers/madame-bovary-editorial.webp",
+        "checkedAt": "2026-08-02",
+        "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+      },
+      "existingReportRecord": {
+        "file": "france.ts",
+        "coverUrl": "brand/book-covers/madame-bovary-editorial.webp",
+        "coverSourceUrl": "brand/book-covers/madame-bovary-editorial.webp",
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/madame-bovary-editorial.webp",
+        "checkedAt": "2026-08-02",
+        "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания.",
+        "displayAllowed": true,
+        "issues": []
+      },
+      "full": {
+        "output": "brand/book-covers/madame-bovary-editorial.webp",
+        "source": "public/brand/book-covers/madame-bovary-editorial.webp",
+        "sourceSha256": "009cb92e27aa697f1ae966404b336ca746715c7e628de2db1783ebf277280aff",
+        "transformation": "none"
+      },
+      "thumbnail": {
+        "output": "brand/book-covers/thumbs/madame-bovary-editorial.webp",
+        "source": "public/brand/book-covers/thumbs/madame-bovary-editorial.webp",
+        "sourceSha256": "2db96b0cc4c47d27a22586b768508b812046bf3f0614cf7962fde6136ea6fdcf",
+        "transformation": "none"
+      },
+      "bytes": 137340
+    },
+    {
+      "key": "france:victor_hugo:les-miserables",
+      "coverRights": {
+        "status": "editorial-original",
+        "licenseName": "Редакционное оформление «Пробы Пера»",
+        "creator": "Редакция «Пробы Пера»",
+        "rightsHolder": "Проба Пера",
+        "sourceUrl": "brand/book-covers/les-miserables-editorial.webp",
+        "checkedAt": "2026-08-01",
+        "note": "Собственная художественная обложка сайта; не воспроизводит конкретное издательское оформление."
+      },
+      "existingReportRecord": {
+        "file": "france.ts",
+        "coverUrl": "brand/book-covers/les-miserables-editorial.webp",
+        "coverSourceUrl": "brand/book-covers/les-miserables-editorial.webp",
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/les-miserables-editorial.webp",
+        "checkedAt": "2026-08-01",
+        "note": "Собственная художественная обложка сайта; не воспроизводит конкретное издательское оформление.",
+        "displayAllowed": true,
+        "issues": []
+      },
+      "full": {
+        "output": "brand/book-covers/les-miserables-editorial.webp",
+        "source": "public/brand/book-covers/les-miserables-editorial.webp",
+        "sourceSha256": "894eaf2023a9005a8e48fcd7d54abda485489f844f3f02b8afbf1e7760767c13",
+        "transformation": "none"
+      },
+      "thumbnail": {
+        "output": "brand/book-covers/thumbs/les-miserables-editorial.webp",
+        "source": "public/brand/book-covers/thumbs/les-miserables-editorial.webp",
+        "sourceSha256": "162b9ecdedb599023edbd97616b3dcd13eabe7238ea7f8f39985f7007c5b06eb",
+        "transformation": "none"
+      },
+      "bytes": 408768
+    },
+    {
+      "key": "germany:thomas_mann:buddenbrooks-editorial",
+      "coverRights": {
+        "status": "editorial-original",
+        "licenseName": "Редакционное оформление «Пробы Пера»",
+        "creator": "Редакция «Пробы Пера»",
+        "rightsHolder": "Проба Пера",
+        "sourceUrl": "brand/book-covers/buddenbrooks-editorial.webp",
+        "checkedAt": "2026-08-02",
+        "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+      },
+      "existingReportRecord": {
+        "file": "germany.ts",
+        "coverUrl": "brand/book-covers/buddenbrooks-editorial.webp",
+        "coverSourceUrl": "brand/book-covers/buddenbrooks-editorial.webp",
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/buddenbrooks-editorial.webp",
+        "checkedAt": "2026-08-02",
+        "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания.",
+        "displayAllowed": true,
+        "issues": []
+      },
+      "full": {
+        "output": "brand/book-covers/buddenbrooks-editorial.webp",
+        "source": "public/brand/book-covers/buddenbrooks-editorial.webp",
+        "sourceSha256": "b259ecaeb5f2670c173c80f789468417260cd91c4359961855c85d4110f1a59f",
+        "transformation": "none"
+      },
+      "thumbnail": {
+        "output": "brand/book-covers/thumbs/buddenbrooks-editorial.webp",
+        "source": "public/brand/book-covers/thumbs/buddenbrooks-editorial.webp",
+        "sourceSha256": "6d9d560bc4cc8015d0159d9750364fe60ea645416a87a47c6d1dda87fd43293c",
+        "transformation": "none"
+      },
+      "bytes": 194978
+    },
+    {
+      "key": "russia:chekhov:the-black-monk",
+      "coverRights": {
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/the-black-monk-chekhov-20260820-editorial.webp",
+        "checkedAt": "2026-08-20",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN."
+      },
+      "existingReportRecord": {
+        "file": "generated/userSuppliedBookCoversBatch20260820.generated.json",
+        "coverUrl": "brand/book-covers/the-black-monk-chekhov-20260820-editorial.webp",
+        "coverSourceUrl": "brand/book-covers/the-black-monk-chekhov-20260820-editorial.webp",
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/the-black-monk-chekhov-20260820-editorial.webp",
+        "checkedAt": "2026-08-20",
+        "coverWidth": 720,
+        "coverHeight": 1080,
+        "coverThumbnailWidth": 360,
+        "coverThumbnailHeight": 540,
+        "provenance": {
+          "kind": "user-supplied",
+          "archiveSha256": "0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3",
+          "imageSha256": "51ec7a4d6c4181c3c175d570281d3f1490805def9fd707228c8d38e0b2b7bd6b",
+          "sourceFilename": "04_Антон_Чехов_Чёрный_монах_1894.png",
+          "sourceRelativePath": "Чехов/04_Антон_Чехов_Чёрный_монах_1894.png",
+          "sourceIndex": 24,
+          "matchBasis": "exact-author-and-title",
+          "sourceEvidence": "user-supplied-archive-confirmation",
+          "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN."
+        },
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.",
+        "displayAllowed": true,
+        "issues": []
+      },
+      "full": {
+        "output": "brand/book-covers/the-black-monk-chekhov-20260820-editorial.webp",
+        "source": "public/brand/book-covers/the-black-monk-chekhov-20260820-editorial.webp",
+        "sourceSha256": "e1c2f19a2243532b8c089313f47f5e08f24b236316bf22af81d0526f69e5cd96",
+        "transformation": "none"
+      },
+      "thumbnail": {
+        "output": "brand/book-covers/thumbs/the-black-monk-chekhov-20260820-editorial.webp",
+        "source": "public/brand/book-covers/thumbs/the-black-monk-chekhov-20260820-editorial.webp",
+        "sourceSha256": "e682b52194b306609635e17149e13060a6a5e9c03f75bbede81887f45e3b6945",
+        "transformation": "none"
+      },
+      "bytes": 38046
+    },
+    {
+      "key": "russia:chekhov:the-duel",
+      "coverRights": {
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/the-duel-chekhov-20260820-editorial.webp",
+        "checkedAt": "2026-08-20",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN."
+      },
+      "existingReportRecord": {
+        "file": "generated/userSuppliedBookCoversBatch20260820.generated.json",
+        "coverUrl": "brand/book-covers/the-duel-chekhov-20260820-editorial.webp",
+        "coverSourceUrl": "brand/book-covers/the-duel-chekhov-20260820-editorial.webp",
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/the-duel-chekhov-20260820-editorial.webp",
+        "checkedAt": "2026-08-20",
+        "coverWidth": 720,
+        "coverHeight": 1080,
+        "coverThumbnailWidth": 360,
+        "coverThumbnailHeight": 540,
+        "provenance": {
+          "kind": "user-supplied",
+          "archiveSha256": "0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3",
+          "imageSha256": "3e15d468cae4266f30c1293f4014b858bfa8fd9d72bc197c1cbcd3405b5a2f66",
+          "sourceFilename": "02_Антон_Чехов_Дуэль_1891.png",
+          "sourceRelativePath": "Чехов/02_Антон_Чехов_Дуэль_1891.png",
+          "sourceIndex": 22,
+          "matchBasis": "exact-author-and-title",
+          "sourceEvidence": "user-supplied-archive-confirmation",
+          "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN."
+        },
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.",
+        "displayAllowed": true,
+        "issues": []
+      },
+      "full": {
+        "output": "brand/book-covers/the-duel-chekhov-20260820-editorial.webp",
+        "source": "public/brand/book-covers/the-duel-chekhov-20260820-editorial.webp",
+        "sourceSha256": "38570b3cf9a76070f9bfec5f3024a6189c7541f5c40a2dd69c6e79d1f695f63b",
+        "transformation": "none"
+      },
+      "thumbnail": {
+        "output": "brand/book-covers/thumbs/the-duel-chekhov-20260820-editorial.webp",
+        "source": "public/brand/book-covers/thumbs/the-duel-chekhov-20260820-editorial.webp",
+        "sourceSha256": "a46e1ef7153e9a8834302ed2f4a4038c32f36f2e2c6e1713048ffe5ae518e2d2",
+        "transformation": "none"
+      },
+      "bytes": 38762
+    },
+    {
+      "key": "russia:chekhov:the-lady-with-the-dog",
+      "coverRights": {
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/lady-with-the-dog-20260820-editorial.webp",
+        "checkedAt": "2026-08-20",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN."
+      },
+      "existingReportRecord": {
+        "file": "generated/userSuppliedBookCoversBatch20260820.generated.json",
+        "coverUrl": "brand/book-covers/lady-with-the-dog-20260820-editorial.webp",
+        "coverSourceUrl": "brand/book-covers/lady-with-the-dog-20260820-editorial.webp",
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/lady-with-the-dog-20260820-editorial.webp",
+        "checkedAt": "2026-08-20",
+        "coverWidth": 720,
+        "coverHeight": 1080,
+        "coverThumbnailWidth": 360,
+        "coverThumbnailHeight": 540,
+        "provenance": {
+          "kind": "user-supplied",
+          "archiveSha256": "0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3",
+          "imageSha256": "e557ac410d2c19279e995dfef3ef176452ae61f0330809005b55e7bda2932f34",
+          "sourceFilename": "08_Антон_Чехов_Дама_с_собачкой_1899.png",
+          "sourceRelativePath": "Чехов/08_Антон_Чехов_Дама_с_собачкой_1899.png",
+          "sourceIndex": 28,
+          "matchBasis": "exact-author-and-title",
+          "sourceEvidence": "user-supplied-archive-confirmation",
+          "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN."
+        },
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.",
+        "displayAllowed": true,
+        "issues": []
+      },
+      "full": {
+        "output": "brand/book-covers/lady-with-the-dog-20260820-editorial.webp",
+        "source": "public/brand/book-covers/lady-with-the-dog-20260820-editorial.webp",
+        "sourceSha256": "3358276fc60294079e1e1834aeb92ef58111e2f351d4243d791c27c84a3081ff",
+        "transformation": "none"
+      },
+      "thumbnail": {
+        "output": "brand/book-covers/thumbs/lady-with-the-dog-20260820-editorial.webp",
+        "source": "public/brand/book-covers/thumbs/lady-with-the-dog-20260820-editorial.webp",
+        "sourceSha256": "8a25a50f6ded8711aaa704a0a6f6cda56a00c3ffec4fe4dce3a1676b959edce9",
+        "transformation": "none"
+      },
+      "bytes": 47462
+    },
+    {
+      "key": "russia:chekhov:the-man-in-a-case",
+      "coverRights": {
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/the-man-in-a-case-20260820-editorial.webp",
+        "checkedAt": "2026-08-20",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN."
+      },
+      "existingReportRecord": {
+        "file": "generated/userSuppliedBookCoversBatch20260820.generated.json",
+        "coverUrl": "brand/book-covers/the-man-in-a-case-20260820-editorial.webp",
+        "coverSourceUrl": "brand/book-covers/the-man-in-a-case-20260820-editorial.webp",
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/the-man-in-a-case-20260820-editorial.webp",
+        "checkedAt": "2026-08-20",
+        "coverWidth": 720,
+        "coverHeight": 1080,
+        "coverThumbnailWidth": 360,
+        "coverThumbnailHeight": 540,
+        "provenance": {
+          "kind": "user-supplied",
+          "archiveSha256": "0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3",
+          "imageSha256": "5d8612d8bcac86413e4285098029d5d200bf9761c1002a68af0f641777748aff",
+          "sourceFilename": "07_Антон_Чехов_Человек_в_футляре_1898.png",
+          "sourceRelativePath": "Чехов/07_Антон_Чехов_Человек_в_футляре_1898.png",
+          "sourceIndex": 27,
+          "matchBasis": "exact-author-and-title",
+          "sourceEvidence": "user-supplied-archive-confirmation",
+          "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN."
+        },
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.",
+        "displayAllowed": true,
+        "issues": []
+      },
+      "full": {
+        "output": "brand/book-covers/the-man-in-a-case-20260820-editorial.webp",
+        "source": "public/brand/book-covers/the-man-in-a-case-20260820-editorial.webp",
+        "sourceSha256": "9dde84d733eeee5a61877a510a45e10703b30847b0c70ec2c92c7756b8190eb0",
+        "transformation": "none"
+      },
+      "thumbnail": {
+        "output": "brand/book-covers/thumbs/the-man-in-a-case-20260820-editorial.webp",
+        "source": "public/brand/book-covers/thumbs/the-man-in-a-case-20260820-editorial.webp",
+        "sourceSha256": "cf0bf8b955f805d7df9f4108e8064e18d1857685275cf6ea6ec4f1be97a128e3",
+        "transformation": "none"
+      },
+      "bytes": 38674
+    },
+    {
+      "key": "russia:chekhov:uncle-vanya",
+      "coverRights": {
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/uncle-vanya-20260820-editorial.webp",
+        "checkedAt": "2026-08-20",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN."
+      },
+      "existingReportRecord": {
+        "file": "generated/userSuppliedBookCoversBatch20260820.generated.json",
+        "coverUrl": "brand/book-covers/uncle-vanya-20260820-editorial.webp",
+        "coverSourceUrl": "brand/book-covers/uncle-vanya-20260820-editorial.webp",
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/uncle-vanya-20260820-editorial.webp",
+        "checkedAt": "2026-08-20",
+        "coverWidth": 720,
+        "coverHeight": 1080,
+        "coverThumbnailWidth": 360,
+        "coverThumbnailHeight": 540,
+        "provenance": {
+          "kind": "user-supplied",
+          "archiveSha256": "0ad2a8f1c49573d51418bea2acf023a36b87db6e767b75dc869aa92f59b05cd3",
+          "imageSha256": "1aad7145250d21b431fd47605601058ef14f33c42ab0439a13c875d754c25e63",
+          "sourceFilename": "06_Антон_Чехов_Дядя_Ваня_1897.png",
+          "sourceRelativePath": "Чехов/06_Антон_Чехов_Дядя_Ваня_1897.png",
+          "sourceIndex": 26,
+          "matchBasis": "exact-author-and-title",
+          "sourceEvidence": "user-supplied-archive-confirmation",
+          "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN."
+        },
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания и не содержит вымышленного ISBN.",
+        "displayAllowed": true,
+        "issues": []
+      },
+      "full": {
+        "output": "brand/book-covers/uncle-vanya-20260820-editorial.webp",
+        "source": "public/brand/book-covers/uncle-vanya-20260820-editorial.webp",
+        "sourceSha256": "2922b2efd6b52223b1b6e059b29847cffd5e8e45706d08939344e33e882167b9",
+        "transformation": "none"
+      },
+      "thumbnail": {
+        "output": "brand/book-covers/thumbs/uncle-vanya-20260820-editorial.webp",
+        "source": "public/brand/book-covers/thumbs/uncle-vanya-20260820-editorial.webp",
+        "sourceSha256": "cdd9549c0332bb873dac43d1db4ac366e2b252e0436382238f8e073936dcf1ba",
+        "transformation": "none"
+      },
+      "bytes": 42036
+    },
+    {
+      "key": "russia:dostoevsky:crime-and-punishment",
+      "coverRights": {
+        "status": "editorial-original",
+        "licenseName": "Редакционное оформление «Пробы Пера»",
+        "creator": "Редакция «Пробы Пера»",
+        "rightsHolder": "Проба Пера",
+        "sourceUrl": "brand/book-covers/crime-and-punishment-editorial.webp",
+        "checkedAt": "2026-08-01",
+        "note": "Собственная художественная обложка сайта; не воспроизводит конкретное издательское оформление."
+      },
+      "existingReportRecord": {
+        "file": "russia.ts",
+        "coverUrl": "brand/book-covers/crime-and-punishment-editorial.webp",
+        "coverSourceUrl": "brand/book-covers/crime-and-punishment-editorial.webp",
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/crime-and-punishment-editorial.webp",
+        "checkedAt": "2026-08-01",
+        "note": "Собственная художественная обложка сайта; не воспроизводит конкретное издательское оформление.",
+        "displayAllowed": true,
+        "issues": []
+      },
+      "full": {
+        "output": "brand/book-covers/crime-and-punishment-editorial.webp",
+        "source": "public/brand/book-covers/crime-and-punishment-editorial.webp",
+        "sourceSha256": "696100d523bc12c6ccb0002de685a55572ef214d5278fcc7a2f338d7a1c61bec",
+        "transformation": "none"
+      },
+      "thumbnail": {
+        "output": "brand/book-covers/thumbs/crime-and-punishment-editorial.webp",
+        "source": "public/brand/book-covers/thumbs/crime-and-punishment-editorial.webp",
+        "sourceSha256": "c068156394e37026e4aa2c03a8cd48253ce0f802636f4a997cd2289c75ac2c4e",
+        "transformation": "none"
+      },
+      "bytes": 395754
+    },
+    {
+      "key": "russia:tolstoy:war-and-peace",
+      "coverRights": {
+        "status": "editorial-original",
+        "licenseName": "Редакционное оформление «Пробы Пера»",
+        "creator": "Редакция «Пробы Пера»",
+        "rightsHolder": "Проба Пера",
+        "sourceUrl": "brand/book-covers/war-and-peace-editorial.webp",
+        "checkedAt": "2026-08-01",
+        "note": "Собственная художественная обложка сайта; не воспроизводит конкретное издательское оформление."
+      },
+      "existingReportRecord": {
+        "file": "russia.ts",
+        "coverUrl": "brand/book-covers/war-and-peace-editorial.webp",
+        "coverSourceUrl": "brand/book-covers/war-and-peace-editorial.webp",
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/war-and-peace-editorial.webp",
+        "checkedAt": "2026-08-01",
+        "note": "Собственная художественная обложка сайта; не воспроизводит конкретное издательское оформление.",
+        "displayAllowed": true,
+        "issues": []
+      },
+      "full": {
+        "output": "brand/book-covers/war-and-peace-editorial.webp",
+        "source": "public/brand/book-covers/war-and-peace-editorial.webp",
+        "sourceSha256": "7e461b1522e83e5bde243649a20992d254b06dead948e6ce9af751722db093bb",
+        "transformation": "none"
+      },
+      "thumbnail": {
+        "output": "brand/book-covers/thumbs/war-and-peace-editorial.webp",
+        "source": "public/brand/book-covers/thumbs/war-and-peace-editorial.webp",
+        "sourceSha256": "7903d542f17ddeabfbe91e13c849cdb2b74c4b85f1559cba2009b3f420a212a1",
+        "transformation": "none"
+      },
+      "bytes": 341344
+    },
+    {
+      "key": "usa:ernest_hemingway:the-old-man-and-the-sea",
+      "coverRights": {
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/the-old-man-and-the-sea-editorial.webp",
+        "checkedAt": "2026-08-11",
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+      },
+      "existingReportRecord": {
+        "file": "generated/userSuppliedBookCovers.generated.json",
+        "coverUrl": "brand/book-covers/the-old-man-and-the-sea-editorial.webp",
+        "coverSourceUrl": "brand/book-covers/the-old-man-and-the-sea-editorial.webp",
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/the-old-man-and-the-sea-editorial.webp",
+        "checkedAt": "2026-08-11",
+        "coverWidth": 720,
+        "coverHeight": 1080,
+        "coverThumbnailWidth": 360,
+        "coverThumbnailHeight": 540,
+        "provenance": {
+          "kind": "user-supplied",
+          "archiveSha256": "7778202af51486bc609b24b98997735bcfb211b309f257734618aae1be93857b",
+          "imageSha256": "d8bdd8251766982eb4eaed1a41051ae0c480be20b80c1892d5d5ec8cc1c6bdaa",
+          "sourceFilename": "ChatGPT Image 10 авг. 2026 г., 12_27_16 (3).png",
+          "sourceIndex": 32,
+          "matchBasis": "exact-author-and-title",
+          "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания."
+        },
+        "note": "Предоставленная пользователем редакционная иллюстрация; не является обложкой конкретного издательского издания.",
+        "displayAllowed": true,
+        "issues": []
+      },
+      "full": {
+        "output": "brand/book-covers/the-old-man-and-the-sea-editorial.webp",
+        "source": "public/brand/book-covers/the-old-man-and-the-sea-editorial.webp",
+        "sourceSha256": "9013e677f5d20163ef1b4745f62e51aee6bbddbbcda1e478a2425ef694633819",
+        "transformation": "none"
+      },
+      "thumbnail": {
+        "output": "brand/book-covers/thumbs/the-old-man-and-the-sea-editorial.webp",
+        "source": "public/brand/book-covers/thumbs/the-old-man-and-the-sea-editorial.webp",
+        "sourceSha256": "7713b0f6a3305f628240046b45f839ad81bd34d316028ebdb2dc6096518b2363",
+        "transformation": "none"
+      },
+      "bytes": 251354
+    },
+    {
+      "key": "usa:harper_lee:to-kill-a-mockingbird-editorial",
+      "coverRights": {
+        "status": "editorial-original",
+        "licenseName": "Редакционное оформление «Пробы Пера»",
+        "creator": "Редакция «Пробы Пера»",
+        "rightsHolder": "Проба Пера",
+        "sourceUrl": "brand/book-covers/to-kill-a-mockingbird-editorial.webp",
+        "checkedAt": "2026-08-02",
+        "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+      },
+      "existingReportRecord": {
+        "file": "usa.ts",
+        "coverUrl": "brand/book-covers/to-kill-a-mockingbird-editorial.webp",
+        "coverSourceUrl": "brand/book-covers/to-kill-a-mockingbird-editorial.webp",
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/to-kill-a-mockingbird-editorial.webp",
+        "checkedAt": "2026-08-02",
+        "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания.",
+        "displayAllowed": true,
+        "issues": []
+      },
+      "full": {
+        "output": "brand/book-covers/to-kill-a-mockingbird-editorial.webp",
+        "source": "public/brand/book-covers/to-kill-a-mockingbird-editorial.webp",
+        "sourceSha256": "ee4b31b50d02de73e9cc7f2b5e790bb64c7bf3d1277b3c2a764234add8b093aa",
+        "transformation": "none"
+      },
+      "thumbnail": {
+        "output": "brand/book-covers/thumbs/to-kill-a-mockingbird-editorial.webp",
+        "source": "public/brand/book-covers/thumbs/to-kill-a-mockingbird-editorial.webp",
+        "sourceSha256": "4bdcd719cd1b46cf4b8d33b18645dc79d3afb6846afebf915512349133705205",
+        "transformation": "none"
+      },
+      "bytes": 232052
+    },
+    {
+      "key": "usa:jerome_david_salinger:the-catcher-in-the-rye-editorial",
+      "coverRights": {
+        "status": "editorial-original",
+        "licenseName": "Редакционное оформление «Пробы Пера»",
+        "creator": "Редакция «Пробы Пера»",
+        "rightsHolder": "Проба Пера",
+        "sourceUrl": "brand/book-covers/the-catcher-in-the-rye-editorial.webp",
+        "checkedAt": "2026-08-02",
+        "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+      },
+      "existingReportRecord": {
+        "file": "usa.ts",
+        "coverUrl": "brand/book-covers/the-catcher-in-the-rye-editorial.webp",
+        "coverSourceUrl": "brand/book-covers/the-catcher-in-the-rye-editorial.webp",
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/the-catcher-in-the-rye-editorial.webp",
+        "checkedAt": "2026-08-02",
+        "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания.",
+        "displayAllowed": true,
+        "issues": []
+      },
+      "full": {
+        "output": "brand/book-covers/the-catcher-in-the-rye-editorial.webp",
+        "source": "public/brand/book-covers/the-catcher-in-the-rye-editorial.webp",
+        "sourceSha256": "5c9a7cc530e829c16e384ff5536d24bddac4bfccfb8b809b59b998e9aa00f1bb",
+        "transformation": "none"
+      },
+      "thumbnail": {
+        "output": "brand/book-covers/thumbs/the-catcher-in-the-rye-editorial.webp",
+        "source": "public/brand/book-covers/thumbs/the-catcher-in-the-rye-editorial.webp",
+        "sourceSha256": "69371c020357db729b61097d1fd8f9946ee1c24b9410727dcb02b7535c0715ff",
+        "transformation": "none"
+      },
+      "bytes": 157926
+    },
+    {
+      "key": "usa:ray_bradbury:fahrenheit-451-editorial",
+      "coverRights": {
+        "status": "editorial-original",
+        "licenseName": "Редакционное оформление «Пробы Пера»",
+        "creator": "Редакция «Пробы Пера»",
+        "rightsHolder": "Проба Пера",
+        "sourceUrl": "brand/book-covers/fahrenheit-451-editorial.webp",
+        "checkedAt": "2026-08-02",
+        "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+      },
+      "existingReportRecord": {
+        "file": "usa.ts",
+        "coverUrl": "brand/book-covers/fahrenheit-451-editorial.webp",
+        "coverSourceUrl": "brand/book-covers/fahrenheit-451-editorial.webp",
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/fahrenheit-451-editorial.webp",
+        "checkedAt": "2026-08-02",
+        "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания.",
+        "displayAllowed": true,
+        "issues": []
+      },
+      "full": {
+        "output": "brand/book-covers/fahrenheit-451-editorial.webp",
+        "source": "public/brand/book-covers/fahrenheit-451-editorial.webp",
+        "sourceSha256": "a9b09e036ac1d3b3dc730bb779f98174be87e910811949eb04698ceb00ed92f2",
+        "transformation": "none"
+      },
+      "thumbnail": {
+        "output": "brand/book-covers/thumbs/fahrenheit-451-editorial.webp",
+        "source": "public/brand/book-covers/thumbs/fahrenheit-451-editorial.webp",
+        "sourceSha256": "fb48d8ccbfe5da5e3a7572aacccb330ef99bf32440920e232ac85ac3abd299d0",
+        "transformation": "none"
+      },
+      "bytes": 198474
+    },
+    {
+      "key": "usa:vladimir_nabokov:lolita-editorial",
+      "coverRights": {
+        "status": "editorial-original",
+        "licenseName": "Редакционное оформление «Пробы Пера»",
+        "creator": "Редакция «Пробы Пера»",
+        "rightsHolder": "Проба Пера",
+        "sourceUrl": "brand/book-covers/lolita-editorial.webp",
+        "checkedAt": "2026-08-02",
+        "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания."
+      },
+      "existingReportRecord": {
+        "file": "usa.ts",
+        "coverUrl": "brand/book-covers/lolita-editorial.webp",
+        "coverSourceUrl": "brand/book-covers/lolita-editorial.webp",
+        "status": "editorial-original",
+        "sourceUrl": "brand/book-covers/lolita-editorial.webp",
+        "checkedAt": "2026-08-02",
+        "note": "Собственное редакционное оформление; не является обложкой конкретного издательского издания.",
+        "displayAllowed": true,
+        "issues": []
+      },
+      "full": {
+        "output": "brand/book-covers/lolita-editorial.webp",
+        "source": "public/brand/book-covers/lolita-editorial.webp",
+        "sourceSha256": "6633d3327c9e42472bf7275e077ca09437d4bb364182b811215d9112eb933faf",
+        "transformation": "none"
+      },
+      "thumbnail": {
+        "output": "brand/book-covers/thumbs/lolita-editorial.webp",
+        "source": "public/brand/book-covers/thumbs/lolita-editorial.webp",
+        "sourceSha256": "095ab7341486a17e3ef1ab7def807a7e7e221c08e61d5d9e8e2bf60aabf4e4b5",
+        "transformation": "none"
+      },
+      "bytes": 151670
+    }
+  ],
+  "files": [
+    {
+      "output": "brand/book-covers/animal-farm-editorial.webp",
+      "source": "public/brand/book-covers/animal-farm-editorial.webp",
+      "sourceSha256": "64d0b8be9e1822742029079b3167ac71ff4ea3faf245988f13bb7910d690c561",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/ann-veronica-20260820-editorial.webp",
+      "source": "public/brand/book-covers/ann-veronica-20260820-editorial.webp",
+      "sourceSha256": "b4fc87654fd8041ee554b70eb10aa08cdc50f7a75f84cd3057b63f329e812e18",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/bone-clocks-20260820-editorial.webp",
+      "source": "public/brand/book-covers/bone-clocks-20260820-editorial.webp",
+      "sourceSha256": "331e12aa75737f56294962bb2790a14593fa448d8ece6ac0692de3c64694e8f2",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/brave-new-world-editorial.webp",
+      "source": "public/brand/book-covers/brave-new-world-editorial.webp",
+      "sourceSha256": "81c3e253221525d5450ee87749fe8ad8a1113382030be902f2048550f656d634",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/buddenbrooks-editorial.webp",
+      "source": "public/brand/book-covers/buddenbrooks-editorial.webp",
+      "sourceSha256": "b259ecaeb5f2670c173c80f789468417260cd91c4359961855c85d4110f1a59f",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/crime-and-punishment-editorial.webp",
+      "source": "public/brand/book-covers/crime-and-punishment-editorial.webp",
+      "sourceSha256": "696100d523bc12c6ccb0002de685a55572ef214d5278fcc7a2f338d7a1c61bec",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/fahrenheit-451-editorial.webp",
+      "source": "public/brand/book-covers/fahrenheit-451-editorial.webp",
+      "sourceSha256": "a9b09e036ac1d3b3dc730bb779f98174be87e910811949eb04698ceb00ed92f2",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/first-men-in-moon-20260820-editorial.webp",
+      "source": "public/brand/book-covers/first-men-in-moon-20260820-editorial.webp",
+      "sourceSha256": "4db4ca9911ff861f9d7e3b6b511f1304af90c28a271847ac3b890f676892026a",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/food-of-gods-wells-20260820-editorial.webp",
+      "source": "public/brand/book-covers/food-of-gods-wells-20260820-editorial.webp",
+      "sourceSha256": "1c421c6d39fca78e25d74b30406c1ef34a8d709764305fdeac2dce2a38c5985b",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/ghostwritten-20260820-editorial.webp",
+      "source": "public/brand/book-covers/ghostwritten-20260820-editorial.webp",
+      "sourceSha256": "c3750b654af96c340e034fb57e5b361e1be0f94b9e1829628526e85e2f061190",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/hamlet-editorial.webp",
+      "source": "public/brand/book-covers/hamlet-editorial.webp",
+      "sourceSha256": "83c50513dee3ec402b522b7f370ee969586151f863a8f86c09183e705cebcc04",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/history-mr-polly-20260820-editorial.webp",
+      "source": "public/brand/book-covers/history-mr-polly-20260820-editorial.webp",
+      "sourceSha256": "746b0ca2792415c46a167c2ba3ec3ac86b38a85eb536e1560ee1b2ba2967fa5d",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/hobbit-editorial.webp",
+      "source": "public/brand/book-covers/hobbit-editorial.webp",
+      "sourceSha256": "6f950eda49c1cb44cc9d31c3de449a5ec8a3658675d797e1fba271978f63405d",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/lady-with-the-dog-20260820-editorial.webp",
+      "source": "public/brand/book-covers/lady-with-the-dog-20260820-editorial.webp",
+      "sourceSha256": "3358276fc60294079e1e1834aeb92ef58111e2f351d4243d791c27c84a3081ff",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/les-miserables-editorial.webp",
+      "source": "public/brand/book-covers/les-miserables-editorial.webp",
+      "sourceSha256": "894eaf2023a9005a8e48fcd7d54abda485489f844f3f02b8afbf1e7760767c13",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/lolita-editorial.webp",
+      "source": "public/brand/book-covers/lolita-editorial.webp",
+      "sourceSha256": "6633d3327c9e42472bf7275e077ca09437d4bb364182b811215d9112eb933faf",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/madame-bovary-editorial.webp",
+      "source": "public/brand/book-covers/madame-bovary-editorial.webp",
+      "sourceSha256": "009cb92e27aa697f1ae966404b336ca746715c7e628de2db1783ebf277280aff",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/men-like-gods-20260820-editorial.webp",
+      "source": "public/brand/book-covers/men-like-gods-20260820-editorial.webp",
+      "sourceSha256": "df604f197afe8a22a159843a7e3ab2a23af4a049c519577a153bfc5279d1ff0b",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/nineteen-eighty-four-editorial.webp",
+      "source": "public/brand/book-covers/nineteen-eighty-four-editorial.webp",
+      "sourceSha256": "cca8d3f684191027c40a1664d05c0939aebf82ffc7d72cb21b9159d0ee559d01",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/number9dream-20260820-editorial.webp",
+      "source": "public/brand/book-covers/number9dream-20260820-editorial.webp",
+      "sourceSha256": "bb24dbdbb32db897793e85e3b6aca3750ab49e8154842bd6af404ed0e64b1c1a",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/slade-house-20260820-editorial.webp",
+      "source": "public/brand/book-covers/slade-house-20260820-editorial.webp",
+      "sourceSha256": "9508fca6b8877a81608c5fa196dc9d0ed591412071c068115bd017c25712776f",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/tale-of-two-cities-editorial.webp",
+      "source": "public/brand/book-covers/tale-of-two-cities-editorial.webp",
+      "sourceSha256": "a3498dbe0033956ac2237ce0385f5d117afa37c3dcc7d3a89f6eb53a8897b77b",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/the-black-monk-chekhov-20260820-editorial.webp",
+      "source": "public/brand/book-covers/the-black-monk-chekhov-20260820-editorial.webp",
+      "sourceSha256": "e1c2f19a2243532b8c089313f47f5e08f24b236316bf22af81d0526f69e5cd96",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/the-catcher-in-the-rye-editorial.webp",
+      "source": "public/brand/book-covers/the-catcher-in-the-rye-editorial.webp",
+      "sourceSha256": "5c9a7cc530e829c16e384ff5536d24bddac4bfccfb8b809b59b998e9aa00f1bb",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/the-duel-chekhov-20260820-editorial.webp",
+      "source": "public/brand/book-covers/the-duel-chekhov-20260820-editorial.webp",
+      "sourceSha256": "38570b3cf9a76070f9bfec5f3024a6189c7541f5c40a2dd69c6e79d1f695f63b",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/the-man-in-a-case-20260820-editorial.webp",
+      "source": "public/brand/book-covers/the-man-in-a-case-20260820-editorial.webp",
+      "sourceSha256": "9dde84d733eeee5a61877a510a45e10703b30847b0c70ec2c92c7756b8190eb0",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/the-old-man-and-the-sea-editorial.webp",
+      "source": "public/brand/book-covers/the-old-man-and-the-sea-editorial.webp",
+      "sourceSha256": "9013e677f5d20163ef1b4745f62e51aee6bbddbbcda1e478a2425ef694633819",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thousand-autumns-jacob-de-zoet-20260820-editorial.webp",
+      "source": "public/brand/book-covers/thousand-autumns-jacob-de-zoet-20260820-editorial.webp",
+      "sourceSha256": "1d7eed4bf3bf4e33779b3268b26ce12fb9da7bab3a05dd8e6a7ed2a576572dcb",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/animal-farm-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/animal-farm-editorial.webp",
+      "sourceSha256": "058868a94e09dd5f6167723d8ea392b6a5a2cecb0e618ac420848da948bb7b41",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/ann-veronica-20260820-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/ann-veronica-20260820-editorial.webp",
+      "sourceSha256": "04f4364f85fdb4cd4115ea07be103d36ab9bbf2001d0ff7dc13e3d64d8acfd85",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/bone-clocks-20260820-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/bone-clocks-20260820-editorial.webp",
+      "sourceSha256": "09dae9a14a07ec9adc34df3fdfdd7c290d0f3dbb8fbcb0b8179d6938df74996d",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/brave-new-world-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/brave-new-world-editorial.webp",
+      "sourceSha256": "8a967c4b8736962060a3de7bcc26a4b39997662a154572ffd621f789e3669a83",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/buddenbrooks-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/buddenbrooks-editorial.webp",
+      "sourceSha256": "6d9d560bc4cc8015d0159d9750364fe60ea645416a87a47c6d1dda87fd43293c",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/crime-and-punishment-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/crime-and-punishment-editorial.webp",
+      "sourceSha256": "c068156394e37026e4aa2c03a8cd48253ce0f802636f4a997cd2289c75ac2c4e",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/fahrenheit-451-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/fahrenheit-451-editorial.webp",
+      "sourceSha256": "fb48d8ccbfe5da5e3a7572aacccb330ef99bf32440920e232ac85ac3abd299d0",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/first-men-in-moon-20260820-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/first-men-in-moon-20260820-editorial.webp",
+      "sourceSha256": "43ee1633da546e4ca291952a2e1e2f30d130d00e569cc8633b030d12c0b94699",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/food-of-gods-wells-20260820-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/food-of-gods-wells-20260820-editorial.webp",
+      "sourceSha256": "98ac7e4f5616b76c0828145b5285762bd076a95cc6fd6055986dea4e7d1064e6",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/ghostwritten-20260820-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/ghostwritten-20260820-editorial.webp",
+      "sourceSha256": "c5de839b8424ff5dacffbf59183a9eb95a2830266688b3c54fd8ccb371650fb6",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/hamlet-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/hamlet-editorial.webp",
+      "sourceSha256": "391141118e538fd3058c1d707ddfdad7b4fe7f23e98b8ead971a171938625bd3",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/history-mr-polly-20260820-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/history-mr-polly-20260820-editorial.webp",
+      "sourceSha256": "43ab9a5fd4d2dfb89bd6202760ff44d922a212d65e49380696110e6b236d5f74",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/hobbit-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/hobbit-editorial.webp",
+      "sourceSha256": "78a5bfb15d6ee0a92dbdbbc1ab878c887f6038f1157de56e0e3453755b4eb814",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/lady-with-the-dog-20260820-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/lady-with-the-dog-20260820-editorial.webp",
+      "sourceSha256": "8a25a50f6ded8711aaa704a0a6f6cda56a00c3ffec4fe4dce3a1676b959edce9",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/les-miserables-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/les-miserables-editorial.webp",
+      "sourceSha256": "162b9ecdedb599023edbd97616b3dcd13eabe7238ea7f8f39985f7007c5b06eb",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/lolita-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/lolita-editorial.webp",
+      "sourceSha256": "095ab7341486a17e3ef1ab7def807a7e7e221c08e61d5d9e8e2bf60aabf4e4b5",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/madame-bovary-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/madame-bovary-editorial.webp",
+      "sourceSha256": "2db96b0cc4c47d27a22586b768508b812046bf3f0614cf7962fde6136ea6fdcf",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/men-like-gods-20260820-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/men-like-gods-20260820-editorial.webp",
+      "sourceSha256": "b0d304c28b4ee04fa7033b410b9d6e662aa0241f8c5f3e9537f8d13ce72ea10a",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/nineteen-eighty-four-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/nineteen-eighty-four-editorial.webp",
+      "sourceSha256": "346360d7794d342af53dbac086b858dd3f0ca70730d28ed4159f29211a0f7a6b",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/number9dream-20260820-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/number9dream-20260820-editorial.webp",
+      "sourceSha256": "90c758378e8d706f49d3f839824d19257a64c4c37596ea84e991a9c9bf270a5b",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/slade-house-20260820-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/slade-house-20260820-editorial.webp",
+      "sourceSha256": "5869633ba7c2cd3be9105cb523d78bddc7668ff707368c472ffbbe27ce0bc1b1",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/tale-of-two-cities-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/tale-of-two-cities-editorial.webp",
+      "sourceSha256": "d83efc0280b46832c0e7ece8726c59975bc7e852317ae948dc7656a1c203ea36",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/the-black-monk-chekhov-20260820-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/the-black-monk-chekhov-20260820-editorial.webp",
+      "sourceSha256": "e682b52194b306609635e17149e13060a6a5e9c03f75bbede81887f45e3b6945",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/the-catcher-in-the-rye-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/the-catcher-in-the-rye-editorial.webp",
+      "sourceSha256": "69371c020357db729b61097d1fd8f9946ee1c24b9410727dcb02b7535c0715ff",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/the-duel-chekhov-20260820-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/the-duel-chekhov-20260820-editorial.webp",
+      "sourceSha256": "a46e1ef7153e9a8834302ed2f4a4038c32f36f2e2c6e1713048ffe5ae518e2d2",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/the-man-in-a-case-20260820-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/the-man-in-a-case-20260820-editorial.webp",
+      "sourceSha256": "cf0bf8b955f805d7df9f4108e8064e18d1857685275cf6ea6ec4f1be97a128e3",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/the-old-man-and-the-sea-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/the-old-man-and-the-sea-editorial.webp",
+      "sourceSha256": "7713b0f6a3305f628240046b45f839ad81bd34d316028ebdb2dc6096518b2363",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/thousand-autumns-jacob-de-zoet-20260820-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/thousand-autumns-jacob-de-zoet-20260820-editorial.webp",
+      "sourceSha256": "01fd2c863e10b91d1ce4e52a4515f38c1aec058de9b713732d0ad51dfd4a8bac",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/to-kill-a-mockingbird-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/to-kill-a-mockingbird-editorial.webp",
+      "sourceSha256": "4bdcd719cd1b46cf4b8d33b18645dc79d3afb6846afebf915512349133705205",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/uncle-vanya-20260820-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/uncle-vanya-20260820-editorial.webp",
+      "sourceSha256": "cdd9549c0332bb873dac43d1db4ac366e2b252e0436382238f8e073936dcf1ba",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/war-and-peace-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/war-and-peace-editorial.webp",
+      "sourceSha256": "7903d542f17ddeabfbe91e13c849cdb2b74c4b85f1559cba2009b3f420a212a1",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/when-sleeper-wakes-20260820-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/when-sleeper-wakes-20260820-editorial.webp",
+      "sourceSha256": "a3632a0f029830ca1d0fde046fd81ef27fed36563c0358d76ffa306876774166",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/world-set-free-20260820-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/world-set-free-20260820-editorial.webp",
+      "sourceSha256": "db57f6eaa166b3f7f025d3d47abf233ee007e8d2cf45f2955eb8da7df4e8f128",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/to-kill-a-mockingbird-editorial.webp",
+      "source": "public/brand/book-covers/to-kill-a-mockingbird-editorial.webp",
+      "sourceSha256": "ee4b31b50d02de73e9cc7f2b5e790bb64c7bf3d1277b3c2a764234add8b093aa",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/uncle-vanya-20260820-editorial.webp",
+      "source": "public/brand/book-covers/uncle-vanya-20260820-editorial.webp",
+      "sourceSha256": "2922b2efd6b52223b1b6e059b29847cffd5e8e45706d08939344e33e882167b9",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/war-and-peace-editorial.webp",
+      "source": "public/brand/book-covers/war-and-peace-editorial.webp",
+      "sourceSha256": "7e461b1522e83e5bde243649a20992d254b06dead948e6ce9af751722db093bb",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/when-sleeper-wakes-20260820-editorial.webp",
+      "source": "public/brand/book-covers/when-sleeper-wakes-20260820-editorial.webp",
+      "sourceSha256": "07d083672febcfcef70fe77de2f6f228e48d0150978819bb3cf3fc4d32e9c5d9",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/world-set-free-20260820-editorial.webp",
+      "source": "public/brand/book-covers/world-set-free-20260820-editorial.webp",
+      "sourceSha256": "3825d661da0f43d67d82d21c66b797f6e30b364b36503b918ecb60ec2b7ab168",
+      "transformation": "none"
+    }
+  ],
+  "remoteOrNonlocalCoverRecords": [],
+  "noArtworkKeys": [
+    "austria:franz_kafka:openlibrary-works-ol498556w",
+    "canada:margaret_atwood:openlibrary-works-ol675783w",
+    "canada:yann_martel:life-of-pi",
+    "england:j_r_r_tolkien:openlibrary-works-ol27448w",
+    "england:jane_austen:pride-and-prejudice",
+    "england:john_galsworthy:the-forsyte-saga",
+    "france:saint_exupery:openlibrary-works-ol10263w",
+    "norway:knut_hamsun:growth-of-the-soil",
+    "poland:wladyslaw_reymont:the-peasants",
+    "spain:miguel_de_cervantes:openlibrary-works-ol15272537w",
+    "usa:francis_scott_fitzgerald:the-great-gatsby",
+    "usa:herman_melville:moby-dick",
+    "usa:suzanne_collins:the-hunger-games"
+  ],
+  "editorialApprovalCreated": false,
+  "legalApprovalCreated": false,
+  "releaseReady": false
+}

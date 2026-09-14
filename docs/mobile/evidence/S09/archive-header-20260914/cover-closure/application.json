@@ -1,0 +1,12 @@
+{
+  "recordedAt": "2026-09-14T02:51:57.427Z",
+  "pass": true,
+  "manifest": "scripts/mobile/native-base-assets.json",
+  "sha256": "b2c706b1f89a844af8505120184a5b2ee11f04247ed674ebf29da824bd978506",
+  "files": 1343,
+  "added": 54,
+  "canonicalSourcePinsVerified": true,
+  "allSelectedBytesVerified": true,
+  "additionalBytes": 3944574,
+  "newRightsApproval": false
+}

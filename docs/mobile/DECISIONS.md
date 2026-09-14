@@ -587,3 +587,13 @@
   compilation/signature/byte audits passed. These are development/QA artifacts,
   not installed-device or release acceptance. Owner archive filling continues
   independently; final canonical synchronization follows app implementation.
+
+- D110: Port the live canonical integrated archive masthead, as requested by
+  the owner. Correct UTF-8 source-fixture decoding and qualify old four-work
+  browser evidence; actual canonical content has46 admitted works. Include33
+  existing eligible local cover pairs through one hash-pinned native/PWA list
+  without creating rights approval. Measured missing artwork adds3,944,574B
+  to prior66,475,523B core, so raise only the bounded bootstrap total64→72MiB;
+  preserve other limits and test malformed/overflow replies. Final large owner
+  archives use a separate bounded integration. Batch the next Android/PWA
+  artifact refresh after the independently validated S10 name-search correction.

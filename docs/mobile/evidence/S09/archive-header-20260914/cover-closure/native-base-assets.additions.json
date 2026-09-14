@@ -1,0 +1,334 @@
+{
+  "schemaVersion": 1,
+  "baseManifestPath": "scripts/mobile/native-base-assets.json",
+  "baseManifestSha256": "80c3561b3e4011625acb6a176811f1b751194abcb9df52e44209b992f55c0a4e",
+  "proposedManifestSha256": "b2c706b1f89a844af8505120184a5b2ee11f04247ed674ebf29da824bd978506",
+  "sourceCommit": "cdd21cac08d4bf6e9c8752cf5cbf3b01583a7ec0",
+  "sourcePinsSha256": "589c8d082a0442676dd1f73b339fc0ddf327fc22615593e5544af6ddd38e0300",
+  "files": [
+    {
+      "output": "brand/book-covers/animal-farm-editorial.webp",
+      "source": "public/brand/book-covers/animal-farm-editorial.webp",
+      "sourceSha256": "64d0b8be9e1822742029079b3167ac71ff4ea3faf245988f13bb7910d690c561",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/bone-clocks-20260820-editorial.webp",
+      "source": "public/brand/book-covers/bone-clocks-20260820-editorial.webp",
+      "sourceSha256": "331e12aa75737f56294962bb2790a14593fa448d8ece6ac0692de3c64694e8f2",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/buddenbrooks-editorial.webp",
+      "source": "public/brand/book-covers/buddenbrooks-editorial.webp",
+      "sourceSha256": "b259ecaeb5f2670c173c80f789468417260cd91c4359961855c85d4110f1a59f",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/fahrenheit-451-editorial.webp",
+      "source": "public/brand/book-covers/fahrenheit-451-editorial.webp",
+      "sourceSha256": "a9b09e036ac1d3b3dc730bb779f98174be87e910811949eb04698ceb00ed92f2",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/first-men-in-moon-20260820-editorial.webp",
+      "source": "public/brand/book-covers/first-men-in-moon-20260820-editorial.webp",
+      "sourceSha256": "4db4ca9911ff861f9d7e3b6b511f1304af90c28a271847ac3b890f676892026a",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/food-of-gods-wells-20260820-editorial.webp",
+      "source": "public/brand/book-covers/food-of-gods-wells-20260820-editorial.webp",
+      "sourceSha256": "1c421c6d39fca78e25d74b30406c1ef34a8d709764305fdeac2dce2a38c5985b",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/ghostwritten-20260820-editorial.webp",
+      "source": "public/brand/book-covers/ghostwritten-20260820-editorial.webp",
+      "sourceSha256": "c3750b654af96c340e034fb57e5b361e1be0f94b9e1829628526e85e2f061190",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/hamlet-editorial.webp",
+      "source": "public/brand/book-covers/hamlet-editorial.webp",
+      "sourceSha256": "83c50513dee3ec402b522b7f370ee969586151f863a8f86c09183e705cebcc04",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/history-mr-polly-20260820-editorial.webp",
+      "source": "public/brand/book-covers/history-mr-polly-20260820-editorial.webp",
+      "sourceSha256": "746b0ca2792415c46a167c2ba3ec3ac86b38a85eb536e1560ee1b2ba2967fa5d",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/hobbit-editorial.webp",
+      "source": "public/brand/book-covers/hobbit-editorial.webp",
+      "sourceSha256": "6f950eda49c1cb44cc9d31c3de449a5ec8a3658675d797e1fba271978f63405d",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/lady-with-the-dog-20260820-editorial.webp",
+      "source": "public/brand/book-covers/lady-with-the-dog-20260820-editorial.webp",
+      "sourceSha256": "3358276fc60294079e1e1834aeb92ef58111e2f351d4243d791c27c84a3081ff",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/les-miserables-editorial.webp",
+      "source": "public/brand/book-covers/les-miserables-editorial.webp",
+      "sourceSha256": "894eaf2023a9005a8e48fcd7d54abda485489f844f3f02b8afbf1e7760767c13",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/lolita-editorial.webp",
+      "source": "public/brand/book-covers/lolita-editorial.webp",
+      "sourceSha256": "6633d3327c9e42472bf7275e077ca09437d4bb364182b811215d9112eb933faf",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/madame-bovary-editorial.webp",
+      "source": "public/brand/book-covers/madame-bovary-editorial.webp",
+      "sourceSha256": "009cb92e27aa697f1ae966404b336ca746715c7e628de2db1783ebf277280aff",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/men-like-gods-20260820-editorial.webp",
+      "source": "public/brand/book-covers/men-like-gods-20260820-editorial.webp",
+      "sourceSha256": "df604f197afe8a22a159843a7e3ab2a23af4a049c519577a153bfc5279d1ff0b",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/number9dream-20260820-editorial.webp",
+      "source": "public/brand/book-covers/number9dream-20260820-editorial.webp",
+      "sourceSha256": "bb24dbdbb32db897793e85e3b6aca3750ab49e8154842bd6af404ed0e64b1c1a",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/slade-house-20260820-editorial.webp",
+      "source": "public/brand/book-covers/slade-house-20260820-editorial.webp",
+      "sourceSha256": "9508fca6b8877a81608c5fa196dc9d0ed591412071c068115bd017c25712776f",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/the-black-monk-chekhov-20260820-editorial.webp",
+      "source": "public/brand/book-covers/the-black-monk-chekhov-20260820-editorial.webp",
+      "sourceSha256": "e1c2f19a2243532b8c089313f47f5e08f24b236316bf22af81d0526f69e5cd96",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/the-duel-chekhov-20260820-editorial.webp",
+      "source": "public/brand/book-covers/the-duel-chekhov-20260820-editorial.webp",
+      "sourceSha256": "38570b3cf9a76070f9bfec5f3024a6189c7541f5c40a2dd69c6e79d1f695f63b",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/the-man-in-a-case-20260820-editorial.webp",
+      "source": "public/brand/book-covers/the-man-in-a-case-20260820-editorial.webp",
+      "sourceSha256": "9dde84d733eeee5a61877a510a45e10703b30847b0c70ec2c92c7756b8190eb0",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/the-old-man-and-the-sea-editorial.webp",
+      "source": "public/brand/book-covers/the-old-man-and-the-sea-editorial.webp",
+      "sourceSha256": "9013e677f5d20163ef1b4745f62e51aee6bbddbbcda1e478a2425ef694633819",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thousand-autumns-jacob-de-zoet-20260820-editorial.webp",
+      "source": "public/brand/book-covers/thousand-autumns-jacob-de-zoet-20260820-editorial.webp",
+      "sourceSha256": "1d7eed4bf3bf4e33779b3268b26ce12fb9da7bab3a05dd8e6a7ed2a576572dcb",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/animal-farm-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/animal-farm-editorial.webp",
+      "sourceSha256": "058868a94e09dd5f6167723d8ea392b6a5a2cecb0e618ac420848da948bb7b41",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/bone-clocks-20260820-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/bone-clocks-20260820-editorial.webp",
+      "sourceSha256": "09dae9a14a07ec9adc34df3fdfdd7c290d0f3dbb8fbcb0b8179d6938df74996d",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/buddenbrooks-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/buddenbrooks-editorial.webp",
+      "sourceSha256": "6d9d560bc4cc8015d0159d9750364fe60ea645416a87a47c6d1dda87fd43293c",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/fahrenheit-451-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/fahrenheit-451-editorial.webp",
+      "sourceSha256": "fb48d8ccbfe5da5e3a7572aacccb330ef99bf32440920e232ac85ac3abd299d0",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/first-men-in-moon-20260820-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/first-men-in-moon-20260820-editorial.webp",
+      "sourceSha256": "43ee1633da546e4ca291952a2e1e2f30d130d00e569cc8633b030d12c0b94699",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/food-of-gods-wells-20260820-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/food-of-gods-wells-20260820-editorial.webp",
+      "sourceSha256": "98ac7e4f5616b76c0828145b5285762bd076a95cc6fd6055986dea4e7d1064e6",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/ghostwritten-20260820-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/ghostwritten-20260820-editorial.webp",
+      "sourceSha256": "c5de839b8424ff5dacffbf59183a9eb95a2830266688b3c54fd8ccb371650fb6",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/hamlet-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/hamlet-editorial.webp",
+      "sourceSha256": "391141118e538fd3058c1d707ddfdad7b4fe7f23e98b8ead971a171938625bd3",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/history-mr-polly-20260820-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/history-mr-polly-20260820-editorial.webp",
+      "sourceSha256": "43ab9a5fd4d2dfb89bd6202760ff44d922a212d65e49380696110e6b236d5f74",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/hobbit-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/hobbit-editorial.webp",
+      "sourceSha256": "78a5bfb15d6ee0a92dbdbbc1ab878c887f6038f1157de56e0e3453755b4eb814",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/lady-with-the-dog-20260820-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/lady-with-the-dog-20260820-editorial.webp",
+      "sourceSha256": "8a25a50f6ded8711aaa704a0a6f6cda56a00c3ffec4fe4dce3a1676b959edce9",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/les-miserables-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/les-miserables-editorial.webp",
+      "sourceSha256": "162b9ecdedb599023edbd97616b3dcd13eabe7238ea7f8f39985f7007c5b06eb",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/lolita-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/lolita-editorial.webp",
+      "sourceSha256": "095ab7341486a17e3ef1ab7def807a7e7e221c08e61d5d9e8e2bf60aabf4e4b5",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/madame-bovary-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/madame-bovary-editorial.webp",
+      "sourceSha256": "2db96b0cc4c47d27a22586b768508b812046bf3f0614cf7962fde6136ea6fdcf",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/men-like-gods-20260820-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/men-like-gods-20260820-editorial.webp",
+      "sourceSha256": "b0d304c28b4ee04fa7033b410b9d6e662aa0241f8c5f3e9537f8d13ce72ea10a",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/number9dream-20260820-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/number9dream-20260820-editorial.webp",
+      "sourceSha256": "90c758378e8d706f49d3f839824d19257a64c4c37596ea84e991a9c9bf270a5b",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/slade-house-20260820-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/slade-house-20260820-editorial.webp",
+      "sourceSha256": "5869633ba7c2cd3be9105cb523d78bddc7668ff707368c472ffbbe27ce0bc1b1",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/the-black-monk-chekhov-20260820-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/the-black-monk-chekhov-20260820-editorial.webp",
+      "sourceSha256": "e682b52194b306609635e17149e13060a6a5e9c03f75bbede81887f45e3b6945",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/the-duel-chekhov-20260820-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/the-duel-chekhov-20260820-editorial.webp",
+      "sourceSha256": "a46e1ef7153e9a8834302ed2f4a4038c32f36f2e2c6e1713048ffe5ae518e2d2",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/the-man-in-a-case-20260820-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/the-man-in-a-case-20260820-editorial.webp",
+      "sourceSha256": "cf0bf8b955f805d7df9f4108e8064e18d1857685275cf6ea6ec4f1be97a128e3",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/the-old-man-and-the-sea-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/the-old-man-and-the-sea-editorial.webp",
+      "sourceSha256": "7713b0f6a3305f628240046b45f839ad81bd34d316028ebdb2dc6096518b2363",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/thousand-autumns-jacob-de-zoet-20260820-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/thousand-autumns-jacob-de-zoet-20260820-editorial.webp",
+      "sourceSha256": "01fd2c863e10b91d1ce4e52a4515f38c1aec058de9b713732d0ad51dfd4a8bac",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/to-kill-a-mockingbird-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/to-kill-a-mockingbird-editorial.webp",
+      "sourceSha256": "4bdcd719cd1b46cf4b8d33b18645dc79d3afb6846afebf915512349133705205",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/uncle-vanya-20260820-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/uncle-vanya-20260820-editorial.webp",
+      "sourceSha256": "cdd9549c0332bb873dac43d1db4ac366e2b252e0436382238f8e073936dcf1ba",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/war-and-peace-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/war-and-peace-editorial.webp",
+      "sourceSha256": "7903d542f17ddeabfbe91e13c849cdb2b74c4b85f1559cba2009b3f420a212a1",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/when-sleeper-wakes-20260820-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/when-sleeper-wakes-20260820-editorial.webp",
+      "sourceSha256": "a3632a0f029830ca1d0fde046fd81ef27fed36563c0358d76ffa306876774166",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/thumbs/world-set-free-20260820-editorial.webp",
+      "source": "public/brand/book-covers/thumbs/world-set-free-20260820-editorial.webp",
+      "sourceSha256": "db57f6eaa166b3f7f025d3d47abf233ee007e8d2cf45f2955eb8da7df4e8f128",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/to-kill-a-mockingbird-editorial.webp",
+      "source": "public/brand/book-covers/to-kill-a-mockingbird-editorial.webp",
+      "sourceSha256": "ee4b31b50d02de73e9cc7f2b5e790bb64c7bf3d1277b3c2a764234add8b093aa",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/uncle-vanya-20260820-editorial.webp",
+      "source": "public/brand/book-covers/uncle-vanya-20260820-editorial.webp",
+      "sourceSha256": "2922b2efd6b52223b1b6e059b29847cffd5e8e45706d08939344e33e882167b9",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/war-and-peace-editorial.webp",
+      "source": "public/brand/book-covers/war-and-peace-editorial.webp",
+      "sourceSha256": "7e461b1522e83e5bde243649a20992d254b06dead948e6ce9af751722db093bb",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/when-sleeper-wakes-20260820-editorial.webp",
+      "source": "public/brand/book-covers/when-sleeper-wakes-20260820-editorial.webp",
+      "sourceSha256": "07d083672febcfcef70fe77de2f6f228e48d0150978819bb3cf3fc4d32e9c5d9",
+      "transformation": "none"
+    },
+    {
+      "output": "brand/book-covers/world-set-free-20260820-editorial.webp",
+      "source": "public/brand/book-covers/world-set-free-20260820-editorial.webp",
+      "sourceSha256": "3825d661da0f43d67d82d21c66b797f6e30b364b36503b918ecb60ec2b7ab168",
+      "transformation": "none"
+    }
+  ]
+}

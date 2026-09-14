@@ -12,7 +12,7 @@ const root = fileURLToPath(new URL("../../", import.meta.url));
 const origin = "https://native-planet.test";
 const digest = bytes => createHash("sha256").update(bytes).digest("hex");
 const mime = {
-  ".js": "text/javascript", ".css": "text/css", ".json": "application/json",
+  ".js": "text/javascript; charset=utf-8", ".css": "text/css; charset=utf-8", ".json": "application/json",
   ".geojson": "application/geo+json", ".svg": "image/svg+xml", ".png": "image/png",
   ".webp": "image/webp", ".avif": "image/avif", ".jpg": "image/jpeg", ".jpeg": "image/jpeg",
   ".woff": "font/woff", ".woff2": "font/woff2",
@@ -265,7 +265,7 @@ async function open({ route = "/", language = "ru", viewport = { width: 1280, he
     const url = new URL(request.request().url());
     if (url.origin !== origin) { externalRequests.push(url.href); await request.abort(); return; }
     if (request.request().resourceType() === "document" && url.pathname === "/") {
-      await request.fulfill({ contentType: "text/html", body: '<!doctype html><html lang="' + language + '"><head><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><link rel="stylesheet" href="/fixture/native-planet.css"></head><body><div id="root"></div><script src="/fixture/native-planet.js"></script></body></html>' });
+      await request.fulfill({ contentType: "text/html; charset=utf-8", body: '<!doctype html><html lang="' + language + '"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><link rel="stylesheet" href="/fixture/native-planet.css"></head><body><div id="root"></div><script src="/fixture/native-planet.js"></script></body></html>' });
       return;
     }
     const bytes = files.get(decodeURIComponent(url.pathname));
@@ -274,6 +274,7 @@ async function open({ route = "/", language = "ru", viewport = { width: 1280, he
     await request.fulfill({ status: 404, contentType: "text/plain", body: "Unselected fixture resource" });
   });
   await page.goto(origin + route);
+  expect(await page.evaluate(() => document.characterSet)).toBe("UTF-8");
   await nativeRootReady(page);
   return fixture;
 }

@@ -1,0 +1,180 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-14T02:40:17.696Z",
+  "stage": "S09",
+  "status": "IN_PROGRESS",
+  "checkpoint": "cdd21cac08d4bf6e9c8752cf5cbf3b01583a7ec0",
+  "route": "S03-S10",
+  "reason": "Explicit owner steering: integrate Literary Archive masthead into country card as on the current canonical website.",
+  "reference": {
+    "url": "https://probpera.ru/?country=russia&writer=dostoevsky#atlas",
+    "inspectedAt": "2026-09-14T02:37:41.217Z",
+    "viewports": [
+      {
+        "viewport": {
+          "width": 1366,
+          "height": 900
+        },
+        "phase": "initial",
+        "bar": {
+          "position": "sticky",
+          "top": "0px",
+          "zIndex": "30",
+          "display": "grid",
+          "overflow": "visible",
+          "overflowY": "visible",
+          "height": "64px",
+          "padding": "8px 27px",
+          "margin": "0px -27px",
+          "border": "",
+          "borderRadius": "0px",
+          "boxShadow": "none",
+          "background": "rgba(0, 0, 0, 0) linear-gradient(90deg, rgb(255, 253, 248), rgb(250, 242, 231)) repeat scroll 0% 0% / auto padding-box border-box",
+          "transform": "none"
+        },
+        "panel": {
+          "position": "relative",
+          "top": "0px",
+          "zIndex": "auto",
+          "display": "block",
+          "overflow": "hidden auto",
+          "overflowY": "auto",
+          "height": "720px",
+          "padding": "0px 27px 54px",
+          "margin": "0px",
+          "border": "1px solid rgba(223, 132, 54, 0.38)",
+          "borderRadius": "18px",
+          "boxShadow": "rgba(255, 255, 255, 0.86) 0px 1px 0px 0px inset, rgba(74, 22, 99, 0.024) 0px 0px 80px 0px inset, rgba(0, 0, 0, 0.2) -26px 0px 72px 0px, rgba(59, 15, 77, 0.12) 0px 18px 46px 0px",
+          "background": "radial-gradient(circle at 100% 0px, rgba(246, 117, 24, 0.08), rgba(0, 0, 0, 0) 32%) repeat scroll 0% 0% / auto padding-box border-box, radial-gradient(circle at 0px 38%, rgba(104, 16, 201, 0.055), rgba(0, 0, 0, 0) 30%) repeat scroll 0% 0% / auto padding-box border-box, rgba(0, 0, 0, 0) linear-gradient(155deg, rgba(255, 253, 248, 0.99), rgba(249, 240, 227, 0.984)) repeat scroll 0% 0% / auto padding-box border-box",
+          "transform": "none"
+        }
+      },
+      {
+        "viewport": {
+          "width": 1366,
+          "height": 900
+        },
+        "phase": "scrolled",
+        "bar": {
+          "position": "sticky",
+          "top": "0px",
+          "zIndex": "30",
+          "display": "grid",
+          "overflow": "visible",
+          "overflowY": "visible",
+          "height": "64px",
+          "padding": "8px 27px",
+          "margin": "0px -27px",
+          "border": "",
+          "borderRadius": "0px",
+          "boxShadow": "none",
+          "background": "rgba(0, 0, 0, 0) linear-gradient(90deg, rgb(255, 253, 248), rgb(250, 242, 231)) repeat scroll 0% 0% / auto padding-box border-box",
+          "transform": "none"
+        },
+        "panel": {
+          "position": "relative",
+          "top": "0px",
+          "zIndex": "auto",
+          "display": "block",
+          "overflow": "hidden auto",
+          "overflowY": "auto",
+          "height": "720px",
+          "padding": "0px 27px 54px",
+          "margin": "0px",
+          "border": "1px solid rgba(223, 132, 54, 0.38)",
+          "borderRadius": "18px",
+          "boxShadow": "rgba(255, 255, 255, 0.86) 0px 1px 0px 0px inset, rgba(74, 22, 99, 0.024) 0px 0px 80px 0px inset, rgba(0, 0, 0, 0.2) -26px 0px 72px 0px, rgba(59, 15, 77, 0.12) 0px 18px 46px 0px",
+          "background": "radial-gradient(circle at 100% 0px, rgba(246, 117, 24, 0.08), rgba(0, 0, 0, 0) 32%) repeat scroll 0% 0% / auto padding-box border-box, radial-gradient(circle at 0px 38%, rgba(104, 16, 201, 0.055), rgba(0, 0, 0, 0) 30%) repeat scroll 0% 0% / auto padding-box border-box, rgba(0, 0, 0, 0) linear-gradient(155deg, rgba(255, 253, 248, 0.99), rgba(249, 240, 227, 0.984)) repeat scroll 0% 0% / auto padding-box border-box",
+          "transform": "none"
+        }
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "phase": "initial",
+        "bar": {
+          "position": "sticky",
+          "top": "0px",
+          "zIndex": "30",
+          "display": "grid",
+          "overflow": "visible",
+          "overflowY": "visible",
+          "height": "64px",
+          "padding": "8px 17px",
+          "margin": "0px -17px",
+          "border": "",
+          "borderRadius": "0px",
+          "boxShadow": "none",
+          "background": "rgba(0, 0, 0, 0) linear-gradient(90deg, rgb(255, 253, 248), rgb(250, 242, 231)) repeat scroll 0% 0% / auto padding-box border-box",
+          "transform": "none"
+        },
+        "panel": {
+          "position": "relative",
+          "top": "0px",
+          "zIndex": "auto",
+          "display": "block",
+          "overflow": "hidden auto",
+          "overflowY": "auto",
+          "height": "316.234px",
+          "padding": "0px 17px 44px",
+          "margin": "0px",
+          "border": "1px solid rgba(223, 132, 54, 0.38)",
+          "borderRadius": "0px 0px 14px 14px",
+          "boxShadow": "rgba(255, 255, 255, 0.86) 0px 1px 0px 0px inset, rgba(74, 22, 99, 0.024) 0px 0px 80px 0px inset, rgba(0, 0, 0, 0.2) -26px 0px 72px 0px, rgba(59, 15, 77, 0.12) 0px 18px 46px 0px",
+          "background": "radial-gradient(circle at 100% 0px, rgba(246, 117, 24, 0.08), rgba(0, 0, 0, 0) 32%) repeat scroll 0% 0% / auto padding-box border-box, radial-gradient(circle at 0px 38%, rgba(104, 16, 201, 0.055), rgba(0, 0, 0, 0) 30%) repeat scroll 0% 0% / auto padding-box border-box, rgba(0, 0, 0, 0) linear-gradient(155deg, rgba(255, 253, 248, 0.99), rgba(249, 240, 227, 0.984)) repeat scroll 0% 0% / auto padding-box border-box",
+          "transform": "none"
+        }
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "phase": "scrolled",
+        "bar": {
+          "position": "sticky",
+          "top": "0px",
+          "zIndex": "30",
+          "display": "grid",
+          "overflow": "visible",
+          "overflowY": "visible",
+          "height": "64px",
+          "padding": "8px 17px",
+          "margin": "0px -17px",
+          "border": "",
+          "borderRadius": "0px",
+          "boxShadow": "none",
+          "background": "rgba(0, 0, 0, 0) linear-gradient(90deg, rgb(255, 253, 248), rgb(250, 242, 231)) repeat scroll 0% 0% / auto padding-box border-box",
+          "transform": "none"
+        },
+        "panel": {
+          "position": "relative",
+          "top": "0px",
+          "zIndex": "auto",
+          "display": "block",
+          "overflow": "hidden auto",
+          "overflowY": "auto",
+          "height": "316.234px",
+          "padding": "0px 17px 44px",
+          "margin": "0px",
+          "border": "1px solid rgba(223, 132, 54, 0.38)",
+          "borderRadius": "0px 0px 14px 14px",
+          "boxShadow": "rgba(255, 255, 255, 0.86) 0px 1px 0px 0px inset, rgba(74, 22, 99, 0.024) 0px 0px 80px 0px inset, rgba(0, 0, 0, 0.2) -26px 0px 72px 0px, rgba(59, 15, 77, 0.12) 0px 18px 46px 0px",
+          "background": "radial-gradient(circle at 100% 0px, rgba(246, 117, 24, 0.08), rgba(0, 0, 0, 0) 32%) repeat scroll 0% 0% / auto padding-box border-box, radial-gradient(circle at 0px 38%, rgba(104, 16, 201, 0.055), rgba(0, 0, 0, 0) 30%) repeat scroll 0% 0% / auto padding-box border-box, rgba(0, 0, 0, 0) linear-gradient(155deg, rgba(255, 253, 248, 0.99), rgba(249, 240, 227, 0.984)) repeat scroll 0% 0% / auto padding-box border-box",
+          "transform": "none"
+        }
+      }
+    ]
+  },
+  "changes": [
+    "Port current canonical full-width sticky masthead CSS: zero top padding, matching negative inline margin, full-width opaque surface, bottom divider, no rounded floating shadow.",
+    "Keep existing native theme variables and country panel scroll/focus/close behavior.",
+    "Correct source browser fixture UTF-8 HTML/JS/CSS decoding; do not alter catalog to compensate for broken source-fixture regex."
+  ],
+  "fixtureCorrection": "docs/mobile/evidence/S08/content-export-20260914/catalog-scope-audit.json#decodingFollowUp",
+  "ownerCatalogWorkflow": "Final owner archives synchronize after app implementation; no factual archive population.",
+  "stageAccepted": false,
+  "releaseReady": false
+}

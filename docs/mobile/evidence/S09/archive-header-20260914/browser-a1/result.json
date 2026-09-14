@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "runId": "s09-archive-header-20260914-a1",
+  "title": "native book author navigation closes the reader and reveals the canonical writer across RU and EN on the retained globe",
+  "head": "cdd21cac08d4bf6e9c8752cf5cbf3b01583a7ec0",
+  "status": "SOURCE_BROWSER_FAILED",
+  "pass": false,
+  "sourceInputsSha256": "362e437e638e6d352e01edcf2f983b8cf4571448f3209041b0603b69d638697f",
+  "sourceInputsUnchanged": true,
+  "statistics": {
+    "startTime": "2026-09-14T02:40:22.340Z",
+    "duration": 8603.458999999999,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "exitCode": 1,
+  "cases": [
+    {
+      "title": "native book author navigation closes the reader and reveals the canonical writer across RU and EN on the retained globe",
+      "results": [
+        {
+          "status": "failed",
+          "duration": 5770,
+          "errors": [
+            {
+              "location": {
+                "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs",
+                "column": 36,
+                "line": 383
+              },
+              "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 4\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   \"/brand/book-covers/thumbs/fahrenheit-451-editorial.webp\",\u001b[39m\n\u001b[31m+   \"/brand/book-covers/thumbs/buddenbrooks-editorial.webp\",\u001b[39m\n\u001b[31m+ ]\u001b[39m\n\n  381 |   expect(fixture.errors).toEqual([]);\n  382 |   expect(fixture.externalRequests).toEqual([]);\n> 383 |   expect(fixture.missingResources).toEqual([]);\n      |                                    ^\n  384 |   expect(await fixture.page.evaluate(() => window.__nativePlanetVisibleHeroFrames)).toBe(0);\n  385 | }\n  386 |\n    at evidence (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs:383:36)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs:1717:7"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "preserved": [
+    {
+      "path": "docs/mobile/evidence/S09/archive-header-20260914/browser-a1/playwright.json",
+      "bytes": 94153,
+      "sha256": "685d08509f61662037d558f16f9f281d246ee8a27848d1a8f8a32ba634f67a0e"
+    },
+    {
+      "path": "docs/mobile/evidence/S09/archive-header-20260914/browser-a1/native-book-author-return-ru.json",
+      "bytes": 31820,
+      "sha256": "8bc52bf041fb8712c377abd718835a6d729fefe7ba45a9c64dc8d4307e2cb3e9"
+    },
+    {
+      "path": "docs/mobile/evidence/S09/archive-header-20260914/browser-a1/native-book-author-return-ru-screenshot.png",
+      "bytes": 325098,
+      "sha256": "ee6a2a5f340c5b1f4f98d8754c6e6b5faa2fe0879db775929813be50be07bad5"
+    },
+    {
+      "path": "docs/mobile/evidence/S09/archive-header-20260914/browser-a1/native-final-failed.json",
+      "bytes": 31436,
+      "sha256": "d8b321ac209d41df1837823978ced7f84fecdf9c2c0e809b8e7d2ed486d243c3"
+    },
+    {
+      "path": "docs/mobile/evidence/S09/archive-header-20260914/browser-a1/native-final-failed-screenshot.png",
+      "bytes": 325098,
+      "sha256": "ee6a2a5f340c5b1f4f98d8754c6e6b5faa2fe0879db775929813be50be07bad5"
+    }
+  ],
+  "fixtureUsesCanonicalAppAndScene": true,
+  "actualInstalledRuntime": false,
+  "nativePluginsSimulated": true,
+  "stageAccepted": false,
+  "releaseReady": false
+}

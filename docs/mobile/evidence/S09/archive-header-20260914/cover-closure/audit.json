@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-14T02:50:37.208Z",
+  "status": "TEMP_SELECTION_READY_FOR_ROOT_REVIEW",
+  "sourceCommit": "cdd21cac08d4bf6e9c8752cf5cbf3b01583a7ec0",
+  "derivedFrom": {
+    "projector": ".tmp/content-export-tools/463a7f60-4a6b-487d-a083-4ce2d358e648/projector.mjs",
+    "sha256": "d4fd5da03d0bfbf816862135f3045df50793fde058ae2c54d534c9dab85e3315",
+    "sourceCommit": "89cf558d7be310503672420568b1c7a045bd8325",
+    "currentCanonicalSourcePinsMatched": 283,
+    "gate": "buildBookArchive(bookArchiveCountries).filter(isPublicBook), then require local editorial-original artwork with an existing zero-issue cover-rights report"
+  },
+  "baseSelection": {
+    "path": "scripts/mobile/native-base-assets.json",
+    "sha256": "80c3561b3e4011625acb6a176811f1b751194abcb9df52e44209b992f55c0a4e",
+    "files": 1289
+  },
+  "proposedSelection": {
+    "path": "native-base-assets.proposed.json",
+    "sha256": "b2c706b1f89a844af8505120184a5b2ee11f04247ed674ebf29da824bd978506",
+    "files": 1343
+  },
+  "counts": {
+    "publicBooks": 46,
+    "localEditorialCovers": 33,
+    "fullAndThumbnailFiles": 66,
+    "alreadySelectedFiles": 12,
+    "missingFilesToAdd": 54,
+    "noArtworkBooks": 13,
+    "remoteCovers": 0
+  },
+  "sizes": {
+    "allCoverBytes": 5256370,
+    "additionalBytes": 3944574
+  },
+  "rights": {
+    "basis": "Existing canonical coverRights and existing cover-rights-audit records only.",
+    "status": "editorial-original",
+    "existingReportGeneratedAt": "2026-08-20T00:00:00.000Z",
+    "allPriorReportRecordsDisplayAllowed": true,
+    "priorReportIssues": 0,
+    "requiredEditorialLabel": "Preserve current RU/EN editorial-cover attribution; no claim of a publisher edition or ISBN.",
+    "newEditorialApproval": false,
+    "newLegalApproval": false,
+    "independentRightsResearchPerformed": false,
+    "existingMetadataAuthenticityNotNewlyCertified": true
+  },
+  "pwa": {
+    "currentDynamicSelection": "pwa-portrait-selection.mjs selects assets/writer-portraits only.",
+    "currentCoverSelection": "build-pwa.mjs hardcodes six full/thumbnail pairs.",
+    "proposed": "Reuse these exact manifest cover pins as essential offline assets. Copy unchanged bytes and verify source SHA256; never fetch external-preview or unverified artwork."
+  },
+  "limits": [
+    "No tracked source, manifest, catalog, tests or state edited.",
+    "No source build or tests run; the existing exact-hash projector was evaluated after matching current canonical input hashes.",
+    "No missing-resource assertions suppressed or fallback substituted for existing eligible artwork.",
+    "No remote cover exists in this current public set. Future remote assets must not be downloaded automatically.",
+    "Existing cover metadata is not a new legal or editorial approval."
+  ],
+  "artifacts": [
+    {
+      "path": "source-pins.json",
+      "sha256": "589c8d082a0442676dd1f73b339fc0ddf327fc22615593e5544af6ddd38e0300",
+      "bytes": 43944
+    },
+    {
+      "path": "canonical-cover-closure.json",
+      "sha256": "dc8ae960bf13b9218be681816b66c08a780de79f70207d0546518277ae969174",
+      "bytes": 105755
+    },
+    {
+      "path": "native-base-assets.additions.json",
+      "sha256": "4756c04b58c1f1c73c11db599a1cef85bf67c5a703ab2546f60f73f521fe683c",
+      "bytes": 16314
+    },
+    {
+      "path": "native-base-assets.proposed.json",
+      "sha256": "b2c706b1f89a844af8505120184a5b2ee11f04247ed674ebf29da824bd978506",
+      "bytes": 339405
+    }
+  ],
+  "releaseReady": false
+}
