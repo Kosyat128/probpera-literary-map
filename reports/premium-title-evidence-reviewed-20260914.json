@@ -1,0 +1,204 @@
+{
+  "id": "PREMIUM-TITLE-EVIDENCE-REVIEWED-20260914",
+  "baselineSourceCommitSha": "4b8983e60c07d3bb0f4607ce41e5b3d322d82563",
+  "reviewDate": "2026-09-14",
+  "historicalPinsChanged": false,
+  "historicalMigrationsChanged": false,
+  "databaseChanged": false,
+  "validatorChanged": false,
+  "archiveOverlayChanged": false,
+  "productionApplied": false,
+  "humanReview": false,
+  "broadSourceExclusionsAdded": false,
+  "problem": "The premium exporter omitted contained-title relations and source field qualifiers, producing 16 Evidence V2 issues across 9 directly mapped public books. Later static overlays masked the missing CMS metadata.",
+  "scope": "Preserve the four validated contained-title fields and two existing source enums in the premium serializer. Reject malformed relations, missing contained-title details and contained details on principal records. Existing publication and Evidence V2 validation remain unchanged.",
+  "preservesFields": [
+    "titleRelation",
+    "analyticTitleExact",
+    "containerTitleExact",
+    "containedInField"
+  ],
+  "preservesSourceEnums": [
+    "container-title",
+    "contained-title"
+  ],
+  "directEvidence": {
+    "profileCount": 69,
+    "issuesBefore": 16,
+    "affectedBooks": 9,
+    "issuesAfter": 0,
+    "staticArchiveOverlayUsed": false,
+    "completeFreshExportClaim": false,
+    "ordinaryExporterIssues": 0,
+    "restoredFieldOccurrences": 144,
+    "restoredSourceEnumOccurrences": 36,
+    "unrelatedMapFieldsUnchanged": true,
+    "exactSourcePunctuationNotesPreserved": 14,
+    "inputScope": "Previously saved public-RLS rows through real exporter modules with isolated I/O; unrelated article/site/font data is synthetic. No new network, database writes or file publication."
+  },
+  "validation": {
+    "focusedTestsPassed": 13,
+    "focusedFiles": 3,
+    "actual69MappingFixturePassed": 1,
+    "aggregateReceipt": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/05/01a07287-758c-7971-bafa-6fb523b64f71/.tmp/premium-contained-title-fix-20260914/receipt.json",
+      "sha256": "34d6ac35dcf787c16bbdcae1464354e6e4b13664d97a72997fb880fefc56426c"
+    },
+    "directReceipt": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/05/01a07287-758c-7971-bafa-6fb523b64f71/.tmp/premium-contained-title-fix-20260914/direct-evidence-receipt.json",
+      "sha256": "bb889aa06a5cc7aadebb1ca51719a7fb8b595eba236925328697614d7bec95c7",
+      "evidence": {
+        "status": "passed",
+        "scope": "Same saved public rows; direct real CMS mapper and EvidenceV2 checks with no static archive overlays. No new network or production writes.",
+        "results": {
+          "ordinary": {
+            "count": 69,
+            "public": 69,
+            "issues": []
+          },
+          "priorPremium": {
+            "count": 69,
+            "public": 69,
+            "issues": [
+              {
+                "key": "england:charles_dickens:openlibrary-works-ol14869167w",
+                "issue": "ru-title-evidence-1-exact-catalog-title-mismatch"
+              },
+              {
+                "key": "england:charles_dickens:openlibrary-works-ol8300174w",
+                "issue": "ru-title-evidence-1-exact-catalog-title-mismatch"
+              },
+              {
+                "key": "france:jules_verne:openlibrary-works-ol1099364w",
+                "issue": "en-title-evidence-1-exact-catalog-title-mismatch"
+              },
+              {
+                "key": "france:jules_verne:openlibrary-works-ol1099479w",
+                "issue": "ru-title-evidence-1-exact-catalog-title-mismatch"
+              },
+              {
+                "key": "france:jules_verne:openlibrary-works-ol1099479w",
+                "issue": "ru-title-evidence-2-exact-catalog-title-mismatch"
+              },
+              {
+                "key": "france:jules_verne:openlibrary-works-ol1099630w",
+                "issue": "ru-title-evidence-1-exact-catalog-title-mismatch"
+              },
+              {
+                "key": "france:jules_verne:openlibrary-works-ol1099630w",
+                "issue": "ru-title-evidence-2-exact-catalog-title-mismatch"
+              },
+              {
+                "key": "france:jules_verne:openlibrary-works-ol1099630w",
+                "issue": "en-title-evidence-1-exact-catalog-title-mismatch"
+              },
+              {
+                "key": "russia:chekhov:the-black-monk",
+                "issue": "en-title-evidence-1-exact-catalog-title-mismatch"
+              },
+              {
+                "key": "russia:chekhov:the-black-monk",
+                "issue": "en-title-evidence-2-exact-catalog-title-mismatch"
+              },
+              {
+                "key": "russia:chekhov:the-lady-with-the-dog",
+                "issue": "en-title-evidence-1-exact-catalog-title-mismatch"
+              },
+              {
+                "key": "russia:chekhov:the-man-in-a-case",
+                "issue": "en-title-evidence-1-exact-catalog-title-mismatch"
+              },
+              {
+                "key": "russia:chekhov:the-man-in-a-case",
+                "issue": "en-title-evidence-2-exact-catalog-title-mismatch"
+              },
+              {
+                "key": "russia:tolstoy:article-series-zqpjjm",
+                "issue": "ru-title-evidence-1-exact-catalog-title-mismatch"
+              },
+              {
+                "key": "russia:tolstoy:article-series-zqpjjm",
+                "issue": "en-title-evidence-1-exact-catalog-title-mismatch"
+              },
+              {
+                "key": "russia:tolstoy:article-series-zqpjjm",
+                "issue": "en-title-evidence-2-exact-catalog-title-mismatch"
+              }
+            ]
+          },
+          "correctedPremium": {
+            "count": 69,
+            "public": 69,
+            "issues": []
+          }
+        },
+        "restoredFields": 144,
+        "restoredSourceEnums": 36,
+        "unchangedOutsideSixFields": true,
+        "exactSourcePunctuationNotes": 14,
+        "mapSha256": "018bfaf0a892305da69f05b26e861e564ed5fdb6e11b1e02c9db269994b3d215",
+        "mapCanonicalSha256": "d56c4e5568830c234d97a0fda4766c682f1783293068ab3963cd04d49a266b78",
+        "validatorRuntimeSha256": "81d376f789ca925c69be06d073b67f7d3753e898e7c000767effbf39068c0e12",
+        "sourceHashes": {
+          "scripts/export-premium-translations.mjs": "9ad7d90532bd0d458b6666c25d93c31f1f4153a938e3961bbd26ae3a2feba083",
+          "scripts/export-published-content.fixture.test.mjs": "b1cf00cafaf402066042ffe65ecb00237d060823c3a9db280fc835d92f3b799a",
+          "src/data/bookEvidence.ts": "2f8c93a27abeb9cb05cc62db72f80605e84024a24069a3330bd3b7bbef141681",
+          "src/data/cms/editorialOverrides.ts": "9d569451e09cdd1706c3a63414a39cf1449c767afc24040ebad99bbe99c579da"
+        }
+      }
+    },
+    "mappingReceipt": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/05/01a07287-758c-7971-bafa-6fb523b64f71/.tmp/premium-contained-title-fix-20260914/mapping-receipt.json",
+      "sha256": "1e8c31497b111dc30641eae3d8f509d1e9a4ebf0e250c82165c4d28b4ec2dffa",
+      "evidence": {
+        "status": "passed",
+        "scope": "Actual public-RLS work rows through both current exporter modules with isolated I/O boundaries. Unrelated article/site/font data is synthetic empty; not a full or stable CMS export.",
+        "privateCredentialsRead": false,
+        "realNetworkCallsDuringMapping": 0,
+        "realAtomicFileCommits": 0,
+        "inputSha256": "7138569d9ece1b51f48de498f3efd1c5827b84b796197cd00ecec7cbf3667b00",
+        "mapSha256": "018bfaf0a892305da69f05b26e861e564ed5fdb6e11b1e02c9db269994b3d215",
+        "mapCanonicalSha256": "d56c4e5568830c234d97a0fda4766c682f1783293068ab3963cd04d49a266b78",
+        "ordinaryMapCanonicalSha256": "3621f8ecbc84d87947d019913b23a46ce23d59c783650b8f1ff3080bbc33ccdf",
+        "ordinaryAndPremiumMapsEqual": false,
+        "entries": 69,
+        "translations": 138,
+        "sources": 535,
+        "sourceFiles": {
+          "scripts/export-published-content.mjs": "2bfa22b063f387f08364e27fb6ca05a5840cc57b2fd48c5ce98f7316b5721cf7",
+          "scripts/export-premium-translations.mjs": "9ad7d90532bd0d458b6666c25d93c31f1f4153a938e3961bbd26ae3a2feba083",
+          "scripts/lib/literary-work-publication-roundtrip.mjs": "31df164d229833485ab3e32a3054bf487b07fd9e0d760f091a70d82ff8bc2384",
+          "scripts/lib/book-authorship-roundtrip.mjs": "7aa2e24d756352952d99d4d2cfbaed149051162bce98038541303997ec38eb5e"
+        },
+        "exporterSourceRequests": 14
+      }
+    }
+  },
+  "governanceBoundary": "Five exact source paths restore actual published main bytes. Historical wrappers retain their original projections and SHA expectations; composition checks use current physical source before traversing all newer layers.",
+  "files": [
+    {
+      "path": "scripts/export-premium-translations.mjs",
+      "sha256Lf": "9ad7d90532bd0d458b6666c25d93c31f1f4153a938e3961bbd26ae3a2feba083"
+    },
+    {
+      "path": "scripts/export-published-content.fixture.test.mjs",
+      "sha256Lf": "b1cf00cafaf402066042ffe65ecb00237d060823c3a9db280fc835d92f3b799a"
+    },
+    {
+      "path": "scripts/lib/reviewed-cms-source-punctuation.mjs",
+      "sha256Lf": "e0f01f0e7f7514df9da288efca5af0672d2d33f576593d6191c3d97d4dfc1029"
+    },
+    {
+      "path": "scripts/lib/reviewed-cms-source-punctuation.test.mjs",
+      "sha256Lf": "aa9bf771b4bc335b0b5dd97a39c052e3530b7f79907e87faa43bf31feb0ea120"
+    },
+    {
+      "path": "scripts/lib/reviewed-native-archive-read.test.mjs",
+      "sha256Lf": "f3a4a8bc63eed0e7677160bbc804abb6ece32cc6eb990377b273cce73fc95733"
+    },
+    {
+      "path": "scripts/lib/reviewed-premium-title-evidence.mjs",
+      "sha256Lf": "e4429f32186aa768ba4a7bf6ce236cf4923097e5cfac51382609cdd8ab312ae0"
+    }
+  ]
+}

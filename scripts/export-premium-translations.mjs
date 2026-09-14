@@ -97,6 +97,8 @@ const workSourceFields = new Set([
   "authorship",
   "title",
   "original-title",
+  "container-title",
+  "contained-title",
   "publication-year",
   "language",
   "genre",
@@ -132,6 +134,8 @@ const workTitleSelectionRules = new Set([
   "current-complete-authorized-edition",
   "original-market-title",
 ]);
+const workTitleRelations = new Set(["principal", "contained-work"]);
+const workContainedInFields = new Set(["contents-note", "table-of-contents"]);
 const workDescriptionOrigins = new Set([
   "article-adapted",
   "official-source-synthesis",
@@ -304,6 +308,18 @@ function normalizeWorkTitleEvidenceRecord(value) {
   );
   const recordId = stringValue(row.recordId, 300);
   const catalogTitleExact = stringValue(row.catalogTitleExact, 300);
+  const titleRelation = row.titleRelation === undefined
+    ? undefined : enumStringValue(row.titleRelation, workTitleRelations);
+  const analyticTitleExact = optionalString(row.analyticTitleExact, 300);
+  const containerTitleExact = optionalString(row.containerTitleExact, 300);
+  const containedInField = enumStringValue(row.containedInField, workContainedInFields);
+  if (row.titleRelation !== undefined && !titleRelation) return null;
+  if (titleRelation === "contained-work") {
+    if (!analyticTitleExact || !containerTitleExact || !containedInField) return null;
+  } else if (["analyticTitleExact", "containerTitleExact", "containedInField"]
+    .some((field) => row[field] !== undefined)) {
+    return null;
+  }
   const locale = enumStringValue(row.locale, workLocales);
   const market = stringValue(row.market, 80);
   const expressionLanguage = stringValue(row.expressionLanguage, 120);
@@ -350,6 +366,9 @@ function normalizeWorkTitleEvidenceRecord(value) {
     recordKind,
     recordId,
     catalogTitleExact,
+    ...(titleRelation ? { titleRelation } : {}),
+    ...(titleRelation === "contained-work"
+      ? { analyticTitleExact, containerTitleExact, containedInField } : {}),
     locale,
     market,
     expressionLanguage,

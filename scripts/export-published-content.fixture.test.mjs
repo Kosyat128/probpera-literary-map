@@ -1,4 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
+import { assertPublicationMetadata } from "./lib/cms-publication-state.mjs";
 
 const boundary = vi.hoisted(() => ({ commit: vi.fn(), files: new Map() }));
 vi.mock("./lib/atomic-file-set.mjs", () => ({ commitAtomicFileSet: boundary.commit }));
@@ -70,7 +71,45 @@ describe("published CMS exporter with isolated I/O boundaries", () => {
       work_id: work.id, provider, source_url: `https://example.test/${work.id}`,
       field_names: ["title"], license_name: "CC0", usage: "reference-only", retrieved_at: "2026-09-14", metadata: {},
     })));
+    const evidenceCases = [
+      { relation: "contained-work", field: "contents-note", valid: true },
+      { relation: "contained-work", field: "table-of-contents", valid: true },
+      { relation: "unsupported", field: "contents-note", valid: false },
+      { relation: "contained-work", field: "unreviewed-note", valid: false },
+      { relation: "contained-work", field: "contents-note", omit: "analyticTitleExact", valid: false },
+      { relation: "contained-work", field: "contents-note", omit: "containerTitleExact", valid: false },
+      { relation: "contained-work", omit: "containedInField", valid: false },
+      { relation: "principal", field: "contents-note", valid: false },
+    ];
+    const workTranslations = evidenceCases.map((testCase, index) => {
+      const work = works[index];
+      const evidence = {
+        entityKind: "manifestation", manifestationId: `fixture-manifestation-${index}`,
+        sourceUrl: `https://example.test/catalog/${index}`, provider: "Fixture catalog",
+        authorityId: "fixture-authority", authorityTier: "A", recordKind: "national-bibliography",
+        recordId: `fixture-record-${index}`, catalogTitleExact: "Collected works",
+        titleRelation: testCase.relation, analyticTitleExact: work.title,
+        containerTitleExact: "Collected works", containedInField: testCase.field,
+        locale: "ru", market: "RU", expressionLanguage: "ru",
+        retrievedAt: "2026-09-14", checkedAt: "2026-09-14", checkedBy: "Fixture reviewer",
+      };
+      if (testCase.omit) delete evidence[testCase.omit];
+      const titleEvidence = {
+        entityKind: "expression", expressionId: `${work.legacy_id}:ru`, locale: "ru",
+        value: work.title, status: "verified-published", expressionLanguage: "ru", market: "RU",
+        selectionRule: "authoritative-uniform-title", evidence: [evidence],
+      };
+      work.metadata = { localizedTitles: { ru: titleEvidence } };
+      return { work_id: work.id, locale: "ru", title: work.title,
+        description: "A fixture description for testing export preservation of bibliographic evidence without changing the reviewed source, its identity, its language, or its publication status.",
+        source_language: "ru", translation_method: "editorial-original", editorial_status: "reviewed",
+        source_urls: [evidence.sourceUrl], reviewed_at: "2026-09-14", metadata: { titleEvidence } };
+    });
+    for (const source of sources.filter(source => source.work_id === works[0].id)) {
+      source.field_names = ["title", "container-title", "contained-title"];
+    }
     Object.assign(tables, { articles, article_translations: translations, literary_works: works, literary_work_sources: sources });
+    tables.literary_work_translations = workTranslations;
     let publicParentsRead = false;
     const sourceBatches = [];
     const fetchFixture = vi.fn(async (input, init) => {
@@ -132,7 +171,9 @@ describe("published CMS exporter with isolated I/O boundaries", () => {
     }
     for (const work of works) {
       expect(snapshot.literaryWorksByLegacyId[work.legacy_id].sources).toEqual(["A source", "B source"].map(provider => ({
-        provider, url: `https://example.test/${work.id}`, fields: ["title"], license: "CC0", usage: "reference-only", retrievedAt: "2026-09-14",
+        provider, url: `https://example.test/${work.id}`,
+        fields: work.id === works[0].id ? ["title", "container-title", "contained-title"] : ["title"],
+        license: "CC0", usage: "reference-only", retrievedAt: "2026-09-14",
       })));
     }
     sourceBatches.length = 0;
@@ -142,6 +183,23 @@ describe("published CMS exporter with isolated I/O boundaries", () => {
     expect(sourceBatches.map(ids => ids.length)).toEqual([10, 10, 10, 10, 1]);
     const premiumWrites = boundary.commit.mock.calls[1][0].writes;
     const enriched = JSON.parse(premiumWrites.find(write => write.path.endsWith("published-content.json")).content);
-    expect(enriched).toEqual(snapshot);
+    const expected = structuredClone(snapshot);
+    evidenceCases.forEach((testCase, index) => {
+      const key = works[index].legacy_id, work = enriched.literaryWorksByLegacyId[key];
+      if (testCase.valid) {
+        expect(work.localizedTitles).toEqual(snapshot.literaryWorksByLegacyId[key].localizedTitles);
+        expect(work.translations.ru.titleEvidence).toEqual(work.localizedTitles.ru);
+      } else {
+        expect(work.localizedTitles).toBeUndefined();
+        expect(work.translations.ru.titleEvidence).toBeUndefined();
+        delete expected.literaryWorksByLegacyId[key].localizedTitles;
+        delete expected.literaryWorksByLegacyId[key].translations.ru.titleEvidence;
+      }
+    });
+    // Invalid evidence changes the content hash, while every other article,
+    // source, translation and publication-head field remains identical.
+    expect(assertPublicationMetadata(enriched)).toEqual(enriched.publication);
+    expected.publication.contentSha256 = enriched.publication.contentSha256;
+    expect(enriched).toEqual(expected);
   });
 });

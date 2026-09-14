@@ -1,5 +1,7 @@
 import { readFileSync } from "node:fs";
 import { createHash } from "node:crypto";
+import { execFileSync } from "node:child_process";
+import { fileURLToPath } from "node:url";
 import { load } from "cheerio";
 import { describe, expect, it } from "vitest";
 import { prepareArticleDocument as prepare, prepareProjectedArticleDocument as prepareProjection } from "./article-document-preparation.mjs";
@@ -11,6 +13,18 @@ import { EDITORIAL_PUBLICATION_FIX_IDS } from "../editorial-publication-fixes.mj
 import reviewedCopy from "../fixtures/article-copy-refinement-20260914.json" with { type: "json" };
 
 const snapshot = (id) => JSON.parse(readFileSync(new URL(`../../public/cms/articles/cms-${id}.json`, import.meta.url), "utf8"));
+const historicalEssay = () => {
+  // Fresh exports already contain the paragraph correction. Its original
+  // transformation proof must use the exact pre-projection public source.
+  const bytes = execFileSync("git", ["show",
+    "d6c7849ccc5285e17c6da9ef147fecc9fdd0f000:public/cms/articles/cms-f5f4a78c-c63e-47ca-9fed-a86ca98aead7.json",
+  ], { cwd: fileURLToPath(new URL("../../", import.meta.url)), maxBuffer: 64 * 1024 });
+  expect(createHash("sha256").update(bytes).digest("hex"))
+    .toBe("c297018cd7e69f46eb6e3694b530d86172661b36ccce4e170fbe04074c293ff3");
+  const article = JSON.parse(bytes.toString("utf8"));
+  expect(article.id).toBe(`cms-${POETRY_ESSAY_ARTICLE_ID}`);
+  return article;
+};
 const images = (html) => { const $ = load(html); return $("img").toArray().map((img) => ({ ...img.attribs })); };
 const exporter = readFileSync(new URL("../export-published-content.mjs", import.meta.url), "utf8");
 const austerlitz = '<img src="https://sjqejjmwpzfsczxdghvw.supabase.co/storage/v1/object/public/editorial-media/2026/08/2e38f799-d4a9-4554-b52b-63293b7e496e.webp" alt="Обложка «Аустерлиц»" class="article-image is-right is-aspect-auto is-fit-contain" data-media-id="f6d769ea-d5cd-4c92-bc0a-7556b01520cb" data-image-layout="right" data-image-width="20" data-image-aspect="auto" data-image-fit="contain" data-image-appearance="frame" data-image-reveal="none" data-focus-x="0.5000" data-focus-y="0.5000" data-lightbox="true" data-decorative="true" loading="lazy">';
@@ -74,7 +88,7 @@ describe("reviewed article reading projection", () => {
   });
 
   it("splits exactly the reviewed essay prose into eight paragraphs, preserving text and every verse byte", () => {
-    const original = snapshot(POETRY_ESSAY_ARTICLE_ID);
+    const original = historicalEssay();
     const corrected = applyArticleReadingEditorialFix(original);
     const text = (html) => load(html).text().replace(/\s+/gu, " ").trim();
     expect(corrected.description).toBe("Эссе о первой встрече с поэзией и книге, которая пробудила интерес к стихам.");
@@ -100,7 +114,7 @@ describe("reviewed article reading projection", () => {
   });
 
   it("matches reviewed prose after actual export HTML serialization without mutating CMS input", () => {
-    const original = snapshot(POETRY_ESSAY_ARTICLE_ID);
+    const original = historicalEssay();
     const raw = { id: POETRY_ESSAY_ARTICLE_ID, title: original.title, content_html: original.contentHtml.replaceAll("<br>", "<br />").replaceAll("&nbsp;", "\u00a0") };
     const before = structuredClone(raw);
     const projected = prepareProjection(raw);
@@ -108,6 +122,26 @@ describe("reviewed article reading projection", () => {
     expect(load(projected.contentHtml)("p").length - load(original.contentHtml)("p").length).toBe(7);
     expect(projected.plainText).toBe(prepare(projected.contentHtml).plainText);
     expect(prepareProjection({ ...raw, content_html: projected.contentHtml })).toEqual(projected);
+  });
+
+  it("keeps a freshly exported essay unchanged on repeated projection", () => {
+    const original = historicalEssay();
+    const raw = { id: original.id, title: original.title, content_html: original.contentHtml };
+    const prepared = prepareProjection(raw);
+    const published = applyArticleReadingEditorialFix({ ...original, ...prepared });
+    expect(load(original.contentHtml)("p").length).toBe(34);
+    expect(load(published.contentHtml)("p").length).toBe(41);
+    expect(applyArticleReadingEditorialFix(published)).toBe(published);
+    expect(prepareProjection({ ...raw, content_html: published.contentHtml })).toEqual(prepared);
+    for (const field of ["id", "source", "publishedAt", "updatedAt", "sources", "bibliography"]) {
+      expect(published[field]).toEqual(original[field]);
+    }
+    // The generated file may be either the saved baseline or a current export.
+    // In both cases projection must settle without further content changes.
+    const current = applyArticleReadingEditorialFix(snapshot(POETRY_ESSAY_ARTICLE_ID));
+    expect(applyArticleReadingEditorialFix(current)).toBe(current);
+    expect(prepareProjection({ id: current.id, title: current.title, content_html: current.contentHtml }))
+      .toEqual(prepare(current.contentHtml, current.title));
   });
 
   it("applies all reviewed copy fields, including computed descriptions, without changing custom metadata", () => {

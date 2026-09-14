@@ -1,6 +1,6 @@
 import { existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
 import {
   applyCrossCountryReviewedCanonMerges,
@@ -20,16 +20,27 @@ import {
   selectBookWriterName,
 } from "./bookLocalization";
 import { isPublicBook } from "./bookQuality";
+import * as cmsOverrides from "./cms/editorialOverrides";
+import { historicalCmsLiteraryWorkProfilesForWriter } from "./cms/historicalLiteraryWorks20260912.test-support";
 import { bookArchiveCountries } from "./countries";
 import enrichmentActionsJson from "./countries/generated/books.enrichment-actions.json";
 import type { Country, WorkProfile } from "./countries/types";
 
 const archive = buildBookArchive(bookArchiveCountries);
-const rawArchive = buildBookArchive(bookArchiveCountries, {
-  includeReviewedGenerated: false,
-  applyEnrichmentActions: false,
-  includeUserSuppliedCovers: false,
-});
+const rawArchive = (() => {
+  // The raw-corpus count predates the public CMS import of canonical RU titles.
+  // Only this historical baseline uses its original 17 CMS records; every
+  // current archive, publication and merge assertion uses the actual CMS below.
+  const lookup = vi.spyOn(cmsOverrides, "cmsLiteraryWorkProfilesForWriter")
+    .mockImplementation(historicalCmsLiteraryWorkProfilesForWriter);
+  try {
+    return buildBookArchive(bookArchiveCountries, {
+      includeReviewedGenerated: false,
+      applyEnrichmentActions: false,
+      includeUserSuppliedCovers: false,
+    });
+  } finally { lookup.mockRestore(); }
+})();
 const archiveBeforeEnrichmentActions = buildBookArchive(bookArchiveCountries, {
   applyEnrichmentActions: false,
   includeUserSuppliedCovers: false,

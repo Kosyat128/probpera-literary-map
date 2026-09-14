@@ -1,0 +1,217 @@
+{
+  "contract": "fresh-cms-performance-reviewed-20260914",
+  "reviewDate": "2026-09-14",
+  "baseMainSha": "4b8983e60c07d3bb0f4607ce41e5b3d322d82563",
+  "scope": "Measured capacity allocation for the completed local169-article/69-public-work diagnostic composition, including approved article presentation and derived metadata. Only the two raw aggregate base limits change; this does not attribute every emitted byte solely to the book map.",
+  "previousVerifiedCi": {
+    "source": "PR199 successful quality performance checks, exact measurements independently reviewed from the saved CI log.",
+    "articleCount": 167,
+    "publicCmsWorkCount": 17,
+    "distExcludingValidatedImageCorpusBytes": 135002043,
+    "distExcludingValidatedImageCorpusAndBookCoversBytes": 95426877,
+    "bookCoversBytes": 39575166,
+    "runId": 34815633197,
+    "jobId": 103885594793,
+    "logLines": {
+      "articleAllowance": 2078,
+      "total": 2084,
+      "excludingCovers": 2085,
+      "bookCovers": 2117
+    }
+  },
+  "completedCandidate": {
+    "articleCount": 169,
+    "publicCmsWorkCount": 69,
+    "distExcludingValidatedImageCorpusBytes": 137577339,
+    "distExcludingValidatedImageCorpusAndBookCoversBytes": 98002173,
+    "bookCoversBytes": 39575166,
+    "reviewedArticleProjectionChangedArticles": 44,
+    "canonicalArchiveRecords": 9763,
+    "pendingArchiveRecords": 9694,
+    "buildExitCode": 0,
+    "buildCompletedAt": "2026-09-14T08:26:23.5210020Z",
+    "domainChecks": {
+      "passed": 13014,
+      "failed": 0
+    },
+    "seoChecks": {
+      "passed": 5544,
+      "failed": 0
+    },
+    "authoritativeMeasurementArtifact": ".tmp/fresh-cms-candidate-proof-20260914/performance-complete-before.log",
+    "excludedMeasurements": [
+      {
+        "artifact": ".tmp/fresh-cms-candidate-proof-20260914/performance-before.log",
+        "reason": "Contained duplicated fixture-only optimized/optimized image copies; invalid composition."
+      },
+      {
+        "artifact": ".tmp/fresh-cms-candidate-proof-20260914/performance-clean-before.log",
+        "reason": "Read partial dist before the clean build had completed."
+      }
+    ]
+  },
+  "allocation": {
+    "unit": "bytes",
+    "measuredCompositionIncrease": 2575296,
+    "articleCountIncrease": 2,
+    "existingArticleCredit": 524288,
+    "remainingIncrease": 2051008,
+    "roundingQuantum": 65536,
+    "approvedBaseIncrease": 2097152,
+    "roundingHeadroom": 46144,
+    "formula": "ceil((2575296 - (169 - 167) * 262144) / 65536) * 65536 = 2097152",
+    "changes": [
+      {
+        "field": "distTotalBytes",
+        "before": 134479872,
+        "after": 136577024,
+        "increase": 2097152
+      },
+      {
+        "field": "distExcludingBookCoversBytes",
+        "before": 94896128,
+        "after": 96993280,
+        "increase": 2097152
+      }
+    ],
+    "effective169ArticleLimits": {
+      "total": 138412032,
+      "excludingBookCovers": 98828288
+    },
+    "priorMeasuredMargins": {
+      "total": 788549,
+      "excludingBookCovers": 779971
+    },
+    "calculatedMarginsForCompletedCandidate": {
+      "total": 834693,
+      "excludingBookCovers": 826115
+    },
+    "marginIncrease": 46144
+  },
+  "unchangedPolicies": {
+    "cmsArticleGrowthAllowance": {
+      "snapshotPath": "cms/published-content.json",
+      "baselineCount": 162,
+      "bytesPerAdditionalArticle": 262144
+    },
+    "noNewFileExclusions": true,
+    "noJsonMinificationOrSerializationChange": true,
+    "auditorUnchanged": true,
+    "sqlMigrationsAndDatabaseUnchanged": true,
+    "workflowsUnchanged": true,
+    "allOtherBudgetFieldsUnchanged": true
+  },
+  "independentMeasuredPasses": {
+    "initialAssetGzip": {
+      "bytes": 292338,
+      "limit": 307200
+    },
+    "largestJavaScript": {
+      "bytes": 2053989,
+      "limit": 2097152
+    },
+    "largestJavaScriptGzip": {
+      "bytes": 183790,
+      "limit": 409600
+    },
+    "mainJavaScript": {
+      "bytes": 453273,
+      "limit": 716800
+    },
+    "mainJavaScriptGzip": {
+      "bytes": 139500,
+      "limit": 225280
+    },
+    "validatedPublishedImageCorpus": {
+      "bytes": 611875021,
+      "byteLimit": 671088640,
+      "files": 3964,
+      "fileLimit": 4200,
+      "sources": 1776,
+      "sourceLimit": 1900
+    },
+    "publishedSiteTotal": {
+      "bytes": 749452360,
+      "limit": 900000000
+    },
+    "bookCovers": {
+      "bytes": 39575166,
+      "count": 424,
+      "byteLimit": 40108032,
+      "countLimit": 424
+    },
+    "otherImagePortraitAndGlobeCaps": "Every corresponding line in the authoritative completed measurement passed."
+  },
+  "sourceOnlyMapComparison": {
+    "oldMapCount": 17,
+    "newMapCount": 69,
+    "oldGeneratedModuleBytes": 62041,
+    "newGeneratedModuleWithSameHeaderBytes": 1379745,
+    "generatedModuleSourceGrowth": 1317704,
+    "oldMapCompactJsonBytes": 50571,
+    "newMapCompactJsonBytes": 1011993,
+    "compactInitializerGrowth": 961422,
+    "oldSnapshotBytes": 648547,
+    "publicSnapshotGrowthWithOnlyWorkMapChanged": 1378082,
+    "oldModuleSha256": "6634bf7a357e7b1cfd1859d1194b66f355a8d6b1814da8342d9c75c3adcff2dd",
+    "oldPublicSnapshotSha256": "9d343f295af2eb3f95edc9d33cd8907f7c7d214cd56f3a90678c42ccf66b60e2",
+    "newMapSha256": "018bfaf0a892305da69f05b26e861e564ed5fdb6e11b1e02c9db269994b3d215",
+    "measurementLimit": "Source bytes only; actual dist measurements above determine the allocation."
+  },
+  "sourceBindings": {
+    "oldBudgetSha256Lf": "74a29367f884a647ea2335650ca20f46203b5678ec46b0c524a7b84085223e4d",
+    "newBudgetSha256Lf": "9bed01864d9a675ae08f7313e0d7c030e30234a2b78a9590a8f1c985bd91d4bb",
+    "auditorSha256Lf": "99a73f180f0805a3433fa2d23eda61ad68c626ec356f60dbcca346339c13c7a4",
+    "preparationAndMappedSourceHashes": "Bound by the seeding receipt in evidenceArtifacts."
+  },
+  "evidenceArtifacts": [
+    {
+      "localArtifact": ".tmp/pr199-preflight-34815633197.log",
+      "sha256": "d82f8947bb68f0e469da2cdc76884252dba0f8cef88c4e78312b5f2b30f1a9c4"
+    },
+    {
+      "localArtifact": ".tmp/fresh-cms-candidate-proof-20260914/performance-complete-before.log",
+      "sha256": "d6fa5084e124e39269161859a03f72416657f2365a52b2c13e183343c2364f5a"
+    },
+    {
+      "localArtifact": ".tmp/fresh-cms-candidate-proof-20260914/build-result-clean.json",
+      "sha256": "44f935e0ff0c86ef935989209cd4d209c6cd401dbfdaa6088a6ab792ef26ecc5"
+    },
+    {
+      "localArtifact": ".tmp/fresh-cms-candidate-proof-20260914/build-domain-clean.log",
+      "sha256": "ea5016c642707979c5080e567f0fdbd9617279f3cecf3531485917268c6d39f3"
+    },
+    {
+      "localArtifact": ".tmp/fresh-cms-candidate-proof-20260914/seeding-receipt.json",
+      "sha256": "f4e5abdb47a50b3692b4a5f5e397b166216c3360c10b4a0bf451d5f6ebabd51e"
+    },
+    {
+      "localArtifact": ".tmp/fresh-cms-candidate-proof-20260914/gate-receipt.json",
+      "sha256": "8b54a49d7f3ca25e524fe6ea7557a0a759f678f239ad7aaf0ef612e5d3f956e6"
+    },
+    {
+      "localArtifact": ".tmp/fresh-cms-budget-basis-20260914/source-basis.json",
+      "sha256": "310db5b5bf2e0b4a6176b9bb754c6c9a140ffb6ea96dada67f6855029fdc2ce4"
+    },
+    {
+      "localArtifact": ".tmp/premium-contained-title-fix-20260914/receipt.json",
+      "sha256": "34d6ac35dcf787c16bbdcae1464354e6e4b13664d97a72997fb880fefc56426c"
+    },
+    {
+      "localArtifact": ".tmp/premium-contained-title-fix-20260914/actual-public69.generated.json",
+      "sha256": "018bfaf0a892305da69f05b26e861e564ed5fdb6e11b1e02c9db269994b3d215"
+    }
+  ],
+  "limitations": [
+    "The candidate combines a captured public169-article snapshot with the actual corrected public69-work mapper output. It is not an atomic private-CMS export or a production deployment.",
+    "The complete Pages workflow must still export and verify its own current publication head and run these unchanged gates.",
+    "The two additional articles retain the existing262144-byte per-article allowance; no permanent allowance for future arbitrary catalogue growth is introduced."
+  ],
+  "validation": {
+    "freshDataTestsPassed": 50,
+    "enrichmentTestsPassed": 67,
+    "overlappingTests": 31,
+    "contentLinksBooksAudits": "passed",
+    "postChangeAudit": "Owner reruns unchanged auditor on completed dist; no rebuild needed."
+  }
+}

@@ -40,10 +40,11 @@ describe("Native archive read additive governance", () => {
 
   it.each(paths)("restores exact published bytes and fails closed on altered fragments in %s", path => {
     const source = read(path), previous = projectReviewedNativeArchiveRead(path, source);
+    const currentSource = readFileSync(path, "utf8").replace(/\r\n?/gu, "\n");
     expect(sha(source)).toBe(nativeArchiveReadAttestation.reviewedSourceSha256[path]);
     expect(sha(previous)).toBe(nativeArchiveReadAttestation.sourceBaselines[path]);
     expect(projectReviewedNativeArchiveRead(path, source.replaceAll("\n", "\r\n"))).toBe(previous);
-    expect(projectReviewedDraftStorage(path, source)).toBe(projectPublishedDraftStorage(path, previous));
+    expect(projectReviewedDraftStorage(path, currentSource)).toBe(projectPublishedDraftStorage(path, previous));
     const unrelated = "\n/* Unreviewed source changes remain visible. */\n";
     expect(projectReviewedNativeArchiveRead(path, source + unrelated)).toBe(previous + unrelated);
     expect(sha(previous + unrelated)).not.toBe(nativeArchiveReadAttestation.sourceBaselines[path]);
@@ -52,6 +53,9 @@ describe("Native archive read additive governance", () => {
       for (const changed of [source.replace(delta.after, ""), source + delta.after,
         source.replace(delta.after, delta.after.replace(/\S/u, "?"))]) {
         expect(() => projectReviewedNativeArchiveRead(path, changed)).toThrow("Missing or duplicate reviewed native-read delta");
+      }
+      for (const changed of [currentSource.replace(delta.after, ""), currentSource + delta.after,
+        currentSource.replace(delta.after, delta.after.replace(/\S/u, "?"))]) {
         expect(() => projectReviewedDraftStorage(path, changed)).toThrow("Missing or duplicate reviewed native-read delta");
       }
     }
