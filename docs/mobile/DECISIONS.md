@@ -678,3 +678,14 @@
   source identities. Native device/process-death gates remain open; proceed
   with internal S11 storage management under document18. D107 final owner
   archive synchronization and all stage/release gates remain unchanged.
+
+- D120: S11 capacity is display-only and never persisted or sent off-device. Browser
+  values are origin quota estimates; Android uses app-available volume bytes and iOS
+  declares reason 85F4.1 for user-visible space information. A bounded explicit query
+  remains available without an approved package catalogue. Cleanup removes only an
+  unfinished adult candidate, with transfer/selection lock ordering and native serial
+  protection of current/previous versions. Source c0dba72e has 301 units and 6 Chrome
+  cases; Android/dev 3144732d passes strict artifact, binary and exact-copy checks.
+  Preserve the prior APK/PWA; no native execution, iOS compilation, stage acceptance,
+  production activation or release approval is inferred. Continue with Wi-Fi-only
+  controls before the next PWA refresh; D107 final owner archive sync stays deferred.

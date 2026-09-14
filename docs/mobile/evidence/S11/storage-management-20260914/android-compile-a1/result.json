@@ -1,0 +1,42 @@
+{
+  "kind": "native-java-compilation",
+  "startedAt": "2026-09-14T12:07:19.4739909+00:00",
+  "durationSeconds": 16.2744458,
+  "exitCode": 0,
+  "sourceInputs": [
+    {
+      "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetContentStorePlugin.java",
+      "sha256": "e7c2f7af9b0bc1e5d3df44c4943bc50935e4a899cee2d8ba3089ec79a1f723af"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/MainActivity.java",
+      "sha256": "a463dc4e87b2ea698b6657138a14d433c0f674336d6eca8dce30407950ba9c57"
+    },
+    {
+      "path": "apps/mobile/android/app/build.gradle",
+      "sha256": "8d2c79e36aeacd77e2cc3068fd5dbf09389291c970e0c37179ef4791841e845c"
+    },
+    {
+      "path": "apps/mobile/android/variables.gradle",
+      "sha256": "83d502c9ed8fcf1dd4791482067abeedbebae49fafe9cd14a8a1f5891deb0d88"
+    },
+    {
+      "path": "apps/mobile/android/build.gradle",
+      "sha256": "e2aa5075e1fcfd5e77c63eb8d662932b3c8586c927376b88a4986365af3b635f"
+    },
+    {
+      "path": "apps/mobile/android/settings.gradle",
+      "sha256": "6ce098d15ebd69b44c4ecd786bca1bdc366340d2459b2af4d7bb0ab317aa9669"
+    },
+    {
+      "path": "apps/mobile/android/gradle/wrapper/gradle-wrapper.properties",
+      "sha256": "05fcb55a155233ee632da57149d1ba3cd39a001701ae00e0c20782fbaf6c378b"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "pass": true,
+  "apkBuilt": false,
+  "deviceTested": false,
+  "iosCompiled": false,
+  "releaseReady": false
+}

@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S11/storage-management-20260914/playwright.config.mjs"
+  ],
+  "startedAt": "2026-09-14T12:10:31.727Z",
+  "durationMs": 19932,
+  "exitCode": 0,
+  "logs": {
+    "stdout": {
+      "text": "\nRunning 2 tests using 1 worker\n\n\n\n[1/2] tests\\host\\native-planet.spec.mjs:387:1 › downloads live in the actual globe collection and retain the scene through RUEN and reopening\n[2/2] tests\\host\\native-planet.spec.mjs:1109:1 › native host background pauses the actual globe while the document stays visible and resumes preserved state\n  2 passed (19.3s)\n",
+      "sha256": "202561d42b89baf5f64e6e459d6231d1031536b76119e7176767110eaef22431"
+    },
+    "stderr": {
+      "text": "(node:36252) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "sha256": "cf2be71c6e49323c1230b924330b9043ed818662aa203c53861673da664d694e"
+    }
+  }
+}

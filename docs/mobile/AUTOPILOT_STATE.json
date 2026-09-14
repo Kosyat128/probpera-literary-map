@@ -5,7 +5,7 @@
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
   "headSha": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-14T11:52:21.949Z",
+  "updatedAt": "2026-09-14T12:21:00.476Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -1710,11 +1710,12 @@
           "evidence": [
             "docs/mobile/evidence/S11/content-intake-20260914/result.json",
             "docs/mobile/evidence/S11/content-download-20260914/result.json",
-            "docs/mobile/evidence/S11/download-lifecycle-20260914/result.json"
+            "docs/mobile/evidence/S11/download-lifecycle-20260914/result.json",
+            "docs/mobile/evidence/S11/storage-management-20260914/result.json"
           ],
           "commit": null,
           "lastValidatedAt": null,
-          "notes": "Atomic update/rollback. Canonical export/display comes before offline integrity and reviewed English equivalence. Portable QA verification and atomic derived cache are implemented and validated with the real preserved S08 exports. Full application/native transport and activation are not accepted. Signed whole-file network recovery passes real HTTP interruption, browser restart and two-document retry. Native/user-facing integration remains open. Download controls now pause on background/offline and resume explicitly from verified files; retained native observation fixes a browser-reproduced stale foreground state. Native device, complete content and full-stage acceptance remain open."
+          "notes": "Atomic update/rollback. Canonical export/display comes before offline integrity and reviewed English equivalence. Portable QA verification and atomic derived cache are implemented and validated with the real preserved S08 exports. Full application/native transport and activation are not accepted. Signed whole-file network recovery passes real HTTP interruption, browser restart and two-document retry. Native/user-facing integration remains open. Download controls now pause on background/offline and resume explicitly from verified files; retained native observation fixes a browser-reproduced stale foreground state. Native device, complete content and full-stage acceptance remain open. Storage capacity display and explicit incomplete-candidate removal are implemented; real Chrome verifies cross-tab commit protection and offline current/previous reads. Android/dev packaging passes, with native device execution and full criterion acceptance still open."
         },
         {
           "id": "S11.CONTENT-007",
@@ -1730,11 +1731,12 @@
           "evidence": [
             "docs/mobile/evidence/S11/install-resume-20260914/result.json",
             "docs/mobile/evidence/S11/content-download-20260914/result.json",
-            "docs/mobile/evidence/S11/download-lifecycle-20260914/result.json"
+            "docs/mobile/evidence/S11/download-lifecycle-20260914/result.json",
+            "docs/mobile/evidence/S11/storage-management-20260914/result.json"
           ],
           "commit": null,
           "lastValidatedAt": null,
-          "notes": "Interrupted download recovery. Canonical export/display comes before offline integrity and reviewed English equivalence. Public PWA first-install whole-file retry is implemented and tested. Full all-platform package/download recovery is not accepted. Signed whole-file network recovery passes real HTTP interruption, browser restart and two-document retry. Native/user-facing integration remains open. Download controls now pause on background/offline and resume explicitly from verified files; retained native observation fixes a browser-reproduced stale foreground state. Native device, complete content and full-stage acceptance remain open."
+          "notes": "Interrupted download recovery. Canonical export/display comes before offline integrity and reviewed English equivalence. Public PWA first-install whole-file retry is implemented and tested. Full all-platform package/download recovery is not accepted. Signed whole-file network recovery passes real HTTP interruption, browser restart and two-document retry. Native/user-facing integration remains open. Download controls now pause on background/offline and resume explicitly from verified files; retained native observation fixes a browser-reproduced stale foreground state. Native device, complete content and full-stage acceptance remain open. Storage capacity display and explicit incomplete-candidate removal are implemented; real Chrome verifies cross-tab commit protection and offline current/previous reads. Android/dev packaging passes, with native device execution and full criterion acceptance still open."
         },
         {
           "id": "S11.CONTENT-009",
@@ -1756,11 +1758,12 @@
           "id": "S11.MOD-041",
           "status": "IN_PROGRESS",
           "evidence": [
-            "docs/mobile/evidence/S11/download-lifecycle-20260914/result.json"
+            "docs/mobile/evidence/S11/download-lifecycle-20260914/result.json",
+            "docs/mobile/evidence/S11/storage-management-20260914/result.json"
           ],
           "commit": null,
           "lastValidatedAt": null,
-          "notes": "Offline and slow network cannot create endless loader or data corruption. Feature readiness is checked again in moderation against the exact candidate and localized dossier. Download controls now pause on background/offline and resume explicitly from verified files; retained native observation fixes a browser-reproduced stale foreground state. Native device, complete content and full-stage acceptance remain open."
+          "notes": "Offline and slow network cannot create endless loader or data corruption. Feature readiness is checked again in moderation against the exact candidate and localized dossier. Download controls now pause on background/offline and resume explicitly from verified files; retained native observation fixes a browser-reproduced stale foreground state. Native device, complete content and full-stage acceptance remain open. Storage capacity display and explicit incomplete-candidate removal are implemented; real Chrome verifies cross-tab commit protection and offline current/previous reads. Android/dev packaging passes, with native device execution and full criterion acceptance still open."
         },
         {
           "id": "S11.MOD-045",
@@ -1865,7 +1868,15 @@
         "node docs/mobile/evidence/S11/download-lifecycle-20260914/run-checks.mjs static a2",
         "node docs/mobile/evidence/S11/download-lifecycle-20260914/run-checks.mjs browser a2",
         "node docs/mobile/evidence/S11/download-lifecycle-20260914/run-checks.mjs globe a1",
-        "node docs/mobile/evidence/S11/download-lifecycle-20260914/run-pwa.mjs 06d8e85281eb925ae140debd588c560f9e2e0bd1"
+        "node docs/mobile/evidence/S11/download-lifecycle-20260914/run-pwa.mjs 06d8e85281eb925ae140debd588c560f9e2e0bd1",
+        "node docs/mobile/evidence/S11/storage-management-20260914/run-checks.mjs unit a1",
+        "node docs/mobile/evidence/S11/storage-management-20260914/run-checks.mjs static a1",
+        "node docs/mobile/evidence/S11/storage-management-20260914/run-checks.mjs browser a2",
+        "node docs/mobile/evidence/S11/storage-management-20260914/run-checks.mjs globe a1",
+        "docs/mobile/evidence/S11/storage-management-20260914/compile-android.ps1",
+        "docs/mobile/evidence/S11/storage-management-20260914/verify-ios-privacy.ps1",
+        "docs/mobile/evidence/S11/storage-management-20260914/build-android.ps1 -expectedSource c0dba72eb23f48eb6e1a0ea92a44e8cd75e4107c",
+        "node docs/mobile/evidence/S11/storage-management-20260914/preserve-android.mjs"
       ],
       "artifacts": [
         "docs/mobile/evidence/S11/install-resume-20260914/entry.json",
@@ -1879,7 +1890,9 @@
         "docs/mobile/evidence/S11/download-controls-android-20260914/result.json",
         "docs/mobile/evidence/S11/download-lifecycle-20260914/entry.json",
         "docs/mobile/evidence/S11/download-lifecycle-20260914/result.json",
-        "docs/mobile/evidence/S11/download-lifecycle-20260914/pwa-a1/result.json"
+        "docs/mobile/evidence/S11/download-lifecycle-20260914/pwa-a1/result.json",
+        "docs/mobile/evidence/S11/storage-management-20260914/result.json",
+        "docs/mobile/evidence/S11/storage-management-20260914/android-a1/result.json"
       ],
       "externalBlockers": []
     },
@@ -10680,7 +10693,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Continue S11 storage management: bounded free-space reporting and optional package removal with protected bootstrap/current/previous generations, following document18 and the existing native/cache ports. Native filesystem execution/process-death recovery remains unverified: ADB lists no devices and no emulator is installed; do not treat injected Chrome events as native execution. Reuse current 226 source units, 4 source browser cases and the c6c50755 actual PWA case when inputs remain unchanged. Android a83dfcd6 predates the latest lifecycle source; refresh only after the next native-relevant slice. Keep QA candidates inactive and D107 final owner archive synchronization deferred. No public CI upload, deploy, merge or store action.",
+    "nextAction": "Continue S11 with the Wi-Fi-only download preference and truthful network-type capabilities, following document18 and existing platform lifetime services. Keep unknown network types explicit; preserve whole-file resume, protected current/previous/bootstrap, one canonical globe and equal RU/EN controls. Reuse the current 301 unit and 6 Chrome cases when relevant inputs are unchanged. Android/dev 3144732d now includes lifecycle and storage controls but has no installed-device/process-death evidence; iOS source and privacy XML are prepared but uncompiled. PWA c6c50755 predates storage management; refresh after the next bounded Web integration slice. Keep production descriptors/trust empty and QA bytes inactive. D107 final owner archive synchronization stays deferred. No public CI upload, deploy, merge or store action.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -10713,7 +10726,9 @@
       "docs/mobile/evidence/S11/download-controls-20260914/result.json",
       "docs/mobile/evidence/S11/download-controls-android-20260914/result.json",
       "docs/mobile/evidence/S11/download-lifecycle-20260914/result.json",
-      "docs/mobile/evidence/S11/download-lifecycle-20260914/pwa-a1/result.json"
+      "docs/mobile/evidence/S11/download-lifecycle-20260914/pwa-a1/result.json",
+      "docs/mobile/evidence/S11/storage-management-20260914/result.json",
+      "docs/mobile/evidence/S11/storage-management-20260914/android-a1/result.json"
     ],
     "commands": [
       "node scripts/mobile/verify-requirements.mjs",
@@ -10724,7 +10739,8 @@
     "doNotRepeat": [
       "Unchanged shared invariants and S01-S02 source contracts already fully read. Read new S03 routed documents before implementation.",
       "S02 full regression3139, final narrow259 and browser13 passed; rerun only checks justified by S03 changes.",
-      "Global ICU/content/native/package/RC requirements remain incomplete; no approval or release inferred."
+      "Global ICU/content/native/package/RC requirements remain incomplete; no approval or release inferred.",
+      "Storage source c0dba72e: 301 units, 6 Chrome cases, type/platform checks and Android 3144732d binary/copy audit passed. Tests/browser callbacks are not installed native execution."
     ]
   },
   "requirementsHash": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732",
@@ -12249,6 +12265,40 @@
       "browserPassed": true,
       "actualChromeCases": 1,
       "localQaAuthority": true,
+      "stageAccepted": false,
+      "releaseReady": false
+    },
+    "s11StorageManagement": {
+      "status": "SOURCE_STORAGE_CONTROLS_AND_ANDROID_ARTIFACT_VALIDATED",
+      "evidence": "docs/mobile/evidence/S11/storage-management-20260914/result.json",
+      "sha256": "f0b50cfae02afb00f96e6d067014361d84f9c195085da6ffd8bcefc8449c4b56",
+      "sourceCommit": "c0dba72eb23f48eb6e1a0ea92a44e8cd75e4107c",
+      "passingUnitCases": 301,
+      "actualChromeCases": 6,
+      "sourceInputsCurrent": true,
+      "nativeDeviceTested": false,
+      "stageAccepted": false,
+      "releaseReady": false
+    },
+    "s11StorageAndroid": {
+      "status": "BUILD_BINARY_AUDIT_AND_EXACT_COPY_PASSED",
+      "evidence": "docs/mobile/evidence/S11/storage-management-20260914/android-a1/result.json",
+      "sha256": "0f98b546fb2fb54c0d053c4663984e9dd1ba8b5bc854cc7bf3e48c12de8cbd7f",
+      "sourceCommit": "c0dba72eb23f48eb6e1a0ea92a44e8cd75e4107c",
+      "buildId": "3144732dbc3bb470383ed9c2b35f9477f8103a9a7375348236844482301ff7b3",
+      "apk": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s11-storage/android-3144732d/app-dev-debug.apk",
+        "bytes": 67586005,
+        "sha256": "fa66d74be6491149b89c1acbe6ae92c62b855398fcc53518e5eb05d8215731dd"
+      },
+      "artifact": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s11-storage/android-3144732d/runtime",
+        "sha256": "08119c00a3a217a2852faa050ca27c78b2316aed781d9f606ab450718128f98b",
+        "files": 1403,
+        "bytes": 72302153
+      },
+      "nativeDeviceTested": false,
+      "iosCompiled": false,
       "stageAccepted": false,
       "releaseReady": false
     }

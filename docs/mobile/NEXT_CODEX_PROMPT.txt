@@ -1,3 +1,24 @@
+<!-- s11-storage-management-20260914:begin -->
+S11 storage controls are validated from source c0dba72e: 301 unit cases, 6 actual Chrome
+cases, TypeScript/platform checks and Android compilation passed. RU/EN shows browser
+origin estimates or native device capacity on request. A 5-second timeout reports unknown
+space truthfully. Removing one incomplete adult download keeps current/previous and the
+mandatory bootstrap protected, including a competing tab that finishes committing first.
+Browser-a1 failure was a stale RU locator after cross-tab EN synchronization; browser-a2
+passes after fixing the test. Original-resolution RU/EN and canonical panel images inspected.
+Evidence: evidence/S11/storage-management-20260914/result.json.
+Android/dev 3144732d was built from this exact source and passed strict runtime, APK
+ZIP/CRC/assets, locales, signature, alignment and DEX checks. Exact 67,586,005-byte APK
+and 1403-file runtime copy are preserved under the current D: workspace s11-storage folder.
+APK SHA256: fa66d74be6491149b89c1acbe6ae92c62b855398fcc53518e5eb05d8215731dd
+Prior Android a83dfcd6 remains byte-for-byte preserved. PWA c6c50755 remains at its earlier
+lifecycle source; storage management is not included in that PWA artifact. iOS privacy XML
+validates display-only disk-space reason 85F4.1; iOS is uncompiled and native device/process-
+death execution is unverified. Only S00-S02 accepted; first-open S03 and all release gates stay.
+Next: Wi-Fi-only preference and truthful network-type handling; then refresh the PWA.
+Production descriptors/trust stay empty, QA bytes inactive and D107 final archive sync deferred.
+<!-- s11-storage-management-20260914:end -->
+
 <!-- s11-lifecycle-pwa-20260914:begin -->
 Source06d8e852 produced local-QA PWA c6c50755. Strict artifact audit and actual
 cold offline RUEN download-panel navigation passed with the same canonical globe,

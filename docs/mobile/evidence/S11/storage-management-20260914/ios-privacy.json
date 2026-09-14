@@ -1,0 +1,26 @@
+{
+  "pass": true,
+  "kind": "local-ios-privacy-xml-validation",
+  "source": "apps/mobile/ios/App/App/PrivacyInfo.xcprivacy",
+  "sha256": "6a95fd5fb438c8ca481ddebdb3e18457d4df52c1eee41008a1fe7e60042b4810",
+  "checkedAt": "2026-09-14T12:14:36.9554546+00:00",
+  "entries": [
+    {
+      "category": "NSPrivacyAccessedAPICategoryDiskSpace",
+      "reasons": [
+        "85F4.1"
+      ]
+    },
+    {
+      "category": "NSPrivacyAccessedAPICategoryUserDefaults",
+      "reasons": [
+        "CA92.1"
+      ]
+    }
+  ],
+  "iosCompiled": false,
+  "deviceTested": false,
+  "releaseReady": false,
+  "diskSpaceUse": "Display only on explicit user action; in-memory result, no off-device transfer or persistence",
+  "reference": "https://developer.apple.com/documentation/bundleresources/app-privacy-configuration/nsprivacyaccessedapitypes/nsprivacyaccessedapitype"
+}

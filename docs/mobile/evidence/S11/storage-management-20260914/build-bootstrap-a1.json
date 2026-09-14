@@ -1,0 +1,12 @@
+{
+  "pass": false,
+  "phase": "before build execution",
+  "helperSha256": "7aaee5fa101204b14c9387c9ae5535aacfc0e3a4ca1f001a6608a1f2dbc9f774",
+  "sourceChanged": false,
+  "artifactCreated": false,
+  "errors": [
+    "outer Git read lacked process-local safe.directory",
+    "JavaScript replacement string interpreted a dollar-quote token in the PowerShell ValidatePattern header"
+  ],
+  "resolution": "Use explicit expected source and assemble the header separately; keep safe.directory process-local"
+}

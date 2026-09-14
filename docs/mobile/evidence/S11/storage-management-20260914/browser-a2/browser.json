@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S11/storage-management-20260914/playwright.config.mjs"
+  ],
+  "startedAt": "2026-09-14T12:13:42.331Z",
+  "durationMs": 14221,
+  "exitCode": 0,
+  "logs": {
+    "stdout": {
+      "text": "\nRunning 4 tests using 1 worker\n\n\n\n[1/4] tests\\pwa\\download-lifecycle.spec.mjs:11:46 › downloads pause and recover through web, cancellation, corrupt bytes and restart\n[2/4] tests\\pwa\\download-lifecycle.spec.mjs:11:46 › downloads pause and recover through native-events, cancellation, corrupt bytes and restart\n[3/4] tests\\pwa\\storage-management.spec.mjs:11:51 › storage cleanup after a cancelled transfer preserves offline versions across tabs and restart\n[4/4] tests\\pwa\\storage-management.spec.mjs:11:51 › storage cleanup after a committed transfer preserves offline versions across tabs and restart\n  4 passed (13.7s)\n",
+      "sha256": "ca9994abf8386cc90e43d7e097847470acacbaf053eee444a088c95920b947d7"
+    },
+    "stderr": {
+      "text": "(node:24728) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "sha256": "6f255d8a3570ce47dfa12849b7b33a17bdd3cce49ec3905a5ebce43e9f660ef8"
+    }
+  }
+}

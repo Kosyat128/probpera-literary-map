@@ -1,0 +1,7 @@
+{
+  "file": "tests/host/native-planet.spec.mjs",
+  "testedSha256": "dec4c9d8c642f18b198bd3c8d08b286c356686a4610714230ad2b56443be41b9",
+  "committedSha256": "9688015f998c868a9cfb643d4903762eeb88f235760fff20ecdfaca6160f7eda",
+  "normalizedTextUnchanged": true,
+  "change": "CRLF to LF only after Chrome verification"
+}

@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "stage": "S11",
+  "status": "SOURCE_STORAGE_CONTROLS_AND_ANDROID_ARTIFACT_VALIDATED",
+  "pass": true,
+  "sourceCommit": "c0dba72eb23f48eb6e1a0ea92a44e8cd75e4107c",
+  "recordedAt": "2026-09-14T12:21:00.476Z",
+  "passingUnitCases": 301,
+  "actualChromeCases": 6,
+  "runs": {
+    "unit-a1": {
+      "path": "docs/mobile/evidence/S11/storage-management-20260914/unit-a1/result.json",
+      "sha256": "18e73fe162868635ea6e58832001a471185d85833328a8e0cfab27ed42283eea",
+      "tests": {
+        "passed": 301,
+        "failed": 0,
+        "skipped": 0,
+        "failures": []
+      },
+      "applicationAndNativeInputsMatchSourceCommit": true,
+      "checkedInputCount": 91
+    },
+    "static-a1": {
+      "path": "docs/mobile/evidence/S11/storage-management-20260914/static-a1/result.json",
+      "sha256": "a9741595ddd83cc045afb44b9e63c5917283f71439bca1e8146bd879b7636fc6",
+      "tests": null,
+      "applicationAndNativeInputsMatchSourceCommit": true,
+      "checkedInputCount": 91
+    },
+    "browser-a2": {
+      "path": "docs/mobile/evidence/S11/storage-management-20260914/browser-a2/result.json",
+      "sha256": "4eff9a787a846cd271316720949d88f7012b69e01be28b63e60acf93953f250a",
+      "tests": {
+        "passed": 4,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "errors": []
+      },
+      "applicationAndNativeInputsMatchSourceCommit": true,
+      "checkedInputCount": 91
+    },
+    "globe-a1": {
+      "path": "docs/mobile/evidence/S11/storage-management-20260914/globe-a1/result.json",
+      "sha256": "b1187fb9965502e1902c17738aa5a598305182b0d39b835c21a1e5dc28791818",
+      "tests": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "errors": []
+      },
+      "applicationAndNativeInputsMatchSourceCommit": true,
+      "checkedInputCount": 91
+    }
+  },
+  "validation": {
+    "androidCompilation": "docs/mobile/evidence/S11/storage-management-20260914/android-compile-a1/result.json",
+    "iosPrivacyXmlOnly": "docs/mobile/evidence/S11/storage-management-20260914/ios-privacy.json",
+    "androidArtifact": "docs/mobile/evidence/S11/storage-management-20260914/android-a1/result.json",
+    "typecheckAndPlatformBoundaries": true,
+    "crossTabCommitProtection": true,
+    "currentPreviousAndBootstrapPreserved": true,
+    "browserRestartOfflineRead": true,
+    "browserOriginEstimateAndUnavailableRecovery": true,
+    "canonicalGlobeRetained": true,
+    "locales": [
+      "ru",
+      "en"
+    ]
+  },
+  "screenshotsInspectedAtOriginalResolution": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s11-storage/browser-a2/storage-management-storage-9bb4e-ons-across-tabs-and-restart/cleared-en.png",
+      "sha256": "4ef130f800c4424f1653a878a3c1a68e05ae562f38ae552da6a9d329ce7fb05e"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s11-storage/browser-a2/storage-management-storage-9bb4e-ons-across-tabs-and-restart/space-ru.png",
+      "sha256": "6d20dd104cde8ce694907ae5090e3ae946faf9320d5fe9b0dc20904fba7abcd8"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s11-storage/globe-a1/native-planet-downloads-li-bca83--through-RUEN-and-reopening/downloads-canonical-globe-source.png",
+      "sha256": "0d75a4b582fe8fe2a56f09372362cf58dee981781b6076cde412a5096e58d2eb"
+    }
+  ],
+  "preservedFailures": {
+    "browser": {
+      "path": "docs/mobile/evidence/S11/storage-management-20260914/browser-a1/result.json",
+      "cause": "RU button locator after EN language synchronized across tabs",
+      "correction": "Follow the canonical synchronized language; no application change required"
+    },
+    "buildBootstrap": "docs/mobile/evidence/S11/storage-management-20260914/build-bootstrap-a1.json",
+    "testLineEndings": "docs/mobile/evidence/S11/storage-management-20260914/test-line-endings.json"
+  },
+  "spaceDisplayOnly": true,
+  "diskSpaceTelemetryOrPersistence": false,
+  "capacityTimeoutMs": 5000,
+  "removalScope": "One unfinished adult candidate; selected current/previous versions and mandatory bootstrap remain protected",
+  "productionPackageActivation": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "nativeExecutionVerified": false,
+  "iosCompiled": false,
+  "pwaBuildIdUnchanged": "c6c50755a43ec051f38d7168ea47d8df260c09c854cb336aaebf22c4c4d7fb24",
+  "pwaIncludesStorageManagement": false,
+  "androidBuildId": "3144732dbc3bb470383ed9c2b35f9477f8103a9a7375348236844482301ff7b3",
+  "nextAction": "Continue S11 with the Wi-Fi-only download preference and truthful network-type capabilities, following document18 and existing platform lifetime services. Keep unknown network types explicit; preserve whole-file resume, protected current/previous/bootstrap, one canonical globe and equal RU/EN controls. Reuse the current 301 unit and 6 Chrome cases when relevant inputs are unchanged. Android/dev 3144732d now includes lifecycle and storage controls but has no installed-device/process-death evidence; iOS source and privacy XML are prepared but uncompiled. PWA c6c50755 predates storage management; refresh after the next bounded Web integration slice. Keep production descriptors/trust empty and QA bytes inactive. D107 final owner archive synchronization stays deferred. No public CI upload, deploy, merge or store action."
+}

@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S11/storage-management-20260914/playwright.config.mjs"
+  ],
+  "startedAt": "2026-09-14T12:10:32.283Z",
+  "durationMs": 105208,
+  "exitCode": 1,
+  "logs": {
+    "stdout": {
+      "text": "\nRunning 4 tests using 1 worker\n\n\n\n[1/4] tests\\pwa\\download-lifecycle.spec.mjs:11:46 › downloads pause and recover through web, cancellation, corrupt bytes and restart\n[2/4] tests\\pwa\\download-lifecycle.spec.mjs:11:46 › downloads pause and recover through native-events, cancellation, corrupt bytes and restart\n[3/4] tests\\pwa\\storage-management.spec.mjs:11:51 › storage cleanup after a cancelled transfer preserves offline versions across tabs and restart\n  1) tests\\pwa\\storage-management.spec.mjs:11:51 › storage cleanup after a cancelled transfer preserves offline versions across tabs and restart \n\n    Test timeout of 90000ms exceeded.\n\n    Error Context: D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s11-storage\\browser-a1\\storage-management-storage-9bb4e-ons-across-tabs-and-restart\\error-context.md\n\n\n\n\n[4/4] tests\\pwa\\storage-management.spec.mjs:11:51 › storage cleanup after a committed transfer preserves offline versions across tabs and restart\n  1 failed\n    tests\\pwa\\storage-management.spec.mjs:11:51 › storage cleanup after a cancelled transfer preserves offline versions across tabs and restart \n  3 passed (1.7m)\n",
+      "sha256": "531a5df7dea1a7002b5242e8d6374949bb4fff62916bafd292610805488a6068"
+    },
+    "stderr": {
+      "text": "(node:36012) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n(node:18056) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "sha256": "9ead858e403d1c68bde80694a5db67cf93580266390a75d6edb566bf9512cd9e"
+    }
+  }
+}
