@@ -132,7 +132,7 @@ jobs:
         run: npm ci
 
       - name: Download the audited browser inputs
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v8
         with:
           name: browser-quality-inputs
           path: .tmp
