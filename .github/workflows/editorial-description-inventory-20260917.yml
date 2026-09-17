@@ -41,19 +41,27 @@ jobs:
           import { pathToFileURL } from 'node:url';
           const { build } = await import(pathToFileURL(path.join(process.env.TOOL_ROOT,'node_modules/esbuild/lib/main.js')).href);
           const out = path.resolve('editorial-export');
+          const contents = `
+            import { bookArchiveCountries } from './src/data/countries/index.ts';
+            import { buildBookArchive } from './src/data/bookArchive.ts';
+            import { bookR49nRetainedDrafts20260912Data01 as a } from './src/data/countries/bookR49nRetainedDrafts20260912Data01.ts';
+            import { bookR49nRetainedDrafts20260912Data02 as b } from './src/data/countries/bookR49nRetainedDrafts20260912Data02.ts';
+            import { bookR49nRetainedDrafts20260912Data03 as c } from './src/data/countries/bookR49nRetainedDrafts20260912Data03.ts';
+            export const books = buildBookArchive(bookArchiveCountries).map(({country,writer,...book})=>book);
+            export const retained = {...a,...b,...c};
+          `;
           await build({
-            stdin: { contents: `export { allBookArchive } from './scripts/archive-source.ts'; export { bookR49nRetainedDraftTexts } from './src/data/countries/bookR49nRetainedDrafts20260912.ts';`, resolveDir: process.cwd(), loader: 'ts' },
+            stdin: { contents, resolveDir: process.cwd(), loader: 'ts' },
             bundle:true, platform:'node', format:'esm', target:'node24', packages:'external',
             tsconfigRaw: { compilerOptions: { module:'ESNext', moduleResolution:'Bundler', target:'ES2022' } },
             outfile:path.join(out,'source.mjs'), logLevel:'warning'
           });
           const data = await import(pathToFileURL(path.join(out,'source.mjs')).href);
-          const books = data.allBookArchive;
-          if (!Array.isArray(books) || books.length < 9000) throw new Error('Incomplete source corpus');
-          fs.writeFileSync(path.join(out,'repository_book_archive.json'),JSON.stringify({schemaVersion:1,scope:'repository-composed-not-live-cms',sourceRevision:'63ce3112846e3e49f4b15d1cb64b3c29cb98af70',exportedAt:new Date().toISOString(),records:books},null,2));
-          fs.writeFileSync(path.join(out,'retained_drafts.json'),JSON.stringify(data.bookR49nRetainedDraftTexts,null,2));
+          if (!Array.isArray(data.books) || data.books.length < 9000) throw new Error('Incomplete source corpus');
+          fs.writeFileSync(path.join(out,'repository_book_archive.json'),JSON.stringify({schemaVersion:1,scope:'repository-composed-not-live-cms',sourceRevision:'63ce3112846e3e49f4b15d1cb64b3c29cb98af70',exportedAt:new Date().toISOString(),records:data.books},null,2));
+          fs.writeFileSync(path.join(out,'retained_drafts.json'),JSON.stringify(data.retained,null,2));
           fs.unlinkSync(path.join(out,'source.mjs'));
-          console.log(JSON.stringify({records:books.length,retainedPairs:Object.keys(data.bookR49nRetainedDraftTexts).length}));
+          console.log(JSON.stringify({records:data.books.length,retainedPairs:Object.keys(data.retained).length}));
           NODE
       - name: Preserve tracked textual inputs and checksums
         if: always()
