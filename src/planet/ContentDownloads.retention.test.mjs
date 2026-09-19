@@ -7,7 +7,8 @@ const oldReceipt = 'a'.repeat(64), removedReceipt = 'b'.repeat(64), newReceipt =
 const descriptor = (f = contentPackageFixture(), retention = 'optional') => ({ id: 'test', title: { ru: 'Пакет', en: 'Package' },
   envelope: f.envelope, expected: f.expected, manifestSha256: f.manifestSha256, previous: null, baseUrl: 'https://packages.test/v1/',
   ...(retention === undefined ? {} : { retention }) });
-const saved = (selectionSha256 = oldReceipt) => ({ ok: true, activationAllowed: false, selectionSha256 });
+const defaultPin = contentPackageFixture().manifestSha256;
+const saved = (selectionSha256 = oldReceipt, selectedCurrentManifestSha256 = defaultPin) => ({ ok: true, activationAllowed: false, selectionSha256, selectedCurrentManifestSha256 });
 function fixture(input = descriptor()) {
   let listener, state = { visibility: 'active', connectivity: 'online' };
   const lifecycle = { getSnapshot: () => state, subscribe: callback => { listener = callback; return () => { listener = undefined; }; } };
@@ -82,5 +83,77 @@ describe('trusted optional package retention', () => {
     f.publish({ connectivity: 'online' }); await f.downloads.download('test');
     expect(f.cache.download.mock.calls[0][0].expectedCurrentManifestSha256).toBeNull();
     expect(f.item()).toMatchObject({ phase: 'saved', removalReceipt: newReceipt }); f.downloads.dispose();
+  });
+});
+
+describe('management when the trusted catalog advances past the installed version', () => {
+  const nextDescriptor = retention => {
+    const old = contentPackageFixture(2), next = descriptor(contentPackageFixture(3), retention);
+    next.previous = { expected: old.expected, manifestSha256: old.manifestSha256 };
+    return { old, next };
+  };
+  const absent = { ok: false, reason: 'content-generation-not-selected', activationAllowed: false };
+  function observeOld(f, old, next, selectedCurrentManifestSha256 = old.manifestSha256) {
+    f.cache.read.mockImplementation(async request => request.manifestSha256 === next.manifestSha256 ? absent
+      : { ...saved(oldReceipt, selectedCurrentManifestSha256), manifestSha256: old.manifestSha256 });
+  }
+  it('trusts the exact current and previous optional pins, rejecting cross-scope or non-previous receipts', () => {
+    const { old, next } = nextDescriptor('optional');
+    expect(contentDownloadOptionalPackages([next])).toEqual([
+      { expected: next.expected, manifestSha256: next.manifestSha256 }, { expected: old.expected, manifestSha256: old.manifestSha256 },
+    ]);
+    expect(contentDownloadOptionalPackages([{ ...next, retention: 'required' }])).toEqual([]);
+    for (const previous of [
+      { ...next.previous, expected: { ...old.expected, packageId: 'another-package' } },
+      { ...next.previous, expected: { ...old.expected, version: 3 } },
+      { ...next.previous, manifestSha256: 'bad' },
+    ]) expect(() => contentDownloadOptionalPackages([{ ...next, previous }])).toThrow('invalid-content-download-previous');
+  });
+  it.each(['optional', 'required'])('shows the saved older version and retains the %s policy when the catalog advances', async retention => {
+    const { old, next } = nextDescriptor(retention), f = fixture(next); observeOld(f, old, next);
+    f.publish({ connectivity: 'offline' }); await f.downloads.check('test');
+    expect(f.item()).toMatchObject({ phase: 'update-available', savedVersion: 2, optional: retention === 'optional',
+      removalReceipt: retention === 'optional' ? oldReceipt : null });
+    await f.downloads.uninstall('test', oldReceipt);
+    if (retention === 'optional') {
+      expect(f.cache.uninstall.mock.calls[0][0]).toMatchObject({ expected: old.expected, manifestSha256: old.manifestSha256, selectionSha256: oldReceipt });
+      expect(f.item()).toMatchObject({ phase: 'uninstalled', savedVersion: 2 });
+    } else expect(f.cache.uninstall).not.toHaveBeenCalled();
+    expect(f.fetch).not.toHaveBeenCalled(); f.downloads.dispose();
+  });
+  it('updates the trusted older current version and replaces the removal target with the newly saved version', async () => {
+    const { old, next } = nextDescriptor('optional'), f = fixture(next); observeOld(f, old, next);
+    await f.downloads.check('test'); await f.downloads.download('test');
+    expect(f.cache.download.mock.calls[0][0]).toMatchObject({ expected: next.expected, expectedCurrentManifestSha256: old.manifestSha256 });
+    expect(f.item()).toMatchObject({ phase: 'saved', savedVersion: 3, removalReceipt: newReceipt });
+    await f.downloads.uninstall('test', oldReceipt); expect(f.cache.uninstall).not.toHaveBeenCalled();
+    await f.downloads.uninstall('test', newReceipt);
+    expect(f.cache.uninstall.mock.calls[0][0]).toMatchObject({ expected: next.expected, manifestSha256: next.manifestSha256, selectionSha256: newReceipt });
+    f.downloads.dispose();
+  });
+  it.each([false, true])('recovers an older retirement after restart with cleanupComplete=%s', async cleanupComplete => {
+    const { old, next } = nextDescriptor('optional'), f = fixture(next);
+    f.cache.read.mockImplementation(async request => request.manifestSha256 === next.manifestSha256 ? absent
+      : { ok: false, reason: 'content-package-removed', selectionSha256: removedReceipt, cleanupComplete, activationAllowed: false });
+    f.publish({ connectivity: 'offline' }); await f.downloads.check('test');
+    expect(f.item()).toMatchObject({ phase: cleanupComplete ? 'uninstalled' : 'cleanup-pending', savedVersion: 2, removalReceipt: removedReceipt });
+    if (!cleanupComplete) {
+      await f.downloads.uninstall('test', removedReceipt);
+      expect(f.cache.uninstall.mock.calls[0][0]).toMatchObject({ expected: old.expected, manifestSha256: old.manifestSha256, selectionSha256: removedReceipt });
+    }
+    f.publish({ connectivity: 'online' }); await f.downloads.download('test');
+    expect(f.cache.download.mock.calls[0][0].expectedCurrentManifestSha256).toBeNull();
+    expect(f.item()).toMatchObject({ phase: 'saved', savedVersion: 3 }); f.downloads.dispose();
+  });
+  it('never offers removal for a readable rollback behind an unlisted newer current version', async () => {
+    const { old, next } = nextDescriptor('optional'), f = fixture(next), newer = contentPackageFixture(4);
+    observeOld(f, old, next, newer.manifestSha256); await f.downloads.check('test');
+    expect(f.item()).toMatchObject({ phase: 'protected', savedVersion: 2, removalReceipt: null });
+    await f.downloads.uninstall('test', oldReceipt); expect(f.cache.uninstall).not.toHaveBeenCalled();
+    // A catalog-current pin may itself be only the rollback of a newer client.
+    f.cache.read.mockResolvedValue(saved(oldReceipt, newer.manifestSha256)); await f.downloads.check('test');
+    expect(f.item()).toMatchObject({ savedVersion: 3, removalReceipt: null });
+    await f.downloads.uninstall('test', oldReceipt); expect(f.cache.uninstall).not.toHaveBeenCalled();
+    f.downloads.dispose();
   });
 });

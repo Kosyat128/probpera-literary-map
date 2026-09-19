@@ -31,6 +31,7 @@ export type ContentPackageSaveResult = Rejection | {
 export type ContentPackageReadResult = Rejection | {
   readonly ok: true; readonly manifestSha256: string; readonly envelope: ContentPackageEnvelope;
   readonly selectionSha256: string;
+  readonly selectedCurrentManifestSha256: string;
   readonly files: readonly ContentPackageBytes[]; readonly activationAllowed: false; readonly releaseReady: false;
 };
 export type ContentPackageDiscardResult = Rejection | {
@@ -387,7 +388,8 @@ export function createContentPackageCache(options: ContentPackageCacheOptions) {
           if (![selected?.current.sha256, selected?.previous?.sha256].includes(hash)) fail("content-generation-not-selected");
           const loaded = await readGeneration(name, hash, expected, signal);
           if (receipt((await selection(name, signal))!) !== receipt(selected!)) fail("content-generation-conflict");
-          return Object.freeze({ ok: true, manifestSha256: hash, selectionSha256: receipt(selected!), ...loaded, activationAllowed: false, releaseReady: false });
+          return Object.freeze({ ok: true, manifestSha256: hash, selectionSha256: receipt(selected!),
+            selectedCurrentManifestSha256: selected!.current.sha256, ...loaded, activationAllowed: false, releaseReady: false });
         });
       } catch (error) { return rejected(error, signal); }
     },

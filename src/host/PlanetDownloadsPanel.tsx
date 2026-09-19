@@ -17,10 +17,10 @@ export const planetDownloadsCopy = {
         unknown: "Тип сети не определён. Загрузка только по Wi-Fi доступна после подтверждения соединения платформой.",
         wifi: "Подключение: Wi-Fi.", cellular: "Подключение: мобильная сеть.", ethernet: "Подключение: проводная сеть.",
         loading: "Читаем настройку…", saving: "Сохраняем настройку…", session: "Настройка действует в этом сеансе; сохранение после перезапуска не подтверждено." },
-      size: "Размер пакета", clear: "Удалить незавершённую загрузку",
-      clearHelp: "Удаляются только файлы незавершённой загрузки. Текущая и предыдущая сохранённые версии защищены. Для повторной загрузки понадобится сеть.",
+      size: "Размер пакета", savedVersion: "Сохранённая версия", update: "Обновить пакет", clear: "Удалить незавершённую загрузку",
+      clearHelp: "При очистке незавершённой загрузки удаляются только её файлы. Текущая и предыдущая сохранённые версии защищены. Для повторной загрузки понадобится сеть.",
       removal: { action: "Удалить сохранённый пакет", cleanup: "Завершить очистку", confirm: "Подтвердить удаление", close: "Закрыть",
-        heading: "Удаление пакета", question: "Удалить этот дополнительный пакет и его резервную версию с устройства? Для повторной загрузки потребуется сеть.",
+        heading: "Удаление пакета", version: "Версия", question: "Удалить этот дополнительный пакет и его резервную версию с устройства? Для повторной загрузки потребуется сеть.",
         changed: "Состояние пакета изменилось. Если удаление ещё требуется, проверьте файлы и откройте подтверждение заново." },
       space: { check: "Проверить место", unchecked: "Доступное место ещё не проверено.", checking: "Проверяем доступное место…",
         unavailable: "Не удалось определить доступное место. Можно повторить проверку.",
@@ -40,6 +40,7 @@ export const planetDownloadsCopy = {
         uninstalling: "Удаляем сохранённый пакет…", uninstalled: "Дополнительный пакет удалён с устройства. Его можно загрузить снова.",
         "cleanup-pending": "Пакет больше не доступен офлайн. Очистка его файлов ещё не завершена. Нажмите «Завершить очистку».",
         "uninstall-error": "Не удалось подтвердить удаление пакета. Проверьте файлы, затем повторите удаление.",
+        "update-available": "Доступно обновление.",
       },
     },
     en: {
@@ -52,10 +53,10 @@ export const planetDownloadsCopy = {
         unknown: "The connection type is unknown. Wi-Fi-only downloads require the platform to confirm a Wi-Fi connection.",
         wifi: "Connection: Wi-Fi.", cellular: "Connection: mobile network.", ethernet: "Connection: wired network.",
         loading: "Reading preference…", saving: "Saving preference…", session: "This preference applies to this session; persistence after restart has not been confirmed." },
-      size: "Package size", clear: "Remove unfinished download",
-      clearHelp: "Only unfinished download files are removed. The current and previous saved versions are protected. Downloading again will require a connection.",
+      size: "Package size", savedVersion: "Saved version", update: "Update package", clear: "Remove unfinished download",
+      clearHelp: "Removing an unfinished download only clears its incomplete files. Current and previous saved versions stay protected. Downloading again will require a connection.",
       removal: { action: "Remove saved package", cleanup: "Finish cleanup", confirm: "Confirm removal", close: "Close",
-        heading: "Remove package", question: "Remove this optional package and its backup version from this device? Downloading them again will require a connection.",
+        heading: "Remove package", version: "Version", question: "Remove this optional package and its backup version from this device? Downloading them again will require a connection.",
         changed: "The package state has changed. If removal is still needed, check the files and open the confirmation again." },
       space: { check: "Check space", unchecked: "Available space has not been checked yet.", checking: "Checking available space…",
         unavailable: "Available space could not be determined. You can check again.",
@@ -75,6 +76,7 @@ export const planetDownloadsCopy = {
         uninstalling: "Removing the saved package…", uninstalled: "The optional package has been removed from this device. You can download it again.",
         "cleanup-pending": "The package is no longer available offline. Its files still need cleanup. Select Finish cleanup.",
         "uninstall-error": "Package removal could not be confirmed. Check the files, then try removing it again.",
+        "update-available": "An update is available.",
       },
     },
   },
@@ -86,25 +88,26 @@ function PackageRemoval({ item, downloads, copy, busy }: {
   item: ContentDownloadItem; downloads: ContentDownloads; busy: boolean;
   copy: (typeof planetDownloadsCopy.locales)["ru" | "en"]["removal"];
 }) {
-  const [confirmation, setConfirmation] = useState<string | null>(null);
+  const [confirmation, setConfirmation] = useState<{ receipt: string; version: number } | null>(null);
   const { language } = useInterfaceLanguage();
   const action = useRef<HTMLButtonElement>(null), id = useId();
-  const removable = item.optional && !!item.removalReceipt && ["saved", "protected", "cleanup-pending"].includes(item.phase);
-  const matches = confirmation === item.removalReceipt;
+  const removable = item.optional && !!item.removalReceipt && item.savedVersion !== null && ["saved", "update-available", "protected", "cleanup-pending"].includes(item.phase);
+  const matches = confirmation?.receipt === item.removalReceipt && confirmation?.version === item.savedVersion;
   return <div className="planet-downloads__removal">
     <button type="button" ref={action} aria-disabled={busy || !removable} aria-expanded={confirmation !== null} aria-controls={id}
-      onClick={() => { if (!busy && removable) setConfirmation(item.removalReceipt); }}>
+      onClick={() => { if (!busy && removable) setConfirmation({ receipt: item.removalReceipt!, version: item.savedVersion! }); }}>
       {item.phase === "cleanup-pending" ? copy.cleanup : copy.action}
     </button>
     {confirmation !== null && <div id={id} className="planet-downloads__confirmation" role="group" aria-labelledby={`${id}-heading`}>
       <p id={`${id}-heading`}><strong>{copy.heading}: {item.title[language]}</strong></p>
+      <p>{copy.version}: {new Intl.NumberFormat(language).format(confirmation.version)}</p>
       <p>{copy.question}</p>
       {!matches && !["uninstalled", "cleanup-pending"].includes(item.phase) && <p role="status">{copy.changed}</p>}
       <div className="planet-downloads__actions">
         <button type="button" aria-disabled={busy || !removable || !matches}
           onClick={() => {
             if (!busy && removable && matches) {
-              const confirmed = confirmation;
+              const confirmed = confirmation.receipt;
               setConfirmation(null); action.current?.focus();
               void downloads.uninstall(item.id, confirmed);
             }
@@ -156,7 +159,9 @@ export default function PlanetDownloadsPanel({ downloads }: { downloads: Content
               <h3 id={`${row}-title`}>{item.title[language]}</h3>
               <p>{copy.qa}</p>
               <p>{copy.size}: {number.format(item.totalBytes)} {copy.bytes}</p>
-              <p id={`${row}-status`} role="status" aria-live="polite" aria-atomic="true">{copy.phases[item.phase]}</p>
+              <p id={`${row}-status`} role="status" aria-live="polite" aria-atomic="true">
+                {item.phase === "update-available" && item.savedVersion !== null ? `${copy.savedVersion} ${number.format(item.savedVersion)}. ` : ""}{copy.phases[item.phase]}
+              </p>
               {progressPhases.has(item.phase) && <div className="planet-downloads__progress">
                 <progress max={item.totalBytes} value={item.completedBytes} aria-label={`${copy.progress}: ${item.title[language]}`} />
                 <span>{number.format(item.completedBytes)} / {number.format(item.totalBytes)} {copy.bytes}</span>
@@ -167,7 +172,7 @@ export default function PlanetDownloadsPanel({ downloads }: { downloads: Content
                 {/* Stable buttons keep keyboard focus when an async state changes. */}
                 <button type="button" aria-disabled={busy || protectedVersion || !snapshot.available}
                   onClick={() => { if (!busy && !protectedVersion && snapshot.available) void downloads.download(item.id); }}>
-                  {["paused", "waiting-wifi"].includes(item.phase) ? copy.resume : ["error", "cancelled"].includes(item.phase) ? copy.retry : copy.download}</button>
+                  {item.phase === "update-available" ? copy.update : ["paused", "waiting-wifi"].includes(item.phase) ? copy.resume : ["error", "cancelled"].includes(item.phase) ? copy.retry : copy.download}</button>
                 <button type="button" aria-disabled={!interruptible || item.phase === "pausing" || item.phase === "cancelling"}
                   onClick={() => { if (interruptible && item.phase !== "pausing" && item.phase !== "cancelling") downloads.pause(item.id); }}>{copy.pause}</button>
                 <button type="button" aria-disabled={(!interruptible && !["paused", "waiting-wifi"].includes(item.phase)) || item.phase === "cancelling"}

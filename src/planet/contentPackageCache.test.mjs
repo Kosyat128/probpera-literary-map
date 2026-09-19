@@ -64,7 +64,10 @@ describe("signed candidate byte cache", () => {
     expect(await storage.selected()).toEqual({ schemaVersion: 1, current: { sha256: v2.manifestSha256, version: 2 }, previous: { sha256: v1.manifestSha256, version: 1 } });
     const current = await read(cache, v2); assertBytes(current, v2); current.files[0].bytes.fill(0);
     assertBytes(await read(another(), v2), v2);
-    assertBytes(await read(another(), v1), v1);
+    const rollback = await read(another(), v1);
+    assertBytes(rollback, v1);
+    expect(rollback.selectedCurrentManifestSha256).toBe(v2.manifestSha256);
+    expect(current.selectedCurrentManifestSha256).toBe(v2.manifestSha256);
   });
 
   it.each(["data", "manifest-pin", "prior-pin", "missing-prior-pin", "older-version"])("preserves the selected package after invalid %s", async failure => {

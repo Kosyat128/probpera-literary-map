@@ -16,7 +16,7 @@ export interface ContentDownloadDescriptor {
   readonly baseUrl: string;
   readonly retention?: ContentDownloadRetention;
 }
-export type ContentDownloadPhase = "unchecked" | "checking" | "not-saved" | "downloading" | "verifying" | "pausing" | "paused" | "waiting-wifi" | "cancelling" | "saved" | "cancelled" | "error" | "unavailable" | "clearing" | "cleared" | "protected" | "clear-error" | "uninstalling" | "uninstalled" | "cleanup-pending" | "uninstall-error";
+export type ContentDownloadPhase = "unchecked" | "checking" | "not-saved" | "downloading" | "verifying" | "pausing" | "paused" | "waiting-wifi" | "cancelling" | "saved" | "cancelled" | "error" | "unavailable" | "clearing" | "cleared" | "protected" | "clear-error" | "uninstalling" | "uninstalled" | "cleanup-pending" | "uninstall-error" | "update-available";
 export interface ContentStorageSpace {
   readonly phase: "unchecked" | "checking" | "ready" | "unavailable";
   readonly availableBytes: number | null;
@@ -34,6 +34,8 @@ export interface ContentDownloadItem {
   readonly optional: boolean;
   /** Exact observed selection, never silently refreshed after confirmation. */
   readonly removalReceipt: string | null;
+  /** Version associated with the observed saved or retired selection. */
+  readonly savedVersion: number | null;
 }
 export interface ContentDownloadsSnapshot {
   readonly items: readonly ContentDownloadItem[];
@@ -99,7 +101,9 @@ export function createContentDownloads(options: {
     space: Object.freeze({ phase: "unchecked", availableBytes: null, kind: null }),
     items: Object.freeze([...descriptors.values()].map(value => Object.freeze({ id: value.id, title: Object.freeze({ ...value.title }),
       totalBytes: value.envelope.manifest.files.reduce((sum, file) => sum + file.bytes, 0), completedBytes: 0,
-      phase: "unchecked" as ContentDownloadPhase, qaOnly: true as const, optional: value.retention === "optional", removalReceipt: null }))) });
+      phase: "unchecked" as ContentDownloadPhase, qaOnly: true as const, optional: value.retention === "optional", removalReceipt: null, savedVersion: null }))) });
+  type RemovalTarget = { expected: ContentPackageExpected; manifestSha256: string; selectionSha256: string };
+  const removalTargets = new Map<string, RemovalTarget>();
   type Task = { controller: AbortController; promise: Promise<void>; mode: "check" | "download" | "discard" | "uninstall"; interruption: "pause" | "cancel" | "wifi" | null };
   const listeners = new Set<() => void>(), pending = new Map<string, Task>();
   let unsubscribeLifecycle: (() => void) | undefined;
@@ -113,12 +117,20 @@ export function createContentDownloads(options: {
     for (const listener of [...listeners]) { try { listener(); } catch { /* Observers cannot own downloads. */ } }
   }
   const receipt = (value: unknown) => typeof value === "string" && /^[a-f0-9]{64}$/u.test(value) ? value : null;
-  function update(id: string, phase: ContentDownloadPhase, completedBytes?: number, removalReceipt?: string | null) {
+  function update(id: string, phase: ContentDownloadPhase, completedBytes?: number, removalReceipt?: string | null, savedVersion?: number | null) {
     if (disposed) return;
+    if (removalReceipt === null) removalTargets.delete(id);
     snapshot = Object.freeze({ ...snapshot, items: Object.freeze(snapshot.items.map(item => item.id === id
       ? Object.freeze({ ...item, phase, completedBytes: Math.min(item.totalBytes, Math.max(0, completedBytes ?? item.completedBytes)),
-        removalReceipt: removalReceipt === undefined ? item.removalReceipt : removalReceipt }) : item)) });
+        removalReceipt: removalReceipt === undefined ? item.removalReceipt : removalReceipt,
+        savedVersion: savedVersion === undefined ? item.savedVersion : savedVersion }) : item)) });
     notify();
+  }
+  function rememberSelection(id: string, target: { expected: ContentPackageExpected; manifestSha256: string }, selectionSha256: unknown, removable: boolean) {
+    const observed = removable && descriptors.get(id)?.retention === "optional" ? receipt(selectionSha256) : null;
+    if (observed) removalTargets.set(id, { expected: target.expected, manifestSha256: target.manifestSha256, selectionSha256: observed });
+    else removalTargets.delete(id);
+    return observed;
   }
   function checkSpace(): Promise<void> {
     if (disposed) return Promise.resolve();
@@ -201,10 +213,12 @@ export function createContentDownloads(options: {
   function run(id: string, mode: Task["mode"], selectionSha256?: string): Promise<void> {
     if (disposed || !descriptors.has(id)) return Promise.resolve();
     if (pending.has(id)) return pending.get(id)!.promise;
+    const removalTarget = removalTargets.get(id);
     if (mode === "uninstall") {
       const displayed = snapshot.items.find(item => item.id === id)!;
       if (!displayed.optional || !receipt(selectionSha256) || displayed.removalReceipt !== selectionSha256
-        || !["saved", "protected", "cleanup-pending"].includes(displayed.phase)) return Promise.resolve();
+        || removalTarget?.selectionSha256 !== selectionSha256
+        || !["saved", "update-available", "protected", "cleanup-pending"].includes(displayed.phase)) return Promise.resolve();
     }
     const item = descriptors.get(id)!, controller = new AbortController(), signal = controller.signal;
     const task: Task = { controller, promise: Promise.resolve(), mode, interruption: null };
@@ -214,11 +228,12 @@ export function createContentDownloads(options: {
       if (!createCache || (mode === "download" && !fetch)) { update(id, mode === "uninstall" ? "uninstall-error" : mode === "discard" ? "clear-error" : "unavailable", undefined, null); return; }
       if (mode === "uninstall") {
         cache ??= createCache();
-        const result = await cache.uninstall({ expected: item.expected, manifestSha256: item.manifestSha256, selectionSha256: selectionSha256!, signal });
+        const result = await cache.uninstall({ ...removalTarget!, selectionSha256: selectionSha256!, signal });
         // Retirement may have committed before cancellation or cleanup failure.
         // Its receipt is authoritative even if byte cleanup needs another try.
         update(id, result.ok ? result.cleanupComplete ? "uninstalled" : "cleanup-pending" : "uninstall-error",
-          result.ok ? 0 : undefined, result.ok ? receipt(result.selectionSha256) : null);
+          result.ok ? 0 : undefined, result.ok ? rememberSelection(id, removalTarget!, result.selectionSha256, true) : null,
+          removalTarget!.expected.version);
         return;
       }
       if (mode === "discard") {
@@ -237,19 +252,39 @@ export function createContentDownloads(options: {
       cache ??= createCache();
       const current = await cache.read({ expected: item.expected, manifestSha256: item.manifestSha256, signal });
       if (signal.aborted) { update(id, interruptedPhase()); return; }
-      if (current.ok) { update(id, "saved", item.envelope.manifest.files.reduce((sum, file) => sum + file.bytes, 0), receipt(current.selectionSha256)); return; }
-      if (mode === "check") {
-        if (current.reason === "content-package-removed" && "selectionSha256" in current && "cleanupComplete" in current) {
-          update(id, current.cleanupComplete ? "uninstalled" : "cleanup-pending", 0, receipt(current.selectionSha256));
-        } else update(id, current.reason === "content-generation-not-selected" ? "not-saved" : "error", undefined, null);
+      if (current.ok) {
+        update(id, "saved", item.envelope.manifest.files.reduce((sum, file) => sum + file.bytes, 0),
+          rememberSelection(id, item, current.selectionSha256, current.selectedCurrentManifestSha256 === item.manifestSha256), item.expected.version);
+        return;
+      }
+      if (mode === "check" && current.reason === "content-package-removed" && "selectionSha256" in current && "cleanupComplete" in current) {
+        update(id, current.cleanupComplete ? "uninstalled" : "cleanup-pending", 0,
+          rememberSelection(id, item, current.selectionSha256, true), item.expected.version);
         return;
       }
       let prior: string | null = null;
-      if (item.previous) {
+      if (item.previous && (mode === "download" || current.reason === "content-generation-not-selected")) {
         const result = await cache.read({ ...item.previous, signal });
-        if (result.ok) prior = result.manifestSha256;
+        if (signal.aborted) { update(id, interruptedPhase()); return; }
+        if (result.ok) {
+          prior = result.manifestSha256;
+          if (mode === "check") {
+            const selected = result.selectedCurrentManifestSha256 === item.previous.manifestSha256;
+            update(id, selected ? "update-available" : "protected", 0,
+              rememberSelection(id, item.previous, result.selectionSha256, selected), item.previous.expected.version);
+            return;
+          }
+        } else if (mode === "check" && result.reason === "content-package-removed" && "selectionSha256" in result && "cleanupComplete" in result) {
+          update(id, result.cleanupComplete ? "uninstalled" : "cleanup-pending", 0,
+            rememberSelection(id, item.previous, result.selectionSha256, true), item.previous.expected.version);
+          return;
+        }
       }
       if (signal.aborted) { update(id, interruptedPhase()); return; }
+      if (mode === "check") {
+        update(id, current.reason === "content-generation-not-selected" ? "not-saved" : "error", undefined, null, null);
+        return;
+      }
       const onProgress = (value: ContentPackageDownloadProgress) => {
         if (signal.aborted || value.phase === "saved") return;
         update(id, value.phase, value.cachedBytes + value.downloadedBytes);
@@ -265,13 +300,13 @@ export function createContentDownloads(options: {
         expectedCurrentManifestSha256: prior, baseUrl: item.baseUrl, fetch: guardedFetch, signal, onProgress });
       // An abort during atomic selection can still commit; report that outcome.
       update(id, result.ok ? "saved" : signal.aborted ? interruptedPhase() : "error", result.ok ? item.envelope.manifest.files.reduce((sum, file) => sum + file.bytes, 0) : undefined,
-        result.ok ? receipt(result.selectionSha256) : null);
+        result.ok ? rememberSelection(id, item, result.selectionSha256, true) : null, result.ok ? item.expected.version : null);
     }).catch(() => update(id, mode === "uninstall" ? "uninstall-error" : mode === "discard" ? "clear-error" : signal.aborted ? interruptedPhase() : "unavailable", undefined, null)).finally(() => {
       if (pending.get(id) === task) pending.delete(id);
     });
     pending.set(id, task);
     update(id, mode === "uninstall" ? "uninstalling" : mode === "discard" ? "clearing" : "checking", mode === "discard" || mode === "uninstall" ? undefined : 0,
-      mode === "uninstall" ? selectionSha256 : null);
+      mode === "uninstall" ? selectionSha256 : null, mode === "uninstall" ? undefined : null);
     return task.promise;
   }
   return Object.freeze({ getSnapshot: () => snapshot,
