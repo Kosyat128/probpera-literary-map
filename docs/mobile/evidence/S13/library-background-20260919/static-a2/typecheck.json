@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/typescript/bin/tsc",
+    "--noEmit"
+  ],
+  "startedAt": "2026-09-19T18:24:31.228Z",
+  "durationMs": 27251,
+  "exitCode": 2,
+  "logs": {
+    "stdout": {
+      "text": "src/components/globeStandGeometry.ts(121,25): error TS2540: Cannot assign to 'width' because it is a read-only property.\r\nsrc/components/globeStandGeometry.ts(122,25): error TS2540: Cannot assign to 'height' because it is a read-only property.\r\nsrc/components/globeStandGeometry.ts(123,25): error TS2540: Cannot assign to 'depth' because it is a read-only property.\r\n",
+      "sha256": "e9c9b6a57396c1781b5ea18062130b0bd89b95dff9c042596d1f6c5a9b50346c"
+    },
+    "stderr": {
+      "text": "",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-19T18:44:34.246Z",
+  "sourceCommit": "b1f093500031c80ed4890cd7d3840ed66c22d49c",
+  "stage": "S13",
+  "status": "INCLUDED_LIBRARY_AND_STAND_CRAFT_INSPECTED",
+  "pass": true,
+  "entry": {
+    "path": "docs/mobile/evidence/S13/library-background-20260919/entry.json",
+    "sha256": "4ec556842bf6a4a4025cd4318371c1e50a960a6196c466d11b1f6202af83c5c4"
+  },
+  "runs": {
+    "unit": {
+      "path": "docs/mobile/evidence/S13/library-background-20260919/unit-a5/result.json",
+      "sha256": "fcadd8cb2a651a8fd730862b2c3fa8228b5f700f39e82bb6d7a0b3656202aa7f",
+      "tests": {
+        "passed": 217,
+        "failed": 0,
+        "skipped": 0,
+        "failures": []
+      }
+    },
+    "static": {
+      "path": "docs/mobile/evidence/S13/library-background-20260919/static-a5/result.json",
+      "sha256": "2b6d7c46e26dcd95ead859f8c46a0c472f712bdbb2ef2b65093789faad4502ff",
+      "tests": null
+    },
+    "browser": {
+      "path": "docs/mobile/evidence/S13/library-background-20260919/browser-a4/result.json",
+      "sha256": "cf73ee0c2f0c816b637c917c3c0560310943864efeab18a9a9eaad91f3c3099d",
+      "tests": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "errors": []
+      }
+    }
+  },
+  "starterSetSourceInventory": {
+    "path": "docs/mobile/evidence/S13/library-background-20260919/starter-set-source-inventory-a2.json",
+    "sha256": "2fffad3f61381205eddb566fa18141fe3b184785e0627a08fc0d41a766dad054"
+  },
+  "visualReview": {
+    "path": "docs/mobile/evidence/S13/library-background-20260919/visual-review.json",
+    "sha256": "a69732d874e2a50baf4d45f3919b89ba374a5cf2c7e5d8cce6c906cd413770a5"
+  },
+  "nextCompositionDesign": {
+    "path": "docs/mobile/evidence/S13/library-background-20260919/next-composition-design.md",
+    "sha256": "5f8bcbf7892c0c1e75314fdcf6cdebb6b58db1986aae14836a991678335a3146"
+  },
+  "pwa": {
+    "path": "docs/mobile/evidence/S13/library-background-20260919/pwa-a1/result.json",
+    "sha256": "516034bc4bd3bc631107a5d29b3012742afdff11af5fb14a3b20457aadca3e0c"
+  },
+  "android": {
+    "path": "docs/mobile/evidence/S13/library-background-20260919/android-a1/result.json",
+    "sha256": "3b8310bae6d0e38ce5526354ba08c76298b91961560f2b7c251c4c28242f099d"
+  },
+  "pwaBuildId": "14df8b63640d370d070bb0e2a41e2a60893cee494e8b26fcb5fc4f2fd9687b52",
+  "androidBuildId": "fe8acc9f96f3c5295a1d3288f702d2801d7a4a8ccac43f2e2918072346332b44",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-lb/android-fe8acc9f/app-dev-debug.apk",
+    "bytes": 67618648,
+    "sha256": "307c9d72616fd4b4c73b539ce5f88f061e231c413ed5fe524153d77fa28e5c60"
+  },
+  "sceneIdentity": {
+    "itemId": "background.base.library",
+    "sceneId": "probpera-library-3d",
+    "optionalGrandLibrary": false
+  },
+  "includedStandIds": [
+    "stand.base.museum",
+    "stand.base.wood",
+    "stand.base.book-stack"
+  ],
+  "canonicalStarfieldRemainsDefault": true,
+  "canonicalFrameRemainsDefault": true,
+  "scopedCraftEvidence": {
+    "userRealismRequirementPreserved": true,
+    "source": "src/components/globeCraftMaterials.ts",
+    "sourceProvenance": "authored-in-project",
+    "qualityTiers": [
+      "high",
+      "balanced",
+      "economy"
+    ],
+    "libraryOwnedTexturesPerTier": 17,
+    "libraryCameraClearanceRadius": 5.6,
+    "actualGeometryAndMaterialsImproved": true,
+    "formalArtAcceptance": false,
+    "certifiedLightmapAcceptance": false
+  },
+  "sourceBoundStarterItems": 11,
+  "requiredStarterItems": 29,
+  "acceptedStarterItems": 0,
+  "rightsApproval": false,
+  "childApproval": false,
+  "controlledNativePorts": true,
+  "actualSceneRenderedInChrome": true,
+  "installedNativeDevice": false,
+  "iosCompiled": false,
+  "fullCompositionTransactionImplemented": false,
+  "grantsEntitlement": false,
+  "productionActionsPerformed": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "nextAction": "Continue the bounded S13 full-composition design: one versioned edition/stand/background record, exact combined rendered-frame acknowledgement, migration and rollback ownership. Preserve the user-required realism of the detailed library and three included stands, canonical starfield/default frame and one scene. Starter Set is 11/29 source-bound, zero accepted. Formal art/lightmap review, full catalog/Background Studio, optional/child authority, installed-device budgets and release acceptance remain open. Do not repeat unchanged validated checks or artifact payload audits."
+}

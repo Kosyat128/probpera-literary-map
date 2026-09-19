@@ -775,3 +775,14 @@
   suspends untouched restoration and cancels explicit drafts. Source provenance
   and bounded geometry evidence do not approve child use, rights, the full
   composition transaction, installed devices, Starter Set or release readiness.
+
+- D132: The included library uses the existing background branch and canonical
+  camera. Stand/background preview controllers share lifecycle code while their
+  preference keys retain independent ordered queues. The user's 2026-09-19
+  clarification requires realistic, carefully detailed backgrounds and stands;
+  simple colored geometry and successful technical checks do not satisfy this
+  visual bar. Owned procedural PBR maps, material-local reflections, architectural
+  profiles and bookbinding detail are inspected in actual-App views and separate
+  close-ups. At most two bounded room lights exclude the globe; shared lighting
+  and scene environment retain their existing owners. Visual iteration and local
+  evidence do not silently approve art, rights, children, devices or release.

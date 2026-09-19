@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-19T18:37:51.053Z",
+  "attempts": [
+    {
+      "unit": "a1",
+      "static": "a1",
+      "browser": "a1",
+      "status": "Functional prototype before user realism clarification. Static test callback union failed; second browser case incorrectly treated requested rotation as active with a country selected. Both fixture issues were fixed without loosening runtime invariants."
+    },
+    {
+      "craft": "a1",
+      "status": "Rejected visual iteration: oversized material bands, polar wood UV pinching and inverted thin-board normals from installed RoundedBox constructor assumptions."
+    },
+    {
+      "unit": "a2",
+      "static": "a2",
+      "craft": "a2",
+      "status": "213/217 passed; library nearest-triangle helper returned NaN for collapsed lathe poles; fixed conservatively using segment/point distances. Museum flute/cap normals required separate coincident rings. Readonly geometry constructor metadata moved to userData."
+    },
+    {
+      "unit": "a3",
+      "static": "a3",
+      "browser": "a2",
+      "craft": "a3",
+      "status": "All technical checks passed; actual phone view exposed signature-cut moire."
+    },
+    {
+      "unit": "a4",
+      "static": "a4",
+      "browser": "a3",
+      "status": "All technical checks passed; lower cut density alone did not eliminate phone moire."
+    },
+    {
+      "unit": "a5",
+      "static": "a5",
+      "browser": "a4",
+      "status": "Final source: 217units, TypeScript and2actualChrome cases pass. Near-only signature detail resolves phone moire."
+    }
+  ],
+  "oldAttemptsPreserved": true,
+  "unnecessaryFullProjectTestsRun": false,
+  "releaseReady": false
+}

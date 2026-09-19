@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "mode": "unit",
+  "startedAt": "2026-09-19T17:50:13.509Z",
+  "endedAt": "2026-09-19T17:50:16.961Z",
+  "sourceBase": "3cfe3433df58101b33cb54a82beecef12beb0396",
+  "sourceInputs": [
+    {
+      "path": "docs/mobile/evidence/S13/library-background-20260919/run-checks.mjs",
+      "sha256": "36f0d96a0789e12dbd3106179b4dd2e6c94a33a60bbb10002f098a99816061a7"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+    },
+    {
+      "path": "package.json",
+      "sha256": "90b392c205754f838b8bc7c4475bd475936be1078561bb218c437d151177869f"
+    },
+    {
+      "path": "src/components/globeEditions.ts",
+      "sha256": "b7440b6278979deb1e47738572460869202f0d9cf794a144aceac9dbcf8cdd77"
+    },
+    {
+      "path": "src/components/globeLibraryGeometry.test.ts",
+      "sha256": "4badec10af6cc0baa888b2e3f5be0ab1f9b0a4609b9600c324d4f3cd0a5889ed"
+    },
+    {
+      "path": "src/components/globeLibraryGeometry.ts",
+      "sha256": "4b5234d22a6760f60c799f2c007d117d6bff98dcd1eecf8739dcbe157856c7d0"
+    },
+    {
+      "path": "src/components/globeQuality.ts",
+      "sha256": "b52e0221ec8bcac17d640e26378bc0304521316ca34e203313d2b63f9c3b28c9"
+    },
+    {
+      "path": "src/host/HostPlatformServices.test.ts",
+      "sha256": "95d378f18f5076349d356e6e2293374c9fed9ffb20a853f29e279430ad812877"
+    },
+    {
+      "path": "src/host/HostPlatformServices.ts",
+      "sha256": "53be2fc03dc3e7ba39807719634b7322d9d86a37a8ae6e3c680318ff50abc6cc"
+    },
+    {
+      "path": "src/host/planetBackgroundCustomization.test.ts",
+      "sha256": "1fa9a4dbc9fa36b8d57f007ce495cd85c44f6816916b69afa653c6f6cf60962d"
+    },
+    {
+      "path": "src/host/planetBackgroundCustomization.ts",
+      "sha256": "1787806ebfcd0c69bf308ba38f27ace7c754a86e3d670924c262e84f0b47892d"
+    },
+    {
+      "path": "src/host/planetCustomization.ts",
+      "sha256": "9737f7b2206149df0b47591185c3faaeb1f8f843b218077471ab59bde0f714bc"
+    },
+    {
+      "path": "src/host/planetStandCustomization.test.ts",
+      "sha256": "f7c07a26a8f1f9cc2b0ded1810161e35a95b6ac93e1c0a4ebdc29696765b1670"
+    },
+    {
+      "path": "src/host/planetStandCustomization.ts",
+      "sha256": "325c8595aefb9660c86725837ce3b0bcb4e63f137156b86e570254e84dd3f2ff"
+    },
+    {
+      "path": "src/planet/baseEditionPolicy.ts",
+      "sha256": "ff5d8a6e3e21dfce9b14487a35b6800fbcbde200abacc6e1898712b486c62985"
+    },
+    {
+      "path": "src/planet/editions.ts",
+      "sha256": "466105cd35cadf5c0bc656c34d50bc20fe174551020b002fc903b8071dc5145e"
+    },
+    {
+      "path": "src/planet/globeBackgrounds.ts",
+      "sha256": "1b1ff9b870b9516dcb0131682cd377196afa05455dbae3bf208bdb1ecf885f6b"
+    },
+    {
+      "path": "src/planet/globeStands.ts",
+      "sha256": "aaf390f20a8cc60cd0e46595ad901a80b2170b1307d8a2ae27147a22ec3ecfb8"
+    },
+    {
+      "path": "src/platform/adapters/web/WebPlatformAdapter.test.ts",
+      "sha256": "a62f55d6fe0ce19e703465816bb31ecbbcf64f739de44e520b270b5747a76511"
+    },
+    {
+      "path": "src/platform/adapters/web/WebPlatformAdapter.ts",
+      "sha256": "5c71bcefaa747e4a5dcedf525ab7acc68d98d5fd6ae9929d51226c65352b9d21"
+    },
+    {
+      "path": "src/platform/ports.ts",
+      "sha256": "c9b16d8f56263dfbc8725cc8296989076d5a485a74ef106954f9b468a21fb65d"
+    },
+    {
+      "path": "src/utils/safeWebStorage.ts",
+      "sha256": "81ea225b4e6c0a1a2d8c3bf4ba2b48523144280429ff3ae2a2bf38df800b9277"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "8d51a8c9266fe83bf17c076b51672753b3750a17520cd0d2c28a90cb8b21e0d6"
+    },
+    {
+      "path": "vitest.config.ts",
+      "sha256": "5c1e90985e77b35599e5bdaf77c74a1166949ec9c4f45d1c5f926c3f53bef90e"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "executions": [
+    {
+      "name": "unit",
+      "exitCode": 0,
+      "durationMs": 3325
+    }
+  ],
+  "tests": {
+    "passed": 208,
+    "failed": 0,
+    "skipped": 0,
+    "failures": []
+  },
+  "pass": true,
+  "releaseReady": false,
+  "deviceTested": false,
+  "productionActivation": false
+}

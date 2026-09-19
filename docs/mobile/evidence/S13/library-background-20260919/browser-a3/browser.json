@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S13/library-background-20260919/playwright.config.mjs"
+  ],
+  "startedAt": "2026-09-19T18:31:32.726Z",
+  "durationMs": 35188,
+  "exitCode": 0,
+  "logs": {
+    "stdout": {
+      "text": "\nRunning 2 tests using 1 worker\n\n\n\n[1/2] tests\\pwa\\globe-background-customization.spec.mjs:427:1 › library preview renders real depth and manual-orbit parallax while preserving the globe, stand and locale draft\n[2/2] tests\\pwa\\globe-background-customization.spec.mjs:500:1 › failed background saving retains the rendered library, RUEN retry and cold restore work, backgrounding cancels drafts and pauses ambience\n  2 passed (34.4s)\n",
+      "sha256": "0e37d83fc9ab6653da2f00418b4f34615d4250f92fd31cf981e4dca7c7099250"
+    },
+    "stderr": {
+      "text": "(node:21412) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "sha256": "919f4d9bfe0cfbc4e9b3daa2f1366f3d6ae7bacbf8558c180ba423108d961eab"
+    }
+  }
+}

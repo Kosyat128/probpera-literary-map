@@ -1,3 +1,21 @@
+<!-- s13-library-background-20260919:begin -->
+Source b1f09350 adds the included adult library to the same globe scene
+and improves the three included stands. The user's explicit realism requirement
+replaces the earlier simple geometry bar: architectural profiles, joinery, book
+bindings/page blocks, procedural PBR surfaces, material response and contact cues
+now have source-bound actual-App and close-up inspection evidence. Seventeen owned
+library textures per tier and face clearance beyond radius 5.6 are scoped checks,
+not formal art/lightmap approval or installed-device performance acceptance.
+Final 217 focused units, TypeScript and two actual Chrome cases pass.
+Starter Set inventory: 11 source-bound of 29 required, zero accepted. Evidence:
+evidence/S13/library-background-20260919/result.json. PWA 14df8b63 and
+Android/dev fe8acc9f bind this source. APK SHA256: 307c9d72616fd4b4c73b539ce5f88f061e231c413ed5fe524153d77fa28e5c60.
+Earlier artifacts remain preserved. Full catalog/Background Studio, composition
+atomicity, child/rights, art/lightmaps, device, iOS and release gates remain open.
+Stage counts unchanged: 3 complete, 11 in progress, 27 unstarted; first open S03.
+Next: bounded full-composition persistence/preparation and rollback ownership.
+<!-- s13-library-background-20260919:end -->
+
 <!-- s13-stand-customization-20260919:begin -->
 Source 70835976 adds original museum, wood and unlettered book-stack
 stands around the same globe. Preview remains nonmodal; Apply follows a real frame;

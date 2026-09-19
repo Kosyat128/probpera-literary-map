@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/typescript/bin/tsc",
+    "--noEmit"
+  ],
+  "startedAt": "2026-09-19T17:50:08.741Z",
+  "durationMs": 31454,
+  "exitCode": 2,
+  "logs": {
+    "stdout": {
+      "text": "src/components/globeLibraryGeometry.test.ts(116,42): error TS2349: This expression is not callable.\r\n  Each member of the union type '(<T extends \"dispose\">(type: T, listener: EventListener<{ dispose: {}; }[T], T, Material>) => void) | (<T extends \"dispose\">(type: T, listener: EventListener<BufferGeometryEventMap[T], T, BufferGeometry<...>>) => void) | (<T extends keyof InstancedMeshEventMap>(type: T, listener: EventListener<...>) => void)' has signatures, but none of those signatures are compatible with each other.\r\n",
+      "sha256": "c925b6d4af73d88d837b5135fc206c594dd6fa53c94c248745fa5129f517c1bb"
+    },
+    "stderr": {
+      "text": "",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

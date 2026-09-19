@@ -1,0 +1,190 @@
+{
+  "schemaVersion": 1,
+  "mode": "static",
+  "startedAt": "2026-09-19T18:31:32.243Z",
+  "endedAt": "2026-09-19T18:32:00.692Z",
+  "sourceBase": "3cfe3433df58101b33cb54a82beecef12beb0396",
+  "sourceInputs": [
+    {
+      "path": "docs/mobile/evidence/S13/library-background-20260919/run-checks.mjs",
+      "sha256": "a3803855e880071b0848dec495c124b92693fd5b9d97408d36d58ba05d02e6a8"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+    },
+    {
+      "path": "package.json",
+      "sha256": "90b392c205754f838b8bc7c4475bd475936be1078561bb218c437d151177869f"
+    },
+    {
+      "path": "src/App.tsx",
+      "sha256": "88075dab0e2b7bbf1dced64563e2cd6b274a601372c12eec174f6c481c0be5d2"
+    },
+    {
+      "path": "src/components/GlobeIncludedBackground.tsx",
+      "sha256": "5a88c35c8b8645daeb350caf07883a1ffc293a50984b8ab3f94584c519e5feba"
+    },
+    {
+      "path": "src/components/GlobeIncludedStand.tsx",
+      "sha256": "d6bd41bc721228af4e40594e3b1c14fc0fd59335feb019ed59e058ecaeaf9221"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "sha256": "85c6a65868fef795b55ce859bf3b2558a654b809c4171e48d5734e50dfeb1966"
+    },
+    {
+      "path": "src/components/LiteraryWorldMap.tsx",
+      "sha256": "6227a76344825e3ba09c38d19c82d32199770da90a1b91abc1a5813ec8026e7f"
+    },
+    {
+      "path": "src/components/globeCraftMaterials.test.ts",
+      "sha256": "12571952e094eb349c762288e64e52814f6511a1a6e92671ef729ac7d9953486"
+    },
+    {
+      "path": "src/components/globeCraftMaterials.ts",
+      "sha256": "4f1f8847ae8159346e6bff7fa4a67915262c88a19655f6ac66d5565a686ae4e4"
+    },
+    {
+      "path": "src/components/globeEditions.ts",
+      "sha256": "b7440b6278979deb1e47738572460869202f0d9cf794a144aceac9dbcf8cdd77"
+    },
+    {
+      "path": "src/components/globeLibraryGeometry.test.ts",
+      "sha256": "1555d9520540ef8587e4d3023491854543b487bc13005a0fffcad99cb1142702"
+    },
+    {
+      "path": "src/components/globeLibraryGeometry.ts",
+      "sha256": "7e6cdc372d117139f301b29ff5e61bcd14a5a66dcf659bb8c34cdd89445d7bca"
+    },
+    {
+      "path": "src/components/globeQuality.ts",
+      "sha256": "b52e0221ec8bcac17d640e26378bc0304521316ca34e203313d2b63f9c3b28c9"
+    },
+    {
+      "path": "src/components/globeStandGeometry.test.ts",
+      "sha256": "6eeee7149e8e94bd9f0e2fb5489c8513a602f37be039de408ed332180b753ba1"
+    },
+    {
+      "path": "src/components/globeStandGeometry.ts",
+      "sha256": "3c52ee370972d8445fb6985311005b794da2b6f2217858d820e60d11e816aa25"
+    },
+    {
+      "path": "src/host/HostPlatformServices.test.ts",
+      "sha256": "95d378f18f5076349d356e6e2293374c9fed9ffb20a853f29e279430ad812877"
+    },
+    {
+      "path": "src/host/HostPlatformServices.ts",
+      "sha256": "53be2fc03dc3e7ba39807719634b7322d9d86a37a8ae6e3c680318ff50abc6cc"
+    },
+    {
+      "path": "src/host/PlanetStandControls.css",
+      "sha256": "33fc6bb7b522d4057054a9e72f12ef5c6015a0a91c80187158134de2fa207306"
+    },
+    {
+      "path": "src/host/PlanetStandControls.tsx",
+      "sha256": "be992fbc090b9966973bd5349aa8750a2ca2b35d37366ce07f552570ed32c71f"
+    },
+    {
+      "path": "src/host/host.css",
+      "sha256": "3f81496e8c89f1f0e4facfa3267c2bbd3c05425c0baa3bb5459981cad0c18877"
+    },
+    {
+      "path": "src/host/planetAppearance.css",
+      "sha256": "57c46af2e0704da55e2054e9d09f2b8d408c4428c002e8faf2fe60663e066329"
+    },
+    {
+      "path": "src/host/planetBackgroundCustomization.test.ts",
+      "sha256": "1fa9a4dbc9fa36b8d57f007ce495cd85c44f6816916b69afa653c6f6cf60962d"
+    },
+    {
+      "path": "src/host/planetBackgroundCustomization.ts",
+      "sha256": "1787806ebfcd0c69bf308ba38f27ace7c754a86e3d670924c262e84f0b47892d"
+    },
+    {
+      "path": "src/host/planetCustomization.ts",
+      "sha256": "9737f7b2206149df0b47591185c3faaeb1f8f843b218077471ab59bde0f714bc"
+    },
+    {
+      "path": "src/host/planetGraphicsQuality.ts",
+      "sha256": "5b8cc15796b0a2e0c3e6222ba6c7f0af2ffa2102d7a30000891f2435906d79f2"
+    },
+    {
+      "path": "src/host/planetStandCustomization.test.ts",
+      "sha256": "f7c07a26a8f1f9cc2b0ded1810161e35a95b6ac93e1c0a4ebdc29696765b1670"
+    },
+    {
+      "path": "src/host/planetStandCustomization.ts",
+      "sha256": "325c8595aefb9660c86725837ce3b0bcb4e63f137156b86e570254e84dd3f2ff"
+    },
+    {
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "sha256": "41afc69ed9dd15ac3caf976818de5d2b50749a2cdbfd64e917e93988b0f00143"
+    },
+    {
+      "path": "src/index.css",
+      "sha256": "abeefa5620f8589d0e0f34d38120970315df8f95a0e7d5009d21222e932e5a35"
+    },
+    {
+      "path": "src/planet/baseEditionPolicy.ts",
+      "sha256": "ff5d8a6e3e21dfce9b14487a35b6800fbcbde200abacc6e1898712b486c62985"
+    },
+    {
+      "path": "src/planet/editions.ts",
+      "sha256": "466105cd35cadf5c0bc656c34d50bc20fe174551020b002fc903b8071dc5145e"
+    },
+    {
+      "path": "src/planet/globeBackgrounds.ts",
+      "sha256": "1b1ff9b870b9516dcb0131682cd377196afa05455dbae3bf208bdb1ecf885f6b"
+    },
+    {
+      "path": "src/planet/globeStands.ts",
+      "sha256": "cd2c64da82ca84ce8b3fb5eaed369757619b3ad09999daf0ab1d7dba7763b49f"
+    },
+    {
+      "path": "src/platform/PlatformServices.tsx",
+      "sha256": "6f8aa1040a3fc4bd2717a4ec61ec8a89d48c01610f80b17998a31d35bf6d02c5"
+    },
+    {
+      "path": "src/platform/adapters/web/WebPlatformAdapter.test.ts",
+      "sha256": "a62f55d6fe0ce19e703465816bb31ecbbcf64f739de44e520b270b5747a76511"
+    },
+    {
+      "path": "src/platform/adapters/web/WebPlatformAdapter.ts",
+      "sha256": "5c71bcefaa747e4a5dcedf525ab7acc68d98d5fd6ae9929d51226c65352b9d21"
+    },
+    {
+      "path": "src/platform/distribution.ts",
+      "sha256": "c2947a4631d4b72392de12ab35dd8b30254ad3f612396507739067b1a1d6cf0b"
+    },
+    {
+      "path": "src/platform/ports.ts",
+      "sha256": "c9b16d8f56263dfbc8725cc8296989076d5a485a74ef106954f9b468a21fb65d"
+    },
+    {
+      "path": "src/utils/safeWebStorage.ts",
+      "sha256": "81ea225b4e6c0a1a2d8c3bf4ba2b48523144280429ff3ae2a2bf38df800b9277"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "8d51a8c9266fe83bf17c076b51672753b3750a17520cd0d2c28a90cb8b21e0d6"
+    },
+    {
+      "path": "vitest.config.ts",
+      "sha256": "5c1e90985e77b35599e5bdaf77c74a1166949ec9c4f45d1c5f926c3f53bef90e"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "executions": [
+    {
+      "name": "typecheck",
+      "exitCode": 0,
+      "durationMs": 28362
+    }
+  ],
+  "tests": null,
+  "pass": true,
+  "releaseReady": false,
+  "deviceTested": false,
+  "productionActivation": false
+}
