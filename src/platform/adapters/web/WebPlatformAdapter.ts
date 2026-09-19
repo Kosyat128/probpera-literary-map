@@ -6,6 +6,7 @@ import type {
 import {
   readWebStorage,
   removeWebStorage,
+  strictWebStorage,
   writeWebStorage,
 } from "../../../utils/safeWebStorage";
 import { createWebContentDownloads, type WebContentHost } from "./WebContentDownloads";
@@ -13,6 +14,7 @@ import type { ContentDownloads } from "../../../planet/ContentDownloads";
 import { GLOBE_EDITION_IDS } from "../../../planet/editions";
 import { GLOBE_STAND_IDS, GLOBE_STAND_PREFERENCE_KEY } from "../../../planet/globeStands";
 import { GLOBE_BACKGROUND_IDS, GLOBE_BACKGROUND_PREFERENCE_KEY } from "../../../planet/globeBackgrounds";
+import { GLOBE_COMPOSITION_PREFERENCE_KEY, parseGlobeComposition } from "../../../planet/globeComposition";
 
 type EventHost = Pick<EventTarget, "addEventListener" | "removeEventListener">;
 export interface WebAdapterConnection extends EventHost { readonly type?: string; }
@@ -96,12 +98,34 @@ export function createWebPlatformAdapter(
   const preferences: PreferenceStore = Object.freeze({
     persistence: "best-effort" as const,
     async get(key: string) {
+      if (key === GLOBE_COMPOSITION_PREFERENCE_KEY || key === GLOBE_STAND_PREFERENCE_KEY || key === GLOBE_BACKGROUND_PREFERENCE_KEY
+        || key === "probpera.globe-edition.v2" || key === "probpera.globe-style.v1") {
+        // Only confirmed absence may authorize migration. The general safe
+        // storage facade intentionally hides failures, so this key reads the
+        // explicit browser port and never mistakes an unavailable read for null.
+        try {
+          const value = strictWebStorage("local", browser as Pick<Window, "localStorage" | "sessionStorage"> | null).getItem(key);
+          if (value !== null && (key === GLOBE_COMPOSITION_PREFERENCE_KEY
+            ? !parseGlobeComposition(value) : !preferenceValues.get(key)?.includes(value))) throw new Error();
+          return value;
+        } catch { throw new Error(key === GLOBE_COMPOSITION_PREFERENCE_KEY ? "composition-preference-unavailable"
+          : key === GLOBE_STAND_PREFERENCE_KEY || key === GLOBE_BACKGROUND_PREFERENCE_KEY
+            ? "customization-preference-unavailable" : "edition-preference-unavailable"); }
+      }
       const permitted = preferenceValues.get(key);
       if (!permitted) return null;
       const value = readWebStorage("local", key, storageHost);
       return value !== null && permitted.includes(value) ? value : null;
     },
     async set(key: string, value: string) {
+      if (key === GLOBE_COMPOSITION_PREFERENCE_KEY) {
+        if (!parseGlobeComposition(value)) return false;
+        try {
+          const storage = strictWebStorage("local", browser as Pick<Window, "localStorage" | "sessionStorage"> | null);
+          storage.setItem(key, value);
+          return storage.getItem(key) === value;
+        } catch { return false; }
+      }
       if (!preferenceValues.get(key)?.includes(value)) return false;
       // The existing safe facade may acknowledge an in-memory fallback. This
       // means current-page acceptance, never durable/secure ownership evidence.
@@ -109,6 +133,13 @@ export function createWebPlatformAdapter(
         && readWebStorage("local", key, storageHost) === value;
     },
     async remove(key: string) {
+      if (key === GLOBE_COMPOSITION_PREFERENCE_KEY) {
+        try {
+          const storage = strictWebStorage("local", browser as Pick<Window, "localStorage" | "sessionStorage"> | null);
+          storage.removeItem(key);
+          return storage.getItem(key) === null;
+        } catch { return false; }
+      }
       if (!preferenceValues.has(key)) return false;
       return removeWebStorage("local", key, storageHost)
         && readWebStorage("local", key, storageHost) === null;

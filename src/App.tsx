@@ -24,8 +24,8 @@ import NativePlanetPanel from "./host/NativePlanetPanel";
 import PlanetGraphicsSettings from "./host/PlanetGraphicsSettings";
 import PlanetDownloadsPanel from "./host/PlanetDownloadsPanel";
 import { usePlanetGraphicsQuality } from "./host/planetGraphicsQuality";
-import { usePlanetStandCustomization } from "./host/planetStandCustomization";
-import { usePlanetBackgroundCustomization } from "./host/planetBackgroundCustomization";
+import { usePlanetComposition } from "./host/planetComposition";
+import { compositionCustomizationView, readLegacyWebViewGlobeEdition } from "./host/planetCompositionPresentation";
 import PlanetStandControls from "./host/PlanetStandControls";
 import type { GlobeStandPresentation } from "./planet/globeStands";
 import type { GlobeBackgroundPresentation } from "./planet/globeBackgrounds";
@@ -578,38 +578,48 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     preferences: platformServices.preferences,
     enabled: isPlanetApplication,
   });
-  const stands = usePlanetStandCustomization({
+  const compositionEnvironment = useRef({ qualityTier: graphics.qualityTier, access: isPlanetApplication ? "adult" : "blocked" });
+  compositionEnvironment.current = { qualityTier: graphics.qualityTier, access: isPlanetApplication ? "adult" : "blocked" };
+  const getCompositionEnvironment = useCallback(() => compositionEnvironment.current, []);
+  const composition = usePlanetComposition({
     preferences: platformServices.preferences,
     enabled: isPlanetApplication,
     // This application shell currently has no child profile. Child integration
     // must supply a separately reviewed access decision instead of this adult path.
     access: isPlanetApplication ? "adult" : "blocked",
+    getEnvironment: getCompositionEnvironment,
+    readLegacyEdition: platformServices.kind !== "web" ? readLegacyWebViewGlobeEdition : undefined,
   });
+  const stands = compositionCustomizationView(composition, "stand");
+  const backgrounds = compositionCustomizationView(composition, "background");
   const standPresentation = useMemo<GlobeStandPresentation>(() => ({
-    appliedId: stands.snapshot.appliedId,
-    displayedId: stands.snapshot.displayedId,
-    renderRevision: stands.snapshot.renderRevision,
-    onRendered: stands.controller.acknowledgeRendered,
-    onFailed: stands.controller.failRendering,
+    appliedId: composition.snapshot.applied.standId,
+    displayedId: composition.snapshot.displayed.standId,
+    renderRevision: composition.snapshot.renderRevision,
+    // The scene arbiter confirms all three branches in one completed frame.
+    onRendered: () => undefined,
+    onFailed: (revision) => composition.controller.failRendering(revision),
     onContextLost: () => setCustomizationSceneReady(false),
     onContextRestored: () => setCustomizationSceneReady(true),
-    onEditionChange: stands.controller.cancel,
-  }), [stands.snapshot.appliedId, stands.snapshot.displayedId, stands.snapshot.renderRevision, stands.controller]);
-  const backgrounds = usePlanetBackgroundCustomization({
-    preferences: platformServices.preferences,
-    enabled: isPlanetApplication,
-    access: isPlanetApplication ? "adult" : "blocked",
-  });
+    onEditionChange: composition.controller.cancel,
+  }), [composition.snapshot.applied.standId, composition.snapshot.displayed.standId, composition.snapshot.renderRevision, composition.controller]);
   const backgroundPresentation = useMemo<GlobeBackgroundPresentation>(() => ({
-    appliedId: backgrounds.snapshot.appliedId,
-    displayedId: backgrounds.snapshot.displayedId,
-    renderRevision: backgrounds.snapshot.renderRevision,
-    onRendered: backgrounds.controller.acknowledgeRendered,
-    onFailed: backgrounds.controller.failRendering,
+    appliedId: composition.snapshot.applied.backgroundId,
+    displayedId: composition.snapshot.displayed.backgroundId,
+    renderRevision: composition.snapshot.renderRevision,
+    onRendered: () => undefined,
+    onFailed: (revision) => composition.controller.failRendering(revision),
     onContextLost: () => setCustomizationSceneReady(false),
     onContextRestored: () => setCustomizationSceneReady(true),
-    onEditionChange: backgrounds.controller.cancel,
-  }), [backgrounds.snapshot.appliedId, backgrounds.snapshot.displayedId, backgrounds.snapshot.renderRevision, backgrounds.controller]);
+    onEditionChange: composition.controller.cancel,
+  }), [composition.snapshot.applied.backgroundId, composition.snapshot.displayed.backgroundId, composition.snapshot.renderRevision, composition.controller]);
+  const compositionEnvironmentKey = `${language}:${graphics.qualityTier}`;
+  const previousCompositionEnvironment = useRef(compositionEnvironmentKey);
+  useLayoutEffect(() => {
+    if (previousCompositionEnvironment.current === compositionEnvironmentKey) return;
+    previousCompositionEnvironment.current = compositionEnvironmentKey;
+    composition.controller.refreshEnvironment();
+  }, [compositionEnvironmentKey, composition.controller]);
   const [nativeCollectionOpen, setNativeCollectionOpen] = useState(() => isPlanetApplication && addressRequestsCollection());
   const [planetLaunchComplete, setPlanetLaunchComplete] = useState(false);
   const completePlanetLaunch = useCallback(() => setPlanetLaunchComplete(true), []);
@@ -623,13 +633,12 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
   });
   const nativeGlobeRootRef = useRef<HTMLElement>(null);
   const closeStandControls = useCallback(() => {
-    if (stands.controller.getSnapshot().isOpen) stands.controller.cancel();
-    if (backgrounds.controller.getSnapshot().isOpen) backgrounds.controller.cancel();
+    if (composition.controller.getSnapshot().editor) composition.controller.cancel();
     window.requestAnimationFrame(() => {
       const root = nativeGlobeRootRef.current;
       if (root && !root.hasAttribute("inert")) root.querySelector<HTMLElement>("[data-planet-stand-toggle]")?.focus({ preventScroll: true });
     });
-  }, [stands.controller, backgrounds.controller]);
+  }, [composition.controller]);
   const nativeReturnRequestedRef = useRef(false);
   const [nativeBookWriterTarget, setNativeBookWriterTarget] = useState<BookWriterTarget | null>(null);
   const nativeBookWriterTargetRef = useRef<BookWriterTarget | null>(null);
@@ -2050,7 +2059,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     handleBack: () => {
       if (globalSearchOpen) { closeGlobalSearch(); return "handled"; }
       if (communityOpen) { closeCommunity(); return "handled"; }
-      if (stands.controller.getSnapshot().isOpen || backgrounds.controller.getSnapshot().isOpen) { closeStandControls(); return "handled"; }
+      if (composition.controller.getSnapshot().editor) { closeStandControls(); return "handled"; }
       if ((!isPlanetApplication || nativeCollectionOpen) && nativeBookBackRef.current?.()) return "handled";
       if (nativeCollectionOpen) { closeNativeCollection(); return "handled"; }
       if (closeLargestArchivesOnEscape()) return "handled";
@@ -2095,7 +2104,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     if (!isPlanetApplication || nativeCollectionOpen) return;
     const escape = (event: KeyboardEvent) => {
       if (event.key !== "Escape" || event.defaultPrevented || nativeGlobeRootRef.current?.hasAttribute("inert")) return;
-      if (stands.controller.getSnapshot().isOpen || backgrounds.controller.getSnapshot().isOpen) { event.preventDefault(); closeStandControls(); return; }
+      if (composition.controller.getSnapshot().editor) { event.preventDefault(); closeStandControls(); return; }
       if (closeLargestArchivesOnEscape()) { event.preventDefault(); return; }
       if (atlasSearchOpen) {
         event.preventDefault();
@@ -2111,17 +2120,16 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     return () => window.removeEventListener("keydown", escape);
   }, [isPlanetApplication, nativeCollectionOpen, closeLargestArchivesOnEscape, atlasSearchOpen,
     closeAtlasSearch, atlasExperience.searchButtonRef, atlasExperience.filtersButtonRef,
-    atlasExperience.state.filtersOpen, atlasExperienceDispatch, selectedCountry, closeCountry, stands.controller, backgrounds.controller, closeStandControls]);
+    atlasExperience.state.filtersOpen, atlasExperienceDispatch, selectedCountry, closeCountry, composition.controller, closeStandControls]);
 
   useLayoutEffect(() => {
     // Suspend an untouched saved choice while another surface owns interaction;
     // an explicit preview is cancelled without changing the applied stand.
     const available = isPlanetApplication && !nativeCollectionOpen && !globalSearchOpen && !communityOpen
       && !atlasSearchOpen && !atlasExperience.state.filtersOpen && platformVisibility === "active" && customizationSceneReady;
-    stands.controller.setVisibility(available);
-    backgrounds.controller.setVisibility(available);
+    composition.controller.setVisibility(available);
   }, [nativeCollectionOpen, globalSearchOpen, communityOpen, atlasSearchOpen,
-    atlasExperience.state.filtersOpen, platformVisibility, stands.controller, backgrounds.controller, isPlanetApplication, customizationSceneReady]);
+    atlasExperience.state.filtersOpen, platformVisibility, composition.controller, isPlanetApplication, customizationSceneReady]);
 
   const readerName =
     user?.user_metadata?.display_name || user?.email?.split("@")[0] || "";
@@ -2682,6 +2690,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
                 runtimeActive={globeRuntimeActive}
                 standCustomization={isPlanetApplication ? standPresentation : undefined}
                 backgroundCustomization={isPlanetApplication ? backgroundPresentation : undefined}
+                composition={isPlanetApplication ? composition : undefined}
                 standControls={isPlanetApplication ? <PlanetStandControls controller={stands.controller}
                   snapshot={stands.snapshot} backgroundController={backgrounds.controller}
                   backgroundSnapshot={backgrounds.snapshot} onClose={closeStandControls} /> : undefined}

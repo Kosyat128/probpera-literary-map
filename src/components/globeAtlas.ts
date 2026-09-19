@@ -97,6 +97,22 @@ export function globeTextureAssetName(
   return `textures/${basename}${compact ? "-mobile" : ""}.webp`;
 }
 
+export type GlobeAtlasEditionSourceState = Readonly<{
+  editionId: GlobeEditionId;
+  /** Language of the retained source, independent of the surrounding UI. */
+  language: InterfaceLanguage;
+  /** Successful source repaint generation; not a rendered-frame acknowledgement. */
+  generation: number;
+}>;
+
+export type GlobeAtlasEditionLease = Readonly<{
+  editionId: GlobeEditionId;
+  language: InterfaceLanguage;
+  /** Restores the exact source synchronously; false after release/replacement/disposal. */
+  restore: () => boolean;
+  release: () => void;
+}>;
+
 export type GlobeAtlas = {
   mapTexture: THREE.CanvasTexture;
   reliefTexture: THREE.CanvasTexture;
@@ -116,6 +132,9 @@ export type GlobeAtlas = {
     hoveredCountryId?: string | null,
     candidateCountryId?: string | null
   ) => void;
+  /** At most one lease is retained; a new capture invalidates the old lease. */
+  captureEditionSource: () => GlobeAtlasEditionLease | null;
+  getEditionSourceState: () => GlobeAtlasEditionSourceState | null;
   setEdition: (
     editionId: GlobeEditionId,
     language?: InterfaceLanguage
@@ -1346,6 +1365,13 @@ export async function createGlobeAtlas(
   let activeOverlayProfile = initialEdition.overlayProfile;
   let activeVisualStyle = initialVisualStyle;
   let activeLanguage = initialLanguage;
+  let activeSourceMap = sourceMap;
+  let sourceGeneration = 0;
+  let retainedEditionSource: {
+    editionId: GlobeEditionId;
+    language: InterfaceLanguage;
+    sourceMap: HTMLImageElement | null;
+  } | null = null;
   let visualStyleRequest = 0;
 
   const countryAtGeographicCoordinates = (longitude: number, latitude: number) =>
@@ -1634,13 +1660,77 @@ export async function createGlobeAtlas(
     );
   };
 
+  const paintEditionSource = (
+    editionId: GlobeEditionId,
+    language: InterfaceLanguage,
+    nextMap: HTMLImageElement | null
+  ) => {
+    const edition = GLOBE_EDITION_BY_ID[editionId];
+    drawMapCanvas(
+      mapCanvas,
+      worldGeoJson.features,
+      edition.legacySurfaceProfile,
+      nextMap,
+      edition.overlayProfile
+    );
+    activeEditionId = editionId;
+    activeOverlayProfile = edition.overlayProfile;
+    activeVisualStyle = edition.legacySurfaceProfile;
+    activeLanguage = language;
+    activeSourceMap = nextMap;
+    mapTexture.needsUpdate = true;
+    redrawHighlights();
+    sourceGeneration += 1;
+  };
+
+  const releaseEditionSource = () => {
+    // Clear the record itself: an external caller may retain an expired lease.
+    if (retainedEditionSource) retainedEditionSource.sourceMap = null;
+    retainedEditionSource = null;
+  };
+
+  const captureEditionSource = (): GlobeAtlasEditionLease | null => {
+    if (disposed) return null;
+    releaseEditionSource();
+    const held = {
+      editionId: activeEditionId,
+      language: activeLanguage,
+      sourceMap: activeSourceMap,
+    };
+    retainedEditionSource = held;
+    return Object.freeze({
+      editionId: held.editionId,
+      language: held.language,
+      restore: () => {
+        if (disposed || retainedEditionSource !== held) return false;
+        // Fence even an unchanged baseline, including an already decoding
+        // candidate which the shared image cache intentionally cannot cancel.
+        visualStyleRequest += 1;
+        globeMapCache.retainRequired(
+          globeMapCacheKey(held.editionId, compact, held.language)
+        );
+        paintEditionSource(held.editionId, held.language, held.sourceMap);
+        return true;
+      },
+      release: () => {
+        if (retainedEditionSource === held) releaseEditionSource();
+      },
+    });
+  };
+
+  const getEditionSourceState = (): GlobeAtlasEditionSourceState | null =>
+    disposed ? null : Object.freeze({
+      editionId: activeEditionId,
+      language: activeLanguage,
+      generation: sourceGeneration,
+    });
+
   const setEdition = async (
     editionId: GlobeEditionId,
     language: InterfaceLanguage = activeLanguage
   ) => {
+    if (disposed) return;
     const request = ++visualStyleRequest;
-    const edition = GLOBE_EDITION_BY_ID[editionId];
-    const style = edition.legacySurfaceProfile;
     if (
       editionId === activeEditionId &&
       (editionId !== "natural-earth-2026" || language === activeLanguage)
@@ -1654,19 +1744,7 @@ export async function createGlobeAtlas(
     const nextMap = await loadEditionMap(editionId, compact, language);
     if (disposed || request !== visualStyleRequest) return;
 
-    drawMapCanvas(
-      mapCanvas,
-      worldGeoJson.features,
-      style,
-      nextMap,
-      edition.overlayProfile
-    );
-    activeEditionId = editionId;
-    activeOverlayProfile = edition.overlayProfile;
-    activeVisualStyle = style;
-    activeLanguage = language;
-    mapTexture.needsUpdate = true;
-    redrawHighlights();
+    paintEditionSource(editionId, language, nextMap);
   };
 
   const preloadEdition = async (
@@ -1699,6 +1777,8 @@ export async function createGlobeAtlas(
     prewarmFocusMetrics,
     outlineGeometryForCountry,
     updateHighlight,
+    captureEditionSource,
+    getEditionSourceState,
     setEdition,
     preloadEdition,
     setVisualStyle,
@@ -1707,6 +1787,8 @@ export async function createGlobeAtlas(
       if (disposed) return;
       disposed = true;
       visualStyleRequest += 1;
+      releaseEditionSource();
+      activeSourceMap = null;
       pendingFlagImages.forEach(({ cancel }) => cancel());
       pendingFlagImages.clear();
       flagImages.clear();

@@ -4,6 +4,7 @@ import {
   installSafeWebStorage,
   readWebStorage,
   removeWebStorage,
+  strictWebStorage,
   writeWebStorage,
 } from "./safeWebStorage";
 
@@ -99,6 +100,29 @@ function throwingStoragePrototype() {
 }
 
 describe("safe web storage", () => {
+  it("preserves strict IO failures behind both installed legacy facades and patched prototypes", () => {
+    const unavailable = host(memoryStorage({ throwOnGet: true, throwOnSet: true, throwOnRemove: true }));
+    installSafeWebStorage(unavailable, null);
+    expect(readWebStorage("local", "choice", unavailable)).toBeNull();
+    expect(writeWebStorage("local", "choice", "session fallback", unavailable)).toBe(true);
+    expect(readWebStorage("local", "choice", unavailable)).toBe("session fallback");
+    const strict = strictWebStorage("local", unavailable);
+    expect(() => strict.getItem("choice")).toThrow();
+    expect(() => strict.setItem("choice", "new value")).toThrow();
+    expect(() => strict.removeItem("choice")).toThrow();
+    const prototype = throwingStoragePrototype();
+    const first = host(Object.create(prototype) as Storage);
+    installSafeWebStorage(first, prototype);
+    expect(first.localStorage.getItem("choice")).toBeNull();
+    expect(() => strictWebStorage("local", first).getItem("choice")).toThrow();
+    // A later host sharing the already patched prototype still finds the
+    // original native method rather than accepting the patch's neutral null.
+    const second = host(Object.create(prototype) as Storage);
+    installSafeWebStorage(second, prototype);
+    expect(() => strictWebStorage("local", second).getItem("choice")).toThrow();
+    expect(strictWebStorage("local", host(memoryStorage())).getItem("missing")).toBeNull();
+  });
+
   it("reads, writes, and removes values when storage works", () => {
     const storageHost = host(memoryStorage());
 

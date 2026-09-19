@@ -11,8 +11,12 @@ const DOWNLOAD_NETWORK = "probpera-planet-download-network-v1";
 const EDITION = "probpera.globe-edition.v2", LEGACY_STYLE = "probpera.globe-style.v1";
 const STAND = "probpera-planet-stand-v1";
 const BACKGROUND = "probpera-planet-background-v1";
+const COMPOSITION = "probpera-planet-composition-v1";
 const RECENT = "probpera-planet-recent-adult-v1";
 const MAIL = "mailto:probperasite@yandex.ru";
+const compositionRecord = () => ({ schemaVersion: 1, commitId: "adapter-fixture:1", selection: {
+  editionId: "rand-mcnally-1887", standId: "stand.base.wood", backgroundId: "background.base.library",
+} });
 function deferred<T>() {
   let resolve!: (value: T) => void;
   let reject!: (reason?: unknown) => void;
@@ -390,7 +394,7 @@ describe("exact non-secret preferences with serialized readback", () => {
     f.preferences.set.mockClear(); f.preferences.remove.mockClear();
     for (const value of ["canonical", "stand.base.wood", "background.base.child-room", "library", "background.base.library "]) {
       expect(await fresh.preferences.set(BACKGROUND, value)).toBe(false);
-      f.memory.set(BACKGROUND, value); expect(await fresh.preferences.get(BACKGROUND)).toBeNull();
+      f.memory.set(BACKGROUND, value); await expect(fresh.preferences.get(BACKGROUND)).rejects.toThrow("customization-preference-unavailable");
     }
     const reads = f.preferences.get.mock.calls.length;
     for (const key of [BACKGROUND + ":en", BACKGROUND + "\u0000"]) {
@@ -414,7 +418,7 @@ describe("exact non-secret preferences with serialized readback", () => {
     f.preferences.set.mockClear(); f.preferences.remove.mockClear();
     for (const value of ["wood", "base.stand.wood", "stand.base.child-book-cloud", "stand.base.wood ", "constructor"]) {
       expect(await recreated.preferences.set(STAND, value)).toBe(false);
-      f.memory.set(STAND, value); expect(await recreated.preferences.get(STAND)).toBeNull();
+      f.memory.set(STAND, value); await expect(recreated.preferences.get(STAND)).rejects.toThrow("customization-preference-unavailable");
     }
     const reads = f.preferences.get.mock.calls.length;
     for (const key of [STAND + ":en", STAND + "\u0000", "probpera-planet-stand-v2"]) {
@@ -424,6 +428,46 @@ describe("exact non-secret preferences with serialized readback", () => {
     }
     expect(f.preferences.get).toHaveBeenCalledTimes(reads);
     expect(f.preferences.set).not.toHaveBeenCalled(); expect(f.preferences.remove).not.toHaveBeenCalled();
+  });
+
+  it("round-trips one exact composition record without granting arbitrary native JSON storage", async () => {
+    const f = fixture();
+    const recreated = createHostPlatformServices({ kind: "ios", channel: "dev", languages: ["en"], preferences: f.preferences });
+    const value = JSON.stringify(compositionRecord(), null, 2);
+    expect(await f.services.preferences.get(COMPOSITION)).toBeNull();
+    expect(await f.services.preferences.set(COMPOSITION, value)).toBe(true);
+    expect(await recreated.preferences.get(COMPOSITION)).toBe(value);
+    expect(f.preferences.set.mock.calls).toEqual([[{ key: COMPOSITION, value }]]);
+    for (const key of [COMPOSITION + ":en", COMPOSITION + "\u0000", "probpera-planet-composition-v2"]) {
+      expect(await recreated.preferences.get(key)).toBeNull();
+      expect(await recreated.preferences.set(key, value)).toBe(false);
+      expect(await recreated.preferences.remove(key)).toBe(false);
+    }
+    const before = f.preferences.set.mock.calls.length;
+    for (const invalid of ["{}", "null", JSON.stringify({ ...compositionRecord(), approval: true }),
+      JSON.stringify({ ...compositionRecord(), selection: { ...compositionRecord().selection, standId: "stand.base.child-book-cloud" } })]) {
+      expect(await recreated.preferences.set(COMPOSITION, invalid)).toBe(false);
+      f.memory.set(COMPOSITION, invalid);
+      await expect(recreated.preferences.get(COMPOSITION)).rejects.toThrow("composition-preference-unavailable");
+    }
+    expect(f.preferences.set).toHaveBeenCalledTimes(before);
+    expect(await recreated.preferences.remove(COMPOSITION)).toBe(true);
+    expect(await recreated.preferences.get(COMPOSITION)).toBeNull();
+  });
+
+  it("never converts an unavailable composition bridge or failed readback into absence or confirmed saving", async () => {
+    const f = fixture(), value = JSON.stringify(compositionRecord());
+    f.preferences.get.mockRejectedValueOnce(new Error("Native read unavailable"));
+    await expect(f.services.preferences.get(COMPOSITION)).rejects.toThrow("composition-preference-unavailable");
+    f.preferences.get.mockResolvedValueOnce({} as never);
+    await expect(f.services.preferences.get(COMPOSITION)).rejects.toThrow("composition-preference-unavailable");
+    await expect(fixture({ preferences: undefined }).services.preferences.get(COMPOSITION)).rejects.toThrow("composition-preference-unavailable");
+    f.preferences.get.mockResolvedValueOnce({ value: null });
+    expect(await f.services.preferences.set(COMPOSITION, value)).toBe(false);
+    expect(f.onFailure).toHaveBeenCalledWith({ operation: "preference-set", reason: "readback-mismatch" });
+    expect(await f.services.preferences.get(COMPOSITION)).toBe(value);
+    f.preferences.get.mockRejectedValueOnce(new Error("Legacy background read unavailable"));
+    await expect(f.services.preferences.get(BACKGROUND)).rejects.toThrow("customization-preference-unavailable");
   });
 
   it("round-trips canonical globe IDs and exact legacy styles through a recreated host adapter", async () => {

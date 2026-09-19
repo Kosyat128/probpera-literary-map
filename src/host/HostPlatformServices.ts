@@ -3,6 +3,7 @@ import { createHostRecentHistory } from "./HostRecentHistory";
 import { GLOBE_EDITION_IDS } from "../planet/editions";
 import { GLOBE_STAND_IDS, GLOBE_STAND_PREFERENCE_KEY } from "../planet/globeStands";
 import { GLOBE_BACKGROUND_IDS, GLOBE_BACKGROUND_PREFERENCE_KEY } from "../planet/globeBackgrounds";
+import { GLOBE_COMPOSITION_PREFERENCE_KEY, parseGlobeComposition } from "../planet/globeComposition";
 
 export interface HostListenerHandle { remove(): void | Promise<void>; }
 export interface HostAppState { readonly isActive: boolean; }
@@ -56,6 +57,9 @@ const preferenceValues = new Map<string, readonly string[]>([
   [GLOBE_BACKGROUND_PREFERENCE_KEY, GLOBE_BACKGROUND_IDS],
 ]);
 const supportMail = "mailto:probperasite@yandex.ru";
+const permittedPreferenceKey = (key: string) => key === GLOBE_COMPOSITION_PREFERENCE_KEY || preferenceValues.has(key);
+const permittedPreferenceValue = (key: string, value: unknown) => key === GLOBE_COMPOSITION_PREFERENCE_KEY
+  ? parseGlobeComposition(value) !== null : typeof value === "string" && Boolean(preferenceValues.get(key)?.includes(value));
 
 function safeHttpsUrl(input: string): string | null {
   if (typeof input !== "string" || !/^https:\/\/[^/?#]/iu.test(input)) return null;
@@ -114,7 +118,7 @@ export function createHostPlatformServices(options: HostPlatformServicesOptions)
     if (!options.preferences) { report(operation, "unavailable"); return { valid: false, value: null }; }
     const result = await options.preferences.get({ key });
     const value = result?.value;
-    if (value !== null && !preferenceValues.get(key)?.includes(value)) {
+    if (value !== null && !permittedPreferenceValue(key, value)) {
       report(operation, "invalid-response");
       return { valid: false, value: null };
     }
@@ -123,22 +127,25 @@ export function createHostPlatformServices(options: HostPlatformServicesOptions)
   const preferences: PreferenceStore = Object.freeze({
     persistence: "best-effort" as const,
     get(key: string) {
-      if (!preferenceValues.has(key)) return Promise.resolve(null);
-      if (key === "probpera.globe-edition.v2" || key === "probpera.globe-style.v1") {
+      if (!permittedPreferenceKey(key)) return Promise.resolve(null);
+      if (key === GLOBE_COMPOSITION_PREFERENCE_KEY || key === GLOBE_STAND_PREFERENCE_KEY || key === GLOBE_BACKGROUND_PREFERENCE_KEY
+        || key === "probpera.globe-edition.v2" || key === "probpera.globe-style.v1") {
         // Migration may use a truly absent native preference. A failed read must
         // not authorize an older WebView value to overwrite native storage.
         return serialPreference<{ valid: boolean; value: string | null }>(
           key, "preference-get", { valid: false, value: null },
           () => readPreference(key, "preference-get")
         ).then(result => {
-          if (!result.valid) throw new Error("edition-preference-unavailable");
+          if (!result.valid) throw new Error(key === GLOBE_COMPOSITION_PREFERENCE_KEY
+            ? "composition-preference-unavailable" : key === GLOBE_STAND_PREFERENCE_KEY || key === GLOBE_BACKGROUND_PREFERENCE_KEY
+              ? "customization-preference-unavailable" : "edition-preference-unavailable");
           return result.value;
         });
       }
       return serialPreference(key, "preference-get", null, async () => (await readPreference(key, "preference-get")).value);
     },
     set(key: string, value: string) {
-      if (!preferenceValues.get(key)?.includes(value)) return Promise.resolve(false);
+      if (!permittedPreferenceValue(key, value)) return Promise.resolve(false);
       return serialPreference(key, "preference-set", false, async () => {
         if (!options.preferences) { report("preference-set", "unavailable"); return false; }
         await options.preferences.set({ key, value });
@@ -149,7 +156,7 @@ export function createHostPlatformServices(options: HostPlatformServicesOptions)
       });
     },
     remove(key: string) {
-      if (!preferenceValues.has(key)) return Promise.resolve(false);
+      if (!permittedPreferenceKey(key)) return Promise.resolve(false);
       return serialPreference(key, "preference-remove", false, async () => {
         if (!options.preferences) { report("preference-remove", "unavailable"); return false; }
         await options.preferences.remove({ key });

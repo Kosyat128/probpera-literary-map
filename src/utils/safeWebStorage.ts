@@ -23,6 +23,52 @@ const storageProperties: Record<WebStorageArea, StorageProperty> = {
   session: "sessionStorage",
 };
 
+type StrictStoragePort = Pick<Storage, "getItem" | "setItem" | "removeItem">;
+const originalStorageMethods = new WeakMap<object, Partial<Record<StorageMethodName, unknown>>>();
+const strictStoragePorts = new WeakMap<object, Partial<Record<WebStorageArea, StrictStoragePort | null>>>();
+
+function captureStrictStoragePort(host: StorageHost, area: WebStorageArea): StrictStoragePort | null {
+  let ports = strictStoragePorts.get(host);
+  if (!ports) { ports = {}; strictStoragePorts.set(host, ports); }
+  if (Object.prototype.hasOwnProperty.call(ports, area)) return ports[area] ?? null;
+  try {
+    const storage = host[storageProperties[area]];
+    const original = (method: keyof StrictStoragePort) => {
+      let owner: object | null = storage;
+      while (owner) {
+        if (Object.prototype.hasOwnProperty.call(owner, method)) {
+          const candidate = originalStorageMethods.get(owner)?.[method] ?? Reflect.get(storage, method);
+          if (typeof candidate !== "function") throw new Error("Storage method unavailable");
+          return candidate;
+        }
+        owner = Object.getPrototypeOf(owner);
+      }
+      throw new Error("Storage method unavailable");
+    };
+    const get = original("getItem"), set = original("setItem"), remove = original("removeItem");
+    const port: StrictStoragePort = Object.freeze({
+      getItem: (key: string) => Reflect.apply(get, storage, [key]) as string | null,
+      setItem: (key: string, value: string) => { Reflect.apply(set, storage, [key, value]); },
+      removeItem: (key: string) => { Reflect.apply(remove, storage, [key]); },
+    });
+    ports[area] = port;
+    return port;
+  } catch { ports[area] = null; return null; }
+}
+
+/** Explicit capability for migrations that must distinguish failed IO from absence.
+ * Capture occurs before our legacy facade/prototype patch, never through its
+ * in-memory overlay. Existing resilient callers retain their original policy.
+ */
+export function strictWebStorage(
+  area: WebStorageArea,
+  host: StorageHost | null | undefined = typeof window === "undefined" ? null : window,
+): StrictStoragePort {
+  const port = host ? captureStrictStoragePort(host, area) : null;
+  if (!port) throw new Error("Strict storage unavailable");
+  return port;
+}
+
 function createResilientStorage(primary: Storage | null): Storage {
   const overlay = new Map<string, string>();
   const removed = new Set<string>();
@@ -117,6 +163,9 @@ function patchStoragePrototype(
   for (const method of methods) {
     const original = prototype[method] as unknown;
     if (typeof original !== "function") continue;
+    let originals = originalStorageMethods.get(prototype);
+    if (!originals) { originals = {}; originalStorageMethods.set(prototype, originals); }
+    if (!Object.prototype.hasOwnProperty.call(originals, method)) originals[method] = original;
     try {
       Object.defineProperty(prototype, method, {
         configurable: true,
@@ -202,6 +251,7 @@ export function installSafeWebStorage(
       : (Storage.prototype as unknown as StoragePrototypeLike)
 ) {
   if (!host) return false;
+  for (const area of ["local", "session"] as const) captureStrictStoragePort(host, area);
   const prototypePatched = patchStoragePrototype(prototype);
   let ready = prototypePatched;
 

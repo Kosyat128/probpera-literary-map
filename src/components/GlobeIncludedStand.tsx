@@ -92,16 +92,19 @@ function StandFrame({ presentation, quality, canonicalFrame }: FrameProps) {
 
   useFrame(() => {
     const owner = ownership.current;
-    if (!owner?.alive || owner.acknowledged) return;
+    if (!owner?.alive || (owner.acknowledged && !callbacks.current.onFrameRendered)) return;
     if ((shown?.key ?? null) !== owner.key) return;
     const frame = gl.info.render.frame;
     // Fiber renders after useFrame. Confirm completion of that renderer frame,
     // rather than declaring success when React merely constructed the group.
     queueMicrotask(() => {
-      if (!owner.alive || ownership.current !== owner || owner.acknowledged) return;
+      if (!owner.alive || ownership.current !== owner) return;
       if (gl.info.render.frame <= frame || gl.getContext().isContextLost()) return;
-      owner.acknowledged = true;
-      callbacks.current.onRendered(owner.revision, owner.id);
+      if (!owner.acknowledged) {
+        owner.acknowledged = true;
+        callbacks.current.onRendered(owner.revision, owner.id);
+      }
+      callbacks.current.onFrameRendered?.(owner.revision, owner.id, gl.info.render.frame);
     });
   });
 

@@ -7,28 +7,35 @@ export const planetEditionPreferenceCopy = {
   productionReady: false,
   locales: {
     ru: {
-      saving: "Сохраняем выбор глобуса…",
-      failed: "Не удалось подтвердить сохранение. Выбранный глобус остаётся на экране, но при следующем запуске выбор может сброситься.",
+      saving: "Сохраняем оформление глобуса…",
+      failed: "Не удалось подтвердить сохранение. Оформление остаётся на экране, но при следующем запуске выбор может сброситься.",
       retry: "Повторить сохранение",
+      restoreFailed: "Не удалось восстановить оформление. Вы можете выбрать его заново.",
+      renderFailed: "Оформление не удалось применить. Прежний выбор сохранён.",
     },
     en: {
-      saving: "Saving your globe choice…",
-      failed: "Saving could not be confirmed. Your selected globe stays on screen, but your choice may reset the next time you open the app.",
+      saving: "Saving your globe appearance…",
+      failed: "Saving could not be confirmed. Your globe appearance stays on screen, but your choice may reset the next time you open the app.",
       retry: "Try saving again",
+      restoreFailed: "Your saved appearance could not be restored. You can choose it again.",
+      renderFailed: "The appearance could not be applied. Your previous choice has been kept.",
     },
   },
 } as const;
 
-export default function PlanetEditionPreferenceStatus({ saveState, onRetry }: {
+export default function PlanetEditionPreferenceStatus({ saveState, onRetry, restoreFailed = false, renderFailed = false }: {
   saveState: "idle" | "saving" | "failed";
   onRetry: () => void;
+  restoreFailed?: boolean;
+  renderFailed?: boolean;
 }) {
   const { language } = useInterfaceLanguage();
   const copy = planetEditionPreferenceCopy.locales[language];
   return (
     <div className="planet-edition-preference" data-planet-edition-save-state={saveState}>
       <p role="status" aria-live="polite" aria-atomic="true">
-        {saveState === "saving" ? copy.saving : saveState === "failed" ? copy.failed : ""}
+        {saveState === "saving" ? copy.saving : saveState === "failed" ? copy.failed
+          : restoreFailed ? copy.restoreFailed : renderFailed ? copy.renderFailed : ""}
       </p>
       {saveState === "failed" && <button type="button" data-planet-edition-save-retry=""
         onClick={event => {

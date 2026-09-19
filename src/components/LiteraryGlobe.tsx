@@ -18,6 +18,9 @@ import { installPlanetAppearance } from "../host/planetAppearance";
 import "../host/planetAppearance.css";
 import PlanetEditionPreferenceStatus from "../host/PlanetEditionPreferenceStatus";
 import { usePlanetEditionPreference } from "../host/planetEditionPreference";
+import type { PlanetCompositionPresentation } from "../host/planetCompositionPresentation";
+import { useGlobeCompositionScene, type PreparedCompositionSource } from "./useGlobeCompositionScene";
+import { useGlobeCompositionFrame } from "./useGlobeCompositionFrame";
 import { usePlatformServices } from "../platform/PlatformServices";
 import { isControlledWebEdition } from "../platform/distribution";
 
@@ -167,6 +170,7 @@ interface Props {
   standCustomization?: GlobeStandPresentation;
   standControls?: ReactNode;
   backgroundCustomization?: GlobeBackgroundPresentation;
+  composition?: PlanetCompositionPresentation;
 }
 
 const GLOBE_EDITION_STORAGE_KEY = "probpera.globe-edition.v2";
@@ -1666,6 +1670,8 @@ function GlobeScene({
   atlas,
   standCustomization,
   backgroundCustomization,
+  composition,
+  preparedCompositionSource,
   editionId,
   visualStyle,
   overlayProfile,
@@ -1700,6 +1706,8 @@ function GlobeScene({
   atlas: GlobeAtlas;
   standCustomization?: GlobeStandPresentation;
   backgroundCustomization?: GlobeBackgroundPresentation;
+  composition?: PlanetCompositionPresentation;
+  preparedCompositionSource: PreparedCompositionSource | null;
   editionId: GlobeEditionId;
   visualStyle: GlobeVisualStyle;
   overlayProfile: GlobeOverlayProfile;
@@ -1731,6 +1739,9 @@ function GlobeScene({
   focusRequest?: GlobeExplicitFocusRequest | null;
   touchInteractionEnabled: boolean;
 }) {
+  const compositionFrame = useGlobeCompositionFrame({ presentation: composition, atlas,
+    prepared: preparedCompositionSource, editionId, stand: standCustomization,
+    background: backgroundCustomization, active });
   const globeObjectRef = useRef<THREE.Mesh>(null);
   const [nobelDetailMode, setNobelDetailMode] =
     useState<NobelMarkerDetailMode>("clustered");
@@ -1821,7 +1832,7 @@ function GlobeScene({
   return (
     <>
       {backgroundCustomization
-        ? <GlobeIncludedBackground presentation={backgroundCustomization} quality={quality.tier}
+        ? <GlobeIncludedBackground presentation={compositionFrame.background ?? backgroundCustomization} quality={quality.tier}
             editionId={editionId} standId={standCustomization?.displayedId ?? "canonical"} access="adult"
             active={active} autoRotate={autoRotate} reducedMotion={reducedMotion}
             canonicalBackground={canonicalBackground} />
@@ -1895,7 +1906,7 @@ function GlobeScene({
         onCountrySelect={onCountrySelect}
       />
       {standCustomization
-        ? <GlobeIncludedStand presentation={standCustomization} quality={quality.tier} canonicalFrame={canonicalFrame} />
+        ? <GlobeIncludedStand presentation={compositionFrame.stand ?? standCustomization} quality={quality.tier} canonicalFrame={canonicalFrame} />
         : canonicalFrame}
       <MicrostateMarkers
         atlas={atlas}
@@ -1979,11 +1990,14 @@ export default function LiteraryGlobe({
   standCustomization,
   standControls,
   backgroundCustomization,
+  composition,
 }: Props) {
   const quality = resolveGlobeQualityProfile(qualityTier, economical);
   const { language, t, countryName, number } = useInterfaceLanguage();
   const platformServices = usePlatformServices();
   const isPlanetApplication = isControlledWebEdition || platformServices.kind !== "web";
+  const compositionRef = useRef(composition);
+  useLayoutEffect(() => { compositionRef.current = composition; }, [composition]);
   const standCustomizationRef = useRef(standCustomization);
   useLayoutEffect(() => { standCustomizationRef.current = standCustomization; }, [standCustomization]);
   const backgroundCustomizationRef = useRef(isPlanetApplication ? backgroundCustomization : undefined);
@@ -1992,7 +2006,7 @@ export default function LiteraryGlobe({
   }, [backgroundCustomization, isPlanetApplication]);
   const editionPreference = usePlanetEditionPreference({
     preferences: platformServices.preferences,
-    enabled: isPlanetApplication,
+    enabled: isPlanetApplication && !composition,
     readLegacyPreference: platformServices.kind !== "web" ? legacyWebViewEditionPreference : undefined,
   });
   const [initialEdition] = useState(() => isPlanetApplication
@@ -2012,12 +2026,18 @@ export default function LiteraryGlobe({
       const requestedLanguage = languageRef.current;
       await currentAtlas.setEdition(editionId, requestedLanguage);
       if (atlasInstanceRef.current !== currentAtlas) throw new Error("globe-atlas-replaced");
+      const source = currentAtlas.getEditionSourceState();
+      if (source?.editionId !== editionId || (editionId === "natural-earth-2026" && source.language !== requestedLanguage)) {
+        throw new Error("globe-edition-request-superseded");
+      }
       if (editionId === "natural-earth-2026") {
         renderedNaturalEarthLanguageRef.current = requestedLanguage;
       }
     },
     onCommit: (editionId) => {
-      if (isPlanetApplication) {
+      if (compositionRef.current) {
+        // Composition persistence follows the combined actual scene frame.
+      } else if (isPlanetApplication) {
         initialEditionId.current = editionId;
         editionPreference.renderedEdition(editionId);
       } else window.localStorage.setItem(GLOBE_EDITION_STORAGE_KEY, editionId);
@@ -2042,6 +2062,10 @@ export default function LiteraryGlobe({
   const webglDiagnosticsRefreshRef = useRef<(() => void) | null>(null);
   const webglRecoveryRef = useRef<(() => boolean) | null>(null);
   const [atlas, setAtlas] = useState<GlobeAtlas | null>(null);
+  const preparedCompositionSource = useGlobeCompositionScene({ presentation: composition, atlas, language, style: globeStyle });
+  useLayoutEffect(() => {
+    if (composition) initialEditionId.current = composition.snapshot.applied.editionId;
+  }, [composition?.snapshot.applied.editionId]);
   const [atlasError, setAtlasError] = useState(false);
   const [atlasLoadRequest, setAtlasLoadRequest] = useState(0);
   const [hoveredCountry, setHoveredCountry] = useState<Country | null>(null);
@@ -2391,6 +2415,11 @@ export default function LiteraryGlobe({
   }, [renderedEditionId, revealEditionRail]);
   const requestEdition = useCallback(
     async (editionId: GlobeEditionId) => {
+      if (compositionRef.current) {
+        compositionRef.current.controller.requestEdition(editionId);
+        revealEditionRail();
+        return;
+      }
       standCustomizationRef.current?.onEditionChange();
       backgroundCustomizationRef.current?.onEditionChange();
       if (isPlanetApplication) editionPreference.requestEdition(editionId);
@@ -2864,7 +2893,9 @@ export default function LiteraryGlobe({
         else {
           atlasInstanceRef.current = nextAtlas;
           setAtlas(nextAtlas);
-          if (failedInitialEditionId) {
+          if (compositionRef.current) {
+            // The composition scene driver owns preparation, rollback and tokens.
+          } else if (failedInitialEditionId) {
             globeStyle.reportFallback(
               failedInitialEditionId,
               DEFAULT_GLOBE_EDITION_ID
@@ -2904,11 +2935,11 @@ export default function LiteraryGlobe({
   }, [countries, onHoverCountryChange]);
 
   useEffect(() => {
-    if (!atlas || !editionPreference.restoredEditionId) return;
+    if (composition || !atlas || !editionPreference.restoredEditionId) return;
     // Restoration changes only the existing atlas surface. The controller clears
     // this one-shot target on success or on any explicit newer selection.
     void globeStyle.requestStyle(editionPreference.restoredEditionId, { force: true });
-  }, [atlas, editionPreference.restoredEditionId, globeStyle.requestStyle]);
+  }, [composition, atlas, editionPreference.restoredEditionId, globeStyle.requestStyle]);
 
   useEffect(() => {
     atlas?.updateHighlight(
@@ -2934,7 +2965,7 @@ export default function LiteraryGlobe({
 
   useEffect(() => {
     if (
-      !atlas ||
+      composition || !atlas ||
       pendingEditionId ||
       visualStyleError ||
       renderedEditionId !== "natural-earth-2026" ||
@@ -2945,6 +2976,7 @@ export default function LiteraryGlobe({
     void globeStyle.requestStyle(renderedEditionId, { force: true });
   }, [
     atlas,
+    composition,
     globeStyle.requestStyle,
     language,
     pendingEditionId,
@@ -3015,6 +3047,8 @@ export default function LiteraryGlobe({
       data-globe-edition={renderedEditionId}
       data-globe-stand={standCustomization?.displayedId}
       data-globe-background={isPlanetApplication ? backgroundCustomization?.displayedId ?? DEFAULT_GLOBE_BACKGROUND_ID : undefined}
+      data-planet-composition-phase={composition?.snapshot.phase}
+      data-planet-composition-revision={composition?.snapshot.renderRevision}
       data-globe-edition-rail={editionRailVisible ? "visible" : "hidden"}
       data-can-scroll-left={editionRailScroll.canScrollLeft}
       data-can-scroll-right={editionRailScroll.canScrollRight}
@@ -3083,6 +3117,8 @@ export default function LiteraryGlobe({
           atlas={atlas}
           standCustomization={standCustomization}
           backgroundCustomization={isPlanetApplication ? backgroundCustomization : undefined}
+          composition={composition}
+          preparedCompositionSource={preparedCompositionSource}
           editionId={renderedEditionId}
           visualStyle={renderedVisualStyle}
           overlayProfile={renderedEdition.overlayProfile}
@@ -3393,6 +3429,10 @@ export default function LiteraryGlobe({
             : ""}
         {visualStyleError && (
           <button type="button" onClick={() => {
+            if (compositionRef.current && globeStyle.error) {
+              compositionRef.current.controller.requestEdition(globeStyle.error.style);
+              return;
+            }
             standCustomizationRef.current?.onEditionChange();
             backgroundCustomizationRef.current?.onEditionChange();
             void globeStyle.retryStyle();
@@ -3407,8 +3447,10 @@ export default function LiteraryGlobe({
 
       {isPlanetApplication && (
         <PlanetEditionPreferenceStatus
-          saveState={editionPreference.saveState}
-          onRetry={editionPreference.retrySave}
+          saveState={composition?.snapshot.saveState ?? editionPreference.saveState}
+          onRetry={composition?.controller.retrySave ?? editionPreference.retrySave}
+          restoreFailed={composition?.snapshot.reason === "invalid-preference" || composition?.snapshot.reason === "preference-unavailable"}
+          renderFailed={composition?.snapshot.editor === null && (composition.snapshot.reason === "render-failed" || composition.snapshot.reason === "preview-timeout")}
         />
       )}
 

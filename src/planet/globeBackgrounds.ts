@@ -62,6 +62,7 @@ export type GlobeBackgroundPresentation = Readonly<{
   displayedId: GlobeBackgroundId;
   renderRevision: number;
   onRendered: (revision: number, id: GlobeBackgroundId) => void;
+  onFrameRendered?: (revision: number, id: GlobeBackgroundId, frame: number) => void;
   onFailed: (revision: number, id: GlobeBackgroundId) => void;
   onContextLost: () => void;
   onContextRestored?: () => void;

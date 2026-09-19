@@ -40,6 +40,7 @@ export type GlobeStandPresentation = Readonly<{
   displayedId: GlobeStandId;
   renderRevision: number;
   onRendered: (revision: number, id: GlobeStandId) => void;
+  onFrameRendered?: (revision: number, id: GlobeStandId, frame: number) => void;
   onFailed: (revision: number, id: GlobeStandId) => void;
   onContextLost: () => void;
   onContextRestored?: () => void;

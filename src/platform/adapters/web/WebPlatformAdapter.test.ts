@@ -12,6 +12,10 @@ const DOWNLOAD_NETWORK = "probpera-planet-download-network-v1";
 const EDITION = "probpera.globe-edition.v2", LEGACY_STYLE = "probpera.globe-style.v1";
 const STAND = "probpera-planet-stand-v1";
 const BACKGROUND = "probpera-planet-background-v1";
+const COMPOSITION = "probpera-planet-composition-v1";
+const compositionRecord = () => ({ schemaVersion: 1, commitId: "adapter-fixture:1", selection: {
+  editionId: "rand-mcnally-1887", standId: "stand.base.wood", backgroundId: "background.base.library",
+} });
 
 function memoryStorage(): Storage {
   const entries = new Map<string, string>();
@@ -280,6 +284,43 @@ describe("browser capabilities and subscription lifetime", () => {
 });
 
 describe("non-secret best-effort canonical preferences", () => {
+  it("round-trips only the bounded composition record and distinguishes malformed storage from confirmed absence", async () => {
+    const env = browserEnvironment(), adapter = createWebPlatformAdapter({ window: env.browser });
+    const fresh = createWebPlatformAdapter({ window: env.browser }), value = JSON.stringify(compositionRecord(), null, 2);
+    expect(await adapter.preferences.get(COMPOSITION)).toBeNull();
+    expect(await adapter.preferences.set(COMPOSITION, value)).toBe(true);
+    expect(await fresh.preferences.get(COMPOSITION)).toBe(value);
+    expect(env.browser.localStorage.setItem).toHaveBeenCalledTimes(1);
+    for (const key of [COMPOSITION + ":en", COMPOSITION + "\u0000", "probpera-planet-composition-v2"]) {
+      expect(await fresh.preferences.get(key)).toBeNull(); expect(await fresh.preferences.set(key, value)).toBe(false);
+      expect(await fresh.preferences.remove(key)).toBe(false);
+    }
+    for (const invalid of ["{}", "null", JSON.stringify({ ...compositionRecord(), approval: true }),
+      JSON.stringify({ ...compositionRecord(), selection: { ...compositionRecord().selection, backgroundId: "background.base.child-room" } })]) {
+      const writes = vi.mocked(env.browser.localStorage.setItem).mock.calls.length;
+      expect(await fresh.preferences.set(COMPOSITION, invalid)).toBe(false);
+      expect(env.browser.localStorage.setItem).toHaveBeenCalledTimes(writes);
+      env.browser.localStorage.setItem(COMPOSITION, invalid);
+      await expect(fresh.preferences.get(COMPOSITION)).rejects.toThrow("composition-preference-unavailable");
+    }
+    expect(await fresh.preferences.remove(COMPOSITION)).toBe(true);
+    expect(await fresh.preferences.get(COMPOSITION)).toBeNull();
+  });
+
+  it("reports composition storage failure without promising absence or an acknowledged write", async () => {
+    const env = browserEnvironment(), adapter = createWebPlatformAdapter({ window: env.browser });
+    vi.mocked(env.browser.localStorage.getItem).mockImplementationOnce(() => { throw new Error("Read denied"); });
+    await expect(adapter.preferences.get(COMPOSITION)).rejects.toThrow("composition-preference-unavailable");
+    vi.mocked(env.browser.localStorage.setItem).mockImplementationOnce(() => { throw new Error("Write denied"); });
+    expect(await adapter.preferences.set(COMPOSITION, JSON.stringify(compositionRecord()))).toBe(false);
+    await expect(createWebPlatformAdapter({ window: null }).preferences.get(COMPOSITION)).rejects.toThrow("composition-preference-unavailable");
+    vi.mocked(env.browser.localStorage.getItem).mockImplementation(() => { throw new Error("Read denied"); });
+    installSafeWebStorage(env.browser, null);
+    expect(env.browser.localStorage.getItem(COMPOSITION)).toBeNull();
+    await expect(createWebPlatformAdapter({ window: env.browser }).preferences.get(COMPOSITION)).rejects.toThrow("composition-preference-unavailable");
+    await expect(createWebPlatformAdapter({ window: env.browser }).preferences.get(BACKGROUND)).rejects.toThrow("customization-preference-unavailable");
+  });
+
   it("confines the new background preference to its exact adult IDs and browser key", async () => {
     const env = browserEnvironment(), adapter = createWebPlatformAdapter({ window: env.browser });
     const fresh = createWebPlatformAdapter({ window: env.browser });
@@ -291,7 +332,7 @@ describe("non-secret best-effort canonical preferences", () => {
     expect(await fresh.preferences.remove(BACKGROUND)).toBe(true);
     for (const value of ["canonical", "stand.base.wood", "background.base.child-room", "library", "background.base.library "]) {
       expect(await fresh.preferences.set(BACKGROUND, value)).toBe(false);
-      env.browser.localStorage.setItem(BACKGROUND, value); expect(await fresh.preferences.get(BACKGROUND)).toBeNull();
+      env.browser.localStorage.setItem(BACKGROUND, value); await expect(fresh.preferences.get(BACKGROUND)).rejects.toThrow("customization-preference-unavailable");
     }
     vi.mocked(env.browser.localStorage.getItem).mockClear(); vi.mocked(env.browser.localStorage.setItem).mockClear();
     vi.mocked(env.browser.localStorage.removeItem).mockClear();
@@ -316,7 +357,7 @@ describe("non-secret best-effort canonical preferences", () => {
     for (const value of ["wood", "base.stand.wood", "stand.base.child-book-cloud", "stand.base.wood ", "constructor"]) {
       expect(await recreated.preferences.set(STAND, value)).toBe(false);
       env.browser.localStorage.setItem(STAND, value);
-      expect(await recreated.preferences.get(STAND)).toBeNull();
+      await expect(recreated.preferences.get(STAND)).rejects.toThrow("customization-preference-unavailable");
     }
     vi.mocked(env.browser.localStorage.getItem).mockClear();
     vi.mocked(env.browser.localStorage.setItem).mockClear();
@@ -354,7 +395,7 @@ describe("non-secret best-effort canonical preferences", () => {
     for (const key of [EDITION, LEGACY_STYLE]) {
       for (const value of ["", "earth ", "NASA-BLUE-MARBLE", "constructor", "skin.base.earth"]) {
         expect(await adapter.preferences.set(key, value)).toBe(false); expect(browser.localStorage.setItem).not.toHaveBeenCalled();
-        browser.localStorage.setItem(key, value); expect(await adapter.preferences.get(key)).toBeNull();
+        browser.localStorage.setItem(key, value); await expect(adapter.preferences.get(key)).rejects.toThrow("edition-preference-unavailable");
         vi.mocked(browser.localStorage.setItem).mockClear();
       }
     }

@@ -30,6 +30,25 @@ function deferred() {
 }
 
 describe("globe style state", () => {
+  it("fences a pending edition when the atlas restores its applied source", async () => {
+    let state = request(createInitialGlobeStyleState("rand-mcnally-1887"), "nasa-blue-marble", 1);
+    const pending = deferred();
+    const onCommit = vi.fn();
+    const running = executeGlobeStyleRequest({
+      token: { requestId: 1, style: "nasa-blue-marble" }, applyStyle: () => pending.promise,
+      isLatest: token => token.requestId === state.requestId,
+      onResolve: token => { state = globeStyleStateReducer(state, { type: "resolve", ...token }); },
+      onReject: token => { state = globeStyleStateReducer(state, { type: "reject", ...token }); },
+      onCommit,
+    });
+    state = globeStyleStateReducer(state, { type: "restore", style: "rand-mcnally-1887", requestId: 2 });
+    pending.resolve();
+    await expect(running).resolves.toBe("stale");
+    expect(state).toMatchObject({ renderedStyle: "rand-mcnally-1887", requestedStyle: "rand-mcnally-1887", pendingStyle: null, error: null });
+    expect(onCommit).not.toHaveBeenCalled();
+    expect(globeStyleStateReducer(state, { type: "restore", style: "nasa-blue-marble", requestId: 1 })).toBe(state);
+  });
+
   it("defaults invalid storage to 1887 and migrates legacy surface values", () => {
     expect(resolveInitialGlobeStyle(undefined)).toBe("rand-mcnally-1887");
     expect(resolveInitialGlobeStyle("satellite")).toBe("rand-mcnally-1887");

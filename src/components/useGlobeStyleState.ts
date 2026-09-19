@@ -27,6 +27,11 @@ export type GlobeStyleState = Readonly<{
 
 export type GlobeStyleAction =
   | Readonly<{
+      type: "restore";
+      style: GlobeVisualStyle;
+      requestId: number;
+    }>
+  | Readonly<{
       type: "request";
       style: GlobeVisualStyle;
       requestId: number;
@@ -125,6 +130,8 @@ export type UseGlobeStyleStateResult = Readonly<{
     fallbackStyle: GlobeVisualStyle
   ) => void;
   retryStyle: () => Promise<GlobeStyleRequestOutcome>;
+  /** Fence pending work after the atlas synchronously restores a held source. */
+  synchronizeRendered: (style: GlobeVisualStyle) => void;
   clearError: () => void;
   /** Use this value for both `aria-pressed` and the visual active class. */
   ariaPressedFor: (style: GlobeVisualStyle) => boolean;
@@ -155,6 +162,11 @@ export function globeStyleStateReducer(
   state: GlobeStyleState,
   action: GlobeStyleAction
 ): GlobeStyleState {
+  if (action.type === "restore") {
+    if (action.requestId <= state.requestId) return state;
+    return { requestedStyle: action.style, pendingStyle: null, renderedStyle: action.style,
+      error: null, requestId: action.requestId };
+  }
   if (action.type === "request") {
     if (action.requestId <= state.requestId) return state;
     return {
@@ -387,6 +399,10 @@ export function useGlobeStyleState({
     transition({ type: "clear-error", requestId: stateRef.current.requestId });
   }, [transition]);
 
+  const synchronizeRendered = useCallback((style: GlobeVisualStyle) => {
+    transition({ type: "restore", style, requestId: ++requestIdRef.current });
+  }, [transition]);
+
   const ariaPressedFor = useCallback(
     (style: GlobeVisualStyle) => isGlobeStyleRendered(state, style),
     [state]
@@ -402,6 +418,7 @@ export function useGlobeStyleState({
     requestStyle,
     reportFallback,
     retryStyle,
+    synchronizeRendered,
     clearError,
     ariaPressedFor,
   };

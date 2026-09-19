@@ -61,9 +61,9 @@ export const planetBackgroundCopy = {
 } as const;
 
 export default function PlanetStandControls({ controller, snapshot, backgroundController, backgroundSnapshot, onClose }: {
-  controller: PlanetStandCustomizationController;
+  controller: Pick<PlanetStandCustomizationController, "open" | "preview" | "apply" | "cancel" | "retrySave">;
   snapshot: PlanetStandCustomizationSnapshot;
-  backgroundController: PlanetBackgroundCustomizationController;
+  backgroundController: Pick<PlanetBackgroundCustomizationController, "open" | "preview" | "apply" | "cancel" | "retrySave">;
   backgroundSnapshot: PlanetBackgroundCustomizationSnapshot;
   onClose: () => void;
 }) {
