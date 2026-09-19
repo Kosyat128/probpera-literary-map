@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-19T15:59:47.837Z",
+  "sourceCommit": "6bd52a5a4ba82912ebbe8442180e1856a6f00c9b",
+  "stage": "S11",
+  "status": "RECEIPT_BOUND_DOWNLOAD_INSPECTION_VALIDATED",
+  "pass": true,
+  "runs": {
+    "unit-a1": {
+      "path": "docs/mobile/evidence/S11/download-inspection-20260919/unit-a1/result.json",
+      "sha256": "cef1e214455e117de462d8346e579ac98390afaae7a11af4ba99561ba4e26f8d",
+      "tests": {
+        "passed": 54,
+        "failed": 0,
+        "skipped": 0,
+        "failures": []
+      }
+    },
+    "static-a1": {
+      "path": "docs/mobile/evidence/S11/download-inspection-20260919/static-a1/result.json",
+      "sha256": "58736bc04771328169408646608a577b2841041c087f413c2d45d41fbab4420b",
+      "tests": null
+    },
+    "browser-a1": {
+      "path": "docs/mobile/evidence/S11/download-inspection-20260919/browser-a1/result.json",
+      "sha256": "981bd9e724a01c74637338ffc001471b32a6297c6ac6a4214c5f4a07b16e57ac",
+      "tests": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "errors": []
+      }
+    }
+  },
+  "pwa": {
+    "path": "docs/mobile/evidence/S11/download-inspection-20260919/pwa-a1/result.json",
+    "sha256": "73dff413ecd4556a2e92d30be5a55a7349252c2ec789ee5651027b3d93952c36"
+  },
+  "android": {
+    "path": "docs/mobile/evidence/S11/download-inspection-20260919/android-a1/result.json",
+    "sha256": "944798a9470d83edb94d874e72e94fe5e1787cc5e2a4bf926c348104733dd481"
+  },
+  "checks": {
+    "trustedDescriptorOptIn": true,
+    "genericPackagesUnchanged": true,
+    "requiredAndRollbackInspectable": true,
+    "observedReceiptRequired": true,
+    "freshVerifiedReadPerInspection": true,
+    "immutableViewOutsideReactSnapshot": true,
+    "scopeWideInvalidation": true,
+    "lateCrossRowMutationFenced": true,
+    "backgroundAndDisposalClearViews": true,
+    "boundedUncooperativeRead": true,
+    "ruEnPanel": true,
+    "actualPreservedPackageOfflineInspection": true,
+    "keyboardFocusAndRemount": true,
+    "mobileNoHorizontalOverflow": true
+  },
+  "pointInTimeLimit": "Views describe the last authenticated observation. Controller operations and observed lifecycle transitions invalidate them; they are not live cross-process activation authority.",
+  "installedNative": false,
+  "iosCompiled": false,
+  "activationAllowed": false,
+  "editorialApprovalCreated": false,
+  "productionActionsPerformed": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "nextAction": "Continue S11 airplane-mode core: assess and close cold-offline navigation/search/reader gaps against the current canonical bundled dataset. Keep staged QA packages inactive, production catalog/trust empty, and D107 owner archive synchronization deferred. Do not repeat validated package/reader/globe suites without a related change."
+}

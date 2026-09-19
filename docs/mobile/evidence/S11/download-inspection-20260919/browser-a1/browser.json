@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S11/download-inspection-20260919/playwright.config.mjs"
+  ],
+  "startedAt": "2026-09-19T15:56:03.925Z",
+  "durationMs": 6212,
+  "exitCode": 0,
+  "logs": {
+    "stdout": {
+      "text": "\nRunning 1 test using 1 worker\n\n\n\n[1/1] tests\\pwa\\content-inspection.spec.mjs:11:1 › optional content inspection works offline and retains only the observed package across RUEN and panel remounts\n  1 passed (5.4s)\n",
+      "sha256": "08cbebfc23996b7eb8108817c5ae3ad9223c53fd7a5c3b1de81ced7f67f740cb"
+    },
+    "stderr": {
+      "text": "(node:24948) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "sha256": "3096a129a8a3a599b7acc8638748df549003293e46117ec20f42d3e65a1eaadb"
+    }
+  }
+}

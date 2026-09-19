@@ -1,3 +1,17 @@
+<!-- s11-download-inspection-20260919:begin -->
+Source 6bd52a5a adds receipt-bound staged inspection to package
+management and a RU/EN content-check control. 54 units, TypeScript and one actual
+offline Chrome scenario with preserved signed S08 bytes pass. Same-package races,
+late responses, timeout, background and disposal cannot retain an owned old view.
+PWA 5403f982 and Android/dev 8d8cb1ec are exact preserved runtime artifacts.
+APK SHA256: 5758a38c7dc2a036810ea46605965f39e64424c7d241e0d3665bef60e6b97652.
+Evidence: evidence/S11/download-inspection-20260919/result.json.
+Views remain point-in-time QA snapshots; bundled dataset and production trust
+remain unchanged. No installed-device/iOS or full-stage acceptance claim.
+Next: cold-offline core navigation/search/reader gaps. D107 remains deferred.
+Only S00-S02 accepted; first open S03; releaseReady false.
+<!-- s11-download-inspection-20260919:end -->
+
 <!-- s11-staged-content-20260919:begin -->
 Source eb65a5a7 adds typed semantic inspection after verified cache reads.
 Focused units and TypeScript pass; real preserved S08 current/rollback packages pass

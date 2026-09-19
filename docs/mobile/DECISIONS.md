@@ -734,3 +734,11 @@
   Shared canonical unit validation governs the payload; missing locale counterparts
   remain diagnostic and never create translation approval. Preserved S08 inputs
   establish actual cache/semantic intake, not app activation or native persistence.
+
+- D126: Adult candidate inspection is enabled only by trusted descriptor opt-in.
+  A fresh authenticated read must match the observed selection receipt; immutable
+  views remain separate from React snapshots and production activation authority.
+  Controller operations invalidate every row for the same package before observers
+  run; completion revisions fence overlapping reads and mutations. Background,
+  disposal and bounded abort races release stale results. RU/EN shows concise
+  statuses without internal hashes or raw errors.
