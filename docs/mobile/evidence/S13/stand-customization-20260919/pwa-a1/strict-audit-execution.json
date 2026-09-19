@@ -1,0 +1,11 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/mobile/verify-pwa-artifact.mjs",
+    "--allow-qa"
+  ],
+  "exitCode": 0,
+  "durationMs": 5281,
+  "stdout": "{\n  \"pass\": true,\n  \"identity\": {\n    \"buildId\": \"7aba859f0ac4e526b17af00edfb6fd03c64b64ec90924d9f5f9bb8f6f110206f\",\n    \"sourceCommit\": \"7083597669e38bbcbea59fc3d816c7a71170e069\",\n    \"localQaAuthority\": true\n  },\n  \"counts\": {\n    \"files\": 1422,\n    \"bytes\": 74300023,\n    \"bootstrapFiles\": 1394,\n    \"bootstrapBytes\": 70529307,\n    \"sourceInputs\": 1018,\n    \"publicSources\": 1349,\n    \"scripts\": 43\n  },\n  \"findings\": [],\n  \"releaseReady\": false,\n  \"limitations\": [\n    \"Preparation integrity and current source-input freshness only; not an RC, editorial/rights approval, entitlement authority or deployment approval.\",\n    \"Static module/HTML/worker configuration checks do not prove browser behavior or arbitrary executable equivalence; real browser and native gates remain required.\"\n  ]\n}\n",
+  "stderr": ""
+}

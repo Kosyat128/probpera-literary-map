@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-19T17:35:27.747Z",
+  "sourceCommit": "7083597669e38bbcbea59fc3d816c7a71170e069",
+  "stage": "S13",
+  "status": "INCLUDED_ADULT_STAND_PREVIEW_VALIDATED",
+  "pass": true,
+  "entry": {
+    "path": "docs/mobile/evidence/S13/stand-customization-20260919/entry.json",
+    "sha256": "8f18329cbad50546e6cc40006401d6910ca79edcf651bac09ced54961d7d0183"
+  },
+  "runs": {
+    "unit": {
+      "path": "docs/mobile/evidence/S13/stand-customization-20260919/unit-a3/result.json",
+      "sha256": "a8a43bee4806c3c2163ec82f1d05db79cbba1157a169c626538d54d9713bb28a",
+      "tests": {
+        "passed": 201,
+        "failed": 0,
+        "skipped": 0,
+        "failures": []
+      }
+    },
+    "static": {
+      "path": "docs/mobile/evidence/S13/stand-customization-20260919/static-a4/result.json",
+      "sha256": "c0121663b4d7c7720b78514e0469ebfd1aff08bae1250e6fbb0a75c343b26edd",
+      "tests": null
+    },
+    "browser": {
+      "path": "docs/mobile/evidence/S13/stand-customization-20260919/browser-a2/result.json",
+      "sha256": "455939332b1731b30fbae1972120ab79985bf781ac4d6545fda7d1f0e5b1b10a",
+      "tests": {
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "errors": []
+      }
+    }
+  },
+  "starterSetSourceInventory": {
+    "path": "docs/mobile/evidence/S13/stand-customization-20260919/starter-set-source-inventory-a2.json",
+    "sha256": "38e926e4856e1298edd5b6c2af15ef834d5a8d13a6eb78e7c753807dec278261"
+  },
+  "visualReview": {
+    "path": "docs/mobile/evidence/S13/stand-customization-20260919/visual-review.json",
+    "sha256": "8aa799a302e613ebd26d2a40bb7b6366fe541f318b2b244ddd34f712c6d9df5b"
+  },
+  "pwa": {
+    "path": "docs/mobile/evidence/S13/stand-customization-20260919/pwa-a1/result.json",
+    "sha256": "019d3106ae9e26eb05396bb3050ec135fe5dff47816a018bb7b9549dc0d0fed1"
+  },
+  "android": {
+    "path": "docs/mobile/evidence/S13/stand-customization-20260919/android-a1/result.json",
+    "sha256": "4d7ce5e120e6b0ee5a590e6c1d0b334c30e44665ae9aa90caa4b5118e17e34d8"
+  },
+  "pwaBuildId": "7aba859f0ac4e526b17af00edfb6fd03c64b64ec90924d9f5f9bb8f6f110206f",
+  "androidBuildId": "5110ff2a21679af68b20932b7cb641ed7e898173ed0f80c3b53b0755364131a2",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-sc/android-5110ff2a/app-dev-debug.apk",
+    "bytes": 67617767,
+    "sha256": "2b2d543c479ffad3e2f6d9776874cd529648a2804369c6419dc1b63ac93890d3"
+  },
+  "includesAntiqueGeometryCommit": "2bdcdea1cdec5d89c828eb7f6d5566bb5812f1ea",
+  "includedStandIds": [
+    "stand.base.museum",
+    "stand.base.wood",
+    "stand.base.book-stack"
+  ],
+  "canonicalFrameRemainsDefault": true,
+  "sourceProvenance": "authored-in-project",
+  "rightsApproval": false,
+  "childApproval": false,
+  "controlledNativePorts": true,
+  "actualSceneRenderedInChrome": true,
+  "installedNativeDevice": false,
+  "iosCompiled": false,
+  "fullCompositionTransactionImplemented": false,
+  "grantsEntitlement": false,
+  "productionActionsPerformed": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "nextAction": "Continue S13 composition compatibility and included background implementation with the existing scene owners. Preserve validated adult stand preview, native preference ordering and canonical default frame. Optional/child catalog items must stay unavailable without actual assets and required checks. Full-composition persistence, installed-device and release acceptance remain open; do not rerun unchanged stand or antique geometry checks."
+}

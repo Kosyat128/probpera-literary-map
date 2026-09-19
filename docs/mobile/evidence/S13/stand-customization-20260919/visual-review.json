@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-09-19T20:33:01.8644387+03:00",
+  "visualOutcome": "scoped-combined-pass",
+  "scope": "Three included stands at Home1440 plus book-stack390 and museum320. This is local Chrome visual evidence, not general device/viewport acceptance.",
+  "priorCapture": "visual-a2.json",
+  "priorCaptureOverallPass": false,
+  "retainedPriorCaptures": [
+    {
+      "screenshot": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-sc\\visual-a2\\museum-home-1440.png",
+      "screenshotSha256": "443ea7c41c0efe0fb53cdfa04538eddd602da8a3df6531934449dc99986e1935",
+      "viewport": {
+        "width": 1440,
+        "height": 850
+      },
+      "standId": "stand.base.museum",
+      "intersections": 0
+    },
+    {
+      "screenshot": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-sc\\visual-a2\\wood-home-1440.png",
+      "screenshotSha256": "af9804e4c62508d2275229f376c1aa39ffb0f1a14d847cebc3f77d974174a16f",
+      "viewport": {
+        "width": 1440,
+        "height": 850
+      },
+      "standId": "stand.base.wood",
+      "intersections": 0
+    },
+    {
+      "screenshot": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-sc\\visual-a2\\book-stack-home-1440.png",
+      "screenshotSha256": "310f6dbb640e19d4c69149374be1392659e28925f56c615497958a5addc8daad",
+      "viewport": {
+        "width": 1440,
+        "height": 850
+      },
+      "standId": "stand.base.book-stack",
+      "intersections": 0
+    },
+    {
+      "screenshot": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-sc\\visual-a2\\book-stack-home-390.png",
+      "screenshotSha256": "0092a90ec4e6cd5593fd497d54c21b7c16df5917923eaecf2405e77f952a91bb",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "standId": "stand.base.book-stack",
+      "intersections": 0
+    }
+  ],
+  "currentCapture": "visual-a3.json",
+  "currentCapturePass": true,
+  "currentCaptureScreenshot": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-sc\\visual-a3\\museum-home-320.png",
+  "currentCaptureScreenshotSha256": "a21f5e97bf1305bc583531bb8bc2e88380ab03366d3dd8697f53100ece5b851e",
+  "sourceInputs": [
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "sha256": "9eeb5b325f11d97fb9a673797600e4c167833f7ffdf8e369198441b7a7d54b40"
+    },
+    {
+      "path": "src/host/PlanetStandControls.css",
+      "sha256": "45a750027a596a6868218d8b64e7038d22a50d50e9576bedcf1955de1fbd94a0"
+    }
+  ],
+  "finalFixScope": {
+    "largerWidthsAffected": false,
+    "file": "src/host/PlanetStandControls.css",
+    "changes": [
+      "Collapsed custom stand controls bottom offset 142px plus max(4px,safe-area), padding 0.",
+      "Custom stand scale output right 0, padding 2px 4px, font size 12px."
+    ],
+    "media": "(max-width: 380px)"
+  },
+  "actualImageReviewed": true,
+  "observations": [
+    "Museum base at 320x844 is fully visible; actual projected stand bounds have no intersections with controls, output or toggle.",
+    "Model-to-control-rail clearance is 5.724px; model-to-scale-output clearance is 1.702px.",
+    "The control rail ends 4px above the collapsed country sheet.",
+    "Five globe controls and the stand toggle all retain at least 44px width and height.",
+    "Desktop three-stand and book-stack390 images remain the unaffected passing subset of a2; its museum320 failure is preserved and superseded only by a3."
+  ],
+  "measuredGaps": {
+    "standToScale": 1.7020063066039484,
+    "standToRail": 5.723942220454205,
+    "railToCountrySheet": 4
+  },
+  "homePose": {
+    "position": [
+      0,
+      0.08,
+      4.9
+    ],
+    "quaternion": [
+      -0.02854,
+      0,
+      0,
+      0.99959
+    ],
+    "zoom": 1
+  },
+  "greenFixtureUnchanged": true,
+  "productionFilesChangedByCapture": false,
+  "installedNativeTested": false,
+  "releaseReady": false,
+  "pass": true,
+  "measuredScope": "Actual Home/default camera pose only: museum/wood/book-stack1440x850, book-stack390x844, museum320x844. No general zoom/orbit/viewport acceptance.",
+  "evidence": [
+    {
+      "path": "docs/mobile/evidence/S13/stand-customization-20260919/visual-a2-review.json",
+      "sha256": "55418b5bdc6a7fd112e5c712427e96967743811150e224ddc37b03072280e745"
+    },
+    {
+      "path": "docs/mobile/evidence/S13/stand-customization-20260919/visual-a2.json",
+      "sha256": "13d8d03a34bbc2e65261dfe9791b6986c1c459775ba712812d48d7c340d8d7e7"
+    },
+    {
+      "path": "docs/mobile/evidence/S13/stand-customization-20260919/visual-a3.json",
+      "sha256": "2aa18266163343a88759c4c8cb5c396f01325772959ad98f566814eae55b1f3a"
+    },
+    {
+      "path": "docs/mobile/evidence/S13/stand-customization-20260919/visual-a3-review.json",
+      "sha256": "0e531248998c8ec1c7ae736f30e3fe835d28f627062acacebd820c58aad0f1cf"
+    }
+  ],
+  "deviceApproval": false,
+  "releaseApproval": false
+}

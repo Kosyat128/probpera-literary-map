@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-09-19T17:23:20.2116034+00:00",
+  "capture": "visual-a1.json",
+  "browserReport": "visual-a1-playwright.json",
+  "browserExpected": 1,
+  "browserUnexpected": 0,
+  "visualOutcome": "models-distinct-but-base-partially-occluded",
+  "viewportSizes": [
+    "1440x850",
+    "390x844"
+  ],
+  "homePose": {
+    "zoom": 1,
+    "position": [
+      0,
+      0.08,
+      4.9
+    ]
+  },
+  "observations": [
+    "Museum pedestal, wooden pedestal and book stack are visibly distinct at the actual reset/home pose.",
+    "At 1440x850, the fixed zoom/reset/source control rail and 100% badge overlap the lower part of all three stand bases.",
+    "At 390x844 with the stand panel closed, the same control rail and scale badge overlap the lower book stack.",
+    "Projected stand bounds remain inside the viewport; the observed partial visibility is UI overlap rather than stand geometry extending beyond the screen."
+  ],
+  "screenshots": [
+    "museum-home-1440.png",
+    "wood-home-1440.png",
+    "book-stack-home-1440.png",
+    "book-stack-home-390.png"
+  ],
+  "screenshotDirectory": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-sc/visual-a1",
+  "temporaryFixture": ".tmp/stand-visual-a1/visual.spec.mjs",
+  "originalFixture": "tests/pwa/globe-stand-customization.spec.mjs",
+  "originalFixtureUnchanged": true,
+  "productionFilesChanged": false,
+  "installedNativeTested": false,
+  "releaseReady": false
+}

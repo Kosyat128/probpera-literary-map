@@ -767,3 +767,11 @@
   shared body buffers have separate lifetime from static tail/fin/mouth buffers.
   Measured source/Chrome geometry checks remain distinct from all-item GPU,
   installed-device, full composition and Starter Set acceptance.
+
+- D131: Included adult procedural stands are a distinct slot around the canonical
+  scene. The original edition-specific frame remains the default. Preview is
+  acknowledged by a rendered frame; Apply commits the session choice and ordered
+  preference writes provide truthful retry after unconfirmed saving. Background
+  suspends untouched restoration and cancels explicit drafts. Source provenance
+  and bounded geometry evidence do not approve child use, rights, the full
+  composition transaction, installed devices, Starter Set or release readiness.

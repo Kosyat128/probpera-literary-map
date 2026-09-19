@@ -1,0 +1,457 @@
+{
+  "schemaVersion": 1,
+  "kind": "stand-home-view-visual-capture",
+  "createdAt": "2026-09-19T17:22:09.423Z",
+  "originalFixtureSha256": "d18a438fb20983250825a97ee72aa4f566cfd1edd0b145234ffe769de45934c4",
+  "sourceFixture": {
+    "kind": "canonical-app-stand-customization-in-Chrome",
+    "actualApp": true,
+    "actualCss": true,
+    "actualGlobe": true,
+    "controlledPorts": [
+      "native OS plugins, including explicit stand-preference set failure"
+    ],
+    "observation": "Actual stand bounds, geometry/material disposal and globe raycasting; no production probes",
+    "publicAssetSelectionSha256": "b2c706b1f89a844af8505120184a5b2ee11f04247ed674ebf29da824bd978506",
+    "selectedAssetCount": 1343,
+    "builtFiles": [
+      {
+        "path": "assets/countries-KFLCUFF2.geojson",
+        "sha256": "402706b730069fb691d1ec6098e13d7d59670a1823d1ffb62546ff045df20279"
+      },
+      {
+        "path": "stand-customization.js",
+        "sha256": "f30f8685e666fc6c1afe0636e5e084686f3839a1df4020776058a546a1fd002f"
+      },
+      {
+        "path": "assets/brush-paper-corners-VR3JL3HS.webp",
+        "sha256": "d6b5a8528a0e95ad555e4a3f93a886e2c7437f578023b6d2bcdea1b0cd6771df"
+      },
+      {
+        "path": "assets/brush-violet-stage-A6RBSWAN.webp",
+        "sha256": "e8f77a5f1f2b73ba8abec2921d0b3388bf8a81994c03b810be0d9e664e43aaa3"
+      },
+      {
+        "path": "assets/editorial-paper-LSK4W3PW.webp",
+        "sha256": "b47d170befac71b0f2496a9d80dd68e5dd960fd41cb5fc45d48cf0a442cb9a68"
+      },
+      {
+        "path": "assets/section-prizes-R7PYCNYU.webp",
+        "sha256": "3b4cd3e381198f0a71226fb46268b298d9fd37061ab039ff9f537fecc37d02ab"
+      },
+      {
+        "path": "assets/brush-paper-east-X6U7HMM2.webp",
+        "sha256": "4067b8328ca6389bf7f6eb38a35f66e428181f0cd37180374c2d9c30415fc031"
+      },
+      {
+        "path": "assets/brush-paper-split-OKZTXFOK.webp",
+        "sha256": "7cac3c0966ac13fe1d6e461d051921e8d12ad8b3bab5c8c83f1711708246ee7f"
+      },
+      {
+        "path": "assets/brush-orange-stage-JTYKT66J.webp",
+        "sha256": "3d16e63c8d74e2c7cb521a16a4e6ced5fc34d08590140b0d2c993d29eee0b493"
+      },
+      {
+        "path": "stand-customization.css",
+        "sha256": "65d780e140ac017c38a9a493358d6ad0e53f6b2ac68f933a7245f5f93fc54aa9"
+      }
+    ],
+    "installedNative": false,
+    "entitlementGranted": false,
+    "releaseReady": false
+  },
+  "pass": true,
+  "captures": [
+    {
+      "id": "stand.base.museum",
+      "screenshot": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-sc\\visual-a1\\museum-home-1440.png",
+      "screenshotSha256": "74091758070fee182d7e32d5a5707e693b8677ae8c94704c8a04171c2ed3e8c8",
+      "projection": {
+        "minimum": [
+          380.5585223466983,
+          598.3201313750384
+        ],
+        "maximum": [
+          589.4414776533017,
+          728.4178307021491
+        ],
+        "viewport": {
+          "width": 1440,
+          "height": 850
+        },
+        "canvas": {
+          "left": 0,
+          "top": 0,
+          "width": 1440,
+          "height": 850
+        },
+        "panelOpen": true
+      },
+      "actual": {
+        "sameScene": true,
+        "pose": {
+          "position": [
+            0,
+            0.08,
+            4.9
+          ],
+          "quaternion": [
+            -0.02854,
+            0,
+            0,
+            0.99959
+          ],
+          "zoom": 1
+        },
+        "globeSurface": {
+          "geometry": "ac8c5594-ec45-47ec-9121-9cf1dc3db1ea",
+          "texture": "02295e41-9a5e-4470-b0b9-f2adf1351754",
+          "width": 4096,
+          "height": 2048,
+          "raycastHits": 1,
+          "uv": [
+            0.25,
+            0.505196445303726
+          ]
+        },
+        "stands": [
+          {
+            "id": "stand.base.museum",
+            "provenance": "authored-in-project",
+            "qualityTier": "high",
+            "meshes": 4,
+            "geometries": 4,
+            "materials": 2,
+            "triangles": 768,
+            "bytes": 41984,
+            "box": {
+              "minimum": [
+                -0.47999998927116394,
+                -1.4399999993294477,
+                -0.47999998927116394
+              ],
+              "maximum": [
+                0.47999998927116394,
+                -1.029999999627471,
+                0.47999998927116394
+              ],
+              "maxRadius": 0.4800000052721415
+            },
+            "interceptedRays": 0
+          }
+        ],
+        "canonicalFrameRings": 0,
+        "pendingDisposals": 0,
+        "rendererDiagnostic": {
+          "geometries": 77,
+          "textures": 3,
+          "programs": 9,
+          "calls": 77,
+          "triangles": 80252,
+          "frame": 11
+        }
+      }
+    },
+    {
+      "id": "stand.base.wood",
+      "screenshot": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-sc\\visual-a1\\wood-home-1440.png",
+      "screenshotSha256": "1764d55f5fd658b3eeda71c9da48d924e1eee7dc11e1b673b7406b037a792458",
+      "projection": {
+        "minimum": [
+          389.3190162036905,
+          598.3201254716207
+        ],
+        "maximum": [
+          580.6809837963093,
+          725.2062136781198
+        ],
+        "viewport": {
+          "width": 1440,
+          "height": 850
+        },
+        "canvas": {
+          "left": 0,
+          "top": 0,
+          "width": 1440,
+          "height": 850
+        },
+        "panelOpen": true
+      },
+      "actual": {
+        "sameScene": true,
+        "pose": {
+          "position": [
+            0,
+            0.08,
+            4.9
+          ],
+          "quaternion": [
+            -0.02854,
+            0,
+            0,
+            0.99959
+          ],
+          "zoom": 1
+        },
+        "globeSurface": {
+          "geometry": "ac8c5594-ec45-47ec-9121-9cf1dc3db1ea",
+          "texture": "02295e41-9a5e-4470-b0b9-f2adf1351754",
+          "width": 4096,
+          "height": 2048,
+          "raycastHits": 1,
+          "uv": [
+            0.25,
+            0.505196445303726
+          ]
+        },
+        "stands": [
+          {
+            "id": "stand.base.wood",
+            "provenance": "authored-in-project",
+            "qualityTier": "high",
+            "meshes": 3,
+            "geometries": 3,
+            "materials": 2,
+            "triangles": 1440,
+            "bytes": 46144,
+            "box": {
+              "minimum": [
+                -0.4399999976158142,
+                -1.440000057220459,
+                -0.4399999976158142
+              ],
+              "maximum": [
+                0.4399999976158142,
+                -1.0299999713897705,
+                0.4399999976158142
+              ],
+              "maxRadius": 0.44000000949856477
+            },
+            "interceptedRays": 0
+          }
+        ],
+        "canonicalFrameRings": 0,
+        "pendingDisposals": 0,
+        "rendererDiagnostic": {
+          "geometries": 76,
+          "textures": 3,
+          "programs": 9,
+          "calls": 76,
+          "triangles": 80924,
+          "frame": 15
+        }
+      }
+    },
+    {
+      "id": "stand.base.book-stack",
+      "screenshot": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-sc\\visual-a1\\book-stack-home-1440.png",
+      "screenshotSha256": "a19cec662119c46b9e8947247aaf3c6d1e4c8549c965f94f38d040dc2877526f",
+      "projection": {
+        "minimum": [
+          392.2575160857873,
+          598.3201313750384
+        ],
+        "maximum": [
+          570.4461419554004,
+          712.4665337969819
+        ],
+        "viewport": {
+          "width": 1440,
+          "height": 850
+        },
+        "canvas": {
+          "left": 0,
+          "top": 0,
+          "width": 1440,
+          "height": 850
+        },
+        "panelOpen": true
+      },
+      "actual": {
+        "sameScene": true,
+        "pose": {
+          "position": [
+            0,
+            0.08,
+            4.9
+          ],
+          "quaternion": [
+            -0.02854,
+            0,
+            0,
+            0.99959
+          ],
+          "zoom": 1
+        },
+        "globeSurface": {
+          "geometry": "ac8c5594-ec45-47ec-9121-9cf1dc3db1ea",
+          "texture": "02295e41-9a5e-4470-b0b9-f2adf1351754",
+          "width": 4096,
+          "height": 2048,
+          "raycastHits": 1,
+          "uv": [
+            0.25,
+            0.505196445303726
+          ]
+        },
+        "stands": [
+          {
+            "id": "stand.base.book-stack",
+            "provenance": "authored-in-project",
+            "qualityTier": "high",
+            "meshes": 14,
+            "geometries": 14,
+            "materials": 5,
+            "triangles": 528,
+            "bytes": 31072,
+            "box": {
+              "minimum": [
+                -0.4099924168141922,
+                -1.440000000052154,
+                -0.2740812847325745
+              ],
+              "maximum": [
+                0.4099924029528362,
+                -1.029999999627471,
+                0.2740812834816732
+              ],
+              "maxRadius": 0.4579301225327767
+            },
+            "interceptedRays": 0
+          }
+        ],
+        "canonicalFrameRings": 0,
+        "pendingDisposals": 0,
+        "rendererDiagnostic": {
+          "geometries": 87,
+          "textures": 3,
+          "programs": 9,
+          "calls": 87,
+          "triangles": 80012,
+          "frame": 19
+        }
+      }
+    },
+    {
+      "id": "stand.base.book-stack",
+      "screenshot": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-sc\\visual-a1\\book-stack-home-390.png",
+      "screenshotSha256": "b6a38ad1302095f4ed666f3e9879ae01e82d5bbd1207b872bbf638d6c1feaf9d",
+      "projection": {
+        "minimum": [
+          102.91216891341712,
+          517.0966951535675
+        ],
+        "maximum": [
+          279.8429927180682,
+          630.4373582642975
+        ],
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "canvas": {
+          "left": 0,
+          "top": 0,
+          "width": 390,
+          "height": 844
+        },
+        "panelOpen": false
+      },
+      "actual": {
+        "sameScene": true,
+        "pose": {
+          "position": [
+            0,
+            0.08,
+            4.9
+          ],
+          "quaternion": [
+            -0.02854,
+            0,
+            0,
+            0.99959
+          ],
+          "zoom": 1
+        },
+        "globeSurface": {
+          "geometry": "ac8c5594-ec45-47ec-9121-9cf1dc3db1ea",
+          "texture": "02295e41-9a5e-4470-b0b9-f2adf1351754",
+          "width": 4096,
+          "height": 2048,
+          "raycastHits": 1,
+          "uv": [
+            0.25,
+            0.505196445303726
+          ]
+        },
+        "stands": [
+          {
+            "id": "stand.base.book-stack",
+            "provenance": "authored-in-project",
+            "qualityTier": "high",
+            "meshes": 14,
+            "geometries": 14,
+            "materials": 5,
+            "triangles": 528,
+            "bytes": 31072,
+            "box": {
+              "minimum": [
+                -0.4099924168141922,
+                -1.440000000052154,
+                -0.2740812847325745
+              ],
+              "maximum": [
+                0.4099924029528362,
+                -1.029999999627471,
+                0.2740812834816732
+              ],
+              "maxRadius": 0.4579301225327767
+            },
+            "interceptedRays": 0
+          }
+        ],
+        "canonicalFrameRings": 0,
+        "pendingDisposals": 0,
+        "rendererDiagnostic": {
+          "geometries": 87,
+          "textures": 3,
+          "programs": 9,
+          "calls": 67,
+          "triangles": 72692,
+          "frame": 25
+        }
+      }
+    }
+  ],
+  "controls": "Actual reset, preview, cancel, apply and close buttons; native OS preferences remain controlled ports.",
+  "nativeExecutionVerified": false,
+  "releaseReady": false,
+  "homeDesktop": {
+    "position": [
+      0,
+      0.08,
+      4.9
+    ],
+    "quaternion": [
+      -0.02854,
+      0,
+      0,
+      0.99959
+    ],
+    "zoom": 1
+  },
+  "homePortrait": {
+    "position": [
+      0,
+      0.08,
+      4.9
+    ],
+    "quaternion": [
+      -0.02854,
+      0,
+      0,
+      0.99959
+    ],
+    "zoom": 1
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/typescript/bin/tsc",
+    "--noEmit"
+  ],
+  "startedAt": "2026-09-19T17:13:21.740Z",
+  "durationMs": 3138,
+  "exitCode": 2,
+  "logs": {
+    "stdout": {
+      "text": "src/components/GlobeIncludedStand.tsx(117,1): error TS1005: '}' expected.\r\n",
+      "sha256": "cbd6729f6b48544532a869e4778a33ac5801d7d7798424c6ba1be3d5adf23fc4"
+    },
+    "stderr": {
+      "text": "",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

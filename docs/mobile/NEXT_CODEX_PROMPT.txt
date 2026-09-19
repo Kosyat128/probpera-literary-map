@@ -1,3 +1,18 @@
+<!-- s13-stand-customization-20260919:begin -->
+Source 70835976 adds original museum, wood and unlettered book-stack
+stands around the same globe. Preview remains nonmodal; Apply follows a real frame;
+Cancel/Back/background and other surfaces preserve the applied choice. Suspended
+restoration resumes without fencing an untouched saved preference. Confirmation
+failure keeps the applied session choice with RU/EN retry and ordered port writes.
+Focused units, TypeScript and three actual Chrome cases pass. Starter Set inventory
+is now 10 source-bound of 29 required, zero accepted. Evidence:
+evidence/S13/stand-customization-20260919/result.json. PWA 7aba859f and
+Android/dev 5110ff2a include stands plus antique quality geometry.
+APK SHA256: 2b2d543c479ffad3e2f6d9776874cd529648a2804369c6419dc1b63ac93890d3. Earlier artifacts remain preserved.
+Full composition, child/optional content, device, iOS and release gates remain open.
+Only S00-S02 accepted; first open S03; releaseReady false. Continue S13 composition.
+<!-- s13-stand-customization-20260919:end -->
+
 <!-- s13-antique-detail-20260919:begin -->
 Source 2bdcdea1 makes the existing antique frame follow app graphics
 quality. High body data matches the previous source exactly; Balanced/Economy

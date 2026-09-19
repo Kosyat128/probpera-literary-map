@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-19T17:05:56.690Z",
+  "stage": "S13",
+  "checkpoint": "0c3692864dcb701e6932c5d588a1d12f431d33de",
+  "parallelEntry": "docs/mobile/evidence/S13/edition-preference-20260919/entry.json",
+  "scope": "Original bundled adult museum, wood and unlettered book-stack stands with same-scene preview/apply/cancel. Canonical existing edition-specific frames remain the default and a distinct sentinel.",
+  "dependencies": [
+    {
+      "path": "docs/mobile/requirements/v12/17_SKINS_STANDS_ACCESSORIES_ENGINE_RU.md",
+      "sha256": "d84657d718c24a69ce14ddfc6d1e9dc7d6778bf4e58b8be24d9d460249b51741"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/36_SKIN_STAND_ACCESSORY_CATALOG.csv",
+      "sha256": "7f35bf0f2c8f27c4d87839814c0bd5772ccf92b02c052eb05e76cda1c6f3eb72"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/09_BASE_EDITION_STARTER_SET_RU.md",
+      "sha256": "ac72ef546b5af93b7d5c7ae070801b92b8a0d67fd47a7f26c4c605c607126d5e"
+    }
+  ],
+  "compositionBoundary": "Preview changes only the stand. Other scene/semantic owners remain authoritative. Apply commits the session stand; confirmation failure preserves that applied choice with retry. This is not strict whole-composition persist-or-rollback or store/rights approval.",
+  "requiredChecks": [
+    "real same-scene rendering",
+    "camera and selection preservation",
+    "actual transformed geometry bounds and disposal",
+    "preview close/error/timeout/latest-request recovery",
+    "nonmodal rotation",
+    "native Back and surface crossing cancellation",
+    "RUEN controls and storage confirmation/retry"
+  ],
+  "childAccess": "blocked",
+  "newRemoteAssets": false,
+  "grantsEntitlement": false,
+  "productionActionsPerformed": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

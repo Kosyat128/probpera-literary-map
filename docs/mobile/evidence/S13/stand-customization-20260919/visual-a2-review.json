@@ -1,0 +1,225 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-09-19T17:30:09.2222834+00:00",
+  "capture": "visual-a2.json",
+  "browserReport": "visual-a2-playwright.json",
+  "visualOutcome": "desktop-and-book390-clear-museum320-overlap-remains",
+  "actualImagesReviewed": 5,
+  "observations": [
+    "All three desktop stands are now fully visible below the globe. Their projected bounds do not overlap controls, scale output or the stand toggle.",
+    "The book-stack stand at 390x844 with the panel closed is fully visible; controls/output/toggle have no projected stand intersections.",
+    "Museum at 320x844 still has a small visible occlusion along the base bottom and right edge: rail overlaps its projected bounds by 6.276px vertically, buttons by 1.276px, and the 100% output intersects the right edge.",
+    "The draft panel is explicitly excluded from intersection checks. No camera, production source or green fixture changes were made by this capture."
+  ],
+  "measurements": [
+    {
+      "screenshot": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-sc\\visual-a2\\museum-home-1440.png",
+      "viewport": {
+        "width": 1440,
+        "height": 850
+      },
+      "standId": "stand.base.museum",
+      "standMinimum": [
+        380.5585223466983,
+        598.3201313750384
+      ],
+      "standMaximum": [
+        589.4414776533017,
+        728.4178307021491
+      ],
+      "controlIntersections": [],
+      "minimumControlGap": 17.582169297850896
+    },
+    {
+      "screenshot": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-sc\\visual-a2\\wood-home-1440.png",
+      "viewport": {
+        "width": 1440,
+        "height": 850
+      },
+      "standId": "stand.base.wood",
+      "standMinimum": [
+        389.3190162036905,
+        598.3201254716207
+      ],
+      "standMaximum": [
+        580.6809837963093,
+        725.2062136781198
+      ],
+      "controlIntersections": [],
+      "minimumControlGap": 20.793786321880248
+    },
+    {
+      "screenshot": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-sc\\visual-a2\\book-stack-home-1440.png",
+      "viewport": {
+        "width": 1440,
+        "height": 850
+      },
+      "standId": "stand.base.book-stack",
+      "standMinimum": [
+        392.2575160857873,
+        598.3201313750384
+      ],
+      "standMaximum": [
+        570.4461419554004,
+        712.4665337969819
+      ],
+      "controlIntersections": [],
+      "minimumControlGap": 33.533466203018065
+    },
+    {
+      "screenshot": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-sc\\visual-a2\\book-stack-home-390.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "standId": "stand.base.book-stack",
+      "standMinimum": [
+        102.91216891341712,
+        517.0966951535675
+      ],
+      "standMaximum": [
+        279.8429927180682,
+        630.4373582642975
+      ],
+      "controlIntersections": [],
+      "minimumControlGap": 9.562641735702528
+    },
+    {
+      "screenshot": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-sc\\visual-a2\\museum-home-320.png",
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "standId": "stand.base.museum",
+      "standMinimum": [
+        56.29575630660394,
+        517.0966951535675
+      ],
+      "standMaximum": [
+        263.70424369339605,
+        646.2760577795458
+      ],
+      "controlIntersections": [
+        {
+          "selector": ".globe-controls",
+          "control": null,
+          "text": "ПаузаСбросИсточникИнтерактивный глобус · ручная навигацияМасштаб 100%",
+          "bounds": {
+            "left": 8,
+            "top": 640,
+            "right": 312,
+            "bottom": 694,
+            "width": 304,
+            "height": 54
+          },
+          "projectedStandIntersection": {
+            "width": 207.4084873867921,
+            "height": 6.276057779545795,
+            "area": 1301.7076508077025
+          },
+          "minimumRectDistance": 0
+        },
+        {
+          "selector": ".globe-controls button",
+          "control": "zoom-out",
+          "text": "",
+          "bounds": {
+            "left": 55,
+            "top": 645,
+            "right": 99,
+            "bottom": 689,
+            "width": 44,
+            "height": 44
+          },
+          "projectedStandIntersection": {
+            "width": 42.70424369339606,
+            "height": 1.2760577795457948,
+            "area": 54.493082384577484
+          },
+          "minimumRectDistance": 0
+        },
+        {
+          "selector": ".globe-controls button",
+          "control": "auto-rotate",
+          "text": "Пауза",
+          "bounds": {
+            "left": 101,
+            "top": 645,
+            "right": 169.65625,
+            "bottom": 689,
+            "width": 68.65625,
+            "height": 44
+          },
+          "projectedStandIntersection": {
+            "width": 68.65625,
+            "height": 1.2760577795457948,
+            "area": 87.60934192694097
+          },
+          "minimumRectDistance": 0
+        },
+        {
+          "selector": ".globe-controls button",
+          "control": "reset",
+          "text": "Сброс",
+          "bounds": {
+            "left": 171.65625,
+            "top": 645,
+            "right": 240.328125,
+            "bottom": 689,
+            "width": 68.671875,
+            "height": 44
+          },
+          "projectedStandIntersection": {
+            "width": 68.671875,
+            "height": 1.2760577795457948,
+            "area": 87.62928032974638
+          },
+          "minimumRectDistance": 0
+        },
+        {
+          "selector": ".globe-controls button",
+          "control": "edition-info",
+          "text": "Источник",
+          "bounds": {
+            "left": 242.328125,
+            "top": 645,
+            "right": 310.984375,
+            "bottom": 689,
+            "width": 68.65625,
+            "height": 44
+          },
+          "projectedStandIntersection": {
+            "width": 21.37611869339605,
+            "height": 1.2760577795457948,
+            "area": 27.277162555202324
+          },
+          "minimumRectDistance": 0
+        },
+        {
+          "selector": "#globe-scale-feedback",
+          "control": null,
+          "text": "Масштаб 100%",
+          "bounds": {
+            "left": 250.4375,
+            "top": 616,
+            "right": 307,
+            "bottom": 637,
+            "width": 56.5625,
+            "height": 21
+          },
+          "projectedStandIntersection": {
+            "width": 13.266743693396052,
+            "height": 21,
+            "area": 278.6016175613171
+          },
+          "minimumRectDistance": 0
+        }
+      ],
+      "minimumControlGap": 0.0
+    }
+  ],
+  "originalFixtureUnchanged": true,
+  "productionFilesChanged": false,
+  "installedNativeTested": false,
+  "releaseReady": false
+}

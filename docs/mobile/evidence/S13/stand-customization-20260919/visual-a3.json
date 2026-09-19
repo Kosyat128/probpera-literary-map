@@ -1,0 +1,466 @@
+{
+  "schemaVersion": 1,
+  "kind": "stand-home-view-narrow-media-capture",
+  "createdAt": "2026-09-19T17:31:53.910Z",
+  "originalFixtureSha256": "d18a438fb20983250825a97ee72aa4f566cfd1edd0b145234ffe769de45934c4",
+  "sourceInputs": [
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "sha256": "9eeb5b325f11d97fb9a673797600e4c167833f7ffdf8e369198441b7a7d54b40"
+    },
+    {
+      "path": "src/host/PlanetStandControls.css",
+      "sha256": "45a750027a596a6868218d8b64e7038d22a50d50e9576bedcf1955de1fbd94a0"
+    }
+  ],
+  "sourceFixture": {
+    "kind": "canonical-app-stand-customization-in-Chrome",
+    "actualApp": true,
+    "actualCss": true,
+    "actualGlobe": true,
+    "controlledPorts": [
+      "native OS plugins, including explicit stand-preference set failure"
+    ],
+    "observation": "Actual stand bounds, geometry/material disposal and globe raycasting; no production probes",
+    "publicAssetSelectionSha256": "b2c706b1f89a844af8505120184a5b2ee11f04247ed674ebf29da824bd978506",
+    "selectedAssetCount": 1343,
+    "builtFiles": [
+      {
+        "path": "assets/countries-KFLCUFF2.geojson",
+        "sha256": "402706b730069fb691d1ec6098e13d7d59670a1823d1ffb62546ff045df20279"
+      },
+      {
+        "path": "stand-customization.js",
+        "sha256": "8b8bc8bc28c1e79307112911f1554924dcb3e40620a0cf2d79c98383592d3c42"
+      },
+      {
+        "path": "assets/brush-paper-corners-VR3JL3HS.webp",
+        "sha256": "d6b5a8528a0e95ad555e4a3f93a886e2c7437f578023b6d2bcdea1b0cd6771df"
+      },
+      {
+        "path": "assets/brush-violet-stage-A6RBSWAN.webp",
+        "sha256": "e8f77a5f1f2b73ba8abec2921d0b3388bf8a81994c03b810be0d9e664e43aaa3"
+      },
+      {
+        "path": "assets/editorial-paper-LSK4W3PW.webp",
+        "sha256": "b47d170befac71b0f2496a9d80dd68e5dd960fd41cb5fc45d48cf0a442cb9a68"
+      },
+      {
+        "path": "assets/section-prizes-R7PYCNYU.webp",
+        "sha256": "3b4cd3e381198f0a71226fb46268b298d9fd37061ab039ff9f537fecc37d02ab"
+      },
+      {
+        "path": "assets/brush-paper-east-X6U7HMM2.webp",
+        "sha256": "4067b8328ca6389bf7f6eb38a35f66e428181f0cd37180374c2d9c30415fc031"
+      },
+      {
+        "path": "assets/brush-paper-split-OKZTXFOK.webp",
+        "sha256": "7cac3c0966ac13fe1d6e461d051921e8d12ad8b3bab5c8c83f1711708246ee7f"
+      },
+      {
+        "path": "assets/brush-orange-stage-JTYKT66J.webp",
+        "sha256": "3d16e63c8d74e2c7cb521a16a4e6ced5fc34d08590140b0d2c993d29eee0b493"
+      },
+      {
+        "path": "stand-customization.css",
+        "sha256": "320dadddf79a1fe5d47c8c2649e79f7d8a1497a88f3ee2e8717032bc059184c0"
+      }
+    ],
+    "installedNative": false,
+    "entitlementGranted": false,
+    "releaseReady": false
+  },
+  "pass": true,
+  "captures": [
+    {
+      "id": "stand.base.museum",
+      "screenshot": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-sc\\visual-a3\\museum-home-320.png",
+      "screenshotSha256": "a21f5e97bf1305bc583531bb8bc2e88380ab03366d3dd8697f53100ece5b851e",
+      "projection": {
+        "minimum": [
+          56.29575630660394,
+          517.0966951535675
+        ],
+        "maximum": [
+          263.70424369339605,
+          646.2760577795458
+        ],
+        "viewport": {
+          "width": 320,
+          "height": 844
+        },
+        "canvas": {
+          "left": 0,
+          "top": 0,
+          "width": 320,
+          "height": 844
+        },
+        "controls": [
+          {
+            "selector": ".globe-controls",
+            "control": null,
+            "text": "ПаузаСбросИсточникИнтерактивный глобус · ручная навигацияМасштаб 100%",
+            "bounds": {
+              "left": 8,
+              "top": 652,
+              "right": 312,
+              "bottom": 698,
+              "width": 304,
+              "height": 46
+            },
+            "projectedStandIntersection": {
+              "width": 207.4084873867921,
+              "height": 0,
+              "area": 0
+            },
+            "minimumRectDistance": 5.723942220454205
+          },
+          {
+            "selector": ".globe-controls button",
+            "control": "zoom-in",
+            "text": "",
+            "bounds": {
+              "left": 9,
+              "top": 653,
+              "right": 53,
+              "bottom": 697,
+              "width": 44,
+              "height": 44
+            },
+            "projectedStandIntersection": {
+              "width": 0,
+              "height": 0,
+              "area": 0
+            },
+            "minimumRectDistance": 7.488217986712612
+          },
+          {
+            "selector": ".globe-controls button",
+            "control": "zoom-out",
+            "text": "",
+            "bounds": {
+              "left": 55,
+              "top": 653,
+              "right": 99,
+              "bottom": 697,
+              "width": 44,
+              "height": 44
+            },
+            "projectedStandIntersection": {
+              "width": 42.70424369339606,
+              "height": 0,
+              "area": 0
+            },
+            "minimumRectDistance": 6.723942220454205
+          },
+          {
+            "selector": ".globe-controls button",
+            "control": "auto-rotate",
+            "text": "Пауза",
+            "bounds": {
+              "left": 101,
+              "top": 653,
+              "right": 169.65625,
+              "bottom": 697,
+              "width": 68.65625,
+              "height": 44
+            },
+            "projectedStandIntersection": {
+              "width": 68.65625,
+              "height": 0,
+              "area": 0
+            },
+            "minimumRectDistance": 6.723942220454205
+          },
+          {
+            "selector": ".globe-controls button",
+            "control": "reset",
+            "text": "Сброс",
+            "bounds": {
+              "left": 171.65625,
+              "top": 653,
+              "right": 240.328125,
+              "bottom": 697,
+              "width": 68.671875,
+              "height": 44
+            },
+            "projectedStandIntersection": {
+              "width": 68.671875,
+              "height": 0,
+              "area": 0
+            },
+            "minimumRectDistance": 6.723942220454205
+          },
+          {
+            "selector": ".globe-controls button",
+            "control": "edition-info",
+            "text": "Источник",
+            "bounds": {
+              "left": 242.328125,
+              "top": 653,
+              "right": 310.984375,
+              "bottom": 697,
+              "width": 68.65625,
+              "height": 44
+            },
+            "projectedStandIntersection": {
+              "width": 21.37611869339605,
+              "height": 0,
+              "area": 0
+            },
+            "minimumRectDistance": 6.723942220454205
+          },
+          {
+            "selector": "#globe-scale-feedback",
+            "control": null,
+            "text": "Масштаб 100%",
+            "bounds": {
+              "left": 265.40625,
+              "top": 628,
+              "right": 311,
+              "bottom": 648,
+              "width": 45.59375,
+              "height": 20
+            },
+            "projectedStandIntersection": {
+              "width": 0,
+              "height": 18.276057779545795,
+              "area": 0
+            },
+            "minimumRectDistance": 1.7020063066039484
+          },
+          {
+            "selector": "[data-planet-stand-toggle]",
+            "control": null,
+            "text": "Подставки",
+            "bounds": {
+              "left": 14,
+              "top": 144,
+              "right": 114.578125,
+              "bottom": 188,
+              "width": 100.578125,
+              "height": 44
+            },
+            "projectedStandIntersection": {
+              "width": 58.28236869339606,
+              "height": 0,
+              "area": 0
+            },
+            "minimumRectDistance": 329.09669515356745
+          }
+        ],
+        "panelOpen": false,
+        "draftPanel": null,
+        "draftPanelExcludedFromIntersectionChecks": true
+      },
+      "actual": {
+        "sameScene": true,
+        "pose": {
+          "position": [
+            0,
+            0.08,
+            4.9
+          ],
+          "quaternion": [
+            -0.02854,
+            0,
+            0,
+            0.99959
+          ],
+          "zoom": 1
+        },
+        "globeSurface": {
+          "geometry": "a9d2511a-6500-43ce-a243-e5dae843f9df",
+          "texture": "66771c6c-ff3e-4fa7-9d28-63e8f6dc65c0",
+          "width": 4096,
+          "height": 2048,
+          "raycastHits": 1,
+          "uv": [
+            0.25,
+            0.505196445303726
+          ]
+        },
+        "stands": [
+          {
+            "id": "stand.base.museum",
+            "provenance": "authored-in-project",
+            "qualityTier": "high",
+            "meshes": 4,
+            "geometries": 4,
+            "materials": 2,
+            "triangles": 768,
+            "bytes": 41984,
+            "box": {
+              "minimum": [
+                -0.47999998927116394,
+                -1.4399999993294477,
+                -0.47999998927116394
+              ],
+              "maximum": [
+                0.47999998927116394,
+                -1.029999999627471,
+                0.47999998927116394
+              ],
+              "maxRadius": 0.4800000052721415
+            },
+            "interceptedRays": 0
+          }
+        ],
+        "canonicalFrameRings": 0,
+        "pendingDisposals": 0,
+        "rendererDiagnostic": {
+          "geometries": 77,
+          "textures": 3,
+          "programs": 9,
+          "calls": 52,
+          "triangles": 70988,
+          "frame": 15
+        }
+      },
+      "countrySheet": {
+        "left": 0,
+        "top": 702,
+        "right": 320,
+        "bottom": 844,
+        "width": 320,
+        "height": 142
+      },
+      "countrySheetGap": 4,
+      "buttonTargets": [
+        {
+          "selector": ".globe-controls button",
+          "control": "zoom-in",
+          "text": "",
+          "bounds": {
+            "left": 9,
+            "top": 653,
+            "right": 53,
+            "bottom": 697,
+            "width": 44,
+            "height": 44
+          },
+          "projectedStandIntersection": {
+            "width": 0,
+            "height": 0,
+            "area": 0
+          },
+          "minimumRectDistance": 7.488217986712612
+        },
+        {
+          "selector": ".globe-controls button",
+          "control": "zoom-out",
+          "text": "",
+          "bounds": {
+            "left": 55,
+            "top": 653,
+            "right": 99,
+            "bottom": 697,
+            "width": 44,
+            "height": 44
+          },
+          "projectedStandIntersection": {
+            "width": 42.70424369339606,
+            "height": 0,
+            "area": 0
+          },
+          "minimumRectDistance": 6.723942220454205
+        },
+        {
+          "selector": ".globe-controls button",
+          "control": "auto-rotate",
+          "text": "Пауза",
+          "bounds": {
+            "left": 101,
+            "top": 653,
+            "right": 169.65625,
+            "bottom": 697,
+            "width": 68.65625,
+            "height": 44
+          },
+          "projectedStandIntersection": {
+            "width": 68.65625,
+            "height": 0,
+            "area": 0
+          },
+          "minimumRectDistance": 6.723942220454205
+        },
+        {
+          "selector": ".globe-controls button",
+          "control": "reset",
+          "text": "Сброс",
+          "bounds": {
+            "left": 171.65625,
+            "top": 653,
+            "right": 240.328125,
+            "bottom": 697,
+            "width": 68.671875,
+            "height": 44
+          },
+          "projectedStandIntersection": {
+            "width": 68.671875,
+            "height": 0,
+            "area": 0
+          },
+          "minimumRectDistance": 6.723942220454205
+        },
+        {
+          "selector": ".globe-controls button",
+          "control": "edition-info",
+          "text": "Источник",
+          "bounds": {
+            "left": 242.328125,
+            "top": 653,
+            "right": 310.984375,
+            "bottom": 697,
+            "width": 68.65625,
+            "height": 44
+          },
+          "projectedStandIntersection": {
+            "width": 21.37611869339605,
+            "height": 0,
+            "area": 0
+          },
+          "minimumRectDistance": 6.723942220454205
+        },
+        {
+          "selector": "[data-planet-stand-toggle]",
+          "control": null,
+          "text": "Подставки",
+          "bounds": {
+            "left": 14,
+            "top": 144,
+            "right": 114.578125,
+            "bottom": 188,
+            "width": 100.578125,
+            "height": 44
+          },
+          "projectedStandIntersection": {
+            "width": 58.28236869339606,
+            "height": 0,
+            "area": 0
+          },
+          "minimumRectDistance": 329.09669515356745
+        }
+      ]
+    }
+  ],
+  "scope": "Museum 320x844 only; max-width:380px CSS fix. Unaffected desktop1440/book390 observations remain in visual-a2.json.",
+  "controls": "Actual reset, preview, apply and close; actual DOM rectangles versus projected stand bounds. Draft panel excluded.",
+  "nativeExecutionVerified": false,
+  "releaseReady": false,
+  "homePortrait320": {
+    "position": [
+      0,
+      0.08,
+      4.9
+    ],
+    "quaternion": [
+      -0.02854,
+      0,
+      0,
+      0.99959
+    ],
+    "zoom": 1
+  },
+  "controlIntersections": []
+}

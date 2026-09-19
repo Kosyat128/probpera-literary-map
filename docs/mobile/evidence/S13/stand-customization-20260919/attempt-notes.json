@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "accepted": { "unit": "a3", "static": "a4", "browser": "a2" },
+  "preservedAttempts": [
+    { "mode": "unit", "attempt": "a1", "pass": true, "tests": 199, "supersededBy": "background restoration correction and two regressions" },
+    { "mode": "static", "attempt": "a1", "pass": false, "reason": "missing closing brace in new StandFrame boundary wrapper; fixed" },
+    { "mode": "unit", "attempt": "a2", "pass": true, "tests": 201, "supersededBy": "TypeScript annotation in geometry test" },
+    { "mode": "static", "attempt": "a2", "pass": false, "reason": "implicit any in Three typed-index array test callback; numeric annotation added" },
+    { "mode": "static", "attempt": "a3", "pass": true, "supersededBy": "app-only control layout correction after real visual inspection" },
+    { "mode": "browser", "attempt": "a1", "pass": true, "tests": 3, "supersededBy": "app-only control layout correction; all three cases repeated on final source" }
+  ],
+  "browserAttempts": 2,
+  "visualInspection": "a1 found covered stand bases; a2 cleared desktop and 390 but detected remaining 320 overlap; a3 verifies only the corrected max-width-380 case",
+  "broadProjectSuiteRepeated": false,
+  "releaseReady": false
+}

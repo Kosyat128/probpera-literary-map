@@ -1,0 +1,13 @@
+{
+  "pass": true,
+  "sourceCommit": "7083597669e38bbcbea59fc3d816c7a71170e069",
+  "buildId": "5110ff2a21679af68b20932b7cb641ed7e898173ed0f80c3b53b0755364131a2",
+  "startedAt": "2026-09-19T17:33:55.9236599+00:00",
+  "durationSeconds": 56.9280871,
+  "task": ":app:assembleDevDebug",
+  "offline": true,
+  "registrySourceSha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79",
+  "deviceTested": false,
+  "iosCompiled": false,
+  "releaseReady": false
+}
