@@ -2988,6 +2988,7 @@ export default function LiteraryGlobe({
       }}
       data-globe-style={renderedVisualStyle}
       data-globe-edition={renderedEditionId}
+      data-globe-stand={standCustomization?.displayedId}
       data-globe-edition-rail={editionRailVisible ? "visible" : "hidden"}
       data-can-scroll-left={editionRailScroll.canScrollLeft}
       data-can-scroll-right={editionRailScroll.canScrollRight}
@@ -3223,7 +3224,7 @@ export default function LiteraryGlobe({
           {t("Интерактивный глобус · ручная навигация")}
         </span>
         <output id="globe-scale-feedback" className="globe-scale-feedback">
-          {t("Масштаб")} {number(globeScalePercent)}%
+          <span className="globe-scale-feedback-label">{t("Масштаб")}{"\u00a0"}</span>{number(globeScalePercent)}%
         </output>
       </div>
 
