@@ -1,0 +1,122 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=docs/mobile/evidence/S13/writer-study-20260920/pwa.config.mjs"
+    ],
+    "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S13\\writer-study-20260920\\pwa.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/pwa-a1",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "downloads-artifact.spec.mjs"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S13\\writer-study-20260920\\pwa-a1\\playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "downloads-artifact.spec.mjs",
+      "file": "downloads-artifact.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "built PWA keeps bilingual downloads on the same globe after cold offline navigation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 20945,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-19T23:09:40.675Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "built-pwa-downloads-result",
+                      "contentType": "application/json",
+                      "body": "eyJwYXNzIjp0cnVlLCJsb2NhbFFhT25seSI6dHJ1ZSwib2JzZXJ2YXRpb25zIjpbeyJjb2xkTG9jYWxlIjoicnUiLCJjaGFuZ2VkVG8iOiJlbiIsIm9mZmxpbmUiOnRydWUsInNhbWVDYW52YXNSZW5kZXJlckNhbWVyYVNjZW5lIjp0cnVlLCJwcm9kdWN0aW9uUGFja2FnZXNFbXB0eSI6dHJ1ZSwibmV0d29ya1ByZWZlcmVuY2VSZXN0b3JlZEFuZEVkaXRhYmxlIjp0cnVlLCJzdG9yYWdlQ2FwYWNpdHlBdmFpbGFibGVPZmZsaW5lIjp0cnVlfSx7ImNvbGRMb2NhbGUiOiJlbiIsImNoYW5nZWRUbyI6InJ1Iiwib2ZmbGluZSI6dHJ1ZSwic2FtZUNhbnZhc1JlbmRlcmVyQ2FtZXJhU2NlbmUiOnRydWUsInByb2R1Y3Rpb25QYWNrYWdlc0VtcHR5Ijp0cnVlLCJuZXR3b3JrUHJlZmVyZW5jZVJlc3RvcmVkQW5kRWRpdGFibGUiOnRydWUsInN0b3JhZ2VDYXBhY2l0eUF2YWlsYWJsZU9mZmxpbmUiOnRydWV9XSwiaW5zdGFsbGVkRGV2aWNlIjpmYWxzZSwicmVsZWFzZVJlYWR5IjpmYWxzZX0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c342c20fbd0fd3c00b09-67c4b098110a609e9a34",
+          "file": "downloads-artifact.spec.mjs",
+          "line": 4,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-19T23:09:40.126Z",
+    "duration": 22274.309,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

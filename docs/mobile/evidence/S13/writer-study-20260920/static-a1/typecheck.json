@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/typescript/bin/tsc",
+    "--noEmit"
+  ],
+  "startedAt": "2026-09-19T23:04:15.778Z",
+  "durationMs": 20354,
+  "exitCode": 2,
+  "logs": {
+    "stdout": {
+      "text": "src/components/globeWriterStudyGeometry.ts(13,7): error TS6133: 'TAU' is declared but its value is never read.\r\nsrc/components/globeWriterStudyGeometry.ts(19,7): error TS6133: 'clamp' is declared but its value is never read.\r\n",
+      "sha256": "1bab582a6c62d3c6b838bd2d81d14f53967da547fb9de7be1065c4ba3a6fd9f0"
+    },
+    "stderr": {
+      "text": "",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

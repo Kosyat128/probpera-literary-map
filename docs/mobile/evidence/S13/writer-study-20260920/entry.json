@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-19T22:43:38.229Z",
+  "stage": "S13",
+  "checkpoint": "92cfab68527819d9f926d0de5ba20187c2d20bc1",
+  "previous": "docs/mobile/evidence/S13/ceramic-portraits-20260920/result.json",
+  "scope": "Original full-3D writer study, required included STARTER-012, within the existing one-scene composition lifecycle.",
+  "userBasis": "Continue the whole application plan without pauses, with carefully detailed realistic full-3D backgrounds and stands.",
+  "id": "background.base.writer-study",
+  "requirementId": "STARTER-012",
+  "requiredCount": 29,
+  "references": "Original fictional study furniture and architecture. No reconstruction of a named writer home, external portrait, text or downloaded asset.",
+  "dependencies": [
+    {
+      "path": "docs/mobile/requirements/v12/16_FULL_3D_BACKGROUND_ENGINE_RU.md",
+      "sha256": "75f830874b32c2afca440b958cb4b3cefdcb9c606b8ba0195fba2f02022198c5"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/17_SKINS_STANDS_ACCESSORIES_ENGINE_RU.md",
+      "sha256": "d84657d718c24a69ce14ddfc6d1e9dc7d6778bf4e58b8be24d9d460249b51741"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/35_3D_BACKGROUND_CATALOG.csv",
+      "sha256": "30cc7b9f6157a38dee3b4661a7bb828e7d8856f09c4b7ccbcdca80a6afebb857"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/37_BASE_EDITION_STARTER_SET.csv",
+      "sha256": "575f40b97986cb4e64cb89243059a3b18c4cda8069f4f0e1c7d3565f6132b731"
+    }
+  ],
+  "preservedCompositionInputs": [
+    {
+      "path": "src/planet/globeComposition.ts",
+      "sha256": "20b4cabdd678a6fa5b70ab2b4cbaef179f0e7d7c5819e408123eb486ddb0e81f"
+    },
+    {
+      "path": "src/host/planetComposition.ts",
+      "sha256": "6e193b12c495d962737185ab4fd35eeb3b64fe46f5c92774b565cfbb1181e954"
+    },
+    {
+      "path": "src/host/planetCompositionPresentation.ts",
+      "sha256": "d62d963c719366c1be3e6888b5eb321933f3e7224b6591fc8c2d6d81a639c3f6"
+    },
+    {
+      "path": "src/components/useGlobeCompositionScene.ts",
+      "sha256": "30009468d0cdee459441ca5780ea608cdf21b3f6e7055da89c0ce28e435326b5"
+    },
+    {
+      "path": "src/components/useGlobeCompositionFrame.ts",
+      "sha256": "530d1303a5af222bf68f72b499b07c8d41a828ca14783912284b6e3963d59cd0"
+    },
+    {
+      "path": "src/components/globeAtlas.ts",
+      "sha256": "224dcde2499f51eb333562875796d3422ab28ad987339f36be79f0635677bcf6"
+    },
+    {
+      "path": "src/components/useGlobeStyleState.ts",
+      "sha256": "6d2801802ec0e9bf0c2e5ff9a6f852f00434a8494216b06ee2069917e2a1a0ba"
+    }
+  ],
+  "preservedPortraitFactory": {
+    "path": "src/components/globeCeramicPortraitStandGeometry.ts",
+    "sha256": "aaefb0d9bb4721fbe0e66e47b307f743d0ade834abb6be15ecf09a3a2b729a32"
+  },
+  "artAccepted": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false,
+  "catalogSceneId": "writers-study-3d",
+  "catalogRequiredProps": [
+    "desk",
+    "ink",
+    "maps",
+    "window daylight"
+  ],
+  "deferredCatalogScope": [
+    "manuscript hotspot and its keyboard/screen-reader interaction mode",
+    "age-appropriate child review for the catalog 10–17 range",
+    "formal mobile GPU/memory and full-scene art acceptance"
+  ]
+}

@@ -1,3 +1,20 @@
+<!-- s13-writer-study-20260920:begin -->
+Source 1b7f85e1 adds the original included Writer's study / Кабинет писателя
+(STARTER-012) through the existing single-scene composition lifecycle. Preview
+cancellation retains the library resources; quality changes retain the actual
+furniture layout. Five selected unit/adapter cases, TypeScript and one actual
+Chrome case pass; 181 unmatched adapter cases were excluded, not passed.
+Inspected source-bound images are not art approval or satisfaction of the user's
+maximum-realism requirement. Hotspot/accessibility, child ages 10–17, full catalog,
+lightmaps, installed devices, iOS and release acceptance remain open.
+PWA 1dbc005c and Android/dev 524a40b7 bind this source.
+APK SHA256: 1015b9eda8ca2b7e8dffae24952751aae064f49a9c95d1ac114be89481074734.
+Evidence: evidence/S13/writer-study-20260920/result.json.
+Starter Set: 12/29 source-bound, zero accepted, plus three separate owner additions.
+Stages: 3 complete, 11 in progress, 27 unstarted; first open S03.
+Next: improve unresolved visible realism and continue the existing full app plan.
+<!-- s13-writer-study-20260920:end -->
+
 <!-- s13-ceramic-portraits-20260920:begin -->
 Source 0d4a1c0b adds three original ceramic portrait-head stands of Pushkin, Hemingway
 and Tolstoy through the existing adult composition lifecycle. They are explicit

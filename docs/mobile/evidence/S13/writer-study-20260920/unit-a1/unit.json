@@ -1,0 +1,26 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "--config=docs/mobile/evidence/S13/writer-study-20260920/unit.config.mjs",
+    "src/components/globeWriterStudyGeometry.test.ts",
+    "src/planet/globeWriterStudyPolicy.test.ts",
+    "--maxWorkers=2",
+    "--reporter=json",
+    "--outputFile=C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S13\\writer-study-20260920\\unit-a1\\vitest.json"
+  ],
+  "startedAt": "2026-09-19T23:04:14.574Z",
+  "durationMs": 2259,
+  "exitCode": 0,
+  "logs": {
+    "stdout": {
+      "text": "JSON report written to C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S13/writer-study-20260920/unit-a1/vitest.json\n",
+      "sha256": "42d8f40fc472e5b1dbffae16d5e0013516e6b096d5a7b206d63a3fde15fd2d18"
+    },
+    "stderr": {
+      "text": "",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

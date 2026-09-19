@@ -1,0 +1,27 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "--config=docs/mobile/evidence/S13/writer-study-20260920/unit.config.mjs",
+    "src/host/HostPlatformServices.test.ts",
+    "src/platform/adapters/web/WebPlatformAdapter.test.ts",
+    "--testNamePattern=confines the new background preference to its exact adult IDs and (?:browser )?key$",
+    "--maxWorkers=2",
+    "--reporter=json",
+    "--outputFile=C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S13\\writer-study-20260920\\unit-a2\\vitest-adapters.json"
+  ],
+  "startedAt": "2026-09-19T23:06:35.612Z",
+  "durationMs": 2189,
+  "exitCode": 0,
+  "logs": {
+    "stdout": {
+      "text": "JSON report written to C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S13/writer-study-20260920/unit-a2/vitest-adapters.json\n",
+      "sha256": "976f0c3c5461f507726bfd9530121fb6079b543422ec3bfb7086078698b55025"
+    },
+    "stderr": {
+      "text": "",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

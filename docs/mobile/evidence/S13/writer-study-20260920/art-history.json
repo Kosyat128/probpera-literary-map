@@ -1,0 +1,328 @@
+{
+  "schemaVersion": 1,
+  "iterations": 4,
+  "files": 28,
+  "directlyOpenedImages": 21,
+  "identicalCopiesOfOpenedImages": 7,
+  "uninspectedDifferentImages": 0,
+  "versions": [
+    {
+      "attempt": "a1",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a1/result.json",
+      "sha256": "26969d532b077f74e34efc240b4aef1f54079a4d580cd0e9ad8fff5fd95fec17",
+      "sourceInputs": [
+        {
+          "path": "src/components/globeWriterStudyGeometry.ts",
+          "sha256": "174baeb1ea7d46a9eed25c50ab8f18277e93b203acabd142868062b47021d37a"
+        },
+        {
+          "path": "src/components/globeQuality.ts",
+          "sha256": "b52e0221ec8bcac17d640e26378bc0304521316ca34e203313d2b63f9c3b28c9"
+        },
+        {
+          "path": "src/components/globeCraftMaterials.ts",
+          "sha256": "68ce7e818d50ac5ece1d5d4542fdc4cecea6af25e21b08b1274c8adcacbfbde1"
+        },
+        {
+          "path": "src/components/globeLibraryBookGeometry.ts",
+          "sha256": "e3034c2bd4391f1b08410c3c1f41165e880c7225f957a42ef4780e87eeaf7e0c"
+        },
+        {
+          "path": "docs/mobile/evidence/S13/writer-study-20260920/capture-study.mjs",
+          "sha256": "06f6513347bc11d974cb79fc9fe496a77cf3923b166fa67cb59c2d8fe84d114f"
+        }
+      ],
+      "frames": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a1/room-study-high-overview.png",
+          "sha256": "6bcfae72648ec682121d612535b1bc65643a8bc2d79de5c6c7c46b8f059b01c0",
+          "tier": "high",
+          "view": "overview"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a1/room-study-high-desk.png",
+          "sha256": "a7a0bf1db2c55c0e1ffe597ce6a34900371b894ad2ce119b95cafc10a7becc40",
+          "tier": "high",
+          "view": "desk"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a1/room-study-high-side.png",
+          "sha256": "f9c70bd3bec5c2f0e8afe62c3404d14fc3321d4a0c6c373ff5766c08652d573f",
+          "tier": "high",
+          "view": "side"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a1/room-study-high-back.png",
+          "sha256": "ab9952f16629476f129d41548e0d292c3a56a8d1045cba3bf828aef2383202a6",
+          "tier": "high",
+          "view": "back"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a1/room-study-balanced-overview.png",
+          "sha256": "5978d1a59f76a16de3c2d79ad6ed9275d19b64f24b1698551969556e1d8cfccc",
+          "tier": "balanced",
+          "view": "overview"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a1/room-study-economy-overview.png",
+          "sha256": "4ca788fb3be57f61e8237a5152b3458de3843d4234c7c46c9336be15d6c5a8cb",
+          "tier": "economy",
+          "view": "overview"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a1/room-study-economy-desk.png",
+          "sha256": "e9971b79ca47f450d06f31bc36ed10fbb0d916d23a542312484bee7f5e27f225",
+          "tier": "economy",
+          "view": "desk"
+        }
+      ],
+      "currentSource": false,
+      "directViewImageReview": true,
+      "exactPreviouslyInspectedBytes": false,
+      "reviewers": [
+        "/root",
+        "/root/network_capabilities"
+      ],
+      "notes": "Floor coplanarity, oversized wall pattern and chair collision prompted fixes."
+    },
+    {
+      "attempt": "a2",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a2/result.json",
+      "sha256": "667af4273dc8d7b5e8b19c35732b9f947826435a0359f88ce956697a22e01518",
+      "sourceInputs": [
+        {
+          "path": "src/components/globeWriterStudyGeometry.ts",
+          "sha256": "efeafef49cc28302458d50c7df479b13dde88be3bf1b192d94be4ba6113c376f"
+        },
+        {
+          "path": "src/components/globeQuality.ts",
+          "sha256": "b52e0221ec8bcac17d640e26378bc0304521316ca34e203313d2b63f9c3b28c9"
+        },
+        {
+          "path": "src/components/globeCraftMaterials.ts",
+          "sha256": "68ce7e818d50ac5ece1d5d4542fdc4cecea6af25e21b08b1274c8adcacbfbde1"
+        },
+        {
+          "path": "src/components/globeLibraryBookGeometry.ts",
+          "sha256": "e3034c2bd4391f1b08410c3c1f41165e880c7225f957a42ef4780e87eeaf7e0c"
+        },
+        {
+          "path": "docs/mobile/evidence/S13/writer-study-20260920/capture-study.mjs",
+          "sha256": "06f6513347bc11d974cb79fc9fe496a77cf3923b166fa67cb59c2d8fe84d114f"
+        }
+      ],
+      "frames": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a2/room-study-high-overview.png",
+          "sha256": "77b38731ecc3c4ea51633da6518006e51ffe31007e116be052c971eb99e15c15",
+          "tier": "high",
+          "view": "overview"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a2/room-study-high-desk.png",
+          "sha256": "89eabf8e67565356991d5a8ee69f01b0733aebc433ada3b284d2a7b50dde8623",
+          "tier": "high",
+          "view": "desk"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a2/room-study-high-side.png",
+          "sha256": "dbf923ce2b65a9c15220b901e63ba10594d48664dcf8e19ae6a519a79d95f875",
+          "tier": "high",
+          "view": "side"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a2/room-study-high-back.png",
+          "sha256": "b2ab3f89a8d901a5500c3addf21a6b1869bad51ff359254c835181e3fc23f0fa",
+          "tier": "high",
+          "view": "back"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a2/room-study-balanced-overview.png",
+          "sha256": "88936c41a2b478234bc1ed65bf1268583aa88cbc69c1875a70580b16a34c2c43",
+          "tier": "balanced",
+          "view": "overview"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a2/room-study-economy-overview.png",
+          "sha256": "7bc7bf43250460b78b9fad3832cab6531caedb243c3d1bbc69fef5a5061881d6",
+          "tier": "economy",
+          "view": "overview"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a2/room-study-economy-desk.png",
+          "sha256": "e28244f2c69e224f4ddd4e8b4d43b6cfde6b63e784ea5f466652c3c6c12d899a",
+          "tier": "economy",
+          "view": "desk"
+        }
+      ],
+      "currentSource": false,
+      "directViewImageReview": true,
+      "exactPreviouslyInspectedBytes": false,
+      "reviewers": [
+        "/root",
+        "/root/targeted_review"
+      ],
+      "notes": "Floor/wall material/chair fixes and original paper diagram inspected; remaining wall gap prompted correction."
+    },
+    {
+      "attempt": "a3",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a3/result.json",
+      "sha256": "a2a05c4ef031b9d49b8df2fd767d921490a4f671f6e08cd1243402c2ef08d857",
+      "sourceInputs": [
+        {
+          "path": "src/components/globeWriterStudyGeometry.ts",
+          "sha256": "08f93c761a79859058ecc3ef0d81d35a9fedf6a040a2dfcba4001b62ae755f90"
+        },
+        {
+          "path": "src/components/globeQuality.ts",
+          "sha256": "b52e0221ec8bcac17d640e26378bc0304521316ca34e203313d2b63f9c3b28c9"
+        },
+        {
+          "path": "src/components/globeCraftMaterials.ts",
+          "sha256": "68ce7e818d50ac5ece1d5d4542fdc4cecea6af25e21b08b1274c8adcacbfbde1"
+        },
+        {
+          "path": "src/components/globeLibraryBookGeometry.ts",
+          "sha256": "e3034c2bd4391f1b08410c3c1f41165e880c7225f957a42ef4780e87eeaf7e0c"
+        },
+        {
+          "path": "docs/mobile/evidence/S13/writer-study-20260920/capture-study.mjs",
+          "sha256": "06f6513347bc11d974cb79fc9fe496a77cf3923b166fa67cb59c2d8fe84d114f"
+        }
+      ],
+      "frames": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a3/room-study-high-overview.png",
+          "sha256": "3e5f08a0087e5d7fba38c2de9eec9759292b5e2784dae77aebf3e58def169ce6",
+          "tier": "high",
+          "view": "overview"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a3/room-study-high-desk.png",
+          "sha256": "1374566bc46f936e4cc4009e0335a028c529385e53f921061eda4b9e1953ed87",
+          "tier": "high",
+          "view": "desk"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a3/room-study-high-side.png",
+          "sha256": "f305851722f3fb6805e4671f9f54d5f3c026c78dcf282cb95e6cae7bb7a6590a",
+          "tier": "high",
+          "view": "side"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a3/room-study-high-back.png",
+          "sha256": "c5c9d88688983cc66293da75f45f232cd449207e01c8a43f679dd643d8babea5",
+          "tier": "high",
+          "view": "back"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a3/room-study-balanced-overview.png",
+          "sha256": "b8e6550c77d5e8186669a43b46d172047824765352f8c86c8436a8e0f1f8c7ea",
+          "tier": "balanced",
+          "view": "overview"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a3/room-study-economy-overview.png",
+          "sha256": "d3a54b9723149d068ff6cd9698162c1f49139691e2940496c29799b1082cacfb",
+          "tier": "economy",
+          "view": "overview"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a3/room-study-economy-desk.png",
+          "sha256": "daccb43af15c199e29c6d71fa10f6d58a3913d5e2535b354489c0402d623d8e3",
+          "tier": "economy",
+          "view": "desk"
+        }
+      ],
+      "currentSource": false,
+      "directViewImageReview": true,
+      "exactPreviouslyInspectedBytes": false,
+      "reviewers": [
+        "/root",
+        "/root/targeted_review"
+      ],
+      "notes": "Wall gap closed and interpolation seam removed. All seven images opened and inspected."
+    },
+    {
+      "attempt": "a4",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a4/result.json",
+      "sha256": "71a380d312c4acf0011e6b38d6760f797e06db1a5bf881c51c22d0aa8034a6ad",
+      "sourceInputs": [
+        {
+          "path": "src/components/globeWriterStudyGeometry.ts",
+          "sha256": "b338df9f7635c061e0ad62c83e17d0a388f656679384bdcdaa4815988b722653"
+        },
+        {
+          "path": "src/components/globeQuality.ts",
+          "sha256": "b52e0221ec8bcac17d640e26378bc0304521316ca34e203313d2b63f9c3b28c9"
+        },
+        {
+          "path": "src/components/globeCraftMaterials.ts",
+          "sha256": "68ce7e818d50ac5ece1d5d4542fdc4cecea6af25e21b08b1274c8adcacbfbde1"
+        },
+        {
+          "path": "src/components/globeLibraryBookGeometry.ts",
+          "sha256": "e3034c2bd4391f1b08410c3c1f41165e880c7225f957a42ef4780e87eeaf7e0c"
+        },
+        {
+          "path": "docs/mobile/evidence/S13/writer-study-20260920/capture-study.mjs",
+          "sha256": "06f6513347bc11d974cb79fc9fe496a77cf3923b166fa67cb59c2d8fe84d114f"
+        }
+      ],
+      "frames": [
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a4/room-study-high-overview.png",
+          "sha256": "3e5f08a0087e5d7fba38c2de9eec9759292b5e2784dae77aebf3e58def169ce6",
+          "tier": "high",
+          "view": "overview"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a4/room-study-high-desk.png",
+          "sha256": "1374566bc46f936e4cc4009e0335a028c529385e53f921061eda4b9e1953ed87",
+          "tier": "high",
+          "view": "desk"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a4/room-study-high-side.png",
+          "sha256": "f305851722f3fb6805e4671f9f54d5f3c026c78dcf282cb95e6cae7bb7a6590a",
+          "tier": "high",
+          "view": "side"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a4/room-study-high-back.png",
+          "sha256": "c5c9d88688983cc66293da75f45f232cd449207e01c8a43f679dd643d8babea5",
+          "tier": "high",
+          "view": "back"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a4/room-study-balanced-overview.png",
+          "sha256": "b8e6550c77d5e8186669a43b46d172047824765352f8c86c8436a8e0f1f8c7ea",
+          "tier": "balanced",
+          "view": "overview"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a4/room-study-economy-overview.png",
+          "sha256": "d3a54b9723149d068ff6cd9698162c1f49139691e2940496c29799b1082cacfb",
+          "tier": "economy",
+          "view": "overview"
+        },
+        {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a4/room-study-economy-desk.png",
+          "sha256": "daccb43af15c199e29c6d71fa10f6d58a3913d5e2535b354489c0402d623d8e3",
+          "tier": "economy",
+          "view": "desk"
+        }
+      ],
+      "currentSource": true,
+      "directViewImageReview": false,
+      "exactPreviouslyInspectedBytes": true,
+      "reviewers": [
+        "/root",
+        "/root/targeted_review"
+      ],
+      "notes": "Two unused constants removed for TypeScript; all seven PNG SHA256 identities equal the opened a3 images."
+    }
+  ],
+  "artAccepted": false,
+  "releaseReady": false
+}

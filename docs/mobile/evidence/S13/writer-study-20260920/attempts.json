@@ -1,0 +1,197 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-19T23:11:07.159Z",
+  "attempts": [
+    {
+      "attempt": "browser-a1",
+      "path": "docs/mobile/evidence/S13/writer-study-20260920/browser-a1/result.json",
+      "sha256": "0f33866bb1f3b7234cfcd3cec9b6a1abc0d0e536f9b285f395b9acb78a1bc92e",
+      "pass": true,
+      "currentSources": false,
+      "staleInputs": [
+        "src/components/globeWriterStudyGeometry.ts"
+      ],
+      "tests": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "errors": []
+      },
+      "executions": [
+        {
+          "name": "browser",
+          "exitCode": 0,
+          "durationMs": 26209
+        }
+      ],
+      "reportErrors": []
+    },
+    {
+      "attempt": "browser-a2",
+      "path": "docs/mobile/evidence/S13/writer-study-20260920/browser-a2/result.json",
+      "sha256": "53c25605942e6babc9d2d81f0e87d8eb54a6adfe1ed33d8eaa5660befdaf0ad2",
+      "pass": true,
+      "currentSources": true,
+      "staleInputs": [],
+      "tests": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "errors": []
+      },
+      "executions": [
+        {
+          "name": "browser",
+          "exitCode": 0,
+          "durationMs": 27215
+        }
+      ],
+      "reportErrors": []
+    },
+    {
+      "attempt": "static-a1",
+      "path": "docs/mobile/evidence/S13/writer-study-20260920/static-a1/result.json",
+      "sha256": "6758bf434cad1f995df41f7e5b9ac556eae3ad2d77806b85520e0111abf9d3e8",
+      "pass": false,
+      "currentSources": false,
+      "staleInputs": [
+        "src/components/globeWriterStudyGeometry.ts"
+      ],
+      "tests": null,
+      "executions": [
+        {
+          "name": "typecheck",
+          "exitCode": 2,
+          "durationMs": 20354
+        }
+      ],
+      "reportErrors": []
+    },
+    {
+      "attempt": "static-a2",
+      "path": "docs/mobile/evidence/S13/writer-study-20260920/static-a2/result.json",
+      "sha256": "f6e61f126c1e194e224ecf1c2f3a904b72201563eb36b448a484b82aded7848b",
+      "pass": true,
+      "currentSources": true,
+      "staleInputs": [],
+      "tests": null,
+      "executions": [
+        {
+          "name": "typecheck",
+          "exitCode": 0,
+          "durationMs": 24450
+        }
+      ],
+      "reportErrors": []
+    },
+    {
+      "attempt": "unit-a1",
+      "path": "docs/mobile/evidence/S13/writer-study-20260920/unit-a1/result.json",
+      "sha256": "b95612d8fc40a3e8ca69a4a6600f8925799013621d1e8ecb505a5b072bee9260",
+      "pass": true,
+      "currentSources": false,
+      "staleInputs": [
+        "src/components/globeWriterStudyGeometry.ts"
+      ],
+      "tests": {
+        "passed": 5,
+        "failed": 0,
+        "skipped": 0,
+        "filteredOut": 181,
+        "failures": [],
+        "selectedAdapterCases": [
+          {
+            "name": "exact non-secret preferences with serialized readback confines the new background preference to its exact adult IDs and key",
+            "status": "passed"
+          },
+          {
+            "name": "non-secret best-effort canonical preferences confines the new background preference to its exact adult IDs and browser key",
+            "status": "passed"
+          }
+        ],
+        "selection": {
+          "unitFiles": [
+            "src/components/globeWriterStudyGeometry.test.ts",
+            "src/planet/globeWriterStudyPolicy.test.ts"
+          ],
+          "expectedUnitCases": 3,
+          "adapterFiles": [
+            "src/host/HostPlatformServices.test.ts",
+            "src/platform/adapters/web/WebPlatformAdapter.test.ts"
+          ],
+          "adapterPattern": "confines the new background preference to its exact adult IDs and (?:browser )?key$",
+          "expectedAdapterCases": 2
+        },
+        "filterAccounting": "Unmatched adapter cases are intentionally excluded, recorded as filteredOut, and never counted as passed. Skipped refers to selected tests only."
+      },
+      "executions": [
+        {
+          "name": "unit",
+          "exitCode": 0,
+          "durationMs": 2259
+        },
+        {
+          "name": "adapter-allowlists",
+          "exitCode": 0,
+          "durationMs": 1498
+        }
+      ],
+      "reportErrors": []
+    },
+    {
+      "attempt": "unit-a2",
+      "path": "docs/mobile/evidence/S13/writer-study-20260920/unit-a2/result.json",
+      "sha256": "39162657eae8b2f435864ef574a9d23a8873f8dc131a3b0b94c799e8f9ec43e9",
+      "pass": true,
+      "currentSources": true,
+      "staleInputs": [],
+      "tests": {
+        "passed": 5,
+        "failed": 0,
+        "skipped": 0,
+        "filteredOut": 181,
+        "failures": [],
+        "selectedAdapterCases": [
+          {
+            "name": "exact non-secret preferences with serialized readback confines the new background preference to its exact adult IDs and key",
+            "status": "passed"
+          },
+          {
+            "name": "non-secret best-effort canonical preferences confines the new background preference to its exact adult IDs and browser key",
+            "status": "passed"
+          }
+        ],
+        "selection": {
+          "unitFiles": [
+            "src/components/globeWriterStudyGeometry.test.ts",
+            "src/planet/globeWriterStudyPolicy.test.ts"
+          ],
+          "expectedUnitCases": 3,
+          "adapterFiles": [
+            "src/host/HostPlatformServices.test.ts",
+            "src/platform/adapters/web/WebPlatformAdapter.test.ts"
+          ],
+          "adapterPattern": "confines the new background preference to its exact adult IDs and (?:browser )?key$",
+          "expectedAdapterCases": 2
+        },
+        "filterAccounting": "Unmatched adapter cases are intentionally excluded, recorded as filteredOut, and never counted as passed. Skipped refers to selected tests only."
+      },
+      "executions": [
+        {
+          "name": "unit",
+          "exitCode": 0,
+          "durationMs": 2145
+        },
+        {
+          "name": "adapter-allowlists",
+          "exitCode": 0,
+          "durationMs": 2189
+        }
+      ],
+      "reportErrors": []
+    }
+  ],
+  "accounting": "Filtered-out adapter cases are excluded, never counted as passes. Failed and superseded attempts remain preserved."
+}

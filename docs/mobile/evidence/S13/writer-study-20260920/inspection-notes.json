@@ -1,0 +1,258 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-19T23:10:40.472Z",
+  "artAttempt": "a4",
+  "browserAttempt": "a2",
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a4/room-study-high-overview.png",
+      "sha256": "3e5f08a0087e5d7fba38c2de9eec9759292b5e2784dae77aebf3e58def169ce6",
+      "actualApp": false,
+      "tier": "high",
+      "view": "overview",
+      "inspected": true,
+      "reviewer": "/root",
+      "inspectionMethod": "Exact PNG bytes match the image previously opened with view_image; no new visual-review claim for different content.",
+      "originalInspectedImage": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a3/room-study-high-overview.png",
+        "sha256": "3e5f08a0087e5d7fba38c2de9eec9759292b5e2784dae77aebf3e58def169ce6"
+      },
+      "exactPreviouslyInspectedBytes": true,
+      "findings": [
+        "Window reveals and writing area are coherent; the horizontal wall gap is closed and chair clears the sill. Window glazing and warm materials remain stylized."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a4/room-study-high-desk.png",
+      "sha256": "1374566bc46f936e4cc4009e0335a028c529385e53f921061eda4b9e1953ed87",
+      "actualApp": false,
+      "tier": "high",
+      "view": "desk",
+      "inspected": true,
+      "reviewer": "/root",
+      "inspectionMethod": "Exact PNG bytes match the image previously opened with view_image; no new visual-review claim for different content.",
+      "originalInspectedImage": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a3/room-study-high-desk.png",
+        "sha256": "1374566bc46f936e4cc4009e0335a028c529385e53f921061eda4b9e1953ed87"
+      },
+      "exactPreviouslyInspectedBytes": true,
+      "findings": [
+        "Open volume rests on the desk; paper diagram, ink bottle, lamp and pen remain visible. Chair clears the sill; floor has no previous interference stripes. Economy retains props with simpler edges."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a4/room-study-high-side.png",
+      "sha256": "f305851722f3fb6805e4671f9f54d5f3c026c78dcf282cb95e6cae7bb7a6590a",
+      "actualApp": false,
+      "tier": "high",
+      "view": "side",
+      "inspected": true,
+      "reviewer": "/root",
+      "inspectionMethod": "Exact PNG bytes match the image previously opened with view_image; no new visual-review claim for different content.",
+      "originalInspectedImage": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a3/room-study-high-side.png",
+        "sha256": "f305851722f3fb6805e4671f9f54d5f3c026c78dcf282cb95e6cae7bb7a6590a"
+      },
+      "exactPreviouslyInspectedBytes": true,
+      "findings": [
+        "Solid book volumes and side cabinet visible; floor ripple and wall seam absent. Upper wall remains bare and material response stylized."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a4/room-study-high-back.png",
+      "sha256": "c5c9d88688983cc66293da75f45f232cd449207e01c8a43f679dd643d8babea5",
+      "actualApp": false,
+      "tier": "high",
+      "view": "back",
+      "inspected": true,
+      "reviewer": "/root/targeted_review",
+      "inspectionMethod": "Exact PNG bytes match the image previously opened with view_image; no new visual-review claim for different content.",
+      "originalInspectedImage": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a3/room-study-high-back.png",
+        "sha256": "c5c9d88688983cc66293da75f45f232cd449207e01c8a43f679dd643d8babea5"
+      },
+      "exactPreviouslyInspectedBytes": true,
+      "findings": [
+        "Rear door and panel geometry remain visible with an uninterrupted wall and stable floor. Recessed wood still appears dark."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a4/room-study-balanced-overview.png",
+      "sha256": "b8e6550c77d5e8186669a43b46d172047824765352f8c86c8436a8e0f1f8c7ea",
+      "actualApp": false,
+      "tier": "balanced",
+      "view": "overview",
+      "inspected": true,
+      "reviewer": "/root/targeted_review",
+      "inspectionMethod": "Exact PNG bytes match the image previously opened with view_image; no new visual-review claim for different content.",
+      "originalInspectedImage": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a3/room-study-balanced-overview.png",
+        "sha256": "b8e6550c77d5e8186669a43b46d172047824765352f8c86c8436a8e0f1f8c7ea"
+      },
+      "exactPreviouslyInspectedBytes": true,
+      "findings": [
+        "Window reveals and writing area are coherent; the horizontal wall gap is closed and chair clears the sill. Window glazing and warm materials remain stylized."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a4/room-study-economy-overview.png",
+      "sha256": "d3a54b9723149d068ff6cd9698162c1f49139691e2940496c29799b1082cacfb",
+      "actualApp": false,
+      "tier": "economy",
+      "view": "overview",
+      "inspected": true,
+      "reviewer": "/root",
+      "inspectionMethod": "Exact PNG bytes match the image previously opened with view_image; no new visual-review claim for different content.",
+      "originalInspectedImage": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a3/room-study-economy-overview.png",
+        "sha256": "d3a54b9723149d068ff6cd9698162c1f49139691e2940496c29799b1082cacfb"
+      },
+      "exactPreviouslyInspectedBytes": true,
+      "findings": [
+        "Window reveals and writing area are coherent; the horizontal wall gap is closed and chair clears the sill. Window glazing and warm materials remain stylized."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a4/room-study-economy-desk.png",
+      "sha256": "daccb43af15c199e29c6d71fa10f6d58a3913d5e2535b354489c0402d623d8e3",
+      "actualApp": false,
+      "tier": "economy",
+      "view": "desk",
+      "inspected": true,
+      "reviewer": "/root/targeted_review",
+      "inspectionMethod": "Exact PNG bytes match the image previously opened with view_image; no new visual-review claim for different content.",
+      "originalInspectedImage": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/art-a3/room-study-economy-desk.png",
+        "sha256": "daccb43af15c199e29c6d71fa10f6d58a3913d5e2535b354489c0402d623d8e3"
+      },
+      "exactPreviouslyInspectedBytes": true,
+      "findings": [
+        "Open volume rests on the desk; paper diagram, ink bottle, lamp and pen remain visible. Chair clears the sill; floor has no previous interference stripes. Economy retains props with simpler edges."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/browser-a2/globe-writer-study-writer--6ea79-cale-and-local-asset-reload/writer-study-balanced-en-1440.png",
+      "sha256": "6bc464f371052a6c5db414d30acc8a17d6c1bd88d5f15e75541d9f22d37c01e1",
+      "actualApp": true,
+      "inspected": true,
+      "reviewer": "/root/targeted_review",
+      "inspectionMethod": "Exact PNG bytes match the image previously opened with view_image; no new visual-review claim for different content.",
+      "originalInspectedImage": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/browser-a1/globe-writer-study-writer--6ea79-cale-and-local-asset-reload/writer-study-balanced-en-1440.png",
+        "sha256": "6bc464f371052a6c5db414d30acc8a17d6c1bd88d5f15e75541d9f22d37c01e1"
+      },
+      "exactPreviouslyInspectedBytes": true,
+      "findings": [
+        "English interface and room furniture are visible; table, paper diagram, ink, lamp and chair persist. Side bookcases are outside this front angle; the globe partly occludes the lamp."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/browser-a2/globe-writer-study-writer--6ea79-cale-and-local-asset-reload/writer-study-economy-en-1440.png",
+      "sha256": "fc8377326f0ab1440d6577b585dfcf360ecd2949b4e86b7bbeb15e3a60cf5b90",
+      "actualApp": true,
+      "inspected": true,
+      "reviewer": "/root/targeted_review",
+      "inspectionMethod": "Exact PNG bytes match the image previously opened with view_image; no new visual-review claim for different content.",
+      "originalInspectedImage": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/browser-a1/globe-writer-study-writer--6ea79-cale-and-local-asset-reload/writer-study-economy-en-1440.png",
+        "sha256": "fc8377326f0ab1440d6577b585dfcf360ecd2949b4e86b7bbeb15e3a60cf5b90"
+      },
+      "exactPreviouslyInspectedBytes": true,
+      "findings": [
+        "English interface and room furniture are visible; table, paper diagram, ink, lamp and chair persist. Side bookcases are outside this front angle; the globe partly occludes the lamp."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/browser-a2/globe-writer-study-writer--6ea79-cale-and-local-asset-reload/writer-study-economy-en-390.png",
+      "sha256": "187f52c5a3fccb2a004ccd1cb1693a97b34baa4a2d89db5b0b1fe8ea70d5bb9d",
+      "actualApp": true,
+      "inspected": true,
+      "reviewer": "/root",
+      "inspectionMethod": "Exact PNG bytes match the image previously opened with view_image; no new visual-review claim for different content.",
+      "originalInspectedImage": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/browser-a1/globe-writer-study-writer--6ea79-cale-and-local-asset-reload/writer-study-economy-en-390.png",
+        "sha256": "187f52c5a3fccb2a004ccd1cb1693a97b34baa4a2d89db5b0b1fe8ea70d5bb9d"
+      },
+      "exactPreviouslyInspectedBytes": true,
+      "findings": [
+        "Single globe and full ceramic saucer fit the narrow screen; surrounding desktop extends naturally beyond the viewport. No horizontal document overflow."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/browser-a2/globe-writer-study-writer--6ea79-cale-and-local-asset-reload/writer-study-high-en-1440.png",
+      "sha256": "aee5540b99dbd4282fec636a705151dff5ac4406788c7e89b4d600f5dc43467d",
+      "actualApp": true,
+      "inspected": true,
+      "reviewer": "/root",
+      "inspectionMethod": "Exact PNG bytes match the image previously opened with view_image; no new visual-review claim for different content.",
+      "originalInspectedImage": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/browser-a1/globe-writer-study-writer--6ea79-cale-and-local-asset-reload/writer-study-high-en-1440.png",
+        "sha256": "aee5540b99dbd4282fec636a705151dff5ac4406788c7e89b4d600f5dc43467d"
+      },
+      "exactPreviouslyInspectedBytes": true,
+      "findings": [
+        "English interface and room furniture are visible; table, paper diagram, ink, lamp and chair persist. Side bookcases are outside this front angle; the globe partly occludes the lamp."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/browser-a2/globe-writer-study-writer--6ea79-cale-and-local-asset-reload/writer-study-high-en-orbit-1440.png",
+      "sha256": "5584969a9df3b733f2ae7959db8c86009a28770a1dd7bbd8a05f790dababf4ad",
+      "actualApp": true,
+      "inspected": true,
+      "reviewer": "/root",
+      "inspectionMethod": "Exact PNG bytes match the image previously opened with view_image; no new visual-review claim for different content.",
+      "originalInspectedImage": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/browser-a1/globe-writer-study-writer--6ea79-cale-and-local-asset-reload/writer-study-high-en-orbit-1440.png",
+        "sha256": "5584969a9df3b733f2ae7959db8c86009a28770a1dd7bbd8a05f790dababf4ad"
+      },
+      "exactPreviouslyInspectedBytes": true,
+      "findings": [
+        "Actual camera orbit reveals differential room depth and floor/desk perspective; globe and ceramic head remain in the same scene."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/browser-a2/globe-writer-study-writer--6ea79-cale-and-local-asset-reload/writer-study-preview-high-ru-1440.png",
+      "sha256": "8cfb67273673e3abdf59d483ddb3a8044cf026b33333517bd0d7911cb483385b",
+      "actualApp": true,
+      "inspected": true,
+      "reviewer": "/root",
+      "inspectionMethod": "Exact PNG bytes match the image previously opened with view_image; no new visual-review claim for different content.",
+      "originalInspectedImage": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/browser-a1/globe-writer-study-writer--6ea79-cale-and-local-asset-reload/writer-study-preview-high-ru-1440.png",
+        "sha256": "8cfb67273673e3abdf59d483ddb3a8044cf026b33333517bd0d7911cb483385b"
+      },
+      "exactPreviouslyInspectedBytes": true,
+      "findings": [
+        "Russian appearance panel shows the study preview; room and right-hand writing area remain visible behind the globe."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/browser-a2/globe-writer-study-writer--6ea79-cale-and-local-asset-reload/writer-study-reloaded-en-1440.png",
+      "sha256": "91929b0c6b8147aab29ef5c863e658a545a6bcca53b111079137b73ae770a4e4",
+      "actualApp": true,
+      "inspected": true,
+      "reviewer": "/root/targeted_review",
+      "inspectionMethod": "Exact PNG bytes match the image previously opened with view_image; no new visual-review claim for different content.",
+      "originalInspectedImage": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ws/browser-a1/globe-writer-study-writer--6ea79-cale-and-local-asset-reload/writer-study-reloaded-en-1440.png",
+        "sha256": "91929b0c6b8147aab29ef5c863e658a545a6bcca53b111079137b73ae770a4e4"
+      },
+      "exactPreviouslyInspectedBytes": true,
+      "findings": [
+        "Same study, Rand 1887 globe and Tolstoy support are visible after local-asset reload. Global top panel was translucent in this screenshot; this isolated state is not diagnosed as a runtime defect."
+      ]
+    }
+  ],
+  "findings": [
+    "Corrected actual floor coplanarity, oversized stone pattern on plaster, chair/sill intersection and a 0.05-unit wall gap identified in earlier captures.",
+    "All three quality tiers retain 192 real books and furniture placements. The source-based App case confirms preview/cancel resource preservation, Apply, RU/EN, quality, parallax and local-asset reload.",
+    "Final art-a4 and browser-a2 PNG files are byte-for-byte identical to the explicitly attributed, opened art-a3/browser-a1 images after removing two unused constants."
+  ],
+  "limitations": [
+    "Room materials, flat window glazing, dark recessed wood and mostly uniform paper remain stylized. This is not accepted maximum realism or final artistic approval.",
+    "Baseline lighting gives a strong warm cast; isolated views do not constitute neutral material or certified lightmap evaluation.",
+    "The catalog manuscript hotspot, keyboard/screen-reader interaction mode and 10-17 child review remain open.",
+    "Actual-App Chrome uses controlled native OS/preference ports; no installed-device, iOS, mobile GPU or release acceptance.",
+    "The inherited ceramic head remains generalized; portrait likeness and final ceramic realism remain open."
+  ]
+}
