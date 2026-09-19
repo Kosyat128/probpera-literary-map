@@ -22,6 +22,9 @@ export const planetDownloadsCopy = {
       removal: { action: "Удалить сохранённый пакет", cleanup: "Завершить очистку", confirm: "Подтвердить удаление", close: "Закрыть",
         heading: "Удаление пакета", version: "Версия", question: "Удалить этот дополнительный пакет и его резервную версию с устройства? Для повторной загрузки потребуется сеть.",
         changed: "Состояние пакета изменилось. Если удаление ещё требуется, проверьте файлы и откройте подтверждение заново." },
+      inspection: { action: "Проверить содержимое", unavailable: "Содержимое пока недоступно для проверки.",
+        ready: "Сохранённое содержимое готово к проверке.", inspecting: "Проверяем сохранённое содержимое…",
+        inspected: "Проверка содержимого завершена.", error: "Не удалось проверить содержимое. Проверьте файлы и повторите проверку." },
       space: { check: "Проверить место", unchecked: "Доступное место ещё не проверено.", checking: "Проверяем доступное место…",
         unavailable: "Не удалось определить доступное место. Можно повторить проверку.",
         browser: "Доступно приложению по оценке браузера", device: "Доступно на устройстве",
@@ -58,6 +61,9 @@ export const planetDownloadsCopy = {
       removal: { action: "Remove saved package", cleanup: "Finish cleanup", confirm: "Confirm removal", close: "Close",
         heading: "Remove package", version: "Version", question: "Remove this optional package and its backup version from this device? Downloading them again will require a connection.",
         changed: "The package state has changed. If removal is still needed, check the files and open the confirmation again." },
+      inspection: { action: "Check content", unavailable: "Content is not yet available to check.",
+        ready: "Saved content is ready to check.", inspecting: "Checking saved content…",
+        inspected: "Content check complete.", error: "Content could not be checked. Check the files, then try again." },
       space: { check: "Check space", unchecked: "Available space has not been checked yet.", checking: "Checking available space…",
         unavailable: "Available space could not be determined. You can check again.",
         browser: "Estimated space available to the app in this browser", device: "Available on this device",
@@ -115,6 +121,23 @@ function PackageRemoval({ item, downloads, copy, busy }: {
         <button type="button" onClick={() => { setConfirmation(null); action.current?.focus(); }}>{copy.close}</button>
       </div>
     </div>}
+  </div>;
+}
+
+function PackageInspection({ item, downloads, copy, busy }: {
+  item: ContentDownloadItem; downloads: ContentDownloads; busy: boolean;
+  copy: (typeof planetDownloadsCopy.locales)["ru" | "en"]["inspection"];
+}) {
+  const statusId = useId(), inspection = item.inspection;
+  if (!inspection) return null;
+  const capturedReceipt = inspection.selectionSha256;
+  const enabled = !busy && !!capturedReceipt && ["ready", "inspected", "error"].includes(inspection.phase);
+  return <div className="planet-downloads__body" data-content-inspection={inspection.phase}>
+    <p id={statusId} role="status" aria-live="polite" aria-atomic="true">{copy[inspection.phase]}</p>
+    <div className="planet-downloads__actions">
+      <button type="button" aria-disabled={!enabled} aria-describedby={statusId}
+        onClick={() => { if (enabled && capturedReceipt) void downloads.inspect(item.id, capturedReceipt); }}>{copy.action}</button>
+    </div>
   </div>;
 }
 
@@ -180,6 +203,7 @@ export default function PlanetDownloadsPanel({ downloads }: { downloads: Content
                 <button type="button" aria-disabled={busy || protectedVersion || !snapshot.available} aria-describedby={`${id}-clear-help ${row}-status`}
                   onClick={() => { if (!busy && !protectedVersion && snapshot.available) void downloads.discard(item.id); }}>{copy.clear}</button>
               </div>
+              {item.inspection && <PackageInspection item={item} downloads={downloads} copy={copy.inspection} busy={busy} />}
               {item.optional && <PackageRemoval item={item} downloads={downloads} copy={copy.removal} busy={busy} />}
             </li>;
           })}
