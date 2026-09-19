@@ -1,0 +1,24 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "src/components/globeLibraryGeometry.test.ts",
+    "--maxWorkers=2",
+    "--reporter=json",
+    "--outputFile=C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S13\\library-density-20260919\\unit-a1\\vitest.json"
+  ],
+  "startedAt": "2026-09-19T20:14:22.137Z",
+  "durationMs": 3375,
+  "exitCode": 0,
+  "logs": {
+    "stdout": {
+      "text": "JSON report written to C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S13/library-density-20260919/unit-a1/vitest.json\n",
+      "sha256": "827cbdf0547631a7f4d6a23571c92aff464924f1915208cc715af9d2216e632d"
+    },
+    "stderr": {
+      "text": "",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

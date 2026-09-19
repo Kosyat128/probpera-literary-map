@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-19T20:22:59.476Z",
+  "sourceCommit": "f0a275abfbdec4e2afaa36fe3ab8ce061d86f7e4",
+  "stage": "S13",
+  "status": "INCLUDED_LIBRARY_TIER_DENSITY_INSPECTED",
+  "pass": true,
+  "entry": {
+    "path": "docs/mobile/evidence/S13/library-density-20260919/entry.json",
+    "sha256": "c0c475ead24dea1972b1e41c05081bade09cea90258254115f1fba48f15c5052"
+  },
+  "runs": {
+    "unit": {
+      "path": "docs/mobile/evidence/S13/library-density-20260919/unit-a1/result.json",
+      "sha256": "2a4ff58a61a33d21f64db2455bcbe35786a619b9f22998a678d1a8b3a8c8ac90",
+      "tests": {
+        "passed": 5,
+        "failed": 0,
+        "skipped": 0,
+        "failures": []
+      }
+    },
+    "static": {
+      "path": "docs/mobile/evidence/S13/library-density-20260919/static-a1/result.json",
+      "sha256": "ecd1b0a8649deb3401e968a0e91f6713514f4ae4045f025016f5fe96e1cddaa1",
+      "tests": null
+    },
+    "browser": {
+      "path": "docs/mobile/evidence/S13/library-density-20260919/browser-a1/result.json",
+      "sha256": "a19ac6646a9818230eeec8e57a14ef28ab23fe73c09fabc1066da4d65a51e4fd",
+      "tests": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "errors": []
+      }
+    }
+  },
+  "attempts": {
+    "unit": "a1",
+    "static": "a1",
+    "browser": "a1"
+  },
+  "priorLighting": {
+    "path": "docs/mobile/evidence/S13/library-lighting-20260919/result.json",
+    "sha256": "227c3a058410e08e44f7a13fc5b2282ad05e801ad9e7d7e818f8025c8f198bde"
+  },
+  "priorComposition": {
+    "path": "docs/mobile/evidence/S13/composition-20260919/result.json",
+    "sha256": "90f7e4556ca3efe0c64b6bd48524d433984c65b25b460770b9a46e56cb8c08dc"
+  },
+  "starterSetSourceInventory": {
+    "path": "docs/mobile/evidence/S13/library-density-20260919/starter-set-source-inventory.json",
+    "sha256": "4b0719628e59ff041a80e360080b381d96e7462a12189f5af4c5500e37f9c027"
+  },
+  "starterSetBindingsRefreshed": true,
+  "previousArtReview": {
+    "path": "docs/mobile/evidence/S13/library-lighting-20260919/visual-review.json",
+    "sha256": "254ef9c00e86201780d2b8c93b578e6d05d3547e2e227a030f6c226a9fe60c4b"
+  },
+  "preservedCompositionInputs": [
+    {
+      "path": "src/planet/globeComposition.ts",
+      "sha256": "20b4cabdd678a6fa5b70ab2b4cbaef179f0e7d7c5819e408123eb486ddb0e81f"
+    },
+    {
+      "path": "src/host/planetComposition.ts",
+      "sha256": "6e193b12c495d962737185ab4fd35eeb3b64fe46f5c92774b565cfbb1181e954"
+    },
+    {
+      "path": "src/host/planetCompositionPresentation.ts",
+      "sha256": "d62d963c719366c1be3e6888b5eb321933f3e7224b6591fc8c2d6d81a639c3f6"
+    },
+    {
+      "path": "src/components/useGlobeCompositionScene.ts",
+      "sha256": "30009468d0cdee459441ca5780ea608cdf21b3f6e7055da89c0ce28e435326b5"
+    },
+    {
+      "path": "src/components/useGlobeCompositionFrame.ts",
+      "sha256": "530d1303a5af222bf68f72b499b07c8d41a828ca14783912284b6e3963d59cd0"
+    },
+    {
+      "path": "src/components/globeAtlas.ts",
+      "sha256": "224dcde2499f51eb333562875796d3422ab28ad987339f36be79f0635677bcf6"
+    },
+    {
+      "path": "src/components/useGlobeStyleState.ts",
+      "sha256": "6d2801802ec0e9bf0c2e5ff9a6f852f00434a8494216b06ee2069917e2a1a0ba"
+    }
+  ],
+  "preservedStandAndCraftInputs": [
+    {
+      "path": "src/components/globeStandGeometry.ts",
+      "sha256": "1554e5c0b28992d12880fbf00f57cbb02c097f7126f164ef4db8617f7702bc45"
+    },
+    {
+      "path": "src/components/globeCraftMaterials.ts",
+      "sha256": "2b4d6c10b7a2313f6060892f18e6207bc132a4e8074fcd46ac2e647cefffb9f5"
+    }
+  ],
+  "visualReview": {
+    "path": "docs/mobile/evidence/S13/library-density-20260919/visual-review.json",
+    "sha256": "2f2004169d710466c5a46599224d2f37839007d4d7a8c73b74e3e6b22b86bdc0"
+  },
+  "pwa": {
+    "path": "docs/mobile/evidence/S13/library-density-20260919/pwa-a1/result.json",
+    "sha256": "5e9cfbd6048b443922d3579d195116eaa718a3ca6acfdd2fb91ffc65afafc102"
+  },
+  "android": {
+    "path": "docs/mobile/evidence/S13/library-density-20260919/android-a1/result.json",
+    "sha256": "7c3c264c7800f3566738d89c0643f5eeb4ed10fd175b79596cacefb6347dd26c"
+  },
+  "pwaBuildId": "2ad37f157df8ddf1b2fa937df72fb3ab8224c02c021a320603667365a6bde875",
+  "androidBuildId": "bc593569f6d9b37ee86a7f94525c304504ef75d0807c2aaf4dc9962eaa271868",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ld/android-bc593569/app-dev-debug.apk",
+    "bytes": 67999384,
+    "sha256": "09c0ac7d1ae4b30fc423d9a3d4fc494f2ab0f30a9e67138bf23985ff0c308f46"
+  },
+  "libraryDensity": {
+    "scope": "included-library-geometry-only",
+    "provenance": "authored-in-project",
+    "nominalLayout": {
+      "bays": 16,
+      "rowsPerBay": 8,
+      "slotsPerRow": 8
+    },
+    "lowerTiersRetainPlacementDensity": true,
+    "economicalCompoundTrue3DGeometry": true,
+    "lightingAndMaterialOwnershipPreserved": true,
+    "commonGlobeLightingOwnershipPreserved": true,
+    "standGeometryUnchanged": true,
+    "sharedCraftMaterialsUnchanged": true,
+    "coreCompositionUnchanged": true,
+    "actualAppAndCloseupReviewRequired": true,
+    "certifiedLightmapApproval": false
+  },
+  "sourceBoundStarterItems": 11,
+  "requiredStarterItems": 29,
+  "acceptedStarterItems": 0,
+  "existingUserRealismRequirementPreserved": true,
+  "artAccepted": false,
+  "decisionD135Recorded": true,
+  "rightsApproval": false,
+  "childApproval": false,
+  "controlledNativePorts": true,
+  "actualSceneRenderedInChrome": true,
+  "installedNativeDevice": false,
+  "iosCompiled": false,
+  "grantsEntitlement": false,
+  "productionActionsPerformed": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "nextAction": "Continue the realistic craft-material refinement identified by the inspected library and stand close-ups: natural irregular wood, credible leather/gilding and paper/metal finishes. Preserve the library layout and book-placement density across quality tiers, economical true-3D volumes, inspected lighting/materials, unchanged stands and the validated composition core. Realistic quality still needs actual-App and close-up review; a technical pass does not establish final art quality. Starter Set remains 11/29 source-bound with zero accepted. Full catalog/Background Studio, accessory/audio/child composition, formal art/certified lightmaps, rights/entitlements, installed-device budgets, iOS and release acceptance remain open. Do not repeat unchanged checks or prior artifact payload audits."
+}

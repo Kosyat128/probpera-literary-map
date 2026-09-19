@@ -1,0 +1,62 @@
+{
+  "recordedAt": "2026-09-19T20:00:15.841Z",
+  "sourceInputs": [
+    {
+      "path": "src/components/globeLibraryGeometry.ts",
+      "sha256": "df65a2b2a5275be9b824524113875af2094535c9ec382a2474d3d664f9b5c8f0"
+    },
+    {
+      "path": "src/components/globeLibraryBookGeometry.ts",
+      "sha256": "6b6b91a56a9db6a00ed861eb7a0408b3359bf5ac108fe9aeefd6af8181733c96"
+    },
+    {
+      "path": "src/components/globeCraftMaterials.ts",
+      "sha256": "2b4d6c10b7a2313f6060892f18e6207bc132a4e8074fcd46ac2e647cefffb9f5"
+    },
+    {
+      "path": "src/components/globeQuality.ts",
+      "sha256": "b52e0221ec8bcac17d640e26378bc0304521316ca34e203313d2b63f9c3b28c9"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "engineeringMeasurementOnly": true,
+  "acceptance": false,
+  "tiers": [
+    {
+      "tier": "high",
+      "constructionMs": 214.0058,
+      "meshes": 43,
+      "instances": 10108,
+      "triangles": 334020,
+      "geometryBytes": 262128,
+      "instanceBytes": 767372,
+      "referencedTextureBytesWithMips": 4298077,
+      "materialGroupDraws": 43,
+      "books": 984
+    },
+    {
+      "tier": "balanced",
+      "constructionMs": 69.22269999999997,
+      "meshes": 47,
+      "instances": 5524,
+      "triangles": 258916,
+      "geometryBytes": 267752,
+      "instanceBytes": 418988,
+      "referencedTextureBytesWithMips": 1074525,
+      "materialGroupDraws": 55,
+      "books": 984
+    },
+    {
+      "tier": "economy",
+      "constructionMs": 29.960000000000036,
+      "meshes": 46,
+      "instances": 3027,
+      "triangles": 128056,
+      "geometryBytes": 266948,
+      "instanceBytes": 229216,
+      "referencedTextureBytesWithMips": 268637,
+      "materialGroupDraws": 54,
+      "books": 984
+    }
+  ]
+}

@@ -1,0 +1,792 @@
+{
+  "recordedAt": "2026-09-19T20:07:24.108Z",
+  "sourceInputs": [
+    {
+      "path": "src/components/globeLibraryGeometry.ts",
+      "sha256": "9d1b52f8e4495492da16df086cc51c0cd55c34b15c07d35433423d506340f463"
+    },
+    {
+      "path": "src/components/globeLibraryBookGeometry.ts",
+      "sha256": "e3034c2bd4391f1b08410c3c1f41165e880c7225f957a42ef4780e87eeaf7e0c"
+    },
+    {
+      "path": "src/components/globeCraftMaterials.ts",
+      "sha256": "2b4d6c10b7a2313f6060892f18e6207bc132a4e8074fcd46ac2e647cefffb9f5"
+    },
+    {
+      "path": "src/components/globeQuality.ts",
+      "sha256": "b52e0221ec8bcac17d640e26378bc0304521316ca34e203313d2b63f9c3b28c9"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "engineeringMeasurementOnly": true,
+  "acceptance": false,
+  "tiers": [
+    {
+      "tier": "balanced",
+      "books": 984,
+      "meshes": 47,
+      "instances": 5524,
+      "triangles": 258916,
+      "geometryBytes": 211024,
+      "draws": 55,
+      "members": [
+        {
+          "name": "library-gallery-handrail",
+          "instances": 1,
+          "triangles": 768,
+          "geometryBytes": 24628,
+          "geometryId": "8a8287db-bf21-4d0a-8636-dd924fdbca3f",
+          "draws": 1
+        },
+        {
+          "name": "library-continuous-cornice",
+          "instances": 1,
+          "triangles": 896,
+          "geometryBytes": 28256,
+          "geometryId": "8a166401-0a8e-47b5-9751-457f2d04c9dd",
+          "draws": 1
+        },
+        {
+          "name": "library-cornice-bead",
+          "instances": 1,
+          "triangles": 768,
+          "geometryBytes": 24628,
+          "geometryId": "88e91e38-b128-439d-93c6-68af7c1e620c",
+          "draws": 1
+        },
+        {
+          "name": "library-columns",
+          "instances": 64,
+          "triangles": 10240,
+          "geometryBytes": 8264,
+          "geometryId": "9d388977-7527-43b1-8e4a-db81987fa0fc",
+          "draws": 1
+        },
+        {
+          "name": "library-column-feet",
+          "instances": 64,
+          "triangles": 23040,
+          "geometryBytes": 11400,
+          "geometryId": "96e6b6ec-2ddc-4ff0-8f95-8a94deb8f70b",
+          "draws": 1
+        },
+        {
+          "name": "library-column-capitals",
+          "instances": 64,
+          "triangles": 23040,
+          "geometryBytes": 11400,
+          "geometryId": "95ab8055-0e3a-4c59-89b7-38e9184686bc",
+          "draws": 1
+        },
+        {
+          "name": "library-gallery-balusters",
+          "instances": 64,
+          "triangles": 7680,
+          "geometryBytes": 4108,
+          "geometryId": "8ca8ad13-5aed-4a02-8f36-55161dc7a09a",
+          "draws": 1
+        },
+        {
+          "name": "library-arches",
+          "instances": 16,
+          "triangles": 4608,
+          "geometryBytes": 9428,
+          "geometryId": "11bf2961-fe48-40c9-9e28-a0c70911628b",
+          "draws": 1
+        },
+        {
+          "name": "library-arch-inlay",
+          "instances": 16,
+          "triangles": 4608,
+          "geometryBytes": 9428,
+          "geometryId": "ab41f7d3-c2dd-474e-bea5-4a62ce78304b",
+          "draws": 1
+        },
+        {
+          "name": "library-upper-gallery",
+          "instances": 1,
+          "triangles": 128,
+          "geometryBytes": 6488,
+          "geometryId": "38f72af1-7e3e-45bb-a3fa-e41bc5dbe243",
+          "draws": 1
+        },
+        {
+          "name": "library-gallery-edge",
+          "instances": 1,
+          "triangles": 128,
+          "geometryBytes": 6488,
+          "geometryId": "21c48dc3-e5b8-42c1-8ebb-dec5532775ae",
+          "draws": 1
+        },
+        {
+          "name": "library-gallery-contact-occlusion",
+          "instances": 1,
+          "triangles": 128,
+          "geometryBytes": 6488,
+          "geometryId": "78fcbf08-44c1-457b-ad8d-07e4e05013ef",
+          "draws": 1
+        },
+        {
+          "name": "library-bookcase-backs",
+          "instances": 64,
+          "triangles": 768,
+          "geometryBytes": 1128,
+          "geometryId": "56880a81-0036-42a3-8c8f-45a46161adb6",
+          "draws": 1
+        },
+        {
+          "name": "library-cabinet-contact-occlusion",
+          "instances": 128,
+          "triangles": 256,
+          "geometryBytes": 188,
+          "geometryId": "3a2743f0-a8f9-452d-87d2-f9d93a0427e9",
+          "draws": 1
+        },
+        {
+          "name": "library-shelf-contact-occlusion",
+          "instances": 128,
+          "triangles": 256,
+          "geometryBytes": 188,
+          "geometryId": "33778ebe-6eda-4ac1-a37c-fa4db0e31c54",
+          "draws": 1
+        },
+        {
+          "name": "library-bookcase-raised-panels",
+          "instances": 64,
+          "triangles": 1792,
+          "geometryBytes": 3696,
+          "geometryId": "101ff882-25e7-440b-885d-824de7ee1835",
+          "draws": 1
+        },
+        {
+          "name": "library-case-moldings",
+          "instances": 400,
+          "triangles": 11200,
+          "geometryBytes": 3696,
+          "geometryId": "1c6b9e63-42a1-4666-8112-d445bbbc5e7d",
+          "draws": 1
+        },
+        {
+          "name": "library-joinery-pins",
+          "instances": 256,
+          "triangles": 3072,
+          "geometryBytes": 1128,
+          "geometryId": "56880a81-0036-42a3-8c8f-45a46161adb6",
+          "draws": 1
+        },
+        {
+          "name": "library-gallery-supports",
+          "instances": 32,
+          "triangles": 896,
+          "geometryBytes": 3696,
+          "geometryId": "2c757a9c-1360-4691-8e9f-eaca0e16c35c",
+          "draws": 1
+        },
+        {
+          "name": "library-bookcase-uprights",
+          "instances": 128,
+          "triangles": 3584,
+          "geometryBytes": 3696,
+          "geometryId": "7474f92c-a9c8-472a-9b62-160b28287f35",
+          "draws": 1
+        },
+        {
+          "name": "library-shelves",
+          "instances": 176,
+          "triangles": 4928,
+          "geometryBytes": 3696,
+          "geometryId": "c813b1e7-5fc5-4c47-9be3-856ed09ecc41",
+          "draws": 1
+        },
+        {
+          "name": "library-book-shell-0",
+          "instances": 151,
+          "triangles": 15704,
+          "geometryBytes": 8104,
+          "geometryId": "3e475e63-c972-430c-99de-4a42e9df58bb",
+          "draws": 2
+        },
+        {
+          "name": "library-book-shell-1",
+          "instances": 127,
+          "triangles": 13208,
+          "geometryBytes": 8104,
+          "geometryId": "3e475e63-c972-430c-99de-4a42e9df58bb",
+          "draws": 2
+        },
+        {
+          "name": "library-book-shell-2",
+          "instances": 121,
+          "triangles": 12584,
+          "geometryBytes": 8104,
+          "geometryId": "3e475e63-c972-430c-99de-4a42e9df58bb",
+          "draws": 2
+        },
+        {
+          "name": "library-book-shell-3",
+          "instances": 91,
+          "triangles": 9464,
+          "geometryBytes": 8104,
+          "geometryId": "3e475e63-c972-430c-99de-4a42e9df58bb",
+          "draws": 2
+        },
+        {
+          "name": "library-book-shell-4",
+          "instances": 118,
+          "triangles": 12272,
+          "geometryBytes": 8104,
+          "geometryId": "3e475e63-c972-430c-99de-4a42e9df58bb",
+          "draws": 2
+        },
+        {
+          "name": "library-book-shell-5",
+          "instances": 128,
+          "triangles": 13312,
+          "geometryBytes": 8104,
+          "geometryId": "3e475e63-c972-430c-99de-4a42e9df58bb",
+          "draws": 2
+        },
+        {
+          "name": "library-book-shell-6",
+          "instances": 126,
+          "triangles": 13104,
+          "geometryBytes": 8104,
+          "geometryId": "3e475e63-c972-430c-99de-4a42e9df58bb",
+          "draws": 2
+        },
+        {
+          "name": "library-book-shell-7",
+          "instances": 122,
+          "triangles": 12688,
+          "geometryBytes": 8104,
+          "geometryId": "3e475e63-c972-430c-99de-4a42e9df58bb",
+          "draws": 2
+        },
+        {
+          "name": "library-book-page-blocks",
+          "instances": 984,
+          "triangles": 11808,
+          "geometryBytes": 1128,
+          "geometryId": "56880a81-0036-42a3-8c8f-45a46161adb6",
+          "draws": 1
+        },
+        {
+          "name": "library-book-contact-occlusion",
+          "instances": 984,
+          "triangles": 1968,
+          "geometryBytes": 188,
+          "geometryId": "56a8b664-5a5e-42ea-8a39-1e2b1af1aa4c",
+          "draws": 1
+        },
+        {
+          "name": "library-lamp-brackets",
+          "instances": 16,
+          "triangles": 2304,
+          "geometryBytes": 4868,
+          "geometryId": "c0d13f0a-cc0b-4942-830c-ed0975fc8570",
+          "draws": 1
+        },
+        {
+          "name": "library-reading-lamps",
+          "instances": 16,
+          "triangles": 5120,
+          "geometryBytes": 10236,
+          "geometryId": "8ccfc302-d6c1-478f-b388-b594f6749a60",
+          "draws": 1
+        },
+        {
+          "name": "library-lamp-caps",
+          "instances": 32,
+          "triangles": 11520,
+          "geometryBytes": 11400,
+          "geometryId": "96e6b6ec-2ddc-4ff0-8f95-8a94deb8f70b",
+          "draws": 1
+        },
+        {
+          "name": "library-outer-wall",
+          "instances": 1,
+          "triangles": 64,
+          "geometryBytes": 3288,
+          "geometryId": "745c088c-cb87-4285-9df9-48a7f585add9",
+          "draws": 1
+        },
+        {
+          "name": "library-floor",
+          "instances": 1,
+          "triangles": 12,
+          "geometryBytes": 1128,
+          "geometryId": "56880a81-0036-42a3-8c8f-45a46161adb6",
+          "draws": 1
+        },
+        {
+          "name": "library-ceiling",
+          "instances": 1,
+          "triangles": 12,
+          "geometryBytes": 1128,
+          "geometryId": "56880a81-0036-42a3-8c8f-45a46161adb6",
+          "draws": 1
+        },
+        {
+          "name": "library-floor-inlay-2.65",
+          "instances": 1,
+          "triangles": 128,
+          "geometryBytes": 6488,
+          "geometryId": "5f5a2af3-e8b0-4a2f-b971-b160bdd1f290",
+          "draws": 1
+        },
+        {
+          "name": "library-floor-inlay-5.25",
+          "instances": 1,
+          "triangles": 128,
+          "geometryBytes": 6488,
+          "geometryId": "207a4359-6420-45da-bb29-ac3e77cb145f",
+          "draws": 1
+        },
+        {
+          "name": "library-windows",
+          "instances": 32,
+          "triangles": 384,
+          "geometryBytes": 1128,
+          "geometryId": "56880a81-0036-42a3-8c8f-45a46161adb6",
+          "draws": 1
+        },
+        {
+          "name": "library-window-glazing",
+          "instances": 32,
+          "triangles": 64,
+          "geometryBytes": 188,
+          "geometryId": "f8646c0d-9fe5-4e22-99e5-24e2babfd21d",
+          "draws": 1
+        },
+        {
+          "name": "library-window-reveals",
+          "instances": 128,
+          "triangles": 3584,
+          "geometryBytes": 3696,
+          "geometryId": "c813b1e7-5fc5-4c47-9be3-856ed09ecc41",
+          "draws": 1
+        },
+        {
+          "name": "library-window-frames",
+          "instances": 256,
+          "triangles": 7168,
+          "geometryBytes": 3696,
+          "geometryId": "1c6b9e63-42a1-4666-8112-d445bbbc5e7d",
+          "draws": 1
+        },
+        {
+          "name": "library-parquet",
+          "instances": 267,
+          "triangles": 7476,
+          "geometryBytes": 3696,
+          "geometryId": "c813b1e7-5fc5-4c47-9be3-856ed09ecc41",
+          "draws": 1
+        },
+        {
+          "name": "library-ceiling-coffer-beams",
+          "instances": 18,
+          "triangles": 504,
+          "geometryBytes": 3696,
+          "geometryId": "c813b1e7-5fc5-4c47-9be3-856ed09ecc41",
+          "draws": 1
+        },
+        {
+          "name": "library-ceiling-coffer-panels",
+          "instances": 52,
+          "triangles": 1456,
+          "geometryBytes": 3696,
+          "geometryId": "c813b1e7-5fc5-4c47-9be3-856ed09ecc41",
+          "draws": 1
+        },
+        {
+          "name": "library-floor-contact-occlusion",
+          "instances": 48,
+          "triangles": 96,
+          "geometryBytes": 188,
+          "geometryId": "b1d474e5-01cd-42f6-b640-886862cdcb2f",
+          "draws": 1
+        }
+      ]
+    },
+    {
+      "tier": "economy",
+      "books": 984,
+      "meshes": 46,
+      "instances": 2938,
+      "triangles": 117148,
+      "geometryBytes": 236376,
+      "draws": 54,
+      "members": [
+        {
+          "name": "library-gallery-handrail",
+          "instances": 1,
+          "triangles": 384,
+          "geometryBytes": 13744,
+          "geometryId": "3848cc22-7b04-4185-a6fe-0ad4ab707e04",
+          "draws": 1
+        },
+        {
+          "name": "library-continuous-cornice",
+          "instances": 1,
+          "triangles": 896,
+          "geometryBytes": 28256,
+          "geometryId": "7bacf87d-34f0-4ee8-aedf-1e027858cad6",
+          "draws": 1
+        },
+        {
+          "name": "library-cornice-bead",
+          "instances": 1,
+          "triangles": 384,
+          "geometryBytes": 13744,
+          "geometryId": "5b338c5a-5244-4a63-b2d7-c380d6690508",
+          "draws": 1
+        },
+        {
+          "name": "library-columns",
+          "instances": 16,
+          "triangles": 4096,
+          "geometryBytes": 13856,
+          "geometryId": "be5ed121-9e91-4b18-b326-4320bdaad066",
+          "draws": 1
+        },
+        {
+          "name": "library-column-feet",
+          "instances": 64,
+          "triangles": 9216,
+          "geometryBytes": 4824,
+          "geometryId": "1764686f-606a-4aaa-85dd-736604e605ce",
+          "draws": 1
+        },
+        {
+          "name": "library-column-capitals",
+          "instances": 64,
+          "triangles": 9216,
+          "geometryBytes": 4824,
+          "geometryId": "b3878171-3b0b-4822-a626-8200b076a17a",
+          "draws": 1
+        },
+        {
+          "name": "library-gallery-balusters",
+          "instances": 16,
+          "triangles": 3840,
+          "geometryBytes": 9184,
+          "geometryId": "be495b78-c20c-4228-8e72-4f572efde5e8",
+          "draws": 1
+        },
+        {
+          "name": "library-arches",
+          "instances": 16,
+          "triangles": 1536,
+          "geometryBytes": 3568,
+          "geometryId": "b1c10795-5514-4a96-8580-846083d245b4",
+          "draws": 1
+        },
+        {
+          "name": "library-arch-inlay",
+          "instances": 16,
+          "triangles": 1536,
+          "geometryBytes": 3568,
+          "geometryId": "f65fb801-d81a-4100-a305-cdb335374e29",
+          "draws": 1
+        },
+        {
+          "name": "library-upper-gallery",
+          "instances": 1,
+          "triangles": 128,
+          "geometryBytes": 6488,
+          "geometryId": "75a25f73-7a92-4e00-a079-498300f24083",
+          "draws": 1
+        },
+        {
+          "name": "library-gallery-edge",
+          "instances": 1,
+          "triangles": 128,
+          "geometryBytes": 6488,
+          "geometryId": "9ecd66d1-157e-4f5a-8828-c28f58fbbb79",
+          "draws": 1
+        },
+        {
+          "name": "library-gallery-contact-occlusion",
+          "instances": 1,
+          "triangles": 128,
+          "geometryBytes": 6488,
+          "geometryId": "1af59ff0-cd08-4de0-a334-a70108eac5e5",
+          "draws": 1
+        },
+        {
+          "name": "library-bookcase-backs",
+          "instances": 16,
+          "triangles": 768,
+          "geometryBytes": 4512,
+          "geometryId": "f896c7e1-43e5-4ba8-b2fd-a7908f91f9f0",
+          "draws": 1
+        },
+        {
+          "name": "library-cabinet-contact-occlusion",
+          "instances": 128,
+          "triangles": 256,
+          "geometryBytes": 188,
+          "geometryId": "cd471f9e-a28a-40d6-8d52-9c4efc6244e6",
+          "draws": 1
+        },
+        {
+          "name": "library-shelf-contact-occlusion",
+          "instances": 128,
+          "triangles": 256,
+          "geometryBytes": 188,
+          "geometryId": "aa2f314a-6a9b-4e09-8e6f-b1844a695828",
+          "draws": 1
+        },
+        {
+          "name": "library-bookcase-raised-panels",
+          "instances": 16,
+          "triangles": 768,
+          "geometryBytes": 4512,
+          "geometryId": "47bdde3a-7bb2-4c57-bbe0-3f103e084658",
+          "draws": 1
+        },
+        {
+          "name": "library-case-moldings",
+          "instances": 16,
+          "triangles": 4800,
+          "geometryBytes": 28200,
+          "geometryId": "5d30bcfa-ea25-4d35-bb39-8232ca26cc62",
+          "draws": 1
+        },
+        {
+          "name": "library-joinery-pins",
+          "instances": 16,
+          "triangles": 3072,
+          "geometryBytes": 18048,
+          "geometryId": "ba90a165-478a-4fa5-a7c2-cff4b58baa8a",
+          "draws": 1
+        },
+        {
+          "name": "library-gallery-supports",
+          "instances": 16,
+          "triangles": 384,
+          "geometryBytes": 2256,
+          "geometryId": "337fe1ed-7381-4756-b52b-eb014bdce472",
+          "draws": 1
+        },
+        {
+          "name": "library-bookcase-uprights",
+          "instances": 16,
+          "triangles": 1536,
+          "geometryBytes": 9024,
+          "geometryId": "3d4d4265-e846-4846-a159-c8d2692be720",
+          "draws": 1
+        },
+        {
+          "name": "library-shelves",
+          "instances": 16,
+          "triangles": 2112,
+          "geometryBytes": 12408,
+          "geometryId": "415dd354-4f96-42d5-b7bb-295ae4109ffd",
+          "draws": 1
+        },
+        {
+          "name": "library-book-shell-0",
+          "instances": 151,
+          "triangles": 6946,
+          "geometryBytes": 3796,
+          "geometryId": "d8b65832-8246-4546-a94b-04a15f1e4cd7",
+          "draws": 2
+        },
+        {
+          "name": "library-book-shell-1",
+          "instances": 127,
+          "triangles": 5842,
+          "geometryBytes": 3796,
+          "geometryId": "d8b65832-8246-4546-a94b-04a15f1e4cd7",
+          "draws": 2
+        },
+        {
+          "name": "library-book-shell-2",
+          "instances": 121,
+          "triangles": 5566,
+          "geometryBytes": 3796,
+          "geometryId": "d8b65832-8246-4546-a94b-04a15f1e4cd7",
+          "draws": 2
+        },
+        {
+          "name": "library-book-shell-3",
+          "instances": 91,
+          "triangles": 4186,
+          "geometryBytes": 3796,
+          "geometryId": "d8b65832-8246-4546-a94b-04a15f1e4cd7",
+          "draws": 2
+        },
+        {
+          "name": "library-book-shell-4",
+          "instances": 118,
+          "triangles": 5428,
+          "geometryBytes": 3796,
+          "geometryId": "d8b65832-8246-4546-a94b-04a15f1e4cd7",
+          "draws": 2
+        },
+        {
+          "name": "library-book-shell-5",
+          "instances": 128,
+          "triangles": 5888,
+          "geometryBytes": 3796,
+          "geometryId": "d8b65832-8246-4546-a94b-04a15f1e4cd7",
+          "draws": 2
+        },
+        {
+          "name": "library-book-shell-6",
+          "instances": 126,
+          "triangles": 5796,
+          "geometryBytes": 3796,
+          "geometryId": "d8b65832-8246-4546-a94b-04a15f1e4cd7",
+          "draws": 2
+        },
+        {
+          "name": "library-book-shell-7",
+          "instances": 122,
+          "triangles": 5612,
+          "geometryBytes": 3796,
+          "geometryId": "d8b65832-8246-4546-a94b-04a15f1e4cd7",
+          "draws": 2
+        },
+        {
+          "name": "library-book-page-blocks",
+          "instances": 984,
+          "triangles": 11808,
+          "geometryBytes": 1128,
+          "geometryId": "00e90a08-8380-474f-b5f9-a8bcb42caea9",
+          "draws": 1
+        },
+        {
+          "name": "library-lamp-brackets",
+          "instances": 16,
+          "triangles": 576,
+          "geometryBytes": 1448,
+          "geometryId": "ee622a88-d7a1-438a-9299-3a8b2296d110",
+          "draws": 1
+        },
+        {
+          "name": "library-reading-lamps",
+          "instances": 16,
+          "triangles": 2048,
+          "geometryBytes": 4332,
+          "geometryId": "0c68348a-ff51-4a3e-903e-5f9cd4292e48",
+          "draws": 1
+        },
+        {
+          "name": "library-lamp-caps",
+          "instances": 32,
+          "triangles": 4608,
+          "geometryBytes": 4824,
+          "geometryId": "1764686f-606a-4aaa-85dd-736604e605ce",
+          "draws": 1
+        },
+        {
+          "name": "library-outer-wall",
+          "instances": 1,
+          "triangles": 64,
+          "geometryBytes": 3288,
+          "geometryId": "3196e876-bd63-4178-b1d1-04d77fe81590",
+          "draws": 1
+        },
+        {
+          "name": "library-floor",
+          "instances": 1,
+          "triangles": 12,
+          "geometryBytes": 1128,
+          "geometryId": "00e90a08-8380-474f-b5f9-a8bcb42caea9",
+          "draws": 1
+        },
+        {
+          "name": "library-ceiling",
+          "instances": 1,
+          "triangles": 12,
+          "geometryBytes": 1128,
+          "geometryId": "00e90a08-8380-474f-b5f9-a8bcb42caea9",
+          "draws": 1
+        },
+        {
+          "name": "library-floor-inlay-2.65",
+          "instances": 1,
+          "triangles": 128,
+          "geometryBytes": 6488,
+          "geometryId": "5aa8d860-4acc-4c6f-a0bc-491f21ef5ee1",
+          "draws": 1
+        },
+        {
+          "name": "library-floor-inlay-5.25",
+          "instances": 1,
+          "triangles": 128,
+          "geometryBytes": 6488,
+          "geometryId": "979cc478-66dc-409b-a59f-7531d0136e42",
+          "draws": 1
+        },
+        {
+          "name": "library-windows",
+          "instances": 32,
+          "triangles": 384,
+          "geometryBytes": 1128,
+          "geometryId": "00e90a08-8380-474f-b5f9-a8bcb42caea9",
+          "draws": 1
+        },
+        {
+          "name": "library-window-glazing",
+          "instances": 32,
+          "triangles": 64,
+          "geometryBytes": 188,
+          "geometryId": "d6010735-90cf-44fe-8b30-bc8d4532db51",
+          "draws": 1
+        },
+        {
+          "name": "library-window-reveals",
+          "instances": 32,
+          "triangles": 1536,
+          "geometryBytes": 4512,
+          "geometryId": "fb0479a4-6e4c-4028-9816-3bc06c8fe55e",
+          "draws": 1
+        },
+        {
+          "name": "library-window-frames",
+          "instances": 32,
+          "triangles": 3072,
+          "geometryBytes": 9024,
+          "geometryId": "b5995edd-18dd-4360-b62f-6626bdcbf598",
+          "draws": 1
+        },
+        {
+          "name": "library-parquet",
+          "instances": 89,
+          "triangles": 1068,
+          "geometryBytes": 1128,
+          "geometryId": "36bfb48e-4dd0-4401-99b6-7de23db7617d",
+          "draws": 1
+        },
+        {
+          "name": "library-ceiling-coffer-beams",
+          "instances": 18,
+          "triangles": 216,
+          "geometryBytes": 1128,
+          "geometryId": "36bfb48e-4dd0-4401-99b6-7de23db7617d",
+          "draws": 1
+        },
+        {
+          "name": "library-ceiling-coffer-panels",
+          "instances": 52,
+          "triangles": 624,
+          "geometryBytes": 1128,
+          "geometryId": "36bfb48e-4dd0-4401-99b6-7de23db7617d",
+          "draws": 1
+        },
+        {
+          "name": "library-floor-contact-occlusion",
+          "instances": 48,
+          "triangles": 96,
+          "geometryBytes": 188,
+          "geometryId": "114564ad-f4ac-4ba8-8335-f9a4281bd398",
+          "draws": 1
+        }
+      ]
+    }
+  ]
+}

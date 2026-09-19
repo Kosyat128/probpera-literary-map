@@ -1,3 +1,21 @@
+<!-- s13-library-density-20260919:begin -->
+Source f0a275ab preserves the library's nominal 16-bay/8-row/8-slot
+layout and book-placement density at lower quality tiers through economical
+compound true-3D geometry. Current actual-App and close-up tier views bind the
+visual review to the source. Technical success does not establish final realistic
+art quality or certified lightmaps. The stand geometry, shared craft materials
+and core composition sources remain unchanged and bound to prior evidence.
+Final 5 focused units, TypeScript and 1 actual Chrome cases pass.
+Evidence: evidence/S13/library-density-20260919/result.json. PWA 2ad37f15 and
+Android/dev bc593569 bind this source. APK SHA256: 09c0ac7d1ae4b30fc423d9a3d4fc494f2ab0f30a9e67138bf23985ff0c308f46.
+Previous lighting/art/composition results and artifacts remain historical evidence.
+Starter Set remains 11/29 source-bound, zero accepted. Full scene catalog/Background
+Studio, accessory/audio/child composition, formal art/lightmaps, rights, installed-
+device budgets, iOS and release remain open. Stage counts stay 3 complete,
+11 in progress, 27 unstarted; first open S03. Next: refine the wood, metal and
+book finishes identified in the inspected close-ups, preserving this density.
+<!-- s13-library-density-20260919:end -->
+
 <!-- s13-library-lighting-20260919:begin -->
 Source 9b8952d7 improves library light placement, window daylight,
 shelf/cabinet occlusion and believable grouping of books. Actual-App and close-up
