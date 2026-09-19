@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/typescript/bin/tsc",
+    "--noEmit"
+  ],
+  "startedAt": "2026-09-19T19:34:56.558Z",
+  "durationMs": 24158,
+  "exitCode": 2,
+  "logs": {
+    "stdout": {
+      "text": "src/components/globeLibraryGeometry.test.ts(167,59): error TS2339: Property 'length' does not exist on type 'ArrayBufferView<ArrayBufferLike>'.\r\nsrc/components/globeLibraryGeometry.test.ts(168,25): error TS7053: Element implicitly has an 'any' type because expression of type 'number' can't be used to index type 'ArrayBufferView<ArrayBufferLike>'.\r\n  No index signature with a parameter of type 'number' was found on type 'ArrayBufferView<ArrayBufferLike>'.\r\n",
+      "sha256": "a04bd048c671df1e068c609895a34ab92a3c4072f1c853782c258676d3ea4d0d"
+    },
+    "stderr": {
+      "text": "",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

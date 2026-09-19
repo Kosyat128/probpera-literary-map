@@ -42,6 +42,7 @@ describe("included adult stand geometry and resource ownership", () => {
         let meshes = 0, vertices = 0, triangles = 0, validBounds = true, validNormals = true, validIndices = true;
         let minimumY = Infinity, maximumY = -Infinity, maximumRadius = 0;
         let checkedFaces = 0, minimumNormalAgreement = 1, leastAlignedFace = "";
+        let woodenCapFaces = 0, collapsedCapUv = "";
         const point = new Vector3(), relative = new Matrix4();
         const faceA = new Vector3(), faceB = new Vector3(), faceC = new Vector3();
         const edgeAB = new Vector3(), edgeAC = new Vector3(), faceNormal = new Vector3(), averageNormal = new Vector3();
@@ -86,6 +87,18 @@ describe("included adult stand geometry and resource ownership", () => {
               normal.getZ(a) + normal.getZ(b) + normal.getZ(c),
             ).normalize();
             const agreement = faceNormal.normalize().dot(averageNormal);
+            if ((object.name === "wood-turned-body" || object.name === "wood-underfoot")
+              && Math.abs(faceNormal.y) > 1 - 1e-6) {
+              woodenCapFaces++;
+              const uAB = uv.getX(b) - uv.getX(a), vAB = uv.getY(b) - uv.getY(a);
+              const uAC = uv.getX(c) - uv.getX(a), vAC = uv.getY(c) - uv.getY(a);
+              const doubleUvArea = uAB * vAC - vAB * uAC;
+              // A finite UV array can still collapse an entire visible cap
+              // triangle to one line and produce radial streaks in the finish.
+              if (doubleUvArea ** 2 <= (uAB ** 2 + vAB ** 2) * (uAC ** 2 + vAC ** 2) * 1e-12) {
+                collapsedCapUv ||= `${object.name} triangle ${offset / 3}`;
+              }
+            }
             checkedFaces++;
             if (agreement < minimumNormalAgreement) {
               minimumNormalAgreement = agreement;
@@ -107,6 +120,10 @@ describe("included adult stand geometry and resource ownership", () => {
         expect(validNormals, `${id}/${tier} finite normals`).toBe(true);
         expect(checkedFaces, `${id}/${tier} nondegenerate faces`).toBeGreaterThan(0);
         expect(minimumNormalAgreement, `${id}/${tier} outward normals: ${leastAlignedFace}`).toBeGreaterThanOrEqual(-1e-5);
+        if (id === "stand.base.wood") {
+          expect(woodenCapFaces, `${tier} actual wooden cap faces`).toBeGreaterThan(0);
+          expect(collapsedCapUv, `${tier} noncollapsed wooden cap UV`).toBe("");
+        }
         expect(validIndices, `${id}/${tier} topology`).toBe(true);
         expect(maximumY - minimumY).toBeGreaterThan(0.1);
         expect(maximumRadius).toBeGreaterThan(0.15);

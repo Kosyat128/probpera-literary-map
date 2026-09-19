@@ -1,4 +1,4 @@
-import { BufferGeometry, Camera, DataTexture, InstancedMesh, Light, Line3, Matrix4, Mesh, PointLight, Raycaster, Texture, Triangle, Vector3,
+import { BufferGeometry, Camera, DataTexture, InstancedMesh, Light, Line3, Matrix4, Mesh, NoColorSpace, PointLight, Raycaster, Texture, Triangle, Vector3,
   type Intersection, type Material, type MeshStandardMaterial } from "three";
 import { describe, expect, it, vi } from "vitest";
 import { createGlobeLibrary } from "./globeLibraryGeometry";
@@ -28,6 +28,27 @@ function collect(library: Library) {
     expect(light.distance).toBeGreaterThan(0); expect(light.distance).toBeLessThanOrEqual(4);
     expect(Number.isFinite(light.intensity)).toBe(true); expect(light.intensity).toBeGreaterThanOrEqual(0);
     expect(light.castShadow).toBe(false); expect(light.shadow.map).toBeNull();
+  }
+  expect(lights.map(light => light.name).sort()).toEqual(["library-sconce-light", "library-window-daylight"]);
+  for (const [name, emitterName, maximumOffset] of [
+    ["library-window-daylight", "library-window-glazing", 0.8],
+    ["library-sconce-light", "library-reading-lamps", 0.05],
+  ] as const) {
+    const light = lights.find(value => value.name === name)!;
+    const emitter = library.group.getObjectByName(emitterName);
+    expect(emitter, name).toBeInstanceOf(InstancedMesh);
+    if (!(emitter instanceof InstancedMesh)) throw new Error("Missing physical light source");
+    expect(light.userData.emitterMesh).toBe(emitterName);
+    const instance = light.userData.emitterInstance;
+    expect(Number.isSafeInteger(instance)).toBe(true);
+    expect(instance).toBeGreaterThanOrEqual(0); expect(instance).toBeLessThan(emitter.count);
+    emitter.geometry.computeBoundingBox();
+    const world = new Matrix4(); emitter.getMatrixAt(instance, world);
+    world.premultiply(emitter.matrixWorld);
+    const sourceCenter = emitter.geometry.boundingBox!.getCenter(new Vector3()).applyMatrix4(world);
+    // Measure real emitter geometry after its instance transform; the metadata
+    // offset alone cannot turn a floating light into a visible source.
+    expect(light.getWorldPosition(new Vector3()).distanceTo(sourceCenter), name).toBeLessThanOrEqual(maximumOffset);
   }
   return { meshes, geometries, materials, textures, lights };
 }
@@ -123,7 +144,50 @@ describe("procedural library geometry around the whole canonical camera envelope
       expect(depth.get("library-foreground")!.furthestRadius).toBeLessThan(depth.get("library-midground")!.furthestRadius);
       expect(depth.get("library-midground")!.furthestRadius).toBeLessThan(depth.get("library-background")!.furthestRadius);
       expect(textures.size).toBeGreaterThan(0);
-      for (const texture of textures) expect(texture).toBeInstanceOf(DataTexture);
+      for (const texture of textures) {
+        expect(texture).toBeInstanceOf(DataTexture);
+        expect(texture.userData.provenance).toBe("authored-in-project");
+        expect(texture.userData.qualityTier).toBe(tier);
+      }
+      for (const name of ["library-cabinet-contact-occlusion", "library-shelf-contact-occlusion", "library-gallery-contact-occlusion"]) {
+        const surface = library.group.getObjectByName(name);
+        expect(surface, name).toBeInstanceOf(Mesh);
+        if (!(surface instanceof Mesh) || Array.isArray(surface.material)) throw new Error("Missing owned occlusion surface");
+        const material = surface.material as MeshStandardMaterial;
+        expect(material.transparent).toBe(true); expect(material.depthWrite).toBe(false);
+        expect(material.opacity).toBeGreaterThan(0); expect(material.opacity).toBeLessThanOrEqual(1);
+        expect(material.alphaMap).toBeInstanceOf(DataTexture);
+        const alphaMap = material.alphaMap as DataTexture;
+        expect(textures.has(alphaMap)).toBe(true); expect(alphaMap.colorSpace).toBe(NoColorSpace);
+        const dimension = tier === "high" ? 64 : tier === "balanced" ? 32 : 16;
+        expect(alphaMap.image.width).toBe(dimension); expect(alphaMap.image.height).toBe(dimension);
+        expect(alphaMap.image.data).toBeInstanceOf(Uint8Array);
+        expect(alphaMap.image.data.byteLength).toBe(dimension * dimension * 4);
+        let minimum = 255, maximum = 0;
+        const pixels = alphaMap.image.data as Uint8Array;
+        for (let offset = 1; offset < pixels.length; offset += 4) {
+          const value = pixels[offset];
+          minimum = Math.min(minimum, value); maximum = Math.max(maximum, value);
+        }
+        // Three samples alphaMap's green channel: a uniform tile would add a
+        // dark rectangle instead of the intended soft contact transition.
+        expect(maximum - minimum, `${tier}/${name} contact variation`).toBeGreaterThan(0);
+      }
+      const pages = library.group.getObjectByName("library-book-page-blocks");
+      expect(pages).toBeInstanceOf(InstancedMesh);
+      if (!(pages instanceof InstancedMesh)) throw new Error("Missing physical book pages");
+      let leaning = 0, upright = 0;
+      const bookTransform = new Matrix4(), bookUp = new Vector3();
+      for (let instance = 0; instance < pages.count; instance++) {
+        pages.getMatrixAt(instance, bookTransform);
+        const vertical = Math.abs(bookUp.setFromMatrixColumn(bookTransform, 1).normalize().y);
+        if (vertical > 0.98 && vertical < 0.99995) leaning++;
+        if (vertical > 0.99999) upright++;
+      }
+      // Small leaning volumes must exist independently of horizontal stacks;
+      // varying only heights/colors would leave every row mechanically upright.
+      expect(leaning, `${tier} small physical book lean`).toBeGreaterThan(0);
+      expect(upright, `${tier} upright book support`).toBeGreaterThan(0);
     } finally { library.dispose(); }
   });
 

@@ -1,6 +1,7 @@
 import { DataTexture, EquirectangularReflectionMapping, MeshStandardMaterial, NoColorSpace,
   RGBAFormat, SRGBColorSpace, Texture, UnsignedByteType } from "three";
 import { describe, expect, it, vi } from "vitest";
+import { createHash } from "node:crypto";
 import { createGlobeCraftMaterials } from "./globeCraftMaterials";
 
 const finishes = ["wood", "darkWood", "brass", "leather", "paper", "stone"] as const;
@@ -76,7 +77,18 @@ describe("owned authored craft maps", () => {
     });
     const eventsA = listen(a), eventsB = listen(b);
     try {
-      for (const texture of a.textures) expect(b.textures.has(texture)).toBe(false);
+      const matchingTextures = new Map([...b.textures].map(texture => [texture.name, texture]));
+      const texelDigest = (texture: Texture) => createHash("sha256")
+        .update((texture as DataTexture).image.data as Uint8Array).digest("hex");
+      for (const texture of a.textures) {
+        expect(b.textures.has(texture)).toBe(false);
+        const counterpart = matchingTextures.get(texture.name);
+        expect(counterpart, texture.name).toBeDefined();
+        // Independent resource ownership must not make the authored finish
+        // flicker with random seeds on each preview/recreation. Compare live
+        // outputs, without pinning a particular artistic pattern or palette.
+        expect(texelDigest(texture), texture.name).toBe(texelDigest(counterpart!));
+      }
       for (const material of a.materials) expect(b.materials.includes(material)).toBe(false);
       first.dispose(); first.dispose();
       for (const event of eventsA) expect(event).toHaveBeenCalledOnce();

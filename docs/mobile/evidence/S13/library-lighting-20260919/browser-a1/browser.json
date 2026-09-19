@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S13/library-lighting-20260919/playwright.config.mjs"
+  ],
+  "startedAt": "2026-09-19T19:37:03.288Z",
+  "durationMs": 17967,
+  "exitCode": 0,
+  "logs": {
+    "stdout": {
+      "text": "\nRunning 1 test using 1 worker\n\n\n\n[1/1] tests\\pwa\\globe-library-lighting.spec.mjs:276:1 › detailed library lighting remains stable across orbit, locale, narrow screen and preview retirement\n  1 passed (17.3s)\n",
+      "sha256": "f1e5906ff8f7017a9130934e82709c66aaf0c375f205ab69a11ecc6f229256f9"
+    },
+    "stderr": {
+      "text": "(node:28656) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "sha256": "04d35e3f8805971e2ad77d44f1a53484597f884fea8ec733a336f0f982f66250"
+    }
+  }
+}

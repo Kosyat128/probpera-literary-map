@@ -14,6 +14,21 @@ const detail = Object.freeze({
   economy: Object.freeze({ bays: 8, rows: 4, books: 5, archSegments: 16, tubeSegments: 4, turnedSegments: 12, spineSegments: 4, parquetStrips: 2 }),
 });
 const FLOOR_Y = -6.15;
+const clamp = (value: number) => Math.max(0, Math.min(1, value));
+const smooth = (value: number) => { const t = clamp(value); return t * t * (3 - 2 * t); };
+function variation(bay: number, row: number, item: number) {
+  let value = Math.imul(bay + 37, 73856093) ^ Math.imul(row + 19, 19349663) ^ Math.imul(item + 7, 83492791);
+  value = Math.imul(value ^ (value >>> 13), 1274126177);
+  return ((value ^ (value >>> 16)) >>> 0) / 4294967295;
+}
+function surfaceNoise(u: number, v: number, columns: number, rows: number, seed: number) {
+  const x = u * columns, y = v * rows, ix = Math.floor(x), iy = Math.floor(y);
+  const at = (dx: number, dy: number) => variation(((ix + dx) % columns + columns) % columns,
+    ((iy + dy) % rows + rows) % rows, seed);
+  const sx = smooth(x - ix), sy = smooth(y - iy);
+  return (at(0, 0) * (1 - sx) + at(1, 0) * sx) * (1 - sy)
+    + (at(0, 1) * (1 - sx) + at(1, 1) * sx) * sy;
+}
 
 /**
  * Original reading hall, with joined cabinetry, turned/fluted columns, bound
@@ -24,6 +39,13 @@ const FLOOR_Y = -6.15;
 export function createGlobeLibrary(quality: GlobeQualityTier): OwnedGlobeLibrary {
   if (!Object.prototype.hasOwnProperty.call(detail, quality)) throw new Error("Invalid globe library quality");
   const budget = detail[quality];
+  const daylightBay = Math.floor(budget.bays / 2);
+  const daylightAngle = (daylightBay + 0.5) / budget.bays * Math.PI * 2;
+  const warmBay = daylightBay - 1;
+  const warmAngle = warmBay / budget.bays * Math.PI * 2;
+  const daylightPosition = new THREE.Vector3(Math.sin(daylightAngle) * 10.66, 2.35, Math.cos(daylightAngle) * 10.66);
+  const warmPosition = new THREE.Vector3(Math.sin(warmAngle) * 8.81 + Math.cos(warmAngle) * 1.14,
+    2.15, Math.cos(warmAngle) * 8.81 - Math.sin(warmAngle) * 1.14);
   const group = new THREE.Group();
   group.name = "included-globe-background:background.base.library";
   group.userData = { backgroundId: "background.base.library", qualityTier: quality,
@@ -68,8 +90,8 @@ export function createGlobeLibrary(quality: GlobeQualityTier): OwnedGlobeLibrary
     for (let index = 0; index < vertices.count; index += 1) {
       const vertical = height > 0 ? (vertices.getY(index) - bounds.min.y) / height : 1;
       const normalY = normals.getY(index);
-      const faceShade = normalY < -0.5 ? 0.58 : normalY > 0.5 ? 1 : 0.84;
-      const shade = faceShade * (0.82 + 0.18 * vertical);
+      const faceShade = normalY < -0.5 ? 0.66 : normalY > 0.5 ? 1 : 0.93;
+      const shade = faceShade * (0.91 + 0.09 * vertical);
       colors.set([shade, shade, shade], index * 3);
     }
     geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
@@ -81,6 +103,54 @@ export function createGlobeLibrary(quality: GlobeQualityTier): OwnedGlobeLibrary
     if (color) material.color.set(color);
     materials.add(material);
     return material;
+  };
+  const ownedTile = (name: string, paint: (u: number, v: number) => readonly [number, number, number, number], color = false, resolution = 1) => {
+    const size = (quality === "high" ? 64 : quality === "balanced" ? 32 : 16) * resolution;
+    const bytes = new Uint8Array(size * size * 4);
+    for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
+      bytes.set(paint((x + 0.5) / size, (y + 0.5) / size), (y * size + x) * 4);
+    }
+    const texture = new THREE.DataTexture(bytes, size, size, THREE.RGBAFormat);
+    texture.name = name;
+    texture.userData = { provenance: "authored-in-project", qualityTier: quality };
+    texture.colorSpace = color ? THREE.SRGBColorSpace : THREE.NoColorSpace;
+    texture.minFilter = texture.magFilter = THREE.LinearFilter;
+    texture.needsUpdate = true;
+    textures.add(texture);
+    return texture;
+  };
+  const occlusion = (name: string, alpha: (u: number, v: number) => number, opacity: number) => {
+    const alphaMap = ownedTile(name, (u, v) => {
+      const value = Math.round(clamp(alpha(u, v)) * 255);
+      return [value, value, value, 255];
+    });
+    const material = new THREE.MeshStandardMaterial({ color: "#000000", roughness: 1,
+      alphaMap, transparent: true, opacity, depthWrite: false, side: THREE.DoubleSide });
+    material.forceSinglePass = true;
+    materials.add(material);
+    return material;
+  };
+  const woodUv = (geometry: THREE.BufferGeometry, width: number, height: number, depth: number) => {
+    const vertices = geometry.getAttribute("position"), normals = geometry.getAttribute("normal");
+    const uv = geometry.getAttribute("uv");
+    for (let index = 0; index < vertices.count; index++) {
+      const x = vertices.getX(index) * width, y = vertices.getY(index) * height, z = vertices.getZ(index) * depth;
+      const nx = Math.abs(normals.getX(index)), ny = Math.abs(normals.getY(index)), nz = Math.abs(normals.getZ(index));
+      // Lengthwise grain follows the timber's longest dimension; adjacent
+      // panels use the same physical texture scale rather than one tile each.
+      if (width >= height && width >= depth) {
+        if (nx > ny && nx > nz) uv.setXY(index, z * 0.55, y * 0.45);
+        else uv.setXY(index, (ny > nz ? z : y) * 0.55, x * 0.45);
+      } else if (height >= depth) {
+        if (ny > nx && ny > nz) uv.setXY(index, x * 0.55, z * 0.45);
+        else uv.setXY(index, (nx > nz ? z : x) * 0.55, y * 0.45);
+      } else {
+        if (nz > nx && nz > ny) uv.setXY(index, x * 0.55, y * 0.45);
+        else uv.setXY(index, (ny > nx ? x : y) * 0.55, z * 0.45);
+      }
+    }
+    uv.needsUpdate = true;
+    return geometry;
   };
   // A single planar chamfer gives real edge highlights with 28 triangles,
   // avoiding a highly subdivided rounded cube for each of thousands of parts.
@@ -126,7 +196,20 @@ export function createGlobeLibrary(quality: GlobeQualityTier): OwnedGlobeLibrary
       if (placement.roll) rotation.multiply(rollRotation.setFromAxisAngle(outward, placement.roll));
       matrix.compose(position, rotation, scale);
       result.setMatrixAt(index, matrix);
-      if (placement.color) result.setColorAt(index, placement.color);
+      const color = placement.color?.clone() ?? new THREE.Color(1, 1, 1);
+      if (!name.includes("occlusion") && name !== "library-reading-lamps" && name !== "library-window-glazing") {
+        // A bounded baked room exposure complements the two visible fixtures.
+        // It creates stable cool/warm zones without a shared ambient-light edit.
+        const daylight = Math.exp(-position.distanceToSquared(daylightPosition) / 31);
+        const warmth = Math.exp(-position.distanceToSquared(warmPosition) / 5.5);
+        const lowerRoom = 0.87 + 0.13 * smooth((placement.y + 5.6) / 6.2);
+        color.multiply(new THREE.Color().setRGB(
+          (0.72 + daylight * 0.21 + warmth * 0.15) * lowerRoom,
+          (0.75 + daylight * 0.25 + warmth * 0.075) * lowerRoom,
+          (0.80 + daylight * 0.28 + warmth * 0.020) * lowerRoom,
+        ));
+      }
+      result.setColorAt(index, color);
     });
     result.instanceMatrix.needsUpdate = true;
     if (result.instanceColor) result.instanceColor.needsUpdate = true;
@@ -144,33 +227,105 @@ export function createGlobeLibrary(quality: GlobeQualityTier): OwnedGlobeLibrary
 
   try {
     craft = createGlobeCraftMaterials(quality);
-    const wood = finish(craft.darkWood, "#866044");
-    const trim = finish(craft.brass);
-    const shelves = finish(craft.wood, "#b58a59");
-    const recess = finish(craft.darkWood, "#473126");
+    const wood = finish(craft.darkWood, "#82705d");
+    wood.envMapIntensity = 0.24;
+    const trim = finish(craft.brass, "#b39a68");
+    trim.metalness = 0.78; trim.envMapIntensity = 0.70;
+    trim.roughnessMap = ownedTile("library-aged-brass-roughness", (u, v) => {
+      const value = Math.round(145 + 24 * Math.sin(u * Math.PI) * Math.sin(v * Math.PI));
+      return [value, value, value, 255];
+    });
+    const shelves = finish(craft.wood, "#aa9277");
+    shelves.roughness = 0.88; shelves.envMapIntensity = 0.38;
+    const recess = finish(craft.darkWood, "#45382d");
+    recess.envMapIntensity = 0.12;
     const books = finish(craft.leather);
-    const paper = finish(craft.paper);
+    books.envMapIntensity = 0.26;
+    const leatherRelief = (u: number, v: number) => {
+      const grain = surfaceNoise(u, v, 48, 64, 171);
+      const crease = Math.exp(-Math.pow((u - 0.065) / 0.025, 2))
+        + Math.exp(-Math.pow((u - 0.935) / 0.025, 2));
+      return grain * 0.0016 - crease * 0.004;
+    };
+    books.map = ownedTile("library-worn-leather-albedo", (u, v) => {
+      const grain = surfaceNoise(u, v, 48, 64, 171);
+      const cloud = surfaceNoise(u, v, 5, 8, 181);
+      const handled = Math.exp(-Math.min(v, 1 - v) * 24)
+        + Math.exp(-Math.min(u, 1 - u) * 34) * 0.4;
+      const rubbed = handled * (0.4 + surfaceNoise(u, v, 12, 24, 193) * 0.6);
+      const value = Math.round(199 + cloud * 26 + grain * 9 + rubbed * 17);
+      return [value, value, value, 255];
+    }, true, 2);
+    books.normalMap = ownedTile("library-worn-leather-normal", (u, v) => {
+      const step = 1 / 128;
+      const dx = (leatherRelief(u - step, v) - leatherRelief(u + step, v)) * 45;
+      const dy = (leatherRelief(u, v - step) - leatherRelief(u, v + step)) * 45;
+      const length = Math.hypot(dx, dy, 1);
+      return [Math.round((dx / length * 0.5 + 0.5) * 255),
+        Math.round((dy / length * 0.5 + 0.5) * 255), Math.round((1 / length * 0.5 + 0.5) * 255), 255];
+    }, false, 2);
+    books.normalScale.set(0.55, 0.55);
+    books.roughnessMap = ownedTile("library-handled-leather-roughness", (u, v) => {
+      const handledEdges = Math.exp(-v * 15) + Math.exp(-(1 - v) * 15);
+      const value = Math.round(185 - handledEdges * 38 + surfaceNoise(u, v, 12, 16, 201) * 20);
+      return [value, value, value, 255];
+    });
+    const paper = finish(craft.paper, "#d9cfb8");
+    paper.envMapIntensity = 0.07;
+    paper.map = ownedTile("library-bound-page-edges", (u, v) => {
+      const signatures = Math.pow(0.5 + 0.5 * Math.cos(v * Math.PI * 2 * 15), 12);
+      const foreEdge = Math.exp(-Math.min(u, 1 - u) * 12);
+      const value = Math.round(239 - signatures * 12 - foreEdge * 13 + surfaceNoise(u, v, 12, 24, 209) * 5);
+      return [value, value, Math.round(value * 0.97), 255];
+    }, true);
     const wall = finish(craft.stone, "#555664");
     wall.emissive.set("#090d15");
     wall.side = THREE.BackSide;
     const stone = finish(craft.stone, "#777065");
-    const galleryFinish = finish(craft.wood, "#936744");
+    const galleryFinish = finish(craft.wood, "#8e7961");
     galleryFinish.side = THREE.DoubleSide;
-    const windowFinish = finish(craft.stone, "#657f99");
-    // Frosted daylight behind the glazing has no stone veins or surface relief.
-    windowFinish.map = null; windowFinish.normalMap = null; windowFinish.roughnessMap = null;
+    const windowFinish = finish(craft.stone, "#d7e4e9");
+    // Irregular, softly transmitted daylight belongs behind the actual glass.
+    // The nearer leaded panes carry their own reflections and waviness, so the
+    // recess has depth instead of reading as an opaque blue board.
+    const windowLightMap = ownedTile("library-window-daylight", (u, v) => {
+      const edge = smooth(Math.min(u, 1 - u) * 8);
+      const cloud = surfaceNoise(u, v, 3, 4, 233);
+      const distantCanopy = (1 - smooth((v - 0.05) * 3.5))
+        * smooth((surfaceNoise(u, v, 6, 4, 241) - 0.22) * 2.3);
+      const sky = (0.70 + 0.18 * smooth(v) + cloud * 0.10 - distantCanopy * 0.17) * (0.90 + edge * 0.10);
+      return [Math.round(sky * 218), Math.round(sky * 234), Math.round(sky * 246), 255];
+    }, true);
+    windowFinish.map = windowLightMap; windowFinish.normalMap = null; windowFinish.roughnessMap = null;
     windowFinish.roughness = 0.7;
-    windowFinish.emissive.set("#233b57");
-    windowFinish.emissiveIntensity = 0.7;
-    const glass = new THREE.MeshPhysicalMaterial({ color: "#9db6bc", roughness: 0.2,
-      metalness: 0.06, transparent: true, opacity: 0.25, depthWrite: false,
-      envMap: craft.brass.envMap, envMapIntensity: 0.7, clearcoat: 0.7, side: THREE.DoubleSide });
+    windowFinish.emissiveMap = windowLightMap;
+    windowFinish.emissive.set("#b9d9ed");
+    windowFinish.emissiveIntensity = 0.82;
+    const glassNormal = ownedTile("library-drawn-glass-normal", (u, v) => {
+      const dx = Math.sin(v * Math.PI * 2 * 3 + Math.sin(u * Math.PI * 4)) * 0.12;
+      const dy = Math.sin(u * Math.PI * 2 * 4 + Math.sin(v * Math.PI * 6)) * 0.09;
+      const length = Math.hypot(dx, dy, 1);
+      return [Math.round((dx / length * 0.5 + 0.5) * 255), Math.round((dy / length * 0.5 + 0.5) * 255),
+        Math.round((1 / length * 0.5 + 0.5) * 255), 255];
+    });
+    const glass = new THREE.MeshPhysicalMaterial({ color: "#dce5df", roughness: 0.12,
+      normalMap: glassNormal, normalScale: new THREE.Vector2(0.45, 0.45),
+      metalness: 0.04, transparent: true, opacity: 0.24, depthWrite: false,
+      envMap: craft.brass.envMap, envMapIntensity: 0.8, clearcoat: 0.8, clearcoatRoughness: 0.1, side: THREE.DoubleSide });
     glass.forceSinglePass = true;
     materials.add(glass);
     const lamp = finish(craft.paper, "#ecd8b0");
     lamp.emissive.set("#ffd299");
     lamp.emissiveIntensity = 0.3;
     lamp.userData.ambientChannel = "reading-lamps";
+    const cabinetOcclusion = occlusion("library-cabinet-contact-occlusion", (u, v) =>
+      0.60 * Math.exp(-(1 - v) * 8) + 0.28 * (Math.exp(-u * 13) + Math.exp(-(1 - u) * 13))
+      + 0.16 * Math.exp(-v * 11), 0.78);
+    const shelfOcclusion = occlusion("library-shelf-contact-occlusion", (u, v) =>
+      (0.64 * Math.exp(-v * 6) + 0.42 * Math.exp(-Math.pow((v - 0.76) / 0.15, 2)))
+      * smooth(Math.min(u, 1 - u) * 15), 0.56);
+    const galleryOcclusion = occlusion("library-gallery-contact-occlusion", (_u, v) =>
+      0.10 + 0.72 * smooth(v), 0.70);
     // Small, owned contact-occlusion tiles ground the fixed architectural feet.
     // They follow the physical floor, never the camera, and require no global
     // shadow renderer or extra pass. The low-resolution falloff is intentional.
@@ -192,10 +347,22 @@ export function createGlobeLibrary(quality: GlobeQualityTier): OwnedGlobeLibrary
       metalness: 0, alphaMap: contactMap, transparent: true, opacity: 0.46, depthWrite: false });
     materials.add(contactFinish);
     const unitBox = ownGeometry(new THREE.BoxGeometry(1, 1, 1));
-    const boardGeometry = chamferedBox(2.32, 0.14, 0.72, 0.02);
-    const stileGeometry = chamferedBox(0.18, 2.9, 0.72, 0.025);
+    const boardGeometry = woodUv(chamferedBox(2.32, 0.14, 0.72, 0.02), 2.32, 0.14, 0.72);
+    const stileGeometry = woodUv(chamferedBox(0.18, 2.9, 0.72, 0.025), 0.18, 2.9, 0.72);
     const coverGeometry = chamferedBox(0.018, 1, 0.46, 0.004);
-    const moldingGeometry = chamferedBox(2.4, 0.09, 0.08, 0.017);
+    const coverVertices = coverGeometry.getAttribute("position"), coverNormals = coverGeometry.getAttribute("normal");
+    const coverUv = coverGeometry.getAttribute("uv");
+    for (let index = 0; index < coverVertices.count; index++) {
+      // Extrude's world-unit UVs would squeeze the entire skin into a sliver
+      // on a thin cover. A whole leather panel belongs on each real board face.
+      const nx = Math.abs(coverNormals.getX(index)), ny = Math.abs(coverNormals.getY(index));
+      const nz = Math.abs(coverNormals.getZ(index));
+      if (nx >= ny && nx >= nz) coverUv.setXY(index, coverVertices.getZ(index) + 0.5, coverVertices.getY(index) + 0.5);
+      else if (ny >= nz) coverUv.setXY(index, coverVertices.getX(index) + 0.5, coverVertices.getZ(index) + 0.5);
+      else coverUv.setXY(index, coverVertices.getX(index) + 0.5, coverVertices.getY(index) + 0.5);
+    }
+    coverUv.needsUpdate = true;
+    const moldingGeometry = woodUv(chamferedBox(2.4, 0.09, 0.08, 0.017), 2.4, 0.09, 0.08);
     const shaftGeometry = new THREE.CylinderGeometry(0.5, 0.5, 1, budget.turnedSegments, 3);
     const shaftPositions = shaftGeometry.getAttribute("position");
     for (let index = 0; index < shaftPositions.count; index += 1) {
@@ -222,6 +389,46 @@ export function createGlobeLibrary(quality: GlobeQualityTier): OwnedGlobeLibrary
       budget.spineSegments, 1, false, Math.PI / 2, Math.PI));
     const bindingGeometry = ownGeometry(new THREE.CylinderGeometry(0.5, 0.5, 1,
       budget.spineSegments, 1, true, Math.PI / 2, Math.PI));
+    // Fine gilt rules are actual thin surfaces following the convex binding.
+    // There are no letters, titles or borrowed decorations. Sampling follows
+    // the body facets, avoiding a flat decal crossing through the curved spine.
+    const toolingPositions: number[] = [], toolingNormals: number[] = [], toolingUv: number[] = [];
+    const giltPoint = (u: number, v: number) => {
+      const angle = Math.PI / 2 + u * Math.PI;
+      toolingPositions.push(Math.sin(angle) * 0.516, v - 0.5, Math.cos(angle) * 0.516);
+      toolingNormals.push(Math.sin(angle), 0, Math.cos(angle));
+      toolingUv.push(u, v);
+    };
+    const giltQuad = (u0: number, v0: number, u1: number, v1: number,
+      u2: number, v2: number, u3: number, v3: number) => {
+      for (const [u, v] of [[u0, v0], [u1, v1], [u2, v2], [u0, v0], [u2, v2], [u3, v3]]) giltPoint(u, v);
+    };
+    const horizontalRule = (v: number) => {
+      const samples = [0.25];
+      for (let segment = 1; segment < budget.spineSegments; segment++) {
+        const u = segment / budget.spineSegments;
+        if (u > 0.25 && u < 0.75) samples.push(u);
+      }
+      samples.push(0.75);
+      for (let index = 0; index < samples.length - 1; index++) {
+        giltQuad(samples[index], v, samples[index + 1], v,
+          samples[index + 1], v + 0.005, samples[index], v + 0.005);
+      }
+    };
+    horizontalRule(0.285); horizontalRule(0.695);
+    for (const u of [0.25, 0.746]) giltQuad(u, 0.29, u + 0.004, 0.29, u + 0.004, 0.695, u, 0.695);
+    const diamond = [[0.5, 0.45], [0.59, 0.49], [0.5, 0.53], [0.41, 0.49], [0.5, 0.45]];
+    for (let edge = 0; edge < diamond.length - 1; edge++) {
+      const [u0, v0] = diamond[edge], [u1, v1] = diamond[edge + 1];
+      const length = Math.hypot(u1 - u0, v1 - v0);
+      const du = -(v1 - v0) / length * 0.002, dv = (u1 - u0) / length * 0.002;
+      giltQuad(u0 + du, v0 + dv, u0 - du, v0 - dv, u1 - du, v1 - dv, u1 + du, v1 + dv);
+    }
+    const toolingGeometry = new THREE.BufferGeometry();
+    toolingGeometry.setAttribute("position", new THREE.Float32BufferAttribute(toolingPositions, 3));
+    toolingGeometry.setAttribute("normal", new THREE.Float32BufferAttribute(toolingNormals, 3));
+    toolingGeometry.setAttribute("uv", new THREE.Float32BufferAttribute(toolingUv, 2));
+    ownGeometry(toolingGeometry);
 
     // A closed opaque room fills every view from within the existing camera
     // envelope. Its wall chords are >11.8 from the origin; floor/ceiling >6.15.
@@ -240,6 +447,15 @@ export function createGlobeLibrary(quality: GlobeQualityTier): OwnedGlobeLibrary
     const galleryEdge = mesh("library-gallery-edge", ownGeometry(new THREE.CylinderGeometry(7.8, 7.8,
       0.16, budget.bays * 4, 1, true)), wood, midground);
     galleryEdge.position.y = -0.78;
+    const galleryShadeGeometry = ownGeometry(new THREE.RingGeometry(7.81, 11.95, budget.bays * 4));
+    const galleryShadePositions = galleryShadeGeometry.getAttribute("position");
+    const galleryShadeUv = galleryShadeGeometry.getAttribute("uv");
+    for (let vertex = 0; vertex < galleryShadePositions.count; vertex++) {
+      galleryShadeUv.setXY(vertex, 0.5, (Math.hypot(galleryShadePositions.getX(vertex), galleryShadePositions.getY(vertex)) - 7.81) / (11.95 - 7.81));
+    }
+    const galleryShade = mesh("library-gallery-contact-occlusion", galleryShadeGeometry, galleryOcclusion, midground);
+    galleryShade.rotation.x = -Math.PI / 2;
+    galleryShade.position.y = -0.862;
     const handrail = mesh("library-gallery-handrail", ownGeometry(new THREE.TorusGeometry(7.9, 0.04,
       budget.tubeSegments, budget.bays * 4)), trim, foreground);
     handrail.rotation.x = -Math.PI / 2;
@@ -263,10 +479,10 @@ export function createGlobeLibrary(quality: GlobeQualityTier): OwnedGlobeLibrary
     const bookcaseSides: Placement[] = [], lamps: Placement[] = [], lampBrackets: Placement[] = [];
     const gallerySupports: Placement[] = [], balusters: Placement[] = [], windows: Placement[] = [], windowFrames: Placement[] = [];
     const windowReveals: Placement[] = [], glazing: Placement[] = [], lampCaps: Placement[] = [];
-    const casePanels: Placement[] = [], caseMoldings: Placement[] = [], joinery: Placement[] = [];
+    const casePanels: Placement[] = [], caseMoldings: Placement[] = [], joinery: Placement[] = [], bookTooling: Placement[] = [];
     const parquet: Placement[] = [], cofferBeams: Placement[] = [], coffers: Placement[] = [];
     const arches: Placement[] = [], archInlays: Placement[] = [];
-    const floorContacts: Placement[] = [];
+    const floorContacts: Placement[] = [], cabinetContacts: Placement[] = [], shelfContacts: Placement[] = [], bookContacts: Placement[] = [];
     for (let x = -10; x <= 10; x += 2) for (let z = -10; z <= 10; z += 2) {
       if (Math.hypot(x, z) > 10.2) continue;
       const angle = ((x + z) / 2) % 2 === 0 ? 0 : Math.PI / 2;
@@ -286,7 +502,7 @@ export function createGlobeLibrary(quality: GlobeQualityTier): OwnedGlobeLibrary
           width: 2.22, height: 0.075, depth: 2.22, angle: 0 });
       }
     }
-    const spineColors = ["#865847", "#46605f", "#625772", "#9a8058", "#3c5268", "#756e51"];
+    const spineColors = ["#7e5144", "#475e52", "#64504f", "#947654", "#414f5d", "#676346", "#7a3f38", "#9b8965"];
     const palette = spineColors.map(color => new THREE.Color(color));
     for (let bay = 0; bay < budget.bays; bay += 1) {
       const angle = bay / budget.bays * Math.PI * 2;
@@ -324,7 +540,7 @@ export function createGlobeLibrary(quality: GlobeQualityTier): OwnedGlobeLibrary
         for (const tangent of [-windowWidth / 2, 0, windowWidth / 2]) {
           windowFrames.push(radial(windowAngle, 11.38, tangent, windowY, 0.08, 4, 0.12));
         }
-        for (const yOffset of [-1.95, 0, 1.95]) {
+        for (const yOffset of [-1.95, -0.975, 0, 0.975, 1.95]) {
           windowFrames.push(radial(windowAngle, 11.38, 0, windowY + yOffset, windowWidth + 0.08, 0.08, 0.12));
         }
       }
@@ -347,6 +563,10 @@ export function createGlobeLibrary(quality: GlobeQualityTier): OwnedGlobeLibrary
         const rowsPerLevel = budget.rows / 2;
         const shelfY = (row < rowsPerLevel ? FLOOR_Y + 0.36 : -0.45)
           + (row % rowsPerLevel) * (4.7 / rowsPerLevel);
+        const chamberHeight = 4.7 / rowsPerLevel - 0.11;
+        cabinetContacts.push(radial(angle, 9.588, 0, shelfY + 0.11 + chamberHeight / 2,
+          2.075, chamberHeight, 1));
+        shelfContacts.push(radial(angle, 9.35, 0, shelfY + 0.112, 2.25, 1, 0.64));
         shelfBoards.push(radial(angle, 9.35, 0, shelfY + 0.055, 2.32, 0.11, 0.7));
         caseMoldings.push(radial(angle, 8.995, 0, shelfY + 0.055, 2.35, 0.045, 0.06));
         for (const tangent of [-1.1, 1.1]) {
@@ -354,31 +574,50 @@ export function createGlobeLibrary(quality: GlobeQualityTier): OwnedGlobeLibrary
         }
         // Volumes have separate page blocks, beveled covers, convex leather
         // spines and two raised binding bands. Nothing depicts a real title.
-        const horizontalStack = (bay * 3 + row) % 7 === 0;
+        const horizontalStack = variation(bay, row, 1) < 0.22;
         const standingCount = budget.books - (horizontalStack ? 3 : 0);
         const standingStart = horizontalStack ? -0.12 : -1.04;
-        const gap = 0.008;
+        const gap = 0.009;
+        const clusterBoundary = Math.max(1, Math.floor(standingCount * (0.35 + variation(bay, row, 2) * 0.3)));
+        const clusterGap = horizontalStack ? 0.035 : 0.09 + variation(bay, row, 3) * 0.16;
+        // The occasional last book rests toward the cabinet upright. Reserve
+        // its full projected width before filling the row, so it never cuts a neighbour.
+        const leaning = standingCount > 2 && variation(bay, row, 4) > 0.55;
+        const lean = leaning ? -(0.04 + variation(bay, row, 5) * 0.055) : 0;
+        const leanReserve = leaning ? 0.105 : 0;
         const weights = Array.from({ length: standingCount }, (_, book) =>
-          0.65 + ((bay * 13 + row * 7 + book * 5) % 9) * 0.09);
+          0.62 + variation(bay, row, 20 + book) * 0.8);
         const weightSum = weights.reduce((sum, weight) => sum + weight, 0);
-        const availableWidth = 1.04 - standingStart - gap * (standingCount - 1);
+        const availableWidth = 1.04 - standingStart - gap * (standingCount - 1) - clusterGap - leanReserve;
         const volumes: { width: number; height: number; tangent: number; centerY: number; roll: number }[] = [];
+        const collectionHeight = 0.69 + variation(bay, row, 6) * 0.17;
         let edge = standingStart;
         for (let book = 0; book < standingCount; book += 1) {
+          if (book === clusterBoundary) edge += clusterGap;
           const width = weights[book] / weightSum * availableWidth;
-          const height = 0.67 + ((bay * 7 + row * 3 + book) % 6) * 0.071;
-          volumes.push({ width, height, tangent: edge + width / 2,
-            centerY: shelfY + 0.11 + height / 2, roll: 0 });
-          edge += width + gap;
+          const height = collectionHeight + (variation(bay, row, 40 + book) - 0.5) * 0.19;
+          const roll = book === standingCount - 1 ? lean : 0;
+          const halfWidth = (width * Math.cos(roll) + height * Math.abs(Math.sin(roll))) / 2;
+          const halfHeight = (height * Math.cos(roll) + width * Math.abs(Math.sin(roll))) / 2;
+          const tangent = roll ? 1.043 - halfWidth : edge + halfWidth;
+          volumes.push({ width, height, tangent,
+            centerY: shelfY + 0.11 + halfHeight, roll });
+          edge += halfWidth * 2 + gap;
         }
         if (horizontalStack) for (let stack = 0; stack < 2; stack += 1) {
           volumes.push({ width: 0.13, height: 0.82 - stack * 0.055,
             tangent: -0.60 + stack * 0.025, centerY: shelfY + 0.11 + 0.065 + stack * 0.13,
             roll: Math.PI / 2 });
         }
+        let stackSupport: { left: number; right: number; front: number; back: number; top: number } | undefined;
         volumes.forEach(({ width, height, tangent, centerY, roll }, book) => {
-          const offset = (((bay * 11 + row * 3 + book) % 5) - 2) * 0.012;
-          const coverDepth = 0.43 + ((bay + row * 2 + book) % 5) * 0.018;
+          const offset = (variation(bay, row, 60 + book) - 0.5) * 0.08;
+          const coverDepth = 0.42 + variation(bay, row, 80 + book) * 0.085;
+          // Narrow volumes have a much flatter binding than a thick folio.
+          // Keep the front edge aligned with the cover boards while all three
+          // curved layers share the same proportion and centre.
+          const spineDepth = Math.max(0.035, Math.min(0.075, width * 0.24));
+          const spineRadius = 9.009 + spineDepth / 2;
           const part = (radius: number, x: number, y: number, w: number, h: number, d: number) => {
             const placement = radial(angle, radius + offset,
               tangent + x * Math.cos(roll) - y * Math.sin(roll),
@@ -386,16 +625,56 @@ export function createGlobeLibrary(quality: GlobeQualityTier): OwnedGlobeLibrary
             placement.roll = roll;
             return placement;
           };
-          const color = palette[(bay + row * 2 + book) % palette.length];
-          const spine = part(9.055, 0, 0, width - 0.008, height - 0.012, 0.13);
+          const clusterColor = Math.floor(variation(bay, row, book < clusterBoundary ? 8 : 9) * palette.length);
+          const collection = (clusterColor + (variation(bay, row, 155 + book) > 0.78 ? 1 : 0)) % palette.length;
+          const color = palette[collection].clone().multiplyScalar(0.88 + variation(bay, row, 100 + book) * 0.22);
+          const spine = part(spineRadius, 0, 0, width - 0.008, height - 0.012, spineDepth);
           spine.color = color; bookPlacements.push(spine);
-          pageBlocks.push(part(9.05 + (coverDepth - 0.055) / 2, 0, 0, width - 0.028, height - 0.035, coverDepth - 0.055));
+          if (variation(bay, row, 165 + book) > 0.42) {
+            const tooling = part(spineRadius, 0, 0, width - 0.008, height - 0.012, spineDepth);
+            const patina = 0.55 + variation(bay, row, 175 + book) * 0.4;
+            tooling.color = new THREE.Color().setRGB(patina, patina * 0.96, patina * 0.84);
+            bookTooling.push(tooling);
+          }
+          const page = part(9.05 + (coverDepth - 0.055) / 2, 0, 0, width - 0.028, height - 0.035, coverDepth - 0.055);
+          page.color = new THREE.Color().setRGB(0.94, 0.90 + variation(bay, row, 120 + book) * 0.07, 0.81 + variation(bay, row, 140 + book) * 0.11);
+          pageBlocks.push(page);
           for (const side of [-1, 1]) {
             const cover = part(9.015 + coverDepth / 2, side * (width / 2 - 0.008), 0, 0.016, height, coverDepth);
             cover.color = color; bookCovers.push(cover);
           }
           for (const bandHeight of [0.18, 0.82]) {
-            bindingBands.push(part(9.055, 0, height * (bandHeight - 0.5), width - 0.002, 0.014, 0.14));
+            bindingBands.push(part(spineRadius, 0, height * (bandHeight - 0.5), width - 0.002, 0.014, spineDepth + 0.006));
+          }
+          // Reuse the room's soft contact tile at the actual support surface.
+          // A leaning book touches at its lower corner; a horizontal volume
+          // rests on the previous cover, not on a floating shadow above a shelf.
+          const lyingFlat = Math.abs(roll) > Math.PI / 4;
+          const front = 9.009 + offset, back = 9.015 + offset + coverDepth;
+          if (lyingFlat) {
+            let left = tangent - height / 2, right = tangent + height / 2;
+            let shadowFront = front, shadowBack = back;
+            let surfaceY = shelfY + 0.11;
+            if (stackSupport) {
+              left = Math.max(left, stackSupport.left) + 0.001;
+              right = Math.min(right, stackSupport.right) - 0.001;
+              shadowFront = Math.max(shadowFront, stackSupport.front) + 0.001;
+              shadowBack = Math.min(shadowBack, stackSupport.back) - 0.001;
+              surfaceY = stackSupport.top;
+            } else {
+              left -= 0.025; right += 0.025;
+              shadowFront -= 0.025; shadowBack += 0.025;
+            }
+            bookContacts.push(radial(angle, (shadowFront + shadowBack) / 2, (left + right) / 2,
+              surfaceY + 0.0015, right - left, 1, shadowBack - shadowFront));
+            stackSupport = { left: tangent - height / 2, right: tangent + height / 2,
+              front: 9.015 + offset, back, top: centerY + width / 2 };
+          } else {
+            const supportX = roll === 0 ? tangent
+              : tangent - Math.sign(roll) * width * Math.cos(roll) / 2 + height * Math.sin(roll) / 2;
+            const contactWidth = roll === 0 ? width + 0.055 : Math.min(width, 0.075) + 0.055;
+            bookContacts.push(radial(angle, (front + back) / 2, supportX,
+              shelfY + 0.1115, contactWidth, 1, back - front + 0.055));
           }
         });
       }
@@ -417,16 +696,23 @@ export function createGlobeLibrary(quality: GlobeQualityTier): OwnedGlobeLibrary
     instanced("library-arch-inlay", ownGeometry(new THREE.TorusGeometry(0.88, 0.024,
       budget.tubeSegments, budget.archSegments, Math.PI)), trim, archInlays, foreground);
     instanced("library-bookcase-backs", unitBox, recess, backs, midground);
-    instanced("library-bookcase-raised-panels", chamferedBox(2.1, 2.5, 0.06, 0.015), wood, casePanels, midground);
+    instanced("library-cabinet-contact-occlusion", ownGeometry(new THREE.PlaneGeometry(1, 1).rotateY(Math.PI)),
+      cabinetOcclusion, cabinetContacts, midground);
+    instanced("library-shelf-contact-occlusion", ownGeometry(new THREE.PlaneGeometry(1, 1).rotateX(-Math.PI / 2)),
+      shelfOcclusion, shelfContacts, midground);
+    instanced("library-bookcase-raised-panels", woodUv(chamferedBox(2.1, 2.5, 0.06, 0.015), 2.1, 2.5, 0.06), wood, casePanels, midground);
     instanced("library-case-moldings", moldingGeometry, shelves, caseMoldings, midground);
     instanced("library-joinery-pins", unitBox, trim, joinery, midground);
-    instanced("library-gallery-supports", boardGeometry, wood, gallerySupports, midground);
+    instanced("library-gallery-supports", woodUv(chamferedBox(0.18, 0.34, 4.4, 0.02), 0.18, 0.34, 4.4), wood, gallerySupports, midground);
     instanced("library-bookcase-uprights", stileGeometry, wood, bookcaseSides, midground);
     instanced("library-shelves", boardGeometry, shelves, shelfBoards, midground);
     instanced("library-unlettered-books", spineGeometry, books, bookPlacements, midground);
     instanced("library-book-page-blocks", unitBox, paper, pageBlocks, midground);
     instanced("library-book-covers", coverGeometry, books, bookCovers, midground);
     instanced("library-book-binding-bands", bindingGeometry, trim, bindingBands, midground);
+    instanced("library-book-gilt-tooling", toolingGeometry, trim, bookTooling, midground);
+    instanced("library-book-contact-occlusion", ownGeometry(new THREE.PlaneGeometry(1, 1).rotateX(-Math.PI / 2)),
+      contactFinish, bookContacts, midground);
     instanced("library-lamp-brackets", ownGeometry(new THREE.TubeGeometry(new THREE.QuadraticBezierCurve3(
       new THREE.Vector3(0, 0, 0), new THREE.Vector3(0, -0.02, -0.40), new THREE.Vector3(0, 0.15, -0.45)),
       budget.tubeSegments * 2, 0.026, budget.tubeSegments, false)), trim, lampBrackets, midground);
@@ -444,12 +730,18 @@ export function createGlobeLibrary(quality: GlobeQualityTier): OwnedGlobeLibrary
     instanced("library-ceiling-coffer-panels", boardGeometry, shelves, coffers, background);
     instanced("library-floor-contact-occlusion", ownGeometry(new THREE.PlaneGeometry(1, 1).rotateX(-Math.PI / 2)),
       contactFinish, floorContacts, background);
-    for (const z of [-8.6, 8.6]) {
-      const light = new THREE.PointLight("#ffd3a0", 5, 3.8, 2);
+    for (const source of [
+      { name: "library-window-daylight", color: "#c2dbf0", intensity: 7, distance: 4,
+        position: daylightPosition, emitterMesh: "library-window-glazing", emitterInstance: daylightBay * 2 + 1, emitterOffset: 0.75 },
+      { name: "library-sconce-light", color: "#ffd3a0", intensity: 1.65, distance: 3.6,
+        position: warmPosition, emitterMesh: "library-reading-lamps", emitterInstance: warmBay, emitterOffset: 0 },
+    ]) {
+      const light = new THREE.PointLight(source.color, source.intensity, source.distance, 2);
       lights.add(light);
-      light.name = "library-local-reading-light";
-      light.position.set(0, 1.9, z);
-      light.userData = { source: "authored-in-project", restrictedDistance: 3.8 };
+      light.name = source.name;
+      light.position.copy(source.position);
+      light.userData = { source: "authored-in-project", restrictedDistance: source.distance,
+        emitterMesh: source.emitterMesh, emitterInstance: source.emitterInstance, emitterOffset: source.emitterOffset };
       midground.add(light);
     }
     group.updateMatrixWorld(true);

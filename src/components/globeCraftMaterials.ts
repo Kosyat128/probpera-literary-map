@@ -65,32 +65,47 @@ export function createGlobeCraftMaterials(quality: GlobeQualityTier): GlobeCraft
       const u = x / size, v = y / size;
       const broad = noise(u, v, 4, 4, 13), fine = noise(u, v, 64, 64, 29);
       let tone = 0.8, height = fine, roughness = 0.7;
+      let red = 1, green = 1, blue = 1;
       if (kind === "wood") {
-        const drift = (noise(u, v, 4, 2, 3) - 0.5) * 0.08 + Math.sin(v * TAU) * 0.025;
-        const grain = Math.pow(0.5 + 0.5 * Math.sin((u + drift) * TAU * 20), 12);
-        const fibres = noise(u, v, 96, 4, 47);
-        tone = 0.76 + broad * 0.10 + fibres * 0.05 - grain * 0.06;
-        height = fibres * 0.025 - grain * 0.016;
-        roughness = 0.61 + grain * 0.035 + fine * 0.035;
+        // Uneven longitudinal growth and pores, not equally spaced corrugations.
+        // The warp is periodic too, so an arbitrary UV phase still tiles cleanly.
+        const drift = (noise(u, v, 3, 2, 3) - 0.5) * 0.065
+          + (noise(u, v, 7, 3, 19) - 0.5) * 0.014;
+        const along = u + drift;
+        const growth = noise(along, v, 11, 2, 41);
+        const fibres = noise(along, v, 44, 3, 47);
+        const pores = smooth(clamp((noise(along, v, 120, 5, 91) - 0.60) * 3.2));
+        const dense = smooth(clamp((fibres - 0.45) * 2.4));
+        tone = 0.75 + growth * 0.11 + broad * 0.035 - dense * 0.055 - pores * 0.045;
+        height = fibres * 0.019 - pores * 0.012;
+        roughness = 0.48 + growth * 0.075 + dense * 0.085 + pores * 0.035;
+        // The canonical warm lights already supply warmth. A neutral brown tile
+        // avoids amplifying orange in existing walnut/wood material tints.
+        red = 0.90 + growth * 0.025; green = 0.98; blue = 1.02 - dense * 0.015;
       } else if (kind === "brass") {
-        const oxidation = smooth(clamp((broad - 0.46) * 3));
-        const brushed = noise(u, v, 4, 100, 71);
-        tone = 0.84 + brushed * 0.018 - oxidation * 0.035;
-        height = fine * 0.004 + brushed * 0.003;
-        roughness = 0.40 + oxidation * 0.10 + brushed * 0.018;
+        const oxidation = smooth(clamp((noise(u, v, 5, 3, 59) - 0.43) * 2.8));
+        const handled = smooth(clamp((noise(u, v, 3, 6, 61) - 0.48) * 2.3));
+        const brushed = noise(u + (broad - 0.5) * 0.015, v, 4, 100, 71);
+        tone = 0.85 + brushed * 0.012 - oxidation * 0.12 + handled * 0.018;
+        height = fine * 0.002 + brushed * 0.0025;
+        roughness = 0.49 + oxidation * 0.17 - handled * 0.075 + brushed * 0.025;
+        red = 0.97 - oxidation * 0.10; green = 0.99 - oxidation * 0.045; blue = 0.98;
       } else if (kind === "leather") {
-        const pebble = noise(u, v, 48, 48, 83);
+        const pebble = noise(u, v, 38, 38, 83);
         const pores = Math.pow(clamp((fine - 0.4) * 2), 3);
-        tone = 0.83 + broad * 0.07 + pebble * 0.035 - pores * 0.03;
-        height = pebble * 0.06 - pores * 0.02;
-        roughness = 0.72 + pores * 0.04 - pebble * 0.018;
+        const crease = smooth(clamp((noise(u + broad * 0.025, v, 7, 18, 97) - 0.68) * 4));
+        const handled = noise(u, v, 3, 5, 101);
+        tone = 0.79 + broad * 0.065 + pebble * 0.035 - pores * 0.025 - crease * 0.025;
+        height = pebble * 0.035 - pores * 0.014 - crease * 0.014;
+        roughness = 0.63 + pores * 0.055 + crease * 0.05 - handled * 0.11;
       } else if (kind === "paper") {
-        const leaves = 0.5 + Math.sin(v * TAU * 60 + Math.sin(u * TAU * 2) * 0.18) * 0.5;
+        const leaves = noise(u, v, 4, 64, 107);
         // Cut signatures are already modelled. Strong additional stripe maps
         // beat against those edges at phone scale and produce a woven moire.
-        tone = 0.90 + broad * 0.035 + fine * 0.015;
-        height = leaves * 0.003 + fine * 0.004;
-        roughness = 0.83 + fine * 0.14;
+        tone = 0.91 + broad * 0.025 + fine * 0.008;
+        height = leaves * 0.0015 + fine * 0.002;
+        roughness = 0.90 + fine * 0.075;
+        red = 0.98; green = 0.99;
       } else {
         const veins = Math.pow(0.5 + 0.5 * Math.sin(u * TAU * 3 + v * TAU * 2 + broad * 8), 18);
         tone = 0.8 + broad * 0.08 + fine * 0.025 - veins * 0.08;
@@ -98,8 +113,9 @@ export function createGlobeCraftMaterials(quality: GlobeQualityTier): GlobeCraft
         roughness = 0.53 + fine * 0.13 + veins * 0.12;
       }
       const offset = (y * size + x) * 4;
-      const value = Math.round(clamp(tone) * 255), r = Math.round(clamp(roughness) * 255);
-      albedo.set([value, value, value, 255], offset);
+      const r = Math.round(clamp(roughness) * 255);
+      albedo.set([Math.round(clamp(tone * red) * 255), Math.round(clamp(tone * green) * 255),
+        Math.round(clamp(tone * blue) * 255), 255], offset);
       rough.set([r, r, r, 255], offset);
       relief[y * size + x] = height;
     }
@@ -117,7 +133,7 @@ export function createGlobeCraftMaterials(quality: GlobeQualityTier): GlobeCraft
       roughnessMap: texture(rough, size, size, `${kind}-roughness`),
       normalMap: texture(normal, size, size, `${kind}-normal`) };
     // Grain and pores are millimetre-scale craft detail, not broad painted bands.
-    const repeats = kind === "wood" ? [4, 1] : kind === "leather" ? [2, 2] : [1, 1];
+    const repeats = kind === "wood" ? [2, 1] : kind === "leather" ? [2, 2] : [1, 1];
     for (const map of Object.values(maps)) map.repeat.set(repeats[0], repeats[1]);
     return maps;
   };
@@ -127,31 +143,32 @@ export function createGlobeCraftMaterials(quality: GlobeQualityTier): GlobeCraft
     const reflectionBytes = new Uint8Array(size * (size / 2) * 4);
     for (let y = 0; y < size / 2; y++) for (let x = 0; x < size; x++) {
       const u = x / size, v = y / (size / 2);
-      const windows = Math.pow(Math.max(0, Math.cos(u * TAU * 4)), 26)
+      const windows = Math.pow(Math.max(0, Math.cos(u * TAU * 4)), 12)
         * smooth(clamp((v - 0.12) * 8)) * smooth(clamp((0.69 - v) * 9));
       const ceiling = Math.pow(Math.max(0, 1 - v), 4) * 0.2;
-      reflectionBytes.set([Math.round((0.10 + ceiling + windows * 0.60) * 255),
-        Math.round((0.075 + ceiling * 0.84 + windows * 0.61) * 255),
-        Math.round((0.055 + ceiling * 0.65 + windows * 0.62) * 255), 255], (y * size + x) * 4);
+      reflectionBytes.set([Math.round((0.12 + ceiling + windows * 0.45) * 255),
+        Math.round((0.12 + ceiling * 0.96 + windows * 0.47) * 255),
+        Math.round((0.115 + ceiling * 0.90 + windows * 0.49) * 255), 255], (y * size + x) * 4);
     }
     const reflection = texture(reflectionBytes, size, size / 2, "window-reflections", true);
     reflection.mapping = THREE.EquirectangularReflectionMapping;
     reflection.wrapT = THREE.ClampToEdgeWrapping;
     const finish = (kind: Finish, color: string, metalness: number, reflectionIntensity: number) => {
+      const reliefScale = kind === "leather" ? 0.22 : kind === "brass" ? 0.08 : kind === "paper" ? 0.08 : kind === "wood" ? 0.12 : 0.14;
       const material = new THREE.MeshStandardMaterial({ ...mapsFor(kind), color, metalness, roughness: 1,
-        normalScale: new THREE.Vector2(kind === "leather" ? 0.25 : 0.14, kind === "leather" ? 0.25 : 0.14),
+        normalScale: new THREE.Vector2(reliefScale, reliefScale),
         envMap: reflection, envMapIntensity: reflectionIntensity });
       material.name = `original-craft:${kind}`;
       material.userData.provenance = "authored-in-project";
       materials.add(material);
       return material;
     };
-    const wood = finish("wood", "#a4784b", 0.02, 0.30);
+    const wood = finish("wood", "#92785b", 0.02, 0.30);
     const darkWood = wood.clone();
-    darkWood.color.set("#68442b"); darkWood.name = "original-craft:dark-wood";
+    darkWood.color.set("#66503c"); darkWood.name = "original-craft:dark-wood";
     materials.add(darkWood);
-    return Object.freeze({ wood, darkWood, brass: finish("brass", "#c6a366", 0.82, 0.85),
-      leather: finish("leather", "#ffffff", 0, 0.22), paper: finish("paper", "#e4d7af", 0, 0.12),
+    return Object.freeze({ wood, darkWood, brass: finish("brass", "#bba779", 0.82, 0.72),
+      leather: finish("leather", "#ffffff", 0, 0.22), paper: finish("paper", "#dfd7be", 0, 0.06),
       stone: finish("stone", "#8f8374", 0.08, 0.32), dispose });
   } catch (error) { dispose(); throw error; }
 }

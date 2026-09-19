@@ -90,15 +90,45 @@ export function createIncludedGlobeStand(id: IncludedGlobeStandId, quality: Glob
       const positions = geometry.getAttribute("position");
       const normals = geometry.getAttribute("normal");
       const uvs = geometry.getAttribute("uv");
-      const diameter = 2 * Math.max(...profile.map(([radius]) => radius));
-      // Endgrain follows the broad top/shoulder plane instead of collapsing
-      // angular UVs into radial spokes. Upright sides retain vertical grain.
+      const tileSize = 0.65;
+      const circumference = 2 * Math.PI * Math.max(...profile.map(([radius]) => radius));
+      const circumferenceTiles = Math.max(1, Math.round(circumference / tileSize));
+      const originY = Math.min(...profile.map(([, y]) => y));
+      // Profile samples describe shape, not distance. Using their index as V
+      // stretches grain through narrow collars and bunches it along shoulders.
       for (let vertex = 0; vertex < positions.count; vertex++) {
-        if (Math.abs(normals.getY(vertex)) > 0.7) {
-          uvs.setXY(vertex, 0.5 + positions.getX(vertex) / diameter, 0.5 + positions.getZ(vertex) / diameter);
+        // Whole circumferential tiles close the back seam without a phase jump.
+        uvs.setXY(vertex, uvs.getX(vertex) * circumferenceTiles,
+          (positions.getY(vertex) - originY) / tileSize);
+      }
+      // A rim vertex belongs to both cap and side. Split only that UV seam:
+      // otherwise interpolating planar centre UVs with angular rim UVs creates
+      // a swirl on the cap. Face positions, normals and triangle count stay put.
+      const indices = Array.from(geometry.getIndex()!.array);
+      const mappedPositions = Array.from(positions.array), mappedNormals = Array.from(normals.array);
+      const mappedUvs = Array.from(uvs.array), capVertices = new Map<number, number>();
+      for (let offset = 0; offset < indices.length; offset += 3) {
+        const a = indices[offset], b = indices[offset + 1], c = indices[offset + 2];
+        if (Math.abs(positions.getY(a) - positions.getY(b)) > 1e-7
+          || Math.abs(positions.getY(a) - positions.getY(c)) > 1e-7) continue;
+        for (let corner = 0; corner < 3; corner++) {
+          const source = indices[offset + corner];
+          let target = capVertices.get(source);
+          if (target === undefined) {
+            target = mappedPositions.length / 3;
+            mappedPositions.push(positions.getX(source), positions.getY(source), positions.getZ(source));
+            mappedNormals.push(normals.getX(source), normals.getY(source), normals.getZ(source));
+            mappedUvs.push(0.5 + positions.getX(source) / tileSize, 0.5 + positions.getZ(source) / tileSize);
+            capVertices.set(source, target);
+          }
+          indices[offset + corner] = target;
         }
       }
-      uvs.needsUpdate = true;
+      geometry.setAttribute("position", new THREE.Float32BufferAttribute(mappedPositions, 3));
+      geometry.setAttribute("normal", new THREE.Float32BufferAttribute(mappedNormals, 3));
+      geometry.setAttribute("uv", new THREE.Float32BufferAttribute(mappedUvs, 2));
+      geometry.setIndex(indices);
+      geometry.userData.grainMapping = "physical-height-and-planar-cap";
     }
     return mesh(name, geometry, material);
   };
@@ -138,9 +168,12 @@ export function createIncludedGlobeStand(id: IncludedGlobeStandId, quality: Glob
 
   try {
     craft = createGlobeCraftMaterials(quality);
-    const bronze = finish(craft.brass, "aged-bronze", "#ad8351", 0.86);
-    const bright = finish(craft.brass, "polished-brass-inlay", "#d5b779", 0.91);
-    const patina = finish(craft.brass, "recessed-bronze", "#493b30", 0.65);
+    const bronze = finish(craft.brass, "aged-bronze", "#8c8069", 0.78);
+    bronze.roughness = 1; bronze.envMapIntensity = 0.52;
+    const bright = finish(craft.brass, "polished-brass-inlay", "#c1ad86", 0.91);
+    bright.roughness = 0.86; bright.envMapIntensity = 0.76;
+    const patina = finish(craft.brass, "recessed-bronze", "#4c514a", 0.35);
+    patina.roughness = 1; patina.envMapIntensity = 0.27;
     if (id === "stand.base.museum") {
       const stone = finish(craft.stone, "museum-dark-stone", "#49413c", 0.05);
       lathe("museum-bevelled-foot", [
@@ -185,9 +218,12 @@ export function createIncludedGlobeStand(id: IncludedGlobeStandId, quality: Glob
         }
       }
     } else if (id === "stand.base.wood") {
-      const wood = finish(craft.wood, "turned-walnut", "#9b693e", 0);
-      const darkWood = finish(craft.darkWood, "ebonised-wood-edges", "#513522", 0);
-      const endgrain = finish(craft.wood, "wooden-joinery", "#c29861", 0);
+      const wood = finish(craft.wood, "turned-walnut", "#736858", 0);
+      wood.roughness = 0.98; wood.envMapIntensity = 0.16;
+      const darkWood = finish(craft.darkWood, "ebonised-wood-edges", "#423e36", 0);
+      darkWood.roughness = 1; darkWood.envMapIntensity = 0.13;
+      const endgrain = finish(craft.wood, "wooden-joinery", "#938675", 0);
+      endgrain.roughness = 1; endgrain.envMapIntensity = 0.17;
       lathe("wood-underfoot", [
         [0, -1.438], [0.405, -1.438], [0.429, -1.432], [0.447, -1.420],
         [0.450, -1.408], [0.441, -1.400], [0, -1.400],

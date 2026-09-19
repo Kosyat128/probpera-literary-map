@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "mode": "unit",
+  "startedAt": "2026-09-19T19:34:56.086Z",
+  "endedAt": "2026-09-19T19:34:59.855Z",
+  "sourceBase": "054b00725734f7864d89bd843b3aae84cf7df79e",
+  "sourceInputs": [
+    {
+      "path": "docs/mobile/evidence/S13/library-lighting-20260919/run-checks.mjs",
+      "sha256": "23ddec19f292794a0ff3bff675f79accf652d00645b5f65793f01586c634e3c9"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+    },
+    {
+      "path": "package.json",
+      "sha256": "90b392c205754f838b8bc7c4475bd475936be1078561bb218c437d151177869f"
+    },
+    {
+      "path": "src/components/globeCraftMaterials.test.ts",
+      "sha256": "b5f3c93e21d0445ded7cf9ea62adab069627ca16520fa67507a78852daffb878"
+    },
+    {
+      "path": "src/components/globeCraftMaterials.ts",
+      "sha256": "2b4d6c10b7a2313f6060892f18e6207bc132a4e8074fcd46ac2e647cefffb9f5"
+    },
+    {
+      "path": "src/components/globeLibraryGeometry.test.ts",
+      "sha256": "3753cc5eef358bc71fd5adc86c700b5e122bca10a48b2f09a12fee49ab4ea50a"
+    },
+    {
+      "path": "src/components/globeLibraryGeometry.ts",
+      "sha256": "9956b7dda8cbd75e2804f689b6141a415153638936bcf4df00800db8786bb3fe"
+    },
+    {
+      "path": "src/components/globeQuality.ts",
+      "sha256": "b52e0221ec8bcac17d640e26378bc0304521316ca34e203313d2b63f9c3b28c9"
+    },
+    {
+      "path": "src/components/globeStandGeometry.test.ts",
+      "sha256": "da72bc8a63c8bb4424f9152160b3bfb984be843b041964dc8350d079874ad528"
+    },
+    {
+      "path": "src/components/globeStandGeometry.ts",
+      "sha256": "1554e5c0b28992d12880fbf00f57cbb02c097f7126f164ef4db8617f7702bc45"
+    },
+    {
+      "path": "src/planet/globeStands.ts",
+      "sha256": "3ce4ed09f28a814e3922238fe8509a1caa2c6c915f0cadd5e7bc58066745adbf"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "8d51a8c9266fe83bf17c076b51672753b3750a17520cd0d2c28a90cb8b21e0d6"
+    },
+    {
+      "path": "vitest.config.ts",
+      "sha256": "5c1e90985e77b35599e5bdaf77c74a1166949ec9c4f45d1c5f926c3f53bef90e"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "executions": [
+    {
+      "name": "unit",
+      "exitCode": 0,
+      "durationMs": 3699
+    }
+  ],
+  "tests": {
+    "passed": 14,
+    "failed": 0,
+    "skipped": 0,
+    "failures": []
+  },
+  "pass": true,
+  "releaseReady": false,
+  "deviceTested": false,
+  "productionActivation": false
+}

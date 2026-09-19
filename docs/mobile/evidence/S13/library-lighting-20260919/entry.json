@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-19T19:10:35.065Z",
+  "stage": "S13",
+  "checkpoint": "054b00725734f7864d89bd843b3aae84cf7df79e",
+  "dependencies": [
+    {
+      "path": "docs/mobile/requirements/v12/16_FULL_3D_BACKGROUND_ENGINE_RU.md",
+      "sha256": "75f830874b32c2afca440b958cb4b3cefdcb9c606b8ba0195fba2f02022198c5"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/17_SKINS_STANDS_ACCESSORIES_ENGINE_RU.md",
+      "sha256": "d84657d718c24a69ce14ddfc6d1e9dc7d6778bf4e58b8be24d9d460249b51741"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/35_3D_BACKGROUND_CATALOG.csv",
+      "sha256": "30cc7b9f6157a38dee3b4661a7bb828e7d8856f09c4b7ccbcdca80a6afebb857"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/36_SKIN_STAND_ACCESSORY_CATALOG.csv",
+      "sha256": "7f35bf0f2c8f27c4d87839814c0bd5772ccf92b02c052eb05e76cda1c6f3eb72"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/37_BASE_EDITION_STARTER_SET.csv",
+      "sha256": "575f40b97986cb4e64cb89243059a3b18c4cda8069f4f0e1c7d3565f6132b731"
+    }
+  ],
+  "scope": "Library light placement, glazing, cabinet occlusion and book detailing; shared craft-material realism for the library and all three included stands; physical wood UV and stand finish corrections. Preserve composition, globe, camera and stand envelope.",
+  "userQualityClarification": "2026-09-19: 3D backgrounds and stands must be realistic, high quality and carefully detailed; the existing simple procedural objects are insufficient. Functional prototype evidence does not satisfy this visual requirement. Inspect bevels, joinery, bindings, paper, material response and architectural depth at normal scale, close range and multiple viewpoints before recording the next result.",
+  "previousComposition": "docs/mobile/evidence/S13/composition-20260919/result.json",
+  "previousArt": "docs/mobile/evidence/S13/library-background-20260919/visual-review.json",
+  "provenance": "Authored procedural geometry/maps; no external reference assets.",
+  "stageAccepted": false,
+  "artAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false,
+  "scopeRefinedAfterDraft": "Initial art-a1 inspection exposed shared wood grain and material response as a common limitation for both the library and stands. Combine their improvement in one source/test/build checkpoint.",
+  "scopeRefinedAfterSecondDraft": "Art-a2 showed radial cap UV distortion and orange regularity remaining on the wood stand. Include a bounded stand surface/UV correction before the single final test/build cycle."
+}

@@ -1,0 +1,1452 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-starter-set-source-inventory",
+  "recordedAt": "2026-09-19T19:42:37.404Z",
+  "auditValid": true,
+  "status": "INCOMPLETE",
+  "requiredCount": 29,
+  "acceptedCount": 0,
+  "sourceBoundCount": 11,
+  "sourceInputs": [
+    {
+      "path": "docs/mobile/requirements/v12/37_BASE_EDITION_STARTER_SET.csv",
+      "bytes": 7009,
+      "sha256": "575f40b97986cb4e64cb89243059a3b18c4cda8069f4f0e1c7d3565f6132b731"
+    },
+    {
+      "path": "scripts/mobile/audit-starter-set.mjs",
+      "bytes": 8135,
+      "sha256": "554b54928c6ab27c69773b5f8300183d7f97bbf5a9ae8c599527cb662625ef1c"
+    },
+    {
+      "path": "scripts/mobile/csv.mjs",
+      "bytes": 1794,
+      "sha256": "899341f64a0481d9482108e1d346d9bbc07035d5c7999c4b413b9da985dc8097"
+    },
+    {
+      "path": "src/App.tsx",
+      "bytes": 183301,
+      "sha256": "6f76f51c9f703e698285b93585b8a73350abd7a2a6b01b3f2018c7fd55bd54aa"
+    },
+    {
+      "path": "src/components/GlobeCameraRig.tsx",
+      "bytes": 20950,
+      "sha256": "6938d120c7a49248398b385640cc77d96c9f3b33cbd6c3b4ef9881ef89e2ec19"
+    },
+    {
+      "path": "src/components/GlobeIncludedBackground.tsx",
+      "bytes": 6580,
+      "sha256": "6cd0822f85bf94af681c0560be626ab004ce0e4900adccf0ae1b84d298be7374"
+    },
+    {
+      "path": "src/components/GlobeIncludedStand.tsx",
+      "bytes": 5655,
+      "sha256": "276ef908fe5a09c066a59d9ff57d1432d44300bcb979b2aeb5d6dd249ba189fd"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "bytes": 127815,
+      "sha256": "12bb95c49f44a9ed75144e0fb64c36985975f0427b1ba8c163eeeffad379ac89"
+    },
+    {
+      "path": "src/components/globeCraftMaterials.ts",
+      "bytes": 9926,
+      "sha256": "2b4d6c10b7a2313f6060892f18e6207bc132a4e8074fcd46ac2e647cefffb9f5"
+    },
+    {
+      "path": "src/components/globeEditions.ts",
+      "bytes": 23668,
+      "sha256": "b7440b6278979deb1e47738572460869202f0d9cf794a144aceac9dbcf8cdd77"
+    },
+    {
+      "path": "src/components/globeLibraryGeometry.ts",
+      "bytes": 46207,
+      "sha256": "9956b7dda8cbd75e2804f689b6141a415153638936bcf4df00800db8786bb3fe"
+    },
+    {
+      "path": "src/components/globeStandGeometry.ts",
+      "bytes": 21466,
+      "sha256": "1554e5c0b28992d12880fbf00f57cbb02c097f7126f164ef4db8617f7702bc45"
+    },
+    {
+      "path": "src/components/useGlobeCompositionFrame.ts",
+      "bytes": 4751,
+      "sha256": "530d1303a5af222bf68f72b499b07c8d41a828ca14783912284b6e3963d59cd0"
+    },
+    {
+      "path": "src/components/useGlobeCompositionScene.ts",
+      "bytes": 6427,
+      "sha256": "30009468d0cdee459441ca5780ea608cdf21b3f6e7055da89c0ce28e435326b5"
+    },
+    {
+      "path": "src/hooks/useReadingLibrary.ts",
+      "bytes": 15213,
+      "sha256": "c0d1dda1fe79a7b71c42602cf0b865f1843a3b62d4ad02dfed2d2f759a00385a"
+    },
+    {
+      "path": "src/host/PlanetStandControls.tsx",
+      "bytes": 10294,
+      "sha256": "f9030d14d9badde6439b5badf5d2ad93705f7483a8076f58e009bb97a852cd95"
+    },
+    {
+      "path": "src/host/planetComposition.ts",
+      "bytes": 17262,
+      "sha256": "6e193b12c495d962737185ab4fd35eeb3b64fe46f5c92774b565cfbb1181e954"
+    },
+    {
+      "path": "src/host/planetCompositionPresentation.ts",
+      "bytes": 2130,
+      "sha256": "d62d963c719366c1be3e6888b5eb321933f3e7224b6591fc8c2d6d81a639c3f6"
+    },
+    {
+      "path": "src/planet/ContentDownloads.ts",
+      "bytes": 30968,
+      "sha256": "f8753e0d6ab3acb30cb11d770fabb631bc0af285b1aedcf8425dd5f361ec40c1"
+    },
+    {
+      "path": "src/planet/baseEditionPolicy.ts",
+      "bytes": 10845,
+      "sha256": "ff5d8a6e3e21dfce9b14487a35b6800fbcbde200abacc6e1898712b486c62985"
+    },
+    {
+      "path": "src/planet/catalog.ts",
+      "bytes": 456,
+      "sha256": "a03280a4ac68a21be24d9a2dc3b6333ee44e1752e1a2c7c62efecb95d0606e19"
+    },
+    {
+      "path": "src/planet/editions.ts",
+      "bytes": 717,
+      "sha256": "466105cd35cadf5c0bc656c34d50bc20fe174551020b002fc903b8071dc5145e"
+    },
+    {
+      "path": "src/planet/globeBackgrounds.ts",
+      "bytes": 3607,
+      "sha256": "6096caaddd78adb6f862fb324e028e051867e855e3a0ba7d2db2d8882cb14200"
+    },
+    {
+      "path": "src/planet/globeComposition.ts",
+      "bytes": 4302,
+      "sha256": "20b4cabdd678a6fa5b70ab2b4cbaef179f0e7d7c5819e408123eb486ddb0e81f"
+    },
+    {
+      "path": "src/planet/globeStands.ts",
+      "bytes": 2052,
+      "sha256": "3ce4ed09f28a814e3922238fe8509a1caa2c6c915f0cadd5e7bc58066745adbf"
+    },
+    {
+      "path": "src/search/globalSearchRuntime.ts",
+      "bytes": 5013,
+      "sha256": "5d7aafbadbd85573598db96db444bb825a4a4ff77a88400304717f56cabcd520"
+    }
+  ],
+  "defaultEditionId": "rand-mcnally-1887",
+  "grandfatheredEditions": [
+    {
+      "id": "behaim-1492",
+      "visitorAvailable": true,
+      "includedInBase": true,
+      "bilingualRegistryLabelsPresent": true,
+      "resources": [
+        {
+          "locale": "ru",
+          "compact": false,
+          "present": true,
+          "path": "public/textures/behaim-1492-ravenstein-1908.webp",
+          "bytes": 2031414,
+          "sha256": "a06342cfaf146fdd4d72c0cbc870ab85946199a977d8c6366ef918bdad19c0b8"
+        },
+        {
+          "locale": "ru",
+          "compact": true,
+          "present": true,
+          "path": "public/textures/behaim-1492-ravenstein-1908-mobile.webp",
+          "bytes": 511208,
+          "sha256": "324301cf0724c337d34c1d370dc66fa8ea3f0abaa0afcb34713d2dd2a469d2b5"
+        },
+        {
+          "locale": "en",
+          "compact": false,
+          "present": true,
+          "path": "public/textures/behaim-1492-ravenstein-1908.webp",
+          "bytes": 2031414,
+          "sha256": "a06342cfaf146fdd4d72c0cbc870ab85946199a977d8c6366ef918bdad19c0b8"
+        },
+        {
+          "locale": "en",
+          "compact": true,
+          "present": true,
+          "path": "public/textures/behaim-1492-ravenstein-1908-mobile.webp",
+          "bytes": 511208,
+          "sha256": "324301cf0724c337d34c1d370dc66fa8ea3f0abaa0afcb34713d2dd2a469d2b5"
+        }
+      ],
+      "releaseAcceptance": "not-established-by-this-audit"
+    },
+    {
+      "id": "hondius-1615",
+      "visitorAvailable": true,
+      "includedInBase": true,
+      "bilingualRegistryLabelsPresent": true,
+      "resources": [
+        {
+          "locale": "ru",
+          "compact": false,
+          "present": true,
+          "path": "public/textures/hondius-rossi-1615.webp",
+          "bytes": 1929066,
+          "sha256": "4d9b6926768fc6ac91eafa4a1586ab3fc70dfdd2d66d9a35243dc7a897e1b7b1"
+        },
+        {
+          "locale": "ru",
+          "compact": true,
+          "present": true,
+          "path": "public/textures/hondius-rossi-1615-mobile.webp",
+          "bytes": 537158,
+          "sha256": "5ce58cb1b6b3cfc102d0f012911e4a590aa6572302e8fa0b52f3beffb0f7687b"
+        },
+        {
+          "locale": "en",
+          "compact": false,
+          "present": true,
+          "path": "public/textures/hondius-rossi-1615.webp",
+          "bytes": 1929066,
+          "sha256": "4d9b6926768fc6ac91eafa4a1586ab3fc70dfdd2d66d9a35243dc7a897e1b7b1"
+        },
+        {
+          "locale": "en",
+          "compact": true,
+          "present": true,
+          "path": "public/textures/hondius-rossi-1615-mobile.webp",
+          "bytes": 537158,
+          "sha256": "5ce58cb1b6b3cfc102d0f012911e4a590aa6572302e8fa0b52f3beffb0f7687b"
+        }
+      ],
+      "releaseAcceptance": "not-established-by-this-audit"
+    },
+    {
+      "id": "coronelli-1697",
+      "visitorAvailable": true,
+      "includedInBase": true,
+      "bilingualRegistryLabelsPresent": true,
+      "resources": [
+        {
+          "locale": "ru",
+          "compact": false,
+          "present": true,
+          "path": "public/textures/coronelli-1697.webp",
+          "bytes": 1429020,
+          "sha256": "1654e3e04ee14ccdec7cfbf7a640b212ebde0c96949558bcf0edeece1dd9a012"
+        },
+        {
+          "locale": "ru",
+          "compact": true,
+          "present": true,
+          "path": "public/textures/coronelli-1697-mobile.webp",
+          "bytes": 499562,
+          "sha256": "b03c5f23f84ddaef6da942a64f6ac5b37ff7481e90681d5e98ab7eeff48aeacf"
+        },
+        {
+          "locale": "en",
+          "compact": false,
+          "present": true,
+          "path": "public/textures/coronelli-1697.webp",
+          "bytes": 1429020,
+          "sha256": "1654e3e04ee14ccdec7cfbf7a640b212ebde0c96949558bcf0edeece1dd9a012"
+        },
+        {
+          "locale": "en",
+          "compact": true,
+          "present": true,
+          "path": "public/textures/coronelli-1697-mobile.webp",
+          "bytes": 499562,
+          "sha256": "b03c5f23f84ddaef6da942a64f6ac5b37ff7481e90681d5e98ab7eeff48aeacf"
+        }
+      ],
+      "releaseAcceptance": "not-established-by-this-audit"
+    },
+    {
+      "id": "scherer-1700",
+      "visitorAvailable": true,
+      "includedInBase": true,
+      "bilingualRegistryLabelsPresent": true,
+      "resources": [
+        {
+          "locale": "ru",
+          "compact": false,
+          "present": true,
+          "path": "public/textures/scherer-1700.webp",
+          "bytes": 1104598,
+          "sha256": "b844cc59c075e03873c137daa761431ddb1f9f97676fac1c33b0ec28679cff64"
+        },
+        {
+          "locale": "ru",
+          "compact": true,
+          "present": true,
+          "path": "public/textures/scherer-1700-mobile.webp",
+          "bytes": 407040,
+          "sha256": "573b03cad23a9c626b13be4169b3089f6281a1e75049cb92d081e5ee1a7e6035"
+        },
+        {
+          "locale": "en",
+          "compact": false,
+          "present": true,
+          "path": "public/textures/scherer-1700.webp",
+          "bytes": 1104598,
+          "sha256": "b844cc59c075e03873c137daa761431ddb1f9f97676fac1c33b0ec28679cff64"
+        },
+        {
+          "locale": "en",
+          "compact": true,
+          "present": true,
+          "path": "public/textures/scherer-1700-mobile.webp",
+          "bytes": 407040,
+          "sha256": "573b03cad23a9c626b13be4169b3089f6281a1e75049cb92d081e5ee1a7e6035"
+        }
+      ],
+      "releaseAcceptance": "not-established-by-this-audit"
+    },
+    {
+      "id": "cassini-1790",
+      "visitorAvailable": true,
+      "includedInBase": true,
+      "bilingualRegistryLabelsPresent": true,
+      "resources": [
+        {
+          "locale": "ru",
+          "compact": false,
+          "present": true,
+          "path": "public/textures/cassini-globo-terrestre-1790.webp",
+          "bytes": 2619370,
+          "sha256": "d62718455ea9a04605ac1694abe20bf551a93bf7b5c2c688df579b6eb4398018"
+        },
+        {
+          "locale": "ru",
+          "compact": true,
+          "present": true,
+          "path": "public/textures/cassini-globo-terrestre-1790-mobile.webp",
+          "bytes": 609440,
+          "sha256": "2e0efdd36e682d20be5b8db0875a71c47ef33d3d810be45596b6e4e1d99e83f0"
+        },
+        {
+          "locale": "en",
+          "compact": false,
+          "present": true,
+          "path": "public/textures/cassini-globo-terrestre-1790.webp",
+          "bytes": 2619370,
+          "sha256": "d62718455ea9a04605ac1694abe20bf551a93bf7b5c2c688df579b6eb4398018"
+        },
+        {
+          "locale": "en",
+          "compact": true,
+          "present": true,
+          "path": "public/textures/cassini-globo-terrestre-1790-mobile.webp",
+          "bytes": 609440,
+          "sha256": "2e0efdd36e682d20be5b8db0875a71c47ef33d3d810be45596b6e4e1d99e83f0"
+        }
+      ],
+      "releaseAcceptance": "not-established-by-this-audit"
+    },
+    {
+      "id": "rand-mcnally-1887",
+      "visitorAvailable": true,
+      "includedInBase": true,
+      "bilingualRegistryLabelsPresent": true,
+      "resources": [
+        {
+          "locale": "ru",
+          "compact": false,
+          "present": true,
+          "path": "public/textures/antique-world-1887.webp",
+          "bytes": 2901792,
+          "sha256": "b498488cba930c48c5c68564ab8f355a50fe620f5aec15353225edcdf592a175"
+        },
+        {
+          "locale": "ru",
+          "compact": true,
+          "present": true,
+          "path": "public/textures/antique-world-1887-mobile.webp",
+          "bytes": 687972,
+          "sha256": "65ea5f03a43b6583dd95b456f42b1d184c48dc0449eaba25c5d23269b1e5974d"
+        },
+        {
+          "locale": "en",
+          "compact": false,
+          "present": true,
+          "path": "public/textures/antique-world-1887.webp",
+          "bytes": 2901792,
+          "sha256": "b498488cba930c48c5c68564ab8f355a50fe620f5aec15353225edcdf592a175"
+        },
+        {
+          "locale": "en",
+          "compact": true,
+          "present": true,
+          "path": "public/textures/antique-world-1887-mobile.webp",
+          "bytes": 687972,
+          "sha256": "65ea5f03a43b6583dd95b456f42b1d184c48dc0449eaba25c5d23269b1e5974d"
+        }
+      ],
+      "releaseAcceptance": "not-established-by-this-audit"
+    },
+    {
+      "id": "us-army-general-reference-1943",
+      "visitorAvailable": true,
+      "includedInBase": true,
+      "bilingualRegistryLabelsPresent": true,
+      "resources": [
+        {
+          "locale": "ru",
+          "compact": false,
+          "present": true,
+          "path": "public/textures/us-army-general-reference-1943.webp",
+          "bytes": 1971264,
+          "sha256": "09418203d87aa85a465e3694e53d33b9893387796db798966197dd19193e36d6"
+        },
+        {
+          "locale": "ru",
+          "compact": true,
+          "present": true,
+          "path": "public/textures/us-army-general-reference-1943-mobile.webp",
+          "bytes": 525424,
+          "sha256": "020f0808c4c1e0671c05124e836349884d6a204fd635057226106a9b9268d38a"
+        },
+        {
+          "locale": "en",
+          "compact": false,
+          "present": true,
+          "path": "public/textures/us-army-general-reference-1943.webp",
+          "bytes": 1971264,
+          "sha256": "09418203d87aa85a465e3694e53d33b9893387796db798966197dd19193e36d6"
+        },
+        {
+          "locale": "en",
+          "compact": true,
+          "present": true,
+          "path": "public/textures/us-army-general-reference-1943-mobile.webp",
+          "bytes": 525424,
+          "sha256": "020f0808c4c1e0671c05124e836349884d6a204fd635057226106a9b9268d38a"
+        }
+      ],
+      "releaseAcceptance": "not-established-by-this-audit"
+    },
+    {
+      "id": "nasa-blue-marble",
+      "visitorAvailable": true,
+      "includedInBase": true,
+      "bilingualRegistryLabelsPresent": true,
+      "resources": [
+        {
+          "locale": "ru",
+          "compact": false,
+          "present": true,
+          "path": "public/textures/earth-blue-marble.webp",
+          "bytes": 434610,
+          "sha256": "cc2b9b11fb1ccd4194c612c84320f0ef1ab991f6b247473be7b51a66f3328c41"
+        },
+        {
+          "locale": "ru",
+          "compact": true,
+          "present": true,
+          "path": "public/textures/earth-blue-marble-mobile.webp",
+          "bytes": 126246,
+          "sha256": "7e7dcfff082c0e1efe909e6d64ee815bc1b9d17f782b802a8fd4e4b2e7a65397"
+        },
+        {
+          "locale": "en",
+          "compact": false,
+          "present": true,
+          "path": "public/textures/earth-blue-marble.webp",
+          "bytes": 434610,
+          "sha256": "cc2b9b11fb1ccd4194c612c84320f0ef1ab991f6b247473be7b51a66f3328c41"
+        },
+        {
+          "locale": "en",
+          "compact": true,
+          "present": true,
+          "path": "public/textures/earth-blue-marble-mobile.webp",
+          "bytes": 126246,
+          "sha256": "7e7dcfff082c0e1efe909e6d64ee815bc1b9d17f782b802a8fd4e4b2e7a65397"
+        }
+      ],
+      "releaseAcceptance": "not-established-by-this-audit"
+    },
+    {
+      "id": "natural-earth-2026",
+      "visitorAvailable": true,
+      "includedInBase": true,
+      "bilingualRegistryLabelsPresent": true,
+      "resources": [
+        {
+          "locale": "ru",
+          "compact": false,
+          "present": true,
+          "path": "public/textures/modern-atlas-2026-ru.webp",
+          "bytes": 1477124,
+          "sha256": "26a04a83536b6ceb7a3db37c2ff67c083cd1699c4dd4543292e43c8d694fc4fc"
+        },
+        {
+          "locale": "ru",
+          "compact": true,
+          "present": true,
+          "path": "public/textures/modern-atlas-2026-ru-mobile.webp",
+          "bytes": 395324,
+          "sha256": "8817b45f53a9caa9592a711e52ed83004265f36dd98de777776a2cb6143bd58b"
+        },
+        {
+          "locale": "en",
+          "compact": false,
+          "present": true,
+          "path": "public/textures/modern-atlas-2026-en.webp",
+          "bytes": 1461376,
+          "sha256": "8df82c055820b44b178efa7321888e9049821859ca0408bbc77b64b2d9219399"
+        },
+        {
+          "locale": "en",
+          "compact": true,
+          "present": true,
+          "path": "public/textures/modern-atlas-2026-en-mobile.webp",
+          "bytes": 390810,
+          "sha256": "b897e3722909ffbefa25013851ad2bdf605711a069e5c552129b6e470bb3c957"
+        }
+      ],
+      "releaseAcceptance": "not-established-by-this-audit"
+    }
+  ],
+  "items": [
+    {
+      "requirementId": "STARTER-001",
+      "id": "skin.base.antique",
+      "category": "skin",
+      "required": true,
+      "iapSkuAllowed": false,
+      "implementation": {
+        "status": "canonical-edition-bound",
+        "editionId": "rand-mcnally-1887"
+      },
+      "checks": {
+        "presence": "partial",
+        "assetChecksums": "present",
+        "ruEnCoverage": "registry-labels-only",
+        "rightsAcceptance": "open",
+        "platformAcceptance": "open",
+        "offlineAcceptance": "open",
+        "switchStressAcceptance": "open",
+        "visualApproval": "open",
+        "childAgeReview": "not-assessed"
+      },
+      "acceptance": "OPEN",
+      "releaseReady": false
+    },
+    {
+      "requirementId": "STARTER-002",
+      "id": "skin.base.modern",
+      "category": "skin",
+      "required": true,
+      "iapSkuAllowed": false,
+      "implementation": {
+        "status": "canonical-edition-bound",
+        "editionId": "natural-earth-2026"
+      },
+      "checks": {
+        "presence": "partial",
+        "assetChecksums": "present",
+        "ruEnCoverage": "registry-labels-only",
+        "rightsAcceptance": "open",
+        "platformAcceptance": "open",
+        "offlineAcceptance": "open",
+        "switchStressAcceptance": "open",
+        "visualApproval": "open",
+        "childAgeReview": "not-assessed"
+      },
+      "acceptance": "OPEN",
+      "releaseReady": false
+    },
+    {
+      "requirementId": "STARTER-003",
+      "id": "skin.base.earth",
+      "category": "skin",
+      "required": true,
+      "iapSkuAllowed": false,
+      "implementation": {
+        "status": "canonical-edition-bound",
+        "editionId": "nasa-blue-marble"
+      },
+      "checks": {
+        "presence": "partial",
+        "assetChecksums": "present",
+        "ruEnCoverage": "registry-labels-only",
+        "rightsAcceptance": "open",
+        "platformAcceptance": "open",
+        "offlineAcceptance": "open",
+        "switchStressAcceptance": "open",
+        "visualApproval": "open",
+        "childAgeReview": "not-assessed"
+      },
+      "acceptance": "OPEN",
+      "releaseReady": false
+    },
+    {
+      "requirementId": "STARTER-004",
+      "id": "skin.base.child-educational",
+      "category": "skin",
+      "required": true,
+      "iapSkuAllowed": false,
+      "implementation": {
+        "status": "no-audited-binding"
+      },
+      "checks": {
+        "presence": "open",
+        "assetChecksums": "unmeasured",
+        "ruEnCoverage": "unmeasured",
+        "rightsAcceptance": "open",
+        "platformAcceptance": "open",
+        "offlineAcceptance": "open",
+        "switchStressAcceptance": "open",
+        "visualApproval": "open",
+        "childAgeReview": "open"
+      },
+      "acceptance": "OPEN",
+      "releaseReady": false
+    },
+    {
+      "requirementId": "STARTER-005",
+      "id": "skin.base.planetka-cheerful",
+      "category": "skin",
+      "required": true,
+      "iapSkuAllowed": false,
+      "implementation": {
+        "status": "no-audited-binding"
+      },
+      "checks": {
+        "presence": "open",
+        "assetChecksums": "unmeasured",
+        "ruEnCoverage": "unmeasured",
+        "rightsAcceptance": "open",
+        "platformAcceptance": "open",
+        "offlineAcceptance": "open",
+        "switchStressAcceptance": "open",
+        "visualApproval": "open",
+        "childAgeReview": "open"
+      },
+      "acceptance": "OPEN",
+      "releaseReady": false
+    },
+    {
+      "requirementId": "STARTER-006",
+      "id": "stand.base.museum",
+      "category": "stand",
+      "required": true,
+      "iapSkuAllowed": false,
+      "implementation": {
+        "status": "source-present",
+        "sources": [
+          {
+            "path": "src/planet/globeStands.ts",
+            "bytes": 2052,
+            "sha256": "3ce4ed09f28a814e3922238fe8509a1caa2c6c915f0cadd5e7bc58066745adbf"
+          },
+          {
+            "path": "src/components/globeStandGeometry.ts",
+            "bytes": 21466,
+            "sha256": "1554e5c0b28992d12880fbf00f57cbb02c097f7126f164ef4db8617f7702bc45"
+          },
+          {
+            "path": "src/components/globeCraftMaterials.ts",
+            "bytes": 9926,
+            "sha256": "2b4d6c10b7a2313f6060892f18e6207bc132a4e8074fcd46ac2e647cefffb9f5"
+          },
+          {
+            "path": "src/components/GlobeIncludedStand.tsx",
+            "bytes": 5655,
+            "sha256": "276ef908fe5a09c066a59d9ff57d1432d44300bcb979b2aeb5d6dd249ba189fd"
+          },
+          {
+            "path": "src/host/planetComposition.ts",
+            "bytes": 17262,
+            "sha256": "6e193b12c495d962737185ab4fd35eeb3b64fe46f5c92774b565cfbb1181e954"
+          },
+          {
+            "path": "src/host/planetCompositionPresentation.ts",
+            "bytes": 2130,
+            "sha256": "d62d963c719366c1be3e6888b5eb321933f3e7224b6591fc8c2d6d81a639c3f6"
+          },
+          {
+            "path": "src/planet/globeComposition.ts",
+            "bytes": 4302,
+            "sha256": "20b4cabdd678a6fa5b70ab2b4cbaef179f0e7d7c5819e408123eb486ddb0e81f"
+          },
+          {
+            "path": "src/components/useGlobeCompositionScene.ts",
+            "bytes": 6427,
+            "sha256": "30009468d0cdee459441ca5780ea608cdf21b3f6e7055da89c0ce28e435326b5"
+          },
+          {
+            "path": "src/components/useGlobeCompositionFrame.ts",
+            "bytes": 4751,
+            "sha256": "530d1303a5af222bf68f72b499b07c8d41a828ca14783912284b6e3963d59cd0"
+          },
+          {
+            "path": "src/host/PlanetStandControls.tsx",
+            "bytes": 10294,
+            "sha256": "f9030d14d9badde6439b5badf5d2ad93705f7483a8076f58e009bb97a852cd95"
+          }
+        ]
+      },
+      "checks": {
+        "presence": "partial",
+        "assetChecksums": "unmeasured",
+        "ruEnCoverage": "unmeasured",
+        "rightsAcceptance": "open",
+        "platformAcceptance": "open",
+        "offlineAcceptance": "open",
+        "switchStressAcceptance": "open",
+        "visualApproval": "open",
+        "childAgeReview": "not-assessed"
+      },
+      "acceptance": "OPEN",
+      "releaseReady": false
+    },
+    {
+      "requirementId": "STARTER-007",
+      "id": "stand.base.wood",
+      "category": "stand",
+      "required": true,
+      "iapSkuAllowed": false,
+      "implementation": {
+        "status": "source-present",
+        "sources": [
+          {
+            "path": "src/planet/globeStands.ts",
+            "bytes": 2052,
+            "sha256": "3ce4ed09f28a814e3922238fe8509a1caa2c6c915f0cadd5e7bc58066745adbf"
+          },
+          {
+            "path": "src/components/globeStandGeometry.ts",
+            "bytes": 21466,
+            "sha256": "1554e5c0b28992d12880fbf00f57cbb02c097f7126f164ef4db8617f7702bc45"
+          },
+          {
+            "path": "src/components/globeCraftMaterials.ts",
+            "bytes": 9926,
+            "sha256": "2b4d6c10b7a2313f6060892f18e6207bc132a4e8074fcd46ac2e647cefffb9f5"
+          },
+          {
+            "path": "src/components/GlobeIncludedStand.tsx",
+            "bytes": 5655,
+            "sha256": "276ef908fe5a09c066a59d9ff57d1432d44300bcb979b2aeb5d6dd249ba189fd"
+          },
+          {
+            "path": "src/host/planetComposition.ts",
+            "bytes": 17262,
+            "sha256": "6e193b12c495d962737185ab4fd35eeb3b64fe46f5c92774b565cfbb1181e954"
+          },
+          {
+            "path": "src/host/planetCompositionPresentation.ts",
+            "bytes": 2130,
+            "sha256": "d62d963c719366c1be3e6888b5eb321933f3e7224b6591fc8c2d6d81a639c3f6"
+          },
+          {
+            "path": "src/planet/globeComposition.ts",
+            "bytes": 4302,
+            "sha256": "20b4cabdd678a6fa5b70ab2b4cbaef179f0e7d7c5819e408123eb486ddb0e81f"
+          },
+          {
+            "path": "src/components/useGlobeCompositionScene.ts",
+            "bytes": 6427,
+            "sha256": "30009468d0cdee459441ca5780ea608cdf21b3f6e7055da89c0ce28e435326b5"
+          },
+          {
+            "path": "src/components/useGlobeCompositionFrame.ts",
+            "bytes": 4751,
+            "sha256": "530d1303a5af222bf68f72b499b07c8d41a828ca14783912284b6e3963d59cd0"
+          },
+          {
+            "path": "src/host/PlanetStandControls.tsx",
+            "bytes": 10294,
+            "sha256": "f9030d14d9badde6439b5badf5d2ad93705f7483a8076f58e009bb97a852cd95"
+          }
+        ]
+      },
+      "checks": {
+        "presence": "partial",
+        "assetChecksums": "unmeasured",
+        "ruEnCoverage": "unmeasured",
+        "rightsAcceptance": "open",
+        "platformAcceptance": "open",
+        "offlineAcceptance": "open",
+        "switchStressAcceptance": "open",
+        "visualApproval": "open",
+        "childAgeReview": "not-assessed"
+      },
+      "acceptance": "OPEN",
+      "releaseReady": false
+    },
+    {
+      "requirementId": "STARTER-008",
+      "id": "stand.base.book-stack",
+      "category": "stand",
+      "required": true,
+      "iapSkuAllowed": false,
+      "implementation": {
+        "status": "source-present",
+        "sources": [
+          {
+            "path": "src/planet/globeStands.ts",
+            "bytes": 2052,
+            "sha256": "3ce4ed09f28a814e3922238fe8509a1caa2c6c915f0cadd5e7bc58066745adbf"
+          },
+          {
+            "path": "src/components/globeStandGeometry.ts",
+            "bytes": 21466,
+            "sha256": "1554e5c0b28992d12880fbf00f57cbb02c097f7126f164ef4db8617f7702bc45"
+          },
+          {
+            "path": "src/components/globeCraftMaterials.ts",
+            "bytes": 9926,
+            "sha256": "2b4d6c10b7a2313f6060892f18e6207bc132a4e8074fcd46ac2e647cefffb9f5"
+          },
+          {
+            "path": "src/components/GlobeIncludedStand.tsx",
+            "bytes": 5655,
+            "sha256": "276ef908fe5a09c066a59d9ff57d1432d44300bcb979b2aeb5d6dd249ba189fd"
+          },
+          {
+            "path": "src/host/planetComposition.ts",
+            "bytes": 17262,
+            "sha256": "6e193b12c495d962737185ab4fd35eeb3b64fe46f5c92774b565cfbb1181e954"
+          },
+          {
+            "path": "src/host/planetCompositionPresentation.ts",
+            "bytes": 2130,
+            "sha256": "d62d963c719366c1be3e6888b5eb321933f3e7224b6591fc8c2d6d81a639c3f6"
+          },
+          {
+            "path": "src/planet/globeComposition.ts",
+            "bytes": 4302,
+            "sha256": "20b4cabdd678a6fa5b70ab2b4cbaef179f0e7d7c5819e408123eb486ddb0e81f"
+          },
+          {
+            "path": "src/components/useGlobeCompositionScene.ts",
+            "bytes": 6427,
+            "sha256": "30009468d0cdee459441ca5780ea608cdf21b3f6e7055da89c0ce28e435326b5"
+          },
+          {
+            "path": "src/components/useGlobeCompositionFrame.ts",
+            "bytes": 4751,
+            "sha256": "530d1303a5af222bf68f72b499b07c8d41a828ca14783912284b6e3963d59cd0"
+          },
+          {
+            "path": "src/host/PlanetStandControls.tsx",
+            "bytes": 10294,
+            "sha256": "f9030d14d9badde6439b5badf5d2ad93705f7483a8076f58e009bb97a852cd95"
+          }
+        ]
+      },
+      "checks": {
+        "presence": "partial",
+        "assetChecksums": "unmeasured",
+        "ruEnCoverage": "unmeasured",
+        "rightsAcceptance": "open",
+        "platformAcceptance": "open",
+        "offlineAcceptance": "open",
+        "switchStressAcceptance": "open",
+        "visualApproval": "open",
+        "childAgeReview": "not-assessed"
+      },
+      "acceptance": "OPEN",
+      "releaseReady": false
+    },
+    {
+      "requirementId": "STARTER-009",
+      "id": "stand.base.child-book-cloud",
+      "category": "stand",
+      "required": true,
+      "iapSkuAllowed": false,
+      "implementation": {
+        "status": "no-audited-binding"
+      },
+      "checks": {
+        "presence": "open",
+        "assetChecksums": "unmeasured",
+        "ruEnCoverage": "unmeasured",
+        "rightsAcceptance": "open",
+        "platformAcceptance": "open",
+        "offlineAcceptance": "open",
+        "switchStressAcceptance": "open",
+        "visualApproval": "open",
+        "childAgeReview": "open"
+      },
+      "acceptance": "OPEN",
+      "releaseReady": false
+    },
+    {
+      "requirementId": "STARTER-010",
+      "id": "background.base.site-starfield",
+      "category": "background",
+      "required": true,
+      "iapSkuAllowed": false,
+      "implementation": {
+        "status": "source-present",
+        "sources": [
+          {
+            "path": "src/components/LiteraryGlobe.tsx",
+            "bytes": 127815,
+            "sha256": "12bb95c49f44a9ed75144e0fb64c36985975f0427b1ba8c163eeeffad379ac89"
+          }
+        ]
+      },
+      "checks": {
+        "presence": "partial",
+        "assetChecksums": "unmeasured",
+        "ruEnCoverage": "unmeasured",
+        "rightsAcceptance": "open",
+        "platformAcceptance": "open",
+        "offlineAcceptance": "open",
+        "switchStressAcceptance": "open",
+        "visualApproval": "open",
+        "childAgeReview": "not-assessed"
+      },
+      "acceptance": "OPEN",
+      "releaseReady": false
+    },
+    {
+      "requirementId": "STARTER-011",
+      "id": "background.base.library",
+      "category": "background",
+      "required": true,
+      "iapSkuAllowed": false,
+      "implementation": {
+        "status": "source-present",
+        "sources": [
+          {
+            "path": "src/planet/globeBackgrounds.ts",
+            "bytes": 3607,
+            "sha256": "6096caaddd78adb6f862fb324e028e051867e855e3a0ba7d2db2d8882cb14200"
+          },
+          {
+            "path": "src/components/globeLibraryGeometry.ts",
+            "bytes": 46207,
+            "sha256": "9956b7dda8cbd75e2804f689b6141a415153638936bcf4df00800db8786bb3fe"
+          },
+          {
+            "path": "src/components/globeCraftMaterials.ts",
+            "bytes": 9926,
+            "sha256": "2b4d6c10b7a2313f6060892f18e6207bc132a4e8074fcd46ac2e647cefffb9f5"
+          },
+          {
+            "path": "src/components/GlobeIncludedBackground.tsx",
+            "bytes": 6580,
+            "sha256": "6cd0822f85bf94af681c0560be626ab004ce0e4900adccf0ae1b84d298be7374"
+          },
+          {
+            "path": "src/host/planetComposition.ts",
+            "bytes": 17262,
+            "sha256": "6e193b12c495d962737185ab4fd35eeb3b64fe46f5c92774b565cfbb1181e954"
+          },
+          {
+            "path": "src/host/planetCompositionPresentation.ts",
+            "bytes": 2130,
+            "sha256": "d62d963c719366c1be3e6888b5eb321933f3e7224b6591fc8c2d6d81a639c3f6"
+          },
+          {
+            "path": "src/planet/globeComposition.ts",
+            "bytes": 4302,
+            "sha256": "20b4cabdd678a6fa5b70ab2b4cbaef179f0e7d7c5819e408123eb486ddb0e81f"
+          },
+          {
+            "path": "src/components/useGlobeCompositionScene.ts",
+            "bytes": 6427,
+            "sha256": "30009468d0cdee459441ca5780ea608cdf21b3f6e7055da89c0ce28e435326b5"
+          },
+          {
+            "path": "src/components/useGlobeCompositionFrame.ts",
+            "bytes": 4751,
+            "sha256": "530d1303a5af222bf68f72b499b07c8d41a828ca14783912284b6e3963d59cd0"
+          },
+          {
+            "path": "src/host/PlanetStandControls.tsx",
+            "bytes": 10294,
+            "sha256": "f9030d14d9badde6439b5badf5d2ad93705f7483a8076f58e009bb97a852cd95"
+          }
+        ]
+      },
+      "checks": {
+        "presence": "partial",
+        "assetChecksums": "unmeasured",
+        "ruEnCoverage": "unmeasured",
+        "rightsAcceptance": "open",
+        "platformAcceptance": "open",
+        "offlineAcceptance": "open",
+        "switchStressAcceptance": "open",
+        "visualApproval": "open",
+        "childAgeReview": "not-assessed"
+      },
+      "acceptance": "OPEN",
+      "releaseReady": false
+    },
+    {
+      "requirementId": "STARTER-012",
+      "id": "background.base.writer-study",
+      "category": "background",
+      "required": true,
+      "iapSkuAllowed": false,
+      "implementation": {
+        "status": "no-audited-binding"
+      },
+      "checks": {
+        "presence": "open",
+        "assetChecksums": "unmeasured",
+        "ruEnCoverage": "unmeasured",
+        "rightsAcceptance": "open",
+        "platformAcceptance": "open",
+        "offlineAcceptance": "open",
+        "switchStressAcceptance": "open",
+        "visualApproval": "open",
+        "childAgeReview": "not-assessed"
+      },
+      "acceptance": "OPEN",
+      "releaseReady": false
+    },
+    {
+      "requirementId": "STARTER-013",
+      "id": "background.base.child-room",
+      "category": "background",
+      "required": true,
+      "iapSkuAllowed": false,
+      "implementation": {
+        "status": "no-audited-binding"
+      },
+      "checks": {
+        "presence": "open",
+        "assetChecksums": "unmeasured",
+        "ruEnCoverage": "unmeasured",
+        "rightsAcceptance": "open",
+        "platformAcceptance": "open",
+        "offlineAcceptance": "open",
+        "switchStressAcceptance": "open",
+        "visualApproval": "open",
+        "childAgeReview": "open"
+      },
+      "acceptance": "OPEN",
+      "releaseReady": false
+    },
+    {
+      "requirementId": "STARTER-014",
+      "id": "background.base.story-forest",
+      "category": "background",
+      "required": true,
+      "iapSkuAllowed": false,
+      "implementation": {
+        "status": "no-audited-binding"
+      },
+      "checks": {
+        "presence": "open",
+        "assetChecksums": "unmeasured",
+        "ruEnCoverage": "unmeasured",
+        "rightsAcceptance": "open",
+        "platformAcceptance": "open",
+        "offlineAcceptance": "open",
+        "switchStressAcceptance": "open",
+        "visualApproval": "open",
+        "childAgeReview": "not-assessed"
+      },
+      "acceptance": "OPEN",
+      "releaseReady": false
+    },
+    {
+      "requirementId": "STARTER-015",
+      "id": "accessory.base.quill",
+      "category": "accessory",
+      "required": true,
+      "iapSkuAllowed": false,
+      "implementation": {
+        "status": "no-audited-binding"
+      },
+      "checks": {
+        "presence": "open",
+        "assetChecksums": "unmeasured",
+        "ruEnCoverage": "unmeasured",
+        "rightsAcceptance": "open",
+        "platformAcceptance": "open",
+        "offlineAcceptance": "open",
+        "switchStressAcceptance": "open",
+        "visualApproval": "open",
+        "childAgeReview": "not-assessed"
+      },
+      "acceptance": "OPEN",
+      "releaseReady": false
+    },
+    {
+      "requirementId": "STARTER-016",
+      "id": "accessory.base.backpack",
+      "category": "accessory",
+      "required": true,
+      "iapSkuAllowed": false,
+      "implementation": {
+        "status": "no-audited-binding"
+      },
+      "checks": {
+        "presence": "open",
+        "assetChecksums": "unmeasured",
+        "ruEnCoverage": "unmeasured",
+        "rightsAcceptance": "open",
+        "platformAcceptance": "open",
+        "offlineAcceptance": "open",
+        "switchStressAcceptance": "open",
+        "visualApproval": "open",
+        "childAgeReview": "not-assessed"
+      },
+      "acceptance": "OPEN",
+      "releaseReady": false
+    },
+    {
+      "requirementId": "STARTER-017",
+      "id": "accessory.base.star-scarf",
+      "category": "accessory",
+      "required": true,
+      "iapSkuAllowed": false,
+      "implementation": {
+        "status": "no-audited-binding"
+      },
+      "checks": {
+        "presence": "open",
+        "assetChecksums": "unmeasured",
+        "ruEnCoverage": "unmeasured",
+        "rightsAcceptance": "open",
+        "platformAcceptance": "open",
+        "offlineAcceptance": "open",
+        "switchStressAcceptance": "open",
+        "visualApproval": "open",
+        "childAgeReview": "not-assessed"
+      },
+      "acceptance": "OPEN",
+      "releaseReady": false
+    },
+    {
+      "requirementId": "STARTER-018",
+      "id": "accessory.base.book-badge",
+      "category": "accessory",
+      "required": true,
+      "iapSkuAllowed": false,
+      "implementation": {
+        "status": "no-audited-binding"
+      },
+      "checks": {
+        "presence": "open",
+        "assetChecksums": "unmeasured",
+        "ruEnCoverage": "unmeasured",
+        "rightsAcceptance": "open",
+        "platformAcceptance": "open",
+        "offlineAcceptance": "open",
+        "switchStressAcceptance": "open",
+        "visualApproval": "open",
+        "childAgeReview": "not-assessed"
+      },
+      "acceptance": "OPEN",
+      "releaseReady": false
+    },
+    {
+      "requirementId": "STARTER-019",
+      "id": "canonical-globe",
+      "category": "core",
+      "required": true,
+      "iapSkuAllowed": false,
+      "implementation": {
+        "status": "source-present",
+        "sources": [
+          {
+            "path": "src/components/LiteraryGlobe.tsx",
+            "bytes": 127815,
+            "sha256": "12bb95c49f44a9ed75144e0fb64c36985975f0427b1ba8c163eeeffad379ac89"
+          },
+          {
+            "path": "src/components/GlobeCameraRig.tsx",
+            "bytes": 20950,
+            "sha256": "6938d120c7a49248398b385640cc77d96c9f3b33cbd6c3b4ef9881ef89e2ec19"
+          }
+        ]
+      },
+      "checks": {
+        "presence": "partial",
+        "assetChecksums": "unmeasured",
+        "ruEnCoverage": "unmeasured",
+        "rightsAcceptance": "open",
+        "platformAcceptance": "open",
+        "offlineAcceptance": "open",
+        "switchStressAcceptance": "open",
+        "visualApproval": "open",
+        "childAgeReview": "not-assessed"
+      },
+      "acceptance": "OPEN",
+      "releaseReady": false
+    },
+    {
+      "requirementId": "STARTER-020",
+      "id": "literary-archive",
+      "category": "core",
+      "required": true,
+      "iapSkuAllowed": false,
+      "implementation": {
+        "status": "source-present",
+        "sources": [
+          {
+            "path": "src/planet/catalog.ts",
+            "bytes": 456,
+            "sha256": "a03280a4ac68a21be24d9a2dc3b6333ee44e1752e1a2c7c62efecb95d0606e19"
+          },
+          {
+            "path": "src/App.tsx",
+            "bytes": 183301,
+            "sha256": "6f76f51c9f703e698285b93585b8a73350abd7a2a6b01b3f2018c7fd55bd54aa"
+          }
+        ]
+      },
+      "checks": {
+        "presence": "partial",
+        "assetChecksums": "unmeasured",
+        "ruEnCoverage": "unmeasured",
+        "rightsAcceptance": "open",
+        "platformAcceptance": "open",
+        "offlineAcceptance": "open",
+        "switchStressAcceptance": "open",
+        "visualApproval": "open",
+        "childAgeReview": "not-assessed"
+      },
+      "acceptance": "OPEN",
+      "releaseReady": false
+    },
+    {
+      "requirementId": "STARTER-021",
+      "id": "search-favorites-offline",
+      "category": "core",
+      "required": true,
+      "iapSkuAllowed": false,
+      "implementation": {
+        "status": "source-present",
+        "sources": [
+          {
+            "path": "src/search/globalSearchRuntime.ts",
+            "bytes": 5013,
+            "sha256": "5d7aafbadbd85573598db96db444bb825a4a4ff77a88400304717f56cabcd520"
+          },
+          {
+            "path": "src/hooks/useReadingLibrary.ts",
+            "bytes": 15213,
+            "sha256": "c0d1dda1fe79a7b71c42602cf0b865f1843a3b62d4ad02dfed2d2f759a00385a"
+          },
+          {
+            "path": "src/planet/ContentDownloads.ts",
+            "bytes": 30968,
+            "sha256": "f8753e0d6ab3acb30cb11d770fabb631bc0af285b1aedcf8425dd5f361ec40c1"
+          }
+        ]
+      },
+      "checks": {
+        "presence": "partial",
+        "assetChecksums": "unmeasured",
+        "ruEnCoverage": "unmeasured",
+        "rightsAcceptance": "open",
+        "platformAcceptance": "open",
+        "offlineAcceptance": "open",
+        "switchStressAcceptance": "open",
+        "visualApproval": "open",
+        "childAgeReview": "not-assessed"
+      },
+      "acceptance": "OPEN",
+      "releaseReady": false
+    },
+    {
+      "requirementId": "STARTER-022",
+      "id": "child-mode",
+      "category": "child",
+      "required": true,
+      "iapSkuAllowed": false,
+      "implementation": {
+        "status": "no-audited-binding"
+      },
+      "checks": {
+        "presence": "open",
+        "assetChecksums": "unmeasured",
+        "ruEnCoverage": "unmeasured",
+        "rightsAcceptance": "open",
+        "platformAcceptance": "open",
+        "offlineAcceptance": "open",
+        "switchStressAcceptance": "open",
+        "visualApproval": "open",
+        "childAgeReview": "open"
+      },
+      "acceptance": "OPEN",
+      "releaseReady": false
+    },
+    {
+      "requirementId": "STARTER-023",
+      "id": "planetka",
+      "category": "child",
+      "required": true,
+      "iapSkuAllowed": false,
+      "implementation": {
+        "status": "no-audited-binding"
+      },
+      "checks": {
+        "presence": "open",
+        "assetChecksums": "unmeasured",
+        "ruEnCoverage": "unmeasured",
+        "rightsAcceptance": "open",
+        "platformAcceptance": "open",
+        "offlineAcceptance": "open",
+        "switchStressAcceptance": "open",
+        "visualApproval": "open",
+        "childAgeReview": "open"
+      },
+      "acceptance": "OPEN",
+      "releaseReady": false
+    },
+    {
+      "requirementId": "STARTER-024",
+      "id": "world.planetka",
+      "category": "world",
+      "required": true,
+      "iapSkuAllowed": false,
+      "implementation": {
+        "status": "no-audited-binding"
+      },
+      "checks": {
+        "presence": "open",
+        "assetChecksums": "unmeasured",
+        "ruEnCoverage": "unmeasured",
+        "rightsAcceptance": "open",
+        "platformAcceptance": "open",
+        "offlineAcceptance": "open",
+        "switchStressAcceptance": "open",
+        "visualApproval": "open",
+        "childAgeReview": "open"
+      },
+      "acceptance": "OPEN",
+      "releaseReady": false
+    },
+    {
+      "requirementId": "STARTER-025",
+      "id": "world.russian-folklore",
+      "category": "world",
+      "required": true,
+      "iapSkuAllowed": false,
+      "implementation": {
+        "status": "no-audited-binding"
+      },
+      "checks": {
+        "presence": "open",
+        "assetChecksums": "unmeasured",
+        "ruEnCoverage": "unmeasured",
+        "rightsAcceptance": "open",
+        "platformAcceptance": "open",
+        "offlineAcceptance": "open",
+        "switchStressAcceptance": "open",
+        "visualApproval": "open",
+        "childAgeReview": "open"
+      },
+      "acceptance": "OPEN",
+      "releaseReady": false
+    },
+    {
+      "requirementId": "STARTER-026",
+      "id": "world.pushkin",
+      "category": "world",
+      "required": true,
+      "iapSkuAllowed": false,
+      "implementation": {
+        "status": "no-audited-binding"
+      },
+      "checks": {
+        "presence": "open",
+        "assetChecksums": "unmeasured",
+        "ruEnCoverage": "unmeasured",
+        "rightsAcceptance": "open",
+        "platformAcceptance": "open",
+        "offlineAcceptance": "open",
+        "switchStressAcceptance": "open",
+        "visualApproval": "open",
+        "childAgeReview": "open"
+      },
+      "acceptance": "OPEN",
+      "releaseReady": false
+    },
+    {
+      "requirementId": "STARTER-027",
+      "id": "world.andersen",
+      "category": "world",
+      "required": true,
+      "iapSkuAllowed": false,
+      "implementation": {
+        "status": "no-audited-binding"
+      },
+      "checks": {
+        "presence": "open",
+        "assetChecksums": "unmeasured",
+        "ruEnCoverage": "unmeasured",
+        "rightsAcceptance": "open",
+        "platformAcceptance": "open",
+        "offlineAcceptance": "open",
+        "switchStressAcceptance": "open",
+        "visualApproval": "open",
+        "childAgeReview": "open"
+      },
+      "acceptance": "OPEN",
+      "releaseReady": false
+    },
+    {
+      "requirementId": "STARTER-028",
+      "id": "world.alice-literary",
+      "category": "world",
+      "required": true,
+      "iapSkuAllowed": false,
+      "implementation": {
+        "status": "no-audited-binding"
+      },
+      "checks": {
+        "presence": "open",
+        "assetChecksums": "unmeasured",
+        "ruEnCoverage": "unmeasured",
+        "rightsAcceptance": "open",
+        "platformAcceptance": "open",
+        "offlineAcceptance": "open",
+        "switchStressAcceptance": "open",
+        "visualApproval": "open",
+        "childAgeReview": "open"
+      },
+      "acceptance": "OPEN",
+      "releaseReady": false
+    },
+    {
+      "requirementId": "STARTER-029",
+      "id": "world.oz-literary",
+      "category": "world",
+      "required": true,
+      "iapSkuAllowed": false,
+      "implementation": {
+        "status": "no-audited-binding"
+      },
+      "checks": {
+        "presence": "open",
+        "assetChecksums": "unmeasured",
+        "ruEnCoverage": "unmeasured",
+        "rightsAcceptance": "open",
+        "platformAcceptance": "open",
+        "offlineAcceptance": "open",
+        "switchStressAcceptance": "open",
+        "visualApproval": "open",
+        "childAgeReview": "open"
+      },
+      "acceptance": "OPEN",
+      "releaseReady": false
+    }
+  ],
+  "limitations": [
+    "Source/asset presence is not feature or release acceptance.",
+    "Existing rights metadata does not replace platform/territory review.",
+    "Adult canonical editions cannot satisfy the required child skins.",
+    "No optional SKU or entitlement is approved by this inventory."
+  ],
+  "productionActionsPerformed": false,
+  "grantsEntitlement": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}
