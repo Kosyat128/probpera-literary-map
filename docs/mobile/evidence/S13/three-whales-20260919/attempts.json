@@ -1,0 +1,357 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-19T21:23:28.341Z",
+  "status": "FINAL_SOURCE_CHECKED_AND_VISUALLY_INSPECTED",
+  "sourceBase": "d55b10b0d259abebe9d109af8a2ea409f837fb97",
+  "runtimeSourceInputs": [
+    {
+      "path": "src/components/globeAntiqueGeometry.ts",
+      "sha256": "590a4e0ea5cb92251d7cccac3c0d6d28a441e82e6520fd17fe5d71adffb95538"
+    },
+    {
+      "path": "src/components/globeCraftMaterials.ts",
+      "sha256": "68ce7e818d50ac5ece1d5d4542fdc4cecea6af25e21b08b1274c8adcacbfbde1"
+    },
+    {
+      "path": "src/components/globeStandGeometry.ts",
+      "sha256": "51844849f891bbc0cedb1df101570118f45e6975f626c94cc8f2ed4cd8f329de"
+    },
+    {
+      "path": "src/components/globeWhaleStandGeometry.ts",
+      "sha256": "a641909b9d2a168b921e3a94f78db0c0652fe67b4d76b3cdaa2a1fba57de82be"
+    },
+    {
+      "path": "src/host/PlanetStandControls.tsx",
+      "sha256": "1d1e0f5802d4f8a7358374e9788a43bfd201efbad38a11e25f1abab7c63951bc"
+    },
+    {
+      "path": "src/planet/baseEditionPolicy.ts",
+      "sha256": "b7dce7840e0d4bef134b59fac6cf34ef91d74000430fc2db4db1c89067ce156e"
+    },
+    {
+      "path": "src/planet/globeStands.ts",
+      "sha256": "3ada1f67c7feb9dbd01fb04ce54633ae7ce3fe60ab7fda2f0f64a5bb5d5876bb"
+    }
+  ],
+  "engineeringRevisionsBeforeFormalChecks": 1,
+  "visualIterations": [
+    {
+      "attempt": "art-a1",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-wh/art-a1/result.json",
+      "sha256": "356e45c150d2ef3cb9a4ece0ed48bc9ece789256aa63099d2a4671fccccf7781",
+      "startedAt": "2026-09-19T21:04:17.351Z",
+      "endedAt": "2026-09-19T21:04:20.082Z",
+      "sourceInputs": [
+        {
+          "path": "src/components/globeWhaleStandGeometry.ts",
+          "sha256": "0f147faa3bfdade658c4eda80b638364d61c7d745d5499f66486346a7a9567fe"
+        },
+        {
+          "path": "src/components/globeAntiqueGeometry.ts",
+          "sha256": "590a4e0ea5cb92251d7cccac3c0d6d28a441e82e6520fd17fe5d71adffb95538"
+        },
+        {
+          "path": "src/components/globeCraftMaterials.ts",
+          "sha256": "68ce7e818d50ac5ece1d5d4542fdc4cecea6af25e21b08b1274c8adcacbfbde1"
+        },
+        {
+          "path": "src/components/globeQuality.ts",
+          "sha256": "b52e0221ec8bcac17d640e26378bc0304521316ca34e203313d2b63f9c3b28c9"
+        },
+        {
+          "path": "src/components/LiteraryGlobe.tsx",
+          "sha256": "12bb95c49f44a9ed75144e0fb64c36985975f0427b1ba8c163eeeffad379ac89"
+        },
+        {
+          "path": "docs/mobile/evidence/S13/three-whales-20260919/capture-whales.mjs",
+          "sha256": "a9ee891e5b508729ac5588069b8bd1d137c1e93abee7965a6d492c1281c8bb83"
+        }
+      ],
+      "sourceInputsUnchanged": true,
+      "capturedImages": 7,
+      "inspectedImages": 7,
+      "inspectedImageNames": [
+        "canonical-reference-high-front.png",
+        "three-whales-high-front.png",
+        "three-whales-high-three-quarter.png",
+        "three-whales-high-underside.png",
+        "three-whales-high-head-detail.png",
+        "three-whales-balanced-front.png",
+        "three-whales-economy-front.png"
+      ],
+      "engineeringIteration": true,
+      "finalCloseupSource": false,
+      "findings": "Inspected historical engineering iteration: flat board-like appendages and nose fan/pinch required correction.",
+      "artAccepted": false
+    },
+    {
+      "attempt": "art-a2",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-wh/art-a2/result.json",
+      "sha256": "c3e381789fecec11611ad0ff8f789285fdfb87303795f6d8936197822f81d1e3",
+      "startedAt": "2026-09-19T21:11:14.481Z",
+      "endedAt": "2026-09-19T21:11:17.489Z",
+      "sourceInputs": [
+        {
+          "path": "src/components/globeWhaleStandGeometry.ts",
+          "sha256": "a641909b9d2a168b921e3a94f78db0c0652fe67b4d76b3cdaa2a1fba57de82be"
+        },
+        {
+          "path": "src/components/globeAntiqueGeometry.ts",
+          "sha256": "590a4e0ea5cb92251d7cccac3c0d6d28a441e82e6520fd17fe5d71adffb95538"
+        },
+        {
+          "path": "src/components/globeCraftMaterials.ts",
+          "sha256": "68ce7e818d50ac5ece1d5d4542fdc4cecea6af25e21b08b1274c8adcacbfbde1"
+        },
+        {
+          "path": "src/components/globeQuality.ts",
+          "sha256": "b52e0221ec8bcac17d640e26378bc0304521316ca34e203313d2b63f9c3b28c9"
+        },
+        {
+          "path": "src/components/LiteraryGlobe.tsx",
+          "sha256": "12bb95c49f44a9ed75144e0fb64c36985975f0427b1ba8c163eeeffad379ac89"
+        },
+        {
+          "path": "docs/mobile/evidence/S13/three-whales-20260919/capture-whales.mjs",
+          "sha256": "a9ee891e5b508729ac5588069b8bd1d137c1e93abee7965a6d492c1281c8bb83"
+        }
+      ],
+      "sourceInputsUnchanged": true,
+      "capturedImages": 7,
+      "inspectedImages": 7,
+      "inspectedImageNames": [
+        "canonical-reference-high-front.png",
+        "three-whales-high-front.png",
+        "three-whales-high-three-quarter.png",
+        "three-whales-high-underside.png",
+        "three-whales-high-head-detail.png",
+        "three-whales-balanced-front.png",
+        "three-whales-economy-front.png"
+      ],
+      "engineeringIteration": false,
+      "finalCloseupSource": true,
+      "findings": "Inspected organic-loft correction; remaining stylization, violet reflections and small gem readability are explicitly open.",
+      "artAccepted": false
+    }
+  ],
+  "formalAttempts": [
+    {
+      "mode": "unit",
+      "attempt": "a1",
+      "path": "docs/mobile/evidence/S13/three-whales-20260919/unit-a1/result.json",
+      "sha256": "26c86d828f86d7ffeee8787e7306f7846b588e6de882a6d7016dd478dcd92106",
+      "pass": true,
+      "startedAt": "2026-09-19T21:15:17.682Z",
+      "endedAt": "2026-09-19T21:15:23.725Z",
+      "executions": [
+        {
+          "name": "unit",
+          "exitCode": 0,
+          "durationMs": 2578
+        },
+        {
+          "name": "adapter-allowlists",
+          "exitCode": 0,
+          "durationMs": 3444
+        }
+      ],
+      "tests": {
+        "passed": 29,
+        "failed": 0,
+        "skipped": 0,
+        "filteredOut": 181,
+        "failures": [],
+        "selectedAdapterCases": [
+          {
+            "name": "exact non-secret preferences with serialized readback round-trips only exact adult stand choices through the stand preference key",
+            "status": "passed"
+          },
+          {
+            "name": "non-secret best-effort canonical preferences round-trips only exact adult stand choices without extending browser storage authority",
+            "status": "passed"
+          }
+        ],
+        "selection": {
+          "unitFiles": [
+            "src/components/globeWhaleStandGeometry.test.ts",
+            "src/components/globeAntiqueGeometry.test.ts",
+            "src/planet/globeWhaleStandPolicy.test.ts",
+            "src/planet/baseEditionPolicy.test.ts",
+            "src/planet/globeComposition.test.ts"
+          ],
+          "adapterFiles": [
+            "src/host/HostPlatformServices.test.ts",
+            "src/platform/adapters/web/WebPlatformAdapter.test.ts"
+          ],
+          "adapterPattern": "round-trips only exact adult stand choices (?:through the stand preference key|without extending browser storage authority)$",
+          "expectedAdapterCases": 2
+        },
+        "filterAccounting": "Unmatched adapter cases are intentionally excluded, recorded as filteredOut, and never counted as passed. Skipped refers to selected tests only."
+      },
+      "sourceInputsUnchanged": true
+    },
+    {
+      "mode": "static",
+      "attempt": "a1",
+      "path": "docs/mobile/evidence/S13/three-whales-20260919/static-a1/result.json",
+      "sha256": "de42e6ca101ed29321394bcdb4d0192fa19d0174a110a2f30647963407e89055",
+      "pass": true,
+      "startedAt": "2026-09-19T21:15:18.587Z",
+      "endedAt": "2026-09-19T21:15:49.356Z",
+      "executions": [
+        {
+          "name": "typecheck",
+          "exitCode": 0,
+          "durationMs": 30761
+        }
+      ],
+      "tests": null,
+      "sourceInputsUnchanged": true
+    },
+    {
+      "mode": "browser",
+      "attempt": "a1",
+      "path": "docs/mobile/evidence/S13/three-whales-20260919/browser-a1/result.json",
+      "sha256": "fa4bdcf67682211a3a90ddd788ab8b80d76e0e0ed7aa6d7fe3954d72706a98b5",
+      "pass": false,
+      "startedAt": "2026-09-19T21:15:17.834Z",
+      "endedAt": "2026-09-19T21:15:31.313Z",
+      "executions": [
+        {
+          "name": "browser",
+          "exitCode": 1,
+          "durationMs": 13459
+        }
+      ],
+      "tests": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0,
+        "errors": []
+      },
+      "sourceInputsUnchanged": true
+    },
+    {
+      "mode": "browser",
+      "attempt": "a2",
+      "path": "docs/mobile/evidence/S13/three-whales-20260919/browser-a2/result.json",
+      "sha256": "6030910f8913987ba7c102d8c7e639a665e691c616fd31740d356c8a08ea54cd",
+      "pass": true,
+      "startedAt": "2026-09-19T21:17:21.364Z",
+      "endedAt": "2026-09-19T21:17:46.070Z",
+      "executions": [
+        {
+          "name": "browser",
+          "exitCode": 0,
+          "durationMs": 24696
+        }
+      ],
+      "tests": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "errors": []
+      },
+      "sourceInputsUnchanged": true
+    }
+  ],
+  "unitAccounting": {
+    "mainPassed": 27,
+    "selectedAdapterPassed": 2,
+    "totalPassed": 29,
+    "intentionallyFilteredOut": 181,
+    "filteredTestsWereNotRun": true
+  },
+  "finalActualAppReview": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-wh/browser-a2/globe-three-whales-golden--17696-persist-as-a-distinct-stand/globe-three-whales.json",
+    "sha256": "ee6528fe75cdf6f4bb7f17a2ca402754817429c8f7c018c4490ebcbb83ea047e",
+    "check": {
+      "path": "docs/mobile/evidence/S13/three-whales-20260919/browser-a2/result.json",
+      "sha256": "6030910f8913987ba7c102d8c7e639a665e691c616fd31740d356c8a08ea54cd"
+    },
+    "images": [
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-wh/browser-a2/globe-three-whales-golden--17696-persist-as-a-distinct-stand/three-whales-high-preview-ru.png",
+        "sha256": "17f3b162f53ad5c8d683c469f177190dca286c527a5630b81123cc60417b98d7",
+        "actualApp": true,
+        "inspected": true,
+        "inspectionScope": "Actual stand and visible controls inspected."
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-wh/browser-a2/globe-three-whales-golden--17696-persist-as-a-distinct-stand/three-whales-balanced-ru.png",
+        "sha256": "9b37c0f38d7d2257d2b33effaa01884622d128cac105accf869be6cee021f887",
+        "actualApp": true,
+        "inspected": true,
+        "inspectionScope": "Actual stand and visible controls inspected."
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-wh/browser-a2/globe-three-whales-golden--17696-persist-as-a-distinct-stand/three-whales-economy-ru.png",
+        "sha256": "7caf7e48c3f2acdf71302823386800cc3d76daa7a8e7f8d55c42f317988f50c2",
+        "actualApp": true,
+        "inspected": true,
+        "inspectionScope": "Actual stand and visible controls inspected."
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-wh/browser-a2/globe-three-whales-golden--17696-persist-as-a-distinct-stand/three-whales-economy-en-390.png",
+        "sha256": "f3a767e2b649b9941b8a7a82b5460bd6c86a4ed4f874fdd2a58f570a7aef4f6b",
+        "actualApp": true,
+        "inspected": true,
+        "inspectionScope": "Actual stand and visible controls inspected."
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-wh/browser-a2/globe-three-whales-golden--17696-persist-as-a-distinct-stand/three-whales-reloaded-en-1440.png",
+        "sha256": "ed9566ca976715587987aabb9105453e7315abb8703512dcbd6b7edf9ecf603d",
+        "actualApp": true,
+        "inspected": true,
+        "inspectionScope": "Stand, map and restored composition inspected; header captured during fade-in, so fully settled navigation appearance is not asserted."
+      }
+    ],
+    "inspectedImages": 5,
+    "observationsCopiedExactly": true,
+    "headerFadeInLimitation": true
+  },
+  "targetedInventory": {
+    "command": "node scripts/mobile/audit-starter-set.mjs docs/mobile/evidence/S13/three-whales-20260919/starter-set-source-inventory.json",
+    "runs": 1,
+    "path": "docs/mobile/evidence/S13/three-whales-20260919/starter-set-source-inventory.json",
+    "sha256": "c14e905352644680c82a8b88cf58815a609329219cc57c5cc66385b14d2fc68c",
+    "auditValid": true,
+    "requiredCount": 29,
+    "sourceBoundCount": 11,
+    "acceptedCount": 0
+  },
+  "userRealismRequirementSatisfied": false,
+  "artAccepted": false,
+  "installedDeviceTested": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "checkInputAmendment": {
+    "path": "tests/pwa/globe-three-whales.spec.mjs",
+    "sha256": "646ea71926f995268d4ffd7e6b8905fe6586b27ea46e74ff035ba10cf1e39271",
+    "schemaVersion": 1,
+    "beforeSha256": "35913d85cfc4ac9abcf8ac61f53c62da10f58bab73f50e54f7be5df18a7c2c14",
+    "afterSha256": "716c2fe4864ff5b5bdc9ea1120c8543353ff073246bd6ec6ae3b78da613b9e1e",
+    "affectedRun": "browser-a1",
+    "reuseRuns": [
+      "unit-a1",
+      "static-a1"
+    ],
+    "reason": "The fixture closes the writer view and resets the globe before preview; those authorized UI actions already remove country/writer URL parameters. The stand preview must preserve its actual pre-preview URL, not the no-longer-current launch URL. Only this browser assertion changes; runtime and unit inputs are unchanged, and TypeScript does not compile .mjs browser fixtures.",
+    "recheck": "browser-a2",
+    "failedAttemptPreserved": "browser-a1",
+    "runtimeChanged": false,
+    "reusedPassedRuns": [
+      "unit-a1",
+      "static-a1"
+    ],
+    "recheckedRun": "browser-a2",
+    "explanation": "Only the browser assertion of the pre-preview URL changed. Previously passed unit and static results retain their original hashes; the bounded amendment records their incidental fixture hash difference. Every runtime/test/compiler input used by those checks remains unchanged."
+  },
+  "finalSelectedAttempts": {
+    "unit": "a1",
+    "static": "a1",
+    "browser": "a2"
+  }
+}

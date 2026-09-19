@@ -1,0 +1,929 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-19T21:23:28.341Z",
+  "pass": true,
+  "status": "CLOSEUPS_AND_ACTUAL_APP_INSPECTED_WITH_OPEN_REALISM_LIMITS",
+  "reviewer": "coordinating-agent",
+  "passMeaning": "The coordinating agent inspected all seven final close-up images and all five successful actual-App screenshots against the bound source. This records scoped inspection, not final art approval or satisfaction of the maximum-realism request.",
+  "sourceInputs": [
+    {
+      "path": "docs/mobile/evidence/S13/three-whales-20260919/capture-whales.mjs",
+      "sha256": "a9ee891e5b508729ac5588069b8bd1d137c1e93abee7965a6d492c1281c8bb83"
+    },
+    {
+      "path": "docs/mobile/evidence/S13/three-whales-20260919/playwright.config.mjs",
+      "sha256": "8cdaba365f92a6162038eb4cd8194a439fc373975432632e92df494cc6c29554"
+    },
+    {
+      "path": "docs/mobile/evidence/S13/three-whales-20260919/run-checks.mjs",
+      "sha256": "f0e08ebcc580cd702c5c44b1f63cf30680d74e2c81d394787bbb80d30e650c2b"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/37_BASE_EDITION_STARTER_SET.csv",
+      "sha256": "575f40b97986cb4e64cb89243059a3b18c4cda8069f4f0e1c7d3565f6132b731"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+    },
+    {
+      "path": "package.json",
+      "sha256": "90b392c205754f838b8bc7c4475bd475936be1078561bb218c437d151177869f"
+    },
+    {
+      "path": "src/App.tsx",
+      "sha256": "6f76f51c9f703e698285b93585b8a73350abd7a2a6b01b3f2018c7fd55bd54aa"
+    },
+    {
+      "path": "src/components/GlobeIncludedBackground.tsx",
+      "sha256": "6cd0822f85bf94af681c0560be626ab004ce0e4900adccf0ae1b84d298be7374"
+    },
+    {
+      "path": "src/components/GlobeIncludedStand.tsx",
+      "sha256": "276ef908fe5a09c066a59d9ff57d1432d44300bcb979b2aeb5d6dd249ba189fd"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "sha256": "12bb95c49f44a9ed75144e0fb64c36985975f0427b1ba8c163eeeffad379ac89"
+    },
+    {
+      "path": "src/components/LiteraryWorldMap.tsx",
+      "sha256": "f89bcc47b6be688791b8523c81acb16f280482ae22490e1ec105ff902d5cf15e"
+    },
+    {
+      "path": "src/components/globeAntiqueGeometry.test.ts",
+      "sha256": "1c5e106ed4d001862ea4fd4589f21101e2e952df8bf6d2fa59c8db4b0adecc21"
+    },
+    {
+      "path": "src/components/globeAntiqueGeometry.ts",
+      "sha256": "590a4e0ea5cb92251d7cccac3c0d6d28a441e82e6520fd17fe5d71adffb95538"
+    },
+    {
+      "path": "src/components/globeAssetCache.ts",
+      "sha256": "009f4f6516428c46848cffbecf7c3d3bb0be2b4c1d5989ef8743ecfb4a068987"
+    },
+    {
+      "path": "src/components/globeAtlas.ts",
+      "sha256": "224dcde2499f51eb333562875796d3422ab28ad987339f36be79f0635677bcf6"
+    },
+    {
+      "path": "src/components/globeCraftMaterials.ts",
+      "sha256": "68ce7e818d50ac5ece1d5d4542fdc4cecea6af25e21b08b1274c8adcacbfbde1"
+    },
+    {
+      "path": "src/components/globeEditions.ts",
+      "sha256": "b7440b6278979deb1e47738572460869202f0d9cf794a144aceac9dbcf8cdd77"
+    },
+    {
+      "path": "src/components/globeLibraryBookGeometry.ts",
+      "sha256": "e3034c2bd4391f1b08410c3c1f41165e880c7225f957a42ef4780e87eeaf7e0c"
+    },
+    {
+      "path": "src/components/globeLibraryGeometry.ts",
+      "sha256": "c0d4fe4c9b69921df11d50bc349fca9896304baba67fff60263b77ff19c1d1ee"
+    },
+    {
+      "path": "src/components/globeQuality.ts",
+      "sha256": "b52e0221ec8bcac17d640e26378bc0304521316ca34e203313d2b63f9c3b28c9"
+    },
+    {
+      "path": "src/components/globeStandGeometry.ts",
+      "sha256": "51844849f891bbc0cedb1df101570118f45e6975f626c94cc8f2ed4cd8f329de"
+    },
+    {
+      "path": "src/components/globeTurnedWoodAtlas.ts",
+      "sha256": "579c1cec368760643b108a63f466b3d6385243d5e0f13c4638a4824b62a5d123"
+    },
+    {
+      "path": "src/components/globeWhaleStandGeometry.test.ts",
+      "sha256": "74941e4a2b334753655c655b6654d6fe7b4ad81bbe8ea54db9459c04e5b700b7"
+    },
+    {
+      "path": "src/components/globeWhaleStandGeometry.ts",
+      "sha256": "a641909b9d2a168b921e3a94f78db0c0652fe67b4d76b3cdaa2a1fba57de82be"
+    },
+    {
+      "path": "src/components/useGlobeCompositionFrame.ts",
+      "sha256": "530d1303a5af222bf68f72b499b07c8d41a828ca14783912284b6e3963d59cd0"
+    },
+    {
+      "path": "src/components/useGlobeCompositionScene.ts",
+      "sha256": "30009468d0cdee459441ca5780ea608cdf21b3f6e7055da89c0ce28e435326b5"
+    },
+    {
+      "path": "src/components/useGlobeStyleState.ts",
+      "sha256": "6d2801802ec0e9bf0c2e5ff9a6f852f00434a8494216b06ee2069917e2a1a0ba"
+    },
+    {
+      "path": "src/host/HostPlatformServices.test.ts",
+      "sha256": "e72918e2e04d9462e63914780ecd63e21a8c837d0b023e594590f9814c5e33ea"
+    },
+    {
+      "path": "src/host/HostPlatformServices.ts",
+      "sha256": "01452b051642c1410f45e1b2594b1364d24d26510609049a148064ed12fe6825"
+    },
+    {
+      "path": "src/host/PlanetEditionPreferenceStatus.tsx",
+      "sha256": "c4eb85f88a369b299a4cf164d3dc4cf34bdcf9ddc2629793e5a59bb1498c7104"
+    },
+    {
+      "path": "src/host/PlanetGraphicsSettings.tsx",
+      "sha256": "6332bec397775901379ec3776548aaf610b6e7cde094badd5672d09436b24e4f"
+    },
+    {
+      "path": "src/host/PlanetStandControls.css",
+      "sha256": "33fc6bb7b522d4057054a9e72f12ef5c6015a0a91c80187158134de2fa207306"
+    },
+    {
+      "path": "src/host/PlanetStandControls.tsx",
+      "sha256": "1d1e0f5802d4f8a7358374e9788a43bfd201efbad38a11e25f1abab7c63951bc"
+    },
+    {
+      "path": "src/host/host.css",
+      "sha256": "3f81496e8c89f1f0e4facfa3267c2bbd3c05425c0baa3bb5459981cad0c18877"
+    },
+    {
+      "path": "src/host/mountHostApp.tsx",
+      "sha256": "6117dd7fca9408c126484fa55f50b82ae8f40e72824831355afe028112980f50"
+    },
+    {
+      "path": "src/host/planetAppearance.css",
+      "sha256": "57c46af2e0704da55e2054e9d09f2b8d408c4428c002e8faf2fe60663e066329"
+    },
+    {
+      "path": "src/host/planetComposition.ts",
+      "sha256": "6e193b12c495d962737185ab4fd35eeb3b64fe46f5c92774b565cfbb1181e954"
+    },
+    {
+      "path": "src/host/planetCompositionPresentation.ts",
+      "sha256": "d62d963c719366c1be3e6888b5eb321933f3e7224b6591fc8c2d6d81a639c3f6"
+    },
+    {
+      "path": "src/host/planetGraphicsQuality.ts",
+      "sha256": "5b8cc15796b0a2e0c3e6222ba6c7f0af2ffa2102d7a30000891f2435906d79f2"
+    },
+    {
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "sha256": "41afc69ed9dd15ac3caf976818de5d2b50749a2cdbfd64e917e93988b0f00143"
+    },
+    {
+      "path": "src/index.css",
+      "sha256": "abeefa5620f8589d0e0f34d38120970315df8f95a0e7d5009d21222e932e5a35"
+    },
+    {
+      "path": "src/planet/baseEditionPolicy.test.ts",
+      "sha256": "8986fdeef802772be2c9c524035308e665a0f9023d66bb7b5bdfa7482e6eee50"
+    },
+    {
+      "path": "src/planet/baseEditionPolicy.ts",
+      "sha256": "b7dce7840e0d4bef134b59fac6cf34ef91d74000430fc2db4db1c89067ce156e"
+    },
+    {
+      "path": "src/planet/editions.ts",
+      "sha256": "466105cd35cadf5c0bc656c34d50bc20fe174551020b002fc903b8071dc5145e"
+    },
+    {
+      "path": "src/planet/globeBackgrounds.ts",
+      "sha256": "6096caaddd78adb6f862fb324e028e051867e855e3a0ba7d2db2d8882cb14200"
+    },
+    {
+      "path": "src/planet/globeComposition.test.ts",
+      "sha256": "a38c2e897228c7c973d344795354aa810390514b35cd853923370ca7e66b67bb"
+    },
+    {
+      "path": "src/planet/globeComposition.ts",
+      "sha256": "20b4cabdd678a6fa5b70ab2b4cbaef179f0e7d7c5819e408123eb486ddb0e81f"
+    },
+    {
+      "path": "src/planet/globeStands.ts",
+      "sha256": "3ada1f67c7feb9dbd01fb04ce54633ae7ce3fe60ab7fda2f0f64a5bb5d5876bb"
+    },
+    {
+      "path": "src/planet/globeWhaleStandPolicy.test.ts",
+      "sha256": "e65f83a6667286b4b25e299b991c6e8cd74fcb4f7ec7fb7694a0fb07b7f4aee2"
+    },
+    {
+      "path": "src/platform/PlatformServices.tsx",
+      "sha256": "6f8aa1040a3fc4bd2717a4ec61ec8a89d48c01610f80b17998a31d35bf6d02c5"
+    },
+    {
+      "path": "src/platform/adapters/android/AndroidPlatformAdapter.ts",
+      "sha256": "97c263de1bb16757814499c9b6781f3b1fe801c8136f13cd44c21956f9b263ec"
+    },
+    {
+      "path": "src/platform/adapters/web/WebPlatformAdapter.test.ts",
+      "sha256": "9ac42d10a4e313952076d17b231c31d67bce11e7c751cb3a0c9480c64ed6d647"
+    },
+    {
+      "path": "src/platform/adapters/web/WebPlatformAdapter.ts",
+      "sha256": "0801a674f17dfd99862fd6ad386f7d29e3a58ea675698c29cac8de77e5ef58cb"
+    },
+    {
+      "path": "src/platform/distribution.ts",
+      "sha256": "c2947a4631d4b72392de12ab35dd8b30254ad3f612396507739067b1a1d6cf0b"
+    },
+    {
+      "path": "src/platform/ports.ts",
+      "sha256": "c9b16d8f56263dfbc8725cc8296989076d5a485a74ef106954f9b468a21fb65d"
+    },
+    {
+      "path": "src/utils/safeWebStorage.ts",
+      "sha256": "7143453436d90ea31e0fb345b663597b981c628c8be66b5a1ec718ed66c716d4"
+    },
+    {
+      "path": "tests/pwa/globe-three-whales.spec.mjs",
+      "sha256": "716c2fe4864ff5b5bdc9ea1120c8543353ff073246bd6ec6ae3b78da613b9e1e"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "8d51a8c9266fe83bf17c076b51672753b3750a17520cd0d2c28a90cb8b21e0d6"
+    },
+    {
+      "path": "vitest.config.ts",
+      "sha256": "5c1e90985e77b35599e5bdaf77c74a1166949ec9c4f45d1c5f926c3f53bef90e"
+    }
+  ],
+  "runtimeSourceInputs": [
+    {
+      "path": "src/components/globeAntiqueGeometry.ts",
+      "sha256": "590a4e0ea5cb92251d7cccac3c0d6d28a441e82e6520fd17fe5d71adffb95538"
+    },
+    {
+      "path": "src/components/globeCraftMaterials.ts",
+      "sha256": "68ce7e818d50ac5ece1d5d4542fdc4cecea6af25e21b08b1274c8adcacbfbde1"
+    },
+    {
+      "path": "src/components/globeStandGeometry.ts",
+      "sha256": "51844849f891bbc0cedb1df101570118f45e6975f626c94cc8f2ed4cd8f329de"
+    },
+    {
+      "path": "src/components/globeWhaleStandGeometry.ts",
+      "sha256": "a641909b9d2a168b921e3a94f78db0c0652fe67b4d76b3cdaa2a1fba57de82be"
+    },
+    {
+      "path": "src/host/PlanetStandControls.tsx",
+      "sha256": "1d1e0f5802d4f8a7358374e9788a43bfd201efbad38a11e25f1abab7c63951bc"
+    },
+    {
+      "path": "src/planet/baseEditionPolicy.ts",
+      "sha256": "b7dce7840e0d4bef134b59fac6cf34ef91d74000430fc2db4db1c89067ce156e"
+    },
+    {
+      "path": "src/planet/globeStands.ts",
+      "sha256": "3ada1f67c7feb9dbd01fb04ce54633ae7ce3fe60ab7fda2f0f64a5bb5d5876bb"
+    }
+  ],
+  "artCapture": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-wh/art-a2/result.json",
+    "sha256": "c3e381789fecec11611ad0ff8f789285fdfb87303795f6d8936197822f81d1e3"
+  },
+  "actualAppCapture": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-wh/browser-a2/globe-three-whales-golden--17696-persist-as-a-distinct-stand/globe-three-whales.json",
+    "sha256": "ee6528fe75cdf6f4bb7f17a2ca402754817429c8f7c018c4490ebcbb83ea047e"
+  },
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-wh/art-a2/canonical-reference-high-front.png",
+      "sha256": "87b0d1ff6cd64baad421970c798b191f2ab9574d1ae2cd202b0e7fba1616c0f1",
+      "tier": "high",
+      "view": "front",
+      "reference": true,
+      "actualApp": false,
+      "inspected": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-wh/art-a2/three-whales-high-front.png",
+      "sha256": "262c2abfddba4edf6e2f175a3c9e729308614ae0ff333ea063d35249a7f97292",
+      "tier": "high",
+      "view": "front",
+      "reference": false,
+      "actualApp": false,
+      "inspected": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-wh/art-a2/three-whales-high-three-quarter.png",
+      "sha256": "64344b7a86d70cb55c022bf1822830bc676b4e033e26bbc16b80dc77f1fd053d",
+      "tier": "high",
+      "view": "three-quarter",
+      "reference": false,
+      "actualApp": false,
+      "inspected": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-wh/art-a2/three-whales-high-underside.png",
+      "sha256": "3078ec4cb10af41cf42f0d7dd74b78960d0c62e550e162128dc5885177839916",
+      "tier": "high",
+      "view": "underside",
+      "reference": false,
+      "actualApp": false,
+      "inspected": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-wh/art-a2/three-whales-high-head-detail.png",
+      "sha256": "a3ee5632313a88475e9938d0e2022a5afdf18a5b39569105b9bee4c404c4d32b",
+      "tier": "high",
+      "view": "head-detail",
+      "reference": false,
+      "actualApp": false,
+      "inspected": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-wh/art-a2/three-whales-balanced-front.png",
+      "sha256": "d37f816ecfdb609da820925b759047e4c84c6ed4ae5e6fd4385cadd61430fe43",
+      "tier": "balanced",
+      "view": "front",
+      "reference": false,
+      "actualApp": false,
+      "inspected": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-wh/art-a2/three-whales-economy-front.png",
+      "sha256": "d2c81ae3bffc7ab19ebc7a50cec52b164dfbe2aa49c520bfc5d77ce4fb9cb001",
+      "tier": "economy",
+      "view": "front",
+      "reference": false,
+      "actualApp": false,
+      "inspected": true
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-wh/browser-a2/globe-three-whales-golden--17696-persist-as-a-distinct-stand/three-whales-high-preview-ru.png",
+      "sha256": "17f3b162f53ad5c8d683c469f177190dca286c527a5630b81123cc60417b98d7",
+      "actualApp": true,
+      "inspected": true,
+      "inspectionScope": "Actual stand and visible controls inspected."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-wh/browser-a2/globe-three-whales-golden--17696-persist-as-a-distinct-stand/three-whales-balanced-ru.png",
+      "sha256": "9b37c0f38d7d2257d2b33effaa01884622d128cac105accf869be6cee021f887",
+      "actualApp": true,
+      "inspected": true,
+      "inspectionScope": "Actual stand and visible controls inspected."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-wh/browser-a2/globe-three-whales-golden--17696-persist-as-a-distinct-stand/three-whales-economy-ru.png",
+      "sha256": "7caf7e48c3f2acdf71302823386800cc3d76daa7a8e7f8d55c42f317988f50c2",
+      "actualApp": true,
+      "inspected": true,
+      "inspectionScope": "Actual stand and visible controls inspected."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-wh/browser-a2/globe-three-whales-golden--17696-persist-as-a-distinct-stand/three-whales-economy-en-390.png",
+      "sha256": "f3a767e2b649b9941b8a7a82b5460bd6c86a4ed4f874fdd2a58f570a7aef4f6b",
+      "actualApp": true,
+      "inspected": true,
+      "inspectionScope": "Actual stand and visible controls inspected."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-wh/browser-a2/globe-three-whales-golden--17696-persist-as-a-distinct-stand/three-whales-reloaded-en-1440.png",
+      "sha256": "ed9566ca976715587987aabb9105453e7315abb8703512dcbd6b7edf9ecf603d",
+      "actualApp": true,
+      "inspected": true,
+      "inspectionScope": "Stand, map and restored composition inspected; header captured during fade-in, so fully settled navigation appearance is not asserted."
+    }
+  ],
+  "reviewedImageCounts": {
+    "finalCloseups": 7,
+    "finalActualApp": 5
+  },
+  "observations": [
+    "The coordinating agent inspected all seven final art-a2 images: the original reference, High front/three-quarter/underside/head detail, Balanced front and Economy front.",
+    "Closed organic lofts remove the earlier board-like flipper and tail appearance, and the white fan/pinch at the nose is no longer visible in the inspected views.",
+    "The material reads as polished yellow gold. Six faceted emerald eyes sit in gold settings, with seated lower-jaw curves and facial detail.",
+    "All three figures retain the recognizable original support silhouette at High, Balanced and Economy; the lower tiers do not drop a figure or the overall stand shape.",
+    "All five successful browser-a2 screenshots were inspected by the coordinating agent. The gold stand fits beneath the existing globe and retains three figures at every tier; the High RU preview and Balanced/Economy screenshots show unobstructed controls.",
+    "At 390 px the outer stand rings are clipped by the existing viewport, without page overflow or blocked controls. The reloaded 1440 px view restores the stand and map, but captures a transparent header during its fade-in; it is not evidence of fully settled navigation appearance."
+  ],
+  "remainingVisibleIssues": [
+    "The result is still a stylized sculptural ornament, not photorealistic animal anatomy or final fulfillment of the user's realism requirement.",
+    "The unchanged globe lighting still creates strong violet accents and reflections on the gold; no global lighting change is claimed.",
+    "All six small emerald eyes are present; their gemstone identity and facets read better in close-up and remain limited at normal phone scale.",
+    "Earlier library, wood-identity, metal-response and uniform-paper realism issues remain open in the preserved surface review."
+  ],
+  "tierGeometry": [
+    {
+      "tier": "high",
+      "meshes": 42,
+      "totalTriangles": 62232,
+      "geometryBytes": 775524,
+      "transformedBounds": {
+        "min": [
+          -1.3834999799728394,
+          -1.3370310889706019,
+          -1.3834999799728394
+        ],
+        "max": [
+          1.3834999799728394,
+          -0.7922425866127014,
+          1.3834999799728394
+        ],
+        "maxRadius": 1.3835000473447612,
+        "vertices": 36570,
+        "finite": true
+      }
+    },
+    {
+      "tier": "balanced",
+      "meshes": 42,
+      "totalTriangles": 36120,
+      "geometryBytes": 483904,
+      "transformedBounds": {
+        "min": [
+          -1.3834999799728394,
+          -1.3370310889706019,
+          -1.3834999799728394
+        ],
+        "max": [
+          1.3834999799728394,
+          -0.7927308082580566,
+          1.3834999799728394
+        ],
+        "maxRadius": 1.3835000473447612,
+        "vertices": 22227,
+        "finite": true
+      }
+    },
+    {
+      "tier": "economy",
+      "meshes": 42,
+      "totalTriangles": 19848,
+      "geometryBytes": 288068,
+      "transformedBounds": {
+        "min": [
+          -1.3834999799728394,
+          -1.3370310889706019,
+          -1.3834999799728394
+        ],
+        "max": [
+          1.3834999799728394,
+          -0.7939411401748657,
+          1.3834999799728394
+        ],
+        "maxRadius": 1.3835000473447612,
+        "vertices": 13134,
+        "finite": true
+      }
+    }
+  ],
+  "ownedResourceEvidence": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-wh/art-a2/result.json",
+    "retired": [
+      {
+        "key": "canonical-reference",
+        "ownedTextureCount": 0,
+        "ownedTextureBytesIncludingMips": 0,
+        "geometryCount": 10,
+        "materialCount": 6,
+        "exactOnce": true
+      },
+      {
+        "key": "high",
+        "ownedTextureCount": 16,
+        "ownedTextureBytesIncludingMips": 5417624,
+        "geometryCount": 14,
+        "materialCount": 11,
+        "exactOnce": true
+      },
+      {
+        "key": "balanced",
+        "ownedTextureCount": 16,
+        "ownedTextureBytesIncludingMips": 1354392,
+        "geometryCount": 14,
+        "materialCount": 11,
+        "exactOnce": true
+      },
+      {
+        "key": "economy",
+        "ownedTextureCount": 16,
+        "ownedTextureBytesIncludingMips": 338584,
+        "geometryCount": 14,
+        "materialCount": 11,
+        "exactOnce": true
+      }
+    ],
+    "globalGpuLeakClaim": false
+  },
+  "actualAppObservations": [
+    {
+      "high": {
+        "editionId": "rand-mcnally-1887",
+        "standId": "stand.base.three-whales",
+        "backgroundId": "background.base.library",
+        "standCount": 1,
+        "backgroundCount": 1,
+        "surfaceCount": 1,
+        "libraryDensity": {
+          "books": 984,
+          "placements": 1901197402,
+          "colors": 437509884
+        },
+        "whales": [
+          0,
+          2.0943951023931953,
+          4.1887902047863905
+        ],
+        "gems": [
+          "whale-inset-emerald-0",
+          "whale-inset-emerald-1",
+          "whale-inset-emerald-0",
+          "whale-inset-emerald-1",
+          "whale-inset-emerald-0",
+          "whale-inset-emerald-1"
+        ],
+        "canonicalBodyCount": 3,
+        "quality": "high",
+        "drawCalls": 154,
+        "triangles": 472632,
+        "frame": 45,
+        "gpuMemory": {
+          "geometries": 126,
+          "textures": 32
+        },
+        "contextLost": false,
+        "sameScene": true,
+        "geometry": "70461397-f1fd-4a35-89ed-2ed6cec62997",
+        "texture": "7b85b90c-d5ba-4ba8-b404-eb6076f4d40f",
+        "fingerprint": 1010031307,
+        "mapVersion": 2,
+        "uploadedVersion": 2,
+        "gpuAllocated": true,
+        "pose": {
+          "position": [
+            0,
+            0.08,
+            4.9
+          ],
+          "quaternion": [
+            -0.02854,
+            0,
+            0,
+            0.99959
+          ],
+          "zoom": 1
+        }
+      },
+      "tiers": [
+        {
+          "editionId": "rand-mcnally-1887",
+          "standId": "stand.base.three-whales",
+          "backgroundId": "background.base.library",
+          "standCount": 1,
+          "backgroundCount": 1,
+          "surfaceCount": 1,
+          "libraryDensity": {
+            "books": 984,
+            "placements": 1901197402,
+            "colors": 437509884
+          },
+          "whales": [
+            0,
+            2.0943951023931953,
+            4.1887902047863905
+          ],
+          "gems": [
+            "whale-inset-emerald-0",
+            "whale-inset-emerald-1",
+            "whale-inset-emerald-0",
+            "whale-inset-emerald-1",
+            "whale-inset-emerald-0",
+            "whale-inset-emerald-1"
+          ],
+          "canonicalBodyCount": 3,
+          "quality": "balanced",
+          "drawCalls": 166,
+          "triangles": 362952,
+          "frame": 84,
+          "gpuMemory": {
+            "geometries": 121,
+            "textures": 32
+          },
+          "contextLost": false,
+          "sameScene": true,
+          "geometry": "e3006c1f-cc23-405b-bc1c-8791fdbcdc2c",
+          "texture": "7b85b90c-d5ba-4ba8-b404-eb6076f4d40f",
+          "fingerprint": 1010031307,
+          "mapVersion": 2,
+          "uploadedVersion": 2,
+          "gpuAllocated": true,
+          "pose": {
+            "position": [
+              0,
+              0.08,
+              4.9
+            ],
+            "quaternion": [
+              -0.02854,
+              0,
+              0,
+              0.99959
+            ],
+            "zoom": 1
+          }
+        },
+        {
+          "editionId": "rand-mcnally-1887",
+          "standId": "stand.base.three-whales",
+          "backgroundId": "background.base.library",
+          "standCount": 1,
+          "backgroundCount": 1,
+          "surfaceCount": 1,
+          "libraryDensity": {
+            "books": 984,
+            "placements": 1901197402,
+            "colors": 437509884
+          },
+          "whales": [
+            0,
+            2.0943951023931953,
+            4.1887902047863905
+          ],
+          "gems": [
+            "whale-inset-emerald-0",
+            "whale-inset-emerald-1",
+            "whale-inset-emerald-0",
+            "whale-inset-emerald-1",
+            "whale-inset-emerald-0",
+            "whale-inset-emerald-1"
+          ],
+          "canonicalBodyCount": 3,
+          "quality": "economy",
+          "drawCalls": 165,
+          "triangles": 197344,
+          "frame": 115,
+          "gpuMemory": {
+            "geometries": 124,
+            "textures": 32
+          },
+          "contextLost": false,
+          "sameScene": true,
+          "geometry": "93bddeb5-7a74-4812-af6b-2c862d1d6c27",
+          "texture": "7b85b90c-d5ba-4ba8-b404-eb6076f4d40f",
+          "fingerprint": 1010031307,
+          "mapVersion": 2,
+          "uploadedVersion": 2,
+          "gpuAllocated": true,
+          "pose": {
+            "position": [
+              0,
+              0.08,
+              4.9
+            ],
+            "quaternion": [
+              -0.02854,
+              0,
+              0,
+              0.99959
+            ],
+            "zoom": 1
+          }
+        }
+      ],
+      "english": {
+        "editionId": "rand-mcnally-1887",
+        "standId": "stand.base.three-whales",
+        "backgroundId": "background.base.library",
+        "standCount": 1,
+        "backgroundCount": 1,
+        "surfaceCount": 1,
+        "libraryDensity": {
+          "books": 984,
+          "placements": 1901197402,
+          "colors": 437509884
+        },
+        "whales": [
+          0,
+          2.0943951023931953,
+          4.1887902047863905
+        ],
+        "gems": [
+          "whale-inset-emerald-0",
+          "whale-inset-emerald-1",
+          "whale-inset-emerald-0",
+          "whale-inset-emerald-1",
+          "whale-inset-emerald-0",
+          "whale-inset-emerald-1"
+        ],
+        "canonicalBodyCount": 3,
+        "quality": "economy",
+        "drawCalls": 165,
+        "triangles": 197344,
+        "frame": 117,
+        "gpuMemory": {
+          "geometries": 124,
+          "textures": 32
+        },
+        "contextLost": false,
+        "sameScene": true,
+        "geometry": "93bddeb5-7a74-4812-af6b-2c862d1d6c27",
+        "texture": "7b85b90c-d5ba-4ba8-b404-eb6076f4d40f",
+        "fingerprint": 1010031307,
+        "mapVersion": 2,
+        "uploadedVersion": 2,
+        "gpuAllocated": true,
+        "pose": {
+          "position": [
+            0,
+            0.08,
+            4.9
+          ],
+          "quaternion": [
+            -0.02854,
+            0,
+            0,
+            0.99959
+          ],
+          "zoom": 1
+        }
+      },
+      "narrow": {
+        "editionId": "rand-mcnally-1887",
+        "standId": "stand.base.three-whales",
+        "backgroundId": "background.base.library",
+        "standCount": 1,
+        "backgroundCount": 1,
+        "surfaceCount": 1,
+        "libraryDensity": {
+          "books": 984,
+          "placements": 1901197402,
+          "colors": 437509884
+        },
+        "whales": [
+          0,
+          2.0943951023931953,
+          4.1887902047863905
+        ],
+        "gems": [
+          "whale-inset-emerald-0",
+          "whale-inset-emerald-1",
+          "whale-inset-emerald-0",
+          "whale-inset-emerald-1",
+          "whale-inset-emerald-0",
+          "whale-inset-emerald-1"
+        ],
+        "canonicalBodyCount": 3,
+        "quality": "economy",
+        "drawCalls": 145,
+        "triangles": 190024,
+        "frame": 123,
+        "gpuMemory": {
+          "geometries": 124,
+          "textures": 32
+        },
+        "contextLost": false,
+        "sameScene": true,
+        "geometry": "93bddeb5-7a74-4812-af6b-2c862d1d6c27",
+        "texture": "7b85b90c-d5ba-4ba8-b404-eb6076f4d40f",
+        "fingerprint": 1010031307,
+        "mapVersion": 2,
+        "uploadedVersion": 2,
+        "gpuAllocated": true,
+        "pose": {
+          "position": [
+            0,
+            0.08,
+            4.9
+          ],
+          "quaternion": [
+            -0.02854,
+            0,
+            0,
+            0.99959
+          ],
+          "zoom": 1
+        }
+      },
+      "restored": {
+        "editionId": "rand-mcnally-1887",
+        "standId": "stand.base.three-whales",
+        "backgroundId": "background.base.library",
+        "standCount": 1,
+        "backgroundCount": 1,
+        "surfaceCount": 1,
+        "libraryDensity": {
+          "books": 984,
+          "placements": 1901197402,
+          "colors": 437509884
+        },
+        "whales": [
+          0,
+          2.0943951023931953,
+          4.1887902047863905
+        ],
+        "gems": [
+          "whale-inset-emerald-0",
+          "whale-inset-emerald-1",
+          "whale-inset-emerald-0",
+          "whale-inset-emerald-1",
+          "whale-inset-emerald-0",
+          "whale-inset-emerald-1"
+        ],
+        "canonicalBodyCount": 3,
+        "quality": "high",
+        "drawCalls": 154,
+        "triangles": 472632,
+        "frame": 164,
+        "gpuMemory": {
+          "geometries": 125,
+          "textures": 32
+        },
+        "contextLost": false,
+        "sameScene": true,
+        "geometry": "f820bad5-66d5-47d5-b76f-927b011782e9",
+        "texture": "7b85b90c-d5ba-4ba8-b404-eb6076f4d40f",
+        "fingerprint": 1010031307,
+        "mapVersion": 2,
+        "uploadedVersion": 2,
+        "gpuAllocated": true,
+        "pose": {
+          "position": [
+            0,
+            0.08,
+            4.9
+          ],
+          "quaternion": [
+            -0.02854,
+            0,
+            0,
+            0.99959
+          ],
+          "zoom": 1
+        }
+      },
+      "reloaded": {
+        "editionId": "rand-mcnally-1887",
+        "standId": "stand.base.three-whales",
+        "backgroundId": "background.base.library",
+        "standCount": 1,
+        "backgroundCount": 1,
+        "surfaceCount": 1,
+        "libraryDensity": {
+          "books": 984,
+          "placements": 1901197402,
+          "colors": 437509884
+        },
+        "whales": [
+          0,
+          2.0943951023931953,
+          4.1887902047863905
+        ],
+        "gems": [
+          "whale-inset-emerald-0",
+          "whale-inset-emerald-1",
+          "whale-inset-emerald-0",
+          "whale-inset-emerald-1",
+          "whale-inset-emerald-0",
+          "whale-inset-emerald-1"
+        ],
+        "canonicalBodyCount": 3,
+        "quality": "high",
+        "drawCalls": 154,
+        "triangles": 472632,
+        "frame": 37,
+        "gpuMemory": {
+          "geometries": 124,
+          "textures": 32
+        },
+        "contextLost": false,
+        "sameScene": true,
+        "geometry": "eaaf472b-2e4b-4b11-a6bb-72dd54453172",
+        "texture": "5f6b6bef-acba-4643-85c2-5ca2f33eb390",
+        "fingerprint": 1010031307,
+        "mapVersion": 2,
+        "uploadedVersion": 2,
+        "gpuAllocated": true,
+        "pose": {
+          "position": [
+            0,
+            0.08,
+            4.9
+          ],
+          "quaternion": [
+            -0.02854,
+            0,
+            0,
+            0.99959
+          ],
+          "zoom": 1
+        }
+      }
+    }
+  ],
+  "starterSetSourceInventory": {
+    "path": "docs/mobile/evidence/S13/three-whales-20260919/starter-set-source-inventory.json",
+    "sha256": "c14e905352644680c82a8b88cf58815a609329219cc57c5cc66385b14d2fc68c"
+  },
+  "queuedUserRequest": "After the golden whales, add three original 3D ceramic portrait-head stands for Pushkin, Hemingway and Tolstoy using researched portrait references; preserve the separate likeness/rights/quality review.",
+  "userRealismRequirementSatisfied": false,
+  "artAccepted": false,
+  "certifiedLightmaps": false,
+  "devicePerformanceAccepted": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "actualAppCheck": {
+    "path": "docs/mobile/evidence/S13/three-whales-20260919/browser-a2/result.json",
+    "sha256": "6030910f8913987ba7c102d8c7e639a665e691c616fd31740d356c8a08ea54cd"
+  },
+  "checkInputAmendment": {
+    "path": "docs/mobile/evidence/S13/three-whales-20260919/check-input-amendments.json",
+    "sha256": "646ea71926f995268d4ffd7e6b8905fe6586b27ea46e74ff035ba10cf1e39271"
+  }
+}

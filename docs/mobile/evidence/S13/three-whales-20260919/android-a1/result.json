@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "kind": "android-golden-three-whales-dev-apk",
+  "sourceCommit": "5a43171abb8cd77ff207816e6dbac0962e78f92e",
+  "buildId": "8e48bc3db77e9335b361c4b3a11367f9cfce6b6a989653215181189b70fb527a",
+  "sourceInputsSha256": "1256fa8d26ffd6f218d41701ab8687d10ba001dc1f7b3734e5110ff8e49658d6",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-wh/android-8e48bc3d/app-dev-debug.apk",
+    "bytes": 67999696,
+    "sha256": "971672a42c6ffb71e510868710ee8c0ebf5fc0e2268babd088879d4c90a16d60"
+  },
+  "artifact": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-wh/android-8e48bc3d/runtime",
+    "sha256": "9820a227775e353b4bc5b150d8091dc6720129f9c1fe7f5a9596875595e22d87",
+    "files": 1403,
+    "bytes": 72457338
+  },
+  "checks": {
+    "strictRuntimeAudit": "docs/mobile/evidence/S13/three-whales-20260919/android-a1/native-artifact-audit.json",
+    "binaryAudit": "docs/mobile/evidence/S13/three-whales-20260919/android-a1/android-dev-apk-verification.json",
+    "build": "docs/mobile/evidence/S13/three-whales-20260919/android-a1/build-run.json",
+    "exactCopiedBytes": true,
+    "priorAndroidApkAndManifestVerified": true,
+    "priorPreservedDirectoriesPresent": true,
+    "priorExactCopyVerificationRecorded": true,
+    "priorRuntimePayloadHashesRechecked": false,
+    "bundledAssetsMatched": 1402,
+    "localContentStoreDex": "classes10.dex"
+  },
+  "priorAndroid": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-sr/android-aea111e4/app-dev-debug.apk",
+  "nativeExecutionVerified": false,
+  "iosCompiled": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false,
+  "canonicalOwnerArchiveSyncPerformed": false
+}

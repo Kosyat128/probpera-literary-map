@@ -1,0 +1,231 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-19T21:24:48.024Z",
+  "sourceCommit": "5a43171abb8cd77ff207816e6dbac0962e78f92e",
+  "stage": "S13",
+  "status": "GOLDEN_THREE_WHALE_STAND_SCOPED_INSPECTION",
+  "pass": true,
+  "entry": {
+    "path": "docs/mobile/evidence/S13/three-whales-20260919/entry.json",
+    "sha256": "97575dacdc34eedb75e79c7c6600f285557b6aef2520bc29af0555e2ec945276"
+  },
+  "queuedUserRequest": {
+    "receivedAt": "2026-09-19T21:09:23.659Z",
+    "after": "Complete the detailed golden three-whale stand with gemstone eyes.",
+    "scope": "Add three separate 3D ceramic portrait-head stands of Alexander Pushkin, Ernest Hemingway and Leo Tolstoy, based on their best-known portraits and the sculptural character of figurative mugs.",
+    "quality": "Recognizable sculpted heads and ceramic material, following the same high-quality requirement; do not substitute portrait stickers on generic cylinders."
+  },
+  "priorSurface": {
+    "path": "docs/mobile/evidence/S13/surface-realism-20260919/result.json",
+    "sha256": "384f28f7b51092514df435462de1d29610b9c2ef6756aa73d49c13e8b997f400"
+  },
+  "attempts": {
+    "unit": "a1",
+    "static": "a1",
+    "browser": "a2"
+  },
+  "runs": {
+    "unit": {
+      "path": "docs/mobile/evidence/S13/three-whales-20260919/unit-a1/result.json",
+      "sha256": "26c86d828f86d7ffeee8787e7306f7846b588e6de882a6d7016dd478dcd92106",
+      "tests": {
+        "passed": 29,
+        "failed": 0,
+        "skipped": 0,
+        "filteredOut": 181,
+        "failures": [],
+        "selectedAdapterCases": [
+          {
+            "name": "exact non-secret preferences with serialized readback round-trips only exact adult stand choices through the stand preference key",
+            "status": "passed"
+          },
+          {
+            "name": "non-secret best-effort canonical preferences round-trips only exact adult stand choices without extending browser storage authority",
+            "status": "passed"
+          }
+        ],
+        "selection": {
+          "unitFiles": [
+            "src/components/globeWhaleStandGeometry.test.ts",
+            "src/components/globeAntiqueGeometry.test.ts",
+            "src/planet/globeWhaleStandPolicy.test.ts",
+            "src/planet/baseEditionPolicy.test.ts",
+            "src/planet/globeComposition.test.ts"
+          ],
+          "adapterFiles": [
+            "src/host/HostPlatformServices.test.ts",
+            "src/platform/adapters/web/WebPlatformAdapter.test.ts"
+          ],
+          "adapterPattern": "round-trips only exact adult stand choices (?:through the stand preference key|without extending browser storage authority)$",
+          "expectedAdapterCases": 2
+        },
+        "filterAccounting": "Unmatched adapter cases are intentionally excluded, recorded as filteredOut, and never counted as passed. Skipped refers to selected tests only."
+      }
+    },
+    "static": {
+      "path": "docs/mobile/evidence/S13/three-whales-20260919/static-a1/result.json",
+      "sha256": "de42e6ca101ed29321394bcdb4d0192fa19d0174a110a2f30647963407e89055",
+      "tests": null
+    },
+    "browser": {
+      "path": "docs/mobile/evidence/S13/three-whales-20260919/browser-a2/result.json",
+      "sha256": "6030910f8913987ba7c102d8c7e639a665e691c616fd31740d356c8a08ea54cd",
+      "tests": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "errors": []
+      }
+    }
+  },
+  "checkInputAmendment": {
+    "path": "docs/mobile/evidence/S13/three-whales-20260919/check-input-amendments.json",
+    "sha256": "646ea71926f995268d4ffd7e6b8905fe6586b27ea46e74ff035ba10cf1e39271",
+    "applied": [
+      {
+        "runId": "unit-a1",
+        "path": "tests/pwa/globe-three-whales.spec.mjs",
+        "recordedSha256": "35913d85cfc4ac9abcf8ac61f53c62da10f58bab73f50e54f7be5df18a7c2c14",
+        "currentSha256": "716c2fe4864ff5b5bdc9ea1120c8543353ff073246bd6ec6ae3b78da613b9e1e"
+      },
+      {
+        "runId": "static-a1",
+        "path": "tests/pwa/globe-three-whales.spec.mjs",
+        "recordedSha256": "35913d85cfc4ac9abcf8ac61f53c62da10f58bab73f50e54f7be5df18a7c2c14",
+        "currentSha256": "716c2fe4864ff5b5bdc9ea1120c8543353ff073246bd6ec6ae3b78da613b9e1e"
+      }
+    ],
+    "failedBrowser": {
+      "path": "docs/mobile/evidence/S13/three-whales-20260919/browser-a1/result.json",
+      "sha256": "fa4bdcf67682211a3a90ddd788ab8b80d76e0e0ed7aa6d7fe3954d72706a98b5"
+    },
+    "recheck": {
+      "path": "docs/mobile/evidence/S13/three-whales-20260919/browser-a2/result.json",
+      "sha256": "6030910f8913987ba7c102d8c7e639a665e691c616fd31740d356c8a08ea54cd",
+      "tests": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "errors": []
+      }
+    },
+    "reason": "The fixture closes the writer view and resets the globe before preview; those authorized UI actions already remove country/writer URL parameters. The stand preview must preserve its actual pre-preview URL, not the no-longer-current launch URL. Only this browser assertion changes; runtime and unit inputs are unchanged, and TypeScript does not compile .mjs browser fixtures."
+  },
+  "starterSetSourceInventory": {
+    "path": "docs/mobile/evidence/S13/three-whales-20260919/starter-set-source-inventory.json",
+    "sha256": "c14e905352644680c82a8b88cf58815a609329219cc57c5cc66385b14d2fc68c"
+  },
+  "visualReview": {
+    "path": "docs/mobile/evidence/S13/three-whales-20260919/visual-review.json",
+    "sha256": "a1b1de4dc969bddd9906fb8291c44538b6ceec7a38a7ba1608dee9682ea0b472"
+  },
+  "preservedCompositionInputs": [
+    {
+      "path": "src/planet/globeComposition.ts",
+      "sha256": "20b4cabdd678a6fa5b70ab2b4cbaef179f0e7d7c5819e408123eb486ddb0e81f"
+    },
+    {
+      "path": "src/host/planetComposition.ts",
+      "sha256": "6e193b12c495d962737185ab4fd35eeb3b64fe46f5c92774b565cfbb1181e954"
+    },
+    {
+      "path": "src/host/planetCompositionPresentation.ts",
+      "sha256": "d62d963c719366c1be3e6888b5eb321933f3e7224b6591fc8c2d6d81a639c3f6"
+    },
+    {
+      "path": "src/components/useGlobeCompositionScene.ts",
+      "sha256": "30009468d0cdee459441ca5780ea608cdf21b3f6e7055da89c0ce28e435326b5"
+    },
+    {
+      "path": "src/components/useGlobeCompositionFrame.ts",
+      "sha256": "530d1303a5af222bf68f72b499b07c8d41a828ca14783912284b6e3963d59cd0"
+    },
+    {
+      "path": "src/components/globeAtlas.ts",
+      "sha256": "224dcde2499f51eb333562875796d3422ab28ad987339f36be79f0635677bcf6"
+    },
+    {
+      "path": "src/components/useGlobeStyleState.ts",
+      "sha256": "6d2801802ec0e9bf0c2e5ff9a6f852f00434a8494216b06ee2069917e2a1a0ba"
+    }
+  ],
+  "preservedArtInputs": [
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "sha256": "12bb95c49f44a9ed75144e0fb64c36985975f0427b1ba8c163eeeffad379ac89"
+    },
+    {
+      "path": "src/components/globeCraftMaterials.ts",
+      "sha256": "68ce7e818d50ac5ece1d5d4542fdc4cecea6af25e21b08b1274c8adcacbfbde1"
+    },
+    {
+      "path": "src/components/globeTurnedWoodAtlas.ts",
+      "sha256": "579c1cec368760643b108a63f466b3d6385243d5e0f13c4638a4824b62a5d123"
+    },
+    {
+      "path": "src/components/globeLibraryGeometry.ts",
+      "sha256": "c0d4fe4c9b69921df11d50bc349fca9896304baba67fff60263b77ff19c1d1ee"
+    },
+    {
+      "path": "src/components/globeLibraryBookGeometry.ts",
+      "sha256": "e3034c2bd4391f1b08410c3c1f41165e880c7225f957a42ef4780e87eeaf7e0c"
+    }
+  ],
+  "priorVisualReview": {
+    "path": "docs/mobile/evidence/S13/surface-realism-20260919/visual-review.json",
+    "sha256": "49fecc56eb8dc460636f4c3218c36ad9155af1f126f55560be2725749c71b5be"
+  },
+  "pwa": {
+    "path": "docs/mobile/evidence/S13/three-whales-20260919/pwa-a1/result.json",
+    "sha256": "624a3d8b61418e051d75d4944956b356cc3c3837b2f5f34070c6766d07f7b713"
+  },
+  "android": {
+    "path": "docs/mobile/evidence/S13/three-whales-20260919/android-a1/result.json",
+    "sha256": "41acb0fb4018fe9161cda424aa979ebdfcaac87c97074fcc41dd80982026b475"
+  },
+  "pwaBuildId": "df4e59db687ea13f58c79eae62882e19740149a2481b2101ede845ba2c185f01",
+  "androidBuildId": "8e48bc3db77e9335b361c4b3a11367f9cfce6b6a989653215181189b70fb527a",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-wh/android-8e48bc3d/app-dev-debug.apk",
+    "bytes": 67999696,
+    "sha256": "971672a42c6ffb71e510868710ee8c0ebf5fc0e2268babd088879d4c90a16d60"
+  },
+  "whaleStand": {
+    "id": "stand.base.three-whales",
+    "sourceItemId": "canonical-globe",
+    "requirementId": "STARTER-019",
+    "provenance": "canonical-site-derived",
+    "finish": "gold",
+    "eyes": "faceted-deep-emerald",
+    "figures": 3,
+    "eyesCount": 6,
+    "canonicalSiteDefaultUnchanged": true,
+    "existingCompositionLifecycle": true
+  },
+  "retainedLibraryDensity": {
+    "books": 984,
+    "placements": 1901197402,
+    "colors": 437509884
+  },
+  "requiredStarterItems": 29,
+  "sourceBoundStarterItems": 11,
+  "acceptedStarterItems": 0,
+  "decisionD137Recorded": true,
+  "userRealismRequirementSatisfied": false,
+  "artAccepted": false,
+  "certifiedLightmaps": false,
+  "rightsApproval": false,
+  "childApproval": false,
+  "grantsEntitlement": false,
+  "controlledNativePorts": true,
+  "actualSceneRenderedInChrome": true,
+  "installedNativeDevice": false,
+  "iosCompiled": false,
+  "devicePerformanceAccepted": false,
+  "productionActionsPerformed": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "nextAction": "Continue from the coordinating owner's source-bound review of the golden three-whale stand and gemstone eyes. Resolve any remaining whale form/material defects while preserving the recognizable original support, canonical site default and existing composition lifecycle. Next implement the user's explicitly queued three ceramic portrait-head stands: Alexander Pushkin, Ernest Hemingway and Leo Tolstoy, informed by recognizable famous portraits and figurative ceramic mugs. These must be modeled heads, not flat portrait decals. Then continue the recorded library/wood/metal/paper realism work; the user's maximum-realism requirement remains open. Preserve the 984-book layout, seven composition owners, 29 mandatory Starter Set identities and current evidence. Source inventory remains 11/29 with zero accepted. Formal art/lightmaps, full catalog/accessory/audio/child composition, rights, installed-device budgets, iOS and release acceptance remain open. Avoid redundant unchanged checks."
+}

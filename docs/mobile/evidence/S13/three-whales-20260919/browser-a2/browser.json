@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S13/three-whales-20260919/playwright.config.mjs"
+  ],
+  "startedAt": "2026-09-19T21:17:21.365Z",
+  "durationMs": 24696,
+  "exitCode": 0,
+  "logs": {
+    "stdout": {
+      "text": "\nRunning 1 test using 1 worker\n\n\n\n[1/1] tests\\pwa\\globe-three-whales.spec.mjs:303:1 › golden three whales retain the site shape and persist as a distinct stand\n  1 passed (24.0s)\n",
+      "sha256": "b1aebf20e21036d5f0732da7d80d8077cf5030ab456d73b1e2d90fbc51f3db33"
+    },
+    "stderr": {
+      "text": "(node:18880) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "sha256": "60067c84bb57b14d6737583d501e26cb4cf21a15be4aea8ed5c4f3020501a3de"
+    }
+  }
+}

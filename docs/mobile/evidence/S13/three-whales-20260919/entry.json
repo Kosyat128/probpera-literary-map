@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-19T21:03:26.342Z",
+  "stage": "S13",
+  "checkpoint": "d55b10b0d259abebe9d109af8a2ea409f837fb97",
+  "previous": "docs/mobile/evidence/S13/surface-realism-20260919/result.json",
+  "dependencies": [
+    {
+      "path": "docs/mobile/requirements/v12/16_FULL_3D_BACKGROUND_ENGINE_RU.md",
+      "sha256": "75f830874b32c2afca440b958cb4b3cefdcb9c606b8ba0195fba2f02022198c5"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/17_SKINS_STANDS_ACCESSORIES_ENGINE_RU.md",
+      "sha256": "d84657d718c24a69ce14ddfc6d1e9dc7d6778bf4e58b8be24d9d460249b51741"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/35_3D_BACKGROUND_CATALOG.csv",
+      "sha256": "30cc7b9f6157a38dee3b4661a7bb828e7d8856f09c4b7ccbcdca80a6afebb857"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/36_SKIN_STAND_ACCESSORY_CATALOG.csv",
+      "sha256": "7f35bf0f2c8f27c4d87839814c0bd5772ccf92b02c052eb05e76cda1c6f3eb72"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/37_BASE_EDITION_STARTER_SET.csv",
+      "sha256": "575f40b97986cb4e64cb89243059a3b18c4cda8069f4f0e1c7d3565f6132b731"
+    }
+  ],
+  "scope": "Add the user original three-whale support as an explicit stand; improve modeled detail, use gold and faceted emerald eyes.",
+  "userInstructions": [
+    "Add and improve the whale stand from the original website.",
+    "Gold instead of bronze, with precious gemstone eyes.",
+    "Increase whale detail and visual quality substantially.",
+    "Continue implementation without pauses between blocks; avoid redundant checks."
+  ],
+  "implementationDirection": "Reuse canonical body profile at denser 68x40, 50x28 and 34x20 sampling. Closed rounded flukes/flippers, swept dorsal fins, seated jaw folds and facial lines, six faceted emeralds in gold settings. Existing canonical site frame remains available. Explicit stand inherits canonical-globe source identity through an exact alias.",
+  "qualityScope": "Inspect actual App and close views before claiming visual completion; existing library/wood/metal/paper realism defects remain recorded.",
+  "provenance": "Canonical site-derived geometry and authored local materials; no external visual assets.",
+  "stageAccepted": false,
+  "artAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false,
+  "queuedUserRequest": {
+    "receivedAt": "2026-09-19T21:09:23.659Z",
+    "after": "Complete the detailed golden three-whale stand with gemstone eyes.",
+    "scope": "Add three separate 3D ceramic portrait-head stands of Alexander Pushkin, Ernest Hemingway and Leo Tolstoy, based on their best-known portraits and the sculptural character of figurative mugs.",
+    "quality": "Recognizable sculpted heads and ceramic material, following the same high-quality requirement; do not substitute portrait stickers on generic cylinders."
+  }
+}

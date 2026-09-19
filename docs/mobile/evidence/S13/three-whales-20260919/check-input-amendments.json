@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "path": "tests/pwa/globe-three-whales.spec.mjs",
+  "beforeSha256": "35913d85cfc4ac9abcf8ac61f53c62da10f58bab73f50e54f7be5df18a7c2c14",
+  "afterSha256": "716c2fe4864ff5b5bdc9ea1120c8543353ff073246bd6ec6ae3b78da613b9e1e",
+  "affectedRun": "browser-a1",
+  "reuseRuns": [
+    "unit-a1",
+    "static-a1"
+  ],
+  "reason": "The fixture closes the writer view and resets the globe before preview; those authorized UI actions already remove country/writer URL parameters. The stand preview must preserve its actual pre-preview URL, not the no-longer-current launch URL. Only this browser assertion changes; runtime and unit inputs are unchanged, and TypeScript does not compile .mjs browser fixtures.",
+  "recheck": "browser-a2"
+}

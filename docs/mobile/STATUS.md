@@ -1,3 +1,19 @@
+<!-- s13-three-whales-20260919:begin -->
+Source 5a43171a adds the user's original three-whale stand as an adult choice,
+with modeled detail, gold finish and six faceted emerald eyes. The canonical site
+default, composition core and 984-book library remain preserved. Scoped actual-App
+and close-up inspection does not satisfy the user's final realism requirement.
+Final 29 selected focused tests, TypeScript and 1 actual Chrome cases pass;
+181 unmatched adapter cases were intentionally excluded, not passed.
+PWA df4e59db and Android/dev 8e48bc3d bind this exact source.
+APK SHA256: 971672a42c6ffb71e510868710ee8c0ebf5fc0e2268babd088879d4c90a16d60.
+Evidence: evidence/S13/three-whales-20260919/result.json.
+Starter Set remains 11/29 source-bound, zero accepted. Stages remain 3 complete,
+11 in progress and 27 unstarted; first open S03. Next: the explicitly requested ceramic portrait-head stands of
+Pushkin, Hemingway and Tolstoy, then remaining library/wood/metal/paper refinements. Formal art/lightmaps, rights, child,
+full catalog/composition, installed devices, iOS and release remain open.
+<!-- s13-three-whales-20260919:end -->
+
 <!-- s13-surface-realism-20260919:begin -->
 Source 2029aad9 refines original wood mapping, oxidation and leather
 surfaces in the included library and stands. The user's realistic-quality bar
