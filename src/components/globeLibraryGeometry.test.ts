@@ -1,4 +1,4 @@
-import { BufferGeometry, Camera, DataTexture, InstancedMesh, Light, Line3, Matrix4, Mesh, NoColorSpace, PointLight, Raycaster, Texture, Triangle, Vector3,
+import { Box3, BufferGeometry, Camera, DataTexture, InstancedMesh, Light, Line3, Matrix4, Mesh, NoColorSpace, PointLight, Raycaster, Texture, Triangle, Vector3,
   type Intersection, type Material, type MeshStandardMaterial } from "three";
 import { describe, expect, it, vi } from "vitest";
 import { createGlobeLibrary } from "./globeLibraryGeometry";
@@ -6,6 +6,76 @@ import type { GlobeQualityTier } from "./globeQuality";
 
 const tiers: readonly GlobeQualityTier[] = ["high", "balanced", "economy"];
 type Library = ReturnType<typeof createGlobeLibrary>;
+
+function physicalMembers(library: Library, name: string) {
+  const mesh = library.group.getObjectByName(name);
+  expect(mesh, name).toBeInstanceOf(InstancedMesh);
+  if (!(mesh instanceof InstancedMesh)) throw new Error(`Missing physical library member: ${name}`);
+  const positions = mesh.geometry.getAttribute("position"), index = mesh.geometry.getIndex();
+  const total = index?.count ?? positions.count;
+  const parts: readonly { start: number; count: number }[] = mesh.geometry.userData.assemblyParts
+    ?? [{ start: 0, count: total }];
+  expect(parts.length, name).toBeGreaterThan(0);
+  let end = 0;
+  for (const part of parts) {
+    expect(Number.isSafeInteger(part.start) && Number.isSafeInteger(part.count), name).toBe(true);
+    expect(part.start, name).toBe(end); expect(part.count, name).toBeGreaterThan(0);
+    expect(part.count % 3, name).toBe(0); end += part.count;
+  }
+  // Assembly ranges must cover the rendered geometry exactly. A metadata-only
+  // bookcase cannot satisfy the contract by naming omitted pieces.
+  expect(end, name).toBe(total);
+  const local = new Matrix4(), world = new Matrix4(), point = new Vector3(), box = new Box3();
+  const members: { bounds: number[]; center: number[] }[] = [];
+  for (let instance = 0; instance < mesh.count; instance++) {
+    mesh.getMatrixAt(instance, local); world.multiplyMatrices(mesh.matrixWorld, local);
+    for (const part of parts) {
+      box.makeEmpty();
+      for (let offset = part.start; offset < part.start + part.count; offset++) {
+        point.fromBufferAttribute(positions, index ? index.getX(offset) : offset).applyMatrix4(world);
+        box.expandByPoint(point);
+      }
+      const bounds = [...box.min.toArray(), ...box.max.toArray()];
+      expect(bounds.every(Number.isFinite), name).toBe(true);
+      members.push({ bounds, center: box.getCenter(point).toArray().map(value => Math.round(value * 1000)) });
+    }
+  }
+  return members.sort((a, b) => a.center[0] - b.center[0] || a.center[1] - b.center[1] || a.center[2] - b.center[2]);
+}
+
+function layoutEvidence(library: Library) {
+  library.group.updateMatrixWorld(true);
+  const pages = library.group.getObjectByName("library-book-page-blocks");
+  expect(pages).toBeInstanceOf(InstancedMesh);
+  if (!(pages instanceof InstancedMesh)) throw new Error("Missing physical library volumes");
+  const matrix = new Matrix4(), position = new Vector3(), booksPerBay = new Array<number>(16).fill(0);
+  for (let instance = 0; instance < pages.count; instance++) {
+    pages.getMatrixAt(instance, matrix); matrix.premultiply(pages.matrixWorld);
+    position.setFromMatrixPosition(matrix);
+    const turn = Math.atan2(position.x, position.z) / (Math.PI * 2);
+    booksPerBay[(Math.round(turn * 16) + 16) % 16]++;
+  }
+  // The authored hall has sixteen bays and eight populated rows per bay.
+  // Stacked groups contain seven volumes, ordinary groups eight; lower detail
+  // may simplify a binding, but cannot remove populated bays or halve the rows.
+  for (const count of booksPerBay) {
+    expect(count).toBeGreaterThanOrEqual(7 * 8); expect(count).toBeLessThanOrEqual(8 * 8);
+  }
+  const architecturalMembers = [
+    ["library-shelves", 16 * (8 + 3)], ["library-bookcase-backs", 16 * 4],
+    ["library-windows", 16 * 2], ["library-window-glazing", 16 * 2],
+  ] as const;
+  const architecture: Record<string, ReturnType<typeof physicalMembers>> = {};
+  for (const [name, count] of architecturalMembers) {
+    const members = physicalMembers(library, name);
+    expect(members.length, name).toBe(count);
+    architecture[name] = members;
+  }
+  expect(pages.instanceColor).not.toBeNull();
+  return { architecture, pageBounds: physicalMembers(library, pages.name),
+    pageMatrices: Array.from(pages.instanceMatrix.array), pageColors: Array.from(pages.instanceColor!.array) };
+}
+
 function collect(library: Library) {
   const meshes: Mesh[] = [], geometries = new Set<BufferGeometry>(), materials = new Set<Material>();
   const lights: PointLight[] = [], textures = new Set<Texture>();
@@ -191,7 +261,7 @@ describe("procedural library geometry around the whole canonical camera envelope
     } finally { library.dispose(); }
   });
 
-  it("reduces actual geometry and instance allocations within the tier budgets", () => {
+  it("preserves the populated hall while reducing actual geometry and instance allocations within the tier budgets", () => {
     const budgets = tiers.map((tier, tierIndex) => {
       const library = createGlobeLibrary(tier);
       try {
@@ -214,12 +284,34 @@ describe("procedural library geometry around the whole canonical camera envelope
         // Source maps/reflection plus mips; renderer-created PMREM targets are
         // covered by the separate browser GPU baseline and disposal evidence.
         expect(textureBytes, tier).toBeLessThanOrEqual(5.5 * 1024 ** 2 / 4 ** tierIndex);
-        return { instanceCount, instanceBytes, geometryBytes, textureBytes, triangles };
+        return { instanceCount, instanceBytes, geometryBytes, textureBytes, triangles, layout: layoutEvidence(library) };
       } finally { library.dispose(); }
     });
     for (const field of ["instanceCount", "instanceBytes", "geometryBytes", "textureBytes", "triangles"] as const) {
       expect(budgets[0][field], field).toBeGreaterThan(budgets[1][field]);
       expect(budgets[1][field], field).toBeGreaterThan(budgets[2][field]);
+    }
+    for (const [tierIndex, budget] of budgets.entries()) {
+      if (tierIndex === 0) continue;
+      // Actual page volumes, transforms and authored colors survive tier
+      // changes exactly, independently of shell batching or diagnostic IDs.
+      expect(budget.layout.pageMatrices, tiers[tierIndex]).toEqual(budgets[0].layout.pageMatrices);
+      expect(budget.layout.pageColors, tiers[tierIndex]).toEqual(budgets[0].layout.pageColors);
+      expect(budget.layout.pageBounds, tiers[tierIndex]).toEqual(budgets[0].layout.pageBounds);
+      for (const [name, members] of Object.entries(budget.layout.architecture)) {
+        const reference = budgets[0].layout.architecture[name];
+        expect(members.length, name).toBe(reference.length);
+        let maximumDifference = 0;
+        for (const [memberIndex, member] of members.entries()) {
+          for (const [coordinate, value] of member.bounds.entries()) {
+            maximumDifference = Math.max(maximumDifference, Math.abs(value - reference[memberIndex].bounds[coordinate]));
+          }
+        }
+        // Simplified bevels may move an extremum slightly; removing or
+        // moving a shelf/window is not a valid quality reduction. Every actual
+        // triangle still has the separate, unchanged 5.6 camera-clearance test.
+        expect(maximumDifference, `${tiers[tierIndex]} ${name} physical layout`).toBeLessThanOrEqual(0.03);
+      }
     }
   });
 

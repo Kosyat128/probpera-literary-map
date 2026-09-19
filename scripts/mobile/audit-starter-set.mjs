@@ -39,7 +39,7 @@ assert.equal(snapshot.grantsEntitlement,false);assert.equal(snapshot.releaseRead
 const moduleInputs=Object.keys(built.metafile.inputs).filter(p=>p!=='<stdin>').map(p=>path.relative(root,path.resolve(root,p)).replaceAll('\\','/'));
 const sourceBindings={
  'background.base.site-starfield':['src/components/LiteraryGlobe.tsx'],
- 'background.base.library':['src/planet/globeBackgrounds.ts','src/components/globeLibraryGeometry.ts','src/components/globeCraftMaterials.ts','src/components/GlobeIncludedBackground.tsx','src/host/planetComposition.ts','src/host/planetCompositionPresentation.ts','src/planet/globeComposition.ts','src/components/useGlobeCompositionScene.ts','src/components/useGlobeCompositionFrame.ts','src/host/PlanetStandControls.tsx'],
+ 'background.base.library':['src/planet/globeBackgrounds.ts','src/components/globeLibraryGeometry.ts','src/components/globeLibraryBookGeometry.ts','src/components/globeCraftMaterials.ts','src/components/GlobeIncludedBackground.tsx','src/host/planetComposition.ts','src/host/planetCompositionPresentation.ts','src/planet/globeComposition.ts','src/components/useGlobeCompositionScene.ts','src/components/useGlobeCompositionFrame.ts','src/host/PlanetStandControls.tsx'],
  'canonical-globe':['src/components/LiteraryGlobe.tsx','src/components/GlobeCameraRig.tsx'],
  'literary-archive':['src/planet/catalog.ts','src/App.tsx'],
  'search-favorites-offline':['src/search/globalSearchRuntime.ts','src/hooks/useReadingLibrary.ts','src/planet/ContentDownloads.ts'],

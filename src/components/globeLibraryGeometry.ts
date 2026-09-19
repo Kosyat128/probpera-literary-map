@@ -1,6 +1,8 @@
 import * as THREE from "three";
 import type { GlobeQualityTier } from "./globeQuality";
 import { createGlobeCraftMaterials } from "./globeCraftMaterials";
+import { createLibraryBookShellGeometry } from "./globeLibraryBookGeometry";
+import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
 
 export interface OwnedGlobeLibrary {
   readonly group: THREE.Group;
@@ -10,8 +12,8 @@ export interface OwnedGlobeLibrary {
 
 const detail = Object.freeze({
   high: Object.freeze({ bays: 16, rows: 8, books: 8, archSegments: 32, tubeSegments: 8, turnedSegments: 28, spineSegments: 8, parquetStrips: 4 }),
-  balanced: Object.freeze({ bays: 12, rows: 6, books: 7, archSegments: 24, tubeSegments: 6, turnedSegments: 20, spineSegments: 6, parquetStrips: 3 }),
-  economy: Object.freeze({ bays: 8, rows: 4, books: 5, archSegments: 16, tubeSegments: 4, turnedSegments: 12, spineSegments: 4, parquetStrips: 2 }),
+  balanced: Object.freeze({ bays: 16, rows: 8, books: 8, archSegments: 24, tubeSegments: 6, turnedSegments: 20, spineSegments: 6, parquetStrips: 3 }),
+  economy: Object.freeze({ bays: 16, rows: 8, books: 8, archSegments: 16, tubeSegments: 3, turnedSegments: 8, spineSegments: 3, parquetStrips: 1 }),
 });
 const FLOOR_Y = -6.15;
 const clamp = (value: number) => Math.max(0, Math.min(1, value));
@@ -155,6 +157,7 @@ export function createGlobeLibrary(quality: GlobeQualityTier): OwnedGlobeLibrary
   // A single planar chamfer gives real edge highlights with 28 triangles,
   // avoiding a highly subdivided rounded cube for each of thousands of parts.
   const chamferedBox = (width: number, height: number, depth: number, radius: number) => {
+    if (quality === "economy") return ownGeometry(new THREE.BoxGeometry(1, 1, 1));
     const r = Math.min(radius, width / 3, height / 3, depth / 3);
     const halfX = width / 2 - r, halfY = height / 2 - r;
     const shape = new THREE.Shape();
@@ -183,7 +186,7 @@ export function createGlobeLibrary(quality: GlobeQualityTier): OwnedGlobeLibrary
   const up = new THREE.Vector3(0, 1, 0);
   const outward = new THREE.Vector3(0, 0, 1);
   type Placement = { x: number; y: number; z: number; width: number; height: number; depth: number; angle: number; roll?: number; color?: THREE.Color };
-  const instanced = (name: string, geometry: THREE.BufferGeometry, material: THREE.Material,
+  const instanced = (name: string, geometry: THREE.BufferGeometry, material: THREE.Material | THREE.Material[],
     placements: Placement[], root: THREE.Group) => {
     const result = new THREE.InstancedMesh(geometry, material, placements.length);
     instances.add(result);
@@ -224,6 +227,39 @@ export function createGlobeLibrary(quality: GlobeQualityTier): OwnedGlobeLibrary
     z: Math.cos(angle) * radius - Math.sin(angle) * tangent,
     width, height, depth, angle,
   });
+  const repeatedAssembly = (name: string, geometry: THREE.BufferGeometry, material: THREE.Material,
+    placements: Placement[], root: THREE.Group, members: number) => {
+    if (quality !== "economy") return instanced(name, geometry, material, placements, root);
+    if (placements.length % members !== 0) throw new Error("Incomplete library assembly");
+    const anchor = placements[0];
+    const inverse = new THREE.Matrix4().compose(new THREE.Vector3(anchor.x, anchor.y, anchor.z),
+      new THREE.Quaternion().setFromAxisAngle(up, anchor.angle), new THREE.Vector3(1, 1, 1)).invert();
+    const parts: THREE.BufferGeometry[] = [], ranges: { start: number; count: number }[] = [];
+    const frames: Placement[] = [];
+    let start = 0;
+    try {
+      for (const placement of placements.slice(0, members)) {
+        const part = geometry.clone(); parts.push(part); part.clearGroups();
+        if (!part.index) part.setIndex(Array.from({ length: part.getAttribute("position").count }, (_, index) => index));
+        position.set(placement.x, placement.y, placement.z);
+        scale.set(placement.width, placement.height, placement.depth);
+        rotation.setFromAxisAngle(up, placement.angle);
+        matrix.compose(position, rotation, scale).premultiply(inverse);
+        part.applyMatrix4(matrix);
+        ranges.push({ start, count: part.index!.count }); start += part.index!.count;
+      }
+      const combined = mergeGeometries(parts, false);
+      if (!combined) throw new Error("Unable to construct library assembly");
+      geometries.add(combined);
+      combined.userData = { provenance: "authored-in-project", assemblyParts: ranges };
+      for (let index = 0; index < placements.length; index += members) {
+        const placement = placements[index];
+        frames.push({ x: placement.x, y: placement.y, z: placement.z, angle: placement.angle,
+          width: 1, height: 1, depth: 1 });
+      }
+      return instanced(name, combined, material, frames, root);
+    } finally { for (const part of parts) part.dispose(); }
+  };
 
   try {
     craft = createGlobeCraftMaterials(quality);
@@ -385,8 +421,35 @@ export function createGlobeLibrary(quality: GlobeQualityTier): OwnedGlobeLibrary
       [0, -0.5], [0.5, -0.5], [0.5, -0.42], [0.29, -0.33], [0.22, -0.14],
       [0.42, 0.03], [0.34, 0.2], [0.22, 0.35], [0.5, 0.42], [0.5, 0.5], [0, 0.5],
     ].map(([radius, y]) => new THREE.Vector2(radius, y)), budget.tubeSegments));
-    const spineGeometry = ownGeometry(new THREE.CylinderGeometry(0.5, 0.5, 1,
-      budget.spineSegments, 1, false, Math.PI / 2, Math.PI));
+    const spineGeometry = (() => {
+      if (quality !== "economy") return ownGeometry(new THREE.CylinderGeometry(0.5, 0.5, 1,
+        budget.spineSegments, 1, false, Math.PI / 2, Math.PI));
+      const sides = new THREE.CylinderGeometry(0.5, 0.5, 1, budget.spineSegments, 1, true, Math.PI / 2, Math.PI);
+      const caps = new THREE.BufferGeometry();
+      const positions: number[] = [], normals: number[] = [], uv: number[] = [], index: number[] = [];
+      for (const y of [0.5, -0.5]) {
+        const start = positions.length / 3;
+        for (let segment = 0; segment <= budget.spineSegments; segment++) {
+          const angle = Math.PI / 2 + segment / budget.spineSegments * Math.PI;
+          const x = Math.sin(angle) / 2, z = Math.cos(angle) / 2;
+          positions.push(x, y, z); normals.push(0, Math.sign(y), 0); uv.push(x + 0.5, z + 0.5);
+        }
+        // The cap's diameter already joins its two end vertices. A fan from
+        // an endpoint closes it with n−2 faces and needs no redundant centre.
+        for (let segment = 1; segment < budget.spineSegments; segment++) {
+          if (y > 0) index.push(start, start + segment, start + segment + 1);
+          else index.push(start, start + segment + 1, start + segment);
+        }
+      }
+      caps.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
+      caps.setAttribute("normal", new THREE.Float32BufferAttribute(normals, 3));
+      caps.setAttribute("uv", new THREE.Float32BufferAttribute(uv, 2)); caps.setIndex(index);
+      try {
+        const closed = mergeGeometries([sides, caps], false);
+        if (!closed) throw new Error("Unable to close library spine");
+        return ownGeometry(closed);
+      } finally { sides.dispose(); caps.dispose(); }
+    })();
     const bindingGeometry = ownGeometry(new THREE.CylinderGeometry(0.5, 0.5, 1,
       budget.spineSegments, 1, true, Math.PI / 2, Math.PI));
     // Fine gilt rules are actual thin surfaces following the convex binding.
@@ -504,6 +567,7 @@ export function createGlobeLibrary(quality: GlobeQualityTier): OwnedGlobeLibrary
     }
     const spineColors = ["#7e5144", "#475e52", "#64504f", "#947654", "#414f5d", "#676346", "#7a3f38", "#9b8965"];
     const palette = spineColors.map(color => new THREE.Color(color));
+    const bookShells: Placement[][] = palette.map(() => []);
     for (let bay = 0; bay < budget.bays; bay += 1) {
       const angle = bay / budget.bays * Math.PI * 2;
       // Each storey has a fluted shaft seated between turned base and capital.
@@ -627,7 +691,13 @@ export function createGlobeLibrary(quality: GlobeQualityTier): OwnedGlobeLibrary
           };
           const clusterColor = Math.floor(variation(bay, row, book < clusterBoundary ? 8 : 9) * palette.length);
           const collection = (clusterColor + (variation(bay, row, 155 + book) > 0.78 ? 1 : 0)) % palette.length;
-          const color = palette[collection].clone().multiplyScalar(0.88 + variation(bay, row, 100 + book) * 0.22);
+          const leatherValue = 0.88 + variation(bay, row, 100 + book) * 0.22;
+          const color = palette[collection].clone().multiplyScalar(leatherValue);
+          if (quality !== "high") {
+            const shell = part(9.006 + (coverDepth + 0.009) / 2, 0, 0, width, height, coverDepth + 0.009);
+            shell.color = new THREE.Color(leatherValue, leatherValue, leatherValue);
+            bookShells[collection].push(shell);
+          }
           const spine = part(spineRadius, 0, 0, width - 0.008, height - 0.012, spineDepth);
           spine.color = color; bookPlacements.push(spine);
           if (variation(bay, row, 165 + book) > 0.42) {
@@ -687,32 +757,45 @@ export function createGlobeLibrary(quality: GlobeQualityTier): OwnedGlobeLibrary
       lampCaps.push(radial(angle, 8.81, 1.14, 1.90, 0.3, 0.06, 0.3));
       lampCaps.push(radial(angle, 8.81, 1.14, 2.39, 0.3, 0.06, 0.3));
     }
-    instanced("library-columns", shaftGeometry, wood, posts, foreground);
+    repeatedAssembly("library-columns", shaftGeometry, wood, posts, foreground, 4);
     instanced("library-column-feet", turnedGeometry, shelves, feet, foreground);
     instanced("library-column-capitals", capitalGeometry, shelves, cornices, foreground);
-    instanced("library-gallery-balusters", balusterGeometry, wood, balusters, foreground);
+    repeatedAssembly("library-gallery-balusters", balusterGeometry, wood, balusters, foreground, 4);
     instanced("library-arches", ownGeometry(new THREE.TorusGeometry(1.02, 0.13,
       budget.tubeSegments, budget.archSegments, Math.PI)), wood, arches, foreground);
     instanced("library-arch-inlay", ownGeometry(new THREE.TorusGeometry(0.88, 0.024,
       budget.tubeSegments, budget.archSegments, Math.PI)), trim, archInlays, foreground);
-    instanced("library-bookcase-backs", unitBox, recess, backs, midground);
+    repeatedAssembly("library-bookcase-backs", unitBox, recess, backs, midground, 4);
     instanced("library-cabinet-contact-occlusion", ownGeometry(new THREE.PlaneGeometry(1, 1).rotateY(Math.PI)),
       cabinetOcclusion, cabinetContacts, midground);
     instanced("library-shelf-contact-occlusion", ownGeometry(new THREE.PlaneGeometry(1, 1).rotateX(-Math.PI / 2)),
       shelfOcclusion, shelfContacts, midground);
-    instanced("library-bookcase-raised-panels", woodUv(chamferedBox(2.1, 2.5, 0.06, 0.015), 2.1, 2.5, 0.06), wood, casePanels, midground);
-    instanced("library-case-moldings", moldingGeometry, shelves, caseMoldings, midground);
-    instanced("library-joinery-pins", unitBox, trim, joinery, midground);
-    instanced("library-gallery-supports", woodUv(chamferedBox(0.18, 0.34, 4.4, 0.02), 0.18, 0.34, 4.4), wood, gallerySupports, midground);
-    instanced("library-bookcase-uprights", stileGeometry, wood, bookcaseSides, midground);
-    instanced("library-shelves", boardGeometry, shelves, shelfBoards, midground);
-    instanced("library-unlettered-books", spineGeometry, books, bookPlacements, midground);
+    repeatedAssembly("library-bookcase-raised-panels", woodUv(chamferedBox(2.1, 2.5, 0.06, 0.015), 2.1, 2.5, 0.06), wood, casePanels, midground, 4);
+    repeatedAssembly("library-case-moldings", moldingGeometry, shelves, caseMoldings, midground, 25);
+    repeatedAssembly("library-joinery-pins", unitBox, trim, joinery, midground, 16);
+    repeatedAssembly("library-gallery-supports", woodUv(chamferedBox(0.18, 0.34, 4.4, 0.02), 0.18, 0.34, 4.4), wood, gallerySupports, midground, 2);
+    repeatedAssembly("library-bookcase-uprights", stileGeometry, wood, bookcaseSides, midground, 8);
+    repeatedAssembly("library-shelves", boardGeometry, shelves, shelfBoards, midground, 11);
+    if (quality === "high") {
+      instanced("library-unlettered-books", spineGeometry, books, bookPlacements, midground);
+      instanced("library-book-covers", coverGeometry, books, bookCovers, midground);
+      instanced("library-book-binding-bands", bindingGeometry, trim, bindingBands, midground);
+      instanced("library-book-gilt-tooling", toolingGeometry, trim, bookTooling, midground);
+    } else {
+      // Palette changes need material colour, not eight copies of identical
+      // geometry. Both material groups share this one owned bound shell.
+      const shell = createLibraryBookShellGeometry(coverGeometry, spineGeometry, bindingGeometry);
+      geometries.add(shell);
+      for (const [index, shellPlacements] of bookShells.entries()) {
+        const leather = books.clone(); leather.color.copy(palette[index]); materials.add(leather);
+        instanced(`library-book-shell-${index}`, shell, [leather, trim], shellPlacements, midground);
+      }
+    }
     instanced("library-book-page-blocks", unitBox, paper, pageBlocks, midground);
-    instanced("library-book-covers", coverGeometry, books, bookCovers, midground);
-    instanced("library-book-binding-bands", bindingGeometry, trim, bindingBands, midground);
-    instanced("library-book-gilt-tooling", toolingGeometry, trim, bookTooling, midground);
-    instanced("library-book-contact-occlusion", ownGeometry(new THREE.PlaneGeometry(1, 1).rotateX(-Math.PI / 2)),
-      contactFinish, bookContacts, midground);
+    if (quality !== "economy") {
+      instanced("library-book-contact-occlusion", ownGeometry(new THREE.PlaneGeometry(1, 1).rotateX(-Math.PI / 2)),
+        contactFinish, bookContacts, midground);
+    }
     instanced("library-lamp-brackets", ownGeometry(new THREE.TubeGeometry(new THREE.QuadraticBezierCurve3(
       new THREE.Vector3(0, 0, 0), new THREE.Vector3(0, -0.02, -0.40), new THREE.Vector3(0, 0.15, -0.45)),
       budget.tubeSegments * 2, 0.026, budget.tubeSegments, false)), trim, lampBrackets, midground);
@@ -723,8 +806,8 @@ export function createGlobeLibrary(quality: GlobeQualityTier): OwnedGlobeLibrary
     instanced("library-lamp-caps", turnedGeometry, trim, lampCaps, midground);
     instanced("library-windows", unitBox, windowFinish, windows, background);
     instanced("library-window-glazing", ownGeometry(new THREE.PlaneGeometry(1, 1)), glass, glazing, background);
-    instanced("library-window-reveals", boardGeometry, stone, windowReveals, background);
-    instanced("library-window-frames", moldingGeometry, trim, windowFrames, background);
+    repeatedAssembly("library-window-reveals", boardGeometry, stone, windowReveals, background, 4);
+    repeatedAssembly("library-window-frames", moldingGeometry, trim, windowFrames, background, 8);
     instanced("library-parquet", boardGeometry, galleryFinish, parquet, background);
     instanced("library-ceiling-coffer-beams", boardGeometry, wood, cofferBeams, background);
     instanced("library-ceiling-coffer-panels", boardGeometry, shelves, coffers, background);
@@ -743,6 +826,24 @@ export function createGlobeLibrary(quality: GlobeQualityTier): OwnedGlobeLibrary
       light.userData = { source: "authored-in-project", restrictedDistance: source.distance,
         emitterMesh: source.emitterMesh, emitterInstance: source.emitterInstance, emitterOffset: source.emitterOffset };
       midground.add(light);
+    }
+    if (quality === "economy") {
+      // Pack baked shading after all assembly/merge operations. Normalized
+      // bytes retain the same standard-material colour path while cutting
+      // colour-buffer storage by 75%; maximum rounding error is 1/255.
+      // The shared page core and per-instance palette remain exact Float32.
+      for (const geometry of geometries) {
+        if (geometry === unitBox) continue;
+        const colors = geometry.getAttribute("color");
+        if (!colors) continue;
+        const packed = new Uint8Array(colors.count * 3);
+        for (let index = 0; index < colors.count; index++) {
+          packed[index * 3] = Math.round(clamp(colors.getX(index)) * 255);
+          packed[index * 3 + 1] = Math.round(clamp(colors.getY(index)) * 255);
+          packed[index * 3 + 2] = Math.round(clamp(colors.getZ(index)) * 255);
+        }
+        geometry.setAttribute("color", new THREE.Uint8BufferAttribute(packed, 3, true));
+      }
     }
     group.updateMatrixWorld(true);
     return Object.freeze({
