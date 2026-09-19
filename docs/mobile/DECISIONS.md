@@ -727,3 +727,10 @@
   preservation plus resumed rendering. Surface country selection now uses the shared
   pointer tap gate, because the same scenario exposed selection after a drag.
   Desktop Chrome GPU-loss simulation does not establish installed native recovery.
+
+- D125: Verified package bytes are decoded into a detached immutable staged view
+  bound to the exact observed selection receipt. Signed full-candidate metadata is
+  kept separate from the digest of delivered units, because export omits stale data.
+  Shared canonical unit validation governs the payload; missing locale counterparts
+  remain diagnostic and never create translation approval. Preserved S08 inputs
+  establish actual cache/semantic intake, not app activation or native persistence.

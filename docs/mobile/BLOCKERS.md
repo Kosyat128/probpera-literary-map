@@ -1,3 +1,16 @@
+<!-- s11-staged-content-20260919:begin -->
+Source eb65a5a7 adds typed semantic inspection after verified cache reads.
+Focused units and TypeScript pass; real preserved S08 current/rollback packages pass
+receipt, RU/EN, unit identity and dependency validation without regeneration.
+The full candidate hash and delivered subset hash have separate explicit meanings.
+Missing approved counterparts remain diagnostics; no held text or new approval is added.
+Evidence: evidence/S11/staged-content-20260919/result.json.
+The module remains staged and does not replace the app dataset. PWA 4e0de9b2 and
+Android/dev 77d74c1f remain the current exact preserved runtime artifacts.
+Next: receipt-bound inspection lifecycle in package management, with QA activation off.
+Stage statuses unchanged; only S00-S02 accepted, first open S03, releaseReady false.
+<!-- s11-staged-content-20260919:end -->
+
 <!-- s11-reader-storage-20260919:begin -->
 Source f2de8479 validates previous optional-version management (138 units,
 2 Chrome cases), reader progress (17 units, 1 Chrome case), and reading library

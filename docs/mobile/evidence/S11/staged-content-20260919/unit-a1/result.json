@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "mode": "unit",
+  "startedAt": "2026-09-19T15:43:22.682Z",
+  "endedAt": "2026-09-19T15:43:25.070Z",
+  "sourceBase": "37a397de8f48a6298d2d45ea7a8619f65386bc29",
+  "sourceInputs": [
+    {
+      "path": "docs/mobile/evidence/S11/staged-content-20260919/run-checks.mjs",
+      "sha256": "eff725bd9bf6e08c7aca174164d5fee6e23750c6929ca49d3e78e8f89bfa1d3b"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+    },
+    {
+      "path": "package.json",
+      "sha256": "90b392c205754f838b8bc7c4475bd475936be1078561bb218c437d151177869f"
+    },
+    {
+      "path": "src/planet/contentDependencies.test.ts",
+      "sha256": "d2dd19633879801471165dc90601726a3f5ebf24b96dc5497465ce5d74748546"
+    },
+    {
+      "path": "src/planet/contentDependencies.ts",
+      "sha256": "2f9204ec54d0cb61cea5cc84880cf701d4a664e68e74a6e1fea35b5d3c2ef916"
+    },
+    {
+      "path": "src/planet/contentExportHash.ts",
+      "sha256": "05e24bf089e59bf8015e74d8adc9b96147abbc665596920917e8ca2fd5dc7c46"
+    },
+    {
+      "path": "src/planet/contentExportTypes.ts",
+      "sha256": "0be9463f5f710cfe439a0ac3b1adf4867ec3381aade873b37a0a1f511f603860"
+    },
+    {
+      "path": "src/planet/contentPackageCache.ts",
+      "sha256": "fc9f1a29471ece9c6d294a4d69f4eb2f2266711051075dfdb956eb7caf3dea2f"
+    },
+    {
+      "path": "src/planet/contentPackageInspection.test.mjs",
+      "sha256": "ba1573e52424aa1a4d893168df9240ffb505fe202fd3e3a2080bc554984230e9"
+    },
+    {
+      "path": "src/planet/contentPackageInspection.ts",
+      "sha256": "daaf634d11c5f6f39cd27b22675c7fb18cb51cfdc46c5c69f84792291cb1f5ca"
+    },
+    {
+      "path": "src/planet/contentPackageProtocol.d.mts",
+      "sha256": "ca3c58f414de8ea7ff4f608984fa58bd662057fd8fa638764c99a7afde5cb4dc"
+    },
+    {
+      "path": "src/planet/contentPackageProtocol.mjs",
+      "sha256": "fb3708aa57b6ffec89dcf1142872d68a3821a614fe51b6696ebbfbf8b58d8d66"
+    },
+    {
+      "path": "src/planet/contentPackageStorage.ts",
+      "sha256": "8188ed9e3cf16d25d0cc694eb4fc8b81bfe13bdb2341305804b9fd2c79464811"
+    },
+    {
+      "path": "src/planet/verifyContentPackage.ts",
+      "sha256": "c3303190cfba0b1dd8361bcf05a49617b53a31edc6f4867f25abb89b131808a8"
+    },
+    {
+      "path": "tests/support/content-package-fixtures.mjs",
+      "sha256": "8ae81e6cb376e853882f99d51655ca4bd16ce5ac2e8ff501e18ea2f99591e687"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "8d51a8c9266fe83bf17c076b51672753b3750a17520cd0d2c28a90cb8b21e0d6"
+    },
+    {
+      "path": "vitest.config.ts",
+      "sha256": "5c1e90985e77b35599e5bdaf77c74a1166949ec9c4f45d1c5f926c3f53bef90e"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "executions": [
+    {
+      "name": "unit",
+      "exitCode": 0,
+      "durationMs": 2286
+    }
+  ],
+  "tests": {
+    "passed": 40,
+    "failed": 0,
+    "skipped": 0,
+    "failures": []
+  },
+  "pass": true,
+  "releaseReady": false,
+  "deviceTested": false,
+  "productionActivation": false
+}

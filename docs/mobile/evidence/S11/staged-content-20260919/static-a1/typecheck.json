@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/typescript/bin/tsc",
+    "--noEmit"
+  ],
+  "startedAt": "2026-09-19T15:43:20.744Z",
+  "durationMs": 22952,
+  "exitCode": 2,
+  "logs": {
+    "stdout": {
+      "text": "src/planet/contentPackageInspection.ts(71,27): error TS18046: 'value.tombstones' is of type 'unknown'.\r\nsrc/planet/contentPackageInspection.ts(83,19): error TS18046: 'value.invalidatedOutputs' is of type 'unknown'.\r\nsrc/planet/contentPackageInspection.ts(83,48): error TS7006: Parameter 'output' implicitly has an 'any' type.\r\nsrc/planet/contentPackageInspection.ts(131,14): error TS2339: Property 'manifestSha256' does not exist on type 'ContentPackageReadResult'.\r\n  Property 'manifestSha256' does not exist on type 'Rejection'.\r\nsrc/planet/contentPackageInspection.ts(132,66): error TS2339: Property 'selectedCurrentManifestSha256' does not exist on type 'ContentPackageReadResult'.\r\n  Property 'selectedCurrentManifestSha256' does not exist on type 'Rejection'.\r\nsrc/planet/contentPackageInspection.ts(133,48): error TS2339: Property 'selectedCurrentManifestSha256' does not exist on type 'ContentPackageReadResult'.\r\n  Property 'selectedCurrentManifestSha256' does not exist on type 'Rejection'.\r\nsrc/planet/contentPackageInspection.ts(134,66): error TS2339: Property 'envelope' does not exist on type 'ContentPackageReadResult'.\r\n  Property 'envelope' does not exist on type 'Rejection'.\r\nsrc/planet/contentPackageInspection.ts(137,29): error TS2339: Property 'files' does not exist on type 'ContentPackageReadResult'.\r\n  Property 'files' does not exist on type 'Rejection'.\r\nsrc/planet/contentPackageInspection.ts(137,44): error TS2339: Property 'files' does not exist on type 'ContentPackageReadResult'.\r\n  Property 'files' does not exist on type 'Rejection'.\r\nsrc/planet/contentPackageInspection.ts(137,71): error TS2339: Property 'files' does not exist on type 'ContentPackageReadResult'.\r\n  Property 'files' does not exist on type 'Rejection'.\r\nsrc/planet/contentPackageInspection.ts(137,81): error TS7006: Parameter 'file' implicitly has an 'any' type.\r\nsrc/planet/contentPackageInspection.ts(139,47): error TS2339: Property 'files' does not exist on type 'ContentPackageReadResult'.\r\n  Property 'files' does not exist on type 'Rejection'.\r\nsrc/planet/contentPackageInspection.ts(139,57): error TS7006: Parameter 'file' implicitly has an 'any' type.\r\nsrc/planet/contentPackageInspection.ts(153,26): error TS18046: 'catalog.units' is of type 'unknown'.\r\n",
+      "sha256": "57d95702ad23ac3d42ae51d898328e49d151615f7cb44831346232fba0d82f98"
+    },
+    "stderr": {
+      "text": "",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

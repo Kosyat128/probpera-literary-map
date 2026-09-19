@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-19T15:48:55.781Z",
+  "stage": "S11",
+  "sourceCommit": "eb65a5a769e87383f23f81adc88cd8fc0baecedc",
+  "status": "STAGED_CONTENT_SEMANTIC_INSPECTION_VALIDATED",
+  "pass": true,
+  "runs": {
+    "unit-a2": {
+      "path": "docs/mobile/evidence/S11/staged-content-20260919/unit-a2/result.json",
+      "sha256": "311504cad3fd82b4d393881ccb052581b129e254275c0447a7a79cf4fee09a5e",
+      "tests": {
+        "passed": 40,
+        "failed": 0,
+        "skipped": 0,
+        "failures": []
+      }
+    },
+    "static-a2": {
+      "path": "docs/mobile/evidence/S11/staged-content-20260919/static-a2/result.json",
+      "sha256": "250fd5530cb046fb216f39ecdc98b1b85010b189acec62e58054518bad33aaf9"
+    },
+    "intake-a2": {
+      "path": "docs/mobile/evidence/S11/staged-content-20260919/intake-a2/result.json",
+      "sha256": "af969158fefe720cf3bdd6edede4b2e060e08637c36f8e416f417dd795d8a8b3"
+    }
+  },
+  "priorAttempt": {
+    "path": "docs/mobile/evidence/S11/staged-content-20260919/static-a1/result.json",
+    "pass": false,
+    "reason": "TypeScript did not narrow after a const arrow returning never. Replacing it with a function declaration preserves rejection behavior and enables narrowing; exact corrected bytes passed all a2 checks."
+  },
+  "inspectedGenerations": [
+    {
+      "version": 2,
+      "selectionRole": "current",
+      "manifestSha256": "b08c6b4f573f66dac0679bab42826cd0f300ed386ce7fbc9af25f7e2b1a1f86c",
+      "selectionSha256": "0b006930c78896ce7da1583f66360c99f7ee90894c7df9a01362b87aa0b69ec8",
+      "selectedCurrentManifestSha256": "b08c6b4f573f66dac0679bab42826cd0f300ed386ce7fbc9af25f7e2b1a1f86c",
+      "sourceCommit": "89cf558d7be310503672420568b1c7a045bd8325",
+      "fullCandidateHash": "f86f05d08b0dcbd1f09093d7d44e6b871580e04eb2ae39c6d24eb4562cf1e966",
+      "deliveredUnitsHash": "fb24c653023ab301493185e07d8909609cc4e04c698ff878efd09f2195c6e9ab",
+      "fullCandidateHashBasis": "Signed dependency metadata, independently checked here against separately preserved full candidate.json",
+      "deliveredUnitsHashBasis": "Inspector digest of delivered units only; never substituted for the full candidate hash",
+      "fullCandidateUnits": 4701,
+      "heldDiagnosticUnits": 41479,
+      "deliveredUnits": 4701,
+      "localeUnits": {
+        "ru": 3660,
+        "en": 1041
+      },
+      "staleUnitIds": 0,
+      "removedUnitIds": 0,
+      "diagnosticCounts": {
+        "missing-locale-counterpart": 2619
+      },
+      "stagedUnitIdsSha256": "62b3815d4fe7d9550d74d380a6ac20908c74f707131bfe39f405bcec157e5dd8",
+      "heldPayloadUnits": 0,
+      "stalePayloadUnits": 0,
+      "tombstonedPayloadUnits": 0,
+      "dependencyClosure": true,
+      "deeplyImmutable": true,
+      "independentlyCheckedDeliveredUnitsHash": true,
+      "activationAllowed": false,
+      "releaseReady": false
+    },
+    {
+      "version": 1,
+      "selectionRole": "rollback",
+      "manifestSha256": "0470d65a77d4ff52a8199719019e77c441558e6d95c9e0025bd330455c495b75",
+      "selectionSha256": "0b006930c78896ce7da1583f66360c99f7ee90894c7df9a01362b87aa0b69ec8",
+      "selectedCurrentManifestSha256": "b08c6b4f573f66dac0679bab42826cd0f300ed386ce7fbc9af25f7e2b1a1f86c",
+      "sourceCommit": "89cf558d7be310503672420568b1c7a045bd8325",
+      "fullCandidateHash": "f86f05d08b0dcbd1f09093d7d44e6b871580e04eb2ae39c6d24eb4562cf1e966",
+      "deliveredUnitsHash": "fb24c653023ab301493185e07d8909609cc4e04c698ff878efd09f2195c6e9ab",
+      "fullCandidateHashBasis": "Signed dependency metadata, independently checked here against separately preserved full candidate.json",
+      "deliveredUnitsHashBasis": "Inspector digest of delivered units only; never substituted for the full candidate hash",
+      "fullCandidateUnits": 4701,
+      "heldDiagnosticUnits": 41479,
+      "deliveredUnits": 4701,
+      "localeUnits": {
+        "ru": 3660,
+        "en": 1041
+      },
+      "staleUnitIds": 0,
+      "removedUnitIds": 0,
+      "diagnosticCounts": {
+        "missing-locale-counterpart": 2619
+      },
+      "stagedUnitIdsSha256": "62b3815d4fe7d9550d74d380a6ac20908c74f707131bfe39f405bcec157e5dd8",
+      "heldPayloadUnits": 0,
+      "stalePayloadUnits": 0,
+      "tombstonedPayloadUnits": 0,
+      "dependencyClosure": true,
+      "deeplyImmutable": true,
+      "independentlyCheckedDeliveredUnitsHash": true,
+      "activationAllowed": false,
+      "releaseReady": false
+    }
+  ],
+  "checks": {
+    "exactReceiptAndManifestBinding": true,
+    "currentAndRollbackDistinguished": true,
+    "immutableDetachedSnapshot": true,
+    "strictRuEnPayloadContract": true,
+    "canonicalIdentityAndDependencyValidation": true,
+    "fullCandidateAndDeliveredHashesSeparated": true,
+    "heldAndStaleDataNotPromoted": true,
+    "localeGapsRemainDiagnostics": true
+  },
+  "realInputLimit": "Preserved S08 generations contain no stale units. Stale/tombstone rejection is covered by focused synthetic cases.",
+  "unchangedRuntimeArtifacts": {
+    "path": "docs/mobile/evidence/S11/reader-progress-20260919/result.json",
+    "sha256": "ee6ec7fa8d6c1fe82c064428a67a9dbd0d7df0ed516a49c1a9b3be00db0be9ce"
+  },
+  "moduleWiredToAppDataset": false,
+  "artifactsRefreshed": false,
+  "actualBrowserStorageTestedInThisSlice": false,
+  "installedNative": false,
+  "iosCompiled": false,
+  "activationAllowed": false,
+  "editorialApprovalCreated": false,
+  "productionActionsPerformed": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "nextAction": "Continue S11 staged-content integration by connecting receipt-bound inspection to package management, so replaced or removed generations cannot retain an available inspection. Preserve the bundled canonical dataset and current globe; keep local-QA snapshots inactive, production catalog/trust empty and D107 final archive synchronization deferred. Reuse current PWA 4e0de9b2 and Android 77d74c1f artifacts until the next runtime-changing batch."
+}
