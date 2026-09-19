@@ -47,7 +47,7 @@ export const planetBackgroundCopy = {
       apply: "Применить", cancel: "Отмена", saving: "Сохраняем выбор…",
       saveFailed: "Сохранение не подтверждено. Фон применён, но при следующем запуске выбор может сброситься.",
       retry: "Повторить сохранение",
-      names: { "background.base.site-starfield": "Звёздное небо", "background.base.library": "Библиотека" },
+      names: { "background.base.site-starfield": "Звёздное небо", "background.base.library": "Библиотека", "background.base.writer-study": "Кабинет писателя" },
     },
     en: {
       close: "Close", label: "Space around the globe",
@@ -57,7 +57,7 @@ export const planetBackgroundCopy = {
       apply: "Apply", cancel: "Cancel", saving: "Saving your choice…",
       saveFailed: "Saving could not be confirmed. The background is applied, but your choice may reset the next time you open the app.",
       retry: "Try saving again",
-      names: { "background.base.site-starfield": "Starry sky", "background.base.library": "Library" },
+      names: { "background.base.site-starfield": "Starry sky", "background.base.library": "Library", "background.base.writer-study": "Writer's study" },
     },
   },
 } as const;

@@ -385,7 +385,7 @@ describe("exact non-secret preferences with serialized readback", () => {
   it("confines the new background preference to its exact adult IDs and key", async () => {
     const f = fixture();
     const fresh = createHostPlatformServices({ kind: "ios", channel: "dev", languages: [], preferences: f.preferences });
-    for (const value of ["background.base.site-starfield", "background.base.library"]) {
+    for (const value of ["background.base.site-starfield", "background.base.library", "background.base.writer-study"]) {
       expect(await f.services.preferences.set(BACKGROUND, value)).toBe(true);
       expect(await fresh.preferences.get(BACKGROUND)).toBe(value);
     }

@@ -30,6 +30,7 @@ assert.ok(rows.every(r=>r.required==='true'&&r.iap_sku_allowed==='false'));
 const built=await build({stdin:{resolveDir:root,contents:`
  export * from './src/planet/baseEditionPolicy';
  export {INCLUDED_GLOBE_STANDS} from './src/planet/globeStands';
+ export {GLOBE_BACKGROUNDS} from './src/planet/globeBackgrounds';
  export {GLOBE_EDITION_BY_ID,resolveGlobeEditionTexturePath} from './src/planet/editions';
  `,loader:'ts'},bundle:true,write:false,platform:'node',format:'esm',target:'es2020',metafile:true,logLevel:'silent'});
 const runtime=await import('data:text/javascript;base64,'+Buffer.from(built.outputFiles[0].contents).toString('base64'));
@@ -40,7 +41,8 @@ assert.equal(snapshot.grantsEntitlement,false);assert.equal(snapshot.releaseRead
 const moduleInputs=Object.keys(built.metafile.inputs).filter(p=>p!=='<stdin>').map(p=>path.relative(root,path.resolve(root,p)).replaceAll('\\','/'));
 const sourceBindings={
  'background.base.site-starfield':['src/components/LiteraryGlobe.tsx'],
- 'background.base.library':['src/planet/globeBackgrounds.ts','src/components/globeLibraryGeometry.ts','src/components/globeLibraryBookGeometry.ts','src/components/globeCraftMaterials.ts','src/components/GlobeIncludedBackground.tsx','src/host/planetComposition.ts','src/host/planetCompositionPresentation.ts','src/planet/globeComposition.ts','src/components/useGlobeCompositionScene.ts','src/components/useGlobeCompositionFrame.ts','src/host/PlanetStandControls.tsx'],
+ 'background.base.library':['src/planet/globeBackgrounds.ts','src/components/globeBackgroundGeometry.ts','src/components/globeLibraryGeometry.ts','src/components/globeLibraryBookGeometry.ts','src/components/globeCraftMaterials.ts','src/components/GlobeIncludedBackground.tsx','src/host/planetComposition.ts','src/host/planetCompositionPresentation.ts','src/planet/globeComposition.ts','src/components/useGlobeCompositionScene.ts','src/components/useGlobeCompositionFrame.ts','src/host/PlanetStandControls.tsx'],
+ 'background.base.writer-study':['src/planet/globeBackgrounds.ts','src/components/globeBackgroundGeometry.ts','src/components/globeWriterStudyGeometry.ts','src/components/globeLibraryBookGeometry.ts','src/components/globeCraftMaterials.ts','src/components/GlobeIncludedBackground.tsx','src/host/planetComposition.ts','src/host/planetCompositionPresentation.ts','src/planet/globeComposition.ts','src/components/useGlobeCompositionScene.ts','src/components/useGlobeCompositionFrame.ts','src/host/PlanetStandControls.tsx'],
  // The explicit whale derivative belongs to existing STARTER-019; only CSV
  // rows below create inventory items. Required count remains exactly 29.
  'canonical-globe':['src/components/LiteraryGlobe.tsx','src/components/GlobeCameraRig.tsx',
@@ -66,6 +68,18 @@ const ownerSourceBindings={
  'stand.base.portrait-hemingway':portraitSources,
  'stand.base.portrait-tolstoy':portraitSources,
 };
+for (const [id, source] of [
+ ['background.base.library','src/components/globeLibraryGeometry.ts'],
+ ['background.base.writer-study','src/components/globeWriterStudyGeometry.ts'],
+]) {
+ const descriptor=runtime.GLOBE_BACKGROUNDS.find(background=>background.id===id);
+ assert.ok(descriptor, id);assert.equal(descriptor.source,source);
+ assert.equal(descriptor.commercialAvailability,'included-in-base');
+ assert.equal(descriptor.provenance,'authored-in-project');assert.equal(descriptor.supportedAccess,'adult');
+ assert.deepEqual(descriptor.qualityTiers,['high','balanced','economy']);
+ assert.equal(policy.classify(id).canonicalId,id);
+ for(const flag of ['childReviewed','rightsReviewed','grantsEntitlement','releaseReady'])assert.equal(descriptor[flag],false);
+}
 assert.deepEqual(snapshot.ownerAdditions.map(item=>item.id).sort(),Object.keys(ownerSourceBindings).sort());
 const sourcePaths=[...new Set([tablePath,'scripts/mobile/audit-starter-set.mjs','scripts/mobile/csv.mjs',...moduleInputs,
  ...Object.values(sourceBindings).flat(),...Object.values(ownerSourceBindings).flat()])].sort();

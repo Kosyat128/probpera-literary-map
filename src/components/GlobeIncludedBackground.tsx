@@ -4,7 +4,7 @@ import {
   checkGlobeBackgroundCompatibility, DEFAULT_GLOBE_BACKGROUND_ID,
   type GlobeBackgroundId, type GlobeBackgroundPresentation,
 } from "../planet/globeBackgrounds";
-import { createGlobeLibrary, type OwnedGlobeLibrary } from "./globeLibraryGeometry";
+import { createIncludedGlobeBackground, type OwnedGlobeBackground } from "./globeBackgroundGeometry";
 import type { GlobeQualityTier } from "./globeQuality";
 
 type BackgroundProps = {
@@ -34,8 +34,8 @@ class BackgroundRenderBoundary extends Component<{
 function BackgroundFrame({ presentation, quality, editionId, standId, access,
   active, autoRotate, reducedMotion, canonicalBackground }: BackgroundProps) {
   const { invalidate, gl, scene, camera } = useThree();
-  const [shown, setShown] = useState<{ key: string; resource: OwnedGlobeLibrary } | null>(null);
-  const resources = useRef(new Map<string, OwnedGlobeLibrary>());
+  const [shown, setShown] = useState<{ key: string; resource: OwnedGlobeBackground } | null>(null);
+  const resources = useRef(new Map<string, OwnedGlobeBackground>());
   const ownership = useRef<{
     revision: number; id: GlobeBackgroundId; key: string | null; baselineKey: string | null;
     alive: boolean; acknowledged: boolean;
@@ -51,7 +51,7 @@ function BackgroundFrame({ presentation, quality, editionId, standId, access,
       alive: true, acknowledged: false };
     ownership.current = owner;
     const createdKeys: string[] = [];
-    const prepare = (id: GlobeBackgroundId): OwnedGlobeLibrary | null => {
+    const prepare = (id: GlobeBackgroundId): OwnedGlobeBackground | null => {
       const compatibility = checkGlobeBackgroundCompatibility({
         backgroundId: id, editionId, standId, qualityTier: quality, access,
       });
@@ -60,7 +60,7 @@ function BackgroundFrame({ presentation, quality, editionId, standId, access,
       const key = `${id}:${quality}`;
       const existing = resources.current.get(key);
       if (existing) return existing;
-      const candidate = createGlobeLibrary(quality);
+      const candidate = createIncludedGlobeBackground(id, quality);
       try {
         candidate.setAmbientTime(ambientTime.current);
         // A small bundled room is prepared synchronously. This uses the current

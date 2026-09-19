@@ -3,7 +3,7 @@ import { baseEditionPolicy } from "./baseEditionPolicy";
 import { GLOBE_STAND_IDS, isGlobeStandId } from "./globeStands";
 
 export const GLOBE_BACKGROUND_IDS = Object.freeze([
-  "background.base.site-starfield", "background.base.library",
+  "background.base.site-starfield", "background.base.library", "background.base.writer-study",
 ] as const);
 export type GlobeBackgroundId = typeof GLOBE_BACKGROUND_IDS[number];
 export const DEFAULT_GLOBE_BACKGROUND_ID: GlobeBackgroundId = "background.base.site-starfield";
@@ -19,9 +19,11 @@ export const GLOBE_BACKGROUNDS = Object.freeze(GLOBE_BACKGROUND_IDS.map(id => Ob
   commercialAvailability: "included-in-base" as const,
   provenance: "authored-in-project" as const,
   source: id === DEFAULT_GLOBE_BACKGROUND_ID
-    ? "src/components/LiteraryGlobe.tsx" : "src/components/globeLibraryGeometry.ts",
+    ? "src/components/LiteraryGlobe.tsx" : id === "background.base.writer-study"
+      ? "src/components/globeWriterStudyGeometry.ts" : "src/components/globeLibraryGeometry.ts",
   contentVersion: 1,
-  sceneId: id === DEFAULT_GLOBE_BACKGROUND_ID ? "museum-starfield-3d" : "probpera-library-3d",
+  sceneId: id === DEFAULT_GLOBE_BACKGROUND_ID ? "museum-starfield-3d"
+    : id === "background.base.writer-study" ? "probpera-writer-study-3d" : "probpera-library-3d",
   supportedEditions: editions,
   supportedStands: GLOBE_STAND_IDS,
   supportedAccess: "adult" as const,

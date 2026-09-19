@@ -324,7 +324,7 @@ describe("non-secret best-effort canonical preferences", () => {
   it("confines the new background preference to its exact adult IDs and browser key", async () => {
     const env = browserEnvironment(), adapter = createWebPlatformAdapter({ window: env.browser });
     const fresh = createWebPlatformAdapter({ window: env.browser });
-    for (const value of ["background.base.site-starfield", "background.base.library"]) {
+    for (const value of ["background.base.site-starfield", "background.base.library", "background.base.writer-study"]) {
       expect(await adapter.preferences.set(BACKGROUND, value)).toBe(true);
       expect(await fresh.preferences.get(BACKGROUND)).toBe(value);
     }
