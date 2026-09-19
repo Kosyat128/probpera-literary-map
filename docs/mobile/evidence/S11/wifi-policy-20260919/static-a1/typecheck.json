@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/typescript/bin/tsc",
+    "--noEmit"
+  ],
+  "startedAt": "2026-09-19T14:18:50.005Z",
+  "durationMs": 28178,
+  "exitCode": 2,
+  "logs": {
+    "stdout": {
+      "text": "src/platform/adapters/web/WebPlatformAdapter.ts(116,33): error TS2339: Property 'connection' does not exist on type 'Navigator | WebAdapterNavigator'.\r\n  Property 'connection' does not exist on type 'Navigator'.\r\n",
+      "sha256": "91b756fe9dc5a17703ecde8f4b3088e359ac0c4c68f45df60ef07d067a3392a4"
+    },
+    "stderr": {
+      "text": "",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

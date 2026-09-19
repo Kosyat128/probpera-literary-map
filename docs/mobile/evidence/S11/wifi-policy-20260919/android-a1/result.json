@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "kind": "android-wifi-policy-dev-apk",
+  "sourceCommit": "7f6f280256d16e33901e65826814adb8401ed5c2",
+  "buildId": "b2f77958608645fb540d75e0563ba043a4767a4990a0f7af5e02322e500ca954",
+  "sourceInputsSha256": "34b14e1eacba71518b1c041f24506b3d6b8f7dab05f1789d179738cbe7a81102",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s11-wifi/android-b2f77958/app-dev-debug.apk",
+    "bytes": 67587888,
+    "sha256": "0ace08af7357924e4348ee8044b0b64b9eca63a499eb9a3fed37d2bd736a4f06"
+  },
+  "artifact": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s11-wifi/android-b2f77958/runtime",
+    "sha256": "79f2055d4813a5969cbc0404997c54afe728f60c620b8857dbf3674737eb9f5d",
+    "files": 1403,
+    "bytes": 72308372
+  },
+  "checks": {
+    "strictRuntimeAudit": "docs/mobile/evidence/S11/wifi-policy-20260919/android-a1/native-artifact-audit.json",
+    "binaryAudit": "docs/mobile/evidence/S11/wifi-policy-20260919/android-a1/android-dev-apk-verification.json",
+    "build": "docs/mobile/evidence/S11/wifi-policy-20260919/android-a1/build-run.json",
+    "exactCopiedBytes": true,
+    "priorAndroidApkAndEntireRuntimePreserved": true,
+    "bundledAssetsMatched": 1402,
+    "localContentStoreDex": "classes10.dex"
+  },
+  "priorAndroid": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s11-storage/android-3144732d/app-dev-debug.apk",
+  "nativeExecutionVerified": false,
+  "iosCompiled": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false,
+  "canonicalOwnerArchiveSyncPerformed": false
+}

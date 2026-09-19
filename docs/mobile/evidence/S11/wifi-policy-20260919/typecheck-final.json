@@ -1,0 +1,12 @@
+{
+  "pass": true,
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/typescript/bin/tsc",
+    "--noEmit"
+  ],
+  "durationMs": 25220,
+  "exitCode": 0,
+  "stdout": "",
+  "stderr": ""
+}

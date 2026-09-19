@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "scope": "network capability and preference allowlist only",
+  "command": "node node_modules/vitest/vitest.mjs run src/host/HostPlatformServices.test.ts src/platform/adapters/web/WebPlatformAdapter.test.ts --maxWorkers=2",
+  "environment": {
+    "GIT_CONFIG_COUNT": "1",
+    "GIT_CONFIG_KEY_0": "safe.directory",
+    "GIT_CONFIG_VALUE_0": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work"
+  },
+  "exitCode": 0,
+  "testFilesPassed": 2,
+  "testsPassed": 171,
+  "reportedStartTime": "17:13:36",
+  "durationMs": 853,
+  "validation": "Single completed focused execution; hashes recorded afterwards without rerun.",
+  "sourceSha256": {
+    "src/platform/ports.ts": "c9b16d8f56263dfbc8725cc8296989076d5a485a74ef106954f9b468a21fb65d",
+    "src/host/HostPlatformServices.ts": "09519ffa77fdd56ba88de14a505df7056b3cfb3f63d2331adc5408f8f1f22aef",
+    "src/host/HostPlatformServices.test.ts": "7b3283b3ac5cb01ede77c6a24df69dcef8761708b59e058e5587842da0f6da10",
+    "src/platform/adapters/web/WebPlatformAdapter.ts": "d7d5d0b0723f6a6bb8bd24a31b67425ad8fbc3c6d030a3a7e1f963884d987a61",
+    "src/platform/adapters/web/WebPlatformAdapter.test.ts": "4b4637ee22a487e8617b56d17944bbfdca73a4ee2af6a353fd8b550624d380d1"
+  }
+}

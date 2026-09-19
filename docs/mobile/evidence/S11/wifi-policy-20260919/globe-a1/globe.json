@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S11/wifi-policy-20260919/playwright.config.mjs"
+  ],
+  "startedAt": "2026-09-19T14:18:48.610Z",
+  "durationMs": 22235,
+  "exitCode": 0,
+  "logs": {
+    "stdout": {
+      "text": "\nRunning 2 tests using 1 worker\n\n\n\n[1/2] tests\\host\\native-planet.spec.mjs:387:1 › downloads live in the actual globe collection and retain the scene through RUEN and reopening\n[2/2] tests\\host\\native-planet.spec.mjs:1109:1 › native host background pauses the actual globe while the document stays visible and resumes preserved state\n  2 passed (21.4s)\n",
+      "sha256": "936769fc42ee74499e77c9cde52c015f43dd004803e9c92db458c9df5d313288"
+    },
+    "stderr": {
+      "text": "(node:23132) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "sha256": "da98b1ae0831f03532d02968f5fd6543c9df91c95d8462e1189261602235ef23"
+    }
+  }
+}

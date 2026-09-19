@@ -689,3 +689,14 @@
   Preserve the prior APK/PWA; no native execution, iOS compilation, stage acceptance,
   production activation or release approval is inferred. Continue with Wi-Fi-only
   controls before the next PWA refresh; D107 final owner archive sync stays deferred.
+
+- D121: Wi-Fi-only is a persistent non-secret download intent, enabled by default in
+  real adapters and enforced only from explicit fresh platform network types. Browser
+  throughput/effectiveType is not Wi-Fi evidence. Bounded preference IO remains usable
+  on failure and late writes are ordered; foreground network recovery never starts a
+  transfer automatically. Source 7f6f2802 also repairs manual globe gestures interrupted
+  by native backgrounding. 279 focused units and 6 actual Chrome cases pass; current
+  PWA d1e90c35 and Android/dev b2f77958 are source-bound and exactly preserved. The
+  type-only Navigator correction and LF normalization preserve emitted JavaScript;
+  passing runtime suites were reused. Native/iOS/stage/release gates remain open.
+  Continue S11 saved optional-package uninstall without weakening bootstrap protection.

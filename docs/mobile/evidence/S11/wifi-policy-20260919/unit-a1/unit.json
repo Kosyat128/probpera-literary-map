@@ -1,0 +1,28 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "src/planet/DownloadNetworkPolicy.test.mjs",
+    "src/planet/ContentDownloads.test.mjs",
+    "src/planet/ContentStorageManagement.test.mjs",
+    "src/platform/adapters/android/AndroidPlatformAdapter.test.ts",
+    "src/platform/adapters/ios/IosPlatformAdapter.test.ts",
+    "--maxWorkers=2",
+    "--reporter=json",
+    "--outputFile=C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S11\\wifi-policy-20260919\\unit-a1\\vitest.json"
+  ],
+  "startedAt": "2026-09-19T14:18:48.405Z",
+  "durationMs": 3013,
+  "exitCode": 0,
+  "logs": {
+    "stdout": {
+      "text": "JSON report written to C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S11/wifi-policy-20260919/unit-a1/vitest.json\n",
+      "sha256": "3741f0ab5964718bd10d209ab08a33ac4a8fa1d7e3abc68374c93cd18b208042"
+    },
+    "stderr": {
+      "text": "",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

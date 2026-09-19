@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S11/wifi-policy-20260919/playwright.config.mjs"
+  ],
+  "startedAt": "2026-09-19T14:19:21.808Z",
+  "durationMs": 12105,
+  "exitCode": 0,
+  "logs": {
+    "stdout": {
+      "text": "\nRunning 3 tests using 1 worker\n\n\n\n[1/3] tests\\pwa\\download-lifecycle.spec.mjs:11:46 › downloads pause and recover through web, cancellation, corrupt bytes and restart\n[2/3] tests\\pwa\\download-lifecycle.spec.mjs:11:46 › downloads pause and recover through native-events, cancellation, corrupt bytes and restart\n[3/3] tests\\pwa\\download-network-policy.spec.mjs:10:1 › Wi-Fi policy blocks unknown transport, pauses cellular transfer and persists with explicit recovery\n  3 passed (11.4s)\n",
+      "sha256": "c0afb34bb3f32e50174ee2ae1c8cb348253f5df1160cd9d9aeade574a165e643"
+    },
+    "stderr": {
+      "text": "(node:23340) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "sha256": "c6cba852411513f2b614a3abb292b8751552d86aff068217a31704931b900c40"
+    }
+  }
+}

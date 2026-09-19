@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "stage": "S11",
+  "status": "WIFI_POLICY_AND_GLOBE_RECOVERY_WITH_PWA_ANDROID_ARTIFACTS_VALIDATED",
+  "pass": true,
+  "sourceCommit": "7f6f280256d16e33901e65826814adb8401ed5c2",
+  "recordedAt": "2026-09-19T14:30:34.354Z",
+  "passingUnitCases": 279,
+  "actualChromeCases": 6,
+  "runs": {
+    "unit-a1": {
+      "path": "docs/mobile/evidence/S11/wifi-policy-20260919/unit-a1/result.json",
+      "sha256": "8f6ccb20770ace9f8aefe261ed36cd78cea1d0cd15bbcaf94c6533df7a1386db",
+      "tests": {
+        "passed": 108,
+        "failed": 0,
+        "skipped": 0,
+        "failures": []
+      },
+      "checkedInputCount": 106,
+      "runtimeInputsMatchSourceCommit": true
+    },
+    "browser-a1": {
+      "path": "docs/mobile/evidence/S11/wifi-policy-20260919/browser-a1/result.json",
+      "sha256": "75939d6bc02398be79c5f6f4ba92b5926bee448b8f2a5269a8bd2c902ac86687",
+      "tests": {
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "errors": []
+      },
+      "checkedInputCount": 106,
+      "runtimeInputsMatchSourceCommit": true
+    },
+    "globe-a1": {
+      "path": "docs/mobile/evidence/S11/wifi-policy-20260919/globe-a1/result.json",
+      "sha256": "d931367bb2a83c93cb8998ea768241aba5afbf0611f26622d3788d47089f10ea",
+      "tests": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "errors": []
+      },
+      "checkedInputCount": 106,
+      "runtimeInputsMatchSourceCommit": true
+    }
+  },
+  "platformUnits": {
+    "path": "docs/mobile/evidence/S11/wifi-policy-20260919/platform-unit.json",
+    "tests": 171,
+    "sha256": "69449802b4f91952fdbeed0fe8b280476a22fcbc0c73d58e3906d0811fdca13f"
+  },
+  "validation": {
+    "typecheck": "docs/mobile/evidence/S11/wifi-policy-20260919/typecheck-final.json",
+    "platformBoundaries": "docs/mobile/evidence/S11/wifi-policy-20260919/static-a1/platform-boundaries.json",
+    "pwaArtifact": "docs/mobile/evidence/S11/wifi-policy-20260919/pwa-a1/result.json",
+    "androidArtifact": "docs/mobile/evidence/S11/wifi-policy-20260919/android-a1/result.json",
+    "unknownNetworkFailsClosed": true,
+    "synchronousFetchBoundaryChecks": true,
+    "explicitResumeOnly": true,
+    "preferencePersistsThroughOfflineColdStart": true,
+    "backgroundInvalidatesNativeWifi": true,
+    "interruptedGlobeGestureRecovery": true,
+    "canonicalGlobeRetained": true,
+    "locales": [
+      "ru",
+      "en"
+    ]
+  },
+  "screenshotsInspectedAtOriginalResolution": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s11-wifi/browser-a1/download-network-policy-Wi-3fbc1-ists-with-explicit-recovery/wifi-waiting-en.png",
+      "sha256": "f4f85095475471b0df5bb3483c94bd335b45d8604488ea67a2c42eb41d09dee0"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s11-wifi/globe-a1/native-planet-native-host--493c3-and-resumes-preserved-state/native-host-interrupted-drag.png",
+      "sha256": "33f4f30a78573af8517d1f65b826b1531e20ce67cc4f8311eb19f464ea0fbb9f"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s11-wifi/pwa-a1/downloads-artifact-built-P-ba6df-ter-cold-offline-navigation/pwa-downloads-ru.png",
+      "sha256": "c079025e9cafbbaf03f617aa3389f8f2610c43951bf65bbb0047df25029f3800"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s11-wifi/pwa-a1/downloads-artifact-built-P-ba6df-ter-cold-offline-navigation/pwa-downloads-en.png",
+      "sha256": "4e1f6ba2bd54e3d768cf7f93983305c50366cf9c5d95da0e2bd9f705a7cc7d18"
+    }
+  ],
+  "preservedFailure": {
+    "path": "docs/mobile/evidence/S11/wifi-policy-20260919/static-a1/result.json",
+    "cause": "DOM Navigator union omitted the optional Network Information capability",
+    "correctedBy": "docs/mobile/evidence/S11/wifi-policy-20260919/navigator-type-fix.json",
+    "finalTypecheckPassed": true
+  },
+  "nonRuntimeChangesAfterTests": [
+    {
+      "file": "src/platform/adapters/web/WebPlatformAdapter.ts",
+      "beforeSha256": "d7d5d0b0723f6a6bb8bd24a31b67425ad8fbc3c6d030a3a7e1f963884d987a61",
+      "afterSha256": "4964d8c593ed70a8c775b2ce7fcf80858c811231b9bedf8ec62fb32f5b5192a2",
+      "emittedJavaScriptIdentical": true,
+      "reason": "DOM Navigator omits the optional Network Information extension; explicitly type the existing structural capability"
+    },
+    {
+      "file": "src/components/GlobeCameraRig.tsx",
+      "beforeSha256": "c4fa9351366cdbbc875107edae008683293b5032ccf4ab886758c8daafd1528d",
+      "afterSha256": "6938d120c7a49248398b385640cc77d96c9f3b33cbd6c3b4ef9881ef89e2ec19",
+      "normalizedTextIdentical": true,
+      "emittedJavaScriptIdentical": true
+    }
+  ],
+  "unchangedRuntimeSuitesNotRepeated": true,
+  "pwaBuildId": "d1e90c358033a6236f33a267749f14bfd124d4849d47d248369e1c4349b58a9d",
+  "androidBuildId": "b2f77958608645fb540d75e0563ba043a4767a4990a0f7af5e02322e500ca954",
+  "productionPackageActivation": false,
+  "nativeExecutionVerified": false,
+  "iosCompiled": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false,
+  "nextAction": "Continue S11 optional-package uninstall: saved optional packages currently cannot be removed. Add a separately authorized optional-package operation, keeping incomplete-candidate discard and mandatory bootstrap protection unchanged. Use trusted classification, exact selection/transfer locking and fail-closed concurrent update handling, with equal RU/EN controls. Preserve the verified Wi-Fi source and current PWA d1e90c35 / Android b2f77958 artifacts; rerun only checks affected by the next change. Native installed-device/process-death and iOS compilation remain open. Production descriptors/trust stay empty and QA bytes inactive. D107 final owner archive synchronization stays deferred. No public CI upload, deploy, merge or store action."
+}

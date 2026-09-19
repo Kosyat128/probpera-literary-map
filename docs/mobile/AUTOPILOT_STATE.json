@@ -5,7 +5,7 @@
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
   "headSha": "6305df5fe671718c78b38af1ccc2bafbbdd44346",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-14T12:21:00.476Z",
+  "updatedAt": "2026-09-19T14:30:34.354Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -1076,14 +1076,15 @@
           "evidence": [],
           "commit": null,
           "lastValidatedAt": null,
-          "notes": "Background/resume listener stability. Implement shared runtime budgets/recovery, then measure platform and bilingual device behavior."
+          "notes": "Background/resume listener stability. Implement shared runtime budgets/recovery, then measure platform and bilingual device behavior. Interrupted drag recovery fixed in 7f6f2802 and checked in actual Chrome with injected native lifecycle; physical-device listener stability remains open."
         }
       ],
       "lastGreenCommands": [],
       "artifacts": [
         "docs/mobile/evidence/S06/graphics-quality-20260908/entry.json",
         "docs/mobile/evidence/S06/graphics-quality-20260908/result.json",
-        "docs/mobile/evidence/S06/graphics-quality-20260908/artifact-checkpoint.json"
+        "docs/mobile/evidence/S06/graphics-quality-20260908/artifact-checkpoint.json",
+        "docs/mobile/evidence/S11/wifi-policy-20260919/globe-a1/result.json"
       ],
       "externalBlockers": []
     },
@@ -1711,11 +1712,12 @@
             "docs/mobile/evidence/S11/content-intake-20260914/result.json",
             "docs/mobile/evidence/S11/content-download-20260914/result.json",
             "docs/mobile/evidence/S11/download-lifecycle-20260914/result.json",
-            "docs/mobile/evidence/S11/storage-management-20260914/result.json"
+            "docs/mobile/evidence/S11/storage-management-20260914/result.json",
+            "docs/mobile/evidence/S11/wifi-policy-20260919/result.json"
           ],
           "commit": null,
           "lastValidatedAt": null,
-          "notes": "Atomic update/rollback. Canonical export/display comes before offline integrity and reviewed English equivalence. Portable QA verification and atomic derived cache are implemented and validated with the real preserved S08 exports. Full application/native transport and activation are not accepted. Signed whole-file network recovery passes real HTTP interruption, browser restart and two-document retry. Native/user-facing integration remains open. Download controls now pause on background/offline and resume explicitly from verified files; retained native observation fixes a browser-reproduced stale foreground state. Native device, complete content and full-stage acceptance remain open. Storage capacity display and explicit incomplete-candidate removal are implemented; real Chrome verifies cross-tab commit protection and offline current/previous reads. Android/dev packaging passes, with native device execution and full criterion acceptance still open."
+          "notes": "Atomic update/rollback. Canonical export/display comes before offline integrity and reviewed English equivalence. Portable QA verification and atomic derived cache are implemented and validated with the real preserved S08 exports. Full application/native transport and activation are not accepted. Signed whole-file network recovery passes real HTTP interruption, browser restart and two-document retry. Native/user-facing integration remains open. Download controls now pause on background/offline and resume explicitly from verified files; retained native observation fixes a browser-reproduced stale foreground state. Native device, complete content and full-stage acceptance remain open. Storage capacity display and explicit incomplete-candidate removal are implemented; real Chrome verifies cross-tab commit protection and offline current/previous reads. Android/dev packaging passes, with native device execution and full criterion acceptance still open. Wi-Fi-only preference and explicit unknown-network handling pass focused tests; native resume invalidates stale connection types and policy changes stop transfers. Current PWA and Android/dev include storage and Wi-Fi controls, with native device/iOS/full-criterion acceptance still open."
         },
         {
           "id": "S11.CONTENT-007",
@@ -1732,11 +1734,12 @@
             "docs/mobile/evidence/S11/install-resume-20260914/result.json",
             "docs/mobile/evidence/S11/content-download-20260914/result.json",
             "docs/mobile/evidence/S11/download-lifecycle-20260914/result.json",
-            "docs/mobile/evidence/S11/storage-management-20260914/result.json"
+            "docs/mobile/evidence/S11/storage-management-20260914/result.json",
+            "docs/mobile/evidence/S11/wifi-policy-20260919/result.json"
           ],
           "commit": null,
           "lastValidatedAt": null,
-          "notes": "Interrupted download recovery. Canonical export/display comes before offline integrity and reviewed English equivalence. Public PWA first-install whole-file retry is implemented and tested. Full all-platform package/download recovery is not accepted. Signed whole-file network recovery passes real HTTP interruption, browser restart and two-document retry. Native/user-facing integration remains open. Download controls now pause on background/offline and resume explicitly from verified files; retained native observation fixes a browser-reproduced stale foreground state. Native device, complete content and full-stage acceptance remain open. Storage capacity display and explicit incomplete-candidate removal are implemented; real Chrome verifies cross-tab commit protection and offline current/previous reads. Android/dev packaging passes, with native device execution and full criterion acceptance still open."
+          "notes": "Interrupted download recovery. Canonical export/display comes before offline integrity and reviewed English equivalence. Public PWA first-install whole-file retry is implemented and tested. Full all-platform package/download recovery is not accepted. Signed whole-file network recovery passes real HTTP interruption, browser restart and two-document retry. Native/user-facing integration remains open. Download controls now pause on background/offline and resume explicitly from verified files; retained native observation fixes a browser-reproduced stale foreground state. Native device, complete content and full-stage acceptance remain open. Storage capacity display and explicit incomplete-candidate removal are implemented; real Chrome verifies cross-tab commit protection and offline current/previous reads. Android/dev packaging passes, with native device execution and full criterion acceptance still open. Wi-Fi-only preference and explicit unknown-network handling pass focused tests; native resume invalidates stale connection types and policy changes stop transfers. Current PWA and Android/dev include storage and Wi-Fi controls, with native device/iOS/full-criterion acceptance still open."
         },
         {
           "id": "S11.CONTENT-009",
@@ -1759,11 +1762,12 @@
           "status": "IN_PROGRESS",
           "evidence": [
             "docs/mobile/evidence/S11/download-lifecycle-20260914/result.json",
-            "docs/mobile/evidence/S11/storage-management-20260914/result.json"
+            "docs/mobile/evidence/S11/storage-management-20260914/result.json",
+            "docs/mobile/evidence/S11/wifi-policy-20260919/result.json"
           ],
           "commit": null,
           "lastValidatedAt": null,
-          "notes": "Offline and slow network cannot create endless loader or data corruption. Feature readiness is checked again in moderation against the exact candidate and localized dossier. Download controls now pause on background/offline and resume explicitly from verified files; retained native observation fixes a browser-reproduced stale foreground state. Native device, complete content and full-stage acceptance remain open. Storage capacity display and explicit incomplete-candidate removal are implemented; real Chrome verifies cross-tab commit protection and offline current/previous reads. Android/dev packaging passes, with native device execution and full criterion acceptance still open."
+          "notes": "Offline and slow network cannot create endless loader or data corruption. Feature readiness is checked again in moderation against the exact candidate and localized dossier. Download controls now pause on background/offline and resume explicitly from verified files; retained native observation fixes a browser-reproduced stale foreground state. Native device, complete content and full-stage acceptance remain open. Storage capacity display and explicit incomplete-candidate removal are implemented; real Chrome verifies cross-tab commit protection and offline current/previous reads. Android/dev packaging passes, with native device execution and full criterion acceptance still open. Wi-Fi-only preference and explicit unknown-network handling pass focused tests; native resume invalidates stale connection types and policy changes stop transfers. Current PWA and Android/dev include storage and Wi-Fi controls, with native device/iOS/full-criterion acceptance still open."
         },
         {
           "id": "S11.MOD-045",
@@ -1841,11 +1845,12 @@
           "id": "S11.UX-006",
           "status": "IN_PROGRESS",
           "evidence": [
-            "docs/mobile/evidence/S11/download-lifecycle-20260914/result.json"
+            "docs/mobile/evidence/S11/download-lifecycle-20260914/result.json",
+            "docs/mobile/evidence/S11/wifi-policy-20260919/result.json"
           ],
           "commit": null,
           "lastValidatedAt": null,
-          "notes": "All loading/empty/error/offline states. Shared feature presentation precedes integrated RU/EN layout, recovery and accessibility validation. Download controls now pause on background/offline and resume explicitly from verified files; retained native observation fixes a browser-reproduced stale foreground state. Native device, complete content and full-stage acceptance remain open."
+          "notes": "All loading/empty/error/offline states. Shared feature presentation precedes integrated RU/EN layout, recovery and accessibility validation. Download controls now pause on background/offline and resume explicitly from verified files; retained native observation fixes a browser-reproduced stale foreground state. Native device, complete content and full-stage acceptance remain open. Wi-Fi-only preference and explicit unknown-network handling pass focused tests; native resume invalidates stale connection types and policy changes stop transfers. Current PWA and Android/dev include storage and Wi-Fi controls, with native device/iOS/full-criterion acceptance still open."
         }
       ],
       "lastGreenCommands": [
@@ -1876,7 +1881,15 @@
         "docs/mobile/evidence/S11/storage-management-20260914/compile-android.ps1",
         "docs/mobile/evidence/S11/storage-management-20260914/verify-ios-privacy.ps1",
         "docs/mobile/evidence/S11/storage-management-20260914/build-android.ps1 -expectedSource c0dba72eb23f48eb6e1a0ea92a44e8cd75e4107c",
-        "node docs/mobile/evidence/S11/storage-management-20260914/preserve-android.mjs"
+        "node docs/mobile/evidence/S11/storage-management-20260914/preserve-android.mjs",
+        "node docs/mobile/evidence/S11/wifi-policy-20260919/run-checks.mjs unit a1",
+        "node docs/mobile/evidence/S11/wifi-policy-20260919/run-checks.mjs browser a1",
+        "node docs/mobile/evidence/S11/wifi-policy-20260919/run-checks.mjs globe a1",
+        "node node_modules/vitest/vitest.mjs run src/host/HostPlatformServices.test.ts src/platform/adapters/web/WebPlatformAdapter.test.ts --maxWorkers=2",
+        "node node_modules/typescript/bin/tsc --noEmit",
+        "node docs/mobile/evidence/S11/wifi-policy-20260919/run-pwa.mjs 7f6f280256d16e33901e65826814adb8401ed5c2",
+        "docs/mobile/evidence/S11/wifi-policy-20260919/build-android.ps1 -expectedSource 7f6f280256d16e33901e65826814adb8401ed5c2",
+        "node docs/mobile/evidence/S11/wifi-policy-20260919/preserve-android.mjs"
       ],
       "artifacts": [
         "docs/mobile/evidence/S11/install-resume-20260914/entry.json",
@@ -1892,7 +1905,10 @@
         "docs/mobile/evidence/S11/download-lifecycle-20260914/result.json",
         "docs/mobile/evidence/S11/download-lifecycle-20260914/pwa-a1/result.json",
         "docs/mobile/evidence/S11/storage-management-20260914/result.json",
-        "docs/mobile/evidence/S11/storage-management-20260914/android-a1/result.json"
+        "docs/mobile/evidence/S11/storage-management-20260914/android-a1/result.json",
+        "docs/mobile/evidence/S11/wifi-policy-20260919/result.json",
+        "docs/mobile/evidence/S11/wifi-policy-20260919/pwa-a1/result.json",
+        "docs/mobile/evidence/S11/wifi-policy-20260919/android-a1/result.json"
       ],
       "externalBlockers": []
     },
@@ -10693,7 +10709,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Continue S11 with the Wi-Fi-only download preference and truthful network-type capabilities, following document18 and existing platform lifetime services. Keep unknown network types explicit; preserve whole-file resume, protected current/previous/bootstrap, one canonical globe and equal RU/EN controls. Reuse the current 301 unit and 6 Chrome cases when relevant inputs are unchanged. Android/dev 3144732d now includes lifecycle and storage controls but has no installed-device/process-death evidence; iOS source and privacy XML are prepared but uncompiled. PWA c6c50755 predates storage management; refresh after the next bounded Web integration slice. Keep production descriptors/trust empty and QA bytes inactive. D107 final owner archive synchronization stays deferred. No public CI upload, deploy, merge or store action.",
+    "nextAction": "Continue S11 optional-package uninstall: saved optional packages currently cannot be removed. Add a separately authorized optional-package operation, keeping incomplete-candidate discard and mandatory bootstrap protection unchanged. Use trusted classification, exact selection/transfer locking and fail-closed concurrent update handling, with equal RU/EN controls. Preserve the verified Wi-Fi source and current PWA d1e90c35 / Android b2f77958 artifacts; rerun only checks affected by the next change. Native installed-device/process-death and iOS compilation remain open. Production descriptors/trust stay empty and QA bytes inactive. D107 final owner archive synchronization stays deferred. No public CI upload, deploy, merge or store action.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -10728,7 +10744,10 @@
       "docs/mobile/evidence/S11/download-lifecycle-20260914/result.json",
       "docs/mobile/evidence/S11/download-lifecycle-20260914/pwa-a1/result.json",
       "docs/mobile/evidence/S11/storage-management-20260914/result.json",
-      "docs/mobile/evidence/S11/storage-management-20260914/android-a1/result.json"
+      "docs/mobile/evidence/S11/storage-management-20260914/android-a1/result.json",
+      "docs/mobile/evidence/S11/wifi-policy-20260919/result.json",
+      "docs/mobile/evidence/S11/wifi-policy-20260919/pwa-a1/result.json",
+      "docs/mobile/evidence/S11/wifi-policy-20260919/android-a1/result.json"
     ],
     "commands": [
       "node scripts/mobile/verify-requirements.mjs",
@@ -10740,7 +10759,8 @@
       "Unchanged shared invariants and S01-S02 source contracts already fully read. Read new S03 routed documents before implementation.",
       "S02 full regression3139, final narrow259 and browser13 passed; rerun only checks justified by S03 changes.",
       "Global ICU/content/native/package/RC requirements remain incomplete; no approval or release inferred.",
-      "Storage source c0dba72e: 301 units, 6 Chrome cases, type/platform checks and Android 3144732d binary/copy audit passed. Tests/browser callbacks are not installed native execution."
+      "Storage source c0dba72e: 301 units, 6 Chrome cases, type/platform checks and Android 3144732d binary/copy audit passed. Tests/browser callbacks are not installed native execution.",
+      "Wi-Fi source 7f6f2802: 279 focused units and 6 Chrome cases passed; type-only Navigator fix and LF normalization emit identical JavaScript. PWA d1e90c35 and Android b2f77958 strict audits/exact copies passed. Native callback fixtures do not establish installed-device execution."
     ]
   },
   "requirementsHash": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732",
@@ -12299,6 +12319,55 @@
       },
       "nativeDeviceTested": false,
       "iosCompiled": false,
+      "stageAccepted": false,
+      "releaseReady": false
+    },
+    "s11WifiPolicy": {
+      "status": "WIFI_POLICY_AND_GLOBE_RECOVERY_WITH_PWA_ANDROID_ARTIFACTS_VALIDATED",
+      "evidence": "docs/mobile/evidence/S11/wifi-policy-20260919/result.json",
+      "sha256": "ced3712f9940d667e57a43b08d3bd718a81075add27c894b2293dd961a27f360",
+      "sourceCommit": "7f6f280256d16e33901e65826814adb8401ed5c2",
+      "passingUnitCases": 279,
+      "actualChromeCases": 6,
+      "runtimeInputsCurrent": true,
+      "stageAccepted": false,
+      "releaseReady": false
+    },
+    "s11WifiPwa": {
+      "status": "BUILD_STRICT_AUDIT_AND_EXACT_COPY_PASSED",
+      "evidence": "docs/mobile/evidence/S11/wifi-policy-20260919/pwa-a1/result.json",
+      "sha256": "d564082ca2b2073de7b74560de673223a79509b45312fdacf62423a8cb005749",
+      "sourceCommit": "7f6f280256d16e33901e65826814adb8401ed5c2",
+      "buildId": "d1e90c358033a6236f33a267749f14bfd124d4849d47d248369e1c4349b58a9d",
+      "artifact": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s11-wifi/pwa-d1e90c35",
+        "files": 1422,
+        "bytes": 74232966,
+        "artifactSha256": "f1837d667b7070fd7586463b1cc37e8005111c1bc3ea9a6c02fbd1df9f6c6576",
+        "exactCopiesVerified": true
+      },
+      "nativeDeviceTested": false,
+      "stageAccepted": false,
+      "releaseReady": false
+    },
+    "s11WifiAndroid": {
+      "status": "BUILD_STRICT_AUDIT_AND_EXACT_COPY_PASSED",
+      "evidence": "docs/mobile/evidence/S11/wifi-policy-20260919/android-a1/result.json",
+      "sha256": "986c075d8a4951b25d571de3be0f5d1cd12a3395d8ff9ffe234a63bc416d2d61",
+      "sourceCommit": "7f6f280256d16e33901e65826814adb8401ed5c2",
+      "buildId": "b2f77958608645fb540d75e0563ba043a4767a4990a0f7af5e02322e500ca954",
+      "artifact": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s11-wifi/android-b2f77958/runtime",
+        "sha256": "79f2055d4813a5969cbc0404997c54afe728f60c620b8857dbf3674737eb9f5d",
+        "files": 1403,
+        "bytes": 72308372
+      },
+      "apk": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s11-wifi/android-b2f77958/app-dev-debug.apk",
+        "bytes": 67587888,
+        "sha256": "0ace08af7357924e4348ee8044b0b64b9eca63a499eb9a3fed37d2bd736a4f06"
+      },
+      "nativeDeviceTested": false,
       "stageAccepted": false,
       "releaseReady": false
     }

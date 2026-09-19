@@ -1,0 +1,7 @@
+{
+  "file": "src/platform/adapters/web/WebPlatformAdapter.ts",
+  "beforeSha256": "d7d5d0b0723f6a6bb8bd24a31b67425ad8fbc3c6d030a3a7e1f963884d987a61",
+  "afterSha256": "4964d8c593ed70a8c775b2ce7fcf80858c811231b9bedf8ec62fb32f5b5192a2",
+  "emittedJavaScriptIdentical": true,
+  "reason": "DOM Navigator omits the optional Network Information extension; explicitly type the existing structural capability"
+}

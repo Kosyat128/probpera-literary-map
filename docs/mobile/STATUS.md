@@ -1,3 +1,20 @@
+<!-- s11-wifi-policy-20260919:begin -->
+S11 Wi-Fi-only preference, truthful network types and interrupted globe-gesture recovery
+are validated from source 7f6f2802: 279 focused unit cases, 6 actual Chrome cases,
+final TypeScript and platform-boundary checks passed. Unknown network types cannot
+start Wi-Fi-only transfers; native resume clears stale Wi-Fi and continuation is explicit.
+RU/EN preference survives cold offline PWA launch; narrow-screen screenshots inspected.
+Evidence: evidence/S11/wifi-policy-20260919/result.json.
+Current PWA d1e90c35 and Android/dev b2f77958 include storage, lifecycle and Wi-Fi controls.
+Exact artifacts and previous versions are preserved on D: under s11-wifi / s11-storage.
+Android APK: 67,587,888 bytes; SHA256 0ace08af7357924e4348ee8044b0b64b9eca63a499eb9a3fed37d2bd736a4f06.
+Runtime identity/binary checks passed; native installed-device/process-death execution and
+iOS compilation remain open. Only S00-S02 accepted; S03 is first open, releaseReady false.
+Next: separately authorized saved optional-package uninstall, with mandatory bootstrap
+protection and safe concurrent-update handling. QA content remains inactive; production
+descriptors/trust empty. D107 final owner archive sync and external release gates remain.
+<!-- s11-wifi-policy-20260919:end -->
+
 <!-- s11-storage-management-20260914:begin -->
 S11 storage controls are validated from source c0dba72e: 301 unit cases, 6 actual Chrome
 cases, TypeScript/platform checks and Android compilation passed. RU/EN shows browser
