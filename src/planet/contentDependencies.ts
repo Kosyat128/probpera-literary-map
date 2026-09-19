@@ -21,6 +21,12 @@ function validEntity(entity: ContentEntityRef): boolean {
     typeof value === "string" && value.length > 0 && value.length <= 256 && value === value.trim() && !/[\u0000-\u001f\u007f]/u.test(value));
 }
 
+/** Shared identity validation for candidate units and package dependency IDs. */
+export function validContentUnitIdentity(unit: Pick<ContentCandidateUnit, "id" | "entityRef" | "field" | "locale">): boolean {
+  return Boolean(unit && validEntity(unit.entityRef) && locales.includes(unit.locale)
+    && fields[unit.entityRef.kind].includes(unit.field) && unit.id === contentUnitId(unit.entityRef, unit.field, unit.locale));
+}
+
 function checkedUnits(snapshot: ContentCandidateSnapshot): Map<string, ContentCandidateUnit> {
   if (!snapshot || snapshot.schemaVersion !== 1 || snapshot.contract !== "literary-planet-content-candidate-v1"
     || !/^[a-f0-9]{40}$/u.test(snapshot.sourceCommit) || snapshot.namespace !== "adult" || snapshot.releaseReady !== false
@@ -30,8 +36,7 @@ function checkedUnits(snapshot: ContentCandidateSnapshot): Map<string, ContentCa
   }
   const byId = new Map<string, ContentCandidateUnit>();
   for (const unit of snapshot.units) {
-    if (!unit || !validEntity(unit.entityRef) || !locales.includes(unit.locale) || !fields[unit.entityRef.kind].includes(unit.field)
-      || unit.id !== contentUnitId(unit.entityRef, unit.field, unit.locale) || byId.has(unit.id)
+    if (!unit || !validContentUnitIdentity(unit) || byId.has(unit.id)
       || typeof unit.text !== "string" || !unit.text.trim() || unit.text.length > 100_000 || unit.contentHash !== contentTextHash(unit.text)
       || !bases.has(unit.publicationBasis) || ![null, "utf8-sha256", "writer-biography-review-v1"].includes(unit.sourceHashContract)
       || [unit.observedRuSourceHash, unit.reviewedRuSourceHash].some(hash => hash !== null && !hashPattern.test(hash))
