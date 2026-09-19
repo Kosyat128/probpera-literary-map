@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S11/globe-recovery-20260919/playwright.config.mjs"
+  ],
+  "startedAt": "2026-09-19T15:21:41.132Z",
+  "durationMs": 14314,
+  "exitCode": 0,
+  "logs": {
+    "stdout": {
+      "text": "\nRunning 1 test using 1 worker\n\n\n\n[1/1] tests\\host\\native-planet.spec.mjs:1082:1 › WebGL context recovery retains the canonical globe, camera pose and RUEN selection\n  1 passed (13.7s)\n",
+      "sha256": "7de0bebc471c9acd24a0e2f0499adcc27d8f5f399bcb298c6c22204a0820e072"
+    },
+    "stderr": {
+      "text": "(node:8828) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "sha256": "8ac638a6e7603a1c76609a5a51ffd5645c141c39d5128c970f877428ced59d80"
+    }
+  }
+}

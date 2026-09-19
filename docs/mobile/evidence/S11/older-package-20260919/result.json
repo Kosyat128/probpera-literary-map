@@ -1,0 +1,57 @@
+{
+  "sourceCommit": "f2de8479e0e8522dbd3780b32951c83aa2d148cf",
+  "recordedAt": "2026-09-19T15:25:35.159Z",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "nativeExecutionVerified": false,
+  "iosCompiled": false,
+  "productionActionsPerformed": false,
+  "pass": true,
+  "status": "PREVIOUS_OPTIONAL_PACKAGE_SOURCE_VALIDATED",
+  "passingUnitCases": 138,
+  "actualChromeCases": 2,
+  "runs": [
+    {
+      "path": "docs/mobile/evidence/S11/older-package-20260919/unit-a1/result.json",
+      "sha256": "aa0bc66cefc9b986de8d15fd45c9efa5d56c3b30d4369775d5fd6c89e9da84a2"
+    },
+    {
+      "path": "docs/mobile/evidence/S11/older-package-20260919/browser-a1/result.json",
+      "sha256": "fe0219eaf85be3800697f0acae6ddae2621e794b2fff48803b2ce6547a7ab1e9"
+    },
+    {
+      "path": "docs/mobile/evidence/S11/older-package-20260919/browser-a2/result.json",
+      "sha256": "218152eed6a701e025993fcebd85062f11350ab6ceb2d56f5fe943d3a6974ccb"
+    }
+  ],
+  "typecheck": {
+    "path": "docs/mobile/evidence/S11/reading-library-20260919/static-a2/result.json",
+    "sha256": "5e2a67360345f3dbc9ce69197150046830df8d2d0932ff68b388e9573f23fae6"
+  },
+  "checks": {
+    "previousSelectedVersionDisplayed": true,
+    "exactSavedVersionConfirmed": true,
+    "mandatoryPackagesProtected": true,
+    "rollbackBehindUnknownCurrentProtected": true,
+    "offlineRetirementRestored": true,
+    "explicitOfferedVersionInstall": true
+  },
+  "preservedFailure": {
+    "attempt": "browser-a1",
+    "failedBeforeAppAssertions": true,
+    "error": "CacheStorage.open Unexpected internal error while seeding the second Chrome profile",
+    "correction": "Shortened only the second temporary Chrome profile prefix from optional-previous- to ov-; reran only that case in browser-a2.",
+    "firstPassingCaseReused": true,
+    "implementationInputsIdenticalAcrossBothRuns": true
+  },
+  "screenshotsInspectedAtOriginalResolution": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s11-older-package/browser-a2/optional-uninstall-a-saved-0f6c2-optional-catalogue-advances/optional-previous-confirm-ru.png",
+      "sha256": "c74b99028575bd55d27a8bc38a7ddfd51c0db94ca3a42aeb2fc3112ea2885e05"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s11-older-package/browser-a2/optional-uninstall-a-saved-0f6c2-optional-catalogue-advances/optional-previous-confirm-en.png",
+      "sha256": "3d170d3db1a0ff219c787c13050bab29c6c6f61df9c23771fe72bfdbad184a16"
+    }
+  ]
+}

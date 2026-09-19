@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S11/reading-library-20260919/playwright.config.mjs"
+  ],
+  "startedAt": "2026-09-19T15:16:38.436Z",
+  "durationMs": 3234,
+  "exitCode": 0,
+  "logs": {
+    "stdout": {
+      "text": "\nRunning 1 test using 1 worker\n\n\n\n[1/1] tests\\pwa\\reading-library.spec.mjs:17:1 › reading library executes explicit mutations once and isolates local intent from late remote accounts\n  1 passed (2.5s)\n",
+      "sha256": "6dfa67e23d430bbbf191ccb8f2ea217c1200d4f19f19fc0b31fc1b16a77a51b0"
+    },
+    "stderr": {
+      "text": "(node:8792) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "sha256": "7587d7f501df972b92ddbb9cbf934d6aa9cb011b84ab9c39511661d1ea895593"
+    }
+  }
+}

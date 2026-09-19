@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S11/reader-progress-20260919/playwright.config.mjs"
+  ],
+  "startedAt": "2026-09-19T15:04:18.495Z",
+  "durationMs": 2299,
+  "exitCode": 0,
+  "logs": {
+    "stdout": {
+      "text": "\nRunning 1 test using 1 worker\n\n\n\n[1/1] tests\\pwa\\reading-progress.spec.mjs:11:1 › reading progress survives delayed hydration and article changes without crossing account boundaries\n  1 passed (1.7s)\n",
+      "sha256": "46346bf631a8c7ce9dec98541f0e29c0961dfede2a5c94b554a022aec0480eba"
+    },
+    "stderr": {
+      "text": "(node:7668) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "sha256": "95b525edbc9a30ecfcf6150061c1411fb766c55b3d78cdec5e929629d547eec8"
+    }
+  }
+}

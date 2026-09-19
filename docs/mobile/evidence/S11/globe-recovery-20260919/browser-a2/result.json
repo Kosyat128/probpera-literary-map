@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "mode": "browser",
+  "startedAt": "2026-09-19T15:16:37.632Z",
+  "endedAt": "2026-09-19T15:17:05.939Z",
+  "sourceBase": "b41c450b84b5fb01a543c48926e80d46969ce915",
+  "sourceInputs": [
+    {
+      "path": "docs/mobile/evidence/S11/globe-recovery-20260919/playwright.config.mjs",
+      "sha256": "20614eebde6be1fe3bb1a15ab92eb5964fc0503b07e5e955e4c00856d90130eb"
+    },
+    {
+      "path": "docs/mobile/evidence/S11/globe-recovery-20260919/run-checks.mjs",
+      "sha256": "43cc86d66afa2dab9adb7945cdc43c14b73c066490230634bb0ab9ec5032c4d1"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+    },
+    {
+      "path": "package.json",
+      "sha256": "90b392c205754f838b8bc7c4475bd475936be1078561bb218c437d151177869f"
+    },
+    {
+      "path": "src/components/GlobeCameraRig.tsx",
+      "sha256": "6938d120c7a49248398b385640cc77d96c9f3b33cbd6c3b4ef9881ef89e2ec19"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "sha256": "a4563ab1cc6d4e04df0d16d33f51a7aa8b1aa009c0bf0471951eb5908c35b69d"
+    },
+    {
+      "path": "src/components/globePerformance.test.ts",
+      "sha256": "52512346b7785b7da469e58b1e3d5407ee1ab61d1d2828683b10e71ebcb8a2bc"
+    },
+    {
+      "path": "src/components/globePerformance.ts",
+      "sha256": "7585b7ffb9816ac015e87bc2718594dc80a392374e56626a418e1d40b70dacc2"
+    },
+    {
+      "path": "src/host/NativePlanetLaunch.tsx",
+      "sha256": "42fa6de0af7552b2bd6b819fa34c06cb21d5164f75576fb92f33a432aac17680"
+    },
+    {
+      "path": "tests/host/native-planet.spec.mjs",
+      "sha256": "93f696036a02b0b989cb75f17f2fc600c247849d4d8bbfc9df5a00bcaf54d9a2"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "8d51a8c9266fe83bf17c076b51672753b3750a17520cd0d2c28a90cb8b21e0d6"
+    },
+    {
+      "path": "vitest.config.ts",
+      "sha256": "5c1e90985e77b35599e5bdaf77c74a1166949ec9c4f45d1c5f926c3f53bef90e"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "executions": [
+    {
+      "name": "browser",
+      "exitCode": 1,
+      "durationMs": 28236
+    }
+  ],
+  "tests": {
+    "passed": 0,
+    "failed": 1,
+    "skipped": 0,
+    "flaky": 0,
+    "errors": []
+  },
+  "pass": false,
+  "releaseReady": false,
+  "deviceTested": false,
+  "productionActivation": false
+}

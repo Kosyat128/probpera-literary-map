@@ -1,0 +1,38 @@
+{
+  "sourceCommit": "f2de8479e0e8522dbd3780b32951c83aa2d148cf",
+  "recordedAt": "2026-09-19T15:25:35.159Z",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "nativeExecutionVerified": false,
+  "iosCompiled": false,
+  "productionActionsPerformed": false,
+  "pass": true,
+  "status": "READING_LIBRARY_SOURCE_VALIDATED",
+  "passingUnitCases": 12,
+  "actualChromeCases": 1,
+  "runs": [
+    {
+      "path": "docs/mobile/evidence/S11/reading-library-20260919/unit-a2/result.json",
+      "sha256": "1ad0470e20b8c6db6a8fcf632db005b106d34e9c49d6c22a2e908efa0262b209"
+    },
+    {
+      "path": "docs/mobile/evidence/S11/reading-library-20260919/browser-a2/result.json",
+      "sha256": "f9ba0e1be3c12a6ece58ce610c41e1aae24b2ff880523581686150d7ff864620"
+    },
+    {
+      "path": "docs/mobile/evidence/S11/reading-library-20260919/static-a2/result.json",
+      "sha256": "5e2a67360345f3dbc9ce69197150046830df8d2d0932ff68b388e9573f23fae6"
+    }
+  ],
+  "remoteTransportStubbed": true,
+  "liveDatabaseTested": false,
+  "guestMigrationPerformed": false,
+  "checks": {
+    "executedLazyMutations": true,
+    "identityScopedStorage": true,
+    "lateHydrationFenced": true,
+    "staleRollbackFenced": true,
+    "localDossierProgressPrivate": true,
+    "guestLocalOnly": true
+  }
+}

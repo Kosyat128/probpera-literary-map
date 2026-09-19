@@ -1,0 +1,161 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=docs/mobile/evidence/S11/globe-recovery-20260919/playwright.config.mjs"
+    ],
+    "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S11\\globe-recovery-20260919\\playwright.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/host",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s11-recovery/browser-a1",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/host",
+        "testIgnore": [],
+        "testMatch": [
+          "native-planet.spec.mjs"
+        ],
+        "timeout": 90000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S11\\globe-recovery-20260919\\browser-a1\\playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "native-planet.spec.mjs",
+      "file": "native-planet.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "WebGL context recovery retains the canonical globe, camera pose and RUEN selection",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 21653,
+                  "error": {
+                    "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#atlas .literary-globe').locator('[data-globe-control=\"zoom-in\"]')\u001b[22m\n\u001b[2m    - locator resolved to <button disabled type=\"button\" aria-keyshortcuts=\"+\" data-globe-control=\"zoom-in\" title=\"Увеличить масштаб глобуса\" aria-describedby=\"globe-scale-feedback\" aria-label=\"Увеличить масштаб глобуса. Текущий масштаб 218%\" class=\"ui-icon-button ui-icon-button--md ui-icon-button--dark\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    28 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not enabled\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+                    "stack": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#atlas .literary-globe').locator('[data-globe-control=\"zoom-in\"]')\u001b[22m\n\u001b[2m    - locator resolved to <button disabled type=\"button\" aria-keyshortcuts=\"+\" data-globe-control=\"zoom-in\" title=\"Увеличить масштаб глобуса\" aria-describedby=\"globe-scale-feedback\" aria-label=\"Увеличить масштаб глобуса. Текущий масштаб 218%\" class=\"ui-icon-button ui-icon-button--md ui-icon-button--dark\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    28 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not enabled\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs:1100:59",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs",
+                      "column": 59,
+                      "line": 1100
+                    },
+                    "snippet": "  1098 |     const rotatedPose = await settledCameraPose(original);\n  1099 |     expect(rotatedPose.quaternion).not.toEqual(initialPose.quaternion);\n> 1100 |     await globe.locator('[data-globe-control=\"zoom-in\"]').click();\n       |                                                           ^\n  1101 |     const zoomedPose = await settledCameraPose(original);\n  1102 |     const radius = pose => Math.hypot(...pose.position);\n  1103 |     expect(radius(zoomedPose)).toBeLessThan(radius(rotatedPose));"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs",
+                        "column": 59,
+                        "line": 1100
+                      },
+                      "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#atlas .literary-globe').locator('[data-globe-control=\"zoom-in\"]')\u001b[22m\n\u001b[2m    - locator resolved to <button disabled type=\"button\" aria-keyshortcuts=\"+\" data-globe-control=\"zoom-in\" title=\"Увеличить масштаб глобуса\" aria-describedby=\"globe-scale-feedback\" aria-label=\"Увеличить масштаб глобуса. Текущий масштаб 218%\" class=\"ui-icon-button ui-icon-button--md ui-icon-button--dark\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    28 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not enabled\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n\n  1098 |     const rotatedPose = await settledCameraPose(original);\n  1099 |     expect(rotatedPose.quaternion).not.toEqual(initialPose.quaternion);\n> 1100 |     await globe.locator('[data-globe-control=\"zoom-in\"]').click();\n       |                                                           ^\n  1101 |     const zoomedPose = await settledCameraPose(original);\n  1102 |     const radius = pose => Math.hypot(...pose.position);\n  1103 |     expect(radius(zoomedPose)).toBeLessThan(radius(rotatedPose));\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs:1100:59"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-19T15:15:31.088Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "native-final-failed",
+                      "contentType": "application/json",
+                      "body": "eyJraW5kIjoiY2Fub25pY2FsLW5hdGl2ZS1hcHAtc291cmNlLWluLUNocm9tZSIsInNlYXJjaEZvY3VzRGlhZ25vc3RpY3MiOm51bGwsIm5hdGl2ZVBsdWdpbnMiOiJpbmplY3RlZCBBbmRyb2lkIE9TIGJvdW5kYXJ5OyBQcmVmZXJlbmNlcyBNYXAgcGVyc2lzdHMgb3V0c2lkZSBlYWNoIGRvY3VtZW50IHRocm91Z2ggYSBQbGF5d3JpZ2h0IGJpbmRpbmciLCJhY3R1YWxBcHAiOnRydWUsImFjdHVhbENzcyI6dHJ1ZSwicHVibGljQXNzZXRTZWxlY3Rpb25TaGEyNTYiOiJiMmM3MDZiMWY4OWE4NDRhZjg1MDUxMjAxODRhNWIyZWUxMWYwNDI0N2VkNjc0ZWJmMjlkYTgyNGJkOTc4NTA2Iiwic2VsZWN0ZWRQdWJsaWNBc3NldHMiOjEzNDMsInZpdGVHbG9iVHJhbnNmb3JtIjp7InNvdXJjZSI6InNyYy9jb21wb25lbnRzL0Jvb2tTaGVsZlNjZW5lLnRzeCIsInNvdXJjZVNoYTI1NiI6ImIxZTU3Y2UzNmM3M2RkYTkyNGY4YTgyNDk3YzU5NDc1OTUyNjU4NzRkZjA4NWFiZTExMGU3NGEwMDljNDUxMmEiLCJhdHRlbXB0cyI6WyJwcmltYXJ5IiwicmV0cnkiXSwic2VtYW50aWNzIjoibGF6eSBkZWZhdWx0IGltcG9ydCB3aXRoIGRpc3RpbmN0IHByaW1hcnkvcmV0cnkgcXVlcnkgaWRlbnRpdGllcyJ9LCJidW5kbGVkRmlsZXMiOlt7InBhdGgiOiJhc3NldHMvY291bnRyaWVzLUtGTENVRkYyLmdlb2pzb24iLCJzaGEyNTYiOiI0MDI3MDZiNzMwMDY5ZmI2OTFkMWVjNjA5OGUxM2Q3ZDU5NjcwYTE4MjNkMWZmYjYyNTQ2ZmYwNDVkZjIwMjc5In0seyJwYXRoIjoibmF0aXZlLXBsYW5ldC5qcyIsInNoYTI1NiI6IjY3ZjIxN2YyNGM2NTJhMWUwNzkwMjExYWY5YjdmZTEwMDU4NTRhYzVhN2VlNTZiZmVlYTY5OGQwYzBhOTEyMmUifSx7InBhdGgiOiJhc3NldHMvYnJ1c2gtcGFwZXItY29ybmVycy1WUjNKTDNIUy53ZWJwIiwic2hhMjU2IjoiZDZiNWE4NTI4YTBlOTVhZDU1NWU0YTNmOTNhODg2ZTJjNzQzN2Y1NzgwMjNiNmQyYmNkZWExYjBjZDY3NzFkZiJ9LHsicGF0aCI6ImFzc2V0cy9icnVzaC12aW9sZXQtc3RhZ2UtQTZSQlNXQU4ud2VicCIsInNoYTI1NiI6ImU4Zjc3YTVmMWYyYjczYmE4YWJlYzI5MjFkMGIzMzg4YmY4YTgxOTk0YzAzYjgxMGJlMGQ5ZTY2NGU0M2FhYTMifSx7InBhdGgiOiJhc3NldHMvZWRpdG9yaWFsLXBhcGVyLUxTSzRXM1BXLndlYnAiLCJzaGEyNTYiOiJiNDdkMTcwYmVmYWM3MWIwZjI0OTZhOWQ4MGRkNjhlNWRkOTYwZmQ0MWNiNWZjNDVkNDhjZjBhNDQyY2I5YTY4In0seyJwYXRoIjoiYXNzZXRzL3NlY3Rpb24tcHJpemVzLVI3UFlDTllVLndlYnAiLCJzaGEyNTYiOiIzYjRjZDNlMzgxMTk4ZjBhNzEyMjZmYjQ2MjY4YjI5OGQ5ZmQzNzA2MWFiMDM5ZmY5ZjUzN2ZlY2MzN2QwMmFiIn0seyJwYXRoIjoiYXNzZXRzL2JydXNoLXBhcGVyLWVhc3QtWDZVN0hNTTIud2VicCIsInNoYTI1NiI6IjQwNjdiODMyOGNhNjM4OWJmN2Y2ZWIzOGEzNWY2NmU0MjgxODFmMGNkMzcxODAzNzRjMmQ5YzMwNDE1ZmMwMzEifSx7InBhdGgiOiJhc3NldHMvYnJ1c2gtcGFwZXItc3BsaXQtT0taVFhGT0sud2VicCIsInNoYTI1NiI6IjdjYWMzYzA5NjZhYzEzZmUxZDZlNDYxZDA1MTkyMWU4ZDEyYWQ4YjNiYWI1YzhjODNmMTcxMTcwODI0NmVlN2YifSx7InBhdGgiOiJhc3NldHMvYnJ1c2gtb3JhbmdlLXN0YWdlLUpUWUtUNjZKLndlYnAiLCJzaGEyNTYiOiIzZDE2ZTYzYzhkNzRlMmM3Y2I1MjFhMTZhNGU2Y2VkNWZjMzRkMDg1OTAxNDBiMGQyYzk5M2QyOWVlZTBiNDkzIn0seyJwYXRoIjoibmF0aXZlLXBsYW5ldC5jc3MiLCJzaGEyNTYiOiI4ZDdlNGMxNjQ2NDg1MTJkNDI3ODYzMWRmMmRjOTk2ZmNhNDRjZTcxNzY3NGE3MWI2NDhiZjM5YzgyMDFiMzA5In1dLCJuYXRpdmVEZXZpY2VPYnNlcnZlZCI6ZmFsc2UsInJlbGVhc2VSZWFkeSI6ZmFsc2UsInJ1bnRpbWUiOnsidXJsIjoiaHR0cHM6Ly9uYXRpdmUtcGxhbmV0LnRlc3QvP2NvdW50cnk9dWtyYWluZSZ3cml0ZXI9aHJ5aG9yaWlfc2tvdm9yb2RhIiwibGFuZ3VhZ2UiOiJydSIsImJvb3RzdHJhcEVycm9yIjpudWxsLCJ2aXNpYmxlSGVyb0ZyYW1lcyI6MCwid2VsY29tZUZyYW1lcyI6eyJ2aXNpYmxlIjowLCJiZWZvcmVSZWFsU2NlbmVSZWFkeSI6MCwiZHVyaW5nTGF1bmNoIjowLCJtYXhDYW52YXNDb3VudCI6MX0sInF1aWV0TGFuZ3VhZ2VBY2Nlc3MiOltdLCJmb2N1c1RyYWNlIjpbeyJraW5kIjoiZm9jdXNpbiIsImF0Ijo1Mjk2LCJ0YXJnZXQiOnsidGFnIjoiRElWIiwiaWQiOiIiLCJjbGFzc05hbWUiOiJsaXRlcmFyeS1nbG9iZSBpcy1ob3ZlcmluZyIsImNvbm5lY3RlZCI6dHJ1ZSwiYWN0aW9uIjpudWxsLCJyZWN0Ijp7IngiOjAsInkiOjAsIndpZHRoIjoxMjgwLCJoZWlnaHQiOjgwMH0sImhpZGRlbkFuY2VzdG9ycyI6W119LCJhY3RpdmUiOnsidGFnIjoiRElWIiwiaWQiOiIiLCJjbGFzc05hbWUiOiJsaXRlcmFyeS1nbG9iZSBpcy1ob3ZlcmluZyIsImNvbm5lY3RlZCI6dHJ1ZSwiYWN0aW9uIjpudWxsLCJyZWN0Ijp7IngiOjAsInkiOjAsIndpZHRoIjoxMjgwLCJoZWlnaHQiOjgwMH0sImhpZGRlbkFuY2VzdG9ycyI6W119LCJzZWFyY2hPcGVuIjoiZmFsc2UifV0sIndyaXRlckZvY3VzRGlhZ25vc3RpY3MiOltdLCJmaW5hbEFjdGl2ZUVsZW1lbnQiOnsidGFnIjoiRElWIiwiaWQiOiIiLCJhY3Rpb24iOm51bGx9LCJqb3VybmV5UmFuZG9tSW5wdXQiOm51bGwsIm5hdGl2ZUxpZmVjeWNsZUV2ZW50cyI6W10sImNvdW50cnlTaGVldEV2ZW50cyI6W10sImNvdW50cnlTaGVldE1lYXN1cmVtZW50cyI6W10sImdyYXBoaWNzT2JzZXJ2YXRpb25zIjpbXSwiYXBwZWFyYW5jZU9ic2VydmF0aW9ucyI6W10sImNhbnZhc0NvdW50IjoxLCJkb2N1bWVudENhbnZhc0NvdW50IjoxLCJuYXRpdmUiOlt7InRhZyI6IkRJViIsImlkIjoiIiwiaGlkZGVuIjpmYWxzZSwidmlzaWJsZSI6dHJ1ZSwiYXR0cmlidXRlcyI6eyJkYXRhLXR5cG9ncmFwaHktY29tcG9uZW50IjoibWFnYXppbmUiLCJkYXRhLXBsYW5ldC1yZWFkeSI6InRydWUiLCJkYXRhLXBsYW5ldC1lZGl0aW9uIjoicmFuZC1tY25hbGx5LTE4ODcifSwidGV4dCI6ItCY0L3RgtC10YDQsNC60YLQuNCy0L3QsNGPINGN0L3RhtC40LrQu9C+0L/QtdC00LjRj9Cb0LjRgtC10YDQsNGC0YPRgNC90LDRjyDQv9C70LDQvdC10YLQsNCf0L7QuNGB0LrQpNC40LvRjNGC0YDRiyDQs9C70L7QsdGD0YHQsNCh0LvRg9GH0LDQudC90L7QtSDQv9GD0YLQtdGI0LXRgdGC0LLQuNC1UlVFTtCY0L3RgtC10YDQsNC60YLQuNCy0L3QsNGPINGN0L3RhtC40LrQu9C+0L/QtdC00LjRj9Cb0LjRgtC10YDQsNGC0YPRgNC90LDRjyDQv9C70LDQvdC10YLQsNCS0YvQsdC10YDQuNGC0LUg0YHRgtGA0LDQvdGDINC90LAg0YHRgtCw0YDQuNC90L3QvtC8INC40L3RgtC10YDQsNC60YLQuNCy0L3QvtC8INCz0LvQvtCx0YPRgdC1IC0g0L7RgtC60YDQvtGO0YLRgdGPINC60LDRgNGC0L7Rh9C60Lgg0L/QuNGB0LDRgtC10LvQtdC5LCDQv9GA0L7QuNC30LLQtdC00LXQvdC40Y8g0Lgg0L/RgNC+0LLQtdGA0LXQvdC90LDRjyDRgNC10LTQsNC60YbQuNC+0L3QvdCw0Y8g0YHQv9GA0LDQstC60LAu0J3QsNC50YLQuCDRgdGC0YDQsNC90YMsINC/0LjRgdCw0YLQtdC70Y8g0LjQu9C4INC60L3QuNCz0YPihrXQktGB0LUg0YHRgtGA0LDQvdGLIDIwMNCd0L7QsdC10LvQtdCy0YHQutC40LUg0LvQsNGD0YDQtdCw0YLRiyA0NDEwKyDQsNCy0YLQvtGA0L7QsiA0NNChINGA0LXQsNC70YzQvdGL0LzQuCDQv9C+0YDRgtGA0LXRgtCw0LzQuCAxNTPQodGC0YDQsNC90Ysg0YEg0L/RgNC+0LLQtdGA0LXQvdC90YvQvNC4INC60LDRgNGC0L7Rh9C60LDQvNC4IDE5MNCa0YDRg9C/0L3QtdC50YjQuNC1INCw0YDRhdC40LLRi+KGk9Cj0LrRgNCw0LjQvdCwNDnCsDUw4oCyIE4gwrcgMjnCsDM14oCyIEXQoeKcptCu4pym0JjRgdC/0L7Qu9GM0LfRg9C50YLQtSDRgtC10LrRgdGC0L7QstGL0Lkg0YPQutCw0LfQsNGC0LXQu9GMINGB0YLRgNCw0L0g0L3QuNC20LXQn9Cw0YPQt9Cw0KHQsdGA0L7RgdCY0YHRgtC+0YfQvdC40LrQmNC90YLQtdGA0LDQutGC0LjQstC90YvQuSDQs9C70L7QsdGD0YEgwrcg0YDRg9GH0L3QsNGPINC90LDQstC40LPQsNGG0LjRj9Cc0LDRgdGI0YLQsNCxIDIxOCXQkdC10YXQsNC50LwgwrcgMTQ5MtCR0LXRhdCw0LnQvCDCtyAxNDky0KXQvtC90LTQuNGD0YEgwrcgMTYxNdCl0L7QvdC00LjRg9GBIMK3IDE2MTXQmtC+0YDQvtC90LXQu9C70LggwrcgMTY5N9Ca0L7RgNC+0L3QtdC70LvQuCDCtyAxNjk30KjQtdGA0LXRgCDCtyAxNzAw0KjQtdGA0LXRgCDCtyAxNzAw0JrQsNGB0YHQuNC90LggwrcgMTc5MNCa0LDRgdGB0LjQvdC4IMK3IDE3OTBSYW5kIMK3IDE4ODdSYW5kIMK3IDE4ODdNLTEwMSDCtyAxOTQzTS0xMDEgwrcgMTk0M05BU0EgwrcgQmx1ZSBNYXJibGVOQVNBIMK3IEJsdWUgTWFyYmxlTmF0dXJhbCBFYXJ0aCDCtyAyMDI2TmF0dXJhbCBFYXJ0aCDCtyAyMDI20KLQtdC60YPRidC10LUg0LjQt9C00LDQvdC40LUg0LPQu9C+0LHRg9GB0LDQkdC10YXQsNC50LwgwrcgMTQ5MtCl0L7QvdC00LjRg9GBIMK3IDE2MTXQmtC+0YDQvtC90LXQu9C70LggwrcgMTY5N9Co0LXRgNC10YAgwrcgMTcwMNCa0LDRgdGB0LjQvdC4IMK3IDE3OTBSYW5kIMK3IDE4ODdNLTEwMSDCtyAxOTQzTkFTQSDCtyBCbHVlIE1hcmJsZU5hdHVyYWwgRWFydGggwrcgMjAyNtCY0YHRgtC+0YfQvdC40Log0LjQt9C00LDQvdC40Y9SYW5kIE1jTmFsbHkgJiBDby46INC00LLQtdC90LDQtNGG0LDRgtC40LTRjtC50LzQvtCy0YvQuSDQt9C10LzQvdC+0Lkg0LPQu9C+0LHRg9GBLCAxODg30JDQstGC0L7RgCAvINGB0L7RgdGC0LDQstC40YLQtdC70YxSYW5kIE1jTmFsbHkgJiBDby7QntGA0LjQs9C40L3QsNC70J3QvtCy0YvQuSDQtNCy0LXQvdCw0LTRhtCw0YLQuNC00Y7QudC80L7QstGL0Lkg0LfQtdC80L3QvtC5INCz0LvQvtCx0YPRgdCl0YDQsNC90LjQu9C40YnQtdCe0YLQtNC10Lsg0LPQtdC+0LPRgNCw0YTQuNC4INC4INC60LDRgNGCINCR0LjQsdC70LjQvtGC0LXQutC4INCa0L7QvdCz0YDQtdGB0YHQsNCa0LDRgtCw0LvQvtC20L3QsNGPINC30LDQv9C40YHRjGczMjAxYi5jdDAwMTQxN9Cf0YDQsNCy0LAg0Lgg0YPQutCw0LfQsNC90LjQtSDQuNGB0YLQvtGH0L3QuNC60LDQkdC40LHQu9C40L7RgtC10LrQsCDQmtC+0L3Qs9GA0LXRgdGB0LAg0L7Qv9C40YHRi9Cy0LDQtdGCINGB0LrQsNC9INC+0LHRidC10YHRgtCy0LXQvdC90L7Qs9C+INC00L7RgdGC0L7Rj9C90LjRjyDQutCw0Log0YHQstC+0LHQvtC00L3Ri9C5INC00LvRjyDQuNGB0L/QvtC70YzQt9C+0LLQsNC90LjRjyDQuCDQv9C+0LLRgtC+0YDQvdC+0LPQviDQuNGB0L/QvtC70YzQt9C+0LLQsNC90LjRjy7QntGC0LrRgNGL0YLRjCDQt9Cw0L/QuNGB0Ywg0LjRgdGC0L7Rh9C90LjQutCw0JfQsNC60YDRi9GC0YzQo9C60YDQsNC40L3QsDcg0LDQstGC0L7RgNC+0LIg0LIg0LDRgNGF0LjQstC10KHRgtGA0LDQvdCwINCy0YvQsdGA0LDQvdCwIMK3INC60LDRgNGC0L7Rh9C60LAg0LDRgNGF0LjQstCwINC+0YLQutGA0YvRgtCw0KLRj9C90LjRgtC1INC40LvQuCDQuNGB0L/QvtC70YzQt9GD0LnRgtC1INGB0YLRgNC10LvQutC40JzQsNGB0YjRgtCw0LE6INC60L7Qu9C10YHQviDQuNC70Lgg0LrQvdC+0L/QutC4IMKx0JvQuNGC0LXRgNCw0YLRg9GA0L3Ri9C5INCw0YDRhdC40LJVQdCc0LjRgNCj0LrRgNCw0LjQvdCw0JPRgNC40LPQvtGA0LjQuSDQodC60L7QstC+0YDQvtC00LDQo9C60YDQsNC40L3QsNCb0LjRgtC10YDQsNGC0YPRgNC90L7QtSDQvdCw0YHQu9C10LTQuNC1INGB0YLRgNCw0L3Ri9CQ0YDRhdC40LIg0L7QsdGK0LXQtNC40L3Rj9C10YIgNyDQsNCy0YLQvtGA0L7QsiDQuCDQutC70Y7Rh9C10LLRi9C1INC/0YDQvtC40LfQstC10LTQtdC90LjRjyDQu9C40YLQtdGA0LDRgtGD0YDQvdC+0Lkg0YLRgNCw0LTQuNGG0LjQuCDRgdGC0YDQsNC90Ysu4pyTNyAg0LHQuNC+0LPRgNCw0YTQuNC5INC/0YDQvtGI0LvQuCDRgNC10LTQsNC60YbQuNC+0L3QvdGD0Y4g0L/RgNC+0LLQtdGA0LrRg9CjINC60LDQttC00L7QuSDQsdC40L7Qs9GA0LDRhNC40Lgg0YPQutCw0LfQsNC9INGB0YLQsNGC0YPRgSDQv9GA0L7QstC10YDQutC40KHQu9C10LTQuNGC0Ywg0LfQsCDQvdC+0LLRi9C80Lgg0LzQsNGC0LXRgNC40LDQu9Cw0LzQuCDQvtCxINGN0YLQvtC5INGB0YLRgNCw0L3QtTfQsNCy0YLQvtGA0L7QsjDQvdC+0LHQtdC70LXQstGB0LrQuNGFINC70LDRg9GA0LXQsNGC0L7QsjDQv9GA0L7QuNC30LLQtdC00LXQvdC40LnQrdC/0L7RhdC4INC4INC90LDQv9GA0LDQstC70LXQvdC40Y9YVklJSSDQstC10LpYSVgg0LLQtdC6WFgg0LLQtdC6WFhJINCy0LXQutC/0L7RjdC30LjRj9GE0LjQu9C+0YHQvtGE0YHQutCw0Y8g0LvQuNGC0LXRgNCw0YLRg9GA0LDQv9C+0Y3QvNCw0LTRgNCw0LzQsNGA0L7QvNCw0L3Qv9GA0L7Qt9Cw0YDQsNGB0YHQutCw0LfQn9C40YHQsNGC0LXQu9C40JLQsNC70LXRgNC40Lkg0KjQtdCy0YfRg9C6MTkzOS0yMDI10J/QvtC00YLQstC10YDQttC00LXQvdC+INC40YHRgtC+0YfQvdC40LrQsNC80LjihpfQk9GA0LjQs9C+0YDQuNC5INCh0LrQvtCy0L7RgNC+0LTQsDE3MjItMTc5NNCf0L7QtNGC0LLQtdGA0LbQtNC10L3QviDQuNGB0YLQvtGH0L3QuNC60LDQvNC44oaX0JjQstCw0L0g0JrQvtGC0LvRj9GA0LXQstGB0LrQuNC5MTc2OS0xODM40J/QvtC00YLQstC10YDQttC00LXQvdC+INC40YHRgtC+0YfQvdC40LrQsNC80LjihpfQmNCy0LDQvSDQpNGA0LDQvdC60L4xODU2LTE5MTbQn9C+0LTRgtCy0LXRgNC20LTQtdC90L4g0LjRgdGC0L7Rh9C90LjQutCw0LzQuOKGl9Cb0LXRgdGPINCj0LrRgNCw0LjQvdC60LAxODcxLTE5MTPQn9C+0LTRgtCy0LXRgNC20LTQtdC90L4g0LjRgdGC0L7Rh9C90LjQutCw0LzQuOKGl9Cc0LjRhdCw0LjQuyDQmtC+0YbRjtCx0LjQvdGB0LrQuNC5MTg2NC0xOTEz0J/QvtC00YLQstC10YDQttC00LXQvdC+INC40YHRgtC+0YfQvdC40LrQsNC80LjihpfQotCw0YDQsNGBINCo0LXQstGH0LXQvdC60L4xODE0LTE4NjHQn9C+0LTRgtCy0LXRgNC20LTQtdC90L4g0LjRgdGC0L7Rh9C90LjQutCw0LzQuOKGl9Ca0LDRgNGC0L7Rh9C60LAg0LDQstGC0L7RgNCwWFZJSUkg0LLQtdC60JPRgNC40LPQvtGA0LjQuSDQodC60L7QstC+0YDQvtC00LAxNzIyLTE3OTTQn9C+0LrQsNC30LDRgtGMINC90LAg0LPQu9C+0LHRg9GB0LXinJPQn9C+0LTRgtCy0LXRgNC20LTQtdC90L4g0LjRgdGC0L7Rh9C90LjQutCw0LzQuNCY0YHRgtC+0YfQvdC40LrQuCDQt9Cw0YTQuNC60YHQuNGA0L7QstCw0L3RiyDCtyAy0JHQuNC+0LPRgNCw0YTQuNGP0J/RgNC+0LjQt9Cy0LXQtNC10L3QuNGPINC4INC90LDQs9GA0LDQtNGL0JjRgdGC0L7Rh9C90LjQutC4INC4INC80LDRgtC10YDQuNCw0LvRi9Ch0LvQtdC00LjRgtGMINC30LAg0L3QviJ9LHsidGFnIjoiU0VDVElPTiIsImlkIjoiIiwiaGlkZGVuIjp0cnVlLCJ2aXNpYmxlIjpmYWxzZSwiYXR0cmlidXRlcyI6eyJoaWRkZW4iOiIiLCJhcmlhLWxhYmVsbGVkYnkiOiJuYXRpdmUtY29sbGVjdGlvbi10aXRsZSJ9LCJ0ZXh0Ijoi0JrQvtC70LvQtdC60YbQuNGP0J3QsNGB0YLRgNC+0LnQutC4INCz0YDQsNGE0LjQutC40JLRi9Cx0LXRgNC40YLQtSDQtNC10YLQsNC70LjQt9Cw0YbQuNGOINC40LfQvtCx0YDQsNC20LXQvdC40Y8g0Lgg0LfQstGR0LfQtNC90L7Qs9C+INC90LXQsdCwLiDQodGC0YDQsNC90YssINC60L3QuNCz0Lgg0Lgg0YHRgtC40LvRjCDQs9C70L7QsdGD0YHQsCDRgdC+0YXRgNCw0L3Rj9GO0YLRgdGPINC/0YDQuCDQu9GO0LHQvtC8INC60LDRh9C10YHRgtCy0LUu0JrQsNGH0LXRgdGC0LLQviDQs9GA0LDRhNC40LrQuNCS0YvRgdC+0LrQvtC10KHQsNC80L7QtSDRh9GR0YLQutC+0LUg0LjQt9C+0LHRgNCw0LbQtdC90LjQtSDQuCDQsdC+0LvRjNGI0LUg0LfQstGR0LfQtC4g0JLRi9Cx0YDQsNC90L4g0L/QviDRg9C80L7Qu9GH0LDQvdC40Y47INGC0YDQtdCx0YPQtdGCINCx0L7Qu9GM0YjQtSDRgNC10YHRg9GA0YHQvtCyLtCh0LHQsNC70LDQvdGB0LjRgNC+0LLQsNC90L3QvtC10KfRg9GC0Ywg0L3QuNC20LUg0YfRkdGC0LrQvtGB0YLRjCDQuNC30L7QsdGA0LDQttC10L3QuNGPINC4INC80LXQvdGM0YjQtSDQt9Cy0ZHQt9C0LCDRh9GC0L7QsdGLINGB0L3QuNC30LjRgtGMINC90LDQs9GA0YPQt9C60YMg0L3QsCDRg9GB0YLRgNC+0LnRgdGC0LLQvi7QrdC60L7QvdC+0LzQvdC+0LXQndC40LbQtSDRh9GR0YLQutC+0YHRgtGMINC40LfQvtCx0YDQsNC20LXQvdC40Y8sINC80LXQvdGM0YjQtSDQt9Cy0ZHQt9C0INC4INGD0L/RgNC+0YnRkdC90L3Ri9C5INGE0L7QvSDQvdC10LHQsC4g0JzQuNC90LjQvNCw0LvRjNC90LDRjyDQtNC10YLQsNC70LjQt9Cw0YbQuNGPINGB0YDQtdC00Lgg0Y3RgtC40YUg0YDQtdC20LjQvNC+0LIu0KHQuNGB0YLQtdC80L3QsNGPINC90LDRgdGC0YDQvtC50LrQsCDRg9C80LXQvdGM0YjQtdC90LjRjyDQtNCy0LjQttC10L3QuNGPINC00LXQudGB0YLQstGD0LXRgiDQv9GA0Lgg0LvRjtCx0L7QvCDQutCw0YfQtdGB0YLQstC1LtCX0LDQs9GA0YPQt9C60LjQl9Cw0LPRgNGD0LbQsNGC0Ywg0YLQvtC70YzQutC+INC/0L4gV2ktRmnQotC40L8g0YHQtdGC0Lgg0L3QtSDQvtC/0YDQtdC00LXQu9GR0L0uINCX0LDQs9GA0YPQt9C60LAg0YLQvtC70YzQutC+INC/0L4gV2ktRmkg0LTQvtGB0YLRg9C/0L3QsCDQv9C+0YHQu9C1INC/0L7QtNGC0LLQtdGA0LbQtNC10L3QuNGPINGB0L7QtdC00LjQvdC10L3QuNGPINC/0LvQsNGC0YTQvtGA0LzQvtC5LiDQn9GA0Lgg0YHQvNC10L3QtSDRgdC10YLQuCDQt9Cw0LPRgNGD0LfQutCwINC/0YDQuNC+0YHRgtCw0L3QsNCy0LvQuNCy0LDQtdGC0YHRjy4g0J/RgNC+0LTQvtC70LbQtdC90LjQtSDigJQg0L/QviDQstCw0YjQtdC5INC60L7QvNCw0L3QtNC1LtCU0L7RgdGC0YPQv9C90L7QtSDQvNC10YHRgtC+INC10YnRkSDQvdC1INC/0YDQvtCy0LXRgNC10L3Qvi7Qn9GA0L7QstC10YDQuNGC0Ywg0LzQtdGB0YLQvtCU0L7Qv9C+0LvQvdC40YLQtdC70YzQvdGL0YUg0L/QsNC60LXRgtC+0LIg0LTQu9GPINC30LDQs9GA0YPQt9C60Lgg0L/QvtC60LAg0L3QtdGCLtCd0LXQtNCw0LLQvdC+INC+0YLQutGA0YvRgtC+0LXQkNCy0YLQvtGA0JPRgNC40LPQvtGA0LjQuSDQodC60L7QstC+0YDQvtC00LDQkNCy0YLQvtGA0KTRkdC00L7RgCDQnNC40YXQsNC50LvQvtCy0LjRhyDQlNC+0YHRgtC+0LXQstGB0LrQuNC50J7Rh9C40YHRgtC40YLRjCDQuNGB0YLQvtGA0LjRjuKcptCa0L3QuNC20L3Ri9C5INCw0YDRhdC40LIg0LfQsNCz0YDRg9C30LjRgtGB0Y8g0L/RgNC4INC/0YDQuNCx0LvQuNC20LXQvdC40LjQnNC10YHRgtC+INC/0L7Qu9C60Lgg0YPQttC1INC30LDRgNC10LfQtdGA0LLQuNGA0L7QstCw0L3Qviwg0L/QvtGN0YLQvtC80YMg0YHRgtGA0LDQvdC40YbQsCDQvdC1INGB0LTQstC40L3QtdGC0YHRjy4ifV0sIndlbGNvbWUiOltdLCJhcmNoaXZlIjpbeyJ0YWciOiJESVYiLCJpZCI6IiIsImhpZGRlbiI6ZmFsc2UsInZpc2libGUiOmZhbHNlLCJhdHRyaWJ1dGVzIjp7ImRhdGEtbG9hZGluZy1zdGF0dXMiOiJpZGxlIn0sInRleHQiOiLinKbQmtC90LjQttC90YvQuSDQsNGA0YXQuNCyINC30LDQs9GA0YPQt9C40YLRgdGPINC/0YDQuCDQv9GA0LjQsdC70LjQttC10L3QuNC40JzQtdGB0YLQviDQv9C+0LvQutC4INGD0LbQtSDQt9Cw0YDQtdC30LXRgNCy0LjRgNC+0LLQsNC90L4sINC/0L7RjdGC0L7QvNGDINGB0YLRgNCw0L3QuNGG0LAg0L3QtSDRgdC00LLQuNC90LXRgtGB0Y8uIn0seyJ0YWciOiJTRUNUSU9OIiwiaWQiOiJib29rcyIsImhpZGRlbiI6ZmFsc2UsInZpc2libGUiOmZhbHNlLCJhdHRyaWJ1dGVzIjp7ImFyaWEtbGFiZWxsZWRieSI6InN0YWdlNS1ib29rcy1sb2FkaW5nLXRpdGxlIn0sInRleHQiOiLinKbQmtC90LjQttC90YvQuSDQsNGA0YXQuNCyINC30LDQs9GA0YPQt9C40YLRgdGPINC/0YDQuCDQv9GA0LjQsdC70LjQttC10L3QuNC40JzQtdGB0YLQviDQv9C+0LvQutC4INGD0LbQtSDQt9Cw0YDQtdC30LXRgNCy0LjRgNC+0LLQsNC90L4sINC/0L7RjdGC0L7QvNGDINGB0YLRgNCw0L3QuNGG0LAg0L3QtSDRgdC00LLQuNC90LXRgtGB0Y8uIn0seyJ0YWciOiJESVYiLCJpZCI6IiIsImhpZGRlbiI6ZmFsc2UsInZpc2libGUiOmZhbHNlLCJhdHRyaWJ1dGVzIjp7ImFyaWEtbGl2ZSI6InBvbGl0ZSJ9LCJ0ZXh0Ijoi4pym0JrQvdC40LbQvdGL0Lkg0LDRgNGF0LjQsiDQt9Cw0LPRgNGD0LfQuNGC0YHRjyDQv9GA0Lgg0L/RgNC40LHQu9C40LbQtdC90LjQuNCc0LXRgdGC0L4g0L/QvtC70LrQuCDRg9C20LUg0LfQsNGA0LXQt9C10YDQstC40YDQvtCy0LDQvdC+LCDQv9C+0Y3RgtC+0LzRgyDRgdGC0YDQsNC90LjRhtCwINC90LUg0YHQtNCy0LjQvdC10YLRgdGPLiJ9XX0sInNpbXVsYXRlZE5hdGl2ZVByZWZlcmVuY2VzIjp7InByb2JwZXJhLWludGVyZmFjZS1sYW5ndWFnZSI6InJ1IiwicHJvYnBlcmEtcGxhbmV0LXdlbGNvbWUtdjEiOiJjb21wbGV0ZWQiLCJwcm9icGVyYS1wbGFuZXQtcmVjZW50LWFkdWx0LXYxIjoie1widlwiOjEsXCJlbnRyaWVzXCI6W3tcImtpbmRcIjpcIndyaXRlclwiLFwiY291bnRyeUlkXCI6XCJ1a3JhaW5lXCIsXCJ3cml0ZXJJZFwiOlwiaHJ5aG9yaWlfc2tvdm9yb2RhXCIsXCJvcGVuZWRBdFwiOjE3ODk4MzA5Mzg1ODV9LHtcImtpbmRcIjpcIndyaXRlclwiLFwiY291bnRyeUlkXCI6XCJydXNzaWFcIixcIndyaXRlcklkXCI6XCJkb3N0b2V2c2t5XCIsXCJvcGVuZWRBdFwiOjE3ODk4MzA5MzUwMTl9XX0ifSwicHJlZmVyZW5jZU9wZXJhdGlvbnMiOlt7Im9wZXJhdGlvbiI6ImdldCIsImtleSI6InByb2JwZXJhLWludGVyZmFjZS1sYW5ndWFnZSJ9LHsib3BlcmF0aW9uIjoiZ2V0Iiwia2V5IjoicHJvYnBlcmEtcGxhbmV0LXJlY2VudC1hZHVsdC12MSJ9LHsib3BlcmF0aW9uIjoiZ2V0Iiwia2V5IjoicHJvYnBlcmEtcGxhbmV0LXdlbGNvbWUtdjEifSx7Im9wZXJhdGlvbiI6ImdldCIsImtleSI6InByb2JwZXJhLXBsYW5ldC1kb3dubG9hZC1uZXR3b3JrLXYxIn0seyJvcGVyYXRpb24iOiJnZXQiLCJrZXkiOiJwcm9icGVyYS1wbGFuZXQtZ3JhcGhpY3MtcXVhbGl0eS12MSJ9LHsib3BlcmF0aW9uIjoic2V0Iiwia2V5IjoicHJvYnBlcmEtcGxhbmV0LXJlY2VudC1hZHVsdC12MSIsInZhbHVlIjoie1widlwiOjEsXCJlbnRyaWVzXCI6W3tcImtpbmRcIjpcIndyaXRlclwiLFwiY291bnRyeUlkXCI6XCJydXNzaWFcIixcIndyaXRlcklkXCI6XCJkb3N0b2V2c2t5XCIsXCJvcGVuZWRBdFwiOjE3ODk4MzA5MzUwMTl9XX0ifSx7Im9wZXJhdGlvbiI6ImdldCIsImtleSI6InByb2JwZXJhLXBsYW5ldC1yZWNlbnQtYWR1bHQtdjEifSx7Im9wZXJhdGlvbiI6InNldCIsImtleSI6InByb2JwZXJhLXBsYW5ldC1yZWNlbnQtYWR1bHQtdjEiLCJ2YWx1ZSI6IntcInZcIjoxLFwiZW50cmllc1wiOlt7XCJraW5kXCI6XCJ3cml0ZXJcIixcImNvdW50cnlJZFwiOlwidWtyYWluZVwiLFwid3JpdGVySWRcIjpcImhyeWhvcmlpX3Nrb3Zvcm9kYVwiLFwib3BlbmVkQXRcIjoxNzg5ODMwOTM4NTg1fSx7XCJraW5kXCI6XCJ3cml0ZXJcIixcImNvdW50cnlJZFwiOlwicnVzc2lhXCIsXCJ3cml0ZXJJZFwiOlwiZG9zdG9ldnNreVwiLFwib3BlbmVkQXRcIjoxNzg5ODMwOTM1MDE5fV19In0seyJvcGVyYXRpb24iOiJnZXQiLCJrZXkiOiJwcm9icGVyYS1wbGFuZXQtcmVjZW50LWFkdWx0LXYxIn1dLCJicm93c2VyQ2FwYWJpbGl0aWVzIjp7Imhhc1RvdWNoIjpmYWxzZSwiaXNNb2JpbGUiOmZhbHNlLCJyZWR1Y2VkTW90aW9uIjoicmVkdWNlIiwiZGV2aWNlU2NhbGVGYWN0b3IiOjF9LCJlcnJvcnMiOltdLCJjb25zb2xlRXJyb3JzIjpbXSwiZXh0ZXJuYWxSZXF1ZXN0cyI6W10sIm1pc3NpbmdSZXNvdXJjZXMiOltdfQ=="
+                    },
+                    {
+                      "name": "native-final-failed-screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s11-recovery\\browser-a1\\native-planet-WebGL-contex-b695f-era-pose-and-RUEN-selection\\attachments\\native-final-failed-screenshot-404f9c8fa9a45446a1e2e922114bf4e5d490c484.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s11-recovery\\browser-a1\\native-planet-WebGL-contex-b695f-era-pose-and-RUEN-selection\\error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s11-recovery\\browser-a1\\native-planet-WebGL-contex-b695f-era-pose-and-RUEN-selection\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs",
+                    "column": 59,
+                    "line": 1100
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b868e086da1851f16b13-0ac0b11ff2ce5478699f",
+          "file": "native-planet.spec.mjs",
+          "line": 1082,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-19T15:15:30.323Z",
+    "duration": 24429.064000000002,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

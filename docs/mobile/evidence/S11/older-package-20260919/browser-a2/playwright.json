@@ -1,0 +1,122 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=docs/mobile/evidence/S11/older-package-20260919/playwright.config.mjs"
+    ],
+    "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S11\\older-package-20260919\\playwright.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s11-older-package/browser-a2",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "optional-uninstall.spec.mjs"
+        ],
+        "timeout": 90000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S11\\older-package-20260919\\browser-a2\\playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "optional-uninstall.spec.mjs",
+      "file": "optional-uninstall.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "a saved previous version remains removable after the optional catalogue advances",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3134,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-19T15:00:18.267Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "optional-previous-uninstall-result",
+                      "contentType": "application/json",
+                      "body": "ewogICJzb3VyY2VGaXh0dXJlIjogdHJ1ZSwKICAiYWN0dWFsSHR0cEFuZEJyb3dzZXJTdG9yYWdlIjogdHJ1ZSwKICAiaW5zdGFsbGVkTmF0aXZlIjogZmFsc2UsCiAgIm9mZmVyZWRWZXJzaW9uIjogMywKICAic2F2ZWRWZXJzaW9uIjogMiwKICAicmVsZWFzZVJlYWR5IjogZmFsc2UsCiAgInBhc3MiOiB0cnVlLAogICJyZXF1ZXN0cyI6IFsKICAgICJkZXBlbmRlbmN5LWluZGV4Lmpzb24iLAogICAgImVuL2NhdGFsb2cuanNvbiIsCiAgICAicnUvY2F0YWxvZy5qc29uIgogIF0sCiAgInNhdmVkVmVyc2lvbkRpc3BsYXllZEluQm90aExvY2FsZXMiOiB0cnVlLAogICJjb25maXJtYXRpb25SZXRhaW5zVmVyc2lvbkFjcm9zc0xvY2FsZSI6IHRydWUsCiAgIm9mZmxpbmVQcmV2aW91c1ZlcnNpb25SZW1vdmFsIjogdHJ1ZSwKICAicHJldmlvdXNUb21ic3RvbmVSZXN0b3JlZEFmdGVyQnJvd3NlclJlc3RhcnQiOiB0cnVlLAogICJib290c3RyYXBQcmVzZXJ2ZWQiOiB0cnVlLAogICJleHBsaWNpdEN1cnJlbnRWZXJzaW9uRG93bmxvYWQiOiB0cnVlLAogICJhY2Nlc3NpYmlsaXR5VmlvbGF0aW9ucyI6IDAKfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "18349e39dc2fa139a26a-ce3e783ba955238a93cb",
+          "file": "optional-uninstall.spec.mjs",
+          "line": 153,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-19T15:00:17.611Z",
+    "duration": 3848.8710000000005,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

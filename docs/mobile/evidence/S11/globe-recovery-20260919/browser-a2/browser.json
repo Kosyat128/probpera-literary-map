@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S11/globe-recovery-20260919/playwright.config.mjs"
+  ],
+  "startedAt": "2026-09-19T15:16:37.632Z",
+  "durationMs": 28236,
+  "exitCode": 1,
+  "logs": {
+    "stdout": {
+      "text": "\nRunning 1 test using 1 worker\n\n\n\n[1/1] tests\\host\\native-planet.spec.mjs:1082:1 › WebGL context recovery retains the canonical globe, camera pose and RUEN selection\n  1) tests\\host\\native-planet.spec.mjs:1082:1 › WebGL context recovery retains the canonical globe, camera pose and RUEN selection \n\n    Error: expect(locator).toContainText(expected) failed\n\n    Locator: locator('.writer-detail h4')\n    Expected pattern: /Достоевск|Dostoevsk/iu\n    Received string:  \"Hryhorii Skovoroda\"\n    Timeout: 15000ms\n\n    Call log:\n      - Expect \"toContainText\" with timeout 15000ms\n      - waiting for locator('.writer-detail h4')\n        33 × locator resolved to <h4 data-cms-kind=\"text\" data-cms-copy-key=\"\" data-cms-field=\"name\" data-cms-entity=\"writer\" data-cms-label=\"Имя писателя\" data-cms-value=\"Григорий Сковорода\" id=\"writer-biography-ukraine-heading\" data-cms-source-text=\"Григорий Сковорода\" data-cms-entity-id=\"ukraine:hryhorii_skovoroda\" data-cms-key=\"writer.ukraine:hryhorii_skovoroda.name\" data-cms-admin-href=\"/library?country_id=ukraine&writer_id=hryhorii_skovoroda\">Hryhorii Skovoroda</h4>\n           - unexpected value \"Hryhorii Skovoroda\"\n\n\n      328 |   const toggle = page.locator(\".atlas-country-sheet-toggle\");\n      329 |   if (await toggle.isVisible() && await toggle.getAttribute(\"aria-expanded\") === \"false\") await toggle.click();\n    > 330 |   await expect(page.locator(\".writer-detail h4\")).toContainText(/Достоевск|Dostoevsk/iu);\n          |                                                   ^\n      331 | }\n      332 |\n      333 | async function captureEvidence(fixture, testInfo, name, extra = {}) {\n        at showWriter (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs:330:51)\n        at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs:1145:37\n\n    attachment #2: native-context-lost-ru-screenshot (image/png) ───────────────────────────────────\n    D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s11-recovery\\browser-a2\\native-planet-WebGL-contex-b695f-era-pose-and-RUEN-selection\\attachments\\native-context-lost-ru-screenshot-200e0807c721ae13afc54c2ff991ad208785f3c3.png\n    ────────────────────────────────────────────────────────────────────────────────────────────────\n\n    attachment #4: native-final-failed-screenshot (image/png) ──────────────────────────────────────\n    D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s11-recovery\\browser-a2\\native-planet-WebGL-contex-b695f-era-pose-and-RUEN-selection\\attachments\\native-final-failed-screenshot-eb77b2dd0c6534ee51f9e3253a08d8c8b54cb477.png\n    ────────────────────────────────────────────────────────────────────────────────────────────────\n\n    Error Context: D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s11-recovery\\browser-a2\\native-planet-WebGL-contex-b695f-era-pose-and-RUEN-selection\\error-context.md\n\n    Error Context: D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s11-recovery\\browser-a2\\native-planet-WebGL-contex-b695f-era-pose-and-RUEN-selection\\error-context.md\n\n\n  1 failed\n    tests\\host\\native-planet.spec.mjs:1082:1 › WebGL context recovery retains the canonical globe, camera pose and RUEN selection \n",
+      "sha256": "eb3983e23669ac27c4c2eef2cc5f21836b4575d671eca7d78eb64360d8f4786f"
+    },
+    "stderr": {
+      "text": "(node:8692) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "sha256": "ce43feeb66cffe86fbf8229b17de80fb8b3e5e9e54691ff0fd3cb8bb97148347"
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "mode": "browser",
+  "startedAt": "2026-09-19T15:14:35.815Z",
+  "endedAt": "2026-09-19T15:14:38.459Z",
+  "sourceBase": "b41c450b84b5fb01a543c48926e80d46969ce915",
+  "sourceInputs": [
+    {
+      "path": "docs/mobile/evidence/S11/reading-library-20260919/playwright.config.mjs",
+      "sha256": "349a21d3d6d4f6ca1eb6e66c1be9941449b5b19a0e229843c6f27401e4f92dc1"
+    },
+    {
+      "path": "docs/mobile/evidence/S11/reading-library-20260919/run-checks.mjs",
+      "sha256": "60f2ec3f6b60ca19025126410d4cac020e54605d2940486c3d4213badd7fca6c"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+    },
+    {
+      "path": "package.json",
+      "sha256": "90b392c205754f838b8bc7c4475bd475936be1078561bb218c437d151177869f"
+    },
+    {
+      "path": "src/books/bookDossierProgress.ts",
+      "sha256": "503d6b7c9e26da19aee4162c8fc67fa92ad9e09bb08caac97fcd23b795e557dc"
+    },
+    {
+      "path": "src/community/AuthContext.tsx",
+      "sha256": "979334217af2f29388af0955c081487215f6a3aeb540a07a2ba1c7920fa759b3"
+    },
+    {
+      "path": "src/hooks/useReadingLibrary.test.ts",
+      "sha256": "d3ff6feed6839206fe1b9514c5a6decf45c397ba319ce50afc7e14f9299a0f84"
+    },
+    {
+      "path": "src/hooks/useReadingLibrary.ts",
+      "sha256": "c9a8d9a09f0ed0ee3c16cc5280e94ededffa92d51c4243dcc2ea61c646557d9a"
+    },
+    {
+      "path": "src/lib/supabase.ts",
+      "sha256": "6ad4bd4b96e39be319a966397e6bd0d41c0c7d741ec2b6c3ca201483c73f42cd"
+    },
+    {
+      "path": "src/utils/safeWebStorage.ts",
+      "sha256": "81ea225b4e6c0a1a2d8c3bf4ba2b48523144280429ff3ae2a2bf38df800b9277"
+    },
+    {
+      "path": "tests/pwa/reading-library.spec.mjs",
+      "sha256": "14e2a482f053d8ae0b71b6b1cc010b57e48253fe40c1797ba604b688d0826ba4"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "8d51a8c9266fe83bf17c076b51672753b3750a17520cd0d2c28a90cb8b21e0d6"
+    },
+    {
+      "path": "vitest.config.ts",
+      "sha256": "5c1e90985e77b35599e5bdaf77c74a1166949ec9c4f45d1c5f926c3f53bef90e"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "executions": [
+    {
+      "name": "browser",
+      "exitCode": 0,
+      "durationMs": 2572
+    }
+  ],
+  "tests": {
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "errors": []
+  },
+  "pass": true,
+  "releaseReady": false,
+  "deviceTested": false,
+  "productionActivation": false
+}

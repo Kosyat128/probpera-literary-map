@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/typescript/bin/tsc",
+    "--noEmit"
+  ],
+  "startedAt": "2026-09-19T15:16:39.189Z",
+  "durationMs": 20534,
+  "exitCode": 2,
+  "logs": {
+    "stdout": {
+      "text": "src/components/globePerformance.test.ts(353,19): error TS2550: Property 'at' does not exist on type 'string[]'. Do you need to change your target library? Try changing the 'lib' compiler option to 'es2022' or later.\r\n",
+      "sha256": "69e2377b802a6a1b442798a60562908467e4e1c4c99eb674ec6ec79039384222"
+    },
+    "stderr": {
+      "text": "",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

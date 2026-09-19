@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "mode": "browser",
+  "startedAt": "2026-09-19T15:04:18.495Z",
+  "endedAt": "2026-09-19T15:04:20.860Z",
+  "sourceBase": "b41c450b84b5fb01a543c48926e80d46969ce915",
+  "sourceInputs": [
+    {
+      "path": "docs/mobile/evidence/S11/reader-progress-20260919/playwright.config.mjs",
+      "sha256": "80a8ba7ad854e608b3742f215a2c3f4ffdb04272b6179be05f18e104838a40c4"
+    },
+    {
+      "path": "docs/mobile/evidence/S11/reader-progress-20260919/run-checks.mjs",
+      "sha256": "18cca651fbe1936ce0ffc379d8e947bf3154bebb0ff5c3be1d35ad160fa3f1fa"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+    },
+    {
+      "path": "package.json",
+      "sha256": "90b392c205754f838b8bc7c4475bd475936be1078561bb218c437d151177869f"
+    },
+    {
+      "path": "src/community/AuthContext.tsx",
+      "sha256": "979334217af2f29388af0955c081487215f6a3aeb540a07a2ba1c7920fa759b3"
+    },
+    {
+      "path": "src/hooks/useReadingProgress.test.ts",
+      "sha256": "f20f6020c65dad564e7b244fe72c65502becd7f17d32722542318573f3674b6b"
+    },
+    {
+      "path": "src/hooks/useReadingProgress.ts",
+      "sha256": "08cc5550b7e5f3b4a680f483ae825ffb2e49a425ddba4e6974bf497920eec85b"
+    },
+    {
+      "path": "src/lib/supabase.ts",
+      "sha256": "6ad4bd4b96e39be319a966397e6bd0d41c0c7d741ec2b6c3ca201483c73f42cd"
+    },
+    {
+      "path": "tests/pwa/reading-progress.spec.mjs",
+      "sha256": "110dfae69e0229424237757d08796c5d96db2d95f5d943f0f6fbd0a994895595"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "8d51a8c9266fe83bf17c076b51672753b3750a17520cd0d2c28a90cb8b21e0d6"
+    },
+    {
+      "path": "vitest.config.ts",
+      "sha256": "5c1e90985e77b35599e5bdaf77c74a1166949ec9c4f45d1c5f926c3f53bef90e"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "executions": [
+    {
+      "name": "browser",
+      "exitCode": 0,
+      "durationMs": 2299
+    }
+  ],
+  "tests": {
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "errors": []
+  },
+  "pass": true,
+  "releaseReady": false,
+  "deviceTested": false,
+  "productionActivation": false
+}

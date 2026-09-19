@@ -1,0 +1,190 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=docs/mobile/evidence/S11/older-package-20260919/playwright.config.mjs"
+    ],
+    "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S11\\older-package-20260919\\playwright.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s11-older-package/browser-a1",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "optional-uninstall.spec.mjs"
+        ],
+        "timeout": 90000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S11\\older-package-20260919\\browser-a1\\playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "optional-uninstall.spec.mjs",
+      "file": "optional-uninstall.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "optional package confirmation rejects stale intent and survives offline restart with explicit reinstall",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13312,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-19T14:57:41.399Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "optional-uninstall-result",
+                      "contentType": "application/json",
+                      "body": "ewogICJzb3VyY2VGaXh0dXJlIjogdHJ1ZSwKICAiYWN0dWFsSHR0cEFuZEJyb3dzZXJTdG9yYWdlIjogdHJ1ZSwKICAiaW5zdGFsbGVkTmF0aXZlIjogZmFsc2UsCiAgInJlbGVhc2VSZWFkeSI6IGZhbHNlLAogICJwYXNzIjogdHJ1ZSwKICAicmVxdWVzdHMiOiBbCiAgICB7CiAgICAgICJwYXRoIjogImRlcGVuZGVuY3ktaW5kZXguanNvbiIsCiAgICAgICJjb29raWUiOiBudWxsLAogICAgICAicmVmZXJyZXIiOiBudWxsCiAgICB9LAogICAgewogICAgICAicGF0aCI6ICJlbi9jYXRhbG9nLmpzb24iLAogICAgICAiY29va2llIjogbnVsbCwKICAgICAgInJlZmVycmVyIjogbnVsbAogICAgfSwKICAgIHsKICAgICAgInBhdGgiOiAicnUvY2F0YWxvZy5qc29uIiwKICAgICAgImNvb2tpZSI6IG51bGwsCiAgICAgICJyZWZlcnJlciI6IG51bGwKICAgIH0KICBdLAogICJjYW5jZWxSZXN0b3Jlc0ZvY3VzIjogdHJ1ZSwKICAic3RhbGVDb25maXJtYXRpb25SZWplY3RlZEFjcm9zc1RhYnMiOiB0cnVlLAogICJjdXJyZW50QW5kUm9sbGJhY2tCeXRlc1JlbW92ZWQiOiB0cnVlLAogICJib290c3RyYXBQcmVzZXJ2ZWQiOiB0cnVlLAogICJvZmZsaW5lUmVtb3ZhbCI6IHRydWUsCiAgIm9mZmxpbmVSZW1vdmVkU3RhdGVBZnRlckJyb3dzZXJSZXN0YXJ0IjogdHJ1ZSwKICAiZXhwbGljaXRIdHRwUmVpbnN0YWxsIjogdHJ1ZSwKICAibG9jYWxlcyI6IFsKICAgICJydSIsCiAgICAiZW4iCiAgXSwKICAiYWNjZXNzaWJpbGl0eVZpb2xhdGlvbnMiOiAwCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "18349e39dc2fa139a26a-9c0c3d18ae8bf3240953",
+          "file": "optional-uninstall.spec.mjs",
+          "line": 11,
+          "column": 1
+        },
+        {
+          "title": "a saved previous version remains removable after the optional catalogue advances",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 972,
+                  "error": {
+                    "message": "Error: page.evaluate: Error: Failed to execute 'open' on 'CacheStorage': Unexpected internal error.\n    at window.__seed (<anonymous>:29222:29)\n    at async <anonymous>:337:30",
+                    "stack": "Error: page.evaluate: Error: Failed to execute 'open' on 'CacheStorage': Unexpected internal error.\n    at window.__seed (<anonymous>:29222:29)\n    at async <anonymous>:337:30\n    at window.__seed (<anonymous>:29222:29)\n    at async <anonymous>:337:30\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\optional-uninstall.spec.mjs:221:59",
+                    "location": {
+                      "file": "<anonymous>",
+                      "column": 29,
+                      "line": 29222
+                    }
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "<anonymous>",
+                        "column": 29,
+                        "line": 29222
+                      },
+                      "message": "Error: page.evaluate: Error: Failed to execute 'open' on 'CacheStorage': Unexpected internal error.\n    at window.__seed (<anonymous>:29222:29)\n    at async <anonymous>:337:30\n    at window.__seed (<anonymous>:29222:29)\n    at async <anonymous>:337:30\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\optional-uninstall.spec.mjs:221:59"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-19T14:57:54.749Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "optional-previous-uninstall-result",
+                      "contentType": "application/json",
+                      "body": "ewogICJzb3VyY2VGaXh0dXJlIjogdHJ1ZSwKICAiYWN0dWFsSHR0cEFuZEJyb3dzZXJTdG9yYWdlIjogdHJ1ZSwKICAiaW5zdGFsbGVkTmF0aXZlIjogZmFsc2UsCiAgIm9mZmVyZWRWZXJzaW9uIjogMywKICAic2F2ZWRWZXJzaW9uIjogMiwKICAicmVsZWFzZVJlYWR5IjogZmFsc2UsCiAgInBhc3MiOiBmYWxzZQp9"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s11-older-package\\browser-a1\\optional-uninstall-a-saved-0f6c2-optional-catalogue-advances\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "<anonymous>",
+                    "column": 29,
+                    "line": 29222
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "18349e39dc2fa139a26a-ce3e783ba955238a93cb",
+          "file": "optional-uninstall.spec.mjs",
+          "line": 153,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-19T14:57:40.500Z",
+    "duration": 15252.771999999999,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

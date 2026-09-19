@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S11/older-package-20260919/playwright.config.mjs"
+  ],
+  "startedAt": "2026-09-19T15:00:16.992Z",
+  "durationMs": 4427,
+  "exitCode": 0,
+  "logs": {
+    "stdout": {
+      "text": "\nRunning 1 test using 1 worker\n\n\n\n[1/1] tests\\pwa\\optional-uninstall.spec.mjs:153:1 › a saved previous version remains removable after the optional catalogue advances\n  1 passed (3.8s)\n",
+      "sha256": "26cfb552fb801ce24ed9f8b5ba157020b4e9564cec2c92711f8ec7a49c939d0a"
+    },
+    "stderr": {
+      "text": "(node:26820) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "sha256": "5dc722c7944df41c196b47d1f9a059e986bd9b1fd93f315d57f5c19a83d86c3c"
+    }
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "sourceCommit": "f2de8479e0e8522dbd3780b32951c83aa2d148cf",
+  "recordedAt": "2026-09-19T15:25:35.159Z",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "nativeExecutionVerified": false,
+  "iosCompiled": false,
+  "productionActionsPerformed": false,
+  "pass": true,
+  "status": "READER_STORAGE_AND_RECOVERY_ARTIFACT_CHECKPOINT",
+  "passingProgressUnitCases": 17,
+  "actualProgressChromeCases": 1,
+  "runs": [
+    {
+      "path": "docs/mobile/evidence/S11/reader-progress-20260919/unit-a1/result.json",
+      "sha256": "1566fffac7c3a78e1e8f26064c247c306a9467837dd7e72f8a5d3166332b8573"
+    },
+    {
+      "path": "docs/mobile/evidence/S11/reader-progress-20260919/browser-a1/result.json",
+      "sha256": "851567b61b46653f4c39c68740dd86b0434edc94d63177d6b3bd6ff521896f0c"
+    }
+  ],
+  "typecheck": {
+    "path": "docs/mobile/evidence/S11/reading-library-20260919/static-a2/result.json",
+    "sha256": "5e2a67360345f3dbc9ce69197150046830df8d2d0932ff68b388e9573f23fae6"
+  },
+  "readingLibrary": {
+    "path": "docs/mobile/evidence/S11/reading-library-20260919/result.json",
+    "sha256": "599b9bc059824f2dee6163f11b2742a47a678aedf404d27b487fa52a1da376e1"
+  },
+  "olderPackage": {
+    "path": "docs/mobile/evidence/S11/older-package-20260919/result.json",
+    "sha256": "1c826d0ccff72e0d934a04467caee6a48d136907f2869b89b10870a028f5cac0"
+  },
+  "globeRecovery": {
+    "path": "docs/mobile/evidence/S11/globe-recovery-20260919/result.json",
+    "sha256": "8bd5b6c0e897753f21c8d1bee396cabb0a88f87fc0e521bcd4591ef47a50d489"
+  },
+  "optionalUninstall": {
+    "path": "docs/mobile/evidence/S11/optional-uninstall-20260919/result.json",
+    "sha256": "8d40da83e8206419f4bcbffdbc6ba94dcce97155b20b25644d7d1b0235f324eb"
+  },
+  "checks": {
+    "lateHydrationFenced": true,
+    "perItemAndAccountOwnership": true,
+    "resetToZeroPreserved": true,
+    "dirtyIntentRetainedOnFailure": true,
+    "requestsBounded": true,
+    "noAutomaticRetryLoop": true,
+    "guestLocalOnly": true
+  },
+  "remoteTransportStubbed": true,
+  "liveDatabaseTested": false,
+  "pwa": {
+    "path": "docs/mobile/evidence/S11/reader-progress-20260919/pwa-a1/result.json",
+    "sha256": "c490a9bec3cee4a9df262767f222c1da5a8be6e8914853fa26856d9aad61ea6d"
+  },
+  "android": {
+    "path": "docs/mobile/evidence/S11/reader-progress-20260919/android-a1/result.json",
+    "sha256": "e8b7306d1d29a984546aebf8a53e65fe7524e863a93d512b835a760b6e248365"
+  },
+  "buildIds": {
+    "pwa": "4e0de9b223516fddc8ac3711f1712c6c66914ce40c2a4d6fa1f9ed2a35eceb06",
+    "android": "77d74c1fc705ba208a65de702471b959f30944f3b633c5d3e1fe86494ff6bec0"
+  },
+  "nextAction": "Continue with remaining offline integration and canonical-content activation preparation. Preserve the validated optional-package, reader-progress, reading-library and canonical WebGL recovery checkpoints. Do not repeat unchanged suites. Keep production content activation, owner archive synchronization D107, native device/iOS validation and publication as separate uncompleted gates."
+}

@@ -1,3 +1,17 @@
+<!-- s11-reader-storage-20260919:begin -->
+Source f2de8479 validates previous optional-version management (138 units,
+2 Chrome cases), reader progress (17 units, 1 Chrome case), and reading library
+(12 units, 1 Chrome case). Remote reader ports are simulated; no live DB actions.
+WebGL recovery and drag/tap distinction: 25 units and 1 real Chrome case passed.
+Shared final TypeScript check passes. PWA 4e0de9b2 and Android/dev
+77d74c1f include the accumulated storage/reader/globe fixes; exact copies on D:
+are recorded in evidence/S11/reader-progress-20260919/result.json.
+APK SHA256: 64ab3136f28fd4cfc1b4650586ef69770c70d3dc24ef164316a3ccfdc6759db8. Prior Wi-Fi artifacts remain preserved.
+Native device/process-death, iOS, full-stage acceptance and release gates remain open.
+Only S00-S02 accepted; S03 remains first open and releaseReady false.
+Continue directly with remaining offline integration work; D107 stays deferred.
+<!-- s11-reader-storage-20260919:end -->
+
 <!-- s11-optional-uninstall-20260919:begin -->
 Source 46df306b implements trusted optional-package removal with exact RU/EN confirmation,
 atomic retirement, retained version/epoch metadata and safe cleanup retry. 167 focused

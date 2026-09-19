@@ -1,0 +1,51 @@
+{
+  "sourceCommit": "f2de8479e0e8522dbd3780b32951c83aa2d148cf",
+  "recordedAt": "2026-09-19T15:25:35.159Z",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "nativeExecutionVerified": false,
+  "iosCompiled": false,
+  "productionActionsPerformed": false,
+  "pass": true,
+  "status": "CANONICAL_GLOBE_CONTEXT_RECOVERY_VALIDATED",
+  "passingUnitCases": 25,
+  "actualChromeCases": 1,
+  "runs": [
+    {
+      "path": "docs/mobile/evidence/S11/globe-recovery-20260919/unit-a2/result.json",
+      "sha256": "680199dee7b3816f05033123b17265fd6e642d261a95de9b18bff49e9537b06d"
+    },
+    {
+      "path": "docs/mobile/evidence/S11/globe-recovery-20260919/browser-a3/result.json",
+      "sha256": "f5588bf112303e2e85dd3774603eb5914cb8202d8907ab8bf8d7c9a3f41fbde9"
+    }
+  ],
+  "typecheck": {
+    "path": "docs/mobile/evidence/S11/reading-library-20260919/static-a2/result.json",
+    "sha256": "5e2a67360345f3dbc9ce69197150046830df8d2d0932ff68b388e9573f23fae6"
+  },
+  "simulatedGpuLossInActualChrome": true,
+  "actualNativeGpuLossTested": false,
+  "checks": {
+    "persistentCanvasRendererCameraScene": true,
+    "cameraPosePreserved": true,
+    "lostContextMotionPaused": true,
+    "dragPreservesCountrySelection": true,
+    "actualTapStillSelectsCanonicalCountry": true
+  },
+  "preservedAttempts": {
+    "browserA1": "Fixture tried zoom-in at maximum writer focus; changed to zoom-out.",
+    "browserA2": "Recovery and identity assertions passed but exposed genuine country selection after drag; surface selection now uses existing pointer tap gate.",
+    "staticA1": "A test used Array.at beyond the configured TypeScript library target; replaced it with the equivalent last-element index."
+  },
+  "screenshotsInspectedAtOriginalResolution": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s11-recovery/browser-a3/native-planet-WebGL-contex-b695f-era-pose-and-RUEN-selection/native-context-lost-ru.png",
+      "sha256": "515488f159d2c12a4f9e1d06eadb01b4179cd0583037eec3c596b267a64733e0"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s11-recovery/browser-a3/native-planet-WebGL-contex-b695f-era-pose-and-RUEN-selection/native-context-restored-en.png",
+      "sha256": "0d8ee228a0295040d8c25cec6dd6da12ed65b0fecb9f807187d257fb9c6391a4"
+    }
+  ]
+}

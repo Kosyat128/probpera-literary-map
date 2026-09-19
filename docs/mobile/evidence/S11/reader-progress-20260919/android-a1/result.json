@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "kind": "android-uninstall-reader-progress-dev-apk",
+  "sourceCommit": "f2de8479e0e8522dbd3780b32951c83aa2d148cf",
+  "buildId": "77d74c1fc705ba208a65de702471b959f30944f3b633c5d3e1fe86494ff6bec0",
+  "sourceInputsSha256": "fb8b65c739d8ab9b4aae6fe35ea9809ac35bc55b45056989c9706c63b2d42e6e",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s11-reader/android-77d74c1f/app-dev-debug.apk",
+    "bytes": 67591035,
+    "sha256": "64ab3136f28fd4cfc1b4650586ef69770c70d3dc24ef164316a3ccfdc6759db8"
+  },
+  "artifact": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s11-reader/android-77d74c1f/runtime",
+    "sha256": "4de06c892fabbc623dbf3ca3c68a875cd8cdc4639aa22733b8013e68c710c975",
+    "files": 1403,
+    "bytes": 72326488
+  },
+  "checks": {
+    "strictRuntimeAudit": "docs/mobile/evidence/S11/reader-progress-20260919/android-a1/native-artifact-audit.json",
+    "binaryAudit": "docs/mobile/evidence/S11/reader-progress-20260919/android-a1/android-dev-apk-verification.json",
+    "build": "docs/mobile/evidence/S11/reader-progress-20260919/android-a1/build-run.json",
+    "exactCopiedBytes": true,
+    "priorAndroidApkAndEntireRuntimePreserved": true,
+    "bundledAssetsMatched": 1402,
+    "localContentStoreDex": "classes10.dex"
+  },
+  "priorAndroid": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s11-wifi/android-b2f77958/app-dev-debug.apk",
+  "nativeExecutionVerified": false,
+  "iosCompiled": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false,
+  "canonicalOwnerArchiveSyncPerformed": false
+}

@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S11/globe-recovery-20260919/playwright.config.mjs"
+  ],
+  "startedAt": "2026-09-19T15:15:29.719Z",
+  "durationMs": 24994,
+  "exitCode": 1,
+  "logs": {
+    "stdout": {
+      "text": "\nRunning 1 test using 1 worker\n\n\n\n[1/1] tests\\host\\native-planet.spec.mjs:1082:1 › WebGL context recovery retains the canonical globe, camera pose and RUEN selection\n  1) tests\\host\\native-planet.spec.mjs:1082:1 › WebGL context recovery retains the canonical globe, camera pose and RUEN selection \n\n    TimeoutError: locator.click: Timeout 15000ms exceeded.\n    Call log:\n      - waiting for locator('#atlas .literary-globe').locator('[data-globe-control=\"zoom-in\"]')\n        - locator resolved to <button disabled type=\"button\" aria-keyshortcuts=\"+\" data-globe-control=\"zoom-in\" title=\"Увеличить масштаб глобуса\" aria-describedby=\"globe-scale-feedback\" aria-label=\"Увеличить масштаб глобуса. Текущий масштаб 218%\" class=\"ui-icon-button ui-icon-button--md ui-icon-button--dark\">…</button>\n      - attempting click action\n        2 × waiting for element to be visible, enabled and stable\n          - element is not enabled\n        - retrying click action\n        - waiting 20ms\n        2 × waiting for element to be visible, enabled and stable\n          - element is not enabled\n        - retrying click action\n          - waiting 100ms\n        28 × waiting for element to be visible, enabled and stable\n           - element is not enabled\n         - retrying click action\n           - waiting 500ms\n\n\n      1098 |     const rotatedPose = await settledCameraPose(original);\n      1099 |     expect(rotatedPose.quaternion).not.toEqual(initialPose.quaternion);\n    > 1100 |     await globe.locator('[data-globe-control=\"zoom-in\"]').click();\n           |                                                           ^\n      1101 |     const zoomedPose = await settledCameraPose(original);\n      1102 |     const radius = pose => Math.hypot(...pose.position);\n      1103 |     expect(radius(zoomedPose)).toBeLessThan(radius(rotatedPose));\n        at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\host\\native-planet.spec.mjs:1100:59\n\n    attachment #2: native-final-failed-screenshot (image/png) ──────────────────────────────────────\n    D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s11-recovery\\browser-a1\\native-planet-WebGL-contex-b695f-era-pose-and-RUEN-selection\\attachments\\native-final-failed-screenshot-404f9c8fa9a45446a1e2e922114bf4e5d490c484.png\n    ────────────────────────────────────────────────────────────────────────────────────────────────\n\n    Error Context: D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s11-recovery\\browser-a1\\native-planet-WebGL-contex-b695f-era-pose-and-RUEN-selection\\error-context.md\n\n    Error Context: D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s11-recovery\\browser-a1\\native-planet-WebGL-contex-b695f-era-pose-and-RUEN-selection\\error-context.md\n\n\n  1 failed\n    tests\\host\\native-planet.spec.mjs:1082:1 › WebGL context recovery retains the canonical globe, camera pose and RUEN selection \n",
+      "sha256": "c70d198bb5786a635dbb60fda576b920810ed10788e098553439c739f735c258"
+    },
+    "stderr": {
+      "text": "(node:22488) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "sha256": "f940e58d36626696db012edcd636d5765cdbc120136f9a9237f02020c922da51"
+    }
+  }
+}

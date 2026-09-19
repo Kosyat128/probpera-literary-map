@@ -1,0 +1,122 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=docs/mobile/evidence/S11/reading-library-20260919/playwright.config.mjs"
+    ],
+    "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S11\\reading-library-20260919\\playwright.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s11-library/browser-a1",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "reading-library.spec.mjs"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S11\\reading-library-20260919\\browser-a1\\playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "reading-library.spec.mjs",
+      "file": "reading-library.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "reading library executes explicit mutations once and isolates local intent from late remote accounts",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1311,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-19T15:14:37.077Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "reading-library-result",
+                      "contentType": "application/json",
+                      "body": "ewogICJzb3VyY2VGaXh0dXJlIjogdHJ1ZSwKICAiYWN0dWFsUmVhY3RTdHJpY3RNb2RlQW5kTG9jYWxTdG9yYWdlIjogdHJ1ZSwKICAicmVtb3RlVHJhbnNwb3J0U3R1YmJlZCI6IHRydWUsCiAgImxhenlUaGVuYWJsZVRyYW5zcG9ydCI6IHRydWUsCiAgImluc3RhbGxlZE5hdGl2ZSI6IGZhbHNlLAogICJyZWxlYXNlUmVhZHkiOiBmYWxzZSwKICAicGFzcyI6IHRydWUsCiAgImNhbGxzIjogWwogICAgewogICAgICAiaWQiOiAxLAogICAgICAidGFibGUiOiAicmVhZGVyX2Zhdm9yaXRlcyIsCiAgICAgICJvcGVyYXRpb24iOiAic2VsZWN0IiwKICAgICAgImZpbHRlcnMiOiB7CiAgICAgICAgInVzZXJfaWQiOiAiMTExMTExMTEtMTExMS00MTExLTgxMTEtMTExMTExMTExMTExIgogICAgICB9LAogICAgICAidmFsdWUiOiBudWxsLAogICAgICAib3B0aW9ucyI6IG51bGwsCiAgICAgICJhYm9ydGVkIjogZmFsc2UKICAgIH0sCiAgICB7CiAgICAgICJpZCI6IDIsCiAgICAgICJ0YWJsZSI6ICJyZWFkZXJfZmF2b3JpdGVzIiwKICAgICAgIm9wZXJhdGlvbiI6ICJ1cHNlcnQiLAogICAgICAiZmlsdGVycyI6IHt9LAogICAgICAidmFsdWUiOiB7CiAgICAgICAgInVzZXJfaWQiOiAiMTExMTExMTEtMTExMS00MTExLTgxMTEtMTExMTExMTExMTExIiwKICAgICAgICAiaXRlbV90eXBlIjogImJvb2siLAogICAgICAgICJpdGVtX2lkIjogImZpeHR1cmU6d3JpdGVyOmZpcnN0IiwKICAgICAgICAidGl0bGUiOiAiRml4dHVyZSBmaXJzdCIsCiAgICAgICAgInNlY3Rpb25faWQiOiAiYm9va3MiLAogICAgICAgICJzZWN0aW9uX2xhYmVsIjogIkJvb2tzIiwKICAgICAgICAiaHJlZiI6ICIvYm9va3MvZml4dHVyZS1maXJzdC8iLAogICAgICAgICJhZGRlZF9hdCI6ICIyMDI2LTA5LTE5VDE1OjE0OjM3Ljk5NloiLAogICAgICAgICJyZWFkaW5nX3N0YXR1cyI6ICJzYXZlZCIKICAgICAgfSwKICAgICAgIm9wdGlvbnMiOiB7CiAgICAgICAgIm9uQ29uZmxpY3QiOiAidXNlcl9pZCxpdGVtX3R5cGUsaXRlbV9pZCIKICAgICAgfSwKICAgICAgImFib3J0ZWQiOiBmYWxzZQogICAgfSwKICAgIHsKICAgICAgImlkIjogMywKICAgICAgInRhYmxlIjogInJlYWRlcl9mYXZvcml0ZXMiLAogICAgICAib3BlcmF0aW9uIjogInVwZGF0ZSIsCiAgICAgICJmaWx0ZXJzIjogewogICAgICAgICJ1c2VyX2lkIjogIjExMTExMTExLTExMTEtNDExMS04MTExLTExMTExMTExMTExMSIsCiAgICAgICAgIml0ZW1fdHlwZSI6ICJib29rIiwKICAgICAgICAiaXRlbV9pZCI6ICJmaXh0dXJlOndyaXRlcjpmaXJzdCIKICAgICAgfSwKICAgICAgInZhbHVlIjogewogICAgICAgICJyZWFkaW5nX3N0YXR1cyI6ICJyZWFkaW5nIgogICAgICB9LAogICAgICAib3B0aW9ucyI6IG51bGwsCiAgICAgICJhYm9ydGVkIjogZmFsc2UKICAgIH0sCiAgICB7CiAgICAgICJpZCI6IDQsCiAgICAgICJ0YWJsZSI6ICJyZWFkZXJfZmF2b3JpdGVzIiwKICAgICAgIm9wZXJhdGlvbiI6ICJkZWxldGUiLAogICAgICAiZmlsdGVycyI6IHsKICAgICAgICAidXNlcl9pZCI6ICIxMTExMTExMS0xMTExLTQxMTEtODExMS0xMTExMTExMTExMTEiLAogICAgICAgICJpdGVtX3R5cGUiOiAiYm9vayIsCiAgICAgICAgIml0ZW1faWQiOiAiZml4dHVyZTp3cml0ZXI6Zmlyc3QiCiAgICAgIH0sCiAgICAgICJ2YWx1ZSI6IG51bGwsCiAgICAgICJvcHRpb25zIjogbnVsbCwKICAgICAgImFib3J0ZWQiOiBmYWxzZQogICAgfSwKICAgIHsKICAgICAgImlkIjogNSwKICAgICAgInRhYmxlIjogInJlYWRlcl9mYXZvcml0ZXMiLAogICAgICAib3BlcmF0aW9uIjogInVwc2VydCIsCiAgICAgICJmaWx0ZXJzIjoge30sCiAgICAgICJ2YWx1ZSI6IHsKICAgICAgICAidXNlcl9pZCI6ICIxMTExMTExMS0xMTExLTQxMTEtODExMS0xMTExMTExMTExMTEiLAogICAgICAgICJpdGVtX3R5cGUiOiAiYm9vayIsCiAgICAgICAgIml0ZW1faWQiOiAiZml4dHVyZTp3cml0ZXI6Zmlyc3QiLAogICAgICAgICJ0aXRsZSI6ICJGaXh0dXJlIGZpcnN0IiwKICAgICAgICAic2VjdGlvbl9pZCI6ICJib29rcyIsCiAgICAgICAgInNlY3Rpb25fbGFiZWwiOiAiQm9va3MiLAogICAgICAgICJocmVmIjogIi9ib29rcy9maXh0dXJlLWZpcnN0LyIsCiAgICAgICAgImFkZGVkX2F0IjogIjIwMjYtMDktMTlUMTU6MTQ6MzguMTE3WiIsCiAgICAgICAgInJlYWRpbmdfc3RhdHVzIjogInNhdmVkIgogICAgICB9LAogICAgICAib3B0aW9ucyI6IHsKICAgICAgICAib25Db25mbGljdCI6ICJ1c2VyX2lkLGl0ZW1fdHlwZSxpdGVtX2lkIgogICAgICB9LAogICAgICAiYWJvcnRlZCI6IGZhbHNlCiAgICB9LAogICAgewogICAgICAiaWQiOiA2LAogICAgICAidGFibGUiOiAicmVhZGVyX2Zhdm9yaXRlcyIsCiAgICAgICJvcGVyYXRpb24iOiAiZGVsZXRlIiwKICAgICAgImZpbHRlcnMiOiB7CiAgICAgICAgInVzZXJfaWQiOiAiMTExMTExMTEtMTExMS00MTExLTgxMTEtMTExMTExMTExMTExIiwKICAgICAgICAiaXRlbV90eXBlIjogImJvb2siLAogICAgICAgICJpdGVtX2lkIjogImZpeHR1cmU6d3JpdGVyOmZpcnN0IgogICAgICB9LAogICAgICAidmFsdWUiOiBudWxsLAogICAgICAib3B0aW9ucyI6IG51bGwsCiAgICAgICJhYm9ydGVkIjogdHJ1ZQogICAgfSwKICAgIHsKICAgICAgImlkIjogNywKICAgICAgInRhYmxlIjogInJlYWRlcl9mYXZvcml0ZXMiLAogICAgICAib3BlcmF0aW9uIjogInNlbGVjdCIsCiAgICAgICJmaWx0ZXJzIjogewogICAgICAgICJ1c2VyX2lkIjogIjIyMjIyMjIyLTIyMjItNDIyMi04MjIyLTIyMjIyMjIyMjIyMiIKICAgICAgfSwKICAgICAgInZhbHVlIjogbnVsbCwKICAgICAgIm9wdGlvbnMiOiBudWxsLAogICAgICAiYWJvcnRlZCI6IHRydWUKICAgIH0sCiAgICB7CiAgICAgICJpZCI6IDgsCiAgICAgICJ0YWJsZSI6ICJyZWFkZXJfZmF2b3JpdGVzIiwKICAgICAgIm9wZXJhdGlvbiI6ICJ1cHNlcnQiLAogICAgICAiZmlsdGVycyI6IHt9LAogICAgICAidmFsdWUiOiB7CiAgICAgICAgInVzZXJfaWQiOiAiMjIyMjIyMjItMjIyMi00MjIyLTgyMjItMjIyMjIyMjIyMjIyIiwKICAgICAgICAiaXRlbV90eXBlIjogImJvb2siLAogICAgICAgICJpdGVtX2lkIjogImZpeHR1cmU6d3JpdGVyOnNlY29uZCIsCiAgICAgICAgInRpdGxlIjogIkZpeHR1cmUgc2Vjb25kIiwKICAgICAgICAic2VjdGlvbl9pZCI6ICJib29rcyIsCiAgICAgICAgInNlY3Rpb25fbGFiZWwiOiAiQm9va3MiLAogICAgICAgICJocmVmIjogIi9ib29rcy9maXh0dXJlLXNlY29uZC8iLAogICAgICAgICJhZGRlZF9hdCI6ICIyMDI2LTA5LTE5VDE1OjE0OjM4LjE2NVoiLAogICAgICAgICJyZWFkaW5nX3N0YXR1cyI6ICJzYXZlZCIKICAgICAgfSwKICAgICAgIm9wdGlvbnMiOiB7CiAgICAgICAgIm9uQ29uZmxpY3QiOiAidXNlcl9pZCxpdGVtX3R5cGUsaXRlbV9pZCIKICAgICAgfSwKICAgICAgImFib3J0ZWQiOiBmYWxzZQogICAgfSwKICAgIHsKICAgICAgImlkIjogOSwKICAgICAgInRhYmxlIjogInJlYWRlcl9mYXZvcml0ZXMiLAogICAgICAib3BlcmF0aW9uIjogInNlbGVjdCIsCiAgICAgICJmaWx0ZXJzIjogewogICAgICAgICJ1c2VyX2lkIjogIjIyMjIyMjIyLTIyMjItNDIyMi04MjIyLTIyMjIyMjIyMjIyMiIKICAgICAgfSwKICAgICAgInZhbHVlIjogbnVsbCwKICAgICAgIm9wdGlvbnMiOiBudWxsLAogICAgICAiYWJvcnRlZCI6IGZhbHNlCiAgICB9CiAgXSwKICAic3RyaWN0TW9kZU11dGF0aW9uc0V4ZWN1dGVkT25jZSI6IHRydWUsCiAgImxhdGVIeWRyYXRpb25DYW5ub3RSZXN1cnJlY3RSZW1vdmVkSXRlbSI6IHRydWUsCiAgImxhdGVBY2NvdW50RmFpbHVyZUNhbm5vdFJvbGxiYWNrSW50b0Fub3RoZXJBY2NvdW50IjogdHJ1ZSwKICAiZ3Vlc3REYXRhUHJlc2VydmVkQW5kTmV2ZXJVcGxvYWRlZCI6IHRydWUsCiAgImFjY291bnRTY29wZWRSZXN0b3JhdGlvbiI6IHRydWUsCiAgImRvc3NpZXJQcm9ncmVzc0tlcHRMb2NhbCI6IHRydWUKfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "303de5dca1a5b2399dc2-e316a46ee395e211b7cc",
+          "file": "reading-library.spec.mjs",
+          "line": 17,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-19T15:14:36.540Z",
+    "duration": 1896.417,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

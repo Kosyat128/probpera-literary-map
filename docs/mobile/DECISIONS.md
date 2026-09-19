@@ -710,3 +710,20 @@
   v1 and ordinary incomplete-candidate discard remain unchanged. Source 46df306b has
   167 units, 4 Chrome cases and Java compilation; native device/iOS/release gates remain.
   Continue directly to existing reader-progress sync repair, then batch artifact refresh.
+
+- D123: Optional package confirmation addresses the actual saved current version, including
+  a trusted prior catalogue version; rollback bytes behind an unknown current selection
+  cannot authorize removal. Shared reader progress and favorites use separate adult
+  storage identities; the legacy unscoped key remains guest-owned without auto-migration.
+  Late reads and stale rollbacks cannot replace newer local intent. Progress errors
+  preserve dirty values and bounded requests retry only after user/lifecycle intent.
+  Reader remote tests use explicit transport ports; no live backend or stage acceptance
+  is implied. Combined local PWA/Android artifact evidence records exact source and bytes.
+
+- D124: WebGL recovery restores the existing renderer after a real browser context
+  event and never changes the Canvas key. Loss immediately suspends the frame loop
+  and scene activity; a bounded explicit restoration request cannot falsely mark the
+  context ready. Actual Chrome verifies identity, pose, locale and semantic selection
+  preservation plus resumed rendering. Surface country selection now uses the shared
+  pointer tap gate, because the same scenario exposed selection after a drag.
+  Desktop Chrome GPU-loss simulation does not establish installed native recovery.
