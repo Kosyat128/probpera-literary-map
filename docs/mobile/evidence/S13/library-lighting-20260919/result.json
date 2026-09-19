@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-19T19:49:18.314Z",
+  "sourceCommit": "9b8952d73f664b16f78b045e5dfe53031711616e",
+  "stage": "S13",
+  "status": "INCLUDED_LIBRARY_AND_CRAFT_SURFACES_INSPECTED",
+  "pass": true,
+  "entry": {
+    "path": "docs/mobile/evidence/S13/library-lighting-20260919/entry.json",
+    "sha256": "67df2f54b21bb07450f3958b8cc77a45427e0888f8c37a78393b41c8299a4bc4"
+  },
+  "runs": {
+    "unit": {
+      "path": "docs/mobile/evidence/S13/library-lighting-20260919/unit-a2/result.json",
+      "sha256": "819bd886d0e9b67d317bdd7bd69426222b9a8e4d815119526a389da8964a7ea6",
+      "tests": {
+        "passed": 14,
+        "failed": 0,
+        "skipped": 0,
+        "failures": []
+      }
+    },
+    "static": {
+      "path": "docs/mobile/evidence/S13/library-lighting-20260919/static-a2/result.json",
+      "sha256": "fcf4f5b4fd0442ece7b87a98a909bfbcdb0a5d74982b1a3987e03e1436521b48",
+      "tests": null
+    },
+    "browser": {
+      "path": "docs/mobile/evidence/S13/library-lighting-20260919/browser-a1/result.json",
+      "sha256": "c786d5508fdc877088d2bcb1076c238714b596890ab9dee225fa32ffee62fd2f",
+      "tests": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "errors": []
+      }
+    }
+  },
+  "attempts": {
+    "unit": "a2",
+    "static": "a2",
+    "browser": "a1"
+  },
+  "priorComposition": {
+    "path": "docs/mobile/evidence/S13/composition-20260919/result.json",
+    "sha256": "90f7e4556ca3efe0c64b6bd48524d433984c65b25b460770b9a46e56cb8c08dc"
+  },
+  "starterSetSourceInventory": {
+    "path": "docs/mobile/evidence/S13/library-lighting-20260919/starter-set-source-inventory.json",
+    "sha256": "46bce6540da5618dadcaec0e5a0527efd6ad9db1fefd5d729f4fb7fbdd9f903f"
+  },
+  "starterSetBindingsRefreshed": true,
+  "previousArtReview": {
+    "path": "docs/mobile/evidence/S13/library-background-20260919/visual-review.json",
+    "sha256": "a69732d874e2a50baf4d45f3919b89ba374a5cf2c7e5d8cce6c906cd413770a5"
+  },
+  "preservedCompositionInputs": [
+    {
+      "path": "src/planet/globeComposition.ts",
+      "sha256": "20b4cabdd678a6fa5b70ab2b4cbaef179f0e7d7c5819e408123eb486ddb0e81f"
+    },
+    {
+      "path": "src/host/planetComposition.ts",
+      "sha256": "6e193b12c495d962737185ab4fd35eeb3b64fe46f5c92774b565cfbb1181e954"
+    },
+    {
+      "path": "src/host/planetCompositionPresentation.ts",
+      "sha256": "d62d963c719366c1be3e6888b5eb321933f3e7224b6591fc8c2d6d81a639c3f6"
+    },
+    {
+      "path": "src/components/useGlobeCompositionScene.ts",
+      "sha256": "30009468d0cdee459441ca5780ea608cdf21b3f6e7055da89c0ce28e435326b5"
+    },
+    {
+      "path": "src/components/useGlobeCompositionFrame.ts",
+      "sha256": "530d1303a5af222bf68f72b499b07c8d41a828ca14783912284b6e3963d59cd0"
+    },
+    {
+      "path": "src/components/globeAtlas.ts",
+      "sha256": "224dcde2499f51eb333562875796d3422ab28ad987339f36be79f0635677bcf6"
+    },
+    {
+      "path": "src/components/useGlobeStyleState.ts",
+      "sha256": "6d2801802ec0e9bf0c2e5ff9a6f852f00434a8494216b06ee2069917e2a1a0ba"
+    }
+  ],
+  "visualReview": {
+    "path": "docs/mobile/evidence/S13/library-lighting-20260919/visual-review.json",
+    "sha256": "254ef9c00e86201780d2b8c93b578e6d05d3547e2e227a030f6c226a9fe60c4b"
+  },
+  "pwa": {
+    "path": "docs/mobile/evidence/S13/library-lighting-20260919/pwa-a1/result.json",
+    "sha256": "3da5e9616fa008e85a833b0fcbc6d6057484ba4677052b9a81c6a8570a7607df"
+  },
+  "android": {
+    "path": "docs/mobile/evidence/S13/library-lighting-20260919/android-a1/result.json",
+    "sha256": "664a4c2b5e76941a1a7419c75448f8b290a02c3f6e16e3978996532c21b0c1e6"
+  },
+  "pwaBuildId": "3d84a3f602546075f7078f92a31d4b603e93ece4ccf346163e4d5d797b0a4496",
+  "androidBuildId": "0de476d60baf9ed5ae3d24a323fff36750da87d152bce9effaff083589d3312a",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ll/android-0de476d6/app-dev-debug.apk",
+    "bytes": 67998767,
+    "sha256": "9fd5307afb2247b5c83227a7728221c71b1bb8b5d1d18aa94244e6353b877d5c"
+  },
+  "libraryLighting": {
+    "scope": "included-library-and-shared-craft-materials",
+    "provenance": "authored-in-project",
+    "sourceAlignedLightPlacement": true,
+    "windowDaylightAndCabinetOcclusion": true,
+    "deterministicVolumeGrouping": true,
+    "commonGlobeLightingOwnershipPreserved": true,
+    "standEnvelopePreserved": true,
+    "standSurfaceMappingInspected": true,
+    "sharedCraftMaterialsInspected": true,
+    "coreCompositionUnchanged": true,
+    "actualAppAndCloseupReviewRequired": true,
+    "certifiedLightmapApproval": false
+  },
+  "sourceBoundStarterItems": 11,
+  "requiredStarterItems": 29,
+  "acceptedStarterItems": 0,
+  "existingUserRealismRequirementPreserved": true,
+  "artAccepted": false,
+  "decisionD134Recorded": true,
+  "rightsApproval": false,
+  "childApproval": false,
+  "controlledNativePorts": true,
+  "actualSceneRenderedInChrome": true,
+  "installedNativeDevice": false,
+  "iosCompiled": false,
+  "grantsEntitlement": false,
+  "productionActionsPerformed": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "nextAction": "Preserve library architecture and book-placement density across lower quality tiers using economical compound true-3D geometry within existing budgets; see next-art-design.md and the remaining visual findings. Then continue the next bounded included scene or Starter Set implementation. Preserve source-aligned library lighting, occlusion, believable volume placement, inspected materials, physical stand UVs and the validated same-frame composition engine. Realistic quality remains subject to actual-App and close-up review, not a technical pass alone. Starter Set remains 11/29 source-bound with zero accepted. Full catalog/Background Studio, accessory/audio/child composition, formal art/certified lightmaps, rights/entitlements, installed-device budgets, iOS and release acceptance remain open. Do not repeat unchanged checks or prior artifact payload audits."
+}

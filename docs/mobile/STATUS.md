@@ -1,3 +1,21 @@
+<!-- s13-library-lighting-20260919:begin -->
+Source 9b8952d7 improves library light placement, window daylight,
+shelf/cabinet occlusion and believable grouping of books. Actual-App and close-up
+visual review is bound to these source hashes; technical success alone does not
+satisfy the user's realistic-quality requirement. Art acceptance and certified
+lightmap approval remain open. Stand geometry remains within the original bounds; physical surface mapping
+and materials have current visual review. Camera and core composition are preserved.
+Final 14 focused units, TypeScript and 1 actual Chrome cases pass.
+Evidence: evidence/S13/library-lighting-20260919/result.json. PWA 3d84a3f6 and
+Android/dev 0de476d6 bind this source. APK SHA256: 9fd5307afb2247b5c83227a7728221c71b1bb8b5d1d18aa94244e6353b877d5c.
+Prior composition and artifacts remain historical evidence. Starter Set remains
+11/29 source-bound, zero accepted. Full scene catalog/Background Studio, accessory
+and child composition, formal art/lightmaps, rights, installed-device budgets,
+iOS and release remain open. Stage counts stay 3 complete, 11 in progress,
+27 unstarted; first open S03. Next: unresolved visual quality findings, then the next included scene/Starter
+Set requirement with actual-App and close-up inspection.
+<!-- s13-library-lighting-20260919:end -->
+
 <!-- s13-composition-20260919:begin -->
 Source 69ad06c2 binds the included edition, stand and background to
 one versioned preference record. Three matching parts must share an actual frame
