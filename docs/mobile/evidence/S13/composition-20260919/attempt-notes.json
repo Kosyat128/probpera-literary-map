@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "attempts": [
+    {
+      "path": "browser-a1/result.json",
+      "cause": "Test fixture selected texture filename hondius-rossi-1615 as if it were edition ID; actual catalog ID is hondius-1615.",
+      "scope": "Test-only selector defect before held-load action; malformed/read-failure case passed.",
+      "correction": "Use actual edition ID while retaining actual texture URL hold predicate.",
+      "runtimeChanged": false
+    },
+    {
+      "path": "browser-a2/result.json",
+      "passed": 2,
+      "failed": 0
+    }
+  ],
+  "unitAndStaticReused": "unit-a1 and static-a1 bind unchanged runtime/test inputs; browser spec is excluded from those source scopes."
+}

@@ -786,3 +786,5 @@
   close-ups. At most two bounded room lights exclude the globe; shared lighting
   and scene environment retain their existing owners. Visual iteration and local
   evidence do not silently approve art, rights, children, devices or release.
+
+- D133: The adult included edition, stand and background share one bounded versioned local composition record and the existing renderer/camera. All three parts and the current texture upload must agree in one actual scene frame before commit. The applied atlas source is retained for network-independent repaint rollback; localized source identity stays explicit. Confirmed absence alone permits migration from unchanged legacy keys; unknown, malformed or timed-out storage does not. Whole-record writes remain serialized across timeouts and remounts. A confirmed best-effort write is not crash-safe durability. This preserves the detailed art without granting optional/accessory/audio/child authority or full S13 acceptance.

@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S13/composition-20260919/playwright.config.mjs"
+  ],
+  "startedAt": "2026-09-19T19:03:54.521Z",
+  "durationMs": 23831,
+  "exitCode": 0,
+  "logs": {
+    "stdout": {
+      "text": "\nRunning 2 tests using 1 worker\n\n\n\n[1/2] tests\\pwa\\globe-composition.spec.mjs:275:1 › one composition migrates the three legacy choices after a real frame, applies whole selections and restores one saved record\n[2/2] tests\\pwa\\globe-composition.spec.mjs:341:1 › malformed and failed new composition reads cannot authorize legacy migration or overwrite the unknown saved choice\n  2 passed (23.2s)\n",
+      "sha256": "54234e85e35a345867e7a7eeb2cd33ea5e1247dbaa1bd1cd4036c53677e8a594"
+    },
+    "stderr": {
+      "text": "(node:28588) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "sha256": "7b6913ae419e45495a9544ac695924c2c5102e5601524f5f4228070651924873"
+    }
+  }
+}

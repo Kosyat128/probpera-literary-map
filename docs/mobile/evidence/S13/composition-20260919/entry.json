@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-19T18:56:15.039Z",
+  "stage": "S13",
+  "checkpoint": "5f6972ba688163e8fa354dbe08695a7d1e1ba82d",
+  "dependencies": [
+    {
+      "path": "docs/mobile/requirements/v12/16_FULL_3D_BACKGROUND_ENGINE_RU.md",
+      "sha256": "75f830874b32c2afca440b958cb4b3cefdcb9c606b8ba0195fba2f02022198c5"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/17_SKINS_STANDS_ACCESSORIES_ENGINE_RU.md",
+      "sha256": "d84657d718c24a69ce14ddfc6d1e9dc7d6778bf4e58b8be24d9d460249b51741"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/35_3D_BACKGROUND_CATALOG.csv",
+      "sha256": "30cc7b9f6157a38dee3b4661a7bb828e7d8856f09c4b7ccbcdca80a6afebb857"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/36_SKIN_STAND_ACCESSORY_CATALOG.csv",
+      "sha256": "7f35bf0f2c8f27c4d87839814c0bd5772ccf92b02c052eb05e76cda1c6f3eb72"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/37_BASE_EDITION_STARTER_SET.csv",
+      "sha256": "575f40b97986cb4e64cb89243059a3b18c4cda8069f4f0e1c7d3565f6132b731"
+    }
+  ],
+  "priorEvidence": "docs/mobile/evidence/S13/library-background-20260919/result.json",
+  "scope": "One versioned included edition/stand/background preference record, actual same-frame preparation, exact applied atlas source lease and rollback, read-only legacy migration, existing RU/EN controls and one canonical scene.",
+  "userQualityClarification": "2026-09-19: 3D backgrounds and stands must be realistic, high quality and carefully detailed; the existing simple procedural objects are insufficient. Functional prototype evidence does not satisfy this visual requirement. Inspect bevels, joinery, bindings, paper, material response and architectural depth at normal scale, close range and multiple viewpoints before recording the next result.",
+  "limits": [
+    "This is a bounded adult included-composition model; optional accessories, audio and child-reviewed catalog remain open.",
+    "Best-effort native preference confirmation is not crash-safe durable storage.",
+    "Code-native detailed art is retained; this engine slice does not assert full photorealistic catalog acceptance.",
+    "Current installed Three renderer texture upload version is inspected only within the scene bridge."
+  ],
+  "legacyKeysMutated": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false
+}

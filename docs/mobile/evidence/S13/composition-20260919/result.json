@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-19T19:08:15.854Z",
+  "sourceCommit": "69ad06c201cc8a62ffef4f4ec4daaf117b457c15",
+  "stage": "S13",
+  "status": "INCLUDED_COMPOSITION_TRANSACTION_VALIDATED",
+  "pass": true,
+  "entry": {
+    "path": "docs/mobile/evidence/S13/composition-20260919/entry.json",
+    "sha256": "a9a59c329de14c52d886e532d7aff97ac0962e5e739ff9d2c678a5c0e1b46a91"
+  },
+  "runs": {
+    "unit": {
+      "path": "docs/mobile/evidence/S13/composition-20260919/unit-a1/result.json",
+      "sha256": "f670ad43366bed467642b1fa2dbc642aba0e04c5f8895f9ee9f5ada63779f1c5",
+      "tests": {
+        "passed": 256,
+        "failed": 0,
+        "skipped": 0,
+        "failures": []
+      }
+    },
+    "static": {
+      "path": "docs/mobile/evidence/S13/composition-20260919/static-a1/result.json",
+      "sha256": "547a18cb250bf021077247122c3f158b50e0324ca2200963d75925e37f92b7f7",
+      "tests": null
+    },
+    "browser": {
+      "path": "docs/mobile/evidence/S13/composition-20260919/browser-a2/result.json",
+      "sha256": "bfb205cbf20251476bf66725e41ccf7c41e74d7f883015398802921be8f4fc73",
+      "tests": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "errors": []
+      }
+    }
+  },
+  "attempts": {
+    "unit": "a1",
+    "static": "a1",
+    "browser": "a2"
+  },
+  "priorEvidence": {
+    "path": "docs/mobile/evidence/S13/library-background-20260919/result.json",
+    "sha256": "3969697e9d291c6c49f622d448633c6dff6fc3884ba4daf4b0d23e42dba3a4aa"
+  },
+  "starterSetSourceInventory": {
+    "path": "docs/mobile/evidence/S13/composition-20260919/starter-set-source-inventory.json",
+    "sha256": "ec207ec90342470534e0f2d4380ab700bb6e10f8be147190eb9cd7b4be58d206"
+  },
+  "starterSetBindingsRefreshed": true,
+  "preservedVisualReview": {
+    "path": "docs/mobile/evidence/S13/library-background-20260919/visual-review.json",
+    "sha256": "a69732d874e2a50baf4d45f3919b89ba374a5cf2c7e5d8cce6c906cd413770a5"
+  },
+  "preservedArtInputs": [
+    {
+      "path": "src/components/globeLibraryGeometry.ts",
+      "sha256": "7e6cdc372d117139f301b29ff5e61bcd14a5a66dcf659bb8c34cdd89445d7bca"
+    },
+    {
+      "path": "src/components/globeStandGeometry.ts",
+      "sha256": "41a073cdef5481b32abc8fef7bc8e1effc84ab6057dd2b4187f1b63b83075a06"
+    },
+    {
+      "path": "src/components/globeCraftMaterials.ts",
+      "sha256": "4f1f8847ae8159346e6bff7fa4a67915262c88a19655f6ac66d5565a686ae4e4"
+    }
+  ],
+  "pwa": {
+    "path": "docs/mobile/evidence/S13/composition-20260919/pwa-a1/result.json",
+    "sha256": "3ee0be317edbd977950d607777232ff783e34372e96f2099fbcf2d89dfb10e4f"
+  },
+  "android": {
+    "path": "docs/mobile/evidence/S13/composition-20260919/android-a1/result.json",
+    "sha256": "5ece68fffbabac9cea8dbf110a042f47b16d657d9a160d408cc7b364998290d1"
+  },
+  "pwaBuildId": "99cb8924de2385a089be1b774354ef507ca520e19334cfedcc90d0a3dfa63ea6",
+  "androidBuildId": "ccd35e029de73495fb96857fe9104cc77ab79194cbd00030c118ca2013a5662a",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cp/android-ccd35e02/app-dev-debug.apk",
+    "bytes": 67998770,
+    "sha256": "472523aceba525e42f146bf3997a4d518c405b9f53da791091be76f4e071b3f4"
+  },
+  "composition": {
+    "preferenceKey": "probpera-planet-composition-v1",
+    "schemaVersion": 1,
+    "parts": [
+      "editionId",
+      "standId",
+      "backgroundId"
+    ],
+    "adultIncludedOnly": true,
+    "sameActualFrameAcknowledgement": true,
+    "appliedAtlasSourceRepaintRollback": true,
+    "legacyKeysReadOnly": true,
+    "unknownReadDoesNotAuthorizeMigration": true,
+    "oneSerializedPreferenceRecord": true,
+    "bestEffortPortConfirmationOnly": true,
+    "crashDurabilityClaimed": false,
+    "fullAccessoryAudioCompositionImplemented": false
+  },
+  "sourceBoundStarterItems": 11,
+  "requiredStarterItems": 29,
+  "acceptedStarterItems": 0,
+  "existingUserRealismRequirementPreserved": true,
+  "newArtAcceptanceClaimed": false,
+  "decisionD133Recorded": true,
+  "rightsApproval": false,
+  "childApproval": false,
+  "controlledNativePorts": true,
+  "actualSceneRenderedInChrome": true,
+  "installedNativeDevice": false,
+  "iosCompiled": false,
+  "grantsEntitlement": false,
+  "productionActionsPerformed": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "nextAction": "Continue the library realism slice in next-art-design.md: source-aligned lighting, shelf/cabinet occlusion and less repetitive book/material placement. The current library remains a game-like scene, not final photorealistic art. Preserve the single renderer, current detailed library/stands and same-frame included edition/stand/background transaction. The included Starter Set remains 11/29 source-bound with zero accepted. Full accessory/audio/child composition, full catalog/Background Studio, formal art/lightmaps, rights/entitlements, installed-device budgets, iOS and release acceptance remain open. Do not repeat unchanged source-bound checks or prior artifact payload audits."
+}

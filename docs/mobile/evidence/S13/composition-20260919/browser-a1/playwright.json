@@ -1,0 +1,191 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=docs/mobile/evidence/S13/composition-20260919/playwright.config.mjs"
+    ],
+    "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S13\\composition-20260919\\playwright.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cp/browser-a1",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "globe-composition.spec.mjs"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S13\\composition-20260919\\browser-a1\\playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "globe-composition.spec.mjs",
+      "file": "globe-composition.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "one composition migrates the three legacy choices after a real frame, applies whole selections and restores one saved record",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 18542,
+                  "error": {
+                    "message": "TimeoutError: locator.click: Timeout 12000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-globe-control=\"edition-rail-toggle\"]')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" aria-expanded=\"true\" title=\"Издание глобуса\" aria-label=\"Издание глобуса\" aria-controls=\"globe-edition-rail\" data-globe-control=\"edition-rail-toggle\" class=\"ui-icon-button ui-icon-button--md ui-icon-button--dark globe-style-switch-toggle\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    23 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+                    "stack": "TimeoutError: locator.click: Timeout 12000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-globe-control=\"edition-rail-toggle\"]')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" aria-expanded=\"true\" title=\"Издание глобуса\" aria-label=\"Издание глобуса\" aria-controls=\"globe-edition-rail\" data-globe-control=\"edition-rail-toggle\" class=\"ui-icon-button ui-icon-button--md ui-icon-button--dark globe-style-switch-toggle\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    23 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n    at chooseEdition (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\globe-composition.spec.mjs:270:101)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\globe-composition.spec.mjs:285:5",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\globe-composition.spec.mjs",
+                      "column": 101,
+                      "line": 270
+                    },
+                    "snippet": "  268 |   else {\n  269 |     const option = page.locator(`button[data-globe-edition-option=\"${edition}\"]`);\n> 270 |     if (!await option.isVisible()) await page.locator('[data-globe-control=\"edition-rail-toggle\"]').click();\n      |                                                                                                     ^\n  271 |     await option.click();\n  272 |   }\n  273 | }"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\globe-composition.spec.mjs",
+                        "column": 101,
+                        "line": 270
+                      },
+                      "message": "TimeoutError: locator.click: Timeout 12000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-globe-control=\"edition-rail-toggle\"]')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" aria-expanded=\"true\" title=\"Издание глобуса\" aria-label=\"Издание глобуса\" aria-controls=\"globe-edition-rail\" data-globe-control=\"edition-rail-toggle\" class=\"ui-icon-button ui-icon-button--md ui-icon-button--dark globe-style-switch-toggle\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    23 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n\n  268 |   else {\n  269 |     const option = page.locator(`button[data-globe-edition-option=\"${edition}\"]`);\n> 270 |     if (!await option.isVisible()) await page.locator('[data-globe-control=\"edition-rail-toggle\"]').click();\n      |                                                                                                     ^\n  271 |     await option.click();\n  272 |   }\n  273 | }\n    at chooseEdition (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\globe-composition.spec.mjs:270:101)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\globe-composition.spec.mjs:285:5"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-19T19:02:11.965Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "composition-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-cp\\browser-a1\\globe-composition-one-comp-8ff87-d-restores-one-saved-record\\attachments\\composition-source-evidence-1923d3d57af24af8fb282c72938c6173d145ec9c.json"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-cp\\browser-a1\\globe-composition-one-comp-8ff87-d-restores-one-saved-record\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\globe-composition.spec.mjs",
+                    "column": 101,
+                    "line": 270
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "3aa0074735d31ef7741a-e447bf155aee45c162df",
+          "file": "globe-composition.spec.mjs",
+          "line": 275,
+          "column": 1
+        },
+        {
+          "title": "malformed and failed new composition reads cannot authorize legacy migration or overwrite the unknown saved choice",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9168,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-19T19:02:31.755Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "composition-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-cp\\browser-a1\\globe-composition-malforme-67d6f-te-the-unknown-saved-choice\\attachments\\composition-source-evidence-4e29308f7277dff6418fcf15ed17cc146e394fb0.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3aa0074735d31ef7741a-574b8a75e0b9ec8b0bc5",
+          "file": "globe-composition.spec.mjs",
+          "line": 341,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-19T19:02:11.361Z",
+    "duration": 30313.625,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

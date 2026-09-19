@@ -3,9 +3,9 @@
   "repository": "Kosyat128/probpera-literary-map",
   "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
-  "headSha": "b1f093500031c80ed4890cd7d3840ed66c22d49c",
+  "headSha": "69ad06c201cc8a62ffef4f4ec4daaf117b457c15",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-19T18:44:34.246Z",
+  "updatedAt": "2026-09-19T19:08:15.854Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -2043,7 +2043,8 @@
         "docs/mobile/evidence/S12/starter-set-20260919/result.json",
         "docs/mobile/evidence/S12/starter-set-20260919/audit-a1/starter-set-completeness.json",
         "docs/mobile/evidence/S13/stand-customization-20260919/starter-set-source-inventory-a2.json",
-        "docs/mobile/evidence/S13/library-background-20260919/starter-set-source-inventory-a2.json"
+        "docs/mobile/evidence/S13/library-background-20260919/starter-set-source-inventory-a2.json",
+        "docs/mobile/evidence/S13/composition-20260919/starter-set-source-inventory.json"
       ],
       "externalBlockers": []
     },
@@ -2073,11 +2074,12 @@
           "status": "IN_PROGRESS",
           "evidence": [
             "docs/mobile/evidence/S13/stand-customization-20260919/result.json",
-            "docs/mobile/evidence/S13/library-background-20260919/result.json"
+            "docs/mobile/evidence/S13/library-background-20260919/result.json",
+            "docs/mobile/evidence/S13/composition-20260919/result.json"
           ],
-          "commit": "b1f093500031c80ed4890cd7d3840ed66c22d49c",
-          "lastValidatedAt": "2026-09-19T18:44:34.246Z",
-          "notes": "Included skins/stands/backgrounds/accessories. Data-driven customization must preserve the same scene before measured performance and parity checks. Three adult included procedural stands now use the canonical scene with rendered-preview acknowledgement, apply/cancel, ordered preference recovery and scoped resource disposal. Canonical default is retained. Full composition, child/optional catalogs, device budgets and release acceptance remain open. The included two-level library and three stands now have detailed original geometry, owned procedural craft maps and inspected actual-App/close-up views following the explicit realism requirement. Same-scene preview, actual frame acknowledgement, persistence, context recovery and scoped disposal are evidenced. Formal art/lightmap acceptance, full composition, catalog, child/rights and device gates remain open."
+          "commit": "69ad06c201cc8a62ffef4f4ec4daaf117b457c15",
+          "lastValidatedAt": "2026-09-19T19:08:15.854Z",
+          "notes": "Included skins/stands/backgrounds/accessories. Data-driven customization must preserve the same scene before measured performance and parity checks. Three adult included procedural stands now use the canonical scene with rendered-preview acknowledgement, apply/cancel, ordered preference recovery and scoped resource disposal. Canonical default is retained. Full composition, child/optional catalogs, device budgets and release acceptance remain open. The included two-level library and three stands now have detailed original geometry, owned procedural craft maps and inspected actual-App/close-up views following the explicit realism requirement. Same-scene preview, actual frame acknowledgement, persistence, context recovery and scoped disposal are evidenced. Formal art/lightmap acceptance, full composition, catalog, child/rights and device gates remain open. Existing included edition/stand/background IDs now share one bounded composition record. Source inventory remains 11/29, zero accepted; no new catalog or art approval is implied."
         },
         {
           "id": "S13.CUSTOM-002",
@@ -2093,21 +2095,23 @@
           "evidence": [
             "docs/mobile/evidence/S13/edition-preference-20260919/result.json",
             "docs/mobile/evidence/S13/stand-customization-20260919/result.json",
-            "docs/mobile/evidence/S13/library-background-20260919/result.json"
+            "docs/mobile/evidence/S13/library-background-20260919/result.json",
+            "docs/mobile/evidence/S13/composition-20260919/result.json"
           ],
-          "commit": "b1f093500031c80ed4890cd7d3840ed66c22d49c",
-          "lastValidatedAt": "2026-09-19T18:44:34.246Z",
-          "notes": "Transactional same-runtime preview/apply/revert. Data-driven customization must preserve the same scene before measured performance and parity checks. Existing edition persistence now follows the app platform port, successful render and explicit-intent fences. Local save recovery preserves one scene. This does not implement the full composition preview/apply/revert transaction. Three adult included procedural stands now use the canonical scene with rendered-preview acknowledgement, apply/cancel, ordered preference recovery and scoped resource disposal. Canonical default is retained. Full composition, child/optional catalogs, device budgets and release acceptance remain open. The included two-level library and three stands now have detailed original geometry, owned procedural craft maps and inspected actual-App/close-up views following the explicit realism requirement. Same-scene preview, actual frame acknowledgement, persistence, context recovery and scoped disposal are evidenced. Formal art/lightmap acceptance, full composition, catalog, child/rights and device gates remain open."
+          "commit": "69ad06c201cc8a62ffef4f4ec4daaf117b457c15",
+          "lastValidatedAt": "2026-09-19T19:08:15.854Z",
+          "notes": "Transactional same-runtime preview/apply/revert. Data-driven customization must preserve the same scene before measured performance and parity checks. Existing edition persistence now follows the app platform port, successful render and explicit-intent fences. Local save recovery preserves one scene. This does not implement the full composition preview/apply/revert transaction. Three adult included procedural stands now use the canonical scene with rendered-preview acknowledgement, apply/cancel, ordered preference recovery and scoped resource disposal. Canonical default is retained. Full composition, child/optional catalogs, device budgets and release acceptance remain open. The included two-level library and three stands now have detailed original geometry, owned procedural craft maps and inspected actual-App/close-up views following the explicit realism requirement. Same-scene preview, actual frame acknowledgement, persistence, context recovery and scoped disposal are evidenced. Formal art/lightmap acceptance, full composition, catalog, child/rights and device gates remain open. Included composition preparation requires three matching parts in one actual rendered frame; failure/cancel restore the applied scene with the retained atlas source. Legacy keys stay unchanged, unavailable new storage is distinct from absence, and one ordered preference record survives remount races. Port confirmation is not crash-safe durability or full accessory/audio composition."
         },
         {
           "id": "S13.CUSTOM-006",
           "status": "IN_PROGRESS",
           "evidence": [
-            "docs/mobile/evidence/S13/library-background-20260919/result.json"
+            "docs/mobile/evidence/S13/library-background-20260919/result.json",
+            "docs/mobile/evidence/S13/composition-20260919/result.json"
           ],
-          "commit": "b1f093500031c80ed4890cd7d3840ed66c22d49c",
-          "lastValidatedAt": "2026-09-19T18:44:34.246Z",
-          "notes": "Compatibility graph. Data-driven customization must preserve the same scene before measured performance and parity checks. Exact local compatibility now validates canonical editions, included stands, quality tiers and the adult application path; unknown or child requests fail closed. This is not the full catalog/rights/device compatibility graph."
+          "commit": "69ad06c201cc8a62ffef4f4ec4daaf117b457c15",
+          "lastValidatedAt": "2026-09-19T19:08:15.854Z",
+          "notes": "Compatibility graph. Data-driven customization must preserve the same scene before measured performance and parity checks. Exact local compatibility now validates canonical editions, included stands, quality tiers and the adult application path; unknown or child requests fail closed. This is not the full catalog/rights/device compatibility graph. Whole included selections validate current exact edition/stand/background IDs, adult authority and quality before preparation. Unknown combinations remain denied; this does not complete the full rights/device/child/catalog compatibility graph."
         },
         {
           "id": "S13.CUSTOM-007",
@@ -2115,11 +2119,12 @@
           "evidence": [
             "docs/mobile/evidence/S13/antique-detail-20260919/result.json",
             "docs/mobile/evidence/S13/stand-customization-20260919/result.json",
-            "docs/mobile/evidence/S13/library-background-20260919/result.json"
+            "docs/mobile/evidence/S13/library-background-20260919/result.json",
+            "docs/mobile/evidence/S13/composition-20260919/result.json"
           ],
-          "commit": "b1f093500031c80ed4890cd7d3840ed66c22d49c",
-          "lastValidatedAt": "2026-09-19T18:44:34.246Z",
-          "notes": "Bounded cache and explicit GPU disposal. Data-driven customization must preserve the same scene before measured performance and parity checks. Antique decoration now follows explicit app quality tiers. High body bytes match the original, while lower tiers reduce buffers. Focused actual Chrome evidence checks 30 quality switches and scoped geometry disposal; full catalog/stand/skin stress and device budgets remain open. Three adult included procedural stands now use the canonical scene with rendered-preview acknowledgement, apply/cancel, ordered preference recovery and scoped resource disposal. Canonical default is retained. Full composition, child/optional catalogs, device budgets and release acceptance remain open. The included two-level library and three stands now have detailed original geometry, owned procedural craft maps and inspected actual-App/close-up views following the explicit realism requirement. Same-scene preview, actual frame acknowledgement, persistence, context recovery and scoped disposal are evidenced. Formal art/lightmap acceptance, full composition, catalog, child/rights and device gates remain open."
+          "commit": "69ad06c201cc8a62ffef4f4ec4daaf117b457c15",
+          "lastValidatedAt": "2026-09-19T19:08:15.854Z",
+          "notes": "Bounded cache and explicit GPU disposal. Data-driven customization must preserve the same scene before measured performance and parity checks. Antique decoration now follows explicit app quality tiers. High body bytes match the original, while lower tiers reduce buffers. Focused actual Chrome evidence checks 30 quality switches and scoped geometry disposal; full catalog/stand/skin stress and device budgets remain open. Three adult included procedural stands now use the canonical scene with rendered-preview acknowledgement, apply/cancel, ordered preference recovery and scoped resource disposal. Canonical default is retained. Full composition, child/optional catalogs, device budgets and release acceptance remain open. The included two-level library and three stands now have detailed original geometry, owned procedural craft maps and inspected actual-App/close-up views following the explicit realism requirement. Same-scene preview, actual frame acknowledgement, persistence, context recovery and scoped disposal are evidenced. Formal art/lightmap acceptance, full composition, catalog, child/rights and device gates remain open. The applied atlas source remains leased across preparation and rollback; scene resources retain their existing owners. Scoped source-bound lifecycle/disposal evidence does not replace installed-device stress/soak acceptance."
         },
         {
           "id": "S13.CUSTOM-008",
@@ -2133,12 +2138,12 @@
         }
       ],
       "lastGreenCommands": [
-        "node docs/mobile/evidence/S13/library-background-20260919/run-checks.mjs unit a5",
-        "node docs/mobile/evidence/S13/library-background-20260919/run-checks.mjs static a5",
-        "node docs/mobile/evidence/S13/library-background-20260919/run-checks.mjs browser a4",
-        "node docs/mobile/evidence/S13/library-background-20260919/run-pwa.mjs b1f093500031c80ed4890cd7d3840ed66c22d49c",
-        "pwsh -File docs/mobile/evidence/S13/library-background-20260919/build-android.ps1 b1f093500031c80ed4890cd7d3840ed66c22d49c",
-        "node docs/mobile/evidence/S13/library-background-20260919/preserve-android.mjs b1f093500031c80ed4890cd7d3840ed66c22d49c"
+        "node docs/mobile/evidence/S13/composition-20260919/run-checks.mjs unit a1",
+        "node docs/mobile/evidence/S13/composition-20260919/run-checks.mjs static a1",
+        "node docs/mobile/evidence/S13/composition-20260919/run-checks.mjs browser a2",
+        "node docs/mobile/evidence/S13/composition-20260919/run-pwa.mjs 69ad06c201cc8a62ffef4f4ec4daaf117b457c15",
+        "pwsh -File docs/mobile/evidence/S13/composition-20260919/build-android.ps1 69ad06c201cc8a62ffef4f4ec4daaf117b457c15",
+        "node docs/mobile/evidence/S13/composition-20260919/preserve-android.mjs 69ad06c201cc8a62ffef4f4ec4daaf117b457c15"
       ],
       "artifacts": [
         "docs/mobile/evidence/S13/edition-preference-20260919/entry.json",
@@ -2155,7 +2160,11 @@
         "docs/mobile/evidence/S13/library-background-20260919/result.json",
         "docs/mobile/evidence/S13/library-background-20260919/visual-review.json",
         "docs/mobile/evidence/S13/library-background-20260919/pwa-a1/result.json",
-        "docs/mobile/evidence/S13/library-background-20260919/android-a1/result.json"
+        "docs/mobile/evidence/S13/library-background-20260919/android-a1/result.json",
+        "docs/mobile/evidence/S13/composition-20260919/entry.json",
+        "docs/mobile/evidence/S13/composition-20260919/result.json",
+        "docs/mobile/evidence/S13/composition-20260919/pwa-a1/result.json",
+        "docs/mobile/evidence/S13/composition-20260919/android-a1/result.json"
       ],
       "externalBlockers": []
     },
@@ -10792,7 +10801,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Continue the bounded S13 full-composition design: one versioned edition/stand/background record, exact combined rendered-frame acknowledgement, migration and rollback ownership. Preserve the user-required realism of the detailed library and three included stands, canonical starfield/default frame and one scene. Starter Set is 11/29 source-bound, zero accepted. Formal art/lightmap review, full catalog/Background Studio, optional/child authority, installed-device budgets and release acceptance remain open. Do not repeat unchanged validated checks or artifact payload audits.",
+    "nextAction": "Continue the library realism slice in next-art-design.md: source-aligned lighting, shelf/cabinet occlusion and less repetitive book/material placement. The current library remains a game-like scene, not final photorealistic art. Preserve the single renderer, current detailed library/stands and same-frame included edition/stand/background transaction. The included Starter Set remains 11/29 source-bound with zero accepted. Full accessory/audio/child composition, full catalog/Background Studio, formal art/lightmaps, rights/entitlements, installed-device budgets, iOS and release acceptance remain open. Do not repeat unchanged source-bound checks or prior artifact payload audits.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -10845,7 +10854,8 @@
       "docs/mobile/evidence/S13/edition-preference-20260919/result.json",
       "docs/mobile/evidence/S13/antique-detail-20260919/result.json",
       "docs/mobile/evidence/S13/stand-customization-20260919/result.json",
-      "docs/mobile/evidence/S13/library-background-20260919/result.json"
+      "docs/mobile/evidence/S13/library-background-20260919/result.json",
+      "docs/mobile/evidence/S13/composition-20260919/result.json"
     ],
     "commands": [
       "node scripts/mobile/verify-requirements.mjs",
@@ -10868,7 +10878,8 @@
       "S13 edition-preference-20260919 contains focused preference race/recovery and actual Chrome scene evidence, plus exact PWA/Android artifacts including dossier navigation. Best-effort acceptance is not durability or installed-device evidence.",
       "S13 antique-detail-20260919 validates exact original High geometry, reduced detail, scoped disposal and 30 quality switches. Full optional catalog stress is not claimed; runtime artifacts await next accumulated batch.",
       "S13 stand-customization-20260919 contains controller/geometry/adapter and real Chrome preview/cancel/persistence evidence plus an accumulated PWA/Android batch. Three original adult stands are source-bound, not legally/editorially/child or whole-stage accepted.",
-      "S13 library-background-20260919 final unit-a5/static-a5/browser-a4 and source-bound visual/PWA/Android evidence cover the included adult library, detailed stand geometry/materials and existing scene ownership. Initial prototype attempts are historical. Eleven of 29 Starter Set items are source-bound; none is fully accepted. This does not close formal art/lightmap, full composition, child/rights, device or release gates."
+      "S13 library-background-20260919 final unit-a5/static-a5/browser-a4 and source-bound visual/PWA/Android evidence cover the included adult library, detailed stand geometry/materials and existing scene ownership. Initial prototype attempts are historical. Eleven of 29 Starter Set items are source-bound; none is fully accepted. This does not close formal art/lightmap, full composition, child/rights, device or release gates.",
+      "S13 composition-20260919 unit-a1/static-a1/browser-a2 and matching PWA/Android evidence cover the bounded adult included composition transaction. Legacy art/inventory evidence remains preserved: 11/29 source-bound, zero accepted. Full catalog/accessory/audio/child composition, art/lightmaps, rights, device, iOS and release remain open."
     ]
   },
   "requirementsHash": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732",
@@ -12577,6 +12588,14 @@
       "sha256": "3969697e9d291c6c49f622d448633c6dff6fc3884ba4daf4b0d23e42dba3a4aa",
       "sourceCommit": "b1f093500031c80ed4890cd7d3840ed66c22d49c",
       "status": "INCLUDED_LIBRARY_AND_STAND_CRAFT_INSPECTED",
+      "stageAccepted": false,
+      "releaseReady": false
+    },
+    "s13IncludedComposition": {
+      "path": "docs/mobile/evidence/S13/composition-20260919/result.json",
+      "sha256": "90f7e4556ca3efe0c64b6bd48524d433984c65b25b460770b9a46e56cb8c08dc",
+      "sourceCommit": "69ad06c201cc8a62ffef4f4ec4daaf117b457c15",
+      "status": "INCLUDED_COMPOSITION_TRANSACTION_VALIDATED",
       "stageAccepted": false,
       "releaseReady": false
     }

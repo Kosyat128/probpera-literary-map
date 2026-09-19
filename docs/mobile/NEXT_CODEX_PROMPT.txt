@@ -1,3 +1,21 @@
+<!-- s13-composition-20260919:begin -->
+Source 69ad06c2 binds the included edition, stand and background to
+one versioned preference record. Three matching parts must share an actual frame
+before commit; cancellation/failure repaints the applied atlas source and restores
+the applied scene. Legacy settings stay read-only, and unknown storage never
+authorizes migration. A timed-out write remains ordered. Preference confirmation
+is best-effort, not a crash-durability guarantee.
+Final 256 focused units, TypeScript and 2 actual Chrome cases pass.
+Evidence: evidence/S13/composition-20260919/result.json. PWA 99cb8924 and
+Android/dev ccd35e02 bind this source. APK SHA256: 472523aceba525e42f146bf3997a4d518c405b9f53da791091be76f4e071b3f4.
+The detailed library/stand art and its previous evidence remain preserved. This
+engine slice grants no new art/lightmap approval or full accessory/audio/child
+composition acceptance. Starter Set remains 11/29 source-bound, zero accepted.
+Full catalog/Background Studio, rights/entitlements, installed-device budgets,
+iOS and release gates remain open. Stage counts stay 3 complete, 11 in progress,
+27 unstarted; first open S03. Next: library lighting, shelf occlusion and material/placement realism from next-art-design.md.
+<!-- s13-composition-20260919:end -->
+
 <!-- s13-library-background-20260919:begin -->
 Source b1f09350 adds the included adult library to the same globe scene
 and improves the three included stands. The user's explicit realism requirement
