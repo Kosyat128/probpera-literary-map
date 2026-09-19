@@ -1,10 +1,11 @@
 import * as THREE from "three";
 import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
 import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
-import { THREE_WHALES_GLOBE_STAND_ID, isIncludedGlobeStandId, type IncludedGlobeStandId } from "../planet/globeStands";
+import { THREE_WHALES_GLOBE_STAND_ID, isCeramicPortraitGlobeStandId, isIncludedGlobeStandId, type IncludedGlobeStandId } from "../planet/globeStands";
 import { createGlobeCraftMaterials } from "./globeCraftMaterials";
 import { createTurnedWoodAtlas } from "./globeTurnedWoodAtlas";
 import { createWhaleStandGeometry } from "./globeWhaleStandGeometry";
+import { createCeramicPortraitStand } from "./globeCeramicPortraitStandGeometry";
 import type { GlobeQualityTier } from "./globeQuality";
 
 export interface OwnedGlobeStand {
@@ -29,6 +30,15 @@ export function createIncludedGlobeStand(id: IncludedGlobeStandId, quality: Glob
     resource.group.name = `included-globe-stand:${id}`;
     resource.group.userData = { ...resource.group.userData, standId: id,
       provenance: "canonical-site-derived", qualityTier: quality };
+    return resource;
+  }
+  if (isCeramicPortraitGlobeStandId(id)) {
+    const kinds = { "stand.base.portrait-pushkin": "pushkin", "stand.base.portrait-hemingway": "hemingway",
+      "stand.base.portrait-tolstoy": "tolstoy" } as const;
+    const resource = createCeramicPortraitStand(kinds[id], quality);
+    resource.group.name = `included-globe-stand:${id}`;
+    resource.group.userData = { ...resource.group.userData, standId: id,
+      provenance: "authored-in-project", qualityTier: quality };
     return resource;
   }
   const budget = detail[quality];

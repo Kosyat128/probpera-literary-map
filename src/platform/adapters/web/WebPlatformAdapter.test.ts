@@ -347,7 +347,7 @@ describe("non-secret best-effort canonical preferences", () => {
   it("round-trips only exact adult stand choices without extending browser storage authority", async () => {
     const env = browserEnvironment(), adapter = createWebPlatformAdapter({ window: env.browser });
     const recreated = createWebPlatformAdapter({ window: env.browser });
-    for (const value of ["canonical", "stand.base.three-whales", "stand.base.museum", "stand.base.wood", "stand.base.book-stack"]) {
+    for (const value of ["canonical", "stand.base.three-whales", "stand.base.portrait-pushkin", "stand.base.portrait-hemingway", "stand.base.portrait-tolstoy", "stand.base.museum", "stand.base.wood", "stand.base.book-stack"]) {
       expect(await adapter.preferences.set(STAND, value)).toBe(true);
       expect(await recreated.preferences.get(STAND)).toBe(value);
     }

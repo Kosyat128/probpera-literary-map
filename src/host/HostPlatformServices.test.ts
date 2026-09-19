@@ -408,7 +408,7 @@ describe("exact non-secret preferences with serialized readback", () => {
   it("round-trips only exact adult stand choices through the stand preference key", async () => {
     const f = fixture();
     const recreated = createHostPlatformServices({ kind: "ios", channel: "dev", languages: ["en"], preferences: f.preferences });
-    for (const value of ["canonical", "stand.base.three-whales", "stand.base.museum", "stand.base.wood", "stand.base.book-stack"]) {
+    for (const value of ["canonical", "stand.base.three-whales", "stand.base.portrait-pushkin", "stand.base.portrait-hemingway", "stand.base.portrait-tolstoy", "stand.base.museum", "stand.base.wood", "stand.base.book-stack"]) {
       expect(await f.services.preferences.set(STAND, value)).toBe(true);
       expect(await recreated.preferences.get(STAND)).toBe(value);
     }

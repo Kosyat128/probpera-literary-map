@@ -45,6 +45,23 @@ export interface BaseEditionStarterItem {
 export const BASE_EDITION_STARTER_ITEMS: readonly BaseEditionStarterItem[] = Object.freeze(STARTER_ROWS.map(([requirementId, category, id]) =>
   Object.freeze({ requirementId, category, id, commercialAvailability: "included-in-base" as const, iapSkuAllowed: false as const })));
 
+// Explicit owner additions are separate from the immutable 29 required rows.
+// This fixed local list is not a caller-supplied inclusion or purchase authority.
+const OWNER_ADDED_IDS = [
+  "stand.base.portrait-pushkin", "stand.base.portrait-hemingway", "stand.base.portrait-tolstoy",
+] as const;
+export type OwnerAddedBaseItemId = (typeof OWNER_ADDED_IDS)[number];
+export interface OwnerAddedBaseItem {
+  readonly id: OwnerAddedBaseItemId;
+  readonly category: "stand";
+  readonly inclusionBasis: "explicit-owner-request";
+  readonly commercialAvailability: "included-in-base";
+  readonly iapSkuAllowed: false;
+}
+export const OWNER_ADDED_BASE_ITEMS: readonly OwnerAddedBaseItem[] = Object.freeze(OWNER_ADDED_IDS.map(id =>
+  Object.freeze({ id, category: "stand" as const, inclusionBasis: "explicit-owner-request" as const,
+    commercialAvailability: "included-in-base" as const, iapSkuAllowed: false as const })));
+
 // These nine editions were visitor-available in the canonical site registry at
 // the V12 policy checkpoint. Later hiding an edition must not make it optional.
 const GRANDFATHERED_MINIMUM = ["behaim-1492", "hondius-1615", "coronelli-1697", "scherer-1700", "cassini-1790",
@@ -57,6 +74,7 @@ export interface BaseEditionPolicySnapshot {
   readonly distributionModel: "PAID_UPFRONT_WITH_OPTIONAL_NON_CONSUMABLES";
   readonly requiredLocales: readonly ["ru", "en"];
   readonly starterItems: readonly BaseEditionStarterItem[];
+  readonly ownerAdditions: readonly OwnerAddedBaseItem[];
   readonly grandfatheredEditionIds: readonly GlobeEditionId[];
   readonly defaultEditionId: GlobeEditionId;
   readonly skinEditionBindings: readonly Readonly<{ itemId: BaseEditionStarterItemId; editionId: GlobeEditionId }>[];
@@ -116,8 +134,12 @@ export function createBaseEditionPolicy(aliases: readonly BaseEditionAlias[] = [
     if (!grandfatheredEditionIds.includes(binding.editionId)) fail("invalid-starter-edition-binding");
     return Object.freeze(binding);
   }));
-  const canonicalIds = new Set<string>([...BASE_EDITION_STARTER_ITEMS.map(item => item.id), ...grandfatheredEditionIds]);
-  if (canonicalIds.size !== BASE_EDITION_STARTER_ITEMS.length + grandfatheredEditionIds.length) fail("conflicting-base-edition-identity");
+  if (OWNER_ADDED_BASE_ITEMS.some(item => !itemId(item.id))) fail("invalid-owner-added-base-identity");
+  const canonicalIds = new Set<string>([...BASE_EDITION_STARTER_ITEMS.map(item => item.id),
+    ...OWNER_ADDED_BASE_ITEMS.map(item => item.id), ...grandfatheredEditionIds]);
+  if (canonicalIds.size !== BASE_EDITION_STARTER_ITEMS.length + OWNER_ADDED_BASE_ITEMS.length + grandfatheredEditionIds.length) {
+    fail("conflicting-base-edition-identity");
+  }
   const resolved = new Map([...canonicalIds].map(id => [id, id]));
   const addAlias = (alias: string, includedItemId: string) => {
     if (!itemId(alias) || !itemId(includedItemId)) fail("invalid-base-edition-alias");
@@ -149,7 +171,7 @@ export function createBaseEditionPolicy(aliases: readonly BaseEditionAlias[] = [
   }
   const snapshot: BaseEditionPolicySnapshot = Object.freeze({ profileId: "SAFE_PAID_BILINGUAL_V1",
     distributionModel: "PAID_UPFRONT_WITH_OPTIONAL_NON_CONSUMABLES", requiredLocales: Object.freeze(["ru", "en"] as const),
-    starterItems: BASE_EDITION_STARTER_ITEMS, grandfatheredEditionIds, defaultEditionId: DEFAULT_GLOBE_EDITION_ID,
+    starterItems: BASE_EDITION_STARTER_ITEMS, ownerAdditions: OWNER_ADDED_BASE_ITEMS, grandfatheredEditionIds, defaultEditionId: DEFAULT_GLOBE_EDITION_ID,
     skinEditionBindings, grantsEntitlement: false, releaseReady: false });
   const classify = (value: unknown): BaseEditionClassification => {
     const valid = itemId(value), canonicalId = valid ? resolved.get(value) ?? null : null;

@@ -29,6 +29,7 @@ assert.equal(rows.length,29);assert.equal(new Set(rows.map(r=>r.item_id)).size,r
 assert.ok(rows.every(r=>r.required==='true'&&r.iap_sku_allowed==='false'));
 const built=await build({stdin:{resolveDir:root,contents:`
  export * from './src/planet/baseEditionPolicy';
+ export {INCLUDED_GLOBE_STANDS} from './src/planet/globeStands';
  export {GLOBE_EDITION_BY_ID,resolveGlobeEditionTexturePath} from './src/planet/editions';
  `,loader:'ts'},bundle:true,write:false,platform:'node',format:'esm',target:'es2020',metafile:true,logLevel:'silent'});
 const runtime=await import('data:text/javascript;base64,'+Buffer.from(built.outputFiles[0].contents).toString('base64'));
@@ -54,7 +55,20 @@ const sourceBindings={
  'stand.base.wood':['src/planet/globeStands.ts','src/components/globeStandGeometry.ts','src/components/globeTurnedWoodAtlas.ts','src/components/globeCraftMaterials.ts','src/components/GlobeIncludedStand.tsx','src/host/planetComposition.ts','src/host/planetCompositionPresentation.ts','src/planet/globeComposition.ts','src/components/useGlobeCompositionScene.ts','src/components/useGlobeCompositionFrame.ts','src/host/PlanetStandControls.tsx'],
  'stand.base.book-stack':['src/planet/globeStands.ts','src/components/globeStandGeometry.ts','src/components/globeCraftMaterials.ts','src/components/GlobeIncludedStand.tsx','src/host/planetComposition.ts','src/host/planetCompositionPresentation.ts','src/planet/globeComposition.ts','src/components/useGlobeCompositionScene.ts','src/components/useGlobeCompositionFrame.ts','src/host/PlanetStandControls.tsx'],
 };
-const sourcePaths=[...new Set([tablePath,'scripts/mobile/audit-starter-set.mjs','scripts/mobile/csv.mjs',...moduleInputs,...Object.values(sourceBindings).flat()])].sort();
+// Additional owner requests have their own inventory, never a CSV requirement binding.
+const portraitSources=['src/planet/baseEditionPolicy.ts','src/planet/globeStands.ts',
+ 'src/components/globeCeramicPortraitStandGeometry.ts','src/components/globeStandGeometry.ts',
+ 'src/components/GlobeIncludedStand.tsx','src/host/planetComposition.ts','src/host/planetCompositionPresentation.ts',
+ 'src/planet/globeComposition.ts','src/components/useGlobeCompositionScene.ts','src/components/useGlobeCompositionFrame.ts',
+ 'src/host/PlanetStandControls.tsx'];
+const ownerSourceBindings={
+ 'stand.base.portrait-pushkin':portraitSources,
+ 'stand.base.portrait-hemingway':portraitSources,
+ 'stand.base.portrait-tolstoy':portraitSources,
+};
+assert.deepEqual(snapshot.ownerAdditions.map(item=>item.id).sort(),Object.keys(ownerSourceBindings).sort());
+const sourcePaths=[...new Set([tablePath,'scripts/mobile/audit-starter-set.mjs','scripts/mobile/csv.mjs',...moduleInputs,
+ ...Object.values(sourceBindings).flat(),...Object.values(ownerSourceBindings).flat()])].sort();
 const sourceBefore=await Promise.all(sourcePaths.map(evidence));
 const editions=[];
 for(const id of snapshot.grandfatheredEditionIds) {
@@ -83,13 +97,33 @@ for(const row of rows) {
    childAgeReview:row.category==='child'||/child|planetka|world\./u.test(row.item_id)?'open':'not-assessed'},
   acceptance:'OPEN',releaseReady:false});
 }
+const ownerAdditions=[];
+for(const item of snapshot.ownerAdditions) {
+ const descriptor=runtime.INCLUDED_GLOBE_STANDS.find(stand=>stand.id===item.id);
+ assert.ok(descriptor);assert.equal(descriptor.sourceItemId,item.id);
+ assert.equal(descriptor.provenance,'authored-in-project');assert.equal(descriptor.canonicalSource,null);
+ assert.equal(descriptor.source,'src/components/globeCeramicPortraitStandGeometry.ts');
+ assert.equal(descriptor.contentVersion,1);assert.equal(descriptor.supportedAccess,'adult');
+ assert.equal(item.inclusionBasis,'explicit-owner-request');assert.equal(item.commercialAvailability,'included-in-base');
+ assert.equal(item.iapSkuAllowed,false);assert.equal(Object.hasOwn(item,'requirementId'),false);
+ assert.equal(policy.classify(item.id).canonicalId,item.id);
+ for(const flag of ['iapSkuAllowed','childReviewed','rightsReviewed','artReviewed','grantsEntitlement','releaseReady']) assert.equal(descriptor[flag],false);
+ const sources=await Promise.all(ownerSourceBindings[item.id].map(evidence));
+ ownerAdditions.push({...item,required:false,sourceItemId:descriptor.sourceItemId,provenance:descriptor.provenance,
+  canonicalSource:descriptor.canonicalSource,contentVersion:descriptor.contentVersion,supportedAccess:descriptor.supportedAccess,
+  implementation:{status:'source-present',sources},
+  checks:{presence:'partial',rightsAcceptance:'open',platformAcceptance:'open',offlineAcceptance:'open',
+   switchStressAcceptance:'open',visualApproval:'open',childAgeReview:'not-assessed'},
+  childReviewed:false,rightsReviewed:false,artReviewed:false,grantsEntitlement:false,acceptance:'OPEN',releaseReady:false});
+}
 assert.deepEqual(await Promise.all(sourcePaths.map(evidence)),sourceBefore,'Sources changed during audit');
 const report={schemaVersion:1,kind:'literary-planet-starter-set-source-inventory',recordedAt:new Date().toISOString(),
  auditValid:true,status:'INCOMPLETE',requiredCount:items.length,acceptedCount:0,sourceBoundCount:items.filter(i=>i.implementation.status!=='no-audited-binding').length,
  sourceInputs:sourceBefore,defaultEditionId:snapshot.defaultEditionId,grandfatheredEditions:editions,items,
+ ownerAddedCount:ownerAdditions.length,ownerAdditions,
  limitations:['Source/asset presence is not feature or release acceptance.','Existing rights metadata does not replace platform/territory review.',
- 'Adult canonical editions cannot satisfy the required child skins.','No optional SKU or entitlement is approved by this inventory.'],
+ 'Owner additions are separate from the 29 mandatory starter requirements.','Adult canonical editions cannot satisfy the required child skins.','No optional SKU or entitlement is approved by this inventory.'],
  productionActionsPerformed:false,grantsEntitlement:false,stageAccepted:false,releaseReady:false};
 await fs.mkdir(path.dirname(output),{recursive:true});await fs.writeFile(output,json(report),{flag:'wx'});
 console.log(json({auditValid:report.auditValid,status:report.status,requiredCount:report.requiredCount,acceptedCount:0,
- sourceBoundCount:report.sourceBoundCount,grandfatheredEditions:editions.length,report:destination,releaseReady:false}));
+ sourceBoundCount:report.sourceBoundCount,ownerAddedCount:ownerAdditions.length,grandfatheredEditions:editions.length,report:destination,releaseReady:false}));
