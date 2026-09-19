@@ -748,3 +748,9 @@
   validate restored locations; pending intent is consumed into physical pages
   without taking ownership away from later page turns. Saved-book progress stays
   local and follows its existing explicit-save policy and account ownership.
+
+- D128: S12 enters through a documented parallel-safe inclusion-policy slice.
+  Mandatory Starter Set and grandfathered site editions cannot become optional
+  products. A candidate SKU, alias or UI flag grants no entitlement. The inventory
+  records actual canonical sources and assets separately from full acceptance;
+  missing Starter Set items and rights/bilingual/child/platform gates stay open.

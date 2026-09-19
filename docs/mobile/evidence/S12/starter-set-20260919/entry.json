@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-19T16:29:46.086Z",
+  "stage": "S12",
+  "sourceCommit": "c6609b709bb5a05fb254dff1ddd36ae8ec195d37",
+  "entryType": "documented-parallel-safe",
+  "reason": "Matrix69 permits documented parallel-safe entry. This local inclusion policy and honest Starter Set inventory grant no license, activate no content and depend on no outstanding editorial, native-device, child or store acceptance. First-open stage remains S03.",
+  "requirementsHash": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732",
+  "manifestSha256": "bb759162674bafe0a9baa87ee6adffd41527d6e38e979f5cf6a6d0445535acd8",
+  "dependencies": [
+    {
+      "path": "docs/mobile/requirements/v12/08_PAID_APP_COMMERCIAL_MODEL_RU.md",
+      "sha256": "715679b3b51785cada19af1df0fa5ea4e4724a21133a5e9f3360dff8919d2a65"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/09_BASE_EDITION_STARTER_SET_RU.md",
+      "sha256": "ac72ef546b5af93b7d5c7ae070801b92b8a0d67fd47a7f26c4c605c607126d5e"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/10_STORE_IAP_ENTITLEMENTS_REFUNDS_RU.md",
+      "sha256": "09694f07eea737f60c3f45dae00d7271601b621f456e3815c2d744775bd0c599"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/37_BASE_EDITION_STARTER_SET.csv",
+      "sha256": "575f40b97986cb4e64cb89243059a3b18c4cda8069f4f0e1c7d3565f6132b731"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/45_STORE_PRODUCT_SCHEMA.json",
+      "sha256": "48e983e22fbe5c8b74d842d9b2acb6b98ded0a0f9515cb4fba06ed4d4a3033c7"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/111_SAFE_PAID_BILINGUAL_V1_CONFIG.json",
+      "sha256": "7a2596f20d9d058f9012523191b1688ac1831273a6d7dca78c68a8f97abb3250"
+    }
+  ],
+  "routingNote": "The coarse S11-S15 route omits commerce dependencies required by the S12 matrix and criterion bindings; only those exact dependencies were added to this scope.",
+  "grantsEntitlement": false,
+  "activationAllowed": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

@@ -1,0 +1,16 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "src/planet/baseEditionPolicy.test.ts",
+    "--maxWorkers=2",
+    "--reporter=json",
+    "--outputFile=C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S12\\starter-set-20260919\\unit-a1\\vitest.json"
+  ],
+  "startedAt": "2026-09-19T16:23:34.059Z",
+  "durationMs": 1037,
+  "exitCode": 0,
+  "stdout": "JSON report written to C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S12/starter-set-20260919/unit-a1/vitest.json\n",
+  "stderr": ""
+}

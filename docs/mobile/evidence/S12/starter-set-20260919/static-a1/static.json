@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/typescript/bin/tsc",
+    "--noEmit"
+  ],
+  "startedAt": "2026-09-19T16:23:36.151Z",
+  "durationMs": 26083,
+  "exitCode": 0,
+  "stdout": "",
+  "stderr": ""
+}

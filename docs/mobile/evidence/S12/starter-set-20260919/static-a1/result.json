@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "mode": "static",
+  "sourceBase": "0189c7a19230ea171241ccd51e4b1bf1e61fe1ef",
+  "startedAt": "2026-09-19T16:23:36.151Z",
+  "endedAt": "2026-09-19T16:24:02.238Z",
+  "sourceInputs": [
+    {
+      "path": "src/planet/baseEditionPolicy.ts",
+      "sha256": "ff5d8a6e3e21dfce9b14487a35b6800fbcbde200abacc6e1898712b486c62985"
+    },
+    {
+      "path": "src/planet/baseEditionPolicy.test.ts",
+      "sha256": "8986fdeef802772be2c9c524035308e665a0f9023d66bb7b5bdfa7482e6eee50"
+    },
+    {
+      "path": "src/planet/editions.ts",
+      "sha256": "466105cd35cadf5c0bc656c34d50bc20fe174551020b002fc903b8071dc5145e"
+    },
+    {
+      "path": "src/components/globeEditions.ts",
+      "sha256": "b7440b6278979deb1e47738572460869202f0d9cf794a144aceac9dbcf8cdd77"
+    },
+    {
+      "path": "scripts/mobile/audit-starter-set.mjs",
+      "sha256": "fe1e1e3d64ab1ec5f17b4b719bc7f3eec6558850047577b383ca2b424b638975"
+    },
+    {
+      "path": "scripts/mobile/csv.mjs",
+      "sha256": "899341f64a0481d9482108e1d346d9bbc07035d5c7999c4b413b9da985dc8097"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/37_BASE_EDITION_STARTER_SET.csv",
+      "sha256": "575f40b97986cb4e64cb89243059a3b18c4cda8069f4f0e1c7d3565f6132b731"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/09_BASE_EDITION_STARTER_SET_RU.md",
+      "sha256": "ac72ef546b5af93b7d5c7ae070801b92b8a0d67fd47a7f26c4c605c607126d5e"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/111_SAFE_PAID_BILINGUAL_V1_CONFIG.json",
+      "sha256": "7a2596f20d9d058f9012523191b1688ac1831273a6d7dca78c68a8f97abb3250"
+    },
+    {
+      "path": "package.json",
+      "sha256": "90b392c205754f838b8bc7c4475bd475936be1078561bb218c437d151177869f"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "8d51a8c9266fe83bf17c076b51672753b3750a17520cd0d2c28a90cb8b21e0d6"
+    },
+    {
+      "path": "vitest.config.ts",
+      "sha256": "5c1e90985e77b35599e5bdaf77c74a1166949ec9c4f45d1c5f926c3f53bef90e"
+    },
+    {
+      "path": "docs/mobile/evidence/S12/starter-set-20260919/run-checks.mjs",
+      "sha256": "eff20b60c1efebe69cc4048271b125b42d89b1b0973f1998cded7b5567b042d7"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "tests": null,
+  "audit": null,
+  "exitCode": 0,
+  "pass": true,
+  "releaseReady": false,
+  "productionActionsPerformed": false
+}

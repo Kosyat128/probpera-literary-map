@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/mobile/audit-starter-set.mjs",
+    "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S12\\starter-set-20260919\\audit-a1\\starter-set-completeness.json"
+  ],
+  "startedAt": "2026-09-19T16:23:50.250Z",
+  "durationMs": 227,
+  "exitCode": 0,
+  "stdout": "{\n  \"auditValid\": true,\n  \"status\": \"INCOMPLETE\",\n  \"requiredCount\": 29,\n  \"acceptedCount\": 0,\n  \"sourceBoundCount\": 7,\n  \"grandfatheredEditions\": 9,\n  \"report\": \"C:\\\\Users\\\\User\\\\Documents\\\\ChatGPT\\\\Работа по сайту\\\\literary-planet-v12-work\\\\docs\\\\mobile\\\\evidence\\\\S12\\\\starter-set-20260919\\\\audit-a1\\\\starter-set-completeness.json\",\n  \"releaseReady\": false\n}\n\n",
+  "stderr": ""
+}

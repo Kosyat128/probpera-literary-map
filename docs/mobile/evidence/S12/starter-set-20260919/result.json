@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-19T16:29:46.086Z",
+  "sourceCommit": "c6609b709bb5a05fb254dff1ddd36ae8ec195d37",
+  "stage": "S12",
+  "status": "INCLUSION_POLICY_AND_PARTIAL_SOURCE_INVENTORY_VALIDATED",
+  "pass": true,
+  "entry": {
+    "path": "docs/mobile/evidence/S12/starter-set-20260919/entry.json",
+    "sha256": "4e370ace2f9bcd21c467d5976478846805a18372bba43e5c05640ef263b885be"
+  },
+  "runs": {
+    "unit": {
+      "path": "docs/mobile/evidence/S12/starter-set-20260919/unit-a1/result.json",
+      "sha256": "ecbac4bd3e9fe05d82e1c669fc995f353940e8b4ced5262ef1730d0b6a11e460",
+      "tests": {
+        "passed": 11,
+        "failed": 0,
+        "skipped": 0,
+        "failures": []
+      },
+      "audit": null
+    },
+    "static": {
+      "path": "docs/mobile/evidence/S12/starter-set-20260919/static-a1/result.json",
+      "sha256": "e0d7b65e0c9e57af2de7ed728dbebed826e6d44f055b331f8bd3d3c7556d93d5",
+      "tests": null,
+      "audit": null
+    },
+    "audit": {
+      "path": "docs/mobile/evidence/S12/starter-set-20260919/audit-a1/result.json",
+      "sha256": "1f3c9f34610bb1aef5709f15b94161f9c4376c731c6c4feda53bdbc2857c36af",
+      "tests": null,
+      "audit": {
+        "auditValid": true,
+        "status": "INCOMPLETE",
+        "requiredCount": 29,
+        "acceptedCount": 0,
+        "sourceBoundCount": 7,
+        "releaseReady": false
+      }
+    }
+  },
+  "completeness": {
+    "path": "docs/mobile/evidence/S12/starter-set-20260919/audit-a1/starter-set-completeness.json",
+    "sha256": "c68e79fc303393c35c5685eee12e5766369ea9aede2bee16a859d11e538939bb"
+  },
+  "requiredCount": 29,
+  "acceptedCount": 0,
+  "sourceBoundCount": 7,
+  "grandfatheredEditions": 9,
+  "starterSetStatus": "INCOMPLETE",
+  "unchangedRuntimeArtifacts": {
+    "path": "docs/mobile/evidence/S11/download-inspection-20260919/result.json",
+    "sha256": "c62d086e5913359db762229245f718e199ea9a6da15c3cd88cd80433787eebe7"
+  },
+  "artifactsRefreshed": false,
+  "grantsEntitlement": false,
+  "activationAllowed": false,
+  "productionActionsPerformed": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "nextAction": "Continue runtime customization around the persistent canonical globe: inspect S13 bindings, preserve default edition and existing selections, implement the next bounded skin/stand interaction gap and validate affected behavior only. Batch runtime artifact refresh with the pending dossier navigation fix. Keep S12 full Starter Set acceptance open, D107 deferred, QA inactive and production trust empty."
+}

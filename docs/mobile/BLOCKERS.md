@@ -1,3 +1,15 @@
+<!-- s12-starter-set-20260919:begin -->
+Source c6609b70 defines included Base Edition identities and rejects
+optional-SKU mappings for all mandatory and grandfathered items. Eleven units,
+TypeScript and the source inventory pass. Starter Set remains INCOMPLETE:
+29 required, seven source-bound, zero fully accepted; nine existing editions included.
+No license, asset approval, content activation or store operation is inferred.
+S12 is IN_PROGRESS through documented parallel-safe entry; only S00-S02 accepted,
+first open S03, releaseReady false. Evidence: evidence/S12/starter-set-20260919/result.json.
+PWA 5403f982 and Android/dev 8d8cb1ec remain preserved; dossier navigation awaits
+the next runtime build batch. Continue directly with bounded S13 runtime work.
+<!-- s12-starter-set-20260919:end -->
+
 <!-- s11-dossier-navigation-20260919:begin -->
 Source 676d78f3 preserves explicit dossier navigation across delayed
 physical pagination and saves existing saved-book positions when layout fails.

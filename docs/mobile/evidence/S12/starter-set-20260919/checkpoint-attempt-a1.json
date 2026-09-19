@@ -1,0 +1,8 @@
+{
+  "pass": false,
+  "phase": "checkpoint-writing",
+  "error": "TypeError: Cannot read properties of undefined (reading 'push') at state.lastGreenCommands",
+  "stateWritten": false,
+  "entryAndResultWritten": true,
+  "resolution": "Use existing stage.lastGreenCommands schema field. Resume only if existing entry and result bytes match exactly; retain original recordedAt. No implementation or successful test input changed."
+}
