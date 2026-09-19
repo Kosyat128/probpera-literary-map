@@ -3,6 +3,7 @@ import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.j
 import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
 import { isIncludedGlobeStandId, type IncludedGlobeStandId } from "../planet/globeStands";
 import { createGlobeCraftMaterials } from "./globeCraftMaterials";
+import { createTurnedWoodAtlas } from "./globeTurnedWoodAtlas";
 import type { GlobeQualityTier } from "./globeQuality";
 
 export interface OwnedGlobeStand {
@@ -30,6 +31,7 @@ export function createIncludedGlobeStand(id: IncludedGlobeStandId, quality: Glob
   const materials = new Set<THREE.Material>();
   const batches = new Map<THREE.Material, THREE.BufferGeometry[]>();
   let craft: ReturnType<typeof createGlobeCraftMaterials> | null = null;
+  let woodAtlas: ReturnType<typeof createTurnedWoodAtlas> | null = null;
   let disposed = false;
   const dispose = () => {
     if (disposed) return;
@@ -38,6 +40,7 @@ export function createIncludedGlobeStand(id: IncludedGlobeStandId, quality: Glob
     for (const pending of batches.values()) for (const geometry of pending) geometry.dispose();
     batches.clear();
     for (const material of materials) material.dispose();
+    woodAtlas?.dispose();
     craft?.dispose();
     group.clear();
   };
@@ -62,7 +65,7 @@ export function createIncludedGlobeStand(id: IncludedGlobeStandId, quality: Glob
     const pending = batches.get(material) ?? [];
     pending.push(expanded); batches.set(material, pending);
   };
-  const lathe = (name: string, profile: readonly (readonly [number, number])[], material: THREE.Material, flutes = 0, woodGrain = false) => {
+  const lathe = (name: string, profile: readonly (readonly [number, number])[], material: THREE.Material, flutes = 0, woodGrain?: "body" | "underfoot") => {
     const points = profile.map(([radius, y]) => new THREE.Vector2(radius, y));
     if (flutes) {
       // Recomputed fluted normals must not average a broad flat cap into its
@@ -86,20 +89,17 @@ export function createIncludedGlobeStand(id: IncludedGlobeStandId, quality: Glob
       positions.needsUpdate = true;
       geometry.computeVertexNormals();
     }
-    if (woodGrain) {
+    if (woodGrain && woodAtlas) {
       const positions = geometry.getAttribute("position");
       const normals = geometry.getAttribute("normal");
       const uvs = geometry.getAttribute("uv");
-      const tileSize = 0.65;
-      const circumference = 2 * Math.PI * Math.max(...profile.map(([radius]) => radius));
-      const circumferenceTiles = Math.max(1, Math.round(circumference / tileSize));
-      const originY = Math.min(...profile.map(([, y]) => y));
-      // Profile samples describe shape, not distance. Using their index as V
-      // stretches grain through narrow collars and bunches it along shoulders.
+      // The atlas bakes one continuous solid-wood field over this exact shape.
+      // Meridian distance provides resolution where the turned surface needs
+      // it; shrinking radius no longer compresses a fixed number of stripes.
       for (let vertex = 0; vertex < positions.count; vertex++) {
-        // Whole circumferential tiles close the back seam without a phase jump.
-        uvs.setXY(vertex, uvs.getX(vertex) * circumferenceTiles,
-          (positions.getY(vertex) - originY) / tileSize);
+        const profileIndex = Math.round(uvs.getY(vertex) * (profile.length - 1));
+        const [u, v] = woodAtlas.sideUv(woodGrain, uvs.getX(vertex), profileIndex);
+        uvs.setXY(vertex, u, v);
       }
       // A rim vertex belongs to both cap and side. Split only that UV seam:
       // otherwise interpolating planar centre UVs with angular rim UVs creates
@@ -118,7 +118,7 @@ export function createIncludedGlobeStand(id: IncludedGlobeStandId, quality: Glob
             target = mappedPositions.length / 3;
             mappedPositions.push(positions.getX(source), positions.getY(source), positions.getZ(source));
             mappedNormals.push(normals.getX(source), normals.getY(source), normals.getZ(source));
-            mappedUvs.push(0.5 + positions.getX(source) / tileSize, 0.5 + positions.getZ(source) / tileSize);
+            mappedUvs.push(...woodAtlas.endUv(positions.getX(source), positions.getY(source), positions.getZ(source)));
             capVertices.set(source, target);
           }
           indices[offset + corner] = target;
@@ -128,7 +128,7 @@ export function createIncludedGlobeStand(id: IncludedGlobeStandId, quality: Glob
       geometry.setAttribute("normal", new THREE.Float32BufferAttribute(mappedNormals, 3));
       geometry.setAttribute("uv", new THREE.Float32BufferAttribute(mappedUvs, 2));
       geometry.setIndex(indices);
-      geometry.userData.grainMapping = "physical-height-and-planar-cap";
+      geometry.userData.grainMapping = "solid-wood-profile-atlas";
     }
     return mesh(name, geometry, material);
   };
@@ -218,17 +218,11 @@ export function createIncludedGlobeStand(id: IncludedGlobeStandId, quality: Glob
         }
       }
     } else if (id === "stand.base.wood") {
-      const wood = finish(craft.wood, "turned-walnut", "#736858", 0);
-      wood.roughness = 0.98; wood.envMapIntensity = 0.16;
-      const darkWood = finish(craft.darkWood, "ebonised-wood-edges", "#423e36", 0);
-      darkWood.roughness = 1; darkWood.envMapIntensity = 0.13;
-      const endgrain = finish(craft.wood, "wooden-joinery", "#938675", 0);
-      endgrain.roughness = 1; endgrain.envMapIntensity = 0.17;
-      lathe("wood-underfoot", [
+      const underfootProfile = [
         [0, -1.438], [0.405, -1.438], [0.429, -1.432], [0.447, -1.420],
         [0.450, -1.408], [0.441, -1.400], [0, -1.400],
-      ], darkWood, 0, true);
-      lathe("wood-turned-body", [
+      ] as const;
+      const bodyProfile = [
         [0, -1.411], [0.438, -1.411], [0.444, -1.405], [0.442, -1.397],
         [0.431, -1.388], [0.405, -1.382], [0.397, -1.379], [0.351, -1.379],
         [0.342, -1.369], [0.337, -1.357], [0.293, -1.347], [0.246, -1.334],
@@ -238,7 +232,25 @@ export function createIncludedGlobeStand(id: IncludedGlobeStandId, quality: Glob
         [0.129, -1.098], [0.136, -1.091], [0.156, -1.084], [0.166, -1.075],
         [0.164, -1.065], [0.160, -1.060], [0.164, -1.051], [0.164, -1.040],
         [0.154, -1.0308], [0, -1.0308],
-      ], wood, 0, true);
+      ] as const;
+      woodAtlas = createTurnedWoodAtlas(quality, { body: bodyProfile, underfoot: underfootProfile });
+      const withAtlas = (material: THREE.MeshStandardMaterial) => {
+        material.map = woodAtlas!.map; material.normalMap = woodAtlas!.normalMap;
+        material.roughnessMap = woodAtlas!.roughnessMap;
+        material.normalScale.set(0.65, 0.65);
+        return material;
+      };
+      const wood = withAtlas(finish(craft.wood, "turned-walnut", "#736858", 0));
+      wood.roughness = 0.98; wood.envMapIntensity = 0.16;
+      const darkWood = finish(craft.darkWood, "ebonised-wood-edges", "#423e36", 0);
+      darkWood.roughness = 1; darkWood.envMapIntensity = 0.13;
+      // Torus ornaments keep their ordinary grain UVs; only the turned foot
+      // uses the profile atlas, on a separately owned material clone.
+      const underfoot = withAtlas(finish(darkWood, "ebonised-wood-underfoot", "#423e36", 0));
+      const endgrain = withAtlas(finish(craft.wood, "wooden-joinery", "#938675", 0));
+      endgrain.roughness = 1; endgrain.envMapIntensity = 0.17;
+      lathe("wood-underfoot", underfootProfile, underfoot, 0, "underfoot");
+      lathe("wood-turned-body", bodyProfile, wood, 0, "body");
       for (const [radius, tube, y] of [[0.441, 0.0022, -1.401], [0.385, 0.0020, -1.377],
         [0.137, 0.0018, -1.109], [0.162, 0.0020, -1.072], [0.162, 0.0015, -1.046]]) {
         ring(radius, tube, y, darkWood);
@@ -254,7 +266,15 @@ export function createIncludedGlobeStand(id: IncludedGlobeStandId, quality: Glob
         wedge.lineTo(0.0065, 0.021); wedge.lineTo(-0.0065, 0.021); wedge.closePath();
         const geometry = new THREE.ExtrudeGeometry(wedge, { depth: 0.0015, bevelEnabled: false });
         geometry.rotateX(-Math.PI / 2);
-        batch(geometry, endgrain, transform(Math.sin(angle) * 0.374, -1.380, Math.cos(angle) * 0.374, 0, angle));
+        const placement = transform(Math.sin(angle) * 0.374, -1.380, Math.cos(angle) * 0.374, 0, angle);
+        const positions = geometry.getAttribute("position"), uvs = geometry.getAttribute("uv");
+        const worldPoint = new THREE.Vector3();
+        for (let vertex = 0; vertex < positions.count; vertex++) {
+          worldPoint.fromBufferAttribute(positions, vertex).applyMatrix4(placement);
+          const [u, v] = woodAtlas.endUv(worldPoint.x, worldPoint.y, worldPoint.z);
+          uvs.setXY(vertex, u, v);
+        }
+        batch(geometry, endgrain, placement);
       }
       const bearing = mesh("wood-inset-bronze-bearing", new THREE.CylinderGeometry(0.070, 0.065, 0.004, budget.radial), bronze);
       bearing.position.y = -1.033;

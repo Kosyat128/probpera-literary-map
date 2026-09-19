@@ -267,43 +267,50 @@ export function createGlobeLibrary(quality: GlobeQualityTier): OwnedGlobeLibrary
     wood.envMapIntensity = 0.24;
     const trim = finish(craft.brass, "#b39a68");
     trim.metalness = 0.78; trim.envMapIntensity = 0.70;
-    trim.roughnessMap = ownedTile("library-aged-brass-roughness", (u, v) => {
-      const value = Math.round(145 + 24 * Math.sin(u * Math.PI) * Math.sin(v * Math.PI));
-      return [value, value, value, 255];
-    });
+    // Keep oxidation, roughness and metal response in the same craft-map space.
+    // An unrelated local roughness pattern would polish the oxidized patches.
     const shelves = finish(craft.wood, "#aa9277");
     shelves.roughness = 0.88; shelves.envMapIntensity = 0.38;
     const recess = finish(craft.darkWood, "#45382d");
     recess.envMapIntensity = 0.12;
     const books = finish(craft.leather);
     books.envMapIntensity = 0.26;
-    const leatherRelief = (u: number, v: number) => {
-      const grain = surfaceNoise(u, v, 48, 64, 171);
-      const crease = Math.exp(-Math.pow((u - 0.065) / 0.025, 2))
-        + Math.exp(-Math.pow((u - 0.935) / 0.025, 2));
-      return grain * 0.0016 - crease * 0.004;
+    const leatherResolution = quality === "high" ? 128 : quality === "balanced" ? 64 : 32;
+    const leatherFinish = (u: number, v: number) => {
+      const cloud = surfaceNoise(u, v, 5, 8, 181);
+      const irregular = surfaceNoise(u, v, 9, 13, 193);
+      // Resolve several texels per leather grain even in Economy. Finer noise
+      // would alias into an unrelated speckle pattern when the tier changes.
+      const frequency = Math.min(27, leatherResolution / 4);
+      const grain = surfaceNoise(u + (cloud - 0.5) * 0.018, v, frequency, frequency, 171);
+      const valley = smooth((0.47 - grain) * 3.7);
+      const edge = Math.exp(-Math.min(v, 1 - v) * 27)
+        + Math.exp(-Math.min(u, 1 - u) * 38) * 0.38;
+      const rubbed = edge * smooth((irregular - 0.28) * 2.3);
+      const creaseDrift = (surfaceNoise(u, v, 3, 7, 211) - 0.5) * 0.022;
+      const crease = Math.exp(-Math.pow((u - 0.065 - creaseDrift) / 0.016, 2))
+        + Math.exp(-Math.pow((u - 0.935 + creaseDrift) / 0.016, 2));
+      return {
+        tone: 0.77 + cloud * 0.13 + grain * 0.028 - valley * 0.026 + rubbed * 0.10 - crease * 0.025,
+        relief: grain * 0.0032 - valley * 0.0025 - crease * 0.003,
+        roughness: 0.75 + valley * 0.11 - rubbed * 0.20 - cloud * 0.055,
+      };
     };
     books.map = ownedTile("library-worn-leather-albedo", (u, v) => {
-      const grain = surfaceNoise(u, v, 48, 64, 171);
-      const cloud = surfaceNoise(u, v, 5, 8, 181);
-      const handled = Math.exp(-Math.min(v, 1 - v) * 24)
-        + Math.exp(-Math.min(u, 1 - u) * 34) * 0.4;
-      const rubbed = handled * (0.4 + surfaceNoise(u, v, 12, 24, 193) * 0.6);
-      const value = Math.round(199 + cloud * 26 + grain * 9 + rubbed * 17);
+      const value = Math.round(clamp(leatherFinish(u, v).tone) * 255);
       return [value, value, value, 255];
     }, true, 2);
     books.normalMap = ownedTile("library-worn-leather-normal", (u, v) => {
-      const step = 1 / 128;
-      const dx = (leatherRelief(u - step, v) - leatherRelief(u + step, v)) * 45;
-      const dy = (leatherRelief(u, v - step) - leatherRelief(u, v + step)) * 45;
+      const step = 1 / leatherResolution;
+      const dx = (leatherFinish(u - step, v).relief - leatherFinish(u + step, v).relief) / (2 * step);
+      const dy = (leatherFinish(u, v - step).relief - leatherFinish(u, v + step).relief) / (2 * step);
       const length = Math.hypot(dx, dy, 1);
       return [Math.round((dx / length * 0.5 + 0.5) * 255),
         Math.round((dy / length * 0.5 + 0.5) * 255), Math.round((1 / length * 0.5 + 0.5) * 255), 255];
     }, false, 2);
-    books.normalScale.set(0.55, 0.55);
+    books.normalScale.set(0.18, 0.18);
     books.roughnessMap = ownedTile("library-handled-leather-roughness", (u, v) => {
-      const handledEdges = Math.exp(-v * 15) + Math.exp(-(1 - v) * 15);
-      const value = Math.round(185 - handledEdges * 38 + surfaceNoise(u, v, 12, 16, 201) * 20);
+      const value = Math.round(clamp(leatherFinish(u, v).roughness) * 255);
       return [value, value, value, 255];
     });
     const paper = finish(craft.paper, "#d9cfb8");

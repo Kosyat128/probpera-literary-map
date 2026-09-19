@@ -47,6 +47,27 @@ describe("owned authored craft maps", () => {
       expect(palette.wood.normalMap).toBe(palette.darkWood.normalMap);
       expect(new Set(materials.map(material => material.envMap)).size).toBe(1);
       expect(textures.size).toBe(16);
+      expect(palette.brass.metalness).toBe(1);
+      expect(palette.brass.metalnessMap).toBe(palette.brass.roughnessMap);
+      const brassChannels = palette.brass.metalnessMap as DataTexture;
+      expect(brassChannels.colorSpace).toBe(NoColorSpace);
+      const brassPixels = brassChannels.image.data as Uint8Array;
+      let reservedChannels = true, minimumRoughness = 255, maximumRoughness = 0;
+      let minimumMetalness = 255, maximumMetalness = 0, roughnessSum = 0, metalnessSum = 0, products = 0;
+      for (let offset = 0; offset < brassPixels.length; offset += 4) {
+        const roughness = brassPixels[offset + 1], metalness = brassPixels[offset + 2];
+        reservedChannels &&= brassPixels[offset] === 255 && brassPixels[offset + 3] === 255;
+        minimumRoughness = Math.min(minimumRoughness, roughness); maximumRoughness = Math.max(maximumRoughness, roughness);
+        minimumMetalness = Math.min(minimumMetalness, metalness); maximumMetalness = Math.max(maximumMetalness, metalness);
+        roughnessSum += roughness; metalnessSum += metalness; products += roughness * metalness;
+      }
+      expect(reservedChannels).toBe(true);
+      expect(maximumRoughness - minimumRoughness).toBeGreaterThan(0);
+      expect(maximumMetalness - minimumMetalness).toBeGreaterThan(0);
+      // Three reads roughness from G and metalness from B. Oxidation must
+      // produce rougher, less metallic patches, not reuse a grayscale gloss
+      // tile in both channels. No particular artistic mask is pinned here.
+      expect(products * (brassPixels.length / 4) - roughnessSum * metalnessSum).toBeLessThan(0);
       for (const normal of normals) {
         const pixels = normal.image.data as Uint8Array;
         let unitVectors = true, opaque = true, varying = false;
