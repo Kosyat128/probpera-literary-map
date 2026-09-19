@@ -1,0 +1,2221 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-19T22:31:53.424Z",
+  "status": "THIRD_SIZE_HIGH_SHAPE_REVIEWED_LOWER_TIERS_SEPARATE",
+  "scope": "Historical isolated geometry captures art-a1 through art-a13. Art-a13 binds the latest reduction of the lower dish by one third from art-a12; isolated review covers six High front/profile views only. Actual-App and lower-tier evidence is separate.",
+  "reviewerAttribution": {
+    "/root": {
+      "basis": "Explicit coordinating-agent reports of the enumerated views: a9/a10 three High quarters each; a11/a12/a13 three High fronts each. These are not claimed personally viewed by the recording subagent."
+    },
+    "/root/network_capabilities": {
+      "basis": "Direct view_image inspection in this task: a6 six High profile/back; a8/a10 each twelve High/Economy views; a12/a13 each three High profiles."
+    }
+  },
+  "counting": "Counts are distinct captured frame records within each attempt, not deduplicated pixel hashes across attempts. A captured frame is not counted as reviewed unless an explicit reviewer is recorded.",
+  "totals": {
+    "captured": 150,
+    "reviewed": 106,
+    "notClaimedReviewed": 44,
+    "root": 70,
+    "networkCapabilities": 36
+  },
+  "iterations": [
+    {
+      "attempt": "art-a1",
+      "capture": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a1/result.json",
+        "sha256": "2a9a4f83ef7e868fd7aeb19954730a75987367c6f2888882939d1c29151e30c8"
+      },
+      "startedAt": "2026-09-19T21:31:03.210Z",
+      "endedAt": "2026-09-19T21:31:06.591Z",
+      "captureMode": "full",
+      "sourceInputs": [
+        {
+          "path": "src/components/globeCeramicPortraitStandGeometry.ts",
+          "sha256": "eaced504dab089c795beb9b142470739f3190588bd211c35ff20eff2e85b624c"
+        },
+        {
+          "path": "src/components/globeQuality.ts",
+          "sha256": "b52e0221ec8bcac17d640e26378bc0304521316ca34e203313d2b63f9c3b28c9"
+        },
+        {
+          "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/capture-portraits.mjs",
+          "sha256": "7d0ecf71c3d4efa76d9b8d2b517f9eb229ad60f247130ef0f5c9e2a81964868e"
+        }
+      ],
+      "sourceInputsUnchangedAtCapture": true,
+      "captureErrors": [],
+      "counts": {
+        "captured": 15,
+        "reviewed": 15,
+        "notClaimedReviewed": 0,
+        "root": 15,
+        "networkCapabilities": 0
+      },
+      "summary": "Initial full capture; coordinating review required substantial revision of anatomy, hair/beard continuity and ceramic response before technical acceptance work.",
+      "findings": [
+        "Faces too elongated and generic; eyes too small and noses too long.",
+        "Sparse oval hair pieces over a smooth cap do not read as curls or sculpted hair.",
+        "Hemingway beard has abrupt plate edges and pinched mouth geometry.",
+        "Tolstoy beard is a floating thin shield with a large profile gap and pasted oval locks.",
+        "Seat meets the head weakly; glaze reads overly yellow and plastic in current lighting."
+      ],
+      "findingsAttribution": "Existing root art-a1-review.json",
+      "frames": [
+        {
+          "kind": "pushkin",
+          "tier": "high",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a1/ceramic-pushkin-high-front.png",
+          "sha256": "0a8e7245e2ac0fe5bc95c5133e9123b77a3fab8f11c5fd417924d632f4b42567",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "pushkin",
+          "tier": "high",
+          "view": "three-quarter",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a1/ceramic-pushkin-high-three-quarter.png",
+          "sha256": "7cb14c5732218f00491f0766d718f7cf16750f01a3cb5eb064cdd3a488e4dc2c",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "pushkin",
+          "tier": "high",
+          "view": "profile",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a1/ceramic-pushkin-high-profile.png",
+          "sha256": "479f126562f38323234af4ec9486579a77e74e668bcf100e7d910a9d4f567175",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "pushkin",
+          "tier": "high",
+          "view": "back",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a1/ceramic-pushkin-high-back.png",
+          "sha256": "5e8391f5294182195e09747fe6fc960d79b5e1539b75314b1bccfb334ad24dfc",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "pushkin",
+          "tier": "economy",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a1/ceramic-pushkin-economy-front.png",
+          "sha256": "8706ffa68eb0f63cfa413c1ec3cd754061c971c1d94ab2e029f27378eff7f20e",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "hemingway",
+          "tier": "high",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a1/ceramic-hemingway-high-front.png",
+          "sha256": "ab573ded3ce8347718a15749151e89f73d297a9b60ad6584b04ad38a796879e6",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "hemingway",
+          "tier": "high",
+          "view": "three-quarter",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a1/ceramic-hemingway-high-three-quarter.png",
+          "sha256": "ccc1439ef22fd1c9301d38e85a2c71c6a32326b47ab8501ab887592e5db5b985",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "hemingway",
+          "tier": "high",
+          "view": "profile",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a1/ceramic-hemingway-high-profile.png",
+          "sha256": "b2deb881c1bb20f1e3cece2a0b892d839814dde873d79de1a3f5432a75cd1473",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "hemingway",
+          "tier": "high",
+          "view": "back",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a1/ceramic-hemingway-high-back.png",
+          "sha256": "524449bf81b489fa0529be39de04fb58591e1d02fcfcf4cd61fdfc4eb46dd719",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "hemingway",
+          "tier": "economy",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a1/ceramic-hemingway-economy-front.png",
+          "sha256": "521611271e9a9795a90dd1c777689928633cf7cd3112c4872c979dc338ad3281",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "high",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a1/ceramic-tolstoy-high-front.png",
+          "sha256": "e70cc548ff6b8a6c5f9584ac5e803ab750468b2803bd6a53454f4fabb527ad80",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "high",
+          "view": "three-quarter",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a1/ceramic-tolstoy-high-three-quarter.png",
+          "sha256": "c6f0fe1304bd0bfda451f671971cf9af77eb832efed6352c0fe674134d03cedc",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "high",
+          "view": "profile",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a1/ceramic-tolstoy-high-profile.png",
+          "sha256": "06ac2d6ff29cac168263b30f347f2b5cac51a8bff9a9601336b67d9765f879f8",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "high",
+          "view": "back",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a1/ceramic-tolstoy-high-back.png",
+          "sha256": "c8947d9c69da7012e95359899dfd78c175680cf01e8cc3d6df0bec93aa72319c",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "economy",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a1/ceramic-tolstoy-economy-front.png",
+          "sha256": "ea10b3fd55df8ac87f1dcd147bf8a2430b555bd0cd8df74867f7dcfff4133c96",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        }
+      ],
+      "historical": true,
+      "final": false,
+      "artAccepted": false,
+      "likenessAccepted": false,
+      "userRealismRequirementSatisfied": false,
+      "review": {
+        "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/art-a1-review.json",
+        "sha256": "20d7071c5cb0d24f63e994e9b195dafdb2996de63b973845a66d336950d08140"
+      }
+    },
+    {
+      "attempt": "art-a2",
+      "capture": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a2/result.json",
+        "sha256": "646db59e81a6a98e5bc2c207a9bf23c953e18ea0aeaa85bfa438b0e58d22c37b"
+      },
+      "startedAt": "2026-09-19T21:52:25.444Z",
+      "endedAt": "2026-09-19T21:52:28.053Z",
+      "captureMode": "shape",
+      "sourceInputs": [
+        {
+          "path": "src/components/globeCeramicPortraitStandGeometry.ts",
+          "sha256": "508c15f2561fee5e0fde0f124f396421555d8a2faa9b205b7982a8ab85fb9e42"
+        },
+        {
+          "path": "src/components/globeQuality.ts",
+          "sha256": "b52e0221ec8bcac17d640e26378bc0304521316ca34e203313d2b63f9c3b28c9"
+        },
+        {
+          "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/capture-portraits.mjs",
+          "sha256": "051fa987b70140fe473b82bd43082b66364b255014a36101e834aa291ca35692"
+        }
+      ],
+      "sourceInputsUnchangedAtCapture": true,
+      "captureErrors": [],
+      "counts": {
+        "captured": 6,
+        "reviewed": 6,
+        "notClaimedReviewed": 0,
+        "root": 6,
+        "networkCapabilities": 0
+      },
+      "summary": "First bounded six-view shape capture after the initial rejection; all front/profile images were reviewed by the coordinating agent.",
+      "findings": [],
+      "findingsAttribution": "Only review coverage supplied; no detailed findings invented",
+      "frames": [
+        {
+          "kind": "pushkin",
+          "tier": "high",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a2/ceramic-pushkin-high-front.png",
+          "sha256": "36c11bb0ca42fd093e466cab49d32f65aa2bf512d5d1b3f5d9a92c45bd986ac0",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "pushkin",
+          "tier": "high",
+          "view": "profile",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a2/ceramic-pushkin-high-profile.png",
+          "sha256": "b712960bb6eb84377a3fee6154d5301ef8a6a4affc8046473de063e10064051e",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "hemingway",
+          "tier": "high",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a2/ceramic-hemingway-high-front.png",
+          "sha256": "73b277a66be8e347725d7429e0a7d3ffbdb539ef4f776288628f9ca9d3c1ff55",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "hemingway",
+          "tier": "high",
+          "view": "profile",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a2/ceramic-hemingway-high-profile.png",
+          "sha256": "3d2b73ecb42180f77ca579bc74c0896e2206302d5cbb4c94fec3c876e3d6157a",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "high",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a2/ceramic-tolstoy-high-front.png",
+          "sha256": "ed1f1350171edfdf851ed72ea57254ad475c90836c079b37c288e106097df9a2",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "high",
+          "view": "profile",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a2/ceramic-tolstoy-high-profile.png",
+          "sha256": "5cd570fda7b83ee839e87a006659b99f6bc93406383a3e2a3b1e35247126edb6",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        }
+      ],
+      "historical": true,
+      "final": false,
+      "artAccepted": false,
+      "likenessAccepted": false,
+      "userRealismRequirementSatisfied": false
+    },
+    {
+      "attempt": "art-a3",
+      "capture": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a3/result.json",
+        "sha256": "9be074980afc70e4e95c3a9f70c43629ae48142ad80ce4bb5459424ffd8edb6a"
+      },
+      "startedAt": "2026-09-19T21:55:39.190Z",
+      "endedAt": "2026-09-19T21:55:41.887Z",
+      "captureMode": "shape",
+      "sourceInputs": [
+        {
+          "path": "src/components/globeCeramicPortraitStandGeometry.ts",
+          "sha256": "cfbcdcc005d37b8e89d4220ad772a27e2ebcf92f2df7cc456cdb0cc9cda672b4"
+        },
+        {
+          "path": "src/components/globeQuality.ts",
+          "sha256": "b52e0221ec8bcac17d640e26378bc0304521316ca34e203313d2b63f9c3b28c9"
+        },
+        {
+          "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/capture-portraits.mjs",
+          "sha256": "051fa987b70140fe473b82bd43082b66364b255014a36101e834aa291ca35692"
+        }
+      ],
+      "sourceInputsUnchangedAtCapture": true,
+      "captureErrors": [],
+      "counts": {
+        "captured": 6,
+        "reviewed": 6,
+        "notClaimedReviewed": 0,
+        "root": 6,
+        "networkCapabilities": 0
+      },
+      "summary": "Second bounded six-view shape capture; all front/profile images were reviewed by the coordinating agent. The record does not invent a detailed per-change finding absent from the supplied review summary.",
+      "findings": [],
+      "findingsAttribution": "Only review coverage supplied; no detailed findings invented",
+      "frames": [
+        {
+          "kind": "pushkin",
+          "tier": "high",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a3/ceramic-pushkin-high-front.png",
+          "sha256": "de6bd2bca6cf1365833350ca98e0a2ce66ec842d4074f12cfaf92b807b6f2001",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "pushkin",
+          "tier": "high",
+          "view": "profile",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a3/ceramic-pushkin-high-profile.png",
+          "sha256": "1befc5ef061b4eca2ebc2a74b31d122afb2c419287a0cf587b289c61ccda8758",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "hemingway",
+          "tier": "high",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a3/ceramic-hemingway-high-front.png",
+          "sha256": "4c2c3a8f9227cdd5defd687415efd64bd1daa071d049249cd36bf3c4706bf707",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "hemingway",
+          "tier": "high",
+          "view": "profile",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a3/ceramic-hemingway-high-profile.png",
+          "sha256": "e449c9ed08306e21aae44b6886a0fb014de71d27b0f8ac8cb2b1b45e4cc6731b",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "high",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a3/ceramic-tolstoy-high-front.png",
+          "sha256": "5c970b38b9820d2967fe0e621845d61d421a735de00c07788e268e86d1c4abac",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "high",
+          "view": "profile",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a3/ceramic-tolstoy-high-profile.png",
+          "sha256": "51fef188ce85f0c83aae7f396a4902a2c185bb9ba4cef6997daecd76801faec4",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        }
+      ],
+      "historical": true,
+      "final": false,
+      "artAccepted": false,
+      "likenessAccepted": false,
+      "userRealismRequirementSatisfied": false
+    },
+    {
+      "attempt": "art-a4",
+      "capture": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a4/result.json",
+        "sha256": "5084fdf036056684477e16cf08b1b99f5d3445a4f33f3c9cb3f39b5e16de2d9a"
+      },
+      "startedAt": "2026-09-19T21:58:49.486Z",
+      "endedAt": "2026-09-19T21:58:53.457Z",
+      "captureMode": "full",
+      "sourceInputs": [
+        {
+          "path": "src/components/globeCeramicPortraitStandGeometry.ts",
+          "sha256": "51fdd329a1c29429484b9a00e87a9600bf01d40e1a3d48739a3c365048497b38"
+        },
+        {
+          "path": "src/components/globeQuality.ts",
+          "sha256": "b52e0221ec8bcac17d640e26378bc0304521316ca34e203313d2b63f9c3b28c9"
+        },
+        {
+          "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/capture-portraits.mjs",
+          "sha256": "051fa987b70140fe473b82bd43082b66364b255014a36101e834aa291ca35692"
+        }
+      ],
+      "sourceInputsUnchangedAtCapture": true,
+      "captureErrors": [],
+      "counts": {
+        "captured": 15,
+        "reviewed": 6,
+        "notClaimedReviewed": 9,
+        "root": 6,
+        "networkCapabilities": 0
+      },
+      "summary": "Returned to a full 15-image capture; only the six High front/three-quarter images are confirmed reviewed here.",
+      "findings": [],
+      "findingsAttribution": "Only review coverage supplied; no detailed findings invented",
+      "frames": [
+        {
+          "kind": "pushkin",
+          "tier": "high",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a4/ceramic-pushkin-high-front.png",
+          "sha256": "ff14c4a05ddf3cd3c5f92506bd575d1cc27bf94731247093615822368f674e0d",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "pushkin",
+          "tier": "high",
+          "view": "three-quarter",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a4/ceramic-pushkin-high-three-quarter.png",
+          "sha256": "b3f9a27b0808aee8becd84d575399575297e53ca30e9d8bed91ffeb5c88aa8e1",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "pushkin",
+          "tier": "high",
+          "view": "profile",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a4/ceramic-pushkin-high-profile.png",
+          "sha256": "b505e9c9df4cd7f7d3565a11c9a09fa060ccff3b4991ecc6e3c6f7391c28ec10",
+          "reviewed": false,
+          "reviewers": []
+        },
+        {
+          "kind": "pushkin",
+          "tier": "high",
+          "view": "back",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a4/ceramic-pushkin-high-back.png",
+          "sha256": "8994bb1c4773b67ecef4a2afc09956794715ee529cfb090a776364cd2315207f",
+          "reviewed": false,
+          "reviewers": []
+        },
+        {
+          "kind": "pushkin",
+          "tier": "economy",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a4/ceramic-pushkin-economy-front.png",
+          "sha256": "cd2041bb30aa6c7f0da71545150f86b08baf58fb39ed914b8561ab0266b5730d",
+          "reviewed": false,
+          "reviewers": []
+        },
+        {
+          "kind": "hemingway",
+          "tier": "high",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a4/ceramic-hemingway-high-front.png",
+          "sha256": "167a48c84dc5639cc7b799eb6c5e2e159f19cc0400a7ffbacac3eba54278e418",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "hemingway",
+          "tier": "high",
+          "view": "three-quarter",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a4/ceramic-hemingway-high-three-quarter.png",
+          "sha256": "316c760f380ff24eb8108cc59f0bb21c34fdba8f15c3b4dbb754d4e4ff586f9b",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "hemingway",
+          "tier": "high",
+          "view": "profile",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a4/ceramic-hemingway-high-profile.png",
+          "sha256": "2b5d62e057f7f959560cf581827c6d11636bf8bdeb9a1665e3aa886901f6d54a",
+          "reviewed": false,
+          "reviewers": []
+        },
+        {
+          "kind": "hemingway",
+          "tier": "high",
+          "view": "back",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a4/ceramic-hemingway-high-back.png",
+          "sha256": "8c9b4238805a5cdbaa881351112fd8e1c131d23b2f2c261be4e79f257a2a208a",
+          "reviewed": false,
+          "reviewers": []
+        },
+        {
+          "kind": "hemingway",
+          "tier": "economy",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a4/ceramic-hemingway-economy-front.png",
+          "sha256": "90a77b322ddcaf0988482d0fbfcbe232ab1ba275446b155619d2fab2aab7b1ce",
+          "reviewed": false,
+          "reviewers": []
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "high",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a4/ceramic-tolstoy-high-front.png",
+          "sha256": "1283c9c7392e331ccb0b0824050ac334d76fa562d7df6032be1fdc7842ed8890",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "high",
+          "view": "three-quarter",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a4/ceramic-tolstoy-high-three-quarter.png",
+          "sha256": "45aae1a0fb59d8151f5bf0b4479deebedfe4accbf5663558402b6619245dd00b",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "high",
+          "view": "profile",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a4/ceramic-tolstoy-high-profile.png",
+          "sha256": "b72eebed05a570304e2fd79f11aaa764a8af1e174a94e049f4d6b2d5027fb5de",
+          "reviewed": false,
+          "reviewers": []
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "high",
+          "view": "back",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a4/ceramic-tolstoy-high-back.png",
+          "sha256": "c0163066518ffb09b1939ad8dcf22746d28813b6d9b334217fe5f7e59c18c45f",
+          "reviewed": false,
+          "reviewers": []
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "economy",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a4/ceramic-tolstoy-economy-front.png",
+          "sha256": "1281d45d958e93fe2020aee4a5df9179c09842b53c2a6d28af112986cd539df0",
+          "reviewed": false,
+          "reviewers": []
+        }
+      ],
+      "historical": true,
+      "final": false,
+      "artAccepted": false,
+      "likenessAccepted": false,
+      "userRealismRequirementSatisfied": false
+    },
+    {
+      "attempt": "art-a5",
+      "capture": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a5/result.json",
+        "sha256": "27fd5dd38e5e288056597ca8b53514193888eec5a1a596b605b1725a3e441ec0"
+      },
+      "startedAt": "2026-09-19T22:00:40.626Z",
+      "endedAt": "2026-09-19T22:00:44.706Z",
+      "captureMode": "full",
+      "sourceInputs": [
+        {
+          "path": "src/components/globeCeramicPortraitStandGeometry.ts",
+          "sha256": "4cafea06b1f987923a722f9737f41e26a6d77c929d55e77aa8a99eeb346c4eef"
+        },
+        {
+          "path": "src/components/globeQuality.ts",
+          "sha256": "b52e0221ec8bcac17d640e26378bc0304521316ca34e203313d2b63f9c3b28c9"
+        },
+        {
+          "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/capture-portraits.mjs",
+          "sha256": "051fa987b70140fe473b82bd43082b66364b255014a36101e834aa291ca35692"
+        }
+      ],
+      "sourceInputsUnchangedAtCapture": true,
+      "captureErrors": [],
+      "counts": {
+        "captured": 15,
+        "reviewed": 5,
+        "notClaimedReviewed": 10,
+        "root": 5,
+        "networkCapabilities": 0
+      },
+      "summary": "Pushkin-focused review of all five captured Pushkin views; the ten other captured images are not claimed reviewed in this iteration.",
+      "findings": [],
+      "findingsAttribution": "Only review coverage supplied; no detailed findings invented",
+      "frames": [
+        {
+          "kind": "pushkin",
+          "tier": "high",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a5/ceramic-pushkin-high-front.png",
+          "sha256": "e968a883b288208f5111396d7b62923b085dc33f1e522ba4b0693170db76ac90",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "pushkin",
+          "tier": "high",
+          "view": "three-quarter",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a5/ceramic-pushkin-high-three-quarter.png",
+          "sha256": "e7f529cd40b4afea94442881e3006a3f725fbd8c112e69057c2f89e8baa0661d",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "pushkin",
+          "tier": "high",
+          "view": "profile",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a5/ceramic-pushkin-high-profile.png",
+          "sha256": "e979b29388856f9f7797e63c847585f51ed5d7f12a68aafb2684f30d7ece16ac",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "pushkin",
+          "tier": "high",
+          "view": "back",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a5/ceramic-pushkin-high-back.png",
+          "sha256": "80139db1117e226065425aa359dd29d8123670931ec6707174fe6021ed967654",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "pushkin",
+          "tier": "economy",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a5/ceramic-pushkin-economy-front.png",
+          "sha256": "2e49a19dce1fbcbf61b06f6921e8a30a9bdfa93761227c853f26d21dba84eb39",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "hemingway",
+          "tier": "high",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a5/ceramic-hemingway-high-front.png",
+          "sha256": "167a48c84dc5639cc7b799eb6c5e2e159f19cc0400a7ffbacac3eba54278e418",
+          "reviewed": false,
+          "reviewers": []
+        },
+        {
+          "kind": "hemingway",
+          "tier": "high",
+          "view": "three-quarter",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a5/ceramic-hemingway-high-three-quarter.png",
+          "sha256": "316c760f380ff24eb8108cc59f0bb21c34fdba8f15c3b4dbb754d4e4ff586f9b",
+          "reviewed": false,
+          "reviewers": []
+        },
+        {
+          "kind": "hemingway",
+          "tier": "high",
+          "view": "profile",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a5/ceramic-hemingway-high-profile.png",
+          "sha256": "2b5d62e057f7f959560cf581827c6d11636bf8bdeb9a1665e3aa886901f6d54a",
+          "reviewed": false,
+          "reviewers": []
+        },
+        {
+          "kind": "hemingway",
+          "tier": "high",
+          "view": "back",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a5/ceramic-hemingway-high-back.png",
+          "sha256": "8c9b4238805a5cdbaa881351112fd8e1c131d23b2f2c261be4e79f257a2a208a",
+          "reviewed": false,
+          "reviewers": []
+        },
+        {
+          "kind": "hemingway",
+          "tier": "economy",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a5/ceramic-hemingway-economy-front.png",
+          "sha256": "90a77b322ddcaf0988482d0fbfcbe232ab1ba275446b155619d2fab2aab7b1ce",
+          "reviewed": false,
+          "reviewers": []
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "high",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a5/ceramic-tolstoy-high-front.png",
+          "sha256": "1283c9c7392e331ccb0b0824050ac334d76fa562d7df6032be1fdc7842ed8890",
+          "reviewed": false,
+          "reviewers": []
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "high",
+          "view": "three-quarter",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a5/ceramic-tolstoy-high-three-quarter.png",
+          "sha256": "45aae1a0fb59d8151f5bf0b4479deebedfe4accbf5663558402b6619245dd00b",
+          "reviewed": false,
+          "reviewers": []
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "high",
+          "view": "profile",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a5/ceramic-tolstoy-high-profile.png",
+          "sha256": "b72eebed05a570304e2fd79f11aaa764a8af1e174a94e049f4d6b2d5027fb5de",
+          "reviewed": false,
+          "reviewers": []
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "high",
+          "view": "back",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a5/ceramic-tolstoy-high-back.png",
+          "sha256": "c0163066518ffb09b1939ad8dcf22746d28813b6d9b334217fe5f7e59c18c45f",
+          "reviewed": false,
+          "reviewers": []
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "economy",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a5/ceramic-tolstoy-economy-front.png",
+          "sha256": "1281d45d958e93fe2020aee4a5df9179c09842b53c2a6d28af112986cd539df0",
+          "reviewed": false,
+          "reviewers": []
+        }
+      ],
+      "historical": true,
+      "final": false,
+      "artAccepted": false,
+      "likenessAccepted": false,
+      "userRealismRequirementSatisfied": false
+    },
+    {
+      "attempt": "art-a6",
+      "capture": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a6/result.json",
+        "sha256": "bf0d4fb84027d2dfdac5d2fd6b8670d22895a484480ae3a10bf0dc56d4196122"
+      },
+      "startedAt": "2026-09-19T22:04:16.356Z",
+      "endedAt": "2026-09-19T22:04:21.397Z",
+      "captureMode": "full",
+      "sourceInputs": [
+        {
+          "path": "src/components/globeCeramicPortraitStandGeometry.ts",
+          "sha256": "c2e06ae62f0fdf3b66da4b7c97c45a408145a3b9e79ca3722e63efa5fa9ac87d"
+        },
+        {
+          "path": "src/components/globeQuality.ts",
+          "sha256": "b52e0221ec8bcac17d640e26378bc0304521316ca34e203313d2b63f9c3b28c9"
+        },
+        {
+          "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/capture-portraits.mjs",
+          "sha256": "051fa987b70140fe473b82bd43082b66364b255014a36101e834aa291ca35692"
+        }
+      ],
+      "sourceInputsUnchangedAtCapture": true,
+      "captureErrors": [],
+      "counts": {
+        "captured": 15,
+        "reviewed": 15,
+        "notClaimedReviewed": 0,
+        "root": 9,
+        "networkCapabilities": 6
+      },
+      "summary": "Full image coverage split between reviewers. Bodies appeared connected, but separate bead-like curls, rear beard/neck wrap and cap-like hair boundaries remained visible.",
+      "findings": [
+        "No obvious floating beard plates or open joins were observed in the six inspected profile/back views.",
+        "Pushkin curls and sideburn chains looked like regularly arranged rounded beads.",
+        "Tolstoy beard texture wrapped onto the rear lower head, producing a hairy collar below a bare stripe.",
+        "Straight rear hair boundaries and the abrupt head-to-pedestal transition remained visibly stylized."
+      ],
+      "findingsAttribution": "/root/network_capabilities direct visual review reported to root",
+      "frames": [
+        {
+          "kind": "pushkin",
+          "tier": "high",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a6/ceramic-pushkin-high-front.png",
+          "sha256": "2cd81672fdf99c1593755200226f18f56079585486dd945db3322545de0c9288",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "pushkin",
+          "tier": "high",
+          "view": "three-quarter",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a6/ceramic-pushkin-high-three-quarter.png",
+          "sha256": "971a015be394d31b54be2efdb63c0e78bbdcb0cb77e6174027f8ca46deb728e5",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "pushkin",
+          "tier": "high",
+          "view": "profile",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a6/ceramic-pushkin-high-profile.png",
+          "sha256": "020dbb9765080f040668d0115797b2bdcd621ab85ca043ec949a47c6790750d2",
+          "reviewed": true,
+          "reviewers": [
+            "/root/network_capabilities"
+          ]
+        },
+        {
+          "kind": "pushkin",
+          "tier": "high",
+          "view": "back",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a6/ceramic-pushkin-high-back.png",
+          "sha256": "fe8d223a4e694c8294e6fe8b444170a09794554e7b734320cb72e197173a2764",
+          "reviewed": true,
+          "reviewers": [
+            "/root/network_capabilities"
+          ]
+        },
+        {
+          "kind": "pushkin",
+          "tier": "economy",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a6/ceramic-pushkin-economy-front.png",
+          "sha256": "3638976ee07a24c48d66acadc2ecdf174f0cdb5ad5621d50076d47702a425186",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "hemingway",
+          "tier": "high",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a6/ceramic-hemingway-high-front.png",
+          "sha256": "af6f8c187ea2290520c04b0a455762a529915656f173c226eccfcd3326264d53",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "hemingway",
+          "tier": "high",
+          "view": "three-quarter",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a6/ceramic-hemingway-high-three-quarter.png",
+          "sha256": "acaa87cd06c7f5ecce0c653975d63d25bc410f119872aad3a041e9d55ecd6e1c",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "hemingway",
+          "tier": "high",
+          "view": "profile",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a6/ceramic-hemingway-high-profile.png",
+          "sha256": "653242d7c2bc71461a52ec1471e8415e204351b5ab50e5f9359dc69903ea5647",
+          "reviewed": true,
+          "reviewers": [
+            "/root/network_capabilities"
+          ]
+        },
+        {
+          "kind": "hemingway",
+          "tier": "high",
+          "view": "back",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a6/ceramic-hemingway-high-back.png",
+          "sha256": "8c9b4238805a5cdbaa881351112fd8e1c131d23b2f2c261be4e79f257a2a208a",
+          "reviewed": true,
+          "reviewers": [
+            "/root/network_capabilities"
+          ]
+        },
+        {
+          "kind": "hemingway",
+          "tier": "economy",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a6/ceramic-hemingway-economy-front.png",
+          "sha256": "7e0b6076ea76c140eedb36021d7b0ab4fcca888cc0f30c77222a2f66caab2dad",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "high",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a6/ceramic-tolstoy-high-front.png",
+          "sha256": "5ca765fc5c60523911a447788f69c872eddc9c7628a9bcc7c673f1d032884e11",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "high",
+          "view": "three-quarter",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a6/ceramic-tolstoy-high-three-quarter.png",
+          "sha256": "c66f870cc852cf8b9533a15d3d07d8b020e3added8dd5341b5c82fd50c6ecae9",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "high",
+          "view": "profile",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a6/ceramic-tolstoy-high-profile.png",
+          "sha256": "3236259bc2d32aef46d53c27aaa83eaae476e04e476e2ee9af97f2d6f96d8e46",
+          "reviewed": true,
+          "reviewers": [
+            "/root/network_capabilities"
+          ]
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "high",
+          "view": "back",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a6/ceramic-tolstoy-high-back.png",
+          "sha256": "c0163066518ffb09b1939ad8dcf22746d28813b6d9b334217fe5f7e59c18c45f",
+          "reviewed": true,
+          "reviewers": [
+            "/root/network_capabilities"
+          ]
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "economy",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a6/ceramic-tolstoy-economy-front.png",
+          "sha256": "7e1fe1f2da79a5da64e2ceeef2faa3b854f417a2e38d3a6fb4730f2bce6f68f8",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        }
+      ],
+      "historical": true,
+      "final": false,
+      "artAccepted": false,
+      "likenessAccepted": false,
+      "userRealismRequirementSatisfied": false
+    },
+    {
+      "attempt": "art-a7",
+      "capture": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a7/result.json",
+        "sha256": "06f2d495f9aa3fbc0f28bc5b62c7571d91b02f14e1f2b328cdf16ea4f8a328a0"
+      },
+      "startedAt": "2026-09-19T22:07:11.724Z",
+      "endedAt": "2026-09-19T22:07:16.099Z",
+      "captureMode": "full",
+      "sourceInputs": [
+        {
+          "path": "src/components/globeCeramicPortraitStandGeometry.ts",
+          "sha256": "13ee4035e8eafa5a923c468144d30056949360312ceb35dc46afcc167b9c6a3e"
+        },
+        {
+          "path": "src/components/globeQuality.ts",
+          "sha256": "b52e0221ec8bcac17d640e26378bc0304521316ca34e203313d2b63f9c3b28c9"
+        },
+        {
+          "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/capture-portraits.mjs",
+          "sha256": "051fa987b70140fe473b82bd43082b66364b255014a36101e834aa291ca35692"
+        }
+      ],
+      "sourceInputsUnchangedAtCapture": true,
+      "captureErrors": [],
+      "counts": {
+        "captured": 15,
+        "reviewed": 5,
+        "notClaimedReviewed": 10,
+        "root": 5,
+        "networkCapabilities": 0
+      },
+      "summary": "Intermediate full capture with five specifically selected coordinating-agent views; the remaining ten images are not claimed reviewed.",
+      "findings": [],
+      "findingsAttribution": "Only review coverage supplied; no detailed findings invented",
+      "frames": [
+        {
+          "kind": "pushkin",
+          "tier": "high",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a7/ceramic-pushkin-high-front.png",
+          "sha256": "35c264766e3715cf785352cd42b92673279f6d58d17eb81703a8589bb1b1c2ee",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "pushkin",
+          "tier": "high",
+          "view": "three-quarter",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a7/ceramic-pushkin-high-three-quarter.png",
+          "sha256": "79a7753e5d427467d17db6e4f7a0af6886223596b280ba086f2dbae8f941c693",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "pushkin",
+          "tier": "high",
+          "view": "profile",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a7/ceramic-pushkin-high-profile.png",
+          "sha256": "3611482a4001644b72896b55d0d1e79bf2d20bab9b7bef10eb547b52d4349c80",
+          "reviewed": false,
+          "reviewers": []
+        },
+        {
+          "kind": "pushkin",
+          "tier": "high",
+          "view": "back",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a7/ceramic-pushkin-high-back.png",
+          "sha256": "78e2e5f16839ce72162dcf5629c3aa1c9324d773145b2dfbc5997c82f46bc5d6",
+          "reviewed": false,
+          "reviewers": []
+        },
+        {
+          "kind": "pushkin",
+          "tier": "economy",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a7/ceramic-pushkin-economy-front.png",
+          "sha256": "9fce6ed713ca436b51ec6bded5a3b61f301a7d031c1ac8251770d7fe00b36b2b",
+          "reviewed": false,
+          "reviewers": []
+        },
+        {
+          "kind": "hemingway",
+          "tier": "high",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a7/ceramic-hemingway-high-front.png",
+          "sha256": "1ddfe71d47ef6c1c9c6b06997b1701f8e3c2c90dda1e802725358180b69b1ab3",
+          "reviewed": false,
+          "reviewers": []
+        },
+        {
+          "kind": "hemingway",
+          "tier": "high",
+          "view": "three-quarter",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a7/ceramic-hemingway-high-three-quarter.png",
+          "sha256": "60cbdbfafc2b7dbd347d6d9cf0c5ac6df6325d1f839ee0d126c50e6a783d1d46",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "hemingway",
+          "tier": "high",
+          "view": "profile",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a7/ceramic-hemingway-high-profile.png",
+          "sha256": "86df9f77adf1dacc34114225908e2f8c2b14ecf7f4ddb570d51328fbc7ed8eed",
+          "reviewed": false,
+          "reviewers": []
+        },
+        {
+          "kind": "hemingway",
+          "tier": "high",
+          "view": "back",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a7/ceramic-hemingway-high-back.png",
+          "sha256": "65c88ae100d9f910029d875fb3d066d71d688eee4d229b77ffb7128316a89644",
+          "reviewed": false,
+          "reviewers": []
+        },
+        {
+          "kind": "hemingway",
+          "tier": "economy",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a7/ceramic-hemingway-economy-front.png",
+          "sha256": "7c4179abbc3020750240df5b0bfe68564cf129cf419805ab529d629d5ffbb050",
+          "reviewed": false,
+          "reviewers": []
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "high",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a7/ceramic-tolstoy-high-front.png",
+          "sha256": "1e5d235a7deebeb43b409e4cd92f4410329a9a8dcb35ff8cd27213b33e132fed",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "high",
+          "view": "three-quarter",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a7/ceramic-tolstoy-high-three-quarter.png",
+          "sha256": "6c5ce03e7747f21adf216dd1168b95db029201d0b06d8123dcca0d02a61b4098",
+          "reviewed": false,
+          "reviewers": []
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "high",
+          "view": "profile",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a7/ceramic-tolstoy-high-profile.png",
+          "sha256": "6ccafb1abe45d1393d294de6129524b6994e055d4a4f49064df813147cd6727b",
+          "reviewed": false,
+          "reviewers": []
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "high",
+          "view": "back",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a7/ceramic-tolstoy-high-back.png",
+          "sha256": "922068547244af575d385c4a8583741349a4b991e955065c3b73675e62a25cbe",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "economy",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a7/ceramic-tolstoy-economy-front.png",
+          "sha256": "a3388cedab30e86d4c9ca1f2eb2e5d4152306dacd4f4a29bf55fa680ba630c30",
+          "reviewed": false,
+          "reviewers": []
+        }
+      ],
+      "historical": true,
+      "final": false,
+      "artAccepted": false,
+      "likenessAccepted": false,
+      "userRealismRequirementSatisfied": false
+    },
+    {
+      "attempt": "art-a8",
+      "capture": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a8/result.json",
+        "sha256": "d3cc9849f198f4cd6a78a2e9188dc4870e76d361574bb1a9c5aafcc2b74fbe4d"
+      },
+      "startedAt": "2026-09-19T22:11:32.503Z",
+      "endedAt": "2026-09-19T22:11:36.632Z",
+      "captureMode": "full",
+      "sourceInputs": [
+        {
+          "path": "src/components/globeCeramicPortraitStandGeometry.ts",
+          "sha256": "1b94ca526dc10e5811339d4f6a5e17ca2f819a141148dbda2b97b484351d3fdb"
+        },
+        {
+          "path": "src/components/globeQuality.ts",
+          "sha256": "b52e0221ec8bcac17d640e26378bc0304521316ca34e203313d2b63f9c3b28c9"
+        },
+        {
+          "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/capture-portraits.mjs",
+          "sha256": "051fa987b70140fe473b82bd43082b66364b255014a36101e834aa291ca35692"
+        }
+      ],
+      "sourceInputsUnchangedAtCapture": true,
+      "captureErrors": [],
+      "counts": {
+        "captured": 15,
+        "reviewed": 15,
+        "notClaimedReviewed": 0,
+        "root": 3,
+        "networkCapabilities": 12
+      },
+      "summary": "Full image coverage split between reviewers. Integrated Pushkin curls and removal of Tolstoy rear-neck beard texture improved continuity; generic sculptural faces/materials and limited fine detail remain. This is a pre-resize intermediate source, not the final current outcome.",
+      "findings": [
+        "Separate rounded curl beads and sideburn chains were replaced by a visually connected hair surface; no visible join gaps were observed in profile/back.",
+        "Tolstoy rear-neck beard texture was removed; the elongated lower rear head volume and cap-like rear hair boundary remain visible.",
+        "High and Economy retain all three overall silhouettes and their broad distinguishing hair/beard types; no major element disappears.",
+        "Facial anatomy remains generic and smooth; pale almond eye inserts with sharp circular irises give a doll-like gaze.",
+        "Economy softens lip, moustache, nose and groove separation; Tolstoy parallel beard channels also resemble drapery in High.",
+        "Regular curl relief, stylized pedestal joins and warm/violet light response remain limitations. Portrait likeness and maximum realism are not accepted."
+      ],
+      "findingsAttribution": "/root/network_capabilities direct visual review reported to root",
+      "frames": [
+        {
+          "kind": "pushkin",
+          "tier": "high",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a8/ceramic-pushkin-high-front.png",
+          "sha256": "2d8cd6697966724d9311041d613c2458369f18eabde021b69a49f816c84916bc",
+          "reviewed": true,
+          "reviewers": [
+            "/root/network_capabilities"
+          ]
+        },
+        {
+          "kind": "pushkin",
+          "tier": "high",
+          "view": "three-quarter",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a8/ceramic-pushkin-high-three-quarter.png",
+          "sha256": "7a5e2e293784486f752aca141b690cbc80d3ca758ceeada0895cf2ecd3d67f4e",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "pushkin",
+          "tier": "high",
+          "view": "profile",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a8/ceramic-pushkin-high-profile.png",
+          "sha256": "46202e8208a2ed4fd4368e6f8862be239b5019bb7a1bb81bfd44809d4910d6ac",
+          "reviewed": true,
+          "reviewers": [
+            "/root/network_capabilities"
+          ]
+        },
+        {
+          "kind": "pushkin",
+          "tier": "high",
+          "view": "back",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a8/ceramic-pushkin-high-back.png",
+          "sha256": "1d1d76dddb71a42826b87085e8ac130b182b38472462f62047c4cebbab5bd52d",
+          "reviewed": true,
+          "reviewers": [
+            "/root/network_capabilities"
+          ]
+        },
+        {
+          "kind": "pushkin",
+          "tier": "economy",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a8/ceramic-pushkin-economy-front.png",
+          "sha256": "a522d04623239150b52ffe7ba9009ac26bf67d417a75d41515efd2f5c04736d2",
+          "reviewed": true,
+          "reviewers": [
+            "/root/network_capabilities"
+          ]
+        },
+        {
+          "kind": "hemingway",
+          "tier": "high",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a8/ceramic-hemingway-high-front.png",
+          "sha256": "74cece9db89924c15554aed79d0f080472f4369e101696383e440079edab344c",
+          "reviewed": true,
+          "reviewers": [
+            "/root/network_capabilities"
+          ]
+        },
+        {
+          "kind": "hemingway",
+          "tier": "high",
+          "view": "three-quarter",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a8/ceramic-hemingway-high-three-quarter.png",
+          "sha256": "66c07a00a11107983878a4bd87b6630a372e3db45031001b70efd001790b8259",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "hemingway",
+          "tier": "high",
+          "view": "profile",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a8/ceramic-hemingway-high-profile.png",
+          "sha256": "01187b21dd68a43fac1739a40d99277f78a53aad2b55df997956b8c06480335a",
+          "reviewed": true,
+          "reviewers": [
+            "/root/network_capabilities"
+          ]
+        },
+        {
+          "kind": "hemingway",
+          "tier": "high",
+          "view": "back",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a8/ceramic-hemingway-high-back.png",
+          "sha256": "4861a322232d7b04fc9c7887463fb362cf72ce4d1967905c7644b520878a0a69",
+          "reviewed": true,
+          "reviewers": [
+            "/root/network_capabilities"
+          ]
+        },
+        {
+          "kind": "hemingway",
+          "tier": "economy",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a8/ceramic-hemingway-economy-front.png",
+          "sha256": "79663b1da0976eacad97101a67217b2c550a87da324add60a852ff07e9611acb",
+          "reviewed": true,
+          "reviewers": [
+            "/root/network_capabilities"
+          ]
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "high",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a8/ceramic-tolstoy-high-front.png",
+          "sha256": "5bb4c55246349555dec8daee433e3e83eecc7acb25498b79c2f5cb9ff16a560d",
+          "reviewed": true,
+          "reviewers": [
+            "/root/network_capabilities"
+          ]
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "high",
+          "view": "three-quarter",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a8/ceramic-tolstoy-high-three-quarter.png",
+          "sha256": "3ce55fa5a7c8a3a1dc8521797c7fdf83fe31e2709f2a8cadc0c8f9079243122b",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "high",
+          "view": "profile",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a8/ceramic-tolstoy-high-profile.png",
+          "sha256": "1d0164e9b775b46be9103cff33ca532395078800ea96cc05843a0cccfa102693",
+          "reviewed": true,
+          "reviewers": [
+            "/root/network_capabilities"
+          ]
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "high",
+          "view": "back",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a8/ceramic-tolstoy-high-back.png",
+          "sha256": "a3a7817290822f7e34493c7264c0d8fc8a539d7f0d03a8f3903512f5e6273835",
+          "reviewed": true,
+          "reviewers": [
+            "/root/network_capabilities"
+          ]
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "economy",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a8/ceramic-tolstoy-economy-front.png",
+          "sha256": "03f00bcf29981386c890fb4cf86b2e11f7da7f44aacbde2b3ddc04bc78d30cc7",
+          "reviewed": true,
+          "reviewers": [
+            "/root/network_capabilities"
+          ]
+        }
+      ],
+      "historical": true,
+      "final": false,
+      "artAccepted": false,
+      "likenessAccepted": false,
+      "userRealismRequirementSatisfied": false
+    },
+    {
+      "attempt": "art-a9",
+      "capture": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a9/result.json",
+        "sha256": "4e807f65b366ef10778ba69e6cc8f63880f9c22ad08bdac9597f8e661656aeb1"
+      },
+      "startedAt": "2026-09-19T22:20:28.291Z",
+      "endedAt": "2026-09-19T22:20:32.597Z",
+      "captureMode": "full",
+      "sourceInputs": [
+        {
+          "path": "src/components/globeCeramicPortraitStandGeometry.ts",
+          "sha256": "3d80ab3215eef942172d9c7a6888cff2ae65901f6ee1540ac0ee5158df30085c"
+        },
+        {
+          "path": "src/components/globeQuality.ts",
+          "sha256": "b52e0221ec8bcac17d640e26378bc0304521316ca34e203313d2b63f9c3b28c9"
+        },
+        {
+          "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/capture-portraits.mjs",
+          "sha256": "051fa987b70140fe473b82bd43082b66364b255014a36101e834aa291ca35692"
+        }
+      ],
+      "sourceInputsUnchangedAtCapture": true,
+      "captureErrors": [],
+      "counts": {
+        "captured": 15,
+        "reviewed": 3,
+        "notClaimedReviewed": 12,
+        "root": 3,
+        "networkCapabilities": 0
+      },
+      "summary": "User-confirmed ceramic heads and lower plates enlarged. Root inspected only the three High three-quarter views and found the plate clipped by the inspection camera; the other twelve captured frames are not claimed reviewed.",
+      "findings": [
+        "The lower plate was clipped by the isolated inspection camera in the root-reviewed quarter views; capture framing required correction."
+      ],
+      "findingsAttribution": "/root reported direct visual inspection of three High three-quarter views",
+      "frames": [
+        {
+          "kind": "pushkin",
+          "tier": "high",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a9/ceramic-pushkin-high-front.png",
+          "sha256": "a6c75d149a31720ecd9a3d6712ac953ea911880527f317a3690b214f0a1d8c41",
+          "reviewed": false,
+          "reviewers": []
+        },
+        {
+          "kind": "pushkin",
+          "tier": "high",
+          "view": "three-quarter",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a9/ceramic-pushkin-high-three-quarter.png",
+          "sha256": "112c507d6d93654d38630aecf22d5f399adafd8fb95fe973a951c71953042d49",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "pushkin",
+          "tier": "high",
+          "view": "profile",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a9/ceramic-pushkin-high-profile.png",
+          "sha256": "0c06629240346f08402a2f44d09b46362ddf355236e1f2d0b243006ee7c54e44",
+          "reviewed": false,
+          "reviewers": []
+        },
+        {
+          "kind": "pushkin",
+          "tier": "high",
+          "view": "back",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a9/ceramic-pushkin-high-back.png",
+          "sha256": "57c26b9415adce8d24ba9bf087965304bb2259afd3ba39244ecb08eb6a63da93",
+          "reviewed": false,
+          "reviewers": []
+        },
+        {
+          "kind": "pushkin",
+          "tier": "economy",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a9/ceramic-pushkin-economy-front.png",
+          "sha256": "7279af0dfa5623fad07fa0e649f597b464bc16fcb5fcd30c9f2cf09d48e8aadc",
+          "reviewed": false,
+          "reviewers": []
+        },
+        {
+          "kind": "hemingway",
+          "tier": "high",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a9/ceramic-hemingway-high-front.png",
+          "sha256": "927b417d52bb61e4a0274ddb3b9a23e1d032f0a9a9bfab4277a32cffbc2d2fc2",
+          "reviewed": false,
+          "reviewers": []
+        },
+        {
+          "kind": "hemingway",
+          "tier": "high",
+          "view": "three-quarter",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a9/ceramic-hemingway-high-three-quarter.png",
+          "sha256": "8d20fd03c540c8e67246bc71900b48a1a3e4c294f1fce2d4ea92fc16985c4eb9",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "hemingway",
+          "tier": "high",
+          "view": "profile",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a9/ceramic-hemingway-high-profile.png",
+          "sha256": "5b797d4c6cdd40cdeaf954fff081f2f43f57be9ba592672b9b09dde665d3fe48",
+          "reviewed": false,
+          "reviewers": []
+        },
+        {
+          "kind": "hemingway",
+          "tier": "high",
+          "view": "back",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a9/ceramic-hemingway-high-back.png",
+          "sha256": "783c201cc4c7c0d29095f8ac5b4d7ec1b7f6f72aee2fc6bf73eace4db450864e",
+          "reviewed": false,
+          "reviewers": []
+        },
+        {
+          "kind": "hemingway",
+          "tier": "economy",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a9/ceramic-hemingway-economy-front.png",
+          "sha256": "8e1b562359ceebdfd7ab90384e423d1625db28fcf4cbdab27a9944f1e6c3a9ae",
+          "reviewed": false,
+          "reviewers": []
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "high",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a9/ceramic-tolstoy-high-front.png",
+          "sha256": "8c643f3a5fde34206ddfd98110408528fd42bc495ada43b3c3f2cf74b9ee106a",
+          "reviewed": false,
+          "reviewers": []
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "high",
+          "view": "three-quarter",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a9/ceramic-tolstoy-high-three-quarter.png",
+          "sha256": "39055643595c0eac7bf03c46b0b4f0e1ffe0ec5002810ae40ce096e2933aef59",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "high",
+          "view": "profile",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a9/ceramic-tolstoy-high-profile.png",
+          "sha256": "df403c70732f8e59175acec129c3ef55c114515add3258bd4d712bd8dca28347",
+          "reviewed": false,
+          "reviewers": []
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "high",
+          "view": "back",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a9/ceramic-tolstoy-high-back.png",
+          "sha256": "19ac0ce6ba2119e4fd56822b54551cf139ecc08cc132de1854e26ef971fa9244",
+          "reviewed": false,
+          "reviewers": []
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "economy",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a9/ceramic-tolstoy-economy-front.png",
+          "sha256": "3637421fa9c34b7330a7827133fc5f146c666a4d73337fa47032319649ec665e",
+          "reviewed": false,
+          "reviewers": []
+        }
+      ],
+      "historical": true,
+      "final": false,
+      "finalScope": null,
+      "artAccepted": false,
+      "likenessAccepted": false,
+      "userRealismRequirementSatisfied": false
+    },
+    {
+      "attempt": "art-a10",
+      "capture": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a10/result.json",
+        "sha256": "e545683ee00acb007c7e40d5456286a5d40ca73a0aadf5bd4de8e8d73f09d4ae"
+      },
+      "startedAt": "2026-09-19T22:21:38.268Z",
+      "endedAt": "2026-09-19T22:21:43.291Z",
+      "captureMode": "full",
+      "sourceInputs": [
+        {
+          "path": "src/components/globeCeramicPortraitStandGeometry.ts",
+          "sha256": "3d80ab3215eef942172d9c7a6888cff2ae65901f6ee1540ac0ee5158df30085c"
+        },
+        {
+          "path": "src/components/globeQuality.ts",
+          "sha256": "b52e0221ec8bcac17d640e26378bc0304521316ca34e203313d2b63f9c3b28c9"
+        },
+        {
+          "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/capture-portraits.mjs",
+          "sha256": "f2c44cc8f35a58f847b6803d86157ffb613db948b4279ffdca80889a4b013431"
+        }
+      ],
+      "sourceInputsUnchangedAtCapture": true,
+      "captureErrors": [],
+      "counts": {
+        "captured": 15,
+        "reviewed": 15,
+        "notClaimedReviewed": 0,
+        "root": 3,
+        "networkCapabilities": 12
+      },
+      "summary": "Same resized runtime as art-a9; only the inspection camera changed to include the whole assembly. All fifteen frames reviewed: root three High three-quarter views and network_capabilities twelve remaining views.",
+      "findings": [
+        "The enlarged lower plate reads as a broad dish with a rounded rim and a smooth transition into the central neck; the entire outline is visible in the inspected views.",
+        "Heads and details retain their proportions and major elements at High and Economy. No visible gap at the head-to-neck join or newly introduced size-related intersection was observed.",
+        "Tolstoy beard remains in front of the supporting neck and does not visibly cut through the plate.",
+        "Generic smooth faces, doll-like eyes, regular curl relief, drapery-like beard grooves and warm/violet lighting remain limitations; likeness and realistic ceramic material are not accepted."
+      ],
+      "findingsAttribution": "/root/network_capabilities direct review of twelve views; /root independently confirmed the other three High three-quarter views in the current task",
+      "frames": [
+        {
+          "kind": "pushkin",
+          "tier": "high",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a10/ceramic-pushkin-high-front.png",
+          "sha256": "3888d249f09120e504bd515199e1656a7cbd9ec6cbfced94a219da9fcadb5db5",
+          "reviewed": true,
+          "reviewers": [
+            "/root/network_capabilities"
+          ]
+        },
+        {
+          "kind": "pushkin",
+          "tier": "high",
+          "view": "three-quarter",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a10/ceramic-pushkin-high-three-quarter.png",
+          "sha256": "73fd500cc8734fbe8612adbd6091f98b06bd2b5bf98fafc81d9be0bf7b066cf3",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "pushkin",
+          "tier": "high",
+          "view": "profile",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a10/ceramic-pushkin-high-profile.png",
+          "sha256": "edc175279094e54751df4fa57efa9e3843c4d45d092b747b0617461b045f76c0",
+          "reviewed": true,
+          "reviewers": [
+            "/root/network_capabilities"
+          ]
+        },
+        {
+          "kind": "pushkin",
+          "tier": "high",
+          "view": "back",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a10/ceramic-pushkin-high-back.png",
+          "sha256": "10d0043b321216f7da217e1415fa4e72fb486e81542101100e6dc3e68a1d2525",
+          "reviewed": true,
+          "reviewers": [
+            "/root/network_capabilities"
+          ]
+        },
+        {
+          "kind": "pushkin",
+          "tier": "economy",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a10/ceramic-pushkin-economy-front.png",
+          "sha256": "2f4426b1a246bf40fb3778255a0eb7ec7b059eb5e256ea822fb35fd6f68092b8",
+          "reviewed": true,
+          "reviewers": [
+            "/root/network_capabilities"
+          ]
+        },
+        {
+          "kind": "hemingway",
+          "tier": "high",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a10/ceramic-hemingway-high-front.png",
+          "sha256": "b5953d7fc353db02dba5fd976517ec9c7c365ad6db78fcc99690a920dfd113df",
+          "reviewed": true,
+          "reviewers": [
+            "/root/network_capabilities"
+          ]
+        },
+        {
+          "kind": "hemingway",
+          "tier": "high",
+          "view": "three-quarter",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a10/ceramic-hemingway-high-three-quarter.png",
+          "sha256": "9da3414ac0ddc111163de8946453e94f49bb0142519e1677ad3d32a0e16efdb3",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "hemingway",
+          "tier": "high",
+          "view": "profile",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a10/ceramic-hemingway-high-profile.png",
+          "sha256": "17098e78d224013293cb4a40a0e5349b7898b1d6427263c3ebcb63dcce526f25",
+          "reviewed": true,
+          "reviewers": [
+            "/root/network_capabilities"
+          ]
+        },
+        {
+          "kind": "hemingway",
+          "tier": "high",
+          "view": "back",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a10/ceramic-hemingway-high-back.png",
+          "sha256": "ae2e5677ea1bc4e80c237d211d29ce81f3fed69001e16913ff568897a09a4e8f",
+          "reviewed": true,
+          "reviewers": [
+            "/root/network_capabilities"
+          ]
+        },
+        {
+          "kind": "hemingway",
+          "tier": "economy",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a10/ceramic-hemingway-economy-front.png",
+          "sha256": "ec0c3da156a828da5374305ccd4a13b2177fd3300e3a4ae79fb9cc9cda0a7a31",
+          "reviewed": true,
+          "reviewers": [
+            "/root/network_capabilities"
+          ]
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "high",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a10/ceramic-tolstoy-high-front.png",
+          "sha256": "43b7574062366805481712dc7e591158d3e07ca05ae2710c670bb86ba749f428",
+          "reviewed": true,
+          "reviewers": [
+            "/root/network_capabilities"
+          ]
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "high",
+          "view": "three-quarter",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a10/ceramic-tolstoy-high-three-quarter.png",
+          "sha256": "17c066f67cd2a268aab422bb3a98e02e2197abffc9ed045ca61c4b3101e644a3",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "high",
+          "view": "profile",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a10/ceramic-tolstoy-high-profile.png",
+          "sha256": "72f26c6fffd2262e1140e24411db488366dd06a03841e63bb899de071d281f3c",
+          "reviewed": true,
+          "reviewers": [
+            "/root/network_capabilities"
+          ]
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "high",
+          "view": "back",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a10/ceramic-tolstoy-high-back.png",
+          "sha256": "48d03d098835a40babd2dc0b4a3b43d90365020eccf0d59c75442618a21d668d",
+          "reviewed": true,
+          "reviewers": [
+            "/root/network_capabilities"
+          ]
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "economy",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a10/ceramic-tolstoy-economy-front.png",
+          "sha256": "bbd6cdbbc8a561fff72afd487bdfbd251f7e13221e650094c3b8fec5f6ab40cd",
+          "reviewed": true,
+          "reviewers": [
+            "/root/network_capabilities"
+          ]
+        }
+      ],
+      "historical": true,
+      "final": false,
+      "finalScope": "Superseded by the second explicit user request to double the lower white disk diameter; retained as the first-resize record.",
+      "artAccepted": false,
+      "likenessAccepted": false,
+      "userRealismRequirementSatisfied": false
+    },
+    {
+      "attempt": "art-a11",
+      "capture": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a11/result.json",
+        "sha256": "2e4218d485e77b5e89664102f1b5c4b81297ea5a112f9357472637ad31b9fd6a"
+      },
+      "startedAt": "2026-09-19T22:25:25.721Z",
+      "endedAt": "2026-09-19T22:25:28.373Z",
+      "captureMode": "shape",
+      "sourceInputs": [
+        {
+          "path": "src/components/globeCeramicPortraitStandGeometry.ts",
+          "sha256": "da90018f3f6e4b395008be9af5974d9174f0ac76f572a07491c0445d454df29e"
+        },
+        {
+          "path": "src/components/globeQuality.ts",
+          "sha256": "b52e0221ec8bcac17d640e26378bc0304521316ca34e203313d2b63f9c3b28c9"
+        },
+        {
+          "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/capture-portraits.mjs",
+          "sha256": "f2c44cc8f35a58f847b6803d86157ffb613db948b4279ffdca80889a4b013431"
+        }
+      ],
+      "sourceInputsUnchangedAtCapture": true,
+      "captureErrors": [],
+      "counts": {
+        "captured": 6,
+        "reviewed": 3,
+        "notClaimedReviewed": 3,
+        "root": 3,
+        "networkCapabilities": 0
+      },
+      "summary": "Only the lower plate profile was doubled following the explicit user request; heads retain the previous 1.12 scale. Root reviewed three High front views and observed clipping with the old inspection camera.",
+      "findings": [
+        "The old inspection camera clipped the enlarged lower disk in the three root-reviewed front views."
+      ],
+      "findingsAttribution": "/root reported direct inspection of three High front views",
+      "frames": [
+        {
+          "kind": "pushkin",
+          "tier": "high",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a11/ceramic-pushkin-high-front.png",
+          "sha256": "1b669fd75e8346e4e9f257c7a05566780bb234ff484077a2107b6b46f7e3949c",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "pushkin",
+          "tier": "high",
+          "view": "profile",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a11/ceramic-pushkin-high-profile.png",
+          "sha256": "b24015031bae4618a6416c248353ab801a7a2798c807b619020b6a0587a99f7e",
+          "reviewed": false,
+          "reviewers": []
+        },
+        {
+          "kind": "hemingway",
+          "tier": "high",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a11/ceramic-hemingway-high-front.png",
+          "sha256": "f7e536d4cb38d6b77faa2cf6c4d1cd43788436cb6e2a3b2f9256f01969756279",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "hemingway",
+          "tier": "high",
+          "view": "profile",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a11/ceramic-hemingway-high-profile.png",
+          "sha256": "42d144f0bbec9894c4fdfcceb790e34cbc18421ad840fe72fe1aaad93488a092",
+          "reviewed": false,
+          "reviewers": []
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "high",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a11/ceramic-tolstoy-high-front.png",
+          "sha256": "3e37e94e1d3be31cede4d053f416286be03ef660bd85a0df1cd0a6b5e60cb908",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "high",
+          "view": "profile",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a11/ceramic-tolstoy-high-profile.png",
+          "sha256": "e5790c5e0c9d24b2a1f37660594fa373cc22da947ccb979e4c0cc0ae282ccdec",
+          "reviewed": false,
+          "reviewers": []
+        }
+      ],
+      "historical": true,
+      "final": false,
+      "finalScope": null,
+      "artAccepted": false,
+      "likenessAccepted": false,
+      "userRealismRequirementSatisfied": false
+    },
+    {
+      "attempt": "art-a12",
+      "capture": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a12/result.json",
+        "sha256": "a61e0ac27d1e0c7905a14d6c1f8e13a6475f30bc836e443119a757f6b4ddd858"
+      },
+      "startedAt": "2026-09-19T22:26:46.805Z",
+      "endedAt": "2026-09-19T22:26:49.315Z",
+      "captureMode": "shape",
+      "sourceInputs": [
+        {
+          "path": "src/components/globeCeramicPortraitStandGeometry.ts",
+          "sha256": "da90018f3f6e4b395008be9af5974d9174f0ac76f572a07491c0445d454df29e"
+        },
+        {
+          "path": "src/components/globeQuality.ts",
+          "sha256": "b52e0221ec8bcac17d640e26378bc0304521316ca34e203313d2b63f9c3b28c9"
+        },
+        {
+          "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/capture-portraits.mjs",
+          "sha256": "8ef99fc93f15bb5f2fd5202785b3f5a8e64ec27be6fc8089cf4cc5315fed2b23"
+        }
+      ],
+      "sourceInputsUnchangedAtCapture": true,
+      "captureErrors": [],
+      "counts": {
+        "captured": 6,
+        "reviewed": 6,
+        "notClaimedReviewed": 0,
+        "root": 3,
+        "networkCapabilities": 3
+      },
+      "summary": "Same doubled-disk runtime as art-a11; automatic bounds-based camera fitting now shows the complete assembly. Final isolated scope is six High front/profile frames only, not a repeat of the earlier 15-view/two-tier capture.",
+      "findings": [
+        "The doubled lower disk, rounded rim and entire assembly fit in all three directly inspected High profiles; root separately confirms complete front framing.",
+        "The much broader dish is visibly larger relative to the head, as requested. The flared transition into the neck remains smooth, without a visible split or newly introduced intersection.",
+        "Previously enlarged heads retain their proportions; Tolstoy beard remains ahead of the neck without visibly cutting the disk.",
+        "Generic faces, stylized hair/beard relief and warm-lit material appearance remain open limitations. This review does not establish likeness or artistic realism."
+      ],
+      "findingsAttribution": "/root/network_capabilities directly viewed three High profiles; /root explicitly reported the three High fronts",
+      "frames": [
+        {
+          "kind": "pushkin",
+          "tier": "high",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a12/ceramic-pushkin-high-front.png",
+          "sha256": "fc328a361ee231c18735cfb5596db95fb8bfecff1775afe70e45c8b560be6f12",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "pushkin",
+          "tier": "high",
+          "view": "profile",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a12/ceramic-pushkin-high-profile.png",
+          "sha256": "44cf1edb53565472741b980a03fdd604e6e147aba4c6505aed052c4c6f8a2fc2",
+          "reviewed": true,
+          "reviewers": [
+            "/root/network_capabilities"
+          ]
+        },
+        {
+          "kind": "hemingway",
+          "tier": "high",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a12/ceramic-hemingway-high-front.png",
+          "sha256": "7bf2169165f8e46c55724f1c23d760030e02cd11ef52ee7a7b72d5252a790916",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "hemingway",
+          "tier": "high",
+          "view": "profile",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a12/ceramic-hemingway-high-profile.png",
+          "sha256": "974792fd16934ce4e69757fea1d425147f4ff2340f899401e36f122020d6b988",
+          "reviewed": true,
+          "reviewers": [
+            "/root/network_capabilities"
+          ]
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "high",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a12/ceramic-tolstoy-high-front.png",
+          "sha256": "a3be713af52166e899a3524c43ee1d6d8816a6c4c1a5ce07c04e1c29f5a8bafe",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "high",
+          "view": "profile",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a12/ceramic-tolstoy-high-profile.png",
+          "sha256": "c482ccdd6894f1e1dd34426b58887d5d4689c97f8b5d12c62eccaa60735e1b21",
+          "reviewed": true,
+          "reviewers": [
+            "/root/network_capabilities"
+          ]
+        }
+      ],
+      "historical": true,
+      "final": false,
+      "finalScope": "Superseded by the subsequent explicit request to make the lower plate one third smaller; retained as the double-size history.",
+      "artAccepted": false,
+      "likenessAccepted": false,
+      "userRealismRequirementSatisfied": false
+    },
+    {
+      "attempt": "art-a13",
+      "capture": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a13/result.json",
+        "sha256": "109d10d0eb154d12775f9d3bb60645adc92921f3bde1abce932e8c7dc2c9959f"
+      },
+      "startedAt": "2026-09-19T22:29:50.424Z",
+      "endedAt": "2026-09-19T22:29:53.072Z",
+      "captureMode": "shape",
+      "sourceInputs": [
+        {
+          "path": "src/components/globeCeramicPortraitStandGeometry.ts",
+          "sha256": "aaefb0d9bb4721fbe0e66e47b307f743d0ade834abb6be15ecf09a3a2b729a32"
+        },
+        {
+          "path": "src/components/globeQuality.ts",
+          "sha256": "b52e0221ec8bcac17d640e26378bc0304521316ca34e203313d2b63f9c3b28c9"
+        },
+        {
+          "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/capture-portraits.mjs",
+          "sha256": "8ef99fc93f15bb5f2fd5202785b3f5a8e64ec27be6fc8089cf4cc5315fed2b23"
+        }
+      ],
+      "sourceInputsUnchangedAtCapture": true,
+      "captureErrors": [],
+      "counts": {
+        "captured": 6,
+        "reviewed": 6,
+        "notClaimedReviewed": 0,
+        "root": 3,
+        "networkCapabilities": 3
+      },
+      "summary": "Following the latest explicit request, only the lower plate radius/diameter was reduced by one third from the doubled version. Previous 1.12 head/detail scaling and assembly height remain unchanged. Six High front/profile views are confirmed inspected.",
+      "findings": [
+        "The lower dish is visibly narrower relative to the heads than in art-a12, while retaining its rounded rim and broad dish-shaped appearance.",
+        "All three directly inspected profiles show the entire plate without cropping; the plate-to-neck transition remains smooth and no new gap or intersection is visible.",
+        "Head proportions and facial/hair/beard details appear retained; Tolstoy beard does not visibly cut through the reduced plate.",
+        "The previously recorded stylized anatomy, doll-like eyes, regular hair/beard relief and warm-lit ceramic response remain unresolved; no likeness or art approval is implied."
+      ],
+      "findingsAttribution": "/root/network_capabilities directly viewed three High profiles; /root explicitly reported the three High fronts",
+      "frames": [
+        {
+          "kind": "pushkin",
+          "tier": "high",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a13/ceramic-pushkin-high-front.png",
+          "sha256": "3192bec3e4c2662434c1fa0e82ee508732c345163349c33bc4b418ba7a918c39",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "pushkin",
+          "tier": "high",
+          "view": "profile",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a13/ceramic-pushkin-high-profile.png",
+          "sha256": "d10f98f5e0fd8d7ecf6907a88111c3061aded0695f3b017dfc86a8e43f49107b",
+          "reviewed": true,
+          "reviewers": [
+            "/root/network_capabilities"
+          ]
+        },
+        {
+          "kind": "hemingway",
+          "tier": "high",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a13/ceramic-hemingway-high-front.png",
+          "sha256": "c4fb6f9bde2c84a3719d15b3e8d95922c418ab227fdb87977f8bd89ed4166b2d",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "hemingway",
+          "tier": "high",
+          "view": "profile",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a13/ceramic-hemingway-high-profile.png",
+          "sha256": "d841c5e8e8f37459513866b36ceaae7813a0288a7c72457dcf1b269dbdcf69b7",
+          "reviewed": true,
+          "reviewers": [
+            "/root/network_capabilities"
+          ]
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "high",
+          "view": "front",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a13/ceramic-tolstoy-high-front.png",
+          "sha256": "38c8c2d6cd0f6443a0de9b27b855fe717a4b057d684b95a79f3aa78cbe6c796d",
+          "reviewed": true,
+          "reviewers": [
+            "/root"
+          ]
+        },
+        {
+          "kind": "tolstoy",
+          "tier": "high",
+          "view": "profile",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a13/ceramic-tolstoy-high-profile.png",
+          "sha256": "8223d8a33f78c93ab74970bb9e59c385c24edcf887a530809aa7835a759019c8",
+          "reviewed": true,
+          "reviewers": [
+            "/root/network_capabilities"
+          ]
+        }
+      ],
+      "historical": false,
+      "final": true,
+      "finalScope": "Current isolated capture: six High front/profile views only. Lower-tier actual-App review for this source is separate and not claimed in this history.",
+      "artAccepted": false,
+      "likenessAccepted": false,
+      "userRealismRequirementSatisfied": false
+    }
+  ],
+  "latestCapturedAttempt": "art-a13",
+  "latestCapturedSourceIsFinal": true,
+  "pendingUserChange": {
+    "request": "Сделай на треть меньше тарелку",
+    "status": "THIRD_SIZE_CHANGE_CAPTURED_HIGH_ONLY",
+    "scope": "Reduce only the lower ceramic dish radius/diameter to two thirds of the previous 0.590 profile radius; preserve the 1.12 head/detail scale and assembly height.",
+    "previousFootProfileMaximumRadius": 0.59,
+    "currentFootProfileMaximumRadius": 0.3933333333333333,
+    "radiusFormula": "0.590 * (2 / 3)",
+    "diameterScaleFromPrevious": 0.6666666666666666,
+    "capturedInA12": false,
+    "capturedInA13": true,
+    "factorySha256": "aaefb0d9bb4721fbe0e66e47b307f743d0ade834abb6be15ecf09a3a2b729a32"
+  },
+  "limitations": [
+    "These are isolated warm-lit geometry captures, not actual-App screenshots or neutral material inspection.",
+    "Review coverage does not establish portrait likeness, artistic approval or satisfaction of the user realism requirement.",
+    "Historical source hashes remain distinct: a9/a10 first resize; a11/a12 doubled dish; a13 one-third reduction of the doubled dish.",
+    "The latest capture binds the current size iteration only; this history does not establish final visual acceptance or execute the checkpoint."
+  ],
+  "artAccepted": false,
+  "likenessAccepted": false,
+  "userRealismRequirementSatisfied": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "finalSourceScope": "Current third-size iteration only: six isolated High front/profile views. Lower-tier actual-App evidence is separate; no final art/likeness approval.",
+  "lowerTierReview": {
+    "plannedEvidence": "A coordinating-agent-selected actual-App browser run bound to the art-a13 source; attempt not recorded in this history.",
+    "claimedReviewedInThisHistory": false
+  }
+}

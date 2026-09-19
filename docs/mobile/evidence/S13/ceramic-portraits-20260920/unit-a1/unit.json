@@ -1,0 +1,26 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "--config=docs/mobile/evidence/S13/ceramic-portraits-20260920/unit.config.mjs",
+    "src/components/globeCeramicPortraitStandGeometry.test.ts",
+    "src/planet/globeCeramicPortraitStandPolicy.test.ts",
+    "--maxWorkers=2",
+    "--reporter=json",
+    "--outputFile=C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S13\\ceramic-portraits-20260920\\unit-a1\\vitest.json"
+  ],
+  "startedAt": "2026-09-19T22:08:03.041Z",
+  "durationMs": 4061,
+  "exitCode": 1,
+  "logs": {
+    "stdout": {
+      "text": "JSON report written to C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S13/ceramic-portraits-20260920/unit-a1/vitest.json\n",
+      "sha256": "5401844e036b90da6f7eaf311cb5f23a3f86b66ba5bebc4cf5d7cd2c591d94c4"
+    },
+    "stderr": {
+      "text": "",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

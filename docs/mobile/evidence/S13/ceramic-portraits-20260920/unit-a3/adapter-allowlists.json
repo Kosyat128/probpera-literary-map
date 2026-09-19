@@ -1,0 +1,27 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "--config=docs/mobile/evidence/S13/ceramic-portraits-20260920/unit.config.mjs",
+    "src/host/HostPlatformServices.test.ts",
+    "src/platform/adapters/web/WebPlatformAdapter.test.ts",
+    "--testNamePattern=round-trips only exact adult stand choices (?:through the stand preference key|without extending browser storage authority)$",
+    "--maxWorkers=2",
+    "--reporter=json",
+    "--outputFile=C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S13\\ceramic-portraits-20260920\\unit-a3\\vitest-adapters.json"
+  ],
+  "startedAt": "2026-09-19T22:21:02.183Z",
+  "durationMs": 1727,
+  "exitCode": 0,
+  "logs": {
+    "stdout": {
+      "text": "JSON report written to C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S13/ceramic-portraits-20260920/unit-a3/vitest-adapters.json\n",
+      "sha256": "9e9cf32fbcad243462fe3822be8df4aaf19b10f923c5cbb1b3683eaa0a1cb97b"
+    },
+    "stderr": {
+      "text": "",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

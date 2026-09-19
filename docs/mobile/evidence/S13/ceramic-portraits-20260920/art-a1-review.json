@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-19T21:37:59.236Z",
+  "attempt": "art-a1",
+  "reviewedFrames": 15,
+  "status": "REVISION_REQUIRED",
+  "artAccepted": false,
+  "likenessAccepted": false,
+  "findings": [
+    "Faces too elongated and generic; eyes too small and noses too long.",
+    "Sparse oval hair pieces over a smooth cap do not read as curls or sculpted hair.",
+    "Hemingway beard has abrupt plate edges and pinched mouth geometry.",
+    "Tolstoy beard is a floating thin shield with a large profile gap and pasted oval locks.",
+    "Seat meets the head weakly; glaze reads overly yellow and plastic in current lighting."
+  ],
+  "nextAction": "Revise three-dimensional facial anatomy, continuous hair volumes, connected volumetric beards, seat contact and ceramic response before focused checks.",
+  "capturePath": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/art-a1/result.json",
+  "sourceInputs": [
+    {
+      "path": "src/components/globeCeramicPortraitStandGeometry.ts",
+      "sha256": "eaced504dab089c795beb9b142470739f3190588bd211c35ff20eff2e85b624c"
+    },
+    {
+      "path": "src/components/globeQuality.ts",
+      "sha256": "b52e0221ec8bcac17d640e26378bc0304521316ca34e203313d2b63f9c3b28c9"
+    },
+    {
+      "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/capture-portraits.mjs",
+      "sha256": "7d0ecf71c3d4efa76d9b8d2b517f9eb229ad60f247130ef0f5c9e2a81964868e"
+    }
+  ],
+  "frames": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-cer\\art-a1\\ceramic-pushkin-high-front.png",
+      "sha256": "0a8e7245e2ac0fe5bc95c5133e9123b77a3fab8f11c5fd417924d632f4b42567"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-cer\\art-a1\\ceramic-pushkin-high-three-quarter.png",
+      "sha256": "7cb14c5732218f00491f0766d718f7cf16750f01a3cb5eb064cdd3a488e4dc2c"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-cer\\art-a1\\ceramic-pushkin-high-profile.png",
+      "sha256": "479f126562f38323234af4ec9486579a77e74e668bcf100e7d910a9d4f567175"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-cer\\art-a1\\ceramic-pushkin-high-back.png",
+      "sha256": "5e8391f5294182195e09747fe6fc960d79b5e1539b75314b1bccfb334ad24dfc"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-cer\\art-a1\\ceramic-pushkin-economy-front.png",
+      "sha256": "8706ffa68eb0f63cfa413c1ec3cd754061c971c1d94ab2e029f27378eff7f20e"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-cer\\art-a1\\ceramic-hemingway-high-front.png",
+      "sha256": "ab573ded3ce8347718a15749151e89f73d297a9b60ad6584b04ad38a796879e6"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-cer\\art-a1\\ceramic-hemingway-high-three-quarter.png",
+      "sha256": "ccc1439ef22fd1c9301d38e85a2c71c6a32326b47ab8501ab887592e5db5b985"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-cer\\art-a1\\ceramic-hemingway-high-profile.png",
+      "sha256": "b2deb881c1bb20f1e3cece2a0b892d839814dde873d79de1a3f5432a75cd1473"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-cer\\art-a1\\ceramic-hemingway-high-back.png",
+      "sha256": "524449bf81b489fa0529be39de04fb58591e1d02fcfcf4cd61fdfc4eb46dd719"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-cer\\art-a1\\ceramic-hemingway-economy-front.png",
+      "sha256": "521611271e9a9795a90dd1c777689928633cf7cd3112c4872c979dc338ad3281"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-cer\\art-a1\\ceramic-tolstoy-high-front.png",
+      "sha256": "e70cc548ff6b8a6c5f9584ac5e803ab750468b2803bd6a53454f4fabb527ad80"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-cer\\art-a1\\ceramic-tolstoy-high-three-quarter.png",
+      "sha256": "c6f0fe1304bd0bfda451f671971cf9af77eb832efed6352c0fe674134d03cedc"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-cer\\art-a1\\ceramic-tolstoy-high-profile.png",
+      "sha256": "06ac2d6ff29cac168263b30f347f2b5cac51a8bff9a9601336b67d9765f879f8"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-cer\\art-a1\\ceramic-tolstoy-high-back.png",
+      "sha256": "c8947d9c69da7012e95359899dfd78c175680cf01e8cc3d6df0bec93aa72319c"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-cer\\art-a1\\ceramic-tolstoy-economy-front.png",
+      "sha256": "ea10b3fd55df8ac87f1dcd147bf8a2430b555bd0cd8df74867f7dcfff4133c96"
+    }
+  ],
+  "reviewedBy": "root",
+  "lighting": "Isolated warm canonical-style inspection rig matching the whale close-ups; not an actual-App screenshot or neutral material evaluation."
+}

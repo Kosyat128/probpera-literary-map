@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-19T21:27:50.097Z",
+  "stage": "S13",
+  "checkpoint": "fd0ec64ddcd1e1ae1b74d438a5b9bf6bb1348dfe",
+  "previous": "docs/mobile/evidence/S13/three-whales-20260919/result.json",
+  "dependencies": [
+    {
+      "path": "docs/mobile/requirements/v12/16_FULL_3D_BACKGROUND_ENGINE_RU.md",
+      "sha256": "75f830874b32c2afca440b958cb4b3cefdcb9c606b8ba0195fba2f02022198c5"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/17_SKINS_STANDS_ACCESSORIES_ENGINE_RU.md",
+      "sha256": "d84657d718c24a69ce14ddfc6d1e9dc7d6778bf4e58b8be24d9d460249b51741"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/35_3D_BACKGROUND_CATALOG.csv",
+      "sha256": "30cc7b9f6157a38dee3b4661a7bb828e7d8856f09c4b7ccbcdca80a6afebb857"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/36_SKIN_STAND_ACCESSORY_CATALOG.csv",
+      "sha256": "7f35bf0f2c8f27c4d87839814c0bd5772ccf92b02c052eb05e76cda1c6f3eb72"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/37_BASE_EDITION_STARTER_SET.csv",
+      "sha256": "575f40b97986cb4e64cb89243059a3b18c4cda8069f4f0e1c7d3565f6132b731"
+    }
+  ],
+  "userRequest": {
+    "receivedAt": "2026-09-19T21:09:23.659Z",
+    "after": "Complete the detailed golden three-whale stand with gemstone eyes.",
+    "scope": "Add three separate 3D ceramic portrait-head stands of Alexander Pushkin, Ernest Hemingway and Leo Tolstoy, based on their best-known portraits and the sculptural character of figurative mugs.",
+    "quality": "Recognizable sculpted heads and ceramic material, following the same high-quality requirement; do not substitute portrait stickers on generic cylinders."
+  },
+  "scope": "Three original modeled glazed-ceramic portrait heads as separate included stands, retaining the existing golden whale stand and composition lifecycle.",
+  "additionalIds": [
+    "stand.base.portrait-pushkin",
+    "stand.base.portrait-hemingway",
+    "stand.base.portrait-tolstoy"
+  ],
+  "inclusion": "Explicit owner additions, separately enumerated from 29 mandatory Starter Set requirements.",
+  "references": "reference-notes.md",
+  "referenceVisualLimitations": "Kiprensky source viewed locally. Exact selected remote Repin/Hemingway reference pixels could not be decoded through available web tools; researched metadata is not visual likeness approval.",
+  "provenance": "Authored geometry/materials; no photographic portrait textures or downloaded visual assets.",
+  "artAccepted": false,
+  "likenessAccepted": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false,
+  "userClarification": {
+    "recordedAt": "2026-09-19T21:38:49.760Z",
+    "scope": "Full recognizable heads with natural hair, no cape/helmet silhouette. Naturally colored painted ceramic: dark Pushkin curls and sideburns; gray Hemingway hair and short beard; sparse gray Tolstoy hair and long white beard. Preserve actual three-dimensional facial anatomy."
+  },
+  "userSizeClarification": {
+    "recordedAt": "2026-09-19T22:24:00.404Z",
+    "source": "Confirmed user clarification relayed by coordinating agent in the current task.",
+    "scope": "Крупная нижняя тарелка у керамических голов; сами головы немного больше.",
+    "interpretation": "The requested enlarged lower round element is the dish-shaped foot of the ceramic portrait stands. The separate earlier hair/likeness clarification is preserved.",
+    "implementation": {
+      "factorySha256": "3d80ab3215eef942172d9c7a6888cff2ae65901f6ee1540ac0ee5158df30085c",
+      "headAndDetailsScale": 1.12,
+      "scaleAnchor": "top of the original head assembly",
+      "footMaximumRadius": 0.295,
+      "previousFootMaximumRadius": 0.13,
+      "minimumY": -1.724,
+      "valuesBasis": "Coordinating-agent implementation report; these measurements are not represented as user-specified numeric dimensions."
+    },
+    "captures": {
+      "firstResized": "art-a9",
+      "correctedFraming": "art-a10"
+    },
+    "artAccepted": false,
+    "likenessAccepted": false
+  },
+  "secondSizeClarification": {
+    "recordedAt": "2026-09-19T22:28:53.792Z",
+    "source": "Exact latest user request relayed by coordinating agent.",
+    "requestRu": "Сделай белый диск еще в два раза больше",
+    "scope": "Удвоить диаметр только нижнего белого диска-тарелки у керамических голов.",
+    "implementation": {
+      "factorySha256": "da90018f3f6e4b395008be9af5974d9174f0ac76f572a07491c0445d454df29e",
+      "lowerDiskDiameterScale": 2,
+      "previousFootMaximumRadius": 0.295,
+      "currentFootMaximumRadius": 0.59,
+      "radiusMeaning": "Maximum radius of the authored lower-disk profile; the translated world-space assembly envelope is slightly larger.",
+      "headAndDetailsScale": 1.12,
+      "headsFurtherResized": false,
+      "minimumY": -1.724,
+      "valuesBasis": "Coordinating-agent implementation report; source hashes independently copied from preserved capture reports."
+    },
+    "captures": {
+      "firstSecondResize": "art-a11",
+      "automaticFullAssemblyFit": "art-a12",
+      "isolatedReviewScope": "Three High fronts reviewed by root and three High profiles directly reviewed by network_capabilities. No lower-tier isolated capture for this latest source."
+    },
+    "artAccepted": false,
+    "likenessAccepted": false
+  },
+  "thirdSizeClarification": {
+    "recordedAt": "2026-09-19T22:31:53.424Z",
+    "source": "Exact latest user request relayed by coordinating agent.",
+    "requestRu": "Сделай на треть меньше тарелку",
+    "scope": "Уменьшить нижнюю тарелку на одну треть относительно предыдущего удвоенного размера.",
+    "implementation": {
+      "factorySha256": "aaefb0d9bb4721fbe0e66e47b307f743d0ade834abb6be15ecf09a3a2b729a32",
+      "lowerDiskDiameterScaleFromPrevious": 0.6666666666666666,
+      "previousFootMaximumRadius": 0.59,
+      "currentFootMaximumRadius": 0.3933333333333333,
+      "radiusFormula": "0.590 * (2 / 3)",
+      "radiusMeaning": "Maximum radius of the authored lower-disk profile; not the translated world-space envelope.",
+      "headAndDetailsScale": 1.12,
+      "headsFurtherResized": false,
+      "heightChanged": false,
+      "minimumY": -1.724,
+      "valuesBasis": "Coordinating-agent implementation report; factory identity verified against the preserved art-a13 capture report."
+    },
+    "capture": {
+      "attempt": "art-a13",
+      "isolatedReviewScope": "Three High fronts reported reviewed by root and three High profiles directly reviewed by network_capabilities. No lower-tier isolated review is claimed."
+    },
+    "artAccepted": false,
+    "likenessAccepted": false
+  }
+}

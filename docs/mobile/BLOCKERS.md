@@ -1,3 +1,22 @@
+<!-- s13-ceramic-portraits-20260920:begin -->
+Source 0d4a1c0b adds three original ceramic portrait-head stands of Pushkin, Hemingway
+and Tolstoy through the existing adult composition lifecycle. They are explicit
+owner additions, separate from the immutable 29 mandatory Starter Set identities.
+Source-bound image inspection and technical checks do not establish accepted
+likeness, art or the user's maximum-realism requirement. The golden whales,
+canonical site default, seven composition owners and 984-book library are preserved.
+Final 6 selected unit/adapter cases, TypeScript and 1 actual Chrome case pass;
+181 unmatched adapter cases were excluded, not passed.
+PWA de2c46cb and Android/dev b537c81d bind this exact source.
+APK SHA256: 7604aa844e839b6855add96ecb0211fb088a76b09a5226662e962ea00b51974e.
+Evidence: evidence/S13/ceramic-portraits-20260920/result.json.
+Starter Set remains 11/29 source-bound, zero accepted, plus three owner additions.
+Stages remain 3 complete, 11 in progress and 27 unstarted; first open S03.
+Next: improve the remaining portrait/material realism from reviewed images, then
+continue the existing full application plan. Art/likeness/lightmaps, rights, child,
+full catalog/composition, installed devices, iOS and release remain open.
+<!-- s13-ceramic-portraits-20260920:end -->
+
 <!-- s13-three-whales-20260919:begin -->
 Source 5a43171a adds the user's original three-whale stand as an adult choice,
 with modeled detail, gold finish and six faceted emerald eyes. The canonical site

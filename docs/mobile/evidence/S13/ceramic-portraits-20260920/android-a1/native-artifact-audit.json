@@ -1,0 +1,26 @@
+{
+  "pass": true,
+  "identity": {
+    "buildId": "b537c81d509863d0821d04588f133b25ce8db18b5b19dafbba30639ddcf42950",
+    "sourceCommit": "0d4a1c0bc119d8e637312f2041c9e1763671c1ca",
+    "platform": "android",
+    "channel": "dev"
+  },
+  "counts": {
+    "files": 1403,
+    "bytes": 72472186,
+    "scripts": 44,
+    "sourceInputs": 1032,
+    "publicSources": 1343,
+    "ownedChunks": 44
+  },
+  "findings": [],
+  "releaseReady": false,
+  "sourceFreshnessChecked": true,
+  "sourceBinaryProvenance": "self-reported-module-ownership-checked",
+  "limitations": [
+    "Preparation integrity only; not a native APK/AAB/IPA, device test, editorial/rights approval, paid-access authority or release approval.",
+    "Module ownership is self-reported build metadata checked against source and emitted bytes; it is not independent source-to-binary reproducibility or arbitrary executable-equivalence proof.",
+    "Literal executable/resource paths are checked statically; constructed runtime URLs and native OS behavior require separate runtime gates."
+  ]
+}

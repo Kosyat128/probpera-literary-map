@@ -1,0 +1,262 @@
+{
+  "schemaVersion": 1,
+  "mode": "browser",
+  "startedAt": "2026-09-19T22:09:46.476Z",
+  "endedAt": "2026-09-19T22:09:47.265Z",
+  "sourceBase": "fd0ec64ddcd1e1ae1b74d438a5b9bf6bb1348dfe",
+  "sourceInputs": [
+    {
+      "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/capture-portraits.mjs",
+      "sha256": "051fa987b70140fe473b82bd43082b66364b255014a36101e834aa291ca35692"
+    },
+    {
+      "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/playwright.config.mjs",
+      "sha256": "a8a1173603acbd10b803bb335a1f3d54253ee3fcea691fc4a0a8faabdd273c40"
+    },
+    {
+      "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/run-checks.mjs",
+      "sha256": "b80a5b2f885b3d289d1e4b0177d9a3a09ea17c5d92038d99e1354007e8c0c39c"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+    },
+    {
+      "path": "package.json",
+      "sha256": "90b392c205754f838b8bc7c4475bd475936be1078561bb218c437d151177869f"
+    },
+    {
+      "path": "scripts/mobile/native-base-assets.json",
+      "sha256": "b2c706b1f89a844af8505120184a5b2ee11f04247ed674ebf29da824bd978506"
+    },
+    {
+      "path": "src/App.tsx",
+      "sha256": "6f76f51c9f703e698285b93585b8a73350abd7a2a6b01b3f2018c7fd55bd54aa"
+    },
+    {
+      "path": "src/components/GlobeIncludedBackground.tsx",
+      "sha256": "6cd0822f85bf94af681c0560be626ab004ce0e4900adccf0ae1b84d298be7374"
+    },
+    {
+      "path": "src/components/GlobeIncludedStand.tsx",
+      "sha256": "276ef908fe5a09c066a59d9ff57d1432d44300bcb979b2aeb5d6dd249ba189fd"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "sha256": "12bb95c49f44a9ed75144e0fb64c36985975f0427b1ba8c163eeeffad379ac89"
+    },
+    {
+      "path": "src/components/LiteraryWorldMap.tsx",
+      "sha256": "f89bcc47b6be688791b8523c81acb16f280482ae22490e1ec105ff902d5cf15e"
+    },
+    {
+      "path": "src/components/globeAntiqueGeometry.ts",
+      "sha256": "590a4e0ea5cb92251d7cccac3c0d6d28a441e82e6520fd17fe5d71adffb95538"
+    },
+    {
+      "path": "src/components/globeAssetCache.ts",
+      "sha256": "009f4f6516428c46848cffbecf7c3d3bb0be2b4c1d5989ef8743ecfb4a068987"
+    },
+    {
+      "path": "src/components/globeAtlas.ts",
+      "sha256": "224dcde2499f51eb333562875796d3422ab28ad987339f36be79f0635677bcf6"
+    },
+    {
+      "path": "src/components/globeCeramicPortraitStandGeometry.ts",
+      "sha256": "1b94ca526dc10e5811339d4f6a5e17ca2f819a141148dbda2b97b484351d3fdb"
+    },
+    {
+      "path": "src/components/globeCraftMaterials.ts",
+      "sha256": "68ce7e818d50ac5ece1d5d4542fdc4cecea6af25e21b08b1274c8adcacbfbde1"
+    },
+    {
+      "path": "src/components/globeEditions.ts",
+      "sha256": "b7440b6278979deb1e47738572460869202f0d9cf794a144aceac9dbcf8cdd77"
+    },
+    {
+      "path": "src/components/globeLibraryBookGeometry.ts",
+      "sha256": "e3034c2bd4391f1b08410c3c1f41165e880c7225f957a42ef4780e87eeaf7e0c"
+    },
+    {
+      "path": "src/components/globeLibraryGeometry.ts",
+      "sha256": "c0d4fe4c9b69921df11d50bc349fca9896304baba67fff60263b77ff19c1d1ee"
+    },
+    {
+      "path": "src/components/globeQuality.ts",
+      "sha256": "b52e0221ec8bcac17d640e26378bc0304521316ca34e203313d2b63f9c3b28c9"
+    },
+    {
+      "path": "src/components/globeStandGeometry.ts",
+      "sha256": "c8f8fd451a647e47c14fce899cc7135e3e64bbb2abd28d7cb53f437749dff52d"
+    },
+    {
+      "path": "src/components/globeTurnedWoodAtlas.ts",
+      "sha256": "579c1cec368760643b108a63f466b3d6385243d5e0f13c4638a4824b62a5d123"
+    },
+    {
+      "path": "src/components/globeWhaleStandGeometry.ts",
+      "sha256": "a641909b9d2a168b921e3a94f78db0c0652fe67b4d76b3cdaa2a1fba57de82be"
+    },
+    {
+      "path": "src/components/useGlobeCompositionFrame.ts",
+      "sha256": "530d1303a5af222bf68f72b499b07c8d41a828ca14783912284b6e3963d59cd0"
+    },
+    {
+      "path": "src/components/useGlobeCompositionScene.ts",
+      "sha256": "30009468d0cdee459441ca5780ea608cdf21b3f6e7055da89c0ce28e435326b5"
+    },
+    {
+      "path": "src/components/useGlobeStyleState.ts",
+      "sha256": "6d2801802ec0e9bf0c2e5ff9a6f852f00434a8494216b06ee2069917e2a1a0ba"
+    },
+    {
+      "path": "src/host/HostPlatformServices.ts",
+      "sha256": "01452b051642c1410f45e1b2594b1364d24d26510609049a148064ed12fe6825"
+    },
+    {
+      "path": "src/host/PlanetEditionPreferenceStatus.tsx",
+      "sha256": "c4eb85f88a369b299a4cf164d3dc4cf34bdcf9ddc2629793e5a59bb1498c7104"
+    },
+    {
+      "path": "src/host/PlanetGraphicsSettings.tsx",
+      "sha256": "6332bec397775901379ec3776548aaf610b6e7cde094badd5672d09436b24e4f"
+    },
+    {
+      "path": "src/host/PlanetStandControls.css",
+      "sha256": "33fc6bb7b522d4057054a9e72f12ef5c6015a0a91c80187158134de2fa207306"
+    },
+    {
+      "path": "src/host/PlanetStandControls.tsx",
+      "sha256": "d183b4bb5d06689e04fbda3a68f58b2267c69e91256e2bd89e9ca98feb2fd05c"
+    },
+    {
+      "path": "src/host/host.css",
+      "sha256": "3f81496e8c89f1f0e4facfa3267c2bbd3c05425c0baa3bb5459981cad0c18877"
+    },
+    {
+      "path": "src/host/mountHostApp.tsx",
+      "sha256": "6117dd7fca9408c126484fa55f50b82ae8f40e72824831355afe028112980f50"
+    },
+    {
+      "path": "src/host/planetAppearance.css",
+      "sha256": "57c46af2e0704da55e2054e9d09f2b8d408c4428c002e8faf2fe60663e066329"
+    },
+    {
+      "path": "src/host/planetComposition.ts",
+      "sha256": "6e193b12c495d962737185ab4fd35eeb3b64fe46f5c92774b565cfbb1181e954"
+    },
+    {
+      "path": "src/host/planetCompositionPresentation.ts",
+      "sha256": "d62d963c719366c1be3e6888b5eb321933f3e7224b6591fc8c2d6d81a639c3f6"
+    },
+    {
+      "path": "src/host/planetGraphicsQuality.ts",
+      "sha256": "5b8cc15796b0a2e0c3e6222ba6c7f0af2ffa2102d7a30000891f2435906d79f2"
+    },
+    {
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "sha256": "41afc69ed9dd15ac3caf976818de5d2b50749a2cdbfd64e917e93988b0f00143"
+    },
+    {
+      "path": "src/index.css",
+      "sha256": "abeefa5620f8589d0e0f34d38120970315df8f95a0e7d5009d21222e932e5a35"
+    },
+    {
+      "path": "src/planet/baseEditionPolicy.ts",
+      "sha256": "304dac29cc185c208e1c1b0722435b00518fab07e720ab5a182783c03fbdcf27"
+    },
+    {
+      "path": "src/planet/editions.ts",
+      "sha256": "466105cd35cadf5c0bc656c34d50bc20fe174551020b002fc903b8071dc5145e"
+    },
+    {
+      "path": "src/planet/globeBackgrounds.ts",
+      "sha256": "6096caaddd78adb6f862fb324e028e051867e855e3a0ba7d2db2d8882cb14200"
+    },
+    {
+      "path": "src/planet/globeComposition.ts",
+      "sha256": "20b4cabdd678a6fa5b70ab2b4cbaef179f0e7d7c5819e408123eb486ddb0e81f"
+    },
+    {
+      "path": "src/planet/globeStands.ts",
+      "sha256": "42bce799d05c748537ca03c97b11101518e232d30ed316c3ced6b11e7d4a352f"
+    },
+    {
+      "path": "src/platform/PlatformServices.tsx",
+      "sha256": "6f8aa1040a3fc4bd2717a4ec61ec8a89d48c01610f80b17998a31d35bf6d02c5"
+    },
+    {
+      "path": "src/platform/adapters/android/AndroidPlatformAdapter.ts",
+      "sha256": "97c263de1bb16757814499c9b6781f3b1fe801c8136f13cd44c21956f9b263ec"
+    },
+    {
+      "path": "src/platform/adapters/web/WebPlatformAdapter.ts",
+      "sha256": "0801a674f17dfd99862fd6ad386f7d29e3a58ea675698c29cac8de77e5ef58cb"
+    },
+    {
+      "path": "src/platform/distribution.ts",
+      "sha256": "c2947a4631d4b72392de12ab35dd8b30254ad3f612396507739067b1a1d6cf0b"
+    },
+    {
+      "path": "src/platform/ports.ts",
+      "sha256": "c9b16d8f56263dfbc8725cc8296989076d5a485a74ef106954f9b468a21fb65d"
+    },
+    {
+      "path": "src/utils/safeWebStorage.ts",
+      "sha256": "7143453436d90ea31e0fb345b663597b981c628c8be66b5a1ec718ed66c716d4"
+    },
+    {
+      "path": "tests/pwa/globe-ceramic-portraits.spec.mjs",
+      "sha256": "87c6ffc1bdd228e50f7576be2430903717ac588387c60464a5fc6dec3d00baa2"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "8d51a8c9266fe83bf17c076b51672753b3750a17520cd0d2c28a90cb8b21e0d6"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "sourceInputScope": "Shared scoped runtime and only the executed mode test/configuration inputs",
+  "executions": [
+    {
+      "name": "browser",
+      "exitCode": 1,
+      "durationMs": 775
+    }
+  ],
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "errors": [
+      {
+        "message": "ReferenceError: DEFAULT is not defined",
+        "stack": "ReferenceError: DEFAULT is not defined\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\globe-ceramic-portraits.spec.mjs:135:81",
+        "location": {
+          "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\globe-ceramic-portraits.spec.mjs",
+          "column": 81,
+          "line": 135
+        },
+        "snippet": "\u001b[90m   at \u001b[39mglobe-ceramic-portraits.spec.mjs:135\n\n  133 |\n  134 | const selectionOf = value => ({ editionId: value.editionId, standId: value.standId, backgroundId: value.backgroundId });\n> 135 | const baseSelection = { editionId: ANTIQUE, standId: \"canonical\", backgroundId: DEFAULT };\n      |                                                                                 ^\n  136 | const legacySelection = { editionId: MODERN, standId: WOOD, backgroundId: LIBRARY };\n  137 | const legacyKeys = [EDITION_KEY, \"probpera.globe-style.v1\", STAND_KEY, BACKGROUND_KEY];\n  138 |"
+      },
+      {
+        "message": "Error: No tests found",
+        "stack": "Error: No tests found"
+      }
+    ]
+  },
+  "reportErrors": [
+    "exactly one ceramic browser case must execute\n\n0 !== 1\n"
+  ],
+  "pass": false,
+  "ownerAdditions": [
+    "stand.base.portrait-pushkin",
+    "stand.base.portrait-hemingway",
+    "stand.base.portrait-tolstoy"
+  ],
+  "likenessAccepted": false,
+  "artAccepted": false,
+  "releaseReady": false,
+  "deviceTested": false,
+  "productionActivation": false
+}

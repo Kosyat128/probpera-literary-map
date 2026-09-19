@@ -1,0 +1,459 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-19T22:37:35.483Z",
+  "sourceCommit": "0d4a1c0bc119d8e637312f2041c9e1763671c1ca",
+  "stage": "S13",
+  "status": "CERAMIC_PORTRAIT_STANDS_SCOPED_INSPECTION",
+  "pass": true,
+  "entry": {
+    "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/entry.json",
+    "sha256": "8ae47b1db1fc00f9ab6bbb85936e70f120550b4c64241997c6e129a2d80f1e62"
+  },
+  "userRequest": {
+    "receivedAt": "2026-09-19T21:09:23.659Z",
+    "after": "Complete the detailed golden three-whale stand with gemstone eyes.",
+    "scope": "Add three separate 3D ceramic portrait-head stands of Alexander Pushkin, Ernest Hemingway and Leo Tolstoy, based on their best-known portraits and the sculptural character of figurative mugs.",
+    "quality": "Recognizable sculpted heads and ceramic material, following the same high-quality requirement; do not substitute portrait stickers on generic cylinders."
+  },
+  "priorWhales": {
+    "path": "docs/mobile/evidence/S13/three-whales-20260919/result.json",
+    "sha256": "3ecbe4a697670a068fb30af28450fc4f7c4936fb29ac30fff37f69136e3a9467"
+  },
+  "attempts": {
+    "unit": "a5",
+    "static": "a5",
+    "browser": "a5"
+  },
+  "runs": {
+    "unit": {
+      "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/unit-a5/result.json",
+      "sha256": "ca9f4f52228fb62354276026a62e8dea959ad534aa750f20154a46425001dc47",
+      "tests": {
+        "passed": 6,
+        "failed": 0,
+        "skipped": 0,
+        "filteredOut": 181,
+        "failures": [],
+        "selectedAdapterCases": [
+          {
+            "name": "exact non-secret preferences with serialized readback round-trips only exact adult stand choices through the stand preference key",
+            "status": "passed"
+          },
+          {
+            "name": "non-secret best-effort canonical preferences round-trips only exact adult stand choices without extending browser storage authority",
+            "status": "passed"
+          }
+        ],
+        "selection": {
+          "unitFiles": [
+            "src/components/globeCeramicPortraitStandGeometry.test.ts",
+            "src/planet/globeCeramicPortraitStandPolicy.test.ts"
+          ],
+          "expectedUnitCases": 4,
+          "adapterFiles": [
+            "src/host/HostPlatformServices.test.ts",
+            "src/platform/adapters/web/WebPlatformAdapter.test.ts"
+          ],
+          "adapterPattern": "round-trips only exact adult stand choices (?:through the stand preference key|without extending browser storage authority)$",
+          "expectedAdapterCases": 2
+        },
+        "filterAccounting": "Unmatched adapter cases are intentionally excluded, recorded as filteredOut, and never counted as passed. Skipped refers to selected tests only."
+      }
+    },
+    "static": {
+      "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/static-a5/result.json",
+      "sha256": "b277dafbb46b00844bb6124c735d742a021f65df665cf28cdb14b12d664e64eb",
+      "tests": null
+    },
+    "browser": {
+      "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/browser-a5/result.json",
+      "sha256": "f52de492151b7d37dbeea858abbfe46afb7882e172b757e1d8452f0bc34b33a0",
+      "tests": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "errors": []
+      }
+    }
+  },
+  "starterSetSourceInventory": {
+    "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/starter-set-source-inventory.json",
+    "sha256": "57bfea54ad55dada4024184b4a0b63e8459f72d3a1377ed0e5b8e55ad4e27d40"
+  },
+  "visualReview": {
+    "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/visual-review.json",
+    "sha256": "2d3ef218ccd87616bda895ecb9eef9994aa40503356808698a6b3870d551d040"
+  },
+  "preservedCompositionInputs": [
+    {
+      "path": "src/planet/globeComposition.ts",
+      "sha256": "20b4cabdd678a6fa5b70ab2b4cbaef179f0e7d7c5819e408123eb486ddb0e81f"
+    },
+    {
+      "path": "src/host/planetComposition.ts",
+      "sha256": "6e193b12c495d962737185ab4fd35eeb3b64fe46f5c92774b565cfbb1181e954"
+    },
+    {
+      "path": "src/host/planetCompositionPresentation.ts",
+      "sha256": "d62d963c719366c1be3e6888b5eb321933f3e7224b6591fc8c2d6d81a639c3f6"
+    },
+    {
+      "path": "src/components/useGlobeCompositionScene.ts",
+      "sha256": "30009468d0cdee459441ca5780ea608cdf21b3f6e7055da89c0ce28e435326b5"
+    },
+    {
+      "path": "src/components/useGlobeCompositionFrame.ts",
+      "sha256": "530d1303a5af222bf68f72b499b07c8d41a828ca14783912284b6e3963d59cd0"
+    },
+    {
+      "path": "src/components/globeAtlas.ts",
+      "sha256": "224dcde2499f51eb333562875796d3422ab28ad987339f36be79f0635677bcf6"
+    },
+    {
+      "path": "src/components/useGlobeStyleState.ts",
+      "sha256": "6d2801802ec0e9bf0c2e5ff9a6f852f00434a8494216b06ee2069917e2a1a0ba"
+    }
+  ],
+  "preservedArtInputs": [
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "sha256": "12bb95c49f44a9ed75144e0fb64c36985975f0427b1ba8c163eeeffad379ac89"
+    },
+    {
+      "path": "src/components/globeWhaleStandGeometry.ts",
+      "sha256": "a641909b9d2a168b921e3a94f78db0c0652fe67b4d76b3cdaa2a1fba57de82be"
+    },
+    {
+      "path": "src/components/globeAntiqueGeometry.ts",
+      "sha256": "590a4e0ea5cb92251d7cccac3c0d6d28a441e82e6520fd17fe5d71adffb95538"
+    },
+    {
+      "path": "src/components/globeCraftMaterials.ts",
+      "sha256": "68ce7e818d50ac5ece1d5d4542fdc4cecea6af25e21b08b1274c8adcacbfbde1"
+    },
+    {
+      "path": "src/components/globeTurnedWoodAtlas.ts",
+      "sha256": "579c1cec368760643b108a63f466b3d6385243d5e0f13c4638a4824b62a5d123"
+    },
+    {
+      "path": "src/components/globeLibraryGeometry.ts",
+      "sha256": "c0d4fe4c9b69921df11d50bc349fca9896304baba67fff60263b77ff19c1d1ee"
+    },
+    {
+      "path": "src/components/globeLibraryBookGeometry.ts",
+      "sha256": "e3034c2bd4391f1b08410c3c1f41165e880c7225f957a42ef4780e87eeaf7e0c"
+    }
+  ],
+  "priorVisualReview": {
+    "path": "docs/mobile/evidence/S13/three-whales-20260919/visual-review.json",
+    "sha256": "a1b1de4dc969bddd9906fb8291c44538b6ceec7a38a7ba1608dee9682ea0b472"
+  },
+  "pwa": {
+    "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/pwa-a1/result.json",
+    "sha256": "09800936dbff4302bebb9f528fc396afa5be620547b9bc0b3dedb7d44fdbf7da"
+  },
+  "android": {
+    "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/android-a1/result.json",
+    "sha256": "35168051d9b5e5ec6513924fe3b8c8c6c44bdb4159d557e6c6011366f5e5ece8"
+  },
+  "pwaBuildId": "de2c46cbdb39640d4cceec41a9bd5bec4e019cae34b36c786af335dc0b1664f2",
+  "androidBuildId": "b537c81d509863d0821d04588f133b25ce8db18b5b19dafbba30639ddcf42950",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/android-b537c81d/app-dev-debug.apk",
+    "bytes": 68000177,
+    "sha256": "7604aa844e839b6855add96ecb0211fb088a76b09a5226662e962ea00b51974e"
+  },
+  "ownerAdditions": [
+    {
+      "id": "stand.base.portrait-pushkin",
+      "category": "stand",
+      "inclusionBasis": "explicit-owner-request",
+      "commercialAvailability": "included-in-base",
+      "iapSkuAllowed": false,
+      "required": false,
+      "sourceItemId": "stand.base.portrait-pushkin",
+      "provenance": "authored-in-project",
+      "canonicalSource": null,
+      "contentVersion": 1,
+      "supportedAccess": "adult",
+      "implementation": {
+        "status": "source-present",
+        "sources": [
+          {
+            "path": "src/planet/baseEditionPolicy.ts",
+            "bytes": 12294,
+            "sha256": "304dac29cc185c208e1c1b0722435b00518fab07e720ab5a182783c03fbdcf27"
+          },
+          {
+            "path": "src/planet/globeStands.ts",
+            "bytes": 3426,
+            "sha256": "42bce799d05c748537ca03c97b11101518e232d30ed316c3ced6b11e7d4a352f"
+          },
+          {
+            "path": "src/components/globeCeramicPortraitStandGeometry.ts",
+            "bytes": 28437,
+            "sha256": "aaefb0d9bb4721fbe0e66e47b307f743d0ade834abb6be15ecf09a3a2b729a32"
+          },
+          {
+            "path": "src/components/globeStandGeometry.ts",
+            "bytes": 23804,
+            "sha256": "c8f8fd451a647e47c14fce899cc7135e3e64bbb2abd28d7cb53f437749dff52d"
+          },
+          {
+            "path": "src/components/GlobeIncludedStand.tsx",
+            "bytes": 5655,
+            "sha256": "276ef908fe5a09c066a59d9ff57d1432d44300bcb979b2aeb5d6dd249ba189fd"
+          },
+          {
+            "path": "src/host/planetComposition.ts",
+            "bytes": 17262,
+            "sha256": "6e193b12c495d962737185ab4fd35eeb3b64fe46f5c92774b565cfbb1181e954"
+          },
+          {
+            "path": "src/host/planetCompositionPresentation.ts",
+            "bytes": 2130,
+            "sha256": "d62d963c719366c1be3e6888b5eb321933f3e7224b6591fc8c2d6d81a639c3f6"
+          },
+          {
+            "path": "src/planet/globeComposition.ts",
+            "bytes": 4302,
+            "sha256": "20b4cabdd678a6fa5b70ab2b4cbaef179f0e7d7c5819e408123eb486ddb0e81f"
+          },
+          {
+            "path": "src/components/useGlobeCompositionScene.ts",
+            "bytes": 6427,
+            "sha256": "30009468d0cdee459441ca5780ea608cdf21b3f6e7055da89c0ce28e435326b5"
+          },
+          {
+            "path": "src/components/useGlobeCompositionFrame.ts",
+            "bytes": 4751,
+            "sha256": "530d1303a5af222bf68f72b499b07c8d41a828ca14783912284b6e3963d59cd0"
+          },
+          {
+            "path": "src/host/PlanetStandControls.tsx",
+            "bytes": 10740,
+            "sha256": "d183b4bb5d06689e04fbda3a68f58b2267c69e91256e2bd89e9ca98feb2fd05c"
+          }
+        ]
+      },
+      "checks": {
+        "presence": "partial",
+        "rightsAcceptance": "open",
+        "platformAcceptance": "open",
+        "offlineAcceptance": "open",
+        "switchStressAcceptance": "open",
+        "visualApproval": "open",
+        "childAgeReview": "not-assessed"
+      },
+      "childReviewed": false,
+      "rightsReviewed": false,
+      "artReviewed": false,
+      "grantsEntitlement": false,
+      "acceptance": "OPEN",
+      "releaseReady": false
+    },
+    {
+      "id": "stand.base.portrait-hemingway",
+      "category": "stand",
+      "inclusionBasis": "explicit-owner-request",
+      "commercialAvailability": "included-in-base",
+      "iapSkuAllowed": false,
+      "required": false,
+      "sourceItemId": "stand.base.portrait-hemingway",
+      "provenance": "authored-in-project",
+      "canonicalSource": null,
+      "contentVersion": 1,
+      "supportedAccess": "adult",
+      "implementation": {
+        "status": "source-present",
+        "sources": [
+          {
+            "path": "src/planet/baseEditionPolicy.ts",
+            "bytes": 12294,
+            "sha256": "304dac29cc185c208e1c1b0722435b00518fab07e720ab5a182783c03fbdcf27"
+          },
+          {
+            "path": "src/planet/globeStands.ts",
+            "bytes": 3426,
+            "sha256": "42bce799d05c748537ca03c97b11101518e232d30ed316c3ced6b11e7d4a352f"
+          },
+          {
+            "path": "src/components/globeCeramicPortraitStandGeometry.ts",
+            "bytes": 28437,
+            "sha256": "aaefb0d9bb4721fbe0e66e47b307f743d0ade834abb6be15ecf09a3a2b729a32"
+          },
+          {
+            "path": "src/components/globeStandGeometry.ts",
+            "bytes": 23804,
+            "sha256": "c8f8fd451a647e47c14fce899cc7135e3e64bbb2abd28d7cb53f437749dff52d"
+          },
+          {
+            "path": "src/components/GlobeIncludedStand.tsx",
+            "bytes": 5655,
+            "sha256": "276ef908fe5a09c066a59d9ff57d1432d44300bcb979b2aeb5d6dd249ba189fd"
+          },
+          {
+            "path": "src/host/planetComposition.ts",
+            "bytes": 17262,
+            "sha256": "6e193b12c495d962737185ab4fd35eeb3b64fe46f5c92774b565cfbb1181e954"
+          },
+          {
+            "path": "src/host/planetCompositionPresentation.ts",
+            "bytes": 2130,
+            "sha256": "d62d963c719366c1be3e6888b5eb321933f3e7224b6591fc8c2d6d81a639c3f6"
+          },
+          {
+            "path": "src/planet/globeComposition.ts",
+            "bytes": 4302,
+            "sha256": "20b4cabdd678a6fa5b70ab2b4cbaef179f0e7d7c5819e408123eb486ddb0e81f"
+          },
+          {
+            "path": "src/components/useGlobeCompositionScene.ts",
+            "bytes": 6427,
+            "sha256": "30009468d0cdee459441ca5780ea608cdf21b3f6e7055da89c0ce28e435326b5"
+          },
+          {
+            "path": "src/components/useGlobeCompositionFrame.ts",
+            "bytes": 4751,
+            "sha256": "530d1303a5af222bf68f72b499b07c8d41a828ca14783912284b6e3963d59cd0"
+          },
+          {
+            "path": "src/host/PlanetStandControls.tsx",
+            "bytes": 10740,
+            "sha256": "d183b4bb5d06689e04fbda3a68f58b2267c69e91256e2bd89e9ca98feb2fd05c"
+          }
+        ]
+      },
+      "checks": {
+        "presence": "partial",
+        "rightsAcceptance": "open",
+        "platformAcceptance": "open",
+        "offlineAcceptance": "open",
+        "switchStressAcceptance": "open",
+        "visualApproval": "open",
+        "childAgeReview": "not-assessed"
+      },
+      "childReviewed": false,
+      "rightsReviewed": false,
+      "artReviewed": false,
+      "grantsEntitlement": false,
+      "acceptance": "OPEN",
+      "releaseReady": false
+    },
+    {
+      "id": "stand.base.portrait-tolstoy",
+      "category": "stand",
+      "inclusionBasis": "explicit-owner-request",
+      "commercialAvailability": "included-in-base",
+      "iapSkuAllowed": false,
+      "required": false,
+      "sourceItemId": "stand.base.portrait-tolstoy",
+      "provenance": "authored-in-project",
+      "canonicalSource": null,
+      "contentVersion": 1,
+      "supportedAccess": "adult",
+      "implementation": {
+        "status": "source-present",
+        "sources": [
+          {
+            "path": "src/planet/baseEditionPolicy.ts",
+            "bytes": 12294,
+            "sha256": "304dac29cc185c208e1c1b0722435b00518fab07e720ab5a182783c03fbdcf27"
+          },
+          {
+            "path": "src/planet/globeStands.ts",
+            "bytes": 3426,
+            "sha256": "42bce799d05c748537ca03c97b11101518e232d30ed316c3ced6b11e7d4a352f"
+          },
+          {
+            "path": "src/components/globeCeramicPortraitStandGeometry.ts",
+            "bytes": 28437,
+            "sha256": "aaefb0d9bb4721fbe0e66e47b307f743d0ade834abb6be15ecf09a3a2b729a32"
+          },
+          {
+            "path": "src/components/globeStandGeometry.ts",
+            "bytes": 23804,
+            "sha256": "c8f8fd451a647e47c14fce899cc7135e3e64bbb2abd28d7cb53f437749dff52d"
+          },
+          {
+            "path": "src/components/GlobeIncludedStand.tsx",
+            "bytes": 5655,
+            "sha256": "276ef908fe5a09c066a59d9ff57d1432d44300bcb979b2aeb5d6dd249ba189fd"
+          },
+          {
+            "path": "src/host/planetComposition.ts",
+            "bytes": 17262,
+            "sha256": "6e193b12c495d962737185ab4fd35eeb3b64fe46f5c92774b565cfbb1181e954"
+          },
+          {
+            "path": "src/host/planetCompositionPresentation.ts",
+            "bytes": 2130,
+            "sha256": "d62d963c719366c1be3e6888b5eb321933f3e7224b6591fc8c2d6d81a639c3f6"
+          },
+          {
+            "path": "src/planet/globeComposition.ts",
+            "bytes": 4302,
+            "sha256": "20b4cabdd678a6fa5b70ab2b4cbaef179f0e7d7c5819e408123eb486ddb0e81f"
+          },
+          {
+            "path": "src/components/useGlobeCompositionScene.ts",
+            "bytes": 6427,
+            "sha256": "30009468d0cdee459441ca5780ea608cdf21b3f6e7055da89c0ce28e435326b5"
+          },
+          {
+            "path": "src/components/useGlobeCompositionFrame.ts",
+            "bytes": 4751,
+            "sha256": "530d1303a5af222bf68f72b499b07c8d41a828ca14783912284b6e3963d59cd0"
+          },
+          {
+            "path": "src/host/PlanetStandControls.tsx",
+            "bytes": 10740,
+            "sha256": "d183b4bb5d06689e04fbda3a68f58b2267c69e91256e2bd89e9ca98feb2fd05c"
+          }
+        ]
+      },
+      "checks": {
+        "presence": "partial",
+        "rightsAcceptance": "open",
+        "platformAcceptance": "open",
+        "offlineAcceptance": "open",
+        "switchStressAcceptance": "open",
+        "visualApproval": "open",
+        "childAgeReview": "not-assessed"
+      },
+      "childReviewed": false,
+      "rightsReviewed": false,
+      "artReviewed": false,
+      "grantsEntitlement": false,
+      "acceptance": "OPEN",
+      "releaseReady": false
+    }
+  ],
+  "ownerAddedCount": 3,
+  "retainedLibraryDensity": {
+    "books": 984,
+    "placements": 1901197402,
+    "colors": 437509884
+  },
+  "requiredStarterItems": 29,
+  "sourceBoundStarterItems": 11,
+  "acceptedStarterItems": 0,
+  "decisionD138Recorded": true,
+  "userRealismRequirementSatisfied": false,
+  "likenessAccepted": false,
+  "artAccepted": false,
+  "certifiedLightmaps": false,
+  "rightsApproval": false,
+  "childApproval": false,
+  "grantsEntitlement": false,
+  "controlledNativePorts": true,
+  "actualSceneRenderedInChrome": true,
+  "installedNativeDevice": false,
+  "iosCompiled": false,
+  "devicePerformanceAccepted": false,
+  "productionActionsPerformed": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "nextAction": "Continue from the coordinating owner's source-bound review of the original ceramic portrait stands for Pushkin, Hemingway and Tolstoy. Refine recognizability, facial anatomy, hair/beard continuity and believable ceramic response where the reviewed images show unresolved defects; do not equate distinct meshes or passing checks with accepted portrait likeness. Preserve the golden whales, canonical site default, single scene, seven composition owners and 984-book library. Continue remaining library/wood/metal/paper realism work and the existing full application plan through the routed requirements. The three explicit owner additions remain separate from the 29 mandatory Starter Set items: 11 source-bound, zero accepted. Formal art/likeness/lightmaps, full catalog/accessory/audio/child composition, rights, installed-device budgets, iOS and release acceptance remain open. Avoid redundant unchanged checks."
+}

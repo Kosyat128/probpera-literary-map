@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S13/ceramic-portraits-20260920/playwright.config.mjs"
+  ],
+  "startedAt": "2026-09-19T22:10:35.845Z",
+  "durationMs": 21277,
+  "exitCode": 0,
+  "logs": {
+    "stdout": {
+      "text": "\nRunning 1 test using 1 worker\n\n\n\n[1/1] tests\\pwa\\globe-ceramic-portraits.spec.mjs:298:1 › three ceramic writer portraits preview and persist through the existing composition\n  1 passed (20.8s)\n",
+      "sha256": "a12886d1bc4ffea6a648d734817a804eecd8cb2625afdc878e264a8de323db29"
+    },
+    "stderr": {
+      "text": "(node:32420) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "sha256": "8fa94e8f6d3fa7c39da007801553df5af893b82e14e9217981812cdce8373790"
+    }
+  }
+}

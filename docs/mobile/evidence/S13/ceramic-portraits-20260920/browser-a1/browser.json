@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S13/ceramic-portraits-20260920/playwright.config.mjs"
+  ],
+  "startedAt": "2026-09-19T22:09:46.477Z",
+  "durationMs": 775,
+  "exitCode": 1,
+  "logs": {
+    "stdout": {
+      "text": "ReferenceError: DEFAULT is not defined\n\n   at globe-ceramic-portraits.spec.mjs:135\n\n  133 |\n  134 | const selectionOf = value => ({ editionId: value.editionId, standId: value.standId, backgroundId: value.backgroundId });\n> 135 | const baseSelection = { editionId: ANTIQUE, standId: \"canonical\", backgroundId: DEFAULT };\n      |                                                                                 ^\n  136 | const legacySelection = { editionId: MODERN, standId: WOOD, backgroundId: LIBRARY };\n  137 | const legacyKeys = [EDITION_KEY, \"probpera.globe-style.v1\", STAND_KEY, BACKGROUND_KEY];\n  138 |\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\globe-ceramic-portraits.spec.mjs:135:81\n\nError: No tests found\n\n",
+      "sha256": "130764557257bcd97df58536a2b83cc5c798faa07793db1d9973dee226f03ecc"
+    },
+    "stderr": {
+      "text": "",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

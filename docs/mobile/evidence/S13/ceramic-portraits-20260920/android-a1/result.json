@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "kind": "android-ceramic-portrait-stands-dev-apk",
+  "sourceCommit": "0d4a1c0bc119d8e637312f2041c9e1763671c1ca",
+  "buildId": "b537c81d509863d0821d04588f133b25ce8db18b5b19dafbba30639ddcf42950",
+  "sourceInputsSha256": "009923ca7da6ec339191201f07f118eb39f9351a8e625154dd6605ab95b3dcba",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/android-b537c81d/app-dev-debug.apk",
+    "bytes": 68000177,
+    "sha256": "7604aa844e839b6855add96ecb0211fb088a76b09a5226662e962ea00b51974e"
+  },
+  "artifact": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-cer/android-b537c81d/runtime",
+    "sha256": "48fd05e13074ac0b32212163d366431f852f7b46fb16b9e31d45f1c076c69f68",
+    "files": 1403,
+    "bytes": 72472186
+  },
+  "checks": {
+    "strictRuntimeAudit": "docs/mobile/evidence/S13/ceramic-portraits-20260920/android-a1/native-artifact-audit.json",
+    "binaryAudit": "docs/mobile/evidence/S13/ceramic-portraits-20260920/android-a1/android-dev-apk-verification.json",
+    "build": "docs/mobile/evidence/S13/ceramic-portraits-20260920/android-a1/build-run.json",
+    "exactCopiedBytes": true,
+    "priorAndroidApkAndManifestVerified": true,
+    "priorPreservedDirectoriesPresent": true,
+    "priorExactCopyVerificationRecorded": true,
+    "priorRuntimePayloadHashesRechecked": false,
+    "bundledAssetsMatched": 1402,
+    "localContentStoreDex": "classes10.dex"
+  },
+  "priorAndroid": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-wh/android-8e48bc3d/app-dev-debug.apk",
+  "nativeExecutionVerified": false,
+  "iosCompiled": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false,
+  "canonicalOwnerArchiveSyncPerformed": false
+}

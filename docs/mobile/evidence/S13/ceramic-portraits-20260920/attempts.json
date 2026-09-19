@@ -1,0 +1,870 @@
+{
+  "schemaVersion": 1,
+  "kind": "ceramic-portrait-validation-attempt-history",
+  "recordedAt": "2026-09-19T22:31:44.742Z",
+  "status": "SCOPED_CURRENT_SOURCE_VALIDATION_PASSED",
+  "scope": "Historical source validation attempts only. Local checks do not establish art, likeness, rights, device, stage or release acceptance.",
+  "sourceHashConvention": "Each result link hashes its exact stored bytes. sourceInputsCanonicalJsonSha256 hashes UTF-8 JSON.stringify(result.sourceInputs) followed by one LF; the complete path/hash list remains in that result.",
+  "filterAccounting": "The 181 unmatched adapter cases in each unit attempt were intentionally excluded. They are not passed or executed tests; six selected cases is the complete unit scope.",
+  "latestAttemptedFactory": {
+    "path": "src/components/globeCeramicPortraitStandGeometry.ts",
+    "sha256": "aaefb0d9bb4721fbe0e66e47b307f743d0ade834abb6be15ecf09a3a2b729a32"
+  },
+  "currentResults": [
+    {
+      "mode": "unit",
+      "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/unit-a5/result.json",
+      "bytes": 10147,
+      "sha256": "ca9f4f52228fb62354276026a62e8dea959ad534aa750f20154a46425001dc47"
+    },
+    {
+      "mode": "static",
+      "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/static-a5/result.json",
+      "bytes": 8469,
+      "sha256": "b277dafbb46b00844bb6124c735d742a021f65df665cf28cdb14b12d664e64eb"
+    },
+    {
+      "mode": "browser",
+      "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/browser-a5/result.json",
+      "bytes": 8585,
+      "sha256": "f52de492151b7d37dbeea858abbfe46afb7882e172b757e1d8452f0bc34b33a0"
+    }
+  ],
+  "currentInventory": {
+    "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/starter-set-source-inventory.json",
+    "bytes": 60040,
+    "sha256": "57bfea54ad55dada4024184b4a0b63e8459f72d3a1377ed0e5b8e55ad4e27d40",
+    "factorySha256": "aaefb0d9bb4721fbe0e66e47b307f743d0ade834abb6be15ecf09a3a2b729a32",
+    "requiredCount": 29,
+    "sourceBoundCount": 11,
+    "ownerAddedCount": 3,
+    "acceptedCount": 0,
+    "status": "INCOMPLETE",
+    "releaseReady": false
+  },
+  "preservedInventories": [
+    {
+      "report": {
+        "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/starter-set-source-inventory-before-resize.json",
+        "bytes": 60040,
+        "sha256": "32d8805d55251e78d4025a95e3442f69ac28e6373e0e4db76a58fcd726e4d133"
+      },
+      "exactBytesPreserved": true,
+      "factorySha256": "1b94ca526dc10e5811339d4f6a5e17ca2f819a141148dbda2b97b484351d3fdb",
+      "requiredCount": 29,
+      "sourceBoundCount": 11,
+      "ownerAddedCount": 3,
+      "acceptedCount": 0,
+      "status": "INCOMPLETE",
+      "applicability": "historical-source-only"
+    },
+    {
+      "report": {
+        "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/starter-set-source-inventory-before-second-resize.json",
+        "bytes": 60040,
+        "sha256": "2525d8099545616f69696c670d6f55650142e90bdf95dbc990dba08c6242c855"
+      },
+      "exactBytesPreserved": true,
+      "factorySha256": "3d80ab3215eef942172d9c7a6888cff2ae65901f6ee1540ac0ee5158df30085c",
+      "requiredCount": 29,
+      "sourceBoundCount": 11,
+      "ownerAddedCount": 3,
+      "acceptedCount": 0,
+      "status": "INCOMPLETE",
+      "applicability": "historical-source-only"
+    },
+    {
+      "report": {
+        "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/starter-set-source-inventory-before-third-resize.json",
+        "bytes": 60040,
+        "sha256": "b1204cfc26d6a4274286a4106db9153c5193aa8717938d0202b5aee14f035f02"
+      },
+      "exactBytesPreserved": true,
+      "factorySha256": "da90018f3f6e4b395008be9af5974d9174f0ac76f572a07491c0445d454df29e",
+      "requiredCount": 29,
+      "sourceBoundCount": 11,
+      "ownerAddedCount": 3,
+      "acceptedCount": 0,
+      "status": "INCOMPLETE",
+      "applicability": "historical-source-only"
+    }
+  ],
+  "attempts": [
+    {
+      "mode": "unit",
+      "attempt": "a1",
+      "result": {
+        "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/unit-a1/result.json",
+        "bytes": 12250,
+        "sha256": "bb8d8c32d79b6f5a273ef5866356e56df743ec58bfed4b8aad4eac53d306c1e7"
+      },
+      "startedAt": "2026-09-19T22:08:03.040Z",
+      "endedAt": "2026-09-19T22:08:08.683Z",
+      "reportedPass": false,
+      "classification": "failed-runtime",
+      "reason": "Tolstoy High incised-iris-detail failed the face/shading-normal winding invariant at triangle 249. Five selected tests passed and one failed. A rim-normal runtime correction followed.",
+      "supersededBy": {
+        "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/unit-a2/result.json",
+        "bytes": 10147,
+        "sha256": "933ce064caf9367ef495637d593bc45a417a03450fb4ceececdcf429531518c5"
+      },
+      "supersededByChange": null,
+      "sourceBinding": {
+        "sourceBase": "fd0ec64ddcd1e1ae1b74d438a5b9bf6bb1348dfe",
+        "sourceInputsUnchanged": true,
+        "inputCount": 54,
+        "sourceInputsCanonicalJsonSha256": "f04298c7ab2d3136cbb25fb08732426defd610e453c84971b873243e92be8a80",
+        "factory": {
+          "path": "src/components/globeCeramicPortraitStandGeometry.ts",
+          "sha256": "13ee4035e8eafa5a923c468144d30056949360312ceb35dc46afcc167b9c6a3e"
+        },
+        "geometryTest": {
+          "path": "src/components/globeCeramicPortraitStandGeometry.test.ts",
+          "sha256": "3cb24885f8bf660616be7a80b2f4323f929fcff5246b3adbe49a07c4ad577dde"
+        },
+        "browserFixture": null
+      },
+      "executions": [
+        {
+          "name": "unit",
+          "exitCode": 1,
+          "durationMs": 4061
+        },
+        {
+          "name": "adapter-allowlists",
+          "exitCode": 0,
+          "durationMs": 1563
+        }
+      ],
+      "testCounts": {
+        "passed": 5,
+        "failed": 1,
+        "skipped": 0,
+        "filteredOut": 181
+      },
+      "failureSummary": [
+        {
+          "name": "owned ceramic portrait stand geometry routes every portrait through valid sculpted geometry with bounded resources and decreasing detail at all tiers",
+          "messages": [
+            "AssertionError: tolstoy/high/incised-iris-detail: face/shading normal winding: expected 'triangle 249' to be '' // Object.is equality"
+          ]
+        }
+      ],
+      "fixtureErrors": [],
+      "reportErrors": []
+    },
+    {
+      "mode": "static",
+      "attempt": "a1",
+      "result": {
+        "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/static-a1/result.json",
+        "bytes": 8469,
+        "sha256": "506857b2d21b14cd73c59b975f9e6f221b1c1724162ec41b73346e251ed35022"
+      },
+      "startedAt": "2026-09-19T22:08:02.469Z",
+      "endedAt": "2026-09-19T22:08:32.348Z",
+      "reportedPass": true,
+      "classification": "passed-superseded",
+      "reason": "Type checking passed on the earlier geometry; the subsequent iris-rim runtime correction changed its source binding.",
+      "supersededBy": {
+        "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/static-a2/result.json",
+        "bytes": 8469,
+        "sha256": "80f05923c1dd88fb28052bbe4db6cdc695bcaf6f53e0211aad0bc390534c33e7"
+      },
+      "supersededByChange": null,
+      "sourceBinding": {
+        "sourceBase": "fd0ec64ddcd1e1ae1b74d438a5b9bf6bb1348dfe",
+        "sourceInputsUnchanged": true,
+        "inputCount": 52,
+        "sourceInputsCanonicalJsonSha256": "0e52bb2f841b5304f75bb43547542c4cb009df502c7c1b7792c2d5cb281f8e30",
+        "factory": {
+          "path": "src/components/globeCeramicPortraitStandGeometry.ts",
+          "sha256": "13ee4035e8eafa5a923c468144d30056949360312ceb35dc46afcc167b9c6a3e"
+        },
+        "geometryTest": {
+          "path": "src/components/globeCeramicPortraitStandGeometry.test.ts",
+          "sha256": "3cb24885f8bf660616be7a80b2f4323f929fcff5246b3adbe49a07c4ad577dde"
+        },
+        "browserFixture": null
+      },
+      "executions": [
+        {
+          "name": "typecheck",
+          "exitCode": 0,
+          "durationMs": 29870
+        }
+      ],
+      "testCounts": null,
+      "failureSummary": [],
+      "fixtureErrors": [],
+      "reportErrors": []
+    },
+    {
+      "mode": "browser",
+      "attempt": "a1",
+      "result": {
+        "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/browser-a1/result.json",
+        "bytes": 9906,
+        "sha256": "880ca09413604321ab43ab9b1dc95959b8ae32b0d658abb4ce158d44c33da485"
+      },
+      "startedAt": "2026-09-19T22:09:46.476Z",
+      "endedAt": "2026-09-19T22:09:47.265Z",
+      "reportedPass": false,
+      "classification": "failed-fixture-before-cases",
+      "reason": "ReferenceError: DEFAULT is not defined occurred during fixture module evaluation, followed by No tests found. No browser case executed; this was a fixture error, not an application result.",
+      "supersededBy": {
+        "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/browser-a2/result.json",
+        "bytes": 8585,
+        "sha256": "4b6ddaedbbc4d2e2f952790f5c81a614b7983b87f5f85b45d653bfef1ec85ec4"
+      },
+      "supersededByChange": null,
+      "sourceBinding": {
+        "sourceBase": "fd0ec64ddcd1e1ae1b74d438a5b9bf6bb1348dfe",
+        "sourceInputsUnchanged": true,
+        "inputCount": 52,
+        "sourceInputsCanonicalJsonSha256": "33559c2b7f3364fb73696696298226ce1409c03d84c09dce151246f63a283ff3",
+        "factory": {
+          "path": "src/components/globeCeramicPortraitStandGeometry.ts",
+          "sha256": "1b94ca526dc10e5811339d4f6a5e17ca2f819a141148dbda2b97b484351d3fdb"
+        },
+        "geometryTest": null,
+        "browserFixture": {
+          "path": "tests/pwa/globe-ceramic-portraits.spec.mjs",
+          "sha256": "87c6ffc1bdd228e50f7576be2430903717ac588387c60464a5fc6dec3d00baa2"
+        }
+      },
+      "executions": [
+        {
+          "name": "browser",
+          "exitCode": 1,
+          "durationMs": 775
+        }
+      ],
+      "testCounts": {
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "failureSummary": [],
+      "fixtureErrors": [
+        "ReferenceError: DEFAULT is not defined",
+        "Error: No tests found"
+      ],
+      "reportErrors": [
+        "exactly one ceramic browser case must execute\n\n0 !== 1\n"
+      ]
+    },
+    {
+      "mode": "unit",
+      "attempt": "a2",
+      "result": {
+        "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/unit-a2/result.json",
+        "bytes": 10147,
+        "sha256": "933ce064caf9367ef495637d593bc45a417a03450fb4ceececdcf429531518c5"
+      },
+      "startedAt": "2026-09-19T22:09:46.609Z",
+      "endedAt": "2026-09-19T22:09:51.608Z",
+      "reportedPass": true,
+      "classification": "passed-superseded",
+      "reason": "Passed after the runtime/fixture repairs. The first explicit user resize enlarged the portrait heads and lower plate, superseding these source hashes.",
+      "supersededBy": {
+        "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/unit-a3/result.json",
+        "bytes": 10147,
+        "sha256": "db21dffabe3d1c6215fdd96a41d033b4b2e04bc6109faa0ee92ee9d239f5a3ff"
+      },
+      "supersededByChange": null,
+      "sourceBinding": {
+        "sourceBase": "fd0ec64ddcd1e1ae1b74d438a5b9bf6bb1348dfe",
+        "sourceInputsUnchanged": true,
+        "inputCount": 54,
+        "sourceInputsCanonicalJsonSha256": "92e2697171005767d7763129e148c78a2aea30436dec31068be5a97044e32317",
+        "factory": {
+          "path": "src/components/globeCeramicPortraitStandGeometry.ts",
+          "sha256": "1b94ca526dc10e5811339d4f6a5e17ca2f819a141148dbda2b97b484351d3fdb"
+        },
+        "geometryTest": {
+          "path": "src/components/globeCeramicPortraitStandGeometry.test.ts",
+          "sha256": "3cb24885f8bf660616be7a80b2f4323f929fcff5246b3adbe49a07c4ad577dde"
+        },
+        "browserFixture": null
+      },
+      "executions": [
+        {
+          "name": "unit",
+          "exitCode": 0,
+          "durationMs": 3443
+        },
+        {
+          "name": "adapter-allowlists",
+          "exitCode": 0,
+          "durationMs": 1536
+        }
+      ],
+      "testCounts": {
+        "passed": 6,
+        "failed": 0,
+        "skipped": 0,
+        "filteredOut": 181
+      },
+      "failureSummary": [],
+      "fixtureErrors": [],
+      "reportErrors": []
+    },
+    {
+      "mode": "static",
+      "attempt": "a2",
+      "result": {
+        "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/static-a2/result.json",
+        "bytes": 8469,
+        "sha256": "80f05923c1dd88fb28052bbe4db6cdc695bcaf6f53e0211aad0bc390534c33e7"
+      },
+      "startedAt": "2026-09-19T22:09:46.455Z",
+      "endedAt": "2026-09-19T22:10:07.213Z",
+      "reportedPass": true,
+      "classification": "passed-superseded",
+      "reason": "Passed after the runtime/fixture repairs. The first explicit user resize enlarged the portrait heads and lower plate, superseding these source hashes.",
+      "supersededBy": {
+        "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/static-a3/result.json",
+        "bytes": 8469,
+        "sha256": "973877213254a2c254fe77657f4a3b6cb005669bbc5d7f1f2418778babc1dfe1"
+      },
+      "supersededByChange": null,
+      "sourceBinding": {
+        "sourceBase": "fd0ec64ddcd1e1ae1b74d438a5b9bf6bb1348dfe",
+        "sourceInputsUnchanged": true,
+        "inputCount": 52,
+        "sourceInputsCanonicalJsonSha256": "84f96258c1886056a0b5bdf79c84d7a4ab7f043f27825903123505936f282800",
+        "factory": {
+          "path": "src/components/globeCeramicPortraitStandGeometry.ts",
+          "sha256": "1b94ca526dc10e5811339d4f6a5e17ca2f819a141148dbda2b97b484351d3fdb"
+        },
+        "geometryTest": {
+          "path": "src/components/globeCeramicPortraitStandGeometry.test.ts",
+          "sha256": "3cb24885f8bf660616be7a80b2f4323f929fcff5246b3adbe49a07c4ad577dde"
+        },
+        "browserFixture": null
+      },
+      "executions": [
+        {
+          "name": "typecheck",
+          "exitCode": 0,
+          "durationMs": 20752
+        }
+      ],
+      "testCounts": null,
+      "failureSummary": [],
+      "fixtureErrors": [],
+      "reportErrors": []
+    },
+    {
+      "mode": "browser",
+      "attempt": "a2",
+      "result": {
+        "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/browser-a2/result.json",
+        "bytes": 8585,
+        "sha256": "4b6ddaedbbc4d2e2f952790f5c81a614b7983b87f5f85b45d653bfef1ec85ec4"
+      },
+      "startedAt": "2026-09-19T22:10:35.844Z",
+      "endedAt": "2026-09-19T22:10:57.133Z",
+      "reportedPass": true,
+      "classification": "passed-superseded",
+      "reason": "Passed after the runtime/fixture repairs. The first explicit user resize enlarged the portrait heads and lower plate, superseding these source hashes.",
+      "supersededBy": {
+        "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/browser-a3/result.json",
+        "bytes": 8585,
+        "sha256": "af7d2c8c0547254cd24796a4ee0edea939b2689ef3e60fd24165aeaf4b579478"
+      },
+      "supersededByChange": null,
+      "sourceBinding": {
+        "sourceBase": "fd0ec64ddcd1e1ae1b74d438a5b9bf6bb1348dfe",
+        "sourceInputsUnchanged": true,
+        "inputCount": 52,
+        "sourceInputsCanonicalJsonSha256": "0adde0acd469bd87907818967e5c0cb4b3cc71cace664f1b6a1d3689777de787",
+        "factory": {
+          "path": "src/components/globeCeramicPortraitStandGeometry.ts",
+          "sha256": "1b94ca526dc10e5811339d4f6a5e17ca2f819a141148dbda2b97b484351d3fdb"
+        },
+        "geometryTest": null,
+        "browserFixture": {
+          "path": "tests/pwa/globe-ceramic-portraits.spec.mjs",
+          "sha256": "12120a662f7c72267632d48323e248a5001f4032d70162ec692f451f788ee6f2"
+        }
+      },
+      "executions": [
+        {
+          "name": "browser",
+          "exitCode": 0,
+          "durationMs": 21277
+        }
+      ],
+      "testCounts": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "failureSummary": [],
+      "fixtureErrors": [],
+      "reportErrors": []
+    },
+    {
+      "mode": "unit",
+      "attempt": "a3",
+      "result": {
+        "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/unit-a3/result.json",
+        "bytes": 10147,
+        "sha256": "db21dffabe3d1c6215fdd96a41d033b4b2e04bc6109faa0ee92ee9d239f5a3ff"
+      },
+      "startedAt": "2026-09-19T22:20:58.300Z",
+      "endedAt": "2026-09-19T22:21:03.927Z",
+      "reportedPass": true,
+      "classification": "passed-superseded",
+      "reason": "Passed after the first explicit user resize. The second explicit request doubled the white lower disk radial size from .295 to .590 while retaining head/stem. This source was superseded.",
+      "supersededBy": {
+        "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/unit-a4/result.json",
+        "bytes": 10147,
+        "sha256": "d0eadbb3a6397138ea984157dc185b24d742add696be33c532a6aca57eb2203d"
+      },
+      "supersededByChange": null,
+      "sourceBinding": {
+        "sourceBase": "fd0ec64ddcd1e1ae1b74d438a5b9bf6bb1348dfe",
+        "sourceInputsUnchanged": true,
+        "inputCount": 54,
+        "sourceInputsCanonicalJsonSha256": "0f0268851de263480b46c3edb72ab3441ffa0f51f5a56cff8cb3392ed067d95a",
+        "factory": {
+          "path": "src/components/globeCeramicPortraitStandGeometry.ts",
+          "sha256": "3d80ab3215eef942172d9c7a6888cff2ae65901f6ee1540ac0ee5158df30085c"
+        },
+        "geometryTest": {
+          "path": "src/components/globeCeramicPortraitStandGeometry.test.ts",
+          "sha256": "77b13b4939bc1609774a39eace5d11b91a96844fc39929eda1b0462d6fcc19e9"
+        },
+        "browserFixture": null
+      },
+      "executions": [
+        {
+          "name": "unit",
+          "exitCode": 0,
+          "durationMs": 3881
+        },
+        {
+          "name": "adapter-allowlists",
+          "exitCode": 0,
+          "durationMs": 1727
+        }
+      ],
+      "testCounts": {
+        "passed": 6,
+        "failed": 0,
+        "skipped": 0,
+        "filteredOut": 181
+      },
+      "failureSummary": [],
+      "fixtureErrors": [],
+      "reportErrors": []
+    },
+    {
+      "mode": "static",
+      "attempt": "a3",
+      "result": {
+        "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/static-a3/result.json",
+        "bytes": 8469,
+        "sha256": "973877213254a2c254fe77657f4a3b6cb005669bbc5d7f1f2418778babc1dfe1"
+      },
+      "startedAt": "2026-09-19T22:20:57.966Z",
+      "endedAt": "2026-09-19T22:21:29.188Z",
+      "reportedPass": true,
+      "classification": "passed-superseded",
+      "reason": "Passed after the first explicit user resize. The second explicit request doubled the white lower disk radial size from .295 to .590 while retaining head/stem. This source was superseded.",
+      "supersededBy": {
+        "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/static-a4/result.json",
+        "bytes": 8469,
+        "sha256": "e6b0635ff9573f732df55bc1018453be2d03b64e2c57a3583664ba3f819b31ed"
+      },
+      "supersededByChange": null,
+      "sourceBinding": {
+        "sourceBase": "fd0ec64ddcd1e1ae1b74d438a5b9bf6bb1348dfe",
+        "sourceInputsUnchanged": true,
+        "inputCount": 52,
+        "sourceInputsCanonicalJsonSha256": "c0ef05d9ae9882dcdbccf0f16ccd9624afebfddf901ffeb2f7176489d75930d5",
+        "factory": {
+          "path": "src/components/globeCeramicPortraitStandGeometry.ts",
+          "sha256": "3d80ab3215eef942172d9c7a6888cff2ae65901f6ee1540ac0ee5158df30085c"
+        },
+        "geometryTest": {
+          "path": "src/components/globeCeramicPortraitStandGeometry.test.ts",
+          "sha256": "77b13b4939bc1609774a39eace5d11b91a96844fc39929eda1b0462d6fcc19e9"
+        },
+        "browserFixture": null
+      },
+      "executions": [
+        {
+          "name": "typecheck",
+          "exitCode": 0,
+          "durationMs": 31210
+        }
+      ],
+      "testCounts": null,
+      "failureSummary": [],
+      "fixtureErrors": [],
+      "reportErrors": []
+    },
+    {
+      "mode": "browser",
+      "attempt": "a3",
+      "result": {
+        "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/browser-a3/result.json",
+        "bytes": 8585,
+        "sha256": "af7d2c8c0547254cd24796a4ee0edea939b2689ef3e60fd24165aeaf4b579478"
+      },
+      "startedAt": "2026-09-19T22:21:14.944Z",
+      "endedAt": "2026-09-19T22:21:42.713Z",
+      "reportedPass": true,
+      "classification": "passed-superseded",
+      "reason": "Passed after the first explicit user resize. The second explicit request doubled the white lower disk radial size from .295 to .590 while retaining head/stem. This source was superseded.",
+      "supersededBy": {
+        "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/browser-a4/result.json",
+        "bytes": 8585,
+        "sha256": "c617a7139c019cdccbf2f48713e146278c3ec94bf22685f15abe261f1f124b46"
+      },
+      "supersededByChange": null,
+      "sourceBinding": {
+        "sourceBase": "fd0ec64ddcd1e1ae1b74d438a5b9bf6bb1348dfe",
+        "sourceInputsUnchanged": true,
+        "inputCount": 52,
+        "sourceInputsCanonicalJsonSha256": "fe882d615cec216bed01cca561230f8ec60c8a1c43a0d2b065e2a8757840f6d8",
+        "factory": {
+          "path": "src/components/globeCeramicPortraitStandGeometry.ts",
+          "sha256": "3d80ab3215eef942172d9c7a6888cff2ae65901f6ee1540ac0ee5158df30085c"
+        },
+        "geometryTest": null,
+        "browserFixture": {
+          "path": "tests/pwa/globe-ceramic-portraits.spec.mjs",
+          "sha256": "12120a662f7c72267632d48323e248a5001f4032d70162ec692f451f788ee6f2"
+        }
+      },
+      "executions": [
+        {
+          "name": "browser",
+          "exitCode": 0,
+          "durationMs": 27756
+        }
+      ],
+      "testCounts": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "failureSummary": [],
+      "fixtureErrors": [],
+      "reportErrors": []
+    },
+    {
+      "mode": "unit",
+      "attempt": "a4",
+      "result": {
+        "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/unit-a4/result.json",
+        "bytes": 10147,
+        "sha256": "d0eadbb3a6397138ea984157dc185b24d742add696be33c532a6aca57eb2203d"
+      },
+      "startedAt": "2026-09-19T22:27:31.726Z",
+      "endedAt": "2026-09-19T22:27:37.039Z",
+      "reportedPass": true,
+      "classification": "passed-superseded",
+      "reason": "Passed after the second explicit disk enlargement. The subsequent explicit user request reduced that disk by one third (.590 multiplied by 2/3), so a4 is historical and does not validate the current tuning.",
+      "supersededBy": {
+        "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/unit-a5/result.json",
+        "bytes": 10147,
+        "sha256": "ca9f4f52228fb62354276026a62e8dea959ad534aa750f20154a46425001dc47"
+      },
+      "supersededByChange": "third-explicit-owner-resize",
+      "sourceBinding": {
+        "sourceBase": "fd0ec64ddcd1e1ae1b74d438a5b9bf6bb1348dfe",
+        "sourceInputsUnchanged": true,
+        "inputCount": 54,
+        "sourceInputsCanonicalJsonSha256": "7e2edaac37c563144f3139f4f480cc96d4528fa8857791914d06a5a41cd4be09",
+        "factory": {
+          "path": "src/components/globeCeramicPortraitStandGeometry.ts",
+          "sha256": "da90018f3f6e4b395008be9af5974d9174f0ac76f572a07491c0445d454df29e"
+        },
+        "geometryTest": {
+          "path": "src/components/globeCeramicPortraitStandGeometry.test.ts",
+          "sha256": "c88758977ca0d35e47815f99dfde7de45bfa678e46b9a3997ccfaa234f70ac0e"
+        },
+        "browserFixture": null
+      },
+      "executions": [
+        {
+          "name": "unit",
+          "exitCode": 0,
+          "durationMs": 3616
+        },
+        {
+          "name": "adapter-allowlists",
+          "exitCode": 0,
+          "durationMs": 1678
+        }
+      ],
+      "testCounts": {
+        "passed": 6,
+        "failed": 0,
+        "skipped": 0,
+        "filteredOut": 181
+      },
+      "failureSummary": [],
+      "fixtureErrors": [],
+      "reportErrors": []
+    },
+    {
+      "mode": "static",
+      "attempt": "a4",
+      "result": {
+        "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/static-a4/result.json",
+        "bytes": 8469,
+        "sha256": "e6b0635ff9573f732df55bc1018453be2d03b64e2c57a3583664ba3f819b31ed"
+      },
+      "startedAt": "2026-09-19T22:27:32.532Z",
+      "endedAt": "2026-09-19T22:28:04.869Z",
+      "reportedPass": true,
+      "classification": "passed-superseded",
+      "reason": "Passed after the second explicit disk enlargement. The subsequent explicit user request reduced that disk by one third (.590 multiplied by 2/3), so a4 is historical and does not validate the current tuning.",
+      "supersededBy": {
+        "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/static-a5/result.json",
+        "bytes": 8469,
+        "sha256": "b277dafbb46b00844bb6124c735d742a021f65df665cf28cdb14b12d664e64eb"
+      },
+      "supersededByChange": "third-explicit-owner-resize",
+      "sourceBinding": {
+        "sourceBase": "fd0ec64ddcd1e1ae1b74d438a5b9bf6bb1348dfe",
+        "sourceInputsUnchanged": true,
+        "inputCount": 52,
+        "sourceInputsCanonicalJsonSha256": "fd1aedd32336705b3fcae00d60d88956cef811d8942987974b3e1c1e7682caf8",
+        "factory": {
+          "path": "src/components/globeCeramicPortraitStandGeometry.ts",
+          "sha256": "da90018f3f6e4b395008be9af5974d9174f0ac76f572a07491c0445d454df29e"
+        },
+        "geometryTest": {
+          "path": "src/components/globeCeramicPortraitStandGeometry.test.ts",
+          "sha256": "c88758977ca0d35e47815f99dfde7de45bfa678e46b9a3997ccfaa234f70ac0e"
+        },
+        "browserFixture": null
+      },
+      "executions": [
+        {
+          "name": "typecheck",
+          "exitCode": 0,
+          "durationMs": 32326
+        }
+      ],
+      "testCounts": null,
+      "failureSummary": [],
+      "fixtureErrors": [],
+      "reportErrors": []
+    },
+    {
+      "mode": "browser",
+      "attempt": "a4",
+      "result": {
+        "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/browser-a4/result.json",
+        "bytes": 8585,
+        "sha256": "c617a7139c019cdccbf2f48713e146278c3ec94bf22685f15abe261f1f124b46"
+      },
+      "startedAt": "2026-09-19T22:27:41.651Z",
+      "endedAt": "2026-09-19T22:28:11.274Z",
+      "reportedPass": true,
+      "classification": "passed-superseded",
+      "reason": "Passed after the second explicit disk enlargement. The subsequent explicit user request reduced that disk by one third (.590 multiplied by 2/3), so a4 is historical and does not validate the current tuning.",
+      "supersededBy": {
+        "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/browser-a5/result.json",
+        "bytes": 8585,
+        "sha256": "f52de492151b7d37dbeea858abbfe46afb7882e172b757e1d8452f0bc34b33a0"
+      },
+      "supersededByChange": "third-explicit-owner-resize",
+      "sourceBinding": {
+        "sourceBase": "fd0ec64ddcd1e1ae1b74d438a5b9bf6bb1348dfe",
+        "sourceInputsUnchanged": true,
+        "inputCount": 52,
+        "sourceInputsCanonicalJsonSha256": "3d63f065259691e6012276737fb4169edc6a90c58d4aa06083b634abc3f640e4",
+        "factory": {
+          "path": "src/components/globeCeramicPortraitStandGeometry.ts",
+          "sha256": "da90018f3f6e4b395008be9af5974d9174f0ac76f572a07491c0445d454df29e"
+        },
+        "geometryTest": null,
+        "browserFixture": {
+          "path": "tests/pwa/globe-ceramic-portraits.spec.mjs",
+          "sha256": "12120a662f7c72267632d48323e248a5001f4032d70162ec692f451f788ee6f2"
+        }
+      },
+      "executions": [
+        {
+          "name": "browser",
+          "exitCode": 0,
+          "durationMs": 29609
+        }
+      ],
+      "testCounts": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "failureSummary": [],
+      "fixtureErrors": [],
+      "reportErrors": []
+    },
+    {
+      "mode": "unit",
+      "attempt": "a5",
+      "result": {
+        "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/unit-a5/result.json",
+        "bytes": 10147,
+        "sha256": "ca9f4f52228fb62354276026a62e8dea959ad534aa750f20154a46425001dc47"
+      },
+      "startedAt": "2026-09-19T22:32:35.291Z",
+      "endedAt": "2026-09-19T22:32:41.528Z",
+      "reportedPass": true,
+      "classification": "passed-current",
+      "reason": "Passed on the stabilized source after the third explicit owner adjustment: the enlarged lower disk reduced by one third, with portrait head/stem unchanged.",
+      "supersededBy": null,
+      "supersededByChange": null,
+      "sourceBinding": {
+        "sourceBase": "fd0ec64ddcd1e1ae1b74d438a5b9bf6bb1348dfe",
+        "sourceInputsUnchanged": true,
+        "inputCount": 54,
+        "sourceInputsCanonicalJsonSha256": "3d8b97f00755caf6202c684743395f32203a7653ba20322615bad238aa7661a9",
+        "factory": {
+          "path": "src/components/globeCeramicPortraitStandGeometry.ts",
+          "sha256": "aaefb0d9bb4721fbe0e66e47b307f743d0ade834abb6be15ecf09a3a2b729a32"
+        },
+        "geometryTest": {
+          "path": "src/components/globeCeramicPortraitStandGeometry.test.ts",
+          "sha256": "da22d58a5cd0b70f2e538b9d850d0da947e4e51f6594b41a839d0160059141fb"
+        },
+        "browserFixture": null
+      },
+      "executions": [
+        {
+          "name": "unit",
+          "exitCode": 0,
+          "durationMs": 4247
+        },
+        {
+          "name": "adapter-allowlists",
+          "exitCode": 0,
+          "durationMs": 1970
+        }
+      ],
+      "testCounts": {
+        "passed": 6,
+        "failed": 0,
+        "skipped": 0,
+        "filteredOut": 181
+      },
+      "failureSummary": [],
+      "fixtureErrors": [],
+      "reportErrors": []
+    },
+    {
+      "mode": "static",
+      "attempt": "a5",
+      "result": {
+        "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/static-a5/result.json",
+        "bytes": 8469,
+        "sha256": "b277dafbb46b00844bb6124c735d742a021f65df665cf28cdb14b12d664e64eb"
+      },
+      "startedAt": "2026-09-19T22:32:36.773Z",
+      "endedAt": "2026-09-19T22:33:01.962Z",
+      "reportedPass": true,
+      "classification": "passed-current",
+      "reason": "Passed on the stabilized source after the third explicit owner adjustment: the enlarged lower disk reduced by one third, with portrait head/stem unchanged.",
+      "supersededBy": null,
+      "supersededByChange": null,
+      "sourceBinding": {
+        "sourceBase": "fd0ec64ddcd1e1ae1b74d438a5b9bf6bb1348dfe",
+        "sourceInputsUnchanged": true,
+        "inputCount": 52,
+        "sourceInputsCanonicalJsonSha256": "0ae0ff9f7e12aabfae7a6e86cea8aec3b6eb93f10806b79314f9dab71941d02d",
+        "factory": {
+          "path": "src/components/globeCeramicPortraitStandGeometry.ts",
+          "sha256": "aaefb0d9bb4721fbe0e66e47b307f743d0ade834abb6be15ecf09a3a2b729a32"
+        },
+        "geometryTest": {
+          "path": "src/components/globeCeramicPortraitStandGeometry.test.ts",
+          "sha256": "da22d58a5cd0b70f2e538b9d850d0da947e4e51f6594b41a839d0160059141fb"
+        },
+        "browserFixture": null
+      },
+      "executions": [
+        {
+          "name": "typecheck",
+          "exitCode": 0,
+          "durationMs": 25184
+        }
+      ],
+      "testCounts": null,
+      "failureSummary": [],
+      "fixtureErrors": [],
+      "reportErrors": []
+    },
+    {
+      "mode": "browser",
+      "attempt": "a5",
+      "result": {
+        "path": "docs/mobile/evidence/S13/ceramic-portraits-20260920/browser-a5/result.json",
+        "bytes": 8585,
+        "sha256": "f52de492151b7d37dbeea858abbfe46afb7882e172b757e1d8452f0bc34b33a0"
+      },
+      "startedAt": "2026-09-19T22:32:33.694Z",
+      "endedAt": "2026-09-19T22:32:59.483Z",
+      "reportedPass": true,
+      "classification": "passed-current",
+      "reason": "Passed on the stabilized source after the third explicit owner adjustment: the enlarged lower disk reduced by one third, with portrait head/stem unchanged.",
+      "supersededBy": null,
+      "supersededByChange": null,
+      "sourceBinding": {
+        "sourceBase": "fd0ec64ddcd1e1ae1b74d438a5b9bf6bb1348dfe",
+        "sourceInputsUnchanged": true,
+        "inputCount": 52,
+        "sourceInputsCanonicalJsonSha256": "cdc3a52992cf72c489658c8474c1654ee32cfa16693258cf652db8b2288fc083",
+        "factory": {
+          "path": "src/components/globeCeramicPortraitStandGeometry.ts",
+          "sha256": "aaefb0d9bb4721fbe0e66e47b307f743d0ade834abb6be15ecf09a3a2b729a32"
+        },
+        "geometryTest": null,
+        "browserFixture": {
+          "path": "tests/pwa/globe-ceramic-portraits.spec.mjs",
+          "sha256": "12120a662f7c72267632d48323e248a5001f4032d70162ec692f451f788ee6f2"
+        }
+      },
+      "executions": [
+        {
+          "name": "browser",
+          "exitCode": 0,
+          "durationMs": 25779
+        }
+      ],
+      "testCounts": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "failureSummary": [],
+      "fixtureErrors": [],
+      "reportErrors": []
+    }
+  ],
+  "additionalTestRunsPerformedForThisHistory": false,
+  "productionActionsPerformed": false,
+  "grantsEntitlement": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "updatedAt": "2026-09-19T22:34:17.696Z",
+  "currentFactory": {
+    "path": "src/components/globeCeramicPortraitStandGeometry.ts",
+    "bytes": 28437,
+    "sha256": "aaefb0d9bb4721fbe0e66e47b307f743d0ade834abb6be15ecf09a3a2b729a32"
+  }
+}
