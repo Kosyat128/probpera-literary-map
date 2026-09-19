@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S13/surface-realism-20260919/playwright.config.mjs"
+  ],
+  "startedAt": "2026-09-19T20:46:07.968Z",
+  "durationMs": 21013,
+  "exitCode": 0,
+  "logs": {
+    "stdout": {
+      "text": "\nRunning 1 test using 1 worker\n\n\n\n[1/1] tests\\pwa\\globe-surface-realism.spec.mjs:298:1 › crafted surfaces render across quality tiers and retire owned stand textures\n  1 passed (20.4s)\n",
+      "sha256": "93d858aaf623db102a5295cde623ac38c3482c91553fef46a30c8be2e2cee57e"
+    },
+    "stderr": {
+      "text": "(node:16856) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "sha256": "a5ee5b8dca9c6a14340482e27b01bd183492e8847fdc738b951165c5bda35c3e"
+    }
+  }
+}

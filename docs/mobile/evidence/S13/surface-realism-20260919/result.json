@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-19T21:01:06.324Z",
+  "sourceCommit": "2029aad9cf646e7cb679110f4cef48dc627b557f",
+  "stage": "S13",
+  "status": "INCLUDED_LIBRARY_AND_STAND_SURFACES_INSPECTED",
+  "pass": true,
+  "entry": {
+    "path": "docs/mobile/evidence/S13/surface-realism-20260919/entry.json",
+    "sha256": "583fe6450ce26fc04c8de0743b15f03c5ef0d45ef3a76201db3e38ad2c643765"
+  },
+  "runs": {
+    "unit": {
+      "path": "docs/mobile/evidence/S13/surface-realism-20260919/unit-a1/result.json",
+      "sha256": "3a1f3e5af88354aa967b8b8222adcc7e3e0d6dca615bcd53e4230ce05b6df254",
+      "tests": {
+        "passed": 14,
+        "failed": 0,
+        "skipped": 0,
+        "failures": []
+      }
+    },
+    "static": {
+      "path": "docs/mobile/evidence/S13/surface-realism-20260919/static-a1/result.json",
+      "sha256": "c8506a121d3e53eca79c8fe77eccedc569d4fbdfdcf887eab7f4612c1be0a85a",
+      "tests": null
+    },
+    "browser": {
+      "path": "docs/mobile/evidence/S13/surface-realism-20260919/browser-a1/result.json",
+      "sha256": "c3d9e7985ba430b20ad4f9da2b40552e892f143832b6e8f9b2736ad48f1a1731",
+      "tests": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "errors": []
+      }
+    }
+  },
+  "attempts": {
+    "unit": "a1",
+    "static": "a1",
+    "browser": "a1"
+  },
+  "priorDensity": {
+    "path": "docs/mobile/evidence/S13/library-density-20260919/result.json",
+    "sha256": "9dc1f28758444d6df21d8c0ecb97ac6933239932366584573aa1b1b4679975e1"
+  },
+  "priorComposition": {
+    "path": "docs/mobile/evidence/S13/composition-20260919/result.json",
+    "sha256": "90f7e4556ca3efe0c64b6bd48524d433984c65b25b460770b9a46e56cb8c08dc"
+  },
+  "starterSetSourceInventory": {
+    "path": "docs/mobile/evidence/S13/surface-realism-20260919/starter-set-source-inventory.json",
+    "sha256": "8a630368c3943fdd57dc8532ad259881baeacbdac89108dfcafa376bb1df6b5b"
+  },
+  "starterSetBindingsRefreshed": true,
+  "previousArtReview": {
+    "path": "docs/mobile/evidence/S13/library-density-20260919/visual-review.json",
+    "sha256": "2f2004169d710466c5a46599224d2f37839007d4d7a8c73b74e3e6b22b86bdc0"
+  },
+  "preservedCompositionInputs": [
+    {
+      "path": "src/planet/globeComposition.ts",
+      "sha256": "20b4cabdd678a6fa5b70ab2b4cbaef179f0e7d7c5819e408123eb486ddb0e81f"
+    },
+    {
+      "path": "src/host/planetComposition.ts",
+      "sha256": "6e193b12c495d962737185ab4fd35eeb3b64fe46f5c92774b565cfbb1181e954"
+    },
+    {
+      "path": "src/host/planetCompositionPresentation.ts",
+      "sha256": "d62d963c719366c1be3e6888b5eb321933f3e7224b6591fc8c2d6d81a639c3f6"
+    },
+    {
+      "path": "src/components/useGlobeCompositionScene.ts",
+      "sha256": "30009468d0cdee459441ca5780ea608cdf21b3f6e7055da89c0ce28e435326b5"
+    },
+    {
+      "path": "src/components/useGlobeCompositionFrame.ts",
+      "sha256": "530d1303a5af222bf68f72b499b07c8d41a828ca14783912284b6e3963d59cd0"
+    },
+    {
+      "path": "src/components/globeAtlas.ts",
+      "sha256": "224dcde2499f51eb333562875796d3422ab28ad987339f36be79f0635677bcf6"
+    },
+    {
+      "path": "src/components/useGlobeStyleState.ts",
+      "sha256": "6d2801802ec0e9bf0c2e5ff9a6f852f00434a8494216b06ee2069917e2a1a0ba"
+    }
+  ],
+  "preservedBookGeometryInput": {
+    "path": "src/components/globeLibraryBookGeometry.ts",
+    "sha256": "e3034c2bd4391f1b08410c3c1f41165e880c7225f957a42ef4780e87eeaf7e0c"
+  },
+  "visualReview": {
+    "path": "docs/mobile/evidence/S13/surface-realism-20260919/visual-review.json",
+    "sha256": "49fecc56eb8dc460636f4c3218c36ad9155af1f126f55560be2725749c71b5be"
+  },
+  "pwa": {
+    "path": "docs/mobile/evidence/S13/surface-realism-20260919/pwa-a1/result.json",
+    "sha256": "6de825b7983c3ed36fd69526057513cdef85c2b234cc885da9baf9fa50abd7d8"
+  },
+  "android": {
+    "path": "docs/mobile/evidence/S13/surface-realism-20260919/android-a1/result.json",
+    "sha256": "cc18e2e8f41a42380c663fd158fd699524ed093bcb5510f8eea32c6ab21c7fb8"
+  },
+  "pwaBuildId": "36e0ebb6cec9b2d4bcdd6138323bfca2e5ad340f562ed6f831c300172e284cdf",
+  "androidBuildId": "aea111e44ba84f5afbd3e29eb19db9338f81c72b872ebcd37dd7ecf0a5b31b24",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-sr/android-aea111e4/app-dev-debug.apk",
+    "bytes": 68379501,
+    "sha256": "d6986690c73a09a9ad42ee7f29b682739f25529ca3a76c650079f917394234f0"
+  },
+  "surfaceRealism": {
+    "scope": "included-library-and-stand-material-surfaces",
+    "provenance": "authored-in-project",
+    "sharedCraftMaterialsChanged": true,
+    "standWoodMappingChanged": true,
+    "libraryLocalMaterialsChanged": true,
+    "coreCompositionUnchanged": true,
+    "economicalBookGeometryUnchanged": true,
+    "commonGlobeLightingOwnershipPreserved": true,
+    "actualAppAndCloseupReviewRequired": true,
+    "certifiedLightmapApproval": false
+  },
+  "retainedLibraryDensity": {
+    "nominalLayout": {
+      "bays": 16,
+      "rowsPerBay": 8,
+      "slotsPerRow": 8
+    },
+    "actualBooksPerTier": 984,
+    "placementFingerprint": 1901197402,
+    "currentColourFingerprint": 437509884,
+    "tiers": [
+      "high",
+      "balanced",
+      "economy"
+    ],
+    "matchesPreviousPlacements": true
+  },
+  "sourceBoundStarterItems": 11,
+  "requiredStarterItems": 29,
+  "acceptedStarterItems": 0,
+  "existingUserRealismRequirementPreserved": true,
+  "artAccepted": false,
+  "decisionD136Recorded": true,
+  "rightsApproval": false,
+  "childApproval": false,
+  "controlledNativePorts": true,
+  "actualSceneRenderedInChrome": true,
+  "installedNativeDevice": false,
+  "iosCompiled": false,
+  "grantsEntitlement": false,
+  "productionActionsPerformed": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "nextAction": "Implement the user's explicitly requested original three-whale stand next, preserving its recognizable site-derived forms while improving the finish to gold with faceted deep-emerald gemstone eyes. Expose it through the existing adult application composition and actual-frame lifecycle; retain the canonical website default and 29-item Starter Set. Then address the current owner's reviewed wood identity, coarse library grain, evenly warm metal/purple highlights and uniform paper defects. Preserve the 984 actual book placements across tiers, economical true-3D book geometry and validated composition core. Current scoped inspection and technical passes do not satisfy the user's final realism requirement or establish certified lightmaps/device acceptance. Starter Set remains 11/29 source-bound with zero accepted; full catalog, accessory/audio/child composition, rights, installed-device budgets, iOS and release gates remain open. Do not repeat unchanged checks or old artifact payload audits."
+}

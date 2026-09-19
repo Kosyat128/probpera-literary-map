@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "mode": "unit",
+  "startedAt": "2026-09-19T20:45:00.842Z",
+  "endedAt": "2026-09-19T20:45:04.634Z",
+  "sourceBase": "47228eb3407d87401ab34293284707fdf137c0c5",
+  "sourceInputs": [
+    {
+      "path": "docs/mobile/evidence/S13/surface-realism-20260919/run-checks.mjs",
+      "sha256": "fbe11903c34c0d7229c1849d6b475b718cb7fb6cc18d0642c28f28a49ecb171b"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+    },
+    {
+      "path": "package.json",
+      "sha256": "90b392c205754f838b8bc7c4475bd475936be1078561bb218c437d151177869f"
+    },
+    {
+      "path": "src/components/globeCraftMaterials.test.ts",
+      "sha256": "a2f70fdc2973bf3b348e3c99eb1a45521c16523f3c620a948f1219a3d29b58f0"
+    },
+    {
+      "path": "src/components/globeCraftMaterials.ts",
+      "sha256": "68ce7e818d50ac5ece1d5d4542fdc4cecea6af25e21b08b1274c8adcacbfbde1"
+    },
+    {
+      "path": "src/components/globeLibraryBookGeometry.ts",
+      "sha256": "e3034c2bd4391f1b08410c3c1f41165e880c7225f957a42ef4780e87eeaf7e0c"
+    },
+    {
+      "path": "src/components/globeLibraryGeometry.test.ts",
+      "sha256": "3d2f0bd953d5d520be49b5beacc5e11c5171abfbb1d90b86c73d03ef89203dcd"
+    },
+    {
+      "path": "src/components/globeLibraryGeometry.ts",
+      "sha256": "c0d4fe4c9b69921df11d50bc349fca9896304baba67fff60263b77ff19c1d1ee"
+    },
+    {
+      "path": "src/components/globeQuality.ts",
+      "sha256": "b52e0221ec8bcac17d640e26378bc0304521316ca34e203313d2b63f9c3b28c9"
+    },
+    {
+      "path": "src/components/globeStandGeometry.test.ts",
+      "sha256": "599b068581548eb24fcf227637626d5a4c42ec9be2feca3873cb65f6938eca2f"
+    },
+    {
+      "path": "src/components/globeStandGeometry.ts",
+      "sha256": "36b1b7e9f406342b6d260dfd4714c8ecf08b5fb5b3f75d489646bfa02a2a4ad2"
+    },
+    {
+      "path": "src/components/globeTurnedWoodAtlas.ts",
+      "sha256": "579c1cec368760643b108a63f466b3d6385243d5e0f13c4638a4824b62a5d123"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "8d51a8c9266fe83bf17c076b51672753b3750a17520cd0d2c28a90cb8b21e0d6"
+    },
+    {
+      "path": "vitest.config.ts",
+      "sha256": "5c1e90985e77b35599e5bdaf77c74a1166949ec9c4f45d1c5f926c3f53bef90e"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "executions": [
+    {
+      "name": "unit",
+      "exitCode": 0,
+      "durationMs": 3716
+    }
+  ],
+  "tests": {
+    "passed": 14,
+    "failed": 0,
+    "skipped": 0,
+    "failures": []
+  },
+  "pass": true,
+  "releaseReady": false,
+  "deviceTested": false,
+  "productionActivation": false
+}

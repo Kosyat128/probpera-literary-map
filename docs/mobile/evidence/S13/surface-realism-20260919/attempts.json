@@ -1,0 +1,263 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-19T20:59:28.373Z",
+  "scope": "included-library-and-stand-surface-realism",
+  "sourceBase": "47228eb3407d87401ab34293284707fdf137c0c5",
+  "runtimeSourceInputs": [
+    {
+      "path": "src/components/globeCraftMaterials.ts",
+      "sha256": "68ce7e818d50ac5ece1d5d4542fdc4cecea6af25e21b08b1274c8adcacbfbde1"
+    },
+    {
+      "path": "src/components/globeStandGeometry.ts",
+      "sha256": "36b1b7e9f406342b6d260dfd4714c8ecf08b5fb5b3f75d489646bfa02a2a4ad2"
+    },
+    {
+      "path": "src/components/globeTurnedWoodAtlas.ts",
+      "sha256": "579c1cec368760643b108a63f466b3d6385243d5e0f13c4638a4824b62a5d123"
+    },
+    {
+      "path": "src/components/globeLibraryGeometry.ts",
+      "sha256": "c0d4fe4c9b69921df11d50bc349fca9896304baba67fff60263b77ff19c1d1ee"
+    },
+    {
+      "path": "src/components/globeLibraryBookGeometry.ts",
+      "sha256": "e3034c2bd4391f1b08410c3c1f41165e880c7225f957a42ef4780e87eeaf7e0c"
+    }
+  ],
+  "engineeringRevisionsBeforeFinalFormalChecks": 2,
+  "visualIterations": [
+    {
+      "attempt": "art-a1",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-sr/art-a1/result.json",
+      "sha256": "e7b5b4477825eea8e9dfee532fc711b348fdb2cb084d1a3289d1a083166d0966",
+      "startedAt": "2026-09-19T20:36:07.948Z",
+      "endedAt": "2026-09-19T20:36:15.069Z",
+      "sourceInputs": [
+        {
+          "path": "src/components/globeCraftMaterials.ts",
+          "sha256": "7b7e4b8fb92ca78091062d2f27a8d91ff332e5cf793fbb495698e2d98ce45419"
+        },
+        {
+          "path": "src/components/globeStandGeometry.ts",
+          "sha256": "36b1b7e9f406342b6d260dfd4714c8ecf08b5fb5b3f75d489646bfa02a2a4ad2"
+        },
+        {
+          "path": "src/components/globeLibraryBookGeometry.ts",
+          "sha256": "e3034c2bd4391f1b08410c3c1f41165e880c7225f957a42ef4780e87eeaf7e0c"
+        },
+        {
+          "path": "src/components/globeTurnedWoodAtlas.ts",
+          "sha256": "3f646986d90b34cb5ea0f94007e8c0e54f229a5f5be9de8af8aa0f33a7f7238d"
+        },
+        {
+          "path": "src/components/globeLibraryGeometry.ts",
+          "sha256": "86ac0c220674a7ed387c085736d52a63cfc924302baa717394f5ba9935187f49"
+        },
+        {
+          "path": "docs/mobile/evidence/S13/surface-realism-20260919/capture-library.mjs",
+          "sha256": "28cad0dc79c3d1861458c408183c256932c8b8e26039e9d07491e774f0a89e5c"
+        }
+      ],
+      "sourceInputsUnchanged": true,
+      "capturedImages": 12,
+      "inspectedImages": 12,
+      "inspectedImageNames": [
+        "library-high-0.png",
+        "library-high-0_65.png",
+        "library-detail-high-0.png",
+        "wood-high-0.png",
+        "museum-high-0.png",
+        "book-stack-high-0.png",
+        "book-stack-high-2_4.png",
+        "library-balanced-0.png",
+        "library-economy-0.png",
+        "wood-balanced-0.png",
+        "wood-economy-0.png",
+        "book-stack-economy-0.png"
+      ],
+      "inspectionScope": "All twelve images inspected by the coordinating agent.",
+      "finalFormalSource": false,
+      "artAccepted": false
+    },
+    {
+      "attempt": "art-a2",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-sr/art-a2/result.json",
+      "sha256": "f4301467f1356a6498a89353ef3a86e32378e6abadc6b6359cc3faf8ae3c3765",
+      "startedAt": "2026-09-19T20:40:26.099Z",
+      "endedAt": "2026-09-19T20:40:32.871Z",
+      "sourceInputs": [
+        {
+          "path": "src/components/globeCraftMaterials.ts",
+          "sha256": "68ce7e818d50ac5ece1d5d4542fdc4cecea6af25e21b08b1274c8adcacbfbde1"
+        },
+        {
+          "path": "src/components/globeStandGeometry.ts",
+          "sha256": "36b1b7e9f406342b6d260dfd4714c8ecf08b5fb5b3f75d489646bfa02a2a4ad2"
+        },
+        {
+          "path": "src/components/globeLibraryBookGeometry.ts",
+          "sha256": "e3034c2bd4391f1b08410c3c1f41165e880c7225f957a42ef4780e87eeaf7e0c"
+        },
+        {
+          "path": "src/components/globeTurnedWoodAtlas.ts",
+          "sha256": "85770a9c26dc58ea973246f49165193d9a7b5fae6cd18e7b19ab37ccc7c1ad59"
+        },
+        {
+          "path": "src/components/globeLibraryGeometry.ts",
+          "sha256": "c0d4fe4c9b69921df11d50bc349fca9896304baba67fff60263b77ff19c1d1ee"
+        },
+        {
+          "path": "docs/mobile/evidence/S13/surface-realism-20260919/capture-library.mjs",
+          "sha256": "28cad0dc79c3d1861458c408183c256932c8b8e26039e9d07491e774f0a89e5c"
+        }
+      ],
+      "sourceInputsUnchanged": true,
+      "capturedImages": 12,
+      "inspectedImages": 4,
+      "inspectedImageNames": null,
+      "inspectionScope": "Four images inspected by the coordinating agent; the remaining eight are not claimed inspected.",
+      "finalFormalSource": false,
+      "artAccepted": false
+    },
+    {
+      "attempt": "art-a3",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-sr/art-a3/result.json",
+      "sha256": "72eab918dafacb53955c19e04ea6f67296d2c43e5944aaab73811253c176c8f1",
+      "startedAt": "2026-09-19T20:43:54.441Z",
+      "endedAt": "2026-09-19T20:44:01.028Z",
+      "sourceInputs": [
+        {
+          "path": "src/components/globeCraftMaterials.ts",
+          "sha256": "68ce7e818d50ac5ece1d5d4542fdc4cecea6af25e21b08b1274c8adcacbfbde1"
+        },
+        {
+          "path": "src/components/globeStandGeometry.ts",
+          "sha256": "36b1b7e9f406342b6d260dfd4714c8ecf08b5fb5b3f75d489646bfa02a2a4ad2"
+        },
+        {
+          "path": "src/components/globeLibraryBookGeometry.ts",
+          "sha256": "e3034c2bd4391f1b08410c3c1f41165e880c7225f957a42ef4780e87eeaf7e0c"
+        },
+        {
+          "path": "src/components/globeTurnedWoodAtlas.ts",
+          "sha256": "579c1cec368760643b108a63f466b3d6385243d5e0f13c4638a4824b62a5d123"
+        },
+        {
+          "path": "src/components/globeLibraryGeometry.ts",
+          "sha256": "c0d4fe4c9b69921df11d50bc349fca9896304baba67fff60263b77ff19c1d1ee"
+        },
+        {
+          "path": "docs/mobile/evidence/S13/surface-realism-20260919/capture-library.mjs",
+          "sha256": "28cad0dc79c3d1861458c408183c256932c8b8e26039e9d07491e774f0a89e5c"
+        }
+      ],
+      "sourceInputsUnchanged": true,
+      "capturedImages": 12,
+      "inspectedImages": 12,
+      "inspectedImageNames": [
+        "library-high-0.png",
+        "library-high-0_65.png",
+        "library-detail-high-0.png",
+        "wood-high-0.png",
+        "museum-high-0.png",
+        "book-stack-high-0.png",
+        "book-stack-high-2_4.png",
+        "library-balanced-0.png",
+        "library-economy-0.png",
+        "wood-balanced-0.png",
+        "wood-economy-0.png",
+        "book-stack-economy-0.png"
+      ],
+      "inspectionScope": "All twelve images inspected by the coordinating agent.",
+      "finalFormalSource": true,
+      "artAccepted": false
+    }
+  ],
+  "finalFormalAttempts": {
+    "unit": {
+      "attempt": "a1",
+      "path": "docs/mobile/evidence/S13/surface-realism-20260919/unit-a1/result.json",
+      "sha256": "3a1f3e5af88354aa967b8b8222adcc7e3e0d6dca615bcd53e4230ce05b6df254",
+      "pass": true,
+      "startedAt": "2026-09-19T20:45:00.842Z",
+      "endedAt": "2026-09-19T20:45:04.634Z",
+      "executions": [
+        {
+          "name": "unit",
+          "exitCode": 0,
+          "durationMs": 3716
+        }
+      ],
+      "tests": {
+        "passed": 14,
+        "failed": 0,
+        "skipped": 0,
+        "failures": []
+      },
+      "sourceInputsUnchanged": true
+    },
+    "static": {
+      "attempt": "a1",
+      "path": "docs/mobile/evidence/S13/surface-realism-20260919/static-a1/result.json",
+      "sha256": "c8506a121d3e53eca79c8fe77eccedc569d4fbdfdcf887eab7f4612c1be0a85a",
+      "pass": true,
+      "startedAt": "2026-09-19T20:45:00.357Z",
+      "endedAt": "2026-09-19T20:45:25.289Z",
+      "executions": [
+        {
+          "name": "typecheck",
+          "exitCode": 0,
+          "durationMs": 24860
+        }
+      ],
+      "tests": null,
+      "sourceInputsUnchanged": true
+    },
+    "browser": {
+      "attempt": "a1",
+      "path": "docs/mobile/evidence/S13/surface-realism-20260919/browser-a1/result.json",
+      "sha256": "c3d9e7985ba430b20ad4f9da2b40552e892f143832b6e8f9b2736ad48f1a1731",
+      "pass": true,
+      "startedAt": "2026-09-19T20:46:07.968Z",
+      "endedAt": "2026-09-19T20:46:29.048Z",
+      "executions": [
+        {
+          "name": "browser",
+          "exitCode": 0,
+          "durationMs": 21013
+        }
+      ],
+      "tests": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "errors": []
+      },
+      "sourceInputsUnchanged": true
+    }
+  },
+  "finalActualAppReview": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-sr/browser-a1/globe-surface-realism-craf-1f2c2-retire-owned-stand-textures/globe-surface-realism.json",
+    "sha256": "ae028aaa22b06d8c36cbb928127d4d9c08f8040f25ba2187ac8ac2ad7936fe2d",
+    "capturedImages": 6,
+    "inspectedImages": 6
+  },
+  "targetedInventory": {
+    "command": "node scripts/mobile/audit-starter-set.mjs docs/mobile/evidence/S13/surface-realism-20260919/starter-set-source-inventory.json",
+    "runs": 1,
+    "path": "docs/mobile/evidence/S13/surface-realism-20260919/starter-set-source-inventory.json",
+    "sha256": "8a630368c3943fdd57dc8532ad259881baeacbdac89108dfcafa376bb1df6b5b",
+    "auditValid": true,
+    "requiredCount": 29,
+    "sourceBoundCount": 11,
+    "acceptedCount": 0
+  },
+  "repeatedFormalCheckRuns": 0,
+  "userRealismRequirementSatisfied": false,
+  "artAccepted": false,
+  "installedDeviceTested": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

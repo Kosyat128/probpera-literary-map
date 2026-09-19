@@ -1,3 +1,23 @@
+<!-- s13-surface-realism-20260919:begin -->
+Source 2029aad9 refines original wood mapping, oxidation and leather
+surfaces in the included library and stands. The user's realistic-quality bar
+still requires the coordinating owner's actual-App and close-up assessment;
+this scoped review is not formal art or certified-lightmap approval.
+The nominal 16-bay/8-row/8-slot library retains 984 actual book placements across
+tiers. The economical book helper and seven composition core files are unchanged.
+Final 14 focused units, TypeScript and 1 actual Chrome cases pass.
+Evidence: evidence/S13/surface-realism-20260919/result.json. PWA 36e0ebb6 and
+Android/dev aea111e4 bind this source. APK SHA256: d6986690c73a09a9ad42ee7f29b682739f25529ca3a76c650079f917394234f0.
+Previous density/art/composition evidence and artifacts remain preserved.
+Starter Set stays 11/29 source-bound, zero accepted. Stages stay 3 complete,
+11 in progress, 27 unstarted; first open S03. Full catalog, accessory/audio/child
+composition, formal art/lightmaps, rights, device, iOS and release remain open.
+Next: improve and add the user's original three-whale stand with a gold finish
+and faceted deep-emerald gemstone eyes, preserving its recognizable site forms.
+Then address the reviewed wood identity, coarse grain, metal/purple-highlight
+and uniform-paper defects. The user's final realism requirement remains open.
+<!-- s13-surface-realism-20260919:end -->
+
 <!-- s13-library-density-20260919:begin -->
 Source f0a275ab preserves the library's nominal 16-bay/8-row/8-slot
 layout and book-placement density at lower quality tiers through economical
