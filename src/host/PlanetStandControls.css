@@ -47,6 +47,12 @@
 .planet-stand-controls__heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
 .planet-stand-controls__heading h2 { margin: 0; color: inherit; font: inherit; font-weight: 700; }
 .planet-stand-controls__heading button { flex: 0 0 44px; font-size: 1.5rem; }
+.planet-stand-controls__tabs { display: flex; gap: 8px; margin-bottom: 12px; }
+.planet-stand-controls__tabs button { flex: 1; min-width: 0; }
+.planet-stand-controls__tabs button[aria-pressed="true"] {
+  color: var(--planet-ink, #251724);
+  background: var(--planet-accent, #e2bb60);
+}
 .planet-stand-controls__panel label { display: block; margin-bottom: 6px; }
 .planet-stand-controls__panel select { width: 100%; }
 .planet-stand-controls__hint, .planet-stand-controls__status { margin: 8px 0; font-size: 0.8125rem; }

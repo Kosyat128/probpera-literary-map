@@ -16,6 +16,7 @@ import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import type { GlobeViewSample } from "./GlobeViewObserver";
 import type { GlobeQualityTier } from "./globeQuality";
 import type { GlobeStandPresentation } from "../planet/globeStands";
+import type { GlobeBackgroundPresentation } from "../planet/globeBackgrounds";
 import {
   useNearViewportActivation,
   type DeferredLoadStatus,
@@ -61,6 +62,7 @@ interface Props {
   qualityTier?: GlobeQualityTier;
   runtimeActive?: boolean;
   standCustomization?: GlobeStandPresentation;
+  backgroundCustomization?: GlobeBackgroundPresentation;
   standControls?: ReactNode;
   dataStatus?: DeferredLoadStatus;
   forceLoad?: boolean;
@@ -86,6 +88,7 @@ export default function LiteraryWorldMap({
   qualityTier,
   runtimeActive = true,
   standCustomization,
+  backgroundCustomization,
   standControls,
   dataStatus = "ready",
   forceLoad = false,
@@ -181,6 +184,7 @@ export default function LiteraryWorldMap({
           qualityTier={qualityTier}
           runtimeActive={runtimeActive}
           standCustomization={standCustomization}
+          backgroundCustomization={backgroundCustomization}
           standControls={standControls}
         />
       ) : (

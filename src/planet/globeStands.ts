@@ -17,7 +17,7 @@ export const INCLUDED_GLOBE_STANDS = Object.freeze(INCLUDED_GLOBE_STAND_IDS.map(
   commercialAvailability: "included-in-base" as const,
   provenance: "authored-in-project" as const,
   source: "src/components/globeStandGeometry.ts",
-  contentVersion: 1,
+  contentVersion: 2,
   supportedAccess: "adult" as const,
   childReviewed: false,
   rightsReviewed: false,
@@ -42,5 +42,6 @@ export type GlobeStandPresentation = Readonly<{
   onRendered: (revision: number, id: GlobeStandId) => void;
   onFailed: (revision: number, id: GlobeStandId) => void;
   onContextLost: () => void;
+  onContextRestored?: () => void;
   onEditionChange: () => void;
 }>;

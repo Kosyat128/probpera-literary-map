@@ -11,6 +11,7 @@ const GRAPHICS = "probpera-planet-graphics-quality-v1";
 const DOWNLOAD_NETWORK = "probpera-planet-download-network-v1";
 const EDITION = "probpera.globe-edition.v2", LEGACY_STYLE = "probpera.globe-style.v1";
 const STAND = "probpera-planet-stand-v1";
+const BACKGROUND = "probpera-planet-background-v1";
 
 function memoryStorage(): Storage {
   const entries = new Map<string, string>();
@@ -279,6 +280,29 @@ describe("browser capabilities and subscription lifetime", () => {
 });
 
 describe("non-secret best-effort canonical preferences", () => {
+  it("confines the new background preference to its exact adult IDs and browser key", async () => {
+    const env = browserEnvironment(), adapter = createWebPlatformAdapter({ window: env.browser });
+    const fresh = createWebPlatformAdapter({ window: env.browser });
+    for (const value of ["background.base.site-starfield", "background.base.library"]) {
+      expect(await adapter.preferences.set(BACKGROUND, value)).toBe(true);
+      expect(await fresh.preferences.get(BACKGROUND)).toBe(value);
+    }
+    expect(env.browser.localStorage.length).toBe(1);
+    expect(await fresh.preferences.remove(BACKGROUND)).toBe(true);
+    for (const value of ["canonical", "stand.base.wood", "background.base.child-room", "library", "background.base.library "]) {
+      expect(await fresh.preferences.set(BACKGROUND, value)).toBe(false);
+      env.browser.localStorage.setItem(BACKGROUND, value); expect(await fresh.preferences.get(BACKGROUND)).toBeNull();
+    }
+    vi.mocked(env.browser.localStorage.getItem).mockClear(); vi.mocked(env.browser.localStorage.setItem).mockClear();
+    vi.mocked(env.browser.localStorage.removeItem).mockClear();
+    for (const key of [BACKGROUND + ":en", BACKGROUND + "\u0000"]) {
+      expect(await fresh.preferences.get(key)).toBeNull(); expect(await fresh.preferences.set(key, "background.base.library")).toBe(false);
+      expect(await fresh.preferences.remove(key)).toBe(false);
+    }
+    expect(env.browser.localStorage.getItem).not.toHaveBeenCalled();
+    expect(env.browser.localStorage.setItem).not.toHaveBeenCalled(); expect(env.browser.localStorage.removeItem).not.toHaveBeenCalled();
+  });
+
   it("round-trips only exact adult stand choices without extending browser storage authority", async () => {
     const env = browserEnvironment(), adapter = createWebPlatformAdapter({ window: env.browser });
     const recreated = createWebPlatformAdapter({ window: env.browser });

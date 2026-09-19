@@ -12,6 +12,7 @@ import { createWebContentDownloads, type WebContentHost } from "./WebContentDown
 import type { ContentDownloads } from "../../../planet/ContentDownloads";
 import { GLOBE_EDITION_IDS } from "../../../planet/editions";
 import { GLOBE_STAND_IDS, GLOBE_STAND_PREFERENCE_KEY } from "../../../planet/globeStands";
+import { GLOBE_BACKGROUND_IDS, GLOBE_BACKGROUND_PREFERENCE_KEY } from "../../../planet/globeBackgrounds";
 
 type EventHost = Pick<EventTarget, "addEventListener" | "removeEventListener">;
 export interface WebAdapterConnection extends EventHost { readonly type?: string; }
@@ -52,6 +53,7 @@ const preferenceValues = new Map<string, readonly string[]>([
   ["probpera.globe-edition.v2", [...GLOBE_EDITION_IDS, "antique", "modern", "earth"]],
   ["probpera.globe-style.v1", ["antique", "modern", "earth"]],
   [GLOBE_STAND_PREFERENCE_KEY, GLOBE_STAND_IDS],
+  [GLOBE_BACKGROUND_PREFERENCE_KEY, GLOBE_BACKGROUND_IDS],
 ]);
 
 function safeHttpsUrl(input: string): string | null {

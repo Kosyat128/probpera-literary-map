@@ -1,7 +1,9 @@
-import { useEffect, useId, useRef } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import { GLOBE_STAND_IDS, type GlobeStandId } from "../planet/globeStands";
+import { GLOBE_BACKGROUND_IDS, type GlobeBackgroundId } from "../planet/globeBackgrounds";
 import type { PlanetStandCustomizationController, PlanetStandCustomizationSnapshot } from "./planetStandCustomization";
+import type { PlanetBackgroundCustomizationController, PlanetBackgroundCustomizationSnapshot } from "./planetBackgroundCustomization";
 import "./PlanetStandControls.css";
 
 /** Authored interface copy; editorial and child acceptance remain separate. */
@@ -32,51 +34,110 @@ export const planetStandCopy = {
   },
 } as const;
 
-export default function PlanetStandControls({ controller, snapshot, onClose }: {
+export const planetBackgroundCopy = {
+  reviewStatus: "draft", productionReady: false,
+  locales: {
+    ru: {
+      close: "Закрыть", label: "Пространство вокруг глобуса",
+      hint: "Вращайте глобус, чтобы рассмотреть окружение.",
+      preparing: "Готовим предпросмотр…", preview: "Предпросмотр. Примените выбор или отмените изменения.",
+      failed: "Предпросмотр не открылся. Прежний фон восстановлен.",
+      apply: "Применить", cancel: "Отмена", saving: "Сохраняем выбор…",
+      saveFailed: "Сохранение не подтверждено. Фон применён, но при следующем запуске выбор может сброситься.",
+      retry: "Повторить сохранение",
+      names: { "background.base.site-starfield": "Звёздное небо", "background.base.library": "Библиотека" },
+    },
+    en: {
+      close: "Close", label: "Space around the globe",
+      hint: "Rotate the globe to explore the surrounding space.",
+      preparing: "Preparing preview…", preview: "Preview. Apply your choice or cancel the changes.",
+      failed: "The preview could not be shown. Your previous background has been restored.",
+      apply: "Apply", cancel: "Cancel", saving: "Saving your choice…",
+      saveFailed: "Saving could not be confirmed. The background is applied, but your choice may reset the next time you open the app.",
+      retry: "Try saving again",
+      names: { "background.base.site-starfield": "Starry sky", "background.base.library": "Library" },
+    },
+  },
+} as const;
+
+export default function PlanetStandControls({ controller, snapshot, backgroundController, backgroundSnapshot, onClose }: {
   controller: PlanetStandCustomizationController;
   snapshot: PlanetStandCustomizationSnapshot;
+  backgroundController: PlanetBackgroundCustomizationController;
+  backgroundSnapshot: PlanetBackgroundCustomizationSnapshot;
   onClose: () => void;
 }) {
   const { language } = useInterfaceLanguage();
-  const copy = planetStandCopy.locales[language];
+  const [tab, setTab] = useState<"stand" | "background">("stand");
+  const isStand = tab === "stand";
+  const current = isStand ? snapshot : backgroundSnapshot;
+  const copy = isStand ? planetStandCopy.locales[language] : planetBackgroundCopy.locales[language];
+  const title = language === "ru" ? "Оформление глобуса" : "Globe appearance";
+  const options = isStand
+    ? GLOBE_STAND_IDS.map(value => ({ value, label: planetStandCopy.locales[language].names[value] }))
+    : GLOBE_BACKGROUND_IDS.map(value => ({ value, label: planetBackgroundCopy.locales[language].names[value] }));
   const id = useId();
   const select = useRef<HTMLSelectElement>(null);
-  useEffect(() => { if (snapshot.isOpen) select.current?.focus({ preventScroll: true }); }, [snapshot.isOpen]);
+  const activeController = isStand ? controller : backgroundController;
+  useEffect(() => { if (current.isOpen) select.current?.focus({ preventScroll: true }); }, [current.isOpen, tab]);
+  const switchTab = (next: "stand" | "background") => {
+    if (next === tab) return;
+    if (current.isOpen) activeController.cancel();
+    setTab(next);
+    (next === "stand" ? controller : backgroundController).open();
+  };
   return <div className="planet-stand-controls" data-planet-stand-controls="">
     <button type="button" className="planet-stand-controls__toggle" data-planet-stand-toggle=""
-      aria-expanded={snapshot.isOpen} aria-controls={`${id}-panel`}
-      onClick={() => snapshot.isOpen ? onClose() : controller.open()}>{copy.toggle}</button>
-    {snapshot.isOpen && <section className="planet-stand-controls__panel" id={`${id}-panel`}
-      data-planet-stand-panel="" data-planet-stand-phase={snapshot.phase} aria-labelledby={`${id}-heading`}
+      aria-expanded={current.isOpen} aria-controls={`${id}-panel`}
+      onClick={() => current.isOpen ? onClose() : activeController.open()}>{language === "ru" ? "Оформление" : "Appearance"}</button>
+    {current.isOpen && <section className="planet-stand-controls__panel" id={`${id}-panel`}
+      data-planet-stand-panel={isStand ? "" : undefined} data-planet-stand-phase={isStand ? current.phase : undefined}
+      data-planet-background-panel={isStand ? undefined : ""} data-planet-background-phase={isStand ? undefined : current.phase}
+      aria-labelledby={`${id}-heading`}
       onKeyDown={event => {
         if (event.key === "Escape") { event.preventDefault(); event.stopPropagation(); onClose(); }
       }}>
       <div className="planet-stand-controls__heading">
-        <h2 id={`${id}-heading`}>{copy.heading}</h2>
-        <button type="button" data-planet-stand-close="" aria-label={copy.close} onClick={onClose}>×</button>
+        <h2 id={`${id}-heading`}>{title}</h2>
+        <button type="button" data-planet-stand-close={isStand ? "" : undefined}
+          data-planet-background-close={isStand ? undefined : ""} aria-label={copy.close} onClick={onClose}>×</button>
+      </div>
+      <div className="planet-stand-controls__tabs" role="group" aria-label={language === "ru" ? "Раздел оформления" : "Appearance category"}>
+        <button type="button" data-planet-customization-tab="stand" aria-pressed={isStand}
+          onClick={() => switchTab("stand")}>{language === "ru" ? "Подставка" : "Stand"}</button>
+        <button type="button" data-planet-customization-tab="background" aria-pressed={!isStand}
+          onClick={() => switchTab("background")}>{language === "ru" ? "Фон" : "Background"}</button>
       </div>
       <label htmlFor={`${id}-select`}>{copy.label}</label>
-      <select ref={select} id={`${id}-select`} data-planet-stand-select=""
-        value={snapshot.previewId ?? snapshot.appliedId}
-        onChange={event => controller.preview(event.currentTarget.value as GlobeStandId)}>
-        {GLOBE_STAND_IDS.map(stand => <option key={stand} value={stand} data-planet-stand-option={stand}>{copy.names[stand]}</option>)}
+      <select ref={select} id={`${id}-select`} data-planet-stand-select={isStand ? "" : undefined}
+        data-planet-background-select={isStand ? undefined : ""}
+        value={current.previewId ?? current.appliedId}
+        onChange={event => isStand ? controller.preview(event.currentTarget.value as GlobeStandId)
+          : backgroundController.preview(event.currentTarget.value as GlobeBackgroundId)}>
+        {options.map(option => <option key={option.value} value={option.value}
+          data-planet-stand-option={isStand ? option.value : undefined}
+          data-planet-background-option={isStand ? undefined : option.value}>{option.label}</option>)}
       </select>
       <p className="planet-stand-controls__hint">{copy.hint}</p>
       <p className="planet-stand-controls__status" role="status" aria-live="polite" aria-atomic="true">
-        {snapshot.phase === "preparing" ? copy.preparing : snapshot.phase === "preview" ? copy.preview : snapshot.phase === "error" ? copy.failed : ""}
+        {current.phase === "preparing" ? copy.preparing : current.phase === "preview" ? copy.preview : current.phase === "error" ? copy.failed : ""}
       </p>
       <div className="planet-stand-controls__actions">
-        <button type="button" data-planet-stand-apply="" disabled={snapshot.phase !== "preview"}
-          onClick={() => { select.current?.focus({ preventScroll: true }); controller.apply(); }}>{copy.apply}</button>
-        <button type="button" data-planet-stand-cancel="" onClick={onClose}>{copy.cancel}</button>
+        <button type="button" data-planet-stand-apply={isStand ? "" : undefined} data-planet-background-apply={isStand ? undefined : ""}
+          disabled={current.phase !== "preview"}
+          onClick={() => { select.current?.focus({ preventScroll: true }); activeController.apply(); }}>{copy.apply}</button>
+        <button type="button" data-planet-stand-cancel={isStand ? "" : undefined}
+          data-planet-background-cancel={isStand ? undefined : ""} onClick={onClose}>{copy.cancel}</button>
       </div>
       <p className="planet-stand-controls__status" role="status" aria-live="polite" aria-atomic="true"
-        data-planet-stand-save-state={snapshot.saveState}>
-        {snapshot.saveState === "saving" ? copy.saving : snapshot.saveState === "failed" ? copy.saveFailed : ""}
+        data-planet-stand-save-state={isStand ? current.saveState : undefined}
+        data-planet-background-save-state={isStand ? undefined : current.saveState}>
+        {current.saveState === "saving" ? copy.saving : current.saveState === "failed" ? copy.saveFailed : ""}
       </p>
-      {snapshot.saveState === "failed" && <button type="button" data-planet-stand-save-retry="" onClick={() => {
+      {current.saveState === "failed" && <button type="button" data-planet-stand-save-retry={isStand ? "" : undefined}
+        data-planet-background-save-retry={isStand ? undefined : ""} onClick={() => {
         select.current?.focus({ preventScroll: true });
-        controller.retrySave();
+        activeController.retrySave();
       }}>{copy.retry}</button>}
     </section>}
   </div>;

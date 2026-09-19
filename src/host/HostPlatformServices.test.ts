@@ -10,6 +10,7 @@ const GRAPHICS = "probpera-planet-graphics-quality-v1";
 const DOWNLOAD_NETWORK = "probpera-planet-download-network-v1";
 const EDITION = "probpera.globe-edition.v2", LEGACY_STYLE = "probpera.globe-style.v1";
 const STAND = "probpera-planet-stand-v1";
+const BACKGROUND = "probpera-planet-background-v1";
 const RECENT = "probpera-planet-recent-adult-v1";
 const MAIL = "mailto:probperasite@yandex.ru";
 function deferred<T>() {
@@ -377,6 +378,29 @@ describe("native subscription lifetimes and ordering", () => {
 });
 
 describe("exact non-secret preferences with serialized readback", () => {
+  it("confines the new background preference to its exact adult IDs and key", async () => {
+    const f = fixture();
+    const fresh = createHostPlatformServices({ kind: "ios", channel: "dev", languages: [], preferences: f.preferences });
+    for (const value of ["background.base.site-starfield", "background.base.library"]) {
+      expect(await f.services.preferences.set(BACKGROUND, value)).toBe(true);
+      expect(await fresh.preferences.get(BACKGROUND)).toBe(value);
+    }
+    expect([...f.memory.keys()]).toEqual([BACKGROUND]);
+    expect(await fresh.preferences.remove(BACKGROUND)).toBe(true);
+    f.preferences.set.mockClear(); f.preferences.remove.mockClear();
+    for (const value of ["canonical", "stand.base.wood", "background.base.child-room", "library", "background.base.library "]) {
+      expect(await fresh.preferences.set(BACKGROUND, value)).toBe(false);
+      f.memory.set(BACKGROUND, value); expect(await fresh.preferences.get(BACKGROUND)).toBeNull();
+    }
+    const reads = f.preferences.get.mock.calls.length;
+    for (const key of [BACKGROUND + ":en", BACKGROUND + "\u0000"]) {
+      expect(await fresh.preferences.get(key)).toBeNull(); expect(await fresh.preferences.set(key, "background.base.library")).toBe(false);
+      expect(await fresh.preferences.remove(key)).toBe(false);
+    }
+    expect(f.preferences.get).toHaveBeenCalledTimes(reads);
+    expect(f.preferences.set).not.toHaveBeenCalled(); expect(f.preferences.remove).not.toHaveBeenCalled();
+  });
+
   it("round-trips only exact adult stand choices through the stand preference key", async () => {
     const f = fixture();
     const recreated = createHostPlatformServices({ kind: "ios", channel: "dev", languages: ["en"], preferences: f.preferences });

@@ -68,6 +68,8 @@ import {
 } from "./globeQuality";
 import { createAntiqueWhaleBodyGeometry } from "./globeAntiqueGeometry";
 import GlobeIncludedStand from "./GlobeIncludedStand";
+import GlobeIncludedBackground from "./GlobeIncludedBackground";
+import { DEFAULT_GLOBE_BACKGROUND_ID, type GlobeBackgroundPresentation } from "../planet/globeBackgrounds";
 import type { GlobeStandPresentation } from "../planet/globeStands";
 import GlobeViewObserver, { type GlobeViewSample } from "./GlobeViewObserver";
 import { resolveCountryGlobeCoordinates } from "./globeCoordinates";
@@ -164,6 +166,7 @@ interface Props {
   runtimeActive?: boolean;
   standCustomization?: GlobeStandPresentation;
   standControls?: ReactNode;
+  backgroundCustomization?: GlobeBackgroundPresentation;
 }
 
 const GLOBE_EDITION_STORAGE_KEY = "probpera.globe-edition.v2";
@@ -1662,6 +1665,8 @@ function SelectedWriterLocationMarker({
 function GlobeScene({
   atlas,
   standCustomization,
+  backgroundCustomization,
+  editionId,
   visualStyle,
   overlayProfile,
   countries,
@@ -1694,6 +1699,8 @@ function GlobeScene({
 }: {
   atlas: GlobeAtlas;
   standCustomization?: GlobeStandPresentation;
+  backgroundCustomization?: GlobeBackgroundPresentation;
+  editionId: GlobeEditionId;
   visualStyle: GlobeVisualStyle;
   overlayProfile: GlobeOverlayProfile;
   countries: Country[];
@@ -1798,8 +1805,7 @@ function GlobeScene({
     <ContemporaryGlobeFrame visualStyle={visualStyle} quality={quality} />
   );
 
-  return (
-    <>
+  const canonicalBackground = <>
       <MuseumSkyDome
         reducedMotion={reducedMotion}
         quality={quality}
@@ -1810,6 +1816,16 @@ function GlobeScene({
         reducedMotion={reducedMotion}
         animate={autoRotate}
       />
+    </>;
+
+  return (
+    <>
+      {backgroundCustomization
+        ? <GlobeIncludedBackground presentation={backgroundCustomization} quality={quality.tier}
+            editionId={editionId} standId={standCustomization?.displayedId ?? "canonical"} access="adult"
+            active={active} autoRotate={autoRotate} reducedMotion={reducedMotion}
+            canonicalBackground={canonicalBackground} />
+        : canonicalBackground}
       <ambientLight intensity={palette.ambientIntensity} color={palette.ambient} />
       <hemisphereLight
         args={[
@@ -1962,6 +1978,7 @@ export default function LiteraryGlobe({
   runtimeActive = true,
   standCustomization,
   standControls,
+  backgroundCustomization,
 }: Props) {
   const quality = resolveGlobeQualityProfile(qualityTier, economical);
   const { language, t, countryName, number } = useInterfaceLanguage();
@@ -1969,6 +1986,10 @@ export default function LiteraryGlobe({
   const isPlanetApplication = isControlledWebEdition || platformServices.kind !== "web";
   const standCustomizationRef = useRef(standCustomization);
   useLayoutEffect(() => { standCustomizationRef.current = standCustomization; }, [standCustomization]);
+  const backgroundCustomizationRef = useRef(isPlanetApplication ? backgroundCustomization : undefined);
+  useLayoutEffect(() => {
+    backgroundCustomizationRef.current = isPlanetApplication ? backgroundCustomization : undefined;
+  }, [backgroundCustomization, isPlanetApplication]);
   const editionPreference = usePlanetEditionPreference({
     preferences: platformServices.preferences,
     enabled: isPlanetApplication,
@@ -2371,6 +2392,7 @@ export default function LiteraryGlobe({
   const requestEdition = useCallback(
     async (editionId: GlobeEditionId) => {
       standCustomizationRef.current?.onEditionChange();
+      backgroundCustomizationRef.current?.onEditionChange();
       if (isPlanetApplication) editionPreference.requestEdition(editionId);
       editionRailRestoreFocusRef.current = Boolean(
         editionRailRef.current?.contains(document.activeElement)
@@ -2654,6 +2676,7 @@ export default function LiteraryGlobe({
       const lifecycle = installGlobeWebGlContextLifecycle(canvas, {
         onContextLost: () => {
           standCustomizationRef.current?.onContextLost();
+          backgroundCustomizationRef.current?.onContextLost();
           window.cancelAnimationFrame(diagnosticFrame);
           setFrameloop("never");
           setWebglContextState("lost");
@@ -2665,6 +2688,8 @@ export default function LiteraryGlobe({
           diagnosticFrame = window.requestAnimationFrame(() => {
             captureDiagnostics();
             setWebglContextState("ready");
+            standCustomizationRef.current?.onContextRestored?.();
+            backgroundCustomizationRef.current?.onContextRestored?.();
           });
         },
         requestRestore: () => {
@@ -2989,6 +3014,7 @@ export default function LiteraryGlobe({
       data-globe-style={renderedVisualStyle}
       data-globe-edition={renderedEditionId}
       data-globe-stand={standCustomization?.displayedId}
+      data-globe-background={isPlanetApplication ? backgroundCustomization?.displayedId ?? DEFAULT_GLOBE_BACKGROUND_ID : undefined}
       data-globe-edition-rail={editionRailVisible ? "visible" : "hidden"}
       data-can-scroll-left={editionRailScroll.canScrollLeft}
       data-can-scroll-right={editionRailScroll.canScrollRight}
@@ -3056,6 +3082,8 @@ export default function LiteraryGlobe({
         <GlobeScene
           atlas={atlas}
           standCustomization={standCustomization}
+          backgroundCustomization={isPlanetApplication ? backgroundCustomization : undefined}
+          editionId={renderedEditionId}
           visualStyle={renderedVisualStyle}
           overlayProfile={renderedEdition.overlayProfile}
           countries={countries}
@@ -3366,6 +3394,7 @@ export default function LiteraryGlobe({
         {visualStyleError && (
           <button type="button" onClick={() => {
             standCustomizationRef.current?.onEditionChange();
+            backgroundCustomizationRef.current?.onEditionChange();
             void globeStyle.retryStyle();
           }}>
             {t("Повторить")}

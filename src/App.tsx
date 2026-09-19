@@ -25,8 +25,10 @@ import PlanetGraphicsSettings from "./host/PlanetGraphicsSettings";
 import PlanetDownloadsPanel from "./host/PlanetDownloadsPanel";
 import { usePlanetGraphicsQuality } from "./host/planetGraphicsQuality";
 import { usePlanetStandCustomization } from "./host/planetStandCustomization";
+import { usePlanetBackgroundCustomization } from "./host/planetBackgroundCustomization";
 import PlanetStandControls from "./host/PlanetStandControls";
 import type { GlobeStandPresentation } from "./planet/globeStands";
+import type { GlobeBackgroundPresentation } from "./planet/globeBackgrounds";
 import { ProductNoticeSlot } from "./host/ProductNoticeHost";
 import {
   type NativeNavigationContext,
@@ -571,6 +573,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
   const { visibility: platformVisibility } = usePlatformSnapshot();
   const globeRuntimeActive = platformServices.kind === "web" || platformVisibility === "active";
   const isPlanetApplication = isControlledWebEdition || platformServices.kind !== "web";
+  const [customizationSceneReady, setCustomizationSceneReady] = useState(true);
   const graphics = usePlanetGraphicsQuality({
     preferences: platformServices.preferences,
     enabled: isPlanetApplication,
@@ -588,9 +591,25 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     renderRevision: stands.snapshot.renderRevision,
     onRendered: stands.controller.acknowledgeRendered,
     onFailed: stands.controller.failRendering,
-    onContextLost: stands.controller.cancel,
+    onContextLost: () => setCustomizationSceneReady(false),
+    onContextRestored: () => setCustomizationSceneReady(true),
     onEditionChange: stands.controller.cancel,
   }), [stands.snapshot.appliedId, stands.snapshot.displayedId, stands.snapshot.renderRevision, stands.controller]);
+  const backgrounds = usePlanetBackgroundCustomization({
+    preferences: platformServices.preferences,
+    enabled: isPlanetApplication,
+    access: isPlanetApplication ? "adult" : "blocked",
+  });
+  const backgroundPresentation = useMemo<GlobeBackgroundPresentation>(() => ({
+    appliedId: backgrounds.snapshot.appliedId,
+    displayedId: backgrounds.snapshot.displayedId,
+    renderRevision: backgrounds.snapshot.renderRevision,
+    onRendered: backgrounds.controller.acknowledgeRendered,
+    onFailed: backgrounds.controller.failRendering,
+    onContextLost: () => setCustomizationSceneReady(false),
+    onContextRestored: () => setCustomizationSceneReady(true),
+    onEditionChange: backgrounds.controller.cancel,
+  }), [backgrounds.snapshot.appliedId, backgrounds.snapshot.displayedId, backgrounds.snapshot.renderRevision, backgrounds.controller]);
   const [nativeCollectionOpen, setNativeCollectionOpen] = useState(() => isPlanetApplication && addressRequestsCollection());
   const [planetLaunchComplete, setPlanetLaunchComplete] = useState(false);
   const completePlanetLaunch = useCallback(() => setPlanetLaunchComplete(true), []);
@@ -604,12 +623,13 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
   });
   const nativeGlobeRootRef = useRef<HTMLElement>(null);
   const closeStandControls = useCallback(() => {
-    stands.controller.cancel();
+    if (stands.controller.getSnapshot().isOpen) stands.controller.cancel();
+    if (backgrounds.controller.getSnapshot().isOpen) backgrounds.controller.cancel();
     window.requestAnimationFrame(() => {
       const root = nativeGlobeRootRef.current;
       if (root && !root.hasAttribute("inert")) root.querySelector<HTMLElement>("[data-planet-stand-toggle]")?.focus({ preventScroll: true });
     });
-  }, [stands.controller]);
+  }, [stands.controller, backgrounds.controller]);
   const nativeReturnRequestedRef = useRef(false);
   const [nativeBookWriterTarget, setNativeBookWriterTarget] = useState<BookWriterTarget | null>(null);
   const nativeBookWriterTargetRef = useRef<BookWriterTarget | null>(null);
@@ -2030,7 +2050,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     handleBack: () => {
       if (globalSearchOpen) { closeGlobalSearch(); return "handled"; }
       if (communityOpen) { closeCommunity(); return "handled"; }
-      if (stands.controller.getSnapshot().isOpen) { closeStandControls(); return "handled"; }
+      if (stands.controller.getSnapshot().isOpen || backgrounds.controller.getSnapshot().isOpen) { closeStandControls(); return "handled"; }
       if ((!isPlanetApplication || nativeCollectionOpen) && nativeBookBackRef.current?.()) return "handled";
       if (nativeCollectionOpen) { closeNativeCollection(); return "handled"; }
       if (closeLargestArchivesOnEscape()) return "handled";
@@ -2075,7 +2095,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     if (!isPlanetApplication || nativeCollectionOpen) return;
     const escape = (event: KeyboardEvent) => {
       if (event.key !== "Escape" || event.defaultPrevented || nativeGlobeRootRef.current?.hasAttribute("inert")) return;
-      if (stands.controller.getSnapshot().isOpen) { event.preventDefault(); closeStandControls(); return; }
+      if (stands.controller.getSnapshot().isOpen || backgrounds.controller.getSnapshot().isOpen) { event.preventDefault(); closeStandControls(); return; }
       if (closeLargestArchivesOnEscape()) { event.preventDefault(); return; }
       if (atlasSearchOpen) {
         event.preventDefault();
@@ -2091,15 +2111,17 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     return () => window.removeEventListener("keydown", escape);
   }, [isPlanetApplication, nativeCollectionOpen, closeLargestArchivesOnEscape, atlasSearchOpen,
     closeAtlasSearch, atlasExperience.searchButtonRef, atlasExperience.filtersButtonRef,
-    atlasExperience.state.filtersOpen, atlasExperienceDispatch, selectedCountry, closeCountry, stands.controller, closeStandControls]);
+    atlasExperience.state.filtersOpen, atlasExperienceDispatch, selectedCountry, closeCountry, stands.controller, backgrounds.controller, closeStandControls]);
 
   useLayoutEffect(() => {
     // Suspend an untouched saved choice while another surface owns interaction;
     // an explicit preview is cancelled without changing the applied stand.
-    stands.controller.setVisibility(isPlanetApplication && !nativeCollectionOpen && !globalSearchOpen
-      && !communityOpen && !atlasSearchOpen && !atlasExperience.state.filtersOpen && platformVisibility === "active");
+    const available = isPlanetApplication && !nativeCollectionOpen && !globalSearchOpen && !communityOpen
+      && !atlasSearchOpen && !atlasExperience.state.filtersOpen && platformVisibility === "active" && customizationSceneReady;
+    stands.controller.setVisibility(available);
+    backgrounds.controller.setVisibility(available);
   }, [nativeCollectionOpen, globalSearchOpen, communityOpen, atlasSearchOpen,
-    atlasExperience.state.filtersOpen, platformVisibility, stands.controller, isPlanetApplication]);
+    atlasExperience.state.filtersOpen, platformVisibility, stands.controller, backgrounds.controller, isPlanetApplication, customizationSceneReady]);
 
   const readerName =
     user?.user_metadata?.display_name || user?.email?.split("@")[0] || "";
@@ -2659,8 +2681,10 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
                 qualityTier={isPlanetApplication ? graphics.qualityTier : undefined}
                 runtimeActive={globeRuntimeActive}
                 standCustomization={isPlanetApplication ? standPresentation : undefined}
+                backgroundCustomization={isPlanetApplication ? backgroundPresentation : undefined}
                 standControls={isPlanetApplication ? <PlanetStandControls controller={stands.controller}
-                  snapshot={stands.snapshot} onClose={closeStandControls} /> : undefined}
+                  snapshot={stands.snapshot} backgroundController={backgrounds.controller}
+                  backgroundSnapshot={backgrounds.snapshot} onClose={closeStandControls} /> : undefined}
                 showNobelLaureates={
                   atlasFilter === "nobel" ||
                   nobelSpotlightCountryId === selectedCountry?.id
