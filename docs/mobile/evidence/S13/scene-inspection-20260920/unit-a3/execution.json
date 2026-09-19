@@ -1,0 +1,25 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "--config=docs/mobile/evidence/S13/scene-inspection-20260920/unit.config.mjs",
+    "src/host/planetSceneInspection.test.ts",
+    "--maxWorkers=1",
+    "--reporter=json",
+    "--outputFile=C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S13\\scene-inspection-20260920\\unit-a3\\vitest.json"
+  ],
+  "startedAt": "2026-09-19T23:44:28.257Z",
+  "durationMs": 1096,
+  "exitCode": 0,
+  "logs": {
+    "stdout": {
+      "text": "JSON report written to C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S13/scene-inspection-20260920/unit-a3/vitest.json\n",
+      "sha256": "ebf1afffbd30d0cf77ccda200ff72d6f9a4cd6a9c348daa16a3a54159ad5b56e"
+    },
+    "stderr": {
+      "text": "",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

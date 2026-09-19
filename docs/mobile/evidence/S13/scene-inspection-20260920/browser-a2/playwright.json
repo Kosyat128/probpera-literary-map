@@ -1,0 +1,151 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=docs/mobile/evidence/S13/scene-inspection-20260920/playwright.config.mjs"
+    ],
+    "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S13\\scene-inspection-20260920\\playwright.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-si/browser-a2",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "globe-scene-inspection.spec.mjs"
+        ],
+        "timeout": 150000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S13\\scene-inspection-20260920\\browser-a2\\playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "globe-scene-inspection.spec.mjs",
+      "file": "globe-scene-inspection.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "scene inspection uses actual manuscript geometry, accessible modal controls and guarded canonical book navigation",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 25006,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"ecuador\"\u001b[39m\nReceived: \u001b[31mnull\u001b[39m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"ecuador\"\u001b[39m\nReceived: \u001b[31mnull\u001b[39m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\globe-scene-inspection.spec.mjs:415:78",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\globe-scene-inspection.spec.mjs",
+                      "column": 78,
+                      "line": 415
+                    },
+                    "snippet": "  413 |     await page.locator('[data-planet-scene-close]').click(); await mode(page, 'closed');\n  414 |     await page.mouse.click(pointer.x, pointer.y);\n> 415 |     await expect.poll(() => new URL(page.url()).searchParams.get('country')).toBe(candidate);\n      |                                                                              ^\n  416 |     const normalSelectionUrl = page.url(); await closeCountry(page);\n  417 |     await page.locator('[data-globe-control=\"reset\"]').click(); await settle(page);\n  418 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\globe-scene-inspection.spec.mjs",
+                        "column": 78,
+                        "line": 415
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"ecuador\"\u001b[39m\nReceived: \u001b[31mnull\u001b[39m\n\nCall Log:\n- Timeout 15000ms exceeded while waiting on the predicate\n\n  413 |     await page.locator('[data-planet-scene-close]').click(); await mode(page, 'closed');\n  414 |     await page.mouse.click(pointer.x, pointer.y);\n> 415 |     await expect.poll(() => new URL(page.url()).searchParams.get('country')).toBe(candidate);\n      |                                                                              ^\n  416 |     const normalSelectionUrl = page.url(); await closeCountry(page);\n  417 |     await page.locator('[data-globe-control=\"reset\"]').click(); await settle(page);\n  418 |\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\globe-scene-inspection.spec.mjs:415:78"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-19T23:41:04.829Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "scene-inspection-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-si\\browser-a2\\globe-scene-inspection-sce-d35bb-d-canonical-book-navigation\\attachments\\scene-inspection-source-evidence-b48e604a0f4bf5be3671065edb4a0cca1ba5a634.json"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-si\\browser-a2\\globe-scene-inspection-sce-d35bb-d-canonical-book-navigation\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\globe-scene-inspection.spec.mjs",
+                    "column": 78,
+                    "line": 415
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "717f9d954793b1da3bcc-f493078116d17e68eaac",
+          "file": "globe-scene-inspection.spec.mjs",
+          "line": 391,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-19T23:41:04.237Z",
+    "duration": 26372.677,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

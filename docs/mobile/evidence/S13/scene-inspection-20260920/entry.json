@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-19T23:26:42.447Z",
+  "checkpoint": "6a577138db6fe0553eebb5d66fa4084f521b426b",
+  "previous": "docs/mobile/evidence/S13/writer-study-20260920/result.json",
+  "stage": "S13",
+  "scope": "Adult-only transient scene inspection: actual manuscript geometry anchor, keyboard alternative, native dialog, existing canonical book-collection destination.",
+  "userBasis": "Continue the full application plan without stops; improve engine and interface while preserving the latest requested ceramic saucer size.",
+  "immutableAndPreservedInputs": [
+    {
+      "path": "docs/mobile/requirements/v12/16_FULL_3D_BACKGROUND_ENGINE_RU.md",
+      "sha256": "75f830874b32c2afca440b958cb4b3cefdcb9c606b8ba0195fba2f02022198c5"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/35_3D_BACKGROUND_CATALOG.csv",
+      "sha256": "30cc7b9f6157a38dee3b4661a7bb828e7d8856f09c4b7ccbcdca80a6afebb857"
+    },
+    {
+      "path": "src/components/globeWriterStudyGeometry.ts",
+      "sha256": "b338df9f7635c061e0ad62c83e17d0a388f656679384bdcdaa4815988b722653"
+    },
+    {
+      "path": "src/components/globeCeramicPortraitStandGeometry.ts",
+      "sha256": "aaefb0d9bb4721fbe0e66e47b307f743d0ade834abb6be15ecf09a3a2b729a32"
+    },
+    {
+      "path": "src/planet/globeComposition.ts",
+      "sha256": "20b4cabdd678a6fa5b70ab2b4cbaef179f0e7d7c5819e408123eb486ddb0e81f"
+    },
+    {
+      "path": "src/host/planetComposition.ts",
+      "sha256": "6e193b12c495d962737185ab4fd35eeb3b64fe46f5c92774b565cfbb1181e954"
+    },
+    {
+      "path": "src/host/planetCompositionPresentation.ts",
+      "sha256": "d62d963c719366c1be3e6888b5eb321933f3e7224b6591fc8c2d6d81a639c3f6"
+    },
+    {
+      "path": "src/components/useGlobeCompositionScene.ts",
+      "sha256": "30009468d0cdee459441ca5780ea608cdf21b3f6e7055da89c0ce28e435326b5"
+    },
+    {
+      "path": "src/components/useGlobeCompositionFrame.ts",
+      "sha256": "530d1303a5af222bf68f72b499b07c8d41a828ca14783912284b6e3963d59cd0"
+    },
+    {
+      "path": "src/components/globeAtlas.ts",
+      "sha256": "224dcde2499f51eb333562875796d3422ab28ad987339f36be79f0635677bcf6"
+    },
+    {
+      "path": "src/components/useGlobeStyleState.ts",
+      "sha256": "6d2801802ec0e9bf0c2e5ff9a6f852f00434a8494216b06ee2069917e2a1a0ba"
+    }
+  ],
+  "productionActionsPerformed": false,
+  "childApproved": false,
+  "artAccepted": false,
+  "releaseReady": false
+}

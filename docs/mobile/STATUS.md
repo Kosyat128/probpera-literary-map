@@ -1,3 +1,14 @@
+<!-- s13-scene-inspection-20260920:begin -->
+Source a115e9f1 adds transient adult manuscript inspection to the existing writer study.
+Three controller cases, TypeScript and one actual Chrome case pass; unrelated suites are not counted.
+The source-bound captures and local builds do not establish art, child, screen-reader or installed-device acceptance.
+Inventory remains 29 required, 12 source-bound, zero accepted, plus three separate owner-added portrait stands.
+PWA 3e5a4b1d; Android/dev 4edbf32f; APK SHA256 417c13b7686abfb6b211c70a0384ca1f5a94460dcb4198de7e6253cb22710722.
+Evidence: evidence/S13/scene-inspection-20260920/result.json.
+Stages remain 3 complete, 11 in progress, 27 unstarted; first open S03.
+Continue the full application plan with the transient adult manuscript interaction preserved. Keep the one scene, unchanged composition owner, writer-study geometry, golden whales, 984-book library and final one-third-reduced ceramic saucers. Refine remaining visible realism; extend only the next bounded catalog/interaction requirement. Formal screen-reader/device coverage, child ages 10–17 review, full catalog/accessories/audio, art/lightmaps, iOS and release acceptance remain open. Avoid repeating valid checks of unchanged inputs.
+<!-- s13-scene-inspection-20260920:end -->
+
 <!-- s13-writer-study-20260920:begin -->
 Source 1b7f85e1 adds the original included Writer's study / Кабинет писателя
 (STARTER-012) through the existing single-scene composition lifecycle. Preview

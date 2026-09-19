@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "selected": {
+    "unit": "a3",
+    "static": "a3",
+    "browser": "a4"
+  },
+  "history": [
+    {
+      "attempt": "unit-a1",
+      "status": "passed-superseded"
+    },
+    {
+      "attempt": "static-a1",
+      "status": "failed",
+      "reason": "React18 RefObject generic included duplicate null; corrected."
+    },
+    {
+      "attempt": "unit-a2",
+      "status": "passed-superseded"
+    },
+    {
+      "attempt": "static-a2",
+      "status": "passed-superseded"
+    },
+    {
+      "attempt": "browser-a1",
+      "status": "failed",
+      "reason": "Fixture legacy WOOD constant absent; restored."
+    },
+    {
+      "attempt": "browser-a2",
+      "status": "failed",
+      "reason": "Fixture treated nearest keyboard country as actual centre-ray pointer hit; invalid assumption."
+    },
+    {
+      "attempt": "browser-a3",
+      "status": "failed",
+      "reason": "Fixture pointer interaction cleared keyboard candidate before Enter positive control; removed pointer observation."
+    },
+    {
+      "attempt": "browser-a4",
+      "status": "passed",
+      "reason": "Real keyboard Enter positive control, actual marker tap, RU/EN dialog, focus, preview/quality/inactive invalidation and actual collection."
+    }
+  ],
+  "runtimeCorrection": "Anchor explicitly invalidates demand rendering on controller snapshot changes, including post-frame readiness.",
+  "coverageLimits": [
+    "No claim of pointer land-selection positive control.",
+    "No browser drag/cancel gesture coverage claimed; handler shares existing canonical gesture utility.",
+    "No broad unchanged suites rerun."
+  ],
+  "productionActionsPerformed": false
+}

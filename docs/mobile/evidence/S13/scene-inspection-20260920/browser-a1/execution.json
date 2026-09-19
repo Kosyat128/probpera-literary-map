@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S13/scene-inspection-20260920/playwright.config.mjs"
+  ],
+  "startedAt": "2026-09-19T23:39:57.021Z",
+  "durationMs": 3086,
+  "exitCode": 1,
+  "logs": {
+    "stdout": {
+      "text": "\nRunning 1 test using 1 worker\n\n\n\n[1/1] tests\\pwa\\globe-scene-inspection.spec.mjs:390:1 › scene inspection uses actual manuscript geometry, accessible modal controls and guarded canonical book navigation\n  1) tests\\pwa\\globe-scene-inspection.spec.mjs:390:1 › scene inspection uses actual manuscript geometry, accessible modal controls and guarded canonical book navigation \n\n    ReferenceError: WOOD is not defined\n\n      220 |   const page = await context.newPage(); page.setDefaultTimeout(12_000);\n      221 |   const memory = new Map([[\"probpera-interface-language\", \"ru\"], [\"probpera-planet-welcome-v1\", \"completed\"],\n    > 222 |     [EDITION_KEY, \"modern\"], [STAND_KEY, WOOD], [BACKGROUND_KEY, LIBRARY]]);\n          |                                          ^\n      223 |   if (newValue !== undefined) memory.set(KEY, newValue);\n      224 |   const operations = [], errors = [], externalRequests = [], missingResources = [], localAssetRequests = [];\n      225 |   const result = { ...sourceEvidence, pass: false, observations: null, installedNative: false,\n        at open (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\globe-scene-inspection.spec.mjs:222:42)\n        at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\globe-scene-inspection.spec.mjs:392:19\n\n    Error Context: D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-si\\browser-a1\\globe-scene-inspection-sce-d35bb-d-canonical-book-navigation\\error-context.md\n\n\n  1 failed\n    tests\\pwa\\globe-scene-inspection.spec.mjs:390:1 › scene inspection uses actual manuscript geometry, accessible modal controls and guarded canonical book navigation \n",
+      "sha256": "5b3301ee23b55355ebbe38ae811633cb13dba7b5f2f37b16dead33dc1fce6eb6"
+    },
+    "stderr": {
+      "text": "(node:8104) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "sha256": "8bcbb933c568997eb80c64eecd217f5f121675504d95dbe0e78f6e123bb03024"
+    }
+  }
+}

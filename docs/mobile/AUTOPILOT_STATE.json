@@ -3,9 +3,9 @@
   "repository": "Kosyat128/probpera-literary-map",
   "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
-  "headSha": "1b7f85e1d7569937d8a16def2225d2f563067459",
+  "headSha": "a115e9f11105551ed6e243787e95ffc29bccb1a0",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-19T23:13:26.092Z",
+  "updatedAt": "2026-09-19T23:51:24.224Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -2050,7 +2050,8 @@
         "docs/mobile/evidence/S13/surface-realism-20260919/starter-set-source-inventory.json",
         "docs/mobile/evidence/S13/three-whales-20260919/starter-set-source-inventory.json",
         "docs/mobile/evidence/S13/ceramic-portraits-20260920/starter-set-source-inventory.json",
-        "docs/mobile/evidence/S13/writer-study-20260920/starter-set-source-inventory.json"
+        "docs/mobile/evidence/S13/writer-study-20260920/starter-set-source-inventory.json",
+        "docs/mobile/evidence/S13/scene-inspection-20260920/starter-set-source-inventory.json"
       ],
       "externalBlockers": []
     },
@@ -2114,11 +2115,12 @@
             "docs/mobile/evidence/S13/surface-realism-20260919/result.json",
             "docs/mobile/evidence/S13/three-whales-20260919/result.json",
             "docs/mobile/evidence/S13/ceramic-portraits-20260920/result.json",
-            "docs/mobile/evidence/S13/writer-study-20260920/result.json"
+            "docs/mobile/evidence/S13/writer-study-20260920/result.json",
+            "docs/mobile/evidence/S13/scene-inspection-20260920/result.json"
           ],
-          "commit": "1b7f85e1d7569937d8a16def2225d2f563067459",
-          "lastValidatedAt": "2026-09-19T23:13:26.092Z",
-          "notes": "Transactional same-runtime preview/apply/revert. Data-driven customization must preserve the same scene before measured performance and parity checks. Existing edition persistence now follows the app platform port, successful render and explicit-intent fences. Local save recovery preserves one scene. This does not implement the full composition preview/apply/revert transaction. Three adult included procedural stands now use the canonical scene with rendered-preview acknowledgement, apply/cancel, ordered preference recovery and scoped resource disposal. Canonical default is retained. Full composition, child/optional catalogs, device budgets and release acceptance remain open. The included two-level library and three stands now have detailed original geometry, owned procedural craft maps and inspected actual-App/close-up views following the explicit realism requirement. Same-scene preview, actual frame acknowledgement, persistence, context recovery and scoped disposal are evidenced. Formal art/lightmap acceptance, full composition, catalog, child/rights and device gates remain open. Included composition preparation requires three matching parts in one actual rendered frame; failure/cancel restore the applied scene with the retained atlas source. Legacy keys stay unchanged, unavailable new storage is distinct from absence, and one ordered preference record survives remount races. Port confirmation is not crash-safe durability or full accessory/audio composition. The improved library remains within the same scene and the unchanged validated included composition core. Prior transaction/rollback evidence remains historical and preserved; this lighting slice does not claim full accessory/audio/child composition or crash-safe persistence. The denser reduced-tier library stays in the same scene with unchanged composition core, stand and craft-material sources. Prior transaction/rollback evidence remains historical and preserved; this geometry slice does not establish full accessory/audio/child composition or crash-safe persistence. Material and wood-mapping changes remain within the existing composition owners and one scene. Seven core files and the economical book-shell helper match prior evidence. Full accessory/audio/child composition and crash-safe persistence remain open. The whale choice uses the existing composition prepare/frame acknowledgement/apply/cancel/persistence owners. Seven core sources are unchanged; no second renderer or separate save authority is introduced. Portrait choices use the existing whole-composition prepare/frame/apply/cancel/persistence lifecycle. Seven core sources, one scene and the previous golden whale geometry are preserved. Writer study uses the existing whole-composition prepare/render/apply/cancel/save lifecycle; cancellation retains the same library resources, stand and camera. Seven composition owners and existing art sources are preserved."
+          "commit": "a115e9f11105551ed6e243787e95ffc29bccb1a0",
+          "lastValidatedAt": "2026-09-19T23:51:24.224Z",
+          "notes": "Transactional same-runtime preview/apply/revert. Data-driven customization must preserve the same scene before measured performance and parity checks. Existing edition persistence now follows the app platform port, successful render and explicit-intent fences. Local save recovery preserves one scene. This does not implement the full composition preview/apply/revert transaction. Three adult included procedural stands now use the canonical scene with rendered-preview acknowledgement, apply/cancel, ordered preference recovery and scoped resource disposal. Canonical default is retained. Full composition, child/optional catalogs, device budgets and release acceptance remain open. The included two-level library and three stands now have detailed original geometry, owned procedural craft maps and inspected actual-App/close-up views following the explicit realism requirement. Same-scene preview, actual frame acknowledgement, persistence, context recovery and scoped disposal are evidenced. Formal art/lightmap acceptance, full composition, catalog, child/rights and device gates remain open. Included composition preparation requires three matching parts in one actual rendered frame; failure/cancel restore the applied scene with the retained atlas source. Legacy keys stay unchanged, unavailable new storage is distinct from absence, and one ordered preference record survives remount races. Port confirmation is not crash-safe durability or full accessory/audio composition. The improved library remains within the same scene and the unchanged validated included composition core. Prior transaction/rollback evidence remains historical and preserved; this lighting slice does not claim full accessory/audio/child composition or crash-safe persistence. The denser reduced-tier library stays in the same scene with unchanged composition core, stand and craft-material sources. Prior transaction/rollback evidence remains historical and preserved; this geometry slice does not establish full accessory/audio/child composition or crash-safe persistence. Material and wood-mapping changes remain within the existing composition owners and one scene. Seven core files and the economical book-shell helper match prior evidence. Full accessory/audio/child composition and crash-safe persistence remain open. The whale choice uses the existing composition prepare/frame acknowledgement/apply/cancel/persistence owners. Seven core sources are unchanged; no second renderer or separate save authority is introduced. Portrait choices use the existing whole-composition prepare/frame/apply/cancel/persistence lifecycle. Seven core sources, one scene and the previous golden whale geometry are preserved. Writer study uses the existing whole-composition prepare/render/apply/cancel/save lifecycle; cancellation retains the same library resources, stand and camera. Seven composition owners and existing art sources are preserved. Transient adult manuscript inspection retains the same scene and saved composition; explicit literary navigation closes inspection first. No new persistence owner or camera remount is introduced."
         },
         {
           "id": "S13.CUSTOM-006",
@@ -2131,11 +2133,12 @@
             "docs/mobile/evidence/S13/surface-realism-20260919/result.json",
             "docs/mobile/evidence/S13/three-whales-20260919/result.json",
             "docs/mobile/evidence/S13/ceramic-portraits-20260920/result.json",
-            "docs/mobile/evidence/S13/writer-study-20260920/result.json"
+            "docs/mobile/evidence/S13/writer-study-20260920/result.json",
+            "docs/mobile/evidence/S13/scene-inspection-20260920/result.json"
           ],
-          "commit": "1b7f85e1d7569937d8a16def2225d2f563067459",
-          "lastValidatedAt": "2026-09-19T23:13:26.092Z",
-          "notes": "Compatibility graph. Data-driven customization must preserve the same scene before measured performance and parity checks. Exact local compatibility now validates canonical editions, included stands, quality tiers and the adult application path; unknown or child requests fail closed. This is not the full catalog/rights/device compatibility graph. Whole included selections validate current exact edition/stand/background IDs, adult authority and quality before preparation. Unknown combinations remain denied; this does not complete the full rights/device/child/catalog compatibility graph. Existing exact included composition compatibility and independent globe/camera ownership are retained. Library lighting and placement do not widen child, optional, rights or device authority. Quality-tier changes retain the included library layout and current exact composition compatibility. Geometry simplification does not widen child, optional, rights or installed-device authority. Current tier views preserve the 984 actual book placements and existing composition compatibility. Material refinement does not widen child, optional, rights or installed-device authority. Exact registry/policy and composition validation cover the added adult stand, preserving child/unknown denial and the original default. The library retains all 984 actual book placements across tiers. Exact adult IDs, owner-inclusion policy and composition validation preserve unknown/child denial. Source-bound actual-App observations retain all 984 library placements and show each modeled portrait at High and Economy. Exact adult inclusion preserves unknown/child denial. Actual furniture and 192 book placements remain across High/Balanced/Economy; the previous 984-book library is retained. Hotspot and age-10–17 child review remain open."
+          "commit": "a115e9f11105551ed6e243787e95ffc29bccb1a0",
+          "lastValidatedAt": "2026-09-19T23:51:24.224Z",
+          "notes": "Compatibility graph. Data-driven customization must preserve the same scene before measured performance and parity checks. Exact local compatibility now validates canonical editions, included stands, quality tiers and the adult application path; unknown or child requests fail closed. This is not the full catalog/rights/device compatibility graph. Whole included selections validate current exact edition/stand/background IDs, adult authority and quality before preparation. Unknown combinations remain denied; this does not complete the full rights/device/child/catalog compatibility graph. Existing exact included composition compatibility and independent globe/camera ownership are retained. Library lighting and placement do not widen child, optional, rights or device authority. Quality-tier changes retain the included library layout and current exact composition compatibility. Geometry simplification does not widen child, optional, rights or installed-device authority. Current tier views preserve the 984 actual book placements and existing composition compatibility. Material refinement does not widen child, optional, rights or installed-device authority. Exact registry/policy and composition validation cover the added adult stand, preserving child/unknown denial and the original default. The library retains all 984 actual book placements across tiers. Exact adult IDs, owner-inclusion policy and composition validation preserve unknown/child denial. Source-bound actual-App observations retain all 984 library placements and show each modeled portrait at High and Economy. Exact adult inclusion preserves unknown/child denial. Actual furniture and 192 book placements remain across High/Balanced/Economy; the previous 984-book library is retained. Hotspot and age-10–17 child review remain open. Actual shown-resource readiness gates the projected paper marker and keyboard alternative. Replaced targets, backgrounding and blocked contexts cannot authorize stale actions; child review remains open."
         },
         {
           "id": "S13.CUSTOM-007",
@@ -2150,11 +2153,12 @@
             "docs/mobile/evidence/S13/surface-realism-20260919/result.json",
             "docs/mobile/evidence/S13/three-whales-20260919/result.json",
             "docs/mobile/evidence/S13/ceramic-portraits-20260920/result.json",
-            "docs/mobile/evidence/S13/writer-study-20260920/result.json"
+            "docs/mobile/evidence/S13/writer-study-20260920/result.json",
+            "docs/mobile/evidence/S13/scene-inspection-20260920/result.json"
           ],
-          "commit": "1b7f85e1d7569937d8a16def2225d2f563067459",
-          "lastValidatedAt": "2026-09-19T23:13:26.092Z",
-          "notes": "Bounded cache and explicit GPU disposal. Data-driven customization must preserve the same scene before measured performance and parity checks. Antique decoration now follows explicit app quality tiers. High body bytes match the original, while lower tiers reduce buffers. Focused actual Chrome evidence checks 30 quality switches and scoped geometry disposal; full catalog/stand/skin stress and device budgets remain open. Three adult included procedural stands now use the canonical scene with rendered-preview acknowledgement, apply/cancel, ordered preference recovery and scoped resource disposal. Canonical default is retained. Full composition, child/optional catalogs, device budgets and release acceptance remain open. The included two-level library and three stands now have detailed original geometry, owned procedural craft maps and inspected actual-App/close-up views following the explicit realism requirement. Same-scene preview, actual frame acknowledgement, persistence, context recovery and scoped disposal are evidenced. Formal art/lightmap acceptance, full composition, catalog, child/rights and device gates remain open. The applied atlas source remains leased across preparation and rollback; scene resources retain their existing owners. Scoped source-bound lifecycle/disposal evidence does not replace installed-device stress/soak acceptance. Scoped library geometry/material/light ownership, tier budgets and cleanup have current source-bound checks. Stand envelope and picking ownership are preserved; shared craft maps and stand surface mapping have current scoped checks. Installed-device performance and soak acceptance remain open. Economical compound library volumes preserve layout while reducing per-volume geometry detail. Current source-bound budget/disposal checks and tier views accompany the change. Unchanged stand/craft/core inputs are verified; installed-device performance and soak remain open. Current material/geometry ownership checks, source-bound tier views and preserved builds accompany the surface changes. Density and economical book-shell geometry remain bound to prior evidence; technical success does not establish realistic art, installed-device performance or soak acceptance. Focused factory/original-body/policy/composition checks and two selected adapter cases accompany actual-App and preserved PWA/Android evidence. Deliberately filtered adapter cases are not counted as passes. Installed-device/soak and realistic-art acceptance remain open. Four new ceramic unit cases, two filtered adapter cases, TypeScript and one actual Chrome case accompany inspected images and preserved PWA/Android artifacts. Excluded tests are not passes; artistic likeness and device acceptance remain open. Three new writer-study units, two filtered adapter cases, TypeScript and one actual Chrome case bind inspected images and PWA/Android artifacts. Realism/art, full catalog and installed-device acceptance remain open."
+          "commit": "a115e9f11105551ed6e243787e95ffc29bccb1a0",
+          "lastValidatedAt": "2026-09-19T23:51:24.224Z",
+          "notes": "Bounded cache and explicit GPU disposal. Data-driven customization must preserve the same scene before measured performance and parity checks. Antique decoration now follows explicit app quality tiers. High body bytes match the original, while lower tiers reduce buffers. Focused actual Chrome evidence checks 30 quality switches and scoped geometry disposal; full catalog/stand/skin stress and device budgets remain open. Three adult included procedural stands now use the canonical scene with rendered-preview acknowledgement, apply/cancel, ordered preference recovery and scoped resource disposal. Canonical default is retained. Full composition, child/optional catalogs, device budgets and release acceptance remain open. The included two-level library and three stands now have detailed original geometry, owned procedural craft maps and inspected actual-App/close-up views following the explicit realism requirement. Same-scene preview, actual frame acknowledgement, persistence, context recovery and scoped disposal are evidenced. Formal art/lightmap acceptance, full composition, catalog, child/rights and device gates remain open. The applied atlas source remains leased across preparation and rollback; scene resources retain their existing owners. Scoped source-bound lifecycle/disposal evidence does not replace installed-device stress/soak acceptance. Scoped library geometry/material/light ownership, tier budgets and cleanup have current source-bound checks. Stand envelope and picking ownership are preserved; shared craft maps and stand surface mapping have current scoped checks. Installed-device performance and soak acceptance remain open. Economical compound library volumes preserve layout while reducing per-volume geometry detail. Current source-bound budget/disposal checks and tier views accompany the change. Unchanged stand/craft/core inputs are verified; installed-device performance and soak remain open. Current material/geometry ownership checks, source-bound tier views and preserved builds accompany the surface changes. Density and economical book-shell geometry remain bound to prior evidence; technical success does not establish realistic art, installed-device performance or soak acceptance. Focused factory/original-body/policy/composition checks and two selected adapter cases accompany actual-App and preserved PWA/Android evidence. Deliberately filtered adapter cases are not counted as passes. Installed-device/soak and realistic-art acceptance remain open. Four new ceramic unit cases, two filtered adapter cases, TypeScript and one actual Chrome case accompany inspected images and preserved PWA/Android artifacts. Excluded tests are not passes; artistic likeness and device acceptance remain open. Three new writer-study units, two filtered adapter cases, TypeScript and one actual Chrome case bind inspected images and PWA/Android artifacts. Realism/art, full catalog and installed-device acceptance remain open. Three selected controller cases, TypeScript and one actual Chrome interaction case bind the final source and preserved PWA/Android artifacts. Keyboard/modal focus and RU/EN behavior have scoped evidence; formal screen-reader/device/art acceptance remains open."
         },
         {
           "id": "S13.CUSTOM-008",
@@ -2168,12 +2172,12 @@
         }
       ],
       "lastGreenCommands": [
-        "node docs/mobile/evidence/S13/writer-study-20260920/run-checks.mjs unit a2",
-        "node docs/mobile/evidence/S13/writer-study-20260920/run-checks.mjs static a2",
-        "node docs/mobile/evidence/S13/writer-study-20260920/run-checks.mjs browser a2",
-        "node docs/mobile/evidence/S13/writer-study-20260920/run-pwa.mjs 1b7f85e1d7569937d8a16def2225d2f563067459",
-        "pwsh -File docs/mobile/evidence/S13/writer-study-20260920/build-android.ps1 1b7f85e1d7569937d8a16def2225d2f563067459",
-        "node docs/mobile/evidence/S13/writer-study-20260920/preserve-android.mjs 1b7f85e1d7569937d8a16def2225d2f563067459"
+        "node docs/mobile/evidence/S13/scene-inspection-20260920/run-checks.mjs unit a3",
+        "node docs/mobile/evidence/S13/scene-inspection-20260920/run-checks.mjs static a3",
+        "node docs/mobile/evidence/S13/scene-inspection-20260920/run-checks.mjs browser a4",
+        "node docs/mobile/evidence/S13/scene-inspection-20260920/run-pwa.mjs a115e9f11105551ed6e243787e95ffc29bccb1a0",
+        "pwsh -File docs/mobile/evidence/S13/scene-inspection-20260920/build-android.ps1 a115e9f11105551ed6e243787e95ffc29bccb1a0",
+        "node docs/mobile/evidence/S13/scene-inspection-20260920/preserve-android.mjs a115e9f11105551ed6e243787e95ffc29bccb1a0"
       ],
       "artifacts": [
         "docs/mobile/evidence/S13/edition-preference-20260919/entry.json",
@@ -2231,7 +2235,16 @@
         "docs/mobile/evidence/S13/writer-study-20260920/static-a2/result.json",
         "docs/mobile/evidence/S13/writer-study-20260920/browser-a2/result.json",
         "docs/mobile/evidence/S13/writer-study-20260920/pwa-a1/result.json",
-        "docs/mobile/evidence/S13/writer-study-20260920/android-a1/result.json"
+        "docs/mobile/evidence/S13/writer-study-20260920/android-a1/result.json",
+        "docs/mobile/evidence/S13/scene-inspection-20260920/entry.json",
+        "docs/mobile/evidence/S13/scene-inspection-20260920/result.json",
+        "docs/mobile/evidence/S13/scene-inspection-20260920/starter-set-source-inventory.json",
+        "docs/mobile/evidence/S13/scene-inspection-20260920/unit-a3/result.json",
+        "docs/mobile/evidence/S13/scene-inspection-20260920/static-a3/result.json",
+        "docs/mobile/evidence/S13/scene-inspection-20260920/browser-a4/result.json",
+        "docs/mobile/evidence/S13/scene-inspection-20260920/pwa-a1/result.json",
+        "docs/mobile/evidence/S13/scene-inspection-20260920/android-a1/result.json",
+        "docs/mobile/evidence/S13/scene-inspection-20260920/visual-review.json"
       ],
       "externalBlockers": []
     },
@@ -10868,7 +10881,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Continue the existing full application plan from the reviewed writer-study scene and preserve the single scene, composition lifecycle, current portrait heads, golden whales and 984-book library. Refine remaining visible material, lighting and furniture realism using source-bound images; this scoped implementation does not satisfy the maximum-realism requirement. Complete the manuscript hotspot with keyboard/screen-reader interaction and the catalog's age-10–17 child review before claiming those requirements. Starter Set now has 12 of 29 source-bound items and zero accepted, plus three separate owner additions. Full catalog, accessories/audio, art/lightmaps, child, installed-device budgets, iOS and release acceptance remain open; avoid repeating valid unchanged checks.",
+    "nextAction": "Continue the full application plan with the transient adult manuscript interaction preserved. Keep the one scene, unchanged composition owner, writer-study geometry, golden whales, 984-book library and final one-third-reduced ceramic saucers. Refine remaining visible realism; extend only the next bounded catalog/interaction requirement. Formal screen-reader/device coverage, child ages 10–17 review, full catalog/accessories/audio, art/lightmaps, iOS and release acceptance remain open. Avoid repeating valid checks of unchanged inputs.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -10928,7 +10941,8 @@
       "docs/mobile/evidence/S13/surface-realism-20260919/result.json",
       "docs/mobile/evidence/S13/three-whales-20260919/result.json",
       "docs/mobile/evidence/S13/ceramic-portraits-20260920/result.json",
-      "docs/mobile/evidence/S13/writer-study-20260920/result.json"
+      "docs/mobile/evidence/S13/writer-study-20260920/result.json",
+      "docs/mobile/evidence/S13/scene-inspection-20260920/result.json"
     ],
     "commands": [
       "node scripts/mobile/verify-requirements.mjs",
@@ -10958,7 +10972,8 @@
       "S13 surface-realism-20260919 unit-a1/static-a1/browser-a1 and matching visual/PWA/Android evidence cover the inspected library/stand surface changes. Composition core and economical book helper remain unchanged; 984 actual book placements are retained across tiers. Starter Set remains 11/29 source-bound, zero accepted. Follow current reviewed visible defects; technical checks do not satisfy final realistic art, lightmaps, catalog/child/rights, device, iOS or release gates.",
       "S13 golden three-whales evidence binds the exact final source, selected focused tests, actual-App/close-up inspection and preserved PWA/Android artifacts. Filtered adapter tests are not passes. Original site default, seven composition owners and 984-book library are preserved; final realism/art/device acceptance remains open.",
       "S13 ceramic portrait evidence binds exact source, six selected unit/adapter cases, TypeScript, one actual Chrome case and inspected captures with preserved PWA/Android artifacts. Three owner additions do not alter the 29 mandatory Starter Set identities. Golden whales, seven composition owners and 984-book layout remain preserved; likeness, realism, art and device acceptance remain open.",
-      "S13 writer study: five selected unit/adapter cases, TypeScript, one actual Chrome case, inspected captures and preserved PWA/Android source-bound artifacts. Filtered-out cases are not passes. Keep the 984-book library, current portraits, gold whales and seven composition owners; realism, hotspot, child ages 10–17, devices and full catalog remain open."
+      "S13 writer study: five selected unit/adapter cases, TypeScript, one actual Chrome case, inspected captures and preserved PWA/Android source-bound artifacts. Filtered-out cases are not passes. Keep the 984-book library, current portraits, gold whales and seven composition owners; realism, hotspot, child ages 10–17, devices and full catalog remain open.",
+      "S13 transient manuscript inspection: only the three selected controller cases, final TypeScript/Chrome interaction evidence and preserved source-bound PWA/Android builds are green. Unrelated suites were not rerun or counted; art, child, screen-reader and installed-device acceptance remain open."
     ]
   },
   "requirementsHash": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732",
@@ -12723,6 +12738,14 @@
       "sha256": "5e5be8e9539b5206e6b62870d7e37de4afe9be2d9c6e29456d88bd4eafdc8a6d",
       "sourceCommit": "1b7f85e1d7569937d8a16def2225d2f563067459",
       "status": "WRITER_STUDY_BACKGROUND_SCOPED_INSPECTION",
+      "stageAccepted": false,
+      "releaseReady": false
+    },
+    "s13SceneInspection": {
+      "path": "docs/mobile/evidence/S13/scene-inspection-20260920/result.json",
+      "sha256": "b84826a39041a8e6c3732a59623634667009a95aed2d88b7fda7b24f36959e93",
+      "sourceCommit": "a115e9f11105551ed6e243787e95ffc29bccb1a0",
+      "status": "TRANSIENT_MANUSCRIPT_SCOPED_VALIDATION",
       "stageAccepted": false,
       "releaseReady": false
     }

@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/typescript/bin/tsc",
+    "--noEmit"
+  ],
+  "startedAt": "2026-09-19T23:32:14.484Z",
+  "durationMs": 24689,
+  "exitCode": 2,
+  "logs": {
+    "stdout": {
+      "text": "src/host/PlanetSceneInspectionControls.tsx(119,13): error TS2322: Type 'RefObject<HTMLButtonElement | null>' is not assignable to type 'LegacyRef<HTMLButtonElement> | undefined'.\r\n  Type 'RefObject<HTMLButtonElement | null>' is not assignable to type 'RefObject<HTMLButtonElement>'.\r\n    Type 'HTMLButtonElement | null' is not assignable to type 'HTMLButtonElement'.\r\n      Type 'null' is not assignable to type 'HTMLButtonElement'.\r\n",
+      "sha256": "f905e720d651323feb7f7e7109b4786775655067aa9700039d5b7aad11d6b31c"
+    },
+    "stderr": {
+      "text": "",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}
