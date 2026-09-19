@@ -7,6 +7,7 @@ import {
   useMemo,
   useRef,
   useState,
+  useSyncExternalStore,
   type CSSProperties,
   type HTMLAttributes,
   type ReactNode,
@@ -27,6 +28,8 @@ import { usePlanetGraphicsQuality } from "./host/planetGraphicsQuality";
 import { usePlanetComposition } from "./host/planetComposition";
 import { compositionCustomizationView, readLegacyWebViewGlobeEdition } from "./host/planetCompositionPresentation";
 import PlanetStandControls from "./host/PlanetStandControls";
+import PlanetSceneInspectionControls from "./host/PlanetSceneInspectionControls";
+import { createPlanetSceneInspectionController } from "./host/planetSceneInspection";
 import type { GlobeStandPresentation } from "./planet/globeStands";
 import type { GlobeBackgroundPresentation } from "./planet/globeBackgrounds";
 import { ProductNoticeSlot } from "./host/ProductNoticeHost";
@@ -574,6 +577,17 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
   const globeRuntimeActive = platformServices.kind === "web" || platformVisibility === "active";
   const isPlanetApplication = isControlledWebEdition || platformServices.kind !== "web";
   const [customizationSceneReady, setCustomizationSceneReady] = useState(true);
+  const sceneInspection = useMemo(() => createPlanetSceneInspectionController(), []);
+  const inspectionSnapshot = useSyncExternalStore(sceneInspection.subscribe, sceneInspection.getSnapshot, sceneInspection.getSnapshot);
+  const manuscriptMarkerRef = useRef<HTMLButtonElement>(null);
+  const sceneInspectionBridge = useMemo(() => ({ controller: sceneInspection, markerRef: manuscriptMarkerRef,
+    mode: inspectionSnapshot.mode }), [sceneInspection, inspectionSnapshot.mode]);
+  useEffect(() => () => {
+    // Pure transient controller: invalidate late actions on unmount while
+    // allowing React StrictMode to re-establish the same instance's context.
+    sceneInspection.setContext({ enabled: false, access: "blocked", visible: false, editorOpen: false,
+      appliedBackgroundId: "", displayedBackgroundId: "" });
+  }, [sceneInspection]);
   const graphics = usePlanetGraphicsQuality({
     preferences: platformServices.preferences,
     enabled: isPlanetApplication,
@@ -747,9 +761,10 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     if (nativeReturnRequestedRef.current) closeNativeCollection();
   }, [closeNativeCollection]);
   const cancelNativeNavigation = useCallback(() => {
+    sceneInspection.close();
     clearNativeBookWriterTarget();
     nativeNavigationControllerRef.current?.cancelPending();
-  }, [clearNativeBookWriterTarget]);
+  }, [clearNativeBookWriterTarget, sceneInspection]);
   const globeFocusRequestIdRef = useRef(0);
   const atlasUrlInitializedRef = useRef(false);
   const sectionsMenuCloseTimer = useRef<number | null>(null);
@@ -1898,6 +1913,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
   );
 
   const navigateWriterBreadcrumbWorld = useCallback(() => {
+    sceneInspection.close();
     setSelectedCountry(null);
     setSelectedWriter(null);
     setWriterFocusRequest(null);
@@ -1921,10 +1937,12 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     atlasExperience.stageRef,
     atlasFilter,
     commitAtlasExperienceUrlSelection,
+    sceneInspection,
   ]);
 
   const navigateWriterBreadcrumbCountry = useCallback(() => {
     if (!selectedCountry) return;
+    sceneInspection.close();
     setSelectedWriter(null);
     setWriterFocusRequest(null);
     setGlobeFocusRequest(null);
@@ -1939,6 +1957,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     commitAtlasExperienceUrlSelection,
     focusCountryPresentation,
     selectedCountry,
+    sceneInspection,
   ]);
 
   const showWriterOnGlobe = useCallback(
@@ -1960,6 +1979,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
         type: "SET_SHEET_STATE",
         sheetState: "collapsed",
       });
+      sceneInspection.close();
       globeFocusRequestIdRef.current += 1;
       setGlobeFocusRequest({
         id: globeFocusRequestIdRef.current,
@@ -1969,7 +1989,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
         coordinates,
       });
     },
-    [atlasExperienceDispatch, selectedCountry]
+    [atlasExperienceDispatch, selectedCountry, sceneInspection]
   );
 
   const openCommunity = useCallback((view: CommunityView) => {
@@ -2029,6 +2049,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
       window.history[next.localeOnly ? "replaceState" : "pushState"](state, "", next.relative);
     }
     if (isPlanetApplication && !next.localeOnly) {
+      sceneInspection.close();
       clearNativeBookWriterTarget();
       setPlanetWelcomeSuppressed(true);
       nativeReturnRequestedRef.current = false;
@@ -2059,6 +2080,11 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     handleBack: () => {
       if (globalSearchOpen) { closeGlobalSearch(); return "handled"; }
       if (communityOpen) { closeCommunity(); return "handled"; }
+      const inspectionMode = sceneInspection.getSnapshot().mode;
+      if (inspectionMode !== "closed") {
+        if (inspectionMode === "object") sceneInspection.closeObject(); else sceneInspection.close();
+        return "handled";
+      }
       if (composition.controller.getSnapshot().editor) { closeStandControls(); return "handled"; }
       if ((!isPlanetApplication || nativeCollectionOpen) && nativeBookBackRef.current?.()) return "handled";
       if (nativeCollectionOpen) { closeNativeCollection(); return "handled"; }
@@ -2104,6 +2130,12 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     if (!isPlanetApplication || nativeCollectionOpen) return;
     const escape = (event: KeyboardEvent) => {
       if (event.key !== "Escape" || event.defaultPrevented || nativeGlobeRootRef.current?.hasAttribute("inert")) return;
+      const inspectionMode = sceneInspection.getSnapshot().mode;
+      if (inspectionMode !== "closed") {
+        event.preventDefault();
+        if (inspectionMode === "object") sceneInspection.closeObject(); else sceneInspection.close();
+        return;
+      }
       if (composition.controller.getSnapshot().editor) { event.preventDefault(); closeStandControls(); return; }
       if (closeLargestArchivesOnEscape()) { event.preventDefault(); return; }
       if (atlasSearchOpen) {
@@ -2120,7 +2152,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     return () => window.removeEventListener("keydown", escape);
   }, [isPlanetApplication, nativeCollectionOpen, closeLargestArchivesOnEscape, atlasSearchOpen,
     closeAtlasSearch, atlasExperience.searchButtonRef, atlasExperience.filtersButtonRef,
-    atlasExperience.state.filtersOpen, atlasExperienceDispatch, selectedCountry, closeCountry, composition.controller, closeStandControls]);
+    atlasExperience.state.filtersOpen, atlasExperienceDispatch, selectedCountry, closeCountry, composition.controller, closeStandControls, sceneInspection]);
 
   useLayoutEffect(() => {
     // Suspend an untouched saved choice while another surface owns interaction;
@@ -2128,8 +2160,13 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     const available = isPlanetApplication && !nativeCollectionOpen && !globalSearchOpen && !communityOpen
       && !atlasSearchOpen && !atlasExperience.state.filtersOpen && platformVisibility === "active" && customizationSceneReady;
     composition.controller.setVisibility(available);
+    sceneInspection.setContext({ enabled: isPlanetApplication, access: isPlanetApplication ? "adult" : "blocked",
+      visible: available, editorOpen: composition.snapshot.editor !== null,
+      appliedBackgroundId: composition.snapshot.applied.backgroundId,
+      displayedBackgroundId: composition.snapshot.displayed.backgroundId });
   }, [nativeCollectionOpen, globalSearchOpen, communityOpen, atlasSearchOpen,
-    atlasExperience.state.filtersOpen, platformVisibility, composition.controller, isPlanetApplication, customizationSceneReady]);
+    atlasExperience.state.filtersOpen, platformVisibility, composition.controller, isPlanetApplication, customizationSceneReady,
+    sceneInspection, composition.snapshot.editor, composition.snapshot.applied.backgroundId, composition.snapshot.displayed.backgroundId]);
 
   const readerName =
     user?.user_metadata?.display_name || user?.email?.split("@")[0] || "";
@@ -2691,9 +2728,13 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
                 standCustomization={isPlanetApplication ? standPresentation : undefined}
                 backgroundCustomization={isPlanetApplication ? backgroundPresentation : undefined}
                 composition={isPlanetApplication ? composition : undefined}
-                standControls={isPlanetApplication ? <PlanetStandControls controller={stands.controller}
+                sceneInspection={isPlanetApplication ? sceneInspectionBridge : undefined}
+                standControls={isPlanetApplication ? <><PlanetStandControls controller={stands.controller}
                   snapshot={stands.snapshot} backgroundController={backgrounds.controller}
-                  backgroundSnapshot={backgrounds.snapshot} onClose={closeStandControls} /> : undefined}
+                  backgroundSnapshot={backgrounds.snapshot} onClose={closeStandControls} />
+                  <PlanetSceneInspectionControls controller={sceneInspection} markerRef={manuscriptMarkerRef}
+                    onOpenBooks={() => { cancelNativeNavigation(); requestBookRuntime(); setBookLoadRequested(true); setNativeCollectionOpen(true); }} />
+                </> : undefined}
                 showNobelLaureates={
                   atlasFilter === "nobel" ||
                   nobelSpotlightCountryId === selectedCountry?.id

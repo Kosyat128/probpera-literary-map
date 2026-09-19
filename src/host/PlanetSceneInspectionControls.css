@@ -1,0 +1,154 @@
+.literary-globe .planet-scene-inspection {
+  position: absolute;
+  z-index: 28;
+  left: max(14px, env(safe-area-inset-left));
+  bottom: 180px;
+  color: var(--planet-on-dark, #fff8ed);
+  font: 0.875rem/1.4 var(--sans);
+}
+
+.planet-scene-inspection button,
+.planet-scene-inspection__dialog button,
+.planet-scene-inspection__marker {
+  box-sizing: border-box;
+  min-width: 44px;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--planet-accent, #e2bb60);
+  border-radius: 10px;
+  color: var(--planet-on-dark, #fff8ed);
+  background: var(--planet-chrome, #251724);
+  font: 700 0.875rem/1.4 var(--sans);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.planet-scene-inspection button:focus-visible,
+.planet-scene-inspection__dialog button:focus-visible,
+.planet-scene-inspection__marker:focus-visible {
+  outline: 2px solid var(--planet-accent, #e2bb60);
+  outline-offset: 3px;
+}
+
+.planet-scene-inspection button:disabled,
+.planet-scene-inspection__dialog button:disabled,
+.planet-scene-inspection__marker:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.planet-scene-inspection__panel {
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  bottom: 54px;
+  width: min(310px, calc(100vw - 28px - env(safe-area-inset-left) - env(safe-area-inset-right)));
+  max-height: min(420px, calc(100dvh - 280px));
+  overflow: auto;
+  overscroll-behavior: contain;
+  overflow-wrap: anywhere;
+  padding: 12px;
+  border: 1px solid var(--planet-accent, #e2bb60);
+  border-radius: 14px;
+  background: var(--planet-chrome, #251724);
+  box-shadow: 0 12px 32px rgb(0 0 0 / 28%);
+}
+
+.planet-scene-inspection__heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0 0 8px;
+}
+
+.planet-scene-inspection__heading h2 {
+  margin: 0;
+  color: inherit;
+  font: inherit;
+  font-weight: 700;
+}
+
+.planet-scene-inspection__heading .planet-scene-inspection__close {
+  flex: 0 0 44px;
+  width: 44px;
+  padding: 4px;
+  font-size: 1.5rem;
+}
+
+.planet-scene-inspection__hint {
+  margin: 8px 0 12px;
+  font-size: 0.8125rem;
+}
+
+.planet-scene-inspection__alternative { width: 100%; }
+
+.planet-scene-inspection__marker {
+  z-index: 26;
+  left: 0;
+  top: 0;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 9px;
+  border-radius: 50%;
+  box-shadow: 0 3px 14px rgb(0 0 0 / 35%);
+}
+
+.planet-scene-inspection__dialog {
+  box-sizing: border-box;
+  width: min(460px, calc(100vw - 28px - env(safe-area-inset-left) - env(safe-area-inset-right)));
+  max-width: none;
+  max-height: calc(100dvh - 32px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  margin: auto;
+  padding: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  overflow-wrap: anywhere;
+  border: 1px solid var(--planet-accent, #e2bb60);
+  border-radius: 16px;
+  color: var(--planet-on-dark, #fff8ed);
+  background: var(--planet-chrome, #251724);
+  box-shadow: 0 18px 60px rgb(0 0 0 / 40%);
+  font: 0.9375rem/1.55 var(--sans);
+}
+
+.planet-scene-inspection__dialog::backdrop { background: rgb(12 8 16 / 60%); }
+.planet-scene-inspection__dialog article { padding: 18px; }
+.planet-scene-inspection__dialog p { margin: 12px 0 18px; }
+
+.literary-globe .planet-scene-inspection__dialog [data-planet-scene-object-language] .interface-language-control {
+  display: inline-flex;
+  width: max-content;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  gap: 2px;
+  padding: 3px;
+}
+
+.literary-globe .planet-scene-inspection__dialog [data-planet-scene-object-language] .interface-language-control button {
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  min-height: 44px;
+  padding: 4px;
+  color: var(--planet-on-dark, #fff8ed);
+  background: transparent;
+}
+
+.literary-globe .planet-scene-inspection__dialog [data-planet-scene-object-language] .interface-language-control button.is-active {
+  color: var(--planet-chrome, #251724);
+  background: var(--planet-accent, #e2bb60);
+}
+
+@media (max-width: 980px) {
+  .literary-globe .planet-scene-inspection { top: 198px; bottom: auto; }
+  .planet-scene-inspection__panel {
+    top: 54px;
+    bottom: auto;
+    max-height: max(44px, calc(100dvh - 280px));
+  }
+}

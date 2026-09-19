@@ -18,6 +18,7 @@ import type { GlobeQualityTier } from "./globeQuality";
 import type { GlobeStandPresentation } from "../planet/globeStands";
 import type { GlobeBackgroundPresentation } from "../planet/globeBackgrounds";
 import type { PlanetCompositionPresentation } from "../host/planetCompositionPresentation";
+import type { GlobeSceneInspectionBridge } from "../host/planetSceneInspectionBridge";
 import {
   useNearViewportActivation,
   type DeferredLoadStatus,
@@ -66,6 +67,7 @@ interface Props {
   backgroundCustomization?: GlobeBackgroundPresentation;
   composition?: PlanetCompositionPresentation;
   standControls?: ReactNode;
+  sceneInspection?: GlobeSceneInspectionBridge;
   dataStatus?: DeferredLoadStatus;
   forceLoad?: boolean;
   onLoadIntent?: () => void;
@@ -93,6 +95,7 @@ export default function LiteraryWorldMap({
   backgroundCustomization,
   composition,
   standControls,
+  sceneInspection,
   dataStatus = "ready",
   forceLoad = false,
   onLoadIntent,
@@ -190,6 +193,7 @@ export default function LiteraryWorldMap({
           backgroundCustomization={backgroundCustomization}
           composition={composition}
           standControls={standControls}
+          sceneInspection={sceneInspection}
         />
       ) : (
         <div className="globe-loading" role="status" aria-live="polite">

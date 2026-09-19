@@ -19,6 +19,7 @@ import "../host/planetAppearance.css";
 import PlanetEditionPreferenceStatus from "../host/PlanetEditionPreferenceStatus";
 import { usePlanetEditionPreference } from "../host/planetEditionPreference";
 import type { PlanetCompositionPresentation } from "../host/planetCompositionPresentation";
+import type { GlobeSceneInspectionBridge } from "../host/planetSceneInspectionBridge";
 import { useGlobeCompositionScene, type PreparedCompositionSource } from "./useGlobeCompositionScene";
 import { useGlobeCompositionFrame } from "./useGlobeCompositionFrame";
 import { usePlatformServices } from "../platform/PlatformServices";
@@ -171,6 +172,7 @@ interface Props {
   standControls?: ReactNode;
   backgroundCustomization?: GlobeBackgroundPresentation;
   composition?: PlanetCompositionPresentation;
+  sceneInspection?: GlobeSceneInspectionBridge;
 }
 
 const GLOBE_EDITION_STORAGE_KEY = "probpera.globe-edition.v2";
@@ -1670,6 +1672,7 @@ function GlobeScene({
   atlas,
   standCustomization,
   backgroundCustomization,
+  sceneInspection,
   composition,
   preparedCompositionSource,
   editionId,
@@ -1706,6 +1709,7 @@ function GlobeScene({
   atlas: GlobeAtlas;
   standCustomization?: GlobeStandPresentation;
   backgroundCustomization?: GlobeBackgroundPresentation;
+  sceneInspection?: GlobeSceneInspectionBridge;
   composition?: PlanetCompositionPresentation;
   preparedCompositionSource: PreparedCompositionSource | null;
   editionId: GlobeEditionId;
@@ -1835,6 +1839,7 @@ function GlobeScene({
         ? <GlobeIncludedBackground presentation={compositionFrame.background ?? backgroundCustomization} quality={quality.tier}
             editionId={editionId} standId={standCustomization?.displayedId ?? "canonical"} access="adult"
             active={active} autoRotate={autoRotate} reducedMotion={reducedMotion}
+            inspection={sceneInspection} globeRef={globeObjectRef}
             canonicalBackground={canonicalBackground} />
         : canonicalBackground}
       <ambientLight intensity={palette.ambientIntensity} color={palette.ambient} />
@@ -1946,7 +1951,7 @@ function GlobeScene({
         autoRotate={autoRotate}
         reducedMotion={reducedMotion}
         mobile={mobile}
-        active={active}
+        active={active && sceneInspection?.mode !== "object"}
         interactionEnabled={touchInteractionEnabled}
         viewInsets={viewInsets}
         onInteractionStart={onInteractionStart}
@@ -1991,6 +1996,7 @@ export default function LiteraryGlobe({
   standControls,
   backgroundCustomization,
   composition,
+  sceneInspection,
 }: Props) {
   const quality = resolveGlobeQualityProfile(qualityTier, economical);
   const { language, t, countryName, number } = useInterfaceLanguage();
@@ -2319,7 +2325,7 @@ export default function LiteraryGlobe({
     globeVisible,
     hasSelection: Boolean(selectedCountry),
     hasHover: Boolean(hoveredCountry || hoveredLaureate),
-    interacting: interactionPaused || cameraControlsActive,
+    interacting: interactionPaused || cameraControlsActive || Boolean(sceneInspection && sceneInspection.mode !== "closed"),
     cameraFlightActive,
   });
   const autoRotateActive = autoRotatePolicy.active;
@@ -2336,7 +2342,7 @@ export default function LiteraryGlobe({
           ? t("Автовращение приостановлено во время наведения")
           : cameraFlightActive
             ? t("Автовращение приостановлено во время перелёта камеры")
-        : interactionPaused
+        : interactionPaused || (sceneInspection && sceneInspection.mode !== "closed")
           ? t("Автовращение приостановлено во время взаимодействия")
           : !globeActive
             ? t("Автовращение приостановлено вне экрана")
@@ -2641,13 +2647,19 @@ export default function LiteraryGlobe({
 
   const handleCountrySelect = useCallback(
     (country: Country) => {
+      if (sceneInspection && sceneInspection.controller.getSnapshot().mode !== "closed") return;
       if (selectableCountryIds.has(country.id)) {
         setKeyboardCandidateActive(false);
         onCountrySelect?.(country, "pointer");
       }
     },
-    [onCountrySelect, selectableCountryIds]
+    [onCountrySelect, selectableCountryIds, sceneInspection]
   );
+
+  const handleSceneWriterSelect = useCallback((country: Country, writer: Writer) => {
+    if (sceneInspection && sceneInspection.controller.getSnapshot().mode !== "closed") return;
+    if (onWriterSelect) onWriterSelect(country, writer); else handleCountrySelect(country);
+  }, [sceneInspection, onWriterSelect, handleCountrySelect]);
 
   const handleCountryHover = useCallback(
     (country: Country | null) => {
@@ -2773,6 +2785,9 @@ export default function LiteraryGlobe({
       if (!action) return;
 
       if (action.type === "select") {
+        if (sceneInspection && sceneInspection.controller.getSnapshot().mode !== "closed") {
+          event.preventDefault(); return;
+        }
         const country = keyboardCandidateActive ? viewSample.candidate : null;
         if (!country || !onCountrySelect) return;
         event.preventDefault();
@@ -2789,6 +2804,7 @@ export default function LiteraryGlobe({
       onCountrySelect,
       requestGlobeControl,
       viewSample.candidate,
+      sceneInspection,
     ]
   );
 
@@ -3035,7 +3051,7 @@ export default function LiteraryGlobe({
       onWheelCapture={() => markPrewarmInputActivity(420)}
       onKeyDownCapture={(event) => {
         markPrewarmInputActivity(420);
-        if (sourceDialogRef.current?.open) return;
+        if (sourceDialogRef.current?.open || (sceneInspection && sceneInspection.controller.getSnapshot().mode !== "closed")) return;
         if (event.key !== "Escape" || !touchActivationPolicy.escapeDeactivates) {
           return;
         }
@@ -3047,6 +3063,7 @@ export default function LiteraryGlobe({
       data-globe-edition={renderedEditionId}
       data-globe-stand={standCustomization?.displayedId}
       data-globe-background={isPlanetApplication ? backgroundCustomization?.displayedId ?? DEFAULT_GLOBE_BACKGROUND_ID : undefined}
+      data-planet-scene-inspection={sceneInspection?.mode}
       data-planet-composition-phase={composition?.snapshot.phase}
       data-planet-composition-revision={composition?.snapshot.renderRevision}
       data-globe-edition-rail={editionRailVisible ? "visible" : "hidden"}
@@ -3118,6 +3135,7 @@ export default function LiteraryGlobe({
           standCustomization={standCustomization}
           backgroundCustomization={isPlanetApplication ? backgroundCustomization : undefined}
           composition={composition}
+          sceneInspection={sceneInspection}
           preparedCompositionSource={preparedCompositionSource}
           editionId={renderedEditionId}
           visualStyle={renderedVisualStyle}
@@ -3137,7 +3155,7 @@ export default function LiteraryGlobe({
           onInteractionEnd={handleInteractionEnd}
           showNobelLaureates={showNobelLaureates}
           nobelCountryId={nobelCountryId}
-          onWriterSelect={onWriterSelect}
+          onWriterSelect={handleSceneWriterSelect}
           onLaureateHover={setHoveredLaureate}
           active={globeActive}
           mobile={mobileGlobe}
@@ -3553,8 +3571,7 @@ export default function LiteraryGlobe({
                     id={nobelLaureateRowId(country.id, writer.id)}
                     type="button"
                     onClick={() => {
-                      if (onWriterSelect) onWriterSelect(country, writer);
-                      else handleCountrySelect(country);
+                      handleSceneWriterSelect(country, writer);
                     }}
                   >
                     <span>{writerDisplayName(writer, t("Автор"), language)}</span>

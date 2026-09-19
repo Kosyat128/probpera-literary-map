@@ -1,4 +1,5 @@
-import { Component, useLayoutEffect, useRef, useState, type ReactNode } from "react";
+import { Component, useLayoutEffect, useRef, useState, type ReactNode, type RefObject } from "react";
+import type { Mesh } from "three";
 import { useFrame, useThree } from "@react-three/fiber";
 import {
   checkGlobeBackgroundCompatibility, DEFAULT_GLOBE_BACKGROUND_ID,
@@ -6,6 +7,8 @@ import {
 } from "../planet/globeBackgrounds";
 import { createIncludedGlobeBackground, type OwnedGlobeBackground } from "./globeBackgroundGeometry";
 import type { GlobeQualityTier } from "./globeQuality";
+import type { GlobeSceneInspectionBridge } from "../host/planetSceneInspectionBridge";
+import GlobeSceneInspectionAnchor from "./GlobeSceneInspectionAnchor";
 
 type BackgroundProps = {
   presentation: GlobeBackgroundPresentation;
@@ -17,6 +20,8 @@ type BackgroundProps = {
   autoRotate: boolean;
   reducedMotion: boolean;
   canonicalBackground: ReactNode;
+  inspection?: GlobeSceneInspectionBridge;
+  globeRef?: RefObject<Mesh>;
 };
 
 class BackgroundRenderBoundary extends Component<{
@@ -32,7 +37,7 @@ class BackgroundRenderBoundary extends Component<{
 }
 
 function BackgroundFrame({ presentation, quality, editionId, standId, access,
-  active, autoRotate, reducedMotion, canonicalBackground }: BackgroundProps) {
+  active, autoRotate, reducedMotion, canonicalBackground, inspection, globeRef }: BackgroundProps) {
   const { invalidate, gl, scene, camera } = useThree();
   const [shown, setShown] = useState<{ key: string; resource: OwnedGlobeBackground } | null>(null);
   const resources = useRef(new Map<string, OwnedGlobeBackground>());
@@ -126,10 +131,23 @@ function BackgroundFrame({ presentation, quality, editionId, standId, access,
         callbacks.current.onRendered(owner.revision, owner.id);
       }
       callbacks.current.onFrameRendered?.(owner.revision, owner.id, gl.info.render.frame);
+      inspection?.controller.refreshTarget();
     });
   });
 
-  return shown ? <primitive object={shown.resource.group} dispose={null} /> : canonicalBackground;
+  const manuscript = shown?.resource.group.getObjectByName("writer-study-loose-paper");
+  return shown ? <>
+    <primitive object={shown.resource.group} dispose={null} />
+    {inspection && globeRef && manuscript && <GlobeSceneInspectionAnchor
+      bridge={inspection} resourceKey={shown.resource} target={manuscript} globeRef={globeRef}
+      ready={() => {
+        const owner = ownership.current;
+        return access === "adult" && active && !gl.getContext().isContextLost()
+          && owner?.alive === true && owner.acknowledged && owner.key === shown.key
+          && owner.id === "background.base.writer-study" && callbacks.current.appliedId === owner.id
+          && callbacks.current.displayedId === owner.id;
+      }} />}
+  </> : canonicalBackground;
 }
 
 /** Background ownership never includes the surface, stand, common lights or camera. */
