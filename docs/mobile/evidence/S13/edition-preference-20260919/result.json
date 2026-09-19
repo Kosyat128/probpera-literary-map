@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-19T16:47:20.928Z",
+  "sourceCommit": "8ca9f7e5ccd0fb96ec689e11ab4acae980ff7306",
+  "stage": "S13",
+  "status": "CANONICAL_EDITION_PREFERENCE_RECOVERY_VALIDATED",
+  "pass": true,
+  "entry": {
+    "path": "docs/mobile/evidence/S13/edition-preference-20260919/entry.json",
+    "sha256": "9ae80ab33734ce1e5caab0d3635588f516a683ce94e8a913fb0b814e3601c9a3"
+  },
+  "runs": {
+    "unit": {
+      "path": "docs/mobile/evidence/S13/edition-preference-20260919/unit-a1/result.json",
+      "sha256": "748fc12f543dbda85e62cf301b9066478015357e42c308a3592504c97132fe1c",
+      "tests": {
+        "passed": 204,
+        "failed": 0,
+        "skipped": 0,
+        "failures": []
+      }
+    },
+    "static": {
+      "path": "docs/mobile/evidence/S13/edition-preference-20260919/static-a1/result.json",
+      "sha256": "36e7964e5c4bb958ec0358335c74317ce6018d5eed175780c1372ba2836c6b5e",
+      "tests": null
+    },
+    "browser": {
+      "path": "docs/mobile/evidence/S13/edition-preference-20260919/browser-a1/result.json",
+      "sha256": "686a0da205555db40499aabd659b47670a6701afd932d5ed8dc8839adb667996",
+      "tests": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "errors": []
+      }
+    }
+  },
+  "pwa": {
+    "path": "docs/mobile/evidence/S13/edition-preference-20260919/pwa-a1/result.json",
+    "sha256": "4a4dea39f96335d1998ca79d4fabbda19b4d9f484a1b927ce6d4831442ba4031"
+  },
+  "android": {
+    "path": "docs/mobile/evidence/S13/edition-preference-20260919/android-a1/result.json",
+    "sha256": "2345c802cc1073f8c15883041d45af213aa6ad77fce85a3b6c9fd5eb537f7ba1"
+  },
+  "pwaBuildId": "3a57411a5532d0264752c400d26e2cc8719720ebf45338fb3d566a98cd155e79",
+  "androidBuildId": "485eda7b9b2885d991c6c9e5e13bd04b1a52c35021ed19bc41ab92c6cece9e73",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ep/android-485eda7b/app-dev-debug.apk",
+    "bytes": 67882795,
+    "sha256": "eff9eacbd8d9817e5e0072d2a39c6e8025898b4291fe3feefe9cc7429dab454f"
+  },
+  "includesDossierNavigationCommit": "676d78f3b066f8c879766ddd9c45cd58a57ff5af",
+  "controlledPreferencePorts": true,
+  "actualSceneRenderedInChrome": true,
+  "installedNativeDevice": false,
+  "iosCompiled": false,
+  "fullCompositionTransactionImplemented": false,
+  "grantsEntitlement": false,
+  "productionActionsPerformed": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "nextAction": "Continue S13 engine and composition work without repeating valid persistence checks. Existing antique frame still uses fixed geometry detail in all quality tiers; inspect and implement bounded tier-aware geometry while preserving exact high-quality default, canonical surface/picking and one renderer. Full preview/apply/revert, stands/accessories and child skins remain open. Keep QA packages inactive, D107 deferred and external device/editorial/store gates distinct."
+}

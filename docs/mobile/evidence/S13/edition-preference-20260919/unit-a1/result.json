@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "mode": "unit",
+  "startedAt": "2026-09-19T16:43:47.497Z",
+  "endedAt": "2026-09-19T16:43:49.672Z",
+  "sourceBase": "d4f760602675129c36633a6b1a1589f2286dabf2",
+  "sourceInputs": [
+    {
+      "path": "docs/mobile/evidence/S13/edition-preference-20260919/playwright.config.mjs",
+      "sha256": "925acd6bbf1339165aec45e5afa4ac245680c17d94bd1cd516776920c7cd4a88"
+    },
+    {
+      "path": "docs/mobile/evidence/S13/edition-preference-20260919/run-checks.mjs",
+      "sha256": "a116f7fc8ed4e51abe93402d627956b398095abb63bacc359a23592ad8dc11de"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+    },
+    {
+      "path": "package.json",
+      "sha256": "90b392c205754f838b8bc7c4475bd475936be1078561bb218c437d151177869f"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "sha256": "9807b816bfc441a538457d3ca8cf1764a05efb95a6e03f61dd8ab7ce6bf370dd"
+    },
+    {
+      "path": "src/components/globeAtlas.ts",
+      "sha256": "d61529067d5ce3539d783064be9940b4e31d4b3f83e4dfa1fdf1c1ecaf73ab01"
+    },
+    {
+      "path": "src/components/globeEditions.ts",
+      "sha256": "b7440b6278979deb1e47738572460869202f0d9cf794a144aceac9dbcf8cdd77"
+    },
+    {
+      "path": "src/components/useGlobeStyleState.test.ts",
+      "sha256": "fd2ea5f7f8e56715cff6547ec99b31253f1397003cc51cefa8ec7cc39b762b06"
+    },
+    {
+      "path": "src/components/useGlobeStyleState.ts",
+      "sha256": "ed1c7a7af89aef2f275235842f52b976d6b69f727a36788feb51c54c1610123f"
+    },
+    {
+      "path": "src/host/HostPlatformServices.test.ts",
+      "sha256": "fa5519cf8814013256ce0d4c5f0f7f4d1137df183240d707114bf78d7ce0e79d"
+    },
+    {
+      "path": "src/host/HostPlatformServices.ts",
+      "sha256": "1e5a0a57931f81080c77df8b280b55c8ea44cc9e511cdafc137005865a2474dd"
+    },
+    {
+      "path": "src/host/PlanetEditionPreferenceStatus.css",
+      "sha256": "536d6ffcd603edeaf4b5cebc01c75411292d853b2e62055e4137c55c7f2540bd"
+    },
+    {
+      "path": "src/host/PlanetEditionPreferenceStatus.tsx",
+      "sha256": "0efe82b9f8252dc7a702c103a7107bb4a86039db4224bcffb64e100e21508381"
+    },
+    {
+      "path": "src/host/planetEditionPreference.test.ts",
+      "sha256": "67759fcf6c0b7db2a960100f7f960c753368fd27f7f61f37a3a7a362e3fc3f5b"
+    },
+    {
+      "path": "src/host/planetEditionPreference.ts",
+      "sha256": "63796cbb1fb9486dd1acb88cf632916549416703c250669c9ca41e6286a933a6"
+    },
+    {
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "sha256": "41afc69ed9dd15ac3caf976818de5d2b50749a2cdbfd64e917e93988b0f00143"
+    },
+    {
+      "path": "src/platform/PlatformServices.tsx",
+      "sha256": "6f8aa1040a3fc4bd2717a4ec61ec8a89d48c01610f80b17998a31d35bf6d02c5"
+    },
+    {
+      "path": "src/platform/adapters/web/WebPlatformAdapter.test.ts",
+      "sha256": "4e2c0552fafe87679215d7de58003900db7a0cee4f48268a64bb37a034112da9"
+    },
+    {
+      "path": "src/platform/adapters/web/WebPlatformAdapter.ts",
+      "sha256": "fe692d6c540d1b7321746b032fb3eb0a45aa14ef52675aaf973673591f6d7735"
+    },
+    {
+      "path": "src/platform/distribution.ts",
+      "sha256": "c2947a4631d4b72392de12ab35dd8b30254ad3f612396507739067b1a1d6cf0b"
+    },
+    {
+      "path": "src/platform/ports.ts",
+      "sha256": "c9b16d8f56263dfbc8725cc8296989076d5a485a74ef106954f9b468a21fb65d"
+    },
+    {
+      "path": "tests/pwa/globe-edition-preference.spec.mjs",
+      "sha256": "aa57704b97f72453ecf14ecee93abd3ba3a6e0be37668ecc9c64c5f2e48ee48a"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "8d51a8c9266fe83bf17c076b51672753b3750a17520cd0d2c28a90cb8b21e0d6"
+    },
+    {
+      "path": "vitest.config.ts",
+      "sha256": "5c1e90985e77b35599e5bdaf77c74a1166949ec9c4f45d1c5f926c3f53bef90e"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "executions": [
+    {
+      "name": "unit",
+      "exitCode": 0,
+      "durationMs": 2087
+    }
+  ],
+  "tests": {
+    "passed": 204,
+    "failed": 0,
+    "skipped": 0,
+    "failures": []
+  },
+  "pass": true,
+  "releaseReady": false,
+  "deviceTested": false,
+  "productionActivation": false
+}

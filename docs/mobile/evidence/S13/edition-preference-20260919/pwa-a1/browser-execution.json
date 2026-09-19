@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S13/edition-preference-20260919/pwa.config.mjs"
+  ],
+  "exitCode": 0,
+  "durationMs": 34091,
+  "stdout": "\nRunning 1 test using 1 worker\n\n\n\n[1/1] tests\\pwa\\downloads-artifact.spec.mjs:4:1 › built PWA keeps bilingual downloads on the same globe after cold offline navigation\n  1 passed (33.3s)\n",
+  "stderr": "(node:12648) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+}

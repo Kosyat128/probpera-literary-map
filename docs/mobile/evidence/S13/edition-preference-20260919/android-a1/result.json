@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "kind": "android-edition-preference-dev-apk",
+  "sourceCommit": "8ca9f7e5ccd0fb96ec689e11ab4acae980ff7306",
+  "buildId": "485eda7b9b2885d991c6c9e5e13bd04b1a52c35021ed19bc41ab92c6cece9e73",
+  "sourceInputsSha256": "6dca5fc4349e4f9f3e18d193ee4a58a9290b03717345d4a7e0e64555acd84874",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ep/android-485eda7b/app-dev-debug.apk",
+    "bytes": 67882795,
+    "sha256": "eff9eacbd8d9817e5e0072d2a39c6e8025898b4291fe3feefe9cc7429dab454f"
+  },
+  "artifact": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-ep/android-485eda7b/runtime",
+    "sha256": "1baacd15ba65db812521d09c8542ae919a5e10e21a49212d31d18c8c11c21d8d",
+    "files": 1403,
+    "bytes": 72354323
+  },
+  "checks": {
+    "strictRuntimeAudit": "docs/mobile/evidence/S13/edition-preference-20260919/android-a1/native-artifact-audit.json",
+    "binaryAudit": "docs/mobile/evidence/S13/edition-preference-20260919/android-a1/android-dev-apk-verification.json",
+    "build": "docs/mobile/evidence/S13/edition-preference-20260919/android-a1/build-run.json",
+    "exactCopiedBytes": true,
+    "priorAndroidApkAndEntireRuntimePreserved": true,
+    "bundledAssetsMatched": 1402,
+    "localContentStoreDex": "classes10.dex"
+  },
+  "priorAndroid": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s11-di/android-8d8cb1ec/app-dev-debug.apk",
+  "nativeExecutionVerified": false,
+  "iosCompiled": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false,
+  "canonicalOwnerArchiveSyncPerformed": false
+}

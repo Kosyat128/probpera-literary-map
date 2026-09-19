@@ -3,9 +3,9 @@
   "repository": "Kosyat128/probpera-literary-map",
   "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
-  "headSha": "c6609b709bb5a05fb254dff1ddd36ae8ec195d37",
+  "headSha": "8ca9f7e5ccd0fb96ec689e11ab4acae980ff7306",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-19T16:29:46.086Z",
+  "updatedAt": "2026-09-19T16:47:20.928Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -2048,7 +2048,7 @@
     {
       "id": "S13",
       "name": "Skins/stands/accessories",
-      "status": "NOT_STARTED",
+      "status": "IN_PROGRESS",
       "criteria": [
         {
           "id": "S13.acceptance",
@@ -2084,11 +2084,13 @@
         },
         {
           "id": "S13.CUSTOM-003",
-          "status": "OPEN",
-          "evidence": [],
-          "commit": null,
-          "lastValidatedAt": null,
-          "notes": "Transactional same-runtime preview/apply/revert. Data-driven customization must preserve the same scene before measured performance and parity checks."
+          "status": "IN_PROGRESS",
+          "evidence": [
+            "docs/mobile/evidence/S13/edition-preference-20260919/result.json"
+          ],
+          "commit": "8ca9f7e5ccd0fb96ec689e11ab4acae980ff7306",
+          "lastValidatedAt": "2026-09-19T16:47:20.928Z",
+          "notes": "Transactional same-runtime preview/apply/revert. Data-driven customization must preserve the same scene before measured performance and parity checks. Existing edition persistence now follows the app platform port, successful render and explicit-intent fences. Local save recovery preserves one scene. This does not implement the full composition preview/apply/revert transaction."
         },
         {
           "id": "S13.CUSTOM-006",
@@ -2115,8 +2117,19 @@
           "notes": "30-switch stress. Data-driven customization must preserve the same scene before measured performance and parity checks."
         }
       ],
-      "lastGreenCommands": [],
-      "artifacts": [],
+      "lastGreenCommands": [
+        "node docs/mobile/evidence/S13/edition-preference-20260919/run-checks.mjs unit a1",
+        "node docs/mobile/evidence/S13/edition-preference-20260919/run-checks.mjs static a1",
+        "node docs/mobile/evidence/S13/edition-preference-20260919/run-checks.mjs browser a1",
+        "node docs/mobile/evidence/S13/edition-preference-20260919/run-pwa.mjs 8ca9f7e5ccd0fb96ec689e11ab4acae980ff7306",
+        "pwsh -File docs/mobile/evidence/S13/edition-preference-20260919/build-android.ps1 8ca9f7e5ccd0fb96ec689e11ab4acae980ff7306"
+      ],
+      "artifacts": [
+        "docs/mobile/evidence/S13/edition-preference-20260919/entry.json",
+        "docs/mobile/evidence/S13/edition-preference-20260919/result.json",
+        "docs/mobile/evidence/S13/edition-preference-20260919/pwa-a1/result.json",
+        "docs/mobile/evidence/S13/edition-preference-20260919/android-a1/result.json"
+      ],
       "externalBlockers": []
     },
     {
@@ -10752,7 +10765,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Continue runtime customization around the persistent canonical globe: inspect S13 bindings, preserve default edition and existing selections, implement the next bounded skin/stand interaction gap and validate affected behavior only. Batch runtime artifact refresh with the pending dossier navigation fix. Keep S12 full Starter Set acceptance open, D107 deferred, QA inactive and production trust empty.",
+    "nextAction": "Continue S13 engine and composition work without repeating valid persistence checks. Existing antique frame still uses fixed geometry detail in all quality tiers; inspect and implement bounded tier-aware geometry while preserving exact high-quality default, canonical surface/picking and one renderer. Full preview/apply/revert, stands/accessories and child skins remain open. Keep QA packages inactive, D107 deferred and external device/editorial/store gates distinct.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -10800,7 +10813,9 @@
       "docs/mobile/evidence/S11/download-inspection-20260919/result.json",
       "docs/mobile/evidence/S11/dossier-navigation-20260919/result.json",
       "docs/mobile/evidence/S12/starter-set-20260919/entry.json",
-      "docs/mobile/evidence/S12/starter-set-20260919/result.json"
+      "docs/mobile/evidence/S12/starter-set-20260919/result.json",
+      "docs/mobile/evidence/S13/edition-preference-20260919/entry.json",
+      "docs/mobile/evidence/S13/edition-preference-20260919/result.json"
     ],
     "commands": [
       "node scripts/mobile/verify-requirements.mjs",
@@ -10819,7 +10834,8 @@
       "Staged content semantic inspection: focused units, TypeScript and actual cache/intake of both preserved S08 generations are recorded in staged-content-20260919/result.json. No archive regeneration or artifact rebuild occurred.",
       "download-inspection-20260919: 54 units, TypeScript, actual signed S08 package in offline Chrome RU/EN, and exact PWA/Android artifacts passed. Keep prior attempts/artifacts. Staged inspection is not dataset activation.",
       "dossier-navigation-20260919 records focused late-layout/failed-layout navigation, saved-book position and account-scope checks. No runtime artifact rebuild in this slice.",
-      "S12 starter-set-20260919: 11 units, TypeScript and source inventory pass. Inventory INCOMPLETE is expected, not Starter Set acceptance; no app activation or entitlement grant."
+      "S12 starter-set-20260919: 11 units, TypeScript and source inventory pass. Inventory INCOMPLETE is expected, not Starter Set acceptance; no app activation or entitlement grant.",
+      "S13 edition-preference-20260919 contains focused preference race/recovery and actual Chrome scene evidence, plus exact PWA/Android artifacts including dossier navigation. Best-effort acceptance is not durability or installed-device evidence."
     ]
   },
   "requirementsHash": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732",
@@ -10935,6 +10951,12 @@
         "reason": "Matrix69 permits documented parallel-safe entry. This local inclusion policy and honest Starter Set inventory grant no license, activate no content and depend on no outstanding editorial, native-device, child or store acceptance. First-open stage remains S03.",
         "evidence": [
           "docs/mobile/evidence/S12/starter-set-20260919/entry.json"
+        ]
+      },
+      "S13": {
+        "reason": "Matrix69 permits documented parallel-safe entry. Persistence of existing canonical editions and truthful save recovery are independent of unimplemented stands, accessories, full Starter Set acceptance and external editorial/native/store gates. No new assets, licenses or entitlement authority are introduced.",
+        "evidence": [
+          "docs/mobile/evidence/S13/edition-preference-20260919/entry.json"
         ]
       }
     },
@@ -12490,6 +12512,14 @@
       "sha256": "b4976be7ee18ad4d86073d38652da5aa85bed8acc4198a2ae66075d3f8702a82",
       "sourceCommit": "c6609b709bb5a05fb254dff1ddd36ae8ec195d37",
       "status": "INCLUSION_POLICY_AND_PARTIAL_SOURCE_INVENTORY_VALIDATED",
+      "stageAccepted": false,
+      "releaseReady": false
+    },
+    "s13EditionPreference": {
+      "path": "docs/mobile/evidence/S13/edition-preference-20260919/result.json",
+      "sha256": "9d6c95d0a8dd5aaabb6f31509f5ff0eef1a95b83e300e3d537fefc42f8f6c045",
+      "sourceCommit": "8ca9f7e5ccd0fb96ec689e11ab4acae980ff7306",
+      "status": "CANONICAL_EDITION_PREFERENCE_RECOVERY_VALIDATED",
       "stageAccepted": false,
       "releaseReady": false
     }

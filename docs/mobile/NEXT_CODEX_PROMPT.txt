@@ -1,3 +1,16 @@
+<!-- s13-edition-preference-20260919:begin -->
+Source 8ca9f7e5 connects existing edition preferences to the app
+platform port with explicit-intent fencing, rendered-success saves and RU/EN retry.
+Focused unit/adapter, TypeScript and actual Chrome checks pass. Failed confirmation
+keeps the rendered globe; timeout does not pretend to cancel started native writes.
+PWA 3a57411a and Android/dev 485eda7b include this slice
+and dossier navigation. APK SHA256: eff9eacbd8d9817e5e0072d2a39c6e8025898b4291fe3feefe9cc7429dab454f.
+Evidence: evidence/S13/edition-preference-20260919/result.json.
+S13 IN_PROGRESS through documented parallel-safe entry. Full composition, complete
+Starter Set, installed devices, iOS and release acceptance stay open. Only S00-S02
+accepted; first open S03; releaseReady false. Continue frame geometry tiers.
+<!-- s13-edition-preference-20260919:end -->
+
 <!-- s12-starter-set-20260919:begin -->
 Source c6609b70 defines included Base Edition identities and rejects
 optional-SKU mappings for all mandatory and grandfathered items. Eleven units,

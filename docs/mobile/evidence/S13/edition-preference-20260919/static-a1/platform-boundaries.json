@@ -1,0 +1,19 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/mobile/platform-boundaries.mjs"
+  ],
+  "startedAt": "2026-09-19T16:43:42.547Z",
+  "durationMs": 6101,
+  "exitCode": 0,
+  "logs": {
+    "stdout": {
+      "text": "{\n  \"pass\": true,\n  \"sourceFileCount\": 918,\n  \"webReachableFileCount\": 535,\n  \"auditedRuntimeFileCount\": 547,\n  \"importCount\": 2074,\n  \"webEntries\": [\n    \"src/main.tsx\"\n  ],\n  \"adapterRoots\": [\n    \"src/platform/adapters/android\",\n    \"src/platform/adapters/ios\"\n  ],\n  \"canonicalSceneFiles\": {\n    \"LiteraryWorldMap\": \"src/components/LiteraryWorldMap.tsx\",\n    \"LiteraryGlobe\": \"src/components/LiteraryGlobe.tsx\",\n    \"GlobeCameraRig\": \"src/components/GlobeCameraRig.tsx\"\n  },\n  \"canvasOwnerFiles\": [\n    \"src/components/LiteraryGlobe.tsx\",\n    \"src/components/BookShelfSceneCanvas.tsx\"\n  ],\n  \"canvasSites\": [\n    {\n      \"file\": \"src/components/BookShelfSceneCanvas.tsx\",\n      \"line\": 503\n    },\n    {\n      \"file\": \"src/components/LiteraryGlobe.tsx\",\n      \"line\": 3073\n    }\n  ],\n  \"nativeConfigs\": [\n    \"capacitor.config.json\"\n  ],\n  \"findings\": [],\n  \"limitations\": [\n    \"Static source ownership does not prove a single active globe/Canvas/renderer or preserved runtime identity; browser and native tests must verify those invariants.\",\n    \"Third-party package contents, bundler plugins, generated artifacts, injected scripts and installed native binaries require separate build/artifact audits.\",\n    \"Dependency resolution/loader enforcement covers reachable web and native-adapter runtime graphs; inactive source is still scanned for native SDK imports and duplicate scene ownership.\",\n    \"Computed module loaders and non-static native runtime configuration fail closed; this is not a general JavaScript data-flow proof.\"\n  ]\n}\n",
+      "sha256": "86da6e4bf221452e80071cbd02ffb3d9f2a3cc43264f69db9e9468c0e67b2cb8"
+    },
+    "stderr": {
+      "text": "",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

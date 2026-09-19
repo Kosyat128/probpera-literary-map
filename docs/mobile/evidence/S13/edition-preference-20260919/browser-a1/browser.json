@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S13/edition-preference-20260919/playwright.config.mjs"
+  ],
+  "startedAt": "2026-09-19T16:44:13.757Z",
+  "durationMs": 26693,
+  "exitCode": 0,
+  "logs": {
+    "stdout": {
+      "text": "\nRunning 2 tests using 1 worker\n\n\n\n[1/2] tests\\pwa\\globe-edition-preference.spec.mjs:264:1 › failed edition saving retains the actual scene and texture, offers RUEN retry, and restores the saved edition after cold reload\n[2/2] tests\\pwa\\globe-edition-preference.spec.mjs:319:1 › late preference hydration cannot replace an explicit edition choice in the persistent canonical scene\n  2 passed (26.0s)\n",
+      "sha256": "2a60ffe4a9ddc98345c357afdd9c2b483bfc748a473bc90b08117ffc5abf54ed"
+    },
+    "stderr": {
+      "text": "(node:15764) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "sha256": "17bdb627762af49f913379e6900bb2f5145b842aa88814e2aa066bc9def9d971"
+    }
+  }
+}

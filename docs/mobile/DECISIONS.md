@@ -754,3 +754,10 @@
   products. A candidate SKU, alias or UI flag grants no entitlement. The inventory
   records actual canonical sources and assets separately from full acceptance;
   missing Starter Set items and rights/bilingual/child/platform gates stay open.
+
+- D129: Existing edition preferences use the application platform port. Explicit
+  intent supersedes late hydration; only the rendered successful target may save.
+  Save failure preserves that texture and offers RU/EN retry. Started port writes
+  remain ordered after confirmation timeout and remount; no cancellation or
+  durable-storage guarantee is inferred. This is partial S13 persistence work,
+  not the full composition transaction or a new catalog/entitlement authority.

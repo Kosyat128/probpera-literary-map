@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-19T16:35:23.062Z",
+  "stage": "S13",
+  "checkpoint": "d4f760602675129c36633a6b1a1589f2286dabf2",
+  "entryType": "documented-parallel-safe",
+  "route": "S11-S15",
+  "reason": "Matrix69 permits documented parallel-safe entry. Persistence of existing canonical editions and truthful save recovery are independent of unimplemented stands, accessories, full Starter Set acceptance and external editorial/native/store gates. No new assets, licenses or entitlement authority are introduced.",
+  "manifestSha256": "bb759162674bafe0a9baa87ee6adffd41527d6e38e979f5cf6a6d0445535acd8",
+  "dependencies": [
+    {
+      "path": "docs/mobile/requirements/v12/17_SKINS_STANDS_ACCESSORIES_ENGINE_RU.md",
+      "sha256": "d84657d718c24a69ce14ddfc6d1e9dc7d6778bf4e58b8be24d9d460249b51741"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/36_SKIN_STAND_ACCESSORY_CATALOG.csv",
+      "sha256": "7f35bf0f2c8f27c4d87839814c0bd5772ccf92b02c052eb05e76cda1c6f3eb72"
+    },
+    {
+      "path": "docs/mobile/requirements/v12/09_BASE_EDITION_STARTER_SET_RU.md",
+      "sha256": "ac72ef546b5af93b7d5c7ae070801b92b8a0d67fd47a7f26c4c605c607126d5e"
+    }
+  ],
+  "routingNote": "S13 matrix customization bindings require engine17/catalog36 beyond the coarse S11-S15 route; only direct dependencies were read.",
+  "scope": [
+    "Existing edition preference through platform port in app",
+    "Late hydration and stale persistence fencing",
+    "Truthful RU/EN retry preserving rendered texture and one scene"
+  ],
+  "releaseReady": false,
+  "stageAccepted": false,
+  "productionActionsPerformed": false
+}
