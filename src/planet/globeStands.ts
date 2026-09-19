@@ -1,6 +1,8 @@
 import { baseEditionPolicy } from "./baseEditionPolicy";
 
+export const THREE_WHALES_GLOBE_STAND_ID = "stand.base.three-whales" as const;
 export const INCLUDED_GLOBE_STAND_IDS = Object.freeze([
+  THREE_WHALES_GLOBE_STAND_ID,
   "stand.base.museum", "stand.base.wood", "stand.base.book-stack",
 ] as const);
 export type IncludedGlobeStandId = typeof INCLUDED_GLOBE_STAND_IDS[number];
@@ -15,9 +17,13 @@ export const GLOBE_STAND_IDS: readonly GlobeStandId[] = Object.freeze([
 export const INCLUDED_GLOBE_STANDS = Object.freeze(INCLUDED_GLOBE_STAND_IDS.map(id => Object.freeze({
   id,
   commercialAvailability: "included-in-base" as const,
-  provenance: "authored-in-project" as const,
-  source: "src/components/globeStandGeometry.ts",
-  contentVersion: 2,
+  provenance: id === THREE_WHALES_GLOBE_STAND_ID ? "canonical-site-derived" as const : "authored-in-project" as const,
+  source: id === THREE_WHALES_GLOBE_STAND_ID
+    ? "src/components/globeWhaleStandGeometry.ts" : "src/components/globeStandGeometry.ts",
+  sourceItemId: id === THREE_WHALES_GLOBE_STAND_ID ? "canonical-globe" : id,
+  canonicalSource: id === THREE_WHALES_GLOBE_STAND_ID ? "src/components/LiteraryGlobe.tsx#MythicGlobeFrame" : null,
+  contentVersion: id === THREE_WHALES_GLOBE_STAND_ID ? 1 : 2,
+  iapSkuAllowed: false,
   supportedAccess: "adult" as const,
   childReviewed: false,
   rightsReviewed: false,
@@ -26,9 +32,12 @@ export const INCLUDED_GLOBE_STANDS = Object.freeze(INCLUDED_GLOBE_STAND_IDS.map(
 })));
 
 export function isIncludedGlobeStandId(value: unknown): value is IncludedGlobeStandId {
-  if (!INCLUDED_GLOBE_STAND_IDS.some(id => id === value)) return false;
+  // Descriptor membership is the exact local allowlist. The independent base
+  // policy must also resolve this ID to its declared included source identity.
+  const descriptor = INCLUDED_GLOBE_STANDS.find(stand => stand.id === value);
+  if (!descriptor) return false;
   const inclusion = baseEditionPolicy.classify(value);
-  return inclusion.included && inclusion.canonicalId === value;
+  return inclusion.included && inclusion.canonicalId === descriptor.sourceItemId;
 }
 export function isGlobeStandId(value: unknown): value is GlobeStandId {
   return value === DEFAULT_GLOBE_STAND_ID || isIncludedGlobeStandId(value);

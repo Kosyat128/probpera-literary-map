@@ -1,9 +1,10 @@
 import * as THREE from "three";
 import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
 import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
-import { isIncludedGlobeStandId, type IncludedGlobeStandId } from "../planet/globeStands";
+import { THREE_WHALES_GLOBE_STAND_ID, isIncludedGlobeStandId, type IncludedGlobeStandId } from "../planet/globeStands";
 import { createGlobeCraftMaterials } from "./globeCraftMaterials";
 import { createTurnedWoodAtlas } from "./globeTurnedWoodAtlas";
+import { createWhaleStandGeometry } from "./globeWhaleStandGeometry";
 import type { GlobeQualityTier } from "./globeQuality";
 
 export interface OwnedGlobeStand {
@@ -17,10 +18,18 @@ const detail = Object.freeze({
   economy: Object.freeze({ radial: 40, bevel: 1, tube: 4, engravings: 20, pageEdges: 4, spineBands: 3 }),
 });
 
-/** Original crafted supports. All transformed vertices fit r<=.55, y[-1.44,-1.03]. */
+/** Original crafted supports. Museum/wood/books fit r<=.55, y[-1.44,-1.03].
+ * The three-whale derivative retains its separate, larger canonical envelope. */
 export function createIncludedGlobeStand(id: IncludedGlobeStandId, quality: GlobeQualityTier): OwnedGlobeStand {
   if (!isIncludedGlobeStandId(id) || !Object.prototype.hasOwnProperty.call(detail, quality)) {
     throw new Error("Invalid included globe stand");
+  }
+  if (id === THREE_WHALES_GLOBE_STAND_ID) {
+    const resource = createWhaleStandGeometry(quality);
+    resource.group.name = `included-globe-stand:${id}`;
+    resource.group.userData = { ...resource.group.userData, standId: id,
+      provenance: "canonical-site-derived", qualityTier: quality };
+    return resource;
   }
   const budget = detail[quality];
   const group = new THREE.Group();

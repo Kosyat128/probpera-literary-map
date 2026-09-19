@@ -171,4 +171,8 @@ export function createBaseEditionPolicy(aliases: readonly BaseEditionAlias[] = [
   });
 }
 
-export const baseEditionPolicy = createBaseEditionPolicy();
+// Explicit owner request: the existing site's three-whale support becomes a
+// selectable derivative of canonical-globe. The 29 Starter Set rows stay fixed.
+export const baseEditionPolicy = createBaseEditionPolicy([
+  { alias: "stand.base.three-whales", includedItemId: "canonical-globe" },
+]);

@@ -19,7 +19,7 @@ export const planetStandCopy = {
       apply: "Применить", cancel: "Отмена", saving: "Сохраняем выбор…",
       saveFailed: "Сохранение не подтверждено. Подставка применена, но при следующем запуске выбор может сброситься.",
       retry: "Повторить сохранение",
-      names: { canonical: "Фирменное оформление", "stand.base.museum": "Музейная", "stand.base.wood": "Деревянная", "stand.base.book-stack": "Стопка книг" },
+      names: { canonical: "Фирменное оформление", "stand.base.three-whales": "Три кита", "stand.base.museum": "Музейная", "stand.base.wood": "Деревянная", "stand.base.book-stack": "Стопка книг" },
     },
     en: {
       heading: "Globe stand", toggle: "Stands", close: "Close", label: "Stand appearance",
@@ -29,7 +29,7 @@ export const planetStandCopy = {
       apply: "Apply", cancel: "Cancel", saving: "Saving your choice…",
       saveFailed: "Saving could not be confirmed. The stand is applied, but your choice may reset the next time you open the app.",
       retry: "Try saving again",
-      names: { canonical: "Original frame", "stand.base.museum": "Museum", "stand.base.wood": "Wooden", "stand.base.book-stack": "Stack of books" },
+      names: { canonical: "Original frame", "stand.base.three-whales": "Three whales", "stand.base.museum": "Museum", "stand.base.wood": "Wooden", "stand.base.book-stack": "Stack of books" },
     },
   },
 } as const;
