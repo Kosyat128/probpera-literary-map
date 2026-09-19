@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S13/antique-detail-20260919/playwright.config.mjs"
+  ],
+  "startedAt": "2026-09-19T16:55:14.210Z",
+  "durationMs": 14575,
+  "exitCode": 0,
+  "logs": {
+    "stdout": {
+      "text": "\nRunning 1 test using 1 worker\n\n\n\n[1/1] tests\\pwa\\globe-antique-detail.spec.mjs:274:1 › antique detail tiers reduce actual buffers and dispose superseded shared bodies through 30 quality changes without replacing the canonical scene\n  1 passed (13.9s)\n",
+      "sha256": "3b78a0d9d420e008aac50521ee1e97256402eb38b5cff4534e7189b854374e86"
+    },
+    "stderr": {
+      "text": "(node:31676) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "sha256": "7ed950deafb07c422d321531e74f8a0c3f6cc395e3afb4cdf9702359e220fe2a"
+    }
+  }
+}

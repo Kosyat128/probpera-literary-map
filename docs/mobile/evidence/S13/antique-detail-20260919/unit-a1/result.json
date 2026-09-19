@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "mode": "unit",
+  "startedAt": "2026-09-19T16:52:37.590Z",
+  "endedAt": "2026-09-19T16:52:39.080Z",
+  "sourceBase": "92fcf0fb1aed61fe6a23974cc5be3a5ca92d038e",
+  "sourceInputs": [
+    {
+      "path": "docs/mobile/evidence/S13/antique-detail-20260919/playwright.config.mjs",
+      "sha256": "77b81a38feab27f3d806c0251dbc1f7bc87302073ec536de20980123362732ac"
+    },
+    {
+      "path": "docs/mobile/evidence/S13/antique-detail-20260919/run-checks.mjs",
+      "sha256": "05773f8a691453bbb63ca62b01cffe24ae12ac29908c184a0d7b8b7271e443df"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+    },
+    {
+      "path": "package.json",
+      "sha256": "90b392c205754f838b8bc7c4475bd475936be1078561bb218c437d151177869f"
+    },
+    {
+      "path": "src/components/GlobeCameraRig.tsx",
+      "sha256": "6938d120c7a49248398b385640cc77d96c9f3b33cbd6c3b4ef9881ef89e2ec19"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "sha256": "2536ba13f076bea134b541370caea279bd748c12b808002892c8d659a19c075f"
+    },
+    {
+      "path": "src/components/globeAntiqueGeometry.test.ts",
+      "sha256": "1c5e106ed4d001862ea4fd4589f21101e2e952df8bf6d2fa59c8db4b0adecc21"
+    },
+    {
+      "path": "src/components/globeAntiqueGeometry.ts",
+      "sha256": "590a4e0ea5cb92251d7cccac3c0d6d28a441e82e6520fd17fe5d71adffb95538"
+    },
+    {
+      "path": "src/components/globeQuality.test.ts",
+      "sha256": "43d74ecd2f85de020082a7a24f45b2b17f1c1278e6dcc94a75316d324e46da18"
+    },
+    {
+      "path": "src/components/globeQuality.ts",
+      "sha256": "b52e0221ec8bcac17d640e26378bc0304521316ca34e203313d2b63f9c3b28c9"
+    },
+    {
+      "path": "src/host/HostPlatformServices.ts",
+      "sha256": "1e5a0a57931f81080c77df8b280b55c8ea44cc9e511cdafc137005865a2474dd"
+    },
+    {
+      "path": "src/host/PlanetGraphicsSettings.tsx",
+      "sha256": "6332bec397775901379ec3776548aaf610b6e7cde094badd5672d09436b24e4f"
+    },
+    {
+      "path": "src/host/planetGraphicsQuality.ts",
+      "sha256": "5b8cc15796b0a2e0c3e6222ba6c7f0af2ffa2102d7a30000891f2435906d79f2"
+    },
+    {
+      "path": "src/platform/adapters/web/WebPlatformAdapter.ts",
+      "sha256": "fe692d6c540d1b7321746b032fb3eb0a45aa14ef52675aaf973673591f6d7735"
+    },
+    {
+      "path": "tests/pwa/globe-antique-detail.spec.mjs",
+      "sha256": "c302fceac9cd826cc0988cb7b0fd7369d8124d087f1dd7f805020df195a946e7"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "8d51a8c9266fe83bf17c076b51672753b3750a17520cd0d2c28a90cb8b21e0d6"
+    },
+    {
+      "path": "vitest.config.ts",
+      "sha256": "5c1e90985e77b35599e5bdaf77c74a1166949ec9c4f45d1c5f926c3f53bef90e"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "executions": [
+    {
+      "name": "unit",
+      "exitCode": 0,
+      "durationMs": 1401
+    }
+  ],
+  "tests": {
+    "passed": 11,
+    "failed": 0,
+    "skipped": 0,
+    "failures": []
+  },
+  "pass": true,
+  "releaseReady": false,
+  "deviceTested": false,
+  "productionActivation": false
+}

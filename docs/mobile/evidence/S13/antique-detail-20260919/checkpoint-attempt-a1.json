@@ -1,0 +1,9 @@
+{
+  "pass": false,
+  "phase": "checkpoint-source-validation",
+  "path": "tests/pwa/globe-antique-detail.spec.mjs",
+  "recordedSha256": "c302fceac9cd826cc0988cb7b0fd7369d8124d087f1dd7f805020df195a946e7",
+  "actualSha256": "056ab2b8b48e7cc83f156cd1a0557aecd0727a10401273563701783cacb5204e",
+  "checkpointWritten": false,
+  "resolution": "The common runner captured the still-authored browser fixture during unit/static checks that do not execute it. Preserve the historical hashes, record that limited drift explicitly, and enforce exact current bytes for the actual successful browser run and all implementation inputs. No runtime change or redundant unit rerun is needed."
+}

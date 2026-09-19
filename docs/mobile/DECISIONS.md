@@ -761,3 +761,9 @@
   remain ordered after confirmation timeout and remount; no cancellation or
   durable-storage guarantee is inferred. This is partial S13 persistence work,
   not the full composition transaction or a new catalog/entitlement authority.
+
+- D130: Existing app quality owns antique decoration detail too. High retains
+  original geometry and public-site legacy behavior stays unchanged. Replaced
+  shared body buffers have separate lifetime from static tail/fin/mouth buffers.
+  Measured source/Chrome geometry checks remain distinct from all-item GPU,
+  installed-device, full composition and Starter Set acceptance.

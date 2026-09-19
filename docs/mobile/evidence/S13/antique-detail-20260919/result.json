@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-19T16:58:10.117Z",
+  "sourceCommit": "2bdcdea1cdec5d89c828eb7f6d5566bb5812f1ea",
+  "stage": "S13",
+  "status": "ANTIQUE_QUALITY_GEOMETRY_VALIDATED",
+  "pass": true,
+  "entry": {
+    "path": "docs/mobile/evidence/S13/antique-detail-20260919/entry.json",
+    "sha256": "797d19314e409630bccde782dea79c0bcc2007fcb682fd486d35304235949a48"
+  },
+  "runs": {
+    "unit": {
+      "path": "docs/mobile/evidence/S13/antique-detail-20260919/unit-a1/result.json",
+      "sha256": "b7c9b2e996b3a36f84b6635de645501e0ec5643592449b9c05dfbd48b2e362c8",
+      "tests": {
+        "passed": 11,
+        "failed": 0,
+        "skipped": 0,
+        "failures": []
+      }
+    },
+    "static": {
+      "path": "docs/mobile/evidence/S13/antique-detail-20260919/static-a1/result.json",
+      "sha256": "d0043836a44371dc4ab7106ec1b1907b0dd6c175b32980d029e44592857428b3",
+      "tests": null
+    },
+    "browser": {
+      "path": "docs/mobile/evidence/S13/antique-detail-20260919/browser-a1/result.json",
+      "sha256": "4f749576aac698807fb26c6adb464175487089d41bf6003616a53436d308c7da",
+      "tests": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "errors": []
+      }
+    }
+  },
+  "nonExecutedFixtureDrift": [
+    {
+      "run": "unit",
+      "path": "tests/pwa/globe-antique-detail.spec.mjs",
+      "recordedSha256": "c302fceac9cd826cc0988cb7b0fd7369d8124d087f1dd7f805020df195a946e7",
+      "currentSha256": "056ab2b8b48e7cc83f156cd1a0557aecd0727a10401273563701783cacb5204e"
+    },
+    {
+      "run": "static",
+      "path": "tests/pwa/globe-antique-detail.spec.mjs",
+      "recordedSha256": "c302fceac9cd826cc0988cb7b0fd7369d8124d087f1dd7f805020df195a946e7",
+      "currentSha256": "056ab2b8b48e7cc83f156cd1a0557aecd0727a10401273563701783cacb5204e"
+    }
+  ],
+  "highMatchesPreChangeGeometry": true,
+  "legacyWebsiteAntiqueDetailPreserved": true,
+  "resourceScope": "Actual antique body/ring replacement and unchanged shared static buffers; not a universal GPU leak certificate.",
+  "unchangedRuntimeArtifacts": {
+    "path": "docs/mobile/evidence/S13/edition-preference-20260919/result.json",
+    "sha256": "9d6c95d0a8dd5aaabb6f31509f5ff0eef1a95b83e300e3d537fefc42f8f6c045"
+  },
+  "artifactsRefreshed": false,
+  "installedNativeDevice": false,
+  "iosCompiled": false,
+  "productionActionsPerformed": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "nextAction": "Continue S13 with a bounded runtime stand customization slice: preserve canonical default frame, add original included adult stand geometry only with safe bounds/picking, and same-scene preview/apply/cancel. Keep edition selection, quality and other semantic state with existing owners. Do not relabel current frame as a completed Starter Set stand. Child variants, full composition/rights/entitlement gates remain separate. Batch this geometry change into the next runtime build with further integrated work."
+}

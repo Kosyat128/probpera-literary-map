@@ -1,3 +1,15 @@
+<!-- s13-antique-detail-20260919:begin -->
+Source 2bdcdea1 makes the existing antique frame follow app graphics
+quality. High body data matches the previous source exactly; Balanced/Economy
+reduce body and ring detail. Static shared parts stay live during body replacement.
+Focused units, TypeScript and one actual Chrome case pass, including 30 quality
+switches and scoped disposal checks. Evidence: evidence/S13/antique-detail-20260919/result.json.
+PWA 3a57411a and Android/dev 485eda7b remain exact preserved 8ca9f7e5 artifacts;
+this later geometry slice awaits the next runtime batch. Full composition,
+Starter Set, installed-device and release acceptance stay open. Stage statuses
+unchanged; first open S03; releaseReady false. Continue included stand customization.
+<!-- s13-antique-detail-20260919:end -->
+
 <!-- s13-edition-preference-20260919:begin -->
 Source 8ca9f7e5 connects existing edition preferences to the app
 platform port with explicit-intent fencing, rendered-success saves and RU/EN retry.

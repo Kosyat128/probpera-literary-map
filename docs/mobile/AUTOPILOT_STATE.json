@@ -3,9 +3,9 @@
   "repository": "Kosyat128/probpera-literary-map",
   "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
-  "headSha": "8ca9f7e5ccd0fb96ec689e11ab4acae980ff7306",
+  "headSha": "2bdcdea1cdec5d89c828eb7f6d5566bb5812f1ea",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-19T16:47:20.928Z",
+  "updatedAt": "2026-09-19T16:58:10.117Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -2102,19 +2102,23 @@
         },
         {
           "id": "S13.CUSTOM-007",
-          "status": "OPEN",
-          "evidence": [],
-          "commit": null,
-          "lastValidatedAt": null,
-          "notes": "Bounded cache and explicit GPU disposal. Data-driven customization must preserve the same scene before measured performance and parity checks."
+          "status": "IN_PROGRESS",
+          "evidence": [
+            "docs/mobile/evidence/S13/antique-detail-20260919/result.json"
+          ],
+          "commit": "2bdcdea1cdec5d89c828eb7f6d5566bb5812f1ea",
+          "lastValidatedAt": "2026-09-19T16:58:10.117Z",
+          "notes": "Bounded cache and explicit GPU disposal. Data-driven customization must preserve the same scene before measured performance and parity checks. Antique decoration now follows explicit app quality tiers. High body bytes match the original, while lower tiers reduce buffers. Focused actual Chrome evidence checks 30 quality switches and scoped geometry disposal; full catalog/stand/skin stress and device budgets remain open."
         },
         {
           "id": "S13.CUSTOM-008",
-          "status": "OPEN",
-          "evidence": [],
-          "commit": null,
-          "lastValidatedAt": null,
-          "notes": "30-switch stress. Data-driven customization must preserve the same scene before measured performance and parity checks."
+          "status": "IN_PROGRESS",
+          "evidence": [
+            "docs/mobile/evidence/S13/antique-detail-20260919/result.json"
+          ],
+          "commit": "2bdcdea1cdec5d89c828eb7f6d5566bb5812f1ea",
+          "lastValidatedAt": "2026-09-19T16:58:10.117Z",
+          "notes": "30-switch stress. Data-driven customization must preserve the same scene before measured performance and parity checks. Antique decoration now follows explicit app quality tiers. High body bytes match the original, while lower tiers reduce buffers. Focused actual Chrome evidence checks 30 quality switches and scoped geometry disposal; full catalog/stand/skin stress and device budgets remain open."
         }
       ],
       "lastGreenCommands": [
@@ -2128,7 +2132,9 @@
         "docs/mobile/evidence/S13/edition-preference-20260919/entry.json",
         "docs/mobile/evidence/S13/edition-preference-20260919/result.json",
         "docs/mobile/evidence/S13/edition-preference-20260919/pwa-a1/result.json",
-        "docs/mobile/evidence/S13/edition-preference-20260919/android-a1/result.json"
+        "docs/mobile/evidence/S13/edition-preference-20260919/android-a1/result.json",
+        "docs/mobile/evidence/S13/antique-detail-20260919/entry.json",
+        "docs/mobile/evidence/S13/antique-detail-20260919/result.json"
       ],
       "externalBlockers": []
     },
@@ -10765,7 +10771,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Continue S13 engine and composition work without repeating valid persistence checks. Existing antique frame still uses fixed geometry detail in all quality tiers; inspect and implement bounded tier-aware geometry while preserving exact high-quality default, canonical surface/picking and one renderer. Full preview/apply/revert, stands/accessories and child skins remain open. Keep QA packages inactive, D107 deferred and external device/editorial/store gates distinct.",
+    "nextAction": "Continue S13 with a bounded runtime stand customization slice: preserve canonical default frame, add original included adult stand geometry only with safe bounds/picking, and same-scene preview/apply/cancel. Keep edition selection, quality and other semantic state with existing owners. Do not relabel current frame as a completed Starter Set stand. Child variants, full composition/rights/entitlement gates remain separate. Batch this geometry change into the next runtime build with further integrated work.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -10815,7 +10821,8 @@
       "docs/mobile/evidence/S12/starter-set-20260919/entry.json",
       "docs/mobile/evidence/S12/starter-set-20260919/result.json",
       "docs/mobile/evidence/S13/edition-preference-20260919/entry.json",
-      "docs/mobile/evidence/S13/edition-preference-20260919/result.json"
+      "docs/mobile/evidence/S13/edition-preference-20260919/result.json",
+      "docs/mobile/evidence/S13/antique-detail-20260919/result.json"
     ],
     "commands": [
       "node scripts/mobile/verify-requirements.mjs",
@@ -10835,7 +10842,8 @@
       "download-inspection-20260919: 54 units, TypeScript, actual signed S08 package in offline Chrome RU/EN, and exact PWA/Android artifacts passed. Keep prior attempts/artifacts. Staged inspection is not dataset activation.",
       "dossier-navigation-20260919 records focused late-layout/failed-layout navigation, saved-book position and account-scope checks. No runtime artifact rebuild in this slice.",
       "S12 starter-set-20260919: 11 units, TypeScript and source inventory pass. Inventory INCOMPLETE is expected, not Starter Set acceptance; no app activation or entitlement grant.",
-      "S13 edition-preference-20260919 contains focused preference race/recovery and actual Chrome scene evidence, plus exact PWA/Android artifacts including dossier navigation. Best-effort acceptance is not durability or installed-device evidence."
+      "S13 edition-preference-20260919 contains focused preference race/recovery and actual Chrome scene evidence, plus exact PWA/Android artifacts including dossier navigation. Best-effort acceptance is not durability or installed-device evidence.",
+      "S13 antique-detail-20260919 validates exact original High geometry, reduced detail, scoped disposal and 30 quality switches. Full optional catalog stress is not claimed; runtime artifacts await next accumulated batch."
     ]
   },
   "requirementsHash": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732",
@@ -12520,6 +12528,14 @@
       "sha256": "9d6c95d0a8dd5aaabb6f31509f5ff0eef1a95b83e300e3d537fefc42f8f6c045",
       "sourceCommit": "8ca9f7e5ccd0fb96ec689e11ab4acae980ff7306",
       "status": "CANONICAL_EDITION_PREFERENCE_RECOVERY_VALIDATED",
+      "stageAccepted": false,
+      "releaseReady": false
+    },
+    "s13AntiqueDetail": {
+      "path": "docs/mobile/evidence/S13/antique-detail-20260919/result.json",
+      "sha256": "dc742936d9675293b3e811950f92d7608c214fec2145fb02c65ff0db55ab1423",
+      "sourceCommit": "2bdcdea1cdec5d89c828eb7f6d5566bb5812f1ea",
+      "status": "ANTIQUE_QUALITY_GEOMETRY_VALIDATED",
       "stageAccepted": false,
       "releaseReady": false
     }
