@@ -34,6 +34,7 @@ public class PlanetContentStorePlugin extends Plugin {
     private static final String SHA = "[a-f0-9]{64}";
     private static final int MAX_FILE = 16 * 1024 * 1024;
     private static final int MAX_PACKAGE = 64 * 1024 * 1024 + 256 * 1024;
+    private static final long MAX_SAFE_INTEGER = 9007199254740991L;
     private static final String URL = "https://localhost/__literary_content_qa__/";
 
     private interface Operation { JSObject run() throws Exception; }
@@ -102,10 +103,37 @@ public class PlanetContentStorePlugin extends Plugin {
         try { stream = file.startWrite(); stream.write(bytes); file.finishWrite(stream); }
         catch (Exception error) { if (stream != null) file.failWrite(stream); throw error; }
     }
+    private static void exactKeys(JSONObject value, String... keys) throws Exception {
+        require(value.length() == keys.length);
+        for (String name : keys) require(value.has(name));
+    }
+    private static long safeInteger(Object value, long minimum) throws Exception {
+        require(value instanceof Number);
+        double number = ((Number) value).doubleValue();
+        require(number >= minimum && number <= MAX_SAFE_INTEGER && number == Math.floor(number));
+        return ((Number) value).longValue();
+    }
+    private static long epoch(JSONObject value) throws Exception {
+        return value == null || value.getInt("schemaVersion") == 1 ? 0 : value.getLong("epoch");
+    }
+    private static boolean retired(JSONObject value) throws Exception {
+        return value != null && value.getInt("schemaVersion") == 2 && value.getBoolean("retired");
+    }
+    private static boolean sameGeneration(JSONObject first, JSONObject second) throws Exception {
+        return first.getString("sha256").equals(second.getString("sha256")) && first.getLong("version") == second.getLong("version");
+    }
     private static JSONObject selection(byte[] bytes) throws Exception {
         require(bytes != null && bytes.length > 0 && bytes.length <= 1024);
         JSONObject value = new JSONObject(new String(bytes, StandardCharsets.UTF_8));
-        require(value.length() == 3 && value.getInt("schemaVersion") == 1 && value.has("previous"));
+        long version = safeInteger(value.get("schemaVersion"), 1);
+        require(version == 1 || version == 2);
+        if (version == 1) exactKeys(value, "schemaVersion", "current", "previous");
+        else {
+            exactKeys(value, "schemaVersion", "epoch", "retired", "current", "previous");
+            safeInteger(value.get("epoch"), 1);
+            require(value.get("retired") instanceof Boolean);
+            if (retired(value)) require(value.isNull("previous"));
+        }
         JSONObject current = value.getJSONObject("current");
         validateGeneration(current);
         if (!value.isNull("previous")) {
@@ -115,9 +143,16 @@ public class PlanetContentStorePlugin extends Plugin {
         return value;
     }
     private static void validateGeneration(JSONObject value) throws Exception {
-        require(value.length() == 2 && value.getString("sha256").matches(SHA));
-        double version = value.getDouble("version");
-        require(version >= 1 && version <= 9007199254740991d && version == Math.floor(version));
+        exactKeys(value, "sha256", "version");
+        require(value.get("sha256") instanceof String && value.getString("sha256").matches(SHA));
+        safeInteger(value.get("version"), 1);
+    }
+    private JSONObject fencedSelection(PluginCall call, String name) throws Exception {
+        long expectedEpoch = call.getData().has("epoch") ? safeInteger(call.getData().get("epoch"), 0) : 0;
+        byte[] bytes = readBytes(name.substring(0, PREFIX.length() + 64), key("selection.json"), 1024);
+        JSONObject selected = bytes == null ? null : selection(bytes);
+        require(expectedEpoch == epoch(selected));
+        return selected;
     }
     @PluginMethod public void read(PluginCall call) {
         queued(call, () -> {
@@ -129,6 +164,7 @@ public class PlanetContentStorePlugin extends Plugin {
         queued(call, () -> {
             String name = call.getString("name"), encoded = call.getString("base64");
             require(generation(name) && encoded != null && encoded.length() <= ((MAX_FILE + 2) / 3) * 4);
+            fencedSelection(call, name);
             writeBytes(name, call.getString("key"), Base64.decode(encoded, Base64.NO_WRAP));
             return new JSObject();
         });
@@ -145,10 +181,9 @@ public class PlanetContentStorePlugin extends Plugin {
     @PluginMethod public void remove(PluginCall call) {
         queued(call, () -> {
             String name = call.getString("name"); require(generation(name));
-            String scopeName = name.substring(0, PREFIX.length() + 64), digest = name.substring(name.length() - 64);
-            byte[] pointer = readBytes(scopeName, key("selection.json"), 1024);
-            if (pointer != null) {
-                JSONObject selected = selection(pointer);
+            String digest = name.substring(name.length() - 64);
+            JSONObject selected = fencedSelection(call, name);
+            if (selected != null && !retired(selected)) {
                 if (selected.getJSONObject("current").getString("sha256").equals(digest)
                     || (!selected.isNull("previous") && selected.getJSONObject("previous").getString("sha256").equals(digest))) {
                     return new JSObject().put("removed", false);
@@ -164,6 +199,22 @@ public class PlanetContentStorePlugin extends Plugin {
             return new JSObject().put("removed", true);
         });
     }
+    @PluginMethod public void retire(PluginCall call) {
+        queued(call, () -> {
+            exactKeys(call.getData(), "name", "key", "expectedSha256", "json");
+            String name = call.getString("name"), pointerKey = call.getString("key"), expected = call.getString("expectedSha256"), json = call.getString("json");
+            require(scope(name) && key("selection.json").equals(pointerKey) && expected != null && expected.matches(SHA) && json != null);
+            byte[] bytes = json.getBytes(StandardCharsets.UTF_8); JSONObject next = selection(bytes);
+            byte[] old = readBytes(name, pointerKey, 1024);
+            if (old == null || !hash(old).equals(expected)) return new JSObject().put("retired", false);
+            JSONObject prior = selection(old);
+            require(!retired(prior) && retired(next) && epoch(prior) < MAX_SAFE_INTEGER && epoch(next) == epoch(prior) + 1);
+            require(sameGeneration(next.getJSONObject("current"), prior.getJSONObject("current")) && next.isNull("previous"));
+            writeBytes(name, pointerKey, bytes);
+            require(java.util.Arrays.equals(readBytes(name, pointerKey, 1024), bytes));
+            return new JSObject().put("retired", true);
+        });
+    }
     @PluginMethod public void commit(PluginCall call) {
         queued(call, () -> {
             String name = call.getString("name"), pointerKey = call.getString("key"), json = call.getString("json"), expected = call.getString("expectedSha256");
@@ -172,15 +223,20 @@ public class PlanetContentStorePlugin extends Plugin {
             byte[] bytes = json.getBytes(StandardCharsets.UTF_8); JSONObject next = selection(bytes);
             byte[] old = readBytes(name, pointerKey, 1024);
             if (old == null ? expected != null : !hash(old).equals(expected)) return new JSObject().put("committed", false);
+            require(!retired(next));
             if (old != null) {
                 JSONObject prior = selection(old);
+                require(epoch(next) == epoch(prior));
                 JSONObject nextCurrent = next.getJSONObject("current"), priorCurrent = prior.getJSONObject("current");
-                if (nextCurrent.getString("sha256").equals(priorCurrent.getString("sha256"))) {
-                    require(nextCurrent.getLong("version") == priorCurrent.getLong("version") && next.get("previous").toString().equals(prior.get("previous").toString()));
+                if (retired(prior)) {
+                    require(next.isNull("previous") && (sameGeneration(nextCurrent, priorCurrent) || nextCurrent.getLong("version") > priorCurrent.getLong("version")));
+                } else if (nextCurrent.getString("sha256").equals(priorCurrent.getString("sha256"))) {
+                    require(sameGeneration(nextCurrent, priorCurrent));
+                    require(prior.isNull("previous") ? next.isNull("previous") : !next.isNull("previous") && sameGeneration(next.getJSONObject("previous"), prior.getJSONObject("previous")));
                 } else {
-                    require(nextCurrent.getLong("version") > priorCurrent.getLong("version") && next.get("previous").toString().equals(priorCurrent.toString()));
+                    require(nextCurrent.getLong("version") > priorCurrent.getLong("version") && !next.isNull("previous") && sameGeneration(next.getJSONObject("previous"), priorCurrent));
                 }
-            } else require(next.isNull("previous"));
+            } else require(epoch(next) == 0 && next.isNull("previous"));
             JSONObject candidate = call.getObject("candidate"); require(candidate != null);
             String candidateName = candidate.getString("name");
             require(candidateName.equals(name + "-" + next.getJSONObject("current").getString("sha256")));

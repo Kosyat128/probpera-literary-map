@@ -1,6 +1,6 @@
-import { useEffect, useId, useSyncExternalStore } from "react";
+import { useEffect, useId, useRef, useState, useSyncExternalStore } from "react";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
-import type { ContentDownloads, ContentDownloadPhase } from "../planet/ContentDownloads";
+import type { ContentDownloads, ContentDownloadPhase, ContentDownloadItem } from "../planet/ContentDownloads";
 import "./PlanetDownloadsPanel.css";
 
 /** Implementation copy; bilingual editorial acceptance remains a release gate. */
@@ -19,6 +19,9 @@ export const planetDownloadsCopy = {
         loading: "Читаем настройку…", saving: "Сохраняем настройку…", session: "Настройка действует в этом сеансе; сохранение после перезапуска не подтверждено." },
       size: "Размер пакета", clear: "Удалить незавершённую загрузку",
       clearHelp: "Удаляются только файлы незавершённой загрузки. Текущая и предыдущая сохранённые версии защищены. Для повторной загрузки понадобится сеть.",
+      removal: { action: "Удалить сохранённый пакет", cleanup: "Завершить очистку", confirm: "Подтвердить удаление", close: "Закрыть",
+        heading: "Удаление пакета", question: "Удалить этот дополнительный пакет и его резервную версию с устройства? Для повторной загрузки потребуется сеть.",
+        changed: "Состояние пакета изменилось. Если удаление ещё требуется, проверьте файлы и откройте подтверждение заново." },
       space: { check: "Проверить место", unchecked: "Доступное место ещё не проверено.", checking: "Проверяем доступное место…",
         unavailable: "Не удалось определить доступное место. Можно повторить проверку.",
         browser: "Доступно приложению по оценке браузера", device: "Доступно на устройстве",
@@ -34,6 +37,9 @@ export const planetDownloadsCopy = {
         clearing: "Удаляем незавершённую загрузку…", cleared: "Файлы незавершённой загрузки отсутствуют. Сохранённые версии не затронуты.",
         protected: "Эта версия сохранена для офлайн-доступа или восстановления и защищена от удаления.",
         "clear-error": "Не удалось подтвердить удаление. Проверьте файлы или повторите очистку.",
+        uninstalling: "Удаляем сохранённый пакет…", uninstalled: "Дополнительный пакет удалён с устройства. Его можно загрузить снова.",
+        "cleanup-pending": "Пакет больше не доступен офлайн. Очистка его файлов ещё не завершена. Нажмите «Завершить очистку».",
+        "uninstall-error": "Не удалось подтвердить удаление пакета. Проверьте файлы, затем повторите удаление.",
       },
     },
     en: {
@@ -48,6 +54,9 @@ export const planetDownloadsCopy = {
         loading: "Reading preference…", saving: "Saving preference…", session: "This preference applies to this session; persistence after restart has not been confirmed." },
       size: "Package size", clear: "Remove unfinished download",
       clearHelp: "Only unfinished download files are removed. The current and previous saved versions are protected. Downloading again will require a connection.",
+      removal: { action: "Remove saved package", cleanup: "Finish cleanup", confirm: "Confirm removal", close: "Close",
+        heading: "Remove package", question: "Remove this optional package and its backup version from this device? Downloading them again will require a connection.",
+        changed: "The package state has changed. If removal is still needed, check the files and open the confirmation again." },
       space: { check: "Check space", unchecked: "Available space has not been checked yet.", checking: "Checking available space…",
         unavailable: "Available space could not be determined. You can check again.",
         browser: "Estimated space available to the app in this browser", device: "Available on this device",
@@ -63,12 +72,48 @@ export const planetDownloadsCopy = {
         clearing: "Removing unfinished download…", cleared: "No unfinished download files remain. Saved versions are unchanged.",
         protected: "This version is saved for offline access or recovery and is protected from removal.",
         "clear-error": "Removal could not be confirmed. Check the files or try removing them again.",
+        uninstalling: "Removing the saved package…", uninstalled: "The optional package has been removed from this device. You can download it again.",
+        "cleanup-pending": "The package is no longer available offline. Its files still need cleanup. Select Finish cleanup.",
+        "uninstall-error": "Package removal could not be confirmed. Check the files, then try removing it again.",
       },
     },
   },
 } as const;
-const working = new Set<ContentDownloadPhase>(["checking", "downloading", "verifying", "pausing", "cancelling", "clearing"]);
+const working = new Set<ContentDownloadPhase>(["checking", "downloading", "verifying", "pausing", "cancelling", "clearing", "uninstalling"]);
 const progressPhases = new Set<ContentDownloadPhase>(["downloading", "verifying", "pausing", "paused", "waiting-wifi", "cancelling"]);
+
+function PackageRemoval({ item, downloads, copy, busy }: {
+  item: ContentDownloadItem; downloads: ContentDownloads; busy: boolean;
+  copy: (typeof planetDownloadsCopy.locales)["ru" | "en"]["removal"];
+}) {
+  const [confirmation, setConfirmation] = useState<string | null>(null);
+  const { language } = useInterfaceLanguage();
+  const action = useRef<HTMLButtonElement>(null), id = useId();
+  const removable = item.optional && !!item.removalReceipt && ["saved", "protected", "cleanup-pending"].includes(item.phase);
+  const matches = confirmation === item.removalReceipt;
+  return <div className="planet-downloads__removal">
+    <button type="button" ref={action} aria-disabled={busy || !removable} aria-expanded={confirmation !== null} aria-controls={id}
+      onClick={() => { if (!busy && removable) setConfirmation(item.removalReceipt); }}>
+      {item.phase === "cleanup-pending" ? copy.cleanup : copy.action}
+    </button>
+    {confirmation !== null && <div id={id} className="planet-downloads__confirmation" role="group" aria-labelledby={`${id}-heading`}>
+      <p id={`${id}-heading`}><strong>{copy.heading}: {item.title[language]}</strong></p>
+      <p>{copy.question}</p>
+      {!matches && !["uninstalled", "cleanup-pending"].includes(item.phase) && <p role="status">{copy.changed}</p>}
+      <div className="planet-downloads__actions">
+        <button type="button" aria-disabled={busy || !removable || !matches}
+          onClick={() => {
+            if (!busy && removable && matches) {
+              const confirmed = confirmation;
+              setConfirmation(null); action.current?.focus();
+              void downloads.uninstall(item.id, confirmed);
+            }
+          }}>{copy.confirm}</button>
+        <button type="button" onClick={() => { setConfirmation(null); action.current?.focus(); }}>{copy.close}</button>
+      </div>
+    </div>}
+  </div>;
+}
 
 export default function PlanetDownloadsPanel({ downloads }: { downloads: ContentDownloads }) {
   const { language } = useInterfaceLanguage();
@@ -105,7 +150,7 @@ export default function PlanetDownloadsPanel({ downloads }: { downloads: Content
         <p id={`${id}-clear-help`}>{copy.clearHelp}</p>
         <ul>
           {snapshot.items.map(item => {
-            const busy = working.has(item.phase), interruptible = busy && item.phase !== "clearing", row = `${id}-${item.id}`;
+            const busy = working.has(item.phase), interruptible = busy && item.phase !== "clearing" && item.phase !== "uninstalling", row = `${id}-${item.id}`;
             const protectedVersion = item.phase === "saved" || item.phase === "protected";
             return <li key={item.id} data-download-id={item.id} data-download-phase={item.phase}>
               <h3 id={`${row}-title`}>{item.title[language]}</h3>
@@ -130,6 +175,7 @@ export default function PlanetDownloadsPanel({ downloads }: { downloads: Content
                 <button type="button" aria-disabled={busy || protectedVersion || !snapshot.available} aria-describedby={`${id}-clear-help ${row}-status`}
                   onClick={() => { if (!busy && !protectedVersion && snapshot.available) void downloads.discard(item.id); }}>{copy.clear}</button>
               </div>
+              {item.optional && <PackageRemoval item={item} downloads={downloads} copy={copy.removal} busy={busy} />}
             </li>;
           })}
         </ul>

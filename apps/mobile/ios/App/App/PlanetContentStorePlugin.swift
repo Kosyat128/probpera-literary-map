@@ -1,4 +1,5 @@
 import Foundation
+import CoreFoundation
 import CryptoKit
 import Capacitor
 
@@ -8,16 +9,22 @@ import Capacitor
 public class PlanetContentStorePlugin: CAPPlugin, CAPBridgedPlugin {
     public let identifier = "PlanetContentStorePlugin"
     public let jsName = "PlanetContentStore"
-    public let pluginMethods: [CAPPluginMethod] = ["read", "write", "list", "remove", "commit", "capacity"].map {
+    public let pluginMethods: [CAPPluginMethod] = ["read", "write", "list", "remove", "commit", "retire", "capacity"].map {
         CAPPluginMethod(name: $0, returnType: CAPPluginReturnPromise)
     }
     private static let io = DispatchQueue(label: "ru.probpera.literaryplanet.content-store")
     private static let prefix = "literary-planet-content-qa-v1-"
     private static let maxFile = 16 * 1024 * 1024
     private static let maxPackage = 64 * 1024 * 1024 + 256 * 1024
+    private static let maxSafeInteger: Int64 = 9007199254740991
     private enum Failure: Error { case invalid }
     private struct Generation: Decodable, Equatable { let sha256: String; let version: Int64 }
-    private struct Selection: Decodable { let schemaVersion: Int; let current: Generation; let previous: Generation? }
+    private struct Selection: Decodable {
+        let schemaVersion: Int; let epoch: Int64?; let retired: Bool?
+        let current: Generation; let previous: Generation?
+        var storedEpoch: Int64 { epoch ?? 0 }
+        var isRetired: Bool { retired ?? false }
+    }
     private struct Receipt: Decodable { let key: String; let bytes: Int; let sha256: String }
     private struct Candidate: Decodable { let name: String; let entries: [Receipt] }
 
@@ -85,14 +92,36 @@ public class PlanetContentStorePlugin: CAPPlugin, CAPBridgedPlugin {
     private func selection(_ data: Data) throws -> Selection {
         try require(!data.isEmpty && data.count <= 1024)
         guard let shape = try JSONSerialization.jsonObject(with: data) as? [String: Any] else { throw Failure.invalid }
-        try require(Set(shape.keys) == Set(["schemaVersion", "current", "previous"]))
         let value = try JSONDecoder().decode(Selection.self, from: data)
-        try require(value.schemaVersion == 1)
+        if value.schemaVersion == 1 {
+            try require(Set(shape.keys) == Set(["schemaVersion", "current", "previous"]))
+        } else {
+            try require(value.schemaVersion == 2 && Set(shape.keys) == Set(["schemaVersion", "epoch", "retired", "current", "previous"]))
+            try require(value.epoch != nil && value.storedEpoch >= 1 && value.storedEpoch <= Self.maxSafeInteger && value.retired != nil)
+            if value.isRetired { try require(value.previous == nil) }
+        }
+        for name in ["current", "previous"] where !(shape[name] is NSNull) {
+            guard let record = shape[name] as? [String: Any] else { throw Failure.invalid }
+            try require(Set(record.keys) == Set(["sha256", "version"]))
+        }
         for item in [value.current, value.previous].compactMap({ $0 }) {
-            try require(matches(item.sha256, "[a-f0-9]{64}") && item.version >= 1 && item.version <= 9007199254740991)
+            try require(matches(item.sha256, "[a-f0-9]{64}") && item.version >= 1 && item.version <= Self.maxSafeInteger)
         }
         if let prior = value.previous { try require(prior.version < value.current.version && prior.sha256 != value.current.sha256) }
         return value
+    }
+    private func fencedSelection(_ call: CAPPluginCall, _ name: String) throws -> Selection? {
+        var expectedEpoch: Int64 = 0
+        if let raw = call.options["epoch"] {
+            guard let value = raw as? NSNumber, CFGetTypeID(value) != CFBooleanGetTypeID() else { throw Failure.invalid }
+            let number = value.doubleValue
+            try require(number.isFinite && number >= 0 && number <= Double(Self.maxSafeInteger) && number.rounded(.down) == number)
+            expectedEpoch = value.int64Value
+        }
+        let bytes = try readBytes(String(name.prefix(Self.prefix.count + 64)), key("selection.json"), maximum: 1024)
+        let selected = try bytes.map { try selection($0) }
+        try require(expectedEpoch == (selected?.storedEpoch ?? 0))
+        return selected
     }
     @objc func read(_ call: CAPPluginCall) {
         queued(call) {
@@ -105,6 +134,7 @@ public class PlanetContentStorePlugin: CAPPlugin, CAPBridgedPlugin {
         queued(call) {
             guard let name = call.getString("name"), let entryKey = call.getString("key"), let encoded = call.getString("base64") else { throw Failure.invalid }
             try self.require(self.generation(name) && encoded.utf8.count <= ((Self.maxFile + 2) / 3) * 4)
+            _ = try self.fencedSelection(call, name)
             guard let bytes = Data(base64Encoded: encoded) else { throw Failure.invalid }
             try self.writeBytes(name, entryKey, bytes)
             return [:]
@@ -121,9 +151,8 @@ public class PlanetContentStorePlugin: CAPPlugin, CAPBridgedPlugin {
         queued(call) {
             guard let name = call.getString("name") else { throw Failure.invalid }
             try self.require(self.generation(name))
-            let scopeName = String(name.prefix(Self.prefix.count + 64)), digest = String(name.suffix(64))
-            if let pointer = try self.readBytes(scopeName, self.key("selection.json"), maximum: 1024) {
-                let selected = try self.selection(pointer)
+            let digest = String(name.suffix(64))
+            if let selected = try self.fencedSelection(call, name), !selected.isRetired {
                 if selected.current.sha256 == digest || selected.previous?.sha256 == digest { return ["removed": false] }
             }
             let target = try self.directory(name, create: false), manager = FileManager.default
@@ -141,6 +170,22 @@ public class PlanetContentStorePlugin: CAPPlugin, CAPBridgedPlugin {
             return ["removed": true]
         }
     }
+    @objc func retire(_ call: CAPPluginCall) {
+        queued(call) {
+            guard let input = call.options as? JSObject else { throw Failure.invalid }
+            try self.require(Set(input.keys) == Set(["name", "key", "expectedSha256", "json"]))
+            guard let name = call.getString("name"), let pointerKey = call.getString("key"), let expected = call.getString("expectedSha256"), let json = call.getString("json") else { throw Failure.invalid }
+            try self.require(self.scope(name) && pointerKey == self.key("selection.json") && self.matches(expected, "[a-f0-9]{64}"))
+            let bytes = Data(json.utf8), next = try self.selection(bytes)
+            guard let old = try self.readBytes(name, pointerKey, maximum: 1024), self.hash(old) == expected else { return ["retired": false] }
+            let before = try self.selection(old)
+            try self.require(!before.isRetired && next.isRetired && before.storedEpoch < Self.maxSafeInteger && next.storedEpoch == before.storedEpoch + 1)
+            try self.require(next.current == before.current && next.previous == nil)
+            try self.writeBytes(name, pointerKey, bytes)
+            try self.require(self.readBytes(name, pointerKey, maximum: 1024) == bytes)
+            return ["retired": true]
+        }
+    }
     @objc func commit(_ call: CAPPluginCall) {
         queued(call) {
             guard let name = call.getString("name"), let pointerKey = call.getString("key"), let json = call.getString("json"), let candidateObject = call.getObject("candidate") else { throw Failure.invalid }
@@ -150,11 +195,15 @@ public class PlanetContentStorePlugin: CAPPlugin, CAPBridgedPlugin {
             let bytes = Data(json.utf8), next = try self.selection(bytes)
             let old = try self.readBytes(name, pointerKey, maximum: 1024)
             if old.map({ self.hash($0) }) != expected { return ["committed": false] }
+            try self.require(!next.isRetired)
             if let old = old {
                 let before = try self.selection(old)
-                if before.current == next.current { try self.require(before.previous == next.previous) }
+                try self.require(next.storedEpoch == before.storedEpoch)
+                if before.isRetired {
+                    try self.require(next.previous == nil && (next.current == before.current || next.current.version > before.current.version))
+                } else if before.current == next.current { try self.require(before.previous == next.previous) }
                 else { try self.require(next.current.version > before.current.version && next.previous == before.current) }
-            } else { try self.require(next.previous == nil) }
+            } else { try self.require(next.storedEpoch == 0 && next.previous == nil) }
             let candidate = try JSONDecoder().decode(Candidate.self, from: JSONSerialization.data(withJSONObject: candidateObject))
             try self.require(candidate.name == name + "-" + next.current.sha256 && candidate.entries.count >= 4 && candidate.entries.count <= 130)
             var seen = Set<String>(), total = 0

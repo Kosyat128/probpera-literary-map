@@ -1,9 +1,12 @@
 /** Byte persistence only; never owns catalog facts, locale or entitlements. */
 export interface ContentPackageStorage {
-  open(name: string): Promise<{ put(url: string, response: Response): Promise<void> }>;
+  open(name: string, options?: { epoch: number }): Promise<{ put(url: string, response: Response): Promise<void> }>;
   match(url: string, options: { cacheName: string }): Promise<Response | undefined>;
   keys(): Promise<string[]>;
-  delete(name: string): Promise<boolean>;
+  delete(name: string, options?: { epoch: number }): Promise<boolean>;
+  /** Separate from candidate commit: exact CAS retires an optional selection.
+   * Native writes and pruning must also fence the retained retirement epoch. */
+  retireSelection?(input: { name: string; url: string; expectedSha256: string; json: string }): Promise<boolean>;
   /** Native stores additionally compare the old pointer and recheck the entire
    * candidate in their serial IO queue before atomically replacing selection. */
   commitSelection?(input: {

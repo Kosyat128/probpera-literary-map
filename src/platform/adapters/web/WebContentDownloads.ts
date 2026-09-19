@@ -5,6 +5,7 @@ import type { ContentPackageLocks, ContentPackageStorage } from "../../../planet
 import type { ContentPackageFetch } from "../../../planet/contentPackageTransport";
 import { normalizeContentPackageTrust } from "../../../planet/verifyContentPackage";
 import type { DownloadPreferenceStore } from "../../../planet/DownloadNetworkPreference";
+import { contentDownloadOptionalPackages } from "../../../planet/ContentDownloadRetention";
 
 export interface WebContentHost {
   readonly caches?: ContentPackageStorage;
@@ -19,6 +20,7 @@ export function createWebContentDownloads(host: WebContentHost | null, configura
   readonly descriptors: readonly ContentDownloadDescriptor[]; readonly trustedKeys: unknown;
 } = { descriptors: contentDownloadCatalog, trustedKeys: contentDownloadTrust }, lifecycle?: ContentDownloadLifecycle, preferences?: DownloadPreferenceStore) {
   const trustedKeys = configuration.descriptors.length ? normalizeContentPackageTrust(configuration.trustedKeys) : null;
+  const optionalPackages = contentDownloadOptionalPackages(configuration.descriptors);
   try {
     const caches = host?.caches, locks = host?.navigator?.locks, subtle = host?.crypto?.subtle;
     const origin = host?.location?.origin, fetch = host?.fetch?.bind(host) ?? null;
@@ -31,7 +33,7 @@ export function createWebContentDownloads(host: WebContentHost | null, configura
         return { kind: "browser-estimate", availableBytes: Math.floor(Math.max(0, value.quota - value.usage)) };
       },
       createCache: caches && locks && origin && subtle && trustedKeys
-        ? () => createContentPackageCache({ allowLocalQa: true, origin, caches, locks, subtle, trustedKeys }) : null });
+        ? () => createContentPackageCache({ allowLocalQa: true, origin, caches, locks, subtle, trustedKeys, optionalPackages }) : null });
   } catch {
     return createContentDownloads({ descriptors: configuration.descriptors, createCache: null, fetch: null, lifecycle, preferences });
   }

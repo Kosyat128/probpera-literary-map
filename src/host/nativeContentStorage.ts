@@ -5,9 +5,10 @@ import type { ContentPackageLocks, ContentPackageStorage } from "../planet/conte
 export interface NativeContentStoreBridge {
   capacity?(): Promise<{ availableBytes: number }>;
   read(input: { name: string; key: string }): Promise<{ base64: string | null }>;
-  write(input: { name: string; key: string; base64: string }): Promise<void>;
+  write(input: { name: string; key: string; base64: string; epoch: number }): Promise<void>;
   list(): Promise<{ names: string[] }>;
-  remove(input: { name: string }): Promise<{ removed: boolean }>;
+  remove(input: { name: string; epoch: number }): Promise<{ removed: boolean }>;
+  retire?(input: { name: string; key: string; expectedSha256: string; json: string }): Promise<{ retired: boolean }>;
   commit(input: { name: string; key: string; expectedSha256: string | null; json: string;
     candidate: { name: string; entries: { key: string; bytes: number; sha256: string }[] } }): Promise<{ committed: boolean }>;
 }
@@ -15,6 +16,7 @@ export const NATIVE_CONTENT_ORIGIN = "https://localhost"; // Logical keys only, 
 const scope = /^literary-planet-content-qa-v1-[a-f0-9]{64}$/u;
 const generation = /^literary-planet-content-qa-v1-[a-f0-9]{64}-[a-f0-9]{64}$/u;
 const valid = (name: string) => { if (!scope.test(name) && !generation.test(name)) throw new Error("invalid-native-content-name"); return name; };
+const epochValue = (value: number) => { if (!Number.isSafeInteger(value) || value < 0) throw new Error("invalid-native-content-epoch"); return value; };
 const key = (url: string) => {
   if (!url.startsWith(NATIVE_CONTENT_ORIGIN + "/__literary_content_qa__/")) throw new Error("invalid-native-content-url");
   return contentPackageHash(url);
@@ -36,14 +38,15 @@ function decode(base64: string): Uint8Array<ArrayBuffer> {
 
 export function createNativeContentStorage(bridge: NativeContentStoreBridge): ContentPackageStorage {
   return Object.freeze({
-    async open(name: string) {
+    async open(name: string, options?: { epoch: number }) {
       valid(name);
+      const epoch = epochValue(options?.epoch ?? 0);
       return { async put(url: string, response: Response) {
         if (!generation.test(name) || response.status !== 200) throw new Error("native-content-write-rejected");
         // Shared verifier has already bounded every body. Check again at the bridge.
         const bytes = new Uint8Array(await response.arrayBuffer());
         if (!bytes.length || bytes.length > CONTENT_PACKAGE_MAX_FILE_BYTES) throw new Error("native-content-byte-limit");
-        await bridge.write({ name, key: key(url), base64: encode(bytes) });
+        await bridge.write({ name, key: key(url), base64: encode(bytes), epoch });
       } };
     },
     async match(url: string, { cacheName }: { cacheName: string }) {
@@ -51,15 +54,20 @@ export function createNativeContentStorage(bridge: NativeContentStoreBridge): Co
       return value.base64 === null ? undefined : new Response(decode(value.base64), { headers: { "Content-Type": "application/json" } });
     },
     async keys() { const value = await bridge.list(); return value.names.map(valid); },
-    async delete(name: string) {
+    async delete(name: string, options?: { epoch: number }) {
       if (!generation.test(name)) throw new Error("native-content-delete-rejected");
-      return (await bridge.remove({ name })).removed;
+      return (await bridge.remove({ name, epoch: epochValue(options?.epoch ?? 0) })).removed;
     },
     async commitSelection(input: Parameters<NonNullable<ContentPackageStorage["commitSelection"]>>[0]) {
       if (!scope.test(input.name) || !generation.test(input.candidate.name)) throw new Error("native-content-commit-rejected");
       return (await bridge.commit({ name: input.name, key: key(input.url), expectedSha256: input.expectedSha256, json: input.json,
         candidate: { name: input.candidate.name, entries: input.candidate.entries.map(entry => ({ key: key(entry.url), bytes: entry.bytes, sha256: entry.sha256 })) } })).committed;
     },
+    ...(bridge.retire ? { async retireSelection(input: Parameters<NonNullable<ContentPackageStorage["retireSelection"]>>[0]) {
+      if (!scope.test(input.name) || input.url !== NATIVE_CONTENT_ORIGIN + "/__literary_content_qa__/selection.json"
+        || !/^[a-f0-9]{64}$/u.test(input.expectedSha256) || typeof input.json !== "string" || input.json.length > 1024) throw new Error("native-content-retire-rejected");
+      return (await bridge.retire!({ name: input.name, key: key(input.url), expectedSha256: input.expectedSha256, json: input.json })).retired;
+    } } : {}),
   });
 }
 
