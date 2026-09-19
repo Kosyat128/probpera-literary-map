@@ -13,6 +13,10 @@ export type GlobeQualityProfile = Readonly<{
   surfaceHeightSegments: number;
   highlightWidthSegments: number;
   highlightHeightSegments: number;
+  antiqueFrameSegments: number;
+  antiqueBaseSegments: number;
+  antiqueWhaleLongitudinalSegments: number;
+  antiqueWhaleRadialSegments: number;
   contemporaryFrameSegments: number;
   contemporaryBaseSegments: number;
   modernFrameSegments: number;
@@ -24,6 +28,8 @@ const high: GlobeQualityProfile = Object.freeze({
   skyShader: true, skyWidthSegments: 48, skyHeightSegments: 32,
   surfaceWidthSegments: 144, surfaceHeightSegments: 96,
   highlightWidthSegments: 112, highlightHeightSegments: 72,
+  antiqueFrameSegments: 256, antiqueBaseSegments: 192,
+  antiqueWhaleLongitudinalSegments: 34, antiqueWhaleRadialSegments: 20,
   contemporaryFrameSegments: 192, contemporaryBaseSegments: 144,
   modernFrameSegments: 176, equatorSegments: 192,
 });
@@ -33,6 +39,8 @@ const balanced: GlobeQualityProfile = Object.freeze({
   skyShader: true, skyWidthSegments: 36, skyHeightSegments: 24,
   surfaceWidthSegments: 128, surfaceHeightSegments: 84,
   highlightWidthSegments: 104, highlightHeightSegments: 68,
+  antiqueFrameSegments: 192, antiqueBaseSegments: 144,
+  antiqueWhaleLongitudinalSegments: 26, antiqueWhaleRadialSegments: 16,
   contemporaryFrameSegments: 160, contemporaryBaseSegments: 120,
   modernFrameSegments: 144, equatorSegments: 168,
 });
@@ -42,11 +50,21 @@ const economy: GlobeQualityProfile = Object.freeze({
   skyShader: false, skyWidthSegments: 24, skyHeightSegments: 16,
   surfaceWidthSegments: 112, surfaceHeightSegments: 72,
   highlightWidthSegments: 96, highlightHeightSegments: 64,
+  antiqueFrameSegments: 128, antiqueBaseSegments: 96,
+  antiqueWhaleLongitudinalSegments: 18, antiqueWhaleRadialSegments: 12,
   contemporaryFrameSegments: 128, contemporaryBaseSegments: 96,
   modernFrameSegments: 112, equatorSegments: 144,
 });
 
-const legacyEconomy: GlobeQualityProfile = Object.freeze({ ...economy, antialias: false });
+const legacyEconomy: GlobeQualityProfile = Object.freeze({
+  ...economy,
+  antialias: false,
+  // The public site's legacy boolean never reduced the antique frame detail.
+  antiqueFrameSegments: high.antiqueFrameSegments,
+  antiqueBaseSegments: high.antiqueBaseSegments,
+  antiqueWhaleLongitudinalSegments: high.antiqueWhaleLongitudinalSegments,
+  antiqueWhaleRadialSegments: high.antiqueWhaleRadialSegments,
+});
 
 /**
  * Explicit application tiers keep context-creation antialiasing unchanged.

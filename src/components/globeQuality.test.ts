@@ -5,7 +5,9 @@ describe("canonical globe render quality profiles", () => {
   it("keeps the richest existing path as the default and explicit High overrides legacy economy", () => {
     const profile = resolveGlobeQualityProfile();
     expect(profile).toMatchObject({ tier: "high", dprCap: 1.5, starCount: 2400,
-      surfaceWidthSegments: 144, surfaceHeightSegments: 96, antialias: true });
+      surfaceWidthSegments: 144, surfaceHeightSegments: 96, antialias: true,
+      antiqueFrameSegments: 256, antiqueBaseSegments: 192,
+      antiqueWhaleLongitudinalSegments: 34, antiqueWhaleRadialSegments: 20 });
     expect(resolveGlobeQualityProfile("high", true)).toBe(profile);
   });
 
@@ -16,12 +18,21 @@ describe("canonical globe render quality profiles", () => {
     for (const field of ["dprCap", "starCount", "skyWidthSegments", "skyHeightSegments",
       "surfaceWidthSegments", "surfaceHeightSegments", "highlightWidthSegments",
       "highlightHeightSegments", "contemporaryFrameSegments", "contemporaryBaseSegments",
-      "modernFrameSegments", "equatorSegments"] as const) {
+      "modernFrameSegments", "equatorSegments", "antiqueFrameSegments", "antiqueBaseSegments",
+      "antiqueWhaleLongitudinalSegments", "antiqueWhaleRadialSegments"] as const) {
       expect(balanced[field], field).toBeGreaterThan(economy[field]);
       expect(balanced[field], field).toBeLessThan(high[field]);
     }
     expect(economy.skyShader).toBe(false);
     expect(balanced.skyShader).toBe(true);
+  });
+
+  it("sets explicit antique detail budgets for all application tiers", () => {
+    expect((["high", "balanced", "economy"] as const).map((tier) => {
+      const profile = resolveGlobeQualityProfile(tier);
+      return [profile.antiqueFrameSegments, profile.antiqueBaseSegments,
+        profile.antiqueWhaleLongitudinalSegments, profile.antiqueWhaleRadialSegments];
+    })).toEqual([[256, 192, 34, 20], [192, 144, 26, 16], [128, 96, 18, 12]]);
   });
 
   it("never changes a context-creation attribute across explicit application tiers", () => {
@@ -39,7 +50,9 @@ describe("canonical globe render quality profiles", () => {
     const explicit = resolveGlobeQualityProfile("economy");
     expect(legacy).toMatchObject({ dprCap: 1.1, starCount: 900,
       surfaceWidthSegments: 112, surfaceHeightSegments: 72, antialias: false });
-    expect({ ...legacy, antialias: true }).toEqual(explicit);
+    expect(legacy).toEqual({ ...explicit, antialias: false,
+      antiqueFrameSegments: 256, antiqueBaseSegments: 192,
+      antiqueWhaleLongitudinalSegments: 34, antiqueWhaleRadialSegments: 20 });
     expect(Object.isFrozen(legacy)).toBe(true);
   });
 });

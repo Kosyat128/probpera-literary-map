@@ -65,6 +65,7 @@ import {
   type GlobeQualityProfile,
   type GlobeQualityTier,
 } from "./globeQuality";
+import { createAntiqueWhaleBodyGeometry } from "./globeAntiqueGeometry";
 import GlobeViewObserver, { type GlobeViewSample } from "./GlobeViewObserver";
 import { resolveCountryGlobeCoordinates } from "./globeCoordinates";
 import {
@@ -419,59 +420,6 @@ function MuseumAtmosphere({ visualStyle }: { visualStyle: GlobeVisualStyle }) {
   );
 }
 
-function createWhaleBodyGeometry() {
-  const longitudinalSegments = 34;
-  const radialSegments = 20;
-  const positions: number[] = [];
-  const indices: number[] = [];
-
-  for (let slice = 0; slice <= longitudinalSegments; slice += 1) {
-    const progress = slice / longitudinalSegments;
-    const profile = Math.pow(Math.sin(Math.PI * progress), 0.52);
-    const headFullness =
-      0.72 + THREE.MathUtils.smoothstep(progress, 0.48, 0.86) * 0.34;
-    const width = 0.275 * profile * headFullness;
-    const height =
-      0.17 *
-      profile *
-      (0.88 + THREE.MathUtils.smoothstep(progress, 0.64, 0.92) * 0.1);
-    const spineY =
-      -1.105 +
-      Math.sin(progress * Math.PI) * 0.105 -
-      THREE.MathUtils.smoothstep(progress, 0.78, 1) * 0.055;
-    const z = THREE.MathUtils.lerp(-0.27, 1.06, progress);
-
-    for (let segment = 0; segment <= radialSegments; segment += 1) {
-      const angle = (segment / radialSegments) * Math.PI * 2;
-      const lowerJawWeight = Math.sin(angle) < 0 ? 0.9 : 1;
-      positions.push(
-        Math.cos(angle) * width,
-        spineY + Math.sin(angle) * height * lowerJawWeight,
-        z
-      );
-    }
-  }
-
-  for (let slice = 0; slice < longitudinalSegments; slice += 1) {
-    for (let segment = 0; segment < radialSegments; segment += 1) {
-      const row = radialSegments + 1;
-      const first = slice * row + segment;
-      const second = first + row;
-      indices.push(first, second, first + 1, second, second + 1, first + 1);
-    }
-  }
-
-  const geometry = new THREE.BufferGeometry();
-  geometry.setAttribute(
-    "position",
-    new THREE.Float32BufferAttribute(positions, 3)
-  );
-  geometry.setIndex(indices);
-  geometry.computeVertexNormals();
-  geometry.computeBoundingSphere();
-  return geometry;
-}
-
 function createWhaleTailGeometry() {
   const contour = [
     new THREE.Vector2(-0.035, 0),
@@ -628,23 +576,26 @@ function BronzeWhale({
   );
 }
 
-function MythicGlobeFrame() {
-  const bodyGeometry = useMemo(createWhaleBodyGeometry, []);
+function MythicGlobeFrame({ quality }: { quality: GlobeQualityProfile }) {
+  const bodyGeometry = useMemo(() => createAntiqueWhaleBodyGeometry({
+    longitudinalSegments: quality.antiqueWhaleLongitudinalSegments,
+    radialSegments: quality.antiqueWhaleRadialSegments,
+  }), [quality.antiqueWhaleLongitudinalSegments, quality.antiqueWhaleRadialSegments]);
   const tailGeometry = useMemo(createWhaleTailGeometry, []);
   const leftFinGeometry = useMemo(() => createWhaleFinGeometry(-1), []);
   const rightFinGeometry = useMemo(() => createWhaleFinGeometry(1), []);
   const mouthGeometry = useMemo(createWhaleMouthGeometry, []);
 
+  useEffect(() => () => bodyGeometry.dispose(), [bodyGeometry]);
+
   useEffect(
     () => () => {
-      bodyGeometry.dispose();
       tailGeometry.dispose();
       leftFinGeometry.dispose();
       rightFinGeometry.dispose();
       mouthGeometry.dispose();
     },
     [
-      bodyGeometry,
       leftFinGeometry,
       mouthGeometry,
       rightFinGeometry,
@@ -655,7 +606,7 @@ function MythicGlobeFrame() {
   return (
     <group>
       <mesh raycast={() => null}>
-        <torusGeometry args={[1.09, 0.014, 18, 256]} />
+        <torusGeometry args={[1.09, 0.014, 18, quality.antiqueFrameSegments]} />
         <meshPhysicalMaterial
           color="#c58a43"
           emissive="#3b1506"
@@ -668,7 +619,7 @@ function MythicGlobeFrame() {
       </mesh>
 
       <mesh rotation={[Math.PI / 2, 0, 0]} raycast={() => null}>
-        <torusGeometry args={[1.02, 0.008, 14, 256]} />
+        <torusGeometry args={[1.02, 0.008, 14, quality.antiqueFrameSegments]} />
         <meshPhysicalMaterial
           color="#d59a50"
           emissive="#472007"
@@ -703,7 +654,7 @@ function MythicGlobeFrame() {
           rotation={[Math.PI / 2, 0, 0]}
           raycast={() => null}
         >
-          <torusGeometry args={[radius, 0.0035, 6, 192]} />
+          <torusGeometry args={[radius, 0.0035, 6, quality.antiqueBaseSegments]} />
           <meshBasicMaterial
             color={index === 0 ? "#f29548" : "#8b4ba5"}
             transparent
@@ -1914,7 +1865,7 @@ function GlobeScene({
         onCountrySelect={onCountrySelect}
       />
       {visualStyle === "antique" ? (
-        <MythicGlobeFrame />
+        <MythicGlobeFrame quality={quality} />
       ) : visualStyle === "modern" ? (
         <ModernGlobeFrame quality={quality} />
       ) : (
