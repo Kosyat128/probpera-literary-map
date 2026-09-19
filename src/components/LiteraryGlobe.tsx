@@ -15,6 +15,10 @@ import {
 import * as THREE from "three";
 import { installPlanetAppearance } from "../host/planetAppearance";
 import "../host/planetAppearance.css";
+import PlanetEditionPreferenceStatus from "../host/PlanetEditionPreferenceStatus";
+import { usePlanetEditionPreference } from "../host/planetEditionPreference";
+import { usePlatformServices } from "../platform/PlatformServices";
+import { isControlledWebEdition } from "../platform/distribution";
 
 import type { Country, Writer } from "../data/countries";
 import Button from "../ui/Button";
@@ -308,6 +312,12 @@ function storedGlobeEdition(): GlobeEditionId {
   } catch {
     return DEFAULT_GLOBE_EDITION_ID;
   }
+}
+
+function legacyWebViewEditionPreference(): string | null {
+  if (typeof window === "undefined") return null;
+  return window.localStorage.getItem(GLOBE_EDITION_STORAGE_KEY)
+    ?? window.localStorage.getItem(LEGACY_GLOBE_STYLE_STORAGE_KEY);
 }
 
 export function fallbackCountryCoordinates(
@@ -1995,7 +2005,17 @@ export default function LiteraryGlobe({
 }: Props) {
   const quality = resolveGlobeQualityProfile(qualityTier, economical);
   const { language, t, countryName, number } = useInterfaceLanguage();
-  const initialEditionId = useRef(storedGlobeEdition());
+  const platformServices = usePlatformServices();
+  const isPlanetApplication = isControlledWebEdition || platformServices.kind !== "web";
+  const editionPreference = usePlanetEditionPreference({
+    preferences: platformServices.preferences,
+    enabled: isPlanetApplication,
+    readLegacyPreference: platformServices.kind !== "web" ? legacyWebViewEditionPreference : undefined,
+  });
+  const [initialEdition] = useState(() => isPlanetApplication
+    ? DEFAULT_GLOBE_EDITION_ID
+    : storedGlobeEdition());
+  const initialEditionId = useRef(initialEdition);
   const initialLanguage = useRef(language);
   const languageRef = useRef(language);
   const renderedNaturalEarthLanguageRef = useRef(initialLanguage.current);
@@ -2008,12 +2028,16 @@ export default function LiteraryGlobe({
       if (!currentAtlas) throw new Error("globe-atlas-unavailable");
       const requestedLanguage = languageRef.current;
       await currentAtlas.setEdition(editionId, requestedLanguage);
+      if (atlasInstanceRef.current !== currentAtlas) throw new Error("globe-atlas-replaced");
       if (editionId === "natural-earth-2026") {
         renderedNaturalEarthLanguageRef.current = requestedLanguage;
       }
     },
     onCommit: (editionId) => {
-      window.localStorage.setItem(GLOBE_EDITION_STORAGE_KEY, editionId);
+      if (isPlanetApplication) {
+        initialEditionId.current = editionId;
+        editionPreference.renderedEdition(editionId);
+      } else window.localStorage.setItem(GLOBE_EDITION_STORAGE_KEY, editionId);
     },
   });
   const renderedEditionId = globeStyle.renderedStyle;
@@ -2384,18 +2408,22 @@ export default function LiteraryGlobe({
   }, [renderedEditionId, revealEditionRail]);
   const requestEdition = useCallback(
     async (editionId: GlobeEditionId) => {
+      if (isPlanetApplication) editionPreference.requestEdition(editionId);
       editionRailRestoreFocusRef.current = Boolean(
         editionRailRef.current?.contains(document.activeElement)
       );
       revealEditionRail();
       const outcome = await globeStyle.requestStyle(editionId);
+      if (outcome === "unchanged" && isPlanetApplication) {
+        editionPreference.renderedEdition(editionId);
+      }
       if (outcome === "committed" || outcome === "unchanged") {
         scheduleEditionRailHide();
       } else {
         editionRailRestoreFocusRef.current = false;
       }
     },
-    [globeStyle.requestStyle, revealEditionRail, scheduleEditionRailHide]
+    [editionPreference.renderedEdition, editionPreference.requestEdition, globeStyle.requestStyle, isPlanetApplication, revealEditionRail, scheduleEditionRailHide]
   );
   const clearEditionPreload = useCallback(() => {
     if (editionPreloadTimerRef.current === null) return;
@@ -2887,6 +2915,13 @@ export default function LiteraryGlobe({
   }, [countries, onHoverCountryChange]);
 
   useEffect(() => {
+    if (!atlas || !editionPreference.restoredEditionId) return;
+    // Restoration changes only the existing atlas surface. The controller clears
+    // this one-shot target on success or on any explicit newer selection.
+    void globeStyle.requestStyle(editionPreference.restoredEditionId, { force: true });
+  }, [atlas, editionPreference.restoredEditionId, globeStyle.requestStyle]);
+
+  useEffect(() => {
     atlas?.updateHighlight(
       selectedCountry?.id,
       hoveredCountry?.id,
@@ -3369,6 +3404,13 @@ export default function LiteraryGlobe({
           <i className="globe-style-status-progress" aria-hidden="true" />
         )}
       </span>
+
+      {isPlanetApplication && (
+        <PlanetEditionPreferenceStatus
+          saveState={editionPreference.saveState}
+          onRetry={editionPreference.retrySave}
+        />
+      )}
 
       <dialog
         ref={sourceDialogRef}

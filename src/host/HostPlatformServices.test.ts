@@ -1,12 +1,14 @@
 import { describe, expect, it, vi } from "vitest";
 import { createHostPlatformServices, type HostAppBridge, type HostAppState, type HostListenerHandle,
   type HostNetworkBridge, type HostNetworkState, type HostPlatformServicesOptions, type HostPreferenceBridge } from "./HostPlatformServices";
+import { GLOBE_EDITION_IDS } from "../components/globeEditions";
 
 const LANGUAGE = "probpera-interface-language";
 const DISPLAY = "probpera-display-mode";
 const WELCOME = "probpera-planet-welcome-v1";
 const GRAPHICS = "probpera-planet-graphics-quality-v1";
 const DOWNLOAD_NETWORK = "probpera-planet-download-network-v1";
+const EDITION = "probpera.globe-edition.v2", LEGACY_STYLE = "probpera.globe-style.v1";
 const RECENT = "probpera-planet-recent-adult-v1";
 const MAIL = "mailto:probperasite@yandex.ru";
 function deferred<T>() {
@@ -374,6 +376,43 @@ describe("native subscription lifetimes and ordering", () => {
 });
 
 describe("exact non-secret preferences with serialized readback", () => {
+  it("round-trips canonical globe IDs and exact legacy styles through a recreated host adapter", async () => {
+    const f = fixture();
+    const recreated = createHostPlatformServices({ kind: "ios", channel: "dev", languages: ["en"], preferences: f.preferences });
+    for (const value of GLOBE_EDITION_IDS) {
+      expect(await f.services.preferences.set(EDITION, value)).toBe(true);
+      expect(await recreated.preferences.get(EDITION)).toBe(value);
+      expect(await recreated.preferences.set(LEGACY_STYLE, value)).toBe(false);
+    }
+    for (const value of ["antique", "modern", "earth"]) {
+      for (const key of [EDITION, LEGACY_STYLE]) {
+        expect(await f.services.preferences.set(key, value)).toBe(true);
+        expect(await recreated.preferences.get(key)).toBe(value);
+      }
+    }
+    expect([...f.memory.keys()].sort()).toEqual([EDITION, LEGACY_STYLE].sort());
+  });
+
+  it("rejects corrupt edition reads and prevents edition lookalikes from widening native storage authority", async () => {
+    const f = fixture();
+    for (const key of [EDITION, LEGACY_STYLE]) {
+      for (const value of ["", "earth ", "NASA-BLUE-MARBLE", "constructor", "skin.base.earth"]) {
+        expect(await f.services.preferences.set(key, value)).toBe(false);
+        f.memory.set(key, value); await expect(f.services.preferences.get(key)).rejects.toThrow("edition-preference-unavailable");
+      }
+    }
+    expect(f.preferences.set).not.toHaveBeenCalled();
+    const reads = f.preferences.get.mock.calls.length;
+    for (const key of [EDITION + ":en", LEGACY_STYLE + "\u0000", "probpera.globe-edition.v3", "entitlements"]) {
+      expect(await f.services.preferences.set(key, "earth")).toBe(false);
+      expect(await f.services.preferences.get(key)).toBeNull(); expect(await f.services.preferences.remove(key)).toBe(false);
+    }
+    expect(f.preferences.get).toHaveBeenCalledTimes(reads); expect(f.preferences.remove).not.toHaveBeenCalled();
+    f.preferences.get.mockRejectedValueOnce(new Error("Bridge unavailable"));
+    await expect(f.services.preferences.get(EDITION)).rejects.toThrow("edition-preference-unavailable");
+    f.preferences.get.mockRejectedValueOnce(new Error("Bridge unavailable"));
+    expect(await f.services.preferences.get(LANGUAGE)).toBeNull();
+  });
   it.each(["any-network", "wifi-only"])("restores only the allowlisted download policy %s", async value => {
     const f = fixture();
     expect(await f.services.preferences.set(DOWNLOAD_NETWORK, value)).toBe(true);

@@ -10,6 +10,7 @@ import {
 } from "../../../utils/safeWebStorage";
 import { createWebContentDownloads, type WebContentHost } from "./WebContentDownloads";
 import type { ContentDownloads } from "../../../planet/ContentDownloads";
+import { GLOBE_EDITION_IDS } from "../../../planet/editions";
 
 type EventHost = Pick<EventTarget, "addEventListener" | "removeEventListener">;
 export interface WebAdapterConnection extends EventHost { readonly type?: string; }
@@ -47,6 +48,8 @@ const preferenceValues = new Map<string, readonly string[]>([
   ["probpera-planet-welcome-v1", ["completed"]],
   ["probpera-planet-graphics-quality-v1", ["high", "balanced", "economy"]],
   ["probpera-planet-download-network-v1", ["any-network", "wifi-only"]],
+  ["probpera.globe-edition.v2", [...GLOBE_EDITION_IDS, "antique", "modern", "earth"]],
+  ["probpera.globe-style.v1", ["antique", "modern", "earth"]],
 ]);
 
 function safeHttpsUrl(input: string): string | null {

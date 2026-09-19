@@ -1,0 +1,62 @@
+.literary-globe .planet-edition-preference {
+  box-sizing: border-box;
+  position: absolute;
+  z-index: 26;
+  top: calc(max(14px, env(safe-area-inset-top)) + 124px);
+  left: 50%;
+  width: min(420px, calc(100% - 28px));
+  padding: 10px 14px;
+  color: var(--planet-on-dark, #fff8ed);
+  background: var(--planet-chrome, #251724);
+  border: 1px solid var(--planet-accent, #e2bb60);
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgb(0 0 0 / 28%);
+  font: 0.8125rem/1.45 var(--sans);
+  overflow-wrap: anywhere;
+  transform: translateX(-50%);
+}
+
+.planet-edition-preference p { margin: 0; }
+
+.literary-globe .planet-edition-preference[data-planet-edition-save-state="idle"] {
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip-path: inset(50%);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.planet-edition-preference button {
+  min-height: 44px;
+  max-width: 100%;
+  margin-top: 8px;
+  padding: 8px 12px;
+  border: 1px solid currentColor;
+  border-radius: 8px;
+  color: inherit;
+  background: transparent;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.planet-edition-preference button:focus-visible {
+  outline: 2px solid var(--planet-accent, #e2bb60);
+  outline-offset: 3px;
+}
+
+/* Keep both error messages readable if a later texture load also fails. */
+.literary-globe:has(.globe-style-status.is-error) .planet-edition-preference {
+  top: calc(max(14px, env(safe-area-inset-top)) + 224px);
+}
+
+@media (min-width: 981px) {
+  .atlas-experience-surface[data-atlas-panel-state="open"] .literary-globe .planet-edition-preference {
+    left: max(14px, calc(env(safe-area-inset-left) + 12px));
+    width: min(420px, calc(100% - 500px));
+    transform: none;
+  }
+}

@@ -1,5 +1,6 @@
 import type { OpenLinkResult, PlatformServices, PlatformSnapshot, PreferenceStore } from "../platform/ports";
 import { createHostRecentHistory } from "./HostRecentHistory";
+import { GLOBE_EDITION_IDS } from "../planet/editions";
 
 export interface HostListenerHandle { remove(): void | Promise<void>; }
 export interface HostAppState { readonly isActive: boolean; }
@@ -47,6 +48,8 @@ const preferenceValues = new Map<string, readonly string[]>([
   ["probpera-planet-welcome-v1", ["completed"]],
   ["probpera-planet-graphics-quality-v1", ["high", "balanced", "economy"]],
   ["probpera-planet-download-network-v1", ["any-network", "wifi-only"]],
+  ["probpera.globe-edition.v2", [...GLOBE_EDITION_IDS, "antique", "modern", "earth"]],
+  ["probpera.globe-style.v1", ["antique", "modern", "earth"]],
 ]);
 const supportMail = "mailto:probperasite@yandex.ru";
 
@@ -117,6 +120,17 @@ export function createHostPlatformServices(options: HostPlatformServicesOptions)
     persistence: "best-effort" as const,
     get(key: string) {
       if (!preferenceValues.has(key)) return Promise.resolve(null);
+      if (key === "probpera.globe-edition.v2" || key === "probpera.globe-style.v1") {
+        // Migration may use a truly absent native preference. A failed read must
+        // not authorize an older WebView value to overwrite native storage.
+        return serialPreference<{ valid: boolean; value: string | null }>(
+          key, "preference-get", { valid: false, value: null },
+          () => readPreference(key, "preference-get")
+        ).then(result => {
+          if (!result.valid) throw new Error("edition-preference-unavailable");
+          return result.value;
+        });
+      }
       return serialPreference(key, "preference-get", null, async () => (await readPreference(key, "preference-get")).value);
     },
     set(key: string, value: string) {

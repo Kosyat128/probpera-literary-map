@@ -1,5 +1,6 @@
 import { afterEach, describe, expect, it, onTestFinished, vi } from "vitest";
 import { installSafeWebStorage } from "../../../utils/safeWebStorage";
+import { GLOBE_EDITION_IDS } from "../../../components/globeEditions";
 import {
   createWebPlatformAdapter,
   type WebAdapterWindow,
@@ -8,6 +9,7 @@ import {
 const WELCOME = "probpera-planet-welcome-v1";
 const GRAPHICS = "probpera-planet-graphics-quality-v1";
 const DOWNLOAD_NETWORK = "probpera-planet-download-network-v1";
+const EDITION = "probpera.globe-edition.v2", LEGACY_STYLE = "probpera.globe-style.v1";
 
 function memoryStorage(): Storage {
   const entries = new Map<string, string>();
@@ -276,6 +278,41 @@ describe("browser capabilities and subscription lifetime", () => {
 });
 
 describe("non-secret best-effort canonical preferences", () => {
+  it("round-trips canonical globe IDs and exact legacy styles without a second locale-specific preference", async () => {
+    const { browser } = browserEnvironment(), adapter = createWebPlatformAdapter({ window: browser });
+    const recreated = createWebPlatformAdapter({ window: browser });
+    for (const value of GLOBE_EDITION_IDS) {
+      expect(await adapter.preferences.set(EDITION, value)).toBe(true);
+      expect(await recreated.preferences.get(EDITION)).toBe(value);
+      expect(await recreated.preferences.set(LEGACY_STYLE, value)).toBe(false);
+    }
+    for (const value of ["antique", "modern", "earth"]) {
+      for (const key of [EDITION, LEGACY_STYLE]) {
+        expect(await adapter.preferences.set(key, value)).toBe(true);
+        expect(await recreated.preferences.get(key)).toBe(value);
+      }
+    }
+    expect(browser.localStorage.length).toBe(2);
+    expect(browser.sessionStorage.setItem).not.toHaveBeenCalled();
+  });
+
+  it("filters corrupt edition values and blocks arbitrary or locale-suffixed edition keys", async () => {
+    const { browser } = browserEnvironment(), adapter = createWebPlatformAdapter({ window: browser });
+    for (const key of [EDITION, LEGACY_STYLE]) {
+      for (const value of ["", "earth ", "NASA-BLUE-MARBLE", "constructor", "skin.base.earth"]) {
+        expect(await adapter.preferences.set(key, value)).toBe(false); expect(browser.localStorage.setItem).not.toHaveBeenCalled();
+        browser.localStorage.setItem(key, value); expect(await adapter.preferences.get(key)).toBeNull();
+        vi.mocked(browser.localStorage.setItem).mockClear();
+      }
+    }
+    const reads = vi.mocked(browser.localStorage.getItem).mock.calls.length;
+    for (const key of [EDITION + ":en", LEGACY_STYLE + "\u0000", "probpera.globe-edition.v3", "entitlements"]) {
+      expect(await adapter.preferences.set(key, "earth")).toBe(false);
+      expect(await adapter.preferences.get(key)).toBeNull(); expect(await adapter.preferences.remove(key)).toBe(false);
+    }
+    expect(browser.localStorage.getItem).toHaveBeenCalledTimes(reads);
+    expect(browser.localStorage.setItem).not.toHaveBeenCalled(); expect(browser.localStorage.removeItem).not.toHaveBeenCalled();
+  });
   it.each(["any-network", "wifi-only"])("restores only the allowlisted download policy %s", async value => {
     const { browser } = browserEnvironment();
     const adapter = createWebPlatformAdapter({ window: browser });
