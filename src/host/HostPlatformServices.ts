@@ -1,6 +1,7 @@
 import type { OpenLinkResult, PlatformServices, PlatformSnapshot, PreferenceStore } from "../platform/ports";
 import { createHostRecentHistory } from "./HostRecentHistory";
 import { GLOBE_EDITION_IDS } from "../planet/editions";
+import { GLOBE_STAND_IDS, GLOBE_STAND_PREFERENCE_KEY } from "../planet/globeStands";
 
 export interface HostListenerHandle { remove(): void | Promise<void>; }
 export interface HostAppState { readonly isActive: boolean; }
@@ -50,6 +51,7 @@ const preferenceValues = new Map<string, readonly string[]>([
   ["probpera-planet-download-network-v1", ["any-network", "wifi-only"]],
   ["probpera.globe-edition.v2", [...GLOBE_EDITION_IDS, "antique", "modern", "earth"]],
   ["probpera.globe-style.v1", ["antique", "modern", "earth"]],
+  [GLOBE_STAND_PREFERENCE_KEY, GLOBE_STAND_IDS],
 ]);
 const supportMail = "mailto:probperasite@yandex.ru";
 

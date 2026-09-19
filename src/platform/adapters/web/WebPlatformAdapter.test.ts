@@ -10,6 +10,7 @@ const WELCOME = "probpera-planet-welcome-v1";
 const GRAPHICS = "probpera-planet-graphics-quality-v1";
 const DOWNLOAD_NETWORK = "probpera-planet-download-network-v1";
 const EDITION = "probpera.globe-edition.v2", LEGACY_STYLE = "probpera.globe-style.v1";
+const STAND = "probpera-planet-stand-v1";
 
 function memoryStorage(): Storage {
   const entries = new Map<string, string>();
@@ -278,6 +279,34 @@ describe("browser capabilities and subscription lifetime", () => {
 });
 
 describe("non-secret best-effort canonical preferences", () => {
+  it("round-trips only exact adult stand choices without extending browser storage authority", async () => {
+    const env = browserEnvironment(), adapter = createWebPlatformAdapter({ window: env.browser });
+    const recreated = createWebPlatformAdapter({ window: env.browser });
+    for (const value of ["canonical", "stand.base.museum", "stand.base.wood", "stand.base.book-stack"]) {
+      expect(await adapter.preferences.set(STAND, value)).toBe(true);
+      expect(await recreated.preferences.get(STAND)).toBe(value);
+    }
+    expect(env.browser.localStorage.length).toBe(1);
+    expect(await recreated.preferences.remove(STAND)).toBe(true);
+    expect(await recreated.preferences.get(STAND)).toBeNull();
+    for (const value of ["wood", "base.stand.wood", "stand.base.child-book-cloud", "stand.base.wood ", "constructor"]) {
+      expect(await recreated.preferences.set(STAND, value)).toBe(false);
+      env.browser.localStorage.setItem(STAND, value);
+      expect(await recreated.preferences.get(STAND)).toBeNull();
+    }
+    vi.mocked(env.browser.localStorage.getItem).mockClear();
+    vi.mocked(env.browser.localStorage.setItem).mockClear();
+    vi.mocked(env.browser.localStorage.removeItem).mockClear();
+    for (const key of [STAND + ":en", STAND + "\u0000", "probpera-planet-stand-v2"]) {
+      expect(await recreated.preferences.get(key)).toBeNull();
+      expect(await recreated.preferences.set(key, "canonical")).toBe(false);
+      expect(await recreated.preferences.remove(key)).toBe(false);
+    }
+    expect(env.browser.localStorage.getItem).not.toHaveBeenCalled();
+    expect(env.browser.localStorage.setItem).not.toHaveBeenCalled();
+    expect(env.browser.localStorage.removeItem).not.toHaveBeenCalled();
+  });
+
   it("round-trips canonical globe IDs and exact legacy styles without a second locale-specific preference", async () => {
     const { browser } = browserEnvironment(), adapter = createWebPlatformAdapter({ window: browser });
     const recreated = createWebPlatformAdapter({ window: browser });

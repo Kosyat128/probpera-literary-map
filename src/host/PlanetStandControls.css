@@ -1,0 +1,59 @@
+.literary-globe .planet-stand-controls {
+  position: absolute;
+  z-index: 27;
+  left: max(14px, env(safe-area-inset-left));
+  bottom: 128px;
+  color: var(--planet-on-dark, #fff8ed);
+  font: 0.875rem/1.4 var(--sans);
+}
+
+.planet-stand-controls button, .planet-stand-controls select {
+  box-sizing: border-box;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--planet-accent, #e2bb60);
+  border-radius: 10px;
+  color: inherit;
+  background: var(--planet-chrome, #251724);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.planet-stand-controls button:disabled { opacity: 0.55; cursor: default; }
+.planet-stand-controls button:focus-visible, .planet-stand-controls select:focus-visible {
+  outline: 2px solid var(--planet-accent, #e2bb60);
+  outline-offset: 3px;
+}
+
+.planet-stand-controls__panel {
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  bottom: 54px;
+  width: min(310px, calc(100vw - 28px));
+  max-height: min(480px, calc(100dvh - 280px));
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 12px;
+  border: 1px solid var(--planet-accent, #e2bb60);
+  border-radius: 14px;
+  background: var(--planet-chrome, #251724);
+  box-shadow: 0 12px 32px rgb(0 0 0 / 28%);
+  overflow-wrap: anywhere;
+}
+
+.planet-stand-controls__heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+.planet-stand-controls__heading h2 { margin: 0; color: inherit; font: inherit; font-weight: 700; }
+.planet-stand-controls__heading button { flex: 0 0 44px; font-size: 1.5rem; }
+.planet-stand-controls__panel label { display: block; margin-bottom: 6px; }
+.planet-stand-controls__panel select { width: 100%; }
+.planet-stand-controls__hint, .planet-stand-controls__status { margin: 8px 0; font-size: 0.8125rem; }
+.planet-stand-controls__status:empty { margin: 0; }
+.planet-stand-controls__actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+
+@media (max-height: 580px) {
+  .literary-globe .planet-stand-controls { bottom: 108px; }
+  .planet-stand-controls__panel { max-height: calc(100dvh - 180px); }
+}

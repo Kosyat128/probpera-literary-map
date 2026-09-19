@@ -24,6 +24,9 @@ import NativePlanetPanel from "./host/NativePlanetPanel";
 import PlanetGraphicsSettings from "./host/PlanetGraphicsSettings";
 import PlanetDownloadsPanel from "./host/PlanetDownloadsPanel";
 import { usePlanetGraphicsQuality } from "./host/planetGraphicsQuality";
+import { usePlanetStandCustomization } from "./host/planetStandCustomization";
+import PlanetStandControls from "./host/PlanetStandControls";
+import type { GlobeStandPresentation } from "./planet/globeStands";
 import { ProductNoticeSlot } from "./host/ProductNoticeHost";
 import {
   type NativeNavigationContext,
@@ -572,6 +575,22 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     preferences: platformServices.preferences,
     enabled: isPlanetApplication,
   });
+  const stands = usePlanetStandCustomization({
+    preferences: platformServices.preferences,
+    enabled: isPlanetApplication,
+    // This application shell currently has no child profile. Child integration
+    // must supply a separately reviewed access decision instead of this adult path.
+    access: isPlanetApplication ? "adult" : "blocked",
+  });
+  const standPresentation = useMemo<GlobeStandPresentation>(() => ({
+    appliedId: stands.snapshot.appliedId,
+    displayedId: stands.snapshot.displayedId,
+    renderRevision: stands.snapshot.renderRevision,
+    onRendered: stands.controller.acknowledgeRendered,
+    onFailed: stands.controller.failRendering,
+    onContextLost: stands.controller.cancel,
+    onEditionChange: stands.controller.cancel,
+  }), [stands.snapshot.appliedId, stands.snapshot.displayedId, stands.snapshot.renderRevision, stands.controller]);
   const [nativeCollectionOpen, setNativeCollectionOpen] = useState(() => isPlanetApplication && addressRequestsCollection());
   const [planetLaunchComplete, setPlanetLaunchComplete] = useState(false);
   const completePlanetLaunch = useCallback(() => setPlanetLaunchComplete(true), []);
@@ -584,6 +603,13 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
       || Boolean(entry.hash && entry.hash !== "#atlas");
   });
   const nativeGlobeRootRef = useRef<HTMLElement>(null);
+  const closeStandControls = useCallback(() => {
+    stands.controller.cancel();
+    window.requestAnimationFrame(() => {
+      const root = nativeGlobeRootRef.current;
+      if (root && !root.hasAttribute("inert")) root.querySelector<HTMLElement>("[data-planet-stand-toggle]")?.focus({ preventScroll: true });
+    });
+  }, [stands.controller]);
   const nativeReturnRequestedRef = useRef(false);
   const [nativeBookWriterTarget, setNativeBookWriterTarget] = useState<BookWriterTarget | null>(null);
   const nativeBookWriterTargetRef = useRef<BookWriterTarget | null>(null);
@@ -2004,6 +2030,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     handleBack: () => {
       if (globalSearchOpen) { closeGlobalSearch(); return "handled"; }
       if (communityOpen) { closeCommunity(); return "handled"; }
+      if (stands.controller.getSnapshot().isOpen) { closeStandControls(); return "handled"; }
       if ((!isPlanetApplication || nativeCollectionOpen) && nativeBookBackRef.current?.()) return "handled";
       if (nativeCollectionOpen) { closeNativeCollection(); return "handled"; }
       if (closeLargestArchivesOnEscape()) return "handled";
@@ -2048,6 +2075,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     if (!isPlanetApplication || nativeCollectionOpen) return;
     const escape = (event: KeyboardEvent) => {
       if (event.key !== "Escape" || event.defaultPrevented || nativeGlobeRootRef.current?.hasAttribute("inert")) return;
+      if (stands.controller.getSnapshot().isOpen) { event.preventDefault(); closeStandControls(); return; }
       if (closeLargestArchivesOnEscape()) { event.preventDefault(); return; }
       if (atlasSearchOpen) {
         event.preventDefault();
@@ -2063,7 +2091,15 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     return () => window.removeEventListener("keydown", escape);
   }, [isPlanetApplication, nativeCollectionOpen, closeLargestArchivesOnEscape, atlasSearchOpen,
     closeAtlasSearch, atlasExperience.searchButtonRef, atlasExperience.filtersButtonRef,
-    atlasExperience.state.filtersOpen, atlasExperienceDispatch, selectedCountry, closeCountry]);
+    atlasExperience.state.filtersOpen, atlasExperienceDispatch, selectedCountry, closeCountry, stands.controller, closeStandControls]);
+
+  useLayoutEffect(() => {
+    // Suspend an untouched saved choice while another surface owns interaction;
+    // an explicit preview is cancelled without changing the applied stand.
+    stands.controller.setVisibility(isPlanetApplication && !nativeCollectionOpen && !globalSearchOpen
+      && !communityOpen && !atlasSearchOpen && !atlasExperience.state.filtersOpen && platformVisibility === "active");
+  }, [nativeCollectionOpen, globalSearchOpen, communityOpen, atlasSearchOpen,
+    atlasExperience.state.filtersOpen, platformVisibility, stands.controller, isPlanetApplication]);
 
   const readerName =
     user?.user_metadata?.display_name || user?.email?.split("@")[0] || "";
@@ -2622,6 +2658,9 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
                 economical={atlasExperience.economical}
                 qualityTier={isPlanetApplication ? graphics.qualityTier : undefined}
                 runtimeActive={globeRuntimeActive}
+                standCustomization={isPlanetApplication ? standPresentation : undefined}
+                standControls={isPlanetApplication ? <PlanetStandControls controller={stands.controller}
+                  snapshot={stands.snapshot} onClose={closeStandControls} /> : undefined}
                 showNobelLaureates={
                   atlasFilter === "nobel" ||
                   nobelSpotlightCountryId === selectedCountry?.id

@@ -3,6 +3,7 @@ import {
   useEffect,
   useState,
   type Ref,
+  type ReactNode,
 } from "react";
 import type { Country, WriterProfile } from "../data/countries/types";
 import type { WriterFilterState } from "../filters/filterTypes";
@@ -14,6 +15,7 @@ import type {
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import type { GlobeViewSample } from "./GlobeViewObserver";
 import type { GlobeQualityTier } from "./globeQuality";
+import type { GlobeStandPresentation } from "../planet/globeStands";
 import {
   useNearViewportActivation,
   type DeferredLoadStatus,
@@ -58,6 +60,8 @@ interface Props {
   economical?: boolean;
   qualityTier?: GlobeQualityTier;
   runtimeActive?: boolean;
+  standCustomization?: GlobeStandPresentation;
+  standControls?: ReactNode;
   dataStatus?: DeferredLoadStatus;
   forceLoad?: boolean;
   onLoadIntent?: () => void;
@@ -81,6 +85,8 @@ export default function LiteraryWorldMap({
   economical = false,
   qualityTier,
   runtimeActive = true,
+  standCustomization,
+  standControls,
   dataStatus = "ready",
   forceLoad = false,
   onLoadIntent,
@@ -174,6 +180,8 @@ export default function LiteraryWorldMap({
           economical={economical}
           qualityTier={qualityTier}
           runtimeActive={runtimeActive}
+          standCustomization={standCustomization}
+          standControls={standControls}
         />
       ) : (
         <div className="globe-loading" role="status" aria-live="polite">

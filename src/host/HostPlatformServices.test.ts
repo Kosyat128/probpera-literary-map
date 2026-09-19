@@ -9,6 +9,7 @@ const WELCOME = "probpera-planet-welcome-v1";
 const GRAPHICS = "probpera-planet-graphics-quality-v1";
 const DOWNLOAD_NETWORK = "probpera-planet-download-network-v1";
 const EDITION = "probpera.globe-edition.v2", LEGACY_STYLE = "probpera.globe-style.v1";
+const STAND = "probpera-planet-stand-v1";
 const RECENT = "probpera-planet-recent-adult-v1";
 const MAIL = "mailto:probperasite@yandex.ru";
 function deferred<T>() {
@@ -376,6 +377,31 @@ describe("native subscription lifetimes and ordering", () => {
 });
 
 describe("exact non-secret preferences with serialized readback", () => {
+  it("round-trips only exact adult stand choices through the stand preference key", async () => {
+    const f = fixture();
+    const recreated = createHostPlatformServices({ kind: "ios", channel: "dev", languages: ["en"], preferences: f.preferences });
+    for (const value of ["canonical", "stand.base.museum", "stand.base.wood", "stand.base.book-stack"]) {
+      expect(await f.services.preferences.set(STAND, value)).toBe(true);
+      expect(await recreated.preferences.get(STAND)).toBe(value);
+    }
+    expect([...f.memory.keys()]).toEqual([STAND]);
+    expect(await recreated.preferences.remove(STAND)).toBe(true);
+    expect(await recreated.preferences.get(STAND)).toBeNull();
+    f.preferences.set.mockClear(); f.preferences.remove.mockClear();
+    for (const value of ["wood", "base.stand.wood", "stand.base.child-book-cloud", "stand.base.wood ", "constructor"]) {
+      expect(await recreated.preferences.set(STAND, value)).toBe(false);
+      f.memory.set(STAND, value); expect(await recreated.preferences.get(STAND)).toBeNull();
+    }
+    const reads = f.preferences.get.mock.calls.length;
+    for (const key of [STAND + ":en", STAND + "\u0000", "probpera-planet-stand-v2"]) {
+      expect(await recreated.preferences.get(key)).toBeNull();
+      expect(await recreated.preferences.set(key, "canonical")).toBe(false);
+      expect(await recreated.preferences.remove(key)).toBe(false);
+    }
+    expect(f.preferences.get).toHaveBeenCalledTimes(reads);
+    expect(f.preferences.set).not.toHaveBeenCalled(); expect(f.preferences.remove).not.toHaveBeenCalled();
+  });
+
   it("round-trips canonical globe IDs and exact legacy styles through a recreated host adapter", async () => {
     const f = fixture();
     const recreated = createHostPlatformServices({ kind: "ios", channel: "dev", languages: ["en"], preferences: f.preferences });

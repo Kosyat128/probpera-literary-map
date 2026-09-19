@@ -37,14 +37,17 @@ assert.deepEqual(snapshot.starterItems.map(i=>({id:i.id,requirementId:i.requirem
  rows.map(r=>({id:r.item_id,requirementId:r.requirement_id,category:r.category})));
 assert.equal(snapshot.grantsEntitlement,false);assert.equal(snapshot.releaseReady,false);
 const moduleInputs=Object.keys(built.metafile.inputs).filter(p=>p!=='<stdin>').map(p=>path.relative(root,path.resolve(root,p)).replaceAll('\\','/'));
-const sourcePaths=[...new Set([tablePath,'scripts/mobile/audit-starter-set.mjs','scripts/mobile/csv.mjs',...moduleInputs])].sort();
-const sourceBefore=await Promise.all(sourcePaths.map(evidence));
 const sourceBindings={
  'background.base.site-starfield':['src/components/LiteraryGlobe.tsx'],
  'canonical-globe':['src/components/LiteraryGlobe.tsx','src/components/GlobeCameraRig.tsx'],
  'literary-archive':['src/planet/catalog.ts','src/App.tsx'],
  'search-favorites-offline':['src/search/globalSearchRuntime.ts','src/hooks/useReadingLibrary.ts','src/planet/ContentDownloads.ts'],
+ 'stand.base.museum':['src/planet/globeStands.ts','src/components/globeStandGeometry.ts','src/components/GlobeIncludedStand.tsx','src/host/planetStandCustomization.ts','src/host/PlanetStandControls.tsx'],
+ 'stand.base.wood':['src/planet/globeStands.ts','src/components/globeStandGeometry.ts','src/components/GlobeIncludedStand.tsx','src/host/planetStandCustomization.ts','src/host/PlanetStandControls.tsx'],
+ 'stand.base.book-stack':['src/planet/globeStands.ts','src/components/globeStandGeometry.ts','src/components/GlobeIncludedStand.tsx','src/host/planetStandCustomization.ts','src/host/PlanetStandControls.tsx'],
 };
+const sourcePaths=[...new Set([tablePath,'scripts/mobile/audit-starter-set.mjs','scripts/mobile/csv.mjs',...moduleInputs,...Object.values(sourceBindings).flat()])].sort();
+const sourceBefore=await Promise.all(sourcePaths.map(evidence));
 const editions=[];
 for(const id of snapshot.grandfatheredEditionIds) {
  const edition=runtime.GLOBE_EDITION_BY_ID[id];assert.ok(edition);

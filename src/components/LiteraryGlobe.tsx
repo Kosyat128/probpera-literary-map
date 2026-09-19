@@ -11,6 +11,7 @@ import {
   type PointerEvent as ReactPointerEvent,
   type Ref,
   type RefObject,
+  type ReactNode,
 } from "react";
 import * as THREE from "three";
 import { installPlanetAppearance } from "../host/planetAppearance";
@@ -66,6 +67,8 @@ import {
   type GlobeQualityTier,
 } from "./globeQuality";
 import { createAntiqueWhaleBodyGeometry } from "./globeAntiqueGeometry";
+import GlobeIncludedStand from "./GlobeIncludedStand";
+import type { GlobeStandPresentation } from "../planet/globeStands";
 import GlobeViewObserver, { type GlobeViewSample } from "./GlobeViewObserver";
 import { resolveCountryGlobeCoordinates } from "./globeCoordinates";
 import {
@@ -159,6 +162,8 @@ interface Props {
   economical?: boolean;
   qualityTier?: GlobeQualityTier;
   runtimeActive?: boolean;
+  standCustomization?: GlobeStandPresentation;
+  standControls?: ReactNode;
 }
 
 const GLOBE_EDITION_STORAGE_KEY = "probpera.globe-edition.v2";
@@ -1656,6 +1661,7 @@ function SelectedWriterLocationMarker({
 
 function GlobeScene({
   atlas,
+  standCustomization,
   visualStyle,
   overlayProfile,
   countries,
@@ -1687,6 +1693,7 @@ function GlobeScene({
   touchInteractionEnabled,
 }: {
   atlas: GlobeAtlas;
+  standCustomization?: GlobeStandPresentation;
   visualStyle: GlobeVisualStyle;
   overlayProfile: GlobeOverlayProfile;
   countries: Country[];
@@ -1783,6 +1790,13 @@ function GlobeScene({
     },
     [focusIntent, onCameraFocusSettled, updateNobelDetailMode]
   );
+  const canonicalFrame = visualStyle === "antique" ? (
+    <MythicGlobeFrame quality={quality} />
+  ) : visualStyle === "modern" ? (
+    <ModernGlobeFrame quality={quality} />
+  ) : (
+    <ContemporaryGlobeFrame visualStyle={visualStyle} quality={quality} />
+  );
 
   return (
     <>
@@ -1864,16 +1878,9 @@ function GlobeScene({
         active={active && !touchInteractionEnabled}
         onCountrySelect={onCountrySelect}
       />
-      {visualStyle === "antique" ? (
-        <MythicGlobeFrame quality={quality} />
-      ) : visualStyle === "modern" ? (
-        <ModernGlobeFrame quality={quality} />
-      ) : (
-        <ContemporaryGlobeFrame
-          visualStyle={visualStyle}
-          quality={quality}
-        />
-      )}
+      {standCustomization
+        ? <GlobeIncludedStand presentation={standCustomization} quality={quality.tier} canonicalFrame={canonicalFrame} />
+        : canonicalFrame}
       <MicrostateMarkers
         atlas={atlas}
         countries={countries}
@@ -1953,11 +1960,15 @@ export default function LiteraryGlobe({
   economical = false,
   qualityTier,
   runtimeActive = true,
+  standCustomization,
+  standControls,
 }: Props) {
   const quality = resolveGlobeQualityProfile(qualityTier, economical);
   const { language, t, countryName, number } = useInterfaceLanguage();
   const platformServices = usePlatformServices();
   const isPlanetApplication = isControlledWebEdition || platformServices.kind !== "web";
+  const standCustomizationRef = useRef(standCustomization);
+  useLayoutEffect(() => { standCustomizationRef.current = standCustomization; }, [standCustomization]);
   const editionPreference = usePlanetEditionPreference({
     preferences: platformServices.preferences,
     enabled: isPlanetApplication,
@@ -2359,6 +2370,7 @@ export default function LiteraryGlobe({
   }, [renderedEditionId, revealEditionRail]);
   const requestEdition = useCallback(
     async (editionId: GlobeEditionId) => {
+      standCustomizationRef.current?.onEditionChange();
       if (isPlanetApplication) editionPreference.requestEdition(editionId);
       editionRailRestoreFocusRef.current = Boolean(
         editionRailRef.current?.contains(document.activeElement)
@@ -2641,6 +2653,7 @@ export default function LiteraryGlobe({
       };
       const lifecycle = installGlobeWebGlContextLifecycle(canvas, {
         onContextLost: () => {
+          standCustomizationRef.current?.onContextLost();
           window.cancelAnimationFrame(diagnosticFrame);
           setFrameloop("never");
           setWebglContextState("lost");
@@ -3041,6 +3054,7 @@ export default function LiteraryGlobe({
       >
         <GlobeScene
           atlas={atlas}
+          standCustomization={standCustomization}
           visualStyle={renderedVisualStyle}
           overlayProfile={renderedEdition.overlayProfile}
           countries={countries}
@@ -3213,6 +3227,8 @@ export default function LiteraryGlobe({
         </output>
       </div>
 
+      {standControls}
+
       <IconButton
         ref={editionRailToggleRef}
         className="globe-style-switch-toggle"
@@ -3347,7 +3363,10 @@ export default function LiteraryGlobe({
             ? `${t("Загружается издание")} «${GLOBE_EDITION_BY_ID[pendingEditionId].compactLabel[language]}»`
             : ""}
         {visualStyleError && (
-          <button type="button" onClick={() => void globeStyle.retryStyle()}>
+          <button type="button" onClick={() => {
+            standCustomizationRef.current?.onEditionChange();
+            void globeStyle.retryStyle();
+          }}>
             {t("Повторить")}
           </button>
         )}
