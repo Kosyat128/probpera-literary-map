@@ -3,9 +3,9 @@
   "repository": "Kosyat128/probpera-literary-map",
   "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
-  "headSha": "6bd52a5a4ba82912ebbe8442180e1856a6f00c9b",
+  "headSha": "676d78f3b066f8c879766ddd9c45cd58a57ff5af",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-19T15:59:47.837Z",
+  "updatedAt": "2026-09-19T16:21:52.970Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -1728,10 +1728,12 @@
         {
           "id": "S11.CONTENT-007",
           "status": "OPEN",
-          "evidence": [],
+          "evidence": [
+            "docs/mobile/evidence/S11/dossier-navigation-20260919/result.json"
+          ],
           "commit": null,
           "lastValidatedAt": null,
-          "notes": "Airplane-mode core. Canonical export/display comes before offline integrity and reviewed English equivalence."
+          "notes": "Airplane-mode core. Canonical export/display comes before offline integrity and reviewed English equivalence. Accessible dossier navigation and existing saved-book progress no longer depend on successful physical pagination. Exact semantic identities and account ownership fence late results. Focused source/browser evidence is separate from full offline/device acceptance."
         },
         {
           "id": "S11.CONTENT-008",
@@ -1775,11 +1777,12 @@
             "docs/mobile/evidence/S11/storage-management-20260914/result.json",
             "docs/mobile/evidence/S11/wifi-policy-20260919/result.json",
             "docs/mobile/evidence/S11/optional-uninstall-20260919/result.json",
-            "docs/mobile/evidence/S11/download-inspection-20260919/result.json"
+            "docs/mobile/evidence/S11/download-inspection-20260919/result.json",
+            "docs/mobile/evidence/S11/dossier-navigation-20260919/result.json"
           ],
           "commit": null,
           "lastValidatedAt": null,
-          "notes": "Offline and slow network cannot create endless loader or data corruption. Feature readiness is checked again in moderation against the exact candidate and localized dossier. Download controls now pause on background/offline and resume explicitly from verified files; retained native observation fixes a browser-reproduced stale foreground state. Native device, complete content and full-stage acceptance remain open. Storage capacity display and explicit incomplete-candidate removal are implemented; real Chrome verifies cross-tab commit protection and offline current/previous reads. Android/dev packaging passes, with native device execution and full criterion acceptance still open. Wi-Fi-only preference and explicit unknown-network handling pass focused tests; native resume invalidates stale connection types and policy changes stop transfers. Current PWA and Android/dev include storage and Wi-Fi controls, with native device/iOS/full-criterion acceptance still open. Optional saved-package removal is app-catalog authorized, exact-selection confirmed and atomically retired with retained version/epoch metadata. Focused source/Chrome and Java compilation pass; native device execution, iOS and global criterion acceptance remain open. Opted-in saved packages now have receipt-bound semantic inspection with mutation/background/disposal invalidation and bounded reads. Focused real offline Chrome RU/EN and exact PWA/Android packaging pass. Staged views do not activate content or establish full acceptance."
+          "notes": "Offline and slow network cannot create endless loader or data corruption. Feature readiness is checked again in moderation against the exact candidate and localized dossier. Download controls now pause on background/offline and resume explicitly from verified files; retained native observation fixes a browser-reproduced stale foreground state. Native device, complete content and full-stage acceptance remain open. Storage capacity display and explicit incomplete-candidate removal are implemented; real Chrome verifies cross-tab commit protection and offline current/previous reads. Android/dev packaging passes, with native device execution and full criterion acceptance still open. Wi-Fi-only preference and explicit unknown-network handling pass focused tests; native resume invalidates stale connection types and policy changes stop transfers. Current PWA and Android/dev include storage and Wi-Fi controls, with native device/iOS/full-criterion acceptance still open. Optional saved-package removal is app-catalog authorized, exact-selection confirmed and atomically retired with retained version/epoch metadata. Focused source/Chrome and Java compilation pass; native device execution, iOS and global criterion acceptance remain open. Opted-in saved packages now have receipt-bound semantic inspection with mutation/background/disposal invalidation and bounded reads. Focused real offline Chrome RU/EN and exact PWA/Android packaging pass. Staged views do not activate content or establish full acceptance. Accessible dossier navigation and existing saved-book progress no longer depend on successful physical pagination. Exact semantic identities and account ownership fence late results. Focused source/browser evidence is separate from full offline/device acceptance."
         },
         {
           "id": "S11.MOD-045",
@@ -1861,11 +1864,12 @@
             "docs/mobile/evidence/S11/wifi-policy-20260919/result.json",
             "docs/mobile/evidence/S11/optional-uninstall-20260919/result.json",
             "docs/mobile/evidence/S11/reader-progress-20260919/result.json",
-            "docs/mobile/evidence/S11/download-inspection-20260919/result.json"
+            "docs/mobile/evidence/S11/download-inspection-20260919/result.json",
+            "docs/mobile/evidence/S11/dossier-navigation-20260919/result.json"
           ],
           "commit": null,
           "lastValidatedAt": null,
-          "notes": "All loading/empty/error/offline states. Shared feature presentation precedes integrated RU/EN layout, recovery and accessibility validation. Download controls now pause on background/offline and resume explicitly from verified files; retained native observation fixes a browser-reproduced stale foreground state. Native device, complete content and full-stage acceptance remain open. Wi-Fi-only preference and explicit unknown-network handling pass focused tests; native resume invalidates stale connection types and policy changes stop transfers. Current PWA and Android/dev include storage and Wi-Fi controls, with native device/iOS/full-criterion acceptance still open. Optional saved-package removal is app-catalog authorized, exact-selection confirmed and atomically retired with retained version/epoch metadata. Focused source/Chrome and Java compilation pass; native device execution, iOS and global criterion acceptance remain open. Previous saved optional versions now remain manageable after catalogue updates. Shared reader progress and favorites isolate adult identities and fence stale asynchronous results; focused local/browser ports pass. Actual production sync, complete content and criterion acceptance remain open. Opted-in saved packages now have receipt-bound semantic inspection with mutation/background/disposal invalidation and bounded reads. Focused real offline Chrome RU/EN and exact PWA/Android packaging pass. Staged views do not activate content or establish full acceptance."
+          "notes": "All loading/empty/error/offline states. Shared feature presentation precedes integrated RU/EN layout, recovery and accessibility validation. Download controls now pause on background/offline and resume explicitly from verified files; retained native observation fixes a browser-reproduced stale foreground state. Native device, complete content and full-stage acceptance remain open. Wi-Fi-only preference and explicit unknown-network handling pass focused tests; native resume invalidates stale connection types and policy changes stop transfers. Current PWA and Android/dev include storage and Wi-Fi controls, with native device/iOS/full-criterion acceptance still open. Optional saved-package removal is app-catalog authorized, exact-selection confirmed and atomically retired with retained version/epoch metadata. Focused source/Chrome and Java compilation pass; native device execution, iOS and global criterion acceptance remain open. Previous saved optional versions now remain manageable after catalogue updates. Shared reader progress and favorites isolate adult identities and fence stale asynchronous results; focused local/browser ports pass. Actual production sync, complete content and criterion acceptance remain open. Opted-in saved packages now have receipt-bound semantic inspection with mutation/background/disposal invalidation and bounded reads. Focused real offline Chrome RU/EN and exact PWA/Android packaging pass. Staged views do not activate content or establish full acceptance. Accessible dossier navigation and existing saved-book progress no longer depend on successful physical pagination. Exact semantic identities and account ownership fence late results. Focused source/browser evidence is separate from full offline/device acceptance."
         }
       ],
       "lastGreenCommands": [
@@ -1934,7 +1938,8 @@
         "docs/mobile/evidence/S11/older-package-20260919/result.json",
         "docs/mobile/evidence/S11/globe-recovery-20260919/result.json",
         "docs/mobile/evidence/S11/staged-content-20260919/result.json",
-        "docs/mobile/evidence/S11/download-inspection-20260919/result.json"
+        "docs/mobile/evidence/S11/download-inspection-20260919/result.json",
+        "docs/mobile/evidence/S11/dossier-navigation-20260919/result.json"
       ],
       "externalBlockers": []
     },
@@ -10735,7 +10740,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Continue S11 airplane-mode core: assess and close cold-offline navigation/search/reader gaps against the current canonical bundled dataset. Keep staged QA packages inactive, production catalog/trust empty, and D107 owner archive synchronization deferred. Do not repeat validated package/reader/globe suites without a related change.",
+    "nextAction": "Continue internal V12 work from the verified dossier navigation checkpoint. Preserve completed offline package, reader and globe checks; refresh runtime artifacts in the next accumulated runtime batch. Keep QA packages inactive, production trust empty, D107 deferred, and full-stage acceptance open.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -10780,7 +10785,8 @@
       "docs/mobile/evidence/S11/older-package-20260919/result.json",
       "docs/mobile/evidence/S11/globe-recovery-20260919/result.json",
       "docs/mobile/evidence/S11/staged-content-20260919/result.json",
-      "docs/mobile/evidence/S11/download-inspection-20260919/result.json"
+      "docs/mobile/evidence/S11/download-inspection-20260919/result.json",
+      "docs/mobile/evidence/S11/dossier-navigation-20260919/result.json"
     ],
     "commands": [
       "node scripts/mobile/verify-requirements.mjs",
@@ -10797,7 +10803,8 @@
       "Optional uninstall source 46df306b: 167 focused units, 4 real Chrome cases, final type/platform checks and Android Java compilation passed. No full artifact refresh yet; preserve Wi-Fi PWA d1e90c35 and Android b2f77958.",
       "Reader progress: 17 focused units and 1 Chrome case. Previous optional package: 138 units and 2 Chrome cases (first a1, second a2). Reading library and combined artifact results are recorded in reader-progress-20260919/result.json. Reuse unchanged evidence.",
       "Staged content semantic inspection: focused units, TypeScript and actual cache/intake of both preserved S08 generations are recorded in staged-content-20260919/result.json. No archive regeneration or artifact rebuild occurred.",
-      "download-inspection-20260919: 54 units, TypeScript, actual signed S08 package in offline Chrome RU/EN, and exact PWA/Android artifacts passed. Keep prior attempts/artifacts. Staged inspection is not dataset activation."
+      "download-inspection-20260919: 54 units, TypeScript, actual signed S08 package in offline Chrome RU/EN, and exact PWA/Android artifacts passed. Keep prior attempts/artifacts. Staged inspection is not dataset activation.",
+      "dossier-navigation-20260919 records focused late-layout/failed-layout navigation, saved-book position and account-scope checks. No runtime artifact rebuild in this slice."
     ]
   },
   "requirementsHash": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732",
@@ -12446,6 +12453,14 @@
       "sha256": "c62d086e5913359db762229245f718e199ea9a6da15c3cd88cd80433787eebe7",
       "sourceCommit": "6bd52a5a4ba82912ebbe8442180e1856a6f00c9b",
       "status": "RECEIPT_BOUND_DOWNLOAD_INSPECTION_VALIDATED",
+      "releaseReady": false,
+      "stageAccepted": false
+    },
+    "s11DossierNavigation": {
+      "path": "docs/mobile/evidence/S11/dossier-navigation-20260919/result.json",
+      "sha256": "a264771e2bb583069d10605d39eddd2f7f22d32d9d1f8db2ecfe0a05aad85679",
+      "sourceCommit": "676d78f3b066f8c879766ddd9c45cd58a57ff5af",
+      "status": "DOSSIER_NAVIGATION_LATE_LAYOUT_VALIDATED",
       "releaseReady": false,
       "stageAccepted": false
     }

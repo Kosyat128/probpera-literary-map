@@ -1,3 +1,14 @@
+<!-- s11-dossier-navigation-20260919:begin -->
+Source 676d78f3 preserves explicit dossier navigation across delayed
+physical pagination and saves existing saved-book positions when layout fails.
+Canonical identities and account ownership fence restored and pending locations.
+Focused unit, TypeScript and actual component Chrome checks pass with controlled
+layout/auth ports. Evidence: evidence/S11/dossier-navigation-20260919/result.json.
+PWA 5403f982 and Android/dev 8d8cb1ec remain exact preserved artifacts from 6bd52a5a;
+this newer source slice awaits the next runtime build batch. No full-stage,
+installed-device, production auth or release acceptance is claimed.
+<!-- s11-dossier-navigation-20260919:end -->
+
 <!-- s11-download-inspection-20260919:begin -->
 Source 6bd52a5a adds receipt-bound staged inspection to package
 management and a RU/EN content-check control. 54 units, TypeScript and one actual

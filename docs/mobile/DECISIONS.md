@@ -742,3 +742,9 @@
   run; completion revisions fence overlapping reads and mutations. Background,
   disposal and bounded abort races release stale results. RU/EN shows concise
   statuses without internal hashes or raw errors.
+
+- D127: Accessible dossier navigation is semantic user intent, independent of
+  font measurement and physical layout success. Exact public-document identities
+  validate restored locations; pending intent is consumed into physical pages
+  without taking ownership away from later page turns. Saved-book progress stays
+  local and follows its existing explicit-save policy and account ownership.

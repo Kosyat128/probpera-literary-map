@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "mode": "static",
+  "startedAt": "2026-09-19T16:12:05.162Z",
+  "endedAt": "2026-09-19T16:12:27.333Z",
+  "sourceBase": "98708d045b6d5339b36f549da127bc17d8f780b9",
+  "sourceInputs": [
+    {
+      "path": "docs/mobile/evidence/S11/dossier-navigation-20260919/playwright.config.mjs",
+      "sha256": "c29dd750e64a39dd10fe61bc1b16fd99f072c0f9c66b755c4604cc2e215d1914"
+    },
+    {
+      "path": "docs/mobile/evidence/S11/dossier-navigation-20260919/run-checks.mjs",
+      "sha256": "984456ae7d38a375ad3d8a7d7835ecc35e86246bc854bcbfe68425705225b817"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+    },
+    {
+      "path": "package.json",
+      "sha256": "90b392c205754f838b8bc7c4475bd475936be1078561bb218c437d151177869f"
+    },
+    {
+      "path": "src/books/bookDossierDocument.ts",
+      "sha256": "eebdaac897bff5cd49ce9a27b8def78ba4dc65d814ee728d0e1fa3d54cbe99b6"
+    },
+    {
+      "path": "src/books/bookDossierLegacyAdapter.ts",
+      "sha256": "b54cc64ff4c1903b2b989e20680aa97f03fa4f00a439d7d19f612ba1da8d44a9"
+    },
+    {
+      "path": "src/books/bookDossierLocation.test.ts",
+      "sha256": "7ad12dbb95ab690dff7b7f72a0858b524fb5f3c48c3140c754250efaa3e14c6c"
+    },
+    {
+      "path": "src/books/bookDossierLocation.ts",
+      "sha256": "80c09df2eadeec775c5324e9671171bbe0f6f0d452ad6d457857e7dcfe2aa2bf"
+    },
+    {
+      "path": "src/books/bookDossierProgress.ts",
+      "sha256": "503d6b7c9e26da19aee4162c8fc67fa92ad9e09bb08caac97fcd23b795e557dc"
+    },
+    {
+      "path": "src/books/bookInspectionPageLayout.ts",
+      "sha256": "72cc88dfb6e3050fd418d6539c41f59e643c2df68b8f1c57fe8ebd5ebbd62208"
+    },
+    {
+      "path": "src/books/bookInspectionSession.test.ts",
+      "sha256": "55acef05a84d23cdc91ed05667537024064ee27ab68a34fbd8bd08941bb745e5"
+    },
+    {
+      "path": "src/books/bookInspectionSession.ts",
+      "sha256": "aff5e2d8c8daaa6af21b1d6aee09a63419da83c1065f77dcecb7afb822e9f990"
+    },
+    {
+      "path": "src/books/usePublishedBookDossier.ts",
+      "sha256": "67d2d3dfe387bd42aafa026176c9a66246dc8b01cb7fc04003e58ac719d4aea4"
+    },
+    {
+      "path": "src/community/AuthContext.tsx",
+      "sha256": "979334217af2f29388af0955c081487215f6a3aeb540a07a2ba1c7920fa759b3"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "sha256": "4df8c4015d1b433462a8d052220aa1d08382adb482d19ced7658afa25824943a"
+    },
+    {
+      "path": "src/components/BookDossierReader.tsx",
+      "sha256": "7953e1aa3fd3cc22e3bd8ac7d50ff9bd1f6448a023d5c31045fe244c4d554332"
+    },
+    {
+      "path": "src/hooks/useReadingLibrary.ts",
+      "sha256": "c0d1dda1fe79a7b71c42602cf0b865f1843a3b62d4ad02dfed2d2f759a00385a"
+    },
+    {
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "sha256": "41afc69ed9dd15ac3caf976818de5d2b50749a2cdbfd64e917e93988b0f00143"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "8d51a8c9266fe83bf17c076b51672753b3750a17520cd0d2c28a90cb8b21e0d6"
+    },
+    {
+      "path": "vitest.config.ts",
+      "sha256": "5c1e90985e77b35599e5bdaf77c74a1166949ec9c4f45d1c5f926c3f53bef90e"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "executions": [
+    {
+      "name": "typecheck",
+      "exitCode": 0,
+      "durationMs": 22109
+    }
+  ],
+  "tests": null,
+  "pass": true,
+  "releaseReady": false,
+  "deviceTested": false,
+  "productionActivation": false
+}

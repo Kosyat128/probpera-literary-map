@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-19T16:21:52.970Z",
+  "sourceCommit": "676d78f3b066f8c879766ddd9c45cd58a57ff5af",
+  "stage": "S11",
+  "status": "DOSSIER_NAVIGATION_LATE_LAYOUT_VALIDATED",
+  "pass": true,
+  "runs": {
+    "unit": {
+      "path": "docs/mobile/evidence/S11/dossier-navigation-20260919/unit-a1/result.json",
+      "sha256": "8413dd649a7b9d8e65c07a11f69ae37adb82eb015356bd723d1378e25f3c428e",
+      "tests": {
+        "passed": 21,
+        "failed": 0,
+        "skipped": 0,
+        "failures": []
+      }
+    },
+    "static": {
+      "path": "docs/mobile/evidence/S11/dossier-navigation-20260919/static-a1/result.json",
+      "sha256": "4ed2ebb33d6ff065ca395cb0d01e19790ef3aa207963cfa48b8237b0ce1eb30b",
+      "tests": null
+    },
+    "browser": {
+      "path": "docs/mobile/evidence/S11/dossier-navigation-20260919/browser-a1/result.json",
+      "sha256": "d8fbdb73a5e01ebb2bcfaa62f13937f07f2e6572c5f102e90e70062c72f355ed",
+      "tests": {
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "errors": []
+      }
+    }
+  },
+  "unchangedRuntimeArtifacts": {
+    "path": "docs/mobile/evidence/S11/download-inspection-20260919/result.json",
+    "sha256": "c62d086e5913359db762229245f718e199ea9a6da15c3cd88cd80433787eebe7"
+  },
+  "artifactsRefreshed": false,
+  "controlledLayoutPort": true,
+  "controlledAccountPort": true,
+  "actualProductionAuth": false,
+  "savedBookPolicyUnchanged": true,
+  "installedNative": false,
+  "iosCompiled": false,
+  "productionActionsPerformed": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "nextAction": "Continue internal V12 work from the verified dossier navigation checkpoint. Preserve completed offline package, reader and globe checks; refresh runtime artifacts in the next accumulated runtime batch. Keep QA packages inactive, production trust empty, D107 deferred, and full-stage acceptance open."
+}
