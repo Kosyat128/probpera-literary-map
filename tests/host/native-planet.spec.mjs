@@ -1140,6 +1140,56 @@ test("native host background pauses the actual globe while the document stays vi
     await expect.poll(async () => (await nativeGlobeRuntime(page)).renderFrame).toBeGreaterThan(automaticBackground.at(-1).renderFrame);
     await retained(page, original);
 
+    // Interrupt a real drag without delivering pointerup to the active rig.
+    // A native background event must end its parent interaction pause itself.
+    const canvasBounds = await globe.locator("canvas").boundingBox();
+    expect(canvasBounds).not.toBeNull();
+    await page.mouse.move(canvasBounds.x + 64, canvasBounds.y + canvasBounds.height / 2);
+    await page.mouse.down();
+    await page.mouse.move(canvasBounds.x + 124, canvasBounds.y + canvasBounds.height / 2, { steps: 4 });
+    await expect(globe).toHaveAttribute("data-globe-camera-phase", "manual");
+    expect(await page.evaluate(() => window.__nativePlanetHarness.setAppActive(false))).toBe(1);
+    await expect(globe).toHaveAttribute("data-globe-render-loop", "paused");
+    await expect(globe).toHaveAttribute("data-globe-camera-phase", "idle");
+    await page.mouse.move(0, 0);
+    expect(await page.evaluate(() => window.__nativePlanetHarness.setAppActive(true))).toBe(1);
+    await expect(globe).toHaveAttribute("data-globe-auto-rotate", "active", { timeout: 5000 });
+    await expect(globe).toHaveAttribute("data-globe-camera-phase", "auto");
+    await expect.poll(async () => (await nativeGlobeRuntime(page)).autoRotate).toBe(true);
+    await retained(page, original);
+
+    const delayedRelease = await page.evaluateHandle(() => {
+      const element = document.querySelector("#atlas .literary-globe");
+      const current = window.__nativePlanetHarness.scenes().find(value => element.contains(value.canvas));
+      let endEvents = 0;
+      const phases = [];
+      const onEnd = () => { endEvents += 1; };
+      const observer = new MutationObserver(records => {
+        phases.push(...records.map(record => record.oldValue), element.getAttribute("data-globe-camera-phase"));
+      });
+      observer.observe(element, { attributes: true, attributeFilter: ["data-globe-camera-phase"], attributeOldValue: true });
+      current.controls.addEventListener("end", onEnd);
+      return { snapshot: () => ({ endEvents, phases: [...phases] }),
+        dispose: () => { observer.disconnect(); current.controls.removeEventListener("end", onEnd); } };
+    });
+    let delayedReleaseEvidence;
+    try {
+      await page.mouse.up();
+      await expect.poll(() => delayedRelease.evaluate(probe => probe.snapshot().endEvents)).toBe(1);
+      await browserFrames(page);
+      delayedReleaseEvidence = await delayedRelease.evaluate(probe => probe.snapshot());
+      expect(delayedReleaseEvidence.phases).not.toContain("settling");
+      await expect(globe).toHaveAttribute("data-globe-camera-phase", "auto");
+      await expect(globe).toHaveAttribute("data-globe-auto-rotate", "active");
+      await retained(page, original);
+    } finally {
+      await delayedRelease.evaluate(probe => probe.dispose());
+      await delayedRelease.dispose();
+    }
+    await evidence(fixture, testInfo, "native-host-interrupted-drag", { delayedReleaseEvidence,
+      rotationResumedBeforePointerUp: true, sameCanvasRendererCameraScene: true,
+      nativeLifecycleFixture: "Real Chrome drag interrupted by injected App lifecycle; late real pointerup observed" });
+
     // Select an existing canonical writer through the real UI, then preserve
     // that selection, locale and reduced-motion preference across another cycle.
     await page.emulateMedia({ reducedMotion: "reduce" });
@@ -1182,7 +1232,7 @@ test("native host background pauses the actual globe while the document stays vi
     await expect.poll(() => page.evaluate(() => window.__nativePlanetHarness.appListenerCount())).toBe(1);
     await evidence(fixture, testInfo, "native-host-resumed-en-selection", { selectedBackground, selectedPose,
       selectedCountry: "russia", selectedWriter: "dostoevsky", locale: "en", reducedMotion: true,
-      sameCanvasRendererCameraScene: true, nativeLifecycleFixture: "Two injected OS lifecycle cycles with real App/R3F behavior",
+      sameCanvasRendererCameraScene: true, nativeLifecycleFixture: "Three injected OS lifecycle cycles with real App/R3F behavior",
       batteryOrDeviceMeasurement: false });
   } finally { await original.dispose(); }
 });

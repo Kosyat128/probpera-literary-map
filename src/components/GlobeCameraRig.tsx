@@ -453,6 +453,13 @@ export default function GlobeCameraRig({
     [camera, invalidate, setPhase]
   );
 
+  const endManualInteraction = useCallback(() => {
+    if (!manualInteractionRef.current) return false;
+    manualInteractionRef.current = false;
+    callbacksRef.current.onInteractionEnd?.();
+    return true;
+  }, []);
+
   useEffect(() => {
     const controls = controlsRef.current;
     if (!controls || initializedRef.current) return;
@@ -502,9 +509,11 @@ export default function GlobeCameraRig({
     if (!controls) return;
     if (!active) {
       cancelMotion("visibility");
-      manualInteractionRef.current = false;
       controls.enabled = false;
       controls.autoRotate = false;
+      // A native background transition can swallow pointerup. End the parent
+      // gesture pause too, and ignore its delayed pointerup after resuming.
+      endManualInteraction();
       setPhase("idle");
       return;
     }
@@ -513,7 +522,7 @@ export default function GlobeCameraRig({
     controls.enableRotate = interactionEnabled;
     controls.enableZoom = interactionEnabled;
     if (!interactionEnabled && manualInteractionRef.current) {
-      manualInteractionRef.current = false;
+      endManualInteraction();
       settlingRef.current = null;
     }
     if (reducedMotion && flightRef.current) {
@@ -526,6 +535,7 @@ export default function GlobeCameraRig({
   }, [
     active,
     autoRotate,
+    endManualInteraction,
     finishFlight,
     interactionEnabled,
     reducedMotion,
@@ -588,7 +598,7 @@ export default function GlobeCameraRig({
   ]);
 
   const handleInteractionStart = useCallback(() => {
-    if (!settingsRef.current.interactionEnabled) return;
+    if (!settingsRef.current.active || !settingsRef.current.interactionEnabled) return;
     const controls = controlsRef.current;
     cancelMotion("manual");
     manualInteractionRef.current = true;
@@ -601,10 +611,9 @@ export default function GlobeCameraRig({
   }, [cancelMotion, setPhase]);
 
   const handleInteractionEnd = useCallback(() => {
-    manualInteractionRef.current = false;
-    callbacksRef.current.onInteractionEnd?.();
+    if (!endManualInteraction() || !settingsRef.current.active) return;
     beginSettling("manual");
-  }, [beginSettling]);
+  }, [beginSettling, endManualInteraction]);
 
   const handleControlsChange = useCallback(() => {
     const source: GlobeCameraMotionSource = flightRef.current

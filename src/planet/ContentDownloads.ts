@@ -2,6 +2,8 @@ import { contentPackageCanonicalJson, contentPackageHash, inspectContentPackageE
   type ContentPackageEnvelope, type ContentPackageExpected } from "./contentPackageProtocol.mjs";
 import { normalizeContentPackageBaseUrl, type ContentPackageFetch } from "./contentPackageTransport";
 import type { createContentPackageCache, ContentPackageDownloadProgress } from "./contentPackageCache";
+import { createDownloadNetworkPreference, type DownloadNetworkPreferenceSnapshot, type DownloadNetworkPolicy,
+  type DownloadNetworkType, type DownloadPreferenceStore } from "./DownloadNetworkPreference";
 
 export interface ContentDownloadDescriptor {
   readonly id: string;
@@ -12,7 +14,7 @@ export interface ContentDownloadDescriptor {
   readonly previous: Readonly<{ expected: ContentPackageExpected; manifestSha256: string }> | null;
   readonly baseUrl: string;
 }
-export type ContentDownloadPhase = "unchecked" | "checking" | "not-saved" | "downloading" | "verifying" | "pausing" | "paused" | "cancelling" | "saved" | "cancelled" | "error" | "unavailable" | "clearing" | "cleared" | "protected" | "clear-error";
+export type ContentDownloadPhase = "unchecked" | "checking" | "not-saved" | "downloading" | "verifying" | "pausing" | "paused" | "waiting-wifi" | "cancelling" | "saved" | "cancelled" | "error" | "unavailable" | "clearing" | "cleared" | "protected" | "clear-error";
 export interface ContentStorageSpace {
   readonly phase: "unchecked" | "checking" | "ready" | "unavailable";
   readonly availableBytes: number | null;
@@ -20,7 +22,7 @@ export interface ContentStorageSpace {
 }
 export type ContentStorageSpaceReader = () => Promise<{ availableBytes: number; kind: "browser-estimate" | "device" }>;
 export interface ContentDownloadLifecycle {
-  getSnapshot(): { readonly visibility: "active" | "background"; readonly connectivity: "online" | "offline" | "unknown" };
+  getSnapshot(): { readonly visibility: "active" | "background"; readonly connectivity: "online" | "offline" | "unknown"; readonly networkType?: DownloadNetworkType };
   subscribe(listener: () => void): () => void;
 }
 export interface ContentDownloadItem {
@@ -32,6 +34,7 @@ export interface ContentDownloadsSnapshot {
   readonly items: readonly ContentDownloadItem[];
   readonly available: boolean;
   readonly space: ContentStorageSpace;
+  readonly network: DownloadNetworkPreferenceSnapshot & { readonly type: DownloadNetworkType };
 }
 export interface ContentDownloads {
   getSnapshot(): ContentDownloadsSnapshot;
@@ -40,6 +43,8 @@ export interface ContentDownloads {
   download(id: string): Promise<void>;
   discard(id: string): Promise<void>;
   checkSpace(): Promise<void>;
+  loadNetworkPreference(): Promise<void>;
+  setNetworkPolicy(policy: DownloadNetworkPolicy): Promise<void>;
   pause(id: string): void;
   cancel(id: string): void;
   dispose(): void;
@@ -69,6 +74,7 @@ export function createContentDownloads(options: {
   readonly createCache: (() => ContentPackageCache) | null;
   readonly fetch: ContentPackageFetch | null;
   readonly lifecycle?: ContentDownloadLifecycle;
+  readonly preferences?: DownloadPreferenceStore;
   /** Display only, kept in memory and never sent to a server or persisted. */
   readonly readSpace?: ContentStorageSpaceReader | null;
 }): ContentDownloads {
@@ -82,14 +88,20 @@ export function createContentDownloads(options: {
   const createCache = options.createCache, fetch = options.fetch;
   let cache: ContentPackageCache | undefined, disposed = false;
   let snapshot: ContentDownloadsSnapshot = Object.freeze({ available: !!createCache && !!fetch,
+    network: Object.freeze({ policy: options.preferences ? "wifi-only" : "any-network", status: options.preferences ? "unloaded" : "session-only", type: "unknown" }),
     space: Object.freeze({ phase: "unchecked", availableBytes: null, kind: null }),
     items: Object.freeze([...descriptors.values()].map(value => Object.freeze({ id: value.id, title: Object.freeze({ ...value.title }),
       totalBytes: value.envelope.manifest.files.reduce((sum, file) => sum + file.bytes, 0), completedBytes: 0,
       phase: "unchecked" as ContentDownloadPhase, qaOnly: true as const }))) });
-  type Task = { controller: AbortController; promise: Promise<void>; mode: "check" | "download" | "discard"; interruption: "pause" | "cancel" | null };
+  type Task = { controller: AbortController; promise: Promise<void>; mode: "check" | "download" | "discard"; interruption: "pause" | "cancel" | "wifi" | null };
   const listeners = new Set<() => void>(), pending = new Map<string, Task>();
   let unsubscribeLifecycle: (() => void) | undefined;
   let spacePending: Promise<void> | undefined, cancelSpace: (() => void) | undefined;
+  const networkPreference = createDownloadNetworkPreference(options.preferences, () => {
+    if (disposed) return;
+    snapshot = Object.freeze({ ...snapshot, network: Object.freeze({ ...snapshot.network, ...networkPreference.getSnapshot() }) });
+    observeLifecycle(); notify();
+  });
   function notify() {
     for (const listener of [...listeners]) { try { listener(); } catch { /* Observers cannot own downloads. */ } }
   }
@@ -128,20 +140,34 @@ export function createContentDownloads(options: {
     void operation.then(() => { if (spacePending === operation) spacePending = undefined; });
     return operation;
   }
-  function interrupt(id: string, reason: "pause" | "cancel") {
+  function interrupt(id: string, reason: "pause" | "cancel" | "wifi") {
     const task = pending.get(id);
     if (!task || task.mode === "discard" || task.interruption === "cancel" || task.interruption === reason) return;
     task.interruption = reason;
     // Fence progress and reentrant observers before announcing the transition.
     task.controller.abort();
-    update(id, reason === "pause" ? "pausing" : "cancelling");
+    update(id, reason === "cancel" ? "cancelling" : "pausing");
+  }
+  function networkState(): ReturnType<ContentDownloadLifecycle["getSnapshot"]> {
+    try { return options.lifecycle?.getSnapshot() ?? { visibility: "active" as const, connectivity: "unknown" as const }; }
+    catch { return { visibility: "active" as const, connectivity: "unknown" as const }; }
+  }
+  function requiresWifi() {
+    const state = networkState();
+    return !["unloaded", "loading"].includes(snapshot.network.status) && snapshot.network.policy === "wifi-only"
+      && (state.networkType !== "wifi" || state.connectivity !== "online");
   }
   function observeLifecycle() {
-    if (disposed || !options.lifecycle) return;
-    const state = options.lifecycle.getSnapshot();
+    if (disposed) return;
+    const state = networkState();
+    const type = state.connectivity === "online" && ["wifi", "cellular", "ethernet"].includes(state.networkType ?? "") ? state.networkType! : "unknown";
+    const changed = snapshot.network.type !== type;
+    if (changed) snapshot = Object.freeze({ ...snapshot, network: Object.freeze({ ...snapshot.network, type }) });
     for (const [id, task] of pending) {
       if (state.visibility === "background" || (task.mode === "download" && state.connectivity === "offline")) interrupt(id, "pause");
+      else if (task.mode === "download" && requiresWifi()) interrupt(id, "wifi");
     }
+    if (changed) notify();
     // Foreground/network recovery never restarts a transfer without a user action.
   }
   function detachLifecycle() {
@@ -149,12 +175,26 @@ export function createContentDownloads(options: {
     unsubscribeLifecycle = undefined;
     try { unsubscribe?.(); } catch { /* A host cleanup failure cannot change saved bytes. */ }
   }
+  function attachLifecycle() {
+    if (disposed) return;
+    if (options.lifecycle && !unsubscribeLifecycle) {
+      const unsubscribe = options.lifecycle.subscribe(observeLifecycle);
+      if (disposed) { try { unsubscribe(); } catch { /* Disposal remains final. */ } return; }
+      unsubscribeLifecycle = unsubscribe;
+    }
+    observeLifecycle();
+  }
+  function loadNetworkPreference() {
+    if (disposed) return Promise.resolve();
+    attachLifecycle();
+    return networkPreference.load();
+  }
   function run(id: string, mode: Task["mode"]): Promise<void> {
     if (disposed || !descriptors.has(id)) return Promise.resolve();
     if (pending.has(id)) return pending.get(id)!.promise;
     const item = descriptors.get(id)!, controller = new AbortController(), signal = controller.signal;
     const task: Task = { controller, promise: Promise.resolve(), mode, interruption: null };
-    const interruptedPhase = () => task.interruption === "pause" ? "paused" as const : "cancelled" as const;
+    const interruptedPhase = () => task.interruption === "pause" ? "paused" as const : task.interruption === "wifi" ? "waiting-wifi" as const : "cancelled" as const;
     task.promise = Promise.resolve().then(async () => {
       if (signal.aborted) { update(id, interruptedPhase()); return; }
       if (!createCache || (mode === "download" && !fetch)) { update(id, mode === "discard" ? "clear-error" : "unavailable"); return; }
@@ -167,12 +207,9 @@ export function createContentDownloads(options: {
       // Keep one observation until platform disposal. Native snapshot reads are
       // synchronous; detaching while paused would miss foreground events and
       // reject Resume using a stale background snapshot before getState returns.
-      if (options.lifecycle && !unsubscribeLifecycle) {
-        const unsubscribe = options.lifecycle.subscribe(observeLifecycle);
-        if (disposed) { try { unsubscribe(); } catch { /* Disposal remains final. */ } return; }
-        unsubscribeLifecycle = unsubscribe;
-      }
-      observeLifecycle();
+      if (mode === "download") await networkPreference.load();
+      if (signal.aborted) { update(id, interruptedPhase()); return; }
+      attachLifecycle();
       if (signal.aborted) { update(id, interruptedPhase()); return; }
       cache ??= createCache();
       const current = await cache.read({ expected: item.expected, manifestSha256: item.manifestSha256, signal });
@@ -189,8 +226,15 @@ export function createContentDownloads(options: {
         if (signal.aborted || value.phase === "saved") return;
         update(id, value.phase, value.cachedBytes + value.downloadedBytes);
       };
+      const guardedFetch: ContentPackageFetch = (...args) => {
+        // Recheck synchronously at each request boundary even if a platform change
+        // event was delayed. Never start a new file on a disallowed connection.
+        observeLifecycle();
+        if (signal.aborted) return Promise.reject(new Error("cancelled"));
+        return fetch!(...args);
+      };
       const result = await cache.download({ envelope: item.envelope, expected: item.expected, manifestSha256: item.manifestSha256,
-        expectedCurrentManifestSha256: prior, baseUrl: item.baseUrl, fetch: fetch!, signal, onProgress });
+        expectedCurrentManifestSha256: prior, baseUrl: item.baseUrl, fetch: guardedFetch, signal, onProgress });
       // An abort during atomic selection can still commit; report that outcome.
       update(id, result.ok ? "saved" : signal.aborted ? interruptedPhase() : "error", result.ok ? item.envelope.manifest.files.reduce((sum, file) => sum + file.bytes, 0) : undefined);
     }).catch(() => update(id, mode === "discard" ? "clear-error" : signal.aborted ? interruptedPhase() : "unavailable")).finally(() => {
@@ -204,11 +248,12 @@ export function createContentDownloads(options: {
     subscribe(listener: () => void) { if (disposed) return () => {}; listeners.add(listener); return () => { listeners.delete(listener); }; },
     check: (id: string) => run(id, "check"), download: (id: string) => run(id, "download"),
     discard: (id: string) => run(id, "discard"), checkSpace,
+    loadNetworkPreference, setNetworkPolicy: (policy: DownloadNetworkPolicy) => networkPreference.set(policy),
     pause: (id: string) => interrupt(id, "pause"),
     cancel(id: string) {
       if (pending.has(id)) interrupt(id, "cancel");
-      else if (snapshot.items.some(item => item.id === id && item.phase === "paused")) update(id, "cancelled");
+      else if (snapshot.items.some(item => item.id === id && ["paused", "waiting-wifi"].includes(item.phase))) update(id, "cancelled");
     },
-    dispose() { disposed = true; cancelSpace?.(); for (const task of pending.values()) task.controller.abort(); detachLifecycle(); listeners.clear(); },
+    dispose() { disposed = true; networkPreference.dispose(); cancelSpace?.(); for (const task of pending.values()) task.controller.abort(); detachLifecycle(); listeners.clear(); },
   });
 }

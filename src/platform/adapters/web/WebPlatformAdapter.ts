@@ -12,10 +12,12 @@ import { createWebContentDownloads, type WebContentHost } from "./WebContentDown
 import type { ContentDownloads } from "../../../planet/ContentDownloads";
 
 type EventHost = Pick<EventTarget, "addEventListener" | "removeEventListener">;
+export interface WebAdapterConnection extends EventHost { readonly type?: string; }
 export interface WebAdapterDocument extends EventHost {
   readonly visibilityState?: DocumentVisibilityState;
 }
 export interface WebAdapterNavigator {
+  readonly connection?: WebAdapterConnection;
   readonly locks?: NonNullable<WebContentHost["navigator"]>["locks"];
   readonly storage?: NonNullable<WebContentHost["navigator"]>["storage"];
   readonly onLine?: boolean;
@@ -44,6 +46,7 @@ const preferenceValues = new Map<string, readonly string[]>([
   ["probpera-display-mode", ["dark", "light", "book"]],
   ["probpera-planet-welcome-v1", ["completed"]],
   ["probpera-planet-graphics-quality-v1", ["high", "balanced", "economy"]],
+  ["probpera-planet-download-network-v1", ["any-network", "wifi-only"]],
 ]);
 
 function safeHttpsUrl(input: string): string | null {
@@ -69,7 +72,7 @@ export function createWebPlatformAdapter(
     ? (typeof window === "undefined" ? null : window)
     : options.window;
   const documentHost = options.document === undefined ? browser?.document ?? null : options.document;
-  const navigatorHost = options.navigator === undefined ? browser?.navigator ?? null : options.navigator;
+  const navigatorHost: WebAdapterNavigator | null = options.navigator === undefined ? browser?.navigator ?? null : options.navigator;
   // Getters defer storage access until an explicitly requested preference operation.
   const storageHost = browser ? {
     get localStorage(): Storage {
@@ -107,7 +110,12 @@ export function createWebPlatformAdapter(
 
   let snapshot: PlatformSnapshot | undefined;
   let lastNotifiedSnapshot: PlatformSnapshot | undefined;
+  let connectionListenerHost: WebAdapterConnection | null = null;
   const listeners = new Map<() => void, number>();
+  function connectionHost(): WebAdapterConnection | null {
+    try { return navigatorHost?.connection ?? null; }
+    catch { return null; }
+  }
   function getSnapshot(): PlatformSnapshot {
     let connectivity: PlatformSnapshot["connectivity"] = "unknown";
     let visibility: PlatformSnapshot["visibility"] = "active";
@@ -118,8 +126,14 @@ export function createWebPlatformAdapter(
     try {
       if (documentHost?.visibilityState === "hidden") visibility = "background";
     } catch { /* SSR or a restricted host has no observable visibility. */ }
-    if (!snapshot || snapshot.connectivity !== connectivity || snapshot.visibility !== visibility) {
-      snapshot = Object.freeze({ connectivity, visibility });
+    let networkType: PlatformSnapshot["networkType"];
+    try {
+      const type = connectionHost()?.type;
+      if (connectivity === "online" && visibility === "active"
+        && (type === "wifi" || type === "cellular" || type === "ethernet")) networkType = type;
+    } catch { /* A speed estimate or denied type is never proof of Wi-Fi. */ }
+    if (!snapshot || snapshot.connectivity !== connectivity || snapshot.visibility !== visibility || snapshot.networkType !== networkType) {
+      snapshot = Object.freeze({ connectivity, visibility, ...(networkType ? { networkType } : {}) });
     }
     return snapshot;
   }
@@ -136,11 +150,21 @@ export function createWebPlatformAdapter(
     browser?.addEventListener("online", refresh);
     browser?.addEventListener("offline", refresh);
     documentHost?.addEventListener("visibilitychange", refresh);
+    const connection = connectionHost();
+    if (connection) {
+      connectionListenerHost = connection;
+      try { connection.addEventListener("change", refresh); }
+      catch { /* Optional capability may be denied; other lifecycle listeners remain active. */ }
+    }
   }
   function detach() {
     browser?.removeEventListener("online", refresh);
     browser?.removeEventListener("offline", refresh);
     documentHost?.removeEventListener("visibilitychange", refresh);
+    const connection = connectionListenerHost;
+    connectionListenerHost = null;
+    try { connection?.removeEventListener("change", refresh); }
+    catch { /* Cleanup is best-effort and must remain idempotent. */ }
   }
   function subscribe(listener: () => void) {
       const first = listeners.size === 0;
@@ -167,7 +191,7 @@ export function createWebPlatformAdapter(
     kind: "web" as const,
     channel: "web" as const,
     preferences,
-    downloads: options.downloads ?? createWebContentDownloads(browser, undefined, { getSnapshot, subscribe }),
+    downloads: options.downloads ?? createWebContentDownloads(browser, undefined, { getSnapshot, subscribe }, preferences),
     getSnapshot,
     subscribe,
     getSystemLanguages() {

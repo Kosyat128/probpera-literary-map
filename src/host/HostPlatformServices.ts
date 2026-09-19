@@ -3,7 +3,7 @@ import { createHostRecentHistory } from "./HostRecentHistory";
 
 export interface HostListenerHandle { remove(): void | Promise<void>; }
 export interface HostAppState { readonly isActive: boolean; }
-export interface HostNetworkState { readonly connected: boolean; }
+export interface HostNetworkState { readonly connected: boolean; readonly connectionType?: string; }
 export interface HostAppBridge {
   getState(): Promise<HostAppState>;
   addListener(event: "appStateChange", listener: (state: HostAppState) => void): Promise<HostListenerHandle>;
@@ -46,6 +46,7 @@ const preferenceValues = new Map<string, readonly string[]>([
   ["probpera-display-mode", ["dark", "light", "book"]],
   ["probpera-planet-welcome-v1", ["completed"]],
   ["probpera-planet-graphics-quality-v1", ["high", "balanced", "economy"]],
+  ["probpera-planet-download-network-v1", ["any-network", "wifi-only"]],
 ]);
 const supportMail = "mailto:probperasite@yandex.ru";
 
@@ -147,7 +148,8 @@ export function createHostPlatformServices(options: HostPlatformServicesOptions)
   const subscribers = new Map<() => void, number>();
   const current = (session: Lifetime) => session.alive && lifetime === session && subscribers.size > 0;
   function publish(session: Lifetime, next: PlatformSnapshot) {
-    if (!current(session) || (next.connectivity === snapshot.connectivity && next.visibility === snapshot.visibility)) return;
+    if (!current(session) || (next.connectivity === snapshot.connectivity && next.visibility === snapshot.visibility
+      && next.networkType === snapshot.networkType)) return;
     snapshot = Object.freeze(next);
     for (const listener of [...subscribers.keys()]) {
       if (!current(session)) break;
@@ -155,27 +157,41 @@ export function createHostPlatformServices(options: HostPlatformServicesOptions)
       try { observeCallback(listener(), "subscriber"); } catch { report("subscriber", "callback-failed"); }
     }
   }
+  function withoutNetworkType(): PlatformSnapshot {
+    return { connectivity: snapshot.connectivity, visibility: snapshot.visibility };
+  }
   function acceptNetwork(session: Lifetime, state: HostNetworkState) {
-    const connected = state?.connected;
+    let connected: unknown;
+    let type: unknown;
+    try { connected = state?.connected; type = state?.connectionType; }
+    catch { report("network-status", "invalid-response"); publish(session, withoutNetworkType()); return; }
     if (typeof connected !== "boolean") report("network-status", "invalid-response");
     // A native connectivity hint never proves an authority endpoint is reachable.
-    publish(session, { ...snapshot, connectivity: typeof connected === "boolean" ? connected ? "online" : "offline" : "unknown" });
+    const networkType = connected === true && snapshot.visibility === "active"
+      && (type === "wifi" || type === "cellular" || type === "ethernet") ? type : undefined;
+    publish(session, { ...withoutNetworkType(), connectivity: typeof connected === "boolean" ? connected ? "online" : "offline" : "unknown",
+      ...(networkType ? { networkType } : {}) });
   }
   function acceptApp(session: Lifetime, state: HostAppState) {
     const isActive = state?.isActive;
     if (typeof isActive !== "boolean") { report("app-state", "invalid-response"); return; }
     const resumed = isActive && snapshot.visibility === "background";
-    publish(session, { ...snapshot, visibility: isActive ? "active" : "background" });
+    const changed = (isActive ? "active" : "background") !== snapshot.visibility;
+    // Background callbacks and pre-background reads cannot authorize a resumed transfer.
+    if (changed) ++session.networkSequence;
+    publish(session, { ...(changed ? withoutNetworkType() : snapshot), visibility: isActive ? "active" : "background" });
     if (resumed && current(session)) void readNetwork(session);
   }
   async function readNetwork(session: Lifetime) {
     if (!current(session)) return;
     const sequence = ++session.networkSequence;
     try {
-      if (!options.network) { report("network-status", "unavailable"); return; }
+      if (!options.network) { report("network-status", "unavailable"); publish(session, withoutNetworkType()); return; }
       const state = await options.network.getStatus();
       if (current(session) && sequence === session.networkSequence) acceptNetwork(session, state);
-    } catch { if (current(session) && sequence === session.networkSequence) report("network-status", "unavailable"); }
+    } catch { if (current(session) && sequence === session.networkSequence) {
+      report("network-status", "unavailable"); publish(session, withoutNetworkType());
+    } }
   }
   async function readApp(session: Lifetime) {
     if (!current(session)) return;
@@ -201,6 +217,9 @@ export function createHostPlatformServices(options: HostPlatformServicesOptions)
   function attach() {
     const session: Lifetime = { alive: true, appSequence: 0, networkSequence: 0, handles: new Set() };
     lifetime = session;
+    // A new listener lifetime cannot reuse transport information observed before a gap.
+    publish(session, withoutNetworkType());
+    if (!current(session)) return;
     if (options.app) {
       const sequence = session.appSequence;
       void register(session, "app-listener", () => options.app!.addListener("appStateChange", state => {

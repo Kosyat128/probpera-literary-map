@@ -5,10 +5,13 @@ import type { ContentDownloads } from "../planet/ContentDownloads";
 export type PlatformKind = "web" | "android" | "ios";
 export type DistributionChannel = "web" | "dev" | "googlePlay" | "ruStore" | "appStore";
 export type Connectivity = "online" | "offline" | "unknown";
+export type NetworkType = "wifi" | "cellular" | "ethernet" | "unknown";
 export type ApplicationVisibility = "active" | "background";
 export interface PlatformSnapshot {
   readonly connectivity: Connectivity;
   readonly visibility: ApplicationVisibility;
+  /** Explicit transport capability only; omission means unknown, never Wi-Fi. */
+  readonly networkType?: NetworkType;
 }
 
 /** Non-secret preferences only. This interface cannot store proof of ownership. */

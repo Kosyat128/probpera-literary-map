@@ -6,6 +6,7 @@ const LANGUAGE = "probpera-interface-language";
 const DISPLAY = "probpera-display-mode";
 const WELCOME = "probpera-planet-welcome-v1";
 const GRAPHICS = "probpera-planet-graphics-quality-v1";
+const DOWNLOAD_NETWORK = "probpera-planet-download-network-v1";
 const RECENT = "probpera-planet-recent-adult-v1";
 const MAIL = "mailto:probperasite@yandex.ru";
 function deferred<T>() {
@@ -86,6 +87,68 @@ describe("SDK-free host identity and stable snapshots", () => {
 });
 
 describe("native subscription lifetimes and ordering", () => {
+  it("publishes explicit transport changes without interpreting connectivity as Wi-Fi", async () => {
+    const f = fixture();
+    const listener = vi.fn();
+    const stop = f.services.subscribe(listener);
+    await flush();
+    expect(f.services.getSnapshot().networkType).toBeUndefined();
+    listener.mockClear();
+    for (const connectionType of ["wifi", "cellular", "ethernet"]) {
+      f.networkEvents[0]({ connected: true, connectionType });
+      expect(f.services.getSnapshot()).toEqual({ connectivity: "online", visibility: "active", networkType: connectionType });
+    }
+    expect(listener).toHaveBeenCalledTimes(3);
+    const stable = f.services.getSnapshot();
+    f.networkEvents[0]({ connected: true, connectionType: "ethernet" });
+    expect(f.services.getSnapshot()).toBe(stable);
+    for (const connectionType of [undefined, "4g", "unknown", "none", "mixed"]) {
+      f.networkEvents[0]({ connected: true, connectionType });
+      expect(f.services.getSnapshot().networkType).toBeUndefined();
+    }
+    f.networkEvents[0]({ connected: false, connectionType: "wifi" });
+    expect(f.services.getSnapshot()).toEqual({ connectivity: "offline", visibility: "active" });
+    stop();
+  });
+  it("fences background reads and keeps the resumed transport unknown until a fresh observation", async () => {
+    const f = fixture();
+    const initial = deferred<HostNetworkState>();
+    const resumed = deferred<HostNetworkState>();
+    f.network.getStatus.mockReturnValueOnce(initial.promise).mockReturnValueOnce(resumed.promise);
+    const stop = f.services.subscribe(vi.fn());
+    await flush();
+    f.networkEvents[0]({ connected: true, connectionType: "wifi" });
+    f.appEvents[0]({ isActive: false });
+    expect(f.services.getSnapshot().networkType).toBeUndefined();
+    f.networkEvents[0]({ connected: true, connectionType: "wifi" });
+    initial.resolve({ connected: true, connectionType: "wifi" });
+    await flush();
+    expect(f.services.getSnapshot().networkType).toBeUndefined();
+    f.appEvents[0]({ isActive: true });
+    expect(f.services.getSnapshot().networkType).toBeUndefined();
+    f.networkEvents[0]({ connected: true, connectionType: "cellular" });
+    resumed.resolve({ connected: true, connectionType: "wifi" });
+    await flush();
+    expect(f.services.getSnapshot().networkType).toBe("cellular");
+    stop();
+  });
+  it("does not reuse known Wi-Fi after malformed native data or a failed resubscription read", async () => {
+    const f = fixture();
+    const stop = f.services.subscribe(vi.fn());
+    await flush();
+    f.networkEvents[0]({ connected: true, connectionType: "wifi" });
+    f.networkEvents[0](Object.defineProperty({ connected: true }, "connectionType", { get() { throw new Error("denied"); } }));
+    expect(f.services.getSnapshot().networkType).toBeUndefined();
+    f.networkEvents[0]({ connected: true, connectionType: "wifi" });
+    stop();
+    f.network.getStatus.mockRejectedValue(new Error("unavailable"));
+    const stopNext = f.services.subscribe(vi.fn());
+    expect(f.services.getSnapshot().networkType).toBeUndefined();
+    await flush();
+    expect(f.services.getSnapshot().networkType).toBeUndefined();
+    expect(f.onFailure).toHaveBeenCalledWith({ operation: "network-status", reason: "unavailable" });
+    stopNext();
+  });
   it("shares one native listener pair with independent duplicate callback cleanup", async () => {
     const f = fixture();
     const callback = vi.fn();
@@ -311,6 +374,16 @@ describe("native subscription lifetimes and ordering", () => {
 });
 
 describe("exact non-secret preferences with serialized readback", () => {
+  it.each(["any-network", "wifi-only"])("restores only the allowlisted download policy %s", async value => {
+    const f = fixture();
+    expect(await f.services.preferences.set(DOWNLOAD_NETWORK, value)).toBe(true);
+    const recreated = createHostPlatformServices({ kind: "ios", channel: "dev", languages: [], preferences: f.preferences });
+    expect(await recreated.preferences.get(DOWNLOAD_NETWORK)).toBe(value);
+    expect(await recreated.preferences.set(DOWNLOAD_NETWORK, "4g")).toBe(false);
+    expect(await recreated.preferences.remove(DOWNLOAD_NETWORK)).toBe(true);
+    f.memory.set(DOWNLOAD_NETWORK, "cellular");
+    expect(await recreated.preferences.get(DOWNLOAD_NETWORK)).toBeNull();
+  });
   it.each(["android", "ios"] as const)("exposes lazy adult history through the %s bridge without widening generic preferences", async kind => {
     const f = fixture();
     const services = createHostPlatformServices({ kind, channel: "dev", languages: ["ru"], preferences: f.preferences });

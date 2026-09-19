@@ -43,6 +43,6 @@ export async function createIosPlatformAdapter(options: IosPlatformAdapterOption
     subscribeUrl: listener => bindings.app.addListener("appUrlOpen", listener),
     timeoutMs: options.timeoutMs, onFailure: options.onNavigationFailure,
   });
-  const downloads = createNativeContentDownloads(bindings.contentStore && bindings.core.isPluginAvailable("PlanetContentStore") ? bindings.contentStore : null, { lifecycle: services });
+  const downloads = createNativeContentDownloads(bindings.contentStore && bindings.core.isPluginAvailable("PlanetContentStore") ? bindings.contentStore : null, { lifecycle: services, preferences: services.preferences });
   return Object.freeze({ services: Object.freeze({ ...services, navigation, downloads }), initialization });
 }

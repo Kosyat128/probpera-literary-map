@@ -1,4 +1,4 @@
-import { useId, useSyncExternalStore } from "react";
+import { useEffect, useId, useSyncExternalStore } from "react";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import type { ContentDownloads, ContentDownloadPhase } from "../planet/ContentDownloads";
 import "./PlanetDownloadsPanel.css";
@@ -13,6 +13,10 @@ export const planetDownloadsCopy = {
       check: "Проверить файлы", download: "Загрузить", retry: "Повторить загрузку", cancel: "Отменить", pause: "Приостановить", resume: "Продолжить загрузку",
       qa: "Проверочный пакет: его содержимое пока не добавляется в литературный архив.",
       bytes: "байт", progress: "Получение файлов",
+      network: { label: "Загружать только по Wi-Fi", help: "При смене сети загрузка приостанавливается. Продолжение — по вашей команде.",
+        unknown: "Тип сети не определён. Загрузка только по Wi-Fi доступна после подтверждения соединения платформой.",
+        wifi: "Подключение: Wi-Fi.", cellular: "Подключение: мобильная сеть.", ethernet: "Подключение: проводная сеть.",
+        loading: "Читаем настройку…", saving: "Сохраняем настройку…", session: "Настройка действует в этом сеансе; сохранение после перезапуска не подтверждено." },
       size: "Размер пакета", clear: "Удалить незавершённую загрузку",
       clearHelp: "Удаляются только файлы незавершённой загрузки. Текущая и предыдущая сохранённые версии защищены. Для повторной загрузки понадобится сеть.",
       space: { check: "Проверить место", unchecked: "Доступное место ещё не проверено.", checking: "Проверяем доступное место…",
@@ -23,6 +27,7 @@ export const planetDownloadsCopy = {
         unchecked: "Файлы ещё не проверены.", checking: "Проверяем сохранённые файлы…", "not-saved": "Пакет ещё не сохранён.",
         downloading: "Загружаем файлы…", verifying: "Проверяем пакет перед сохранением…", cancelling: "Завершаем отмену…",
         pausing: "Приостанавливаем загрузку…", paused: "Загрузка приостановлена. Проверенные файлы сохранены. Для продолжения откройте приложение и подключитесь к сети.",
+        "waiting-wifi": "Загрузка приостановлена настройкой «Только по Wi-Fi». Подключитесь к Wi-Fi или измените настройку, затем нажмите «Продолжить загрузку».",
         saved: "Пакет сохранён и проверен на этом устройстве.", cancelled: "Загрузка отменена. Проверенные файлы можно использовать при повторной загрузке.",
         error: "Не удалось сохранить и проверить пакет. Проверьте соединение и свободное место, затем повторите загрузку.",
         unavailable: "Хранилище загрузок недоступно. Закройте и снова откройте приложение, затем повторите проверку.",
@@ -37,6 +42,10 @@ export const planetDownloadsCopy = {
       check: "Check files", download: "Download", retry: "Retry download", cancel: "Cancel", pause: "Pause", resume: "Resume download",
       qa: "Test package: its content is not yet added to the literary archive.",
       bytes: "bytes", progress: "Receiving files",
+      network: { label: "Download over Wi-Fi only", help: "Downloads pause when the connection changes. You choose when to resume.",
+        unknown: "The connection type is unknown. Wi-Fi-only downloads require the platform to confirm a Wi-Fi connection.",
+        wifi: "Connection: Wi-Fi.", cellular: "Connection: mobile network.", ethernet: "Connection: wired network.",
+        loading: "Reading preference…", saving: "Saving preference…", session: "This preference applies to this session; persistence after restart has not been confirmed." },
       size: "Package size", clear: "Remove unfinished download",
       clearHelp: "Only unfinished download files are removed. The current and previous saved versions are protected. Downloading again will require a connection.",
       space: { check: "Check space", unchecked: "Available space has not been checked yet.", checking: "Checking available space…",
@@ -47,6 +56,7 @@ export const planetDownloadsCopy = {
         unchecked: "Files have not been checked yet.", checking: "Checking saved files…", "not-saved": "The package has not been saved yet.",
         downloading: "Downloading files…", verifying: "Checking the package before saving…", cancelling: "Finishing cancellation…",
         pausing: "Pausing the download…", paused: "Download paused. Verified files have been kept. Open the app and connect to the network to continue.",
+        "waiting-wifi": "Download paused by the Wi-Fi-only preference. Connect to Wi-Fi or change the preference, then select Resume download.",
         saved: "The package is saved and verified on this device.", cancelled: "Download cancelled. Verified files can be reused when you retry.",
         error: "The package could not be saved and verified. Check your connection and free space, then retry the download.",
         unavailable: "Download storage is unavailable. Close and reopen the app, then check again.",
@@ -58,16 +68,29 @@ export const planetDownloadsCopy = {
   },
 } as const;
 const working = new Set<ContentDownloadPhase>(["checking", "downloading", "verifying", "pausing", "cancelling", "clearing"]);
-const progressPhases = new Set<ContentDownloadPhase>(["downloading", "verifying", "pausing", "paused", "cancelling"]);
+const progressPhases = new Set<ContentDownloadPhase>(["downloading", "verifying", "pausing", "paused", "waiting-wifi", "cancelling"]);
 
 export default function PlanetDownloadsPanel({ downloads }: { downloads: ContentDownloads }) {
   const { language } = useInterfaceLanguage();
   const snapshot = useSyncExternalStore(downloads.subscribe, downloads.getSnapshot, downloads.getSnapshot);
+  useEffect(() => { void downloads.loadNetworkPreference(); }, [downloads]);
   const copy = planetDownloadsCopy.locales[language], id = useId();
   const number = new Intl.NumberFormat(language === "ru" ? "ru-RU" : "en-US");
   return <details className="planet-downloads" data-planet-downloads="">
     <summary>{copy.heading}</summary>
     <div className="planet-downloads__body">
+      <div className="planet-downloads__network" data-download-network={snapshot.network.type}>
+        <label className="planet-downloads__network-toggle">
+          <input type="checkbox" checked={snapshot.network.policy === "wifi-only"} aria-describedby={`${id}-network`}
+            onChange={event => { void downloads.setNetworkPolicy(event.target.checked ? "wifi-only" : "any-network"); }} />
+          <span>{copy.network.label}</span>
+        </label>
+        <p id={`${id}-network`} role="status" aria-live="polite" aria-atomic="true">
+          {copy.network[snapshot.network.type]} {copy.network.help}
+          {snapshot.network.status === "loading" || snapshot.network.status === "unloaded" ? ` ${copy.network.loading}`
+            : snapshot.network.status === "saving" ? ` ${copy.network.saving}` : snapshot.network.status === "session-only" ? ` ${copy.network.session}` : ""}
+        </p>
+      </div>
       <div className="planet-downloads__space" data-storage-space={snapshot.space.phase}>
         <p id={`${id}-space`} role="status" aria-live="polite" aria-atomic="true">
           {snapshot.space.phase === "ready"
@@ -99,11 +122,11 @@ export default function PlanetDownloadsPanel({ downloads }: { downloads: Content
                 {/* Stable buttons keep keyboard focus when an async state changes. */}
                 <button type="button" aria-disabled={busy || protectedVersion || !snapshot.available}
                   onClick={() => { if (!busy && !protectedVersion && snapshot.available) void downloads.download(item.id); }}>
-                  {item.phase === "paused" ? copy.resume : ["error", "cancelled"].includes(item.phase) ? copy.retry : copy.download}</button>
+                  {["paused", "waiting-wifi"].includes(item.phase) ? copy.resume : ["error", "cancelled"].includes(item.phase) ? copy.retry : copy.download}</button>
                 <button type="button" aria-disabled={!interruptible || item.phase === "pausing" || item.phase === "cancelling"}
                   onClick={() => { if (interruptible && item.phase !== "pausing" && item.phase !== "cancelling") downloads.pause(item.id); }}>{copy.pause}</button>
-                <button type="button" aria-disabled={(!interruptible && item.phase !== "paused") || item.phase === "cancelling"}
-                  onClick={() => { if ((interruptible || item.phase === "paused") && item.phase !== "cancelling") downloads.cancel(item.id); }}>{copy.cancel}</button>
+                <button type="button" aria-disabled={(!interruptible && !["paused", "waiting-wifi"].includes(item.phase)) || item.phase === "cancelling"}
+                  onClick={() => { if ((interruptible || ["paused", "waiting-wifi"].includes(item.phase)) && item.phase !== "cancelling") downloads.cancel(item.id); }}>{copy.cancel}</button>
                 <button type="button" aria-disabled={busy || protectedVersion || !snapshot.available} aria-describedby={`${id}-clear-help ${row}-status`}
                   onClick={() => { if (!busy && !protectedVersion && snapshot.available) void downloads.discard(item.id); }}>{copy.clear}</button>
               </div>

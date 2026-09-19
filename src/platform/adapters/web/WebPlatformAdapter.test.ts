@@ -7,6 +7,7 @@ import {
 
 const WELCOME = "probpera-planet-welcome-v1";
 const GRAPHICS = "probpera-planet-graphics-quality-v1";
+const DOWNLOAD_NETWORK = "probpera-planet-download-network-v1";
 
 function memoryStorage(): Storage {
   const entries = new Map<string, string>();
@@ -42,6 +43,77 @@ afterEach(() => {
 });
 
 describe("browser capabilities and subscription lifetime", () => {
+  it("observes explicit transport changes while online and removes the exact shared listener", () => {
+    const env = browserEnvironment();
+    const connection = Object.assign(new EventTarget(), { type: "wifi", effectiveType: "4g" });
+    const add = vi.spyOn(connection, "addEventListener");
+    const remove = vi.spyOn(connection, "removeEventListener");
+    Object.assign(env.navigator, { connection });
+    const adapter = createWebPlatformAdapter({ window: env.browser });
+    expect(add).not.toHaveBeenCalled();
+    expect(adapter.getSnapshot().networkType).toBe("wifi");
+    const listener = vi.fn();
+    const stopFirst = adapter.subscribe(listener);
+    const stopSecond = adapter.subscribe(listener);
+    connection.type = "cellular";
+    connection.dispatchEvent(new Event("change"));
+    expect(adapter.getSnapshot()).toEqual({ connectivity: "online", visibility: "active", networkType: "cellular" });
+    expect(listener).toHaveBeenCalledTimes(1);
+    connection.type = "ethernet";
+    connection.dispatchEvent(new Event("change"));
+    expect(adapter.getSnapshot().networkType).toBe("ethernet");
+    const current = adapter.getSnapshot();
+    connection.dispatchEvent(new Event("change"));
+    expect(adapter.getSnapshot()).toBe(current);
+    expect(listener).toHaveBeenCalledTimes(2);
+    env.navigator.onLine = false;
+    env.browser.dispatchEvent(new Event("offline"));
+    expect(adapter.getSnapshot().networkType).toBeUndefined();
+    stopFirst(); stopFirst();
+    expect(remove).not.toHaveBeenCalled();
+    stopSecond(); stopSecond();
+    expect(add).toHaveBeenCalledTimes(1);
+    expect(remove.mock.calls).toEqual(add.mock.calls);
+    connection.type = "wifi";
+    connection.dispatchEvent(new Event("change"));
+    expect(listener).toHaveBeenCalledTimes(3);
+  });
+  it("keeps unknown, unsupported and speed-only network information unknown", () => {
+    const env = browserEnvironment();
+    const connection = Object.assign(new EventTarget(), { type: "unknown" });
+    const speed = vi.fn(() => "4g");
+    Object.defineProperty(connection, "effectiveType", { get: speed });
+    Object.assign(env.navigator, { connection });
+    const adapter = createWebPlatformAdapter({ window: env.browser });
+    for (const type of ["unknown", "other", "none", "mixed", "4g", ""]) {
+      connection.type = type;
+      expect(adapter.getSnapshot().networkType).toBeUndefined();
+    }
+    Reflect.deleteProperty(connection, "type");
+    expect(adapter.getSnapshot().networkType).toBeUndefined();
+    expect(speed).not.toHaveBeenCalled();
+  });
+  it("contains denied connection getters and listener methods without disabling online events", () => {
+    const env = browserEnvironment();
+    const connection = Object.assign(new EventTarget(), { type: "wifi" });
+    const denied = vi.fn(() => { throw new Error("denied"); });
+    Object.defineProperty(env.navigator, "connection", { configurable: true, get: denied });
+    const adapter = createWebPlatformAdapter({ window: env.browser });
+    expect(denied).not.toHaveBeenCalled();
+    expect(adapter.getSnapshot().networkType).toBeUndefined();
+    Object.defineProperty(env.navigator, "connection", { get: () => connection });
+    Object.defineProperty(connection, "type", { get: denied });
+    vi.spyOn(connection, "addEventListener").mockImplementation(denied);
+    vi.spyOn(connection, "removeEventListener").mockImplementation(denied);
+    const listener = vi.fn();
+    const stop = adapter.subscribe(listener);
+    expect(adapter.getSnapshot().networkType).toBeUndefined();
+    env.navigator.onLine = false;
+    env.browser.dispatchEvent(new Event("offline"));
+    expect(listener).toHaveBeenCalledTimes(1);
+    expect(() => { stop(); stop(); }).not.toThrow();
+    expect(env.windowRemove.mock.calls).toEqual(env.windowAdd.mock.calls);
+  });
   it("has no module-global browser reads or constructor listeners/storage/open side effects", async () => {
     const env = browserEnvironment();
     const storageGetter = vi.fn(() => { throw new Error("Storage must remain lazy"); });
@@ -204,6 +276,17 @@ describe("browser capabilities and subscription lifetime", () => {
 });
 
 describe("non-secret best-effort canonical preferences", () => {
+  it.each(["any-network", "wifi-only"])("restores only the allowlisted download policy %s", async value => {
+    const { browser } = browserEnvironment();
+    const adapter = createWebPlatformAdapter({ window: browser });
+    expect(await adapter.preferences.set(DOWNLOAD_NETWORK, value)).toBe(true);
+    const recreated = createWebPlatformAdapter({ window: browser });
+    expect(await recreated.preferences.get(DOWNLOAD_NETWORK)).toBe(value);
+    expect(await recreated.preferences.set(DOWNLOAD_NETWORK, "4g")).toBe(false);
+    expect(await recreated.preferences.remove(DOWNLOAD_NETWORK)).toBe(true);
+    browser.localStorage.setItem(DOWNLOAD_NETWORK, "cellular");
+    expect(await recreated.preferences.get(DOWNLOAD_NETWORK)).toBeNull();
+  });
   it.each(["high", "balanced", "economy"])("restores graphics quality %s through a fresh web adapter", async value => {
     const { browser } = browserEnvironment();
     const adapter = createWebPlatformAdapter({ window: browser });
