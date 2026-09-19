@@ -1,0 +1,32 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "src/planet/contentPackageCache.test.mjs",
+    "src/planet/contentPackageUninstall.test.mjs",
+    "src/planet/contentPackageTransport.test.mjs",
+    "src/planet/ContentDownloads.test.mjs",
+    "src/planet/ContentStorageManagement.test.mjs",
+    "src/planet/DownloadNetworkPolicy.test.mjs",
+    "src/host/nativeContentStorage.test.mjs",
+    "src/planet/ContentDownloads.retention.test.mjs",
+    "src/host/nativeContentStorage.retention.test.mjs",
+    "--maxWorkers=2",
+    "--reporter=json",
+    "--outputFile=C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S11\\optional-uninstall-20260919\\unit-a1\\vitest.json"
+  ],
+  "startedAt": "2026-09-19T14:45:03.074Z",
+  "durationMs": 4052,
+  "exitCode": 0,
+  "logs": {
+    "stdout": {
+      "text": "JSON report written to C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/docs/mobile/evidence/S11/optional-uninstall-20260919/unit-a1/vitest.json\n",
+      "sha256": "c1ba1986bc6a2c69a5c00bdda5833fe935ec5f6c07aeca9abe4d138f59f5e697"
+    },
+    "stderr": {
+      "text": "",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

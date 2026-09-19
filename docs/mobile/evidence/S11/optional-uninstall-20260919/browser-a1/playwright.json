@@ -1,0 +1,260 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=docs/mobile/evidence/S11/optional-uninstall-20260919/playwright.config.mjs"
+    ],
+    "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S11\\optional-uninstall-20260919\\playwright.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s11-uninstall/browser-a1",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "optional-uninstall.spec.mjs",
+          "storage-management.spec.mjs",
+          "download-network-policy.spec.mjs"
+        ],
+        "timeout": 90000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S11\\optional-uninstall-20260919\\browser-a1\\playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "download-network-policy.spec.mjs",
+      "file": "download-network-policy.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Wi-Fi policy blocks unknown transport, pauses cellular transfer and persists with explicit recovery",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3446,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-19T14:45:03.919Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "download-network-policy-result",
+                      "contentType": "application/json",
+                      "body": "ewogICJzb3VyY2VGaXh0dXJlIjogdHJ1ZSwKICAiaW5qZWN0ZWROZXR3b3JrVHlwZXMiOiB0cnVlLAogICJhY3R1YWxIdHRwQW5kQnJvd3NlclN0b3JhZ2UiOiB0cnVlLAogICJpbnN0YWxsZWROYXRpdmUiOiBmYWxzZSwKICAicmVsZWFzZVJlYWR5IjogZmFsc2UsCiAgInBhc3MiOiB0cnVlLAogICJyZXF1ZXN0cyI6IFsKICAgIHsKICAgICAgInBhdGgiOiAiZGVwZW5kZW5jeS1pbmRleC5qc29uIiwKICAgICAgImNvb2tpZSI6IG51bGwsCiAgICAgICJyZWZlcnJlciI6IG51bGwKICAgIH0sCiAgICB7CiAgICAgICJwYXRoIjogImVuL2NhdGFsb2cuanNvbiIsCiAgICAgICJjb29raWUiOiBudWxsLAogICAgICAicmVmZXJyZXIiOiBudWxsCiAgICB9LAogICAgewogICAgICAicGF0aCI6ICJlbi9jYXRhbG9nLmpzb24iLAogICAgICAiY29va2llIjogbnVsbCwKICAgICAgInJlZmVycmVyIjogbnVsbAogICAgfSwKICAgIHsKICAgICAgInBhdGgiOiAicnUvY2F0YWxvZy5qc29uIiwKICAgICAgImNvb2tpZSI6IG51bGwsCiAgICAgICJyZWZlcnJlciI6IG51bGwKICAgIH0KICBdLAogICJ1bmtub3duQW5kU3BlZWRPbmx5QmxvY2tlZCI6IHRydWUsCiAgImVuYWJsaW5nV2lmaU9uQ2VsbHVsYXJQYXVzZWQiOiB0cnVlLAogICJ3aG9sZUZpbGVSZXN1bWUiOiB0cnVlLAogICJleHBsaWNpdFJlc3VtZSI6IHRydWUsCiAgImxvY2FsZUFuZEZvY3VzUHJlc2VydmVkIjogdHJ1ZSwKICAibm9uRGVmYXVsdFByZWZlcmVuY2VSZXN0b3JlZEFmdGVyUmVsb2FkIjogdHJ1ZSwKICAib2ZmbGluZUNoZWNrQWZ0ZXJCcm93c2VyUmVzdGFydCI6IHRydWUsCiAgInJldGFpbmVkQnl0ZXMiOiAzNwp9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "2720291691c02978fd6b-5b2fea07466e875f0413",
+          "file": "download-network-policy.spec.mjs",
+          "line": 10,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "optional-uninstall.spec.mjs",
+      "file": "optional-uninstall.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "optional package confirmation rejects stale intent and survives offline restart with explicit reinstall",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13153,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-19T14:45:07.463Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "optional-uninstall-result",
+                      "contentType": "application/json",
+                      "body": "ewogICJzb3VyY2VGaXh0dXJlIjogdHJ1ZSwKICAiYWN0dWFsSHR0cEFuZEJyb3dzZXJTdG9yYWdlIjogdHJ1ZSwKICAiaW5zdGFsbGVkTmF0aXZlIjogZmFsc2UsCiAgInJlbGVhc2VSZWFkeSI6IGZhbHNlLAogICJwYXNzIjogdHJ1ZSwKICAicmVxdWVzdHMiOiBbCiAgICB7CiAgICAgICJwYXRoIjogImRlcGVuZGVuY3ktaW5kZXguanNvbiIsCiAgICAgICJjb29raWUiOiBudWxsLAogICAgICAicmVmZXJyZXIiOiBudWxsCiAgICB9LAogICAgewogICAgICAicGF0aCI6ICJlbi9jYXRhbG9nLmpzb24iLAogICAgICAiY29va2llIjogbnVsbCwKICAgICAgInJlZmVycmVyIjogbnVsbAogICAgfSwKICAgIHsKICAgICAgInBhdGgiOiAicnUvY2F0YWxvZy5qc29uIiwKICAgICAgImNvb2tpZSI6IG51bGwsCiAgICAgICJyZWZlcnJlciI6IG51bGwKICAgIH0KICBdLAogICJjYW5jZWxSZXN0b3Jlc0ZvY3VzIjogdHJ1ZSwKICAic3RhbGVDb25maXJtYXRpb25SZWplY3RlZEFjcm9zc1RhYnMiOiB0cnVlLAogICJjdXJyZW50QW5kUm9sbGJhY2tCeXRlc1JlbW92ZWQiOiB0cnVlLAogICJib290c3RyYXBQcmVzZXJ2ZWQiOiB0cnVlLAogICJvZmZsaW5lUmVtb3ZhbCI6IHRydWUsCiAgIm9mZmxpbmVSZW1vdmVkU3RhdGVBZnRlckJyb3dzZXJSZXN0YXJ0IjogdHJ1ZSwKICAiZXhwbGljaXRIdHRwUmVpbnN0YWxsIjogdHJ1ZSwKICAibG9jYWxlcyI6IFsKICAgICJydSIsCiAgICAiZW4iCiAgXSwKICAiYWNjZXNzaWJpbGl0eVZpb2xhdGlvbnMiOiAwCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "18349e39dc2fa139a26a-9c0c3d18ae8bf3240953",
+          "file": "optional-uninstall.spec.mjs",
+          "line": 11,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "storage-management.spec.mjs",
+      "file": "storage-management.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "storage cleanup after a cancelled transfer preserves offline versions across tabs and restart",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3492,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-19T14:45:20.648Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "storage-management-result",
+                      "contentType": "application/json",
+                      "body": "ewogICJzb3VyY2VGaXh0dXJlIjogdHJ1ZSwKICAib3V0Y29tZSI6ICJjYW5jZWxsZWQiLAogICJhY3R1YWxCcm93c2VyU3RvcmFnZSI6IHRydWUsCiAgImRldmljZVRlc3RlZCI6IGZhbHNlLAogICJyZWxlYXNlUmVhZHkiOiBmYWxzZSwKICAicGFzcyI6IHRydWUsCiAgInJlcXVlc3RzIjogWwogICAgImRlcGVuZGVuY3ktaW5kZXguanNvbiIsCiAgICAiZW4vY2F0YWxvZy5qc29uIiwKICAgICJkZXBlbmRlbmN5LWluZGV4Lmpzb24iLAogICAgImVuL2NhdGFsb2cuanNvbiIsCiAgICAicnUvY2F0YWxvZy5qc29uIgogIF0sCiAgImN1cnJlbnRBbmRQcmV2aW91c1JlYWRhYmxlIjogdHJ1ZSwKICAiYm9vdHN0cmFwUHJlc2VydmVkIjogdHJ1ZSwKICAib2ZmbGluZUFmdGVyQnJvd3NlclJlc3RhcnQiOiB0cnVlLAogICJhY3R1YWxPcmlnaW5Fc3RpbWF0ZSI6IHRydWUsCiAgImNhcGFjaXR5RGVuaWFsUmVjb3ZlcnkiOiB0cnVlLAogICJsb2NhbGVzIjogWwogICAgInJ1IiwKICAgICJlbiIKICBdLAogICJhY2Nlc3NpYmlsaXR5VmlvbGF0aW9ucyI6IDAKfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7cd93a9c8b808fa7b29c-2a171599364240e11e59",
+          "file": "storage-management.spec.mjs",
+          "line": 11,
+          "column": 51
+        },
+        {
+          "title": "storage cleanup after a committed transfer preserves offline versions across tabs and restart",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3173,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-19T14:45:24.150Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "storage-management-result",
+                      "contentType": "application/json",
+                      "body": "ewogICJzb3VyY2VGaXh0dXJlIjogdHJ1ZSwKICAib3V0Y29tZSI6ICJjb21taXR0ZWQiLAogICJhY3R1YWxCcm93c2VyU3RvcmFnZSI6IHRydWUsCiAgImRldmljZVRlc3RlZCI6IGZhbHNlLAogICJyZWxlYXNlUmVhZHkiOiBmYWxzZSwKICAicGFzcyI6IHRydWUsCiAgInJlcXVlc3RzIjogWwogICAgImRlcGVuZGVuY3ktaW5kZXguanNvbiIsCiAgICAiZW4vY2F0YWxvZy5qc29uIiwKICAgICJydS9jYXRhbG9nLmpzb24iCiAgXSwKICAiY3VycmVudEFuZFByZXZpb3VzUmVhZGFibGUiOiB0cnVlLAogICJib290c3RyYXBQcmVzZXJ2ZWQiOiB0cnVlLAogICJvZmZsaW5lQWZ0ZXJCcm93c2VyUmVzdGFydCI6IHRydWUsCiAgImFjdHVhbE9yaWdpbkVzdGltYXRlIjogdHJ1ZSwKICAiY2FwYWNpdHlEZW5pYWxSZWNvdmVyeSI6IHRydWUsCiAgImxvY2FsZXMiOiBbCiAgICAicnUiLAogICAgImVuIgogIF0sCiAgImFjY2Vzc2liaWxpdHlWaW9sYXRpb25zIjogMAp9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7cd93a9c8b808fa7b29c-4e8f670a982d33252e9e",
+          "file": "storage-management.spec.mjs",
+          "line": 11,
+          "column": 51
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-19T14:45:03.077Z",
+    "duration": 24281.573,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

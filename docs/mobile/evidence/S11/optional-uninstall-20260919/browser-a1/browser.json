@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S11/optional-uninstall-20260919/playwright.config.mjs"
+  ],
+  "startedAt": "2026-09-19T14:45:02.421Z",
+  "durationMs": 24894,
+  "exitCode": 0,
+  "logs": {
+    "stdout": {
+      "text": "\nRunning 4 tests using 1 worker\n\n\n\n[1/4] tests\\pwa\\download-network-policy.spec.mjs:10:1 › Wi-Fi policy blocks unknown transport, pauses cellular transfer and persists with explicit recovery\n[2/4] tests\\pwa\\optional-uninstall.spec.mjs:11:1 › optional package confirmation rejects stale intent and survives offline restart with explicit reinstall\n[3/4] tests\\pwa\\storage-management.spec.mjs:11:51 › storage cleanup after a cancelled transfer preserves offline versions across tabs and restart\n[4/4] tests\\pwa\\storage-management.spec.mjs:11:51 › storage cleanup after a committed transfer preserves offline versions across tabs and restart\n  4 passed (24.3s)\n",
+      "sha256": "f3f1ee8cd2c439a72757d21f5b7577c7a37294c2f60fa72f587c650d69aaae5a"
+    },
+    "stderr": {
+      "text": "(node:27744) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n",
+      "sha256": "b5f0d9fa5dd18f21c9d36eada7a10bd27ea22543315f9b7d1596f5c6a02a8bd7"
+    }
+  }
+}

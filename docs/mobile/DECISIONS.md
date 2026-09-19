@@ -700,3 +700,13 @@
   type-only Navigator correction and LF normalization preserve emitted JavaScript;
   passing runtime suites were reused. Native/iOS/stage/release gates remain open.
   Continue S11 saved optional-package uninstall without weakening bootstrap protection.
+
+- D122: Optional-package removal requires app-trusted retention policy (missing means
+  required) and confirmation of the exact local selection. Local v2 retirement preserves
+  the last receipt/version and increments an epoch; it never deletes the pointer into
+  an ambiguous absent state. Native writes/pruning enforce epochs in the serial IO queue.
+  Atomic retirement precedes retryable byte cleanup; late cancellation or lost write
+  response cannot imply rollback when exact readback proves retirement. Signed package
+  v1 and ordinary incomplete-candidate discard remain unchanged. Source 46df306b has
+  167 units, 4 Chrome cases and Java compilation; native device/iOS/release gates remain.
+  Continue directly to existing reader-progress sync repair, then batch artifact refresh.

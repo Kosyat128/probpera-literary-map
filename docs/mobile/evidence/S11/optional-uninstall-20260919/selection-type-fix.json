@@ -1,0 +1,7 @@
+{
+  "file": "src/planet/contentPackageCache.ts",
+  "beforeSha256": "24147e82794de1b13bdf355b48187fba5741c978d6594fd712adfe15c449b446",
+  "afterSha256": "93d3126a8e30fb6be0eaa709a9b5d3792a7af168b93310c66e88a5e65c2afdc5",
+  "emittedJavaScriptIdentical": true,
+  "reason": "Existing exact selection guard establishes non-null before; TypeScript does not narrow through inferred const fail"
+}

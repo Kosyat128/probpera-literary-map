@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "stage": "S11",
+  "status": "OPTIONAL_PACKAGE_RETIREMENT_SOURCE_VALIDATED",
+  "pass": true,
+  "sourceCommit": "46df306b76f0e90163a26bb08c840b83123f1924",
+  "recordedAt": "2026-09-19T14:49:29.283Z",
+  "passingUnitCases": 167,
+  "actualChromeCases": 4,
+  "runs": {
+    "unit-a1": {
+      "path": "docs/mobile/evidence/S11/optional-uninstall-20260919/unit-a1/result.json",
+      "sha256": "7daa661fc5dd109bf941a81c17a8e529ba55d1f7e7e7a955c66a7e86c8681a4a",
+      "tests": {
+        "passed": 167,
+        "failed": 0,
+        "skipped": 0,
+        "failures": []
+      }
+    },
+    "browser-a1": {
+      "path": "docs/mobile/evidence/S11/optional-uninstall-20260919/browser-a1/result.json",
+      "sha256": "2794eab44ffda2e87e639cc17733ed62077a3d4dcb373b76389dac1af59e2a28",
+      "tests": {
+        "passed": 4,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0,
+        "errors": []
+      }
+    }
+  },
+  "nativeCompilation": "docs/mobile/evidence/S11/optional-uninstall-20260919/android-compile-a1/result.json",
+  "typecheck": "docs/mobile/evidence/S11/optional-uninstall-20260919/typecheck-final.json",
+  "platformBoundaries": "docs/mobile/evidence/S11/optional-uninstall-20260919/static-a1/platform-boundaries.json",
+  "checks": {
+    "trustedRequiredDefault": true,
+    "exactConfirmationReceipt": true,
+    "atomicRetirement": true,
+    "retainedVersionFloor": true,
+    "epochFencedMutations": true,
+    "staleTabsRejected": true,
+    "mandatoryBootstrapPreserved": true,
+    "currentPreviousAndOrphansRemoved": true,
+    "cleanupFailureRetry": true,
+    "lostAtomicResponseReadback": true,
+    "offlineRestartAndExplicitReinstall": true,
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "accessibilityViolations": 0
+  },
+  "screenshotsInspectedAtOriginalResolution": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s11-uninstall/browser-a1/optional-uninstall-optiona-6d666-art-with-explicit-reinstall/optional-confirm-ru.png",
+      "sha256": "7cc03c0b1ce9a36d6ca727664af38f479d95c6db7fa2765fe37af25f57862e48"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s11-uninstall/browser-a1/optional-uninstall-optiona-6d666-art-with-explicit-reinstall/optional-removed-en.png",
+      "sha256": "d4c7831246e7d7f0ef4e90b9510bd419d7182e1d6d99f748f6da6139b11297e8"
+    }
+  ],
+  "preservedFailure": {
+    "path": "docs/mobile/evidence/S11/optional-uninstall-20260919/static-a1/result.json",
+    "typeOnlyCorrection": {
+      "file": "src/planet/contentPackageCache.ts",
+      "beforeSha256": "24147e82794de1b13bdf355b48187fba5741c978d6594fd712adfe15c449b446",
+      "afterSha256": "93d3126a8e30fb6be0eaa709a9b5d3792a7af168b93310c66e88a5e65c2afdc5",
+      "emittedJavaScriptIdentical": true,
+      "reason": "Existing exact selection guard establishes non-null before; TypeScript does not narrow through inferred const fail"
+    },
+    "finalTypecheckPassed": true
+  },
+  "nativeConcurrencyLimitation": "A fresh explicit reinstall from another native JS host may need retry if its unfinished candidate overlaps same-epoch cleanup. Native commit rechecks all bytes; incomplete data cannot be selected.",
+  "artifactsRefreshed": false,
+  "currentPreservedPwa": "d1e90c35",
+  "currentPreservedAndroid": "b2f77958",
+  "nativeExecutionVerified": false,
+  "iosCompiled": false,
+  "productionPackageActivation": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false,
+  "nextAction": "Continue immediately with existing reader-progress synchronization in src/hooks/useReadingProgress.ts: prevent delayed remote hydration from overwriting newer local edits, scope debounce and uploads to item plus adult identity, preserve pending changes on transport failure, and keep reset-to-zero valid. Accountless native/PWA remains local only. Preserve current validated uninstall source and Wi-Fi artifacts; batch the next artifact refresh after this shared-reader fix. No production DB/publication/store actions; D107 final archive synchronization remains deferred."
+}

@@ -1,3 +1,19 @@
+<!-- s11-optional-uninstall-20260919:begin -->
+Source 46df306b implements trusted optional-package removal with exact RU/EN confirmation,
+atomic retirement, retained version/epoch metadata and safe cleanup retry. 167 focused
+units and 4 actual Chrome cases passed, plus final TypeScript/platform checks and Android
+Java compilation. Offline deletion/restart/reinstall, stale-tab confirmation and mandatory
+bootstrap protection passed; both narrow-screen locale screenshots inspected.
+Evidence: evidence/S11/optional-uninstall-20260919/result.json.
+PWA d1e90c35 and Android b2f77958 remain exact preserved Wi-Fi builds, predating uninstall.
+Batch the next artifact refresh after the reader-progress fix already being implemented.
+Native device/process-death and iOS compilation remain open. No additional stage accepted,
+releaseReady false. Same-epoch concurrent native reinstall may need retry; full native
+commit validation prevents selecting incomplete bytes. Production QA activation remains off.
+Next: repair existing reader hydration/debounce/error recovery with item/account isolation.
+D107 final owner archive synchronization stays deferred; no external production action.
+<!-- s11-optional-uninstall-20260919:end -->
+
 <!-- s11-wifi-policy-20260919:begin -->
 S11 Wi-Fi-only preference, truthful network types and interrupted globe-gesture recovery
 are validated from source 7f6f2802: 279 focused unit cases, 6 actual Chrome cases,

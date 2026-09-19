@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/typescript/bin/tsc",
+    "--noEmit"
+  ],
+  "startedAt": "2026-09-19T14:45:02.546Z",
+  "durationMs": 20510,
+  "exitCode": 2,
+  "logs": {
+    "stdout": {
+      "text": "src/planet/contentPackageCache.ts(319,17): error TS2322: Type 'Selection | null' is not assignable to type 'Selection'.\r\n  Type 'null' is not assignable to type 'Selection'.\r\nsrc/planet/contentPackageCache.ts(320,65): error TS18047: 'before' is possibly 'null'.\r\n",
+      "sha256": "5f1acf575cae849e8d4b456dcc0c113a9a318d24d62718d055781b0ae3ce50da"
+    },
+    "stderr": {
+      "text": "",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}
