@@ -1,4 +1,5 @@
 export type GlobeAutoPauseReason =
+  | "context-lost"
   | "reduced-motion"
   | "document-hidden"
   | "offscreen"
@@ -9,6 +10,7 @@ export type GlobeAutoPauseReason =
 
 export type GlobeAutoRotationPolicyInput = Readonly<{
   requested: boolean;
+  contextAvailable?: boolean;
   reducedMotion: boolean;
   documentVisible: boolean;
   globeVisible: boolean;
@@ -33,21 +35,23 @@ export function resolveGlobeAutoRotationPolicy(
     return { requested: false, active: false, pauseReason: null, status: "off" };
   }
 
-  const pauseReason: GlobeAutoPauseReason | null = input.reducedMotion
-    ? "reduced-motion"
-    : !input.documentVisible
-      ? "document-hidden"
-      : !input.globeVisible
-        ? "offscreen"
-        : input.hasSelection
-          ? "selection"
-          : input.hasHover
-            ? "hover"
-            : input.interacting
-              ? "interaction"
-              : input.cameraFlightActive
-                ? "camera-flight"
-                : null;
+  const pauseReason: GlobeAutoPauseReason | null = input.contextAvailable === false
+    ? "context-lost"
+    : input.reducedMotion
+      ? "reduced-motion"
+      : !input.documentVisible
+        ? "document-hidden"
+        : !input.globeVisible
+          ? "offscreen"
+          : input.hasSelection
+            ? "selection"
+            : input.hasHover
+              ? "hover"
+              : input.interacting
+                ? "interaction"
+                : input.cameraFlightActive
+                  ? "camera-flight"
+                  : null;
 
   return {
     requested: true,
@@ -60,6 +64,7 @@ export function resolveGlobeAutoRotationPolicy(
 export type GlobeFrameMode = "never" | "demand" | "always";
 
 export type GlobeFramePolicyInput = Readonly<{
+  contextAvailable?: boolean;
   globeVisible: boolean;
   documentVisible: boolean;
   autoRotateActive: boolean;
@@ -73,6 +78,7 @@ export type GlobeFramePolicyInput = Readonly<{
  * this policy: they must not keep WebGL alive while the globe is idle.
  */
 export function resolveGlobeFrameMode({
+  contextAvailable = true,
   globeVisible,
   documentVisible,
   autoRotateActive,
@@ -80,7 +86,7 @@ export function resolveGlobeFrameMode({
   controlsDampingActive = false,
   transientAnimationActive = false,
 }: GlobeFramePolicyInput): GlobeFrameMode {
-  if (!globeVisible || !documentVisible) return "never";
+  if (!contextAvailable || !globeVisible || !documentVisible) return "never";
   return autoRotateActive ||
     cameraFlightActive ||
     controlsDampingActive ||
@@ -323,11 +329,17 @@ export type GlobeWebGlContextLifecycleOptions = Readonly<{
   ) => void;
   /** For a demand-rendered scene, usually React Three Fiber's invalidate. */
   requestRender?: () => void;
+  /** Requests restoration on the existing renderer; false means unsupported. */
+  requestRestore?: () => boolean;
+  onRecoveryStateChange?: (state: "lost" | "restoring") => void;
   now?: () => number;
 }>;
 
+export const GLOBE_WEBGL_RECOVERY_TIMEOUT_MS = 10_000;
+
 export type GlobeWebGlContextLifecycle = Readonly<{
   snapshot: () => GlobeWebGlContextSnapshot;
+  requestRestoration: () => boolean;
   dispose: () => void;
 }>;
 
@@ -348,6 +360,11 @@ export function installGlobeWebGlContextLifecycle(
   let lastLossAt: number | null = null;
   let lastRestorationAt: number | null = null;
   let disposed = false;
+  let recoveryTimer: ReturnType<typeof setTimeout> | undefined;
+  const clearRecovery = () => {
+    if (recoveryTimer !== undefined) clearTimeout(recoveryTimer);
+    recoveryTimer = undefined;
+  };
   const snapshot = (): GlobeWebGlContextSnapshot => ({
     contextLost,
     lossCount,
@@ -358,6 +375,7 @@ export function installGlobeWebGlContextLifecycle(
   const onLost: EventListener = (event) => {
     if (disposed) return;
     event.preventDefault();
+    clearRecovery();
     contextLost = true;
     lossCount += 1;
     lastLossAt = now();
@@ -365,6 +383,7 @@ export function installGlobeWebGlContextLifecycle(
   };
   const onRestored: EventListener = (event) => {
     if (disposed) return;
+    clearRecovery();
     contextLost = false;
     restorationCount += 1;
     lastRestorationAt = now();
@@ -377,9 +396,26 @@ export function installGlobeWebGlContextLifecycle(
 
   return {
     snapshot,
+    requestRestoration: () => {
+      if (disposed || !contextLost || recoveryTimer !== undefined) return false;
+      // Never infer restoration from a successful extension call. Only the
+      // browser's restored event can resume the retained scene.
+      recoveryTimer = setTimeout(() => {
+        recoveryTimer = undefined;
+        if (!disposed && contextLost) options.onRecoveryStateChange?.("lost");
+      }, GLOBE_WEBGL_RECOVERY_TIMEOUT_MS);
+      options.onRecoveryStateChange?.("restoring");
+      try {
+        if (options.requestRestore?.()) return true;
+      } catch { /* Unsupported or failed requests leave the scene retryable. */ }
+      clearRecovery();
+      options.onRecoveryStateChange?.("lost");
+      return false;
+    },
     dispose: () => {
       if (disposed) return;
       disposed = true;
+      clearRecovery();
       canvas.removeEventListener("webglcontextlost", onLost);
       canvas.removeEventListener("webglcontextrestored", onRestored);
     },

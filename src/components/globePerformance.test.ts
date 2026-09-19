@@ -1,7 +1,8 @@
-import { describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import {
   installGlobeWebGlContextLifecycle,
+  GLOBE_WEBGL_RECOVERY_TIMEOUT_MS,
   readGlobeRendererResourceSnapshot,
   releaseGlobeCanvas,
   resolveGlobeAutoRotationPolicy,
@@ -113,6 +114,16 @@ const autoDefaults = {
 };
 
 describe("globe automatic rotation policy", () => {
+  it("pauses for context loss and resumes only according to the retained motion preference and visibility", () => {
+    expect(resolveGlobeAutoRotationPolicy({ ...autoDefaults, contextAvailable: false })).toEqual({
+      requested: true, active: false, pauseReason: "context-lost", status: "context-lost",
+    });
+    expect(resolveGlobeAutoRotationPolicy({ ...autoDefaults, contextAvailable: true }).active).toBe(true);
+    for (const condition of [{ requested: false }, { reducedMotion: true }, { documentVisible: false }, { globeVisible: false }]) {
+      expect(resolveGlobeAutoRotationPolicy({ ...autoDefaults, ...condition, contextAvailable: true }).active).toBe(false);
+    }
+    expect(resolveGlobeAutoRotationPolicy({ ...autoDefaults, requested: false, contextAvailable: false }).status).toBe("off");
+  });
   it("keeps requested state while a temporary reason pauses rotation", () => {
     expect(
       resolveGlobeAutoRotationPolicy({ ...autoDefaults, hasHover: true })
@@ -145,6 +156,14 @@ describe("globe automatic rotation policy", () => {
 });
 
 describe("globe frame policy", () => {
+  it("stops all frame sources until the context is restored, including a flight interrupted by loss", () => {
+    const sources = { globeVisible: true, documentVisible: true, autoRotateActive: true,
+      cameraFlightActive: true, controlsDampingActive: true, transientAnimationActive: true };
+    expect(resolveGlobeFrameMode({ ...sources, contextAvailable: false })).toBe("never");
+    expect(resolveGlobeFrameMode({ ...sources, contextAvailable: true })).toBe("always");
+    expect(resolveGlobeFrameMode({ ...sources, contextAvailable: true, documentVisible: false })).toBe("never");
+    expect(resolveGlobeFrameMode({ ...sources, contextAvailable: true, globeVisible: false })).toBe("never");
+  });
   it("uses demand rendering for a visible idle globe", () => {
     expect(
       resolveGlobeFrameMode({
@@ -285,6 +304,95 @@ describe("globe focus-metric idle prewarm", () => {
 
     cancel();
     expect(fake.frames.size + fake.idles.size + fake.timers.size).toBe(0);
+  });
+});
+
+describe("bounded WebGL recovery requests", () => {
+  beforeEach(() => vi.useFakeTimers());
+  afterEach(() => { vi.clearAllTimers(); vi.useRealTimers(); });
+
+  function fixture(options: Parameters<typeof installGlobeWebGlContextLifecycle>[1] = {}) {
+    const canvas = new FakeWebGlCanvas();
+    const lifecycle = installGlobeWebGlContextLifecycle(canvas as unknown as Pick<HTMLCanvasElement,
+      "addEventListener" | "removeEventListener">, options);
+    return { canvas, lifecycle };
+  }
+
+  it("requests the existing context once and waits for a real restored event across repeated losses", () => {
+    const requestRestore = vi.fn(() => true), requestRender = vi.fn();
+    const states: string[] = [];
+    const { canvas, lifecycle } = fixture({ requestRestore, requestRender,
+      onRecoveryStateChange: state => states.push(state), onContextRestored: () => states.push("ready") });
+    expect(lifecycle.requestRestoration()).toBe(false);
+    for (let cycle = 1; cycle <= 2; cycle += 1) {
+      canvas.dispatch("webglcontextlost");
+      expect(lifecycle.requestRestoration()).toBe(true);
+      expect(lifecycle.requestRestoration()).toBe(false);
+      expect(requestRestore).toHaveBeenCalledTimes(cycle);
+      expect(lifecycle.snapshot().contextLost).toBe(true);
+      expect(requestRender).toHaveBeenCalledTimes(cycle - 1);
+      expect(vi.getTimerCount()).toBe(1);
+      canvas.dispatch("webglcontextrestored");
+      expect(lifecycle.snapshot().contextLost).toBe(false);
+      expect(requestRender).toHaveBeenCalledTimes(cycle);
+      expect(vi.getTimerCount()).toBe(0);
+    }
+    expect(states).toEqual(["restoring", "ready", "restoring", "ready"]);
+    lifecycle.dispose();
+  });
+
+  it.each(["missing", "unsupported", "throwing"])("retains lost state after a %s restore capability", mode => {
+    const states: string[] = [], requestRender = vi.fn();
+    const { canvas, lifecycle } = fixture({ requestRender,
+      requestRestore: mode === "missing" ? undefined : () => {
+        if (mode === "throwing") throw new Error("context unavailable");
+        return false;
+      }, onRecoveryStateChange: state => states.push(state) });
+    canvas.dispatch("webglcontextlost");
+    expect(lifecycle.requestRestoration()).toBe(false);
+    expect(states[states.length - 1]).toBe("lost");
+    expect(lifecycle.snapshot().contextLost).toBe(true);
+    expect(requestRender).not.toHaveBeenCalled();
+    expect(vi.getTimerCount()).toBe(0);
+    lifecycle.dispose();
+  });
+
+  it("returns to retryable lost state on timeout without a retry loop and accepts a later restored event", () => {
+    const requestRestore = vi.fn(() => true), requestRender = vi.fn(), states: string[] = [];
+    const { canvas, lifecycle } = fixture({ requestRestore, requestRender,
+      onRecoveryStateChange: state => states.push(state) });
+    canvas.dispatch("webglcontextlost");
+    lifecycle.requestRestoration();
+    vi.advanceTimersByTime(GLOBE_WEBGL_RECOVERY_TIMEOUT_MS);
+    expect(states).toEqual(["restoring", "lost"]);
+    expect(lifecycle.snapshot().contextLost).toBe(true);
+    expect(vi.getTimerCount()).toBe(0);
+    vi.advanceTimersByTime(60_000);
+    expect(requestRestore).toHaveBeenCalledTimes(1);
+    expect(lifecycle.requestRestoration()).toBe(true);
+    expect(requestRestore).toHaveBeenCalledTimes(2);
+    canvas.dispatch("webglcontextrestored");
+    expect(lifecycle.snapshot().contextLost).toBe(false);
+    expect(requestRender).toHaveBeenCalledTimes(1);
+    expect(vi.getTimerCount()).toBe(0);
+    lifecycle.dispose();
+  });
+
+  it("cancels the restoration deadline and ignores late requests and events after disposal", () => {
+    const requestRestore = vi.fn(() => true), states: string[] = [], requestRender = vi.fn();
+    const { canvas, lifecycle } = fixture({ requestRestore, requestRender,
+      onRecoveryStateChange: state => states.push(state) });
+    canvas.dispatch("webglcontextlost");
+    lifecycle.requestRestoration();
+    lifecycle.dispose();
+    expect(vi.getTimerCount()).toBe(0);
+    expect(canvas.listenerCount()).toBe(0);
+    canvas.dispatch("webglcontextrestored");
+    expect(lifecycle.requestRestoration()).toBe(false);
+    vi.advanceTimersByTime(GLOBE_WEBGL_RECOVERY_TIMEOUT_MS);
+    expect(states).toEqual(["restoring"]);
+    expect(requestRender).not.toHaveBeenCalled();
+    expect(requestRestore).toHaveBeenCalledTimes(1);
   });
 });
 

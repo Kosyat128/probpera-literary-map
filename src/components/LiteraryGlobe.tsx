@@ -96,6 +96,7 @@ import {
   readGlobeRendererResourceSnapshot,
   resolveGlobeAutoRotationPolicy,
   resolveGlobeFrameMode,
+  type GlobeFrameMode,
 } from "./globePerformance";
 import {
   createGlobeTouchActivationState,
@@ -1277,6 +1278,7 @@ function GlobeSurface({
   const hoveredCountryId = useRef<string | null>(null);
   const pointerFrame = useRef(0);
   const latestPointerUv = useRef<THREE.Vector2 | null>(null);
+  const pointerGesture = useRef<GlobePointerGesture | null>(null);
 
   useEffect(
     () => () => {
@@ -1291,8 +1293,13 @@ function GlobeSurface({
     onCountryHover(null);
   }, [onCountryHover]);
 
+  useEffect(() => {
+    if (!touchInteractionEnabled) pointerGesture.current = null;
+  }, [touchInteractionEnabled]);
+
   const handlePointerMove = (event: ThreeEvent<PointerEvent>) => {
     event.stopPropagation();
+    trackPointerGesture(pointerGesture, event);
     if (event.nativeEvent.pointerType === "touch") return;
 
     latestPointerUv.current = event.uv?.clone() ?? null;
@@ -1311,8 +1318,9 @@ function GlobeSurface({
     });
   };
 
-  const handleClick = (event: ThreeEvent<MouseEvent>) => {
+  const handlePointerUp = (event: ThreeEvent<PointerEvent>) => {
     event.stopPropagation();
+    if (!finishPointerGesture(pointerGesture, event)) return;
     const country = event.uv ? atlas.countryAtUv(event.uv) : null;
     if (country) onCountrySelect?.(country);
   };
@@ -1321,9 +1329,15 @@ function GlobeSurface({
     <group>
       <mesh
         ref={globeObjectRef}
+        onPointerDown={touchInteractionEnabled ? event => {
+          event.stopPropagation();
+          startPointerGesture(pointerGesture, event);
+        } : undefined}
         onPointerMove={handlePointerMove}
-        onClick={touchInteractionEnabled ? handleClick : undefined}
+        onPointerUp={touchInteractionEnabled ? handlePointerUp : undefined}
+        onPointerCancel={() => { pointerGesture.current = null; }}
         onPointerOut={() => {
+          pointerGesture.current = null;
           cancelAnimationFrame(pointerFrame.current);
           pointerFrame.current = 0;
           latestPointerUv.current = null;
@@ -1886,7 +1900,7 @@ function GlobeScene({
         atlas={atlas}
         countries={countries}
         globeObjectRef={globeObjectRef}
-        active={!touchInteractionEnabled}
+        active={active && !touchInteractionEnabled}
         onCountrySelect={onCountrySelect}
       />
       {visualStyle === "antique" ? (
@@ -2019,6 +2033,7 @@ export default function LiteraryGlobe({
   const globeTopRef = useRef(0);
   const webglListenerCleanupRef = useRef<(() => void) | null>(null);
   const webglDiagnosticsRefreshRef = useRef<(() => void) | null>(null);
+  const webglRecoveryRef = useRef<(() => boolean) | null>(null);
   const [atlas, setAtlas] = useState<GlobeAtlas | null>(null);
   const [atlasError, setAtlasError] = useState(false);
   const [atlasLoadRequest, setAtlasLoadRequest] = useState(0);
@@ -2043,7 +2058,6 @@ export default function LiteraryGlobe({
   const [webglContextState, setWebglContextState] = useState<
     "ready" | "lost" | "restoring"
   >("ready");
-  const [webglRecoveryGeneration, setWebglRecoveryGeneration] = useState(0);
   const [webglDiagnostics, setWebglDiagnostics] = useState({
     api: "pending",
     maxTextureSize: 0,
@@ -2063,7 +2077,8 @@ export default function LiteraryGlobe({
   // Native app state can become inactive before the WebView reports hidden.
   // Keep the canonical scene mounted and feed both signals into its own policy.
   const runtimeVisible = runtimeActive && documentVisible;
-  const globeActive = globeVisible && runtimeVisible;
+  const contextAvailable = webglContextState === "ready";
+  const globeActive = globeVisible && runtimeVisible && contextAvailable;
   const [atlasRequested, setAtlasRequested] = useState(false);
   const [autoRotateRequested, setAutoRotateRequested] = useState(true);
   const [interactionPaused, setInteractionPaused] = useState(false);
@@ -2267,6 +2282,7 @@ export default function LiteraryGlobe({
   };
   const autoRotatePolicy = resolveGlobeAutoRotationPolicy({
     requested: autoRotateRequested,
+    contextAvailable,
     reducedMotion,
     documentVisible: runtimeVisible,
     globeVisible,
@@ -2279,7 +2295,9 @@ export default function LiteraryGlobe({
   const autoRotateStatus = autoRotatePolicy.status;
   const autoRotateControlLabel = !autoRotateRequested
     ? t("Включить автоматическое вращение")
-    : reducedMotion
+    : !contextAvailable
+      ? t("Отображение глобуса было прервано")
+      : reducedMotion
       ? t("Автовращение отключено в режиме уменьшения движения")
       : selectedCountry
         ? t("Автовращение приостановлено, пока выбрана страна")
@@ -2296,6 +2314,7 @@ export default function LiteraryGlobe({
     ? t("Пауза")
     : t("Авто");
   const frameMode = resolveGlobeFrameMode({
+    contextAvailable,
     globeVisible,
     documentVisible: runtimeVisible,
     autoRotateActive,
@@ -2610,12 +2629,17 @@ export default function LiteraryGlobe({
     ({
       gl,
       invalidate,
+      setFrameloop,
     }: {
       gl: THREE.WebGLRenderer;
       invalidate: () => void;
+      setFrameloop: (mode: GlobeFrameMode) => void;
     }) => {
       webglListenerCleanupRef.current?.();
       const canvas = gl.domElement;
+      // Three restores GL internals on this renderer. Cache the optional
+      // extension while healthy, so recovery never needs a replacement Canvas.
+      let canRestore = gl.extensions.has("WEBGL_lose_context");
       let diagnosticFrame = 0;
       const captureDiagnostics = () => {
         const resources = readGlobeRendererResourceSnapshot(gl);
@@ -2639,9 +2663,11 @@ export default function LiteraryGlobe({
       const lifecycle = installGlobeWebGlContextLifecycle(canvas, {
         onContextLost: () => {
           window.cancelAnimationFrame(diagnosticFrame);
+          setFrameloop("never");
           setWebglContextState("lost");
         },
         onContextRestored: () => {
+          canRestore = gl.extensions.has("WEBGL_lose_context");
           setWebglContextState("restoring");
           window.cancelAnimationFrame(diagnosticFrame);
           diagnosticFrame = window.requestAnimationFrame(() => {
@@ -2649,8 +2675,15 @@ export default function LiteraryGlobe({
             setWebglContextState("ready");
           });
         },
+        requestRestore: () => {
+          if (!canRestore) return false;
+          gl.forceContextRestore();
+          return true;
+        },
+        onRecoveryStateChange: setWebglContextState,
         requestRender: invalidate,
       });
+      webglRecoveryRef.current = lifecycle.requestRestoration;
       captureDiagnostics();
       webglDiagnosticsRefreshRef.current = captureDiagnostics;
       diagnosticFrame = window.requestAnimationFrame(captureDiagnostics);
@@ -2658,6 +2691,9 @@ export default function LiteraryGlobe({
       webglListenerCleanupRef.current = () => {
         window.cancelAnimationFrame(diagnosticFrame);
         lifecycle.dispose();
+        if (webglRecoveryRef.current === lifecycle.requestRestoration) {
+          webglRecoveryRef.current = null;
+        }
         if (webglDiagnosticsRefreshRef.current === captureDiagnostics) {
           webglDiagnosticsRefreshRef.current = null;
         }
@@ -2667,12 +2703,7 @@ export default function LiteraryGlobe({
   );
 
   const recoverWebglContext = useCallback(() => {
-    webglListenerCleanupRef.current?.();
-    webglListenerCleanupRef.current = null;
-    // A remounted camera rig must not replay the last one-shot zoom/reset.
-    setControlRequest(null);
-    setWebglContextState("restoring");
-    setWebglRecoveryGeneration((generation) => generation + 1);
+    webglRecoveryRef.current?.();
   }, []);
 
   useEffect(() => {
@@ -3005,7 +3036,6 @@ export default function LiteraryGlobe({
       style={{ touchAction: touchActivationPolicy.touchAction }}
     >
       <Canvas
-        key={webglRecoveryGeneration}
         camera={GLOBE_CAMERA_CONFIG}
         dpr={[1, quality.dprCap]}
         frameloop={frameMode}

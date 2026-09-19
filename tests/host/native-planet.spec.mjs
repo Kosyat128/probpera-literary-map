@@ -1079,6 +1079,124 @@ async function nativeGlobeRuntime(page) {
   });
 }
 
+test("WebGL context recovery retains the canonical globe, camera pose and RUEN selection", async ({}, testInfo) => {
+  const fixture = await open({ route: "/?country=russia&writer=dostoevsky", reducedMotion: "reduce",
+    preferences: { "probpera-planet-welcome-v1": "completed" } });
+  const { page } = fixture, globe = page.locator("#atlas .literary-globe");
+  const original = await captureScene(page);
+  let contextProbe;
+  try {
+    await showWriter(page);
+    await expect(globe).toHaveAttribute("data-globe-camera-phase", "idle");
+    const initialPose = await settledCameraPose(original);
+    const bounds = await globe.locator("canvas").boundingBox();
+    expect(bounds).not.toBeNull();
+    const point = { x: bounds.x + 64, y: bounds.y + bounds.height / 2 };
+    await page.mouse.move(point.x, point.y); await page.mouse.down();
+    await page.mouse.move(point.x + 90, point.y - 25, { steps: 6 });
+    await page.mouse.up(); await page.mouse.move(0, 0);
+    const rotatedPose = await settledCameraPose(original);
+    expect(rotatedPose.quaternion).not.toEqual(initialPose.quaternion);
+    expect(new URL(page.url()).searchParams.get("country")).toBe("russia");
+    expect(new URL(page.url()).searchParams.get("writer")).toBe("dostoevsky");
+    // The selected writer starts at the maximum focus scale. Zoom outward
+    // through the real enabled control before exercising recovery.
+    await globe.locator('[data-globe-control="zoom-out"]').click();
+    const zoomedPose = await settledCameraPose(original);
+    const radius = pose => Math.hypot(...pose.position);
+    expect(radius(zoomedPose)).toBeGreaterThan(radius(rotatedPose));
+    // Automatic rotation is off and manual damping has settled. Recovery must
+    // preserve this deliberate pose, independently of unfinished gesture inertia.
+    const beforeLoss = zoomedPose;
+    contextProbe = await original.evaluateHandle(({ canvas, renderer }) => {
+      const context = renderer.getContext(), extension = context.getExtension("WEBGL_lose_context");
+      if (!extension) throw Error("Chrome must expose WEBGL_lose_context for real recovery evidence");
+      const events = [];
+      const lost = event => events.push({ type: event.type, trusted: event.isTrusted, contextLost: context.isContextLost() });
+      const restored = event => events.push({ type: event.type, trusted: event.isTrusted, contextLost: context.isContextLost() });
+      canvas.addEventListener("webglcontextlost", lost); canvas.addEventListener("webglcontextrestored", restored);
+      return { lose: () => extension.loseContext(), snapshot: () => ({ events: [...events], contextLost: context.isContextLost() }),
+        dispose: () => { canvas.removeEventListener("webglcontextlost", lost); canvas.removeEventListener("webglcontextrestored", restored); } };
+    });
+    await contextProbe.evaluate(probe => probe.lose());
+    await expect(globe).toHaveAttribute("data-globe-webgl-context", "lost");
+    await expect(globe).toHaveAttribute("data-globe-frame-mode", "never");
+    await expect(globe).toHaveAttribute("data-globe-camera-phase", "idle");
+    await expect(globe.locator('.globe-webgl-recovery[role="alert"]')).toContainText("Отображение глобуса было прервано");
+    await expect(globe.getByRole("button", { name: "Восстановить глобус", exact: true })).toBeVisible();
+    await expect.poll(() => contextProbe.evaluate(probe => probe.snapshot().contextLost)).toBe(true);
+    await page.mouse.up(); await page.mouse.move(0, 0);
+    const lostFrames = await backgroundFrameEvidence(page);
+    expect(await cameraPose(original)).toEqual(beforeLoss);
+    await retained(page, original);
+    await evidence(fixture, testInfo, "native-context-lost-ru", { initialPose, rotatedPose, zoomedPose, beforeLoss, lostFrames,
+      actualExtension: "WEBGL_lose_context", stableManualPose: true, syntheticContextEvents: false,
+      sameCanvasRendererCameraScene: true });
+    await page.locator(".native-planet-app .interface-language-control button").filter({ hasText: "EN" }).click();
+    await expect(page.locator("html")).toHaveAttribute("lang", "en");
+    await expect(globe).toHaveAttribute("data-globe-webgl-context", "lost");
+    await expect(globe.locator('.globe-webgl-recovery[role="alert"]')).toContainText("The globe display was interrupted");
+    expect(await cameraPose(original)).toEqual(beforeLoss); await retained(page, original);
+    await globe.getByRole("button", { name: "Restore globe", exact: true }).click();
+    await expect(globe).toHaveAttribute("data-globe-webgl-context", "ready", { timeout: 20_000 });
+    await expect(globe.locator(".globe-webgl-recovery")).toHaveCount(0);
+    await expect.poll(() => contextProbe.evaluate(probe => probe.snapshot().contextLost)).toBe(false);
+    await expect.poll(async () => (await nativeGlobeRuntime(page)).frameloop).toBe("demand");
+    await expect.poll(async () => (await nativeGlobeRuntime(page)).controlsEnabled).toBe(true);
+    expect(await settledCameraPose(original)).toEqual(beforeLoss);
+    await retained(page, original); await showWriter(page);
+    expect(new URL(page.url()).searchParams.get("country")).toBe("russia");
+    expect(new URL(page.url()).searchParams.get("writer")).toBe("dostoevsky");
+    const contextEvents = await contextProbe.evaluate(probe => probe.snapshot());
+    expect(contextEvents.events).toEqual([
+      { type: "webglcontextlost", trusted: true, contextLost: true },
+      { type: "webglcontextrestored", trusted: true, contextLost: false },
+    ]);
+    await evidence(fixture, testInfo, "native-context-restored-en", { beforeLoss, restoredPose: await cameraPose(original), contextEvents,
+      sameCanvasRendererCameraScene: true, country: "russia", writer: "dostoevsky", actualExtension: "WEBGL_lose_context" });
+    await page.locator(".native-planet-app .interface-language-control button").filter({ hasText: "RU" }).click();
+    await expect(page.locator("html")).toHaveAttribute("lang", "ru");
+    expect(await cameraPose(original)).toEqual(beforeLoss); await retained(page, original);
+    const restoredFrame = (await nativeGlobeRuntime(page)).renderFrame;
+    await globe.locator('[data-globe-control="zoom-in"]').click();
+    await expect.poll(async () => (await nativeGlobeRuntime(page)).renderFrame).toBeGreaterThan(restoredFrame);
+    expect(radius(await settledCameraPose(original))).toBeLessThan(radius(beforeLoss));
+    await retained(page, original);
+    // A real tap must still select a country after the drag filter is applied.
+    const label = globe.locator(".globe-country-label");
+    let tapPoint, hoverCode;
+    for (const offset of [90, 150, 210, 270]) {
+      const candidate = { x: point.x + offset, y: point.y - 25 };
+      await page.mouse.move(candidate.x, candidate.y);
+      await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+      if (await label.count() && await label.getAttribute("data-country-label-source") === "hover") {
+        const code = await label.getAttribute("data-country-code");
+        if (code && code !== "RU") { tapPoint = candidate; hoverCode = code; break; }
+      }
+    }
+    expect(tapPoint, "a visible canonical country different from the selection").toBeDefined();
+    await page.mouse.click(tapPoint.x, tapPoint.y); await page.mouse.move(0, 0);
+    await expect.poll(() => new URL(page.url()).searchParams.get("country")).not.toBe("russia");
+    await expect(label).toHaveAttribute("data-country-label-source", "selection");
+    await expect(label).toHaveAttribute("data-country-code", hoverCode);
+    const selectedAfterTap = new URL(page.url()).searchParams.get("country");
+    expect(await page.evaluate(id => window.__nativePlanetHarness.canonicalCountry(id), selectedAfterTap)).not.toBeNull();
+    expect(fixture.consoleErrors).toEqual([]);
+    await retained(page, original);
+    await testInfo.attach("globe-context-recovery-result", { contentType: "application/json", body: JSON.stringify({
+      pass: true, actualCanonicalApp: true, actualWebGlContextLoss: true, contextEvents,
+      lostFrames, beforeLoss, sameCanvasRendererCameraScene: true, posePreservedOnRecovery: true,
+      resumedZoomRendered: true, locales: ["ru", "en", "ru"], country: "russia", writer: "dostoevsky",
+      dragPreservedSelection: true, actualTapSelectedCanonicalCountry: selectedAfterTap,
+      gpuPixelComparison: false, installedNative: false, releaseReady: false,
+    }, null, 2) });
+  } finally {
+    await page.mouse.up();
+    if (contextProbe) { await contextProbe.evaluate(probe => probe.dispose()); await contextProbe.dispose(); }
+    await original.dispose();
+  }
+});
+
 async function backgroundFrameEvidence(page) {
   const samples = await page.evaluate(async () => {
     const frame = () => new Promise(resolve => requestAnimationFrame(resolve));
