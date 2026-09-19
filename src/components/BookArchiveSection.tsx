@@ -2,6 +2,7 @@ import {
   useCallback,
   useDeferredValue,
   useEffect,
+  useLayoutEffect,
   useMemo,
   useReducer,
   useRef,
@@ -129,6 +130,7 @@ import { resolveBookShelfPresentationProfile } from "../books/bookShelfPresentat
 import { buildBookEditorialDocument } from "../books/bookEditorialPages";
 import { buildBookDossierFromEditorial, toBookEditorialDocument } from "../books/bookDossierLegacyAdapter";
 import { BOOK_DOSSIER_LIMITS, type BookDossierSemanticAnchor } from "../books/bookDossierDocument";
+import { bookDossierPhysicalPageIndex, remapBookDossierLocaleLocation, resolveBookDossierLocation, type BookDossierLocation } from "../books/bookDossierLocation";
 import { paginateBookInspectionDocument, type BookInspectionPaginationResult } from "../books/bookInspectionPageLayout";
 import BookDossierReader from "./BookDossierReader";
 import { useBookShelfViewportInsets } from "../books/useBookShelfViewportInsets";
@@ -734,7 +736,10 @@ export default function BookArchiveSection({
     useState<BookInspectionSession | null>(null);
   const inspectionSessionRef = useRef<BookInspectionSession | null>(null);
   inspectionSessionRef.current = inspectionSession;
+  const [dossierLocation, setDossierLocation] = useState<BookDossierLocation | null>(null);
+  const pendingDossierLocationRef = useRef<BookDossierLocation | null>(null);
   const restoredNavigationContextRef = useRef(initialNavigationContext);
+  const explicitDossierHistoryRef = useRef(false);
   const navigationFocusOriginRef = useRef<BookArchiveNavigationFocusOrigin | null>(
     initialNavigationContext?.focusOrigin || null
   );
@@ -786,6 +791,18 @@ export default function BookArchiveSection({
   } = useReadingLibrary();
   const savedReadingsRef = useRef(savedReadings);
   savedReadingsRef.current = savedReadings;
+  const dossierOwnerRef = useRef(setDossierProgress);
+  const sameDossierOwner = dossierOwnerRef.current === setDossierProgress;
+  useLayoutEffect(() => {
+    if (dossierOwnerRef.current === setDossierProgress) return;
+    dossierOwnerRef.current = setDossierProgress;
+    pendingDossierLocationRef.current = null;
+    setDossierLocation(null);
+    inspectionSessionRef.current = null;
+    setInspectionSession(null);
+    restoredNavigationContextRef.current = null;
+    explicitDossierHistoryRef.current = false;
+  }, [setDossierProgress]);
   const {
     snapshot: bookCollectionSnapshot,
     collections: bookCollections,
@@ -1885,6 +1902,9 @@ export default function BookArchiveSection({
             )
           : null;
       if (historyContext) {
+        pendingDossierLocationRef.current = null;
+        setDossierLocation(null);
+        explicitDossierHistoryRef.current = true;
         restoredNavigationContextRef.current = historyContext;
         navigationFocusOriginRef.current = historyContext.focusOrigin;
         setPendingNavigationFocusOrigin(historyContext.focusOrigin);
@@ -1907,6 +1927,7 @@ export default function BookArchiveSection({
           const restoredInspection = createBookInspectionSession({
             bookKey: currentInspection.bookKey,
             pageCount: currentInspection.pageCount,
+            pages: currentInspection.pagePositions.map((position, index) => ({ id: position?.pageId || String(index), anchor: position?.anchor })),
             pageIndex: historyContext.pageIndex,
             orbitSnapshot: currentInspection.orbitSnapshot,
             requestId: ++inspectionRequestSequenceRef.current,
@@ -1914,6 +1935,7 @@ export default function BookArchiveSection({
           inspectionSessionRef.current = restoredInspection;
           setInspectionSession(restoredInspection);
           restoredNavigationContextRef.current = null;
+          explicitDossierHistoryRef.current = false;
         }
         window.requestAnimationFrame(() => {
           window.scrollTo(
@@ -2932,10 +2954,14 @@ export default function BookArchiveSection({
   }) : null, [selectedLegacyDocument, selectedBook, language, relatedArticles]);
   const publishedDossier = usePublishedBookDossier(selectedBook ? bookKey(selectedBook) : null, language);
   const selectedDossier = publishedDossier.document || fallbackDossier;
+  const currentDossierRef = useRef(selectedDossier);
   const dossierSourceDocument = useMemo(() => selectedDossier ? toBookEditorialDocument(selectedDossier) : null, [selectedDossier]);
   const [pagination, setPagination] = useState<{ sourceKey: string; result: BookInspectionPaginationResult } | null>(null);
-  const [dossierLocation, setDossierLocation] = useState<{ bookKey: string; anchor: BookDossierSemanticAnchor } | null>(null);
-  const dossierAnchor = dossierLocation?.bookKey === selectedDossier?.bookKey ? dossierLocation?.anchor : null;
+  useLayoutEffect(() => {
+    currentDossierRef.current = selectedDossier;
+    pendingDossierLocationRef.current = sameDossierOwner
+      ? remapBookDossierLocaleLocation(selectedDossier, pendingDossierLocationRef.current) : null;
+  }, [selectedDossier, sameDossierOwner]);
   useEffect(() => {
     if (!dossierSourceDocument) return;
     let current = true;
@@ -2953,28 +2979,41 @@ export default function BookArchiveSection({
   }, [dossierSourceDocument, selectedDossier?.tier]);
   const selectedEditorialDocument = pagination?.sourceKey === dossierSourceDocument?.cacheKey
     ? pagination?.result.document || null : null;
-  const activeDossierAnchor = inspectionSession?.bookKey === selectedDossier?.bookKey
-    ? inspectionSession?.semanticPosition?.anchor || dossierAnchor : dossierAnchor;
+  const savedDossierProgress = selectedDossier ? savedReadings.find(item => item.kind === "book" && item.id === selectedDossier.bookKey)?.dossierProgress : null;
+  const savedDossierLocation = selectedDossier && savedDossierProgress
+    ? remapBookDossierLocaleLocation(selectedDossier, { bookKey: selectedDossier.bookKey, ...savedDossierProgress }) : null;
+  const sessionDossierLocation = sameDossierOwner && inspectionSession?.bookKey && inspectionSession.semanticPosition
+    ? remapBookDossierLocaleLocation(selectedDossier, { bookKey: inspectionSession.bookKey, ...inspectionSession.semanticPosition }) : null;
+  const pendingDossierLocation = sameDossierOwner ? remapBookDossierLocaleLocation(selectedDossier, pendingDossierLocationRef.current) : null;
+  const rememberedDossierLocation = sameDossierOwner ? remapBookDossierLocaleLocation(selectedDossier, dossierLocation) : null;
+  const restoringDossierHistory = Boolean(explicitDossierHistoryRef.current && selectedDossier
+    && restoredNavigationContextRef.current?.selectedBookKey === selectedDossier.bookKey);
+  const activeDossierAnchor = (pendingDossierLocation || sessionDossierLocation
+    || (!restoringDossierHistory ? rememberedDossierLocation || savedDossierLocation : null))?.anchor ?? null;
+  const pendingDossierReady = Boolean(pendingDossierLocation && selectedEditorialDocument && inspectionSession?.phase === "idle");
   const navigateDossier = useCallback((anchor: BookDossierSemanticAnchor) => {
-    if (!selectedDossier || !selectedDossier.pages.some(page =>
-      page.anchor.sectionId === anchor.sectionId && page.anchor.blockId === anchor.blockId &&
-      page.anchor.itemId === anchor.itemId && page.anchor.dossierVersion === anchor.dossierVersion &&
-      page.anchor.locale === anchor.locale && page.anchor.readingMode === anchor.readingMode)) return;
-    setDossierLocation({ bookKey: selectedDossier.bookKey, anchor });
+    if (!selectedDossier || currentDossierRef.current !== selectedDossier || dossierOwnerRef.current !== setDossierProgress) return;
+    const location = resolveBookDossierLocation(selectedDossier, { bookKey: selectedDossier.bookKey, anchor });
+    if (!location) return;
+    pendingDossierLocationRef.current = location;
+    setDossierLocation(location);
+    // Explicit reader input is newer than any pending history/saved restoration.
+    restoredNavigationContextRef.current = null;
+    explicitDossierHistoryRef.current = false;
+    setDossierProgress(location.bookKey, { anchor: location.anchor, pageId: location.pageId, updatedAt: new Date().toISOString() });
     const current = inspectionSessionRef.current;
     if (!selectedEditorialDocument || !current || current.bookKey !== selectedEditorialDocument.bookKey || current.phase !== "idle") return;
-    const pageIndex = selectedEditorialDocument.pages.findIndex(page =>
-      page.anchor?.sectionId === anchor.sectionId && page.anchor?.blockId === anchor.blockId &&
-      (!anchor.itemId || page.anchor.itemId === anchor.itemId));
+    const pageIndex = bookDossierPhysicalPageIndex(selectedDossier, location, selectedEditorialDocument.pages);
     if (pageIndex < 0) return;
     const next = createBookInspectionSession({
       bookKey: selectedEditorialDocument.bookKey, pageCount: selectedEditorialDocument.pages.length,
       pages: selectedEditorialDocument.pages, pageIndex,
       requestId: ++inspectionRequestSequenceRef.current,
     });
+    pendingDossierLocationRef.current = null;
     inspectionSessionRef.current = next;
     setInspectionSession(next);
-  }, [selectedEditorialDocument, selectedDossier]);
+  }, [selectedEditorialDocument, selectedDossier, setDossierProgress]);
 
   useEffect(() => {
     if (!selectedBook) {
@@ -2982,41 +3021,53 @@ export default function BookArchiveSection({
       setInspectionSession(null);
       return;
     }
-    if (!selectedEditorialDocument) return;
+    if (!selectedEditorialDocument || !selectedDossier || !sameDossierOwner || dossierOwnerRef.current !== setDossierProgress) return;
     const selectedKey = bookKey(selectedBook);
     const current = inspectionSessionRef.current;
+    const intent = remapBookDossierLocaleLocation(selectedDossier, pendingDossierLocationRef.current);
+    const intentPageIndex = bookDossierPhysicalPageIndex(selectedDossier, intent, selectedEditorialDocument.pages);
     const restoredContext =
       restoredNavigationContextRef.current?.selectedBookKey === selectedKey
         ? restoredNavigationContextRef.current
         : null;
-    if (current?.bookKey === selectedKey) {
+    const currentPositionValid = !current?.semanticPosition || Boolean(remapBookDossierLocaleLocation(selectedDossier,
+      { bookKey: current.bookKey!, ...current.semanticPosition }));
+    if (current?.bookKey === selectedKey && currentPositionValid && (intentPageIndex < 0 || current.phase !== "idle")) {
       const remapped = remapBookInspectionSessionPages(current, selectedKey, selectedEditorialDocument.pages);
       inspectionSessionRef.current = remapped;
       setInspectionSession(remapped);
-      if (restoredContext) restoredNavigationContextRef.current = null;
+      if (restoredContext) { restoredNavigationContextRef.current = null; explicitDossierHistoryRef.current = false; }
       return;
     }
     const savedProgress = savedReadingsRef.current.find(item => item.kind === "book" && item.id === selectedKey)?.dossierProgress;
-    const savedPageIndex = savedProgress ? selectedEditorialDocument.pages.findIndex(page =>
-      page.id === savedProgress.pageId || (page.anchor?.sectionId === savedProgress.anchor.sectionId &&
-        page.anchor?.blockId === savedProgress.anchor.blockId && page.anchor?.itemId === savedProgress.anchor.itemId)) : -1;
+    const savedLocation = savedProgress ? remapBookDossierLocaleLocation(selectedDossier, { bookKey: selectedKey, ...savedProgress }) : null;
+    const savedPageIndex = bookDossierPhysicalPageIndex(selectedDossier,
+      savedLocation ? { ...savedLocation, pageId: savedProgress!.pageId } : null, selectedEditorialDocument.pages);
     const next = createBookInspectionSession({
       bookKey: selectedKey,
       pageCount: selectedEditorialDocument.pages.length,
       pages: selectedEditorialDocument.pages,
-      pageIndex: restoredContext?.pageIndex ?? Math.max(0, savedPageIndex),
+      pageIndex: intentPageIndex >= 0 ? intentPageIndex
+        : restoredContext && explicitDossierHistoryRef.current ? restoredContext.pageIndex
+          : savedPageIndex >= 0 ? savedPageIndex : restoredContext?.pageIndex ?? 0,
       requestId: ++inspectionRequestSequenceRef.current,
     });
-    if (restoredContext) restoredNavigationContextRef.current = null;
+    if (intentPageIndex >= 0) pendingDossierLocationRef.current = null;
+    if (restoredContext) { restoredNavigationContextRef.current = null; explicitDossierHistoryRef.current = false; }
     inspectionSessionRef.current = next;
     setInspectionSession(next);
-  }, [selectedBook, selectedEditorialDocument]);
+  }, [selectedBook, selectedEditorialDocument, selectedDossier, sameDossierOwner, setDossierProgress, pendingDossierReady]);
   useEffect(() => {
     const session = inspectionSession;
     const position = session?.semanticPosition;
-    if (!session?.bookKey || session.phase !== "idle" || !position?.anchor) return;
+    if (!sameDossierOwner || dossierOwnerRef.current !== setDossierProgress || inspectionSessionRef.current !== session
+      || !session?.bookKey || session.phase !== "idle" || !position?.anchor || !selectedDossier
+      || remapBookDossierLocaleLocation(selectedDossier, pendingDossierLocationRef.current)) return;
+    const location = resolveBookDossierLocation(selectedDossier, { bookKey: session.bookKey, ...position });
+    if (!location) return;
+    setDossierLocation(location);
     setDossierProgress(session.bookKey, { anchor: position.anchor, pageId: position.pageId, updatedAt: new Date().toISOString() });
-  }, [inspectionSession, setDossierProgress]);
+  }, [inspectionSession, selectedDossier, sameDossierOwner, setDossierProgress]);
   const createNavigationContext = useCallback((
     focusOrigin: BookArchiveNavigationFocusOrigin | null =
       navigationFocusOriginRef.current
