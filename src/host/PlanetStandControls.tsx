@@ -1,9 +1,11 @@
-import { useEffect, useId, useRef, useState } from "react";
+import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import { GLOBE_STAND_IDS, type GlobeStandId } from "../planet/globeStands";
 import { GLOBE_BACKGROUND_IDS, type GlobeBackgroundId } from "../planet/globeBackgrounds";
 import type { PlanetStandCustomizationController, PlanetStandCustomizationSnapshot } from "./planetStandCustomization";
 import type { PlanetBackgroundCustomizationController, PlanetBackgroundCustomizationSnapshot } from "./planetBackgroundCustomization";
+import type { GlobeStandInspectionPhase } from "../components/globeStandInspection";
+import type { ViewInsets } from "../components/globeFocusMath";
 import "./PlanetStandControls.css";
 
 /** Authored interface copy; editorial and child acceptance remain separate. */
@@ -62,12 +64,19 @@ export const planetBackgroundCopy = {
   },
 } as const;
 
-export default function PlanetStandControls({ controller, snapshot, backgroundController, backgroundSnapshot, onClose }: {
+export default function PlanetStandControls({ controller, snapshot, backgroundController, backgroundSnapshot, onClose, inspection }: {
   controller: Pick<PlanetStandCustomizationController, "open" | "preview" | "apply" | "cancel" | "retrySave">;
   snapshot: PlanetStandCustomizationSnapshot;
   backgroundController: Pick<PlanetBackgroundCustomizationController, "open" | "preview" | "apply" | "cancel" | "retrySave">;
   backgroundSnapshot: PlanetBackgroundCustomizationSnapshot;
   onClose: () => void;
+  inspection?: {
+    phase: GlobeStandInspectionPhase;
+    available: boolean;
+    onStart: () => unknown;
+    onReturn: () => unknown;
+    onInsetsChange: (insets: Partial<ViewInsets>) => void;
+  };
 }) {
   const { language } = useInterfaceLanguage();
   const [tab, setTab] = useState<"stand" | "background">("stand");
@@ -80,6 +89,35 @@ export default function PlanetStandControls({ controller, snapshot, backgroundCo
     : GLOBE_BACKGROUND_IDS.map(value => ({ value, label: planetBackgroundCopy.locales[language].names[value] }));
   const id = useId();
   const select = useRef<HTMLSelectElement>(null);
+  const panel = useRef<HTMLElement>(null);
+  const inspectButton = useRef<HTMLButtonElement>(null);
+  const inspecting = Boolean(inspection && inspection.phase !== "closed");
+  const wasInspecting = useRef(false);
+  const inspectionCopy = language === "ru"
+    ? { start: "Рассмотреть подставку", back: "Вернуться к глобусу", hint: "Потяните для вращения. Масштаб — кнопками + и −." }
+    : { start: "Inspect stand", back: "Return to globe", hint: "Drag to rotate. Use + and − to zoom." };
+  useEffect(() => {
+    if (wasInspecting.current && !inspecting && current.isOpen) inspectButton.current?.focus({ preventScroll: true });
+    wasInspecting.current = inspecting;
+  }, [current.isOpen, inspecting]);
+  const reportInsets = inspection?.onInsetsChange;
+  useLayoutEffect(() => {
+    if (!reportInsets) return;
+    const element = panel.current, root = element?.closest(".literary-globe");
+    if (!inspecting || !current.isOpen || !element || !root) { reportInsets({}); return; }
+    const measure = () => {
+      const area = root.getBoundingClientRect(), bounds = element.getBoundingClientRect();
+      if (area.width <= 0 || area.height <= 0) return;
+      reportInsets(window.matchMedia("(max-width: 980px)").matches
+        ? { top: Math.max(0, Math.ceil(bounds.bottom - area.top + 12)) }
+        : { left: Math.max(0, Math.ceil(bounds.right - area.left + 12)) });
+    };
+    measure();
+    const observer = typeof ResizeObserver === "function" ? new ResizeObserver(measure) : null;
+    observer?.observe(element); observer?.observe(root);
+    window.addEventListener("resize", measure);
+    return () => { observer?.disconnect(); window.removeEventListener("resize", measure); };
+  }, [current.isOpen, inspecting, reportInsets]);
   const activeController = isStand ? controller : backgroundController;
   useEffect(() => { if (current.isOpen) select.current?.focus({ preventScroll: true }); }, [current.isOpen, tab]);
   const switchTab = (next: "stand" | "background") => {
@@ -87,16 +125,17 @@ export default function PlanetStandControls({ controller, snapshot, backgroundCo
     // Both tabs edit the same draft. Closing the panel owns whole-draft rollback.
     if ((next === "stand" ? controller : backgroundController).open()) setTab(next);
   };
-  return <div className="planet-stand-controls" data-planet-stand-controls="">
+  return <div className="planet-stand-controls" data-planet-stand-controls="" data-stand-inspecting={inspecting ? "true" : undefined}>
     <button type="button" className="planet-stand-controls__toggle" data-planet-stand-toggle=""
+      data-planet-stand-inspection-return={inspecting ? "" : undefined}
       aria-expanded={current.isOpen} aria-controls={`${id}-panel`}
-      onClick={() => current.isOpen ? onClose() : activeController.open()}>{language === "ru" ? "Оформление" : "Appearance"}</button>
-    {current.isOpen && <section className="planet-stand-controls__panel" id={`${id}-panel`}
+      onClick={() => inspecting ? inspection?.onReturn() : current.isOpen ? onClose() : activeController.open()}>{inspecting ? inspectionCopy.back : language === "ru" ? "Оформление" : "Appearance"}</button>
+    {current.isOpen && <section ref={panel} className="planet-stand-controls__panel" id={`${id}-panel`}
       data-planet-stand-panel={isStand ? "" : undefined} data-planet-stand-phase={isStand ? current.phase : undefined}
       data-planet-background-panel={isStand ? undefined : ""} data-planet-background-phase={isStand ? undefined : current.phase}
       aria-labelledby={`${id}-heading`}
       onKeyDown={event => {
-        if (event.key === "Escape") { event.preventDefault(); event.stopPropagation(); onClose(); }
+        if (event.key === "Escape") { event.preventDefault(); event.stopPropagation(); if (inspecting) inspection?.onReturn(); else onClose(); }
       }}>
       <div className="planet-stand-controls__heading">
         <h2 id={`${id}-heading`}>{title}</h2>
@@ -123,9 +162,11 @@ export default function PlanetStandControls({ controller, snapshot, backgroundCo
         {language === "ru" ? "Подставка: " : "Stand: "}{planetStandCopy.locales[language].names[snapshot.displayedId]}
         {" · "}{language === "ru" ? "Фон: " : "Background: "}{planetBackgroundCopy.locales[language].names[backgroundSnapshot.displayedId]}
       </p>
-      <p className="planet-stand-controls__hint">{copy.hint}</p>
+      {inspection && isStand && !inspecting && <button ref={inspectButton} type="button" data-planet-stand-inspect=""
+        className="planet-stand-controls__inspect" disabled={!inspection.available} onClick={inspection.onStart}>{inspectionCopy.start}</button>}
+      <p className="planet-stand-controls__hint">{inspecting ? inspectionCopy.hint : copy.hint}</p>
       <p className="planet-stand-controls__status" role="status" aria-live="polite" aria-atomic="true">
-        {current.phase === "preparing" ? copy.preparing : current.phase === "preview" ? copy.preview : current.phase === "error" ? copy.failed : ""}
+        {current.phase === "preparing" ? copy.preparing : current.phase === "preview" && !inspecting ? copy.preview : current.phase === "error" ? copy.failed : ""}
       </p>
       <div className="planet-stand-controls__actions">
         <button type="button" data-planet-stand-apply={isStand ? "" : undefined} data-planet-background-apply={isStand ? undefined : ""}

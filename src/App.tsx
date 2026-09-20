@@ -30,7 +30,10 @@ import { compositionCustomizationView, readLegacyWebViewGlobeEdition } from "./h
 import PlanetStandControls from "./host/PlanetStandControls";
 import PlanetSceneInspectionControls from "./host/PlanetSceneInspectionControls";
 import { createPlanetSceneInspectionController } from "./host/planetSceneInspection";
-import type { GlobeStandPresentation } from "./planet/globeStands";
+import { isIncludedGlobeStandId, type GlobeStandPresentation } from "./planet/globeStands";
+import { createPlanetStandInspectionController } from "./host/planetStandInspection";
+import type { GlobeStandInspectionBridge } from "./components/globeStandInspection";
+import type { ViewInsets } from "./components/globeFocusMath";
 import type { GlobeBackgroundPresentation } from "./planet/globeBackgrounds";
 import { ProductNoticeSlot } from "./host/ProductNoticeHost";
 import {
@@ -604,6 +607,15 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     getEnvironment: getCompositionEnvironment,
     readLegacyEdition: platformServices.kind !== "web" ? readLegacyWebViewGlobeEdition : undefined,
   });
+  const standInspection = useMemo(() => createPlanetStandInspectionController(), []);
+  const standInspectionSnapshot = useSyncExternalStore(standInspection.subscribe, standInspection.getSnapshot, standInspection.getSnapshot);
+  const [standInspectionInsets, setStandInspectionInsets] = useState<Partial<ViewInsets>>({});
+  const updateStandInspectionInsets = useCallback((next: Partial<ViewInsets>) => {
+    setStandInspectionInsets(current => ["top", "right", "bottom", "left"].every(key =>
+      (current[key as keyof ViewInsets] ?? 0) === (next[key as keyof ViewInsets] ?? 0)) ? current : next);
+  }, []);
+  useLayoutEffect(() => () => standInspection.setContext({ enabled: false, visible: false, editorOpen: false,
+    ready: false, standId: "canonical", renderRevision: 0 }), [standInspection]);
   const stands = compositionCustomizationView(composition, "stand");
   const backgrounds = compositionCustomizationView(composition, "background");
   const standPresentation = useMemo<GlobeStandPresentation>(() => ({
@@ -647,12 +659,13 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
   });
   const nativeGlobeRootRef = useRef<HTMLElement>(null);
   const closeStandControls = useCallback(() => {
+    standInspection.returnToGlobe();
     if (composition.controller.getSnapshot().editor) composition.controller.cancel();
     window.requestAnimationFrame(() => {
       const root = nativeGlobeRootRef.current;
       if (root && !root.hasAttribute("inert")) root.querySelector<HTMLElement>("[data-planet-stand-toggle]")?.focus({ preventScroll: true });
     });
-  }, [composition.controller]);
+  }, [composition.controller, standInspection]);
   const nativeReturnRequestedRef = useRef(false);
   const [nativeBookWriterTarget, setNativeBookWriterTarget] = useState<BookWriterTarget | null>(null);
   const nativeBookWriterTargetRef = useRef<BookWriterTarget | null>(null);
@@ -2080,6 +2093,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     handleBack: () => {
       if (globalSearchOpen) { closeGlobalSearch(); return "handled"; }
       if (communityOpen) { closeCommunity(); return "handled"; }
+      if (standInspection.returnToGlobe()) return "handled";
       const inspectionMode = sceneInspection.getSnapshot().mode;
       if (inspectionMode !== "closed") {
         if (inspectionMode === "object") sceneInspection.closeObject(); else sceneInspection.close();
@@ -2130,6 +2144,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     if (!isPlanetApplication || nativeCollectionOpen) return;
     const escape = (event: KeyboardEvent) => {
       if (event.key !== "Escape" || event.defaultPrevented || nativeGlobeRootRef.current?.hasAttribute("inert")) return;
+      if (standInspection.returnToGlobe()) { event.preventDefault(); return; }
       const inspectionMode = sceneInspection.getSnapshot().mode;
       if (inspectionMode !== "closed") {
         event.preventDefault();
@@ -2152,21 +2167,38 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     return () => window.removeEventListener("keydown", escape);
   }, [isPlanetApplication, nativeCollectionOpen, closeLargestArchivesOnEscape, atlasSearchOpen,
     closeAtlasSearch, atlasExperience.searchButtonRef, atlasExperience.filtersButtonRef,
-    atlasExperience.state.filtersOpen, atlasExperienceDispatch, selectedCountry, closeCountry, composition.controller, closeStandControls, sceneInspection]);
+    atlasExperience.state.filtersOpen, atlasExperienceDispatch, selectedCountry, closeCountry, composition.controller, closeStandControls, sceneInspection, standInspection]);
+
+  const customizationAvailable = isPlanetApplication && !nativeCollectionOpen && !globalSearchOpen && !communityOpen
+    && !atlasSearchOpen && !atlasExperience.state.filtersOpen && platformVisibility === "active" && customizationSceneReady;
+  const standInspectionBridge = useMemo<GlobeStandInspectionBridge>(() => ({
+    ...standInspectionSnapshot,
+    request: customizationAvailable && composition.snapshot.editor !== null ? standInspectionSnapshot.request : null,
+    insets: standInspectionInsets,
+    onState: standInspection.report,
+  }), [standInspectionSnapshot, standInspectionInsets, standInspection, customizationAvailable, composition.snapshot.editor]);
+  const canInspectStand = customizationAvailable && composition.snapshot.editor !== null
+    && isIncludedGlobeStandId(composition.snapshot.displayed.standId)
+    && (composition.snapshot.phase === "idle" || composition.snapshot.phase === "preview")
+    && standInspectionSnapshot.phase === "closed";
 
   useLayoutEffect(() => {
     // Suspend an untouched saved choice while another surface owns interaction;
     // an explicit preview is cancelled without changing the applied stand.
-    const available = isPlanetApplication && !nativeCollectionOpen && !globalSearchOpen && !communityOpen
-      && !atlasSearchOpen && !atlasExperience.state.filtersOpen && platformVisibility === "active" && customizationSceneReady;
+    const available = customizationAvailable;
     composition.controller.setVisibility(available);
+    const displayed = composition.controller.getSnapshot();
+    standInspection.setContext({ enabled: isPlanetApplication && displayed.phase !== "error", visible: available,
+      editorOpen: displayed.editor !== null, ready: displayed.phase === "idle" || displayed.phase === "preview",
+      standId: displayed.displayed.standId, renderRevision: displayed.renderRevision });
     sceneInspection.setContext({ enabled: isPlanetApplication, access: isPlanetApplication ? "adult" : "blocked",
       visible: available, editorOpen: composition.snapshot.editor !== null,
       appliedBackgroundId: composition.snapshot.applied.backgroundId,
       displayedBackgroundId: composition.snapshot.displayed.backgroundId });
   }, [nativeCollectionOpen, globalSearchOpen, communityOpen, atlasSearchOpen,
     atlasExperience.state.filtersOpen, platformVisibility, composition.controller, isPlanetApplication, customizationSceneReady,
-    sceneInspection, composition.snapshot.editor, composition.snapshot.applied.backgroundId, composition.snapshot.displayed.backgroundId]);
+    sceneInspection, composition.snapshot.editor, composition.snapshot.applied.backgroundId, composition.snapshot.displayed.backgroundId,
+    standInspection, customizationAvailable, composition.snapshot.displayed.standId, composition.snapshot.renderRevision, composition.snapshot.phase]);
 
   const readerName =
     user?.user_metadata?.display_name || user?.email?.split("@")[0] || "";
@@ -2729,9 +2761,12 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
                 backgroundCustomization={isPlanetApplication ? backgroundPresentation : undefined}
                 composition={isPlanetApplication ? composition : undefined}
                 sceneInspection={isPlanetApplication ? sceneInspectionBridge : undefined}
+                standInspection={isPlanetApplication ? standInspectionBridge : undefined}
                 standControls={isPlanetApplication ? <><PlanetStandControls controller={stands.controller}
                   snapshot={stands.snapshot} backgroundController={backgrounds.controller}
-                  backgroundSnapshot={backgrounds.snapshot} onClose={closeStandControls} />
+                  backgroundSnapshot={backgrounds.snapshot} onClose={closeStandControls}
+                  inspection={{ phase: standInspectionSnapshot.phase, available: canInspectStand,
+                    onStart: standInspection.start, onReturn: standInspection.returnToGlobe, onInsetsChange: updateStandInspectionInsets }} />
                   <PlanetSceneInspectionControls controller={sceneInspection} markerRef={manuscriptMarkerRef}
                     onOpenBooks={() => { cancelNativeNavigation(); requestBookRuntime(); setBookLoadRequested(true); setNativeCollectionOpen(true); }} />
                 </> : undefined}

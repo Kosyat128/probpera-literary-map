@@ -59,6 +59,17 @@
 .planet-stand-controls__hint, .planet-stand-controls__status { margin: 8px 0; font-size: 0.8125rem; }
 .planet-stand-controls__status:empty { margin: 0; }
 .planet-stand-controls__actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.planet-stand-controls__inspect { width: 100%; }
+.planet-stand-controls[data-stand-inspecting="true"] .planet-stand-controls__tabs,
+.planet-stand-controls[data-stand-inspecting="true"] .planet-stand-controls__summary { display: none; }
+.planet-stand-controls[data-stand-inspecting="true"] .planet-stand-controls__heading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+.planet-stand-controls[data-stand-inspecting="true"] .planet-stand-controls__heading button { display: none; }
 
 /* Keep the reserved stand volume clear without changing the camera or globe. */
 .native-planet-app .atlas-experience-surface[data-atlas-view] .literary-globe[data-globe-stand]:not([data-globe-stand="canonical"]) .globe-controls {

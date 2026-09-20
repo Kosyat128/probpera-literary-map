@@ -19,6 +19,7 @@ import type { GlobeStandPresentation } from "../planet/globeStands";
 import type { GlobeBackgroundPresentation } from "../planet/globeBackgrounds";
 import type { PlanetCompositionPresentation } from "../host/planetCompositionPresentation";
 import type { GlobeSceneInspectionBridge } from "../host/planetSceneInspectionBridge";
+import type { GlobeStandInspectionBridge } from "./globeStandInspection";
 import {
   useNearViewportActivation,
   type DeferredLoadStatus,
@@ -68,6 +69,7 @@ interface Props {
   composition?: PlanetCompositionPresentation;
   standControls?: ReactNode;
   sceneInspection?: GlobeSceneInspectionBridge;
+  standInspection?: GlobeStandInspectionBridge;
   dataStatus?: DeferredLoadStatus;
   forceLoad?: boolean;
   onLoadIntent?: () => void;
@@ -96,6 +98,7 @@ export default function LiteraryWorldMap({
   composition,
   standControls,
   sceneInspection,
+  standInspection,
   dataStatus = "ready",
   forceLoad = false,
   onLoadIntent,
@@ -194,6 +197,7 @@ export default function LiteraryWorldMap({
           composition={composition}
           standControls={standControls}
           sceneInspection={sceneInspection}
+          standInspection={standInspection}
         />
       ) : (
         <div className="globe-loading" role="status" aria-live="polite">

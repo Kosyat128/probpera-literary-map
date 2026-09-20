@@ -3,6 +3,7 @@ import { useFrame, useThree } from "@react-three/fiber";
 import {
   useCallback,
   useEffect,
+  useLayoutEffect,
   useMemo,
   useRef,
 } from "react";
@@ -32,6 +33,11 @@ import {
   applyPerspectiveViewInsets,
   normalizedViewInsets,
 } from "./globeProjection";
+import {
+  globeStandInspectionFrame, globeStandInspectionMagnification, globeStandInspectionOrbitLimits, globeStandInspectionZoom, standInspectionBoundsMatch,
+  type GlobeRenderedStandBounds, type GlobeStandInspectionBridge, type GlobeStandInspectionEvent,
+  type GlobeStandInspectionRequest, type GlobeStandInspectionZoomState,
+} from "./globeStandInspection";
 
 export type GlobeCameraPhase =
   | "idle"
@@ -49,7 +55,9 @@ export type GlobeCountryCameraIntentKind =
 
 export type GlobeProgrammaticCameraSource =
   | GlobeCountryCameraIntentKind
-  | "home";
+  | "home"
+  | "stand-inspection"
+  | "stand-return";
 
 export type GlobeCameraMotionSource =
   | GlobeProgrammaticCameraSource
@@ -96,6 +104,7 @@ export type GlobeCameraView = {
   target: readonly [x: number, y: number, z: number];
   phase: GlobeCameraPhase;
   source: GlobeCameraMotionSource;
+  inspectionZoom?: GlobeStandInspectionZoomState;
 };
 
 export type GlobeCameraRigProps = {
@@ -107,6 +116,8 @@ export type GlobeCameraRigProps = {
   active?: boolean;
   interactionEnabled?: boolean;
   viewInsets?: Partial<ViewInsets> | null;
+  standInspection?: GlobeStandInspectionBridge;
+  standInspectionBounds?: GlobeRenderedStandBounds | null;
   onInteractionStart?: () => void;
   onInteractionEnd?: () => void;
   onPhaseChange?: (phase: GlobeCameraPhase) => void;
@@ -129,10 +140,24 @@ type CameraDestination = {
 type ActiveFlight = {
   token: number;
   source: GlobeProgrammaticCameraSource;
-  intent: GlobeCameraFocusIntent;
   startedAt: number | null;
   durationMs: number;
   trajectory: GlobeCameraTrajectory;
+} & ({ intent: GlobeCameraFocusIntent; inspection?: undefined } | {
+  intent: null;
+  inspection: { sessionId: number; returning: boolean; fromZoom: number; toZoom: number };
+});
+
+type InspectionSession = {
+  request: GlobeStandInspectionRequest;
+  original: { position: THREE.Vector3; target: THREE.Vector3; quaternion: THREE.Quaternion; up: THREE.Vector3; zoom: number };
+  focusKey: string | null;
+  phase: GlobeStandInspectionEvent["phase"];
+  framedStandId: string | null;
+  bounds: GlobeRenderedStandBounds | null;
+  viewportKey: string;
+  fittedZoom: number | null;
+  zoomFactor: number;
 };
 
 type SettlingMotion = {
@@ -203,13 +228,20 @@ function cameraView(
   camera: THREE.Camera,
   controls: OrbitControlsImpl,
   phase: GlobeCameraPhase,
-  source: GlobeCameraMotionSource
+  source: GlobeCameraMotionSource,
+  inspection?: InspectionSession | null,
 ): GlobeCameraView {
+  const magnification = inspection?.phase === "active" && inspection.fittedZoom !== null
+    ? globeStandInspectionMagnification(inspection.fittedZoom, inspection.zoomFactor) : null;
   return {
     position: [camera.position.x, camera.position.y, camera.position.z],
     target: [controls.target.x, controls.target.y, controls.target.z],
     phase,
     source,
+    ...(magnification && camera instanceof THREE.PerspectiveCamera ? { inspectionZoom: {
+      zoom: camera.zoom, minZoom: magnification.minZoom, maxZoom: magnification.maxZoom,
+      percent: Math.round(camera.zoom / inspection!.fittedZoom! * 100),
+    } } : {}),
   };
 }
 
@@ -228,6 +260,8 @@ export default function GlobeCameraRig({
   active = true,
   interactionEnabled = true,
   viewInsets,
+  standInspection,
+  standInspectionBounds = null,
   onInteractionStart,
   onInteractionEnd,
   onPhaseChange,
@@ -236,7 +270,7 @@ export default function GlobeCameraRig({
   onViewChange,
   onViewSettled,
 }: GlobeCameraRigProps) {
-  const { camera, invalidate, size } = useThree();
+  const { camera, gl, invalidate, size } = useThree();
   const controlsRef = useRef<OrbitControlsImpl>(null);
   const flightRef = useRef<ActiveFlight | null>(null);
   const settlingRef = useRef<SettlingMotion | null>(null);
@@ -246,6 +280,10 @@ export default function GlobeCameraRig({
   const manualInteractionRef = useRef(false);
   const initializedRef = useRef(false);
   const phaseRef = useRef<GlobeCameraPhase>("idle");
+  const inspectionRef = useRef<InspectionSession | null>(null);
+  const closedInspectionRef = useRef(0);
+  const inspectionBridgeRef = useRef(standInspection);
+  useLayoutEffect(() => { inspectionBridgeRef.current = standInspection; }, [standInspection]);
   const callbacksRef = useRef({
     onInteractionStart,
     onInteractionEnd,
@@ -280,10 +318,15 @@ export default function GlobeCameraRig({
     interactionEnabled,
   };
 
-  const normalizedInsets = useMemo(
-    () => normalizedViewInsets(viewInsets),
-    [viewInsets?.bottom, viewInsets?.left, viewInsets?.right, viewInsets?.top]
-  );
+  const inspectionInsets = standInspection?.phase !== "closed" ? standInspection?.insets : undefined;
+  const baseInsets = useMemo(() => normalizedViewInsets(viewInsets), [viewInsets?.bottom, viewInsets?.left, viewInsets?.right, viewInsets?.top]);
+  const baseInsetsRef = useRef(baseInsets); baseInsetsRef.current = baseInsets;
+  const normalizedInsets = useMemo(() => ({
+    top: Math.max(baseInsets.top, inspectionInsets?.top ?? 0),
+    right: Math.max(baseInsets.right, inspectionInsets?.right ?? 0),
+    bottom: Math.max(baseInsets.bottom, inspectionInsets?.bottom ?? 0),
+    left: Math.max(baseInsets.left, inspectionInsets?.left ?? 0),
+  }), [baseInsets, inspectionInsets?.top, inspectionInsets?.right, inspectionInsets?.bottom, inspectionInsets?.left]);
   const insetsRef = useRef(normalizedInsets);
   insetsRef.current = normalizedInsets;
 
@@ -300,14 +343,21 @@ export default function GlobeCameraRig({
       settingsRef.current.active &&
       settingsRef.current.autoRotate &&
       !settingsRef.current.reducedMotion &&
+      !inspectionRef.current &&
       !flightRef.current &&
       !settlingRef.current &&
       !manualInteractionRef.current;
     controls.enabled =
       settingsRef.current.active && settingsRef.current.interactionEnabled;
     controls.enableRotate = settingsRef.current.interactionEnabled;
-    controls.enableZoom = settingsRef.current.interactionEnabled;
+    controls.enableZoom = settingsRef.current.interactionEnabled && !inspectionRef.current;
     controls.enableDamping = true;
+    if (!flightRef.current) {
+      const limits = inspectionRef.current?.framedStandId ? globeStandInspectionOrbitLimits(controls.target) : null;
+      controls.minDistance = limits?.minDistance ?? GLOBE_SAFE_CAMERA_RADIUS;
+      controls.maxDistance = limits?.maxDistance ?? GLOBE_MAX_CAMERA_RADIUS;
+      controls.minPolarAngle = MIN_POLAR_ANGLE; controls.maxPolarAngle = MAX_POLAR_ANGLE;
+    }
     controls.autoRotate = shouldAutoRotate;
     setPhase(shouldAutoRotate ? "auto" : "idle");
     if (shouldAutoRotate) invalidate();
@@ -318,7 +368,7 @@ export default function GlobeCameraRig({
       const controls = controlsRef.current;
       if (!controls) return;
       callbacksRef.current.onViewChange?.(
-        cameraView(camera, controls, phaseRef.current, source)
+        cameraView(camera, controls, phaseRef.current, source, inspectionRef.current)
       );
     },
     [camera]
@@ -329,7 +379,7 @@ export default function GlobeCameraRig({
       const controls = controlsRef.current;
       if (!controls) return;
       callbacksRef.current.onViewSettled?.(
-        cameraView(camera, controls, phaseRef.current, source)
+        cameraView(camera, controls, phaseRef.current, source, inspectionRef.current)
       );
     },
     [camera]
@@ -337,7 +387,7 @@ export default function GlobeCameraRig({
 
   const cancelMotion = useCallback((source: GlobeCameraCancellationSource) => {
     const activeFlight = flightRef.current;
-    if (activeFlight) {
+    if (activeFlight?.intent) {
       callbacksRef.current.onProgrammaticCancel?.({
         source,
         intentKey: globeCameraIntentKey(activeFlight.intent),
@@ -350,35 +400,80 @@ export default function GlobeCameraRig({
     if (controls) controls.autoRotate = false;
   }, []);
 
+  const reportInspection = useCallback((session: InspectionSession, phase: GlobeStandInspectionEvent["phase"],
+    reason?: GlobeStandInspectionEvent["reason"]) => {
+    if (session.phase === phase && !reason) return;
+    session.phase = phase;
+    inspectionBridgeRef.current?.onState({ sessionId: session.request.sessionId, phase, ...(reason ? { reason } : {}) });
+  }, []);
+
+  const finishInspection = useCallback((restorePosition: boolean, reason: GlobeStandInspectionEvent["reason"], notify = true) => {
+    const session = inspectionRef.current, controls = controlsRef.current;
+    if (!session || !controls) return;
+    cancelMotion("superseded");
+    // Flush accumulated OrbitControls deltas without allowing them to alter the
+    // saved pose (or the current pose that a newer geographic intent will use).
+    const position = restorePosition ? session.original.position : camera.position.clone();
+    const target = restorePosition ? session.original.target : controls.target.clone();
+    controls.autoRotate = false; controls.enableDamping = false;
+    controls.minDistance = 0; controls.maxDistance = Infinity;
+    controls.minPolarAngle = 0; controls.maxPolarAngle = Math.PI; controls.update();
+    camera.position.copy(position); controls.target.copy(target); camera.up.copy(session.original.up);
+    if (camera instanceof THREE.PerspectiveCamera) {
+      camera.zoom = session.original.zoom;
+      applyPerspectiveViewInsets(camera, size.width, size.height, baseInsetsRef.current);
+    }
+    controls.update();
+    if (restorePosition) { camera.position.copy(position); camera.quaternion.copy(session.original.quaternion); }
+    controls.minDistance = GLOBE_SAFE_CAMERA_RADIUS; controls.maxDistance = GLOBE_MAX_CAMERA_RADIUS;
+    inspectionRef.current = null;
+    closedInspectionRef.current = Math.max(closedInspectionRef.current, session.request.sessionId);
+    if (manualInteractionRef.current) { manualInteractionRef.current = false; callbacksRef.current.onInteractionEnd?.(); }
+    syncRestingControls();
+    emitViewChange("stand-return"); emitViewSettled("stand-return");
+    if (settingsRef.current.active) invalidate();
+    if (notify) reportInspection(session, "closed", reason);
+  }, [camera, cancelMotion, emitViewChange, emitViewSettled, invalidate, reportInspection, size.height, size.width, syncRestingControls]);
+  const finishInspectionRef = useRef(finishInspection);
+  useLayoutEffect(() => { finishInspectionRef.current = finishInspection; }, [finishInspection]);
+
   const finishFlight = useCallback(
     (flight: ActiveFlight) => {
       if (flightRef.current?.token !== flight.token) return;
       const controls = controlsRef.current;
       if (!controls) return;
+      if (flight.inspection?.returning) { finishInspection(true, "returned"); return; }
 
       const sample = sampleCameraTrajectory(flight.trajectory, 1);
       camera.up.set(0, 1, 0);
       camera.position.copy(sample.position);
       controls.target.copy(sample.target);
-      if (flight.intent.kind === "home" && camera instanceof THREE.PerspectiveCamera) {
-        camera.zoom = 1;
+      if ((flight.intent?.kind === "home" || flight.inspection) && camera instanceof THREE.PerspectiveCamera) {
+        camera.zoom = flight.inspection?.toZoom ?? 1;
         camera.updateProjectionMatrix();
       }
       controls.update();
       flightRef.current = null;
       controls.enableDamping = true;
+      if (flight.inspection && inspectionRef.current?.request.sessionId === flight.inspection.sessionId) {
+        reportInspection(inspectionRef.current, "active");
+      }
       emitViewChange(flight.source);
       syncRestingControls();
       emitViewSettled(flight.source);
       invalidate();
     },
-    [camera, emitViewChange, emitViewSettled, invalidate, syncRestingControls]
+    [camera, emitViewChange, emitViewSettled, finishInspection, invalidate, reportInspection, syncRestingControls]
   );
 
   const startFlight = useCallback(
     (intent: GlobeCameraFocusIntent) => {
       const controls = controlsRef.current;
       if (!controls || !settingsRef.current.active) return;
+
+      // A genuinely new country/writer/home intent owns navigation. Remove the
+      // optical inspection state but do not replay its old geographic pose.
+      if (inspectionRef.current) finishInspection(false, "superseded");
 
       cancelMotion("superseded");
       const destination = globeCameraDestination({
@@ -387,7 +482,7 @@ export default function GlobeCameraRig({
           camera instanceof THREE.PerspectiveCamera ? camera.fov : 43,
         viewportWidth: size.width,
         viewportHeight: size.height,
-        viewInsets: insetsRef.current,
+        viewInsets: baseInsetsRef.current,
       });
       const fromDirection = camera.position.clone().normalize();
       const trajectory: GlobeCameraTrajectory = {
@@ -431,8 +526,34 @@ export default function GlobeCameraRig({
       }
       invalidate();
     },
-    [camera, cancelMotion, finishFlight, invalidate, setPhase, size.height, size.width]
+    [camera, cancelMotion, finishFlight, finishInspection, invalidate, setPhase, size.height, size.width]
   );
+
+  const startInspectionFlight = useCallback((session: InspectionSession, position: THREE.Vector3,
+    target: THREE.Vector3, zoom: number, returning: boolean) => {
+    const controls = controlsRef.current;
+    if (!controls || !(camera instanceof THREE.PerspectiveCamera)) return;
+    reportInspection(session, returning ? "returning" : "focusing");
+    cancelMotion("superseded");
+    if (manualInteractionRef.current) { manualInteractionRef.current = false; callbacksRef.current.onInteractionEnd?.(); }
+    const fromPosition = camera.position.clone(), fromTarget = controls.target.clone();
+    controls.autoRotate = false; controls.enableDamping = false;
+    // The spherical path is safe around the original globe centre. During that
+    // path OrbitControls must not clamp distance about its moving target.
+    controls.minDistance = 0; controls.maxDistance = Infinity;
+    controls.minPolarAngle = 0; controls.maxPolarAngle = Math.PI; controls.update();
+    camera.position.copy(fromPosition); controls.target.copy(fromTarget); controls.update();
+    const fromDirection = fromPosition.clone().normalize(), toDirection = position.clone().normalize();
+    const flight: ActiveFlight = { token: ++flightTokenRef.current, intent: null,
+      source: returning ? "stand-return" : "stand-inspection", startedAt: null,
+      durationMs: cameraFlightDurationMs(angularDistanceRadians(fromDirection, toDirection), settingsRef.current),
+      trajectory: { fromDirection, toDirection, fromRadius: Math.max(GLOBE_SAFE_CAMERA_RADIUS, fromPosition.length()),
+        toRadius: position.length(), fromTarget, toTarget: target.clone(), safeMinimumRadius: GLOBE_SAFE_CAMERA_RADIUS },
+      inspection: { sessionId: session.request.sessionId, returning, fromZoom: camera.zoom, toZoom: zoom } };
+    flightRef.current = flight;
+    setPhase("programmatic");
+    if (flight.durationMs === 0) finishFlight(flight); else invalidate();
+  }, [camera, cancelMotion, finishFlight, invalidate, reportInspection, setPhase]);
 
   const beginSettling = useCallback(
     (source: "manual" | "command") => {
@@ -460,7 +581,7 @@ export default function GlobeCameraRig({
     return true;
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const controls = controlsRef.current;
     if (!controls || initializedRef.current) return;
     initializedRef.current = true;
@@ -469,6 +590,102 @@ export default function GlobeCameraRig({
     controls.update();
     syncRestingControls();
   }, [camera, syncRestingControls]);
+
+  const inspectionFocusKey = focusIntent ? globeCameraIntentKey(focusIntent) : null;
+  useLayoutEffect(() => {
+    const controls = controlsRef.current;
+    if (!controls) return;
+    const bridge = inspectionBridgeRef.current, request = bridge?.request;
+    let session = inspectionRef.current;
+    if (session && inspectionFocusKey !== null && inspectionFocusKey !== session.focusKey) {
+      finishInspection(false, "superseded"); return;
+    }
+    if (!active || gl.getContext().isContextLost() || !(camera instanceof THREE.PerspectiveCamera)) {
+      if (session) finishInspection(true, "unavailable");
+      else if (request && request.sessionId > closedInspectionRef.current) {
+        closedInspectionRef.current = request.sessionId;
+        bridge?.onState({ sessionId: request.sessionId, phase: "closed", reason: "unavailable" });
+      } else if (bridge?.phase === "returning" && bridge.sessionId !== null) {
+        closedInspectionRef.current = Math.max(closedInspectionRef.current, bridge.sessionId);
+        bridge.onState({ sessionId: bridge.sessionId, phase: "closed", reason: "unavailable" });
+      }
+      return;
+    }
+    if (!request) {
+      if (session && session.phase !== "returning") {
+        if (camera.position.distanceToSquared(session.original.position) < 1e-16
+          && controls.target.distanceToSquared(session.original.target) < 1e-16 && camera.zoom === session.original.zoom) {
+          finishInspection(true, "returned");
+        } else startInspectionFlight(session, session.original.position, session.original.target, session.original.zoom, true);
+      } else if (!session && bridge?.phase === "returning" && bridge.sessionId !== null) {
+        // Start and Return can commit before the first rig effect ever owns a
+        // pose. Acknowledge that no-op return instead of stranding the editor.
+        closedInspectionRef.current = Math.max(closedInspectionRef.current, bridge.sessionId);
+        bridge.onState({ sessionId: bridge.sessionId, phase: "closed", reason: "returned" });
+      }
+      return;
+    }
+    if (!Number.isSafeInteger(request.sessionId) || request.sessionId <= closedInspectionRef.current
+      || request.sessionId !== bridge?.sessionId) return;
+    if (session && session.request.sessionId !== request.sessionId) {
+      if (request.sessionId < session.request.sessionId) return;
+      finishInspection(true, "returned"); session = null;
+    }
+    if (!session) {
+      session = { request, original: { position: camera.position.clone(), target: controls.target.clone(),
+        quaternion: camera.quaternion.clone(), up: camera.up.clone(), zoom: camera.zoom }, focusKey: inspectionFocusKey,
+        phase: "closed", framedStandId: null, bounds: null, viewportKey: "", fittedZoom: null, zoomFactor: 1 };
+      inspectionRef.current = session;
+      reportInspection(session, "waiting");
+      controls.autoRotate = false; controls.enableZoom = false;
+    }
+    if (request.renderRevision < session.request.renderRevision || session.phase === "returning") return;
+    session.request = request;
+    if (!standInspectionBoundsMatch(request, standInspectionBounds)) {
+      if (session.framedStandId !== request.standId) {
+        cancelMotion("superseded"); syncRestingControls();
+        reportInspection(session, "waiting");
+      }
+      return;
+    }
+    const bounds = standInspectionBounds!;
+    const projection = { verticalFovDegrees: camera.fov, viewportWidth: size.width,
+      viewportHeight: size.height, viewInsets: insetsRef.current };
+    const viewportKey = [camera.fov, size.width, size.height, normalizedInsets.left, normalizedInsets.right,
+      normalizedInsets.top, normalizedInsets.bottom].join(":");
+    session.bounds = bounds;
+    if (session.framedStandId !== bounds.standId) {
+      const frame = globeStandInspectionFrame({ ...projection, bounds });
+      if (!frame) { finishInspection(true, "unavailable"); return; }
+      session.framedStandId = bounds.standId; session.viewportKey = viewportKey;
+      session.fittedZoom = frame.zoom;
+      const magnification = globeStandInspectionMagnification(frame.zoom, session.zoomFactor)!;
+      session.zoomFactor = magnification.factor;
+      startInspectionFlight(session, frame.position, frame.target, magnification.zoom, false);
+    } else if (session.viewportKey !== viewportKey) {
+      session.viewportKey = viewportKey;
+      const flight = flightRef.current;
+      if (flight?.inspection && !flight.inspection.returning) {
+        const destination = sampleCameraTrajectory(flight.trajectory, 1);
+        const zoom = globeStandInspectionZoom({ ...projection, bounds, position: destination.position, target: destination.target });
+        if (zoom !== null) {
+          session.fittedZoom = zoom;
+          const magnification = globeStandInspectionMagnification(zoom, session.zoomFactor)!;
+          session.zoomFactor = magnification.factor; flight.inspection.toZoom = magnification.zoom;
+        }
+      } else if (!flight) {
+        const zoom = globeStandInspectionZoom({ ...projection, bounds, position: camera.position, target: controls.target });
+        if (zoom !== null) {
+          session.fittedZoom = zoom;
+          const magnification = globeStandInspectionMagnification(zoom, session.zoomFactor)!;
+          session.zoomFactor = magnification.factor; camera.zoom = magnification.zoom;
+          camera.updateProjectionMatrix(); emitViewChange("projection"); invalidate();
+        }
+      }
+    }
+  }, [active, camera, cancelMotion, emitViewChange, finishInspection, gl, inspectionFocusKey, invalidate, normalizedInsets,
+    reportInspection, size.height, size.width, standInspection?.request, standInspection?.phase, standInspection?.sessionId,
+    standInspectionBounds, startInspectionFlight, syncRestingControls]);
 
   useEffect(() => {
     if (!(camera instanceof THREE.PerspectiveCamera)) return;
@@ -493,6 +710,7 @@ export default function GlobeCameraRig({
 
   useEffect(
     () => () => {
+      finishInspectionRef.current(true, "unavailable", false);
       cancelMotion("unmount");
       handledFocusKeyRef.current = null;
       handledControlKeyRef.current = null;
@@ -508,6 +726,7 @@ export default function GlobeCameraRig({
     const controls = controlsRef.current;
     if (!controls) return;
     if (!active) {
+      finishInspection(true, "unavailable");
       cancelMotion("visibility");
       controls.enabled = false;
       controls.autoRotate = false;
@@ -520,7 +739,7 @@ export default function GlobeCameraRig({
 
     controls.enabled = interactionEnabled;
     controls.enableRotate = interactionEnabled;
-    controls.enableZoom = interactionEnabled;
+    controls.enableZoom = interactionEnabled && !inspectionRef.current;
     if (!interactionEnabled && manualInteractionRef.current) {
       endManualInteraction();
       settlingRef.current = null;
@@ -537,6 +756,7 @@ export default function GlobeCameraRig({
     autoRotate,
     endManualInteraction,
     finishFlight,
+    finishInspection,
     interactionEnabled,
     reducedMotion,
     setPhase,
@@ -560,6 +780,11 @@ export default function GlobeCameraRig({
 
     const controls = controlsRef.current;
     if (!controls) return;
+    if (flightRef.current?.inspection) {
+      // A user command takes over at an actual, bounded inspection pose rather
+      // than inheriting a moving target and unrestricted flight distances.
+      finishFlight(flightRef.current);
+    }
     cancelMotion("command");
     controls.enableDamping = true;
     controls.autoRotate = false;
@@ -581,7 +806,12 @@ export default function GlobeCameraRig({
         )
       );
     } else {
-      controls[orbitDollyMethodForZoomDirection(action.direction)](1.18);
+      const inspection = inspectionRef.current;
+      if (inspection?.fittedZoom !== null && inspection?.fittedZoom !== undefined && camera instanceof THREE.PerspectiveCamera) {
+        const magnification = globeStandInspectionMagnification(inspection.fittedZoom,
+          inspection.zoomFactor * (action.direction === "in" ? 1.18 : 1 / 1.18))!;
+        inspection.zoomFactor = magnification.factor; camera.zoom = magnification.zoom; camera.updateProjectionMatrix();
+      } else if (!inspection) controls[orbitDollyMethodForZoomDirection(action.direction)](1.18);
     }
     camera.up.set(0, 1, 0);
     controls.update();
@@ -594,12 +824,14 @@ export default function GlobeCameraRig({
     cancelMotion,
     controlRequest,
     emitViewChange,
+    finishFlight,
     startFlight,
   ]);
 
   const handleInteractionStart = useCallback(() => {
     if (!settingsRef.current.active || !settingsRef.current.interactionEnabled) return;
     const controls = controlsRef.current;
+    if (flightRef.current?.inspection) finishFlight(flightRef.current);
     cancelMotion("manual");
     manualInteractionRef.current = true;
     if (controls) {
@@ -608,7 +840,7 @@ export default function GlobeCameraRig({
     }
     setPhase("manual");
     callbacksRef.current.onInteractionStart?.();
-  }, [cancelMotion, setPhase]);
+  }, [cancelMotion, finishFlight, setPhase]);
 
   const handleInteractionEnd = useCallback(() => {
     if (!endManualInteraction() || !settingsRef.current.active) return;
@@ -642,6 +874,11 @@ export default function GlobeCameraRig({
       camera.up.set(0, 1, 0);
       camera.position.copy(sample.position);
       controls.target.copy(sample.target);
+      if (flight.inspection && camera instanceof THREE.PerspectiveCamera) {
+        camera.zoom = THREE.MathUtils.lerp(flight.inspection.fromZoom, flight.inspection.toZoom,
+          progress * progress * (3 - 2 * progress));
+        camera.updateProjectionMatrix();
+      }
       controls.update();
       if (progress >= 1) finishFlight(flight);
       else invalidate();
@@ -692,7 +929,7 @@ export default function GlobeCameraRig({
       enableDamping
       dampingFactor={DAMPING_FACTOR}
       enablePan={false}
-      enableZoom={interactionEnabled}
+      enableZoom={interactionEnabled && (!standInspection || standInspection.phase === "closed")}
       minDistance={GLOBE_SAFE_CAMERA_RADIUS}
       maxDistance={Math.max(GLOBE_MAX_CAMERA_RADIUS, GLOBE_MAX_FOCUS_RADIUS)}
       minPolarAngle={MIN_POLAR_ANGLE}

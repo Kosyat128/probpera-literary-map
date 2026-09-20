@@ -20,6 +20,7 @@ import PlanetEditionPreferenceStatus from "../host/PlanetEditionPreferenceStatus
 import { usePlanetEditionPreference } from "../host/planetEditionPreference";
 import type { PlanetCompositionPresentation } from "../host/planetCompositionPresentation";
 import type { GlobeSceneInspectionBridge } from "../host/planetSceneInspectionBridge";
+import type { GlobeRenderedStandBounds, GlobeStandInspectionBridge } from "./globeStandInspection";
 import { useGlobeCompositionScene, type PreparedCompositionSource } from "./useGlobeCompositionScene";
 import { useGlobeCompositionFrame } from "./useGlobeCompositionFrame";
 import { usePlatformServices } from "../platform/PlatformServices";
@@ -173,6 +174,7 @@ interface Props {
   backgroundCustomization?: GlobeBackgroundPresentation;
   composition?: PlanetCompositionPresentation;
   sceneInspection?: GlobeSceneInspectionBridge;
+  standInspection?: GlobeStandInspectionBridge;
 }
 
 const GLOBE_EDITION_STORAGE_KEY = "probpera.globe-edition.v2";
@@ -1673,6 +1675,7 @@ function GlobeScene({
   standCustomization,
   backgroundCustomization,
   sceneInspection,
+  standInspection,
   composition,
   preparedCompositionSource,
   editionId,
@@ -1702,6 +1705,7 @@ function GlobeScene({
   onCameraFocusStarted,
   onCameraFocusCancelled,
   onCameraFocusSettled,
+  onInspectionZoomChange,
   onViewSample,
   focusRequest,
   touchInteractionEnabled,
@@ -1710,6 +1714,7 @@ function GlobeScene({
   standCustomization?: GlobeStandPresentation;
   backgroundCustomization?: GlobeBackgroundPresentation;
   sceneInspection?: GlobeSceneInspectionBridge;
+  standInspection?: GlobeStandInspectionBridge;
   composition?: PlanetCompositionPresentation;
   preparedCompositionSource: PreparedCompositionSource | null;
   editionId: GlobeEditionId;
@@ -1739,6 +1744,7 @@ function GlobeScene({
   onCameraFocusStarted: (intentKey: string) => void;
   onCameraFocusCancelled: (event: GlobeCameraCancellationEvent) => void;
   onCameraFocusSettled: (intentKey: string) => void;
+  onInspectionZoomChange: (zoom: GlobeCameraView["inspectionZoom"] | null) => void;
   onViewSample: (sample: GlobeViewSample) => void;
   focusRequest?: GlobeExplicitFocusRequest | null;
   touchInteractionEnabled: boolean;
@@ -1747,6 +1753,8 @@ function GlobeScene({
     prepared: preparedCompositionSource, editionId, stand: standCustomization,
     background: backgroundCustomization, active });
   const globeObjectRef = useRef<THREE.Mesh>(null);
+  const [standInspectionBounds, setStandInspectionBounds] = useState<GlobeRenderedStandBounds | null>(null);
+  const inspectingStand = Boolean(standInspection && (standInspection.phase !== "closed" || standInspection.request));
   const [nobelDetailMode, setNobelDetailMode] =
     useState<NobelMarkerDetailMode>("clustered");
   const [viewSampleRequest, setViewSampleRequest] = useState(0);
@@ -1797,11 +1805,12 @@ function GlobeScene({
       : null;
   }, [atlas, focusRequest, matchingFocusRequest, selectedCountry]);
   const updateNobelDetailMode = useCallback((view: GlobeCameraView) => {
+    onInspectionZoomChange(view.inspectionZoom ?? null);
     const radius = Math.hypot(...view.position);
     setNobelDetailMode((current) =>
       resolveNobelMarkerDetailMode(radius, current)
     );
-  }, []);
+  }, [onInspectionZoomChange]);
   const handleViewSettled = useCallback(
     (view: GlobeCameraView) => {
       updateNobelDetailMode(view);
@@ -1901,17 +1910,18 @@ function GlobeScene({
         onCountryHover={onCountryHover}
         quality={quality}
         globeObjectRef={globeObjectRef}
-        touchInteractionEnabled={touchInteractionEnabled}
+        touchInteractionEnabled={touchInteractionEnabled && !inspectingStand}
       />
       <GlobePagePanTapBridge
         atlas={atlas}
         countries={countries}
         globeObjectRef={globeObjectRef}
-        active={active && !touchInteractionEnabled}
+        active={active && !touchInteractionEnabled && !inspectingStand}
         onCountrySelect={onCountrySelect}
       />
       {standCustomization
-        ? <GlobeIncludedStand presentation={compositionFrame.stand ?? standCustomization} quality={quality.tier} canonicalFrame={canonicalFrame} />
+        ? <GlobeIncludedStand presentation={compositionFrame.stand ?? standCustomization} quality={quality.tier}
+            onInspectionBounds={setStandInspectionBounds} canonicalFrame={canonicalFrame} />
         : canonicalFrame}
       <MicrostateMarkers
         atlas={atlas}
@@ -1921,7 +1931,7 @@ function GlobeScene({
         hoveredCountry={hoveredCountry}
         onCountrySelect={onCountrySelect}
         onCountryHover={onCountryHover}
-        touchInteractionEnabled={touchInteractionEnabled}
+        touchInteractionEnabled={touchInteractionEnabled && !inspectingStand}
       />
       {selectedWriter && explicitWriterCoordinates && (
         <SelectedWriterLocationMarker
@@ -1936,7 +1946,7 @@ function GlobeScene({
           nobelCountryId={nobelCountryId}
           selectedWriter={selectedWriter}
           detailMode={nobelDetailMode}
-          touchInteractionEnabled={touchInteractionEnabled}
+          touchInteractionEnabled={touchInteractionEnabled && !inspectingStand}
           onCountrySelect={(country) => onCountrySelect?.(country)}
           onWriterSelect={(country, writer) => {
             if (onWriterSelect) onWriterSelect(country, writer);
@@ -1946,6 +1956,8 @@ function GlobeScene({
         />
       )}
       <GlobeCameraRig
+        standInspection={standInspection}
+        standInspectionBounds={standCustomization ? standInspectionBounds : null}
         focusIntent={focusIntent}
         controlRequest={controlRequest}
         autoRotate={autoRotate}
@@ -1997,11 +2009,21 @@ export default function LiteraryGlobe({
   backgroundCustomization,
   composition,
   sceneInspection,
+  standInspection,
 }: Props) {
   const quality = resolveGlobeQualityProfile(qualityTier, economical);
   const { language, t, countryName, number } = useInterfaceLanguage();
   const platformServices = usePlatformServices();
   const isPlanetApplication = isControlledWebEdition || platformServices.kind !== "web";
+  const standInspectionActive = isPlanetApplication && Boolean(standInspection
+    && (standInspection.phase !== "closed" || standInspection.request));
+  const standInspectionActiveRef = useRef(standInspectionActive);
+  useLayoutEffect(() => { standInspectionActiveRef.current = standInspectionActive; }, [standInspectionActive]);
+  const [inspectionZoom, setInspectionZoom] = useState<GlobeCameraView["inspectionZoom"] | null>(null);
+  const handleInspectionZoomChange = useCallback((next: GlobeCameraView["inspectionZoom"] | null) => {
+    setInspectionZoom(current => current?.zoom === next?.zoom && current?.minZoom === next?.minZoom
+      && current?.maxZoom === next?.maxZoom && current?.percent === next?.percent ? current : next);
+  }, []);
   const compositionRef = useRef(composition);
   useLayoutEffect(() => { compositionRef.current = composition; }, [composition]);
   const standCustomizationRef = useRef(standCustomization);
@@ -2084,6 +2106,13 @@ export default function LiteraryGlobe({
     revision: 0,
   });
   const [keyboardCandidateActive, setKeyboardCandidateActive] = useState(false);
+  useLayoutEffect(() => {
+    if (!standInspectionActive) return;
+    setKeyboardCandidateActive(false);
+    setHoveredCountry(null);
+    setHoveredLaureate(null);
+    onHoverCountryChange?.(null);
+  }, [standInspectionActive, onHoverCountryChange]);
   const [editionRailVisible, setEditionRailVisible] = useState(true);
   const [editionRailScroll, setEditionRailScroll] = useState({
     canScrollLeft: false,
@@ -2325,7 +2354,7 @@ export default function LiteraryGlobe({
     globeVisible,
     hasSelection: Boolean(selectedCountry),
     hasHover: Boolean(hoveredCountry || hoveredLaureate),
-    interacting: interactionPaused || cameraControlsActive || Boolean(sceneInspection && sceneInspection.mode !== "closed"),
+    interacting: interactionPaused || cameraControlsActive || standInspectionActive || Boolean(sceneInspection && sceneInspection.mode !== "closed"),
     cameraFlightActive,
   });
   const autoRotateActive = autoRotatePolicy.active;
@@ -2342,7 +2371,7 @@ export default function LiteraryGlobe({
           ? t("Автовращение приостановлено во время наведения")
           : cameraFlightActive
             ? t("Автовращение приостановлено во время перелёта камеры")
-        : interactionPaused || (sceneInspection && sceneInspection.mode !== "closed")
+        : interactionPaused || standInspectionActive || (sceneInspection && sceneInspection.mode !== "closed")
           ? t("Автовращение приостановлено во время взаимодействия")
           : !globeActive
             ? t("Автовращение приостановлено вне экрана")
@@ -2360,7 +2389,7 @@ export default function LiteraryGlobe({
   });
   const cameraRadius = viewSample.cameraRadius;
   const homeCameraRadius = Math.hypot(...GLOBE_CAMERA_CONFIG.position);
-  const globeScalePercent = Math.round(
+  const globeScalePercent = standInspectionActive ? inspectionZoom?.percent ?? 100 : Math.round(
     THREE.MathUtils.clamp(
       (homeCameraRadius / Math.max(GLOBE_SAFE_CAMERA_RADIUS, cameraRadius)) *
         100,
@@ -2368,10 +2397,12 @@ export default function LiteraryGlobe({
       220
     )
   );
-  const zoomInDisabled =
-    cameraRadius <= GLOBE_SAFE_CAMERA_RADIUS + GLOBE_ZOOM_LIMIT_EPSILON;
-  const zoomOutDisabled =
-    cameraRadius >= GLOBE_MAX_CAMERA_RADIUS - GLOBE_ZOOM_LIMIT_EPSILON;
+  const zoomInDisabled = standInspectionActive
+    ? !inspectionZoom || inspectionZoom.zoom >= inspectionZoom.maxZoom - 1e-7
+    : cameraRadius <= GLOBE_SAFE_CAMERA_RADIUS + GLOBE_ZOOM_LIMIT_EPSILON;
+  const zoomOutDisabled = standInspectionActive
+    ? !inspectionZoom || inspectionZoom.zoom <= inspectionZoom.minZoom + 1e-7
+    : cameraRadius >= GLOBE_MAX_CAMERA_RADIUS - GLOBE_ZOOM_LIMIT_EPSILON;
   const sourceEdition = renderedEdition;
   const openSourceDialog = () => {
     const dialog = sourceDialogRef.current;
@@ -2647,6 +2678,7 @@ export default function LiteraryGlobe({
 
   const handleCountrySelect = useCallback(
     (country: Country) => {
+      if (standInspectionActiveRef.current) return;
       if (sceneInspection && sceneInspection.controller.getSnapshot().mode !== "closed") return;
       if (selectableCountryIds.has(country.id)) {
         setKeyboardCandidateActive(false);
@@ -2657,12 +2689,14 @@ export default function LiteraryGlobe({
   );
 
   const handleSceneWriterSelect = useCallback((country: Country, writer: Writer) => {
+    if (standInspectionActiveRef.current) return;
     if (sceneInspection && sceneInspection.controller.getSnapshot().mode !== "closed") return;
     if (onWriterSelect) onWriterSelect(country, writer); else handleCountrySelect(country);
   }, [sceneInspection, onWriterSelect, handleCountrySelect]);
 
   const handleCountryHover = useCallback(
     (country: Country | null) => {
+      if (standInspectionActiveRef.current) return;
       const nextCountry =
         country && selectableCountryIds.has(country.id) ? country : null;
       setHoveredCountry(nextCountry);
@@ -2670,6 +2704,10 @@ export default function LiteraryGlobe({
     },
     [onHoverCountryChange, selectableCountryIds]
   );
+
+  const handleLaureateHover = useCallback((laureate: NobelLayerHover | null) => {
+    if (!standInspectionActiveRef.current) setHoveredLaureate(laureate);
+  }, []);
 
   const handleViewSample = useCallback(
     (sample: GlobeViewSample) => {
@@ -2785,7 +2823,7 @@ export default function LiteraryGlobe({
       if (!action) return;
 
       if (action.type === "select") {
-        if (sceneInspection && sceneInspection.controller.getSnapshot().mode !== "closed") {
+        if (standInspectionActiveRef.current || (sceneInspection && sceneInspection.controller.getSnapshot().mode !== "closed")) {
           event.preventDefault(); return;
         }
         const country = keyboardCandidateActive ? viewSample.candidate : null;
@@ -2797,7 +2835,7 @@ export default function LiteraryGlobe({
 
       event.preventDefault();
       requestGlobeControl(action);
-      setKeyboardCandidateActive(action.type === "rotate");
+      setKeyboardCandidateActive(action.type === "rotate" && !standInspectionActiveRef.current);
     },
     [
       keyboardCandidateActive,
@@ -3051,7 +3089,7 @@ export default function LiteraryGlobe({
       onWheelCapture={() => markPrewarmInputActivity(420)}
       onKeyDownCapture={(event) => {
         markPrewarmInputActivity(420);
-        if (sourceDialogRef.current?.open || (sceneInspection && sceneInspection.controller.getSnapshot().mode !== "closed")) return;
+        if (sourceDialogRef.current?.open || standInspectionActiveRef.current || (sceneInspection && sceneInspection.controller.getSnapshot().mode !== "closed")) return;
         if (event.key !== "Escape" || !touchActivationPolicy.escapeDeactivates) {
           return;
         }
@@ -3064,6 +3102,7 @@ export default function LiteraryGlobe({
       data-globe-stand={standCustomization?.displayedId}
       data-globe-background={isPlanetApplication ? backgroundCustomization?.displayedId ?? DEFAULT_GLOBE_BACKGROUND_ID : undefined}
       data-planet-scene-inspection={sceneInspection?.mode}
+      data-planet-stand-inspection={isPlanetApplication ? standInspection?.phase : undefined}
       data-planet-composition-phase={composition?.snapshot.phase}
       data-planet-composition-revision={composition?.snapshot.renderRevision}
       data-globe-edition-rail={editionRailVisible ? "visible" : "hidden"}
@@ -3136,6 +3175,7 @@ export default function LiteraryGlobe({
           backgroundCustomization={isPlanetApplication ? backgroundCustomization : undefined}
           composition={composition}
           sceneInspection={sceneInspection}
+          standInspection={isPlanetApplication ? standInspection : undefined}
           preparedCompositionSource={preparedCompositionSource}
           editionId={renderedEditionId}
           visualStyle={renderedVisualStyle}
@@ -3143,7 +3183,7 @@ export default function LiteraryGlobe({
           countries={countries}
           selectedCountry={selectedCountry}
           selectedWriter={selectedWriter}
-          candidateCountry={keyboardCandidateActive ? viewSample.candidate : null}
+          candidateCountry={keyboardCandidateActive && !standInspectionActive ? viewSample.candidate : null}
           hoveredCountry={hoveredCountry}
           onCountrySelect={handleCountrySelect}
           onCountryHover={handleCountryHover}
@@ -3156,7 +3196,7 @@ export default function LiteraryGlobe({
           showNobelLaureates={showNobelLaureates}
           nobelCountryId={nobelCountryId}
           onWriterSelect={handleSceneWriterSelect}
-          onLaureateHover={setHoveredLaureate}
+          onLaureateHover={handleLaureateHover}
           active={globeActive}
           mobile={mobileGlobe}
           viewInsets={cameraViewInsets}
@@ -3164,6 +3204,7 @@ export default function LiteraryGlobe({
           onCameraFocusStarted={setStartedCameraIntent}
           onCameraFocusCancelled={setCancelledCameraMotion}
           onCameraFocusSettled={setSettledCameraIntent}
+          onInspectionZoomChange={handleInspectionZoomChange}
           onViewSample={handleViewSample}
           focusRequest={focusRequest}
           touchInteractionEnabled={touchActivationPolicy.controlsEnabled}
