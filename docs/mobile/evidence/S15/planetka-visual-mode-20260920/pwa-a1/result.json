@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-20T05:04:38.567Z",
+  "sourceCommit": "0d72dabaa5fa1f2b63d5b407b9f315b719e2b7bc",
+  "buildId": "c32230f1f5e8d2a99260bb4ce7d1bf00eff2f4a7d40b9b98ce7b6b24008f9915",
+  "sourceInputsSha256": "4c7be1c00d5fd03bf4a88615b3814a628ca2fa3c5d13c1eeb07434c7a1a89e66",
+  "artifact": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s15-planetka-visual/pwa-c32230f1",
+    "files": 1424,
+    "bytes": 76416561,
+    "artifactSha256": "ced92b824e0d3bb3b64549d7dc7e74013e1d03094f33c17ef5181a0c0d506f7a",
+    "exactCopiesVerified": true
+  },
+  "browser": {
+    "startTime": "2026-09-20T05:03:59.044Z",
+    "duration": 34094.007,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "pass": true,
+  "failure": null,
+  "localQaAuthority": true,
+  "stageAccepted": false,
+  "installedDevice": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false
+}

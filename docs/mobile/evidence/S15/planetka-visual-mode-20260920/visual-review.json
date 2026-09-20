@@ -1,0 +1,51 @@
+{
+  "sourceCommit": "0d72dabaa5fa1f2b63d5b407b9f315b719e2b7bc",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/source-manifests/09fa9bc838ba9eed.json",
+    "sha256": "09fa9bc838ba9eed8e0293d2759302887d95659b249eea3601e6288cb67b4f01",
+    "fileCount": 89
+  },
+  "actualAppCapture": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s15-planetka-visual/browser-a5/planetka-visual-mode-indep-ddccf--without-changing-the-globe/planetka-visual-mode.json",
+    "sha256": "eb7bf5f670403435d360f7f1b845efb59eb74474c2d0e23cae8f49076bed5c54"
+  },
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s15-planetka-visual/browser-a5/planetka-visual-mode-indep-ddccf--without-changing-the-globe/mr-booky-help-ru-1440.png",
+      "sha256": "e7da2f31c833972474a54e5797de862fbb970dc168fbcd3dd8720afa57f5b9c0",
+      "inspected": true,
+      "reviewer": "Codex root visual inspection",
+      "findings": [
+        "Inspected actual App screenshot: the independent green book character has visible face, magnifier, hands and feet beside the canonical globe.",
+        "Russian tips use a cream book page with a folded corner, subtle paper texture, green headings, gold rules and local Source Serif text; action labels remain readable.",
+        "The helper and its card remain within the desktop viewport. The character is a 3D-rendered bitmap, not a live mesh."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s15-planetka-visual/browser-a5/planetka-visual-mode-indep-ddccf--without-changing-the-globe/mr-booky-tour-en-320.png",
+      "sha256": "4d629dec767dbfff7f669e3be65a916d3dea72ed740b5a7db78ee0234ab2435e",
+      "inspected": true,
+      "reviewer": "Codex root visual inspection",
+      "findings": [
+        "Inspected actual App screenshot at 320px: Mr. Booky, step title, explanatory text and navigation controls remain readable and within the viewport.",
+        "The search outline follows the real toolbar button. The page and whole character image do not overlap.",
+        "The cream paper design and folded corner remain recognizable at phone width."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s15-planetka-visual/browser-a5/planetka-visual-mode-indep-ddccf--without-changing-the-globe/mr-booky-collection-en-landscape.png",
+      "sha256": "7b05fd815d3b9b10cd1b862460b5dd4079feb95329c3d5bec691ee0425b05863",
+      "inspected": true,
+      "reviewer": "Codex root visual inspection",
+      "findings": [
+        "Inspected actual App screenshot at 844 by 390: the guide remains inside the collection with Leo Tolstoy selected and the real author filter visible.",
+        "The book page and character fit the viewport without covering one another. Short landscape height uses internal card scrolling; lower controls are below the initial fold and were reached by the passing interaction case.",
+        "This is functional visual evidence, not formal art, child-mode or installed-device acceptance."
+      ]
+    }
+  ],
+  "artAccepted": false,
+  "childApproved": false,
+  "userRealismRequirementSatisfied": false,
+  "releaseReady": false
+}

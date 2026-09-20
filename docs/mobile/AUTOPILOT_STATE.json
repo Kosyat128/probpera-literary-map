@@ -3,9 +3,9 @@
   "repository": "Kosyat128/probpera-literary-map",
   "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
-  "headSha": "3f2b2d009dfbfe1704e9442a6709a183cee657e2",
+  "headSha": "0d72dabaa5fa1f2b63d5b407b9f315b719e2b7bc",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-20T03:31:40.247Z",
+  "updatedAt": "2026-09-20T05:07:27.682Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -2506,7 +2506,7 @@
     {
       "id": "S15",
       "name": "Planetka and journeys",
-      "status": "NOT_STARTED",
+      "status": "IN_PROGRESS",
       "criteria": [
         {
           "id": "S15.acceptance",
@@ -2590,19 +2590,23 @@
         },
         {
           "id": "S15.PLANETKA-001",
-          "status": "OPEN",
-          "evidence": [],
-          "commit": null,
-          "lastValidatedAt": null,
-          "notes": "Original mascot separate from globe surface. Implement the original guide and shared policy before complete English dialogue/audio validation."
+          "status": "IN_PROGRESS",
+          "evidence": [
+            "docs/mobile/evidence/S15/planetka-visual-mode-20260920/result.json"
+          ],
+          "commit": "0d72dabaa5fa1f2b63d5b407b9f315b719e2b7bc",
+          "lastValidatedAt": "2026-09-20T05:07:27.682Z",
+          "notes": "Original mascot separate from globe surface. Implement the original guide and shared policy before complete English dialogue/audio validation. Following the owner's explicit revised contract, Книжулик / Mr. Booky is an independent DOM companion using an original green 3D-rendered PNG, not facial/limb objects attached to the globe. Show/hide, contextual navigation help, next/back/collapse and real country/writer/collection actions leave the canonical renderer, atlas and camera ownership intact. 7 cases in the two selected controller/author-request suites, TypeScript and one actual-App Chrome case cover locale/320px/landscape layout, actual highlighted controls, writer selection and collection keyboard behavior. Forty-three established inputs including all globe/rig/geometry owners remain byte-exact; the PNG is bound into local PWA/Android artifacts. This is scoped IN_PROGRESS evidence only; reviewed dialogue, literary journeys, art, child, rights, device and release gates remain open."
         },
         {
           "id": "S15.PLANETKA-002",
-          "status": "OPEN",
-          "evidence": [],
-          "commit": null,
-          "lastValidatedAt": null,
-          "notes": "Mouth below eyes; hands/legs fully visible. Implement the original guide and shared policy before complete English dialogue/audio validation."
+          "status": "IN_PROGRESS",
+          "evidence": [
+            "docs/mobile/evidence/S15/planetka-visual-mode-20260920/result.json"
+          ],
+          "commit": "0d72dabaa5fa1f2b63d5b407b9f315b719e2b7bc",
+          "lastValidatedAt": "2026-09-20T05:07:27.682Z",
+          "notes": "Mouth below eyes; hands/legs fully visible. Implement the original guide and shared policy before complete English dialogue/audio validation. Following the owner's explicit revised contract, Книжулик / Mr. Booky is an independent DOM companion using an original green 3D-rendered PNG, not facial/limb objects attached to the globe. Show/hide, contextual navigation help, next/back/collapse and real country/writer/collection actions leave the canonical renderer, atlas and camera ownership intact. 7 cases in the two selected controller/author-request suites, TypeScript and one actual-App Chrome case cover locale/320px/landscape layout, actual highlighted controls, writer selection and collection keyboard behavior. Forty-three established inputs including all globe/rig/geometry owners remain byte-exact; the PNG is bound into local PWA/Android artifacts. This is scoped IN_PROGRESS evidence only; reviewed dialogue, literary journeys, art, child, rights, device and release gates remain open."
         },
         {
           "id": "S15.PLANETKA-003",
@@ -2669,8 +2673,26 @@
           "notes": "All loading/empty/error/offline states. Shared feature presentation precedes integrated RU/EN layout, recovery and accessibility validation."
         }
       ],
-      "lastGreenCommands": [],
-      "artifacts": [],
+      "lastGreenCommands": [
+        "node docs/mobile/evidence/S15/planetka-visual-mode-20260920/check.mjs unit a3",
+        "node docs/mobile/evidence/S15/planetka-visual-mode-20260920/check.mjs static a3",
+        "node docs/mobile/evidence/S15/planetka-visual-mode-20260920/check.mjs browser a5",
+        "node docs/mobile/evidence/S15/planetka-visual-mode-20260920/run-pwa.mjs 0d72dabaa5fa1f2b63d5b407b9f315b719e2b7bc",
+        "pwsh -File docs/mobile/evidence/S15/planetka-visual-mode-20260920/build-android.ps1 0d72dabaa5fa1f2b63d5b407b9f315b719e2b7bc",
+        "node docs/mobile/evidence/S15/planetka-visual-mode-20260920/preserve-android.mjs 0d72dabaa5fa1f2b63d5b407b9f315b719e2b7bc"
+      ],
+      "artifacts": [
+        "docs/mobile/evidence/S15/planetka-visual-mode-20260920/entry.json",
+        "docs/mobile/evidence/S15/planetka-visual-mode-20260920/result.json",
+        "docs/mobile/evidence/S15/planetka-visual-mode-20260920/visual-review.json",
+        "docs/mobile/evidence/S15/planetka-visual-mode-20260920/asset-provenance.json",
+        "docs/mobile/evidence/S15/planetka-visual-mode-20260920/source-manifests/09fa9bc838ba9eed.json",
+        "docs/mobile/evidence/S15/planetka-visual-mode-20260920/unit-a3/result.json",
+        "docs/mobile/evidence/S15/planetka-visual-mode-20260920/static-a3/result.json",
+        "docs/mobile/evidence/S15/planetka-visual-mode-20260920/browser-a5/result.json",
+        "docs/mobile/evidence/S15/planetka-visual-mode-20260920/pwa-a1/result.json",
+        "docs/mobile/evidence/S15/planetka-visual-mode-20260920/android-a1/result.json"
+      ],
       "externalBlockers": []
     },
     {
@@ -11030,7 +11052,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Continue the full application plan from the next bounded internal requirement. Preserve the library window depth and layout, refined whale jaw, corrected reflection orientation, all other stand proportions, shared atlas wall map, inspection return, appearance transactions, reader, locale and storage behavior. Continue remaining Starter Set/source bindings and functional gaps without repeating unchanged suites. Child/rights/art/lightmap review, full accessories/audio/catalog, screen-reader, installed-device/stress, actual storage retention, distributed sync/conflict resolution, iOS and release gates remain open.",
+    "nextAction": "Continue the full application plan with the separate Книжулик / Mr. Booky DOM companion and existing canonical navigation. Keep the globe geometry, renderer, camera and picking independent of the companion. Preserve authored routes, keyboard behavior, hide/collapse/suspension semantics, 320px layout and PNG provenance; continue reviewed bilingual assistance and offline/error handling within actual source/rights gates. S03 remains the first unresolved acceptance. Child, literary journey persistence, dialogue/audio review, installed-device, screen-reader, distributed sync, iOS and release acceptance remain open.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -11101,7 +11123,8 @@
       "docs/mobile/evidence/S13/stand-inspection-20260920/result.json",
       "docs/mobile/evidence/S13/writer-study-map-20260920/result.json",
       "docs/mobile/evidence/S13/whale-jaw-detail-20260920/result.json",
-      "docs/mobile/evidence/S13/library-window-depth-20260920/result.json"
+      "docs/mobile/evidence/S13/library-window-depth-20260920/result.json",
+      "docs/mobile/evidence/S15/planetka-visual-mode-20260920/result.json"
     ],
     "commands": [
       "node scripts/mobile/verify-requirements.mjs",
@@ -11142,7 +11165,8 @@
       "S13 stand inspection: 18 cases across three selected math/camera/UI-controller suites, TypeScript, one actual-App Chrome case and exact local PWA/Android builds. Thirty-six established inputs including all geometry/material factories and seven composition owners remain unchanged. Historical Starter Set inventory remains 29/13/0 plus three owner additions with explicit changed integration bindings. No geometry or inventory audit rerun; child/rights/art, full catalog/stress and installed-device acceptance remain open.",
       "S13 writer-study wall map: 3 selected geometry cases, TypeScript, one actual-App Chrome case, two inspected RU/EN images and exact local PWA/Android builds. Forty-one established inputs remain unchanged; no unchanged geometry suites or inventory audit rerun. Historical inventory changes are explicit. No art, child, installed-device or release acceptance.",
       "S13 whale jaw detail and corrected craft reflection orientation: 8 selected geometry/material cases, TypeScript, one actual-App Chrome case, two inspected views through product controls and exact local PWA/Android builds. Forty-three established inputs remain unchanged; no unchanged geometry suites or inventory audit rerun. Historical inventory changes are explicit. No art, child, installed-device or release acceptance.",
-      "S13 library window depth: 6 selected geometry cases, TypeScript, one actual-App Chrome case, two inspected views through product controls and exact local PWA/Android builds. Forty-four established inputs remain unchanged; no unchanged geometry suites or inventory audit rerun. Historical inventory changes are explicit. No art, child, installed-device or release acceptance."
+      "S13 library window depth: 6 selected geometry cases, TypeScript, one actual-App Chrome case, two inspected views through product controls and exact local PWA/Android builds. Forty-four established inputs remain unchanged; no unchanged geometry suites or inventory audit rerun. Historical inventory changes are explicit. No art, child, installed-device or release acceptance.",
+      "S15 independent DOM companion: 7 controller/author-request cases, TypeScript, one actual-App Chrome case, three inspected product-control views and exact local PWA/Android builds with the pinned PNG. Forty-three prior runtime sources unchanged. Superseded a1 retained; historical Starter inventory retained with explicit drift. No art/child/rights/device/release acceptance."
     ]
   },
   "requirementsHash": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732",
@@ -12995,6 +13019,14 @@
       "sha256": "96629158913921446f07e58ac1c868a0cc87af52f11392b227fd7c7ef5b02f02",
       "sourceCommit": "3f2b2d009dfbfe1704e9442a6709a183cee657e2",
       "status": "LIBRARY_WINDOW_DEPTH_SCOPED_VALIDATION",
+      "stageAccepted": false,
+      "releaseReady": false
+    },
+    "s15PlanetkaVisualMode": {
+      "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/result.json",
+      "sha256": "72160532d46178adc8357f67c0801d3dbcfee1886b9ab81e02f4ec8c0bb21f45",
+      "sourceCommit": "0d72dabaa5fa1f2b63d5b407b9f315b719e2b7bc",
+      "status": "INDEPENDENT_DOM_COMPANION_SCOPED_VALIDATION",
       "stageAccepted": false,
       "releaseReady": false
     }

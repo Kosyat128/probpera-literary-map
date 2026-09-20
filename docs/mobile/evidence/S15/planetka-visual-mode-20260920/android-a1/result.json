@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "kind": "android-independent-knizhulyk-companion-dev-apk",
+  "sourceCommit": "0d72dabaa5fa1f2b63d5b407b9f315b719e2b7bc",
+  "buildId": "07f4a8b8599d1e58437cc9a646e78779504d4285d64d33fbbda3fbfb6cbbb140",
+  "sourceInputsSha256": "046a44c310fc90b4f677a0e658505938d42d648c8d0296287117b1c5fb0d9734",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s15-planetka-visual/android-07f4a8b8/app-dev-debug.apk",
+    "bytes": 70299837,
+    "sha256": "48808438be139c6603e4cf60122b418cea882ca7666bc91de7f6c6d922db8eff"
+  },
+  "artifact": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s15-planetka-visual/android-07f4a8b8/runtime",
+    "sha256": "074b37407ab859e5a014d294c4cb610054cddeddefb114a584c42f3c04e5642f",
+    "files": 1405,
+    "bytes": 74495954
+  },
+  "checks": {
+    "strictRuntimeAudit": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/android-a1/native-artifact-audit.json",
+    "binaryAudit": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/android-a1/android-dev-apk-verification.json",
+    "build": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/android-a1/build-run.json",
+    "exactCopiedBytes": true,
+    "priorAndroidApkAndManifestVerified": true,
+    "priorPreservedDirectoriesPresent": true,
+    "priorExactCopyVerificationRecorded": true,
+    "priorRuntimePayloadHashesRechecked": false,
+    "bundledAssetsMatched": 1404,
+    "localContentStoreDex": "classes10.dex"
+  },
+  "priorAndroid": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-library-depth/android-26c5b44b/app-dev-debug.apk",
+  "nativeExecutionVerified": false,
+  "iosCompiled": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false,
+  "canonicalOwnerArchiveSyncPerformed": false
+}

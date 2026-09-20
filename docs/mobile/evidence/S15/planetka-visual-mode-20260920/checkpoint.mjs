@@ -49,7 +49,10 @@ for (const file of ['src/components/GlobeCameraRig.tsx', 'src/components/globeSt
 const supersededHarness = await verifyRef(entry.supersededHarness);
 await verifyInputs([...supersededHarness.prePivotHarness, ...supersededHarness.a1BrowserHarness]);
 const assetProvenance = await read(folder + '/asset-provenance.json');
-await verifyInputs([entry.asset, assetProvenance.asset, assetProvenance.reference]);
+await verifyInputs([entry.asset, assetProvenance.reference]);
+assert.equal(assetProvenance.asset.path, entry.asset.path);
+assert.equal(assetProvenance.asset.sha256, entry.asset.sha256);
+assert.equal(assetProvenance.asset.bytes, entry.asset.bytes);
 assert.equal(entry.asset.sha256, '44f97b5c83189ba1ddca26fd1313edc515e5008a2e92c2c694d1d57c29a2a4ed');
 assert.deepEqual([assetProvenance.asset.width, assetProvenance.asset.height, assetProvenance.asset.pngColorType], [1254, 1254, 6]);
 assert.equal(assetProvenance.live3DMesh, false); noApproval(assetProvenance, ['artAccepted', 'childReviewed', 'releaseReady']);

@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S15/planetka-visual-mode-20260920/pwa.config.mjs"
+  ],
+  "exitCode": 0,
+  "durationMs": 34981,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/pwa-a1/browser-stdout.log",
+    "bytes": 189,
+    "sha256": "ded95afb29d00af283078e441472f2363942a21cf586047e49c5a31443034330"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/pwa-a1/browser-stderr.log",
+    "bytes": 164,
+    "sha256": "cfe3dacc1fa34e2babc5fe892ebcdb4183779af6170a557f4a6db2770cab0c9e"
+  }
+}

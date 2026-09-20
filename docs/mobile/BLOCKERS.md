@@ -1,3 +1,12 @@
+<!-- s15-planetka-visual-20260920:begin -->
+Source 0d72daba implements the separate Книжулик / Mr. Booky DOM companion requested by the owner. The green asset is a 3D-rendered PNG, not a live mascot mesh; the globe remains unchanged.
+7 selected controller/author-request cases, TypeScript, one actual-App Chrome case and one PWA offline smoke pass. Three inspected RU/EN desktop/320px/landscape views bind the full imported image and functional navigation UI.
+S15 and only S15.PLANETKA-001/002 are IN_PROGRESS. Forty-three established sources remain unchanged; superseded a1 remains historical. Starter inventory stays historical 29/13/0 plus three owner additions with explicit drift.
+PWA c32230f1; Android-dev 07f4a8b8. Evidence: evidence/S15/planetka-visual-mode-20260920/result.json.
+Stages: 3 complete, 12 in progress, 26 unstarted; first open S03. No art/child/device/release acceptance is claimed.
+Continue the full application plan with the separate Книжулик / Mr. Booky DOM companion and existing canonical navigation. Keep the globe geometry, renderer, camera and picking independent of the companion. Preserve authored routes, keyboard behavior, hide/collapse/suspension semantics, 320px layout and PNG provenance; continue reviewed bilingual assistance and offline/error handling within actual source/rights gates. S03 remains the first unresolved acceptance. Child, literary journey persistence, dialogue/audio review, installed-device, screen-reader, distributed sync, iOS and release acceptance remain open.
+<!-- s15-planetka-visual-20260920:end -->
+
 <!-- s13-library-depth-20260920:begin -->
 Source 3f2b2d00 adds authored exterior depth and parallax behind the library windows.
 6 selected library geometry cases, TypeScript, one actual-App Chrome case and one PWA offline smoke pass. Two product-control views are inspected evidence; formal art/child approval and installed-device acceptance remain open.

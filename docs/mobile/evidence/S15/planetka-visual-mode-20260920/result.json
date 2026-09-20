@@ -1,0 +1,746 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-20T05:07:27.682Z",
+  "sourceCommit": "0d72dabaa5fa1f2b63d5b407b9f315b719e2b7bc",
+  "stage": "S15",
+  "status": "INDEPENDENT_DOM_COMPANION_SCOPED_VALIDATION",
+  "pass": true,
+  "entry": {
+    "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/entry.json",
+    "sha256": "95b36309e18a0561ff334e36dd79fa1cfee86d7c70250917696496f9f5aa0a25"
+  },
+  "previous": {
+    "path": "docs/mobile/evidence/S13/library-window-depth-20260920/result.json",
+    "sha256": "96629158913921446f07e58ac1c868a0cc87af52f11392b227fd7c7ef5b02f02"
+  },
+  "attempts": {
+    "unit": "a3",
+    "static": "a3",
+    "browser": "a5"
+  },
+  "earlierAttempts": [
+    {
+      "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/unit-a1/result.json",
+      "sha256": "3d5d2985231a440b54160dec1dd5be222b603dc67423d8ea622fe855b08c75f6",
+      "mode": "unit",
+      "attempt": "a1",
+      "pass": false,
+      "tests": {
+        "passed": 12,
+        "failed": 1,
+        "skipped": 0
+      },
+      "supersededContract": true,
+      "contractNote": "Earlier on-globe visual contract explicitly replaced by the owner; not final evidence for the independent DOM companion.",
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/source-manifests/650f8b6948989708.json",
+        "sha256": "650f8b6948989708ee1e58eb04ec3203be4bf300e1a921e03da181a1b2ae1940",
+        "fileCount": 86
+      },
+      "supersededSource": true,
+      "reason": "The expression evaluated to a falsy value:\n\n  assert.ok(cases.every(item => item.status === 'passed'))\n"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/unit-a2/result.json",
+      "sha256": "14bb87eb1d1e0d4b2bd2aee9084540cb1955865bee709913a8dca5c28a9a422c",
+      "mode": "unit",
+      "attempt": "a2",
+      "pass": true,
+      "tests": {
+        "passed": 5,
+        "failed": 0,
+        "skipped": 0
+      },
+      "supersededContract": false,
+      "contractNote": null,
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/source-manifests/5a19b5a9dacd0663.json",
+        "sha256": "5a19b5a9dacd06636432e98d646d8e3c2412efb75d06319081d210d7bef4265b",
+        "fileCount": 87
+      },
+      "supersededSource": true,
+      "reason": "Earlier attempt retained unchanged; selected final validation is recorded separately."
+    },
+    {
+      "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/static-a1/result.json",
+      "sha256": "13646dd3f28fb1cbe9dc91154e20bce554599a723bc6320a6a56ccb563626b24",
+      "mode": "static",
+      "attempt": "a1",
+      "pass": true,
+      "tests": null,
+      "supersededContract": true,
+      "contractNote": "Earlier on-globe visual contract explicitly replaced by the owner; not final evidence for the independent DOM companion.",
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/source-manifests/650f8b6948989708.json",
+        "sha256": "650f8b6948989708ee1e58eb04ec3203be4bf300e1a921e03da181a1b2ae1940",
+        "fileCount": 86
+      },
+      "supersededSource": true,
+      "reason": "Earlier attempt retained unchanged; selected final validation is recorded separately."
+    },
+    {
+      "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/static-a2/result.json",
+      "sha256": "9ae561d5261382875a08d52d6a0a7e69ebca78f62c16cbb99819ea50259f882c",
+      "mode": "static",
+      "attempt": "a2",
+      "pass": true,
+      "tests": null,
+      "supersededContract": false,
+      "contractNote": null,
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/source-manifests/5a19b5a9dacd0663.json",
+        "sha256": "5a19b5a9dacd06636432e98d646d8e3c2412efb75d06319081d210d7bef4265b",
+        "fileCount": 87
+      },
+      "supersededSource": true,
+      "reason": "Earlier attempt retained unchanged; selected final validation is recorded separately."
+    },
+    {
+      "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/browser-a1/result.json",
+      "sha256": "07c2937e3ad7c8bd7dc6a75ae23abb6086082b90054bf6fa111575358c256d07",
+      "mode": "browser",
+      "attempt": "a1",
+      "pass": false,
+      "tests": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "supersededContract": true,
+      "contractNote": "Earlier on-globe visual contract explicitly replaced by the owner; not final evidence for the independent DOM companion.",
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/source-manifests/650f8b6948989708.json",
+        "sha256": "650f8b6948989708ee1e58eb04ec3203be4bf300e1a921e03da181a1b2ae1940",
+        "fileCount": 86
+      },
+      "failureReport": {
+        "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/browser-a1/playwright.json",
+        "sha256": "cc2df627c2d17a789c03971fd6dca0170c045e198868c4c56c47af5f3aa06d18"
+      },
+      "supersededSource": true,
+      "reason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\nExpected: not \u001b[32m{\"fov\": 43, \"position\": [-0.22336, 2.58914, -1.37654], \"quaternion\": [0.04119, 0.85577, 0.51108, -0.06898], \"target\": [0, 0, 0], \"zoom\": 1}\u001b[39m\n\n\n  307 |     await expect(globe(page)).toHaveAttribute('data-globe-camera-phase', 'idle'); await stablePose(page);\n  308 |     const countryFocused = await actual(page); retained(countryFocused, baseline, false, false);\n> 309 |     expect(new URL(countryFocused.url).searchParams.get('country')).not.toBe('russia'); expect(countryFocused.pose).not.toEqual(baseline.pose);\n      |                                                                                                                         ^\n  310 |     result.observations.countryFocused = countryFocused;\n  311 |     await toggle.click(); await activeMascot(page, countryFocused);\n  312 |     await page.evaluate(() => window.__planetkaVisual.setVisible(false)); await closed(page);\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\planetka-visual-mode.spec.mjs:309:121"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/browser-a2/result.json",
+      "sha256": "4a8b7356946955912116c1957fdabb9b7060067568bb0d798f06f6196e35fce0",
+      "mode": "browser",
+      "attempt": "a2",
+      "pass": false,
+      "tests": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "supersededContract": false,
+      "contractNote": null,
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/source-manifests/5a19b5a9dacd0663.json",
+        "sha256": "5a19b5a9dacd06636432e98d646d8e3c2412efb75d06319081d210d7bef4265b",
+        "fileCount": 87
+      },
+      "failureReport": {
+        "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/browser-a2/playwright.json",
+        "sha256": "5e937bd52993a20fbe722e8da8ac7677404b672184bd953e961bc23ccd421ee7"
+      },
+      "supersededSource": true,
+      "reason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-planet-mascot-highlight=\"search\"]')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-planet-mascot-highlight=\"search\"]')\u001b[22m\n\n\n  246 | }\n  247 | async function actualHighlight(page, target, selector) {\n> 248 |   const outline = page.locator('[data-planet-mascot-highlight=\"' + target + '\"]'); await expect(outline).toBeVisible();\n      |                                                                                                          ^\n  249 |   const underlying = page.locator(selector).first(); await expect(underlying).toBeVisible();\n  250 |   const measured = await page.evaluate(({ target, selector }) => {\n  251 |     const el = document.querySelector(selector), outline = document.querySelector('[data-planet-mascot-highlight=\"' + target + '\"]');\n    at actualHighlight (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\planetka-visual-mode.spec.mjs:248:106)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\planetka-visual-mode.spec.mjs:282:44"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/browser-a3/result.json",
+      "sha256": "a3206b28fdc77d0a96188955b23094af6911810f4d4fc4a0e1050f5962aa39ba",
+      "mode": "browser",
+      "attempt": "a3",
+      "pass": false,
+      "tests": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "supersededContract": false,
+      "contractNote": null,
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/source-manifests/09fa9bc838ba9eed.json",
+        "sha256": "09fa9bc838ba9eed8e0293d2759302887d95659b249eea3601e6288cb67b4f01",
+        "fileCount": 89
+      },
+      "failureReport": {
+        "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/browser-a3/playwright.json",
+        "sha256": "5a906397bd15ccfe14555b9619eb1ed1cfaae4f6ace7769de57e3985961fcc93"
+      },
+      "supersededSource": false,
+      "reason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: <= \u001b[32m320.5\u001b[39m\nReceived:    \u001b[31m1420\u001b[39m\n\n  228 |   expect(rect.width).toBeGreaterThan(0); expect(rect.height).toBeGreaterThan(0);\n  229 |   expect(rect.left).toBeGreaterThanOrEqual(-.5); expect(rect.top).toBeGreaterThanOrEqual(-.5);\n> 230 |   expect(rect.right).toBeLessThanOrEqual(viewport.width + .5); expect(rect.bottom).toBeLessThanOrEqual(viewport.height + .5);\n      |                      ^\n  231 | }\n  232 | async function shown(page) {\n  233 |   await expect(pet(page)).toHaveAttribute('data-planet-mascot-visibility', 'shown');\n    at inside (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\planetka-visual-mode.spec.mjs:230:22)\n    at shown (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\planetka-visual-mode.spec.mjs:236:43)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\planetka-visual-mode.spec.mjs:305:20"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/browser-a4/result.json",
+      "sha256": "5cae8aba6e379a558ff9c84af4f6a901c08a19582fb2b0901d8c1e9010467cb8",
+      "mode": "browser",
+      "attempt": "a4",
+      "pass": false,
+      "tests": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "supersededContract": false,
+      "contractNote": null,
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/source-manifests/09fa9bc838ba9eed.json",
+        "sha256": "09fa9bc838ba9eed8e0293d2759302887d95659b249eea3601e6288cb67b4f01",
+        "fileCount": 89
+      },
+      "failureReport": {
+        "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/browser-a4/playwright.json",
+        "sha256": "40a35f7ae5a14a09361d943bd7ee4cad76d165c980b4e9cfce164a6a429a1ef1"
+      },
+      "supersededSource": false,
+      "reason": "TimeoutError: locator.click: Timeout 12000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Collection', exact: true }).locator('[aria-controls=\"book-archive-advanced-filters\"]')\u001b[22m\n\n\n  365 |     await expect(page.locator('[data-planet-mascot-author-books-status=\"applied\"]')).toBeVisible();\n  366 |     await expect(page.locator('[data-planet-mascot-next]')).toBeEnabled();\n> 367 |     await collection.locator('[aria-controls=\"book-archive-advanced-filters\"]').click();\n      |                                                                                 ^\n  368 |     const authorFilter=page.locator('[data-book-author-filter]'); await expect(authorFilter).toBeVisible();\n  369 |     await expect(authorFilter).toHaveValue('russia:tolstoy');\n  370 |     const selectedAuthorLabel=await authorFilter.locator('option:checked').innerText(); expect(selectedAuthorLabel).toContain(writerName);\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\planetka-visual-mode.spec.mjs:367:81"
+    }
+  ],
+  "supersededHarness": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s15-planetka-visual/superseded-harness/preservation.json",
+    "sha256": "3be1702a76183c8e91215a90eadf1fc720fd28312c2bd7bd923baa56eef2c9e0"
+  },
+  "runs": {
+    "unit": {
+      "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/unit-a3/result.json",
+      "sha256": "e8a0faf12c61642c02c60c0551cb64f0fe736adceeddb97ff361349941692865",
+      "tests": {
+        "passed": 7,
+        "failed": 0,
+        "skipped": 0
+      }
+    },
+    "static": {
+      "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/static-a3/result.json",
+      "sha256": "04ed634cd827d2af1705848f669e3d66febbf7776c6178bba92fb8aed02b3399",
+      "tests": null
+    },
+    "browser": {
+      "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/browser-a5/result.json",
+      "sha256": "74d49040b6df566c21ef2c88d0dff3c660024ca7ef18ac69318cf38673dda954",
+      "tests": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      }
+    }
+  },
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/source-manifests/09fa9bc838ba9eed.json",
+    "sha256": "09fa9bc838ba9eed8e0293d2759302887d95659b249eea3601e6288cb67b4f01",
+    "fileCount": 89
+  },
+  "unitCount": 7,
+  "unitFiles": [
+    "src/host/planetMascot.test.ts",
+    "src/books/bookArchiveAuthorRequest.test.ts"
+  ],
+  "browserCases": 1,
+  "actualAppCapture": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s15-planetka-visual\\browser-a5\\planetka-visual-mode-indep-ddccf--without-changing-the-globe\\planetka-visual-mode.json",
+    "sha256": "eb7bf5f670403435d360f7f1b845efb59eb74474c2d0e23cae8f49076bed5c54"
+  },
+  "browserAttachment": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s15-planetka-visual\\browser-a5\\planetka-visual-mode-indep-ddccf--without-changing-the-globe\\attachments\\planetka-visual-mode-source-evidence-b134bf071df19e1a073e670c6ffd4a42420053f4.json",
+    "sha256": "eb7bf5f670403435d360f7f1b845efb59eb74474c2d0e23cae8f49076bed5c54"
+  },
+  "attachmentBytesMatchOriginal": true,
+  "capturedImages": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s15-planetka-visual\\browser-a5\\planetka-visual-mode-indep-ddccf--without-changing-the-globe\\mr-booky-help-ru-1440.png",
+      "sha256": "e7da2f31c833972474a54e5797de862fbb970dc168fbcd3dd8720afa57f5b9c0"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s15-planetka-visual\\browser-a5\\planetka-visual-mode-indep-ddccf--without-changing-the-globe\\mr-booky-tour-en-320.png",
+      "sha256": "4d629dec767dbfff7f669e3be65a916d3dea72ed740b5a7db78ee0234ab2435e"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s15-planetka-visual\\browser-a5\\planetka-visual-mode-indep-ddccf--without-changing-the-globe\\mr-booky-collection-en-landscape.png",
+      "sha256": "7b05fd815d3b9b10cd1b862460b5dd4079feb95329c3d5bec691ee0425b05863"
+    }
+  ],
+  "visualReview": {
+    "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/visual-review.json",
+    "sha256": "e32e9d94f9ee55dbe0c420dc631f8f25cdd7ddfe27991087eaa1f83c92350240"
+  },
+  "inspectedImageCount": 3,
+  "artwork": {
+    "path": "src/assets/mascots/knizhulyk-green-v1.png",
+    "sha256": "44f97b5c83189ba1ddca26fd1313edc515e5008a2e92c2c694d1d57c29a2a4ed",
+    "bytes": 1895595,
+    "representation": "3D-rendered PNG bitmap, not a live 3D mesh"
+  },
+  "assetProvenance": {
+    "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/asset-provenance.json",
+    "sha256": "7ab719ac6e8b6cebf407fa4370169f8a48816eaa287a49a36ca2764b8f689d14"
+  },
+  "assetBundledByteExact": true,
+  "starterSetSourceInventory": {
+    "path": "docs/mobile/evidence/S13/book-cloud-stand-20260920/starter-set-source-inventory.json",
+    "sha256": "854f14d22bbf78c2207e6f0c93b2c03696ce8d6a462c44d452ba2d9a633faa92"
+  },
+  "inventoryHistorical": true,
+  "inventoryReusedWithCurrentInputsVerified": false,
+  "inventoryUnchangedInputsVerified": true,
+  "inventoryChangedInputs": [
+    {
+      "path": "src/App.tsx",
+      "priorSha256": "ab22ae860da4442a97c8a4f9994a0cfed05e75a5bdddd6c1675b82972d9be6f3",
+      "currentSha256": "09766974e26f3d8f39389fad3f59a9e958f5122aa39f0f557010290cbd8ce212"
+    },
+    {
+      "path": "src/components/GlobeCameraRig.tsx",
+      "priorSha256": "6938d120c7a49248398b385640cc77d96c9f3b33cbd6c3b4ef9881ef89e2ec19",
+      "currentSha256": "189f1a90fafb001a09b02832cc033f2239d8b417adfc6a3f8899986152580a48"
+    },
+    {
+      "path": "src/components/GlobeIncludedBackground.tsx",
+      "priorSha256": "3268e2f971bb3b8742093be690116a16f8bee262362d50743daca2273d376b61",
+      "currentSha256": "b384ccdc3020598f10a990807e74342dc35e9434e42cad54b11526c10d81634c"
+    },
+    {
+      "path": "src/components/GlobeIncludedStand.tsx",
+      "priorSha256": "276ef908fe5a09c066a59d9ff57d1432d44300bcb979b2aeb5d6dd249ba189fd",
+      "currentSha256": "a083080c90c5bbb5f53dc9e7ba4f4498712634a9df67db6ce0e2e12cd4b4d068"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "priorSha256": "666960397af75698cdfbc89fe1f9f359683785ef168288e740caedaf7a19dd33",
+      "currentSha256": "f5bcfb487be1a34199cc6482dd2de5e6b6a68987938343fd41e7c1f9cc47b63d"
+    },
+    {
+      "path": "src/components/globeBackgroundGeometry.ts",
+      "priorSha256": "019c09b6c2fe51a52c772756b9c6fc47be0c8f8d80bac9dcb5f005c07b82ecc1",
+      "currentSha256": "daa902b738190403a4297264f7067dae8b1fdbe86c73c16e541ace7a7e9a0f00"
+    },
+    {
+      "path": "src/components/globeCraftMaterials.ts",
+      "priorSha256": "68ce7e818d50ac5ece1d5d4542fdc4cecea6af25e21b08b1274c8adcacbfbde1",
+      "currentSha256": "2c19145443374e631cf40dbf20a8b55d38bd8a41e1c0d025dc3ec10fbbe47721"
+    },
+    {
+      "path": "src/components/globeLibraryGeometry.ts",
+      "priorSha256": "c0d4fe4c9b69921df11d50bc349fca9896304baba67fff60263b77ff19c1d1ee",
+      "currentSha256": "18c2af40ee169eeac5416aa59effe1e50cbea92359a7f1e0d0f8f8972dddaf7c"
+    },
+    {
+      "path": "src/components/globeWhaleStandGeometry.ts",
+      "priorSha256": "a641909b9d2a168b921e3a94f78db0c0652fe67b4d76b3cdaa2a1fba57de82be",
+      "currentSha256": "9c0975465082d9423e2bfd3a8da3fa355897e0c6018d7c955c52497c0a9d64ab"
+    },
+    {
+      "path": "src/components/globeWriterStudyGeometry.ts",
+      "priorSha256": "4e2c7f51529d0f5cdde9df2484cf0701a8a6662ee9c5b9a96de828f22d7c7cfc",
+      "currentSha256": "c811764937279429ecddf50b1cd0b60f3b7a5f568772d9ced146b4920fca9f1e"
+    },
+    {
+      "path": "src/host/PlanetStandControls.tsx",
+      "priorSha256": "6bbcb8f9e373f06491b742888d58110d0922a3c0a0bdf9d47cceb129dbcbff76",
+      "currentSha256": "829db69456bddda43035df512ee1af4ed6182752bdf3161e14db756b695295e1"
+    }
+  ],
+  "inventoryAuditRerun": false,
+  "historicalStarterSetCounts": {
+    "required": 29,
+    "sourceBound": 13,
+    "accepted": 0,
+    "ownerAdded": 3
+  },
+  "ownerAdditionIds": [
+    "stand.base.portrait-pushkin",
+    "stand.base.portrait-hemingway",
+    "stand.base.portrait-tolstoy"
+  ],
+  "preservedInputs": [
+    {
+      "path": "src/community/CommunityHub.tsx",
+      "sha256": "59746183b82db8b2481bd5f7d7268bae1c31f04011ba0631ce9719ce7f9a6e49"
+    },
+    {
+      "path": "src/components/ArticleReader.tsx",
+      "sha256": "1b00876d706d814bfebb13dc84a47d3542de6d6040fe3f6810bfefbcdcf735d8"
+    },
+    {
+      "path": "src/components/globeAntiqueGeometry.ts",
+      "sha256": "590a4e0ea5cb92251d7cccac3c0d6d28a441e82e6520fd17fe5d71adffb95538"
+    },
+    {
+      "path": "src/components/globeAtlas.ts",
+      "sha256": "224dcde2499f51eb333562875796d3422ab28ad987339f36be79f0635677bcf6"
+    },
+    {
+      "path": "src/components/globeBackgroundGeometry.ts",
+      "sha256": "daa902b738190403a4297264f7067dae8b1fdbe86c73c16e541ace7a7e9a0f00"
+    },
+    {
+      "path": "src/components/globeBookCloudStandGeometry.ts",
+      "sha256": "e50e21659f3439b8bd3cd457cbe20f16bfd47f40eaedc3355151daf6450f3577"
+    },
+    {
+      "path": "src/components/GlobeCameraRig.tsx",
+      "sha256": "189f1a90fafb001a09b02832cc033f2239d8b417adfc6a3f8899986152580a48"
+    },
+    {
+      "path": "src/components/globeCeramicPortraitStandGeometry.ts",
+      "sha256": "be533fd4752ab051389a202b65a993956e0f12d6e14e1b8cbb8cbc62bac142e8"
+    },
+    {
+      "path": "src/components/globeCraftMaterials.ts",
+      "sha256": "2c19145443374e631cf40dbf20a8b55d38bd8a41e1c0d025dc3ec10fbbe47721"
+    },
+    {
+      "path": "src/components/GlobeIncludedBackground.tsx",
+      "sha256": "b384ccdc3020598f10a990807e74342dc35e9434e42cad54b11526c10d81634c"
+    },
+    {
+      "path": "src/components/GlobeIncludedStand.tsx",
+      "sha256": "a083080c90c5bbb5f53dc9e7ba4f4498712634a9df67db6ce0e2e12cd4b4d068"
+    },
+    {
+      "path": "src/components/globeLibraryBookGeometry.ts",
+      "sha256": "e3034c2bd4391f1b08410c3c1f41165e880c7225f957a42ef4780e87eeaf7e0c"
+    },
+    {
+      "path": "src/components/globeLibraryGeometry.ts",
+      "sha256": "18c2af40ee169eeac5416aa59effe1e50cbea92359a7f1e0d0f8f8972dddaf7c"
+    },
+    {
+      "path": "src/components/globeQuality.ts",
+      "sha256": "b52e0221ec8bcac17d640e26378bc0304521316ca34e203313d2b63f9c3b28c9"
+    },
+    {
+      "path": "src/components/globeStandGeometry.ts",
+      "sha256": "b12d187ce4a2216dd8fb3a89110a584030d72666841975849e935d184a14cc4f"
+    },
+    {
+      "path": "src/components/globeStandInspection.ts",
+      "sha256": "1268c67bf7104759e3a7ccd06ace4e7703a5553e48e22975d806c96dee0547e1"
+    },
+    {
+      "path": "src/components/globeTurnedWoodAtlas.ts",
+      "sha256": "579c1cec368760643b108a63f466b3d6385243d5e0f13c4638a4824b62a5d123"
+    },
+    {
+      "path": "src/components/globeWhaleStandGeometry.ts",
+      "sha256": "9c0975465082d9423e2bfd3a8da3fa355897e0c6018d7c955c52497c0a9d64ab"
+    },
+    {
+      "path": "src/components/globeWriterStudyGeometry.ts",
+      "sha256": "c811764937279429ecddf50b1cd0b60f3b7a5f568772d9ced146b4920fca9f1e"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "sha256": "f5bcfb487be1a34199cc6482dd2de5e6b6a68987938343fd41e7c1f9cc47b63d"
+    },
+    {
+      "path": "src/components/LiteraryWorldMap.tsx",
+      "sha256": "588507e0dd39479e8fdcb006ab48ec04197f9821665826675e0163f93428aa28"
+    },
+    {
+      "path": "src/components/ReadingLibrarySyncNotice.css",
+      "sha256": "b53f865a8035e7c8d5a0323b0f8ec707bf81935a5315e053159d0f440bb82f98"
+    },
+    {
+      "path": "src/components/ReadingLibrarySyncNotice.tsx",
+      "sha256": "53ed654c2d437d7f1d1494ea2cc335db805f1ba97ce42132e8eca1d13e4ab602"
+    },
+    {
+      "path": "src/components/useGlobeCompositionFrame.ts",
+      "sha256": "530d1303a5af222bf68f72b499b07c8d41a828ca14783912284b6e3963d59cd0"
+    },
+    {
+      "path": "src/components/useGlobeCompositionScene.ts",
+      "sha256": "30009468d0cdee459441ca5780ea608cdf21b3f6e7055da89c0ce28e435326b5"
+    },
+    {
+      "path": "src/components/useGlobeStyleState.ts",
+      "sha256": "6d2801802ec0e9bf0c2e5ff9a6f852f00434a8494216b06ee2069917e2a1a0ba"
+    },
+    {
+      "path": "src/hooks/readingLibraryStorage.ts",
+      "sha256": "fe7b8d950f80cba0d7e76d45e850ba3c0e02420d44250605329baa2c085376d3"
+    },
+    {
+      "path": "src/hooks/useReadingLibrary.ts",
+      "sha256": "92262e64be0e09278b0f917507bad1b4d87d8e33afaa4295d3b60424f4cff2bf"
+    },
+    {
+      "path": "src/host/HostPlatformServices.ts",
+      "sha256": "fa084b57e8596064ef1b0a8bd7c99b789361059a585171fd30ffe057bceec2c6"
+    },
+    {
+      "path": "src/host/HostRuntimeStatus.tsx",
+      "sha256": "bd100bd0e9d4eb8eba8772799de106f04c5de154d0dd9298f7340abe26100d91"
+    },
+    {
+      "path": "src/host/mountHostApp.tsx",
+      "sha256": "e21aa15479a81c5c3847b571d5d3d7e7b9c25d1c55b4aa3aa2ac94c6677fe8af"
+    },
+    {
+      "path": "src/host/planetComposition.ts",
+      "sha256": "e13f2d376567c65a5b051bfd651a14f1bbb18f3bdf01f09cf97ebb2e3cf92305"
+    },
+    {
+      "path": "src/host/planetCompositionPresentation.ts",
+      "sha256": "d62d963c719366c1be3e6888b5eb321933f3e7224b6591fc8c2d6d81a639c3f6"
+    },
+    {
+      "path": "src/host/PlanetStandControls.css",
+      "sha256": "2da119e90674c18ad283af540d6b8a39957fd67066090770a6172f69c248c55a"
+    },
+    {
+      "path": "src/host/PlanetStandControls.tsx",
+      "sha256": "829db69456bddda43035df512ee1af4ed6182752bdf3161e14db756b695295e1"
+    },
+    {
+      "path": "src/host/planetStandInspection.ts",
+      "sha256": "ee5a5dd46f75877a34c297ce122e4c3ab0c09d8ebd439a0258589c5a3baab0f8"
+    },
+    {
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "sha256": "f8331bee7996bf176f34384d14cb42f39f5e5a94c82a27609db758003dc7bea2"
+    },
+    {
+      "path": "src/planet/globeComposition.ts",
+      "sha256": "20b4cabdd678a6fa5b70ab2b4cbaef179f0e7d7c5819e408123eb486ddb0e81f"
+    },
+    {
+      "path": "src/planet/writerStudySketch.ts",
+      "sha256": "2f642e49c988dd7f6efeaacc9aa6017596ce7799d46442e507cf89a7e95b1d60"
+    },
+    {
+      "path": "src/platform/adapters/android/AndroidPlatformAdapter.ts",
+      "sha256": "4b05363d42896b2a3a1908a494d796a2d43b719c6e2f3de623bd7fa750488f0f"
+    },
+    {
+      "path": "src/platform/ports.ts",
+      "sha256": "51353969918a3bbfdbafef37a9b3c28de7c31421853edb664666b547071d9459"
+    },
+    {
+      "path": "src/pwa/PwaDevicePanel.tsx",
+      "sha256": "5e3912e4a989a3135b691cde05d0949b9a21855d380b610b045468b71b609f7b"
+    },
+    {
+      "path": "src/pwa/PwaStorageStatus.ts",
+      "sha256": "662c1cf4bf3a0cc060720aa6338e940c6d03b0cb6ac8e5b5444b32883245f885"
+    }
+  ],
+  "changedInputsBefore": [
+    {
+      "path": "src/App.tsx",
+      "sourceCommit": "a2ad07a5666cf433368511c78363fe4e879cdaf4",
+      "gitBlobSha256": "6c2464c84a76b1f80e56e083fdd97c2017fe61a3201002749bb2a2e583689f35"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "sourceCommit": "a2ad07a5666cf433368511c78363fe4e879cdaf4",
+      "gitBlobSha256": "b67cbc6da05350bf544e55e95b5d319a7e947c72b63d8540d25a4ad531992525"
+    },
+    {
+      "path": "src/loading/DeferredHomepageArchives.tsx",
+      "sourceCommit": "a2ad07a5666cf433368511c78363fe4e879cdaf4",
+      "gitBlobSha256": "5f0a29d657d974025b61e44e9bd3532097c7fdaf44208b1e1df013452834f2fd"
+    }
+  ],
+  "newSourcePaths": [
+    "src/host/planetMascot.ts",
+    "src/host/planetMascotRoutes.ts",
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/PlanetMascotControls.css",
+    "src/host/PlanetMascotAvatar.tsx",
+    "src/host/PlanetMascotAvatar.css",
+    "src/assets/mascots/knizhulyk-green-v1.png",
+    "src/books/bookArchiveAuthorRequest.ts"
+  ],
+  "priorVisualReview": {
+    "path": "docs/mobile/evidence/S13/library-window-depth-20260920/visual-review.json",
+    "sha256": "592e279c2a3647593469a8ce7a4a6975f7adc2af8d7e8f78b0c522a335b68842"
+  },
+  "priorSceneVisualReview": {
+    "path": "docs/mobile/evidence/S13/combined-preview-20260920/visual-review.json",
+    "sha256": "f03aa5eea53a577b57fe40c94b93be1deafd67cea3ef3b49ae06eb412a304e25"
+  },
+  "priorArtReview": {
+    "path": "docs/mobile/evidence/S13/visual-refinement-20260920/visual-review.json",
+    "sha256": "532ddaa43a5844e26a0b0a9974dc494014d011bfea4fde7248013ee975047276"
+  },
+  "priorArtCapture": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-vr/art-a2/result.json",
+    "sha256": "c9fb3667877acf9de1f69f9b24ec5f0299ce129b7bfc541e6189facb1bcabcfd"
+  },
+  "retainedLibraryDensity": {
+    "books": 984,
+    "placements": 1901197402,
+    "colors": 437509884
+  },
+  "retainedPortrait": {
+    "baselineCommits": [
+      "a115e9f11105551ed6e243787e95ffc29bccb1a0",
+      "9c14fa67acc219bfa0351b31c956e14fa4deefb6"
+    ],
+    "fragments": [
+      {
+        "name": "plate-and-seat",
+        "sourcePath": "src/components/globeCeramicPortraitStandGeometry.ts",
+        "start": "        const foot = own(",
+        "endExclusive": "        const eyeParts:",
+        "sha256": "7d3b1c9cdcc40a842f575ebc24fd323d8a6dcd5b89c535909231a42f7aa506f0",
+        "bytes": 1062,
+        "lineEndingsNormalized": true
+      },
+      {
+        "name": "scale-around-contact",
+        "sourcePath": "src/components/globeCeramicPortraitStandGeometry.ts",
+        "start": "        for (const object of group.children) {",
+        "endExclusive": "        group.updateMatrixWorld(true);",
+        "sha256": "dcd173ddd233714e67a8c9523edc14202eaa88fd7af60e5cedb47d3d3463ee10",
+        "bytes": 400,
+        "lineEndingsNormalized": true
+      }
+    ]
+  },
+  "pwa": {
+    "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/pwa-a1/result.json",
+    "sha256": "bad67a260916cb3168ebd688b2ee8d7b17f92598e28d492041cdee8f4fc8944c"
+  },
+  "android": {
+    "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/android-a1/result.json",
+    "sha256": "1aea24fca5b68dec928df77fffcdd5ca9e3d8e4539bb6ca5f3f8a518e038bf0d"
+  },
+  "pwaBuildId": "c32230f1f5e8d2a99260bb4ce7d1bf00eff2f4a7d40b9b98ce7b6b24008f9915",
+  "androidBuildId": "07f4a8b8599d1e58437cc9a646e78779504d4285d64d33fbbda3fbfb6cbbb140",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s15-planetka-visual/android-07f4a8b8/app-dev-debug.apk",
+    "bytes": 70299837,
+    "sha256": "48808438be139c6603e4cf60122b418cea882ca7666bc91de7f6c6d922db8eff"
+  },
+  "buildAudits": [
+    {
+      "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/pwa-a1/strict-audit.json",
+      "sha256": "5372be821b4753152a1cd33bb6c6461f8d8656ea28121f8ae68ded46516c760a"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/android-a1/native-artifact-audit.json",
+      "sha256": "caf24483f6d5534dd05560e8934bb772baeecbbf4398b19372c9e4051a0032c7"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/android-a1/android-dev-apk-verification.json",
+      "sha256": "f726d2a798df421ad6f382532977efa036dcf580a519eb3d6f07e22efd3a0b63"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/android-a1/build-run.json",
+      "sha256": "f7e6433123c9ceb47dae070a45cda7723f17db4296fd19667f2c2a7da82c4950"
+    }
+  ],
+  "copyVerification": {
+    "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/pwa-a1/copy-verification.json",
+    "sha256": "3a74a2a9206f69a977482815ec19d4b197adceda6d59414dd01dc81a0a89c9a9"
+  },
+  "priorPwa": {
+    "path": "docs/mobile/evidence/S13/library-window-depth-20260920/pwa-a1/result.json",
+    "sha256": "74185bea30e70eb5581ea3d5eda49b78f57b3bf64fa4772a09188e672c54ddd5"
+  },
+  "priorAndroid": {
+    "path": "docs/mobile/evidence/S13/library-window-depth-20260920/android-a1/result.json",
+    "sha256": "d2fb099f490d13ee072b38baa5f8bf5ff3f816143712e6ed3636ef5843800ab6"
+  },
+  "decisionD151Recorded": true,
+  "criteriaUpdated": [
+    "S15.PLANETKA-001",
+    "S15.PLANETKA-002"
+  ],
+  "criterionChanges": [
+    {
+      "id": "S15.PLANETKA-001",
+      "from": "OPEN",
+      "to": "IN_PROGRESS"
+    },
+    {
+      "id": "S15.PLANETKA-002",
+      "from": "OPEN",
+      "to": "IN_PROGRESS"
+    }
+  ],
+  "stageChanges": [
+    {
+      "id": "S15",
+      "from": "NOT_STARTED",
+      "to": "IN_PROGRESS"
+    }
+  ],
+  "otherStageAndCriterionStatusesUnchanged": true,
+  "parallelSafeEntry": {
+    "priorFirstOpenStage": "S03",
+    "stageAcceptanceClaimed": false,
+    "scope": "Adult DOM navigation companion only. The user explicitly replaced the earlier on-globe visual contract. Child access, dialogue review, audio and release acceptance remain separate."
+  },
+  "limitations": [
+    "Independent adult DOM companion uses one 3D-rendered PNG bitmap, not a live 3D mascot mesh and never a transformed globe.",
+    "Authored navigation tips and transient UI tours reuse canonical controls; they do not establish reviewed sourced literary dialogue, age-adaptive journeys, semantic journey persistence or audio readiness.",
+    "Chrome runs actual App/renderer source with controlled native ports; installed-device and full accessibility acceptance are not established.",
+    "Artwork provenance and inspected screenshots are recorded without formal art, rights, child or release acceptance.",
+    "Earlier a1 reports concern the explicitly superseded on-globe visual contract and are preserved as historical attempts, including its browser failure.",
+    "Historical Starter inventory remains bound to the earlier source; changed mappings are explicit and no inventory audit was rerun."
+  ],
+  "priorStorageLimitations": [
+    "Storage API responses and elapsed time are controlled in the Chrome source fixture.",
+    "Timeout fences late results but does not cancel the underlying browser storage operation.",
+    "Simulated boolean replies do not establish a real browser persistence grant, actual disk quota or storage retention.",
+    "The source fixture is not the full application, globe or installed-native execution."
+  ],
+  "inheritedReadingLibraryLimitations": [
+    "Concurrent-tab read/modify/write is not atomic.",
+    "Full distributed add-wins and conflict resolution remain open.",
+    "Ordering of unabortable remote requests is not guaranteed.",
+    "Remote transport is controlled; actual network and installed-native execution are not established."
+  ],
+  "actualApp": true,
+  "actualCss": true,
+  "actualGlobe": true,
+  "controlledNativePorts": true,
+  "installedNativeDevice": false,
+  "independentDomCompanion": true,
+  "liveMascot3DMesh": false,
+  "globeConvertedToCharacter": false,
+  "showHideDoesNotMoveCamera": true,
+  "stepsDoNotOwnCamera": true,
+  "sameSceneAndAtlas": true,
+  "canonicalWriterAndBooksNavigation": true,
+  "canonicalAuthorFilterApplied": true,
+  "honestRouteCompletion": true,
+  "manualAuthorFilterFencesCompletion": true,
+  "appearanceUsesCanonicalControls": true,
+  "collectionKeyboardPriority": true,
+  "collectionSearchFocusRestored": true,
+  "noAppearanceOrProfileWrites": true,
+  "semanticTourSurvivesLocale": true,
+  "hideCancelsTour": true,
+  "visibilitySuspendsWithoutPopup": true,
+  "finalGeometrySuitesRun": false,
+  "unchangedGeometrySuitesRerun": false,
+  "newActualAppCapture": true,
+  "isolatedArtCapture": false,
+  "artAccepted": false,
+  "userRealismRequirementSatisfied": false,
+  "childProfileCreated": false,
+  "childAccessGranted": false,
+  "childApproval": false,
+  "rightsApproval": false,
+  "reviewedDialogueAccepted": false,
+  "narrationEnabled": false,
+  "ageAdaptiveJourneysEnabled": false,
+  "semanticJourneyPersistence": false,
+  "screenReaderAcceptance": false,
+  "devicePerformanceAccepted": false,
+  "iosCompiled": false,
+  "grantsEntitlement": false,
+  "productionActionsPerformed": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "nextAction": "Continue the full application plan with the separate Книжулик / Mr. Booky DOM companion and existing canonical navigation. Keep the globe geometry, renderer, camera and picking independent of the companion. Preserve authored routes, keyboard behavior, hide/collapse/suspension semantics, 320px layout and PNG provenance; continue reviewed bilingual assistance and offline/error handling within actual source/rights gates. S03 remains the first unresolved acceptance. Child, literary journey persistence, dialogue/audio review, installed-device, screen-reader, distributed sync, iOS and release acceptance remain open."
+}
