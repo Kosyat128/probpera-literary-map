@@ -61,7 +61,8 @@ function layout(study: Study) {
   expect(pages.instanceMatrix.array.every(Number.isFinite)).toBe(true);
   expect(pages.instanceColor!.array.every(Number.isFinite)).toBe(true);
   const furniture: Record<string, number[][]> = {};
-  for (const name of ["writer-study-desk-top", "writer-study-cabinet-cases", "writer-study-window-glazing"]) {
+  for (const name of ["writer-study-desk-top", "writer-study-cabinet-cases", "writer-study-window-glazing",
+    "writer-study-wall-map", "writer-study-wall-map-frame"]) {
     const mesh = study.group.getObjectByName(name);
     expect(mesh, name).toBeInstanceOf(Mesh);
     if (!(mesh instanceof Mesh)) throw new Error(`Missing physical furniture: ${name}`);
@@ -141,7 +142,8 @@ describe("writer study surrounding the persistent globe", () => {
         study = createIncludedGlobeBackground("background.base.writer-study", tier);
         study.group.updateMatrixWorld(true);
         const owned = collect(study);
-        expect(owned.meshes.length).toBeGreaterThan(0); expect(owned.meshes.length).toBeLessThanOrEqual(55);
+        // Map paper, profiled frame and mounts add exactly three opaque batches.
+        expect(owned.meshes.length).toBeGreaterThan(0); expect(owned.meshes.length).toBeLessThanOrEqual(58);
         const triangles = cameraClearance(study, owned.meshes, tier);
         expect(triangles).toBeLessThanOrEqual([500000, 300000, 120000][tierIndex]);
         expect(owned.lights.length).toBeLessThanOrEqual(2);
@@ -191,6 +193,70 @@ describe("writer study surrounding the persistent globe", () => {
           expect(Math.abs(members[member][coordinate] - original[member][coordinate]), `${tiers[index]}/${name}: physical layout`).toBeLessThanOrEqual(1e-4);
         }
       }
+    }
+  });
+
+  it("shows the borrowed upright atlas and releases only the room when maps change or the room retires", () => {
+    const study = createGlobeWriterStudy("economy");
+    const atlasA = new DataTexture(new Uint8Array([255, 0, 0, 255, 0, 255, 0, 255]), 2, 1);
+    const atlasB = new DataTexture(new Uint8Array([0, 0, 255, 255, 255, 255, 0, 255]), 2, 1);
+    atlasA.offset.set(.13, .21); atlasA.repeat.set(.8, .9); atlasA.flipY = true; atlasA.needsUpdate = true;
+    atlasB.rotation = .17; atlasB.flipY = false; atlasB.needsUpdate = true;
+    const fingerprint = (texture: DataTexture) => ({ source: texture.source, image: texture.image,
+      bytes: Array.from(new Uint8Array(texture.image.data.buffer, texture.image.data.byteOffset, texture.image.data.byteLength)),
+      version: texture.version, colorSpace: texture.colorSpace,
+      offset: texture.offset.toArray(), repeat: texture.repeat.toArray(), center: texture.center.toArray(),
+      rotation: texture.rotation, matrix: texture.matrix.toArray(), matrixAutoUpdate: texture.matrixAutoUpdate,
+      flipY: texture.flipY, wrapS: texture.wrapS, wrapT: texture.wrapT,
+      minFilter: texture.minFilter, magFilter: texture.magFilter, generateMipmaps: texture.generateMipmaps });
+    const originals = [fingerprint(atlasA), fingerprint(atlasB)], retiredAtlasA = vi.fn(), retiredAtlasB = vi.fn();
+    atlasA.addEventListener("dispose", retiredAtlasA); atlasB.addEventListener("dispose", retiredAtlasB);
+    try {
+      const paper = study.group.getObjectByName("writer-study-wall-map");
+      expect(paper).toBeInstanceOf(Mesh);
+      if (!(paper instanceof Mesh) || !(paper.material instanceof MeshStandardMaterial)) throw new Error("Missing atlas paper");
+      const material = paper.material, geometry = paper.geometry, neutral = material.color.clone();
+      const mapParts = collect(study).meshes.filter(mesh => mesh.name.startsWith("writer-study-wall-map"));
+      expect(mapParts.map(mesh => mesh.name).sort()).toEqual(["writer-study-wall-map", "writer-study-wall-map-frame", "writer-study-wall-map-mounts"]);
+      for (const part of mapParts) for (const finish of Array.isArray(part.material) ? part.material : [part.material]) {
+        expect(finish.transparent).toBe(false);
+      }
+      const uv = geometry.getAttribute("uv"), positions = geometry.getAttribute("position"), normals = geometry.getAttribute("normal");
+      const originalUvs = Array.from(uv.array), bounds = physicalBounds(paper, true)[0];
+      expect((bounds[3] - bounds[0]) / (bounds[4] - bounds[1])).toBeCloseTo(2, 5);
+      // The room faces +Z. The full atlas uses the usual upright UV convention:
+      // the upper sheet edge is v=1 and the right edge is u=1.
+      let frontVertices = 0;
+      for (let index = 0; index < positions.count; index++) if (normals.getZ(index) > .8) {
+        frontVertices++;
+        expect(uv.getX(index)).toBeCloseTo((positions.getX(index) - bounds[0]) / (bounds[3] - bounds[0]), 5);
+        expect(uv.getY(index)).toBeCloseTo((positions.getY(index) - bounds[1]) / (bounds[4] - bounds[1]), 5);
+      }
+      expect(frontVertices).toBeGreaterThan(0);
+      expect(material.map).toBeNull(); expect(study.setAtlasMap).toBeTypeOf("function");
+      study.setAtlasMap!(atlasA); expect(material.map).toBe(atlasA);
+      const version = material.version;
+      study.setAtlasMap!(atlasA); expect(material.version).toBe(version);
+      study.setAtlasMap!(atlasB); expect(material.map).toBe(atlasB);
+      study.setAtlasMap!(null); expect(material.map).toBeNull(); expect(material.color.equals(neutral)).toBe(true);
+      study.setAtlasMap!(atlasA);
+      expect(paper.geometry).toBe(geometry); expect(Array.from(uv.array)).toEqual(originalUvs);
+      const retiredGeometry = vi.fn(), retiredMaterial = vi.fn();
+      geometry.addEventListener("dispose", retiredGeometry); material.addEventListener("dispose", retiredMaterial);
+      study.dispose(); study.dispose();
+      expect(retiredGeometry).toHaveBeenCalledOnce(); expect(retiredMaterial).toHaveBeenCalledOnce();
+      expect(material.map).toBeNull(); expect(study.group.children).toHaveLength(0);
+      const retiredVersion = material.version;
+      study.setAtlasMap!(atlasB); study.setAtlasMap!(null);
+      expect(material.map).toBeNull(); expect(material.version).toBe(retiredVersion);
+      expect(retiredAtlasA).not.toHaveBeenCalled(); expect(retiredAtlasB).not.toHaveBeenCalled();
+      for (const [index, texture] of [atlasA, atlasB].entries()) {
+        expect(texture.source).toBe(originals[index].source); expect(texture.image).toBe(originals[index].image);
+        expect(fingerprint(texture)).toEqual(originals[index]);
+      }
+    } finally {
+      study.dispose(); atlasA.removeEventListener("dispose", retiredAtlasA); atlasB.removeEventListener("dispose", retiredAtlasB);
+      atlasA.dispose(); atlasB.dispose();
     }
   });
 

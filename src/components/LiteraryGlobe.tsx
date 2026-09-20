@@ -1848,7 +1848,7 @@ function GlobeScene({
         ? <GlobeIncludedBackground presentation={compositionFrame.background ?? backgroundCustomization} quality={quality.tier}
             editionId={editionId} standId={standCustomization?.displayedId ?? "canonical"} access="adult"
             active={active} autoRotate={autoRotate} reducedMotion={reducedMotion}
-            inspection={sceneInspection} globeRef={globeObjectRef}
+            inspection={sceneInspection} globeRef={globeObjectRef} atlasMap={atlas.mapTexture}
             canonicalBackground={canonicalBackground} />
         : canonicalBackground}
       <ambientLight intensity={palette.ambientIntensity} color={palette.ambient} />

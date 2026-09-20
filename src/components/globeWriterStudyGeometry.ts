@@ -6,6 +6,8 @@ import { WRITER_STUDY_SKETCH } from "../planet/writerStudySketch";
 
 export interface OwnedGlobeWriterStudy {
   readonly group: THREE.Group;
+  /** Borrowed from the canonical atlas; this room never owns its pixels. */
+  setAtlasMap?(texture: THREE.Texture | null): void;
   setAmbientTime(seconds: number): void;
   dispose(): void;
 }
@@ -43,10 +45,15 @@ export function createGlobeWriterStudy(quality: GlobeQualityTier): OwnedGlobeWri
   const geometries = new Set<THREE.BufferGeometry>(), materials = new Set<THREE.Material>();
   const textures = new Set<THREE.Texture>(), instances = new Set<THREE.InstancedMesh>(), lights = new Set<THREE.PointLight>();
   let craft: ReturnType<typeof createGlobeCraftMaterials> | undefined;
+  let wallMapMaterial: THREE.MeshStandardMaterial | null = null;
   let disposed = false;
   const dispose = () => {
     if (disposed) return;
     disposed = true;
+    // Detach the borrowed atlas before retiring the room's own materials. It
+    // may still be used by the globe or another retained room after this call.
+    if (wallMapMaterial) wallMapMaterial.map = null;
+    wallMapMaterial = null;
     for (const value of instances) value.dispose();
     for (const value of lights) value.dispose();
     for (const value of geometries) value.dispose();
@@ -306,6 +313,76 @@ export function createGlobeWriterStudy(quality: GlobeQualityTier): OwnedGlobeWri
     }
     tube("door-hardware", [new THREE.Vector3(-2.18, -3.20, 10.46), new THREE.Vector3(-2.18, -3.20, 10.32),
       new THREE.Vector3(-2.45, -3.20, 10.32)], .035, brass, background);
+
+    // A framed atlas occupies the solid pier between the two windows. Its
+    // mitred rails have an outer moulding and a recessed paper rebate; a thin
+    // backing touches the wall instead of leaving the display floating.
+    const mapX = -1.15, mapY = 1.10, mapZ = -10.842;
+    box("wall-map-frame", walnut, midground, mapX, mapY, -10.925, 3.64, 2.05, .14, .018,
+      0, new THREE.Color(.56, .53, .49));
+    const frameProfile = (outerWidth: number, outerHeight: number, innerWidth: number, innerHeight: number,
+      z: number, depth: number, bevel: number, tint = new THREE.Color(1, 1, 1)) => {
+      const ox = outerWidth / 2, oy = outerHeight / 2, ix = innerWidth / 2, iy = innerHeight / 2;
+      // Explicit closed ring profiles keep the exact outer/rebate dimensions
+      // at every tier; an extrusion bevel would expand the mitred corners.
+      const b = detail.bevel > 0 ? bevel : 0;
+      const section = b > 0 ? [[ox - b, oy - b, z], [ox, oy, z + b], [ox, oy, z + depth - b],
+        [ox - b, oy - b, z + depth], [ix + b, iy + b, z + depth], [ix, iy, z + depth - b],
+        [ix, iy, z + b], [ix + b, iy + b, z]] : [[ox, oy, z], [ox, oy, z + depth],
+        [ix, iy, z + depth], [ix, iy, z]];
+      const corners = [[-1, -1], [1, -1], [1, 1], [-1, 1]];
+      for (let rail = 0; rail < 4; rail++) {
+        const positions: number[] = [];
+        const point = (profile: number, corner: number) => [section[profile][0] * corners[corner][0],
+          section[profile][1] * corners[corner][1], section[profile][2]];
+        for (let profile = 0; profile < section.length; profile++) {
+          const next = (profile + 1) % section.length, end = (rail + 1) % 4;
+          const a = point(profile, rail), b = point(profile, end), c = point(next, rail), d = point(next, end);
+          positions.push(...a, ...b, ...c, ...b, ...d, ...c);
+        }
+        const geometry = new THREE.BufferGeometry();
+        geometry.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
+        geometry.setAttribute("uv", new THREE.Float32BufferAttribute(new Float32Array(positions.length / 3 * 2), 2));
+        geometry.computeVertexNormals();
+        physicalWoodUv(geometry, rail % 2 === 0 ? outerWidth : (outerWidth - innerWidth) / 2,
+          rail % 2 === 0 ? (outerHeight - innerHeight) / 2 : outerHeight, depth);
+        append("wall-map-frame", geometry, walnut, midground,
+          new THREE.Matrix4().makeTranslation(mapX, mapY, 0), tint);
+      }
+    };
+    frameProfile(3.64, 2.05, 3.20, 1.61, -10.928, .108, .014);
+    frameProfile(3.57, 1.98, 3.43, 1.84, -10.803, .025, .006, new THREE.Color(.91, .89, .86));
+    frameProfile(3.26, 1.67, 3.18, 1.59, -10.817, .029, .005, new THREE.Color(1.10, 1.08, 1.04));
+
+    wallMapMaterial = cloneFinish(craft.paper, "#e8dfca", .055);
+    wallMapMaterial.name = "writer-study-wall-map-paper";
+    wallMapMaterial.map = null;
+    wallMapMaterial.normalScale.set(.045, .045);
+    wallMapMaterial.roughness = .97;
+    wallMapMaterial.userData = { provenance: "authored-in-project", atlasMapOwnership: "borrowed" };
+    const wallMapPaper = curvedPaper(3.18, 1.59, .008,
+      (u, v) => .004 + .026 * (4 * u * (1 - u)) * (4 * v * (1 - v)));
+    // The shared atlas is already configured by its owner. Upright UVs belong
+    // to this mesh; never change texture.flipY, repeat, transform or source.
+    wallMapPaper.rotateX(Math.PI / 2);
+    wallMapPaper.translate(mapX, mapY, mapZ);
+    const mapUvs = wallMapPaper.getAttribute("uv");
+    for (let vertex = 0; vertex < mapUvs.count; vertex++) mapUvs.setY(vertex, 1 - mapUvs.getY(vertex));
+    shade(wallMapPaper, new THREE.Color(1, 1, 1), true);
+    const mapColors = wallMapPaper.getAttribute("color");
+    for (let vertex = 0; vertex < mapUvs.count; vertex++) {
+      const edge = Math.min(mapUvs.getX(vertex), 1 - mapUvs.getX(vertex), mapUvs.getY(vertex), 1 - mapUvs.getY(vertex));
+      const contactShade = .84 + .16 * smooth(edge * 14);
+      mapColors.setXYZ(vertex, mapColors.getX(vertex) * contactShade, mapColors.getY(vertex) * contactShade,
+        mapColors.getZ(vertex) * contactShade);
+    }
+    mesh("wall-map", own(wallMapPaper), wallMapMaterial, midground);
+    for (const x of [-1.73, 1.73]) for (const y of [-.93, .93]) {
+      box("wall-map-mounts", brass, midground, mapX + x, mapY + y, -10.784, .064, .07, .016, .006);
+      const screw = new THREE.SphereGeometry(.015, detail.radial, Math.max(6, Math.round(detail.radial / 2)));
+      screw.scale(1, 1, .35);
+      append("wall-map-mounts", screw, brass, midground, new THREE.Matrix4().makeTranslation(mapX + x, mapY + y, -10.771));
+    }
 
     // The view through the real openings has its own depth: a quiet sky and
     // branching winter trees stand well beyond the glass. These are authored
@@ -588,7 +665,12 @@ export function createGlobeWriterStudy(quality: GlobeQualityTier): OwnedGlobeWri
       for (const part of batch.parts) part.dispose(); batch.parts.length = 0;
     }
     group.updateMatrixWorld(true);
-    return Object.freeze({ group, setAmbientTime(seconds: number) {
+    return Object.freeze({ group, setAtlasMap(texture: THREE.Texture | null) {
+      if (disposed || !wallMapMaterial || wallMapMaterial.map === texture) return;
+      wallMapMaterial.map = texture;
+      wallMapMaterial.color.set(texture ? "#ffffff" : "#e8dfca");
+      wallMapMaterial.needsUpdate = true;
+    }, setAmbientTime(seconds: number) {
       if (disposed || !Number.isFinite(seconds) || seconds < 0) return;
       lampInner.emissiveIntensity = .43 + .017 * Math.sin((seconds % 3600) * .37);
     }, dispose });

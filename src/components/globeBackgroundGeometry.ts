@@ -1,4 +1,4 @@
-import type { Group } from "three";
+import type { Group, Texture } from "three";
 import { isGlobeBackgroundId, type GlobeBackgroundId } from "../planet/globeBackgrounds";
 import { createGlobeLibrary } from "./globeLibraryGeometry";
 import { createGlobeWriterStudy } from "./globeWriterStudyGeometry";
@@ -7,6 +7,8 @@ import type { GlobeQualityTier } from "./globeQuality";
 export interface OwnedGlobeBackground {
   readonly group: Group;
   setAmbientTime(seconds: number): void;
+  /** Borrow the displayed atlas texture; the atlas retains all mutation and disposal ownership. */
+  setAtlasMap?(texture: Texture | null): void;
   dispose(): void;
 }
 

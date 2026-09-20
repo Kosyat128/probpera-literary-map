@@ -1,5 +1,5 @@
 import { Component, useLayoutEffect, useRef, useState, type ReactNode, type RefObject } from "react";
-import type { Mesh } from "three";
+import type { Mesh, Texture } from "three";
 import { useFrame, useThree } from "@react-three/fiber";
 import {
   checkGlobeBackgroundCompatibility, DEFAULT_GLOBE_BACKGROUND_ID,
@@ -22,6 +22,7 @@ type BackgroundProps = {
   canonicalBackground: ReactNode;
   inspection?: GlobeSceneInspectionBridge;
   globeRef?: RefObject<Mesh>;
+  atlasMap?: Texture | null;
 };
 
 class BackgroundRenderBoundary extends Component<{
@@ -37,7 +38,7 @@ class BackgroundRenderBoundary extends Component<{
 }
 
 function BackgroundFrame({ presentation, quality, editionId, standId, access,
-  active, autoRotate, reducedMotion, canonicalBackground, inspection, globeRef }: BackgroundProps) {
+  active, autoRotate, reducedMotion, canonicalBackground, inspection, globeRef, atlasMap = null }: BackgroundProps) {
   const { invalidate, gl, scene, camera } = useThree();
   const [shown, setShown] = useState<{ key: string; resource: OwnedGlobeBackground } | null>(null);
   const resources = useRef(new Map<string, OwnedGlobeBackground>());
@@ -47,7 +48,16 @@ function BackgroundFrame({ presentation, quality, editionId, standId, access,
   } | null>(null);
   const callbacks = useRef(presentation);
   const ambientTime = useRef(0);
+  const displayedAtlasMap = useRef(atlasMap);
   useLayoutEffect(() => { callbacks.current = presentation; }, [presentation]);
+
+  useLayoutEffect(() => {
+    displayedAtlasMap.current = atlasMap;
+    // Both visible and retained Cancel resources borrow the very same texture
+    // as the globe. Edition pixel updates remain the atlas owner's operation.
+    for (const resource of resources.current.values()) resource.setAtlasMap?.(atlasMap);
+    invalidate();
+  }, [atlasMap, invalidate]);
 
   useLayoutEffect(() => {
     const keyFor = (id: GlobeBackgroundId) => id === DEFAULT_GLOBE_BACKGROUND_ID ? null : `${id}:${quality}`;
@@ -67,6 +77,7 @@ function BackgroundFrame({ presentation, quality, editionId, standId, access,
       if (existing) return existing;
       const candidate = createIncludedGlobeBackground(id, quality);
       try {
+        candidate.setAtlasMap?.(displayedAtlasMap.current);
         candidate.setAmbientTime(ambientTime.current);
         // A small bundled room is prepared synchronously. This uses the current
         // camera/lights without an uncancellable compileAsync resource queue.
