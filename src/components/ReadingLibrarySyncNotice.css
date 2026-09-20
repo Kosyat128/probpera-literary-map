@@ -1,0 +1,51 @@
+.reading-library-sync-notice,
+.account-library > .reading-library-sync-notice {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  padding: 12px 16px;
+  margin: 12px 0;
+  border: 1px solid color-mix(in srgb, currentColor 22%, transparent);
+  border-radius: 12px;
+  font: inherit;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.reading-library-sync-notice > span {
+  flex: 1 1 240px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.reading-library-sync-notice > button {
+  min-height: 44px;
+  max-width: 100%;
+  padding: 8px 12px;
+  border: 1px solid currentColor;
+  border-radius: 8px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.reading-library-sync-notice > button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.article-reader-scroll > .reading-library-sync-notice {
+  margin: 16px clamp(12px, 3vw, 40px);
+  color: var(--reader-ink, inherit);
+}
+
+.book-shelf-frame > .reading-library-sync-notice {
+  position: relative;
+  z-index: 2;
+  margin: 12px 16px;
+  color: var(--book-control-ink, var(--book-shelf-paper));
+  background: var(--book-control-surface, #211326);
+}

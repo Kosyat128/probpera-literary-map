@@ -9,6 +9,7 @@ import { articlePath } from "../utils/articleRoutes";
 import { imageUploadErrorMessage, optimizeUploadImage } from "../utils/imageUploadOptimization";
 import BrandHeartIcon from "../components/BrandHeartIcon";
 import BrandCloseIcon from "../components/BrandCloseIcon";
+import ReadingLibrarySyncNotice from "../components/ReadingLibrarySyncNotice";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import { useAuth } from "./AuthContext";
 import EditorialWorkbench from "./EditorialWorkbench";
@@ -248,6 +249,8 @@ export default function CommunityHub({
     items: savedReadings,
     remove: removeSavedReading,
     setStatus: setReadingStatus,
+    sync: readingLibrarySync,
+    retrySync: retryReadingLibrarySync,
   } = useReadingLibrary();
   const {
     items: subscriptions,
@@ -1030,6 +1033,7 @@ export default function CommunityHub({
         </div>
         <strong>{number(savedReadings.length)}</strong>
       </header>
+      <ReadingLibrarySyncNotice sync={readingLibrarySync} onRetry={retryReadingLibrarySync} language={language} />
       {savedReadings.length ? (
         <div>
           {savedReadings.map((item, index) => (

@@ -14,6 +14,7 @@ import ArticleEngagement from "../community/ArticleEngagement";
 import ArticleViewCount from "../community/ArticleViewCount";
 import DisplayModeControl from "./DisplayModeControl";
 import InterfaceLanguageControl from "./InterfaceLanguageControl";
+import ReadingLibrarySyncNotice from "./ReadingLibrarySyncNotice";
 import type { ArticleCatalogEntry } from "../data/articles/catalog";
 import { mediaFocusPosition, mediaFocusStyle } from "../utils/mediaFocus";
 import {
@@ -359,6 +360,8 @@ export default function ArticleReader({
     items: savedReadings,
     toggle: toggleSavedReading,
     setStatus: setReadingStatus,
+    sync: readingLibrarySync,
+    retrySync: retryReadingLibrarySync,
   } = useReadingLibrary();
   const savedArticle = savedReadings.find(
     (item) => item.kind === "article" && item.id === article.id
@@ -1047,6 +1050,7 @@ export default function ArticleReader({
       </header>
 
       <div className="article-reader-scroll" ref={scrollRef} onScroll={handleScroll}>
+        <ReadingLibrarySyncNotice sync={readingLibrarySync} onRetry={retryReadingLibrarySync} language={language} />
         <CmsPageBanners />
         {bookModeActive && <Suspense fallback={<div className="article-reader-loading" role="status"><p>{language === "en" ? "Opening the illustrated book…" : "Открываем книгу с иллюстрациями…"}</p></div>}>
           <ArticleBookReader

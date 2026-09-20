@@ -19,6 +19,7 @@ import { isPublicBook } from "../data/bookQuality";
 
 import ArticleEngagement from "../community/ArticleEngagement";
 import BookCoverArtwork from "./BookCoverArtwork";
+import ReadingLibrarySyncNotice from "./ReadingLibrarySyncNotice";
 import {
   bookArchiveKey,
   coverArtworkSrcSet,
@@ -788,6 +789,8 @@ export default function BookArchiveSection({
     save: saveReading,
     remove: removeReading,
     setDossierProgress,
+    sync: readingLibrarySync,
+    retrySync: retryReadingLibrarySync,
   } = useReadingLibrary();
   const savedReadingsRef = useRef(savedReadings);
   savedReadingsRef.current = savedReadings;
@@ -4246,6 +4249,7 @@ export default function BookArchiveSection({
           ) : null}
         </div>
 
+          <ReadingLibrarySyncNotice sync={readingLibrarySync} onRetry={retryReadingLibrarySync} language={language} />
           {collectionShelfSelection.missingReferences.length > 0 ? (
             <div className="book-shelf-frame__missing-references" role="status">
               <strong>{t("Некоторые книги больше недоступны в архиве")}</strong>
