@@ -1,0 +1,22 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "--config=docs/mobile/evidence/S13/book-cloud-stand-20260920/unit.config.mjs",
+    "--reporter=json",
+    "--outputFile=C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S13\\book-cloud-stand-20260920\\unit-a1\\vitest.json"
+  ],
+  "exitCode": 0,
+  "durationMs": 3135,
+  "stdout": {
+    "path": "docs/mobile/evidence/S13/book-cloud-stand-20260920/unit-a1/stdout.log",
+    "bytes": 180,
+    "sha256": "2999f5976b28cba5e575b2295e22acf6187778590145df1f19d90bc9bdef19f6"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S13/book-cloud-stand-20260920/unit-a1/stderr.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

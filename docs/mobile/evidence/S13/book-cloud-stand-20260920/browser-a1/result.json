@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "mode": "browser",
+  "attempt": "a1",
+  "startedAt": "2026-09-20T01:51:31.798Z",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S13/book-cloud-stand-20260920/source-manifests/dd0e6b0744fdaa15.json",
+    "sha256": "dd0e6b0744fdaa15b31c57b28b7e21a764e7cb9ad8c79e7cffbed48c2b0178dd",
+    "fileCount": 79
+  },
+  "checkInputs": [
+    {
+      "path": "docs/mobile/evidence/S13/book-cloud-stand-20260920/check.mjs",
+      "sha256": "969cf829a6c6c77cdf1b9a1802f2177fe3d2f5a0116287ba83a4d655e3ae8a6b"
+    },
+    {
+      "path": "docs/mobile/evidence/S13/book-cloud-stand-20260920/entry.json",
+      "sha256": "979e2808c3e7f06894c8de55a8a6c91c877fbb80524df551bfc60aed3c40a882"
+    },
+    {
+      "path": "docs/mobile/evidence/S13/book-cloud-stand-20260920/playwright.config.mjs",
+      "sha256": "11e954cf35897df5157c89d7a57ebad58b5b90a23c3e9a186caa27e49e74b308"
+    },
+    {
+      "path": "tests/pwa/book-cloud-stand.spec.mjs",
+      "sha256": "e620737a2832d0c2c032bd2aaa6da7dce8fcef3eb5498756d792931a85c0f03b"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "tests": {
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0
+  },
+  "reportError": null,
+  "pass": true,
+  "execution": {
+    "exitCode": 0,
+    "durationMs": 19831
+  },
+  "stageAccepted": false,
+  "artAccepted": false,
+  "releaseReady": false
+}

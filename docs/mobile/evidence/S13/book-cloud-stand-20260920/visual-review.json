@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-20T02:01:47.648Z",
+  "sourceCommit": "d370c62763bc676dc7e5647da6b6b0a739d6183d",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S13/book-cloud-stand-20260920/source-manifests/010105372d259ebd.json",
+    "sha256": "010105372d259ebdafdd4ce5f08a97eeadf1aaf95aba2fc63f6be43dc5e58a3b",
+    "fileCount": 79
+  },
+  "actualAppCapture": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-book-cloud/browser-a3/book-cloud-stand-book-clou-ae94d--shape-across-quality-tiers/book-cloud-stand.json",
+    "sha256": "80bc4d70df2ff68da096c82bda895b2ecb4a6b1839c2c536e7d07ab4a5f40fa1"
+  },
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-book-cloud/browser-a3/book-cloud-stand-book-clou-ae94d--shape-across-quality-tiers/book-cloud-combined-preview-en-390.png",
+      "sha256": "0e811d6b612b09ef66b042ff4c0bbaa8fc1b981a571066eb9af70eee1fc89641",
+      "inspected": true,
+      "reviewer": "/root",
+      "findings": [
+        "The English joint stand/background summary and Apply/Cancel controls fit within the 390-pixel viewport.",
+        "This image verifies the appearance panel; the country-focused globe obscures the stand in this narrow pre-apply view."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-book-cloud/browser-a3/book-cloud-stand-book-clou-ae94d--shape-across-quality-tiers/book-cloud-high-ru-1440.png",
+      "sha256": "e305b28a62ae1a3d15d7f0d58de564201396df7ea0c61d1756857d1184cc2510",
+      "inspected": true,
+      "reviewer": "/root",
+      "findings": [
+        "The complete stand is visible below the globe in the ordinary product view after actual zoom-out and pointer orbit.",
+        "The book and cloud silhouette remain recognizable; selected Russia and the archive remain visible."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-book-cloud/browser-a3/book-cloud-stand-book-clou-ae94d--shape-across-quality-tiers/book-cloud-high-inspection-close.png",
+      "sha256": "0f26b49831aa1effc68f73b45040e5999678b5e0e59399ffdfb0fcc95b9beb83",
+      "inspected": true,
+      "reviewer": "/root",
+      "findings": [
+        "Inspected the actual mounted App camera close view: sewn gutter, layered cut-paper edges, curled leaves, dark blue binding and red bookmark are visibly distinct.",
+        "The cloud has a continuous opaque surface and rounded asymmetrical lobes. Its finish remains stylized and does not establish photorealistic art acceptance.",
+        "The close framing deliberately crops the globe and retains the existing archive UI; the test restores the same original camera afterward."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-book-cloud/browser-a3/book-cloud-stand-book-clou-ae94d--shape-across-quality-tiers/book-cloud-balanced-ru-1440.png",
+      "sha256": "07e57c9f318ae007a418435413b535925cd033c34690e55a33aaf57b03fc4723",
+      "inspected": true,
+      "reviewer": "/root",
+      "findings": [
+        "The ordinary product view preserves the book/cloud silhouette and placement at Balanced quality.",
+        "The RU chrome and country archive are readable; no additional Canvas or replacement UI is used."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-book-cloud/browser-a3/book-cloud-stand-book-clou-ae94d--shape-across-quality-tiers/book-cloud-economy-ru-1440.png",
+      "sha256": "54bfcd7668d0f560888afeeff7f6e47961c50b52c1fa2e6ff5a6a2ae88231c22",
+      "inspected": true,
+      "reviewer": "/root",
+      "findings": [
+        "Economy retains the same complete stand shape and contact-seat placement, with fewer surface samples and page-cut details.",
+        "This desktop Chrome image is not installed-phone performance evidence."
+      ]
+    }
+  ],
+  "actualApp": true,
+  "actualGlobe": true,
+  "controlledNativePorts": true,
+  "artAccepted": false,
+  "childApproved": false,
+  "userRealismRequirementSatisfied": false,
+  "releaseReady": false,
+  "limitations": [
+    "Ordinary overview frames use actual product zoom and pointer orbit; the close inspection uses a temporary test-only camera pose and restores it.",
+    "Current imagery remains stylized. No likeness, human art/child review, device performance or release acceptance is claimed."
+  ]
+}

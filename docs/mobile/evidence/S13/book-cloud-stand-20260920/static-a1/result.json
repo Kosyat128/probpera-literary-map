@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "mode": "static",
+  "attempt": "a1",
+  "startedAt": "2026-09-20T01:51:11.061Z",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S13/book-cloud-stand-20260920/source-manifests/dd0e6b0744fdaa15.json",
+    "sha256": "dd0e6b0744fdaa15b31c57b28b7e21a764e7cb9ad8c79e7cffbed48c2b0178dd",
+    "fileCount": 79
+  },
+  "checkInputs": [
+    {
+      "path": "docs/mobile/evidence/S13/book-cloud-stand-20260920/check.mjs",
+      "sha256": "969cf829a6c6c77cdf1b9a1802f2177fe3d2f5a0116287ba83a4d655e3ae8a6b"
+    },
+    {
+      "path": "docs/mobile/evidence/S13/book-cloud-stand-20260920/entry.json",
+      "sha256": "979e2808c3e7f06894c8de55a8a6c91c877fbb80524df551bfc60aed3c40a882"
+    },
+    {
+      "path": "src/components/globeBookCloudStandGeometry.test.ts",
+      "sha256": "8802ea20b3a50933ce642f2dd2d73715a9163bec7f3fad70977686fb204b7b36"
+    },
+    {
+      "path": "src/host/HostPlatformServices.test.ts",
+      "sha256": "f730bc4c9767c4e8e0cdf7601d245e1dc5796d74fe155ff93ba432690b2e1aa6"
+    },
+    {
+      "path": "src/host/planetStandCustomization.test.ts",
+      "sha256": "3528acbd20af7c3d296691579c24401aa0228ca7cc14a016ed821e2c7bb71495"
+    },
+    {
+      "path": "src/planet/globeComposition.test.ts",
+      "sha256": "a38c2e897228c7c973d344795354aa810390514b35cd853923370ca7e66b67bb"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "tests": null,
+  "reportError": null,
+  "pass": true,
+  "execution": {
+    "exitCode": 0,
+    "durationMs": 25227
+  },
+  "stageAccepted": false,
+  "artAccepted": false,
+  "releaseReady": false
+}

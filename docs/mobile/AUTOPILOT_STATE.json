@@ -3,9 +3,9 @@
   "repository": "Kosyat128/probpera-literary-map",
   "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
-  "headSha": "892051bd50a1282dacaf0f9799391d19449f4dcc",
+  "headSha": "d370c62763bc676dc7e5647da6b6b0a739d6183d",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-20T01:34:49.758Z",
+  "updatedAt": "2026-09-20T02:06:38.113Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -2134,11 +2134,12 @@
             "docs/mobile/evidence/S13/three-whales-20260919/result.json",
             "docs/mobile/evidence/S13/ceramic-portraits-20260920/result.json",
             "docs/mobile/evidence/S13/writer-study-20260920/result.json",
-            "docs/mobile/evidence/S13/visual-refinement-20260920/result.json"
+            "docs/mobile/evidence/S13/visual-refinement-20260920/result.json",
+            "docs/mobile/evidence/S13/book-cloud-stand-20260920/result.json"
           ],
-          "commit": "585e3af609f718ae3c2e1eb75fc1aa610d640723",
-          "lastValidatedAt": "2026-09-20T00:22:52.166Z",
-          "notes": "Included skins/stands/backgrounds/accessories. Data-driven customization must preserve the same scene before measured performance and parity checks. Three adult included procedural stands now use the canonical scene with rendered-preview acknowledgement, apply/cancel, ordered preference recovery and scoped resource disposal. Canonical default is retained. Full composition, child/optional catalogs, device budgets and release acceptance remain open. The included two-level library and three stands now have detailed original geometry, owned procedural craft maps and inspected actual-App/close-up views following the explicit realism requirement. Same-scene preview, actual frame acknowledgement, persistence, context recovery and scoped disposal are evidenced. Formal art/lightmap acceptance, full composition, catalog, child/rights and device gates remain open. Existing included edition/stand/background IDs now share one bounded composition record. Source inventory remains 11/29, zero accepted; no new catalog or art approval is implied. The included library has source-aligned lighting, cabinet occlusion and more believable volume grouping, inspected in the actual app and close-ups. This library and shared-material slice adds no catalog IDs; inventory remains 11/29, zero accepted, with formal art/lightmap approval open. The included library retains its 16-bay/8-row/8-slot nominal layout and believable placement density at reduced tiers using economical true-3D geometry. No catalog IDs are added; inventory remains 11/29 source-bound, zero accepted, with final art/lightmap approval open. Included library and stand surfaces refine wood mapping, oxidation and leather response while retaining the reviewed library density. Current source-bound actual-App and close-up review remains scoped evidence, not final art acceptance. No catalog IDs added; inventory remains 11/29 source-bound, zero accepted. The explicitly requested golden three-whale stand inherits canonical-globe identity; the immutable Starter Set remains 29 items, 11 source-bound and zero accepted. Current close-up and actual-App review is scoped evidence, not final art acceptance. Three explicit owner-added ceramic portrait stands are self-canonical included items, separate from 29 mandatory requirements. Starter Set remains 11 source-bound and zero accepted; likeness and art acceptance remain open. STARTER-012 writer study has an original full-3D source binding: 12/29 mandatory items are source-bound, zero accepted; three owner-added portrait stands remain separate. Refined existing portrait surfaces and writer-study depth; no new catalog IDs or art acceptance. The final reduced saucer, contact seat and portrait scale have exact prior-source fragment proof."
+          "commit": "d370c62763bc676dc7e5647da6b6b0a739d6183d",
+          "lastValidatedAt": "2026-09-20T02:06:38.113Z",
+          "notes": "Included skins/stands/backgrounds/accessories. Data-driven customization must preserve the same scene before measured performance and parity checks. Three adult included procedural stands now use the canonical scene with rendered-preview acknowledgement, apply/cancel, ordered preference recovery and scoped resource disposal. Canonical default is retained. Full composition, child/optional catalogs, device budgets and release acceptance remain open. The included two-level library and three stands now have detailed original geometry, owned procedural craft maps and inspected actual-App/close-up views following the explicit realism requirement. Same-scene preview, actual frame acknowledgement, persistence, context recovery and scoped disposal are evidenced. Formal art/lightmap acceptance, full composition, catalog, child/rights and device gates remain open. Existing included edition/stand/background IDs now share one bounded composition record. Source inventory remains 11/29, zero accepted; no new catalog or art approval is implied. The included library has source-aligned lighting, cabinet occlusion and more believable volume grouping, inspected in the actual app and close-ups. This library and shared-material slice adds no catalog IDs; inventory remains 11/29, zero accepted, with formal art/lightmap approval open. The included library retains its 16-bay/8-row/8-slot nominal layout and believable placement density at reduced tiers using economical true-3D geometry. No catalog IDs are added; inventory remains 11/29 source-bound, zero accepted, with final art/lightmap approval open. Included library and stand surfaces refine wood mapping, oxidation and leather response while retaining the reviewed library density. Current source-bound actual-App and close-up review remains scoped evidence, not final art acceptance. No catalog IDs added; inventory remains 11/29 source-bound, zero accepted. The explicitly requested golden three-whale stand inherits canonical-globe identity; the immutable Starter Set remains 29 items, 11 source-bound and zero accepted. Current close-up and actual-App review is scoped evidence, not final art acceptance. Three explicit owner-added ceramic portrait stands are self-canonical included items, separate from 29 mandatory requirements. Starter Set remains 11 source-bound and zero accepted; likeness and art acceptance remain open. STARTER-012 writer study has an original full-3D source binding: 12/29 mandatory items are source-bound, zero accepted; three owner-added portrait stands remain separate. Refined existing portrait surfaces and writer-study depth; no new catalog IDs or art acceptance. The final reduced saucer, contact seat and portrait scale have exact prior-source fragment proof. STARTER-009 now has an original adult book-cloud stand source binding through the existing composition and resource owners. Fresh inventory records 13/29 mandatory items source-bound, zero accepted, and the same three separate owner additions. 139 cases across four selected geometry/port/controller/compatibility suites, TypeScript and one actual-App Chrome case bind inspected tier/locale views and local PWA/Android artifacts. Seven composition owners and established portrait/whale/background/reader/locale/storage inputs remain unchanged. Child age review, rights, art, full catalog/stress and installed-device acceptance remain open."
         },
         {
           "id": "S13.CUSTOM-002",
@@ -2227,7 +2228,13 @@
         "node docs/mobile/evidence/S13/combined-preview-20260920/check.mjs browser a2",
         "node docs/mobile/evidence/S13/combined-preview-20260920/run-pwa.mjs b63112bb3bf3131f1dc4ddea86acbe40cd9baf3f",
         "pwsh -File docs/mobile/evidence/S13/combined-preview-20260920/build-android.ps1 b63112bb3bf3131f1dc4ddea86acbe40cd9baf3f",
-        "node docs/mobile/evidence/S13/combined-preview-20260920/preserve-android.mjs b63112bb3bf3131f1dc4ddea86acbe40cd9baf3f"
+        "node docs/mobile/evidence/S13/combined-preview-20260920/preserve-android.mjs b63112bb3bf3131f1dc4ddea86acbe40cd9baf3f",
+        "node docs/mobile/evidence/S13/book-cloud-stand-20260920/check.mjs unit a2",
+        "node docs/mobile/evidence/S13/book-cloud-stand-20260920/check.mjs static a2",
+        "node docs/mobile/evidence/S13/book-cloud-stand-20260920/check.mjs browser a3",
+        "node docs/mobile/evidence/S13/book-cloud-stand-20260920/run-pwa.mjs d370c62763bc676dc7e5647da6b6b0a739d6183d",
+        "pwsh -File docs/mobile/evidence/S13/book-cloud-stand-20260920/build-android.ps1 d370c62763bc676dc7e5647da6b6b0a739d6183d",
+        "node docs/mobile/evidence/S13/book-cloud-stand-20260920/preserve-android.mjs d370c62763bc676dc7e5647da6b6b0a739d6183d"
       ],
       "artifacts": [
         "docs/mobile/evidence/S13/edition-preference-20260919/entry.json",
@@ -2312,7 +2319,17 @@
         "docs/mobile/evidence/S13/combined-preview-20260920/static-a1/result.json",
         "docs/mobile/evidence/S13/combined-preview-20260920/browser-a2/result.json",
         "docs/mobile/evidence/S13/combined-preview-20260920/pwa-a1/result.json",
-        "docs/mobile/evidence/S13/combined-preview-20260920/android-a1/result.json"
+        "docs/mobile/evidence/S13/combined-preview-20260920/android-a1/result.json",
+        "docs/mobile/evidence/S13/book-cloud-stand-20260920/entry.json",
+        "docs/mobile/evidence/S13/book-cloud-stand-20260920/result.json",
+        "docs/mobile/evidence/S13/book-cloud-stand-20260920/visual-review.json",
+        "docs/mobile/evidence/S13/book-cloud-stand-20260920/starter-set-source-inventory.json",
+        "docs/mobile/evidence/S13/book-cloud-stand-20260920/source-manifests/010105372d259ebd.json",
+        "docs/mobile/evidence/S13/book-cloud-stand-20260920/unit-a2/result.json",
+        "docs/mobile/evidence/S13/book-cloud-stand-20260920/static-a2/result.json",
+        "docs/mobile/evidence/S13/book-cloud-stand-20260920/browser-a3/result.json",
+        "docs/mobile/evidence/S13/book-cloud-stand-20260920/pwa-a1/result.json",
+        "docs/mobile/evidence/S13/book-cloud-stand-20260920/android-a1/result.json"
       ],
       "externalBlockers": []
     },
@@ -10949,7 +10966,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Continue the full application plan from the next bounded internal requirement. Preserve bounded PWA storage waiting, useful partial estimates, explicit user-gesture persistence requests and late-reply fences. Keep durable account-scoped reading-library intent, scene composition and foreground locale priority. Actual browser retention/device behavior, full distributed sync/conflict resolution, concurrent-tab atomicity, unabortable remote ordering, accessories/audio/catalog, child, screen-reader, art/lightmap, iOS and release gates remain open. Do not rerun unchanged reader, geometry or historical checks.",
+    "nextAction": "Continue the full application plan from the next bounded internal requirement. Preserve the new adult book-cloud stand, its existing whole-composition preview/apply/cancel ownership, and all established scene, reader, locale and storage behavior. Continue remaining Starter Set/source bindings and functional gaps without repeating unchanged geometry suites. Child/rights/art/lightmap review, full accessories/audio/catalog, screen-reader, installed-device/stress, actual storage retention, distributed sync/conflict resolution, iOS and release gates remain open.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -11015,7 +11032,8 @@
       "docs/mobile/evidence/S13/combined-preview-20260920/result.json",
       "docs/mobile/evidence/S04/native-locale-20260920/result.json",
       "docs/mobile/evidence/S11/reading-library-offline-20260920/result.json",
-      "docs/mobile/evidence/S11/storage-status-20260920/result.json"
+      "docs/mobile/evidence/S11/storage-status-20260920/result.json",
+      "docs/mobile/evidence/S13/book-cloud-stand-20260920/result.json"
     ],
     "commands": [
       "node scripts/mobile/verify-requirements.mjs",
@@ -11051,7 +11069,8 @@
       "S13 combined preview: 22 controller cases, TypeScript, one selected actual Chrome case and source-bound PWA/Android builds. The second composition browser case and older background-storage fixture were not run. Geometry/art sources remain preserved; no whole accessories/audio/catalog, art, device or release acceptance.",
       "S04 native locale: 170 cases across the four named suites, TypeScript, one actual-App Chrome case using controlled native language/lifecycle/preferences and local source-bound PWA/Android builds. Existing inventory/geometry/art evidence is reused by hash; real OS language surfaces, installed-device, whole-stage and release acceptance remain open.",
       "S11 reading-library offline: 16 cases in the hook suite, TypeScript, one real-Chrome hook/notice fixture with two consumers/reload and stubbed remote transport, and source-bound local PWA/Android builds. Twenty-four scene/locale sources stay unchanged. Historical Starter Set inventory retains its original hash with the changed hook explicitly listed; no inventory/art/geometry rerun or full App/native/network acceptance is claimed.",
-      "S11 storage status: 11 cases in one controller suite, TypeScript, one real-Chrome device-panel fixture with controlled storage replies/time and source-bound local PWA/Android builds. Thirty-one reading-library/scene/locale inputs stay unchanged. Historical Starter Set inventory retains its original hash and explicit changed-input mapping; no inventory/art/geometry rerun, actual browser persistence grant, full App or native-device acceptance is claimed."
+      "S11 storage status: 11 cases in one controller suite, TypeScript, one real-Chrome device-panel fixture with controlled storage replies/time and source-bound local PWA/Android builds. Thirty-one reading-library/scene/locale inputs stay unchanged. Historical Starter Set inventory retains its original hash and explicit changed-input mapping; no inventory/art/geometry rerun, actual browser persistence grant, full App or native-device acceptance is claimed.",
+      "S13 book-cloud stand: 139 cases across the four selected suites, TypeScript, one actual-App Chrome case and exact local PWA/Android builds. Thirty-two established runtime inputs including seven composition owners remain unchanged. Fresh Starter Set inventory is 29 required / 13 source-bound / zero accepted plus three owner additions. Existing geometry suites were not rerun; child/rights/art, full catalog/stress and installed-device acceptance remain open."
     ]
   },
   "requirementsHash": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732",
@@ -12864,6 +12883,14 @@
       "sha256": "5fd152ed3eccbebc0e863fa8da7946a05a408d2c9d7d137da142f34d5cdaa69e",
       "sourceCommit": "892051bd50a1282dacaf0f9799391d19449f4dcc",
       "status": "PWA_STORAGE_STATUS_SCOPED_VALIDATION",
+      "stageAccepted": false,
+      "releaseReady": false
+    },
+    "s13BookCloudStand": {
+      "path": "docs/mobile/evidence/S13/book-cloud-stand-20260920/result.json",
+      "sha256": "a43052c4c9d44ca535e06212a8bfccf28a131500dd4a2d9306f04eb52fd5badf",
+      "sourceCommit": "d370c62763bc676dc7e5647da6b6b0a739d6183d",
+      "status": "BOOK_CLOUD_STAND_SCOPED_VALIDATION",
       "stageAccepted": false,
       "releaseReady": false
     }

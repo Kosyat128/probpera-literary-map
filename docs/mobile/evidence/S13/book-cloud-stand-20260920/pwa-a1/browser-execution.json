@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S13/book-cloud-stand-20260920/pwa.config.mjs"
+  ],
+  "exitCode": 0,
+  "durationMs": 21964,
+  "stdout": {
+    "path": "docs/mobile/evidence/S13/book-cloud-stand-20260920/pwa-a1/browser-stdout.log",
+    "bytes": 189,
+    "sha256": "c6cc48eef0ef30e1b039e0f70eb4c584977762b8499cfe9332d3cfedb5fa9aca"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S13/book-cloud-stand-20260920/pwa-a1/browser-stderr.log",
+    "bytes": 164,
+    "sha256": "b525913b3ed107f7af97d534043f6263844436cded0119efc51165cd47c27ec5"
+  }
+}

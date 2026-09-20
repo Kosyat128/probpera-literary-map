@@ -1,0 +1,151 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=docs/mobile/evidence/S13/book-cloud-stand-20260920/playwright.config.mjs"
+    ],
+    "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S13\\book-cloud-stand-20260920\\playwright.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-book-cloud/browser-a2",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "book-cloud-stand.spec.mjs"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S13\\book-cloud-stand-20260920\\browser-a2\\playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "book-cloud-stand.spec.mjs",
+      "file": "book-cloud-stand.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "book cloud joins the existing composition and retains its full shape across quality tiers",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 23040,
+                  "error": {
+                    "message": "TimeoutError: locator.click: Timeout 12000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-globe-control=\"zoom-out\"]')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" aria-keyshortcuts=\"-\" data-globe-control=\"zoom-out\" title=\"Уменьшить масштаб глобуса\" aria-describedby=\"globe-scale-feedback\" aria-label=\"Уменьшить масштаб глобуса. Текущий масштаб 101%\" class=\"ui-icon-button ui-icon-button--md ui-icon-button--dark\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    23 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not enabled\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+                    "stack": "TimeoutError: locator.click: Timeout 12000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-globe-control=\"zoom-out\"]')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" aria-keyshortcuts=\"-\" data-globe-control=\"zoom-out\" title=\"Уменьшить масштаб глобуса\" aria-describedby=\"globe-scale-feedback\" aria-label=\"Уменьшить масштаб глобуса. Текущий масштаб 101%\" class=\"ui-icon-button ui-icon-button--md ui-icon-button--dark\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    23 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not enabled\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n    at overview (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\book-cloud-stand.spec.mjs:255:19)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\book-cloud-stand.spec.mjs:333:18",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\book-cloud-stand.spec.mjs",
+                      "column": 19,
+                      "line": 255
+                    },
+                    "snippet": "  253 |   for (let step = 0; step < 6 && await zoomOut.isEnabled(); step++) {\n  254 |     const before = Math.hypot(...(await sample(page)).pose.position);\n> 255 |     await zoomOut.click();\n      |                   ^\n  256 |     await expect.poll(async () => Math.hypot(...(await sample(page)).pose.position)).toBeGreaterThan(before + .02);\n  257 |   }\n  258 |   await expect(zoomOut).toBeDisabled(); await stablePose(page);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\book-cloud-stand.spec.mjs",
+                        "column": 19,
+                        "line": 255
+                      },
+                      "message": "TimeoutError: locator.click: Timeout 12000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-globe-control=\"zoom-out\"]')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" aria-keyshortcuts=\"-\" data-globe-control=\"zoom-out\" title=\"Уменьшить масштаб глобуса\" aria-describedby=\"globe-scale-feedback\" aria-label=\"Уменьшить масштаб глобуса. Текущий масштаб 101%\" class=\"ui-icon-button ui-icon-button--md ui-icon-button--dark\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    23 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not enabled\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n\n  253 |   for (let step = 0; step < 6 && await zoomOut.isEnabled(); step++) {\n  254 |     const before = Math.hypot(...(await sample(page)).pose.position);\n> 255 |     await zoomOut.click();\n      |                   ^\n  256 |     await expect.poll(async () => Math.hypot(...(await sample(page)).pose.position)).toBeGreaterThan(before + .02);\n  257 |   }\n  258 |   await expect(zoomOut).toBeDisabled(); await stablePose(page);\n    at overview (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\book-cloud-stand.spec.mjs:255:19)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\book-cloud-stand.spec.mjs:333:18"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-20T01:57:16.090Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "book-cloud-stand-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-book-cloud\\browser-a2\\book-cloud-stand-book-clou-ae94d--shape-across-quality-tiers\\attachments\\book-cloud-stand-source-evidence-591a8ff2829504dabc62540062957991b688d10f.json"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-book-cloud\\browser-a2\\book-cloud-stand-book-clou-ae94d--shape-across-quality-tiers\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\book-cloud-stand.spec.mjs",
+                    "column": 19,
+                    "line": 255
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "ac498e2ce28b13bf05e3-d73bc1872144d0183b62",
+          "file": "book-cloud-stand.spec.mjs",
+          "line": 289,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-20T01:57:15.439Z",
+    "duration": 24577.923,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

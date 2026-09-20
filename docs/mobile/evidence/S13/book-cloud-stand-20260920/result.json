@@ -1,0 +1,483 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-20T02:06:38.113Z",
+  "sourceCommit": "d370c62763bc676dc7e5647da6b6b0a739d6183d",
+  "stage": "S13",
+  "status": "BOOK_CLOUD_STAND_SCOPED_VALIDATION",
+  "pass": true,
+  "entry": {
+    "path": "docs/mobile/evidence/S13/book-cloud-stand-20260920/entry.json",
+    "sha256": "979e2808c3e7f06894c8de55a8a6c91c877fbb80524df551bfc60aed3c40a882"
+  },
+  "previous": {
+    "path": "docs/mobile/evidence/S11/storage-status-20260920/result.json",
+    "sha256": "5fd152ed3eccbebc0e863fa8da7946a05a408d2c9d7d137da142f34d5cdaa69e"
+  },
+  "attempts": {
+    "unit": "a2",
+    "static": "a2",
+    "browser": "a3"
+  },
+  "earlierAttempts": [
+    {
+      "path": "docs/mobile/evidence/S13/book-cloud-stand-20260920/unit-a1/result.json",
+      "sha256": "0945d7d9b8253fc4753de10d0ace75d6104c702ce2951fcc57fb21352916703f",
+      "mode": "unit",
+      "attempt": "a1",
+      "pass": true,
+      "tests": {
+        "passed": 139,
+        "failed": 0,
+        "skipped": 0
+      },
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S13/book-cloud-stand-20260920/source-manifests/dd0e6b0744fdaa15.json",
+        "sha256": "dd0e6b0744fdaa15b31c57b28b7e21a764e7cb9ad8c79e7cffbed48c2b0178dd",
+        "fileCount": 79
+      },
+      "supersededSource": true,
+      "reason": "Earlier source validation retained unchanged; the factory visual refinement superseded its source binding."
+    },
+    {
+      "path": "docs/mobile/evidence/S13/book-cloud-stand-20260920/static-a1/result.json",
+      "sha256": "4ea399b0442b6c63016b5e41f6f138e9f0f24d27279c8c38cf29542cb099b10d",
+      "mode": "static",
+      "attempt": "a1",
+      "pass": true,
+      "tests": null,
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S13/book-cloud-stand-20260920/source-manifests/dd0e6b0744fdaa15.json",
+        "sha256": "dd0e6b0744fdaa15b31c57b28b7e21a764e7cb9ad8c79e7cffbed48c2b0178dd",
+        "fileCount": 79
+      },
+      "supersededSource": true,
+      "reason": "Earlier source validation retained unchanged; the factory visual refinement superseded its source binding."
+    },
+    {
+      "path": "docs/mobile/evidence/S13/book-cloud-stand-20260920/browser-a1/result.json",
+      "sha256": "05fe9295825cc0c8001b1d90d9d9b2d5a21778281df440dd12bc03167ad7c961",
+      "mode": "browser",
+      "attempt": "a1",
+      "pass": true,
+      "tests": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S13/book-cloud-stand-20260920/source-manifests/dd0e6b0744fdaa15.json",
+        "sha256": "dd0e6b0744fdaa15b31c57b28b7e21a764e7cb9ad8c79e7cffbed48c2b0178dd",
+        "fileCount": 79
+      },
+      "supersededSource": true,
+      "reason": "Passed on the earlier source, but country-focused zoom hid the stand in tier images; subsequent captures use an overview reached with actual zoom and drag controls."
+    },
+    {
+      "path": "docs/mobile/evidence/S13/book-cloud-stand-20260920/browser-a2/result.json",
+      "sha256": "f1f9ff76ff98b8d9a5f30ba7e89d84050d78df62ad064f9837666091c392de52",
+      "mode": "browser",
+      "attempt": "a2",
+      "pass": false,
+      "tests": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S13/book-cloud-stand-20260920/source-manifests/010105372d259ebd.json",
+        "sha256": "010105372d259ebdafdd4ce5f08a97eeadf1aaf95aba2fc63f6be43dc5e58a3b",
+        "fileCount": 79
+      },
+      "supersededSource": false,
+      "reason": "Failed on unchanged current runtime because the fixture checked zoom-out availability before the preceding dolly settled; the next fixture waits for idle and stable pose before each availability check."
+    }
+  ],
+  "runs": {
+    "unit": {
+      "path": "docs/mobile/evidence/S13/book-cloud-stand-20260920/unit-a2/result.json",
+      "sha256": "d8da98432165c228ceecc38be3f1dd9f499deb883dd4c77285e2c2ed73b54737",
+      "tests": {
+        "passed": 139,
+        "failed": 0,
+        "skipped": 0
+      }
+    },
+    "static": {
+      "path": "docs/mobile/evidence/S13/book-cloud-stand-20260920/static-a2/result.json",
+      "sha256": "92294bfa2ecbea6a9cfe75a0558201f8a7e99f2f04d6cd1d1585702919b35e85",
+      "tests": null
+    },
+    "browser": {
+      "path": "docs/mobile/evidence/S13/book-cloud-stand-20260920/browser-a3/result.json",
+      "sha256": "3f9f19ffa23466ea9d4c28b4e1a4f04f0a85fb2308711e8bcfbaa16dce9ce3ef",
+      "tests": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      }
+    }
+  },
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S13/book-cloud-stand-20260920/source-manifests/010105372d259ebd.json",
+    "sha256": "010105372d259ebdafdd4ce5f08a97eeadf1aaf95aba2fc63f6be43dc5e58a3b",
+    "fileCount": 79
+  },
+  "unitCount": 139,
+  "unitFiles": [
+    "src/components/globeBookCloudStandGeometry.test.ts",
+    "src/host/HostPlatformServices.test.ts",
+    "src/host/planetStandCustomization.test.ts",
+    "src/planet/globeComposition.test.ts"
+  ],
+  "browserCases": 1,
+  "actualAppCapture": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-book-cloud\\browser-a3\\book-cloud-stand-book-clou-ae94d--shape-across-quality-tiers\\book-cloud-stand.json",
+    "sha256": "80bc4d70df2ff68da096c82bda895b2ecb4a6b1839c2c536e7d07ab4a5f40fa1"
+  },
+  "browserAttachment": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-book-cloud\\browser-a3\\book-cloud-stand-book-clou-ae94d--shape-across-quality-tiers\\attachments\\book-cloud-stand-source-evidence-6af4eef78fe4d7ebe596ca99abd110a2a9ae9482.json",
+    "sha256": "80bc4d70df2ff68da096c82bda895b2ecb4a6b1839c2c536e7d07ab4a5f40fa1"
+  },
+  "attachmentBytesMatchOriginal": true,
+  "capturedImages": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-book-cloud\\browser-a3\\book-cloud-stand-book-clou-ae94d--shape-across-quality-tiers\\book-cloud-high-ru-1440.png",
+      "sha256": "e305b28a62ae1a3d15d7f0d58de564201396df7ea0c61d1756857d1184cc2510"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-book-cloud\\browser-a3\\book-cloud-stand-book-clou-ae94d--shape-across-quality-tiers\\book-cloud-balanced-ru-1440.png",
+      "sha256": "07e57c9f318ae007a418435413b535925cd033c34690e55a33aaf57b03fc4723"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-book-cloud\\browser-a3\\book-cloud-stand-book-clou-ae94d--shape-across-quality-tiers\\book-cloud-economy-ru-1440.png",
+      "sha256": "54bfcd7668d0f560888afeeff7f6e47961c50b52c1fa2e6ff5a6a2ae88231c22"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-book-cloud\\browser-a3\\book-cloud-stand-book-clou-ae94d--shape-across-quality-tiers\\book-cloud-high-inspection-close.png",
+      "sha256": "0f26b49831aa1effc68f73b45040e5999678b5e0e59399ffdfb0fcc95b9beb83"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-book-cloud\\browser-a3\\book-cloud-stand-book-clou-ae94d--shape-across-quality-tiers\\book-cloud-combined-preview-en-390.png",
+      "sha256": "0e811d6b612b09ef66b042ff4c0bbaa8fc1b981a571066eb9af70eee1fc89641"
+    }
+  ],
+  "visualReview": {
+    "path": "docs/mobile/evidence/S13/book-cloud-stand-20260920/visual-review.json",
+    "sha256": "483ac0389f2a3726ff04fa84507a32ec5d560cb0b8998d6f9637c1d1dcc58663"
+  },
+  "inspectedImageCount": 5,
+  "starterSetSourceInventory": {
+    "path": "docs/mobile/evidence/S13/book-cloud-stand-20260920/starter-set-source-inventory.json",
+    "sha256": "854f14d22bbf78c2207e6f0c93b2c03696ce8d6a462c44d452ba2d9a633faa92"
+  },
+  "inventoryHistorical": false,
+  "inventoryCurrentInputsVerified": true,
+  "freshInventoryAuditPerformed": true,
+  "priorStarterSetSourceInventory": {
+    "path": "docs/mobile/evidence/S13/combined-preview-20260920/starter-set-source-inventory.json",
+    "sha256": "8397822f41d8a1fa3754bfe551bfd3dd0b3b1351fc6e2670c71d83b352350d39"
+  },
+  "priorInventoryHistorical": true,
+  "requiredStarterItems": 29,
+  "sourceBoundStarterItems": 13,
+  "acceptedStarterItems": 0,
+  "ownerAddedCount": 3,
+  "ownerAdditionIds": [
+    "stand.base.portrait-pushkin",
+    "stand.base.portrait-hemingway",
+    "stand.base.portrait-tolstoy"
+  ],
+  "preservedInputs": [
+    {
+      "path": "src/planet/globeComposition.ts",
+      "sha256": "20b4cabdd678a6fa5b70ab2b4cbaef179f0e7d7c5819e408123eb486ddb0e81f"
+    },
+    {
+      "path": "src/host/planetCompositionPresentation.ts",
+      "sha256": "d62d963c719366c1be3e6888b5eb321933f3e7224b6591fc8c2d6d81a639c3f6"
+    },
+    {
+      "path": "src/components/useGlobeCompositionScene.ts",
+      "sha256": "30009468d0cdee459441ca5780ea608cdf21b3f6e7055da89c0ce28e435326b5"
+    },
+    {
+      "path": "src/components/useGlobeCompositionFrame.ts",
+      "sha256": "530d1303a5af222bf68f72b499b07c8d41a828ca14783912284b6e3963d59cd0"
+    },
+    {
+      "path": "src/components/globeAtlas.ts",
+      "sha256": "224dcde2499f51eb333562875796d3422ab28ad987339f36be79f0635677bcf6"
+    },
+    {
+      "path": "src/components/useGlobeStyleState.ts",
+      "sha256": "6d2801802ec0e9bf0c2e5ff9a6f852f00434a8494216b06ee2069917e2a1a0ba"
+    },
+    {
+      "path": "src/components/globeWhaleStandGeometry.ts",
+      "sha256": "a641909b9d2a168b921e3a94f78db0c0652fe67b4d76b3cdaa2a1fba57de82be"
+    },
+    {
+      "path": "src/components/globeLibraryGeometry.ts",
+      "sha256": "c0d4fe4c9b69921df11d50bc349fca9896304baba67fff60263b77ff19c1d1ee"
+    },
+    {
+      "path": "src/components/globeCraftMaterials.ts",
+      "sha256": "68ce7e818d50ac5ece1d5d4542fdc4cecea6af25e21b08b1274c8adcacbfbde1"
+    },
+    {
+      "path": "src/components/globeCeramicPortraitStandGeometry.ts",
+      "sha256": "be533fd4752ab051389a202b65a993956e0f12d6e14e1b8cbb8cbc62bac142e8"
+    },
+    {
+      "path": "src/components/globeWriterStudyGeometry.ts",
+      "sha256": "4e2c7f51529d0f5cdde9df2484cf0701a8a6662ee9c5b9a96de828f22d7c7cfc"
+    },
+    {
+      "path": "src/planet/writerStudySketch.ts",
+      "sha256": "2f642e49c988dd7f6efeaacc9aa6017596ce7799d46442e507cf89a7e95b1d60"
+    },
+    {
+      "path": "src/components/GlobeIncludedStand.tsx",
+      "sha256": "276ef908fe5a09c066a59d9ff57d1432d44300bcb979b2aeb5d6dd249ba189fd"
+    },
+    {
+      "path": "src/components/GlobeIncludedBackground.tsx",
+      "sha256": "3268e2f971bb3b8742093be690116a16f8bee262362d50743daca2273d376b61"
+    },
+    {
+      "path": "src/components/GlobeCameraRig.tsx",
+      "sha256": "6938d120c7a49248398b385640cc77d96c9f3b33cbd6c3b4ef9881ef89e2ec19"
+    },
+    {
+      "path": "src/host/planetComposition.ts",
+      "sha256": "e13f2d376567c65a5b051bfd651a14f1bbb18f3bdf01f09cf97ebb2e3cf92305"
+    },
+    {
+      "path": "src/host/PlanetStandControls.css",
+      "sha256": "70f73787659e0d95ff28edb454093fa3c465b5849e726130d4be052541e3968f"
+    },
+    {
+      "path": "src/host/HostPlatformServices.ts",
+      "sha256": "fa084b57e8596064ef1b0a8bd7c99b789361059a585171fd30ffe057bceec2c6"
+    },
+    {
+      "path": "src/platform/ports.ts",
+      "sha256": "51353969918a3bbfdbafef37a9b3c28de7c31421853edb664666b547071d9459"
+    },
+    {
+      "path": "src/platform/adapters/android/AndroidPlatformAdapter.ts",
+      "sha256": "4b05363d42896b2a3a1908a494d796a2d43b719c6e2f3de623bd7fa750488f0f"
+    },
+    {
+      "path": "src/host/HostRuntimeStatus.tsx",
+      "sha256": "bd100bd0e9d4eb8eba8772799de106f04c5de154d0dd9298f7340abe26100d91"
+    },
+    {
+      "path": "src/host/mountHostApp.tsx",
+      "sha256": "e21aa15479a81c5c3847b571d5d3d7e7b9c25d1c55b4aa3aa2ac94c6677fe8af"
+    },
+    {
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "sha256": "f8331bee7996bf176f34384d14cb42f39f5e5a94c82a27609db758003dc7bea2"
+    },
+    {
+      "path": "src/hooks/useReadingLibrary.ts",
+      "sha256": "92262e64be0e09278b0f917507bad1b4d87d8e33afaa4295d3b60424f4cff2bf"
+    },
+    {
+      "path": "src/hooks/readingLibraryStorage.ts",
+      "sha256": "fe7b8d950f80cba0d7e76d45e850ba3c0e02420d44250605329baa2c085376d3"
+    },
+    {
+      "path": "src/components/ReadingLibrarySyncNotice.tsx",
+      "sha256": "53ed654c2d437d7f1d1494ea2cc335db805f1ba97ce42132e8eca1d13e4ab602"
+    },
+    {
+      "path": "src/components/ReadingLibrarySyncNotice.css",
+      "sha256": "b53f865a8035e7c8d5a0323b0f8ec707bf81935a5315e053159d0f440bb82f98"
+    },
+    {
+      "path": "src/components/ArticleReader.tsx",
+      "sha256": "1b00876d706d814bfebb13dc84a47d3542de6d6040fe3f6810bfefbcdcf735d8"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "sha256": "b67cbc6da05350bf544e55e95b5d319a7e947c72b63d8540d25a4ad531992525"
+    },
+    {
+      "path": "src/community/CommunityHub.tsx",
+      "sha256": "59746183b82db8b2481bd5f7d7268bae1c31f04011ba0631ce9719ce7f9a6e49"
+    },
+    {
+      "path": "src/pwa/PwaStorageStatus.ts",
+      "sha256": "662c1cf4bf3a0cc060720aa6338e940c6d03b0cb6ac8e5b5444b32883245f885"
+    },
+    {
+      "path": "src/pwa/PwaDevicePanel.tsx",
+      "sha256": "5e3912e4a989a3135b691cde05d0949b9a21855d380b610b045468b71b609f7b"
+    }
+  ],
+  "changedInputsBefore": [
+    {
+      "path": "src/planet/globeStands.ts",
+      "sourceCommit": "eee52501adf0277c5180d3fec0033a8300c784e5",
+      "gitBlobSha256": "42bce799d05c748537ca03c97b11101518e232d30ed316c3ced6b11e7d4a352f"
+    },
+    {
+      "path": "src/components/globeStandGeometry.ts",
+      "sourceCommit": "eee52501adf0277c5180d3fec0033a8300c784e5",
+      "gitBlobSha256": "c8f8fd451a647e47c14fce899cc7135e3e64bbb2abd28d7cb53f437749dff52d"
+    },
+    {
+      "path": "src/host/PlanetStandControls.tsx",
+      "sourceCommit": "eee52501adf0277c5180d3fec0033a8300c784e5",
+      "gitBlobSha256": "d63bcc40ee0f168061f787ec8908df7aa5eb13c4576c4e6fe8eeb75740870d2e"
+    },
+    {
+      "path": "scripts/mobile/audit-starter-set.mjs",
+      "sourceCommit": "eee52501adf0277c5180d3fec0033a8300c784e5",
+      "gitBlobSha256": "cf6333ced318b2b419bc9799144679837efc79e0f106d7b4c7acf2d0d271318d"
+    }
+  ],
+  "priorVisualReview": {
+    "path": "docs/mobile/evidence/S11/storage-status-20260920/visual-review.json",
+    "sha256": "c7c9768b1d89e406a6e2bea261eb22607fb92efd9e3cd668987de30ccf376253"
+  },
+  "priorSceneVisualReview": {
+    "path": "docs/mobile/evidence/S13/combined-preview-20260920/visual-review.json",
+    "sha256": "f03aa5eea53a577b57fe40c94b93be1deafd67cea3ef3b49ae06eb412a304e25"
+  },
+  "priorArtReview": {
+    "path": "docs/mobile/evidence/S13/visual-refinement-20260920/visual-review.json",
+    "sha256": "532ddaa43a5844e26a0b0a9974dc494014d011bfea4fde7248013ee975047276"
+  },
+  "priorArtCapture": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-vr/art-a2/result.json",
+    "sha256": "c9fb3667877acf9de1f69f9b24ec5f0299ce129b7bfc541e6189facb1bcabcfd"
+  },
+  "retainedLibraryDensity": {
+    "books": 984,
+    "placements": 1901197402,
+    "colors": 437509884
+  },
+  "retainedPortrait": {
+    "baselineCommits": [
+      "a115e9f11105551ed6e243787e95ffc29bccb1a0",
+      "9c14fa67acc219bfa0351b31c956e14fa4deefb6"
+    ],
+    "fragments": [
+      {
+        "name": "plate-and-seat",
+        "sourcePath": "src/components/globeCeramicPortraitStandGeometry.ts",
+        "start": "        const foot = own(",
+        "endExclusive": "        const eyeParts:",
+        "sha256": "7d3b1c9cdcc40a842f575ebc24fd323d8a6dcd5b89c535909231a42f7aa506f0",
+        "bytes": 1062,
+        "lineEndingsNormalized": true
+      },
+      {
+        "name": "scale-around-contact",
+        "sourcePath": "src/components/globeCeramicPortraitStandGeometry.ts",
+        "start": "        for (const object of group.children) {",
+        "endExclusive": "        group.updateMatrixWorld(true);",
+        "sha256": "dcd173ddd233714e67a8c9523edc14202eaa88fd7af60e5cedb47d3d3463ee10",
+        "bytes": 400,
+        "lineEndingsNormalized": true
+      }
+    ]
+  },
+  "pwa": {
+    "path": "docs/mobile/evidence/S13/book-cloud-stand-20260920/pwa-a1/result.json",
+    "sha256": "cfd54cc419b9c17fbe18858df7d408f56fd84834e5239113ef1d710f3364315c"
+  },
+  "android": {
+    "path": "docs/mobile/evidence/S13/book-cloud-stand-20260920/android-a1/result.json",
+    "sha256": "3a42ced9c626946665830047820bf495485cebfcd03293171a5d2ada685c5c72"
+  },
+  "pwaBuildId": "2d550d2114a9a12a1221febd4e89a44c6c148f0be69767cdf960050d4f36f1be",
+  "androidBuildId": "0865c798c1c41da3ebe7a292d296abd6a9414ef3e89f09514159ce40aaa2f5be",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-book-cloud/android-0865c798/app-dev-debug.apk",
+    "bytes": 68005449,
+    "sha256": "71739fb150111b329e3e074c2e3e3527130457603b7f9a7bd5da9a5aa0c9ef71"
+  },
+  "buildAudits": [
+    {
+      "path": "docs/mobile/evidence/S13/book-cloud-stand-20260920/pwa-a1/strict-audit.json",
+      "sha256": "2a4df6158f4eb8a7a3032d5d1899ca5e08a56b23b91b6c3474face2efcf69a37"
+    },
+    {
+      "path": "docs/mobile/evidence/S13/book-cloud-stand-20260920/android-a1/native-artifact-audit.json",
+      "sha256": "0c682b6cebe57862567b4a6aa6e293aae81e64e3eb3a7ff29b59e4dd6d3c0606"
+    },
+    {
+      "path": "docs/mobile/evidence/S13/book-cloud-stand-20260920/android-a1/android-dev-apk-verification.json",
+      "sha256": "ba7e6b0bd95883ac1dcd690081769418ae0aa05865507acca04b01b5526b1cbd"
+    },
+    {
+      "path": "docs/mobile/evidence/S13/book-cloud-stand-20260920/android-a1/build-run.json",
+      "sha256": "b11220f831b263b0c82c9d27f743f312b799f04899535da9efd5ee501e9247b8"
+    }
+  ],
+  "copyVerification": {
+    "path": "docs/mobile/evidence/S13/book-cloud-stand-20260920/pwa-a1/copy-verification.json",
+    "sha256": "04530514b0c950c8d7fb815eec010dedf33962a60b7bdbf65340a15970b88e0d"
+  },
+  "priorPwa": {
+    "path": "docs/mobile/evidence/S11/storage-status-20260920/pwa-a1/result.json",
+    "sha256": "27df2b2de6e8664108b78b29a01aaca2b4a9685977ca7c59eeed0d21ddbd5428"
+  },
+  "priorAndroid": {
+    "path": "docs/mobile/evidence/S11/storage-status-20260920/android-a1/result.json",
+    "sha256": "f0aef0d77507d0bf1f2ac76e581f6f2de4700f6c33f059cb17d685141161a9fd"
+  },
+  "decisionD146Recorded": true,
+  "criteriaUpdated": [
+    "S13.CUSTOM-001"
+  ],
+  "criterionChanges": [],
+  "stageAndCriterionStatusesUnchanged": true,
+  "limitations": [
+    "STARTER-009 gains an adult source binding; child age review, rights and formal art acceptance remain open.",
+    "The close inspection view is temporary test-only camera framing with restoration, not a new user navigation mode.",
+    "Chrome executes the actual application source with controlled native ports; installed-device behavior is not established.",
+    "Source presence, scoped resource checks and visual inspection do not establish full catalog, stress, device or release acceptance."
+  ],
+  "priorStorageLimitations": [
+    "Storage API responses and elapsed time are controlled in the Chrome source fixture.",
+    "Timeout fences late results but does not cancel the underlying browser storage operation.",
+    "Simulated boolean replies do not establish a real browser persistence grant, actual disk quota or storage retention.",
+    "The source fixture is not the full application, globe or installed-native execution."
+  ],
+  "inheritedReadingLibraryLimitations": [
+    "Concurrent-tab read/modify/write is not atomic.",
+    "Full distributed add-wins and conflict resolution remain open.",
+    "Ordering of unabortable remote requests is not guaranteed.",
+    "Remote transport is controlled; actual network and installed-native execution are not established."
+  ],
+  "actualApp": true,
+  "actualCss": true,
+  "actualGlobe": true,
+  "controlledNativePorts": true,
+  "installedNativeDevice": false,
+  "newStandGeometryVerified": true,
+  "unchangedGeometrySuitesRerun": false,
+  "newActualAppCapture": true,
+  "isolatedArtCapture": false,
+  "artAccepted": false,
+  "likenessAccepted": false,
+  "userRealismRequirementSatisfied": false,
+  "childApproval": false,
+  "rightsApproval": false,
+  "screenReaderAcceptance": false,
+  "devicePerformanceAccepted": false,
+  "iosCompiled": false,
+  "grantsEntitlement": false,
+  "productionActionsPerformed": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "nextAction": "Continue the full application plan from the next bounded internal requirement. Preserve the new adult book-cloud stand, its existing whole-composition preview/apply/cancel ownership, and all established scene, reader, locale and storage behavior. Continue remaining Starter Set/source bindings and functional gaps without repeating unchanged geometry suites. Child/rights/art/lightmap review, full accessories/audio/catalog, screen-reader, installed-device/stress, actual storage retention, distributed sync/conflict resolution, iOS and release gates remain open."
+}

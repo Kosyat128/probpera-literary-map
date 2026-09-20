@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S13/book-cloud-stand-20260920/playwright.config.mjs"
+  ],
+  "exitCode": 0,
+  "durationMs": 19831,
+  "stdout": {
+    "path": "docs/mobile/evidence/S13/book-cloud-stand-20260920/browser-a1/stdout.log",
+    "bytes": 195,
+    "sha256": "caa28467aaab0021a9e79916573f1f2ae4f56965dab9e9200f65d4c1ecba571a"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S13/book-cloud-stand-20260920/browser-a1/stderr.log",
+    "bytes": 164,
+    "sha256": "b69f53aa4b86c96c8a682a1a3d668368f064062057b5d32beb8ad4b73efdf2c7"
+  }
+}

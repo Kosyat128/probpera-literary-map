@@ -1,0 +1,13 @@
+{
+  "pass": true,
+  "files": 1423,
+  "bytes": 74456977,
+  "detailedLedger": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-book-cloud/pwa-a1-copy-verification.json",
+    "sha256": "4982ee204c172b0e1164e24af0e19ada5d38bbc7657f069076b737fbed539842"
+  },
+  "artifactManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-book-cloud/pwa-2d550d21/artifact.json",
+    "sha256": "6cc8cc451f01612adb4f8bfc408b1ba7edf07f8cfaad540f849694092b9685c7"
+  }
+}

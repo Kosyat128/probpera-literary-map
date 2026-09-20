@@ -1,3 +1,12 @@
+<!-- s13-book-cloud-20260920:begin -->
+Source d370c627 adds the original adult book-cloud stand through existing composition preview/apply/cancel and resource owners.
+139 cases across four selected suites, TypeScript, one actual-App Chrome case and one PWA offline smoke pass. Tier/locale images are inspected evidence, not formal art or child approval.
+S13.CUSTOM-001 receives evidence only; all criterion and stage statuses remain unchanged. Thirty-two established runtime sources are retained. Fresh Starter Set inventory: 29 required / 13 source-bound / zero accepted, plus three separate owner additions.
+PWA 2d550d21; Android-dev 0865c798. Evidence: evidence/S13/book-cloud-stand-20260920/result.json.
+Stages remain 3 complete, 11 in progress, 27 unstarted; first open S03.
+Continue the full application plan from the next bounded internal requirement. Preserve the new adult book-cloud stand, its existing whole-composition preview/apply/cancel ownership, and all established scene, reader, locale and storage behavior. Continue remaining Starter Set/source bindings and functional gaps without repeating unchanged geometry suites. Child/rights/art/lightmap review, full accessories/audio/catalog, screen-reader, installed-device/stress, actual storage retention, distributed sync/conflict resolution, iOS and release gates remain open.
+<!-- s13-book-cloud-20260920:end -->
+
 <!-- s11-storage-status-20260920:begin -->
 Source 892051bd adds bounded PWA storage waiting, partial-estimate retention and explicit retry with late-reply fencing.
 11 controller cases, TypeScript, one real-Chrome device-panel fixture and one PWA offline smoke pass. Storage replies and elapsed time are controlled; no actual persistence grant, full App/globe or installed-device claim is made.
