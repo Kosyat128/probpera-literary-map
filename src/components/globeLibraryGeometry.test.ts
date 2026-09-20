@@ -1,5 +1,5 @@
-import { Box3, BufferGeometry, Camera, DataTexture, InstancedMesh, Light, Line3, Matrix4, Mesh, NoColorSpace, PointLight, Raycaster, Texture, Triangle, Vector3,
-  type Intersection, type Material, type MeshStandardMaterial } from "three";
+import { Box3, BufferGeometry, Camera, DataTexture, InstancedMesh, Light, Line3, Matrix4, Mesh, MeshBasicMaterial, MeshStandardMaterial,
+  NoColorSpace, PointLight, Raycaster, Texture, Triangle, Vector3, type Intersection, type Material } from "three";
 import { describe, expect, it, vi } from "vitest";
 import { createGlobeLibrary } from "./globeLibraryGeometry";
 import type { GlobeQualityTier } from "./globeQuality";
@@ -48,6 +48,7 @@ function layoutEvidence(library: Library) {
   const pages = library.group.getObjectByName("library-book-page-blocks");
   expect(pages).toBeInstanceOf(InstancedMesh);
   if (!(pages instanceof InstancedMesh)) throw new Error("Missing physical library volumes");
+  expect(pages.count).toBe(984);
   const matrix = new Matrix4(), position = new Vector3(), booksPerBay = new Array<number>(16).fill(0);
   for (let instance = 0; instance < pages.count; instance++) {
     pages.getMatrixAt(instance, matrix); matrix.premultiply(pages.matrixWorld);
@@ -63,7 +64,7 @@ function layoutEvidence(library: Library) {
   }
   const architecturalMembers = [
     ["library-shelves", 16 * (8 + 3)], ["library-bookcase-backs", 16 * 4],
-    ["library-windows", 16 * 2], ["library-window-glazing", 16 * 2],
+    ["library-window-glazing", 16 * 2], ["library-window-reveals", 16 * 2 * 4],
   ] as const;
   const architecture: Record<string, ReturnType<typeof physicalMembers>> = {};
   for (const [name, count] of architecturalMembers) {
@@ -315,6 +316,98 @@ describe("procedural library geometry around the whole canonical camera envelope
     }
   });
 
+  it("opens all 32 actual panes through thick walls onto separate grounded exterior geometry", () => {
+    const placementsByTier: number[][] = [];
+    for (const tier of tiers) {
+      const library = createGlobeLibrary(tier);
+      try {
+        library.group.updateMatrixWorld(true);
+        const wall = library.group.getObjectByName("library-outer-wall"), glazing = library.group.getObjectByName("library-window-glazing");
+        expect(wall).toBeInstanceOf(Mesh); expect(glazing).toBeInstanceOf(InstancedMesh);
+        if (!(wall instanceof Mesh) || !(glazing instanceof InstancedMesh)) throw new Error("Missing physical window enclosure");
+        expect(glazing.count).toBe(32); expect(library.group.getObjectByName("library-windows")).toBeUndefined();
+        // Test real faces while leaving the application's decorative no-pick
+        // dispatch intact. A renamed opaque cylinder/backing fails these rays.
+        const wallProbe = new Mesh(wall.geometry, wall.material); wallProbe.matrix.copy(wall.matrixWorld);
+        wallProbe.matrixAutoUpdate = false; wallProbe.updateMatrixWorld(true);
+        const ray = new Raycaster(), instance = new Matrix4(), center = new Vector3();
+        const normal = new Vector3(), tangent = new Vector3(), point = new Vector3();
+        let testedPanes = 0;
+        for (let pane = 0; pane < glazing.count; pane++) {
+          glazing.getMatrixAt(pane, instance); instance.premultiply(glazing.matrixWorld);
+          center.setFromMatrixPosition(instance); normal.setFromMatrixColumn(instance, 2).normalize();
+          tangent.setFromMatrixColumn(instance, 0).normalize();
+          for (const x of [-.48, .48]) for (const y of [-.47, .47]) {
+            point.copy(center).addScaledVector(tangent, x).addScaledVector(normal, -.8); point.y += y;
+            ray.set(point, normal); ray.far = 2.5;
+            expect(ray.intersectObject(wallProbe, false), `${tier}/pane${pane}: open aperture`).toEqual([]);
+          }
+          // The solid jamb beside every opening must remain opaque, with a
+          // measured inner/outer face separation rather than a named hole.
+          point.copy(center).addScaledVector(tangent, 1.3).addScaledVector(normal, -.8); point.y += .47;
+          ray.set(point, normal); const inside = ray.intersectObject(wallProbe, false);
+          expect(inside.length, `${tier}/pane${pane}: retained solid wall`).toBeGreaterThan(0);
+          point.copy(center).addScaledVector(tangent, 1.3).addScaledVector(normal, 1.5); point.y += .47;
+          ray.set(point, normal.clone().negate()); const outside = ray.intersectObject(wallProbe, false);
+          expect(outside.length, `${tier}/pane${pane}: exterior wall`).toBeGreaterThan(0);
+          expect(outside[0].point.clone().sub(inside[0].point).dot(normal)).toBeCloseTo(.22, 4);
+          testedPanes++;
+        }
+        expect(testedPanes).toBe(32);
+        const sky = library.group.getObjectByName("library-exterior-sky"), ground = library.group.getObjectByName("library-exterior-ground");
+        expect(sky).toBeInstanceOf(Mesh); expect(ground).toBeInstanceOf(Mesh);
+        if (!(sky instanceof Mesh) || !(ground instanceof Mesh)) throw new Error("Missing exterior volume");
+        expect(sky.material).toBeInstanceOf(MeshBasicMaterial);
+        expect((sky.material as MeshBasicMaterial).map).toBeNull(); expect((sky.material as MeshBasicMaterial).transparent).toBe(false);
+        expect(sky.geometry.getAttribute("color").array.every(Number.isFinite)).toBe(true);
+        const outdoorGround = new Box3().setFromObject(ground);
+        expect(outdoorGround.min.y).toBeCloseTo(-6.18, 5); expect(outdoorGround.max.y).toBeCloseTo(-6.18, 5);
+        const matrices: number[] = [], vertex = new Vector3();
+        let treeCount = 0, minimumRadius = Infinity, maximumRadius = 0;
+        let firstTree: Vector3 | undefined;
+        for (let variant = 0; variant < 3; variant++) {
+          const trees = library.group.getObjectByName(`library-exterior-tree-${variant}`);
+          expect(trees).toBeInstanceOf(InstancedMesh);
+          if (!(trees instanceof InstancedMesh)) throw new Error("Missing exterior tree assembly");
+          expect(Array.isArray(trees.material)).toBe(false);
+          expect((trees.material as MeshStandardMaterial).transparent).toBe(false);
+          const positions = trees.geometry.getAttribute("position");
+          for (let tree = 0; tree < trees.count; tree++) {
+            trees.getMatrixAt(tree, instance); instance.premultiply(trees.matrixWorld); matrices.push(...instance.elements);
+            let lowest = Infinity;
+            for (let index = 0; index < positions.count; index++) {
+              vertex.fromBufferAttribute(positions, index).applyMatrix4(instance);
+              minimumRadius = Math.min(minimumRadius, Math.hypot(vertex.x, vertex.z));
+              maximumRadius = Math.max(maximumRadius, Math.hypot(vertex.x, vertex.z)); lowest = Math.min(lowest, vertex.y);
+              if (!firstTree && variant === 0 && tree === 0 && vertex.y > 1.8 && vertex.y < 3.5) firstTree = vertex.clone();
+            }
+            // The trunk intersects the ground slightly; no suspended tree base.
+            expect(lowest).toBeLessThanOrEqual(-6.18); expect(lowest).toBeGreaterThan(-6.30);
+            treeCount++;
+          }
+        }
+        expect(treeCount).toBe(16); expect(minimumRadius).toBeGreaterThan(14); expect(maximumRadius).toBeLessThan(24);
+        placementsByTier.push(matrices);
+        expect(firstTree).toBeDefined();
+        // The same real tree vertex changes its position within the opening
+        // when the observer translates: a flat window image cannot do this.
+        glazing.getMatrixAt(1, instance); instance.premultiply(glazing.matrixWorld);
+        center.setFromMatrixPosition(instance); normal.setFromMatrixColumn(instance, 2).normalize();
+        tangent.setFromMatrixColumn(instance, 0).normalize();
+        const projection = (shift: number) => {
+          const observer = new Vector3(0, center.y, 0).addScaledVector(tangent, shift);
+          const direction = firstTree!.clone().sub(observer);
+          const distance = center.clone().sub(observer).dot(normal) / direction.dot(normal);
+          return observer.addScaledVector(direction, distance).sub(center);
+        };
+        const initial = projection(0), translated = projection(.5);
+        expect(Math.abs(initial.dot(tangent))).toBeLessThan(1.06); expect(Math.abs(initial.y)).toBeLessThan(1.9);
+        expect(Math.abs(translated.dot(tangent) - initial.dot(tangent))).toBeGreaterThan(.08);
+      } finally { library.dispose(); }
+    }
+    expect(placementsByTier[1]).toEqual(placementsByTier[0]); expect(placementsByTier[2]).toEqual(placementsByTier[0]);
+  });
+
   it("keeps ambience away from geometry and disposes materials, textures and instance resources exactly once", () => {
     const library = createGlobeLibrary("high"), { meshes, materials, geometries, textures } = collect(library);
     const instances = meshes.filter((mesh): mesh is InstancedMesh => mesh instanceof InstancedMesh);
@@ -328,7 +421,7 @@ describe("procedural library geometry around the whole canonical camera envelope
     });
     const poses = meshes.map(mesh => [...mesh.matrixWorld.elements]);
     const matrices = instances.map(mesh => [...mesh.instanceMatrix.array]);
-    const finishes = [...materials] as MeshStandardMaterial[];
+    const finishes = [...materials].filter((material): material is MeshStandardMaterial => material instanceof MeshStandardMaterial);
     const oldIntensity = finishes.map(material => material.emissiveIntensity);
     try {
       library.setAmbientTime(2);

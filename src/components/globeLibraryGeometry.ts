@@ -200,7 +200,8 @@ export function createGlobeLibrary(quality: GlobeQualityTier): OwnedGlobeLibrary
       matrix.compose(position, rotation, scale);
       result.setMatrixAt(index, matrix);
       const color = placement.color?.clone() ?? new THREE.Color(1, 1, 1);
-      if (!name.includes("occlusion") && name !== "library-reading-lamps" && name !== "library-window-glazing") {
+      if (!name.includes("occlusion") && name !== "library-reading-lamps" && name !== "library-window-glazing"
+        && !name.startsWith("library-exterior-")) {
         // A bounded baked room exposure complements the two visible fixtures.
         // It creates stable cool/warm zones without a shared ambient-light edit.
         const daylight = Math.exp(-position.distanceToSquared(daylightPosition) / 31);
@@ -323,27 +324,10 @@ export function createGlobeLibrary(quality: GlobeQualityTier): OwnedGlobeLibrary
     }, true);
     const wall = finish(craft.stone, "#555664");
     wall.emissive.set("#090d15");
-    wall.side = THREE.BackSide;
+    wall.side = THREE.FrontSide;
     const stone = finish(craft.stone, "#777065");
     const galleryFinish = finish(craft.wood, "#8e7961");
     galleryFinish.side = THREE.DoubleSide;
-    const windowFinish = finish(craft.stone, "#d7e4e9");
-    // Irregular, softly transmitted daylight belongs behind the actual glass.
-    // The nearer leaded panes carry their own reflections and waviness, so the
-    // recess has depth instead of reading as an opaque blue board.
-    const windowLightMap = ownedTile("library-window-daylight", (u, v) => {
-      const edge = smooth(Math.min(u, 1 - u) * 8);
-      const cloud = surfaceNoise(u, v, 3, 4, 233);
-      const distantCanopy = (1 - smooth((v - 0.05) * 3.5))
-        * smooth((surfaceNoise(u, v, 6, 4, 241) - 0.22) * 2.3);
-      const sky = (0.70 + 0.18 * smooth(v) + cloud * 0.10 - distantCanopy * 0.17) * (0.90 + edge * 0.10);
-      return [Math.round(sky * 218), Math.round(sky * 234), Math.round(sky * 246), 255];
-    }, true);
-    windowFinish.map = windowLightMap; windowFinish.normalMap = null; windowFinish.roughnessMap = null;
-    windowFinish.roughness = 0.7;
-    windowFinish.emissiveMap = windowLightMap;
-    windowFinish.emissive.set("#b9d9ed");
-    windowFinish.emissiveIntensity = 0.82;
     const glassNormal = ownedTile("library-drawn-glass-normal", (u, v) => {
       const dx = Math.sin(v * Math.PI * 2 * 3 + Math.sin(u * Math.PI * 4)) * 0.12;
       const dy = Math.sin(u * Math.PI * 2 * 4 + Math.sin(v * Math.PI * 6)) * 0.09;
@@ -500,16 +484,124 @@ export function createGlobeLibrary(quality: GlobeQualityTier): OwnedGlobeLibrary
     toolingGeometry.setAttribute("uv", new THREE.Float32BufferAttribute(toolingUv, 2));
     ownGeometry(toolingGeometry);
 
-    // A closed opaque room fills every view from within the existing camera
-    // envelope. Its wall chords are >11.8 from the origin; floor/ceiling >6.15.
-    mesh("library-outer-wall", ownGeometry(new THREE.CylinderGeometry(12, 12, 12.5,
-      budget.bays * 2, 1, true)), wall, background).position.y = 0.1;
+    // A thick polygonal enclosure has real apertures behind every retained
+    // window. Adjacent inner/outer corners coincide exactly; only the 32
+    // bounded openings connect the room to the exterior geometry.
+    const wallPositions: number[] = [], wallUvs: number[] = [];
+    type Point = readonly [number, number, number];
+    const wallQuad = (points: readonly Point[], normal: Point, angle: number) => {
+      const a = new THREE.Vector3(...points[0]), b = new THREE.Vector3(...points[1]), c = new THREE.Vector3(...points[2]);
+      const reverse = b.sub(a).cross(c.sub(a)).dot(new THREE.Vector3(...normal)) < 0;
+      const corners = reverse ? [0, 2, 1, 0, 3, 2] : [0, 1, 2, 0, 2, 3];
+      for (const corner of corners) {
+        const [x, y, z] = points[corner];
+        wallPositions.push(Math.sin(angle) * z + Math.cos(angle) * x, y,
+          Math.cos(angle) * z - Math.sin(angle) * x);
+        wallUvs.push((normal[0] ? z : x) * .12, (normal[1] ? z : y) * .12);
+      }
+    };
+    for (let bay = 0; bay < budget.bays; bay++) {
+      const angle = (bay + .5) / budget.bays * Math.PI * 2;
+      for (const radius of [12, 12.22]) {
+        const half = radius * Math.tan(Math.PI / budget.bays), facing = radius === 12 ? -1 : 1;
+        for (const [left, right, bottom, top] of [[-half, -1.06, FLOOR_Y, 6.35], [1.06, half, FLOOR_Y, 6.35],
+          [-1.06, 1.06, FLOOR_Y, -5.25], [-1.06, 1.06, -1.45, .45], [-1.06, 1.06, 4.25, 6.35]]) {
+          wallQuad([[left, bottom, radius], [right, bottom, radius], [right, top, radius], [left, top, radius]],
+            [0, 0, facing], angle);
+        }
+      }
+      for (const y of [-3.35, 2.35]) {
+        for (const x of [-1.06, 1.06]) wallQuad([[x, y - 1.9, 12], [x, y + 1.9, 12],
+          [x, y + 1.9, 12.22], [x, y - 1.9, 12.22]], [-Math.sign(x), 0, 0], angle);
+        for (const offset of [-1.9, 1.9]) wallQuad([[-1.06, y + offset, 12], [1.06, y + offset, 12],
+          [1.06, y + offset, 12.22], [-1.06, y + offset, 12.22]], [0, -Math.sign(offset), 0], angle);
+      }
+      for (const y of [FLOOR_Y, 6.35]) {
+        const inner = 12 * Math.tan(Math.PI / budget.bays), outer = 12.22 * Math.tan(Math.PI / budget.bays);
+        wallQuad([[-inner, y, 12], [inner, y, 12], [outer, y, 12.22], [-outer, y, 12.22]],
+          [0, y < 0 ? -1 : 1, 0], angle);
+      }
+    }
+    const wallGeometry = new THREE.BufferGeometry();
+    wallGeometry.setAttribute("position", new THREE.Float32BufferAttribute(wallPositions, 3));
+    wallGeometry.setAttribute("uv", new THREE.Float32BufferAttribute(wallUvs, 2));
+    wallGeometry.computeVertexNormals();
+    mesh("library-outer-wall", ownGeometry(wallGeometry), wall, background);
     const floor = mesh("library-floor", unitBox, stone, background);
     floor.scale.set(26, 0.3, 26);
     floor.position.y = FLOOR_Y - 0.15;
     const ceiling = mesh("library-ceiling", unitBox, stone, background);
     ceiling.scale.set(26, 0.3, 26);
     ceiling.position.y = 6.5;
+
+    // A quiet outdoor volume, not a photograph or a luminous window board.
+    // The sky is self-coloured; it does not supply a new scene light/envMap.
+    const exteriorSegments = quality === "high" ? 32 : quality === "balanced" ? 24 : 16;
+    const skyGeometry = ownGeometry(new THREE.SphereGeometry(28, exteriorSegments, exteriorSegments / 2));
+    const skyPositions = skyGeometry.getAttribute("position"), skyColors = skyGeometry.getAttribute("color");
+    const zenith = new THREE.Color("#a3bac0"), horizon = new THREE.Color("#d4d9d1"), below = new THREE.Color("#818c80");
+    for (let vertex = 0; vertex < skyPositions.count; vertex++) {
+      const y = skyPositions.getY(vertex), color = y >= -2
+        ? horizon.clone().lerp(zenith, smooth((y + 2) / 26))
+        : horizon.clone().lerp(below, smooth((-y - 2) / 14));
+      skyColors.setXYZ(vertex, color.r, color.g, color.b);
+    }
+    const sky = new THREE.MeshBasicMaterial({ vertexColors: true, side: THREE.BackSide }); materials.add(sky);
+    mesh("library-exterior-sky", skyGeometry, sky, background);
+    const groundGeometry = ownGeometry(new THREE.RingGeometry(13.3, 29, exteriorSegments, 2).rotateX(-Math.PI / 2));
+    const groundColors = groundGeometry.getAttribute("color"), groundPositions = groundGeometry.getAttribute("position");
+    for (let vertex = 0; vertex < groundPositions.count; vertex++) {
+      const color = new THREE.Color("#798271").multiplyScalar(.92 + variation(Math.round(groundPositions.getX(vertex) * 2),
+        Math.round(groundPositions.getZ(vertex) * 2), 271) * .12);
+      groundColors.setXYZ(vertex, color.r, color.g, color.b);
+    }
+    const earth = new THREE.MeshStandardMaterial({ color: "#ffffff", roughness: 1, vertexColors: true }); materials.add(earth);
+    mesh("library-exterior-ground", groundGeometry, earth, background).position.y = -6.18;
+    const bark = finish(craft.darkWood, "#727366");
+    bark.roughness = .98; bark.normalScale.set(.08, .08); bark.envMapIntensity = .05;
+    for (let variant = 0; variant < 3; variant++) {
+      const parts: THREE.BufferGeometry[] = [], branchEnds: { start: THREE.Vector3; end: THREE.Vector3 }[] = [];
+      const sides = quality === "high" ? 6 : quality === "balanced" ? 4 : 3;
+      const branch = (start: THREE.Vector3, end: THREE.Vector3, bottom: number, top: number) => {
+        const direction = end.clone().sub(start), length = direction.length();
+        const geometry = new THREE.CylinderGeometry(top, bottom, length, sides, 1, false);
+        geometry.applyQuaternion(new THREE.Quaternion().setFromUnitVectors(up, direction.divideScalar(length)));
+        const midpoint = start.clone().add(end).multiplyScalar(.5);
+        geometry.translate(midpoint.x, midpoint.y, midpoint.z); parts.push(geometry);
+      };
+      try {
+        const height = 9.4 + variant * .35;
+        const trunk = [new THREE.Vector3(0, -.035, 0), new THREE.Vector3(.14 - variant * .08, 3.0, .10),
+          new THREE.Vector3(-.10 + variant * .09, 6.2, -.10), new THREE.Vector3(.28 - variant * .16, height, .12)];
+        for (let segment = 0; segment < 3; segment++) branch(trunk[segment], trunk[segment + 1], .19 - segment * .045, .145 - segment * .06);
+        for (let limb = 0; limb < 4; limb++) {
+          const y = (.39 + limb * .13) * height, segment = y <= trunk[2].y ? 1 : 2;
+          const start = new THREE.Vector3().lerpVectors(trunk[segment], trunk[segment + 1],
+            (y - trunk[segment].y) / (trunk[segment + 1].y - trunk[segment].y));
+          const angle = limb * 2.399 + variant * .67;
+          const end = start.clone().add(new THREE.Vector3(Math.cos(angle) * (2.05 - limb * .16),
+            1.3 + limb * .15, Math.sin(angle) * (1.4 - limb * .10)));
+          branch(start, end, .085 - limb * .009, .020); branchEnds.push({ start, end });
+        }
+        const twigs = quality === "high" ? 8 : quality === "balanced" ? 4 : 2;
+        for (let twig = 0; twig < twigs; twig++) {
+          const limb = branchEnds[twig % 4], start = limb.start.clone().lerp(limb.end, twig < 4 ? .63 : .84);
+          const angle = twig * 1.91 + variant * .47;
+          const end = start.clone().add(new THREE.Vector3(Math.cos(angle) * .65, .78, Math.sin(angle) * .48));
+          branch(start, end, .028, .006);
+        }
+        const geometry = mergeGeometries(parts, false);
+        if (!geometry) throw new Error("Unable to assemble library exterior tree");
+        geometry.clearGroups(); ownGeometry(geometry);
+        const placements: Placement[] = [];
+        for (let bay = variant; bay < budget.bays; bay += 3) {
+          const angle = (bay + .5) / budget.bays * Math.PI * 2 + (bay % 2 ? .026 : -.026);
+          const heightScale = .94 + variation(bay, 281, 4) * .12;
+          placements.push(radial(angle, 17.4 + variant * 1.35, 0, -6.18, 1, heightScale, 1));
+        }
+        instanced(`library-exterior-tree-${variant}`, geometry, bark, placements, background);
+      } finally { for (const part of parts) part.dispose(); }
+    }
     const gallery = mesh("library-upper-gallery", ownGeometry(new THREE.RingGeometry(7.8, 12.1,
       budget.bays * 4)), galleryFinish, midground);
     gallery.rotation.x = -Math.PI / 2;
@@ -547,7 +639,7 @@ export function createGlobeLibrary(quality: GlobeQualityTier): OwnedGlobeLibrary
     const shelfBoards: Placement[] = [], bookPlacements: Placement[] = [], backs: Placement[] = [];
     const pageBlocks: Placement[] = [], bookCovers: Placement[] = [], bindingBands: Placement[] = [];
     const bookcaseSides: Placement[] = [], lamps: Placement[] = [], lampBrackets: Placement[] = [];
-    const gallerySupports: Placement[] = [], balusters: Placement[] = [], windows: Placement[] = [], windowFrames: Placement[] = [];
+    const gallerySupports: Placement[] = [], balusters: Placement[] = [], windowFrames: Placement[] = [];
     const windowReveals: Placement[] = [], glazing: Placement[] = [], lampCaps: Placement[] = [];
     const casePanels: Placement[] = [], caseMoldings: Placement[] = [], joinery: Placement[] = [], bookTooling: Placement[] = [];
     const parquet: Placement[] = [], cofferBeams: Placement[] = [], coffers: Placement[] = [];
@@ -600,7 +692,6 @@ export function createGlobeLibrary(quality: GlobeQualityTier): OwnedGlobeLibrary
       const windowAngle = angle + Math.PI / budget.bays;
       const windowWidth = Math.min(2.3, 11.45 * Math.PI * 2 / budget.bays * 0.52);
       for (const windowY of [-3.35, 2.35]) {
-        windows.push(radial(windowAngle, 11.91, 0, windowY, windowWidth, 3.9, 0.44));
         glazing.push(radial(windowAngle, 11.41, 0, windowY, windowWidth - 0.13, 3.8, 1));
         for (const tangent of [-windowWidth / 2, windowWidth / 2]) {
           windowReveals.push(radial(windowAngle, 11.61, tangent, windowY, 0.18, 4.2, 0.88));
@@ -811,7 +902,6 @@ export function createGlobeLibrary(quality: GlobeQualityTier): OwnedGlobeLibrary
       [0.32, 0.48], [0.43, 0.28], [0.36, -0.38], [0.25, -0.5], [0.30, -0.5],
     ].map(([radius, y]) => new THREE.Vector2(radius, y)), budget.turnedSegments)), lamp, lamps, midground);
     instanced("library-lamp-caps", turnedGeometry, trim, lampCaps, midground);
-    instanced("library-windows", unitBox, windowFinish, windows, background);
     instanced("library-window-glazing", ownGeometry(new THREE.PlaneGeometry(1, 1)), glass, glazing, background);
     repeatedAssembly("library-window-reveals", boardGeometry, stone, windowReveals, background, 4);
     repeatedAssembly("library-window-frames", moldingGeometry, trim, windowFrames, background, 8);
