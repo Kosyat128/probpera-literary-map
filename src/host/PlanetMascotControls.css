@@ -140,6 +140,29 @@
 .planet-mascot-controls .planet-mascot-controls__primary:hover:not(:disabled) { background: #28492f; }
 .planet-mascot-controls [data-planet-mascot-next]:not(:disabled) { border-color: #b69b64; background: #eee3c2; }
 .planet-mascot-controls .planet-mascot-controls__quiet { display: block; width: 100%; margin-top: 8px; border-color: transparent; background: transparent; }
+.planet-mascot-controls__resume { margin: 14px 0; padding: 12px 0; border-block: 1px solid #d8c79e; }
+.planet-mascot-controls__resume h3 { margin-top: 0; }
+.planet-mascot-controls__resume p { margin: 8px 0 12px; }
+.planet-mascot-controls__resume p span { color: #596a56; font-style: italic; }
+.planet-mascot-controls__resume-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.planet-mascot-controls__resume-actions button { flex: 1 1 130px; }
+.planet-mascot-controls__persistence { margin-top: 14px; padding-top: 10px; border-top: 1px solid #d8c79e; font-size: 14px; }
+.planet-mascot-controls__persistence p { margin: 0 0 8px; }
+.planet-mascot-controls[data-planet-mascot-closed-notice="true"] { width: min(280px, calc(100vw - 24px)); }
+.planet-mascot-controls[data-planet-mascot-closed-notice="true"] > .planet-mascot-controls__persistence {
+  box-sizing: border-box;
+  width: 100%;
+  max-height: max(100px, calc(100dvh - 180px));
+  margin: 4px 0 0;
+  padding: 12px;
+  overflow-y: auto;
+  overflow-wrap: anywhere;
+  overscroll-behavior: contain;
+  border: 1px solid #c9b58d;
+  border-radius: 12px;
+  background: #fff9e9;
+  box-shadow: 0 3px 14px #17112430;
+}
 .planet-mascot-highlight {
   position: fixed;
   z-index: 1049;

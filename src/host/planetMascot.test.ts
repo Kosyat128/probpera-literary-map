@@ -6,6 +6,8 @@ const ready = (value: Partial<PlanetMascotContext> = {}): PlanetMascotContext =>
   enabled: true, access: "adult", active: true, screen: "globe",
   selectedCountry: false, selectedWriter: false, ...value,
 });
+const savedBooks = { schemaVersion: 1, audience: "adult", visible: true,
+  resume: { route: "country-to-book", stepId: "open-books" } } as const;
 
 describe("adult local guided companion", () => {
   it("requires adult permission and explicit showing, cancels on hide or invalidation without resuming", () => {
@@ -135,6 +137,8 @@ describe("adult local guided companion", () => {
     controller.subscribe(() => { throw new Error("Observer failed"); });
     expect(controller.start("overview")).toBe(false);
     expect(later).toEqual(["hidden"]);
+    expect(controller.getPreferenceIntent()).toMatchObject({ revision: 2, value: { visible: false, resume: null } });
+    expect(controller.getSnapshot().intentRevision).toBe(2);
     expect(controller.act("search", controller.getSnapshot().revision, action)).toBe(false);
     stop(); controller.togglePanel();
     const revision = controller.getSnapshot().revision;
@@ -145,5 +149,102 @@ describe("adult local guided companion", () => {
     expect(controller.act("search", revision, action)).toBe(false);
     expect(controller.getSnapshot()).toBe(final); expect(removed).not.toHaveBeenCalled();
     expect(action).not.toHaveBeenCalled();
+  });
+
+  it("offers a saved tour without opening it and resumes only from current real prerequisites", () => {
+    const controller = createPlanetMascotController(); controller.setContext(ready());
+    expect(controller.restorePreference(savedBooks, 0)).toBe(true);
+    const restored = controller.getPreferenceIntent();
+    expect(restored.revision).toBe(0); expect(restored.value).toEqual(savedBooks);
+    expect(restored.value).not.toBe(savedBooks);
+    expect(Object.isFrozen(restored)).toBe(true); expect(Object.isFrozen(restored.value.resume)).toBe(true);
+    expect(controller.getSnapshot()).toMatchObject({ visibility: "shown", panel: "closed", mode: "help",
+      route: null, step: 0, canAdvance: false, highlight: null, completedRoute: null,
+      resumeOffer: savedBooks.resume, intentRevision: 0, authorBooksStatus: "idle" });
+    controller.setContext(ready({ active: false })); controller.setContext(ready());
+    expect(controller.getSnapshot()).toMatchObject({ panel: "closed", resumeOffer: savedBooks.resume });
+    expect(controller.getPreferenceIntent()).toBe(restored);
+    expect(controller.next()).toBe(false); expect(controller.canAct("books")).toBe(false);
+    const closedRevision = controller.getSnapshot().revision;
+    controller.togglePanel();
+    expect(controller.resume(closedRevision)).toBe(false);
+    expect(controller.resume()).toBe(true);
+    expect(controller.getSnapshot()).toMatchObject({ panel: "open", mode: "tour", route: "country-to-book",
+      step: 0, resumeOffer: null, canAdvance: false });
+    expect(controller.getPreferenceIntent().value.resume).toEqual({ route: "country-to-book", stepId: "choose-country" });
+
+    const countryOnly = createPlanetMascotController(); countryOnly.setContext(ready({ selectedCountry: true }));
+    countryOnly.restorePreference(savedBooks, 0); expect(countryOnly.resume()).toBe(true);
+    expect(countryOnly.getSnapshot()).toMatchObject({ step: 1, canAdvance: false });
+    expect(countryOnly.getPreferenceIntent().value.resume?.stepId).toBe("choose-writer");
+
+    const writer = createPlanetMascotController();
+    writer.setContext(ready({ selectedCountry: true, selectedWriter: true, screen: "collection" }));
+    writer.restorePreference(savedBooks, 0); writer.resume();
+    expect(writer.getSnapshot()).toMatchObject({ step: 2, canAdvance: false, completedRoute: null });
+    expect(writer.next()).toBe(false); // No persisted author-book acknowledgement.
+    writer.setContext(ready({ selectedCountry: true, selectedWriter: true, screen: "collection", authorBooksStatus: "applied" }));
+    expect(writer.next()).toBe(true);
+    expect(writer.getSnapshot().completedRoute).toBe("country-to-book");
+    expect(writer.getPreferenceIntent().value).toMatchObject({ visible: true, resume: null });
+  });
+
+  it("fences late restoration on explicit toggles and keeps dismissing separate from completing", () => {
+    const controller = createPlanetMascotController(); controller.setContext(ready());
+    const offered = { ...savedBooks, resume: { route: "overview", stepId: "appearance" } } as const;
+    expect(controller.restorePreference(offered, 0)).toBe(true);
+    const initial = controller.getPreferenceIntent();
+    controller.togglePanel(); const opened = controller.getPreferenceIntent();
+    controller.togglePanel(); const collapsed = controller.getPreferenceIntent();
+    expect(opened.revision).toBe(initial.revision + 1);
+    expect(collapsed.revision).toBe(opened.revision + 1);
+    expect(collapsed.value).toBe(opened.value); // The save coordinator can deduplicate this unchanged record.
+    expect(controller.restorePreference(savedBooks, opened.revision)).toBe(false);
+    const oldSnapshotRevision = controller.getSnapshot().revision;
+    controller.togglePanel();
+    expect(controller.discardResume(oldSnapshotRevision)).toBe(false);
+    expect(controller.discardResume()).toBe(true);
+    expect(controller.getSnapshot()).toMatchObject({ mode: "help", resumeOffer: null, completedRoute: null });
+    expect(controller.getPreferenceIntent().value).toMatchObject({ visible: true, resume: null });
+    controller.start("overview"); controller.next(); controller.finish();
+    expect(controller.getPreferenceIntent().value.resume).toBeNull();
+    expect(controller.getSnapshot().completedRoute).toBeNull();
+    controller.start("overview"); const beforeHide = controller.getPreferenceIntent(); controller.hide();
+    expect(controller.restorePreference(offered, beforeHide.revision)).toBe(false);
+    expect(controller.getPreferenceIntent().value).toMatchObject({ visible: false, resume: null });
+    const stable = controller.getPreferenceIntent(), view = controller.getSnapshot();
+    expect(controller.restorePreference({ ...offered, resume: { route: "overview", stepId: "removed-step" } }, stable.revision)).toBe(false);
+    expect(controller.restorePreference({ ...savedBooks, audience: "child" }, stable.revision)).toBe(false);
+    expect(controller.getPreferenceIntent()).toBe(stable); expect(controller.getSnapshot()).toBe(view);
+  });
+
+  it("never saves context, suspension, permission resets or disposal over the adult intent", () => {
+    const controller = createPlanetMascotController();
+    controller.setContext(ready({ selectedCountry: true, selectedWriter: true }));
+    const notified: [number, number][] = [];
+    controller.subscribe(() => {
+      notified.push([controller.getPreferenceIntent().revision, controller.getSnapshot().intentRevision]);
+    });
+    controller.start("country-to-book"); controller.next(); controller.next();
+    expect(notified).toEqual([[1, 1], [2, 2], [3, 3]]);
+    const intent = controller.getPreferenceIntent();
+    expect(intent.value.resume).toEqual(savedBooks.resume);
+    controller.setContext(ready({ selectedCountry: true, active: false }));
+    expect(controller.getSnapshot()).toMatchObject({ panel: "closed", step: 1, canAdvance: false });
+    expect(controller.getPreferenceIntent()).toBe(intent);
+    controller.setContext(ready()); // The visible prerequisite changes; the stored user intent does not.
+    expect(controller.getSnapshot().step).toBe(0); expect(controller.getPreferenceIntent()).toBe(intent);
+    controller.setContext(ready({ access: "child" }));
+    expect(controller.getSnapshot()).toMatchObject({ visibility: "hidden", mode: "help", resumeOffer: null });
+    expect(controller.hide()).toBe(false); expect(controller.resume()).toBe(false);
+    expect(controller.discardResume()).toBe(false);
+    expect(controller.restorePreference(savedBooks, intent.revision)).toBe(false);
+    expect(controller.getPreferenceIntent()).toBe(intent);
+    controller.setContext(ready({ access: "blocked" }));
+    controller.setContext(ready({ enabled: false }));
+    controller.dispose();
+    expect(controller.getPreferenceIntent()).toBe(intent);
+    expect(controller.restorePreference(savedBooks, intent.revision)).toBe(false);
+    expect(notified.every(([intentRevision, viewRevision]) => intentRevision === viewRevision)).toBe(true);
   });
 });

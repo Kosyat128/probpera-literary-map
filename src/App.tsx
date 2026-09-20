@@ -31,6 +31,7 @@ import PlanetStandControls from "./host/PlanetStandControls";
 import PlanetSceneInspectionControls from "./host/PlanetSceneInspectionControls";
 import PlanetMascotControls from "./host/PlanetMascotControls";
 import { createPlanetMascotController } from "./host/planetMascot";
+import { createPlanetMascotPersistence } from "./host/planetMascotPersistence";
 import type { PlanetMascotAction } from "./host/planetMascotRoutes";
 import type { BookArchiveAuthorRequest, BookArchiveAuthorRequestResult, BookArchiveAuthorView } from "./books/bookArchiveAuthorRequest";
 import { createPlanetSceneInspectionController } from "./host/planetSceneInspection";
@@ -586,6 +587,11 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
   const [customizationSceneReady, setCustomizationSceneReady] = useState(true);
   const mascot = useMemo(() => createPlanetMascotController(), []);
   const mascotSnapshot = useSyncExternalStore(mascot.subscribe, mascot.getSnapshot, mascot.getSnapshot);
+  const mascotPersistence = useMemo(() => createPlanetMascotPersistence({ controller: mascot,
+    preferences: platformServices.preferences }), [mascot, platformServices.preferences]);
+  const mascotPersistenceSnapshot = useSyncExternalStore(mascotPersistence.subscribe,
+    mascotPersistence.getSnapshot, mascotPersistence.getSnapshot);
+  useEffect(() => mascotPersistence.activate(), [mascotPersistence]);
   const [mascotPosition, setMascotPosition] = useState<{ left: number; top: number } | null>(null);
   const mascotFocusSequence = useRef(0);
   useLayoutEffect(() => () => {
@@ -3157,13 +3163,14 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
   </>);
 
   if (isPlanetApplication) {
-    // One DOM companion follows the active accessible surface; no second globe,
-    // renderer, camera or mutable atlas surface is created for the assistant.
+    // One companion follows the active accessible surface. Its tiny decorative
+    // viewport is independent of the canonical globe's scene, camera and atlas.
     const mascotControls = <PlanetMascotControls controller={mascot} snapshot={mascotSnapshot}
       screen={nativeCollectionOpen ? "collection" : "globe"}
       countryLabel={selectedCountry ? countryName(selectedCountry.code, selectedCountry.name) : null}
       writerLabel={selectedWriter ? writerName(selectedWriter, t("Автор"), language) : null}
-      onAction={handleMascotAction} position={mascotPosition} onPositionChange={setMascotPosition} />;
+      onAction={handleMascotAction} position={mascotPosition} onPositionChange={setMascotPosition}
+      persistence={mascotPersistenceSnapshot} onRetryPersistence={mascotPersistence.retry} />;
     return <div className="magazine-app native-planet-app" data-typography-component="magazine" data-planet-ready={String(globeViewSample.revision > 0)}>
       <main ref={nativeGlobeRootRef} onPointerDownCapture={event => {
         mascotFocusSequence.current += 1;

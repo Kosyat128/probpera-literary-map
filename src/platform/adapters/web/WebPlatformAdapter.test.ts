@@ -13,9 +13,11 @@ const EDITION = "probpera.globe-edition.v2", LEGACY_STYLE = "probpera.globe-styl
 const STAND = "probpera-planet-stand-v1";
 const BACKGROUND = "probpera-planet-background-v1";
 const COMPOSITION = "probpera-planet-composition-v1";
+const BOOKY = "probpera-booky-adult-v1";
 const compositionRecord = () => ({ schemaVersion: 1, commitId: "adapter-fixture:1", selection: {
   editionId: "rand-mcnally-1887", standId: "stand.base.wood", backgroundId: "background.base.library",
 } });
+const bookyRecord = () => ({ schemaVersion: 1, audience: "adult", visible: true, resume: { route: "overview", stepId: "search" } });
 
 function memoryStorage(): Storage {
   const entries = new Map<string, string>();
@@ -284,6 +286,58 @@ describe("browser capabilities and subscription lifetime", () => {
 });
 
 describe("non-secret best-effort canonical preferences", () => {
+  it("round-trips only exact adult Booky records without widening browser profile or JSON authority", async () => {
+    const env = browserEnvironment(), store = createWebPlatformAdapter({ window: env.browser }).preferences;
+    const fresh = createWebPlatformAdapter({ window: env.browser }).preferences, storage = env.browser.localStorage;
+    expect(storage.getItem).not.toHaveBeenCalled(); expect(await store.get(BOOKY)).toBeNull();
+    for (const record of [bookyRecord(), { ...bookyRecord(), resume: { route: "country-to-book", stepId: "choose-writer" } },
+      { schemaVersion: 1, audience: "adult", visible: false, resume: null }]) {
+      const value = JSON.stringify(record, null, 2);
+      expect(await store.set(BOOKY, value)).toBe(true); expect(await fresh.get(BOOKY)).toBe(value);
+    }
+    vi.mocked(storage.getItem).mockClear(); vi.mocked(storage.setItem).mockClear(); vi.mocked(storage.removeItem).mockClear();
+    for (const key of [BOOKY + ":en", BOOKY + "\u0000", "probpera-booky-child-v1"]) {
+      expect(await fresh.get(key)).toBeNull(); expect(await fresh.set(key, JSON.stringify(bookyRecord()))).toBe(false);
+      expect(await fresh.remove(key)).toBe(false);
+    }
+    expect(storage.getItem).not.toHaveBeenCalled(); expect(storage.setItem).not.toHaveBeenCalled(); expect(storage.removeItem).not.toHaveBeenCalled();
+    for (const invalid of ["{}", JSON.stringify({ ...bookyRecord(), audience: "child" }),
+      JSON.stringify({ ...bookyRecord(), visible: false }), JSON.stringify({ ...bookyRecord(), countryId: "russia" }),
+      JSON.stringify({ ...bookyRecord(), resume: { route: "overview", stepId: "choose-writer" } })]) {
+      const writes = vi.mocked(storage.setItem).mock.calls.length;
+      expect(await fresh.set(BOOKY, invalid)).toBe(false); expect(storage.setItem).toHaveBeenCalledTimes(writes);
+      storage.setItem(BOOKY, invalid); await expect(fresh.get(BOOKY)).rejects.toThrow("booky-preference-unavailable");
+    }
+    const writes = vi.mocked(storage.setItem).mock.calls.length;
+    expect(await fresh.set(BOOKY, bookyRecord() as never)).toBe(false); expect(storage.setItem).toHaveBeenCalledTimes(writes);
+    vi.mocked(storage.getItem).mockReturnValueOnce(bookyRecord() as never);
+    await expect(fresh.get(BOOKY)).rejects.toThrow("booky-preference-unavailable");
+    expect(await fresh.remove(BOOKY)).toBe(true); expect(await fresh.get(BOOKY)).toBeNull();
+  });
+
+  it("never confirms Booky fallback storage, failed readback or an unperformed removal", async () => {
+    const env = browserEnvironment(), storage = env.browser.localStorage;
+    const store = createWebPlatformAdapter({ window: env.browser }).preferences, value = JSON.stringify(bookyRecord());
+    vi.mocked(storage.setItem).mockImplementationOnce(() => undefined);
+    expect(await store.set(BOOKY, value)).toBe(false); expect(await store.get(BOOKY)).toBeNull();
+    vi.mocked(storage.getItem).mockImplementationOnce(() => { throw new Error("Readback unavailable"); });
+    expect(await store.set(BOOKY, value)).toBe(false); expect(await store.get(BOOKY)).toBe(value);
+    vi.mocked(storage.removeItem).mockImplementationOnce(() => undefined);
+    expect(await store.remove(BOOKY)).toBe(false); expect(await store.get(BOOKY)).toBe(value);
+    vi.mocked(storage.getItem).mockImplementation(() => { throw new Error("Private browser read payload"); });
+    vi.mocked(storage.setItem).mockImplementation(() => { throw new Error("Write denied"); });
+    vi.mocked(storage.removeItem).mockImplementation(() => { throw new Error("Remove denied"); });
+    installSafeWebStorage(env.browser, null);
+    expect(() => env.browser.localStorage.setItem(BOOKY, value)).not.toThrow();
+    expect(env.browser.localStorage.getItem(BOOKY)).toBe(value);
+    const strict = createWebPlatformAdapter({ window: env.browser }).preferences;
+    await expect(strict.get(BOOKY)).rejects.toThrow("booky-preference-unavailable");
+    expect(await strict.set(BOOKY, value)).toBe(false); expect(await strict.remove(BOOKY)).toBe(false);
+    const absentHost = createWebPlatformAdapter({ window: null }).preferences;
+    await expect(absentHost.get(BOOKY)).rejects.toThrow("booky-preference-unavailable");
+    expect(await absentHost.set(BOOKY, value)).toBe(false); expect(await absentHost.remove(BOOKY)).toBe(false);
+  });
+
   it("round-trips only the bounded composition record and distinguishes malformed storage from confirmed absence", async () => {
     const env = browserEnvironment(), adapter = createWebPlatformAdapter({ window: env.browser });
     const fresh = createWebPlatformAdapter({ window: env.browser }), value = JSON.stringify(compositionRecord(), null, 2);
@@ -347,14 +401,14 @@ describe("non-secret best-effort canonical preferences", () => {
   it("round-trips only exact adult stand choices without extending browser storage authority", async () => {
     const env = browserEnvironment(), adapter = createWebPlatformAdapter({ window: env.browser });
     const recreated = createWebPlatformAdapter({ window: env.browser });
-    for (const value of ["canonical", "stand.base.three-whales", "stand.base.portrait-pushkin", "stand.base.portrait-hemingway", "stand.base.portrait-tolstoy", "stand.base.museum", "stand.base.wood", "stand.base.book-stack"]) {
+    for (const value of ["canonical", "stand.base.three-whales", "stand.base.portrait-pushkin", "stand.base.portrait-hemingway", "stand.base.portrait-tolstoy", "stand.base.museum", "stand.base.wood", "stand.base.book-stack", "stand.base.child-book-cloud"]) {
       expect(await adapter.preferences.set(STAND, value)).toBe(true);
       expect(await recreated.preferences.get(STAND)).toBe(value);
     }
     expect(env.browser.localStorage.length).toBe(1);
     expect(await recreated.preferences.remove(STAND)).toBe(true);
     expect(await recreated.preferences.get(STAND)).toBeNull();
-    for (const value of ["wood", "base.stand.wood", "stand.base.child-book-cloud", "stand.base.wood ", "constructor"]) {
+    for (const value of ["wood", "base.stand.wood", "stand.base.child-book-cloud ", "stand.base.wood ", "constructor"]) {
       expect(await recreated.preferences.set(STAND, value)).toBe(false);
       env.browser.localStorage.setItem(STAND, value);
       await expect(recreated.preferences.get(STAND)).rejects.toThrow("customization-preference-unavailable");

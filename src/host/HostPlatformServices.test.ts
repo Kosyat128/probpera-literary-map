@@ -12,11 +12,13 @@ const EDITION = "probpera.globe-edition.v2", LEGACY_STYLE = "probpera.globe-styl
 const STAND = "probpera-planet-stand-v1";
 const BACKGROUND = "probpera-planet-background-v1";
 const COMPOSITION = "probpera-planet-composition-v1";
+const BOOKY = "probpera-booky-adult-v1";
 const RECENT = "probpera-planet-recent-adult-v1";
 const MAIL = "mailto:probperasite@yandex.ru";
 const compositionRecord = () => ({ schemaVersion: 1, commitId: "adapter-fixture:1", selection: {
   editionId: "rand-mcnally-1887", standId: "stand.base.wood", backgroundId: "background.base.library",
 } });
+const bookyRecord = () => ({ schemaVersion: 1, audience: "adult", visible: true, resume: { route: "overview", stepId: "search" } });
 function deferred<T>() {
   let resolve!: (value: T) => void;
   let reject!: (reason?: unknown) => void;
@@ -502,6 +504,65 @@ describe("native subscription lifetimes and ordering", () => {
 });
 
 describe("exact non-secret preferences with serialized readback", () => {
+  it("round-trips only exact adult Booky records without granting native profile or arbitrary JSON authority", async () => {
+    const f = fixture(), store = f.services.preferences;
+    const fresh = createHostPlatformServices({ kind: "ios", channel: "dev", languages: [], preferences: f.preferences }).preferences;
+    expect(f.preferences.get).not.toHaveBeenCalled();
+    expect(await store.get(BOOKY)).toBeNull();
+    for (const record of [bookyRecord(), { ...bookyRecord(), resume: { route: "country-to-book", stepId: "choose-writer" } },
+      { schemaVersion: 1, audience: "adult", visible: false, resume: null }]) {
+      const value = JSON.stringify(record, null, 2);
+      expect(await store.set(BOOKY, value)).toBe(true);
+      expect(await fresh.get(BOOKY)).toBe(value);
+      expect(f.memory.get(BOOKY)).toBe(value);
+    }
+    f.preferences.get.mockClear(); f.preferences.set.mockClear(); f.preferences.remove.mockClear();
+    for (const key of [BOOKY + ":en", BOOKY + "\u0000", "probpera-booky-child-v1"]) {
+      expect(await fresh.get(key)).toBeNull(); expect(await fresh.set(key, JSON.stringify(bookyRecord()))).toBe(false);
+      expect(await fresh.remove(key)).toBe(false);
+    }
+    expect(f.preferences.get).not.toHaveBeenCalled(); expect(f.preferences.set).not.toHaveBeenCalled();
+    expect(f.preferences.remove).not.toHaveBeenCalled();
+    for (const invalid of ["{}", JSON.stringify({ ...bookyRecord(), audience: "child" }),
+      JSON.stringify({ ...bookyRecord(), visible: false }), JSON.stringify({ ...bookyRecord(), countryId: "russia" }),
+      JSON.stringify({ ...bookyRecord(), resume: { route: "overview", stepId: "choose-writer" } })]) {
+      expect(await fresh.set(BOOKY, invalid)).toBe(false);
+      f.memory.set(BOOKY, invalid); await expect(fresh.get(BOOKY)).rejects.toThrow("booky-preference-unavailable");
+    }
+    expect(await fresh.set(BOOKY, bookyRecord() as never)).toBe(false);
+    expect(f.preferences.set).not.toHaveBeenCalled();
+    f.preferences.get.mockResolvedValueOnce({ value: bookyRecord() } as never);
+    await expect(fresh.get(BOOKY)).rejects.toThrow("booky-preference-unavailable");
+    expect(await fresh.remove(BOOKY)).toBe(true); expect(await fresh.get(BOOKY)).toBeNull();
+  });
+
+  it("serializes Booky readback and reports native failure without erasing or exposing an adult choice", async () => {
+    const f = fixture(), store = f.services.preferences, gate = deferred<void>();
+    const first = JSON.stringify(bookyRecord()), latest = JSON.stringify({ schemaVersion: 1, audience: "adult", visible: false, resume: null });
+    f.preferences.set.mockImplementation(async ({ key, value }) => { if (value === first) await gate.promise; f.memory.set(key, value); });
+    const writes = [store.set(BOOKY, first), store.set(BOOKY, latest), store.get(BOOKY)];
+    await flush(); expect(f.preferences.set).toHaveBeenCalledTimes(1);
+    expect(await store.set(DISPLAY, "book")).toBe(true);
+    gate.resolve(); expect(await Promise.all(writes)).toEqual([true, true, latest]);
+    f.preferences.get.mockRejectedValueOnce(new Error("private bridge payload"));
+    await expect(store.get(BOOKY)).rejects.toThrow("booky-preference-unavailable");
+    f.preferences.get.mockResolvedValueOnce({} as never);
+    await expect(store.get(BOOKY)).rejects.toThrow("booky-preference-unavailable");
+    await expect(fixture({ preferences: undefined }).services.preferences.get(BOOKY)).rejects.toThrow("booky-preference-unavailable");
+    f.preferences.get.mockResolvedValueOnce({ value: null });
+    expect(await store.set(BOOKY, first)).toBe(false);
+    expect(await store.get(BOOKY)).toBe(first);
+    f.preferences.get.mockRejectedValueOnce(new Error("private readback payload"));
+    expect(await store.set(BOOKY, latest)).toBe(false);
+    expect(await store.get(BOOKY)).toBe(latest);
+    f.preferences.remove.mockResolvedValue(undefined);
+    expect(await store.remove(BOOKY)).toBe(false); expect(await store.get(BOOKY)).toBe(latest);
+    expect(f.onFailure).toHaveBeenCalledWith({ operation: "preference-set", reason: "readback-mismatch" });
+    expect(f.onFailure).toHaveBeenCalledWith({ operation: "preference-remove", reason: "readback-mismatch" });
+    expect(f.onFailure.mock.calls.every(([value]) => Object.keys(value).sort().join() === "operation,reason")).toBe(true);
+    expect(JSON.stringify(f.onFailure.mock.calls)).not.toContain("private");
+  });
+
   it("confines the new background preference to its exact adult IDs and key", async () => {
     const f = fixture();
     const fresh = createHostPlatformServices({ kind: "ios", channel: "dev", languages: [], preferences: f.preferences });

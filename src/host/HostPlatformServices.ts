@@ -4,6 +4,7 @@ import { GLOBE_EDITION_IDS } from "../planet/editions";
 import { GLOBE_STAND_IDS, GLOBE_STAND_PREFERENCE_KEY } from "../planet/globeStands";
 import { GLOBE_BACKGROUND_IDS, GLOBE_BACKGROUND_PREFERENCE_KEY } from "../planet/globeBackgrounds";
 import { GLOBE_COMPOSITION_PREFERENCE_KEY, parseGlobeComposition } from "../planet/globeComposition";
+import { BOOKY_PREFERENCE_KEY, parseBookyPreference } from "./planetMascotPreference";
 
 export interface HostListenerHandle { remove(): void | Promise<void>; }
 export interface HostAppState { readonly isActive: boolean; }
@@ -61,9 +62,12 @@ const preferenceValues = new Map<string, readonly string[]>([
   [GLOBE_BACKGROUND_PREFERENCE_KEY, GLOBE_BACKGROUND_IDS],
 ]);
 const supportMail = "mailto:probperasite@yandex.ru";
-const permittedPreferenceKey = (key: string) => key === GLOBE_COMPOSITION_PREFERENCE_KEY || preferenceValues.has(key);
+const permittedPreferenceKey = (key: string) => key === GLOBE_COMPOSITION_PREFERENCE_KEY
+  || key === BOOKY_PREFERENCE_KEY || preferenceValues.has(key);
 const permittedPreferenceValue = (key: string, value: unknown) => key === GLOBE_COMPOSITION_PREFERENCE_KEY
-  ? parseGlobeComposition(value) !== null : typeof value === "string" && Boolean(preferenceValues.get(key)?.includes(value));
+  ? parseGlobeComposition(value) !== null : key === BOOKY_PREFERENCE_KEY
+    ? typeof value === "string" && parseBookyPreference(value) !== null
+    : typeof value === "string" && Boolean(preferenceValues.get(key)?.includes(value));
 
 function safeHttpsUrl(input: string): string | null {
   if (typeof input !== "string" || !/^https:\/\/[^/?#]/iu.test(input)) return null;
@@ -142,7 +146,7 @@ export function createHostPlatformServices(options: HostPlatformServicesOptions)
     persistence: "best-effort" as const,
     get(key: string) {
       if (!permittedPreferenceKey(key)) return Promise.resolve(null);
-      if (key === GLOBE_COMPOSITION_PREFERENCE_KEY || key === GLOBE_STAND_PREFERENCE_KEY || key === GLOBE_BACKGROUND_PREFERENCE_KEY
+      if (key === BOOKY_PREFERENCE_KEY || key === GLOBE_COMPOSITION_PREFERENCE_KEY || key === GLOBE_STAND_PREFERENCE_KEY || key === GLOBE_BACKGROUND_PREFERENCE_KEY
         || key === "probpera.globe-edition.v2" || key === "probpera.globe-style.v1") {
         // Migration may use a truly absent native preference. A failed read must
         // not authorize an older WebView value to overwrite native storage.
@@ -150,7 +154,7 @@ export function createHostPlatformServices(options: HostPlatformServicesOptions)
           key, "preference-get", { valid: false, value: null },
           () => readPreference(key, "preference-get")
         ).then(result => {
-          if (!result.valid) throw new Error(key === GLOBE_COMPOSITION_PREFERENCE_KEY
+          if (!result.valid) throw new Error(key === BOOKY_PREFERENCE_KEY ? "booky-preference-unavailable" : key === GLOBE_COMPOSITION_PREFERENCE_KEY
             ? "composition-preference-unavailable" : key === GLOBE_STAND_PREFERENCE_KEY || key === GLOBE_BACKGROUND_PREFERENCE_KEY
               ? "customization-preference-unavailable" : "edition-preference-unavailable");
           return result.value;

@@ -3,6 +3,7 @@ import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import mascotImage from "../assets/mascots/knizhulyk-green-v1.png";
 import PlanetMascotAvatar from "./PlanetMascotAvatar";
 import type { PlanetMascotController, PlanetMascotSnapshot } from "./planetMascot";
+import type { PlanetMascotPersistenceSnapshot } from "./planetMascotPersistence";
 import { PLANET_MASCOT_ROUTES, getPlanetMascotStep, type PlanetMascotAction,
   type PlanetMascotScreen, type PlanetMascotTarget } from "./planetMascotRoutes";
 import "./PlanetMascotControls.css";
@@ -18,6 +19,8 @@ export type PlanetMascotControlsProps = {
   onAction: (action: PlanetMascotAction) => void;
   position: Position | null;
   onPositionChange: (position: Position | null) => void;
+  persistence: PlanetMascotPersistenceSnapshot;
+  onRetryPersistence: () => boolean;
 };
 const MARGIN = 12;
 const arrowDirections: Readonly<Record<string, readonly [number, number]>> = {
@@ -73,7 +76,7 @@ function overlap(a: Rect, b: Rect) {
 }
 
 export default function PlanetMascotControls({ controller, snapshot, screen, countryLabel, writerLabel,
-  onAction, position, onPositionChange }: PlanetMascotControlsProps) {
+  onAction, position, onPositionChange, persistence, onRetryPersistence }: PlanetMascotControlsProps) {
   const { language } = useInterfaceLanguage();
   const ru = language === "ru", name = ru ? "Книжулик" : "Mr. Booky";
   const id = useId(), root = useRef<HTMLDivElement>(null), card = useRef<HTMLElement>(null);
@@ -96,6 +99,8 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
   const shown = snapshot.visibility === "shown", open = shown && snapshot.panel === "open";
   const step = getPlanetMascotStep(snapshot.route, snapshot.step);
   const tour = snapshot.mode === "tour" && step && snapshot.route ? PLANET_MASCOT_ROUTES[snapshot.route] : null;
+  const savedTour = snapshot.resumeOffer ? PLANET_MASCOT_ROUTES[snapshot.resumeOffer.route] : null;
+  const savedStep = savedTour?.steps.find(value => value.id === snapshot.resumeOffer?.stepId);
 
   useLayoutEffect(() => {
     if (shown && snapshot.available) return;
@@ -157,7 +162,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     if (!focusAfterNavigation.current) return;
     focusAfterNavigation.current = false;
     if (open && snapshot.available) (tourHeading.current ?? heading.current)?.focus({ preventScroll: true });
-  }, [snapshot.revision, snapshot.available, open]);
+  }, [snapshot.revision, snapshot.available, open, persistence.state]);
 
   useLayoutEffect(() => {
     if (!snapshot.available || !open || !snapshot.highlight) { setHighlight(null); return; }
@@ -213,6 +218,12 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
   const navigateTips = (action: () => boolean) => {
     focusAfterNavigation.current = Boolean(card.current?.contains(document.activeElement));
     if (!action()) focusAfterNavigation.current = false;
+  };
+  const retryPreference = () => {
+    if (open) { navigateTips(onRetryPersistence); return; }
+    // A closed/hidden companion can retry without changing its preference.
+    // Keep focus on the stable toggle when the retry control disappears.
+    if (onRetryPersistence()) toggle.current?.focus({ preventScroll: true });
   };
   const move = (next: Position) => onPositionChange(clamped(next, petSize.width, petSize.height, view));
   const endDrag = (event: ReactPointerEvent<HTMLButtonElement>) => {
@@ -283,6 +294,19 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     : step?.requirement === "writer" ? ru ? "Сначала выберите писателя в архиве страны." : "Choose a writer in the country's archive first."
     : ru ? "Откройте книги писателя, чтобы завершить этот шаг." : "Open the writer's books to complete this step.";
 
+  const persistenceNotice = persistence.state !== "idle" && <div className="planet-mascot-controls__persistence"
+    data-planet-mascot-preference-state={persistence.state} role="status" aria-live="polite" aria-atomic="true">
+    <p>{persistence.state === "failed"
+      ? persistence.error === "read"
+        ? ru ? "Не удалось восстановить настройки помощника." : "Could not restore your companion settings."
+        : ru ? "Не удалось сохранить ваш выбор." : "Could not save your choice."
+      : persistence.state === "loading"
+        ? ru ? "Восстанавливаем настройки помощника…" : "Restoring companion settings…"
+        : ru ? "Сохраняем ваш выбор…" : "Saving your choice…"}</p>
+    {persistence.state === "failed" && <button type="button" data-planet-mascot-retry-preference=""
+      onClick={retryPreference}>{ru ? "Повторить" : "Try again"}</button>}
+  </div>;
+
   if (!snapshot.available) return null;
   return <>
     {open && highlight && snapshot.highlight && <div className="planet-mascot-highlight" aria-hidden="true"
@@ -291,6 +315,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
       data-planet-mascot-active={shown ? "true" : "false"} data-planet-mascot-visibility={snapshot.visibility}
       data-planet-mascot-mode={snapshot.mode} data-planet-mascot-current-route={snapshot.route ?? "none"}
       data-planet-mascot-step={snapshot.step} data-planet-mascot-screen={screen} data-planet-mascot-gesture={gesture}
+      data-planet-mascot-closed-notice={!open && persistence.state !== "idle" ? "true" : undefined}
       style={petPosition} onPointerDown={event => event.stopPropagation()} onPointerUp={event => event.stopPropagation()}
       onPointerMove={event => event.stopPropagation()} onWheel={event => event.stopPropagation()}
       onClick={event => event.stopPropagation()} onKeyDown={event => {
@@ -367,6 +392,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
             : "Tap Mr. Booky for tips or drag the character to move him. Use the arrow button for keyboard movement. Home restores the default position."}
         </span>
       </div>}
+      {!open && persistenceNotice}
       {open && <section ref={card} id={id} role="region" aria-labelledby={`${id}-title`} data-planet-mascot-panel=""
         className="planet-mascot-controls__panel" style={{ left: cardPosition.left, top: cardPosition.top,
           width: cardWidth, maxHeight: maxCardHeight }}>
@@ -401,6 +427,20 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
           <button type="button" data-planet-mascot-finish="" className="planet-mascot-controls__quiet"
             onClick={() => navigateTips(() => controller.finish(snapshot.revision))}>{ru ? "Выйти из маршрута" : "Leave the tour"}</button>
         </> : <>
+          {savedTour && savedStep && <div className="planet-mascot-controls__resume" data-planet-mascot-resume-offer="">
+            <h3>{ru ? "Продолжим маршрут?" : "Continue your tour?"}</h3>
+            <p>{savedTour.title[language]}<br /><span>{savedStep.title[language]}</span></p>
+            <div className="planet-mascot-controls__resume-actions">
+              <button type="button" className="planet-mascot-controls__primary" data-planet-mascot-resume=""
+                onClick={() => navigateTips(() => controller.resume(snapshot.revision))}>
+                {ru ? "Продолжить маршрут" : "Resume tour"}
+              </button>
+              <button type="button" data-planet-mascot-discard-resume=""
+                onClick={() => navigateTips(() => controller.discardResume(snapshot.revision))}>
+                {ru ? "Сбросить маршрут" : "Clear saved tour"}
+              </button>
+            </div>
+          </div>}
           {snapshot.completedRoute && <p className="planet-mascot-controls__feedback" role="status" aria-live="polite"
             data-planet-mascot-completion={snapshot.completedRoute}>
             {ru ? `Маршрут «${PLANET_MASCOT_ROUTES[snapshot.completedRoute].title.ru}» завершён. Можно продолжить самостоятельно или выбрать другой.`
@@ -422,6 +462,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
             ))}
           </div>
         </>}
+        {persistenceNotice}
         </div>
       </section>}
     </div>

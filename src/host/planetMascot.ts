@@ -2,6 +2,8 @@ import {
   PLANET_MASCOT_ROUTES, getPlanetMascotStep,
   type PlanetMascotAction, type PlanetMascotRoute, type PlanetMascotScreen, type PlanetMascotTarget,
 } from "./planetMascotRoutes";
+import { DEFAULT_BOOKY_PREFERENCE, parseBookyPreference,
+  type BookyPreference, type BookySavedTour } from "./planetMascotPreference";
 
 export type PlanetMascotAuthorBooksStatus = "idle" | "loading" | "applied" | "no-books" | "filtered-empty" | "invalid" | "load-failed";
 export type PlanetMascotContext = Readonly<{
@@ -29,17 +31,24 @@ export type PlanetMascotSnapshot = Readonly<{
   /** Acknowledgement of navigation instructions completed, never reading progress. */
   completedRoute: PlanetMascotRoute | null;
   authorBooksStatus: PlanetMascotAuthorBooksStatus;
+  /** A saved route is only an offer, never navigation or proof of completion. */
+  resumeOffer: BookySavedTour | null;
+  /** Explicit user intent only; context-derived UI transitions do not save. */
+  intentRevision: number;
 }>;
+export type PlanetMascotPreferenceIntent = Readonly<{ revision: number; value: BookyPreference }>;
 type State = Pick<PlanetMascotSnapshot, "visibility" | "panel" | "mode" | "route" | "step">
-  & Partial<Pick<PlanetMascotSnapshot, "completedRoute">>;
+  & Partial<Pick<PlanetMascotSnapshot, "completedRoute" | "resumeOffer">>;
 const resting: State = Object.freeze({ visibility: "hidden", panel: "closed", mode: "help", route: null, step: 0 });
 
-/** Local adult navigation assistant. No camera, DOM, persistence, network,
+/** Local adult navigation assistant. No camera, DOM, storage IO, network,
  * timers, background activity, content generation or child authorization. */
 export function createPlanetMascotController() {
   let context: PlanetMascotContext | null = null, disposed = false;
+  let preferenceIntent: PlanetMascotPreferenceIntent = Object.freeze({ revision: 0, value: DEFAULT_BOOKY_PREFERENCE });
   let snapshot: PlanetMascotSnapshot = Object.freeze({ ...resting, available: false,
-    revision: 0, canAdvance: false, highlight: null, completedRoute: null, authorBooksStatus: "idle" });
+    revision: 0, canAdvance: false, highlight: null, completedRoute: null, authorBooksStatus: "idle",
+    resumeOffer: null, intentRevision: 0 });
   const listeners = new Set<() => void>();
   const authorized = () => !disposed && context?.enabled === true && context.access === "adult"
     && (context.screen === "globe" || context.screen === "collection");
@@ -50,6 +59,7 @@ export function createPlanetMascotController() {
   function publish(state: State, force = false) {
     const available = eligible();
     const completedRoute = state.completedRoute ?? null;
+    const resumeOffer = state.resumeOffer ?? null;
     const authorBooksStatus = context?.authorBooksStatus ?? "idle";
     const step = state.mode === "tour" ? getPlanetMascotStep(state.route, state.step) : null;
     const onScreen = step !== null && (step.requiredScreen === null || step.requiredScreen === context?.screen);
@@ -64,8 +74,10 @@ export function createPlanetMascotController() {
     if (!force && snapshot.available === available && snapshot.visibility === state.visibility
       && snapshot.panel === state.panel && snapshot.mode === state.mode && snapshot.route === state.route
       && snapshot.step === state.step && snapshot.canAdvance === canAdvance && snapshot.highlight === highlight
-      && snapshot.completedRoute === completedRoute && snapshot.authorBooksStatus === authorBooksStatus) return false;
-    const next: PlanetMascotSnapshot = Object.freeze({ ...state, available, canAdvance, highlight, completedRoute, authorBooksStatus,
+      && snapshot.completedRoute === completedRoute && snapshot.authorBooksStatus === authorBooksStatus
+      && snapshot.resumeOffer === resumeOffer && snapshot.intentRevision === preferenceIntent.revision) return false;
+    const next: PlanetMascotSnapshot = Object.freeze({ ...state, available, canAdvance, highlight, completedRoute,
+      authorBooksStatus, resumeOffer, intentRevision: preferenceIntent.revision,
       revision: snapshot.revision + 1 });
     snapshot = next;
     for (const listener of [...listeners]) {
@@ -75,6 +87,24 @@ export function createPlanetMascotController() {
       if (listeners.has(listener)) { try { listener(); } catch { /* An observer cannot own navigation. */ } }
     }
     return snapshot === next;
+  }
+
+  function accept(state: State, force = false) {
+    if (!force && state.visibility === snapshot.visibility && state.panel === snapshot.panel
+      && state.mode === snapshot.mode && state.route === snapshot.route && state.step === snapshot.step
+      && (state.resumeOffer ?? null) === snapshot.resumeOffer && (state.completedRoute ?? null) === snapshot.completedRoute) return false;
+    const activeStep = state.mode === "tour" ? getPlanetMascotStep(state.route, state.step) : null;
+    const value = parseBookyPreference({ schemaVersion: 1, audience: "adult", visible: state.visibility === "shown",
+      resume: state.visibility !== "shown" ? null : activeStep && state.route
+        ? { route: state.route, stepId: activeStep.id } : state.resumeOffer ?? null });
+    if (!value) return false;
+    const old = preferenceIntent.value;
+    const sameValue = old.visible === value.visible && old.resume?.route === value.resume?.route
+      && old.resume?.stepId === value.resume?.stepId;
+    // Establish ownership before notifying even a reentrant listener. Collapsing
+    // a panel still fences a late read, although its stored value is unchanged.
+    preferenceIntent = Object.freeze({ revision: preferenceIntent.revision + 1, value: sameValue ? old : value });
+    return publish(state, true);
   }
 
   function canAct(action: PlanetMascotAction) {
@@ -95,11 +125,20 @@ export function createPlanetMascotController() {
 
   function finish(revision = snapshot.revision) {
     if (!opened() || !current(revision) || snapshot.mode !== "tour") return false;
-    return publish({ visibility: "shown", panel: "open", mode: "help", route: null, step: 0 });
+    return accept({ visibility: "shown", panel: "open", mode: "help", route: null, step: 0 });
   }
 
   return Object.freeze({
     getSnapshot: () => snapshot,
+    getPreferenceIntent: () => preferenceIntent,
+    restorePreference(value: unknown, expectedIntentRevision: number) {
+      if (!eligible() || !Number.isSafeInteger(expectedIntentRevision)
+        || expectedIntentRevision !== preferenceIntent.revision) return false;
+      const record = parseBookyPreference(value);
+      if (!record) return false;
+      preferenceIntent = Object.freeze({ revision: preferenceIntent.revision, value: record });
+      return publish({ ...resting, visibility: record.visible ? "shown" : "hidden", resumeOffer: record.resume }, true);
+    },
     subscribe(listener: () => void) {
       if (disposed) return () => undefined;
       listeners.add(listener);
@@ -127,37 +166,53 @@ export function createPlanetMascotController() {
       // Background suspension closes the bubble and removes the highlight, but
       // keeps the user's place. Resume requires an explicit panel toggle.
       publish({ visibility: snapshot.visibility, panel: next.active ? snapshot.panel : "closed", mode: snapshot.mode,
-        route: snapshot.route, step, completedRoute: snapshot.completedRoute }, true);
+        route: snapshot.route, step, completedRoute: snapshot.completedRoute, resumeOffer: snapshot.resumeOffer }, true);
     },
     show() {
       if (!eligible() || snapshot.visibility === "shown") return false;
-      return publish({ ...resting, visibility: "shown" });
+      return accept({ ...resting, visibility: "shown", resumeOffer: snapshot.resumeOffer });
     },
     hide() {
-      if (disposed) return false;
-      return publish(resting);
+      if (!eligible()) return false;
+      return accept(resting);
     },
     togglePanel() {
       if (!eligible()) return false;
-      return publish({ visibility: "shown", mode: snapshot.mode, route: snapshot.route, step: snapshot.step,
-        completedRoute: snapshot.completedRoute,
+      return accept({ visibility: "shown", mode: snapshot.mode, route: snapshot.route, step: snapshot.step,
+        completedRoute: snapshot.completedRoute, resumeOffer: snapshot.resumeOffer,
         panel: snapshot.visibility === "shown" && snapshot.panel === "open" ? "closed" : "open" });
     },
     start(route: PlanetMascotRoute) {
       if (!eligible() || (route !== "overview" && route !== "country-to-book")) return false;
-      return publish({ visibility: "shown", panel: "open", mode: "tour", route, step: 0 }, true);
+      return accept({ visibility: "shown", panel: "open", mode: "tour", route, step: 0 }, true);
+    },
+    resume(revision = snapshot.revision) {
+      if (!eligible() || !current(revision) || !snapshot.resumeOffer) return false;
+      const { route, stepId } = snapshot.resumeOffer;
+      let step = PLANET_MASCOT_ROUTES[route].steps.findIndex(candidate => candidate.id === stepId);
+      if (step < 0) return false;
+      if (route === "country-to-book") {
+        if (!context?.selectedCountry) step = 0;
+        else if (!context.selectedWriter) step = Math.min(step, 1);
+      }
+      return accept({ visibility: "shown", panel: "open", mode: "tour", route, step });
+    },
+    discardResume(revision = snapshot.revision) {
+      if (!eligible() || !current(revision) || !snapshot.resumeOffer) return false;
+      return accept({ visibility: snapshot.visibility, panel: snapshot.panel, mode: snapshot.mode,
+        route: snapshot.route, step: snapshot.step, completedRoute: snapshot.completedRoute });
     },
     next(revision = snapshot.revision) {
       if (!opened() || !current(revision) || snapshot.mode !== "tour" || !snapshot.route || !snapshot.canAdvance) return false;
       if (snapshot.step + 1 === PLANET_MASCOT_ROUTES[snapshot.route].steps.length) {
-        return publish({ visibility: "shown", panel: "open", mode: "help", route: null, step: 0,
+        return accept({ visibility: "shown", panel: "open", mode: "help", route: null, step: 0,
           completedRoute: snapshot.route });
       }
-      return publish({ visibility: "shown", panel: "open", mode: "tour", route: snapshot.route, step: snapshot.step + 1 });
+      return accept({ visibility: "shown", panel: "open", mode: "tour", route: snapshot.route, step: snapshot.step + 1 });
     },
     back(revision = snapshot.revision) {
       if (!opened() || !current(revision) || snapshot.mode !== "tour" || !snapshot.route || snapshot.step === 0) return false;
-      return publish({ visibility: "shown", panel: "open", mode: "tour", route: snapshot.route, step: snapshot.step - 1 });
+      return accept({ visibility: "shown", panel: "open", mode: "tour", route: snapshot.route, step: snapshot.step - 1 });
     },
     finish,
     canAct,
