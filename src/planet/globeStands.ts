@@ -1,5 +1,6 @@
 import { baseEditionPolicy } from "./baseEditionPolicy";
 
+export const BOOK_CLOUD_GLOBE_STAND_ID = "stand.base.child-book-cloud" as const;
 export const THREE_WHALES_GLOBE_STAND_ID = "stand.base.three-whales" as const;
 export const CERAMIC_PORTRAIT_GLOBE_STAND_IDS = Object.freeze([
   "stand.base.portrait-pushkin", "stand.base.portrait-hemingway", "stand.base.portrait-tolstoy",
@@ -10,7 +11,7 @@ export function isCeramicPortraitGlobeStandId(value: unknown): value is CeramicP
 }
 export const INCLUDED_GLOBE_STAND_IDS = Object.freeze([
   THREE_WHALES_GLOBE_STAND_ID, ...CERAMIC_PORTRAIT_GLOBE_STAND_IDS,
-  "stand.base.museum", "stand.base.wood", "stand.base.book-stack",
+  "stand.base.museum", "stand.base.wood", "stand.base.book-stack", BOOK_CLOUD_GLOBE_STAND_ID,
 ] as const);
 export type IncludedGlobeStandId = typeof INCLUDED_GLOBE_STAND_IDS[number];
 export type GlobeStandId = "canonical" | IncludedGlobeStandId;
@@ -27,10 +28,11 @@ export const INCLUDED_GLOBE_STANDS = Object.freeze(INCLUDED_GLOBE_STAND_IDS.map(
   provenance: id === THREE_WHALES_GLOBE_STAND_ID ? "canonical-site-derived" as const : "authored-in-project" as const,
   source: id === THREE_WHALES_GLOBE_STAND_ID
     ? "src/components/globeWhaleStandGeometry.ts" : isCeramicPortraitGlobeStandId(id)
-      ? "src/components/globeCeramicPortraitStandGeometry.ts" : "src/components/globeStandGeometry.ts",
+      ? "src/components/globeCeramicPortraitStandGeometry.ts" : id === BOOK_CLOUD_GLOBE_STAND_ID
+        ? "src/components/globeBookCloudStandGeometry.ts" : "src/components/globeStandGeometry.ts",
   sourceItemId: id === THREE_WHALES_GLOBE_STAND_ID ? "canonical-globe" : id,
   canonicalSource: id === THREE_WHALES_GLOBE_STAND_ID ? "src/components/LiteraryGlobe.tsx#MythicGlobeFrame" : null,
-  contentVersion: id === THREE_WHALES_GLOBE_STAND_ID || isCeramicPortraitGlobeStandId(id) ? 1 : 2,
+  contentVersion: id === THREE_WHALES_GLOBE_STAND_ID || id === BOOK_CLOUD_GLOBE_STAND_ID || isCeramicPortraitGlobeStandId(id) ? 1 : 2,
   iapSkuAllowed: false,
   supportedAccess: "adult" as const,
   childReviewed: false,

@@ -528,7 +528,7 @@ describe("exact non-secret preferences with serialized readback", () => {
   it("round-trips only exact adult stand choices through the stand preference key", async () => {
     const f = fixture();
     const recreated = createHostPlatformServices({ kind: "ios", channel: "dev", languages: ["en"], preferences: f.preferences });
-    for (const value of ["canonical", "stand.base.three-whales", "stand.base.portrait-pushkin", "stand.base.portrait-hemingway", "stand.base.portrait-tolstoy", "stand.base.museum", "stand.base.wood", "stand.base.book-stack"]) {
+    for (const value of ["canonical", "stand.base.three-whales", "stand.base.portrait-pushkin", "stand.base.portrait-hemingway", "stand.base.portrait-tolstoy", "stand.base.museum", "stand.base.wood", "stand.base.book-stack", "stand.base.child-book-cloud"]) {
       expect(await f.services.preferences.set(STAND, value)).toBe(true);
       expect(await recreated.preferences.get(STAND)).toBe(value);
     }
@@ -536,7 +536,7 @@ describe("exact non-secret preferences with serialized readback", () => {
     expect(await recreated.preferences.remove(STAND)).toBe(true);
     expect(await recreated.preferences.get(STAND)).toBeNull();
     f.preferences.set.mockClear(); f.preferences.remove.mockClear();
-    for (const value of ["wood", "base.stand.wood", "stand.base.child-book-cloud", "stand.base.wood ", "constructor"]) {
+    for (const value of ["wood", "base.stand.wood", "stand.base.child-book-cloud ", "stand.base.wood ", "constructor"]) {
       expect(await recreated.preferences.set(STAND, value)).toBe(false);
       f.memory.set(STAND, value); await expect(recreated.preferences.get(STAND)).rejects.toThrow("customization-preference-unavailable");
     }
@@ -563,9 +563,12 @@ describe("exact non-secret preferences with serialized readback", () => {
       expect(await recreated.preferences.set(key, value)).toBe(false);
       expect(await recreated.preferences.remove(key)).toBe(false);
     }
+    const cloud = JSON.stringify({ ...compositionRecord(), selection: { ...compositionRecord().selection, standId: "stand.base.child-book-cloud" } });
+    expect(await recreated.preferences.set(COMPOSITION, cloud)).toBe(true);
+    expect(await recreated.preferences.get(COMPOSITION)).toBe(cloud);
     const before = f.preferences.set.mock.calls.length;
     for (const invalid of ["{}", "null", JSON.stringify({ ...compositionRecord(), approval: true }),
-      JSON.stringify({ ...compositionRecord(), selection: { ...compositionRecord().selection, standId: "stand.base.child-book-cloud" } })]) {
+      JSON.stringify({ ...compositionRecord(), selection: { ...compositionRecord().selection, standId: "stand.base.child-book-cloud-unknown" } })]) {
       expect(await recreated.preferences.set(COMPOSITION, invalid)).toBe(false);
       f.memory.set(COMPOSITION, invalid);
       await expect(recreated.preferences.get(COMPOSITION)).rejects.toThrow("composition-preference-unavailable");

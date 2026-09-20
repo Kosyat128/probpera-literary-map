@@ -1,11 +1,12 @@
 import * as THREE from "three";
 import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
 import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
-import { THREE_WHALES_GLOBE_STAND_ID, isCeramicPortraitGlobeStandId, isIncludedGlobeStandId, type IncludedGlobeStandId } from "../planet/globeStands";
+import { BOOK_CLOUD_GLOBE_STAND_ID, THREE_WHALES_GLOBE_STAND_ID, isCeramicPortraitGlobeStandId, isIncludedGlobeStandId, type IncludedGlobeStandId } from "../planet/globeStands";
 import { createGlobeCraftMaterials } from "./globeCraftMaterials";
 import { createTurnedWoodAtlas } from "./globeTurnedWoodAtlas";
 import { createWhaleStandGeometry } from "./globeWhaleStandGeometry";
 import { createCeramicPortraitStand } from "./globeCeramicPortraitStandGeometry";
+import { createBookCloudStandGeometry } from "./globeBookCloudStandGeometry";
 import type { GlobeQualityTier } from "./globeQuality";
 
 export interface OwnedGlobeStand {
@@ -36,6 +37,13 @@ export function createIncludedGlobeStand(id: IncludedGlobeStandId, quality: Glob
     const kinds = { "stand.base.portrait-pushkin": "pushkin", "stand.base.portrait-hemingway": "hemingway",
       "stand.base.portrait-tolstoy": "tolstoy" } as const;
     const resource = createCeramicPortraitStand(kinds[id], quality);
+    resource.group.name = `included-globe-stand:${id}`;
+    resource.group.userData = { ...resource.group.userData, standId: id,
+      provenance: "authored-in-project", qualityTier: quality };
+    return resource;
+  }
+  if (id === BOOK_CLOUD_GLOBE_STAND_ID) {
+    const resource = createBookCloudStandGeometry(quality);
     resource.group.name = `included-globe-stand:${id}`;
     resource.group.userData = { ...resource.group.userData, standId: id,
       provenance: "authored-in-project", qualityTier: quality };

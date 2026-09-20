@@ -20,7 +20,7 @@ export const planetStandCopy = {
       saveFailed: "Сохранение не подтверждено. Оформление применено, но при следующем запуске выбор может сброситься.",
       retry: "Повторить сохранение",
       names: { canonical: "Фирменное оформление", "stand.base.three-whales": "Три кита",
-        "stand.base.portrait-pushkin": "Александр Пушкин", "stand.base.portrait-hemingway": "Эрнест Хемингуэй", "stand.base.portrait-tolstoy": "Лев Толстой", "stand.base.museum": "Музейная", "stand.base.wood": "Деревянная", "stand.base.book-stack": "Стопка книг" },
+        "stand.base.portrait-pushkin": "Александр Пушкин", "stand.base.portrait-hemingway": "Эрнест Хемингуэй", "stand.base.portrait-tolstoy": "Лев Толстой", "stand.base.museum": "Музейная", "stand.base.wood": "Деревянная", "stand.base.book-stack": "Стопка книг", "stand.base.child-book-cloud": "Книга на облаке" },
     },
     en: {
       heading: "Globe stand", toggle: "Stands", close: "Close", label: "Stand appearance",
@@ -31,7 +31,7 @@ export const planetStandCopy = {
       saveFailed: "Saving could not be confirmed. The appearance is applied, but your choice may reset the next time you open the app.",
       retry: "Try saving again",
       names: { canonical: "Original frame", "stand.base.three-whales": "Three whales",
-        "stand.base.portrait-pushkin": "Alexander Pushkin", "stand.base.portrait-hemingway": "Ernest Hemingway", "stand.base.portrait-tolstoy": "Leo Tolstoy", "stand.base.museum": "Museum", "stand.base.wood": "Wooden", "stand.base.book-stack": "Stack of books" },
+        "stand.base.portrait-pushkin": "Alexander Pushkin", "stand.base.portrait-hemingway": "Ernest Hemingway", "stand.base.portrait-tolstoy": "Leo Tolstoy", "stand.base.museum": "Museum", "stand.base.wood": "Wooden", "stand.base.book-stack": "Stack of books", "stand.base.child-book-cloud": "Book on a cloud" },
     },
   },
 } as const;

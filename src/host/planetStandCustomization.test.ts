@@ -48,6 +48,7 @@ describe("adult stand preview and applied preference lifecycle", () => {
       f.memory.set(GLOBE_STAND_PREFERENCE_KEY, wood); activate(f.controller);
       expect(f.controller.open()).toBe(false);
       expect(f.controller.preview(wood)).toBe(false);
+      expect(f.controller.preview("stand.base.child-book-cloud")).toBe(false);
       expect(f.controller.acknowledgeRendered(0, wood)).toBe(false);
       expect(f.controller.apply()).toBe(false); expect(f.controller.retrySave()).toBe(false);
       await flush();
@@ -94,7 +95,7 @@ describe("adult stand preview and applied preference lifecycle", () => {
     expect(f.controller.apply()).toBe(false);
     expect(f.controller.acknowledgeRendered(current, wood)).toBe(false);
     expect(f.controller.getSnapshot()).toMatchObject({ appliedId: canonical, displayedId: books, phase: "preparing" });
-    for (const invalid of ["stand.base.child-book-cloud", "base.stand.wood", "wood", "constructor", "stand.base.wood "]) {
+    for (const invalid of ["stand.base.child-book-cloud ", "base.stand.wood", "wood", "constructor", "stand.base.wood "]) {
       expect(f.controller.preview(invalid as GlobeStandId)).toBe(false);
     }
     expect(f.controller.getSnapshot().displayedId).toBe(books); expect(f.preferences.set).not.toHaveBeenCalled();
@@ -194,7 +195,7 @@ describe("adult stand preview and applied preference lifecycle", () => {
   });
 
   it("ignores corrupt or failed storage reads without replacing them with a default write", async () => {
-    for (const stored of ["", "wood", "stand.base.child-book-cloud", "constructor"]) {
+    for (const stored of ["", "wood", "stand.base.child-book-cloud-unknown", "constructor"]) {
       const f = fixture(); f.memory.set(GLOBE_STAND_PREFERENCE_KEY, stored); activate(f.controller); await flush();
       expect(f.controller.getSnapshot()).toMatchObject({ appliedId: canonical, displayedId: canonical });
       expect(f.preferences.set).not.toHaveBeenCalled(); expect(f.memory.get(GLOBE_STAND_PREFERENCE_KEY)).toBe(stored);

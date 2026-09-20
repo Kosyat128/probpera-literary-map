@@ -55,6 +55,7 @@ const sourceBindings={
  'search-favorites-offline':['src/search/globalSearchRuntime.ts','src/hooks/useReadingLibrary.ts','src/planet/ContentDownloads.ts'],
  'stand.base.museum':['src/planet/globeStands.ts','src/components/globeStandGeometry.ts','src/components/globeCraftMaterials.ts','src/components/GlobeIncludedStand.tsx','src/host/planetComposition.ts','src/host/planetCompositionPresentation.ts','src/planet/globeComposition.ts','src/components/useGlobeCompositionScene.ts','src/components/useGlobeCompositionFrame.ts','src/host/PlanetStandControls.tsx'],
  'stand.base.wood':['src/planet/globeStands.ts','src/components/globeStandGeometry.ts','src/components/globeTurnedWoodAtlas.ts','src/components/globeCraftMaterials.ts','src/components/GlobeIncludedStand.tsx','src/host/planetComposition.ts','src/host/planetCompositionPresentation.ts','src/planet/globeComposition.ts','src/components/useGlobeCompositionScene.ts','src/components/useGlobeCompositionFrame.ts','src/host/PlanetStandControls.tsx'],
+ 'stand.base.child-book-cloud':['src/planet/globeStands.ts','src/components/globeBookCloudStandGeometry.ts','src/components/globeStandGeometry.ts','src/components/globeCraftMaterials.ts','src/components/GlobeIncludedStand.tsx','src/host/planetComposition.ts','src/host/planetCompositionPresentation.ts','src/planet/globeComposition.ts','src/components/useGlobeCompositionScene.ts','src/components/useGlobeCompositionFrame.ts','src/host/PlanetStandControls.tsx'],
  'stand.base.book-stack':['src/planet/globeStands.ts','src/components/globeStandGeometry.ts','src/components/globeCraftMaterials.ts','src/components/GlobeIncludedStand.tsx','src/host/planetComposition.ts','src/host/planetCompositionPresentation.ts','src/planet/globeComposition.ts','src/components/useGlobeCompositionScene.ts','src/components/useGlobeCompositionFrame.ts','src/host/PlanetStandControls.tsx'],
 };
 // Additional owner requests have their own inventory, never a CSV requirement binding.
@@ -80,6 +81,12 @@ for (const [id, source] of [
  assert.equal(policy.classify(id).canonicalId,id);
  for(const flag of ['childReviewed','rightsReviewed','grantsEntitlement','releaseReady'])assert.equal(descriptor[flag],false);
 }
+const cloud=runtime.INCLUDED_GLOBE_STANDS.find(stand=>stand.id==='stand.base.child-book-cloud');
+assert.ok(cloud);assert.equal(cloud.source,'src/components/globeBookCloudStandGeometry.ts');
+assert.equal(cloud.sourceItemId,cloud.id);assert.equal(cloud.provenance,'authored-in-project');
+assert.equal(cloud.commercialAvailability,'included-in-base');assert.equal(cloud.supportedAccess,'adult');
+assert.equal(cloud.contentVersion,1);assert.equal(policy.classify(cloud.id).canonicalId,cloud.id);
+for(const flag of ['iapSkuAllowed','childReviewed','rightsReviewed','artReviewed','grantsEntitlement','releaseReady'])assert.equal(cloud[flag],false);
 assert.deepEqual(snapshot.ownerAdditions.map(item=>item.id).sort(),Object.keys(ownerSourceBindings).sort());
 const sourcePaths=[...new Set([tablePath,'scripts/mobile/audit-starter-set.mjs','scripts/mobile/csv.mjs',...moduleInputs,
  ...Object.values(sourceBindings).flat(),...Object.values(ownerSourceBindings).flat()])].sort();
