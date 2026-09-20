@@ -49,6 +49,11 @@ function applyStand(controller: PlanetCompositionController, id = "stand.base.wo
   expect(controller.open("stand")).toBe(true); expect(controller.preview("stand", id)).toBe(true);
   frame(controller); expect(controller.apply()).toBe(true);
 }
+function draftCombination(controller: PlanetCompositionController, standId = "stand.base.book-stack", backgroundId = "background.base.library") {
+  expect(controller.open("stand")).toBe(true); expect(controller.preview("stand", standId)).toBe(true);
+  expect(controller.open("background")).toBe(true); expect(controller.preview("background", backgroundId)).toBe(true);
+  return controller.getSnapshot();
+}
 
 describe("receipt-bound whole globe composition lifecycle", () => {
   it("performs no constructor, public-site or blocked-policy IO", async () => {
@@ -134,7 +139,7 @@ describe("receipt-bound whole globe composition lifecycle", () => {
 
   it("keeps preview separate from Apply and cancels the whole draft when edition intent arrives", async () => {
     const f = fixture(); activate(f.controller); await flush();
-    f.controller.open("stand"); f.controller.preview("stand", "stand.base.book-stack");
+    draftCombination(f.controller);
     const stale = parts(f.controller);
     expect(f.controller.apply()).toBe(false); expect(f.preferences.set).not.toHaveBeenCalled();
     expect(f.controller.requestEdition("nasa-blue-marble")).toBe(true);
@@ -142,53 +147,137 @@ describe("receipt-bound whole globe composition lifecycle", () => {
     expect(f.controller.getSnapshot()).toMatchObject({ editor: null, applied: defaults, displayed: selection({ editionId: "nasa-blue-marble" }) });
     frame(f.controller); await flush();
     expect(parseGlobeComposition(f.memory.get(key))?.selection).toEqual(selection({ editionId: "nasa-blue-marble" }));
-    f.controller.open("background"); f.controller.preview("background", "background.base.library"); frame(f.controller);
+    const combined = draftCombination(f.controller); frame(f.controller);
     expect(f.controller.getSnapshot().phase).toBe("preview"); expect(f.preferences.set).toHaveBeenCalledTimes(1);
+    expect(combined.displayed).toEqual(selection({ editionId: "nasa-blue-marble", standId: "stand.base.book-stack", backgroundId: "background.base.library" }));
     expect(f.controller.apply()).toBe(true); await flush();
-    expect(parseGlobeComposition(f.memory.get(key))?.selection).toEqual(selection({ editionId: "nasa-blue-marble", backgroundId: "background.base.library" }));
+    expect(f.controller.apply()).toBe(false); expect(f.preferences.set).toHaveBeenCalledTimes(2);
+    expect(parseGlobeComposition(f.memory.get(key))?.selection).toEqual(combined.displayed);
     expect(f.controller.getSnapshot().editor).toBe("background");
   });
 
+  it("keeps pending receipts and the original deadline when switching appearance tabs", async () => {
+    vi.useFakeTimers(); const f = fixture(); activate(f.controller); await flush();
+    const pending = draftCombination(f.controller);
+    expect(f.controller.acknowledgePartRendered("stand", pending.renderRevision, pending.displayed.standId)).toBe(true);
+    await vi.advanceTimersByTimeAsync(PLANET_COMPOSITION_PREVIEW_TIMEOUT_MS - 1);
+    expect(f.controller.open("stand")).toBe(true);
+    expect(f.controller.getSnapshot()).toEqual({ ...pending, editor: "stand" });
+    expect(f.controller.acknowledgePartRendered("edition", pending.renderRevision, pending.displayed.editionId)).toBe(true);
+    expect(f.controller.acknowledgePartRendered("background", pending.renderRevision, pending.displayed.backgroundId)).toBe(true);
+    expect(f.controller.acknowledgeRendered(pending.renderRevision, pending.displayed)).toBe(true);
+    expect(f.controller.apply()).toBe(true); await flush();
+    expect(parseGlobeComposition(f.memory.get(key))?.selection).toEqual(pending.displayed);
+
+    const next = draftCombination(f.controller, "stand.base.museum", "background.base.writer-study");
+    await vi.advanceTimersByTimeAsync(PLANET_COMPOSITION_PREVIEW_TIMEOUT_MS - 1);
+    expect(f.controller.open("stand")).toBe(true); expect(f.controller.apply()).toBe(false);
+    expect(f.controller.getSnapshot().renderRevision).toBe(next.renderRevision);
+    await vi.advanceTimersByTimeAsync(1);
+    expect(f.controller.getSnapshot()).toMatchObject({ displayed: pending.displayed, applied: pending.displayed,
+      editor: "stand", phase: "error", reason: "preview-timeout" });
+    expect(f.controller.acknowledgeRendered(next.renderRevision, next.displayed)).toBe(false);
+    expect(f.preferences.set).toHaveBeenCalledTimes(1);
+  });
+
+  it("requires fresh whole-combination receipts after a new choice and leaves rejected requests untouched", async () => {
+    let access = "adult";
+    const f = fixture({ getEnvironment: () => ({ qualityTier: "high", access }) }); activate(f.controller); await flush();
+    draftCombination(f.controller); const older = parts(f.controller);
+    expect(f.controller.open("stand")).toBe(true);
+    expect(f.controller.preview("stand", "stand.base.museum")).toBe(true);
+    const latest = f.controller.getSnapshot();
+    expect(latest.displayed).toEqual(selection({ standId: "stand.base.museum", backgroundId: "background.base.library" }));
+    expect(f.controller.acknowledgeRendered(older.revision, older.displayed)).toBe(false);
+    expect(f.controller.acknowledgePartRendered("background", older.revision, older.displayed.backgroundId)).toBe(false);
+    expect(f.controller.failRendering(older.revision)).toBe(false);
+    expect(f.controller.acknowledgePartRendered("stand", latest.renderRevision, latest.displayed.standId)).toBe(true);
+    expect(f.controller.acknowledgeRendered(latest.renderRevision, latest.displayed)).toBe(false);
+    expect(f.controller.preview("stand", "stand.unknown")).toBe(false);
+    expect(f.controller.preview("background", "background.base.writer-study")).toBe(false);
+    expect(f.controller.getSnapshot()).toBe(latest);
+    access = "blocked";
+    expect(f.controller.open("background")).toBe(false);
+    expect(f.controller.preview("stand", "stand.base.wood")).toBe(false);
+    expect(f.controller.apply()).toBe(false); expect(f.controller.getSnapshot()).toBe(latest);
+    access = "adult";
+    expect(f.controller.acknowledgePartRendered("edition", latest.renderRevision, latest.displayed.editionId)).toBe(true);
+    expect(f.controller.acknowledgePartRendered("background", latest.renderRevision, latest.displayed.backgroundId)).toBe(true);
+    expect(f.controller.acknowledgeRendered(latest.renderRevision, latest.displayed)).toBe(true);
+    expect(f.controller.open("background")).toBe(true);
+    expect(f.controller.getSnapshot()).toMatchObject({ displayed: latest.displayed, phase: "preview", renderRevision: latest.renderRevision });
+    expect(f.preferences.set).not.toHaveBeenCalled();
+  });
+
+  it("opening an editor fences an unfinished restore or immediate edition change", async () => {
+    for (const operation of ["restore", "edition"] as const) {
+      const f = fixture();
+      if (operation === "restore") f.memory.set(key, raw(selection({ editionId: "nasa-blue-marble", standId: "stand.base.wood", backgroundId: "background.base.library" })));
+      activate(f.controller); await flush();
+      if (operation === "edition") expect(f.controller.requestEdition("nasa-blue-marble")).toBe(true);
+      const obsolete = parts(f.controller);
+      expect(f.controller.open("background")).toBe(true);
+      expect(f.controller.getSnapshot()).toMatchObject({ applied: defaults, displayed: defaults, editor: "background", phase: "idle" });
+      expect(f.controller.acknowledgeRendered(obsolete.revision, obsolete.displayed)).toBe(false);
+      expect(f.controller.acknowledgePartRendered("edition", obsolete.revision, obsolete.displayed.editionId)).toBe(false);
+      draftCombination(f.controller); frame(f.controller);
+      expect(f.controller.getSnapshot().displayed).toEqual(selection({ standId: "stand.base.book-stack", backgroundId: "background.base.library" }));
+      expect(f.preferences.set).not.toHaveBeenCalled();
+    }
+  });
+
   it("rolls back all displayed fields on cancel, render failure and deadline without saving the draft", async () => {
-    vi.useFakeTimers(); const f = fixture(); activate(f.controller); await flush(); applyStand(f.controller); await flush();
+    vi.useFakeTimers(); const f = fixture(); activate(f.controller); await flush();
+    draftCombination(f.controller, "stand.base.wood", "background.base.writer-study");
+    frame(f.controller); expect(f.controller.apply()).toBe(true); await flush();
     const applied = f.controller.getSnapshot().applied;
-    f.controller.open("background"); f.controller.preview("background", "background.base.library");
+    draftCombination(f.controller);
     const old = f.controller.getSnapshot().renderRevision; f.controller.cancel();
     expect(f.controller.acknowledgePartRendered("background", old, "background.base.library")).toBe(false);
     expect(f.controller.getSnapshot()).toMatchObject({ applied, displayed: applied, editor: null });
-    f.controller.open("background"); f.controller.preview("background", "background.base.library");
+    draftCombination(f.controller);
     expect(f.controller.failRendering(f.controller.getSnapshot().renderRevision)).toBe(true);
     expect(f.controller.getSnapshot()).toMatchObject({ displayed: applied, phase: "error", reason: "render-failed" });
-    f.controller.preview("background", "background.base.library");
+    draftCombination(f.controller);
     await vi.advanceTimersByTimeAsync(PLANET_COMPOSITION_PREVIEW_TIMEOUT_MS + 1);
     expect(f.controller.getSnapshot()).toMatchObject({ displayed: applied, phase: "error", reason: "preview-timeout" });
+    draftCombination(f.controller); frame(f.controller);
+    f.controller.setVisibility(false);
+    expect(f.controller.getSnapshot()).toMatchObject({ displayed: applied, applied, phase: "idle", editor: null });
+    expect(f.controller.open("stand")).toBe(false); expect(f.controller.preview("background", "background.base.writer-study")).toBe(false);
+    f.controller.setVisibility(true); frame(f.controller);
+    expect(f.controller.getSnapshot()).toMatchObject({ displayed: applied, applied, editor: null });
     expect(f.preferences.set).toHaveBeenCalledTimes(1);
   });
 
   it("requires new receipts after an environment change and preserves preview instead of applying it", async () => {
     let qualityTier = "high", access = "adult";
     const f = fixture({ getEnvironment: () => ({ qualityTier, access }) }); activate(f.controller); await flush();
-    f.controller.open("stand"); f.controller.preview("stand", "stand.base.wood"); frame(f.controller);
+    draftCombination(f.controller, "stand.base.wood"); frame(f.controller);
     const old = f.controller.getSnapshot(); qualityTier = "economy"; f.controller.refreshEnvironment();
-    expect(f.controller.getSnapshot()).toMatchObject({ editor: "stand", displayed: old.displayed, applied: defaults, phase: "preparing" });
+    expect(f.controller.getSnapshot()).toMatchObject({ editor: "background", displayed: old.displayed, applied: defaults, phase: "preparing" });
     expect(f.controller.acknowledgeRendered(old.renderRevision, old.displayed)).toBe(false);
+    expect(f.controller.acknowledgePartRendered("stand", old.renderRevision, old.displayed.standId)).toBe(false);
+    expect(f.controller.acknowledgeRendered(f.controller.getSnapshot().renderRevision, old.displayed)).toBe(false);
     frame(f.controller); expect(f.controller.getSnapshot().phase).toBe("preview"); expect(f.preferences.set).not.toHaveBeenCalled();
     f.controller.apply(); await flush(); f.controller.refreshEnvironment(); frame(f.controller); await flush();
     expect(f.preferences.set).toHaveBeenCalledTimes(1);
+    draftCombination(f.controller, "stand.base.museum", "background.base.writer-study");
     access = "blocked"; f.controller.refreshEnvironment();
-    expect(f.controller.getSnapshot()).toMatchObject({ phase: "error", reason: "incompatible", editor: null });
+    expect(f.controller.getSnapshot()).toMatchObject({ applied: old.displayed, displayed: old.displayed, phase: "error", reason: "incompatible", editor: null });
     expect(f.controller.open("stand")).toBe(false);
   });
 
   it("retains the applied composition after failed persistence and retries only that whole selection", async () => {
     const f = fixture(); f.preferences.set.mockResolvedValueOnce(false); activate(f.controller); await flush();
-    applyStand(f.controller); await flush();
-    expect(f.controller.getSnapshot()).toMatchObject({ applied: selection({ standId: "stand.base.wood" }), saveState: "failed" });
-    f.controller.preview("stand", "stand.base.book-stack");
+    const applied = draftCombination(f.controller, "stand.base.wood").displayed;
+    frame(f.controller); expect(f.controller.apply()).toBe(true); await flush();
+    expect(f.controller.getSnapshot()).toMatchObject({ applied, saveState: "failed" });
+    const draft = draftCombination(f.controller, "stand.base.book-stack", "background.base.writer-study");
     expect(f.controller.retrySave()).toBe(true); await flush();
     const saved = parseGlobeComposition(f.memory.get(key))!;
-    expect(saved.selection.standId).toBe("stand.base.wood");
-    expect(f.controller.getSnapshot()).toMatchObject({ displayed: selection({ standId: "stand.base.book-stack" }), saveState: "idle" });
+    expect(saved.selection).toEqual(applied);
+    expect(f.controller.getSnapshot()).toMatchObject({ displayed: draft.displayed, applied, saveState: "idle" });
   });
 
   it("never lets a newer queued write overtake timed-out native IO, including remount hydration", async () => {
@@ -247,7 +336,7 @@ describe("receipt-bound whole globe composition lifecycle", () => {
     let stop = activate(f.controller); await flush(); applyStand(f.controller); await flush(); stop();
     stop = activate(f.controller); await flush(); expect(f.preferences.set).toHaveBeenCalledTimes(1);
     held.resolve(true); await flush(); expect(f.controller.getSnapshot().saveState).toBe("idle");
-    f.controller.open("background"); f.controller.preview("background", "background.base.library"); const old = parts(f.controller);
+    draftCombination(f.controller); const old = parts(f.controller);
     stop(); activate(f.controller);
     expect(f.controller.acknowledgeRendered(old.revision, old.displayed)).toBe(false);
     expect(f.controller.getSnapshot()).toMatchObject({ displayed: selection({ standId: "stand.base.wood" }), editor: null });

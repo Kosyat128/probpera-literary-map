@@ -60,6 +60,7 @@ test.beforeAll(async () => {
       const original=window.__compositionOriginal;
       return {editionId:document.querySelector('#atlas .literary-globe')?.getAttribute('data-globe-edition'),
         standId:stands[0]?.id??'canonical',backgroundId:backgrounds[0]?.id??'background.base.site-starfield',
+        standResource:stands[0]?.uuid??null,backgroundResource:backgrounds[0]?.uuid??null,
         standCount:stands.length,backgroundCount:backgrounds.length,surfaceCount:surfaces.length,
         frame:root.renderer.info.render.frame,contextLost:root.renderer.getContext().isContextLost(),
         sameScene:!original||(root.canvas===original.canvas&&root.renderer===original.renderer&&root.camera===original.camera&&root.scene===original.scene),
@@ -96,7 +97,9 @@ test.beforeAll(async () => {
   const inputs = Object.keys(built.metafile.inputs).map(value => value.replaceAll("\\", "/"));
   for (const module of ["src/App.tsx", "src/host/mountHostApp.tsx", "src/components/LiteraryGlobe.tsx",
     "src/components/GlobeCameraRig.tsx", "src/components/globeAtlas.ts", "src/components/GlobeIncludedStand.tsx",
-    "src/components/globeStandGeometry.ts", "src/host/PlanetStandControls.tsx", "src/host/planetComposition.ts", "src/planet/globeComposition.ts", "src/components/GlobeIncludedBackground.tsx", "src/components/globeLibraryGeometry.ts"]) {
+    "src/components/globeStandGeometry.ts", "src/host/PlanetStandControls.tsx", "src/host/planetComposition.ts", "src/planet/globeComposition.ts",
+    "src/host/planetCompositionPresentation.ts", "src/components/useGlobeCompositionScene.ts", "src/components/useGlobeCompositionFrame.ts",
+    "src/components/GlobeIncludedBackground.tsx", "src/components/globeLibraryGeometry.ts"]) {
     expect(inputs, "The canonical component must remain in the source graph").toContain(module);
   }
   files = new Map(built.outputFiles.map(file => ["/fixture/" + path.relative(output, file.path).replaceAll("\\", "/"), Buffer.from(file.contents)]));
@@ -107,7 +110,7 @@ test.beforeAll(async () => {
   }));
   sourceEvidence = { kind: "canonical-app-composition-in-Chrome", actualApp: true, actualCss: true, actualGlobe: true,
     controlledPorts: ["native OS plugins, including controlled new composition read failure"],
-    observation: "Actual rendered edition, stand and background at each native record write; canonical scene identity and cold reload",
+    observation: "Combined stand/background draft, retained tab selection and applied resources, Cancel/native Back, whole-record frame-confirmed Apply and cold reload",
     publicAssetSelectionSha256: digest(selectionBytes), selectedAssetCount: selectedAssets.size,
     builtFiles: built.outputFiles.map(file => ({ path: path.relative(output, file.path).replaceAll("\\", "/"), sha256: digest(file.contents) })),
     installedNative: false, entitlementGranted: false, releaseReady: false };
@@ -297,30 +300,92 @@ test("one composition migrates the three legacy choices after a real frame, appl
     retained(page, cancelled, original, pose); expect(cancelled.fingerprint).toBe(original.fingerprint);
     expect(fixture.memory.get(KEY)).toBe(beforeHeld); await saved(fixture, legacySelection, 1);
     fixture.result.observations.push({ heldEdition: "hondius-1615", lateAssetDelivered: true, cancelled });
-    const standPanel = await preview(page, "stand", BOOKS);
-    expect(fixture.operations.filter(value => value.operation === "set" && value.key === KEY)).toHaveLength(1);
-    await standPanel.locator("[data-planet-stand-apply]").click();
-    await expect(standPanel.locator("[data-planet-stand-select]")).toBeFocused();
-    const withBooks = { ...legacySelection, standId: BOOKS };
-    await saved(fixture, withBooks, 2); retained(page, await actual(page, withBooks), original, pose);
-    await page.screenshot({ path: testInfo.outputPath("composition-library-applied-ru.png") });
-    const backgroundPanel = await preview(page, "background", DEFAULT);
-    await backgroundPanel.locator("[data-planet-background-apply]").click();
-    const withSky = { ...withBooks, backgroundId: DEFAULT };
-    await saved(fixture, withSky, 3); retained(page, await actual(page, withSky), original, pose);
-    await preview(page, "stand", WOOD);
+    const combined = { ...legacySelection, standId: BOOKS, backgroundId: DEFAULT };
+    await preview(page, "stand", BOOKS);
+    const standOnly = await actual(page, {...legacySelection,standId:BOOKS});
+    const standRevision = await page.locator('#atlas .literary-globe').getAttribute('data-planet-composition-revision');
+    await show(page,'background');
+    await expect(page.locator('[data-planet-background-panel]')).toHaveAttribute('data-planet-background-phase','preview');
+    await expect(page.locator('#atlas .literary-globe')).toHaveAttribute('data-planet-composition-revision',standRevision);
+    const firstTab = await actual(page,{...legacySelection,standId:BOOKS});
+    expect(firstTab.standResource).toBe(standOnly.standResource);
+    expect(firstTab.backgroundResource).toBe(original.backgroundResource);
+    await preview(page,'background',DEFAULT);
+    const draft = await actual(page,combined); retained(page,draft,original,pose);
+    expect(draft.standResource).toBe(standOnly.standResource);
+    const draftRevision = await page.locator('#atlas .literary-globe').getAttribute('data-planet-composition-revision');
+    await show(page,'stand'); await expect(page.locator('[data-planet-stand-select]')).toHaveValue(BOOKS);
+    await expect(page.locator('[data-planet-stand-panel]')).toHaveAttribute('data-planet-stand-phase','preview');
+    await show(page,'background'); await expect(page.locator('[data-planet-background-select]')).toHaveValue(DEFAULT);
+    await expect(page.locator('#atlas .literary-globe')).toHaveAttribute('data-planet-composition-revision',draftRevision);
+    const roundTrip = await actual(page,combined); retained(page,roundTrip,original,pose);
+    expect(roundTrip.standResource).toBe(draft.standResource);
+    await expect(page.locator('canvas')).toHaveCount(1);
+    await saved(fixture,legacySelection,1); expect(fixture.memory.get(KEY)).toBe(beforeHeld);
+    await page.locator('[data-planet-background-cancel]').click();
+    await expect(page.locator('[data-planet-background-panel]')).toBeHidden();
+    const wholeCancelled = await actual(page,legacySelection); retained(page,wholeCancelled,original,pose);
+    expect(wholeCancelled.standResource).toBe(original.standResource);
+    expect(wholeCancelled.backgroundResource).toBe(original.backgroundResource);
+    await saved(fixture,legacySelection,1);
+
+    await preview(page,'stand',BOOKS); await preview(page,'background',DEFAULT);
+    const beforeNativeBack = await actual(page,combined);
+    expect(await page.evaluate(() => window.__editionScene.back())).toBeGreaterThan(0);
+    await expect(page.locator('[data-planet-background-panel]')).toBeHidden();
+    const wholeBack = await actual(page,legacySelection); retained(page,wholeBack,original,pose);
+    expect(wholeBack.standResource).toBe(original.standResource);
+    expect(wholeBack.backgroundResource).toBe(original.backgroundResource);
+    await saved(fixture,legacySelection,1); expect(fixture.memory.get(KEY)).toBe(beforeHeld);
+
+    await preview(page,'stand',BOOKS); await preview(page,'background',DEFAULT);
+    const applyDraftRu = await actual(page,combined); retained(page,applyDraftRu,original,pose);
+    await expect(page.locator('[data-planet-composition-summary]')).toHaveText('Подставка: Стопка книг · Фон: Звёздное небо');
+    await page.screenshot({path:testInfo.outputPath('composition-combined-preview-ru-1440.png')});
     const beforeLocale = (await sample(page)).fingerprint;
     await page.locator(".native-planet-app .interface-language-control button").filter({ hasText: "EN" }).click();
     await expect(page.locator("html")).toHaveAttribute("lang", "en");
-    await expect(page.locator("[data-planet-stand-panel]")).toHaveAttribute("data-planet-stand-phase", "preview");
+    await expect(page.locator("[data-planet-background-panel]")).toHaveAttribute("data-planet-background-phase", "preview");
     await expect.poll(async () => (await sample(page)).fingerprint).not.toBe(beforeLocale);
-    expect(JSON.parse(fixture.memory.get(KEY)).selection).toEqual(withSky);
+    const applyDraftEn = await actual(page,combined); retained(page,applyDraftEn,original,pose);
+    await expect(page.locator('[data-planet-composition-summary]')).toHaveText('Stand: Stack of books · Background: Starry sky');
+    expect(applyDraftEn.standResource).toBe(applyDraftRu.standResource);
+    await show(page,'stand'); await expect(page.locator('[data-planet-stand-select]')).toHaveValue(BOOKS);
+    await show(page,'background'); await expect(page.locator('[data-planet-background-select]')).toHaveValue(DEFAULT);
+    await saved(fixture,legacySelection,1);
+    await page.setViewportSize({width:390,height:844}); await stablePose(page);
+    const backgroundPanel = page.locator('[data-planet-background-panel]');
+    await expect(backgroundPanel).toHaveAttribute('data-planet-background-phase','preview');
+    await expect(backgroundPanel.locator('[data-planet-composition-summary]')).toHaveText('Stand: Stack of books · Background: Starry sky');
+    const appearanceBounds = await backgroundPanel.evaluate(element => {
+      const box=element.getBoundingClientRect();
+      return {left:box.left,right:box.right,scroll:element.scrollWidth,client:element.clientWidth};
+    });
+    expect(appearanceBounds.left).toBeGreaterThanOrEqual(0); expect(appearanceBounds.right).toBeLessThanOrEqual(390);
+    expect(appearanceBounds.scroll).toBeLessThanOrEqual(appearanceBounds.client+1);
+    const narrowDraft = await actual(page,combined); retained(page,narrowDraft,original);
+    await saved(fixture,legacySelection,1);
+    await page.screenshot({path:testInfo.outputPath('composition-combined-preview-en-390.png')});
+    await backgroundPanel.locator('[data-planet-background-apply]').click();
+    await expect(backgroundPanel.locator('[data-planet-background-select]')).toBeFocused();
+    await saved(fixture,combined,2);
+    const combinedApplied = await actual(page,combined); retained(page,combinedApplied,original,narrowDraft.pose);
+    expect(combinedApplied.standResource).toBe(narrowDraft.standResource);
+    await expect(page.locator('canvas')).toHaveCount(1);
+    await page.setViewportSize({width:1440,height:850}); await stablePose(page);
+    fixture.result.observations.push({combinedDraft:{standOnly,firstTab,draft,roundTrip,wholeCancelled,beforeNativeBack,wholeBack,
+      applyDraftRu,applyDraftEn,narrowDraft,appearanceBounds,combinedApplied},noDraftWrites:true,oneCombinedApply:true});
+
+    // An explicit edition intent still cancels both pending accessory choices.
+    await preview(page,'stand',WOOD); await preview(page,'background',LIBRARY);
+    await actual(page,legacySelection); await saved(fixture,combined,2);
+    const beforeEditionPose = await stablePose(page);
     await chooseEdition(page, EARTH);
-    const committed = { ...withSky, editionId: EARTH };
-    await saved(fixture, committed, 4);
-    const selected = await actual(page, committed); retained(page, selected, original, pose);
+    const committed = { ...combined, editionId: EARTH };
+    await saved(fixture, committed, 3);
+    const selected = await actual(page, committed); retained(page, selected, original, beforeEditionPose);
     expect(selected.fingerprint).not.toBe(original.fingerprint);
-    await expect(page.locator("[data-planet-stand-panel]")).toBeHidden();
+    await expect(page.locator("[data-planet-background-panel]")).toBeHidden();
     await page.screenshot({ path: testInfo.outputPath("composition-edition-applied-en.png") });
     expect(legacyKeys.map(key => [key, fixture.memory.get(key) ?? null])).toEqual(legacyBytes);
     const beforeReload = fixture.operations.length, bytes = fixture.memory.get(KEY);
@@ -332,7 +397,7 @@ test("one composition migrates the three legacy choices after a real frame, appl
     await expect(page.locator("html")).toHaveAttribute("lang", "en");
     expect(fixture.memory.get(KEY)).toBe(bytes);
     expect(fixture.operations.slice(beforeReload).filter(value => legacyKeys.includes(value.key))).toEqual([]);
-    await saved(fixture, committed, 4);
+    await saved(fixture, committed, 3);
     fixture.result.observations.push({ migrated: original, applied: selected, restored, legacyPreferencesUnchanged: true });
     fixture.verify();
   } finally { await fixture.close(); }

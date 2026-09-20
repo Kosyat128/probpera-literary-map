@@ -459,25 +459,32 @@ test("library preview renders real depth and manual-orbit parallax while preserv
     await expect.poll(async () => (await probe(page)).pendingDisposals).toBe(0);
     await expect.poll(async () => (await probe(page)).gpuMemory.textures).toBeLessThanOrEqual(initial.gpuMemory.textures);
     expect(fixture.operations).toEqual([]); expect(fixture.memory.has(KEY)).toBe(false);
-    // The shared appearance panel hands ownership between its two actual
-    // controllers: changing tabs cancels the departing controller's draft.
+    // Tabs edit one composition draft. Only explicit Cancel restores the
+    // committed stand/background pair before the separate Apply path below.
     await preview(page);
     await page.locator('[data-planet-customization-tab="stand"]').click();
     const standPanel = page.locator("[data-planet-stand-panel]");
     await expect(standPanel).toBeVisible(); await expect(panel(page)).toBeHidden();
-    const backgroundCancelledOnTab = await rendered(page, DEFAULT);
-    retained(page, backgroundCancelledOnTab, initial, orbitPose);
-    await expect.poll(async () => (await probe(page)).pendingDisposals).toBe(0);
+    const backgroundRetainedOnTab = await rendered(page, LIBRARY);
+    retained(page, backgroundRetainedOnTab, initial, orbitPose);
     await standPanel.locator("[data-planet-stand-select]").selectOption("stand.base.museum");
     await expect(standPanel).toHaveAttribute("data-planet-stand-phase", "preview");
     await expect.poll(async () => (await probe(page)).stands.map(stand => stand.id)).toEqual(["stand.base.museum"]);
     const standDraft = await probe(page);
-    expect(standDraft.backgrounds).toEqual([]);
+    expect(actualLibrary(standDraft).uuid).toBe(actualLibrary(backgroundRetainedOnTab).uuid);
     await page.locator('[data-planet-customization-tab="background"]').click();
     await expect(panel(page)).toBeVisible(); await expect(standPanel).toBeHidden();
-    const standCancelledOnTab = await rendered(page, DEFAULT);
-    retained(page, standCancelledOnTab, initial, orbitPose);
+    await expect(panel(page).locator('[data-planet-background-select]')).toHaveValue(LIBRARY);
+    const standRetainedOnTab = await probe(page);
+    expect(standRetainedOnTab.stands).toEqual(standDraft.stands);
+    expect(actualLibrary(standRetainedOnTab).uuid).toBe(actualLibrary(backgroundRetainedOnTab).uuid);
+    retained(page,standRetainedOnTab,{...initial,stands:standDraft.stands},orbitPose);
     expect(fixture.operations).toEqual([]); expect(fixture.memory.get(STAND_KEY)).toBe(BOOKS);
+    await panel(page).locator('[data-planet-background-cancel]').click();
+    await expect(panel(page)).toBeHidden();
+    const explicitlyCancelled = await rendered(page,DEFAULT);
+    retained(page,explicitlyCancelled,initial,orbitPose);
+    await expect.poll(async () => (await probe(page)).pendingDisposals).toBe(0);
     await preview(page);
     await panel(page).locator("[data-planet-background-apply]").click();
     await expect.poll(() => fixture.memory.get(KEY)).toBe(LIBRARY);
@@ -491,7 +498,7 @@ test("library preview renders real depth and manual-orbit parallax while preserv
     expect(fixture.memory.get(STAND_KEY)).toBe(BOOKS);
     expect(fixture.operations.map(call => [call.value, call.accepted])).toEqual([[LIBRARY, true]]);
     fixture.result.observations.push({ initial, draft, orbited, parallax, portrait, homePose, orbitPose,
-      tabHandoff: { backgroundCancelledOnTab, standDraft, standCancelledOnTab },
+      tabHandoff: { backgroundRetainedOnTab, standDraft, standRetainedOnTab, explicitlyCancelled },
       realDepthAndOrbitOnly: true, retainedStand: initial.stands, noPreviewWrites: true });
     fixture.verify();
   } finally { await fixture.close(); }

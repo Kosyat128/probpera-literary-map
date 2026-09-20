@@ -14,10 +14,10 @@ export const planetStandCopy = {
     ru: {
       heading: "Подставка глобуса", toggle: "Подставки", close: "Закрыть", label: "Оформление подставки",
       hint: "Вращайте глобус и меняйте масштаб, чтобы рассмотреть подставку.",
-      preparing: "Готовим предпросмотр…", preview: "Предпросмотр. Примените выбор или отмените изменения.",
-      failed: "Предпросмотр не открылся. Прежняя подставка восстановлена.",
+      preparing: "Готовим предпросмотр…", preview: "Предпросмотр. Подставка и фон применяются вместе.",
+      failed: "Предпросмотр не открылся. Прежнее оформление восстановлено.",
       apply: "Применить", cancel: "Отмена", saving: "Сохраняем выбор…",
-      saveFailed: "Сохранение не подтверждено. Подставка применена, но при следующем запуске выбор может сброситься.",
+      saveFailed: "Сохранение не подтверждено. Оформление применено, но при следующем запуске выбор может сброситься.",
       retry: "Повторить сохранение",
       names: { canonical: "Фирменное оформление", "stand.base.three-whales": "Три кита",
         "stand.base.portrait-pushkin": "Александр Пушкин", "stand.base.portrait-hemingway": "Эрнест Хемингуэй", "stand.base.portrait-tolstoy": "Лев Толстой", "stand.base.museum": "Музейная", "stand.base.wood": "Деревянная", "stand.base.book-stack": "Стопка книг" },
@@ -25,10 +25,10 @@ export const planetStandCopy = {
     en: {
       heading: "Globe stand", toggle: "Stands", close: "Close", label: "Stand appearance",
       hint: "Rotate the globe and adjust the zoom to inspect the stand.",
-      preparing: "Preparing preview…", preview: "Preview. Apply your choice or cancel the changes.",
-      failed: "The preview could not be shown. Your previous stand has been restored.",
+      preparing: "Preparing preview…", preview: "Preview. The stand and background will be applied together.",
+      failed: "The preview could not be shown. Your previous appearance has been restored.",
       apply: "Apply", cancel: "Cancel", saving: "Saving your choice…",
-      saveFailed: "Saving could not be confirmed. The stand is applied, but your choice may reset the next time you open the app.",
+      saveFailed: "Saving could not be confirmed. The appearance is applied, but your choice may reset the next time you open the app.",
       retry: "Try saving again",
       names: { canonical: "Original frame", "stand.base.three-whales": "Three whales",
         "stand.base.portrait-pushkin": "Alexander Pushkin", "stand.base.portrait-hemingway": "Ernest Hemingway", "stand.base.portrait-tolstoy": "Leo Tolstoy", "stand.base.museum": "Museum", "stand.base.wood": "Wooden", "stand.base.book-stack": "Stack of books" },
@@ -42,20 +42,20 @@ export const planetBackgroundCopy = {
     ru: {
       close: "Закрыть", label: "Пространство вокруг глобуса",
       hint: "Вращайте глобус, чтобы рассмотреть окружение.",
-      preparing: "Готовим предпросмотр…", preview: "Предпросмотр. Примените выбор или отмените изменения.",
-      failed: "Предпросмотр не открылся. Прежний фон восстановлен.",
+      preparing: "Готовим предпросмотр…", preview: "Предпросмотр. Подставка и фон применяются вместе.",
+      failed: "Предпросмотр не открылся. Прежнее оформление восстановлено.",
       apply: "Применить", cancel: "Отмена", saving: "Сохраняем выбор…",
-      saveFailed: "Сохранение не подтверждено. Фон применён, но при следующем запуске выбор может сброситься.",
+      saveFailed: "Сохранение не подтверждено. Оформление применено, но при следующем запуске выбор может сброситься.",
       retry: "Повторить сохранение",
       names: { "background.base.site-starfield": "Звёздное небо", "background.base.library": "Библиотека", "background.base.writer-study": "Кабинет писателя" },
     },
     en: {
       close: "Close", label: "Space around the globe",
       hint: "Rotate the globe to explore the surrounding space.",
-      preparing: "Preparing preview…", preview: "Preview. Apply your choice or cancel the changes.",
-      failed: "The preview could not be shown. Your previous background has been restored.",
+      preparing: "Preparing preview…", preview: "Preview. The stand and background will be applied together.",
+      failed: "The preview could not be shown. Your previous appearance has been restored.",
       apply: "Apply", cancel: "Cancel", saving: "Saving your choice…",
-      saveFailed: "Saving could not be confirmed. The background is applied, but your choice may reset the next time you open the app.",
+      saveFailed: "Saving could not be confirmed. The appearance is applied, but your choice may reset the next time you open the app.",
       retry: "Try saving again",
       names: { "background.base.site-starfield": "Starry sky", "background.base.library": "Library", "background.base.writer-study": "Writer's study" },
     },
@@ -84,9 +84,8 @@ export default function PlanetStandControls({ controller, snapshot, backgroundCo
   useEffect(() => { if (current.isOpen) select.current?.focus({ preventScroll: true }); }, [current.isOpen, tab]);
   const switchTab = (next: "stand" | "background") => {
     if (next === tab) return;
-    if (current.isOpen) activeController.cancel();
-    setTab(next);
-    (next === "stand" ? controller : backgroundController).open();
+    // Both tabs edit the same draft. Closing the panel owns whole-draft rollback.
+    if ((next === "stand" ? controller : backgroundController).open()) setTab(next);
   };
   return <div className="planet-stand-controls" data-planet-stand-controls="">
     <button type="button" className="planet-stand-controls__toggle" data-planet-stand-toggle=""
@@ -120,6 +119,10 @@ export default function PlanetStandControls({ controller, snapshot, backgroundCo
           data-planet-stand-option={isStand ? option.value : undefined}
           data-planet-background-option={isStand ? undefined : option.value}>{option.label}</option>)}
       </select>
+      <p className="planet-stand-controls__summary" data-planet-composition-summary="">
+        {language === "ru" ? "Подставка: " : "Stand: "}{planetStandCopy.locales[language].names[snapshot.displayedId]}
+        {" · "}{language === "ru" ? "Фон: " : "Background: "}{planetBackgroundCopy.locales[language].names[backgroundSnapshot.displayedId]}
+      </p>
       <p className="planet-stand-controls__hint">{copy.hint}</p>
       <p className="planet-stand-controls__status" role="status" aria-live="polite" aria-atomic="true">
         {current.phase === "preparing" ? copy.preparing : current.phase === "preview" ? copy.preview : current.phase === "error" ? copy.failed : ""}

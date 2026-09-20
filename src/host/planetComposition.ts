@@ -258,7 +258,15 @@ export function createPlanetCompositionController(options: PlanetCompositionOpti
     },
     open(editor: "stand" | "background") {
       if (!active || !visible || (editor !== "stand" && editor !== "background") || !compatible(snapshot.applied)) return false;
-      if (snapshot.editor === editor) return true;
+      if (snapshot.editor !== null) {
+        if (!compatible(snapshot.displayed)) return false;
+        // Tabs are views of the same draft. Its receipts and deadline still belong
+        // to the requested composition, including a frame that is not ready yet.
+        if (snapshot.editor !== editor) publish({ ...snapshot, editor });
+        return true;
+      }
+      // Opening an editor is new intent if restore or an immediate edition change
+      // is in flight; neither may become part of the user's uncommitted draft.
       fenceHydration(); clearFrame(); ready.clear(); pending = null;
       publish({ ...snapshot, displayed: snapshot.applied, editor, phase: "idle", reason: null,
         renderRevision: snapshot.renderRevision + 1 });
@@ -266,7 +274,7 @@ export function createPlanetCompositionController(options: PlanetCompositionOpti
     },
     preview(part: "stand" | "background", id: string) {
       if (!active || !visible || snapshot.editor !== part || (part !== "stand" && part !== "background")) return false;
-      const selection = { ...snapshot.applied, [partKeys[part]]: id };
+      const selection = { ...snapshot.displayed, [partKeys[part]]: id };
       if (!compatible(selection)) return false;
       fenceHydration(); prepare(selection, "preview"); return true;
     },
