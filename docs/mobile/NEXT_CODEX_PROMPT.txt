@@ -1,3 +1,13 @@
+<!-- s13-visual-refinement-20260920:begin -->
+Source 585e3af6 records bounded portrait/study refinement and a shared original-sketch inspection view.
+Four geometry cases, TypeScript, one actual Chrome interaction and one PWA offline smoke pass; unrelated suites are not counted.
+Six isolated captures and separately recorded inspected images are evidence, not likeness/art/realism approval. Final saucers and composition owners are preserved.
+Inventory remains 29 required, 12 source-bound, zero accepted, plus three owner additions.
+PWA 1a5938c1; Android-dev 99a99dda. Evidence: evidence/S13/visual-refinement-20260920/result.json.
+Stages remain 3 complete, 11 in progress, 27 unstarted; first open S03.
+Implement a shared stand/background draft under S13.CUSTOM-003 and document 17 sections 2/7: tab changes retain the draft, one Apply saves both, Cancel/error restores both. This next slice intentionally changes the existing composition controller and appearance UI; preserve the single scene, camera/atlas owners and all current geometry including reduced saucers, golden whales and 984-book library. Update the legacy browser cancel-on-tab expectation. Keep recorded visual defects and remaining full catalog, child, device, iOS and release acceptance open; reuse unchanged evidence.
+<!-- s13-visual-refinement-20260920:end -->
+
 <!-- s13-scene-inspection-20260920:begin -->
 Source a115e9f1 adds transient adult manuscript inspection to the existing writer study.
 Three controller cases, TypeScript and one actual Chrome case pass; unrelated suites are not counted.

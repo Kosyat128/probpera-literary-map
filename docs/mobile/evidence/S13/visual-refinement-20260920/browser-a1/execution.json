@@ -1,0 +1,11 @@
+{
+  "args": [
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S13/visual-refinement-20260920/playwright.config.mjs"
+  ],
+  "exitCode": 0,
+  "durationMs": 24255,
+  "stdout": "\nRunning 1 test using 1 worker\n\n\n\n[1/1] tests\\pwa\\globe-scene-inspection.spec.mjs:391:1 › scene inspection uses actual manuscript geometry, accessible modal controls and guarded canonical book navigation\n  1 passed (23.6s)\n",
+  "stderr": "(node:23972) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+}
