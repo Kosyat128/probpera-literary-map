@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-20T03:29:47.374Z",
+  "sourceCommit": "3f2b2d009dfbfe1704e9442a6709a183cee657e2",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S13/library-window-depth-20260920/source-manifests/93209a66ffcd529a.json",
+    "sha256": "93209a66ffcd529a9be60ddb13685c189413e2a907bfaf1b7286bb5df9a1e2d3",
+    "fileCount": 80
+  },
+  "actualAppCapture": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-library-depth/browser-a1/library-window-depth-libra-4df0e-hrough-preview-cancellation/library-window-depth.json",
+    "sha256": "a7b085607d2bbe38c6ea379c0e8b27fcdccab64fc214752a548ac8b808592e0c"
+  },
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-library-depth/browser-a1/library-window-depth-libra-4df0e-hrough-preview-cancellation/library-window-depth-first-ru-1440.png",
+      "sha256": "cadc4816687fee8cfa1a107a83d93d5bbe52f11fa1f60ef9429e5a84a22d23d9",
+      "inspected": true,
+      "reviewer": "Codex root visual inspection via view_image",
+      "findings": [
+        "Actual RU application at the widest allowed product camera view: the retained book stacks, gallery and 32 glazing placements frame a quiet outdoor sky. Sparse bare branches are visible through the upper window to the right of the globe.",
+        "Lower windows now show a physical ground horizon. The exterior remains sparse and stylized; this is a local depth improvement, not satisfaction of the maximum realism requirement.",
+        "The persistent globe and country sheet occupy much of the view; the capture demonstrates visible openings and branch placement, not every exterior instance or fine surface detail."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-library-depth/browser-a1/library-window-depth-libra-4df0e-hrough-preview-cancellation/library-window-depth-orbit-en-1440.png",
+      "sha256": "c8819ea25f9d22d1b45b3fb44c0c492b2919b3cfa0ee791d91a7bf42ad3a1f4d",
+      "inspected": true,
+      "reviewer": "Codex root visual inspection via view_image",
+      "findings": [
+        "After an actual keyboard orbit, the same branch remains visible in the upper right window with a changed position relative to its frame; the source capture measures matching geometry and pane parallax.",
+        "The lower ground horizon and repeated library furniture remain intact. No obvious wall gap is visible in this still; unit rays separately check all32 apertures and retained solid jambs.",
+        "English controls remain readable around the same globe. The actual App scenario also restores the same library resource after writer-study preview cancellation, with no appearance writes."
+      ]
+    }
+  ],
+  "artAccepted": false,
+  "childApproved": false,
+  "userRealismRequirementSatisfied": false,
+  "releaseReady": false
+}

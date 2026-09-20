@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "mode": "unit",
+  "attempt": "a1",
+  "startedAt": "2026-09-20T03:26:30.560Z",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S13/library-window-depth-20260920/source-manifests/93209a66ffcd529a.json",
+    "sha256": "93209a66ffcd529a9be60ddb13685c189413e2a907bfaf1b7286bb5df9a1e2d3",
+    "fileCount": 80
+  },
+  "checkInputs": [
+    {
+      "path": "docs/mobile/evidence/S13/library-window-depth-20260920/check.mjs",
+      "sha256": "920298da50e06b3648a3021c820800d232ac86ead503ada651b690349b5586c5"
+    },
+    {
+      "path": "docs/mobile/evidence/S13/library-window-depth-20260920/entry.json",
+      "sha256": "821817e4034d6dd40115e168d859770e30b0cdcb6f29e93e22e00fbae5692701"
+    },
+    {
+      "path": "docs/mobile/evidence/S13/library-window-depth-20260920/unit.config.mjs",
+      "sha256": "3813b531cf89b8be04e8ca73ebeed5f695cace2dad8feadc00615690036d9335"
+    },
+    {
+      "path": "src/components/globeLibraryGeometry.test.ts",
+      "sha256": "bec9fe55e6b1830e201e791899ebc47cdbae086e113c7e04376f8b05e12f5239"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "tests": {
+    "passed": 6,
+    "failed": 0,
+    "skipped": 0
+  },
+  "reportError": null,
+  "pass": true,
+  "execution": {
+    "exitCode": 0,
+    "durationMs": 3825
+  },
+  "stageAccepted": false,
+  "artAccepted": false,
+  "releaseReady": false
+}

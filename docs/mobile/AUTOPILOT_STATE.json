@@ -3,9 +3,9 @@
   "repository": "Kosyat128/probpera-literary-map",
   "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
-  "headSha": "069db3e5a01244de06925dc3ac44c1bc3910e2a4",
+  "headSha": "3f2b2d009dfbfe1704e9442a6709a183cee657e2",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-20T03:14:43.978Z",
+  "updatedAt": "2026-09-20T03:31:40.247Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -2137,11 +2137,12 @@
             "docs/mobile/evidence/S13/visual-refinement-20260920/result.json",
             "docs/mobile/evidence/S13/book-cloud-stand-20260920/result.json",
             "docs/mobile/evidence/S13/writer-study-map-20260920/result.json",
-            "docs/mobile/evidence/S13/whale-jaw-detail-20260920/result.json"
+            "docs/mobile/evidence/S13/whale-jaw-detail-20260920/result.json",
+            "docs/mobile/evidence/S13/library-window-depth-20260920/result.json"
           ],
-          "commit": "069db3e5a01244de06925dc3ac44c1bc3910e2a4",
-          "lastValidatedAt": "2026-09-20T03:14:43.978Z",
-          "notes": "Included skins/stands/backgrounds/accessories. Data-driven customization must preserve the same scene before measured performance and parity checks. Three adult included procedural stands now use the canonical scene with rendered-preview acknowledgement, apply/cancel, ordered preference recovery and scoped resource disposal. Canonical default is retained. Full composition, child/optional catalogs, device budgets and release acceptance remain open. The included two-level library and three stands now have detailed original geometry, owned procedural craft maps and inspected actual-App/close-up views following the explicit realism requirement. Same-scene preview, actual frame acknowledgement, persistence, context recovery and scoped disposal are evidenced. Formal art/lightmap acceptance, full composition, catalog, child/rights and device gates remain open. Existing included edition/stand/background IDs now share one bounded composition record. Source inventory remains 11/29, zero accepted; no new catalog or art approval is implied. The included library has source-aligned lighting, cabinet occlusion and more believable volume grouping, inspected in the actual app and close-ups. This library and shared-material slice adds no catalog IDs; inventory remains 11/29, zero accepted, with formal art/lightmap approval open. The included library retains its 16-bay/8-row/8-slot nominal layout and believable placement density at reduced tiers using economical true-3D geometry. No catalog IDs are added; inventory remains 11/29 source-bound, zero accepted, with final art/lightmap approval open. Included library and stand surfaces refine wood mapping, oxidation and leather response while retaining the reviewed library density. Current source-bound actual-App and close-up review remains scoped evidence, not final art acceptance. No catalog IDs added; inventory remains 11/29 source-bound, zero accepted. The explicitly requested golden three-whale stand inherits canonical-globe identity; the immutable Starter Set remains 29 items, 11 source-bound and zero accepted. Current close-up and actual-App review is scoped evidence, not final art acceptance. Three explicit owner-added ceramic portrait stands are self-canonical included items, separate from 29 mandatory requirements. Starter Set remains 11 source-bound and zero accepted; likeness and art acceptance remain open. STARTER-012 writer study has an original full-3D source binding: 12/29 mandatory items are source-bound, zero accepted; three owner-added portrait stands remain separate. Refined existing portrait surfaces and writer-study depth; no new catalog IDs or art acceptance. The final reduced saucer, contact seat and portrait scale have exact prior-source fragment proof. STARTER-009 now has an original adult book-cloud stand source binding through the existing composition and resource owners. Fresh inventory records 13/29 mandatory items source-bound, zero accepted, and the same three separate owner additions. 139 cases across four selected geometry/port/controller/compatibility suites, TypeScript and one actual-App Chrome case bind inspected tier/locale views and local PWA/Android artifacts. Seven composition owners and established portrait/whale/background/reader/locale/storage inputs remain unchanged. Child age review, rights, art, full catalog/stress and installed-device acceptance remain open. The writer study displays the same live globe atlas on an authored wall-map sheet and raised border. 3 cases in the selected study geometry suite, TypeScript and one actual-App Chrome case bind borrowed texture ownership, locale/edition/background transitions and local PWA/Android artifacts. Forty-one established sources, including all stand proportions, inspection controllers, camera rig and seven composition owners, remain unchanged. Historical Starter Set inventory remains 29/13/0 plus three owner additions, with inherited and newly changed bindings explicit. Formal art, rights, child, installed-device and release acceptance remain open. The original adult gold three-whale stand now has a physical lower jaw with sculpted grooves; the shared authored reflection map is vertically corrected to match Three equirectangular sampling without new texels, lights or resource budgets. 8 cases across the selected whale geometry and craft material suites, TypeScript and one actual-App Chrome case bind model/resource correctness, product inspection and exact return without saving appearance; two views are inspected and local PWA/Android artifacts are preserved. Forty-three established sources, including all other stand proportions, the wall map, inspection and composition owners, readers, locale and storage, remain unchanged. Historical Starter Set inventory remains 29/13/0 plus three owner additions, with inherited and newly changed bindings explicit. Formal art, rights, child, installed-device and release acceptance remain open."
+          "commit": "3f2b2d009dfbfe1704e9442a6709a183cee657e2",
+          "lastValidatedAt": "2026-09-20T03:31:40.247Z",
+          "notes": "Included skins/stands/backgrounds/accessories. Data-driven customization must preserve the same scene before measured performance and parity checks. Three adult included procedural stands now use the canonical scene with rendered-preview acknowledgement, apply/cancel, ordered preference recovery and scoped resource disposal. Canonical default is retained. Full composition, child/optional catalogs, device budgets and release acceptance remain open. The included two-level library and three stands now have detailed original geometry, owned procedural craft maps and inspected actual-App/close-up views following the explicit realism requirement. Same-scene preview, actual frame acknowledgement, persistence, context recovery and scoped disposal are evidenced. Formal art/lightmap acceptance, full composition, catalog, child/rights and device gates remain open. Existing included edition/stand/background IDs now share one bounded composition record. Source inventory remains 11/29, zero accepted; no new catalog or art approval is implied. The included library has source-aligned lighting, cabinet occlusion and more believable volume grouping, inspected in the actual app and close-ups. This library and shared-material slice adds no catalog IDs; inventory remains 11/29, zero accepted, with formal art/lightmap approval open. The included library retains its 16-bay/8-row/8-slot nominal layout and believable placement density at reduced tiers using economical true-3D geometry. No catalog IDs are added; inventory remains 11/29 source-bound, zero accepted, with final art/lightmap approval open. Included library and stand surfaces refine wood mapping, oxidation and leather response while retaining the reviewed library density. Current source-bound actual-App and close-up review remains scoped evidence, not final art acceptance. No catalog IDs added; inventory remains 11/29 source-bound, zero accepted. The explicitly requested golden three-whale stand inherits canonical-globe identity; the immutable Starter Set remains 29 items, 11 source-bound and zero accepted. Current close-up and actual-App review is scoped evidence, not final art acceptance. Three explicit owner-added ceramic portrait stands are self-canonical included items, separate from 29 mandatory requirements. Starter Set remains 11 source-bound and zero accepted; likeness and art acceptance remain open. STARTER-012 writer study has an original full-3D source binding: 12/29 mandatory items are source-bound, zero accepted; three owner-added portrait stands remain separate. Refined existing portrait surfaces and writer-study depth; no new catalog IDs or art acceptance. The final reduced saucer, contact seat and portrait scale have exact prior-source fragment proof. STARTER-009 now has an original adult book-cloud stand source binding through the existing composition and resource owners. Fresh inventory records 13/29 mandatory items source-bound, zero accepted, and the same three separate owner additions. 139 cases across four selected geometry/port/controller/compatibility suites, TypeScript and one actual-App Chrome case bind inspected tier/locale views and local PWA/Android artifacts. Seven composition owners and established portrait/whale/background/reader/locale/storage inputs remain unchanged. Child age review, rights, art, full catalog/stress and installed-device acceptance remain open. The writer study displays the same live globe atlas on an authored wall-map sheet and raised border. 3 cases in the selected study geometry suite, TypeScript and one actual-App Chrome case bind borrowed texture ownership, locale/edition/background transitions and local PWA/Android artifacts. Forty-one established sources, including all stand proportions, inspection controllers, camera rig and seven composition owners, remain unchanged. Historical Starter Set inventory remains 29/13/0 plus three owner additions, with inherited and newly changed bindings explicit. Formal art, rights, child, installed-device and release acceptance remain open. The original adult gold three-whale stand now has a physical lower jaw with sculpted grooves; the shared authored reflection map is vertically corrected to match Three equirectangular sampling without new texels, lights or resource budgets. 8 cases across the selected whale geometry and craft material suites, TypeScript and one actual-App Chrome case bind model/resource correctness, product inspection and exact return without saving appearance; two views are inspected and local PWA/Android artifacts are preserved. Forty-three established sources, including all other stand proportions, the wall map, inspection and composition owners, readers, locale and storage, remain unchanged. Historical Starter Set inventory remains 29/13/0 plus three owner additions, with inherited and newly changed bindings explicit. Formal art, rights, child, installed-device and release acceptance remain open. The authored library windows now expose exterior depth with actual geometric parallax. 6 cases in the selected library geometry suite, TypeScript and one actual-App Chrome case bind model/resource correctness, camera-driven views and background preview cancellation without saving appearance; two views are inspected and local PWA/Android artifacts are preserved. Forty-four established sources, including whale geometry, corrected craft reflections, other stand proportions, the wall map, inspection and composition owners, readers, locale and storage, remain unchanged. Historical Starter Set inventory remains 29/13/0 plus three owner additions, with inherited and newly changed bindings explicit. Formal art, rights, child, installed-device and release acceptance remain open."
         },
         {
           "id": "S13.CUSTOM-002",
@@ -2255,7 +2256,13 @@
         "node docs/mobile/evidence/S13/whale-jaw-detail-20260920/check.mjs browser a1",
         "node docs/mobile/evidence/S13/whale-jaw-detail-20260920/run-pwa.mjs 069db3e5a01244de06925dc3ac44c1bc3910e2a4",
         "pwsh -File docs/mobile/evidence/S13/whale-jaw-detail-20260920/build-android.ps1 069db3e5a01244de06925dc3ac44c1bc3910e2a4",
-        "node docs/mobile/evidence/S13/whale-jaw-detail-20260920/preserve-android.mjs 069db3e5a01244de06925dc3ac44c1bc3910e2a4"
+        "node docs/mobile/evidence/S13/whale-jaw-detail-20260920/preserve-android.mjs 069db3e5a01244de06925dc3ac44c1bc3910e2a4",
+        "node docs/mobile/evidence/S13/library-window-depth-20260920/check.mjs unit a1",
+        "node docs/mobile/evidence/S13/library-window-depth-20260920/check.mjs static a1",
+        "node docs/mobile/evidence/S13/library-window-depth-20260920/check.mjs browser a1",
+        "node docs/mobile/evidence/S13/library-window-depth-20260920/run-pwa.mjs 3f2b2d009dfbfe1704e9442a6709a183cee657e2",
+        "pwsh -File docs/mobile/evidence/S13/library-window-depth-20260920/build-android.ps1 3f2b2d009dfbfe1704e9442a6709a183cee657e2",
+        "node docs/mobile/evidence/S13/library-window-depth-20260920/preserve-android.mjs 3f2b2d009dfbfe1704e9442a6709a183cee657e2"
       ],
       "artifacts": [
         "docs/mobile/evidence/S13/edition-preference-20260919/entry.json",
@@ -2377,7 +2384,16 @@
         "docs/mobile/evidence/S13/whale-jaw-detail-20260920/static-a2/result.json",
         "docs/mobile/evidence/S13/whale-jaw-detail-20260920/browser-a1/result.json",
         "docs/mobile/evidence/S13/whale-jaw-detail-20260920/pwa-a1/result.json",
-        "docs/mobile/evidence/S13/whale-jaw-detail-20260920/android-a1/result.json"
+        "docs/mobile/evidence/S13/whale-jaw-detail-20260920/android-a1/result.json",
+        "docs/mobile/evidence/S13/library-window-depth-20260920/entry.json",
+        "docs/mobile/evidence/S13/library-window-depth-20260920/result.json",
+        "docs/mobile/evidence/S13/library-window-depth-20260920/visual-review.json",
+        "docs/mobile/evidence/S13/library-window-depth-20260920/source-manifests/93209a66ffcd529a.json",
+        "docs/mobile/evidence/S13/library-window-depth-20260920/unit-a1/result.json",
+        "docs/mobile/evidence/S13/library-window-depth-20260920/static-a1/result.json",
+        "docs/mobile/evidence/S13/library-window-depth-20260920/browser-a1/result.json",
+        "docs/mobile/evidence/S13/library-window-depth-20260920/pwa-a1/result.json",
+        "docs/mobile/evidence/S13/library-window-depth-20260920/android-a1/result.json"
       ],
       "externalBlockers": []
     },
@@ -11014,7 +11030,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Continue the full application plan from the next bounded internal requirement. Preserve the original whale bodies, gold finish, emerald eyes and arrangement, refined physical jaw, corrected authored reflection orientation, all other stand proportions, shared atlas wall map, inspection return, appearance transactions, reader, locale and storage behavior. Continue remaining Starter Set/source bindings and functional gaps without repeating unchanged suites. Child/rights/art/lightmap review, full accessories/audio/catalog, screen-reader, installed-device/stress, actual storage retention, distributed sync/conflict resolution, iOS and release gates remain open.",
+    "nextAction": "Continue the full application plan from the next bounded internal requirement. Preserve the library window depth and layout, refined whale jaw, corrected reflection orientation, all other stand proportions, shared atlas wall map, inspection return, appearance transactions, reader, locale and storage behavior. Continue remaining Starter Set/source bindings and functional gaps without repeating unchanged suites. Child/rights/art/lightmap review, full accessories/audio/catalog, screen-reader, installed-device/stress, actual storage retention, distributed sync/conflict resolution, iOS and release gates remain open.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -11084,7 +11100,8 @@
       "docs/mobile/evidence/S13/book-cloud-stand-20260920/result.json",
       "docs/mobile/evidence/S13/stand-inspection-20260920/result.json",
       "docs/mobile/evidence/S13/writer-study-map-20260920/result.json",
-      "docs/mobile/evidence/S13/whale-jaw-detail-20260920/result.json"
+      "docs/mobile/evidence/S13/whale-jaw-detail-20260920/result.json",
+      "docs/mobile/evidence/S13/library-window-depth-20260920/result.json"
     ],
     "commands": [
       "node scripts/mobile/verify-requirements.mjs",
@@ -11124,7 +11141,8 @@
       "S13 book-cloud stand: 139 cases across the four selected suites, TypeScript, one actual-App Chrome case and exact local PWA/Android builds. Thirty-two established runtime inputs including seven composition owners remain unchanged. Fresh Starter Set inventory is 29 required / 13 source-bound / zero accepted plus three owner additions. Existing geometry suites were not rerun; child/rights/art, full catalog/stress and installed-device acceptance remain open.",
       "S13 stand inspection: 18 cases across three selected math/camera/UI-controller suites, TypeScript, one actual-App Chrome case and exact local PWA/Android builds. Thirty-six established inputs including all geometry/material factories and seven composition owners remain unchanged. Historical Starter Set inventory remains 29/13/0 plus three owner additions with explicit changed integration bindings. No geometry or inventory audit rerun; child/rights/art, full catalog/stress and installed-device acceptance remain open.",
       "S13 writer-study wall map: 3 selected geometry cases, TypeScript, one actual-App Chrome case, two inspected RU/EN images and exact local PWA/Android builds. Forty-one established inputs remain unchanged; no unchanged geometry suites or inventory audit rerun. Historical inventory changes are explicit. No art, child, installed-device or release acceptance.",
-      "S13 whale jaw detail and corrected craft reflection orientation: 8 selected geometry/material cases, TypeScript, one actual-App Chrome case, two inspected views through product controls and exact local PWA/Android builds. Forty-three established inputs remain unchanged; no unchanged geometry suites or inventory audit rerun. Historical inventory changes are explicit. No art, child, installed-device or release acceptance."
+      "S13 whale jaw detail and corrected craft reflection orientation: 8 selected geometry/material cases, TypeScript, one actual-App Chrome case, two inspected views through product controls and exact local PWA/Android builds. Forty-three established inputs remain unchanged; no unchanged geometry suites or inventory audit rerun. Historical inventory changes are explicit. No art, child, installed-device or release acceptance.",
+      "S13 library window depth: 6 selected geometry cases, TypeScript, one actual-App Chrome case, two inspected views through product controls and exact local PWA/Android builds. Forty-four established inputs remain unchanged; no unchanged geometry suites or inventory audit rerun. Historical inventory changes are explicit. No art, child, installed-device or release acceptance."
     ]
   },
   "requirementsHash": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732",
@@ -12969,6 +12987,14 @@
       "sha256": "55e295cbb47a95acd1bf7539f1b3347d28efb5f6ad19cde63bfd90c22af85651",
       "sourceCommit": "069db3e5a01244de06925dc3ac44c1bc3910e2a4",
       "status": "WHALE_JAW_DETAIL_SCOPED_VALIDATION",
+      "stageAccepted": false,
+      "releaseReady": false
+    },
+    "s13LibraryWindowDepth": {
+      "path": "docs/mobile/evidence/S13/library-window-depth-20260920/result.json",
+      "sha256": "96629158913921446f07e58ac1c868a0cc87af52f11392b227fd7c7ef5b02f02",
+      "sourceCommit": "3f2b2d009dfbfe1704e9442a6709a183cee657e2",
+      "status": "LIBRARY_WINDOW_DEPTH_SCOPED_VALIDATION",
       "stageAccepted": false,
       "releaseReady": false
     }

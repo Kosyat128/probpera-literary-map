@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S13/library-window-depth-20260920/playwright.config.mjs"
+  ],
+  "exitCode": 0,
+  "durationMs": 33035,
+  "stdout": {
+    "path": "docs/mobile/evidence/S13/library-window-depth-20260920/browser-a1/stdout.log",
+    "bytes": 204,
+    "sha256": "af32f84607ca05005088ca58f86038cb5a08340314230e7c255ff94cf41762b2"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S13/library-window-depth-20260920/browser-a1/stderr.log",
+    "bytes": 164,
+    "sha256": "dc1a9ed41ca2ab0c79b26c601e71c1450b313a711edc63e34ebe8ad304497d7d"
+  }
+}
