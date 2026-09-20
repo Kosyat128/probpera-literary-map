@@ -1,3 +1,12 @@
+<!-- s11-storage-status-20260920:begin -->
+Source 892051bd adds bounded PWA storage waiting, partial-estimate retention and explicit retry with late-reply fencing.
+11 controller cases, TypeScript, one real-Chrome device-panel fixture and one PWA offline smoke pass. Storage replies and elapsed time are controlled; no actual persistence grant, full App/globe or installed-device claim is made.
+S11.MOD-041 and S11.UX-006 receive evidence only; all criterion and stage statuses remain unchanged. Thirty-one reader/scene/locale inputs are retained. Historical Starter Set counts stay 29/12/0 plus three owner additions with changed-input mapping, not an overall current source binding.
+PWA 36e98c63; Android-dev ac6bb18d. Evidence: evidence/S11/storage-status-20260920/result.json.
+Stages remain 3 complete, 11 in progress, 27 unstarted; first open S03.
+Continue the full application plan from the next bounded internal requirement. Preserve bounded PWA storage waiting, useful partial estimates, explicit user-gesture persistence requests and late-reply fences. Keep durable account-scoped reading-library intent, scene composition and foreground locale priority. Actual browser retention/device behavior, full distributed sync/conflict resolution, concurrent-tab atomicity, unabortable remote ordering, accessories/audio/catalog, child, screen-reader, art/lightmap, iOS and release gates remain open. Do not rerun unchanged reader, geometry or historical checks.
+<!-- s11-storage-status-20260920:end -->
+
 <!-- s11-reading-library-offline-20260920:begin -->
 Source de3af847 preserves adult reading-library pending intent across reloads and remote failure, with scoped retry and local persistence status.
 16 cases in one hook suite, TypeScript, one real-Chrome hook/notice fixture and one PWA offline smoke pass. The fixture uses controlled remote transport, not the full App, globe, actual network or installed native device.

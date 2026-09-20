@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "mode": "static",
+  "attempt": "a1",
+  "startedAt": "2026-09-20T01:26:58.215Z",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S11/storage-status-20260920/source-manifests/7b84be98dedc099b.json",
+    "sha256": "7b84be98dedc099b7d2a4f4d1fb8ebb484aa1742f083c0a4545f90ebe6896850",
+    "fileCount": 75
+  },
+  "checkInputs": [
+    {
+      "path": "docs/mobile/evidence/S11/storage-status-20260920/check.mjs",
+      "sha256": "2986ec2300cc4023b95cfffcd63d0f4429bf735b17e0b8d00b669ee732147300"
+    },
+    {
+      "path": "docs/mobile/evidence/S11/storage-status-20260920/entry.json",
+      "sha256": "1364c406d7acadb23d60d5b753c1d1a3e811299fd373c9bcb3ff46bfe26b69ef"
+    },
+    {
+      "path": "src/pwa/PwaStorageStatus.test.ts",
+      "sha256": "34635f9f4d1c6127c7f96608c194ede77a77e474d38cdff76df854ed72450106"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "tests": null,
+  "reportError": null,
+  "pass": true,
+  "execution": {
+    "exitCode": 0,
+    "durationMs": 20284
+  },
+  "stageAccepted": false,
+  "artAccepted": false,
+  "releaseReady": false
+}

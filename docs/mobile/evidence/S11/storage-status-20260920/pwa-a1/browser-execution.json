@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S11/storage-status-20260920/pwa.config.mjs"
+  ],
+  "exitCode": 0,
+  "durationMs": 20421,
+  "stdout": {
+    "path": "docs/mobile/evidence/S11/storage-status-20260920/pwa-a1/browser-stdout.log",
+    "bytes": 189,
+    "sha256": "8b23a306377c7f91e416cc956a09060174d1d5bb1b4d464e23d357112e112565"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S11/storage-status-20260920/pwa-a1/browser-stderr.log",
+    "bytes": 164,
+    "sha256": "0e721950bc80e61f895842a6e7629b552d2d42c5b93acc550561a8686d7f5474"
+  }
+}

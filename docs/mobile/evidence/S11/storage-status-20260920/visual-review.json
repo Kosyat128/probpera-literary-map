@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-20T01:28:58.994Z",
+  "sourceCommit": "892051bd50a1282dacaf0f9799391d19449f4dcc",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S11/storage-status-20260920/source-manifests/7b84be98dedc099b.json",
+    "sha256": "7b84be98dedc099b7d2a4f4d1fb8ebb484aa1742f083c0a4545f90ebe6896850",
+    "fileCount": 75
+  },
+  "sourceFixtureCapture": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s11-storage-status/browser-a1/storage-status-device-stor-7447e-es-across-retry-and-unmount/storage-status-result.json",
+    "sha256": "41d33962e88e76794b60f5d745ec62af5c78a85127647d63935ddce59d27d326"
+  },
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s11-storage-status/browser-a1/storage-status-device-stor-7447e-es-across-retry-and-unmount/storage-status-timeout-ru-390.png",
+      "sha256": "92ff09d478594b08601edcd45aba7d26f5f5286a16faf1f1f46823f80d848582",
+      "inspected": true,
+      "reviewer": "/root",
+      "findings": [
+        "The actual RU storage card fits 390 px with the timeout message, retained 12 MB usage and 64 MB quota, and readable enabled retry/protection buttons.",
+        "The surrounding real device-panel CSS remains legible; this is a component fixture, not an entire application or installed device."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s11-storage-status/browser-a1/storage-status-device-stor-7447e-es-across-retry-and-unmount/storage-status-recovered-en-1440.png",
+      "sha256": "775b73380d890a8f504935954394f62f1bbf27a11f78175fe96d1fca8c908fb9",
+      "inspected": true,
+      "reviewer": "/root",
+      "findings": [
+        "The actual EN storage card shows recovered 24 MB usage and 96 MB quota with temporary-storage copy and both available actions.",
+        "The 1440 px fixture has no clipped labels or overlapping controls; browser StorageManager choices remain controlled inputs."
+      ]
+    }
+  ],
+  "actualFullApp": false,
+  "actualGlobe": false,
+  "artAccepted": false,
+  "childApproved": false,
+  "userRealismRequirementSatisfied": false,
+  "releaseReady": false,
+  "notes": [
+    "A real Chrome click starts the controlled persist method inside the trusted React click stack, with active user activation.",
+    "Clock travel exercises the eight-second deadline without a real eight-second sleep. No real browser persistence grant or installed-device behavior is established."
+  ]
+}
