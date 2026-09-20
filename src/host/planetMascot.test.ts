@@ -13,6 +13,90 @@ const migratedBooks = { ...savedBooks, schemaVersion: 2,
   resume: { ...savedBooks.resume, routeVersion: 1 }, progress: [] } as const;
 
 describe("adult local guided companion", () => {
+  it.each([undefined, "idle", "loading", "error"] as const)("suspends selected-entity steps when country readiness is %s without acknowledging retained selections", countryStatus => {
+    for (const step of [0, 1, 2]) {
+      const controller = createPlanetMascotController();
+      const selected = ready({ selectedCountry: true, selectedWriter: true, selectionKey: "a/writer", authorBooksStatus: "applied" });
+      controller.setContext(selected); controller.start("country-to-book");
+      for (let index = 0; index < step; index++) expect(controller.next()).toBe(true);
+      const screen = step === 2 ? "collection" : "globe";
+      controller.setContext({ ...selected, screen });
+      const intent = controller.getPreferenceIntent(), previousRevision = controller.getSnapshot().revision;
+      expect(controller.getSnapshot().canAdvance).toBe(true);
+      controller.setContext({ ...selected, screen, countryStatus });
+      expect(controller.getSnapshot()).toMatchObject({ step, canAdvance: false, completedRoute: null });
+      expect(controller.next()).toBe(false);
+      if (step > 0) {
+        const action = step === 1 ? "writer" : "books", navigation = vi.fn();
+        expect(controller.canAct(action)).toBe(false);
+        expect(controller.act(action, controller.getSnapshot().revision, navigation)).toBe(false);
+        expect(navigation).not.toHaveBeenCalled();
+      }
+      expect(controller.getPreferenceIntent()).toBe(intent);
+      // Ready offline data is usable, but recovery itself proves no new step.
+      controller.setContext({ ...selected, screen, connectivity: "offline" });
+      expect(controller.getSnapshot()).toMatchObject({ step, canAdvance: true, completedRoute: null });
+      expect(controller.getPreferenceIntent()).toBe(intent);
+      expect(controller.next(previousRevision)).toBe(false);
+      expect(controller.next()).toBe(true);
+      expect(controller.getPreferenceIntent().value.progress[0].acknowledgedStepIds).toHaveLength(step + 1);
+      controller.dispose();
+    }
+  });
+
+  it("preserves a suspended saved route across hide and explicit resume without inferring progress", () => {
+    const controller = createPlanetMascotController();
+    const selected = ready({ selectedCountry: true, selectedWriter: true });
+    controller.setContext(selected); controller.start("country-to-book"); controller.next();
+    const progress = controller.getPreferenceIntent().value.progress;
+    controller.setContext({ ...selected, countryStatus: "error" });
+    controller.hide();
+    expect(controller.getSnapshot()).toMatchObject({ visibility: "hidden", panel: "closed" });
+    expect(controller.resume()).toBe(true);
+    expect(controller.getSnapshot()).toMatchObject({ step: 1, canAdvance: false, panel: "open" });
+    expect(controller.getPreferenceIntent().value.progress).toEqual(progress);
+    const resumed = controller.getPreferenceIntent();
+    controller.setContext({ ...selected, countryStatus: "loading" });
+    expect(controller.next()).toBe(false);
+    controller.setContext({ ...selected, connectivity: "offline" });
+    expect(controller.getSnapshot()).toMatchObject({ step: 1, canAdvance: true, completedRoute: null });
+    expect(controller.getPreferenceIntent()).toBe(resumed);
+    expect(controller.getPreferenceIntent().value.progress).toEqual(progress);
+    expect(controller.next()).toBe(true);
+    expect(controller.getPreferenceIntent().value.progress[0].acknowledgedStepIds).toEqual(["choose-country", "choose-writer"]);
+    controller.dispose();
+  });
+
+  it.each([undefined, "idle", "loading", "error"] as const)("keeps general navigation and recovery available with %s country data but rejects selected-writer actions", countryStatus => {
+    const controller = createPlanetMascotController();
+    const selected = ready({ selectedCountry: true, selectedWriter: true, countryStatus });
+    controller.setContext(selected); controller.togglePanel();
+    for (const action of ["writer", "writer-books"] as const) {
+      const navigation = vi.fn();
+      expect(controller.canAct(action)).toBe(false);
+      expect(controller.act(action, controller.getSnapshot().revision, navigation)).toBe(false);
+      expect(navigation).not.toHaveBeenCalled();
+    }
+    for (const action of ["country", "search", "books", "appearance"] as const) expect(controller.canAct(action)).toBe(true);
+    if (countryStatus === "error") {
+      const retry = vi.fn();
+      expect(controller.retryContent("countries", controller.getSnapshot().revision, retry)).toBe(true);
+      expect(retry).toHaveBeenCalledOnce();
+    }
+    controller.start("overview");
+    expect(controller.next()).toBe(true); // Search needs no loaded country.
+    expect(controller.canAct("country")).toBe(true);
+    expect(controller.next()).toBe(true); // General country navigation remains available.
+    controller.setContext({ ...selected, screen: "collection" });
+    expect(controller.canAct("return-globe")).toBe(true);
+    expect(controller.next()).toBe(true); // Ready general collection is independent of a retained writer.
+    controller.finish();
+    controller.setContext({ ...selected, countryStatus: "ready", connectivity: "offline", screen: "globe" });
+    expect(controller.canAct("writer")).toBe(true);
+    expect(controller.canAct("writer-books")).toBe(true);
+    controller.dispose();
+  });
+
   it("requires adult permission and explicit showing, cancels on hide or invalidation without resuming", () => {
     const controller = createPlanetMascotController();
     expect(controller.getSnapshot()).toMatchObject({ available: false, visibility: "hidden", panel: "closed",

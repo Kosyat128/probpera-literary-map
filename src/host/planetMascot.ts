@@ -78,10 +78,10 @@ export function createPlanetMascotController() {
     const onScreen = step !== null && (step.requiredScreen === null || step.requiredScreen === context?.screen);
     const canAdvance = available && state.visibility === "shown" && state.panel === "open" && onScreen
       && (step!.requirement === "none"
-        || step!.requirement === "country" && context?.selectedCountry === true
-        || step!.requirement === "writer" && context?.selectedCountry === true && context.selectedWriter === true
+        || step!.requirement === "country" && context?.countryStatus === "ready" && context.selectedCountry === true
+        || step!.requirement === "writer" && context?.countryStatus === "ready" && context.selectedCountry === true && context.selectedWriter === true
         || step!.requirement === "collection" && context?.screen === "collection" && context.booksStatus === "ready"
-          && (state.route !== "country-to-book" || context.selectedWriter && authorBooksStatus === "applied"));
+          && (state.route !== "country-to-book" || context.countryStatus === "ready" && context.selectedWriter && authorBooksStatus === "applied"));
     const highlight = available && state.visibility === "shown" && state.panel === "open" && onScreen
       ? step!.target : null;
     if (!force && snapshot.available === available && snapshot.visibility === state.visibility
@@ -128,15 +128,18 @@ export function createPlanetMascotController() {
   function canAct(action: PlanetMascotAction) {
     if (!opened()) return false;
     if (action === "return-globe") return context?.screen === "collection";
-    if (action === "writer-books") return snapshot.mode === "help" && context?.selectedCountry === true && context.selectedWriter === true;
+    // Reloads retain selection objects. Only current ready country data can
+    // authorize actions or acknowledgements that depend on those selections.
+    if (action === "writer-books") return snapshot.mode === "help" && context?.countryStatus === "ready"
+      && context.selectedCountry === true && context.selectedWriter === true;
     if (action !== "search" && action !== "country" && action !== "writer" && action !== "books" && action !== "appearance") return false;
     if (action === "appearance" && context?.screen !== "globe") return false;
-    if (action === "writer" && !context?.selectedCountry) return false;
+    if (action === "writer" && (context?.countryStatus !== "ready" || !context.selectedCountry)) return false;
     if (snapshot.mode === "tour") {
       const step = getPlanetMascotStep(snapshot.route, snapshot.step);
       if (!step || step.action !== action) return false;
       if (snapshot.route === "country-to-book" && action === "books"
-        && (!context?.selectedCountry || !context.selectedWriter)) return false;
+        && (context?.countryStatus !== "ready" || !context.selectedCountry || !context.selectedWriter)) return false;
     }
     return true;
   }
