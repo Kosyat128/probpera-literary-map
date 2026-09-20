@@ -3,9 +3,9 @@
   "repository": "Kosyat128/probpera-literary-map",
   "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
-  "headSha": "9b2ec5885740680f6cdb0ca84c82d7070c0b2535",
+  "headSha": "94a6b7785d10d1f3b9a619105542d239b28ed639",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-20T06:00:42.614Z",
+  "updatedAt": "2026-09-20T06:40:59.721Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -2652,11 +2652,13 @@
         },
         {
           "id": "S15.PLANETKA-008",
-          "status": "OPEN",
-          "evidence": [],
-          "commit": null,
-          "lastValidatedAt": null,
-          "notes": "Journey checkpoint/resume/migration. Implement the original guide and shared policy before complete English dialogue/audio validation."
+          "status": "IN_PROGRESS",
+          "evidence": [
+            "docs/mobile/evidence/S15/booky-resume-preference-20260920/result.json"
+          ],
+          "commit": "94a6b7785d10d1f3b9a619105542d239b28ed639",
+          "lastValidatedAt": "2026-09-20T06:40:59.721Z",
+          "notes": "Journey checkpoint/resume/migration. Implement the original guide and shared policy before complete English dialogue/audio validation. Adult Booky explicit visibility and semantic navigation-tour resume now persist through existing adult platform preferences. Cold restoration offers a closed, explicit resume and does not navigate or grant permissions. 206 selected preference/controller/adapter cases, TypeScript, one actual-App Chrome case and 3 inspected source-bound views validate the selected source; current local PWA/Android artifacts preserve that runtime. This starts the adult foundation only; child and literary progress, migrations, reviewed dialogue/audio and all art/device/release acceptance remain pending. All former Planetka functions remain Booky scope."
         },
         {
           "id": "S15.UX-003",
@@ -2687,7 +2689,13 @@
         "node docs/mobile/evidence/S15/booky-live-character-20260920/check.mjs browser a3",
         "node docs/mobile/evidence/S15/booky-live-character-20260920/run-pwa.mjs 9b2ec5885740680f6cdb0ca84c82d7070c0b2535",
         "pwsh -File docs/mobile/evidence/S15/booky-live-character-20260920/build-android.ps1 9b2ec5885740680f6cdb0ca84c82d7070c0b2535",
-        "node docs/mobile/evidence/S15/booky-live-character-20260920/preserve-android.mjs 9b2ec5885740680f6cdb0ca84c82d7070c0b2535"
+        "node docs/mobile/evidence/S15/booky-live-character-20260920/preserve-android.mjs 9b2ec5885740680f6cdb0ca84c82d7070c0b2535",
+        "node docs/mobile/evidence/S15/booky-resume-preference-20260920/check.mjs unit a3",
+        "node docs/mobile/evidence/S15/booky-resume-preference-20260920/check.mjs static a2",
+        "node docs/mobile/evidence/S15/booky-resume-preference-20260920/check.mjs browser a1",
+        "node docs/mobile/evidence/S15/booky-resume-preference-20260920/run-pwa.mjs 94a6b7785d10d1f3b9a619105542d239b28ed639",
+        "pwsh -File docs/mobile/evidence/S15/booky-resume-preference-20260920/build-android.ps1 94a6b7785d10d1f3b9a619105542d239b28ed639",
+        "node docs/mobile/evidence/S15/booky-resume-preference-20260920/preserve-android.mjs 94a6b7785d10d1f3b9a619105542d239b28ed639"
       ],
       "artifacts": [
         "docs/mobile/evidence/S15/planetka-visual-mode-20260920/entry.json",
@@ -2708,7 +2716,17 @@
         "docs/mobile/evidence/S15/booky-live-character-20260920/static-a4/result.json",
         "docs/mobile/evidence/S15/booky-live-character-20260920/browser-a3/result.json",
         "docs/mobile/evidence/S15/booky-live-character-20260920/pwa-a1/result.json",
-        "docs/mobile/evidence/S15/booky-live-character-20260920/android-a1/result.json"
+        "docs/mobile/evidence/S15/booky-live-character-20260920/android-a1/result.json",
+        "docs/mobile/evidence/S15/booky-resume-preference-20260920/entry.json",
+        "docs/mobile/evidence/S15/booky-resume-preference-20260920/result.json",
+        "docs/mobile/evidence/S15/booky-resume-preference-20260920/README.md",
+        "docs/mobile/evidence/S15/booky-resume-preference-20260920/visual-review.json",
+        "docs/mobile/evidence/S15/booky-resume-preference-20260920/source-manifests/5520997ca4a47bda.json",
+        "docs/mobile/evidence/S15/booky-resume-preference-20260920/unit-a3/result.json",
+        "docs/mobile/evidence/S15/booky-resume-preference-20260920/static-a2/result.json",
+        "docs/mobile/evidence/S15/booky-resume-preference-20260920/browser-a1/result.json",
+        "docs/mobile/evidence/S15/booky-resume-preference-20260920/pwa-a1/result.json",
+        "docs/mobile/evidence/S15/booky-resume-preference-20260920/android-a1/result.json"
       ],
       "externalBlockers": []
     },
@@ -11069,7 +11087,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Continue the full application plan with the separate live Книжулик / Mr. Booky companion and its real canonical navigation. Refine the character and useful interactions against inspected product views while preserving independent globe ownership, demand-only rendering, context-loss fallback, keyboard access and reduced motion. Persisted adult visibility/route-resume remains a bounded future integration; do not imply it exists. S03 remains first unresolved. Child-profile policy/approval, reviewed literary dialogue/audio, age-adaptive journeys, screen-reader and installed-device/performance acceptance, iOS and release gates remain open.",
+    "nextAction": "Continue S15 with bounded RU/EN offline/error help for Книжулик / Mr. Booky using existing platform/network/storage state and explicit recovery controls. Preserve the live character, all canonical globe scenes, art and resource ownership. All former Planetka functions remain Booky scope: child scenarios, reviewed dialogue/audio, educational journeys and full progress; the character replacement does not remove them. Adult navigation-tour resume is a partial foundation only; child policy, full journey migration, art, screen-reader, installed-device/performance, iOS and release gates remain open. S03.acceptance remains first unresolved.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -11142,7 +11160,8 @@
       "docs/mobile/evidence/S13/whale-jaw-detail-20260920/result.json",
       "docs/mobile/evidence/S13/library-window-depth-20260920/result.json",
       "docs/mobile/evidence/S15/planetka-visual-mode-20260920/result.json",
-      "docs/mobile/evidence/S15/booky-live-character-20260920/result.json"
+      "docs/mobile/evidence/S15/booky-live-character-20260920/result.json",
+      "docs/mobile/evidence/S15/booky-resume-preference-20260920/result.json"
     ],
     "commands": [
       "node scripts/mobile/verify-requirements.mjs",
@@ -11185,7 +11204,8 @@
       "S13 whale jaw detail and corrected craft reflection orientation: 8 selected geometry/material cases, TypeScript, one actual-App Chrome case, two inspected views through product controls and exact local PWA/Android builds. Forty-three established inputs remain unchanged; no unchanged geometry suites or inventory audit rerun. Historical inventory changes are explicit. No art, child, installed-device or release acceptance.",
       "S13 library window depth: 6 selected geometry cases, TypeScript, one actual-App Chrome case, two inspected views through product controls and exact local PWA/Android builds. Forty-four established inputs remain unchanged; no unchanged geometry suites or inventory audit rerun. Historical inventory changes are explicit. No art, child, installed-device or release acceptance.",
       "S15 independent DOM companion: 7 controller/author-request cases, TypeScript, one actual-App Chrome case, three inspected product-control views and exact local PWA/Android builds with the pinned PNG. Forty-three prior runtime sources unchanged. Superseded a1 retained; historical Starter inventory retained with explicit drift. No art/child/rights/device/release acceptance.",
-      "S15 live Mr. Booky: 3 model/pose/resource cases, TypeScript, one actual-App Chrome case, 4 inspected views and exact local PWA/Android artifacts. Protected App/controller/globe sources unchanged; failed a1 preserved. Child/art/device/release acceptance remains open."
+      "S15 live Mr. Booky: 3 model/pose/resource cases, TypeScript, one actual-App Chrome case, 4 inspected views and exact local PWA/Android artifacts. Protected App/controller/globe sources unchanged; failed a1 preserved. Child/art/device/release acceptance remains open.",
+      "S15 adult Booky preference/resume: 206 focused cases, TypeScript, one actual-App browser case, 3 inspected views and bound local PWA/Android artifacts. Preserve earlier failed attempts. PLANETKA-008 is IN_PROGRESS only; child/literary/migration/art/device/release gates stay open."
     ]
   },
   "requirementsHash": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732",
@@ -13062,6 +13082,14 @@
       "sha256": "7a8c4d8c1712cc4f6613448cb29657a1965592557dff1c50ca5aeb8f7e5ca402",
       "sourceCommit": "9b2ec5885740680f6cdb0ca84c82d7070c0b2535",
       "status": "LIVE_BOOKY_CHARACTER_SCOPED_VALIDATION",
+      "stageAccepted": false,
+      "releaseReady": false
+    },
+    "s15BookyResumePreference": {
+      "path": "docs/mobile/evidence/S15/booky-resume-preference-20260920/result.json",
+      "sha256": "3d0edd22449a1b686c2035350103b47b70051f9826e282968a3650b7da04fe52",
+      "sourceCommit": "94a6b7785d10d1f3b9a619105542d239b28ed639",
+      "status": "ADULT_BOOKY_PREFERENCE_RESUME_SCOPED_VALIDATION",
       "stageAccepted": false,
       "releaseReady": false
     }

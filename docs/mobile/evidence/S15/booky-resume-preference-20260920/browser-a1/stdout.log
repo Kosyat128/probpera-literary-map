@@ -1,0 +1,7 @@
+
+Running 1 test using 1 worker
+
+
+
+[1/1] tests\pwa\booky-resume-preference.spec.mjs:268:1 › adult Booky preferences offer explicit tour resume and persist hiding and the current semantic step
+  1 passed (15.3s)

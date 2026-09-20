@@ -1,0 +1,13 @@
+{
+  "pass": true,
+  "files": 1425,
+  "bytes": 76452720,
+  "detailedLedger": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-resume/pwa-a1-copy-verification.json",
+    "sha256": "fd2b4997db74abe24e830fd54c4802807f6791e586fc13ed72c9bd50ef1742e1"
+  },
+  "artifactManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-resume/pwa-09964f68/artifact.json",
+    "sha256": "1d5580cbd10ccd2dac08cde9884a97b84ade02838f1f36f0732323e9038308af"
+  }
+}

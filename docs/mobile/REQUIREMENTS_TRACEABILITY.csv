@@ -316,7 +316,7 @@ PLANETKA-004,PLANETKA,P1,all,Age-adaptive journeys,V12 modular specs/full spec,O
 PLANETKA-005,PLANETKA,P1,all,Offline/error helper,V12 modular specs/full spec,OPEN,,,,
 PLANETKA-006,PLANETKA,P1,all,Reduced motion/captions/narration rights,V12 modular specs/full spec,OPEN,,,,
 PLANETKA-007,PLANETKA,P1,all,No purchase promotion,V12 modular specs/full spec,OPEN,,,,
-PLANETKA-008,PLANETKA,P1,all,Journey checkpoint/resume/migration,V12 modular specs/full spec,OPEN,,,,
+PLANETKA-008,PLANETKA,P1,all,Journey checkpoint/resume/migration,V12 modular specs/full spec,IN_PROGRESS,src/App.tsx;src/host/PlanetMascotControls.tsx;src/host/PlanetMascotControls.css;src/host/planetMascot.ts;src/host/HostPlatformServices.ts;src/platform/adapters/web/WebPlatformAdapter.ts;src/host/planetMascotPreference.ts;src/host/planetMascotPersistence.ts,src/host/planetMascot.test.ts;src/host/planetMascotPersistence.test.ts;src/host/HostPlatformServices.test.ts;src/platform/adapters/web/WebPlatformAdapter.test.ts;tests/pwa/booky-resume-preference.spec.mjs,docs/mobile/evidence/S15/booky-resume-preference-20260920/result.json,94a6b7785d10d1f3b9a619105542d239b28ed639
 PLATFORM-001,PLATFORM,P0,all,Installable paid Web/PWA with safe Service Worker,V12 modular specs/full spec,OPEN,,,,
 PLATFORM-002,PLATFORM,P0,all,Android Google Play variant and AAB,V12 modular specs/full spec,OPEN,,,,
 PLATFORM-003,PLATFORM,P0,all,Android RuStore variant and artifact,V12 modular specs/full spec,OPEN,,,,

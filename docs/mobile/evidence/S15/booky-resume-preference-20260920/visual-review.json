@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-20T06:37:20.564Z",
+  "pass": true,
+  "sourceCommit": "94a6b7785d10d1f3b9a619105542d239b28ed639",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-resume-preference-20260920/source-manifests/5520997ca4a47bda.json",
+    "sha256": "5520997ca4a47bda3490cde64f8b83d9f5d32feba8fc2a25fa925a109cb2670c",
+    "fileCount": 94
+  },
+  "actualAppCapture": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-resume/browser-a1/booky-resume-preference-ad-854f1-d-the-current-semantic-step/booky-resume-preference.json",
+    "sha256": "7aa02141b7bc613ba2649c355396dcb81fba8df675da08757a8a0d602ca2e7fb"
+  },
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-resume/browser-a1/booky-resume-preference-ad-854f1-d-the-current-semantic-step/booky-read-failure-ru-320.png",
+      "sha256": "65233f4c5af316c6716abe435d8c435091476e7d0468aba8b56182fd583ac0dd",
+      "inspected": true,
+      "reviewer": "Codex root visual inspection",
+      "findings": [
+        "Actual App at 320x844: Russian restore error and Повторить remain readable inside the viewport while the companion stays hidden.",
+        "The retry panel occupies the bottom country-sheet area as a temporary overlay; global globe controls remain visible. No route or completion is shown as restored."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-resume/browser-a1/booky-resume-preference-ad-854f1-d-the-current-semantic-step/booky-resume-offer-en-320.png",
+      "sha256": "6908d7f23cd5fd71cc886ea746a2de184f06addc0726866d52ca8e1e7b5de2e6",
+      "inspected": true,
+      "reviewer": "Codex root visual inspection",
+      "findings": [
+        "Actual App at 320x844: English saved tour name, semantic collection step, Resume tour and Clear saved tour fit the cream panel.",
+        "The unchanged live green Booky remains below the panel. Lower help actions use the existing internal scrolling; no new character art acceptance is implied."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-resume/browser-a1/booky-resume-preference-ad-854f1-d-the-current-semantic-step/booky-hide-failure-en-320.png",
+      "sha256": "6fc9c4caec70a8c906ea8f04689a38f78f9256a17e1768289a013186bff612c1",
+      "inspected": true,
+      "reviewer": "Codex root visual inspection",
+      "findings": [
+        "Actual App at 320x844: the companion remains hidden while Could not save your choice and Try again are visible and readable.",
+        "The error notice and stable Booky toggle fit within the viewport; the canonical globe remains visible."
+      ]
+    }
+  ],
+  "artAccepted": false,
+  "childApproved": false,
+  "releaseReady": false
+}

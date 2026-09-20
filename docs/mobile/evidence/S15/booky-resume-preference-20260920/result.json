@@ -1,0 +1,567 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-20T06:40:59.721Z",
+  "sourceCommit": "94a6b7785d10d1f3b9a619105542d239b28ed639",
+  "stage": "S15",
+  "status": "ADULT_BOOKY_PREFERENCE_RESUME_SCOPED_VALIDATION",
+  "pass": true,
+  "entry": {
+    "path": "docs/mobile/evidence/S15/booky-resume-preference-20260920/entry.json",
+    "sha256": "c688ecb701a262cc2d4c622cf34c1334e7d809b35feb4224e67daf86e2797b7e"
+  },
+  "previous": {
+    "path": "docs/mobile/evidence/S15/booky-live-character-20260920/result.json",
+    "sha256": "7a8c4d8c1712cc4f6613448cb29657a1965592557dff1c50ca5aeb8f7e5ca402"
+  },
+  "checkpointHelper": {
+    "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-resume-preference-20260920\\checkpoint.mjs",
+    "sha256": "067b78d2df3b5175cd4e3e4beab84f9ac33cca89640247af68fc5272d0cc0f29"
+  },
+  "ownerClarification": "All former Planetka functional requirements now belong to Knizhulyk / Mr. Booky. The optional separate live book replaces the character only. Child scenarios, reviewed dialogue, audio, educational journeys and full progress remain in scope; immutable PLANETKA IDs are retained.",
+  "attempts": {
+    "unit": "a3",
+    "static": "a2",
+    "browser": "a1",
+    "pwa": "a1",
+    "android": "a1"
+  },
+  "earlierAttempts": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-resume-preference-20260920/unit-a1/result.json",
+      "sha256": "fbb42d343b55f155f54cafbdc5746f5fc9dc5c9e4ad9785760a96cc5b0bc26a4",
+      "mode": "unit",
+      "attempt": "a1",
+      "pass": false,
+      "tests": {
+        "passed": 205,
+        "failed": 1,
+        "skipped": 0
+      },
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-resume-preference-20260920/source-manifests/c80283238a74b88a.json",
+        "sha256": "c80283238a74b88ab933727c57127654872289c48eb0442ea0a85c88abc67d48",
+        "fileCount": 94
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-resume-preference-20260920/unit-a1/execution.json",
+        "sha256": "b9df7153aaf54dd220faeda47f6023fe3adea03ea2dbd044c94a2c26d91b6a1e"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-resume-preference-20260920/unit-a1/vitest.json",
+        "sha256": "76ab9883670afd02a8fdc52c0d0cc28ec9c7cde550fe0be22180fe88947a6636"
+      },
+      "supersededSource": true,
+      "reason": "205 passing cases and one obsolete WebPlatformAdapter stand expectation. book-cloud is a valid adult choice; original failed report remains unchanged."
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-resume-preference-20260920/unit-a2/result.json",
+      "sha256": "95c56ab42855acdc35f3a6263c16e7fedc21c698f415aa665223b85090875977",
+      "mode": "unit",
+      "attempt": "a2",
+      "pass": false,
+      "tests": null,
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-resume-preference-20260920/source-manifests/5520997ca4a47bda.json",
+        "sha256": "5520997ca4a47bda3490cde64f8b83d9f5d32feba8fc2a25fa925a109cb2670c",
+        "fileCount": 94
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-resume-preference-20260920/unit-a2/execution.json",
+        "sha256": "82cd223df1c69400eb049f6eedc37a4775b4a4f1844f543e9149ecac3fc29eae"
+      },
+      "rawReport": null,
+      "supersededSource": false,
+      "reason": "Sandbox denied esbuild startup before tests or a Vitest report were produced. Preserve tests:null and raw execution logs; do not count this attempt as product validation."
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-resume-preference-20260920/static-a1/result.json",
+      "sha256": "e3947d054a2d58eebc9a217fa434e1befb01c9142bf64767765ee58f03e516b4",
+      "mode": "static",
+      "attempt": "a1",
+      "pass": true,
+      "tests": null,
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-resume-preference-20260920/source-manifests/c80283238a74b88a.json",
+        "sha256": "c80283238a74b88ab933727c57127654872289c48eb0442ea0a85c88abc67d48",
+        "fileCount": 94
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-resume-preference-20260920/static-a1/execution.json",
+        "sha256": "18d802789fd21d4374d8d1de8c51379b627c9c16bf92c058bd6af2719a95081b"
+      },
+      "rawReport": null,
+      "supersededSource": true,
+      "reason": "Earlier attempt retained unchanged. Only the explicitly selected final source-bound attempt counts as current validation."
+    }
+  ],
+  "runs": {
+    "unit": {
+      "path": "docs/mobile/evidence/S15/booky-resume-preference-20260920/unit-a3/result.json",
+      "sha256": "690fd5793deac94eff3a0d4f7f6a81a164aed90d6f7578d702be1912ac1cfc70",
+      "tests": {
+        "passed": 206,
+        "failed": 0,
+        "skipped": 0
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-resume-preference-20260920/unit-a3/execution.json",
+        "sha256": "8c289cf46588566a8885ea5c1ddc28c84bac5a91b2fb7d6a082b37d8da56c42a"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-resume-preference-20260920/unit-a3/vitest.json",
+        "sha256": "56a73e3ae6a6c632f21ea673dbe8345ab1b6ffbf82a8b407734d540f309496a0"
+      }
+    },
+    "static": {
+      "path": "docs/mobile/evidence/S15/booky-resume-preference-20260920/static-a2/result.json",
+      "sha256": "d2ea978110f0793c151e7d5ec4e72615f5259b7623d250b09e4952470458cad1",
+      "tests": null,
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-resume-preference-20260920/static-a2/execution.json",
+        "sha256": "6c905778faf5da3638c19971dd8a2273e7add7560f4065f853003e20110a8346"
+      },
+      "rawReport": null
+    },
+    "browser": {
+      "path": "docs/mobile/evidence/S15/booky-resume-preference-20260920/browser-a1/result.json",
+      "sha256": "dc1309dba1e8531d34af98cf25e98ea1199838f2ac2297458455ab899c1b51bb",
+      "tests": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-resume-preference-20260920/browser-a1/execution.json",
+        "sha256": "28560caf4b70b73969020d77fcc74b78442fc14c4567e51c77b5f60da6cb740d"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-resume-preference-20260920/browser-a1/playwright.json",
+        "sha256": "e407f145ea7009b18458a9933d8126b09948a4d76eee5fadd803f2f5ca6d7155"
+      }
+    }
+  },
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-resume-preference-20260920/source-manifests/5520997ca4a47bda.json",
+    "sha256": "5520997ca4a47bda3490cde64f8b83d9f5d32feba8fc2a25fa925a109cb2670c",
+    "fileCount": 94
+  },
+  "unitCount": 206,
+  "unitFiles": [
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascotPersistence.test.ts",
+    "src/host/HostPlatformServices.test.ts",
+    "src/platform/adapters/web/WebPlatformAdapter.test.ts"
+  ],
+  "browserCases": 1,
+  "actualAppCapture": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-resume\\browser-a1\\booky-resume-preference-ad-854f1-d-the-current-semantic-step\\booky-resume-preference.json",
+    "sha256": "7aa02141b7bc613ba2649c355396dcb81fba8df675da08757a8a0d602ca2e7fb"
+  },
+  "browserAttachment": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-resume\\browser-a1\\booky-resume-preference-ad-854f1-d-the-current-semantic-step\\attachments\\booky-resume-preference-source-evidence-440138b4cbca921e304b71ad43e02712e2f548ef.json",
+    "sha256": "7aa02141b7bc613ba2649c355396dcb81fba8df675da08757a8a0d602ca2e7fb"
+  },
+  "attachmentBytesMatchOriginal": true,
+  "validatedBehavior": {
+    "closedOfferAfterLoad": true,
+    "explicitSemanticResume": true,
+    "noAutomaticNavigation": true,
+    "hideSurvivesReload": true,
+    "semanticStepIdPersisted": true,
+    "failedWriteDoesNotRevertUi": true,
+    "explicitRetrySavesCurrentValue": true,
+    "retryRestoresHeadingFocus": true,
+    "localeRetainsOffer": true,
+    "narrowOfferFits": true,
+    "sameCanonicalSceneWithinEachLoad": true,
+    "noAppearanceWrites": true,
+    "coldReadFailureRetryReachable": true,
+    "readRetryPreservesSavedRoute": true,
+    "failedHideRetryReachable": true,
+    "hideRetryKeepsCompanionHidden": true,
+    "closedRetryRestoresToggleFocus": true,
+    "narrowClosedFailuresFit": true,
+    "noDuplicatePersistenceNotices": true
+  },
+  "visualReview": {
+    "path": "docs/mobile/evidence/S15/booky-resume-preference-20260920/visual-review.json",
+    "sha256": "d0c186432e46dfdcc8e9e90566e999d13ab3e3519113677bd2842f9c5de795c2"
+  },
+  "inspectedImageCount": 3,
+  "protectedInputCount": 83,
+  "preservedInputsVerified": true,
+  "gitIdentityDifferences": [
+    {
+      "commit": "8e1bf53e9d25ba14b09d98598b61ad0173d6b4ce",
+      "path": "src/books/bookDossierProgress.ts",
+      "gitBlobSha256": "5e1b108a71ef7b5b9652a2812483e4ce8f467c3a4178f83867a4cf8c62b25b2d",
+      "checkedOutSha256": "503d6b7c9e26da19aee4162c8fc67fa92ad9e09bb08caac97fcd23b795e557dc",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "8e1bf53e9d25ba14b09d98598b61ad0173d6b4ce",
+      "path": "src/community/AuthContext.tsx",
+      "gitBlobSha256": "456018e469c55fd5a96733051c35ea6dafd0aba9cdd44424d866b0bfb67fe98d",
+      "checkedOutSha256": "979334217af2f29388af0955c081487215f6a3aeb540a07a2ba1c7920fa759b3",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "8e1bf53e9d25ba14b09d98598b61ad0173d6b4ce",
+      "path": "src/components/InterfaceLanguageControl.tsx",
+      "gitBlobSha256": "070b05369e6a5eb1d4c2fc6181466dcbe0f700b3ca4b620fba39403734fcc23d",
+      "checkedOutSha256": "69019e0441573d8ea4dd4377ae6dbbd5d3017c5cdd28810bd49942c09f4be293",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "8e1bf53e9d25ba14b09d98598b61ad0173d6b4ce",
+      "path": "src/components/globeAssetCache.ts",
+      "gitBlobSha256": "1845fb402d344596c3d8e4ad9dcafebc7e4d8d4c915bea84a1081ee275d90a36",
+      "checkedOutSha256": "009f4f6516428c46848cffbecf7c3d3bb0be2b4c1d5989ef8743ecfb4a068987",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "8e1bf53e9d25ba14b09d98598b61ad0173d6b4ce",
+      "path": "src/components/globeEditions.ts",
+      "gitBlobSha256": "645dcbc48918d62d1c54834c3914908e03540746083b704c5bfcf484960e7657",
+      "checkedOutSha256": "b7440b6278979deb1e47738572460869202f0d9cf794a144aceac9dbcf8cdd77",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "8e1bf53e9d25ba14b09d98598b61ad0173d6b4ce",
+      "path": "src/components/globeFocusMath.ts",
+      "gitBlobSha256": "f62688a99d5a521e5aff729f3877f813f9bd81e16be2d33be4a25e8e8d220822",
+      "checkedOutSha256": "1dd511d8e47620f73cb72a2e41755256fc0d18679b3e72c4a586b86432c8b30a",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "8e1bf53e9d25ba14b09d98598b61ad0173d6b4ce",
+      "path": "src/components/globeInteraction.ts",
+      "gitBlobSha256": "67e511b4c7e5c59ec21a95076584476c8601b900b101082a0bf5ab9bd567fd15",
+      "checkedOutSha256": "f60c2d336147e899bdec7f2836df68d8360071aac1cd514d46d871c7ebdf6fb3",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "8e1bf53e9d25ba14b09d98598b61ad0173d6b4ce",
+      "path": "src/index.css",
+      "gitBlobSha256": "d480821e133d194983370c8ec9c2e27a36d2fbcf13224bf91acdc8e5b7e9a574",
+      "checkedOutSha256": "abeefa5620f8589d0e0f34d38120970315df8f95a0e7d5009d21222e932e5a35",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "8e1bf53e9d25ba14b09d98598b61ad0173d6b4ce",
+      "path": "src/lib/supabase.ts",
+      "gitBlobSha256": "6d28f0c6ff2dcb8f8424452180396822b700ada95ac9d745dc8d3001ffa2d183",
+      "checkedOutSha256": "6ad4bd4b96e39be319a966397e6bd0d41c0c7d741ec2b6c3ca201483c73f42cd",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "8e1bf53e9d25ba14b09d98598b61ad0173d6b4ce",
+      "path": "src/pwa/PwaAccessBoundary.tsx",
+      "gitBlobSha256": "7f868943bd3f8b4a2b42f574d99a5ac7f6826e0cd93a9be34dc0cfa04e432b81",
+      "checkedOutSha256": "5da9ec472f3bd16b1493cb44601bf1e3f74d09245e05ba8446cf9d280bee6b80",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "8e1bf53e9d25ba14b09d98598b61ad0173d6b4ce",
+      "path": "src/pwa/pwa.css",
+      "gitBlobSha256": "f3e9d1b320700106edbdaeb944c28e7d5b58281de6ebe872f7d62d6bb258cb66",
+      "checkedOutSha256": "b62dca25c5bec2a1df94347b0c7d9c043678ace42802ccba516cce326ca95f31",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "94a6b7785d10d1f3b9a619105542d239b28ed639",
+      "path": "package-lock.json",
+      "gitBlobSha256": "b65e60d33c363e8faae99defca10dbcdcfc5172b2d848604972bd5f40e0a83c1",
+      "checkedOutSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "94a6b7785d10d1f3b9a619105542d239b28ed639",
+      "path": "package.json",
+      "gitBlobSha256": "b9fd2f704d61ece5d7ad00bdb8b1e9ba7eb360a1242322d5ad5142805e056636",
+      "checkedOutSha256": "90b392c205754f838b8bc7c4475bd475936be1078561bb218c437d151177869f",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "94a6b7785d10d1f3b9a619105542d239b28ed639",
+      "path": "src/books/bookDossierProgress.ts",
+      "gitBlobSha256": "5e1b108a71ef7b5b9652a2812483e4ce8f467c3a4178f83867a4cf8c62b25b2d",
+      "checkedOutSha256": "503d6b7c9e26da19aee4162c8fc67fa92ad9e09bb08caac97fcd23b795e557dc",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "94a6b7785d10d1f3b9a619105542d239b28ed639",
+      "path": "src/community/AuthContext.tsx",
+      "gitBlobSha256": "456018e469c55fd5a96733051c35ea6dafd0aba9cdd44424d866b0bfb67fe98d",
+      "checkedOutSha256": "979334217af2f29388af0955c081487215f6a3aeb540a07a2ba1c7920fa759b3",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "94a6b7785d10d1f3b9a619105542d239b28ed639",
+      "path": "src/components/InterfaceLanguageControl.tsx",
+      "gitBlobSha256": "070b05369e6a5eb1d4c2fc6181466dcbe0f700b3ca4b620fba39403734fcc23d",
+      "checkedOutSha256": "69019e0441573d8ea4dd4377ae6dbbd5d3017c5cdd28810bd49942c09f4be293",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "94a6b7785d10d1f3b9a619105542d239b28ed639",
+      "path": "src/components/globeAssetCache.ts",
+      "gitBlobSha256": "1845fb402d344596c3d8e4ad9dcafebc7e4d8d4c915bea84a1081ee275d90a36",
+      "checkedOutSha256": "009f4f6516428c46848cffbecf7c3d3bb0be2b4c1d5989ef8743ecfb4a068987",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "94a6b7785d10d1f3b9a619105542d239b28ed639",
+      "path": "src/components/globeEditions.ts",
+      "gitBlobSha256": "645dcbc48918d62d1c54834c3914908e03540746083b704c5bfcf484960e7657",
+      "checkedOutSha256": "b7440b6278979deb1e47738572460869202f0d9cf794a144aceac9dbcf8cdd77",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "94a6b7785d10d1f3b9a619105542d239b28ed639",
+      "path": "src/components/globeFocusMath.ts",
+      "gitBlobSha256": "f62688a99d5a521e5aff729f3877f813f9bd81e16be2d33be4a25e8e8d220822",
+      "checkedOutSha256": "1dd511d8e47620f73cb72a2e41755256fc0d18679b3e72c4a586b86432c8b30a",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "94a6b7785d10d1f3b9a619105542d239b28ed639",
+      "path": "src/components/globeInteraction.ts",
+      "gitBlobSha256": "67e511b4c7e5c59ec21a95076584476c8601b900b101082a0bf5ab9bd567fd15",
+      "checkedOutSha256": "f60c2d336147e899bdec7f2836df68d8360071aac1cd514d46d871c7ebdf6fb3",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "94a6b7785d10d1f3b9a619105542d239b28ed639",
+      "path": "src/index.css",
+      "gitBlobSha256": "d480821e133d194983370c8ec9c2e27a36d2fbcf13224bf91acdc8e5b7e9a574",
+      "checkedOutSha256": "abeefa5620f8589d0e0f34d38120970315df8f95a0e7d5009d21222e932e5a35",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "94a6b7785d10d1f3b9a619105542d239b28ed639",
+      "path": "src/lib/supabase.ts",
+      "gitBlobSha256": "6d28f0c6ff2dcb8f8424452180396822b700ada95ac9d745dc8d3001ffa2d183",
+      "checkedOutSha256": "6ad4bd4b96e39be319a966397e6bd0d41c0c7d741ec2b6c3ca201483c73f42cd",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "94a6b7785d10d1f3b9a619105542d239b28ed639",
+      "path": "src/pwa/PwaAccessBoundary.tsx",
+      "gitBlobSha256": "7f868943bd3f8b4a2b42f574d99a5ac7f6826e0cd93a9be34dc0cfa04e432b81",
+      "checkedOutSha256": "5da9ec472f3bd16b1493cb44601bf1e3f74d09245e05ba8446cf9d280bee6b80",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "94a6b7785d10d1f3b9a619105542d239b28ed639",
+      "path": "src/pwa/pwa.css",
+      "gitBlobSha256": "f3e9d1b320700106edbdaeb944c28e7d5b58281de6ebe872f7d62d6bb258cb66",
+      "checkedOutSha256": "b62dca25c5bec2a1df94347b0c7d9c043678ace42802ccba516cce326ca95f31",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "94a6b7785d10d1f3b9a619105542d239b28ed639",
+      "path": "tsconfig.json",
+      "gitBlobSha256": "a89c689a43f21d1e0373598e265f4d62850bd92f7e624dfe2de8373f14126b22",
+      "checkedOutSha256": "8d51a8c9266fe83bf17c076b51672753b3750a17520cd0d2c28a90cb8b21e0d6",
+      "lineEndingOnly": true
+    }
+  ],
+  "changedSourcePaths": [
+    "src/App.tsx",
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/PlanetMascotControls.css",
+    "src/host/planetMascot.ts",
+    "src/host/HostPlatformServices.ts",
+    "src/platform/adapters/web/WebPlatformAdapter.ts"
+  ],
+  "newSourcePaths": [
+    "src/host/planetMascotPreference.ts",
+    "src/host/planetMascotPersistence.ts"
+  ],
+  "starterSetSourceInventory": {
+    "path": "docs/mobile/evidence/S13/book-cloud-stand-20260920/starter-set-source-inventory.json",
+    "sha256": "854f14d22bbf78c2207e6f0c93b2c03696ce8d6a462c44d452ba2d9a633faa92"
+  },
+  "inventoryHistorical": true,
+  "inventoryAuditRerun": false,
+  "inventoryUnchangedInputsVerified": true,
+  "inventoryChangedInputs": [
+    {
+      "path": "src/App.tsx",
+      "priorSha256": "ab22ae860da4442a97c8a4f9994a0cfed05e75a5bdddd6c1675b82972d9be6f3",
+      "currentSha256": "3813c3696302bf876b6ed5d8c9d47d5ffaf0ae05800922e5175c2355c7d10cbd"
+    },
+    {
+      "path": "src/components/GlobeCameraRig.tsx",
+      "priorSha256": "6938d120c7a49248398b385640cc77d96c9f3b33cbd6c3b4ef9881ef89e2ec19",
+      "currentSha256": "189f1a90fafb001a09b02832cc033f2239d8b417adfc6a3f8899986152580a48"
+    },
+    {
+      "path": "src/components/GlobeIncludedBackground.tsx",
+      "priorSha256": "3268e2f971bb3b8742093be690116a16f8bee262362d50743daca2273d376b61",
+      "currentSha256": "b384ccdc3020598f10a990807e74342dc35e9434e42cad54b11526c10d81634c"
+    },
+    {
+      "path": "src/components/GlobeIncludedStand.tsx",
+      "priorSha256": "276ef908fe5a09c066a59d9ff57d1432d44300bcb979b2aeb5d6dd249ba189fd",
+      "currentSha256": "a083080c90c5bbb5f53dc9e7ba4f4498712634a9df67db6ce0e2e12cd4b4d068"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "priorSha256": "666960397af75698cdfbc89fe1f9f359683785ef168288e740caedaf7a19dd33",
+      "currentSha256": "f5bcfb487be1a34199cc6482dd2de5e6b6a68987938343fd41e7c1f9cc47b63d"
+    },
+    {
+      "path": "src/components/globeBackgroundGeometry.ts",
+      "priorSha256": "019c09b6c2fe51a52c772756b9c6fc47be0c8f8d80bac9dcb5f005c07b82ecc1",
+      "currentSha256": "daa902b738190403a4297264f7067dae8b1fdbe86c73c16e541ace7a7e9a0f00"
+    },
+    {
+      "path": "src/components/globeCraftMaterials.ts",
+      "priorSha256": "68ce7e818d50ac5ece1d5d4542fdc4cecea6af25e21b08b1274c8adcacbfbde1",
+      "currentSha256": "2c19145443374e631cf40dbf20a8b55d38bd8a41e1c0d025dc3ec10fbbe47721"
+    },
+    {
+      "path": "src/components/globeLibraryGeometry.ts",
+      "priorSha256": "c0d4fe4c9b69921df11d50bc349fca9896304baba67fff60263b77ff19c1d1ee",
+      "currentSha256": "18c2af40ee169eeac5416aa59effe1e50cbea92359a7f1e0d0f8f8972dddaf7c"
+    },
+    {
+      "path": "src/components/globeWhaleStandGeometry.ts",
+      "priorSha256": "a641909b9d2a168b921e3a94f78db0c0652fe67b4d76b3cdaa2a1fba57de82be",
+      "currentSha256": "9c0975465082d9423e2bfd3a8da3fa355897e0c6018d7c955c52497c0a9d64ab"
+    },
+    {
+      "path": "src/components/globeWriterStudyGeometry.ts",
+      "priorSha256": "4e2c7f51529d0f5cdde9df2484cf0701a8a6662ee9c5b9a96de828f22d7c7cfc",
+      "currentSha256": "c811764937279429ecddf50b1cd0b60f3b7a5f568772d9ced146b4920fca9f1e"
+    },
+    {
+      "path": "src/host/PlanetStandControls.tsx",
+      "priorSha256": "6bbcb8f9e373f06491b742888d58110d0922a3c0a0bdf9d47cceb129dbcbff76",
+      "currentSha256": "829db69456bddda43035df512ee1af4ed6182752bdf3161e14db756b695295e1"
+    }
+  ],
+  "historicalStarterSetCounts": {
+    "required": 29,
+    "sourceBound": 13,
+    "accepted": 0,
+    "ownerAdded": 3
+  },
+  "pwa": {
+    "path": "docs/mobile/evidence/S15/booky-resume-preference-20260920/pwa-a1/result.json",
+    "sha256": "2b77eca4a2c1979dc0b3d06d35ad9bfbceb66a55295185c91270fa7ec95ad20c"
+  },
+  "android": {
+    "path": "docs/mobile/evidence/S15/booky-resume-preference-20260920/android-a1/result.json",
+    "sha256": "20ea57aa339b8eb95f392448bb9c1f27ef7d586112d66eaddf8530a8627e82ae"
+  },
+  "pwaBuildId": "09964f68d1bb33ad6c5d9f639a08620a01f8f29c0c4b9091b964a275f4f1c26e",
+  "androidBuildId": "0eb3fe624164840983b6b654adf34571b994dfe07897fc52782d692b336c993a",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-resume/android-0eb3fe62/app-dev-debug.apk",
+    "bytes": 70289691,
+    "sha256": "85fde448b5bbad388de4ffb7889f019e540dcfe9b766db02f25169016f505c2b"
+  },
+  "buildAudits": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-resume-preference-20260920/pwa-a1/strict-audit.json",
+      "sha256": "1abb0359f2f2d7dc6a43c4067b4dc592c2b8b8e8219a3975b2b5229bbd841d83"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-resume-preference-20260920/android-a1/native-artifact-audit.json",
+      "sha256": "54729d54d0db119ed11269ddb62c5157dc6f178fd52264f6d6b8c48a405b2c90"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-resume-preference-20260920/android-a1/android-dev-apk-verification.json",
+      "sha256": "8cd3bb8949a9d5a6c2407abb1a21cdbda184328d2e0a679a13764919d901f84d"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-resume-preference-20260920/android-a1/build-run.json",
+      "sha256": "f8a777d8a17593fe10b80e9e3468a027507a32ff5a736a099f1c8f9fb0b4f64f"
+    }
+  ],
+  "copyVerification": {
+    "path": "docs/mobile/evidence/S15/booky-resume-preference-20260920/pwa-a1/copy-verification.json",
+    "sha256": "f4dba667e6ab1c652b51242b5452199975fcbce83d82f60d78639bfdc1b2caf6"
+  },
+  "pwaBrowserReport": {
+    "path": "docs/mobile/evidence/S15/booky-resume-preference-20260920/pwa-a1/playwright.json",
+    "sha256": "e30d7aa2b6b92d591dce918dcb514e76876e1ea51eff44791ba179207a6e7497"
+  },
+  "priorPwa": {
+    "path": "docs/mobile/evidence/S15/booky-live-character-20260920/pwa-a1/result.json",
+    "sha256": "268b2500f8eeda192a46f1dc0fe1ee973acd5f7dc4dd880d2a740f63aece6cc3"
+  },
+  "priorAndroid": {
+    "path": "docs/mobile/evidence/S15/booky-live-character-20260920/android-a1/result.json",
+    "sha256": "4e1ab609b288f98f5eb9dd7827cbc1ebace055ed6fe2115806c44c37469aae15"
+  },
+  "decisionD153Recorded": true,
+  "criteriaUpdated": [
+    "S15.PLANETKA-008"
+  ],
+  "criterionChanges": [
+    {
+      "id": "S15.PLANETKA-008",
+      "before": "OPEN",
+      "after": "IN_PROGRESS"
+    }
+  ],
+  "requirementChanges": [
+    {
+      "id": "PLANETKA-008",
+      "before": "OPEN",
+      "after": "IN_PROGRESS"
+    }
+  ],
+  "stageChanges": [],
+  "otherStageAndCriterionStatusesUnchanged": true,
+  "firstUnresolved": "S03.acceptance",
+  "parallelSafeEntry": {
+    "priorFirstOpenStage": "S03",
+    "stageAcceptanceClaimed": false,
+    "scope": "S15 already IN_PROGRESS; owner-authorized Booky integration continues without claiming child, full journey, device or release acceptance."
+  },
+  "limitations": [
+    "The restored adult record contains explicit visibility and a semantic navigation-tour step only. Restore does not navigate, open help, restore entity permissions, invent reading completion or grant access.",
+    "Adult navigation progress is a partial PLANETKA-008 foundation. Child profiles, educational/literary journey progress and full migration acceptance remain pending under the same immutable requirement IDs.",
+    "Source Chrome executes the actual App/CSS/globe with controlled native OS/preferences ports. It does not establish installed-device, screen-reader, battery or performance acceptance.",
+    "The built-PWA case is the existing offline/download smoke. Build manifests bind the current Booky runtime, but no separate built-PWA Booky-resume execution is claimed.",
+    "RU/EN help and recovery copy remains draft. Screenshot inspection is scoped layout evidence, not editorial, child or formal art approval.",
+    "The canonical scene, original live Booky model/renderer/art and protected inputs remain byte-exact; unchanged geometry/controller suites and historic art audits were not repeated.",
+    "Prior artifacts and failed attempts remain preserved. Starter inventory remains historical 29/13/0 plus three owner additions with explicit changed input bindings."
+  ],
+  "nextAction": "Continue S15 with bounded RU/EN offline/error help for Книжулик / Mr. Booky using existing platform/network/storage state and explicit recovery controls. Preserve the live character, all canonical globe scenes, art and resource ownership. All former Planetka functions remain Booky scope: child scenarios, reviewed dialogue/audio, educational journeys and full progress; the character replacement does not remove them. Adult navigation-tour resume is a partial foundation only; child policy, full journey migration, art, screen-reader, installed-device/performance, iOS and release gates remain open. S03.acceptance remains first unresolved.",
+  "actualApp": true,
+  "actualCss": true,
+  "actualGlobe": true,
+  "controlledNativePorts": true,
+  "adultVisibilityPersisted": true,
+  "semanticNavigationTourResume": true,
+  "automaticResumeNavigation": false,
+  "artChanged": false,
+  "globeSceneChanged": false,
+  "installedNativeDevice": false,
+  "builtPwaBookyResumeExecution": false,
+  "artAccepted": false,
+  "childProfileCreated": false,
+  "childAccessGranted": false,
+  "childApproved": false,
+  "rightsApproval": false,
+  "reviewedDialogueAccepted": false,
+  "narrationEnabled": false,
+  "ageAdaptiveJourneysEnabled": false,
+  "literaryJourneyPersistence": false,
+  "childJourneyPersistence": false,
+  "fullJourneyMigrationAccepted": false,
+  "screenReaderAcceptance": false,
+  "devicePerformanceAccepted": false,
+  "iosCompiled": false,
+  "grantsEntitlement": false,
+  "productionActionsPerformed": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

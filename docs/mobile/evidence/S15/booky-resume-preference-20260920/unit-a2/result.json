@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "mode": "unit",
+  "attempt": "a2",
+  "startedAt": "2026-09-20T06:33:41.969Z",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-resume-preference-20260920/source-manifests/5520997ca4a47bda.json",
+    "sha256": "5520997ca4a47bda3490cde64f8b83d9f5d32feba8fc2a25fa925a109cb2670c",
+    "fileCount": 94
+  },
+  "checkInputs": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-resume-preference-20260920/check.mjs",
+      "sha256": "415abebf1556d1e50422a350a54a85243b44cc89eaddcea9100b8aece3ec28dc"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-resume-preference-20260920/entry.json",
+      "sha256": "c688ecb701a262cc2d4c622cf34c1334e7d809b35feb4224e67daf86e2797b7e"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-resume-preference-20260920/unit.config.mjs",
+      "sha256": "aa72f94af327432cc764426231b791ad871d3e9afd6ce7ecd8a813e0e1924371"
+    },
+    {
+      "path": "src/host/HostPlatformServices.test.ts",
+      "sha256": "b56691b63d348054e484f7c1a7e9f6a6e85bd67265bc51c057ab7f99247cb7ae"
+    },
+    {
+      "path": "src/host/planetMascot.test.ts",
+      "sha256": "b8cf93c77546e7acbbbde9bafc1a5e1110024b9e3d8d6cf399e3563caeb3d53d"
+    },
+    {
+      "path": "src/host/planetMascotPersistence.test.ts",
+      "sha256": "d35e3bd0140bbf04c5a4f409d1371ae8ac4d9e140b8535475c0191d23bea8b32"
+    },
+    {
+      "path": "src/platform/adapters/web/WebPlatformAdapter.test.ts",
+      "sha256": "e71bc42832f37648cc31ac5904cbde8b111633730d19d08f17193d6c41decba0"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "tests": null,
+  "reportError": "ENOENT: no such file or directory, open 'C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-resume-preference-20260920\\unit-a2\\vitest.json'",
+  "pass": false,
+  "execution": {
+    "exitCode": 1,
+    "durationMs": 842
+  },
+  "stageAccepted": false,
+  "artAccepted": false,
+  "releaseReady": false
+}

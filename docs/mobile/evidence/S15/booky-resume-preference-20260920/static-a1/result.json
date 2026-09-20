@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "mode": "static",
+  "attempt": "a1",
+  "startedAt": "2026-09-20T06:23:10.396Z",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-resume-preference-20260920/source-manifests/c80283238a74b88a.json",
+    "sha256": "c80283238a74b88ab933727c57127654872289c48eb0442ea0a85c88abc67d48",
+    "fileCount": 94
+  },
+  "checkInputs": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-resume-preference-20260920/check.mjs",
+      "sha256": "c7d55f886dd407fe37eeb4d53b9a94e36aee66306f18942c921242c4c1a30ca3"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-resume-preference-20260920/entry.json",
+      "sha256": "c688ecb701a262cc2d4c622cf34c1334e7d809b35feb4224e67daf86e2797b7e"
+    },
+    {
+      "path": "src/host/HostPlatformServices.test.ts",
+      "sha256": "b56691b63d348054e484f7c1a7e9f6a6e85bd67265bc51c057ab7f99247cb7ae"
+    },
+    {
+      "path": "src/host/planetMascot.test.ts",
+      "sha256": "b8cf93c77546e7acbbbde9bafc1a5e1110024b9e3d8d6cf399e3563caeb3d53d"
+    },
+    {
+      "path": "src/host/planetMascotPersistence.test.ts",
+      "sha256": "d35e3bd0140bbf04c5a4f409d1371ae8ac4d9e140b8535475c0191d23bea8b32"
+    },
+    {
+      "path": "src/platform/adapters/web/WebPlatformAdapter.test.ts",
+      "sha256": "f9aa6b682e0575e592d99c204623466fc6880b79089121e4fc78372c9cfc5d60"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "tests": null,
+  "reportError": null,
+  "pass": true,
+  "execution": {
+    "exitCode": 0,
+    "durationMs": 24100
+  },
+  "stageAccepted": false,
+  "artAccepted": false,
+  "releaseReady": false
+}
