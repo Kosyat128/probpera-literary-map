@@ -1,8 +1,9 @@
-import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import type { PwaInstallController } from "./PwaInstallController";
 import type { PwaOfflineReadinessResult, PwaOfflineRepairResult, PwaWorkerController } from "./registerPwaWorker";
 import { usePwaOfflineRepairAccess } from "./PwaAccessBoundary";
+import { createPwaStorageStatus } from "./PwaStorageStatus";
 
 /** Implementation drafts; synchronized editorial approval remains a release gate. */
 export const pwaDeviceCopy = {
@@ -71,56 +72,11 @@ export const pwaDeviceCopy = {
   },
 } as const;
 
-type StorageState = {
-  busy: "estimate" | "persist" | null; usage: number | null; quota: number | null;
-  persisted: boolean | null; canPersist: boolean; denied: boolean; error: boolean;
-};
-const initialStorage: StorageState = { busy: "estimate", usage: null, quota: null, persisted: null, canPersist: false, denied: false, error: false };
-const validBytes = (value: unknown) => typeof value === "number" && Number.isFinite(value) && value >= 0 ? value : null;
-
 function useStorageStatus() {
-  const [state, setState] = useState(initialStorage);
-  const mounted = useRef(false);
-  const sequence = useRef(0);
-  const refresh = useCallback(async () => {
-    const id = ++sequence.current;
-    const storage = globalThis.navigator?.storage;
-    if (!storage) { if (mounted.current) setState({ ...initialStorage, busy: null }); return; }
-    setState(previous => ({ ...previous, busy: "estimate", error: false }));
-    const [estimate, persisted] = await Promise.allSettled([
-      Promise.resolve().then(() => storage.estimate?.()),
-      Promise.resolve().then(() => storage.persisted?.()),
-    ]);
-    if (!mounted.current || sequence.current !== id) return;
-    setState({ busy: null,
-      usage: estimate.status === "fulfilled" ? validBytes(estimate.value?.usage) : null,
-      quota: estimate.status === "fulfilled" ? validBytes(estimate.value?.quota) : null,
-      persisted: persisted.status === "fulfilled" && typeof persisted.value === "boolean" ? persisted.value : null,
-      canPersist: typeof storage.persist === "function", denied: false,
-      error: estimate.status === "rejected" || persisted.status === "rejected",
-    });
-  }, []);
-  const requestPersistence = useCallback(async () => {
-    const storage = globalThis.navigator?.storage;
-    if (!storage?.persist || !mounted.current) return;
-    const id = ++sequence.current;
-    setState(previous => ({ ...previous, busy: "persist", error: false }));
-    try {
-      // Called directly from a user action, never from mount or locale changes.
-      const persisted = await storage.persist();
-      if (mounted.current && sequence.current === id) {
-        setState(previous => ({ ...previous, busy: null, persisted, denied: !persisted }));
-      }
-    } catch {
-      if (mounted.current && sequence.current === id) setState(previous => ({ ...previous, busy: null, error: true }));
-    }
-  }, []);
-  useEffect(() => {
-    mounted.current = true;
-    void refresh();
-    return () => { mounted.current = false; sequence.current++; };
-  }, [refresh]);
-  return { state, refresh, requestPersistence };
+  const controller = useMemo(() => createPwaStorageStatus(), []);
+  const state = useSyncExternalStore(controller.subscribe, controller.getSnapshot, controller.getSnapshot);
+  useEffect(() => controller.activate(), [controller]);
+  return { state, refresh: controller.refresh, requestPersistence: controller.requestPersistence };
 }
 
 export default function PwaDevicePanel({ install, worker }: { install: PwaInstallController; worker: PwaWorkerController }) {
@@ -221,8 +177,8 @@ export default function PwaDevicePanel({ install, worker }: { install: PwaInstal
       <section aria-label={copy.storageTitle}>
         <h3>{copy.storageTitle}</h3>
         <p role="status">{storage.state.busy === "persist" ? copy.requesting : storage.state.busy ? copy.measuring : storage.state.error ? copy.storageError : persistenceText}</p>
-        {storage.state.usage !== null ? <dl>
-          <div><dt>{copy.usage}</dt><dd>{size(storage.state.usage)}</dd></div>
+        {storage.state.usage !== null || storage.state.quota !== null ? <dl>
+          {storage.state.usage !== null ? <div><dt>{copy.usage}</dt><dd>{size(storage.state.usage)}</dd></div> : null}
           {storage.state.quota !== null ? <div><dt>{copy.quota}</dt><dd>{size(storage.state.quota)}</dd></div> : null}
         </dl> : !storage.state.busy ? <p>{copy.unknown}</p> : null}
         <div className="pwa-device__actions">
