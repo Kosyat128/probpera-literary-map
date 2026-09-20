@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S13/writer-study-map-20260920/playwright.config.mjs"
+  ],
+  "exitCode": 1,
+  "durationMs": 22033,
+  "stdout": {
+    "path": "docs/mobile/evidence/S13/writer-study-map-20260920/browser-a1/stdout.log",
+    "bytes": 3036,
+    "sha256": "fb1a747b0ad1b4f09d98b671b6f0b9d7fe41b8fe247d2481c1dbb7fbceb2fccb"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S13/writer-study-map-20260920/browser-a1/stderr.log",
+    "bytes": 164,
+    "sha256": "a42258085d8be793b6b189347691851dfdc9a53617b1df0708451f9dcda15c9a"
+  }
+}

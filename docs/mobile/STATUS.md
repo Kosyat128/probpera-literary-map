@@ -1,3 +1,12 @@
+<!-- s13-study-map-20260920:begin -->
+Source 8e307286 shares the current canonical globe atlas with an authored writer-study wall map.
+3 selected study geometry cases, TypeScript, one actual-App Chrome case and one PWA offline smoke pass. Two RU/EN images are inspected evidence; formal art/child approval and installed-device acceptance remain open.
+S13.CUSTOM-001 receives evidence only; all criterion and stage statuses remain unchanged. Forty-one established sources remain unchanged. Historical Starter Set inventory is 29/13/0 plus three owner additions with inherited and newly changed bindings explicit.
+PWA 7845dffb; Android-dev 0f048745. Evidence: evidence/S13/writer-study-map-20260920/result.json.
+Stages remain 3 complete, 11 in progress, 27 unstarted; first open S03.
+Continue the full application plan from the next bounded internal requirement. Preserve the shared atlas wall map, stand inspection and return, appearance transactions, all stand proportions, reader, locale and storage behavior. Continue remaining Starter Set/source bindings and functional gaps without repeating unchanged suites. Child/rights/art/lightmap review, full accessories/audio/catalog, screen-reader, installed-device/stress, actual storage retention, distributed sync/conflict resolution, iOS and release gates remain open.
+<!-- s13-study-map-20260920:end -->
+
 <!-- s13-stand-inspection-20260920:begin -->
 Source 6419655b adds transient adult stand inspection and return through the existing camera rig, without an appearance save.
 18 cases across three selected suites, TypeScript, one actual-App Chrome case and one PWA offline smoke pass. Three RU/EN images are inspected evidence, not formal art or child approval; native ports remain controlled.

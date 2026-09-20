@@ -1,0 +1,151 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=docs/mobile/evidence/S13/writer-study-map-20260920/playwright.config.mjs"
+    ],
+    "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S13\\writer-study-map-20260920\\playwright.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-study-map/browser-a1",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "writer-study-map.spec.mjs"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S13\\writer-study-map-20260920\\browser-a1\\playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "writer-study-map.spec.mjs",
+      "file": "writer-study-map.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "writer study wall map shares the live atlas through edition and background previews",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 19574,
+                  "error": {
+                    "message": "Error: locator.click: Error: strict mode violation: locator('.native-planet-app .interface-language-control button').filter({ hasText: 'EN' }) resolved to 2 elements:\n    1) <button class=\"\" type=\"button\" aria-pressed=\"false\" title=\"Английский язык\" aria-label=\"Английский язык\">EN</button> aka getByRole('button', { name: 'Английский язык' })\n    2) <button class=\"\" type=\"button\" aria-pressed=\"false\" title=\"Английский язык\" aria-label=\"Английский язык\">EN</button> aka getByRole('region', { name: 'Интерактивный литературный глобус. Стрелки вращают, плюс и минус меняют масштаб,' }).getByLabel('Английский язык')\n\nCall log:\n\u001b[2m  - waiting for locator('.native-planet-app .interface-language-control button').filter({ hasText: 'EN' })\u001b[22m\n",
+                    "stack": "Error: locator.click: Error: strict mode violation: locator('.native-planet-app .interface-language-control button').filter({ hasText: 'EN' }) resolved to 2 elements:\n    1) <button class=\"\" type=\"button\" aria-pressed=\"false\" title=\"Английский язык\" aria-label=\"Английский язык\">EN</button> aka getByRole('button', { name: 'Английский язык' })\n    2) <button class=\"\" type=\"button\" aria-pressed=\"false\" title=\"Английский язык\" aria-label=\"Английский язык\">EN</button> aka getByRole('region', { name: 'Интерактивный литературный глобус. Стрелки вращают, плюс и минус меняют масштаб,' }).getByLabel('Английский язык')\n\nCall log:\n\u001b[2m  - waiting for locator('.native-planet-app .interface-language-control button').filter({ hasText: 'EN' })\u001b[22m\n\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\writer-study-map.spec.mjs:407:107",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\writer-study-map.spec.mjs",
+                      "column": 107,
+                      "line": 407
+                    },
+                    "snippet": "  405 |     const pose = await stablePose(page);\n  406 |\n> 407 |     await page.locator('.native-planet-app .interface-language-control button').filter({ hasText: 'EN' }).click();\n      |                                                                                                           ^\n  408 |     await expect(page.locator('html')).toHaveAttribute('lang', 'en');\n  409 |     await expect(globe).toHaveAttribute('data-planet-composition-phase', 'idle');\n  410 |     await expect.poll(async () => (await sample(page)).fingerprint).not.toBe(initial.fingerprint);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\writer-study-map.spec.mjs",
+                        "column": 107,
+                        "line": 407
+                      },
+                      "message": "Error: locator.click: Error: strict mode violation: locator('.native-planet-app .interface-language-control button').filter({ hasText: 'EN' }) resolved to 2 elements:\n    1) <button class=\"\" type=\"button\" aria-pressed=\"false\" title=\"Английский язык\" aria-label=\"Английский язык\">EN</button> aka getByRole('button', { name: 'Английский язык' })\n    2) <button class=\"\" type=\"button\" aria-pressed=\"false\" title=\"Английский язык\" aria-label=\"Английский язык\">EN</button> aka getByRole('region', { name: 'Интерактивный литературный глобус. Стрелки вращают, плюс и минус меняют масштаб,' }).getByLabel('Английский язык')\n\nCall log:\n\u001b[2m  - waiting for locator('.native-planet-app .interface-language-control button').filter({ hasText: 'EN' })\u001b[22m\n\n\n  405 |     const pose = await stablePose(page);\n  406 |\n> 407 |     await page.locator('.native-planet-app .interface-language-control button').filter({ hasText: 'EN' }).click();\n      |                                                                                                           ^\n  408 |     await expect(page.locator('html')).toHaveAttribute('lang', 'en');\n  409 |     await expect(globe).toHaveAttribute('data-planet-composition-phase', 'idle');\n  410 |     await expect.poll(async () => (await sample(page)).fingerprint).not.toBe(initial.fingerprint);\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\writer-study-map.spec.mjs:407:107"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-20T02:43:04.367Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "writer-study-map-proof",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-study-map\\browser-a1\\writer-study-map-writer-st-f46c1-ion-and-background-previews\\attachments\\writer-study-map-proof-badc4cc82fa727f39effdd079f731f826599762e.json"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-study-map\\browser-a1\\writer-study-map-writer-st-f46c1-ion-and-background-previews\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\writer-study-map.spec.mjs",
+                    "column": 107,
+                    "line": 407
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "a6ac95ca8ead4e409f81-43fe6219169111caf9d6",
+          "file": "writer-study-map.spec.mjs",
+          "line": 386,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-20T02:43:03.691Z",
+    "duration": 21167.665,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

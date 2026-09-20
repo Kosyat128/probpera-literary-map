@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S13/writer-study-map-20260920/pwa.config.mjs"
+  ],
+  "exitCode": 0,
+  "durationMs": 26685,
+  "stdout": {
+    "path": "docs/mobile/evidence/S13/writer-study-map-20260920/pwa-a1/browser-stdout.log",
+    "bytes": 189,
+    "sha256": "941adf65c8fee79e08af8537dd475c966ab808d2f3b3ecbc3b3f5c6b6342d640"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S13/writer-study-map-20260920/pwa-a1/browser-stderr.log",
+    "bytes": 162,
+    "sha256": "922a5028f2d35ba9f24c79614a41de1a4397d2f2bc5fa5afb244f35236350036"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-20T02:49:24.765Z",
+  "sourceCommit": "8e30728685be7eaf39f1e8a3910ef04a31230a1e",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S13/writer-study-map-20260920/source-manifests/5640eda1ebcdeb22.json",
+    "sha256": "5640eda1ebcdeb2279ccb44647483a0af1ab32dac83b29259fcaa063e911c5e8",
+    "fileCount": 80
+  },
+  "actualAppCapture": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-study-map/browser-a2/writer-study-map-writer-st-f46c1-ion-and-background-previews/writer-study-map-proof.json",
+    "sha256": "f5c82ebe15677eaf16d36ab5be818765928cf40b72b5dff7bf3b189539773842"
+  },
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-study-map/browser-a2/writer-study-map-writer-st-f46c1-ion-and-background-previews/writer-study-wall-map-ru-1440.png",
+      "sha256": "294b390d3c65a6ac5ae6e7fee3edeee18e794328c5406cb7fb1cce21a611fba6",
+      "inspected": true,
+      "reviewer": "root",
+      "method": "view_image actual product capture",
+      "findings": [
+        "The real keyboard orbit reveals an upright Natural Earth wall map between the study windows, with a substantial dark wooden frame and small corner fasteners.",
+        "The map is integrated with the retained desk, books, window openings and ceramic stand; its left edge is partly behind the foreground globe.",
+        "This wide scene view shows placement and readable geography. Fine paper curvature and joinery are small at this distance; full art and realism acceptance remain open."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-study-map/browser-a2/writer-study-map-writer-st-f46c1-ion-and-background-previews/writer-study-wall-map-en-1440.png",
+      "sha256": "09b19c3e36be42af261ec7c8626a972474e996d6ecd90700912b6e00d2aaa6fd",
+      "inspected": true,
+      "reviewer": "root",
+      "method": "view_image actual product capture",
+      "findings": [
+        "The same framed wall map now shows the historic Hondius geography matching the visible globe after a real edition selection.",
+        "The English controls, retained room and portrait stand remain present. The edition rail partly covers the top of the map in this orbit view.",
+        "This is an actual product view reached with keyboard controls; no test camera placement was applied. The room remains visibly stylized and is not claimed photorealistic."
+      ]
+    }
+  ],
+  "artAccepted": false,
+  "childApproved": false,
+  "userRealismRequirementSatisfied": false,
+  "releaseReady": false
+}

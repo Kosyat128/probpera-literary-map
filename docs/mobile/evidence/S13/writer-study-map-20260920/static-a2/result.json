@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "mode": "static",
+  "attempt": "a2",
+  "startedAt": "2026-09-20T02:43:07.868Z",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S13/writer-study-map-20260920/source-manifests/5640eda1ebcdeb22.json",
+    "sha256": "5640eda1ebcdeb2279ccb44647483a0af1ab32dac83b29259fcaa063e911c5e8",
+    "fileCount": 80
+  },
+  "checkInputs": [
+    {
+      "path": "docs/mobile/evidence/S13/writer-study-map-20260920/check.mjs",
+      "sha256": "9f94bc5abb5ad33d93a79e7f6ed7bd0c119030865243dff9cf9cd8cadb438ddb"
+    },
+    {
+      "path": "docs/mobile/evidence/S13/writer-study-map-20260920/entry.json",
+      "sha256": "2377c4876c232eb4904fe4ace1aab1171a6f68bbed6bcb7c367c3a94456cf507"
+    },
+    {
+      "path": "src/components/globeWriterStudyGeometry.test.ts",
+      "sha256": "e99eab9e27e0b68f442c91edc4b4a0bb92e73797c4b0e3f329e94d714f2e731c"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "tests": null,
+  "reportError": null,
+  "pass": true,
+  "execution": {
+    "exitCode": 0,
+    "durationMs": 29935
+  },
+  "stageAccepted": false,
+  "artAccepted": false,
+  "releaseReady": false
+}
