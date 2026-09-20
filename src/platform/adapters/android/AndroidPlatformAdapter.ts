@@ -34,6 +34,7 @@ export async function createAndroidPlatformAdapter(options: AndroidPlatformAdapt
   const services = createHostPlatformServices({
     kind: "android", channel, languages: initialization.language.value === null ? [] : [initialization.language.value],
     app: bindings.app, network: bindings.network, preferences: bindings.preferences,
+    getAppLanguage: () => bindings.app.getAppLanguage(), languageTimeoutMs: options.timeoutMs,
     openBrowser: input => bindings.browser.open(input),
     openMail: input => bindings.appLauncher.openUrl(input),
     allowExternalLink: options.allowExternalLink, onFailure: options.onFailure,

@@ -1,5 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import type { NativeHostBindings } from "../../../host/initializeHostPlatform";
+import type { HostAppState } from "../../../host/HostPlatformServices";
 import { createAndroidPlatformAdapter } from "./AndroidPlatformAdapter";
 
 function native() {
@@ -84,6 +85,37 @@ describe("Android Capacitor bindings", () => {
     const result = await createAndroidPlatformAdapter({ bindings });
     expect(result.initialization.preference).toEqual({ status: "unavailable", value: null });
     expect(result.initialization.language.status).toBe("ready");
+  });
+
+  it("wires native app-language resume reads and their deadline without repeating bootstrap preference IO", async () => {
+    vi.useFakeTimers(); const bindings = native();
+    const { services } = await createAndroidPlatformAdapter({ bindings, timeoutMs: 20 });
+    const initial = services.getSystemLanguages();
+    expect(services.getSnapshot().systemLanguages).toBe(initial);
+    expect(bindings.app.getAppLanguage).toHaveBeenCalledTimes(1);
+    const stop = services.subscribe(vi.fn());
+    try {
+      for (let index = 0; index < 12; index++) await Promise.resolve();
+      const calls = bindings.app.addListener.mock.calls as unknown as [string, (state: HostAppState) => void][];
+      const appState = calls.find(([event]) => event === "appStateChange")![1];
+      appState({ isActive: true });
+      expect(bindings.app.getAppLanguage).toHaveBeenCalledTimes(1);
+      let finish!: (result: { value: string }) => void;
+      bindings.app.getAppLanguage.mockReturnValueOnce(new Promise(resolve => { finish = resolve; }));
+      appState({ isActive: false }); appState({ isActive: true });
+      await vi.advanceTimersByTimeAsync(20);
+      expect(bindings.app.getAppLanguage).toHaveBeenCalledTimes(2);
+      finish({ value: "en" });
+      for (let index = 0; index < 12; index++) await Promise.resolve();
+      expect(services.getSystemLanguages()).toBe(initial);
+      bindings.app.getAppLanguage.mockResolvedValueOnce({ value: "en-GB" });
+      appState({ isActive: false }); appState({ isActive: true });
+      for (let index = 0; index < 12; index++) await Promise.resolve();
+      expect(services.getSystemLanguages()).toEqual(["en-GB"]);
+      expect(services.getSnapshot().systemLanguages).toBe(services.getSystemLanguages());
+      expect(bindings.preferences.get).toHaveBeenCalledExactlyOnceWith({ key: "probpera-interface-language" });
+      expect(bindings.preferences.set).not.toHaveBeenCalled(); expect(vi.getTimerCount()).toBe(0);
+    } finally { stop(); }
   });
 
   it("keeps external actions denied until host policy explicitly allows them", async () => {

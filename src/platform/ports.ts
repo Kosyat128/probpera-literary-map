@@ -12,6 +12,8 @@ export interface PlatformSnapshot {
   readonly visibility: ApplicationVisibility;
   /** Explicit transport capability only; omission means unknown, never Wi-Fi. */
   readonly networkType?: NetworkType;
+  /** Observed native app-language preferences; absent when refresh is unsupported. */
+  readonly systemLanguages?: readonly string[];
 }
 
 /** Non-secret preferences only. This interface cannot store proof of ownership. */

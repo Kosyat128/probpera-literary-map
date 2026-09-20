@@ -1,7 +1,7 @@
 import { useEffect, useSyncExternalStore } from "react";
-import { useInterfaceLanguage, type HostLanguagePersistence, type InterfaceLanguage } from "../i18n/InterfaceLanguage";
+import { resolveInitialInterfaceLanguage, useInterfaceLanguage, type HostLanguagePersistence, type InterfaceLanguage } from "../i18n/InterfaceLanguage";
 import { usePlatformSnapshot } from "../platform/PlatformServices";
-import type { PreferenceStore } from "../platform/ports";
+import type { PlatformServices, PreferenceStore } from "../platform/ports";
 
 export type HostLanguageStatus = "idle" | "saving" | "failed" | "read-unavailable";
 export interface HostLanguageStatusController {
@@ -12,14 +12,16 @@ export interface HostLanguageStatusController {
   dispose(): void;
 }
 
-/** Tracks persistence outcomes only. The canonical provider alone owns language. */
-export function createHostLanguageStatus(preferences: PreferenceStore, initialLanguage: InterfaceLanguage, readAvailable: boolean): HostLanguageStatusController {
+/** Reports persistence and forwards system hints; the provider owns effective language. */
+export function createHostLanguageStatus(preferences: PreferenceStore, initialLanguage: InterfaceLanguage, readAvailable: boolean,
+  systemLanguageSource?: Pick<PlatformServices, "getSystemLanguages" | "subscribe">): HostLanguageStatusController {
   const initialStatus: HostLanguageStatus = readAvailable ? "idle" : "read-unavailable";
   let status: HostLanguageStatus = initialStatus;
   let version = 0;
   let disposed = false;
   let latestOutcome: "pending" | "success" | "failure" | null = null;
   const listeners = new Set<() => void>();
+  const systemSubscriptions = new Set<() => void>();
   function publish(next: HostLanguageStatus) {
     if (disposed || status === next) return;
     status = next;
@@ -30,8 +32,34 @@ export function createHostLanguageStatus(preferences: PreferenceStore, initialLa
       }
     }
   }
+  function subscribeSystemLanguage(listener: (language: InterfaceLanguage) => void) {
+    if (disposed || !systemLanguageSource) return () => undefined;
+    let listening = true, previous = initialLanguage;
+    let unsubscribe: (() => void) | undefined;
+    const stop = () => {
+      if (!listening) return;
+      listening = false; systemSubscriptions.delete(stop);
+      try { unsubscribe?.(); } catch { /* Cleanup cannot replace the active locale. */ }
+    };
+    const notify = () => {
+      if (disposed || !listening) return;
+      const languages = systemLanguageSource.getSystemLanguages();
+      if (!languages.length) return;
+      const next = resolveInitialInterfaceLanguage(null, undefined, languages);
+      if (next === previous) return;
+      previous = next; listener(next);
+    };
+    systemSubscriptions.add(stop);
+    try {
+      unsubscribe = systemLanguageSource.subscribe(notify);
+      if (!listening) unsubscribe();
+      else notify(); // Include an update preceding the provider's effect.
+    } catch { stop(); }
+    return stop;
+  }
   const persistence: HostLanguagePersistence = Object.freeze({
     initialLanguage,
+    ...(systemLanguageSource ? { subscribeSystemLanguage } : {}),
     persist(nextLanguage: InterfaceLanguage) {
       if (disposed) return Promise.resolve(false);
       const attempt = ++version;
@@ -63,7 +91,11 @@ export function createHostLanguageStatus(preferences: PreferenceStore, initialLa
       listeners.add(listener);
       return () => { listeners.delete(listener); };
     },
-    dispose() { disposed = true; ++version; listeners.clear(); },
+    dispose() {
+      if (disposed) return;
+      disposed = true; ++version; listeners.clear();
+      for (const stop of [...systemSubscriptions]) stop();
+    },
   });
 }
 

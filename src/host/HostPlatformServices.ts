@@ -22,13 +22,17 @@ export interface HostPreferenceBridge {
   remove(options: { key: string }): Promise<void>;
 }
 export interface HostPlatformFailure {
-  readonly operation: "app-listener" | "app-state" | "network-listener" | "network-status" | "listener-remove"
+  readonly operation: "app-listener" | "app-state" | "app-language" | "network-listener" | "network-status" | "listener-remove"
     | "subscriber" | "preference-get" | "preference-set" | "preference-remove" | "link-policy" | "browser-open" | "mail-open";
   readonly reason: "unavailable" | "invalid-response" | "readback-mismatch" | "callback-failed";
 }
 interface HostPlatformCapabilities {
-  /** Already resolved by host initialization; this adapter performs no language IO. */
+  /** Already resolved by host initialization; construction performs no language IO. */
   readonly languages: readonly string[];
+  /** Optional native refresh, only after an observed background-to-active transition. */
+  readonly getAppLanguage?: () => Promise<unknown>;
+  /** One request deadline, 1-10000 ms; no automatic retries. Defaults to 1500 ms. */
+  readonly languageTimeoutMs?: number;
   readonly app?: HostAppBridge;
   readonly network?: HostNetworkBridge;
   readonly preferences?: HostPreferenceBridge;
@@ -76,7 +80,10 @@ function safeHttpsUrl(input: string): string | null {
 interface Lifetime {
   alive: boolean;
   appSequence: number;
+  appActive: boolean | null;
   networkSequence: number;
+  languageSequence: number;
+  languageTimer: ReturnType<typeof setTimeout> | null;
   readonly handles: Set<HostListenerHandle>;
 }
 
@@ -85,6 +92,13 @@ export function createHostPlatformServices(options: HostPlatformServicesOptions)
   const channels = options.kind === "android" ? ["dev", "googlePlay", "ruStore"]
     : options.kind === "ios" ? ["dev", "appStore"] : [];
   if (!channels.includes(options.channel)) throw new Error("Invalid native platform distribution");
+  const languageTimeoutMs = options.languageTimeoutMs ?? 1500;
+  if (!Number.isInteger(languageTimeoutMs) || languageTimeoutMs < 1 || languageTimeoutMs > 10_000) {
+    throw new RangeError("Native language timeout must be 1-10000 ms");
+  }
+  if (options.getAppLanguage !== undefined && typeof options.getAppLanguage !== "function") {
+    throw new TypeError("Native language refresh requires a reader");
+  }
   const languages: string[] = [];
   if (Array.isArray(options.languages)) for (const value of options.languages.slice(0, 32)) {
     if (typeof value !== "string" || !value || value.length > 100) continue;
@@ -93,7 +107,7 @@ export function createHostPlatformServices(options: HostPlatformServicesOptions)
       if (canonical && !languages.includes(canonical)) languages.push(canonical);
     } catch { /* Invalid host language is unavailable, never a browser fallback. */ }
   }
-  const languageSnapshot = Object.freeze(languages);
+  let languageSnapshot: readonly string[] = Object.freeze(languages);
   function report(operation: HostPlatformFailure["operation"], reason: HostPlatformFailure["reason"]) {
     try {
       void Promise.resolve(options.onFailure?.(Object.freeze({ operation, reason }))).catch(() => undefined);
@@ -168,13 +182,14 @@ export function createHostPlatformServices(options: HostPlatformServicesOptions)
     },
   });
 
-  let snapshot: PlatformSnapshot = Object.freeze({ connectivity: "unknown", visibility: "active" });
+  let snapshot: PlatformSnapshot = Object.freeze({ connectivity: "unknown", visibility: "active",
+    ...(options.getAppLanguage ? { systemLanguages: languageSnapshot } : {}) });
   let lifetime: Lifetime | null = null;
   const subscribers = new Map<() => void, number>();
   const current = (session: Lifetime) => session.alive && lifetime === session && subscribers.size > 0;
   function publish(session: Lifetime, next: PlatformSnapshot) {
     if (!current(session) || (next.connectivity === snapshot.connectivity && next.visibility === snapshot.visibility
-      && next.networkType === snapshot.networkType)) return;
+      && next.networkType === snapshot.networkType && next.systemLanguages === snapshot.systemLanguages)) return;
     snapshot = Object.freeze(next);
     for (const listener of [...subscribers.keys()]) {
       if (!current(session)) break;
@@ -183,7 +198,54 @@ export function createHostPlatformServices(options: HostPlatformServicesOptions)
     }
   }
   function withoutNetworkType(): PlatformSnapshot {
-    return { connectivity: snapshot.connectivity, visibility: snapshot.visibility };
+    return { connectivity: snapshot.connectivity, visibility: snapshot.visibility,
+      ...(snapshot.systemLanguages ? { systemLanguages: snapshot.systemLanguages } : {}) };
+  }
+  function clearLanguageTimer(session: Lifetime) {
+    if (session.languageTimer !== null) clearTimeout(session.languageTimer);
+    session.languageTimer = null;
+  }
+  function invalidateLanguage(session: Lifetime) {
+    ++session.languageSequence;
+    clearLanguageTimer(session);
+  }
+  function readLanguage(session: Lifetime, sequence: number) {
+    const ownsRead = () => current(session) && session.appActive === true
+      && snapshot.visibility === "active" && sequence === session.languageSequence;
+    if (!options.getAppLanguage || !ownsRead()) return;
+    session.languageTimer = setTimeout(() => {
+      if (!ownsRead()) return;
+      invalidateLanguage(session);
+      report("app-language", "unavailable");
+    }, languageTimeoutMs);
+    void Promise.resolve().then(() => {
+      // A subscriber may have suspended/detached this lifetime before native IO.
+      if (ownsRead()) return options.getAppLanguage!();
+      return undefined;
+    }).then(result => {
+      if (!ownsRead()) return;
+      clearLanguageTimer(session);
+      let canonical: string;
+      try {
+        if (result === null || typeof result !== "object" || Array.isArray(result)) throw new Error("invalid-language");
+        const value = (result as { value?: unknown }).value;
+        if (typeof value !== "string" || !value || value.length > 128 || /[\s\u0000-\u001f\u007f]/u.test(value)) throw new Error("invalid-language");
+        const tags = Intl.getCanonicalLocales(value);
+        if (tags.length !== 1) throw new Error("invalid-language");
+        canonical = tags[0];
+      } catch {
+        if (ownsRead()) report("app-language", "invalid-response");
+        return;
+      }
+      // Reading an untrusted result property can itself invoke native callbacks.
+      if (!ownsRead() || (languageSnapshot.length === 1 && languageSnapshot[0] === canonical)) return;
+      languageSnapshot = Object.freeze([canonical]);
+      publish(session, { ...snapshot, systemLanguages: languageSnapshot });
+    }, () => {
+      if (!ownsRead()) return;
+      clearLanguageTimer(session);
+      report("app-language", "unavailable");
+    });
   }
   function acceptNetwork(session: Lifetime, state: HostNetworkState) {
     let connected: unknown;
@@ -201,10 +263,17 @@ export function createHostPlatformServices(options: HostPlatformServicesOptions)
     const isActive = state?.isActive;
     if (typeof isActive !== "boolean") { report("app-state", "invalid-response"); return; }
     const resumed = isActive && snapshot.visibility === "background";
+    const languageResumed = isActive && session.appActive === false;
+    session.appActive = isActive;
+    // An initial observation in a new lifetime is not a resume. Reserve the
+    // language sequence before notifying reentrant subscribers about activity.
+    if (!isActive || languageResumed) invalidateLanguage(session);
+    const languageSequence = session.languageSequence;
     const changed = (isActive ? "active" : "background") !== snapshot.visibility;
     // Background callbacks and pre-background reads cannot authorize a resumed transfer.
     if (changed) ++session.networkSequence;
     publish(session, { ...(changed ? withoutNetworkType() : snapshot), visibility: isActive ? "active" : "background" });
+    if (languageResumed) readLanguage(session, languageSequence);
     if (resumed && current(session)) void readNetwork(session);
   }
   async function readNetwork(session: Lifetime) {
@@ -240,7 +309,8 @@ export function createHostPlatformServices(options: HostPlatformServicesOptions)
     } catch { report(operation, "unavailable"); }
   }
   function attach() {
-    const session: Lifetime = { alive: true, appSequence: 0, networkSequence: 0, handles: new Set() };
+    const session: Lifetime = { alive: true, appSequence: 0, appActive: null, networkSequence: 0,
+      languageSequence: 0, languageTimer: null, handles: new Set() };
     lifetime = session;
     // A new listener lifetime cannot reuse transport information observed before a gap.
     publish(session, withoutNetworkType());
@@ -274,6 +344,7 @@ export function createHostPlatformServices(options: HostPlatformServicesOptions)
     lifetime = null;
     if (!previous) return;
     previous.alive = false;
+    invalidateLanguage(previous);
     for (const handle of previous.handles) removeHandle(handle);
     previous.handles.clear();
   }

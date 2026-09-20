@@ -29,6 +29,33 @@ describe("host language persistence outcome tracking", () => {
     expect(f.controller.getSnapshot()).toBe("read-unavailable");
     expect(f.controller.getServerSnapshot()).toBe("read-unavailable");
     expect(f.set).not.toHaveBeenCalled();
+    expect(f.controller.persistence.subscribeSystemLanguage).toBeUndefined();
+  });
+  it("forwards a missed system update and later locale changes without persisting or retaining listeners", () => {
+    const set = vi.fn<PreferenceStore["set"]>(), remove = vi.fn();
+    const preferences: PreferenceStore = { persistence: "best-effort", get: async () => null, remove: async () => false, set };
+    let languages = ["en-US"];
+    let notify: () => void = () => undefined;
+    const source = { getSystemLanguages: () => languages, subscribe(listener: () => void) { notify = listener; return remove; } };
+    const controller = createHostLanguageStatus(preferences, "ru", true, source), received = vi.fn();
+    const stop = controller.persistence.subscribeSystemLanguage!(received);
+    expect(received.mock.calls).toEqual([["en"]]);
+    notify(); languages = ["fr-FR"]; notify();
+    expect(received).toHaveBeenCalledTimes(1);
+    languages = ["ru-Cyrl-RU"]; notify();
+    expect(received.mock.calls).toEqual([["en"], ["ru"]]);
+    expect(set).not.toHaveBeenCalled(); expect(controller.getSnapshot()).toBe("idle");
+    controller.dispose(); stop(); stop(); languages = ["en"]; notify();
+    expect(remove).toHaveBeenCalledTimes(1); expect(received).toHaveBeenCalledTimes(2);
+  });
+  it("cleans up a synchronous system subscription even when its observer disposes the controller", () => {
+    const set = vi.fn<PreferenceStore["set"]>(), remove = vi.fn();
+    const preferences: PreferenceStore = { persistence: "best-effort", get: async () => null, remove: async () => false, set };
+    const source = { getSystemLanguages: () => ["en"], subscribe(listener: () => void) { listener(); return remove; } };
+    const controller = createHostLanguageStatus(preferences, "ru", true, source);
+    const stop = controller.persistence.subscribeSystemLanguage!(() => controller.dispose());
+    stop(); controller.dispose();
+    expect(remove).toHaveBeenCalledTimes(1); expect(set).not.toHaveBeenCalled();
   });
   it("retains the selected language while reporting false or rejected persistence", async () => {
     const f = fixture();

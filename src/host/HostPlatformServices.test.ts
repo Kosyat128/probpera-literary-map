@@ -1,4 +1,4 @@
-import { describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { createHostPlatformServices, type HostAppBridge, type HostAppState, type HostListenerHandle,
   type HostNetworkBridge, type HostNetworkState, type HostPlatformServicesOptions, type HostPreferenceBridge } from "./HostPlatformServices";
 import { GLOBE_EDITION_IDS } from "../components/globeEditions";
@@ -92,6 +92,126 @@ describe("SDK-free host identity and stable snapshots", () => {
       expect(() => createHostPlatformServices({ kind, channel, languages: [] } as unknown as HostPlatformServicesOptions))
         .toThrow("Invalid native platform distribution");
     });
+});
+
+describe("native app language refresh on resume", () => {
+  const cleanup: (() => void)[] = [];
+  beforeEach(() => { vi.useFakeTimers(); });
+  afterEach(() => { for (const stop of cleanup.splice(0)) stop(); vi.useRealTimers(); });
+  function observe(f: ReturnType<typeof fixture>, listener = vi.fn()) {
+    const stop = f.services.subscribe(listener); cleanup.push(stop); return stop;
+  }
+  const resume = (f: ReturnType<typeof fixture>, index = 0) => {
+    f.appEvents[index]({ isActive: false }); f.appEvents[index]({ isActive: true });
+  };
+
+  it("reads only on a genuine resume and preserves canonical language identity through transport changes", async () => {
+    const getAppLanguage = vi.fn(async () => ({ value: "EN-us" }));
+    const f = fixture({ languages: ["ru-RU"], getAppLanguage });
+    const initial = f.services.getSystemLanguages();
+    expect(f.services.getSnapshot().systemLanguages).toBe(initial);
+    expect(getAppLanguage).not.toHaveBeenCalled();
+    observe(f); await flush();
+    f.appEvents[0]({ isActive: true }); await flush();
+    expect(getAppLanguage).not.toHaveBeenCalled();
+    resume(f); await flush();
+    const accepted = f.services.getSystemLanguages();
+    expect(accepted).toEqual(["en-US"]); expect(accepted).not.toBe(initial);
+    expect(Object.isFrozen(accepted)).toBe(true);
+    expect(f.services.getSnapshot().systemLanguages).toBe(accepted);
+    f.networkEvents[0]({ connected: true, connectionType: "wifi" });
+    f.networkEvents[0]({ connected: true, connectionType: "unknown" });
+    expect(f.services.getSnapshot().systemLanguages).toBe(accepted);
+    const stable = f.services.getSnapshot();
+    f.appEvents[0]({ isActive: true }); await flush();
+    expect(f.services.getSnapshot()).toBe(stable); expect(getAppLanguage).toHaveBeenCalledTimes(1);
+    resume(f); await flush();
+    expect(getAppLanguage).toHaveBeenCalledTimes(2);
+    expect(f.services.getSystemLanguages()).toBe(accepted);
+    expect(f.services.getSnapshot().systemLanguages).toBe(accepted);
+    expect(vi.getTimerCount()).toBe(0);
+  });
+
+  it("retains the prior language after invalid responses, errors and a bounded timeout without retrying", async () => {
+    const getAppLanguage = vi.fn<NonNullable<HostPlatformServicesOptions["getAppLanguage"]>>();
+    const f = fixture({ languages: ["ru"], getAppLanguage, languageTimeoutMs: 25 });
+    observe(f); await flush(); const initial = f.services.getSystemLanguages();
+    const malformed = [null, [], {}, { value: ["en"] }, { value: "en_US" }, { value: "en,ru" },
+      { value: " en" }, { value: "en\n" }, { value: "x".repeat(129) },
+      Object.defineProperty({}, "value", { get() { throw new Error("private-native-value"); } })];
+    for (const result of malformed) {
+      getAppLanguage.mockResolvedValueOnce(result); resume(f); await flush();
+      expect(f.services.getSystemLanguages()).toBe(initial); expect(vi.getTimerCount()).toBe(0);
+    }
+    getAppLanguage.mockImplementationOnce(() => { throw new Error("private-native-throw"); });
+    resume(f); await flush();
+    getAppLanguage.mockRejectedValueOnce(new Error("private-native-rejection")); resume(f); await flush();
+    const held = deferred<unknown>(); getAppLanguage.mockReturnValueOnce(held.promise);
+    resume(f); await flush(); const active = f.services.getSnapshot();
+    await vi.advanceTimersByTimeAsync(25);
+    expect(f.services.getSnapshot()).toBe(active); expect(vi.getTimerCount()).toBe(0);
+    held.resolve({ value: "en" }); await flush();
+    expect(f.services.getSystemLanguages()).toBe(initial);
+    const reads = getAppLanguage.mock.calls.length;
+    await vi.advanceTimersByTimeAsync(10_000); f.appEvents[0]({ isActive: true }); await flush();
+    expect(getAppLanguage).toHaveBeenCalledTimes(reads);
+    expect(f.onFailure).toHaveBeenCalledWith({ operation: "app-language", reason: "invalid-response" });
+    expect(f.onFailure).toHaveBeenCalledWith({ operation: "app-language", reason: "unavailable" });
+    expect(JSON.stringify(f.onFailure.mock.calls)).not.toContain("private-native");
+    getAppLanguage.mockResolvedValueOnce({ value: "en-GB" }); resume(f); await flush();
+    expect(f.services.getSystemLanguages()).toEqual(["en-GB"]);
+    for (const languageTimeoutMs of [0, 10_001, 1.5, NaN]) {
+      expect(() => fixture({ getAppLanguage, languageTimeoutMs })).toThrow("Native language timeout");
+    }
+  });
+
+  it("fences overlapping resumes and detached results without treating resubscription as a resume", async () => {
+    const first = deferred<unknown>(), second = deferred<unknown>(), detached = deferred<unknown>();
+    const getAppLanguage = vi.fn<NonNullable<HostPlatformServicesOptions["getAppLanguage"]>>()
+      .mockReturnValueOnce(first.promise).mockReturnValueOnce(second.promise).mockReturnValueOnce(detached.promise);
+    const f = fixture({ languages: ["ru"], getAppLanguage }); const stop = observe(f); await flush();
+    resume(f); await flush(); resume(f); await flush();
+    second.resolve({ value: "en-GB" }); await flush(); const accepted = f.services.getSystemLanguages();
+    first.resolve({ value: "de-DE" }); await flush();
+    expect(f.services.getSystemLanguages()).toBe(accepted); expect(accepted).toEqual(["en-GB"]);
+    resume(f); await flush(); expect(vi.getTimerCount()).toBe(1);
+    f.appEvents[0]({ isActive: false }); expect(vi.getTimerCount()).toBe(0);
+    stop(); observe(f); await flush();
+    expect(getAppLanguage).toHaveBeenCalledTimes(3);
+    detached.resolve({ value: "fr-FR" }); await flush();
+    expect(f.services.getSystemLanguages()).toBe(accepted);
+    f.appEvents[0]({ isActive: false }); f.appEvents[0]({ isActive: true }); await flush();
+    expect(getAppLanguage).toHaveBeenCalledTimes(3);
+    const last = deferred<unknown>(); getAppLanguage.mockReturnValueOnce(last.promise);
+    resume(f, 1); await flush(); cleanup[cleanup.length - 1]();
+    expect(vi.getTimerCount()).toBe(0);
+    last.reject(new Error("late-after-detach")); await flush();
+    expect(f.services.getSystemLanguages()).toBe(accepted);
+  });
+
+  it("reserves read ownership before reentrant notifications and revalidates result accessors", async () => {
+    const getAppLanguage = vi.fn<NonNullable<HostPlatformServicesOptions["getAppLanguage"]>>();
+    const f = fixture({ languages: ["ru"], getAppLanguage });
+    let interrupt = false;
+    observe(f, vi.fn(() => {
+      if (interrupt && f.services.getSnapshot().visibility === "active") {
+        interrupt = false; f.appEvents[0]({ isActive: false }); f.appEvents[0]({ isActive: true });
+      }
+    })); await flush();
+    getAppLanguage.mockResolvedValueOnce({ value: "en" }); interrupt = true;
+    resume(f); await flush();
+    expect(getAppLanguage).toHaveBeenCalledTimes(1); expect(f.services.getSystemLanguages()).toEqual(["en"]);
+    getAppLanguage.mockResolvedValueOnce(Object.defineProperty({}, "value", { get() {
+      f.appEvents[0]({ isActive: false }); return "de";
+    } })); resume(f); await flush();
+    expect(f.services.getSnapshot().visibility).toBe("background");
+    expect(f.services.getSystemLanguages()).toEqual(["en"]); expect(vi.getTimerCount()).toBe(0);
+    getAppLanguage.mockResolvedValueOnce({ value: "fr" });
+    f.appEvents[0]({ isActive: true });
+    f.appEvents[0]({ isActive: false }); await flush();
+    expect(getAppLanguage).toHaveBeenCalledTimes(2);
+    expect(f.services.getSystemLanguages()).toEqual(["en"]); expect(vi.getTimerCount()).toBe(0);
+  });
 });
 
 describe("native subscription lifetimes and ordering", () => {

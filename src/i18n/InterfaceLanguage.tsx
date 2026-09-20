@@ -1585,6 +1585,8 @@ export interface HostLanguagePersistence {
   readonly initialLanguage: InterfaceLanguage;
   readonly persist: (language: InterfaceLanguage) => Promise<boolean>;
   readonly onFailure?: () => void;
+  /** Confirmed system-following hosts only; updates never persist an explicit choice. */
+  readonly subscribeSystemLanguage?: (listener: (language: InterfaceLanguage) => void) => () => void;
 }
 
 export function InterfaceLanguageProvider({ children, hostLanguage }: {
@@ -1592,6 +1594,7 @@ export function InterfaceLanguageProvider({ children, hostLanguage }: {
   hostLanguage?: HostLanguagePersistence;
 }) {
   const initialHost = useRef(hostLanguage);
+  const explicitLanguage = useRef(false);
   if (initialHost.current !== hostLanguage) throw new Error("Language persistence cannot change after mount.");
   const [language, setLocalLanguage] =
     useState<InterfaceLanguage>(() => hostLanguage?.initialLanguage ?? initialLanguage());
@@ -1600,10 +1603,21 @@ export function InterfaceLanguageProvider({ children, hostLanguage }: {
     applyLanguage(language);
   }, [language]);
 
+  useEffect(() => initialHost.current?.subscribeSystemLanguage?.(nextLanguage => {
+    // Fence on user intent before its asynchronous preference write settles.
+    if (!explicitLanguage.current && isInterfaceLanguage(nextLanguage)) {
+      applyLanguage(nextLanguage);
+      setLocalLanguage(nextLanguage);
+    }
+  }), []);
+
   useEffect(() => {
     const syncLanguage = (event: Event) => {
       const nextLanguage = (event as CustomEvent<InterfaceLanguage>).detail;
-      if (isInterfaceLanguage(nextLanguage)) setLocalLanguage(nextLanguage);
+      if (isInterfaceLanguage(nextLanguage)) {
+        explicitLanguage.current = true;
+        setLocalLanguage(nextLanguage);
+      }
     };
     const syncStorage = (event: StorageEvent) => {
       if (initialHost.current) return;
@@ -1621,6 +1635,7 @@ export function InterfaceLanguageProvider({ children, hostLanguage }: {
 
   const setLanguage = useCallback((nextLanguage: InterfaceLanguage) => {
     if (!isInterfaceLanguage(nextLanguage)) return;
+    explicitLanguage.current = true;
     setLocalLanguage(nextLanguage);
     const host = initialHost.current;
     if (host) {

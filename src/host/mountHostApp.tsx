@@ -44,7 +44,10 @@ export function mountHostApp({ services, initialization }: InitializedHostPlatfo
   const language = resolveInitialInterfaceLanguage(
     initialization.preference.value, undefined, services.getSystemLanguages()
   );
-  const languageStatus = createHostLanguageStatus(services.preferences, language, initialization.preference.status === "ready");
+  const followsSystem = services.kind === "android" && initialization.preference.status === "ready"
+    && initialization.preference.value === null;
+  const languageStatus = createHostLanguageStatus(services.preferences, language, initialization.preference.status === "ready",
+    followsSystem ? services : undefined);
   installSafeWebStorage();
   document.documentElement.lang = language;
   document.title = language === "ru" ? "Литературная планета" : "Literary Planet";
