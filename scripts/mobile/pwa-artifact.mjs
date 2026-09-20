@@ -63,7 +63,9 @@ export const PWA_BOOTSTRAP_ENTRIES = Object.freeze([
   "index.html",
   CANONICAL_BOOK_SOURCE_REGISTRY,
   "src/planet/catalog.ts",
+  "src/planet/catalog.ts?stage5Load=retry",
   "src/planet/books.ts",
+  "src/planet/books.ts?stage5Load=retry",
   "src/data/articles/catalog.ts",
   "src/components/LiteraryGlobe.tsx",
   "src/components/WriterPanel.tsx",
@@ -74,6 +76,7 @@ export const PWA_BOOTSTRAP_ENTRIES = Object.freeze([
   "src/components/NobelArchiveStrip.tsx",
   "src/components/ArticleLibrarySection.tsx",
   "src/components/BookArchiveSection.tsx",
+  "src/components/BookArchiveSection.tsx?stage5Load=retry",
   "src/components/BookShelfSceneCanvas.tsx?stage5Load=primary",
   "src/components/BookShelfSceneCanvas.tsx?stage5Load=retry",
 ]);
@@ -82,7 +85,10 @@ export const PWA_BOOTSTRAP_ENTRIES = Object.freeze([
 export function bootstrapSourcePath(source) {
   if (typeof source !== "string") throw new Error("Invalid bootstrap source");
   const [filename, query, ...extra] = source.split("?");
-  if (extra.length || (query !== undefined && (filename !== "src/components/BookShelfSceneCanvas.tsx" || !/^stage5Load=(?:primary|retry)$/u.test(query)))) throw new Error("Unexpected bootstrap source query");
+  const allowedQuery = (filename === "src/components/BookShelfSceneCanvas.tsx" && /^stage5Load=(?:primary|retry)$/u.test(query))
+    || (["src/planet/books.ts", "src/planet/catalog.ts", "src/components/BookArchiveSection.tsx"].includes(filename)
+      && query === "stage5Load=retry");
+  if (extra.length || (query !== undefined && !allowedQuery)) throw new Error("Unexpected bootstrap source query");
   return artifactPath(filename);
 }
 

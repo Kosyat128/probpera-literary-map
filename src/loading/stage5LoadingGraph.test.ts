@@ -96,7 +96,7 @@ describe("Stage 5F demand-owned loading graph", () => {
     expect(app).not.toMatch(/import\s*\{[^}]*countries[^}]*\}\s*from\s*"\.\/planet\/catalog"/su);
     expect(archives).toContain('import("../components/BookArchiveSection")');
     expect(archives).not.toContain("loadBookArchiveRuntime");
-    expect(app).toContain("loadBookArchiveRuntime()");
+    expect(app).toContain("loadBookArchiveRuntime(bookRuntimeAttempt > 0)");
     expect(app).toContain("archiveStatus={bookRuntimeStatus}");
     expect(app).not.toMatch(
       /forceLoad=\{[\s\S]{0,180}globalSearchOpen[\s\S]{0,180}\}/u

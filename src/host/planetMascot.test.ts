@@ -4,6 +4,7 @@ import { PLANET_MASCOT_ROUTES, getPlanetMascotStep } from "./planetMascotRoutes"
 
 const ready = (value: Partial<PlanetMascotContext> = {}): PlanetMascotContext => ({
   enabled: true, access: "adult", active: true, screen: "globe",
+  connectivity: "online", countryStatus: "ready", booksStatus: "ready",
   selectedCountry: false, selectedWriter: false, ...value,
 });
 const savedBooks = { schemaVersion: 1, audience: "adult", visible: true,
@@ -246,5 +247,83 @@ describe("adult local guided companion", () => {
     expect(controller.getPreferenceIntent()).toBe(intent);
     expect(controller.restorePreference(savedBooks, intent.revision)).toBe(false);
     expect(notified.every(([intentRevision, viewRevision]) => intentRevision === viewRevision)).toBe(true);
+  });
+});
+
+// Current loader and connection state may guide recovery, but must never
+// become a persisted user command or proof that a failed page was opened.
+describe("Booky recovery from live platform and content state", () => {
+  it("requires an open adult panel and a current offered retry, fences duplicate and stale callbacks", () => {
+    const controller = createPlanetMascotController();
+    const retry = vi.fn();
+    const context = ready({ screen: "collection", booksStatus: "error", connectivity: "offline" });
+    controller.setContext(context);
+    expect(controller.getSnapshot().support?.id).toBe("books-error");
+    expect(controller.retryContent("books", controller.getSnapshot().revision, retry)).toBe(false);
+    controller.togglePanel();
+    const before = controller.getPreferenceIntent(), revision = controller.getSnapshot().revision;
+    expect(controller.retryContent("countries", revision, retry)).toBe(false);
+    expect(controller.retryContent("books", revision, retry)).toBe(true);
+    expect(controller.retryContent("books", revision, retry)).toBe(false);
+    expect(retry).toHaveBeenCalledTimes(1);
+    expect(controller.getPreferenceIntent()).toBe(before);
+    controller.setContext({ ...context, connectivity: "online" });
+    expect(controller.retryContent("books", controller.getSnapshot().revision, retry)).toBe(false);
+    controller.togglePanel(); controller.togglePanel();
+    expect(controller.retryContent("books", controller.getSnapshot().revision, retry)).toBe(false);
+    const afterToggle = controller.getPreferenceIntent();
+    controller.setContext({ ...context, booksStatus: "loading" });
+    expect(controller.retryContent("books", revision, retry)).toBe(false);
+    expect(controller.getSnapshot().support?.id).toBe("books-loading");
+    controller.setContext(context);
+    expect(controller.retryContent("books", controller.getSnapshot().revision, retry)).toBe(true);
+    expect(retry).toHaveBeenCalledTimes(2);
+    for (const blocked of [{ ...context, active: false }, { ...context, access: "child" as const },
+      { ...context, access: "blocked" as const }, { ...context, enabled: false }]) {
+      controller.setContext(blocked);
+      expect(controller.getSnapshot().support).toBeNull();
+      expect(controller.retryContent("books", controller.getSnapshot().revision, retry)).toBe(false);
+    }
+    expect(controller.getPreferenceIntent()).toBe(afterToggle);
+    controller.dispose();
+  });
+
+  it("does not advance failed or pending collection steps, reopen tips, or save connectivity changes", () => {
+    const controller = createPlanetMascotController();
+    const context = ready({ screen: "collection", booksStatus: "loading" });
+    controller.setContext(context);
+    controller.restorePreference({ schemaVersion: 1, audience: "adult", visible: true,
+      resume: { route: "overview", stepId: "collection" } }, 0);
+    controller.resume();
+    const intent = controller.getPreferenceIntent();
+    expect(controller.getSnapshot().canAdvance).toBe(false); expect(controller.next()).toBe(false);
+    controller.setContext({ ...context, booksStatus: "error" });
+    expect(controller.getSnapshot().canAdvance).toBe(false); expect(controller.next()).toBe(false);
+    expect(controller.getPreferenceIntent()).toBe(intent);
+    controller.setContext({ ...context, screen: "globe", selectedCountry: true, selectedWriter: true, authorBooksStatus: "applied" });
+    controller.start("country-to-book");
+    controller.next(); controller.next();
+    controller.setContext({ ...context, selectedCountry: true, selectedWriter: true, authorBooksStatus: "applied" });
+    expect(controller.getSnapshot()).toMatchObject({ step: 2, canAdvance: false, completedRoute: null });
+    controller.setContext({ ...context, booksStatus: "error", selectedCountry: true, selectedWriter: true, authorBooksStatus: "applied" });
+    expect(controller.next()).toBe(false);
+    controller.setContext({ ...context, screen: "globe" });
+    controller.start("overview"); controller.next(); controller.next();
+    const continuedIntent = controller.getPreferenceIntent();
+    controller.setContext({ ...context, booksStatus: "ready", connectivity: "offline" });
+    expect(controller.getSnapshot()).toMatchObject({ canAdvance: true, step: 2, completedRoute: null });
+    expect(controller.getPreferenceIntent()).toBe(continuedIntent);
+    controller.togglePanel();
+    const collapsed = controller.getPreferenceIntent();
+    for (const connectivity of ["online", "unknown", "offline"] as const) {
+      controller.setContext({ ...context, booksStatus: "ready", connectivity });
+      expect(controller.getSnapshot()).toMatchObject({ panel: "closed", step: 2, completedRoute: null });
+      expect(controller.getPreferenceIntent()).toBe(collapsed);
+    }
+    controller.hide(); const hidden = controller.getPreferenceIntent();
+    controller.setContext({ ...context, booksStatus: "error" });
+    expect(controller.getSnapshot()).toMatchObject({ visibility: "hidden", panel: "closed" });
+    expect(controller.getPreferenceIntent()).toBe(hidden);
+    controller.dispose();
   });
 });

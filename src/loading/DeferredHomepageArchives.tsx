@@ -39,12 +39,23 @@ type BookArchiveComponentProps = {
 type BookArchiveComponent = ComponentType<BookArchiveComponentProps>;
 
 let bookArchiveComponentPromise: Promise<BookArchiveComponent> | null = null;
+let bookArchiveComponentFailed = false;
 
-function loadBookArchiveComponent() {
+function retryBookArchiveComponent() {
+  const retryModules = import.meta.glob<typeof import("../components/BookArchiveSection")>(
+    "../components/BookArchiveSection.tsx", { query: { stage5Load: "retry" } }
+  );
+  return retryModules["../components/BookArchiveSection.tsx"]();
+}
+
+function loadBookArchiveComponent(explicitRetry = false) {
   if (bookArchiveComponentPromise) return bookArchiveComponentPromise;
-  bookArchiveComponentPromise = import("../components/BookArchiveSection")
+  const load = explicitRetry && bookArchiveComponentFailed
+    ? retryBookArchiveComponent : () => import("../components/BookArchiveSection");
+  bookArchiveComponentPromise = load()
     .then((module) => module.default)
     .catch((error) => {
+      bookArchiveComponentFailed = true;
       bookArchiveComponentPromise = null;
       throw error;
     });
@@ -87,7 +98,7 @@ export function DeferredBookArchive({
     if (!active) return undefined;
     let current = true;
     setModuleStatus("loading");
-    loadBookArchiveComponent().then(
+    loadBookArchiveComponent(attempt > 0 || retryToken > 0).then(
       (loadedComponent) => {
         if (!current) return;
         setComponent(() => loadedComponent);

@@ -581,7 +581,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
   const { record: recordRecent } = useRecentHistory();
   const { language, setLanguage, t, countryName, number } = useInterfaceLanguage();
   const platformServices = usePlatformServices();
-  const { visibility: platformVisibility } = usePlatformSnapshot();
+  const { visibility: platformVisibility, connectivity: platformConnectivity } = usePlatformSnapshot();
   const globeRuntimeActive = platformServices.kind === "web" || platformVisibility === "active";
   const isPlanetApplication = isControlledWebEdition || platformServices.kind !== "web";
   const [customizationSceneReady, setCustomizationSceneReady] = useState(true);
@@ -1076,7 +1076,13 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     if (directArticleRoute || !archiveDataRequested) return undefined;
     let active = true;
     setArchiveDataStatus("loading");
-    import("./planet/catalog").then(
+    const load = archiveDataAttempt > 0 ? () => {
+      const retryModules = import.meta.glob<typeof import("./planet/catalog")>(
+        "./planet/catalog.ts", { query: { stage5Load: "retry" } }
+      );
+      return retryModules["./planet/catalog.ts"]();
+    } : () => import("./planet/catalog");
+    load().then(
       (module) => {
         if (!active) return;
         setCountryArchive(module.countries);
@@ -1106,7 +1112,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
 
     let active = true;
     setBookRuntimeStatus("loading");
-    loadBookArchiveRuntime()
+    loadBookArchiveRuntime(bookRuntimeAttempt > 0)
       .then((runtime) => ({
         runtime,
         books: runtime.buildBookArchive(bookArchiveCountries),
@@ -2243,6 +2249,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
       active: planetLaunchComplete && platformVisibility === "active" && !globalSearchOpen && !communityOpen,
       screen: nativeCollectionOpen ? "collection" : "globe", selectedCountry: Boolean(selectedCountry),
       selectedWriter: Boolean(selectedWriter), selectionKey: `${selectedCountry?.id ?? ""}/${selectedWriter?.id ?? ""}`,
+      connectivity: platformConnectivity, countryStatus: archiveDataStatus, booksStatus: mascotBookStatus,
       authorBooksStatus: mascotAuthorResult.selectionKey === `${selectedCountry?.id ?? ""}/${selectedWriter?.id ?? ""}`
         ? mascotAuthorResult.status === "applied"
           ? mascotAuthorView.settled && mascotAuthorView.authorKey === `${selectedCountry?.id}:${selectedWriter?.id}`
@@ -2250,7 +2257,8 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
           : mascotAuthorResult.status === "loading" && mascotBookStatus === "error" ? "load-failed" : mascotAuthorResult.status
         : "idle" });
   }, [mascot, isPlanetApplication, planetLaunchComplete, platformVisibility, globalSearchOpen, communityOpen,
-    nativeCollectionOpen, selectedCountry?.id, selectedWriter?.id, mascotAuthorResult, mascotBookStatus, mascotAuthorView]);
+    nativeCollectionOpen, selectedCountry?.id, selectedWriter?.id, mascotAuthorResult, mascotBookStatus, mascotAuthorView,
+    platformConnectivity, archiveDataStatus]);
 
   const handleMascotAction = useCallback((action: PlanetMascotAction) => {
     const focusSequence = ++mascotFocusSequence.current;
@@ -3170,7 +3178,8 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
       countryLabel={selectedCountry ? countryName(selectedCountry.code, selectedCountry.name) : null}
       writerLabel={selectedWriter ? writerName(selectedWriter, t("Автор"), language) : null}
       onAction={handleMascotAction} position={mascotPosition} onPositionChange={setMascotPosition}
-      persistence={mascotPersistenceSnapshot} onRetryPersistence={mascotPersistence.retry} />;
+      persistence={mascotPersistenceSnapshot} onRetryPersistence={mascotPersistence.retry}
+      onRetryContent={target => { if (target === "countries") retryArchiveData(); else retryBookArchive(); }} />;
     return <div className="magazine-app native-planet-app" data-typography-component="magazine" data-planet-ready={String(globeViewSample.revision > 0)}>
       <main ref={nativeGlobeRootRef} onPointerDownCapture={event => {
         mascotFocusSequence.current += 1;

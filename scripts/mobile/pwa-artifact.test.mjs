@@ -4,13 +4,53 @@ import { createHash, generateKeyPairSync } from "node:crypto";
 import { mkdir, mkdtemp, writeFile, readFile, rm } from "node:fs/promises";
 import { rollup } from "rollup";
 import { build as viteBuild } from "vite";
-import { artifactPath, bootstrapClosure, bootstrapSourcePath, capturePwaModuleOwnership, createPwaModuleOwnershipPlugin, scopeCanonicalCssUrls, normalizePwaAuthority, pwaAuthoritySha256, previousPwaGeneration, loadPwaAuthority } from "./pwa-artifact.mjs";
+import { artifactPath, bootstrapClosure, bootstrapSourcePath, capturePwaModuleOwnership, createPwaModuleOwnershipPlugin, scopeCanonicalCssUrls, normalizePwaAuthority, pwaAuthoritySha256, previousPwaGeneration, loadPwaAuthority, PWA_BOOTSTRAP_ENTRIES } from "./pwa-artifact.mjs";
 import { normalizePwaWorkerConfig } from "../../src/pwa/serviceWorkerRuntime.js";
 import { pwaGlobeTextureClosure } from "./build-pwa.mjs";
 import { GLOBE_EDITIONS, resolveGlobeEditionTextureUrl } from "../../src/components/globeEditions.ts";
 
 const roots = [];
 const sha = bytes => createHash("sha256").update(bytes).digest("hex");
+
+describe("bounded book retry bootstrap identity", () => {
+  const retryRoots = ["src/planet/books.ts", "src/planet/catalog.ts", "src/components/BookArchiveSection.tsx"];
+
+  it.each(retryRoots)("includes both exact %s identities bound to their one canonical source file", primary => {
+    const retry = primary + "?stage5Load=retry";
+    expect(PWA_BOOTSTRAP_ENTRIES.filter(source => source === primary)).toHaveLength(1);
+    expect(PWA_BOOTSTRAP_ENTRIES.filter(source => source === retry)).toHaveLength(1);
+    expect(bootstrapSourcePath(primary)).toBe(primary);
+    expect(bootstrapSourcePath(retry)).toBe(primary);
+  });
+
+  it("preserves the two existing shelf canvas identities without adding another retry variant", () => {
+    for (const attempt of ["primary", "retry"]) {
+      expect(bootstrapSourcePath("src/components/BookShelfSceneCanvas.tsx?stage5Load=" + attempt))
+        .toBe("src/components/BookShelfSceneCanvas.tsx");
+    }
+  });
+
+  it.each([
+    ...retryRoots.flatMap(source => [
+      "stage5Load=primary", "stage5Load=retry2", "stage5Load=retry&attempt=2",
+      "stage5Load=retry?extra", "stage5Load=retry#extra", "arbitrary=retry",
+    ].map(query => source + "?" + query)),
+    "src/data/bookArchive.ts?stage5Load=retry",
+    "src/data/countries.ts?stage5Load=retry",
+    "other/books.ts?stage5Load=retry",
+    "src/components/BookShelfSceneCanvas.tsx?stage5Load=retry2",
+  ])("rejects unapproved retry module identity %s", source => {
+    expect(() => bootstrapSourcePath(source)).toThrow("Unexpected bootstrap source query");
+  });
+
+  it.each(retryRoots)("does not substitute primary module ownership for the %s retry identity", primary => {
+    const root = path.resolve(".tmp"), source = primary + "?stage5Load=retry";
+    const inputs = { sha256: "a".repeat(64), files: [{ path: primary, sha256: "b".repeat(64) }] };
+    const output = { "primary.js": { type: "chunk", fileName: "assets/primary.js", code: "export{}",
+      modules: { [path.resolve(root, primary).replaceAll("\\", "/")]: {} }, facadeModuleId: null } };
+    expect(() => capturePwaModuleOwnership(root, output, inputs, [source])).toThrow("Missing exact Rollup");
+  });
+});
 
 describe("included globe edition offline closure", () => {
   it("covers every real RU/EN desktop/mobile loader URL with the already pinned original bytes", async () => {

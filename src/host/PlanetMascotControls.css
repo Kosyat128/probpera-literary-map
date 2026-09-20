@@ -141,6 +141,10 @@
 .planet-mascot-controls [data-planet-mascot-next]:not(:disabled) { border-color: #b69b64; background: #eee3c2; }
 .planet-mascot-controls .planet-mascot-controls__quiet { display: block; width: 100%; margin-top: 8px; border-color: transparent; background: transparent; }
 .planet-mascot-controls__resume { margin: 14px 0; padding: 12px 0; border-block: 1px solid #d8c79e; }
+.planet-mascot-controls__support { margin: 14px 0; padding: 12px; border: 1px solid #d8c79e; border-radius: 10px; background: #f2ecd7; }
+.planet-mascot-controls__support h3 { margin-top: 0; }
+.planet-mascot-controls__support p { margin: 8px 0; }
+.planet-mascot-controls__support button { margin: 4px 4px 0 0; }
 .planet-mascot-controls__resume h3 { margin-top: 0; }
 .planet-mascot-controls__resume p { margin: 8px 0 12px; }
 .planet-mascot-controls__resume p span { color: #596a56; font-style: italic; }

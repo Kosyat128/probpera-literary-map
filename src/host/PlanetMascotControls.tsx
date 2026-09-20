@@ -21,6 +21,7 @@ export type PlanetMascotControlsProps = {
   onPositionChange: (position: Position | null) => void;
   persistence: PlanetMascotPersistenceSnapshot;
   onRetryPersistence: () => boolean;
+  onRetryContent: (target: "countries" | "books") => void;
 };
 const MARGIN = 12;
 const arrowDirections: Readonly<Record<string, readonly [number, number]>> = {
@@ -70,20 +71,32 @@ function visibleRect(element: Element, view: Rect): Rect | null {
   }
   return right - left >= 2 && bottom - top >= 2 ? { left, top, width: right - left, height: bottom - top } : null;
 }
+const protectedControls = ".native-planet-panel__header, .native-planet-app .atlas-immersive-chrome .interface-language-control";
+function companionViewport(): Rect {
+  const view = viewport();
+  let top = view.top;
+  for (const element of document.querySelectorAll(protectedControls)) {
+    const bounds = visibleRect(element, view);
+    if (bounds) top = Math.max(top, bounds.top + bounds.height);
+  }
+  // Long help cards scroll below the host controls, including the collection's
+  // back button and locale switch. The companion must never cover those exits.
+  return { ...view, top, height: Math.max(0, view.top + view.height - top) };
+}
 function overlap(a: Rect, b: Rect) {
   return Math.max(0, Math.min(a.left + a.width, b.left + b.width) - Math.max(a.left, b.left))
     * Math.max(0, Math.min(a.top + a.height, b.top + b.height) - Math.max(a.top, b.top));
 }
 
 export default function PlanetMascotControls({ controller, snapshot, screen, countryLabel, writerLabel,
-  onAction, position, onPositionChange, persistence, onRetryPersistence }: PlanetMascotControlsProps) {
+  onAction, position, onPositionChange, persistence, onRetryPersistence, onRetryContent }: PlanetMascotControlsProps) {
   const { language } = useInterfaceLanguage();
   const ru = language === "ru", name = ru ? "Книжулик" : "Mr. Booky";
   const id = useId(), root = useRef<HTMLDivElement>(null), card = useRef<HTMLElement>(null);
   const toggle = useRef<HTMLButtonElement>(null), heading = useRef<HTMLHeadingElement>(null);
   const tourHeading = useRef<HTMLHeadingElement>(null), focusAfterNavigation = useRef(false);
   const [view, setView] = useState<Rect>(() => typeof window === "undefined"
-    ? { left: 0, top: 0, width: 1024, height: 768 } : viewport());
+    ? { left: 0, top: 0, width: 1024, height: 768 } : companionViewport());
   const [petSize, setPetSize] = useState({ width: 176, height: 216 });
   const [cardHeight, setCardHeight] = useState(360);
   const [highlight, setHighlight] = useState<Rect | null>(null);
@@ -126,14 +139,22 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
   }, [snapshot.mode, snapshot.route, snapshot.step, snapshot.available, open]);
 
   useLayoutEffect(() => {
-    const measure = () => setView(previous => { const next = viewport(); return sameRect(previous, next) ? previous : next; });
+    const measure = () => setView(previous => { const next = companionViewport(); return sameRect(previous, next) ? previous : next; });
+    const observer = typeof ResizeObserver === "undefined" ? null : new ResizeObserver(measure);
+    for (const element of document.querySelectorAll(protectedControls)) observer?.observe(element);
+    const host = root.current?.closest(".native-planet-app");
+    const visibility = typeof MutationObserver === "undefined" ? null : new MutationObserver(measure);
+    // The globe toolbar becomes interactive after a panel's passive cleanup
+    // removes inert. That changes availability without resizing the toolbar.
+    if (host) visibility?.observe(host, { subtree: true, childList: true, attributes: true,
+      attributeFilter: ["inert", "hidden", "aria-hidden"] });
     window.addEventListener("resize", measure);
     window.visualViewport?.addEventListener("resize", measure);
     window.visualViewport?.addEventListener("scroll", measure);
     measure();
-    return () => { window.removeEventListener("resize", measure);
+    return () => { observer?.disconnect(); visibility?.disconnect(); window.removeEventListener("resize", measure);
       window.visualViewport?.removeEventListener("resize", measure); window.visualViewport?.removeEventListener("scroll", measure); };
-  }, []);
+  }, [screen, language, snapshot.available, shown, open]);
 
   useLayoutEffect(() => {
     const measure = () => {
@@ -290,6 +311,8 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     : step?.requiredScreen === "globe" && screen !== "globe" ? ru ? "Вернитесь к глобусу, чтобы продолжить." : "Return to the globe to continue."
     : snapshot.route === "country-to-book" && step?.requirement === "collection" && snapshot.authorBooksStatus !== "applied" && authorFeedback ? authorFeedback
     : step?.requiredScreen === "collection" && screen !== "collection" ? ru ? "Откройте коллекцию, чтобы продолжить." : "Open the collection to continue."
+    : step?.requirement === "collection" && (snapshot.support?.id === "books-error" || snapshot.support?.id === "books-loading")
+      ? ru ? "Продолжить можно, когда коллекция откроется." : "You can continue when the collection opens."
     : step?.requirement === "country" ? ru ? "Сначала выберите страну." : "Choose a country first."
     : step?.requirement === "writer" ? ru ? "Сначала выберите писателя в архиве страны." : "Choose a writer in the country's archive first."
     : ru ? "Откройте книги писателя, чтобы завершить этот шаг." : "Open the writer's books to complete this step.";
@@ -404,6 +427,21 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
             aria-label={ru ? "Свернуть подсказки" : "Collapse tips"}>×</button>
         </header>
         {contextual && <p className="planet-mascot-controls__context">{ru ? "Выбрано: " : "Selected: "}{contextual}</p>}
+        {snapshot.support && <div className="planet-mascot-controls__support" data-booky-support={snapshot.support.id}>
+          <div role="status" aria-live="polite" aria-atomic="true">
+            <h3>{snapshot.support.title[language]}</h3>
+            <p>{snapshot.support.body[language]}</p>
+          </div>
+          {snapshot.support.retry && <button type="button" data-booky-retry-content={snapshot.support.retry}
+            onClick={() => {
+              const target = snapshot.support?.retry;
+              if (target) navigateTips(() => controller.retryContent(target, snapshot.revision, () => onRetryContent(target)));
+            }}>{ru ? "Повторить загрузку" : "Try loading again"}</button>}
+          {snapshot.support.kind === "error" && screen === "collection" && <button type="button"
+            data-booky-recovery-return="" onClick={() => perform("return-globe")}>
+            {ru ? "Вернуться к глобусу" : "Return to the globe"}
+          </button>}
+        </div>}
         {tour && step ? <>
           <p className="planet-mascot-controls__progress">
             {ru ? `Шаг ${snapshot.step + 1} из ${tour.steps.length}` : `Step ${snapshot.step + 1} of ${tour.steps.length}`}

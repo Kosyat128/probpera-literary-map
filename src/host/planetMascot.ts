@@ -4,6 +4,7 @@ import {
 } from "./planetMascotRoutes";
 import { DEFAULT_BOOKY_PREFERENCE, parseBookyPreference,
   type BookyPreference, type BookySavedTour } from "./planetMascotPreference";
+import { getBookySupport, type BookySupportInput } from "./bookySupport";
 
 export type PlanetMascotAuthorBooksStatus = "idle" | "loading" | "applied" | "no-books" | "filtered-empty" | "invalid" | "load-failed";
 export type PlanetMascotContext = Readonly<{
@@ -16,6 +17,9 @@ export type PlanetMascotContext = Readonly<{
   /** Canonical selection identity fences callbacks even when both flags stay true. */
   selectionKey?: string;
   authorBooksStatus?: PlanetMascotAuthorBooksStatus;
+  connectivity?: BookySupportInput["connectivity"];
+  countryStatus?: BookySupportInput["countryStatus"];
+  booksStatus?: BookySupportInput["booksStatus"];
 }>;
 export type PlanetMascotSnapshot = Readonly<{
   available: boolean;
@@ -35,6 +39,7 @@ export type PlanetMascotSnapshot = Readonly<{
   resumeOffer: BookySavedTour | null;
   /** Explicit user intent only; context-derived UI transitions do not save. */
   intentRevision: number;
+  support: ReturnType<typeof getBookySupport>;
 }>;
 export type PlanetMascotPreferenceIntent = Readonly<{ revision: number; value: BookyPreference }>;
 type State = Pick<PlanetMascotSnapshot, "visibility" | "panel" | "mode" | "route" | "step">
@@ -48,7 +53,8 @@ export function createPlanetMascotController() {
   let preferenceIntent: PlanetMascotPreferenceIntent = Object.freeze({ revision: 0, value: DEFAULT_BOOKY_PREFERENCE });
   let snapshot: PlanetMascotSnapshot = Object.freeze({ ...resting, available: false,
     revision: 0, canAdvance: false, highlight: null, completedRoute: null, authorBooksStatus: "idle",
-    resumeOffer: null, intentRevision: 0 });
+    resumeOffer: null, intentRevision: 0, support: null });
+  const contentRetries = new Set<"countries" | "books">();
   const listeners = new Set<() => void>();
   const authorized = () => !disposed && context?.enabled === true && context.access === "adult"
     && (context.screen === "globe" || context.screen === "collection");
@@ -61,13 +67,16 @@ export function createPlanetMascotController() {
     const completedRoute = state.completedRoute ?? null;
     const resumeOffer = state.resumeOffer ?? null;
     const authorBooksStatus = context?.authorBooksStatus ?? "idle";
+    const support = available && context ? getBookySupport({ screen: context.screen,
+      connectivity: context.connectivity ?? "unknown", countryStatus: context.countryStatus ?? "idle",
+      booksStatus: context.booksStatus ?? "idle" }) : null;
     const step = state.mode === "tour" ? getPlanetMascotStep(state.route, state.step) : null;
     const onScreen = step !== null && (step.requiredScreen === null || step.requiredScreen === context?.screen);
     const canAdvance = available && state.visibility === "shown" && state.panel === "open" && onScreen
       && (step!.requirement === "none"
         || step!.requirement === "country" && context?.selectedCountry === true
         || step!.requirement === "writer" && context?.selectedCountry === true && context.selectedWriter === true
-        || step!.requirement === "collection" && context?.screen === "collection"
+        || step!.requirement === "collection" && context?.screen === "collection" && context.booksStatus === "ready"
           && (state.route !== "country-to-book" || context.selectedWriter && authorBooksStatus === "applied"));
     const highlight = available && state.visibility === "shown" && state.panel === "open" && onScreen
       ? step!.target : null;
@@ -75,9 +84,10 @@ export function createPlanetMascotController() {
       && snapshot.panel === state.panel && snapshot.mode === state.mode && snapshot.route === state.route
       && snapshot.step === state.step && snapshot.canAdvance === canAdvance && snapshot.highlight === highlight
       && snapshot.completedRoute === completedRoute && snapshot.authorBooksStatus === authorBooksStatus
-      && snapshot.resumeOffer === resumeOffer && snapshot.intentRevision === preferenceIntent.revision) return false;
+      && snapshot.resumeOffer === resumeOffer && snapshot.intentRevision === preferenceIntent.revision
+      && snapshot.support === support) return false;
     const next: PlanetMascotSnapshot = Object.freeze({ ...state, available, canAdvance, highlight, completedRoute,
-      authorBooksStatus, resumeOffer, intentRevision: preferenceIntent.revision,
+      authorBooksStatus, resumeOffer, intentRevision: preferenceIntent.revision, support,
       revision: snapshot.revision + 1 });
     snapshot = next;
     for (const listener of [...listeners]) {
@@ -149,12 +159,18 @@ export function createPlanetMascotController() {
       const next = Object.freeze({ enabled: value.enabled, access: value.access, active: value.active,
         screen: value.screen, selectedCountry: value.selectedCountry,
         selectedWriter: value.selectedCountry && value.selectedWriter, selectionKey: value.selectionKey,
-        authorBooksStatus: value.authorBooksStatus ?? "idle" });
+        authorBooksStatus: value.authorBooksStatus ?? "idle", connectivity: value.connectivity ?? "unknown",
+        countryStatus: value.countryStatus ?? "idle", booksStatus: value.booksStatus ?? "idle" });
       if (context && context.enabled === next.enabled && context.access === next.access && context.active === next.active
         && context.screen === next.screen && context.selectedCountry === next.selectedCountry
         && context.selectedWriter === next.selectedWriter && context.selectionKey === next.selectionKey
-        && context.authorBooksStatus === next.authorBooksStatus) return;
+        && context.authorBooksStatus === next.authorBooksStatus && context.connectivity === next.connectivity
+        && context.countryStatus === next.countryStatus && context.booksStatus === next.booksStatus) return;
       context = next;
+      // Connection/locale/panel changes do not create a new failed load.
+      // Re-arm only after the real target leaves its current error state.
+      if (next.countryStatus !== "error") contentRetries.delete("countries");
+      if (next.booksStatus !== "error") contentRetries.delete("books");
       if (!authorized()) { publish(resting, true); return; }
       let step = snapshot.step;
       // A route cannot keep offering an author/book action from a country that
@@ -216,6 +232,16 @@ export function createPlanetMascotController() {
     },
     finish,
     canAct,
+    retryContent(target: "countries" | "books", revision: number, callback: () => void) {
+      if (!opened() || !current(revision) || contentRetries.has(target)
+        || snapshot.support?.retry !== target || typeof callback !== "function") return false;
+      // Only an explicit currently offered recovery may invoke the existing
+      // loader. One attempt owns each observed content failure, even if an
+      // unrelated connection update changes the surrounding snapshot.
+      contentRetries.add(target);
+      try { callback(); return true; }
+      catch { contentRetries.delete(target); return false; }
+    },
     act(action: PlanetMascotAction, revision: number, callback: () => void) {
       if (!current(revision) || !canAct(action) || typeof callback !== "function") return false;
       // Invoking an existing App action is not evidence that it completed.
