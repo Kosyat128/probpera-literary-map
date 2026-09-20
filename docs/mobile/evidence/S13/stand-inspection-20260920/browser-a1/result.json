@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "mode": "browser",
+  "attempt": "a1",
+  "startedAt": "2026-09-20T02:25:16.877Z",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S13/stand-inspection-20260920/source-manifests/261fc0b8c9a1f4a0.json",
+    "sha256": "261fc0b8c9a1f4a0c41176c784c8ee1def86c59667eb43febdbb69573f2875d1",
+    "fileCount": 80
+  },
+  "checkInputs": [
+    {
+      "path": "docs/mobile/evidence/S13/stand-inspection-20260920/check.mjs",
+      "sha256": "94f95e3e335ba75ade53734ccb14c40605c50b8f4ce8bd0f9daa9cf96139f004"
+    },
+    {
+      "path": "docs/mobile/evidence/S13/stand-inspection-20260920/entry.json",
+      "sha256": "ce81a6963a823244c650788e62209d3ba18bae3b2f2219d8d3f432cada215509"
+    },
+    {
+      "path": "docs/mobile/evidence/S13/stand-inspection-20260920/playwright.config.mjs",
+      "sha256": "32c3a2cf156c76d79369c3f9b7bbdcc96df8d7818b65791abef6904842636f3c"
+    },
+    {
+      "path": "tests/pwa/stand-inspection.spec.mjs",
+      "sha256": "5b41415187624e00f69e8a5d8fc30b1fbd086a453929981c0c12328d1f9e67a8"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "tests": {
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0
+  },
+  "reportError": null,
+  "pass": true,
+  "execution": {
+    "exitCode": 0,
+    "durationMs": 20253
+  },
+  "stageAccepted": false,
+  "artAccepted": false,
+  "releaseReady": false
+}

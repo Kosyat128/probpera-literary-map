@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "mode": "static",
+  "attempt": "a1",
+  "startedAt": "2026-09-20T02:24:47.166Z",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S13/stand-inspection-20260920/source-manifests/261fc0b8c9a1f4a0.json",
+    "sha256": "261fc0b8c9a1f4a0c41176c784c8ee1def86c59667eb43febdbb69573f2875d1",
+    "fileCount": 80
+  },
+  "checkInputs": [
+    {
+      "path": "docs/mobile/evidence/S13/stand-inspection-20260920/check.mjs",
+      "sha256": "94f95e3e335ba75ade53734ccb14c40605c50b8f4ce8bd0f9daa9cf96139f004"
+    },
+    {
+      "path": "docs/mobile/evidence/S13/stand-inspection-20260920/entry.json",
+      "sha256": "ce81a6963a823244c650788e62209d3ba18bae3b2f2219d8d3f432cada215509"
+    },
+    {
+      "path": "src/components/GlobeCameraRig.test.tsx",
+      "sha256": "cbff45f95f8278178db9ccf889d6469ec0ac0135dd0c1fea51efd29be1f7d3e9"
+    },
+    {
+      "path": "src/components/globeStandInspection.test.ts",
+      "sha256": "dd8e7e3131daa58af19f269e39e5b9fe1cd379a85fa5a310a5b2348eec7d8e5d"
+    },
+    {
+      "path": "src/host/planetStandInspection.test.ts",
+      "sha256": "f7748aefafc883dda49bd48a9e5e8e02b8153bed62b8086ece2fd6a85679c34d"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "tests": null,
+  "reportError": null,
+  "pass": true,
+  "execution": {
+    "exitCode": 0,
+    "durationMs": 21963
+  },
+  "stageAccepted": false,
+  "artAccepted": false,
+  "releaseReady": false
+}

@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-20T02:28:12.161Z",
+  "sourceCommit": "6419655baf311731a97443ebe80a567714328c8f",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S13/stand-inspection-20260920/source-manifests/261fc0b8c9a1f4a0.json",
+    "sha256": "261fc0b8c9a1f4a0c41176c784c8ee1def86c59667eb43febdbb69573f2875d1",
+    "fileCount": 80
+  },
+  "actualAppCapture": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-stand-inspection/browser-a1/stand-inspection-product-s-e8b0e-ing-the-original-globe-view/stand-inspection.json",
+    "sha256": "d840951aa94c54d19416bb2fc61781d3bf0a27cbdbf99a6ce2bceff7a7cf56b2"
+  },
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-stand-inspection/browser-a1/stand-inspection-product-s-e8b0e-ing-the-original-globe-view/stand-inspection-pushkin-ru-1440.png",
+      "sha256": "7991baba596a0c64f443f99605f7ea111f59d60d24874ca69661cbe66b921018",
+      "inspected": true,
+      "reviewer": "root",
+      "method": "view_image actual product capture",
+      "findings": [
+        "Actual product Inspect button frames the complete Pushkin head, hair, neck and reduced white saucer between the compact editor and retained country archive.",
+        "Return and appearance actions remain readable; the top of the surrounding globe is intentionally cropped by the close framing.",
+        "Face and hair remain visibly stylized; this capture does not establish portrait likeness, realism or final art acceptance."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-stand-inspection/browser-a1/stand-inspection-product-s-e8b0e-ing-the-original-globe-view/stand-inspection-whales-ru-1440.png",
+      "sha256": "f98d1cb0243a8a82fde3893060793d5f3ee380954961a4d08e16b0be3480bb6b",
+      "inspected": true,
+      "reviewer": "root",
+      "method": "view_image actual product capture",
+      "findings": [
+        "Actual product framing retains all three whales and their wide base rings, with the original globe and library still in the same scene.",
+        "Compact appearance actions and Return do not cover the stand; framing all wide rings leaves the whale bodies smaller than the portrait frame.",
+        "Gold reflections are visible, while gemstone and anatomical detail require rotation or the working optical zoom; this is not realism acceptance."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-stand-inspection/browser-a1/stand-inspection-product-s-e8b0e-ing-the-original-globe-view/stand-inspection-whales-en-390.png",
+      "sha256": "b9733a13546a1fbf76585920fd3f79fb7d1eb2669ffe3948568bbfb4745ea5f2",
+      "inspected": true,
+      "reviewer": "root",
+      "method": "view_image actual product capture",
+      "findings": [
+        "English Return, stand selection and Apply/Cancel fit the 390px viewport without horizontal overflow.",
+        "The compact upper editor leaves the whale stand visible below it; scale controls and the collapsed country archive remain reachable.",
+        "The globe extends behind the upper editor; the stand itself is unobscured. Fine gold and gem detail is small at the initial full-stand fit."
+      ]
+    }
+  ],
+  "artAccepted": false,
+  "childApproved": false,
+  "userRealismRequirementSatisfied": false,
+  "releaseReady": false
+}
