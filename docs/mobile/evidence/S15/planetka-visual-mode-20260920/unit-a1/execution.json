@@ -1,0 +1,22 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "--config=docs/mobile/evidence/S15/planetka-visual-mode-20260920/unit.config.mjs",
+    "--reporter=json",
+    "--outputFile=C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\planetka-visual-mode-20260920\\unit-a1\\vitest.json"
+  ],
+  "exitCode": 1,
+  "durationMs": 6531,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/unit-a1/stdout.log",
+    "bytes": 184,
+    "sha256": "9a9896433a2b2885558f68deb0f2907843067ebae42a5928fc2f6949fe27b28c"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/unit-a1/stderr.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

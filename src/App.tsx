@@ -29,6 +29,10 @@ import { usePlanetComposition } from "./host/planetComposition";
 import { compositionCustomizationView, readLegacyWebViewGlobeEdition } from "./host/planetCompositionPresentation";
 import PlanetStandControls from "./host/PlanetStandControls";
 import PlanetSceneInspectionControls from "./host/PlanetSceneInspectionControls";
+import PlanetMascotControls from "./host/PlanetMascotControls";
+import { createPlanetMascotController } from "./host/planetMascot";
+import type { PlanetMascotAction } from "./host/planetMascotRoutes";
+import type { BookArchiveAuthorRequest, BookArchiveAuthorRequestResult, BookArchiveAuthorView } from "./books/bookArchiveAuthorRequest";
 import { createPlanetSceneInspectionController } from "./host/planetSceneInspection";
 import { isIncludedGlobeStandId, type GlobeStandPresentation } from "./planet/globeStands";
 import { createPlanetStandInspectionController } from "./host/planetStandInspection";
@@ -580,6 +584,15 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
   const globeRuntimeActive = platformServices.kind === "web" || platformVisibility === "active";
   const isPlanetApplication = isControlledWebEdition || platformServices.kind !== "web";
   const [customizationSceneReady, setCustomizationSceneReady] = useState(true);
+  const mascot = useMemo(() => createPlanetMascotController(), []);
+  const mascotSnapshot = useSyncExternalStore(mascot.subscribe, mascot.getSnapshot, mascot.getSnapshot);
+  const [mascotPosition, setMascotPosition] = useState<{ left: number; top: number } | null>(null);
+  const mascotFocusSequence = useRef(0);
+  useLayoutEffect(() => () => {
+    mascotFocusSequence.current += 1;
+    mascot.setContext({ enabled: false, access: "blocked", active: false,
+      screen: "globe", selectedCountry: false, selectedWriter: false });
+  }, [mascot]);
   const sceneInspection = useMemo(() => createPlanetSceneInspectionController(), []);
   const inspectionSnapshot = useSyncExternalStore(sceneInspection.subscribe, sceneInspection.getSnapshot, sceneInspection.getSnapshot);
   const manuscriptMarkerRef = useRef<HTMLButtonElement>(null);
@@ -695,6 +708,47 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
   const [globeFocusRequest, setGlobeFocusRequest] =
     useState<GlobeExplicitFocusRequest | null>(null);
   const [selectedWriter, setSelectedWriter] = useState<Writer | null>(null);
+  const [mascotAuthorRequest, setMascotAuthorRequest] = useState<BookArchiveAuthorRequest | null>(null);
+  const mascotAuthorRequestRef = useRef<BookArchiveAuthorRequest | null>(null);
+  const mascotAuthorRouteRef = useRef<string | null>(null);
+  const mascotAuthorStepRef = useRef(0);
+  const mascotAuthorSequence = useRef(0);
+  const [mascotBookStatus, setMascotBookStatus] = useState<"idle" | "loading" | "ready" | "error">("idle");
+  const [mascotAuthorView, setMascotAuthorView] = useState<BookArchiveAuthorView>({
+    authorKey: null, hasVisibleBooks: false, settled: false,
+  });
+  const [mascotAuthorResult, setMascotAuthorResult] = useState<{
+    selectionKey: string; status: "idle" | "loading" | BookArchiveAuthorRequestResult;
+  }>({ selectionKey: "", status: "idle" });
+  const cancelMascotAuthorRequest = useCallback(() => {
+    if (!mascotAuthorRequestRef.current) return;
+    mascotAuthorRequestRef.current = null;
+    setMascotAuthorRequest(null);
+    setMascotAuthorResult({ selectionKey: "", status: "idle" });
+  }, []);
+  const handleMascotAuthorHandled = useCallback((id: number, status: BookArchiveAuthorRequestResult) => {
+    const request = mascotAuthorRequestRef.current;
+    if (!request || request.id !== id) return;
+    mascotAuthorRequestRef.current = null;
+    setMascotAuthorRequest(null);
+    setMascotAuthorResult({ selectionKey: `${request.countryId}/${request.writerId}`, status });
+  }, []);
+  useLayoutEffect(() => {
+    const request = mascotAuthorRequestRef.current;
+    if (request && (!nativeCollectionOpen || request.countryId !== selectedCountry?.id
+      || request.writerId !== selectedWriter?.id || mascotSnapshot.visibility === "hidden"
+      || mascotAuthorRouteRef.current !== mascotSnapshot.route
+      || mascotAuthorStepRef.current !== mascotSnapshot.step)) cancelMascotAuthorRequest();
+  }, [nativeCollectionOpen, selectedCountry?.id, selectedWriter?.id, mascotSnapshot.visibility,
+    mascotSnapshot.route, mascotSnapshot.step, cancelMascotAuthorRequest]);
+  useLayoutEffect(() => {
+    const key = `${selectedCountry?.id ?? ""}/${selectedWriter?.id ?? ""}`;
+    setMascotAuthorResult(previous => previous.selectionKey && previous.selectionKey !== key
+      ? { selectionKey: "", status: "idle" } : previous);
+  }, [selectedCountry?.id, selectedWriter?.id]);
+  useLayoutEffect(() => {
+    if (mascotSnapshot.route === "country-to-book") setMascotAuthorResult({ selectionKey: "", status: "idle" });
+  }, [mascotSnapshot.route]);
   useEffect(() => {
     if (selectedCountry && selectedWriter && selectedCountry.writers.some(writer => writer.id === selectedWriter.id)) {
       void recordRecent({ kind: "writer", countryId: selectedCountry.id, writerId: selectedWriter.id });
@@ -764,8 +818,9 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     return () => { if (nativeBookBackRef.current === handler) nativeBookBackRef.current = null; };
   }, []);
   const handleNativePanelBack = useCallback(() => {
+    if (mascot.getSnapshot().panel === "open") { mascot.togglePanel(); return; }
     if (!nativeBookBackRef.current?.()) closeNativeCollection();
-  }, [closeNativeCollection]);
+  }, [closeNativeCollection, mascot]);
   const requestReturnToPlanet = useCallback(() => {
     nativeReturnRequestedRef.current = true;
     if (!nativeBookBackRef.current?.()) closeNativeCollection();
@@ -774,10 +829,12 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     if (nativeReturnRequestedRef.current) closeNativeCollection();
   }, [closeNativeCollection]);
   const cancelNativeNavigation = useCallback(() => {
+    mascotFocusSequence.current += 1;
+    cancelMascotAuthorRequest();
     sceneInspection.close();
     clearNativeBookWriterTarget();
     nativeNavigationControllerRef.current?.cancelPending();
-  }, [clearNativeBookWriterTarget, sceneInspection]);
+  }, [clearNativeBookWriterTarget, sceneInspection, cancelMascotAuthorRequest]);
   const globeFocusRequestIdRef = useRef(0);
   const atlasUrlInitializedRef = useRef(false);
   const sectionsMenuCloseTimer = useRef<number | null>(null);
@@ -2062,6 +2119,8 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
       window.history[next.localeOnly ? "replaceState" : "pushState"](state, "", next.relative);
     }
     if (isPlanetApplication && !next.localeOnly) {
+      mascotFocusSequence.current += 1;
+      cancelMascotAuthorRequest();
       sceneInspection.close();
       clearNativeBookWriterTarget();
       setPlanetWelcomeSuppressed(true);
@@ -2093,6 +2152,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     handleBack: () => {
       if (globalSearchOpen) { closeGlobalSearch(); return "handled"; }
       if (communityOpen) { closeCommunity(); return "handled"; }
+      if (mascot.getSnapshot().panel === "open") { mascot.togglePanel(); return "handled"; }
       if (standInspection.returnToGlobe()) return "handled";
       const inspectionMode = sceneInspection.getSnapshot().mode;
       if (inspectionMode !== "closed") {
@@ -2144,6 +2204,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     if (!isPlanetApplication || nativeCollectionOpen) return;
     const escape = (event: KeyboardEvent) => {
       if (event.key !== "Escape" || event.defaultPrevented || nativeGlobeRootRef.current?.hasAttribute("inert")) return;
+      if (mascot.getSnapshot().panel === "open") { mascot.togglePanel(); event.preventDefault(); return; }
       if (standInspection.returnToGlobe()) { event.preventDefault(); return; }
       const inspectionMode = sceneInspection.getSnapshot().mode;
       if (inspectionMode !== "closed") {
@@ -2167,7 +2228,80 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     return () => window.removeEventListener("keydown", escape);
   }, [isPlanetApplication, nativeCollectionOpen, closeLargestArchivesOnEscape, atlasSearchOpen,
     closeAtlasSearch, atlasExperience.searchButtonRef, atlasExperience.filtersButtonRef,
-    atlasExperience.state.filtersOpen, atlasExperienceDispatch, selectedCountry, closeCountry, composition.controller, closeStandControls, sceneInspection, standInspection]);
+    atlasExperience.state.filtersOpen, atlasExperienceDispatch, selectedCountry, closeCountry, composition.controller, closeStandControls, sceneInspection, standInspection, mascot]);
+
+  useLayoutEffect(() => {
+    // The existing shell has no child profile. Its later child adapter must
+    // provide its own reviewed routes and access decision, never an age guess.
+    mascot.setContext({ enabled: isPlanetApplication, access: isPlanetApplication ? "adult" : "blocked",
+      active: planetLaunchComplete && platformVisibility === "active" && !globalSearchOpen && !communityOpen,
+      screen: nativeCollectionOpen ? "collection" : "globe", selectedCountry: Boolean(selectedCountry),
+      selectedWriter: Boolean(selectedWriter), selectionKey: `${selectedCountry?.id ?? ""}/${selectedWriter?.id ?? ""}`,
+      authorBooksStatus: mascotAuthorResult.selectionKey === `${selectedCountry?.id ?? ""}/${selectedWriter?.id ?? ""}`
+        ? mascotAuthorResult.status === "applied"
+          ? mascotAuthorView.settled && mascotAuthorView.authorKey === `${selectedCountry?.id}:${selectedWriter?.id}`
+            ? mascotAuthorView.hasVisibleBooks ? "applied" : "filtered-empty" : "idle"
+          : mascotAuthorResult.status === "loading" && mascotBookStatus === "error" ? "load-failed" : mascotAuthorResult.status
+        : "idle" });
+  }, [mascot, isPlanetApplication, planetLaunchComplete, platformVisibility, globalSearchOpen, communityOpen,
+    nativeCollectionOpen, selectedCountry?.id, selectedWriter?.id, mascotAuthorResult, mascotBookStatus, mascotAuthorView]);
+
+  const handleMascotAction = useCallback((action: PlanetMascotAction) => {
+    const focusSequence = ++mascotFocusSequence.current;
+    if (action === "return-globe") { requestReturnToPlanet(); return; }
+    if (action === "books" || action === "writer-books") {
+      const byWriter = action === "writer-books" || mascot.getSnapshot().route === "country-to-book";
+      cancelNativeNavigation();
+      if (byWriter && selectedCountry && selectedWriter) {
+        const request = { id: ++mascotAuthorSequence.current, countryId: selectedCountry.id, writerId: selectedWriter.id };
+        mascotAuthorRequestRef.current = request;
+        mascotAuthorRouteRef.current = mascot.getSnapshot().route;
+        mascotAuthorStepRef.current = mascot.getSnapshot().step;
+        setMascotAuthorRequest(request);
+        setMascotAuthorResult({ selectionKey: `${request.countryId}/${request.writerId}`, status: "loading" });
+      }
+      if (mascotBookStatus === "error") retryBookArchive(); else requestBookRuntime();
+      setBookLoadRequested(true); setNativeCollectionOpen(true); return;
+    }
+    if (action === "appearance") {
+      closeAtlasSearch(); sceneInspection.close(); composition.controller.open("stand");
+      window.requestAnimationFrame(() => {
+        const state = mascot.getSnapshot(), globe = nativeGlobeRootRef.current;
+        if (focusSequence !== mascotFocusSequence.current || !state.available || state.panel !== "open"
+          || globe?.hasAttribute("inert") || composition.controller.getSnapshot().editor !== "stand") return;
+        globe?.querySelector<HTMLElement>("[data-planet-stand-select]")?.focus({ preventScroll: true });
+      });
+      return;
+    }
+    closeNativeCollection();
+    if (action === "search" || !selectedCountry) {
+      atlasActionFocusRequest.current = "search"; setAtlasSearchVisibility(true);
+      if (nativeCollectionOpen) {
+        // The collection releases the globe's inert lock in passive cleanup.
+        // Preserve this explicit search intent until after that release, without
+        // taking focus away from a newer manual interaction or navigation.
+        window.requestAnimationFrame(() => window.requestAnimationFrame(() => {
+          if (focusSequence !== mascotFocusSequence.current || !mascot.getSnapshot().available
+            || nativeGlobeRootRef.current?.hasAttribute("inert")) return;
+          const input = atlasSearchInputRef.current, focused = document.activeElement;
+          if (!input?.getClientRects().length || input.disabled
+            || input.closest('[hidden], [inert], [aria-hidden="true"]')) return;
+          const style = getComputedStyle(input);
+          if (style.visibility !== "visible" || style.display === "none" || Number(style.opacity) === 0) return;
+          if (!focused || focused === document.body || focused === atlasExperience.closeButtonRef.current) {
+            input.focus({ preventScroll: true });
+          }
+        }));
+      }
+      return;
+    }
+    closeAtlasSearch();
+    atlasExperienceDispatch({ type: "SET_SHEET_STATE", sheetState: "expanded" });
+    if (action === "writer") navigateWriterBreadcrumbCountry(); else focusCountryPresentation();
+  }, [requestReturnToPlanet, cancelNativeNavigation, requestBookRuntime, closeAtlasSearch, sceneInspection,
+    composition.controller, closeNativeCollection, selectedCountry, selectedWriter, setAtlasSearchVisibility, atlasExperienceDispatch,
+    navigateWriterBreadcrumbCountry, focusCountryPresentation, nativeCollectionOpen, mascot, atlasExperience.closeButtonRef,
+    mascotBookStatus, retryBookArchive]);
 
   const customizationAvailable = isPlanetApplication && !nativeCollectionOpen && !globalSearchOpen && !communityOpen
     && !atlasSearchOpen && !atlasExperience.state.filtersOpen && platformVisibility === "active" && customizationSceneReady;
@@ -3008,6 +3142,10 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
           onLoadIntent={requestBookRuntime}
           onRetryArchive={retryBookArchive}
           requestedBook={requestedBook}
+          requestedAuthor={isPlanetApplication ? mascotAuthorRequest : null}
+          onRequestedAuthorHandled={handleMascotAuthorHandled}
+          onAuthorViewChange={isPlanetApplication ? setMascotAuthorView : undefined}
+          onStatusChange={isPlanetApplication ? setMascotBookStatus : undefined}
           requestedBookReturnFocus={requestedBookReturnFocusRef.current}
           onRequestedBookHandled={handleRequestedBookHandled}
           registerNativeBack={isPlanetApplication || platformServices.navigation?.subscribeBack ? registerNativeBookBack : undefined}
@@ -3019,8 +3157,16 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
   </>);
 
   if (isPlanetApplication) {
+    // One DOM companion follows the active accessible surface; no second globe,
+    // renderer, camera or mutable atlas surface is created for the assistant.
+    const mascotControls = <PlanetMascotControls controller={mascot} snapshot={mascotSnapshot}
+      screen={nativeCollectionOpen ? "collection" : "globe"}
+      countryLabel={selectedCountry ? countryName(selectedCountry.code, selectedCountry.name) : null}
+      writerLabel={selectedWriter ? writerName(selectedWriter, t("Автор"), language) : null}
+      onAction={handleMascotAction} position={mascotPosition} onPositionChange={setMascotPosition} />;
     return <div className="magazine-app native-planet-app" data-typography-component="magazine" data-planet-ready={String(globeViewSample.revision > 0)}>
       <main ref={nativeGlobeRootRef} onPointerDownCapture={event => {
+        mascotFocusSequence.current += 1;
         if (event.target instanceof Element && event.target.closest("canvas, .globe-controls")) {
           setPlanetWelcomeSuppressed(true);
         }
@@ -3031,7 +3177,9 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
         {platformServices.downloads && <PlanetDownloadsPanel downloads={platformServices.downloads} />}
         {productHelp}
         {collectionContent}
+        {nativeCollectionOpen && mascotControls}
       </NativePlanetPanel>
+      {!nativeCollectionOpen && mascotControls}
       <NativePlanetLaunch ready={globeViewSample.revision > 0} failed={archiveDataStatus === "error"} onComplete={completePlanetLaunch} />
     </div>;
   }

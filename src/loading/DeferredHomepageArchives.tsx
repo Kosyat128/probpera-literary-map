@@ -9,6 +9,7 @@ import {
 
 import { articleCatalogEntryForLanguage } from "../data/articles/localization";
 import type { BookArchiveEntry } from "../data/bookArchive";
+import type { BookArchiveAuthorRequest, BookArchiveAuthorRequestResult, BookArchiveAuthorView } from "../books/bookArchiveAuthorRequest";
 import type { Country } from "../data/countries";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import {
@@ -26,6 +27,9 @@ type BookArchiveComponentProps = {
   requestedBook?: BookArchiveEntry | null;
   requestedBookReturnFocus?: HTMLElement | null;
   onRequestedBookHandled?: () => void;
+  requestedAuthor?: BookArchiveAuthorRequest | null;
+  onRequestedAuthorHandled?: (id: number, result: BookArchiveAuthorRequestResult) => void;
+  onAuthorViewChange?: (view: BookArchiveAuthorView) => void;
   registerNativeBack?: (handler: () => boolean) => () => void;
   nativePanelActive?: boolean;
   onNativeDetailClosed?: () => void;

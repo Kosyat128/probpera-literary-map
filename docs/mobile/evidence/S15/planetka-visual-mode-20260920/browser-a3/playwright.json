@@ -1,0 +1,151 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=docs/mobile/evidence/S15/planetka-visual-mode-20260920/playwright.config.mjs"
+    ],
+    "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\planetka-visual-mode-20260920\\playwright.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s15-planetka-visual/browser-a3",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "planetka-visual-mode.spec.mjs"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\planetka-visual-mode-20260920\\browser-a3\\playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "planetka-visual-mode.spec.mjs",
+      "file": "planetka-visual-mode.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "independent Mr. Booky companion guides canonical navigation without changing the globe",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 7065,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: <= \u001b[32m320.5\u001b[39m\nReceived:    \u001b[31m1420\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: <= \u001b[32m320.5\u001b[39m\nReceived:    \u001b[31m1420\u001b[39m\n    at inside (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\planetka-visual-mode.spec.mjs:230:22)\n    at shown (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\planetka-visual-mode.spec.mjs:236:43)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\planetka-visual-mode.spec.mjs:305:20",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\planetka-visual-mode.spec.mjs",
+                      "column": 22,
+                      "line": 230
+                    },
+                    "snippet": "  228 |   expect(rect.width).toBeGreaterThan(0); expect(rect.height).toBeGreaterThan(0);\n  229 |   expect(rect.left).toBeGreaterThanOrEqual(-.5); expect(rect.top).toBeGreaterThanOrEqual(-.5);\n> 230 |   expect(rect.right).toBeLessThanOrEqual(viewport.width + .5); expect(rect.bottom).toBeLessThanOrEqual(viewport.height + .5);\n      |                      ^\n  231 | }\n  232 | async function shown(page) {\n  233 |   await expect(pet(page)).toHaveAttribute('data-planet-mascot-visibility', 'shown');"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\planetka-visual-mode.spec.mjs",
+                        "column": 22,
+                        "line": 230
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: <= \u001b[32m320.5\u001b[39m\nReceived:    \u001b[31m1420\u001b[39m\n\n  228 |   expect(rect.width).toBeGreaterThan(0); expect(rect.height).toBeGreaterThan(0);\n  229 |   expect(rect.left).toBeGreaterThanOrEqual(-.5); expect(rect.top).toBeGreaterThanOrEqual(-.5);\n> 230 |   expect(rect.right).toBeLessThanOrEqual(viewport.width + .5); expect(rect.bottom).toBeLessThanOrEqual(viewport.height + .5);\n      |                      ^\n  231 | }\n  232 | async function shown(page) {\n  233 |   await expect(pet(page)).toHaveAttribute('data-planet-mascot-visibility', 'shown');\n    at inside (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\planetka-visual-mode.spec.mjs:230:22)\n    at shown (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\planetka-visual-mode.spec.mjs:236:43)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\planetka-visual-mode.spec.mjs:305:20"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-20T04:57:18.744Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "planetka-visual-mode-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s15-planetka-visual\\browser-a3\\planetka-visual-mode-indep-ddccf--without-changing-the-globe\\attachments\\planetka-visual-mode-source-evidence-851098475ff54938cfd606021105fbc4991a8d06.json"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s15-planetka-visual\\browser-a3\\planetka-visual-mode-indep-ddccf--without-changing-the-globe\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\planetka-visual-mode.spec.mjs",
+                    "column": 22,
+                    "line": 230
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "42152fe0cce1d5643c9d-1c9ca05a6f33cf8ae3b4",
+          "file": "planetka-visual-mode.spec.mjs",
+          "line": 272,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-20T04:57:18.176Z",
+    "duration": 8393.734999999999,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

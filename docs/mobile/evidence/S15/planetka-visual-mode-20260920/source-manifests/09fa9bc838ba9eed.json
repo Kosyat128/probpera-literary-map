@@ -1,0 +1,362 @@
+{
+  "schemaVersion": 1,
+  "checkpoint": "a2ad07a5666cf433368511c78363fe4e879cdaf4",
+  "files": [
+    {
+      "path": "package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+    },
+    {
+      "path": "package.json",
+      "sha256": "90b392c205754f838b8bc7c4475bd475936be1078561bb218c437d151177869f"
+    },
+    {
+      "path": "src/App.tsx",
+      "sha256": "09766974e26f3d8f39389fad3f59a9e958f5122aa39f0f557010290cbd8ce212"
+    },
+    {
+      "path": "src/assets/mascots/knizhulyk-green-v1.png",
+      "sha256": "44f97b5c83189ba1ddca26fd1313edc515e5008a2e92c2c694d1d57c29a2a4ed"
+    },
+    {
+      "path": "src/books/bookArchiveAuthorRequest.ts",
+      "sha256": "40c88e40ea7a8494b7fc6670e1aa8425c8cfcc30cebe4ece53932936a94711ba"
+    },
+    {
+      "path": "src/books/bookDossierProgress.ts",
+      "sha256": "503d6b7c9e26da19aee4162c8fc67fa92ad9e09bb08caac97fcd23b795e557dc"
+    },
+    {
+      "path": "src/community/AuthContext.tsx",
+      "sha256": "979334217af2f29388af0955c081487215f6a3aeb540a07a2ba1c7920fa759b3"
+    },
+    {
+      "path": "src/community/CommunityHub.tsx",
+      "sha256": "59746183b82db8b2481bd5f7d7268bae1c31f04011ba0631ce9719ce7f9a6e49"
+    },
+    {
+      "path": "src/components/ArticleReader.tsx",
+      "sha256": "1b00876d706d814bfebb13dc84a47d3542de6d6040fe3f6810bfefbcdcf735d8"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "sha256": "a961f12b6a07e8b38d3fd560c04794e680321e61e2490b48d84dd8769992a1b1"
+    },
+    {
+      "path": "src/components/GlobeCameraRig.tsx",
+      "sha256": "189f1a90fafb001a09b02832cc033f2239d8b417adfc6a3f8899986152580a48"
+    },
+    {
+      "path": "src/components/GlobeIncludedBackground.tsx",
+      "sha256": "b384ccdc3020598f10a990807e74342dc35e9434e42cad54b11526c10d81634c"
+    },
+    {
+      "path": "src/components/GlobeIncludedStand.tsx",
+      "sha256": "a083080c90c5bbb5f53dc9e7ba4f4498712634a9df67db6ce0e2e12cd4b4d068"
+    },
+    {
+      "path": "src/components/GlobeSceneInspectionAnchor.tsx",
+      "sha256": "aa4e2ba3b2425c883ab1920efb30988a444ccdb1ba38ae9d877e81b11911a4f4"
+    },
+    {
+      "path": "src/components/InterfaceLanguageControl.tsx",
+      "sha256": "69019e0441573d8ea4dd4377ae6dbbd5d3017c5cdd28810bd49942c09f4be293"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "sha256": "f5bcfb487be1a34199cc6482dd2de5e6b6a68987938343fd41e7c1f9cc47b63d"
+    },
+    {
+      "path": "src/components/LiteraryWorldMap.tsx",
+      "sha256": "588507e0dd39479e8fdcb006ab48ec04197f9821665826675e0163f93428aa28"
+    },
+    {
+      "path": "src/components/ReadingLibrarySyncNotice.css",
+      "sha256": "b53f865a8035e7c8d5a0323b0f8ec707bf81935a5315e053159d0f440bb82f98"
+    },
+    {
+      "path": "src/components/ReadingLibrarySyncNotice.tsx",
+      "sha256": "53ed654c2d437d7f1d1494ea2cc335db805f1ba97ce42132e8eca1d13e4ab602"
+    },
+    {
+      "path": "src/components/globeAntiqueGeometry.ts",
+      "sha256": "590a4e0ea5cb92251d7cccac3c0d6d28a441e82e6520fd17fe5d71adffb95538"
+    },
+    {
+      "path": "src/components/globeAssetCache.ts",
+      "sha256": "009f4f6516428c46848cffbecf7c3d3bb0be2b4c1d5989ef8743ecfb4a068987"
+    },
+    {
+      "path": "src/components/globeAtlas.ts",
+      "sha256": "224dcde2499f51eb333562875796d3422ab28ad987339f36be79f0635677bcf6"
+    },
+    {
+      "path": "src/components/globeBackgroundGeometry.ts",
+      "sha256": "daa902b738190403a4297264f7067dae8b1fdbe86c73c16e541ace7a7e9a0f00"
+    },
+    {
+      "path": "src/components/globeBookCloudStandGeometry.ts",
+      "sha256": "e50e21659f3439b8bd3cd457cbe20f16bfd47f40eaedc3355151daf6450f3577"
+    },
+    {
+      "path": "src/components/globeCeramicPortraitStandGeometry.ts",
+      "sha256": "be533fd4752ab051389a202b65a993956e0f12d6e14e1b8cbb8cbc62bac142e8"
+    },
+    {
+      "path": "src/components/globeCraftMaterials.ts",
+      "sha256": "2c19145443374e631cf40dbf20a8b55d38bd8a41e1c0d025dc3ec10fbbe47721"
+    },
+    {
+      "path": "src/components/globeEditions.ts",
+      "sha256": "b7440b6278979deb1e47738572460869202f0d9cf794a144aceac9dbcf8cdd77"
+    },
+    {
+      "path": "src/components/globeFocusMath.ts",
+      "sha256": "1dd511d8e47620f73cb72a2e41755256fc0d18679b3e72c4a586b86432c8b30a"
+    },
+    {
+      "path": "src/components/globeInteraction.ts",
+      "sha256": "f60c2d336147e899bdec7f2836df68d8360071aac1cd514d46d871c7ebdf6fb3"
+    },
+    {
+      "path": "src/components/globeLibraryBookGeometry.ts",
+      "sha256": "e3034c2bd4391f1b08410c3c1f41165e880c7225f957a42ef4780e87eeaf7e0c"
+    },
+    {
+      "path": "src/components/globeLibraryGeometry.ts",
+      "sha256": "18c2af40ee169eeac5416aa59effe1e50cbea92359a7f1e0d0f8f8972dddaf7c"
+    },
+    {
+      "path": "src/components/globeQuality.ts",
+      "sha256": "b52e0221ec8bcac17d640e26378bc0304521316ca34e203313d2b63f9c3b28c9"
+    },
+    {
+      "path": "src/components/globeStandGeometry.ts",
+      "sha256": "b12d187ce4a2216dd8fb3a89110a584030d72666841975849e935d184a14cc4f"
+    },
+    {
+      "path": "src/components/globeStandInspection.ts",
+      "sha256": "1268c67bf7104759e3a7ccd06ace4e7703a5553e48e22975d806c96dee0547e1"
+    },
+    {
+      "path": "src/components/globeTurnedWoodAtlas.ts",
+      "sha256": "579c1cec368760643b108a63f466b3d6385243d5e0f13c4638a4824b62a5d123"
+    },
+    {
+      "path": "src/components/globeWhaleStandGeometry.ts",
+      "sha256": "9c0975465082d9423e2bfd3a8da3fa355897e0c6018d7c955c52497c0a9d64ab"
+    },
+    {
+      "path": "src/components/globeWriterStudyGeometry.ts",
+      "sha256": "c811764937279429ecddf50b1cd0b60f3b7a5f568772d9ced146b4920fca9f1e"
+    },
+    {
+      "path": "src/components/useGlobeCompositionFrame.ts",
+      "sha256": "530d1303a5af222bf68f72b499b07c8d41a828ca14783912284b6e3963d59cd0"
+    },
+    {
+      "path": "src/components/useGlobeCompositionScene.ts",
+      "sha256": "30009468d0cdee459441ca5780ea608cdf21b3f6e7055da89c0ce28e435326b5"
+    },
+    {
+      "path": "src/components/useGlobeStyleState.ts",
+      "sha256": "6d2801802ec0e9bf0c2e5ff9a6f852f00434a8494216b06ee2069917e2a1a0ba"
+    },
+    {
+      "path": "src/hooks/readingLibraryStorage.ts",
+      "sha256": "fe7b8d950f80cba0d7e76d45e850ba3c0e02420d44250605329baa2c085376d3"
+    },
+    {
+      "path": "src/hooks/useReadingLibrary.ts",
+      "sha256": "92262e64be0e09278b0f917507bad1b4d87d8e33afaa4295d3b60424f4cff2bf"
+    },
+    {
+      "path": "src/host/HostPlatformServices.ts",
+      "sha256": "fa084b57e8596064ef1b0a8bd7c99b789361059a585171fd30ffe057bceec2c6"
+    },
+    {
+      "path": "src/host/HostRuntimeStatus.tsx",
+      "sha256": "bd100bd0e9d4eb8eba8772799de106f04c5de154d0dd9298f7340abe26100d91"
+    },
+    {
+      "path": "src/host/PlanetEditionPreferenceStatus.tsx",
+      "sha256": "c4eb85f88a369b299a4cf164d3dc4cf34bdcf9ddc2629793e5a59bb1498c7104"
+    },
+    {
+      "path": "src/host/PlanetGraphicsSettings.tsx",
+      "sha256": "6332bec397775901379ec3776548aaf610b6e7cde094badd5672d09436b24e4f"
+    },
+    {
+      "path": "src/host/PlanetMascotAvatar.css",
+      "sha256": "393530853338c31a874ad42d9a01d52057ea3c09b15b2d173ad11f783136e1ba"
+    },
+    {
+      "path": "src/host/PlanetMascotAvatar.tsx",
+      "sha256": "5e0e664c1d2f2b635e7c193331264179d6bf9e1bfe27b1c5265812c55691cc76"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.css",
+      "sha256": "7f2279bf2ee4bc9f2bf621258254eac231dfc6ff2d48f8ecd87d3f53bf5abaee"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "f1c9ac10fa44bd40b959102911cd3245a7897bd779eb2c516657a4e7dfcff0d7"
+    },
+    {
+      "path": "src/host/PlanetSceneInspectionControls.css",
+      "sha256": "a9fff7adeaf9ab54d697dca383632ed27ac6acba6017918aa4ba9f30eb3a9d20"
+    },
+    {
+      "path": "src/host/PlanetSceneInspectionControls.tsx",
+      "sha256": "0464998a02a6e0b5b85117b020a8ec614603088bae33f06bbe9073be396a9a96"
+    },
+    {
+      "path": "src/host/PlanetStandControls.css",
+      "sha256": "2da119e90674c18ad283af540d6b8a39957fd67066090770a6172f69c248c55a"
+    },
+    {
+      "path": "src/host/PlanetStandControls.tsx",
+      "sha256": "829db69456bddda43035df512ee1af4ed6182752bdf3161e14db756b695295e1"
+    },
+    {
+      "path": "src/host/host.css",
+      "sha256": "3f81496e8c89f1f0e4facfa3267c2bbd3c05425c0baa3bb5459981cad0c18877"
+    },
+    {
+      "path": "src/host/mountHostApp.tsx",
+      "sha256": "e21aa15479a81c5c3847b571d5d3d7e7b9c25d1c55b4aa3aa2ac94c6677fe8af"
+    },
+    {
+      "path": "src/host/planetAppearance.css",
+      "sha256": "57c46af2e0704da55e2054e9d09f2b8d408c4428c002e8faf2fe60663e066329"
+    },
+    {
+      "path": "src/host/planetComposition.ts",
+      "sha256": "e13f2d376567c65a5b051bfd651a14f1bbb18f3bdf01f09cf97ebb2e3cf92305"
+    },
+    {
+      "path": "src/host/planetCompositionPresentation.ts",
+      "sha256": "d62d963c719366c1be3e6888b5eb321933f3e7224b6591fc8c2d6d81a639c3f6"
+    },
+    {
+      "path": "src/host/planetGraphicsQuality.ts",
+      "sha256": "5b8cc15796b0a2e0c3e6222ba6c7f0af2ffa2102d7a30000891f2435906d79f2"
+    },
+    {
+      "path": "src/host/planetMascot.ts",
+      "sha256": "e8ed51672d6e47eed09240dac868b54bdc5abfabe877b496e7a5eab26875d6c4"
+    },
+    {
+      "path": "src/host/planetMascotRoutes.ts",
+      "sha256": "cf10e25826166ddb87f17876259d124e3aec143b4245627705f465822af07eb4"
+    },
+    {
+      "path": "src/host/planetSceneInspection.ts",
+      "sha256": "8c49aec2e4955d4b691e8b856304976eb35207b244179d493f1f134a0d032a10"
+    },
+    {
+      "path": "src/host/planetSceneInspectionBridge.ts",
+      "sha256": "3df3d617e9b090e4a5af73b14e1f61daa085d316638e4232f75379765cf91968"
+    },
+    {
+      "path": "src/host/planetStandCustomization.ts",
+      "sha256": "325c8595aefb9660c86725837ce3b0bcb4e63f137156b86e570254e84dd3f2ff"
+    },
+    {
+      "path": "src/host/planetStandInspection.ts",
+      "sha256": "ee5a5dd46f75877a34c297ce122e4c3ab0c09d8ebd439a0258589c5a3baab0f8"
+    },
+    {
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "sha256": "f8331bee7996bf176f34384d14cb42f39f5e5a94c82a27609db758003dc7bea2"
+    },
+    {
+      "path": "src/index.css",
+      "sha256": "abeefa5620f8589d0e0f34d38120970315df8f95a0e7d5009d21222e932e5a35"
+    },
+    {
+      "path": "src/lib/supabase.ts",
+      "sha256": "6ad4bd4b96e39be319a966397e6bd0d41c0c7d741ec2b6c3ca201483c73f42cd"
+    },
+    {
+      "path": "src/loading/DeferredHomepageArchives.tsx",
+      "sha256": "f40c73e456baef2ca757d28d8d3afbf53c1b66fe772f7cf2c3715530ff011ee8"
+    },
+    {
+      "path": "src/planet/baseEditionPolicy.ts",
+      "sha256": "304dac29cc185c208e1c1b0722435b00518fab07e720ab5a182783c03fbdcf27"
+    },
+    {
+      "path": "src/planet/editions.ts",
+      "sha256": "466105cd35cadf5c0bc656c34d50bc20fe174551020b002fc903b8071dc5145e"
+    },
+    {
+      "path": "src/planet/globeBackgrounds.ts",
+      "sha256": "c9a04a0f32ac4da8e263c0d266dff28c56305ca70ce130985b7fb4fe00fd087c"
+    },
+    {
+      "path": "src/planet/globeComposition.ts",
+      "sha256": "20b4cabdd678a6fa5b70ab2b4cbaef179f0e7d7c5819e408123eb486ddb0e81f"
+    },
+    {
+      "path": "src/planet/globeStands.ts",
+      "sha256": "c6b642aaf738055853925f0876cecab3c684fd75488549cce711fdc19f03df81"
+    },
+    {
+      "path": "src/planet/writerStudySketch.ts",
+      "sha256": "2f642e49c988dd7f6efeaacc9aa6017596ce7799d46442e507cf89a7e95b1d60"
+    },
+    {
+      "path": "src/platform/PlatformServices.tsx",
+      "sha256": "6f8aa1040a3fc4bd2717a4ec61ec8a89d48c01610f80b17998a31d35bf6d02c5"
+    },
+    {
+      "path": "src/platform/adapters/android/AndroidPlatformAdapter.ts",
+      "sha256": "4b05363d42896b2a3a1908a494d796a2d43b719c6e2f3de623bd7fa750488f0f"
+    },
+    {
+      "path": "src/platform/adapters/web/WebPlatformAdapter.ts",
+      "sha256": "0801a674f17dfd99862fd6ad386f7d29e3a58ea675698c29cac8de77e5ef58cb"
+    },
+    {
+      "path": "src/platform/distribution.ts",
+      "sha256": "c2947a4631d4b72392de12ab35dd8b30254ad3f612396507739067b1a1d6cf0b"
+    },
+    {
+      "path": "src/platform/ports.ts",
+      "sha256": "51353969918a3bbfdbafef37a9b3c28de7c31421853edb664666b547071d9459"
+    },
+    {
+      "path": "src/pwa/PwaAccessBoundary.tsx",
+      "sha256": "5da9ec472f3bd16b1493cb44601bf1e3f74d09245e05ba8446cf9d280bee6b80"
+    },
+    {
+      "path": "src/pwa/PwaDevicePanel.tsx",
+      "sha256": "5e3912e4a989a3135b691cde05d0949b9a21855d380b610b045468b71b609f7b"
+    },
+    {
+      "path": "src/pwa/PwaInstallController.ts",
+      "sha256": "108b64464e4b1c3d420099be92a30c9949994677b3c83c24c55db3c3ef8087cb"
+    },
+    {
+      "path": "src/pwa/PwaStorageStatus.ts",
+      "sha256": "662c1cf4bf3a0cc060720aa6338e940c6d03b0cb6ac8e5b5444b32883245f885"
+    },
+    {
+      "path": "src/pwa/pwa.css",
+      "sha256": "b62dca25c5bec2a1df94347b0c7d9c043678ace42802ccba516cce326ca95f31"
+    },
+    {
+      "path": "src/pwa/registerPwaWorker.ts",
+      "sha256": "cb5c95b8abafd82ed25bde899420007bb81a87014ba2bf04a87efd4a1df6ea41"
+    },
+    {
+      "path": "src/utils/safeWebStorage.ts",
+      "sha256": "7143453436d90ea31e0fb345b663597b981c628c8be66b5a1ec718ed66c716d4"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "8d51a8c9266fe83bf17c076b51672753b3750a17520cd0d2c28a90cb8b21e0d6"
+    }
+  ]
+}

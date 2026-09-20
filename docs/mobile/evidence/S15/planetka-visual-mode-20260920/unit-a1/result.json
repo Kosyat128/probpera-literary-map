@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "mode": "unit",
+  "attempt": "a1",
+  "startedAt": "2026-09-20T04:01:32.969Z",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/source-manifests/650f8b6948989708.json",
+    "sha256": "650f8b6948989708ee1e58eb04ec3203be4bf300e1a921e03da181a1b2ae1940",
+    "fileCount": 86
+  },
+  "checkInputs": [
+    {
+      "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/check.mjs",
+      "sha256": "ee7f81c467c87b322a7caa1560d4c89b67c54acdc9ede4259d9f54a22c3167f0"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/entry.json",
+      "sha256": "8c5e092cf942fb10f00393adc1782e0ecb0dbf08250cf45ce48057834ab7378d"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/unit.config.mjs",
+      "sha256": "ba50f1f4ea3ce4ed15b0c63d3f8c533286a94d20ad3740908d789d160b7ee034"
+    },
+    {
+      "path": "src/components/globePlanetkaGeometry.test.ts",
+      "sha256": "71b3e4234c7f4add743056e8c378ac403746f456152d46b73d7362d765dd420b"
+    },
+    {
+      "path": "src/components/globeStandInspection.test.ts",
+      "sha256": "dd8e7e3131daa58af19f269e39e5b9fe1cd379a85fa5a310a5b2348eec7d8e5d"
+    },
+    {
+      "path": "src/host/planetMascot.test.ts",
+      "sha256": "2b19d9a9821b73741668f7a5b6af7fd9adad8a021552fb0e7d13e81f4b6dfc94"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "tests": {
+    "passed": 12,
+    "failed": 1,
+    "skipped": 0
+  },
+  "reportError": "The expression evaluated to a falsy value:\n\n  assert.ok(cases.every(item => item.status === 'passed'))\n",
+  "pass": false,
+  "execution": {
+    "exitCode": 1,
+    "durationMs": 6531
+  },
+  "stageAccepted": false,
+  "artAccepted": false,
+  "releaseReady": false
+}

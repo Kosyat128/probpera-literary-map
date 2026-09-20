@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "kind": "generated-3D-rendered-transparent-character-image",
+  "generator": "built-in image_gen.imagegen",
+  "names": {
+    "ru": "Книжулик",
+    "en": "Mr. Booky"
+  },
+  "asset": {
+    "path": "src/assets/mascots/knizhulyk-green-v1.png",
+    "sha256": "44f97b5c83189ba1ddca26fd1313edc515e5008a2e92c2c694d1d57c29a2a4ed",
+    "bytes": 1895595,
+    "width": 1254,
+    "height": 1254,
+    "pngColorType": 6
+  },
+  "reference": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s15-planetka-visual/art/user-book-reference.png",
+    "sha256": "683af37fa8388f3480b72139290a408908aaeacd1ae0deb72ffe59297ec4c486",
+    "role": "user-provided concept reference, not bundled runtime artwork"
+  },
+  "generatedOriginal": "D:/CodexData/.codex/generated_images/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/exec-0bcbffe1-04fc-4395-b030-376727a41e4e.png",
+  "prompt": "Use case: stylized-concept. Create a premium, meticulously finished 3D rendered UI pet character for a literary learning application, inspired by the supplied flat cartoon reference of a friendly book holding a magnifying glass. The character is called Knizhulyk, but NO TEXT appears in the image. This is a NEW polished three-dimensional character interpretation of that concept. Crucial change: book cover is a pleasant soft SAGE / EMERALD GREEN, never brown. Full body single character, three-quarter near-frontal view, large kind intelligent eyes with refined violet irises and bright but soft reflections, expressive brows, warm welcoming smile, comfortable age-neutral proportions appealing to children and adults. Exquisite rounded hardback cover with restrained gold embossed border, realistic layered warm ivory pages, sewn binding details, a small purple silk bookmark, soft sculpted articulated hands with believable fingers and small rounded feet. One hand holds a beautiful brass-and-dark-green magnifying glass with transparent subtly refractive optical glass beside the face, leaving the eyes completely visible; the other hand invites the viewer to explore. Luxurious physically based materials, fine cloth/leather grain on green cover, subtle realistic page edges, soft studio light, gentle ambient occlusion, clean elegant silhouette readable at 100 pixels. Character itself is volumetric 3D, not flat vector and not a drawing. Center the entire complete character comfortably within a SQUARE canvas with generous transparent margins; no cropping of magnifier, fingers, or feet. ACTUAL TRANSPARENT alpha background, no floor, no drop-shadow rectangle, no backdrop, no checkerboard painted into pixels, no props beyond the held magnifying glass, no interface, no globe, no letters, no watermark. Original design; avoid imitating any recognizable franchise character.",
+  "visualInspection": {
+    "inspected": true,
+    "reviewer": "root assistant",
+    "findings": [
+      "Whole green hardcover figure, both hands, magnifier and feet are visible.",
+      "Transparent PNG uses one image, with a separate DOM interface; no second globe or WebGL renderer.",
+      "Green textured cover, ivory page layers, gold accents and purple bookmark match requested direction."
+    ],
+    "cornerAlpha": {
+      "topLeft": 0,
+      "topRight": 0,
+      "bottomLeft": 1,
+      "bottomRight": 0,
+      "method": "Read-only Windows System.Drawing Bitmap pixel inspection"
+    }
+  },
+  "live3DMesh": false,
+  "artAccepted": false,
+  "childReviewed": false,
+  "releaseReady": false
+}

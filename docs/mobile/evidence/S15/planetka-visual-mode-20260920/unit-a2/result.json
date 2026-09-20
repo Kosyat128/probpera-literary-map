@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "mode": "unit",
+  "attempt": "a2",
+  "startedAt": "2026-09-20T04:29:57.362Z",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/source-manifests/5a19b5a9dacd0663.json",
+    "sha256": "5a19b5a9dacd06636432e98d646d8e3c2412efb75d06319081d210d7bef4265b",
+    "fileCount": 87
+  },
+  "checkInputs": [
+    {
+      "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/check.mjs",
+      "sha256": "956810ea7d8a115224965bc85d0f7cdec7dfbeeff0ad4944ecf015b6e441fccd"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/entry.json",
+      "sha256": "c67b9bb9689054173acb6cab299c5f9296ca847bbc1f46e95d5bbd5f84cd8b27"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/unit.config.mjs",
+      "sha256": "c7ffb260df7956623f91ece27a14e8cfd3bcd1257c09e7cdbc734a87bf2b402f"
+    },
+    {
+      "path": "src/host/planetMascot.test.ts",
+      "sha256": "d10ec7d66944bed457546d61296301071e8e7c41192099682fa26e8576963558"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "tests": {
+    "passed": 5,
+    "failed": 0,
+    "skipped": 0
+  },
+  "reportError": null,
+  "pass": true,
+  "execution": {
+    "exitCode": 0,
+    "durationMs": 1338
+  },
+  "stageAccepted": false,
+  "artAccepted": false,
+  "releaseReady": false
+}

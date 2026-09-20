@@ -1,0 +1,64 @@
+.planet-mascot-avatar {
+  display: block;
+  flex: none;
+  width: var(--planet-mascot-avatar-size, 140px);
+  height: var(--planet-mascot-avatar-size, 140px);
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.planet-mascot-avatar__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  filter: drop-shadow(0 4px 5px rgb(24 60 37 / 16%));
+  transform-origin: 50% 85%;
+  transition: transform 180ms ease-out;
+}
+
+/* Respond to an intentional greeting without idle loops or another renderer. */
+@media (hover: hover) and (pointer: fine) {
+  .planet-mascot-controls__avatar-button:hover .planet-mascot-avatar[data-planet-mascot-avatar="idle"] .planet-mascot-avatar__image,
+  .planet-mascot-controls__avatar-button:focus-visible .planet-mascot-avatar[data-planet-mascot-avatar="idle"] .planet-mascot-avatar__image {
+    transform: translateY(-2px) rotate(2deg);
+  }
+}
+
+.planet-mascot-avatar[data-planet-mascot-avatar="guiding"] .planet-mascot-avatar__image {
+  transform: rotate(-3deg);
+}
+
+.planet-mascot-avatar[data-planet-mascot-avatar="celebrate"] .planet-mascot-avatar__image {
+  animation: mr-booky-small-cheer 560ms ease-out 1;
+}
+
+/* Reactions are bounded; there is no passive timer or perpetual motion. */
+@keyframes mr-booky-small-cheer {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  35% { transform: translateY(-4px) rotate(2deg); }
+  65% { transform: translateY(-1px) rotate(-1deg); }
+}
+
+[data-planet-mascot-active="false"] .planet-mascot-avatar .planet-mascot-avatar__image {
+  animation: none;
+  transition: none;
+  transform: none;
+}
+
+@media (max-width: 640px) {
+  .planet-mascot-avatar {
+    width: var(--planet-mascot-avatar-size, 64px);
+    height: var(--planet-mascot-avatar-size, 64px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .planet-mascot-avatar__image {
+    animation: none !important;
+    transition: none;
+    transform: none !important;
+  }
+}

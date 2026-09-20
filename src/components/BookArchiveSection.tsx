@@ -15,6 +15,7 @@ import {
 
 import { createPortal } from "react-dom";
 import { useRecentHistory } from "../planet/RecentHistory";
+import { selectWriterDisplayName } from "../planet/selection";
 import { isPublicBook } from "../data/bookQuality";
 
 import ArticleEngagement from "../community/ArticleEngagement";
@@ -102,6 +103,8 @@ import {
   type BookArchiveNavigationFocusOrigin,
 } from "../books/bookArchiveLocation";
 import { COMPLETE_SHELF_CATALOG_BATCH_SIZE } from "../books/completeShelfModel";
+import { resolveBookArchiveAuthorRequest, type BookArchiveAuthorRequest,
+  type BookArchiveAuthorRequestResult, type BookArchiveAuthorView } from "../books/bookArchiveAuthorRequest";
 import {
   accumulateBookShelfWheelIntent,
   clampBookShelfFocusIndex,
@@ -240,6 +243,9 @@ type Props = {
   requestedBook?: BookArchiveEntry | null;
   requestedBookReturnFocus?: HTMLElement | null;
   onRequestedBookHandled?: () => void;
+  requestedAuthor?: BookArchiveAuthorRequest | null;
+  onRequestedAuthorHandled?: (id: number, result: BookArchiveAuthorRequestResult) => void;
+  onAuthorViewChange?: (view: BookArchiveAuthorView) => void;
   registerNativeBack?: (handler: () => boolean) => () => void;
   nativePanelActive?: boolean;
   onNativeDetailClosed?: () => void;
@@ -561,11 +567,19 @@ export default function BookArchiveSection({
   requestedBook,
   requestedBookReturnFocus,
   onRequestedBookHandled,
+  requestedAuthor,
+  onRequestedAuthorHandled,
+  onAuthorViewChange,
   registerNativeBack,
   nativePanelActive = true,
   onNativeDetailClosed,
   embeddedInPlanet = false,
 }: Props) {
+  const authorRequestRef = useRef<{ highestId: number; handledId: number;
+    waitingFilters: string | null;
+    pending: { request: BookArchiveAuthorRequest; authorKey: string; render: object } | null }>({
+    highestId: 0, handledId: 0, waitingFilters: null, pending: null,
+  });
   const onNativeDetailClosedRef = useRef(onNativeDetailClosed);
   onNativeDetailClosedRef.current = onNativeDetailClosed;
   const { record: recordRecent } = useRecentHistory();
@@ -1419,11 +1433,24 @@ export default function BookArchiveSection({
           writer: publicTarget?.writer || null,
         });
       }
+      // A requested canonical coauthor (or an author absent from the current
+      // shelf) still needs a truthful visible, removable filter chip/option.
+      const requestedKey = filterState.authorKey;
+      if (requestedKey && !options.has(requestedKey)) {
+        const [countryId, writerId] = requestedKey.split(":");
+        const target = resolveBookArchivePublicTarget(countries, { countryId, writerId });
+        if (target) options.set(requestedKey, {
+          key: requestedKey, label: selectWriterDisplayName(target.writer, language, t("Автор")),
+          countryLabel: countryName(target.country.code || "", target.country.name),
+          count: facetIndex.indexes.author.get(requestedKey)?.length || 0,
+          writer: target.writer,
+        });
+      }
       return [...options.values()].sort((first, second) =>
         first.label.localeCompare(second.label, language)
       );
     },
-    [countries, facetIndex, language]
+    [countries, facetIndex, language, filterState.authorKey, countryName, t]
   );
   const selectedAuthorOption =
     authorOptions.find((option) => option.key === filterState.authorKey) || null;
@@ -3587,6 +3614,68 @@ export default function BookArchiveSection({
     ]
   );
 
+  const authorHasVisibleBooks = filteredItems.length > 0;
+  const authorViewSettled = query === deferredQuery && searchScope === "library";
+  const authorView = useMemo<BookArchiveAuthorView>(() => Object.freeze({
+    authorKey: filterState.authorKey || null,
+    hasVisibleBooks: authorHasVisibleBooks,
+    settled: authorViewSettled,
+  }), [filterState.authorKey, authorHasVisibleBooks, authorViewSettled]);
+  useEffect(() => { onAuthorViewChange?.(authorView); }, [onAuthorViewChange, authorView]);
+
+  // A replay of the same committed effect (StrictMode) cannot acknowledge its
+  // own still-unrendered state update. Only a later render may report results.
+  const authorRequestRender = {};
+  useEffect(() => {
+    const state = authorRequestRef.current;
+    if (!requestedAuthor) { state.pending = null; state.waitingFilters = null; return; }
+    if (requestedAuthor.id <= state.handledId || requestedAuthor.id < state.highestId) return;
+    const settle = (result: BookArchiveAuthorRequestResult) => {
+      // Consume before notifying App: observers may synchronously replace intent.
+      state.handledId = requestedAuthor.id;
+      state.pending = null;
+      state.waitingFilters = null;
+      onRequestedAuthorHandled?.(requestedAuthor.id, result);
+    };
+    if (requestedAuthor.id > state.highestId) {
+      state.highestId = requestedAuthor.id;
+      state.pending = null;
+      state.waitingFilters = null;
+    }
+    const resolved = resolveBookArchiveAuthorRequest(requestedAuthor, countries, archiveFacetIndex.indexes.author);
+    if (resolved.status !== "ready") { settle(resolved.status); return; }
+    if (!state.pending) {
+      const filters = JSON.stringify({ filterState, query, searchScope, activeShelfId });
+      if (state.waitingFilters !== null && state.waitingFilters !== filters) { settle("invalid"); return; }
+      state.waitingFilters = filters;
+    }
+    // The collection owns the existing reader and its asynchronous close/history
+    // restoration. An author intent must never close or replace that session.
+    if (!nativePanelActive || requestedBook || selectedBookRef.current || selectedBook
+      || pendingBookCloseRef.current || pendingBookSwitchRef.current || pendingInspectionBookRef.current
+      || skipNextBookPopstateRef.current || shelfState.phase === "INSPECTION_CLOSING"
+      || shelfState.phase === "SHELF_RESTORING") return;
+    if (state.pending) {
+      if (state.pending.render === authorRequestRender) return;
+      if (state.pending.request.countryId !== requestedAuthor.countryId
+        || state.pending.request.writerId !== requestedAuthor.writerId
+        || filterState.authorKey !== state.pending.authorKey || query !== "" || searchScope !== "library") {
+        // A newer local navigation/filter edit wins over a settling request.
+        settle("invalid"); return;
+      }
+      if (deferredQuery !== "") return;
+      // This runs after the matching filter was committed and rendered, not in
+      // the event that merely requested it. Other filters/shelves remain intact.
+      settle(filteredItems.length > 0 ? "applied" : "filtered-empty");
+      return;
+    }
+    state.pending = { request: resolved.request, authorKey: resolved.authorKey, render: authorRequestRender };
+    activateGlobalSearchAction({ type: "select-writer", authorKey: resolved.authorKey,
+      countryId: resolved.request.countryId, writerId: resolved.request.writerId });
+  }, [requestedAuthor, onRequestedAuthorHandled, countries, archiveFacetIndex, nativePanelActive,
+    requestedBook, selectedBook, shelfState.phase, filterState, query, deferredQuery,
+    searchScope, activeShelfId, filteredItems, activateGlobalSearchAction, authorRequestRender]);
+
   const saveCurrentAsSmartShelf = useCallback(async () => {
     if (searchScope !== "library") return;
     setSmartShelfStatus(null);
@@ -5256,6 +5345,7 @@ export default function BookArchiveSection({
                 <label className="book-shelf-filter-drawer__select">
                   <span>{t("Автор")}</span>
                   <select
+                    data-book-author-filter=""
                     value={filterState.authorKey || ""}
                     onChange={(event) =>
                       updateFilterState({

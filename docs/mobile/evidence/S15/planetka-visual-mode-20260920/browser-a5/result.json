@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "mode": "browser",
+  "attempt": "a5",
+  "startedAt": "2026-09-20T05:01:57.887Z",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/source-manifests/09fa9bc838ba9eed.json",
+    "sha256": "09fa9bc838ba9eed8e0293d2759302887d95659b249eea3601e6288cb67b4f01",
+    "fileCount": 89
+  },
+  "checkInputs": [
+    {
+      "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/check.mjs",
+      "sha256": "48cd6ad4e06548b8b1093d1e1d65a2b0bfd5d6fc9cd8609b68095798ecfc0a9b"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/entry.json",
+      "sha256": "95b36309e18a0561ff334e36dd79fa1cfee86d7c70250917696496f9f5aa0a25"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/playwright.config.mjs",
+      "sha256": "547c6153f4174cbbf2ba259caba07497172b1c195246ab33269b40da73cff1fe"
+    },
+    {
+      "path": "tests/pwa/planetka-visual-mode.spec.mjs",
+      "sha256": "4b28d9be0a4ec7fff7ee0e2ebe7d8bfd842da4c6a6ccb3799b0f54e94e8eebd3"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "tests": {
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0
+  },
+  "reportError": null,
+  "pass": true,
+  "execution": {
+    "exitCode": 0,
+    "durationMs": 18446
+  },
+  "stageAccepted": false,
+  "artAccepted": false,
+  "releaseReady": false
+}

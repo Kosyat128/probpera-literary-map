@@ -1,0 +1,153 @@
+.planet-mascot-controls {
+  position: fixed;
+  z-index: 1050;
+  box-sizing: border-box;
+  width: 156px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: #243328;
+  font: 14px/1.45 var(--sans, sans-serif);
+  isolation: isolate;
+  --planet-mascot-avatar-size: 140px;
+}
+.planet-mascot-controls[data-planet-mascot-visibility="hidden"] { width: max-content; max-width: calc(100vw - 24px); }
+.planet-mascot-controls button {
+  box-sizing: border-box;
+  min-width: 44px;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 9px 12px;
+  border: 1px solid #526e58;
+  border-radius: 12px;
+  color: inherit;
+  background: #fff9e9;
+  font: inherit;
+  font-weight: 650;
+  line-height: 1.35;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.planet-mascot-controls button:hover:not(:disabled) { background: #e6f0df; }
+.planet-mascot-controls button:disabled { opacity: .5; cursor: default; }
+.planet-mascot-controls button:focus-visible,
+.planet-mascot-controls h2:focus-visible,
+.planet-mascot-controls h3:focus-visible { outline: 3px solid #7850aa; outline-offset: 3px; }
+.planet-mascot-controls .planet-mascot-controls__avatar-button {
+  display: block;
+  padding: 4px;
+  border: 0;
+  border-radius: 22px;
+  background: transparent;
+}
+.planet-mascot-controls .planet-mascot-controls__avatar-button:hover { background: #fff9e92b; }
+.planet-mascot-controls__show { box-shadow: 0 3px 14px #17112430; }
+.planet-mascot-controls__tools { display: flex; justify-content: center; gap: 6px; }
+.planet-mascot-controls__tools button { width: 44px; padding: 4px; font-size: 24px; box-shadow: 0 2px 8px #17112425; }
+.planet-mascot-controls .planet-mascot-controls__move { cursor: grab; touch-action: none; }
+.planet-mascot-controls .planet-mascot-controls__move:active { cursor: grabbing; }
+.planet-mascot-controls__panel {
+  position: fixed;
+  z-index: 1;
+  box-sizing: border-box;
+  --planet-mascot-book-font: "Source Serif 4 Local", Georgia, "Times New Roman", serif;
+  padding: 22px 22px 22px 28px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: #b5a581 #f8efd9;
+  border: 1px solid #c9b58d;
+  border-radius: 4px 20px 6px 4px;
+  /* Quiet paper fibres and a shaded binding margin, all painted locally. */
+  background:
+    linear-gradient(90deg, #bda27626, #bda27608 11px, transparent 23px),
+    radial-gradient(ellipse at 18% 0, #fffef8c9, transparent 72%),
+    repeating-linear-gradient(0deg, #6c573004 0 1px, transparent 1px 4px),
+    repeating-linear-gradient(91deg, #6c573003 0 1px, transparent 1px 7px),
+    #fbf3df;
+  box-shadow: 0 2px 0 #e5d8bc, 0 3px 0 #bda882, 0 5px 0 #f7edda,
+    0 6px 0 #c7b48e, 0 12px 34px #241d2d38;
+  color: #30392b;
+  font: 400 16px/1.55 var(--planet-mascot-book-font);
+  font-kerning: normal;
+  text-align: left;
+}
+.planet-mascot-controls__panel::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  left: 13px;
+  width: 1px;
+  background: linear-gradient(transparent, #b6996159 24px, #b6996159 calc(100% - 24px), transparent);
+  pointer-events: none;
+}
+.planet-mascot-controls__panel::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 27px;
+  height: 27px;
+  border-radius: 0 18px 0 5px;
+  background: linear-gradient(225deg, #ede2c9 44%, #c9b58c 47%, #fffaf0 51%, #e8d9b5);
+  box-shadow: -2px 3px 4px #67523218;
+  pointer-events: none;
+}
+.planet-mascot-controls__panel p { margin: 12px 0; overflow-wrap: anywhere; }
+.planet-mascot-controls__panel button {
+  border-radius: 6px;
+  font: 600 14px/1.35 "Source Sans 3 Local", var(--sans, sans-serif);
+}
+.planet-mascot-controls__heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding-bottom: 8px; }
+.planet-mascot-controls__heading h2 { margin: 0; color: #30583c; font: 600 25px/1.2 var(--planet-mascot-book-font); overflow-wrap: anywhere; }
+.planet-mascot-controls__heading h2::after { content: ""; display: block; width: 38px; margin-top: 8px; border-bottom: 3px double #b28d4b; }
+.planet-mascot-controls__heading button { flex: 0 0 44px; padding: 4px; font-size: 24px; border-color: #bdaa8069; background: transparent; }
+.planet-mascot-controls__panel h3 { margin: 12px 0 6px; color: #30503a; font: 600 20px/1.3 var(--planet-mascot-book-font); }
+.planet-mascot-controls__context { padding-bottom: 10px; border-bottom: 1px solid #bdaa806b; color: #625942; font-size: 13px; font-style: italic; overflow-wrap: anywhere; }
+.planet-mascot-controls__progress { color: #625942; font-size: 13px; font-style: italic; font-variant-numeric: oldstyle-nums; }
+.planet-mascot-controls__feedback { padding: 9px 11px; border-left: 3px solid #b69350; border-radius: 2px 5px 5px 2px; background: #e9ead180; font-size: 14px; }
+.planet-mascot-controls__routes { display: grid; gap: 8px; margin-top: 14px; }
+.planet-mascot-controls__routes button { border-color: #6a7f587d; background: #f4f0df; }
+.planet-mascot-controls__actions,
+.planet-mascot-controls__navigation { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 12px; }
+.planet-mascot-controls__actions button,
+.planet-mascot-controls__navigation button { width: 100%; min-width: 0; }
+.planet-mascot-controls .planet-mascot-controls__primary { width: 100%; margin-top: 4px; border-color: #7e7846; color: #fffbed; background: #345a3d; }
+.planet-mascot-controls .planet-mascot-controls__primary:hover:not(:disabled) { background: #28492f; }
+.planet-mascot-controls [data-planet-mascot-next]:not(:disabled) { border-color: #b69b64; background: #eee3c2; }
+.planet-mascot-controls .planet-mascot-controls__quiet { display: block; width: 100%; margin-top: 8px; border-color: transparent; background: transparent; }
+.planet-mascot-highlight {
+  position: fixed;
+  z-index: 1049;
+  box-sizing: border-box;
+  pointer-events: none;
+  border: 3px solid #b3e06b;
+  border-radius: 10px;
+  box-shadow: 0 0 0 2px #334a38, inset 0 0 0 1px #334a38;
+}
+.planet-mascot-controls__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+@media (max-width: 640px), (max-height: 540px) {
+  .planet-mascot-controls { width: 104px; --planet-mascot-avatar-size: 64px; }
+  .planet-mascot-controls__panel { padding: 18px 16px 18px 22px; border-radius: 4px 18px 6px 4px; font-size: 16px; }
+  .planet-mascot-controls__panel::before { left: 10px; }
+  .planet-mascot-controls__heading h2 { font-size: 23px; }
+  .planet-mascot-controls__panel h3 { font-size: 19px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .planet-mascot-controls *, .planet-mascot-highlight { scroll-behavior: auto; }
+}
