@@ -1,0 +1,11 @@
+{
+  "args": [
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S13/combined-preview-20260920/playwright.config.mjs"
+  ],
+  "exitCode": 1,
+  "durationMs": 700,
+  "stdout": "Error: No tests found\n\n",
+  "stderr": ""
+}

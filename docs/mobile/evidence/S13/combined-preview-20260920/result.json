@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-20T00:33:20.925Z",
+  "sourceCommit": "b63112bb3bf3131f1dc4ddea86acbe40cd9baf3f",
+  "stage": "S13",
+  "status": "COMBINED_PREVIEW_SCOPED_VALIDATION",
+  "pass": true,
+  "entry": {
+    "path": "docs/mobile/evidence/S13/combined-preview-20260920/entry.json",
+    "sha256": "395597599e3cc9625e14247ec03e43077b50e08cd084319dfa7b1bb3a021550e"
+  },
+  "previous": {
+    "path": "docs/mobile/evidence/S13/visual-refinement-20260920/result.json",
+    "sha256": "6b12a13892da284c3842c305ec99e444fca566ecc5a49850d66027b57949a512"
+  },
+  "attempts": {
+    "unit": "a1",
+    "static": "a1",
+    "browser": "a2"
+  },
+  "runs": {
+    "unit": {
+      "path": "docs/mobile/evidence/S13/combined-preview-20260920/unit-a1/result.json",
+      "sha256": "839d48e2a82e97e0ad9fa10b60a7a83fcb463614872e628252d7c4c72135ed3c",
+      "tests": {
+        "passed": 22,
+        "failed": 0,
+        "skipped": 0
+      }
+    },
+    "static": {
+      "path": "docs/mobile/evidence/S13/combined-preview-20260920/static-a1/result.json",
+      "sha256": "c73afce784efb8869b6dedffc14fd07320c12ff090a5baa580b86a6d0cf364fb",
+      "tests": null
+    },
+    "browser": {
+      "path": "docs/mobile/evidence/S13/combined-preview-20260920/browser-a2/result.json",
+      "sha256": "b519c8566e3dc98748ebde35cb04682c0c8d327170d14f9d59f49a1ede08ff4b",
+      "tests": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      }
+    }
+  },
+  "unitCount": 22,
+  "browserCases": 1,
+  "initialBrowserConfigurationFailure": {
+    "path": "docs/mobile/evidence/S13/combined-preview-20260920/browser-a1/result.json",
+    "sha256": "ddece2a74f2a06bde1f93a443cea63394f7290aa1894f6e9ec028007dd13151d",
+    "executedCases": 0,
+    "reason": "Anchored selection matched no full Playwright title; preserved as a configuration failure, not a runtime failure or a passed case."
+  },
+  "actualAppCapture": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-combined\\browser-a2\\globe-composition-one-comp-8ff87-d-restores-one-saved-record\\globe-composition.json",
+    "sha256": "00cacd226bda0feae96fc3067f4da2d3493a8cfda73cf5045e657de9fa12ac5b"
+  },
+  "browserAttachment": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-combined\\browser-a2\\globe-composition-one-comp-8ff87-d-restores-one-saved-record\\attachments\\composition-source-evidence-35293de0c129b20ee8512d2a234ddbb1cb3746ba.json",
+    "sha256": "00cacd226bda0feae96fc3067f4da2d3493a8cfda73cf5045e657de9fa12ac5b"
+  },
+  "attachmentBytesMatchOriginal": true,
+  "capturedImages": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-combined\\browser-a2\\globe-composition-one-comp-8ff87-d-restores-one-saved-record\\composition-combined-preview-ru-1440.png",
+      "sha256": "5f7693e53461505e383e62b051c4e8a89dad429c1b2018fbea554f612caa5910"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-combined\\browser-a2\\globe-composition-one-comp-8ff87-d-restores-one-saved-record\\composition-combined-preview-en-390.png",
+      "sha256": "6d5597010231e72bc6a071b9083c664d61ceec1c68c27feee2014345ff3fccd2"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-combined\\browser-a2\\globe-composition-one-comp-8ff87-d-restores-one-saved-record\\composition-edition-applied-en.png",
+      "sha256": "cd4a3f71fb76c0098444ae537d726bd845ecc1495e58bb0719a7d21283624385"
+    }
+  ],
+  "visualReview": {
+    "path": "docs/mobile/evidence/S13/combined-preview-20260920/visual-review.json",
+    "sha256": "f03aa5eea53a577b57fe40c94b93be1deafd67cea3ef3b49ae06eb412a304e25"
+  },
+  "inspectedImageCount": 3,
+  "starterSetSourceInventory": {
+    "path": "docs/mobile/evidence/S13/combined-preview-20260920/starter-set-source-inventory.json",
+    "sha256": "8397822f41d8a1fa3754bfe551bfd3dd0b3b1351fc6e2670c71d83b352350d39"
+  },
+  "requiredStarterItems": 29,
+  "sourceBoundStarterItems": 12,
+  "acceptedStarterItems": 0,
+  "ownerAddedCount": 3,
+  "ownerAdditionIds": [
+    "stand.base.portrait-pushkin",
+    "stand.base.portrait-hemingway",
+    "stand.base.portrait-tolstoy"
+  ],
+  "preservedInputs": [
+    {
+      "path": "src/planet/globeComposition.ts",
+      "sha256": "20b4cabdd678a6fa5b70ab2b4cbaef179f0e7d7c5819e408123eb486ddb0e81f"
+    },
+    {
+      "path": "src/host/planetCompositionPresentation.ts",
+      "sha256": "d62d963c719366c1be3e6888b5eb321933f3e7224b6591fc8c2d6d81a639c3f6"
+    },
+    {
+      "path": "src/components/useGlobeCompositionScene.ts",
+      "sha256": "30009468d0cdee459441ca5780ea608cdf21b3f6e7055da89c0ce28e435326b5"
+    },
+    {
+      "path": "src/components/useGlobeCompositionFrame.ts",
+      "sha256": "530d1303a5af222bf68f72b499b07c8d41a828ca14783912284b6e3963d59cd0"
+    },
+    {
+      "path": "src/components/globeAtlas.ts",
+      "sha256": "224dcde2499f51eb333562875796d3422ab28ad987339f36be79f0635677bcf6"
+    },
+    {
+      "path": "src/components/useGlobeStyleState.ts",
+      "sha256": "6d2801802ec0e9bf0c2e5ff9a6f852f00434a8494216b06ee2069917e2a1a0ba"
+    },
+    {
+      "path": "src/components/globeWhaleStandGeometry.ts",
+      "sha256": "a641909b9d2a168b921e3a94f78db0c0652fe67b4d76b3cdaa2a1fba57de82be"
+    },
+    {
+      "path": "src/components/globeLibraryGeometry.ts",
+      "sha256": "c0d4fe4c9b69921df11d50bc349fca9896304baba67fff60263b77ff19c1d1ee"
+    },
+    {
+      "path": "src/components/globeCraftMaterials.ts",
+      "sha256": "68ce7e818d50ac5ece1d5d4542fdc4cecea6af25e21b08b1274c8adcacbfbde1"
+    },
+    {
+      "path": "src/components/globeCeramicPortraitStandGeometry.ts",
+      "sha256": "be533fd4752ab051389a202b65a993956e0f12d6e14e1b8cbb8cbc62bac142e8"
+    },
+    {
+      "path": "src/components/globeWriterStudyGeometry.ts",
+      "sha256": "4e2c7f51529d0f5cdde9df2484cf0701a8a6662ee9c5b9a96de828f22d7c7cfc"
+    },
+    {
+      "path": "src/planet/writerStudySketch.ts",
+      "sha256": "2f642e49c988dd7f6efeaacc9aa6017596ce7799d46442e507cf89a7e95b1d60"
+    },
+    {
+      "path": "src/components/GlobeIncludedStand.tsx",
+      "sha256": "276ef908fe5a09c066a59d9ff57d1432d44300bcb979b2aeb5d6dd249ba189fd"
+    },
+    {
+      "path": "src/components/GlobeIncludedBackground.tsx",
+      "sha256": "3268e2f971bb3b8742093be690116a16f8bee262362d50743daca2273d376b61"
+    },
+    {
+      "path": "src/components/GlobeCameraRig.tsx",
+      "sha256": "6938d120c7a49248398b385640cc77d96c9f3b33cbd6c3b4ef9881ef89e2ec19"
+    }
+  ],
+  "priorVisualReview": {
+    "path": "docs/mobile/evidence/S13/visual-refinement-20260920/visual-review.json",
+    "sha256": "532ddaa43a5844e26a0b0a9974dc494014d011bfea4fde7248013ee975047276"
+  },
+  "priorArtCapture": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-vr/art-a2/result.json",
+    "sha256": "c9fb3667877acf9de1f69f9b24ec5f0299ce129b7bfc541e6189facb1bcabcfd"
+  },
+  "retainedLibraryDensity": {
+    "books": 984,
+    "placements": 1901197402,
+    "colors": 437509884
+  },
+  "retainedPortrait": {
+    "baselineCommits": [
+      "a115e9f11105551ed6e243787e95ffc29bccb1a0",
+      "9c14fa67acc219bfa0351b31c956e14fa4deefb6"
+    ],
+    "fragments": [
+      {
+        "name": "plate-and-seat",
+        "sourcePath": "src/components/globeCeramicPortraitStandGeometry.ts",
+        "start": "        const foot = own(",
+        "endExclusive": "        const eyeParts:",
+        "sha256": "7d3b1c9cdcc40a842f575ebc24fd323d8a6dcd5b89c535909231a42f7aa506f0",
+        "bytes": 1062,
+        "lineEndingsNormalized": true
+      },
+      {
+        "name": "scale-around-contact",
+        "sourcePath": "src/components/globeCeramicPortraitStandGeometry.ts",
+        "start": "        for (const object of group.children) {",
+        "endExclusive": "        group.updateMatrixWorld(true);",
+        "sha256": "dcd173ddd233714e67a8c9523edc14202eaa88fd7af60e5cedb47d3d3463ee10",
+        "bytes": 400,
+        "lineEndingsNormalized": true
+      }
+    ]
+  },
+  "unrunUpdatedFixture": {
+    "path": "tests/pwa/globe-background-customization.spec.mjs",
+    "sha256": "6cfa5770b6c7450b3313ae6c57b65ac608f6f279f53682e7eb8170c430c5e333",
+    "executed": false,
+    "reason": "Only stale tab expectations were updated; the older legacy-storage fixture is not part of this selected run."
+  },
+  "pwa": {
+    "path": "docs/mobile/evidence/S13/combined-preview-20260920/pwa-a1/result.json",
+    "sha256": "aa1337e6228c47f871818dfa9c51782abf286082d259dddefc09e9195c0dce3e"
+  },
+  "android": {
+    "path": "docs/mobile/evidence/S13/combined-preview-20260920/android-a1/result.json",
+    "sha256": "4c5329da78466818235d007ca6d440649227d8cc29bfbfaeb0bf7f242fc6bbbd"
+  },
+  "pwaBuildId": "58e13fb09fdae6e674bc1527e81f7004a43e4e968dcaabeac4d1a1be2f8f3aae",
+  "androidBuildId": "104fc45994a8de303ec0725aac6e29e173726c1ba231b47f47ea0796d26cdcfa",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-combined/android-104fc459/app-dev-debug.apk",
+    "bytes": 67619315,
+    "sha256": "5d13fe52278ca7b97c7fa106f2932f823a9c82cbfd15688de5e272a346ed8b1e"
+  },
+  "buildAudits": [
+    {
+      "path": "docs/mobile/evidence/S13/combined-preview-20260920/pwa-a1/strict-audit.json",
+      "sha256": "136de1a059eda4bd5fb173570b0b62f21232d8c1bdc029d7136c638ab5ab2ab6"
+    },
+    {
+      "path": "docs/mobile/evidence/S13/combined-preview-20260920/android-a1/native-artifact-audit.json",
+      "sha256": "e92b450a1825919809598989450c6cee3a99bf3056bea7d532ed2dbb9be4c4cf"
+    },
+    {
+      "path": "docs/mobile/evidence/S13/combined-preview-20260920/android-a1/android-dev-apk-verification.json",
+      "sha256": "073483da1c296331909b215f610e2f1cceffa79e55b9f2aceafd4d7de6020429"
+    },
+    {
+      "path": "docs/mobile/evidence/S13/combined-preview-20260920/android-a1/build-run.json",
+      "sha256": "1882f3853b4a459047a9e3c780c9845cba4df20a494b74658b95dc659c3951a9"
+    }
+  ],
+  "copyVerification": {
+    "path": "docs/mobile/evidence/S13/combined-preview-20260920/pwa-a1/copy-verification.json",
+    "sha256": "f869c582651523c00d34e8e4281e368ef9c182e71912a944dd8ef1e7a439fd81"
+  },
+  "priorPwa": {
+    "path": "docs/mobile/evidence/S13/visual-refinement-20260920/pwa-a1/result.json",
+    "sha256": "22958eb93b6f6443fa8b9f0b04867e3f4fddaf3c6b24f593b63c770e9d85e545"
+  },
+  "priorAndroid": {
+    "path": "docs/mobile/evidence/S13/visual-refinement-20260920/android-a1/result.json",
+    "sha256": "c4843e0f8890a29879d8109fc3e0420884999d5de32b1e2b853bf4cb6a60b25c"
+  },
+  "decisionD142Recorded": true,
+  "actualSceneRenderedInChrome": true,
+  "controlledNativePorts": true,
+  "geometryRerun": false,
+  "newArtCapture": false,
+  "artAccepted": false,
+  "likenessAccepted": false,
+  "userRealismRequirementSatisfied": false,
+  "childApproval": false,
+  "rightsApproval": false,
+  "screenReaderAcceptance": false,
+  "installedNativeDevice": false,
+  "devicePerformanceAccepted": false,
+  "iosCompiled": false,
+  "grantsEntitlement": false,
+  "productionActionsPerformed": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "nextAction": "Continue with S04.BIL-018: refresh the live Android app language on foreground while preserving saved/explicit language priority, rejecting stale OS-language replies and keeping the existing Canvas and semantic state. Preserve the joint stand/background draft, whole-draft Apply/Cancel and explicit-edition cancellation. Reuse unchanged geometry and prior visual evidence. Full accessories/audio/catalog, lightmaps/art/likeness, child, screen-reader, device, iOS and release gates remain open; do not repeat valid checks of unchanged inputs."
+}

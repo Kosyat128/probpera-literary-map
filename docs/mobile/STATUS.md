@@ -1,3 +1,12 @@
+<!-- s13-combined-preview-20260920:begin -->
+Source b63112bb preserves one joint stand/background draft across tabs and applies/cancels both parts together.
+22 controller cases, TypeScript, one selected actual Chrome case and one PWA offline smoke pass. Other browser fixtures and geometry suites were not rerun.
+Fifteen scene/art sources and prior visual evidence are preserved; UI inspection is not art acceptance. Inventory remains 29 required / 12 source-bound / zero accepted, plus three owner additions.
+PWA 58e13fb0; Android-dev 104fc459. Evidence: evidence/S13/combined-preview-20260920/result.json.
+Stages remain 3 complete, 11 in progress, 27 unstarted; first open S03.
+Continue with S04.BIL-018: refresh the live Android app language on foreground while preserving saved/explicit language priority, rejecting stale OS-language replies and keeping the existing Canvas and semantic state. Preserve the joint stand/background draft, whole-draft Apply/Cancel and explicit-edition cancellation. Reuse unchanged geometry and prior visual evidence. Full accessories/audio/catalog, lightmaps/art/likeness, child, screen-reader, device, iOS and release gates remain open; do not repeat valid checks of unchanged inputs.
+<!-- s13-combined-preview-20260920:end -->
+
 <!-- s13-visual-refinement-20260920:begin -->
 Source 585e3af6 records bounded portrait/study refinement and a shared original-sketch inspection view.
 Four geometry cases, TypeScript, one actual Chrome interaction and one PWA offline smoke pass; unrelated suites are not counted.
