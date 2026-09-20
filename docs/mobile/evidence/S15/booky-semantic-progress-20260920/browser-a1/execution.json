@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S15/booky-semantic-progress-20260920/playwright.config.mjs"
+  ],
+  "exitCode": 0,
+  "durationMs": 41364,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/browser-a1/stdout.log",
+    "bytes": 550,
+    "sha256": "c4e38da81f2a92003bcee6d799a5448b73faf7468cf50720f947415145f8880f"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/browser-a1/stderr.log",
+    "bytes": 164,
+    "sha256": "346091899cc14b873f9a1568450e239a5307db35aa5a339f3fbacc11021615a3"
+  }
+}

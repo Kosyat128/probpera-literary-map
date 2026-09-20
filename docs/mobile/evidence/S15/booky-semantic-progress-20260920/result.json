@@ -1,0 +1,795 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-20T07:56:37.475Z",
+  "sourceCommit": "5e6eb7676367f71731fa84f9b2e69249c48bcb06",
+  "stage": "S15",
+  "status": "ADULT_BOOKY_SEMANTIC_PROGRESS_SCOPED_VALIDATION",
+  "pass": true,
+  "entry": {
+    "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/entry.json",
+    "sha256": "40c36de9c24e1d0c2c2006fe8d4bcc4a4cd342623e27104ee6b91b7109ce9c25"
+  },
+  "previous": {
+    "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/result.json",
+    "sha256": "45e50825dc81d85119b0edfb43a063b02cb5147a8dcec151af4f0f4ad9b52f1f"
+  },
+  "checkpointHelper": {
+    "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-semantic-progress-20260920\\checkpoint.mjs",
+    "sha256": "ea424660d465beac5f9bff2e0470e81c944774b0e953a7e276d84ae5f6724ba1"
+  },
+  "ownerClarification": "All former Planetka functional requirements now belong to Knizhulyk / Mr. Booky. The optional separate live book replaces the character only. Child scenarios, reviewed dialogue, audio, educational journeys and full progress remain in scope; immutable PLANETKA IDs are retained.",
+  "attempts": {
+    "unit": "a4",
+    "static": "a4",
+    "browser": "a4",
+    "pwa": "a1",
+    "android": "a1"
+  },
+  "earlierAttempts": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/unit-a1/result.json",
+      "sha256": "7ffe9b6d4ffce884047c18a6b10ab666a0a5b0515d47f62533b4e4a1968f851a",
+      "mode": "unit",
+      "attempt": "a1",
+      "pass": true,
+      "tests": {
+        "passed": 249,
+        "failed": 0,
+        "skipped": 0
+      },
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/source-manifests/c33e84362cb07b60.json",
+        "sha256": "c33e84362cb07b60966a056453c870567d82264290cb2bde5672d35b7da34c46",
+        "fileCount": 98
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/unit-a1/execution.json",
+        "sha256": "4dcc1322afbf6aca555f5c34e7539bb7d8c549e85bca40dc3f6d9a7080db6ad5"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/unit-a1/vitest.json",
+        "sha256": "aa699e49a8c5ea228cfe157455d0123689c1d6c84c153f0d86f697176b684fe1"
+      },
+      "supersededSource": true,
+      "reason": "The first integrated run passed 249 unit cases, TypeScript and all three actual-App browser cases on its recorded source. Independent review then identified a same-store remount authority gap after a failed save; the source and regression coverage were strengthened. Preserve these passing reports as pass:true; they are superseded by the selected final matching source, not reclassified as failures or harness errors."
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/unit-a2/result.json",
+      "sha256": "706767fb4f9df61a0fb83434c7a0d4b0fb8e0dd1543b7a647b8dcc18cd409d12",
+      "mode": "unit",
+      "attempt": "a2",
+      "pass": true,
+      "tests": {
+        "passed": 253,
+        "failed": 0,
+        "skipped": 0
+      },
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/source-manifests/58094207cdfcff23.json",
+        "sha256": "58094207cdfcff2380da6e3af1a30274f48485bbc4429b2e1be31ea036104bcc",
+        "fileCount": 98
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/unit-a2/execution.json",
+        "sha256": "9cf36a1cc09e6de6fee5957d1096f91d3283c738448ad58977fef0a88d1c8d0c"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/unit-a2/vitest.json",
+        "sha256": "c03fab3f7991a32c85ce1c75ed965662d8069c894f332dddd1e797a5e8661bd8"
+      },
+      "supersededSource": true,
+      "reason": "The second integrated run passed 253 unit cases, TypeScript and all three actual-App browser cases with source manifest 58094207cdfcff2380da6e3af1a30274f48485bbc4429b2e1be31ea036104bcc. Further lifecycle review identified retained write authority when the same persistence object deactivated and activated again; the final source adds fresh activation authority and a raw-write lifetime fence with regression coverage. Preserve these reports as successful pass:true evidence superseded by the final lifecycle fix, not as failures or harness errors."
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/unit-a3/result.json",
+      "sha256": "bf12fd88cc435ba23dee1371018b2bde0ec27cd030011f3d9090a28b509176d2",
+      "mode": "unit",
+      "attempt": "a3",
+      "pass": true,
+      "tests": {
+        "passed": 255,
+        "failed": 0,
+        "skipped": 0
+      },
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/source-manifests/5472b1ffd710072b.json",
+        "sha256": "5472b1ffd710072b32673374c502a013512ec82db5713d11e893a70d7d55d6f9",
+        "fileCount": 98
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/unit-a3/execution.json",
+        "sha256": "6d90ec4aea092b7a175b41f3547bff6cb4d40b774b98ceefc9723f3cbfb80f6c"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/unit-a3/vitest.json",
+        "sha256": "4b2d32afc91920029ff784abcc3dad28996d7f763c04014628414a0c3b528758"
+      },
+      "supersededSource": true,
+      "reason": "The third integrated run passed 255 unit cases, TypeScript and all three actual-App browser cases with source manifest 5472b1ffd710072b32673374c502a013512ec82db5713d11e893a70d7d55d6f9. A subsequent targeted reproduction found that an old raw write could succeed after a fresh-read timeout on the same persistence object, then an equal-value toggle could take the confirmed-intent shortcut and remove the read-recovery UI. Preserve the passing a3 reports as pass:true; the final source and regression strengthen read-recovery authority and supersede this run without reclassifying it as a failure."
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/static-a1/result.json",
+      "sha256": "56dd97549f0db2c7f56e207a02c6e3efa88585dbd16217838c19bda2b1114302",
+      "mode": "static",
+      "attempt": "a1",
+      "pass": true,
+      "tests": null,
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/source-manifests/c33e84362cb07b60.json",
+        "sha256": "c33e84362cb07b60966a056453c870567d82264290cb2bde5672d35b7da34c46",
+        "fileCount": 98
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/static-a1/execution.json",
+        "sha256": "c4308454dfc41cfbdaec06e32f10a0e54cddafca11a33c5553eb0c23009ae023"
+      },
+      "rawReport": null,
+      "supersededSource": true,
+      "reason": "The first integrated run passed 249 unit cases, TypeScript and all three actual-App browser cases on its recorded source. Independent review then identified a same-store remount authority gap after a failed save; the source and regression coverage were strengthened. Preserve these passing reports as pass:true; they are superseded by the selected final matching source, not reclassified as failures or harness errors."
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/static-a2/result.json",
+      "sha256": "5f1f426dc2c08827f1fad72e8d9bffbd37e008cf6f5e9d758d65adcc14a407c7",
+      "mode": "static",
+      "attempt": "a2",
+      "pass": true,
+      "tests": null,
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/source-manifests/58094207cdfcff23.json",
+        "sha256": "58094207cdfcff2380da6e3af1a30274f48485bbc4429b2e1be31ea036104bcc",
+        "fileCount": 98
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/static-a2/execution.json",
+        "sha256": "df94d51293a3b011f1cead7dcac204e7dbbb90c71a8593169b4db6fc18f235da"
+      },
+      "rawReport": null,
+      "supersededSource": true,
+      "reason": "The second integrated run passed 253 unit cases, TypeScript and all three actual-App browser cases with source manifest 58094207cdfcff2380da6e3af1a30274f48485bbc4429b2e1be31ea036104bcc. Further lifecycle review identified retained write authority when the same persistence object deactivated and activated again; the final source adds fresh activation authority and a raw-write lifetime fence with regression coverage. Preserve these reports as successful pass:true evidence superseded by the final lifecycle fix, not as failures or harness errors."
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/static-a3/result.json",
+      "sha256": "37da3cd0374ddc56dfd28f69e34be26f1b308f7c67725a2fec505123a3044cce",
+      "mode": "static",
+      "attempt": "a3",
+      "pass": true,
+      "tests": null,
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/source-manifests/5472b1ffd710072b.json",
+        "sha256": "5472b1ffd710072b32673374c502a013512ec82db5713d11e893a70d7d55d6f9",
+        "fileCount": 98
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/static-a3/execution.json",
+        "sha256": "823932dbee6403bd299ac46b3434c42f2abfe6c455da39f75da67afbbed4a6cc"
+      },
+      "rawReport": null,
+      "supersededSource": true,
+      "reason": "The third integrated run passed 255 unit cases, TypeScript and all three actual-App browser cases with source manifest 5472b1ffd710072b32673374c502a013512ec82db5713d11e893a70d7d55d6f9. A subsequent targeted reproduction found that an old raw write could succeed after a fresh-read timeout on the same persistence object, then an equal-value toggle could take the confirmed-intent shortcut and remove the read-recovery UI. Preserve the passing a3 reports as pass:true; the final source and regression strengthen read-recovery authority and supersede this run without reclassifying it as a failure."
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/browser-a1/result.json",
+      "sha256": "bd1fc6e27ff7a469c073be508554d1a1423e085cf12f0211c999bae7f07660a1",
+      "mode": "browser",
+      "attempt": "a1",
+      "pass": true,
+      "tests": {
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/source-manifests/c33e84362cb07b60.json",
+        "sha256": "c33e84362cb07b60966a056453c870567d82264290cb2bde5672d35b7da34c46",
+        "fileCount": 98
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/browser-a1/execution.json",
+        "sha256": "332b548e13043ef8f4ab20cfd1d29dee506bf776cb283889ab8fbd3dbdcf62f8"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/browser-a1/playwright.json",
+        "sha256": "6c700d51be9591b34b285277941df4b4b1381f14eebaa2065910a7e107d4d53d"
+      },
+      "supersededSource": true,
+      "reason": "The first integrated run passed 249 unit cases, TypeScript and all three actual-App browser cases on its recorded source. Independent review then identified a same-store remount authority gap after a failed save; the source and regression coverage were strengthened. Preserve these passing reports as pass:true; they are superseded by the selected final matching source, not reclassified as failures or harness errors.",
+      "browserAttachments": [
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-progress\\browser-a1\\booky-progress-v1-restores-515a2-eload-and-deliberate-resume\\attachments\\booky-progress-source-evidence-ced4e210427fccfd0018d3f2534d020437d1626b.json",
+          "sha256": "d52484a0d5597308ff270a6236dccd196f4ba8c8c3e0133c11bedb893eab9f3b"
+        },
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-progress\\browser-a1\\booky-progress-future-save-85e89-itly-confirmed-global-reset\\attachments\\booky-progress-source-evidence-5eda1572e258c1e76681753b2138c66264573383.json",
+          "sha256": "a2f21da3101d5f746a7e2fad3eb9aae8ba34164faea7638e52f9624df6b45cd9"
+        },
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-progress\\browser-a1\\booky-progress-a-delayed-f-a1317-authorize-an-ordinary-write\\attachments\\booky-progress-source-evidence-e943dedb4a2eae49e0208e840f48a176aa894323.json",
+          "sha256": "9dd278cda0cd3476e96d7582c5204672518db8029c906d26a8cff7e276628637"
+        }
+      ]
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/browser-a2/result.json",
+      "sha256": "774f72e423ca836b9db1835417c5450ed70a6f332fcda8dceab3dbf3ab1b5151",
+      "mode": "browser",
+      "attempt": "a2",
+      "pass": true,
+      "tests": {
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/source-manifests/58094207cdfcff23.json",
+        "sha256": "58094207cdfcff2380da6e3af1a30274f48485bbc4429b2e1be31ea036104bcc",
+        "fileCount": 98
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/browser-a2/execution.json",
+        "sha256": "9bba11ad650971eebfabe6baffe1271aa792a9531305643412c7a29ad4ae090c"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/browser-a2/playwright.json",
+        "sha256": "ec870d4fdf169f1c0dd884f76ac3ade1d35ef4d78d7a57cb16a07d06ec91a1f8"
+      },
+      "supersededSource": true,
+      "reason": "The second integrated run passed 253 unit cases, TypeScript and all three actual-App browser cases with source manifest 58094207cdfcff2380da6e3af1a30274f48485bbc4429b2e1be31ea036104bcc. Further lifecycle review identified retained write authority when the same persistence object deactivated and activated again; the final source adds fresh activation authority and a raw-write lifetime fence with regression coverage. Preserve these reports as successful pass:true evidence superseded by the final lifecycle fix, not as failures or harness errors.",
+      "browserAttachments": [
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-progress\\browser-a2\\booky-progress-v1-restores-515a2-eload-and-deliberate-resume\\attachments\\booky-progress-source-evidence-e542a92a879fc49c73db55c1214b49acd0f927d6.json",
+          "sha256": "37af25a00cae67c5efad3ac85c8b1b9a3987416d684c1eac1a7441b4a02b8ff9"
+        },
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-progress\\browser-a2\\booky-progress-future-save-85e89-itly-confirmed-global-reset\\attachments\\booky-progress-source-evidence-7531603818c11db9e403d9777bd2da6419133452.json",
+          "sha256": "18d5d13c94d25430b46eb50794ddf8eaaa973c4ff0f202a4bb8a39d34fc1a637"
+        },
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-progress\\browser-a2\\booky-progress-a-delayed-f-a1317-authorize-an-ordinary-write\\attachments\\booky-progress-source-evidence-75fd0d3f512b3d72f9c986bc339234a384666bd8.json",
+          "sha256": "cc4c9eee741ec0242d0a5224e6d0e0fe4672d33a8b2fd1299a7b635cc3ddf43c"
+        }
+      ]
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/browser-a3/result.json",
+      "sha256": "5e00e259228b3db5beed017568ec773c9224380af637988a3b33c32421be4621",
+      "mode": "browser",
+      "attempt": "a3",
+      "pass": true,
+      "tests": {
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/source-manifests/5472b1ffd710072b.json",
+        "sha256": "5472b1ffd710072b32673374c502a013512ec82db5713d11e893a70d7d55d6f9",
+        "fileCount": 98
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/browser-a3/execution.json",
+        "sha256": "8b042f95a76beae450e983217ba17e2bda2ca8b839bc9231e0a08eb45463746d"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/browser-a3/playwright.json",
+        "sha256": "9f71dccba50686d54871748be3f35be3cbb3f1fb0436754459ffe25e40366147"
+      },
+      "supersededSource": true,
+      "reason": "The third integrated run passed 255 unit cases, TypeScript and all three actual-App browser cases with source manifest 5472b1ffd710072b32673374c502a013512ec82db5713d11e893a70d7d55d6f9. A subsequent targeted reproduction found that an old raw write could succeed after a fresh-read timeout on the same persistence object, then an equal-value toggle could take the confirmed-intent shortcut and remove the read-recovery UI. Preserve the passing a3 reports as pass:true; the final source and regression strengthen read-recovery authority and supersede this run without reclassifying it as a failure.",
+      "browserAttachments": [
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-progress\\browser-a3\\booky-progress-v1-restores-515a2-eload-and-deliberate-resume\\attachments\\booky-progress-source-evidence-1cc95222cf0ae49c6a13dd25e5181e07d52bde4e.json",
+          "sha256": "a63d0ea61922c1ab85ac5f580bdf11c86c14d528ec1ed8d709accbb13fa2d24a"
+        },
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-progress\\browser-a3\\booky-progress-future-save-85e89-itly-confirmed-global-reset\\attachments\\booky-progress-source-evidence-beeaa66e6ff7aaf4d32a5d0be5f04759f8927c73.json",
+          "sha256": "33305a4babe380dd6de80545a4339a49ee63ede8e0f511eaef7fa02b1619f94c"
+        },
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-progress\\browser-a3\\booky-progress-a-delayed-f-a1317-authorize-an-ordinary-write\\attachments\\booky-progress-source-evidence-cc96ab6c960f1fcdc24e1ebdda33a6a7eea564c8.json",
+          "sha256": "c02c20ac75a465876f864990b456b476f32f37856ad7a3458a4c40a1684877b2"
+        }
+      ]
+    }
+  ],
+  "runs": {
+    "unit": {
+      "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/unit-a4/result.json",
+      "sha256": "d45417a87da7b30af42d389e675393fedb167cc4d033482680ffcde2b38964b1",
+      "tests": {
+        "passed": 256,
+        "failed": 0,
+        "skipped": 0
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/unit-a4/execution.json",
+        "sha256": "1d31e4f35de75212252bc8c9a8af282dd2d4b4fb12712f242482315dc0b58ddf"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/unit-a4/vitest.json",
+        "sha256": "18c267d0c2aa520dff48c7b1100cc6fe411448d78c183f9eb001567cde84fa4b"
+      }
+    },
+    "static": {
+      "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/static-a4/result.json",
+      "sha256": "5cdd3cda199cb99331aaede4913184b984fe7f2920384ed6b36635c58b53e835",
+      "tests": null,
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/static-a4/execution.json",
+        "sha256": "a1318f0f509d7e5f3c9eb3c6c82c990c53bdbf388bfa424d38f325e678b103ab"
+      },
+      "rawReport": null
+    },
+    "browser": {
+      "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/browser-a4/result.json",
+      "sha256": "05486c2736ba877c007ab73e0dd447a9fc226b7b171eae87608edb88c6eed50c",
+      "tests": {
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/browser-a4/execution.json",
+        "sha256": "3a8e261882f6c2ae2d9b03ee9c7316a5887bc6920532963e325f54e2422430f0"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/browser-a4/playwright.json",
+        "sha256": "9caab967d24b725be252b468746356682974c29656bc7799b185c34a7cf67536"
+      }
+    }
+  },
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/source-manifests/29674cea92e6725e.json",
+    "sha256": "29674cea92e6725e062284b4d1325dba8567a465b38c91ab2eaffa417a1caf7b",
+    "fileCount": 98
+  },
+  "unitCount": 256,
+  "unitFiles": [
+    "src/host/HostPlatformServices.test.ts",
+    "src/host/bookySupport.test.ts",
+    "src/host/bookyTourProgress.test.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascotPersistence.test.ts",
+    "src/host/planetMascotPreference.test.ts",
+    "src/platform/adapters/web/WebPlatformAdapter.test.ts"
+  ],
+  "browserCases": 3,
+  "actualAppCaptures": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-progress\\browser-a4\\booky-progress-a-delayed-f-a1317-authorize-an-ordinary-write\\booky-progress.json",
+      "sha256": "e4dd4e4c4217ea8eefc4e345fbf51aef357d53c5c479d05b52f389b686e16998"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-progress\\browser-a4\\booky-progress-future-save-85e89-itly-confirmed-global-reset\\booky-progress.json",
+      "sha256": "6676482c5a1e62c4f6d76a60fd05efc0e24c5090990da948581e8e802276267f"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-progress\\browser-a4\\booky-progress-v1-restores-515a2-eload-and-deliberate-resume\\booky-progress.json",
+      "sha256": "df68e9ba9015aa58ce459b3531a6eea4a9ca1ac3014d86fcd2a075c24fde3ad1"
+    }
+  ],
+  "browserAttachments": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-progress\\browser-a4\\booky-progress-a-delayed-f-a1317-authorize-an-ordinary-write\\attachments\\booky-progress-source-evidence-2df73af906fdc68e4306e9c83362e18bfe936839.json",
+      "sha256": "e4dd4e4c4217ea8eefc4e345fbf51aef357d53c5c479d05b52f389b686e16998"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-progress\\browser-a4\\booky-progress-future-save-85e89-itly-confirmed-global-reset\\attachments\\booky-progress-source-evidence-6c5676e71c4758b99ec71bc3d1dee1f203b4e80d.json",
+      "sha256": "6676482c5a1e62c4f6d76a60fd05efc0e24c5090990da948581e8e802276267f"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-progress\\browser-a4\\booky-progress-v1-restores-515a2-eload-and-deliberate-resume\\attachments\\booky-progress-source-evidence-799617f6494ff15192dd6e027ed5c4649723c14e.json",
+      "sha256": "df68e9ba9015aa58ce459b3531a6eea4a9ca1ac3014d86fcd2a075c24fde3ad1"
+    }
+  ],
+  "attachmentBytesMatchOriginal": true,
+  "validatedBehavior": {
+    "delayedNativeReadObserved": true,
+    "pendingReadDoesNotAuthorizeWrites": true,
+    "lateUnsupportedReadPreservesLatestLocalToggle": true,
+    "ordinaryProgressCannotOverwriteFuture": true,
+    "noImplicitReset": true,
+    "sameCanonicalSceneWithinLoad": true,
+    "noAutomaticNavigation": true,
+    "noAppearanceWrites": true,
+    "futureRecordPreservedUntilConfirmation": true,
+    "cancelledResetDoesNotWrite": true,
+    "explicitGlobalResetClearsUnsupportedRecord": true,
+    "resetPreservesVisibilityAndPanel": true,
+    "normalProgressWritableAfterConfirmedReset": true,
+    "v1ColdReadDoesNotWrite": true,
+    "v1DoesNotInferAcknowledgements": true,
+    "explicitNextAcknowledgesOnlyCurrentStep": true,
+    "versionedSemanticProgressPersisted": true,
+    "hidePreservesResumeAndProgress": true,
+    "coldRestoreStaysClosed": true,
+    "explicitResumeRestoresSemanticStep": true,
+    "localeAndNarrowViewRetainProgress": true,
+    "sameCanonicalSceneWithinEachLoad": true,
+    "noReadingCompletionClaim": true,
+    "languageControlsUncoveredAt320px": true,
+    "stableCardAndAvatarDoNotOverlapAt320px": true
+  },
+  "visualReview": {
+    "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/visual-review.json",
+    "sha256": "203ff3ea6190f0fbb2a87d6c3ce3b950126493367bbc05d8f2ffafd498ccae0c"
+  },
+  "inspectedImageCount": 3,
+  "protectedInputCount": 86,
+  "preservedInputsVerified": true,
+  "gitIdentityDifferences": [
+    {
+      "commit": "5f532ec9b54c62eb76b97537f9b2a8fb03e92250",
+      "path": "src/books/bookDossierProgress.ts",
+      "gitBlobSha256": "5e1b108a71ef7b5b9652a2812483e4ce8f467c3a4178f83867a4cf8c62b25b2d",
+      "checkedOutSha256": "503d6b7c9e26da19aee4162c8fc67fa92ad9e09bb08caac97fcd23b795e557dc",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "5f532ec9b54c62eb76b97537f9b2a8fb03e92250",
+      "path": "src/community/AuthContext.tsx",
+      "gitBlobSha256": "456018e469c55fd5a96733051c35ea6dafd0aba9cdd44424d866b0bfb67fe98d",
+      "checkedOutSha256": "979334217af2f29388af0955c081487215f6a3aeb540a07a2ba1c7920fa759b3",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "5f532ec9b54c62eb76b97537f9b2a8fb03e92250",
+      "path": "src/components/InterfaceLanguageControl.tsx",
+      "gitBlobSha256": "070b05369e6a5eb1d4c2fc6181466dcbe0f700b3ca4b620fba39403734fcc23d",
+      "checkedOutSha256": "69019e0441573d8ea4dd4377ae6dbbd5d3017c5cdd28810bd49942c09f4be293",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "5f532ec9b54c62eb76b97537f9b2a8fb03e92250",
+      "path": "src/components/globeAssetCache.ts",
+      "gitBlobSha256": "1845fb402d344596c3d8e4ad9dcafebc7e4d8d4c915bea84a1081ee275d90a36",
+      "checkedOutSha256": "009f4f6516428c46848cffbecf7c3d3bb0be2b4c1d5989ef8743ecfb4a068987",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "5f532ec9b54c62eb76b97537f9b2a8fb03e92250",
+      "path": "src/components/globeEditions.ts",
+      "gitBlobSha256": "645dcbc48918d62d1c54834c3914908e03540746083b704c5bfcf484960e7657",
+      "checkedOutSha256": "b7440b6278979deb1e47738572460869202f0d9cf794a144aceac9dbcf8cdd77",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "5f532ec9b54c62eb76b97537f9b2a8fb03e92250",
+      "path": "src/components/globeFocusMath.ts",
+      "gitBlobSha256": "f62688a99d5a521e5aff729f3877f813f9bd81e16be2d33be4a25e8e8d220822",
+      "checkedOutSha256": "1dd511d8e47620f73cb72a2e41755256fc0d18679b3e72c4a586b86432c8b30a",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "5f532ec9b54c62eb76b97537f9b2a8fb03e92250",
+      "path": "src/components/globeInteraction.ts",
+      "gitBlobSha256": "67e511b4c7e5c59ec21a95076584476c8601b900b101082a0bf5ab9bd567fd15",
+      "checkedOutSha256": "f60c2d336147e899bdec7f2836df68d8360071aac1cd514d46d871c7ebdf6fb3",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "5f532ec9b54c62eb76b97537f9b2a8fb03e92250",
+      "path": "src/index.css",
+      "gitBlobSha256": "d480821e133d194983370c8ec9c2e27a36d2fbcf13224bf91acdc8e5b7e9a574",
+      "checkedOutSha256": "abeefa5620f8589d0e0f34d38120970315df8f95a0e7d5009d21222e932e5a35",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "5f532ec9b54c62eb76b97537f9b2a8fb03e92250",
+      "path": "src/lib/supabase.ts",
+      "gitBlobSha256": "6d28f0c6ff2dcb8f8424452180396822b700ada95ac9d745dc8d3001ffa2d183",
+      "checkedOutSha256": "6ad4bd4b96e39be319a966397e6bd0d41c0c7d741ec2b6c3ca201483c73f42cd",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "5f532ec9b54c62eb76b97537f9b2a8fb03e92250",
+      "path": "src/pwa/PwaAccessBoundary.tsx",
+      "gitBlobSha256": "7f868943bd3f8b4a2b42f574d99a5ac7f6826e0cd93a9be34dc0cfa04e432b81",
+      "checkedOutSha256": "5da9ec472f3bd16b1493cb44601bf1e3f74d09245e05ba8446cf9d280bee6b80",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "5f532ec9b54c62eb76b97537f9b2a8fb03e92250",
+      "path": "src/pwa/pwa.css",
+      "gitBlobSha256": "f3e9d1b320700106edbdaeb944c28e7d5b58281de6ebe872f7d62d6bb258cb66",
+      "checkedOutSha256": "b62dca25c5bec2a1df94347b0c7d9c043678ace42802ccba516cce326ca95f31",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "5e6eb7676367f71731fa84f9b2e69249c48bcb06",
+      "path": "package-lock.json",
+      "gitBlobSha256": "b65e60d33c363e8faae99defca10dbcdcfc5172b2d848604972bd5f40e0a83c1",
+      "checkedOutSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "5e6eb7676367f71731fa84f9b2e69249c48bcb06",
+      "path": "package.json",
+      "gitBlobSha256": "b9fd2f704d61ece5d7ad00bdb8b1e9ba7eb360a1242322d5ad5142805e056636",
+      "checkedOutSha256": "90b392c205754f838b8bc7c4475bd475936be1078561bb218c437d151177869f",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "5e6eb7676367f71731fa84f9b2e69249c48bcb06",
+      "path": "src/books/bookDossierProgress.ts",
+      "gitBlobSha256": "5e1b108a71ef7b5b9652a2812483e4ce8f467c3a4178f83867a4cf8c62b25b2d",
+      "checkedOutSha256": "503d6b7c9e26da19aee4162c8fc67fa92ad9e09bb08caac97fcd23b795e557dc",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "5e6eb7676367f71731fa84f9b2e69249c48bcb06",
+      "path": "src/community/AuthContext.tsx",
+      "gitBlobSha256": "456018e469c55fd5a96733051c35ea6dafd0aba9cdd44424d866b0bfb67fe98d",
+      "checkedOutSha256": "979334217af2f29388af0955c081487215f6a3aeb540a07a2ba1c7920fa759b3",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "5e6eb7676367f71731fa84f9b2e69249c48bcb06",
+      "path": "src/components/InterfaceLanguageControl.tsx",
+      "gitBlobSha256": "070b05369e6a5eb1d4c2fc6181466dcbe0f700b3ca4b620fba39403734fcc23d",
+      "checkedOutSha256": "69019e0441573d8ea4dd4377ae6dbbd5d3017c5cdd28810bd49942c09f4be293",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "5e6eb7676367f71731fa84f9b2e69249c48bcb06",
+      "path": "src/components/globeAssetCache.ts",
+      "gitBlobSha256": "1845fb402d344596c3d8e4ad9dcafebc7e4d8d4c915bea84a1081ee275d90a36",
+      "checkedOutSha256": "009f4f6516428c46848cffbecf7c3d3bb0be2b4c1d5989ef8743ecfb4a068987",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "5e6eb7676367f71731fa84f9b2e69249c48bcb06",
+      "path": "src/components/globeEditions.ts",
+      "gitBlobSha256": "645dcbc48918d62d1c54834c3914908e03540746083b704c5bfcf484960e7657",
+      "checkedOutSha256": "b7440b6278979deb1e47738572460869202f0d9cf794a144aceac9dbcf8cdd77",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "5e6eb7676367f71731fa84f9b2e69249c48bcb06",
+      "path": "src/components/globeFocusMath.ts",
+      "gitBlobSha256": "f62688a99d5a521e5aff729f3877f813f9bd81e16be2d33be4a25e8e8d220822",
+      "checkedOutSha256": "1dd511d8e47620f73cb72a2e41755256fc0d18679b3e72c4a586b86432c8b30a",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "5e6eb7676367f71731fa84f9b2e69249c48bcb06",
+      "path": "src/components/globeInteraction.ts",
+      "gitBlobSha256": "67e511b4c7e5c59ec21a95076584476c8601b900b101082a0bf5ab9bd567fd15",
+      "checkedOutSha256": "f60c2d336147e899bdec7f2836df68d8360071aac1cd514d46d871c7ebdf6fb3",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "5e6eb7676367f71731fa84f9b2e69249c48bcb06",
+      "path": "src/index.css",
+      "gitBlobSha256": "d480821e133d194983370c8ec9c2e27a36d2fbcf13224bf91acdc8e5b7e9a574",
+      "checkedOutSha256": "abeefa5620f8589d0e0f34d38120970315df8f95a0e7d5009d21222e932e5a35",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "5e6eb7676367f71731fa84f9b2e69249c48bcb06",
+      "path": "src/lib/supabase.ts",
+      "gitBlobSha256": "6d28f0c6ff2dcb8f8424452180396822b700ada95ac9d745dc8d3001ffa2d183",
+      "checkedOutSha256": "6ad4bd4b96e39be319a966397e6bd0d41c0c7d741ec2b6c3ca201483c73f42cd",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "5e6eb7676367f71731fa84f9b2e69249c48bcb06",
+      "path": "src/pwa/PwaAccessBoundary.tsx",
+      "gitBlobSha256": "7f868943bd3f8b4a2b42f574d99a5ac7f6826e0cd93a9be34dc0cfa04e432b81",
+      "checkedOutSha256": "5da9ec472f3bd16b1493cb44601bf1e3f74d09245e05ba8446cf9d280bee6b80",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "5e6eb7676367f71731fa84f9b2e69249c48bcb06",
+      "path": "src/pwa/pwa.css",
+      "gitBlobSha256": "f3e9d1b320700106edbdaeb944c28e7d5b58281de6ebe872f7d62d6bb258cb66",
+      "checkedOutSha256": "b62dca25c5bec2a1df94347b0c7d9c043678ace42802ccba516cce326ca95f31",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "5e6eb7676367f71731fa84f9b2e69249c48bcb06",
+      "path": "tsconfig.json",
+      "gitBlobSha256": "a89c689a43f21d1e0373598e265f4d62850bd92f7e624dfe2de8373f14126b22",
+      "checkedOutSha256": "8d51a8c9266fe83bf17c076b51672753b3750a17520cd0d2c28a90cb8b21e0d6",
+      "lineEndingOnly": true
+    }
+  ],
+  "changedSourcePaths": [
+    "src/host/HostPlatformServices.ts",
+    "src/host/PlanetMascotControls.css",
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/planetMascot.ts",
+    "src/host/planetMascotPersistence.ts",
+    "src/host/planetMascotPreference.ts",
+    "src/host/planetMascotRoutes.ts",
+    "src/platform/adapters/web/WebPlatformAdapter.ts"
+  ],
+  "newSourcePaths": [
+    "src/host/bookyTourProgress.ts"
+  ],
+  "starterSetSourceInventory": {
+    "path": "docs/mobile/evidence/S13/book-cloud-stand-20260920/starter-set-source-inventory.json",
+    "sha256": "854f14d22bbf78c2207e6f0c93b2c03696ce8d6a462c44d452ba2d9a633faa92"
+  },
+  "inventoryHistorical": true,
+  "inventoryAuditRerun": false,
+  "inventoryUnchangedInputsVerified": true,
+  "inventoryChangedInputs": [
+    {
+      "path": "src/App.tsx",
+      "priorSha256": "ab22ae860da4442a97c8a4f9994a0cfed05e75a5bdddd6c1675b82972d9be6f3",
+      "currentSha256": "f4766e00d4588fe4d62e5f7fa97e084b97b26bff783f23e41579be6e207f8e5a"
+    },
+    {
+      "path": "src/components/GlobeCameraRig.tsx",
+      "priorSha256": "6938d120c7a49248398b385640cc77d96c9f3b33cbd6c3b4ef9881ef89e2ec19",
+      "currentSha256": "189f1a90fafb001a09b02832cc033f2239d8b417adfc6a3f8899986152580a48"
+    },
+    {
+      "path": "src/components/GlobeIncludedBackground.tsx",
+      "priorSha256": "3268e2f971bb3b8742093be690116a16f8bee262362d50743daca2273d376b61",
+      "currentSha256": "b384ccdc3020598f10a990807e74342dc35e9434e42cad54b11526c10d81634c"
+    },
+    {
+      "path": "src/components/GlobeIncludedStand.tsx",
+      "priorSha256": "276ef908fe5a09c066a59d9ff57d1432d44300bcb979b2aeb5d6dd249ba189fd",
+      "currentSha256": "a083080c90c5bbb5f53dc9e7ba4f4498712634a9df67db6ce0e2e12cd4b4d068"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "priorSha256": "666960397af75698cdfbc89fe1f9f359683785ef168288e740caedaf7a19dd33",
+      "currentSha256": "f5bcfb487be1a34199cc6482dd2de5e6b6a68987938343fd41e7c1f9cc47b63d"
+    },
+    {
+      "path": "src/components/globeBackgroundGeometry.ts",
+      "priorSha256": "019c09b6c2fe51a52c772756b9c6fc47be0c8f8d80bac9dcb5f005c07b82ecc1",
+      "currentSha256": "daa902b738190403a4297264f7067dae8b1fdbe86c73c16e541ace7a7e9a0f00"
+    },
+    {
+      "path": "src/components/globeCraftMaterials.ts",
+      "priorSha256": "68ce7e818d50ac5ece1d5d4542fdc4cecea6af25e21b08b1274c8adcacbfbde1",
+      "currentSha256": "2c19145443374e631cf40dbf20a8b55d38bd8a41e1c0d025dc3ec10fbbe47721"
+    },
+    {
+      "path": "src/components/globeLibraryGeometry.ts",
+      "priorSha256": "c0d4fe4c9b69921df11d50bc349fca9896304baba67fff60263b77ff19c1d1ee",
+      "currentSha256": "18c2af40ee169eeac5416aa59effe1e50cbea92359a7f1e0d0f8f8972dddaf7c"
+    },
+    {
+      "path": "src/components/globeWhaleStandGeometry.ts",
+      "priorSha256": "a641909b9d2a168b921e3a94f78db0c0652fe67b4d76b3cdaa2a1fba57de82be",
+      "currentSha256": "9c0975465082d9423e2bfd3a8da3fa355897e0c6018d7c955c52497c0a9d64ab"
+    },
+    {
+      "path": "src/components/globeWriterStudyGeometry.ts",
+      "priorSha256": "4e2c7f51529d0f5cdde9df2484cf0701a8a6662ee9c5b9a96de828f22d7c7cfc",
+      "currentSha256": "c811764937279429ecddf50b1cd0b60f3b7a5f568772d9ced146b4920fca9f1e"
+    },
+    {
+      "path": "src/host/PlanetStandControls.tsx",
+      "priorSha256": "6bbcb8f9e373f06491b742888d58110d0922a3c0a0bdf9d47cceb129dbcbff76",
+      "currentSha256": "829db69456bddda43035df512ee1af4ed6182752bdf3161e14db756b695295e1"
+    }
+  ],
+  "historicalStarterSetCounts": {
+    "required": 29,
+    "sourceBound": 13,
+    "accepted": 0,
+    "ownerAdded": 3
+  },
+  "pwa": {
+    "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/pwa-a1/result.json",
+    "sha256": "bc6e8686c3a5ed76a6c6823b778dfc6b2cbca03067e5d66fcef0882380405261"
+  },
+  "android": {
+    "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/android-a1/result.json",
+    "sha256": "c3a58641570c028f1c0b0943ede76b453d2dfaaaea2ac6511bd50dc3750d11c5"
+  },
+  "pwaBuildId": "a44b4440754941dd069c63e6678f26ad26e81cf87bf0f7d4935b577b7047d4e2",
+  "androidBuildId": "5c3287a74998f40329309d6b4294cff09362732a29e02ab3f577741a03a5c69c",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-progress/android-5c3287a7/app-dev-debug.apk",
+    "bytes": 70289891,
+    "sha256": "e786dfcc8274e4d496f0a2e2d8dbdda9078cf57ced7ce79bae9f0933277b7019"
+  },
+  "buildAudits": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/pwa-a1/strict-audit.json",
+      "sha256": "cf04c01b5f3b3ab0340857df8e3798ba208d18b663c50c1b465709decacaf25b"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/android-a1/native-artifact-audit.json",
+      "sha256": "e7076b628d82b698b3991a3310c203aefe57718ea0aed097c89719c8589e73cd"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/android-a1/android-dev-apk-verification.json",
+      "sha256": "96037ebb6d9536ea2a665350b0f99cd0264d198c0080dc8b55525df6a136947d"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/android-a1/build-run.json",
+      "sha256": "9d0afe34e504d266ea9838a9d42fbd1f947524f44d74cdb03224a17531bcb9d2"
+    }
+  ],
+  "copyVerification": {
+    "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/pwa-a1/copy-verification.json",
+    "sha256": "7ce15b30c2831b5cfba45dca9d5c8c1098b49226aefedbd7b0a4201507a74beb"
+  },
+  "pwaBrowserReport": {
+    "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/pwa-a1/playwright.json",
+    "sha256": "8a38b0f782e736e7bdf1c9f23771893da820e28706db3ee7172adf7907129e66"
+  },
+  "priorPwa": {
+    "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/pwa-a1/result.json",
+    "sha256": "bd763e4ffa660d28da33d1f52ad2066aa1569cb99e2f17592e7b31981cecc69b"
+  },
+  "priorAndroid": {
+    "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/android-a1/result.json",
+    "sha256": "51b40853d6e33af851b58b623f67fe87670c5facc8c6d392e9b56d5ce95e8f78"
+  },
+  "decisionD155Recorded": true,
+  "criteriaUpdated": [
+    "S15.PLANETKA-008"
+  ],
+  "criterionChanges": [],
+  "requirementChanges": [],
+  "stageChanges": [],
+  "allStageAndCriterionStatusesUnchanged": true,
+  "firstUnresolved": "S03.acceptance",
+  "parallelSafeEntry": {
+    "priorFirstOpenStage": "S03",
+    "stageAcceptanceClaimed": false,
+    "scope": "S15 already IN_PROGRESS; owner-authorized Booky integration continues without claiming child, full journey, device or release acceptance."
+  },
+  "limitations": [
+    "The saved records acknowledge steps of two existing adult navigation routes. They do not record reading, learning outcomes, literary journey completion, permissions or child progress.",
+    "V1 migration retains a semantic cursor but infers no acknowledgements. Current route version 1 is explicit; migration across hypothetical future route revisions is not accepted by these current-version cases.",
+    "Future or otherwise unsupported data stays protected until the user explicitly confirms a global reset. Local interaction while storage is unread or unsupported remains session-only; no successful persistence is inferred from UI progress.",
+    "Authority checks protect the local preference-store lifecycle and require a fresh read after remount. They are not cross-process compare-and-swap: an already-started unabortable native write cannot be cancelled against an unseen concurrent external storage change.",
+    "Actual-App Chrome executes native adapters with a controlled preference map and delayed reads. This is source behavior evidence, not installed-device, screen-reader, battery or performance acceptance.",
+    "Strict PWA and Android manifests bind the changed source and original artwork. The built-PWA case remains the existing offline/download smoke rather than all progress/reset browser cases against distributed bundles.",
+    "All former Planetka functions remain Booky scope. Full literary and educational journeys, child profiles, reviewed dialogue/audio, comprehensive journey migration and release gates remain pending.",
+    "Original model, renderer, artwork and canonical scene inputs remain exact. RU/EN progress labels describe interface acknowledgements only; visual inspection is scoped layout evidence, not human editorial or formal art approval.",
+    "Earlier attempts remain unchanged and are excluded from current acceptance unless selected as the final matching source-bound run. The prior starter inventory remains historical 29/13/0 plus three owner additions."
+  ],
+  "nextAction": "Continue S15 with a draft and review-aware bilingual dialogue registry for existing adult navigation and support: record provenance, version and review status; fail closed for future factual or child lines. Then prepare guarded canonical literary journey definitions. Do not enable child scenarios or claim reviewed text. Keep versioned adult progress, explicit resume/reset, future-record protection, offline/error recovery and canonical scene ownership intact. Full literary/educational journeys, child scenarios, reviewed dialogue/audio, screen-reader, installed-device/performance, iOS and release acceptance remain pending. S03.acceptance remains first unresolved.",
+  "actualApp": true,
+  "actualCss": true,
+  "actualGlobe": true,
+  "controlledNativePorts": true,
+  "preferenceSchemaVersion": 2,
+  "knownNavigationRouteVersions": {
+    "overview": 1,
+    "country-to-book": 1
+  },
+  "migrationInfersAcknowledgements": false,
+  "progressPreservedWhenHidden": true,
+  "unsupportedWritesRequireExplicitReset": true,
+  "automaticResumeNavigation": false,
+  "readingCompletionClaimed": false,
+  "artChanged": false,
+  "globeSceneChanged": false,
+  "installedNativeDevice": false,
+  "builtPwaBookyProgressExecution": false,
+  "progressCopyStatus": "draft",
+  "artAccepted": false,
+  "childProfileCreated": false,
+  "childAccessGranted": false,
+  "childApproved": false,
+  "rightsApproval": false,
+  "reviewedDialogueAccepted": false,
+  "narrationEnabled": false,
+  "ageAdaptiveJourneysEnabled": false,
+  "literaryJourneyPersistence": false,
+  "childJourneyPersistence": false,
+  "fullJourneyMigrationAccepted": false,
+  "screenReaderAcceptance": false,
+  "devicePerformanceAccepted": false,
+  "iosCompiled": false,
+  "grantsEntitlement": false,
+  "productionActionsPerformed": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

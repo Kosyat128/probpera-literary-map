@@ -1,0 +1,9 @@
+
+Running 3 tests using 1 worker
+
+
+
+[1/3] tests\pwa\booky-progress.spec.mjs:359:1 › v1 restores no acknowledgements; explicit next persists versioned progress through hide reload and deliberate resume
+[2/3] tests\pwa\booky-progress.spec.mjs:424:1 › future saved progress remains byte exact through local interaction and cancellation until an explicitly confirmed global reset
+[3/3] tests\pwa\booky-progress.spec.mjs:471:1 › a delayed future preference read cannot overwrite a newer local toggle or authorize an ordinary write
+  3 passed (34.7s)

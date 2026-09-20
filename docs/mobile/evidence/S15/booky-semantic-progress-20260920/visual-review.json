@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-20T07:55:25.584Z",
+  "pass": true,
+  "sourceCommit": "5e6eb7676367f71731fa84f9b2e69249c48bcb06",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/source-manifests/29674cea92e6725e.json",
+    "sha256": "29674cea92e6725e062284b4d1325dba8567a465b38c91ab2eaffa417a1caf7b",
+    "fileCount": 98
+  },
+  "actualAppCaptures": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-progress/browser-a4/booky-progress-v1-restores-515a2-eload-and-deliberate-resume/booky-progress.json",
+      "sha256": "df68e9ba9015aa58ce459b3531a6eea4a9ca1ac3014d86fcd2a075c24fde3ad1"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-progress/browser-a4/booky-progress-future-save-85e89-itly-confirmed-global-reset/booky-progress.json",
+      "sha256": "6676482c5a1e62c4f6d76a60fd05efc0e24c5090990da948581e8e802276267f"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-progress/browser-a4/booky-progress-a-delayed-f-a1317-authorize-an-ordinary-write/booky-progress.json",
+      "sha256": "e4dd4e4c4217ea8eefc4e345fbf51aef357d53c5c479d05b52f389b686e16998"
+    }
+  ],
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-progress/browser-a4/booky-progress-v1-restores-515a2-eload-and-deliberate-resume/booky-progress-resumed-en-320.png",
+      "sha256": "aab5a27120d04937e30b9d6360d6c3d8661fceccdadd041dfb2d6fa447e94413",
+      "inspected": true,
+      "reviewer": "Codex root visual inspection",
+      "findings": [
+        "English semantic step and acknowledged count remain legible at 320px.",
+        "Card, full Booky avatar and RU/EN controls do not overlap.",
+        "Back, Next and explicit reset remain visible; canonical country panel stays present."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-progress/browser-a4/booky-progress-future-save-85e89-itly-confirmed-global-reset/booky-progress-future-reset-ru-320.png",
+      "sha256": "8b4e5cc2c381e4f3afddfcd98ae3a00b111537b4ec7adf25a190d4a9145c0b69",
+      "inspected": true,
+      "reviewer": "Codex root visual inspection",
+      "findings": [
+        "Russian warning and reset confirmation are readable within the scrolled card.",
+        "Both Reset and Cancel are visible and distinct.",
+        "Card stays above the Booky avatar and below the native header; canonical country panel remains visible."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-progress/browser-a4/booky-progress-a-delayed-f-a1317-authorize-an-ordinary-write/booky-progress-delayed-future-en-320.png",
+      "sha256": "a896ca625cc93b3f2a8a2a3a9066b5ee749c1836abd053efee893abeb1ba7c25",
+      "inspected": true,
+      "reviewer": "Codex root visual inspection",
+      "findings": [
+        "English route progress labels show zero acknowledgements after the delayed unsupported read.",
+        "Unavailable-save explanation is readable within a vertically scrollable card.",
+        "RU/EN controls and Booky avatar remain uncovered; the existing country panel is retained."
+      ]
+    }
+  ],
+  "artAccepted": false,
+  "childApproved": false,
+  "releaseReady": false
+}

@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "mode": "unit",
+  "attempt": "a1",
+  "startedAt": "2026-09-20T07:40:42.983Z",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/source-manifests/c33e84362cb07b60.json",
+    "sha256": "c33e84362cb07b60966a056453c870567d82264290cb2bde5672d35b7da34c46",
+    "fileCount": 98
+  },
+  "checkInputs": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/check.mjs",
+      "sha256": "6302fb9beb9080129607f612f8d88c4d75accfa1c7bc73be5ed1b2c2e7f293fb"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/entry.json",
+      "sha256": "40c36de9c24e1d0c2c2006fe8d4bcc4a4cd342623e27104ee6b91b7109ce9c25"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/unit.config.mjs",
+      "sha256": "925077e73d32a4f25ae089bf49140b5ab6f0996f16e1bcc362dc71baf56cae5b"
+    },
+    {
+      "path": "src/host/HostPlatformServices.test.ts",
+      "sha256": "d51e8115933dfc7db52dd6557d23179e67fa484b3f69dbedc863d4243e6bc714"
+    },
+    {
+      "path": "src/host/bookySupport.test.ts",
+      "sha256": "670124b3ab396ed9902238f646c545c389cd50a6444ccc762e4c90e044d68eca"
+    },
+    {
+      "path": "src/host/bookyTourProgress.test.ts",
+      "sha256": "c07944c36a9b3509bc0e5ab1c9792450a705d058e71a400c52c3d97a25e303fe"
+    },
+    {
+      "path": "src/host/planetMascot.test.ts",
+      "sha256": "48703f98682679f41bd88ee96357618c13659887abd8c800bd0778a566837124"
+    },
+    {
+      "path": "src/host/planetMascotPersistence.test.ts",
+      "sha256": "4e2c4b6faaf4ed7c70af6789aa8a47acc7d0a12b41633cb3b89566bd0949111a"
+    },
+    {
+      "path": "src/host/planetMascotPreference.test.ts",
+      "sha256": "71adb2eef7e9c7249aa4439d58eed8fbb2f24cc765514ef02c2e880be4f0a4c9"
+    },
+    {
+      "path": "src/platform/adapters/web/WebPlatformAdapter.test.ts",
+      "sha256": "9c4e65e5da631ca508c40cc4e06ece8a5d507fcc0137bd03482311cb16e5b8c2"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "tests": {
+    "passed": 249,
+    "failed": 0,
+    "skipped": 0
+  },
+  "reportError": null,
+  "pass": true,
+  "execution": {
+    "exitCode": 0,
+    "durationMs": 4584
+  },
+  "stageAccepted": false,
+  "artAccepted": false,
+  "releaseReady": false
+}

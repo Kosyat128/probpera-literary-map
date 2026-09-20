@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "mode": "browser",
+  "attempt": "a2",
+  "startedAt": "2026-09-20T07:44:38.657Z",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/source-manifests/58094207cdfcff23.json",
+    "sha256": "58094207cdfcff2380da6e3af1a30274f48485bbc4429b2e1be31ea036104bcc",
+    "fileCount": 98
+  },
+  "checkInputs": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/check.mjs",
+      "sha256": "6302fb9beb9080129607f612f8d88c4d75accfa1c7bc73be5ed1b2c2e7f293fb"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/entry.json",
+      "sha256": "40c36de9c24e1d0c2c2006fe8d4bcc4a4cd342623e27104ee6b91b7109ce9c25"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/playwright.config.mjs",
+      "sha256": "3653af707d90dd744a24a4efde5ccc99e4b8a89bf4fbd51a690df93c0faa906e"
+    },
+    {
+      "path": "tests/pwa/booky-progress.spec.mjs",
+      "sha256": "b542186408d7b4f8354391a4dcd1295a15ec2518abde593df12c22a732c8f4f6"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "tests": {
+    "passed": 3,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0
+  },
+  "reportError": null,
+  "pass": true,
+  "execution": {
+    "exitCode": 0,
+    "durationMs": 35596
+  },
+  "stageAccepted": false,
+  "artAccepted": false,
+  "releaseReady": false
+}

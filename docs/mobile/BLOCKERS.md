@@ -1,3 +1,11 @@
+<!-- s15-booky-progress-20260920:begin -->
+Source 5e6eb767: adult Booky preserves explicitly acknowledged navigation steps in schema v2. V1 migration infers no progress; hiding keeps progress and cursor; restore stays closed; future data needs confirmed reset before replacement.
+256 focused tests, TypeScript, 3 actual-App Chrome cases, 3 inspected views and local PWA a44b4440 / Android-dev 5c3287a7 bind this source. Built-PWA coverage remains offline/download smoke; 86 protected inputs stay exact.
+PLANETKA-008 remains IN_PROGRESS. Stage/criterion statuses are unchanged: 3 complete, 12 in progress, 26 unstarted; first unresolved S03.acceptance; releaseReady:false. All former Planetka functions remain Booky scope.
+Evidence: evidence/S15/booky-semantic-progress-20260920/result.json.
+Continue S15 with a draft and review-aware bilingual dialogue registry for existing adult navigation and support: record provenance, version and review status; fail closed for future factual or child lines. Then prepare guarded canonical literary journey definitions. Do not enable child scenarios or claim reviewed text. Keep versioned adult progress, explicit resume/reset, future-record protection, offline/error recovery and canonical scene ownership intact. Full literary/educational journeys, child scenarios, reviewed dialogue/audio, screen-reader, installed-device/performance, iOS and release acceptance remain pending. S03.acceptance remains first unresolved.
+<!-- s15-booky-progress-20260920:end -->
+
 <!-- s15-booky-offline-20260920:begin -->
 Source 707044e7: adult Booky explains offline/unknown/loading/error state and offers explicit recovery. Bounded canonical split-entry retries fix the real source-fixture error preserved in browser-a1; no automatic navigation or connectivity-based success claim.
 114 selected tests, TypeScript, 5 actual-App Chrome cases, 5 inspected views and local PWA b0e03c47 / Android-dev ddfbd43c bind this source. Built-PWA coverage remains offline/download smoke; 86 protected inputs stay exact.

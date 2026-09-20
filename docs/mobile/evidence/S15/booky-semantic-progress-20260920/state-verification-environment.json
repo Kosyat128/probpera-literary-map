@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-20T08:00:38.743Z",
+  "sourceCommit": "5e6eb7676367f71731fa84f9b2e69249c48bcb06",
+  "pass": true,
+  "failedAttempt": {
+    "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/state-verification-raw-git-environment.json",
+    "sha256": "9d8b9a637bc26e8aae4ec4fe2926908b8b16549e77f7119fb69bf95abcff2952"
+  },
+  "selectedAttempt": {
+    "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/state-verification.json",
+    "sha256": "de39ad5aab432524585eb248ace90f93076af981baeebca5d270f01550278724"
+  },
+  "explanation": "The initial command inherited core.autocrlf=false from raw-byte staging. The existing evidence verifier uses Git clean conversion to compare historical CRLF text against committed LF blobs. Rerunning with only command-scoped safe.directory restores the unchanged system core.autocrlf=true. No historical evidence or verifier was modified; the original failed report is preserved.",
+  "representative": {
+    "path": "docs/mobile/evidence/S00/logs/lint-main-refresh.log",
+    "sha256": "603de491f6013d0bdcb51c1fff3beb201b0ebbb5ed9dbeab8ea5561a2fbd082d",
+    "bytes": 214,
+    "normalizedBytes": 205,
+    "normalizedSha256": "5b1a38b22395816c9c1cc76968ad073f523092b9fa6604d803fe26dd8db7911a",
+    "expectedGitBlob": "1ac1ade6ddefd81a056ca7db81a3e7a486c37475",
+    "gitBlobWithAutocrlfTrue": "1ac1ade6ddefd81a056ca7db81a3e7a486c37475",
+    "gitBlobWithAutocrlfFalse": "a28deb9363c5a63b7c933563db3dfba6a946bd8b"
+  },
+  "releaseReady": false
+}

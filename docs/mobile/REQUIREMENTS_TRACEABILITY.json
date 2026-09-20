@@ -4951,20 +4951,27 @@
         "src/host/HostPlatformServices.ts",
         "src/platform/adapters/web/WebPlatformAdapter.ts",
         "src/host/planetMascotPreference.ts",
-        "src/host/planetMascotPersistence.ts"
+        "src/host/planetMascotPersistence.ts",
+        "src/host/planetMascotRoutes.ts",
+        "src/host/bookyTourProgress.ts"
       ],
       "tests": [
         "src/host/planetMascot.test.ts",
         "src/host/planetMascotPersistence.test.ts",
         "src/host/HostPlatformServices.test.ts",
         "src/platform/adapters/web/WebPlatformAdapter.test.ts",
-        "tests/pwa/booky-resume-preference.spec.mjs"
+        "tests/pwa/booky-resume-preference.spec.mjs",
+        "src/host/bookySupport.test.ts",
+        "src/host/bookyTourProgress.test.ts",
+        "src/host/planetMascotPreference.test.ts",
+        "tests/pwa/booky-progress.spec.mjs"
       ],
       "evidence": [
-        "docs/mobile/evidence/S15/booky-resume-preference-20260920/result.json"
+        "docs/mobile/evidence/S15/booky-resume-preference-20260920/result.json",
+        "docs/mobile/evidence/S15/booky-semantic-progress-20260920/result.json"
       ],
-      "commit": "94a6b7785d10d1f3b9a619105542d239b28ed639",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion. Adult Booky explicit visibility and semantic navigation-tour resume now persist through existing adult platform preferences. Cold restoration offers a closed, explicit resume and does not navigate or grant permissions. 206 selected preference/controller/adapter cases, TypeScript, one actual-App Chrome case and 3 inspected source-bound views validate the selected source; current local PWA/Android artifacts preserve that runtime. This starts the adult foundation only; child and literary progress, migrations, reviewed dialogue/audio and all art/device/release acceptance remain pending. All former Planetka functions remain Booky scope."
+      "commit": "5e6eb7676367f71731fa84f9b2e69249c48bcb06",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion. Adult Booky explicit visibility and semantic navigation-tour resume now persist through existing adult platform preferences. Cold restoration offers a closed, explicit resume and does not navigate or grant permissions. 206 selected preference/controller/adapter cases, TypeScript, one actual-App Chrome case and 3 inspected source-bound views validate the selected source; current local PWA/Android artifacts preserve that runtime. This starts the adult foundation only; child and literary progress, migrations, reviewed dialogue/audio and all art/device/release acceptance remain pending. All former Planetka functions remain Booky scope. Adult navigation progress now uses schema v2 and versioned semantic acknowledgements for the two existing routes. Strict v1 migration adds no inferred steps; hide keeps progress and resume; cold restore stays closed; only confirmed reset can replace unsupported data. 256 focused cases, TypeScript, 3 actual-App Chrome cases and 3 inspected views bind this source, with local PWA/Android preservation. This is not reading or full literary/child journey progress and does not close PLANETKA-008."
     },
     {
       "id": "PLATFORM-001",
