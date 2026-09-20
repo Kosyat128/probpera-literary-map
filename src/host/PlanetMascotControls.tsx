@@ -81,14 +81,44 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
   const tourHeading = useRef<HTMLHeadingElement>(null), focusAfterNavigation = useRef(false);
   const [view, setView] = useState<Rect>(() => typeof window === "undefined"
     ? { left: 0, top: 0, width: 1024, height: 768 } : viewport());
-  const [petSize, setPetSize] = useState({ width: 156, height: 194 });
+  const [petSize, setPetSize] = useState({ width: 176, height: 216 });
   const [cardHeight, setCardHeight] = useState(360);
   const [highlight, setHighlight] = useState<Rect | null>(null);
-  const drag = useRef<{ pointerId: number; x: number; y: number; origin: Position } | null>(null);
+  const drag = useRef<{ pointerId: number; x: number; y: number; origin: Position; source: "avatar" | "handle";
+    moved: boolean; element: HTMLButtonElement } | null>(null);
+  const suppressAvatarClick = useRef(false);
+  const [pointerLook, setPointerLook] = useState<{ x: number; y: number } | null>(null);
+  const [gesture, setGesture] = useState<"rest" | "greeting" | "dragging">("rest");
+  const [reactionKey, setReactionKey] = useState(0);
+  const [pageTurn, setPageTurn] = useState(0);
+  const previousPage = useRef(`${snapshot.mode}:${snapshot.route}:${snapshot.step}`);
   const prior = useRef({ panel: snapshot.panel, visibility: snapshot.visibility });
   const shown = snapshot.visibility === "shown", open = shown && snapshot.panel === "open";
   const step = getPlanetMascotStep(snapshot.route, snapshot.step);
   const tour = snapshot.mode === "tour" && step && snapshot.route ? PLANET_MASCOT_ROUTES[snapshot.route] : null;
+
+  useLayoutEffect(() => {
+    if (shown && snapshot.available) return;
+    const intent = drag.current;
+    drag.current = null;
+    if (intent?.element.hasPointerCapture(intent.pointerId)) intent.element.releasePointerCapture(intent.pointerId);
+    suppressAvatarClick.current = false;
+    setPointerLook(null); setGesture("rest");
+  }, [shown, snapshot.available]);
+
+  useLayoutEffect(() => {
+    const page = `${snapshot.mode}:${snapshot.route}:${snapshot.step}`;
+    if (!open) setPageTurn(0);
+    if (previousPage.current === page) return;
+    previousPage.current = page;
+    if (!open || !snapshot.available) return;
+    // A new instruction starts at the top of its leaf; context updates and
+    // locale switches never move a page the user is already reading.
+    if (card.current) card.current.scrollTop = 0;
+    setPageTurn(value => value + 1);
+    setGesture("rest");
+    setReactionKey(value => value + 1);
+  }, [snapshot.mode, snapshot.route, snapshot.step, snapshot.available, open]);
 
   useLayoutEffect(() => {
     const measure = () => setView(previous => { const next = viewport(); return sameRect(previous, next) ? previous : next; });
@@ -175,17 +205,45 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
   const score = (candidate: Rect) => overlap(candidate, petRect) * 4
     + (highlight && highlight.width * highlight.height < view.width * view.height * .45 ? overlap(candidate, highlight) : 0);
   const cardPosition = cardCandidates.reduce((best, candidate) => score(candidate) < score(best) ? candidate : best);
-  const perform = (action: PlanetMascotAction) => controller.act(action, snapshot.revision, () => onAction(action));
+  const perform = (action: PlanetMascotAction) => {
+    const performed = controller.act(action, snapshot.revision, () => onAction(action));
+    if (performed) { setGesture("rest"); setReactionKey(value => value + 1); }
+    return performed;
+  };
   const navigateTips = (action: () => boolean) => {
     focusAfterNavigation.current = Boolean(card.current?.contains(document.activeElement));
     if (!action()) focusAfterNavigation.current = false;
   };
   const move = (next: Position) => onPositionChange(clamped(next, petSize.width, petSize.height, view));
   const endDrag = (event: ReactPointerEvent<HTMLButtonElement>) => {
-    if (drag.current?.pointerId !== event.pointerId) return;
+    const intent = drag.current;
+    if (intent?.pointerId !== event.pointerId) return;
+    if (intent.source === "avatar") suppressAvatarClick.current = intent.moved && event.type !== "pointercancel";
     drag.current = null;
+    setGesture("rest");
     if (event.currentTarget.hasPointerCapture(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId);
   };
+  const followPointer = (event: ReactPointerEvent<HTMLButtonElement>) => {
+    if (!shown) return;
+    const intent = drag.current;
+    if (intent?.source === "avatar" && intent.pointerId === event.pointerId) {
+      const dx = event.clientX - intent.x, dy = event.clientY - intent.y;
+      if (!intent.moved && Math.hypot(dx, dy) < 6) return;
+      intent.moved = true;
+      event.preventDefault(); setGesture("dragging");
+      move({ left: intent.origin.left + dx, top: intent.origin.top + dy });
+      return;
+    }
+    if (event.pointerType !== "mouse" && event.pointerType !== "pen") return;
+    const bounds = event.currentTarget.getBoundingClientRect();
+    const x = Math.max(-1, Math.min(1, (event.clientX - bounds.left) / Math.max(1, bounds.width) * 2 - 1));
+    const y = Math.max(-1, Math.min(1, (event.clientY - bounds.top) / Math.max(1, bounds.height) * 2 - 1));
+    setPointerLook(previous => previous && Math.abs(previous.x - x) < .025 && Math.abs(previous.y - y) < .025 ? previous : { x, y });
+  };
+  const guidedLook = open && highlight ? {
+    x: Math.max(-1, Math.min(1, (highlight.left + highlight.width / 2 - petPosition.left - petSize.width / 2) / Math.max(1, view.width / 2))),
+    y: Math.max(-1, Math.min(1, (highlight.top + highlight.height / 2 - petPosition.top - petSize.height / 2) / Math.max(1, view.height / 2))),
+  } : { x: 0, y: 0 };
   const contextual = writerLabel ?? countryLabel;
   const primaryAction: PlanetMascotAction | null = step?.requiredScreen && step.requiredScreen !== screen
     ? step.requiredScreen === "globe" ? "return-globe" : "books" : step?.action ?? null;
@@ -232,7 +290,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     <div ref={root} className="planet-mascot-controls" data-planet-mascot-pet=""
       data-planet-mascot-active={shown ? "true" : "false"} data-planet-mascot-visibility={snapshot.visibility}
       data-planet-mascot-mode={snapshot.mode} data-planet-mascot-current-route={snapshot.route ?? "none"}
-      data-planet-mascot-step={snapshot.step} data-planet-mascot-screen={screen}
+      data-planet-mascot-step={snapshot.step} data-planet-mascot-screen={screen} data-planet-mascot-gesture={gesture}
       style={petPosition} onPointerDown={event => event.stopPropagation()} onPointerUp={event => event.stopPropagation()}
       onPointerMove={event => event.stopPropagation()} onWheel={event => event.stopPropagation()}
       onClick={event => event.stopPropagation()} onKeyDown={event => {
@@ -240,6 +298,14 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
         // must also let Escape reach that surrounding panel.
         if (event.key === "Tab") return;
         if (event.key === "Escape") {
+          const intent = drag.current;
+          if (intent) {
+            event.preventDefault(); event.stopPropagation();
+            drag.current = null; suppressAvatarClick.current = intent.source === "avatar";
+            onPositionChange(intent.origin); setGesture("rest"); setPointerLook(null);
+            if (intent.element.hasPointerCapture(intent.pointerId)) intent.element.releasePointerCapture(intent.pointerId);
+            return;
+          }
           if (open) { event.preventDefault(); event.stopPropagation(); controller.togglePanel(); }
           return;
         }
@@ -248,8 +314,28 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
       <button ref={toggle} type="button" className={shown ? "planet-mascot-controls__avatar-button" : "planet-mascot-controls__show"}
         data-planet-mascot-toggle="" aria-expanded={open} aria-controls={open ? id : undefined}
         aria-label={shown ? ru ? `Подсказки: ${name}` : `Tips from ${name}` : ru ? `Показать: ${name}` : `Show ${name}`}
-        onClick={() => controller.togglePanel()}>
-        {shown ? <PlanetMascotAvatar src={mascotImage} mood={snapshot.completedRoute ? "celebrate" : snapshot.mode === "tour" ? "guiding" : "idle"} /> : name}
+        aria-describedby={shown ? `${id}-move` : undefined}
+        onPointerDown={event => {
+          if (!shown || !event.isPrimary || event.button !== 0) return;
+          suppressAvatarClick.current = false;
+          drag.current = { pointerId: event.pointerId, x: event.clientX, y: event.clientY, origin: petPosition,
+            source: "avatar", moved: false, element: event.currentTarget };
+          event.currentTarget.setPointerCapture(event.pointerId);
+        }} onPointerMove={followPointer} onPointerUp={endDrag} onPointerCancel={endDrag}
+        onLostPointerCapture={event => {
+          const intent = drag.current;
+          if (intent?.pointerId !== event.pointerId) return;
+          if (intent.source === "avatar" && intent.moved) suppressAvatarClick.current = true;
+          drag.current = null; setGesture("rest");
+        }}
+        onPointerLeave={() => { if (!drag.current) { setPointerLook(null); setGesture("rest"); } }}
+        onClick={event => {
+          if (event.detail > 0 && suppressAvatarClick.current) { suppressAvatarClick.current = false; return; }
+          setGesture("greeting"); setReactionKey(value => value + 1); controller.togglePanel();
+        }}>
+        {shown ? <PlanetMascotAvatar src={mascotImage} mood={snapshot.completedRoute ? "celebrate" : snapshot.mode === "tour" ? "guiding" : "idle"}
+          lookAt={pointerLook ?? guidedLook} interaction={gesture === "rest" && open && highlight ? "pointing" : gesture}
+          reactionKey={reactionKey} active={snapshot.available} /> : name}
       </button>
       {shown && <div className="planet-mascot-controls__tools">
         <button type="button" data-planet-mascot-move="" className="planet-mascot-controls__move"
@@ -258,12 +344,14 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
           onPointerDown={event => {
             if (!event.isPrimary || event.button !== 0) return;
             event.preventDefault(); event.currentTarget.focus({ preventScroll: true });
-            drag.current = { pointerId: event.pointerId, x: event.clientX, y: event.clientY, origin: petPosition };
+            drag.current = { pointerId: event.pointerId, x: event.clientX, y: event.clientY, origin: petPosition,
+              source: "handle", moved: true, element: event.currentTarget };
+            setGesture("dragging");
             event.currentTarget.setPointerCapture(event.pointerId);
           }} onPointerMove={event => {
             const intent = drag.current; if (!intent || intent.pointerId !== event.pointerId) return;
             event.preventDefault(); move({ left: intent.origin.left + event.clientX - intent.x, top: intent.origin.top + event.clientY - intent.y });
-          }} onPointerUp={endDrag} onPointerCancel={endDrag} onLostPointerCapture={() => { drag.current = null; }}
+          }} onPointerUp={endDrag} onPointerCancel={endDrag} onLostPointerCapture={() => { drag.current = null; setGesture("rest"); }}
           onKeyDown={event => {
             if (event.key === "Home") { event.preventDefault(); onPositionChange(null); return; }
             const direction = arrowDirections[event.key];
@@ -275,13 +363,15 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
           aria-label={ru ? "Скрыть помощника" : "Hide the companion"} title={ru ? "Скрыть" : "Hide"}>
           <span aria-hidden="true">×</span></button>
         <span id={`${id}-move`} className="planet-mascot-controls__sr-only">
-          {ru ? "Перетащите кнопку или нажимайте стрелки. Home возвращает исходное положение."
-            : "Drag this button or use the arrow keys. Home restores the default position."}
+          {ru ? "Нажмите на Книжулика для подсказок или перетащите его за фигурку. Для перемещения с клавиатуры используйте кнопку со стрелками. Home возвращает исходное положение."
+            : "Tap Mr. Booky for tips or drag the character to move him. Use the arrow button for keyboard movement. Home restores the default position."}
         </span>
       </div>}
       {open && <section ref={card} id={id} role="region" aria-labelledby={`${id}-title`} data-planet-mascot-panel=""
         className="planet-mascot-controls__panel" style={{ left: cardPosition.left, top: cardPosition.top,
           width: cardWidth, maxHeight: maxCardHeight }}>
+        <div className="planet-mascot-controls__leaf" data-planet-mascot-leaf={pageTurn}
+          style={pageTurn ? { animationName: pageTurn % 2 ? "booky-leaf-reveal-a" : "booky-leaf-reveal-b" } : undefined}>
         <header className="planet-mascot-controls__heading">
           <h2 id={`${id}-title`} ref={heading} tabIndex={-1}>{name}</h2>
           <button type="button" data-planet-mascot-collapse="" onClick={() => controller.togglePanel()}
@@ -332,6 +422,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
             ))}
           </div>
         </>}
+        </div>
       </section>}
     </div>
   </>;

@@ -1,0 +1,19 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/typescript/bin/tsc",
+    "--noEmit"
+  ],
+  "exitCode": 2,
+  "durationMs": 26740,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/booky-live-character-20260920/static-a1/stdout.log",
+    "bytes": 342,
+    "sha256": "0e5bde0aa69e4af7e21846c4c8b9e50fd382c4bd2bcd5a1bf4d8ff842326e462"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/booky-live-character-20260920/static-a1/stderr.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

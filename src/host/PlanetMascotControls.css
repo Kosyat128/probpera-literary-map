@@ -2,7 +2,7 @@
   position: fixed;
   z-index: 1050;
   box-sizing: border-box;
-  width: 156px;
+  width: 176px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,7 +10,7 @@
   color: #243328;
   font: 14px/1.45 var(--sans, sans-serif);
   isolation: isolate;
-  --planet-mascot-avatar-size: 140px;
+  --planet-mascot-avatar-size: 160px;
 }
 .planet-mascot-controls[data-planet-mascot-visibility="hidden"] { width: max-content; max-width: calc(100vw - 24px); }
 .planet-mascot-controls button {
@@ -42,7 +42,10 @@
   border: 0;
   border-radius: 22px;
   background: transparent;
+  touch-action: none;
+  cursor: grab;
 }
+.planet-mascot-controls[data-planet-mascot-gesture="dragging"] .planet-mascot-controls__avatar-button { cursor: grabbing; }
 .planet-mascot-controls .planet-mascot-controls__avatar-button:hover { background: #fff9e92b; }
 .planet-mascot-controls__show { box-shadow: 0 3px 14px #17112430; }
 .planet-mascot-controls__tools { display: flex; justify-content: center; gap: 6px; }
@@ -100,6 +103,21 @@
   pointer-events: none;
 }
 .planet-mascot-controls__panel p { margin: 12px 0; overflow-wrap: anywhere; }
+.planet-mascot-controls__leaf {
+  transform-origin: 0 50%;
+  animation-duration: 220ms;
+  animation-timing-function: ease-out;
+  animation-iteration-count: 1;
+}
+/* Only deliberate page changes animate; reading and background state are still. */
+@keyframes booky-leaf-reveal-a {
+  from { opacity: .65; transform: perspective(800px) rotateY(-7deg) translateX(4px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes booky-leaf-reveal-b {
+  from { opacity: .65; transform: perspective(800px) rotateY(-7deg) translateX(4px); }
+  to { opacity: 1; transform: none; }
+}
 .planet-mascot-controls__panel button {
   border-radius: 6px;
   font: 600 14px/1.35 "Source Sans 3 Local", var(--sans, sans-serif);
@@ -142,7 +160,7 @@
   border: 0;
 }
 @media (max-width: 640px), (max-height: 540px) {
-  .planet-mascot-controls { width: 104px; --planet-mascot-avatar-size: 64px; }
+  .planet-mascot-controls { width: 112px; --planet-mascot-avatar-size: 88px; }
   .planet-mascot-controls__panel { padding: 18px 16px 18px 22px; border-radius: 4px 18px 6px 4px; font-size: 16px; }
   .planet-mascot-controls__panel::before { left: 10px; }
   .planet-mascot-controls__heading h2 { font-size: 23px; }
@@ -150,4 +168,5 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .planet-mascot-controls *, .planet-mascot-highlight { scroll-behavior: auto; }
+  .planet-mascot-controls__leaf { animation: none !important; }
 }

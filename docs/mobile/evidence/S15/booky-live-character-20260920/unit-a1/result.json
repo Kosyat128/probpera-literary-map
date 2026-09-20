@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "mode": "unit",
+  "attempt": "a1",
+  "startedAt": "2026-09-20T05:27:38.672Z",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-live-character-20260920/source-manifests/a560c0172b217a12.json",
+    "sha256": "a560c0172b217a128ddf41b8588f71ab9a2850c34faeeeb3b472a32e89e5de64",
+    "fileCount": 92
+  },
+  "checkInputs": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-live-character-20260920/check.mjs",
+      "sha256": "5d26fe2f0db75813e00c8f5f65899a6153735b4aac0500a0cb26eecf182acbc5"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-live-character-20260920/entry.json",
+      "sha256": "da699eff72ad3401939b61784bf5333fd19ef6468fc134518db5f8c081b24505"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-live-character-20260920/unit.config.mjs",
+      "sha256": "e48144e02446880022e060de6605c135bbd1789b8043593cfb604abe0a9a54c4"
+    },
+    {
+      "path": "src/host/bookyModel.test.ts",
+      "sha256": "34212253315d445c0f3885cf7e5a6ec3156e7dc64f47f4bfc787958163520038"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "tests": {
+    "passed": 2,
+    "failed": 1,
+    "skipped": 0
+  },
+  "reportError": "The expression evaluated to a falsy value:\n\n  assert.ok(cases.every(item => item.status === 'passed'))\n",
+  "pass": false,
+  "execution": {
+    "exitCode": 1,
+    "durationMs": 4815
+  },
+  "stageAccepted": false,
+  "artAccepted": false,
+  "releaseReady": false
+}
