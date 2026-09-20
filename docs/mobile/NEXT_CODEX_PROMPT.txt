@@ -1,3 +1,12 @@
+<!-- s04-native-locale-20260920:begin -->
+Source 3b3ad09c adds foreground Android language refresh while retaining explicit/saved preference priority and the existing scene.
+170 cases in four selected suites, TypeScript, one controlled-native actual-App Chrome case and one PWA offline smoke pass. This is not an installed Android OS-language or system-settings test.
+S04.BIL-018 changes OPEN to IN_PROGRESS; every other criterion and all stage statuses remain unchanged. Existing inventory is reused with current source hashes: 29 required / 12 source-bound / zero accepted, plus three owner additions.
+PWA 0aeec9eb; Android-dev a2cb29ef. Evidence: evidence/S04/native-locale-20260920/result.json.
+Stages remain 3 complete, 11 in progress, 27 unstarted; first open S03.
+Continue the full application plan from the next bounded internal requirement. Preserve live foreground language refresh, confirmed-absence and explicit/saved-choice priority, one canonical language provider, the joint stand/background draft and existing scene. Reuse unchanged catalog/geometry/art evidence. Real Android system-language surfaces and installed-device behavior, full accessories/audio/catalog, child, screen-reader, art/lightmaps, iOS and release gates remain open; do not repeat valid checks of unchanged inputs.
+<!-- s04-native-locale-20260920:end -->
+
 <!-- s13-combined-preview-20260920:begin -->
 Source b63112bb preserves one joint stand/background draft across tabs and applies/cancels both parts together.
 22 controller cases, TypeScript, one selected actual Chrome case and one PWA offline smoke pass. Other browser fixtures and geometry suites were not rerun.

@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S04/native-locale-20260920/pwa.config.mjs"
+  ],
+  "exitCode": 0,
+  "durationMs": 17799,
+  "stdout": {
+    "path": "docs/mobile/evidence/S04/native-locale-20260920/pwa-a1/browser-stdout.log",
+    "bytes": 189,
+    "sha256": "b711e3827a5039434e3c86bce24ed88ce9f34252641901346d9e442319c28951"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S04/native-locale-20260920/pwa-a1/browser-stderr.log",
+    "bytes": 164,
+    "sha256": "e98136040f670f29f5d49413f1e28ded61c79822eb3ff830d7d2d8d07d24fa7d"
+  }
+}

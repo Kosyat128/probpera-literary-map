@@ -1,0 +1,151 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=docs/mobile/evidence/S04/native-locale-20260920/playwright.config.mjs"
+    ],
+    "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S04\\native-locale-20260920\\playwright.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s04-locale/browser-a1",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "native-foreground-language.spec.mjs"
+        ],
+        "timeout": 150000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S04\\native-locale-20260920\\browser-a1\\playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "native-foreground-language.spec.mjs",
+      "file": "native-foreground-language.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "foreground OS locale follows confirmed absence while explicit and saved choices retain the live scene",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 5743,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 7\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"key\": \"probpera-planet-recent-adult-v1\",\u001b[39m\n\u001b[31m+     \"operation\": \"set\",\u001b[39m\n\u001b[31m+     \"value\": \"{\\\"v\\\":1,\\\"entries\\\":[{\\\"kind\\\":\\\"writer\\\",\\\"countryId\\\":\\\"russia\\\",\\\"writerId\\\":\\\"dostoevsky\\\",\\\"openedAt\\\":1789865027982}]}\",\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+ ]\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 7\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"key\": \"probpera-planet-recent-adult-v1\",\u001b[39m\n\u001b[31m+     \"operation\": \"set\",\u001b[39m\n\u001b[31m+     \"value\": \"{\\\"v\\\":1,\\\"entries\\\":[{\\\"kind\\\":\\\"writer\\\",\\\"countryId\\\":\\\"russia\\\",\\\"writerId\\\":\\\"dostoevsky\\\",\\\"openedAt\\\":1789865027982}]}\",\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+ ]\u001b[39m\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\native-foreground-language.spec.mjs:232:86",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\native-foreground-language.spec.mjs",
+                      "column": 86,
+                      "line": 232
+                    },
+                    "snippet": "  230 |     await locale(page, \"ru\"); expect(memory.has(LANGUAGE_KEY)).toBe(false);\n  231 |     await sample(page, true); const baseline = await stable(page);\n> 232 |     expect(baseline.platform.languages).toEqual([\"ru-RU\"]); expect(fixture.writes()).toEqual([]);\n      |                                                                                      ^\n  233 |     result.observations.push({ label: \"absent-preference-russian-bootstrap\", ...baseline });\n  234 |\n  235 |     await resume(fixture, \"en-US\"); await locale(page, \"en\");"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\native-foreground-language.spec.mjs",
+                        "column": 86,
+                        "line": 232
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 7\u001b[39m\n\n\u001b[32m- Array []\u001b[39m\n\u001b[31m+ Array [\u001b[39m\n\u001b[31m+   Object {\u001b[39m\n\u001b[31m+     \"key\": \"probpera-planet-recent-adult-v1\",\u001b[39m\n\u001b[31m+     \"operation\": \"set\",\u001b[39m\n\u001b[31m+     \"value\": \"{\\\"v\\\":1,\\\"entries\\\":[{\\\"kind\\\":\\\"writer\\\",\\\"countryId\\\":\\\"russia\\\",\\\"writerId\\\":\\\"dostoevsky\\\",\\\"openedAt\\\":1789865027982}]}\",\u001b[39m\n\u001b[31m+   },\u001b[39m\n\u001b[31m+ ]\u001b[39m\n\n  230 |     await locale(page, \"ru\"); expect(memory.has(LANGUAGE_KEY)).toBe(false);\n  231 |     await sample(page, true); const baseline = await stable(page);\n> 232 |     expect(baseline.platform.languages).toEqual([\"ru-RU\"]); expect(fixture.writes()).toEqual([]);\n      |                                                                                      ^\n  233 |     result.observations.push({ label: \"absent-preference-russian-bootstrap\", ...baseline });\n  234 |\n  235 |     await resume(fixture, \"en-US\"); await locale(page, \"en\");\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\native-foreground-language.spec.mjs:232:86"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-20T00:43:45.025Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "foreground-language-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s04-locale\\browser-a1\\native-foreground-language-d8bf5-oices-retain-the-live-scene\\attachments\\foreground-language-source-evidence-52a2ab681f6aa0390029801b40fecbbf38249f05.json"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s04-locale\\browser-a1\\native-foreground-language-d8bf5-oices-retain-the-live-scene\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\native-foreground-language.spec.mjs",
+                    "column": 86,
+                    "line": 232
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "974bf70d7f5863f82dc1-6b8dd9895794dd2aff99",
+          "file": "native-foreground-language.spec.mjs",
+          "line": 226,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-20T00:43:44.529Z",
+    "duration": 6923.897000000001,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}
