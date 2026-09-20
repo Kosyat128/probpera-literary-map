@@ -1,3 +1,11 @@
+<!-- s15-booky-offline-20260920:begin -->
+Source 707044e7: adult Booky explains offline/unknown/loading/error state and offers explicit recovery. Bounded canonical split-entry retries fix the real source-fixture error preserved in browser-a1; no automatic navigation or connectivity-based success claim.
+114 selected tests, TypeScript, 5 actual-App Chrome cases, 5 inspected views and local PWA b0e03c47 / Android-dev ddfbd43c bind this source. Built-PWA coverage remains offline/download smoke; 86 protected inputs stay exact.
+Only S15.PLANETKA-005/global005 become IN_PROGRESS. Stages remain 3 complete, 12 in progress, 26 unstarted; first unresolved S03.acceptance; releaseReady:false. All former Planetka functions remain Booky scope.
+Evidence: evidence/S15/booky-offline-help-20260920/result.json.
+Continue S15 with versioned adult semantic progress for the two existing navigation routes: persist only explicitly acknowledged steps; migrate v1 to v2 strictly without inferring completed steps; preserve progress when Booky is hidden; provide explicit reset; and never overwrite an unsupported future record version. Keep restore closed and resume deliberate, without automatic navigation or restored permissions. Preserve offline/error recovery, the canonical scene and bounded split-module retry facades. This remains adult navigation progress only: full literary/educational journeys, child scenarios, reviewed dialogue/audio, full migration, screen-reader, installed-device/performance, iOS and release acceptance remain pending. S03.acceptance remains first unresolved.
+<!-- s15-booky-offline-20260920:end -->
+
 <!-- s15-booky-resume-20260920:begin -->
 Source 94a6b778: adult Booky remembers explicit visibility and a semantic navigation-tour step. Cold restore leaves help closed and offers deliberate resume without automatic navigation or restored permissions. Failure/retry behavior is source-validated; child and literary journey progress remain pending.
 206 selected preference/controller/adapter cases, TypeScript, one actual-App Chrome case, 3 inspected views and local PWA 09964f68 / Android-dev 0eb3fe62 bind this source. Built-PWA coverage is the existing offline/download smoke. 83 protected scene/model/art inputs stay exact; original failed attempts remain preserved.

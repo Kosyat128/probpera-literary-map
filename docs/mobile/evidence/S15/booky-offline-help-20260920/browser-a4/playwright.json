@@ -1,0 +1,282 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=docs/mobile/evidence/S15/booky-offline-help-20260920/playwright.config.mjs"
+    ],
+    "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-offline-help-20260920\\playwright.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-offline/browser-a4",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "booky-support.spec.mjs"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-offline-help-20260920\\browser-a4\\playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "booky-support.spec.mjs",
+      "file": "booky-support.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "network support preserves the adult tour and scene across locales, narrow view and lifecycle changes without opening itself",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8510,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-20T07:19:27.811Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-support-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-offline\\browser-a4\\booky-support-network-supp-976e4-nges-without-opening-itself\\attachments\\booky-support-source-evidence-636671e352202b68268b28c2794e578c9b15f8b4.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "744eebdbd5516c7e281d-11b0f8882fe868f33051",
+          "file": "booky-support.spec.mjs",
+          "line": 353,
+          "column": 1
+        },
+        {
+          "title": "a real book chunk failure stays visible across network hints and only explicit recovery retries the collection",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7941,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-20T07:19:37.404Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-support-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-offline\\browser-a4\\booky-support-a-real-book--3c545-very-retries-the-collection\\attachments\\booky-support-source-evidence-47246f506ec61bb9f75f8e7c79a8e08af71f9f11.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "744eebdbd5516c7e281d-08e8468b2e00456c316e",
+          "file": "booky-support.spec.mjs",
+          "line": 429,
+          "column": 1
+        },
+        {
+          "title": "when both book entry fetches fail the companion keeps an honest error and explicitly returns to the retained globe",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7428,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-20T07:19:45.352Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-support-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-offline\\browser-a4\\booky-support-when-both-bo-c8fb4-turns-to-the-retained-globe\\attachments\\booky-support-source-evidence-83415a7cc354a00f3c2d026a7b9bb1a6421c29b6.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "744eebdbd5516c7e281d-f352f13b545fa019bf21",
+          "file": "booky-support.spec.mjs",
+          "line": 479,
+          "column": 1
+        },
+        {
+          "title": "a real country catalog failure reveals recovery before a globe exists and explicit retry mounts the canonical scene",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6315,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-20T07:19:52.787Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-support-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-offline\\browser-a4\\booky-support-a-real-count-5ab31--mounts-the-canonical-scene\\attachments\\booky-support-source-evidence-aa5003449d0bea8b407f613d37bb803924a05f63.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "744eebdbd5516c7e281d-96d4ee853c2cd02d3da3",
+          "file": "booky-support.spec.mjs",
+          "line": 523,
+          "column": 1
+        },
+        {
+          "title": "a real collection component failure retries its own distinct entry while reusing loaded books and the canonical globe",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8227,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-20T07:19:59.111Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-support-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-offline\\browser-a4\\booky-support-a-real-colle-792a9-oks-and-the-canonical-globe\\attachments\\booky-support-source-evidence-98ace3a0fd1ae40848c86845d8be1b9573063070.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "744eebdbd5516c7e281d-fe66a8a67b5ff6b459af",
+          "file": "booky-support.spec.mjs",
+          "line": 575,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-20T07:19:26.983Z",
+    "duration": 40396.511,
+    "expected": 5,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

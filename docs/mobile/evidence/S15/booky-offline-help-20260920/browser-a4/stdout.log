@@ -1,0 +1,11 @@
+
+Running 5 tests using 1 worker
+
+
+
+[1/5] tests\pwa\booky-support.spec.mjs:353:1 › network support preserves the adult tour and scene across locales, narrow view and lifecycle changes without opening itself
+[2/5] tests\pwa\booky-support.spec.mjs:429:1 › a real book chunk failure stays visible across network hints and only explicit recovery retries the collection
+[3/5] tests\pwa\booky-support.spec.mjs:479:1 › when both book entry fetches fail the companion keeps an honest error and explicitly returns to the retained globe
+[4/5] tests\pwa\booky-support.spec.mjs:523:1 › a real country catalog failure reveals recovery before a globe exists and explicit retry mounts the canonical scene
+[5/5] tests\pwa\booky-support.spec.mjs:575:1 › a real collection component failure retries its own distinct entry while reusing loaded books and the canonical globe
+  5 passed (40.4s)

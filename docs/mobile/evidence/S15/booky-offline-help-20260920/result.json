@@ -1,0 +1,837 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-20T07:23:53.744Z",
+  "sourceCommit": "707044e708cb5b0ce1b564b378cc5adffd574f12",
+  "stage": "S15",
+  "status": "ADULT_BOOKY_OFFLINE_HELP_SCOPED_VALIDATION",
+  "pass": true,
+  "entry": {
+    "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/entry.json",
+    "sha256": "ded66d72e54728619262c6f59e668d92d46c4f1b38d5335e9cf88bb99acec059"
+  },
+  "previous": {
+    "path": "docs/mobile/evidence/S15/booky-resume-preference-20260920/result.json",
+    "sha256": "3d0edd22449a1b686c2035350103b47b70051f9826e282968a3650b7da04fe52"
+  },
+  "checkpointHelper": {
+    "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-offline-help-20260920\\checkpoint.mjs",
+    "sha256": "f2a6b0cd61764ca2acc148dfee8725dfc7751b5b4a3f9fe814e3675e72b9a36c"
+  },
+  "ownerClarification": "All former Planetka functional requirements now belong to Knizhulyk / Mr. Booky. The optional separate live book replaces the character only. Child scenarios, reviewed dialogue, audio, educational journeys and full progress remain in scope; immutable PLANETKA IDs are retained.",
+  "attempts": {
+    "unit": "a4",
+    "static": "a4",
+    "browser": "a4",
+    "pwa": "a1",
+    "android": "a1"
+  },
+  "earlierAttempts": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/unit-a1/result.json",
+      "sha256": "d3af22d69cadf4e8e6d048698fae40ce3748b429a2fdd4dcb02f54c95df54d27",
+      "mode": "unit",
+      "attempt": "a1",
+      "pass": true,
+      "tests": {
+        "passed": 30,
+        "failed": 0,
+        "skipped": 0
+      },
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/source-manifests/92e7880b2da46fe3.json",
+        "sha256": "92e7880b2da46fe33e328fccc150f51af8caf0cbda17b0030de81782653baeab",
+        "fileCount": 95
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/unit-a1/execution.json",
+        "sha256": "3a3134093161206969ec463706d1f1e0b846f919f9e7c7cdaa67b2a73128f8bf"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/unit-a1/vitest.json",
+        "sha256": "60dce2297db8eaa95ef26476a687fcd813a1a5210c2363c3209a644470a81f2c"
+      },
+      "supersededSource": true,
+      "reason": "Earlier attempt retained unchanged. Only the explicitly selected final source-bound attempt counts as current validation."
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/unit-a2/result.json",
+      "sha256": "3cb9d8450af001556953557fa0f4feac547f35abca2b06e3b8bbc01d8b53c262",
+      "mode": "unit",
+      "attempt": "a2",
+      "pass": true,
+      "tests": {
+        "passed": 114,
+        "failed": 0,
+        "skipped": 0
+      },
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/source-manifests/e6cb825a2909d33f.json",
+        "sha256": "e6cb825a2909d33f8c9fd932031c089db9046ea9dbf49634688a81c651e42acd",
+        "fileCount": 97
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/unit-a2/execution.json",
+        "sha256": "933d90a935ed750f66c26a7609e1ee32af46419737b253a425a6a7ec0f2e072e"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/unit-a2/vitest.json",
+        "sha256": "f4f20738b302d99afab2b25db43dc72467885cb35260e0b1a8329117c2f91783"
+      },
+      "supersededSource": true,
+      "reason": "Earlier attempt retained unchanged. Only the explicitly selected final source-bound attempt counts as current validation."
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/unit-a3/result.json",
+      "sha256": "170271585c8e54cd5c747b61977b11cf4f456a9db867a724ab4615957d12b667",
+      "mode": "unit",
+      "attempt": "a3",
+      "pass": true,
+      "tests": {
+        "passed": 114,
+        "failed": 0,
+        "skipped": 0
+      },
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/source-manifests/f65101cd9b2cbd58.json",
+        "sha256": "f65101cd9b2cbd585ad1d8ea53023746973d7abfa0a02bed2027f380ecdcde0b",
+        "fileCount": 97
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/unit-a3/execution.json",
+        "sha256": "3f11543c14fdf5e5b28dc65df3fdefb2eec70750d6a08ee388ab5ac715cdcc5d"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/unit-a3/vitest.json",
+        "sha256": "7cd2d362d12a3061c21e253cbd499eef98b11cd3533d57447ca3afd6e9bcd527"
+      },
+      "supersededSource": true,
+      "reason": "Earlier attempt retained unchanged. Only the explicitly selected final source-bound attempt counts as current validation."
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/static-a1/result.json",
+      "sha256": "560754897c11ef68e648109d3cc99b52a6d9d6eda1c1be194f505c6b68c753fb",
+      "mode": "static",
+      "attempt": "a1",
+      "pass": true,
+      "tests": null,
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/source-manifests/92e7880b2da46fe3.json",
+        "sha256": "92e7880b2da46fe33e328fccc150f51af8caf0cbda17b0030de81782653baeab",
+        "fileCount": 95
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/static-a1/execution.json",
+        "sha256": "5261685f5931a9f8af2cce0d5528e3966c4da035878c2dc3c46076219c28eda0"
+      },
+      "rawReport": null,
+      "supersededSource": true,
+      "reason": "Earlier attempt retained unchanged. Only the explicitly selected final source-bound attempt counts as current validation."
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/static-a2/result.json",
+      "sha256": "341dceec365d5aedc6f6c9cef714a71f36b6f654a1c408842613162a9eef57a6",
+      "mode": "static",
+      "attempt": "a2",
+      "pass": true,
+      "tests": null,
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/source-manifests/e6cb825a2909d33f.json",
+        "sha256": "e6cb825a2909d33f8c9fd932031c089db9046ea9dbf49634688a81c651e42acd",
+        "fileCount": 97
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/static-a2/execution.json",
+        "sha256": "3cc462b7aa306a9323d6db3c07c40c60847c9e3fbb42642f7f2f82b0bf06b2df"
+      },
+      "rawReport": null,
+      "supersededSource": true,
+      "reason": "Earlier attempt retained unchanged. Only the explicitly selected final source-bound attempt counts as current validation."
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/static-a3/result.json",
+      "sha256": "48e87c005984afcbac97d77bae0704a009f9b09ca6be009e9d397840c9a3c21c",
+      "mode": "static",
+      "attempt": "a3",
+      "pass": true,
+      "tests": null,
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/source-manifests/f65101cd9b2cbd58.json",
+        "sha256": "f65101cd9b2cbd585ad1d8ea53023746973d7abfa0a02bed2027f380ecdcde0b",
+        "fileCount": 97
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/static-a3/execution.json",
+        "sha256": "4c1e9dab80ac441d0039fa38e9b4497940dff92cb819aab822bf0e9195de0e03"
+      },
+      "rawReport": null,
+      "supersededSource": true,
+      "reason": "Earlier attempt retained unchanged. Only the explicitly selected final source-bound attempt counts as current validation."
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/browser-a1/result.json",
+      "sha256": "c97d0e1af9c808b1ffa0eddcacc6922c1a2147486a1e94d1aee0e3828c714d33",
+      "mode": "browser",
+      "attempt": "a1",
+      "pass": false,
+      "tests": {
+        "passed": 1,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/source-manifests/92e7880b2da46fe3.json",
+        "sha256": "92e7880b2da46fe33e328fccc150f51af8caf0cbda17b0030de81782653baeab",
+        "fileCount": 95
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/browser-a1/execution.json",
+        "sha256": "bbab59da5b705ed25012ea7f2106468170440c58c1d9253414a9f610678ea86a"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/browser-a1/playwright.json",
+        "sha256": "a819e195ac721639bbc43c81a0bef44d00bf0f190a4ce31010ea35d163247063"
+      },
+      "supersededSource": true,
+      "reason": "Actual-App source Chrome preserved one passing network/lifecycle case and one failing real book-chunk recovery case. Reusing the failed primary module URL did not issue a new request. This product failure prompted the explicit bounded retry facade; the original report and captures remain unchanged.",
+      "browserAttachments": [
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-offline\\browser-a1\\booky-support-network-supp-976e4-nges-without-opening-itself\\attachments\\booky-support-source-evidence-a0697d9afae012b421f7c5a317a474cdb5a61a61.json",
+          "sha256": "1d78784ebb3e225a5189371329120bbe8d1aaf60d6cc176c791fceffbf978bda"
+        },
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-offline\\browser-a1\\booky-support-a-real-book--3c545-very-retries-the-collection\\attachments\\booky-support-source-evidence-2dc45a5eb9dc6d8ee0cbac93bb1585d578d8ab3b.json",
+          "sha256": "9c89d5be05aa3a1a2f2e1a43cadd7665358a48320b766427e87a55bfdbbbcd4c"
+        }
+      ]
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/browser-a2/result.json",
+      "sha256": "3f939ca8354203526839f1044daf3ea701b67148415ac2f04d8424ce8a6a015d",
+      "mode": "browser",
+      "attempt": "a2",
+      "pass": false,
+      "tests": {
+        "passed": 4,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/source-manifests/e6cb825a2909d33f.json",
+        "sha256": "e6cb825a2909d33f8c9fd932031c089db9046ea9dbf49634688a81c651e42acd",
+        "fileCount": 97
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/browser-a2/execution.json",
+        "sha256": "5cdcdf0cd8558cb304174cadf9fb4b3b17807c7403ed317462f0a37a49135280"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/browser-a2/playwright.json",
+        "sha256": "c2e98fe5e0c9544c52ded2b819ad5989dcf11eb415fb9d306ba500fe204ab92d"
+      },
+      "supersededSource": true,
+      "reason": "Actual-App source Chrome preserved four passing cases and one real 320px UI failure in collection-component recovery. The Booky card header intercepted pointer events on the visible EN language button, so locale switching timed out. The product fix reserves the native header/language area in the available card height; the original failed report and all captures remain unchanged.",
+      "browserAttachments": [
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-offline\\browser-a2\\booky-support-network-supp-976e4-nges-without-opening-itself\\attachments\\booky-support-source-evidence-e684d51575e06fc4fd673199243e406312546b21.json",
+          "sha256": "5a5bbc539a4526c1c188fe72bf75a170a1c9b5d7b1b73b5249207f4c9a09f481"
+        },
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-offline\\browser-a2\\booky-support-a-real-book--3c545-very-retries-the-collection\\attachments\\booky-support-source-evidence-997920bc6a3cc782a8f570ec4fb90c3d20e9baa8.json",
+          "sha256": "6151f6fcfb96848c15d1cd438a38f57f6e19305378f8a1f172f8fa93dd215480"
+        },
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-offline\\browser-a2\\booky-support-when-both-bo-c8fb4-turns-to-the-retained-globe\\attachments\\booky-support-source-evidence-a2d52b7bc9fc728552ef1090243bcb1f4d417dee.json",
+          "sha256": "e5a7057601a6d94e94077a5c9525943bf0bb617d7226131dc6292963c2c7b8b0"
+        },
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-offline\\browser-a2\\booky-support-a-real-count-5ab31--mounts-the-canonical-scene\\attachments\\booky-support-source-evidence-8f4873d03673a5c7a415fcaa978c6e5750595977.json",
+          "sha256": "97e1788f9844c285a62d0621561a0c27b81540805f09bc570268641b4afd47a5"
+        },
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-offline\\browser-a2\\booky-support-a-real-colle-792a9-oks-and-the-canonical-globe\\attachments\\booky-support-source-evidence-428ca64689b6e66eb6a0a032c168082e9c7c8b13.json",
+          "sha256": "3321f2962d8a4420b47a30e77df6c4e2156a24851496db6dce3ea9fff7d5f8c8"
+        }
+      ]
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/browser-a3/result.json",
+      "sha256": "9afb9a5dfffc3c7b3ac6f60cfe38744414e8127c7b19320c4d29272aa442f14f",
+      "mode": "browser",
+      "attempt": "a3",
+      "pass": true,
+      "tests": {
+        "passed": 5,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/source-manifests/f65101cd9b2cbd58.json",
+        "sha256": "f65101cd9b2cbd585ad1d8ea53023746973d7abfa0a02bed2027f380ecdcde0b",
+        "fileCount": 97
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/browser-a3/execution.json",
+        "sha256": "a5e6d8166afc97867a4384f145ff6a81cd73f6087ca4d701efb7552504228531"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/browser-a3/playwright.json",
+        "sha256": "0a5067bae98ecdb9867200eb065cc40b6cc3737d5809b4281e5c11bbf0bfc6ed"
+      },
+      "supersededSource": true,
+      "reason": "All five browser cases passed on this historical source, but inspection of the country-error screenshot found transient card/avatar overlap. Visual QA superseded this passing run; the source and fixture were refined to wait for fonts and two stable non-overlapping layout samples. Keep pass:true and the original report/captures; only the later final run supports current validation.",
+      "browserAttachments": [
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-offline\\browser-a3\\booky-support-network-supp-976e4-nges-without-opening-itself\\attachments\\booky-support-source-evidence-084f26387755a70310e564c5b2b68a0562d8fe33.json",
+          "sha256": "e795b6c3255242efdc7043cd9e7e058f12adf02514ff70fb3489a38b2b353fab"
+        },
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-offline\\browser-a3\\booky-support-a-real-book--3c545-very-retries-the-collection\\attachments\\booky-support-source-evidence-2e3eee48c41c7faa252bdb58af0d4aae8540ba21.json",
+          "sha256": "4d9c5c5ba737e7e70001c20e4e8464c3980d122487ed24b8987b9f194cfd47e4"
+        },
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-offline\\browser-a3\\booky-support-when-both-bo-c8fb4-turns-to-the-retained-globe\\attachments\\booky-support-source-evidence-bc992859d7fb57535be3288f3d87c03a3330ddf8.json",
+          "sha256": "7cc1f8c11ff60a0c7d8ca77fcb7b9db5f63de2623a3dd5216de737cb6a91e557"
+        },
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-offline\\browser-a3\\booky-support-a-real-count-5ab31--mounts-the-canonical-scene\\attachments\\booky-support-source-evidence-dc08fc006157c91990c1f4013ed3d982dfb61f73.json",
+          "sha256": "67f2d5dcda3545f7f297453b99e3dece219431ada61e94e5d49acac734a2a4d9"
+        },
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-offline\\browser-a3\\booky-support-a-real-colle-792a9-oks-and-the-canonical-globe\\attachments\\booky-support-source-evidence-90a97b15d589d01760b8f5690ac3912e1fc078ee.json",
+          "sha256": "b5f8d25be5e54211b62526b043b74633036ad7fe79942ba10a3d420753d18659"
+        }
+      ]
+    }
+  ],
+  "runs": {
+    "unit": {
+      "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/unit-a4/result.json",
+      "sha256": "1c9116c50ceeb9b333311eeda4731fa9c424365f8b29159146dfd668b363a0a9",
+      "tests": {
+        "passed": 114,
+        "failed": 0,
+        "skipped": 0
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/unit-a4/execution.json",
+        "sha256": "918ccd457221ee6e8b862350517db27da17c4a369e1b6d15e7d7af695fb0e110"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/unit-a4/vitest.json",
+        "sha256": "988073653efe5f5fdf061ed5aa7e50155bd62eabfea36b83c2448ad91efd4959"
+      }
+    },
+    "static": {
+      "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/static-a4/result.json",
+      "sha256": "21e8f1d22e3edf70500e8957b4a0aa959e20408968391d352f9c13b34e7d1662",
+      "tests": null,
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/static-a4/execution.json",
+        "sha256": "427eb414f683265dd12a67d09d88aeff16ad6a688a99fc0909e857156919d9ba"
+      },
+      "rawReport": null
+    },
+    "browser": {
+      "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/browser-a4/result.json",
+      "sha256": "474b59b31d4e3339b938386d62058cd43d61c8979537a8e7b4a7fe8a60623d18",
+      "tests": {
+        "passed": 5,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/browser-a4/execution.json",
+        "sha256": "40d8b98cf8fabcd097d8d2de51e6c0c85ff1f436d33ab2d22f19d760d688ac61"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/browser-a4/playwright.json",
+        "sha256": "243caf7329879767958e906655ce39018b853619a35d5ef004269f094d87860d"
+      }
+    }
+  },
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/source-manifests/ae117ef7a520c064.json",
+    "sha256": "ae117ef7a520c0647d6eb6628338b45b2542415df64379cd5b230fd84bd51546",
+    "fileCount": 97
+  },
+  "unitCount": 114,
+  "unitFiles": [
+    "src/host/bookySupport.test.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascotPersistence.test.ts",
+    "src/loading/stage5LoadingGraph.test.ts",
+    "src/loading/bookArchiveRuntime.test.ts",
+    "scripts/mobile/pwa-artifact.test.mjs"
+  ],
+  "browserCases": 5,
+  "actualAppCaptures": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-offline\\browser-a4\\booky-support-a-real-book--3c545-very-retries-the-collection\\booky-support.json",
+      "sha256": "99118d2e3d1861b74ac3238ca08c152bd0787aad8d853570bb462098508825cd"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-offline\\browser-a4\\booky-support-a-real-colle-792a9-oks-and-the-canonical-globe\\booky-support.json",
+      "sha256": "be502092a3723cb9d36c0608bc8a04a46a28940c2363fc3806f23c2141fb22ff"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-offline\\browser-a4\\booky-support-a-real-count-5ab31--mounts-the-canonical-scene\\booky-support.json",
+      "sha256": "45bb2664ddbeecff95b7840001d914a0b058169913f15f1eef6b28e7e5e6aaa0"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-offline\\browser-a4\\booky-support-network-supp-976e4-nges-without-opening-itself\\booky-support.json",
+      "sha256": "1f2041cb594b8eb86087609ecfbfe15d5fc5b2e285a7e96ea4d4c0bf70c7ca17"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-offline\\browser-a4\\booky-support-when-both-bo-c8fb4-turns-to-the-retained-globe\\booky-support.json",
+      "sha256": "26ed66e8129fe503456115caefa4f628380dac1681630be917b9d3a26c56a487"
+    }
+  ],
+  "browserAttachments": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-offline\\browser-a4\\booky-support-a-real-book--3c545-very-retries-the-collection\\attachments\\booky-support-source-evidence-47246f506ec61bb9f75f8e7c79a8e08af71f9f11.json",
+      "sha256": "99118d2e3d1861b74ac3238ca08c152bd0787aad8d853570bb462098508825cd"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-offline\\browser-a4\\booky-support-a-real-colle-792a9-oks-and-the-canonical-globe\\attachments\\booky-support-source-evidence-98ace3a0fd1ae40848c86845d8be1b9573063070.json",
+      "sha256": "be502092a3723cb9d36c0608bc8a04a46a28940c2363fc3806f23c2141fb22ff"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-offline\\browser-a4\\booky-support-a-real-count-5ab31--mounts-the-canonical-scene\\attachments\\booky-support-source-evidence-aa5003449d0bea8b407f613d37bb803924a05f63.json",
+      "sha256": "45bb2664ddbeecff95b7840001d914a0b058169913f15f1eef6b28e7e5e6aaa0"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-offline\\browser-a4\\booky-support-network-supp-976e4-nges-without-opening-itself\\attachments\\booky-support-source-evidence-636671e352202b68268b28c2794e578c9b15f8b4.json",
+      "sha256": "1f2041cb594b8eb86087609ecfbfe15d5fc5b2e285a7e96ea4d4c0bf70c7ca17"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-offline\\browser-a4\\booky-support-when-both-bo-c8fb4-turns-to-the-retained-globe\\attachments\\booky-support-source-evidence-83415a7cc354a00f3c2d026a7b9bb1a6421c29b6.json",
+      "sha256": "26ed66e8129fe503456115caefa4f628380dac1681630be917b9d3a26c56a487"
+    }
+  ],
+  "attachmentBytesMatchOriginal": true,
+  "validatedBehavior": {
+    "realSplitChunkFailure": true,
+    "networkHintsCannotClearContentError": true,
+    "explicitRetryLoadsCanonicalCollection": true,
+    "distinctBoundedRetryUrl": true,
+    "canonicalBookDependenciesShared": true,
+    "noAutomaticRetry": true,
+    "sameCanonicalSceneWithinLoad": true,
+    "noAutomaticNavigationDuringRecovery": true,
+    "narrowErrorFits": true,
+    "noAppearanceWrites": true,
+    "realCollectionComponentFailure": true,
+    "explicitRetryLoadsCanonicalComponent": true,
+    "distinctBoundedComponentRetryUrl": true,
+    "canonicalComponentDependenciesShared": true,
+    "loadedBookDataReusedWithoutRefetch": true,
+    "realCountryCatalogFailure": true,
+    "errorRevealedBeforeGlobeMount": true,
+    "noInitialSceneRetentionClaim": true,
+    "explicitRetryMountsCanonicalGlobe": true,
+    "distinctBoundedCountryRetryUrl": true,
+    "canonicalCountryDependenciesShared": true,
+    "supportOnlyInsideExplicitOpenPanel": true,
+    "localeAndNarrowViewRetainTour": true,
+    "offlineUnknownOnlineDoNotChangePreferences": true,
+    "hiddenAndCollapsedStayClosed": true,
+    "backgroundClosesAndResumeDoesNotReopen": true,
+    "explicitHideIsOnlyBookyWrite": true,
+    "canonicalSceneAndSelectionRetained": true,
+    "noEndpointReachabilityClaim": true,
+    "realPrimaryAndRetryChunkFailures": true,
+    "persistentFailureStaysHonest": true,
+    "explicitReturnUsesCanonicalGlobe": true,
+    "noSuccessfulCollectionClaim": true,
+    "languageControlsUncoveredAt320px": true,
+    "stableCardAndAvatarDoNotOverlapAt320px": true
+  },
+  "visualReview": {
+    "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/visual-review.json",
+    "sha256": "9c7c4f392b614b097e1242ff8a31deb62ed2e1a52425bc7990a823d4b23b974b"
+  },
+  "inspectedImageCount": 5,
+  "protectedInputCount": 86,
+  "preservedInputsVerified": true,
+  "gitIdentityDifferences": [
+    {
+      "commit": "96073450baa71e5c364d622509a156624b2c767a",
+      "path": "src/books/bookDossierProgress.ts",
+      "gitBlobSha256": "5e1b108a71ef7b5b9652a2812483e4ce8f467c3a4178f83867a4cf8c62b25b2d",
+      "checkedOutSha256": "503d6b7c9e26da19aee4162c8fc67fa92ad9e09bb08caac97fcd23b795e557dc",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "96073450baa71e5c364d622509a156624b2c767a",
+      "path": "src/community/AuthContext.tsx",
+      "gitBlobSha256": "456018e469c55fd5a96733051c35ea6dafd0aba9cdd44424d866b0bfb67fe98d",
+      "checkedOutSha256": "979334217af2f29388af0955c081487215f6a3aeb540a07a2ba1c7920fa759b3",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "96073450baa71e5c364d622509a156624b2c767a",
+      "path": "src/components/InterfaceLanguageControl.tsx",
+      "gitBlobSha256": "070b05369e6a5eb1d4c2fc6181466dcbe0f700b3ca4b620fba39403734fcc23d",
+      "checkedOutSha256": "69019e0441573d8ea4dd4377ae6dbbd5d3017c5cdd28810bd49942c09f4be293",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "96073450baa71e5c364d622509a156624b2c767a",
+      "path": "src/components/globeAssetCache.ts",
+      "gitBlobSha256": "1845fb402d344596c3d8e4ad9dcafebc7e4d8d4c915bea84a1081ee275d90a36",
+      "checkedOutSha256": "009f4f6516428c46848cffbecf7c3d3bb0be2b4c1d5989ef8743ecfb4a068987",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "96073450baa71e5c364d622509a156624b2c767a",
+      "path": "src/components/globeEditions.ts",
+      "gitBlobSha256": "645dcbc48918d62d1c54834c3914908e03540746083b704c5bfcf484960e7657",
+      "checkedOutSha256": "b7440b6278979deb1e47738572460869202f0d9cf794a144aceac9dbcf8cdd77",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "96073450baa71e5c364d622509a156624b2c767a",
+      "path": "src/components/globeFocusMath.ts",
+      "gitBlobSha256": "f62688a99d5a521e5aff729f3877f813f9bd81e16be2d33be4a25e8e8d220822",
+      "checkedOutSha256": "1dd511d8e47620f73cb72a2e41755256fc0d18679b3e72c4a586b86432c8b30a",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "96073450baa71e5c364d622509a156624b2c767a",
+      "path": "src/components/globeInteraction.ts",
+      "gitBlobSha256": "67e511b4c7e5c59ec21a95076584476c8601b900b101082a0bf5ab9bd567fd15",
+      "checkedOutSha256": "f60c2d336147e899bdec7f2836df68d8360071aac1cd514d46d871c7ebdf6fb3",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "96073450baa71e5c364d622509a156624b2c767a",
+      "path": "src/index.css",
+      "gitBlobSha256": "d480821e133d194983370c8ec9c2e27a36d2fbcf13224bf91acdc8e5b7e9a574",
+      "checkedOutSha256": "abeefa5620f8589d0e0f34d38120970315df8f95a0e7d5009d21222e932e5a35",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "96073450baa71e5c364d622509a156624b2c767a",
+      "path": "src/lib/supabase.ts",
+      "gitBlobSha256": "6d28f0c6ff2dcb8f8424452180396822b700ada95ac9d745dc8d3001ffa2d183",
+      "checkedOutSha256": "6ad4bd4b96e39be319a966397e6bd0d41c0c7d741ec2b6c3ca201483c73f42cd",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "96073450baa71e5c364d622509a156624b2c767a",
+      "path": "src/pwa/PwaAccessBoundary.tsx",
+      "gitBlobSha256": "7f868943bd3f8b4a2b42f574d99a5ac7f6826e0cd93a9be34dc0cfa04e432b81",
+      "checkedOutSha256": "5da9ec472f3bd16b1493cb44601bf1e3f74d09245e05ba8446cf9d280bee6b80",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "96073450baa71e5c364d622509a156624b2c767a",
+      "path": "src/pwa/pwa.css",
+      "gitBlobSha256": "f3e9d1b320700106edbdaeb944c28e7d5b58281de6ebe872f7d62d6bb258cb66",
+      "checkedOutSha256": "b62dca25c5bec2a1df94347b0c7d9c043678ace42802ccba516cce326ca95f31",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "707044e708cb5b0ce1b564b378cc5adffd574f12",
+      "path": "package-lock.json",
+      "gitBlobSha256": "b65e60d33c363e8faae99defca10dbcdcfc5172b2d848604972bd5f40e0a83c1",
+      "checkedOutSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "707044e708cb5b0ce1b564b378cc5adffd574f12",
+      "path": "package.json",
+      "gitBlobSha256": "b9fd2f704d61ece5d7ad00bdb8b1e9ba7eb360a1242322d5ad5142805e056636",
+      "checkedOutSha256": "90b392c205754f838b8bc7c4475bd475936be1078561bb218c437d151177869f",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "707044e708cb5b0ce1b564b378cc5adffd574f12",
+      "path": "src/books/bookDossierProgress.ts",
+      "gitBlobSha256": "5e1b108a71ef7b5b9652a2812483e4ce8f467c3a4178f83867a4cf8c62b25b2d",
+      "checkedOutSha256": "503d6b7c9e26da19aee4162c8fc67fa92ad9e09bb08caac97fcd23b795e557dc",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "707044e708cb5b0ce1b564b378cc5adffd574f12",
+      "path": "src/community/AuthContext.tsx",
+      "gitBlobSha256": "456018e469c55fd5a96733051c35ea6dafd0aba9cdd44424d866b0bfb67fe98d",
+      "checkedOutSha256": "979334217af2f29388af0955c081487215f6a3aeb540a07a2ba1c7920fa759b3",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "707044e708cb5b0ce1b564b378cc5adffd574f12",
+      "path": "src/components/InterfaceLanguageControl.tsx",
+      "gitBlobSha256": "070b05369e6a5eb1d4c2fc6181466dcbe0f700b3ca4b620fba39403734fcc23d",
+      "checkedOutSha256": "69019e0441573d8ea4dd4377ae6dbbd5d3017c5cdd28810bd49942c09f4be293",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "707044e708cb5b0ce1b564b378cc5adffd574f12",
+      "path": "src/components/globeAssetCache.ts",
+      "gitBlobSha256": "1845fb402d344596c3d8e4ad9dcafebc7e4d8d4c915bea84a1081ee275d90a36",
+      "checkedOutSha256": "009f4f6516428c46848cffbecf7c3d3bb0be2b4c1d5989ef8743ecfb4a068987",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "707044e708cb5b0ce1b564b378cc5adffd574f12",
+      "path": "src/components/globeEditions.ts",
+      "gitBlobSha256": "645dcbc48918d62d1c54834c3914908e03540746083b704c5bfcf484960e7657",
+      "checkedOutSha256": "b7440b6278979deb1e47738572460869202f0d9cf794a144aceac9dbcf8cdd77",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "707044e708cb5b0ce1b564b378cc5adffd574f12",
+      "path": "src/components/globeFocusMath.ts",
+      "gitBlobSha256": "f62688a99d5a521e5aff729f3877f813f9bd81e16be2d33be4a25e8e8d220822",
+      "checkedOutSha256": "1dd511d8e47620f73cb72a2e41755256fc0d18679b3e72c4a586b86432c8b30a",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "707044e708cb5b0ce1b564b378cc5adffd574f12",
+      "path": "src/components/globeInteraction.ts",
+      "gitBlobSha256": "67e511b4c7e5c59ec21a95076584476c8601b900b101082a0bf5ab9bd567fd15",
+      "checkedOutSha256": "f60c2d336147e899bdec7f2836df68d8360071aac1cd514d46d871c7ebdf6fb3",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "707044e708cb5b0ce1b564b378cc5adffd574f12",
+      "path": "src/index.css",
+      "gitBlobSha256": "d480821e133d194983370c8ec9c2e27a36d2fbcf13224bf91acdc8e5b7e9a574",
+      "checkedOutSha256": "abeefa5620f8589d0e0f34d38120970315df8f95a0e7d5009d21222e932e5a35",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "707044e708cb5b0ce1b564b378cc5adffd574f12",
+      "path": "src/lib/supabase.ts",
+      "gitBlobSha256": "6d28f0c6ff2dcb8f8424452180396822b700ada95ac9d745dc8d3001ffa2d183",
+      "checkedOutSha256": "6ad4bd4b96e39be319a966397e6bd0d41c0c7d741ec2b6c3ca201483c73f42cd",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "707044e708cb5b0ce1b564b378cc5adffd574f12",
+      "path": "src/pwa/PwaAccessBoundary.tsx",
+      "gitBlobSha256": "7f868943bd3f8b4a2b42f574d99a5ac7f6826e0cd93a9be34dc0cfa04e432b81",
+      "checkedOutSha256": "5da9ec472f3bd16b1493cb44601bf1e3f74d09245e05ba8446cf9d280bee6b80",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "707044e708cb5b0ce1b564b378cc5adffd574f12",
+      "path": "src/pwa/pwa.css",
+      "gitBlobSha256": "f3e9d1b320700106edbdaeb944c28e7d5b58281de6ebe872f7d62d6bb258cb66",
+      "checkedOutSha256": "b62dca25c5bec2a1df94347b0c7d9c043678ace42802ccba516cce326ca95f31",
+      "lineEndingOnly": true
+    },
+    {
+      "commit": "707044e708cb5b0ce1b564b378cc5adffd574f12",
+      "path": "tsconfig.json",
+      "gitBlobSha256": "a89c689a43f21d1e0373598e265f4d62850bd92f7e624dfe2de8373f14126b22",
+      "checkedOutSha256": "8d51a8c9266fe83bf17c076b51672753b3750a17520cd0d2c28a90cb8b21e0d6",
+      "lineEndingOnly": true
+    }
+  ],
+  "changedSourcePaths": [
+    "src/App.tsx",
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/PlanetMascotControls.css",
+    "src/host/planetMascot.ts",
+    "src/loading/bookArchiveRuntime.ts",
+    "scripts/mobile/pwa-artifact.mjs",
+    "src/loading/DeferredHomepageArchives.tsx"
+  ],
+  "newSourcePaths": [
+    "src/host/bookySupport.ts"
+  ],
+  "starterSetSourceInventory": {
+    "path": "docs/mobile/evidence/S13/book-cloud-stand-20260920/starter-set-source-inventory.json",
+    "sha256": "854f14d22bbf78c2207e6f0c93b2c03696ce8d6a462c44d452ba2d9a633faa92"
+  },
+  "inventoryHistorical": true,
+  "inventoryAuditRerun": false,
+  "inventoryUnchangedInputsVerified": true,
+  "inventoryChangedInputs": [
+    {
+      "path": "src/App.tsx",
+      "priorSha256": "ab22ae860da4442a97c8a4f9994a0cfed05e75a5bdddd6c1675b82972d9be6f3",
+      "currentSha256": "f4766e00d4588fe4d62e5f7fa97e084b97b26bff783f23e41579be6e207f8e5a"
+    },
+    {
+      "path": "src/components/GlobeCameraRig.tsx",
+      "priorSha256": "6938d120c7a49248398b385640cc77d96c9f3b33cbd6c3b4ef9881ef89e2ec19",
+      "currentSha256": "189f1a90fafb001a09b02832cc033f2239d8b417adfc6a3f8899986152580a48"
+    },
+    {
+      "path": "src/components/GlobeIncludedBackground.tsx",
+      "priorSha256": "3268e2f971bb3b8742093be690116a16f8bee262362d50743daca2273d376b61",
+      "currentSha256": "b384ccdc3020598f10a990807e74342dc35e9434e42cad54b11526c10d81634c"
+    },
+    {
+      "path": "src/components/GlobeIncludedStand.tsx",
+      "priorSha256": "276ef908fe5a09c066a59d9ff57d1432d44300bcb979b2aeb5d6dd249ba189fd",
+      "currentSha256": "a083080c90c5bbb5f53dc9e7ba4f4498712634a9df67db6ce0e2e12cd4b4d068"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "priorSha256": "666960397af75698cdfbc89fe1f9f359683785ef168288e740caedaf7a19dd33",
+      "currentSha256": "f5bcfb487be1a34199cc6482dd2de5e6b6a68987938343fd41e7c1f9cc47b63d"
+    },
+    {
+      "path": "src/components/globeBackgroundGeometry.ts",
+      "priorSha256": "019c09b6c2fe51a52c772756b9c6fc47be0c8f8d80bac9dcb5f005c07b82ecc1",
+      "currentSha256": "daa902b738190403a4297264f7067dae8b1fdbe86c73c16e541ace7a7e9a0f00"
+    },
+    {
+      "path": "src/components/globeCraftMaterials.ts",
+      "priorSha256": "68ce7e818d50ac5ece1d5d4542fdc4cecea6af25e21b08b1274c8adcacbfbde1",
+      "currentSha256": "2c19145443374e631cf40dbf20a8b55d38bd8a41e1c0d025dc3ec10fbbe47721"
+    },
+    {
+      "path": "src/components/globeLibraryGeometry.ts",
+      "priorSha256": "c0d4fe4c9b69921df11d50bc349fca9896304baba67fff60263b77ff19c1d1ee",
+      "currentSha256": "18c2af40ee169eeac5416aa59effe1e50cbea92359a7f1e0d0f8f8972dddaf7c"
+    },
+    {
+      "path": "src/components/globeWhaleStandGeometry.ts",
+      "priorSha256": "a641909b9d2a168b921e3a94f78db0c0652fe67b4d76b3cdaa2a1fba57de82be",
+      "currentSha256": "9c0975465082d9423e2bfd3a8da3fa355897e0c6018d7c955c52497c0a9d64ab"
+    },
+    {
+      "path": "src/components/globeWriterStudyGeometry.ts",
+      "priorSha256": "4e2c7f51529d0f5cdde9df2484cf0701a8a6662ee9c5b9a96de828f22d7c7cfc",
+      "currentSha256": "c811764937279429ecddf50b1cd0b60f3b7a5f568772d9ced146b4920fca9f1e"
+    },
+    {
+      "path": "src/host/PlanetStandControls.tsx",
+      "priorSha256": "6bbcb8f9e373f06491b742888d58110d0922a3c0a0bdf9d47cceb129dbcbff76",
+      "currentSha256": "829db69456bddda43035df512ee1af4ed6182752bdf3161e14db756b695295e1"
+    }
+  ],
+  "historicalStarterSetCounts": {
+    "required": 29,
+    "sourceBound": 13,
+    "accepted": 0,
+    "ownerAdded": 3
+  },
+  "pwa": {
+    "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/pwa-a1/result.json",
+    "sha256": "bd763e4ffa660d28da33d1f52ad2066aa1569cb99e2f17592e7b31981cecc69b"
+  },
+  "android": {
+    "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/android-a1/result.json",
+    "sha256": "51b40853d6e33af851b58b623f67fe87670c5facc8c6d392e9b56d5ce95e8f78"
+  },
+  "pwaBuildId": "b0e03c47678cd818b7551eab8e0087db127d6370dc76443b318d2f8d1276250d",
+  "androidBuildId": "ddfbd43ccc0dd0c9dcfd8190e935a613a5ceda1ae90bad9c63e8082d22f179fc",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-offline/android-ddfbd43c/app-dev-debug.apk",
+    "bytes": 70289891,
+    "sha256": "9095e4f5dfeceff4e399d9b620ef651868cf4a38a5ea628c1cc14d8e32c54e11"
+  },
+  "buildAudits": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/pwa-a1/strict-audit.json",
+      "sha256": "c13af9fbf75556a19c08edc66088bac3ee1c5822df2b5318298b4f7cc2ca303c"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/android-a1/native-artifact-audit.json",
+      "sha256": "b13f2f3ae979671b2a727581d6a012892d65b30ce18e433c6d790b1814c42d21"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/android-a1/android-dev-apk-verification.json",
+      "sha256": "f8396db5ef7fa4a6b0a3ce6e017b0b7b7fdefa0a061c04a8fdb657230eaae59a"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/android-a1/build-run.json",
+      "sha256": "b10360675f5ed59806d587fe1f30f5496c11e40781e07411cee9db7e9ad962f3"
+    }
+  ],
+  "copyVerification": {
+    "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/pwa-a1/copy-verification.json",
+    "sha256": "8a89aa287d0a927e70d00d602b4d8dde602c0cbfa643c3fab3a5c2778d7db5fb"
+  },
+  "pwaBrowserReport": {
+    "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/pwa-a1/playwright.json",
+    "sha256": "aaed65bb445d5f97ff09ef9bbd685b5d471d6710719932604fc490aa413d6ef4"
+  },
+  "priorPwa": {
+    "path": "docs/mobile/evidence/S15/booky-resume-preference-20260920/pwa-a1/result.json",
+    "sha256": "2b77eca4a2c1979dc0b3d06d35ad9bfbceb66a55295185c91270fa7ec95ad20c"
+  },
+  "priorAndroid": {
+    "path": "docs/mobile/evidence/S15/booky-resume-preference-20260920/android-a1/result.json",
+    "sha256": "20ea57aa339b8eb95f392448bb9c1f27ef7d586112d66eaddf8530a8627e82ae"
+  },
+  "decisionD154Recorded": true,
+  "criteriaUpdated": [
+    "S15.PLANETKA-005"
+  ],
+  "criterionChanges": [
+    {
+      "id": "S15.PLANETKA-005",
+      "before": "OPEN",
+      "after": "IN_PROGRESS"
+    }
+  ],
+  "requirementChanges": [
+    {
+      "id": "PLANETKA-005",
+      "before": "OPEN",
+      "after": "IN_PROGRESS"
+    }
+  ],
+  "stageChanges": [],
+  "otherStageAndCriterionStatusesUnchanged": true,
+  "firstUnresolved": "S03.acceptance",
+  "parallelSafeEntry": {
+    "priorFirstOpenStage": "S03",
+    "stageAcceptanceClaimed": false,
+    "scope": "S15 already IN_PROGRESS; owner-authorized Booky integration continues without claiming child, full journey, device or release acceptance."
+  },
+  "limitations": [
+    "Adult guidance consumes existing connectivity and content-loading state. Online is a platform hint, not endpoint reachability or successful content loading; unknown remains unknown. No offline durability, access or entitlement is guaranteed.",
+    "Recovery is explicit and context-fenced. A bounded alternate facade can recover a failed entry request; shared transitive dependency failure, every transport/cache failure and unlimited recovery are not established by these source-fixture cases.",
+    "Actual-App source Chrome runs real canonical modules/CSS/globe with controlled native OS/preferences ports and selected HTTP 503 failures. It does not establish installed-device, screen-reader, battery or performance acceptance.",
+    "PWA and Android strict build manifests bind the changed runtime and exact build-known retry entries. The built-PWA case remains the existing offline/download smoke, not a replay of all source-fixture chunk failures against distributed bundles.",
+    "RU/EN adult support copy remains draft. Screenshot inspection is scoped layout evidence, not editorial, child or formal art approval.",
+    "All former Planetka functionality remains Booky scope. Child profiles, reviewed dialogue/audio, educational/literary journeys, full progress and migration remain pending; this slice does not complete them.",
+    "The original live Booky model/renderer/art and protected canonical scene inputs remain byte-exact. Unchanged geometry and adapter suites were not repeated.",
+    "Original actual-App product failures remain preserved: browser a1 exposed the cached import rejection; browser a2 exposed a 320px card overlap that blocked EN language switching. Browser a3 passed all five cases but was superseded after visual inspection found transient card/avatar overlap; it remains pass:true. Final captures require two stable non-overlapping layout samples after fonts are ready. Starter inventory remains historical 29/13/0 plus three owner additions with explicit changed bindings."
+  ],
+  "nextAction": "Continue S15 with versioned adult semantic progress for the two existing navigation routes: persist only explicitly acknowledged steps; migrate v1 to v2 strictly without inferring completed steps; preserve progress when Booky is hidden; provide explicit reset; and never overwrite an unsupported future record version. Keep restore closed and resume deliberate, without automatic navigation or restored permissions. Preserve offline/error recovery, the canonical scene and bounded split-module retry facades. This remains adult navigation progress only: full literary/educational journeys, child scenarios, reviewed dialogue/audio, full migration, screen-reader, installed-device/performance, iOS and release acceptance remain pending. S03.acceptance remains first unresolved.",
+  "actualApp": true,
+  "actualCss": true,
+  "actualGlobe": true,
+  "controlledNativePorts": true,
+  "controlledSourceEntryFailureCoverage": true,
+  "automaticNetworkRetry": false,
+  "automaticRecoveryNavigation": false,
+  "boundedBuildKnownRetryFacades": true,
+  "canonicalBookDependenciesShared": true,
+  "artChanged": false,
+  "globeSceneChanged": false,
+  "installedNativeDevice": false,
+  "builtPwaBookyFailureRecoveryExecution": false,
+  "supportCopyStatus": "draft",
+  "artAccepted": false,
+  "childProfileCreated": false,
+  "childAccessGranted": false,
+  "childApproved": false,
+  "rightsApproval": false,
+  "reviewedDialogueAccepted": false,
+  "narrationEnabled": false,
+  "ageAdaptiveJourneysEnabled": false,
+  "literaryJourneyPersistence": false,
+  "childJourneyPersistence": false,
+  "fullJourneyMigrationAccepted": false,
+  "screenReaderAcceptance": false,
+  "devicePerformanceAccepted": false,
+  "iosCompiled": false,
+  "grantsEntitlement": false,
+  "productionActionsPerformed": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

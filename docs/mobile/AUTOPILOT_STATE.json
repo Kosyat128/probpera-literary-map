@@ -3,9 +3,9 @@
   "repository": "Kosyat128/probpera-literary-map",
   "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
-  "headSha": "94a6b7785d10d1f3b9a619105542d239b28ed639",
+  "headSha": "707044e708cb5b0ce1b564b378cc5adffd574f12",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-20T06:40:59.721Z",
+  "updatedAt": "2026-09-20T07:23:53.744Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -2628,11 +2628,13 @@
         },
         {
           "id": "S15.PLANETKA-005",
-          "status": "OPEN",
-          "evidence": [],
-          "commit": null,
-          "lastValidatedAt": null,
-          "notes": "Offline/error helper. Implement the original guide and shared policy before complete English dialogue/audio validation."
+          "status": "IN_PROGRESS",
+          "evidence": [
+            "docs/mobile/evidence/S15/booky-offline-help-20260920/result.json"
+          ],
+          "commit": "707044e708cb5b0ce1b564b378cc5adffd574f12",
+          "lastValidatedAt": "2026-09-20T07:23:53.744Z",
+          "notes": "Offline/error helper. Implement the original guide and shared policy before complete English dialogue/audio validation. Adult Booky now gives RU/EN offline, unknown, loading and recoverable-error guidance from actual host state, with explicit context-fenced recovery. Failed primary split-module entries use bounded build-known alternate facades while canonical dependencies stay shared. 114 focused cases, TypeScript, 5 actual-App Chrome cases and 5 inspected views bind this source; local PWA/Android preserve the runtime. Original browser-a1 import failure and browser-a2 language-control overlap remain evidence; final narrow-view captures prove both locale controls are uncovered. This starts the adult offline/error foundation only; child, dialogue, literary journeys, accessibility/device and release gates remain open."
         },
         {
           "id": "S15.PLANETKA-006",
@@ -2695,7 +2697,13 @@
         "node docs/mobile/evidence/S15/booky-resume-preference-20260920/check.mjs browser a1",
         "node docs/mobile/evidence/S15/booky-resume-preference-20260920/run-pwa.mjs 94a6b7785d10d1f3b9a619105542d239b28ed639",
         "pwsh -File docs/mobile/evidence/S15/booky-resume-preference-20260920/build-android.ps1 94a6b7785d10d1f3b9a619105542d239b28ed639",
-        "node docs/mobile/evidence/S15/booky-resume-preference-20260920/preserve-android.mjs 94a6b7785d10d1f3b9a619105542d239b28ed639"
+        "node docs/mobile/evidence/S15/booky-resume-preference-20260920/preserve-android.mjs 94a6b7785d10d1f3b9a619105542d239b28ed639",
+        "node docs/mobile/evidence/S15/booky-offline-help-20260920/check.mjs unit a4",
+        "node docs/mobile/evidence/S15/booky-offline-help-20260920/check.mjs static a4",
+        "node docs/mobile/evidence/S15/booky-offline-help-20260920/check.mjs browser a4",
+        "node docs/mobile/evidence/S15/booky-offline-help-20260920/run-pwa.mjs 707044e708cb5b0ce1b564b378cc5adffd574f12",
+        "pwsh -File docs/mobile/evidence/S15/booky-offline-help-20260920/build-android.ps1 707044e708cb5b0ce1b564b378cc5adffd574f12",
+        "node docs/mobile/evidence/S15/booky-offline-help-20260920/preserve-android.mjs 707044e708cb5b0ce1b564b378cc5adffd574f12"
       ],
       "artifacts": [
         "docs/mobile/evidence/S15/planetka-visual-mode-20260920/entry.json",
@@ -2726,7 +2734,17 @@
         "docs/mobile/evidence/S15/booky-resume-preference-20260920/static-a2/result.json",
         "docs/mobile/evidence/S15/booky-resume-preference-20260920/browser-a1/result.json",
         "docs/mobile/evidence/S15/booky-resume-preference-20260920/pwa-a1/result.json",
-        "docs/mobile/evidence/S15/booky-resume-preference-20260920/android-a1/result.json"
+        "docs/mobile/evidence/S15/booky-resume-preference-20260920/android-a1/result.json",
+        "docs/mobile/evidence/S15/booky-offline-help-20260920/entry.json",
+        "docs/mobile/evidence/S15/booky-offline-help-20260920/result.json",
+        "docs/mobile/evidence/S15/booky-offline-help-20260920/README.md",
+        "docs/mobile/evidence/S15/booky-offline-help-20260920/visual-review.json",
+        "docs/mobile/evidence/S15/booky-offline-help-20260920/source-manifests/ae117ef7a520c064.json",
+        "docs/mobile/evidence/S15/booky-offline-help-20260920/unit-a4/result.json",
+        "docs/mobile/evidence/S15/booky-offline-help-20260920/static-a4/result.json",
+        "docs/mobile/evidence/S15/booky-offline-help-20260920/browser-a4/result.json",
+        "docs/mobile/evidence/S15/booky-offline-help-20260920/pwa-a1/result.json",
+        "docs/mobile/evidence/S15/booky-offline-help-20260920/android-a1/result.json"
       ],
       "externalBlockers": []
     },
@@ -11087,7 +11105,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Continue S15 with bounded RU/EN offline/error help for Книжулик / Mr. Booky using existing platform/network/storage state and explicit recovery controls. Preserve the live character, all canonical globe scenes, art and resource ownership. All former Planetka functions remain Booky scope: child scenarios, reviewed dialogue/audio, educational journeys and full progress; the character replacement does not remove them. Adult navigation-tour resume is a partial foundation only; child policy, full journey migration, art, screen-reader, installed-device/performance, iOS and release gates remain open. S03.acceptance remains first unresolved.",
+    "nextAction": "Continue S15 with versioned adult semantic progress for the two existing navigation routes: persist only explicitly acknowledged steps; migrate v1 to v2 strictly without inferring completed steps; preserve progress when Booky is hidden; provide explicit reset; and never overwrite an unsupported future record version. Keep restore closed and resume deliberate, without automatic navigation or restored permissions. Preserve offline/error recovery, the canonical scene and bounded split-module retry facades. This remains adult navigation progress only: full literary/educational journeys, child scenarios, reviewed dialogue/audio, full migration, screen-reader, installed-device/performance, iOS and release acceptance remain pending. S03.acceptance remains first unresolved.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -11161,7 +11179,8 @@
       "docs/mobile/evidence/S13/library-window-depth-20260920/result.json",
       "docs/mobile/evidence/S15/planetka-visual-mode-20260920/result.json",
       "docs/mobile/evidence/S15/booky-live-character-20260920/result.json",
-      "docs/mobile/evidence/S15/booky-resume-preference-20260920/result.json"
+      "docs/mobile/evidence/S15/booky-resume-preference-20260920/result.json",
+      "docs/mobile/evidence/S15/booky-offline-help-20260920/result.json"
     ],
     "commands": [
       "node scripts/mobile/verify-requirements.mjs",
@@ -11205,7 +11224,8 @@
       "S13 library window depth: 6 selected geometry cases, TypeScript, one actual-App Chrome case, two inspected views through product controls and exact local PWA/Android builds. Forty-four established inputs remain unchanged; no unchanged geometry suites or inventory audit rerun. Historical inventory changes are explicit. No art, child, installed-device or release acceptance.",
       "S15 independent DOM companion: 7 controller/author-request cases, TypeScript, one actual-App Chrome case, three inspected product-control views and exact local PWA/Android builds with the pinned PNG. Forty-three prior runtime sources unchanged. Superseded a1 retained; historical Starter inventory retained with explicit drift. No art/child/rights/device/release acceptance.",
       "S15 live Mr. Booky: 3 model/pose/resource cases, TypeScript, one actual-App Chrome case, 4 inspected views and exact local PWA/Android artifacts. Protected App/controller/globe sources unchanged; failed a1 preserved. Child/art/device/release acceptance remains open.",
-      "S15 adult Booky preference/resume: 206 focused cases, TypeScript, one actual-App browser case, 3 inspected views and bound local PWA/Android artifacts. Preserve earlier failed attempts. PLANETKA-008 is IN_PROGRESS only; child/literary/migration/art/device/release gates stay open."
+      "S15 adult Booky preference/resume: 206 focused cases, TypeScript, one actual-App browser case, 3 inspected views and bound local PWA/Android artifacts. Preserve earlier failed attempts. PLANETKA-008 is IN_PROGRESS only; child/literary/migration/art/device/release gates stay open.",
+      "S15 adult Booky offline/error helper: 114 focused cases, TypeScript, 5 actual-App browser cases, 5 inspected views and bound local PWA/Android artifacts. Preserve browser-a1 cached-import and browser-a2 language-control-overlap failures. PLANETKA-005 is IN_PROGRESS only; all child/literary/art/device/release gates stay open."
     ]
   },
   "requirementsHash": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732",
@@ -13090,6 +13110,14 @@
       "sha256": "3d0edd22449a1b686c2035350103b47b70051f9826e282968a3650b7da04fe52",
       "sourceCommit": "94a6b7785d10d1f3b9a619105542d239b28ed639",
       "status": "ADULT_BOOKY_PREFERENCE_RESUME_SCOPED_VALIDATION",
+      "stageAccepted": false,
+      "releaseReady": false
+    },
+    "s15BookyOfflineHelp": {
+      "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/result.json",
+      "sha256": "45e50825dc81d85119b0edfb43a063b02cb5147a8dcec151af4f0f4ad9b52f1f",
+      "sourceCommit": "707044e708cb5b0ce1b564b378cc5adffd574f12",
+      "status": "ADULT_BOOKY_OFFLINE_HELP_SCOPED_VALIDATION",
       "stageAccepted": false,
       "releaseReady": false
     }

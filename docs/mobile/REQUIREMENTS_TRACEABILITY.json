@@ -4878,12 +4878,31 @@
       "platforms": [
         "all"
       ],
-      "status": "OPEN",
-      "implementationFiles": [],
-      "tests": [],
-      "evidence": [],
-      "commit": "",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+      "status": "IN_PROGRESS",
+      "implementationFiles": [
+        "src/App.tsx",
+        "src/host/PlanetMascotControls.tsx",
+        "src/host/PlanetMascotControls.css",
+        "src/host/planetMascot.ts",
+        "src/loading/bookArchiveRuntime.ts",
+        "scripts/mobile/pwa-artifact.mjs",
+        "src/loading/DeferredHomepageArchives.tsx",
+        "src/host/bookySupport.ts"
+      ],
+      "tests": [
+        "src/host/bookySupport.test.ts",
+        "src/host/planetMascot.test.ts",
+        "src/host/planetMascotPersistence.test.ts",
+        "src/loading/stage5LoadingGraph.test.ts",
+        "src/loading/bookArchiveRuntime.test.ts",
+        "scripts/mobile/pwa-artifact.test.mjs",
+        "tests/pwa/booky-support.spec.mjs"
+      ],
+      "evidence": [
+        "docs/mobile/evidence/S15/booky-offline-help-20260920/result.json"
+      ],
+      "commit": "707044e708cb5b0ce1b564b378cc5adffd574f12",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion. Adult Booky now gives RU/EN offline, unknown, loading and recoverable-error guidance from actual host state, with explicit context-fenced recovery. Failed primary split-module entries use bounded build-known alternate facades while canonical dependencies stay shared. 114 focused cases, TypeScript, 5 actual-App Chrome cases and 5 inspected views bind this source; local PWA/Android preserve the runtime. Original browser-a1 import failure and browser-a2 language-control overlap remain evidence; final narrow-view captures prove both locale controls are uncovered. This starts the adult offline/error foundation only; child, dialogue, literary journeys, accessibility/device and release gates remain open."
     },
     {
       "id": "PLANETKA-006",

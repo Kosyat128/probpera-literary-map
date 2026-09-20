@@ -1,0 +1,22 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "--config=docs/mobile/evidence/S15/booky-offline-help-20260920/unit.config.mjs",
+    "--reporter=json",
+    "--outputFile=C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-offline-help-20260920\\unit-a4\\vitest.json"
+  ],
+  "exitCode": 0,
+  "durationMs": 3610,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/unit-a4/stdout.log",
+    "bytes": 182,
+    "sha256": "1e745991076935512ddc588786e7d2047fb565c92501388e3f639518c4aab4c9"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/unit-a4/stderr.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

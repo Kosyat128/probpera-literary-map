@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "mode": "unit",
+  "attempt": "a1",
+  "startedAt": "2026-09-20T06:55:15.688Z",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/source-manifests/92e7880b2da46fe3.json",
+    "sha256": "92e7880b2da46fe33e328fccc150f51af8caf0cbda17b0030de81782653baeab",
+    "fileCount": 95
+  },
+  "checkInputs": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/check.mjs",
+      "sha256": "9f6f743a7f1cff2ec6dc2ad6ff9c74c0129e050f5a6845bf8b23ad083898cfd7"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/entry.json",
+      "sha256": "fe2c73da6f9d9df53ea7d472a665d67d853688332c43768097dae9f8cce67f76"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/unit.config.mjs",
+      "sha256": "925077e73d32a4f25ae089bf49140b5ab6f0996f16e1bcc362dc71baf56cae5b"
+    },
+    {
+      "path": "src/host/bookySupport.test.ts",
+      "sha256": "670124b3ab396ed9902238f646c545c389cd50a6444ccc762e4c90e044d68eca"
+    },
+    {
+      "path": "src/host/planetMascot.test.ts",
+      "sha256": "3d6c958d0237d21eeb7f8e9cfce19c1beb4bd3f9442384012622aae2620248a2"
+    },
+    {
+      "path": "src/host/planetMascotPersistence.test.ts",
+      "sha256": "d35e3bd0140bbf04c5a4f409d1371ae8ac4d9e140b8535475c0191d23bea8b32"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "tests": {
+    "passed": 30,
+    "failed": 0,
+    "skipped": 0
+  },
+  "reportError": null,
+  "pass": true,
+  "execution": {
+    "exitCode": 0,
+    "durationMs": 2026
+  },
+  "stageAccepted": false,
+  "artAccepted": false,
+  "releaseReady": false
+}

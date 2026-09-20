@@ -1,0 +1,11 @@
+# S15 adult Booky offline and error help
+
+Source: 707044e708cb5b0ce1b564b378cc5adffd574f12. Scoped local validation only; S15 remains IN_PROGRESS and S03.acceptance remains first unresolved.
+
+Adult RU/EN help reads existing connectivity and loading state. Explicit recovery is context-fenced; network hints cannot dismiss content failures, reopen hidden help or change saved preferences. Primary canonical imports and bounded build-known retry facades keep shared dependencies. All former Planetka functionality remains Booky scope.
+
+Evidence: 114 focused unit cases (a4), TypeScript (a4), 5 actual-App Chrome cases (a4), 5 inspected views in [visual-review.json](visual-review.json), local PWA b0e03c47678cd818b7551eab8e0087db127d6370dc76443b318d2f8d1276250d and Android/dev ddfbd43ccc0dd0c9dcfd8190e935a613a5ceda1ae90bad9c63e8082d22f179fc. Real source-fixture HTTP failures exercise recovery; the built-PWA case is existing offline/download smoke. The original browser-a1 cached-import failure, browser-a2 language-control blockage and all later attempts remain preserved in [result.json](result.json). This does not claim exhaustive distributed chunk/cache recovery.
+
+86 protected inputs, including canonical scene, live Booky model/renderer and original art, remain exact. Starter inventory stays historical 29/13/0 plus three owner additions. Only PLANETKA-005 advances to IN_PROGRESS; copy stays draft and no acceptance or release approval is implied.
+
+Next: Continue S15 with versioned adult semantic progress for the two existing navigation routes: persist only explicitly acknowledged steps; migrate v1 to v2 strictly without inferring completed steps; preserve progress when Booky is hidden; provide explicit reset; and never overwrite an unsupported future record version. Keep restore closed and resume deliberate, without automatic navigation or restored permissions. Preserve offline/error recovery, the canonical scene and bounded split-module retry facades. This remains adult navigation progress only: full literary/educational journeys, child scenarios, reviewed dialogue/audio, full migration, screen-reader, installed-device/performance, iOS and release acceptance remain pending. S03.acceptance remains first unresolved.

@@ -1,0 +1,36 @@
+
+Running 2 tests using 1 worker
+
+
+
+[1/2] tests\pwa\booky-support.spec.mjs:269:1 › network support preserves the adult tour and scene across locales, narrow view and lifecycle changes without opening itself
+[2/2] tests\pwa\booky-support.spec.mjs:345:1 › a real book chunk failure stays visible across network hints and only explicit recovery retries the collection
+  1) tests\pwa\booky-support.spec.mjs:345:1 › a real book chunk failure stays visible across network hints and only explicit recovery retries the collection 
+
+    Error: expect(received).toBeGreaterThan(expected)
+
+    Expected: > 1
+    Received:   1
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+      376 |     // its actual retry completion may clear the content error.
+      377 |     await page.locator('[data-booky-retry-content="books"]').click();
+    > 378 |     await expect.poll(() => fixture.bookRequests.length).toBeGreaterThan(failedRequests);
+          |                                                          ^
+      379 |     await expect(support(page)).toHaveCount(0);
+      380 |     await expect(page.locator('.stage5-deferred-books')).toHaveAttribute('data-loading-status', 'ready');
+      381 |     await expect(pet(page)).toHaveAttribute('data-planet-mascot-screen', 'collection');
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-support.spec.mjs:378:58
+
+    attachment #1: booky-support-source-evidence (application/json) ────────────────────────────────
+    D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-offline\browser-a1\booky-support-a-real-book--3c545-very-retries-the-collection\attachments\booky-support-source-evidence-2dc45a5eb9dc6d8ee0cbac93bb1585d578d8ab3b.json
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-offline\browser-a1\booky-support-a-real-book--3c545-very-retries-the-collection\error-context.md
+
+
+  1 failed
+    tests\pwa\booky-support.spec.mjs:345:1 › a real book chunk failure stays visible across network hints and only explicit recovery retries the collection 
+  1 passed (24.2s)

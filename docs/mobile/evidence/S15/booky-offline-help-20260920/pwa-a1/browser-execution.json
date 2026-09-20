@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S15/booky-offline-help-20260920/pwa.config.mjs"
+  ],
+  "exitCode": 0,
+  "durationMs": 25392,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/pwa-a1/browser-stdout.log",
+    "bytes": 189,
+    "sha256": "93c6d6fccee3a8094edb1b37ef6d11ef21eec1f53d5e191ddc2ffef362bbc9de"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/pwa-a1/browser-stderr.log",
+    "bytes": 164,
+    "sha256": "0f09808fec9c7974e1596b912adb10e70ad6767ff0e940330db7473adc5ae49f"
+  }
+}

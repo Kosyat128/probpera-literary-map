@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-20T07:22:37.198Z",
+  "pass": true,
+  "sourceCommit": "707044e708cb5b0ce1b564b378cc5adffd574f12",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/source-manifests/ae117ef7a520c064.json",
+    "sha256": "ae117ef7a520c0647d6eb6628338b45b2542415df64379cd5b230fd84bd51546",
+    "fileCount": 97
+  },
+  "actualAppCaptures": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-offline/browser-a4/booky-support-a-real-book--3c545-very-retries-the-collection/booky-support.json",
+      "sha256": "99118d2e3d1861b74ac3238ca08c152bd0787aad8d853570bb462098508825cd"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-offline/browser-a4/booky-support-a-real-colle-792a9-oks-and-the-canonical-globe/booky-support.json",
+      "sha256": "be502092a3723cb9d36c0608bc8a04a46a28940c2363fc3806f23c2141fb22ff"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-offline/browser-a4/booky-support-a-real-count-5ab31--mounts-the-canonical-scene/booky-support.json",
+      "sha256": "45bb2664ddbeecff95b7840001d914a0b058169913f15f1eef6b28e7e5e6aaa0"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-offline/browser-a4/booky-support-network-supp-976e4-nges-without-opening-itself/booky-support.json",
+      "sha256": "1f2041cb594b8eb86087609ecfbfe15d5fc5b2e285a7e96ea4d4c0bf70c7ca17"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-offline/browser-a4/booky-support-when-both-bo-c8fb4-turns-to-the-retained-globe/booky-support.json",
+      "sha256": "26ed66e8129fe503456115caefa4f628380dac1681630be917b9d3a26c56a487"
+    }
+  ],
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-offline/browser-a4/booky-support-a-real-book--3c545-very-retries-the-collection/booky-support-collection-error-en-320.png",
+      "sha256": "61d0d332268c0d6c711e81985b0b87ccbcbd57084a57d814f27522ec45846bdc",
+      "inspected": true,
+      "reviewer": "Codex root visual inspection",
+      "findings": [
+        "Actual App at 320x844: support text and recovery actions are legible; RU/EN controls stay above the card and the live green companion stays visible below it.",
+        "Collection failure keeps the header and close control visible; explicit retry and return-to-globe buttons fit. Lower resume/help content uses internal scrolling."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-offline/browser-a4/booky-support-a-real-colle-792a9-oks-and-the-canonical-globe/booky-support-component-error-ru-320.png",
+      "sha256": "7a605c76b71436b5c0f73a23890da238ad38a45dbfad6b57795ed7cc941423c4",
+      "inspected": true,
+      "reviewer": "Codex root visual inspection",
+      "findings": [
+        "Actual App at 320x844: support text and recovery actions are legible; RU/EN controls stay above the card and the live green companion stays visible below it.",
+        "Collection failure keeps the header and close control visible; explicit retry and return-to-globe buttons fit. Lower resume/help content uses internal scrolling."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-offline/browser-a4/booky-support-a-real-count-5ab31--mounts-the-canonical-scene/booky-support-countries-error-en-320.png",
+      "sha256": "efb9fa853e0d0d49fe30b085f4e28d88f5f737572ab556ed437332f469503881",
+      "inspected": true,
+      "reviewer": "Codex root visual inspection",
+      "findings": [
+        "Actual App at 320x844: support text and recovery actions are legible; RU/EN controls stay above the card and the live green companion stays visible below it.",
+        "Country-loading failure honestly shows the launch background before the canonical globe first mounts; retry and saved-tour controls fit within the scrolling card."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-offline/browser-a4/booky-support-network-supp-976e4-nges-without-opening-itself/booky-support-offline-en-320.png",
+      "sha256": "add48f4c4504720883e0cd0ab52d43ae447d778e81c2820f8c423f6b19061fe5",
+      "inspected": true,
+      "reviewer": "Codex root visual inspection",
+      "findings": [
+        "Actual App at 320x844: support text and recovery actions are legible; RU/EN controls stay above the card and the live green companion stays visible below it.",
+        "English offline guidance remains an overlay on the retained globe; the open collection step remains pending and long help content scrolls inside its card."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-offline/browser-a4/booky-support-when-both-bo-c8fb4-turns-to-the-retained-globe/booky-support-retry-failed-ru-320.png",
+      "sha256": "d4dd61d95b9ba398787fc9bea0db62cbf8006157e1505d35d6923706d100e394",
+      "inspected": true,
+      "reviewer": "Codex root visual inspection",
+      "findings": [
+        "Actual App at 320x844: support text and recovery actions are legible; RU/EN controls stay above the card and the live green companion stays visible below it.",
+        "Collection failure keeps the header and close control visible; explicit retry and return-to-globe buttons fit. Lower resume/help content uses internal scrolling."
+      ]
+    }
+  ],
+  "artAccepted": false,
+  "childApproved": false,
+  "releaseReady": false
+}

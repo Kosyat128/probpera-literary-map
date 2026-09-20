@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "mode": "browser",
+  "attempt": "a2",
+  "startedAt": "2026-09-20T07:11:14.727Z",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/source-manifests/e6cb825a2909d33f.json",
+    "sha256": "e6cb825a2909d33f8c9fd932031c089db9046ea9dbf49634688a81c651e42acd",
+    "fileCount": 97
+  },
+  "checkInputs": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/check.mjs",
+      "sha256": "9f6f743a7f1cff2ec6dc2ad6ff9c74c0129e050f5a6845bf8b23ad083898cfd7"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/entry.json",
+      "sha256": "ded66d72e54728619262c6f59e668d92d46c4f1b38d5335e9cf88bb99acec059"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-offline-help-20260920/playwright.config.mjs",
+      "sha256": "faec3c43e22ce375390fe5fd51230d3cb5b76e83bdecdc1a8cb9e219e1aac241"
+    },
+    {
+      "path": "tests/pwa/booky-support.spec.mjs",
+      "sha256": "6eaee1489f5e329e301ba58ef4114543a8e54eb588b831b4e2bebde477ef84fc"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "tests": {
+    "passed": 4,
+    "failed": 1,
+    "skipped": 0,
+    "flaky": 0
+  },
+  "reportError": null,
+  "pass": false,
+  "execution": {
+    "exitCode": 1,
+    "durationMs": 52027
+  },
+  "stageAccepted": false,
+  "artAccepted": false,
+  "releaseReady": false
+}
