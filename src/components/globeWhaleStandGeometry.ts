@@ -64,6 +64,137 @@ function createOrganicLoft(
   return geometry;
 }
 
+/** A closed, thin casting over the actual triangulated lower head. Every
+ * surface triangle stays inside one source face in parameter space; merely
+ * sampling exact vertices and bridging source edges can cut through a coarse
+ * canonical body. The positive back clearance also survives the deepest cut. */
+function createCastLowerJaw(body: THREE.BufferGeometry, detail: typeof details[keyof typeof details],
+  quality: GlobeQualityTier): THREE.BufferGeometry {
+  type Point = readonly [number, number];
+  const u0 = .60, u1 = .974, v0 = .51, v1 = .99, backClearance = .0005;
+  const positions = body.getAttribute("position"), normals = body.getAttribute("normal");
+  const sourceRow = detail.radial + 1;
+  const mouthAt = (v: number) => .883 + Math.sin((v - .5) * Math.PI * 2) * .075;
+  const knots = (start: number, end: number, subdivisions: number, extra: number[]) => {
+    const values = [start, end, ...extra];
+    for (let n = 1; n < subdivisions; n++) values.push(n / subdivisions);
+    return [...new Map(values.filter(value => value >= start && value <= end)
+      .map(value => [Math.round(value * 1e11), value])).values()].sort((a, b) => a - b);
+  };
+  const grooveCenters = Array.from({ length: 7 }, (_, index) => .638 + index / 6 * .224);
+  const grooveKnots = grooveCenters.flatMap(center => (quality === "high"
+    ? [-.008, -.005, -.0025, 0, .0025, .005, .008] : [-.008, -.004, 0, .004, .008]).map(offset => center + offset));
+  const us = knots(u0, u1, detail.longitudinal,
+    [.614, .628, .65, .84, .87, .895]);
+  const vs = knots(v0, v1, detail.radial, [v0 + .012, v0 + .024, .56, .60, .62,
+    ...grooveKnots, .88, .90, .94, v1 - .024, v1 - .012]);
+  const vertices: number[] = [], uvs: number[] = [], topFaces: number[] = [];
+  const vertexIds = new Map<string, number>(), parameterPoints: Point[] = [];
+  const smooth = (value: number) => THREE.MathUtils.smoothstep(value, 0, 1);
+  const topOffset = (u: number, v: number) => {
+    const mouth = u - mouthAt(v);
+    const edge = smooth((u - u0) / .025) * smooth((v - v0) / .024)
+      * smooth((v1 - v) / .024) * smooth((.011 - mouth) / .005);
+    const throatFade = smooth((u - .614) / .036) * (1 - smooth((u - .84) / .055));
+    let throat = 0;
+    for (const center of grooveCenters) throat = Math.max(throat, Math.exp(-Math.pow((v - center) / .004, 2)));
+    const mouthCut = Math.exp(-Math.pow(mouth / .003, 2));
+    const rolledLip = Math.exp(-Math.pow((mouth - .006) / .003, 2));
+    return backClearance + .00045 + edge * Math.max(.00015,
+      .0032 - throat * throatFade * .0018 - mouthCut * .0022 + rolledLip * .0013);
+  };
+  const sample = (u: number, v: number) => {
+    const x = u * detail.longitudinal, y = v * detail.radial;
+    const i = Math.min(detail.longitudinal - 1, Math.floor(x)), j = Math.min(detail.radial - 1, Math.floor(y));
+    const sx = x - i, sy = y - j, first = i * sourceRow + j;
+    // Canonical diagonal: [first, second, first+1] and
+    // [second, second+1, first+1], not a bilinear quadrilateral.
+    const corners = sx + sy <= 1
+      ? [[first, 1 - sx - sy], [first + sourceRow, sx], [first + 1, sy]]
+      : [[first + sourceRow, 1 - sy], [first + sourceRow + 1, sx + sy - 1], [first + 1, 1 - sx]];
+    const point = new THREE.Vector3(), normal = new THREE.Vector3(), scratch = new THREE.Vector3();
+    for (const [index, weight] of corners) {
+      point.addScaledVector(scratch.fromBufferAttribute(positions, index), weight);
+      normal.addScaledVector(scratch.fromBufferAttribute(normals, index), -weight);
+    }
+    return { point, normal: normal.normalize() };
+  };
+  const vertex = (point: Point) => {
+    const key = `${Math.round(point[0] * 1e10)},${Math.round(point[1] * 1e10)}`;
+    const existing = vertexIds.get(key);
+    if (existing !== undefined) return existing;
+    const id = parameterPoints.length;
+    parameterPoints.push(point); vertexIds.set(key, id); return id;
+  };
+  const clean = (polygon: Point[]) => {
+    const result = polygon.filter((point, index) => index === 0
+      || Math.abs(point[0] - polygon[index - 1][0]) + Math.abs(point[1] - polygon[index - 1][1]) > 1e-12);
+    if (result.length > 1 && Math.abs(result[0][0] - result[result.length - 1][0])
+      + Math.abs(result[0][1] - result[result.length - 1][1]) <= 1e-12) result.pop();
+    return result;
+  };
+  const clip = (polygon: Point[], a: number, b: number, c: number, sign: number) => {
+    const result: Point[] = [];
+    for (let index = 0; index < polygon.length; index++) {
+      const from = polygon[index], to = polygon[(index + 1) % polygon.length];
+      const df = (a * from[0] + b * from[1] + c) * sign, dt = (a * to[0] + b * to[1] + c) * sign;
+      if (df <= 1e-13) result.push(from);
+      if ((df < -1e-13 && dt > 1e-13) || (df > 1e-13 && dt < -1e-13)) {
+        const t = df / (df - dt);
+        result.push([THREE.MathUtils.lerp(from[0], to[0], t), THREE.MathUtils.lerp(from[1], to[1], t)]);
+      }
+    }
+    return clean(result);
+  };
+  const split = (polygons: Point[][], a: number, b: number, c: number) => polygons.flatMap(polygon => {
+    const distances = polygon.map(point => a * point[0] + b * point[1] + c);
+    if (Math.min(...distances) >= -1e-13 || Math.max(...distances) <= 1e-13) return [polygon];
+    return [clip(polygon, a, b, c, 1), clip(polygon, a, b, c, -1)].filter(part => part.length >= 3);
+  });
+  for (let ui = 0; ui < us.length - 1; ui++) for (let vi = 0; vi < vs.length - 1; vi++) {
+    const lowU = us[ui], highU = us[ui + 1], lowV = vs[vi], highV = vs[vi + 1];
+    const slope = (mouthAt(highV) - mouthAt(lowV)) / (highV - lowV), intercept = mouthAt(lowV) - slope * lowV;
+    const rectangle: Point[] = [[lowU, lowV], [highU, lowV], [highU, highV], [lowU, highV]];
+    const outline = clip(rectangle, 1, -slope, -intercept - .011, 1);
+    if (outline.length < 3) continue;
+    const sourceI = Math.floor((lowU + highU) * .5 * detail.longitudinal);
+    const sourceJ = Math.floor((lowV + highV) * .5 * detail.radial);
+    let polygons = split([outline], detail.longitudinal, detail.radial, -sourceI - sourceJ - 1);
+    // Explicit cross-sections put the mouth's trough and both rounded shoulders
+    // into the mesh, even at Economy; they are not a painted line or a tube.
+    for (const offset of [-.008, -.004, -.002, 0, .002, .004, .006, .009]) {
+      polygons = split(polygons, 1, -slope, -intercept - offset);
+    }
+    for (const polygon of polygons) for (let corner = 1; corner < polygon.length - 1; corner++) {
+      const a = polygon[0], b = polygon[corner], c = polygon[corner + 1];
+      if ((b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0]) <= 1e-16) continue;
+      const ia = vertex(a), ib = vertex(b), ic = vertex(c);
+      if (ia !== ib && ib !== ic && ic !== ia) topFaces.push(ia, ib, ic);
+    }
+  }
+  for (const layer of [0, 1]) for (const [u, v] of parameterPoints) {
+    const { point, normal } = sample(u, v);
+    point.addScaledVector(normal, layer === 0 ? topOffset(u, v) : backClearance);
+    vertices.push(...point.toArray()); uvs.push(u, v);
+  }
+  const count = parameterPoints.length, indices: number[] = [];
+  const boundary = new Map<string, readonly [number, number]>();
+  for (let face = 0; face < topFaces.length; face += 3) {
+    const a = topFaces[face], b = topFaces[face + 1], c = topFaces[face + 2];
+    indices.push(c, b, a, a + count, b + count, c + count);
+    for (const [from, to] of [[a, b], [b, c], [c, a]]) {
+      const key = from < to ? `${from}/${to}` : `${to}/${from}`;
+      if (boundary.has(key)) boundary.delete(key); else boundary.set(key, [from, to]);
+    }
+  }
+  for (const [a, b] of boundary.values()) indices.push(a, b, a + count, b, b + count, a + count);
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute("position", new THREE.Float32BufferAttribute(vertices, 3));
+  geometry.setAttribute("uv", new THREE.Float32BufferAttribute(uvs, 2));
+  geometry.setIndex(indices); geometry.computeVertexNormals();
+  return geometry;
+}
+
 /** Site-derived golden whale support. It does not replace the site's existing frame,
  * change its camera, or take part in globe picking. The owner keeps every shared
  * buffer and craft map alive until the complete three-whale group is retired. */
@@ -215,29 +346,11 @@ export function createWhaleStandGeometry(quality: GlobeQualityTier): OwnedWhaleS
       }
       return { position, normal: normal.normalize().negate() };
     };
-    const mouthPoints: THREE.Vector3[] = [];
-    for (let point = 0; point <= 20; point++) {
-      const t = point / 20, progress = 0.883 + Math.sin(t * Math.PI) * 0.075;
-      const sample = surfaceAt(progress, 0.5 + t * 0.5);
-      mouthPoints.push(sample.position.addScaledVector(sample.normal, 0.00025));
-    }
-    const mouth = own(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(mouthPoints),
-      quality === "high" ? 40 : quality === "balanced" ? 28 : 20, 0.0021, detail.tube, false));
-    goldSurface(mouth);
-    const recessedCurves: THREE.BufferGeometry[] = [];
-    const throatCount = quality === "high" ? 7 : quality === "balanced" ? 6 : 5;
+    // The continuous casting contains its own depressed mouth and seven
+    // throat channels; the canonical body's buffers remain byte-identical.
+    const lowerJaw = goldSurface(own(createCastLowerJaw(body, detail, quality)));
+    const browCurves: THREE.BufferGeometry[] = [];
     const curveSegments = quality === "high" ? 32 : quality === "balanced" ? 24 : 18;
-    for (let crease = 0; crease < throatCount; crease++) {
-      const startAngle = 0.638 + crease / (throatCount - 1) * 0.224;
-      const points: THREE.Vector3[] = [];
-      for (let step = 0; step <= 16; step++) {
-        const t = step / 16;
-        const sample = surfaceAt(0.59 + t * 0.315, THREE.MathUtils.lerp(startAngle, 0.75, t * 0.33));
-        points.push(sample.position.addScaledVector(sample.normal, 0.00015));
-      }
-      recessedCurves.push(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(points), curveSegments,
-        0.00155, detail.tube, false));
-    }
     for (const side of [-1, 1]) {
       const points: THREE.Vector3[] = [];
       for (let step = 0; step <= 12; step++) {
@@ -245,19 +358,10 @@ export function createWhaleStandGeometry(quality: GlobeQualityTier): OwnedWhaleS
         const sample = surfaceAt(0.804 + t * 0.081, side === 1 ? arc : 0.5 - arc);
         points.push(sample.position.addScaledVector(sample.normal, 0.00015));
       }
-      recessedCurves.push(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(points), curveSegments,
+      browCurves.push(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(points), curveSegments,
         0.0015, detail.tube, false));
     }
-    const throatAndBrows = goldSurface(mergeOwned(recessedCurves));
-    const lipPoints: THREE.Vector3[] = [];
-    for (let step = 0; step <= 20; step++) {
-      const t = step / 20;
-      const sample = surfaceAt(0.883 + Math.sin(t * Math.PI) * 0.075,
-        0.5 + t * 0.5 + Math.sin(t * Math.PI * 2) * 0.012);
-      lipPoints.push(sample.position.addScaledVector(sample.normal, 0.0001));
-    }
-    const lip = goldSurface(own(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(lipPoints),
-      curveSegments, 0.0013, detail.tube, false)));
+    const brows = goldSurface(mergeOwned(browCurves));
     // A closed pavilion, girdle, sloping crown and flat table give the stones
     // real facets. Flat facet normals produce crisp reflections without a
     // transmission pass or any additional light/environment in the scene.
@@ -295,9 +399,8 @@ export function createWhaleStandGeometry(quality: GlobeQualityTier): OwnedWhaleS
       mesh(whale, "whale-left-cast-flipper", leftFin, gold);
       mesh(whale, "whale-right-cast-flipper", rightFin, gold);
       mesh(whale, "whale-swept-dorsal-fin", dorsal, gold);
-      mesh(whale, "whale-seated-mouth-crease", mouth, recess);
-      mesh(whale, "whale-throat-and-brow-creases", throatAndBrows, recess);
-      mesh(whale, "whale-burnished-upper-lip", lip, edge);
+      mesh(whale, "whale-cast-lower-jaw", lowerJaw, gold);
+      mesh(whale, "whale-brow-creases", brows, recess);
       mesh(whale, "whale-rounded-gem-claws", gemSettings, edge);
       for (let side = 0; side < facialSeats.length; side++) {
         const sample = facialSeats[side];

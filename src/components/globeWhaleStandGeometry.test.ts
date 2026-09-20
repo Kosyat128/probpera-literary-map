@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
-import { BufferGeometry, Camera, DataTexture, Group, Light, Line, Mesh, MeshStandardMaterial,
-  Raycaster, Texture, Vector3, type Intersection, type Material } from "three";
+import { Box3, BufferGeometry, Camera, DataTexture, Group, Light, Line, Mesh, MeshStandardMaterial,
+  Raycaster, Texture, Triangle, Vector3, type Intersection, type Material } from "three";
 import { describe, expect, it, vi } from "vitest";
 import { createAntiqueWhaleBodyGeometry } from "./globeAntiqueGeometry";
 import { createIncludedGlobeStand } from "./globeStandGeometry";
@@ -144,6 +144,7 @@ describe("owned three-whale support derived from the canonical globe", () => {
         }
 
         let radius = 0, minimumY = Infinity, maximumY = -Infinity, triangles = 0;
+        const actualBounds = new Box3();
         const point = new Vector3(), raycaster = new Raycaster();
         for (const object of owned.renderables) {
           const positions = object.geometry.getAttribute("position"), index = object.geometry.getIndex();
@@ -158,6 +159,7 @@ describe("owned three-whale support derived from the canonical globe", () => {
           if (index) expect(index.array.every(value => Number.isInteger(value) && value >= 0 && value < positions.count)).toBe(true);
           for (let vertex = 0; vertex < positions.count; vertex++) {
             point.fromBufferAttribute(positions, vertex).applyMatrix4(object.matrixWorld);
+            actualBounds.expandByPoint(point);
             radius = Math.max(radius, Math.hypot(point.x, point.z));
             minimumY = Math.min(minimumY, point.y); maximumY = Math.max(maximumY, point.y);
           }
@@ -174,7 +176,15 @@ describe("owned three-whale support derived from the canonical globe", () => {
         expect(radius).toBeGreaterThan(1.38); expect(radius).toBeLessThanOrEqual(1.4);
         expect(minimumY).toBeLessThan(-1.33); expect(minimumY).toBeGreaterThanOrEqual(-1.36);
         expect(maximumY).toBeGreaterThan(-0.85); expect(maximumY).toBeLessThanOrEqual(-0.78);
-        expect(owned.renderables.length).toBeLessThanOrEqual(70);
+        // Independent before-change world bounds from preserved s13-wh/art-a2
+        // result.json (the three real final cast tiers, not the site reference).
+        const previousTop = { high: -.7922425866127014, balanced: -.7927308082580566, economy: -.7939411401748657 }[tier];
+        const previousBounds = [-1.3834999799728394, -1.3370310889706019, -1.3834999799728394,
+          1.3834999799728394, previousTop, 1.3834999799728394];
+        for (const [coordinate, value] of [...actualBounds.min.toArray(), ...actualBounds.max.toArray()].entries()) {
+          expect(value, `${tier}: original support envelope`).toBeCloseTo(previousBounds[coordinate], 6);
+        }
+        expect(owned.renderables.length).toBe(39);
         allocations.push({ triangles, geometryBytes: [...owned.geometries].reduce((bytes, geometry) => bytes
           + Object.values(geometry.attributes).reduce((sum, attribute) => sum + attribute.array.byteLength, 0)
           + (geometry.getIndex()?.array.byteLength ?? 0), 0) });
@@ -183,6 +193,97 @@ describe("owned three-whale support derived from the canonical globe", () => {
     for (const field of ["geometryBytes", "triangles"] as const) {
       expect(allocations[0][field], field).toBeGreaterThan(allocations[1][field]);
       expect(allocations[1][field], field).toBeGreaterThan(allocations[2][field]);
+    }
+  });
+
+  it("casts closed carved jaws above actual source faces with physical throat valleys at every tier", () => {
+    for (const { tier, longitudinal, radial } of tiers) {
+      const stand = createWhaleStandGeometry(tier);
+      try {
+        const whales = stand.group.children.filter((object): object is Group => object instanceof Group);
+        const jaws = whales.map(whale => whale.getObjectByName("whale-cast-lower-jaw"));
+        for (const jaw of jaws) expect(jaw).toBeInstanceOf(Mesh);
+        expect(new Set(jaws.map(jaw => (jaw as Mesh).geometry)).size).toBe(1);
+        for (const whale of whales) for (const old of ["whale-seated-mouth-crease", "whale-throat-and-brow-creases", "whale-burnished-upper-lip"]) {
+          expect(whale.getObjectByName(old)).toBeUndefined();
+        }
+        const jaw = jaws[0] as Mesh, body = whales[0].getObjectByName("whale-canonical-body") as Mesh;
+        expectClosedCasting(jaw.geometry, `${tier}/actual welded jaw`, false, true);
+        const position = jaw.geometry.getAttribute("position"), uv = jaw.geometry.getAttribute("uv"), index = jaw.geometry.getIndex()!;
+        const bodyPosition = body.geometry.getAttribute("position"), bodyUv = body.geometry.getAttribute("uv"), bodyIndex = body.geometry.getIndex()!;
+        const source = new Triangle(), parameter = new Triangle(), paramPoint = new Vector3(), barycentric = new Vector3();
+        const outward = new Vector3(), base = new Vector3();
+        const sourceFace = (u: number, v: number) => {
+          const row = Math.min(longitudinal - 1, Math.floor(u * longitudinal));
+          const column = Math.min(radial - 1, Math.floor(v * radial));
+          paramPoint.set(u, v, 0);
+          for (let half = 0; half < 2; half++) {
+            const offset = (row * radial + column) * 6 + half * 3;
+            for (const [corner, vector] of [parameter.a, parameter.b, parameter.c].entries()) {
+              const vertex = bodyIndex.getX(offset + corner);
+              vector.set(bodyUv.getX(vertex), bodyUv.getY(vertex), 0);
+              [source.a, source.b, source.c][corner].fromBufferAttribute(bodyPosition, vertex);
+            }
+            parameter.getBarycoord(paramPoint, barycentric);
+            if (Math.min(barycentric.x, barycentric.y, barycentric.z) >= -2e-5) {
+              source.getNormal(outward).negate();
+              base.copy(source.a).multiplyScalar(barycentric.x).addScaledVector(source.b, barycentric.y).addScaledVector(source.c, barycentric.z);
+              return;
+            }
+          }
+          throw new Error(`${tier}: no actual body triangle under jaw`);
+        };
+        // Indexed manifold edges need no positional weld: there are no fake
+        // caps hidden by DoubleSide and no separate raised tube components.
+        const edges = new Map<string, { count: number; direction: number }>();
+        const a = new Vector3(), b = new Vector3(), c = new Vector3(), cross = new Vector3(), ab = new Vector3(), ac = new Vector3();
+        let minimumClearance = Infinity, minimumBarycentric = Infinity, volume = 0, finiteNormals = true;
+        const jawNormals = jaw.geometry.getAttribute("normal");
+        for (let offset = 0; offset < index.count; offset += 3) {
+          const ids = [index.getX(offset), index.getX(offset + 1), index.getX(offset + 2)];
+          a.fromBufferAttribute(position, ids[0]); b.fromBufferAttribute(position, ids[1]); c.fromBufferAttribute(position, ids[2]);
+          sourceFace(ids.reduce((sum, id) => sum + uv.getX(id), 0) / 3, ids.reduce((sum, id) => sum + uv.getY(id), 0) / 3);
+          for (let corner = 0; corner < 3; corner++) {
+            const id = ids[corner], point = [a, b, c][corner];
+            parameter.getBarycoord(paramPoint.set(uv.getX(id), uv.getY(id), 0), barycentric);
+            minimumBarycentric = Math.min(minimumBarycentric, barycentric.x, barycentric.y, barycentric.z);
+            minimumClearance = Math.min(minimumClearance, ab.subVectors(point, source.a).dot(outward));
+            const from = id, to = ids[(corner + 1) % 3], key = from < to ? `${from}/${to}` : `${to}/${from}`;
+            const edge = edges.get(key) ?? { count: 0, direction: 0 };
+            edge.count++; edge.direction += from < to ? 1 : -1; edges.set(key, edge);
+            finiteNormals &&= Math.abs(ac.fromBufferAttribute(jawNormals, id).length() - 1) < 1e-5;
+          }
+          volume += a.dot(cross.crossVectors(b, c)) / 6;
+        }
+        expect([...edges.values()].every(edge => edge.count === 2 && edge.direction === 0), `${tier}: closed indexed manifold`).toBe(true);
+        expect(volume, `${tier}: outward solid`).toBeGreaterThan(1e-8);
+        expect(finiteNormals, `${tier}: finite unit normals`).toBe(true);
+        expect(minimumBarycentric, `${tier}: no face bridging a source triangle`).toBeGreaterThanOrEqual(-5e-5);
+        // On one source plane the distance is affine: its minimum on the entire
+        // jaw triangle is at a vertex, including underside and outline walls.
+        expect(minimumClearance, `${tier}: whole-face clearance above the actual body`).toBeGreaterThan(.00025);
+
+        // Ray-intersect the real front surface along a transverse throat cut.
+        // Valleys must have depth relative to neighbours, not just dark colour.
+        const probe = new Mesh(jaw.geometry, jaw.material); probe.updateMatrixWorld(true);
+        const ray = new Raycaster(), heights: number[] = [];
+        for (let sample = 0; sample <= 140; sample++) {
+          sourceFace(.72, .626 + sample / 140 * .248);
+          const origin = base.clone().addScaledVector(outward, .02);
+          ray.set(origin, outward.clone().negate());
+          const hits = ray.intersectObject(probe, false);
+          expect(hits.length, `${tier}: physical jaw ray hit`).toBeGreaterThan(0);
+          heights.push(.02 - hits[0].distance);
+        }
+        let valleys = 0, lastValley = -10;
+        for (let sample = 3; sample < heights.length - 3; sample++) {
+          if (sample - lastValley < 6 || heights[sample] > heights[sample - 1] || heights[sample] > heights[sample + 1]) continue;
+          if (Math.min(heights[sample - 3], heights[sample + 3]) - heights[sample] > .0004) {
+            valleys++; lastValley = sample;
+          }
+        }
+        expect(valleys, `${tier}: separately carved throat channels`).toBe(7);
+      } finally { stand.dispose(); }
     }
   });
 

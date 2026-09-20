@@ -185,9 +185,12 @@ export function createGlobeCraftMaterials(quality: GlobeQualityTier): GlobeCraft
       const wall = 0.145 + (noise(u, v, 3, 3, 157) - 0.5) * 0.05 * latitude;
       const ceiling = Math.pow(1 - v, 3) * 0.14;
       const floor = smooth(clamp((v - 0.63) / 0.29)) * 0.05;
+      // The authored field runs from ceiling to floor. DataTexture does not
+      // flip rows, while Three's equirectangular +Y direction samples v=1.
+      const textureRow = size / 2 - 1 - y;
       reflectionBytes.set([Math.round(clamp(wall + ceiling * 0.94 + floor + daylight * 0.85) * 255),
         Math.round(clamp(wall + ceiling + floor * 0.65 + daylight * 0.94) * 255),
-        Math.round(clamp(wall + ceiling * 1.06 + floor * 0.40 + daylight) * 255), 255], (y * size + x) * 4);
+        Math.round(clamp(wall + ceiling * 1.06 + floor * 0.40 + daylight) * 255), 255], (textureRow * size + x) * 4);
     }
     const reflection = texture(reflectionBytes, size, size / 2, "window-reflections", true);
     reflection.mapping = THREE.EquirectangularReflectionMapping;

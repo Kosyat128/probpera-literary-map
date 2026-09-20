@@ -1,5 +1,5 @@
-import { DataTexture, EquirectangularReflectionMapping, MeshStandardMaterial, NoColorSpace,
-  RGBAFormat, SRGBColorSpace, Texture, UnsignedByteType } from "three";
+import { Color, DataTexture, EquirectangularReflectionMapping, MeshStandardMaterial, NoColorSpace,
+  RGBAFormat, SRGBColorSpace, Texture, UnsignedByteType, Vector3 } from "three";
 import { describe, expect, it, vi } from "vitest";
 import { createHash } from "node:crypto";
 import { createGlobeCraftMaterials } from "./globeCraftMaterials";
@@ -46,6 +46,35 @@ describe("owned authored craft maps", () => {
       expect(palette.wood.map).toBe(palette.darkWood.map);
       expect(palette.wood.normalMap).toBe(palette.darkWood.normalMap);
       expect(new Set(materials.map(material => material.envMap)).size).toBe(1);
+      const reflection = palette.brass.envMap as DataTexture;
+      expect(reflection.flipY).toBe(false);
+      const { width, height, data } = reflection.image, pixels = data as Uint8Array, linear = new Color();
+      const luminance = (x: number, y: number) => {
+        const offset = (y * width + x) * 4;
+        linear.setRGB(pixels[offset] / 255, pixels[offset + 1] / 255, pixels[offset + 2] / 255, SRGBColorSpace);
+        return linear.r * 0.2126 + linear.g * 0.7152 + linear.b * 0.0722;
+      };
+      // Sample the actual texture using Three's equirectangular direction
+      // convention, independently of the procedural field's row order.
+      const sample = (direction: Vector3) => {
+        const unit = direction.clone().normalize();
+        const u = Math.atan2(unit.z, unit.x) / (Math.PI * 2) + 0.5;
+        const v = Math.asin(unit.y) / Math.PI + 0.5;
+        return luminance(Math.min(width - 1, Math.floor(u * width)), Math.min(height - 1, Math.floor(v * height)));
+      };
+      const ceiling = sample(new Vector3(0, 1, 0));
+      expect(ceiling).toBeGreaterThan(sample(new Vector3(0, -1, 0)));
+      let brightest = -1, windowX = 0, windowY = 0;
+      for (let y = 0; y < height; y++) for (let x = 0; x < width; x++) {
+        const value = luminance(x, y);
+        if (value > brightest) { brightest = value; windowX = x; windowY = y; }
+      }
+      const longitude = ((windowX + 0.5) / width - 0.5) * Math.PI * 2;
+      const latitude = ((windowY + 0.5) / height - 0.5) * Math.PI;
+      const windowDirection = new Vector3(Math.cos(latitude) * Math.cos(longitude), Math.sin(latitude), Math.cos(latitude) * Math.sin(longitude));
+      expect(windowDirection.y).toBeGreaterThan(0);
+      expect(brightest).toBeGreaterThan(ceiling);
+      expect(sample(windowDirection)).toBeGreaterThan(sample(windowDirection.clone().setY(-windowDirection.y)));
       expect(textures.size).toBe(16);
       expect(palette.brass.metalness).toBe(1);
       expect(palette.brass.metalnessMap).toBe(palette.brass.roughnessMap);
