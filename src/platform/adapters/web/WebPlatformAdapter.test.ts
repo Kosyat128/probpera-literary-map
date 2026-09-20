@@ -17,7 +17,7 @@ const BOOKY = "probpera-booky-adult-v1";
 const compositionRecord = () => ({ schemaVersion: 1, commitId: "adapter-fixture:1", selection: {
   editionId: "rand-mcnally-1887", standId: "stand.base.wood", backgroundId: "background.base.library",
 } });
-const bookyRecord = () => ({ schemaVersion: 1, audience: "adult", visible: true, resume: { route: "overview", stepId: "search" } });
+const bookyRecord = () => ({ schemaVersion: 2, audience: "adult", visible: true, resume: { route: "overview", routeVersion: 1, stepId: "search" }, progress: [] });
 
 function memoryStorage(): Storage {
   const entries = new Map<string, string>();
@@ -286,12 +286,34 @@ describe("browser capabilities and subscription lifetime", () => {
 });
 
 describe("non-secret best-effort canonical preferences", () => {
+  it("preserves raw v1 reads and distinguishes future Booky formats without rewriting local storage", async () => {
+    const env = browserEnvironment(), storage = env.browser.localStorage;
+    const store = createWebPlatformAdapter({ window: env.browser }).preferences;
+    const legacy = JSON.stringify({ schemaVersion: 1, audience: "adult", visible: true,
+      resume: { route: "overview", stepId: "search" } }, null, 2);
+    storage.setItem(BOOKY, legacy); vi.mocked(storage.setItem).mockClear();
+    expect(await store.get(BOOKY)).toBe(legacy);
+    expect(await store.set(BOOKY, legacy)).toBe(false);
+    expect(storage.setItem).not.toHaveBeenCalled(); expect(storage.getItem(BOOKY)).toBe(legacy);
+    for (const record of [{ schemaVersion: 99, futureField: "private future content" },
+      { ...bookyRecord(), resume: { route: "overview", routeVersion: 99, stepId: "search" } },
+      { ...bookyRecord(), resume: { route: "future-tour", routeVersion: 1, stepId: "search" } }]) {
+      const raw = JSON.stringify(record); storage.setItem(BOOKY, raw); vi.mocked(storage.setItem).mockClear();
+      await expect(store.get(BOOKY)).rejects.toMatchObject({
+        name: "BookyPreferenceUnsupportedError", message: "booky-preference-unsupported",
+      });
+      expect(await store.set(BOOKY, raw)).toBe(false);
+      expect(storage.getItem(BOOKY)).toBe(raw); expect(storage.setItem).not.toHaveBeenCalled();
+    }
+    expect(storage.removeItem).not.toHaveBeenCalled();
+  });
+
   it("round-trips only exact adult Booky records without widening browser profile or JSON authority", async () => {
     const env = browserEnvironment(), store = createWebPlatformAdapter({ window: env.browser }).preferences;
     const fresh = createWebPlatformAdapter({ window: env.browser }).preferences, storage = env.browser.localStorage;
     expect(storage.getItem).not.toHaveBeenCalled(); expect(await store.get(BOOKY)).toBeNull();
-    for (const record of [bookyRecord(), { ...bookyRecord(), resume: { route: "country-to-book", stepId: "choose-writer" } },
-      { schemaVersion: 1, audience: "adult", visible: false, resume: null }]) {
+    for (const record of [bookyRecord(), { ...bookyRecord(), resume: { route: "country-to-book", routeVersion: 1, stepId: "choose-writer" } },
+      { schemaVersion: 2, audience: "adult", visible: false, resume: null, progress: [] }]) {
       const value = JSON.stringify(record, null, 2);
       expect(await store.set(BOOKY, value)).toBe(true); expect(await fresh.get(BOOKY)).toBe(value);
     }
@@ -302,7 +324,7 @@ describe("non-secret best-effort canonical preferences", () => {
     }
     expect(storage.getItem).not.toHaveBeenCalled(); expect(storage.setItem).not.toHaveBeenCalled(); expect(storage.removeItem).not.toHaveBeenCalled();
     for (const invalid of ["{}", JSON.stringify({ ...bookyRecord(), audience: "child" }),
-      JSON.stringify({ ...bookyRecord(), visible: false }), JSON.stringify({ ...bookyRecord(), countryId: "russia" }),
+      JSON.stringify({ ...bookyRecord(), visible: "hidden" }), JSON.stringify({ ...bookyRecord(), countryId: "russia" }),
       JSON.stringify({ ...bookyRecord(), resume: { route: "overview", stepId: "choose-writer" } })]) {
       const writes = vi.mocked(storage.setItem).mock.calls.length;
       expect(await fresh.set(BOOKY, invalid)).toBe(false); expect(storage.setItem).toHaveBeenCalledTimes(writes);

@@ -5,6 +5,7 @@ import {
 import { DEFAULT_BOOKY_PREFERENCE, parseBookyPreference,
   type BookyPreference, type BookySavedTour } from "./planetMascotPreference";
 import { getBookySupport, type BookySupportInput } from "./bookySupport";
+import { acknowledgeBookyStep, isBookyRouteComplete, type BookyTourProgress } from "./bookyTourProgress";
 
 export type PlanetMascotAuthorBooksStatus = "idle" | "loading" | "applied" | "no-books" | "filtered-empty" | "invalid" | "load-failed";
 export type PlanetMascotContext = Readonly<{
@@ -40,8 +41,9 @@ export type PlanetMascotSnapshot = Readonly<{
   /** Explicit user intent only; context-derived UI transitions do not save. */
   intentRevision: number;
   support: ReturnType<typeof getBookySupport>;
+  progress: readonly BookyTourProgress[];
 }>;
-export type PlanetMascotPreferenceIntent = Readonly<{ revision: number; value: BookyPreference }>;
+export type PlanetMascotPreferenceIntent = Readonly<{ revision: number; value: BookyPreference; allowOverwrite: boolean; resumeExplicit: boolean }>;
 type State = Pick<PlanetMascotSnapshot, "visibility" | "panel" | "mode" | "route" | "step">
   & Partial<Pick<PlanetMascotSnapshot, "completedRoute" | "resumeOffer">>;
 const resting: State = Object.freeze({ visibility: "hidden", panel: "closed", mode: "help", route: null, step: 0 });
@@ -50,10 +52,12 @@ const resting: State = Object.freeze({ visibility: "hidden", panel: "closed", mo
  * timers, background activity, content generation or child authorization. */
 export function createPlanetMascotController() {
   let context: PlanetMascotContext | null = null, disposed = false;
-  let preferenceIntent: PlanetMascotPreferenceIntent = Object.freeze({ revision: 0, value: DEFAULT_BOOKY_PREFERENCE });
+  let preferenceIntent: PlanetMascotPreferenceIntent = Object.freeze({ revision: 0, value: DEFAULT_BOOKY_PREFERENCE,
+    allowOverwrite: false, resumeExplicit: false });
+  let resumeIntentRevision = 0, resetIntentRevision = 0;
   let snapshot: PlanetMascotSnapshot = Object.freeze({ ...resting, available: false,
     revision: 0, canAdvance: false, highlight: null, completedRoute: null, authorBooksStatus: "idle",
-    resumeOffer: null, intentRevision: 0, support: null });
+    resumeOffer: null, intentRevision: 0, support: null, progress: DEFAULT_BOOKY_PREFERENCE.progress });
   const contentRetries = new Set<"countries" | "books">();
   const listeners = new Set<() => void>();
   const authorized = () => !disposed && context?.enabled === true && context.access === "adult"
@@ -87,7 +91,7 @@ export function createPlanetMascotController() {
       && snapshot.resumeOffer === resumeOffer && snapshot.intentRevision === preferenceIntent.revision
       && snapshot.support === support) return false;
     const next: PlanetMascotSnapshot = Object.freeze({ ...state, available, canAdvance, highlight, completedRoute,
-      authorBooksStatus, resumeOffer, intentRevision: preferenceIntent.revision, support,
+      authorBooksStatus, resumeOffer, intentRevision: preferenceIntent.revision, support, progress: preferenceIntent.value.progress,
       revision: snapshot.revision + 1 });
     snapshot = next;
     for (const listener of [...listeners]) {
@@ -99,21 +103,25 @@ export function createPlanetMascotController() {
     return snapshot === next;
   }
 
-  function accept(state: State, force = false) {
+  function accept(state: State, force = false, progress = preferenceIntent.value.progress, allowOverwrite = false) {
     if (!force && state.visibility === snapshot.visibility && state.panel === snapshot.panel
       && state.mode === snapshot.mode && state.route === snapshot.route && state.step === snapshot.step
       && (state.resumeOffer ?? null) === snapshot.resumeOffer && (state.completedRoute ?? null) === snapshot.completedRoute) return false;
     const activeStep = state.mode === "tour" ? getPlanetMascotStep(state.route, state.step) : null;
-    const value = parseBookyPreference({ schemaVersion: 1, audience: "adult", visible: state.visibility === "shown",
-      resume: state.visibility !== "shown" ? null : activeStep && state.route
-        ? { route: state.route, stepId: activeStep.id } : state.resumeOffer ?? null });
+    const value = parseBookyPreference({ schemaVersion: 2, audience: "adult", visible: state.visibility === "shown",
+      resume: activeStep && state.route
+        ? { route: state.route, routeVersion: PLANET_MASCOT_ROUTES[state.route].version, stepId: activeStep.id }
+        : state.resumeOffer ?? null, progress });
     if (!value) return false;
     const old = preferenceIntent.value;
-    const sameValue = old.visible === value.visible && old.resume?.route === value.resume?.route
-      && old.resume?.stepId === value.resume?.stepId;
+    const sameResume = JSON.stringify(old.resume) === JSON.stringify(value.resume);
+    const sameValue = old.visible === value.visible && sameResume && JSON.stringify(old.progress) === JSON.stringify(value.progress);
     // Establish ownership before notifying even a reentrant listener. Collapsing
     // a panel still fences a late read, although its stored value is unchanged.
-    preferenceIntent = Object.freeze({ revision: preferenceIntent.revision + 1, value: sameValue ? old : value });
+    const revision = preferenceIntent.revision + 1;
+    if (!sameResume || allowOverwrite) resumeIntentRevision = revision;
+    if (allowOverwrite) resetIntentRevision = revision;
+    preferenceIntent = Object.freeze({ revision, value: sameValue ? old : value, allowOverwrite, resumeExplicit: resumeIntentRevision > 0 });
     return publish(state, true);
   }
 
@@ -135,7 +143,8 @@ export function createPlanetMascotController() {
 
   function finish(revision = snapshot.revision) {
     if (!opened() || !current(revision) || snapshot.mode !== "tour") return false;
-    return accept({ visibility: "shown", panel: "open", mode: "help", route: null, step: 0 });
+    return accept({ visibility: "shown", panel: "open", mode: "help", route: null, step: 0,
+      resumeOffer: preferenceIntent.value.resume });
   }
 
   return Object.freeze({
@@ -146,8 +155,36 @@ export function createPlanetMascotController() {
         || expectedIntentRevision !== preferenceIntent.revision) return false;
       const record = parseBookyPreference(value);
       if (!record) return false;
-      preferenceIntent = Object.freeze({ revision: preferenceIntent.revision, value: record });
+      preferenceIntent = Object.freeze({ revision: preferenceIntent.revision, value: record, allowOverwrite: false,
+        resumeExplicit: resumeIntentRevision > 0 });
       return publish({ ...resting, visibility: record.visible ? "shown" : "hidden", resumeOffer: record.resume }, true);
+    },
+    adoptPendingPreference(value: unknown, expectedRevision: number, resumeExplicit: boolean) {
+      if (!eligible() || !Number.isSafeInteger(expectedRevision) || expectedRevision !== preferenceIntent.revision
+        || typeof resumeExplicit !== "boolean") return false;
+      const record = parseBookyPreference(value);
+      if (!record) return false;
+      const revision = preferenceIntent.revision + 1;
+      if (resumeExplicit) resumeIntentRevision = revision;
+      preferenceIntent = Object.freeze({ revision, value: record, allowOverwrite: false, resumeExplicit });
+      return publish({ ...resting, visibility: record.visible ? "shown" : "hidden", resumeOffer: record.resume }, true);
+    },
+    mergePreference(value: unknown, readRevision: number) {
+      if (!eligible() || !Number.isSafeInteger(readRevision) || readRevision < 0
+        || readRevision >= preferenceIntent.revision || resetIntentRevision > readRevision) return false;
+      const record = parseBookyPreference(value);
+      if (!record) return false;
+      // A late authoritative read must not undo current visibility/navigation,
+      // nor may the local visibility choice erase previously saved progress.
+      const merged = new Map<string, BookyTourProgress>();
+      for (const entry of [...record.progress, ...preferenceIntent.value.progress]) {
+        const key = `${entry.route}:${entry.routeVersion}`, previous = merged.get(key);
+        merged.set(key, { ...entry, acknowledgedStepIds: [...new Set([
+          ...(previous?.acknowledgedStepIds ?? []), ...entry.acknowledgedStepIds,
+        ])] });
+      }
+      return accept({ ...snapshot, resumeOffer: resumeIntentRevision > readRevision
+        ? snapshot.resumeOffer : record.resume }, true, [...merged.values()]);
     },
     subscribe(listener: () => void) {
       if (disposed) return () => undefined;
@@ -186,16 +223,17 @@ export function createPlanetMascotController() {
     },
     show() {
       if (!eligible() || snapshot.visibility === "shown") return false;
-      return accept({ ...resting, visibility: "shown", resumeOffer: snapshot.resumeOffer });
+      return accept({ ...resting, visibility: "shown", resumeOffer: snapshot.resumeOffer ?? preferenceIntent.value.resume });
     },
     hide() {
       if (!eligible()) return false;
-      return accept(resting);
+      return accept({ ...resting, resumeOffer: preferenceIntent.value.resume });
     },
     togglePanel() {
       if (!eligible()) return false;
       return accept({ visibility: "shown", mode: snapshot.mode, route: snapshot.route, step: snapshot.step,
-        completedRoute: snapshot.completedRoute, resumeOffer: snapshot.resumeOffer,
+        completedRoute: snapshot.completedRoute, resumeOffer: snapshot.mode === "tour" ? null
+          : snapshot.resumeOffer ?? preferenceIntent.value.resume,
         panel: snapshot.visibility === "shown" && snapshot.panel === "open" ? "closed" : "open" });
     },
     start(route: PlanetMascotRoute) {
@@ -220,17 +258,27 @@ export function createPlanetMascotController() {
     },
     next(revision = snapshot.revision) {
       if (!opened() || !current(revision) || snapshot.mode !== "tour" || !snapshot.route || !snapshot.canAdvance) return false;
+      const route = snapshot.route, definition = PLANET_MASCOT_ROUTES[route];
+      const progress = acknowledgeBookyStep(preferenceIntent.value.progress, route, definition.steps[snapshot.step].id);
       if (snapshot.step + 1 === PLANET_MASCOT_ROUTES[snapshot.route].steps.length) {
+        const complete = isBookyRouteComplete(progress, route);
+        const acknowledged = progress.find(entry => entry.route === route && entry.routeVersion === definition.version)?.acknowledgedStepIds ?? [];
+        const firstPending = definition.steps.find(step => !acknowledged.includes(step.id));
         return accept({ visibility: "shown", panel: "open", mode: "help", route: null, step: 0,
-          completedRoute: snapshot.route });
+          completedRoute: complete ? route : null, resumeOffer: firstPending
+            ? { route, routeVersion: definition.version, stepId: firstPending.id } : null }, true, progress);
       }
-      return accept({ visibility: "shown", panel: "open", mode: "tour", route: snapshot.route, step: snapshot.step + 1 });
+      return accept({ visibility: "shown", panel: "open", mode: "tour", route, step: snapshot.step + 1 }, true, progress);
     },
     back(revision = snapshot.revision) {
       if (!opened() || !current(revision) || snapshot.mode !== "tour" || !snapshot.route || snapshot.step === 0) return false;
       return accept({ visibility: "shown", panel: "open", mode: "tour", route: snapshot.route, step: snapshot.step - 1 });
     },
     finish,
+    resetSavedProgress(revision = snapshot.revision) {
+      if (!eligible() || !current(revision)) return false;
+      return accept({ ...resting, visibility: snapshot.visibility, panel: snapshot.panel }, true, [], true);
+    },
     canAct,
     retryContent(target: "countries" | "books", revision: number, callback: () => void) {
       if (!opened() || !current(revision) || contentRetries.has(target)

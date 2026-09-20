@@ -15,7 +15,8 @@ import { GLOBE_EDITION_IDS } from "../../../planet/editions";
 import { GLOBE_STAND_IDS, GLOBE_STAND_PREFERENCE_KEY } from "../../../planet/globeStands";
 import { GLOBE_BACKGROUND_IDS, GLOBE_BACKGROUND_PREFERENCE_KEY } from "../../../planet/globeBackgrounds";
 import { GLOBE_COMPOSITION_PREFERENCE_KEY, parseGlobeComposition } from "../../../planet/globeComposition";
-import { BOOKY_PREFERENCE_KEY, parseBookyPreference } from "../../../host/planetMascotPreference";
+import { BOOKY_PREFERENCE_KEY, BookyPreferenceUnsupportedError, decodeBookyPreference,
+  isUnsupportedBookyPreference, parseBookyPreference } from "../../../host/planetMascotPreference";
 
 type EventHost = Pick<EventTarget, "addEventListener" | "removeEventListener">;
 export interface WebAdapterConnection extends EventHost { readonly type?: string; }
@@ -106,10 +107,13 @@ export function createWebPlatformAdapter(
         // explicit browser port and never mistakes an unavailable read for null.
         try {
           const value = strictWebStorage("local", browser as Pick<Window, "localStorage" | "sessionStorage"> | null).getItem(key);
+          if (key === BOOKY_PREFERENCE_KEY && typeof value === "string" && isUnsupportedBookyPreference(value)) throw new BookyPreferenceUnsupportedError();
           if (value !== null && (key === BOOKY_PREFERENCE_KEY ? typeof value !== "string" || !parseBookyPreference(value)
             : key === GLOBE_COMPOSITION_PREFERENCE_KEY ? !parseGlobeComposition(value) : !preferenceValues.get(key)?.includes(value))) throw new Error();
           return value;
-        } catch { throw new Error(key === BOOKY_PREFERENCE_KEY ? "booky-preference-unavailable" : key === GLOBE_COMPOSITION_PREFERENCE_KEY ? "composition-preference-unavailable"
+        } catch (error) {
+          if (error instanceof BookyPreferenceUnsupportedError) throw error;
+          throw new Error(key === BOOKY_PREFERENCE_KEY ? "booky-preference-unavailable" : key === GLOBE_COMPOSITION_PREFERENCE_KEY ? "composition-preference-unavailable"
           : key === GLOBE_STAND_PREFERENCE_KEY || key === GLOBE_BACKGROUND_PREFERENCE_KEY
             ? "customization-preference-unavailable" : "edition-preference-unavailable"); }
       }
@@ -120,7 +124,7 @@ export function createWebPlatformAdapter(
     },
     async set(key: string, value: string) {
       if (key === BOOKY_PREFERENCE_KEY || key === GLOBE_COMPOSITION_PREFERENCE_KEY) {
-        if (key === BOOKY_PREFERENCE_KEY ? typeof value !== "string" || !parseBookyPreference(value) : !parseGlobeComposition(value)) return false;
+        if (key === BOOKY_PREFERENCE_KEY ? typeof value !== "string" || decodeBookyPreference(value)?.sourceSchemaVersion !== 2 : !parseGlobeComposition(value)) return false;
         try {
           const storage = strictWebStorage("local", browser as Pick<Window, "localStorage" | "sessionStorage"> | null);
           storage.setItem(key, value);

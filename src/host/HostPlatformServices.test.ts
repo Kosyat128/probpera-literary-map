@@ -18,7 +18,7 @@ const MAIL = "mailto:probperasite@yandex.ru";
 const compositionRecord = () => ({ schemaVersion: 1, commitId: "adapter-fixture:1", selection: {
   editionId: "rand-mcnally-1887", standId: "stand.base.wood", backgroundId: "background.base.library",
 } });
-const bookyRecord = () => ({ schemaVersion: 1, audience: "adult", visible: true, resume: { route: "overview", stepId: "search" } });
+const bookyRecord = () => ({ schemaVersion: 2, audience: "adult", visible: true, resume: { route: "overview", routeVersion: 1, stepId: "search" }, progress: [] });
 function deferred<T>() {
   let resolve!: (value: T) => void;
   let reject!: (reason?: unknown) => void;
@@ -504,13 +504,35 @@ describe("native subscription lifetimes and ordering", () => {
 });
 
 describe("exact non-secret preferences with serialized readback", () => {
+  it("preserves raw v1 reads and distinguishes future Booky formats without leaking their contents", async () => {
+    const f = fixture(), store = f.services.preferences;
+    const legacy = JSON.stringify({ schemaVersion: 1, audience: "adult", visible: true,
+      resume: { route: "overview", stepId: "search" } }, null, 2);
+    f.memory.set(BOOKY, legacy);
+    expect(await store.get(BOOKY)).toBe(legacy);
+    expect(await store.set(BOOKY, legacy)).toBe(false);
+    expect(f.preferences.set).not.toHaveBeenCalled(); expect(f.memory.get(BOOKY)).toBe(legacy);
+    for (const record of [{ schemaVersion: 99, futureField: "private future content" },
+      { ...bookyRecord(), resume: { route: "overview", routeVersion: 99, stepId: "search" } },
+      { ...bookyRecord(), resume: { route: "future-tour", routeVersion: 1, stepId: "search" } }]) {
+      const raw = JSON.stringify(record); f.memory.set(BOOKY, raw);
+      await expect(store.get(BOOKY)).rejects.toMatchObject({
+        name: "BookyPreferenceUnsupportedError", message: "booky-preference-unsupported",
+      });
+      expect(await store.set(BOOKY, raw)).toBe(false);
+      expect(f.memory.get(BOOKY)).toBe(raw);
+    }
+    expect(f.preferences.set).not.toHaveBeenCalled(); expect(f.preferences.remove).not.toHaveBeenCalled();
+    expect(JSON.stringify(f.onFailure.mock.calls)).not.toContain("private future content");
+  });
+
   it("round-trips only exact adult Booky records without granting native profile or arbitrary JSON authority", async () => {
     const f = fixture(), store = f.services.preferences;
     const fresh = createHostPlatformServices({ kind: "ios", channel: "dev", languages: [], preferences: f.preferences }).preferences;
     expect(f.preferences.get).not.toHaveBeenCalled();
     expect(await store.get(BOOKY)).toBeNull();
-    for (const record of [bookyRecord(), { ...bookyRecord(), resume: { route: "country-to-book", stepId: "choose-writer" } },
-      { schemaVersion: 1, audience: "adult", visible: false, resume: null }]) {
+    for (const record of [bookyRecord(), { ...bookyRecord(), resume: { route: "country-to-book", routeVersion: 1, stepId: "choose-writer" } },
+      { schemaVersion: 2, audience: "adult", visible: false, resume: null, progress: [] }]) {
       const value = JSON.stringify(record, null, 2);
       expect(await store.set(BOOKY, value)).toBe(true);
       expect(await fresh.get(BOOKY)).toBe(value);
@@ -524,7 +546,7 @@ describe("exact non-secret preferences with serialized readback", () => {
     expect(f.preferences.get).not.toHaveBeenCalled(); expect(f.preferences.set).not.toHaveBeenCalled();
     expect(f.preferences.remove).not.toHaveBeenCalled();
     for (const invalid of ["{}", JSON.stringify({ ...bookyRecord(), audience: "child" }),
-      JSON.stringify({ ...bookyRecord(), visible: false }), JSON.stringify({ ...bookyRecord(), countryId: "russia" }),
+      JSON.stringify({ ...bookyRecord(), visible: "hidden" }), JSON.stringify({ ...bookyRecord(), countryId: "russia" }),
       JSON.stringify({ ...bookyRecord(), resume: { route: "overview", stepId: "choose-writer" } })]) {
       expect(await fresh.set(BOOKY, invalid)).toBe(false);
       f.memory.set(BOOKY, invalid); await expect(fresh.get(BOOKY)).rejects.toThrow("booky-preference-unavailable");
@@ -538,7 +560,7 @@ describe("exact non-secret preferences with serialized readback", () => {
 
   it("serializes Booky readback and reports native failure without erasing or exposing an adult choice", async () => {
     const f = fixture(), store = f.services.preferences, gate = deferred<void>();
-    const first = JSON.stringify(bookyRecord()), latest = JSON.stringify({ schemaVersion: 1, audience: "adult", visible: false, resume: null });
+    const first = JSON.stringify(bookyRecord()), latest = JSON.stringify({ schemaVersion: 2, audience: "adult", visible: false, resume: null, progress: [] });
     f.preferences.set.mockImplementation(async ({ key, value }) => { if (value === first) await gate.promise; f.memory.set(key, value); });
     const writes = [store.set(BOOKY, first), store.set(BOOKY, latest), store.get(BOOKY)];
     await flush(); expect(f.preferences.set).toHaveBeenCalledTimes(1);

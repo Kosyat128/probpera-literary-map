@@ -9,6 +9,8 @@ const ready = (value: Partial<PlanetMascotContext> = {}): PlanetMascotContext =>
 });
 const savedBooks = { schemaVersion: 1, audience: "adult", visible: true,
   resume: { route: "country-to-book", stepId: "open-books" } } as const;
+const migratedBooks = { ...savedBooks, schemaVersion: 2,
+  resume: { ...savedBooks.resume, routeVersion: 1 }, progress: [] } as const;
 
 describe("adult local guided companion", () => {
   it("requires adult permission and explicit showing, cancels on hide or invalidation without resuming", () => {
@@ -138,7 +140,8 @@ describe("adult local guided companion", () => {
     controller.subscribe(() => { throw new Error("Observer failed"); });
     expect(controller.start("overview")).toBe(false);
     expect(later).toEqual(["hidden"]);
-    expect(controller.getPreferenceIntent()).toMatchObject({ revision: 2, value: { visible: false, resume: null } });
+    expect(controller.getPreferenceIntent()).toMatchObject({ revision: 2, value: { visible: false,
+      resume: { route: "overview", routeVersion: 1, stepId: "search" }, progress: [] } });
     expect(controller.getSnapshot().intentRevision).toBe(2);
     expect(controller.act("search", controller.getSnapshot().revision, action)).toBe(false);
     stop(); controller.togglePanel();
@@ -156,7 +159,7 @@ describe("adult local guided companion", () => {
     const controller = createPlanetMascotController(); controller.setContext(ready());
     expect(controller.restorePreference(savedBooks, 0)).toBe(true);
     const restored = controller.getPreferenceIntent();
-    expect(restored.revision).toBe(0); expect(restored.value).toEqual(savedBooks);
+    expect(restored.revision).toBe(0); expect(restored.value).toEqual(migratedBooks);
     expect(restored.value).not.toBe(savedBooks);
     expect(Object.isFrozen(restored)).toBe(true); expect(Object.isFrozen(restored.value.resume)).toBe(true);
     expect(controller.getSnapshot()).toMatchObject({ visibility: "shown", panel: "closed", mode: "help",
@@ -172,7 +175,7 @@ describe("adult local guided companion", () => {
     expect(controller.resume()).toBe(true);
     expect(controller.getSnapshot()).toMatchObject({ panel: "open", mode: "tour", route: "country-to-book",
       step: 0, resumeOffer: null, canAdvance: false });
-    expect(controller.getPreferenceIntent().value.resume).toEqual({ route: "country-to-book", stepId: "choose-country" });
+    expect(controller.getPreferenceIntent().value.resume).toEqual({ route: "country-to-book", routeVersion: 1, stepId: "choose-country" });
 
     const countryOnly = createPlanetMascotController(); countryOnly.setContext(ready({ selectedCountry: true }));
     countryOnly.restorePreference(savedBooks, 0); expect(countryOnly.resume()).toBe(true);
@@ -186,8 +189,10 @@ describe("adult local guided companion", () => {
     expect(writer.next()).toBe(false); // No persisted author-book acknowledgement.
     writer.setContext(ready({ selectedCountry: true, selectedWriter: true, screen: "collection", authorBooksStatus: "applied" }));
     expect(writer.next()).toBe(true);
-    expect(writer.getSnapshot().completedRoute).toBe("country-to-book");
-    expect(writer.getPreferenceIntent().value).toMatchObject({ visible: true, resume: null });
+    expect(writer.getSnapshot().completedRoute).toBeNull();
+    expect(writer.getPreferenceIntent().value).toMatchObject({ visible: true,
+      resume: { route: "country-to-book", routeVersion: 1, stepId: "choose-country" },
+      progress: [{ route: "country-to-book", routeVersion: 1, acknowledgedStepIds: ["open-books"] }] });
   });
 
   it("fences late restoration on explicit toggles and keeps dismissing separate from completing", () => {
@@ -208,11 +213,13 @@ describe("adult local guided companion", () => {
     expect(controller.getSnapshot()).toMatchObject({ mode: "help", resumeOffer: null, completedRoute: null });
     expect(controller.getPreferenceIntent().value).toMatchObject({ visible: true, resume: null });
     controller.start("overview"); controller.next(); controller.finish();
-    expect(controller.getPreferenceIntent().value.resume).toBeNull();
+    expect(controller.getPreferenceIntent().value.resume).toEqual({ route: "overview", routeVersion: 1, stepId: "country" });
     expect(controller.getSnapshot().completedRoute).toBeNull();
     controller.start("overview"); const beforeHide = controller.getPreferenceIntent(); controller.hide();
     expect(controller.restorePreference(offered, beforeHide.revision)).toBe(false);
-    expect(controller.getPreferenceIntent().value).toMatchObject({ visible: false, resume: null });
+    expect(controller.getPreferenceIntent().value).toMatchObject({ visible: false,
+      resume: { route: "overview", routeVersion: 1, stepId: "search" },
+      progress: [{ route: "overview", routeVersion: 1, acknowledgedStepIds: ["search"] }] });
     const stable = controller.getPreferenceIntent(), view = controller.getSnapshot();
     expect(controller.restorePreference({ ...offered, resume: { route: "overview", stepId: "removed-step" } }, stable.revision)).toBe(false);
     expect(controller.restorePreference({ ...savedBooks, audience: "child" }, stable.revision)).toBe(false);
@@ -229,7 +236,7 @@ describe("adult local guided companion", () => {
     controller.start("country-to-book"); controller.next(); controller.next();
     expect(notified).toEqual([[1, 1], [2, 2], [3, 3]]);
     const intent = controller.getPreferenceIntent();
-    expect(intent.value.resume).toEqual(savedBooks.resume);
+    expect(intent.value.resume).toEqual(migratedBooks.resume);
     controller.setContext(ready({ selectedCountry: true, active: false }));
     expect(controller.getSnapshot()).toMatchObject({ panel: "closed", step: 1, canAdvance: false });
     expect(controller.getPreferenceIntent()).toBe(intent);
@@ -252,6 +259,103 @@ describe("adult local guided companion", () => {
 
 // Current loader and connection state may guide recovery, but must never
 // become a persisted user command or proof that a failed page was opened.
+describe("versioned adult navigation acknowledgements", () => {
+  it("records only a successful current Next and keeps acknowledged steps through back, leave and hide", () => {
+    const controller = createPlanetMascotController(); controller.setContext(ready());
+    controller.start("overview");
+    expect(controller.act("search", controller.getSnapshot().revision, vi.fn())).toBe(true);
+    expect(controller.getSnapshot().progress).toEqual([]);
+    const revision = controller.getSnapshot().revision;
+    expect(controller.next(revision)).toBe(true);
+    expect(controller.next(revision)).toBe(false);
+    const acknowledged = [{ route: "overview", routeVersion: 1, acknowledgedStepIds: ["search"] }];
+    expect(controller.getSnapshot().progress).toEqual(acknowledged);
+    controller.back(); controller.next(); // Revisiting is not another acknowledgement.
+    expect(controller.getSnapshot().progress).toEqual(acknowledged);
+    controller.finish();
+    expect(controller.getSnapshot()).toMatchObject({ mode: "help", resumeOffer: { route: "overview", routeVersion: 1, stepId: "country" } });
+    controller.hide();
+    expect(controller.getPreferenceIntent().value).toMatchObject({ visible: false, progress: acknowledged,
+      resume: { route: "overview", routeVersion: 1, stepId: "country" } });
+    controller.togglePanel(); expect(controller.getSnapshot().mode).toBe("help");
+    controller.resume(); expect(controller.getSnapshot().step).toBe(1);
+    controller.start("country-to-book");
+    expect(controller.next()).toBe(false);
+    expect(controller.getSnapshot().progress).toEqual(acknowledged);
+    controller.setContext(ready({ selectedCountry: true })); controller.next();
+    expect(controller.getSnapshot().progress).toHaveLength(2);
+  });
+
+  it("persists full completion only after every required step is acknowledged, without replaying celebration on restore", () => {
+    const controller = createPlanetMascotController(); controller.setContext(ready());
+    controller.start("overview"); controller.next(); controller.next();
+    expect(controller.next()).toBe(false);
+    controller.setContext(ready({ screen: "collection", booksStatus: "loading" }));
+    expect(controller.next()).toBe(false);
+    controller.setContext(ready({ screen: "collection" })); controller.next();
+    controller.setContext(ready()); expect(controller.next()).toBe(true);
+    expect(controller.getSnapshot().completedRoute).toBe("overview");
+    const stored = controller.getPreferenceIntent().value;
+    expect(stored.resume).toBeNull();
+    expect(stored.progress).toEqual([{ route: "overview", routeVersion: 1,
+      acknowledgedStepIds: ["search", "country", "collection", "appearance"] }]);
+    const cold = createPlanetMascotController(); cold.setContext(ready()); cold.restorePreference(stored, 0);
+    expect(cold.getSnapshot()).toMatchObject({ panel: "closed", mode: "help", completedRoute: null, progress: stored.progress });
+    expect(cold.getPreferenceIntent().revision).toBe(0);
+    cold.start("overview"); expect(cold.getSnapshot().step).toBe(0);
+    expect(cold.getSnapshot().progress).toEqual(stored.progress);
+  });
+
+  it("restores hidden progress without permission or selection and resets only on a current explicit action", () => {
+    const controller = createPlanetMascotController(); controller.setContext(ready());
+    const saved = { schemaVersion: 2, audience: "adult", visible: false,
+      resume: { route: "country-to-book", routeVersion: 1, stepId: "open-books" },
+      progress: [{ route: "country-to-book", routeVersion: 1, acknowledgedStepIds: ["choose-country"] }] };
+    expect(controller.restorePreference(saved, 0)).toBe(true);
+    expect(controller.getSnapshot()).toMatchObject({ visibility: "hidden", panel: "closed", mode: "help", progress: saved.progress });
+    controller.show(); expect(controller.getSnapshot().panel).toBe("closed");
+    controller.resume(); expect(controller.getSnapshot()).toMatchObject({ step: 0, canAdvance: false });
+    const stale = controller.getSnapshot().revision;
+    controller.togglePanel(); expect(controller.resetSavedProgress(stale)).toBe(false);
+    controller.setContext(ready({ access: "child" })); expect(controller.resetSavedProgress()).toBe(false);
+    controller.setContext(ready()); controller.togglePanel();
+    expect(controller.resetSavedProgress()).toBe(true);
+    expect(controller.getPreferenceIntent()).toMatchObject({ allowOverwrite: true,
+      value: { schemaVersion: 2, visible: true, resume: null, progress: [] } });
+    expect(controller.getSnapshot()).toMatchObject({ mode: "help", route: null, completedRoute: null });
+    controller.togglePanel(); expect(controller.getPreferenceIntent().allowOverwrite).toBe(false);
+  });
+
+  it("merges a late valid read without undoing a local visibility choice or erasing saved acknowledgements", () => {
+    const controller = createPlanetMascotController(); controller.setContext(ready());
+    const saved = { schemaVersion: 2, audience: "adult", visible: false,
+      resume: { route: "overview", routeVersion: 1, stepId: "country" },
+      progress: [{ route: "overview", routeVersion: 1, acknowledgedStepIds: ["search"] }] };
+    controller.togglePanel();
+    expect(controller.restorePreference(saved, 0)).toBe(false);
+    expect(controller.mergePreference(saved, 0)).toBe(true);
+    expect(controller.getSnapshot()).toMatchObject({ visibility: "shown", panel: "open", mode: "help", resumeOffer: saved.resume });
+    expect(controller.getPreferenceIntent().value).toEqual({ ...saved, visible: true });
+    expect(controller.getPreferenceIntent().allowOverwrite).toBe(false);
+  });
+
+  it("unions independent late progress, preserves the newer tour and never resurrects data after explicit reset", () => {
+    const controller = createPlanetMascotController(); controller.setContext(ready({ selectedCountry: true }));
+    const saved = { schemaVersion: 2, audience: "adult", visible: false,
+      resume: { route: "overview", routeVersion: 1, stepId: "collection" },
+      progress: [{ route: "overview", routeVersion: 1, acknowledgedStepIds: ["search", "country"] }] };
+    controller.start("country-to-book"); controller.next();
+    expect(controller.mergePreference(saved, 0)).toBe(true);
+    expect(controller.getSnapshot()).toMatchObject({ mode: "tour", route: "country-to-book", step: 1, panel: "open" });
+    expect(controller.getPreferenceIntent().value.resume).toEqual({ route: "country-to-book", routeVersion: 1, stepId: "choose-writer" });
+    expect(controller.getSnapshot().progress).toHaveLength(2);
+    const beforeReset = controller.getPreferenceIntent().revision;
+    controller.resetSavedProgress(); controller.hide(); controller.show();
+    expect(controller.mergePreference(saved, beforeReset)).toBe(false);
+    expect(controller.getPreferenceIntent().value).toMatchObject({ visible: true, resume: null, progress: [] });
+  });
+});
+
 describe("Booky recovery from live platform and content state", () => {
   it("requires an open adult panel and a current offered retry, fences duplicate and stale callbacks", () => {
     const controller = createPlanetMascotController();

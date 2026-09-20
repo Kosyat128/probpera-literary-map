@@ -4,7 +4,8 @@ import { GLOBE_EDITION_IDS } from "../planet/editions";
 import { GLOBE_STAND_IDS, GLOBE_STAND_PREFERENCE_KEY } from "../planet/globeStands";
 import { GLOBE_BACKGROUND_IDS, GLOBE_BACKGROUND_PREFERENCE_KEY } from "../planet/globeBackgrounds";
 import { GLOBE_COMPOSITION_PREFERENCE_KEY, parseGlobeComposition } from "../planet/globeComposition";
-import { BOOKY_PREFERENCE_KEY, parseBookyPreference } from "./planetMascotPreference";
+import { BOOKY_PREFERENCE_KEY, BookyPreferenceUnsupportedError, decodeBookyPreference,
+  isUnsupportedBookyPreference, parseBookyPreference } from "./planetMascotPreference";
 
 export interface HostListenerHandle { remove(): void | Promise<void>; }
 export interface HostAppState { readonly isActive: boolean; }
@@ -132,10 +133,14 @@ export function createHostPlatformServices(options: HostPlatformServicesOptions)
     void tail.then(() => { if (preferenceTails.get(key) === tail) preferenceTails.delete(key); });
     return result;
   }
-  async function readPreference(key: string, operation: HostPlatformFailure["operation"]): Promise<{ valid: boolean; value: string | null }> {
+  async function readPreference(key: string, operation: HostPlatformFailure["operation"]): Promise<{ valid: boolean; value: string | null; unsupported?: boolean }> {
     if (!options.preferences) { report(operation, "unavailable"); return { valid: false, value: null }; }
     const result = await options.preferences.get({ key });
     const value = result?.value;
+    if (key === BOOKY_PREFERENCE_KEY && typeof value === "string" && isUnsupportedBookyPreference(value)) {
+      report(operation, "invalid-response");
+      return { valid: false, value: null, unsupported: true };
+    }
     if (value !== null && !permittedPreferenceValue(key, value)) {
       report(operation, "invalid-response");
       return { valid: false, value: null };
@@ -150,10 +155,11 @@ export function createHostPlatformServices(options: HostPlatformServicesOptions)
         || key === "probpera.globe-edition.v2" || key === "probpera.globe-style.v1") {
         // Migration may use a truly absent native preference. A failed read must
         // not authorize an older WebView value to overwrite native storage.
-        return serialPreference<{ valid: boolean; value: string | null }>(
+        return serialPreference<{ valid: boolean; value: string | null; unsupported?: boolean }>(
           key, "preference-get", { valid: false, value: null },
           () => readPreference(key, "preference-get")
         ).then(result => {
+          if (result.unsupported) throw new BookyPreferenceUnsupportedError();
           if (!result.valid) throw new Error(key === BOOKY_PREFERENCE_KEY ? "booky-preference-unavailable" : key === GLOBE_COMPOSITION_PREFERENCE_KEY
             ? "composition-preference-unavailable" : key === GLOBE_STAND_PREFERENCE_KEY || key === GLOBE_BACKGROUND_PREFERENCE_KEY
               ? "customization-preference-unavailable" : "edition-preference-unavailable");
@@ -164,6 +170,7 @@ export function createHostPlatformServices(options: HostPlatformServicesOptions)
     },
     set(key: string, value: string) {
       if (!permittedPreferenceValue(key, value)) return Promise.resolve(false);
+      if (key === BOOKY_PREFERENCE_KEY && decodeBookyPreference(value)?.sourceSchemaVersion !== 2) return Promise.resolve(false);
       return serialPreference(key, "preference-set", false, async () => {
         if (!options.preferences) { report("preference-set", "unavailable"); return false; }
         await options.preferences.set({ key, value });

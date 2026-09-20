@@ -4,6 +4,7 @@ import mascotImage from "../assets/mascots/knizhulyk-green-v1.png";
 import PlanetMascotAvatar from "./PlanetMascotAvatar";
 import type { PlanetMascotController, PlanetMascotSnapshot } from "./planetMascot";
 import type { PlanetMascotPersistenceSnapshot } from "./planetMascotPersistence";
+import { isBookyRouteComplete } from "./bookyTourProgress";
 import { PLANET_MASCOT_ROUTES, getPlanetMascotStep, type PlanetMascotAction,
   type PlanetMascotScreen, type PlanetMascotTarget } from "./planetMascotRoutes";
 import "./PlanetMascotControls.css";
@@ -95,6 +96,8 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
   const id = useId(), root = useRef<HTMLDivElement>(null), card = useRef<HTMLElement>(null);
   const toggle = useRef<HTMLButtonElement>(null), heading = useRef<HTMLHeadingElement>(null);
   const tourHeading = useRef<HTMLHeadingElement>(null), focusAfterNavigation = useRef(false);
+  const resetStart = useRef<HTMLButtonElement>(null), resetConfirm = useRef<HTMLButtonElement>(null);
+  const [resetAtRevision, setResetAtRevision] = useState<number | null>(null);
   const [view, setView] = useState<Rect>(() => typeof window === "undefined"
     ? { left: 0, top: 0, width: 1024, height: 768 } : companionViewport());
   const [petSize, setPetSize] = useState({ width: 176, height: 216 });
@@ -114,6 +117,21 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
   const tour = snapshot.mode === "tour" && step && snapshot.route ? PLANET_MASCOT_ROUTES[snapshot.route] : null;
   const savedTour = snapshot.resumeOffer ? PLANET_MASCOT_ROUTES[snapshot.resumeOffer.route] : null;
   const savedStep = savedTour?.steps.find(value => value.id === snapshot.resumeOffer?.stepId);
+  const acknowledgedCount = (route: "overview" | "country-to-book") => snapshot.progress
+    .find(entry => entry.route === route && entry.routeVersion === PLANET_MASCOT_ROUTES[route].version)?.acknowledgedStepIds.length ?? 0;
+  const progressText = (route: "overview" | "country-to-book") => ru
+    ? `Подтверждено шагов: ${acknowledgedCount(route)} из ${PLANET_MASCOT_ROUTES[route].steps.length}`
+    : `Steps acknowledged: ${acknowledgedCount(route)} of ${PLANET_MASCOT_ROUTES[route].steps.length}`;
+
+  useLayoutEffect(() => {
+    if (!open || !snapshot.available || resetAtRevision !== snapshot.revision) {
+      if (open && snapshot.available && resetConfirm.current?.closest('[role="group"]')?.contains(document.activeElement)) {
+        resetStart.current?.focus();
+      }
+      setResetAtRevision(null);
+    }
+  }, [open, snapshot.available, snapshot.revision, resetAtRevision]);
+  useLayoutEffect(() => { if (resetAtRevision !== null) resetConfirm.current?.focus(); }, [resetAtRevision]);
 
   useLayoutEffect(() => {
     if (shown && snapshot.available) return;
@@ -320,7 +338,10 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
   const persistenceNotice = persistence.state !== "idle" && <div className="planet-mascot-controls__persistence"
     data-planet-mascot-preference-state={persistence.state} role="status" aria-live="polite" aria-atomic="true">
     <p>{persistence.state === "failed"
-      ? persistence.error === "read"
+      ? persistence.error === "unsupported"
+        ? ru ? "Эта версия не может прочитать сохранённые маршруты. Сохранение не изменяется. Обновите приложение или повторите загрузку."
+          : "This version cannot read your saved tours. The saved data is being kept unchanged. Update the app or try loading again."
+      : persistence.error === "read"
         ? ru ? "Не удалось восстановить настройки помощника." : "Could not restore your companion settings."
         : ru ? "Не удалось сохранить ваш выбор." : "Could not save your choice."
       : persistence.state === "loading"
@@ -446,6 +467,9 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
           <p className="planet-mascot-controls__progress">
             {ru ? `Шаг ${snapshot.step + 1} из ${tour.steps.length}` : `Step ${snapshot.step + 1} of ${tour.steps.length}`}
           </p>
+          <p className="planet-mascot-controls__progress" data-booky-tour-progress={snapshot.route!}>
+            {progressText(snapshot.route!)}
+          </p>
           <h3 ref={tourHeading} tabIndex={-1}>{step.title[language]}</h3><p>{step.body[language]}</p>
           <p className="planet-mascot-controls__feedback" data-planet-mascot-step-status={snapshot.canAdvance ? "ready" : "waiting"}
             data-planet-mascot-author-books-status={step.requirement === "collection" ? snapshot.authorBooksStatus : undefined}
@@ -475,7 +499,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
               </button>
               <button type="button" data-planet-mascot-discard-resume=""
                 onClick={() => navigateTips(() => controller.discardResume(snapshot.revision))}>
-                {ru ? "Сбросить маршрут" : "Clear saved tour"}
+                {ru ? "Убрать предложение" : "Dismiss resume offer"}
               </button>
             </div>
           </div>}
@@ -489,7 +513,10 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
             data-planet-mascot-author-books-status={snapshot.authorBooksStatus}>{authorFeedback}</p>}
           <div className="planet-mascot-controls__routes">
             {(["overview", "country-to-book"] as const).map(route => <button key={route} type="button"
-              data-planet-mascot-route={route} onClick={() => navigateTips(() => controller.start(route))}>{PLANET_MASCOT_ROUTES[route].title[language]}</button>)}
+              data-planet-mascot-route={route} onClick={() => navigateTips(() => controller.start(route))}>
+              {isBookyRouteComplete(snapshot.progress, route) ? ru ? "Повторить: " : "Revisit: " : ""}{PLANET_MASCOT_ROUTES[route].title[language]}
+              <span data-booky-tour-progress={route}>{progressText(route)}</span>
+            </button>)}
           </div>
           <div className="planet-mascot-controls__actions">
             {(["search", "books", ...(countryLabel ? ["writer" as const] : []),
@@ -501,6 +528,25 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
           </div>
         </>}
         {persistenceNotice}
+        <div className="planet-mascot-controls__reset">
+          <button ref={resetStart} type="button" data-booky-reset-progress="" className="planet-mascot-controls__quiet"
+            onClick={() => setResetAtRevision(snapshot.revision)}>{ru ? "Сбросить сохранённые маршруты" : "Reset saved tours"}</button>
+          {resetAtRevision !== null && <div role="group" aria-labelledby={`${id}-reset-title`}>
+            <p id={`${id}-reset-title`}>{ru ? "Сбросить всё сохранение маршрутов помощника на этом устройстве? Отменить сброс нельзя."
+              : "Reset all saved companion tours on this device? This cannot be undone."}</p>
+            <button ref={resetConfirm} type="button" data-booky-confirm-reset=""
+              onClick={() => navigateTips(() => {
+                const reset = controller.resetSavedProgress(resetAtRevision);
+                if (reset && card.current) card.current.scrollTop = 0;
+                return reset;
+              })}>
+              {ru ? "Сбросить" : "Reset"}
+            </button>
+            <button type="button" data-booky-cancel-reset="" onClick={() => { setResetAtRevision(null); resetStart.current?.focus(); }}>
+              {ru ? "Отмена" : "Cancel"}
+            </button>
+          </div>}
+        </div>
         </div>
       </section>}
     </div>

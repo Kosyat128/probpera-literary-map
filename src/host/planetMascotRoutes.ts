@@ -14,6 +14,7 @@ export type PlanetMascotStep = Readonly<{
   requirement: "none" | "country" | "writer" | "collection";
 }>;
 export type PlanetMascotRouteDefinition = Readonly<{
+  version: number;
   title: PlanetMascotCopy;
   steps: readonly PlanetMascotStep[];
 }>;
@@ -25,6 +26,7 @@ const step = (value: PlanetMascotStep): PlanetMascotStep => Object.freeze(value)
  * existing visible controls; this module never selects DOM or invents content. */
 export const PLANET_MASCOT_ROUTES: Readonly<Record<PlanetMascotRoute, PlanetMascotRouteDefinition>> = Object.freeze({
   overview: Object.freeze({
+    version: 1,
     title: copy("Знакомство с приложением", "Meet the app"),
     steps: Object.freeze([
       step({ id: "search", title: copy("Найдите интересное", "Find something to read"),
@@ -50,6 +52,7 @@ export const PLANET_MASCOT_ROUTES: Readonly<Record<PlanetMascotRoute, PlanetMasc
     ]),
   }),
   "country-to-book": Object.freeze({
+    version: 1,
     title: copy("От страны к книгам", "From a country to books"),
     steps: Object.freeze([
       step({ id: "choose-country", title: copy("Выберите страну", "Choose a country"),
