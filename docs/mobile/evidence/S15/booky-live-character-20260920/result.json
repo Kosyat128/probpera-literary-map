@@ -1,0 +1,5471 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-20T06:00:42.614Z",
+  "sourceCommit": "9b2ec5885740680f6cdb0ca84c82d7070c0b2535",
+  "stage": "S15",
+  "status": "LIVE_BOOKY_CHARACTER_SCOPED_VALIDATION",
+  "pass": true,
+  "entry": {
+    "path": "docs/mobile/evidence/S15/booky-live-character-20260920/entry.json",
+    "sha256": "da699eff72ad3401939b61784bf5333fd19ef6468fc134518db5f8c081b24505"
+  },
+  "previous": {
+    "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/result.json",
+    "sha256": "72160532d46178adc8357f67c0801d3dbcfee1886b9ab81e02f4ec8c0bb21f45"
+  },
+  "checkpointHelper": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s15-booky-live\\checkpoint.mjs",
+    "sha256": "554b19fa7d66d981e06b9a986c13352bbf282db7a84ed479f3460135c9390004"
+  },
+  "attempts": {
+    "unit": "a4",
+    "static": "a4",
+    "browser": "a3",
+    "pwa": "a1",
+    "android": "a1"
+  },
+  "earlierAttempts": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-live-character-20260920/unit-a1/result.json",
+      "sha256": "d0eff4987ef432747c0065eb5a9981bb10a08e4d03036286d183a05cec8c6d70",
+      "mode": "unit",
+      "attempt": "a1",
+      "pass": false,
+      "tests": {
+        "passed": 2,
+        "failed": 1,
+        "skipped": 0
+      },
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-live-character-20260920/source-manifests/a560c0172b217a12.json",
+        "sha256": "a560c0172b217a128ddf41b8588f71ab9a2850c34faeeeb3b472a32e89e5de64",
+        "fileCount": 92
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-live-character-20260920/unit-a1/execution.json",
+        "sha256": "2e8eb3e4b42b66684331729f7b550a3e0e2975e5004b742b585e71e7f6fbe938"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-live-character-20260920/unit-a1/vitest.json",
+        "sha256": "050a849111949da6f08c4d232a06a01a6e3d8f15283f31b5102b9eb907278056"
+      },
+      "supersededSource": true,
+      "reason": "Failed negative-zero equality in the new pose test; retained unchanged. Final selected case checks the intended zero transform."
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-live-character-20260920/unit-a2/result.json",
+      "sha256": "45d305505f10bb3d01667c5e68239e2c58baa8aea1d10332bc63f7fbb4f8b8a1",
+      "mode": "unit",
+      "attempt": "a2",
+      "pass": true,
+      "tests": {
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0
+      },
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-live-character-20260920/source-manifests/8edcb6acb0000057.json",
+        "sha256": "8edcb6acb000005730582d9c973ffa2c7b9ab3940f5f067d2aced1d9e80af83e",
+        "fileCount": 92
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-live-character-20260920/unit-a2/execution.json",
+        "sha256": "a2effcc938cbb90f4a971075e591ac491de07dd590d2cea25c5d94b481732a52"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-live-character-20260920/unit-a2/vitest.json",
+        "sha256": "2c983deba4f1aa46e3301bf7d4c0a4090b0b096004b3f62463c03f86aa4b9986"
+      },
+      "supersededSource": true,
+      "reason": "Earlier attempt retained unchanged; final selected validation is separate."
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-live-character-20260920/unit-a3/result.json",
+      "sha256": "29695af0d482d20bf9979247f84d0db322fc2824ef017c63485fe0d417c0e422",
+      "mode": "unit",
+      "attempt": "a3",
+      "pass": false,
+      "tests": {
+        "passed": 2,
+        "failed": 1,
+        "skipped": 0
+      },
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-live-character-20260920/source-manifests/4531f725ec1e9306.json",
+        "sha256": "4531f725ec1e93066fe6e6f10a97d18d0e32639d9b482c60b4c5c69316b23066",
+        "fileCount": 92
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-live-character-20260920/unit-a3/execution.json",
+        "sha256": "91437367f997b93f1c85e4737294d7cf01b4637b7431096e21cf0a5786563da4"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-live-character-20260920/unit-a3/vitest.json",
+        "sha256": "a52d8c415dfdb9a5ad2c1a944f96e849fef3317d0d6f7e40050388ca906704fb"
+      },
+      "supersededSource": true,
+      "reason": "The detailed revised model exceeded the earlier 40000-triangle threshold. Final reviewed geometry has 45792 triangles; the explicit bounded contract is now 50000 triangles and foot minY above -1.30. Earlier failed budget assertion remains preserved."
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-live-character-20260920/static-a1/result.json",
+      "sha256": "0af12267835b4e5dbd9c4baa3dbd0455b4ad3012e1ae466da5049ec22c8f6e1e",
+      "mode": "static",
+      "attempt": "a1",
+      "pass": false,
+      "tests": null,
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-live-character-20260920/source-manifests/a560c0172b217a12.json",
+        "sha256": "a560c0172b217a128ddf41b8588f71ab9a2850c34faeeeb3b472a32e89e5de64",
+        "fileCount": 92
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-live-character-20260920/static-a1/execution.json",
+        "sha256": "597f9f6eb240b8f4198ae2fd7213b597390b616dab4b36cd059ceee6f6837587"
+      },
+      "rawReport": null,
+      "supersededSource": true,
+      "reason": "Failed bindingParts inference in new model source; explicit BufferGeometry[] annotation corrected it. Failed output retained unchanged."
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-live-character-20260920/static-a2/result.json",
+      "sha256": "dfaea9ea249364ed5ab45f4d5672643de7d2a3d38a09263963c95a48f1b8aaf3",
+      "mode": "static",
+      "attempt": "a2",
+      "pass": true,
+      "tests": null,
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-live-character-20260920/source-manifests/8edcb6acb0000057.json",
+        "sha256": "8edcb6acb000005730582d9c973ffa2c7b9ab3940f5f067d2aced1d9e80af83e",
+        "fileCount": 92
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-live-character-20260920/static-a2/execution.json",
+        "sha256": "5aea48dee0ee063a7922d75662adf30f555a0f20c6e2471cfa12a65fa8495186"
+      },
+      "rawReport": null,
+      "supersededSource": true,
+      "reason": "Earlier attempt retained unchanged; final selected validation is separate."
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-live-character-20260920/static-a3/result.json",
+      "sha256": "8da91ac13c6e0b64cf3d3cdce7ce96d5b7f297c465bee667a935912d8401d4f2",
+      "mode": "static",
+      "attempt": "a3",
+      "pass": true,
+      "tests": null,
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-live-character-20260920/source-manifests/4531f725ec1e9306.json",
+        "sha256": "4531f725ec1e93066fe6e6f10a97d18d0e32639d9b482c60b4c5c69316b23066",
+        "fileCount": 92
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-live-character-20260920/static-a3/execution.json",
+        "sha256": "2af695c166cd14e93269612f79ec7f3703c503dc3d613c76ea4378699ea03ed3"
+      },
+      "rawReport": null,
+      "supersededSource": true,
+      "reason": "Earlier attempt retained unchanged; final selected validation is separate."
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-live-character-20260920/browser-a1/result.json",
+      "sha256": "9fc18bd26d033544c038efd7cd511dff08f6bb7a07889c8d8aa9da7b230415c8",
+      "mode": "browser",
+      "attempt": "a1",
+      "pass": false,
+      "tests": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-live-character-20260920/source-manifests/8edcb6acb0000057.json",
+        "sha256": "8edcb6acb000005730582d9c973ffa2c7b9ab3940f5f067d2aced1d9e80af83e",
+        "fileCount": 92
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-live-character-20260920/browser-a1/execution.json",
+        "sha256": "36885ccc6b8e4735ff556aba4f54363c7a60e79ced6326f06aa7f57f07a4a7e7"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-live-character-20260920/browser-a1/playwright.json",
+        "sha256": "078eaa8984260f4d96d338ab486f41b9757c630b3220efe64f684ec0a7c24f93"
+      },
+      "supersededSource": true,
+      "reason": "Fixture assumed the local animation duration without accounting for the actual global CSS. Failed run retained; the fixture now reads the resolved duration honestly. This earlier visual model was also explicitly rejected by the owner."
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-live-character-20260920/browser-a2/result.json",
+      "sha256": "d4007455997f76dcbbc59740a3d3e2737dce4d4a279a912d8edf063f99ad063a",
+      "mode": "browser",
+      "attempt": "a2",
+      "pass": false,
+      "tests": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-live-character-20260920/source-manifests/4531f725ec1e9306.json",
+        "sha256": "4531f725ec1e93066fe6e6f10a97d18d0e32639d9b482c60b4c5c69316b23066",
+        "fileCount": 92
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-live-character-20260920/browser-a2/execution.json",
+        "sha256": "7126ba59586f59cefc3bcbab680e2e3df533f6bca4a78c5bc019bf0b0b6dfdb8"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-live-character-20260920/browser-a2/playwright.json",
+        "sha256": "d0eea1f11920581d0b1f11c16561fe2e7182f0e6a9ed2c163cda0655a3347258"
+      },
+      "supersededSource": true,
+      "reason": "Actual reduced-motion defect: inline animationName overrode the CSS animation shorthand. Product CSS was corrected with the reduced-motion important override; this failed run is not relabelled as a pass."
+    }
+  ],
+  "runs": {
+    "unit": {
+      "path": "docs/mobile/evidence/S15/booky-live-character-20260920/unit-a4/result.json",
+      "sha256": "19487a1eac644439fc91b8c55293d15a0ede13c7cfb8f16e5f49c5b7753ff4ef",
+      "tests": {
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-live-character-20260920/unit-a4/execution.json",
+        "sha256": "f8cc7419fee2e7339a46282dfbf5a6cf3c2b284c61e309d491dbb76b6e4c7b40"
+      }
+    },
+    "static": {
+      "path": "docs/mobile/evidence/S15/booky-live-character-20260920/static-a4/result.json",
+      "sha256": "359687b7745f49a44daed95bc5af424af4447547849ec77ba466003727e5c47b",
+      "tests": null,
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-live-character-20260920/static-a4/execution.json",
+        "sha256": "eaf3100239685199ce11b6480c2d6f5bc29344eca7f8e11067fa0d996bcfb8e6"
+      }
+    },
+    "browser": {
+      "path": "docs/mobile/evidence/S15/booky-live-character-20260920/browser-a3/result.json",
+      "sha256": "5b1c8a00057aa87029e729f9a0a5fa38f3e956671449daf1af9e82629c53aeb7",
+      "tests": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-live-character-20260920/browser-a3/execution.json",
+        "sha256": "e5e73ad1fdd9b5132063cc5482ee3cc8c1b7e348feb3f8bb7da441b8e59f79bc"
+      }
+    }
+  },
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-live-character-20260920/source-manifests/5174d2bd0cd1e5c1.json",
+    "sha256": "5174d2bd0cd1e5c15c222dbb2c1a65b10700abd5717fd7f6f35e4f99fa34f0e3",
+    "fileCount": 92
+  },
+  "unitCount": 3,
+  "unitFiles": [
+    "src/host/bookyModel.test.ts"
+  ],
+  "browserCases": 1,
+  "actualAppCapture": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s15-booky-live\\browser-a3\\booky-live-character-live--d3a75-nical-globe-stays-unchanged\\booky-live-character.json",
+    "sha256": "e137664fa7c67f1325557827c5392f0bd9e80752ba2695bdc296b83bc22dc90d"
+  },
+  "browserAttachment": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s15-booky-live\\browser-a3\\booky-live-character-live--d3a75-nical-globe-stays-unchanged\\attachments\\booky-live-character-source-evidence-63e424397ad829df183afece6e38605747dc92f9.json",
+    "sha256": "e137664fa7c67f1325557827c5392f0bd9e80752ba2695bdc296b83bc22dc90d"
+  },
+  "attachmentBytesMatchOriginal": true,
+  "actualAppObservations": {
+    "baseline": {
+      "selection": {
+        "editionId": "rand-mcnally-1887",
+        "standId": "canonical",
+        "backgroundId": "background.base.site-starfield"
+      },
+      "quality": "high",
+      "mascotObjects": [],
+      "backgroundResource": null,
+      "standCount": 0,
+      "backgroundCount": 0,
+      "surfaceCount": 1,
+      "sameScene": true,
+      "pose": {
+        "position": [
+          -0.22336,
+          2.58914,
+          -1.37654
+        ],
+        "quaternion": [
+          0.04119,
+          0.85577,
+          0.51108,
+          -0.06898
+        ],
+        "zoom": 1,
+        "fov": 43,
+        "target": [
+          0,
+          0,
+          0
+        ]
+      },
+      "url": "https://booky-live-character.test/?country=russia&writer=dostoevsky#atlas",
+      "texture": "aa97c4bd-db3a-4863-8c1c-5a7f54ce88ad",
+      "geometry": "420db76d-e9a8-447b-8319-2d2f496bab28",
+      "uploaded": true,
+      "frame": 9,
+      "gpu": {
+        "calls": 103,
+        "triangles": 110247,
+        "textures": 3,
+        "geometries": 93
+      },
+      "contextLost": false
+    },
+    "desktop": {
+      "character": {
+        "rendererId": 1,
+        "canvasId": "1",
+        "scene": "815bebb7-c96a-420c-beda-759573054c2b",
+        "camera": "0ba70a8f-7174-4fbe-a2bb-9db5b91010e2",
+        "model": "c34853f5-2776-4f04-9bcc-f76bb7254f2c",
+        "independentFromGlobe": true,
+        "renderedFrames": 2,
+        "renderCount": 2,
+        "contextLost": false,
+        "rect": {
+          "left": 1252,
+          "top": 618,
+          "right": 1412,
+          "bottom": 778,
+          "width": 160,
+          "height": 160
+        },
+        "screen": {
+          "left": 1269.986758329983,
+          "top": 636.6501899282358,
+          "right": 1393.6582900980497,
+          "bottom": 762.9394671776731,
+          "minDepth": -0.41895765584332156,
+          "maxDepth": -0.2943517049683946
+        },
+        "finite": true,
+        "triangles": 45792,
+        "meshes": [
+          "booky-front-hardcover",
+          "booky-front-embossed-panel",
+          "booky-gold-cover-tooling",
+          "booky-eye-socket-left",
+          "booky-sclera-left",
+          "booky-iris-left",
+          "booky-pupil-ink-left",
+          "booky-eye-catchlights-left",
+          "booky-sculpted-brow-left",
+          "booky-eye-socket-right",
+          "booky-sclera-right",
+          "booky-iris-right",
+          "booky-pupil-ink-right",
+          "booky-eye-catchlights-right",
+          "booky-sculpted-brow-right",
+          "booky-soft-nose",
+          "booky-smile-cavity",
+          "booky-smile-teeth",
+          "booky-smile-tongue",
+          "booky-lower-lip",
+          "booky-page-block",
+          "booky-layered-leaf-edges",
+          "booky-purple-ribbon",
+          "booky-bound-spine-and-shoes",
+          "booky-legs",
+          "booky-shoe-soles-and-caps",
+          "booky-spine-bands-and-shoe-laces",
+          "booky-left-sleeve",
+          "booky-left-open-glove",
+          "booky-left-cuff",
+          "booky-right-sleeve",
+          "booky-right-grip-glove",
+          "booky-right-cuff",
+          "booky-magnifier-handle",
+          "booky-magnifier-gold-frame",
+          "booky-magnifier-lens",
+          "booky-magnifier-highlight"
+        ],
+        "rig": {
+          "body": {
+            "uuid": "1a25d54b-d1a1-4a28-90d0-1650fea3901e",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "frontCover": {
+            "uuid": "461c08a9-4cd9-438b-8d2c-c8be7502cd19",
+            "position": [
+              -0.56,
+              0,
+              0.18
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "bookmark": {
+            "uuid": "1cc485a2-48cf-4b5c-833e-e88457fe908b",
+            "position": [
+              -0.4,
+              0.754,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "leftArm": {
+            "uuid": "5daaa17d-9f76-464a-93b7-29f2eca9ae37",
+            "position": [
+              -0.551,
+              -0.21,
+              0.02
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "rightArm": {
+            "uuid": "979984a6-5d92-4aa1-93b0-5cac75e77bfb",
+            "position": [
+              0.551,
+              -0.21,
+              0.02
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "eyes": [
+            {
+              "uuid": "3559d792-d80e-4f78-a3f9-fc4cb4a779c1",
+              "position": [
+                0.32500000000000007,
+                0.233,
+                0.09400000000000003
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "uuid": "ab916574-8c3e-455a-99b4-484877770324",
+              "position": [
+                0.795,
+                0.233,
+                0.09400000000000003
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            }
+          ],
+          "pupils": [
+            {
+              "uuid": "1c2c48b0-3c24-4b96-93c1-bb1c87e758a0",
+              "position": [
+                0.008,
+                -0.009,
+                0.046
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "uuid": "0525f52d-465f-44b7-9b70-a2076da371ad",
+              "position": [
+                0.008,
+                -0.009,
+                0.046
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            }
+          ],
+          "brows": [
+            {
+              "uuid": "fc7daca3-8088-4b44-9795-ae9fbc7b0c1a",
+              "position": [
+                0.32500000000000007,
+                0.514,
+                0.09000000000000002
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "uuid": "47520266-d0c1-465f-9078-0b95c3919d1d",
+              "position": [
+                0.795,
+                0.527,
+                0.09000000000000002
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            }
+          ],
+          "mouth": {
+            "uuid": "05f30921-09f9-4ed4-a079-b72888804bdf",
+            "position": [
+              0.56,
+              -0.274,
+              0.08700000000000002
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "bounds": {
+          "min": [
+            -1.1031547198295595,
+            -1.2289999723434448,
+            -0.2459999918937683
+          ],
+          "max": [
+            1.2330233950445901,
+            0.9023478993177414,
+            0.3546184492111206
+          ]
+        },
+        "gpu": {
+          "calls": 37,
+          "triangles": 45792,
+          "textures": 5,
+          "geometries": 35
+        },
+        "resources": {
+          "geometries": [
+            "f7877efb-df82-41c3-afd8-b8c3b76c4e70",
+            "d7edc76e-463c-4751-bd6d-adce98f42318",
+            "04ff1246-240b-4743-bfb2-7a7ba84031a6",
+            "cf0d6002-f37c-4f5b-ba6d-8b6c3bbe3598",
+            "d4dbad6a-34e8-449d-941b-1d0c7d56ee32",
+            "82f81c73-38a8-4daf-80f7-3efd07ec9369",
+            "f1a7d3dc-0e71-4b69-a23a-dbb76deda4d6",
+            "32c48cd7-9729-45a0-af77-60ef6b27fa23",
+            "f97d20e3-cb38-4536-94c1-48528231c25a",
+            "68629ae6-7931-407e-8550-125f1015ef1d",
+            "3ccebf45-5c05-4259-ac5a-88a951a726f6",
+            "6c145483-8e54-4f6a-9ff8-b40cf6c53b5a",
+            "a5004eaa-22a1-45a9-af96-685447040438",
+            "05ec9aa6-c164-4ca5-b132-8405c4197c01",
+            "29c43bcd-e7fa-4160-ad43-557e92ec74af",
+            "a5d9532b-6508-4af6-81ff-f62882785fcd",
+            "5c476225-5b63-4717-9f40-da207de6dc5c",
+            "af1dc87c-0b77-48b0-8c85-addb2f818aac",
+            "f3f330fe-fb1f-48da-9919-23eabf02a20d",
+            "b07767b1-e65c-4b07-bf32-f22db3fcb196",
+            "10b2ae2c-be0f-42cc-b883-c1a7aa925cfc",
+            "f47b7a93-98b6-4f1a-8086-6782ad378818",
+            "3b9fafd1-cb3c-4b80-9182-490e73449503",
+            "2f66cc5c-f419-42f4-8181-9a9f468bf770",
+            "1e81a8d4-098f-46c3-a366-2cdf3b6a0bd7",
+            "3347723c-492e-42fe-88f5-1d1c20a1af47",
+            "000075e0-2521-4d32-b953-1a5542c764b5",
+            "bc84db34-74e4-412c-b087-ca585a095ef0",
+            "24730536-b898-4fff-9888-a9329ac46d8f",
+            "614c96ce-ffe8-46b9-b537-fedd2fe6f8a3",
+            "fec14104-54a3-4b48-acc4-1a43443b89a0",
+            "3978e3d4-8ed9-4cbf-b391-494bb4c691b3",
+            "03bca430-5893-445e-80cf-cc2f0a0ff924",
+            "a2c4fb69-1883-4a95-b133-8bfeab5acbf4",
+            "74027498-ab18-48e1-a329-9c12563d40c3"
+          ],
+          "materials": [
+            "aac7cc65-8fc5-4c21-b066-bde11ad5d577",
+            "2ace64fc-c194-4833-bf25-7f4993c9ceb6",
+            "4310405d-c155-457c-b1b0-3a01d3f74fa3",
+            "bab8cc3d-74fe-4e97-9ddb-f9b54a2e4e54",
+            "c609f9fb-b4f3-444e-847d-3c0f1b6d74e8",
+            "ccedb66e-7dd5-4637-b241-8373570ec27a",
+            "67db954f-8f43-420f-b89b-a8eca38ea9f4",
+            "419fbb06-4151-41e4-a4f0-8ffc09e2f639",
+            "6a6b886b-40f4-42a4-88be-e5c98652b944",
+            "100e2039-41e3-42af-a072-776bc1e79318",
+            "5ca5a0a7-45f7-49ef-86e5-48767dadb9ec",
+            "9bd3e46d-432a-43f0-8f68-1f953aec885b",
+            "c36c622e-e261-4142-bcbd-c6b70bfb8966",
+            "d4aac8fd-5cf0-4104-8073-848b22f6ca31",
+            "daffcb8c-b25a-498d-957b-1e186f5a1101",
+            "fcf8f315-21d2-4ec3-97d8-ce267d9397f3",
+            "d641d0b8-d741-4e84-9f1a-8fd70e5581c5"
+          ],
+          "textures": [
+            "31593cd2-ba8f-4409-b936-cf912d3d9eae",
+            "4990afc0-3cb1-43b4-865d-93a76c734896",
+            "1ee00fe9-e576-4506-a3f7-562d56200292"
+          ]
+        }
+      },
+      "layout": {
+        "viewport": {
+          "width": 1440,
+          "height": 850
+        },
+        "pet": {
+          "left": 1244,
+          "top": 614,
+          "right": 1420,
+          "bottom": 830,
+          "width": 176,
+          "height": 216
+        },
+        "card": {
+          "left": 892,
+          "top": 332.46875,
+          "right": 1232,
+          "bottom": 830,
+          "width": 340,
+          "height": 497.53125
+        },
+        "canvas": {
+          "left": 1252,
+          "top": 618,
+          "right": 1412,
+          "bottom": 778,
+          "width": 160,
+          "height": 160
+        },
+        "overflow": false,
+        "leaf": {
+          "page": 0,
+          "animation": "none",
+          "duration": "0.22s",
+          "transform": "none",
+          "scrollTop": 0
+        }
+      }
+    },
+    "pointerLook": {
+      "left": {
+        "rendererId": 1,
+        "canvasId": "1",
+        "scene": "815bebb7-c96a-420c-beda-759573054c2b",
+        "camera": "0ba70a8f-7174-4fbe-a2bb-9db5b91010e2",
+        "model": "c34853f5-2776-4f04-9bcc-f76bb7254f2c",
+        "independentFromGlobe": true,
+        "renderedFrames": 26,
+        "renderCount": 25,
+        "contextLost": false,
+        "rect": {
+          "left": 1252,
+          "top": 618,
+          "right": 1412,
+          "bottom": 778,
+          "width": 160,
+          "height": 160
+        },
+        "screen": {
+          "left": 1267.739468506538,
+          "top": 636.8594002518352,
+          "right": 1393.170509179584,
+          "bottom": 762.8483245248128,
+          "minDepth": -0.4156593096082861,
+          "maxDepth": -0.2986847137009613
+        },
+        "finite": true,
+        "triangles": 45792,
+        "meshes": [
+          "booky-front-hardcover",
+          "booky-front-embossed-panel",
+          "booky-gold-cover-tooling",
+          "booky-eye-socket-left",
+          "booky-sclera-left",
+          "booky-iris-left",
+          "booky-pupil-ink-left",
+          "booky-eye-catchlights-left",
+          "booky-sculpted-brow-left",
+          "booky-eye-socket-right",
+          "booky-sclera-right",
+          "booky-iris-right",
+          "booky-pupil-ink-right",
+          "booky-eye-catchlights-right",
+          "booky-sculpted-brow-right",
+          "booky-soft-nose",
+          "booky-smile-cavity",
+          "booky-smile-teeth",
+          "booky-smile-tongue",
+          "booky-lower-lip",
+          "booky-page-block",
+          "booky-layered-leaf-edges",
+          "booky-purple-ribbon",
+          "booky-bound-spine-and-shoes",
+          "booky-legs",
+          "booky-shoe-soles-and-caps",
+          "booky-spine-bands-and-shoe-laces",
+          "booky-left-sleeve",
+          "booky-left-open-glove",
+          "booky-left-cuff",
+          "booky-right-sleeve",
+          "booky-right-grip-glove",
+          "booky-right-cuff",
+          "booky-magnifier-handle",
+          "booky-magnifier-gold-frame",
+          "booky-magnifier-lens",
+          "booky-magnifier-highlight"
+        ],
+        "rig": {
+          "body": {
+            "uuid": "1a25d54b-d1a1-4a28-90d0-1650fea3901e",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              -0.09047619047619049,
+              0.016285714285714285
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "frontCover": {
+            "uuid": "461c08a9-4cd9-438b-8d2c-c8be7502cd19",
+            "position": [
+              -0.56,
+              0,
+              0.18
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "bookmark": {
+            "uuid": "1cc485a2-48cf-4b5c-833e-e88457fe908b",
+            "position": [
+              -0.4,
+              0.754,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "leftArm": {
+            "uuid": "5daaa17d-9f76-464a-93b7-29f2eca9ae37",
+            "position": [
+              -0.551,
+              -0.21,
+              0.02
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "rightArm": {
+            "uuid": "979984a6-5d92-4aa1-93b0-5cac75e77bfb",
+            "position": [
+              0.551,
+              -0.21,
+              0.02
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "eyes": [
+            {
+              "uuid": "3559d792-d80e-4f78-a3f9-fc4cb4a779c1",
+              "position": [
+                0.32500000000000007,
+                0.233,
+                0.09400000000000003
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "uuid": "ab916574-8c3e-455a-99b4-484877770324",
+              "position": [
+                0.795,
+                0.233,
+                0.09400000000000003
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            }
+          ],
+          "pupils": [
+            {
+              "uuid": "1c2c48b0-3c24-4b96-93c1-bb1c87e758a0",
+              "position": [
+                -0.011000000000000003,
+                -0.009,
+                0.046
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "uuid": "0525f52d-465f-44b7-9b70-a2076da371ad",
+              "position": [
+                -0.011000000000000003,
+                -0.009,
+                0.046
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            }
+          ],
+          "brows": [
+            {
+              "uuid": "fc7daca3-8088-4b44-9795-ae9fbc7b0c1a",
+              "position": [
+                0.32500000000000007,
+                0.514,
+                0.09000000000000002
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "uuid": "47520266-d0c1-465f-9078-0b95c3919d1d",
+              "position": [
+                0.795,
+                0.527,
+                0.09000000000000002
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            }
+          ],
+          "mouth": {
+            "uuid": "05f30921-09f9-4ed4-a079-b72888804bdf",
+            "position": [
+              0.56,
+              -0.274,
+              0.08700000000000002
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "bounds": {
+          "min": [
+            -1.123399701383145,
+            -1.238735145114292,
+            -0.3177550130499559
+          ],
+          "max": [
+            1.2138000580798043,
+            0.8994506359999922,
+            0.44346114004241727
+          ]
+        },
+        "gpu": {
+          "calls": 37,
+          "triangles": 45792,
+          "textures": 5,
+          "geometries": 35
+        },
+        "resources": {
+          "geometries": [
+            "f7877efb-df82-41c3-afd8-b8c3b76c4e70",
+            "d7edc76e-463c-4751-bd6d-adce98f42318",
+            "04ff1246-240b-4743-bfb2-7a7ba84031a6",
+            "cf0d6002-f37c-4f5b-ba6d-8b6c3bbe3598",
+            "d4dbad6a-34e8-449d-941b-1d0c7d56ee32",
+            "82f81c73-38a8-4daf-80f7-3efd07ec9369",
+            "f1a7d3dc-0e71-4b69-a23a-dbb76deda4d6",
+            "32c48cd7-9729-45a0-af77-60ef6b27fa23",
+            "f97d20e3-cb38-4536-94c1-48528231c25a",
+            "68629ae6-7931-407e-8550-125f1015ef1d",
+            "3ccebf45-5c05-4259-ac5a-88a951a726f6",
+            "6c145483-8e54-4f6a-9ff8-b40cf6c53b5a",
+            "a5004eaa-22a1-45a9-af96-685447040438",
+            "05ec9aa6-c164-4ca5-b132-8405c4197c01",
+            "29c43bcd-e7fa-4160-ad43-557e92ec74af",
+            "a5d9532b-6508-4af6-81ff-f62882785fcd",
+            "5c476225-5b63-4717-9f40-da207de6dc5c",
+            "af1dc87c-0b77-48b0-8c85-addb2f818aac",
+            "f3f330fe-fb1f-48da-9919-23eabf02a20d",
+            "b07767b1-e65c-4b07-bf32-f22db3fcb196",
+            "10b2ae2c-be0f-42cc-b883-c1a7aa925cfc",
+            "f47b7a93-98b6-4f1a-8086-6782ad378818",
+            "3b9fafd1-cb3c-4b80-9182-490e73449503",
+            "2f66cc5c-f419-42f4-8181-9a9f468bf770",
+            "1e81a8d4-098f-46c3-a366-2cdf3b6a0bd7",
+            "3347723c-492e-42fe-88f5-1d1c20a1af47",
+            "000075e0-2521-4d32-b953-1a5542c764b5",
+            "bc84db34-74e4-412c-b087-ca585a095ef0",
+            "24730536-b898-4fff-9888-a9329ac46d8f",
+            "614c96ce-ffe8-46b9-b537-fedd2fe6f8a3",
+            "fec14104-54a3-4b48-acc4-1a43443b89a0",
+            "3978e3d4-8ed9-4cbf-b391-494bb4c691b3",
+            "03bca430-5893-445e-80cf-cc2f0a0ff924",
+            "a2c4fb69-1883-4a95-b133-8bfeab5acbf4",
+            "74027498-ab18-48e1-a329-9c12563d40c3"
+          ],
+          "materials": [
+            "aac7cc65-8fc5-4c21-b066-bde11ad5d577",
+            "2ace64fc-c194-4833-bf25-7f4993c9ceb6",
+            "4310405d-c155-457c-b1b0-3a01d3f74fa3",
+            "bab8cc3d-74fe-4e97-9ddb-f9b54a2e4e54",
+            "c609f9fb-b4f3-444e-847d-3c0f1b6d74e8",
+            "ccedb66e-7dd5-4637-b241-8373570ec27a",
+            "67db954f-8f43-420f-b89b-a8eca38ea9f4",
+            "419fbb06-4151-41e4-a4f0-8ffc09e2f639",
+            "6a6b886b-40f4-42a4-88be-e5c98652b944",
+            "100e2039-41e3-42af-a072-776bc1e79318",
+            "5ca5a0a7-45f7-49ef-86e5-48767dadb9ec",
+            "9bd3e46d-432a-43f0-8f68-1f953aec885b",
+            "c36c622e-e261-4142-bcbd-c6b70bfb8966",
+            "d4aac8fd-5cf0-4104-8073-848b22f6ca31",
+            "daffcb8c-b25a-498d-957b-1e186f5a1101",
+            "fcf8f315-21d2-4ec3-97d8-ce267d9397f3",
+            "d641d0b8-d741-4e84-9f1a-8fd70e5581c5"
+          ],
+          "textures": [
+            "31593cd2-ba8f-4409-b936-cf912d3d9eae",
+            "4990afc0-3cb1-43b4-865d-93a76c734896",
+            "1ee00fe9-e576-4506-a3f7-562d56200292"
+          ]
+        }
+      },
+      "right": {
+        "rendererId": 1,
+        "canvasId": "1",
+        "scene": "815bebb7-c96a-420c-beda-759573054c2b",
+        "camera": "0ba70a8f-7174-4fbe-a2bb-9db5b91010e2",
+        "model": "c34853f5-2776-4f04-9bcc-f76bb7254f2c",
+        "independentFromGlobe": true,
+        "renderedFrames": 49,
+        "renderCount": 48,
+        "contextLost": false,
+        "rect": {
+          "left": 1252,
+          "top": 618,
+          "right": 1412,
+          "bottom": 778,
+          "width": 160,
+          "height": 160
+        },
+        "screen": {
+          "left": 1272.7241002635276,
+          "top": 636.4600730523797,
+          "right": 1393.5606225984411,
+          "bottom": 763.0234151163528,
+          "minDepth": -0.4216860604918091,
+          "maxDepth": -0.2904589838146572
+        },
+        "finite": true,
+        "triangles": 45792,
+        "meshes": [
+          "booky-front-hardcover",
+          "booky-front-embossed-panel",
+          "booky-gold-cover-tooling",
+          "booky-eye-socket-left",
+          "booky-sclera-left",
+          "booky-iris-left",
+          "booky-pupil-ink-left",
+          "booky-eye-catchlights-left",
+          "booky-sculpted-brow-left",
+          "booky-eye-socket-right",
+          "booky-sclera-right",
+          "booky-iris-right",
+          "booky-pupil-ink-right",
+          "booky-eye-catchlights-right",
+          "booky-sculpted-brow-right",
+          "booky-soft-nose",
+          "booky-smile-cavity",
+          "booky-smile-teeth",
+          "booky-smile-tongue",
+          "booky-lower-lip",
+          "booky-page-block",
+          "booky-layered-leaf-edges",
+          "booky-purple-ribbon",
+          "booky-bound-spine-and-shoes",
+          "booky-legs",
+          "booky-shoe-soles-and-caps",
+          "booky-spine-bands-and-shoe-laces",
+          "booky-left-sleeve",
+          "booky-left-open-glove",
+          "booky-left-cuff",
+          "booky-right-sleeve",
+          "booky-right-grip-glove",
+          "booky-right-cuff",
+          "booky-magnifier-handle",
+          "booky-magnifier-gold-frame",
+          "booky-magnifier-lens",
+          "booky-magnifier-highlight"
+        ],
+        "rig": {
+          "body": {
+            "uuid": "1a25d54b-d1a1-4a28-90d0-1650fea3901e",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0.09047619047619046,
+              -0.016285714285714282
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "frontCover": {
+            "uuid": "461c08a9-4cd9-438b-8d2c-c8be7502cd19",
+            "position": [
+              -0.56,
+              0,
+              0.18
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "bookmark": {
+            "uuid": "1cc485a2-48cf-4b5c-833e-e88457fe908b",
+            "position": [
+              -0.4,
+              0.754,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "leftArm": {
+            "uuid": "5daaa17d-9f76-464a-93b7-29f2eca9ae37",
+            "position": [
+              -0.551,
+              -0.21,
+              0.02
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "rightArm": {
+            "uuid": "979984a6-5d92-4aa1-93b0-5cac75e77bfb",
+            "position": [
+              0.551,
+              -0.21,
+              0.02
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "eyes": [
+            {
+              "uuid": "3559d792-d80e-4f78-a3f9-fc4cb4a779c1",
+              "position": [
+                0.32500000000000007,
+                0.233,
+                0.09400000000000003
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "uuid": "ab916574-8c3e-455a-99b4-484877770324",
+              "position": [
+                0.795,
+                0.233,
+                0.09400000000000003
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            }
+          ],
+          "pupils": [
+            {
+              "uuid": "1c2c48b0-3c24-4b96-93c1-bb1c87e758a0",
+              "position": [
+                0.026999999999999996,
+                -0.009,
+                0.046
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "uuid": "0525f52d-465f-44b7-9b70-a2076da371ad",
+              "position": [
+                0.026999999999999996,
+                -0.009,
+                0.046
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            }
+          ],
+          "brows": [
+            {
+              "uuid": "fc7daca3-8088-4b44-9795-ae9fbc7b0c1a",
+              "position": [
+                0.32500000000000007,
+                0.514,
+                0.09000000000000002
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "uuid": "47520266-d0c1-465f-9078-0b95c3919d1d",
+              "position": [
+                0.795,
+                0.527,
+                0.09000000000000002
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            }
+          ],
+          "mouth": {
+            "uuid": "05f30921-09f9-4ed4-a079-b72888804bdf",
+            "position": [
+              0.56,
+              -0.274,
+              0.08700000000000002
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "bounds": {
+          "min": [
+            -1.0943249558879877,
+            -1.2359829242808515,
+            -0.3024870993878288
+          ],
+          "max": [
+            1.2508697561759572,
+            0.9099473269431269,
+            0.38411655342659573
+          ]
+        },
+        "gpu": {
+          "calls": 37,
+          "triangles": 45792,
+          "textures": 5,
+          "geometries": 35
+        },
+        "resources": {
+          "geometries": [
+            "f7877efb-df82-41c3-afd8-b8c3b76c4e70",
+            "d7edc76e-463c-4751-bd6d-adce98f42318",
+            "04ff1246-240b-4743-bfb2-7a7ba84031a6",
+            "cf0d6002-f37c-4f5b-ba6d-8b6c3bbe3598",
+            "d4dbad6a-34e8-449d-941b-1d0c7d56ee32",
+            "82f81c73-38a8-4daf-80f7-3efd07ec9369",
+            "f1a7d3dc-0e71-4b69-a23a-dbb76deda4d6",
+            "32c48cd7-9729-45a0-af77-60ef6b27fa23",
+            "f97d20e3-cb38-4536-94c1-48528231c25a",
+            "68629ae6-7931-407e-8550-125f1015ef1d",
+            "3ccebf45-5c05-4259-ac5a-88a951a726f6",
+            "6c145483-8e54-4f6a-9ff8-b40cf6c53b5a",
+            "a5004eaa-22a1-45a9-af96-685447040438",
+            "05ec9aa6-c164-4ca5-b132-8405c4197c01",
+            "29c43bcd-e7fa-4160-ad43-557e92ec74af",
+            "a5d9532b-6508-4af6-81ff-f62882785fcd",
+            "5c476225-5b63-4717-9f40-da207de6dc5c",
+            "af1dc87c-0b77-48b0-8c85-addb2f818aac",
+            "f3f330fe-fb1f-48da-9919-23eabf02a20d",
+            "b07767b1-e65c-4b07-bf32-f22db3fcb196",
+            "10b2ae2c-be0f-42cc-b883-c1a7aa925cfc",
+            "f47b7a93-98b6-4f1a-8086-6782ad378818",
+            "3b9fafd1-cb3c-4b80-9182-490e73449503",
+            "2f66cc5c-f419-42f4-8181-9a9f468bf770",
+            "1e81a8d4-098f-46c3-a366-2cdf3b6a0bd7",
+            "3347723c-492e-42fe-88f5-1d1c20a1af47",
+            "000075e0-2521-4d32-b953-1a5542c764b5",
+            "bc84db34-74e4-412c-b087-ca585a095ef0",
+            "24730536-b898-4fff-9888-a9329ac46d8f",
+            "614c96ce-ffe8-46b9-b537-fedd2fe6f8a3",
+            "fec14104-54a3-4b48-acc4-1a43443b89a0",
+            "3978e3d4-8ed9-4cbf-b391-494bb4c691b3",
+            "03bca430-5893-445e-80cf-cc2f0a0ff924",
+            "a2c4fb69-1883-4a95-b133-8bfeab5acbf4",
+            "74027498-ab18-48e1-a329-9c12563d40c3"
+          ],
+          "materials": [
+            "aac7cc65-8fc5-4c21-b066-bde11ad5d577",
+            "2ace64fc-c194-4833-bf25-7f4993c9ceb6",
+            "4310405d-c155-457c-b1b0-3a01d3f74fa3",
+            "bab8cc3d-74fe-4e97-9ddb-f9b54a2e4e54",
+            "c609f9fb-b4f3-444e-847d-3c0f1b6d74e8",
+            "ccedb66e-7dd5-4637-b241-8373570ec27a",
+            "67db954f-8f43-420f-b89b-a8eca38ea9f4",
+            "419fbb06-4151-41e4-a4f0-8ffc09e2f639",
+            "6a6b886b-40f4-42a4-88be-e5c98652b944",
+            "100e2039-41e3-42af-a072-776bc1e79318",
+            "5ca5a0a7-45f7-49ef-86e5-48767dadb9ec",
+            "9bd3e46d-432a-43f0-8f68-1f953aec885b",
+            "c36c622e-e261-4142-bcbd-c6b70bfb8966",
+            "d4aac8fd-5cf0-4104-8073-848b22f6ca31",
+            "daffcb8c-b25a-498d-957b-1e186f5a1101",
+            "fcf8f315-21d2-4ec3-97d8-ce267d9397f3",
+            "d641d0b8-d741-4e84-9f1a-8fd70e5581c5"
+          ],
+          "textures": [
+            "31593cd2-ba8f-4409-b936-cf912d3d9eae",
+            "4990afc0-3cb1-43b4-865d-93a76c734896",
+            "1ee00fe9-e576-4506-a3f7-562d56200292"
+          ]
+        }
+      }
+    },
+    "dragged": {
+      "character": {
+        "rendererId": 1,
+        "canvasId": "1",
+        "scene": "815bebb7-c96a-420c-beda-759573054c2b",
+        "camera": "0ba70a8f-7174-4fbe-a2bb-9db5b91010e2",
+        "model": "c34853f5-2776-4f04-9bcc-f76bb7254f2c",
+        "independentFromGlobe": true,
+        "renderedFrames": 71,
+        "renderCount": 70,
+        "contextLost": false,
+        "rect": {
+          "left": 1182,
+          "top": 588,
+          "right": 1342,
+          "bottom": 748,
+          "width": 160,
+          "height": 160
+        },
+        "screen": {
+          "left": 1199.986758329983,
+          "top": 606.6501899282358,
+          "right": 1323.6582900980497,
+          "bottom": 732.9394671776731,
+          "minDepth": -0.41895765584332156,
+          "maxDepth": -0.2943517049683946
+        },
+        "finite": true,
+        "triangles": 45792,
+        "meshes": [
+          "booky-front-hardcover",
+          "booky-front-embossed-panel",
+          "booky-gold-cover-tooling",
+          "booky-eye-socket-left",
+          "booky-sclera-left",
+          "booky-iris-left",
+          "booky-pupil-ink-left",
+          "booky-eye-catchlights-left",
+          "booky-sculpted-brow-left",
+          "booky-eye-socket-right",
+          "booky-sclera-right",
+          "booky-iris-right",
+          "booky-pupil-ink-right",
+          "booky-eye-catchlights-right",
+          "booky-sculpted-brow-right",
+          "booky-soft-nose",
+          "booky-smile-cavity",
+          "booky-smile-teeth",
+          "booky-smile-tongue",
+          "booky-lower-lip",
+          "booky-page-block",
+          "booky-layered-leaf-edges",
+          "booky-purple-ribbon",
+          "booky-bound-spine-and-shoes",
+          "booky-legs",
+          "booky-shoe-soles-and-caps",
+          "booky-spine-bands-and-shoe-laces",
+          "booky-left-sleeve",
+          "booky-left-open-glove",
+          "booky-left-cuff",
+          "booky-right-sleeve",
+          "booky-right-grip-glove",
+          "booky-right-cuff",
+          "booky-magnifier-handle",
+          "booky-magnifier-gold-frame",
+          "booky-magnifier-lens",
+          "booky-magnifier-highlight"
+        ],
+        "rig": {
+          "body": {
+            "uuid": "1a25d54b-d1a1-4a28-90d0-1650fea3901e",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "frontCover": {
+            "uuid": "461c08a9-4cd9-438b-8d2c-c8be7502cd19",
+            "position": [
+              -0.56,
+              0,
+              0.18
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "bookmark": {
+            "uuid": "1cc485a2-48cf-4b5c-833e-e88457fe908b",
+            "position": [
+              -0.4,
+              0.754,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "leftArm": {
+            "uuid": "5daaa17d-9f76-464a-93b7-29f2eca9ae37",
+            "position": [
+              -0.551,
+              -0.21,
+              0.02
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "rightArm": {
+            "uuid": "979984a6-5d92-4aa1-93b0-5cac75e77bfb",
+            "position": [
+              0.551,
+              -0.21,
+              0.02
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "eyes": [
+            {
+              "uuid": "3559d792-d80e-4f78-a3f9-fc4cb4a779c1",
+              "position": [
+                0.32500000000000007,
+                0.233,
+                0.09400000000000003
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "uuid": "ab916574-8c3e-455a-99b4-484877770324",
+              "position": [
+                0.795,
+                0.233,
+                0.09400000000000003
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            }
+          ],
+          "pupils": [
+            {
+              "uuid": "1c2c48b0-3c24-4b96-93c1-bb1c87e758a0",
+              "position": [
+                0.008,
+                -0.009,
+                0.046
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "uuid": "0525f52d-465f-44b7-9b70-a2076da371ad",
+              "position": [
+                0.008,
+                -0.009,
+                0.046
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            }
+          ],
+          "brows": [
+            {
+              "uuid": "fc7daca3-8088-4b44-9795-ae9fbc7b0c1a",
+              "position": [
+                0.32500000000000007,
+                0.514,
+                0.09000000000000002
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "uuid": "47520266-d0c1-465f-9078-0b95c3919d1d",
+              "position": [
+                0.795,
+                0.527,
+                0.09000000000000002
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            }
+          ],
+          "mouth": {
+            "uuid": "05f30921-09f9-4ed4-a079-b72888804bdf",
+            "position": [
+              0.56,
+              -0.274,
+              0.08700000000000002
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "bounds": {
+          "min": [
+            -1.1031547198295595,
+            -1.2289999723434448,
+            -0.2459999918937683
+          ],
+          "max": [
+            1.2330233950445901,
+            0.9023478993177414,
+            0.3546184492111206
+          ]
+        },
+        "gpu": {
+          "calls": 37,
+          "triangles": 45792,
+          "textures": 5,
+          "geometries": 35
+        },
+        "resources": {
+          "geometries": [
+            "f7877efb-df82-41c3-afd8-b8c3b76c4e70",
+            "d7edc76e-463c-4751-bd6d-adce98f42318",
+            "04ff1246-240b-4743-bfb2-7a7ba84031a6",
+            "cf0d6002-f37c-4f5b-ba6d-8b6c3bbe3598",
+            "d4dbad6a-34e8-449d-941b-1d0c7d56ee32",
+            "82f81c73-38a8-4daf-80f7-3efd07ec9369",
+            "f1a7d3dc-0e71-4b69-a23a-dbb76deda4d6",
+            "32c48cd7-9729-45a0-af77-60ef6b27fa23",
+            "f97d20e3-cb38-4536-94c1-48528231c25a",
+            "68629ae6-7931-407e-8550-125f1015ef1d",
+            "3ccebf45-5c05-4259-ac5a-88a951a726f6",
+            "6c145483-8e54-4f6a-9ff8-b40cf6c53b5a",
+            "a5004eaa-22a1-45a9-af96-685447040438",
+            "05ec9aa6-c164-4ca5-b132-8405c4197c01",
+            "29c43bcd-e7fa-4160-ad43-557e92ec74af",
+            "a5d9532b-6508-4af6-81ff-f62882785fcd",
+            "5c476225-5b63-4717-9f40-da207de6dc5c",
+            "af1dc87c-0b77-48b0-8c85-addb2f818aac",
+            "f3f330fe-fb1f-48da-9919-23eabf02a20d",
+            "b07767b1-e65c-4b07-bf32-f22db3fcb196",
+            "10b2ae2c-be0f-42cc-b883-c1a7aa925cfc",
+            "f47b7a93-98b6-4f1a-8086-6782ad378818",
+            "3b9fafd1-cb3c-4b80-9182-490e73449503",
+            "2f66cc5c-f419-42f4-8181-9a9f468bf770",
+            "1e81a8d4-098f-46c3-a366-2cdf3b6a0bd7",
+            "3347723c-492e-42fe-88f5-1d1c20a1af47",
+            "000075e0-2521-4d32-b953-1a5542c764b5",
+            "bc84db34-74e4-412c-b087-ca585a095ef0",
+            "24730536-b898-4fff-9888-a9329ac46d8f",
+            "614c96ce-ffe8-46b9-b537-fedd2fe6f8a3",
+            "fec14104-54a3-4b48-acc4-1a43443b89a0",
+            "3978e3d4-8ed9-4cbf-b391-494bb4c691b3",
+            "03bca430-5893-445e-80cf-cc2f0a0ff924",
+            "a2c4fb69-1883-4a95-b133-8bfeab5acbf4",
+            "74027498-ab18-48e1-a329-9c12563d40c3"
+          ],
+          "materials": [
+            "aac7cc65-8fc5-4c21-b066-bde11ad5d577",
+            "2ace64fc-c194-4833-bf25-7f4993c9ceb6",
+            "4310405d-c155-457c-b1b0-3a01d3f74fa3",
+            "bab8cc3d-74fe-4e97-9ddb-f9b54a2e4e54",
+            "c609f9fb-b4f3-444e-847d-3c0f1b6d74e8",
+            "ccedb66e-7dd5-4637-b241-8373570ec27a",
+            "67db954f-8f43-420f-b89b-a8eca38ea9f4",
+            "419fbb06-4151-41e4-a4f0-8ffc09e2f639",
+            "6a6b886b-40f4-42a4-88be-e5c98652b944",
+            "100e2039-41e3-42af-a072-776bc1e79318",
+            "5ca5a0a7-45f7-49ef-86e5-48767dadb9ec",
+            "9bd3e46d-432a-43f0-8f68-1f953aec885b",
+            "c36c622e-e261-4142-bcbd-c6b70bfb8966",
+            "d4aac8fd-5cf0-4104-8073-848b22f6ca31",
+            "daffcb8c-b25a-498d-957b-1e186f5a1101",
+            "fcf8f315-21d2-4ec3-97d8-ce267d9397f3",
+            "d641d0b8-d741-4e84-9f1a-8fd70e5581c5"
+          ],
+          "textures": [
+            "31593cd2-ba8f-4409-b936-cf912d3d9eae",
+            "4990afc0-3cb1-43b4-865d-93a76c734896",
+            "1ee00fe9-e576-4506-a3f7-562d56200292"
+          ]
+        }
+      },
+      "layout": {
+        "viewport": {
+          "width": 1440,
+          "height": 850
+        },
+        "pet": {
+          "left": 1174,
+          "top": 584,
+          "right": 1350,
+          "bottom": 800,
+          "width": 176,
+          "height": 216
+        },
+        "card": {
+          "left": 822,
+          "top": 302.46875,
+          "right": 1162,
+          "bottom": 800,
+          "width": 340,
+          "height": 497.53125
+        },
+        "canvas": {
+          "left": 1182,
+          "top": 588,
+          "right": 1342,
+          "bottom": 748,
+          "width": 160,
+          "height": 160
+        },
+        "overflow": false,
+        "leaf": {
+          "page": 0,
+          "animation": "none",
+          "duration": "0.22s",
+          "transform": "none",
+          "scrollTop": 0
+        }
+      }
+    },
+    "guidedTarget": {
+      "character": {
+        "rendererId": 1,
+        "canvasId": "1",
+        "scene": "815bebb7-c96a-420c-beda-759573054c2b",
+        "camera": "0ba70a8f-7174-4fbe-a2bb-9db5b91010e2",
+        "model": "c34853f5-2776-4f04-9bcc-f76bb7254f2c",
+        "independentFromGlobe": true,
+        "renderedFrames": 179,
+        "renderCount": 178,
+        "contextLost": false,
+        "rect": {
+          "left": 1252,
+          "top": 618,
+          "right": 1412,
+          "bottom": 778,
+          "width": 160,
+          "height": 160
+        },
+        "screen": {
+          "left": 1267.4713353531347,
+          "top": 636.8361457443917,
+          "right": 1392.8389124239795,
+          "bottom": 762.8870139820766,
+          "minDepth": -0.41357441307631104,
+          "maxDepth": -0.300851310447932
+        },
+        "finite": true,
+        "triangles": 45792,
+        "meshes": [
+          "booky-front-hardcover",
+          "booky-front-embossed-panel",
+          "booky-gold-cover-tooling",
+          "booky-eye-socket-left",
+          "booky-sclera-left",
+          "booky-iris-left",
+          "booky-pupil-ink-left",
+          "booky-eye-catchlights-left",
+          "booky-sculpted-brow-left",
+          "booky-eye-socket-right",
+          "booky-sclera-right",
+          "booky-iris-right",
+          "booky-pupil-ink-right",
+          "booky-eye-catchlights-right",
+          "booky-sculpted-brow-right",
+          "booky-soft-nose",
+          "booky-smile-cavity",
+          "booky-smile-teeth",
+          "booky-smile-tongue",
+          "booky-lower-lip",
+          "booky-page-block",
+          "booky-layered-leaf-edges",
+          "booky-purple-ribbon",
+          "booky-bound-spine-and-shoes",
+          "booky-legs",
+          "booky-shoe-soles-and-caps",
+          "booky-spine-bands-and-shoe-laces",
+          "booky-left-sleeve",
+          "booky-left-open-glove",
+          "booky-left-cuff",
+          "booky-right-sleeve",
+          "booky-right-grip-glove",
+          "booky-right-cuff",
+          "booky-magnifier-handle",
+          "booky-magnifier-gold-frame",
+          "booky-magnifier-lens",
+          "booky-magnifier-highlight"
+        ],
+        "rig": {
+          "body": {
+            "uuid": "1a25d54b-d1a1-4a28-90d0-1650fea3901e",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              -0.025,
+              -0.1,
+              0.018
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "frontCover": {
+            "uuid": "461c08a9-4cd9-438b-8d2c-c8be7502cd19",
+            "position": [
+              -0.56,
+              0,
+              0.18
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "bookmark": {
+            "uuid": "1cc485a2-48cf-4b5c-833e-e88457fe908b",
+            "position": [
+              -0.4,
+              0.754,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "leftArm": {
+            "uuid": "5daaa17d-9f76-464a-93b7-29f2eca9ae37",
+            "position": [
+              -0.551,
+              -0.21,
+              0.02
+            ],
+            "rotation": [
+              0,
+              0,
+              -0.16
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "rightArm": {
+            "uuid": "979984a6-5d92-4aa1-93b0-5cac75e77bfb",
+            "position": [
+              0.551,
+              -0.21,
+              0.02
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "eyes": [
+            {
+              "uuid": "3559d792-d80e-4f78-a3f9-fc4cb4a779c1",
+              "position": [
+                0.32500000000000007,
+                0.233,
+                0.09400000000000003
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "uuid": "ab916574-8c3e-455a-99b4-484877770324",
+              "position": [
+                0.795,
+                0.233,
+                0.09400000000000003
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            }
+          ],
+          "pupils": [
+            {
+              "uuid": "1c2c48b0-3c24-4b96-93c1-bb1c87e758a0",
+              "position": [
+                -0.013000000000000001,
+                0.007000000000000001,
+                0.046
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "uuid": "0525f52d-465f-44b7-9b70-a2076da371ad",
+              "position": [
+                -0.013000000000000001,
+                0.007000000000000001,
+                0.046
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            }
+          ],
+          "brows": [
+            {
+              "uuid": "fc7daca3-8088-4b44-9795-ae9fbc7b0c1a",
+              "position": [
+                0.32500000000000007,
+                0.527,
+                0.09000000000000002
+              ],
+              "rotation": [
+                0,
+                0,
+                0.035
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "uuid": "47520266-d0c1-465f-9078-0b95c3919d1d",
+              "position": [
+                0.795,
+                0.54,
+                0.09000000000000002
+              ],
+              "rotation": [
+                0,
+                0,
+                -0.035
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            }
+          ],
+          "mouth": {
+            "uuid": "05f30921-09f9-4ed4-a079-b72888804bdf",
+            "position": [
+              0.56,
+              -0.274,
+              0.08700000000000002
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "bounds": {
+          "min": [
+            -1.1416209881143828,
+            -1.2477088935816358,
+            -0.34541700348089616
+          ],
+          "max": [
+            1.2111737018416011,
+            0.9110989564909919,
+            0.4589321368120561
+          ]
+        },
+        "gpu": {
+          "calls": 37,
+          "triangles": 45792,
+          "textures": 5,
+          "geometries": 35
+        },
+        "resources": {
+          "geometries": [
+            "f7877efb-df82-41c3-afd8-b8c3b76c4e70",
+            "d7edc76e-463c-4751-bd6d-adce98f42318",
+            "04ff1246-240b-4743-bfb2-7a7ba84031a6",
+            "cf0d6002-f37c-4f5b-ba6d-8b6c3bbe3598",
+            "d4dbad6a-34e8-449d-941b-1d0c7d56ee32",
+            "82f81c73-38a8-4daf-80f7-3efd07ec9369",
+            "f1a7d3dc-0e71-4b69-a23a-dbb76deda4d6",
+            "32c48cd7-9729-45a0-af77-60ef6b27fa23",
+            "f97d20e3-cb38-4536-94c1-48528231c25a",
+            "68629ae6-7931-407e-8550-125f1015ef1d",
+            "3ccebf45-5c05-4259-ac5a-88a951a726f6",
+            "6c145483-8e54-4f6a-9ff8-b40cf6c53b5a",
+            "a5004eaa-22a1-45a9-af96-685447040438",
+            "05ec9aa6-c164-4ca5-b132-8405c4197c01",
+            "29c43bcd-e7fa-4160-ad43-557e92ec74af",
+            "a5d9532b-6508-4af6-81ff-f62882785fcd",
+            "5c476225-5b63-4717-9f40-da207de6dc5c",
+            "af1dc87c-0b77-48b0-8c85-addb2f818aac",
+            "f3f330fe-fb1f-48da-9919-23eabf02a20d",
+            "b07767b1-e65c-4b07-bf32-f22db3fcb196",
+            "10b2ae2c-be0f-42cc-b883-c1a7aa925cfc",
+            "f47b7a93-98b6-4f1a-8086-6782ad378818",
+            "3b9fafd1-cb3c-4b80-9182-490e73449503",
+            "2f66cc5c-f419-42f4-8181-9a9f468bf770",
+            "1e81a8d4-098f-46c3-a366-2cdf3b6a0bd7",
+            "3347723c-492e-42fe-88f5-1d1c20a1af47",
+            "000075e0-2521-4d32-b953-1a5542c764b5",
+            "bc84db34-74e4-412c-b087-ca585a095ef0",
+            "24730536-b898-4fff-9888-a9329ac46d8f",
+            "614c96ce-ffe8-46b9-b537-fedd2fe6f8a3",
+            "fec14104-54a3-4b48-acc4-1a43443b89a0",
+            "3978e3d4-8ed9-4cbf-b391-494bb4c691b3",
+            "03bca430-5893-445e-80cf-cc2f0a0ff924",
+            "a2c4fb69-1883-4a95-b133-8bfeab5acbf4",
+            "74027498-ab18-48e1-a329-9c12563d40c3"
+          ],
+          "materials": [
+            "aac7cc65-8fc5-4c21-b066-bde11ad5d577",
+            "2ace64fc-c194-4833-bf25-7f4993c9ceb6",
+            "4310405d-c155-457c-b1b0-3a01d3f74fa3",
+            "bab8cc3d-74fe-4e97-9ddb-f9b54a2e4e54",
+            "c609f9fb-b4f3-444e-847d-3c0f1b6d74e8",
+            "ccedb66e-7dd5-4637-b241-8373570ec27a",
+            "67db954f-8f43-420f-b89b-a8eca38ea9f4",
+            "419fbb06-4151-41e4-a4f0-8ffc09e2f639",
+            "6a6b886b-40f4-42a4-88be-e5c98652b944",
+            "100e2039-41e3-42af-a072-776bc1e79318",
+            "5ca5a0a7-45f7-49ef-86e5-48767dadb9ec",
+            "9bd3e46d-432a-43f0-8f68-1f953aec885b",
+            "c36c622e-e261-4142-bcbd-c6b70bfb8966",
+            "d4aac8fd-5cf0-4104-8073-848b22f6ca31",
+            "daffcb8c-b25a-498d-957b-1e186f5a1101",
+            "fcf8f315-21d2-4ec3-97d8-ce267d9397f3",
+            "d641d0b8-d741-4e84-9f1a-8fd70e5581c5"
+          ],
+          "textures": [
+            "31593cd2-ba8f-4409-b936-cf912d3d9eae",
+            "4990afc0-3cb1-43b4-865d-93a76c734896",
+            "1ee00fe9-e576-4506-a3f7-562d56200292"
+          ]
+        }
+      },
+      "target": {
+        "x": 365.59375,
+        "y": 13,
+        "width": 235.921875,
+        "height": 44
+      }
+    },
+    "pageTurn": {
+      "before": {
+        "page": 1,
+        "animation": "booky-leaf-reveal-a",
+        "duration": "0.22s",
+        "transform": "none",
+        "scrollTop": 0
+      },
+      "after": {
+        "page": 2,
+        "animation": "booky-leaf-reveal-b",
+        "duration": "0.22s",
+        "transform": "matrix3d(0.995236, 0, 0.0974994, -9.74156e-05, 0, 1, 0, 0, -0.0974994, 0, 0.995236, -0.000994381, 3.18202, 0, 0.31173, 0.999689)",
+        "scrollTop": 0
+      },
+      "character": {
+        "rendererId": 1,
+        "canvasId": "1",
+        "scene": "815bebb7-c96a-420c-beda-759573054c2b",
+        "camera": "0ba70a8f-7174-4fbe-a2bb-9db5b91010e2",
+        "model": "c34853f5-2776-4f04-9bcc-f76bb7254f2c",
+        "independentFromGlobe": true,
+        "renderedFrames": 187,
+        "renderCount": 186,
+        "contextLost": false,
+        "rect": {
+          "left": 1252,
+          "top": 618,
+          "right": 1412,
+          "bottom": 778,
+          "width": 160,
+          "height": 160
+        },
+        "screen": {
+          "left": 1267.7705456526407,
+          "top": 636.8154857382716,
+          "right": 1392.8623951436302,
+          "bottom": 762.894723065691,
+          "minDepth": -0.4141937733465265,
+          "maxDepth": -0.3000923681728477
+        },
+        "finite": true,
+        "triangles": 45792,
+        "meshes": [
+          "booky-front-hardcover",
+          "booky-front-embossed-panel",
+          "booky-gold-cover-tooling",
+          "booky-eye-socket-left",
+          "booky-sclera-left",
+          "booky-iris-left",
+          "booky-pupil-ink-left",
+          "booky-eye-catchlights-left",
+          "booky-sculpted-brow-left",
+          "booky-eye-socket-right",
+          "booky-sclera-right",
+          "booky-iris-right",
+          "booky-pupil-ink-right",
+          "booky-eye-catchlights-right",
+          "booky-sculpted-brow-right",
+          "booky-soft-nose",
+          "booky-smile-cavity",
+          "booky-smile-teeth",
+          "booky-smile-tongue",
+          "booky-lower-lip",
+          "booky-page-block",
+          "booky-layered-leaf-edges",
+          "booky-purple-ribbon",
+          "booky-bound-spine-and-shoes",
+          "booky-legs",
+          "booky-shoe-soles-and-caps",
+          "booky-spine-bands-and-shoe-laces",
+          "booky-left-sleeve",
+          "booky-left-open-glove",
+          "booky-left-cuff",
+          "booky-right-sleeve",
+          "booky-right-grip-glove",
+          "booky-right-cuff",
+          "booky-magnifier-handle",
+          "booky-magnifier-gold-frame",
+          "booky-magnifier-lens",
+          "booky-magnifier-highlight"
+        ],
+        "rig": {
+          "body": {
+            "uuid": "1a25d54b-d1a1-4a28-90d0-1650fea3901e",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              -0.02350019374847776,
+              -0.08702289794447199,
+              0.015664121630004958
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "frontCover": {
+            "uuid": "461c08a9-4cd9-438b-8d2c-c8be7502cd19",
+            "position": [
+              -0.56,
+              0,
+              0.18
+            ],
+            "rotation": [
+              0,
+              -0.0030739483693449526,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "bookmark": {
+            "uuid": "1cc485a2-48cf-4b5c-833e-e88457fe908b",
+            "position": [
+              -0.4,
+              0.754,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0.0016531603336231695
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "leftArm": {
+            "uuid": "5daaa17d-9f76-464a-93b7-29f2eca9ae37",
+            "position": [
+              -0.551,
+              -0.21,
+              0.02
+            ],
+            "rotation": [
+              0,
+              0,
+              -0.16560528363791838
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "rightArm": {
+            "uuid": "979984a6-5d92-4aa1-93b0-5cac75e77bfb",
+            "position": [
+              0.551,
+              -0.21,
+              0.02
+            ],
+            "rotation": [
+              0,
+              0,
+              0.0024268013442196993
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "eyes": [
+            {
+              "uuid": "3559d792-d80e-4f78-a3f9-fc4cb4a779c1",
+              "position": [
+                0.32500000000000007,
+                0.233,
+                0.09400000000000003
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "uuid": "ab916574-8c3e-455a-99b4-484877770324",
+              "position": [
+                0.795,
+                0.233,
+                0.09400000000000003
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            }
+          ],
+          "pupils": [
+            {
+              "uuid": "1c2c48b0-3c24-4b96-93c1-bb1c87e758a0",
+              "position": [
+                -0.010274808568339119,
+                0.006040123999025768,
+                0.046
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "uuid": "0525f52d-465f-44b7-9b70-a2076da371ad",
+              "position": [
+                -0.010274808568339119,
+                0.006040123999025768,
+                0.046
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            }
+          ],
+          "brows": [
+            {
+              "uuid": "fc7daca3-8088-4b44-9795-ae9fbc7b0c1a",
+              "position": [
+                0.32500000000000007,
+                0.527,
+                0.09000000000000002
+              ],
+              "rotation": [
+                0,
+                0,
+                0.035
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "uuid": "47520266-d0c1-465f-9078-0b95c3919d1d",
+              "position": [
+                0.795,
+                0.54,
+                0.09000000000000002
+              ],
+              "rotation": [
+                0,
+                0,
+                -0.035
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            }
+          ],
+          "mouth": {
+            "uuid": "05f30921-09f9-4ed4-a079-b72888804bdf",
+            "position": [
+              0.56,
+              -0.274,
+              0.08700000000000002
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "bounds": {
+          "min": [
+            -1.1406096073972154,
+            -1.245249897070098,
+            -0.33397456103350937
+          ],
+          "max": [
+            1.2148331786067645,
+            0.9089638584835643,
+            0.4460686697067643
+          ]
+        },
+        "gpu": {
+          "calls": 37,
+          "triangles": 45792,
+          "textures": 5,
+          "geometries": 35
+        },
+        "resources": {
+          "geometries": [
+            "f7877efb-df82-41c3-afd8-b8c3b76c4e70",
+            "d7edc76e-463c-4751-bd6d-adce98f42318",
+            "04ff1246-240b-4743-bfb2-7a7ba84031a6",
+            "cf0d6002-f37c-4f5b-ba6d-8b6c3bbe3598",
+            "d4dbad6a-34e8-449d-941b-1d0c7d56ee32",
+            "82f81c73-38a8-4daf-80f7-3efd07ec9369",
+            "f1a7d3dc-0e71-4b69-a23a-dbb76deda4d6",
+            "32c48cd7-9729-45a0-af77-60ef6b27fa23",
+            "f97d20e3-cb38-4536-94c1-48528231c25a",
+            "68629ae6-7931-407e-8550-125f1015ef1d",
+            "3ccebf45-5c05-4259-ac5a-88a951a726f6",
+            "6c145483-8e54-4f6a-9ff8-b40cf6c53b5a",
+            "a5004eaa-22a1-45a9-af96-685447040438",
+            "05ec9aa6-c164-4ca5-b132-8405c4197c01",
+            "29c43bcd-e7fa-4160-ad43-557e92ec74af",
+            "a5d9532b-6508-4af6-81ff-f62882785fcd",
+            "5c476225-5b63-4717-9f40-da207de6dc5c",
+            "af1dc87c-0b77-48b0-8c85-addb2f818aac",
+            "f3f330fe-fb1f-48da-9919-23eabf02a20d",
+            "b07767b1-e65c-4b07-bf32-f22db3fcb196",
+            "10b2ae2c-be0f-42cc-b883-c1a7aa925cfc",
+            "f47b7a93-98b6-4f1a-8086-6782ad378818",
+            "3b9fafd1-cb3c-4b80-9182-490e73449503",
+            "2f66cc5c-f419-42f4-8181-9a9f468bf770",
+            "1e81a8d4-098f-46c3-a366-2cdf3b6a0bd7",
+            "3347723c-492e-42fe-88f5-1d1c20a1af47",
+            "000075e0-2521-4d32-b953-1a5542c764b5",
+            "bc84db34-74e4-412c-b087-ca585a095ef0",
+            "24730536-b898-4fff-9888-a9329ac46d8f",
+            "614c96ce-ffe8-46b9-b537-fedd2fe6f8a3",
+            "fec14104-54a3-4b48-acc4-1a43443b89a0",
+            "3978e3d4-8ed9-4cbf-b391-494bb4c691b3",
+            "03bca430-5893-445e-80cf-cc2f0a0ff924",
+            "a2c4fb69-1883-4a95-b133-8bfeab5acbf4",
+            "74027498-ab18-48e1-a329-9c12563d40c3"
+          ],
+          "materials": [
+            "aac7cc65-8fc5-4c21-b066-bde11ad5d577",
+            "2ace64fc-c194-4833-bf25-7f4993c9ceb6",
+            "4310405d-c155-457c-b1b0-3a01d3f74fa3",
+            "bab8cc3d-74fe-4e97-9ddb-f9b54a2e4e54",
+            "c609f9fb-b4f3-444e-847d-3c0f1b6d74e8",
+            "ccedb66e-7dd5-4637-b241-8373570ec27a",
+            "67db954f-8f43-420f-b89b-a8eca38ea9f4",
+            "419fbb06-4151-41e4-a4f0-8ffc09e2f639",
+            "6a6b886b-40f4-42a4-88be-e5c98652b944",
+            "100e2039-41e3-42af-a072-776bc1e79318",
+            "5ca5a0a7-45f7-49ef-86e5-48767dadb9ec",
+            "9bd3e46d-432a-43f0-8f68-1f953aec885b",
+            "c36c622e-e261-4142-bcbd-c6b70bfb8966",
+            "d4aac8fd-5cf0-4104-8073-848b22f6ca31",
+            "daffcb8c-b25a-498d-957b-1e186f5a1101",
+            "fcf8f315-21d2-4ec3-97d8-ce267d9397f3",
+            "d641d0b8-d741-4e84-9f1a-8fd70e5581c5"
+          ],
+          "textures": [
+            "31593cd2-ba8f-4409-b936-cf912d3d9eae",
+            "4990afc0-3cb1-43b4-865d-93a76c734896",
+            "1ee00fe9-e576-4506-a3f7-562d56200292"
+          ]
+        }
+      }
+    },
+    "narrow": {
+      "character": {
+        "rendererId": 1,
+        "canvasId": "1",
+        "scene": "815bebb7-c96a-420c-beda-759573054c2b",
+        "camera": "0ba70a8f-7174-4fbe-a2bb-9db5b91010e2",
+        "model": "c34853f5-2776-4f04-9bcc-f76bb7254f2c",
+        "independentFromGlobe": true,
+        "renderedFrames": 229,
+        "renderCount": 228,
+        "contextLost": false,
+        "rect": {
+          "left": 200,
+          "top": 684,
+          "right": 288,
+          "bottom": 772,
+          "width": 88,
+          "height": 88
+        },
+        "screen": {
+          "left": 208.74123745684446,
+          "top": 694.3598801594154,
+          "right": 275.79014068304525,
+          "bottom": 763.6878576901421,
+          "minDepth": -0.41356470761876574,
+          "maxDepth": -0.300851310447932
+        },
+        "finite": true,
+        "triangles": 45792,
+        "meshes": [
+          "booky-front-hardcover",
+          "booky-front-embossed-panel",
+          "booky-gold-cover-tooling",
+          "booky-eye-socket-left",
+          "booky-sclera-left",
+          "booky-iris-left",
+          "booky-pupil-ink-left",
+          "booky-eye-catchlights-left",
+          "booky-sculpted-brow-left",
+          "booky-eye-socket-right",
+          "booky-sclera-right",
+          "booky-iris-right",
+          "booky-pupil-ink-right",
+          "booky-eye-catchlights-right",
+          "booky-sculpted-brow-right",
+          "booky-soft-nose",
+          "booky-smile-cavity",
+          "booky-smile-teeth",
+          "booky-smile-tongue",
+          "booky-lower-lip",
+          "booky-page-block",
+          "booky-layered-leaf-edges",
+          "booky-purple-ribbon",
+          "booky-bound-spine-and-shoes",
+          "booky-legs",
+          "booky-shoe-soles-and-caps",
+          "booky-spine-bands-and-shoe-laces",
+          "booky-left-sleeve",
+          "booky-left-open-glove",
+          "booky-left-cuff",
+          "booky-right-sleeve",
+          "booky-right-grip-glove",
+          "booky-right-cuff",
+          "booky-magnifier-handle",
+          "booky-magnifier-gold-frame",
+          "booky-magnifier-lens",
+          "booky-magnifier-highlight"
+        ],
+        "rig": {
+          "body": {
+            "uuid": "1a25d54b-d1a1-4a28-90d0-1650fea3901e",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              -0.025,
+              -0.1,
+              0.018
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "frontCover": {
+            "uuid": "461c08a9-4cd9-438b-8d2c-c8be7502cd19",
+            "position": [
+              -0.56,
+              0,
+              0.18
+            ],
+            "rotation": [
+              0,
+              -0.08818858337186873,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "bookmark": {
+            "uuid": "1cc485a2-48cf-4b5c-833e-e88457fe908b",
+            "position": [
+              -0.4,
+              0.754,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0.012898253401475842
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "leftArm": {
+            "uuid": "5daaa17d-9f76-464a-93b7-29f2eca9ae37",
+            "position": [
+              -0.551,
+              -0.21,
+              0.02
+            ],
+            "rotation": [
+              0,
+              0,
+              -0.2915930208121461
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "rightArm": {
+            "uuid": "979984a6-5d92-4aa1-93b0-5cac75e77bfb",
+            "position": [
+              0.551,
+              -0.21,
+              0.02
+            ],
+            "rotation": [
+              0,
+              0,
+              0.06962256581989637
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "eyes": [
+            {
+              "uuid": "3559d792-d80e-4f78-a3f9-fc4cb4a779c1",
+              "position": [
+                0.32500000000000007,
+                0.233,
+                0.09400000000000003
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "uuid": "ab916574-8c3e-455a-99b4-484877770324",
+              "position": [
+                0.795,
+                0.233,
+                0.09400000000000003
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            }
+          ],
+          "pupils": [
+            {
+              "uuid": "1c2c48b0-3c24-4b96-93c1-bb1c87e758a0",
+              "position": [
+                -0.013000000000000001,
+                0.007000000000000001,
+                0.046
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "uuid": "0525f52d-465f-44b7-9b70-a2076da371ad",
+              "position": [
+                -0.013000000000000001,
+                0.007000000000000001,
+                0.046
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            }
+          ],
+          "brows": [
+            {
+              "uuid": "fc7daca3-8088-4b44-9795-ae9fbc7b0c1a",
+              "position": [
+                0.32500000000000007,
+                0.527,
+                0.09000000000000002
+              ],
+              "rotation": [
+                0,
+                0,
+                0.035
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "uuid": "47520266-d0c1-465f-9078-0b95c3919d1d",
+              "position": [
+                0.795,
+                0.54,
+                0.09000000000000002
+              ],
+              "rotation": [
+                0,
+                0,
+                -0.035
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            }
+          ],
+          "mouth": {
+            "uuid": "05f30921-09f9-4ed4-a079-b72888804bdf",
+            "position": [
+              0.56,
+              -0.274,
+              0.08700000000000002
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "bounds": {
+          "min": [
+            -1.1496333625625512,
+            -1.2477088935816358,
+            -0.34541700348089616
+          ],
+          "max": [
+            1.212597392905792,
+            0.9422193866168471,
+            0.4584399568113703
+          ]
+        },
+        "gpu": {
+          "calls": 37,
+          "triangles": 45792,
+          "textures": 5,
+          "geometries": 35
+        },
+        "resources": {
+          "geometries": [
+            "f7877efb-df82-41c3-afd8-b8c3b76c4e70",
+            "d7edc76e-463c-4751-bd6d-adce98f42318",
+            "04ff1246-240b-4743-bfb2-7a7ba84031a6",
+            "cf0d6002-f37c-4f5b-ba6d-8b6c3bbe3598",
+            "d4dbad6a-34e8-449d-941b-1d0c7d56ee32",
+            "82f81c73-38a8-4daf-80f7-3efd07ec9369",
+            "f1a7d3dc-0e71-4b69-a23a-dbb76deda4d6",
+            "32c48cd7-9729-45a0-af77-60ef6b27fa23",
+            "f97d20e3-cb38-4536-94c1-48528231c25a",
+            "68629ae6-7931-407e-8550-125f1015ef1d",
+            "3ccebf45-5c05-4259-ac5a-88a951a726f6",
+            "6c145483-8e54-4f6a-9ff8-b40cf6c53b5a",
+            "a5004eaa-22a1-45a9-af96-685447040438",
+            "05ec9aa6-c164-4ca5-b132-8405c4197c01",
+            "29c43bcd-e7fa-4160-ad43-557e92ec74af",
+            "a5d9532b-6508-4af6-81ff-f62882785fcd",
+            "5c476225-5b63-4717-9f40-da207de6dc5c",
+            "af1dc87c-0b77-48b0-8c85-addb2f818aac",
+            "f3f330fe-fb1f-48da-9919-23eabf02a20d",
+            "b07767b1-e65c-4b07-bf32-f22db3fcb196",
+            "10b2ae2c-be0f-42cc-b883-c1a7aa925cfc",
+            "f47b7a93-98b6-4f1a-8086-6782ad378818",
+            "3b9fafd1-cb3c-4b80-9182-490e73449503",
+            "2f66cc5c-f419-42f4-8181-9a9f468bf770",
+            "1e81a8d4-098f-46c3-a366-2cdf3b6a0bd7",
+            "3347723c-492e-42fe-88f5-1d1c20a1af47",
+            "000075e0-2521-4d32-b953-1a5542c764b5",
+            "bc84db34-74e4-412c-b087-ca585a095ef0",
+            "24730536-b898-4fff-9888-a9329ac46d8f",
+            "614c96ce-ffe8-46b9-b537-fedd2fe6f8a3",
+            "fec14104-54a3-4b48-acc4-1a43443b89a0",
+            "3978e3d4-8ed9-4cbf-b391-494bb4c691b3",
+            "03bca430-5893-445e-80cf-cc2f0a0ff924",
+            "a2c4fb69-1883-4a95-b133-8bfeab5acbf4",
+            "74027498-ab18-48e1-a329-9c12563d40c3"
+          ],
+          "materials": [
+            "aac7cc65-8fc5-4c21-b066-bde11ad5d577",
+            "2ace64fc-c194-4833-bf25-7f4993c9ceb6",
+            "4310405d-c155-457c-b1b0-3a01d3f74fa3",
+            "bab8cc3d-74fe-4e97-9ddb-f9b54a2e4e54",
+            "c609f9fb-b4f3-444e-847d-3c0f1b6d74e8",
+            "ccedb66e-7dd5-4637-b241-8373570ec27a",
+            "67db954f-8f43-420f-b89b-a8eca38ea9f4",
+            "419fbb06-4151-41e4-a4f0-8ffc09e2f639",
+            "6a6b886b-40f4-42a4-88be-e5c98652b944",
+            "100e2039-41e3-42af-a072-776bc1e79318",
+            "5ca5a0a7-45f7-49ef-86e5-48767dadb9ec",
+            "9bd3e46d-432a-43f0-8f68-1f953aec885b",
+            "c36c622e-e261-4142-bcbd-c6b70bfb8966",
+            "d4aac8fd-5cf0-4104-8073-848b22f6ca31",
+            "daffcb8c-b25a-498d-957b-1e186f5a1101",
+            "fcf8f315-21d2-4ec3-97d8-ce267d9397f3",
+            "d641d0b8-d741-4e84-9f1a-8fd70e5581c5"
+          ],
+          "textures": [
+            "31593cd2-ba8f-4409-b936-cf912d3d9eae",
+            "4990afc0-3cb1-43b4-865d-93a76c734896",
+            "1ee00fe9-e576-4506-a3f7-562d56200292"
+          ]
+        }
+      },
+      "layout": {
+        "viewport": {
+          "width": 320,
+          "height": 844
+        },
+        "pet": {
+          "left": 188,
+          "top": 680,
+          "right": 300,
+          "bottom": 824,
+          "width": 112,
+          "height": 144
+        },
+        "card": {
+          "left": 12,
+          "top": 163.0625,
+          "right": 308,
+          "bottom": 668,
+          "width": 296,
+          "height": 504.9375
+        },
+        "canvas": {
+          "left": 200,
+          "top": 684,
+          "right": 288,
+          "bottom": 772,
+          "width": 88,
+          "height": 88
+        },
+        "overflow": false,
+        "leaf": {
+          "page": 3,
+          "animation": "booky-leaf-reveal-a",
+          "duration": "0.22s",
+          "transform": "none",
+          "scrollTop": 0
+        }
+      }
+    },
+    "landscape": {
+      "character": {
+        "rendererId": 1,
+        "canvasId": "1",
+        "scene": "815bebb7-c96a-420c-beda-759573054c2b",
+        "camera": "0ba70a8f-7174-4fbe-a2bb-9db5b91010e2",
+        "model": "c34853f5-2776-4f04-9bcc-f76bb7254f2c",
+        "independentFromGlobe": true,
+        "renderedFrames": 250,
+        "renderCount": 249,
+        "contextLost": false,
+        "rect": {
+          "left": 724,
+          "top": 230,
+          "right": 812,
+          "bottom": 318,
+          "width": 88,
+          "height": 88
+        },
+        "screen": {
+          "left": 732.509234444224,
+          "top": 240.35988015941547,
+          "right": 801.4614018331887,
+          "bottom": 309.6878576901421,
+          "minDepth": -0.41357441307631104,
+          "maxDepth": -0.300851310447932
+        },
+        "finite": true,
+        "triangles": 45792,
+        "meshes": [
+          "booky-front-hardcover",
+          "booky-front-embossed-panel",
+          "booky-gold-cover-tooling",
+          "booky-eye-socket-left",
+          "booky-sclera-left",
+          "booky-iris-left",
+          "booky-pupil-ink-left",
+          "booky-eye-catchlights-left",
+          "booky-sculpted-brow-left",
+          "booky-eye-socket-right",
+          "booky-sclera-right",
+          "booky-iris-right",
+          "booky-pupil-ink-right",
+          "booky-eye-catchlights-right",
+          "booky-sculpted-brow-right",
+          "booky-soft-nose",
+          "booky-smile-cavity",
+          "booky-smile-teeth",
+          "booky-smile-tongue",
+          "booky-lower-lip",
+          "booky-page-block",
+          "booky-layered-leaf-edges",
+          "booky-purple-ribbon",
+          "booky-bound-spine-and-shoes",
+          "booky-legs",
+          "booky-shoe-soles-and-caps",
+          "booky-spine-bands-and-shoe-laces",
+          "booky-left-sleeve",
+          "booky-left-open-glove",
+          "booky-left-cuff",
+          "booky-right-sleeve",
+          "booky-right-grip-glove",
+          "booky-right-cuff",
+          "booky-magnifier-handle",
+          "booky-magnifier-gold-frame",
+          "booky-magnifier-lens",
+          "booky-magnifier-highlight"
+        ],
+        "rig": {
+          "body": {
+            "uuid": "1a25d54b-d1a1-4a28-90d0-1650fea3901e",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              -0.025,
+              -0.1,
+              0.018
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "frontCover": {
+            "uuid": "461c08a9-4cd9-438b-8d2c-c8be7502cd19",
+            "position": [
+              -0.56,
+              0,
+              0.18
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "bookmark": {
+            "uuid": "1cc485a2-48cf-4b5c-833e-e88457fe908b",
+            "position": [
+              -0.4,
+              0.754,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "leftArm": {
+            "uuid": "5daaa17d-9f76-464a-93b7-29f2eca9ae37",
+            "position": [
+              -0.551,
+              -0.21,
+              0.02
+            ],
+            "rotation": [
+              0,
+              0,
+              -0.16
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "rightArm": {
+            "uuid": "979984a6-5d92-4aa1-93b0-5cac75e77bfb",
+            "position": [
+              0.551,
+              -0.21,
+              0.02
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "eyes": [
+            {
+              "uuid": "3559d792-d80e-4f78-a3f9-fc4cb4a779c1",
+              "position": [
+                0.32500000000000007,
+                0.233,
+                0.09400000000000003
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "uuid": "ab916574-8c3e-455a-99b4-484877770324",
+              "position": [
+                0.795,
+                0.233,
+                0.09400000000000003
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            }
+          ],
+          "pupils": [
+            {
+              "uuid": "1c2c48b0-3c24-4b96-93c1-bb1c87e758a0",
+              "position": [
+                -0.013000000000000001,
+                0.007000000000000001,
+                0.046
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "uuid": "0525f52d-465f-44b7-9b70-a2076da371ad",
+              "position": [
+                -0.013000000000000001,
+                0.007000000000000001,
+                0.046
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            }
+          ],
+          "brows": [
+            {
+              "uuid": "fc7daca3-8088-4b44-9795-ae9fbc7b0c1a",
+              "position": [
+                0.32500000000000007,
+                0.527,
+                0.09000000000000002
+              ],
+              "rotation": [
+                0,
+                0,
+                0.035
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "uuid": "47520266-d0c1-465f-9078-0b95c3919d1d",
+              "position": [
+                0.795,
+                0.54,
+                0.09000000000000002
+              ],
+              "rotation": [
+                0,
+                0,
+                -0.035
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            }
+          ],
+          "mouth": {
+            "uuid": "05f30921-09f9-4ed4-a079-b72888804bdf",
+            "position": [
+              0.56,
+              -0.274,
+              0.08700000000000002
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "bounds": {
+          "min": [
+            -1.1416209881143828,
+            -1.2477088935816358,
+            -0.34541700348089616
+          ],
+          "max": [
+            1.2111737018416011,
+            0.9110989564909919,
+            0.4589321368120561
+          ]
+        },
+        "gpu": {
+          "calls": 37,
+          "triangles": 45792,
+          "textures": 5,
+          "geometries": 35
+        },
+        "resources": {
+          "geometries": [
+            "f7877efb-df82-41c3-afd8-b8c3b76c4e70",
+            "d7edc76e-463c-4751-bd6d-adce98f42318",
+            "04ff1246-240b-4743-bfb2-7a7ba84031a6",
+            "cf0d6002-f37c-4f5b-ba6d-8b6c3bbe3598",
+            "d4dbad6a-34e8-449d-941b-1d0c7d56ee32",
+            "82f81c73-38a8-4daf-80f7-3efd07ec9369",
+            "f1a7d3dc-0e71-4b69-a23a-dbb76deda4d6",
+            "32c48cd7-9729-45a0-af77-60ef6b27fa23",
+            "f97d20e3-cb38-4536-94c1-48528231c25a",
+            "68629ae6-7931-407e-8550-125f1015ef1d",
+            "3ccebf45-5c05-4259-ac5a-88a951a726f6",
+            "6c145483-8e54-4f6a-9ff8-b40cf6c53b5a",
+            "a5004eaa-22a1-45a9-af96-685447040438",
+            "05ec9aa6-c164-4ca5-b132-8405c4197c01",
+            "29c43bcd-e7fa-4160-ad43-557e92ec74af",
+            "a5d9532b-6508-4af6-81ff-f62882785fcd",
+            "5c476225-5b63-4717-9f40-da207de6dc5c",
+            "af1dc87c-0b77-48b0-8c85-addb2f818aac",
+            "f3f330fe-fb1f-48da-9919-23eabf02a20d",
+            "b07767b1-e65c-4b07-bf32-f22db3fcb196",
+            "10b2ae2c-be0f-42cc-b883-c1a7aa925cfc",
+            "f47b7a93-98b6-4f1a-8086-6782ad378818",
+            "3b9fafd1-cb3c-4b80-9182-490e73449503",
+            "2f66cc5c-f419-42f4-8181-9a9f468bf770",
+            "1e81a8d4-098f-46c3-a366-2cdf3b6a0bd7",
+            "3347723c-492e-42fe-88f5-1d1c20a1af47",
+            "000075e0-2521-4d32-b953-1a5542c764b5",
+            "bc84db34-74e4-412c-b087-ca585a095ef0",
+            "24730536-b898-4fff-9888-a9329ac46d8f",
+            "614c96ce-ffe8-46b9-b537-fedd2fe6f8a3",
+            "fec14104-54a3-4b48-acc4-1a43443b89a0",
+            "3978e3d4-8ed9-4cbf-b391-494bb4c691b3",
+            "03bca430-5893-445e-80cf-cc2f0a0ff924",
+            "a2c4fb69-1883-4a95-b133-8bfeab5acbf4",
+            "74027498-ab18-48e1-a329-9c12563d40c3"
+          ],
+          "materials": [
+            "aac7cc65-8fc5-4c21-b066-bde11ad5d577",
+            "2ace64fc-c194-4833-bf25-7f4993c9ceb6",
+            "4310405d-c155-457c-b1b0-3a01d3f74fa3",
+            "bab8cc3d-74fe-4e97-9ddb-f9b54a2e4e54",
+            "c609f9fb-b4f3-444e-847d-3c0f1b6d74e8",
+            "ccedb66e-7dd5-4637-b241-8373570ec27a",
+            "67db954f-8f43-420f-b89b-a8eca38ea9f4",
+            "419fbb06-4151-41e4-a4f0-8ffc09e2f639",
+            "6a6b886b-40f4-42a4-88be-e5c98652b944",
+            "100e2039-41e3-42af-a072-776bc1e79318",
+            "5ca5a0a7-45f7-49ef-86e5-48767dadb9ec",
+            "9bd3e46d-432a-43f0-8f68-1f953aec885b",
+            "c36c622e-e261-4142-bcbd-c6b70bfb8966",
+            "d4aac8fd-5cf0-4104-8073-848b22f6ca31",
+            "daffcb8c-b25a-498d-957b-1e186f5a1101",
+            "fcf8f315-21d2-4ec3-97d8-ce267d9397f3",
+            "d641d0b8-d741-4e84-9f1a-8fd70e5581c5"
+          ],
+          "textures": [
+            "31593cd2-ba8f-4409-b936-cf912d3d9eae",
+            "4990afc0-3cb1-43b4-865d-93a76c734896",
+            "1ee00fe9-e576-4506-a3f7-562d56200292"
+          ]
+        }
+      },
+      "layout": {
+        "viewport": {
+          "width": 844,
+          "height": 390
+        },
+        "pet": {
+          "left": 712,
+          "top": 226,
+          "right": 824,
+          "bottom": 370,
+          "width": 112,
+          "height": 144
+        },
+        "card": {
+          "left": 360,
+          "top": 12,
+          "right": 700,
+          "bottom": 378,
+          "width": 340,
+          "height": 366
+        },
+        "canvas": {
+          "left": 724,
+          "top": 230,
+          "right": 812,
+          "bottom": 318,
+          "width": 88,
+          "height": 88
+        },
+        "overflow": false,
+        "leaf": {
+          "page": 3,
+          "animation": "booky-leaf-reveal-a",
+          "duration": "0.22s",
+          "transform": "none",
+          "scrollTop": 0
+        }
+      }
+    },
+    "reducedMotion": {
+      "character": {
+        "rendererId": 1,
+        "canvasId": "1",
+        "scene": "815bebb7-c96a-420c-beda-759573054c2b",
+        "camera": "0ba70a8f-7174-4fbe-a2bb-9db5b91010e2",
+        "model": "c34853f5-2776-4f04-9bcc-f76bb7254f2c",
+        "independentFromGlobe": true,
+        "renderedFrames": 252,
+        "renderCount": 251,
+        "contextLost": false,
+        "rect": {
+          "left": 724,
+          "top": 230,
+          "right": 812,
+          "bottom": 318,
+          "width": 88,
+          "height": 88
+        },
+        "screen": {
+          "left": 732.687337602553,
+          "top": 240.3640916013863,
+          "right": 801.6968618287628,
+          "bottom": 309.6675002253051,
+          "minDepth": -0.4161739650905838,
+          "maxDepth": -0.29808420480403564
+        },
+        "finite": true,
+        "triangles": 45792,
+        "meshes": [
+          "booky-front-hardcover",
+          "booky-front-embossed-panel",
+          "booky-gold-cover-tooling",
+          "booky-eye-socket-left",
+          "booky-sclera-left",
+          "booky-iris-left",
+          "booky-pupil-ink-left",
+          "booky-eye-catchlights-left",
+          "booky-sculpted-brow-left",
+          "booky-eye-socket-right",
+          "booky-sclera-right",
+          "booky-iris-right",
+          "booky-pupil-ink-right",
+          "booky-eye-catchlights-right",
+          "booky-sculpted-brow-right",
+          "booky-soft-nose",
+          "booky-smile-cavity",
+          "booky-smile-teeth",
+          "booky-smile-tongue",
+          "booky-lower-lip",
+          "booky-page-block",
+          "booky-layered-leaf-edges",
+          "booky-purple-ribbon",
+          "booky-bound-spine-and-shoes",
+          "booky-legs",
+          "booky-shoe-soles-and-caps",
+          "booky-spine-bands-and-shoe-laces",
+          "booky-left-sleeve",
+          "booky-left-open-glove",
+          "booky-left-cuff",
+          "booky-right-sleeve",
+          "booky-right-grip-glove",
+          "booky-right-cuff",
+          "booky-magnifier-handle",
+          "booky-magnifier-gold-frame",
+          "booky-magnifier-lens",
+          "booky-magnifier-highlight"
+        ],
+        "rig": {
+          "body": {
+            "uuid": "1a25d54b-d1a1-4a28-90d0-1650fea3901e",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0.002692307692307694,
+              -0.08199052132701423,
+              0.014758293838862558
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "frontCover": {
+            "uuid": "461c08a9-4cd9-438b-8d2c-c8be7502cd19",
+            "position": [
+              -0.56,
+              0,
+              0.18
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "bookmark": {
+            "uuid": "1cc485a2-48cf-4b5c-833e-e88457fe908b",
+            "position": [
+              -0.4,
+              0.754,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "leftArm": {
+            "uuid": "5daaa17d-9f76-464a-93b7-29f2eca9ae37",
+            "position": [
+              -0.551,
+              -0.21,
+              0.02
+            ],
+            "rotation": [
+              0,
+              0,
+              -0.16
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "rightArm": {
+            "uuid": "979984a6-5d92-4aa1-93b0-5cac75e77bfb",
+            "position": [
+              0.551,
+              -0.21,
+              0.02
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "eyes": [
+            {
+              "uuid": "3559d792-d80e-4f78-a3f9-fc4cb4a779c1",
+              "position": [
+                0.32500000000000007,
+                0.233,
+                0.09400000000000003
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "uuid": "ab916574-8c3e-455a-99b4-484877770324",
+              "position": [
+                0.795,
+                0.233,
+                0.09400000000000003
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            }
+          ],
+          "pupils": [
+            {
+              "uuid": "1c2c48b0-3c24-4b96-93c1-bb1c87e758a0",
+              "position": [
+                -0.009218009478672986,
+                -0.010723076923076924,
+                0.046
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "uuid": "0525f52d-465f-44b7-9b70-a2076da371ad",
+              "position": [
+                -0.009218009478672986,
+                -0.010723076923076924,
+                0.046
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            }
+          ],
+          "brows": [
+            {
+              "uuid": "fc7daca3-8088-4b44-9795-ae9fbc7b0c1a",
+              "position": [
+                0.32500000000000007,
+                0.527,
+                0.09000000000000002
+              ],
+              "rotation": [
+                0,
+                0,
+                0.035
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "uuid": "47520266-d0c1-465f-9078-0b95c3919d1d",
+              "position": [
+                0.795,
+                0.54,
+                0.09000000000000002
+              ],
+              "rotation": [
+                0,
+                0,
+                -0.035
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            }
+          ],
+          "mouth": {
+            "uuid": "05f30921-09f9-4ed4-a079-b72888804bdf",
+            "position": [
+              0.56,
+              -0.274,
+              0.08700000000000002
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "bounds": {
+          "min": [
+            -1.139419706513981,
+            -1.238187184956907,
+            -0.3118795417912696
+          ],
+          "max": [
+            1.216043723733642,
+            0.8979085893185846,
+            0.43499366097520464
+          ]
+        },
+        "gpu": {
+          "calls": 37,
+          "triangles": 45792,
+          "textures": 5,
+          "geometries": 35
+        },
+        "resources": {
+          "geometries": [
+            "f7877efb-df82-41c3-afd8-b8c3b76c4e70",
+            "d7edc76e-463c-4751-bd6d-adce98f42318",
+            "04ff1246-240b-4743-bfb2-7a7ba84031a6",
+            "cf0d6002-f37c-4f5b-ba6d-8b6c3bbe3598",
+            "d4dbad6a-34e8-449d-941b-1d0c7d56ee32",
+            "82f81c73-38a8-4daf-80f7-3efd07ec9369",
+            "f1a7d3dc-0e71-4b69-a23a-dbb76deda4d6",
+            "32c48cd7-9729-45a0-af77-60ef6b27fa23",
+            "f97d20e3-cb38-4536-94c1-48528231c25a",
+            "68629ae6-7931-407e-8550-125f1015ef1d",
+            "3ccebf45-5c05-4259-ac5a-88a951a726f6",
+            "6c145483-8e54-4f6a-9ff8-b40cf6c53b5a",
+            "a5004eaa-22a1-45a9-af96-685447040438",
+            "05ec9aa6-c164-4ca5-b132-8405c4197c01",
+            "29c43bcd-e7fa-4160-ad43-557e92ec74af",
+            "a5d9532b-6508-4af6-81ff-f62882785fcd",
+            "5c476225-5b63-4717-9f40-da207de6dc5c",
+            "af1dc87c-0b77-48b0-8c85-addb2f818aac",
+            "f3f330fe-fb1f-48da-9919-23eabf02a20d",
+            "b07767b1-e65c-4b07-bf32-f22db3fcb196",
+            "10b2ae2c-be0f-42cc-b883-c1a7aa925cfc",
+            "f47b7a93-98b6-4f1a-8086-6782ad378818",
+            "3b9fafd1-cb3c-4b80-9182-490e73449503",
+            "2f66cc5c-f419-42f4-8181-9a9f468bf770",
+            "1e81a8d4-098f-46c3-a366-2cdf3b6a0bd7",
+            "3347723c-492e-42fe-88f5-1d1c20a1af47",
+            "000075e0-2521-4d32-b953-1a5542c764b5",
+            "bc84db34-74e4-412c-b087-ca585a095ef0",
+            "24730536-b898-4fff-9888-a9329ac46d8f",
+            "614c96ce-ffe8-46b9-b537-fedd2fe6f8a3",
+            "fec14104-54a3-4b48-acc4-1a43443b89a0",
+            "3978e3d4-8ed9-4cbf-b391-494bb4c691b3",
+            "03bca430-5893-445e-80cf-cc2f0a0ff924",
+            "a2c4fb69-1883-4a95-b133-8bfeab5acbf4",
+            "74027498-ab18-48e1-a329-9c12563d40c3"
+          ],
+          "materials": [
+            "aac7cc65-8fc5-4c21-b066-bde11ad5d577",
+            "2ace64fc-c194-4833-bf25-7f4993c9ceb6",
+            "4310405d-c155-457c-b1b0-3a01d3f74fa3",
+            "bab8cc3d-74fe-4e97-9ddb-f9b54a2e4e54",
+            "c609f9fb-b4f3-444e-847d-3c0f1b6d74e8",
+            "ccedb66e-7dd5-4637-b241-8373570ec27a",
+            "67db954f-8f43-420f-b89b-a8eca38ea9f4",
+            "419fbb06-4151-41e4-a4f0-8ffc09e2f639",
+            "6a6b886b-40f4-42a4-88be-e5c98652b944",
+            "100e2039-41e3-42af-a072-776bc1e79318",
+            "5ca5a0a7-45f7-49ef-86e5-48767dadb9ec",
+            "9bd3e46d-432a-43f0-8f68-1f953aec885b",
+            "c36c622e-e261-4142-bcbd-c6b70bfb8966",
+            "d4aac8fd-5cf0-4104-8073-848b22f6ca31",
+            "daffcb8c-b25a-498d-957b-1e186f5a1101",
+            "fcf8f315-21d2-4ec3-97d8-ce267d9397f3",
+            "d641d0b8-d741-4e84-9f1a-8fd70e5581c5"
+          ],
+          "textures": [
+            "31593cd2-ba8f-4409-b936-cf912d3d9eae",
+            "4990afc0-3cb1-43b4-865d-93a76c734896",
+            "1ee00fe9-e576-4506-a3f7-562d56200292"
+          ]
+        }
+      },
+      "layout": {
+        "viewport": {
+          "width": 844,
+          "height": 390
+        },
+        "pet": {
+          "left": 712,
+          "top": 226,
+          "right": 824,
+          "bottom": 370,
+          "width": 112,
+          "height": 144
+        },
+        "card": {
+          "left": 360,
+          "top": 12,
+          "right": 700,
+          "bottom": 378,
+          "width": 340,
+          "height": 366
+        },
+        "canvas": {
+          "left": 724,
+          "top": 230,
+          "right": 812,
+          "bottom": 318,
+          "width": 88,
+          "height": 88
+        },
+        "overflow": false,
+        "leaf": {
+          "page": 4,
+          "animation": "none",
+          "duration": "1e-05s",
+          "transform": "none",
+          "scrollTop": 0
+        }
+      }
+    },
+    "background": {
+      "inactive": {
+        "renderers": [
+          {
+            "id": 1,
+            "frames": 252,
+            "disposed": true,
+            "disposeCalls": 1
+          }
+        ],
+        "models": [
+          {
+            "id": "c34853f5-2776-4f04-9bcc-f76bb7254f2c",
+            "disposed": true,
+            "disposeCalls": 1
+          }
+        ]
+      },
+      "resumed": {
+        "character": {
+          "rendererId": 2,
+          "canvasId": "2",
+          "scene": "4e636f28-5551-4864-9f46-116429ea6a2c",
+          "camera": "183f1d13-9353-430e-b4e2-468f4fcfc452",
+          "model": "760146d8-5974-46b8-830e-7093e8e53086",
+          "independentFromGlobe": true,
+          "renderedFrames": 3,
+          "renderCount": 3,
+          "contextLost": false,
+          "rect": {
+            "left": 724,
+            "top": 230,
+            "right": 812,
+            "bottom": 318,
+            "width": 88,
+            "height": 88
+          },
+          "screen": {
+            "left": 733.8652232835236,
+            "top": 240.2576044605297,
+            "right": 801.9120595539274,
+            "bottom": 309.71670694772024,
+            "minDepth": -0.41895765584332156,
+            "maxDepth": -0.2943517049683946
+          },
+          "finite": true,
+          "triangles": 45792,
+          "meshes": [
+            "booky-front-hardcover",
+            "booky-front-embossed-panel",
+            "booky-gold-cover-tooling",
+            "booky-eye-socket-left",
+            "booky-sclera-left",
+            "booky-iris-left",
+            "booky-pupil-ink-left",
+            "booky-eye-catchlights-left",
+            "booky-sculpted-brow-left",
+            "booky-eye-socket-right",
+            "booky-sclera-right",
+            "booky-iris-right",
+            "booky-pupil-ink-right",
+            "booky-eye-catchlights-right",
+            "booky-sculpted-brow-right",
+            "booky-soft-nose",
+            "booky-smile-cavity",
+            "booky-smile-teeth",
+            "booky-smile-tongue",
+            "booky-lower-lip",
+            "booky-page-block",
+            "booky-layered-leaf-edges",
+            "booky-purple-ribbon",
+            "booky-bound-spine-and-shoes",
+            "booky-legs",
+            "booky-shoe-soles-and-caps",
+            "booky-spine-bands-and-shoe-laces",
+            "booky-left-sleeve",
+            "booky-left-open-glove",
+            "booky-left-cuff",
+            "booky-right-sleeve",
+            "booky-right-grip-glove",
+            "booky-right-cuff",
+            "booky-magnifier-handle",
+            "booky-magnifier-gold-frame",
+            "booky-magnifier-lens",
+            "booky-magnifier-highlight"
+          ],
+          "rig": {
+            "body": {
+              "uuid": "0c2ca91d-491f-4168-9d89-2b49cbedd9bd",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            "frontCover": {
+              "uuid": "c0ad0ba4-7ce4-4df0-be9b-042d25dc12f6",
+              "position": [
+                -0.56,
+                0,
+                0.18
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            "bookmark": {
+              "uuid": "ec0fa972-e1d3-4cde-b990-06427f35b975",
+              "position": [
+                -0.4,
+                0.754,
+                0
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            "leftArm": {
+              "uuid": "5b32c31b-50e9-43f3-be37-79f37f87b298",
+              "position": [
+                -0.551,
+                -0.21,
+                0.02
+              ],
+              "rotation": [
+                0,
+                0,
+                -0.16
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            "rightArm": {
+              "uuid": "383a082d-1ac9-4a1f-b6d8-ec164c97a68b",
+              "position": [
+                0.551,
+                -0.21,
+                0.02
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            "eyes": [
+              {
+                "uuid": "ef879141-0133-470c-a494-21d3dd005f43",
+                "position": [
+                  0.32500000000000007,
+                  0.233,
+                  0.09400000000000003
+                ],
+                "rotation": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ]
+              },
+              {
+                "uuid": "9d590277-e181-4c19-a710-2d715b017249",
+                "position": [
+                  0.795,
+                  0.233,
+                  0.09400000000000003
+                ],
+                "rotation": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ]
+              }
+            ],
+            "pupils": [
+              {
+                "uuid": "8cc56f3d-f479-4f15-a606-029e25b8d689",
+                "position": [
+                  0.008,
+                  -0.009,
+                  0.046
+                ],
+                "rotation": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ]
+              },
+              {
+                "uuid": "56aefdf7-7906-49e3-8812-a3f78e94dad7",
+                "position": [
+                  0.008,
+                  -0.009,
+                  0.046
+                ],
+                "rotation": [
+                  0,
+                  0,
+                  0
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ]
+              }
+            ],
+            "brows": [
+              {
+                "uuid": "b958232c-3e84-488e-a93f-acbf4d7e5d11",
+                "position": [
+                  0.32500000000000007,
+                  0.527,
+                  0.09000000000000002
+                ],
+                "rotation": [
+                  0,
+                  0,
+                  0.035
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ]
+              },
+              {
+                "uuid": "117cf5bf-8aca-49f8-94bc-483f9325d504",
+                "position": [
+                  0.795,
+                  0.54,
+                  0.09000000000000002
+                ],
+                "rotation": [
+                  0,
+                  0,
+                  -0.035
+                ],
+                "scale": [
+                  1,
+                  1,
+                  1
+                ]
+              }
+            ],
+            "mouth": {
+              "uuid": "313c21a0-a8b9-48c7-b262-07ffad655f6a",
+              "position": [
+                0.56,
+                -0.274,
+                0.08700000000000002
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            }
+          },
+          "bounds": {
+            "min": [
+              -1.124620161486955,
+              -1.2289999723434448,
+              -0.2459999918937683
+            ],
+            "max": [
+              1.2330233950445901,
+              0.9023478993177414,
+              0.3546184492111206
+            ]
+          },
+          "gpu": {
+            "calls": 37,
+            "triangles": 45792,
+            "textures": 5,
+            "geometries": 35
+          },
+          "resources": {
+            "geometries": [
+              "d9009461-d175-462f-b5e3-823aa2a38433",
+              "e6c930cc-2fcb-4b30-9e5e-b67073f0d4e7",
+              "160eec47-a82c-4de6-be95-08a6bb3a3a13",
+              "84258dc2-a2e3-440e-a077-3287c9415ec4",
+              "beb9a5dd-8425-4c2e-9d6d-73b0d4c4cabc",
+              "d6b3d697-0f19-44fa-976d-388184769dfe",
+              "64a90bef-17e9-4a56-9ca4-0c92dabae5c7",
+              "2246ae01-4eec-4d68-a94b-e69416ad1113",
+              "c7be6807-a8ce-4970-be17-7404c3c70f47",
+              "487515e5-b873-4cc9-908e-fd801531f3d8",
+              "81facf9f-5b2a-4622-99b3-b1c3dd98dafa",
+              "53cfe0ed-0a01-4237-9915-71eeafa99430",
+              "837afa1d-c4e7-4b30-92c4-9ff0b272a1be",
+              "5e4eb495-a47a-417c-9fda-85bf40e5f271",
+              "50c12a8b-5a60-4686-b6ab-9b43230ab20e",
+              "2cad4000-cf62-4baa-8e82-98c0414596ad",
+              "18f2c48c-7aa0-49fa-b5e4-91591282969c",
+              "eb21335a-b476-4657-bbab-ebf7fb1b8135",
+              "6716cc67-bc99-40a1-bb55-01851fce7801",
+              "b66860da-9ec8-4b64-a0ba-02e78fded2d0",
+              "011b70f2-3c4e-4fbc-b8d4-654b97eb1b6d",
+              "f879f5a5-e3cd-4a95-b500-3eec9d769a7c",
+              "dad978ef-44c7-464f-b749-db91620b7cba",
+              "d1bcd3e7-29c3-4090-b599-c6f3a5352db6",
+              "f9388e30-66c9-4922-813e-7374dd81fb75",
+              "6f1c33e5-7186-4a8c-8b65-77cfa57310e9",
+              "038639e0-3885-4384-bd11-80a1bd790b8a",
+              "94cc6c0d-338c-49d7-adaf-24e0521b492e",
+              "5321174a-a168-4ba3-8ddb-d0af49b610d9",
+              "cd527692-5d82-4135-ae20-ce198e3b6cd3",
+              "16688e1f-23e9-4aab-9a6d-4d81711fa267",
+              "9379dc0d-ac54-40d1-b5c7-3c8ee2c10921",
+              "effbedb3-8535-47d6-b23b-9d5a33675046",
+              "769a19bf-6e59-4afe-847b-1503c6cbc04c",
+              "277d258a-b1e9-4d5d-9fe7-f566fb1d13e3"
+            ],
+            "materials": [
+              "8c0e3312-c4c1-4c19-b5fd-9ac1399e5ec6",
+              "db8e6918-56a5-466d-a28d-bbc282fbc63f",
+              "45fc214f-6b1b-44c8-bf0a-a864dc31c6e1",
+              "cdd121dd-ee54-47f4-baac-4c0293d58a95",
+              "79c8d987-0391-43ee-bbee-132d01948abc",
+              "bd1a6d86-d799-438b-b8d8-eecfa2abbbd8",
+              "c42c5610-d094-46b4-9573-9d45208c46f8",
+              "dd4c9c4d-ccd4-4274-a816-f9b7a26ad9cc",
+              "965795b5-af7f-442f-af87-b34e216b7b35",
+              "9c540d3d-656e-43ec-8d52-ff81c97e4c62",
+              "5d4bab0e-97ac-44e9-9c7d-7637ef3df291",
+              "42a7a84a-b434-4ac9-baab-7d5ff772acfc",
+              "db138808-1805-4f7f-b662-0b8abb42aaa5",
+              "151295f8-e192-493f-bb53-ac3b8c57688b",
+              "0146a1e9-24d7-4c42-9501-bd59fbc9f2a8",
+              "a46777c9-8a90-420f-ba6b-aa93f6670f59",
+              "a8f0ed87-ec23-4644-9b30-82efe29b27b6"
+            ],
+            "textures": [
+              "eaaef4b3-964c-4831-9bbe-d308e632c182",
+              "d8ad2dab-4294-4719-ad7d-856220b7546a",
+              "953f1d49-c735-4a31-949f-59b36d4f4f60"
+            ]
+          }
+        },
+        "layout": {
+          "viewport": {
+            "width": 844,
+            "height": 390
+          },
+          "pet": {
+            "left": 712,
+            "top": 226,
+            "right": 824,
+            "bottom": 370,
+            "width": 112,
+            "height": 144
+          },
+          "card": null,
+          "canvas": {
+            "left": 724,
+            "top": 230,
+            "right": 812,
+            "bottom": 318,
+            "width": 88,
+            "height": 88
+          },
+          "overflow": false,
+          "leaf": null
+        }
+      }
+    },
+    "contextRestored": {
+      "character": {
+        "rendererId": 2,
+        "canvasId": "2",
+        "scene": "4e636f28-5551-4864-9f46-116429ea6a2c",
+        "camera": "183f1d13-9353-430e-b4e2-468f4fcfc452",
+        "model": "760146d8-5974-46b8-830e-7093e8e53086",
+        "independentFromGlobe": true,
+        "renderedFrames": 4,
+        "renderCount": 4,
+        "contextLost": false,
+        "rect": {
+          "left": 724,
+          "top": 230,
+          "right": 812,
+          "bottom": 318,
+          "width": 88,
+          "height": 88
+        },
+        "screen": {
+          "left": 733.8652232835236,
+          "top": 240.2576044605297,
+          "right": 801.9120595539274,
+          "bottom": 309.71670694772024,
+          "minDepth": -0.41895765584332156,
+          "maxDepth": -0.2943517049683946
+        },
+        "finite": true,
+        "triangles": 45792,
+        "meshes": [
+          "booky-front-hardcover",
+          "booky-front-embossed-panel",
+          "booky-gold-cover-tooling",
+          "booky-eye-socket-left",
+          "booky-sclera-left",
+          "booky-iris-left",
+          "booky-pupil-ink-left",
+          "booky-eye-catchlights-left",
+          "booky-sculpted-brow-left",
+          "booky-eye-socket-right",
+          "booky-sclera-right",
+          "booky-iris-right",
+          "booky-pupil-ink-right",
+          "booky-eye-catchlights-right",
+          "booky-sculpted-brow-right",
+          "booky-soft-nose",
+          "booky-smile-cavity",
+          "booky-smile-teeth",
+          "booky-smile-tongue",
+          "booky-lower-lip",
+          "booky-page-block",
+          "booky-layered-leaf-edges",
+          "booky-purple-ribbon",
+          "booky-bound-spine-and-shoes",
+          "booky-legs",
+          "booky-shoe-soles-and-caps",
+          "booky-spine-bands-and-shoe-laces",
+          "booky-left-sleeve",
+          "booky-left-open-glove",
+          "booky-left-cuff",
+          "booky-right-sleeve",
+          "booky-right-grip-glove",
+          "booky-right-cuff",
+          "booky-magnifier-handle",
+          "booky-magnifier-gold-frame",
+          "booky-magnifier-lens",
+          "booky-magnifier-highlight"
+        ],
+        "rig": {
+          "body": {
+            "uuid": "0c2ca91d-491f-4168-9d89-2b49cbedd9bd",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "frontCover": {
+            "uuid": "c0ad0ba4-7ce4-4df0-be9b-042d25dc12f6",
+            "position": [
+              -0.56,
+              0,
+              0.18
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "bookmark": {
+            "uuid": "ec0fa972-e1d3-4cde-b990-06427f35b975",
+            "position": [
+              -0.4,
+              0.754,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "leftArm": {
+            "uuid": "5b32c31b-50e9-43f3-be37-79f37f87b298",
+            "position": [
+              -0.551,
+              -0.21,
+              0.02
+            ],
+            "rotation": [
+              0,
+              0,
+              -0.16
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "rightArm": {
+            "uuid": "383a082d-1ac9-4a1f-b6d8-ec164c97a68b",
+            "position": [
+              0.551,
+              -0.21,
+              0.02
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "eyes": [
+            {
+              "uuid": "ef879141-0133-470c-a494-21d3dd005f43",
+              "position": [
+                0.32500000000000007,
+                0.233,
+                0.09400000000000003
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "uuid": "9d590277-e181-4c19-a710-2d715b017249",
+              "position": [
+                0.795,
+                0.233,
+                0.09400000000000003
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            }
+          ],
+          "pupils": [
+            {
+              "uuid": "8cc56f3d-f479-4f15-a606-029e25b8d689",
+              "position": [
+                0.008,
+                -0.009,
+                0.046
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "uuid": "56aefdf7-7906-49e3-8812-a3f78e94dad7",
+              "position": [
+                0.008,
+                -0.009,
+                0.046
+              ],
+              "rotation": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            }
+          ],
+          "brows": [
+            {
+              "uuid": "b958232c-3e84-488e-a93f-acbf4d7e5d11",
+              "position": [
+                0.32500000000000007,
+                0.527,
+                0.09000000000000002
+              ],
+              "rotation": [
+                0,
+                0,
+                0.035
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "uuid": "117cf5bf-8aca-49f8-94bc-483f9325d504",
+              "position": [
+                0.795,
+                0.54,
+                0.09000000000000002
+              ],
+              "rotation": [
+                0,
+                0,
+                -0.035
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            }
+          ],
+          "mouth": {
+            "uuid": "313c21a0-a8b9-48c7-b262-07ffad655f6a",
+            "position": [
+              0.56,
+              -0.274,
+              0.08700000000000002
+            ],
+            "rotation": [
+              0,
+              0,
+              0
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        "bounds": {
+          "min": [
+            -1.124620161486955,
+            -1.2289999723434448,
+            -0.2459999918937683
+          ],
+          "max": [
+            1.2330233950445901,
+            0.9023478993177414,
+            0.3546184492111206
+          ]
+        },
+        "gpu": {
+          "calls": 37,
+          "triangles": 45792,
+          "textures": 5,
+          "geometries": 35
+        },
+        "resources": {
+          "geometries": [
+            "d9009461-d175-462f-b5e3-823aa2a38433",
+            "e6c930cc-2fcb-4b30-9e5e-b67073f0d4e7",
+            "160eec47-a82c-4de6-be95-08a6bb3a3a13",
+            "84258dc2-a2e3-440e-a077-3287c9415ec4",
+            "beb9a5dd-8425-4c2e-9d6d-73b0d4c4cabc",
+            "d6b3d697-0f19-44fa-976d-388184769dfe",
+            "64a90bef-17e9-4a56-9ca4-0c92dabae5c7",
+            "2246ae01-4eec-4d68-a94b-e69416ad1113",
+            "c7be6807-a8ce-4970-be17-7404c3c70f47",
+            "487515e5-b873-4cc9-908e-fd801531f3d8",
+            "81facf9f-5b2a-4622-99b3-b1c3dd98dafa",
+            "53cfe0ed-0a01-4237-9915-71eeafa99430",
+            "837afa1d-c4e7-4b30-92c4-9ff0b272a1be",
+            "5e4eb495-a47a-417c-9fda-85bf40e5f271",
+            "50c12a8b-5a60-4686-b6ab-9b43230ab20e",
+            "2cad4000-cf62-4baa-8e82-98c0414596ad",
+            "18f2c48c-7aa0-49fa-b5e4-91591282969c",
+            "eb21335a-b476-4657-bbab-ebf7fb1b8135",
+            "6716cc67-bc99-40a1-bb55-01851fce7801",
+            "b66860da-9ec8-4b64-a0ba-02e78fded2d0",
+            "011b70f2-3c4e-4fbc-b8d4-654b97eb1b6d",
+            "f879f5a5-e3cd-4a95-b500-3eec9d769a7c",
+            "dad978ef-44c7-464f-b749-db91620b7cba",
+            "d1bcd3e7-29c3-4090-b599-c6f3a5352db6",
+            "f9388e30-66c9-4922-813e-7374dd81fb75",
+            "6f1c33e5-7186-4a8c-8b65-77cfa57310e9",
+            "038639e0-3885-4384-bd11-80a1bd790b8a",
+            "94cc6c0d-338c-49d7-adaf-24e0521b492e",
+            "5321174a-a168-4ba3-8ddb-d0af49b610d9",
+            "cd527692-5d82-4135-ae20-ce198e3b6cd3",
+            "16688e1f-23e9-4aab-9a6d-4d81711fa267",
+            "9379dc0d-ac54-40d1-b5c7-3c8ee2c10921",
+            "effbedb3-8535-47d6-b23b-9d5a33675046",
+            "769a19bf-6e59-4afe-847b-1503c6cbc04c",
+            "277d258a-b1e9-4d5d-9fe7-f566fb1d13e3"
+          ],
+          "materials": [
+            "8c0e3312-c4c1-4c19-b5fd-9ac1399e5ec6",
+            "db8e6918-56a5-466d-a28d-bbc282fbc63f",
+            "45fc214f-6b1b-44c8-bf0a-a864dc31c6e1",
+            "cdd121dd-ee54-47f4-baac-4c0293d58a95",
+            "79c8d987-0391-43ee-bbee-132d01948abc",
+            "bd1a6d86-d799-438b-b8d8-eecfa2abbbd8",
+            "c42c5610-d094-46b4-9573-9d45208c46f8",
+            "dd4c9c4d-ccd4-4274-a816-f9b7a26ad9cc",
+            "965795b5-af7f-442f-af87-b34e216b7b35",
+            "9c540d3d-656e-43ec-8d52-ff81c97e4c62",
+            "5d4bab0e-97ac-44e9-9c7d-7637ef3df291",
+            "42a7a84a-b434-4ac9-baab-7d5ff772acfc",
+            "db138808-1805-4f7f-b662-0b8abb42aaa5",
+            "151295f8-e192-493f-bb53-ac3b8c57688b",
+            "0146a1e9-24d7-4c42-9501-bd59fbc9f2a8",
+            "a46777c9-8a90-420f-ba6b-aa93f6670f59",
+            "a8f0ed87-ec23-4644-9b30-82efe29b27b6"
+          ],
+          "textures": [
+            "eaaef4b3-964c-4831-9bbe-d308e632c182",
+            "d8ad2dab-4294-4719-ad7d-856220b7546a",
+            "953f1d49-c735-4a31-949f-59b36d4f4f60"
+          ]
+        }
+      },
+      "layout": {
+        "viewport": {
+          "width": 844,
+          "height": 390
+        },
+        "pet": {
+          "left": 712,
+          "top": 226,
+          "right": 824,
+          "bottom": 370,
+          "width": 112,
+          "height": 144
+        },
+        "card": null,
+        "canvas": {
+          "left": 724,
+          "top": 230,
+          "right": 812,
+          "bottom": 318,
+          "width": 88,
+          "height": 88
+        },
+        "overflow": false,
+        "leaf": null
+      }
+    },
+    "fallback": {
+      "layout": {
+        "viewport": {
+          "width": 844,
+          "height": 390
+        },
+        "pet": {
+          "left": 712,
+          "top": 226,
+          "right": 824,
+          "bottom": 370,
+          "width": 112,
+          "height": 144
+        },
+        "card": {
+          "left": 360,
+          "top": 12,
+          "right": 700,
+          "bottom": 378,
+          "width": 340,
+          "height": 366
+        },
+        "canvas": {
+          "left": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        "overflow": false,
+        "leaf": {
+          "page": 1,
+          "animation": "none",
+          "duration": "1e-05s",
+          "transform": "none",
+          "scrollTop": 0
+        }
+      },
+      "owners": {
+        "renderers": [
+          {
+            "id": 1,
+            "frames": 252,
+            "disposed": true,
+            "disposeCalls": 1
+          },
+          {
+            "id": 2,
+            "frames": 4,
+            "disposed": true,
+            "disposeCalls": 1
+          }
+        ],
+        "models": [
+          {
+            "id": "c34853f5-2776-4f04-9bcc-f76bb7254f2c",
+            "disposed": true,
+            "disposeCalls": 1
+          },
+          {
+            "id": "760146d8-5974-46b8-830e-7093e8e53086",
+            "disposed": true,
+            "disposeCalls": 1
+          }
+        ]
+      },
+      "globe": {
+        "selection": {
+          "editionId": "rand-mcnally-1887",
+          "standId": "canonical",
+          "backgroundId": "background.base.site-starfield"
+        },
+        "quality": "high",
+        "mascotObjects": [],
+        "backgroundResource": null,
+        "standCount": 0,
+        "backgroundCount": 0,
+        "surfaceCount": 1,
+        "sameScene": true,
+        "pose": {
+          "position": [
+            -0.22336,
+            2.58914,
+            -1.37654
+          ],
+          "quaternion": [
+            0.04119,
+            0.85577,
+            0.51108,
+            -0.06898
+          ],
+          "zoom": 1,
+          "fov": 43,
+          "target": [
+            0,
+            0,
+            0
+          ]
+        },
+        "url": "https://booky-live-character.test/?country=russia&writer=dostoevsky#atlas",
+        "texture": "aa97c4bd-db3a-4863-8c1c-5a7f54ce88ad",
+        "geometry": "420db76d-e9a8-447b-8319-2d2f496bab28",
+        "uploaded": true,
+        "frame": 58,
+        "gpu": {
+          "calls": 88,
+          "triangles": 104019,
+          "textures": 3,
+          "geometries": 93
+        },
+        "contextLost": false
+      }
+    },
+    "retired": {
+      "renderers": [
+        {
+          "id": 1,
+          "frames": 252,
+          "disposed": true,
+          "disposeCalls": 1
+        },
+        {
+          "id": 2,
+          "frames": 4,
+          "disposed": true,
+          "disposeCalls": 1
+        }
+      ],
+      "models": [
+        {
+          "id": "c34853f5-2776-4f04-9bcc-f76bb7254f2c",
+          "disposed": true,
+          "disposeCalls": 1
+        },
+        {
+          "id": "760146d8-5974-46b8-830e-7093e8e53086",
+          "disposed": true,
+          "disposeCalls": 1
+        }
+      ]
+    }
+  },
+  "capturedImages": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s15-booky-live\\browser-a3\\booky-live-character-live--d3a75-nical-globe-stays-unchanged\\booky-live-help-ru-1440.png",
+      "sha256": "aaf80e1409536edbe941559b7ea9c7c83cfd368a0c58b76350a75761a9fbd493"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s15-booky-live\\browser-a3\\booky-live-character-live--d3a75-nical-globe-stays-unchanged\\booky-live-actual-drawing-buffer.png",
+      "sha256": "17b825c707b646b85ea03e9d7d9c20fee2a11f2a99d82dc81a18a88698e4bf31"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s15-booky-live\\browser-a3\\booky-live-character-live--d3a75-nical-globe-stays-unchanged\\booky-live-guide-en-320.png",
+      "sha256": "5fcc06cd07a65e8dd6fcaa136a1c03abf6ae98585fd4767c17471b49abdad0bf"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s15-booky-live\\browser-a3\\booky-live-character-live--d3a75-nical-globe-stays-unchanged\\booky-live-interaction-en-landscape.png",
+      "sha256": "6de7419c43dddd5ada096ec243b130e14e554e9ff7717e10ab302a5e3246b4c0"
+    }
+  ],
+  "visualReview": {
+    "path": "docs/mobile/evidence/S15/booky-live-character-20260920/visual-review.json",
+    "sha256": "aa605f155ab8b32f0f513b7f5b2e441d6c50d4d7f12b2e8616177b5ee8207570"
+  },
+  "inspectedImageCount": 4,
+  "supplementaryModelPreview": {
+    "capture": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s15-booky-live/art-preview/a4/capture.json",
+      "sha256": "02a1c5ff7fb5053a9cb4f6c499ba11e87fddf636031e31f1169191a54bee7e7b"
+    },
+    "images": [
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s15-booky-live\\art-preview\\a4\\booky-720.png",
+        "sha256": "20925cf8685525699cc787a143e16f9a5c937f23911dd7e6b2137bd2378d8209"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s15-booky-live\\art-preview\\a4\\booky-160.png",
+        "sha256": "bf8d6d6b390a1ce799aaca5e204bdf11fba9efc50cc976ef037628264730c8ab"
+      }
+    ],
+    "actualFullApp": false,
+    "actualAvatar": true,
+    "actualModel": true,
+    "reviewOverride": "Only the large 720px setSize drawing-buffer cap is waived at DPR1. Each size mounts a separate keyed actual Avatar, avoiding contamination of the hook size cache by the review override. The 160px image retains the real hook buffer size and sampling. Product camera, model, materials, lighting and tone mapping execute from the real hook.",
+    "sourceInputs": [
+      {
+        "path": "package-lock.json",
+        "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+      },
+      {
+        "path": "package.json",
+        "sha256": "90b392c205754f838b8bc7c4475bd475936be1078561bb218c437d151177869f"
+      },
+      {
+        "path": "src/assets/mascots/knizhulyk-green-v1.png",
+        "sha256": "44f97b5c83189ba1ddca26fd1313edc515e5008a2e92c2c694d1d57c29a2a4ed"
+      },
+      {
+        "path": "src/host/PlanetMascotAvatar.css",
+        "sha256": "88ed5e804e46e9843ef246ac9f0cb418dec48bb6fffacebd6951eb074bd938a4"
+      },
+      {
+        "path": "src/host/PlanetMascotAvatar.tsx",
+        "sha256": "918f46441c27b76cae7891487975d89a0862c971fc3d9e6980367e39de05562c"
+      },
+      {
+        "path": "src/host/bookyAnimation.ts",
+        "sha256": "89d2bf8dbbef203384ace4e2ee1d087c88c8b9d42046e99635aef529d4736311"
+      },
+      {
+        "path": "src/host/bookyModel.ts",
+        "sha256": "902263906222099cbc93ff79f2ca5aabc6c12f687ec390f56bc1c50000f9d370"
+      },
+      {
+        "path": "src/host/useBookyRenderer.ts",
+        "sha256": "0f5ea096180462c3478d15bf7c2a72c7a50c32b8a7ccc584e7d872bfabbaa5a6"
+      }
+    ],
+    "artAccepted": false,
+    "releaseReady": false
+  },
+  "renderingConfiguration": {
+    "canonicalGlobeRenderers": 1,
+    "optionalIndependentCharacterRenderers": 1,
+    "modelTriangles": 45792,
+    "modelTriangleBudget": 50000,
+    "modelMeshCount": 37,
+    "modelOwnedMaps": 3,
+    "minimumAllowedFootY": -1.3,
+    "drawingBufferMaxDimension": 256,
+    "samplingScaleMax": 2,
+    "pmremFaceSize": 64,
+    "additionalOwnedKeyShadowMaps": 1,
+    "keyShadowMapSize": [
+      512,
+      512
+    ],
+    "shadowFiltering": "PCFSoftShadowMap",
+    "configurationSource": {
+      "path": "src/host/useBookyRenderer.ts",
+      "sha256": "0f5ea096180462c3478d15bf7c2a72c7a50c32b8a7ccc584e7d872bfabbaa5a6"
+    },
+    "sourceContractOnlyForSamplingAndLightLimits": true,
+    "installedDevicePerformanceAccepted": false
+  },
+  "fallbackArtwork": {
+    "path": "src/assets/mascots/knizhulyk-green-v1.png",
+    "sha256": "44f97b5c83189ba1ddca26fd1313edc515e5008a2e92c2c694d1d57c29a2a4ed",
+    "bytes": 1895595,
+    "width": 1254,
+    "height": 1254,
+    "pngColorType": 6,
+    "bundledPath": "/fixture/assets/knizhulyk-green-v1-VHIYWUNI.png"
+  },
+  "assetProvenance": {
+    "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/asset-provenance.json",
+    "sha256": "7ab719ac6e8b6cebf407fa4370169f8a48816eaa287a49a36ca2764b8f689d14"
+  },
+  "starterSetSourceInventory": {
+    "path": "docs/mobile/evidence/S13/book-cloud-stand-20260920/starter-set-source-inventory.json",
+    "sha256": "854f14d22bbf78c2207e6f0c93b2c03696ce8d6a462c44d452ba2d9a633faa92"
+  },
+  "inventoryHistorical": true,
+  "inventoryAuditRerun": false,
+  "inventoryUnchangedInputsVerified": true,
+  "inventoryChangedInputs": [
+    {
+      "path": "src/App.tsx",
+      "priorSha256": "ab22ae860da4442a97c8a4f9994a0cfed05e75a5bdddd6c1675b82972d9be6f3",
+      "currentSha256": "09766974e26f3d8f39389fad3f59a9e958f5122aa39f0f557010290cbd8ce212"
+    },
+    {
+      "path": "src/components/GlobeCameraRig.tsx",
+      "priorSha256": "6938d120c7a49248398b385640cc77d96c9f3b33cbd6c3b4ef9881ef89e2ec19",
+      "currentSha256": "189f1a90fafb001a09b02832cc033f2239d8b417adfc6a3f8899986152580a48"
+    },
+    {
+      "path": "src/components/GlobeIncludedBackground.tsx",
+      "priorSha256": "3268e2f971bb3b8742093be690116a16f8bee262362d50743daca2273d376b61",
+      "currentSha256": "b384ccdc3020598f10a990807e74342dc35e9434e42cad54b11526c10d81634c"
+    },
+    {
+      "path": "src/components/GlobeIncludedStand.tsx",
+      "priorSha256": "276ef908fe5a09c066a59d9ff57d1432d44300bcb979b2aeb5d6dd249ba189fd",
+      "currentSha256": "a083080c90c5bbb5f53dc9e7ba4f4498712634a9df67db6ce0e2e12cd4b4d068"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "priorSha256": "666960397af75698cdfbc89fe1f9f359683785ef168288e740caedaf7a19dd33",
+      "currentSha256": "f5bcfb487be1a34199cc6482dd2de5e6b6a68987938343fd41e7c1f9cc47b63d"
+    },
+    {
+      "path": "src/components/globeBackgroundGeometry.ts",
+      "priorSha256": "019c09b6c2fe51a52c772756b9c6fc47be0c8f8d80bac9dcb5f005c07b82ecc1",
+      "currentSha256": "daa902b738190403a4297264f7067dae8b1fdbe86c73c16e541ace7a7e9a0f00"
+    },
+    {
+      "path": "src/components/globeCraftMaterials.ts",
+      "priorSha256": "68ce7e818d50ac5ece1d5d4542fdc4cecea6af25e21b08b1274c8adcacbfbde1",
+      "currentSha256": "2c19145443374e631cf40dbf20a8b55d38bd8a41e1c0d025dc3ec10fbbe47721"
+    },
+    {
+      "path": "src/components/globeLibraryGeometry.ts",
+      "priorSha256": "c0d4fe4c9b69921df11d50bc349fca9896304baba67fff60263b77ff19c1d1ee",
+      "currentSha256": "18c2af40ee169eeac5416aa59effe1e50cbea92359a7f1e0d0f8f8972dddaf7c"
+    },
+    {
+      "path": "src/components/globeWhaleStandGeometry.ts",
+      "priorSha256": "a641909b9d2a168b921e3a94f78db0c0652fe67b4d76b3cdaa2a1fba57de82be",
+      "currentSha256": "9c0975465082d9423e2bfd3a8da3fa355897e0c6018d7c955c52497c0a9d64ab"
+    },
+    {
+      "path": "src/components/globeWriterStudyGeometry.ts",
+      "priorSha256": "4e2c7f51529d0f5cdde9df2484cf0701a8a6662ee9c5b9a96de828f22d7c7cfc",
+      "currentSha256": "c811764937279429ecddf50b1cd0b60f3b7a5f568772d9ced146b4920fca9f1e"
+    },
+    {
+      "path": "src/host/PlanetStandControls.tsx",
+      "priorSha256": "6bbcb8f9e373f06491b742888d58110d0922a3c0a0bdf9d47cceb129dbcbff76",
+      "currentSha256": "829db69456bddda43035df512ee1af4ed6182752bdf3161e14db756b695295e1"
+    }
+  ],
+  "historicalStarterSetCounts": {
+    "required": 29,
+    "sourceBound": 13,
+    "accepted": 0,
+    "ownerAdded": 3
+  },
+  "ownerAdditionIds": [
+    "stand.base.portrait-pushkin",
+    "stand.base.portrait-hemingway",
+    "stand.base.portrait-tolstoy"
+  ],
+  "preservedInputs": [
+    {
+      "path": "src/App.tsx",
+      "sha256": "09766974e26f3d8f39389fad3f59a9e958f5122aa39f0f557010290cbd8ce212"
+    },
+    {
+      "path": "src/assets/mascots/knizhulyk-green-v1.png",
+      "sha256": "44f97b5c83189ba1ddca26fd1313edc515e5008a2e92c2c694d1d57c29a2a4ed"
+    },
+    {
+      "path": "src/books/bookArchiveAuthorRequest.ts",
+      "sha256": "40c88e40ea7a8494b7fc6670e1aa8425c8cfcc30cebe4ece53932936a94711ba"
+    },
+    {
+      "path": "src/community/CommunityHub.tsx",
+      "sha256": "59746183b82db8b2481bd5f7d7268bae1c31f04011ba0631ce9719ce7f9a6e49"
+    },
+    {
+      "path": "src/components/ArticleReader.tsx",
+      "sha256": "1b00876d706d814bfebb13dc84a47d3542de6d6040fe3f6810bfefbcdcf735d8"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "sha256": "a961f12b6a07e8b38d3fd560c04794e680321e61e2490b48d84dd8769992a1b1"
+    },
+    {
+      "path": "src/components/globeAntiqueGeometry.ts",
+      "sha256": "590a4e0ea5cb92251d7cccac3c0d6d28a441e82e6520fd17fe5d71adffb95538"
+    },
+    {
+      "path": "src/components/globeAtlas.ts",
+      "sha256": "224dcde2499f51eb333562875796d3422ab28ad987339f36be79f0635677bcf6"
+    },
+    {
+      "path": "src/components/globeBackgroundGeometry.ts",
+      "sha256": "daa902b738190403a4297264f7067dae8b1fdbe86c73c16e541ace7a7e9a0f00"
+    },
+    {
+      "path": "src/components/globeBookCloudStandGeometry.ts",
+      "sha256": "e50e21659f3439b8bd3cd457cbe20f16bfd47f40eaedc3355151daf6450f3577"
+    },
+    {
+      "path": "src/components/GlobeCameraRig.tsx",
+      "sha256": "189f1a90fafb001a09b02832cc033f2239d8b417adfc6a3f8899986152580a48"
+    },
+    {
+      "path": "src/components/globeCeramicPortraitStandGeometry.ts",
+      "sha256": "be533fd4752ab051389a202b65a993956e0f12d6e14e1b8cbb8cbc62bac142e8"
+    },
+    {
+      "path": "src/components/globeCraftMaterials.ts",
+      "sha256": "2c19145443374e631cf40dbf20a8b55d38bd8a41e1c0d025dc3ec10fbbe47721"
+    },
+    {
+      "path": "src/components/GlobeIncludedBackground.tsx",
+      "sha256": "b384ccdc3020598f10a990807e74342dc35e9434e42cad54b11526c10d81634c"
+    },
+    {
+      "path": "src/components/GlobeIncludedStand.tsx",
+      "sha256": "a083080c90c5bbb5f53dc9e7ba4f4498712634a9df67db6ce0e2e12cd4b4d068"
+    },
+    {
+      "path": "src/components/globeLibraryBookGeometry.ts",
+      "sha256": "e3034c2bd4391f1b08410c3c1f41165e880c7225f957a42ef4780e87eeaf7e0c"
+    },
+    {
+      "path": "src/components/globeLibraryGeometry.ts",
+      "sha256": "18c2af40ee169eeac5416aa59effe1e50cbea92359a7f1e0d0f8f8972dddaf7c"
+    },
+    {
+      "path": "src/components/globeQuality.ts",
+      "sha256": "b52e0221ec8bcac17d640e26378bc0304521316ca34e203313d2b63f9c3b28c9"
+    },
+    {
+      "path": "src/components/globeStandGeometry.ts",
+      "sha256": "b12d187ce4a2216dd8fb3a89110a584030d72666841975849e935d184a14cc4f"
+    },
+    {
+      "path": "src/components/globeStandInspection.ts",
+      "sha256": "1268c67bf7104759e3a7ccd06ace4e7703a5553e48e22975d806c96dee0547e1"
+    },
+    {
+      "path": "src/components/globeTurnedWoodAtlas.ts",
+      "sha256": "579c1cec368760643b108a63f466b3d6385243d5e0f13c4638a4824b62a5d123"
+    },
+    {
+      "path": "src/components/globeWhaleStandGeometry.ts",
+      "sha256": "9c0975465082d9423e2bfd3a8da3fa355897e0c6018d7c955c52497c0a9d64ab"
+    },
+    {
+      "path": "src/components/globeWriterStudyGeometry.ts",
+      "sha256": "c811764937279429ecddf50b1cd0b60f3b7a5f568772d9ced146b4920fca9f1e"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "sha256": "f5bcfb487be1a34199cc6482dd2de5e6b6a68987938343fd41e7c1f9cc47b63d"
+    },
+    {
+      "path": "src/components/LiteraryWorldMap.tsx",
+      "sha256": "588507e0dd39479e8fdcb006ab48ec04197f9821665826675e0163f93428aa28"
+    },
+    {
+      "path": "src/components/ReadingLibrarySyncNotice.css",
+      "sha256": "b53f865a8035e7c8d5a0323b0f8ec707bf81935a5315e053159d0f440bb82f98"
+    },
+    {
+      "path": "src/components/ReadingLibrarySyncNotice.tsx",
+      "sha256": "53ed654c2d437d7f1d1494ea2cc335db805f1ba97ce42132e8eca1d13e4ab602"
+    },
+    {
+      "path": "src/components/useGlobeCompositionFrame.ts",
+      "sha256": "530d1303a5af222bf68f72b499b07c8d41a828ca14783912284b6e3963d59cd0"
+    },
+    {
+      "path": "src/components/useGlobeCompositionScene.ts",
+      "sha256": "30009468d0cdee459441ca5780ea608cdf21b3f6e7055da89c0ce28e435326b5"
+    },
+    {
+      "path": "src/components/useGlobeStyleState.ts",
+      "sha256": "6d2801802ec0e9bf0c2e5ff9a6f852f00434a8494216b06ee2069917e2a1a0ba"
+    },
+    {
+      "path": "src/hooks/readingLibraryStorage.ts",
+      "sha256": "fe7b8d950f80cba0d7e76d45e850ba3c0e02420d44250605329baa2c085376d3"
+    },
+    {
+      "path": "src/hooks/useReadingLibrary.ts",
+      "sha256": "92262e64be0e09278b0f917507bad1b4d87d8e33afaa4295d3b60424f4cff2bf"
+    },
+    {
+      "path": "src/host/HostPlatformServices.ts",
+      "sha256": "fa084b57e8596064ef1b0a8bd7c99b789361059a585171fd30ffe057bceec2c6"
+    },
+    {
+      "path": "src/host/HostRuntimeStatus.tsx",
+      "sha256": "bd100bd0e9d4eb8eba8772799de106f04c5de154d0dd9298f7340abe26100d91"
+    },
+    {
+      "path": "src/host/mountHostApp.tsx",
+      "sha256": "e21aa15479a81c5c3847b571d5d3d7e7b9c25d1c55b4aa3aa2ac94c6677fe8af"
+    },
+    {
+      "path": "src/host/planetComposition.ts",
+      "sha256": "e13f2d376567c65a5b051bfd651a14f1bbb18f3bdf01f09cf97ebb2e3cf92305"
+    },
+    {
+      "path": "src/host/planetCompositionPresentation.ts",
+      "sha256": "d62d963c719366c1be3e6888b5eb321933f3e7224b6591fc8c2d6d81a639c3f6"
+    },
+    {
+      "path": "src/host/planetMascot.ts",
+      "sha256": "e8ed51672d6e47eed09240dac868b54bdc5abfabe877b496e7a5eab26875d6c4"
+    },
+    {
+      "path": "src/host/planetMascotRoutes.ts",
+      "sha256": "cf10e25826166ddb87f17876259d124e3aec143b4245627705f465822af07eb4"
+    },
+    {
+      "path": "src/host/PlanetStandControls.css",
+      "sha256": "2da119e90674c18ad283af540d6b8a39957fd67066090770a6172f69c248c55a"
+    },
+    {
+      "path": "src/host/PlanetStandControls.tsx",
+      "sha256": "829db69456bddda43035df512ee1af4ed6182752bdf3161e14db756b695295e1"
+    },
+    {
+      "path": "src/host/planetStandInspection.ts",
+      "sha256": "ee5a5dd46f75877a34c297ce122e4c3ab0c09d8ebd439a0258589c5a3baab0f8"
+    },
+    {
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "sha256": "f8331bee7996bf176f34384d14cb42f39f5e5a94c82a27609db758003dc7bea2"
+    },
+    {
+      "path": "src/loading/DeferredHomepageArchives.tsx",
+      "sha256": "f40c73e456baef2ca757d28d8d3afbf53c1b66fe772f7cf2c3715530ff011ee8"
+    },
+    {
+      "path": "src/planet/globeComposition.ts",
+      "sha256": "20b4cabdd678a6fa5b70ab2b4cbaef179f0e7d7c5819e408123eb486ddb0e81f"
+    },
+    {
+      "path": "src/planet/writerStudySketch.ts",
+      "sha256": "2f642e49c988dd7f6efeaacc9aa6017596ce7799d46442e507cf89a7e95b1d60"
+    },
+    {
+      "path": "src/platform/adapters/android/AndroidPlatformAdapter.ts",
+      "sha256": "4b05363d42896b2a3a1908a494d796a2d43b719c6e2f3de623bd7fa750488f0f"
+    },
+    {
+      "path": "src/platform/ports.ts",
+      "sha256": "51353969918a3bbfdbafef37a9b3c28de7c31421853edb664666b547071d9459"
+    },
+    {
+      "path": "src/pwa/PwaDevicePanel.tsx",
+      "sha256": "5e3912e4a989a3135b691cde05d0949b9a21855d380b610b045468b71b609f7b"
+    },
+    {
+      "path": "src/pwa/PwaStorageStatus.ts",
+      "sha256": "662c1cf4bf3a0cc060720aa6338e940c6d03b0cb6ac8e5b5444b32883245f885"
+    }
+  ],
+  "changedInputsBefore": [
+    {
+      "path": "src/host/PlanetMascotAvatar.tsx",
+      "sourceCommit": "4a7402167023ba7d760ffbea395c15564adf3443",
+      "gitBlobSha256": "5e0e664c1d2f2b635e7c193331264179d6bf9e1bfe27b1c5265812c55691cc76"
+    },
+    {
+      "path": "src/host/PlanetMascotAvatar.css",
+      "sourceCommit": "4a7402167023ba7d760ffbea395c15564adf3443",
+      "gitBlobSha256": "393530853338c31a874ad42d9a01d52057ea3c09b15b2d173ad11f783136e1ba"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sourceCommit": "4a7402167023ba7d760ffbea395c15564adf3443",
+      "gitBlobSha256": "f1c9ac10fa44bd40b959102911cd3245a7897bd779eb2c516657a4e7dfcff0d7"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.css",
+      "sourceCommit": "4a7402167023ba7d760ffbea395c15564adf3443",
+      "gitBlobSha256": "7f2279bf2ee4bc9f2bf621258254eac231dfc6ff2d48f8ecd87d3f53bf5abaee"
+    }
+  ],
+  "newSourcePaths": [
+    "src/host/bookyModel.ts",
+    "src/host/bookyAnimation.ts",
+    "src/host/useBookyRenderer.ts"
+  ],
+  "priorVisualReview": {
+    "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/visual-review.json",
+    "sha256": "e32e9d94f9ee55dbe0c420dc631f8f25cdd7ddfe27991087eaa1f83c92350240"
+  },
+  "priorSceneVisualReview": {
+    "path": "docs/mobile/evidence/S13/combined-preview-20260920/visual-review.json",
+    "sha256": "f03aa5eea53a577b57fe40c94b93be1deafd67cea3ef3b49ae06eb412a304e25"
+  },
+  "priorArtReview": {
+    "path": "docs/mobile/evidence/S13/visual-refinement-20260920/visual-review.json",
+    "sha256": "532ddaa43a5844e26a0b0a9974dc494014d011bfea4fde7248013ee975047276"
+  },
+  "priorArtCapture": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-vr/art-a2/result.json",
+    "sha256": "c9fb3667877acf9de1f69f9b24ec5f0299ce129b7bfc541e6189facb1bcabcfd"
+  },
+  "retainedLibraryDensity": {
+    "books": 984,
+    "placements": 1901197402,
+    "colors": 437509884
+  },
+  "retainedPortrait": {
+    "baselineCommits": [
+      "a115e9f11105551ed6e243787e95ffc29bccb1a0",
+      "9c14fa67acc219bfa0351b31c956e14fa4deefb6"
+    ],
+    "fragments": [
+      {
+        "name": "plate-and-seat",
+        "sourcePath": "src/components/globeCeramicPortraitStandGeometry.ts",
+        "start": "        const foot = own(",
+        "endExclusive": "        const eyeParts:",
+        "sha256": "7d3b1c9cdcc40a842f575ebc24fd323d8a6dcd5b89c535909231a42f7aa506f0",
+        "bytes": 1062,
+        "lineEndingsNormalized": true
+      },
+      {
+        "name": "scale-around-contact",
+        "sourcePath": "src/components/globeCeramicPortraitStandGeometry.ts",
+        "start": "        for (const object of group.children) {",
+        "endExclusive": "        group.updateMatrixWorld(true);",
+        "sha256": "dcd173ddd233714e67a8c9523edc14202eaa88fd7af60e5cedb47d3d3463ee10",
+        "bytes": 400,
+        "lineEndingsNormalized": true
+      }
+    ]
+  },
+  "pwa": {
+    "path": "docs/mobile/evidence/S15/booky-live-character-20260920/pwa-a1/result.json",
+    "sha256": "268b2500f8eeda192a46f1dc0fe1ee973acd5f7dc4dd880d2a740f63aece6cc3"
+  },
+  "android": {
+    "path": "docs/mobile/evidence/S15/booky-live-character-20260920/android-a1/result.json",
+    "sha256": "4e1ab609b288f98f5eb9dd7827cbc1ebace055ed6fe2115806c44c37469aae15"
+  },
+  "pwaBuildId": "6ba797925f0bf1f0be01ed33149da506777f3755c2a437f701ff3bc8eab077f0",
+  "androidBuildId": "5db3249f4dbe7a06a740685bca9d4e7e069b7f3035a5f58b0026b070c8c816d3",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s15-booky-live/android-5db3249f/app-dev-debug.apk",
+    "bytes": 70289691,
+    "sha256": "81f676217494180b15f7806a5bb7fb5340ca5677f57e509019df8f73aa64a4d8"
+  },
+  "buildAudits": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-live-character-20260920/pwa-a1/strict-audit.json",
+      "sha256": "c9245f70dc43cf22217a7f90909b99784c91de486eac7daaa5fa4536f533c3d1"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-live-character-20260920/android-a1/native-artifact-audit.json",
+      "sha256": "3668c305e90d19da808bfe7a2701ab3aed21c971f79300d885274123a3275c88"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-live-character-20260920/android-a1/android-dev-apk-verification.json",
+      "sha256": "2cc3fd98e594af756c6d4e0b8a8d3ed461e61426b65ca27e48e1f65b29a76919"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-live-character-20260920/android-a1/build-run.json",
+      "sha256": "2633e22b558fe6e8a2bc0791b71b6ef7736d85a1ddace2a5ea809f03b34395cd"
+    }
+  ],
+  "copyVerification": {
+    "path": "docs/mobile/evidence/S15/booky-live-character-20260920/pwa-a1/copy-verification.json",
+    "sha256": "38518d4307d498c925dbf195e9099de166d84a669183a8cc83e1b7674aa25fb8"
+  },
+  "priorPwa": {
+    "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/pwa-a1/result.json",
+    "sha256": "bad67a260916cb3168ebd688b2ee8d7b17f92598e28d492041cdee8f4fc8944c"
+  },
+  "priorAndroid": {
+    "path": "docs/mobile/evidence/S15/planetka-visual-mode-20260920/android-a1/result.json",
+    "sha256": "1aea24fca5b68dec928df77fffcdd5ca9e3d8e4539bb6ca5f3f8a518e038bf0d"
+  },
+  "decisionD152Recorded": true,
+  "criteriaUpdated": [
+    "S15.PLANETKA-001",
+    "S15.PLANETKA-002"
+  ],
+  "criterionChanges": [],
+  "stageChanges": [],
+  "otherStageAndCriterionStatusesUnchanged": true,
+  "parallelSafeEntry": {
+    "priorFirstOpenStage": "S03",
+    "stageAcceptanceClaimed": false,
+    "scope": "S15 already IN_PROGRESS. Explicit owner request replaces the normal bitmap pet with a live independent model; child activation, sourced dialogue, audio, formal art and device/release acceptance remain open."
+  },
+  "limitations": [
+    "Independent decorative WebGL viewport uses actual articulated book geometry; it is separate from the unchanged canonical globe renderer and camera. The old PNG is failure fallback only.",
+    "The owner explicitly rejected the initial pale, flat, glassy-eyed model. Rounded covers, deeper readable pages/spine, darker calm pupils, cloth bookmark and volumetric shoes were revised through source-bound previews. Improvement and inspection do not constitute owner/final art approval.",
+    "The model has 45792 triangles under an explicit 50000-triangle budget. Its optional renderer uses a maximum 256px drawing buffer with sampling scale up to 2, PMREM face size 64 and one owned 512px key-light shadow map; these are bounded source settings, not installed-device performance acceptance.",
+    "Short direct reactions and semantic UI page transitions are not open conversation, narration, age-adaptive journeys or persisted route progress.",
+    "Actual-App Chrome uses controlled native OS/preferences ports. APK byte validation and local PWA smoke do not establish installed-device, stress, battery or screen-reader acceptance.",
+    "Inspected screenshots and the native drawing buffer are scoped visual evidence, not final art, likeness, child or maximum-realism acceptance.",
+    "Failed unit/static a1 and any earlier browser attempts remain historical; only selected source-bound final attempts count as validation.",
+    "Starter inventory is historical 29/13/0 plus three owner additions, with explicit prior source drift; no inventory audit or unchanged globe suite is rerun."
+  ],
+  "priorStorageLimitations": [
+    "Storage API responses and elapsed time are controlled in the Chrome source fixture.",
+    "Timeout fences late results but does not cancel the underlying browser storage operation.",
+    "Simulated boolean replies do not establish a real browser persistence grant, actual disk quota or storage retention.",
+    "The source fixture is not the full application, globe or installed-native execution."
+  ],
+  "inheritedReadingLibraryLimitations": [
+    "Concurrent-tab read/modify/write is not atomic.",
+    "Full distributed add-wins and conflict resolution remain open.",
+    "Ordering of unabortable remote requests is not guaranteed.",
+    "Remote transport is controlled; actual network and installed-native execution are not established."
+  ],
+  "actualApp": true,
+  "actualCss": true,
+  "actualGlobe": true,
+  "controlledNativePorts": true,
+  "installedNativeDevice": false,
+  "independentDomCompanion": true,
+  "liveMascot3DMesh": true,
+  "globeConvertedToCharacter": false,
+  "validatedCharacterBehavior": {
+    "liveThreeModelRendered": true,
+    "normalModeHasNoBitmap": true,
+    "actualRigResponds": true,
+    "actualGuidedTargetPose": true,
+    "bodyDragDoesNotTogglePanel": true,
+    "escapeCancelsBodyDrag": true,
+    "touchTapAndKeyboardWork": true,
+    "semanticPageTurn": true,
+    "wholeModelFits": true,
+    "localeRetainsRoute": true,
+    "reducedMotionStopsAnimation": true,
+    "noHiddenFrames": true,
+    "independentResourcesDisposed": true,
+    "realContextLossFallbackWorks": true,
+    "realContextRestoreRetainsModel": true,
+    "repeatedContextLossUsesFallback": true,
+    "sameCanonicalGlobe": true,
+    "noAppearanceWrites": true
+  },
+  "unchangedControllerSuitesRerun": false,
+  "unchangedGlobeGeometrySuitesRerun": false,
+  "newActualAppCapture": true,
+  "artAccepted": false,
+  "userRealismRequirementSatisfied": false,
+  "childProfileCreated": false,
+  "childAccessGranted": false,
+  "childApproval": false,
+  "rightsApproval": false,
+  "reviewedDialogueAccepted": false,
+  "narrationEnabled": false,
+  "ageAdaptiveJourneysEnabled": false,
+  "semanticJourneyPersistence": false,
+  "screenReaderAcceptance": false,
+  "devicePerformanceAccepted": false,
+  "iosCompiled": false,
+  "grantsEntitlement": false,
+  "productionActionsPerformed": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "nextAction": "Continue the full application plan with the separate live Книжулик / Mr. Booky companion and its real canonical navigation. Refine the character and useful interactions against inspected product views while preserving independent globe ownership, demand-only rendering, context-loss fallback, keyboard access and reduced motion. Persisted adult visibility/route-resume remains a bounded future integration; do not imply it exists. S03 remains first unresolved. Child-profile policy/approval, reviewed literary dialogue/audio, age-adaptive journeys, screen-reader and installed-device/performance acceptance, iOS and release gates remain open."
+}

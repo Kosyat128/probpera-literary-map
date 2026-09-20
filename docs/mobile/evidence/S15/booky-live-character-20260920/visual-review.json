@@ -1,0 +1,86 @@
+{
+  "sourceCommit": "9b2ec5885740680f6cdb0ca84c82d7070c0b2535",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-live-character-20260920/source-manifests/5174d2bd0cd1e5c1.json",
+    "sha256": "5174d2bd0cd1e5c15c222dbb2c1a65b10700abd5717fd7f6f35e4f99fa34f0e3",
+    "fileCount": 92
+  },
+  "actualAppCapture": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s15-booky-live/browser-a3/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-character.json",
+    "sha256": "e137664fa7c67f1325557827c5392f0bd9e80752ba2695bdc296b83bc22dc90d"
+  },
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s15-booky-live/browser-a3/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-help-ru-1440.png",
+      "sha256": "aaf80e1409536edbe941559b7ea9c7c83cfd368a0c58b76350a75761a9fbd493",
+      "inspected": true,
+      "reviewer": "Codex root visual inspection",
+      "findings": [
+        "Inspected actual App desktop view: the green articulated book has dark readable eyes, a rounded bound spine, purple ribbon, magnifier and complete shoes beside the unchanged canonical globe.",
+        "The independent figure and Russian book-page panel fit without overlapping each other; local serif typography and all shown action labels remain readable."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s15-booky-live/browser-a3/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-actual-drawing-buffer.png",
+      "sha256": "17b825c707b646b85ea03e9d7d9c20fee2a11f2a99d82dc81a18a88698e4bf31",
+      "inspected": true,
+      "reviewer": "Codex root visual inspection",
+      "findings": [
+        "Inspected native 256px character drawing buffer: dark pupils, warm brows, smiling mouth, continuous ribbon, rounded green binding, ivory paper and full sneaker toes/soles are visible.",
+        "This is the actual live Three scene with unchanged authored camera and lighting, captured by one explicit diagnostic render; it is not the fallback bitmap or an image-generation substitute.",
+        "The earlier pale glassy eyes, bent-wire face border, binder-like spine loops and flat shoe strips have been replaced. This stylized model is closer to the original rendered reference; exact visual equivalence and final user acceptance are not claimed."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s15-booky-live/browser-a3/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-guide-en-320.png",
+      "sha256": "5fcc06cd07a65e8dd6fcaa136a1c03abf6ae98585fd4767c17471b49abdad0bf",
+      "inspected": true,
+      "reviewer": "Codex root visual inspection",
+      "findings": [
+        "Inspected actual App at 320px: Mr. Booky and the cream route page remain within the viewport. The small model remains recognizable and the face is readable.",
+        "The live Search target is outlined; English step text, primary action and Back/Next controls fit the page. The figure does not cover the page."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s15-booky-live/browser-a3/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-interaction-en-landscape.png",
+      "sha256": "6de7419c43dddd5ada096ec243b130e14e554e9ff7717e10ab302a5e3246b4c0",
+      "inspected": true,
+      "reviewer": "Codex root visual inspection",
+      "findings": [
+        "Inspected actual App at 844 by 390: the complete character and paper page fit without overlap.",
+        "Short landscape height uses internal card scrolling; lower navigation controls are below the initial fold. The interaction fixture reaches those controls successfully."
+      ]
+    }
+  ],
+  "supplementaryPreview": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s15-booky-live/art-preview/a4/capture.json",
+    "sha256": "02a1c5ff7fb5053a9cb4f6c499ba11e87fddf636031e31f1169191a54bee7e7b",
+    "images": [
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s15-booky-live/art-preview/a4/booky-720.png",
+        "sha256": "20925cf8685525699cc787a143e16f9a5c937f23911dd7e6b2137bd2378d8209",
+        "inspected": true,
+        "reviewer": "Codex root and independent targeted_review agent",
+        "findings": [
+          "Inspected complete figure and finer book/shoe details against the original generated green reference. No clipping or white glassy pupil defect remains in this view.",
+          "Isolated 720px inspection overrides only the decorative buffer cap; this is not full App evidence or production resolution."
+        ]
+      },
+      {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s15-booky-live/art-preview/a4/booky-160.png",
+        "sha256": "bf8d6d6b390a1ce799aaca5e204bdf11fba9efc50cc976ef037628264730c8ab",
+        "inspected": true,
+        "reviewer": "Codex root and independent targeted_review agent",
+        "findings": [
+          "Inspected complete figure and finer book/shoe details against the original generated green reference. No clipping or white glassy pupil defect remains in this view.",
+          "Isolated 160px view uses the actual bounded 256px product drawing buffer."
+        ]
+      }
+    ]
+  },
+  "pass": true,
+  "artAccepted": false,
+  "childApproved": false,
+  "userRealismRequirementSatisfied": false,
+  "releaseReady": false
+}

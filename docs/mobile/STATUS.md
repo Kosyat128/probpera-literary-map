@@ -1,3 +1,11 @@
+<!-- s15-booky-live-20260920:begin -->
+Source 9b2ec588 replaces the normal companion bitmap with an independent live articulated 3D green book; the original image remains renderer-failure fallback. The initial model was rejected and its book, face and shoes refined; no final art approval is inferred. The canonical globe and App/controller/routes are unchanged.
+3 selected model/pose/resource cases, TypeScript, one actual-App Chrome case, 4 inspected views and local PWA 6ba79792 / Android-dev 5db3249f pass. Separate a4 isolated previews bind final 45792-triangle geometry below 50000; the optional pet renderer is capped at 256px/up-to-2 sampling with PMREM64 and one owned 512px shadow map. Failed earlier attempts remain preserved, including the fixed reduced-motion defect.
+S15 PLANETKA-001/002 remain IN_PROGRESS. Stages stay 3 complete, 12 in progress, 26 unstarted; first open S03. Historical Starter inventory remains 29/13/0 plus three owner additions. Art, child, literary dialogue/audio/journeys, installed-device, screen-reader and release acceptance remain open.
+Evidence: evidence/S15/booky-live-character-20260920/result.json.
+Continue the full application plan with the separate live Книжулик / Mr. Booky companion and its real canonical navigation. Refine the character and useful interactions against inspected product views while preserving independent globe ownership, demand-only rendering, context-loss fallback, keyboard access and reduced motion. Persisted adult visibility/route-resume remains a bounded future integration; do not imply it exists. S03 remains first unresolved. Child-profile policy/approval, reviewed literary dialogue/audio, age-adaptive journeys, screen-reader and installed-device/performance acceptance, iOS and release gates remain open.
+<!-- s15-booky-live-20260920:end -->
+
 <!-- s15-planetka-visual-20260920:begin -->
 Source 0d72daba implements the separate Книжулик / Mr. Booky DOM companion requested by the owner. The green asset is a 3D-rendered PNG, not a live mascot mesh; the globe remains unchanged.
 7 selected controller/author-request cases, TypeScript, one actual-App Chrome case and one PWA offline smoke pass. Three inspected RU/EN desktop/320px/landscape views bind the full imported image and functional navigation UI.

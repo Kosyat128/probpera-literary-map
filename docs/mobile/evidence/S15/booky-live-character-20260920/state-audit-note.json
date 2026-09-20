@@ -1,0 +1,235 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-20T06:06:40.205Z",
+  "scope": "Bounded read-only diagnosis of three historical S00/S01/S02 artifacts; not a rerun of verify-state or historical tests",
+  "sourceCommit": "9b2ec5885740680f6cdb0ca84c82d7070c0b2535",
+  "priorCheckpoint": "4a7402167023ba7d760ffbea395c15564adf3443",
+  "currentSliceResult": {
+    "path": "docs/mobile/evidence/S15/booky-live-character-20260920/result.json",
+    "sha256": "7a8c4d8c1712cc4f6613448cb29657a1965592557dff1c50ca5aeb8f7e5ca402"
+  },
+  "reportedGlobalVerifier": {
+    "reporter": "Root agent observation from the immediately preceding full verify-state invocation",
+    "command": "node scripts/mobile/verify-state.mjs",
+    "exitCode": 1,
+    "rawOutputRetained": false,
+    "errors": [
+      "Evidence/input changed since verification",
+      "Missing successful command and hashed log"
+    ],
+    "earlierS15ParallelSafeEntryIssue": "Root reports adding reason and three existing evidence references before the failed full invocation; this note does not revalidate the state schema.",
+    "gitConfigurationConfirmedByRoot": {
+      "coreAutocrlfOverride": false,
+      "reason": "Task-local override was carried from exact-source commit handling into the full verifier invocation",
+      "classification": "Invocation configuration error; not evidence of historical data corruption"
+    }
+  },
+  "performedOperations": [
+    "Read three acceptance records and their explicitly selected artifact bytes",
+    "Read accepted-source, HEAD and pre-live 4a740 Git blobs; compare SHA-256 and LF-normalized bytes",
+    "Read effective core.autocrlf; compare non-writing git hash-object --path under normal settings and a command-local core.autocrlf=false override",
+    "Read evidence verifier error propagation; no verifier execution"
+  ],
+  "effectiveGitConfiguration": {
+    "coreAutocrlf": "file:C:/Program Files/Git/etc/gitconfig\ttrue",
+    "sampleAttributes": "text/eol/filter unspecified for all three selected artifacts",
+    "configMutationPerformed": false
+  },
+  "verifierSource": {
+    "path": "scripts/mobile/evidence.mjs",
+    "sha256": "9a7287662a99df66829b6e6dbc5df90b45e05cc9cebe6420d9fa2eb899e672a6"
+  },
+  "stateVerifierSource": {
+    "path": "scripts/mobile/verify-state.mjs",
+    "sha256": "f31e2b86d3e415a541a9186cac35ec1765ce4ae235eeecb310038cee46260ebf"
+  },
+  "sampleCount": 3,
+  "samples": [
+    {
+      "stage": "S00",
+      "path": "docs/mobile/evidence/S00/requirements-verification.json",
+      "acceptance": {
+        "path": "docs/mobile/evidence/S00/acceptance.json",
+        "sha256": "35660459d6974613370c2765bec0f9d34571cf7876dcc6b087318639b04aef9e",
+        "sourceCommit": "ef16246fe43a89eaad014485da7799138b4e634f"
+      },
+      "expected": {
+        "path": "docs/mobile/evidence/S00/requirements-verification.json",
+        "gitBlob": "2b8d6f717ddb0f70ce0577328b4fb7ef9f7beec7",
+        "sha256": "672e138657878a5af40ef8f0338310e3b347591f3bc1aa8c9e9cfb857d2ddf99"
+      },
+      "acceptedSource": {
+        "bytes": 396,
+        "sha256": "672e138657878a5af40ef8f0338310e3b347591f3bc1aa8c9e9cfb857d2ddf99",
+        "lfNormalizedSha256": "672e138657878a5af40ef8f0338310e3b347591f3bc1aa8c9e9cfb857d2ddf99",
+        "crlfCount": 0,
+        "loneLfCount": 11
+      },
+      "head": {
+        "bytes": 396,
+        "sha256": "672e138657878a5af40ef8f0338310e3b347591f3bc1aa8c9e9cfb857d2ddf99",
+        "lfNormalizedSha256": "672e138657878a5af40ef8f0338310e3b347591f3bc1aa8c9e9cfb857d2ddf99",
+        "crlfCount": 0,
+        "loneLfCount": 11
+      },
+      "priorCheckpoint": {
+        "bytes": 396,
+        "sha256": "672e138657878a5af40ef8f0338310e3b347591f3bc1aa8c9e9cfb857d2ddf99",
+        "lfNormalizedSha256": "672e138657878a5af40ef8f0338310e3b347591f3bc1aa8c9e9cfb857d2ddf99",
+        "crlfCount": 0,
+        "loneLfCount": 11
+      },
+      "workingTree": {
+        "bytes": 407,
+        "sha256": "03b2aafbced7b91b7ac8f9950af13504cd944c36cbf90d8df59b4c289d80e024",
+        "lfNormalizedSha256": "672e138657878a5af40ef8f0338310e3b347591f3bc1aa8c9e9cfb857d2ddf99",
+        "crlfCount": 11,
+        "loneLfCount": 0
+      },
+      "acceptedSourceMatchesRecordedSha256": true,
+      "headAndPriorGitObjectsMatchAcceptedSource": true,
+      "acceptanceRecordUnchangedSincePriorCheckpoint": true,
+      "workingTreeDiffersOnlyByLineEndings": true,
+      "currentCleanBlob": "2b8d6f717ddb0f70ce0577328b4fb7ef9f7beec7",
+      "currentCleanBlobMatchesAccepted": true,
+      "coreAutocrlfFalseOverrideBlob": "746da702de3116cdbaa844ec94bbe290e9dc5591",
+      "falseOverrideReproducesBlobMismatch": true,
+      "successfulRecordedCommandsReferencingFile": []
+    },
+    {
+      "stage": "S01",
+      "path": "docs/mobile/evidence/S01/logs/S01-accepted-regression.log",
+      "acceptance": {
+        "path": "docs/mobile/evidence/S01/acceptance.json",
+        "sha256": "904798d3f07d742e11b512c72407ae000719726e3feeda24c02b906a814e42a8",
+        "sourceCommit": "25b5347970fef19be280d29475953e98dbea69c2"
+      },
+      "expected": {
+        "path": "docs/mobile/evidence/S01/logs/S01-accepted-regression.log",
+        "gitBlob": "684aec394383292676b34fe3378147cb3b6b48dd",
+        "sha256": "15698555d9b7247ab8560f0ec35878a19d21a2e192410771472621347a367466"
+      },
+      "acceptedSource": {
+        "bytes": 276,
+        "sha256": "15698555d9b7247ab8560f0ec35878a19d21a2e192410771472621347a367466",
+        "lfNormalizedSha256": "15698555d9b7247ab8560f0ec35878a19d21a2e192410771472621347a367466",
+        "crlfCount": 0,
+        "loneLfCount": 9
+      },
+      "head": {
+        "bytes": 276,
+        "sha256": "15698555d9b7247ab8560f0ec35878a19d21a2e192410771472621347a367466",
+        "lfNormalizedSha256": "15698555d9b7247ab8560f0ec35878a19d21a2e192410771472621347a367466",
+        "crlfCount": 0,
+        "loneLfCount": 9
+      },
+      "priorCheckpoint": {
+        "bytes": 276,
+        "sha256": "15698555d9b7247ab8560f0ec35878a19d21a2e192410771472621347a367466",
+        "lfNormalizedSha256": "15698555d9b7247ab8560f0ec35878a19d21a2e192410771472621347a367466",
+        "crlfCount": 0,
+        "loneLfCount": 9
+      },
+      "workingTree": {
+        "bytes": 285,
+        "sha256": "28c81b0be6f17cef6230c3024f3aa5a8997cd58931927ceae96947853e1a0373",
+        "lfNormalizedSha256": "15698555d9b7247ab8560f0ec35878a19d21a2e192410771472621347a367466",
+        "crlfCount": 9,
+        "loneLfCount": 0
+      },
+      "acceptedSourceMatchesRecordedSha256": true,
+      "headAndPriorGitObjectsMatchAcceptedSource": true,
+      "acceptanceRecordUnchangedSincePriorCheckpoint": true,
+      "workingTreeDiffersOnlyByLineEndings": true,
+      "currentCleanBlob": "684aec394383292676b34fe3378147cb3b6b48dd",
+      "currentCleanBlobMatchesAccepted": true,
+      "coreAutocrlfFalseOverrideBlob": "b6c5c70fefc010b52ac20da9f83bbf2b243637bd",
+      "falseOverrideReproducesBlobMismatch": true,
+      "successfulRecordedCommandsReferencingFile": [
+        {
+          "command": "V12 narrow + existing boundary Vitest regression",
+          "exitCode": 0,
+          "log": "docs/mobile/evidence/S01/logs/S01-accepted-regression.log"
+        }
+      ]
+    },
+    {
+      "stage": "S02",
+      "path": "docs/mobile/evidence/S02/logs/s02-browser-final.log",
+      "acceptance": {
+        "path": "docs/mobile/evidence/S02/acceptance.json",
+        "sha256": "16ef33f82dfed3a72c2708ee2bb95904a8a25fe3153f88e76de82be6c467a0a6",
+        "sourceCommit": "6305df5fe671718c78b38af1ccc2bafbbdd44346"
+      },
+      "expected": {
+        "path": "docs/mobile/evidence/S02/logs/s02-browser-final.log",
+        "gitBlob": "38bedfe52d2628551e09f23a05cc7b901c2ce2d2",
+        "sha256": "a3a8a0a08ec5194fb650de082627621199ea77f5c8b86140eeae148dc4f15723"
+      },
+      "acceptedSource": {
+        "bytes": 3205,
+        "sha256": "a3a8a0a08ec5194fb650de082627621199ea77f5c8b86140eeae148dc4f15723",
+        "lfNormalizedSha256": "a3a8a0a08ec5194fb650de082627621199ea77f5c8b86140eeae148dc4f15723",
+        "crlfCount": 0,
+        "loneLfCount": 26
+      },
+      "head": {
+        "bytes": 3205,
+        "sha256": "a3a8a0a08ec5194fb650de082627621199ea77f5c8b86140eeae148dc4f15723",
+        "lfNormalizedSha256": "a3a8a0a08ec5194fb650de082627621199ea77f5c8b86140eeae148dc4f15723",
+        "crlfCount": 0,
+        "loneLfCount": 26
+      },
+      "priorCheckpoint": {
+        "bytes": 3205,
+        "sha256": "a3a8a0a08ec5194fb650de082627621199ea77f5c8b86140eeae148dc4f15723",
+        "lfNormalizedSha256": "a3a8a0a08ec5194fb650de082627621199ea77f5c8b86140eeae148dc4f15723",
+        "crlfCount": 0,
+        "loneLfCount": 26
+      },
+      "workingTree": {
+        "bytes": 3231,
+        "sha256": "9a5d5d568cdc47a5b76962400d0fb32b8a2c237c2a188ca2a5ee4e80b408c0e9",
+        "lfNormalizedSha256": "a3a8a0a08ec5194fb650de082627621199ea77f5c8b86140eeae148dc4f15723",
+        "crlfCount": 26,
+        "loneLfCount": 0
+      },
+      "acceptedSourceMatchesRecordedSha256": true,
+      "headAndPriorGitObjectsMatchAcceptedSource": true,
+      "acceptanceRecordUnchangedSincePriorCheckpoint": true,
+      "workingTreeDiffersOnlyByLineEndings": true,
+      "currentCleanBlob": "38bedfe52d2628551e09f23a05cc7b901c2ce2d2",
+      "currentCleanBlobMatchesAccepted": true,
+      "coreAutocrlfFalseOverrideBlob": "4099015b3f6fce7bab9bd8ab909875db7b0a0d45",
+      "falseOverrideReproducesBlobMismatch": true,
+      "successfulRecordedCommandsReferencingFile": [
+        {
+          "command": "PLAYWRIGHT_PORT=4273 node node_modules/@playwright/test/cli.js test tests/e2e/platform-services.spec.mjs tests/e2e/literary-planet-immersion.spec.mjs tests/e2e/globe-runtime.spec.mjs tests/e2e/public-smoke.spec.mjs tests/e2e/cms-direct-edit.spec.mjs tests/e2e/header-hero-polish.spec.mjs --grep 'live offline status|country selection replaces|globe filters update|поиск глобуса сохраняет|редактор выбирает|RU and EN hero copy|protected header bands' --workers=1",
+          "log": "docs/mobile/evidence/S02/logs/s02-browser-final.log",
+          "exitCode": 0
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "All three accepted-source Git objects exactly match the SHA-256 recorded by their acceptance evidence. Current HEAD and the pre-live checkpoint contain the same artifact bytes and unchanged acceptance records; no historical content regression was found in this sample.",
+    "Working-tree raw SHA differs solely because its LF text is checked out as CRLF. LF normalization restores the exact accepted SHA for all three files.",
+    "The current ordinary git hash-object --path result equals the accepted gitBlob for all three samples. With a command-local core.autocrlf=false override the blob differs for all three. Git effective configuration therefore materially affects this verifier boundary.",
+    "verifyEvidenceRecord excludes a mismatched artifact from artifactPaths, then emits Missing successful command and hashed log for a recorded check pointing to it. Both selected log records already contain nonempty successful commands with exitCode zero; the secondary message alone does not prove a missing or failed command.",
+    "Root confirmed the failed full verifier invocation used a task-local core.autocrlf=false override. The bounded probes reproduce the resulting historical artifact blob mismatches. This diagnoses the sampled errors as invocation-configuration differences, not changed historical content; the full audit still requires a separately recorded invocation with repository-native Git conversion."
+  ],
+  "outcome": "SAMPLED_HISTORICAL_BYTES_INTACT_GIT_CONFIGURATION_SENSITIVE",
+  "fullStateVerificationPass": false,
+  "fullVerifierRerun": false,
+  "historicalTestsRerun": false,
+  "historicalArtifactsModified": false,
+  "acceptanceRecordsModified": false,
+  "stateModifiedByThisAudit": false,
+  "limitations": [
+    "Exactly three artifact paths inspected; no claim about all S00/S01/S02 evidence or the full state audit.",
+    "Current live-character scoped validation/build reports remain separate from the unresolved global verifier result.",
+    "No historical files, accepted hashes, Git configuration, runtime, global docs or stage statuses were changed."
+  ],
+  "nextAction": "Root will record one full verify-state invocation with repository-native core.autocrlf=true and only the required safe.directory override. This agent does not rerun the verifier or alter accepted historical bytes/hashes; that later result remains separate.",
+  "releaseReady": false
+}
