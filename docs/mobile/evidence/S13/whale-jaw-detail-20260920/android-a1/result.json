@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "kind": "android-whale-jaw-detail-dev-apk",
+  "sourceCommit": "069db3e5a01244de06925dc3ac44c1bc3910e2a4",
+  "buildId": "cabfdccff1777a0a33f52496800bca590f55e1a4945c9802c530239fbcf0a343",
+  "sourceInputsSha256": "a15b787a8070c2c8885ce0f3b993d7e4cc43e641c09e9668a2d81ce1458cf1d0",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-whale-jaw/android-cabfdccf/app-dev-debug.apk",
+    "bytes": 68394589,
+    "sha256": "e7290c8d1e056c0f60d6aef84bea1abc6e85de04d7a0ae5a3ba72b247379a774"
+  },
+  "artifact": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-whale-jaw/android-cabfdccf/runtime",
+    "sha256": "47d6cda93fec5bee9fbe55209a6fa7d4b7bc38bf05ba685479561ebe7230e774",
+    "files": 1404,
+    "bytes": 72557221
+  },
+  "checks": {
+    "strictRuntimeAudit": "docs/mobile/evidence/S13/whale-jaw-detail-20260920/android-a1/native-artifact-audit.json",
+    "binaryAudit": "docs/mobile/evidence/S13/whale-jaw-detail-20260920/android-a1/android-dev-apk-verification.json",
+    "build": "docs/mobile/evidence/S13/whale-jaw-detail-20260920/android-a1/build-run.json",
+    "exactCopiedBytes": true,
+    "priorAndroidApkAndManifestVerified": true,
+    "priorPreservedDirectoriesPresent": true,
+    "priorExactCopyVerificationRecorded": true,
+    "priorRuntimePayloadHashesRechecked": false,
+    "bundledAssetsMatched": 1403,
+    "localContentStoreDex": "classes10.dex"
+  },
+  "priorAndroid": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-study-map/android-0f048745/app-dev-debug.apk",
+  "nativeExecutionVerified": false,
+  "iosCompiled": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false,
+  "canonicalOwnerArchiveSyncPerformed": false
+}

@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S13/whale-jaw-detail-20260920/pwa.config.mjs"
+  ],
+  "exitCode": 0,
+  "durationMs": 27008,
+  "stdout": {
+    "path": "docs/mobile/evidence/S13/whale-jaw-detail-20260920/pwa-a1/browser-stdout.log",
+    "bytes": 189,
+    "sha256": "c34ba78921e41b71ee34fa32bbc7ab88bb92d29a328c37bb269d56ed30088baa"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S13/whale-jaw-detail-20260920/pwa-a1/browser-stderr.log",
+    "bytes": 164,
+    "sha256": "d1414e30ffd2973862706d5655b5de0c4714bee22b254584805e981269fe6710"
+  }
+}

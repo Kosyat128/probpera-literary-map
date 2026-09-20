@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-20T03:12:23.741Z",
+  "sourceCommit": "069db3e5a01244de06925dc3ac44c1bc3910e2a4",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S13/whale-jaw-detail-20260920/source-manifests/c6cb39da9e6cc8b8.json",
+    "sha256": "c6cb39da9e6cc8b84eb554cd1e2c247b620f4f5aacae9cf7d4c426a26b17c0f9",
+    "fileCount": 80
+  },
+  "actualAppCapture": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-whale-jaw/browser-a1/whale-jaw-detail-physical--dab6c-d-returns-the-original-view/whale-jaw-detail.json",
+    "sha256": "f536c8c0da9d2e08eeab1eae283da8793a5dad959f0d2bf2b4f91969215da124"
+  },
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-whale-jaw/browser-a1/whale-jaw-detail-physical--dab6c-d-returns-the-original-view/whale-jaw-three-quarter-ru-1440.png",
+      "sha256": "94773738b028164107253b781c0e3926f55934ee8ba1f3669f22f3b377ba8385",
+      "inspected": true,
+      "reviewer": "Codex root visual inspection via view_image",
+      "findings": [
+        "Actual App at 200% product inspection, three-quarter lower view: the front whale has a continuous rounded mouth rim and visible lower-head channels; no raised mouth wire remains.",
+        "The eye appears as a small green inset; the upper head carries a broad gold highlight while undersides remain dark with existing violet scene reflections. This is an authored stylized casting, not established photorealism.",
+        "The jaw is visible between the left appearance control and right country sheet; the surrounding base rings cross part of the composition. The globe is intentionally cropped above in close inspection."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-whale-jaw/browser-a1/whale-jaw-detail-physical--dab6c-d-returns-the-original-view/whale-jaw-underside-en-1440.png",
+      "sha256": "fa262f2000be72ca6a6dccbaebd8b1c349b798baa3d302b3ca00adfd0c1774fe",
+      "inspected": true,
+      "reviewer": "Codex root visual inspection via view_image",
+      "findings": [
+        "Lower actual-product orbit makes the seven throat grooves legible across the front jaw and reveals the three whales and their cast fins; no obvious gap or flicker is visible in this still.",
+        "Gold rim highlights and dark underside reflections remain strong. These two stills demonstrate local form and placement, not final artistic likeness, formal art approval or device performance.",
+        "English controls and Return to globe remain visible; the fixture separately verifies the exact original camera pose and zero appearance writes after return."
+      ]
+    }
+  ],
+  "artAccepted": false,
+  "childApproved": false,
+  "userRealismRequirementSatisfied": false,
+  "releaseReady": false
+}

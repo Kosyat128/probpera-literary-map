@@ -1,3 +1,12 @@
+<!-- s13-whale-jaw-20260920:begin -->
+Source 069db3e5 refines the original gold whale stand with a physical lower jaw and sculpted grooves, and corrects the shared authored reflection texture orientation without new lights or resources.
+8 selected whale geometry/material cases, TypeScript, one actual-App Chrome case and one PWA offline smoke pass. Two product-inspection views are inspected evidence; formal art/child approval and installed-device acceptance remain open.
+S13.CUSTOM-001 receives evidence only; all criterion and stage statuses remain unchanged. Forty-three established sources remain unchanged. Historical Starter Set inventory is 29/13/0 plus three owner additions with inherited and newly changed bindings explicit.
+PWA fda32f4b; Android-dev cabfdccf. Evidence: evidence/S13/whale-jaw-detail-20260920/result.json.
+Stages remain 3 complete, 11 in progress, 27 unstarted; first open S03.
+Continue the full application plan from the next bounded internal requirement. Preserve the original whale bodies, gold finish, emerald eyes and arrangement, refined physical jaw, corrected authored reflection orientation, all other stand proportions, shared atlas wall map, inspection return, appearance transactions, reader, locale and storage behavior. Continue remaining Starter Set/source bindings and functional gaps without repeating unchanged suites. Child/rights/art/lightmap review, full accessories/audio/catalog, screen-reader, installed-device/stress, actual storage retention, distributed sync/conflict resolution, iOS and release gates remain open.
+<!-- s13-whale-jaw-20260920:end -->
+
 <!-- s13-study-map-20260920:begin -->
 Source 8e307286 shares the current canonical globe atlas with an authored writer-study wall map.
 3 selected study geometry cases, TypeScript, one actual-App Chrome case and one PWA offline smoke pass. Two RU/EN images are inspected evidence; formal art/child approval and installed-device acceptance remain open.

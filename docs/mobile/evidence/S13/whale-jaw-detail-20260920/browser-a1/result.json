@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "mode": "browser",
+  "attempt": "a1",
+  "startedAt": "2026-09-20T03:08:54.482Z",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S13/whale-jaw-detail-20260920/source-manifests/c6cb39da9e6cc8b8.json",
+    "sha256": "c6cb39da9e6cc8b84eb554cd1e2c247b620f4f5aacae9cf7d4c426a26b17c0f9",
+    "fileCount": 80
+  },
+  "checkInputs": [
+    {
+      "path": "docs/mobile/evidence/S13/whale-jaw-detail-20260920/check.mjs",
+      "sha256": "37af6317866f5b09defadd6af48761437d110922c1d4bee12e32baedc0f41934"
+    },
+    {
+      "path": "docs/mobile/evidence/S13/whale-jaw-detail-20260920/entry.json",
+      "sha256": "1bf94fe9af423f7332c80b2ddb3b7a08a7472fe6260d0cdfaf16b4dede9aec51"
+    },
+    {
+      "path": "docs/mobile/evidence/S13/whale-jaw-detail-20260920/playwright.config.mjs",
+      "sha256": "bf81a0c9a6655f4fd7c77fd745735f79c32d03de9e20a18e03b7eb8134ee636f"
+    },
+    {
+      "path": "tests/pwa/whale-jaw-detail.spec.mjs",
+      "sha256": "f10a58638282ee3f8ac022c0b948247dce958f1b8535fff243b8066ef3d861a2"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "tests": {
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0
+  },
+  "reportError": null,
+  "pass": true,
+  "execution": {
+    "exitCode": 0,
+    "durationMs": 36017
+  },
+  "stageAccepted": false,
+  "artAccepted": false,
+  "releaseReady": false
+}

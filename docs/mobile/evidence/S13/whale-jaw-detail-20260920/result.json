@@ -1,0 +1,522 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-20T03:14:43.978Z",
+  "sourceCommit": "069db3e5a01244de06925dc3ac44c1bc3910e2a4",
+  "stage": "S13",
+  "status": "WHALE_JAW_DETAIL_SCOPED_VALIDATION",
+  "pass": true,
+  "entry": {
+    "path": "docs/mobile/evidence/S13/whale-jaw-detail-20260920/entry.json",
+    "sha256": "1bf94fe9af423f7332c80b2ddb3b7a08a7472fe6260d0cdfaf16b4dede9aec51"
+  },
+  "previous": {
+    "path": "docs/mobile/evidence/S13/writer-study-map-20260920/result.json",
+    "sha256": "dc514d93357077d5e50495df36f861bed91361ea777c2d2e96c31fff6c05dadb"
+  },
+  "attempts": {
+    "unit": "a2",
+    "static": "a2",
+    "browser": "a1"
+  },
+  "earlierAttempts": [
+    {
+      "path": "docs/mobile/evidence/S13/whale-jaw-detail-20260920/unit-a1/result.json",
+      "sha256": "7c7eefb37547e229a493bbbd619f81bb5a5a4f7b90f9923529eafa9a5010113a",
+      "mode": "unit",
+      "attempt": "a1",
+      "pass": true,
+      "tests": {
+        "passed": 4,
+        "failed": 0,
+        "skipped": 0
+      },
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S13/whale-jaw-detail-20260920/source-manifests/c76b6d87fd40a1e4.json",
+        "sha256": "c76b6d87fd40a1e4adfd028969a508e2425074ce5dec10c71187472d5834af23",
+        "fileCount": 80
+      },
+      "supersededSource": true,
+      "reason": "Prior pass retained unchanged for its historical sources; final validation includes the corrected craft reflection orientation and both focused suites."
+    },
+    {
+      "path": "docs/mobile/evidence/S13/whale-jaw-detail-20260920/static-a1/result.json",
+      "sha256": "2a5cf3c411691d4edbfeb9228ca22ee7d31f0cc9336ebe728707ca5ec233fc64",
+      "mode": "static",
+      "attempt": "a1",
+      "pass": true,
+      "tests": null,
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S13/whale-jaw-detail-20260920/source-manifests/c76b6d87fd40a1e4.json",
+        "sha256": "c76b6d87fd40a1e4adfd028969a508e2425074ce5dec10c71187472d5834af23",
+        "fileCount": 80
+      },
+      "supersededSource": true,
+      "reason": "Prior pass retained unchanged for its historical sources; final validation includes the corrected craft reflection orientation and both focused suites."
+    }
+  ],
+  "runs": {
+    "unit": {
+      "path": "docs/mobile/evidence/S13/whale-jaw-detail-20260920/unit-a2/result.json",
+      "sha256": "8ecf63834ff78a16fcbed12e844d62939ac75628a4af91e51081bea1f1e73c61",
+      "tests": {
+        "passed": 8,
+        "failed": 0,
+        "skipped": 0
+      }
+    },
+    "static": {
+      "path": "docs/mobile/evidence/S13/whale-jaw-detail-20260920/static-a2/result.json",
+      "sha256": "7ec3d545ffdcd5c1bedfdf05faaedb6aa6f65bd8223ff6d33418de29280764e0",
+      "tests": null
+    },
+    "browser": {
+      "path": "docs/mobile/evidence/S13/whale-jaw-detail-20260920/browser-a1/result.json",
+      "sha256": "b4f204af8abf9cce8f4c03c934951019072e38a427d4758ed5c7e5fcfdcda183",
+      "tests": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      }
+    }
+  },
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S13/whale-jaw-detail-20260920/source-manifests/c6cb39da9e6cc8b8.json",
+    "sha256": "c6cb39da9e6cc8b84eb554cd1e2c247b620f4f5aacae9cf7d4c426a26b17c0f9",
+    "fileCount": 80
+  },
+  "unitCount": 8,
+  "unitFiles": [
+    "src/components/globeWhaleStandGeometry.test.ts",
+    "src/components/globeCraftMaterials.test.ts"
+  ],
+  "browserCases": 1,
+  "actualAppCapture": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-whale-jaw\\browser-a1\\whale-jaw-detail-physical--dab6c-d-returns-the-original-view\\whale-jaw-detail.json",
+    "sha256": "f536c8c0da9d2e08eeab1eae283da8793a5dad959f0d2bf2b4f91969215da124"
+  },
+  "browserAttachment": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-whale-jaw\\browser-a1\\whale-jaw-detail-physical--dab6c-d-returns-the-original-view\\attachments\\whale-jaw-detail-source-evidence-be235dfad45f63644387e31b9944d9066f8f531b.json",
+    "sha256": "f536c8c0da9d2e08eeab1eae283da8793a5dad959f0d2bf2b4f91969215da124"
+  },
+  "attachmentBytesMatchOriginal": true,
+  "capturedImages": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-whale-jaw\\browser-a1\\whale-jaw-detail-physical--dab6c-d-returns-the-original-view\\whale-jaw-three-quarter-ru-1440.png",
+      "sha256": "94773738b028164107253b781c0e3926f55934ee8ba1f3669f22f3b377ba8385"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\14\\01a09fad-fda7-76c3-99f3-acb7a06e1cbc\\s13-whale-jaw\\browser-a1\\whale-jaw-detail-physical--dab6c-d-returns-the-original-view\\whale-jaw-underside-en-1440.png",
+      "sha256": "fa262f2000be72ca6a6dccbaebd8b1c349b798baa3d302b3ca00adfd0c1774fe"
+    }
+  ],
+  "visualReview": {
+    "path": "docs/mobile/evidence/S13/whale-jaw-detail-20260920/visual-review.json",
+    "sha256": "d80dda305873dc15d170af676def170b0feacaaff2e9752e49c3406ebdfc6863"
+  },
+  "inspectedImageCount": 2,
+  "starterSetSourceInventory": {
+    "path": "docs/mobile/evidence/S13/book-cloud-stand-20260920/starter-set-source-inventory.json",
+    "sha256": "854f14d22bbf78c2207e6f0c93b2c03696ce8d6a462c44d452ba2d9a633faa92"
+  },
+  "inventoryHistorical": true,
+  "inventoryReusedWithCurrentInputsVerified": false,
+  "inventoryUnchangedInputsVerified": true,
+  "inventoryChangedInputs": [
+    {
+      "path": "src/App.tsx",
+      "priorSha256": "ab22ae860da4442a97c8a4f9994a0cfed05e75a5bdddd6c1675b82972d9be6f3",
+      "currentSha256": "6c2464c84a76b1f80e56e083fdd97c2017fe61a3201002749bb2a2e583689f35"
+    },
+    {
+      "path": "src/components/GlobeCameraRig.tsx",
+      "priorSha256": "6938d120c7a49248398b385640cc77d96c9f3b33cbd6c3b4ef9881ef89e2ec19",
+      "currentSha256": "189f1a90fafb001a09b02832cc033f2239d8b417adfc6a3f8899986152580a48"
+    },
+    {
+      "path": "src/components/GlobeIncludedBackground.tsx",
+      "priorSha256": "3268e2f971bb3b8742093be690116a16f8bee262362d50743daca2273d376b61",
+      "currentSha256": "b384ccdc3020598f10a990807e74342dc35e9434e42cad54b11526c10d81634c"
+    },
+    {
+      "path": "src/components/GlobeIncludedStand.tsx",
+      "priorSha256": "276ef908fe5a09c066a59d9ff57d1432d44300bcb979b2aeb5d6dd249ba189fd",
+      "currentSha256": "a083080c90c5bbb5f53dc9e7ba4f4498712634a9df67db6ce0e2e12cd4b4d068"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "priorSha256": "666960397af75698cdfbc89fe1f9f359683785ef168288e740caedaf7a19dd33",
+      "currentSha256": "f5bcfb487be1a34199cc6482dd2de5e6b6a68987938343fd41e7c1f9cc47b63d"
+    },
+    {
+      "path": "src/components/globeBackgroundGeometry.ts",
+      "priorSha256": "019c09b6c2fe51a52c772756b9c6fc47be0c8f8d80bac9dcb5f005c07b82ecc1",
+      "currentSha256": "daa902b738190403a4297264f7067dae8b1fdbe86c73c16e541ace7a7e9a0f00"
+    },
+    {
+      "path": "src/components/globeCraftMaterials.ts",
+      "priorSha256": "68ce7e818d50ac5ece1d5d4542fdc4cecea6af25e21b08b1274c8adcacbfbde1",
+      "currentSha256": "2c19145443374e631cf40dbf20a8b55d38bd8a41e1c0d025dc3ec10fbbe47721"
+    },
+    {
+      "path": "src/components/globeWhaleStandGeometry.ts",
+      "priorSha256": "a641909b9d2a168b921e3a94f78db0c0652fe67b4d76b3cdaa2a1fba57de82be",
+      "currentSha256": "9c0975465082d9423e2bfd3a8da3fa355897e0c6018d7c955c52497c0a9d64ab"
+    },
+    {
+      "path": "src/components/globeWriterStudyGeometry.ts",
+      "priorSha256": "4e2c7f51529d0f5cdde9df2484cf0701a8a6662ee9c5b9a96de828f22d7c7cfc",
+      "currentSha256": "c811764937279429ecddf50b1cd0b60f3b7a5f568772d9ced146b4920fca9f1e"
+    },
+    {
+      "path": "src/host/PlanetStandControls.tsx",
+      "priorSha256": "6bbcb8f9e373f06491b742888d58110d0922a3c0a0bdf9d47cceb129dbcbff76",
+      "currentSha256": "829db69456bddda43035df512ee1af4ed6182752bdf3161e14db756b695295e1"
+    }
+  ],
+  "inventoryAuditRerun": false,
+  "historicalStarterSetCounts": {
+    "required": 29,
+    "sourceBound": 13,
+    "accepted": 0,
+    "ownerAdded": 3
+  },
+  "ownerAdditionIds": [
+    "stand.base.portrait-pushkin",
+    "stand.base.portrait-hemingway",
+    "stand.base.portrait-tolstoy"
+  ],
+  "preservedInputs": [
+    {
+      "path": "src/App.tsx",
+      "sha256": "6c2464c84a76b1f80e56e083fdd97c2017fe61a3201002749bb2a2e583689f35"
+    },
+    {
+      "path": "src/community/CommunityHub.tsx",
+      "sha256": "59746183b82db8b2481bd5f7d7268bae1c31f04011ba0631ce9719ce7f9a6e49"
+    },
+    {
+      "path": "src/components/ArticleReader.tsx",
+      "sha256": "1b00876d706d814bfebb13dc84a47d3542de6d6040fe3f6810bfefbcdcf735d8"
+    },
+    {
+      "path": "src/components/BookArchiveSection.tsx",
+      "sha256": "b67cbc6da05350bf544e55e95b5d319a7e947c72b63d8540d25a4ad531992525"
+    },
+    {
+      "path": "src/components/globeAntiqueGeometry.ts",
+      "sha256": "590a4e0ea5cb92251d7cccac3c0d6d28a441e82e6520fd17fe5d71adffb95538"
+    },
+    {
+      "path": "src/components/globeAtlas.ts",
+      "sha256": "224dcde2499f51eb333562875796d3422ab28ad987339f36be79f0635677bcf6"
+    },
+    {
+      "path": "src/components/globeBackgroundGeometry.ts",
+      "sha256": "daa902b738190403a4297264f7067dae8b1fdbe86c73c16e541ace7a7e9a0f00"
+    },
+    {
+      "path": "src/components/globeBookCloudStandGeometry.ts",
+      "sha256": "e50e21659f3439b8bd3cd457cbe20f16bfd47f40eaedc3355151daf6450f3577"
+    },
+    {
+      "path": "src/components/GlobeCameraRig.tsx",
+      "sha256": "189f1a90fafb001a09b02832cc033f2239d8b417adfc6a3f8899986152580a48"
+    },
+    {
+      "path": "src/components/globeCeramicPortraitStandGeometry.ts",
+      "sha256": "be533fd4752ab051389a202b65a993956e0f12d6e14e1b8cbb8cbc62bac142e8"
+    },
+    {
+      "path": "src/components/GlobeIncludedBackground.tsx",
+      "sha256": "b384ccdc3020598f10a990807e74342dc35e9434e42cad54b11526c10d81634c"
+    },
+    {
+      "path": "src/components/GlobeIncludedStand.tsx",
+      "sha256": "a083080c90c5bbb5f53dc9e7ba4f4498712634a9df67db6ce0e2e12cd4b4d068"
+    },
+    {
+      "path": "src/components/globeLibraryBookGeometry.ts",
+      "sha256": "e3034c2bd4391f1b08410c3c1f41165e880c7225f957a42ef4780e87eeaf7e0c"
+    },
+    {
+      "path": "src/components/globeLibraryGeometry.ts",
+      "sha256": "c0d4fe4c9b69921df11d50bc349fca9896304baba67fff60263b77ff19c1d1ee"
+    },
+    {
+      "path": "src/components/globeQuality.ts",
+      "sha256": "b52e0221ec8bcac17d640e26378bc0304521316ca34e203313d2b63f9c3b28c9"
+    },
+    {
+      "path": "src/components/globeStandGeometry.ts",
+      "sha256": "b12d187ce4a2216dd8fb3a89110a584030d72666841975849e935d184a14cc4f"
+    },
+    {
+      "path": "src/components/globeStandInspection.ts",
+      "sha256": "1268c67bf7104759e3a7ccd06ace4e7703a5553e48e22975d806c96dee0547e1"
+    },
+    {
+      "path": "src/components/globeTurnedWoodAtlas.ts",
+      "sha256": "579c1cec368760643b108a63f466b3d6385243d5e0f13c4638a4824b62a5d123"
+    },
+    {
+      "path": "src/components/globeWriterStudyGeometry.ts",
+      "sha256": "c811764937279429ecddf50b1cd0b60f3b7a5f568772d9ced146b4920fca9f1e"
+    },
+    {
+      "path": "src/components/LiteraryGlobe.tsx",
+      "sha256": "f5bcfb487be1a34199cc6482dd2de5e6b6a68987938343fd41e7c1f9cc47b63d"
+    },
+    {
+      "path": "src/components/LiteraryWorldMap.tsx",
+      "sha256": "588507e0dd39479e8fdcb006ab48ec04197f9821665826675e0163f93428aa28"
+    },
+    {
+      "path": "src/components/ReadingLibrarySyncNotice.css",
+      "sha256": "b53f865a8035e7c8d5a0323b0f8ec707bf81935a5315e053159d0f440bb82f98"
+    },
+    {
+      "path": "src/components/ReadingLibrarySyncNotice.tsx",
+      "sha256": "53ed654c2d437d7f1d1494ea2cc335db805f1ba97ce42132e8eca1d13e4ab602"
+    },
+    {
+      "path": "src/components/useGlobeCompositionFrame.ts",
+      "sha256": "530d1303a5af222bf68f72b499b07c8d41a828ca14783912284b6e3963d59cd0"
+    },
+    {
+      "path": "src/components/useGlobeCompositionScene.ts",
+      "sha256": "30009468d0cdee459441ca5780ea608cdf21b3f6e7055da89c0ce28e435326b5"
+    },
+    {
+      "path": "src/components/useGlobeStyleState.ts",
+      "sha256": "6d2801802ec0e9bf0c2e5ff9a6f852f00434a8494216b06ee2069917e2a1a0ba"
+    },
+    {
+      "path": "src/hooks/readingLibraryStorage.ts",
+      "sha256": "fe7b8d950f80cba0d7e76d45e850ba3c0e02420d44250605329baa2c085376d3"
+    },
+    {
+      "path": "src/hooks/useReadingLibrary.ts",
+      "sha256": "92262e64be0e09278b0f917507bad1b4d87d8e33afaa4295d3b60424f4cff2bf"
+    },
+    {
+      "path": "src/host/HostPlatformServices.ts",
+      "sha256": "fa084b57e8596064ef1b0a8bd7c99b789361059a585171fd30ffe057bceec2c6"
+    },
+    {
+      "path": "src/host/HostRuntimeStatus.tsx",
+      "sha256": "bd100bd0e9d4eb8eba8772799de106f04c5de154d0dd9298f7340abe26100d91"
+    },
+    {
+      "path": "src/host/mountHostApp.tsx",
+      "sha256": "e21aa15479a81c5c3847b571d5d3d7e7b9c25d1c55b4aa3aa2ac94c6677fe8af"
+    },
+    {
+      "path": "src/host/planetComposition.ts",
+      "sha256": "e13f2d376567c65a5b051bfd651a14f1bbb18f3bdf01f09cf97ebb2e3cf92305"
+    },
+    {
+      "path": "src/host/planetCompositionPresentation.ts",
+      "sha256": "d62d963c719366c1be3e6888b5eb321933f3e7224b6591fc8c2d6d81a639c3f6"
+    },
+    {
+      "path": "src/host/PlanetStandControls.css",
+      "sha256": "2da119e90674c18ad283af540d6b8a39957fd67066090770a6172f69c248c55a"
+    },
+    {
+      "path": "src/host/PlanetStandControls.tsx",
+      "sha256": "829db69456bddda43035df512ee1af4ed6182752bdf3161e14db756b695295e1"
+    },
+    {
+      "path": "src/host/planetStandInspection.ts",
+      "sha256": "ee5a5dd46f75877a34c297ce122e4c3ab0c09d8ebd439a0258589c5a3baab0f8"
+    },
+    {
+      "path": "src/i18n/InterfaceLanguage.tsx",
+      "sha256": "f8331bee7996bf176f34384d14cb42f39f5e5a94c82a27609db758003dc7bea2"
+    },
+    {
+      "path": "src/planet/globeComposition.ts",
+      "sha256": "20b4cabdd678a6fa5b70ab2b4cbaef179f0e7d7c5819e408123eb486ddb0e81f"
+    },
+    {
+      "path": "src/planet/writerStudySketch.ts",
+      "sha256": "2f642e49c988dd7f6efeaacc9aa6017596ce7799d46442e507cf89a7e95b1d60"
+    },
+    {
+      "path": "src/platform/adapters/android/AndroidPlatformAdapter.ts",
+      "sha256": "4b05363d42896b2a3a1908a494d796a2d43b719c6e2f3de623bd7fa750488f0f"
+    },
+    {
+      "path": "src/platform/ports.ts",
+      "sha256": "51353969918a3bbfdbafef37a9b3c28de7c31421853edb664666b547071d9459"
+    },
+    {
+      "path": "src/pwa/PwaDevicePanel.tsx",
+      "sha256": "5e3912e4a989a3135b691cde05d0949b9a21855d380b610b045468b71b609f7b"
+    },
+    {
+      "path": "src/pwa/PwaStorageStatus.ts",
+      "sha256": "662c1cf4bf3a0cc060720aa6338e940c6d03b0cb6ac8e5b5444b32883245f885"
+    }
+  ],
+  "changedInputsBefore": [
+    {
+      "path": "src/components/globeWhaleStandGeometry.ts",
+      "sourceCommit": "f4fc747079167d29c894939b86a5ade47ef8f776",
+      "gitBlobSha256": "a641909b9d2a168b921e3a94f78db0c0652fe67b4d76b3cdaa2a1fba57de82be"
+    },
+    {
+      "path": "src/components/globeCraftMaterials.ts",
+      "sourceCommit": "f4fc747079167d29c894939b86a5ade47ef8f776",
+      "gitBlobSha256": "68ce7e818d50ac5ece1d5d4542fdc4cecea6af25e21b08b1274c8adcacbfbde1"
+    }
+  ],
+  "priorVisualReview": {
+    "path": "docs/mobile/evidence/S13/writer-study-map-20260920/visual-review.json",
+    "sha256": "efc5c534e43c4f59d0fde31ad5fbc9620e8f0527f51d907d73ff7abb173f44a7"
+  },
+  "priorSceneVisualReview": {
+    "path": "docs/mobile/evidence/S13/combined-preview-20260920/visual-review.json",
+    "sha256": "f03aa5eea53a577b57fe40c94b93be1deafd67cea3ef3b49ae06eb412a304e25"
+  },
+  "priorArtReview": {
+    "path": "docs/mobile/evidence/S13/visual-refinement-20260920/visual-review.json",
+    "sha256": "532ddaa43a5844e26a0b0a9974dc494014d011bfea4fde7248013ee975047276"
+  },
+  "priorArtCapture": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-vr/art-a2/result.json",
+    "sha256": "c9fb3667877acf9de1f69f9b24ec5f0299ce129b7bfc541e6189facb1bcabcfd"
+  },
+  "retainedLibraryDensity": {
+    "books": 984,
+    "placements": 1901197402,
+    "colors": 437509884
+  },
+  "retainedPortrait": {
+    "baselineCommits": [
+      "a115e9f11105551ed6e243787e95ffc29bccb1a0",
+      "9c14fa67acc219bfa0351b31c956e14fa4deefb6"
+    ],
+    "fragments": [
+      {
+        "name": "plate-and-seat",
+        "sourcePath": "src/components/globeCeramicPortraitStandGeometry.ts",
+        "start": "        const foot = own(",
+        "endExclusive": "        const eyeParts:",
+        "sha256": "7d3b1c9cdcc40a842f575ebc24fd323d8a6dcd5b89c535909231a42f7aa506f0",
+        "bytes": 1062,
+        "lineEndingsNormalized": true
+      },
+      {
+        "name": "scale-around-contact",
+        "sourcePath": "src/components/globeCeramicPortraitStandGeometry.ts",
+        "start": "        for (const object of group.children) {",
+        "endExclusive": "        group.updateMatrixWorld(true);",
+        "sha256": "dcd173ddd233714e67a8c9523edc14202eaa88fd7af60e5cedb47d3d3463ee10",
+        "bytes": 400,
+        "lineEndingsNormalized": true
+      }
+    ]
+  },
+  "pwa": {
+    "path": "docs/mobile/evidence/S13/whale-jaw-detail-20260920/pwa-a1/result.json",
+    "sha256": "2d03ca38e3acdcd183f6fb7992e2d171a0679749601aac384ea030fa2a50d145"
+  },
+  "android": {
+    "path": "docs/mobile/evidence/S13/whale-jaw-detail-20260920/android-a1/result.json",
+    "sha256": "68ae88e25be03f264e340062c21214bcefc22445547494178771a986e3af5223"
+  },
+  "pwaBuildId": "fda32f4bd7676ebdb091bd3d850d61c0061f1bd42418df746b9dbdf377e7c6bb",
+  "androidBuildId": "cabfdccff1777a0a33f52496800bca590f55e1a4945c9802c530239fbcf0a343",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s13-whale-jaw/android-cabfdccf/app-dev-debug.apk",
+    "bytes": 68394589,
+    "sha256": "e7290c8d1e056c0f60d6aef84bea1abc6e85de04d7a0ae5a3ba72b247379a774"
+  },
+  "buildAudits": [
+    {
+      "path": "docs/mobile/evidence/S13/whale-jaw-detail-20260920/pwa-a1/strict-audit.json",
+      "sha256": "204604c254baf2dd33c63e523eb0256f3f3db8647d315b040445eca43bb53f26"
+    },
+    {
+      "path": "docs/mobile/evidence/S13/whale-jaw-detail-20260920/android-a1/native-artifact-audit.json",
+      "sha256": "d6531f2820477872d5d8510324a5dec40e88da7439d6d13aafec4059bdc4a1a7"
+    },
+    {
+      "path": "docs/mobile/evidence/S13/whale-jaw-detail-20260920/android-a1/android-dev-apk-verification.json",
+      "sha256": "43ee2704fb5a18cf3292ecd8d271d97a59098bd6d5bb3e7a6037c6bbe3ed3b0a"
+    },
+    {
+      "path": "docs/mobile/evidence/S13/whale-jaw-detail-20260920/android-a1/build-run.json",
+      "sha256": "52964906d3c4ab699fab431e60fbc8ab7d43666317f45f863bc1db8bb0924272"
+    }
+  ],
+  "copyVerification": {
+    "path": "docs/mobile/evidence/S13/whale-jaw-detail-20260920/pwa-a1/copy-verification.json",
+    "sha256": "63132892904dbed0a5fe9d8631037ff02c4487e5959f83e8d8f3ca8fb86543b4"
+  },
+  "priorPwa": {
+    "path": "docs/mobile/evidence/S13/writer-study-map-20260920/pwa-a1/result.json",
+    "sha256": "7efcde8134682d5483b6a06ebef505f33489dce9bd6838ee1dbad73ae67fffcd"
+  },
+  "priorAndroid": {
+    "path": "docs/mobile/evidence/S13/writer-study-map-20260920/android-a1/result.json",
+    "sha256": "1404efdce61bc1f222265b0a47a3931c45e4e9f05dba9ea491d0e336e570691e"
+  },
+  "decisionD149Recorded": true,
+  "criteriaUpdated": [
+    "S13.CUSTOM-001"
+  ],
+  "criterionChanges": [],
+  "stageAndCriterionStatusesUnchanged": true,
+  "limitations": [
+    "The changed whale jaw is an authored adult decorative model; source correctness and inspected views do not establish formal art, rights or child acceptance.",
+    "The shared authored reflection map has its vertical orientation corrected for Three equirectangular sampling; this narrow physical rendering fix is not a new lighting or photorealism acceptance claim.",
+    "Chrome executes the actual application source with controlled native ports; installed-device behavior is not established.",
+    "The exercised product inspection controls and resource checks are scoped evidence, not full scene stress or device performance acceptance.",
+    "Historical Starter Set counts remain bound to the earlier inventory; inherited and new changed source bindings are explicit."
+  ],
+  "priorStorageLimitations": [
+    "Storage API responses and elapsed time are controlled in the Chrome source fixture.",
+    "Timeout fences late results but does not cancel the underlying browser storage operation.",
+    "Simulated boolean replies do not establish a real browser persistence grant, actual disk quota or storage retention.",
+    "The source fixture is not the full application, globe or installed-native execution."
+  ],
+  "inheritedReadingLibraryLimitations": [
+    "Concurrent-tab read/modify/write is not atomic.",
+    "Full distributed add-wins and conflict resolution remain open.",
+    "Ordering of unabortable remote requests is not guaranteed.",
+    "Remote transport is controlled; actual network and installed-native execution are not established."
+  ],
+  "actualApp": true,
+  "actualCss": true,
+  "actualGlobe": true,
+  "controlledNativePorts": true,
+  "installedNativeDevice": false,
+  "productCameraControlsOnly": true,
+  "unchangedSceneAndSelection": true,
+  "exactOriginalPoseRestored": true,
+  "inspectionDoesNotPersist": true,
+  "physicalJawMeshes": 3,
+  "emeraldEyes": 6,
+  "whaleGeometrySuiteRun": true,
+  "craftMaterialSuiteRun": true,
+  "authoredReflectionOrientationCorrected": true,
+  "unchangedGeometrySuitesRerun": false,
+  "newActualAppCapture": true,
+  "isolatedArtCapture": false,
+  "artAccepted": false,
+  "likenessAccepted": false,
+  "userRealismRequirementSatisfied": false,
+  "childApproval": false,
+  "rightsApproval": false,
+  "screenReaderAcceptance": false,
+  "devicePerformanceAccepted": false,
+  "iosCompiled": false,
+  "grantsEntitlement": false,
+  "productionActionsPerformed": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "nextAction": "Continue the full application plan from the next bounded internal requirement. Preserve the original whale bodies, gold finish, emerald eyes and arrangement, refined physical jaw, corrected authored reflection orientation, all other stand proportions, shared atlas wall map, inspection return, appearance transactions, reader, locale and storage behavior. Continue remaining Starter Set/source bindings and functional gaps without repeating unchanged suites. Child/rights/art/lightmap review, full accessories/audio/catalog, screen-reader, installed-device/stress, actual storage retention, distributed sync/conflict resolution, iOS and release gates remain open."
+}
