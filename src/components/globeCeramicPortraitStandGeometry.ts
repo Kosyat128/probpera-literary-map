@@ -16,24 +16,28 @@ const TAU = Math.PI * 2, mix = THREE.MathUtils.lerp, clamp = THREE.MathUtils.cla
 const g = (v: number, c: number, r: number) => Math.exp(-Math.pow((v - c) / r, 2));
 const fade = (v: number, a: number, b: number) => THREE.MathUtils.smoothstep(v, a, b);
 const signedAngle = (v: number) => Math.atan2(Math.sin(v), Math.cos(v));
+const variation = (index: number, seed: number) => {
+    const value = Math.sin(index * 127.1 + seed * 311.7) * 43758.5453;
+    return value - Math.floor(value);
+};
 // Original three-dimensional sections, informed by portrait references rather
 // than an image mapped onto a generic head. Hair and beard share this surface.
 const portraits = {
-    pushkin: { bottom: -1.535, top: -1.055, eyesY: -1.266, eyeX: .062, eyeWidth: .030, eyeHeight: .0100,
-        noseY: -1.339, noseWidth: .023, noseProjection: .030, mouthY: -1.410, mouthWidth: .045,
-        skin: "#cda789", hair: "#29241f", brow: "#342923", iris: "#554d3f", browHeight: .008,
+    pushkin: { bottom: -1.535, top: -1.055, eyesY: -1.266, eyeX: .062, eyeWidth: .029, eyeHeight: .0085,
+        noseY: -1.339, noseWidth: .024, noseProjection: .034, mouthY: -1.405, mouthWidth: .041,
+        skin: "#c3a28b", hair: "#29241f", brow: "#342923", iris: "#554d3f", browHeight: .010,
         sections: [[0, 0, -.025, -.025], [.065, .066, .092, -.051], [.14, .097, .128, -.075], [.28, .124, .139, -.124],
             [.46, .151, .143, -.151], [.64, .157, .137, -.161], [.79, .152, .132, -.152], [.9, .121, .100, -.123], [.97, .065, .060, -.062], [1, 0, 0, 0]] },
-    hemingway: { bottom: -1.537, top: -1.047, eyesY: -1.268, eyeX: .071, eyeWidth: .033, eyeHeight: .0100,
-        noseY: -1.339, noseWidth: .032, noseProjection: .035, mouthY: -1.410, mouthWidth: .052,
-        skin: "#d0b29a", hair: "#9caaa9", brow: "#66706a", iris: "#596267", browHeight: .011,
-        sections: [[0, 0, -.022, -.022], [.065, .075, .104, -.055], [.145, .127, .141, -.079], [.29, .157, .153, -.129],
-            [.47, .180, .155, -.160], [.65, .183, .144, -.166], [.80, .170, .132, -.159], [.91, .130, .106, -.120], [.97, .068, .057, -.061], [1, 0, 0, 0]] },
-    tolstoy: { bottom: -1.606, top: -1.044, eyesY: -1.224, eyeX: .066, eyeWidth: .029, eyeHeight: .0068,
-        noseY: -1.298, noseWidth: .040, noseProjection: .043, mouthY: -1.354, mouthWidth: .047,
-        skin: "#cbb098", hair: "#d6dfe1", brow: "#738078", iris: "#5d655c", browHeight: .025,
-        sections: [[0, 0, .046, .046], [.018, .053, .091, .008], [.065, .079, .119, -.011], [.17, .122, .149, -.054], [.30, .154, .172, -.087],
-            [.43, .160, .165, -.114], [.57, .178, .158, -.149], [.72, .178, .145, -.165], [.85, .153, .132, -.143], [.94, .103, .086, -.091], [1, 0, .010, .010]] }
+    hemingway: { bottom: -1.537, top: -1.047, eyesY: -1.268, eyeX: .071, eyeWidth: .032, eyeHeight: .0078,
+        noseY: -1.335, noseWidth: .035, noseProjection: .037, mouthY: -1.402, mouthWidth: .050,
+        skin: "#c8aa95", hair: "#929b98", brow: "#66706a", iris: "#596267", browHeight: .017,
+        sections: [[0, 0, -.022, -.022], [.065, .084, .110, -.055], [.145, .139, .147, -.081], [.29, .170, .154, -.131],
+            [.47, .184, .155, -.160], [.65, .179, .142, -.166], [.80, .163, .130, -.159], [.91, .127, .106, -.120], [.97, .068, .057, -.061], [1, 0, 0, 0]] },
+    tolstoy: { bottom: -1.606, top: -1.044, eyesY: -1.224, eyeX: .066, eyeWidth: .027, eyeHeight: .0058,
+        noseY: -1.294, noseWidth: .043, noseProjection: .047, mouthY: -1.350, mouthWidth: .047,
+        skin: "#c3ad99", hair: "#ccd0cc", brow: "#73796e", iris: "#5d655c", browHeight: .028,
+        sections: [[0, 0, .046, .046], [.018, .055, .088, .005], [.065, .085, .122, -.021], [.17, .132, .161, -.060], [.30, .163, .177, -.091],
+            [.43, .166, .168, -.114], [.57, .176, .154, -.149], [.72, .177, .143, -.165], [.85, .156, .134, -.143], [.94, .106, .089, -.091], [1, 0, .010, .010]] }
 } as const;
 const levels = {
     high: { rows: 128, radial: 176, patch: 7, patchRadial: 24, reflection: 128 },
@@ -150,7 +154,7 @@ export function createCeramicPortraitStand(kind: CeramicPortraitKind, quality: G
     const hairLine = (angle: number) => {
         const a = Math.abs(signedAngle(angle));
         // A broad forehead and recession at the temples; no pointed curtain opening.
-        const front = kind === "pushkin" ? -1.174 + .007 * Math.cos(angle * 4) : -1.118 + .014 * g(a, .77, .23);
+        const front = kind === "pushkin" ? -1.172 + .004 * Math.sin(angle * 3 + .5) - .006 * g(signedAngle(angle), -.28, .20) : -1.118 + .014 * g(a, .77, .23);
         const side = kind === "pushkin" ? -1.356 : -1.337;
         return mix(front, side, fade(a, .78, 1.37)) + .0018 * Math.sin(angle * 17 + .7);
     };
@@ -163,19 +167,21 @@ export function createCeramicPortraitStand(kind: CeramicPortraitKind, quality: G
         phase: number;
     }[] = [];
     if (kind === "pushkin") {
-        // World-space spacing keeps forehead and temple curls round at every latitude.
-        for (let row = 0; row < 13; row++) {
-            const y = -1.427 + row * .030, q = clamp((y - portrait.bottom) / height, .025, .975), [width] = sectionAt(portrait.sections, q);
-            const count = Math.max(6, Math.round(TAU * width / .045));
-            for (let column = 0; column < count; column++) {
-                const angle = (column + row * .47 + .13 * Math.sin(column * 2.1 + row)) / count * TAU;
-                const a = Math.abs(signedAngle(angle)), sideburn = a > 1.10 && a < 1.48 && y < -1.30;
-                if (y < hairLine(angle) - .006 && !sideburn)
-                    continue;
-                const radius = .026 + .003 * Math.sin(column * 1.7 + row * 2.4);
-                hairLocks.push({ angle, y: y + .002 * Math.sin(column * 2.7), wide: radius / Math.max(.055, width), tall: radius * .92,
-                    relief: sideburn ? .018 : .026, phase: column * 1.7 + row * 2.1 });
-            }
+        // Deterministic uneven spacing and overlapping swept volumes, rather
+        // than latitude rows of identical round beads. All tiers share them.
+        for (let candidate = 0; candidate < 680; candidate++) {
+            const angle = variation(candidate, 1) * TAU, y = mix(-1.455, -1.066, variation(candidate, 2));
+            const q = clamp((y - portrait.bottom) / height, .025, .975), [width] = sectionAt(portrait.sections, q);
+            const a = Math.abs(signedAngle(angle)), sideburn = a > 1.09 && a < 1.49 && y < -1.30;
+            if (y < hairLine(angle) - .004 && !sideburn) continue;
+            const radius = .021 + variation(candidate, 3) * .013;
+            const near = hairLocks.some(lock => {
+                const spacing = Math.hypot(signedAngle(angle - lock.angle) * Math.max(.060, width), y - lock.y);
+                return spacing < .61 * (radius + lock.tall);
+            });
+            if (near) continue;
+            hairLocks.push({ angle, y, wide: radius / Math.max(.055, width), tall: radius * mix(.78, 1.17, variation(candidate, 4)),
+                relief: (sideburn ? .018 : .024) + variation(candidate, 5) * (sideburn ? .006 : .015), phase: variation(candidate, 6) * TAU });
         }
     }
     else {
@@ -188,26 +194,41 @@ export function createCeramicPortraitStand(kind: CeramicPortraitKind, quality: G
                     tall: (high - low) / rows * 1.25, relief: kind === "tolstoy" ? .006 : .0016, phase: column * 1.7 + row * 2.1 });
             }
     }
-    const browYAt = (x: number, side: number) => portrait.eyesY + (kind === "tolstoy" ? .012 : .019) - Math.pow((x - side * portrait.eyeX) / portrait.eyeWidth, 2) * .004 + (kind === "tolstoy" ? .12 * (Math.abs(x) - portrait.eyeX) : 0);
+    const beardLocks = Array.from({ length: kind === "tolstoy" ? 43 : 29 }, (_, index) => ({
+        angle: mix(-1.50, 1.50, variation(index, 11)),
+        y: kind === "tolstoy" ? mix(-1.581, -1.337, variation(index, 12)) : mix(-1.516, -1.345, variation(index, 12)),
+        wide: mix(.13, .30, variation(index, 13)), tall: kind === "tolstoy" ? mix(.023, .061, variation(index, 14)) : mix(.010, .023, variation(index, 14)),
+        relief: kind === "tolstoy" ? mix(.005, .011, variation(index, 15)) : mix(.0010, .0021, variation(index, 15)),
+        bend: mix(-3.0, 3.0, variation(index, 16)), phase: variation(index, 17) * TAU,
+    }));
+    const browYAt = (x: number, side: number) => portrait.eyesY + (kind === "tolstoy" ? .010 : kind === "hemingway" ? .016 : .017)
+        - Math.pow((x - side * portrait.eyeX) / portrait.eyeWidth, 2) * .0035
+        + (kind === "tolstoy" ? .10 * (Math.abs(x) - portrait.eyeX) : kind === "hemingway" ? -.035 * (Math.abs(x) - portrait.eyeX) : 0);
     const facialRelief = (x: number, y: number) => {
         let amount = 0;
         for (const side of [-1, 1]) {
-            amount -= (kind === "tolstoy" ? .021 : kind === "hemingway" ? .015 : .010) * g(x, side * portrait.eyeX, portrait.eyeWidth * 1.18) * g(y, portrait.eyesY, .014);
+            amount -= (kind === "tolstoy" ? .025 : kind === "hemingway" ? .019 : .012) * g(x, side * portrait.eyeX, portrait.eyeWidth * 1.24) * g(y, portrait.eyesY, .016);
             const browY = browYAt(x, side);
             amount += portrait.browHeight * g(x, side * portrait.eyeX, portrait.eyeWidth * 1.3) * g(y, browY, kind === "tolstoy" ? .013 : .009);
-            amount += (kind === "hemingway" ? .017 : .011) * g(x, side * portrait.eyeX * 1.26, .038) * g(y, portrait.eyesY - .034, .028);
-            amount -= (kind === "pushkin" ? .006 : .003) * g(x, side * portrait.eyeX * 1.28, .032) * g(y, portrait.eyesY - .080, .040);
+            const cheekLine = portrait.eyesY - .035 + .16 * (Math.abs(x) - portrait.eyeX);
+            amount += (kind === "hemingway" ? .022 : kind === "tolstoy" ? .017 : .012) * g(x, side * portrait.eyeX * 1.28, .041) * g(y, cheekLine, .023);
+            amount -= (kind === "pushkin" ? .008 : kind === "tolstoy" ? .011 : .006) * g(x, side * portrait.eyeX * 1.34, .036) * g(y, portrait.eyesY - .077, .032);
+            // A shallow temple hollow separates the orbital rim from the
+            // broad lateral head volume; it is not a painted age line.
+            amount -= (kind === "pushkin" ? .003 : .007) * g(x, side * portrait.eyeX * 1.80, .026) * g(y, portrait.eyesY + .013, .038);
             amount += (kind === "tolstoy" ? .016 : .010) * g(x, side * portrait.noseWidth, kind === "tolstoy" ? .017 : .011) * g(y, portrait.noseY - .007, .013);
-            amount -= .006 * g(x, side * portrait.noseWidth * .83, .0055) * g(y, portrait.noseY - .016, .005);
+            amount -= .007 * g(x, side * portrait.noseWidth * .83, .0065) * g(y, portrait.noseY - .016, .0055);
             amount -= .0035 * g(x, side * portrait.noseWidth * 1.65, .009) * g(y, portrait.noseY - .035, .030);
         }
         amount += (kind === "tolstoy" ? .012 : .018) * g(x, 0, portrait.noseWidth * .64) * g(y, portrait.eyesY - .029, .039);
         amount += portrait.noseProjection * g(x, 0, portrait.noseWidth) * g(y, portrait.noseY, kind === "tolstoy" ? .019 : .022);
+        amount += (kind === "tolstoy" ? .010 : kind === "hemingway" ? .006 : .003) * g(x, 0, portrait.noseWidth * .73) * g(y, portrait.noseY - .006, .013);
+        amount -= .003 * g(x, 0, .008) * g(y, portrait.mouthY + .024, .017);
         if (kind !== "pushkin")
             for (const side of [-1, 1]) {
-                amount -= .0045 * g(x, side * portrait.eyeX, .040) * g(y, portrait.eyesY - .020, .005);
-                amount += .004 * g(x, side * portrait.eyeX, .033) * g(y, portrait.eyesY - .032, .008);
-                amount -= .0035 * g(x, side * (portrait.eyeX + .025), .023) * g(y, portrait.eyesY - .010 + side * (x - side * (portrait.eyeX + .025)) * .38, .004);
+                amount -= .0035 * g(x, side * portrait.eyeX, .035) * g(y, portrait.eyesY - .018 + .12 * (Math.abs(x) - portrait.eyeX), .0045);
+                amount += (kind === "hemingway" ? .006 : .0045) * g(x, side * portrait.eyeX, .032) * g(y, portrait.eyesY - .027, .008);
+                amount -= .0024 * g(x, side * (portrait.eyeX + .027), .020) * g(y, portrait.eyesY - .010 + side * (x - side * (portrait.eyeX + .027)) * .38, .004);
             }
         if (kind !== "pushkin")
             for (const side of [-1, 1]) {
@@ -215,10 +236,18 @@ export function createCeramicPortraitStand(kind: CeramicPortraitKind, quality: G
                 amount -= (kind === "hemingway" ? .0065 : .0045) * g(x, foldX, .0065) * g(y, portrait.noseY - .034, .034);
             }
         const line = portrait.mouthY + (kind === "tolstoy" ? -.003 : .002) * Math.pow(x / portrait.mouthWidth, 2), lips = Math.exp(-Math.pow(x / portrait.mouthWidth, 4));
-        amount += lips * ((kind === "pushkin" ? .010 : .005) * g(y, line + .006, .0045) + (kind === "pushkin" ? .012 : .006) * g(y, line - .006, .0055) - .0024 * g(y, line, .0027));
+        const cupid = .0017 * g(x, 0, .010) - .0013 * (g(x, -.013, .007) + g(x, .013, .007));
+        amount += lips * ((kind === "pushkin" ? .010 : .005) * g(y, line + .006 + cupid, .0045) + (kind === "pushkin" ? .013 : .006) * g(y, line - .006, .0055) - .0031 * g(y, line, .0027));
+        amount += (kind === "pushkin" ? .008 : .005) * g(x, 0, .044) * g(y, portrait.mouthY - .051, .024);
         if (kind !== "pushkin")
-            for (let line = 0; line < 3; line++)
-                amount -= .0024 * g(x, 0, .092) * g(y, portrait.eyesY + .046 + line * .020 + x * x * .30, .003);
+            for (let line = 0; line < 3; line++) {
+                const fold = portrait.eyesY + .045 + line * .018 + x * x * .37 + .0018 * Math.sin(x * 39 + line * 1.7);
+                amount -= .0019 * g(x, line === 1 ? -.008 : .006, .087 - line * .008) * g(y, fold, .0033);
+            }
+        if (kind === "tolstoy") {
+            amount += .009 * g(x, 0, .027) * g(y, portrait.eyesY + .025, .030);
+            amount -= .0028 * (g(x, -.009, .004) + g(x, .010, .004)) * g(y, portrait.eyesY + .031, .018);
+        }
         return amount;
     };
     const basePoint = (q: number, angle: number) => {
@@ -242,26 +271,46 @@ export function createCeramicPortraitStand(kind: CeramicPortraitKind, quality: G
         hairMask *= 1 - .98 * earWindow;
         let beardMask = 0;
         if (kind !== "pushkin") {
-            const high = portrait.mouthY + .017 + Math.abs(Math.sin(angle)) * (kind === "tolstoy" ? .082 : .069);
-            beardMask = (1 - fade(y, high - .010, high + .010)) * fade(cosine, -.42, .16);
+            const high = portrait.mouthY + (kind === "tolstoy" ? .017 : .008) + Math.abs(Math.sin(angle)) * (kind === "tolstoy" ? .082 : .055)
+                + .0035 * Math.sin(angle * 4 + .5) + .002 * Math.sin(angle * 9 - .8);
+            beardMask = (1 - fade(y, high - .014, high + .012)) * fade(cosine, -.42, .16);
             if (kind === "tolstoy")
                 beardMask = Math.max(beardMask, (1 - fade(y, -1.430, -1.388)) * fade(cosine, .04, .42));
-            const moustache = g(y, portrait.mouthY + .016, .010) * Math.exp(-Math.pow(x / (portrait.mouthWidth * 1.12), 4)) * Math.pow(front, 3);
+            const moustacheY = portrait.mouthY + .017 - .10 * Math.abs(x);
+            const moustache = g(y, moustacheY, kind === "tolstoy" ? .013 : .010) * Math.exp(-Math.pow(x / (portrait.mouthWidth * 1.18), 4)) * Math.pow(front, 3);
             beardMask = Math.max(beardMask, moustache);
             beardMask *= 1 - Math.exp(-Math.pow(x / (portrait.mouthWidth * .97), 6)) * g(y, portrait.mouthY, .009);
         }
         let hairRelief = 0;
         if (hairMask > .002)
             for (const lock of hairLocks) {
-                const dy = (y - lock.y) / lock.tall, da = signedAngle(angle - lock.angle - (kind === "pushkin" ? 0 : (y - lock.y) * 2)) / lock.wide, distance = da * da + dy * dy;
-                if (distance < 5)
-                    hairRelief += Math.pow(Math.max(0, lock.relief * Math.exp(-distance * 1.75) - .003 * Math.exp(-((da - .24) ** 2 + (dy + .16) ** 2) / .11)), 4);
+                const dy = (y - lock.y) / lock.tall;
+                const sweep = kind === "pushkin" ? .20 * Math.sin(lock.phase) * dy + .11 * Math.sin(dy * 2 + lock.phase) : (y - lock.y) * 2 / lock.wide;
+                const da = signedAngle(angle - lock.angle) / lock.wide - sweep, distance = da * da + dy * dy;
+                if (distance < 5) {
+                    const crease = .0018 * Math.exp(-((da - .18) ** 2 / .038 + (dy + .05) ** 2 / .56));
+                    hairRelief += Math.pow(Math.max(0, lock.relief * Math.exp(-distance * 1.35) - crease), 4);
+                }
             }
         hairRelief = Math.pow(hairRelief, .25);
         const reliefLimit = kind === "pushkin" ? .075 : .022;
         hairRelief = reliefLimit * (1 - Math.exp(-Math.max(0, hairRelief) / reliefLimit));
-        const beardRelief = kind === "tolstoy" ? .004 + .004 * Math.pow(.5 + .5 * Math.cos(angle * 22 + Math.sin(y * 51 + angle * 3) * 1.1), 2) + .0015 * Math.cos(angle * 53 + y * 41) : .0018 + .0006 * Math.sin(angle * 67 + y * 143) * Math.cos(angle * 79 - y * 97);
-        const displacement = hairMask * ((kind === "pushkin" ? .006 : .0025) + hairRelief) + beardMask * beardRelief;
+        let beardRelief = 0;
+        if (beardMask > .002 && kind !== "pushkin") {
+            for (const lock of beardLocks) {
+                const dy = (y - lock.y) / lock.tall;
+                const da = signedAngle(angle - lock.angle - lock.bend * (y - lock.y) - .025 * Math.sin(dy * 1.7 + lock.phase)) / lock.wide;
+                const distance = da * da + dy * dy;
+                if (distance < 5) beardRelief += Math.pow(lock.relief * Math.exp(-distance * 1.2), 4);
+            }
+            beardRelief = Math.pow(beardRelief, .25) + (kind === "tolstoy" ? .0025 : .0010);
+            const moustacheLine = portrait.mouthY + .017 - .10 * Math.abs(x);
+            beardRelief += (kind === "tolstoy" ? .006 : .0035) * g(y, moustacheLine, .012)
+                * (g(x, -.022, .023) + g(x, .023, .023)) * Math.pow(front, 3);
+        }
+        const crownFade = 1 - fade(q, .965, 1);
+        const displacement = (hairMask * ((kind === "pushkin" ? .004 : .0025) + hairRelief) + beardMask * beardRelief)
+            * crownFade * fade(q, 0, .035);
         if (displacement > 0) {
             const du = basePoint(q, angle + .0005).sub(basePoint(q, angle - .0005));
             const dv = basePoint(clamp(q + .0005, 0, 1), angle).sub(basePoint(clamp(q - .0005, 0, 1), angle));
@@ -270,10 +319,12 @@ export function createCeramicPortraitStand(kind: CeramicPortraitKind, quality: G
             point.addScaledVector(normal, displacement);
         }
         if (kind === "tolstoy")
-            point.y += .016 * g(x, 0, .026) * (1 - fade(q, 0, .15)) * front;
+            point.y += .009 * g(x, 0, .028) * fade(q, 0, .055) * (1 - fade(q, .12, .22)) * front;
+        if (kind === "pushkin") point.y += .0032 * fade(q, .96, 1);
         const brows = [-1, 1].reduce((value, side) => Math.max(value, g(x, side * portrait.eyeX, portrait.eyeWidth * 1.05) * g(y, browYAt(x, side), kind === "tolstoy" ? .011 : .006)), 0) * Math.pow(front, 2);
         const lips = g(y, portrait.mouthY, .010) * Math.exp(-Math.pow(x / portrait.mouthWidth, 4)) * Math.pow(front, 6) * (1 - beardMask);
-        return { point, hairMask: Math.max(hairMask, beardMask), beardMask, brows: clamp(brows * 1.8, 0, 1), lips };
+        const hairTone = clamp((hairRelief * 6 + beardRelief * 9 - .05), -.045, .065);
+        return { point, hairMask: Math.max(hairMask, beardMask), beardMask, hairTone, brows: clamp(brows * 1.8, 0, 1), lips };
     };
     const facePoint = (x: number, y: number) => { const q = clamp((y - portrait.bottom) / height, .01, .99), [width] = sectionAt(portrait.sections, q); return surface(q, Math.asin(clamp(x / width, -.99, .99))).point; };
     try {
@@ -301,22 +352,58 @@ export function createCeramicPortraitStand(kind: CeramicPortraitKind, quality: G
             materials.add(material);
             return material;
         };
-        const headMaterial = finish("painted-ceramic-sculpture", "#ffffff", .46);
+        const headMaterial = finish("painted-ceramic-sculpture", "#ffffff", .52);
         headMaterial.vertexColors = true;
-        const skinMaterial = finish("painted-ceramic-facial-detail", portrait.skin, .37), porcelain = finish("unglazed-ivory-contact-and-foot", "#e6e3dc", .40);
-        const eyeMaterial = finish("ceramic-eye-white", "#e7e5df", .30), irisMaterial = finish("painted-ceramic-iris", portrait.iris, .32), pupilMaterial = finish("painted-ceramic-pupil", "#242321", .29);
+        headMaterial.clearcoat = .21; headMaterial.clearcoatRoughness = .38;
+        const skinMaterial = finish("painted-ceramic-facial-detail", portrait.skin, .46), porcelain = finish("unglazed-ivory-contact-and-foot", "#e6e3dc", .40);
+        const eyeMaterial = finish("ceramic-eye-white", "#bdb7ad", .44), irisMaterial = finish("painted-ceramic-iris", portrait.iris, .40), pupilMaterial = finish("painted-ceramic-pupil", "#292b27", .38);
+        eyeMaterial.clearcoat = .16; eyeMaterial.clearcoatRoughness = .43;
         const skinColor = new THREE.Color(portrait.skin), hairColor = new THREE.Color(portrait.hair), browColor = new THREE.Color(portrait.brow), lipColor = new THREE.Color("#aa7869");
         const positions: number[] = [], colors: number[] = [], uvs: number[] = [], indices: number[] = [], row = detail.radial + 1;
+        // Reuse the same grid budget where the modeled surface changes fastest.
+        // This cumulative density is strictly increasing (every weight >= 1),
+        // so its inverse cannot exchange rows. Crown and lower beard rows remain
+        // exactly uniform, outside this bounded facial interval.
+        const facialLow = clamp((portrait.mouthY - .070 - portrait.bottom) / height, 0, 1);
+        const facialHigh = clamp((portrait.eyesY + .090 - portrait.bottom) / height, 0, 1);
+        const densitySteps = 256, density = new Float64Array(densitySteps + 1);
+        for (let step = 1; step <= densitySteps; step++) {
+            const y = portrait.bottom + mix(facialLow, facialHigh, (step - .5) / densitySteps) * height;
+            density[step] = density[step - 1] + 1 + 5.2 * g(y, portrait.mouthY, .014)
+                + 4.0 * g(y, portrait.noseY - .006, .017) + 3.0 * g(y, portrait.eyesY + .004, .025);
+        }
+        const facialRow = (q: number) => {
+            if (q <= facialLow || q >= facialHigh) return q;
+            const target = (q - facialLow) / (facialHigh - facialLow) * density[densitySteps];
+            let low = 0, high = densitySteps;
+            while (high - low > 1) {
+                const middle = (low + high) >>> 1;
+                if (density[middle] < target) low = middle; else high = middle;
+            }
+            const fraction = (target - density[low]) / (density[high] - density[low]);
+            return mix(facialLow, facialHigh, (low + fraction) / densitySteps);
+        };
         const pushVertex = (q: number, angle: number) => {
-            const sample = surface(q, angle), paint = hairColor.clone().lerp(new THREE.Color("#d2d9d8"), kind === "hemingway" ? sample.beardMask * .65 : 0), color = skinColor.clone().lerp(paint, sample.hairMask).lerp(browColor, sample.brows * .9).lerp(lipColor, sample.lips * .58);
+            const sample = surface(q, angle), paint = hairColor.clone().lerp(new THREE.Color("#d2d9d8"), kind === "hemingway" ? sample.beardMask * .65 : 0);
+            paint.multiplyScalar(1 + sample.hairTone);
+            const color = skinColor.clone().lerp(paint, sample.hairMask).lerp(browColor, sample.brows * .9).lerp(lipColor, sample.lips * .58);
             positions.push(...sample.point.toArray());
             colors.push(color.r, color.g, color.b);
             uvs.push(angle / TAU, q);
         };
         pushVertex(0, Math.PI);
-        for (let y = 1; y < detail.rows; y++)
-            for (let x = 0; x <= detail.radial; x++)
-                pushVertex(y / detail.rows, x / detail.radial * TAU);
+        for (let y = 1; y < detail.rows; y++) {
+            const uniformQ = y / detail.rows, faceQ = facialRow(uniformQ);
+            for (let x = 0; x <= detail.radial; x++) {
+                const t = x / detail.radial * TAU;
+                // da/dt = 1 - .55 cos(t) >= .45; both seam endpoints are exact.
+                const angle = x === 0 ? 0 : x === detail.radial ? TAU : t - .55 * Math.sin(t);
+                const frontWeight = 1 - fade(Math.abs(signedAngle(angle)), .80, 1.45);
+                // A fixed-angle convex blend of increasing maps remains
+                // increasing. The back of the head retains its original rows.
+                pushVertex(mix(uniformQ, faceQ, frontWeight), angle);
+            }
+        }
         const tip = positions.length / 3;
         pushVertex(1, 0);
         for (let x = 0; x < detail.radial; x++)
@@ -359,24 +446,42 @@ export function createCeramicPortraitStand(kind: CeramicPortraitKind, quality: G
             const horizontal = new THREE.Vector3(1, 0, -side * .18).normalize();
             const vertical = new THREE.Vector3(0, 1, 0);
             const normal = horizontal.clone().cross(vertical).normalize(), up = normal.clone().cross(horizontal).normalize();
-            const point = (x: number, y: number, z: number) => centre.clone().addScaledVector(horizontal, x).addScaledVector(up, y).addScaledVector(normal, z);
-            eyeParts.push(closedPatch(4, detail.patchRadial, (r, angle, outer) => point(Math.cos(angle) * r * portrait.eyeWidth, Math.sin(angle) * r * portrait.eyeHeight, outer ? .007 * Math.sqrt(Math.max(0, 1 - r * r)) : -.003)));
+            const eyeSlope = side * (kind === "pushkin" ? .055 : kind === "hemingway" ? .020 : -.035);
+            const upperHeight = portrait.eyeHeight * .72, lowerHeight = portrait.eyeHeight * .80, eyeBulge = .0055;
+            const point = (x: number, y: number, z: number) => centre.clone().addScaledVector(horizontal, x).addScaledVector(up, y + eyeSlope * x).addScaledVector(normal, z);
+            eyeParts.push(closedPatch(4, detail.patchRadial, (r, angle, outer) => {
+                const sine = Math.sin(angle);
+                return point(Math.cos(angle) * r * portrait.eyeWidth, sine * r * (sine >= 0 ? upperHeight : lowerHeight),
+                    outer ? eyeBulge * Math.sqrt(Math.max(0, 1 - r * r)) : -.003);
+            }));
             for (const upper of [true, false]) {
                 const points: THREE.Vector3[] = [];
                 for (let step = 0; step <= 20; step++) {
-                    const t = step / 20;
-                    points.push(point((t * 2 - 1) * portrait.eyeWidth, Math.sin(t * Math.PI) * portrait.eyeHeight * (upper ? 1 : -.85), .0005));
+                    const angle = step / 20 * Math.PI;
+                    points.push(point(-Math.cos(angle) * portrait.eyeWidth, Math.sin(angle) * (upper ? upperHeight : -lowerHeight), .0006));
                 }
-                lidParts.push(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(points), detail.patchRadial, upper ? .0022 : .0016, 6, false));
+                lidParts.push(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(points), detail.patchRadial, upper ? .0027 : .0018, 6, false));
             }
-            const eyeDepth = (x: number, y: number) => .007 * Math.sqrt(Math.max(0, 1 - (x / portrait.eyeWidth) ** 2 - (y / portrait.eyeHeight) ** 2));
-            const irisRadius = kind === "tolstoy" ? .0074 : .0088;
+            const eyeDepth = (x: number, y: number) => eyeBulge * Math.sqrt(Math.max(0, 1 - (x / portrait.eyeWidth) ** 2 - (y / (y >= 0 ? upperHeight : lowerHeight)) ** 2));
+            const irisRadius = kind === "tolstoy" ? .0105 : kind === "hemingway" ? .0116 : .0112;
+            const irisOffset = -side * .0012;
+            // The iris is a painted ceramic disc partly covered by the lids,
+            // not a small round button floating inside a fully exposed white eye.
+            // Clip radial rays to the actual upper/lower aperture analytically.
+            const irisPoint = (r: number, angle: number) => {
+                const dx = Math.cos(angle) * irisRadius, dy = Math.sin(angle) * irisRadius;
+                const aperture = (dy >= 0 ? upperHeight : lowerHeight) * .96, width = portrait.eyeWidth * .97;
+                const a = (dx / width) ** 2 + (dy / aperture) ** 2;
+                const b = 2 * irisOffset * dx / (width * width), c = (irisOffset / width) ** 2 - 1;
+                const limit = Math.min(1, (-b + Math.sqrt(Math.max(0, b * b - 4 * a * c))) / (2 * a));
+                return { x: irisOffset + dx * r * limit, y: dy * r * limit };
+            };
             irisParts.push(closedPatch(3, detail.patchRadial, (r, angle, outer) => {
-                const x = Math.cos(angle) * r * irisRadius, y = Math.sin(angle) * r * irisRadius * .89;
+                const { x, y } = irisPoint(r, angle);
                 return point(x, y, eyeDepth(x, y) + (outer ? .00035 : -.001));
             }));
             pupilParts.push(closedPatch(2, detail.patchRadial, (r, angle, outer) => {
-                const x = Math.cos(angle) * r * .0031, y = Math.sin(angle) * r * .0031;
+                const x = irisOffset + Math.cos(angle) * r * .0032, y = Math.sin(angle) * r * .0032;
                 return point(x, y, eyeDepth(x, y) + (outer ? .00070 : -.0005));
             }));
             const earQ = (portrait.eyesY - .036 - portrait.bottom) / height, [earWidth] = sectionAt(portrait.sections, earQ);

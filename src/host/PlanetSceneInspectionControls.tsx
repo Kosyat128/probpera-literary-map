@@ -3,6 +3,7 @@ import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import InterfaceLanguageControl from "../components/InterfaceLanguageControl";
 import { beginGlobePointerGesture, isGlobePointerTap, updateGlobePointerGesture, type GlobePointerGesture } from "../components/globeInteraction";
 import type { PlanetSceneInspectionController } from "./planetSceneInspection";
+import { WRITER_STUDY_SKETCH, writerStudySketchSvgPath } from "../planet/writerStudySketch";
 import "./PlanetSceneInspectionControls.css";
 
 /** Original interface copy describing an authored decorative scene object. */
@@ -17,6 +18,7 @@ export const planetSceneInspectionCopy = {
       sketch: "Лист с наброском",
       closeScene: "Закрыть осмотр сцены",
       title: "Авторский набросок",
+      sketchPreview: "Набросок трёх вымышленных островов на листе бумаги",
       description: "На листе — набросок вымышленных островов. Загляните в коллекцию, чтобы выбрать следующую книгу для чтения.",
       closeObject: "Закрыть набросок",
       books: "Перейти к книгам",
@@ -28,6 +30,7 @@ export const planetSceneInspectionCopy = {
       sketch: "Sketch sheet",
       closeScene: "Close scene inspection",
       title: "Original sketch",
+      sketchPreview: "Sketch of three imaginary islands on a sheet of paper",
       description: "The sheet shows a sketch of imaginary islands. Explore the collection to choose your next book to read.",
       closeObject: "Close sketch",
       books: "Explore books",
@@ -188,6 +191,15 @@ export default function PlanetSceneInspectionControls({ controller, markerRef, o
             data-planet-scene-object-close="" aria-label={copy.closeObject} onClick={() => controller.closeObject()}>×</button>
         </header>
         <div data-planet-scene-object-language=""><InterfaceLanguageControl /></div>
+        <svg className="planet-scene-inspection__sketch" data-planet-scene-sketch=""
+          viewBox={`${-WRITER_STUDY_SKETCH.width / 2} ${-WRITER_STUDY_SKETCH.height / 2} ${WRITER_STUDY_SKETCH.width} ${WRITER_STUDY_SKETCH.height}`}
+          role="img" aria-labelledby={`${id}-sketch-title`} focusable="false">
+          <title id={`${id}-sketch-title`}>{copy.sketchPreview}</title>
+          <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
+            {WRITER_STUDY_SKETCH.strokes.map((stroke, index) => <path key={index} data-sketch-stroke={index}
+              d={writerStudySketchSvgPath(stroke)} strokeWidth={stroke.thickness * 2} />)}
+          </g>
+        </svg>
         <p id={`${id}-object-description`}>{copy.description}</p>
         <button type="button" data-planet-scene-books="" disabled={!snapshot.available}
           onClick={() => controller.openBooks(onOpenBooks)}>{copy.books}</button>

@@ -2,6 +2,7 @@ import * as THREE from "three";
 import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
 import { createGlobeCraftMaterials } from "./globeCraftMaterials";
 import type { GlobeQualityTier } from "./globeQuality";
+import { WRITER_STUDY_SKETCH } from "../planet/writerStudySketch";
 
 export interface OwnedGlobeWriterStudy {
   readonly group: THREE.Group;
@@ -74,13 +75,29 @@ export function createGlobeWriterStudy(quality: GlobeQualityTier): OwnedGlobeWri
     const warm = Math.exp(-point.distanceToSquared(lampPosition) / 6);
     return new THREE.Color().setRGB(.78 + cool * .13 + warm * .09, .80 + cool * .15 + warm * .055, .83 + cool * .16 + warm * .015);
   };
-  const shade = (geometry: THREE.BufferGeometry, tint = new THREE.Color(1, 1, 1), world = false) => {
+  const shade = (geometry: THREE.BufferGeometry, tint = new THREE.Color(1, 1, 1), world = false, architecture = false) => {
     const positions = geometry.getAttribute("position"), normals = geometry.getAttribute("normal");
     const colors = new Float32Array(positions.count * 3), point = new THREE.Vector3();
     for (let index = 0; index < positions.count; index++) {
       const ny = normals.getY(index), value = ny < -.5 ? .70 : ny > .5 ? 1 : .91;
       const color = tint.clone().multiplyScalar(value);
       if (world) color.multiply(exposureAt(point.fromBufferAttribute(positions, index)));
+      if (architecture) {
+        point.fromBufferAttribute(positions, index);
+        // A continuous, authored diffuse/occlusion approximation across the
+        // entire shell. Subdivided faces sample the same function at seams.
+        const corner = Math.max(0, 11 - Math.abs(point.x), 11 - Math.abs(point.z));
+        const contact = .19 * Math.exp(-Math.pow((point.y - FLOOR) / .65, 2))
+          + .10 * Math.exp(-Math.pow((6.58 - point.y) / .60, 2)) + .15 * Math.exp(-corner * corner / .65);
+        let sky = 0;
+        for (const x of [-4.9, 2.6]) {
+          const dx = x - point.x, dy = .8 - point.y, dz = -10.95 - point.z;
+          const distance = Math.sqrt(dx * dx + dy * dy + dz * dz + .04);
+          const facing = Math.max(0, (dx * normals.getX(index) + dy * ny + dz * normals.getZ(index)) / distance);
+          sky += Math.exp(-(dx * dx + dy * dy + dz * dz) / 27) * (.075 + .16 * facing);
+        }
+        color.multiply(new THREE.Color(.83 + sky * .42, .87 + sky * .57, .92 + sky * .76).multiplyScalar(1 - contact));
+      }
       colors.set([color.r, color.g, color.b], index * 3);
     }
     geometry.setAttribute("color", new THREE.Float32BufferAttribute(colors, 3)); return geometry;
@@ -148,13 +165,26 @@ export function createGlobeWriterStudy(quality: GlobeQualityTier): OwnedGlobeWri
     // Normalise temporary pieces before merging, retaining their hard normals.
     const part = geometry.index ? geometry.toNonIndexed() : geometry;
     if (part !== geometry) geometry.dispose();
-    part.clearGroups(); part.applyMatrix4(transform); shade(part, tint, name !== "room-shell");
+    const uv = part.getAttribute("uv");
+    const finish = material as THREE.MeshStandardMaterial;
+    if (uv && finish.map?.name.includes("wood")) {
+      // Boards keep their grain direction, but no longer repeat the same knot
+      // at every drawer and wall-panel corner. Offset is layout-derived, so all
+      // tiers keep the same timber without any per-frame randomness.
+      const x = Math.round(transform.elements[12] * 101), y = Math.round(transform.elements[13] * 101), z = Math.round(transform.elements[14] * 101);
+      const du = variation(x, y, z), dv = variation(z, x, y + 17);
+      for (let vertex = 0; vertex < uv.count; vertex++) uv.setXY(vertex, uv.getX(vertex) + du, uv.getY(vertex) + dv);
+    }
+    part.clearGroups(); part.applyMatrix4(transform); shade(part, tint, name !== "room-shell", name === "room-shell");
     batch.parts.push(part); batches.set(name, batch);
   };
   const box = (name: string, material: THREE.Material, root: THREE.Group, x: number, y: number, z: number,
     width: number, height: number, depth: number, radius = .025, angle = 0, tint?: THREE.Color) => {
     const transform = new THREE.Matrix4().makeRotationY(angle); transform.setPosition(x, y, z);
-    append(name, board(width, height, depth, radius), material, root, transform, tint);
+    const geometry = name === "room-shell"
+      ? new THREE.BoxGeometry(width, height, depth, Math.ceil(width / 1.25), Math.ceil(height / 1.25), Math.ceil(depth / 1.25))
+      : board(width, height, depth, radius);
+    append(name, geometry, material, root, transform, tint);
   };
   const lathe = (points: readonly (readonly [number, number])[], material: THREE.Material, name: string,
     root: THREE.Group, x: number, y: number, z: number, xScale = 1, zScale = 1) => {
@@ -215,7 +245,7 @@ export function createGlobeWriterStudy(quality: GlobeQualityTier): OwnedGlobeWri
     const paper = cloneFinish(craft.paper, "#e8dfca", .06); paper.map = null; paper.normalScale.set(.06, .06);
     // Quiet lime plaster has no stone veins. The architectural pieces receive
     // the same diffuse colour and spatial vertex exposure across their seams.
-    const wall = plainFinish("#89918c", .96);
+    const wall = plainFinish("#929b9c", .96);
     const plaster = plainFinish("#c6c0ad", .92);
     const floorFinish = cloneFinish(craft.wood, "#85735e", .18); floorFinish.normalScale.set(.12, .12);
     const darkMetal = plainFinish("#292c2b", .6);
@@ -228,6 +258,8 @@ export function createGlobeWriterStudy(quality: GlobeQualityTier): OwnedGlobeWri
       transparent: true, opacity: .37, depthWrite: false, roughness: 1, side: THREE.DoubleSide });
     contact.forceSinglePass = true; materials.add(contact);
     const shadows: Placement[] = [];
+    const tightContact = contact.clone(); tightContact.opacity = .54; materials.add(tightContact);
+    const tightShadows: Placement[] = [];
 
     // Complete 360-degree shell. Every crossing floor/ceiling face is beyond
     // r=5.6; furniture and panel surfaces are still farther away.
@@ -275,13 +307,54 @@ export function createGlobeWriterStudy(quality: GlobeQualityTier): OwnedGlobeWri
     tube("door-hardware", [new THREE.Vector3(-2.18, -3.20, 10.46), new THREE.Vector3(-2.18, -3.20, 10.32),
       new THREE.Vector3(-2.45, -3.20, 10.32)], .035, brass, background);
 
-    const windowMap = tile("window-daylight", (u, v) => {
-      const soft = .76 + .12 * smooth(v) + .025 * Math.sin(u * 7 + Math.sin(v * 5));
-      const edge = .87 + .13 * smooth(Math.min(u, 1 - u) * 8);
-      return [Math.round(soft * edge * 218), Math.round(soft * edge * 234), Math.round(soft * edge * 248), 255];
-    }, true);
-    const glazing = new THREE.MeshStandardMaterial({ color: "#ccdadd", map: windowMap, emissiveMap: windowMap,
-      emissive: "#a9c4d5", emissiveIntensity: .40, roughness: .26, metalness: .04, envMap: craft.stone.envMap, envMapIntensity: .26 });
+    // The view through the real openings has its own depth: a quiet sky and
+    // branching winter trees stand well beyond the glass. These are authored
+    // geometry, not a photograph or a replacement for the surrounding room.
+    const skyGeometry = own(new THREE.SphereGeometry(34, detail.radial * 2, detail.radial));
+    const skyColors = new Float32Array(skyGeometry.getAttribute("position").count * 3);
+    const skyPositions = skyGeometry.getAttribute("position");
+    const horizon = new THREE.Color("#b5c5c8"), upperSky = new THREE.Color("#8eaebe"), ground = new THREE.Color("#788578");
+    for (let vertex = 0; vertex < skyPositions.count; vertex++) {
+      const y = skyPositions.getY(vertex), color = y >= -1
+        ? horizon.clone().lerp(upperSky, smooth((y + 1) / 27))
+        : horizon.clone().lerp(ground, smooth((-y - 1) / 9));
+      skyColors.set([color.r, color.g, color.b], vertex * 3);
+    }
+    skyGeometry.setAttribute("color", new THREE.Float32BufferAttribute(skyColors, 3));
+    const skyMaterial = new THREE.MeshBasicMaterial({ vertexColors: true, side: THREE.BackSide }); materials.add(skyMaterial);
+    mesh("exterior-sky", skyGeometry, skyMaterial, background);
+    const bark = plainFinish("#68716a", .98);
+    const limb = (start: THREE.Vector3, end: THREE.Vector3, radius: number, tip: number) => {
+      const direction = end.clone().sub(start), length = direction.length();
+      const geometry = new THREE.CylinderGeometry(tip, radius, length, Math.max(5, Math.round(detail.radial / 3)), 1, false);
+      const transform = new THREE.Matrix4().compose(start.clone().add(end).multiplyScalar(.5),
+        new THREE.Quaternion().setFromUnitVectors(up, direction.divideScalar(length)), new THREE.Vector3(1, 1, 1));
+      append("exterior-tree-branches", geometry, bark, background, transform);
+    };
+    for (let tree = 0; tree < 4; tree++) {
+      const base = new THREE.Vector3(-10.5 + tree * 6.8, FLOOR, -16.4 - (tree % 2) * 4.0);
+      const treeHeight = 8.0 + variation(tree, 71) * 2.1;
+      const crown = base.clone().add(new THREE.Vector3(.28 * Math.sin(tree * 2), treeHeight, -.35));
+      limb(base, crown, .20, .045);
+      for (let branch = 0; branch < 8; branch++) {
+        const fraction = .28 + branch * .073, angle = branch * 2.399 + tree * 1.7;
+        const origin = base.clone().lerp(crown, fraction);
+        const reach = 2.0 + variation(tree, branch, 7) * 1.6;
+        const end = origin.clone().add(new THREE.Vector3(Math.cos(angle) * reach, 1.55 + variation(branch, tree) * .9, Math.sin(angle) * reach * .48));
+        const elbow = origin.clone().lerp(end, .58).add(new THREE.Vector3(.07, -.19, -.08));
+        limb(origin, elbow, .068 * (1 - fraction * .5), .032);
+        limb(elbow, end, .032, .009);
+        for (let twig = 0; twig < 3; twig++) {
+          const start = elbow.clone().lerp(end, .25 + twig * .26);
+          const turn = angle + (twig % 2 ? -.75 : .65);
+          const tip = start.clone().add(new THREE.Vector3(Math.cos(turn) * (.7 + twig * .18), .64 + twig * .11, Math.sin(turn) * .55));
+          limb(start, tip, .013, .0035);
+        }
+      }
+    }
+    const glazing = new THREE.MeshPhysicalMaterial({ color: "#e9f2f3", transparent: true, opacity: .16,
+      depthWrite: false, roughness: .14, metalness: 0, clearcoat: .35, clearcoatRoughness: .12,
+      envMap: craft.stone.envMap, envMapIntensity: .38 });
     materials.add(glazing);
     const windows: Placement[] = [];
     for (const x of [-4.9, 2.6]) {
@@ -373,10 +446,12 @@ export function createGlobeWriterStudy(quality: GlobeQualityTier): OwnedGlobeWri
       lathe([[0,0],[.11,0],[.12,.10],[.086,.17],[.079,.30],[.096,.46],[.077,.61],[.067,1.65],[.10,1.82],[.13,1.91],[.14,2.15],[0,2.15]],
         walnut, "desk-legs", foreground, deskX + x, FLOOR + .04, deskZ + z);
       lathe([[0,0],[.126,0],[.129,.035],[.118,.13],[0,.13]], brass, "desk-hardware", foreground, deskX + x, FLOOR, deskZ + z);
-      shadows.push({ x: deskX + x, y: FLOOR + .003, z: deskZ + z, width: .50, height: 1, depth: .50 });
+      tightShadows.push({ x: deskX + x, y: FLOOR + .003, z: deskZ + z, width: .43, height: 1, depth: .43 });
     }
     shadows.push({ x: deskX, y: FLOOR + .004, z: deskZ, width: 5.35, height: 1, depth: 2.85 });
-    box("desk-blotter", chairLeather, foreground, 3.65, deskY + .114, deskZ + .04, 2.28, .027, 1.30, .025);
+    // The leather writing surface supports the whole open book and paper
+    // stack; their outer corners must not hover beyond the desk's front edge.
+    box("desk-blotter", chairLeather, foreground, 3.52, deskY + .114, deskZ, 3.42, .027, 1.88, .025);
     // The chair sits behind the writing desk, rather than in the camera's path.
     box("chair-frame", walnut, foreground, 3.55, -4.44, -9.85, 1.53, .22, 1.32, .055);
     box("chair-upholstery", chairLeather, foreground, 3.55, -4.285, -9.84, 1.38, .15, 1.18, .055);
@@ -391,7 +466,7 @@ export function createGlobeWriterStudy(quality: GlobeQualityTier): OwnedGlobeWri
     }
     shadows.push({ x: 3.55, y: FLOOR + .003, z: -9.85, width: 2.05, height: 1, depth: 1.92 });
 
-    const bookTransform = new THREE.Matrix4().makeRotationY(-.14); bookTransform.setPosition(2.81, deskY + .148, -7.50);
+    const bookTransform = new THREE.Matrix4().makeRotationY(-.14); bookTransform.setPosition(2.81, deskY + .148, -7.70);
     for (const side of [-1, 1]) {
       const cover = board(.78, .035, 1.105, .012, false); cover.translate(side * .405, 0, 0);
       append("open-book-covers", cover, chairLeather, foreground, bookTransform);
@@ -411,50 +486,50 @@ export function createGlobeWriterStudy(quality: GlobeQualityTier): OwnedGlobeWri
     }
     for (let sheet = 0; sheet < 3; sheet++) {
       const geometry = curvedPaper(.70, .94, .006, (u, v) => .009 * Math.pow(u, 6) * Math.pow(v, 4));
-      const transform = new THREE.Matrix4().makeRotationY(.14 + sheet * .04); transform.setPosition(4.43 + sheet * .025, deskY + .12 + sheet * .008, -8.21);
+      const transform = new THREE.Matrix4().makeRotationY(.14 + sheet * .04); transform.setPosition(4.43 + sheet * .025, deskY + .140 + sheet * .008, -8.21);
       append("loose-paper", geometry, paper, foreground, transform);
     }
+    tightShadows.push({ x: 2.81, y: deskY + .131, z: -7.70, width: 1.65, height: 1, depth: 1.09, angle: -.14 });
+    tightShadows.push({ x: 4.45, y: deskY + .131, z: -8.21, width: .78, height: 1, depth: 1.02, angle: .22 });
     // An original pen sketch on the top sheet. These invented little islands
     // are decorative manuscript marks, not geographic data or copied maps.
     // The marks follow the paper's actual slight curl and contain no text.
     const sketchInk = plainFinish("#546568", 1);
     const sketchTransform = new THREE.Matrix4().makeRotationY(.22);
-    sketchTransform.setPosition(4.48, deskY + .136, -8.21);
+    sketchTransform.setPosition(4.48, deskY + .156, -8.21);
     const sketchPoint = (x: number, z: number) => new THREE.Vector3(x,
       .009 * Math.pow(x / .70 + .5, 6) * Math.pow(z / .94 + .5, 4) + .0032, z);
     const sketchStroke = (points: readonly (readonly [number, number])[], closed = false, thickness = .0018) => {
-      const curve = new THREE.CatmullRomCurve3(points.map(([x, z]) => sketchPoint(x, z)), closed, "catmullrom", .20);
+      const vertices = points.map(([x, z]) => sketchPoint(x, z));
+      // The cross marks are straight, avoiding the two-point Catmull endpoint
+      // extrapolation. Longer strokes retain the original uniform spline.
+      const curve = vertices.length === 2 ? new THREE.LineCurve3(vertices[0], vertices[1])
+        : new THREE.CatmullRomCurve3(vertices, closed, "catmullrom", WRITER_STUDY_SKETCH.tension);
       append("manuscript-sketch", new THREE.TubeGeometry(curve, detail.curve, thickness, 4, closed),
         sketchInk, foreground, sketchTransform);
     };
-    sketchStroke([[-.24,-.28],[-.17,-.34],[-.10,-.29],[-.11,-.19],[-.04,-.10],[-.08,-.04],
-      [-.02,.03],[-.09,.14],[-.17,.12],[-.22,.20],[-.25,.09],[-.20,.01],[-.25,-.11]], true);
-    sketchStroke([[.02,-.24],[.09,-.29],[.20,-.23],[.19,-.14],[.25,-.08],[.20,.03],
-      [.24,.10],[.16,.18],[.12,.31],[.04,.26],[.07,.17],[.03,.09],[.09,.01],[.04,-.11]], true);
-    sketchStroke([[-.02,.25],[-.07,.30],[-.03,.35],[.025,.31]], true);
-    sketchStroke([[.14,-.20],[.12,-.11],[.16,-.03],[.13,.06],[.15,.14]], false, .00125);
-    sketchStroke([[-.21,-.24],[-.18,-.20],[-.16,-.23],[-.13,-.18]], false, .00125);
-    sketchStroke([[-.225,.285],[-.225,.355]], false, .00125);
-    sketchStroke([[-.260,.32],[-.190,.32]], false, .00125);
+    for (const stroke of WRITER_STUDY_SKETCH.strokes) sketchStroke(stroke.points, stroke.closed, stroke.thickness);
     // A turned wood pencil and a small blank ceramic pen cup are original props.
     const pencil = new THREE.CylinderGeometry(.016, .016, .78, 6, 1); pencil.rotateZ(Math.PI / 2); pencil.rotateY(-.3);
-    append("writing-tools", pencil, lightWood, foreground, new THREE.Matrix4().makeTranslation(4.41, deskY + .168, -7.90));
+    append("writing-tools", pencil, lightWood, foreground, new THREE.Matrix4().makeTranslation(4.41, deskY + .174, -7.90));
     lathe([[0,0],[.14,0],[.155,.035],[.16,.32],[.146,.34],[.124,.34],[.12,.047],[0,.047]], plaster,
-      "ceramic-pen-cup", foreground, 4.9, deskY + .11, -8.70);
+      "ceramic-pen-cup", foreground, 4.9, deskY + .132, -8.70);
     for (let pencilIndex = 0; pencilIndex < 3; pencilIndex++) {
       const geometry = new THREE.CylinderGeometry(.018, .018, .52, 6, 1); geometry.rotateZ((pencilIndex - 1) * .08);
-      append("writing-tools", geometry, lightWood, foreground, new THREE.Matrix4().makeTranslation(4.84 + pencilIndex * .055, deskY + .48, -8.70));
+      append("writing-tools", geometry, lightWood, foreground, new THREE.Matrix4().makeTranslation(4.84 + pencilIndex * .055, deskY + .502, -8.70));
     }
     const inkGlass = new THREE.MeshPhysicalMaterial({ color: "#253b42", roughness: .20, metalness: 0,
       clearcoat: .55, clearcoatRoughness: .19, envMap: craft.stone.envMap, envMapIntensity: .37, vertexColors: true });
     materials.add(inkGlass);
     lathe([[0,0],[.137,0],[.159,.035],[.160,.174],[.125,.216],[.075,.230],[.075,.290],[.056,.302],[.048,.281],[.048,.247],[.098,.192],[.101,.051],[0,.051]],
-      inkGlass, "inkwell", foreground, 4.58, deskY + .115, -8.59);
-    lathe([[0,0],[.045,0],[.046,.010],[0,.010]], darkMetal, "inkwell-ink", foreground, 4.58, deskY + .358, -8.59);
+      inkGlass, "inkwell", foreground, 4.58, deskY + .132, -8.59);
+    lathe([[0,0],[.045,0],[.046,.010],[0,.010]], darkMetal, "inkwell-ink", foreground, 4.58, deskY + .375, -8.59);
+    tightShadows.push({ x: 4.58, y: deskY + .131, z: -8.59, width: .40, height: 1, depth: .40 });
+    tightShadows.push({ x: 4.90, y: deskY + .131, z: -8.70, width: .37, height: 1, depth: .37 });
     const pen = new THREE.CylinderGeometry(.019, .023, .68, detail.radial, 1); pen.rotateZ(Math.PI / 2); pen.rotateY(.36);
-    append("fountain-pen", pen, recess, foreground, new THREE.Matrix4().makeTranslation(3.99, deskY + .158, -7.26));
+    append("fountain-pen", pen, recess, foreground, new THREE.Matrix4().makeTranslation(3.99, deskY + .123, -7.10));
     const nib = new THREE.ConeGeometry(.026, .16, 6, 1); nib.scale(.45, 1, 1); nib.rotateZ(-Math.PI / 2); nib.rotateY(.36);
-    append("pen-nib", nib, brass, foreground, new THREE.Matrix4().makeTranslation(4.383, deskY + .158, -7.404));
+    append("pen-nib", nib, brass, foreground, new THREE.Matrix4().makeTranslation(4.383, deskY + .123, -7.244));
 
     // Banker's lamp: turned brass foot and stem, arched thick glass shade with
     // a warm inner face, and an actual small emitter under the shade.
@@ -503,6 +578,7 @@ export function createGlobeWriterStudy(quality: GlobeQualityTier): OwnedGlobeWri
 
     const contactGeometry = own(new THREE.PlaneGeometry(1, 1)); contactGeometry.rotateX(-Math.PI / 2);
     instanced("contact-shadows", contactGeometry, contact, shadows, foreground, true);
+    instanced("tight-contact-shadows", contactGeometry, tightContact, tightShadows, foreground, true);
     // Each material batch becomes one real draw. Instanced book parts retain
     // independent physical transforms for tier-independent cabinet density.
     for (const [name, batch] of batches) {

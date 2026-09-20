@@ -187,7 +187,7 @@ test.beforeAll(async () => {
   for (const module of ["src/App.tsx", "src/host/mountHostApp.tsx", "src/components/LiteraryGlobe.tsx",
     "src/components/GlobeCameraRig.tsx", "src/components/globeAtlas.ts", "src/components/GlobeIncludedStand.tsx",
     "src/components/globeStandGeometry.ts", "src/components/globeCeramicPortraitStandGeometry.ts",
-    "src/components/globeWriterStudyGeometry.ts", "src/components/globeBackgroundGeometry.ts",
+    "src/components/globeWriterStudyGeometry.ts", "src/planet/writerStudySketch.ts", "src/components/globeBackgroundGeometry.ts",
     "src/host/planetSceneInspection.ts", "src/host/PlanetSceneInspectionControls.tsx", "src/host/PlanetSceneInspectionControls.css",
     "src/components/GlobeSceneInspectionAnchor.tsx", "src/components/InterfaceLanguageControl.tsx",
     "src/host/NativePlanetPanel.tsx", "src/components/BookArchiveSection.tsx",
@@ -203,7 +203,7 @@ test.beforeAll(async () => {
   sourceEvidence = { kind: "canonical-app-scene-inspection-in-Chrome", actualApp: true, actualCss: true, actualGlobe: true,
     controlledPorts: ["native OS plugins and local preferences"],
     typeOnlyInputs: [{path:"src/host/planetSceneInspectionBridge.ts",sha256:digest(await fs.readFile(path.join(root,"src/host/planetSceneInspectionBridge.ts")))}],
-    observation: "Actual transient scene inspection, geometry-projected DOM marker, modal dialog keyboard/locale focus, keyboard keyboard selection fencing and canonical book collection",
+    observation: "Actual transient scene inspection, shared authored sketch preview, geometry-projected DOM marker, modal keyboard/locale focus, keyboard selection fencing and canonical book collection",
     publicAssetSelectionSha256: digest(selectionBytes), selectedAssetCount: selectedAssets.size,
     builtFiles: built.outputFiles.map(file => ({ path: path.relative(output, file.path).replaceAll("\\", "/"), sha256: digest(file.contents) })),
     installedNative: false, entitlementGranted: false, releaseReady: false };
@@ -419,12 +419,19 @@ test('scene inspection uses actual manuscript geometry, accessible modal control
     await keyboardScene(page); const dialog = await keyboardObject(page);
     const dialogHandle = await dialog.elementHandle(); expect(dialogHandle).not.toBeNull();
     await expect(dialog.getByRole('heading', {name:'Авторский набросок'})).toBeVisible();
+    const sketch = dialog.locator('[data-planet-scene-sketch]');
+    await expect(sketch).toBeVisible(); await expect(sketch.locator('path')).toHaveCount(7);
+    await expect(dialog.getByRole('img', {name:/набросок/iu})).toBeVisible();
+    const sketchHandle = await sketch.elementHandle(); expect(sketchHandle).not.toBeNull();
     const russian = { scene: await actual(page, selection), inspection: await inspect(page) };
     preserved(russian.scene, baseline, baselinePose); expect(page.url()).toBe(baselineUrl);
     await page.screenshot({path:testInfo.outputPath('scene-inspection-object-ru-1440.png')});
     const englishButton = dialog.locator('[data-planet-scene-object-language] button').filter({hasText:'EN'});
     await englishButton.click(); await expect(page.locator('html')).toHaveAttribute('lang','en');
     await expect(dialog.getByRole('heading', {name:'Original sketch'})).toBeVisible();
+    await expect(dialog.getByRole('img', {name:/sketch/iu})).toBeVisible();
+    expect(await sketchHandle.evaluate(node => node === document.querySelector('[data-planet-scene-sketch]'))).toBe(true);
+    await sketchHandle.dispose();
     await expect(englishButton).toBeFocused(); await mode(page,'object');
     expect(await dialogHandle.evaluate(node => node === document.querySelector('dialog[data-planet-scene-object]'))).toBe(true);
     await expect(globe(page)).toHaveAttribute('data-planet-composition-phase','idle');

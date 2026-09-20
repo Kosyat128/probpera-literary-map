@@ -119,6 +119,20 @@
 .planet-scene-inspection__dialog article { padding: 18px; }
 .planet-scene-inspection__dialog p { margin: 12px 0 18px; }
 
+.planet-scene-inspection__sketch {
+  display: block;
+  box-sizing: border-box;
+  width: auto;
+  height: clamp(180px, 32dvh, 270px);
+  max-width: 100%;
+  margin: 16px auto;
+  border: 1px solid #b8a98a;
+  border-radius: 2px;
+  color: #465b5d;
+  background: linear-gradient(115deg, #f3ebd8, #e5d9bd);
+  box-shadow: 0 3px 12px rgb(0 0 0 / 20%);
+}
+
 .literary-globe .planet-scene-inspection__dialog [data-planet-scene-object-language] .interface-language-control {
   display: inline-flex;
   width: max-content;
