@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "mode": "inventory",
+  "attempt": "a2",
+  "pass": true,
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-dialogue-registry-20260920/source-manifests/530e8999e1e0cf0c.json",
+    "sha256": "530e8999e1e0cf0c4b284b594793b03aae6fb1b016804f3d492234156ae4a274",
+    "fileCount": 1581
+  },
+  "checkInputs": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-dialogue-registry-20260920/check.mjs",
+      "sha256": "56b2dd38f4c6e0b5a070f7826c3e5308ad4eaeb225e6a83c3418322343f8f592"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-dialogue-registry-20260920/entry.json",
+      "sha256": "37d6326c0923f02b2ca91da0f132bb29c69f9ad2a242c3a3f5dc89d8a2f6ec64"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-dialogue-registry-20260920/unit.config.mjs",
+      "sha256": "94e99d61611a1bae64efba94bb7e9eba5b8091797f03cea5f1fac15f61d79d11"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "tests": null,
+  "reportError": null,
+  "execution": {
+    "exitCode": 0,
+    "durationMs": 222
+  },
+  "runtimeUnchanged": true,
+  "stageAccepted": false,
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "releaseReady": false
+}

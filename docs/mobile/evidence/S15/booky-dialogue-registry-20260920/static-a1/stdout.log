@@ -1,0 +1,2 @@
+src/host/bookyDialogueDrafts.test.ts(42,26): error TS2550: Property 'replaceAll' does not exist on type 'string'. Do you need to change your target library? Try changing the 'lib' compiler option to 'es2021' or later.
+src/host/bookyDialogueDrafts.test.ts(43,26): error TS2550: Property 'replaceAll' does not exist on type 'string'. Do you need to change your target library? Try changing the 'lib' compiler option to 'es2021' or later.

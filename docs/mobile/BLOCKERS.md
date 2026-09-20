@@ -1,3 +1,11 @@
+<!-- s15-booky-dialogue-20260920:begin -->
+Source 35e01e02: strict adult dialogue validation and inventory for 12 existing RU/EN support messages. All remain not-reviewed; no production dialogue is approved or enabled.
+52 unit tests, TypeScript and fixed inventory passed. 1576 existing files remain exact. Prior PWA a44b4440 / Android-dev 5c3287a7 were rehashed with their original source identity; new registry code is unimported and not included in those builds.
+Only S15.PLANETKA-003 and global PLANETKA-003 advance OPEN to IN_PROGRESS. Stage counts remain 3 complete, 12 in progress, 26 unstarted; S03.acceptance first unresolved; releaseReady:false.
+Evidence: evidence/S15/booky-dialogue-registry-20260920/result.json.
+Continue S15 with guarded, versioned literary journey definitions using canonical public country/writer/work IDs and reviewed dialogue references. Resolve public visibility and precise entity relations before exposing a route; unknown policy, missing or unreviewed content stays unavailable. Keep production journeys draft until content and rights are genuinely reviewed. Then expand the dialogue inventory to existing navigation and contextual lines. Preserve adult progress, explicit resume/reset, offline recovery and all canonical scene ownership. Child profiles, age-adaptive full journeys, reviewed text/audio, installed-device, accessibility, iOS and release acceptance remain pending. S03.acceptance remains first unresolved.
+<!-- s15-booky-dialogue-20260920:end -->
+
 <!-- s15-booky-progress-20260920:begin -->
 Source 5e6eb767: adult Booky preserves explicitly acknowledged navigation steps in schema v2. V1 migration infers no progress; hiding keeps progress and cursor; restore stays closed; future data needs confirmed reset before replacement.
 256 focused tests, TypeScript, 3 actual-App Chrome cases, 3 inspected views and local PWA a44b4440 / Android-dev 5c3287a7 bind this source. Built-PWA coverage remains offline/download smoke; 86 protected inputs stay exact.

@@ -3,9 +3,9 @@
   "repository": "Kosyat128/probpera-literary-map",
   "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
-  "headSha": "5e6eb7676367f71731fa84f9b2e69249c48bcb06",
+  "headSha": "35e01e02b377c3cd05cc2d6dc7c137a54f528297",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-20T07:56:37.475Z",
+  "updatedAt": "2026-09-20T08:18:03.854Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -2612,11 +2612,13 @@
         },
         {
           "id": "S15.PLANETKA-003",
-          "status": "OPEN",
-          "evidence": [],
-          "commit": null,
-          "lastValidatedAt": null,
-          "notes": "Scripted reviewed sourced dialogue. Implement the original guide and shared policy before complete English dialogue/audio validation."
+          "status": "IN_PROGRESS",
+          "evidence": [
+            "docs/mobile/evidence/S15/booky-dialogue-registry-20260920/result.json"
+          ],
+          "commit": "35e01e02b377c3cd05cc2d6dc7c137a54f528297",
+          "lastValidatedAt": "2026-09-20T08:18:03.854Z",
+          "notes": "Scripted reviewed sourced dialogue. Implement the original guide and shared policy before complete English dialogue/audio validation. Adult dialogue registry infrastructure now validates version/checksum, context, age, entity, review and rights boundaries. Twelve existing support-copy locale records remain not-reviewed and unavailable through the reviewed-dialogue resolver. 52 tests, TypeScript and the fixed-inventory audit passed. Existing runtime remains unchanged; this does not complete reviewed dialogue or child/narration scope."
         },
         {
           "id": "S15.PLANETKA-004",
@@ -2710,7 +2712,10 @@
         "node docs/mobile/evidence/S15/booky-semantic-progress-20260920/check.mjs browser a4",
         "node docs/mobile/evidence/S15/booky-semantic-progress-20260920/run-pwa.mjs 5e6eb7676367f71731fa84f9b2e69249c48bcb06",
         "pwsh -File docs/mobile/evidence/S15/booky-semantic-progress-20260920/build-android.ps1 5e6eb7676367f71731fa84f9b2e69249c48bcb06",
-        "node docs/mobile/evidence/S15/booky-semantic-progress-20260920/preserve-android.mjs 5e6eb7676367f71731fa84f9b2e69249c48bcb06"
+        "node docs/mobile/evidence/S15/booky-semantic-progress-20260920/preserve-android.mjs 5e6eb7676367f71731fa84f9b2e69249c48bcb06",
+        "node docs/mobile/evidence/S15/booky-dialogue-registry-20260920/check.mjs unit a2",
+        "node docs/mobile/evidence/S15/booky-dialogue-registry-20260920/check.mjs static a2",
+        "node docs/mobile/evidence/S15/booky-dialogue-registry-20260920/check.mjs inventory a2"
       ],
       "artifacts": [
         "docs/mobile/evidence/S15/planetka-visual-mode-20260920/entry.json",
@@ -2761,7 +2766,15 @@
         "docs/mobile/evidence/S15/booky-semantic-progress-20260920/static-a4/result.json",
         "docs/mobile/evidence/S15/booky-semantic-progress-20260920/browser-a4/result.json",
         "docs/mobile/evidence/S15/booky-semantic-progress-20260920/pwa-a1/result.json",
-        "docs/mobile/evidence/S15/booky-semantic-progress-20260920/android-a1/result.json"
+        "docs/mobile/evidence/S15/booky-semantic-progress-20260920/android-a1/result.json",
+        "docs/mobile/evidence/S15/booky-dialogue-registry-20260920/entry.json",
+        "docs/mobile/evidence/S15/booky-dialogue-registry-20260920/result.json",
+        "docs/mobile/evidence/S15/booky-dialogue-registry-20260920/README.md",
+        "docs/mobile/evidence/S15/booky-dialogue-registry-20260920/source-manifests/530e8999e1e0cf0c.json",
+        "docs/mobile/evidence/S15/booky-dialogue-registry-20260920/inventory-a2/inventory.json",
+        "docs/mobile/evidence/S15/booky-dialogue-registry-20260920/unit-a2/result.json",
+        "docs/mobile/evidence/S15/booky-dialogue-registry-20260920/static-a2/result.json",
+        "docs/mobile/evidence/S15/booky-dialogue-registry-20260920/inventory-a2/result.json"
       ],
       "externalBlockers": []
     },
@@ -11122,7 +11135,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Continue S15 with a draft and review-aware bilingual dialogue registry for existing adult navigation and support: record provenance, version and review status; fail closed for future factual or child lines. Then prepare guarded canonical literary journey definitions. Do not enable child scenarios or claim reviewed text. Keep versioned adult progress, explicit resume/reset, future-record protection, offline/error recovery and canonical scene ownership intact. Full literary/educational journeys, child scenarios, reviewed dialogue/audio, screen-reader, installed-device/performance, iOS and release acceptance remain pending. S03.acceptance remains first unresolved.",
+    "nextAction": "Continue S15 with guarded, versioned literary journey definitions using canonical public country/writer/work IDs and reviewed dialogue references. Resolve public visibility and precise entity relations before exposing a route; unknown policy, missing or unreviewed content stays unavailable. Keep production journeys draft until content and rights are genuinely reviewed. Then expand the dialogue inventory to existing navigation and contextual lines. Preserve adult progress, explicit resume/reset, offline recovery and all canonical scene ownership. Child profiles, age-adaptive full journeys, reviewed text/audio, installed-device, accessibility, iOS and release acceptance remain pending. S03.acceptance remains first unresolved.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -11198,7 +11211,8 @@
       "docs/mobile/evidence/S15/booky-live-character-20260920/result.json",
       "docs/mobile/evidence/S15/booky-resume-preference-20260920/result.json",
       "docs/mobile/evidence/S15/booky-offline-help-20260920/result.json",
-      "docs/mobile/evidence/S15/booky-semantic-progress-20260920/result.json"
+      "docs/mobile/evidence/S15/booky-semantic-progress-20260920/result.json",
+      "docs/mobile/evidence/S15/booky-dialogue-registry-20260920/result.json"
     ],
     "commands": [
       "node scripts/mobile/verify-requirements.mjs",
@@ -11244,7 +11258,8 @@
       "S15 live Mr. Booky: 3 model/pose/resource cases, TypeScript, one actual-App Chrome case, 4 inspected views and exact local PWA/Android artifacts. Protected App/controller/globe sources unchanged; failed a1 preserved. Child/art/device/release acceptance remains open.",
       "S15 adult Booky preference/resume: 206 focused cases, TypeScript, one actual-App browser case, 3 inspected views and bound local PWA/Android artifacts. Preserve earlier failed attempts. PLANETKA-008 is IN_PROGRESS only; child/literary/migration/art/device/release gates stay open.",
       "S15 adult Booky offline/error helper: 114 focused cases, TypeScript, 5 actual-App browser cases, 5 inspected views and bound local PWA/Android artifacts. Preserve browser-a1 cached-import and browser-a2 language-control-overlap failures. PLANETKA-005 is IN_PROGRESS only; all child/literary/art/device/release gates stay open.",
-      "S15 adult Booky semantic progress: schema v2, explicit step acknowledgement, hide/reload/resume, confirmed reset and future-record protection. 256 tests, TypeScript, 3 actual-App Chrome cases and 3 inspected views bind preserved local PWA/Android. PLANETKA-008 remains IN_PROGRESS; literary/child/journey/review/device/release gates stay open."
+      "S15 adult Booky semantic progress: schema v2, explicit step acknowledgement, hide/reload/resume, confirmed reset and future-record protection. 256 tests, TypeScript, 3 actual-App Chrome cases and 3 inspected views bind preserved local PWA/Android. PLANETKA-008 remains IN_PROGRESS; literary/child/journey/review/device/release gates stay open.",
+      "S15 dialogue registry boundary and fixed inventory of 12 RU/EN support drafts: zero reviewed/available records, existing runtime unchanged. Retained builds still bind prior source 5e6eb767. Continue canonical journey definitions without inferring content, child or rights approval."
     ]
   },
   "requirementsHash": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732",
@@ -13145,6 +13160,14 @@
       "sha256": "11fd0094d8e4d16b4ab1eb498a4608be348046d1660a200d64ea8604d67630f8",
       "sourceCommit": "5e6eb7676367f71731fa84f9b2e69249c48bcb06",
       "status": "ADULT_BOOKY_SEMANTIC_PROGRESS_SCOPED_VALIDATION",
+      "stageAccepted": false,
+      "releaseReady": false
+    },
+    "s15BookyDialogueRegistry": {
+      "path": "docs/mobile/evidence/S15/booky-dialogue-registry-20260920/result.json",
+      "sha256": "ec7652b36a4af91c06b30c6c81cf1e8c4b3a30c07f37784789ec73e4352bad87",
+      "sourceCommit": "35e01e02b377c3cd05cc2d6dc7c137a54f528297",
+      "status": "ADULT_BOOKY_DIALOGUE_REGISTRY_BOUNDARY_VALIDATED",
       "stageAccepted": false,
       "releaseReady": false
     }

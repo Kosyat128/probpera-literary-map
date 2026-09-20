@@ -1,0 +1,203 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-20T08:18:03.854Z",
+  "stage": "S15",
+  "status": "ADULT_BOOKY_DIALOGUE_REGISTRY_BOUNDARY_VALIDATED",
+  "sourceCommit": "35e01e02b377c3cd05cc2d6dc7c137a54f528297",
+  "pass": true,
+  "entry": {
+    "path": "docs/mobile/evidence/S15/booky-dialogue-registry-20260920/entry.json",
+    "sha256": "37d6326c0923f02b2ca91da0f132bb29c69f9ad2a242c3a3f5dc89d8a2f6ec64"
+  },
+  "previous": {
+    "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/result.json",
+    "sha256": "11fd0094d8e4d16b4ab1eb498a4608be348046d1660a200d64ea8604d67630f8"
+  },
+  "checkpointHelper": {
+    "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-dialogue-registry-20260920\\checkpoint.mjs",
+    "sha256": "624cfea958e5fc4abea973d66ef95297d1ee85e3ef5da59fe2ff80b9e4cab687"
+  },
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-dialogue-registry-20260920/source-manifests/530e8999e1e0cf0c.json",
+    "sha256": "530e8999e1e0cf0c4b284b594793b03aae6fb1b016804f3d492234156ae4a274",
+    "fileCount": 1581
+  },
+  "runs": {
+    "unit": {
+      "path": "docs/mobile/evidence/S15/booky-dialogue-registry-20260920/unit-a2/result.json",
+      "sha256": "ef5b3c69213eb984e310c834b309fffd17da969a15e053f3fa737fb6053e8484",
+      "tests": {
+        "passed": 52,
+        "failed": 0,
+        "skipped": 0
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-dialogue-registry-20260920/unit-a2/execution.json",
+        "sha256": "3f104a491ec49a004622ce112b574221242452db6a78a71dc220c5935952c3e5"
+      }
+    },
+    "static": {
+      "path": "docs/mobile/evidence/S15/booky-dialogue-registry-20260920/static-a2/result.json",
+      "sha256": "7662d30f0d97058f117f9f43abdd6821a620d18dc637393fda9813654a8253b2",
+      "tests": null,
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-dialogue-registry-20260920/static-a2/execution.json",
+        "sha256": "a75c7411372a7644124d82f54b10914bc5cedc90110a450f9fd48698e23f5915"
+      }
+    },
+    "inventory": {
+      "path": "docs/mobile/evidence/S15/booky-dialogue-registry-20260920/inventory-a2/result.json",
+      "sha256": "1f8ee124e1f5e253550c5df398fb4c7eab3001e2e23d17dc12755ad112f2af7d",
+      "tests": null,
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-dialogue-registry-20260920/inventory-a2/execution.json",
+        "sha256": "c2a9fafcb21e9f09e36cf4a00db8cb5989da453c51a0723ceabca72c85a3508e"
+      }
+    }
+  },
+  "earlierAttempts": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-dialogue-registry-20260920/unit-a1/result.json",
+      "sha256": "0ca8bfc61d8c41b21468a3a4116174c764f1656347595dd7aac0a7187353be9a",
+      "mode": "unit",
+      "attempt": "a1",
+      "pass": true,
+      "tests": {
+        "passed": 52,
+        "failed": 0,
+        "skipped": 0
+      },
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-dialogue-registry-20260920/source-manifests/0cd798828ae3cd72.json",
+        "sha256": "0cd798828ae3cd721df08fba19e8d4a6827c6c55ff8e1d2843c66dc639d58c82",
+        "fileCount": 1581
+      },
+      "reason": "Original report retained. Only the selected final source-bound reports support current validation."
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-dialogue-registry-20260920/static-a1/result.json",
+      "sha256": "1e68235f314f008067bedd350d96b2929597bdef4bb9de253f5203370c812a85",
+      "mode": "static",
+      "attempt": "a1",
+      "pass": false,
+      "tests": null,
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-dialogue-registry-20260920/source-manifests/0cd798828ae3cd72.json",
+        "sha256": "0cd798828ae3cd721df08fba19e8d4a6827c6c55ff8e1d2843c66dc639d58c82",
+        "fileCount": 1581
+      },
+      "reason": "Original report retained. Only the selected final source-bound reports support current validation."
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-dialogue-registry-20260920/inventory-a1/result.json",
+      "sha256": "a292c002eabb0204dd6c0919207f4a937af7583af278d787f512bd38ba490678",
+      "mode": "inventory",
+      "attempt": "a1",
+      "pass": true,
+      "tests": null,
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-dialogue-registry-20260920/source-manifests/0cd798828ae3cd72.json",
+        "sha256": "0cd798828ae3cd721df08fba19e8d4a6827c6c55ff8e1d2843c66dc639d58c82",
+        "fileCount": 1581
+      },
+      "reason": "Original report retained. Only the selected final source-bound reports support current validation."
+    }
+  ],
+  "units": {
+    "path": "docs/mobile/evidence/S15/booky-dialogue-registry-20260920/unit-a2/vitest.json",
+    "sha256": "0e5805a8f8af356f3e439984f018fbedf5b6a0dad5834f93378bedffa5c4d1a7"
+  },
+  "unitCount": 52,
+  "inventory": {
+    "path": "docs/mobile/evidence/S15/booky-dialogue-registry-20260920/inventory-a2/inventory.json",
+    "sha256": "1c0afa1e81e51a5192b04ac496c3862fa53a9c61e8f26542f025e333107c52c2"
+  },
+  "recordCount": 12,
+  "notReviewedCount": 12,
+  "approvedCount": 0,
+  "availableAdultCount": 0,
+  "availableChildCount": 0,
+  "unchangedExistingFileCount": 1576,
+  "existingRuntimeInputsUnchanged": true,
+  "retainedBuilds": [
+    {
+      "kind": "pwa",
+      "priorResult": {
+        "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/pwa-a1/result.json",
+        "sha256": "bc6e8686c3a5ed76a6c6823b778dfc6b2cbca03067e5d66fcef0882380405261"
+      },
+      "buildId": "a44b4440754941dd069c63e6678f26ad26e81cf87bf0f7d4935b577b7047d4e2",
+      "sourceCommit": "5e6eb7676367f71731fa84f9b2e69249c48bcb06",
+      "artifactManifest": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-progress/pwa-a44b4440/artifact.json",
+        "sha256": "826856e70a954370b2a91404fee30f4ce24d277c8061690b43da00b209a23b02"
+      },
+      "runtimeSourceFileCount": 1063,
+      "apk": null,
+      "runtimeSourceInputsUnchanged": true,
+      "runtimePayloadRehashed": true,
+      "newRegistryCodeIncluded": false,
+      "rebuilt": false,
+      "sourceFileCount": 1063,
+      "runtimeFileCount": 1426
+    },
+    {
+      "kind": "android",
+      "priorResult": {
+        "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/android-a1/result.json",
+        "sha256": "c3a58641570c028f1c0b0943ede76b453d2dfaaaea2ac6511bd50dc3750d11c5"
+      },
+      "buildId": "5c3287a74998f40329309d6b4294cff09362732a29e02ab3f577741a03a5c69c",
+      "sourceCommit": "5e6eb7676367f71731fa84f9b2e69249c48bcb06",
+      "artifactManifest": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-progress/android-5c3287a7/runtime/artifact.json",
+        "sha256": "43f0832314602c58bc21be130712d87c726e6f79e2448f3e9758aa8124c726b9"
+      },
+      "runtimeSourceFileCount": 1062,
+      "apk": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-progress/android-5c3287a7/app-dev-debug.apk",
+        "bytes": 70289891,
+        "sha256": "e786dfcc8274e4d496f0a2e2d8dbdda9078cf57ced7ce79bae9f0933277b7019"
+      },
+      "runtimeSourceInputsUnchanged": true,
+      "runtimePayloadRehashed": true,
+      "newRegistryCodeIncluded": false,
+      "rebuilt": false,
+      "sourceFileCount": 1062,
+      "runtimeFileCount": 1407
+    }
+  ],
+  "buildsRebuilt": false,
+  "registryIncludedInBuilds": false,
+  "browserRerun": false,
+  "runtimeWiringImplemented": false,
+  "criterionChanges": [
+    {
+      "id": "S15.PLANETKA-003",
+      "from": "OPEN",
+      "to": "IN_PROGRESS"
+    }
+  ],
+  "requirementChanges": [
+    {
+      "id": "PLANETKA-003",
+      "from": "OPEN",
+      "to": "IN_PROGRESS"
+    }
+  ],
+  "firstUnresolved": "S03.acceptance",
+  "nextAction": "Continue S15 with guarded, versioned literary journey definitions using canonical public country/writer/work IDs and reviewed dialogue references. Resolve public visibility and precise entity relations before exposing a route; unknown policy, missing or unreviewed content stays unavailable. Keep production journeys draft until content and rights are genuinely reviewed. Then expand the dialogue inventory to existing navigation and contextual lines. Preserve adult progress, explicit resume/reset, offline recovery and all canonical scene ownership. Child profiles, age-adaptive full journeys, reviewed text/audio, installed-device, accessibility, iOS and release acceptance remain pending. S03.acceptance remains first unresolved.",
+  "limitations": [
+    "The registry and draft inventory are not connected to the application renderer. Existing adult interface help stays unchanged.",
+    "All twelve existing RU/EN support messages remain not-reviewed. Checksums prove consistency, not editorial approval or source truth.",
+    "Approved test fixtures are synthetic and confer no production review, license or child approval.",
+    "The preserved PWA/Android artifacts retain their prior source identity. Their existing source inputs and copied payloads are rehashed; the new unimported registry is not included.",
+    "No child journeys, narration playback, content publication, device, accessibility, iOS or release acceptance is claimed."
+  ],
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "narrationEnabled": false,
+  "stageAccepted": false,
+  "productionActionsPerformed": false,
+  "releaseReady": false
+}

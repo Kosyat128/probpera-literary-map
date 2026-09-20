@@ -4848,12 +4848,22 @@
       "platforms": [
         "all"
       ],
-      "status": "OPEN",
-      "implementationFiles": [],
-      "tests": [],
-      "evidence": [],
-      "commit": "",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+      "status": "IN_PROGRESS",
+      "implementationFiles": [
+        "src/host/bookyDialogueRegistry.ts",
+        "src/host/bookyDialogueDrafts.ts",
+        "scripts/mobile/verify-booky-dialogue-drafts.mjs"
+      ],
+      "tests": [
+        "src/host/bookyDialogueRegistry.test.ts",
+        "src/host/bookyDialogueDrafts.test.ts",
+        "src/host/bookySupport.test.ts"
+      ],
+      "evidence": [
+        "docs/mobile/evidence/S15/booky-dialogue-registry-20260920/result.json"
+      ],
+      "commit": "35e01e02b377c3cd05cc2d6dc7c137a54f528297",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion. Adult dialogue registry infrastructure now validates version/checksum, context, age, entity, review and rights boundaries. Twelve existing support-copy locale records remain not-reviewed and unavailable through the reviewed-dialogue resolver. 52 tests, TypeScript and the fixed-inventory audit passed. Existing runtime remains unchanged; this does not complete reviewed dialogue or child/narration scope."
     },
     {
       "id": "PLANETKA-004",
