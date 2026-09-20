@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "mode": "unit",
+  "attempt": "a1",
+  "startedAt": "2026-09-20T01:10:42.305Z",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S11/reading-library-offline-20260920/source-manifests/e234661aebfee3a7.json",
+    "sha256": "e234661aebfee3a7944bdb50b9b264d5fd12e0a860cd94678159d52323fa5727",
+    "fileCount": 69
+  },
+  "checkInputs": [
+    {
+      "path": "docs/mobile/evidence/S11/reading-library-offline-20260920/check.mjs",
+      "sha256": "623ca14b549a4df1bfdddbc0b92d6201a21be6f7c61c761dd61403d92478ce1e"
+    },
+    {
+      "path": "docs/mobile/evidence/S11/reading-library-offline-20260920/entry.json",
+      "sha256": "723e29cb187d5183e2df0e4c3233045afc505eec51b274715c29594faef7a6d6"
+    },
+    {
+      "path": "docs/mobile/evidence/S11/reading-library-offline-20260920/unit.config.mjs",
+      "sha256": "1572b58709329c9d4a487fc4afac4644529f3e2a970a7cb444f1b94b73f5091c"
+    },
+    {
+      "path": "src/hooks/useReadingLibrary.test.ts",
+      "sha256": "f16f3fba0e183ca2c1af9f6efa38a1426a28960541ebf2a351682d7c5ad13961"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "tests": {
+    "passed": 15,
+    "failed": 1,
+    "skipped": 0
+  },
+  "reportError": "The expression evaluated to a falsy value:\n\n  assert.ok(cases.every(item => item.status === 'passed'))\n",
+  "pass": false,
+  "execution": {
+    "exitCode": 1,
+    "durationMs": 1780
+  },
+  "stageAccepted": false,
+  "artAccepted": false,
+  "releaseReady": false
+}

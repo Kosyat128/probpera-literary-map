@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-20T01:16:58.464Z",
+  "sourceCommit": "de3af847ff693bdb965b3c67fef2aebe600766ff",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S11/reading-library-offline-20260920/source-manifests/d17361d67287b4ec.json",
+    "sha256": "d17361d67287b4ec70c0a3832e9f4c18687e6caae49d038f5533f9ac51d34e70",
+    "fileCount": 69
+  },
+  "sourceFixtureCapture": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s11-reading-offline/browser-a1/reading-library-reading-li-e2761-and-isolates-adult-accounts/reading-library-result.json",
+    "sha256": "3a11f90e3b5ee2c396813238626cee4a2fa9b99c8d4a5a815ce8c92e44aa36a0"
+  },
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s11-reading-offline/browser-a1/reading-library-reading-li-e2761-and-isolates-adult-accounts/reading-library-pending-ru-390.png",
+      "sha256": "5d8c5eeaa17f789429710e512113f8b32343d007d33066b73b15662e8ca8381c",
+      "inspected": true,
+      "reviewer": "/root",
+      "findings": [
+        "Actual RU sync notice fits the 390 px fixture with readable wrapped text and a visible retry button.",
+        "The notice accurately distinguishes confirmed device storage from pending account sync."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/14/01a09fad-fda7-76c3-99f3-acb7a06e1cbc/s11-reading-offline/browser-a1/reading-library-reading-li-e2761-and-isolates-adult-accounts/reading-library-pending-en-1440.png",
+      "sha256": "ffc3b4f6cd48aabfcb1ebaa60c0b249ba572b2d5039b87d84ca6d7f8a5f15066",
+      "inspected": true,
+      "reviewer": "/root",
+      "findings": [
+        "Actual EN sync notice is readable on the 1440 px fixture; the retry action fits on the same row.",
+        "This is the actual notice component in a controlled hook fixture, not a full application or scene capture."
+      ]
+    }
+  ],
+  "actualFullApp": false,
+  "actualGlobe": false,
+  "artAccepted": false,
+  "childApproved": false,
+  "userRealismRequirementSatisfied": false,
+  "releaseReady": false,
+  "notes": [
+    "The controlled transport verifies outgoing intent and account isolation without writing to a live server.",
+    "Earlier unit-a1 found a real own-storage normalization race; a2 verifies the corrected raw identity and external pending comparison.",
+    "One existing ArticleReader trailing space was byte-verified against the prior commit and retained; tested source bytes were not normalized after validation."
+  ]
+}

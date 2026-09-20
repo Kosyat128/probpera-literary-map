@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "mode": "static",
+  "attempt": "a2",
+  "startedAt": "2026-09-20T01:13:53.896Z",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S11/reading-library-offline-20260920/source-manifests/d17361d67287b4ec.json",
+    "sha256": "d17361d67287b4ec70c0a3832e9f4c18687e6caae49d038f5533f9ac51d34e70",
+    "fileCount": 69
+  },
+  "checkInputs": [
+    {
+      "path": "docs/mobile/evidence/S11/reading-library-offline-20260920/check.mjs",
+      "sha256": "623ca14b549a4df1bfdddbc0b92d6201a21be6f7c61c761dd61403d92478ce1e"
+    },
+    {
+      "path": "docs/mobile/evidence/S11/reading-library-offline-20260920/entry.json",
+      "sha256": "723e29cb187d5183e2df0e4c3233045afc505eec51b274715c29594faef7a6d6"
+    },
+    {
+      "path": "src/hooks/useReadingLibrary.test.ts",
+      "sha256": "a562d0037097ed33a2027736fcdbff2661d5a1872b984412e51e13cf425db3c1"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "tests": null,
+  "reportError": null,
+  "pass": true,
+  "execution": {
+    "exitCode": 0,
+    "durationMs": 24100
+  },
+  "stageAccepted": false,
+  "artAccepted": false,
+  "releaseReady": false
+}

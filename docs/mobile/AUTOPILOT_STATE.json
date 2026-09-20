@@ -3,9 +3,9 @@
   "repository": "Kosyat128/probpera-literary-map",
   "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
-  "headSha": "3b3ad09c6a5987bad5f07416a9065e5682828554",
+  "headSha": "de3af847ff693bdb965b3c67fef2aebe600766ff",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-20T00:52:15.849Z",
+  "updatedAt": "2026-09-20T01:19:06.314Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -1736,13 +1736,14 @@
         },
         {
           "id": "S11.CONTENT-007",
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "evidence": [
-            "docs/mobile/evidence/S11/dossier-navigation-20260919/result.json"
+            "docs/mobile/evidence/S11/dossier-navigation-20260919/result.json",
+            "docs/mobile/evidence/S11/reading-library-offline-20260920/result.json"
           ],
-          "commit": null,
-          "lastValidatedAt": null,
-          "notes": "Airplane-mode core. Canonical export/display comes before offline integrity and reviewed English equivalence. Accessible dossier navigation and existing saved-book progress no longer depend on successful physical pagination. Exact semantic identities and account ownership fence late results. Focused source/browser evidence is separate from full offline/device acceptance."
+          "commit": "de3af847ff693bdb965b3c67fef2aebe600766ff",
+          "lastValidatedAt": "2026-09-20T01:19:06.314Z",
+          "notes": "Airplane-mode core. Canonical export/display comes before offline integrity and reviewed English equivalence. Accessible dossier navigation and existing saved-book progress no longer depend on successful physical pagination. Exact semantic identities and account ownership fence late results. Focused source/browser evidence is separate from full offline/device acceptance. Adult reading-library edits and deletion intents survive a document reload in a scoped local envelope and remain visible after remote failure. Two same-document consumers share retry state; guest data and dossier progress stay local. 16 hook cases, TypeScript and one real-Chrome hook/notice fixture with controlled remote transport bind local PWA/Android artifacts. Concurrent-tab read/modify/write is not atomic; distributed add-wins/conflict resolution and unabortable remote ordering remain open. Full App, actual network, native-device and full criterion acceptance are not established."
         },
         {
           "id": "S11.CONTENT-008",
@@ -1762,13 +1763,14 @@
         },
         {
           "id": "S11.CONTENT-009",
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "evidence": [
-            "docs/mobile/evidence/S11/reader-progress-20260919/result.json"
+            "docs/mobile/evidence/S11/reader-progress-20260919/result.json",
+            "docs/mobile/evidence/S11/reading-library-offline-20260920/result.json"
           ],
-          "commit": null,
-          "lastValidatedAt": null,
-          "notes": "Optional adult sync conflict policy. Canonical export/display comes before offline integrity and reviewed English equivalence. Previous saved optional versions now remain manageable after catalogue updates. Shared reader progress and favorites isolate adult identities and fence stale asynchronous results; focused local/browser ports pass. Actual production sync, complete content and criterion acceptance remain open."
+          "commit": "de3af847ff693bdb965b3c67fef2aebe600766ff",
+          "lastValidatedAt": "2026-09-20T01:19:06.314Z",
+          "notes": "Optional adult sync conflict policy. Canonical export/display comes before offline integrity and reviewed English equivalence. Previous saved optional versions now remain manageable after catalogue updates. Shared reader progress and favorites isolate adult identities and fence stale asynchronous results; focused local/browser ports pass. Actual production sync, complete content and criterion acceptance remain open. Adult reading-library edits and deletion intents survive a document reload in a scoped local envelope and remain visible after remote failure. Two same-document consumers share retry state; guest data and dossier progress stay local. 16 hook cases, TypeScript and one real-Chrome hook/notice fixture with controlled remote transport bind local PWA/Android artifacts. Concurrent-tab read/modify/write is not atomic; distributed add-wins/conflict resolution and unabortable remote ordering remain open. Full App, actual network, native-device and full criterion acceptance are not established."
         },
         {
           "id": "S11.MOD-029",
@@ -1921,7 +1923,13 @@
         "node docs/mobile/evidence/S11/optional-uninstall-20260919/run-checks.mjs unit a1",
         "node docs/mobile/evidence/S11/optional-uninstall-20260919/run-checks.mjs browser a1",
         "node node_modules/typescript/bin/tsc --noEmit",
-        "docs/mobile/evidence/S11/optional-uninstall-20260919/compile-android.ps1"
+        "docs/mobile/evidence/S11/optional-uninstall-20260919/compile-android.ps1",
+        "node docs/mobile/evidence/S11/reading-library-offline-20260920/check.mjs unit a2",
+        "node docs/mobile/evidence/S11/reading-library-offline-20260920/check.mjs static a2",
+        "node docs/mobile/evidence/S11/reading-library-offline-20260920/check.mjs browser a1",
+        "node docs/mobile/evidence/S11/reading-library-offline-20260920/run-pwa.mjs de3af847ff693bdb965b3c67fef2aebe600766ff",
+        "pwsh -File docs/mobile/evidence/S11/reading-library-offline-20260920/build-android.ps1 de3af847ff693bdb965b3c67fef2aebe600766ff",
+        "node docs/mobile/evidence/S11/reading-library-offline-20260920/preserve-android.mjs de3af847ff693bdb965b3c67fef2aebe600766ff"
       ],
       "artifacts": [
         "docs/mobile/evidence/S11/install-resume-20260914/entry.json",
@@ -1948,7 +1956,16 @@
         "docs/mobile/evidence/S11/globe-recovery-20260919/result.json",
         "docs/mobile/evidence/S11/staged-content-20260919/result.json",
         "docs/mobile/evidence/S11/download-inspection-20260919/result.json",
-        "docs/mobile/evidence/S11/dossier-navigation-20260919/result.json"
+        "docs/mobile/evidence/S11/dossier-navigation-20260919/result.json",
+        "docs/mobile/evidence/S11/reading-library-offline-20260920/entry.json",
+        "docs/mobile/evidence/S11/reading-library-offline-20260920/result.json",
+        "docs/mobile/evidence/S11/reading-library-offline-20260920/visual-review.json",
+        "docs/mobile/evidence/S11/reading-library-offline-20260920/source-manifests/d17361d67287b4ec.json",
+        "docs/mobile/evidence/S11/reading-library-offline-20260920/unit-a2/result.json",
+        "docs/mobile/evidence/S11/reading-library-offline-20260920/static-a2/result.json",
+        "docs/mobile/evidence/S11/reading-library-offline-20260920/browser-a1/result.json",
+        "docs/mobile/evidence/S11/reading-library-offline-20260920/pwa-a1/result.json",
+        "docs/mobile/evidence/S11/reading-library-offline-20260920/android-a1/result.json"
       ],
       "externalBlockers": []
     },
@@ -10915,7 +10932,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Continue the full application plan from the next bounded internal requirement. Preserve live foreground language refresh, confirmed-absence and explicit/saved-choice priority, one canonical language provider, the joint stand/background draft and existing scene. Reuse unchanged catalog/geometry/art evidence. Real Android system-language surfaces and installed-device behavior, full accessories/audio/catalog, child, screen-reader, art/lightmaps, iOS and release gates remain open; do not repeat valid checks of unchanged inputs.",
+    "nextAction": "Continue the full application plan from the next bounded internal requirement. Preserve durable account-scoped pending reading-library intent, local-only dossier progress, guest isolation and truthful retry/persistence status. Keep the existing scene, joint appearance draft and foreground locale priority. Full distributed sync/conflict resolution, concurrent-tab atomicity, unabortable remote ordering, actual network/native-device behavior, accessories/audio/catalog, child, screen-reader, art/lightmap, iOS and release gates remain open. Do not rerun unchanged geometry or historic checks.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -10979,7 +10996,8 @@
       "docs/mobile/evidence/S13/scene-inspection-20260920/result.json",
       "docs/mobile/evidence/S13/visual-refinement-20260920/result.json",
       "docs/mobile/evidence/S13/combined-preview-20260920/result.json",
-      "docs/mobile/evidence/S04/native-locale-20260920/result.json"
+      "docs/mobile/evidence/S04/native-locale-20260920/result.json",
+      "docs/mobile/evidence/S11/reading-library-offline-20260920/result.json"
     ],
     "commands": [
       "node scripts/mobile/verify-requirements.mjs",
@@ -11013,7 +11031,8 @@
       "S13 transient manuscript inspection: only the three selected controller cases, final TypeScript/Chrome interaction evidence and preserved source-bound PWA/Android builds are green. Unrelated suites were not rerun or counted; art, child, screen-reader and installed-device acceptance remain open.",
       "S13 visual refinement: only four selected geometry cases, TypeScript, one actual Chrome interaction, six isolated captures and preserved PWA/Android builds are current scoped evidence. Unchanged suites were not rerun or counted; no likeness, art, child, screen-reader, device or release acceptance.",
       "S13 combined preview: 22 controller cases, TypeScript, one selected actual Chrome case and source-bound PWA/Android builds. The second composition browser case and older background-storage fixture were not run. Geometry/art sources remain preserved; no whole accessories/audio/catalog, art, device or release acceptance.",
-      "S04 native locale: 170 cases across the four named suites, TypeScript, one actual-App Chrome case using controlled native language/lifecycle/preferences and local source-bound PWA/Android builds. Existing inventory/geometry/art evidence is reused by hash; real OS language surfaces, installed-device, whole-stage and release acceptance remain open."
+      "S04 native locale: 170 cases across the four named suites, TypeScript, one actual-App Chrome case using controlled native language/lifecycle/preferences and local source-bound PWA/Android builds. Existing inventory/geometry/art evidence is reused by hash; real OS language surfaces, installed-device, whole-stage and release acceptance remain open.",
+      "S11 reading-library offline: 16 cases in the hook suite, TypeScript, one real-Chrome hook/notice fixture with two consumers/reload and stubbed remote transport, and source-bound local PWA/Android builds. Twenty-four scene/locale sources stay unchanged. Historical Starter Set inventory retains its original hash with the changed hook explicitly listed; no inventory/art/geometry rerun or full App/native/network acceptance is claimed."
     ]
   },
   "requirementsHash": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732",
@@ -12810,6 +12829,14 @@
       "sha256": "904d5f2546a1a8ea7c06a520f39d108f0f560018c061027b207d9e2b5ac77e5b",
       "sourceCommit": "3b3ad09c6a5987bad5f07416a9065e5682828554",
       "status": "NATIVE_LOCALE_SCOPED_VALIDATION",
+      "stageAccepted": false,
+      "releaseReady": false
+    },
+    "s11ReadingLibraryOffline": {
+      "path": "docs/mobile/evidence/S11/reading-library-offline-20260920/result.json",
+      "sha256": "4881529fc8e4be32bb6c894377008b61ee8a369fdc8c181a4355ca5e41a46d61",
+      "sourceCommit": "de3af847ff693bdb965b3c67fef2aebe600766ff",
+      "status": "READING_LIBRARY_OFFLINE_SCOPED_VALIDATION",
       "stageAccepted": false,
       "releaseReady": false
     }

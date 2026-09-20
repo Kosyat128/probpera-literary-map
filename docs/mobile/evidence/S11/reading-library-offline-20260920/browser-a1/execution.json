@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S11/reading-library-offline-20260920/playwright.config.mjs"
+  ],
+  "exitCode": 0,
+  "durationMs": 3322,
+  "stdout": {
+    "path": "docs/mobile/evidence/S11/reading-library-offline-20260920/browser-a1/stdout.log",
+    "bytes": 195,
+    "sha256": "0aed859251aa4264bb9fda6232205423fb14cb4b10e5ccfa3c4b860f2ff368ef"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S11/reading-library-offline-20260920/browser-a1/stderr.log",
+    "bytes": 164,
+    "sha256": "2d70cd723a6c40a6b14d948b72ae2a97362bddcc15b8fedae85a544da4bfa57c"
+  }
+}

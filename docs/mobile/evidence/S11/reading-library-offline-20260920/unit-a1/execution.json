@@ -1,0 +1,22 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "--config=docs/mobile/evidence/S11/reading-library-offline-20260920/unit.config.mjs",
+    "--reporter=json",
+    "--outputFile=C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S11\\reading-library-offline-20260920\\unit-a1\\vitest.json"
+  ],
+  "exitCode": 1,
+  "durationMs": 1780,
+  "stdout": {
+    "path": "docs/mobile/evidence/S11/reading-library-offline-20260920/unit-a1/stdout.log",
+    "bytes": 187,
+    "sha256": "83b2a7cbf81ab0aaf0d1d2dfc3ed83c5b1f8368b4cfa90792ed8f5e50f688f98"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S11/reading-library-offline-20260920/unit-a1/stderr.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

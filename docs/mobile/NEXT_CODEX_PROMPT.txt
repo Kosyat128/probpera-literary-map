@@ -1,3 +1,12 @@
+<!-- s11-reading-library-offline-20260920:begin -->
+Source de3af847 preserves adult reading-library pending intent across reloads and remote failure, with scoped retry and local persistence status.
+16 cases in one hook suite, TypeScript, one real-Chrome hook/notice fixture and one PWA offline smoke pass. The fixture uses controlled remote transport, not the full App, globe, actual network or installed native device.
+Only S11.CONTENT-007 and S11.CONTENT-009 change OPEN to IN_PROGRESS. Twenty-four scene/locale sources are retained; historic Starter Set counts remain 29/12/0 plus three owner additions, with the changed hook hash explicit and no current whole-inventory claim.
+PWA fcd9d2e5; Android-dev c4ce3e18. Evidence: evidence/S11/reading-library-offline-20260920/result.json.
+Stages remain 3 complete, 11 in progress, 27 unstarted; first open S03.
+Continue the full application plan from the next bounded internal requirement. Preserve durable account-scoped pending reading-library intent, local-only dossier progress, guest isolation and truthful retry/persistence status. Keep the existing scene, joint appearance draft and foreground locale priority. Full distributed sync/conflict resolution, concurrent-tab atomicity, unabortable remote ordering, actual network/native-device behavior, accessories/audio/catalog, child, screen-reader, art/lightmap, iOS and release gates remain open. Do not rerun unchanged geometry or historic checks.
+<!-- s11-reading-library-offline-20260920:end -->
+
 <!-- s04-native-locale-20260920:begin -->
 Source 3b3ad09c adds foreground Android language refresh while retaining explicit/saved preference priority and the existing scene.
 170 cases in four selected suites, TypeScript, one controlled-native actual-App Chrome case and one PWA offline smoke pass. This is not an installed Android OS-language or system-settings test.
