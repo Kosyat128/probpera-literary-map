@@ -1,3 +1,11 @@
+<!-- s15-booky-journey-20260920:begin -->
+Source e59f9be0: guarded canonical journey model with versioned dialogue and policy boundaries. The model stays unimported; production journeys, child scenarios and age adaptation are not enabled or accepted.
+40 journey/registry unit tests and TypeScript passed. 1581 existing files remain exact. Retained PWA a44b4440 / Android-dev 5c3287a7 were rehashed against their original source 5e6eb767; no rebuild or new browser run is claimed.
+Only S15.PLANETKA-004 and global PLANETKA-004 advance OPEN to IN_PROGRESS. Stage counts remain 3 complete, 12 in progress, 26 unstarted; S03.acceptance first unresolved; releaseReady:false.
+Evidence: evidence/S15/booky-journey-boundary-20260920/result.json.
+Continue S15 by expanding the fixed, unreviewed RU/EN dialogue inventory for the two existing adult navigation routes and contextual guidance. Preserve exact copy provenance, versioned checksums and draft status. Then prepare guarded runtime integration with explicit public-entity, review and host-policy checks; missing or unreviewed content stays unavailable. Preserve all current adult navigation, semantic progress, explicit resume/reset, unsupported-save protection, offline recovery and canonical scene ownership. Do not automatically publish content or infer editorial, child, narration or age-adaptive journey approval. Full literary journeys, accessibility, installed-device/performance, iOS and release acceptance remain pending. S03.acceptance remains first unresolved.
+<!-- s15-booky-journey-20260920:end -->
+
 <!-- s15-booky-dialogue-20260920:begin -->
 Source 35e01e02: strict adult dialogue validation and inventory for 12 existing RU/EN support messages. All remain not-reviewed; no production dialogue is approved or enabled.
 52 unit tests, TypeScript and fixed inventory passed. 1576 existing files remain exact. Prior PWA a44b4440 / Android-dev 5c3287a7 were rehashed with their original source identity; new registry code is unimported and not included in those builds.

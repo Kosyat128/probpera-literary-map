@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-20T19:12:43.161Z",
+  "stage": "S15",
+  "status": "BOOKY_CANONICAL_JOURNEY_BOUNDARY_VALIDATED",
+  "sourceCommit": "e59f9be0f8bf632d0cd7b85dda08b9021c29aeaa",
+  "pass": true,
+  "entry": {
+    "path": "docs/mobile/evidence/S15/booky-journey-boundary-20260920/entry.json",
+    "sha256": "11668675fc2476fb23c8d8dc41001930d78512d9e51d9971852281961119275e"
+  },
+  "previous": {
+    "path": "docs/mobile/evidence/S15/booky-dialogue-registry-20260920/result.json",
+    "sha256": "ec7652b36a4af91c06b30c6c81cf1e8c4b3a30c07f37784789ec73e4352bad87"
+  },
+  "checkpointHelper": {
+    "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-journey-boundary-20260920\\checkpoint.mjs",
+    "sha256": "8367f7f47d08d800fe7a67e1e21292c7f6d37d4184bb4b40e113fa3247db2a32"
+  },
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-journey-boundary-20260920/source-manifests/8777f59a5f2b697f.json",
+    "sha256": "8777f59a5f2b697f6ef4c1dd30470becc8d629d2f290209a0dd94c14f618d895",
+    "fileCount": 1583
+  },
+  "runs": {
+    "unit": {
+      "path": "docs/mobile/evidence/S15/booky-journey-boundary-20260920/unit-a1/result.json",
+      "sha256": "9bf202bf3b8178e4e6450e5edbbc0e3ce727c29adaeed388a493ad7e6f9c4fc0",
+      "tests": {
+        "passed": 40,
+        "failed": 0,
+        "skipped": 0
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-journey-boundary-20260920/unit-a1/execution.json",
+        "sha256": "68a6ab9ac0eb07fed1b1f95cd757e5ff6cdf690db3e905f9631df6364e020881"
+      }
+    },
+    "static": {
+      "path": "docs/mobile/evidence/S15/booky-journey-boundary-20260920/static-a1/result.json",
+      "sha256": "9a3b2b14da48e5de68da587cb7590eb8cedbe0550bf0fb395014676dace286e8",
+      "tests": null,
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-journey-boundary-20260920/static-a1/execution.json",
+        "sha256": "8b5ec5d0e9f707d809eba362eb67192a7c06173527c8a7686d912baa9b95475a"
+      }
+    }
+  },
+  "earlierAttempts": [],
+  "units": {
+    "path": "docs/mobile/evidence/S15/booky-journey-boundary-20260920/unit-a1/vitest.json",
+    "sha256": "8f30c89a90c51f02d76f476d19c60859effa68db0d470015051a0c5e561fb0c5"
+  },
+  "unitCount": 40,
+  "unchangedExistingFileCount": 1581,
+  "existingRuntimeInputsUnchanged": true,
+  "retainedBuilds": [
+    {
+      "kind": "pwa",
+      "priorResult": {
+        "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/pwa-a1/result.json",
+        "sha256": "bc6e8686c3a5ed76a6c6823b778dfc6b2cbca03067e5d66fcef0882380405261"
+      },
+      "buildId": "a44b4440754941dd069c63e6678f26ad26e81cf87bf0f7d4935b577b7047d4e2",
+      "sourceCommit": "5e6eb7676367f71731fa84f9b2e69249c48bcb06",
+      "artifactManifest": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-progress/pwa-a44b4440/artifact.json",
+        "sha256": "826856e70a954370b2a91404fee30f4ce24d277c8061690b43da00b209a23b02"
+      },
+      "runtimeSourceFileCount": 1063,
+      "apk": null,
+      "runtimeSourceInputsUnchanged": true,
+      "runtimePayloadRehashed": true,
+      "newRegistryCodeIncluded": false,
+      "rebuilt": false,
+      "sourceFileCount": 1063,
+      "runtimeFileCount": 1426,
+      "newJourneyCodeIncluded": false
+    },
+    {
+      "kind": "android",
+      "priorResult": {
+        "path": "docs/mobile/evidence/S15/booky-semantic-progress-20260920/android-a1/result.json",
+        "sha256": "c3a58641570c028f1c0b0943ede76b453d2dfaaaea2ac6511bd50dc3750d11c5"
+      },
+      "buildId": "5c3287a74998f40329309d6b4294cff09362732a29e02ab3f577741a03a5c69c",
+      "sourceCommit": "5e6eb7676367f71731fa84f9b2e69249c48bcb06",
+      "artifactManifest": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-progress/android-5c3287a7/runtime/artifact.json",
+        "sha256": "43f0832314602c58bc21be130712d87c726e6f79e2448f3e9758aa8124c726b9"
+      },
+      "runtimeSourceFileCount": 1062,
+      "apk": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-progress/android-5c3287a7/app-dev-debug.apk",
+        "bytes": 70289891,
+        "sha256": "e786dfcc8274e4d496f0a2e2d8dbdda9078cf57ced7ce79bae9f0933277b7019"
+      },
+      "runtimeSourceInputsUnchanged": true,
+      "runtimePayloadRehashed": true,
+      "newRegistryCodeIncluded": false,
+      "rebuilt": false,
+      "sourceFileCount": 1062,
+      "runtimeFileCount": 1407,
+      "newJourneyCodeIncluded": false
+    }
+  ],
+  "buildsRebuilt": false,
+  "journeyIncludedInBuilds": false,
+  "browserRerun": false,
+  "runtimeWiringImplemented": false,
+  "criterionChanges": [
+    {
+      "id": "S15.PLANETKA-004",
+      "from": "OPEN",
+      "to": "IN_PROGRESS"
+    }
+  ],
+  "requirementChanges": [
+    {
+      "id": "PLANETKA-004",
+      "from": "OPEN",
+      "to": "IN_PROGRESS"
+    }
+  ],
+  "firstUnresolved": "S03.acceptance",
+  "nextAction": "Continue S15 by expanding the fixed, unreviewed RU/EN dialogue inventory for the two existing adult navigation routes and contextual guidance. Preserve exact copy provenance, versioned checksums and draft status. Then prepare guarded runtime integration with explicit public-entity, review and host-policy checks; missing or unreviewed content stays unavailable. Preserve all current adult navigation, semantic progress, explicit resume/reset, unsupported-save protection, offline recovery and canonical scene ownership. Do not automatically publish content or infer editorial, child, narration or age-adaptive journey approval. Full literary journeys, accessibility, installed-device/performance, iOS and release acceptance remain pending. S03.acceptance remains first unresolved.",
+  "limitations": [
+    "The journey model is not imported by the application. Existing navigation routes, progress, support and scene behavior stay unchanged.",
+    "This validates a model boundary, not a production journey inventory, age adaptation or educational effectiveness.",
+    "Synthetic reviewed fixtures prove admission checks only and confer no human review, license or child approval on production content.",
+    "Existing dialogue copy remains draft; no new production dialogue is approved, published or enabled.",
+    "Retained PWA/Android artifacts keep source 5e6eb767. Their original source inputs and copied payloads are rehashed; new unimported journey code is not included.",
+    "No new browser run, child scenario, narration playback, installed-device, accessibility, iOS or release acceptance is claimed."
+  ],
+  "ageAdaptiveJourneysAccepted": false,
+  "productionJourneysEnabled": false,
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "narrationEnabled": false,
+  "stageAccepted": false,
+  "productionActionsPerformed": false,
+  "releaseReady": false
+}

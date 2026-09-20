@@ -37,6 +37,14 @@ The active task is the user's V12 bilingual product request, based on canonical
 - Keep internal implementation gaps separate from external owner actions.
   Never transfer translation/programming tasks to the owner.
 
+<!-- s15-booky-journey-20260920:begin -->
+Latest checkpoint source e59f9be0: guarded canonical journey definitions validate public country/writer/work membership and relationships, exact versioned dialogue, independent review and explicit host policy. The model is unimported; production journeys, child scenarios and age adaptation remain unavailable.
+40 journey/registry tests and TypeScript passed. All 1,581 existing tracked implementation/test inputs remain exact. Retained PWA a44b4440 / Android-dev 5c3287a7 were rehashed against original source 5e6eb767; the new journey code is not included and no rebuild or browser run is claimed.
+Only S15.PLANETKA-004 and global PLANETKA-004 advance OPEN to IN_PROGRESS. Stage counts remain 3 complete, 12 in progress, 26 unstarted; first unresolved S03.acceptance; releaseReady:false. All former Planetka scope belongs to Booky.
+Evidence: docs/mobile/evidence/S15/booky-journey-boundary-20260920/result.json.
+Continue S15 by expanding the fixed, unreviewed RU/EN dialogue inventory for the two existing adult navigation routes and contextual guidance. Preserve exact copy provenance, versioned checksums and draft status. Then prepare guarded runtime integration with explicit public-entity, review and host-policy checks; missing or unreviewed content stays unavailable. Preserve all current adult navigation, semantic progress, explicit resume/reset, unsupported-save protection, offline recovery and canonical scene ownership. Do not automatically publish content or infer editorial, child, narration or age-adaptive journey approval. Full literary journeys, accessibility, installed-device/performance, iOS and release acceptance remain pending. S03.acceptance remains first unresolved. Earlier checkpoint notes below are retained as history.
+<!-- s15-booky-journey-20260920:end -->
+
 <!-- s15-booky-dialogue-20260920:begin -->
 Source 35e01e02: an unwired adult dialogue registry binds exact copy, version, age/context/entities, provenance and independent review receipts. Twelve existing RU/EN offline/error messages remain draft, with no approved production dialogue. Child and every narration-bearing record stay unavailable.
 52 focused tests, TypeScript and the immutable-inventory audit passed (a2). All 1,576 existing tracked implementation/test inputs remain exact. Prior PWA a44b4440 / Android-dev 5c3287a7 source and payloads were rehashed with their original 5e6eb767 source identity; the new registry is not imported or included in those artifacts. No fresh runtime/browser build is claimed. Initial static-a1 failed because tests used replaceAll outside ES2020; its original report and contemporaneous successful unit/inventory reports remain preserved.

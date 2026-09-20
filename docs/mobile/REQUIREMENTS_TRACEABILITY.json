@@ -4873,12 +4873,19 @@
       "platforms": [
         "all"
       ],
-      "status": "OPEN",
-      "implementationFiles": [],
-      "tests": [],
-      "evidence": [],
-      "commit": "",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion."
+      "status": "IN_PROGRESS",
+      "implementationFiles": [
+        "src/host/bookyJourney.ts"
+      ],
+      "tests": [
+        "src/host/bookyJourney.test.ts",
+        "src/host/bookyDialogueRegistry.test.ts"
+      ],
+      "evidence": [
+        "docs/mobile/evidence/S15/booky-journey-boundary-20260920/result.json"
+      ],
+      "commit": "e59f9be0f8bf632d0cd7b85dda08b9021c29aeaa",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion. Guarded versioned journey-model infrastructure now validates canonical public entity relations, dialogue references and explicit host policy before admission. 40 journey/registry tests and TypeScript passed. The model stays unimported and production journeys remain unavailable. Existing runtime is unchanged; this starts infrastructure for the requirement and does not complete age-adaptive or child journeys."
     },
     {
       "id": "PLANETKA-005",
