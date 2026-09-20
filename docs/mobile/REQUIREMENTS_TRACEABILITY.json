@@ -4852,18 +4852,22 @@
       "implementationFiles": [
         "src/host/bookyDialogueRegistry.ts",
         "src/host/bookyDialogueDrafts.ts",
-        "scripts/mobile/verify-booky-dialogue-drafts.mjs"
+        "scripts/mobile/verify-booky-dialogue-drafts.mjs",
+        "src/host/bookyNavigationDrafts.ts",
+        "scripts/mobile/verify-booky-navigation-drafts.mjs"
       ],
       "tests": [
         "src/host/bookyDialogueRegistry.test.ts",
         "src/host/bookyDialogueDrafts.test.ts",
-        "src/host/bookySupport.test.ts"
+        "src/host/bookySupport.test.ts",
+        "src/host/bookyNavigationDrafts.test.ts"
       ],
       "evidence": [
-        "docs/mobile/evidence/S15/booky-dialogue-registry-20260920/result.json"
+        "docs/mobile/evidence/S15/booky-dialogue-registry-20260920/result.json",
+        "docs/mobile/evidence/S15/booky-navigation-inventory-20260920/result.json"
       ],
-      "commit": "35e01e02b377c3cd05cc2d6dc7c137a54f528297",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion. Adult dialogue registry infrastructure now validates version/checksum, context, age, entity, review and rights boundaries. Twelve existing support-copy locale records remain not-reviewed and unavailable through the reviewed-dialogue resolver. 52 tests, TypeScript and the fixed-inventory audit passed. Existing runtime remains unchanged; this does not complete reviewed dialogue or child/narration scope."
+      "commit": "3b04e70ae0af163d07cd8f402c78049ac4a59243",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion. Adult dialogue registry infrastructure now validates version/checksum, context, age, entity, review and rights boundaries. Twelve existing support-copy locale records remain not-reviewed and unavailable through the reviewed-dialogue resolver. 52 tests, TypeScript and the fixed-inventory audit passed. Existing runtime remains unchanged; this does not complete reviewed dialogue or child/narration scope. The fixed adult RU/EN dialogue inventory now adds 14 existing navigation-step and 8 contextual records. All 22 new records and the 12 existing support records remain draft, with no approved or available reviewed dialogue. 55 focused tests, TypeScript and a source-bound inventory audit passed. Existing runtime remains unchanged; this extends PLANETKA-003 infrastructure without completing reviewed dialogue or child/narration scope."
     },
     {
       "id": "PLANETKA-004",

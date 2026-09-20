@@ -37,6 +37,14 @@ The active task is the user's V12 bilingual product request, based on canonical
 - Keep internal implementation gaps separate from external owner actions.
   Never transfer translation/programming tasks to the owner.
 
+<!-- s15-booky-navigation-inventory-20260920:begin -->
+Latest checkpoint source 3b04e70a: added fixed inventory of 22 existing adult RU/EN navigation and contextual records. With the 12 support records, all 34 remain draft and unavailable through the reviewed-dialogue resolver. The inventory remains unimported by the application.
+55 focused tests, TypeScript and the exact-source/copy inventory audit passed. All 1,583 prior implementation/test inputs remain exact. Retained PWA a44b4440 / Android-dev 5c3287a7 preserve source 5e6eb767; new inventory code is not included and no rebuild or browser run is claimed.
+PLANETKA-003 stays IN_PROGRESS; all stage/criterion statuses are unchanged. Stages remain 3 complete, 12 in progress, 26 unstarted; S03.acceptance first unresolved; releaseReady:false.
+Evidence: docs/mobile/evidence/S15/booky-navigation-inventory-20260920/result.json.
+Next concrete runtime step: suspend selected-country/writer acknowledgements and dependent Booky actions while the current country catalog is loading, idle or failed. The Recent History catalog retry can reload a populated archive while retaining selected objects. Preserve cached offline data when countryStatus is ready, all existing progress and explicit resume, general navigation and canonical scene ownership. Prove the regression with controller and actual-App checks, then build and preserve fresh local PWA/Android-dev artifacts. Continue reviewed-dialogue and journey integration afterward only with real host policy and review receipts; the host currently has no exact age/reading-level policy. Never fabricate those values or enable child/narration access. Earlier checkpoint notes below are retained as history.
+<!-- s15-booky-navigation-inventory-20260920:end -->
+
 <!-- s15-booky-journey-20260920:begin -->
 Latest checkpoint source e59f9be0: guarded canonical journey definitions validate public country/writer/work membership and relationships, exact versioned dialogue, independent review and explicit host policy. The model is unimported; production journeys, child scenarios and age adaptation remain unavailable.
 40 journey/registry tests and TypeScript passed. All 1,581 existing tracked implementation/test inputs remain exact. Retained PWA a44b4440 / Android-dev 5c3287a7 were rehashed against original source 5e6eb767; the new journey code is not included and no rebuild or browser run is claimed.

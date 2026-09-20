@@ -1,3 +1,11 @@
+<!-- s15-booky-navigation-inventory-20260920:begin -->
+Source 3b04e70a: fixed inventory of 22 existing RU/EN navigation/contextual dialogue records. Together with 12 unchanged support records, all 34 remain draft; no production dialogue is approved or enabled.
+55 focused unit tests, TypeScript and the inventory audit passed. 1583 existing files remain exact. Retained PWA a44b4440 / Android-dev 5c3287a7 were rehashed against their original source 5e6eb767; no rebuild or new browser run is claimed.
+S15.PLANETKA-003 and global PLANETKA-003 remain IN_PROGRESS. All stage and criterion statuses stay unchanged: 3 stages complete, 12 in progress, 26 unstarted; S03.acceptance first unresolved; releaseReady:false.
+Evidence: evidence/S15/booky-navigation-inventory-20260920/result.json.
+Continue S15 with guarded runtime integration of reviewed Booky dialogue and journey data. Keep the current adult navigation and support working while separating existing interface copy from reviewed literary content. Require explicit host policy, current public entity relations and exact approved dialogue versions before enabling new content; missing or unreviewed content stays unavailable. Preserve semantic progress, explicit resume/reset, unsupported-save protection, offline recovery and canonical scene ownership. The 34 inventoried RU/EN records remain draft and do not authorize publication, child access or narration. Full literary and age-adaptive journeys, reviewed text/audio, accessibility, installed-device/performance, iOS and release acceptance remain pending. S03.acceptance remains first unresolved.
+<!-- s15-booky-navigation-inventory-20260920:end -->
+
 <!-- s15-booky-journey-20260920:begin -->
 Source e59f9be0: guarded canonical journey model with versioned dialogue and policy boundaries. The model stays unimported; production journeys, child scenarios and age adaptation are not enabled or accepted.
 40 journey/registry unit tests and TypeScript passed. 1581 existing files remain exact. Retained PWA a44b4440 / Android-dev 5c3287a7 were rehashed against their original source 5e6eb767; no rebuild or new browser run is claimed.
