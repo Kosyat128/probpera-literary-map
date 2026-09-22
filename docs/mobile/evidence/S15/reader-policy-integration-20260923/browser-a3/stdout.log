@@ -1,0 +1,8 @@
+
+Running 2 tests using 1 worker
+
+
+
+[1/2] tests\pwa\booky-reader-policy.spec.mjs:481:1 › explicit adult profile survives locale and lifecycle while drafts and deletion never grant stale policy
+[2/2] tests\pwa\booky-reader-policy.spec.mjs:542:1 › future profiles are retained until confirmed deletion and failed deletion cannot restore admission
+  2 passed (21.8s)

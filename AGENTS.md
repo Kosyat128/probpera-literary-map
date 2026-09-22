@@ -37,6 +37,13 @@ The active task is the user's V12 bilingual product request, based on canonical
 - Keep internal implementation gaps separate from external owner actions.
   Never transfer translation/programming tasks to the owner.
 
+<!-- s15-reader-policy-integration-20260923:begin -->
+Latest source c5f8e80a: optional explicit local adult reader settings now feed confirmed age/reading level into the actual companion journey-admission boundary. Native/Web adapters verify preference readback; pending, failed, cleared or unsupported policy cannot grant admission. App-owned drafts and failed save/delete intent survive panel collapse, collection transitions and background; delete confirmation remains local to each form opening.
+353 focused tests, TypeScript and 2 actual-App Chrome scenarios passed on a3; 3 final images inspected. Fresh preserved PWA ec2dd9dd / Android-dev 91837818 bind c5f8e80a. Earlier checks, an incomplete a2 paint capture and intermediate builds remain preserved; built-PWA coverage is offline/download smoke, with no installed-device or iOS execution claimed.
+Evidence: docs/mobile/evidence/S15/reader-policy-integration-20260923/result.json. PLANETKA-004 and all stage/criterion statuses remain unchanged: 3 complete, 12 in progress, 26 unstarted; S03.acceptance first unresolved; releaseReady:false.
+Next: explicitly version-rebaseline the eight contextual navigation drafts whose whole-file Controls source hash changed; preserve all literal RU/EN copy, 14 route records, 12 support records and all draft/no-approval flags. Do not silently refresh hashes in a validator. Then continue guarded reviewed-dialogue/journey runtime integration using current host snapshots; no production reviewed journey, child profile or narration has been enabled. Preserve prior checkpoint history below.
+<!-- s15-reader-policy-integration-20260923:end -->
+
 <!-- s15-booky-journey-host-20260923:begin -->
 Latest source c8e7a2f4: added an unimported, stateless journey-node admission adapter. It requires exact route/version/checksum/node/host revision, explicit adult policy, current country readiness and ready books for complete work routes, and rereads the same immutable host snapshot after whole-route compilation. No admission is cached; callers must resolve again at interaction time and replace the registry after review changes.
 51 host/journey/registry tests and TypeScript passed on a1. All 1,588 prior implementation/test inputs remain exact. Preserved PWA dc0eb6c9 / Android-dev 53a91515 were rehashed against original source 259e93cc; the new adapter is not included, with no rebuild/browser run claimed.

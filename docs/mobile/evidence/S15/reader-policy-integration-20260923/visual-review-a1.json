@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "sourceCommit": "e1c97e5a5465327b4148ef365c9da16a76259628",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/reader-policy-integration-20260923/source-manifests/266ec6db4d272ef7.json",
+    "sha256": "266ec6db4d272ef7bce4920e9664ebc7ff4cd902fe8de17cf5b6c592c59a138f",
+    "fileCount": 1598
+  },
+  "actualAppCaptures": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-reader-policy/browser-a1/booky-reader-policy-explic-219f8-on-never-grant-stale-policy/booky-reader-policy.json",
+      "sha256": "0e315c025dbb9206729c1aac5305da19c548e12b74a98b21441fe04459873c8a"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-reader-policy/browser-a1/booky-reader-policy-future-298cd-on-cannot-restore-admission/booky-reader-policy.json",
+      "sha256": "2d84811964d2de68cfba580ba3cf0a0b7b18212a49eb4d12dea817cc2b4ddfc6"
+    }
+  ],
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-reader-policy/browser-a1/booky-reader-policy-explic-219f8-on-never-grant-stale-policy/reader-profile-saved-ru.png",
+      "sha256": "9e9ee41584098953bff3a88f0697d3bb107fb0957fb09a04ca215103ccd8d2aa",
+      "inspected": true,
+      "reviewer": "Codex root visual inspection",
+      "findings": [
+        "RU saved profile shows the explicitly entered age 30 and Simple reading level, saved status and delete control. The settings remain inside the existing scrollable Booky panel. The canonical globe remains visible."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-reader-policy/browser-a1/booky-reader-policy-explic-219f8-on-never-grant-stale-policy/reader-profile-draft-narrow-en.png",
+      "sha256": "75b7afe81703d8c1be35b417320712b19441560c81e7c350a56cba4446e05fb9",
+      "inspected": true,
+      "reviewer": "Codex root visual inspection",
+      "findings": [
+        "At 320px, EN labels, age 31 draft, level, Save and Delete fit the panel without horizontal overflow. Unsaved status is readable. Browser assertions separately confirm that saved age 30 remains effective and targets are at least 44px high and actionable."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-reader-policy/browser-a1/booky-reader-policy-future-298cd-on-cannot-restore-admission/reader-profile-delete-failed-en.png",
+      "sha256": "71496951e2ffde389a1ea3501964c572938561ac1a2ac205b619d286abae97cd",
+      "inspected": true,
+      "reviewer": "Codex root visual inspection",
+      "findings": [
+        "EN deletion failure is readable with a retry control; no saved status is displayed. Existing canonical globe and country panel remain visible. Preservation of future-version bytes and withheld policy are established by browser assertions."
+      ]
+    }
+  ],
+  "artAccepted": false,
+  "childApproved": false,
+  "reviewedDialogueAccepted": false,
+  "ageAdaptiveJourneysAccepted": false,
+  "releaseReady": false
+}

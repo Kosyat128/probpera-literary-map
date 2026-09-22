@@ -1,0 +1,2 @@
+import {defineConfig} from 'vitest/config';
+export default defineConfig({test:{environment:'node',maxWorkers:2,retry:0,include:["src/host/bookyReaderPolicy.test.ts","src/host/bookyReaderPolicyStore.test.ts","src/host/bookyJourneyCompanion.test.ts","src/host/bookyJourneyHost.test.ts","src/host/bookyJourney.test.ts","src/host/bookyDialogueRegistry.test.ts","src/host/HostPlatformServices.test.ts","src/platform/adapters/web/WebPlatformAdapter.test.ts","src/host/planetMascot.test.ts","src/host/planetMascotPersistence.test.ts"]}});

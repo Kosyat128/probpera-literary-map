@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/typescript/bin/tsc",
+    "--noEmit"
+  ],
+  "startedAt": "2026-09-22T22:41:07.858Z",
+  "exitCode": 0,
+  "durationMs": 28299,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/reader-policy-integration-20260923/static-a3/stdout.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/reader-policy-integration-20260923/static-a3/stderr.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

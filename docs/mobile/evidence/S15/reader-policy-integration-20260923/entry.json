@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-22T22:26:25.662Z",
+  "checkpoint": "f593dd1d71596d9309c46509b38d02f4c8ac9830",
+  "stage": "S15",
+  "previous": "docs/mobile/evidence/S15/booky-journey-host-20260923/result.json",
+  "previousCheckpointResult": {
+    "path": "docs/mobile/evidence/S15/booky-journey-host-20260923/result.json",
+    "sha256": "86a5d6ea7c1511ec1e22b26218dfa4afdbf5648abfbebcf191741a7c2e6b2a07"
+  },
+  "previousRuntime": "docs/mobile/evidence/S15/booky-catalog-scene-20260923/result.json",
+  "priorSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-journey-host-20260923/source-manifests/0d69c28e4a1bef8e.json",
+    "sha256": "0d69c28e4a1bef8ea54c0564e83de5129223bd6610e97db661be366e81a6c700",
+    "fileCount": 1590
+  },
+  "changedPaths": [
+    "src/App.tsx",
+    "src/host/HostPlatformServices.ts",
+    "src/host/HostPlatformServices.test.ts",
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/planetMascot.ts",
+    "src/platform/adapters/web/WebPlatformAdapter.ts",
+    "src/platform/adapters/web/WebPlatformAdapter.test.ts"
+  ],
+  "newImplementationFiles": [
+    "src/host/bookyReaderPolicy.ts",
+    "src/host/bookyReaderPolicy.test.ts",
+    "src/host/bookyReaderPolicyStore.ts",
+    "src/host/bookyReaderPolicyStore.test.ts",
+    "src/host/BookyReaderSettings.tsx",
+    "src/host/BookyReaderSettings.css",
+    "src/host/bookyJourneyCompanion.test.ts",
+    "tests/pwa/booky-reader-policy.spec.mjs"
+  ],
+  "newSourcePaths": [
+    "src/host/bookyReaderPolicy.ts",
+    "src/host/bookyReaderPolicy.test.ts",
+    "src/host/bookyReaderPolicyStore.ts",
+    "src/host/bookyReaderPolicyStore.test.ts",
+    "src/host/BookyReaderSettings.tsx",
+    "src/host/BookyReaderSettings.css",
+    "src/host/bookyJourneyCompanion.test.ts",
+    "tests/pwa/booky-reader-policy.spec.mjs"
+  ],
+  "unitFiles": [
+    "src/host/bookyReaderPolicy.test.ts",
+    "src/host/bookyReaderPolicyStore.test.ts",
+    "src/host/bookyJourneyCompanion.test.ts",
+    "src/host/bookyJourneyHost.test.ts",
+    "src/host/bookyJourney.test.ts",
+    "src/host/bookyDialogueRegistry.test.ts",
+    "src/host/HostPlatformServices.test.ts",
+    "src/platform/adapters/web/WebPlatformAdapter.test.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascotPersistence.test.ts"
+  ],
+  "expectedBrowserTests": 2,
+  "checkpointFiles": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "aff3e168e4ce7e3ca51e63e5aca36b190f965192ab4f8a1b611ec8a4b81148ff"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "fc00565c88166f757a41b0b5a38ce742e05e40e9ad193ffdae7acdb0943478e8"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "3956273fa6040d555ea9e6d92e4a851afd438765186d8a4ea41304df3a21bd64"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "658710004b3568c9af72b181dfd47e23b6dd4bff2c11ab96bef8c3a243d5fa3d"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "fa5065843b96ac818725085c1508184cb5e75cf1c22336f67059bf55ff2368dc"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "f60863a387fc35cd945f541e48f7f365d8962778361b690c0ed888294801a2b0"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "6dc7e6f3d5a0bf19aff5992ff41d7c8dca2fc61b6f68d93d38033bef541a9c58"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "8859953ff30a4ce8cdc11be18ce2f49baf38a036df791778df9ef5eee5dd7849"
+    }
+  ],
+  "requirements": [
+    "PLANETKA-004"
+  ],
+  "priorPwa": {
+    "path": "docs/mobile/evidence/S15/booky-catalog-scene-20260923/pwa-a1/result.json",
+    "sha256": "a01426e429dad8456afe7beeb8bb07e53297f9acdec770cb60f094e577ba8bbe",
+    "buildId": "dc0eb6c93ab694d9372da17bd4b9625a581ad8e4b85d0e33f663704b33d73e45",
+    "sourceCommit": "259e93cc7a58a6b10d49a0025bf502be54239b79"
+  },
+  "priorAndroid": {
+    "path": "docs/mobile/evidence/S15/booky-catalog-scene-20260923/android-a1/result.json",
+    "sha256": "08d85ea37741bffd763193fd981d83aa731e78b16f08e4bb1c1f1f6aae69cfeb",
+    "buildId": "53a91515842a3077dbf196ac83e7a9c20a7997c203ea4e6af6ca369b35368491",
+    "sourceCommit": "259e93cc7a58a6b10d49a0025bf502be54239b79"
+  },
+  "scope": "Explicit local adult reader policy: confirmed storage, RU/EN settings, native/web ports, real companion admission; no approved production journey content.",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "childApproved": false
+}

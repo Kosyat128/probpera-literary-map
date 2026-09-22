@@ -4880,19 +4880,37 @@
       "status": "IN_PROGRESS",
       "implementationFiles": [
         "src/host/bookyJourney.ts",
-        "src/host/bookyJourneyHost.ts"
+        "src/host/bookyJourneyHost.ts",
+        "src/App.tsx",
+        "src/host/HostPlatformServices.ts",
+        "src/host/PlanetMascotControls.tsx",
+        "src/host/planetMascot.ts",
+        "src/platform/adapters/web/WebPlatformAdapter.ts",
+        "src/host/bookyReaderPolicy.ts",
+        "src/host/bookyReaderPolicyStore.ts",
+        "src/host/BookyReaderSettings.tsx",
+        "src/host/BookyReaderSettings.css"
       ],
       "tests": [
         "src/host/bookyJourney.test.ts",
         "src/host/bookyDialogueRegistry.test.ts",
-        "src/host/bookyJourneyHost.test.ts"
+        "src/host/bookyJourneyHost.test.ts",
+        "src/host/bookyReaderPolicy.test.ts",
+        "src/host/bookyReaderPolicyStore.test.ts",
+        "src/host/bookyJourneyCompanion.test.ts",
+        "src/host/HostPlatformServices.test.ts",
+        "src/platform/adapters/web/WebPlatformAdapter.test.ts",
+        "src/host/planetMascot.test.ts",
+        "src/host/planetMascotPersistence.test.ts",
+        "tests/pwa/booky-reader-policy.spec.mjs"
       ],
       "evidence": [
         "docs/mobile/evidence/S15/booky-journey-boundary-20260920/result.json",
-        "docs/mobile/evidence/S15/booky-journey-host-20260923/result.json"
+        "docs/mobile/evidence/S15/booky-journey-host-20260923/result.json",
+        "docs/mobile/evidence/S15/reader-policy-integration-20260923/result.json"
       ],
-      "commit": "c8e7a2f42da430eee0a5a8c658197772671b976b",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion. Guarded versioned journey-model infrastructure now validates canonical public entity relations, dialogue references and explicit host policy before admission. 40 journey/registry tests and TypeScript passed. The model stays unimported and production journeys remain unavailable. Existing runtime is unchanged; this starts infrastructure for the requirement and does not complete age-adaptive or child journeys. Fresh host admission binds exact journey/node identity and revision, explicit adult policy, current catalog readiness, full reviewed-route validation and the unchanged host snapshot after compilation. 51 host/journey/registry tests and TypeScript passed. Existing 1,588 implementation/test files remain exact; retained PWA/Android builds do not contain this unimported adapter. No stage or release acceptance."
+      "commit": "c5f8e80ab3b8f6be42e04584a0b174ac427197e7",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion. Guarded versioned journey-model infrastructure now validates canonical public entity relations, dialogue references and explicit host policy before admission. 40 journey/registry tests and TypeScript passed. The model stays unimported and production journeys remain unavailable. Existing runtime is unchanged; this starts infrastructure for the requirement and does not complete age-adaptive or child journeys. Fresh host admission binds exact journey/node identity and revision, explicit adult policy, current catalog readiness, full reviewed-route validation and the unchanged host snapshot after compilation. 51 host/journey/registry tests and TypeScript passed. Existing 1,588 implementation/test files remain exact; retained PWA/Android builds do not contain this unimported adapter. No stage or release acceptance. The actual App now supports optional explicit local adult age/reading-level settings, authoritative native/Web preference confirmation and nullable policy in the existing companion. App-owned drafts and failed save/delete intent survive collapse, collection transitions and background suspension; deletion confirmation stays local to the form. Its journey admission rechecks current host/source identity; no production route or content approval is supplied. 353 focused unit tests, TypeScript, 2 actual-App Chrome cases and 3 inspected images bind fresh preserved PWA/Android-dev builds. All 1,583 protected prior implementation/test inputs remain exact. No stage, child, reviewed-content or release acceptance is claimed."
     },
     {
       "id": "PLANETKA-005",

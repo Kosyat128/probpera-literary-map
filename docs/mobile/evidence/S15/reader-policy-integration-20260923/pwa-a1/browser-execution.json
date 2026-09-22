@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S15/reader-policy-integration-20260923/pwa.config.mjs"
+  ],
+  "exitCode": 0,
+  "durationMs": 17561,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/reader-policy-integration-20260923/pwa-a1/browser-stdout.log",
+    "bytes": 189,
+    "sha256": "ebb3956b976083a4ab60a5e1ffc70061923fadf880473b10754a217f29b0d571"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/reader-policy-integration-20260923/pwa-a1/browser-stderr.log",
+    "bytes": 164,
+    "sha256": "fbd421fc8b8b2b0ec8582c65e83f228a10608c1f35a6a6228cd0b03898669411"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "mode": "static",
+  "attempt": "a1",
+  "pass": true,
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/reader-policy-integration-20260923/source-manifests/266ec6db4d272ef7.json",
+    "sha256": "266ec6db4d272ef7bce4920e9664ebc7ff4cd902fe8de17cf5b6c592c59a138f",
+    "fileCount": 1598
+  },
+  "checkInputs": [
+    {
+      "path": "docs/mobile/evidence/S15/reader-policy-integration-20260923/check.mjs",
+      "sha256": "5e5f1c508f4a5edc381628c4e93f384951aacc2809986d72cb24f2676eae69ed"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/reader-policy-integration-20260923/entry.json",
+      "sha256": "cea8438d82a2f20eedb5cf073c9b6047a02b2e856813ddf0224e11251f2c7a22"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/reader-policy-integration-20260923/unit.config.mjs",
+      "sha256": "dfcd9db4e51c1e6ce728d76b3debf6d053e4f3c4bf4f2104bd5989b6cadc45d7"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/reader-policy-integration-20260923/playwright.config.mjs",
+      "sha256": "074de458e5462cc9cece3e0cd4b8bb741cf132e28f3abcdbdfdf15d6749c8cfe"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "tests": null,
+  "reportError": null,
+  "execution": {
+    "exitCode": 0,
+    "durationMs": 25737
+  },
+  "runtimeUnchanged": false,
+  "runtimeWiringImplemented": true,
+  "stageAccepted": false,
+  "ageAdaptiveJourneysAccepted": false,
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "releaseReady": false
+}

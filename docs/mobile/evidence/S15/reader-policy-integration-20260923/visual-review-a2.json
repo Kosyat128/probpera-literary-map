@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "pass": false,
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/reader-policy-integration-20260923/source-manifests/041bdb8554a00e2a.json",
+    "sha256": "041bdb8554a00e2a2a1a2964e830a0903836f26384fa356a3edfbc18d9c860e2",
+    "fileCount": 1598
+  },
+  "behavioralCasesPassed": true,
+  "image": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-reader-policy/browser-a2/booky-reader-policy-future-298cd-on-cannot-restore-admission/reader-profile-delete-failed-en.png",
+    "sha256": "43176b7ebacd3889d072f5cf127d06cc39079717744ee9595b73e930a30dc275",
+    "inspected": true
+  },
+  "finding": "After foreground return, one disabled Save button was captured as an unpainted rectangle. Behavioral checks passed. This view is not accepted; capture now waits for fonts and two paint frames and disables screenshot animations.",
+  "artAccepted": false,
+  "childApproved": false,
+  "releaseReady": false
+}

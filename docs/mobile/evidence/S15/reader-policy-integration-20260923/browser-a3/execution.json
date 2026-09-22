@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S15/reader-policy-integration-20260923/playwright.config.mjs"
+  ],
+  "startedAt": "2026-09-22T22:41:08.540Z",
+  "exitCode": 0,
+  "durationMs": 22688,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/reader-policy-integration-20260923/browser-a3/stdout.log",
+    "bytes": 367,
+    "sha256": "1a0bff214964a9821ef267aa354a7754f0caec13f42ba06357735e448f747e1b"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/reader-policy-integration-20260923/browser-a3/stderr.log",
+    "bytes": 164,
+    "sha256": "c8dcf6b530385594eb0a0c8079ee49bf0d92c316928d7f67ca40654ea56aae00"
+  }
+}
