@@ -20,7 +20,19 @@ const api = await import('data:text/javascript;base64,' + Buffer.from(built.outp
 const { BOOKY_NAVIGATION_DRAFTS: records, BOOKY_NAVIGATION_DRAFT_INVENTORY: inventory } = api;
 const findings = [];
 const check = (ok, code, record = null) => { if (!ok) findings.push({ code, ...(record ? { record } : {}) }); };
-const sourceCommit = '5e6eb7676367f71731fa84f9b2e69249c48bcb06';
+// Fixed per-source identities; this validator never authors a new binding.
+const expectedSources = {
+  "src/host/planetMascotRoutes.ts": {
+    "sourceCommit": "5e6eb7676367f71731fa84f9b2e69249c48bcb06",
+    "sourceVersion": 1,
+    "sourceSha256": "c25be7713363e1f438f114fda0a314ffc3f06789fc76e67ef422657d9ae4cfaf"
+  },
+  "src/host/PlanetMascotControls.tsx": {
+    "sourceCommit": "c5f8e80ab3b8f6be42e04584a0b174ac427197e7",
+    "sourceVersion": 2,
+    "sourceSha256": "52c7cb81a3adc70f57319b48a339111591254fe6aacb76738bf3ce2542dc8486"
+  }
+};
 const expectedPaths = ['src/host/planetMascotRoutes.ts', 'src/host/PlanetMascotControls.tsx'];
 const expectedRoutes = [
   { id: 'overview', version: 1, stepIds: ['search', 'country', 'collection', 'appearance'] },
@@ -41,8 +53,10 @@ for (const sourcePath of expectedPaths) {
   const bytes = await fs.readFile(path.join(root, sourcePath));
   const text = bytes.toString('utf8'), normalizedSha256 = sha256(text.replaceAll('\r\n', '\n'));
   const declared = inventory.sources.find(source => source.sourcePath === sourcePath);
-  check(!!declared && declared.sourceCommit === sourceCommit && declared.sourceVersion === 1, 'SOURCE_PROVENANCE', sourcePath);
-  check(declared?.sourceSha256 === normalizedSha256, 'SOURCE_BYTES_CHANGED', sourcePath);
+  const expectedSource = expectedSources[sourcePath];
+  check(!!declared && declared.sourceCommit === expectedSource.sourceCommit
+    && declared.sourceVersion === expectedSource.sourceVersion && declared.sourceSha256 === expectedSource.sourceSha256, 'SOURCE_PROVENANCE', sourcePath);
+  check(declared?.sourceSha256 === normalizedSha256 && normalizedSha256 === expectedSource.sourceSha256, 'SOURCE_BYTES_CHANGED', sourcePath);
   check(declared?.sourceHashEncoding === 'sha256:utf8:lf'
     && declared?.copyHashEncoding === 'sha256:utf8:JSON.stringify({title,body})', 'CHECKSUM_ENCODING', sourcePath);
   sourceFiles.push({ path: sourcePath, sha256: sha256(bytes), normalizedSha256 });
@@ -96,7 +110,7 @@ for (const [routeId, route] of Object.entries(api.PLANET_MASCOT_ROUTES)) for (co
 }
 if (contextual) for (const { context, body } of contextual.tips) {
   const id = 'guidance.' + context;
-  expected.set(id, { id, version: 1, context: 'help:' + context,
+  expected.set(id, { id, version: expectedSources[expectedPaths[1]].sourceVersion, context: 'help:' + context,
     screens: [context === 'collection' ? 'collection' : 'globe'], requiredScreen: null,
     title: contextual.title, body, sourcePath: expectedPaths[1],
     sourceSelector: 'PlanetMascotControls.name+helpTip.' + context });
@@ -127,14 +141,16 @@ for (const record of records) {
     && payload.narration === null, 'UNAPPROVED_CONTENT', key);
   check(review.status === 'draft' && review.reviewer === null && review.reviewedAt === null, 'DRAFT_REVIEW_STATE', key);
   check(!!source && payload.provenance.kind === 'existing-interface-copy' && payload.provenance.sourcePath === source.sourcePath
-    && payload.provenance.sourceVersion === source.sourceVersion && payload.provenance.sourceSha256 === source.sourceSha256
-    && payload.provenance.sourceRef === `${sourceCommit}:${existing.sourceSelector}:${payload.locale}`, 'RECORD_PROVENANCE', key);
+    && payload.provenance.sourceVersion === source.sourceVersion && payload.version === expectedSources[source.sourcePath].sourceVersion
+    && payload.provenance.sourceSha256 === source.sourceSha256
+    && payload.provenance.sourceRef === `${expectedSources[source.sourcePath].sourceCommit}:${existing.sourceSelector}:${payload.locale}`, 'RECORD_PROVENANCE', key);
   check(payload.provenance.copySha256 === copySha256, 'COPY_CHECKSUM', key);
   check(contentChecksumMatches, 'PAYLOAD_CHECKSUM', key); check(recordChecksumMatches, 'RECORD_CHECKSUM', key);
   const reviewedDialogueAvailable = adultAvailable(record), childDialogueAvailable = childAvailable(record);
   check(!reviewedDialogueAvailable, 'DRAFT_RESOLVED', key); check(!childDialogueAvailable, 'CHILD_DIALOGUE_RESOLVED', key);
   audited.push({ id: payload.id, locale: payload.locale, version: payload.version, status: review.status,
     context: payload.context, displayScreens: payload.screens, targetRequiredScreen: existing?.requiredScreen ?? null,
+    sourceCommit: source?.sourceCommit ?? null, sourceVersion: payload.provenance.sourceVersion,
     sourceSha256: payload.provenance.sourceSha256, copySha256, contentChecksumMatches, recordChecksumMatches,
     runtimeTextMatches, reviewedDialogueAvailable, childDialogueAvailable });
 }

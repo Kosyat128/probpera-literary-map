@@ -11,7 +11,19 @@ import { PLANET_MASCOT_ROUTES, type PlanetMascotRoute } from "./planetMascotRout
 
 const sha256 = (value: string) => createHash("sha256").update(value).digest("hex");
 const sourceText = (path: string) => readFileSync(resolve(process.cwd(), path), "utf8");
-const sourceCommit = "5e6eb7676367f71731fa84f9b2e69249c48bcb06";
+// Fixed per-source declarations; changing a provenance binding requires an explicit versioned rebaseline.
+const expectedSources = {
+  "src/host/planetMascotRoutes.ts": {
+    "sourceCommit": "5e6eb7676367f71731fa84f9b2e69249c48bcb06",
+    "sourceVersion": 1,
+    "sourceSha256": "c25be7713363e1f438f114fda0a314ffc3f06789fc76e67ef422657d9ae4cfaf"
+  },
+  "src/host/PlanetMascotControls.tsx": {
+    "sourceCommit": "c5f8e80ab3b8f6be42e04584a0b174ac427197e7",
+    "sourceVersion": 2,
+    "sourceSha256": "52c7cb81a3adc70f57319b48a339111591254fe6aacb76738bf3ce2542dc8486"
+  }
+} as const;
 const policy = { canonicalEntityIds: [], approvedReviews: [] } as const;
 const request = ({ payload }: BookyDialogueRecord) => ({
   id: payload.id, locale: payload.locale, audience: "adult", age: 30,
@@ -55,8 +67,7 @@ function existingContextualCopy() {
 
 describe("fixed unreviewed adult navigation inventory", () => {
   it.each(BOOKY_NAVIGATION_DRAFT_INVENTORY.sources)("pins exact source bytes and identity for $sourcePath", source => {
-    expect(source.sourceCommit).toBe(sourceCommit);
-    expect(source.sourceVersion).toBe(1);
+    expect(source).toMatchObject(expectedSources[source.sourcePath]);
     expect(source.sourceHashEncoding).toBe("sha256:utf8:lf");
     expect(source.copyHashEncoding).toBe("sha256:utf8:JSON.stringify({title,body})");
     const normalized = sourceText(source.sourcePath).replace(/\r\n/g, "\n");
@@ -76,7 +87,7 @@ describe("fixed unreviewed adult navigation inventory", () => {
       expect(["globe", "collection"]).toContain(step.requiredScreen);
       expect(payload.copy).toEqual({ title: step.title[payload.locale], body: step.body[payload.locale],
         caption: step.title[payload.locale], reduced: step.title[payload.locale] });
-      expect(payload.provenance.sourceRef).toBe(`${sourceCommit}:PLANET_MASCOT_ROUTES.${route}.steps.${step.id}:${payload.locale}`);
+      expect(payload.provenance.sourceRef).toBe(`${expectedSources["src/host/planetMascotRoutes.ts"].sourceCommit}:PLANET_MASCOT_ROUTES.${route}.steps.${step.id}:${payload.locale}`);
     }
   });
 
@@ -88,9 +99,10 @@ describe("fixed unreviewed adult navigation inventory", () => {
     for (const { payload } of rows) {
       const title = live.title[payload.locale];
       expect(payload.id).toBe("guidance." + context);
+      expect(payload.version).toBe(expectedSources["src/host/PlanetMascotControls.tsx"].sourceVersion);
       expect(payload.screens).toEqual([context === "collection" ? "collection" : "globe"]);
       expect(payload.copy).toEqual({ title, body: body[payload.locale], caption: title, reduced: title });
-      expect(payload.provenance.sourceRef).toBe(`${sourceCommit}:PlanetMascotControls.name+helpTip.${context}:${payload.locale}`);
+      expect(payload.provenance.sourceRef).toBe(`${expectedSources["src/host/PlanetMascotControls.tsx"].sourceCommit}:PlanetMascotControls.name+helpTip.${context}:${payload.locale}`);
     }
   });
 
@@ -116,6 +128,7 @@ describe("fixed unreviewed adult navigation inventory", () => {
         intent: "navigation", claimKind: "interface-guidance", entityIds: [], factualSources: [], narration: null, prohibitedTags: [] });
       const source = BOOKY_NAVIGATION_DRAFT_INVENTORY.sources.find(value => value.sourcePath === payload.provenance.sourcePath)!;
       expect(source).toBeDefined();
+      expect(payload.version).toBe(expectedSources[source.sourcePath].sourceVersion);
       expect(payload.provenance).toMatchObject({ kind: "existing-interface-copy", sourcePath: source.sourcePath,
         sourceVersion: source.sourceVersion, sourceSha256: source.sourceSha256,
         copySha256: sha256(JSON.stringify({ title: payload.copy.title, body: payload.copy.body })) });
@@ -128,13 +141,26 @@ describe("fixed unreviewed adult navigation inventory", () => {
     }
   });
 
-  it("rejects changed wording under original declarations and freezes every exported declaration", () => {
-    const original = BOOKY_NAVIGATION_DRAFTS[0];
-    const changed = { ...original, payload: { ...original.payload, copy: { ...original.payload.copy, body: "Changed." } } };
-    const registry = createBookyDialogueRegistry([changed], policy);
-    expect(registry.size).toBe(0);
-    expect(registry.rejections).toHaveLength(1);
-    expect(registry.resolve(request(original))).toBeNull();
+  it("rejects changed route or contextual wording and stale contextual versions under fixed declarations", () => {
+    const context = BOOKY_NAVIGATION_DRAFTS.find(record => record.payload.id === "guidance.globe")!;
+    const changed = [BOOKY_NAVIGATION_DRAFTS[0], context].map(original => ({ ...original,
+      payload: { ...original.payload, copy: { ...original.payload.copy, body: "Changed." } } }));
+    const stale = [
+      { ...context, payload: { ...context.payload, version: 1 } },
+      { ...context, payload: { ...context.payload, provenance: { ...context.payload.provenance, sourceVersion: 1 } } },
+      { ...context, payload: { ...context.payload, provenance: { ...context.payload.provenance,
+        sourceRef: context.payload.provenance.sourceRef.replace(expectedSources["src/host/PlanetMascotControls.tsx"].sourceCommit,
+          expectedSources["src/host/planetMascotRoutes.ts"].sourceCommit) } } },
+    ];
+    for (const record of [...changed, ...stale]) {
+      const registry = createBookyDialogueRegistry([record], policy);
+      expect(registry.size).toBe(0);
+      expect(registry.rejections).toHaveLength(1);
+      expect(registry.resolve(request(record))).toBeNull();
+    }
+  });
+
+  it("freezes every exported declaration", () => {
     function assertFrozen(value: unknown): void {
       if (value !== null && typeof value === "object") {
         expect(Object.isFrozen(value)).toBe(true);
