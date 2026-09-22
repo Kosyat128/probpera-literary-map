@@ -1,0 +1,47 @@
+
+Running 5 tests using 1 worker
+
+
+
+[1/5] tests\pwa\booky-journey.spec.mjs:384:1 › actual reviewed fixture follows country writer work and explicit checkpoint across locale and suspension
+  1) tests\pwa\booky-journey.spec.mjs:384:1 › actual reviewed fixture follows country writer work and explicit checkpoint across locale and suspension 
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  locator('[data-booky-journey-route]')
+    Expected: 1
+    Received: 0
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCount" with timeout 5000ms
+      - waiting for locator('[data-booky-journey-route]')
+        14 × locator resolved to 0 elements
+           - unexpected value "0"
+
+
+      390 |     await openPanel(page); await loadBooks(page);
+      391 |     const route = page.locator('[data-booky-journey-route]');
+    > 392 |     await expect(route).toHaveCount(1); await route.click();
+          |                         ^
+      393 |     await expectReadyNode(page, 'country', 0);
+      394 |     await expect(page.locator('#atlas .literary-globe')).toHaveAttribute('data-globe-camera-phase', 'idle');
+      395 |     await page.setViewportSize({ width: 320, height: 780 });
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-journey.spec.mjs:392:25
+
+    attachment #1: booky-journey-source-evidence (application/json) ────────────────────────────────
+    D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-journey-runtime\browser-a1\booky-journey-actual-revie-84536-cross-locale-and-suspension\attachments\booky-journey-source-evidence-c18f8b84b242e218078512f1a16680bff05756e1.json
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-journey-runtime\browser-a1\booky-journey-actual-revie-84536-cross-locale-and-suspension\error-context.md
+
+
+
+
+[2/5] tests\pwa\booky-journey.spec.mjs:472:4 › journey admission fails closed: no-profile
+[3/5] tests\pwa\booky-journey.spec.mjs:472:4 › journey admission fails closed: no-independent-journey-review
+[4/5] tests\pwa\booky-reader-policy.spec.mjs:481:1 › explicit adult profile survives locale and lifecycle while drafts and deletion never grant stale policy
+[5/5] tests\pwa\booky-reader-policy.spec.mjs:542:1 › future profiles are retained until confirmed deletion and failed deletion cannot restore admission
+  1 failed
+    tests\pwa\booky-journey.spec.mjs:384:1 › actual reviewed fixture follows country writer work and explicit checkpoint across locale and suspension 
+  4 passed (44.2s)

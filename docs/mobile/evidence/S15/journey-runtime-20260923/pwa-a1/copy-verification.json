@@ -1,0 +1,13 @@
+{
+  "pass": true,
+  "files": 1427,
+  "bytes": 76641910,
+  "detailedLedger": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-runtime/pwa-a1-copy-verification.json",
+    "sha256": "a66c33a450b0cd29af7ceb49cc222c1df1a94bad05dc7f14fb9002ae5613d6e1"
+  },
+  "artifactManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-runtime/pwa-046440f9/artifact.json",
+    "sha256": "e51fed63ecd5c373ed6814e0b6b5ec69fa0e6bb0d469b93abd54860e0c8940ff"
+  }
+}

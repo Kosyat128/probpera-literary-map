@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "stage": "S15",
+  "checkpoint": "2886b14e771fde7073fe96a1029a4f72b7510133",
+  "previous": "docs/mobile/evidence/S15/navigation-rebaseline-20260923/result.json",
+  "previousCheckpointResult": {
+    "path": "docs/mobile/evidence/S15/navigation-rebaseline-20260923/result.json",
+    "sha256": "d38a0a566cc106264540f3fce88e57e3eb84f50e6f66d214472a94ad16ba7efa"
+  },
+  "priorSourceManifest": {
+    "path": "docs/mobile/evidence/S15/navigation-rebaseline-20260923/source-manifests/7feab59514d83e7c.json",
+    "sha256": "7feab59514d83e7c46ba0bcf0a403f8a4bd9be5b19376cde5573474ee46a9450",
+    "fileCount": 1598
+  },
+  "changedPaths": [
+    "src/App.tsx",
+    "src/components/BookArchiveSection.tsx",
+    "src/components/WriterPanel.tsx",
+    "src/host/bookyJourney.ts",
+    "src/loading/DeferredHomepageArchives.tsx",
+    "src/components/LiteraryGlobe.tsx",
+    "src/components/LiteraryWorldMap.tsx"
+  ],
+  "newImplementationFiles": [
+    "src/books/bookArchiveDetailView.ts",
+    "src/host/bookyJourneyRuntime.ts",
+    "src/host/BookyJourneyControls.tsx",
+    "src/host/BookyJourneyControls.css",
+    "src/host/bookyJourneyCatalog.ts",
+    "src/host/bookyJourneyContent.ts",
+    "src/host/useBookyJourney.ts",
+    "tests/pwa/booky-journey.spec.mjs"
+  ],
+  "newSourcePaths": [
+    "src/books/bookArchiveDetailView.ts",
+    "src/host/bookyJourneyRuntime.ts",
+    "src/host/BookyJourneyControls.tsx",
+    "src/host/BookyJourneyControls.css",
+    "src/host/bookyJourneyCatalog.ts",
+    "src/host/bookyJourneyContent.ts",
+    "src/host/useBookyJourney.ts",
+    "tests/pwa/booky-journey.spec.mjs",
+    "src/host/bookyJourneyRuntime.test.ts",
+    "src/host/bookyJourneyCatalog.test.ts",
+    "src/books/bookArchiveDetailView.test.ts"
+  ],
+  "unitFiles": [
+    "src/host/bookyJourneyRuntime.test.ts",
+    "src/host/bookyJourneyCatalog.test.ts",
+    "src/host/bookyJourney.test.ts",
+    "src/host/bookyJourneyHost.test.ts",
+    "src/host/bookyJourneyCompanion.test.ts",
+    "src/host/bookyReaderPolicy.test.ts",
+    "src/host/bookyReaderPolicyStore.test.ts",
+    "src/host/bookyDialogueRegistry.test.ts",
+    "src/host/bookyNavigationDrafts.test.ts",
+    "src/host/bookyDialogueDrafts.test.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascotPersistence.test.ts",
+    "src/books/bookArchiveDetailView.test.ts",
+    "src/books/bookArchiveAuthorRequest.test.ts"
+  ],
+  "expectedBrowserTests": 5,
+  "stageAccepted": false,
+  "childApproved": false,
+  "releaseReady": false,
+  "checkpointFiles": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "46b405f65f55364476dfb39732ca3f8f2137cfa8faf2268e8590761220801116"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "da5a389080d355b96b45261493204825da0a1e4ff19525b351553a134f2f9d28"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "b16e7ffc7aa917325a147e70151db26f0f7f01ba7e767ae561fe79e678384fa3"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "f52d41b1ee798701865796e0f9511601485a936fb843243bc0b7f98d27b23f02"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "8f7ac992374377eaba4f682c3e251a469d8f9a6395fccd6b9f1974b5e4c7bc5a"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "99bd1cc429b67a0d1e35e88e5066a635666c2dcec22c1e6e978a629e86054dc0"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "7ecc008b1951ac2adbfe3e03d25390c35fe5c5ea4e7c868861180cdcd8908687"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "40cd7d57f482b0975316e2366c80905248bbe706c96ac399daff9b5249d232bc"
+    }
+  ]
+}

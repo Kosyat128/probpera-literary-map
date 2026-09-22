@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "sourceCommit": "c27d50e02bf426aa99454467a8ea9292967dcab6",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/journey-runtime-20260923/source-manifests/aecf4d0105640f33.json",
+    "sha256": "aecf4d0105640f334c3afe65a125698285a3359d03d7b62794b6bef13123f7c2",
+    "fileCount": 1609
+  },
+  "actualAppCaptures": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-runtime/browser-a4/booky-journey-actual-revie-84536-cross-locale-and-suspension/booky-journey.json",
+      "sha256": "a7b7d573fae85d6d78f4387eb76999f602f46d4f12d957922a39e4e1f76bc755"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-runtime/browser-a4/booky-journey-journey-admi-1436d--independent-journey-review/booky-journey.json",
+      "sha256": "0131c42d22357ef0c6b6a535befb6b22cb72a0f31fc48d086a6b7bdf67023834"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-runtime/browser-a4/booky-journey-journey-admission-fails-closed-no-profile/booky-journey.json",
+      "sha256": "5e3ae250451a62779e6ae5aa46829155bd3477c8cce15ede53c3d6480a14837a"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-runtime/browser-a4/booky-reader-policy-explic-219f8-on-never-grant-stale-policy/booky-reader-policy.json",
+      "sha256": "f8cc3243b804fadbf7722c69a740f5cc0fdf5e5f659dce40cbc774bd11df4eb7"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-runtime/browser-a4/booky-reader-policy-future-298cd-on-cannot-restore-admission/booky-reader-policy.json",
+      "sha256": "5ce216d24ce8460e78bfa29b559df3390bc8065c142ef05507204e4b8b16005e"
+    }
+  ],
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-runtime/browser-a4/booky-journey-actual-revie-84536-cross-locale-and-suspension/journey-country-ru.png",
+      "sha256": "3f0c8c2557d34a1bcda19121b6c3c433c80efe8825a90ed50d126d65818912e4",
+      "inspected": true,
+      "reviewer": "Codex visual inspection",
+      "findings": [
+        "Visible synthetic journey copy, step counts and explicit controls are readable at 320px; controls fit the scrollable panel. The scrolled RU capture does not show the full section heading.",
+        "The canonical globe and existing companion remain visible around the panel. This is scoped interface QA, not art, full accessibility or device acceptance."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-runtime/browser-a4/booky-journey-actual-revie-84536-cross-locale-and-suspension/journey-writer-en.png",
+      "sha256": "a4749ceeadaf642a48bb76e40c33552abeed42d72f230dd33c554bb30c5dc3de",
+      "inspected": true,
+      "reviewer": "Codex visual inspection",
+      "findings": [
+        "Visible synthetic journey copy, step counts and explicit controls are readable at 320px; controls fit the scrollable panel. The scrolled RU capture does not show the full section heading.",
+        "The canonical globe and existing companion remain visible around the panel. This is scoped interface QA, not art, full accessibility or device acceptance."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-runtime/browser-a4/booky-reader-policy-explic-219f8-on-never-grant-stale-policy/reader-profile-saved-ru.png",
+      "sha256": "23541eb7ac6fa5ddc4d59edac7ff02065a7633798df8af112d8199d59aeadafd",
+      "inspected": true,
+      "reviewer": "Codex visual inspection",
+      "findings": [
+        "Profile labels, fields, saved/unsaved or deletion-failure status and relevant controls are readable; narrow layout stays within the viewport.",
+        "The canonical globe and existing companion remain visible around the panel. This is scoped interface QA, not art, full accessibility or device acceptance."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-runtime/browser-a4/booky-reader-policy-explic-219f8-on-never-grant-stale-policy/reader-profile-draft-narrow-en.png",
+      "sha256": "be2fc7edd68a53655ef078224b34b177ac01769adf4faf1a7e9d09820f763e72",
+      "inspected": true,
+      "reviewer": "Codex visual inspection",
+      "findings": [
+        "Profile labels, fields, saved/unsaved or deletion-failure status and relevant controls are readable; narrow layout stays within the viewport.",
+        "The canonical globe and existing companion remain visible around the panel. This is scoped interface QA, not art, full accessibility or device acceptance."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-runtime/browser-a4/booky-reader-policy-future-298cd-on-cannot-restore-admission/reader-profile-delete-failed-en.png",
+      "sha256": "ac9d1548464a612fa21ecca2a1ee9df2e733fa712ac16e173d437629d9801ab8",
+      "inspected": true,
+      "reviewer": "Codex visual inspection",
+      "findings": [
+        "Profile labels, fields, saved/unsaved or deletion-failure status and relevant controls are readable; narrow layout stays within the viewport.",
+        "The canonical globe and existing companion remain visible around the panel. This is scoped interface QA, not art, full accessibility or device acceptance."
+      ]
+    }
+  ],
+  "artAccepted": false,
+  "childApproved": false,
+  "releaseReady": false
+}

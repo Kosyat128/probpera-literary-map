@@ -37,6 +37,13 @@ The active task is the user's V12 bilingual product request, based on canonical
 - Keep internal implementation gaps separate from external owner actions.
   Never transfer translation/programming tasks to the owner.
 
+<!-- s15-journey-runtime-20260923:begin -->
+Latest source c27d50e0: adult literary-journey controls are wired into the actual App, confirmed reader policy, reviewed catalog compiler and canonical country/writer/book navigation. Each acknowledgement requires a newly committed settled view. Same-target resume, collection return, canonical coordinate fallback and mobile sheet completion are covered; semantic progress survives panel/lifecycle changes within the App only.
+Validation: 223 focused tests, TypeScript, five actual-App Chrome scenarios and five inspected RU/EN screenshots; source manifest has 1,609 inputs, including 1,591 unchanged protected inputs. PWA 046440f9 and Android-dev f3c9f92d are freshly built and preserved. Installed-device/iOS testing and stage/release acceptance are not claimed.
+Evidence: docs/mobile/evidence/S15/journey-runtime-20260923/result.json. Production journey content is empty; the 34 existing dialogue records remain drafts. PLANETKA-003 remains IN_PROGRESS; statuses stay 3 complete, 12 in progress, 26 unstarted; S03.acceptance first unresolved; releaseReady:false.
+Next: persist explicit semantic journey checkpoints with exact profile/route/version/node binding, deliberate resume/reset, truthful failed-write recovery and guarded migration. Prepare independent reviewed RU/EN content without promoting drafts. Do not stop after this checkpoint if authorized local implementation remains.
+<!-- s15-journey-runtime-20260923:end -->
+
 <!-- s15-navigation-rebaseline-20260923:begin -->
 Latest source ad5c9553: explicitly versioned the eight contextual navigation drafts to payload/source version 2, binding unchanged literal copy to Controls source c5f8e80a. The 14 route records and 12 support records stay exact; all 34 records remain draft and unavailable as reviewed content. Validators compare fixed declarations and never refresh them.
 56 focused tests and TypeScript passed on a1; inventory a2 passed after preserving the original a1 SOURCE_BYTES_CHANGED finding. All 1,595 other implementation/test inputs remain exact. Prior 353 reader-policy tests and 2 actual-App cases are retained without rerun. Preserved PWA ec2dd9dd / Android-dev 91837818 were rehashed against original runtime source c5f8e80a; the captured unimported inventory input differs explicitly, with no rebuild/browser run claimed.

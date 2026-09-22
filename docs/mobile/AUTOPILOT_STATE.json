@@ -3,9 +3,9 @@
   "repository": "Kosyat128/probpera-literary-map",
   "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
-  "headSha": "ad5c955375d2652602a5ef9e04f2f9cd584ff928",
+  "headSha": "c27d50e02bf426aa99454467a8ea9292967dcab6",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-22T22:56:43.133Z",
+  "updatedAt": "2026-09-22T23:41:07.857Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -2616,11 +2616,12 @@
           "evidence": [
             "docs/mobile/evidence/S15/booky-dialogue-registry-20260920/result.json",
             "docs/mobile/evidence/S15/booky-navigation-inventory-20260920/result.json",
-            "docs/mobile/evidence/S15/navigation-rebaseline-20260923/result.json"
+            "docs/mobile/evidence/S15/navigation-rebaseline-20260923/result.json",
+            "docs/mobile/evidence/S15/journey-runtime-20260923/result.json"
           ],
-          "commit": "ad5c955375d2652602a5ef9e04f2f9cd584ff928",
-          "lastValidatedAt": "2026-09-22T22:56:43.133Z",
-          "notes": "Scripted reviewed sourced dialogue. Implement the original guide and shared policy before complete English dialogue/audio validation. Adult dialogue registry infrastructure now validates version/checksum, context, age, entity, review and rights boundaries. Twelve existing support-copy locale records remain not-reviewed and unavailable through the reviewed-dialogue resolver. 52 tests, TypeScript and the fixed-inventory audit passed. Existing runtime remains unchanged; this does not complete reviewed dialogue or child/narration scope. The fixed adult RU/EN dialogue inventory now adds 14 existing navigation-step and 8 contextual records. All 22 new records and the 12 existing support records remain draft, with no approved or available reviewed dialogue. 55 focused tests, TypeScript and a source-bound inventory audit passed. Existing runtime remains unchanged; this extends PLANETKA-003 infrastructure without completing reviewed dialogue or child/narration scope. Repaired the stale contextual draft provenance after the Controls integration: eight RU/EN contextual payload/source versions now explicitly advance to 2 with identical copy; fourteen navigation and twelve support records remain exact. All 34 remain draft. 56 selected unit tests, TypeScript and the read-only source inventory audit passed; original inventory-a1 failure is preserved. Runtime code is unchanged; 353 prior reader tests and 2 actual-App Chrome cases are retained without rerun. PWA ec2dd9dd / Android-dev 91837818 remain at source c5f8e80a, with preserved runtime/APK bytes rehashed and the old unimported inventory source hash explicitly distinguished. No rebuild or stage/release acceptance."
+          "commit": "c27d50e02bf426aa99454467a8ea9292967dcab6",
+          "lastValidatedAt": "2026-09-22T23:41:07.857Z",
+          "notes": "Scripted reviewed sourced dialogue. Implement the original guide and shared policy before complete English dialogue/audio validation. Adult dialogue registry infrastructure now validates version/checksum, context, age, entity, review and rights boundaries. Twelve existing support-copy locale records remain not-reviewed and unavailable through the reviewed-dialogue resolver. 52 tests, TypeScript and the fixed-inventory audit passed. Existing runtime remains unchanged; this does not complete reviewed dialogue or child/narration scope. The fixed adult RU/EN dialogue inventory now adds 14 existing navigation-step and 8 contextual records. All 22 new records and the 12 existing support records remain draft, with no approved or available reviewed dialogue. 55 focused tests, TypeScript and a source-bound inventory audit passed. Existing runtime remains unchanged; this extends PLANETKA-003 infrastructure without completing reviewed dialogue or child/narration scope. Repaired the stale contextual draft provenance after the Controls integration: eight RU/EN contextual payload/source versions now explicitly advance to 2 with identical copy; fourteen navigation and twelve support records remain exact. All 34 remain draft. 56 selected unit tests, TypeScript and the read-only source inventory audit passed; original inventory-a1 failure is preserved. Runtime code is unchanged; 353 prior reader tests and 2 actual-App Chrome cases are retained without rerun. PWA ec2dd9dd / Android-dev 91837818 remain at source c5f8e80a, with preserved runtime/APK bytes rehashed and the old unimported inventory source hash explicitly distinguished. No rebuild or stage/release acceptance. Actual App journey controls now use current explicit adult policy, exact independent review receipts, whole-route availability and settled canonical country/writer/work views. Semantic acknowledgement is explicit and ephemeral; locale and resume preserve its identity without claiming disk persistence or books read. Production content remains empty and all 34 inventoried dialogues remain draft. 223 focused tests, TypeScript, five actual-App Chrome cases and 5 inspected captures bind fresh PWA 046440f9 / Android-dev f3c9f92d. All 1,591 protected inputs remain exact. No stage or release acceptance."
         },
         {
           "id": "S15.PLANETKA-004",
@@ -2751,7 +2752,13 @@
         "node docs/mobile/evidence/S15/reader-policy-integration-20260923/preserve-android-a2.mjs c5f8e80ab3b8f6be42e04584a0b174ac427197e7",
         "node docs/mobile/evidence/S15/navigation-rebaseline-20260923/check.mjs unit a1",
         "node docs/mobile/evidence/S15/navigation-rebaseline-20260923/check.mjs static a1",
-        "node docs/mobile/evidence/S15/navigation-rebaseline-20260923/check.mjs inventory a2"
+        "node docs/mobile/evidence/S15/navigation-rebaseline-20260923/check.mjs inventory a2",
+        "node docs/mobile/evidence/S15/journey-runtime-20260923/check.mjs unit a3",
+        "node docs/mobile/evidence/S15/journey-runtime-20260923/check.mjs static a3",
+        "node docs/mobile/evidence/S15/journey-runtime-20260923/check.mjs browser a4",
+        "node docs/mobile/evidence/S15/journey-runtime-20260923/build-pwa-a1.mjs c27d50e02bf426aa99454467a8ea9292967dcab6",
+        "pwsh -File docs/mobile/evidence/S15/journey-runtime-20260923/build-android-a1.ps1 c27d50e02bf426aa99454467a8ea9292967dcab6",
+        "node docs/mobile/evidence/S15/journey-runtime-20260923/preserve-android-a1.mjs c27d50e02bf426aa99454467a8ea9292967dcab6"
       ],
       "artifacts": [
         "docs/mobile/evidence/S15/planetka-visual-mode-20260920/entry.json",
@@ -2867,7 +2874,17 @@
         "docs/mobile/evidence/S15/navigation-rebaseline-20260923/source-manifests/7feab59514d83e7c.json",
         "docs/mobile/evidence/S15/navigation-rebaseline-20260923/unit-a1/result.json",
         "docs/mobile/evidence/S15/navigation-rebaseline-20260923/static-a1/result.json",
-        "docs/mobile/evidence/S15/navigation-rebaseline-20260923/inventory-a2/result.json"
+        "docs/mobile/evidence/S15/navigation-rebaseline-20260923/inventory-a2/result.json",
+        "docs/mobile/evidence/S15/journey-runtime-20260923/entry.json",
+        "docs/mobile/evidence/S15/journey-runtime-20260923/result.json",
+        "docs/mobile/evidence/S15/journey-runtime-20260923/README.md",
+        "docs/mobile/evidence/S15/journey-runtime-20260923/visual-review.json",
+        "docs/mobile/evidence/S15/journey-runtime-20260923/source-manifests/aecf4d0105640f33.json",
+        "docs/mobile/evidence/S15/journey-runtime-20260923/unit-a3/result.json",
+        "docs/mobile/evidence/S15/journey-runtime-20260923/static-a3/result.json",
+        "docs/mobile/evidence/S15/journey-runtime-20260923/browser-a4/result.json",
+        "docs/mobile/evidence/S15/journey-runtime-20260923/pwa-a1/result.json",
+        "docs/mobile/evidence/S15/journey-runtime-20260923/android-a1/result.json"
       ],
       "externalBlockers": []
     },
@@ -11228,7 +11245,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Continue guarded Booky journey integration under the explicit local adult reader policy, current catalogs and fresh immutable host sources. The 34 RU/EN inventory records remain draft; require independent exact-version review receipts before enabling production dialogue or journeys. Preserve App-owned drafts, explicit save/delete intent, semantic navigation progress, scene ownership and offline recovery. Child profiles, approved text/audio, full journeys, accessibility, installed-device/performance, iOS and release acceptance remain pending; S03.acceptance is first unresolved.",
+    "nextAction": "Continue S15 with persistence and migration of explicitly acknowledged literary-journey semantic checkpoints, preserving exact route/version/node identity, deliberate resume/reset, source and policy revalidation, and truthful failed-write recovery. Prepare reviewed RU/EN journey content and independent exact-version receipts without approving or publishing drafts. Preserve current catalogs, reader drafts, ordinary navigation and the canonical scene. Production content remains empty; child profiles, narration, accessibility, installed-device/performance, iOS and stage/release acceptance remain pending. S03.acceptance stays first unresolved.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -11312,7 +11329,10 @@
       "docs/mobile/evidence/S15/booky-catalog-scene-20260923/result.json",
       "docs/mobile/evidence/S15/booky-journey-host-20260923/result.json",
       "docs/mobile/evidence/S15/reader-policy-integration-20260923/result.json",
-      "docs/mobile/evidence/S15/navigation-rebaseline-20260923/result.json"
+      "docs/mobile/evidence/S15/navigation-rebaseline-20260923/result.json",
+      "docs/mobile/evidence/S15/journey-runtime-20260923/result.json",
+      "docs/mobile/evidence/S15/journey-runtime-20260923/pwa-a1/result.json",
+      "docs/mobile/evidence/S15/journey-runtime-20260923/android-a1/result.json"
     ],
     "commands": [
       "node scripts/mobile/verify-requirements.mjs",
@@ -11366,7 +11386,8 @@
       "S15 application catalog-retry scene retention: renderer/camera/scene identity survives loading/error/recovery; current catalog readiness still protects actions/progress. Initial failure remains the original fallback. Prior 265 unit tests are historical, not rerun; no stage or release acceptance.",
       "S15 host admission adapter validated without App wiring: exact route/node/revision, fresh explicit policy/catalog/review checks. Prior PWA/Android retained; no rebuild or full stage acceptance.",
       "S15 explicit local adult reader policy is wired into actual App settings/storage and the companion admission boundary. Saved policy alone can supply age/reading level; drafts, unknown/failing storage, future records and clear never grant admission. Production journeys and review approvals remain absent; no stage or release acceptance.",
-      "S15 contextual inventory provenance explicitly rebased to current Controls with eight version-2 drafts and unchanged copy;14 navigation/12 support records remain exact. Original stale-hash regression preserved; runtime/builds unchanged and all34 records still draft."
+      "S15 contextual inventory provenance explicitly rebased to current Controls with eight version-2 drafts and unchanged copy;14 navigation/12 support records remain exact. Original stale-hash regression preserved; runtime/builds unchanged and all34 records still draft.",
+      "S15 reviewed-journey runtime is wired into the actual App with current policy/catalog/review guards and explicit ephemeral acknowledgement. Synthetic source-browser fixtures validate navigation; production content stays empty. Persist and migrate semantic journey checkpoints next; do not claim disk persistence, content approval, child, device or release acceptance."
     ]
   },
   "requirementsHash": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732",
@@ -13331,6 +13352,22 @@
       "sha256": "d38a0a566cc106264540f3fce88e57e3eb84f50e6f66d214472a94ad16ba7efa",
       "sourceCommit": "ad5c955375d2652602a5ef9e04f2f9cd584ff928",
       "status": "BOOKY_NAVIGATION_DRAFT_PROVENANCE_REBASELINE_VALIDATED",
+      "stageAccepted": false,
+      "releaseReady": false
+    },
+    "s15BookyJourneyRuntime": {
+      "path": "docs/mobile/evidence/S15/journey-runtime-20260923/result.json",
+      "sha256": "c0e2188d0ce61ce52199b493bd104746e0c8a2c3dd085cfdf5e297321ace8374",
+      "sourceCommit": "c27d50e02bf426aa99454467a8ea9292967dcab6",
+      "status": "ADULT_BOOKY_JOURNEY_RUNTIME_SCOPED_VALIDATION",
+      "pwa": {
+        "path": "docs/mobile/evidence/S15/journey-runtime-20260923/pwa-a1/result.json",
+        "sha256": "6d054ba694e4f7974e754ecff32d50ca6a5606613281157132818f7decb9b3ab"
+      },
+      "android": {
+        "path": "docs/mobile/evidence/S15/journey-runtime-20260923/android-a1/result.json",
+        "sha256": "e941b1e83b3797bec8973057ec0e3ee8b34ca0008ccb456ff557f147d6dbf334"
+      },
       "stageAccepted": false,
       "releaseReady": false
     }

@@ -4854,21 +4854,49 @@
         "src/host/bookyDialogueDrafts.ts",
         "scripts/mobile/verify-booky-dialogue-drafts.mjs",
         "src/host/bookyNavigationDrafts.ts",
-        "scripts/mobile/verify-booky-navigation-drafts.mjs"
+        "scripts/mobile/verify-booky-navigation-drafts.mjs",
+        "src/App.tsx",
+        "src/components/BookArchiveSection.tsx",
+        "src/components/WriterPanel.tsx",
+        "src/host/bookyJourney.ts",
+        "src/loading/DeferredHomepageArchives.tsx",
+        "src/components/LiteraryGlobe.tsx",
+        "src/components/LiteraryWorldMap.tsx",
+        "src/books/bookArchiveDetailView.ts",
+        "src/host/bookyJourneyRuntime.ts",
+        "src/host/BookyJourneyControls.tsx",
+        "src/host/BookyJourneyControls.css",
+        "src/host/bookyJourneyCatalog.ts",
+        "src/host/bookyJourneyContent.ts",
+        "src/host/useBookyJourney.ts"
       ],
       "tests": [
         "src/host/bookyDialogueRegistry.test.ts",
         "src/host/bookyDialogueDrafts.test.ts",
         "src/host/bookySupport.test.ts",
-        "src/host/bookyNavigationDrafts.test.ts"
+        "src/host/bookyNavigationDrafts.test.ts",
+        "src/host/bookyJourneyRuntime.test.ts",
+        "src/host/bookyJourneyCatalog.test.ts",
+        "src/host/bookyJourney.test.ts",
+        "src/host/bookyJourneyHost.test.ts",
+        "src/host/bookyJourneyCompanion.test.ts",
+        "src/host/bookyReaderPolicy.test.ts",
+        "src/host/bookyReaderPolicyStore.test.ts",
+        "src/host/planetMascot.test.ts",
+        "src/host/planetMascotPersistence.test.ts",
+        "src/books/bookArchiveDetailView.test.ts",
+        "src/books/bookArchiveAuthorRequest.test.ts",
+        "tests/pwa/booky-journey.spec.mjs",
+        "tests/pwa/booky-reader-policy.spec.mjs"
       ],
       "evidence": [
         "docs/mobile/evidence/S15/booky-dialogue-registry-20260920/result.json",
         "docs/mobile/evidence/S15/booky-navigation-inventory-20260920/result.json",
-        "docs/mobile/evidence/S15/navigation-rebaseline-20260923/result.json"
+        "docs/mobile/evidence/S15/navigation-rebaseline-20260923/result.json",
+        "docs/mobile/evidence/S15/journey-runtime-20260923/result.json"
       ],
-      "commit": "ad5c955375d2652602a5ef9e04f2f9cd584ff928",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion. Adult dialogue registry infrastructure now validates version/checksum, context, age, entity, review and rights boundaries. Twelve existing support-copy locale records remain not-reviewed and unavailable through the reviewed-dialogue resolver. 52 tests, TypeScript and the fixed-inventory audit passed. Existing runtime remains unchanged; this does not complete reviewed dialogue or child/narration scope. The fixed adult RU/EN dialogue inventory now adds 14 existing navigation-step and 8 contextual records. All 22 new records and the 12 existing support records remain draft, with no approved or available reviewed dialogue. 55 focused tests, TypeScript and a source-bound inventory audit passed. Existing runtime remains unchanged; this extends PLANETKA-003 infrastructure without completing reviewed dialogue or child/narration scope. Repaired the stale contextual draft provenance after the Controls integration: eight RU/EN contextual payload/source versions now explicitly advance to 2 with identical copy; fourteen navigation and twelve support records remain exact. All 34 remain draft. 56 selected unit tests, TypeScript and the read-only source inventory audit passed; original inventory-a1 failure is preserved. Runtime code is unchanged; 353 prior reader tests and 2 actual-App Chrome cases are retained without rerun. PWA ec2dd9dd / Android-dev 91837818 remain at source c5f8e80a, with preserved runtime/APK bytes rehashed and the old unimported inventory source hash explicitly distinguished. No rebuild or stage/release acceptance."
+      "commit": "c27d50e02bf426aa99454467a8ea9292967dcab6",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion. Adult dialogue registry infrastructure now validates version/checksum, context, age, entity, review and rights boundaries. Twelve existing support-copy locale records remain not-reviewed and unavailable through the reviewed-dialogue resolver. 52 tests, TypeScript and the fixed-inventory audit passed. Existing runtime remains unchanged; this does not complete reviewed dialogue or child/narration scope. The fixed adult RU/EN dialogue inventory now adds 14 existing navigation-step and 8 contextual records. All 22 new records and the 12 existing support records remain draft, with no approved or available reviewed dialogue. 55 focused tests, TypeScript and a source-bound inventory audit passed. Existing runtime remains unchanged; this extends PLANETKA-003 infrastructure without completing reviewed dialogue or child/narration scope. Repaired the stale contextual draft provenance after the Controls integration: eight RU/EN contextual payload/source versions now explicitly advance to 2 with identical copy; fourteen navigation and twelve support records remain exact. All 34 remain draft. 56 selected unit tests, TypeScript and the read-only source inventory audit passed; original inventory-a1 failure is preserved. Runtime code is unchanged; 353 prior reader tests and 2 actual-App Chrome cases are retained without rerun. PWA ec2dd9dd / Android-dev 91837818 remain at source c5f8e80a, with preserved runtime/APK bytes rehashed and the old unimported inventory source hash explicitly distinguished. No rebuild or stage/release acceptance. Actual App journey controls now use current explicit adult policy, exact independent review receipts, whole-route availability and settled canonical country/writer/work views. Semantic acknowledgement is explicit and ephemeral; locale and resume preserve its identity without claiming disk persistence or books read. Production content remains empty and all 34 inventoried dialogues remain draft. 223 focused tests, TypeScript, five actual-App Chrome cases and 5 inspected captures bind fresh PWA 046440f9 / Android-dev f3c9f92d. All 1,591 protected inputs remain exact. No stage or release acceptance."
     },
     {
       "id": "PLANETKA-004",

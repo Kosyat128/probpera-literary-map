@@ -1,0 +1,13 @@
+# S15 adult Booky journey runtime
+
+Source: c27d50e02bf426aa99454467a8ea9292967dcab6.
+
+Actual App journey controls now use current explicit adult policy, exact independent review receipts, whole-route availability and settled canonical country/writer/work views. Semantic acknowledgement is explicit and ephemeral; locale and resume preserve its identity without claiming disk persistence or books read. Production content remains empty and all 34 inventoried dialogues remain draft. 223 focused tests, TypeScript, five actual-App Chrome cases and 5 inspected captures bind fresh PWA 046440f9 / Android-dev f3c9f92d. All 1,591 protected inputs remain exact. No stage or release acceptance.
+
+- The actual App integrates current-policy journey admission, whole-route catalog validation, explicit navigation and semantic acknowledgement. Production reviewed journey content is empty; all existing 34 RU/EN dialogue inventory records remain draft.
+- Three actual-App Chrome cases substitute explicitly synthetic dialogue and independent review receipts only in the test content provider. They cover one country/writer/work/checkpoint journey and two admission denials. The other two cases rerun reader-profile save/delete and remount regressions. Synthetic receipts confer no real content approval.
+- Journey acknowledgements are ephemeral application-lifetime semantic state. They are neither books-read claims nor durable checkpoint storage or migration. Persistence is the next implementation step.
+- Locale changes, explicit resume, settled entity views and canonical scene identity are scoped browser evidence. Reachability and inspected screenshots are not formal screen-reader, art, full accessibility or device-performance acceptance.
+- Fresh preserved PWA and Android-dev artifacts bind the exact source. Built-PWA coverage is the existing offline/download smoke; local APK bytes, manifests and signatures do not establish installed-device execution. No iOS build, child profile/access, narration, entitlement, deployment, store submission or release is performed.
+
+Next: Continue S15 with persistence and migration of explicitly acknowledged literary-journey semantic checkpoints, preserving exact route/version/node identity, deliberate resume/reset, source and policy revalidation, and truthful failed-write recovery. Prepare reviewed RU/EN journey content and independent exact-version receipts without approving or publishing drafts. Preserve current catalogs, reader drafts, ordinary navigation and the canonical scene. Production content remains empty; child profiles, narration, accessibility, installed-device/performance, iOS and stage/release acceptance remain pending. S03.acceptance stays first unresolved.

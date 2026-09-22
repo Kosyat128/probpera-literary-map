@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "kind": "preserved-reader-policy-builds-before-journey-runtime",
+  "checkpoint": "2886b14e771fde7073fe96a1029a4f72b7510133",
+  "priorPwa": {
+    "path": "docs/mobile/evidence/S15/reader-policy-integration-20260923/pwa-a2/result.json",
+    "sha256": "7f2251121f9994ed0cc8ea109e00a2a55ace730902db3fbc93bf24f4c3bcdf47",
+    "buildId": "ec2dd9dd25cce6476d3acc9f2a1daa7667e41f11ac4194d5daab9972a06979a9",
+    "sourceCommit": "c5f8e80ab3b8f6be42e04584a0b174ac427197e7"
+  },
+  "priorAndroid": {
+    "path": "docs/mobile/evidence/S15/reader-policy-integration-20260923/android-a2/result.json",
+    "sha256": "029b50fb5e5363fa2cd6b06a60de54e43a66cfd54c9a5bc1a09198c9922bfe45",
+    "buildId": "91837818fafd92ced96ffde96483a91ab734f2f1e81c605d4acfc190ea0f0dfe",
+    "sourceCommit": "c5f8e80ab3b8f6be42e04584a0b174ac427197e7"
+  }
+}
