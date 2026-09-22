@@ -149,6 +149,14 @@ export type GlobeExplicitFocusRequest =
       coordinates: Readonly<{ latitude: number; longitude: number }>;
     }>;
 
+export type GlobeCameraViewReceipt = Readonly<{
+  requestId: number | null;
+  intentKey: string | null;
+  countryId: string | null;
+  writerId: string | null;
+  settled: boolean;
+}>;
+
 interface Props {
   countries: Country[];
   atlasCountries?: Country[];
@@ -164,6 +172,7 @@ interface Props {
   mode?: LiteraryGlobeMode;
   rootRef?: Ref<HTMLDivElement>;
   onViewSample?: (sample: GlobeViewSample) => void;
+  onCameraViewChange?: (receipt: GlobeCameraViewReceipt) => void;
   onHoverCountryChange?: (country: Country | null) => void;
   focusRequest?: GlobeExplicitFocusRequest | null;
   economical?: boolean;
@@ -1999,6 +2008,7 @@ export default function LiteraryGlobe({
   mode = "embedded",
   rootRef,
   onViewSample,
+  onCameraViewChange,
   onHoverCountryChange,
   focusRequest,
   economical = false,
@@ -2155,6 +2165,26 @@ export default function LiteraryGlobe({
   const [cancelledCameraMotion, setCancelledCameraMotion] =
     useState<GlobeCameraCancellationEvent | null>(null);
   const [settledCameraIntent, setSettledCameraIntent] = useState("none");
+  const cameraViewReceipt = useMemo<GlobeCameraViewReceipt>(() => {
+    const request = focusRequest ?? null;
+    const intentKey = request === null ? null : request.kind === "home"
+      ? `home:${String(request.id)}` : `${request.kind}:${request.countryId}:${String(request.id)}`;
+    const countryId = selectedCountry?.id ?? null;
+    const writerId = request?.kind === "writer-focus" ? selectedWriter?.id ?? null : null;
+    const matchingSelection = request === null ? countryId === null : request.kind === "home"
+      ? countryId === null : request.countryId === countryId
+        && (request.kind !== "writer-focus" || request.writerId === writerId);
+    return Object.freeze({ requestId: request?.id ?? null, intentKey, countryId, writerId,
+      settled: globeActive && viewSample.revision > 0 && matchingSelection
+        && (cameraPhase === "idle" || cameraPhase === "auto")
+        && (intentKey === null || startedCameraIntent === intentKey && settledCameraIntent === intentKey
+          && cancelledCameraMotion?.intentKey !== intentKey) });
+  }, [focusRequest, selectedCountry?.id, selectedWriter?.id, globeActive, viewSample.revision > 0,
+    cameraPhase, startedCameraIntent, settledCameraIntent, cancelledCameraMotion?.intentKey]);
+  useLayoutEffect(() => { onCameraViewChange?.(cameraViewReceipt); }, [onCameraViewChange, cameraViewReceipt]);
+  useLayoutEffect(() => () => {
+    onCameraViewChange?.({ requestId: null, intentKey: null, countryId: null, writerId: null, settled: false });
+  }, [onCameraViewChange]);
   const controlRequestId = useRef(0);
   const prewarmInputPauseUntilRef = useRef(0);
   const prewarmRuntimeRef = useRef({

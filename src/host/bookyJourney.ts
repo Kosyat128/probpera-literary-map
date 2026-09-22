@@ -51,7 +51,7 @@ export type BookyJourneyTrust = Readonly<{
 export type BookyJourneyPlan = Readonly<{
   id: string; version: number; locale: BookyDialogueLocale; title: string; definitionChecksum: string;
   nodes: readonly Readonly<{
-    id: string; kind: BookyJourneyNode["kind"]; entity: Readonly<ContentEntityRef> | null;
+    id: string; kind: BookyJourneyNode["kind"]; screen: BookyJourneyNode["screen"]; entity: Readonly<ContentEntityRef> | null;
     coordinates: readonly [number, number] | null; dialogue: BookyDialogueRecord;
   }>[];
 }>;
@@ -216,7 +216,7 @@ export function compileBookyJourney(input: unknown, inputContext: unknown, trust
         readingLevel: context.readingLevel, intent: "navigation", screen: node.screen, context: `${definition.id}:${node.id}`,
         entityIds: ref ? [bookyJourneyEntityId(ref)] : [], now: context.now });
       if (!dialogue || dialogue.payload.version !== node.dialogue.version || dialogue.review.contentChecksum !== node.dialogue.contentChecksum) return null;
-      nodes.push(Object.freeze({ id: node.id, kind: node.kind, entity: ref, coordinates, dialogue }));
+      nodes.push(Object.freeze({ id: node.id, kind: node.kind, screen: node.screen, entity: ref, coordinates, dialogue }));
     }
     return Object.freeze({ id: definition.id, version: definition.version, locale: definition.locale, title: definition.title,
       definitionChecksum: checksum, nodes: Object.freeze(nodes) });

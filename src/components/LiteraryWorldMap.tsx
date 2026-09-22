@@ -11,6 +11,7 @@ import type { WriterFilterState } from "../filters/filterTypes";
 import type {
   GlobeCountrySelectionSource,
   GlobeExplicitFocusRequest,
+  GlobeCameraViewReceipt,
   LiteraryGlobeMode,
 } from "./LiteraryGlobe";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
@@ -60,6 +61,7 @@ interface Props {
   mode?: LiteraryGlobeMode;
   rootRef?: Ref<HTMLElement>;
   onViewSample?: (sample: GlobeViewSample) => void;
+  onCameraViewChange?: (receipt: GlobeCameraViewReceipt) => void;
   onHoverCountryChange?: (country: Country | null) => void;
   focusRequest?: GlobeExplicitFocusRequest | null;
   economical?: boolean;
@@ -90,6 +92,7 @@ export default function LiteraryWorldMap({
   mode = "embedded",
   rootRef,
   onViewSample,
+  onCameraViewChange,
   onHoverCountryChange,
   focusRequest,
   economical = false,
@@ -203,6 +206,7 @@ export default function LiteraryWorldMap({
           nobelCountryId={nobelCountryId}
           mode={mode}
           onViewSample={onViewSample}
+          onCameraViewChange={onCameraViewChange}
           onHoverCountryChange={onHoverCountryChange}
           focusRequest={focusRequest}
           economical={economical}

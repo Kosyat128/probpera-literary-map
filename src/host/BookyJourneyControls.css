@@ -1,0 +1,81 @@
+.booky-journey-controls {
+  box-sizing: border-box;
+  min-width: 0;
+  max-width: 100%;
+  margin-top: 16px;
+  padding-top: 8px;
+  border-top: 1px solid #d8c79e;
+  color: #30392b;
+  font: 400 14px/1.5 "Source Sans 3 Local", var(--sans, sans-serif);
+  overflow-wrap: anywhere;
+}
+.booky-journey-controls h3 { margin: 6px 0 10px; color: #30503a; font-size: 18px; }
+.booky-journey-controls h4 { margin: 8px 0; color: #30503a; font-size: 16px; }
+.booky-journey-controls p { margin: 8px 0 12px; }
+.booky-journey-controls__status {
+  padding: 9px 11px;
+  border-left: 3px solid #b69350;
+  border-radius: 2px 5px 5px 2px;
+  background: #e9ead180;
+}
+.booky-journey-controls__status[data-booky-journey-status="failed"] { color: #8d3425; }
+.booky-journey-controls__routes,
+.booky-journey-controls__actions { display: grid; gap: 8px; }
+.booky-journey-controls__active,
+.booky-journey-controls__node { min-width: 0; }
+.booky-journey-controls__progress,
+.booky-journey-controls__position,
+.booky-journey-controls__caption,
+.booky-journey-controls__reduced { color: #625942; font-size: 13px; }
+.booky-journey-controls__node { margin-block: 12px; }
+.booky-journey-controls__body { white-space: pre-line; }
+.booky-journey-controls__reduced { display: none; }
+
+.booky-journey-controls button {
+  box-sizing: border-box;
+  min-width: 44px;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 9px 12px;
+  border: 1px solid #526e58;
+  border-radius: 6px;
+  color: #30392b;
+  background: #fff9e9;
+  font: inherit;
+  font-weight: 650;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.booky-journey-controls button:hover:not(:disabled) { background: #e6f0df; }
+.booky-journey-controls button:disabled { opacity: .5; cursor: default; }
+.booky-journey-controls__routes > button,
+.booky-journey-controls__actions > button { width: 100%; }
+.booky-journey-controls .booky-journey-controls__primary {
+  border-color: #345a3d;
+  color: #fffbed;
+  background: #345a3d;
+}
+.booky-journey-controls .booky-journey-controls__primary:hover:not(:disabled) { background: #28492f; }
+.booky-journey-controls__reset { margin-top: 12px; }
+.booky-journey-controls__confirmation-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.booky-journey-controls__confirmation-actions > button { flex: 1 1 100px; }
+.booky-journey-controls :is(button, [tabindex="-1"]):focus-visible { outline: 3px solid #7850aa; outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .booky-journey-controls__caption { display: none; }
+  .booky-journey-controls__reduced { display: block; }
+}
+@media (max-width: 360px) {
+  .booky-journey-controls__confirmation-actions { flex-direction: column; }
+  .booky-journey-controls__confirmation-actions > button { flex-basis: auto; width: 100%; }
+}
+@media (forced-colors: active) {
+  .booky-journey-controls { color: CanvasText; border-color: CanvasText; }
+  .booky-journey-controls :is(h3, h4, p) { color: CanvasText; }
+  .booky-journey-controls__status { background: Canvas; border-color: CanvasText; }
+  .booky-journey-controls button,
+  .booky-journey-controls .booky-journey-controls__primary { color: ButtonText; background: ButtonFace; border-color: ButtonText; }
+  .booky-journey-controls :is(button, [tabindex="-1"]):focus-visible { outline-color: Highlight; }
+}

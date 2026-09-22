@@ -87,6 +87,13 @@ function FollowBellIcon({ active = false }: { active?: boolean }) {
   );
 }
 
+/** Mounted writer details after this panel's own entrance animations. */
+export type WriterPanelView = Readonly<{
+  countryId: string;
+  writerId: string | null;
+  ready: boolean;
+}>;
+
 type WriterPanelProps = {
   country: Country;
   books: readonly BookArchiveEntry[];
@@ -97,6 +104,7 @@ type WriterPanelProps = {
   focusRequestId?: number;
   applicationRoot?: boolean;
   onWriterSelect?: (writer: Writer) => void;
+  onWriterViewChange?: (view: WriterPanelView) => void;
   onWorkSelect?: (
     countryId: string,
     writerId: string,
@@ -173,6 +181,7 @@ export default function WriterPanel({
   focusRequestId,
   applicationRoot = false,
   onWriterSelect,
+  onWriterViewChange,
   onWorkSelect,
   onShowWriterOnGlobe,
   onNavigateWorld,
@@ -187,6 +196,10 @@ export default function WriterPanel({
   const { toggle: toggleSubscription, isSubscribed } = useSubscriptions();
   const panelRef = useRef<HTMLElement>(null);
   const detailRef = useRef<HTMLElement>(null);
+  const panelAnimationRef = useRef<Animation | null>(null);
+  const detailAnimationRef = useRef<Animation | null>(null);
+  const onWriterViewChangeRef = useRef(onWriterViewChange);
+  onWriterViewChangeRef.current = onWriterViewChange;
   const detailTabRefs = useRef<Record<WriterDetailView, HTMLButtonElement | null>>({
     biography: null,
     works: null,
@@ -251,7 +264,11 @@ export default function WriterPanel({
       ],
       WRITER_PANEL_MOTION_MS
     );
-    return () => animation?.cancel();
+    panelAnimationRef.current = animation;
+    return () => {
+      animation?.cancel();
+      if (panelAnimationRef.current === animation) panelAnimationRef.current = null;
+    };
   }, [country.id]);
 
   useLayoutEffect(() => {
@@ -265,6 +282,7 @@ export default function WriterPanel({
       ],
       WRITER_DETAIL_MOTION_MS
     );
+    detailAnimationRef.current = animation;
     let frame: number | null = null;
     if (requestedWriterId.current === activeWriter.id) {
       requestedWriterId.current = null;
@@ -272,9 +290,36 @@ export default function WriterPanel({
     }
     return () => {
       animation?.cancel();
+      if (detailAnimationRef.current === animation) detailAnimationRef.current = null;
       if (frame !== null) window.cancelAnimationFrame(frame);
     };
   }, [activeWriter?.id, scrollToWriterDetail]);
+
+  const observesWriterView = Boolean(onWriterViewChange);
+  useLayoutEffect(() => {
+    if (!observesWriterView) return;
+    const countryId = country.id;
+    const writerId = activeWriter?.id || null;
+    const detail = detailRef.current;
+    let disposed = false;
+    const unavailable = () => onWriterViewChangeRef.current?.({ countryId, writerId: null, ready: false });
+    unavailable();
+    const reportReady = () => {
+      if (!disposed && writerId && detail?.isConnected && detailRef.current === detail) {
+        // App separately owns panel visibility and canonical camera settlement.
+        onWriterViewChangeRef.current?.({ countryId, writerId, ready: true });
+      }
+    };
+    const animations = [panelAnimationRef.current, detailAnimationRef.current]
+      .filter((animation): animation is Animation => animation !== null);
+    if (animations.length) {
+      void Promise.all(animations.map((animation) => animation.finished))
+        .then(reportReady, () => { /* A cancelled entrance never acknowledges a writer. */ });
+    } else {
+      reportReady();
+    }
+    return () => { disposed = true; unavailable(); };
+  }, [country.id, activeWriter?.id, observesWriterView]);
 
   useLayoutEffect(() => {
     if (

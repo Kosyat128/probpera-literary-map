@@ -34,6 +34,9 @@ import { createPlanetMascotController } from "./host/planetMascot";
 import { createPlanetMascotPersistence } from "./host/planetMascotPersistence";
 import BookyReaderSettings, { useBookyReaderSettingsState } from "./host/BookyReaderSettings";
 import { createBookyReaderPolicyStore } from "./host/bookyReaderPolicyStore";
+import BookyJourneyControls from "./host/BookyJourneyControls";
+import { useBookyJourney, type BookyJourneyNavigation } from "./host/useBookyJourney";
+import type { BookArchiveDetailView } from "./books/bookArchiveDetailView";
 import type { PlanetMascotAction } from "./host/planetMascotRoutes";
 import type { BookArchiveAuthorRequest, BookArchiveAuthorRequestResult, BookArchiveAuthorView } from "./books/bookArchiveAuthorRequest";
 import { createPlanetSceneInspectionController } from "./host/planetSceneInspection";
@@ -72,6 +75,7 @@ import type {
   GlobeCountrySelectionFocusKind,
   GlobeCountrySelectionSource,
   GlobeExplicitFocusRequest,
+  GlobeCameraViewReceipt,
 } from "./components/LiteraryGlobe";
 import {
   chooseRandomLiteraryDestination,
@@ -596,6 +600,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
   useEffect(() => mascotPersistence.activate(), [mascotPersistence]);
   const readerPolicyStore = useMemo(() => createBookyReaderPolicyStore({ preferences: platformServices.preferences }), [platformServices.preferences]);
   const readerPolicySnapshot = useSyncExternalStore(readerPolicyStore.subscribe, readerPolicyStore.getSnapshot, readerPolicyStore.getSnapshot);
+  const readJourneyPolicy = useCallback(() => readerPolicyStore.getSnapshot().policy, [readerPolicyStore]);
   const readerSettingsEditor = useBookyReaderSettingsState(readerPolicySnapshot);
   useLayoutEffect(() => {
     if (isPlanetApplication && platformVisibility === "active") readerPolicyStore.start();
@@ -814,6 +819,17 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
   const globalSearchWasOpenRef = useRef(false);
   const [requestedBook, setRequestedBook] =
     useState<BookArchiveEntry | null>(null);
+  const [requestedBookToken, setRequestedBookToken] = useState(0);
+  const requestedBookSequence = useRef(0);
+  const requestedBookIntent = useRef<{ book: BookArchiveEntry; token: number; valid: () => boolean; cleanup: () => void; cancelJourney: () => void } | null>(null);
+  const [journeyBookView, setJourneyBookView] = useState<BookArchiveDetailView>({ active: false, settled: false,
+    countryId: null, writerId: null, workId: null });
+  const [journeyCollectionSettled, setJourneyCollectionSettled] = useState(false);
+  const [journeyCameraView, setJourneyCameraView] = useState<GlobeCameraViewReceipt | null>(null);
+  const [journeyWriterView, setJourneyWriterView] = useState<{ countryId: string; writerId: string | null; ready: boolean } | null>(null);
+  const journeyGlobeIntent = useRef<{ perform: () => boolean; valid: () => boolean } | null>(null);
+  const [journeyGlobeRevision, setJourneyGlobeRevision] = useState(0);
+  const [journeyNavigationRevision, setJourneyNavigationRevision] = useState(0);
   const requestedBookReturnFocusRef = useRef<HTMLElement | null>(null);
   const pendingImmersiveBookRef = useRef<BookArchiveEntry | null>(null);
   const pendingImmersiveBookFocusRef = useRef<HTMLElement | null>(null);
@@ -845,6 +861,8 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     if (nativeReturnRequestedRef.current) closeNativeCollection();
   }, [closeNativeCollection]);
   const cancelNativeNavigation = useCallback(() => {
+    journeyGlobeIntent.current = null;
+    requestedBookIntent.current?.cancelJourney();
     mascotFocusSequence.current += 1;
     cancelMascotAuthorRequest();
     sceneInspection.close();
@@ -1577,15 +1595,30 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
 
   const openBook = useCallback((
     book: BookArchiveEntry,
-    returnFocus: HTMLElement | null = null
+    returnFocus: HTMLElement | null = null,
+    journey?: { signal: AbortSignal; valid: () => boolean }
   ) => {
-    if (!isPublicBook(book)) return;
+    if (!isPublicBook(book) || journey && !journey.valid()) return false;
     cancelNativeNavigation();
     requestBookRuntime();
     setBookLoadRequested(true);
+    requestedBookIntent.current?.cleanup();
+    const token = ++requestedBookSequence.current;
+    const cancel = () => {
+      if (requestedBookIntent.current?.token !== token) return;
+      journey?.signal.removeEventListener("abort", cancel);
+      requestedBookIntent.current = null;
+      requestedBookReturnFocusRef.current = null;
+      setRequestedBook(null);
+    };
+    journey?.signal.addEventListener("abort", cancel, { once: true });
+    requestedBookIntent.current = { book, token, valid: journey?.valid ?? (() => true),
+      cleanup: () => journey?.signal.removeEventListener("abort", cancel), cancelJourney: () => { if (journey) cancel(); } };
+    setRequestedBookToken(token);
     requestedBookReturnFocusRef.current = returnFocus;
     setRequestedBook(book);
     if (isPlanetApplication) { nativeReturnRequestedRef.current = false; setNativeCollectionOpen(true); }
+    return true;
   }, [cancelNativeNavigation, isPlanetApplication, requestBookRuntime]);
 
   const retryBookArchive = useCallback(() => {
@@ -1596,10 +1629,19 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     setBookArchiveRetryToken((value) => value + 1);
   }, [archiveDataStatus, requestBookRuntime, retryArchiveData]);
 
-  const handleRequestedBookHandled = useCallback(() => {
+  const canOpenRequestedBook = useCallback((book: BookArchiveEntry, token: number | undefined) => {
+    const intent = requestedBookIntent.current;
+    return !!intent && intent.book === book && intent.token === token && intent.valid();
+  }, []);
+  const handleRequestedBookHandled = useCallback((token?: number) => {
+    const intent = requestedBookIntent.current;
+    if (!intent || intent.token !== token) return;
+    intent.cleanup();
+    requestedBookIntent.current = null;
     requestedBookReturnFocusRef.current = null;
     setRequestedBook(null);
   }, []);
+  useLayoutEffect(() => () => { requestedBookIntent.current?.cleanup(); requestedBookIntent.current = null; }, []);
 
   const openResolvedWriterWork = useCallback(
     (book: BookArchiveEntry, returnFocus: HTMLElement | null) => {
@@ -2271,6 +2313,76 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     nativeCollectionOpen, selectedCountry?.id, selectedWriter?.id, mascotAuthorResult, mascotBookStatus, mascotAuthorView,
     platformConnectivity, archiveDataStatus, language, readerPolicySnapshot.policy]);
 
+  const navigateJourney = useCallback<BookyJourneyNavigation>((offer, signal, isCurrent) => {
+    if (!isCurrent()) return false;
+    // Even a same-screen checkpoint must produce a committed view observation
+    // after this gesture; an old matching selection is not a navigation receipt.
+    setJourneyNavigationRevision(value => value + 1);
+    const { node } = offer, entity = node.entity;
+    if (node.kind === "work" && entity?.kind === "work") {
+      const book = verifiedBookArchive.find(item => item.countryId === entity.countryId
+        && item.writerId === entity.writerId && item.id === entity.workId);
+      return !!book && openBook(book, null, { signal, valid: isCurrent });
+    }
+    const perform = () => {
+      if (!isCurrent()) return false;
+      if (node.kind === "checkpoint") return true;
+      if (!entity) return false;
+      const country = countryArchive.find(item => item.id === entity.countryId);
+      if (!country) return false;
+      if (entity.kind === "writer") {
+        const writer = country.writers.find(item => item.id === entity.writerId);
+        if (!writer) return false;
+        selectWriterAndFocus(country, writer, "all");
+      } else if (entity.kind === "country") {
+        selectCountry(country, false, undefined, undefined, "all");
+        if (atlasExperience.compactSheet) atlasExperienceDispatch({ type: "SET_SHEET_STATE", sheetState: "half" });
+      } else return false;
+      return true;
+    };
+    if (node.screen === "collection") {
+      cancelNativeNavigation();
+      nativeReturnRequestedRef.current = false;
+      setNativeCollectionOpen(true);
+      return true;
+    }
+    if (!nativeCollectionOpen) return perform();
+    cancelNativeNavigation();
+    const intent = { perform, valid: isCurrent };
+    journeyGlobeIntent.current = intent;
+    signal.addEventListener("abort", () => { if (journeyGlobeIntent.current === intent) journeyGlobeIntent.current = null; }, { once: true });
+    requestReturnToPlanet();
+    return true;
+  }, [verifiedBookArchive, openBook, countryArchive, selectWriterAndFocus, selectCountry, atlasExperience.compactSheet,
+    atlasExperienceDispatch, nativeCollectionOpen, cancelNativeNavigation, requestReturnToPlanet]);
+  useEffect(() => {
+    const intent = journeyGlobeIntent.current;
+    if (nativeCollectionOpen || !intent) return;
+    journeyGlobeIntent.current = null;
+    if (intent.valid()) intent.perform();
+    setJourneyGlobeRevision(value => value + 1);
+  }, [nativeCollectionOpen]);
+  const journeyView = useMemo(() => nativeCollectionOpen ? {
+    screen: "collection" as const, countryId: journeyBookView.countryId, writerId: journeyBookView.writerId,
+    workId: journeyBookView.workId, settled: (journeyBookView.active && journeyBookView.settled || journeyCollectionSettled) && !requestedBook,
+  } : {
+    screen: "globe" as const, countryId: selectedCountry?.id ?? null,
+    writerId: !atlasSheetContentCollapsed && journeyWriterView?.ready && journeyWriterView.countryId === selectedCountry?.id
+      && journeyWriterView.writerId === selectedWriter?.id ? selectedWriter.id : null,
+    workId: null, settled: !journeyGlobeIntent.current && archiveDataStatus === "ready" && globeViewSample.revision > 0 && !atlasSearchOpen
+      && journeyCameraView?.settled === true && journeyCameraView.requestId === (globeFocusRequest?.id ?? null)
+      && journeyCameraView.countryId === (selectedCountry?.id ?? null)
+      && (!selectedWriter || atlasSheetContentCollapsed || journeyWriterView?.ready === true
+        && journeyWriterView.countryId === selectedCountry?.id && journeyWriterView.writerId === selectedWriter.id),
+  }, [nativeCollectionOpen, journeyBookView, journeyCollectionSettled, requestedBook, selectedCountry?.id, selectedWriter?.id,
+    atlasSheetContentCollapsed, journeyWriterView, archiveDataStatus, globeViewSample.revision > 0, atlasSearchOpen,
+    journeyGlobeRevision, journeyNavigationRevision, journeyCameraView, globeFocusRequest?.id]);
+  const journey = useBookyJourney({ mascot, mascotSnapshot, enabled: isPlanetApplication,
+    active: planetLaunchComplete && platformVisibility === "active" && !globalSearchOpen && !communityOpen,
+    policy: readerPolicySnapshot.policy, readPolicy: readJourneyPolicy, locale: language, connectivity: platformConnectivity,
+    countryReady: archiveDataStatus === "ready", booksReady: mascotBookStatus === "ready",
+    countries: countryArchive, books: verifiedBookArchive, view: journeyView, navigate: navigateJourney });
+
   const handleMascotAction = useCallback((action: PlanetMascotAction) => {
     const focusSequence = ++mascotFocusSequence.current;
     if (action === "return-globe") { requestReturnToPlanet(); return; }
@@ -2912,6 +3024,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
                 onCountrySelect={selectGlobeCountry}
                 onWriterSelect={selectGlobeWriter}
                 onViewSample={setGlobeViewSample}
+                onCameraViewChange={isPlanetApplication ? setJourneyCameraView : undefined}
                 onHoverCountryChange={setGlobeHoveredCountry}
                 focusRequest={globeFocusRequest}
                 economical={atlasExperience.economical}
@@ -3058,6 +3171,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
                       onRetryBooks={retryBookArchive}
                       selectedWriter={selectedWriter}
                       applicationRoot={isPlanetApplication}
+                      onWriterViewChange={isPlanetApplication ? setJourneyWriterView : undefined}
                       focusRequestId={
                         (!isPlanetApplication || (!atlasSheetContentCollapsed && !nativeCollectionOpen && !atlasSearchOpen)) &&
                         writerFocusRequest?.countryId === selectedCountry.id &&
@@ -3168,6 +3282,10 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
           onLoadIntent={requestBookRuntime}
           onRetryArchive={retryBookArchive}
           requestedBook={requestedBook}
+          requestedBookToken={requestedBookToken}
+          canOpenRequestedBook={canOpenRequestedBook}
+          onDetailViewChange={isPlanetApplication ? setJourneyBookView : undefined}
+          onCollectionSettledChange={isPlanetApplication ? setJourneyCollectionSettled : undefined}
           requestedAuthor={isPlanetApplication ? mascotAuthorRequest : null}
           onRequestedAuthorHandled={handleMascotAuthorHandled}
           onAuthorViewChange={isPlanetApplication ? setMascotAuthorView : undefined}
@@ -3192,9 +3310,18 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
       onAction={handleMascotAction} position={mascotPosition} onPositionChange={setMascotPosition}
       persistence={mascotPersistenceSnapshot} onRetryPersistence={mascotPersistence.retry}
       onRetryContent={target => { if (target === "countries") retryArchiveData(); else retryBookArchive(); }}
-      readerSettings={<BookyReaderSettings snapshot={readerPolicySnapshot} editor={readerSettingsEditor}
+      readerSettings={<>
+        {journey.needsBooks && <button type="button" data-booky-journey-load=""
+          disabled={mascotBookStatus === "loading"}
+          onClick={() => { if (mascotBookStatus === "error") retryBookArchive(); else requestBookRuntime(); setBookLoadRequested(true); }}>
+          {language === "ru" ? mascotBookStatus === "loading" ? "Загружаем книги для маршрутов…" : "Загрузить книги для маршрутов"
+            : mascotBookStatus === "loading" ? "Loading books for journeys…" : "Load books for journeys"}
+        </button>}
+        <BookyJourneyControls snapshot={journey.snapshot} controller={journey.controller} />
+        <BookyReaderSettings snapshot={readerPolicySnapshot} editor={readerSettingsEditor}
         onSave={value => readerPolicyStore.save(value, new Date().toISOString())}
-        onClear={readerPolicyStore.clear} onRetry={readerPolicyStore.retry} />} />;
+        onClear={readerPolicyStore.clear} onRetry={readerPolicyStore.retry} />
+      </>} />;
     return <div className="magazine-app native-planet-app" data-typography-component="magazine" data-planet-ready={String(globeViewSample.revision > 0)}>
       <main ref={nativeGlobeRootRef} onPointerDownCapture={event => {
         mascotFocusSequence.current += 1;

@@ -105,6 +105,8 @@ import {
 import { COMPLETE_SHELF_CATALOG_BATCH_SIZE } from "../books/completeShelfModel";
 import { resolveBookArchiveAuthorRequest, type BookArchiveAuthorRequest,
   type BookArchiveAuthorRequestResult, type BookArchiveAuthorView } from "../books/bookArchiveAuthorRequest";
+import { INACTIVE_BOOK_ARCHIVE_DETAIL_VIEW, resolveBookArchiveDetailView,
+  type BookArchiveDetailView } from "../books/bookArchiveDetailView";
 import {
   accumulateBookShelfWheelIntent,
   clampBookShelfFocusIndex,
@@ -241,8 +243,12 @@ type Props = {
   countries: Country[];
   onBookSelect: (book: BookArchiveEntry) => void;
   requestedBook?: BookArchiveEntry | null;
+  requestedBookToken?: number;
   requestedBookReturnFocus?: HTMLElement | null;
-  onRequestedBookHandled?: () => void;
+  canOpenRequestedBook?: (book: BookArchiveEntry, token: number | undefined) => boolean;
+  onRequestedBookHandled?: (token?: number) => void;
+  onDetailViewChange?: (view: BookArchiveDetailView) => void;
+  onCollectionSettledChange?: (settled: boolean) => void;
   requestedAuthor?: BookArchiveAuthorRequest | null;
   onRequestedAuthorHandled?: (id: number, result: BookArchiveAuthorRequestResult) => void;
   onAuthorViewChange?: (view: BookArchiveAuthorView) => void;
@@ -565,8 +571,12 @@ export default function BookArchiveSection({
   countries,
   onBookSelect,
   requestedBook,
+  requestedBookToken,
   requestedBookReturnFocus,
+  canOpenRequestedBook,
   onRequestedBookHandled,
+  onDetailViewChange,
+  onCollectionSettledChange,
   requestedAuthor,
   onRequestedAuthorHandled,
   onAuthorViewChange,
@@ -575,6 +585,22 @@ export default function BookArchiveSection({
   onNativeDetailClosed,
   embeddedInPlanet = false,
 }: Props) {
+  const onDetailViewChangeRef = useRef(onDetailViewChange);
+  onDetailViewChangeRef.current = onDetailViewChange;
+  const onCollectionSettledChangeRef = useRef(onCollectionSettledChange);
+  onCollectionSettledChangeRef.current = onCollectionSettledChange;
+  const canOpenRequestedBookRef = useRef(canOpenRequestedBook);
+  canOpenRequestedBookRef.current = canOpenRequestedBook;
+  const reportedDetailViewRef = useRef<BookArchiveDetailView | null>(null);
+  const refreshDetailViewRef = useRef<(() => void) | null>(null);
+  const reportDetailView = useCallback((view: BookArchiveDetailView) => {
+    const previous = reportedDetailViewRef.current;
+    if (previous && previous.active === view.active && previous.settled === view.settled
+      && previous.countryId === view.countryId && previous.writerId === view.writerId
+      && previous.workId === view.workId) return;
+    reportedDetailViewRef.current = view;
+    onDetailViewChangeRef.current?.(view);
+  }, []);
   const authorRequestRef = useRef<{ highestId: number; handledId: number;
     waitingFilters: string | null;
     pending: { request: BookArchiveAuthorRequest; authorKey: string; render: object } | null }>({
@@ -684,6 +710,8 @@ export default function BookArchiveSection({
     reducedMotion,
     (reduced) => createInitialBookShelfMobileDetailState("collapsed", reduced)
   );
+  const mobileDetailStateRef = useRef(mobileDetailState);
+  mobileDetailStateRef.current = mobileDetailState;
   const mobileDetailGestureRef = useRef<{
     pointerId: number;
     startX: number;
@@ -861,6 +889,7 @@ export default function BookArchiveSection({
     book: BookArchiveEntry,
     returnFocus?: HTMLElement | null
   ) => {
+    reportDetailView(INACTIVE_BOOK_ARCHIVE_DETAIL_VIEW);
     const currentShelfState = shelfStateRef.current;
     if (
       actualViewModeRef.current === "shelf" &&
@@ -890,7 +919,9 @@ export default function BookArchiveSection({
       bookKey(book),
       requestedBookKey(window.location.search) ? "replace" : "push"
     );
-  }, []);
+    // Reopening the same object need not cause a React selection update.
+    window.requestAnimationFrame(() => refreshDetailViewRef.current?.());
+  }, [reportDetailView]);
   const centerShelfScene = useCallback(() => {
     const scene = document
       .getElementById("books")
@@ -964,6 +995,7 @@ export default function BookArchiveSection({
   );
   const finalizeBookDetailClose = useCallback(
     (returnFocus: HTMLElement | null) => {
+      reportDetailView(INACTIVE_BOOK_ARCHIVE_DETAIL_VIEW);
       const closedSelectedBook = Boolean(selectedBookRef.current);
       const centerAfterClose = pendingEmptySceneResetRef.current;
       pendingEmptySceneResetRef.current = false;
@@ -1009,7 +1041,7 @@ export default function BookArchiveSection({
         restoreCloseDestination();
       }
     },
-    [centerShelfScene, restoreBookTriggerFocus]
+    [centerShelfScene, reportDetailView, restoreBookTriggerFocus]
   );
   const closeBookDetail = useCallback(() => {
     if (
@@ -1021,6 +1053,7 @@ export default function BookArchiveSection({
       return;
     }
 
+    reportDetailView(INACTIVE_BOOK_ARCHIVE_DETAIL_VIEW);
     const returnFocus = returnFocusRef.current;
     const requestId = shelfState.requestId + 1;
     const inspectionActive = [
@@ -1052,6 +1085,7 @@ export default function BookArchiveSection({
     finalizeBookDetailClose(returnFocus);
   }, [
     finalizeBookDetailClose,
+    reportDetailView,
     selectedBook,
     viewMode,
     shelfState.phase,
@@ -1919,6 +1953,10 @@ export default function BookArchiveSection({
 
   useEffect(() => {
     const openFromLocation = (event?: Event) => {
+      if (event?.type === "popstate") {
+        reportDetailView(INACTIVE_BOOK_ARCHIVE_DETAIL_VIEW);
+        window.requestAnimationFrame(() => refreshDetailViewRef.current?.());
+      }
       const historyContext =
         event?.type === "popstate"
           ? parseBookArchiveNavigationContext(
@@ -2027,12 +2065,23 @@ export default function BookArchiveSection({
     openFromLocation();
     window.addEventListener("popstate", openFromLocation);
     return () => window.removeEventListener("popstate", openFromLocation);
-  }, [books, closeBookDetail, embeddedInPlanet, openBookDetail, setViewMode]);
+  }, [books, closeBookDetail, embeddedInPlanet, openBookDetail, reportDetailView, setViewMode]);
 
   useEffect(() => {
     if (!requestedBook) return;
+    let allowed = true;
+    try {
+      const guard = canOpenRequestedBookRef.current;
+      allowed = guard ? guard(requestedBook, requestedBookToken) === true : true;
+    } catch {
+      allowed = false;
+    }
+    if (!allowed) {
+      onRequestedBookHandled?.(requestedBookToken);
+      return;
+    }
     openBookDetail(requestedBook, requestedBookReturnFocus);
-    onRequestedBookHandled?.();
+    onRequestedBookHandled?.(requestedBookToken);
     if (embeddedInPlanet) return;
     window.requestAnimationFrame(() => {
       document.getElementById("books")?.scrollIntoView({
@@ -2045,6 +2094,7 @@ export default function BookArchiveSection({
     onRequestedBookHandled,
     openBookDetail,
     requestedBook,
+    requestedBookToken,
     requestedBookReturnFocus,
   ]);
 
@@ -4048,12 +4098,144 @@ export default function BookArchiveSection({
     "--book-detail-motion-duration": `${mobileDetailMotion.durationMs}ms`,
     "--book-detail-motion-easing": mobileDetailMotion.easing,
   } as CSSProperties;
+  useLayoutEffect(() => {
+    const element = detailOverlayRef.current;
+    if (!nativePanelActive || !selectedBook || mobileDetailState.phase !== "settling"
+      || !element || typeof element.getAnimations !== "function") return;
+    const transitionId = mobileDetailState.transitionId;
+    let disposed = false, frame = 0, samples = 0;
+    let previous: readonly number[] | null = null;
+    const current = () => !disposed && element.isConnected && detailOverlayRef.current === element
+      && mobileDetailStateRef.current.phase === "settling"
+      && mobileDetailStateRef.current.transitionId === transitionId;
+    const inspect = () => {
+      if (!current() || document.hidden) return;
+      const animations = element.getAnimations().filter(animation => animation.pending
+        || animation.playState === "running" || animation.playState === "paused");
+      if (animations.length) {
+        previous = null;
+        // A real CSS transition owns completion. Cancellation rechecks the DOM
+        // instead of acknowledging a possibly replaced transition.
+        void Promise.all(animations.map(animation => animation.finished.catch(() => undefined))).then(() => {
+          if (current()) frame = window.requestAnimationFrame(inspect);
+        });
+        return;
+      }
+      const bounds = element.getBoundingClientRect();
+      const geometry = [bounds.width, bounds.height];
+      if (!bounds.width || !bounds.height || element.closest('[hidden], [inert], [aria-hidden="true"]')) return;
+      // auto -> fixed height and unchanged geometry may produce no transitionend.
+      // Two animation-frame samples without active animations confirm the sheet.
+      if (previous && geometry.every((value, index) => Math.abs(value - previous![index]) < .25)) {
+        mobileDetailDispatch({ type: "settled", transitionId });
+      } else if (++samples < 12) {
+        previous = geometry;
+        frame = window.requestAnimationFrame(inspect);
+      }
+    };
+    frame = window.requestAnimationFrame(inspect);
+    const onVisibilityChange = () => {
+      window.cancelAnimationFrame(frame);
+      previous = null; samples = 0;
+      if (!document.hidden && current()) frame = window.requestAnimationFrame(inspect);
+    };
+    document.addEventListener("visibilitychange", onVisibilityChange);
+    return () => {
+      disposed = true;
+      window.cancelAnimationFrame(frame);
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+    };
+  }, [nativePanelActive, selectedBook, mobileDetailState.phase, mobileDetailState.transitionId]);
   const shelfViewportInsets = useBookShelfViewportInsets({
     sceneRef: shelfSceneRef,
     detailRef: detailOverlayRef,
     active: viewMode === "shelf" && Boolean(selectedBook),
     layoutKey: `${selectedBook ? bookKey(selectedBook) : ""}:${mobileDetailDisplayPosition}:${shelfState.phase}`,
   });
+  const observesCollection = Boolean(onCollectionSettledChange);
+  useLayoutEffect(() => {
+    if (!observesCollection) return;
+    // An empty collection checkpoint does not need to fabricate a selected book.
+    onCollectionSettledChangeRef.current?.(nativePanelActive && !selectedBook && !advancedFiltersOpen
+      && !collectionDialogBook && !managerCollectionId && !pendingBookCloseRef.current
+      && !pendingBookSwitchRef.current && !pendingInspectionBookRef.current && !skipNextBookPopstateRef.current
+      && (viewMode === "catalog" || shelfState.phase === "SHELF_IDLE"));
+    return () => onCollectionSettledChangeRef.current?.(false);
+  }, [observesCollection, nativePanelActive, selectedBook, advancedFiltersOpen, collectionDialogBook,
+    managerCollectionId, viewMode, shelfState.phase]);
+  const observesDetailView = Boolean(onDetailViewChange);
+  useLayoutEffect(() => {
+    if (!observesDetailView) return;
+    reportDetailView(INACTIVE_BOOK_ARCHIVE_DETAIL_VIEW);
+    const detail = detailRef.current;
+    if (!selectedBook || !nativePanelActive || !detail) return;
+    const observedBookKey = bookKey(selectedBook);
+    let disposed = false;
+    let intersects = typeof IntersectionObserver === "undefined";
+    const refresh = () => {
+      if (disposed) return;
+      const bounds = detail.getBoundingClientRect();
+      let top = Math.max(0, bounds.top);
+      let left = Math.max(0, bounds.left);
+      let bottom = Math.min(window.innerHeight, bounds.bottom);
+      let right = Math.min(window.innerWidth, bounds.right);
+      // Include the embedded collection's scroll clipping, not just the viewport.
+      // The root's overflow clips the viewport, not its possibly zero-height
+      // normal-flow box when the App itself is fixed to the screen.
+      for (let ancestor = detail.parentElement; ancestor && ancestor !== document.documentElement; ancestor = ancestor.parentElement) {
+        const style = window.getComputedStyle(ancestor);
+        const clip = ancestor.getBoundingClientRect();
+        if (/(auto|scroll|hidden|clip)/u.test(style.overflowY)) {
+          top = Math.max(top, clip.top); bottom = Math.min(bottom, clip.bottom);
+        }
+        if (/(auto|scroll|hidden|clip)/u.test(style.overflowX)) {
+          left = Math.max(left, clip.left); right = Math.min(right, clip.right);
+        }
+      }
+      const visible = intersects && !document.hidden && detail.getClientRects().length > 0
+        && bottom > top && right > left && window.getComputedStyle(detail).visibility === "visible"
+        && !detail.closest('[hidden], [inert], [aria-hidden="true"]')
+        && !advancedFiltersOpen && !collectionDialogBook && !managerCollectionId;
+      const currentBook = selectedBookRef.current;
+      reportDetailView(resolveBookArchiveDetailView({
+        book: currentBook && bookKey(currentBook) === observedBookKey && isPublicBook(currentBook)
+          ? currentBook : null,
+        panelActive: nativePanelActive,
+        visible,
+        transitionPending: Boolean(pendingBookCloseRef.current || pendingBookSwitchRef.current
+          || pendingInspectionBookRef.current || skipNextBookPopstateRef.current),
+        viewMode,
+        shelfPhase: shelfStateRef.current.phase,
+        mobile: qualitySettings.mobile,
+        mobilePhase: mobileDetailState.phase,
+      }));
+    };
+    refreshDetailViewRef.current = refresh;
+    const intersection = typeof IntersectionObserver === "undefined" ? null
+      : new IntersectionObserver(([entry]) => { intersects = entry.isIntersecting; refresh(); });
+    intersection?.observe(detail);
+    const resize = typeof ResizeObserver === "undefined" ? null : new ResizeObserver(refresh);
+    resize?.observe(detail);
+    window.addEventListener("resize", refresh);
+    document.addEventListener("scroll", refresh, true);
+    document.addEventListener("visibilitychange", refresh);
+    refresh();
+    return () => {
+      disposed = true;
+      intersection?.disconnect();
+      resize?.disconnect();
+      window.removeEventListener("resize", refresh);
+      document.removeEventListener("scroll", refresh, true);
+      document.removeEventListener("visibilitychange", refresh);
+      if (refreshDetailViewRef.current === refresh) refreshDetailViewRef.current = null;
+      reportDetailView(INACTIVE_BOOK_ARCHIVE_DETAIL_VIEW);
+    };
+  }, [observesDetailView, selectedBook, nativePanelActive, viewMode, shelfState.phase, qualitySettings.mobile,
+    mobileDetailState.phase, mobileDetailDisplayPosition, advancedFiltersOpen,
+    collectionDialogBook, managerCollectionId, reportDetailView]);
+  useLayoutEffect(() => () => {
+    reportDetailView(INACTIVE_BOOK_ARCHIVE_DETAIL_VIEW);
+  }, [reportDetailView]);
   const tooltipKey = !selectedBook && viewMode === "shelf"
     ? hoveredSpine?.key || (shelfHasKeyboardFocus ? focusedBookKey : null) : null;
   const tooltipBook = tooltipKey ? sceneItems.find((item) => item.key === tooltipKey) : null;
@@ -4380,7 +4562,9 @@ export default function BookArchiveSection({
           onTransitionEnd={(event) => {
             if (
               event.target !== event.currentTarget ||
-              mobileDetailState.phase !== "settling"
+              mobileDetailState.phase !== "settling" ||
+              event.currentTarget.getAnimations?.().some(animation => animation.pending
+                || animation.playState === "running" || animation.playState === "paused")
             ) {
               return;
             }

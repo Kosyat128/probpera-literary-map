@@ -1,0 +1,269 @@
+import { describe, expect, it, vi } from "vitest";
+import type { Country, BookArchiveEntry } from "../planet/types";
+import { contentTextHash } from "../planet/contentExportHash";
+import { createBookyDialogueRegistry, getBookyDialogueChecksum, getBookyDialogueContentChecksum,
+  type BookyDialoguePayload, type BookyDialogueRecord } from "./bookyDialogueRegistry";
+import { bookyJourneyEntityId, compileBookyJourney, getBookyJourneyChecksum,
+  type BookyJourneyContext, type BookyJourneyDefinition, type BookyJourneyTrust } from "./bookyJourney";
+import { resolveBookyJourneyNode, type BookyJourneyHostOffer, type BookyJourneyHostSnapshot } from "./bookyJourneyHost";
+import { bookyJourneyRouteKey, createBookyJourneyRuntime, type BookyJourneyRuntimeHost } from "./bookyJourneyRuntime";
+
+const now = "2026-09-23T12:00:00.000Z", reviewedAt = "2026-09-22T12:00:00.000Z";
+function fixture(locale: "ru" | "en" = "en", options: { version?: number; workId?: string; writerNodeId?: string; title?: string;
+  checkpointScreen?: "globe" | "collection" } = {}) {
+  // Synthetic reviewers, content, public catalog and receipts ONLY for tests.
+  // No production draft receives approval, narration or child eligibility.
+  const country: Country = { id: "test-country", name: "Synthetic country", coordinates: [20, 30], writers: [{ id: "test-writer" }] };
+  const book: BookArchiveEntry = { id: options.workId ?? "test-work", title: "Synthetic work", countryId: country.id, countryName: country.name,
+    writerId: "test-writer", writerName: "Synthetic writer", country, writer: country.writers[0], editorial: { status: "verified" } };
+  const nodes: BookyJourneyDefinition["nodes"] = [
+    { id: "country", kind: "country", entity: { kind: "country", countryId: country.id }, screen: "globe", dialogue: { id: "test-country", version: 1, contentChecksum: "" } },
+    { id: options.writerNodeId ?? "writer", kind: "writer", entity: { kind: "writer", countryId: country.id, writerId: "test-writer" }, screen: "globe", dialogue: { id: "test-writer", version: 1, contentChecksum: "" } },
+    { id: "work", kind: "work", entity: { kind: "work", countryId: country.id, writerId: "test-writer", workId: book.id }, screen: "collection", dialogue: { id: "test-work", version: 1, contentChecksum: "" } },
+    { id: "checkpoint", kind: "checkpoint", entity: null, screen: options.checkpointScreen ?? "globe", dialogue: { id: "test-checkpoint", version: 1, contentChecksum: "" } },
+  ];
+  const records: BookyDialogueRecord[] = nodes.map(node => {
+    const copy = { title: `${locale}: ${node.id}`, body: `${locale}: synthetic test instruction.`, caption: "Synthetic test caption", reduced: "Test" };
+    const payload: BookyDialoguePayload = { id: node.dialogue.id, locale, version: 1, audience: "adult", ageRange: { min: 18, max: 120 },
+      readingLevel: "plain", intent: "navigation", screens: [node.screen], context: `test-journey:${node.id}`,
+      entityIds: node.entity ? [bookyJourneyEntityId(node.entity)] : [], claimKind: "interface-guidance", factualSources: [], copy,
+      narration: null, prohibitedTags: [], provenance: { kind: "editorial", sourcePath: "test/runtime.ts", sourceVersion: 1,
+        sourceRef: node.id, sourceSha256: "a".repeat(64), copySha256: contentTextHash(JSON.stringify({ title: copy.title, body: copy.body })) } };
+    const review = { status: "approved" as const, reviewer: "synthetic-reviewer-not-real", reviewedAt, contentChecksum: getBookyDialogueContentChecksum(payload)! };
+    return { payload, review, checksum: getBookyDialogueChecksum({ payload, review })! };
+  });
+  const definition: BookyJourneyDefinition = { schemaVersion: 1, id: "test-journey", version: options.version ?? 1, locale, audience: "adult",
+    ageRange: { min: 18, max: 120 }, readingLevel: "plain", title: options.title ?? `${locale}: Synthetic journey`, prerequisites: [],
+    nodes: nodes.map((node, index) => ({ ...node, dialogue: { ...node.dialogue, contentChecksum: records[index].review.contentChecksum } })) };
+  const context: BookyJourneyContext = { audience: "adult", age: 30, locale, readingLevel: "plain", now, connectivity: "online", completedPrerequisites: [],
+    availability: definition.nodes.map(node => ({ nodeId: node.id, locale, dialogueContentChecksum: node.dialogue.contentChecksum, available: true, offlineAvailable: true })) };
+  const trust: BookyJourneyTrust = { currentVersions: [{ id: definition.id, version: definition.version }], approvedReviews: [
+    { id: definition.id, version: definition.version, locale, definitionChecksum: getBookyJourneyChecksum(definition)!, reviewer: "synthetic-journey-reviewer-not-real", reviewedAt },
+  ], dialogueRegistry: createBookyDialogueRegistry(records, { canonicalEntityIds: records.flatMap(record => [...record.payload.entityIds]),
+    approvedReviews: records.map(record => ({ id: record.payload.id, locale, version: 1,
+      contentChecksum: record.review.contentChecksum, reviewer: record.review.reviewer!, reviewedAt })) }), publicCountries: [country], publicBooks: [book] };
+  const plan = compileBookyJourney(definition, context, trust);
+  if (!plan) throw new Error("invalid-synthetic-runtime-fixture");
+  return { definition, context, trust, plan };
+}
+function setup() {
+  const initial = fixture(), sources = new Map([[bookyJourneyRouteKey(initial.plan), initial]]);
+  let host: BookyJourneyRuntimeHost;
+  const resolve: BookyJourneyRuntimeHost["resolve"] = (plan, nodeId) => {
+    const source = sources.get(bookyJourneyRouteKey(plan));
+    if (!source) return null;
+    const boundary: BookyJourneyHostSnapshot = Object.freeze({ revision: host.revision, enabled: true, active: host.active,
+      access: "adult", countryStatus: "ready", booksStatus: "ready", context: source.context, definition: source.definition, trust: source.trust });
+    return resolveBookyJourneyNode({ journeyId: plan.id, version: plan.version, locale: plan.locale,
+      definitionChecksum: plan.definitionChecksum, nodeId, hostRevision: host.revision }, () => boundary);
+  };
+  host = Object.freeze({ revision: 1, active: true, profileKey: "adult-policy:1", locale: "en", plans: [initial.plan], resolve,
+    view: Object.freeze({ screen: "globe", countryId: null, writerId: null, workId: null, settled: true }) });
+  const readHost = vi.fn(() => host), navigate = vi.fn((_offer: BookyJourneyHostOffer, _signal: AbortSignal) => true);
+  const runtime = createBookyJourneyRuntime({ readHost, navigate });
+  const patch = (change: Partial<BookyJourneyRuntimeHost>) => { host = Object.freeze({ ...host, ...change, revision: host.revision + 1 }); };
+  const display = (index: number, overrides: Partial<BookyJourneyRuntimeHost["view"]> = {}) => {
+    const node = host.plans[0].nodes[index], entity = node.entity;
+    patch({ view: Object.freeze({ screen: node.screen, countryId: entity?.countryId ?? null,
+      writerId: entity && entity.kind !== "country" ? entity.writerId : null,
+      workId: entity?.kind === "work" ? entity.workId : null, settled: true, ...overrides }) }); runtime.refresh();
+  };
+  const start = () => { runtime.refresh(); return runtime.start(bookyJourneyRouteKey(host.plans[0]), runtime.getSnapshot().revision); };
+  const switchSource = (source: ReturnType<typeof fixture>) => {
+    sources.set(bookyJourneyRouteKey(source.plan), source); patch({ locale: source.plan.locale, plans: [source.plan] }); runtime.refresh();
+  };
+  return { initial, runtime, readHost, navigate, patch, display, start, switchSource, host: () => host, resolve };
+}
+
+describe("reviewed Booky journey runtime", () => {
+  it("has no constructor IO and exposes only currently admitted routes under an explicit profile", () => {
+    const f = setup(); expect(f.readHost).not.toHaveBeenCalled(); expect(f.navigate).not.toHaveBeenCalled();
+    f.patch({ profileKey: null }); f.runtime.refresh();
+    expect(f.runtime.getSnapshot()).toMatchObject({ status: "profile-required", routes: [], active: null });
+    f.patch({ profileKey: "adult-policy:1", resolve: () => null }); f.runtime.refresh();
+    expect(f.runtime.getSnapshot()).toMatchObject({ status: "unavailable", routes: [] });
+    f.patch({ resolve: f.resolve }); f.runtime.refresh();
+    expect(f.runtime.getSnapshot().routes).toEqual([{ key: bookyJourneyRouteKey(f.initial.plan), title: f.initial.plan.title }]);
+    const stable = f.runtime.getSnapshot(); f.runtime.refresh(); expect(f.runtime.getSnapshot()).toBe(stable);
+    expect(Object.isFrozen(stable.routes)).toBe(true); f.runtime.dispose();
+  });
+
+  it("opens explicitly, checks settled exact views and acknowledges each prefix only through Next", () => {
+    const f = setup(); expect(f.start()).toBe(true);
+    expect(f.runtime.getSnapshot().active).toMatchObject({ index: 0, completedCount: 0, phase: "navigating", canNext: false });
+    f.display(0, { settled: false }); expect(f.runtime.next(f.runtime.getSnapshot().revision)).toBe(false);
+    f.display(0, { writerId: "automatically-selected-other-writer" });
+    expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "ready", canNext: true, completedCount: 0 });
+    for (let index = 0; index < 4; ++index) {
+      if (index > 0) f.display(index);
+      expect(f.runtime.getSnapshot().active?.completedCount).toBe(index);
+      expect(f.runtime.next(f.runtime.getSnapshot().revision)).toBe(true);
+    }
+    expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "complete", completedCount: 4, index: 3, total: 4, canNext: false, canOpen: false });
+    expect(f.navigate).toHaveBeenCalledTimes(4); expect(f.runtime.next(f.runtime.getSnapshot().revision)).toBe(false);
+    expect(Object.isFrozen(f.runtime.getSnapshot().active)).toBe(true); f.runtime.dispose();
+  });
+
+  it("rejects stale UI revisions and never treats a delayed view as an automatic acknowledgement", () => {
+    const f = setup(); f.start(); const old = f.runtime.getSnapshot().revision;
+    f.display(0); expect(f.runtime.next(old)).toBe(false);
+    expect(f.runtime.getSnapshot().active?.completedCount).toBe(0);
+    const ready = f.runtime.getSnapshot().revision; f.patch({ view: { ...f.host().view, settled: false } });
+    expect(f.runtime.next(ready)).toBe(false);
+    expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "paused", completedCount: 0 });
+    f.display(0); expect(f.runtime.getSnapshot().active?.phase).toBe("paused");
+    expect(f.runtime.resume(f.runtime.getSnapshot().revision)).toBe(true); f.runtime.dispose();
+  });
+
+  it("requires exact writer and work tuples and the checkpoint's own screen", () => {
+    const f = setup(); f.start(); f.display(0); f.runtime.next(f.runtime.getSnapshot().revision);
+    f.display(1, { countryId: "other-country" });
+    expect(f.runtime.next(f.runtime.getSnapshot().revision)).toBe(false);
+    f.runtime.resume(f.runtime.getSnapshot().revision); f.display(1); expect(f.runtime.next(f.runtime.getSnapshot().revision)).toBe(true);
+    f.display(2, { workId: "other-work" }); expect(f.runtime.next(f.runtime.getSnapshot().revision)).toBe(false);
+    f.runtime.resume(f.runtime.getSnapshot().revision); f.display(2); expect(f.runtime.next(f.runtime.getSnapshot().revision)).toBe(true);
+    f.display(3, { screen: "collection" }); expect(f.runtime.next(f.runtime.getSnapshot().revision)).toBe(false);
+    f.runtime.resume(f.runtime.getSnapshot().revision); f.display(3, { countryId: "irrelevant", writerId: "irrelevant", workId: "irrelevant" });
+    expect(f.runtime.next(f.runtime.getSnapshot().revision)).toBe(true); f.runtime.dispose();
+  });
+
+  it.each([false, "throw"])("rolls back Next without acknowledgement when navigation returns %s", failure => {
+    const f = setup(); f.start(); f.display(0);
+    f.navigate.mockImplementationOnce(() => { if (failure === "throw") throw Error("unavailable"); return false; });
+    expect(f.runtime.next(f.runtime.getSnapshot().revision)).toBe(false);
+    expect(f.runtime.getSnapshot().active).toMatchObject({ index: 0, completedCount: 0, phase: "failed", canOpen: true, canNext: false });
+    expect(f.runtime.open(f.runtime.getSnapshot().revision)).toBe(true);
+    expect(f.runtime.getSnapshot().active?.phase).toBe("navigating");
+    f.display(0);
+    expect(f.runtime.next(f.runtime.getSnapshot().revision)).toBe(true);
+    expect(f.runtime.getSnapshot().active?.completedCount).toBe(1); f.runtime.dispose();
+  });
+
+  it("pauses on background/collapse, aborts the old request and requires deliberate resume", () => {
+    const f = setup(); f.start(); const signal = f.navigate.mock.calls[0][1];
+    f.patch({ active: false }); f.runtime.refresh();
+    expect(signal.aborted).toBe(true); expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "paused", node: null, title: null });
+    f.patch({ active: true }); f.runtime.refresh(); f.display(0);
+    expect(f.navigate).toHaveBeenCalledOnce(); expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "paused", completedCount: 0 });
+    expect(f.runtime.resume(f.runtime.getSnapshot().revision)).toBe(true); expect(f.navigate).toHaveBeenCalledTimes(2); f.runtime.dispose();
+  });
+
+  it.each(["resume", "open"] as const)("waits for a fresh view when %s targets the already settled writer", action => {
+    const f = setup(); f.start(); f.display(0); f.runtime.next(f.runtime.getSnapshot().revision); f.display(1);
+    if (action === "resume") {
+      f.patch({ active: false }); f.runtime.refresh();
+      f.patch({ active: true }); f.runtime.refresh();
+      expect(f.runtime.getSnapshot().active?.phase).toBe("paused");
+    }
+    expect(f.runtime[action](f.runtime.getSnapshot().revision)).toBe(true);
+    const signal = f.navigate.mock.calls[2][1];
+    expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "navigating", canNext: false, index: 1, completedCount: 1 });
+    expect(f.runtime.next(f.runtime.getSnapshot().revision)).toBe(false);
+    f.patch({ plans: [...f.host().plans] }); f.runtime.refresh();
+    expect(f.runtime.getSnapshot().active?.phase).toBe("navigating");
+    f.display(1, { settled: false });
+    expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "navigating", canNext: false, completedCount: 1 });
+    expect(signal.aborted).toBe(false);
+    f.display(1);
+    expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "ready", canNext: true, completedCount: 1 });
+    expect(signal.aborted).toBe(false); f.runtime.dispose();
+  });
+
+  it("accepts a new identical view receipt for an explicit no-op without inventing acknowledgement", () => {
+    const f = setup(); f.display(0); expect(f.start()).toBe(true);
+    expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "navigating", canNext: false, completedCount: 0 });
+    f.display(0);
+    expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "ready", canNext: true, completedCount: 0 });
+    f.runtime.dispose();
+  });
+
+  it("hides revoked source/policy copy and retains progress only for the original explicit profile", () => {
+    const f = setup(); f.start(); f.display(0); f.runtime.next(f.runtime.getSnapshot().revision);
+    f.patch({ profileKey: "different-adult-policy" }); f.runtime.refresh();
+    expect(f.runtime.getSnapshot().active).toMatchObject({ title: null, node: null, phase: "unavailable", index: 1, completedCount: 1 });
+    expect(f.runtime.resume(f.runtime.getSnapshot().revision)).toBe(false);
+    f.patch({ profileKey: "adult-policy:1", plans: [] }); f.runtime.refresh();
+    expect(f.runtime.getSnapshot().active?.node).toBeNull();
+    f.patch({ plans: [f.initial.plan] }); f.runtime.refresh();
+    expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "paused", index: 1, completedCount: 1 });
+    expect(f.navigate).toHaveBeenCalledTimes(2); f.runtime.dispose();
+  });
+
+  it("rebinds an approved locale with identical semantic topology and cancels pending movement", () => {
+    const f = setup(); f.start(); f.display(0); f.runtime.next(f.runtime.getSnapshot().revision);
+    const signal = f.navigate.mock.calls[1][1]; f.switchSource(fixture("ru"));
+    expect(signal.aborted).toBe(true);
+    expect(f.runtime.getSnapshot().active).toMatchObject({ title: "ru: Synthetic journey", index: 1, completedCount: 1, phase: "paused" });
+    expect(f.runtime.getSnapshot().active?.node?.dialogue.payload.locale).toBe("ru");
+    expect(f.navigate).toHaveBeenCalledTimes(2); expect(f.runtime.resume(f.runtime.getSnapshot().revision)).toBe(true); f.runtime.dispose();
+  });
+
+  it("preserves a settled node on locale switch without navigating or adding acknowledgement", () => {
+    const f = setup(); f.start(); f.display(0); f.switchSource(fixture("ru"));
+    expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "ready", index: 0, completedCount: 0, canNext: true });
+    expect(f.navigate).toHaveBeenCalledOnce(); f.runtime.dispose();
+  });
+
+  it.each([{ writerNodeId: "changed-writer-node" }, { workId: "different-work" }, { checkpointScreen: "collection" as const }])(
+    "does not migrate incompatible locale topology %j", change => {
+      const f = setup(); f.start(); f.display(0); f.switchSource(fixture("ru", change));
+      expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "unavailable", node: null, title: null, completedCount: 0 });
+      expect(f.runtime.resume(f.runtime.getSnapshot().revision)).toBe(false); f.runtime.dispose();
+    });
+
+  it.each([{ version: 2 }, { title: "Changed reviewed definition" }])("never auto-migrates changed route bindings %j", change => {
+    const f = setup(); f.start(); f.display(0); f.switchSource(fixture("en", change));
+    expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "unavailable", node: null, title: null });
+    expect(f.navigate).toHaveBeenCalledOnce(); expect(f.runtime.reset(f.runtime.getSnapshot().revision)).toBe(true);
+    expect(f.runtime.getSnapshot().active).toBeNull(); expect(f.start()).toBe(true); f.runtime.dispose();
+  });
+
+  it("lets a reentrant view pause before a pending navigation is dispatched", () => {
+    const f = setup(); const remove = f.runtime.subscribe(() => {
+      const state = f.runtime.getSnapshot(); if (state.active?.phase === "navigating") f.runtime.pause(state.revision);
+    });
+    expect(f.start()).toBe(false); expect(f.navigate).not.toHaveBeenCalled();
+    expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "paused", completedCount: 0 }); remove(); f.runtime.dispose();
+  });
+
+  it("fails closed for nested resolver callbacks without leaking stale copy or navigation", () => {
+    const f = setup(); f.start(); f.display(0);
+    f.patch({ resolve(plan, nodeId) { f.runtime.refresh(); return f.resolve(plan, nodeId); } }); f.runtime.refresh();
+    expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "unavailable", node: null, title: null, completedCount: 0 });
+    expect(f.navigate).toHaveBeenCalledOnce(); f.runtime.dispose();
+  });
+
+  it("rechecks the source after observers and after the navigation port before acknowledging", () => {
+    const f = setup(); f.start(); f.display(0);
+    f.navigate.mockImplementationOnce(() => { f.patch({ profileKey: null }); return true; });
+    expect(f.runtime.next(f.runtime.getSnapshot().revision)).toBe(false);
+    expect(f.runtime.getSnapshot()).toMatchObject({ status: "profile-required", active: { index: 0, completedCount: 0, phase: "unavailable", node: null } });
+    f.runtime.dispose();
+    const second = setup(); second.runtime.subscribe(() => {
+      if (second.runtime.getSnapshot().active?.phase === "navigating") second.patch({ resolve: () => null });
+    });
+    expect(second.start()).toBe(false); expect(second.navigate).not.toHaveBeenCalled();
+    expect(second.runtime.getSnapshot().active?.node).toBeNull(); second.runtime.dispose();
+  });
+
+  it("accepts synchronous displayed-view updates without mistaking them for source revocation", () => {
+    const f = setup(); f.navigate.mockImplementation(offer => {
+      const index = f.host().plans[0].nodes.findIndex(node => node.id === offer.nodeId); f.display(index); return true;
+    });
+    expect(f.start()).toBe(true); expect(f.runtime.getSnapshot().active?.phase).toBe("ready");
+    expect(f.runtime.next(f.runtime.getSnapshot().revision)).toBe(true);
+    expect(f.runtime.getSnapshot().active).toMatchObject({ index: 1, completedCount: 1, phase: "ready" }); f.runtime.dispose();
+  });
+
+  it("denies throwing readers and resolver failures, and disposes without later work", () => {
+    const f = setup(); f.start(); f.readHost.mockImplementationOnce(() => { throw Error("read failed"); }); f.runtime.refresh();
+    expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "unavailable", node: null });
+    f.patch({ resolve: () => { throw Error("revoked"); } }); f.runtime.refresh();
+    expect(f.runtime.getSnapshot().routes).toEqual([]);
+    const signal = f.navigate.mock.calls[0][1]; f.runtime.dispose(); const reads = f.readHost.mock.calls.length;
+    const revision = f.runtime.getSnapshot().revision; f.runtime.refresh();
+    expect(f.runtime.start(bookyJourneyRouteKey(f.initial.plan), revision)).toBe(false);
+    expect(f.readHost).toHaveBeenCalledTimes(reads); expect(signal.aborted).toBe(true);
+    expect(f.runtime.getSnapshot()).toMatchObject({ active: null, routes: [], status: "unavailable" });
+  });
+});
