@@ -171,7 +171,7 @@ test.beforeAll(async () => {
     return ['/' + entry.output, entry];
   }));
   sourceEvidence = { kind: 'canonical-app-adult-booky-reader-policy-in-Chrome', actualApp: true, actualCss: true, actualGlobe: true,
-    controlledPorts: ['native OS plugins and preference map; seeded future reader record and one failed delete in the recovery case', 'HTTP delivery of real split chunks: primary books return503'],
+    controlledPorts: ['native OS plugins and preference map; explicit failed writes and a seeded future reader record with one failed delete', 'HTTP delivery of real split chunks: primary books return503'],
     controllerObservation: 'The real exported controller factory is wrapped only to expose its returned instance for inspection; controller behavior and policy are unchanged.',
     bookChunks, primaryBookChunk, retryBookChunk, sharedBookDependencies,
     countryChunks, primaryCountryChunk, retryCountryChunk, sharedCountryDependencies,
@@ -185,7 +185,7 @@ test.beforeAll(async () => {
     installedNative: false, deviceTested: false, childReviewed: false, childProfileCreated: false, childAccessGranted: false, reviewedDialogueAccepted: false, narrationEnabled: false, artAccepted: false, devicePerformanceAccepted: false, releaseReady: false };
 });
 
-async function open(testInfo, { seed = V1_SEED, holdInitialBookyRead = false, retryCountryStatus = 503, initialCountryFailure = false, readerSeed = null, failReaderRemoves = 0 } = {}) {
+async function open(testInfo, { seed = V1_SEED, holdInitialBookyRead = false, retryCountryStatus = 503, initialCountryFailure = false, readerSeed = null, failReaderRemoves = 0, failReaderSets = 0 } = {}) {
   const profileRoot = path.resolve(process.env.S15_BROWSER_PROFILE_ROOT ?? path.join(ROOT, '.tmp/s15-booky-live'));
   await fs.mkdir(profileRoot, { recursive: true }); const profile = await fs.mkdtemp(path.join(profileRoot, 'pk-'));
   const context = await chromium.launchPersistentContext(profile, { channel: 'chrome', headless: true,
@@ -208,6 +208,7 @@ async function open(testInfo, { seed = V1_SEED, holdInitialBookyRead = false, re
       return stored;
     }
     if (operation === 'set') {
+      if(key===READER&&failReaderSets>0){--failReaderSets;throw Error('Controlled reader save failure');}
       memory.set(key, value);return;
     }
     if (operation === 'remove') { if(key===READER&&failReaderRemoves-->0)throw Error('Controlled reader removal failure'); memory.delete(key); return; }
@@ -245,6 +246,7 @@ async function open(testInfo, { seed = V1_SEED, holdInitialBookyRead = false, re
     await page.goto(SITE + '/?country=russia&writer=dostoevsky#atlas');
     if (!initialCountryFailure) await ready(page);
     return { page, memory, operations, result, initialRecord, seedRaw, bookRequests, countryRequests, componentRequests, controlledFailures,
+      failNextReaderSet(){++failReaderSets;},
       hasPendingCountry:()=>!!pendingCountry, releaseCountry(){if(!pendingCountry)throw Error("No country retry is pending");const release=pendingCountry;pendingCountry=null;release();},
       hasPendingRead:()=>!!pendingRead, releaseRead(){if(!pendingRead)throw Error("No native preference read is pending");pendingRead();},
       bookyWrites:()=>operations.filter(value=>value.operation==='set'&&value.key===BOOKY),
@@ -355,7 +357,9 @@ async function locale(page, value) {
   await expect(page.locator('html')).toHaveAttribute('lang', value);
 }
 async function capture(fixture, testInfo, filename, framing) {
-  const bytes = await fixture.page.screenshot({ path: testInfo.outputPath(filename) });
+  await fixture.page.evaluate(() => document.fonts.ready);
+  await fixture.page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+  const bytes = await fixture.page.screenshot({ path: testInfo.outputPath(filename), animations: 'disabled' });
   fixture.result.screenshots.push({ filename, sha256: digest(bytes), ...fixture.page.viewportSize(), framing });
 }
 
@@ -449,6 +453,17 @@ async function openReader(page) {
   if (!await panel(page).count()) await page.locator('[data-planet-mascot-toggle]').click();
   if (await reader(page).getAttribute('open') === null) await reader(page).locator('summary').click();
 }
+async function collapseReader(page) {
+  await ageField(page).focus();await page.keyboard.press('Escape');await expect(panel(page)).toHaveCount(0);
+}
+async function collectionRoundTrip(page) {
+  await collapseReader(page);
+  await page.locator('.atlas-immersive-chrome [data-atlas-action="open-collection"]').click();
+  await expect(pet(page)).toHaveAttribute('data-planet-mascot-screen','collection');await openReader(page);
+  await collapseReader(page);
+  await page.getByRole('button',{name:'Return to the planet',exact:true}).click();
+  await expect(pet(page)).toHaveAttribute('data-planet-mascot-screen','globe');await openReader(page);
+}
 async function readerTargetLayout(page) {
   const observations=[];
   for (const selector of ['[data-booky-reader-age]','[data-booky-reader-level]','[data-booky-reader-save]','[data-booky-reader-clear]']) {
@@ -464,7 +479,7 @@ async function readerTargetLayout(page) {
 }
 
 test('explicit adult profile survives locale and lifecycle while drafts and deletion never grant stale policy', async ({},testInfo)=>{
-  const fixture=await open(testInfo),{page,result}=fixture;result.scenario='explicit-reader-policy';
+  const fixture=await open(testInfo,{failReaderSets:1}),{page,result}=fixture;result.scenario='explicit-reader-policy';
   try {
     await page.evaluate(()=>window.__bookyReaderPolicyFixture.remember());const before=await actual(page);
     await openReader(page);await expect(readerState(page)).toHaveAttribute('data-booky-reader-state','ready');
@@ -474,6 +489,13 @@ test('explicit adult profile survives locale and lifecycle while drafts and dele
     await page.locator('[data-booky-reader-save]').click();await expect(ageField(page)).toHaveAttribute('aria-invalid','true');
     expect(fixture.memory.get(READER)).toBeUndefined();expect(await effectivePolicy(page)).toBeNull();
     await ageField(page).fill('30');await page.locator('[data-booky-reader-save]').click();
+    await expect(readerState(page)).toHaveAttribute('data-booky-reader-error','write');
+    expect(await effectivePolicy(page)).toBeNull();expect(fixture.memory.has(READER)).toBe(false);
+    await collapseReader(page);await openReader(page);
+    await expect(ageField(page)).toHaveValue('30');await expect(levelField(page)).toHaveValue('plain');
+    await expect(page.locator('[data-booky-reader-retry]')).toHaveText('Повторить сохранение');
+    result.observations.failedSaveReopened={age:await ageField(page).inputValue(),policy:await effectivePolicy(page),status:await readerState(page).textContent()};
+    await page.locator('[data-booky-reader-retry]').click();
     await expect.poll(()=>effectivePolicy(page)).toMatchObject({age:30,readingLevel:'plain',audience:'adult'});
     const confirmed=fixture.memory.get(READER);expect(JSON.parse(confirmed).age).toBe(30);
     result.observations.savedRu={policy:await effectivePolicy(page),globe:await actual(page)};
@@ -490,16 +512,30 @@ test('explicit adult profile survives locale and lifecycle while drafts and dele
     await expect.poll(()=>effectivePolicy(page)).toBeNull();
     await page.evaluate(()=>window.__bookyReaderPolicyFixture.setVisible(true));
     await expect.poll(()=>effectivePolicy(page)).toMatchObject({age:30,readingLevel:'plain'});
-    await openReader(page);await expect(ageField(page)).toHaveValue('30');
+    await openReader(page);await expect(ageField(page)).toHaveValue('31');
+    await page.setViewportSize({width:1440,height:850});await collectionRoundTrip(page);
+    await expect(ageField(page)).toHaveValue('31');expect((await effectivePolicy(page)).age).toBe(30);
+    await page.locator('[data-booky-reader-clear]').click();await collapseReader(page);await openReader(page);
+    await expect(page.locator('[data-booky-reader-confirm-clear]')).toHaveCount(0);
     await page.locator('[data-booky-reader-clear]').click();await page.locator('[data-booky-reader-cancel-clear]').click();
     expect(fixture.memory.get(READER)).toBe(confirmed);
     await page.locator('[data-booky-reader-clear]').click();await page.locator('[data-booky-reader-confirm-clear]').click();
     await expect(readerState(page)).toHaveAttribute('data-booky-reader-state','ready');
     await expect(ageField(page)).toHaveValue('');await expect(levelField(page)).toHaveValue('');
     expect(await effectivePolicy(page)).toBeNull();expect(fixture.memory.has(READER)).toBe(false);
+    fixture.failNextReaderSet();await ageField(page).fill('40');await levelField(page).selectOption('developing');
+    await page.locator('[data-booky-reader-save]').click();await expect(readerState(page)).toHaveAttribute('data-booky-reader-error','write');
+    await ageField(page).fill('41');await collectionRoundTrip(page);
+    await expect(ageField(page)).toHaveValue('41');await expect(page.locator('[data-booky-reader-retry]')).toHaveCount(0);
+    expect(await effectivePolicy(page)).toBeNull();expect(fixture.memory.has(READER)).toBe(false);
+    result.observations.editedFailureReopened={age:await ageField(page).inputValue(),policy:await effectivePolicy(page),status:await readerState(page).textContent()};
+    await page.locator('[data-booky-reader-save]').click();await expect.poll(()=>effectivePolicy(page)).toMatchObject({age:41,readingLevel:'developing'});
+    await page.locator('[data-booky-reader-clear]').click();await page.locator('[data-booky-reader-confirm-clear]').click();
+    await expect(readerState(page)).toHaveAttribute('data-booky-reader-state','ready');expect(fixture.memory.has(READER)).toBe(false);
     retained(await actual(page),before,false,false);expect(fixture.writes()).toEqual([]);
     Object.assign(result,{explicitPolicyOnly:true,unsavedDraftDoesNotGrantPolicy:true,localeDraftRetained:true,lifecycleRechecksPolicy:true,
-      explicitDeleteConfirmed:true,canonicalSceneRetained:true,noNewDialogueOrJourneyEnabled:true});fixture.verify();
+      explicitDeleteConfirmed:true,failedSaveDraftRetained:true,editedFailureRequiresExplicitSave:true,collectionDraftRetained:true,
+      transientDeleteConfirmation:true,canonicalSceneRetained:true,noNewDialogueOrJourneyEnabled:true});fixture.verify();
   } finally {await fixture.close();}
 });
 
@@ -516,6 +552,15 @@ test('future profiles are retained until confirmed deletion and failed deletion 
     await page.locator('[data-booky-reader-clear]').click();await page.locator('[data-booky-reader-confirm-clear]').click();
     await expect(readerState(page)).toHaveAttribute('data-booky-reader-error','write');
     expect(await effectivePolicy(page)).toBeNull();expect(fixture.memory.get(READER)).toBe(future);
+    await collapseReader(page);await openReader(page);await collectionRoundTrip(page);
+    await expect(page.locator('[data-booky-reader-retry]')).toHaveText('Try deleting again');
+    await page.evaluate(()=>window.__bookyReaderPolicyFixture.setVisible(false));
+    await expect.poll(()=>page.locator('[data-planet-mascot-pet]').count()).toBe(0);
+    await page.evaluate(()=>window.__bookyReaderPolicyFixture.setVisible(true));
+    await openReader(page);await expect(readerState(page)).toHaveAttribute('data-booky-reader-error','write');
+    await expect(page.locator('[data-booky-reader-retry]')).toHaveText('Try deleting again');
+    expect(fixture.memory.get(READER)).toBe(future);expect(await effectivePolicy(page)).toBeNull();
+    result.observations.failedDeleteReopened={policy:await effectivePolicy(page),retry:await page.locator('[data-booky-reader-retry]').textContent()};
     await readerState(page).scrollIntoViewIfNeeded();
     await capture(fixture,testInfo,'reader-profile-delete-failed-en.png','Future record remains intact after a controlled native removal failure; no reader policy is admitted');
     await page.locator('[data-booky-reader-retry]').click();await expect(readerState(page)).toHaveAttribute('data-booky-reader-state','ready');
@@ -523,6 +568,6 @@ test('future profiles are retained until confirmed deletion and failed deletion 
     await expect(ageField(page)).toHaveValue('');await expect(ageField(page)).toBeEnabled();
     retained(await actual(page),before,false,false);expect(fixture.writes()).toEqual([]);
     Object.assign(result,{futureRecordPreserved:true,failedDeleteDoesNotGrantPolicy:true,explicitDeleteRetryConfirmed:true,
-      canonicalSceneRetained:true,noNewDialogueOrJourneyEnabled:true});fixture.verify();
+      failedDeleteIntentRetained:true,canonicalSceneRetained:true,noNewDialogueOrJourneyEnabled:true});fixture.verify();
   } finally {await fixture.close();}
 });

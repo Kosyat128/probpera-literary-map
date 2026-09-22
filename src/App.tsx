@@ -32,7 +32,7 @@ import PlanetSceneInspectionControls from "./host/PlanetSceneInspectionControls"
 import PlanetMascotControls from "./host/PlanetMascotControls";
 import { createPlanetMascotController } from "./host/planetMascot";
 import { createPlanetMascotPersistence } from "./host/planetMascotPersistence";
-import BookyReaderSettings from "./host/BookyReaderSettings";
+import BookyReaderSettings, { useBookyReaderSettingsState } from "./host/BookyReaderSettings";
 import { createBookyReaderPolicyStore } from "./host/bookyReaderPolicyStore";
 import type { PlanetMascotAction } from "./host/planetMascotRoutes";
 import type { BookArchiveAuthorRequest, BookArchiveAuthorRequestResult, BookArchiveAuthorView } from "./books/bookArchiveAuthorRequest";
@@ -596,6 +596,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
   useEffect(() => mascotPersistence.activate(), [mascotPersistence]);
   const readerPolicyStore = useMemo(() => createBookyReaderPolicyStore({ preferences: platformServices.preferences }), [platformServices.preferences]);
   const readerPolicySnapshot = useSyncExternalStore(readerPolicyStore.subscribe, readerPolicyStore.getSnapshot, readerPolicyStore.getSnapshot);
+  const readerSettingsEditor = useBookyReaderSettingsState(readerPolicySnapshot);
   useLayoutEffect(() => {
     if (isPlanetApplication && platformVisibility === "active") readerPolicyStore.start();
     else readerPolicyStore.stop();
@@ -3191,7 +3192,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
       onAction={handleMascotAction} position={mascotPosition} onPositionChange={setMascotPosition}
       persistence={mascotPersistenceSnapshot} onRetryPersistence={mascotPersistence.retry}
       onRetryContent={target => { if (target === "countries") retryArchiveData(); else retryBookArchive(); }}
-      readerSettings={<BookyReaderSettings snapshot={readerPolicySnapshot}
+      readerSettings={<BookyReaderSettings snapshot={readerPolicySnapshot} editor={readerSettingsEditor}
         onSave={value => readerPolicyStore.save(value, new Date().toISOString())}
         onClear={readerPolicyStore.clear} onRetry={readerPolicyStore.retry} />} />;
     return <div className="magazine-app native-planet-app" data-typography-component="magazine" data-planet-ready={String(globeViewSample.revision > 0)}>

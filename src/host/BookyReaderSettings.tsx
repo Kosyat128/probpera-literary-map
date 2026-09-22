@@ -6,6 +6,7 @@ import "./BookyReaderSettings.css";
 
 export type BookyReaderSettingsProps = {
   snapshot: BookyReaderPolicySnapshot;
+  editor: BookyReaderSettingsEditor;
   onSave: (input: BookyReaderPolicyInput) => boolean;
   onClear: () => boolean;
   onRetry: () => boolean;
@@ -100,19 +101,13 @@ function isReadingLevel(value: string): value is BookyReadingLevel {
 }
 function draftKey(draft: Draft) { return `${draft.age}:${draft.readingLevel}`; }
 
-export default function BookyReaderSettings({ snapshot, onSave, onClear, onRetry }: BookyReaderSettingsProps) {
-  const { language } = useInterfaceLanguage();
-  const copy = bookyReaderSettingsCopy.locales[language];
-  const id = useId();
-  const ageInput = useRef<HTMLInputElement>(null), levelInput = useRef<HTMLSelectElement>(null);
-  const status = useRef<HTMLParagraphElement>(null), clearStart = useRef<HTMLButtonElement>(null);
-  const clearConfirm = useRef<HTMLButtonElement>(null);
-  const restoreClearFocus = useRef(false);
+/** Keep this hook in the application host, outside the collapsible Booky panel.
+ * A failed write retains both its visible draft and its exact retry intent. */
+export function useBookyReaderSettingsState(snapshot: BookyReaderPolicySnapshot) {
   const [draft, setDraft] = useState<Draft>(() => draftFrom(snapshot.policy));
   const [dirty, setDirty] = useState(false), dirtyRef = useRef(false);
   const [attempted, setAttempted] = useState(false), [rejected, setRejected] = useState(false);
   const [cleared, setCleared] = useState(false);
-  const [clearAtRevision, setClearAtRevision] = useState<number | null>(null);
   const lastReadyRevision = useRef(snapshot.state === "ready" ? snapshot.revision : null);
   const lastKnownPolicy = useRef(snapshot.policy);
   const pending = useRef<"save" | "clear" | null>(null);
@@ -122,22 +117,80 @@ export default function BookyReaderSettings({ snapshot, onSave, onClear, onRetry
 
   useLayoutEffect(() => {
     // Loading and writing deliberately hide policy in the store snapshot.
-    // Only a confirmed ready result can hydrate or clear the user's draft.
+    // An absent record on foreground hydration is not a request to erase a
+    // draft. Only an explicit confirmed clear can discard dirty local input.
     if (snapshot.state !== "ready" || lastReadyRevision.current === snapshot.revision) return;
     lastReadyRevision.current = snapshot.revision;
     lastKnownPolicy.current = snapshot.policy;
-    if (snapshot.policy === null || !dirtyRef.current
-      || (pending.current === "save" && submittedDraft.current === draftKey(currentDraft.current))) {
+    const confirmedClear = pending.current === "clear" && snapshot.policy === null;
+    if (confirmedClear || !dirtyRef.current
+      || (snapshot.policy !== null && pending.current === "save"
+        && submittedDraft.current === draftKey(currentDraft.current))) {
       setDraft(draftFrom(snapshot.policy));
       dirtyRef.current = false;
       setDirty(false);
       setAttempted(false);
     }
-    setCleared(pending.current === "clear" && snapshot.policy === null);
+    setCleared(confirmedClear);
     setRejected(false);
     pending.current = null;
     submittedDraft.current = null;
   }, [snapshot.state, snapshot.revision, snapshot.policy]);
+
+  return {
+    draft, dirty, attempted, rejected, cleared,
+    pending: pending.current,
+    submittedDraft: submittedDraft.current,
+    hasKnownPolicy: lastKnownPolicy.current !== null,
+    updateDraft(next: Draft) {
+      setDraft(next);
+      dirtyRef.current = true;
+      setDirty(true);
+      setCleared(false);
+      setRejected(false);
+    },
+    noteAttempt() { setAttempted(true); setRejected(false); },
+    save(input: BookyReaderPolicyInput, onSave: (input: BookyReaderPolicyInput) => boolean) {
+      const oldPending = pending.current, oldSubmitted = submittedDraft.current;
+      pending.current = "save";
+      submittedDraft.current = draftKey(currentDraft.current);
+      const accepted = onSave(input);
+      if (!accepted) {
+        pending.current = oldPending;
+        submittedDraft.current = oldSubmitted;
+      }
+      setRejected(!accepted);
+      return accepted;
+    },
+    clear(onClear: () => boolean) {
+      const oldPending = pending.current;
+      pending.current = "clear";
+      const accepted = onClear();
+      if (accepted) submittedDraft.current = null;
+      else pending.current = oldPending;
+      setRejected(!accepted);
+      return accepted;
+    },
+    retry(onRetry: () => boolean) {
+      const accepted = onRetry();
+      setRejected(!accepted);
+      return accepted;
+    },
+  };
+}
+export type BookyReaderSettingsEditor = ReturnType<typeof useBookyReaderSettingsState>;
+
+export default function BookyReaderSettings({ snapshot, editor, onSave, onClear, onRetry }: BookyReaderSettingsProps) {
+  const { language } = useInterfaceLanguage();
+  const copy = bookyReaderSettingsCopy.locales[language];
+  const id = useId();
+  const ageInput = useRef<HTMLInputElement>(null), levelInput = useRef<HTMLSelectElement>(null);
+  const status = useRef<HTMLParagraphElement>(null), clearStart = useRef<HTMLButtonElement>(null);
+  const clearConfirm = useRef<HTMLButtonElement>(null);
+  const restoreClearFocus = useRef(false);
+  // Confirmation and DOM focus belong to this opening of the panel only.
+  const [clearAtRevision, setClearAtRevision] = useState<number | null>(null);
+  const { draft, dirty, attempted, rejected, cleared, pending, submittedDraft } = editor;
 
   useLayoutEffect(() => {
     if (clearAtRevision === null) {
@@ -160,50 +213,35 @@ export default function BookyReaderSettings({ snapshot, onSave, onClear, onRetry
   const validAge = Number.isFinite(age) && Number.isInteger(age) && age >= 18 && age <= 120;
   const validLevel = isReadingLevel(draft.readingLevel);
   const showAgeError = attempted && !validAge, showLevelError = attempted && !validLevel;
-  const editedFailedSave = snapshot.error === "write" && pending.current === "save"
-    && submittedDraft.current !== draftKey(draft);
+  const editedFailedSave = snapshot.error === "write" && pending === "save"
+    && submittedDraft !== draftKey(draft);
   const canRetry = snapshot.state === "failed" && !editedFailedSave;
-  const canClear = !busy && Boolean(lastKnownPolicy.current || snapshot.error || draft.age || draft.readingLevel);
+  const canClear = !busy && Boolean(editor.hasKnownPolicy || snapshot.error || draft.age || draft.readingLevel);
   const confirmingClear = clearAtRevision !== null;
 
   function updateDraft(next: Draft) {
-    setDraft(next);
-    dirtyRef.current = true;
-    setDirty(true);
-    setCleared(false);
-    setRejected(false);
+    editor.updateDraft(next);
     setClearAtRevision(null);
   }
 
   function save(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (locked) return;
-    setAttempted(true);
-    setRejected(false);
+    editor.noteAttempt();
     if (!validAge) { ageInput.current?.focus(); return; }
     if (!isReadingLevel(draft.readingLevel)) { levelInput.current?.focus(); return; }
-    const oldPending = pending.current, oldSubmitted = submittedDraft.current;
-    pending.current = "save";
-    submittedDraft.current = draftKey(draft);
-    if (onSave({ age, readingLevel: draft.readingLevel })) {
-      setClearAtRevision(null);
-      status.current?.focus();
-    } else {
-      pending.current = oldPending;
-      submittedDraft.current = oldSubmitted;
-      setRejected(true);
-      status.current?.focus();
-    }
+    if (editor.save({ age, readingLevel: draft.readingLevel }, onSave)) setClearAtRevision(null);
+    status.current?.focus();
   }
 
   let statusText: string;
   if (snapshot.state === "idle" || snapshot.state === "loading") statusText = copy.loading;
-  else if (snapshot.state === "saving") statusText = pending.current === "clear" ? copy.clearing : copy.saving;
+  else if (snapshot.state === "saving") statusText = pending === "clear" ? copy.clearing : copy.saving;
   else if (snapshot.error === "read") statusText = copy.readFailed;
   else if (snapshot.error === "unsupported") statusText = copy.unsupported;
   else if (snapshot.error === "invalid") statusText = copy.invalid;
   else if (snapshot.error === "write") statusText = editedFailedSave ? copy.editedAfterFailure
-    : pending.current === "clear" ? copy.clearFailed : copy.writeFailed;
+    : pending === "clear" ? copy.clearFailed : copy.writeFailed;
   else if (rejected) statusText = copy.rejected;
   else if (dirty) statusText = copy.unsaved;
   else if (cleared) statusText = copy.cleared;
@@ -251,9 +289,9 @@ export default function BookyReaderSettings({ snapshot, onSave, onClear, onRetry
           role="status" aria-live="polite" aria-atomic="true" data-booky-reader-state={snapshot.state}
           data-booky-reader-error={snapshot.error ?? ""}>{statusText}</p>
         {canRetry && <button type="button" data-booky-reader-retry="" onClick={() => {
-          setRejected(!onRetry());
+          editor.retry(onRetry);
           status.current?.focus();
-        }}>{snapshot.error === "write" ? pending.current === "clear" ? copy.retryClear : copy.retryWrite : copy.retryRead}</button>}
+        }}>{snapshot.error === "write" ? pending === "clear" ? copy.retryClear : copy.retryWrite : copy.retryRead}</button>}
         <div className="booky-reader-settings__clear">
           {confirmingClear ? <div role="group" aria-labelledby={`${id}-clear-question`}>
             <p id={`${id}-clear-question`}>{copy.clearQuestion}</p>
@@ -261,17 +299,8 @@ export default function BookyReaderSettings({ snapshot, onSave, onClear, onRetry
               <button ref={clearConfirm} type="button" data-booky-reader-confirm-clear=""
                 disabled={!canClear || clearAtRevision !== snapshot.revision}
                 onClick={() => {
-                  const oldPending = pending.current;
-                  pending.current = "clear";
-                  if (onClear()) {
-                    setClearAtRevision(null);
-                    setRejected(false);
-                    status.current?.focus();
-                  } else {
-                    pending.current = oldPending;
-                    setRejected(true);
-                    status.current?.focus();
-                  }
+                  if (editor.clear(onClear)) setClearAtRevision(null);
+                  status.current?.focus();
                 }}>{copy.confirmClear}</button>
               <button type="button" data-booky-reader-cancel-clear="" onClick={() => {
                 restoreClearFocus.current = true;
