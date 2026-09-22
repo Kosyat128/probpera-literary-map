@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "mode": "inventory",
+  "attempt": "a1",
+  "pass": false,
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/navigation-rebaseline-20260923/source-manifests/80ba846ee06516ca.json",
+    "sha256": "80ba846ee06516cafc217e4fadcec6a475df46c67390befa3e2af7f8a7cd8791",
+    "fileCount": 1598
+  },
+  "checkInputs": [
+    {
+      "path": "docs/mobile/evidence/S15/navigation-rebaseline-20260923/check.mjs",
+      "sha256": "fa1c78835352ac279a733a04bd5bbf976dd05859dfb6ca3470ef9d9ecb7e5843"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/navigation-rebaseline-20260923/entry.json",
+      "sha256": "cb3bb99482f52178ed97ca178b246ade84a0940e8eca4adca13bebfea7272388"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/navigation-rebaseline-20260923/unit.config.mjs",
+      "sha256": "7d0253f6cb5e531bfc76359be017c635d40376ae633cf698915634922e7af500"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "tests": null,
+  "reportError": "Expected values to be strictly equal:\n\nfalse !== true\n",
+  "execution": {
+    "exitCode": 1,
+    "durationMs": 481
+  },
+  "runtimeUnchanged": true,
+  "runtimeWiringImplemented": false,
+  "stageAccepted": false,
+  "ageAdaptiveJourneysAccepted": false,
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "releaseReady": false
+}

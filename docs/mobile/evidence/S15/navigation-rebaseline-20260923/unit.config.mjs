@@ -1,0 +1,1 @@
+export default { test: { environment: 'node', include: ["src/host/bookyNavigationDrafts.test.ts","src/host/bookyDialogueDrafts.test.ts","src/host/bookyDialogueRegistry.test.ts"], maxWorkers: 2, retry: 0 } };

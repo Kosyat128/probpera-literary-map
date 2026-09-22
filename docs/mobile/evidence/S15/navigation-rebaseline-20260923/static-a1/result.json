@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "mode": "static",
+  "attempt": "a1",
+  "pass": true,
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/navigation-rebaseline-20260923/source-manifests/7feab59514d83e7c.json",
+    "sha256": "7feab59514d83e7c46ba0bcf0a403f8a4bd9be5b19376cde5573474ee46a9450",
+    "fileCount": 1598
+  },
+  "checkInputs": [
+    {
+      "path": "docs/mobile/evidence/S15/navigation-rebaseline-20260923/check.mjs",
+      "sha256": "fa1c78835352ac279a733a04bd5bbf976dd05859dfb6ca3470ef9d9ecb7e5843"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/navigation-rebaseline-20260923/entry.json",
+      "sha256": "cb3bb99482f52178ed97ca178b246ade84a0940e8eca4adca13bebfea7272388"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/navigation-rebaseline-20260923/unit.config.mjs",
+      "sha256": "7d0253f6cb5e531bfc76359be017c635d40376ae633cf698915634922e7af500"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "tests": null,
+  "reportError": null,
+  "execution": {
+    "exitCode": 0,
+    "durationMs": 22137
+  },
+  "runtimeUnchanged": true,
+  "runtimeWiringImplemented": false,
+  "stageAccepted": false,
+  "ageAdaptiveJourneysAccepted": false,
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "releaseReady": false
+}

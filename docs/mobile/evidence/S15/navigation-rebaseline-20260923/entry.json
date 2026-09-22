@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-22T22:49:45.376Z",
+  "stage": "S15",
+  "checkpoint": "37f4e94708b76006869995154a152ed0cb211bad",
+  "previous": "docs/mobile/evidence/S15/reader-policy-integration-20260923/result.json",
+  "previousCheckpointResult": {
+    "path": "docs/mobile/evidence/S15/reader-policy-integration-20260923/result.json",
+    "sha256": "b850ef9e40839511160ef60531e5dc51bb750f56bb6af7f0ca307e577efd3d9a"
+  },
+  "priorSourceManifest": {
+    "path": "docs/mobile/evidence/S15/reader-policy-integration-20260923/source-manifests/b5b24c6c82c6dcc1.json",
+    "sha256": "b5b24c6c82c6dcc16e6b346e14c0f561c4d3aec36f140ae1958600d34688f03d",
+    "fileCount": 1598
+  },
+  "changedPaths": [
+    "src/host/bookyNavigationDrafts.ts",
+    "src/host/bookyNavigationDrafts.test.ts",
+    "scripts/mobile/verify-booky-navigation-drafts.mjs"
+  ],
+  "newImplementationFiles": [],
+  "newSourcePaths": [],
+  "unitFiles": [
+    "src/host/bookyNavigationDrafts.test.ts",
+    "src/host/bookyDialogueDrafts.test.ts",
+    "src/host/bookyDialogueRegistry.test.ts"
+  ],
+  "checkpointFiles": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "82e158f8cd18eb9dce7575b82d633dcaa6c756edb0e3a4a76d22d0a147177235"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "b437912b2b87b1b7563cd7d84ad3e4763a7c018d3b4a8ee01cd9eee8bade55f3"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "c283b3fdc80b11eea33d26db5713fc648b4608b3f53c0e5b483fb58a534705d7"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "9bde3077fd1cd40f60b0eb9cea3c87226d2c4460e6ac333caec9eeb178fc102c"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "a08e1f261fbccbe77f0a4959a81fcfee4dc4f007ef3223b75bddcfdd26fe1cf3"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "70a056dfa993863f6075848ca5309ebab7202d8532713980666eac5adb2c9736"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "03cdac51fdf5abfb4607a8a68b33a80081158628031342849888b5d0edfc2721"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "04bb882a2b367a68ea053ccf76ac2116ba9686d3f5bf721e9480e12ac0d37fc5"
+    }
+  ],
+  "requirements": [
+    "PLANETKA-003"
+  ],
+  "priorPwa": {
+    "path": "docs/mobile/evidence/S15/reader-policy-integration-20260923/pwa-a2/result.json",
+    "sha256": "7f2251121f9994ed0cc8ea109e00a2a55ace730902db3fbc93bf24f4c3bcdf47"
+  },
+  "priorAndroid": {
+    "path": "docs/mobile/evidence/S15/reader-policy-integration-20260923/android-a2/result.json",
+    "sha256": "029b50fb5e5363fa2cd6b06a60de54e43a66cfd54c9a5bc1a09198c9922bfe45"
+  },
+  "runtimeSourceCommit": "c5f8e80ab3b8f6be42e04584a0b174ac427197e7",
+  "stageAccepted": false,
+  "childApproved": false,
+  "releaseReady": false
+}

@@ -37,6 +37,13 @@ The active task is the user's V12 bilingual product request, based on canonical
 - Keep internal implementation gaps separate from external owner actions.
   Never transfer translation/programming tasks to the owner.
 
+<!-- s15-navigation-rebaseline-20260923:begin -->
+Latest source ad5c9553: explicitly versioned the eight contextual navigation drafts to payload/source version 2, binding unchanged literal copy to Controls source c5f8e80a. The 14 route records and 12 support records stay exact; all 34 records remain draft and unavailable as reviewed content. Validators compare fixed declarations and never refresh them.
+56 focused tests and TypeScript passed on a1; inventory a2 passed after preserving the original a1 SOURCE_BYTES_CHANGED finding. All 1,595 other implementation/test inputs remain exact. Prior 353 reader-policy tests and 2 actual-App cases are retained without rerun. Preserved PWA ec2dd9dd / Android-dev 91837818 were rehashed against original runtime source c5f8e80a; the captured unimported inventory input differs explicitly, with no rebuild/browser run claimed.
+Evidence: docs/mobile/evidence/S15/navigation-rebaseline-20260923/result.json. PLANETKA-003 and every stage/criterion status remain unchanged: 3 complete, 12 in progress, 26 unstarted; S03.acceptance first unresolved; releaseReady:false.
+Next: continue guarded reviewed-dialogue and full literary-journey integration with explicit adult policy, fresh host sources and exact independent review receipts. Keep all 34 drafts unapproved; preserve canonical scene, current catalog readiness, ordinary navigation, semantic progress, explicit resume/reset, reader drafts and truthful save/delete retries. Child profiles, approved text/audio, full journeys, accessibility, installed-device, iOS and release acceptance remain pending. Preserve prior checkpoint history below.
+<!-- s15-navigation-rebaseline-20260923:end -->
+
 <!-- s15-reader-policy-integration-20260923:begin -->
 Latest source c5f8e80a: optional explicit local adult reader settings now feed confirmed age/reading level into the actual companion journey-admission boundary. Native/Web adapters verify preference readback; pending, failed, cleared or unsupported policy cannot grant admission. App-owned drafts and failed save/delete intent survive panel collapse, collection transitions and background; delete confirmation remains local to each form opening.
 353 focused tests, TypeScript and 2 actual-App Chrome scenarios passed on a3; 3 final images inspected. Fresh preserved PWA ec2dd9dd / Android-dev 91837818 bind c5f8e80a. Earlier checks, an incomplete a2 paint capture and intermediate builds remain preserved; built-PWA coverage is offline/download smoke, with no installed-device or iOS execution claimed.

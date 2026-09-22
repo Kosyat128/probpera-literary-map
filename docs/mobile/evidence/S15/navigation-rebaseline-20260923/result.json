@@ -1,0 +1,338 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-22T22:56:43.133Z",
+  "sourceCommit": "ad5c955375d2652602a5ef9e04f2f9cd584ff928",
+  "stage": "S15",
+  "status": "BOOKY_NAVIGATION_DRAFT_PROVENANCE_REBASELINE_VALIDATED",
+  "pass": true,
+  "entry": {
+    "path": "docs/mobile/evidence/S15/navigation-rebaseline-20260923/entry.json",
+    "sha256": "cb3bb99482f52178ed97ca178b246ade84a0940e8eca4adca13bebfea7272388"
+  },
+  "previous": {
+    "path": "docs/mobile/evidence/S15/reader-policy-integration-20260923/result.json",
+    "sha256": "b850ef9e40839511160ef60531e5dc51bb750f56bb6af7f0ca307e577efd3d9a"
+  },
+  "checkpointHelper": {
+    "path": "docs/mobile/evidence/S15/navigation-rebaseline-20260923/checkpoint.mjs",
+    "sha256": "23efd84bf31422c86514f14b60b3dd827186b25f950ec5fd447bb70d22a84c6b"
+  },
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/navigation-rebaseline-20260923/source-manifests/7feab59514d83e7c.json",
+    "sha256": "7feab59514d83e7c46ba0bcf0a403f8a4bd9be5b19376cde5573474ee46a9450",
+    "fileCount": 1598
+  },
+  "runs": {
+    "unit": {
+      "path": "docs/mobile/evidence/S15/navigation-rebaseline-20260923/unit-a1/result.json",
+      "sha256": "9b0b04fb99b281c8722eb400fb9f39a851eaa4336dfd225d38e3bace528cc751",
+      "tests": {
+        "passed": 56,
+        "failed": 0,
+        "skipped": 0
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/navigation-rebaseline-20260923/unit-a1/execution.json",
+        "sha256": "42c519a9cc8d63b8912c7eb1ddeaede744d713869958ba465f951cfe9c0cdcf1"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/navigation-rebaseline-20260923/unit-a1/vitest.json",
+        "sha256": "eea2528efac5f352f2f7bb3713c93f9622d64dcc11181caff701db9633edb8d2"
+      }
+    },
+    "static": {
+      "path": "docs/mobile/evidence/S15/navigation-rebaseline-20260923/static-a1/result.json",
+      "sha256": "397b728d7af4e88f7cb0365d1d8cd3eef183a30e2413e775d6a23de3b7485a1b",
+      "tests": null,
+      "execution": {
+        "path": "docs/mobile/evidence/S15/navigation-rebaseline-20260923/static-a1/execution.json",
+        "sha256": "b1346e917439fd01d49f1c03ebc8975ffd04d98c361287ff31445ea4cd55e140"
+      },
+      "rawReport": null
+    },
+    "inventory": {
+      "path": "docs/mobile/evidence/S15/navigation-rebaseline-20260923/inventory-a2/result.json",
+      "sha256": "31d246a57b0da30b70cf9fead307c60c7bfb32c0d2663e0ded563734ec714c6c",
+      "tests": null,
+      "execution": {
+        "path": "docs/mobile/evidence/S15/navigation-rebaseline-20260923/inventory-a2/execution.json",
+        "sha256": "b7209c04fcc2fd1b35e2829adce4969b47a0f328c942878bb67032c2dcb2e6f6"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/navigation-rebaseline-20260923/inventory-a2/inventory.json",
+        "sha256": "28338303c2b4917b1b277f6da19f39f85469449260a9ebc36ebdd19ab8f9ac25"
+      }
+    }
+  },
+  "attempts": {
+    "unit": "a1",
+    "static": "a1",
+    "inventory": "a2"
+  },
+  "earlierAttempts": [
+    {
+      "path": "docs/mobile/evidence/S15/navigation-rebaseline-20260923/inventory-a1/result.json",
+      "sha256": "8742e67e18cfaecf7a0b4a9f2c8e251d2038124e9062803fa1e2a84735807593",
+      "mode": "inventory",
+      "attempt": "a1",
+      "pass": false,
+      "tests": null,
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/navigation-rebaseline-20260923/source-manifests/80ba846ee06516ca.json",
+        "sha256": "80ba846ee06516cafc217e4fadcec6a475df46c67390befa3e2af7f8a7cd8791",
+        "fileCount": 1598
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/navigation-rebaseline-20260923/inventory-a1/execution.json",
+        "sha256": "ba2ef15fa142083e6dca1c38e8559d2204cffe8b05bf87d48003d3030b2e9430"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/navigation-rebaseline-20260923/inventory-a1/inventory.json",
+        "sha256": "71deaed9d4f91eaa960fa91ceab306cbc79d5beb300b9f8144eed9a2e2d3509f"
+      },
+      "reason": "Original stale Controls source hash reproduced. All 22 runtime-copy checks passed; only SOURCE_BYTES_CHANGED failed. This original report is retained unchanged."
+    }
+  ],
+  "unitFiles": [
+    "src/host/bookyNavigationDrafts.test.ts",
+    "src/host/bookyDialogueDrafts.test.ts",
+    "src/host/bookyDialogueRegistry.test.ts"
+  ],
+  "unitCount": 56,
+  "inventory": {
+    "path": "docs/mobile/evidence/S15/navigation-rebaseline-20260923/inventory-a2/inventory.json",
+    "sha256": "28338303c2b4917b1b277f6da19f39f85469449260a9ebc36ebdd19ab8f9ac25"
+  },
+  "rebaselineSummary": {
+    "path": "docs/mobile/evidence/S15/navigation-rebaseline-20260923/rebaseline-summary.json",
+    "sha256": "fa2481f5f4a66b31d9751e850a243fe5896f7ff3338c6871511ff0e76b79a84c"
+  },
+  "contextualChanges": [
+    {
+      "id": "guidance.globe",
+      "locale": "ru",
+      "priorVersion": 1,
+      "version": 2,
+      "copySha256": "27ab56b59dfa7e8257703434a055f2919bbb3e05cae56c439ce0bcf6130fa612",
+      "priorSourceSha256": "1b2b4d518ef1621bf37d3497ba27a6b6b6ec8b9cd74a8da66888836efd466bda",
+      "sourceSha256": "52c7cb81a3adc70f57319b48a339111591254fe6aacb76738bf3ce2542dc8486"
+    },
+    {
+      "id": "guidance.globe",
+      "locale": "en",
+      "priorVersion": 1,
+      "version": 2,
+      "copySha256": "5d6556c7ee38bf23d8dc75accca2cf62de585505f2ef04973a08be580f09e91d",
+      "priorSourceSha256": "1b2b4d518ef1621bf37d3497ba27a6b6b6ec8b9cd74a8da66888836efd466bda",
+      "sourceSha256": "52c7cb81a3adc70f57319b48a339111591254fe6aacb76738bf3ce2542dc8486"
+    },
+    {
+      "id": "guidance.country",
+      "locale": "ru",
+      "priorVersion": 1,
+      "version": 2,
+      "copySha256": "ab19a53a3ca8f596de23f551812a21e2bbeb3f22f349ecd7b35eba9962c063ea",
+      "priorSourceSha256": "1b2b4d518ef1621bf37d3497ba27a6b6b6ec8b9cd74a8da66888836efd466bda",
+      "sourceSha256": "52c7cb81a3adc70f57319b48a339111591254fe6aacb76738bf3ce2542dc8486"
+    },
+    {
+      "id": "guidance.country",
+      "locale": "en",
+      "priorVersion": 1,
+      "version": 2,
+      "copySha256": "e89dbc3c808272f9d7a548d9f06f5d6e437e72a1eb4330ec5f6a3db1691aacfa",
+      "priorSourceSha256": "1b2b4d518ef1621bf37d3497ba27a6b6b6ec8b9cd74a8da66888836efd466bda",
+      "sourceSha256": "52c7cb81a3adc70f57319b48a339111591254fe6aacb76738bf3ce2542dc8486"
+    },
+    {
+      "id": "guidance.writer",
+      "locale": "ru",
+      "priorVersion": 1,
+      "version": 2,
+      "copySha256": "ea1a3a737dd177f4b85cd7a8b813bb2654bd1ec77ea6572a6ad950c4d8bfec1f",
+      "priorSourceSha256": "1b2b4d518ef1621bf37d3497ba27a6b6b6ec8b9cd74a8da66888836efd466bda",
+      "sourceSha256": "52c7cb81a3adc70f57319b48a339111591254fe6aacb76738bf3ce2542dc8486"
+    },
+    {
+      "id": "guidance.writer",
+      "locale": "en",
+      "priorVersion": 1,
+      "version": 2,
+      "copySha256": "ff636a208acd0c12b8a31fd0b8e5b9fca00e78fc66d996cd19da554e77f6dc82",
+      "priorSourceSha256": "1b2b4d518ef1621bf37d3497ba27a6b6b6ec8b9cd74a8da66888836efd466bda",
+      "sourceSha256": "52c7cb81a3adc70f57319b48a339111591254fe6aacb76738bf3ce2542dc8486"
+    },
+    {
+      "id": "guidance.collection",
+      "locale": "ru",
+      "priorVersion": 1,
+      "version": 2,
+      "copySha256": "12ab4c9bda6171a785adf109398e7fa8618b965f8f53fac6af041b3b2ff3e443",
+      "priorSourceSha256": "1b2b4d518ef1621bf37d3497ba27a6b6b6ec8b9cd74a8da66888836efd466bda",
+      "sourceSha256": "52c7cb81a3adc70f57319b48a339111591254fe6aacb76738bf3ce2542dc8486"
+    },
+    {
+      "id": "guidance.collection",
+      "locale": "en",
+      "priorVersion": 1,
+      "version": 2,
+      "copySha256": "c153e034391e99b5556fbcb879300fcd18c3a80ba9133d6ea0d24fd7c96ccf5c",
+      "priorSourceSha256": "1b2b4d518ef1621bf37d3497ba27a6b6b6ec8b9cd74a8da66888836efd466bda",
+      "sourceSha256": "52c7cb81a3adc70f57319b48a339111591254fe6aacb76738bf3ce2542dc8486"
+    }
+  ],
+  "recordCount": 22,
+  "navigationRecordCount": 14,
+  "contextualRecordCount": 8,
+  "combinedRecordCount": 34,
+  "combinedDraftCount": 34,
+  "approvedCount": 0,
+  "availableAdultCount": 0,
+  "availableChildCount": 0,
+  "unchangedTrackedInputCount": 1595,
+  "protectedInputsVerified": true,
+  "changedSourcePaths": [
+    "src/host/bookyNavigationDrafts.ts",
+    "src/host/bookyNavigationDrafts.test.ts",
+    "scripts/mobile/verify-booky-navigation-drafts.mjs"
+  ],
+  "changedSourceGitBlobCount": 3,
+  "protectedSourceAuthority": {
+    "path": "docs/mobile/evidence/S15/reader-policy-integration-20260923/source-manifests/b5b24c6c82c6dcc1.json",
+    "sha256": "b5b24c6c82c6dcc16e6b346e14c0f561c4d3aec36f140ae1958600d34688f03d",
+    "fileCount": 1598
+  },
+  "retainedValidation": {
+    "sourceCommit": "c5f8e80ab3b8f6be42e04584a0b174ac427197e7",
+    "unit": {
+      "path": "docs/mobile/evidence/S15/reader-policy-integration-20260923/unit-a3/result.json",
+      "sha256": "bf1aadb4b4888d9467b7dc03db94051877d6a00bf5521eeec4b348765f08c4c3",
+      "tests": {
+        "passed": 353,
+        "failed": 0,
+        "skipped": 0
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/reader-policy-integration-20260923/unit-a3/execution.json",
+        "sha256": "cb374bcbffc8b77784d46047793331ad5f05bb77111c446db8a933155677e626"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/reader-policy-integration-20260923/unit-a3/vitest.json",
+        "sha256": "1054f5551a7ec5f1ea28c5d6c2ad0f891614a56c96a330c9ac09abcc61366dd0"
+      }
+    },
+    "browser": {
+      "path": "docs/mobile/evidence/S15/reader-policy-integration-20260923/browser-a3/result.json",
+      "sha256": "9f24952451467ab58d98f1b2d90bb0e1cc668566bb4e68facc7938bc0b7c5787",
+      "tests": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/reader-policy-integration-20260923/browser-a3/execution.json",
+        "sha256": "b4e27cc3ea48403bd610396184d94d53545687da70ce7765d47e79519067c2d6"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/reader-policy-integration-20260923/browser-a3/playwright.json",
+        "sha256": "d99f17d26490abc44c38d167f48ecafc363784afeaa9e2b42563e35505887157"
+      }
+    },
+    "unitCount": 353,
+    "browserCases": 2,
+    "unitRerun": false,
+    "browserRerun": false
+  },
+  "retainedBuilds": [
+    {
+      "kind": "pwa",
+      "priorResult": {
+        "path": "docs/mobile/evidence/S15/reader-policy-integration-20260923/pwa-a2/result.json",
+        "sha256": "7f2251121f9994ed0cc8ea109e00a2a55ace730902db3fbc93bf24f4c3bcdf47"
+      },
+      "artifactManifest": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-reader-policy/pwa-ec2dd9dd/artifact.json",
+        "sha256": "f510453a8f003201f9fe21719681bc616d8fcf73e9c353fc3ca32b76c64c2dc2"
+      },
+      "apk": null,
+      "sourceCommit": "c5f8e80ab3b8f6be42e04584a0b174ac427197e7",
+      "buildId": "ec2dd9dd25cce6476d3acc9f2a1daa7667e41f11ac4194d5daab9972a06979a9",
+      "runtimePayloadRehashed": true,
+      "sourceInventoryDifferences": [
+        {
+          "path": "src/host/bookyNavigationDrafts.ts",
+          "artifactSourceSha256": "25a2159b221922e6eff6c5411633063c167cb49760176456b8f896b35ef60f1f",
+          "currentSourceSha256": "162748b51116e92d6058b0d29462e4ab651feecc658ab312cb2632544cc67bae",
+          "unimportedDraftInventory": true
+        }
+      ],
+      "unchangedOtherCapturedSourceInputs": true,
+      "navigationRebaselineIncluded": false,
+      "rebuilt": false
+    },
+    {
+      "kind": "android",
+      "priorResult": {
+        "path": "docs/mobile/evidence/S15/reader-policy-integration-20260923/android-a2/result.json",
+        "sha256": "029b50fb5e5363fa2cd6b06a60de54e43a66cfd54c9a5bc1a09198c9922bfe45"
+      },
+      "artifactManifest": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-reader-policy/android-91837818/runtime/artifact.json",
+        "sha256": "d510aacd1100e28e6a8265ce9f5ed827945e762d23dedf979d0901017269ccc3"
+      },
+      "apk": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-reader-policy/android-91837818/app-dev-debug.apk",
+        "bytes": 70289891,
+        "sha256": "5a360f7f2e719f13fdf6362a31cda6ca0c8537336c9599dd60bab878d590a568"
+      },
+      "sourceCommit": "c5f8e80ab3b8f6be42e04584a0b174ac427197e7",
+      "buildId": "91837818fafd92ced96ffde96483a91ab734f2f1e81c605d4acfc190ea0f0dfe",
+      "runtimePayloadRehashed": true,
+      "sourceInventoryDifferences": [
+        {
+          "path": "src/host/bookyNavigationDrafts.ts",
+          "artifactSourceSha256": "25a2159b221922e6eff6c5411633063c167cb49760176456b8f896b35ef60f1f",
+          "currentSourceSha256": "162748b51116e92d6058b0d29462e4ab651feecc658ab312cb2632544cc67bae",
+          "unimportedDraftInventory": true
+        }
+      ],
+      "unchangedOtherCapturedSourceInputs": true,
+      "navigationRebaselineIncluded": false,
+      "rebuilt": false
+    }
+  ],
+  "buildsRebuilt": false,
+  "browserRerun": false,
+  "runtimeUnchanged": true,
+  "runtimeWiringImplemented": false,
+  "navigationRebaselineIncludedInBuilds": false,
+  "criterionChanges": [],
+  "requirementChanges": [],
+  "stageChanges": [],
+  "allStageAndCriterionStatusesUnchanged": true,
+  "counts": {
+    "COMPLETE": 3,
+    "IN_PROGRESS": 12,
+    "NOT_STARTED": 26
+  },
+  "firstUnresolved": "S03.acceptance",
+  "decisionD163Recorded": true,
+  "nextAction": "Continue guarded Booky journey integration under the explicit local adult reader policy, current catalogs and fresh immutable host sources. The 34 RU/EN inventory records remain draft; require independent exact-version review receipts before enabling production dialogue or journeys. Preserve App-owned drafts, explicit save/delete intent, semantic navigation progress, scene ownership and offline recovery. Child profiles, approved text/audio, full journeys, accessibility, installed-device/performance, iOS and release acceptance remain pending; S03.acceptance is first unresolved.",
+  "limitations": [
+    "Only draft inventory declarations, their test and the read-only audit change. No App, controller, renderer, storage, locale or interface copy changes are included.",
+    "Eight contextual RU/EN payloads and source provenance advance to version 2 for the current Controls source. Their copy stays exact; fourteen navigation records and twelve support records remain unchanged. All 34 records remain draft and unavailable to the reviewed-dialogue resolver.",
+    "The preserved failed inventory-a1 proves one stale whole-file Controls hash, with all 22 runtime-text checks passing. A source hash and payload checksum establish identity, not editorial review, facts, rights or approval.",
+    "The retained 353 reader tests and two actual-App Chrome cases belong to source c5f8e80ab3b8f6be42e04584a0b174ac427197e7; they are historical evidence and were not rerun for this inventory-only repair.",
+    "Retained PWA/Android payloads and APK bytes are rehashed at their original runtime source. Their broad source manifests include the previous unimported navigation inventory file; that explicit inventory-only difference is recorded rather than claiming every captured source hash matches current files.",
+    "No rebuild, new browser run, reviewed production dialogue/journey, narration, child access, installed-device, accessibility, iOS, stage or release acceptance is claimed."
+  ],
+  "reviewedDialogueAccepted": false,
+  "productionJourneysEnabled": false,
+  "ageAdaptiveJourneysAccepted": false,
+  "childApproved": false,
+  "narrationEnabled": false,
+  "stageAccepted": false,
+  "productionActionsPerformed": false,
+  "releaseReady": false
+}

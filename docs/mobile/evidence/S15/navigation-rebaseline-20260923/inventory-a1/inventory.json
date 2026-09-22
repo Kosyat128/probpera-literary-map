@@ -1,0 +1,529 @@
+{
+  "schemaVersion": 1,
+  "kind": "booky-navigation-draft-inventory",
+  "pass": false,
+  "recordCount": 22,
+  "navigationRecordCount": 14,
+  "contextualRecordCount": 8,
+  "combinedRecordCount": 34,
+  "stateCount": 11,
+  "locales": [
+    "ru",
+    "en"
+  ],
+  "draftCount": 22,
+  "notReviewedCount": 22,
+  "combinedDraftCount": 34,
+  "approvedCount": 0,
+  "availableAdultCount": 0,
+  "availableChildCount": 0,
+  "sources": [
+    {
+      "sourcePath": "src/host/planetMascotRoutes.ts",
+      "sourceCommit": "5e6eb7676367f71731fa84f9b2e69249c48bcb06",
+      "sourceVersion": 1,
+      "sourceSha256": "c25be7713363e1f438f114fda0a314ffc3f06789fc76e67ef422657d9ae4cfaf",
+      "sourceHashEncoding": "sha256:utf8:lf",
+      "copyHashEncoding": "sha256:utf8:JSON.stringify({title,body})"
+    },
+    {
+      "sourcePath": "src/host/PlanetMascotControls.tsx",
+      "sourceCommit": "5e6eb7676367f71731fa84f9b2e69249c48bcb06",
+      "sourceVersion": 1,
+      "sourceSha256": "1b2b4d518ef1621bf37d3497ba27a6b6b6ec8b9cd74a8da66888836efd466bda",
+      "sourceHashEncoding": "sha256:utf8:lf",
+      "copyHashEncoding": "sha256:utf8:JSON.stringify({title,body})"
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": "src/host/planetMascotRoutes.ts",
+      "sha256": "c25be7713363e1f438f114fda0a314ffc3f06789fc76e67ef422657d9ae4cfaf",
+      "normalizedSha256": "c25be7713363e1f438f114fda0a314ffc3f06789fc76e67ef422657d9ae4cfaf"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "52c7cb81a3adc70f57319b48a339111591254fe6aacb76738bf3ce2542dc8486",
+      "normalizedSha256": "52c7cb81a3adc70f57319b48a339111591254fe6aacb76738bf3ce2542dc8486"
+    }
+  ],
+  "sourceInputs": [
+    {
+      "path": "node_modules/@noble/hashes/esm/_md.js",
+      "sha256": "cefb1557e7715cb2117c83f82ef3e3175c7e0391c80bd5795b2d4effc45fc582"
+    },
+    {
+      "path": "node_modules/@noble/hashes/esm/_u64.js",
+      "sha256": "e48c0cfc10810439a4807b46db136ce603a3fa09b62584f513ef2f3ca496af54"
+    },
+    {
+      "path": "node_modules/@noble/hashes/esm/cryptoNode.js",
+      "sha256": "26f80c6a85b6ef7bfd83b99d95b2b5ba8764397b9465feff32e81ba4e6416619"
+    },
+    {
+      "path": "node_modules/@noble/hashes/esm/sha2.js",
+      "sha256": "e729088b82e5450bff54c3a0013582aa42e1fe8f58dd31f5967f6ebe34c52299"
+    },
+    {
+      "path": "node_modules/@noble/hashes/esm/utils.js",
+      "sha256": "4cf4c1e05affedcb4fd584a43d76ae1a3711e34a36e2251b90c27e33ecc74fad"
+    },
+    {
+      "path": "node_modules/typescript/lib/typescript.js",
+      "sha256": "3ae902c92cc44dace175c0e69e13a4b0899f6983c6121d76b9ab8dd5795e7675"
+    },
+    {
+      "path": "scripts/mobile/verify-booky-navigation-drafts.mjs",
+      "sha256": "a7501168926bf5c0cd484f11f187923597c32ffde5c45326f0a98c02f52bf977"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "52c7cb81a3adc70f57319b48a339111591254fe6aacb76738bf3ce2542dc8486"
+    },
+    {
+      "path": "src/host/bookyDialogueDrafts.ts",
+      "sha256": "107cd15f39f1a65498b8538836295eb69149132b32cc80a29ac6c5ef1371f090"
+    },
+    {
+      "path": "src/host/bookyDialogueRegistry.ts",
+      "sha256": "f9fc576f0f878c0f7b6da61214e5735c140f003c5dc8a9f39caf5c0f74b45f93"
+    },
+    {
+      "path": "src/host/bookyNavigationDrafts.ts",
+      "sha256": "25a2159b221922e6eff6c5411633063c167cb49760176456b8f896b35ef60f1f"
+    },
+    {
+      "path": "src/host/planetMascotRoutes.ts",
+      "sha256": "c25be7713363e1f438f114fda0a314ffc3f06789fc76e67ef422657d9ae4cfaf"
+    },
+    {
+      "path": "src/planet/contentExportHash.ts",
+      "sha256": "05e24bf089e59bf8015e74d8adc9b96147abbc665596920917e8ca2fd5dc7c46"
+    }
+  ],
+  "records": [
+    {
+      "id": "navigation.overview.search",
+      "locale": "ru",
+      "version": 1,
+      "status": "draft",
+      "context": "tour:overview:search",
+      "displayScreens": [
+        "globe",
+        "collection"
+      ],
+      "targetRequiredScreen": "globe",
+      "sourceSha256": "c25be7713363e1f438f114fda0a314ffc3f06789fc76e67ef422657d9ae4cfaf",
+      "copySha256": "064b0098e09346deae05aa11178c0d2abaa613621c67f8b843f68e4aac037878",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    },
+    {
+      "id": "navigation.overview.search",
+      "locale": "en",
+      "version": 1,
+      "status": "draft",
+      "context": "tour:overview:search",
+      "displayScreens": [
+        "globe",
+        "collection"
+      ],
+      "targetRequiredScreen": "globe",
+      "sourceSha256": "c25be7713363e1f438f114fda0a314ffc3f06789fc76e67ef422657d9ae4cfaf",
+      "copySha256": "c276f48220c3a154de837df6b3277e69b8c7480f06c2e9f364f1c2de61bfa004",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    },
+    {
+      "id": "navigation.overview.country",
+      "locale": "ru",
+      "version": 1,
+      "status": "draft",
+      "context": "tour:overview:country",
+      "displayScreens": [
+        "globe",
+        "collection"
+      ],
+      "targetRequiredScreen": "globe",
+      "sourceSha256": "c25be7713363e1f438f114fda0a314ffc3f06789fc76e67ef422657d9ae4cfaf",
+      "copySha256": "77a496b056fe0a836ed63a9932707dcb8ebe6b71d6fd5bab2b64065b60d8d5a0",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    },
+    {
+      "id": "navigation.overview.country",
+      "locale": "en",
+      "version": 1,
+      "status": "draft",
+      "context": "tour:overview:country",
+      "displayScreens": [
+        "globe",
+        "collection"
+      ],
+      "targetRequiredScreen": "globe",
+      "sourceSha256": "c25be7713363e1f438f114fda0a314ffc3f06789fc76e67ef422657d9ae4cfaf",
+      "copySha256": "9ed67151d3ff85dcd68914c16b75075bdeb529ae335f710bf2e4d514c1b51546",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    },
+    {
+      "id": "navigation.overview.collection",
+      "locale": "ru",
+      "version": 1,
+      "status": "draft",
+      "context": "tour:overview:collection",
+      "displayScreens": [
+        "globe",
+        "collection"
+      ],
+      "targetRequiredScreen": "collection",
+      "sourceSha256": "c25be7713363e1f438f114fda0a314ffc3f06789fc76e67ef422657d9ae4cfaf",
+      "copySha256": "07cd3adf2a101cd5423f260b8f76d26ec2b067eeab0bb5d119df96c56a363004",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    },
+    {
+      "id": "navigation.overview.collection",
+      "locale": "en",
+      "version": 1,
+      "status": "draft",
+      "context": "tour:overview:collection",
+      "displayScreens": [
+        "globe",
+        "collection"
+      ],
+      "targetRequiredScreen": "collection",
+      "sourceSha256": "c25be7713363e1f438f114fda0a314ffc3f06789fc76e67ef422657d9ae4cfaf",
+      "copySha256": "bc77c487f199122015d795b5c6c9bb91fcc69b09a2e2e9826a6b63d27d3a481f",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    },
+    {
+      "id": "navigation.overview.appearance",
+      "locale": "ru",
+      "version": 1,
+      "status": "draft",
+      "context": "tour:overview:appearance",
+      "displayScreens": [
+        "globe",
+        "collection"
+      ],
+      "targetRequiredScreen": "globe",
+      "sourceSha256": "c25be7713363e1f438f114fda0a314ffc3f06789fc76e67ef422657d9ae4cfaf",
+      "copySha256": "fc50ab52fa27624e2e0ba2b4fd06057b726cc8bcda4a6c4052ae0da509f35a8b",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    },
+    {
+      "id": "navigation.overview.appearance",
+      "locale": "en",
+      "version": 1,
+      "status": "draft",
+      "context": "tour:overview:appearance",
+      "displayScreens": [
+        "globe",
+        "collection"
+      ],
+      "targetRequiredScreen": "globe",
+      "sourceSha256": "c25be7713363e1f438f114fda0a314ffc3f06789fc76e67ef422657d9ae4cfaf",
+      "copySha256": "92356c27de8fde148c1dcbc27384226f51452e5abc418ae46b547306511c155c",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    },
+    {
+      "id": "navigation.country-to-book.choose-country",
+      "locale": "ru",
+      "version": 1,
+      "status": "draft",
+      "context": "tour:country-to-book:choose-country",
+      "displayScreens": [
+        "globe",
+        "collection"
+      ],
+      "targetRequiredScreen": "globe",
+      "sourceSha256": "c25be7713363e1f438f114fda0a314ffc3f06789fc76e67ef422657d9ae4cfaf",
+      "copySha256": "a5b15413ab581efe5743d46b1b531ec92c9bd78a9b47b164dce0af4ca564efe8",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    },
+    {
+      "id": "navigation.country-to-book.choose-country",
+      "locale": "en",
+      "version": 1,
+      "status": "draft",
+      "context": "tour:country-to-book:choose-country",
+      "displayScreens": [
+        "globe",
+        "collection"
+      ],
+      "targetRequiredScreen": "globe",
+      "sourceSha256": "c25be7713363e1f438f114fda0a314ffc3f06789fc76e67ef422657d9ae4cfaf",
+      "copySha256": "9323c54df68b66bc901937a445ba0e0cc955b6bd04513db8cf86ae68cc1475a1",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    },
+    {
+      "id": "navigation.country-to-book.choose-writer",
+      "locale": "ru",
+      "version": 1,
+      "status": "draft",
+      "context": "tour:country-to-book:choose-writer",
+      "displayScreens": [
+        "globe",
+        "collection"
+      ],
+      "targetRequiredScreen": "globe",
+      "sourceSha256": "c25be7713363e1f438f114fda0a314ffc3f06789fc76e67ef422657d9ae4cfaf",
+      "copySha256": "f3acfdb0b61e092e17e9c16a972c6232e2e1eec1356def4a302c1fec3a0f14fc",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    },
+    {
+      "id": "navigation.country-to-book.choose-writer",
+      "locale": "en",
+      "version": 1,
+      "status": "draft",
+      "context": "tour:country-to-book:choose-writer",
+      "displayScreens": [
+        "globe",
+        "collection"
+      ],
+      "targetRequiredScreen": "globe",
+      "sourceSha256": "c25be7713363e1f438f114fda0a314ffc3f06789fc76e67ef422657d9ae4cfaf",
+      "copySha256": "1688ce3bdd4f4d53bf7e4c512fa5a8d79ab6da111b6755c7395b87e964e33523",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    },
+    {
+      "id": "navigation.country-to-book.open-books",
+      "locale": "ru",
+      "version": 1,
+      "status": "draft",
+      "context": "tour:country-to-book:open-books",
+      "displayScreens": [
+        "globe",
+        "collection"
+      ],
+      "targetRequiredScreen": "collection",
+      "sourceSha256": "c25be7713363e1f438f114fda0a314ffc3f06789fc76e67ef422657d9ae4cfaf",
+      "copySha256": "0601303c07c807fc57ac34c0e7e8a4e96bf990fbceab8500de66c3b7da756787",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    },
+    {
+      "id": "navigation.country-to-book.open-books",
+      "locale": "en",
+      "version": 1,
+      "status": "draft",
+      "context": "tour:country-to-book:open-books",
+      "displayScreens": [
+        "globe",
+        "collection"
+      ],
+      "targetRequiredScreen": "collection",
+      "sourceSha256": "c25be7713363e1f438f114fda0a314ffc3f06789fc76e67ef422657d9ae4cfaf",
+      "copySha256": "21d683f52cc02970a53b271fd1be7e12e362fdbab813e4325a95efa0b15f96c5",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    },
+    {
+      "id": "guidance.globe",
+      "locale": "ru",
+      "version": 1,
+      "status": "draft",
+      "context": "help:globe",
+      "displayScreens": [
+        "globe"
+      ],
+      "targetRequiredScreen": null,
+      "sourceSha256": "1b2b4d518ef1621bf37d3497ba27a6b6b6ec8b9cd74a8da66888836efd466bda",
+      "copySha256": "27ab56b59dfa7e8257703434a055f2919bbb3e05cae56c439ce0bcf6130fa612",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    },
+    {
+      "id": "guidance.globe",
+      "locale": "en",
+      "version": 1,
+      "status": "draft",
+      "context": "help:globe",
+      "displayScreens": [
+        "globe"
+      ],
+      "targetRequiredScreen": null,
+      "sourceSha256": "1b2b4d518ef1621bf37d3497ba27a6b6b6ec8b9cd74a8da66888836efd466bda",
+      "copySha256": "5d6556c7ee38bf23d8dc75accca2cf62de585505f2ef04973a08be580f09e91d",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    },
+    {
+      "id": "guidance.country",
+      "locale": "ru",
+      "version": 1,
+      "status": "draft",
+      "context": "help:country",
+      "displayScreens": [
+        "globe"
+      ],
+      "targetRequiredScreen": null,
+      "sourceSha256": "1b2b4d518ef1621bf37d3497ba27a6b6b6ec8b9cd74a8da66888836efd466bda",
+      "copySha256": "ab19a53a3ca8f596de23f551812a21e2bbeb3f22f349ecd7b35eba9962c063ea",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    },
+    {
+      "id": "guidance.country",
+      "locale": "en",
+      "version": 1,
+      "status": "draft",
+      "context": "help:country",
+      "displayScreens": [
+        "globe"
+      ],
+      "targetRequiredScreen": null,
+      "sourceSha256": "1b2b4d518ef1621bf37d3497ba27a6b6b6ec8b9cd74a8da66888836efd466bda",
+      "copySha256": "e89dbc3c808272f9d7a548d9f06f5d6e437e72a1eb4330ec5f6a3db1691aacfa",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    },
+    {
+      "id": "guidance.writer",
+      "locale": "ru",
+      "version": 1,
+      "status": "draft",
+      "context": "help:writer",
+      "displayScreens": [
+        "globe"
+      ],
+      "targetRequiredScreen": null,
+      "sourceSha256": "1b2b4d518ef1621bf37d3497ba27a6b6b6ec8b9cd74a8da66888836efd466bda",
+      "copySha256": "ea1a3a737dd177f4b85cd7a8b813bb2654bd1ec77ea6572a6ad950c4d8bfec1f",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    },
+    {
+      "id": "guidance.writer",
+      "locale": "en",
+      "version": 1,
+      "status": "draft",
+      "context": "help:writer",
+      "displayScreens": [
+        "globe"
+      ],
+      "targetRequiredScreen": null,
+      "sourceSha256": "1b2b4d518ef1621bf37d3497ba27a6b6b6ec8b9cd74a8da66888836efd466bda",
+      "copySha256": "ff636a208acd0c12b8a31fd0b8e5b9fca00e78fc66d996cd19da554e77f6dc82",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    },
+    {
+      "id": "guidance.collection",
+      "locale": "ru",
+      "version": 1,
+      "status": "draft",
+      "context": "help:collection",
+      "displayScreens": [
+        "collection"
+      ],
+      "targetRequiredScreen": null,
+      "sourceSha256": "1b2b4d518ef1621bf37d3497ba27a6b6b6ec8b9cd74a8da66888836efd466bda",
+      "copySha256": "12ab4c9bda6171a785adf109398e7fa8618b965f8f53fac6af041b3b2ff3e443",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    },
+    {
+      "id": "guidance.collection",
+      "locale": "en",
+      "version": 1,
+      "status": "draft",
+      "context": "help:collection",
+      "displayScreens": [
+        "collection"
+      ],
+      "targetRequiredScreen": null,
+      "sourceSha256": "1b2b4d518ef1621bf37d3497ba27a6b6b6ec8b9cd74a8da66888836efd466bda",
+      "copySha256": "c153e034391e99b5556fbcb879300fcd18c3a80ba9133d6ea0d24fd7c96ccf5c",
+      "contentChecksumMatches": true,
+      "recordChecksumMatches": true,
+      "runtimeTextMatches": true,
+      "reviewedDialogueAvailable": false,
+      "childDialogueAvailable": false
+    }
+  ],
+  "errors": [
+    {
+      "code": "SOURCE_BYTES_CHANGED",
+      "record": "src/host/PlanetMascotControls.tsx"
+    }
+  ],
+  "changesExistingHelp": false,
+  "narrationEnabled": false,
+  "childApproved": false,
+  "humanReviewed": false,
+  "factualEditorialEvidenceClaimed": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}
