@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "sourceCommit": "259e93cc7a58a6b10d49a0025bf502be54239b79",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-catalog-scene-20260923/source-manifests/6c7180043be6cb6a.json",
+    "sha256": "6c7180043be6cb6af3120d87ea8e6ca3e83f4c73fe9eb22de24446adb964127e",
+    "fileCount": 1588
+  },
+  "actualAppCaptures": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-catalog-scene/browser-a4/booky-catalog-scene-a-succ-0b676-owledges-only-explicit-next/booky-catalog-scene.json",
+      "sha256": "f8d2e854dd9490efc2fe305000edc28c2bc8ac28a5db4a1b55529b9f6bc6893b"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-catalog-scene/browser-a4/booky-catalog-scene-initia-bd66f-ut-a-fabricated-ready-globe/booky-catalog-scene.json",
+      "sha256": "8cda523446a194ce429d7b62a0bcd864e3692be35dc1c9b5f900ab7523e4370c"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-catalog-scene/browser-a4/booky-catalog-scene-retain-371fe-he-real-catalog-retry-fails/booky-catalog-scene.json",
+      "sha256": "b2fc07e7059a311846a9174dee035388562376b37dd63a69a49f293544cc72b2"
+    }
+  ],
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-catalog-scene/browser-a4/booky-catalog-scene-a-succ-0b676-owledges-only-explicit-next/booky-catalog-recovered-offline-en.png",
+      "sha256": "86d804c35ace582397e9d15cb5c8ac0d27e0fea91596b6901b083e0ceeaba8be",
+      "inspected": true,
+      "reviewer": "Codex root visual inspection",
+      "findings": [
+        "After recovery the canonical globe remains visible and the catalog notice disappears. EN offline guidance is readable.",
+        "Progress shows 2 of 3 following explicit Next; renderer and resource identity is established by browser observations, not image appearance."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-catalog-scene/browser-a4/booky-catalog-scene-initia-bd66f-ut-a-fabricated-ready-globe/catalog-initial-failure-ru.png",
+      "sha256": "5aa35123faba4b66501ca19d4f0b4fb2df8d3c45280bb9a8c282685080663e8c",
+      "inspected": true,
+      "reviewer": "Codex root visual inspection",
+      "findings": [
+        "First catalog failure retains the existing empty fallback and retry button. No fabricated ready globe or retained-catalog notice is shown."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-catalog-scene/browser-a4/booky-catalog-scene-retain-371fe-he-real-catalog-retry-fails/booky-catalog-failed-ru.png",
+      "sha256": "91bb108ddedc8e1a5c6ec66afae647cf4a4dc438233a0c964c3e56067632d594",
+      "inspected": true,
+      "reviewer": "Codex root visual inspection",
+      "findings": [
+        "Canonical globe remains visible after catalog failure. RU catalog notice and retry sit below the edition rail, clear of the bottom instructions and open Booky panel.",
+        "Disabled writer actions are established by DOM checks; those buttons are below the visible panel scroll area."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-catalog-scene/browser-a4/booky-catalog-scene-retain-371fe-he-real-catalog-retry-fails/booky-catalog-failed-narrow-ru.png",
+      "sha256": "47f5594671ebf6ef82966ff1af18a1f8ca631d1f5ca50e7061031eb738491bcc",
+      "inspected": true,
+      "reviewer": "Codex root visual inspection",
+      "findings": [
+        "At 320px, the notice and retry are readable below the Appearance toggle without overlap or horizontal overflow. Globe controls, locale buttons and collapsed Booky remain visible.",
+        "The companion panel was explicitly closed through the UI. Its own retry and the globe retry passed trial actionability checks; no second HTTP retry is claimed."
+      ]
+    }
+  ],
+  "artAccepted": false,
+  "childApproved": false,
+  "releaseReady": false
+}

@@ -1,3 +1,11 @@
+<!-- s15-catalog-scene-20260923:begin -->
+Source 259e93cc: application catalog retry preserves the existing canonical scene while truthful catalog readiness continues to gate Booky actions and progress. Initial failure retains the original fallback.
+TypeScript, 3 actual-App Chrome cases, 4 inspected views and fresh preserved PWA dc0eb6c9 / Android-dev 53a91515. Prior 265 controller tests retained without rerun; built-PWA coverage is the offline/download smoke.
+PLANETKA-005 remains IN_PROGRESS; all stage/criterion statuses stay unchanged: 3 complete, 12 in progress, 26 unstarted. S03.acceptance remains first unresolved; releaseReady:false.
+Evidence: evidence/S15/booky-catalog-scene-20260923/result.json.
+Continue S15 with guarded integration of reviewed Booky dialogue and literary journeys under explicit current host policy. Keep the 34 inventoried RU/EN records draft and unavailable as reviewed content. Preserve the application globe across catalog retry, truthful readiness and retry states, adult semantic progress, deliberate resume/reset, unsupported-save protection, offline recovery and canonical scene ownership. Child profiles, approved text/audio, full journeys, accessibility, installed-device/performance, iOS and release gates remain pending. S03.acceptance remains first unresolved.
+<!-- s15-catalog-scene-20260923:end -->
+
 <!-- s15-booky-catalog-20260920:begin -->
 Source f3abea82: Booky requires current catalog readiness before retained selection can authorize navigation or acknowledgements. Ready offline content remains usable.
 265 focused tests, TypeScript, 2 actual-App Chrome cases, 2 inspected views and fresh preserved PWA 13b26073 / Android-dev f6ad1a85. Built-PWA coverage remains offline/download smoke.

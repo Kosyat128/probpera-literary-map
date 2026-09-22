@@ -37,6 +37,14 @@ The active task is the user's V12 bilingual product request, based on canonical
 - Keep internal implementation gaps separate from external owner actions.
   Never transfer translation/programming tasks to the owner.
 
+<!-- s15-catalog-scene-20260923:begin -->
+Latest source 259e93cc: application catalog loading/error/recovery retains the same canonical canvas, renderer, camera, scene and recorded resources. Current readiness still gates Booky actions/progress. First catalog failure keeps the original fallback; the public site does not opt in.
+TypeScript, 3 actual-App Chrome cases and 4 inspected views passed (a4), including a readable 320px error notice clear of Appearance controls. On mobile the expanded Booky panel has its own retry; the globe retry is checked after explicitly closing that panel. Retry trial clicks prove actionability, not a second HTTP retry. Prior 265 controller tests were retained without rerun. Earlier visual findings and the a2 overlay-related fixture failure are preserved.
+Fresh preserved PWA dc0eb6c9 / Android-dev 53a91515 bind this source; PWA coverage is the offline/download smoke, APK checks are local binary/build evidence, not installed-device acceptance. All 83 inherited scene/model inputs and 1,584 protected implementation/test inputs remain exact.
+Evidence: docs/mobile/evidence/S15/booky-catalog-scene-20260923/result.json. PLANETKA-005 and all stage/criterion statuses remain unchanged: 3 complete, 12 in progress, 26 unstarted; S03.acceptance first unresolved; releaseReady:false.
+Next: continue guarded Booky dialogue/journey integration under real current host policy and independent review receipts. All 34 inventoried RU/EN records remain draft; do not fabricate age/reading-level policy or content approval. Preserve scene ownership, truthful readiness, adult semantic progress, explicit resume/reset and offline recovery. Child profiles, reviewed text/audio, full journeys, accessibility, installed-device/performance, iOS and release acceptance remain pending. Retain the historical notes below.
+<!-- s15-catalog-scene-20260923:end -->
+
 <!-- s15-booky-catalog-20260920:begin -->
 Latest source f3abea82: Booky requires a currently ready country catalog before retained country/writer selections authorize dependent actions or semantic acknowledgement. Loading/error/unknown states suspend those operations; ready offline data still works. Existing progress and deliberate resume remain intact.
 265 focused tests, TypeScript, 2 actual-App Chrome cases and 2 inspected views passed. Fresh preserved PWA 13b26073 / Android-dev f6ad1a85 bind this source. The built-PWA case is offline/download smoke; no installed-device or release acceptance. All 86 scene/model protected inputs and 1,584 other tracked implementation/test inputs remain exact. Historical unit-a1 and browser-a2 reproduce the defect; browser-a1 is a separate test-fixture observation error, retained unchanged.

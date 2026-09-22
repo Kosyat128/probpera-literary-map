@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "mode": "static",
+  "attempt": "a4",
+  "startedAt": "2026-09-22T21:54:13.665Z",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-catalog-scene-20260923/source-manifests/6c7180043be6cb6a.json",
+    "sha256": "6c7180043be6cb6af3120d87ea8e6ca3e83f4c73fe9eb22de24446adb964127e",
+    "fileCount": 1588
+  },
+  "checkInputs": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-catalog-scene-20260923/check.mjs",
+      "sha256": "3f3e315874601963edf41b2bee29fea756f33a379c991d7d2548fb76da17c576"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-catalog-scene-20260923/entry.json",
+      "sha256": "21538ceb9609bd952089f4f96fa59ba8e8f5bb85fd1fd8f834b7a23ef0f54cad"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "tests": null,
+  "reportError": null,
+  "pass": true,
+  "execution": {
+    "exitCode": 0,
+    "durationMs": 28493
+  },
+  "stageAccepted": false,
+  "artAccepted": false,
+  "releaseReady": false
+}

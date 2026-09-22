@@ -1,0 +1,9 @@
+{
+  "pass": false,
+  "command": "node docs/mobile/evidence/S15/booky-catalog-scene-20260923/checkpoint.mjs 259e93cc7a58a6b10d49a0025bf502be54239b79 a4 a4",
+  "error": "Missing source binding: src/host/planetMascot.ts",
+  "cause": "The helper looked for the unchanged controller only in the inherited 83 scene/model inputs, although it is bound in the independently verified 1584 protected implementation/test inputs.",
+  "resolution": "Require the essential bindings in the union of the two verified sets. Keep both exact hash verifications and counts; no inputs or tests were altered.",
+  "checkpointWritten": false,
+  "testsOrBuildsRerun": false
+}

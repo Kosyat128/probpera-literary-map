@@ -1,0 +1,9 @@
+
+Running 3 tests using 1 worker
+
+
+
+[1/3] tests\pwa\booky-catalog-scene.spec.mjs:433:1 › retained country and writer selections cannot authorize progress or writer actions while the real catalog retry fails
+[2/3] tests\pwa\booky-catalog-scene.spec.mjs:478:1 › a successful catalog retry restores selected actions and offline-ready navigation acknowledges only explicit next
+[3/3] tests\pwa\booky-catalog-scene.spec.mjs:516:1 › initial catalog failure retains the original loading fallback without a fabricated ready globe
+  3 passed (22.4s)

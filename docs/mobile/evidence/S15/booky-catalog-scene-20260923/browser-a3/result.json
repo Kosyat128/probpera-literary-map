@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "mode": "browser",
+  "attempt": "a3",
+  "startedAt": "2026-09-22T21:52:19.694Z",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-catalog-scene-20260923/source-manifests/c53a664f80e9503c.json",
+    "sha256": "c53a664f80e9503c1ad00b5efd404525638f825ee17846a4e85e8fc668bfb44e",
+    "fileCount": 1588
+  },
+  "checkInputs": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-catalog-scene-20260923/check.mjs",
+      "sha256": "3f3e315874601963edf41b2bee29fea756f33a379c991d7d2548fb76da17c576"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-catalog-scene-20260923/entry.json",
+      "sha256": "21538ceb9609bd952089f4f96fa59ba8e8f5bb85fd1fd8f834b7a23ef0f54cad"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-catalog-scene-20260923/playwright.config.mjs",
+      "sha256": "78c05b734a651612a26e810dad0ffef1465986562df3fc5825d536a6d55414a1"
+    },
+    {
+      "path": "tests/pwa/booky-catalog-scene.spec.mjs",
+      "sha256": "33ffb154bab881f3578c889d2b4d11225eacd38d2eb2512890bff3244e6b1810"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "tests": {
+    "passed": 3,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0
+  },
+  "reportError": null,
+  "pass": true,
+  "execution": {
+    "exitCode": 0,
+    "durationMs": 25552
+  },
+  "stageAccepted": false,
+  "artAccepted": false,
+  "releaseReady": false
+}
