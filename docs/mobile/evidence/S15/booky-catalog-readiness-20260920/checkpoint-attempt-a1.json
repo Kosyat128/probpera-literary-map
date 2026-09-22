@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "pass": false,
+  "sourceCommit": "f3abea82df910d824216093792a8e257ff6447a4",
+  "command": "node docs/mobile/evidence/S15/booky-catalog-readiness-20260920/checkpoint.mjs f3abea82df910d824216093792a8e257ff6447a4 a3 a2 a1",
+  "helperSha256": "c41f2c6699f6f68795668706c1c7d561d37499b43cbefc251e422e38717f2722",
+  "exitCode": 1,
+  "error": "Non-text Git identity differs: apps/mobile/android/gradlew.bat",
+  "classification": "Evidence helper omitted .bat from its UTF-8 line-ending allowlist. git ls-files --eol identifies i/lf w/crlf; all other mismatched extensions are already allowed. No state/result writes occurred.",
+  "testsRerun": false,
+  "buildsRerun": false
+}

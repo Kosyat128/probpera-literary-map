@@ -37,6 +37,13 @@ The active task is the user's V12 bilingual product request, based on canonical
 - Keep internal implementation gaps separate from external owner actions.
   Never transfer translation/programming tasks to the owner.
 
+<!-- s15-booky-catalog-20260920:begin -->
+Latest source f3abea82: Booky requires a currently ready country catalog before retained country/writer selections authorize dependent actions or semantic acknowledgement. Loading/error/unknown states suspend those operations; ready offline data still works. Existing progress and deliberate resume remain intact.
+265 focused tests, TypeScript, 2 actual-App Chrome cases and 2 inspected views passed. Fresh preserved PWA 13b26073 / Android-dev f6ad1a85 bind this source. The built-PWA case is offline/download smoke; no installed-device or release acceptance. All 86 scene/model protected inputs and 1,584 other tracked implementation/test inputs remain exact. Historical unit-a1 and browser-a2 reproduce the defect; browser-a1 is a separate test-fixture observation error, retained unchanged.
+Evidence: docs/mobile/evidence/S15/booky-catalog-readiness-20260920/result.json. PLANETKA-005/008 and all stage/criterion statuses stay unchanged: 3 complete, 12 in progress, 26 unstarted; S03.acceptance first unresolved; releaseReady:false. All 34 dialogue records remain draft.
+Next concrete step: keep the already mounted canonical globe mounted during application catalog reload, while truthful current catalog readiness continues to gate Booky actions. The existing LiteraryWorldMap readiness condition currently unmounts it during loading/error; initial-load and public-site behavior must stay unchanged. Prove renderer/camera/resource identity and explicit retry behavior. Then continue guarded reviewed-dialogue/journey integration with real host policy and review receipts. Child, full journeys, reviewed text/audio, accessibility, installed-device, iOS and release acceptance remain pending. Preserve the earlier checkpoint notes below as history.
+<!-- s15-booky-catalog-20260920:end -->
+
 <!-- s15-booky-navigation-inventory-20260920:begin -->
 Latest checkpoint source 3b04e70a: added fixed inventory of 22 existing adult RU/EN navigation and contextual records. With the 12 support records, all 34 remain draft and unavailable through the reviewed-dialogue resolver. The inventory remains unimported by the application.
 55 focused tests, TypeScript and the exact-source/copy inventory audit passed. All 1,583 prior implementation/test inputs remain exact. Retained PWA a44b4440 / Android-dev 5c3287a7 preserve source 5e6eb767; new inventory code is not included and no rebuild or browser run is claimed.

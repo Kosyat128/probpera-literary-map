@@ -1,0 +1,8 @@
+
+Running 2 tests using 1 worker
+
+
+
+[1/2] tests\pwa\booky-catalog-readiness.spec.mjs:398:1 › retained country and writer selections cannot authorize progress or writer actions while the real catalog retry fails
+[2/2] tests\pwa\booky-catalog-readiness.spec.mjs:430:1 › a successful catalog retry restores selected actions and offline-ready navigation acknowledges only explicit next
+  2 passed (16.9s)

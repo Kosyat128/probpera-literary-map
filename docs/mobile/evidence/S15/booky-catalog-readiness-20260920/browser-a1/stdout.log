@@ -1,0 +1,62 @@
+
+Running 2 tests using 1 worker
+
+
+
+[1/2] tests\pwa\booky-catalog-readiness.spec.mjs:398:1 › retained country and writer selections cannot authorize progress or writer actions while the real catalog retry fails
+  1) tests\pwa\booky-catalog-readiness.spec.mjs:398:1 › retained country and writer selections cannot authorize progress or writer actions while the real catalog retry fails 
+
+    TimeoutError: locator.getAttribute: Timeout 12000ms exceeded.
+    Call log:
+      - waiting for locator('[data-booky-support]')
+
+
+      359 |   return { ...await snapshot(page), nextEnabled: await next(page).isEnabled(),
+      360 |     writerActionEnabled: await action(page, 'writer').isEnabled(), preference: JSON.parse(fixture.memory.get(BOOKY)),
+    > 361 |     support: await support(page).getAttribute('data-booky-support') };
+          |                                  ^
+      362 | }
+      363 | async function enterCountryRetry(fixture) {
+      364 |   const { page, result } = fixture;
+        at observedReadiness (C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-catalog-readiness.spec.mjs:361:34)
+        at enterCountryRetry (C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-catalog-readiness.spec.mjs:375:37)
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-catalog-readiness.spec.mjs:403:5
+
+    attachment #1: booky-catalog-readiness-source-evidence (application/json) ──────────────────────
+    D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-catalog\browser-a1\booky-catalog-readiness-re-f165f-he-real-catalog-retry-fails\attachments\booky-catalog-readiness-source-evidence-f57e296e69eef65733513b838225a200192a3cc6.json
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-catalog\browser-a1\booky-catalog-readiness-re-f165f-he-real-catalog-retry-fails\error-context.md
+
+
+
+
+[2/2] tests\pwa\booky-catalog-readiness.spec.mjs:430:1 › a successful catalog retry restores selected actions and offline-ready navigation acknowledges only explicit next
+  2) tests\pwa\booky-catalog-readiness.spec.mjs:430:1 › a successful catalog retry restores selected actions and offline-ready navigation acknowledges only explicit next 
+
+    TimeoutError: locator.getAttribute: Timeout 12000ms exceeded.
+    Call log:
+      - waiting for locator('[data-booky-support]')
+
+
+      359 |   return { ...await snapshot(page), nextEnabled: await next(page).isEnabled(),
+      360 |     writerActionEnabled: await action(page, 'writer').isEnabled(), preference: JSON.parse(fixture.memory.get(BOOKY)),
+    > 361 |     support: await support(page).getAttribute('data-booky-support') };
+          |                                  ^
+      362 | }
+      363 | async function enterCountryRetry(fixture) {
+      364 |   const { page, result } = fixture;
+        at observedReadiness (C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-catalog-readiness.spec.mjs:361:34)
+        at enterCountryRetry (C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-catalog-readiness.spec.mjs:375:37)
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-catalog-readiness.spec.mjs:435:5
+
+    attachment #1: booky-catalog-readiness-source-evidence (application/json) ──────────────────────
+    D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-catalog\browser-a1\booky-catalog-readiness-a--db227-owledges-only-explicit-next\attachments\booky-catalog-readiness-source-evidence-f858970598e025044a569441e6e7d22537356185.json
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-catalog\browser-a1\booky-catalog-readiness-a--db227-owledges-only-explicit-next\error-context.md
+
+
+  2 failed
+    tests\pwa\booky-catalog-readiness.spec.mjs:398:1 › retained country and writer selections cannot authorize progress or writer actions while the real catalog retry fails 
+    tests\pwa\booky-catalog-readiness.spec.mjs:430:1 › a successful catalog retry restores selected actions and offline-ready navigation acknowledges only explicit next 

@@ -3,9 +3,9 @@
   "repository": "Kosyat128/probpera-literary-map",
   "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
-  "headSha": "3b04e70ae0af163d07cd8f402c78049ac4a59243",
+  "headSha": "f3abea82df910d824216093792a8e257ff6447a4",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-20T19:22:27.124Z",
+  "updatedAt": "2026-09-22T21:38:49.021Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -2635,11 +2635,12 @@
           "id": "S15.PLANETKA-005",
           "status": "IN_PROGRESS",
           "evidence": [
-            "docs/mobile/evidence/S15/booky-offline-help-20260920/result.json"
+            "docs/mobile/evidence/S15/booky-offline-help-20260920/result.json",
+            "docs/mobile/evidence/S15/booky-catalog-readiness-20260920/result.json"
           ],
-          "commit": "707044e708cb5b0ce1b564b378cc5adffd574f12",
-          "lastValidatedAt": "2026-09-20T07:23:53.744Z",
-          "notes": "Offline/error helper. Implement the original guide and shared policy before complete English dialogue/audio validation. Adult Booky now gives RU/EN offline, unknown, loading and recoverable-error guidance from actual host state, with explicit context-fenced recovery. Failed primary split-module entries use bounded build-known alternate facades while canonical dependencies stay shared. 114 focused cases, TypeScript, 5 actual-App Chrome cases and 5 inspected views bind this source; local PWA/Android preserve the runtime. Original browser-a1 import failure and browser-a2 language-control overlap remain evidence; final narrow-view captures prove both locale controls are uncovered. This starts the adult offline/error foundation only; child, dialogue, literary journeys, accessibility/device and release gates remain open."
+          "commit": "f3abea82df910d824216093792a8e257ff6447a4",
+          "lastValidatedAt": "2026-09-22T21:38:49.021Z",
+          "notes": "Offline/error helper. Implement the original guide and shared policy before complete English dialogue/audio validation. Adult Booky now gives RU/EN offline, unknown, loading and recoverable-error guidance from actual host state, with explicit context-fenced recovery. Failed primary split-module entries use bounded build-known alternate facades while canonical dependencies stay shared. 114 focused cases, TypeScript, 5 actual-App Chrome cases and 5 inspected views bind this source; local PWA/Android preserve the runtime. Original browser-a1 import failure and browser-a2 language-control overlap remain evidence; final narrow-view captures prove both locale controls are uncovered. This starts the adult offline/error foundation only; child, dialogue, literary journeys, accessibility/device and release gates remain open. Retained selection now requires a currently ready country catalog before selection-dependent actions or semantic acknowledgement; loading/error/unknown states suspend those operations, and ready offline content remains usable. 265 focused tests, TypeScript, 2 actual-App Chrome cases and 2 inspected views bind fresh preserved PWA/Android-dev builds. This remains scoped adult behavior, with no stage, child, reviewed-content or release acceptance."
         },
         {
           "id": "S15.PLANETKA-006",
@@ -2662,11 +2663,12 @@
           "status": "IN_PROGRESS",
           "evidence": [
             "docs/mobile/evidence/S15/booky-resume-preference-20260920/result.json",
-            "docs/mobile/evidence/S15/booky-semantic-progress-20260920/result.json"
+            "docs/mobile/evidence/S15/booky-semantic-progress-20260920/result.json",
+            "docs/mobile/evidence/S15/booky-catalog-readiness-20260920/result.json"
           ],
-          "commit": "5e6eb7676367f71731fa84f9b2e69249c48bcb06",
-          "lastValidatedAt": "2026-09-20T07:56:37.475Z",
-          "notes": "Journey checkpoint/resume/migration. Implement the original guide and shared policy before complete English dialogue/audio validation. Adult Booky explicit visibility and semantic navigation-tour resume now persist through existing adult platform preferences. Cold restoration offers a closed, explicit resume and does not navigate or grant permissions. 206 selected preference/controller/adapter cases, TypeScript, one actual-App Chrome case and 3 inspected source-bound views validate the selected source; current local PWA/Android artifacts preserve that runtime. This starts the adult foundation only; child and literary progress, migrations, reviewed dialogue/audio and all art/device/release acceptance remain pending. All former Planetka functions remain Booky scope. Adult navigation progress now uses schema v2 and versioned semantic acknowledgements for the two existing routes. Strict v1 migration adds no inferred steps; hide keeps progress and resume; cold restore stays closed; only confirmed reset can replace unsupported data. 256 focused cases, TypeScript, 3 actual-App Chrome cases and 3 inspected views bind this source, with local PWA/Android preservation. This is not reading or full literary/child journey progress and does not close PLANETKA-008."
+          "commit": "f3abea82df910d824216093792a8e257ff6447a4",
+          "lastValidatedAt": "2026-09-22T21:38:49.021Z",
+          "notes": "Journey checkpoint/resume/migration. Implement the original guide and shared policy before complete English dialogue/audio validation. Adult Booky explicit visibility and semantic navigation-tour resume now persist through existing adult platform preferences. Cold restoration offers a closed, explicit resume and does not navigate or grant permissions. 206 selected preference/controller/adapter cases, TypeScript, one actual-App Chrome case and 3 inspected source-bound views validate the selected source; current local PWA/Android artifacts preserve that runtime. This starts the adult foundation only; child and literary progress, migrations, reviewed dialogue/audio and all art/device/release acceptance remain pending. All former Planetka functions remain Booky scope. Adult navigation progress now uses schema v2 and versioned semantic acknowledgements for the two existing routes. Strict v1 migration adds no inferred steps; hide keeps progress and resume; cold restore stays closed; only confirmed reset can replace unsupported data. 256 focused cases, TypeScript, 3 actual-App Chrome cases and 3 inspected views bind this source, with local PWA/Android preservation. This is not reading or full literary/child journey progress and does not close PLANETKA-008. Retained selection now requires a currently ready country catalog before selection-dependent actions or semantic acknowledgement; loading/error/unknown states suspend those operations, and ready offline content remains usable. 265 focused tests, TypeScript, 2 actual-App Chrome cases and 2 inspected views bind fresh preserved PWA/Android-dev builds. This remains scoped adult behavior, with no stage, child, reviewed-content or release acceptance."
         },
         {
           "id": "S15.UX-003",
@@ -2723,7 +2725,13 @@
         "node docs/mobile/evidence/S15/booky-journey-boundary-20260920/check.mjs static a1",
         "node docs/mobile/evidence/S15/booky-navigation-inventory-20260920/check.mjs unit a1",
         "node docs/mobile/evidence/S15/booky-navigation-inventory-20260920/check.mjs static a1",
-        "node docs/mobile/evidence/S15/booky-navigation-inventory-20260920/check.mjs inventory a1"
+        "node docs/mobile/evidence/S15/booky-navigation-inventory-20260920/check.mjs inventory a1",
+        "node docs/mobile/evidence/S15/booky-catalog-readiness-20260920/check.mjs unit a2",
+        "node docs/mobile/evidence/S15/booky-catalog-readiness-20260920/check.mjs static a1",
+        "node docs/mobile/evidence/S15/booky-catalog-readiness-20260920/check.mjs browser a3",
+        "node docs/mobile/evidence/S15/booky-catalog-readiness-20260920/build-pwa.mjs f3abea82df910d824216093792a8e257ff6447a4",
+        "pwsh -File docs/mobile/evidence/S15/booky-catalog-readiness-20260920/build-android.ps1 f3abea82df910d824216093792a8e257ff6447a4",
+        "node docs/mobile/evidence/S15/booky-catalog-readiness-20260920/preserve-android.mjs f3abea82df910d824216093792a8e257ff6447a4"
       ],
       "artifacts": [
         "docs/mobile/evidence/S15/planetka-visual-mode-20260920/entry.json",
@@ -2796,7 +2804,17 @@
         "docs/mobile/evidence/S15/booky-navigation-inventory-20260920/inventory-a1/inventory.json",
         "docs/mobile/evidence/S15/booky-navigation-inventory-20260920/unit-a1/result.json",
         "docs/mobile/evidence/S15/booky-navigation-inventory-20260920/static-a1/result.json",
-        "docs/mobile/evidence/S15/booky-navigation-inventory-20260920/inventory-a1/result.json"
+        "docs/mobile/evidence/S15/booky-navigation-inventory-20260920/inventory-a1/result.json",
+        "docs/mobile/evidence/S15/booky-catalog-readiness-20260920/entry.json",
+        "docs/mobile/evidence/S15/booky-catalog-readiness-20260920/result.json",
+        "docs/mobile/evidence/S15/booky-catalog-readiness-20260920/README.md",
+        "docs/mobile/evidence/S15/booky-catalog-readiness-20260920/visual-review.json",
+        "docs/mobile/evidence/S15/booky-catalog-readiness-20260920/source-manifests/56792a35581c7887.json",
+        "docs/mobile/evidence/S15/booky-catalog-readiness-20260920/unit-a2/result.json",
+        "docs/mobile/evidence/S15/booky-catalog-readiness-20260920/static-a1/result.json",
+        "docs/mobile/evidence/S15/booky-catalog-readiness-20260920/browser-a3/result.json",
+        "docs/mobile/evidence/S15/booky-catalog-readiness-20260920/pwa-a1/result.json",
+        "docs/mobile/evidence/S15/booky-catalog-readiness-20260920/android-a1/result.json"
       ],
       "externalBlockers": []
     },
@@ -11157,7 +11175,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Continue S15 with guarded runtime integration of reviewed Booky dialogue and journey data. Keep the current adult navigation and support working while separating existing interface copy from reviewed literary content. Require explicit host policy, current public entity relations and exact approved dialogue versions before enabling new content; missing or unreviewed content stays unavailable. Preserve semantic progress, explicit resume/reset, unsupported-save protection, offline recovery and canonical scene ownership. The 34 inventoried RU/EN records remain draft and do not authorize publication, child access or narration. Full literary and age-adaptive journeys, reviewed text/audio, accessibility, installed-device/performance, iOS and release acceptance remain pending. S03.acceptance remains first unresolved.",
+    "nextAction": "Next repair the existing application catalog-retry boundary so an already mounted canonical globe remains mounted while current catalog readiness still controls Booky actions. Keep the initial-load and public-site behavior unchanged; prove renderer/camera identity and truthful retry states. Then continue S15 with guarded integration of reviewed Booky dialogue and literary journeys under explicit current host policy. Keep the 34 inventoried RU/EN records draft and unavailable as reviewed content. Preserve catalog-readiness checks, adult semantic progress, deliberate resume/reset, unsupported-save protection, offline recovery and canonical scene ownership. Child profiles, approved text/audio, full journeys, accessibility, installed-device/performance, iOS and release gates remain pending. S03.acceptance remains first unresolved.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -11236,7 +11254,8 @@
       "docs/mobile/evidence/S15/booky-semantic-progress-20260920/result.json",
       "docs/mobile/evidence/S15/booky-dialogue-registry-20260920/result.json",
       "docs/mobile/evidence/S15/booky-journey-boundary-20260920/result.json",
-      "docs/mobile/evidence/S15/booky-navigation-inventory-20260920/result.json"
+      "docs/mobile/evidence/S15/booky-navigation-inventory-20260920/result.json",
+      "docs/mobile/evidence/S15/booky-catalog-readiness-20260920/result.json"
     ],
     "commands": [
       "node scripts/mobile/verify-requirements.mjs",
@@ -11285,7 +11304,8 @@
       "S15 adult Booky semantic progress: schema v2, explicit step acknowledgement, hide/reload/resume, confirmed reset and future-record protection. 256 tests, TypeScript, 3 actual-App Chrome cases and 3 inspected views bind preserved local PWA/Android. PLANETKA-008 remains IN_PROGRESS; literary/child/journey/review/device/release gates stay open.",
       "S15 dialogue registry boundary and fixed inventory of 12 RU/EN support drafts: zero reviewed/available records, existing runtime unchanged. Retained builds still bind prior source 5e6eb767. Continue canonical journey definitions without inferring content, child or rights approval.",
       "S15 canonical journey model boundary: source-bound unit/static checks, existing runtime unchanged, zero production journey activation. Retained PWA/Android builds still bind 5e6eb767. Continue the two existing adult-route draft dialogue inventory, then guarded runtime integration without inferring review, child or age-adaptive acceptance.",
-      "S15 fixed navigation/contextual dialogue inventory: 22 new RU/EN draft records plus 12 unchanged support drafts, zero reviewed/available records, existing runtime unchanged. Retained PWA/Android artifacts still bind 5e6eb767. Continue guarded runtime integration without inferring review, child, narration or age-adaptive journey acceptance."
+      "S15 fixed navigation/contextual dialogue inventory: 22 new RU/EN draft records plus 12 unchanged support drafts, zero reviewed/available records, existing runtime unchanged. Retained PWA/Android artifacts still bind 5e6eb767. Continue guarded runtime integration without inferring review, child, narration or age-adaptive journey acceptance.",
+      "S15 adult Booky current catalog-readiness guard: retained selection alone does not authorize actions/progress; ready offline catalogs remain usable. Source-bound checks and fresh PWA/Android-dev builds are preserved; no stage or release acceptance."
     ]
   },
   "requirementsHash": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732",
@@ -13210,6 +13230,14 @@
       "sha256": "c093edea35e0839450ff72aaa0265bc4fbe71932bc300f569ff51fb26c5757ea",
       "sourceCommit": "3b04e70ae0af163d07cd8f402c78049ac4a59243",
       "status": "BOOKY_NAVIGATION_DRAFT_INVENTORY_VALIDATED",
+      "stageAccepted": false,
+      "releaseReady": false
+    },
+    "s15BookyCatalogReadiness": {
+      "path": "docs/mobile/evidence/S15/booky-catalog-readiness-20260920/result.json",
+      "sha256": "9aaad44060fc412a8ffd48e4c71de2999ab41a2b1a03e7ed2ef608fd5ca6a211",
+      "sourceCommit": "f3abea82df910d824216093792a8e257ff6447a4",
+      "status": "ADULT_BOOKY_CATALOG_READINESS_SCOPED_VALIDATION",
       "stageAccepted": false,
       "releaseReady": false
     }

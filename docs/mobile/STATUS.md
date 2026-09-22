@@ -1,3 +1,11 @@
+<!-- s15-booky-catalog-20260920:begin -->
+Source f3abea82: Booky requires current catalog readiness before retained selection can authorize navigation or acknowledgements. Ready offline content remains usable.
+265 focused tests, TypeScript, 2 actual-App Chrome cases, 2 inspected views and fresh preserved PWA 13b26073 / Android-dev f6ad1a85. Built-PWA coverage remains offline/download smoke.
+PLANETKA-005/008 remain IN_PROGRESS; all stage/criterion statuses stay unchanged: 3 complete, 12 in progress, 26 unstarted. S03.acceptance remains first unresolved; releaseReady:false.
+Evidence: evidence/S15/booky-catalog-readiness-20260920/result.json.
+Next repair the existing application catalog-retry boundary so an already mounted canonical globe remains mounted while current catalog readiness still controls Booky actions. Keep the initial-load and public-site behavior unchanged; prove renderer/camera identity and truthful retry states. Then continue S15 with guarded integration of reviewed Booky dialogue and literary journeys under explicit current host policy. Keep the 34 inventoried RU/EN records draft and unavailable as reviewed content. Preserve catalog-readiness checks, adult semantic progress, deliberate resume/reset, unsupported-save protection, offline recovery and canonical scene ownership. Child profiles, approved text/audio, full journeys, accessibility, installed-device/performance, iOS and release gates remain pending. S03.acceptance remains first unresolved.
+<!-- s15-booky-catalog-20260920:end -->
+
 <!-- s15-booky-navigation-inventory-20260920:begin -->
 Source 3b04e70a: fixed inventory of 22 existing RU/EN navigation/contextual dialogue records. Together with 12 unchanged support records, all 34 remain draft; no production dialogue is approved or enabled.
 55 focused unit tests, TypeScript and the inventory audit passed. 1583 existing files remain exact. Retained PWA a44b4440 / Android-dev 5c3287a7 were rehashed against their original source 5e6eb767; no rebuild or new browser run is claimed.

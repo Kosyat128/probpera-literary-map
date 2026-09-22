@@ -4917,13 +4917,19 @@
         "src/loading/stage5LoadingGraph.test.ts",
         "src/loading/bookArchiveRuntime.test.ts",
         "scripts/mobile/pwa-artifact.test.mjs",
-        "tests/pwa/booky-support.spec.mjs"
+        "tests/pwa/booky-support.spec.mjs",
+        "src/host/HostPlatformServices.test.ts",
+        "src/host/bookyTourProgress.test.ts",
+        "src/host/planetMascotPreference.test.ts",
+        "src/platform/adapters/web/WebPlatformAdapter.test.ts",
+        "tests/pwa/booky-catalog-readiness.spec.mjs"
       ],
       "evidence": [
-        "docs/mobile/evidence/S15/booky-offline-help-20260920/result.json"
+        "docs/mobile/evidence/S15/booky-offline-help-20260920/result.json",
+        "docs/mobile/evidence/S15/booky-catalog-readiness-20260920/result.json"
       ],
-      "commit": "707044e708cb5b0ce1b564b378cc5adffd574f12",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion. Adult Booky now gives RU/EN offline, unknown, loading and recoverable-error guidance from actual host state, with explicit context-fenced recovery. Failed primary split-module entries use bounded build-known alternate facades while canonical dependencies stay shared. 114 focused cases, TypeScript, 5 actual-App Chrome cases and 5 inspected views bind this source; local PWA/Android preserve the runtime. Original browser-a1 import failure and browser-a2 language-control overlap remain evidence; final narrow-view captures prove both locale controls are uncovered. This starts the adult offline/error foundation only; child, dialogue, literary journeys, accessibility/device and release gates remain open."
+      "commit": "f3abea82df910d824216093792a8e257ff6447a4",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion. Adult Booky now gives RU/EN offline, unknown, loading and recoverable-error guidance from actual host state, with explicit context-fenced recovery. Failed primary split-module entries use bounded build-known alternate facades while canonical dependencies stay shared. 114 focused cases, TypeScript, 5 actual-App Chrome cases and 5 inspected views bind this source; local PWA/Android preserve the runtime. Original browser-a1 import failure and browser-a2 language-control overlap remain evidence; final narrow-view captures prove both locale controls are uncovered. This starts the adult offline/error foundation only; child, dialogue, literary journeys, accessibility/device and release gates remain open. Retained selection now requires a currently ready country catalog before selection-dependent actions or semantic acknowledgement; loading/error/unknown states suspend those operations, and ready offline content remains usable. 265 focused tests, TypeScript, 2 actual-App Chrome cases and 2 inspected views bind fresh preserved PWA/Android-dev builds. This remains scoped adult behavior, with no stage, child, reviewed-content or release acceptance."
     },
     {
       "id": "PLANETKA-006",
@@ -4985,14 +4991,16 @@
         "src/host/bookySupport.test.ts",
         "src/host/bookyTourProgress.test.ts",
         "src/host/planetMascotPreference.test.ts",
-        "tests/pwa/booky-progress.spec.mjs"
+        "tests/pwa/booky-progress.spec.mjs",
+        "tests/pwa/booky-catalog-readiness.spec.mjs"
       ],
       "evidence": [
         "docs/mobile/evidence/S15/booky-resume-preference-20260920/result.json",
-        "docs/mobile/evidence/S15/booky-semantic-progress-20260920/result.json"
+        "docs/mobile/evidence/S15/booky-semantic-progress-20260920/result.json",
+        "docs/mobile/evidence/S15/booky-catalog-readiness-20260920/result.json"
       ],
-      "commit": "5e6eb7676367f71731fa84f9b2e69249c48bcb06",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion. Adult Booky explicit visibility and semantic navigation-tour resume now persist through existing adult platform preferences. Cold restoration offers a closed, explicit resume and does not navigate or grant permissions. 206 selected preference/controller/adapter cases, TypeScript, one actual-App Chrome case and 3 inspected source-bound views validate the selected source; current local PWA/Android artifacts preserve that runtime. This starts the adult foundation only; child and literary progress, migrations, reviewed dialogue/audio and all art/device/release acceptance remain pending. All former Planetka functions remain Booky scope. Adult navigation progress now uses schema v2 and versioned semantic acknowledgements for the two existing routes. Strict v1 migration adds no inferred steps; hide keeps progress and resume; cold restore stays closed; only confirmed reset can replace unsupported data. 256 focused cases, TypeScript, 3 actual-App Chrome cases and 3 inspected views bind this source, with local PWA/Android preservation. This is not reading or full literary/child journey progress and does not close PLANETKA-008."
+      "commit": "f3abea82df910d824216093792a8e257ff6447a4",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion. Adult Booky explicit visibility and semantic navigation-tour resume now persist through existing adult platform preferences. Cold restoration offers a closed, explicit resume and does not navigate or grant permissions. 206 selected preference/controller/adapter cases, TypeScript, one actual-App Chrome case and 3 inspected source-bound views validate the selected source; current local PWA/Android artifacts preserve that runtime. This starts the adult foundation only; child and literary progress, migrations, reviewed dialogue/audio and all art/device/release acceptance remain pending. All former Planetka functions remain Booky scope. Adult navigation progress now uses schema v2 and versioned semantic acknowledgements for the two existing routes. Strict v1 migration adds no inferred steps; hide keeps progress and resume; cold restore stays closed; only confirmed reset can replace unsupported data. 256 focused cases, TypeScript, 3 actual-App Chrome cases and 3 inspected views bind this source, with local PWA/Android preservation. This is not reading or full literary/child journey progress and does not close PLANETKA-008. Retained selection now requires a currently ready country catalog before selection-dependent actions or semantic acknowledgement; loading/error/unknown states suspend those operations, and ready offline content remains usable. 265 focused tests, TypeScript, 2 actual-App Chrome cases and 2 inspected views bind fresh preserved PWA/Android-dev builds. This remains scoped adult behavior, with no stage, child, reviewed-content or release acceptance."
     },
     {
       "id": "PLATFORM-001",

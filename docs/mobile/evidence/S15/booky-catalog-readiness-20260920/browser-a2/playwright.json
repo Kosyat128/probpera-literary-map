@@ -1,0 +1,220 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=docs/mobile/evidence/S15/booky-catalog-readiness-20260920/playwright.config.mjs"
+    ],
+    "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-catalog-readiness-20260920\\playwright.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-catalog/browser-a2",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "booky-catalog-readiness.spec.mjs"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-catalog-readiness-20260920\\browser-a2\\playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "booky-catalog-readiness.spec.mjs",
+      "file": "booky-catalog-readiness.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "retained country and writer selections cannot authorize progress or writer actions while the real catalog retry fails",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 10662,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-planet-mascot-next]')\nExpected: disabled\nReceived: enabled\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeDisabled\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-planet-mascot-next]')\u001b[22m\n\u001b[2m    14 × locator resolved to <button type=\"button\" data-planet-mascot-next=\"\">Далее</button>\u001b[22m\n\u001b[2m       - unexpected value \"enabled\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-planet-mascot-next]')\nExpected: disabled\nReceived: enabled\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeDisabled\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-planet-mascot-next]')\u001b[22m\n\u001b[2m    14 × locator resolved to <button type=\"button\" data-planet-mascot-next=\"\">Далее</button>\u001b[22m\n\u001b[2m       - unexpected value \"enabled\"\u001b[22m\n\n    at enterCountryRetry (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-catalog-readiness.spec.mjs:389:28)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-catalog-readiness.spec.mjs:403:5",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-catalog-readiness.spec.mjs",
+                      "column": 28,
+                      "line": 389
+                    },
+                    "snippet": "  387 |   await expect(support(page)).toHaveAttribute('data-booky-support', 'countries-loading');\n  388 |   result.observations.loadingWriterStep = await observedReadiness(fixture);\n> 389 |   await expect(next(page)).toBeDisabled();\n      |                            ^\n  390 |   await expect(action(page, 'writer')).toBeDisabled();\n  391 |   expect(progress(fixture)).toEqual(countryProgress);\n  392 |   // Catalog readiness never acknowledges a semantic step on the user's behalf."
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-catalog-readiness.spec.mjs",
+                        "column": 28,
+                        "line": 389
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-planet-mascot-next]')\nExpected: disabled\nReceived: enabled\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeDisabled\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-planet-mascot-next]')\u001b[22m\n\u001b[2m    14 × locator resolved to <button type=\"button\" data-planet-mascot-next=\"\">Далее</button>\u001b[22m\n\u001b[2m       - unexpected value \"enabled\"\u001b[22m\n\n\n  387 |   await expect(support(page)).toHaveAttribute('data-booky-support', 'countries-loading');\n  388 |   result.observations.loadingWriterStep = await observedReadiness(fixture);\n> 389 |   await expect(next(page)).toBeDisabled();\n      |                            ^\n  390 |   await expect(action(page, 'writer')).toBeDisabled();\n  391 |   expect(progress(fixture)).toEqual(countryProgress);\n  392 |   // Catalog readiness never acknowledges a semantic step on the user's behalf.\n    at enterCountryRetry (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-catalog-readiness.spec.mjs:389:28)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-catalog-readiness.spec.mjs:403:5"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-20T19:28:22.718Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-catalog-readiness-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-catalog\\browser-a2\\booky-catalog-readiness-re-f165f-he-real-catalog-retry-fails\\attachments\\booky-catalog-readiness-source-evidence-73ec4febae02e58edd0eb9f465b288454cac153a.json"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-catalog\\browser-a2\\booky-catalog-readiness-re-f165f-he-real-catalog-retry-fails\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-catalog-readiness.spec.mjs",
+                    "column": 28,
+                    "line": 389
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "0c3237b6bbac6cbfbf8d-feb24ba119e3c3981a8b",
+          "file": "booky-catalog-readiness.spec.mjs",
+          "line": 398,
+          "column": 1
+        },
+        {
+          "title": "a successful catalog retry restores selected actions and offline-ready navigation acknowledges only explicit next",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 10532,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-planet-mascot-next]')\nExpected: disabled\nReceived: enabled\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeDisabled\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-planet-mascot-next]')\u001b[22m\n\u001b[2m    14 × locator resolved to <button type=\"button\" data-planet-mascot-next=\"\">Далее</button>\u001b[22m\n\u001b[2m       - unexpected value \"enabled\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-planet-mascot-next]')\nExpected: disabled\nReceived: enabled\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeDisabled\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-planet-mascot-next]')\u001b[22m\n\u001b[2m    14 × locator resolved to <button type=\"button\" data-planet-mascot-next=\"\">Далее</button>\u001b[22m\n\u001b[2m       - unexpected value \"enabled\"\u001b[22m\n\n    at enterCountryRetry (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-catalog-readiness.spec.mjs:389:28)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-catalog-readiness.spec.mjs:435:5",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-catalog-readiness.spec.mjs",
+                      "column": 28,
+                      "line": 389
+                    },
+                    "snippet": "  387 |   await expect(support(page)).toHaveAttribute('data-booky-support', 'countries-loading');\n  388 |   result.observations.loadingWriterStep = await observedReadiness(fixture);\n> 389 |   await expect(next(page)).toBeDisabled();\n      |                            ^\n  390 |   await expect(action(page, 'writer')).toBeDisabled();\n  391 |   expect(progress(fixture)).toEqual(countryProgress);\n  392 |   // Catalog readiness never acknowledges a semantic step on the user's behalf."
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-catalog-readiness.spec.mjs",
+                        "column": 28,
+                        "line": 389
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-planet-mascot-next]')\nExpected: disabled\nReceived: enabled\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeDisabled\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-planet-mascot-next]')\u001b[22m\n\u001b[2m    14 × locator resolved to <button type=\"button\" data-planet-mascot-next=\"\">Далее</button>\u001b[22m\n\u001b[2m       - unexpected value \"enabled\"\u001b[22m\n\n\n  387 |   await expect(support(page)).toHaveAttribute('data-booky-support', 'countries-loading');\n  388 |   result.observations.loadingWriterStep = await observedReadiness(fixture);\n> 389 |   await expect(next(page)).toBeDisabled();\n      |                            ^\n  390 |   await expect(action(page, 'writer')).toBeDisabled();\n  391 |   expect(progress(fixture)).toEqual(countryProgress);\n  392 |   // Catalog readiness never acknowledges a semantic step on the user's behalf.\n    at enterCountryRetry (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-catalog-readiness.spec.mjs:389:28)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-catalog-readiness.spec.mjs:435:5"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-20T19:28:34.557Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-catalog-readiness-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-catalog\\browser-a2\\booky-catalog-readiness-a--db227-owledges-only-explicit-next\\attachments\\booky-catalog-readiness-source-evidence-29a9e8af5d4a8624feb413ba8137568e1024422c.json"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-catalog\\browser-a2\\booky-catalog-readiness-a--db227-owledges-only-explicit-next\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-catalog-readiness.spec.mjs",
+                    "column": 28,
+                    "line": 389
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "0c3237b6bbac6cbfbf8d-a29b79af8b9572e249c9",
+          "file": "booky-catalog-readiness.spec.mjs",
+          "line": 430,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-20T19:28:22.156Z",
+    "duration": 23658.178,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "sourceCommit": "f3abea82df910d824216093792a8e257ff6447a4",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-catalog-readiness-20260920/source-manifests/56792a35581c7887.json",
+    "sha256": "56792a35581c788773c4591613efe0703466ae9d19f1b320d48f2acefd9d0d28",
+    "fileCount": 1587
+  },
+  "actualAppCaptures": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-catalog/browser-a3/booky-catalog-readiness-re-f165f-he-real-catalog-retry-fails/booky-catalog-readiness.json",
+      "sha256": "7732bffd4ac76a22f3a6dca8c86f64a4132e585778644ff68b82a8dabcf5d9ed"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-catalog/browser-a3/booky-catalog-readiness-a--db227-owledges-only-explicit-next/booky-catalog-readiness.json",
+      "sha256": "1f863f31b0005dc121e0e95c1ba22a68b94f34275f6ac18c84f1f1a304f61194"
+    }
+  ],
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-catalog/browser-a3/booky-catalog-readiness-re-f165f-he-real-catalog-retry-fails/booky-catalog-failed-ru.png",
+      "sha256": "97484af70d6274ffa83685c268ffa530f1ec0f4294450c235a880021aa3944ec",
+      "inspected": true,
+      "reviewer": "Codex root visual inspection",
+      "findings": [
+        "RU error copy and retry control are readable; the retained selected-writer label is visible.",
+        "The blank globe area during failed catalog reload also occurs in the baseline and is outside this controller fix.",
+        "Writer action buttons are below the panel scroll; their disabled state is proven by browser DOM assertions and observations, not by this screenshot."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-catalog/browser-a3/booky-catalog-readiness-a--db227-owledges-only-explicit-next/booky-catalog-recovered-offline-en.png",
+      "sha256": "86d804c35ace582397e9d15cb5c8ac0d27e0fea91596b6901b083e0ceeaba8be",
+      "inspected": true,
+      "reviewer": "Codex root visual inspection",
+      "findings": [
+        "EN offline help and retained selected-writer label are readable after successful catalog loading.",
+        "The canonical globe is visible after recovery; route acknowledgement count is 2 of 3 after explicit Next.",
+        "Writer action buttons are below the panel scroll; their enabled state is proven by browser DOM assertions and observations, not by this screenshot."
+      ]
+    }
+  ],
+  "artAccepted": false,
+  "childApproved": false,
+  "releaseReady": false
+}

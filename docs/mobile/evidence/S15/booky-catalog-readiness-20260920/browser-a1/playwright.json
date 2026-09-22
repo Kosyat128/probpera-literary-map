@@ -1,0 +1,220 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=docs/mobile/evidence/S15/booky-catalog-readiness-20260920/playwright.config.mjs"
+    ],
+    "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-catalog-readiness-20260920\\playwright.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-catalog/browser-a1",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "booky-catalog-readiness.spec.mjs"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-catalog-readiness-20260920\\browser-a1\\playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "booky-catalog-readiness.spec.mjs",
+      "file": "booky-catalog-readiness.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "retained country and writer selections cannot authorize progress or writer actions while the real catalog retry fails",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 17702,
+                  "error": {
+                    "message": "TimeoutError: locator.getAttribute: Timeout 12000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-booky-support]')\u001b[22m\n",
+                    "stack": "TimeoutError: locator.getAttribute: Timeout 12000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-booky-support]')\u001b[22m\n\n    at observedReadiness (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-catalog-readiness.spec.mjs:361:34)\n    at enterCountryRetry (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-catalog-readiness.spec.mjs:375:37)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-catalog-readiness.spec.mjs:403:5",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-catalog-readiness.spec.mjs",
+                      "column": 34,
+                      "line": 361
+                    },
+                    "snippet": "  359 |   return { ...await snapshot(page), nextEnabled: await next(page).isEnabled(),\n  360 |     writerActionEnabled: await action(page, 'writer').isEnabled(), preference: JSON.parse(fixture.memory.get(BOOKY)),\n> 361 |     support: await support(page).getAttribute('data-booky-support') };\n      |                                  ^\n  362 | }\n  363 | async function enterCountryRetry(fixture) {\n  364 |   const { page, result } = fixture;"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-catalog-readiness.spec.mjs",
+                        "column": 34,
+                        "line": 361
+                      },
+                      "message": "TimeoutError: locator.getAttribute: Timeout 12000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-booky-support]')\u001b[22m\n\n\n  359 |   return { ...await snapshot(page), nextEnabled: await next(page).isEnabled(),\n  360 |     writerActionEnabled: await action(page, 'writer').isEnabled(), preference: JSON.parse(fixture.memory.get(BOOKY)),\n> 361 |     support: await support(page).getAttribute('data-booky-support') };\n      |                                  ^\n  362 | }\n  363 | async function enterCountryRetry(fixture) {\n  364 |   const { page, result } = fixture;\n    at observedReadiness (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-catalog-readiness.spec.mjs:361:34)\n    at enterCountryRetry (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-catalog-readiness.spec.mjs:375:37)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-catalog-readiness.spec.mjs:403:5"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-20T19:26:30.171Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-catalog-readiness-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-catalog\\browser-a1\\booky-catalog-readiness-re-f165f-he-real-catalog-retry-fails\\attachments\\booky-catalog-readiness-source-evidence-f57e296e69eef65733513b838225a200192a3cc6.json"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-catalog\\browser-a1\\booky-catalog-readiness-re-f165f-he-real-catalog-retry-fails\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-catalog-readiness.spec.mjs",
+                    "column": 34,
+                    "line": 361
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "0c3237b6bbac6cbfbf8d-feb24ba119e3c3981a8b",
+          "file": "booky-catalog-readiness.spec.mjs",
+          "line": 398,
+          "column": 1
+        },
+        {
+          "title": "a successful catalog retry restores selected actions and offline-ready navigation acknowledges only explicit next",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 17268,
+                  "error": {
+                    "message": "TimeoutError: locator.getAttribute: Timeout 12000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-booky-support]')\u001b[22m\n",
+                    "stack": "TimeoutError: locator.getAttribute: Timeout 12000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-booky-support]')\u001b[22m\n\n    at observedReadiness (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-catalog-readiness.spec.mjs:361:34)\n    at enterCountryRetry (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-catalog-readiness.spec.mjs:375:37)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-catalog-readiness.spec.mjs:435:5",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-catalog-readiness.spec.mjs",
+                      "column": 34,
+                      "line": 361
+                    },
+                    "snippet": "  359 |   return { ...await snapshot(page), nextEnabled: await next(page).isEnabled(),\n  360 |     writerActionEnabled: await action(page, 'writer').isEnabled(), preference: JSON.parse(fixture.memory.get(BOOKY)),\n> 361 |     support: await support(page).getAttribute('data-booky-support') };\n      |                                  ^\n  362 | }\n  363 | async function enterCountryRetry(fixture) {\n  364 |   const { page, result } = fixture;"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-catalog-readiness.spec.mjs",
+                        "column": 34,
+                        "line": 361
+                      },
+                      "message": "TimeoutError: locator.getAttribute: Timeout 12000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-booky-support]')\u001b[22m\n\n\n  359 |   return { ...await snapshot(page), nextEnabled: await next(page).isEnabled(),\n  360 |     writerActionEnabled: await action(page, 'writer').isEnabled(), preference: JSON.parse(fixture.memory.get(BOOKY)),\n> 361 |     support: await support(page).getAttribute('data-booky-support') };\n      |                                  ^\n  362 | }\n  363 | async function enterCountryRetry(fixture) {\n  364 |   const { page, result } = fixture;\n    at observedReadiness (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-catalog-readiness.spec.mjs:361:34)\n    at enterCountryRetry (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-catalog-readiness.spec.mjs:375:37)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-catalog-readiness.spec.mjs:435:5"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-20T19:26:49.292Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-catalog-readiness-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-catalog\\browser-a1\\booky-catalog-readiness-a--db227-owledges-only-explicit-next\\attachments\\booky-catalog-readiness-source-evidence-f858970598e025044a569441e6e7d22537356185.json"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-catalog\\browser-a1\\booky-catalog-readiness-a--db227-owledges-only-explicit-next\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-catalog-readiness.spec.mjs",
+                    "column": 34,
+                    "line": 361
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "0c3237b6bbac6cbfbf8d-a29b79af8b9572e249c9",
+          "file": "booky-catalog-readiness.spec.mjs",
+          "line": 430,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-20T19:26:29.589Z",
+    "duration": 37727.601,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}
