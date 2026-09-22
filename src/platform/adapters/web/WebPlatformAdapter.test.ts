@@ -14,10 +14,13 @@ const STAND = "probpera-planet-stand-v1";
 const BACKGROUND = "probpera-planet-background-v1";
 const COMPOSITION = "probpera-planet-composition-v1";
 const BOOKY = "probpera-booky-adult-v1";
+const READER_POLICY = "probpera-booky-reader-policy-v1";
 const compositionRecord = () => ({ schemaVersion: 1, commitId: "adapter-fixture:1", selection: {
   editionId: "rand-mcnally-1887", standId: "stand.base.wood", backgroundId: "background.base.library",
 } });
 const bookyRecord = () => ({ schemaVersion: 2, audience: "adult", visible: true, resume: { route: "overview", routeVersion: 1, stepId: "search" }, progress: [] });
+const readerPolicyRecord = () => ({ schemaVersion: 1, audience: "adult", age: 35, readingLevel: "fluent",
+  confirmedAt: "2026-09-23T00:00:00.000Z", revision: 1 });
 
 function memoryStorage(): Storage {
   const entries = new Map<string, string>();
@@ -286,6 +289,117 @@ describe("browser capabilities and subscription lifetime", () => {
 });
 
 describe("non-secret best-effort canonical preferences", () => {
+  it("restores and clears explicit reader policy through fresh web adapters without session or network IO", async () => {
+    const env = browserEnvironment(), storage = env.browser.localStorage, raw = JSON.stringify(readerPolicyRecord(), null, 2);
+    const fetch = vi.fn(); vi.stubGlobal("fetch", fetch);
+    const store = createWebPlatformAdapter({ window: env.browser }).preferences;
+    const fresh = createWebPlatformAdapter({ window: env.browser }).preferences;
+    expect(storage.getItem).not.toHaveBeenCalled();
+    expect(await store.get(READER_POLICY)).toBeNull();
+    expect(await store.set(READER_POLICY, raw)).toBe(true);
+    expect(await fresh.get(READER_POLICY)).toBe(raw);
+    const next = JSON.stringify({ ...readerPolicyRecord(), age: 49, readingLevel: "plain", revision: 2 });
+    storage.setItem(READER_POLICY, next);
+    expect(await store.get(READER_POLICY)).toBe(next);
+    expect(await fresh.remove(READER_POLICY)).toBe(true);
+    expect(await store.get(READER_POLICY)).toBeNull(); expect(storage.length).toBe(0);
+    expect(env.browser.sessionStorage.getItem).not.toHaveBeenCalled(); expect(env.browser.sessionStorage.setItem).not.toHaveBeenCalled();
+    expect(env.browser.open).not.toHaveBeenCalled(); expect(fetch).not.toHaveBeenCalled();
+  });
+
+  it("preserves raw reader-policy errors for classification and rejects noncanonical keys or writes", async () => {
+    const env = browserEnvironment(), storage = env.browser.localStorage;
+    const store = createWebPlatformAdapter({ window: env.browser }).preferences, raw = JSON.stringify(readerPolicyRecord());
+    for (const key of [READER_POLICY + ":en", READER_POLICY + "\u0000", "probpera-booky-reader-policy-v2", "probpera-booky-reader-policy-child-v1"]) {
+      expect(await store.get(key)).toBeNull(); expect(await store.set(key, raw)).toBe(false); expect(await store.remove(key)).toBe(false);
+    }
+    expect(storage.getItem).not.toHaveBeenCalled(); expect(storage.setItem).not.toHaveBeenCalled(); expect(storage.removeItem).not.toHaveBeenCalled();
+    for (const invalid of ["", "{}", "null", "bad JSON", " ".repeat(1025), JSON.stringify({ schemaVersion: 2, future: "future policy" }),
+      JSON.stringify({ ...readerPolicyRecord(), age: 17 }), JSON.stringify({ ...readerPolicyRecord(), readingLevel: "independent" }),
+      JSON.stringify({ ...readerPolicyRecord(), approved: true })]) {
+      const writes = vi.mocked(storage.setItem).mock.calls.length;
+      expect(await store.set(READER_POLICY, invalid)).toBe(false); expect(storage.setItem).toHaveBeenCalledTimes(writes);
+      storage.setItem(READER_POLICY, invalid);
+      expect(await store.get(READER_POLICY)).toBe(invalid); expect(storage.getItem(READER_POLICY)).toBe(invalid);
+    }
+    const writes = vi.mocked(storage.setItem).mock.calls.length;
+    expect(await store.set(READER_POLICY, readerPolicyRecord() as never)).toBe(false); expect(storage.setItem).toHaveBeenCalledTimes(writes);
+    expect(storage.removeItem).not.toHaveBeenCalled();
+  });
+
+  it("rejects unavailable or malformed browser reader-policy reads without returning a previous policy", async () => {
+    const env = browserEnvironment(), storage = env.browser.localStorage;
+    const store = createWebPlatformAdapter({ window: env.browser }).preferences, raw = JSON.stringify(readerPolicyRecord());
+    expect(await store.set(READER_POLICY, raw)).toBe(true); expect(await store.get(READER_POLICY)).toBe(raw);
+    vi.mocked(storage.getItem).mockImplementationOnce(() => { throw new Error("private browser read"); });
+    await expect(store.get(READER_POLICY)).rejects.toThrow("booky-reader-policy-unavailable");
+    for (const value of [undefined, false, readerPolicyRecord()]) {
+      vi.mocked(storage.getItem).mockReturnValueOnce(value as never);
+      await expect(store.get(READER_POLICY)).rejects.toThrow("booky-reader-policy-unavailable");
+    }
+    storage.removeItem(READER_POLICY); expect(await store.get(READER_POLICY)).toBeNull();
+    storage.setItem(READER_POLICY, raw); expect(await store.get(READER_POLICY)).toBe(raw);
+    const absent = createWebPlatformAdapter({ window: null }).preferences;
+    await expect(absent.get(READER_POLICY)).rejects.toThrow("booky-reader-policy-unavailable");
+    expect(await absent.set(READER_POLICY, raw)).toBe(false); expect(await absent.remove(READER_POLICY)).toBe(false);
+  });
+
+  it("never confirms failed browser reader-policy writes or mismatched readback", async () => {
+    const env = browserEnvironment(), storage = env.browser.localStorage;
+    const store = createWebPlatformAdapter({ window: env.browser }).preferences, raw = JSON.stringify(readerPolicyRecord());
+    vi.mocked(storage.setItem).mockImplementationOnce(() => { throw new Error("private browser write"); });
+    expect(await store.set(READER_POLICY, raw)).toBe(false); expect(await store.get(READER_POLICY)).toBeNull();
+    vi.mocked(storage.setItem).mockImplementationOnce(() => undefined);
+    expect(await store.set(READER_POLICY, raw)).toBe(false); expect(await store.get(READER_POLICY)).toBeNull();
+    vi.mocked(storage.getItem).mockReturnValueOnce("{}");
+    expect(await store.set(READER_POLICY, raw)).toBe(false);
+    const next = JSON.stringify({ ...readerPolicyRecord(), age: 49, revision: 2 });
+    vi.mocked(storage.getItem).mockImplementationOnce(() => { throw new Error("private readback failure"); });
+    expect(await store.set(READER_POLICY, next)).toBe(false);
+    expect(await store.get(READER_POLICY)).toBe(next);
+  });
+
+  it("confirms browser reader-policy clear only after actual storage removal and fresh readback", async () => {
+    const env = browserEnvironment(), storage = env.browser.localStorage;
+    const store = createWebPlatformAdapter({ window: env.browser }).preferences, raw = JSON.stringify(readerPolicyRecord());
+    expect(await store.set(READER_POLICY, raw)).toBe(true);
+    vi.mocked(storage.removeItem).mockImplementationOnce(() => { throw new Error("private clear failure"); });
+    expect(await store.remove(READER_POLICY)).toBe(false); expect(await store.get(READER_POLICY)).toBe(raw);
+    vi.mocked(storage.removeItem).mockImplementationOnce(() => undefined);
+    expect(await store.remove(READER_POLICY)).toBe(false); expect(await store.get(READER_POLICY)).toBe(raw);
+    vi.mocked(storage.getItem).mockImplementationOnce(() => { throw new Error("private clear readback failure"); });
+    expect(await store.remove(READER_POLICY)).toBe(false); expect(await store.get(READER_POLICY)).toBeNull();
+    expect(await store.remove(READER_POLICY)).toBe(true); expect(await store.get(READER_POLICY)).toBeNull();
+  });
+
+  it("never authorizes reader policy from safe-storage cached writes or local clear tombstones", async () => {
+    const env = browserEnvironment(), storage = env.browser.localStorage, raw = JSON.stringify(readerPolicyRecord());
+    const read = vi.mocked(storage.getItem).getMockImplementation()!;
+    const write = vi.mocked(storage.setItem).getMockImplementation()!;
+    const remove = vi.mocked(storage.removeItem).getMockImplementation()!;
+    storage.setItem(READER_POLICY, raw);
+    installSafeWebStorage(env.browser, null);
+    const store = createWebPlatformAdapter({ window: env.browser }).preferences;
+    const cached = JSON.stringify({ ...readerPolicyRecord(), age: 49, revision: 2 });
+    vi.mocked(storage.setItem).mockImplementation(() => { throw new Error("write denied"); });
+    vi.mocked(storage.getItem).mockImplementation(() => { throw new Error("read denied"); });
+    env.browser.localStorage.setItem(READER_POLICY, cached);
+    expect(env.browser.localStorage.getItem(READER_POLICY)).toBe(cached);
+    expect(await store.set(READER_POLICY, cached)).toBe(false);
+    await expect(store.get(READER_POLICY)).rejects.toThrow("booky-reader-policy-unavailable");
+    vi.mocked(storage.getItem).mockImplementation(read);
+    expect(await store.get(READER_POLICY)).toBe(raw);
+    vi.mocked(storage.removeItem).mockImplementation(() => { throw new Error("remove denied"); });
+    env.browser.localStorage.removeItem(READER_POLICY);
+    expect(env.browser.localStorage.getItem(READER_POLICY)).toBeNull();
+    expect(await store.remove(READER_POLICY)).toBe(false);
+    expect(await createWebPlatformAdapter({ window: env.browser }).preferences.get(READER_POLICY)).toBe(raw);
+    vi.mocked(storage.setItem).mockImplementation(write); vi.mocked(storage.removeItem).mockImplementation(remove);
+    expect(await store.remove(READER_POLICY)).toBe(true); expect(await store.get(READER_POLICY)).toBeNull();
+    expect(await store.set(READER_POLICY, cached)).toBe(true);
+    expect(await createWebPlatformAdapter({ window: env.browser }).preferences.get(READER_POLICY)).toBe(cached);
+  });
+
   it("preserves raw v1 reads and distinguishes future Booky formats without rewriting local storage", async () => {
     const env = browserEnvironment(), storage = env.browser.localStorage;
     const store = createWebPlatformAdapter({ window: env.browser }).preferences;

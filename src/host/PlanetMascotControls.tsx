@@ -1,4 +1,4 @@
-import { useId, useLayoutEffect, useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent } from "react";
+import { useId, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode, type PointerEvent as ReactPointerEvent } from "react";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import mascotImage from "../assets/mascots/knizhulyk-green-v1.png";
 import PlanetMascotAvatar from "./PlanetMascotAvatar";
@@ -23,6 +23,7 @@ export type PlanetMascotControlsProps = {
   persistence: PlanetMascotPersistenceSnapshot;
   onRetryPersistence: () => boolean;
   onRetryContent: (target: "countries" | "books") => void;
+  readerSettings?: ReactNode;
 };
 const MARGIN = 12;
 const arrowDirections: Readonly<Record<string, readonly [number, number]>> = {
@@ -90,7 +91,7 @@ function overlap(a: Rect, b: Rect) {
 }
 
 export default function PlanetMascotControls({ controller, snapshot, screen, countryLabel, writerLabel,
-  onAction, position, onPositionChange, persistence, onRetryPersistence, onRetryContent }: PlanetMascotControlsProps) {
+  onAction, position, onPositionChange, persistence, onRetryPersistence, onRetryContent, readerSettings }: PlanetMascotControlsProps) {
   const { language } = useInterfaceLanguage();
   const ru = language === "ru", name = ru ? "Книжулик" : "Mr. Booky";
   const id = useId(), root = useRef<HTMLDivElement>(null), card = useRef<HTMLElement>(null);
@@ -527,6 +528,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
             ))}
           </div>
         </>}
+        {readerSettings}
         {persistenceNotice}
         <div className="planet-mascot-controls__reset">
           <button ref={resetStart} type="button" data-booky-reset-progress="" className="planet-mascot-controls__quiet"

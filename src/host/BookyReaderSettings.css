@@ -1,0 +1,102 @@
+.booky-reader-settings {
+  box-sizing: border-box;
+  min-width: 0;
+  max-width: 100%;
+  margin-top: 16px;
+  padding-top: 4px;
+  border-top: 1px solid #d8c79e;
+  color: #30392b;
+  font: 400 14px/1.5 "Source Sans 3 Local", var(--sans, sans-serif);
+  overflow-wrap: anywhere;
+}
+
+.booky-reader-settings > summary {
+  box-sizing: border-box;
+  min-height: 44px;
+  padding-block: 12px;
+  color: #30503a;
+  font-weight: 650;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.booky-reader-settings__body,
+.booky-reader-settings form,
+.booky-reader-settings__field { min-width: 0; }
+.booky-reader-settings__body > p { margin: 8px 0 12px; }
+.booky-reader-settings__fields { display: grid; gap: 12px; }
+.booky-reader-settings__field { display: grid; gap: 5px; }
+.booky-reader-settings__field label { font-weight: 650; }
+.booky-reader-settings__hint { color: #625942; font-size: 13px; }
+
+.booky-reader-settings input,
+.booky-reader-settings select {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  min-height: 44px;
+  padding: 9px 10px;
+  border: 1px solid #526e58;
+  border-radius: 6px;
+  color: #30392b;
+  background: #fff9e9;
+  font: inherit;
+  font-size: 16px;
+  line-height: 1.35;
+}
+.booky-reader-settings select { padding-right: 28px; }
+.booky-reader-settings :is(input, select):disabled { opacity: .65; cursor: default; }
+.booky-reader-settings [aria-invalid="true"] { border: 2px solid #8d3425; }
+.booky-reader-settings__error { color: #8d3425; }
+
+.booky-reader-settings button {
+  box-sizing: border-box;
+  min-width: 44px;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 9px 12px;
+  border: 1px solid #526e58;
+  border-radius: 6px;
+  color: #30392b;
+  background: #fff9e9;
+  font: inherit;
+  font-weight: 650;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.booky-reader-settings button:hover:not(:disabled) { background: #e6f0df; }
+.booky-reader-settings button:disabled { opacity: .5; cursor: default; }
+.booky-reader-settings .booky-reader-settings__save {
+  width: 100%;
+  margin-top: 14px;
+  border-color: #345a3d;
+  color: #fffbed;
+  background: #345a3d;
+}
+.booky-reader-settings .booky-reader-settings__save:hover:not(:disabled) { background: #28492f; }
+.booky-reader-settings__status { padding: 4px 0; }
+.booky-reader-settings__status[data-booky-reader-state="failed"] { color: #8d3425; }
+.booky-reader-settings__clear { margin-top: 10px; }
+.booky-reader-settings__confirmation-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.booky-reader-settings__confirmation-actions > button { flex: 1 1 100px; }
+.booky-reader-settings :is(summary, input, select, button, [tabindex="-1"]):focus-visible {
+  outline: 3px solid #7850aa;
+  outline-offset: 3px;
+}
+
+@media (max-width: 360px) {
+  .booky-reader-settings__confirmation-actions { flex-direction: column; }
+  .booky-reader-settings__confirmation-actions > button { flex-basis: auto; width: 100%; }
+}
+
+@media (forced-colors: active) {
+  .booky-reader-settings { color: CanvasText; border-color: CanvasText; }
+  .booky-reader-settings :is(summary, .booky-reader-settings__hint, .booky-reader-settings__error,
+    .booky-reader-settings__status) { color: CanvasText; }
+  .booky-reader-settings :is(input, select, button),
+  .booky-reader-settings .booky-reader-settings__save { color: ButtonText; background: ButtonFace; border-color: ButtonText; }
+  .booky-reader-settings :is(summary, input, select, button, [tabindex="-1"]):focus-visible { outline-color: Highlight; }
+}

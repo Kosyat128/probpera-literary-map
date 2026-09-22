@@ -32,6 +32,8 @@ import PlanetSceneInspectionControls from "./host/PlanetSceneInspectionControls"
 import PlanetMascotControls from "./host/PlanetMascotControls";
 import { createPlanetMascotController } from "./host/planetMascot";
 import { createPlanetMascotPersistence } from "./host/planetMascotPersistence";
+import BookyReaderSettings from "./host/BookyReaderSettings";
+import { createBookyReaderPolicyStore } from "./host/bookyReaderPolicyStore";
 import type { PlanetMascotAction } from "./host/planetMascotRoutes";
 import type { BookArchiveAuthorRequest, BookArchiveAuthorRequestResult, BookArchiveAuthorView } from "./books/bookArchiveAuthorRequest";
 import { createPlanetSceneInspectionController } from "./host/planetSceneInspection";
@@ -592,6 +594,13 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
   const mascotPersistenceSnapshot = useSyncExternalStore(mascotPersistence.subscribe,
     mascotPersistence.getSnapshot, mascotPersistence.getSnapshot);
   useEffect(() => mascotPersistence.activate(), [mascotPersistence]);
+  const readerPolicyStore = useMemo(() => createBookyReaderPolicyStore({ preferences: platformServices.preferences }), [platformServices.preferences]);
+  const readerPolicySnapshot = useSyncExternalStore(readerPolicyStore.subscribe, readerPolicyStore.getSnapshot, readerPolicyStore.getSnapshot);
+  useLayoutEffect(() => {
+    if (isPlanetApplication && platformVisibility === "active") readerPolicyStore.start();
+    else readerPolicyStore.stop();
+    return () => readerPolicyStore.stop();
+  }, [readerPolicyStore, isPlanetApplication, platformVisibility]);
   const [mascotPosition, setMascotPosition] = useState<{ left: number; top: number } | null>(null);
   const mascotFocusSequence = useRef(0);
   useLayoutEffect(() => () => {
@@ -2250,6 +2259,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
       screen: nativeCollectionOpen ? "collection" : "globe", selectedCountry: Boolean(selectedCountry),
       selectedWriter: Boolean(selectedWriter), selectionKey: `${selectedCountry?.id ?? ""}/${selectedWriter?.id ?? ""}`,
       connectivity: platformConnectivity, countryStatus: archiveDataStatus, booksStatus: mascotBookStatus,
+      locale: language, readerPolicy: readerPolicySnapshot.policy,
       authorBooksStatus: mascotAuthorResult.selectionKey === `${selectedCountry?.id ?? ""}/${selectedWriter?.id ?? ""}`
         ? mascotAuthorResult.status === "applied"
           ? mascotAuthorView.settled && mascotAuthorView.authorKey === `${selectedCountry?.id}:${selectedWriter?.id}`
@@ -2258,7 +2268,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
         : "idle" });
   }, [mascot, isPlanetApplication, planetLaunchComplete, platformVisibility, globalSearchOpen, communityOpen,
     nativeCollectionOpen, selectedCountry?.id, selectedWriter?.id, mascotAuthorResult, mascotBookStatus, mascotAuthorView,
-    platformConnectivity, archiveDataStatus]);
+    platformConnectivity, archiveDataStatus, language, readerPolicySnapshot.policy]);
 
   const handleMascotAction = useCallback((action: PlanetMascotAction) => {
     const focusSequence = ++mascotFocusSequence.current;
@@ -3180,7 +3190,10 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
       writerLabel={selectedWriter ? writerName(selectedWriter, t("Автор"), language) : null}
       onAction={handleMascotAction} position={mascotPosition} onPositionChange={setMascotPosition}
       persistence={mascotPersistenceSnapshot} onRetryPersistence={mascotPersistence.retry}
-      onRetryContent={target => { if (target === "countries") retryArchiveData(); else retryBookArchive(); }} />;
+      onRetryContent={target => { if (target === "countries") retryArchiveData(); else retryBookArchive(); }}
+      readerSettings={<BookyReaderSettings snapshot={readerPolicySnapshot}
+        onSave={value => readerPolicyStore.save(value, new Date().toISOString())}
+        onClear={readerPolicyStore.clear} onRetry={readerPolicyStore.retry} />} />;
     return <div className="magazine-app native-planet-app" data-typography-component="magazine" data-planet-ready={String(globeViewSample.revision > 0)}>
       <main ref={nativeGlobeRootRef} onPointerDownCapture={event => {
         mascotFocusSequence.current += 1;

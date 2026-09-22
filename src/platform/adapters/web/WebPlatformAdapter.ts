@@ -17,6 +17,7 @@ import { GLOBE_BACKGROUND_IDS, GLOBE_BACKGROUND_PREFERENCE_KEY } from "../../../
 import { GLOBE_COMPOSITION_PREFERENCE_KEY, parseGlobeComposition } from "../../../planet/globeComposition";
 import { BOOKY_PREFERENCE_KEY, BookyPreferenceUnsupportedError, decodeBookyPreference,
   isUnsupportedBookyPreference, parseBookyPreference } from "../../../host/planetMascotPreference";
+import { BOOKY_READER_POLICY_KEY, parseBookyReaderPolicy } from "../../../host/bookyReaderPolicy";
 
 type EventHost = Pick<EventTarget, "addEventListener" | "removeEventListener">;
 export interface WebAdapterConnection extends EventHost { readonly type?: string; }
@@ -100,6 +101,15 @@ export function createWebPlatformAdapter(
   const preferences: PreferenceStore = Object.freeze({
     persistence: "best-effort" as const,
     async get(key: string) {
+      if (key === BOOKY_READER_POLICY_KEY) {
+        try {
+          const value = strictWebStorage("local", browser as Pick<Window, "localStorage" | "sessionStorage"> | null).getItem(key);
+          // Preserve invalid/future records for controller classification, and
+          // never accept the resilient facade's cached value or empty fallback.
+          if (value === null || typeof value === "string") return value;
+        } catch { /* A failed read cannot supply current reader policy. */ }
+        throw new Error("booky-reader-policy-unavailable");
+      }
       if (key === BOOKY_PREFERENCE_KEY || key === GLOBE_COMPOSITION_PREFERENCE_KEY || key === GLOBE_STAND_PREFERENCE_KEY || key === GLOBE_BACKGROUND_PREFERENCE_KEY
         || key === "probpera.globe-edition.v2" || key === "probpera.globe-style.v1") {
         // Only confirmed absence may authorize migration. The general safe
@@ -123,8 +133,9 @@ export function createWebPlatformAdapter(
       return value !== null && permitted.includes(value) ? value : null;
     },
     async set(key: string, value: string) {
-      if (key === BOOKY_PREFERENCE_KEY || key === GLOBE_COMPOSITION_PREFERENCE_KEY) {
-        if (key === BOOKY_PREFERENCE_KEY ? typeof value !== "string" || decodeBookyPreference(value)?.sourceSchemaVersion !== 2 : !parseGlobeComposition(value)) return false;
+      if (key === BOOKY_READER_POLICY_KEY || key === BOOKY_PREFERENCE_KEY || key === GLOBE_COMPOSITION_PREFERENCE_KEY) {
+        if (key === BOOKY_READER_POLICY_KEY ? typeof value !== "string" || !parseBookyReaderPolicy(value)
+          : key === BOOKY_PREFERENCE_KEY ? typeof value !== "string" || decodeBookyPreference(value)?.sourceSchemaVersion !== 2 : !parseGlobeComposition(value)) return false;
         try {
           const storage = strictWebStorage("local", browser as Pick<Window, "localStorage" | "sessionStorage"> | null);
           storage.setItem(key, value);
@@ -138,7 +149,7 @@ export function createWebPlatformAdapter(
         && readWebStorage("local", key, storageHost) === value;
     },
     async remove(key: string) {
-      if (key === BOOKY_PREFERENCE_KEY || key === GLOBE_COMPOSITION_PREFERENCE_KEY) {
+      if (key === BOOKY_READER_POLICY_KEY || key === BOOKY_PREFERENCE_KEY || key === GLOBE_COMPOSITION_PREFERENCE_KEY) {
         try {
           const storage = strictWebStorage("local", browser as Pick<Window, "localStorage" | "sessionStorage"> | null);
           storage.removeItem(key);

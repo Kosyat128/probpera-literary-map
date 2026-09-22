@@ -6,6 +6,9 @@ import { DEFAULT_BOOKY_PREFERENCE, parseBookyPreference,
   type BookyPreference, type BookySavedTour } from "./planetMascotPreference";
 import { getBookySupport, type BookySupportInput } from "./bookySupport";
 import { acknowledgeBookyStep, isBookyRouteComplete, type BookyTourProgress } from "./bookyTourProgress";
+import { parseBookyReaderPolicy, serializeBookyReaderPolicy, type BookyReaderPolicy } from "./bookyReaderPolicy";
+import { resolveBookyJourneyNode, type BookyJourneyHostSnapshot } from "./bookyJourneyHost";
+import type { BookyJourneyContext, BookyJourneyTrust } from "./bookyJourney";
 
 export type PlanetMascotAuthorBooksStatus = "idle" | "loading" | "applied" | "no-books" | "filtered-empty" | "invalid" | "load-failed";
 export type PlanetMascotContext = Readonly<{
@@ -21,6 +24,16 @@ export type PlanetMascotContext = Readonly<{
   connectivity?: BookySupportInput["connectivity"];
   countryStatus?: BookySupportInput["countryStatus"];
   booksStatus?: BookySupportInput["booksStatus"];
+  /** Explicit confirmed local reader settings only; adult access is not an age. */
+  readerPolicy?: BookyReaderPolicy | null;
+  locale?: "ru" | "en";
+}>;
+export type BookyCompanionJourneySource = Readonly<{
+  definition: unknown;
+  trust: BookyJourneyTrust;
+  now: string;
+  availability: BookyJourneyContext["availability"];
+  completedPrerequisites: BookyJourneyContext["completedPrerequisites"];
 }>;
 export type PlanetMascotSnapshot = Readonly<{
   available: boolean;
@@ -151,6 +164,31 @@ export function createPlanetMascotController() {
   }
 
   return Object.freeze({
+    getReaderPolicy: () => eligible() ? context?.readerPolicy ?? null : null,
+    /** Sources are immutable host views, replaced after any content/review
+     * change. Resolve per gesture; returned data never initiates navigation. */
+    resolveJourneyNode(request: unknown, readSource: () => BookyCompanionJourneySource | null) {
+      try {
+        const currentContext = context, revision = snapshot.revision;
+        if (!eligible() || !currentContext?.readerPolicy || !currentContext.locale) return null;
+        const policy = currentContext.readerPolicy, source = readSource();
+        if (!source || typeof source.now !== "string" || policy.confirmedAt > source.now) return null;
+        const host: BookyJourneyHostSnapshot = Object.freeze({ revision,
+          enabled: currentContext.enabled, active: currentContext.active, access: currentContext.access,
+          countryStatus: currentContext.countryStatus ?? "idle", booksStatus: currentContext.booksStatus ?? "idle",
+          context: { audience: "adult", age: policy.age, readingLevel: policy.readingLevel,
+            locale: currentContext.locale, now: source.now, connectivity: currentContext.connectivity ?? "unknown",
+            availability: source.availability, completedPrerequisites: source.completedPrerequisites },
+          definition: source.definition, trust: source.trust });
+        return resolveBookyJourneyNode(request, () => {
+          if (context !== currentContext || snapshot.revision !== revision || !eligible()) return null;
+          const latestSource = readSource();
+          // The injected source reader may itself revoke the profile or host.
+          return latestSource === source && context === currentContext && snapshot.revision === revision
+            && eligible() ? host : null;
+        });
+      } catch { return null; }
+    },
     getSnapshot: () => snapshot,
     getPreferenceIntent: () => preferenceIntent,
     restorePreference(value: unknown, expectedIntentRevision: number) {
@@ -200,12 +238,15 @@ export function createPlanetMascotController() {
         screen: value.screen, selectedCountry: value.selectedCountry,
         selectedWriter: value.selectedCountry && value.selectedWriter, selectionKey: value.selectionKey,
         authorBooksStatus: value.authorBooksStatus ?? "idle", connectivity: value.connectivity ?? "unknown",
-        countryStatus: value.countryStatus ?? "idle", booksStatus: value.booksStatus ?? "idle" });
+        countryStatus: value.countryStatus ?? "idle", booksStatus: value.booksStatus ?? "idle",
+        locale: value.locale === "ru" || value.locale === "en" ? value.locale : undefined,
+        readerPolicy: parseBookyReaderPolicy(value.readerPolicy) });
       if (context && context.enabled === next.enabled && context.access === next.access && context.active === next.active
         && context.screen === next.screen && context.selectedCountry === next.selectedCountry
         && context.selectedWriter === next.selectedWriter && context.selectionKey === next.selectionKey
         && context.authorBooksStatus === next.authorBooksStatus && context.connectivity === next.connectivity
-        && context.countryStatus === next.countryStatus && context.booksStatus === next.booksStatus) return;
+        && context.countryStatus === next.countryStatus && context.booksStatus === next.booksStatus
+        && context.locale === next.locale && serializeBookyReaderPolicy(context.readerPolicy) === serializeBookyReaderPolicy(next.readerPolicy)) return;
       context = next;
       // Connection/locale/panel changes do not create a new failed load.
       // Re-arm only after the real target leaves its current error state.

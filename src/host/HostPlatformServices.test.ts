@@ -13,12 +13,15 @@ const STAND = "probpera-planet-stand-v1";
 const BACKGROUND = "probpera-planet-background-v1";
 const COMPOSITION = "probpera-planet-composition-v1";
 const BOOKY = "probpera-booky-adult-v1";
+const READER_POLICY = "probpera-booky-reader-policy-v1";
 const RECENT = "probpera-planet-recent-adult-v1";
 const MAIL = "mailto:probperasite@yandex.ru";
 const compositionRecord = () => ({ schemaVersion: 1, commitId: "adapter-fixture:1", selection: {
   editionId: "rand-mcnally-1887", standId: "stand.base.wood", backgroundId: "background.base.library",
 } });
 const bookyRecord = () => ({ schemaVersion: 2, audience: "adult", visible: true, resume: { route: "overview", routeVersion: 1, stepId: "search" }, progress: [] });
+const readerPolicyRecord = () => ({ schemaVersion: 1, audience: "adult", age: 35, readingLevel: "fluent",
+  confirmedAt: "2026-09-23T00:00:00.000Z", revision: 1 });
 function deferred<T>() {
   let resolve!: (value: T) => void;
   let reject!: (reason?: unknown) => void;
@@ -504,6 +507,112 @@ describe("native subscription lifetimes and ordering", () => {
 });
 
 describe("exact non-secret preferences with serialized readback", () => {
+  it("restores and clears explicit reader policy through fresh native adapters without network IO", async () => {
+    const f = fixture(), store = f.services.preferences, raw = JSON.stringify(readerPolicyRecord(), null, 2);
+    const fresh = createHostPlatformServices({ kind: "ios", channel: "dev", languages: [], preferences: f.preferences }).preferences;
+    expect(f.preferences.get).not.toHaveBeenCalled();
+    expect(await store.get(READER_POLICY)).toBeNull();
+    expect(await store.set(READER_POLICY, raw)).toBe(true);
+    expect(await fresh.get(READER_POLICY)).toBe(raw);
+    const next = JSON.stringify({ ...readerPolicyRecord(), age: 49, readingLevel: "plain", revision: 2 });
+    f.memory.set(READER_POLICY, next);
+    expect(await store.get(READER_POLICY)).toBe(next);
+    expect(await fresh.remove(READER_POLICY)).toBe(true);
+    expect(await store.get(READER_POLICY)).toBeNull();
+    expect(f.memory.size).toBe(0);
+    expect(f.network.getStatus).not.toHaveBeenCalled(); expect(f.network.addListener).not.toHaveBeenCalled();
+    expect(f.openBrowser).not.toHaveBeenCalled(); expect(f.openMail).not.toHaveBeenCalled();
+  });
+
+  it("preserves raw reader-policy errors for classification while restricting writes and the exact key", async () => {
+    const f = fixture(), store = f.services.preferences, raw = JSON.stringify(readerPolicyRecord());
+    for (const key of [READER_POLICY + ":en", READER_POLICY + "\u0000", "probpera-booky-reader-policy-v2", "probpera-booky-reader-policy-child-v1"]) {
+      expect(await store.get(key)).toBeNull(); expect(await store.set(key, raw)).toBe(false); expect(await store.remove(key)).toBe(false);
+    }
+    expect(f.preferences.get).not.toHaveBeenCalled(); expect(f.preferences.set).not.toHaveBeenCalled(); expect(f.preferences.remove).not.toHaveBeenCalled();
+    for (const invalid of ["", "{}", "null", "bad JSON", " ".repeat(1025), JSON.stringify({ schemaVersion: 2, future: "private future policy" }),
+      JSON.stringify({ ...readerPolicyRecord(), age: 17 }), JSON.stringify({ ...readerPolicyRecord(), readingLevel: "independent" }),
+      JSON.stringify({ ...readerPolicyRecord(), approved: true })]) {
+      expect(await store.set(READER_POLICY, invalid)).toBe(false);
+      f.memory.set(READER_POLICY, invalid);
+      expect(await store.get(READER_POLICY)).toBe(invalid);
+      expect(f.memory.get(READER_POLICY)).toBe(invalid);
+    }
+    expect(await store.set(READER_POLICY, readerPolicyRecord() as never)).toBe(false);
+    expect(f.preferences.set).not.toHaveBeenCalled(); expect(f.preferences.remove).not.toHaveBeenCalled();
+    expect(JSON.stringify(f.onFailure.mock.calls)).not.toContain("private future policy");
+  });
+
+  it("rejects failed or malformed reader-policy reads after success without leaking a previous value", async () => {
+    const f = fixture(), store = f.services.preferences, raw = JSON.stringify(readerPolicyRecord());
+    expect(await store.set(READER_POLICY, raw)).toBe(true);
+    expect(await store.get(READER_POLICY)).toBe(raw);
+    f.preferences.get.mockRejectedValueOnce(new Error("private reader payload"));
+    await expect(store.get(READER_POLICY)).rejects.toThrow("booky-reader-policy-unavailable");
+    for (const response of [undefined, {}, { value: undefined }, { value: false }, { value: readerPolicyRecord() }]) {
+      f.preferences.get.mockResolvedValueOnce(response as never);
+      await expect(store.get(READER_POLICY)).rejects.toThrow("booky-reader-policy-unavailable");
+    }
+    const absent = fixture({ preferences: undefined }).services.preferences;
+    await expect(absent.get(READER_POLICY)).rejects.toThrow("booky-reader-policy-unavailable");
+    expect(await absent.set(READER_POLICY, raw)).toBe(false); expect(await absent.remove(READER_POLICY)).toBe(false);
+    f.memory.delete(READER_POLICY);
+    expect(await store.get(READER_POLICY)).toBeNull();
+    f.memory.set(READER_POLICY, raw);
+    expect(await store.get(READER_POLICY)).toBe(raw);
+    expect(f.onFailure.mock.calls.every(([value]) => Object.keys(value).sort().join() === "operation,reason")).toBe(true);
+    expect(JSON.stringify(f.onFailure.mock.calls)).not.toContain("private reader payload");
+  });
+
+  it("never confirms rejected, false or unverified native reader-policy writes", async () => {
+    const f = fixture(), store = f.services.preferences, raw = JSON.stringify(readerPolicyRecord());
+    f.preferences.set.mockRejectedValueOnce(new Error("private write failure"));
+    expect(await store.set(READER_POLICY, raw)).toBe(false); expect(await store.get(READER_POLICY)).toBeNull();
+    f.preferences.set.mockResolvedValueOnce(undefined);
+    expect(await store.set(READER_POLICY, raw)).toBe(false); expect(await store.get(READER_POLICY)).toBeNull();
+    expect(await store.set(READER_POLICY, raw)).toBe(true);
+    f.preferences.set.mockResolvedValueOnce(false as never);
+    expect(await store.set(READER_POLICY, raw)).toBe(false);
+    f.preferences.get.mockResolvedValueOnce({ value: "{}" });
+    expect(await store.set(READER_POLICY, raw)).toBe(false);
+    f.preferences.get.mockRejectedValueOnce(new Error("private readback failure"));
+    const next = JSON.stringify({ ...readerPolicyRecord(), age: 49, revision: 2 });
+    expect(await store.set(READER_POLICY, next)).toBe(false);
+    expect(await store.get(READER_POLICY)).toBe(next);
+    expect(f.onFailure).toHaveBeenCalledWith({ operation: "preference-set", reason: "readback-mismatch" });
+    expect(JSON.stringify(f.onFailure.mock.calls)).not.toContain("private");
+  });
+
+  it("keeps failed reader-policy removal unavailable and confirms only fresh native absence", async () => {
+    const f = fixture(), store = f.services.preferences, raw = JSON.stringify(readerPolicyRecord());
+    expect(await store.set(READER_POLICY, raw)).toBe(true);
+    f.preferences.remove.mockRejectedValueOnce(new Error("private removal failure"));
+    expect(await store.remove(READER_POLICY)).toBe(false); expect(await store.get(READER_POLICY)).toBe(raw);
+    f.preferences.remove.mockResolvedValueOnce(undefined);
+    expect(await store.remove(READER_POLICY)).toBe(false); expect(await store.get(READER_POLICY)).toBe(raw);
+    f.preferences.get.mockRejectedValueOnce(new Error("private clear readback failure"));
+    expect(await store.remove(READER_POLICY)).toBe(false);
+    expect(await store.get(READER_POLICY)).toBeNull();
+    f.preferences.remove.mockResolvedValueOnce(false as never);
+    expect(await store.remove(READER_POLICY)).toBe(false);
+    expect(await store.remove(READER_POLICY)).toBe(true);
+    expect(await store.get(READER_POLICY)).toBeNull();
+    expect(f.onFailure).toHaveBeenCalledWith({ operation: "preference-remove", reason: "readback-mismatch" });
+    expect(JSON.stringify(f.onFailure.mock.calls)).not.toContain("private");
+  });
+
+  it("serializes reader-policy changes and clear so a late read cannot resurrect removed policy", async () => {
+    const f = fixture(), store = f.services.preferences, gate = deferred<void>();
+    const raw = JSON.stringify(readerPolicyRecord());
+    f.preferences.set.mockImplementationOnce(async ({ key, value }) => { await gate.promise; f.memory.set(key, value); });
+    const pending = [store.set(READER_POLICY, raw), store.remove(READER_POLICY), store.get(READER_POLICY)];
+    await flush(); expect(f.preferences.set).toHaveBeenCalledTimes(1); expect(f.preferences.remove).not.toHaveBeenCalled();
+    expect(await store.set(DISPLAY, "book")).toBe(true);
+    gate.resolve(); expect(await Promise.all(pending)).toEqual([true, true, null]);
+    expect(f.memory.has(READER_POLICY)).toBe(false);
+    expect(await store.get(READER_POLICY)).toBeNull();
+  });
+
   it("preserves raw v1 reads and distinguishes future Booky formats without leaking their contents", async () => {
     const f = fixture(), store = f.services.preferences;
     const legacy = JSON.stringify({ schemaVersion: 1, audience: "adult", visible: true,
