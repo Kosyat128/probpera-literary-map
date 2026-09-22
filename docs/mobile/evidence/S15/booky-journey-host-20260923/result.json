@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-22T22:12:03.442Z",
+  "pass": true,
+  "sourceCommit": "c8e7a2f42da430eee0a5a8c658197772671b976b",
+  "stage": "S15",
+  "status": "BOOKY_JOURNEY_HOST_BOUNDARY_VALIDATED",
+  "entry": {
+    "path": "docs/mobile/evidence/S15/booky-journey-host-20260923/entry.json",
+    "sha256": "41bc6b7e20abfce1b1dbe77222ba45f0f6970e990e20a1d52d5d758361a00275"
+  },
+  "previous": {
+    "path": "docs/mobile/evidence/S15/booky-catalog-scene-20260923/result.json",
+    "sha256": "13cf4c857db91f1c413da8e1cbba0f2604b46093e173f5e23c825839a3392a67"
+  },
+  "previousRuntime": {
+    "path": "docs/mobile/evidence/S15/booky-catalog-scene-20260923/result.json",
+    "sha256": "13cf4c857db91f1c413da8e1cbba0f2604b46093e173f5e23c825839a3392a67"
+  },
+  "checkpointHelper": {
+    "path": "docs/mobile/evidence/S15/booky-journey-host-20260923/checkpoint.mjs",
+    "sha256": "080ebd68214643fe4a1c5649ec63cd556f29938cd2aa9254138b4bc223358785"
+  },
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-journey-host-20260923/source-manifests/0d69c28e4a1bef8e.json",
+    "sha256": "0d69c28e4a1bef8ea54c0564e83de5129223bd6610e97db661be366e81a6c700",
+    "fileCount": 1590
+  },
+  "runs": {
+    "unit": {
+      "path": "docs/mobile/evidence/S15/booky-journey-host-20260923/unit-a1/result.json",
+      "sha256": "f5fca6b574b9c5eac676af2549ce7c4532be4fae656f1b8e6204ab398bec3df1",
+      "tests": {
+        "passed": 51,
+        "failed": 0,
+        "skipped": 0
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-journey-host-20260923/unit-a1/execution.json",
+        "sha256": "e09dfe225fc1c6fb72983ca9c7b3b49a7097b1fc7d420becda30ed795cdfdc42"
+      }
+    },
+    "static": {
+      "path": "docs/mobile/evidence/S15/booky-journey-host-20260923/static-a1/result.json",
+      "sha256": "e4f273e6cf4bdfa90d07b1c0e92995b2d7c9d7f3454646dee61524200a93bc2b",
+      "tests": null,
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-journey-host-20260923/static-a1/execution.json",
+        "sha256": "50818aca44427f30732e011a99f578387d5ec512e2e876acd64a238ec81544d1"
+      }
+    }
+  },
+  "attempts": {
+    "unit": "a1",
+    "static": "a1"
+  },
+  "earlierAttempts": [],
+  "unitFiles": [
+    "src/host/bookyDialogueRegistry.test.ts",
+    "src/host/bookyJourney.test.ts",
+    "src/host/bookyJourneyHost.test.ts"
+  ],
+  "unitReport": {
+    "path": "docs/mobile/evidence/S15/booky-journey-host-20260923/unit-a1/vitest.json",
+    "sha256": "bae5aab36d7bc45001a4b9f84dfdb6617f0066eb1450a8e6d7c797d69025d806"
+  },
+  "unchangedTrackedInputCount": 1588,
+  "protectedInputsVerified": true,
+  "newImplementationFiles": [
+    "src/host/bookyJourneyHost.ts",
+    "src/host/bookyJourneyHost.test.ts"
+  ],
+  "retainedBuilds": [
+    {
+      "kind": "pwa",
+      "buildId": "dc0eb6c93ab694d9372da17bd4b9625a581ad8e4b85d0e33f663704b33d73e45",
+      "sourceCommit": "259e93cc7a58a6b10d49a0025bf502be54239b79",
+      "priorResult": {
+        "path": "docs/mobile/evidence/S15/booky-catalog-scene-20260923/pwa-a1/result.json",
+        "sha256": "a01426e429dad8456afe7beeb8bb07e53297f9acdec770cb60f094e577ba8bbe"
+      },
+      "artifactManifest": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-catalog-scene/pwa-dc0eb6c9/artifact.json",
+        "sha256": "1d9ffcd5dc745d1fd18048a4e1c0c110486146e7b99d2a89436143ea354fa325"
+      },
+      "apk": null,
+      "runtimeSourceInputsUnchanged": true,
+      "runtimePayloadRehashed": true,
+      "newHostAdapterIncluded": false,
+      "rebuilt": false
+    },
+    {
+      "kind": "android",
+      "buildId": "53a91515842a3077dbf196ac83e7a9c20a7997c203ea4e6af6ca369b35368491",
+      "sourceCommit": "259e93cc7a58a6b10d49a0025bf502be54239b79",
+      "priorResult": {
+        "path": "docs/mobile/evidence/S15/booky-catalog-scene-20260923/android-a1/result.json",
+        "sha256": "08d85ea37741bffd763193fd981d83aa731e78b16f08e4bb1c1f1f6aae69cfeb"
+      },
+      "artifactManifest": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-catalog-scene/android-53a91515/runtime/artifact.json",
+        "sha256": "f080d71f5cef92f18fbf74481c74a813c73264c837a097fb56e63107bb0bf66d"
+      },
+      "apk": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-catalog-scene/android-53a91515/app-dev-debug.apk",
+        "bytes": 70289891,
+        "sha256": "4d6cab6f0035c5823c2ee9f37bc404fac90af1cad9622a5f8d9c4caf37b18620"
+      },
+      "runtimeSourceInputsUnchanged": true,
+      "runtimePayloadRehashed": true,
+      "newHostAdapterIncluded": false,
+      "rebuilt": false
+    }
+  ],
+  "buildsRebuilt": false,
+  "browserRerun": false,
+  "runtimeWiringImplemented": false,
+  "criterionChanges": [],
+  "requirementChanges": [],
+  "allStageAndCriterionStatusesUnchanged": true,
+  "counts": {
+    "COMPLETE": 3,
+    "IN_PROGRESS": 12,
+    "NOT_STARTED": 26
+  },
+  "firstUnresolved": "S03.acceptance",
+  "nextAction": "Continue S15 with the missing explicit host policy contract and guarded dialogue/journey integration. The current adult host has no exact age or reading-level policy; never infer those values from adult access, locale, navigation or behaviour. Keep all 34 inventory records draft. Invoke the host resolver at interaction time using immutable current snapshots, monotonic revision and a fresh registry after review changes. Preserve canonical scene, current catalog readiness, adult navigation/progress, explicit resume/reset and offline recovery. Child profiles, reviewed content/audio, full journeys, accessibility, installed-device, iOS and release acceptance remain pending; S03.acceptance is first unresolved.",
+  "limitations": [
+    "The adapter remains unimported by App. No production journey, profile policy, content review, navigation or persistence is enabled.",
+    "Host integration must supply immutable current snapshots and revise them for profile/policy/catalog/review changes. Returned nodes are presentation data, not reusable authorization; resolve again when handling an action.",
+    "Synthetic approvals and ages belong only to tests and confer no production approval.",
+    "Existing PWA/Android artifacts and their source inputs were rehashed against source 259e93cc7a58a6b10d49a0025bf502be54239b79. New host adapter code is not included; no new build/browser/device run is claimed."
+  ],
+  "productionJourneysEnabled": false,
+  "reviewedDialogueAccepted": false,
+  "ageAdaptiveJourneysAccepted": false,
+  "childApproved": false,
+  "narrationEnabled": false,
+  "stageAccepted": false,
+  "productionActionsPerformed": false,
+  "releaseReady": false
+}

@@ -37,6 +37,13 @@ The active task is the user's V12 bilingual product request, based on canonical
 - Keep internal implementation gaps separate from external owner actions.
   Never transfer translation/programming tasks to the owner.
 
+<!-- s15-booky-journey-host-20260923:begin -->
+Latest source c8e7a2f4: added an unimported, stateless journey-node admission adapter. It requires exact route/version/checksum/node/host revision, explicit adult policy, current country readiness and ready books for complete work routes, and rereads the same immutable host snapshot after whole-route compilation. No admission is cached; callers must resolve again at interaction time and replace the registry after review changes.
+51 host/journey/registry tests and TypeScript passed on a1. All 1,588 prior implementation/test inputs remain exact. Preserved PWA dc0eb6c9 / Android-dev 53a91515 were rehashed against original source 259e93cc; the new adapter is not included, with no rebuild/browser run claimed.
+Evidence: docs/mobile/evidence/S15/booky-journey-host-20260923/result.json. PLANETKA-004 remains IN_PROGRESS and all stage/criterion statuses remain unchanged: 3 complete, 12 in progress, 26 unstarted; S03.acceptance first unresolved; releaseReady:false.
+Next: implement the missing explicit host policy contract before wiring reviewed journeys to App. The adult host currently supplies no exact age or reading level; never invent them or infer them from adult access, locale or behaviour. Keep all 34 RU/EN dialogue records draft. Preserve current navigation/progress, canonical scene and catalog readiness. Child profiles, reviewed text/audio, full journeys, accessibility, installed-device, iOS and release acceptance remain pending. Retain prior checkpoint history below.
+<!-- s15-booky-journey-host-20260923:end -->
+
 <!-- s15-catalog-scene-20260923:begin -->
 Latest source 259e93cc: application catalog loading/error/recovery retains the same canonical canvas, renderer, camera, scene and recorded resources. Current readiness still gates Booky actions/progress. First catalog failure keeps the original fallback; the public site does not opt in.
 TypeScript, 3 actual-App Chrome cases and 4 inspected views passed (a4), including a readable 320px error notice clear of Appearance controls. On mobile the expanded Booky panel has its own retry; the globe retry is checked after explicitly closing that panel. Retry trial clicks prove actionability, not a second HTTP retry. Prior 265 controller tests were retained without rerun. Earlier visual findings and the a2 overlay-related fixture failure are preserved.

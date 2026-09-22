@@ -3,9 +3,9 @@
   "repository": "Kosyat128/probpera-literary-map",
   "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
-  "headSha": "259e93cc7a58a6b10d49a0025bf502be54239b79",
+  "headSha": "c8e7a2f42da430eee0a5a8c658197772671b976b",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-22T22:00:27.288Z",
+  "updatedAt": "2026-09-22T22:12:03.442Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -2625,11 +2625,12 @@
           "id": "S15.PLANETKA-004",
           "status": "IN_PROGRESS",
           "evidence": [
-            "docs/mobile/evidence/S15/booky-journey-boundary-20260920/result.json"
+            "docs/mobile/evidence/S15/booky-journey-boundary-20260920/result.json",
+            "docs/mobile/evidence/S15/booky-journey-host-20260923/result.json"
           ],
-          "commit": "e59f9be0f8bf632d0cd7b85dda08b9021c29aeaa",
-          "lastValidatedAt": "2026-09-20T19:12:43.161Z",
-          "notes": "Age-adaptive journeys. Implement the original guide and shared policy before complete English dialogue/audio validation. Guarded versioned journey-model infrastructure now validates canonical public entity relations, dialogue references and explicit host policy before admission. 40 journey/registry tests and TypeScript passed. The model stays unimported and production journeys remain unavailable. Existing runtime is unchanged; this starts infrastructure for the requirement and does not complete age-adaptive or child journeys."
+          "commit": "c8e7a2f42da430eee0a5a8c658197772671b976b",
+          "lastValidatedAt": "2026-09-22T22:12:03.442Z",
+          "notes": "Age-adaptive journeys. Implement the original guide and shared policy before complete English dialogue/audio validation. Guarded versioned journey-model infrastructure now validates canonical public entity relations, dialogue references and explicit host policy before admission. 40 journey/registry tests and TypeScript passed. The model stays unimported and production journeys remain unavailable. Existing runtime is unchanged; this starts infrastructure for the requirement and does not complete age-adaptive or child journeys. Fresh host admission binds exact journey/node identity and revision, explicit adult policy, current catalog readiness, full reviewed-route validation and the unchanged host snapshot after compilation. 51 host/journey/registry tests and TypeScript passed. Existing 1,588 implementation/test files remain exact; retained PWA/Android builds do not contain this unimported adapter. No stage or release acceptance."
         },
         {
           "id": "S15.PLANETKA-005",
@@ -2737,7 +2738,9 @@
         "node docs/mobile/evidence/S15/booky-catalog-scene-20260923/check.mjs browser a4",
         "node docs/mobile/evidence/S15/booky-catalog-scene-20260923/build-pwa.mjs 259e93cc7a58a6b10d49a0025bf502be54239b79",
         "pwsh -File docs/mobile/evidence/S15/booky-catalog-scene-20260923/build-android.ps1 259e93cc7a58a6b10d49a0025bf502be54239b79",
-        "node docs/mobile/evidence/S15/booky-catalog-scene-20260923/preserve-android.mjs 259e93cc7a58a6b10d49a0025bf502be54239b79"
+        "node docs/mobile/evidence/S15/booky-catalog-scene-20260923/preserve-android.mjs 259e93cc7a58a6b10d49a0025bf502be54239b79",
+        "node docs/mobile/evidence/S15/booky-journey-host-20260923/check.mjs unit a1",
+        "node docs/mobile/evidence/S15/booky-journey-host-20260923/check.mjs static a1"
       ],
       "artifacts": [
         "docs/mobile/evidence/S15/planetka-visual-mode-20260920/entry.json",
@@ -2829,7 +2832,13 @@
         "docs/mobile/evidence/S15/booky-catalog-scene-20260923/static-a4/result.json",
         "docs/mobile/evidence/S15/booky-catalog-scene-20260923/browser-a4/result.json",
         "docs/mobile/evidence/S15/booky-catalog-scene-20260923/pwa-a1/result.json",
-        "docs/mobile/evidence/S15/booky-catalog-scene-20260923/android-a1/result.json"
+        "docs/mobile/evidence/S15/booky-catalog-scene-20260923/android-a1/result.json",
+        "docs/mobile/evidence/S15/booky-journey-host-20260923/result.json",
+        "docs/mobile/evidence/S15/booky-journey-host-20260923/README.md",
+        "docs/mobile/evidence/S15/booky-journey-host-20260923/entry.json",
+        "docs/mobile/evidence/S15/booky-journey-host-20260923/source-manifests/0d69c28e4a1bef8e.json",
+        "docs/mobile/evidence/S15/booky-journey-host-20260923/unit-a1/result.json",
+        "docs/mobile/evidence/S15/booky-journey-host-20260923/static-a1/result.json"
       ],
       "externalBlockers": []
     },
@@ -11190,7 +11199,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Continue S15 with guarded integration of reviewed Booky dialogue and literary journeys under explicit current host policy. Keep the 34 inventoried RU/EN records draft and unavailable as reviewed content. Preserve the application globe across catalog retry, truthful readiness and retry states, adult semantic progress, deliberate resume/reset, unsupported-save protection, offline recovery and canonical scene ownership. Child profiles, approved text/audio, full journeys, accessibility, installed-device/performance, iOS and release gates remain pending. S03.acceptance remains first unresolved.",
+    "nextAction": "Continue S15 with the missing explicit host policy contract and guarded dialogue/journey integration. The current adult host has no exact age or reading-level policy; never infer those values from adult access, locale, navigation or behaviour. Keep all 34 inventory records draft. Invoke the host resolver at interaction time using immutable current snapshots, monotonic revision and a fresh registry after review changes. Preserve canonical scene, current catalog readiness, adult navigation/progress, explicit resume/reset and offline recovery. Child profiles, reviewed content/audio, full journeys, accessibility, installed-device, iOS and release acceptance remain pending; S03.acceptance is first unresolved.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -11271,7 +11280,8 @@
       "docs/mobile/evidence/S15/booky-journey-boundary-20260920/result.json",
       "docs/mobile/evidence/S15/booky-navigation-inventory-20260920/result.json",
       "docs/mobile/evidence/S15/booky-catalog-readiness-20260920/result.json",
-      "docs/mobile/evidence/S15/booky-catalog-scene-20260923/result.json"
+      "docs/mobile/evidence/S15/booky-catalog-scene-20260923/result.json",
+      "docs/mobile/evidence/S15/booky-journey-host-20260923/result.json"
     ],
     "commands": [
       "node scripts/mobile/verify-requirements.mjs",
@@ -11322,7 +11332,8 @@
       "S15 canonical journey model boundary: source-bound unit/static checks, existing runtime unchanged, zero production journey activation. Retained PWA/Android builds still bind 5e6eb767. Continue the two existing adult-route draft dialogue inventory, then guarded runtime integration without inferring review, child or age-adaptive acceptance.",
       "S15 fixed navigation/contextual dialogue inventory: 22 new RU/EN draft records plus 12 unchanged support drafts, zero reviewed/available records, existing runtime unchanged. Retained PWA/Android artifacts still bind 5e6eb767. Continue guarded runtime integration without inferring review, child, narration or age-adaptive journey acceptance.",
       "S15 adult Booky current catalog-readiness guard: retained selection alone does not authorize actions/progress; ready offline catalogs remain usable. Source-bound checks and fresh PWA/Android-dev builds are preserved; no stage or release acceptance.",
-      "S15 application catalog-retry scene retention: renderer/camera/scene identity survives loading/error/recovery; current catalog readiness still protects actions/progress. Initial failure remains the original fallback. Prior 265 unit tests are historical, not rerun; no stage or release acceptance."
+      "S15 application catalog-retry scene retention: renderer/camera/scene identity survives loading/error/recovery; current catalog readiness still protects actions/progress. Initial failure remains the original fallback. Prior 265 unit tests are historical, not rerun; no stage or release acceptance.",
+      "S15 host admission adapter validated without App wiring: exact route/node/revision, fresh explicit policy/catalog/review checks. Prior PWA/Android retained; no rebuild or full stage acceptance."
     ]
   },
   "requirementsHash": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732",
@@ -13263,6 +13274,14 @@
       "sha256": "13cf4c857db91f1c413da8e1cbba0f2604b46093e173f5e23c825839a3392a67",
       "sourceCommit": "259e93cc7a58a6b10d49a0025bf502be54239b79",
       "status": "ADULT_BOOKY_CATALOG_SCENE_SCOPED_VALIDATION",
+      "stageAccepted": false,
+      "releaseReady": false
+    },
+    "s15BookyJourneyHost": {
+      "path": "docs/mobile/evidence/S15/booky-journey-host-20260923/result.json",
+      "sha256": "86a5d6ea7c1511ec1e22b26218dfa4afdbf5648abfbebcf191741a7c2e6b2a07",
+      "sourceCommit": "c8e7a2f42da430eee0a5a8c658197772671b976b",
+      "status": "BOOKY_JOURNEY_HOST_BOUNDARY_VALIDATED",
       "stageAccepted": false,
       "releaseReady": false
     }

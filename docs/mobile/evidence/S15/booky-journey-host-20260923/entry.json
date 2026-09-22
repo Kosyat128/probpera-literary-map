@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-22T22:07:27.714Z",
+  "checkpoint": "5b5d57f2a3107aee91c870cc77392a77d4669cb6",
+  "stage": "S15",
+  "previous": {
+    "path": "docs/mobile/evidence/S15/booky-catalog-scene-20260923/result.json",
+    "sha256": "13cf4c857db91f1c413da8e1cbba0f2604b46093e173f5e23c825839a3392a67"
+  },
+  "priorSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-catalog-scene-20260923/source-manifests/6c7180043be6cb6a.json",
+    "sha256": "6c7180043be6cb6af3120d87ea8e6ca3e83f4c73fe9eb22de24446adb964127e",
+    "fileCount": 1588
+  },
+  "checkpointFiles": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "4f1dcc17388d75f5f4eff2dfa9eb33bc24d5f0a53ce3154457210e20cc5dd169"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "48960e08f84d10b9412028cc23cecc3d6c08da4dea760992880a0b1623ce6240"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "93dd5aa6d011c20025493b9493f20ea7950d0c0d69d1fe08cea7aa6b3a13e8be"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "b952c95ce5845eaae977695f936358f6be700670aafff07eefd601f3f1df65a7"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "be7b64df82937ff4487ffb3364ce3fde5f84ea4f728e31be26649f805c349750"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "dff1afa32cd43177904f7d35a4436a23ad78adbff14bdfee5b11567f862a4ce3"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "4e0a568dd98c9d061755a68914d5d416b9e2a458612cdf784f8ca6ef759f2f27"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "3c9983f5d4d68d2fe236e8c13879e0c8151f68fc385018320744efc0a2ded1b3"
+    }
+  ],
+  "newImplementationFiles": [
+    "src/host/bookyJourneyHost.ts",
+    "src/host/bookyJourneyHost.test.ts"
+  ],
+  "unitFiles": [
+    "src/host/bookyDialogueRegistry.test.ts",
+    "src/host/bookyJourney.test.ts",
+    "src/host/bookyJourneyHost.test.ts"
+  ],
+  "requirements": [
+    "PLANETKA-004"
+  ],
+  "priorPwa": {
+    "path": "docs/mobile/evidence/S15/booky-catalog-scene-20260923/pwa-a1/result.json",
+    "sha256": "a01426e429dad8456afe7beeb8bb07e53297f9acdec770cb60f094e577ba8bbe"
+  },
+  "priorAndroid": {
+    "path": "docs/mobile/evidence/S15/booky-catalog-scene-20260923/android-a1/result.json",
+    "sha256": "08d85ea37741bffd763193fd981d83aa731e78b16f08e4bb1c1f1f6aae69cfeb"
+  },
+  "scope": "Fresh host admission for a reviewed journey node. Additive, not imported by App; no invented age, reading level, review receipt or new journey content.",
+  "runtimeWiringImplemented": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

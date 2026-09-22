@@ -1,3 +1,10 @@
+<!-- s15-booky-journey-host-20260923:begin -->
+Source c8e7a2f4: Fresh host admission binds exact journey/node identity and revision, explicit adult policy, current catalog readiness, full reviewed-route validation and the unchanged host snapshot after compilation. 51 host/journey/registry tests and TypeScript passed. Existing 1,588 implementation/test files remain exact; retained PWA/Android builds do not contain this unimported adapter. No stage or release acceptance.
+PLANETKA-004 stays IN_PROGRESS; 3 complete, 12 in progress, 26 unstarted; releaseReady:false.
+Evidence: evidence/S15/booky-journey-host-20260923/result.json.
+Continue S15 with the missing explicit host policy contract and guarded dialogue/journey integration. The current adult host has no exact age or reading-level policy; never infer those values from adult access, locale, navigation or behaviour. Keep all 34 inventory records draft. Invoke the host resolver at interaction time using immutable current snapshots, monotonic revision and a fresh registry after review changes. Preserve canonical scene, current catalog readiness, adult navigation/progress, explicit resume/reset and offline recovery. Child profiles, reviewed content/audio, full journeys, accessibility, installed-device, iOS and release acceptance remain pending; S03.acceptance is first unresolved.
+<!-- s15-booky-journey-host-20260923:end -->
+
 <!-- s15-catalog-scene-20260923:begin -->
 Source 259e93cc: application catalog retry preserves the existing canonical scene while truthful catalog readiness continues to gate Booky actions and progress. Initial failure retains the original fallback.
 TypeScript, 3 actual-App Chrome cases, 4 inspected views and fresh preserved PWA dc0eb6c9 / Android-dev 53a91515. Prior 265 controller tests retained without rerun; built-PWA coverage is the offline/download smoke.
