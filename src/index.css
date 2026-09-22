@@ -2737,6 +2737,57 @@ main [id] {
   top: 78px;
 }
 
+.world-map-stage > .globe-catalog-notice {
+  position: absolute;
+  z-index: 15;
+  top: calc(var(--atlas-globe-rail-top, 84px) + var(--atlas-globe-edition-target, 44px) + 12px);
+  left: var(--atlas-globe-safe-left, 16px);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 6px 12px;
+  width: max-content;
+  max-width: min(360px, calc(100% - 32px));
+  padding: 8px 12px;
+  color: #fff8ed;
+  font-size: var(--type-caption);
+  line-height: 1.4;
+  text-align: center;
+  pointer-events: none;
+  background: rgba(24, 6, 35, 0.94);
+  border: 1px solid rgba(255, 159, 71, 0.5);
+  border-radius: 12px;
+}
+
+.globe-catalog-notice p {
+  margin: 0;
+}
+
+@media (max-width: 980px) {
+  .world-map-stage > .globe-catalog-notice {
+    top: max(200px, calc(var(--atlas-globe-rail-top, 84px) + var(--atlas-globe-edition-target, 44px) + 12px));
+  }
+}
+
+.globe-catalog-notice button {
+  min-height: 44px;
+  padding: 8px 12px;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  pointer-events: auto;
+  background: #762d09;
+  border: 1px solid #e7b46b;
+  border-radius: 999px;
+}
+
+.globe-catalog-notice button:hover,
+.globe-catalog-notice button:focus-visible {
+  outline: 2px solid #fff1c8;
+  outline-offset: 2px;
+}
+
 .globe-loading {
   position: absolute;
   inset: 0;

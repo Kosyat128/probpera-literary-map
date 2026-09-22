@@ -2890,6 +2890,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
                 countries={filteredCountries}
                 atlasCountries={countryArchive}
                 dataStatus={archiveDataStatus}
+                preserveSceneDuringReload={isPlanetApplication}
                 forceLoad={atlasImmersive}
                 onLoadIntent={requestArchiveData}
                 onRetryData={retryArchiveData}

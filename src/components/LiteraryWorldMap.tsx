@@ -1,6 +1,7 @@
 import {
   useCallback,
   useEffect,
+  useLayoutEffect,
   useState,
   type Ref,
   type ReactNode,
@@ -71,6 +72,7 @@ interface Props {
   sceneInspection?: GlobeSceneInspectionBridge;
   standInspection?: GlobeStandInspectionBridge;
   dataStatus?: DeferredLoadStatus;
+  preserveSceneDuringReload?: boolean;
   forceLoad?: boolean;
   onLoadIntent?: () => void;
   onRetryData?: () => void;
@@ -100,11 +102,13 @@ export default function LiteraryWorldMap({
   sceneInspection,
   standInspection,
   dataStatus = "ready",
+  preserveSceneDuringReload = false,
   forceLoad = false,
   onLoadIntent,
   onRetryData,
 }: Props) {
-  const { t } = useInterfaceLanguage();
+  const { language, t } = useInterfaceLanguage();
+  const [hasRenderedReady, setHasRenderedReady] = useState(false);
   const [attempt, setAttempt] = useState(0);
   const [component, setComponent] =
     useState<LiteraryGlobeComponent | null>(null);
@@ -160,9 +164,21 @@ export default function LiteraryWorldMap({
   }, [dataStatus, moduleStatus, onRetryData]);
 
   const globeReady =
-    active && component && moduleStatus === "ready" && dataStatus === "ready";
+    active && component !== null && moduleStatus === "ready" && dataStatus === "ready";
+  // Latch only a committed ready render. A failed first load must keep its
+  // original fallback, including when React Strict Mode replays effects.
+  useLayoutEffect(() => {
+    if (preserveSceneDuringReload && globeReady) setHasRenderedReady(true);
+  }, [globeReady, preserveSceneDuringReload]);
+  const retainScene = preserveSceneDuringReload && hasRenderedReady && active &&
+    component !== null && moduleStatus === "ready" && dataStatus !== "ready";
   const failed = dataStatus === "error" || moduleStatus === "error";
   const LiteraryGlobe = component;
+  const catalogNotice = language === "ru"
+    ? dataStatus === "error" ? "Не удалось обновить каталог."
+      : dataStatus === "loading" ? "Обновляем каталог…" : "Каталог ещё не готов."
+    : dataStatus === "error" ? "The catalog could not be updated."
+      : dataStatus === "loading" ? "Updating the catalog…" : "The catalog is not ready yet.";
 
   return (
     <section
@@ -175,7 +191,7 @@ export default function LiteraryWorldMap({
         failed ? "error" : globeReady ? "ready" : active ? "loading" : "idle"
       }
     >
-      {globeReady && LiteraryGlobe ? (
+      {(globeReady || retainScene) && LiteraryGlobe ? (
         <LiteraryGlobe
           countries={countries}
           atlasCountries={atlasCountries}
@@ -211,6 +227,17 @@ export default function LiteraryWorldMap({
           </p>
           {failed && (
             <button type="button" onClick={retry}>
+              {t("Повторить загрузку")}
+            </button>
+          )}
+        </div>
+      )}
+      {retainScene && (
+        <div className="globe-catalog-notice" role="status" aria-live="polite"
+          data-globe-catalog-notice={dataStatus}>
+          <p>{catalogNotice}</p>
+          {dataStatus === "error" && onRetryData && (
+            <button type="button" onClick={retry} data-globe-catalog-retry>
               {t("Повторить загрузку")}
             </button>
           )}
