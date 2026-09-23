@@ -14,7 +14,8 @@ import { getBookyJourneyMigrationChecksum, resolveBookyJourneyMigration, type Bo
 
 const now = "2026-09-23T12:00:00.000Z", reviewedAt = "2026-09-22T12:00:00.000Z";
 function fixture(locale: "ru" | "en" = "en", options: { id?: string; version?: number; workId?: string; writerNodeId?: string; title?: string;
-  checkpointScreen?: "globe" | "collection"; activity?: boolean; activityAuthor?: "test-writer" | "other-writer" } = {}) {
+  checkpointScreen?: "globe" | "collection"; activity?: boolean; activityAuthor?: "test-writer" | "other-writer";
+  overview?: BookyJourneyDefinition["overview"]; offlineAvailable?: boolean } = {}) {
   // Synthetic reviewers, content, public catalog and receipts ONLY for tests.
   // No production draft receives approval, narration or child eligibility.
   const journeyId = options.id ?? "test-journey";
@@ -53,9 +54,11 @@ function fixture(locale: "ru" | "en" = "en", options: { id?: string; version?: n
   });
   const definition: BookyJourneyDefinition = { schemaVersion: 1, id: journeyId, version: options.version ?? 1, locale, audience: "adult",
     ageRange: { min: 18, max: 120 }, readingLevel: "plain", title: options.title ?? `${locale}: Synthetic journey`, prerequisites: [],
+    ...(options.overview ? { overview: options.overview } : {}),
     nodes: nodes.map((node, index) => ({ ...node, dialogue: { ...node.dialogue, contentChecksum: records[index].review.contentChecksum } })) };
   const context: BookyJourneyContext = { audience: "adult", age: 30, locale, readingLevel: "plain", now, connectivity: "online", completedPrerequisites: [],
-    availability: definition.nodes.map(node => ({ nodeId: node.id, locale, dialogueContentChecksum: node.dialogue.contentChecksum, available: true, offlineAvailable: true })) };
+    availability: definition.nodes.map(node => ({ nodeId: node.id, locale, dialogueContentChecksum: node.dialogue.contentChecksum, available: true,
+      offlineAvailable: options.offlineAvailable ?? true })) };
   const trust: BookyJourneyTrust = { currentVersions: [{ id: definition.id, version: definition.version }], approvedReviews: [
     { id: definition.id, version: definition.version, locale, definitionChecksum: getBookyJourneyChecksum(definition)!, reviewer: "synthetic-journey-reviewer-not-real", reviewedAt },
   ], dialogueRegistry: createBookyDialogueRegistry(records, { canonicalEntityIds: [...new Set(records.flatMap(record => [...record.payload.entityIds]))],
@@ -1018,4 +1021,81 @@ describe("explicit reviewed journey activity answers", () => {
     expect(f.navigate).toHaveBeenCalledTimes(moves); f.runtime.dispose();
   });
 
+});
+
+
+describe("current admitted journey overview in runtime route offers", () => {
+  const overview = { description: "Synthetic overview for the reviewed route", estimatedDurationMinutes: 12 };
+
+  it("keeps old route fieldsets exact and projects immutable optional overview without persisting it", () => {
+    const legacy = setup(); legacy.runtime.refresh();
+    expect(legacy.runtime.getSnapshot().routes[0]).toEqual({ key: bookyJourneyRouteKey(legacy.initial.plan),
+      title: legacy.initial.plan.title, canStart: true });
+    expect(Object.prototype.hasOwnProperty.call(legacy.runtime.getSnapshot().routes[0], "overview")).toBe(false); legacy.runtime.dispose();
+    const f = setup(fixture("en", { overview })); f.patch({ profileKey: durableProfileKey }); f.runtime.refresh();
+    const route = f.runtime.getSnapshot().routes[0];
+    expect(route).toMatchObject({ title: f.initial.plan.title, canStart: true, overview: { ...overview, offlineAvailable: true } });
+    expect(Object.isFrozen(route.overview)).toBe(true); expect(route.overview).not.toBe(f.initial.plan.overview);
+    expect(f.runtime.start(route.key, f.runtime.getSnapshot().revision)).toBe(true);
+    const record = f.runtime.getProgressIntent().preference.records[0];
+    expect(record.definitionChecksum).toBe(f.initial.plan.definitionChecksum);
+    for (const field of ["overview", "description", "estimatedDurationMinutes", "offlineAvailable"]) {
+      expect(JSON.stringify(record)).not.toContain('"' + field + '"');
+    }
+    f.runtime.dispose();
+  });
+
+  it("revises derived offline availability without silently accepting a stale Start gesture", () => {
+    const f = setup(fixture("en", { overview })); f.runtime.refresh();
+    const previous = f.runtime.getSnapshot(), intent = f.runtime.getProgressIntent();
+    const changed = fixture("en", { overview, offlineAvailable: false });
+    expect(changed.plan.definitionChecksum).toBe(f.initial.plan.definitionChecksum);
+    f.switchSource(changed);
+    const current = f.runtime.getSnapshot();
+    expect(current.routes[0].key).toBe(previous.routes[0].key);
+    expect(current.routes[0].overview).toEqual({ ...overview, offlineAvailable: false });
+    expect(current.revision).toBeGreaterThan(previous.revision);
+    expect(f.runtime.start(previous.routes[0].key, previous.revision)).toBe(false);
+    expect(f.navigate).not.toHaveBeenCalled(); expect(f.runtime.getProgressIntent()).toBe(intent);
+    expect(f.runtime.start(current.routes[0].key, current.revision)).toBe(true); f.runtime.dispose();
+  });
+
+  it("withdraws overview copy after revoked admission, including revocation immediately before Start", () => {
+    const f = setup(fixture("en", { overview })); f.runtime.refresh();
+    const previous = f.runtime.getSnapshot(), intent = f.runtime.getProgressIntent();
+    f.patch({ resolve: () => null });
+    expect(f.runtime.start(previous.routes[0].key, previous.revision)).toBe(false);
+    expect(f.runtime.getSnapshot().routes).toEqual([]);
+    expect(JSON.stringify(f.runtime.getSnapshot())).not.toContain(overview.description);
+    expect(f.navigate).not.toHaveBeenCalled(); expect(f.runtime.getProgressIntent()).toBe(intent);
+    f.patch({ resolve: f.resolve }); f.runtime.refresh();
+    const restored = f.runtime.getSnapshot();
+    expect(restored.routes[0].overview).toEqual({ ...overview, offlineAvailable: true });
+    expect(f.runtime.start(previous.routes[0].key, previous.revision)).toBe(false);
+    expect(f.runtime.start(restored.routes[0].key, restored.revision)).toBe(true); f.runtime.dispose();
+  });
+
+  it("replaces authored overview only through its newly admitted definition binding", () => {
+    const f = setup(fixture("en", { overview })); f.runtime.refresh(); const previous = f.runtime.getSnapshot();
+    const revised = { ...overview, description: "New independently reviewed description", estimatedDurationMinutes: 18 };
+    const changed = fixture("en", { overview: revised });
+    expect(changed.plan.definitionChecksum).not.toBe(f.initial.plan.definitionChecksum);
+    f.switchSource(changed);
+    expect(f.runtime.getSnapshot().routes[0].overview).toEqual({ ...revised, offlineAvailable: true });
+    expect(f.runtime.start(previous.routes[0].key, previous.revision)).toBe(false);
+    expect(f.navigate).not.toHaveBeenCalled(); f.runtime.dispose();
+  });
+
+  it("rejects present but malformed overview instead of inventing legacy fallback copy or executing accessors", () => {
+    const f = setup(), base = f.initial.plan;
+    for (const value of [null, undefined, { ...overview, offlineAvailable: "yes" }, { ...overview, offlineAvailable: true, extra: true }]) {
+      f.patch({ plans: [{ ...base, overview: value } as unknown as typeof base] }); f.runtime.refresh();
+      expect(f.runtime.getSnapshot().routes).toEqual([]);
+    }
+    const accessor = { ...base }, getter = vi.fn(() => ({ ...overview, offlineAvailable: true }));
+    Object.defineProperty(accessor, "overview", { enumerable: true, get: getter });
+    f.patch({ plans: [accessor] }); f.runtime.refresh();
+    expect(f.runtime.getSnapshot().routes).toEqual([]); expect(getter).not.toHaveBeenCalled();
+    expect(f.navigate).not.toHaveBeenCalled(); f.runtime.dispose();
+  });
 });

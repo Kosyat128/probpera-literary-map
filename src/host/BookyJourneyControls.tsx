@@ -1,4 +1,4 @@
-import { useCallback, useId, useLayoutEffect, useRef, useState } from "react";
+import { Fragment, useCallback, useId, useLayoutEffect, useRef, useState } from "react";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import type { BookyJourneyRuntime, BookyJourneyRuntimeSnapshot } from "./bookyJourneyRuntime";
 import type { BookyJourneyPersistence, BookyJourneyPersistenceSnapshot } from "./bookyJourneyPersistence";
@@ -29,6 +29,9 @@ export const bookyJourneyControlsCopy = {
       profileRequired: "Чтобы подобрать маршрут, заполните профиль для маршрутов ниже. Это необязательно: планету можно исследовать самостоятельно.",
       unavailable: "Сейчас подходящих маршрутов нет. Можно продолжить исследовать планету самостоятельно.",
       choose: "Выберите маршрут, чтобы начать.",
+      estimatedDuration: (minutes: number) => `Примерно ${minutes} мин.`,
+      availableOffline: "Доступен без интернета",
+      internetRequired: "Для маршрута нужен интернет",
       historyFull: (used: number, limit: number) => `История заполнена: ${used} из ${limit} записей.`,
       historyCapacityHelp: "Чтобы сохранить новый маршрут или перенести прогресс, удалите одну выбранную запись в истории. Доступные сохранённые маршруты можно продолжать.",
       manageHistory: "Перейти к истории",
@@ -63,6 +66,9 @@ export const bookyJourneyControlsCopy = {
       profileRequired: "To find a journey, fill in the reader profile below. This is optional: you can explore the planet on your own.",
       unavailable: "There are no matching journeys right now. You can keep exploring the planet on your own.",
       choose: "Choose a journey to begin.",
+      estimatedDuration: (minutes: number) => `About ${minutes} min`,
+      availableOffline: "Available offline",
+      internetRequired: "Internet required for this journey",
       historyFull: (used: number, limit: number) => `Journey history is full: ${used} of ${limit} entries.`,
       historyCapacityHelp: "To save a new journey or transfer progress, remove one history entry of your choice. Saved journeys that are available can still continue.",
       manageHistory: "Go to history",
@@ -176,10 +182,26 @@ export default function BookyJourneyControls({ snapshot, controller, persistence
       {(!active || active.phase === "complete" || active.phase === "paused" || active.phase === "unavailable")
         && snapshot.status === "ready" && snapshot.routes.length > 0 && (
         <div className="booky-journey-controls__routes">
-          {snapshot.routes.map(route => <button key={route.key} type="button" data-booky-journey-route={route.key}
-            disabled={!persistenceSnapshot.canAct || !route.canStart}
-            aria-describedby={!route.canStart && capacity.full ? capacityId : undefined}
-            onClick={() => act(() => controller.start(route.key, snapshot.revision), true)}>{route.title}</button>)}
+          {snapshot.routes.map(route => {
+            const overviewId = `${id}-overview-${encodeURIComponent(route.key)}`;
+            const descriptionIds = [route.overview ? overviewId : null, !route.canStart && capacity.full ? capacityId : null]
+              .filter(Boolean).join(" ") || undefined;
+            return <Fragment key={route.key}>
+              <button type="button" data-booky-journey-route={route.key}
+                disabled={!persistenceSnapshot.canAct || !route.canStart} aria-describedby={descriptionIds}
+                onClick={() => act(() => controller.start(route.key, snapshot.revision), true)}>{route.title}</button>
+              {route.overview && <div id={overviewId} className="booky-journey-controls__overview" data-booky-journey-overview={route.key}>
+                <p className="booky-journey-controls__overview-description" data-booky-journey-overview-description="">{route.overview.description}</p>
+                <p className="booky-journey-controls__overview-meta" data-booky-journey-overview-duration="">
+                  {copy.estimatedDuration(route.overview.estimatedDurationMinutes)}
+                </p>
+                <p className="booky-journey-controls__overview-meta"
+                  data-booky-journey-overview-availability={route.overview.offlineAvailable ? "offline" : "online-required"}>
+                  {route.overview.offlineAvailable ? copy.availableOffline : copy.internetRequired}
+                </p>
+              </div>}
+            </Fragment>;
+          })}
         </div>
       )}
       {active && <div className="booky-journey-controls__active">

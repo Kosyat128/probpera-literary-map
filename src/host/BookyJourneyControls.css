@@ -21,6 +21,18 @@
 .booky-journey-controls__status[data-booky-journey-status="failed"] { color: #8d3425; }
 .booky-journey-controls__routes,
 .booky-journey-controls__actions { display: grid; gap: 8px; }
+.booky-journey-controls__overview {
+  box-sizing: border-box;
+  min-width: 0;
+  max-width: 100%;
+  display: grid;
+  gap: 4px;
+  margin-bottom: 4px;
+  padding: 8px 10px;
+  border-left: 3px solid #d8c79e;
+}
+.booky-journey-controls .booky-journey-controls__overview-description { margin: 0; white-space: pre-line; }
+.booky-journey-controls .booky-journey-controls__overview-meta { margin: 0; color: #625942; font-size: 13px; }
 .booky-journey-controls__active,
 .booky-journey-controls__node { min-width: 0; }
 .booky-journey-controls__progress,
@@ -99,6 +111,8 @@
   .booky-journey-controls { color: CanvasText; border-color: CanvasText; }
   .booky-journey-controls :is(h3, h4, p) { color: CanvasText; }
   .booky-journey-controls__status { background: Canvas; border-color: CanvasText; }
+  .booky-journey-controls__overview { border-color: CanvasText; }
+  .booky-journey-controls .booky-journey-controls__overview-meta { color: CanvasText; }
   .booky-journey-controls__history,
   .booky-journey-controls__capacity,
   .booky-journey-controls__history-entry { border-color: CanvasText; }

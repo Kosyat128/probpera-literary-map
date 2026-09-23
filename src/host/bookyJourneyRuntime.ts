@@ -1,4 +1,4 @@
-import type { BookyJourneyPlan } from "./bookyJourney";
+import { parseBookyJourneyPlanOverview, type BookyJourneyPlan, type BookyJourneyPlanOverview } from "./bookyJourney";
 import type { BookyJourneyHostOffer } from "./bookyJourneyHost";
 import { contentTextHash } from "../planet/contentExportHash";
 import { parseBookyReaderPolicy, serializeBookyReaderPolicy } from "./bookyReaderPolicy";
@@ -26,7 +26,7 @@ type Phase = "navigating" | "ready" | "paused" | "unavailable" | "failed" | "com
 export type BookyJourneyRuntimeSnapshot = Readonly<{
   revision: number;
   status: "profile-required" | "unavailable" | "ready";
-  routes: readonly Readonly<{ key: string; title: string; canStart: boolean }>[];
+  routes: readonly Readonly<{ key: string; title: string; canStart: boolean; overview?: BookyJourneyPlanOverview }>[];
   historyCapacity: Readonly<{ used: number; limit: number; full: boolean }>;
   migrations: readonly Readonly<{ key: string; title: string; fromVersion: number; toVersion: number }>[];
   history: readonly Readonly<{ key: string; title: string | null; journeyId: string; version: number; locale: "ru" | "en";
@@ -46,6 +46,11 @@ type Observation = { host: BookyJourneyRuntimeHost | null; plans: readonly Booky
 type Navigation = { session: Session; controller: AbortController; accepted: boolean;
   originIndex: number; originCount: number; originView: BookyJourneyRuntimeHost["view"]; view: string; rollback?: Session };
 const emptyRoutes = Object.freeze([]);
+function routeOverview(plan: BookyJourneyPlan): BookyJourneyPlanOverview | null | undefined {
+  const field = Object.getOwnPropertyDescriptor(plan, "overview");
+  if (!field) return undefined;
+  return "value" in field && field.enumerable ? parseBookyJourneyPlanOverview(field.value) : null;
+}
 const entityKey = (node: Pick<BookyJourneyProgressNode, "entity">) => {
   const entity = node.entity;
   return entity === null ? null : entity.kind === "country" ? [entity.kind, entity.countryId]
@@ -194,8 +199,11 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
     const historyCapacity = Object.freeze({ used, limit: BOOKY_JOURNEY_PROGRESS_MAX_RECORDS, full: used >= BOOKY_JOURNEY_PROGRESS_MAX_RECORDS });
     // This is only slot eligibility. Admission, retained history and current
     // authority are still checked again by Start; no history is evicted here.
-    const routes = Object.freeze(observed.plans.map(plan => Object.freeze({ key: bookyJourneyRouteKey(plan), title: plan.title,
-      canStart: progressFor(observed, plan, 0) !== null })));
+    const routes = Object.freeze(observed.plans.map(plan => {
+      const overview = routeOverview(plan);
+      return Object.freeze({ key: bookyJourneyRouteKey(plan), title: plan.title,
+        canStart: progressFor(observed, plan, 0) !== null, ...(overview ? { overview } : {}) });
+    }));
     const migrations = Object.freeze(session?.phase === "unavailable" ? (observed.migrations ?? []).map(candidate => Object.freeze({
       key: candidate.key, title: candidate.plan.title, fromVersion: candidate.offer.preservedRecord.journeyVersion,
       toVersion: candidate.offer.targetRecord.journeyVersion })) : []);
@@ -263,7 +271,7 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
       if (host?.active && typeof host.profileKey === "string" && host.profileKey.length > 0) {
         const keys = new Set<string>();
         for (const plan of host.plans) {
-          if (plan.locale !== host.locale || plan.nodes.length < 2 || plan.nodes.length > 32) continue;
+          if (plan.locale !== host.locale || plan.nodes.length < 2 || plan.nodes.length > 32 || routeOverview(plan) === null) continue;
           const key = bookyJourneyRouteKey(plan);
           if (keys.has(key)) return null;
           keys.add(key);

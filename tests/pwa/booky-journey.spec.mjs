@@ -65,11 +65,18 @@ for(const locale of ['ru','en']){
   const definition={schemaVersion:1,id,version,locale,audience:'adult',ageRange:{min:18,max:120},readingLevel:'plain',
     title:id===primaryId?(locale==='ru'?'Тестовый маршрут интерфейса':'Synthetic interface journey')
       :(locale==='ru'?'Тестовый зависимый маршрут':'Synthetic dependent journey'),
-    prerequisites:id===primaryId?[]:[{id:primaryId,version}],nodes};
+    prerequisites:id===primaryId?[]:[{id:primaryId,version}],nodes,
+    ...(window.__journeyOverviewMode?{overview:{description:locale==='ru'
+      ?'Тестовый обзор: страна, писатель, книга и подтверждение шагов.'
+      :'Synthetic overview: a country, a writer, a book and explicit step acknowledgements.',estimatedDurationMinutes:7}}:{})};
   definitions.push(definition);
   journeyApprovals.push({id,version,locale,definitionChecksum:getBookyJourneyChecksum(definition),reviewer:'synthetic-journey-reviewer-not-real',reviewedAt});
+  // The receipt above stays exact to the original reviewed overview. This
+  // opt-in fixture changes copy afterwards; the whole route must be withheld.
+  if(window.__journeyOverviewMode==='tampered')definition.overview={...definition.overview,description:definition.overview.description+' Changed after review.'};
   availability.push({journeyId:id,version,locale,nodes:nodes.map(node=>({nodeId:node.id,locale,
-    dialogueContentChecksum:node.dialogue.contentChecksum,available:true,offlineAvailable:true}))});
+    dialogueContentChecksum:node.dialogue.contentChecksum,available:true,
+    offlineAvailable:!(window.__journeyOverviewMode==='partial-offline'&&node.id==='work')}))});
 }
 }
 const approved={definitions,dialogues,currentVersions:routeIds.map(id=>({id,version})),dialogueApprovals,journeyApprovals,availability};
@@ -286,7 +293,7 @@ const routeFor = (page, id) => page.locator('[data-booky-journey-route]').filter
 const historyRow = (page, key) => page.locator('[data-booky-journey-history-entry=' + JSON.stringify(key) + ']');
 const historyAction = (page, name, key) => page.locator('[data-booky-journey-' + name + '=' + JSON.stringify(key) + ']');
 
-async function open(testInfo, { contentMode = 'approved', readerSeed = CONFIRMED_READER, progressSeed = null } = {}) {
+async function open(testInfo, { contentMode = 'approved', readerSeed = CONFIRMED_READER, progressSeed = null, overview = null } = {}) {
   const profileRoot = path.resolve(process.env.S15_BROWSER_PROFILE_ROOT ?? path.join(ROOT, '.tmp/s15-booky-live'));
   await fs.mkdir(profileRoot, { recursive: true });
   const profile = await fs.mkdtemp(path.join(profileRoot, 'journey-'));
@@ -329,7 +336,9 @@ async function open(testInfo, { contentMode = 'approved', readerSeed = CONFIRMED
     const url = new URL(route.request().url());
     if (url.origin !== SITE) { externalRequests.push(url.href); await route.abort(); return; }
     if (route.request().resourceType() === 'document' && url.pathname === '/') {
-      await route.fulfill({ contentType: 'text/html; charset=utf-8', body: '<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><link rel="stylesheet" href="/fixture/booky-journey.css"></head><body><div id="root"></div><script>window.__journeyContentMode=' + JSON.stringify(contentMode) + ';</script><script type="module" src="/fixture/booky-journey.js"></script></body></html>' }); return;
+      await route.fulfill({ contentType: 'text/html; charset=utf-8', body: '<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><link rel="stylesheet" href="/fixture/booky-journey.css"></head><body><div id="root"></div><script>window.__journeyContentMode=' + JSON.stringify(contentMode)
+        + (overview === null ? '' : ';window.__journeyOverviewMode=' + JSON.stringify(overview))
+        + ';</script><script type="module" src="/fixture/booky-journey.js"></script></body></html>' }); return;
     }
     const pathname = decodeURIComponent(url.pathname);
     if ([...bookChunks, ...countryChunks, ...componentChunks].includes(pathname)) requestedChunks.push(pathname);
@@ -361,8 +370,8 @@ async function open(testInfo, { contentMode = 'approved', readerSeed = CONFIRMED
         // can finish its write/readback; runtime, storage and focus stay real.
         return { entered: () => gate.entered, release: gate.release };
       },
-      async coldReload(mode = contentMode) {
-        contentMode = mode;
+      async coldReload(mode = contentMode, nextOverview = overview) {
+        contentMode = mode; overview = nextOverview;
         // A new document destroys the old React/runtime objects. Only the native
         // preference map survives; the neutral URL supplies no restored target.
         const previousOrigin = await page.evaluate(() => performance.timeOrigin);
@@ -1650,6 +1659,143 @@ test('literary passport credits only confirmed acknowledged steps and withdraws 
       confirmedWorkSha256: digest(confirmedWork), completedPreferenceSha256: digest(completedRaw), deletedPreferenceSha256: digest(deletedRaw),
       canonicalSceneRetainedWithinDocument: true, newPassportPersistenceCreated: false,
       passiveLearningCreditClaimed: false, productionApprovalClaimed: false, fullAccessibilityAcceptanceClaimed: false });
+    fixture.verify();
+  } finally { await fixture.close(); }
+});
+
+const overviewSurface = page => page.locator('[data-booky-journey-overview]');
+const OVERVIEW_COPY = {
+  ru: { title: 'Тестовый маршрут интерфейса', description: 'Тестовый обзор: страна, писатель, книга и подтверждение шагов.',
+    duration: 'Примерно 7 мин.', offline: 'Доступен без интернета', online: 'Для маршрута нужен интернет' },
+  en: { title: 'Synthetic interface journey', description: 'Synthetic overview: a country, a writer, a book and explicit step acknowledgements.',
+    duration: 'About 7 min', offline: 'Available offline', online: 'Internet required for this journey' },
+};
+async function expectOverview(page, language, offlineAvailable = true) {
+  const copy = OVERVIEW_COPY[language], overview = overviewSurface(page), route = routeFor(page, PRIMARY_JOURNEY);
+  await expect(overview).toHaveCount(1); await expect(route).toBeEnabled();
+  await expect(route).toHaveAccessibleName(copy.title);
+  await expect(overview.locator('[data-booky-journey-overview-description]')).toHaveText(copy.description);
+  await expect(overview.locator('[data-booky-journey-overview-duration]')).toHaveText(copy.duration);
+  const availability = overview.locator('[data-booky-journey-overview-availability]');
+  await expect(availability).toHaveAttribute('data-booky-journey-overview-availability', offlineAvailable ? 'offline' : 'online-required');
+  await expect(availability).toHaveText(offlineAvailable ? copy.offline : copy.online);
+  const descriptionId = await overview.getAttribute('id'); expect(descriptionId).toBeTruthy();
+  expect((await route.getAttribute('aria-describedby')).split(/\s+/u)).toContain(descriptionId);
+  await expect(route).toHaveAccessibleDescription([copy.description, copy.duration, offlineAvailable ? copy.offline : copy.online].join(' '));
+}
+async function captureOverview(fixture, testInfo, filename, framing) {
+  const surface = fixture.page.locator('.booky-journey-controls__routes');
+  await surface.scrollIntoViewIfNeeded();
+  const bounds = await surface.evaluate(element => {
+    const measure = target => {
+      const box = target.getBoundingClientRect();
+      return { x: box.x, y: box.y, width: box.width, height: box.height,
+        fullyInViewport: box.left >= 0 && box.top >= 0 && box.right <= innerWidth && box.bottom <= innerHeight };
+    };
+    const route = element.querySelector('[data-booky-journey-route]'), action = measure(route);
+    return { surface: measure(element), overview: measure(element.querySelector('[data-booky-journey-overview]')),
+      description: measure(element.querySelector('[data-booky-journey-overview-description]')),
+      duration: measure(element.querySelector('[data-booky-journey-overview-duration]')),
+      availability: measure(element.querySelector('[data-booky-journey-overview-availability]')), action,
+      actionHit: route.contains(document.elementFromPoint(action.x + action.width / 2, action.y + action.height / 2)),
+      overflow: document.documentElement.scrollWidth > innerWidth + 1 };
+  });
+  for (const key of ['surface', 'overview', 'description', 'duration', 'availability', 'action']) expect(bounds[key].fullyInViewport).toBe(true);
+  expect(bounds.actionHit).toBe(true); expect(bounds.action.height).toBeGreaterThanOrEqual(44);
+  expect(bounds.action.width).toBeGreaterThanOrEqual(44); expect(bounds.overflow).toBe(false);
+  await capture(fixture, testInfo, filename, framing); fixture.result.screenshots.at(-1).bounds = bounds;
+}
+
+test('reviewed journey overview follows exact locale review and whole-route offline availability without writing progress', async ({}, testInfo) => {
+  test.setTimeout(300_000);
+  const fixture = await open(testInfo), { page, result } = fixture;
+  result.scenario = 'reviewed-journey-overview';
+  try {
+    await page.setViewportSize({ width: 320, height: 900 });
+    await openPanel(page); await loadBooks(page);
+    await expect(routeFor(page, PRIMARY_JOURNEY)).toBeEnabled(); await expect(overviewSurface(page)).toHaveCount(0);
+    expect(fixture.memory.get(PROGRESS) ?? null).toBeNull(); expect(fixture.progressWrites()).toEqual([]);
+
+    // Only this opt-in fixture adds reviewed metadata; legacy definitions and
+    // every existing case retain their exact original object fields and defaults.
+    await fixture.coldReload('approved', 'reviewed'); await openPanel(page); await loadBooks(page);
+    await expectOverview(page, 'ru'); await stablePose(page); const beforeStart = await actual(page), initialUrl = page.url();
+    const overviewId = await overviewSurface(page).getAttribute('id');
+    await routeFor(page, PRIMARY_JOURNEY).focus(); await expectOverview(page, 'ru');
+    expect(await overviewSurface(page).getAttribute('id')).toBe(overviewId);
+    expect(fixture.memory.get(PROGRESS) ?? null).toBeNull(); expect(fixture.progressWrites()).toEqual([]);
+    expect(page.url()).toBe(initialUrl); retained(await actual(page), beforeStart, true);
+    await captureOverview(fixture, testInfo, 'journey-overview-ru-320.png',
+      '320px actual App RU route overview: reviewed description and estimated seven minutes, current complete offline availability and concise accessible Start title');
+
+    await startCountryStep(fixture); await next(page).click(); await expectReadyNode(page, 'writer', 1);
+    const saved = await expectSavedPrefix(fixture, ['country']), savedPrefix = savedRecord(fixture);
+    expect(fixture.progressWrites()).toHaveLength(2);
+    expect(savedPrefix.nodes.map(item => item.id)).toEqual(['country', 'writer', 'work', 'checkpoint']);
+    expect(saved).not.toMatch(/"(?:overview|description|estimatedDurationMinutes|offlineAvailable)"/u);
+    await page.locator('[data-booky-journey-pause]').click();
+    await expect(status(page)).toHaveAttribute('data-booky-journey-status', 'paused'); await expectOverview(page, 'ru');
+    await page.setViewportSize({ width: 1440, height: 850 }); await stablePose(page);
+    const beforeLocale = await actual(page), localeUrl = page.url();
+    await locale(page, 'en'); await expectOverview(page, 'en'); await expectProgress(page, 1);
+    await expect(status(page)).toHaveAttribute('data-booky-journey-status', 'paused');
+    expect(fixture.memory.get(PROGRESS)).toBe(saved); expect(fixture.progressWrites()).toHaveLength(2);
+    expect(page.url()).toBe(localeUrl); await stablePose(page); retained(await actual(page), beforeLocale, true);
+    await captureOverview(fixture, testInfo, 'journey-overview-en.png',
+      'Desktop actual App EN independently reviewed overview retains the exact RU semantic prefix; metadata does not acknowledge steps or replace the canonical scene');
+
+    await page.evaluate(() => window.__bookyJourneyFixture.setConnectivity({ connected: false, connectionType: 'none' }));
+    await expectOverview(page, 'en');
+    expect(fixture.memory.get(PROGRESS)).toBe(saved); expect(fixture.progressWrites()).toHaveLength(2);
+    expect(page.url()).toBe(localeUrl); retained(await actual(page), beforeLocale, true);
+
+    // Only the work entry becomes online-only. The current writer entry remains
+    // offline-capable, so denial must reflect the entire admitted route.
+    await fixture.coldReload('approved', 'partial-offline'); await stablePose(page); const partialScene = await actual(page);
+    await openPanel(page); await loadBooks(page); await expectOverview(page, 'en', false);
+    await expect(status(page)).toHaveAttribute('data-booky-journey-status', 'paused');
+    await page.evaluate(() => window.__bookyJourneyFixture.setConnectivity({ connected: false, connectionType: 'none' }));
+    await expect(status(page)).toHaveAttribute('data-booky-journey-status', 'unavailable');
+    await expect(overviewSurface(page)).toHaveCount(0); await expect(page.locator('[data-booky-journey-route]')).toHaveCount(0);
+    expect(fixture.memory.get(PROGRESS)).toBe(saved); expect(fixture.progressWrites()).toHaveLength(2);
+    await stablePose(page); retained(await actual(page), partialScene, true);
+    await page.evaluate(() => window.__bookyJourneyFixture.setConnectivity({ connected: true, connectionType: 'wifi' }));
+    await expectOverview(page, 'en', false);
+    expect(fixture.memory.get(PROGRESS)).toBe(saved); expect(fixture.progressWrites()).toHaveLength(2);
+    await stablePose(page); retained(await actual(page), partialScene, true);
+
+    // Review changes are supplied at a new document boundary, never represented
+    // as a live CMS refresh. The independent receipt keeps its original checksum.
+    await fixture.coldReload('approved', 'tampered'); await stablePose(page); const revokedScene = await actual(page);
+    await openPanel(page); await loadBooks(page);
+    await expect(status(page)).toHaveAttribute('data-booky-journey-status', 'unavailable');
+    await expect(overviewSurface(page)).toHaveCount(0); await expect(page.locator('[data-booky-journey-route]')).toHaveCount(0);
+    expect(fixture.memory.get(PROGRESS)).toBe(saved); expect(fixture.progressWrites()).toHaveLength(2);
+    await stablePose(page); retained(await actual(page), revokedScene, true);
+
+    await fixture.coldReload('approved', 'reviewed'); await stablePose(page); const restoredScene = await actual(page);
+    await openPanel(page); await loadBooks(page); await expectOverview(page, 'en');
+    await expect(status(page)).toHaveAttribute('data-booky-journey-status', 'paused');
+    await expect(node(page)).toHaveAttribute('data-booky-journey-node', 'writer'); await expectProgress(page, 1);
+    await expect(page.locator('[data-booky-journey-next]:enabled')).toHaveCount(0);
+    await expect(page.locator('[data-booky-journey-open]:enabled')).toHaveCount(0);
+    for (const key of ['country', 'writer', 'book']) expect(new URL(page.url()).searchParams.get(key)).toBeNull();
+    expect(fixture.memory.get(PROGRESS)).toBe(saved); expect(fixture.progressWrites()).toHaveLength(2);
+    await stablePose(page); retained(await actual(page), restoredScene, true);
+
+    Object.assign(result.observations, { legacyOverviewAbsent: true, independentlyReviewedRuEnOverview: true,
+      estimatedDurationExplicitNotInferred: true, conciseRouteAccessibleName: true, stableDescriptionAssociation: true,
+      metadataDoesNotAcknowledgeSteps: true, explicitStartAndAcknowledgementPersist: true,
+      localePreservesExactSemanticPrefix: true, localeAndOverviewNoProgressWrite: true,
+      allEntriesOfflineAvailableAdmitsRoute: true, oneUnavailableWorkEntryDeniesWholeRouteOffline: true,
+      onlineRecoveryRestoresCurrentAvailability: true, changedOverviewRejectsOriginalIndependentReceipt: true,
+      coldRestorePausedWithReviewedMetadata: true, noAutomaticNavigationOrWrite: true,
+      canonicalSceneRetainedWithinDocument: true, syntheticIndependentReviewsOnly: true,
+      confirmedPrefix: ['country'], savedRecord: savedPrefix, savedPreferenceSha256: digest(saved),
+      overviewDescription: { ru: OVERVIEW_COPY.ru.description, en: OVERVIEW_COPY.en.description },
+      estimatedDurationMinutes: 7, offlineUnavailableNodeId: 'work', progressWriteCount: 2,
+      sameDocumentReviewRefreshClaimed: false, offlineCacheProofClaimed: false,
+      productionApprovalClaimed: false, fullAccessibilityAcceptanceClaimed: false });
     fixture.verify();
   } finally { await fixture.close(); }
 });

@@ -7,6 +7,17 @@ import { getBookyJourneyActivityChecksum, resolveBookyJourneyActivity,
   type BookyJourneyActivitySpec, type BookyJourneyActivityResolved } from "./bookyJourneyActivity";
 
 export type BookyJourneyPrerequisite = Readonly<{ id: string; version: number }>;
+export type BookyJourneyOverview = Readonly<{
+  /** Reviewed localized copy; trimmed plain text, 1–800 characters. */
+  description: string;
+  /** Explicit editorial estimate, 1–1440 whole minutes; never inferred from nodes. */
+  estimatedDurationMinutes: number;
+}>;
+export type BookyJourneyPlanOverview = Readonly<BookyJourneyOverview & {
+  /** All exact current node availability entries permit offline use. This is
+   * not a cache audit, downloaded-route receipt or guarantee for a later session. */
+  offlineAvailable: boolean;
+}>;
 export type BookyJourneyNode = Readonly<{
   id: string;
   entity: Readonly<ContentEntityRef> | null;
@@ -25,6 +36,8 @@ export type BookyJourneyDefinition = Readonly<{
   ageRange: Readonly<{ min: number; max: number }>;
   readingLevel: BookyDialogueReadingLevel;
   title: string;
+  /** Optional for byte-compatible legacy definitions; covered by their checksum. */
+  overview?: BookyJourneyOverview;
   prerequisites: readonly BookyJourneyPrerequisite[];
   nodes: readonly BookyJourneyNode[];
 }>;
@@ -55,6 +68,7 @@ export type BookyJourneyTrust = Readonly<{
 }>;
 export type BookyJourneyPlan = Readonly<{
   id: string; version: number; locale: BookyDialogueLocale; title: string; definitionChecksum: string;
+  overview?: BookyJourneyPlanOverview;
   nodes: readonly Readonly<{
     id: string; kind: BookyJourneyNode["kind"]; screen: BookyJourneyNode["screen"]; entity: Readonly<ContentEntityRef> | null;
     coordinates: readonly [number, number] | null; dialogue: BookyDialogueRecord;
@@ -146,11 +160,26 @@ export function bookyJourneyDialogueContext(journeyId: string, node: BookyJourne
   const activityChecksum = getBookyJourneyActivityChecksum(node.activity);
   return activityChecksum ? `activity:${contentRecordHash({ journeyId, nodeId: node.id, activityChecksum })}` : null;
 }
+function overviewValid(value: unknown): value is BookyJourneyOverview {
+  return row(value, "description estimatedDurationMinutes") && text(value.description, 800)
+    && integer(value.estimatedDurationMinutes, 1, 1440);
+}
+/** Shared shape check for consumers of an already admitted compiled plan.
+ * This parser validates data only; it never grants review or offline authority. */
+export function parseBookyJourneyPlanOverview(input: unknown): BookyJourneyPlanOverview | null {
+  const value = snapshot(input);
+  return row(value, "description estimatedDurationMinutes offlineAvailable") && text(value.description, 800)
+    && integer(value.estimatedDurationMinutes, 1, 1440) && typeof value.offlineAvailable === "boolean"
+    ? Object.freeze({ description: value.description, estimatedDurationMinutes: value.estimatedDurationMinutes,
+      offlineAvailable: value.offlineAvailable }) : null;
+}
 function definitionValid(value: unknown): value is BookyJourneyDefinition {
-  if (!row(value, "schemaVersion id version locale audience ageRange readingLevel title prerequisites nodes") || value.schemaVersion !== 1
+  const hasOverview = !!value && typeof value === "object" && Object.prototype.hasOwnProperty.call(value, "overview");
+  if (!row(value, `schemaVersion id version locale audience ageRange readingLevel title prerequisites nodes${hasOverview ? " overview" : ""}`) || value.schemaVersion !== 1
     || !key(value.id) || !integer(value.version, 1, 1_000_000) || !locale(value.locale) || !choice(value.audience, ["adult", "child"])
     || !row(value.ageRange, "min max") || !integer(value.ageRange.min, 0, 120) || !integer(value.ageRange.max, Number(value.ageRange.min), 120)
-    || !level(value.readingLevel) || !text(value.title, 200) || !uniqueRows(value.prerequisites, 16, prerequisite)
+    || !level(value.readingLevel) || !text(value.title, 200) || hasOverview && !overviewValid(value.overview)
+    || !uniqueRows(value.prerequisites, 16, prerequisite)
     || !uniqueRows(value.nodes, 32, node => !!node && typeof node === "object"
       && row(node, (node as Row).kind === "activity" ? "id entity kind screen dialogue activity" : "id entity kind screen dialogue") && key(node.id)
       && choice(node.kind, ["country", "writer", "work", "checkpoint", "activity"]) && choice(node.screen, ["globe", "collection"])
@@ -223,11 +252,13 @@ export function compileBookyJourney(input: unknown, inputContext: unknown, trust
     if (!Array.isArray(trust.publicCountries) || trust.publicCountries.length > 256 || !Array.isArray(trust.publicBooks)
       || trust.publicBooks.length > 50_000 || context.availability.length !== definition.nodes.length) return null;
     const nodes: BookyJourneyPlan["nodes"][number][] = [];
+    let offlineAvailable = true;
     let activeCountry: string | null = null, activeWriter: string | null = null;
     for (const node of definition.nodes) {
       const available = context.availability.find(item => item.nodeId === node.id);
       if (!available || available.locale !== context.locale || available.dialogueContentChecksum !== node.dialogue.contentChecksum || !available.available
         || context.connectivity !== "online" && !available.offlineAvailable) return null;
+      offlineAvailable = offlineAvailable && available.offlineAvailable;
       const ref = node.entity;
       let coordinates: readonly [number, number] | null = null;
       if (ref) {
@@ -276,6 +307,7 @@ export function compileBookyJourney(input: unknown, inputContext: unknown, trust
         || JSON.stringify(activityChoices(current, trust, context.locale)) !== JSON.stringify(node.activityChoices)) return null;
     }
     return Object.freeze({ id: definition.id, version: definition.version, locale: definition.locale, title: definition.title,
-      definitionChecksum: checksum, nodes: Object.freeze(nodes) });
+      definitionChecksum: checksum, nodes: Object.freeze(nodes),
+      ...(definition.overview ? { overview: Object.freeze({ ...definition.overview, offlineAvailable }) } : {}) });
   } catch { return null; }
 }

@@ -1,5 +1,5 @@
 import { contentTextHash } from "../planet/contentExportHash";
-import type { BookyJourneyPlan } from "./bookyJourney";
+import { parseBookyJourneyPlanOverview, type BookyJourneyPlan } from "./bookyJourney";
 import { getBookyJourneyActivityChecksum, parseBookyJourneyActivity } from "./bookyJourneyActivity";
 import { serializeBookyReaderPolicy, type BookyReaderPolicy } from "./bookyReaderPolicy";
 
@@ -178,9 +178,12 @@ export function serializeBookyJourneyProgress(input: unknown): string | null {
 export function createBookyJourneyProgressRecord(policy: BookyReaderPolicy, admittedPlan: BookyJourneyPlan,
   acknowledgedNodeIds: readonly string[], resumeNodeId: string | null): BookyJourneyProgressRecord | null {
   try {
-    const serializedPolicy = serializeBookyReaderPolicy(policy), plan = data(admittedPlan,
-      ["id", "version", "locale", "title", "definitionChecksum", "nodes"]);
-    if (!serializedPolicy || !plan || !id(plan.id) || !integer(plan.version, 1, 1_000_000)) return null;
+    const serializedPolicy = serializeBookyReaderPolicy(policy), candidate = data(admittedPlan);
+    const hasOverview = !!candidate && Object.prototype.hasOwnProperty.call(candidate, "overview");
+    const plan = candidate && data(candidate, ["id", "version", "locale", "title", "definitionChecksum", "nodes",
+      ...(hasOverview ? ["overview"] : [])]);
+    if (!serializedPolicy || !plan || !id(plan.id) || !integer(plan.version, 1, 1_000_000)
+      || hasOverview && !parseBookyJourneyPlanOverview(plan.overview)) return null;
     const rawNodes = array(plan.nodes, BOOKY_JOURNEY_PROGRESS_MAX_NODES);
     if (!rawNodes) return null;
     const nodes = rawNodes.map(value => {

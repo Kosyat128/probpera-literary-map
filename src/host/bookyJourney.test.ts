@@ -1,8 +1,8 @@
 import { describe, expect, it, vi } from "vitest";
-import { contentTextHash } from "../planet/contentExportHash";
+import { contentRecordHash, contentTextHash } from "../planet/contentExportHash";
 import { createBookyDialogueRegistry, getBookyDialogueChecksum, getBookyDialogueContentChecksum,
   type BookyDialogueApproval, type BookyDialoguePayload, type BookyDialogueRecord, type BookyDialogueRequest } from "./bookyDialogueRegistry";
-import { bookyJourneyDialogueContext, bookyJourneyEntityId, compileBookyJourney, getBookyJourneyChecksum,
+import { bookyJourneyDialogueContext, bookyJourneyEntityId, compileBookyJourney, getBookyJourneyChecksum, parseBookyJourneyPlanOverview,
   type BookyJourneyContext, type BookyJourneyDefinition, type BookyJourneyTrust } from "./bookyJourney";
 import type { Country, BookArchiveEntry } from "../planet/types";
 
@@ -257,5 +257,103 @@ describe("reviewed activity nodes in whole Booky journeys", () => {
       if ((request as BookyDialogueRequest).id === "test-checkpoint-line") f.book.authorship!.authors[0].writerId = "test-writer";
       return registry.resolve(request);
     } } })).toBeNull();
+  });
+});
+
+describe("optional reviewed journey overview", () => {
+  const overview = { description: "A synthetic introduction to this route.", estimatedDurationMinutes: 12 };
+
+  it.each(["ru", "en"] as const)("retains explicit reviewed %s copy and duration without deriving a duration from nodes", locale => {
+    const f = fixture(locale), description = locale === "ru" ? "Описание тестового маршрута." : overview.description;
+    const definition = { ...f.definition, overview: { description, estimatedDurationMinutes: 27 } };
+    const plan = f.compile(definition, undefined, f.reseal(definition))!;
+    expect(plan.overview).toEqual({ description, estimatedDurationMinutes: 27, offlineAvailable: true });
+    expect(Object.isFrozen(plan.overview)).toBe(true);
+    expect(plan.overview).not.toBe(definition.overview);
+    expect(plan.nodes).toHaveLength(4);
+    expect(plan.definitionChecksum).toBe(getBookyJourneyChecksum(definition));
+  });
+
+  it("binds description and explicit estimate to the exact independent whole-definition receipt", () => {
+    const f = fixture(), definition = { ...f.definition, overview };
+    expect(f.compile(definition)).toBeNull();
+    const trust = f.reseal(definition);
+    expect(f.compile(definition, undefined, trust)).not.toBeNull();
+    for (const changed of [{ ...overview, description: "An edited introduction." }, { ...overview, estimatedDurationMinutes: 13 }]) {
+      const edited = { ...definition, overview: changed };
+      expect(getBookyJourneyChecksum(edited)).not.toBe(getBookyJourneyChecksum(definition));
+      expect(f.compile(edited, undefined, trust)).toBeNull();
+    }
+  });
+
+  it("rejects partial, excessive, invented offline claims and hostile authored overview data", () => {
+    const f = fixture(), getter = vi.fn(() => { throw Error("must not execute"); });
+    const hostile = Object.defineProperty({ ...overview }, "description", { get: getter, enumerable: true });
+    for (const invalid of [undefined, null, {}, { description: "Only description" }, { ...overview, extra: true },
+      { ...overview, offlineAvailable: true }, { ...overview, description: "" }, { ...overview, description: " padded " },
+      { ...overview, description: "x".repeat(801) }, { ...overview, description: "line\nbreak" }, hostile,
+      ...[0, -1, 1.5, 1441, NaN, Infinity, "12"].map(estimatedDurationMinutes => ({ ...overview, estimatedDurationMinutes })),
+    ]) expect(getBookyJourneyChecksum({ ...f.definition, overview: invalid })).toBeNull();
+    const accessor = Object.defineProperty({ ...f.definition }, "overview", { get: getter, enumerable: true });
+    expect(getBookyJourneyChecksum(accessor)).toBeNull();
+    expect(getter).not.toHaveBeenCalled();
+    for (const minutes of [1, 1440]) expect(getBookyJourneyChecksum({ ...f.definition,
+      overview: { description: "x".repeat(800), estimatedDurationMinutes: minutes } })).not.toBeNull();
+  });
+
+  it("derives offline availability from every exact admitted entry and never changes the reviewed definition", () => {
+    const f = fixture(), definition = { ...f.definition, overview }, trust = f.reseal(definition);
+    const full = f.compile(definition, undefined, trust)!;
+    for (let index = 0; index < f.context.availability.length; index++) {
+      const availability = f.context.availability.map((item, position) => position === index ? { ...item, offlineAvailable: false } : item);
+      const online = f.compile(definition, { ...f.context, availability }, trust)!;
+      expect(online.overview).toEqual({ ...overview, offlineAvailable: false });
+      expect(online.definitionChecksum).toBe(full.definitionChecksum);
+      for (const connectivity of ["offline", "unknown"] as const) expect(f.compile(definition,
+        { ...f.context, connectivity, availability }, trust)).toBeNull();
+    }
+    for (const connectivity of ["offline", "unknown"] as const) expect(f.compile(definition,
+      { ...f.context, connectivity }, trust)?.overview?.offlineAvailable).toBe(true);
+  });
+
+  it("exposes no overview when any availability entry is missing, stale, duplicated or unavailable", () => {
+    const f = fixture(), definition = { ...f.definition, overview }, trust = f.reseal(definition);
+    const entries = f.context.availability;
+    for (const availability of [entries.slice(1), [...entries, entries[0]],
+      entries.map((item, index) => index ? item : { ...item, available: false }),
+      entries.map((item, index) => index ? item : { ...item, dialogueContentChecksum: "b".repeat(64) }),
+      entries.map((item, index) => index ? item : { ...item, locale: "ru" }),
+    ]) expect(f.compile(definition, { ...f.context, availability }, trust)).toBeNull();
+  });
+
+  it("captures overview and availability before an injected resolver can mutate input owners", () => {
+    const f = fixture(), definition = { ...f.definition, overview: { ...overview } }, context = clone(f.context);
+    const registry = f.trust.dialogueRegistry, trust = { ...f.reseal(definition), dialogueRegistry: { ...registry, resolve(request: unknown) {
+      definition.overview.description = "Changed after capture";
+      Reflect.set(context.availability[0], "offlineAvailable", false);
+      return registry.resolve(request);
+    } } };
+    const plan = f.compile(definition, context, trust)!;
+    expect(plan.overview).toEqual({ ...overview, offlineAvailable: true });
+    expect(plan.definitionChecksum).toBe(trust.approvedReviews[0].definitionChecksum);
+  });
+
+  it("preserves the original six compiled fields and authored hash when overview is absent", () => {
+    const f = fixture(), before = JSON.stringify(f.definition), plan = f.compile()!;
+    expect(Object.keys(plan).sort()).toEqual(["definitionChecksum", "id", "locale", "nodes", "title", "version"]);
+    expect(Object.prototype.hasOwnProperty.call(plan, "overview")).toBe(false);
+    expect(getBookyJourneyChecksum(f.definition)).toBe(contentRecordHash(f.definition));
+    expect(JSON.stringify(f.definition)).toBe(before);
+  });
+
+  it("provides a strict immutable compiled-shape parser without granting reviewed or offline authority", () => {
+    const valid = { ...overview, offlineAvailable: false }, parsed = parseBookyJourneyPlanOverview(valid)!;
+    expect(parsed).toEqual(valid); expect(parsed).not.toBe(valid); expect(Object.isFrozen(parsed)).toBe(true);
+    const getter = vi.fn(() => true), accessor = Object.defineProperty({ ...valid }, "offlineAvailable", { get: getter, enumerable: true });
+    for (const value of [overview, { ...valid, offlineAvailable: 1 }, { ...valid, description: "" },
+      { ...valid, estimatedDurationMinutes: 0 }, { ...valid, extra: true }, accessor, Object.create(valid), null]) {
+      expect(parseBookyJourneyPlanOverview(value)).toBeNull();
+    }
+    expect(getter).not.toHaveBeenCalled();
   });
 });

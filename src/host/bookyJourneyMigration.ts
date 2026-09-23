@@ -1,5 +1,5 @@
 import { contentRecordHash, contentTextHash } from "../planet/contentExportHash";
-import { getBookyJourneyChecksum, type BookyJourneyDefinition, type BookyJourneyPlan } from "./bookyJourney";
+import { getBookyJourneyChecksum, parseBookyJourneyPlanOverview, type BookyJourneyDefinition, type BookyJourneyPlan } from "./bookyJourney";
 import { parseBookyJourneyActivity } from "./bookyJourneyActivity";
 import { createBookyJourneyProgressRecord, DEFAULT_BOOKY_JOURNEY_PROGRESS, parseBookyJourneyProgress,
   type BookyJourneyProgressNode, type BookyJourneyProgressRecord } from "./bookyJourneyProgress";
@@ -146,7 +146,9 @@ export function resolveBookyJourneyMigration(input: unknown): BookyJourneyMigrat
       || historical.nodes.length !== saved.nodes.length
       || historical.nodes.some((node, index) => !matchesHistoricalNode(node, saved.nodes[index]))) return null;
     const plan = value.currentPlan;
-    if (!row(plan, "id version locale title definitionChecksum nodes") || plan.id !== migration.journeyId
+    const hasOverview = !!plan && typeof plan === "object" && Object.prototype.hasOwnProperty.call(plan, "overview");
+    if (!row(plan, `id version locale title definitionChecksum nodes${hasOverview ? " overview" : ""}`)
+      || hasOverview && !parseBookyJourneyPlanOverview(plan.overview) || plan.id !== migration.journeyId
       || plan.version !== migration.toVersion || plan.locale !== migration.locale || plan.definitionChecksum !== migration.toDefinitionChecksum
       || !Array.isArray(plan.nodes) || !row(plan.nodes[0], "id kind screen entity coordinates dialogue") || !key(plan.nodes[0].id)) return null;
     const currentPlan = plan as unknown as BookyJourneyPlan;

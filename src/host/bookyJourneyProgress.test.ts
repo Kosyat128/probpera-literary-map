@@ -240,3 +240,46 @@ describe("Booky activity progress stores semantic identity only", () => {
     expect(getter).not.toHaveBeenCalled();
   });
 });
+
+
+describe("optional admitted journey overview does not change saved semantic bytes", () => {
+  const overview = { description: "Synthetic reviewed route description", estimatedDurationMinutes: 12, offlineAvailable: true };
+  it("pins the legacy serialized record and omits optional display metadata from enriched plans", () => {
+    const source = plan(), legacy = serializeBookyJourneyProgress(fixture(source))!;
+    expect(contentTextHash(legacy)).toBe("b63561b5c5a9f6dfe5928e5ca208b6af95544ab5734e1d3af3653d3a6d594a5f");
+    expect(Object.keys(source)).toHaveLength(6);
+    for (const offlineAvailable of [true, false]) {
+      const enriched = { ...source, overview: { ...overview, offlineAvailable } };
+      const projected = fixture(enriched);
+      expect(serializeBookyJourneyProgress(projected)).toBe(legacy);
+      expect(parseBookyJourneyProgress(legacy)).toEqual(projected);
+      for (const key of ["overview", "description", "estimatedDurationMinutes", "offlineAvailable"]) {
+        expect(legacy).not.toContain('"' + key + '"');
+      }
+    }
+  });
+
+  it("rejects malformed or extra overview fields without changing the original stored record", () => {
+    const source = plan(), original = serializeBookyJourneyProgress(fixture(source));
+    for (const value of [undefined, null, {}, { ...overview, description: " " }, { ...overview, estimatedDurationMinutes: 0 },
+      { ...overview, offlineAvailable: "yes" }, { ...overview, downloaded: true }]) {
+      const enriched = { ...source, overview: value } as unknown as BookyJourneyPlan;
+      expect(createBookyJourneyProgressRecord(policy, enriched, ["country"], "writer")).toBeNull();
+    }
+    expect(createBookyJourneyProgressRecord(policy, { ...source, overview, extra: true } as BookyJourneyPlan, [], "country")).toBeNull();
+    expect(serializeBookyJourneyProgress(fixture(source))).toBe(original);
+  });
+
+  it("does not invoke overview accessors or persist overview fields smuggled into history", () => {
+    const source = plan(), getter = vi.fn(() => overview), nestedGetter = vi.fn(() => true);
+    const accessor = { ...source };
+    Object.defineProperty(accessor, "overview", { enumerable: true, get: getter });
+    expect(createBookyJourneyProgressRecord(policy, accessor, [], "country")).toBeNull();
+    const metadata = { ...overview };
+    Object.defineProperty(metadata, "offlineAvailable", { enumerable: true, get: nestedGetter });
+    expect(createBookyJourneyProgressRecord(policy, { ...source, overview: metadata }, [], "country")).toBeNull();
+    const stored = fixture();
+    expect(parseBookyJourneyProgress({ ...stored, records: [{ ...stored.records[0], overview }] })).toBeNull();
+    expect(getter).not.toHaveBeenCalled(); expect(nestedGetter).not.toHaveBeenCalled();
+  });
+});

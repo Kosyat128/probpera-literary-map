@@ -298,3 +298,55 @@ describe("Booky activity catalog projection", () => {
     const ru = fixture("ru", true); expect(ru.build().plans).toHaveLength(1);
   });
 });
+
+describe("reviewed journey overview catalog", () => {
+  function reviewed(content: BookyJourneyContent, description: string): BookyJourneyContent {
+    const definitions = content.definitions.map(definition => ({ ...definition,
+      overview: { description, estimatedDurationMinutes: 17 } }));
+    return { ...content, definitions, journeyApprovals: content.journeyApprovals.map(approval => ({ ...approval,
+      definitionChecksum: getBookyJourneyChecksum(definitions.find(definition => definition.id === approval.id && definition.locale === approval.locale)!)! })) };
+  }
+
+  it.each(["ru", "en"] as const)("captures exact reviewed %s overview with its source and excludes unreviewed edits", locale => {
+    const f = fixture(locale), description = locale === "ru" ? "Краткое описание тестового маршрута." : "A short synthetic route introduction.";
+    const content = reviewed(f.content, description), catalog = f.build({ content }), plan = catalog.plans[0], source = catalog.sourceFor(plan)!;
+    expect(plan.overview).toEqual({ description, estimatedDurationMinutes: 17, offlineAvailable: true });
+    expect(source.definition).toMatchObject({ overview: { description, estimatedDurationMinutes: 17 } });
+    expect(Object.isFrozen(plan.overview)).toBe(true);
+    Reflect.set(content.definitions[0].overview!, "description", "Caller changed the description");
+    expect(plan.overview?.description).toBe(description);
+    expect(source.definition).toMatchObject({ overview: { description } });
+    expect(f.build({ content }).plans).toEqual([]);
+    expect(f.build().plans[0].overview).toBeUndefined();
+    expect(f.build({ content: readBookyJourneyContent() }).plans).toEqual([]);
+  });
+
+  it("never borrows overview copy or review from another locale", () => {
+    const en = fixture("en"), ru = fixture("ru"), enContent = reviewed(en.content, "Reviewed English introduction."),
+      ruContent = reviewed(ru.content, "Проверенное русское описание.");
+    const content: BookyJourneyContent = { definitions: [...enContent.definitions, ...ruContent.definitions],
+      dialogues: [...enContent.dialogues, ...ruContent.dialogues], currentVersions: enContent.currentVersions,
+      dialogueApprovals: [...enContent.dialogueApprovals, ...ruContent.dialogueApprovals],
+      journeyApprovals: [...enContent.journeyApprovals, ...ruContent.journeyApprovals], availability: [...enContent.availability, ...ruContent.availability] };
+    expect(en.build({ content }).plans[0].overview?.description).toBe("Reviewed English introduction.");
+    expect(ru.build({ content }).plans[0].overview?.description).toBe("Проверенное русское описание.");
+    const revoked = { ...content, journeyApprovals: ruContent.journeyApprovals };
+    expect(en.build({ content: revoked }).plans).toEqual([]);
+    expect(ru.build({ content: revoked }).plans).toHaveLength(1);
+  });
+
+  it("recomputes current offline permission from exact node availability without altering reviewed metadata", () => {
+    const f = fixture(), content = reviewed(f.content, "Synthetic introduction."), first = f.build({ content }).plans[0];
+    const onlineOnly = { ...content, availability: content.availability.map(route => ({ ...route,
+      nodes: route.nodes.map((node, index) => index === 2 ? { ...node, offlineAvailable: false } : node) })) };
+    const second = f.build({ content: onlineOnly }).plans[0];
+    expect(first.overview?.offlineAvailable).toBe(true); expect(second.overview?.offlineAvailable).toBe(false);
+    expect(first.definitionChecksum).toBe(second.definitionChecksum);
+    expect(second.overview?.estimatedDurationMinutes).toBe(17);
+    expect(f.build({ content: onlineOnly, connectivity: "offline" }).plans).toEqual([]);
+    expect(f.build({ content, connectivity: "offline" }).plans[0].overview?.offlineAvailable).toBe(true);
+    const unavailable = { ...content, availability: content.availability.map(route => ({ ...route,
+      nodes: route.nodes.map((node, index) => index === 2 ? { ...node, available: false } : node) })) };
+    expect(f.build({ content: unavailable }).plans).toEqual([]);
+  });
+});

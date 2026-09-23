@@ -25,7 +25,9 @@ function hostPlan(source: BookyJourneyDefinition, author?: string): BookyJourney
   // Synthetic host-plan stand-in ONLY. Editorial admission is tested at its own
   // boundary; this suite neither creates production review nor invokes navigation.
   return { id: source.id, version: source.version, locale: source.locale, title: source.title,
-    definitionChecksum: getBookyJourneyChecksum(source)!, nodes: source.nodes.map(({ activity: spec, ...node }) => {
+    definitionChecksum: getBookyJourneyChecksum(source)!,
+    ...(source.overview ? { overview: { ...source.overview, offlineAvailable: true } } : {}),
+    nodes: source.nodes.map(({ activity: spec, ...node }) => {
       const compiled = { ...node, coordinates: null, dialogue: {} as BookyJourneyPlan["nodes"][number]["dialogue"] };
       if (node.kind !== "activity") return compiled;
       const activity = resolveBookyJourneyActivity(spec, {
@@ -255,5 +257,47 @@ describe("activity migration requires equivalent derived semantics", () => {
     const legacyInput = reviewed({ ...input, historicalDefinition: legacyDefinition, savedRecord: legacySaved },
       { fromDefinitionChecksum: legacySaved.definitionChecksum });
     expect(resolveBookyJourneyMigration(legacyInput)).toBeNull();
+  });
+});
+
+
+describe("reviewed migration with optional route overview", () => {
+  const overview = { description: "Synthetic route overview", estimatedDurationMinutes: 15 };
+  function overviewFixture() {
+    const base = fixture(), historicalDefinition = { ...definition(1), overview };
+    const currentDefinition = { ...definition(2, nodes.map(node => ({ ...node, id: 'new-' + node.id }))),
+      overview: { ...overview, description: "Synthetic revised route overview", estimatedDurationMinutes: 20 } };
+    const currentPlan = hostPlan(currentDefinition);
+    const savedRecord = createBookyJourneyProgressRecord(policy, hostPlan(historicalDefinition), ["country", "writer"], "work")!;
+    return { input: reviewed({ ...base, historicalDefinition, savedRecord, currentPlan },
+      { fromDefinitionChecksum: savedRecord.definitionChecksum, toDefinitionChecksum: currentPlan.definitionChecksum }), currentDefinition };
+  }
+
+  it("accepts exact enriched historical/current definitions while preserving only semantic records", () => {
+    const { input } = overviewFixture(), original = JSON.stringify(input.savedRecord);
+    const result = resolveBookyJourneyMigration(input)!;
+    expect(result).not.toBeNull(); expect(result.preservedRecord).toEqual(input.savedRecord);
+    expect(result.targetRecord).toMatchObject({ acknowledgedNodeIds: ["new-country", "new-writer"], resumeNodeId: "new-work" });
+    for (const field of ["overview", "description", "estimatedDurationMinutes", "offlineAvailable"]) {
+      expect(JSON.stringify(result)).not.toContain('"' + field + '"');
+    }
+    const offlineChanged = { ...input, currentPlan: { ...input.currentPlan, overview: { ...input.currentPlan.overview!, offlineAvailable: false } } };
+    expect(resolveBookyJourneyMigration(offlineChanged)).toEqual(result);
+    expect(JSON.stringify(input.savedRecord)).toBe(original);
+  });
+
+  it("requires independent mapping review for the authored overview checksum and rejects malformed compiled metadata", () => {
+    const { input, currentDefinition } = overviewFixture();
+    expect(resolveBookyJourneyMigration({ ...input, historicalDefinition: { ...input.historicalDefinition,
+      overview: { ...overview, description: "Changed after review" } } })).toBeNull();
+    const edited = hostPlan({ ...currentDefinition, overview: { ...overview, estimatedDurationMinutes: 21 } });
+    expect(resolveBookyJourneyMigration({ ...input, currentPlan: edited })).toBeNull();
+    for (const value of [null, undefined, {}, { ...input.currentPlan.overview, offlineAvailable: 1 },
+      { ...input.currentPlan.overview, extra: true }]) {
+      expect(resolveBookyJourneyMigration({ ...input, currentPlan: { ...input.currentPlan, overview: value } })).toBeNull();
+    }
+    const getter = vi.fn(() => input.currentPlan.overview), accessor = { ...input.currentPlan };
+    Object.defineProperty(accessor, "overview", { enumerable: true, get: getter });
+    expect(resolveBookyJourneyMigration({ ...input, currentPlan: accessor })).toBeNull(); expect(getter).not.toHaveBeenCalled();
   });
 });
