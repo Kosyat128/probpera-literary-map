@@ -5,6 +5,7 @@ import PlanetMascotAvatar from "./PlanetMascotAvatar";
 import { BOOKY_GESTURES, type BookyGesture } from "./bookyAnimation";
 import { useBookyWalk } from "./useBookyWalk";
 import { BOOKY_APPROACH_MS, planBookyApproach } from "./bookyWalk";
+import { bookyCardHeightLimit, bookyCardViewport, placeBooky } from "./bookyPlacement";
 import type { PlanetMascotController, PlanetMascotSnapshot } from "./planetMascot";
 import type { PlanetMascotPersistenceSnapshot } from "./planetMascotPersistence";
 import { isBookyRouteComplete } from "./bookyTourProgress";
@@ -78,6 +79,12 @@ function visibleRect(element: Element, view: Rect): Rect | null {
   return right - left >= 2 && bottom - top >= 2 ? { left, top, width: right - left, height: bottom - top } : null;
 }
 const protectedControls = ".native-planet-panel__header, .native-planet-app .atlas-immersive-chrome .interface-language-control";
+const navigationControls = ".native-planet-app .globe-controls, .native-planet-app .atlas-country-sheet-toggle, "
+  + ".native-planet-app .globe-style-switch, .native-planet-app .globe-edition-scroll-cue, "
+  + ".native-planet-app .globe-style-switch-toggle, .native-planet-app .globe-edition-compact-select, "
+  + ".native-planet-app .book-shelf-frame__navigation, .native-planet-app .book-detail-actions, "
+  + ".native-planet-app .archive-book-actions, "
+  + ".native-planet-app .book-detail-page-navigation, .native-planet-app [data-planet-stand-toggle]";
 function companionViewport(): Rect {
   const view = viewport();
   let top = view.top;
@@ -106,6 +113,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
   const [view, setView] = useState<Rect>(() => typeof window === "undefined"
     ? { left: 0, top: 0, width: 1024, height: 768 } : companionViewport());
   const [petSize, setPetSize] = useState({ width: 176, height: 216 });
+  const [navigation, setNavigation] = useState<Rect[]>([]);
   const [cardHeight, setCardHeight] = useState(360);
   const [highlight, setHighlight] = useState<Rect | null>(null);
   const drag = useRef<{ pointerId: number; x: number; y: number; origin: Position; source: "avatar" | "handle";
@@ -164,20 +172,29 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
   }, [snapshot.mode, snapshot.route, snapshot.step, snapshot.available, open]);
 
   useLayoutEffect(() => {
-    const measure = () => setView(previous => { const next = companionViewport(); return sameRect(previous, next) ? previous : next; });
+    const watched = new Set<Element>();
+    const measure = () => {
+      const next = companionViewport();
+      setView(previous => sameRect(previous, next) ? previous : next);
+      const elements = new Set(document.querySelectorAll(`${protectedControls}, ${navigationControls}`));
+      for (const element of watched) if (!elements.has(element)) { observer?.unobserve(element); watched.delete(element); }
+      for (const element of elements) if (!watched.has(element)) { observer?.observe(element); watched.add(element); }
+      const bounds = [...document.querySelectorAll(navigationControls)]
+        .map(element => visibleRect(element, next)).filter((rect): rect is Rect => rect !== null);
+      setNavigation(previous => previous.length === bounds.length && previous.every((rect, index) => sameRect(rect, bounds[index])) ? previous : bounds);
+    };
     const observer = typeof ResizeObserver === "undefined" ? null : new ResizeObserver(measure);
-    for (const element of document.querySelectorAll(protectedControls)) observer?.observe(element);
     const host = root.current?.closest(".native-planet-app");
     const visibility = typeof MutationObserver === "undefined" ? null : new MutationObserver(measure);
     // The globe toolbar becomes interactive after a panel's passive cleanup
     // removes inert. That changes availability without resizing the toolbar.
     if (host) visibility?.observe(host, { subtree: true, childList: true, attributes: true,
-      attributeFilter: ["inert", "hidden", "aria-hidden"] });
-    window.addEventListener("resize", measure);
+      attributeFilter: ["inert", "hidden", "aria-hidden", "data-atlas-sheet-state", "data-globe-edition-rail", "data-visible"] });
+    window.addEventListener("resize", measure); window.addEventListener("scroll", measure, true);
     window.visualViewport?.addEventListener("resize", measure);
     window.visualViewport?.addEventListener("scroll", measure);
     measure();
-    return () => { observer?.disconnect(); visibility?.disconnect(); window.removeEventListener("resize", measure);
+    return () => { observer?.disconnect(); visibility?.disconnect(); window.removeEventListener("resize", measure); window.removeEventListener("scroll", measure, true);
       window.visualViewport?.removeEventListener("resize", measure); window.visualViewport?.removeEventListener("scroll", measure); };
   }, [screen, language, snapshot.available, shown, open]);
 
@@ -240,10 +257,15 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
       window.visualViewport?.removeEventListener("scroll", measure); };
   }, [snapshot.available, snapshot.highlight, snapshot.revision, open, screen, countryLabel, writerLabel]);
 
-  const restingPosition = clamped(position ?? { left: view.left + view.width - petSize.width - 20,
+  const preferredPosition = clamped(position ?? { left: view.left + view.width - petSize.width - 20,
     top: view.top + view.height - petSize.height - 20 }, petSize.width, petSize.height, view);
+  // Follow the pointer/selected target exactly during an explicit movement;
+  // settle beside navigation controls without writing a new saved preference.
+  const restingPosition = gesture === "dragging" || targetCue ? preferredPosition
+    : placeBooky(preferredPosition, petSize, view, navigation);
   const walk = useBookyWalk({ available: shown && snapshot.available && !open && snapshot.mode === "help",
-    revision: snapshot.revision, position: restingPosition, size: petSize, viewport: view, onFinish: onPositionChange });
+    revision: snapshot.revision, position: restingPosition, committedPosition: position ?? preferredPosition,
+    size: petSize, viewport: view, onFinish: onPositionChange });
   const petPosition = walk.position ?? restingPosition;
   const pointEnvironment = useRef({ position: petPosition, size: petSize, view });
   pointEnvironment.current = { position: petPosition, size: petSize, view };
@@ -321,18 +343,21 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
   }, [walk.active, targetCue?.phase]);
   const petRect = { ...petPosition, ...petSize };
   const cardWidth = Math.min(340, Math.max(180, view.width - MARGIN * 2));
-  const sideRoom = view.width >= petSize.width + cardWidth + MARGIN * 3;
-  const maxCardHeight = Math.max(100, view.height - MARGIN * 2 - (sideRoom ? 0 : petSize.height + MARGIN));
+  const cardView = bookyCardViewport(view, petSize, navigation);
+  const maxCardHeight = bookyCardHeightLimit(cardView, petRect, cardWidth);
   const height = Math.min(cardHeight, maxCardHeight);
   const cardCandidates = [
     { left: petPosition.left - cardWidth - MARGIN, top: petPosition.top + petSize.height - height },
     { left: petPosition.left + petSize.width + MARGIN, top: petPosition.top + petSize.height - height },
     { left: petPosition.left + petSize.width - cardWidth, top: petPosition.top - height - MARGIN },
     { left: petPosition.left + petSize.width - cardWidth, top: petPosition.top + petSize.height + MARGIN },
-  ].map(candidate => ({ ...clamped(candidate, cardWidth, height, view), width: cardWidth, height }));
-  const score = (candidate: Rect) => overlap(candidate, petRect) * 4
+  ].map(candidate => ({ ...clamped(candidate, cardWidth, height, cardView), width: cardWidth, height }));
+  const score = (candidate: Rect) => navigation.reduce((sum, rect) => sum + overlap(candidate, rect), 0)
     + (highlight && highlight.width * highlight.height < view.width * view.height * .45 ? overlap(candidate, highlight) : 0);
-  const cardPosition = cardCandidates.reduce((best, candidate) => score(candidate) < score(best) ? candidate : best);
+  const cardPosition = cardCandidates.reduce((best, candidate) => {
+    const covered = overlap(candidate, petRect), bestCovered = overlap(best, petRect);
+    return covered < bestCovered || (covered === bestCovered && score(candidate) < score(best)) ? candidate : best;
+  });
   const perform = (action: PlanetMascotAction) => {
     const performed = controller.act(action, snapshot.revision, () => onAction(action));
     if (performed) { setGesture("rest"); setReactionKey(value => value + 1); }

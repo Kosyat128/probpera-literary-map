@@ -4,6 +4,7 @@ import { planBookyWalk, sampleBookyWalk, type BookyWalkBounds, type BookyWalkPoi
 
 export function useBookyWalk(options: {
   available: boolean; revision: number; position: BookyWalkPoint;
+  committedPosition?: BookyWalkPoint;
   size: Readonly<{ width: number; height: number }>; viewport: BookyWalkBounds;
   onFinish: (point: BookyWalkPoint) => void;
 }) {
@@ -22,7 +23,7 @@ export function useBookyWalk(options: {
     if (final) {
       // Keep the final local point until the parent accepts the position. A
       // concurrent parent render can finish after the local stop render.
-      const previous = latest.current.position;
+      const previous = latest.current.committedPosition ?? latest.current.position;
       handoff.current = final;
       setWalk({ position: final, active: false, previous });
       latest.current.onFinish(final);
@@ -77,13 +78,17 @@ export function useBookyWalk(options: {
   useEffect(() => { if (!options.available) stop(); }, [options.available, options.revision, stop]);
   const canStart = options.available && !reducedMotion && planBookyWalk(options.position, options.size, options.viewport) !== null;
   const active = walk?.active === true;
-  const parentPending = walk && options.position.left === walk.previous.left && options.position.top === walk.previous.top;
+  // A collision-free display position can stay unchanged after the parent has
+  // accepted a different point. Acknowledge the committed coordinates, not
+  // their many-to-one visual projection, before releasing the local handoff.
+  const committed = options.committedPosition ?? options.position;
+  const parentPending = walk && committed.left === walk.previous.left && committed.top === walk.previous.top;
   const position = walk && (active || parentPending) ? walk.position : null;
   useLayoutEffect(() => {
     if (walk && !walk.active && (!parentPending
-      || (options.position.left === walk.position.left && options.position.top === walk.position.top))) {
+      || (committed.left === walk.position.left && committed.top === walk.position.top))) {
       handoff.current = null; setWalk(null);
     }
-  }, [walk, parentPending, options.position.left, options.position.top]);
+  }, [walk, parentPending, committed.left, committed.top]);
   return { active, position, direction, reducedMotion, canStart, start, stop };
 }

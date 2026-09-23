@@ -912,3 +912,139 @@ test('Mr. Booky approaches the selected section once, points, and respects cance
     await page.evaluate(()=>window.__bookyApproachObservation?.stop()).catch(()=>undefined);await fixture.close();
   }
 });
+
+test('Mr. Booky mobile placement preserves globe and collection hit targets in both locales',async({},testInfo)=>{
+  test.setTimeout(150_000);const fixture=await open(testInfo),{page,result}=fixture;
+  const globeTargets=['[data-globe-control="zoom-in"]','[data-globe-control="zoom-out"]',
+    '[data-globe-control="reset"]','[data-globe-control="edition-info"]','.atlas-country-sheet-toggle'];
+  const railTargets=['.globe-edition-scroll-cue.is-previous[data-visible="true"] button',
+    '.globe-edition-scroll-cue.is-next[data-visible="true"] button','[data-globe-control="edition-rail-toggle"]'];
+  const overlap=(a,b)=>Boolean(a&&b&&Math.min(a.right,b.right)-Math.max(a.left,b.left)>.5
+    &&Math.min(a.bottom,b.bottom)-Math.max(a.top,b.top)>.5);
+  async function reachable(selectors,{tips=false,requireAll=true,baseline=null,observeOnly=false}={}){
+    const observed=await page.evaluate(selectors=>selectors.map(selector=>{
+      const element=document.querySelector(selector),r=element?.getBoundingClientRect();
+      if(!element||!r||r.width<2||r.height<2||element.closest('[hidden],[inert]')
+        ||getComputedStyle(element).visibility==='hidden')return{selector,visible:false};
+      const rect={left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height};
+      const points=[[.5,.5],[.15,.5],[.85,.5]].map(([x,y])=>{
+        const hit=document.elementFromPoint(r.left+r.width*x,r.top+r.height*y);
+        return{target:hit?.tagName??null,className:typeof hit?.className==='string'?hit.className:null,reachable:!!hit&&element.contains(hit),
+          companionBlocked:!!hit?.closest('[data-planet-mascot-pet]')};
+      });
+      return{selector,visible:r.left>=0&&r.top>=0&&r.right<=innerWidth+.5&&r.bottom<=innerHeight+.5,rect,points};
+    }),selectors);
+    const positions=await layout(page);
+    (result.observations.hitTests??=[]).push({tips,observeOnly,positions,controls:observed});
+    if(observeOnly)return{positions,controls:observed};
+    for(const item of observed){
+      if(requireAll)expect(item.visible,item.selector+' is fully visible').toBe(true);
+      if(!item.visible)continue;
+      // Open tips are a deliberate sheet. Their covered page controls are
+      // checked after collapse; the separate character cannot cover controls
+      // outside that sheet, including the persistent globe toolbar.
+      if(tips&&overlap(item.rect,positions.card))continue;
+      expect(overlap(item.rect,positions.pet),item.selector+' does not overlap the companion').toBe(false);
+      const prior=baseline?.controls.find(control=>control.selector===item.selector&&control.visible);
+      expect(item.points.every((point,index)=>!point.companionBlocked&&(!prior||prior.points[index].reachable?point.reachable:true)),
+        item.selector+' retains its baseline pointer hits').toBe(true);
+    }
+    return{positions,controls:observed};
+  }
+  async function settle(){await companionSaved(fixture);await twoFrames(page);await live(page);}
+  async function collapse(){if(await panel(page).isVisible())await page.locator('[data-planet-mascot-collapse]').click();await settle();}
+  try{
+    await actual(page);await page.evaluate(()=>window.__bookyLiveFixture.remember());await stablePose(page);
+    const baseline=await actual(page);result.observations.mobilePlacement=[];result.observations.hostBaselineObstructions=[];
+    await page.setViewportSize({width:320,height:844});
+    const country=page.locator('.atlas-country-sheet-toggle');
+    // Establish the actual compact country bar with product keyboard actions.
+    for(let i=0;i<3&&await country.getAttribute('aria-expanded')==='true';i++){
+      await country.focus();await page.keyboard.press('Enter');
+    }
+    await expect(country).toHaveAttribute('aria-expanded','false');
+    const hostBaselines=new Map();
+    for(const[language,size]of [['ru',{width:320,height:844}],['en',{width:320,height:844}],['en',{width:800,height:400}]]){
+      const languageButton=page.locator('.atlas-immersive-chrome .interface-language-control button').filter({hasText:new RegExp('^'+language.toUpperCase()+'$','u')});
+      if(await page.locator('html').getAttribute('lang')!==language){await languageButton.click();await expect(page.locator('html')).toHaveAttribute('lang',language);
+        await expect.poll(()=>fixture.memory.get('probpera-interface-language')).toBe(language);}
+      await page.setViewportSize(size);
+      if(await avatar(page).count()){
+        await page.locator('[data-planet-mascot-hide]').click();await expect(avatar(page)).toHaveCount(0);
+        await expect(page.locator('[data-planet-mascot-preference-state]')).toHaveCount(0);
+        await expect.poll(()=>JSON.parse(fixture.memory.get(BOOKY)??'null')?.visible).toBe(false);
+      }
+      await twoFrames(page);const hostBaseline=await reachable([...globeTargets,...railTargets],{observeOnly:true});hostBaselines.set(size.width,hostBaseline);
+      result.observations.hostBaselineObstructions.push({language,size,controls:hostBaseline.controls.filter(control=>control.points?.some(point=>!point.reachable))});
+      await page.locator('[data-planet-mascot-toggle]').click();await expect(panel(page)).toBeVisible();await settle();
+      const before=mutations(fixture),shown=await reachable(globeTargets,{tips:true,baseline:hostBaseline});
+      await reachable(railTargets,{tips:true,baseline:hostBaseline,requireAll:false});
+      await twoFrames(page);expect(mutations(fixture)).toEqual(before);
+      await collapse();const closedBefore=mutations(fixture),collapsed=await reachable(globeTargets,{baseline:hostBaseline});
+      await reachable(railTargets,{baseline:hostBaseline,requireAll:false});
+      for(const control of hostBaseline.controls.filter(control=>control.visible&&control.points.every(point=>point.reachable)))await page.locator(control.selector).click({trial:true});
+      await twoFrames(page);expect(mutations(fixture)).toEqual(closedBefore);retained(await actual(page),baseline,false);
+      result.observations.mobilePlacement.push({language,size,hostBaseline,shown,collapsed});
+      if(size.width===320)await capture(page,result,testInfo,`booky-mobile-controls-${language}-320.png`);
+      else await capture(page,result,testInfo,'booky-mobile-controls-en-landscape.png');
+    }
+
+    // Deliberate placement remains available and Home restores the automatic
+    // safe location. Resizing only clamps local position, never preferences.
+    const handle=page.locator('[data-planet-mascot-move]'),origin=(await layout(page)).pet,box=await handle.boundingBox();
+    const beforeDrag=mutations(fixture);await page.mouse.move(box.x+box.width/2,box.y+box.height/2);await page.mouse.down();
+    await page.mouse.move(box.x+box.width/2+(origin.left>80?-60:60),box.y+box.height/2+(origin.top>60?-25:25),{steps:5});await page.mouse.up();
+    const dragged=(await layout(page)).pet;expect(Math.hypot(dragged.left-origin.left,dragged.top-origin.top)).toBeGreaterThan(10);
+    await handle.focus();await page.keyboard.press('Home');await settle();await reachable(globeTargets,{baseline:hostBaselines.get(800)});
+    await page.setViewportSize({width:320,height:844});await settle();await reachable(globeTargets,{baseline:hostBaselines.get(320)});
+    expect(mutations(fixture)).toEqual(beforeDrag);
+
+    // The first walking position can be below the safe resting position.
+    // An immediate genuine stop must release its transient position even
+    // when the parent's corrected resting coordinates did not change.
+    await page.locator('[data-booky-walk]').focus();await page.keyboard.press('Enter');
+    await expect(pet(page)).toHaveAttribute('data-planet-mascot-gesture','walking');
+    await page.locator('[data-booky-walk-stop]').focus();await page.keyboard.press('Enter');
+    await expect(pet(page)).not.toHaveAttribute('data-planet-mascot-gesture','walking');await twoFrames(page);
+    result.observations.immediateWalkStop=await reachable(globeTargets,{baseline:hostBaselines.get(320)});
+    await twoFrames(page);expect((await layout(page)).pet).toEqual(result.observations.immediateWalkStop.positions.pet);
+    expect(mutations(fixture)).toEqual(beforeDrag);
+
+    // Open the real collection, cancel its optional visual approach with a
+    // genuine key, and inspect the lower scroll surface after tips collapse.
+    await openUtility(page,'Graphics settings','Useful actions');await page.keyboard.press('Tab');
+    await page.locator('[data-planet-mascot-move]').focus();await page.keyboard.press('Home');await settle();
+    const collection=page.locator('.native-planet-panel');await expect(collection).toBeVisible();
+    const headerTargets=['.native-planet-panel__header .interface-language-control button:first-child',
+      '.native-planet-panel__header .interface-language-control button:last-child','.native-planet-panel__header > button'];
+    await reachable(headerTargets);
+    await page.setViewportSize({width:800,height:400});await settle();
+    await page.locator('.native-planet-panel__content').evaluate(element=>{element.scrollTop=element.scrollHeight});await twoFrames(page);await settle();
+    const collectionTargets=await collection.locator('.native-planet-panel__content button,.native-planet-panel__content summary').evaluateAll(elements=>elements
+      .filter(element=>{const r=element.getBoundingClientRect();return !element.closest('[data-planet-mascot-pet]')&&!element.disabled
+        &&element.getAttribute('aria-disabled')!=='true'&&r.width>2&&r.height>2&&r.top>=0&&r.bottom<=innerHeight})
+      .map(element=>{const path=[];let node=element;while(node&&!node.classList.contains('native-planet-panel__content')){
+        path.unshift(node.tagName.toLowerCase()+':nth-child('+([...node.parentElement.children].indexOf(node)+1)+')');node=node.parentElement;}
+        return'.native-planet-panel__content > '+path.join(' > ');}));
+    expect(collectionTargets.length).toBeGreaterThan(0);
+    const collectionBefore=mutations(fixture);result.observations.collection=await reachable([...headerTargets,...collectionTargets]);
+    await twoFrames(page);expect(mutations(fixture)).toEqual(collectionBefore);
+    await capture(page,result,testInfo,'booky-mobile-collection-en-landscape.png');
+
+    await page.locator('[data-planet-mascot-hide]').click();await expect(avatar(page)).toHaveCount(0);
+    await expect(page.locator('[data-planet-mascot-preference-state]')).toHaveCount(0);
+    await expect.poll(()=>JSON.parse(fixture.memory.get(BOOKY)??'null')?.visible).toBe(false);
+    const hiddenBefore=mutations(fixture);await page.setViewportSize({width:320,height:844});await twoFrames(page);
+    await reachable(headerTargets);expect(mutations(fixture)).toEqual(hiddenBefore);
+    await page.locator('[data-planet-mascot-toggle]').click();await expect(panel(page)).toBeVisible();await settle();
+    await capture(page,result,testInfo,'booky-mobile-collection-tips-en-320.png');
+    await reachable(headerTargets,{tips:true});await collapse();retained(await actual(page),baseline,false);
+    expect(fixture.writes()).toEqual([]);expect(fixture.memory.get(KEY)).toBe(fixture.initialRecord);
+    Object.assign(result,{scenario:'mobile-companion-placement',mobileLocales:['ru','en'],portraitWidth:320,landscapeViewport:{width:800,height:400},
+      companionAddsNoGlobeObstruction:true,openTipsDoNotBlockOutsideControls:true,collectionVisibleControlsReachable:true,
+      manualDragAndHomeRetained:true,immediateWalkStopSettlesClear:true,resizeClampsWithoutPreferenceWrites:true,hideAndShowRetained:true,sameCanonicalGlobe:true});
+    await fixture.verify();
+  }catch(error){
+    await capture(page,result,testInfo,'booky-mobile-placement-failure.png').catch(()=>undefined);throw error;
+  }finally{await fixture.close();}
+});

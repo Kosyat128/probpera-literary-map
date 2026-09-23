@@ -219,6 +219,17 @@
   .planet-mascot-controls__heading h2 { font-size: 23px; }
   .planet-mascot-controls__panel h3 { font-size: 19px; }
 }
+@media (max-height: 540px) and (orientation: landscape) {
+  /* Keep the full-size mobile character and touch targets in one short row. */
+  .planet-mascot-controls[data-planet-mascot-active="true"] {
+    width: 312px;
+    max-width: calc(100vw - 24px);
+    display: grid;
+    grid-template-columns: 96px 94px minmax(0, 1fr);
+    align-items: center;
+  }
+  .planet-mascot-controls > .planet-mascot-controls__persistence { grid-column: 1 / -1; }
+}
 @media (prefers-reduced-motion: reduce) {
   .planet-mascot-controls *, .planet-mascot-highlight { scroll-behavior: auto; }
   .planet-mascot-controls__leaf { animation: none !important; }
