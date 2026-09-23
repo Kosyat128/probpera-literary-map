@@ -23,11 +23,14 @@
   filter: drop-shadow(0 3px 3px rgb(24 60 37 / 17%));
 }
 
-.planet-mascot-avatar[data-renderer-state="fallback"] .planet-mascot-avatar__canvas {
-  display: none;
+.planet-mascot-avatar:not([data-renderer-state="live3d"]) .planet-mascot-avatar__canvas {
+  /* Keep its measured viewport for the first frame and context recovery. */
+  visibility: hidden;
 }
 
 .planet-mascot-avatar__image {
+  position: absolute;
+  inset: 0;
   filter: drop-shadow(0 4px 5px rgb(24 60 37 / 16%));
 }
 

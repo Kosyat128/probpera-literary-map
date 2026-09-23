@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState, type RefObject } from "react";
 import type { WebGLRenderer, WebGLRenderTarget } from "three";
-import { BOOKY_LOOK_MS, BOOKY_REACTION_MS, boundedBookyLook, createBookyPose,
+import { BOOKY_LOOK_MS, bookyReactionDuration, boundedBookyLook, createBookyPose, hasBookyReactionChanged,
   type BookyInput } from "./bookyAnimation";
 
 type RendererState = "loading" | "live3d" | "fallback";
@@ -205,9 +205,11 @@ export function useBookyRenderer(canvasRef: RefObject<HTMLCanvasElement | null>,
           if (nextLook.x !== goalLook.x || nextLook.y !== goalLook.y) {
             startLook = look; goalLook = nextLook; lookStarted = performance.now();
           }
-          if (value.reactionKey !== current.reactionKey || (value.mood !== current.mood && value.mood === "celebrate")
-            || (value.interaction !== current.interaction && value.interaction === "greeting")) {
+          if (hasBookyReactionChanged(current, value)) {
             reactionStarted = !reducedMotion && isActive() ? performance.now() : null;
+          } else if (value.interaction !== current.interaction) {
+            // A new ordinary action replaces the prior gesture immediately.
+            reactionStarted = null;
           }
           current = value;
         };
@@ -217,7 +219,7 @@ export function useBookyRenderer(canvasRef: RefObject<HTMLCanvasElement | null>,
           const blend = reducedMotion || !lookStarted ? 1 : Math.min(1, Math.max(0, (time - lookStarted) / BOOKY_LOOK_MS));
           const eased = blend * blend * (3 - 2 * blend);
           look = { x: startLook.x + (goalLook.x - startLook.x) * eased, y: startLook.y + (goalLook.y - startLook.y) * eased };
-          const progress = reactionStarted === null || reducedMotion ? null : (time - reactionStarted) / BOOKY_REACTION_MS;
+          const progress = reactionStarted === null || reducedMotion ? null : (time - reactionStarted) / bookyReactionDuration(current);
           if (progress !== null && progress >= 1) reactionStarted = null;
           pose(current, look, reactionStarted === null ? null : progress, reducedMotion);
           renderer.render(scene, camera);
@@ -225,6 +227,7 @@ export function useBookyRenderer(canvasRef: RefObject<HTMLCanvasElement | null>,
           canvas.dataset.bookyRenderCount = String(renderCount);
           canvas.dataset.bookyAnimating = String(blend < 1 || reactionStarted !== null);
           canvas.dataset.bookyReducedMotion = String(reducedMotion);
+          canvas.dataset.bookyInteraction = current.interaction;
           publish();
           if (blend < 1 || reactionStarted !== null) requestFrame();
         };

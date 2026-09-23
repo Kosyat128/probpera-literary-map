@@ -95,7 +95,7 @@ describe("original articulated Mr. Booky model", () => {
     try {
       const rig = model.rig, pose = createBookyPose(rig);
       const members = [rig.body, rig.leftArm, rig.rightArm, rig.frontCover, rig.bookmark,
-        ...rig.eyes, ...rig.pupils, ...rig.brows, rig.mouth];
+        rig.leftLeg, rig.rightLeg, rig.leftFoot, rig.rightFoot, ...rig.eyes, ...rig.pupils, ...rig.brows, rig.mouth];
       const transforms = () => members.map(object => [...object.position.toArray(),
         ...object.quaternion.toArray(), ...object.scale.toArray()]);
       const rest = transforms();
@@ -136,6 +136,116 @@ describe("original articulated Mr. Booky model", () => {
     } finally { model.dispose(); }
   });
 
+  it("articulates each complete sneaker independently and keeps alternating step extremes in the existing viewport", () => {
+    const model = createBookyModel();
+    try {
+      const { leftLeg, rightLeg, leftFoot, rightFoot } = model.rig;
+      expect(leftFoot.parent).toBe(leftLeg); expect(rightFoot.parent).toBe(rightLeg);
+      expect(leftLeg.parent).toBe(model.rig.body); expect(rightLeg.parent).toBe(model.rig.body);
+      expect(leftFoot.children.map(object => object.name).sort()).toEqual([
+        "booky-left-shoe-laces", "booky-left-shoe-upper", "booky-shoe-soles-and-caps",
+      ]);
+      expect(rightFoot.children.map(object => object.name).sort()).toEqual([
+        "booky-right-shoe-laces", "booky-right-shoe-upper", "booky-shoe-soles-and-caps-right",
+      ]);
+      const original = leftFoot.children.map(object => object.matrixWorld.clone());
+      const rightOriginal = rightFoot.children.map(object => object.matrixWorld.clone());
+      const legOriginal = model.group.getObjectByName("booky-legs")!.matrixWorld.clone();
+      leftFoot.rotation.x = .08; model.group.updateMatrixWorld(true);
+      leftFoot.children.forEach((part, index) => expect(part.matrixWorld.equals(original[index])).toBe(false));
+      rightFoot.children.forEach((part, index) => expect(part.matrixWorld.equals(rightOriginal[index])).toBe(true));
+      expect(model.group.getObjectByName("booky-legs")!.matrixWorld.equals(legOriginal)).toBe(true);
+      leftFoot.rotation.x = 0; model.group.updateMatrixWorld(true);
+      const bounds = new THREE.Box3().setFromObject(model.group);
+      const center = bounds.getCenter(new THREE.Vector3()), size = bounds.getSize(new THREE.Vector3());
+      const h = Math.max(size.x, size.y) * .59;
+      const camera = new THREE.OrthographicCamera(-h, h, h, -h, .1, 20);
+      camera.position.copy(center).add(new THREE.Vector3(-1.85, 1.8, 6)); camera.lookAt(center); camera.updateMatrixWorld(true);
+      const point = new THREE.Vector3();
+      for (const phase of [-1, 0, 1]) {
+        leftLeg.rotation.x = phase * .12; rightLeg.rotation.x = -phase * .12;
+        leftFoot.rotation.x = -phase * .08; rightFoot.rotation.x = phase * .08;
+        leftLeg.position.y = -.73 + Math.max(0, phase) * .025;
+        rightLeg.position.y = -.73 + Math.max(0, -phase) * .025;
+        model.rig.body.position.y = Math.abs(phase) * .014;
+        model.rig.body.rotation.z = phase * .012; model.group.updateMatrixWorld(true);
+        let extentX = 0, extentY = 0;
+        model.group.traverse(part => {
+          if (!(part instanceof THREE.Mesh)) return;
+          const vertices = part.geometry.getAttribute("position");
+          for (let index = 0; index < vertices.count; index++) {
+            point.fromBufferAttribute(vertices, index).applyMatrix4(part.matrixWorld).project(camera);
+            extentX = Math.max(extentX, Math.abs(point.x)); extentY = Math.max(extentY, Math.abs(point.y));
+          }
+        });
+        expect(extentX).toBeLessThan(1); expect(extentY).toBeLessThan(1);
+      }
+    } finally { model.dispose(); }
+  });
+
+  it("wraps the magnifier shaft with a real glove and retains the grip through walking and curious poses", () => {
+    const model = createBookyModel();
+    try {
+      const glove = model.group.getObjectByName("booky-right-grip-glove") as THREE.Mesh;
+      const handle = model.group.getObjectByName("booky-magnifier-handle") as THREE.Mesh;
+      const magnifier = handle.parent!, hand = glove.parent!;
+      expect(hand.name).toBe("booky-right-hand");
+      expect(magnifier.parent).toBe(hand); expect(hand.parent).toBe(model.rig.rightArm);
+      // Bypass disabled UI picking only in this geometry check. From both sides
+      // of the middle finger, actual glove surfaces enclose the actual shaft.
+      for (const direction of [-1, 1]) {
+        const origin = hand.localToWorld(new THREE.Vector3(.08, .017, -direction));
+        const axis = new THREE.Vector3(0, 0, direction).transformDirection(hand.matrixWorld);
+        const ray = new THREE.Raycaster(origin, axis), gloveHits: THREE.Intersection[] = [], shaftHits: THREE.Intersection[] = [];
+        THREE.Mesh.prototype.raycast.call(glove, ray, gloveHits);
+        THREE.Mesh.prototype.raycast.call(handle, ray, shaftHits);
+        expect(gloveHits.length).toBeGreaterThan(0); expect(shaftHits.length).toBeGreaterThan(0);
+        expect(Math.min(...gloveHits.map(hit => hit.distance))).toBeLessThan(Math.min(...shaftHits.map(hit => hit.distance)));
+      }
+      const relative = () => glove.matrixWorld.clone().invert().multiply(handle.matrixWorld).elements;
+      const initial = relative(), pose = createBookyPose(model.rig);
+      for (const interaction of ["curious", "walking"] as const) for (const progress of [.125, .3125, .4375, .5, .875, 1]) {
+        pose({ mood: "idle", interaction, lookAt: { x: 0, y: 0 }, reactionKey: 1, active: true },
+          { x: 0, y: 0 }, progress, false);
+        model.group.updateMatrixWorld(true);
+        relative().forEach((value, index) => expect(value).toBeCloseTo(initial[index], 12));
+      }
+    } finally { model.dispose(); }
+  });
+
+  it("keeps the magnifier outside the face in the production camera and bounded curious poses", () => {
+    const model = createBookyModel();
+    try {
+      const bounds = new THREE.Box3().setFromObject(model.group, true);
+      const center = bounds.getCenter(new THREE.Vector3()), size = bounds.getSize(new THREE.Vector3());
+      const halfHeight = Math.max(size.x, size.y) * .59;
+      const camera = new THREE.OrthographicCamera(-halfHeight, halfHeight, halfHeight, -halfHeight, .1, 20);
+      camera.position.copy(center).add(new THREE.Vector3(-1.85, 1.8, 6)); camera.lookAt(center); camera.updateMatrixWorld(true);
+      const projected = (object: THREE.Object3D) => {
+        const result = new THREE.Box2(), point = new THREE.Vector3();
+        object.traverse(part => {
+          if (!(part instanceof THREE.Mesh)) return;
+          const vertices = part.geometry.getAttribute("position");
+          for (let index = 0; index < vertices.count; index++) {
+            point.fromBufferAttribute(vertices, index).applyMatrix4(part.matrixWorld).project(camera);
+            result.expandByPoint(new THREE.Vector2(point.x, point.y));
+          }
+        });
+        return result;
+      };
+      const frame = model.group.getObjectByName("booky-magnifier-gold-frame")!;
+      for (const yaw of [-.10, 0, .10]) for (const tilt of [-.06, .06]) for (const raised of [-.06, 0, .16]) {
+        model.rig.body.rotation.set(0, yaw, tilt); model.rig.rightArm.rotation.z = raised;
+        model.group.updateMatrixWorld(true);
+        const face = projected(model.rig.eyes[1]), magnifier = projected(frame);
+        // A visible gap remains even at the smallest 88px control. This checks
+        // the actual rendered projection, not only world-space separation.
+        expect((magnifier.min.x - face.max.x) * 44, `yaw=${yaw}, tilt=${tilt}, arm=${raised}`).toBeGreaterThan(1);
+        expect(magnifier.max.x).toBeLessThan(1); expect(magnifier.max.y).toBeLessThan(1);
+      }
+    } finally { model.dispose(); }
+  });
+
   it("owns independent buffers/materials/maps and disposes shared resources exactly once", () => {
     const first = createBookyModel(), second = createBookyModel();
     const a = resources(first.group), b = resources(second.group);
@@ -148,6 +258,9 @@ describe("original articulated Mr. Booky model", () => {
     const irisLeft = first.group.getObjectByName("booky-iris-left") as THREE.Mesh;
     const irisRight = first.group.getObjectByName("booky-iris-right") as THREE.Mesh;
     expect(irisLeft.geometry).toBe(irisRight.geometry);
+    createBookyPose(first.rig)({ mood: "idle", interaction: "walking", lookAt: { x: 0, y: 0 },
+      reactionKey: 1, active: true }, { x: 0, y: 0 }, .3125, false);
+    first.group.updateMatrixWorld(true);
     first.dispose(); first.dispose();
     expect(first.group.children).toHaveLength(0);
     for (const spy of spies) expect(spy).toHaveBeenCalledTimes(1);

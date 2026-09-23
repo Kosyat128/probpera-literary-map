@@ -19,9 +19,10 @@ export default function PlanetMascotAvatar({ src, mood = "idle", lookAt = { x: 0
   const canvas = useRef<HTMLCanvasElement>(null);
   const renderer = useBookyRenderer(canvas, { mood, lookAt, interaction, reactionKey, active });
   return <span className="planet-mascot-avatar" data-planet-mascot-avatar={mood}
-    data-renderer-state={renderer.state} data-renderer-active={renderer.active} aria-hidden="true">
+    data-renderer-state={renderer.state} data-renderer-active={renderer.active}
+    data-booky-interaction={interaction} aria-hidden="true">
     <canvas ref={canvas} className="planet-mascot-avatar__canvas" data-booky-canvas="" aria-hidden="true" />
-    {renderer.state === "fallback" && <img className="planet-mascot-avatar__image" src={src} alt="" draggable={false}
+    {renderer.state !== "live3d" && <img className="planet-mascot-avatar__image" src={src} alt="" draggable={false}
       decoding="async" width="140" height="140" />}
   </span>;
 }

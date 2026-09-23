@@ -21,7 +21,7 @@ import { usePlatformServices, usePlatformSnapshot } from "./platform/PlatformSer
 import { useAtlasSheetGesture } from "./atlas/useAtlasSheetGesture";
 import NativePlanetLaunch from "./host/NativePlanetLaunch";
 import PlanetWelcome from "./host/PlanetWelcome";
-import NativePlanetPanel from "./host/NativePlanetPanel";
+import NativePlanetPanel, { type NativePlanetSectionRequest } from "./host/NativePlanetPanel";
 import PlanetGraphicsSettings from "./host/PlanetGraphicsSettings";
 import PlanetDownloadsPanel from "./host/PlanetDownloadsPanel";
 import { usePlanetGraphicsQuality } from "./host/planetGraphicsQuality";
@@ -608,7 +608,10 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     return () => readerPolicyStore.stop();
   }, [readerPolicyStore, isPlanetApplication, platformVisibility]);
   const [mascotPosition, setMascotPosition] = useState<{ left: number; top: number } | null>(null);
+  const [mascotPointRequest, setMascotPointRequest] = useState<{ id: number; action: PlanetMascotAction } | null>(null);
+  const mascotPointSequence = useRef(0);
   const mascotFocusSequence = useRef(0);
+  const [mascotSectionRequest, setMascotSectionRequest] = useState<NativePlanetSectionRequest | null>(null);
   useLayoutEffect(() => () => {
     mascotFocusSequence.current += 1;
     mascot.setContext({ enabled: false, access: "blocked", active: false,
@@ -710,6 +713,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     nativeReturnRequestedRef.current = false;
   }, []);
   const closeNativeCollection = useCallback(() => {
+    setMascotSectionRequest(null);
     nativeReturnRequestedRef.current = false;
     setNativeCollectionOpen(false);
   }, []);
@@ -861,8 +865,10 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     if (nativeReturnRequestedRef.current) closeNativeCollection();
   }, [closeNativeCollection]);
   const cancelNativeNavigation = useCallback(() => {
+    setMascotPointRequest(null);
     journeyGlobeIntent.current = null;
     requestedBookIntent.current?.cancelJourney();
+    setMascotSectionRequest(null);
     mascotFocusSequence.current += 1;
     cancelMascotAuthorRequest();
     sceneInspection.close();
@@ -2302,6 +2308,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
       screen: nativeCollectionOpen ? "collection" : "globe", selectedCountry: Boolean(selectedCountry),
       selectedWriter: Boolean(selectedWriter), selectionKey: `${selectedCountry?.id ?? ""}/${selectedWriter?.id ?? ""}`,
       connectivity: platformConnectivity, countryStatus: archiveDataStatus, booksStatus: mascotBookStatus,
+      canDiscoverCountry: filteredCountries.length > 0, canOpenDownloads: Boolean(platformServices.downloads),
       locale: language, readerPolicy: readerPolicySnapshot.policy,
       authorBooksStatus: mascotAuthorResult.selectionKey === `${selectedCountry?.id ?? ""}/${selectedWriter?.id ?? ""}`
         ? mascotAuthorResult.status === "applied"
@@ -2311,7 +2318,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
         : "idle" });
   }, [mascot, isPlanetApplication, planetLaunchComplete, platformVisibility, globalSearchOpen, communityOpen,
     nativeCollectionOpen, selectedCountry?.id, selectedWriter?.id, mascotAuthorResult, mascotBookStatus, mascotAuthorView,
-    platformConnectivity, archiveDataStatus, language, readerPolicySnapshot.policy]);
+    platformConnectivity, archiveDataStatus, language, readerPolicySnapshot.policy, filteredCountries.length, platformServices.downloads]);
 
   const navigateJourney = useCallback<BookyJourneyNavigation>((offer, signal, isCurrent) => {
     if (!isCurrent()) return false;
@@ -2384,9 +2391,32 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     countryReady: archiveDataStatus === "ready", booksReady: mascotBookStatus === "ready",
     countries: countryArchive, books: verifiedBookArchive, view: journeyView, navigate: navigateJourney });
 
-  const handleMascotAction = useCallback((action: PlanetMascotAction) => {
+  const handleMascotAction = useCallback((action: PlanetMascotAction): boolean => {
     const focusSequence = ++mascotFocusSequence.current;
-    if (action === "return-globe") { requestReturnToPlanet(); return; }
+    if (action === "return-globe") { requestReturnToPlanet(); return true; }
+    if (action === "random-country") {
+      if (archiveDataStatus !== "ready" || !filteredCountries.length || !mascot.canAct(action)) return false;
+      if (!mascot.togglePanel()) return false;
+      closeNativeCollection();
+      selectRandomLiteraryDestination();
+      return true;
+    }
+    if (action === "recent" || action === "downloads" || action === "graphics") {
+      if (!mascot.canAct(action) || action === "downloads" && !platformServices.downloads) return false;
+      const origin = document.activeElement;
+      if (!mascot.togglePanel()) return false;
+      cancelNativeNavigation();
+      closeAtlasSearch();
+      const id = mascotFocusSequence.current;
+      setMascotSectionRequest(Object.freeze({ id, section: action, origin,
+        isCurrent: () => {
+          const state = mascot.getSnapshot();
+          return id === mascotFocusSequence.current && state.available && state.visibility === "shown"
+            && state.mode === "help" && state.panel === "closed";
+        } }));
+      setNativeCollectionOpen(true);
+      return true;
+    }
     if (action === "books" || action === "writer-books") {
       const byWriter = action === "writer-books" || mascot.getSnapshot().route === "country-to-book";
       cancelNativeNavigation();
@@ -2399,7 +2429,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
         setMascotAuthorResult({ selectionKey: `${request.countryId}/${request.writerId}`, status: "loading" });
       }
       if (mascotBookStatus === "error") retryBookArchive(); else requestBookRuntime();
-      setBookLoadRequested(true); setNativeCollectionOpen(true); return;
+      setBookLoadRequested(true); setNativeCollectionOpen(true); return true;
     }
     if (action === "appearance") {
       closeAtlasSearch(); sceneInspection.close(); composition.controller.open("stand");
@@ -2409,7 +2439,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
           || globe?.hasAttribute("inert") || composition.controller.getSnapshot().editor !== "stand") return;
         globe?.querySelector<HTMLElement>("[data-planet-stand-select]")?.focus({ preventScroll: true });
       });
-      return;
+      return true;
     }
     closeNativeCollection();
     if (action === "search" || !selectedCountry) {
@@ -2431,15 +2461,26 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
           }
         }));
       }
-      return;
+      return true;
     }
     closeAtlasSearch();
     atlasExperienceDispatch({ type: "SET_SHEET_STATE", sheetState: "expanded" });
     if (action === "writer") navigateWriterBreadcrumbCountry(); else focusCountryPresentation();
+    return true;
   }, [requestReturnToPlanet, cancelNativeNavigation, requestBookRuntime, closeAtlasSearch, sceneInspection,
     composition.controller, closeNativeCollection, selectedCountry, selectedWriter, setAtlasSearchVisibility, atlasExperienceDispatch,
     navigateWriterBreadcrumbCountry, focusCountryPresentation, nativeCollectionOpen, mascot, atlasExperience.closeButtonRef,
-    mascotBookStatus, retryBookArchive]);
+    mascotBookStatus, retryBookArchive, archiveDataStatus, filteredCountries.length, selectRandomLiteraryDestination, platformServices.downloads]);
+
+  const handleMascotActionWithPoint = useCallback((action: PlanetMascotAction) => {
+    if (!handleMascotAction(action)) return;
+    const current = mascot.getSnapshot();
+    // Legacy help panels retain their contextual recovery and focus controls.
+    // Utility sections already close the panel in their accepted action.
+    if (action === "return-globe" && current.mode === "help" && current.panel === "open"
+      && current.visibility === "shown") mascot.togglePanel();
+    setMascotPointRequest({ id: ++mascotPointSequence.current, action });
+  }, [handleMascotAction, mascot]);
 
   const customizationAvailable = isPlanetApplication && !nativeCollectionOpen && !globalSearchOpen && !communityOpen
     && !atlasSearchOpen && !atlasExperience.state.filtersOpen && platformVisibility === "active" && customizationSceneReady;
@@ -3308,7 +3349,8 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
       screen={nativeCollectionOpen ? "collection" : "globe"}
       countryLabel={selectedCountry ? countryName(selectedCountry.code, selectedCountry.name) : null}
       writerLabel={selectedWriter ? writerName(selectedWriter, t("Автор"), language) : null}
-      onAction={handleMascotAction} position={mascotPosition} onPositionChange={setMascotPosition}
+      onAction={handleMascotActionWithPoint} pointRequest={mascotPointRequest}
+      position={mascotPosition} onPositionChange={setMascotPosition}
       persistence={mascotPersistenceSnapshot} onRetryPersistence={mascotPersistence.retry}
       onRetryContent={target => { if (target === "countries") retryArchiveData(); else retryBookArchive(); }}
       readerSettings={<>
@@ -3333,7 +3375,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
         }
       }}>{atlasContent}<ProductNoticeSlot placement="root" reserveSpaceRef={nativeGlobeRootRef} /></main>
       <NativePlanetPanel open={nativeCollectionOpen} onClose={requestReturnToPlanet} onBack={handleNativePanelBack}
-        globeRef={nativeGlobeRootRef} returnFocusRef={atlasExperience.closeButtonRef}>
+        globeRef={nativeGlobeRootRef} returnFocusRef={atlasExperience.closeButtonRef} sectionRequest={mascotSectionRequest}>
         <PlanetGraphicsSettings value={graphics.qualityTier} onChange={graphics.selectQuality} saveState={graphics.saveState} />
         {platformServices.downloads && <PlanetDownloadsPanel downloads={platformServices.downloads} />}
         {productHelp}

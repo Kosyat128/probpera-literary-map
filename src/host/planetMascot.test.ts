@@ -12,6 +12,87 @@ const savedBooks = { schemaVersion: 1, audience: "adult", visible: true,
 const migratedBooks = { ...savedBooks, schemaVersion: 2,
   resume: { ...savedBooks.resume, routeVersion: 1 }, progress: [] } as const;
 
+describe("explicit companion utility actions", () => {
+  const utilities = ["random-country", "recent", "downloads", "graphics"] as const;
+  const capabilities = { canDiscoverCountry: true, canOpenDownloads: true };
+  function opened(value: Partial<PlanetMascotContext> = {}) {
+    const controller = createPlanetMascotController();
+    controller.setContext(ready({ ...capabilities, ...value }));
+    controller.togglePanel();
+    return controller;
+  }
+
+  it("invokes only the explicit current host action without saving or acknowledging progress", () => {
+    const controller = opened({ connectivity: "offline" });
+    const intent = controller.getPreferenceIntent(), snapshot = controller.getSnapshot();
+    for (const action of utilities) {
+      const callback = vi.fn();
+      expect(controller.act(action, snapshot.revision, callback)).toBe(true);
+      expect(callback).toHaveBeenCalledOnce();
+      expect(controller.getPreferenceIntent()).toBe(intent);
+      expect(controller.getSnapshot()).toBe(snapshot);
+    }
+  });
+
+  it.each([undefined, "idle", "loading", "error"] as const)("does not discover from retained or unavailable %s countries", countryStatus => {
+    const controller = opened({ countryStatus, selectedCountry: true, selectedWriter: true });
+    const callback = vi.fn();
+    expect(controller.act("random-country", controller.getSnapshot().revision, callback)).toBe(false);
+    expect(callback).not.toHaveBeenCalled();
+    for (const action of ["recent", "downloads", "graphics"] as const) expect(controller.canAct(action)).toBe(true);
+  });
+
+  it("requires explicit host capabilities and invalidates old consent when capabilities change", () => {
+    const controller = opened({ canDiscoverCountry: undefined, canOpenDownloads: undefined });
+    expect(controller.canAct("random-country")).toBe(false);
+    expect(controller.canAct("downloads")).toBe(false);
+    expect(controller.canAct("recent")).toBe(true);
+    expect(controller.canAct("graphics")).toBe(true);
+    controller.setContext(ready(capabilities));
+    const oldRevision = controller.getSnapshot().revision;
+    expect(controller.canAct("random-country")).toBe(true);
+    expect(controller.canAct("downloads")).toBe(true);
+    controller.setContext(ready({ canDiscoverCountry: false, canOpenDownloads: false }));
+    expect(controller.getSnapshot().revision).toBeGreaterThan(oldRevision);
+    const callback = vi.fn();
+    for (const action of utilities) expect(controller.act(action, oldRevision, callback)).toBe(false);
+    expect(callback).not.toHaveBeenCalled();
+  });
+
+  it.each(["overview", "country-to-book"] as const)("never bypasses the current %s tour with a utility action", route => {
+    const controller = opened(); controller.start(route);
+    const intent = controller.getPreferenceIntent(), callback = vi.fn();
+    for (const action of utilities) {
+      expect(controller.canAct(action)).toBe(false);
+      expect(controller.act(action, controller.getSnapshot().revision, callback)).toBe(false);
+    }
+    expect(callback).not.toHaveBeenCalled();
+    expect(controller.getPreferenceIntent()).toBe(intent);
+  });
+
+  it("rejects hidden, collapsed, background and untrusted host actions, including stale handlers", () => {
+    for (const state of ["hidden", "collapsed", "background", "child", "blocked", "disabled"] as const) {
+      const controller = opened(), oldRevision = controller.getSnapshot().revision, callback = vi.fn();
+      if (state === "hidden") controller.hide();
+      else if (state === "collapsed") controller.togglePanel();
+      else controller.setContext(ready({ ...capabilities, active: state !== "background", enabled: state !== "disabled",
+        access: state === "child" ? "child" : state === "blocked" ? "blocked" : "adult" }));
+      for (const action of utilities) {
+        expect(controller.act(action, oldRevision, callback)).toBe(false);
+        expect(controller.act(action, controller.getSnapshot().revision, callback)).toBe(false);
+      }
+      expect(callback).not.toHaveBeenCalled();
+    }
+  });
+
+  it("preserves truthful host failures and does not infer a completed transition", () => {
+    const controller = opened({ screen: "collection" }), intent = controller.getPreferenceIntent();
+    expect(controller.act("graphics", controller.getSnapshot().revision, () => { throw Error("Unavailable panel"); })).toBe(false);
+    expect(controller.getPreferenceIntent()).toBe(intent);
+    expect(controller.getSnapshot().completedRoute).toBeNull();
+  });
+});
+
 describe("adult local guided companion", () => {
   it.each([undefined, "idle", "loading", "error"] as const)("suspends selected-entity steps when country readiness is %s without acknowledging retained selections", countryStatus => {
     for (const step of [0, 1, 2]) {

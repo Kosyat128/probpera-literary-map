@@ -1,5 +1,6 @@
 export type PlanetMascotRoute = "overview" | "country-to-book";
-export type PlanetMascotAction = "search" | "country" | "writer" | "books" | "writer-books" | "appearance" | "return-globe";
+export type PlanetMascotAction = "search" | "country" | "writer" | "books" | "writer-books" | "appearance" | "return-globe"
+  | "random-country" | "recent" | "downloads" | "graphics";
 export type PlanetMascotTarget = "search" | "country" | "writer" | "books" | "appearance";
 export type PlanetMascotScreen = "globe" | "collection";
 export type PlanetMascotCopy = Readonly<{ ru: string; en: string }>;

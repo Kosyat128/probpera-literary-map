@@ -1,7 +1,10 @@
-import { useId, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode, type PointerEvent as ReactPointerEvent } from "react";
+import { useEffect, useId, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode, type PointerEvent as ReactPointerEvent } from "react";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import mascotImage from "../assets/mascots/knizhulyk-green-v1.png";
 import PlanetMascotAvatar from "./PlanetMascotAvatar";
+import { BOOKY_GESTURES, type BookyGesture } from "./bookyAnimation";
+import { useBookyWalk } from "./useBookyWalk";
+import { BOOKY_APPROACH_MS, planBookyApproach } from "./bookyWalk";
 import type { PlanetMascotController, PlanetMascotSnapshot } from "./planetMascot";
 import type { PlanetMascotPersistenceSnapshot } from "./planetMascotPersistence";
 import { isBookyRouteComplete } from "./bookyTourProgress";
@@ -18,6 +21,7 @@ export type PlanetMascotControlsProps = {
   countryLabel: string | null;
   writerLabel: string | null;
   onAction: (action: PlanetMascotAction) => void;
+  pointRequest?: Readonly<{ id: number; action: PlanetMascotAction }> | null;
   position: Position | null;
   onPositionChange: (position: Position | null) => void;
   persistence: PlanetMascotPersistenceSnapshot;
@@ -91,7 +95,7 @@ function overlap(a: Rect, b: Rect) {
 }
 
 export default function PlanetMascotControls({ controller, snapshot, screen, countryLabel, writerLabel,
-  onAction, position, onPositionChange, persistence, onRetryPersistence, onRetryContent, readerSettings }: PlanetMascotControlsProps) {
+  onAction, pointRequest, position, onPositionChange, persistence, onRetryPersistence, onRetryContent, readerSettings }: PlanetMascotControlsProps) {
   const { language } = useInterfaceLanguage();
   const ru = language === "ru", name = ru ? "Книжулик" : "Mr. Booky";
   const id = useId(), root = useRef<HTMLDivElement>(null), card = useRef<HTMLElement>(null);
@@ -108,7 +112,9 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     moved: boolean; element: HTMLButtonElement } | null>(null);
   const suppressAvatarClick = useRef(false);
   const [pointerLook, setPointerLook] = useState<{ x: number; y: number } | null>(null);
-  const [gesture, setGesture] = useState<"rest" | "greeting" | "dragging">("rest");
+  const [gesture, setGesture] = useState<"rest" | "dragging" | "pointing" | BookyGesture>("rest");
+  const [targetCue, setTargetCue] = useState<{ touch: Position; phase: "approaching" | "tapping"; action: PlanetMascotAction } | null>(null);
+  const handledPoint = useRef<number | null>(null);
   const [reactionKey, setReactionKey] = useState(0);
   const [pageTurn, setPageTurn] = useState(0);
   const previousPage = useRef(`${snapshot.mode}:${snapshot.route}:${snapshot.step}`);
@@ -234,8 +240,85 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
       window.visualViewport?.removeEventListener("scroll", measure); };
   }, [snapshot.available, snapshot.highlight, snapshot.revision, open, screen, countryLabel, writerLabel]);
 
-  const petPosition = clamped(position ?? { left: view.left + view.width - petSize.width - 20,
+  const restingPosition = clamped(position ?? { left: view.left + view.width - petSize.width - 20,
     top: view.top + view.height - petSize.height - 20 }, petSize.width, petSize.height, view);
+  const walk = useBookyWalk({ available: shown && snapshot.available && !open && snapshot.mode === "help",
+    revision: snapshot.revision, position: restingPosition, size: petSize, viewport: view, onFinish: onPositionChange });
+  const petPosition = walk.position ?? restingPosition;
+  const pointEnvironment = useRef({ position: petPosition, size: petSize, view });
+  pointEnvironment.current = { position: petPosition, size: petSize, view };
+  useEffect(() => {
+    if (!pointRequest || handledPoint.current === pointRequest.id) return;
+    if (!shown || !snapshot.available || open || snapshot.mode !== "help" || document.hidden) {
+      handledPoint.current = pointRequest.id; return;
+    }
+    const targets: Partial<Record<PlanetMascotAction, string>> = {
+      recent: '[data-recent-history][open]', downloads: '[data-planet-downloads][open]',
+      graphics: '[data-planet-graphics-settings][open] fieldset',
+    };
+    const selector = targets[pointRequest.action];
+    if (!selector) { handledPoint.current = pointRequest.id; return; }
+    let cancelled = false, frame = 0, timer = 0, target: Element | null = null;
+    const began = performance.now();
+    const stop = (consume: unknown = true) => {
+      if (consume !== false) handledPoint.current = pointRequest.id;
+      if (cancelled) return;
+      cancelled = true; cancelAnimationFrame(frame); window.clearTimeout(timer);
+      detach(); walk.stop(); setTargetCue(null); setGesture(value => value === "pointing" ? "rest" : value);
+      setPointerLook(null);
+    };
+    const tap = (touch: Position) => {
+      if (cancelled || !target?.isConnected || !visibleRect(target, viewport()) || document.hidden) { stop(); return; }
+      setTargetCue({ touch, phase: "tapping", action: pointRequest.action });
+      setPointerLook({ x: -1, y: 0 }); setGesture("pointing"); setReactionKey(value => value + 1);
+      timer = window.setTimeout(stop, 700);
+    };
+    const find = () => {
+      if (cancelled) return;
+      const current = pointEnvironment.current;
+      target = [...document.querySelectorAll(selector)].find(element => visibleRect(element, viewport())) ?? null;
+      const bounds = target && visibleRect(target, viewport());
+      const canvas = root.current?.querySelector('[data-booky-canvas]')?.getBoundingClientRect();
+      const hand = canvas ? { left: canvas.left - current.position.left + canvas.width * .17,
+        top: canvas.top - current.position.top + canvas.height * .53 } : undefined;
+      const path = bounds && planBookyApproach(current.position, current.size, current.view, bounds, hand);
+      if (!path) {
+        if (performance.now() - began < 600) frame = requestAnimationFrame(find);
+        else stop();
+        return;
+      }
+      handledPoint.current = pointRequest.id;
+      document.addEventListener("scroll", stop, true);
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { tap(path.touch); return; }
+      // Catalog readiness can revise the helper while this exact visible
+      // section is unchanged. Fence this route by its target and user intent.
+      const currentTarget = () => {
+        const next = target && visibleRect(target, viewport());
+        return !cancelled && Boolean(next && bounds && sameRect(next, bounds));
+      };
+      if (walk.start(path, () => tap(path.touch), BOOKY_APPROACH_MS, currentTarget)) {
+        setTargetCue({ touch: path.touch, phase: "approaching", action: pointRequest.action });
+        setGesture("rest"); setPointerLook(null); setReactionKey(value => value + 1);
+      }
+    };
+    // Wait for the destination panel's focus/scroll before planning its route.
+    frame = requestAnimationFrame(() => { frame = requestAnimationFrame(find); });
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const detach = () => {
+      document.removeEventListener("pointerdown", stop, true); document.removeEventListener("keydown", stop, true);
+      document.removeEventListener("visibilitychange", stop); window.removeEventListener("resize", stop);
+      document.removeEventListener("scroll", stop, true); media.removeEventListener("change", stop);
+    };
+    document.addEventListener("pointerdown", stop, true); document.addEventListener("keydown", stop, true);
+    document.addEventListener("visibilitychange", stop); window.addEventListener("resize", stop);
+    media.addEventListener("change", stop);
+    // StrictMode may replay setup before the first frame. Only an actual start,
+    // timeout or user interruption consumes the one-shot request.
+    return () => stop(false);
+  }, [pointRequest, shown, snapshot.available, open, snapshot.mode, screen, language, walk.start, walk.stop]);
+  useEffect(() => {
+    if (targetCue?.phase === "approaching" && !walk.active) setTargetCue(null);
+  }, [walk.active, targetCue?.phase]);
   const petRect = { ...petPosition, ...petSize };
   const cardWidth = Math.min(340, Math.max(180, view.width - MARGIN * 2));
   const sideRoom = view.width >= petSize.width + cardWidth + MARGIN * 3;
@@ -254,6 +337,14 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     const performed = controller.act(action, snapshot.revision, () => onAction(action));
     if (performed) { setGesture("rest"); setReactionKey(value => value + 1); }
     return performed;
+  };
+  const playGesture = (next: BookyGesture) => {
+    const current = controller.getSnapshot();
+    // Play is local presentation only. A stale or backgrounded control cannot
+    // replay a gesture or change saved tours, reading history or permissions.
+    if (current.revision !== snapshot.revision || !current.available || current.visibility !== "shown"
+      || current.panel !== "open" || document.hidden || drag.current) return;
+    setPointerLook(null); setGesture(next); setReactionKey(value => value + 1);
   };
   const navigateTips = (action: () => boolean) => {
     focusAfterNavigation.current = Boolean(card.current?.contains(document.activeElement));
@@ -303,7 +394,26 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     writer: ru ? "Писатели страны" : "Country writers", books: ru ? "К книгам" : "Explore books",
     "writer-books": ru ? "Книги писателя" : "Books by this writer",
     appearance: ru ? "Оформление" : "Appearance", "return-globe": ru ? "К глобусу" : "Return to globe",
+    "random-country": ru ? "Случайная страна" : "Random country",
+    recent: ru ? "Недавно открытое" : "Recently opened",
+    downloads: ru ? "Загрузки и память" : "Downloads and storage",
+    graphics: ru ? "Настройки графики" : "Graphics settings",
   })[action];
+  const gestureCopy: Record<BookyGesture, { label: string; response: string; symbol: string }> = {
+    greeting: { label: ru ? "Помахать" : "Wave", response: ru ? "Рад тебя видеть! Куда отправимся?" : "Lovely to see you! Where shall we go?", symbol: "✦" },
+    nod: { label: ru ? "Кивнуть" : "Nod", response: ru ? "Я рядом. Продолжим в твоём темпе." : "I'm here. Let's go at your pace.", symbol: "✓" },
+    curious: { label: ru ? "Посмотреть в лупу" : "Take a closer look", response: ru ? "Интересно, что мы найдём дальше?" : "I wonder what we'll discover next?", symbol: "⌕" },
+    happy: { label: ru ? "Порадоваться" : "Celebrate", response: ru ? "Немного радости в наше путешествие!" : "A little joy for our journey!", symbol: "☆" },
+    reassuring: { label: ru ? "Подбодрить" : "Encourage", response: ru ? "Можно не спешить. Давай по одному шагу." : "There's no rush. One step at a time.", symbol: "♡" },
+    wink: { label: ru ? "Подмигнуть" : "Wink", response: ru ? "У хорошей истории всегда есть продолжение." : "Every good story has more to discover.", symbol: "✧" },
+    sway: { label: ru ? "Покачаться" : "Sway", response: ru ? "Маленькая пауза — и снова к открытиям." : "A little pause, then back to discovering.", symbol: "∿" },
+    dance: { label: ru ? "Потанцевать" : "Dance", response: ru ? "Лови мой книжный ритм!" : "Here's my bookish beat!", symbol: "♫" },
+    hop: { label: ru ? "Подпрыгнуть" : "Hop", response: ru ? "Прыг — навстречу приключениям!" : "A little leap toward adventure!", symbol: "↑" },
+    twirl: { label: ru ? "Покружиться" : "Twirl", response: ru ? "Разворот на целую историю!" : "A whole story in one turn!", symbol: "↻" },
+    stretch: { label: ru ? "Потянуться" : "Stretch", response: ru ? "Разомнёмся между историями." : "A stretch between stories.", symbol: "↟" },
+    shy: { label: ru ? "Посмущаться" : "Act shy", response: ru ? "Ой, кажется, я немного смущаюсь." : "Oh, I'm feeling a little shy.", symbol: "❀" },
+    highfive: { label: ru ? "Дай пять!" : "High five!", response: ru ? "Пять! Хорошо путешествовать вместе." : "High five! Adventures are better together.", symbol: "✋" },
+  };
   const tipKind = screen === "collection" ? "collection" : writerLabel ? "writer" : countryLabel ? "country" : "globe";
   const helpTip = {
     globe: ru ? "Начните со страны на глобусе или найдите писателя через поиск. Могу показать путь от страны к книгам."
@@ -354,12 +464,14 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
 
   if (!snapshot.available) return null;
   return <>
+    {targetCue && <div className="planet-mascot-target" aria-hidden="true" data-booky-target={targetCue.phase}
+      data-booky-target-action={targetCue.action} style={{ left: targetCue.touch.left - 20, top: targetCue.touch.top - 20 }} />}
     {open && highlight && snapshot.highlight && <div className="planet-mascot-highlight" aria-hidden="true"
       data-planet-mascot-highlight={snapshot.highlight} style={highlight as CSSProperties} />}
     <div ref={root} className="planet-mascot-controls" data-planet-mascot-pet=""
       data-planet-mascot-active={shown ? "true" : "false"} data-planet-mascot-visibility={snapshot.visibility}
       data-planet-mascot-mode={snapshot.mode} data-planet-mascot-current-route={snapshot.route ?? "none"}
-      data-planet-mascot-step={snapshot.step} data-planet-mascot-screen={screen} data-planet-mascot-gesture={gesture}
+      data-planet-mascot-step={snapshot.step} data-planet-mascot-screen={screen} data-planet-mascot-gesture={walk.active ? "walking" : gesture}
       data-planet-mascot-closed-notice={!open && persistence.state !== "idle" ? "true" : undefined}
       style={petPosition} onPointerDown={event => event.stopPropagation()} onPointerUp={event => event.stopPropagation()}
       onPointerMove={event => event.stopPropagation()} onWheel={event => event.stopPropagation()}
@@ -404,7 +516,8 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
           setGesture("greeting"); setReactionKey(value => value + 1); controller.togglePanel();
         }}>
         {shown ? <PlanetMascotAvatar src={mascotImage} mood={snapshot.completedRoute ? "celebrate" : snapshot.mode === "tour" ? "guiding" : "idle"}
-          lookAt={pointerLook ?? guidedLook} interaction={gesture === "rest" && open && highlight ? "pointing" : gesture}
+          lookAt={walk.active ? { x: walk.direction * .45, y: 0 } : pointerLook ?? guidedLook}
+          interaction={walk.active ? "walking" : gesture === "rest" && open && highlight ? "pointing" : gesture}
           reactionKey={reactionKey} active={snapshot.available} /> : name}
       </button>
       {shown && <div className="planet-mascot-controls__tools">
@@ -437,6 +550,18 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
             : "Tap Mr. Booky for tips or drag the character to move him. Use the arrow button for keyboard movement. Home restores the default position."}
         </span>
       </div>}
+      {shown && <button type="button" className="planet-mascot-controls__walk"
+        data-booky-walk={walk.active ? undefined : ""} data-booky-walk-stop={walk.active ? "" : undefined}
+        disabled={!walk.active && !walk.canStart}
+        title={walk.reducedMotion ? ru ? "Включено уменьшенное движение" : "Reduced motion is enabled"
+          : open ? ru ? "Сверните подсказки, чтобы начать прогулку" : "Collapse the tips to start a walk"
+          : ru ? "Короткая прогулка по краю экрана" : "A short walk along the screen edge"}
+        onClick={() => {
+          if (walk.active) { walk.stop(); return; }
+          if (controller.getSnapshot().revision !== snapshot.revision) return;
+          if (walk.start()) { setGesture("rest"); setPointerLook(null); setReactionKey(value => value + 1); }
+        }}><span aria-hidden="true">{walk.active ? "Ⅱ" : "↝"}</span> {walk.active
+          ? ru ? "Остановить" : "Stop walking" : ru ? "Прогуляться" : "Take a walk"}</button>}
       {!open && persistenceNotice}
       {open && <section ref={card} id={id} role="region" aria-labelledby={`${id}-title`} data-planet-mascot-panel=""
         className="planet-mascot-controls__panel" style={{ left: cardPosition.left, top: cardPosition.top,
@@ -527,7 +652,36 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
                 disabled={!controller.canAct(action)} onClick={() => perform(action)}>{actionLabel(action)}</button>
             ))}
           </div>
+          <details className="planet-mascot-controls__extras" data-booky-useful-actions="">
+            <summary>{ru ? "Полезные действия" : "Useful actions"}</summary>
+            <p>{ru ? "Выберем новое место, вернёмся к знакомой книге или настроим приложение под тебя."
+              : "Discover somewhere new, return to a familiar book or make the app comfortable for you."}</p>
+            <div className="planet-mascot-controls__actions">
+              {(["random-country", "recent", "downloads", "graphics"] as const).map(action => <button key={action}
+                type="button" data-planet-mascot-action={action} disabled={!controller.canAct(action)}
+                onClick={() => perform(action)}>{actionLabel(action)}</button>)}
+            </div>
+          </details>
         </>}
+        <details className="planet-mascot-controls__extras planet-mascot-controls__gestures" data-booky-gestures="">
+          <summary>{ru ? "Жесты Книжулика" : "Mr. Booky’s gestures"}</summary>
+          <p>{ru ? "Нажми на жест — я отвечу. Можно повторить сколько хочется."
+            : "Choose a gesture and I'll respond. Try it again whenever you like."}</p>
+          <div className="planet-mascot-controls__actions">
+            {BOOKY_GESTURES.map(value => <button key={value} type="button" data-booky-gesture={value}
+              aria-pressed={gesture === value} onClick={() => playGesture(value)}>
+              <span className="planet-mascot-controls__gesture-symbol" aria-hidden="true">{gestureCopy[value].symbol}</span>
+              <span>{gestureCopy[value].label}</span>
+            </button>)}
+            <button type="button" data-booky-surprise="" onClick={() => {
+              const choices = BOOKY_GESTURES.filter(value => value !== gesture);
+              playGesture(choices[Math.floor(Math.random() * choices.length)]);
+            }}><span aria-hidden="true">✦</span> {ru ? "Удиви меня" : "Surprise me"}</button>
+          </div>
+          <p className="planet-mascot-controls__response" role="status" aria-live="polite" aria-atomic="true"
+            data-booky-gesture-response="">{gesture !== "rest" && gesture !== "dragging" && gesture !== "pointing" ? gestureCopy[gesture].response
+              : ru ? "Давай познакомимся поближе." : "Let's get to know each other."}</p>
+        </details>
         {readerSettings}
         {persistenceNotice}
         <div className="planet-mascot-controls__reset">

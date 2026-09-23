@@ -50,6 +50,13 @@
 .planet-mascot-controls__show { box-shadow: 0 3px 14px #17112430; }
 .planet-mascot-controls__tools { display: flex; justify-content: center; gap: 6px; }
 .planet-mascot-controls__tools button { width: 44px; padding: 4px; font-size: 24px; box-shadow: 0 2px 8px #17112425; }
+.planet-mascot-controls .planet-mascot-controls__walk { width: 100%; height: 52px; min-height: 52px; padding: 7px 9px; font-size: 13px; box-shadow: 0 2px 8px #17112425; }
+.planet-mascot-controls__walk > span { font-size: 20px; line-height: 1; vertical-align: middle; }
+.planet-mascot-target { position: fixed; z-index: 1051; width: 40px; height: 40px; box-sizing: border-box;
+  border: 2px solid #ad8644; border-radius: 50%; background: #ead8a333; pointer-events: none; }
+.planet-mascot-target[data-booky-target="tapping"] { animation: booky-target-tap 700ms ease-out both; }
+@keyframes booky-target-tap { 0% { transform: scale(.65); opacity: 1; } 65% { transform: scale(1.2); opacity: .8; } 100% { transform: scale(1.3); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .planet-mascot-target[data-booky-target="tapping"] { animation: none; } }
 .planet-mascot-controls .planet-mascot-controls__move { cursor: grab; touch-action: none; }
 .planet-mascot-controls .planet-mascot-controls__move:active { cursor: grabbing; }
 .planet-mascot-controls__panel {
@@ -139,6 +146,22 @@
 .planet-mascot-controls__navigation { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 12px; }
 .planet-mascot-controls__actions button,
 .planet-mascot-controls__navigation button { width: 100%; min-width: 0; }
+.planet-mascot-controls__extras { margin-top: 18px; padding-block: 8px 4px; border-top: 1px solid #d8c79e; }
+.planet-mascot-controls__extras > summary {
+  min-height: 44px;
+  box-sizing: border-box;
+  padding: 11px 3px;
+  color: #30583c;
+  font: 650 15px/1.45 "Source Sans 3 Local", var(--sans, sans-serif);
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+.planet-mascot-controls__extras > summary:focus-visible { outline: 3px solid #7850aa; outline-offset: 2px; border-radius: 5px; }
+.planet-mascot-controls__extras > p { font-size: 14px; }
+.planet-mascot-controls__gestures [data-booky-gesture] { display: flex; gap: 7px; align-items: center; text-align: left; }
+.planet-mascot-controls__gestures [aria-pressed="true"] { border-color: #725089; background: #f0e7f4; box-shadow: inset 0 0 0 1px #725089; }
+.planet-mascot-controls__gesture-symbol { flex: 0 0 21px; text-align: center; color: #75508d; font-size: 22px; font-weight: 400; }
+.planet-mascot-controls__response { padding: 10px 12px; border-radius: 10px; background: #e9eedf; color: #35513d; }
 .planet-mascot-controls .planet-mascot-controls__primary { width: 100%; margin-top: 4px; border-color: #7e7846; color: #fffbed; background: #345a3d; }
 .planet-mascot-controls .planet-mascot-controls__primary:hover:not(:disabled) { background: #28492f; }
 .planet-mascot-controls [data-planet-mascot-next]:not(:disabled) { border-color: #b69b64; background: #eee3c2; }

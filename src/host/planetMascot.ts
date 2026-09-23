@@ -24,6 +24,9 @@ export type PlanetMascotContext = Readonly<{
   connectivity?: BookySupportInput["connectivity"];
   countryStatus?: BookySupportInput["countryStatus"];
   booksStatus?: BookySupportInput["booksStatus"];
+  /** Current host capabilities, never inferred from retained selections. */
+  canDiscoverCountry?: boolean;
+  canOpenDownloads?: boolean;
   /** Explicit confirmed local reader settings only; adult access is not an age. */
   readerPolicy?: BookyReaderPolicy | null;
   locale?: "ru" | "en";
@@ -141,6 +144,11 @@ export function createPlanetMascotController() {
   function canAct(action: PlanetMascotAction) {
     if (!opened()) return false;
     if (action === "return-globe") return context?.screen === "collection";
+    if (action === "random-country" || action === "recent" || action === "downloads" || action === "graphics") {
+      if (snapshot.mode !== "help") return false;
+      if (action === "random-country") return context?.countryStatus === "ready" && context.canDiscoverCountry === true;
+      return action !== "downloads" || context?.canOpenDownloads === true;
+    }
     // Reloads retain selection objects. Only current ready country data can
     // authorize actions or acknowledgements that depend on those selections.
     if (action === "writer-books") return snapshot.mode === "help" && context?.countryStatus === "ready"
@@ -239,6 +247,7 @@ export function createPlanetMascotController() {
         selectedWriter: value.selectedCountry && value.selectedWriter, selectionKey: value.selectionKey,
         authorBooksStatus: value.authorBooksStatus ?? "idle", connectivity: value.connectivity ?? "unknown",
         countryStatus: value.countryStatus ?? "idle", booksStatus: value.booksStatus ?? "idle",
+        canDiscoverCountry: value.canDiscoverCountry === true, canOpenDownloads: value.canOpenDownloads === true,
         locale: value.locale === "ru" || value.locale === "en" ? value.locale : undefined,
         readerPolicy: parseBookyReaderPolicy(value.readerPolicy) });
       if (context && context.enabled === next.enabled && context.access === next.access && context.active === next.active
@@ -246,6 +255,7 @@ export function createPlanetMascotController() {
         && context.selectedWriter === next.selectedWriter && context.selectionKey === next.selectionKey
         && context.authorBooksStatus === next.authorBooksStatus && context.connectivity === next.connectivity
         && context.countryStatus === next.countryStatus && context.booksStatus === next.booksStatus
+        && context.canDiscoverCountry === next.canDiscoverCountry && context.canOpenDownloads === next.canOpenDownloads
         && context.locale === next.locale && serializeBookyReaderPolicy(context.readerPolicy) === serializeBookyReaderPolicy(next.readerPolicy)) return;
       context = next;
       // Connection/locale/panel changes do not create a new failed load.

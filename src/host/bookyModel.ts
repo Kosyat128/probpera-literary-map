@@ -8,6 +8,10 @@ export interface BookyRig {
   readonly bookmark: THREE.Group;
   readonly leftArm: THREE.Group;
   readonly rightArm: THREE.Group;
+  readonly leftLeg: THREE.Group;
+  readonly rightLeg: THREE.Group;
+  readonly leftFoot: THREE.Group;
+  readonly rightFoot: THREE.Group;
   readonly eyes: readonly [THREE.Group, THREE.Group];
   readonly pupils: readonly [THREE.Group, THREE.Group];
   readonly brows: readonly [THREE.Group, THREE.Group];
@@ -87,26 +91,27 @@ export function createBookyModel(): OwnedBookyModel {
       value.userData.provenance = "authored-in-project"; value.needsUpdate = true;
       textures.add(value); return value;
     };
-    const leather = finish(new THREE.MeshPhysicalMaterial({ color: "#43875b", roughness: .74,
+    const leather = finish(new THREE.MeshPhysicalMaterial({ color: "#407c55", roughness: .68,
       map: texture("booky-leather-albedo", albedo, true), roughnessMap: texture("booky-leather-roughness", roughness),
-      normalMap: texture("booky-leather-normal", normal), normalScale: new THREE.Vector2(.24, .24),
-      clearcoat: .12, clearcoatRoughness: .55 })); leather.name = "booky-sage-leather";
-    const darkGreen = finish(leather.clone()); darkGreen.color.set("#245f43"); darkGreen.name = "booky-emerald-binding";
-    const frontGreen = finish(leather.clone()); frontGreen.color.set("#518c61"); frontGreen.name = "booky-sage-front";
-    const ivory = finish(new THREE.MeshStandardMaterial({ color: "#eee2c8", roughness: .79 })); ivory.name = "booky-ivory-paper";
+      normalMap: texture("booky-leather-normal", normal), normalScale: new THREE.Vector2(.16, .16),
+      clearcoat: .16, clearcoatRoughness: .58 })); leather.name = "booky-sage-leather";
+    const darkGreen = finish(leather.clone()); darkGreen.color.set("#2b6247"); darkGreen.name = "booky-emerald-binding";
+    const frontGreen = finish(leather.clone()); frontGreen.color.set("#4c855b"); frontGreen.name = "booky-sage-front";
+    const ivory = finish(new THREE.MeshStandardMaterial({ color: "#f3e7cc", roughness: .79 })); ivory.name = "booky-ivory-paper";
     const leafEdge = finish(new THREE.MeshStandardMaterial({ color: "#fff4dc", roughness: .68 }));
-    const gold = finish(new THREE.MeshStandardMaterial({ color: "#d6b469", metalness: .75, roughness: .36, envMapIntensity: .55 })); gold.name = "booky-gilt";
+    const gold = finish(new THREE.MeshStandardMaterial({ color: "#c9a15a", metalness: .78, roughness: .32, envMapIntensity: .55 })); gold.name = "booky-gilt";
     const white = finish(new THREE.MeshPhysicalMaterial({ color: "#fff4e5", roughness: .61, clearcoat: .06, envMapIntensity: .25 })); white.name = "booky-soft-glove";
-    const purple = finish(new THREE.MeshPhysicalMaterial({ color: "#8146a7", roughness: .70, clearcoat: .03 }));
-    const brown = finish(new THREE.MeshStandardMaterial({ color: "#3b271f", roughness: .59 }));
+    const purple = finish(new THREE.MeshPhysicalMaterial({ color: "#8b57ac", roughness: .67, clearcoat: .05 }));
+    const brown = finish(new THREE.MeshStandardMaterial({ color: "#483329", roughness: .69 }));
+    const cheek = finish(new THREE.MeshStandardMaterial({ color: "#52865d", roughness: .88 })); cheek.name = "booky-soft-cheek";
     // Readable dark pupils remain dark under the renderer's broad environment.
     // Only the small authored catchlights are white, never the whole pupil.
     const pupilInk = finish(new THREE.MeshStandardMaterial({ color: "#090b10", roughness: .56, envMapIntensity: .08 }));
-    const eyeWhite = finish(new THREE.MeshPhysicalMaterial({ color: "#fff4e2", roughness: .56, clearcoat: .04, envMapIntensity: .12 }));
+    const eyeWhite = finish(new THREE.MeshPhysicalMaterial({ color: "#fff7e9", roughness: .56, clearcoat: .04, envMapIntensity: .12 }));
     const sparkle = finish(new THREE.MeshStandardMaterial({ color: "#fffcf4", roughness: .46,
       emissive: "#fff5e6", emissiveIntensity: .06, envMapIntensity: .1 }));
-    const mouthInside = finish(new THREE.MeshStandardMaterial({ color: "#50332f", roughness: .78 }));
-    const tonguePink = finish(new THREE.MeshStandardMaterial({ color: "#c9817e", roughness: .66 }));
+    const mouthInside = finish(new THREE.MeshStandardMaterial({ color: "#633c37", roughness: .82 }));
+    const tonguePink = finish(new THREE.MeshStandardMaterial({ color: "#cb8986", roughness: .71 }));
     const irisFinish = finish(new THREE.MeshPhysicalMaterial({ vertexColors: true, roughness: .53, clearcoat: .08, envMapIntensity: .20 }));
     const glass = finish(new THREE.MeshPhysicalMaterial({ color: "#cee4e4", transparent: true, opacity: .16,
       roughness: .18, metalness: 0, clearcoat: .15, clearcoatRoughness: .35, envMapIntensity: .16, depthWrite: false })); glass.name = "booky-magnifying-glass";
@@ -128,7 +133,7 @@ export function createBookyModel(): OwnedBookyModel {
     };
     // A capped variable-radius organic loft. Unlike TubeGeometry it has actual
     // end faces, so glove digits and sleeves remain closed when articulated.
-    const sweep = (points: readonly Point[], radii: readonly number[], steps = 20, radial = 10) => {
+    const sweep = (points: readonly Point[], radii: readonly number[], steps = 20, radial = 10, roundedTip = false) => {
       const path = new THREE.CatmullRomCurve3(points.map(p => new THREE.Vector3(...p)), false, "centripetal");
       const frames = path.computeFrenetFrames(steps, false), positions: number[] = [], uvs: number[] = [], indices: number[] = [];
       for (let row = 0; row <= steps; row++) {
@@ -142,22 +147,40 @@ export function createBookyModel(): OwnedBookyModel {
           positions.push(point.x, point.y, point.z); uvs.push(col / radial, u);
         }
       }
+      // Gloves have a continuous hemispherical tip, sharing the terminal ring
+      // with the finger instead of overlapping a separate sphere or flat cap.
+      const tip = new THREE.Vector3(...points[points.length - 1]);
+      const rows = steps + (roundedTip ? 4 : 0);
+      if (roundedTip) {
+        const radius = radii[radii.length - 1];
+        for (let ring = 1; ring <= 4; ring++) {
+          const angle = ring / 5 * Math.PI / 2;
+          const center = tip.clone().addScaledVector(frames.tangents[steps], radius * Math.sin(angle));
+          for (let col = 0; col <= radial; col++) {
+            const around = col === radial ? 0 : col / radial * TAU;
+            const point = center.clone().addScaledVector(frames.normals[steps], Math.cos(around) * radius * Math.cos(angle))
+              .addScaledVector(frames.binormals[steps], Math.sin(around) * radius * Math.cos(angle));
+            positions.push(point.x, point.y, point.z); uvs.push(col / radial, 1 + ring / 5);
+          }
+        }
+        tip.addScaledVector(frames.tangents[steps], radius);
+      }
       const stride = radial + 1;
-      for (let row = 0; row < steps; row++) for (let col = 0; col < radial; col++) {
+      for (let row = 0; row < rows; row++) for (let col = 0; col < radial; col++) {
         const a = row * stride + col, b = a + 1, c = a + stride, d = c + 1;
         indices.push(a, b, c, b, d, c);
       }
       const start = positions.length / 3, end = start + 1;
-      positions.push(...points[0], ...points[points.length - 1]); uvs.push(.5, 0, .5, 1);
+      positions.push(...points[0], tip.x, tip.y, tip.z); uvs.push(.5, 0, .5, 1);
       for (let col = 0; col < radial; col++) {
         indices.push(start, col + 1, col);
-        const a = steps * stride + col; indices.push(end, a, a + 1);
+        const a = rows * stride + col; indices.push(end, a, a + 1);
       }
       const result = own(new THREE.BufferGeometry());
       result.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
       result.setAttribute("uv", new THREE.Float32BufferAttribute(uvs, 2)); result.setIndex(indices); result.computeVertexNormals();
       const normals = result.getAttribute("normal"), sum = new THREE.Vector3();
-      for (let row = 0; row <= steps; row++) {
+      for (let row = 0; row <= rows; row++) {
         const a = row * stride, b = a + radial;
         sum.set(normals.getX(a) + normals.getX(b), normals.getY(a) + normals.getY(b), normals.getZ(a) + normals.getZ(b)).normalize();
         normals.setXYZ(a, sum.x, sum.y, sum.z); normals.setXYZ(b, sum.x, sum.y, sum.z);
@@ -194,9 +217,9 @@ export function createBookyModel(): OwnedBookyModel {
     const body = node(group, "booky-body");
     const frontCover = node(body, "booky-front-cover", [-.56, 0, .18]);
     const facePosition = (x: number, y: number, z: number): Point => [x + .56, y, z - .18];
-    mesh(frontCover, "booky-front-hardcover", roundedCover(1.21, 1.61, .066, .125, .018, [.56, 0, .014]), leather);
-    mesh(frontCover, "booky-front-embossed-panel", roundedCover(1.075, 1.455, .012, .115, .009, [.574, 0, .063]), frontGreen);
-    const bindingParts: THREE.BufferGeometry[] = [roundedCover(1.21, 1.61, .066, .125, .018, [0, 0, -.195])];
+    mesh(frontCover, "booky-front-hardcover", roundedCover(1.21, 1.61, .066, .150, .020, [.56, 0, .014]), leather);
+    mesh(frontCover, "booky-front-embossed-panel", roundedCover(1.075, 1.455, .012, .132, .010, [.574, 0, .063]), frontGreen);
+    const bindingParts: THREE.BufferGeometry[] = [roundedCover(1.21, 1.61, .066, .150, .020, [0, 0, -.195])];
     // A complete rounded leather back joins both boards. Its flush tooling
     // follows this same surface, rather than standing away like binder rings.
     const spineProfile = new THREE.Shape();
@@ -223,7 +246,7 @@ export function createBookyModel(): OwnedBookyModel {
     // Straight tooling joins four tangent quarter curves; unlike a spline
     // through corner samples this never overshoots into bent-wire hooks.
     const borderPath = new THREE.CurvePath<THREE.Vector3>();
-    const corner = .080, bx = .494, by = .682;
+    const corner = .102, bx = .494, by = .682;
     const bp = (x: number, y: number) => new THREE.Vector3(x + .574, y, .079);
     const line = (ax: number, ay: number, cx: number, cy: number) => borderPath.add(new THREE.LineCurve3(bp(ax, ay), bp(cx, cy)));
     const arc = (ax: number, ay: number, mx: number, my: number, cx: number, cy: number) =>
@@ -232,7 +255,7 @@ export function createBookyModel(): OwnedBookyModel {
     line(bx, -by + corner, bx, by - corner); arc(bx, by - corner, bx, by, bx - corner, by);
     line(bx - corner, by, -bx + corner, by); arc(-bx + corner, by, -bx, by, -bx, by - corner);
     line(-bx, by - corner, -bx, -by + corner); arc(-bx, -by + corner, -bx, -by, -bx + corner, -by);
-    const border = own(new THREE.TubeGeometry(borderPath, 128, .0055, 6, true));
+    const border = own(new THREE.TubeGeometry(borderPath, 128, .007, 6, true));
     mesh(frontCover, "booky-gold-cover-tooling", border, gold);
 
     const bookmark = node(body, "booky-bookmark", [-.40, .754, 0]);
@@ -276,7 +299,7 @@ export function createBookyModel(): OwnedBookyModel {
     ribbon.setAttribute("uv", new THREE.Float32BufferAttribute(ribbonUvs, 2)); ribbon.setIndex(ribbonIndices); ribbon.computeVertexNormals();
     mesh(bookmark, "booky-purple-ribbon", ribbon, purple);
 
-    const legParts: THREE.BufferGeometry[] = [], shoeWhite: THREE.BufferGeometry[] = [];
+    const legs: THREE.Group[] = [], feet: THREE.Group[] = [];
     const shoeSole = (x: number) => {
       const levels = [[-.040, .87], [-.032, .97], [-.018, 1], [.017, 1], [.031, .97], [.038, .89]];
       const columns = 40, stride = columns + 1, positions: number[] = [], uvs: number[] = [], indices: number[] = [];
@@ -303,20 +326,29 @@ export function createBookyModel(): OwnedBookyModel {
       }
       return geometry;
     };
-    for (const x of [-.24, .24]) {
-      legParts.push(sweep([[x, -.73, 0], [x * .95, -.93, .035], [x, -1.08, .07]], [.052, .053, .064], 14, 10));
-      bindingParts.push(ellipsoid([x, -1.098, .103], [.147, .128, .198]),
-        ellipsoid([x, -1.063, -.007], [.085, .105, .087]));
-      shoeWhite.push(shoeSole(x), ellipsoid([x, -1.111, .235], [.143, .096, .113]));
+    for (const [side, x] of [["left", -.24], ["right", .24]] as const) {
+      // Preserve the authored neutral vertices, but give each whole leg a hip
+      // hidden inside the cover and each complete sneaker its own ankle.
+      const leg = node(body, `booky-${side}-leg`, [x, -.73, 0]); legs.push(leg);
+      const foot = node(leg, `booky-${side}-foot`, [0, -.315, .05]); feet.push(foot);
+      const legGeometry = sweep([[x, -.73, 0], [x * .95, -.93, .035], [x, -1.08, .07]], [.052, .053, .064], 14, 10);
+      legGeometry.translate(-x, .73, 0);
+      mesh(leg, side === "left" ? "booky-legs" : "booky-legs-right", legGeometry, leather);
+      const shoeUpper = [ellipsoid([x, -1.098, .103], [.147, .128, .198]),
+        ellipsoid([x, -1.063, -.007], [.085, .105, .087])];
+      const shoeWhite = [shoeSole(x), ellipsoid([x, -1.111, .235], [.143, .096, .113])];
       shoeWhite.push(torus(.078, .018, [x, -1.002, -.004], [Math.PI / 2, 0, 0]));
+      const shoeLaces: THREE.BufferGeometry[] = [];
       for (const z of [.119, .174]) {
         const top = (dx: number) => -1.098 + .128 * Math.sqrt(1 - (dx / .147) ** 2 - ((z - .103) / .198) ** 2) + .006;
-        gilding.push(sweep([[x - .070, top(-.070), z], [x, top(0), z], [x + .070, top(.070), z]], [.011, .008, .011], 14, 8));
+        shoeLaces.push(sweep([[x - .070, top(-.070), z], [x, top(0), z], [x + .070, top(.070), z]], [.011, .008, .011], 14, 8));
       }
+      for (const geometry of [...shoeUpper, ...shoeWhite, ...shoeLaces]) geometry.translate(-x, 1.045, -.05);
+      fused(foot, `booky-${side}-shoe-upper`, shoeUpper, darkGreen);
+      fused(foot, side === "left" ? "booky-shoe-soles-and-caps" : "booky-shoe-soles-and-caps-right", shoeWhite, white);
+      fused(foot, `booky-${side}-shoe-laces`, shoeLaces, gold);
     }
     fused(body, "booky-bound-spine-and-shoes", bindingParts, darkGreen);
-    fused(body, "booky-legs", legParts, leather);
-    fused(body, "booky-shoe-soles-and-caps", shoeWhite, white);
     fused(body, "booky-spine-bands-and-shoe-laces", gilding, gold);
 
     const irisGeometry = () => {
@@ -349,78 +381,91 @@ export function createBookyModel(): OwnedBookyModel {
       return result;
     };
     const iris = irisGeometry(), eyes: THREE.Group[] = [], pupils: THREE.Group[] = [], brows: THREE.Group[] = [];
-    const browShape = shape(s => {
-      s.moveTo(-.156, -.005); s.bezierCurveTo(-.084, .110, .092, .099, .154, .011);
-      s.bezierCurveTo(.073, .054, -.035, .048, -.156, -.005); s.closePath();
-    }, .022, .010);
-    for (const [side, x] of [["left", -.235], ["right", .235]] as const) {
-      const eye = node(frontCover, `booky-eye-${side}`, facePosition(x, .233, .274)); eyes.push(eye);
-      mesh(eye, `booky-eye-socket-${side}`, ellipsoid([0, .001, -.011], [.202, .234, .035]), frontGreen);
-      mesh(eye, `booky-sclera-${side}`, ellipsoid([0, 0, 0], [.193, .222, .043]), eyeWhite);
-      const pupil = node(eye, `booky-pupil-${side}`, [.008, -.009, .046]); pupils.push(pupil);
-      const colored = mesh(pupil, `booky-iris-${side}`, iris, irisFinish); colored.scale.set(.112, .141, 1);
-      mesh(pupil, `booky-pupil-ink-${side}`, ellipsoid([0, 0, .007], [.088, .112, .009]), pupilInk);
-      fused(pupil, `booky-eye-catchlights-${side}`, [ellipsoid([-.030, .052, .016], [.014, .019, .005]),
+    // Capped rounded brows and a broader iris give a gentle, attentive face at
+    // 88px too. The eye groups still own their pupils for clean blink poses.
+    const browShape = sweep([[-.145, -.006, 0], [-.075, .052, .008], [.04, .066, .008], [.139, .018, 0]],
+      [.009, .025, .023, .009], 22, 10);
+    for (const [side, x] of [["left", -.237], ["right", .237]] as const) {
+      const eye = node(frontCover, `booky-eye-${side}`, facePosition(x, .215, .274)); eyes.push(eye);
+      mesh(eye, `booky-eye-socket-${side}`, ellipsoid([0, .001, -.011], [.215, .249, .034]), frontGreen);
+      mesh(eye, `booky-sclera-${side}`, ellipsoid([0, 0, 0], [.205, .237, .044]), eyeWhite);
+      const pupil = node(eye, `booky-pupil-${side}`, [.006, -.014, .047]); pupils.push(pupil);
+      const colored = mesh(pupil, `booky-iris-${side}`, iris, irisFinish); colored.scale.set(.137, .166, 1);
+      mesh(pupil, `booky-pupil-ink-${side}`, ellipsoid([0, 0, .007], [.102, .130, .009]), pupilInk);
+      fused(pupil, `booky-eye-catchlights-${side}`, [ellipsoid([-.035, .061, .016], [.019, .025, .005]),
         ellipsoid([.037, -.041, .014], [.005, .006, .003])], sparkle);
-      const brow = node(frontCover, `booky-brow-${side}`, facePosition(x, side === "left" ? .514 : .527, .270)); brows.push(brow);
+      const brow = node(frontCover, `booky-brow-${side}`, facePosition(x, side === "left" ? .499 : .508, .282)); brows.push(brow);
       const browMesh = mesh(brow, `booky-sculpted-brow-${side}`, browShape, brown);
-      browMesh.rotation.z = side === "left" ? .075 : -.06;
+      browMesh.rotation.z = side === "left" ? .035 : -.025;
     }
-    mesh(frontCover, "booky-soft-nose", ellipsoid(facePosition(.008, -.050, .271), [.049, .033, .021]), frontGreen);
-    const mouth = node(frontCover, "booky-mouth", facePosition(0, -.274, .267));
+    mesh(frontCover, "booky-soft-nose", ellipsoid(facePosition(.005, -.055, .275), [.048, .036, .025]), frontGreen);
+    fused(frontCover, "booky-smile-cheeks", [ellipsoid(facePosition(-.326, -.104, .258), [.076, .039, .006]),
+      ellipsoid(facePosition(.326, -.104, .258), [.076, .039, .006])], cheek);
+    const mouth = node(frontCover, "booky-mouth", facePosition(0, -.253, .267));
     mesh(mouth, "booky-smile-cavity", shape(s => {
-      s.moveTo(-.252, .033); s.bezierCurveTo(-.103, -.013, .102, -.003, .258, .066);
-      s.bezierCurveTo(.145, -.245, -.150, -.252, -.252, .033); s.closePath();
+      s.moveTo(-.231, .030); s.bezierCurveTo(-.100, -.015, .102, -.014, .237, .041);
+      s.bezierCurveTo(.151, -.194, -.140, -.196, -.231, .030); s.closePath();
     }, .010, .006), mouthInside);
     const teeth = shape(s => {
-      s.moveTo(-.207, .020); s.bezierCurveTo(-.076, -.011, .099, .004, .216, .042);
-      s.bezierCurveTo(.124, -.026, -.102, -.050, -.207, .020); s.closePath();
+      s.moveTo(-.194, .017); s.bezierCurveTo(-.076, -.008, .095, -.007, .200, .024);
+      s.bezierCurveTo(.118, -.034, -.105, -.038, -.194, .017); s.closePath();
     }, .005, .003); teeth.translate(0, 0, .017); mesh(mouth, "booky-smile-teeth", teeth, white);
-    fused(mouth, "booky-smile-tongue", [ellipsoid([-.029, -.139, .020], [.064, .038, .009]),
-      ellipsoid([.029, -.139, .020], [.064, .038, .009])], tonguePink);
-    mesh(mouth, "booky-lower-lip", sweep([[-.245, .031, .001], [-.117, -.167, .004], [.083, -.161, .006], [.248, .061, .002]],
+    fused(mouth, "booky-smile-tongue", [ellipsoid([-.024, -.111, .020], [.054, .028, .009]),
+      ellipsoid([.024, -.111, .020], [.054, .028, .009])], tonguePink);
+    mesh(mouth, "booky-lower-lip", sweep([[-.226, .028, .001], [-.104, -.130, .004], [.090, -.127, .006], [.232, .039, .002]],
       [.004, .008, .008, .004], 30, 8), frontGreen);
 
     const leftArm = node(body, "booky-left-arm", [-.551, -.21, .020]);
     mesh(leftArm, "booky-left-sleeve", sweep([[0, 0, 0], [-.11, -.058, .042], [-.235, -.047, .134], [-.285, -.025, .16]],
       [.069, .063, .071, .072], 24, 12), leather);
-    const leftPalm: THREE.BufferGeometry[] = [ellipsoid([-.354, -.042, .176], [.137, .137, .080])];
-    for (let digit = 0; digit < 3; digit++) {
-      const y = -.122 + digit * .081, length = [.070, .103, .088][digit];
-      leftPalm.push(sweep([[-.396, y, .190], [-.452, y - .005, .212], [-.443 - length, y + .014, .202]],
-        [.047, .048, .028], 12, 10));
-    }
-    leftPalm.push(sweep([[-.290, .012, .192], [-.303, .109, .214], [-.370, .147, .214]], [.058, .052, .032], 14, 10));
-    fused(leftArm, "booky-left-open-glove", leftPalm, white);
+    const leftHand = node(leftArm, "booky-left-hand", [-.29, -.025, .16]);
+    const leftPalm: THREE.BufferGeometry[] = [ellipsoid([-.075, .013, .033], [.118, .117, .066])];
+    const roundedDigit = (parts: THREE.BufferGeometry[], points: readonly Point[], radii: readonly number[], steps: number) => {
+      parts.push(sweep(points, radii, steps, 10, true));
+    };
+    // Three soft, separated fingers fan out from the palm; the thumb opens on
+    // the opposite side instead of reading as another horizontal finger.
+    roundedDigit(leftPalm, [[-.075, .077, .030], [-.122, .188, .045], [-.170, .230, .025]], [.043, .040, .026], 16);
+    roundedDigit(leftPalm, [[-.112, .059, .025], [-.213, .122, .039], [-.248, .162, .018]], [.044, .043, .028], 16);
+    roundedDigit(leftPalm, [[-.124, .006, .023], [-.226, .022, .035], [-.258, .059, .012]], [.041, .039, .025], 16);
+    roundedDigit(leftPalm, [[-.022, .020, .050], [.019, .086, .103], [.014, .146, .088], [-.032, .166, .064]],
+      [.049, .045, .034, .025], 18);
+    fused(leftHand, "booky-left-open-glove", leftPalm, white);
     const leftCuff = torus(.074, .018, [0, 0, 0]);
     leftCuff.applyQuaternion(new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, 0, 1), new THREE.Vector3(-1, .15, .30).normalize()));
-    leftCuff.translate(-.277, -.029, .152); mesh(leftArm, "booky-left-cuff", leftCuff, white);
+    leftCuff.translate(.013, -.004, -.008); mesh(leftHand, "booky-left-cuff", leftCuff, white);
 
     const rightArm = node(body, "booky-right-arm", [.551, -.21, .020]);
-    mesh(rightArm, "booky-right-sleeve", sweep([[0, 0, 0], [.085, -.085, .049], [.219, -.025, .133], [.283, .046, .191]],
+    mesh(rightArm, "booky-right-sleeve", sweep([[0, 0, 0], [.085, -.085, .049], [.219, -.025, .133], [.325, .055, .184]],
       [.069, .063, .069, .073], 24, 12), leather);
-    const rightPalm: THREE.BufferGeometry[] = [ellipsoid([.321, .087, .218], [.123, .145, .084])];
+    const rightHand = node(rightArm, "booky-right-hand", [.34, .06, .19]);
+    const rightPalm: THREE.BufferGeometry[] = [ellipsoid([.035, .024, .038], [.102, .139, .071])];
     for (let digit = 0; digit < 3; digit++) {
-      const y = -.018 + digit * .083;
-      rightPalm.push(sweep([[.301, y, .254], [.383, y + .012, .291], [.416, y + .043, .265]], [.047, .049, .029], 12, 10));
+      const y = -.072 + digit * .083;
+      // Each finger crosses in front of the shaft, curls around its outer side
+      // and returns behind it. The shaft and the glove share this hand pivot.
+      rightPalm.push(sweep([[.005, y, .042], [.075, y + .006, .126], [.124, y + .006, .110],
+        [.139, y + .004, .069], [.104, y + .002, .033]], [.040, .042, .037, .031, .023], 20, 10));
     }
-    rightPalm.push(sweep([[.249, .081, .256], [.238, .188, .278], [.312, .213, .290]], [.056, .053, .031], 14, 10));
-    fused(rightArm, "booky-right-grip-glove", rightPalm, white);
+    roundedDigit(rightPalm, [[-.022, .050, .052], [-.040, .139, .123], [.019, .156, .131], [.075, .120, .141]],
+      [.050, .047, .038, .025], 20);
+    fused(rightHand, "booky-right-grip-glove", rightPalm, white);
     const rightCuff = torus(.074, .018, [0, 0, 0]);
-    rightCuff.applyQuaternion(new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, 0, 1), new THREE.Vector3(.7, .65, .6).normalize()));
-    rightCuff.translate(.280, .041, .186); mesh(rightArm, "booky-right-cuff", rightCuff, white);
-    const magnifier = node(rightArm, "booky-magnifier", [.36, .10, .215]); magnifier.rotation.z = .15;
+    rightCuff.applyQuaternion(new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, 0, 1), new THREE.Vector3(.8, .4, .3).normalize()));
+    rightCuff.translate(-.014, -.007, -.008); mesh(rightHand, "booky-right-cuff", rightCuff, white);
+    const magnifier = node(rightHand, "booky-magnifier", [.085, .04, .025]); magnifier.rotation.z = .12;
     mesh(magnifier, "booky-magnifier-handle", sweep([[0, -.205, .018], [0, .080, .018], [0, .375, .018]],
       [.039, .035, .032], 16, 12), darkGreen);
-    const lensCenter: Point = [0, .664, .018];
-    const frameParts = [torus(.274, .021, [0, .664, .046]), torus(.274, .018, [0, .664, -.009])];
+    const lensCenter: Point = [0, .625, .018];
+    const frameParts = [torus(.235, .021, [0, .625, .046]), torus(.235, .018, [0, .625, -.009])];
     for (const y of [-.191, .337, .371]) frameParts.push(torus(.038, .012, [0, y, .018], [Math.PI / 2, 0, 0]));
     fused(magnifier, "booky-magnifier-gold-frame", frameParts, gold);
-    const lens = mesh(magnifier, "booky-magnifier-lens", ellipsoid(lensCenter, [.260, .260, .027]), glass); lens.renderOrder = 1;
-    const reflection = sweep([[-.183, .741, .040], [-.170, .817, .041], [-.112, .857, .040]], [.008, .017, .007], 14, 8);
+    const lens = mesh(magnifier, "booky-magnifier-lens", ellipsoid(lensCenter, [.221, .221, .027]), glass); lens.renderOrder = 1;
+    const reflection = sweep([[-.158, .693, .040], [-.146, .752, .041], [-.096, .791, .040]], [.008, .015, .007], 14, 8);
     mesh(magnifier, "booky-magnifier-highlight", reflection, glassGlint).renderOrder = 2;
 
     const rig: BookyRig = Object.freeze({ body, frontCover, bookmark, leftArm, rightArm,
+      leftLeg: legs[0], rightLeg: legs[1], leftFoot: feet[0], rightFoot: feet[1],
       eyes: Object.freeze(eyes) as unknown as readonly [THREE.Group, THREE.Group],
       pupils: Object.freeze(pupils) as unknown as readonly [THREE.Group, THREE.Group],
       brows: Object.freeze(brows) as unknown as readonly [THREE.Group, THREE.Group], mouth });
