@@ -735,11 +735,12 @@ test('Mr. Booky thirteen gestures and nonrepeating surprises finish and remain s
 });
 
 
-test('Mr. Booky walks along the margin only by request and stops for drag, hiding and reduced motion',async({},testInfo)=>{
+test('Mr. Booky walks continuously in clear space only by request and stops for drag, hiding and reduced motion',async({},testInfo)=>{
   test.setTimeout(150_000);const fixture=await open(testInfo),{page,result}=fixture;
   const walk=()=>page.locator('[data-booky-walk]');
   const walking=()=>expect(pet(page)).toHaveAttribute('data-planet-mascot-gesture','walking');
   const stopped=(timeout=1000)=>expect(pet(page)).not.toHaveAttribute('data-planet-mascot-gesture','walking',{timeout});
+  const overlap=(a,b)=>Math.min(a.right,b.right)>Math.max(a.left,b.left)&&Math.min(a.bottom,b.bottom)>Math.max(a.top,b.top);
   async function showWalk(){
     // The product deliberately disables walking while tips are open. Closing
     // them is an explicit user action, never a hidden test state assignment.
@@ -757,17 +758,34 @@ test('Mr. Booky walks along the margin only by request and stops for drag, hidin
   async function moved(origin){
     await expect.poll(async()=>{const box=(await layout(page)).pet;return Math.hypot(box.left-origin.left,box.top-origin.top)}).toBeGreaterThan(8);
   }
+  const navigationSelectors=['zoom-in','zoom-out','reset','edition-info'].map(name=>'[data-globe-control="'+name+'"]')
+    .concat(['.atlas-country-sheet-toggle','.atlas-immersive-chrome .interface-language-control button:first-child',
+      '.atlas-immersive-chrome .interface-language-control button:last-child']);
+  const navigation=()=>page.evaluate(selectors=>selectors.map(selector=>{
+    const element=document.querySelector(selector),r=element?.getBoundingClientRect();
+    if(!element||!r||r.width<2||r.height<2)return{selector,visible:false};
+    return{selector,visible:r.left>=0&&r.top>=0&&r.right<=innerWidth+.5&&r.bottom<=innerHeight+.5,
+      rect:{left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height},
+      reachable:[.15,.5,.85].every(x=>{const hit=document.elementFromPoint(r.left+r.width*x,r.top+r.height*.5);return !!hit&&element.contains(hit);})};
+  }),navigationSelectors);
+  async function settlePosition(){
+    let previous=null,matches=0;await expect.poll(async()=>{
+      const key=JSON.stringify((await layout(page)).pet);matches=key===previous?matches+1:0;previous=key;return matches;
+    },{intervals:[50,100]}).toBeGreaterThanOrEqual(3);
+  }
   try{
     await actual(page);await page.evaluate(()=>window.__bookyLiveFixture.remember());await stablePose(page);
     await page.locator('[data-planet-mascot-toggle]').click();await expect(panel(page)).toBeVisible();await companionSaved(fixture);await live(page);
     await expect(walk()).toBeDisabled();await showWalk();
     const original=await actual(page),before=mutations(fixture),saved=fixture.memory.get(BOOKY);
-    const origin=(await layout(page)).pet;await begin();await moved(origin);
+    const origin=(await layout(page)).pet,desktopNavigation=await navigation();await begin();await moved(origin);
     await capture(page,result,testInfo,'booky-margin-walk-ru-1440.png');
     await stopped(6000);const complete=await page.evaluate(()=>window.__bookyLiveFixture.stopObservingWalk());
     expect(complete.samples.length).toBeGreaterThan(5);
-    expect(complete.samples.every(value=>Math.min(value.left,value.top,value.viewport.width-value.right,value.viewport.height-value.bottom)<=48)).toBe(true);
+    expect(complete.samples.every(value=>Math.abs(value.top-origin.top)<=.02),'The manual walk stays on its actual resting row').toBe(true);
+    expect(Math.abs(complete.samples[0].left-origin.left),'The first frame starts at the actual resting position').toBeLessThanOrEqual(3);
     expect(complete.samples.every(value=>fits({left:value.left,top:value.top,right:value.right,bottom:value.bottom,width:value.width,height:value.height},value.viewport))).toBe(true);
+    for(const target of desktopNavigation.filter(target=>target.visible))expect(complete.samples.every(sample=>!overlap(sample,target.rect)),target.selector+' stays clear for the complete walk').toBe(true);
     const trace=await page.evaluate(()=>window.__bookyLiveFixture.gestureTrace());
     for(const key of ['leftLeg','rightLeg']){
       expect(trace.timeline.every(value=>Boolean(value.pose?.[key]))).toBe(true);
@@ -823,8 +841,108 @@ test('Mr. Booky walks along the margin only by request and stops for drag, hidin
     await expect(walk()).toBeDisabled();await twoFrames(page);const reducedPosition=(await layout(page)).pet;
     await twoFrames(page);expect((await layout(page)).pet).toEqual(reducedPosition);await stopped();
     expect(mutations(fixture)).toEqual(before);expect(fixture.memory.get(BOOKY)).toBe(saved);retained(await actual(page),original);
-    result.observations.walk={complete,configuredDurationMs:duration,completedPosition,dragged,manuallyStopped,motionStoppedPosition,retired,reducedPosition};
-    Object.assign(result,{scenario:'explicit-margin-walk',explicitFiniteWalk:true,tipsRequireExplicitCollapse:true,walkFitsViewport:true,walkStaysNearViewportEdge:true,actualLegsStep:true,
+    result.observations.walk={origin,desktopNavigation,complete,configuredDurationMs:duration,completedPosition,dragged,manuallyStopped,motionStoppedPosition,retired,reducedPosition};
+
+    // A narrow portrait screen has room for a genuine touch-controlled walk.
+    // Mobile claims here use native touch input, including the drag pointer.
+    await page.emulateMedia({reducedMotion:'no-preference'});await page.setViewportSize({width:390,height:844});await ready(page);
+    const mobileCountry=page.locator('.atlas-country-sheet-toggle');
+    if(await mobileCountry.getAttribute('aria-expanded')==='true')await mobileCountry.tap();
+    await expect(mobileCountry).toHaveAttribute('aria-expanded','false');await stablePose(page);
+    await page.locator('[data-planet-mascot-toggle]').tap();await expect(panel(page)).toBeVisible();await live(page);
+    await page.locator('[data-planet-mascot-collapse]').tap();await expect(panel(page)).toHaveCount(0);await live(page);await settlePosition();
+    const mobileOrigin=(await layout(page)).pet,mobileTargets=await navigation(),mobileCanonical=await actual(page),mobileBefore=mutations(fixture);
+    expect(mobileTargets.every(target=>target.visible&&target.reachable)).toBe(true);await expect(walk()).toBeEnabled();
+    await page.evaluate(()=>{
+      window.__bookyMobileInput=[];
+      for(const type of ['pointerdown','pointerup','click'])document.addEventListener(type,event=>{
+        const button=event.target instanceof Element?event.target.closest('[data-booky-walk],[data-booky-walk-stop],[data-planet-mascot-move]'):null;
+        if(!button)return;
+        const r=document.querySelector('[data-planet-mascot-pet]').getBoundingClientRect();
+        window.__bookyMobileInput.push({at:performance.now(),type,pointerType:event.pointerType,trusted:event.isTrusted,
+          control:button.hasAttribute('data-booky-walk-stop')?'stop':button.hasAttribute('data-booky-walk')?'start':'move',
+          gesture:document.querySelector('[data-planet-mascot-pet]').getAttribute('data-planet-mascot-gesture'),left:r.left,top:r.top});
+      },true);
+    });
+    await page.evaluate(()=>window.__bookyLiveFixture.observeWalk());await walk().tap();await walking();await moved(mobileOrigin);
+    await capture(page,result,testInfo,'booky-touch-walk-ru-390.png');
+    // The Stop button moves with Booky. Locator actionability would wait for
+    // the walk to finish; tap its current visible point without that wait.
+    const movingStop=await page.locator('[data-booky-walk-stop]').boundingBox();
+    await page.touchscreen.tap(movingStop.x+movingStop.width/2,movingStop.y+movingStop.height/2);
+    result.observations.mobileTouchInput=await page.evaluate(()=>window.__bookyMobileInput);
+    expect(result.observations.mobileTouchInput.some(event=>event.type==='pointerdown'&&event.control==='stop'&&event.pointerType==='touch'&&event.trusted)).toBe(true);
+    expect(result.observations.mobileTouchInput.some(event=>event.type==='click'&&event.control==='stop'&&event.gesture==='walking'&&event.trusted)).toBe(true);
+    await stopped();await settlePosition();
+    const touchStop=(await layout(page)).pet,touchWalk=await page.evaluate(()=>window.__bookyLiveFixture.stopObservingWalk());
+    expect(touchWalk.samples.length).toBeGreaterThan(5);expect(touchWalk.samples.every(sample=>Math.abs(sample.top-mobileOrigin.top)<=.02)).toBe(true);
+    expect(Math.abs(touchWalk.samples[0].left-mobileOrigin.left)).toBeLessThanOrEqual(3);
+    for(const target of mobileTargets)expect(touchWalk.samples.every(sample=>!overlap(sample,target.rect)),target.selector+' stays clear during touch walking').toBe(true);
+    await page.waitForTimeout(350);expect((await layout(page)).pet).toEqual(touchStop);
+    await walk().tap();await walking();await moved(touchStop);
+    const touchHandle=await page.locator('[data-planet-mascot-move]').boundingBox(),touchStart=(await layout(page)).pet;
+    const touchX=touchHandle.x+touchHandle.width/2,touchY=touchHandle.y+touchHandle.height/2,cdp=await page.context().newCDPSession(page);
+    try{
+      await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:touchX,y:touchY}]});
+      await expect(pet(page)).toHaveAttribute('data-planet-mascot-gesture','dragging');
+      for(let step=1;step<=4;step++)await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:touchX-30*step/4,y:touchY-20*step/4}]});
+      await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
+    }finally{await cdp.detach();}
+    await stopped();await settlePosition();const touchDragged=(await layout(page)).pet;
+    expect(Math.hypot(touchDragged.left-touchStart.left,touchDragged.top-touchStart.top)).toBeGreaterThan(8);
+    await page.waitForTimeout(350);expect((await layout(page)).pet).toEqual(touchDragged);
+    expect((await navigation()).every(target=>target.visible&&target.reachable)).toBe(true);
+    result.observations.mobileTouchInput=await page.evaluate(()=>window.__bookyMobileInput);
+    expect(result.observations.mobileTouchInput.some(event=>event.type==='pointerdown'&&event.control==='move'&&event.pointerType==='touch'&&event.trusted)).toBe(true);
+    expect(mutations(fixture)).toEqual(mobileBefore);retained(await actual(page),mobileCanonical);
+    result.observations.mobileTouchWalk={viewport:{width:390,height:844},origin:mobileOrigin,targets:mobileTargets,touchWalk,touchStop,touchStart,touchDragged};
+
+    result.observations.compactWalk=[];
+    for(const[language,size]of [['ru',{width:568,height:320}],['en',{width:568,height:320}],
+      ['ru',{width:640,height:360}],['en',{width:640,height:360}]]){
+      if(await page.locator('html').getAttribute('lang')!==language){
+        await page.locator('.atlas-immersive-chrome .interface-language-control button').filter({hasText:new RegExp('^'+language.toUpperCase()+'$','u')}).click();
+        await expect(page.locator('html')).toHaveAttribute('lang',language);
+        await expect.poll(()=>fixture.memory.get('probpera-interface-language')).toBe(language);
+      }
+      await page.setViewportSize(size);await ready(page);
+      const country=page.locator('.atlas-country-sheet-toggle');
+      for(let i=0;i<3&&await country.getAttribute('aria-expanded')==='true';i++){await country.focus();await page.keyboard.press('Enter');}
+      await expect(country).toHaveAttribute('aria-expanded','false');await stablePose(page);
+      await page.locator('[data-planet-mascot-toggle]').tap();await expect(panel(page)).toBeVisible();await live(page);
+      await page.locator('[data-planet-mascot-collapse]').tap();await expect(panel(page)).toHaveCount(0);await live(page);await settlePosition();
+      const compactOrigin=(await layout(page)).pet,targets=await navigation(),canonical=await actual(page),stored=mutations(fixture);
+      expect(targets.every(target=>target.visible&&target.reachable),language+' '+size.width+' closed-help navigation is reachable').toBe(true);
+      const available=await walk().isEnabled();let compactTrace;
+      if(available){
+        await page.evaluate(()=>window.__bookyLiveFixture.observeWalk());await walk().tap();await walking();await moved(compactOrigin);
+        await capture(page,result,testInfo,`booky-clear-walk-${language}-${size.width}.png`);
+        await stopped(6000);compactTrace=await page.evaluate(()=>window.__bookyLiveFixture.stopObservingWalk());
+        expect(compactTrace.samples.length).toBeGreaterThan(5);
+        expect(compactTrace.samples.every(sample=>Math.abs(sample.top-compactOrigin.top)<=.02)).toBe(true);
+        expect(Math.abs(compactTrace.samples[0].left-compactOrigin.left)).toBeLessThanOrEqual(3);
+        for(const target of targets)expect(compactTrace.samples.every(sample=>!overlap(sample,target.rect)),target.selector+' stays clear during the compact walk').toBe(true);
+        expect(compactTrace.samples.every(sample=>fits(sample,sample.viewport))).toBe(true);
+      }else{
+        await expect(walk()).toBeDisabled();await expect(walk()).toHaveAttribute('title',language==='ru'
+          ?'Пока мало свободного места для прогулки':'There is not enough clear space to walk here');
+        await expect(walk()).toContainText(language==='ru'?'Мало места':'No room');
+        await page.evaluate(()=>window.__bookyLiveFixture.observeWalk());
+        const button=await walk().boundingBox();await page.touchscreen.tap(button.x+button.width/2,button.y+button.height/2);
+        await page.waitForTimeout(350);await stopped();compactTrace=await page.evaluate(()=>window.__bookyLiveFixture.stopObservingWalk());
+        expect(compactTrace.samples.length).toBeGreaterThan(5);
+        expect(compactTrace.samples.every(sample=>sample.left===compactOrigin.left&&sample.top===compactOrigin.top)).toBe(true);
+        expect((await layout(page)).pet).toEqual(compactOrigin);
+        await capture(page,result,testInfo,`booky-clear-walk-${language}-${size.width}.png`);
+      }
+      const afterNavigation=await navigation();expect(afterNavigation.every(target=>target.visible&&target.reachable)).toBe(true);
+      expect(afterNavigation.map(target=>target.rect)).toEqual(targets.map(target=>target.rect));
+      expect(mutations(fixture)).toEqual(stored);retained(await actual(page),canonical);
+      result.observations.compactWalk.push({language,size,available,origin:compactOrigin,targets,afterNavigation,trace:compactTrace});
+    }
+    Object.assign(result,{scenario:'explicit-margin-walk',explicitFiniteWalk:true,tipsRequireExplicitCollapse:true,walkFitsViewport:true,walkStartsAtRestingRow:true,walkPathAvoidsNavigation:true,actualLegsStep:true,
+      compactWalkAvailabilityMatchesClearSpace:true,compactWalkKeepsNavigationReachable:true,compactUnavailableWalkExplained:true,
+      mobileTouchWalkStartsContinuously:true,mobileTouchStopsWalk:true,mobileTouchDragStopsWalk:true,
       dragStopsWalk:true,manualStopWorks:true,backgroundStopsWalk:true,noAutomaticWalkResume:true,
       reducedMotionStopsCurrentWalk:true,reducedMotionPreventsWalk:true,walkDoesNotWritePreferencesOrProgress:true,sameCanonicalGlobe:true});await fixture.verify();
   }finally{
@@ -1055,9 +1173,8 @@ test('Mr. Booky mobile placement preserves globe and collection hit targets in b
     await page.setViewportSize({width:320,height:844});await settle();await reachable(globeTargets,{baseline:hostBaselines.get(320)});
     expect(mutations(fixture)).toEqual(beforeDrag);
 
-    // The first walking position can be below the safe resting position.
-    // An immediate genuine stop must release its transient position even
-    // when the parent's corrected resting coordinates did not change.
+    // An immediate genuine stop releases its transient position even when
+    // the parent's accepted resting coordinates did not change.
     await page.locator('[data-booky-walk]').focus();await page.keyboard.press('Enter');
     await expect(pet(page)).toHaveAttribute('data-planet-mascot-gesture','walking');
     await page.locator('[data-booky-walk-stop]').focus();await page.keyboard.press('Enter');
@@ -1372,4 +1489,49 @@ test('Mr. Booky open help preserves primary navigation and scrolls independently
     result.observations.failureCharacter=await character(page).catch(()=>null);
     await capture(page,result,testInfo,'booky-help-placement-failure.png').catch(()=>undefined);throw error;
   }finally{await fixture.close();}
+});
+
+test('Mr. Booky treats held Enter and Space as one walking command',async({},testInfo)=>{
+  test.setTimeout(90000);const fixture=await open(testInfo),{page,result}=fixture;
+  const walking=()=>expect(pet(page)).toHaveAttribute('data-planet-mascot-gesture','walking');
+  const stopped=()=>expect(pet(page)).not.toHaveAttribute('data-planet-mascot-gesture','walking');
+  const observations=[];
+  async function remember(label){observations.push({label,gesture:await pet(page).getAttribute('data-planet-mascot-gesture'),layout:await layout(page)});}
+  async function remainsStopped(){
+    await stopped();let previous=null,matches=0;
+    await expect.poll(async()=>{const key=JSON.stringify((await layout(page)).pet);
+      matches=key===previous?matches+1:0;previous=key;return matches;
+    },{timeout:500,intervals:[30,50]}).toBeGreaterThanOrEqual(3);
+    const position=(await layout(page)).pet;
+    await page.waitForTimeout(4300);await stopped();expect((await layout(page)).pet).toEqual(position);
+  }
+  try{
+    await actual(page);await page.evaluate(()=>window.__bookyLiveFixture.remember());await stablePose(page);await page.locator('[data-planet-mascot-toggle]').click();
+    await expect(panel(page)).toBeVisible();await companionSaved(fixture);await live(page);
+    await page.locator('[data-planet-mascot-collapse]').click();await expect(panel(page)).toHaveCount(0);await companionSaved(fixture);
+    const original=await actual(page),before=mutations(fixture),saved=fixture.memory.get(BOOKY);
+    await page.evaluate(()=>{window.__bookyHeldKeys=[];document.addEventListener('keydown',event=>{
+      if(event.key==='Enter'||event.key===' ')window.__bookyHeldKeys.push({key:event.key,repeat:event.repeat});
+    },true)});
+    await page.locator('[data-booky-walk]').focus();
+    await page.keyboard.down('Enter');await walking();await remember('Enter starts once');
+    await page.keyboard.down('Enter');await twoFrames(page);await walking();await remember('Enter repeat keeps the same walk');
+    await page.keyboard.up('Enter');
+    await page.keyboard.down('Enter');await stopped();
+    await page.keyboard.down('Enter');await twoFrames(page);await stopped();await remember('Enter repeat cannot restart after Stop');
+    await page.keyboard.up('Enter');await remainsStopped();
+    await page.locator('[data-booky-walk]').focus();
+    await page.keyboard.down('Space');await page.keyboard.down('Space');await twoFrames(page);await stopped();
+    await page.keyboard.up('Space');await walking();await remember('Held Space starts once on release');
+    await page.keyboard.down('Space');await page.keyboard.down('Space');await twoFrames(page);await walking();
+    await page.keyboard.up('Space');await stopped();await remainsStopped();await remember('Held Space stops once on release');
+    const keys=await page.evaluate(()=>window.__bookyHeldKeys);
+    expect(keys).toEqual(['Enter','Enter',' ',' '].flatMap(key=>[{key,repeat:false},{key,repeat:true}]));
+    expect(mutations(fixture)).toEqual(before);expect(fixture.memory.get(BOOKY)).toBe(saved);expect(await downloadActions(page)).toEqual([]);
+    retained(await actual(page),original);result.observations.heldWalkingKeys={keys,states:observations};
+    Object.assign(result,{scenario:'held-walk-keyboard',heldEnterStartsOnlyOnce:true,heldEnterCannotRestartAfterStop:true,
+      heldSpaceUsesOneReleaseAction:true,noHeldKeyAutomaticResume:true,noAutomaticPreferenceWrites:true,sameCanonicalGlobe:true});
+    await fixture.verify();
+  }catch(error){await capture(page,result,testInfo,'booky-held-key-failure.png').catch(()=>undefined);throw error;}
+  finally{await page.keyboard.up('Enter').catch(()=>undefined);await page.keyboard.up('Space').catch(()=>undefined);await fixture.close();}
 });

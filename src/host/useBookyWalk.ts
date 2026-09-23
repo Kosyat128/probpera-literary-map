@@ -1,11 +1,12 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { BOOKY_WALK_MS } from "./bookyAnimation";
-import { planBookyWalk, sampleBookyWalk, type BookyWalkBounds, type BookyWalkPoint, type BookyWalkPath } from "./bookyWalk";
+import { isBookyWalkPathClear, planBookyWalk, sampleBookyWalk, type BookyWalkBounds, type BookyWalkPoint, type BookyWalkPath } from "./bookyWalk";
 
 export function useBookyWalk(options: {
   available: boolean; revision: number; position: BookyWalkPoint;
   committedPosition?: BookyWalkPoint;
   size: Readonly<{ width: number; height: number }>; viewport: BookyWalkBounds;
+  controls?: readonly BookyWalkBounds[];
   onFinish: (point: BookyWalkPoint) => void;
 }) {
   const latest = useRef(options); latest.current = options;
@@ -34,7 +35,7 @@ export function useBookyWalk(options: {
     const current = latest.current;
     if (point.current || !current.available || document.hidden
       || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return false;
-    const path = planned ?? planBookyWalk(handoff.current ?? current.position, current.size, current.viewport);
+    const path = planned ?? planBookyWalk(handoff.current ?? current.position, current.size, current.viewport, current.controls);
     if (!path) return false;
     const owner = ++sequence.current, began = performance.now();
     point.current = path.from; setWalk({ position: path.from, active: true, previous: current.position }); setDirection(path.direction);
@@ -47,7 +48,8 @@ export function useBookyWalk(options: {
       // A persistence notice or host toolbar can resize through ResizeObserver
       // without a window resize. Retire the old path before another moving frame.
       const stale = targetIsCurrent ? !targetIsCurrent() : live.revision !== current.revision;
-      if (!live.available || stale || boundsChanged || document.hidden) { stop(); return; }
+      if (!live.available || stale || boundsChanged || document.hidden
+        || !planned && !isBookyWalkPathClear(path, live.size, live.viewport, live.controls)) { stop(); return; }
       const progress = Math.min(1, Math.max(0, (time - began) / duration));
       point.current = sampleBookyWalk(path, progress);
       setWalk({ position: point.current, active: true, previous: current.position });
@@ -76,7 +78,8 @@ export function useBookyWalk(options: {
     };
   }, [stop]);
   useEffect(() => { if (!options.available) stop(); }, [options.available, options.revision, stop]);
-  const canStart = options.available && !reducedMotion && planBookyWalk(options.position, options.size, options.viewport) !== null;
+  const canStart = options.available && !reducedMotion
+    && planBookyWalk(options.position, options.size, options.viewport, options.controls) !== null;
   const active = walk?.active === true;
   // A collision-free display position can stay unchanged after the parent has
   // accepted a different point. Acknowledge the committed coordinates, not

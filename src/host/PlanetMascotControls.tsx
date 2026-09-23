@@ -267,7 +267,9 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     : placeBooky(preferredPosition, petSize, view, navigation);
   const walk = useBookyWalk({ available: shown && snapshot.available && !open && snapshot.mode === "help",
     revision: snapshot.revision, position: restingPosition, committedPosition: position ?? preferredPosition,
-    size: petSize, viewport: view, onFinish: onPositionChange });
+    size: petSize, viewport: view, controls: navigation, onFinish: onPositionChange });
+  const walkNeedsSpace = !walk.active && !walk.canStart && !walk.reducedMotion && !open
+    && snapshot.available && snapshot.mode === "help";
   const petPosition = walk.position ?? restingPosition;
   const pointEnvironment = useRef({ position: petPosition, size: petSize, view });
   pointEnvironment.current = { position: petPosition, size: petSize, view };
@@ -584,13 +586,20 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
         disabled={!walk.active && !walk.canStart}
         title={walk.reducedMotion ? ru ? "Включено уменьшенное движение" : "Reduced motion is enabled"
           : open ? ru ? "Сверните подсказки, чтобы начать прогулку" : "Collapse the tips to start a walk"
-          : ru ? "Короткая прогулка по краю экрана" : "A short walk along the screen edge"}
+          : walkNeedsSpace ? ru ? "Пока мало свободного места для прогулки" : "There is not enough clear space to walk here"
+          : ru ? "Короткая прогулка по свободному месту" : "A short walk through a clear area"}
+        onKeyDown={event => {
+          // One held Enter is one intent even after Stop becomes Start.
+          if (event.key === "Enter" && event.repeat) event.preventDefault();
+        }}
         onClick={() => {
           if (walk.active) { walk.stop(); return; }
           if (controller.getSnapshot().revision !== snapshot.revision) return;
           if (walk.start()) { setGesture("rest"); setPointerLook(null); setReactionKey(value => value + 1); }
         }}><span aria-hidden="true">{walk.active ? "Ⅱ" : "↝"}</span> {walk.active
-          ? ru ? "Остановить" : "Stop walking" : ru ? "Прогуляться" : "Take a walk"}</button>}
+          ? ru ? "Остановить" : "Stop walking"
+          : walkNeedsSpace ? ru ? "Мало места" : "No room"
+          : ru ? "Прогуляться" : "Take a walk"}</button>}
       {!open && persistenceNotice}
       {open && <section ref={card} id={id} role="region" aria-labelledby={`${id}-title`} data-planet-mascot-panel=""
         className="planet-mascot-controls__panel" style={{ left: cardPosition.left, top: cardPosition.top,

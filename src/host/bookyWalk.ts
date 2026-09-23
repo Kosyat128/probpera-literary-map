@@ -28,18 +28,51 @@ export function planBookyApproach(current: BookyWalkPoint, size: Readonly<{ widt
   return { from, to, touch, direction: to.left >= from.left ? 1 : -1 };
 }
 
-/** A deliberate short walk along the lower viewport margin. No camera,
+const validBounds = (rect: BookyWalkBounds) => [rect.left, rect.top, rect.width, rect.height].every(Number.isFinite)
+  && rect.width > 0 && rect.height > 0;
+const overlaps = (a: BookyWalkBounds, b: BookyWalkBounds) => a.left < b.left + b.width
+  && a.left + a.width > b.left && a.top < b.top + b.height && a.top + a.height > b.top;
+function walkLimits(size: Readonly<{ width: number; height: number }>, viewport: BookyWalkBounds) {
+  if (!validBounds(viewport) || !Number.isFinite(size.width) || !Number.isFinite(size.height)
+    || size.width <= 0 || size.height <= 0) return null;
+  const left = viewport.left + 12, right = viewport.left + viewport.width - size.width - 12;
+  const top = viewport.top + 12, bottom = viewport.top + viewport.height - size.height - 12;
+  return right < left || bottom < top ? null : { left, right, top, bottom };
+}
+
+/** Validate the whole horizontal row swept by a manual walk, including controls
+ * that appeared after planning. This does not govern an explicit target approach. */
+export function isBookyWalkPathClear(path: BookyWalkPath, size: Readonly<{ width: number; height: number }>,
+  viewport: BookyWalkBounds, controls: readonly BookyWalkBounds[] = []): boolean {
+  const limits = walkLimits(size, viewport);
+  if (!limits || ![path.from.left, path.from.top, path.to.left, path.to.top].every(Number.isFinite)
+    || path.from.top !== path.to.top) return false;
+  for (const point of [path.from, path.to]) {
+    if (point.left < limits.left || point.left > limits.right || point.top < limits.top || point.top > limits.bottom) return false;
+  }
+  const swept = { left: Math.min(path.from.left, path.to.left), top: path.from.top,
+    width: Math.abs(path.to.left - path.from.left) + size.width, height: size.height };
+  return !controls.some(rect => validBounds(rect) && overlaps(rect, viewport) && overlaps(rect, swept));
+}
+
+/** A deliberate short horizontal walk from the current resting row. No camera,
  * persistence, timers or page coordinates are owned by the path. */
 export function planBookyWalk(current: BookyWalkPoint, size: Readonly<{ width: number; height: number }>,
-  viewport: BookyWalkBounds): BookyWalkPath | null {
-  if (![current.left, current.top, size.width, size.height, viewport.left, viewport.top, viewport.width, viewport.height]
-    .every(Number.isFinite) || size.width <= 0 || size.height <= 0) return null;
-  const left = viewport.left + 12, right = viewport.left + viewport.width - size.width - 12;
-  const top = viewport.top + viewport.height - size.height - 12;
-  if (right - left < 32 || top < viewport.top + 12) return null;
+  viewport: BookyWalkBounds, controls: readonly BookyWalkBounds[] = []): BookyWalkPath | null {
+  const limits = walkLimits(size, viewport);
+  if (!limits || ![current.left, current.top].every(Number.isFinite)) return null;
+  let { left, right } = limits;
+  const top = Math.max(limits.top, Math.min(limits.bottom, current.top));
   const x = Math.max(left, Math.min(right, current.left));
+  for (const rect of controls) {
+    if (!validBounds(rect) || !overlaps(rect, viewport) || rect.top >= top + size.height || rect.top + rect.height <= top) continue;
+    if (rect.left + rect.width <= x) left = Math.max(left, rect.left + rect.width);
+    else if (rect.left >= x + size.width) right = Math.min(right, rect.left - size.width);
+    else return null;
+  }
   const direction = x - left >= right - x ? -1 : 1;
   const distance = Math.min(220, direction < 0 ? x - left : right - x);
+  if (distance < 32) return null;
   return Object.freeze({ from: Object.freeze({ left: x, top }),
     to: Object.freeze({ left: x + direction * distance, top }), direction });
 }

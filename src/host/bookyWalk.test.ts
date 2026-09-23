@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
-import { planBookyApproach, planBookyWalk, sampleBookyWalk } from "./bookyWalk";
+import { isBookyWalkPathClear, planBookyApproach, planBookyWalk, sampleBookyWalk } from "./bookyWalk";
 
-describe("explicit companion margin walk", () => {
+describe("explicit companion walk", () => {
   it.each([{ left: 0, top: 0, width: 320, height: 844 }, { left: 14, top: 90, width: 1440, height: 760 }])(
     "keeps the entire companion inside the safe margin on every sample", view => {
       const size = { width: 112, height: 198 }, path = planBookyWalk({ left: 9000, top: -400 }, size, view)!;
@@ -10,7 +10,8 @@ describe("explicit companion margin walk", () => {
         const p = sampleBookyWalk(path, index / 100);
         expect(p.left).toBeGreaterThanOrEqual(view.left + 12);
         expect(p.left + size.width).toBeLessThanOrEqual(view.left + view.width - 12);
-        expect(p.top + size.height).toBe(view.top + view.height - 12);
+        expect(p.top).toBe(view.top + 12);
+        expect(p.top + size.height).toBeLessThanOrEqual(view.top + view.height - 12);
       }
       expect(sampleBookyWalk(path, 0)).toEqual(path.from); expect(sampleBookyWalk(path, 1)).toEqual(path.to);
     });
@@ -22,6 +23,53 @@ describe("explicit companion margin walk", () => {
     expect(planBookyWalk({ left: 0, top: 0 }, size, { ...view, height: 230 })).toBeNull();
     expect(planBookyWalk({ left: NaN, top: 0 }, size, view)).toBeNull();
     expect(planBookyWalk({ left: 0, top: 0 }, { ...size, width: -1 }, view)).toBeNull();
+  });
+  it("starts at the visible resting row instead of teleporting to a lower country toolbar", () => {
+    const view = { left: 0, top: 62, width: 568, height: 258 }, size = { width: 312, height: 96 };
+    const current = { left: 176, top: 74 }, country = { left: 8, top: 248, width: 552, height: 64 };
+    const path = planBookyWalk(current, size, view, [country])!;
+    expect(path.from).toEqual(current); expect(path.to).toEqual({ left: 12, top: 74 });
+    expect(isBookyWalkPathClear(path, size, view, [country])).toBe(true);
+    expect(isBookyWalkPathClear({ from: { ...current, top: 212 }, to: { left: 12, top: 212 }, direction: -1 }, size, view, [country])).toBe(false);
+  });
+  it("uses the free horizontal corridor without crossing an intermediate control", () => {
+    const view = { left: 0, top: 0, width: 900, height: 500 }, size = { width: 100, height: 80 };
+    const current = { left: 300, top: 140 }, controls = [
+      { left: 160, top: 140, width: 60, height: 80 }, { left: 460, top: 160, width: 40, height: 40 },
+    ];
+    const path = planBookyWalk(current, size, view, controls)!;
+    expect(path.from).toEqual(current); expect(path.to).toEqual({ left: 220, top: 140 });
+    expect(path.direction).toBe(-1); expect(isBookyWalkPathClear(path, size, view, controls)).toBe(true);
+    const crossing = { from: current, to: { left: 600, top: 140 }, direction: 1 as const };
+    expect(isBookyWalkPathClear(crossing, size, view)).toBe(true);
+    expect(isBookyWalkPathClear(crossing, size, view, controls)).toBe(false);
+  });
+  it("declines an already obstructed row and any corridor with less than 32px of travel", () => {
+    const view = { left: 0, top: 62, width: 640, height: 298 }, size = { width: 312, height: 96 };
+    expect(planBookyWalk({ left: 172.5625, top: 146 }, size, view,
+      [{ left: 289.65625, top: 227, width: 164.671875, height: 48 }])).toBeNull();
+    const small = { width: 100, height: 80 }, current = { left: 200, top: 140 };
+    const corridor = [{ left: 0, top: 140, width: 169, height: 80 }, { left: 331, top: 140, width: 200, height: 80 }];
+    expect(planBookyWalk(current, small, view, corridor)).toBeNull();
+    const exact = planBookyWalk(current, small, view, [{ ...corridor[0], width: 168 }, corridor[1]])!;
+    expect(exact.to.left).toBe(168);
+  });
+  it("ignores invalid, empty and offscreen controls, but rejects invalid or out-of-bounds paths", () => {
+    const view = { left: 10, top: 70, width: 900, height: 600 }, size = { width: 100, height: 80 };
+    const current = { left: 300, top: 140 }, path = planBookyWalk(current, size, view)!;
+    const ignored = [
+      { left: 250, top: 140, width: NaN, height: 80 }, { left: 250, top: 140, width: 0, height: 80 },
+      { left: 250, top: 140, width: 100, height: -1 }, { left: -200, top: 140, width: 100, height: 80 },
+      { left: 250, top: 800, width: 100, height: 80 },
+    ];
+    expect(planBookyWalk(current, size, view, ignored)).toEqual(path);
+    expect(isBookyWalkPathClear(path, size, view, ignored)).toBe(true);
+    expect(isBookyWalkPathClear({ ...path, to: { left: 950, top: 140 } }, size, view)).toBe(false);
+    expect(isBookyWalkPathClear({ ...path, to: { left: 400, top: 141 } }, size, view)).toBe(false);
+    expect(isBookyWalkPathClear({ ...path, from: { left: NaN, top: 140 } }, size, view)).toBe(false);
+    expect(isBookyWalkPathClear(path, { ...size, height: 0 }, view)).toBe(false);
+    expect(isBookyWalkPathClear(path, size, { ...view, width: NaN })).toBe(false);
+    expect(planBookyWalk(current, size, { ...view, height: -1 })).toBeNull();
   });
   it("approaches a reachable section from the current position with a hand contact inside the target", () => {
     const view = { left: 0, top: 75, width: 1440, height: 825 }, size = { width: 176, height: 272 };
