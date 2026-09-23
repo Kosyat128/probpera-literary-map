@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "description": "Stopping Книжулик / Mr. Booky during a selected-section approach cancels movement and its pending cue without starting a new margin walk. The Stop button owns pointer, Enter and Space activation; other input and lifecycle interruption still retire the whole approach. RU/EN compact-help and existing finite-motion regressions remain covered.",
+  "changedPaths": [
+    "src/host/PlanetMascotControls.tsx",
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "unitFiles": [
+    "src/host/bookyModel.test.ts",
+    "src/host/bookyAnimation.test.ts",
+    "src/host/bookyWalk.test.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascotPreference.test.ts",
+    "src/host/planetMascotPersistence.test.ts",
+    "src/host/bookySupport.test.ts",
+    "src/host/bookyTourProgress.test.ts",
+    "src/host/bookyPlacement.test.ts"
+  ],
+  "browserFiles": [
+    "tests/pwa/booky-live-character.spec.mjs",
+    "tests/pwa/booky-reader-policy.spec.mjs"
+  ],
+  "expectedBrowserTests": 10,
+  "expectedImages": 32,
+  "requiredCaptureFlags": [
+    {
+      "scenario": "booky-open-help-placement",
+      "flags": [
+        "openHelpLocaleControlsReachable",
+        "desktopOpenHelpNavigationReachable",
+        "closedHelpNavigationReachable",
+        "collectionHeaderReachable",
+        "helpScrollsByPointerWheel",
+        "helpClosesWhileScrolled",
+        "helpRegrowsOnLargerViewport",
+        "petAndHelpFitWithoutOverlap",
+        "noAutomaticPreferenceWrites",
+        "noHelpCameraChanges",
+        "sameCanonicalGlobe",
+        "compactLandscapeHelpReadable",
+        "closedHelpGlobalHeaderReachable"
+      ]
+    },
+    {
+      "scenario": "explicit-target-approach",
+      "flags": [
+        "actualStopPointerCancelsApproach",
+        "actualStopEnterCancelsApproach",
+        "actualStopSpaceCancelsApproach",
+        "stopNeverStartsReplacementWalk",
+        "stoppedApproachRemainsStillBeyondOriginalDeadline"
+      ]
+    }
+  ]
+}

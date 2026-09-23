@@ -1,0 +1,13 @@
+{
+  "pass": true,
+  "files": 1427,
+  "bytes": 76764827,
+  "detailedLedger": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/pwa-a1-copy-verification.json",
+    "sha256": "ef2929a909ba9e308fb448e21ca0136267838c6ff2a4ef4cc8ed99ba420a8b87"
+  },
+  "artifactManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/pwa-86fb2772/artifact.json",
+    "sha256": "07bf601351680a5676b1e63a11ec1da0ff1f35845ca0a0b77b2b04c666a1e404"
+  }
+}

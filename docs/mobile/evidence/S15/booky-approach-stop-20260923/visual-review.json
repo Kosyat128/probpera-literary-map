@@ -1,0 +1,745 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-23T16:27:22.119Z",
+  "pass": true,
+  "scope": "Bounded visual review of 32 actual formal browser-a1 captures for actual Stop activation, retained compact help, companion behavior and reader preferences.",
+  "sourceCommit": "78d6c5731db4b6123c240153e59fa3bd2c346ee9",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-approach-stop-20260923/source-manifests/5f735f6faca2f0d2.json",
+    "sha256": "5f735f6faca2f0d2c39c2ced85524f57dcbb33ac49f32df3db7c08abb5976bc8",
+    "fileCount": 1650
+  },
+  "method": "Current PNG hashes and dimensions verified against original source-capture attachments. Exact-byte reuse authenticates prior review records and original images, including any prior direct-review chain; every changed image is directly inspected.",
+  "imageCount": 32,
+  "directlyInspectedImageCount": 28,
+  "authenticatedReuseImageCount": 4,
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-help-ru-1440.png",
+      "filename": "booky-live-help-ru-1440.png",
+      "sha256": "5798d4548bcdfc8ac3bf57c852a852cdc3da0a4f1b9b85aa7e199570a2bd37ed",
+      "width": 1440,
+      "height": 850,
+      "captureSourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/attachments/booky-live-character-source-evidence-823b81168c4450086483acdddf81bc3c4d2115b7.json",
+        "sha256": "c3e569cf01315fc6b598841fc0337d5500889d47d090b6ebccd7b394c3cc8ebd"
+      },
+      "reviewer": "/root/booky_compact_browser",
+      "inspected": true,
+      "method": "Direct view_image inspection of this original formal-a1 PNG during the current task.",
+      "findings": [
+        "Desktop Russian help remains inside the viewport with legible heading, close and utility labels. The actual model is separate from the card and the globe dock."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-actual-drawing-buffer.png",
+      "filename": "booky-live-actual-drawing-buffer.png",
+      "sha256": "cab8fddfc3b4362824f3d42d1db2b3b275abbdaccc6b26a1fb6d00fe9a65543c",
+      "width": 256,
+      "height": 256,
+      "captureSourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/attachments/booky-live-character-source-evidence-823b81168c4450086483acdddf81bc3c4d2115b7.json",
+        "sha256": "c3e569cf01315fc6b598841fc0337d5500889d47d090b6ebccd7b394c3cc8ebd"
+      },
+      "reviewer": "/root/booky_compact_browser",
+      "inspected": true,
+      "method": "Exact SHA-256 and PNG dimensions match an authenticated original image with direct-review provenance.",
+      "findings": [
+        "The native 256px drawing buffer shows the green book, articulated gloves and shoes, with the magnifier shaft meeting the right glove."
+      ],
+      "reusedFrom": {
+        "image": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a6/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-actual-drawing-buffer.png",
+          "sha256": "cab8fddfc3b4362824f3d42d1db2b3b275abbdaccc6b26a1fb6d00fe9a65543c",
+          "width": 256,
+          "height": 256
+        },
+        "visualReview": {
+          "path": "docs/mobile/evidence/S15/booky-compact-landscape-20260923/visual-review.json",
+          "sha256": "342bef96451ace25a123b0ed844d51aee2ca9368211914f80cc9aa3a7a70687e"
+        },
+        "sourceManifest": {
+          "path": "docs/mobile/evidence/S15/booky-compact-landscape-20260923/source-manifests/72ce7e9c0f5c092a.json",
+          "sha256": "72ce7e9c0f5c092a77d13f4740554765d65df7f199b348a013f9d3b58db9a6f1",
+          "fileCount": 1650
+        },
+        "priorDirectProvenance": {
+          "image": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-help-placement/browser-a3/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-actual-drawing-buffer.png",
+            "sha256": "cab8fddfc3b4362824f3d42d1db2b3b275abbdaccc6b26a1fb6d00fe9a65543c",
+            "width": 256,
+            "height": 256
+          },
+          "visualReview": {
+            "path": "docs/mobile/evidence/S15/booky-help-placement-20260923/visual-review.json",
+            "sha256": "c435c8dfa63343630d69f8c55a344ef6a8c1c7d77544457d2bc07c4d4e03f41e"
+          },
+          "sourceManifest": {
+            "path": "docs/mobile/evidence/S15/booky-help-placement-20260923/source-manifests/8e008df1e3643dd5.json",
+            "sha256": "8e008df1e3643dd557facbc05bf152324e76f4634b16c99fcd877cb4c242400f",
+            "fileCount": 1650
+          },
+          "priorDirectProvenance": {
+            "visualReview": {
+              "path": "docs/mobile/evidence/S15/booky-help-placement-20260923/visual-review-a1.json",
+              "sha256": "536b87ffa7715f67f80581c74500a569fb0123a8f547a5650b7e67ffe0a5febe"
+            },
+            "image": {
+              "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-help-placement/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-actual-drawing-buffer.png",
+              "sha256": "cab8fddfc3b4362824f3d42d1db2b3b275abbdaccc6b26a1fb6d00fe9a65543c",
+              "width": 256,
+              "height": 256
+            },
+            "sourceManifest": {
+              "path": "docs/mobile/evidence/S15/booky-help-placement-20260923/source-manifests/764fa76cccc9a254.json",
+              "sha256": "764fa76cccc9a2541865a7fa39371d2f14bcb39e887a68b9e0ea718251f5d8fa",
+              "fileCount": 1650
+            }
+          },
+          "findings": [
+            "The native 256px drawing buffer shows the green book, articulated gloves and shoes, with the magnifier shaft meeting the right glove."
+          ]
+        },
+        "findings": [
+          "The native 256px drawing buffer shows the green book, articulated gloves and shoes, with the magnifier shaft meeting the right glove."
+        ]
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-guide-en-320.png",
+      "filename": "booky-live-guide-en-320.png",
+      "sha256": "8bd2a63e839539463dc4ac2fa61f9cc5a16b40112e1c1207e883a7fe5d1958d8",
+      "width": 320,
+      "height": 844,
+      "captureSourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/attachments/booky-live-character-source-evidence-823b81168c4450086483acdddf81bc3c4d2115b7.json",
+        "sha256": "c3e569cf01315fc6b598841fc0337d5500889d47d090b6ebccd7b394c3cc8ebd"
+      },
+      "reviewer": "/root/booky_compact_browser",
+      "inspected": true,
+      "method": "Direct view_image inspection of this original formal-a1 PNG during the current task.",
+      "findings": [
+        "The 320px English guide keeps title, close, selected writer and step metadata visible; further guide text remains in the scroll area. The highlighted Search target and complete model remain separate."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/booky-live-interaction-en-landscape.png",
+      "filename": "booky-live-interaction-en-landscape.png",
+      "sha256": "7e51e8c118a1d4064d97c33b893521765a8741e65a004676954198f72240066b",
+      "width": 844,
+      "height": 390,
+      "captureSourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-live--d3a75-nical-globe-stays-unchanged/attachments/booky-live-character-source-evidence-823b81168c4450086483acdddf81bc3c4d2115b7.json",
+        "sha256": "c3e569cf01315fc6b598841fc0337d5500889d47d090b6ebccd7b394c3cc8ebd"
+      },
+      "reviewer": "/root/booky_compact_browser",
+      "inspected": true,
+      "method": "Direct view_image inspection of this original formal-a1 PNG during the current task.",
+      "findings": [
+        "The short landscape English guide keeps its title, close and step metadata readable beside the complete model. The open card deliberately overlaps part of the globe dock."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-Mr-Bo-a0973-serves-newer-keyboard-focus/booky-useful-actions-ru-320.png",
+      "filename": "booky-useful-actions-ru-320.png",
+      "sha256": "75168000c2256f96186abac9cc6893bae822ea8f2d1c641b13bd3ffc9699c151",
+      "width": 320,
+      "height": 844,
+      "captureSourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-Mr-Bo-a0973-serves-newer-keyboard-focus/attachments/booky-live-character-source-evidence-438d1bb32f0baa15e395a5d453b95958608e734e.json",
+        "sha256": "6b5a54bab8cf8ffa85b720207fe2dbb104bae17314a38a730f993f18e416ffe8"
+      },
+      "reviewer": "/root/booky_compact_browser",
+      "inspected": true,
+      "method": "Direct view_image inspection of this original formal-a1 PNG during the current task.",
+      "findings": [
+        "The narrow Russian useful-actions section is expanded inside the independently scrolling card; sticky title and close stay visible and the model remains outside the card."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-Mr-Bo-b0fb7-n-still-with-reduced-motion/booky-explicit-gestures-en-1440.png",
+      "filename": "booky-explicit-gestures-en-1440.png",
+      "sha256": "d3dca7c3d013689b1ee403ec4368520f55027a145754cafd2aa98f59b44df9e0",
+      "width": 1440,
+      "height": 850,
+      "captureSourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-Mr-Bo-b0fb7-n-still-with-reduced-motion/attachments/booky-live-character-source-evidence-8c2e5b222ff0027f404170fb1b8242acf0948d56.json",
+        "sha256": "76f5496427ba8f929e21576c835a0f66e30fcccdd1c9ebed70dcc66147160186"
+      },
+      "reviewer": "/root/booky_compact_browser",
+      "inspected": true,
+      "method": "Direct view_image inspection of this original formal-a1 PNG during the current task.",
+      "findings": [
+        "The English gesture buttons, focused Surprise control, selected Stretch response and subsequent journey notice are readable inside the scrolling card. Sticky title and close remain clean and the complete model is separate."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-Mr-Bo-0a43b-g-hiding-and-reduced-motion/booky-margin-walk-ru-1440.png",
+      "filename": "booky-margin-walk-ru-1440.png",
+      "sha256": "5055f4737700b027e77d56615b6054dddbc37446c054d181b2a94ca711464baf",
+      "width": 1440,
+      "height": 850,
+      "captureSourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-Mr-Bo-0a43b-g-hiding-and-reduced-motion/attachments/booky-live-character-source-evidence-93b9f0dd820023be39fa5e6685b80b090b7b2fec.json",
+        "sha256": "feb95f7e555cc139ccf9b4fb6887e159c2dfd2e5311f109fbbf0894445acfd36"
+      },
+      "reviewer": "/root/booky_compact_browser",
+      "inspected": true,
+      "method": "Direct view_image inspection of this original formal-a1 PNG during the current task.",
+      "findings": [
+        "The full Russian walking model and explicit Stop walking button remain inside the desktop viewport. The floating companion overlaps ordinary archive content without cropping its controls."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-Mr-Bo-58b82-ellation-and-reduced-motion/booky-target-approach-ru-1440.png",
+      "filename": "booky-target-approach-ru-1440.png",
+      "sha256": "1e51639f92c2622cf16b8e8103bd8130dd78cc82ceba5cd9bd28d615b92b519a",
+      "width": 1440,
+      "height": 900,
+      "captureSourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-Mr-Bo-58b82-ellation-and-reduced-motion/attachments/booky-live-character-source-evidence-385f0fa7496fdbbb6a1be74caa38eecfa503c33f.json",
+        "sha256": "104e827067d25ed07d5e7c01c751f45b70499256822aa82e004c77cb7e123013"
+      },
+      "reviewer": "/root/booky_compact_browser",
+      "inspected": true,
+      "method": "Direct view_image inspection of this original formal-a1 PNG during the current task.",
+      "findings": [
+        "The Russian collection graphics section, selected radio option and target cue are visible. The complete moving model and Stop button remain below the target area, with collection header unobstructed."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-controls-ru-320.png",
+      "filename": "booky-mobile-controls-ru-320.png",
+      "sha256": "7d1b04b1960474116c858fc5b9b4d329c033f9d4925a79e910e9a0261c590029",
+      "width": 320,
+      "height": 844,
+      "captureSourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/attachments/booky-live-character-source-evidence-efd5f6fcd80de27fd06910e661daef5db60f2557.json",
+        "sha256": "d36a60ff46f1db09be226388ec757aea68a4db5fe5f71ad82529f96cdbca34cd"
+      },
+      "reviewer": "/root/booky_compact_browser",
+      "inspected": true,
+      "method": "Direct view_image inspection of this original formal-a1 PNG during the current task.",
+      "findings": [
+        "The collapsed Russian companion fits at 320px portrait with its full model, move, hide and walk controls above the globe dock and country strip."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-controls-en-320.png",
+      "filename": "booky-mobile-controls-en-320.png",
+      "sha256": "28835e6892e40053dfc7df5f61f4573fcd6c7d1dd7e7aa80c95246af7f5bd001",
+      "width": 320,
+      "height": 844,
+      "captureSourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/attachments/booky-live-character-source-evidence-efd5f6fcd80de27fd06910e661daef5db60f2557.json",
+        "sha256": "d36a60ff46f1db09be226388ec757aea68a4db5fe5f71ad82529f96cdbca34cd"
+      },
+      "reviewer": "/root/booky_compact_browser",
+      "inspected": true,
+      "method": "Direct view_image inspection of this original formal-a1 PNG during the current task.",
+      "findings": [
+        "The collapsed English companion fits at 320px portrait; the wrapped walk label stays within its button and the globe dock and country strip remain clear."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-controls-en-landscape.png",
+      "filename": "booky-mobile-controls-en-landscape.png",
+      "sha256": "e6a0abd57f3567a4e4371494f9ab362b76750c109a8bf6b0295e3b827f08b4f7",
+      "width": 800,
+      "height": 400,
+      "captureSourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/attachments/booky-live-character-source-evidence-efd5f6fcd80de27fd06910e661daef5db60f2557.json",
+        "sha256": "d36a60ff46f1db09be226388ec757aea68a4db5fe5f71ad82529f96cdbca34cd"
+      },
+      "reviewer": "/root/booky_compact_browser",
+      "inspected": true,
+      "method": "Direct view_image inspection of this original formal-a1 PNG during the current task.",
+      "findings": [
+        "The collapsed English landscape companion keeps the full model and one-row controls above the globe dock, with top navigation and country strip clear."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-collection-en-landscape.png",
+      "filename": "booky-mobile-collection-en-landscape.png",
+      "sha256": "fbb0f226f5569d2b8b4f494a1e527ff2792f68e40efcde49678d13e1229df29e",
+      "width": 800,
+      "height": 400,
+      "captureSourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/attachments/booky-live-character-source-evidence-efd5f6fcd80de27fd06910e661daef5db60f2557.json",
+        "sha256": "d36a60ff46f1db09be226388ec757aea68a4db5fe5f71ad82529f96cdbca34cd"
+      },
+      "reviewer": "/root/booky_compact_browser",
+      "inspected": true,
+      "method": "Direct view_image inspection of this original formal-a1 PNG during the current task.",
+      "findings": [
+        "The English landscape collection header and book action buttons remain clear. The floating companion overlays ordinary book title content; no universal archive-content visibility is claimed."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-collection-tips-en-320.png",
+      "filename": "booky-mobile-collection-tips-en-320.png",
+      "sha256": "a5c22daeae479eb054b503b046218fb29e5734faa39d734159c4852c1a06ede4",
+      "width": 320,
+      "height": 844,
+      "captureSourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/attachments/booky-live-character-source-evidence-efd5f6fcd80de27fd06910e661daef5db60f2557.json",
+        "sha256": "d36a60ff46f1db09be226388ec757aea68a4db5fe5f71ad82529f96cdbca34cd"
+      },
+      "reviewer": "/root/booky_compact_browser",
+      "inspected": true,
+      "method": "Direct view_image inspection of this original formal-a1 PNG during the current task.",
+      "findings": [
+        "The English 320px collection help fits below the complete companion. Its heading, close and initial body text are legible; the persistent collection header remains clear."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-controls-ru-800.png",
+      "filename": "globe-landscape-controls-ru-800.png",
+      "sha256": "5fa936fe006e8747863f947102e5124bcd0d055c6f01b19b5baa0f0af1029b00",
+      "width": 800,
+      "height": 400,
+      "captureSourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-short-14e75-try-archive-in-both-locales/attachments/booky-live-character-source-evidence-1f566f427f0ed549da4f4226ad209cf9f80e4e06.json",
+        "sha256": "c9a6e8cddab8fdb2bf94731c1db1ebe90f168356d464723761fc0ed49b965f77"
+      },
+      "reviewer": "/root/booky_compact_browser",
+      "inspected": true,
+      "method": "Direct view_image inspection of this original formal-a1 PNG during the current task.",
+      "findings": [
+        "Russian 800px landscape navigation, edition rail, dock and collapsed country strip remain visible and separate from the companion row."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-controls-en-800.png",
+      "filename": "globe-landscape-controls-en-800.png",
+      "sha256": "1036b6dfbd850e678e398db756a43f51b289c73e095ba928feef17f69ca38c49",
+      "width": 800,
+      "height": 400,
+      "captureSourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-short-14e75-try-archive-in-both-locales/attachments/booky-live-character-source-evidence-1f566f427f0ed549da4f4226ad209cf9f80e4e06.json",
+        "sha256": "c9a6e8cddab8fdb2bf94731c1db1ebe90f168356d464723761fc0ed49b965f77"
+      },
+      "reviewer": "/root/booky_compact_browser",
+      "inspected": true,
+      "method": "Direct view_image inspection of this original formal-a1 PNG during the current task.",
+      "findings": [
+        "English 800px landscape navigation, edition rail, dock and collapsed country strip remain visible and separate from the companion row."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-controls-en-667.png",
+      "filename": "globe-landscape-controls-en-667.png",
+      "sha256": "d8e2ca6dafaba0848679b2325cd56b7190d83476a47e77932fe2e2a9cd3501cd",
+      "width": 667,
+      "height": 375,
+      "captureSourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-short-14e75-try-archive-in-both-locales/attachments/booky-live-character-source-evidence-1f566f427f0ed549da4f4226ad209cf9f80e4e06.json",
+        "sha256": "c9a6e8cddab8fdb2bf94731c1db1ebe90f168356d464723761fc0ed49b965f77"
+      },
+      "reviewer": "/root/booky_compact_browser",
+      "inspected": true,
+      "method": "Direct view_image inspection of this original formal-a1 PNG during the current task.",
+      "findings": [
+        "English 667px landscape keeps the complete model and wrapped walk label above the dock; country strip and top navigation fit in the viewport."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-short-14e75-try-archive-in-both-locales/globe-landscape-archive-open-en-667.png",
+      "filename": "globe-landscape-archive-open-en-667.png",
+      "sha256": "521e1c7e81d060b0ce2dbdf340928b337e43a32ae7e97295a4fab649bd9eb1b8",
+      "width": 667,
+      "height": 375,
+      "captureSourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-short-14e75-try-archive-in-both-locales/attachments/booky-live-character-source-evidence-1f566f427f0ed549da4f4226ad209cf9f80e4e06.json",
+        "sha256": "c9a6e8cddab8fdb2bf94731c1db1ebe90f168356d464723761fc0ed49b965f77"
+      },
+      "reviewer": "/root/booky_compact_browser",
+      "inspected": true,
+      "method": "Direct view_image inspection of this original formal-a1 PNG during the current task.",
+      "findings": [
+        "With the archive expanded at 667px, its country header and inner close remain visible; the full companion and row controls sit separately from the inner close."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-ru-568.png",
+      "filename": "booky-help-globe-ru-568.png",
+      "sha256": "d15c2c4629b9d526d62de7e0e51c86675fb4f65a2ee5f3f8ee57a74240b18c7c",
+      "width": 568,
+      "height": 320,
+      "captureSourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/attachments/booky-live-character-source-evidence-7d277fd63272c7cd9708067cf5254f9e56099c60.json",
+        "sha256": "8b284b8a436ccbc4adee75a54a3dc508b1eea1228e22f0cd1ba0898919e50878"
+      },
+      "reviewer": "/root/booky_compact_browser",
+      "inspected": true,
+      "method": "Direct view_image inspection of this original formal-a1 PNG during the current task.",
+      "findings": [
+        "Russian 568px help now shows body text beneath the heading and selected writer in a 200px side card; model, move and hide controls remain complete and separate."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-ru-568-scrolled.png",
+      "filename": "booky-help-globe-ru-568-scrolled.png",
+      "sha256": "b80a14488c47fb645537a6aa9248bf87f952b826b428f63e37853ac1c40f221a",
+      "width": 568,
+      "height": 320,
+      "captureSourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/attachments/booky-live-character-source-evidence-7d277fd63272c7cd9708067cf5254f9e56099c60.json",
+        "sha256": "8b284b8a436ccbc4adee75a54a3dc508b1eea1228e22f0cd1ba0898919e50878"
+      },
+      "reviewer": "/root/booky_compact_browser",
+      "inspected": true,
+      "method": "Direct view_image inspection of this original formal-a1 PNG during the current task.",
+      "findings": [
+        "After real wheel scrolling at Russian 568px, the sticky title and close stay inside the card with no preceding content above the heading. The Useful actions section is readable and model remains separate."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-en-568.png",
+      "filename": "booky-help-globe-en-568.png",
+      "sha256": "e468b5361722a54e4c79b9b0daa6a14573bc6e6dc7d67622c9e7a6e9def68477",
+      "width": 568,
+      "height": 320,
+      "captureSourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/attachments/booky-live-character-source-evidence-7d277fd63272c7cd9708067cf5254f9e56099c60.json",
+        "sha256": "8b284b8a436ccbc4adee75a54a3dc508b1eea1228e22f0cd1ba0898919e50878"
+      },
+      "reviewer": "/root/booky_compact_browser",
+      "inspected": true,
+      "method": "Direct view_image inspection of this original formal-a1 PNG during the current task.",
+      "findings": [
+        "English 568px help shows initial body text under the selected writer in the 200px card; the full model and compact move/hide row remain separate."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-en-568-scrolled.png",
+      "filename": "booky-help-globe-en-568-scrolled.png",
+      "sha256": "c43f2c27fdcf49465bead278f9a21226f66bce0d22ab815295f9ddb3e96af8ea",
+      "width": 568,
+      "height": 320,
+      "captureSourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/attachments/booky-live-character-source-evidence-7d277fd63272c7cd9708067cf5254f9e56099c60.json",
+        "sha256": "8b284b8a436ccbc4adee75a54a3dc508b1eea1228e22f0cd1ba0898919e50878"
+      },
+      "reviewer": "/root/booky_compact_browser",
+      "inspected": true,
+      "method": "Direct view_image inspection of this original formal-a1 PNG during the current task.",
+      "findings": [
+        "After real wheel scrolling at English 568px, title and close stay visible with Useful actions and gesture section labels inside the scroll area; model remains separate."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-ru-640.png",
+      "filename": "booky-help-globe-ru-640.png",
+      "sha256": "7725919762e1914ab4c07332c1599d447f005bb169c7f280239d0e68757962a0",
+      "width": 640,
+      "height": 360,
+      "captureSourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/attachments/booky-live-character-source-evidence-7d277fd63272c7cd9708067cf5254f9e56099c60.json",
+        "sha256": "8b284b8a436ccbc4adee75a54a3dc508b1eea1228e22f0cd1ba0898919e50878"
+      },
+      "reviewer": "/root/booky_compact_browser",
+      "inspected": true,
+      "method": "Direct view_image inspection of this original formal-a1 PNG during the current task.",
+      "findings": [
+        "Russian 640px help shows a complete initial body paragraph in the 340px-wide side card; the actual model and compact move/hide controls remain outside it."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-ru-640-scrolled.png",
+      "filename": "booky-help-globe-ru-640-scrolled.png",
+      "sha256": "2a710e34a6d8aabbf8c3b1d3da79d65a42afffa2671c2814d9b75df94d409c05",
+      "width": 640,
+      "height": 360,
+      "captureSourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/attachments/booky-live-character-source-evidence-7d277fd63272c7cd9708067cf5254f9e56099c60.json",
+        "sha256": "8b284b8a436ccbc4adee75a54a3dc508b1eea1228e22f0cd1ba0898919e50878"
+      },
+      "reviewer": "/root/booky_compact_browser",
+      "inspected": true,
+      "method": "Direct view_image inspection of this original formal-a1 PNG during the current task.",
+      "findings": [
+        "After real wheel scrolling at Russian 640px, the Useful actions and gesture headings are legible beneath the sticky title and close, without content leaking above the heading."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-en-640.png",
+      "filename": "booky-help-globe-en-640.png",
+      "sha256": "a945e3adbf73d59ebbd03099fefafb95cee6cbd41403efdf71f78d5f11630ea8",
+      "width": 640,
+      "height": 360,
+      "captureSourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/attachments/booky-live-character-source-evidence-7d277fd63272c7cd9708067cf5254f9e56099c60.json",
+        "sha256": "8b284b8a436ccbc4adee75a54a3dc508b1eea1228e22f0cd1ba0898919e50878"
+      },
+      "reviewer": "/root/booky_compact_browser",
+      "inspected": true,
+      "method": "Direct view_image inspection of this original formal-a1 PNG during the current task.",
+      "findings": [
+        "English 640px help shows the complete initial body paragraph in the 340px-wide card; model and compact controls remain separate and fully inside the viewport."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-en-640-scrolled.png",
+      "filename": "booky-help-globe-en-640-scrolled.png",
+      "sha256": "04e8791f2ca0a1fb4f66f80265d77194d6565a74afc6a3f1066b2dccfa139474",
+      "width": 640,
+      "height": 360,
+      "captureSourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/attachments/booky-live-character-source-evidence-7d277fd63272c7cd9708067cf5254f9e56099c60.json",
+        "sha256": "8b284b8a436ccbc4adee75a54a3dc508b1eea1228e22f0cd1ba0898919e50878"
+      },
+      "reviewer": "/root/booky_compact_browser",
+      "inspected": true,
+      "method": "Direct view_image inspection of this original formal-a1 PNG during the current task.",
+      "findings": [
+        "After real wheel scrolling at English 640px, Useful actions and gestures remain legible below the sticky heading and close; the full model remains separate."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-ru-800.png",
+      "filename": "booky-help-globe-ru-800.png",
+      "sha256": "72198f00cfa862bd360d737c70e37e2564daeebbab63b1f7b95a1edfd37f753a",
+      "width": 800,
+      "height": 400,
+      "captureSourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/attachments/booky-live-character-source-evidence-7d277fd63272c7cd9708067cf5254f9e56099c60.json",
+        "sha256": "8b284b8a436ccbc4adee75a54a3dc508b1eea1228e22f0cd1ba0898919e50878"
+      },
+      "reviewer": "/root/booky_compact_browser",
+      "inspected": true,
+      "method": "Direct view_image inspection of this original formal-a1 PNG during the current task.",
+      "findings": [
+        "Russian 800px open help has readable body text beneath its heading, and the model stays separate. The disabled walking control remains present outside the compact-width scope."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-en-667.png",
+      "filename": "booky-help-globe-en-667.png",
+      "sha256": "bbbd4b1b7798fa9933d80b02cadd2677219d53257453ba523e3d3023dcc9b2a3",
+      "width": 667,
+      "height": 375,
+      "captureSourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/attachments/booky-live-character-source-evidence-7d277fd63272c7cd9708067cf5254f9e56099c60.json",
+        "sha256": "8b284b8a436ccbc4adee75a54a3dc508b1eea1228e22f0cd1ba0898919e50878"
+      },
+      "reviewer": "/root/booky_compact_browser",
+      "inspected": true,
+      "method": "Direct view_image inspection of this original formal-a1 PNG during the current task.",
+      "findings": [
+        "English 667px open help retains a readable side column and complete separate model. The heading, close, selected writer and initial body paragraph fit without horizontal clipping."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-collection-ru-320.png",
+      "filename": "booky-help-collection-ru-320.png",
+      "sha256": "a3ceba28f777c83d230bdb2d375425e751ce3023302fd0e8dcca50f16442a3d8",
+      "width": 320,
+      "height": 844,
+      "captureSourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/attachments/booky-live-character-source-evidence-7d277fd63272c7cd9708067cf5254f9e56099c60.json",
+        "sha256": "8b284b8a436ccbc4adee75a54a3dc508b1eea1228e22f0cd1ba0898919e50878"
+      },
+      "reviewer": "/root/booky_compact_browser",
+      "inspected": true,
+      "method": "Direct view_image inspection of this original formal-a1 PNG during the current task.",
+      "findings": [
+        "The Russian 320px collection keeps its persistent header visible above readable help. The model is separate below the card; ordinary graphics content remains behind the deliberate overlay."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-collection-en-320.png",
+      "filename": "booky-help-collection-en-320.png",
+      "sha256": "002f391d311bd95f21ec8cd1c06d05e25efa02adeeb2a8dbf8e94205128f97e1",
+      "width": 320,
+      "height": 844,
+      "captureSourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/attachments/booky-live-character-source-evidence-7d277fd63272c7cd9708067cf5254f9e56099c60.json",
+        "sha256": "8b284b8a436ccbc4adee75a54a3dc508b1eea1228e22f0cd1ba0898919e50878"
+      },
+      "reviewer": "/root/booky_compact_browser",
+      "inspected": true,
+      "method": "Exact SHA-256 and PNG dimensions match an authenticated original image with direct-review provenance.",
+      "findings": [
+        "English collection help is legible and separate from the companion, while the persistent header stays clear."
+      ],
+      "reusedFrom": {
+        "image": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a6/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-collection-en-320.png",
+          "sha256": "002f391d311bd95f21ec8cd1c06d05e25efa02adeeb2a8dbf8e94205128f97e1",
+          "width": 320,
+          "height": 844
+        },
+        "visualReview": {
+          "path": "docs/mobile/evidence/S15/booky-compact-landscape-20260923/visual-review.json",
+          "sha256": "342bef96451ace25a123b0ed844d51aee2ca9368211914f80cc9aa3a7a70687e"
+        },
+        "sourceManifest": {
+          "path": "docs/mobile/evidence/S15/booky-compact-landscape-20260923/source-manifests/72ce7e9c0f5c092a.json",
+          "sha256": "72ce7e9c0f5c092a77d13f4740554765d65df7f199b348a013f9d3b58db9a6f1",
+          "fileCount": 1650
+        },
+        "priorDirectProvenance": {
+          "image": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-help-placement/browser-a3/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-collection-en-320.png",
+            "sha256": "002f391d311bd95f21ec8cd1c06d05e25efa02adeeb2a8dbf8e94205128f97e1",
+            "width": 320,
+            "height": 844
+          },
+          "visualReview": {
+            "path": "docs/mobile/evidence/S15/booky-help-placement-20260923/visual-review.json",
+            "sha256": "c435c8dfa63343630d69f8c55a344ef6a8c1c7d77544457d2bc07c4d4e03f41e"
+          },
+          "sourceManifest": {
+            "path": "docs/mobile/evidence/S15/booky-help-placement-20260923/source-manifests/8e008df1e3643dd5.json",
+            "sha256": "8e008df1e3643dd557facbc05bf152324e76f4634b16c99fcd877cb4c242400f",
+            "fileCount": 1650
+          },
+          "findings": [
+            "English collection help is legible and separate from the companion, while the persistent header stays clear."
+          ]
+        },
+        "findings": [
+          "English collection help is legible and separate from the companion, while the persistent header stays clear."
+        ]
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-reader-policy-explic-219f8-on-never-grant-stale-policy/reader-profile-saved-ru.png",
+      "filename": "reader-profile-saved-ru.png",
+      "sha256": "1c2df781617ea2b43c9860dccf8b832142581db9a4ce97d7a04b652adb47a349",
+      "width": 1440,
+      "height": 850,
+      "captureSourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-reader-policy-explic-219f8-on-never-grant-stale-policy/attachments/booky-reader-policy-source-evidence-32d7b50f1c9081a4c0c6122a75c86aa9191432fc.json",
+        "sha256": "d9ffa11f39657951d632a58e4c671d7bc1234a1c0cd8d84fab2587b1267c0fe7"
+      },
+      "reviewer": "/root/booky_compact_browser",
+      "inspected": true,
+      "method": "Exact SHA-256 and PNG dimensions match an authenticated original image with direct-review provenance.",
+      "findings": [
+        "The saved Russian profile, age, level selector and delete action remain legible. Sticky heading and close sit cleanly at the top of the scrolled card, separate from the character."
+      ],
+      "reusedFrom": {
+        "image": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a6/booky-reader-policy-explic-219f8-on-never-grant-stale-policy/reader-profile-saved-ru.png",
+          "sha256": "1c2df781617ea2b43c9860dccf8b832142581db9a4ce97d7a04b652adb47a349",
+          "width": 1440,
+          "height": 850
+        },
+        "visualReview": {
+          "path": "docs/mobile/evidence/S15/booky-compact-landscape-20260923/visual-review.json",
+          "sha256": "342bef96451ace25a123b0ed844d51aee2ca9368211914f80cc9aa3a7a70687e"
+        },
+        "sourceManifest": {
+          "path": "docs/mobile/evidence/S15/booky-compact-landscape-20260923/source-manifests/72ce7e9c0f5c092a.json",
+          "sha256": "72ce7e9c0f5c092a77d13f4740554765d65df7f199b348a013f9d3b58db9a6f1",
+          "fileCount": 1650
+        },
+        "priorDirectProvenance": {
+          "image": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-help-placement/browser-a3/booky-reader-policy-explic-219f8-on-never-grant-stale-policy/reader-profile-saved-ru.png",
+            "sha256": "1c2df781617ea2b43c9860dccf8b832142581db9a4ce97d7a04b652adb47a349",
+            "width": 1440,
+            "height": 850
+          },
+          "visualReview": {
+            "path": "docs/mobile/evidence/S15/booky-help-placement-20260923/visual-review.json",
+            "sha256": "c435c8dfa63343630d69f8c55a344ef6a8c1c7d77544457d2bc07c4d4e03f41e"
+          },
+          "sourceManifest": {
+            "path": "docs/mobile/evidence/S15/booky-help-placement-20260923/source-manifests/8e008df1e3643dd5.json",
+            "sha256": "8e008df1e3643dd557facbc05bf152324e76f4634b16c99fcd877cb4c242400f",
+            "fileCount": 1650
+          },
+          "findings": [
+            "The saved Russian profile, age, level selector and delete action remain legible. Sticky heading and close sit cleanly at the top of the scrolled card, separate from the character."
+          ]
+        },
+        "findings": [
+          "The saved Russian profile, age, level selector and delete action remain legible. Sticky heading and close sit cleanly at the top of the scrolled card, separate from the character."
+        ]
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-reader-policy-explic-219f8-on-never-grant-stale-policy/reader-profile-draft-narrow-en.png",
+      "filename": "reader-profile-draft-narrow-en.png",
+      "sha256": "3e14c9e8ec736801f4505bc9e94df62798e2e3e53f920161734d8486beb77632",
+      "width": 320,
+      "height": 850,
+      "captureSourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-reader-policy-explic-219f8-on-never-grant-stale-policy/attachments/booky-reader-policy-source-evidence-32d7b50f1c9081a4c0c6122a75c86aa9191432fc.json",
+        "sha256": "d9ffa11f39657951d632a58e4c671d7bc1234a1c0cd8d84fab2587b1267c0fe7"
+      },
+      "reviewer": "/root/booky_compact_browser",
+      "inspected": true,
+      "method": "Direct view_image inspection of this original formal-a1 PNG during the current task.",
+      "findings": [
+        "The narrow English reader-profile card keeps the sticky title and close visible, with the adult-only explanation, age input and range text readable; the actual model remains separate."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-reader-policy-future-298cd-on-cannot-restore-admission/reader-profile-delete-failed-en.png",
+      "filename": "reader-profile-delete-failed-en.png",
+      "sha256": "2b2566b029ba8525023adfc9615ca9cac57fa497f47fd7ac8146f947d5ead898",
+      "width": 1440,
+      "height": 850,
+      "captureSourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop/browser-a1/booky-reader-policy-future-298cd-on-cannot-restore-admission/attachments/booky-reader-policy-source-evidence-9f7a545a267c42c0dfd28f59f5e8f12aefd7657f.json",
+        "sha256": "f13160f8a30578e875cb1955cf8fe594aacc896e39f252a415e885854fef3f4c"
+      },
+      "reviewer": "/root/booky_compact_browser",
+      "inspected": true,
+      "method": "Exact SHA-256 and PNG dimensions match an authenticated original image with direct-review provenance.",
+      "findings": [
+        "The explicit failed-deletion message and retry action remain legible. The sticky title and close stay inside the card with no text leaking above them."
+      ],
+      "reusedFrom": {
+        "image": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a6/booky-reader-policy-future-298cd-on-cannot-restore-admission/reader-profile-delete-failed-en.png",
+          "sha256": "2b2566b029ba8525023adfc9615ca9cac57fa497f47fd7ac8146f947d5ead898",
+          "width": 1440,
+          "height": 850
+        },
+        "visualReview": {
+          "path": "docs/mobile/evidence/S15/booky-compact-landscape-20260923/visual-review.json",
+          "sha256": "342bef96451ace25a123b0ed844d51aee2ca9368211914f80cc9aa3a7a70687e"
+        },
+        "sourceManifest": {
+          "path": "docs/mobile/evidence/S15/booky-compact-landscape-20260923/source-manifests/72ce7e9c0f5c092a.json",
+          "sha256": "72ce7e9c0f5c092a77d13f4740554765d65df7f199b348a013f9d3b58db9a6f1",
+          "fileCount": 1650
+        },
+        "priorDirectProvenance": {
+          "image": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-help-placement/browser-a3/booky-reader-policy-future-298cd-on-cannot-restore-admission/reader-profile-delete-failed-en.png",
+            "sha256": "2b2566b029ba8525023adfc9615ca9cac57fa497f47fd7ac8146f947d5ead898",
+            "width": 1440,
+            "height": 850
+          },
+          "visualReview": {
+            "path": "docs/mobile/evidence/S15/booky-help-placement-20260923/visual-review.json",
+            "sha256": "c435c8dfa63343630d69f8c55a344ef6a8c1c7d77544457d2bc07c4d4e03f41e"
+          },
+          "sourceManifest": {
+            "path": "docs/mobile/evidence/S15/booky-help-placement-20260923/source-manifests/8e008df1e3643dd5.json",
+            "sha256": "8e008df1e3643dd557facbc05bf152324e76f4634b16c99fcd877cb4c242400f",
+            "fileCount": 1650
+          },
+          "findings": [
+            "The explicit failed-deletion message and retry action remain legible. The sticky title and close stay inside the card with no text leaking above them."
+          ]
+        },
+        "findings": [
+          "The explicit failed-deletion message and retry action remain legible. The sticky title and close stay inside the card with no text leaking above them."
+        ]
+      }
+    }
+  ],
+  "limitations": [
+    "Open help can overlap underlying globe controls; strict visible global-header/dock/country/rail checks apply after actual close.",
+    "Open collection coverage concerns its persistent header, not every underlying card.",
+    "Source Chrome tests and captures are not installed-device, iOS, nonzero OS safe-area, full accessibility, stage or release acceptance."
+  ],
+  "releaseReady": false
+}

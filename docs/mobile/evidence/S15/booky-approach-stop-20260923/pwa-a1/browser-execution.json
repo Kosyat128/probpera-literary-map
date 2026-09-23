@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S15/booky-approach-stop-20260923/pwa-a1.config.mjs"
+  ],
+  "exitCode": 0,
+  "durationMs": 22860,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/booky-approach-stop-20260923/pwa-a1/browser-stdout.log",
+    "bytes": 189,
+    "sha256": "5bdeff92a2d89e9f47d306dde78772637a8ef352dbe5cfd3188090668e2d312e"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/booky-approach-stop-20260923/pwa-a1/browser-stderr.log",
+    "bytes": 164,
+    "sha256": "2d0090e62572c5adbed6acff01a0845a1e9139548ac2566ded807d3b7a391a44"
+  }
+}

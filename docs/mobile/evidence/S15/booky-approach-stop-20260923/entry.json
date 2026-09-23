@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-23T16:21:34.252Z",
+  "stage": "S15",
+  "checkpoint": "6d47f36bb0c6d12c9c33bbea14f606ecfbe88a08",
+  "previous": "docs/mobile/evidence/S15/booky-compact-landscape-20260923/result.json",
+  "previousCheckpointResult": {
+    "path": "docs/mobile/evidence/S15/booky-compact-landscape-20260923/result.json",
+    "sha256": "127835b4231a812a4e62e99132c0f79c4f62525c1ad761269a1fa1ec815d7133"
+  },
+  "previousRuntimeResult": {
+    "path": "docs/mobile/evidence/S15/booky-compact-landscape-20260923/result.json",
+    "sha256": "127835b4231a812a4e62e99132c0f79c4f62525c1ad761269a1fa1ec815d7133"
+  },
+  "priorSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-compact-landscape-20260923/source-manifests/72ce7e9c0f5c092a.json",
+    "sha256": "72ce7e9c0f5c092a77d13f4740554765d65df7f199b348a013f9d3b58db9a6f1",
+    "fileCount": 1650
+  },
+  "scopeConfiguration": {
+    "path": "docs/mobile/evidence/S15/booky-approach-stop-20260923/scope.json",
+    "sha256": "d6038b83e4091363f6ed08a9db61d38a0f2a3490c21995ec0f1750ff47baccfe"
+  },
+  "checkpointFiles": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "e41fb76546a4fd3339f1021cdd4894b825c5f17bd8bdddbd6ccec0d383675d6a"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "2f280b536581b23caac97c6f0ad467cb566d26e6b153b238a61494d370c848cf"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "28868cf5529f91e8c9b78292e544ca0a9556b878d0ab73860ef79e593e1edda1"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "5ece839fc1bf95e3ce678de3d0ba9de7cd9a5e58fb6016322d0c1ebcbcc1068b"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "44522a5faa0968c4898a3ee3c403db94fe94104899cebe7f0d248258604118b7"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "3386246631de7f41bdb75ad1f37b252a88e463b1362d4deb9a69fb8915a63c1a"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "2f80d795fda3e97b286afd26b7071cbef2d74009a4f28417074c11bbdd0283c3"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "a9bf2ce258b526bf74e762af8d9e87ce00944acd06e00be22453e28da702cd83"
+    }
+  ],
+  "changedPaths": [
+    "src/host/PlanetMascotControls.tsx",
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "newImplementationFiles": [],
+  "currentSourceInputs": [
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "7757cb1ed06378bba3eecab43727daec1b1bb7914912d84ac035850add5e7691"
+    },
+    {
+      "path": "tests/pwa/booky-live-character.spec.mjs",
+      "sha256": "da55ef9069c07023383f2c47054edcd044cf456cd08b7230a74b52aa98cd08f6"
+    }
+  ],
+  "sourceInputCount": 1650,
+  "protectedInputCount": 1648,
+  "runtimeRequired": [
+    "src/host/PlanetMascotControls.tsx"
+  ],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "supplementalArchiveGitIdentity": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "checkpoint": "6d47f36bb0c6d12c9c33bbea14f606ecfbe88a08",
+      "gitBlobSha256": "d0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef",
+      "checkedOutSha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79",
+      "lineEndingOnly": true
+    }
+  ],
+  "unitFiles": [
+    "src/host/bookyModel.test.ts",
+    "src/host/bookyAnimation.test.ts",
+    "src/host/bookyWalk.test.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascotPreference.test.ts",
+    "src/host/planetMascotPersistence.test.ts",
+    "src/host/bookySupport.test.ts",
+    "src/host/bookyTourProgress.test.ts",
+    "src/host/bookyPlacement.test.ts"
+  ],
+  "browserFiles": [
+    "tests/pwa/booky-live-character.spec.mjs",
+    "tests/pwa/booky-reader-policy.spec.mjs"
+  ],
+  "expectedBrowserTests": 10,
+  "expectedImages": 32,
+  "scope": "Stopping Книжулик / Mr. Booky during a selected-section approach cancels movement and its pending cue without starting a new margin walk. The Stop button owns pointer, Enter and Space activation; other input and lifecycle interruption still retire the whole approach. RU/EN compact-help and existing finite-motion regressions remain covered.",
+  "runtimeWiringImplemented": true,
+  "characterJourneyNodeImplemented": false,
+  "childApproved": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

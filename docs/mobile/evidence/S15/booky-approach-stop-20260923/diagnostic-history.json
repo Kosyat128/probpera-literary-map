@@ -1,0 +1,658 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-23T16:23:52.193Z",
+  "recordingComplete": true,
+  "kind": "retained-booky-approach-stop-diagnostics",
+  "baseCheckpoint": "6d47f36bb0c6d12c9c33bbea14f606ecfbe88a08",
+  "cwd": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work",
+  "attempts": [
+    {
+      "attempt": "a1",
+      "scope": "One focused approach scenario; not the formal ten-case suite.",
+      "summary": "One actual Stop-pointer activation reproduced the defect on unchanged D181 production source. Before pointer down the companion was approaching; pointer down cancelled the approach and changed the same button into Start. The ensuing native click started an unsolicited margin walk, which was still active after settling. Preferences were unchanged. The external diagnostic changes only the existing approach case cancellation input and records down/click/settle phases; it does not change application source or assign application state.",
+      "pass": false,
+      "tests": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop-review/a1/playwright.json",
+        "sha256": "08d05b14802a537a9ced2a8271ead4bb7088752ba392937145ab2452f34d9845"
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop-review/a1/output/stop-control-Mr-Booky-appr-2cf6b-ellation-and-reduced-motion/booky-live-character.json",
+        "sha256": "ba9cfb86ae0e8cd7dff9b1b9ac0a01f974fa72666b734bdc62cf42608f253bb6"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop-review/a1/output/stop-control-Mr-Booky-appr-2cf6b-ellation-and-reduced-motion/attachments/booky-live-character-source-evidence-42f8469cca1a1e662519984078ac29ab41e56c86.json",
+        "sha256": "ba9cfb86ae0e8cd7dff9b1b9ac0a01f974fa72666b734bdc62cf42608f253bb6"
+      },
+      "executionEvidence": {
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop-review/a1/node.log",
+          "sha256": "f4b9da1c294f070a98b475e5c32b2b540b137dbdc79c5916e88d5318f2c9378f"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop-review/a1/node.log",
+          "sha256": "f4b9da1c294f070a98b475e5c32b2b540b137dbdc79c5916e88d5318f2c9378f"
+        },
+        "combinedOutput": true,
+        "streamProvenance": "Both original Node streams were redirected into the same preserved node.log; these references intentionally identify the same combined file.",
+        "actualNodeExit": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop-review/a1/node-exit.txt",
+          "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b"
+        },
+        "startedAt": "2026-09-23T16:16:03.917Z",
+        "durationMs": 14377.461,
+        "testProcessExitCode": 1,
+        "exitCodeProvenance": "Original runner immediately captured $LASTEXITCODE, wrote node-exit.txt and returned that exact code.",
+        "workerCount": 1,
+        "retriesConfigured": 0
+      },
+      "configuration": {
+        "configFile": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-approach-stop-review\\a1\\playwright.config.mjs",
+        "testTitle": "Mr. Booky approaches the selected section once, points, and respects cancellation and reduced motion",
+        "playwrightVersion": "1.62.1"
+      },
+      "capturedSourceInputCount": 669,
+      "capturedScopedSourceInputs": [
+        {
+          "path": "src/host/PlanetMascotControls.css",
+          "sha256": "bbd248cf2ba2391c249d9df5cf966ba13c84c6b28480851fc1226fcfac3963a3"
+        },
+        {
+          "path": "src/host/PlanetMascotControls.tsx",
+          "sha256": "28f53a5a70456b6e217df993096ed72f31d50984e83107f895344ee594c6846b"
+        },
+        {
+          "path": "src/host/bookyWalk.ts",
+          "sha256": "ebf28448443ddf5c301cb334cc725cdb892a5c0e5af6003c5afa5b3f87f11491"
+        },
+        {
+          "path": "src/host/useBookyWalk.ts",
+          "sha256": "c5b6bc0d24789d0bf508c54b72197189a3aced8f9ba4232e1e2d00ff087c3e01"
+        },
+        {
+          "path": "tests/pwa/booky-live-character.spec.mjs",
+          "sha256": "2f8700da02834d38e618d1900286a9f188096ddc50976a74217914fb2cda130b"
+        }
+      ],
+      "originalSourceHashesAreFromEachCapture": true,
+      "screenshots": [
+        {
+          "filename": "booky-target-approach-ru-1440.png",
+          "sha256": "d7342fbef0d3c4cf62d099076c312cdd9915d127e5ed09cf19f380e83f9ad222",
+          "width": 1440,
+          "height": 900,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop-review/a1/output/stop-control-Mr-Booky-appr-2cf6b-ellation-and-reduced-motion/booky-target-approach-ru-1440.png"
+        },
+        {
+          "filename": "booky-approach-stop-after-click.png",
+          "sha256": "e847d9a227c16cdeb8791807028045a79a55b0a01c909328a0be678acd6c11e6",
+          "width": 1440,
+          "height": 900,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop-review/a1/output/stop-control-Mr-Booky-appr-2cf6b-ellation-and-reduced-motion/booky-approach-stop-after-click.png"
+        }
+      ],
+      "failureMessages": [
+        "Error: Actual Stop click must not start a replacement margin walk\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: not \u001b[32m\"walking\"\u001b[39m\n\n  912 |     result.observations.actualStopControl={samples:stopSamples,preferenceMutations:mutations(fixture),originalPreferenceMutations:before};\n  913 |     await capture(page,result,testInfo,'booky-approach-stop-after-click.png');\n> 914 |     await expect(target()).toHaveCount(0);expect(await pet(page).getAttribute('data-planet-mascot-gesture'),'Actual Stop click must not start a replacement margin walk').not.toBe('walking');\n      |                                                                                                                                                                               ^\n  915 |     const cancelledPosition=(await layout(page)).pet;await twoFrames(page);expect((await layout(page)).pet).toEqual(cancelledPosition);\n  916 |     const cancelled=await observation();expect(cancelled.samples.some(value=>value.phase==='tapping')).toBe(false);expect(cancelled.clicks).toBe(0);\n  917 |     await expect(graphics()).toHaveAttribute('open','');expect(mutations(fixture)).toEqual(before);\n    at D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-approach-stop-review\\a1\\stop-control.spec.mjs:914:175"
+      ],
+      "reportedBehaviorFlags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": false
+      },
+      "externalDiagnosticDriver": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop-review/a1/driver-inputs.json",
+        "sha256": "a019999773affbe4b180037052bd725c6e7a531f1915db9ea6ddedae02b85d13"
+      },
+      "reproduction": {
+        "samples": [
+          {
+            "label": "beforePointerDown",
+            "at": 1790180177378,
+            "layout": {
+              "viewport": {
+                "width": 1440,
+                "height": 900
+              },
+              "pet": {
+                "left": 1207.09375,
+                "top": 605.3125,
+                "right": 1383.09375,
+                "bottom": 877.3125,
+                "width": 176,
+                "height": 272
+              },
+              "card": null,
+              "canvas": {
+                "left": 1215.09375,
+                "top": 609.3125,
+                "right": 1375.09375,
+                "bottom": 769.3125,
+                "width": 160,
+                "height": 160
+              },
+              "overflow": false,
+              "leaf": null
+            },
+            "phase": "approaching",
+            "gesture": "walking",
+            "walkButton": "Ⅱ Остановить"
+          },
+          {
+            "label": "afterPointerDown",
+            "at": 1790180177442,
+            "layout": {
+              "viewport": {
+                "width": 1440,
+                "height": 900
+              },
+              "pet": {
+                "left": 1207.21875,
+                "top": 604.515625,
+                "right": 1383.21875,
+                "bottom": 876.515625,
+                "width": 176,
+                "height": 272
+              },
+              "card": null,
+              "canvas": {
+                "left": 1215.21875,
+                "top": 608.515625,
+                "right": 1375.21875,
+                "bottom": 768.515625,
+                "width": 160,
+                "height": 160
+              },
+              "overflow": false,
+              "leaf": null
+            },
+            "phase": null,
+            "gesture": "rest",
+            "walkButton": "↝ Прогуляться"
+          },
+          {
+            "label": "afterClick",
+            "at": 1790180177484,
+            "layout": {
+              "viewport": {
+                "width": 1440,
+                "height": 900
+              },
+              "pet": {
+                "left": 1207.203125,
+                "top": 616,
+                "right": 1383.203125,
+                "bottom": 888,
+                "width": 176,
+                "height": 272
+              },
+              "card": null,
+              "canvas": {
+                "left": 1215.203125,
+                "top": 620,
+                "right": 1375.203125,
+                "bottom": 780,
+                "width": 160,
+                "height": 160
+              },
+              "overflow": false,
+              "leaf": null
+            },
+            "phase": null,
+            "gesture": "walking",
+            "walkButton": "Ⅱ Остановить"
+          },
+          {
+            "label": "afterSettle",
+            "at": 1790180177636,
+            "layout": {
+              "viewport": {
+                "width": 1440,
+                "height": 900
+              },
+              "pet": {
+                "left": 1206.0625,
+                "top": 616,
+                "right": 1382.0625,
+                "bottom": 888,
+                "width": 176,
+                "height": 272
+              },
+              "card": null,
+              "canvas": {
+                "left": 1214.0625,
+                "top": 620,
+                "right": 1374.0625,
+                "bottom": 780,
+                "width": 160,
+                "height": 160
+              },
+              "overflow": false,
+              "leaf": null
+            },
+            "phase": null,
+            "gesture": "walking",
+            "walkButton": "Ⅱ Остановить"
+          }
+        ],
+        "preferenceMutations": [
+          {
+            "operation": "set",
+            "key": "probpera-planet-recent-adult-v1",
+            "value": "{\"v\":1,\"entries\":[{\"kind\":\"writer\",\"countryId\":\"russia\",\"writerId\":\"dostoevsky\",\"openedAt\":1790180168428}]}"
+          },
+          {
+            "operation": "set",
+            "key": "probpera-booky-adult-v1",
+            "value": "{\"schemaVersion\":2,\"audience\":\"adult\",\"visible\":true,\"resume\":null,\"progress\":[]}"
+          }
+        ],
+        "originalPreferenceMutations": [
+          {
+            "operation": "set",
+            "key": "probpera-planet-recent-adult-v1",
+            "value": "{\"v\":1,\"entries\":[{\"kind\":\"writer\",\"countryId\":\"russia\",\"writerId\":\"dostoevsky\",\"openedAt\":1790180168428}]}"
+          },
+          {
+            "operation": "set",
+            "key": "probpera-booky-adult-v1",
+            "value": "{\"schemaVersion\":2,\"audience\":\"adult\",\"visible\":true,\"resume\":null,\"progress\":[]}"
+          }
+        ]
+      }
+    },
+    {
+      "attempt": "a2",
+      "scope": "One focused approach scenario; not the formal ten-case suite.",
+      "summary": "With the product Stop activation owner fixed, the existing focused approach case passed with actual pointer, Enter and Space activation. Each activation cleared the old target, retained exact settled position for over 2400ms, produced no later tap or replacement walk, and preserved preferences, selected graphics state and canonical scene. Existing successful arrival, Tab cancellation and reduced-motion behavior also passed. The captured fixture used three aggregate result flags; the final fixture only renames them to five detailed flags and is validated separately by the formal run.",
+      "pass": true,
+      "tests": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop-review/a2/playwright.json",
+        "sha256": "ce0c47b4c15ee0c3a5f963ad2d6a45ad48e88eafbe32c8a311ff04dbfa071f75"
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop-review/a2/output/booky-live-character-Mr-Bo-58b82-ellation-and-reduced-motion/booky-live-character.json",
+        "sha256": "429c040fcba45f1435cef65a7370de114f60410eef3b209a7178dda0d01ab7a8"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop-review/a2/output/booky-live-character-Mr-Bo-58b82-ellation-and-reduced-motion/attachments/booky-live-character-source-evidence-061f30b76bebd951ec5dc49ce6e0bbf341be828c.json",
+        "sha256": "429c040fcba45f1435cef65a7370de114f60410eef3b209a7178dda0d01ab7a8"
+      },
+      "executionEvidence": {
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop-review/a2/node.log",
+          "sha256": "64855625649087c7d5281e65d754d1ca3c9a0cb11cd4d6b96d522885bc222831"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop-review/a2/node.log",
+          "sha256": "64855625649087c7d5281e65d754d1ca3c9a0cb11cd4d6b96d522885bc222831"
+        },
+        "combinedOutput": true,
+        "streamProvenance": "Both original Node streams were redirected into the same preserved node.log; these references intentionally identify the same combined file.",
+        "actualNodeExit": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop-review/a2/node-exit.txt",
+          "sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+        },
+        "startedAt": "2026-09-23T16:19:27.350Z",
+        "durationMs": 27998.761,
+        "testProcessExitCode": 0,
+        "exitCodeProvenance": "Original runner immediately captured $LASTEXITCODE, wrote node-exit.txt and returned that exact code.",
+        "workerCount": 1,
+        "retriesConfigured": 0
+      },
+      "configuration": {
+        "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-compact-landscape-20260923\\playwright.config.mjs",
+        "testTitle": "Mr. Booky approaches the selected section once, points, and respects cancellation and reduced motion",
+        "playwrightVersion": "1.62.1"
+      },
+      "capturedSourceInputCount": 669,
+      "capturedScopedSourceInputs": [
+        {
+          "path": "src/host/PlanetMascotControls.css",
+          "sha256": "bbd248cf2ba2391c249d9df5cf966ba13c84c6b28480851fc1226fcfac3963a3"
+        },
+        {
+          "path": "src/host/PlanetMascotControls.tsx",
+          "sha256": "7757cb1ed06378bba3eecab43727daec1b1bb7914912d84ac035850add5e7691"
+        },
+        {
+          "path": "src/host/bookyWalk.ts",
+          "sha256": "ebf28448443ddf5c301cb334cc725cdb892a5c0e5af6003c5afa5b3f87f11491"
+        },
+        {
+          "path": "src/host/useBookyWalk.ts",
+          "sha256": "c5b6bc0d24789d0bf508c54b72197189a3aced8f9ba4232e1e2d00ff087c3e01"
+        },
+        {
+          "path": "tests/pwa/booky-live-character.spec.mjs",
+          "sha256": "761744d73537fe8836e44151130b74119faf7adc86a96b14a75ff3da747b53fd"
+        }
+      ],
+      "originalSourceHashesAreFromEachCapture": true,
+      "screenshots": [
+        {
+          "filename": "booky-target-approach-ru-1440.png",
+          "sha256": "f40787f9adf892c3c99df0fd07f3a6fccb7727fea6c477b1b4b4a2475c9f145f",
+          "width": 1440,
+          "height": 900,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop-review/a2/output/booky-live-character-Mr-Bo-58b82-ellation-and-reduced-motion/booky-target-approach-ru-1440.png"
+        }
+      ],
+      "failureMessages": [],
+      "reportedBehaviorFlags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "canonicalSectionOpensBeforeWalk": true,
+        "approachMovesActualPet": true,
+        "actualLegsStep": true,
+        "tapFollowsWalk": true,
+        "tapInsideSelectedGraphicsArea": true,
+        "targetSectionStaysOpen": true,
+        "noSyntheticTargetClick": true,
+        "approachFitsViewport": true,
+        "newKeyboardInputCancelsApproach": true,
+        "stopControlCancelsApproach": true,
+        "stopActivationDoesNotRestartWalk": true,
+        "cancelledStopDoesNotTapOrResume": true,
+        "cancelledApproachDoesNotTapOrResume": true,
+        "reducedMotionPointsWithoutTravel": true,
+        "approachDoesNotWritePreferencesOrProgress": true,
+        "sameCanonicalGlobe": true
+      },
+      "stopActivations": [
+        {
+          "activation": "pointer",
+          "states": [
+            {
+              "label": "beforeDown",
+              "at": 11171.099999999627,
+              "phase": "approaching",
+              "gesture": "walking",
+              "buttonText": "Ⅱ Остановить",
+              "position": {
+                "left": 1207.078125,
+                "top": 605.453125,
+                "right": 1383.078125,
+                "bottom": 877.453125,
+                "width": 176,
+                "height": 272
+              }
+            },
+            {
+              "label": "afterDown",
+              "at": 11192.700000001118,
+              "phase": "approaching",
+              "gesture": "walking",
+              "buttonText": "Ⅱ Остановить",
+              "position": {
+                "left": 1207.1875,
+                "top": 604.71875,
+                "right": 1383.1875,
+                "bottom": 876.71875,
+                "width": 176,
+                "height": 272
+              }
+            },
+            {
+              "label": "afterActivation",
+              "at": 11240.700000001118,
+              "phase": null,
+              "gesture": "rest",
+              "buttonText": "↝ Прогуляться",
+              "position": {
+                "left": 1207.1875,
+                "top": 604.71875,
+                "right": 1383.1875,
+                "bottom": 876.71875,
+                "width": 176,
+                "height": 272
+              }
+            },
+            {
+              "label": "settled",
+              "at": 11401.5,
+              "phase": null,
+              "gesture": "rest",
+              "buttonText": "↝ Прогуляться",
+              "position": {
+                "left": 1207.1875,
+                "top": 604.71875,
+                "right": 1383.1875,
+                "bottom": 876.71875,
+                "width": 176,
+                "height": 272
+              }
+            },
+            {
+              "label": "afterOriginalApproachAndTap",
+              "at": 13831.300000000745,
+              "phase": null,
+              "gesture": "rest",
+              "buttonText": "↝ Прогуляться",
+              "position": {
+                "left": 1207.1875,
+                "top": 604.71875,
+                "right": 1383.1875,
+                "bottom": 876.71875,
+                "width": 176,
+                "height": 272
+              }
+            }
+          ],
+          "syntheticTargetClicks": 0,
+          "recordedFrameSamples": 407
+        },
+        {
+          "activation": "Enter",
+          "states": [
+            {
+              "label": "beforeDown",
+              "at": 15539.300000000745,
+              "phase": "approaching",
+              "gesture": "walking",
+              "buttonText": "Ⅱ Остановить",
+              "position": {
+                "left": 1207.078125,
+                "top": 605.46875,
+                "right": 1383.078125,
+                "bottom": 877.46875,
+                "width": 176,
+                "height": 272
+              }
+            },
+            {
+              "label": "afterDown",
+              "at": 15571.599999999627,
+              "phase": null,
+              "gesture": "rest",
+              "buttonText": "↝ Прогуляться",
+              "position": {
+                "left": 1207.078125,
+                "top": 605.46875,
+                "right": 1383.078125,
+                "bottom": 877.46875,
+                "width": 176,
+                "height": 272
+              }
+            },
+            {
+              "label": "afterActivation",
+              "at": 15587.200000001118,
+              "phase": null,
+              "gesture": "rest",
+              "buttonText": "↝ Прогуляться",
+              "position": {
+                "left": 1207.078125,
+                "top": 605.46875,
+                "right": 1383.078125,
+                "bottom": 877.46875,
+                "width": 176,
+                "height": 272
+              }
+            },
+            {
+              "label": "settled",
+              "at": 15756.5,
+              "phase": null,
+              "gesture": "rest",
+              "buttonText": "↝ Прогуляться",
+              "position": {
+                "left": 1207.078125,
+                "top": 605.46875,
+                "right": 1383.078125,
+                "bottom": 877.46875,
+                "width": 176,
+                "height": 272
+              }
+            },
+            {
+              "label": "afterOriginalApproachAndTap",
+              "at": 18189.599999999627,
+              "phase": null,
+              "gesture": "rest",
+              "buttonText": "↝ Прогуляться",
+              "position": {
+                "left": 1207.078125,
+                "top": 605.46875,
+                "right": 1383.078125,
+                "bottom": 877.46875,
+                "width": 176,
+                "height": 272
+              }
+            }
+          ],
+          "syntheticTargetClicks": 0,
+          "recordedFrameSamples": 405
+        },
+        {
+          "activation": "Space",
+          "states": [
+            {
+              "label": "beforeDown",
+              "at": 20156.700000001118,
+              "phase": "approaching",
+              "gesture": "walking",
+              "buttonText": "Ⅱ Остановить",
+              "position": {
+                "left": 1207.03125,
+                "top": 605.78125,
+                "right": 1383.03125,
+                "bottom": 877.78125,
+                "width": 176,
+                "height": 272
+              }
+            },
+            {
+              "label": "afterDown",
+              "at": 20178.400000000373,
+              "phase": "approaching",
+              "gesture": "walking",
+              "buttonText": "Ⅱ Остановить",
+              "position": {
+                "left": 1207.140625,
+                "top": 605,
+                "right": 1383.140625,
+                "bottom": 877,
+                "width": 176,
+                "height": 272
+              }
+            },
+            {
+              "label": "afterActivation",
+              "at": 20206.900000000373,
+              "phase": null,
+              "gesture": "rest",
+              "buttonText": "↝ Прогуляться",
+              "position": {
+                "left": 1207.140625,
+                "top": 605,
+                "right": 1383.140625,
+                "bottom": 877,
+                "width": 176,
+                "height": 272
+              }
+            },
+            {
+              "label": "settled",
+              "at": 20381.400000000373,
+              "phase": null,
+              "gesture": "rest",
+              "buttonText": "↝ Прогуляться",
+              "position": {
+                "left": 1207.140625,
+                "top": 605,
+                "right": 1383.140625,
+                "bottom": 877,
+                "width": 176,
+                "height": 272
+              }
+            },
+            {
+              "label": "afterOriginalApproachAndTap",
+              "at": 22819.900000000373,
+              "phase": null,
+              "gesture": "rest",
+              "buttonText": "↝ Прогуляться",
+              "position": {
+                "left": 1207.140625,
+                "top": 605,
+                "right": 1383.140625,
+                "bottom": 877,
+                "width": 176,
+                "height": 272
+              }
+            }
+          ],
+          "syntheticTargetClicks": 0,
+          "recordedFrameSamples": 408
+        }
+      ],
+      "metadataOnlyDifferenceFromFinalFixture": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-approach-stop-review/a2-final-metadata-difference.json",
+        "sha256": "ccf0b9764670652cdc1e3f57d1eac68d31557e452e00d9bbf7d701bf6cd47e92"
+      }
+    }
+  ],
+  "limitations": [
+    "Diagnostic a1 uses an external copy of the existing fixture with its driver hash separately recorded; production source remains unchanged.",
+    "Diagnostic a2 is a focused pass with original aggregate metadata; the final five result flags belong to the separate formal run.",
+    "No installed-device, iOS, full accessibility, journey-content, stage or release acceptance."
+  ],
+  "releaseReady": false
+}

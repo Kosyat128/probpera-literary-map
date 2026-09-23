@@ -1,0 +1,25 @@
+{
+  "onlyVerifiedGeneratedDuplicatesRemoved": true,
+  "targets": [
+    {
+      "buildId": "431d3692a1d4ab0138a8968353d383013d3fe88d56966cc9df0a90f6602d6c21",
+      "files": 1427,
+      "preserved": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-help-placement\\pwa-431d3692",
+      "artifactSha256": "b0bf9e7e8ac64232b675a06581ee5a73093dc305f5050c2bb434e6a1dc6280dd",
+      "target": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\pwa-previous-1555aba8-245f-41ec-b065-9cca4a2048a2",
+      "sourceCommit": "9ab74c3a3b5b022796c5ffdd0decaae782ebe659"
+    },
+    {
+      "buildId": "f3cd630f8070f80afd91d3dc3f1c28032ab0256831eaaf1bf7ce650fddbb6d50",
+      "files": 1408,
+      "preserved": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-help-placement\\android-f3cd630f\\runtime",
+      "artifactSha256": "93ca76254aa3e27f0d4e8b971b0298bd22f11a6e5532a577f2a4efde4acd0454",
+      "target": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-previous-8172156c-1f58-43b0-9aa0-f6d5887e8c98",
+      "sourceCommit": "9ab74c3a3b5b022796c5ffdd0decaae782ebe659"
+    }
+  ],
+  "schemaVersion": 1,
+  "releaseReady": false,
+  "pass": true,
+  "recordedAt": "2026-09-23T16:18:38.9228242+00:00"
+}
