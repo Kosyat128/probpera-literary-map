@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import type { BookDossierDocumentV2, BookDossierReadingMode, BookDossierSemanticAnchor } from "../books/bookDossierDocument";
 import { buildBookDossierDiagram, bookDossierConceptKind, bookDossierConceptLabels } from "../books/bookDossierDiagram";
 import BookDossierMap from "./BookDossierMap";
+import { bookDossierCharacterRequestToken, consumeBookDossierCharacterViewToken,
+  type BookDossierCharacterViewRequest, type BookDossierCharacterViewReceipt } from "../books/bookDossierCharacterView";
 
 const modes: readonly BookDossierReadingMode[] = ["BEFORE_READING", "DURING_READING", "AFTER_READING"];
 const modeLabels = {
@@ -15,7 +17,8 @@ const accessibleLabels = {
 
 /** The accessible reader receives only the compiler's public projection. */
 export default function BookDossierReader({ dossier, activeAnchor, onNavigate, onReadingModeChange,
-  onSpoilersChange, onProgressChange, reachedCount = 0, showingSpoilers = false, unavailable = false, busy = false }: {
+  onSpoilersChange, onProgressChange, reachedCount = 0, showingSpoilers = false, unavailable = false, busy = false,
+  characterRequest, onCharacterViewChange }: {
   dossier: BookDossierDocumentV2;
   activeAnchor?: BookDossierSemanticAnchor | null;
   onNavigate: (anchor: BookDossierSemanticAnchor) => void;
@@ -26,6 +29,11 @@ export default function BookDossierReader({ dossier, activeAnchor, onNavigate, o
   showingSpoilers?: boolean;
   unavailable?: boolean;
   busy?: boolean;
+  /** Explicit caller request; the caller presents its page first. No page or
+   * reading-progress navigation is inferred from an item anchor. activeAnchor
+   * must be that owning page's anchor, not a second block's item anchor. */
+  characterRequest?: BookDossierCharacterViewRequest | null;
+  onCharacterViewChange?: (view: BookDossierCharacterViewReceipt | null) => void;
 }) {
   const [contentsOpen, setContentsOpen] = useState(false);
   const [filter, setFilter] = useState("");
@@ -34,10 +42,17 @@ export default function BookDossierReader({ dossier, activeAnchor, onNavigate, o
   const index = Math.max(0, dossier.pages.findIndex(page =>
     page.anchor.blockId === activeAnchor?.blockId && page.sectionId === activeAnchor?.sectionId));
   const page = dossier.pages[index];
+  const diagram = page ? buildBookDossierDiagram(dossier, page) : null;
+  const requestToken = bookDossierCharacterRequestToken(characterRequest);
+  useLayoutEffect(() => {
+    if (characterRequest && !diagram) {
+      consumeBookDossierCharacterViewToken(requestToken);
+      onCharacterViewChange?.(null);
+    }
+  }, [characterRequest, requestToken, diagram, onCharacterViewChange]);
   if (!page) return null;
   const label = en ? "Book dossier" : "Досье книги";
   const rowIds = new Set(page.rows.map(row => row.id));
-  const diagram = buildBookDossierDiagram(dossier, page);
   const mappedIds = new Set(diagram ? [...diagram.nodes.map(node => node.item.id), ...diagram.edges.map(edge => edge.item.id)] : []);
   const concepts = page.blocks.filter(block => block.kind === "themes");
   const conceptIds = new Set(concepts.flatMap(block => block.items.map(item => item.id)));
@@ -100,7 +115,9 @@ export default function BookDossierReader({ dossier, activeAnchor, onNavigate, o
           <div key={row.id || rowIndex}><dt>{row.label}</dt><dd>{row.value}</dd></div>
         )}</dl> : null}
         {page.paragraphs.map((paragraph, paragraphIndex) => <p key={paragraphIndex}>{paragraph}</p>)}
-        {diagram ? <BookDossierMap key={`${dossier.cacheKey}:${page.id}`} diagram={diagram} locale={dossier.locale} /> : null}
+        {diagram ? <BookDossierMap key={`${dossier.cacheKey}:${page.id}`} diagram={diagram} locale={dossier.locale}
+          characterDocument={busy || unavailable ? null : dossier} characterRequest={characterRequest}
+          onCharacterViewChange={onCharacterViewChange} /> : null}
         {concepts.map(block => <section className="book-dossier-concepts" key={block.id} aria-label={block.title}>
           <h5>{block.title}</h5><ol>{block.items.map(item => {
             const kind = bookDossierConceptKind(item.value);

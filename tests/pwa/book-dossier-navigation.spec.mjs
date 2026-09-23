@@ -127,10 +127,20 @@ async function open(testInfo, { userId = null, stores = { [storageKey(null)]: [s
       for (const [key, items] of Object.entries(stores)) localStorage.setItem(key, JSON.stringify(items));
       window.__navigationConfig = { userId };
       window.__libraryWrites = [];
+      // Guest/legacy lists and current account schema-1 envelopes are both real
+      // storage formats. Reject unknown shapes rather than hiding bad writes.
+      window.__readingItemsFromStored = raw => {
+        const stored = JSON.parse(raw ?? "[]");
+        if (Array.isArray(stored)) return stored;
+        if (stored && typeof stored === "object" && stored.schemaVersion === 1
+          && Object.keys(stored).sort().join(",") === "items,pending,schemaVersion"
+          && Array.isArray(stored.items) && Array.isArray(stored.pending)) return stored.items;
+        throw Error("Unexpected reading-library storage shape in navigation fixture");
+      };
       const setItem = Storage.prototype.setItem;
       Storage.prototype.setItem = function (key, value) {
         if (this === localStorage && key.startsWith("probpera-reading-library")) {
-          window.__libraryWrites.push({ key, items: JSON.parse(value) });
+          window.__libraryWrites.push({ key, items: window.__readingItemsFromStored(value), raw: value });
         }
         return setItem.call(this, key, value);
       };
@@ -175,7 +185,7 @@ async function open(testInfo, { userId = null, stores = { [storageKey(null)]: [s
 const reader = page => page.locator(".book-dossier-reader");
 const section = page => reader(page).locator(".book-dossier-reader__page");
 const readProgress = (page, id = A, user = null) => page.evaluate(({ key, id }) =>
-  JSON.parse(localStorage.getItem(key) || "[]").find(item => item.id === id)?.dossierProgress ?? null, { key: storageKey(user), id });
+  window.__readingItemsFromStored(localStorage.getItem(key)).find(item => item.id === id)?.dossierProgress ?? null, { key: storageKey(user), id });
 async function latest(page, bookKey = A, locale = "ru", after = 0) {
   await expect.poll(() => page.evaluate(({ bookKey, locale, after }) => window.__paginationPort.calls()
     .filter(call => call.bookKey === bookKey && call.locale === locale && call.id > after).length, { bookKey, locale, after })).toBeGreaterThan(0);

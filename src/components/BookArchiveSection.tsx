@@ -135,7 +135,12 @@ import {
 import { resolveBookShelfPresentationProfile } from "../books/bookShelfPresentationProfiles";
 import { buildBookEditorialDocument } from "../books/bookEditorialPages";
 import { buildBookDossierFromEditorial, toBookEditorialDocument } from "../books/bookDossierLegacyAdapter";
-import { BOOK_DOSSIER_LIMITS, type BookDossierSemanticAnchor } from "../books/bookDossierDocument";
+import { BOOK_DOSSIER_LIMITS, type BookDossierDocumentV2, type BookDossierSemanticAnchor } from "../books/bookDossierDocument";
+import { buildBookDossierDiagram } from "../books/bookDossierDiagram";
+import { bookDossierCharacterRequestToken, consumeBookDossierCharacterViewToken,
+  isFreshBookDossierCharacterViewToken, resolveBookDossierCharacterView, sameBookDossierCharacterView,
+  type BookDossierCharacterViewRequest, type BookDossierCharacterViewReceipt,
+  type BookDossierCharacterViewToken } from "../books/bookDossierCharacterView";
 import { bookDossierPhysicalPageIndex, remapBookDossierLocaleLocation, resolveBookDossierLocation, type BookDossierLocation } from "../books/bookDossierLocation";
 import { paginateBookInspectionDocument, type BookInspectionPaginationResult } from "../books/bookInspectionPageLayout";
 import BookDossierReader from "./BookDossierReader";
@@ -238,6 +243,13 @@ import BookShelfScene, {
 } from "./BookShelfScene";
 import WriterPortrait from "./WriterPortrait";
 
+export type BookArchivePublishedDossierView = Readonly<{
+  bookKey: string | null;
+  /** Only the current trusted published projection; never the catalogue fallback. */
+  document: BookDossierDocumentV2 | null;
+  detail: BookArchiveDetailView;
+}>;
+
 type Props = {
   books: BookArchiveEntry[];
   countries: Country[];
@@ -249,6 +261,10 @@ type Props = {
   onRequestedBookHandled?: (token?: number) => void;
   onDetailViewChange?: (view: BookArchiveDetailView) => void;
   onCollectionSettledChange?: (settled: boolean) => void;
+  dossierCharacterRequest?: BookDossierCharacterViewRequest | null;
+  canPresentDossierCharacter?: (request: BookDossierCharacterViewRequest) => boolean;
+  onPublishedDossierViewChange?: (view: BookArchivePublishedDossierView) => void;
+  onDossierCharacterViewChange?: (view: BookDossierCharacterViewReceipt | null) => void;
   requestedAuthor?: BookArchiveAuthorRequest | null;
   onRequestedAuthorHandled?: (id: number, result: BookArchiveAuthorRequestResult) => void;
   onAuthorViewChange?: (view: BookArchiveAuthorView) => void;
@@ -577,6 +593,10 @@ export default function BookArchiveSection({
   onRequestedBookHandled,
   onDetailViewChange,
   onCollectionSettledChange,
+  dossierCharacterRequest,
+  canPresentDossierCharacter,
+  onPublishedDossierViewChange,
+  onDossierCharacterViewChange,
   requestedAuthor,
   onRequestedAuthorHandled,
   onAuthorViewChange,
@@ -585,6 +605,10 @@ export default function BookArchiveSection({
   onNativeDetailClosed,
   embeddedInPlanet = false,
 }: Props) {
+  const observesDossier = Boolean(dossierCharacterRequest || onPublishedDossierViewChange || onDossierCharacterViewChange);
+  const observesDossierRef = useRef(observesDossier); observesDossierRef.current = observesDossier;
+  const [dossierDetailView, setDossierDetailView] = useState(INACTIVE_BOOK_ARCHIVE_DETAIL_VIEW);
+  const cancelDossierCharacterRef = useRef<(() => boolean) | null>(null);
   const onDetailViewChangeRef = useRef(onDetailViewChange);
   onDetailViewChangeRef.current = onDetailViewChange;
   const onCollectionSettledChangeRef = useRef(onCollectionSettledChange);
@@ -595,12 +619,21 @@ export default function BookArchiveSection({
   const refreshDetailViewRef = useRef<(() => void) | null>(null);
   const reportDetailView = useCallback((view: BookArchiveDetailView) => {
     const previous = reportedDetailViewRef.current;
+    const same = (prior: BookArchiveDetailView | null) => prior && prior.active === view.active && prior.settled === view.settled
+      && prior.countryId === view.countryId && prior.writerId === view.writerId && prior.workId === view.workId;
+    if (observesDossierRef.current) {
+      if (!view.active || !view.settled) cancelDossierCharacterRef.current?.();
+      setDossierDetailView(prior => same(prior) ? prior : view);
+    }
     if (previous && previous.active === view.active && previous.settled === view.settled
       && previous.countryId === view.countryId && previous.writerId === view.writerId
       && previous.workId === view.workId) return;
     reportedDetailViewRef.current = view;
     onDetailViewChangeRef.current?.(view);
   }, []);
+  useLayoutEffect(() => {
+    if (observesDossier) setDossierDetailView(reportedDetailViewRef.current ?? INACTIVE_BOOK_ARCHIVE_DETAIL_VIEW);
+  }, [observesDossier]);
   const authorRequestRef = useRef<{ highestId: number; handledId: number;
     waitingFilters: string | null;
     pending: { request: BookArchiveAuthorRequest; authorKey: string; render: object } | null }>({
@@ -1093,6 +1126,8 @@ export default function BookArchiveSection({
   ]);
   useEffect(() => registerNativeBack?.(() => {
     if (!nativePanelActive) return false;
+    // A caller-owned character view consumes Back before the surrounding book.
+    if (cancelDossierCharacterRef.current?.()) return true;
     // A cleared detail still owns Back until its history restoration completes.
     if (skipNextBookPopstateRef.current) return true;
     if (advancedFiltersOpen) {
@@ -3071,7 +3106,128 @@ export default function BookArchiveSection({
   const activeDossierAnchor = (pendingDossierLocation || sessionDossierLocation
     || (!restoringDossierHistory ? rememberedDossierLocation || savedDossierLocation : null))?.anchor ?? null;
   const pendingDossierReady = Boolean(pendingDossierLocation && selectedEditorialDocument && inspectionSession?.phase === "idle");
+  const [presentedCharacter, setPresentedCharacter] = useState<{
+    request: BookDossierCharacterViewRequest | null; document: BookDossierDocumentV2; pageAnchor: BookDossierSemanticAnchor;
+  } | null>(null);
+  const presentedCharacterRef = useRef(presentedCharacter);
+  const handledCharacterToken = useRef<BookDossierCharacterViewToken | null>(null);
+  const characterReceipt = useRef<BookDossierCharacterViewReceipt | null>(null);
+  const characterHost = useRef({ dossierCharacterRequest, canPresentDossierCharacter, onDossierCharacterViewChange,
+    onPublishedDossierViewChange, dossier: publishedDossier.document, selectedBook, nativePanelActive,
+    busy: publishedDossier.busy || publishedDossier.unavailable, detail: dossierDetailView });
+  characterHost.current = { dossierCharacterRequest, canPresentDossierCharacter, onDossierCharacterViewChange,
+    onPublishedDossierViewChange, dossier: publishedDossier.document, selectedBook, nativePanelActive,
+    busy: publishedDossier.busy || publishedDossier.unavailable, detail: dossierDetailView };
+  const reportCharacter = useCallback((receipt: BookDossierCharacterViewReceipt | null) => {
+    const previous = characterReceipt.current;
+    if (!previous && !receipt || previous && receipt && sameBookDossierCharacterView(previous, receipt)) return;
+    characterReceipt.current = receipt;
+    characterHost.current.onDossierCharacterViewChange?.(receipt);
+  }, []);
+  const cancelCharacter = useCallback(() => {
+    const previous = presentedCharacterRef.current;
+    if (!previous) return false;
+    presentedCharacterRef.current = null;
+    consumeBookDossierCharacterViewToken(previous.request?.token);
+    setPresentedCharacter(null);
+    reportCharacter(null);
+    return true;
+  }, [reportCharacter]);
+  cancelDossierCharacterRef.current = cancelCharacter;
+  const currentCharacter = useCallback(() => {
+    const host = characterHost.current, request = host.dossierCharacterRequest;
+    const dossier = host.dossier, book = host.selectedBook, view = reportedDetailViewRef.current;
+    try {
+      if (!request || !bookDossierCharacterRequestToken(request) || !dossier || !book || !isPublicBook(book)
+        || !host.nativePanelActive || host.busy || document.hidden || !view?.active || !view.settled
+        || bookKey(book) !== dossier.bookKey || request.bookKey !== dossier.bookKey
+        || view.countryId !== book.countryId || view.writerId !== book.writerId || view.workId !== book.id
+        || host.canPresentDossierCharacter?.(request) !== true || characterHost.current !== host) return null;
+      const section = request.anchor && Object.getOwnPropertyDescriptor(request.anchor, "sectionId");
+      const page = section && "value" in section && dossier.pages.find(candidate => candidate.sectionId === section.value);
+      const target = page && resolveBookDossierCharacterView(dossier, buildBookDossierDiagram(dossier, page), request, Date.now());
+      if (!page || !target || characterHost.current !== host || reportedDetailViewRef.current !== view) return null;
+      return { request: target.receipt, document: dossier, pageAnchor: page.anchor };
+    } catch { return null; }
+  }, []);
+  useLayoutEffect(() => {
+    const token = bookDossierCharacterRequestToken(dossierCharacterRequest), previous = presentedCharacterRef.current;
+    // A manual selection/Close relinquishes request authority while retaining
+    // its preview page. This is presentation only, never a reading position.
+    const manual = previous && !previous.request;
+    if (manual) {
+      const host = characterHost.current, view = reportedDetailViewRef.current, book = host.selectedBook, dossier = host.dossier;
+      const page = dossier?.pages.find(candidate => candidate.anchor.sectionId === previous.pageAnchor.sectionId
+        && candidate.anchor.blockId === previous.pageAnchor.blockId);
+      if (!host.nativePanelActive || host.busy || document.hidden || !book || !isPublicBook(book)
+        || !dossier || !page || dossier.bookKey !== previous.document.bookKey
+        || dossier.cacheKey !== previous.document.cacheKey || dossier.dossierVersion !== previous.document.dossierVersion
+        || dossier.locale !== previous.document.locale || dossier.readingMode !== previous.document.readingMode
+        || !view?.active || !view.settled
+        || bookKey(book) !== previous.document.bookKey || view.countryId !== book.countryId
+        || view.writerId !== book.writerId || view.workId !== book.id
+        || !dossier.validUntil || Date.parse(dossier.validUntil) <= Date.now()) cancelCharacter();
+      else if (previous.document !== dossier || previous.pageAnchor !== page.anchor) {
+        const renewed = { request: null, document: dossier, pageAnchor: page.anchor };
+        presentedCharacterRef.current = renewed; setPresentedCharacter(renewed);
+      }
+    }
+    if (!token) { if (!manual) cancelCharacter(); return; }
+    const target = currentCharacter();
+    if (handledCharacterToken.current !== token) {
+      handledCharacterToken.current = token;
+      cancelCharacter();
+      if (!target || !isFreshBookDossierCharacterViewToken(token)) { consumeBookDossierCharacterViewToken(token); return; }
+      presentedCharacterRef.current = target; setPresentedCharacter(target);
+    } else if (previous?.request) {
+      if (!target || !sameBookDossierCharacterView(previous.request, target.request)) cancelCharacter();
+      else if (previous.document !== target.document || previous.pageAnchor !== target.pageAnchor) {
+        presentedCharacterRef.current = target; setPresentedCharacter(target);
+      }
+    }
+  });
+  const handleCharacterView = useCallback((receipt: BookDossierCharacterViewReceipt | null) => {
+    const expectedToken = presentedCharacter?.request?.token;
+    if (!receipt) {
+      // Initial/old-child null notifications cannot cancel a newer pending token.
+      const active = presentedCharacterRef.current;
+      if (expectedToken && characterReceipt.current?.token === expectedToken
+        && active?.request?.token === expectedToken) {
+        const manual = { ...active, request: null };
+        presentedCharacterRef.current = manual; setPresentedCharacter(manual); reportCharacter(null);
+      }
+      return;
+    }
+    if (receipt.token !== expectedToken) return;
+    const target = currentCharacter(), active = presentedCharacterRef.current;
+    if (!target || !active?.request || !sameBookDossierCharacterView(active.request, receipt)
+      || !sameBookDossierCharacterView(target.request, receipt)) { cancelCharacter(); return; }
+    reportCharacter(receipt);
+  }, [presentedCharacter?.request?.token, cancelCharacter, currentCharacter, reportCharacter]);
+  useEffect(() => {
+    if (!observesDossier) return;
+    const hidden = () => { if (document.hidden) cancelCharacter(); };
+    const historyChanged = () => cancelCharacter();
+    document.addEventListener("visibilitychange", hidden);
+    window.addEventListener("popstate", historyChanged);
+    return () => { document.removeEventListener("visibilitychange", hidden); window.removeEventListener("popstate", historyChanged); };
+  }, [observesDossier, cancelCharacter]);
+  useLayoutEffect(() => {
+    if (!onPublishedDossierViewChange) return;
+    const book = selectedBook, dossier = publishedDossier.document;
+    const current = nativePanelActive && book && isPublicBook(book) && dossier && dossier.bookKey === bookKey(book)
+      && dossier.validUntil && Date.parse(dossier.validUntil) > Date.now() ? dossier : null;
+    onPublishedDossierViewChange(Object.freeze({ bookKey: current?.bookKey ?? null, document: current,
+      detail: current ? dossierDetailView : INACTIVE_BOOK_ARCHIVE_DETAIL_VIEW }));
+  }, [onPublishedDossierViewChange, publishedDossier.document, selectedBook, nativePanelActive, dossierDetailView]);
+  useLayoutEffect(() => () => {
+    const active = presentedCharacterRef.current; presentedCharacterRef.current = null;
+    consumeBookDossierCharacterViewToken(active?.request?.token ?? bookDossierCharacterRequestToken(characterHost.current.dossierCharacterRequest));
+    reportCharacter(null);
+    characterHost.current.onPublishedDossierViewChange?.(Object.freeze({ bookKey: null, document: null, detail: INACTIVE_BOOK_ARCHIVE_DETAIL_VIEW }));
+  }, [reportCharacter]);
   const navigateDossier = useCallback((anchor: BookDossierSemanticAnchor) => {
+    cancelCharacter();
     if (!selectedDossier || currentDossierRef.current !== selectedDossier || dossierOwnerRef.current !== setDossierProgress) return;
     const location = resolveBookDossierLocation(selectedDossier, { bookKey: selectedDossier.bookKey, anchor });
     if (!location) return;
@@ -3093,7 +3249,7 @@ export default function BookArchiveSection({
     pendingDossierLocationRef.current = null;
     inspectionSessionRef.current = next;
     setInspectionSession(next);
-  }, [selectedEditorialDocument, selectedDossier, setDossierProgress]);
+  }, [selectedEditorialDocument, selectedDossier, setDossierProgress, cancelCharacter]);
 
   useEffect(() => {
     if (!selectedBook) {
@@ -4163,7 +4319,7 @@ export default function BookArchiveSection({
     return () => onCollectionSettledChangeRef.current?.(false);
   }, [observesCollection, nativePanelActive, selectedBook, advancedFiltersOpen, collectionDialogBook,
     managerCollectionId, viewMode, shelfState.phase]);
-  const observesDetailView = Boolean(onDetailViewChange);
+  const observesDetailView = Boolean(onDetailViewChange) || observesDossier;
   useLayoutEffect(() => {
     if (!observesDetailView) return;
     reportDetailView(INACTIVE_BOOK_ARCHIVE_DETAIL_VIEW);
@@ -4985,11 +5141,12 @@ export default function BookArchiveSection({
             )}
           </div>
           {selectedDossier ? <BookDossierReader key={selectedDossier.bookKey} dossier={selectedDossier}
-            activeAnchor={activeDossierAnchor} onNavigate={navigateDossier}
-            onReadingModeChange={publishedDossier.changeMode}
-            onProgressChange={publishedDossier.changeProgress}
+            activeAnchor={presentedCharacter?.pageAnchor ?? activeDossierAnchor} onNavigate={navigateDossier}
+            characterRequest={presentedCharacter?.request ?? null} onCharacterViewChange={handleCharacterView}
+            onReadingModeChange={mode => { cancelCharacter(); publishedDossier.changeMode(mode); }}
+            onProgressChange={count => { cancelCharacter(); publishedDossier.changeProgress(count); }}
             reachedCount={publishedDossier.reachedCount}
-            onSpoilersChange={publishedDossier.changeSpoilers}
+            onSpoilersChange={show => { cancelCharacter(); publishedDossier.changeSpoilers(show); }}
             showingSpoilers={publishedDossier.showingSpoilers}
             unavailable={publishedDossier.unavailable}
             busy={Boolean(selectedDossier.tier && publishedDossier.busy) ||

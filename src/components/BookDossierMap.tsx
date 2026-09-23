@@ -1,7 +1,10 @@
-import { useEffect, useId, useRef, useState } from "react";
+import { useCallback, useEffect, useId, useLayoutEffect, useMemo, useRef, useState, type SyntheticEvent } from "react";
 import { createPortal } from "react-dom";
 import { bookDossierDiagramHeight, bookDossierDiagramPoint, bookDossierDiagramPreview, type BookDossierDiagram, type BookDossierDiagramPreview } from "../books/bookDossierDiagram";
-import type { BookDossierItem, BookDossierPublicSource } from "../books/bookDossierDocument";
+import type { BookDossierDocumentV2, BookDossierItem, BookDossierPublicSource } from "../books/bookDossierDocument";
+import { bookDossierCharacterRequestToken, consumeBookDossierCharacterViewToken, resolveBookDossierCharacterView,
+  sameBookDossierCharacterView, type BookDossierCharacterViewRequest, type BookDossierCharacterViewReceipt,
+  type BookDossierCharacterViewTarget, type BookDossierCharacterViewToken } from "../books/bookDossierCharacterView";
 
 const copyByLocale = {
   ru: { open: "Открыть схему", close: "Закрыть", people: "Персонажи", relations: "Связи", groups: "Группы и обозначения", relation: "Связь", details: "Сведения", sources: "Источники", source: "Открыть источник", shown: "На схеме", list: "Полный список", find: "Найти персонажа", noMatches: "Нет совпадений" },
@@ -50,32 +53,119 @@ function PublicItemDetails({ item, sources, sourceLabel }: { item: BookDossierIt
 }
 
 /** The full map and details use the public document; selection does not navigate it. */
-export default function BookDossierMap({ diagram, locale }: { diagram: BookDossierDiagram; locale: "ru" | "en" }) {
+export default function BookDossierMap({ diagram, locale, characterDocument, characterRequest, onCharacterViewChange }: {
+  diagram: BookDossierDiagram; locale: "ru" | "en";
+  characterDocument?: BookDossierDocumentV2 | null;
+  characterRequest?: BookDossierCharacterViewRequest | null;
+  /** UI observation only. A future journey bridge needs a caller-owned action
+   * inside this modal; a Next button behind a native dialog is inert. */
+  onCharacterViewChange?: (view: BookDossierCharacterViewReceipt | null) => void;
+}) {
   const copy = copyByLocale[locale];
   const [open, setOpen] = useState(false);
   const [selectedId, setSelectedId] = useState(diagram.nodes[0].item.id);
   const [filter, setFilter] = useState("");
+  const [, invalidateView] = useState(0);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const detailRef = useRef<HTMLElement>(null);
+  // Native close may be followed by an intentional outside focus change before
+  // its queued event arrives. Only our Close/Escape or owned invalidation may
+  // request an additional trigger-focus restoration.
+  const restoreFocus = useRef(false);
+  const closingFocusOwned = useRef(false);
   const titleId = useId(), detailId = useId();
+  const callback = useRef(onCharacterViewChange); callback.current = onCharacterViewChange;
+  const activation = useRef<BookDossierCharacterViewTarget | null>(null);
+  const handledToken = useRef<BookDossierCharacterViewToken | null>(null);
+  const reported = useRef<BookDossierCharacterViewReceipt | null>(null);
+  const token = bookDossierCharacterRequestToken(characterRequest);
+  const target = useMemo(() => characterDocument?.locale === locale
+    ? resolveBookDossierCharacterView(characterDocument, diagram, characterRequest, Date.now()) : null,
+  [characterDocument, diagram, characterRequest, locale]);
+  const report = useCallback((view: BookDossierCharacterViewReceipt | null) => {
+    if (reported.current === null && view === null || reported.current && view && sameBookDossierCharacterView(reported.current, view)) return;
+    reported.current = view;
+    callback.current?.(view);
+  }, []);
+  const revoke = useCallback((closeDialog: boolean) => {
+    const owned = activation.current !== null;
+    activation.current = null;
+    if (owned) invalidateView(value => value + 1);
+    if (owned && closeDialog) {
+      restoreFocus.current = (!!dialogRef.current?.contains(document.activeElement) || closingFocusOwned.current)
+        && document.visibilityState !== "hidden";
+      closingFocusOwned.current = false;
+      setOpen(false); dialogRef.current?.close();
+      if (restoreFocus.current && triggerRef.current?.isConnected) triggerRef.current.focus({ preventScroll: true });
+    }
+    report(null);
+  }, [report]);
   const preview = bookDossierDiagramPreview(diagram);
   const fullPreview = bookDossierDiagramPreview(diagram, 8);
   const selectedNode = diagram.nodes.find(node => node.item.id === selectedId);
   const selectedEdge = diagram.edges.find(edge => edge.item.id === selectedId);
-  const selected = selectedNode || selectedEdge || diagram.nodes[0];
+  const selected = selectedNode || selectedEdge || (activation.current ? null : diagram.nodes[0]);
+  const requestedCurrent = !activation.current || !!target && sameBookDossierCharacterView(activation.current.receipt, target.receipt);
+  const visible = open && requestedCurrent;
   const filteredNodes = diagram.nodes.filter(node => `${node.item.label} ${node.item.value || ""}`.toLocaleLowerCase(locale).includes(filter.toLocaleLowerCase(locale).trim()));
-  useEffect(() => {
-    if (!open) return;
+  useLayoutEffect(() => {
+    if (!token) {
+      revoke(true);
+      if (characterRequest) setOpen(false);
+      return;
+    }
+    if (handledToken.current !== token) {
+      handledToken.current = token;
+      const fresh = consumeBookDossierCharacterViewToken(token);
+      revoke(false); setOpen(false);
+      if (fresh && target && target.expiresAt > Date.now() && document.visibilityState !== "hidden") {
+        activation.current = target;
+        restoreFocus.current = false;
+        setSelectedId(target.node.item.id); setFilter(""); setOpen(true);
+      }
+    } else if (activation.current) {
+      if (!target || !sameBookDossierCharacterView(activation.current.receipt, target.receipt) || target.expiresAt <= Date.now()) revoke(true);
+      else activation.current = target;
+    }
+  }, [token, target, characterRequest, revoke]);
+  useLayoutEffect(() => {
+    if (!visible) return;
     const dialog = dialogRef.current;
     if (!dialog) return;
-    dialog.showModal();
+    closingFocusOwned.current = false;
+    if (!dialog.open) dialog.showModal();
     closeRef.current?.focus();
-    return () => { if (dialog.open) dialog.close(); };
-  }, [open]);
-  const close = () => dialogRef.current?.close();
+    return () => {
+      // Ref detachment can precede invalidation effects. Capture focus while
+      // the old dialog still exists, before native close restores its opener.
+      closingFocusOwned.current = dialog.contains(document.activeElement);
+      if (dialog.open) dialog.close();
+    };
+  }, [visible]);
+  useLayoutEffect(() => {
+    const current = activation.current;
+    if (visible && dialogRef.current?.open && current && target && sameBookDossierCharacterView(current.receipt, target.receipt)
+      && selectedNode === target.node && selectedId === target.receipt.anchor.itemId
+      && target.expiresAt > Date.now() && document.visibilityState !== "hidden") report(target.receipt);
+    else report(null);
+  }, [visible, target, selectedId, selectedNode, report]);
+  useEffect(() => {
+    const current = activation.current;
+    if (!current || !visible) return;
+    const timer = window.setTimeout(() => revoke(true), Math.max(0, current.expiresAt - Date.now()));
+    return () => window.clearTimeout(timer);
+  }, [visible, target, selectedId, revoke]);
+  useEffect(() => {
+    const hidden = () => { if (document.visibilityState === "hidden") revoke(true); };
+    document.addEventListener("visibilitychange", hidden);
+    return () => document.removeEventListener("visibilitychange", hidden);
+  }, [revoke]);
+  useLayoutEffect(() => () => { activation.current = null; report(null); }, [report]);
+  const close = () => { restoreFocus.current = true; revoke(false); dialogRef.current?.close(); };
   const select = (id: string) => {
+    revoke(false);
     setSelectedId(id);
     if (window.matchMedia("(max-width: 639px)").matches) requestAnimationFrame(() => {
       const detail = detailRef.current;
@@ -83,18 +173,23 @@ export default function BookDossierMap({ diagram, locale }: { diagram: BookDossi
       if (bounds && (bounds.top >= window.innerHeight || bounds.bottom <= 0)) detail?.scrollIntoView({ block: "nearest" });
     });
   };
-  const restore = () => {
+  const restore = (event: SyntheticEvent<HTMLDialogElement>) => {
+    // An older removed dialog can deliver a queued close after a new explicit
+    // request opens its replacement. That event does not own the current view.
+    if (event.currentTarget !== dialogRef.current || event.currentTarget.open) return;
+    revoke(false);
     setOpen(false);
-    if (triggerRef.current?.isConnected) triggerRef.current.focus({ preventScroll: true });
+    if (restoreFocus.current && triggerRef.current?.isConnected && document.visibilityState !== "hidden") triggerRef.current.focus({ preventScroll: true });
   };
   return <div className="book-dossier-map" data-section-anchor={diagram.anchor.sectionId}>
-    <button className="book-dossier-map__preview" ref={triggerRef} type="button" aria-haspopup="dialog" onClick={() => setOpen(true)}>
+    <button className="book-dossier-map__preview" ref={triggerRef} type="button" aria-haspopup="dialog"
+      onClick={() => { restoreFocus.current = false; setOpen(true); }}>
       <BookDossierMapDrawing preview={preview} />
       <span className="book-dossier-map__preview-labels">{preview.nodes.map(node => <span key={node.id}>{node.number}. {node.label}</span>)}</span>
       <span className="book-dossier-map__open-label">{copy.open} <span aria-hidden="true">↗</span></span>
       <span className="book-dossier-map__count">{copy.shown}: {preview.nodes.length} / {diagram.nodes.length}</span>
     </button>
-    {open ? createPortal(<dialog className="book-dossier-reader book-dossier-map-dialog" ref={dialogRef} aria-labelledby={titleId}
+    {visible ? createPortal(<dialog className="book-dossier-reader book-dossier-map-dialog" ref={dialogRef} aria-labelledby={titleId}
       onClose={restore} onCancel={event => { event.preventDefault(); close(); }}
       onKeyDown={event => { if (event.key === "Escape") { event.preventDefault(); event.stopPropagation(); close(); } }}>
       <header className="book-dossier-map-dialog__header"><h2 id={titleId}>{diagram.title}</h2><button type="button" ref={closeRef} onClick={close}>{copy.close}</button></header>
@@ -131,12 +226,13 @@ export default function BookDossierMap({ diagram, locale }: { diagram: BookDossi
             </button>
           </li>)}</ul></section> : null}
         </div>
-        <aside className="book-dossier-map__detail" ref={detailRef} id={detailId} aria-live="polite" aria-atomic="true">
+        {selected && <aside className="book-dossier-map__detail" ref={detailRef} id={detailId} aria-live="polite" aria-atomic="true"
+          data-dossier-character-view={activation.current?.receipt.anchor.itemId ?? ""}>
           <span className="book-dossier-map__count">{copy.details}</span><h3>{selected.item.label}</h3>
           {selectedNode ? <p className="book-dossier-map__count">{selectedNode.groupLabel}</p> : null}
           {selectedEdge ? <p>{selectedEdge.from.item.label} → {selectedEdge.to.item.label}</p> : null}
           <PublicItemDetails item={selected.item} sources={selected.sources} sourceLabel={copy.source} />
-        </aside>
+        </aside>}
       </div>
     </dialog>, document.body) : null}
   </div>;

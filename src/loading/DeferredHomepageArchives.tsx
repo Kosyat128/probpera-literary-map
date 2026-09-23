@@ -11,6 +11,8 @@ import { articleCatalogEntryForLanguage } from "../data/articles/localization";
 import type { BookArchiveEntry } from "../data/bookArchive";
 import type { BookArchiveAuthorRequest, BookArchiveAuthorRequestResult, BookArchiveAuthorView } from "../books/bookArchiveAuthorRequest";
 import type { BookArchiveDetailView } from "../books/bookArchiveDetailView";
+import type { BookDossierCharacterViewRequest, BookDossierCharacterViewReceipt } from "../books/bookDossierCharacterView";
+import type { BookArchivePublishedDossierView } from "../components/BookArchiveSection";
 import type { Country } from "../data/countries";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import {
@@ -32,6 +34,10 @@ type BookArchiveComponentProps = {
   onRequestedBookHandled?: (token?: number) => void;
   onDetailViewChange?: (view: BookArchiveDetailView) => void;
   onCollectionSettledChange?: (settled: boolean) => void;
+  dossierCharacterRequest?: BookDossierCharacterViewRequest | null;
+  canPresentDossierCharacter?: (request: BookDossierCharacterViewRequest) => boolean;
+  onPublishedDossierViewChange?: (view: BookArchivePublishedDossierView) => void;
+  onDossierCharacterViewChange?: (view: BookDossierCharacterViewReceipt | null) => void;
   requestedAuthor?: BookArchiveAuthorRequest | null;
   onRequestedAuthorHandled?: (id: number, result: BookArchiveAuthorRequestResult) => void;
   onAuthorViewChange?: (view: BookArchiveAuthorView) => void;
