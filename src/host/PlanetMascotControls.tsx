@@ -84,6 +84,7 @@ const navigationControls = ".native-planet-app .globe-controls, .native-planet-a
   + ".native-planet-app .globe-style-switch-toggle, .native-planet-app .globe-edition-compact-select, "
   + ".native-planet-app .book-shelf-frame__navigation, .native-planet-app .book-detail-actions, "
   + ".native-planet-app .archive-book-actions, "
+  + ".native-planet-app .atlas-country-presentation .panel-close, "
   + ".native-planet-app .book-detail-page-navigation, .native-planet-app [data-planet-stand-toggle]";
 function companionViewport(): Rect {
   const view = viewport();
@@ -176,7 +177,9 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     const measure = () => {
       const next = companionViewport();
       setView(previous => sameRect(previous, next) ? previous : next);
-      const elements = new Set(document.querySelectorAll(`${protectedControls}, ${navigationControls}`));
+      // The sheet header can move while retaining its own size. Observe the
+      // resizing sheet as well, so a finite expansion/drag updates its bounds.
+      const elements = new Set(document.querySelectorAll(`${protectedControls}, ${navigationControls}, .native-planet-app .atlas-country-presentation`));
       for (const element of watched) if (!elements.has(element)) { observer?.unobserve(element); watched.delete(element); }
       for (const element of elements) if (!watched.has(element)) { observer?.observe(element); watched.add(element); }
       const bounds = [...document.querySelectorAll(navigationControls)]

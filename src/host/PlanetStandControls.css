@@ -79,7 +79,7 @@
 
 @media (max-width: 980px) {
   .native-planet-app .atlas-experience-surface[data-atlas-view][data-atlas-panel-state="open"][data-atlas-sheet-state="collapsed"] .literary-globe[data-globe-stand]:not([data-globe-stand="canonical"]) .globe-controls {
-    bottom: calc(142px + max(8px, env(safe-area-inset-bottom)));
+    bottom: calc(var(--planet-collapsed-country-height, 142px) + max(8px, env(safe-area-inset-bottom)));
   }
   .native-planet-app .literary-globe[data-globe-stand]:not([data-globe-stand="canonical"]) .globe-controls button {
     height: 44px;
@@ -101,7 +101,7 @@
 
 @media (max-width: 380px) {
   .native-planet-app .atlas-experience-surface[data-atlas-view][data-atlas-panel-state="open"][data-atlas-sheet-state="collapsed"] .literary-globe[data-globe-stand]:not([data-globe-stand="canonical"]) .globe-controls {
-    bottom: calc(142px + max(4px, env(safe-area-inset-bottom)));
+    bottom: calc(var(--planet-collapsed-country-height, 142px) + max(4px, env(safe-area-inset-bottom)));
     padding: 0;
   }
   .native-planet-app .literary-globe[data-globe-stand]:not([data-globe-stand="canonical"]) .globe-scale-feedback {

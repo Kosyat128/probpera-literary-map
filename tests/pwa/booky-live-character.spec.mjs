@@ -1048,3 +1048,146 @@ test('Mr. Booky mobile placement preserves globe and collection hit targets in b
     await capture(page,result,testInfo,'booky-mobile-placement-failure.png').catch(()=>undefined);throw error;
   }finally{await fixture.close();}
 });
+
+test('short landscape globe controls stay reachable beside the collapsed country archive in both locales',async({},testInfo)=>{
+  test.setTimeout(150_000);const fixture=await open(testInfo),{page,result}=fixture;
+  const controls=['zoom-in','zoom-out','reset','edition-info'];
+  const country=page.locator('.atlas-country-sheet-toggle');
+  async function hostLayout(label){
+    const state=await page.evaluate(()=>{
+      const describe=element=>{
+        if(!element)return null;const r=element.getBoundingClientRect(),s=getComputedStyle(element);
+        return{tag:element.tagName,className:typeof element.className==='string'?element.className:null,
+          rect:{left:r.left,top:r.top,width:r.width,height:r.height},scrollLeft:element.scrollLeft,scrollTop:element.scrollTop,
+          scrollWidth:element.scrollWidth,clientWidth:element.clientWidth,overflowX:s.overflowX,overflowY:s.overflowY,
+          transform:s.transform,position:s.position,attributes:Object.fromEntries([...element.attributes].filter(a=>a.name.startsWith('data-atlas-')).map(a=>[a.name,a.value]))};
+      };
+      const selectors=['html','body','.native-planet-app','.atlas-experience-surface','.atlas-layout','.globe-column','.literary-globe','.globe-controls'];
+      const ancestors=[];for(let node=document.querySelector('.literary-globe');node;node=node.parentElement)ancestors.push(describe(node));
+      return{scrollX,scrollY,scrollingElement:describe(document.scrollingElement),elements:selectors.map(selector=>({selector,...describe(document.querySelector(selector))})),ancestors};
+    });
+    (result.observations.hostLayoutSnapshots??=[]).push({label,...state});return state;
+  }
+  async function settleLayout(){
+    let previous=null,matches=0;
+    await expect.poll(async()=>{
+      const key=await page.evaluate(()=>JSON.stringify(['.atlas-country-sheet-toggle','.globe-controls'].map(selector=>{
+        const r=document.querySelector(selector)?.getBoundingClientRect();return r?[r.left,r.top,r.width,r.height]:null;
+      })));
+      matches=key===previous?matches+1:0;previous=key;return matches;
+    },{intervals:[50,100],message:'Country sheet and globe toolbar finish their finite layout transition'}).toBeGreaterThanOrEqual(3);
+  }
+  async function collapseCountry(){
+    for(let i=0;i<3&&await country.getAttribute('aria-expanded')==='true';i++){
+      await country.focus();await page.keyboard.press('Enter');
+    }
+    await expect(country).toHaveAttribute('aria-expanded','false');await settleLayout();
+  }
+  async function hitTargets(label,{withCountry=true,onlyCountry=false,withPanelClose=false}={}){
+    const selectors=onlyCountry?[]:controls.map(name=>'[data-globe-control="'+name+'"]');
+    if(withCountry)selectors.push('.atlas-country-sheet-toggle');
+    if(withPanelClose)selectors.push('.country-panel .panel-topline .panel-close');
+    const targets=await page.evaluate(selectors=>selectors.map(selector=>{
+      const element=document.querySelector(selector);if(!element)return{selector,visible:false};
+      const r=element.getBoundingClientRect(),style=getComputedStyle(element);
+      const points=[[.15,.5],[.5,.5],[.85,.5]].map(([x,y])=>{
+        const hit=document.elementFromPoint(r.left+r.width*x,r.top+r.height*y);
+        return{reachable:!!hit&&element.contains(hit),tag:hit?.tagName??null,className:typeof hit?.className==='string'?hit.className:null};
+      });
+      return{selector,rect:{left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height},points,
+        visible:r.width>=44&&r.height>=44&&r.left>=0&&r.top>=0&&r.right<=innerWidth+.5&&r.bottom<=innerHeight+.5
+          &&style.display!=='none'&&style.visibility!=='hidden'&&!element.closest('[hidden],[inert]')};
+    }),selectors);
+    const observation={label,viewport:page.viewportSize(),layout:await layout(page),targets,hostLayout:await hostLayout(label)};
+    result.observations.landscapeControlChecks.push(observation);
+    for(const target of targets){
+      expect(target.visible,label+': '+target.selector+' stays visible with a 44px target').toBe(true);
+      // This regression has no host-baseline exemption: every sampled point
+      // must reach the actual requested control, even while Booky is hidden.
+      expect(target.points.every(point=>point.reachable),label+': '+target.selector+' receives pointer hits').toBe(true);
+      await page.locator(target.selector).click({trial:true});
+    }
+    return observation;
+  }
+  async function hideCompanion(){
+    if(await avatar(page).count()){
+      await page.locator('[data-planet-mascot-hide]').click();await expect(avatar(page)).toHaveCount(0);
+      await expect(page.locator('[data-planet-mascot-preference-state]')).toHaveCount(0);
+      await expect.poll(()=>JSON.parse(fixture.memory.get(BOOKY)??'null')?.visible).toBe(false);
+    }
+  }
+  try{
+    await actual(page);await page.evaluate(()=>window.__bookyLiveFixture.remember());await stablePose(page);
+    const baseline=await actual(page);result.observations.landscapeControlChecks=[];
+    for(const[language,size]of [['ru',{width:800,height:400}],['en',{width:800,height:400}],
+      ['ru',{width:667,height:375}],['en',{width:667,height:375}]]){
+      await hideCompanion();
+      if(await page.locator('html').getAttribute('lang')!==language){
+        await page.locator('.atlas-immersive-chrome .interface-language-control button').filter({hasText:new RegExp('^'+language.toUpperCase()+'$','u')}).click();
+        await expect(page.locator('html')).toHaveAttribute('lang',language);await expect.poll(()=>fixture.memory.get('probpera-interface-language')).toBe(language);
+      }
+      await page.setViewportSize(size);await collapseCountry();
+      const unchanged=mutations(fixture);await hitTargets(language+' '+size.width+' hidden');
+      if(language==='en'&&size.width===667){
+        // Declared DOM scroll-capability probe: browser focus can scroll a
+        // hidden-overflow ancestor. Request that same native scroll directly;
+        // no camera assignment, layout override or application event is faked.
+        await stablePose(page);const beforeProbe=await actual(page),stage=page.locator('#atlas .world-map-stage');
+        const before=await stage.evaluate(element=>{const r=element.getBoundingClientRect();
+          return{left:r.left,top:r.top,width:r.width,height:r.height,scrollLeft:element.scrollLeft,scrollTop:element.scrollTop,
+            scrollWidth:element.scrollWidth,scrollHeight:element.scrollHeight,clientWidth:element.clientWidth,clientHeight:element.clientHeight};});
+        await stage.evaluate(element=>element.scrollTo({left:element.scrollWidth,top:element.scrollHeight,behavior:'instant'}));
+        await twoFrames(page);const after=await stage.evaluate(element=>{const r=element.getBoundingClientRect();
+          return{left:r.left,top:r.top,width:r.width,height:r.height,scrollLeft:element.scrollLeft,scrollTop:element.scrollTop};});
+        expect(after).toEqual({left:before.left,top:before.top,width:before.width,height:before.height,scrollLeft:0,scrollTop:0});
+        retained(await actual(page),beforeProbe);await hitTargets('after declared globe frame scroll probe');
+        result.observations.globeScrollProbe={kind:'native-globe-stage-DOM-scroll-capability-probe',before,after,noCameraAssignment:true,noLayoutOverride:true};
+      }
+      await twoFrames(page);expect(mutations(fixture)).toEqual(unchanged);
+      await page.locator('[data-planet-mascot-toggle]').click();await expect(panel(page)).toBeVisible();await companionSaved(fixture);
+      await page.locator('[data-planet-mascot-collapse]').click();await expect(panel(page)).toHaveCount(0);await live(page);
+      const shownBefore=mutations(fixture);await hitTargets(language+' '+size.width+' shown');
+      await twoFrames(page);expect(mutations(fixture)).toEqual(shownBefore);retained(await actual(page),baseline,false);
+      if(size.width===800)await capture(page,result,testInfo,`globe-landscape-controls-${language}-800.png`);
+      else if(language==='en')await capture(page,result,testInfo,'globe-landscape-controls-en-667.png');
+    }
+
+    // Exercise the same genuine controls whose hit targets were measured.
+    const beforeControls=mutations(fixture);
+    const beforeZoom=Number(await globe(page).getAttribute('data-globe-camera-radius'));
+    await page.locator('[data-globe-control="zoom-in"]').click();
+    await expect.poll(async()=>Number(await globe(page).getAttribute('data-globe-camera-radius'))).toBeLessThan(beforeZoom-.01);
+    await expect(globe(page)).toHaveAttribute('data-globe-camera-phase','idle');
+    const zoomed=Number(await globe(page).getAttribute('data-globe-camera-radius'));
+    await page.locator('[data-globe-control="zoom-out"]').click();
+    await expect.poll(async()=>Number(await globe(page).getAttribute('data-globe-camera-radius'))).toBeGreaterThan(zoomed+.01);
+    await expect(globe(page)).toHaveAttribute('data-globe-camera-phase','idle');
+    const beforeReset=JSON.stringify((await sample(page)).pose);await page.locator('[data-globe-control="reset"]').click();
+    await expect.poll(async()=>JSON.stringify((await sample(page)).pose)).not.toBe(beforeReset);
+    await expect(globe(page)).toHaveAttribute('data-globe-camera-phase','idle');await stablePose(page);
+    await hostLayout('before source open');await page.locator('[data-globe-control="edition-info"]').click();
+    const source=page.locator('.globe-edition-info-dialog');await expect(source).toBeVisible();
+    await expect(source.locator('#globe-edition-info-title')).toContainText('Rand');
+    await source.locator('form button').click();await expect(source).not.toBeVisible();await hitTargets('after source close');
+    await hostLayout('before country open');await country.click();await expect(country).toHaveAttribute('aria-expanded','true');
+    await expect(page.locator('#atlas-country-sheet-content')).not.toHaveAttribute('inert','');
+    await settleLayout();
+    await hitTargets('expanded country header and panel close',{onlyCountry:true,withPanelClose:true});
+    await hostLayout('after country open');
+    await capture(page,result,testInfo,'globe-landscape-archive-open-en-667.png');
+    await collapseCountry();await hitTargets('after country collapse');
+    expect(mutations(fixture)).toEqual(beforeControls);retained(await actual(page),baseline,false);
+
+    await hideCompanion();const afterExplicitHide=mutations(fixture);
+    await page.setViewportSize({width:320,height:844});await collapseCountry();await hitTargets('portrait 320 regression');
+    await page.setViewportSize({width:1440,height:850});await ready(page);await hitTargets('desktop regression',{withCountry:false});
+    expect(mutations(fixture)).toEqual(afterExplicitHide);expect(fixture.writes()).toEqual([]);expect(fixture.memory.get(KEY)).toBe(fixture.initialRecord);
+    retained(await actual(page),baseline,false);
+    Object.assign(result,{scenario:'globe-landscape-controls',locales:['ru','en'],landscapeViewports:[{width:800,height:400},{width:667,height:375}],
+      hiddenCompanionToolbarReachable:true,shownCompanionToolbarReachable:true,allFourControlsReceiveHits:true,
+      genuineZoomAndResetWork:true,sourceDialogCloses:true,countryExpandCollapseRetained:true,expandedCountryHeaderReachable:true,countryPanelCloseReachable:true,portraitAndDesktopRetained:true,
+      globeFrameCannotScroll:true,directStageScrollProbe:true,noAutomaticPreferenceWrites:true,sameCanonicalGlobe:true});await fixture.verify();
+  }catch(error){
+    await capture(page,result,testInfo,'globe-landscape-controls-failure.png').catch(()=>undefined);throw error;
+  }finally{await fixture.close();}
+});
