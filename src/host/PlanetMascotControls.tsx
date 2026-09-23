@@ -489,6 +489,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
       data-planet-mascot-highlight={snapshot.highlight} style={highlight as CSSProperties} />}
     <div ref={root} className="planet-mascot-controls" data-planet-mascot-pet=""
       data-planet-mascot-active={shown ? "true" : "false"} data-planet-mascot-visibility={snapshot.visibility}
+      data-planet-mascot-panel-state={open ? "open" : "closed"}
       data-planet-mascot-mode={snapshot.mode} data-planet-mascot-current-route={snapshot.route ?? "none"}
       data-planet-mascot-step={snapshot.step} data-planet-mascot-screen={screen} data-planet-mascot-gesture={walk.active ? "walking" : gesture}
       data-planet-mascot-closed-notice={!open && persistence.state !== "idle" ? "true" : undefined}

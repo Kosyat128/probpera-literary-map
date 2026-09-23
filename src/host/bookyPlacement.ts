@@ -74,7 +74,9 @@ export function placeBookyCard(preferred: Point, size: Size, view: BookyPlacemen
   pet: BookyPlacementRect, controls: readonly BookyPlacementRect[]): BookyPlacementRect {
   const width = Math.min(size.width, Math.max(1, view.width - GAP * 2));
   const height = Math.min(size.height, Math.max(1, view.height - GAP * 2));
-  const minHeight = Math.min(160, height);
+  // Leave room below the sticky heading and selected-entity summary to read a
+  // useful part of the page. Smaller viewports still cap this to real space.
+  const minHeight = Math.min(200, height);
   const leftEdge = view.left + GAP, topEdge = view.top + GAP;
   const rightEdge = view.left + view.width - GAP, bottomEdge = view.top + view.height - GAP;
   const clampX = (x: number) => Math.max(leftEdge, Math.min(rightEdge - width, x));

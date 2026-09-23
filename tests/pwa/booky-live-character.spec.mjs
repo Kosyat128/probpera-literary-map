@@ -1211,6 +1211,8 @@ test('Mr. Booky open help preserves primary navigation and scrolls independently
   const globeTargets=['zoom-in','zoom-out','reset','edition-info'].map(name=>'[data-globe-control="'+name+'"]');
   const globeHeader=['.atlas-immersive-chrome .interface-language-control button:first-child',
     '.atlas-immersive-chrome .interface-language-control button:last-child'];
+  const optionalGlobeHeader=['toggle-search','toggle-filters','random-journey','open-collection']
+    .map(name=>'.atlas-immersive-chrome [data-atlas-action="'+name+'"]');
   const collectionHeader=['.native-planet-panel__header .interface-language-control button:first-child',
     '.native-planet-panel__header .interface-language-control button:last-child','.native-planet-panel__header > button'];
   const optionalRail=['[data-globe-control="edition-rail-toggle"]',
@@ -1258,6 +1260,9 @@ test('Mr. Booky open help preserves primary navigation and scrolls independently
     await expect.poll(async()=>(await metrics()).scrollTop).toBeGreaterThan(40);const scrolled=await metrics();
     await hitTargets(label+' scrolled',[...selectors,'[data-planet-mascot-collapse]'],optional);retained(await actual(page),canonical);
     expect((await metrics()).scrollTop).toBeGreaterThan(40);
+    if(page.viewportSize().width<=640&&page.viewportSize().width>page.viewportSize().height){
+      await capture(page,result,testInfo,`booky-help-globe-${label.replaceAll(' ','-')}-scrolled.png`);
+    }
     await page.locator('[data-planet-mascot-collapse]').click();await expect(panel(page)).toHaveCount(0);await live(page);
     await hitTargets(label+' closed',closedSelectors,closedOptional);retained(await actual(page),canonical);expect(mutations(fixture)).toEqual(before);
     result.observations.helpScrolls.push({label,top,scrolled,closedWhileScrolled:true,closedByActualButton:true});
@@ -1270,22 +1275,28 @@ test('Mr. Booky open help preserves primary navigation and scrolls independently
   try{
     await actual(page);await page.evaluate(()=>window.__bookyLiveFixture.remember());await stablePose(page);
     const original=await actual(page);result.observations.openHelpChecks=[];result.observations.helpScrolls=[];const landscapeHeights=[];
-    for(const[language,size]of [['ru',{width:800,height:400}],['en',{width:800,height:400}],
+    for(const[language,size]of [['ru',{width:568,height:320}],['en',{width:568,height:320}],
+      ['ru',{width:640,height:360}],['en',{width:640,height:360}],
+      ['ru',{width:800,height:400}],['en',{width:800,height:400}],
       ['ru',{width:667,height:375}],['en',{width:667,height:375}]]){
       await setLanguage(language,'.atlas-immersive-chrome');await page.setViewportSize(size);
       const country=page.locator('.atlas-country-sheet-toggle');
       for(let i=0;i<3&&await country.getAttribute('aria-expanded')==='true';i++){await country.focus();await page.keyboard.press('Enter');}
       await expect(country).toHaveAttribute('aria-expanded','false');await stablePose(page);const beforeOpen=await actual(page);
       await page.locator('[data-planet-mascot-toggle]').click();await expect(panel(page)).toBeVisible();await companionSaved(fixture);await settleHelp();
-      landscapeHeights.push((await panel(page).boundingBox()).height);
+      const helpHeight=(await panel(page).boundingBox()).height;landscapeHeights.push(helpHeight);
       retained(await actual(page),beforeOpen);
       // A readable help card cannot avoid every strip on a 375px-high screen.
       // Persistent host controls stay strict while open; every dock, country
       // and visible rail control is strict after the real close action.
       await hitTargets(language+' '+size.width+' open',globeHeader);
+      if(size.width<=640){
+        await capture(page,result,testInfo,`booky-help-globe-${language}-${size.width}.png`);
+        expect(helpHeight,'Compact landscape help retains a readable scrolling area').toBeGreaterThanOrEqual(180);
+      }
       if(language==='ru'&&size.width===800)await capture(page,result,testInfo,'booky-help-globe-ru-800.png');
       if(language==='en'&&size.width===667)await capture(page,result,testInfo,'booky-help-globe-en-667.png');
-      await scrollAndClose(language+' '+size.width,globeHeader,[...globeTargets,...globeHeader,'.atlas-country-sheet-toggle'],[],optionalRail);
+      await scrollAndClose(language+' '+size.width,globeHeader,[...globeTargets,...globeHeader,'.atlas-country-sheet-toggle'],[],[...optionalRail,...optionalGlobeHeader]);
       retained(await actual(page),original,false);
     }
 
@@ -1310,9 +1321,9 @@ test('Mr. Booky open help preserves primary navigation and scrolls independently
       await scrollAndClose(language+' collection',collectionHeader);retained(await actual(page),original,false);
     }
     expect(fixture.writes()).toEqual([]);expect(fixture.memory.get(KEY)).toBe(fixture.initialRecord);expect(await downloadActions(page)).toEqual([]);
-    Object.assign(result,{scenario:'booky-open-help-placement',locales:['ru','en'],landscapeViewports:[{width:800,height:400},{width:667,height:375}],collectionPortraitWidth:320,
-      openHelpLocaleControlsReachable:true,desktopOpenHelpNavigationReachable:true,closedHelpNavigationReachable:true,
-      collectionHeaderReachable:true,helpScrollsByPointerWheel:true,helpClosesWhileScrolled:true,helpRegrowsOnLargerViewport:true,petAndHelpFitWithoutOverlap:true,
+    Object.assign(result,{scenario:'booky-open-help-placement',locales:['ru','en'],landscapeViewports:[{width:568,height:320},{width:640,height:360},{width:800,height:400},{width:667,height:375}],collectionPortraitWidth:320,
+      openHelpLocaleControlsReachable:true,desktopOpenHelpNavigationReachable:true,closedHelpNavigationReachable:true,closedHelpGlobalHeaderReachable:true,
+      collectionHeaderReachable:true,helpScrollsByPointerWheel:true,helpClosesWhileScrolled:true,helpRegrowsOnLargerViewport:true,compactLandscapeHelpReadable:true,compactLandscapeHelpMinimumHeight:180,petAndHelpFitWithoutOverlap:true,
       noAutomaticPreferenceWrites:true,noHelpCameraChanges:true,sameCanonicalGlobe:true});await fixture.verify();
   }catch(error){
     result.observations.failureLayout=await layout(page).catch(()=>null);

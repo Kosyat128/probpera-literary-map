@@ -232,6 +232,16 @@
   }
   .planet-mascot-controls > .planet-mascot-controls__persistence { grid-column: 1 / -1; }
 }
+@media (max-width: 640px) and (max-height: 540px) and (orientation: landscape) {
+  /* Walking is unavailable while reading; leave room for a readable help page. */
+  .planet-mascot-controls[data-planet-mascot-active="true"][data-planet-mascot-panel-state="open"] {
+    width: 194px;
+    grid-template-columns: 96px 94px;
+  }
+  .planet-mascot-controls[data-planet-mascot-panel-state="open"] > .planet-mascot-controls__walk {
+    display: none;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   .planet-mascot-controls *, .planet-mascot-highlight { scroll-behavior: auto; }
   .planet-mascot-controls__leaf { animation: none !important; }

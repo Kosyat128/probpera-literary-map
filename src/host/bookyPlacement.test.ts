@@ -69,6 +69,21 @@ describe("companion resting placement", () => {
 });
 
 describe("open companion help placement", () => {
+  it("keeps body text readable beside the pet on a crowded 568px landscape screen", () => {
+    const view = { left: 0, top: 58, width: 568, height: 262 };
+    const pet = { left: 294, top: 74, width: 194, height: 96 };
+    const controls = [{ left: 0, top: 240, width: 568, height: 80 }];
+    const width = bookyCardWidth(view, pet), height = bookyCardHeightLimit(view, pet, width);
+    const card = placeBookyCard({ left: 12, top: 70 }, { width, height }, view, pet, controls);
+    expect(overlaps(card, pet)).toBe(false);
+    expect(card.height).toBeGreaterThanOrEqual(200);
+    expect(card.top).toBeGreaterThanOrEqual(70);
+    expect(card.top + card.height).toBeLessThanOrEqual(308);
+    const tightView = { ...view, height: 160 };
+    const tight = placeBookyCard({ left: 12, top: 70 }, { width, height }, tightView, pet, controls);
+    expect(tight.top + tight.height).toBeLessThanOrEqual(tightView.top + tightView.height - 12);
+    expect(overlaps(tight, pet)).toBe(false);
+  });
   it("uses the readable narrow landscape column without squeezing portrait text", () => {
     const view = { left: 0, top: 65, width: 667, height: 310 };
     const pet = { left: 335, top: 146, width: 312, height: 96 };
