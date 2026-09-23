@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-23T03:36:30.235Z",
+  "sourceCommit": "3349b125c2e30553e6b1237b4e3b73e1975a590a",
+  "buildId": "ad274bb765cdb3a42e655b90bc7f64a552c114136ed9d15e7e7688a5f4e0d380",
+  "sourceInputsSha256": "eb8bae812691c58a41cd9ca06e1e60412a58c1a0d076a4986e628ab75508327b",
+  "artifact": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/pwa-ad274bb7",
+    "files": 1427,
+    "bytes": 76722321,
+    "artifactSha256": "8c9e970903417c21a84fa0ffd21b070eae176872617180da07c5f3343e45010d",
+    "exactCopiesVerified": true
+  },
+  "browser": {
+    "startTime": "2026-09-23T03:36:07.599Z",
+    "duration": 18337.074,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "pass": true,
+  "failure": null,
+  "localQaAuthority": true,
+  "stageAccepted": false,
+  "installedDevice": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false
+}

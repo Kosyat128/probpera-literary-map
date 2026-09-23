@@ -1,0 +1,63 @@
+
+Running 23 tests using 1 worker
+
+
+
+[1/23] tests\pwa\booky-journey.spec.mjs:536:1 › activity answers require fresh explicit acknowledgement and stay separate from navigation and saved progress
+[2/23] tests\pwa\booky-journey.spec.mjs:587:1 › activity answer is temporary across suspension cold restoration and revoked journey review
+[3/23] tests\pwa\booky-journey.spec.mjs:767:1 › actual reviewed fixture follows country writer work and explicit checkpoint across locale and suspension
+[4/23] tests\pwa\booky-journey.spec.mjs:861:4 › journey admission fails closed: no-profile
+[5/23] tests\pwa\booky-journey.spec.mjs:861:4 › journey admission fails closed: no-independent-journey-review
+[6/23] tests\pwa\booky-journey.spec.mjs:883:1 › confirmed journey progress restores the exact prefix paused in a fresh document until explicit resume
+[7/23] tests\pwa\booky-journey.spec.mjs:919:1 › failed journey-progress native write stays visibly unsaved until explicit exact retry
+[8/23] tests\pwa\booky-journey.spec.mjs:953:1 › future journey progress remains unchanged until explicit confirmed removal
+[9/23] tests\pwa\booky-journey.spec.mjs:989:1 › a new reviewed journey version cannot reinterpret or overwrite a saved older prefix
+[10/23] tests\pwa\booky-journey.spec.mjs:1024:1 › explicit reviewed journey migration preserves history and restores the exact new prefix paused
+[11/23] tests\pwa\booky-journey.spec.mjs:1099:1 › missing or revoked independent migration review preserves the old version without navigation
+[12/23] tests\pwa\booky-journey.spec.mjs:1150:1 › confirmed exact-version completion unlocks a dependent journey only with independently admitted saved locale
+[13/23] tests\pwa\booky-journey.spec.mjs:1203:1 › history selection never navigates and confirmed single-record deletion truthfully retries while revoking a prerequisite
+[14/23] tests\pwa\booky-journey.spec.mjs:1277:4 › journey focus: owned invalidated confirmation restores stable status
+[15/23] tests\pwa\booky-journey.spec.mjs:1277:4 › journey focus: invalidated confirmation never steals outside keyboard focus
+[16/23] tests\pwa\booky-journey.spec.mjs:1329:1 › journey focus: keyboard cancellation and fresh document discard consent without replaying progress
+[17/23] tests\pwa\booky-journey.spec.mjs:1399:1 › full journey history keeps existing progress usable and frees exactly one chosen entry for a new route
+[18/23] tests\pwa\booky-journey.spec.mjs:1587:1 › literary passport credits only confirmed acknowledged steps and withdraws a deliberately deleted history
+[19/23] tests\pwa\booky-journey.spec.mjs:1742:1 › reviewed journey overview follows exact locale review and whole-route offline availability without writing progress
+[20/23] tests\pwa\booky-journey.spec.mjs:1901:1 › sourced fact uses exact work view and read-only bilingual citations before explicit semantic acknowledgement
+  1) tests\pwa\booky-journey.spec.mjs:1901:1 › sourced fact uses exact work view and read-only bilingual citations before explicit semantic acknowledgement 
+
+    Error: expect(locator).toBeEnabled() failed
+
+    Locator: locator('[data-booky-journey-next]')
+    Expected: enabled
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeEnabled" with timeout 5000ms
+      - waiting for locator('[data-booky-journey-next]')
+
+
+      1916 |     expect(fixture.memory.get(PROGRESS)).toBe(saved); expect(fixture.progressWrites()).toHaveLength(writes);
+      1917 |     expect(page.url()).toBe(beforeUrl); retained(await actual(page), beforeSources, true);
+    > 1918 |     await expectProgress(page, 3, 5); await expect(next(page)).toBeEnabled();
+           |                                                                ^
+      1919 |     await captureFactSources(fixture, testInfo, 'journey-fact-sources-ru-320.png',
+      1920 |       '320px actual App RU work-anchored synthetic fact with plain selectable example.org URL and source date; Sources and separate Next remain fully visible');
+      1921 |     await factSourcesSummary(page).focus(); await page.keyboard.press('Enter');
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-journey.spec.mjs:1918:64
+
+    attachment #1: booky-journey-source-evidence (application/json) ────────────────────────────────
+    D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-journey-fact\browser-a1\booky-journey-sourced-fact-48ec2-it-semantic-acknowledgement\attachments\booky-journey-source-evidence-3ff6f80310126adcceaa5efd6544c0cfc828489e.json
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-journey-fact\browser-a1\booky-journey-sourced-fact-48ec2-it-semantic-acknowledgement\error-context.md
+
+
+
+
+[21/23] tests\pwa\booky-journey.spec.mjs:1997:1 › sourced fact revocation and changed source bindings preserve saved acknowledgements until exact reviewed restoration
+[22/23] tests\pwa\booky-reader-policy.spec.mjs:481:1 › explicit adult profile survives locale and lifecycle while drafts and deletion never grant stale policy
+[23/23] tests\pwa\booky-reader-policy.spec.mjs:542:1 › future profiles are retained until confirmed deletion and failed deletion cannot restore admission
+  1 failed
+    tests\pwa\booky-journey.spec.mjs:1901:1 › sourced fact uses exact work view and read-only bilingual citations before explicit semantic acknowledgement 
+  22 passed (5.1m)

@@ -1,0 +1,1040 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=docs/mobile/evidence/S15/journey-fact-20260923/playwright.config.mjs"
+    ],
+    "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\journey-fact-20260923\\playwright.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a1",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "booky-journey.spec.mjs",
+          "booky-reader-policy.spec.mjs"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\journey-fact-20260923\\browser-a1\\playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "booky-journey.spec.mjs",
+      "file": "booky-journey.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "activity answers require fresh explicit acknowledgement and stay separate from navigation and saved progress",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 14886,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-23T03:02:18.142Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-journey-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-fact\\browser-a1\\booky-journey-activity-ans-b1175-vigation-and-saved-progress\\attachments\\booky-journey-source-evidence-f4243e266304b57de766b76a8878e331a34b636d.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9383e9b011c291e52b8f-ad657abb8f4e20bb8db3",
+          "file": "booky-journey.spec.mjs",
+          "line": 536,
+          "column": 1
+        },
+        {
+          "title": "activity answer is temporary across suspension cold restoration and revoked journey review",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 24147,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-23T03:02:34.593Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-journey-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-fact\\browser-a1\\booky-journey-activity-ans-b190e--and-revoked-journey-review\\attachments\\booky-journey-source-evidence-db9ab40cbe939512af89f9cd3a8768459c1dd5b5.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9383e9b011c291e52b8f-e35186b88dc491ca3b18",
+          "file": "booky-journey.spec.mjs",
+          "line": 587,
+          "column": 1
+        },
+        {
+          "title": "actual reviewed fixture follows country writer work and explicit checkpoint across locale and suspension",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12699,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-23T03:02:58.768Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-journey-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-fact\\browser-a1\\booky-journey-actual-revie-84536-cross-locale-and-suspension\\attachments\\booky-journey-source-evidence-f27c8db7d887e6c0f52c0329a9160828adc8c25e.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9383e9b011c291e52b8f-23a6092db8d8041c0ff2",
+          "file": "booky-journey.spec.mjs",
+          "line": 767,
+          "column": 1
+        },
+        {
+          "title": "journey admission fails closed: no-profile",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6182,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-23T03:03:11.476Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-journey-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-fact\\browser-a1\\booky-journey-journey-admission-fails-closed-no-profile\\attachments\\booky-journey-source-evidence-8d130ffa195ce0111e7daea38a1079e1d989aaef.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9383e9b011c291e52b8f-230012d68ab86c70df72",
+          "file": "booky-journey.spec.mjs",
+          "line": 861,
+          "column": 4
+        },
+        {
+          "title": "journey admission fails closed: no-independent-journey-review",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7090,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-23T03:03:17.667Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-journey-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-fact\\browser-a1\\booky-journey-journey-admi-1436d--independent-journey-review\\attachments\\booky-journey-source-evidence-f8b621665b1df1011531a6d4af51097233875c8a.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9383e9b011c291e52b8f-8333e706603b96c46aa8",
+          "file": "booky-journey.spec.mjs",
+          "line": 861,
+          "column": 4
+        },
+        {
+          "title": "confirmed journey progress restores the exact prefix paused in a fresh document until explicit resume",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11646,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-23T03:03:24.764Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-journey-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-fact\\browser-a1\\booky-journey-confirmed-jo-c9068-ument-until-explicit-resume\\attachments\\booky-journey-source-evidence-85a8b01059cfb8760384b03b8f5f0e628574129d.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9383e9b011c291e52b8f-d3c450ca06b791c656b1",
+          "file": "booky-journey.spec.mjs",
+          "line": 883,
+          "column": 1
+        },
+        {
+          "title": "failed journey-progress native write stays visibly unsaved until explicit exact retry",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7402,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-23T03:03:36.417Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-journey-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-fact\\browser-a1\\booky-journey-failed-journ-ff64b--until-explicit-exact-retry\\attachments\\booky-journey-source-evidence-fe6c477a43d24281e56f89ba9f3955210dc866ec.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9383e9b011c291e52b8f-d3da024bb4ae80ac314a",
+          "file": "booky-journey.spec.mjs",
+          "line": 919,
+          "column": 1
+        },
+        {
+          "title": "future journey progress remains unchanged until explicit confirmed removal",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7558,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-23T03:03:43.827Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-journey-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-fact\\browser-a1\\booky-journey-future-journ-cfc19--explicit-confirmed-removal\\attachments\\booky-journey-source-evidence-ea36a4f918668cc2953fffe657be4aee71e3b4f5.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9383e9b011c291e52b8f-8503c2731a11670857f2",
+          "file": "booky-journey.spec.mjs",
+          "line": 953,
+          "column": 1
+        },
+        {
+          "title": "a new reviewed journey version cannot reinterpret or overwrite a saved older prefix",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11641,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-23T03:03:51.394Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-journey-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-fact\\browser-a1\\booky-journey-a-new-review-ad865-rwrite-a-saved-older-prefix\\attachments\\booky-journey-source-evidence-08597580e03a6e63d83ebfee5122845ef533024c.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9383e9b011c291e52b8f-8f460da718cc540b1b24",
+          "file": "booky-journey.spec.mjs",
+          "line": 989,
+          "column": 1
+        },
+        {
+          "title": "explicit reviewed journey migration preserves history and restores the exact new prefix paused",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16892,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-23T03:04:03.043Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-journey-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-fact\\browser-a1\\booky-journey-explicit-rev-b1a6f-the-exact-new-prefix-paused\\attachments\\booky-journey-source-evidence-5cebd76a0e054f7d561cc873537be9cb81cf5a26.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9383e9b011c291e52b8f-7e73bc2fc4de81b69435",
+          "file": "booky-journey.spec.mjs",
+          "line": 1024,
+          "column": 1
+        },
+        {
+          "title": "missing or revoked independent migration review preserves the old version without navigation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 17664,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-23T03:04:19.944Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-journey-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-fact\\browser-a1\\booky-journey-missing-or-r-abb1e--version-without-navigation\\attachments\\booky-journey-source-evidence-d91f7107419fee8bb6293cc8f5138392ff8c2eaa.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9383e9b011c291e52b8f-b4c8d350fb442e462ceb",
+          "file": "booky-journey.spec.mjs",
+          "line": 1099,
+          "column": 1
+        },
+        {
+          "title": "confirmed exact-version completion unlocks a dependent journey only with independently admitted saved locale",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 210000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16327,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-23T03:04:37.618Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-journey-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-fact\\browser-a1\\booky-journey-confirmed-ex-7a157-ently-admitted-saved-locale\\attachments\\booky-journey-source-evidence-f9e93fc130cdece4f5cded924cdf0182f441fd49.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9383e9b011c291e52b8f-915c3802fef7e64aa924",
+          "file": "booky-journey.spec.mjs",
+          "line": 1150,
+          "column": 1
+        },
+        {
+          "title": "history selection never navigates and confirmed single-record deletion truthfully retries while revoking a prerequisite",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 210000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11789,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-23T03:04:53.952Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-journey-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-fact\\browser-a1\\booky-journey-history-sele-f0d72-ile-revoking-a-prerequisite\\attachments\\booky-journey-source-evidence-4f0ad54eb0eb18a1aa0bd93a5538d62efdd3dfcd.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9383e9b011c291e52b8f-1a8a98465cbbd13fe44a",
+          "file": "booky-journey.spec.mjs",
+          "line": 1203,
+          "column": 1
+        },
+        {
+          "title": "journey focus: owned invalidated confirmation restores stable status",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6465,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-23T03:05:05.748Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-journey-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-fact\\browser-a1\\booky-journey-journey-focu-5ad75-tion-restores-stable-status\\attachments\\booky-journey-source-evidence-2b57e6923412db14176ff773195f979a7eb870cc.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9383e9b011c291e52b8f-5e86b706792021a06d3b",
+          "file": "booky-journey.spec.mjs",
+          "line": 1277,
+          "column": 4
+        },
+        {
+          "title": "journey focus: invalidated confirmation never steals outside keyboard focus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6566,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-23T03:05:12.220Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-journey-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-fact\\browser-a1\\booky-journey-journey-focu-6f2c7-eals-outside-keyboard-focus\\attachments\\booky-journey-source-evidence-66e1d164454d2ffdd38ab630864b0a8abee22de4.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9383e9b011c291e52b8f-537e6f6d7d94b7748863",
+          "file": "booky-journey.spec.mjs",
+          "line": 1277,
+          "column": 4
+        },
+        {
+          "title": "journey focus: keyboard cancellation and fresh document discard consent without replaying progress",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 150000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10732,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-23T03:05:18.794Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-journey-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-fact\\browser-a1\\booky-journey-journey-focu-000aa--without-replaying-progress\\attachments\\booky-journey-source-evidence-5dc8f4e504439fa97b3298f5adad851a20d8c23b.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9383e9b011c291e52b8f-6c22dfc7718e7321cea1",
+          "file": "booky-journey.spec.mjs",
+          "line": 1329,
+          "column": 1
+        },
+        {
+          "title": "full journey history keeps existing progress usable and frees exactly one chosen entry for a new route",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 15665,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-23T03:05:29.536Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-journey-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-fact\\browser-a1\\booky-journey-full-journey-4d29d-hosen-entry-for-a-new-route\\attachments\\booky-journey-source-evidence-9ae2b1cffed5a90e7d487ce2c64c65ddfdf54396.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9383e9b011c291e52b8f-35f5ec94346e99c9ba52",
+          "file": "booky-journey.spec.mjs",
+          "line": 1399,
+          "column": 1
+        },
+        {
+          "title": "literary passport credits only confirmed acknowledged steps and withdraws a deliberately deleted history",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 14279,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-23T03:05:45.209Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-journey-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-fact\\browser-a1\\booky-journey-literary-pas-855d7-eliberately-deleted-history\\attachments\\booky-journey-source-evidence-935cae8fd9fd841c6aba5310f1664e4cc443b2ee.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9383e9b011c291e52b8f-4b8392be670bdaff2801",
+          "file": "booky-journey.spec.mjs",
+          "line": 1587,
+          "column": 1
+        },
+        {
+          "title": "reviewed journey overview follows exact locale review and whole-route offline availability without writing progress",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 24696,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-23T03:05:59.495Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-journey-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-fact\\browser-a1\\booky-journey-reviewed-jou-75eb0-ty-without-writing-progress\\attachments\\booky-journey-source-evidence-c3b59e2b14a958696cbcd73da7382c101bf08280.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9383e9b011c291e52b8f-f0d580fed856347a468f",
+          "file": "booky-journey.spec.mjs",
+          "line": 1742,
+          "column": 1
+        },
+        {
+          "title": "sourced fact uses exact work view and read-only bilingual citations before explicit semantic acknowledgement",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 13491,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeEnabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-booky-journey-next]')\nExpected: enabled\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeEnabled\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-booky-journey-next]')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeEnabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-booky-journey-next]')\nExpected: enabled\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeEnabled\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-booky-journey-next]')\u001b[22m\n\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-journey.spec.mjs:1918:64",
+                    "location": {
+                      "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-journey.spec.mjs",
+                      "column": 64,
+                      "line": 1918
+                    },
+                    "snippet": "  1916 |     expect(fixture.memory.get(PROGRESS)).toBe(saved); expect(fixture.progressWrites()).toHaveLength(writes);\n  1917 |     expect(page.url()).toBe(beforeUrl); retained(await actual(page), beforeSources, true);\n> 1918 |     await expectProgress(page, 3, 5); await expect(next(page)).toBeEnabled();\n       |                                                                ^\n  1919 |     await captureFactSources(fixture, testInfo, 'journey-fact-sources-ru-320.png',\n  1920 |       '320px actual App RU work-anchored synthetic fact with plain selectable example.org URL and source date; Sources and separate Next remain fully visible');\n  1921 |     await factSourcesSummary(page).focus(); await page.keyboard.press('Enter');"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-journey.spec.mjs",
+                        "column": 64,
+                        "line": 1918
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeEnabled\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('[data-booky-journey-next]')\nExpected: enabled\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeEnabled\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-booky-journey-next]')\u001b[22m\n\n\n  1916 |     expect(fixture.memory.get(PROGRESS)).toBe(saved); expect(fixture.progressWrites()).toHaveLength(writes);\n  1917 |     expect(page.url()).toBe(beforeUrl); retained(await actual(page), beforeSources, true);\n> 1918 |     await expectProgress(page, 3, 5); await expect(next(page)).toBeEnabled();\n       |                                                                ^\n  1919 |     await captureFactSources(fixture, testInfo, 'journey-fact-sources-ru-320.png',\n  1920 |       '320px actual App RU work-anchored synthetic fact with plain selectable example.org URL and source date; Sources and separate Next remain fully visible');\n  1921 |     await factSourcesSummary(page).focus(); await page.keyboard.press('Enter');\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-journey.spec.mjs:1918:64"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-23T03:06:24.198Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-journey-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-fact\\browser-a1\\booky-journey-sourced-fact-48ec2-it-semantic-acknowledgement\\attachments\\booky-journey-source-evidence-3ff6f80310126adcceaa5efd6544c0cfc828489e.json"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-fact\\browser-a1\\booky-journey-sourced-fact-48ec2-it-semantic-acknowledgement\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-journey.spec.mjs",
+                    "column": 64,
+                    "line": 1918
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "9383e9b011c291e52b8f-177bdc41b09287a290d3",
+          "file": "booky-journey.spec.mjs",
+          "line": 1901,
+          "column": 1
+        },
+        {
+          "title": "sourced fact revocation and changed source bindings preserve saved acknowledgements until exact reviewed restoration",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 360000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 28593,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-23T03:06:38.219Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-journey-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-fact\\browser-a1\\booky-journey-sourced-fact-f6df9--exact-reviewed-restoration\\attachments\\booky-journey-source-evidence-43ea68e80b10061ed7817f591bfcf49b888060cd.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9383e9b011c291e52b8f-fecad8d8f910ba27d530",
+          "file": "booky-journey.spec.mjs",
+          "line": 1997,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "booky-reader-policy.spec.mjs",
+      "file": "booky-reader-policy.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "explicit adult profile survives locale and lifecycle while drafts and deletion never grant stale policy",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9477,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-23T03:07:07.904Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-reader-policy-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-fact\\browser-a1\\booky-reader-policy-explic-219f8-on-never-grant-stale-policy\\attachments\\booky-reader-policy-source-evidence-230353fc9fed5a5fc82a6322cebb41e25b669188.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a050cd865521390aaf89-9cd17d74ff4caaeffa4c",
+          "file": "booky-reader-policy.spec.mjs",
+          "line": 481,
+          "column": 1
+        },
+        {
+          "title": "future profiles are retained until confirmed deletion and failed deletion cannot restore admission",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7426,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-23T03:07:18.075Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "booky-reader-policy-source-evidence",
+                      "contentType": "application/json",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-fact\\browser-a1\\booky-reader-policy-future-298cd-on-cannot-restore-admission\\attachments\\booky-reader-policy-source-evidence-580ab7411c009b8a79f0c92e8b321c62c1f2593b.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a050cd865521390aaf89-1d9b00633042494ec02c",
+          "file": "booky-reader-policy.spec.mjs",
+          "line": 542,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-23T03:02:16.876Z",
+    "duration": 308660.874,
+    "expected": 22,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,396 @@
+{
+  "pass": true,
+  "sourceCommit": "3349b125c2e30553e6b1237b4e3b73e1975a590a",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/journey-fact-20260923/source-manifests/5ab2f74580ce44d2.json",
+    "sha256": "5ab2f74580ce44d2fb845a5fe8dd652ff530f2ae35e04a5160b06e5f72436a77",
+    "fileCount": 1636
+  },
+  "actualAppCaptures": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-journey-a-new-review-ad865-rwrite-a-saved-older-prefix/booky-journey.json",
+      "sha256": "880b3090ee8f61eb7c5b7b5ee854edc9401a1b53f2595195df10f4f2c9ccee8d"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-journey-activity-ans-b1175-vigation-and-saved-progress/booky-journey.json",
+      "sha256": "cdb0920cc6b3458c9fea1152953faaec6e2c91bbee0aeb95026963761057a27d"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-journey-activity-ans-b190e--and-revoked-journey-review/booky-journey.json",
+      "sha256": "517470ee3e82f89067eaedcad45f9a0c13ea32e951c07a67477bb491a7ca76e3"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-journey-actual-revie-84536-cross-locale-and-suspension/booky-journey.json",
+      "sha256": "25b6a78afd0d250319a96f08a9c71d4593fec2c9a419947974081e594f15e489"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-journey-confirmed-ex-7a157-ently-admitted-saved-locale/booky-journey.json",
+      "sha256": "0c8a4a050eb1a1f2cc0cf9476f541ba6923163549b4512a3fdf1f898e937b70c"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-journey-confirmed-jo-c9068-ument-until-explicit-resume/booky-journey.json",
+      "sha256": "8a39971850953ae2ebe7ddb26333c6f3cd9457fbf181a9f4cf0c79e31f69eab9"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-journey-explicit-rev-b1a6f-the-exact-new-prefix-paused/booky-journey.json",
+      "sha256": "3d19642316f70c4c9f4b8adbccf958aaed52d67c4b9a9912c39ff2f4d7ab0ed8"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-journey-failed-journ-ff64b--until-explicit-exact-retry/booky-journey.json",
+      "sha256": "52a89add43cac40af7ea45a6672a7f64d660c035d932eb602c5cf783e934a441"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-journey-full-journey-4d29d-hosen-entry-for-a-new-route/booky-journey.json",
+      "sha256": "9daa50b5e403a11b09ae15a0b4bf76b127270bd8a4b287bf668f64b206a66806"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-journey-future-journ-cfc19--explicit-confirmed-removal/booky-journey.json",
+      "sha256": "38605aa22d33fbbb2d7a1821753ea0da8372aeff5d8146a08c03b4f6c67d420d"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-journey-history-sele-f0d72-ile-revoking-a-prerequisite/booky-journey.json",
+      "sha256": "246929a3b650311b6117e6c856970937996881da71d95f9ff23425a1b5961707"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-journey-journey-admi-1436d--independent-journey-review/booky-journey.json",
+      "sha256": "95a156ad85924ea6847d3d4b2ad5e845d059bb2647037c1b1d9ad4b90e501356"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-journey-journey-admission-fails-closed-no-profile/booky-journey.json",
+      "sha256": "fee834218077d30d0872c31ac2974d636d69d5deb6ded5830855073cc75ac468"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-journey-journey-focu-000aa--without-replaying-progress/booky-journey.json",
+      "sha256": "d3c797e30663a2cbd7d145af18f6788636461a112203600d516d7599e5e50a02"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-journey-journey-focu-5ad75-tion-restores-stable-status/booky-journey.json",
+      "sha256": "6c0ddbbaea794b11a8ba22a549e3fb2295f01c6b22b95388b5f50ca8ea43c12c"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-journey-journey-focu-6f2c7-eals-outside-keyboard-focus/booky-journey.json",
+      "sha256": "5d20615017022a4adecf38d10f30954b528646e79a1ecdd8cf87c35db29938a4"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-journey-literary-pas-855d7-eliberately-deleted-history/booky-journey.json",
+      "sha256": "3ee106411ca64eab00b5309088178ac6281d27aa10666f574099a0f70dc3a64d"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-journey-missing-or-r-abb1e--version-without-navigation/booky-journey.json",
+      "sha256": "9a6ca057f6348ce359fb64a3a6c9facce28daca41d329e27b28502218c28cda2"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-journey-reviewed-jou-75eb0-ty-without-writing-progress/booky-journey.json",
+      "sha256": "41b4faa57f0ddfe365b5ea7afda4cf3da1e44774432e8c03db8b454d8dcd7c3a"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-journey-sourced-fact-48ec2-it-semantic-acknowledgement/booky-journey.json",
+      "sha256": "a28d5d88e8b81f07ec24846da7b50caaf62d62572cacd876c9a994de8736c29f"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-journey-sourced-fact-f6df9--exact-reviewed-restoration/booky-journey.json",
+      "sha256": "fc086cf443971666f49f20b09b6002ae5405a1c9d33283c0eb9adcc8cbc7946a"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-reader-policy-explic-219f8-on-never-grant-stale-policy/booky-reader-policy.json",
+      "sha256": "5306ef451e079a192f48b879c98ed7427fbe513f4aee570718fb71a519c13269"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-reader-policy-future-298cd-on-cannot-restore-admission/booky-reader-policy.json",
+      "sha256": "4da7b3f22be5b11a1a890c5e90240488b10e1c9bf8e43027abfda4a7107dee10"
+    }
+  ],
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-journey-activity-ans-b1175-vigation-and-saved-progress/journey-activity-correct-en.png",
+      "sha256": "fea1797fda68e497f48b26f0b0d56dae351466aee4fc02c8f62ad89c315f4e7e",
+      "inspected": true,
+      "reviewer": "Codex authenticated retention of prior exact-image inspection",
+      "priorInspection": {
+        "path": "docs/mobile/evidence/S15/journey-overview-20260923/visual-review.json",
+        "sha256": "2fa0d4f6620f85b62bcc8dece8cfc6df38e7710821d7a85926d297a4eabb4086",
+        "imagePath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-overview/browser-a1/booky-journey-activity-ans-b1175-vigation-and-saved-progress/journey-activity-correct-en.png",
+        "imageSha256": "fea1797fda68e497f48b26f0b0d56dae351466aee4fc02c8f62ad89c315f4e7e"
+      },
+      "findings": [
+        "Canonical option labels, temporary correct-answer feedback and separate explicit acknowledgement remain readable; the default-closed passport adds no answer action.",
+        "Scoped actual-App capture at its deliberate scroll position; no formal accessibility or content approval claimed."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-journey-activity-ans-b1175-vigation-and-saved-progress/journey-activity-incorrect-ru-320.png",
+      "sha256": "9ad929647c8a310ece932cf3eb4a4aca0bc0c449825040c7b22d0b907ac717db",
+      "inspected": true,
+      "reviewer": "Codex direct visual inspection",
+      "findings": [
+        "At the captured 320px scroll position, the Russian activity instruction, 1/3 count, two full author choices, visible selected-choice focus outline and incorrect-answer guidance are legible and contained within the panel.",
+        "The Open step control and disabled acknowledgement control are fully visible without overlap. A following control is partially below the panel boundary; its hidden portion was not assessed."
+      ],
+      "scope": "Captured visible scroll position only; not full-page, keyboard, screen-reader, installed-device or accessibility acceptance."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-journey-actual-revie-84536-cross-locale-and-suspension/journey-country-ru.png",
+      "sha256": "fdc6ba05a36a0a2c746d0610b3696c30d73ff4374946b840505fce4cbb14b66f",
+      "inspected": true,
+      "reviewer": "Codex direct visual inspection",
+      "findings": [
+        "At the captured narrow scroll position, the Russian country-step title, 0/4 count, instruction and Open/Acknowledge/Pause/Reset controls fit the panel without text or control overlap.",
+        "The passport summary and history heading are visible. History contents continue below the visible panel edge and were not assessed."
+      ],
+      "scope": "Captured visible scroll position only; not full-page, keyboard, screen-reader, installed-device or accessibility acceptance."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-journey-actual-revie-84536-cross-locale-and-suspension/journey-writer-en.png",
+      "sha256": "fb5c0b98b9453d396bf39bd5cafe6409f835ea1105ab1078533cc474dbd2a9fb",
+      "inspected": true,
+      "reviewer": "Codex direct visual inspection",
+      "findings": [
+        "At the captured narrow scroll position, the English writer-step title, 1/4 count, instruction and four action controls are legible and contained within the panel.",
+        "The passport summary and history heading remain distinct. Lower history and underlying writer details are partly outside this captured panel view and were not assessed."
+      ],
+      "scope": "Captured visible scroll position only; not full-page, keyboard, screen-reader, installed-device or accessibility acceptance."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-journey-confirmed-ex-7a157-ently-admitted-saved-locale/journey-history-complete-en.png",
+      "sha256": "ede3b4d1e3b1fcb9edab3773bee67c060b10e28cf7eee595599831a1a8098f34",
+      "inspected": true,
+      "reviewer": "Codex direct visual inspection",
+      "findings": [
+        "The captured desktop history region clearly shows 4/4 acknowledged steps, the current available completed journey, individual removal, saved status and global deletion controls without overlap.",
+        "The route chooser is partially above the captured scroll position; no claim is made about its hidden portion."
+      ],
+      "scope": "Captured visible scroll position only; not full-page, keyboard, screen-reader, installed-device or accessibility acceptance."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-journey-explicit-rev-b1a6f-the-exact-new-prefix-paused/journey-migration-confirm-en.png",
+      "sha256": "8f55094d293044f286688c11e16d27bb6776cce3d2da083ad4a709bed7569074",
+      "inspected": true,
+      "reviewer": "Codex direct visual inspection",
+      "findings": [
+        "The captured desktop confirmation shows the unavailable old saved entry, update title, readable progress-transfer and original-history explanation, and distinct Transfer and continue / Cancel controls.",
+        "Both confirmation actions and the saved-status region are fully visible without collisions. The Reset control is partially above the captured scroll position and its hidden portion was not assessed."
+      ],
+      "scope": "Captured visible scroll position only; not full-page, keyboard, screen-reader, installed-device or accessibility acceptance."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-journey-failed-journ-ff64b--until-explicit-exact-retry/journey-save-failed-ru-320.png",
+      "sha256": "5e50072cb134346472033fa2e6f9a6126fed7806ad4a11bfb11e5b6c5d807313",
+      "inspected": true,
+      "reviewer": "Codex direct visual inspection",
+      "findings": [
+        "At the captured 320px scroll position, the Russian history entry, 1/4 count, orange save-failure explanation, Retry and global deletion controls remain readable and contained without overlap.",
+        "Reader-profile and saved-tour controls are visible below the failure region. The underlying writer card is only partly visible and was not assessed."
+      ],
+      "scope": "Captured visible scroll position only; not full-page, keyboard, screen-reader, installed-device or accessibility acceptance."
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-journey-full-journey-4d29d-hosen-entry-for-a-new-route/journey-capacity-full-ru-320.png",
+      "sha256": "900511abd4f886108ea8524cd58a5513230bd47f5a1bd8651360b23e11a19b28",
+      "inspected": true,
+      "reviewer": "Codex reader_policy_ports direct image inspection",
+      "findings": [
+        "Directly inspected the original 320x900 image. The RU 32/32 notice, explanation of deleting one chosen history entry and availability of existing journeys are fully readable; the full-width history-management button is unobscured.",
+        "The completed-route status and first route button are visible. The next route is below this captured scroll position, so this image does not establish its disabled state or expose the entire history list.",
+        "No visible clipping or overlap affects the capacity notice or its action. The retained country drawer and Booky controls sit below the scrolling panel without covering this target surface."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-journey-full-journey-4d29d-hosen-entry-for-a-new-route/journey-capacity-recovered-en.png",
+      "sha256": "8f92b2ad2b5ffd14019089f80d0030c75a854d5b7318cfad715be44bf565b780",
+      "inspected": true,
+      "reviewer": "Codex reader_policy_ports direct image inspection",
+      "findings": [
+        "Directly inspected the original 1440x850 image. The selected completed journey reads 4 of 4, and the visible held-history entry reads 1 of 4 with currently-unavailable status; titles and record metadata are legible.",
+        "The history removal action and the held-entry Select journey/Remove from history buttons are visible with clear separation and readable wrapping.",
+        "This capture is scrolled to history. The preceding route area is partially above the viewport and further records continue below it; the image alone does not prove the exact 31-record count or the new-route Start action. No visible target-surface defect was found."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-journey-future-journ-cfc19--explicit-confirmed-removal/journey-future-clear-en.png",
+      "sha256": "c5ddfc66a556b7bb1151aa89e7e8495a57deecbba963570c89d2c33e1c83caa0",
+      "inspected": true,
+      "reviewer": "Codex reader_policy_ports direct image inspection",
+      "findings": [
+        "Directly inspected the original 1440x850 image. The unsupported-version message explicitly says saved progress was kept unchanged, and the no-matching-journey state remains readable.",
+        "The device-wide progress-deletion question states that the reader profile is kept. Yes, delete progress and Cancel are both fully visible, clearly separated and readable; Try again remains distinct above them.",
+        "No overlap or truncation affects this confirmation surface. Earlier companion controls are outside the upper scroll boundary; this image documents the visible confirmation state, not completed deletion or installed-device behavior."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-journey-history-sele-f0d72-ile-revoking-a-prerequisite/journey-history-delete-ru-320.png",
+      "sha256": "bd57081abc8aa51bd71307be8876b5f0ce86009891429f68273e5ccf68e86733",
+      "inspected": true,
+      "reviewer": "Codex authenticated retention of prior exact-image inspection",
+      "priorInspection": {
+        "path": "docs/mobile/evidence/S15/journey-overview-20260923/visual-review.json",
+        "sha256": "2fa0d4f6620f85b62bcc8dece8cfc6df38e7710821d7a85926d297a4eabb4086",
+        "imagePath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-overview/browser-a1/booky-journey-history-sele-f0d72-ile-revoking-a-prerequisite/journey-history-delete-ru-320.png",
+        "imageSha256": "bd57081abc8aa51bd71307be8876b5f0ce86009891429f68273e5ccf68e86733"
+      },
+      "findings": [
+        "The narrow Russian history confirmation clearly identifies the completed entry, explains removal of its acknowledged steps, and presents fully visible confirm/cancel controls.",
+        "The separate dependent history entry remains visually distinct below; the storage-status text begins beyond the panel edge at this captured scroll position and is not fully assessed."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-journey-journey-focu-5ad75-tion-restores-stable-status/journey-focus-restored-ru.png",
+      "sha256": "15791a1b39062f725f6dc8f136cbf9728d6e16472f765a02cdd9e4b04a531ca9",
+      "inspected": true,
+      "reviewer": "Codex reader_policy_ports direct image inspection",
+      "findings": [
+        "Directly inspected the original 1440x850 image. A visible rectangular focus outline surrounds the saved-progress status; the text remains readable and the clear-all button below it is fully visible.",
+        "The current history row shows one acknowledged step of four, with a separate remove-history action. The clear-confirmation group is absent in the captured state.",
+        "The panel is intentionally scrolled to history/storage, leaving the earlier Open writer control partly outside its top boundary. No visible defect affects the focused status or recovery controls; focus-transfer timing is established by the browser assertions rather than this still image."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-journey-journey-focu-6f2c7-eals-outside-keyboard-focus/journey-focus-outside-en.png",
+      "sha256": "bedd6f0007977fb07aaaa85a935f041e6950e69acdae9b84c66a97743826cfa6",
+      "inspected": true,
+      "reviewer": "Codex reader_policy_ports direct image inspection",
+      "findings": [
+        "Directly inspected the original 1440x850 image. A strong visible focus outline remains on the current history row Remove from history button; its label and the row metadata are legible.",
+        "The saved-progress status has no competing focus outline, and Delete all saved journeys is fully visible below it. No stale clear-confirmation controls appear.",
+        "The capture is scrolled to the history/storage surface; the preceding Open writer control is partly above its top boundary. No visible target-surface defect was found. The still image supports the final outside-focus state, not full keyboard or screen-reader acceptance."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-journey-literary-pas-855d7-eliberately-deleted-history/journey-passport-completed-en.png",
+      "sha256": "06ae2bd4375b2e4e5a701caa3f7c90329837d2477626b99bbf424e87cd67c6ad",
+      "inspected": true,
+      "reviewer": "Codex authenticated retention of prior exact-image inspection",
+      "priorInspection": {
+        "path": "docs/mobile/evidence/S15/journey-overview-20260923/visual-review.json",
+        "sha256": "2fa0d4f6620f85b62bcc8dece8cfc6df38e7710821d7a85926d297a4eabb4086",
+        "imagePath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-overview/browser-a1/booky-journey-literary-pas-855d7-eliberately-deleted-history/journey-passport-completed-en.png",
+        "imageSha256": "06ae2bd4375b2e4e5a701caa3f7c90329837d2477626b99bbf424e87cd67c6ad"
+      },
+      "findings": [
+        "Open EN passport shows the admitted completed journey with version and current locale; native summary focus ring, totals and explicit history control remain visible at the captured scroll position.",
+        "Scoped actual-App capture at its deliberate scroll position; no formal accessibility or content approval claimed."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-journey-literary-pas-855d7-eliberately-deleted-history/journey-passport-confirmed-ru-320.png",
+      "sha256": "fe5942d95aa11c925b0ccdb8a66faaca9772cc521681d4d1f203f3f65b302a50",
+      "inspected": true,
+      "reviewer": "Codex authenticated retention of prior exact-image inspection",
+      "priorInspection": {
+        "path": "docs/mobile/evidence/S15/journey-overview-20260923/visual-review.json",
+        "sha256": "2fa0d4f6620f85b62bcc8dece8cfc6df38e7710821d7a85926d297a4eabb4086",
+        "imagePath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-overview/browser-a1/booky-journey-literary-pas-855d7-eliberately-deleted-history/journey-passport-confirmed-ru-320.png",
+        "imageSha256": "fe5942d95aa11c925b0ccdb8a66faaca9772cc521681d4d1f203f3f65b302a50"
+      },
+      "findings": [
+        "At 320px the open RU passport shows one confirmed country, writer and work, with no completed route yet; counts, title and explicit history control fit without horizontal clipping.",
+        "Scoped actual-App capture at its deliberate scroll position; no formal accessibility or content approval claimed."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-journey-reviewed-jou-75eb0-ty-without-writing-progress/journey-overview-en.png",
+      "sha256": "cb978a35dd875d375f1200a1441d817ae58e8559fa5d84a44d17118bddb9dfdd",
+      "inspected": true,
+      "reviewer": "Codex authenticated retention of prior exact-image inspection",
+      "priorInspection": {
+        "path": "docs/mobile/evidence/S15/journey-overview-20260923/visual-review.json",
+        "sha256": "2fa0d4f6620f85b62bcc8dece8cfc6df38e7710821d7a85926d297a4eabb4086",
+        "imagePath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-overview/browser-a1/booky-journey-reviewed-jou-75eb0-ty-without-writing-progress/journey-overview-en.png",
+        "imageSha256": "cb978a35dd875d375f1200a1441d817ae58e8559fa5d84a44d17118bddb9dfdd"
+      },
+      "findings": [
+        "EN paused route retains its one acknowledged step, with readable reviewed description, explicit seven-minute estimate and current offline availability; Resume remains separate and deliberate.",
+        "Scoped actual-App capture at its deliberate scroll position; no formal accessibility or content approval claimed."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-journey-reviewed-jou-75eb0-ty-without-writing-progress/journey-overview-ru-320.png",
+      "sha256": "9e8c10dc1c4ffe5d423f19e949779d8e181e824d2c650300cb745bb25fc9523b",
+      "inspected": true,
+      "reviewer": "Codex authenticated retention of prior exact-image inspection",
+      "priorInspection": {
+        "path": "docs/mobile/evidence/S15/journey-overview-20260923/visual-review.json",
+        "sha256": "2fa0d4f6620f85b62bcc8dece8cfc6df38e7710821d7a85926d297a4eabb4086",
+        "imagePath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-overview/browser-a1/booky-journey-reviewed-jou-75eb0-ty-without-writing-progress/journey-overview-ru-320.png",
+        "imageSha256": "9e8c10dc1c4ffe5d423f19e949779d8e181e824d2c650300cb745bb25fc9523b"
+      },
+      "findings": [
+        "At 320px the RU chooser shows the reviewed route description, explicit seven-minute estimate and current offline availability. Title button and all overview text fit within the panel without horizontal clipping.",
+        "Scoped actual-App capture at its deliberate scroll position; no formal accessibility or content approval claimed."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-journey-sourced-fact-48ec2-it-semantic-acknowledgement/journey-fact-sources-en.png",
+      "sha256": "23ea3b304d8c0b52de0035b64b81b1ff26e48abd0f401e6eeb4bea15b7bc7f88",
+      "inspected": true,
+      "reviewer": "Codex direct visual inspection",
+      "findings": [
+        "EN fact text and expanded inert source citation/date are readable in the collection. Source disclosure focus and separate acknowledgement control remain visible, while the history shows the explicit English binding and unchanged three-step prefix.",
+        "Scoped actual-App capture at its deliberate scroll position; synthetic source text is not a factual or editorial approval."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-journey-sourced-fact-48ec2-it-semantic-acknowledgement/journey-fact-sources-ru-320.png",
+      "sha256": "a91e1a9970c85d66894b65624803ac34f85bdf00941ad944eeb2a2e64a316093",
+      "inspected": true,
+      "reviewer": "Codex direct visual inspection",
+      "findings": [
+        "At 320px the RU fact text, expanded Sources disclosure, exact plain URL and accessed date are readable. Summary focus is visible; separate Open book and Acknowledge step controls remain fully within the panel. Captured prefix is still three of five steps.",
+        "Scoped actual-App capture at its deliberate scroll position; synthetic source text is not a factual or editorial approval."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-reader-policy-explic-219f8-on-never-grant-stale-policy/reader-profile-draft-narrow-en.png",
+      "sha256": "208dfd3ba26e334f46313b44416f0a5208e798729dd0af383a9052ca16330b2f",
+      "inspected": true,
+      "reviewer": "Codex authenticated retention of prior exact-image inspection",
+      "priorInspection": {
+        "path": "docs/mobile/evidence/S15/journey-overview-20260923/visual-review.json",
+        "sha256": "2fa0d4f6620f85b62bcc8dece8cfc6df38e7710821d7a85926d297a4eabb4086",
+        "imagePath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-overview/browser-a1/booky-reader-policy-explic-219f8-on-never-grant-stale-policy/reader-profile-draft-narrow-en.png",
+        "imageSha256": "208dfd3ba26e334f46313b44416f0a5208e798729dd0af383a9052ca16330b2f"
+      },
+      "findings": [
+        "At 320px the EN adult draft profile, unsaved-change status and Save/Delete controls fit clearly within the scrollable panel.",
+        "Scoped actual-App capture at its deliberate scroll position; no formal accessibility or content approval claimed."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-reader-policy-explic-219f8-on-never-grant-stale-policy/reader-profile-saved-ru.png",
+      "sha256": "7bd2dbfadf16fea8dc24db17afdc4f0b921233611e6be27cb59888ea64a26267",
+      "inspected": true,
+      "reviewer": "Codex authenticated retention of prior exact-image inspection",
+      "priorInspection": {
+        "path": "docs/mobile/evidence/S15/journey-overview-20260923/visual-review.json",
+        "sha256": "2fa0d4f6620f85b62bcc8dece8cfc6df38e7710821d7a85926d297a4eabb4086",
+        "imagePath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-overview/browser-a1/booky-reader-policy-explic-219f8-on-never-grant-stale-policy/reader-profile-saved-ru.png",
+        "imageSha256": "7bd2dbfadf16fea8dc24db17afdc4f0b921233611e6be27cb59888ea64a26267"
+      },
+      "findings": [
+        "RU saved adult profile, age bounds, reading-level selection and deletion control remain readable.",
+        "Scoped actual-App capture at its deliberate scroll position; no formal accessibility or content approval claimed."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-fact/browser-a2/booky-reader-policy-future-298cd-on-cannot-restore-admission/reader-profile-delete-failed-en.png",
+      "sha256": "208aabc8c861bf9c242d29026084abc3e7ba4a7fe73f19c1d22b9fd8b3a831d9",
+      "inspected": true,
+      "reviewer": "Codex authenticated retention of prior exact-image inspection",
+      "priorInspection": {
+        "path": "docs/mobile/evidence/S15/journey-overview-20260923/visual-review.json",
+        "sha256": "2fa0d4f6620f85b62bcc8dece8cfc6df38e7710821d7a85926d297a4eabb4086",
+        "imagePath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-overview/browser-a1/booky-reader-policy-future-298cd-on-cannot-restore-admission/reader-profile-delete-failed-en.png",
+        "imageSha256": "208aabc8c861bf9c242d29026084abc3e7ba4a7fe73f19c1d22b9fd8b3a831d9"
+      },
+      "findings": [
+        "EN failed profile deletion and explicit retry remain readable, without a saved/admitted profile claim.",
+        "Scoped actual-App capture at its deliberate scroll position; no formal accessibility or content approval claimed."
+      ]
+    }
+  ],
+  "artAccepted": false,
+  "childApproved": false,
+  "releaseReady": false,
+  "limitations": [
+    "Thirteen captures directly inspected and nine exact PNG matches retain authenticated earlier inspection. Scoped local visual evidence, not full accessibility, installed-device, content or stage acceptance."
+  ]
+}

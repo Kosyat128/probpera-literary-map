@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "stage": "S15",
+  "checkpoint": "49ee7842e46e322587893ddc660ac8ee0cc89c48",
+  "previous": "docs/mobile/evidence/S15/journey-overview-20260923/result.json",
+  "previousCheckpointResult": {
+    "path": "docs/mobile/evidence/S15/journey-overview-20260923/result.json",
+    "sha256": "1b8bbb29d9c6fae77b930e7d0c1d95488e06e4135f9c99e851822c9ddcc09e12"
+  },
+  "priorSourceManifest": {
+    "path": "docs/mobile/evidence/S15/journey-overview-20260923/source-manifests/a3d45b0330e7955a.json",
+    "sha256": "a3d45b0330e7955a5dfbed82939ad4adbc379d1de285b0bd2bb9c23ab058c403",
+    "fileCount": 1632
+  },
+  "changedPaths": [
+    "src/host/bookyJourney.ts",
+    "src/host/bookyJourney.test.ts",
+    "src/host/bookyJourneyCatalog.test.ts",
+    "src/host/bookyDialogueRegistry.ts",
+    "src/host/bookyDialogueRegistry.test.ts",
+    "src/host/bookyJourneyProgress.ts",
+    "src/host/bookyJourneyProgress.test.ts",
+    "src/host/bookyJourneyMigration.ts",
+    "src/host/bookyJourneyMigration.test.ts",
+    "src/host/bookyJourneyRuntime.ts",
+    "src/host/bookyJourneyRuntime.test.ts",
+    "src/host/bookyJourneyPrerequisites.test.ts",
+    "src/host/bookyJourneyPassport.test.ts",
+    "src/host/useBookyJourney.ts",
+    "src/host/BookyJourneyControls.tsx",
+    "src/App.tsx",
+    "tests/pwa/booky-journey.spec.mjs"
+  ],
+  "newImplementationFiles": [
+    "src/host/bookyJourneyFact.ts",
+    "src/host/BookyJourneyFactSources.tsx",
+    "src/host/BookyJourneyFactSources.css"
+  ],
+  "newSourcePaths": [
+    "src/host/bookyJourneyFact.ts",
+    "src/host/BookyJourneyFactSources.tsx",
+    "src/host/BookyJourneyFactSources.css",
+    "src/host/bookyJourneyFact.test.ts"
+  ],
+  "unitFiles": [
+    "src/host/bookyJourneyRuntime.test.ts",
+    "src/host/bookyJourneyCatalog.test.ts",
+    "src/host/bookyJourney.test.ts",
+    "src/host/bookyJourneyHost.test.ts",
+    "src/host/bookyJourneyCompanion.test.ts",
+    "src/host/bookyReaderPolicy.test.ts",
+    "src/host/bookyReaderPolicyStore.test.ts",
+    "src/host/bookyDialogueRegistry.test.ts",
+    "src/host/bookyNavigationDrafts.test.ts",
+    "src/host/bookyDialogueDrafts.test.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascotPersistence.test.ts",
+    "src/books/bookArchiveDetailView.test.ts",
+    "src/books/bookArchiveAuthorRequest.test.ts",
+    "src/host/bookyJourneyProgress.test.ts",
+    "src/host/bookyJourneyProgressStore.test.ts",
+    "src/host/bookyJourneyPersistence.test.ts",
+    "src/host/HostPlatformServices.test.ts",
+    "src/platform/adapters/web/WebPlatformAdapter.test.ts",
+    "src/host/bookyJourneyMigration.test.ts",
+    "src/host/bookyJourneyMigrationRegistry.test.ts",
+    "src/host/bookyJourneyPrerequisites.test.ts",
+    "src/host/bookyJourneyActivity.test.ts",
+    "src/host/bookyJourneyPassport.test.ts",
+    "src/host/bookyJourneyFact.test.ts"
+  ],
+  "expectedBrowserTests": 23,
+  "stageAccepted": false,
+  "childApproved": false,
+  "releaseReady": false,
+  "checkpointFiles": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "74a21546b85408749773e40f97605f1cd080fccc70d4f9b4e81f8f18229e02e3"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "1078b0138e9b13117feb12ae71dc9f6654e0846f042616521676b05322713488"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "9722bb48f1a5ae92b0745db0d5456574305706e96cffece220ec40b5eca31b13"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "4bc39730c35dba8b5c4c0683d8809debbd4cea15bcf184ec4664187de1321cac"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "5e3d1d6bac48744d868c315d1f081b2f2b88f201abe1a35653fadebd24cc5284"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "0ce299403762f84f84702e5ad885efa1885ea990359ad5ac41c9e9a01273eff6"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "ba38ed337efe366d98a1cee662fdd04fa6b42dd6d46734ac1d16be3cab867f81"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "fe76fe37af7e3cd2ccd90da3b96d574e967e5f6324988d21c0d4200fdb745dca"
+    }
+  ],
+  "expectedImages": 22
+}
