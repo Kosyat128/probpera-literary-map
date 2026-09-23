@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "kind": "android-booky-touch-reset-dev-apk",
+  "sourceCommit": "a965e043eee6c778f37215f236db5a52272a91ed",
+  "buildId": "f3a4c61137002a385519cf3a6a2f1e9d30e21a7adacc308a82c086941aed5890",
+  "sourceInputsSha256": "d0815fcad114109c3decce6e9a7ae6bdce277033e64019863d26162f5b405ff3",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-touch-reset/android-f3a4c611/app-dev-debug.apk",
+    "bytes": 70289891,
+    "sha256": "75f7e6aa3176f8fd8202bd439d32e02d33aa4de5a44a6a9ccf098a875bd0b4ee"
+  },
+  "artifact": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-touch-reset/android-f3a4c611/runtime",
+    "sha256": "b54d1cdd5a9463f398bf6a67665b0eef69f53d91383364f3dc6f0646af25eaa2",
+    "files": 1408,
+    "bytes": 74851486
+  },
+  "checks": {
+    "strictRuntimeAudit": "docs/mobile/evidence/S15/booky-touch-reset-20260923/android-a1/native-artifact-audit.json",
+    "binaryAudit": "docs/mobile/evidence/S15/booky-touch-reset-20260923/android-a1/android-dev-apk-verification.json",
+    "build": "docs/mobile/evidence/S15/booky-touch-reset-20260923/android-a1/build-run.json",
+    "exactCopiedBytes": true,
+    "priorAndroidApkAndManifestVerified": true,
+    "priorPreservedDirectoriesPresent": true,
+    "priorExactCopyVerificationRecorded": true,
+    "priorRuntimePayloadHashesRechecked": true,
+    "bundledAssetsMatched": 1407,
+    "localContentStoreDex": "classes10.dex"
+  },
+  "priorAndroid": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-dock/android-1d8cfa64/app-dev-debug.apk",
+  "nativeExecutionVerified": false,
+  "iosCompiled": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsPerformed": false,
+  "canonicalOwnerArchiveSyncPerformed": false
+}

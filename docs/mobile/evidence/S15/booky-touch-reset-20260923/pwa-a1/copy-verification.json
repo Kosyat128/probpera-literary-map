@@ -1,0 +1,13 @@
+{
+  "pass": true,
+  "files": 1427,
+  "bytes": 76771519,
+  "detailedLedger": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-touch-reset/pwa-a1-copy-verification.json",
+    "sha256": "3dc276ed80980ea6537476d17335febf4cbf599822dab47514f4a5500af3a38e"
+  },
+  "artifactManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-touch-reset/pwa-12aedc4d/artifact.json",
+    "sha256": "80a800a1b8e748049bfc74d2468d881cff36f493f381af6927253524520a81fe"
+  }
+}

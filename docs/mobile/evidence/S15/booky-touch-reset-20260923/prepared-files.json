@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-23T20:57:05.6900914+03:00",
+  "preparedOnly": true,
+  "sourceFrozen": true,
+  "executed": false,
+  "baseCheckpoint": "bd4993c8fccdac1ae2a3aa90683dacd33eb04b02",
+  "baseSource": "b5ee5ac5fc0c314bdd2060b2c2234fcb63c3d28c",
+  "priorManifest": "75cb91459457a4d7d9ccf278af6cc6eeb31cb0fa90f77db469da59c0ad604d1b",
+  "pendingFields": [],
+  "files": [
+    {
+      "name": "configure.mjs",
+      "sha256": "ca6510413d243fcf4213a028a0035976dd91b38b6639502551b3a32069713b97"
+    },
+    {
+      "name": "check.mjs",
+      "sha256": "03bf7945bbb8e0cae5e7ee054fa44e5a91ce8b8463eb4a6c46dbceee8e3d975b"
+    },
+    {
+      "name": "unit.config.mjs",
+      "sha256": "71c4debf7837e597918ae58e88d57dbd4f78c2b10b2d6efe08b65ad52cf77241"
+    },
+    {
+      "name": "playwright.config.mjs",
+      "sha256": "4d71778c37a6b9e28236af79e4c05514b0b11dc448e0f7415fd14c7e1d6e8b08"
+    },
+    {
+      "name": "build-pwa-a1.mjs",
+      "sha256": "4cf5d8c49a846a11a8ec7e4a20a6851e32f511974e4cb194bbec5f503180c322"
+    },
+    {
+      "name": "pwa-a1.config.mjs",
+      "sha256": "154d440f9df26e4f0b334c73d843e00721d9bbbe205a91d29a769d0a3122f329"
+    },
+    {
+      "name": "build-android-a1.ps1",
+      "sha256": "faf2268a1530b275d2bcc756b7a2c52e81397b40bf87cca0554378dac785cae3"
+    },
+    {
+      "name": "verify-android-a1.mjs",
+      "sha256": "516739bd787368afc333142c1da889f467e2e7a834600b96a80b6067ccbb1cae"
+    },
+    {
+      "name": "preserve-android-a1.mjs",
+      "sha256": "14cbd372ee8e24c97e46ae80b301a7d43ddb3f5e9e5c4ef9293749afe6baa37a"
+    },
+    {
+      "name": "checkpoint.mjs",
+      "sha256": "6a767886fd9a7701fcb63d2d3bef6e6bc690e83f800fd624ec598ecc72498289"
+    },
+    {
+      "name": "scope.json",
+      "sha256": "039a72c54f81fc2bd723a7fecf311f549f8736326615316d4c1c43094dee600b"
+    }
+  ],
+  "releaseReady": false,
+  "fixtureSha256": "4bace7989d753ff665f8f2c96cffda3444a577ce1a94be77f058d6eb0ec8a109"
+}

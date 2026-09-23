@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "mode": "browser",
+  "attempt": "a1",
+  "pass": true,
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-touch-reset-20260923/source-manifests/38b1b6058b5d9d56.json",
+    "sha256": "38b1b6058b5d9d5683a860164820c46ee06a87516842ab4491a00223934b705d",
+    "fileCount": 1650
+  },
+  "checkInputs": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-touch-reset-20260923/check.mjs",
+      "sha256": "03bf7945bbb8e0cae5e7ee054fa44e5a91ce8b8463eb4a6c46dbceee8e3d975b"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-touch-reset-20260923/entry.json",
+      "sha256": "c977ef6ddf93522fecfda7c6e36ff724d7963e33bf3231975e5356b8b2ecafdd"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-touch-reset-20260923/unit.config.mjs",
+      "sha256": "71c4debf7837e597918ae58e88d57dbd4f78c2b10b2d6efe08b65ad52cf77241"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-touch-reset-20260923/playwright.config.mjs",
+      "sha256": "4d71778c37a6b9e28236af79e4c05514b0b11dc448e0f7415fd14c7e1d6e8b08"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-touch-reset-20260923/configure.mjs",
+      "sha256": "ca6510413d243fcf4213a028a0035976dd91b38b6639502551b3a32069713b97"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-touch-reset-20260923/scope.json",
+      "sha256": "039a72c54f81fc2bd723a7fecf311f549f8736326615316d4c1c43094dee600b"
+    }
+  ],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "tests": {
+    "passed": 13,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0
+  },
+  "reportError": null,
+  "execution": {
+    "exitCode": 0,
+    "durationMs": 285982
+  },
+  "runtimeUnchanged": false,
+  "runtimeWiringImplemented": true,
+  "bookyTouchResetImplemented": true,
+  "journeyCharacterWiringImplemented": false,
+  "stageAccepted": false,
+  "ageAdaptiveJourneysAccepted": false,
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "releaseReady": false
+}

@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S15/booky-touch-reset-20260923/playwright.config.mjs"
+  ],
+  "startedAt": "2026-09-23T18:02:11.399Z",
+  "exitCode": 0,
+  "durationMs": 285982,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/booky-touch-reset-20260923/browser-a1/stdout.log",
+    "bytes": 2037,
+    "sha256": "742467781eb4773982232c25f8fa2e24432a964cd79b91cb34d93aeadf64cb6b"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/booky-touch-reset-20260923/browser-a1/stderr.log",
+    "bytes": 164,
+    "sha256": "62844b6630ef589adcd70ebb67208a9410a9df3dfb23b31b8537a6119f458fbc"
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-23T18:01:56.317Z",
+  "stage": "S15",
+  "checkpoint": "bd4993c8fccdac1ae2a3aa90683dacd33eb04b02",
+  "previous": "docs/mobile/evidence/S15/booky-mobile-dock-20260923/result.json",
+  "previousCheckpointResult": {
+    "path": "docs/mobile/evidence/S15/booky-mobile-dock-20260923/result.json",
+    "sha256": "8803b064330a80f29dd86d93d6e9dc9944c373603be3c43855f21304cfa73215"
+  },
+  "previousRuntimeResult": {
+    "path": "docs/mobile/evidence/S15/booky-mobile-dock-20260923/result.json",
+    "sha256": "8803b064330a80f29dd86d93d6e9dc9944c373603be3c43855f21304cfa73215"
+  },
+  "priorSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-mobile-dock-20260923/source-manifests/75cb91459457a4d7.json",
+    "sha256": "75cb91459457a4d7d9ccf278af6cc6eeb31cb0fa90f77db469da59c0ad604d1b",
+    "fileCount": 1650
+  },
+  "scopeConfiguration": {
+    "path": "docs/mobile/evidence/S15/booky-touch-reset-20260923/scope.json",
+    "sha256": "039a72c54f81fc2bd723a7fecf311f549f8736326615316d4c1c43094dee600b"
+  },
+  "checkpointFiles": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "05769abea14ee07a9f26986335ef4034e7e28e7d0819cae349201b01d0a4d5ad"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "e600d8e1c05f17add5389fa5279ed5a4568ab85d4c79956aec246d03dbd105ad"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "74c733e49b22d0bd8e57bccfbd1bce3cf7e34007e1a85c6fce604a57e4b90b46"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "090135646c0d0858831d9266b83d1ba5c553427a14ffaa51a6dc401680cc3d49"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "2604a878ba6c75d4d45523f7240f6ddaa96b7bff128032555f45d4c95397505b"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "3a9c225483e957af76b9fcaee7034a3746aecc8f2ae1fb3ea2474ad27faea33d"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "6efa172944e116a9cb02d345cb09be6dd7fe90e589a346ae73215d8b66b891cd"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "0783a97c6331d7d2665d851cf1d6c987ad01ac1e0be493af71bf0c7d26f251dc"
+    }
+  ],
+  "changedPaths": [
+    "src/host/PlanetMascotControls.tsx",
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "newImplementationFiles": [],
+  "currentSourceInputs": [
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "a47a7d8ab16e4894f105ddcb0cdc1e5a93a7f5db77b8e794194438e06a366566"
+    },
+    {
+      "path": "tests/pwa/booky-live-character.spec.mjs",
+      "sha256": "4bace7989d753ff665f8f2c96cffda3444a577ce1a94be77f058d6eb0ec8a109"
+    }
+  ],
+  "sourceInputCount": 1650,
+  "protectedInputCount": 1648,
+  "runtimeRequired": [
+    "src/host/PlanetMascotControls.tsx"
+  ],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "supplementalArchiveGitIdentity": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "checkpoint": "bd4993c8fccdac1ae2a3aa90683dacd33eb04b02",
+      "gitBlobSha256": "d0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef",
+      "checkedOutSha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79",
+      "lineEndingOnly": true
+    }
+  ],
+  "unitFiles": [
+    "src/host/bookyModel.test.ts",
+    "src/host/bookyAnimation.test.ts",
+    "src/host/bookyWalk.test.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascotPreference.test.ts",
+    "src/host/planetMascotPersistence.test.ts",
+    "src/host/bookySupport.test.ts",
+    "src/host/bookyTourProgress.test.ts",
+    "src/host/bookyPlacement.test.ts"
+  ],
+  "browserFiles": [
+    "tests/pwa/booky-live-character.spec.mjs",
+    "tests/pwa/booky-reader-policy.spec.mjs"
+  ],
+  "expectedUnitTests": 154,
+  "expectedBrowserTests": 13,
+  "expectedImages": 43,
+  "scope": "Книжулик / Mr. Booky offers an explicit localized Useful actions control to return to the default spot by touch. It closes help and clears the local position without hiding the companion or resetting saved guide progress. Existing cancellation, graphics dock, reduced-motion and canonical scene behavior remain in scope.",
+  "runtimeWiringImplemented": true,
+  "characterJourneyNodeImplemented": false,
+  "childApproved": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

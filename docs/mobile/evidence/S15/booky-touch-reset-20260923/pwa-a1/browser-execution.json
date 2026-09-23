@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S15/booky-touch-reset-20260923/pwa-a1.config.mjs"
+  ],
+  "exitCode": 0,
+  "durationMs": 15263,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/booky-touch-reset-20260923/pwa-a1/browser-stdout.log",
+    "bytes": 189,
+    "sha256": "f66e401dde0d64d1698db1fdf3247a4affcdabf237110ed59a94372a2c7e8c69"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/booky-touch-reset-20260923/pwa-a1/browser-stderr.log",
+    "bytes": 164,
+    "sha256": "767c056ed10eb8e715ae3b55bf7ce670a7cd359119ebfb43c5acd323e8e7ec18"
+  }
+}

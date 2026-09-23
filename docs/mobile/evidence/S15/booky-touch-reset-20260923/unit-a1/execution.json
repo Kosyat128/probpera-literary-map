@@ -1,0 +1,23 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "--config=docs/mobile/evidence/S15/booky-touch-reset-20260923/unit.config.mjs",
+    "--reporter=json",
+    "--outputFile=C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-touch-reset-20260923\\unit-a1\\vitest.json"
+  ],
+  "startedAt": "2026-09-23T18:02:10.495Z",
+  "exitCode": 0,
+  "durationMs": 10326,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/booky-touch-reset-20260923/unit-a1/stdout.log",
+    "bytes": 181,
+    "sha256": "95dd0ad4c6cf722e0ea62f0fb0c0315639bea42fb66907e59f0e034b4e0ba7ef"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/booky-touch-reset-20260923/unit-a1/stderr.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-23T18:08:24.532Z",
+  "pass": true,
+  "sourceCommit": "a965e043eee6c778f37215f236db5a52272a91ed",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-touch-reset-20260923/source-manifests/38b1b6058b5d9d56.json",
+    "sha256": "38b1b6058b5d9d5683a860164820c46ee06a87516842ab4491a00223934b705d",
+    "fileCount": 1650
+  },
+  "inspectedCount": 3,
+  "totalCapturedCount": 43,
+  "scope": "Direct inspection of the two new RU390/EN320 post-reset captures and one 320 px Useful actions overview. Other regression images remain authenticated without a new full visual review.",
+  "limitations": [
+    "This review covers three of 43 final screenshots. It does not claim every retained image was visually inspected.",
+    "The new action button is validated through actual trusted touch, localized text, minimum 44 px size and three hit points; the inspected overview screenshot does not show the button itself.",
+    "Default placement depends on the current viewport and visible navigation. Deliberate Stop/drag and open help can retain overlap elsewhere. No installed-device or iOS acceptance is claimed."
+  ],
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-touch-reset/browser-a1/booky-live-character-mobil-872bf-p-and-reduced-motion-ru-390/booky-mobile-position-reset-ru-390.png",
+      "sha256": "d2d18e31187a843ad53580faa2b47250149837703811a7e6b0d5c1aa43b3273f",
+      "bytes": 78995,
+      "inspected": true,
+      "reviewer": "/root",
+      "method": "direct-view_image",
+      "findings": [
+        "After the deliberate touch reset the avatar, move/hide controls and walking button occupy the reserved bottom row and remain fully visible.",
+        "Visible graphics labels and radio controls are unobstructed. At 320 px the lower Economy paragraph continues below the scrolling boundary."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-touch-reset/browser-a1/booky-live-character-mobil-9ea6d-p-and-reduced-motion-en-320/booky-mobile-position-reset-en-320.png",
+      "sha256": "5cb2cb9bec5b5d712d9f88cb6f8201d3587c5c91e412ec66fccf3df8e9be7033",
+      "bytes": 67686,
+      "inspected": true,
+      "reviewer": "/root",
+      "method": "direct-view_image",
+      "findings": [
+        "After the deliberate touch reset the avatar, move/hide controls and walking button occupy the reserved bottom row and remain fully visible.",
+        "Visible graphics labels and radio controls are unobstructed. At 320 px the lower Economy paragraph continues below the scrolling boundary."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-touch-reset/browser-a1/booky-live-character-Mr-Bo-a0973-serves-newer-keyboard-focus/booky-useful-actions-ru-320.png",
+      "sha256": "9e3591a502d7c6abb2e0f266832cb3ff1992e797a63f3458246a795a296d2578",
+      "bytes": 282733,
+      "inspected": true,
+      "reviewer": "/root",
+      "method": "direct-view_image",
+      "findings": [
+        "The 320 px help viewport preserves its heading, close button and scrollable Useful actions section.",
+        "This existing overview capture shows the section heading and introduction, not the new action button below the scroll boundary. Button visibility and hit testing are established separately by the trusted-touch tests."
+      ]
+    }
+  ],
+  "releaseReady": false
+}

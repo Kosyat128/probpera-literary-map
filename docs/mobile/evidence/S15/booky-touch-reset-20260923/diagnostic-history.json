@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-23T18:02:48.3427936+00:00",
+  "recordingComplete": true,
+  "attempts": [],
+  "retainedPriorHistory": {
+    "sha256": "15c8a882fc722ed33079b4b7b75a20484a5b1ebcd1605ca37cf05bf1fbfe9262",
+    "path": "docs/mobile/evidence/S15/booky-mobile-dock-20260923/diagnostic-history.json"
+  },
+  "note": "No separate external D185 diagnostic was run. The new touch reset is validated in the final formal browser run; D184 diagnostic attempts retain their original attribution."
+}
