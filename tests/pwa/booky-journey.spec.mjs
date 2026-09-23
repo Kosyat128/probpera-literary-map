@@ -1488,3 +1488,168 @@ test('full journey history keeps existing progress usable and frees exactly one 
     fixture.verify();
   } finally { await fixture.close(); }
 });
+
+
+const passportView = page => page.locator('[data-booky-journey-passport]');
+const passportSummary = page => page.locator('[data-booky-journey-passport-summary]');
+const passportCompleted = page => page.locator('[data-booky-journey-passport-completed-journey]');
+async function openPassport(page) {
+  await openPanel(page);
+  if (!await passportView(page).evaluate(element => element.open)) await passportSummary(page).click();
+  await expect(passportView(page)).toHaveJSProperty('open', true);
+}
+async function expectPassportCounts(page, country, writer, work) {
+  await openPassport(page);
+  await expect(passportView(page)).toHaveAttribute('data-booky-journey-passport', 'ready');
+  for (const [kind, count] of Object.entries({ country, writer, work })) {
+    await expect(page.locator('[data-booky-journey-passport-count=' + JSON.stringify(kind) + ']')).toHaveText(String(count));
+  }
+}
+async function expectPassportPending(page) {
+  await openPassport(page);
+  await expect(passportView(page)).toHaveAttribute('data-booky-journey-passport', 'pending');
+  await expect(page.locator('[data-booky-journey-passport-status]')).toHaveAttribute('data-booky-journey-passport-status', 'pending');
+  await expect(page.locator('[data-booky-journey-passport-count]')).toHaveCount(0);
+  await expect(passportCompleted(page)).toHaveCount(0);
+}
+async function capturePassport(fixture, testInfo, filename, framing) {
+  const surface = passportView(fixture.page);
+  await openPassport(fixture.page); await surface.scrollIntoViewIfNeeded();
+  const bounds = await surface.evaluate(element => {
+    const measure = target => {
+      const rect = target.getBoundingClientRect();
+      return { x: rect.x, y: rect.y, width: rect.width, height: rect.height,
+        fullyInViewport: rect.left >= 0 && rect.top >= 0 && rect.right <= innerWidth && rect.bottom <= innerHeight };
+    };
+    const action = target => {
+      const box = measure(target);
+      return { ...box, hit: target.contains(document.elementFromPoint(box.x + box.width / 2, box.y + box.height / 2)) };
+    };
+    return { surface: measure(element), summary: action(element.querySelector('[data-booky-journey-passport-summary]')),
+      status: measure(element.querySelector('[data-booky-journey-passport-status]')),
+      counts: [...element.querySelectorAll('[data-booky-journey-passport-count]')].map(measure),
+      completed: [...element.querySelectorAll('[data-booky-journey-passport-completed-journey]')].map(measure),
+      manage: action(element.querySelector('[data-booky-journey-passport-manage-history]')),
+      overflow: document.documentElement.scrollWidth > innerWidth + 1 };
+  });
+  expect(bounds.surface.fullyInViewport).toBe(true); expect(bounds.status.fullyInViewport).toBe(true);
+  expect(bounds.overflow).toBe(false); expect(bounds.counts).toHaveLength(3);
+  for (const box of [...bounds.counts, ...bounds.completed]) expect(box.fullyInViewport).toBe(true);
+  for (const box of [bounds.summary, bounds.manage]) {
+    expect(box.fullyInViewport).toBe(true); expect(box.hit).toBe(true);
+    expect(box.height).toBeGreaterThanOrEqual(44); expect(box.width).toBeGreaterThanOrEqual(44);
+  }
+  await capture(fixture, testInfo, filename, framing); fixture.result.screenshots.at(-1).bounds = bounds;
+}
+
+test('literary passport credits only confirmed acknowledged steps and withdraws a deliberately deleted history', async ({}, testInfo) => {
+  test.setTimeout(240_000);
+  const fixture = await open(testInfo), { page, result } = fixture;
+  result.scenario = 'passport-confirmed-progress';
+  try {
+    await page.setViewportSize({ width: 320, height: 900 });
+    const initialWrites = fixture.progressWrites().length, initialRaw = fixture.memory.get(PROGRESS) ?? null;
+    // A real App URL selects the country, without invoking journey controllers
+    // or manufacturing an acknowledgement. Passive opens are not passport credit.
+    await page.goto(SITE + '/?country=russia#atlas'); await readyDocument(page);
+    await expect(page.locator('[data-atlas-country="russia"]')).toBeVisible();
+    expect(new URL(page.url()).searchParams.get('country')).toBe('russia');
+    await openPanel(page); await loadBooks(page);
+    await expect(storageState(page)).toHaveAttribute('data-booky-journey-storage', 'ready');
+    await expect(passportView(page)).toHaveJSProperty('open', false);
+    await stablePose(page); const initialScene = await actual(page), initialUrl = page.url();
+    await passportSummary(page).focus(); await page.keyboard.press('Enter');
+    await expectPassportCounts(page, 0, 0, 0); await expect(passportCompleted(page)).toHaveCount(0);
+    expect(fixture.memory.get(PROGRESS) ?? null).toBe(initialRaw); expect(fixture.progressWrites()).toHaveLength(initialWrites);
+    expect(page.url()).toBe(initialUrl); retained(await actual(page), initialScene, true);
+
+    await startCountryStep(fixture); await expectPassportCounts(page, 0, 0, 0);
+    await next(page).click(); await expectReadyNode(page, 'writer', 1);
+    await expectSavedPrefix(fixture, ['country']); await expectPassportCounts(page, 1, 0, 0);
+    await next(page).click(); await expectReadyNode(page, 'work', 2);
+    const beforeWorkAcknowledgement = await expectSavedPrefix(fixture, ['country', 'writer']);
+    await expectPassportCounts(page, 1, 1, 0); await expect(passportCompleted(page)).toHaveCount(0);
+
+    fixture.failNextProgressWrite(); await next(page).click();
+    await expectReadyNode(page, 'checkpoint', 3);
+    await expect(storageState(page)).toHaveAttribute('data-booky-journey-storage', 'failed');
+    await expect(storageState(page)).toHaveAttribute('data-booky-journey-storage-error', 'write');
+    await expectPassportPending(page);
+    expect(fixture.memory.get(PROGRESS)).toBe(beforeWorkAcknowledgement);
+    expect(savedRecord(fixture).acknowledgedNodeIds).toEqual(['country', 'writer']);
+    const failedAcknowledgement = fixture.progressWrites().filter(operation => operation.failed);
+    expect(failedAcknowledgement).toHaveLength(1);
+    expect(JSON.parse(failedAcknowledgement[0].value).records[0].acknowledgedNodeIds).toEqual(['country', 'writer', 'work']);
+    await page.locator('[data-booky-journey-save-retry]').click();
+    const confirmedWork = await expectSavedPrefix(fixture, ['country', 'writer', 'work']);
+    expect(confirmedWork).toBe(failedAcknowledgement[0].value);
+    await expectPassportCounts(page, 1, 1, 1); await expect(passportCompleted(page)).toHaveCount(0);
+    await expect(passportSummary(page)).toHaveText('Литературный паспорт');
+    await capturePassport(fixture, testInfo, 'journey-passport-confirmed-ru-320.png',
+      '320px actual App RU passport counts only three explicitly acknowledged canonical entities after exact storage retry; journey still incomplete');
+
+    await next(page).click(); await expect(status(page)).toHaveAttribute('data-booky-journey-status', 'complete');
+    const completedRaw = await expectSavedPrefix(fixture, ['country', 'writer', 'work', 'checkpoint']);
+    const completedRecord = savedRecord(fixture), completedWrites = fixture.progressWrites().length;
+    await expectPassportCounts(page, 1, 1, 1); await expect(passportCompleted(page)).toHaveCount(1);
+    await expect(passportCompleted(page)).toHaveAttribute('data-booky-journey-passport-completed-journey', PRIMARY_JOURNEY);
+    await expect(passportCompleted(page)).toHaveAttribute('data-booky-journey-passport-version', '1');
+    await expect(page.locator('[data-booky-journey-passport-completed-title]')).toHaveText('Тестовый маршрут интерфейса');
+    await stablePose(page); const beforeLocale = await actual(page), beforeLocaleUrl = page.url();
+    await locale(page, 'en');
+    await expectPassportCounts(page, 1, 1, 1); await expect(passportCompleted(page)).toHaveCount(1);
+    await expect(passportSummary(page)).toHaveText('Literary passport');
+    await expect(page.locator('[data-booky-journey-passport-completed-title]')).toHaveText('Synthetic interface journey');
+    expect(fixture.memory.get(PROGRESS)).toBe(completedRaw); expect(fixture.progressWrites()).toHaveLength(completedWrites);
+    expect(page.url()).toBe(beforeLocaleUrl); await stablePose(page); retained(await actual(page), beforeLocale, true);
+    // The native details disclosure is presentation-only, including keyboard use.
+    await passportSummary(page).focus(); await page.keyboard.press('Enter');
+    await expect(passportView(page)).toHaveJSProperty('open', false); await expect(passportSummary(page)).toBeFocused();
+    await page.keyboard.press('Enter'); await expect(passportView(page)).toHaveJSProperty('open', true);
+    await expect(passportSummary(page)).toBeFocused(); await expectPassportCounts(page, 1, 1, 1);
+    expect(fixture.memory.get(PROGRESS)).toBe(completedRaw); expect(fixture.progressWrites()).toHaveLength(completedWrites);
+    expect(page.url()).toBe(beforeLocaleUrl); retained(await actual(page), beforeLocale, true);
+    await page.setViewportSize({ width: 1440, height: 850 }); await stablePose(page);
+    await capturePassport(fixture, testInfo, 'journey-passport-completed-en.png',
+      'Desktop actual App EN passport shows one freshly admitted completed journey and confirmed canonical entity counts; disclosure and history actions remain reachable');
+
+    const beforeManagement = await actual(page), managementUrl = page.url();
+    await page.locator('[data-booky-journey-passport-manage-history]').focus(); await page.keyboard.press('Enter');
+    await expect(page.locator('[data-booky-journey-history-heading]')).toBeFocused();
+    expect(fixture.memory.get(PROGRESS)).toBe(completedRaw); expect(fixture.progressWrites()).toHaveLength(completedWrites);
+    expect(page.url()).toBe(managementUrl); retained(await actual(page), beforeManagement, true);
+    const remove = historyAction(page, 'delete-history', completedRecord.recordId);
+    const confirm = historyAction(page, 'confirm-delete-history', completedRecord.recordId);
+    await remove.click(); await expect(confirm).toBeFocused();
+    expect(fixture.memory.get(PROGRESS)).toBe(completedRaw); expect(fixture.progressWrites()).toHaveLength(completedWrites);
+    await expectPassportCounts(page, 1, 1, 1);
+    fixture.failNextProgressWrite(); await confirm.click();
+    await expect(storageState(page)).toHaveAttribute('data-booky-journey-storage', 'failed');
+    await expect(storageState(page)).toHaveAttribute('data-booky-journey-storage-error', 'write');
+    await expectPassportPending(page); await expect(historyRow(page, completedRecord.recordId)).toHaveCount(0);
+    expect(fixture.memory.get(PROGRESS)).toBe(completedRaw);
+    const failed = fixture.progressWrites().filter(operation => operation.failed);
+    expect(failed).toHaveLength(2);
+    const removedValue = JSON.parse(failed[1].value);
+    expect(removedValue.records).toEqual([]); expect(removedValue.activeRecordId).toBeNull();
+    await page.locator('[data-booky-journey-save-retry]').click();
+    const deletedRaw = await expectHistorySaved(fixture, null, []);
+    expect(deletedRaw).toBe(failed[1].value);
+    await expectPassportCounts(page, 0, 0, 0); await expect(passportCompleted(page)).toHaveCount(0);
+    await expect(page.locator('[data-booky-journey-passport-completed-title]')).toHaveCount(0);
+    expect(page.url()).toBe(managementUrl); await stablePose(page); retained(await actual(page), beforeManagement, true);
+    expect(fixture.progressWrites().some(operation => operation.operation === 'remove')).toBe(false);
+    Object.assign(result.observations, { ordinaryCountrySelectionNoCredit: true,
+      acknowledgedCountSequence: [[0, 0, 0], [1, 0, 0], [1, 1, 0], [1, 1, 1]],
+      workWriteFailureHidesUnconfirmedCounts: true, workRetryConfirmsExactBytes: true,
+      completedOnlyAfterExplicitFinish: true, completedJourney: { id: PRIMARY_JOURNEY, version: 1 },
+      defaultClosedNativeDisclosure: true, keyboardDisclosureKeepsFocus: true,
+      localeAndDisclosureNoWriteOrNavigation: true, historyManagementFocusOnly: true,
+      explicitRecordDeletionRequired: true, failedDeletionHidesConfirmedCredit: true,
+      deletionRetryConfirmsExactBytes: true, emptyAfterConfirmedDeletion: true,
+      confirmedWorkSha256: digest(confirmedWork), completedPreferenceSha256: digest(completedRaw), deletedPreferenceSha256: digest(deletedRaw),
+      canonicalSceneRetainedWithinDocument: true, newPassportPersistenceCreated: false,
+      passiveLearningCreditClaimed: false, productionApprovalClaimed: false, fullAccessibilityAcceptanceClaimed: false });
+    fixture.verify();
+  } finally { await fixture.close(); }
+});

@@ -1,0 +1,60 @@
+.booky-journey-passport {
+  box-sizing: border-box;
+  min-width: 0;
+  max-width: 100%;
+  margin-top: 16px;
+  padding-top: 4px;
+  border-top: 1px solid #d8c79e;
+  color: #30392b;
+  font: 400 14px/1.5 "Source Sans 3 Local", var(--sans, sans-serif);
+  overflow-wrap: anywhere;
+}
+.booky-journey-passport > summary {
+  box-sizing: border-box;
+  min-height: 44px;
+  padding-block: 12px;
+  color: #30503a;
+  font-weight: 650;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.booky-journey-passport__body { min-width: 0; }
+.booky-journey-passport__body > p { margin: 8px 0 12px; }
+.booky-journey-passport__body > h4 { margin: 14px 0 8px; color: #30503a; font-size: 16px; }
+.booky-journey-passport__caption,
+.booky-journey-passport__meta { color: #625942; font-size: 13px; }
+.booky-journey-passport__counts { margin: 0; }
+.booky-journey-passport__counts > div { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; padding-block: 3px; }
+.booky-journey-passport__counts dt { min-width: 0; }
+.booky-journey-passport__counts dd { margin: 0; font-weight: 650; font-variant-numeric: tabular-nums; }
+.booky-journey-passport__completed { display: grid; gap: 10px; margin: 0 0 12px; padding-left: 20px; }
+.booky-journey-passport__completed > li { min-width: 0; }
+.booky-journey-passport__title { font-weight: 650; }
+.booky-journey-passport__meta { display: block; margin-top: 2px; }
+.booky-journey-passport button {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 44px;
+  min-height: 44px;
+  max-width: 100%;
+  margin-top: 8px;
+  padding: 9px 12px;
+  border: 1px solid #526e58;
+  border-radius: 6px;
+  color: #30392b;
+  background: #fff9e9;
+  font: inherit;
+  font-weight: 650;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.booky-journey-passport button:hover { background: #e6f0df; }
+.booky-journey-passport :is(summary, button):focus-visible { outline: 3px solid #7850aa; outline-offset: 3px; }
+@media (forced-colors: active) {
+  .booky-journey-passport { color: CanvasText; border-color: CanvasText; }
+  .booky-journey-passport :is(summary, h4, p, .booky-journey-passport__meta) { color: CanvasText; }
+  .booky-journey-passport button { color: ButtonText; background: ButtonFace; border-color: ButtonText; }
+  .booky-journey-passport :is(summary, button):focus-visible { outline-color: Highlight; }
+}

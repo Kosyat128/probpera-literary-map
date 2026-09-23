@@ -3319,7 +3319,8 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
             : mascotBookStatus === "loading" ? "Loading books for journeys…" : "Load books for journeys"}
         </button>}
         <BookyJourneyControls snapshot={journey.snapshot} controller={journey.controller}
-          persistence={journey.persistence} persistenceSnapshot={journey.persistenceSnapshot} />
+          persistence={journey.persistence} persistenceSnapshot={journey.persistenceSnapshot}
+          passport={journey.passport} passportState={journey.passportState} />
         <BookyReaderSettings snapshot={readerPolicySnapshot} editor={readerSettingsEditor}
         onSave={value => readerPolicyStore.save(value, new Date().toISOString())}
         onClear={readerPolicyStore.clear} onRetry={readerPolicyStore.retry} />

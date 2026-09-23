@@ -6,6 +6,7 @@ import BookyJourneyStorageControls from "./BookyJourneyStorageControls";
 import BookyJourneyMigrationControls from "./BookyJourneyMigrationControls";
 import BookyJourneyHistoryControls from "./BookyJourneyHistoryControls";
 import BookyJourneyActivityControls from "./BookyJourneyActivityControls";
+import BookyJourneyPassportControls, { type BookyJourneyPassportControlsProps } from "./BookyJourneyPassportControls";
 import "./BookyJourneyControls.css";
 
 export type BookyJourneyControlsProps = {
@@ -13,6 +14,8 @@ export type BookyJourneyControlsProps = {
   controller: BookyJourneyRuntime;
   persistence: BookyJourneyPersistence;
   persistenceSnapshot: BookyJourneyPersistenceSnapshot;
+  passport: BookyJourneyPassportControlsProps["passport"];
+  passportState: BookyJourneyPassportControlsProps["state"];
 };
 
 /** Interface copy only; journey text comes from the current admitted snapshot. */
@@ -91,7 +94,7 @@ export const bookyJourneyControlsCopy = {
   },
 } as const;
 
-export default function BookyJourneyControls({ snapshot, controller, persistence, persistenceSnapshot }: BookyJourneyControlsProps) {
+export default function BookyJourneyControls({ snapshot, controller, persistence, persistenceSnapshot, passport, passportState }: BookyJourneyControlsProps) {
   const { language } = useInterfaceLanguage();
   const copy = bookyJourneyControlsCopy.locales[language];
   const id = useId(), historyHeadingId = `${id}-history-heading`, capacityId = `${id}-history-capacity`;
@@ -233,6 +236,8 @@ export default function BookyJourneyControls({ snapshot, controller, persistence
             onClick={() => setResetAtRevision(snapshot.revision)}>{copy.reset}</button>}
         </div>
       </div>}
+      <BookyJourneyPassportControls state={passportState} passport={passport}
+        onManageHistory={snapshot.history.length ? () => { document.getElementById(historyHeadingId)?.focus(); } : undefined} />
       <BookyJourneyHistoryControls controller={controller} snapshot={snapshot} persistence={persistence} historyHeadingId={historyHeadingId}
         onAccepted={focusJourneyHeading} onConfirmationInvalidated={focusJourneyHeading} />
       <BookyJourneyMigrationControls controller={controller} snapshot={snapshot} persistence={persistence}

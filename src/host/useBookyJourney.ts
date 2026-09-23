@@ -1,3 +1,4 @@
+import { createBookyJourneyPassport } from "./bookyJourneyPassport";
 import { contentTextHash } from "../planet/contentExportHash";
 import { useLayoutEffect, useMemo, useRef, useSyncExternalStore } from "react";
 import type { Country, BookArchiveEntry } from "../planet/types";
@@ -124,6 +125,16 @@ export function useBookyJourney(input: {
   }, [active, profileKey, profileFingerprint, input.policy, input.locale, catalog, migrations, input.view, input.readPolicy, mascot, controller, catalogs]);
   const persistence = useMemo(() => createBookyJourneyPersistence(controller, storage), [controller, storage]);
   const persistenceSnapshot = useSyncExternalStore(persistence.subscribe, persistence.getSnapshot, persistence.getSnapshot);
+  const passportState = !input.policy ? "profile-required" as const
+    : persistenceSnapshot.canAct && persistenceSnapshot.storage.state === "ready"
+      && !persistenceSnapshot.unsaved && !persistenceSnapshot.clearing ? "ready" as const : "pending" as const;
+  const passport = useMemo(() => createBookyJourneyPassport({ content, policy: input.policy,
+    locale: input.locale, connectivity: input.connectivity, now: new Date().toISOString(),
+    publicCountries: input.countryReady ? countries : EMPTY_COUNTRIES,
+    publicBooks: input.booksReady ? input.books : EMPTY_BOOKS,
+    confirmedProgress: passportState === "ready" ? persistenceSnapshot.storage.preference : null,
+  }), [content, input.policy, input.locale, input.connectivity, input.countryReady, input.booksReady,
+    countries, input.books, passportState, persistenceSnapshot.storage.preference]);
   useLayoutEffect(() => {
     persistenceRef.current = persistence;
     hostRef.current = persistenceSnapshot.canAct ? host : { ...host, active: false };
@@ -138,6 +149,6 @@ export function useBookyJourney(input: {
     hostRef.current = null;
     controller.refresh();
   }, [controller]);
-  return { controller, snapshot, persistence, persistenceSnapshot,
+  return { controller, snapshot, persistence, persistenceSnapshot, passport, passportState,
     needsBooks: !!input.policy && !input.booksReady && content.definitions.some(route => route.nodes.some(node => node.kind === "work" || node.kind === "activity")) };
 }
