@@ -1,4 +1,4 @@
-import { useId, useLayoutEffect, useRef, useState } from "react";
+import { useCallback, useId, useLayoutEffect, useRef, useState } from "react";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import type { BookyJourneyRuntime, BookyJourneyRuntimeSnapshot } from "./bookyJourneyRuntime";
 import type { BookyJourneyPersistence, BookyJourneyPersistenceSnapshot } from "./bookyJourneyPersistence";
@@ -88,7 +88,8 @@ export default function BookyJourneyControls({ snapshot, controller, persistence
   const id = useId();
   const heading = useRef<HTMLHeadingElement>(null), status = useRef<HTMLParagraphElement>(null);
   const resetStart = useRef<HTMLButtonElement>(null), resetConfirm = useRef<HTMLButtonElement>(null);
-  const restoreResetFocus = useRef(false);
+  const restoreResetFocus = useRef(false), resetFocusOwned = useRef(false);
+  const focusJourneyHeading = useCallback(() => { heading.current?.focus(); }, []);
   const [resetAtRevision, setResetAtRevision] = useState<number | null>(null);
   const [rejectedAtRevision, setRejectedAtRevision] = useState<number | null>(null);
   const active = snapshot.active;
@@ -105,9 +106,12 @@ export default function BookyJourneyControls({ snapshot, controller, persistence
       return;
     }
     if (resetAtRevision !== snapshot.revision || !active) {
+      const focused = document.activeElement, group = resetConfirm.current?.closest('[role="group"]');
+      if (resetFocusOwned.current && (focused === document.body || group?.contains(focused))) focusJourneyHeading();
+      resetFocusOwned.current = false;
       setResetAtRevision(null);
     } else resetConfirm.current?.focus();
-  }, [resetAtRevision, snapshot.revision, active]);
+  }, [resetAtRevision, snapshot.revision, active, focusJourneyHeading]);
 
   function act(action: () => boolean, focusHeading = false) {
     const accepted = persistence.getSnapshot().canAct && action();
@@ -185,13 +189,16 @@ export default function BookyJourneyControls({ snapshot, controller, persistence
             onClick={() => act(() => controller.pause(snapshot.revision))}>{copy.pause}</button>}
         </div>
         <div className="booky-journey-controls__reset">
-          {resetAtRevision !== null ? <div role="group" aria-labelledby={`${id}-reset-question`}>
+          {resetAtRevision !== null ? <div role="group" aria-labelledby={`${id}-reset-question`}
+            onFocusCapture={() => { resetFocusOwned.current = true; }}
+            onBlurCapture={event => { resetFocusOwned.current = event.currentTarget.contains(event.relatedTarget); }}>
             <p id={`${id}-reset-question`}>{copy.resetQuestion}</p>
             <div className="booky-journey-controls__confirmation-actions">
               <button ref={resetConfirm} type="button" data-booky-journey-confirm-reset=""
                 disabled={!persistenceSnapshot.canAct || resetAtRevision !== snapshot.revision}
                 onClick={() => act(() => controller.reset(snapshot.revision), true)}>{copy.confirmReset}</button>
               <button type="button" data-booky-journey-cancel-reset="" onClick={() => {
+                resetFocusOwned.current = false;
                 restoreResetFocus.current = true;
                 setResetAtRevision(null);
               }}>{copy.cancelReset}</button>
@@ -202,9 +209,9 @@ export default function BookyJourneyControls({ snapshot, controller, persistence
         </div>
       </div>}
       <BookyJourneyHistoryControls controller={controller} snapshot={snapshot} persistence={persistence}
-        onAccepted={() => heading.current?.focus()} />
+        onAccepted={focusJourneyHeading} onConfirmationInvalidated={focusJourneyHeading} />
       <BookyJourneyMigrationControls controller={controller} snapshot={snapshot} persistence={persistence}
-        onAccepted={() => heading.current?.focus()} />
+        onAccepted={focusJourneyHeading} onConfirmationInvalidated={focusJourneyHeading} />
       <BookyJourneyStorageControls runtime={controller} persistence={persistence} snapshot={persistenceSnapshot} />
     </section>
   );

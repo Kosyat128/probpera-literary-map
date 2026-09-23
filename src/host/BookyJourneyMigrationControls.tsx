@@ -18,12 +18,16 @@ export const bookyJourneyMigrationCopy = { reviewStatus: "draft", productionRead
   },
 } } as const;
 
-export default function BookyJourneyMigrationControls({ controller, snapshot, persistence, onAccepted }: {
+export default function BookyJourneyMigrationControls({ controller, snapshot, persistence, onAccepted, onConfirmationInvalidated }: {
   controller: BookyJourneyRuntime; snapshot: BookyJourneyRuntimeSnapshot; persistence: BookyJourneyPersistence;
   onAccepted: () => void;
+  onConfirmationInvalidated: () => void;
 }) {
   const { language } = useInterfaceLanguage(), copy = bookyJourneyMigrationCopy.locales[language], id = useId();
   const [confirmation, setConfirmation] = useState<{ key: string; revision: number } | null>(null);
+  // React may remove the whole leaf before its layout effect runs. Retain
+  // ownership through that removal, but clear it when the user focuses elsewhere.
+  const confirmationFocusOwned = useRef(false);
   const [rejectedAtRevision, setRejectedAtRevision] = useState<number | null>(null);
   const rejected = rejectedAtRevision === snapshot.revision, canAct = persistence.getSnapshot().canAct;
   const confirmRef = useRef<HTMLButtonElement>(null), statusRef = useRef<HTMLParagraphElement>(null);
@@ -31,20 +35,27 @@ export default function BookyJourneyMigrationControls({ controller, snapshot, pe
   const selected = confirmation && snapshot.migrations.find(item => item.key === confirmation.key);
   useLayoutEffect(() => {
     if (confirmation) {
-      if (confirmation.revision !== snapshot.revision || !selected || !canAct) setConfirmation(null);
+      if (confirmation.revision !== snapshot.revision || !selected || !canAct) {
+        const focused = document.activeElement, group = confirmRef.current?.closest('[role="group"]');
+        if (confirmationFocusOwned.current && (focused === document.body || group?.contains(focused))) onConfirmationInvalidated();
+        confirmationFocusOwned.current = false;
+        setConfirmation(null);
+      }
       else confirmRef.current?.focus();
     } else if (restoreFocus.current) {
       const button = Array.from(choices.current?.querySelectorAll<HTMLButtonElement>("[data-booky-journey-migrate]") ?? [])
         .find(item => item.dataset.bookyJourneyMigrate === restoreFocus.current);
       restoreFocus.current = null; button?.focus();
     }
-  }, [confirmation, snapshot.revision, selected, canAct]);
+  }, [confirmation, snapshot.revision, selected, canAct, onConfirmationInvalidated]);
   if (snapshot.migrations.length === 0 && !rejected) return null;
   return <div className="booky-journey-controls__migration" data-booky-journey-migration-controls="" ref={choices}>
     <p ref={statusRef} tabIndex={-1} role="status" aria-live="polite" data-booky-journey-migration-status="">
       {rejected ? copy.rejected : copy.available}
     </p>
-    {confirmation && selected ? <div role="group" aria-labelledby={`${id}-question`}>
+    {confirmation && selected ? <div role="group" aria-labelledby={`${id}-question`}
+            onFocusCapture={() => { confirmationFocusOwned.current = true; }}
+            onBlurCapture={event => { confirmationFocusOwned.current = event.currentTarget.contains(event.relatedTarget); }}>
       <p><strong>{selected.title}</strong></p><p id={`${id}-question`}>{copy.question}</p>
       <div className="booky-journey-controls__confirmation-actions">
         <button type="button" ref={confirmRef} data-booky-journey-confirm-migrate=""
@@ -55,6 +66,7 @@ export default function BookyJourneyMigrationControls({ controller, snapshot, pe
             if (accepted) onAccepted(); else statusRef.current?.focus();
           }}>{copy.confirm}</button>
         <button type="button" data-booky-journey-cancel-migrate="" onClick={() => {
+          confirmationFocusOwned.current = false;
           restoreFocus.current = confirmation.key; setConfirmation(null);
         }}>{copy.cancel}</button>
       </div>

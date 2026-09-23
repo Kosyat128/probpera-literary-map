@@ -234,7 +234,8 @@ test.beforeAll(async () => {
     'src/host/PlanetMascotControls.tsx', 'src/host/PlanetMascotControls.css', 'src/host/PlanetMascotAvatar.tsx', 'src/host/PlanetMascotAvatar.css',
     'src/host/bookyModel.ts', 'src/host/bookyAnimation.ts', 'src/host/useBookyRenderer.ts', 'src/host/bookySupport.ts', 'src/host/bookyTourProgress.ts',
     'src/host/planetMascotPreference.ts', 'src/host/planetMascotPersistence.ts', 'src/host/HostPlatformServices.ts', ASSET];
-  required.push('src/host/bookyJourneyPrerequisites.ts', 'src/host/BookyJourneyHistoryControls.tsx');
+  required.push('src/host/bookyJourneyPrerequisites.ts', 'src/host/BookyJourneyHistoryControls.tsx',
+    'src/host/BookyJourneyMigrationControls.tsx', 'src/host/BookyJourneyStorageControls.tsx');
   for (const filename of required) expect(inputs).toContain(filename);
   const sourcePaths = [...new Set([...required, ...inputs.filter(value => value.startsWith('src/') && !value.includes('?')), 'tests/pwa/booky-journey.spec.mjs'])].sort();
   const sourceInputs = await Promise.all(sourcePaths.map(async filename => ({ path: filename, sha256: digest(await fs.readFile(path.join(ROOT, filename))) })));
@@ -245,7 +246,7 @@ test.beforeAll(async () => {
     return ['/' + entry.output, entry];
   }));
   sourceEvidence = { kind: 'canonical-app-adult-booky-journey-in-Chrome', actualApp: true, actualCss: true, actualGlobe: true,
-    controlledPorts: ['native OS lifecycle and preference map; key-specific journey-progress write rejection', 'HTTP delivery of real split chunks', 'explicitly synthetic content provider'],
+    controlledPorts: ['native OS lifecycle and preference map; key-specific journey-progress write rejection and manually released write gate', 'HTTP delivery of real split chunks', 'explicitly synthetic content provider'],
     controllerObservation: 'No controller is replaced or called by the fixture. Semantic progress and readiness are observed through the real rendered controls.',
     bookChunks, primaryBookChunk, retryBookChunk, sharedBookDependencies,
     countryChunks, primaryCountryChunk, retryCountryChunk, sharedCountryDependencies,
@@ -291,6 +292,8 @@ async function open(testInfo, { contentMode = 'approved', readerSeed = CONFIRMED
   if (readerSeed !== null) memory.set(READER, readerSeed);
   if (progressSeed !== null) memory.set(PROGRESS, progressSeed);
   let failedProgressWritesRemaining = 0;
+  let nextProgressWriteGate = null;
+  const progressWriteGates = [];
   const operations = [], errors = [], externalRequests = [], missingResources = [], requestedChunks = [];
   const result = { ...sourceEvidence, contentMode, initialReaderPreference: readerSeed, initialProgressPreference: progressSeed,
     pass: false, observations: {}, screenshots: [] };
@@ -303,6 +306,12 @@ async function open(testInfo, { contentMode = 'approved', readerSeed = CONFIRMED
       if (key === PROGRESS && failedProgressWritesRemaining > 0) {
         --failedProgressWritesRemaining; entry.failed = true;
         throw Error('Controlled native journey-progress write failure');
+      }
+      if (key === PROGRESS && nextProgressWriteGate) {
+        const gate = nextProgressWriteGate; nextProgressWriteGate = null;
+        gate.entered = true; entry.manuallyHeld = true;
+        await gate.wait;
+        entry.manuallyReleased = true;
       }
       memory.set(key, value); return;
     }
@@ -335,6 +344,16 @@ async function open(testInfo, { contentMode = 'approved', readerSeed = CONFIRMED
     return { page, memory, result, requestedChunks,
       progressWrites: () => operations.filter(entry => entry.key === PROGRESS && entry.operation !== 'get'),
       failNextProgressWrite() { ++failedProgressWritesRemaining; },
+      holdNextProgressWrite() {
+        if (nextProgressWriteGate) throw Error('A progress write is already armed');
+        let release;
+        const gate = { entered: false, released: false, wait: new Promise(resolve => { release = resolve; }) };
+        gate.release = () => { gate.released = true; release(); };
+        nextProgressWriteGate = gate; progressWriteGates.push(gate);
+        // No timer releases this gate. The test decides when the real adapter
+        // can finish its write/readback; runtime, storage and focus stay real.
+        return { entered: () => gate.entered, release: gate.release };
+      },
       async coldReload(mode = contentMode) {
         contentMode = mode;
         // A new document destroys the old React/runtime objects. Only the native
@@ -353,6 +372,7 @@ async function open(testInfo, { contentMode = 'approved', readerSeed = CONFIRMED
         expect(memory.get(READER) ?? null).toBe(readerSeed); result.pass = true;
       },
       async close() {
+        for (const gate of progressWriteGates) gate.release();
         result.finalDom = await page.evaluate(() => {
           const describe = element => {
             if (!element) return null;
@@ -1068,6 +1088,112 @@ test('history selection never navigates and confirmed single-record deletion tru
       deletionRequiresConfirmation: true, cancellationRetainsBytesAndFocus: true, failedDeletionWritePreservesBytes: true,
       explicitRetryConfirmsExactDeletion: true, onlyChosenHistoryRecordDeleted: true, deletionRevokesDependentAdmission: true,
       currentSelectionRetainedUnavailable: true, canonicalSceneRetained: true, failurePort: 'native-preferences-set' });
+    fixture.verify();
+  } finally { await fixture.close(); }
+});
+
+// These focused keyboard regressions exercise actual App controls. They do not
+// claim a complete accessibility audit, installed-device or screen-reader QA.
+for (const scenario of [
+  { name: 'owned invalidated confirmation restores stable status', outside: false, language: 'ru' },
+  { name: 'invalidated confirmation never steals outside keyboard focus', outside: true, language: 'en' },
+]) test('journey focus: ' + scenario.name, async ({}, testInfo) => {
+  test.setTimeout(150_000);
+  const fixture = await open(testInfo), { page, result } = fixture;
+  result.scenario = scenario.outside ? 'focus-invalidation-outside' : 'focus-invalidation-owned-confirm';
+  let gate;
+  try {
+    if (scenario.language === 'en') await locale(page, 'en');
+    const before = await startCountryStep(fixture), original = await actual(page);
+    const key = savedRecord(fixture).recordId, writes = fixture.progressWrites().length;
+    const clear = page.locator('[data-booky-journey-clear-progress]');
+    const confirm = page.locator('[data-booky-journey-confirm-clear-progress]');
+    const outside = historyAction(page, 'delete-history', key);
+    gate = fixture.holdNextProgressWrite();
+    await next(page).press('Enter');
+    await expect.poll(gate.entered).toBe(true);
+    await expect(storageState(page)).toHaveAttribute('data-booky-journey-storage', 'saving');
+    await expectProgress(page, 1);
+    expect(fixture.memory.get(PROGRESS)).toBe(before);
+
+    // Start at the programmatically focusable status, then use actual keyboard
+    // traversal and activation. No product action is dispatched from JS.
+    await storageState(page).focus(); await page.keyboard.press('Tab');
+    await expect(clear).toBeFocused(); await page.keyboard.press('Enter');
+    await expect(confirm).toBeFocused();
+    if (scenario.outside) {
+      await page.keyboard.press('Shift+Tab');
+      await expect(outside).toBeFocused();
+    }
+    gate.release();
+    await expect(storageState(page)).toHaveAttribute('data-booky-journey-storage', 'ready');
+    await expect(confirm).toHaveCount(0);
+    if (scenario.outside) await expect(outside).toBeFocused();
+    else await expect(storageState(page)).toBeFocused();
+    await expectSavedPrefix(fixture, ['country']);
+    expect(fixture.progressWrites()).toHaveLength(writes + 1);
+    expect(fixture.progressWrites().slice(writes)).toMatchObject([{ operation: 'set', manuallyHeld: true, manuallyReleased: true }]);
+    expect(fixture.progressWrites().some(entry => entry.operation === 'remove')).toBe(false);
+    retained(await actual(page), original);
+    await captureStorage(fixture, testInfo, scenario.outside ? 'journey-focus-outside-en.png' : 'journey-focus-restored-ru.png',
+      '[data-booky-journey-clear-progress]', scenario.outside
+        ? 'Actual App EN: completed native save invalidates clear confirmation and preserves the user-selected outside control'
+        : 'Actual App RU: completed native save removes stale confirmation and restores owned focus to stable storage status');
+    result.observations.focus = { keyboard: ['Enter on Next', 'Tab to clear', 'Enter to open confirmation',
+      ...(scenario.outside ? ['Shift+Tab outside'] : [])], heldPort: 'native-preferences-set', manualRelease: true,
+      focusedAtInvalidation: scenario.outside ? 'history-delete-outside' : 'clear-confirm',
+      expectedAfterInvalidation: scenario.outside ? 'same-history-delete' : 'storage-status',
+      noUnexpectedDeletion: true, onlyOriginalNextSave: true, canonicalSceneRetained: true,
+      fullAccessibilityAcceptanceClaimed: false };
+    fixture.verify();
+  } finally { gate?.release(); await fixture.close(); }
+});
+
+test('journey focus: keyboard cancellation and fresh document discard consent without replaying progress', async ({}, testInfo) => {
+  test.setTimeout(150_000);
+  const fixture = await open(testInfo), { page, result } = fixture;
+  result.scenario = 'focus-keyboard-remount-lifecycle';
+  try {
+    await startCountryStep(fixture); await next(page).press('Enter');
+    await expectReadyNode(page, 'writer', 1);
+    const saved = await expectSavedPrefix(fixture, ['country']), key = savedRecord(fixture).recordId;
+    const writes = fixture.progressWrites().length;
+    await storageState(page).focus(); await page.keyboard.press('Tab');
+    await expect(page.locator('[data-booky-journey-clear-progress]')).toBeFocused();
+    await page.keyboard.press('Enter');
+    await expect(page.locator('[data-booky-journey-confirm-clear-progress]')).toBeFocused();
+    // New document with the same OS preference bytes: pending consent must not
+    // survive or perform removal, acknowledgement or canonical navigation.
+    await fixture.coldReload();
+    await stablePose(page); const neutral = await actual(page);
+    await openPanel(page); await loadBooks(page);
+    await expect(status(page)).toHaveAttribute('data-booky-journey-status', 'paused');
+    await expectProgress(page, 1);
+    await expect(page.locator('[data-booky-journey-confirm-clear-progress]')).toHaveCount(0);
+    expect(fixture.memory.get(PROGRESS)).toBe(saved); expect(fixture.progressWrites()).toHaveLength(writes);
+
+    const cancellations = [
+      ['[data-booky-journey-reset]', '[data-booky-journey-confirm-reset]', '[data-booky-journey-cancel-reset]'],
+      ['[data-booky-journey-delete-history=' + JSON.stringify(key) + ']', '[data-booky-journey-confirm-delete-history]', '[data-booky-journey-cancel-delete-history]'],
+      ['[data-booky-journey-clear-progress]', '[data-booky-journey-confirm-clear-progress]', '[data-booky-journey-cancel-clear-progress]'],
+    ];
+    for (const [triggerSelector, confirmSelector, cancelSelector] of cancellations) {
+      const trigger = page.locator(triggerSelector), confirm = page.locator(confirmSelector), cancel = page.locator(cancelSelector);
+      await trigger.focus(); await page.keyboard.press('Enter'); await expect(confirm).toBeFocused();
+      await page.keyboard.press('Tab'); await expect(cancel).toBeFocused();
+      await page.keyboard.press('Enter'); await expect(confirm).toHaveCount(0); await expect(trigger).toBeFocused();
+    }
+    await page.evaluate(() => window.__bookyJourneyFixture.setVisible(false));
+    await page.evaluate(() => window.__bookyJourneyFixture.setVisible(true));
+    await openPanel(page);
+    await expect(status(page)).toHaveAttribute('data-booky-journey-status', 'paused');
+    await expectProgress(page, 1); await stablePose(page); retained(await actual(page), neutral, true);
+    for (const field of ['country', 'writer', 'book']) expect(new URL(page.url()).searchParams.get(field)).toBeNull();
+    expect(fixture.memory.get(PROGRESS)).toBe(saved); expect(fixture.progressWrites()).toHaveLength(writes);
+    Object.assign(result.observations, { keyboardCancellationTargets: ['reset', 'history-delete', 'clear-all'],
+      keyboard: ['Enter opens', 'Tab reaches cancel', 'Enter cancels'], pendingConsentDiscardedOnNewDocument: true,
+      nativeBackgroundRetainsPausedPrefix: true, noUnexpectedNavigationOrWrite: true,
+      canonicalSceneRetainedWithinDocument: true, fullAccessibilityAcceptanceClaimed: false });
     fixture.verify();
   } finally { await fixture.close(); }
 });

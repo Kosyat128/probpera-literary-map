@@ -40,11 +40,17 @@ export default function BookyJourneyStorageControls({ runtime, persistence, snap
   const [confirmation, setConfirmation] = useState<{ storage: number; intent: number } | null>(null);
   const confirmRef = useRef<HTMLButtonElement>(null), clearRef = useRef<HTMLButtonElement>(null);
   const statusRef = useRef<HTMLParagraphElement>(null), restoreFocus = useRef(false);
+  const confirmationFocusOwned = useRef(false);
   const intentRevision = runtime.getProgressIntent().revision;
   useLayoutEffect(() => {
     if (!confirmation) {
       if (restoreFocus.current) { restoreFocus.current = false; clearRef.current?.focus(); }
-    } else if (confirmation.storage !== snapshot.revision || confirmation.intent !== intentRevision) setConfirmation(null);
+    } else if (confirmation.storage !== snapshot.revision || confirmation.intent !== intentRevision) {
+      const focused = document.activeElement, group = confirmRef.current?.closest('[role="group"]');
+      if (confirmationFocusOwned.current && (focused === document.body || group?.contains(focused))) statusRef.current?.focus();
+      confirmationFocusOwned.current = false;
+      setConfirmation(null);
+    }
     else confirmRef.current?.focus();
   }, [confirmation, snapshot.revision, intentRevision]);
   const { storage } = snapshot;
@@ -61,13 +67,16 @@ export default function BookyJourneyStorageControls({ runtime, persistence, snap
       data-booky-journey-storage={storage.state} data-booky-journey-storage-error={storage.error ?? ""}>{message}</p>
     {(storage.state === "failed" || snapshot.unsaved && storage.state === "ready") && <button type="button" data-booky-journey-save-retry=""
       onClick={() => { setConfirmation(null); persistence.retry(); statusRef.current?.focus(); }}>{copy.retry}</button>}
-    {confirmation ? <div role="group" aria-labelledby={`${id}-clear-question`}>
+    {confirmation ? <div role="group" aria-labelledby={`${id}-clear-question`}
+            onFocusCapture={() => { confirmationFocusOwned.current = true; }}
+            onBlurCapture={event => { confirmationFocusOwned.current = event.currentTarget.contains(event.relatedTarget); }}>
       <p id={`${id}-clear-question`}>{copy.question}</p>
       <div className="booky-journey-controls__confirmation-actions">
         <button type="button" ref={confirmRef} data-booky-journey-confirm-clear-progress=""
           disabled={confirmation.storage !== snapshot.revision || confirmation.intent !== intentRevision}
           onClick={() => { persistence.clear(confirmation.storage, confirmation.intent); setConfirmation(null); statusRef.current?.focus(); }}>{copy.confirm}</button>
         <button type="button" data-booky-journey-cancel-clear-progress="" onClick={() => {
+          confirmationFocusOwned.current = false;
           restoreFocus.current = true; setConfirmation(null);
         }}>{copy.cancel}</button>
       </div>

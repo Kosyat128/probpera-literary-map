@@ -29,14 +29,18 @@ export const bookyJourneyHistoryCopy = { reviewStatus: "draft", productionReady:
   },
 } } as const;
 
-export default function BookyJourneyHistoryControls({ controller, snapshot, persistence, onAccepted }: {
+export default function BookyJourneyHistoryControls({ controller, snapshot, persistence, onAccepted, onConfirmationInvalidated }: {
   controller: BookyJourneyRuntime;
   snapshot: BookyJourneyRuntimeSnapshot;
   persistence: BookyJourneyPersistence;
   onAccepted: () => void;
+  onConfirmationInvalidated: () => void;
 }) {
   const { language } = useInterfaceLanguage(), copy = bookyJourneyHistoryCopy.locales[language], id = useId();
   const [confirmation, setConfirmation] = useState<{ key: string; revision: number } | null>(null);
+  // React may remove the whole leaf before its layout effect runs. Retain
+  // ownership through that removal, but clear it when the user focuses elsewhere.
+  const confirmationFocusOwned = useRef(false);
   const [rejectedAtRevision, setRejectedAtRevision] = useState<number | null>(null);
   const choices = useRef<HTMLUListElement>(null), confirmRef = useRef<HTMLButtonElement>(null);
   const statusRef = useRef<HTMLParagraphElement>(null), restoreFocus = useRef<string | null>(null), focusFailure = useRef(false);
@@ -45,14 +49,19 @@ export default function BookyJourneyHistoryControls({ controller, snapshot, pers
 
   useLayoutEffect(() => {
     if (confirmation) {
-      if (confirmation.revision !== snapshot.revision || !target || !canAct) setConfirmation(null);
+      if (confirmation.revision !== snapshot.revision || !target || !canAct) {
+        const focused = document.activeElement, group = confirmRef.current?.closest('[role="group"]');
+        if (confirmationFocusOwned.current && (focused === document.body || group?.contains(focused))) onConfirmationInvalidated();
+        confirmationFocusOwned.current = false;
+        setConfirmation(null);
+      }
       else confirmRef.current?.focus();
     } else if (restoreFocus.current) {
       const button = Array.from(choices.current?.querySelectorAll<HTMLButtonElement>("[data-booky-journey-delete-history]") ?? [])
         .find(item => item.dataset.bookyJourneyDeleteHistory === restoreFocus.current);
       restoreFocus.current = null; button?.focus();
     }
-  }, [confirmation, snapshot.revision, target, canAct]);
+  }, [confirmation, snapshot.revision, target, canAct, onConfirmationInvalidated]);
   useLayoutEffect(() => {
     if (focusFailure.current && rejected) { focusFailure.current = false; statusRef.current?.focus(); }
   }, [rejected, snapshot.revision]);
@@ -84,13 +93,16 @@ export default function BookyJourneyHistoryControls({ controller, snapshot, pers
             {[entry.selected ? copy.current : null, entry.available ? copy.available : copy.held,
               entry.completedCount === entry.total ? copy.completed : null].filter(Boolean).join(" · ")}
           </p>
-          {deleting ? <div role="group" aria-labelledby={`${titleId} ${questionId}`}>
+          {deleting ? <div role="group" aria-labelledby={`${titleId} ${questionId}`}
+            onFocusCapture={() => { confirmationFocusOwned.current = true; }}
+            onBlurCapture={event => { confirmationFocusOwned.current = event.currentTarget.contains(event.relatedTarget); }}>
             <p id={questionId}>{copy.question}</p>
             <div className="booky-journey-controls__confirmation-actions">
               <button type="button" ref={confirmRef} data-booky-journey-confirm-delete-history={entry.key}
                 disabled={!canAct || deleting.revision !== snapshot.revision}
                 onClick={() => act(() => controller.deleteHistory(entry.key, deleting.revision))}>{copy.confirm}</button>
               <button type="button" data-booky-journey-cancel-delete-history={entry.key} onClick={() => {
+                confirmationFocusOwned.current = false;
                 restoreFocus.current = entry.key; setConfirmation(null);
               }}>{copy.cancel}</button>
             </div>
