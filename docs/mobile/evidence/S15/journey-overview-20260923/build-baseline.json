@@ -1,0 +1,15 @@
+{
+  "checkpoint": "8ee0d5e5668f1e19d5d27b756fe1bf121ccda853",
+  "priorPwa": {
+    "path": "docs/mobile/evidence/S15/journey-passport-20260923/pwa-a1/result.json",
+    "sha256": "b5ad2ec67e2eb2995d016023bb5eefa798e4042c85e9085bf05450ba6cac3ba4",
+    "buildId": "69bda350a724585e5af41c212a1178076291c082a2b132f0ac38ea9693f96970",
+    "sourceCommit": "d5a128b1babd1eb22b473e35a1d7ec6ee0bc0d99"
+  },
+  "priorAndroid": {
+    "path": "docs/mobile/evidence/S15/journey-passport-20260923/android-a1/result.json",
+    "sha256": "4829c20948584b9147387e50f25dc7d416e4bcd8b13839a264252a46515abc57",
+    "buildId": "8713d0c90210f5381283feae7692e873881f334e4dcdb0dcda5193bba9d80bfc",
+    "sourceCommit": "d5a128b1babd1eb22b473e35a1d7ec6ee0bc0d99"
+  }
+}

@@ -1,0 +1,27 @@
+
+Running 21 tests using 1 worker
+
+
+
+[1/21] tests\pwa\booky-journey.spec.mjs:503:1 › activity answers require fresh explicit acknowledgement and stay separate from navigation and saved progress
+[2/21] tests\pwa\booky-journey.spec.mjs:554:1 › activity answer is temporary across suspension cold restoration and revoked journey review
+[3/21] tests\pwa\booky-journey.spec.mjs:734:1 › actual reviewed fixture follows country writer work and explicit checkpoint across locale and suspension
+[4/21] tests\pwa\booky-journey.spec.mjs:828:4 › journey admission fails closed: no-profile
+[5/21] tests\pwa\booky-journey.spec.mjs:828:4 › journey admission fails closed: no-independent-journey-review
+[6/21] tests\pwa\booky-journey.spec.mjs:850:1 › confirmed journey progress restores the exact prefix paused in a fresh document until explicit resume
+[7/21] tests\pwa\booky-journey.spec.mjs:886:1 › failed journey-progress native write stays visibly unsaved until explicit exact retry
+[8/21] tests\pwa\booky-journey.spec.mjs:920:1 › future journey progress remains unchanged until explicit confirmed removal
+[9/21] tests\pwa\booky-journey.spec.mjs:956:1 › a new reviewed journey version cannot reinterpret or overwrite a saved older prefix
+[10/21] tests\pwa\booky-journey.spec.mjs:991:1 › explicit reviewed journey migration preserves history and restores the exact new prefix paused
+[11/21] tests\pwa\booky-journey.spec.mjs:1066:1 › missing or revoked independent migration review preserves the old version without navigation
+[12/21] tests\pwa\booky-journey.spec.mjs:1117:1 › confirmed exact-version completion unlocks a dependent journey only with independently admitted saved locale
+[13/21] tests\pwa\booky-journey.spec.mjs:1170:1 › history selection never navigates and confirmed single-record deletion truthfully retries while revoking a prerequisite
+[14/21] tests\pwa\booky-journey.spec.mjs:1244:4 › journey focus: owned invalidated confirmation restores stable status
+[15/21] tests\pwa\booky-journey.spec.mjs:1244:4 › journey focus: invalidated confirmation never steals outside keyboard focus
+[16/21] tests\pwa\booky-journey.spec.mjs:1296:1 › journey focus: keyboard cancellation and fresh document discard consent without replaying progress
+[17/21] tests\pwa\booky-journey.spec.mjs:1366:1 › full journey history keeps existing progress usable and frees exactly one chosen entry for a new route
+[18/21] tests\pwa\booky-journey.spec.mjs:1554:1 › literary passport credits only confirmed acknowledged steps and withdraws a deliberately deleted history
+[19/21] tests\pwa\booky-journey.spec.mjs:1709:1 › reviewed journey overview follows exact locale review and whole-route offline availability without writing progress
+[20/21] tests\pwa\booky-reader-policy.spec.mjs:481:1 › explicit adult profile survives locale and lifecycle while drafts and deletion never grant stale policy
+[21/21] tests\pwa\booky-reader-policy.spec.mjs:542:1 › future profiles are retained until confirmed deletion and failed deletion cannot restore admission
+  21 passed (4.1m)
