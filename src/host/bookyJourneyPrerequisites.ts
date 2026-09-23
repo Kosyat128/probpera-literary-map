@@ -14,7 +14,9 @@ export type BookyJourneyCatalogWithProgress = Readonly<{
 }>;
 
 /** Both plans must come from freshly admitted catalogs. A language switch
- * cannot turn an edited or unreviewed saved definition into new progress. */
+ * cannot turn an edited or unreviewed saved definition into new progress.
+ * Exact projected node equality includes the derived activity fingerprint;
+ * the same prompt/routing key with changed factual authorship is not equivalent. */
 export function matchesBookyJourneyProgress(record: BookyJourneyProgressRecord, policy: BookyReaderPolicy,
   currentPlan: BookyJourneyPlan, savedPlan: BookyJourneyPlan = currentPlan): boolean {
   if (savedPlan.id !== currentPlan.id || savedPlan.version !== currentPlan.version || savedPlan.locale !== record.locale) return false;

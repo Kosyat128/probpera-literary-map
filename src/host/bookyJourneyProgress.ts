@@ -1,5 +1,6 @@
 import { contentTextHash } from "../planet/contentExportHash";
 import type { BookyJourneyPlan } from "./bookyJourney";
+import { getBookyJourneyActivityChecksum, parseBookyJourneyActivity } from "./bookyJourneyActivity";
 import { serializeBookyReaderPolicy, type BookyReaderPolicy } from "./bookyReaderPolicy";
 
 export const BOOKY_JOURNEY_PROGRESS_KEY = "probpera-booky-journey-progress-v1";
@@ -7,7 +8,11 @@ export const BOOKY_JOURNEY_PROGRESS_KEY = "probpera-booky-journey-progress-v1";
 export const BOOKY_JOURNEY_PROGRESS_MAX_LENGTH = 262_144;
 export const BOOKY_JOURNEY_PROGRESS_MAX_RECORDS = 32;
 export const BOOKY_JOURNEY_PROGRESS_MAX_NODES = 32;
-export type BookyJourneyProgressNode = Readonly<Pick<BookyJourneyPlan["nodes"][number], "id" | "kind" | "screen" | "entity">>;
+export type BookyJourneyProgressActivity = Readonly<{ id: string; version: number; semanticChecksum: string }>;
+export type BookyJourneyProgressNode = Readonly<Pick<BookyJourneyPlan["nodes"][number], "id" | "kind" | "screen" | "entity"> & {
+  /** Identity only. Unacknowledged choices and the answer key are never stored. */
+  activity?: BookyJourneyProgressActivity;
+}>;
 export type BookyJourneyProgressRecord = Readonly<{
   recordId: string;
   /** Binding only: never proof of age, current policy, editorial review or access. */
@@ -77,8 +82,16 @@ function array(value: unknown, maximum: number): readonly unknown[] | null {
   return result;
 }
 function node(value: unknown): BookyJourneyProgressNode | null {
-  const item = data(value, ["id", "kind", "screen", "entity"]);
+  const item = data(value);
   if (!item || !id(item.id) || item.screen !== "globe" && item.screen !== "collection") return null;
+  if (item.kind === "activity") {
+    const activity = data(item.activity, ["id", "version", "semanticChecksum"]);
+    return Object.keys(item).length === 5 && item.screen === "globe" && item.entity === null && activity
+      && id(activity.id) && integer(activity.version, 1, 1_000_000) && hash(activity.semanticChecksum)
+      ? Object.freeze({ id: item.id, kind: "activity", screen: "globe", entity: null,
+        activity: Object.freeze({ id: activity.id, version: activity.version, semanticChecksum: activity.semanticChecksum }) }) : null;
+  }
+  if (Object.keys(item).length !== 4) return null;
   if (item.kind === "checkpoint") return item.entity === null
     ? Object.freeze({ id: item.id, kind: "checkpoint", screen: item.screen, entity: null }) : null;
   const entity = data(item.entity);
@@ -171,8 +184,17 @@ export function createBookyJourneyProgressRecord(policy: BookyReaderPolicy, admi
     const rawNodes = array(plan.nodes, BOOKY_JOURNEY_PROGRESS_MAX_NODES);
     if (!rawNodes) return null;
     const nodes = rawNodes.map(value => {
-      const item = data(value, ["id", "kind", "screen", "entity", "coordinates", "dialogue"]);
-      return item ? { id: item.id, kind: item.kind, screen: item.screen, entity: item.entity } : null;
+      const item = data(value);
+      if (!item || !data(value, item.kind === "activity"
+        ? ["id", "kind", "screen", "entity", "coordinates", "dialogue", "activity", "activityChoices"]
+        : ["id", "kind", "screen", "entity", "coordinates", "dialogue"])) return null;
+      const semantic = { id: item.id, kind: item.kind, screen: item.screen, entity: item.entity };
+      if (item.kind !== "activity") return semantic;
+      const activity = data(item.activity, ["spec", "definitionChecksum", "semanticChecksum", "correctChoiceId"]);
+      const spec = activity && parseBookyJourneyActivity(activity.spec);
+      if (!activity || !spec || getBookyJourneyActivityChecksum(spec) !== activity.definitionChecksum
+        || !hash(activity.semanticChecksum) || !spec.choices.some(choice => choice.id === activity.correctChoiceId)) return null;
+      return { ...semantic, activity: { id: spec.id, version: spec.version, semanticChecksum: activity.semanticChecksum } };
     });
     const fingerprint = contentTextHash(serializedPolicy);
     return record({ recordId: recordId(fingerprint, plan.id, plan.version), policyFingerprint: fingerprint,

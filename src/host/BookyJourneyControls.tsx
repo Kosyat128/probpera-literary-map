@@ -5,6 +5,7 @@ import type { BookyJourneyPersistence, BookyJourneyPersistenceSnapshot } from ".
 import BookyJourneyStorageControls from "./BookyJourneyStorageControls";
 import BookyJourneyMigrationControls from "./BookyJourneyMigrationControls";
 import BookyJourneyHistoryControls from "./BookyJourneyHistoryControls";
+import BookyJourneyActivityControls from "./BookyJourneyActivityControls";
 import "./BookyJourneyControls.css";
 
 export type BookyJourneyControlsProps = {
@@ -31,6 +32,7 @@ export const bookyJourneyControlsCopy = {
       navigating: "Открываем шаг маршрута…",
       readyToOpen: "Откройте этот шаг, затем подтвердите его.",
       readyToConfirm: "Этот шаг готов к подтверждению.",
+      readyToAnswer: "Выберите ответ на задание. Подтвердить шаг можно после верного ответа.",
       paused: "Маршрут приостановлен. Нажмите «Продолжить маршрут», когда будете готовы.",
       activeUnavailable: "Этот маршрут сейчас недоступен. Можно вернуться к нему позже или сбросить маршрут.",
       failed: "Не удалось открыть этот шаг. Повторите открытие.",
@@ -64,6 +66,7 @@ export const bookyJourneyControlsCopy = {
       navigating: "Opening this journey step…",
       readyToOpen: "Open this step, then acknowledge it.",
       readyToConfirm: "This step is ready to acknowledge.",
+      readyToAnswer: "Choose an answer to the task. You can acknowledge the step after a correct answer.",
       paused: "This journey is paused. Choose “Resume journey” when you are ready.",
       activeUnavailable: "This journey is currently unavailable. You can return to it later or reset the journey.",
       failed: "This step could not be opened. Please try opening it again.",
@@ -139,7 +142,7 @@ export default function BookyJourneyControls({ snapshot, controller, persistence
   else if (rejectedAtRevision === snapshot.revision) statusText = copy.rejected;
   else if (active?.phase === "paused") statusText = copy.paused;
   else if (active?.phase === "complete") statusText = copy.complete;
-  else if (active) statusText = active.canNext ? copy.readyToConfirm : copy.readyToOpen;
+  else if (active) statusText = active.canNext ? copy.readyToConfirm : active.answer?.canAnswer ? copy.readyToAnswer : copy.readyToOpen;
   else statusText = snapshot.routes.length > 0 ? copy.choose : copy.unavailable;
 
   const openLabel = active?.phase === "failed" ? copy.retryOpen : node?.kind === "country" ? copy.openCountry
@@ -188,6 +191,11 @@ export default function BookyJourneyControls({ snapshot, controller, persistence
           <p className="booky-journey-controls__body">{nodeCopy.body}</p>
           {caption && <p className="booky-journey-controls__caption">{caption}</p>}
           {reduced && <p className="booky-journey-controls__reduced">{reduced}</p>}
+          <BookyJourneyActivityControls active={active} canAct={persistenceSnapshot.canAct} onAnswer={choiceId => {
+            const accepted = persistence.getSnapshot().canAct && controller.answer(choiceId, snapshot.revision);
+            setRejectedAtRevision(accepted ? null : snapshot.revision);
+            if (!accepted) status.current?.focus();
+          }} />
         </div>}
         <div className="booky-journey-controls__actions">
           {inProgress && node && <>

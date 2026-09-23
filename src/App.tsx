@@ -2326,7 +2326,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     }
     const perform = () => {
       if (!isCurrent()) return false;
-      if (node.kind === "checkpoint") return true;
+      if (node.kind === "checkpoint" || node.kind === "activity") return true;
       if (!entity) return false;
       const country = countryArchive.find(item => item.id === entity.countryId);
       if (!country) return false;

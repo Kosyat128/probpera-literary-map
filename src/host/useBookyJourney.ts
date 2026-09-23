@@ -139,5 +139,5 @@ export function useBookyJourney(input: {
     controller.refresh();
   }, [controller]);
   return { controller, snapshot, persistence, persistenceSnapshot,
-    needsBooks: !!input.policy && !input.booksReady && content.definitions.some(route => route.nodes.some(node => node.kind === "work")) };
+    needsBooks: !!input.policy && !input.booksReady && content.definitions.some(route => route.nodes.some(node => node.kind === "work" || node.kind === "activity")) };
 }

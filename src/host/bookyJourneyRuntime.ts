@@ -20,6 +20,8 @@ export type BookyJourneyRuntimeHost = Readonly<{
   view: Readonly<{ screen: "globe" | "collection"; countryId: string | null;
     writerId: string | null; workId: string | null; settled: boolean }>;
 }>;
+export type BookyJourneyActivityAnswer = Readonly<{ choiceId: string | null;
+  status: "unanswered" | "incorrect" | "correct"; canAnswer: boolean }>;
 type Phase = "navigating" | "ready" | "paused" | "unavailable" | "failed" | "complete";
 export type BookyJourneyRuntimeSnapshot = Readonly<{
   revision: number;
@@ -30,7 +32,7 @@ export type BookyJourneyRuntimeSnapshot = Readonly<{
   history: readonly Readonly<{ key: string; title: string | null; journeyId: string; version: number; locale: "ru" | "en";
     completedCount: number; total: number; selected: boolean; canSelect: boolean; available: boolean }>[];
   active: Readonly<{ title: string | null; node: BookyJourneyPlan["nodes"][number] | null;
-    index: number; total: number; completedCount: number; phase: Phase; canOpen: boolean; canNext: boolean }> | null;
+    index: number; total: number; completedCount: number; phase: Phase; canOpen: boolean; canNext: boolean; answer: BookyJourneyActivityAnswer | null }> | null;
 }>;
 export function bookyJourneyRouteKey(plan: Pick<BookyJourneyPlan, "id" | "version" | "locale" | "definitionChecksum">): string {
   return JSON.stringify([plan.id, plan.version, plan.locale, plan.definitionChecksum]);
@@ -50,7 +52,17 @@ const entityKey = (node: Pick<BookyJourneyProgressNode, "entity">) => {
     : entity.kind === "writer" ? [entity.kind, entity.countryId, entity.writerId]
       : [entity.kind, entity.countryId, entity.writerId, entity.workId];
 };
-const topology = (plan: { nodes: readonly BookyJourneyProgressNode[] }) => JSON.stringify(plan.nodes.map(node => [node.id, node.kind, entityKey(node), node.screen]));
+type IdentityNode = BookyJourneyProgressNode | BookyJourneyPlan["nodes"][number];
+const activityKey = (node: IdentityNode) => {
+  const activity = node.activity;
+  if (node.kind !== "activity" || !activity) return null;
+  return "spec" in activity ? [activity.spec.id, activity.spec.version, activity.semanticChecksum]
+    : [activity.id, activity.version, activity.semanticChecksum];
+};
+const topology = (plan: { nodes: readonly IdentityNode[] }) => JSON.stringify(plan.nodes.map(node => {
+  const fields = [node.id, node.kind, entityKey(node), node.screen];
+  return node.kind === "activity" ? [...fields, activityKey(node)] : fields;
+}));
 const fingerprint = (profileKey: string | null) => {
   const serialized = serializeBookyReaderPolicy(profileKey);
   return serialized ? contentTextHash(serialized) : null;
@@ -63,11 +75,12 @@ const storedSession = (record: BookyJourneyProgressRecord): Session => ({ id: re
   index: Math.min(record.acknowledgedNodeIds.length, record.nodes.length - 1), total: record.nodes.length,
   completedCount: record.acknowledgedNodeIds.length, phase: "unavailable" });
 const viewKey = (view: BookyJourneyRuntimeHost["view"]) => JSON.stringify(view);
-const semanticKey = (node: BookyJourneyProgressNode) => JSON.stringify([node.kind, node.screen, entityKey(node)]);
+const semanticKey = (node: BookyJourneyProgressNode) => JSON.stringify(node.kind === "activity"
+  ? [node.kind, node.screen, entityKey(node), activityKey(node)] : [node.kind, node.screen, entityKey(node)]);
 function matches(node: BookyJourneyPlan["nodes"][number], view: BookyJourneyRuntimeHost["view"]) {
   if (!view.settled || node.screen !== view.screen) return false;
   const entity = node.entity;
-  return entity === null ? node.kind === "checkpoint" : view.countryId === entity.countryId
+  return entity === null ? node.kind === "checkpoint" || node.kind === "activity" : view.countryId === entity.countryId
     && (entity.kind === "country" || view.writerId === entity.writerId && (entity.kind === "writer" || view.workId === entity.workId));
 }
 
@@ -84,6 +97,17 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
   let session: Session | null = null, navigation: Navigation | null = null;
   let progressIntent: BookyJourneyProgressIntent = Object.freeze({ revision: 0, preference: DEFAULT_BOOKY_JOURNEY_PROGRESS });
   let progressViewRevision = 0;
+  // An answer is a transient gesture, never a persisted acknowledgement. Its
+  // binding includes the derived author as well as the reviewed raw task.
+  let answer: { binding: string; choiceId: string; status: "incorrect" | "correct" } | null = null;
+  function answerBinding(plan: BookyJourneyPlan, node: BookyJourneyPlan["nodes"][number]) {
+    return JSON.stringify([bookyJourneyRouteKey(plan), session?.profileKey, session?.policyFingerprint,
+      session?.index, node.id, node.activity, node.activityChoices]);
+  }
+  function correctAnswer(plan: BookyJourneyPlan, node: BookyJourneyPlan["nodes"][number]) {
+    return node.kind !== "activity" || !!node.activity && answer?.binding === answerBinding(plan, node)
+      && answer.status === "correct" && answer.choiceId === node.activity.correctChoiceId;
+  }
   let disposed = false, reading = false, epoch = 0;
   let renderedHost: BookyJourneyRuntimeHost | null = null, renderedRevision: number | null = null, renderedKey = "";
   const listeners = new Set<() => void>();
@@ -142,6 +166,7 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
   }
 
   function cancelNavigation() {
+    answer = null;
     const pending = navigation; navigation = null;
     if (!pending) return;
     if (!pending.accepted) {
@@ -183,12 +208,15 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
         canSelect: currentFingerprint !== null && currentFingerprint === record.policyFingerprint, available: admitted !== null });
     }));
     const node = plan && session && session.phase !== "unavailable" ? plan.nodes[session.index] ?? null : null;
+    const currentAnswer = node?.kind === "activity" && node.activity && plan ? answer?.binding === answerBinding(plan, node) ? answer : null : null;
+    const activityAnswer = node?.kind === "activity" && node.activity ? Object.freeze({ choiceId: currentAnswer?.choiceId ?? null,
+      status: currentAnswer?.status ?? "unanswered", canAnswer: session?.phase === "ready" && !!host && matches(node, host.view) }) : null;
     const active = session ? Object.freeze({ title: node ? plan!.title : null, node, index: session.index, total: session.total,
       completedCount: session.completedCount, phase: session.phase,
       canOpen: !!node && (session.phase === "ready" || session.phase === "failed"),
-      canNext: !!node && session.phase === "ready" && !!host && matches(node, host.view) }) : null;
+      canNext: !!node && session.phase === "ready" && !!host && matches(node, host.view) && correctAnswer(plan!, node), answer: activityAnswer }) : null;
     const key = JSON.stringify([progressViewRevision, status, routes, historyCapacity, migrations, history, active && [active.title, session && bookyJourneyRouteKey(session), active.index,
-      active.total, active.completedCount, active.phase, active.canOpen, active.canNext, !!active.node]]);
+      active.total, active.completedCount, active.phase, active.canOpen, active.canNext, active.answer, !!active.node]]);
     if (key === renderedKey && host === renderedHost && (host?.revision ?? null) === renderedRevision) return;
     renderedKey = key; renderedHost = host; renderedRevision = host?.revision ?? null;
     const next = Object.freeze({ revision: snapshot.revision + 1, status, routes, historyCapacity, migrations, history, active }); snapshot = next;
@@ -209,7 +237,20 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
       && Number.isSafeInteger(offer.hostRevision) && offer.hostRevision >= 0
       && offer.node.kind === node.kind && offer.node.screen === node.screen
       && JSON.stringify(entityKey(offer.node)) === JSON.stringify(entityKey(node))
-      && offer.node.dialogue.checksum === node.dialogue.checksum;
+      && offer.node.dialogue.checksum === node.dialogue.checksum
+      && (node.kind === "activity" ? !!node.activity && JSON.stringify(offer.node.activity) === JSON.stringify(node.activity)
+        && JSON.stringify(offer.node.activityChoices) === JSON.stringify(node.activityChoices)
+        : offer.node.activity === undefined && offer.node.activityChoices === undefined);
+  }
+  function validActivities(host: BookyJourneyRuntimeHost, plan: BookyJourneyPlan, token: number, checkedNodeId?: string): boolean {
+    const revision = host.revision;
+    for (const node of plan.nodes) {
+      if (node.kind !== "activity" || node.id === checkedNodeId) continue;
+      if (epoch !== token || disposed || readHost() !== host) return false;
+      const offer = host.resolve(plan, node.id), current = readHost();
+      if (epoch !== token || disposed || current !== host || current.revision !== revision || !validOffer(offer, plan, node.id)) return false;
+    }
+    return true;
   }
   function capture(token: number): Observation | null {
     if (reading || disposed) { failClosed(); return null; }
@@ -228,7 +269,13 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
           keys.add(key);
           const offer = host.resolve(plan, plan.nodes[0].id);
           if (epoch !== token || disposed) return null;
-          if (validOffer(offer, plan, plan.nodes[0].id)) plans.push(plan);
+          if (!validOffer(offer, plan, plan.nodes[0].id)) continue;
+          // A checkpoint offer cannot expose changed activity authorship. Check
+          // all bounded task bindings, including an activity whose Next command
+          // has already advanced the temporary navigation cursor.
+          const activitiesValid = validActivities(host, plan, token, plan.nodes[0].id);
+          if (epoch !== token || disposed) return null;
+          if (activitiesValid) plans.push(plan);
         }
       }
       const migrations: MigrationCandidate[] = [];
@@ -257,7 +304,7 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
       const offer = host.resolve(plan, plan.nodes[index].id);
       const current = readHost();
       return epoch === token && !disposed && current === host && current.revision === revision
-        && validOffer(offer, plan, plan.nodes[index].id) ? offer : null;
+        && validOffer(offer, plan, plan.nodes[index].id) && validActivities(host, plan, token, plan.nodes[index].id) ? offer : null;
     } catch { return null; }
     finally { reading = false; }
   }
@@ -272,7 +319,8 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
       const candidate = migrationCandidate(host, plan, saved, host.resolveMigration!(saved, plan));
       const current = readHost();
       return epoch === token && !disposed && current === host && current.revision === revision && !!candidate
-        && candidate.key === expected.key && JSON.stringify(candidate.offer) === JSON.stringify(expected.offer);
+        && candidate.key === expected.key && JSON.stringify(candidate.offer) === JSON.stringify(expected.offer)
+        && validActivities(host, plan, token);
     } catch { return false; }
     finally { reading = false; }
   }
@@ -294,6 +342,7 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
         }
       }
       if (epoch !== token || disposed) return null;
+      if (answer && (!plan || answer.binding !== answerBinding(plan, plan.nodes[session.index]))) answer = null;
       if (!plan) {
         session.phase = host && sameProfile(session, host) && !host.active
           ? session.phase === "complete" ? "complete" : "paused" : "unavailable";
@@ -464,9 +513,28 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
       return !!observed && !!session && (session.phase === "ready" || session.phase === "failed")
         && move(observed, session.index, session.completedCount);
     },
+    answer(choiceId: string, revision: number): boolean {
+      const observed = prepare(revision), plan = observed && currentPlan(observed), target = session;
+      const node = plan && target ? plan.nodes[target.index] : null;
+      if (!observed?.host || !target || !plan || !node || target.phase !== "ready" || node.kind !== "activity"
+        || !node.activity || !matches(node, observed.host.view) || typeof choiceId !== "string"
+        || !node.activity.spec.choices.some(choice => choice.id === choiceId)) return false;
+      const token = ++epoch;
+      if (!resolve(observed, plan, target.index, token)) { if (epoch === token) failClosed(); return false; }
+      const selected = { binding: answerBinding(plan, node), choiceId,
+        status: choiceId === node.activity.correctChoiceId ? "correct" as const : "incorrect" as const };
+      answer = selected;
+      publish(observed);
+      // Subscribers may synchronously pause/revoke the task. Never report a
+      // selection as accepted after that newer intent has invalidated it.
+      if (disposed || epoch !== token || session !== target || answer !== selected) return false;
+      if (!resolve(observed, plan, target.index, token)) { if (epoch === token) failClosed(); return false; }
+      return true;
+    },
     next(revision: number): boolean {
       const observed = prepare(revision), plan = observed && currentPlan(observed);
-      if (!observed?.host || !session || !plan || session.phase !== "ready" || !matches(plan.nodes[session.index], observed.host.view)) return false;
+      if (!observed?.host || !session || !plan || session.phase !== "ready" || !matches(plan.nodes[session.index], observed.host.view)
+        || !correctAnswer(plan, plan.nodes[session.index])) return false;
       const target = session, token = ++epoch;
       if (!resolve(observed, plan, target.index, token)) { if (epoch === token) failClosed(); return false; }
       if (target.index + 1 < target.total) return move(observed, target.index + 1, target.index + 1, true);

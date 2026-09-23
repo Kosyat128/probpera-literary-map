@@ -3,7 +3,7 @@ import type { Country, BookArchiveEntry } from "../planet/types";
 import { contentTextHash } from "../planet/contentExportHash";
 import { createBookyDialogueRegistry, getBookyDialogueChecksum, getBookyDialogueContentChecksum,
   type BookyDialoguePayload, type BookyDialogueRecord } from "./bookyDialogueRegistry";
-import { bookyJourneyEntityId, compileBookyJourney, getBookyJourneyChecksum,
+import { bookyJourneyDialogueContext, bookyJourneyEntityId, compileBookyJourney, getBookyJourneyChecksum,
   type BookyJourneyContext, type BookyJourneyDefinition, type BookyJourneyTrust } from "./bookyJourney";
 import { resolveBookyJourneyNode, type BookyJourneyHostOffer, type BookyJourneyHostSnapshot } from "./bookyJourneyHost";
 import { bookyJourneyRouteKey, createBookyJourneyRuntime, type BookyJourneyRuntimeHost } from "./bookyJourneyRuntime";
@@ -14,24 +14,38 @@ import { getBookyJourneyMigrationChecksum, resolveBookyJourneyMigration, type Bo
 
 const now = "2026-09-23T12:00:00.000Z", reviewedAt = "2026-09-22T12:00:00.000Z";
 function fixture(locale: "ru" | "en" = "en", options: { id?: string; version?: number; workId?: string; writerNodeId?: string; title?: string;
-  checkpointScreen?: "globe" | "collection" } = {}) {
+  checkpointScreen?: "globe" | "collection"; activity?: boolean; activityAuthor?: "test-writer" | "other-writer" } = {}) {
   // Synthetic reviewers, content, public catalog and receipts ONLY for tests.
   // No production draft receives approval, narration or child eligibility.
   const journeyId = options.id ?? "test-journey";
   const country: Country = { id: "test-country", name: "Synthetic country", coordinates: [20, 30], writers: [{ id: "test-writer" }] };
   const book: BookArchiveEntry = { id: options.workId ?? "test-work", title: "Synthetic work", countryId: country.id, countryName: country.name,
     writerId: "test-writer", writerName: "Synthetic writer", country, writer: country.writers[0], editorial: { status: "verified" } };
+  if (options.activity) {
+    country.writers[0].name = "Synthetic First Writer";
+    country.writers.push({ id: "other-writer", name: "Synthetic Second Writer" });
+  }
+  if (options.activityAuthor) book.authorship = { kind: "single", authors: [{ countryId: country.id, writerId: options.activityAuthor }] };
   const nodes: BookyJourneyDefinition["nodes"] = [
     { id: "country", kind: "country", entity: { kind: "country", countryId: country.id }, screen: "globe", dialogue: { id: "test-country", version: 1, contentChecksum: "" } },
-    { id: options.writerNodeId ?? "writer", kind: "writer", entity: { kind: "writer", countryId: country.id, writerId: "test-writer" }, screen: "globe", dialogue: { id: "test-writer", version: 1, contentChecksum: "" } },
-    { id: "work", kind: "work", entity: { kind: "work", countryId: country.id, writerId: "test-writer", workId: book.id }, screen: "collection", dialogue: { id: "test-work", version: 1, contentChecksum: "" } },
+    options.activity ? { id: "activity", kind: "activity", entity: null, screen: "globe", dialogue: { id: "test-activity", version: 1, contentChecksum: "" },
+      activity: { schemaVersion: 1, id: "test-match-author", version: 1, type: "match-work-author",
+        targetWork: { kind: "work", countryId: country.id, writerId: "test-writer", workId: book.id }, choices: [
+          { id: "first", writer: { kind: "writer", countryId: country.id, writerId: "test-writer" } },
+          { id: "second", writer: { kind: "writer", countryId: country.id, writerId: "other-writer" } },
+        ] } }
+      : { id: options.writerNodeId ?? "writer", kind: "writer", entity: { kind: "writer", countryId: country.id, writerId: "test-writer" }, screen: "globe", dialogue: { id: "test-writer", version: 1, contentChecksum: "" } },
+    options.activity ? { id: "after-activity", kind: "checkpoint", entity: null, screen: "globe",
+      dialogue: { id: "test-after-activity", version: 1, contentChecksum: "" } }
+      : { id: "work", kind: "work", entity: { kind: "work", countryId: country.id, writerId: "test-writer", workId: book.id }, screen: "collection", dialogue: { id: "test-work", version: 1, contentChecksum: "" } },
     { id: "checkpoint", kind: "checkpoint", entity: null, screen: options.checkpointScreen ?? "globe", dialogue: { id: "test-checkpoint", version: 1, contentChecksum: "" } },
   ];
   const records: BookyDialogueRecord[] = nodes.map(node => {
     const copy = { title: `${locale}: ${node.id}`, body: `${locale}: synthetic test instruction.`, caption: "Synthetic test caption", reduced: "Test" };
     const payload: BookyDialoguePayload = { id: node.dialogue.id, locale, version: 1, audience: "adult", ageRange: { min: 18, max: 120 },
-      readingLevel: "plain", intent: "navigation", screens: [node.screen], context: `${journeyId}:${node.id}`,
-      entityIds: node.entity ? [bookyJourneyEntityId(node.entity)] : [], claimKind: "interface-guidance", factualSources: [], copy,
+      readingLevel: "plain", intent: node.kind === "activity" ? "activity" : "navigation", screens: [node.screen], context: bookyJourneyDialogueContext(journeyId, node)!,
+      entityIds: node.activity ? [node.activity.targetWork, ...node.activity.choices.map(choice => choice.writer)].map(bookyJourneyEntityId)
+        : node.entity ? [bookyJourneyEntityId(node.entity)] : [], claimKind: "interface-guidance", factualSources: [], copy,
       narration: null, prohibitedTags: [], provenance: { kind: "editorial", sourcePath: "test/runtime.ts", sourceVersion: 1,
         sourceRef: node.id, sourceSha256: "a".repeat(64), copySha256: contentTextHash(JSON.stringify({ title: copy.title, body: copy.body })) } };
     const review = { status: "approved" as const, reviewer: "synthetic-reviewer-not-real", reviewedAt, contentChecksum: getBookyDialogueContentChecksum(payload)! };
@@ -44,15 +58,15 @@ function fixture(locale: "ru" | "en" = "en", options: { id?: string; version?: n
     availability: definition.nodes.map(node => ({ nodeId: node.id, locale, dialogueContentChecksum: node.dialogue.contentChecksum, available: true, offlineAvailable: true })) };
   const trust: BookyJourneyTrust = { currentVersions: [{ id: definition.id, version: definition.version }], approvedReviews: [
     { id: definition.id, version: definition.version, locale, definitionChecksum: getBookyJourneyChecksum(definition)!, reviewer: "synthetic-journey-reviewer-not-real", reviewedAt },
-  ], dialogueRegistry: createBookyDialogueRegistry(records, { canonicalEntityIds: records.flatMap(record => [...record.payload.entityIds]),
+  ], dialogueRegistry: createBookyDialogueRegistry(records, { canonicalEntityIds: [...new Set(records.flatMap(record => [...record.payload.entityIds]))],
     approvedReviews: records.map(record => ({ id: record.payload.id, locale, version: 1,
       contentChecksum: record.review.contentChecksum, reviewer: record.review.reviewer!, reviewedAt })) }), publicCountries: [country], publicBooks: [book] };
   const plan = compileBookyJourney(definition, context, trust);
   if (!plan) throw new Error("invalid-synthetic-runtime-fixture");
   return { definition, context, trust, plan };
 }
-function setup() {
-  const initial = fixture(), sources = new Map([[bookyJourneyRouteKey(initial.plan), initial]]);
+function setup(initial = fixture()) {
+  const sources = new Map([[bookyJourneyRouteKey(initial.plan), initial]]);
   let host: BookyJourneyRuntimeHost;
   const resolve: BookyJourneyRuntimeHost["resolve"] = (plan, nodeId) => {
     const source = sources.get(bookyJourneyRouteKey(plan));
@@ -810,4 +824,198 @@ describe("Booky saved journey capacity", () => {
     expect(f.runtime.getProgressIntent().preference.records).toEqual([f.old, ...others.slice(1)]);
     expect(f.navigate).not.toHaveBeenCalled(); f.runtime.dispose();
   });
+});
+
+function activitySetup() {
+  const f = setup(fixture("en", { activity: true }));
+  f.patch({ profileKey: durableProfileKey });
+  expect(f.start()).toBe(true); f.display(0);
+  expect(f.runtime.next(f.runtime.getSnapshot().revision)).toBe(true); f.display(1);
+  return f;
+}
+
+describe("explicit reviewed journey activity answers", () => {
+  it("keeps wrong and correct choices ephemeral until a separate settled Next acknowledges the activity", () => {
+    const f = activitySetup(), intent = f.runtime.getProgressIntent(), moves = f.navigate.mock.calls.length;
+    expect(f.runtime.getSnapshot().active).toMatchObject({ index: 1, completedCount: 1, canNext: false,
+      answer: { choiceId: null, status: "unanswered", canAnswer: true } });
+    expect(f.runtime.next(f.runtime.getSnapshot().revision)).toBe(false);
+    expect(f.runtime.answer("second", f.runtime.getSnapshot().revision)).toBe(true);
+    expect(f.runtime.getSnapshot().active).toMatchObject({ canNext: false, answer: { choiceId: "second", status: "incorrect", canAnswer: true } });
+    expect(f.runtime.next(f.runtime.getSnapshot().revision)).toBe(false);
+    expect(f.runtime.answer("first", f.runtime.getSnapshot().revision)).toBe(true);
+    expect(f.runtime.getSnapshot().active).toMatchObject({ canNext: true, answer: { choiceId: "first", status: "correct", canAnswer: true } });
+    expect(Object.isFrozen(f.runtime.getSnapshot().active?.answer)).toBe(true);
+    expect(f.runtime.getProgressIntent()).toBe(intent); expect(f.navigate).toHaveBeenCalledTimes(moves);
+    expect(JSON.stringify(intent.preference)).not.toContain('"choiceId"');
+    expect(f.runtime.next(f.runtime.getSnapshot().revision)).toBe(true);
+    expect(f.runtime.getSnapshot().active).toMatchObject({ index: 2, completedCount: 2, answer: null });
+    const record = f.runtime.getProgressIntent().preference.records[0];
+    expect(record.acknowledgedNodeIds).toEqual(["country", "activity"]);
+    expect(record.nodes[1].activity).toEqual({ id: "test-match-author", version: 1,
+      semanticChecksum: f.initial.plan.nodes[1].activity!.semanticChecksum });
+    expect(JSON.stringify(record)).not.toContain('"correctChoiceId"'); f.runtime.dispose();
+  });
+
+  it("rejects stale or unknown choices and requires an actually settled current globe view", () => {
+    const f = activitySetup(), original = f.runtime.getSnapshot(), intent = f.runtime.getProgressIntent();
+    expect(f.runtime.answer("missing", original.revision)).toBe(false);
+    expect(f.runtime.answer("first", original.revision - 1)).toBe(false);
+    expect(f.runtime.getSnapshot()).toBe(original);
+    f.display(1, { settled: false });
+    expect(f.runtime.answer("first", f.runtime.getSnapshot().revision)).toBe(false);
+    expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "paused", answer: { status: "unanswered", canAnswer: false } });
+    f.display(1); expect(f.runtime.answer("first", f.runtime.getSnapshot().revision)).toBe(false);
+    expect(f.runtime.resume(f.runtime.getSnapshot().revision)).toBe(true); f.display(1, { screen: "collection" });
+    expect(f.runtime.answer("first", f.runtime.getSnapshot().revision)).toBe(false);
+    expect(f.runtime.getProgressIntent()).toBe(intent); f.runtime.dispose();
+  });
+
+  it.each(["pause", "background", "profile", "revocation", "unsettled"] as const)("forgets a correct answer after %s without writing progress", event => {
+    const f = activitySetup(), intent = f.runtime.getProgressIntent();
+    expect(f.runtime.answer("first", f.runtime.getSnapshot().revision)).toBe(true);
+    if (event === "pause") f.runtime.pause(f.runtime.getSnapshot().revision);
+    else {
+      f.patch(event === "background" ? { active: false } : event === "profile" ? { profileKey: null }
+        : event === "revocation" ? { resolve: () => null } : { view: { ...f.host().view, settled: false } });
+      f.runtime.refresh();
+    }
+    expect(f.runtime.getSnapshot().active?.canNext).toBe(false);
+    expect(f.runtime.getSnapshot().active?.answer?.choiceId ?? null).toBeNull();
+    expect(f.runtime.getProgressIntent()).toBe(intent);
+    f.patch({ active: true, profileKey: durableProfileKey, resolve: f.resolve }); f.display(1);
+    expect(f.runtime.resume(f.runtime.getSnapshot().revision)).toBe(true); f.display(1);
+    expect(f.runtime.getSnapshot().active).toMatchObject({ canNext: false, completedCount: 1,
+      answer: { choiceId: null, status: "unanswered", canAnswer: true } }); f.runtime.dispose();
+  });
+
+  it("clears choices on an independently admitted equivalent locale without navigating or acknowledging", () => {
+    const f = activitySetup(), intent = f.runtime.getProgressIntent(), moves = f.navigate.mock.calls.length;
+    f.runtime.answer("first", f.runtime.getSnapshot().revision);
+    f.switchSource(fixture("ru", { activity: true }));
+    expect(f.runtime.getSnapshot().active).toMatchObject({ index: 1, completedCount: 1, phase: "ready", canNext: false,
+      answer: { choiceId: null, status: "unanswered", canAnswer: true } });
+    expect(f.runtime.getSnapshot().active?.node?.dialogue.payload.locale).toBe("ru");
+    expect(f.runtime.getProgressIntent()).toBe(intent); expect(f.navigate).toHaveBeenCalledTimes(moves); f.runtime.dispose();
+  });
+
+  it("requires a new answer after reopen or fresh-runtime restoration of the exact unacknowledged activity", () => {
+    const f = activitySetup(); f.runtime.answer("first", f.runtime.getSnapshot().revision);
+    expect(f.runtime.open(f.runtime.getSnapshot().revision)).toBe(true); f.display(1);
+    expect(f.runtime.getSnapshot().active?.answer?.status).toBe("unanswered");
+    f.runtime.answer("first", f.runtime.getSnapshot().revision);
+    const saved = f.runtime.getProgressIntent().preference; f.runtime.dispose();
+    const restored = setup(fixture("en", { activity: true })); restored.patch({ profileKey: durableProfileKey });
+    expect(restored.runtime.restoreProgress(saved, 0)).toBe(true);
+    expect(restored.runtime.getSnapshot().active).toMatchObject({ phase: "paused", completedCount: 1, canNext: false,
+      answer: { status: "unanswered", choiceId: null, canAnswer: false } });
+    expect(restored.navigate).not.toHaveBeenCalled();
+    expect(restored.runtime.resume(restored.runtime.getSnapshot().revision)).toBe(true); restored.display(1);
+    expect(restored.runtime.next(restored.runtime.getSnapshot().revision)).toBe(false); restored.runtime.dispose();
+  });
+
+  it.each(["answer", "next"] as const)("recompiles current factual authorship during %s even when the raw route and host revision are unchanged", action => {
+    const f = activitySetup(), intent = f.runtime.getProgressIntent(), moves = f.navigate.mock.calls.length;
+    if (action === "next") expect(f.runtime.answer("first", f.runtime.getSnapshot().revision)).toBe(true);
+    f.initial.trust.publicBooks[0].authorship = { kind: "single", authors: [{ countryId: "test-country", writerId: "other-writer" }] };
+    const revision = f.runtime.getSnapshot().revision;
+    expect(action === "answer" ? f.runtime.answer("first", revision) : f.runtime.next(revision)).toBe(false);
+    expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "unavailable", node: null, answer: null, completedCount: 1 });
+    expect(f.runtime.getProgressIntent()).toBe(intent); expect(f.navigate).toHaveBeenCalledTimes(moves); f.runtime.dispose();
+  });
+
+  it("does not adopt saved activity progress after derived authorship changes under the same reviewed definition", () => {
+    const f = activitySetup(); f.runtime.answer("first", f.runtime.getSnapshot().revision);
+    const old = f.initial.plan, intent = f.runtime.getProgressIntent();
+    const changed = fixture("en", { activity: true, activityAuthor: "other-writer" });
+    expect(changed.plan.definitionChecksum).toBe(old.definitionChecksum);
+    expect(changed.plan.nodes[1].activity!.semanticChecksum).not.toBe(old.nodes[1].activity!.semanticChecksum);
+    f.switchSource(changed);
+    expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "unavailable", completedCount: 1, answer: null });
+    expect(f.runtime.getSnapshot().history[0].available).toBe(false);
+    expect(f.runtime.getProgressIntent()).toBe(intent); f.runtime.dispose();
+  });
+
+  it.each(["pause", "silent-revocation"] as const)("honors reentrant %s after publishing a choice", event => {
+    const f = activitySetup(), intent = f.runtime.getProgressIntent(), moves = f.navigate.mock.calls.length;
+    const stop = f.runtime.subscribe(() => {
+      const state = f.runtime.getSnapshot();
+      if (state.active?.answer?.status !== "correct") return;
+      if (event === "pause") f.runtime.pause(state.revision); else f.patch({ resolve: () => null });
+    });
+    expect(f.runtime.answer("first", f.runtime.getSnapshot().revision)).toBe(false);
+    expect(f.runtime.getSnapshot().active?.canNext).toBe(false);
+    expect(f.runtime.getSnapshot().active?.answer?.choiceId ?? null).toBeNull();
+    expect(f.runtime.getProgressIntent()).toBe(intent); expect(f.navigate).toHaveBeenCalledTimes(moves); stop(); f.runtime.dispose();
+  });
+
+  it("rejects forged migration of an acknowledged activity when only its derived semantic author changed", () => {
+    const f = setup(fixture("en", { activity: true })); f.patch({ profileKey: durableProfileKey });
+    const old = createBookyJourneyProgressRecord(explicitPolicy, f.initial.plan, ["country", "activity"], "after-activity")!;
+    const target = fixture("en", { activity: true, activityAuthor: "other-writer", version: 2 });
+    const forged = createBookyJourneyProgressRecord(explicitPolicy, target.plan, ["country", "activity"], "after-activity")!;
+    const preference = { ...DEFAULT_BOOKY_JOURNEY_PROGRESS, activeRecordId: old.recordId, records: [old] };
+    f.switchSource(target); f.patch({ resolveMigration: () => ({ migrationId: "test-forged-activity", migrationChecksum: "a".repeat(64),
+      preservedRecord: old, targetRecord: forged }) });
+    expect(f.runtime.restoreProgress(preference, 0)).toBe(true);
+    expect(f.runtime.getSnapshot().migrations).toEqual([]);
+    expect(f.runtime.getProgressIntent().preference).toEqual(preference); expect(f.navigate).not.toHaveBeenCalled(); f.runtime.dispose();
+  });
+
+  it("rejects stale public choice labels before accepting a gesture", () => {
+    const f = activitySetup(), intent = f.runtime.getProgressIntent();
+    f.initial.trust.publicCountries[0].writers[0].name = "Renamed Synthetic Writer";
+    expect(f.runtime.answer("first", f.runtime.getSnapshot().revision)).toBe(false);
+    expect(f.runtime.getSnapshot().active?.answer).toBeNull();
+    expect(f.runtime.getProgressIntent()).toBe(intent); f.runtime.dispose();
+  });
+
+
+  it("withdraws canNext on refresh when current activity authority changes without an answer or Next gesture", () => {
+    const f = activitySetup(), intent = f.runtime.getProgressIntent();
+    f.runtime.answer("first", f.runtime.getSnapshot().revision);
+    f.initial.trust.publicBooks[0].authorship = { kind: "single", authors: [{ countryId: "test-country", writerId: "other-writer" }] };
+    f.runtime.refresh();
+    expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "unavailable", canNext: false, answer: null });
+    expect(f.runtime.getProgressIntent()).toBe(intent); f.runtime.dispose();
+  });
+
+  it("preserves ordinary-node Next behavior and rejects answer gestures outside an activity", () => {
+    const f = setup(); f.start(); f.display(0);
+    expect(f.runtime.getSnapshot().active).toMatchObject({ answer: null, canNext: true });
+    expect(f.runtime.answer("first", f.runtime.getSnapshot().revision)).toBe(false);
+    expect(f.runtime.next(f.runtime.getSnapshot().revision)).toBe(true); f.runtime.dispose();
+    expect(f.runtime.answer("first", f.runtime.getSnapshot().revision)).toBe(false);
+  });
+
+  it.each(["observer", "navigation-port"] as const)("rechecks every activity after %s changes authorship while Next targets an ordinary node", edge => {
+    const f = activitySetup(), intent = f.runtime.getProgressIntent(), moves = f.navigate.mock.calls.length;
+    expect(f.runtime.answer("first", f.runtime.getSnapshot().revision)).toBe(true);
+    const changeAuthor = () => { f.initial.trust.publicBooks[0].authorship = {
+      kind: "single", authors: [{ countryId: "test-country", writerId: "other-writer" }] }; };
+    const stop = edge === "observer" ? f.runtime.subscribe(() => {
+      const active = f.runtime.getSnapshot().active;
+      if (active?.phase === "navigating" && active.index === 2) changeAuthor();
+    }) : () => {};
+    if (edge === "navigation-port") f.navigate.mockImplementationOnce(() => { changeAuthor(); return true; });
+    expect(f.runtime.next(f.runtime.getSnapshot().revision)).toBe(false);
+    expect(f.runtime.getProgressIntent()).toBe(intent);
+    expect(f.runtime.getProgressIntent().preference.records[0].acknowledgedNodeIds).toEqual(["country"]);
+    expect(f.runtime.getSnapshot().active).toMatchObject({ index: 1, completedCount: 1, phase: "unavailable", answer: null, canNext: false });
+    expect(f.navigate).toHaveBeenCalledTimes(moves + (edge === "navigation-port" ? 1 : 0));
+    expect(f.navigate.mock.calls[f.navigate.mock.calls.length - 1]![1].aborted).toBe(true); stop(); f.runtime.dispose();
+  });
+
+  it("rechecks earlier activity semantics before final completion at an ordinary checkpoint", () => {
+    const f = activitySetup(); f.runtime.answer("first", f.runtime.getSnapshot().revision);
+    expect(f.runtime.next(f.runtime.getSnapshot().revision)).toBe(true); f.display(2);
+    expect(f.runtime.next(f.runtime.getSnapshot().revision)).toBe(true); f.display(3);
+    const intent = f.runtime.getProgressIntent(), moves = f.navigate.mock.calls.length;
+    f.initial.trust.publicBooks[0].authorship = { kind: "single", authors: [{ countryId: "test-country", writerId: "other-writer" }] };
+    expect(f.runtime.next(f.runtime.getSnapshot().revision)).toBe(false);
+    expect(f.runtime.getProgressIntent()).toBe(intent);
+    expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "unavailable", completedCount: 3, canNext: false });
+    expect(f.navigate).toHaveBeenCalledTimes(moves); f.runtime.dispose();
+  });
+
 });

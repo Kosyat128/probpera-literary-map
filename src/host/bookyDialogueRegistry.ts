@@ -2,7 +2,7 @@ import { contentRecordHash, contentTextHash } from "../planet/contentExportHash"
 
 export type BookyDialogueLocale = "ru" | "en";
 export type BookyDialogueReadingLevel = "plain" | "developing" | "fluent";
-export type BookyDialogueIntent = "navigation" | "offline-help" | "load-error" | "loading-help";
+export type BookyDialogueIntent = "navigation" | "activity" | "offline-help" | "load-error" | "loading-help";
 export type BookyDialogueScreen = "globe" | "collection";
 export const BOOKY_DIALOGUE_PROHIBITED_TAGS = Object.freeze([
   "open-generative-chat", "unverified-facts", "mandatory-microphone", "voice-cloning",
@@ -87,7 +87,7 @@ export type BookyDialogueRegistry = Readonly<{
 type Row = Record<string, unknown>;
 const locales = ["ru", "en"];
 const levels = ["plain", "developing", "fluent"];
-const intents = ["navigation", "offline-help", "load-error", "loading-help"];
+const intents = ["navigation", "activity", "offline-help", "load-error", "loading-help"];
 const screens = ["globe", "collection"];
 const hash = (v: unknown): v is string => typeof v === "string" && /^[a-f0-9]{64}$/.test(v);
 const text = (v: unknown, max: number): v is string => typeof v === "string" && v.length > 0 && v.length <= max && v.trim() === v && !/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/.test(v);

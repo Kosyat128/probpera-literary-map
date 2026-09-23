@@ -21,8 +21,11 @@ function hostPlan(source: BookyJourneyDefinition): BookyJourneyPlan {
   // A structural stand-in for an already admitted host plan. These fixtures
   // do not create production review receipts or prove editorial admission.
   return { id: source.id, version: source.version, locale: source.locale, title: source.title,
-    definitionChecksum: getBookyJourneyChecksum(source)!, nodes: source.nodes.map(node => ({ ...node,
-      coordinates: null, dialogue: {} as BookyJourneyPlan["nodes"][number]["dialogue"] })) };
+    definitionChecksum: getBookyJourneyChecksum(source)!, nodes: source.nodes.map(node => {
+      if (node.kind === "activity") throw Error("This structural fixture covers ordinary nodes only");
+      return { id: node.id, kind: node.kind, screen: node.screen, entity: node.entity,
+        coordinates: null, dialogue: {} as BookyJourneyPlan["nodes"][number]["dialogue"] };
+    }) };
 }
 function fixture() {
   const historicalDefinition = definition(), currentPlan = hostPlan(definition(2, "new-"));

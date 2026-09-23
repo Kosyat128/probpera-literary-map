@@ -31,6 +31,8 @@ const key = (value: unknown): value is string => typeof value === "string" && /^
 const version = (value: unknown): value is number => typeof value === "number" && Number.isSafeInteger(value) && value >= 1 && value <= 1_000_000;
 const locale = (value: unknown) => value === "ru" || value === "en";
 const checksum = (value: unknown) => typeof value === "string" && /^[a-f0-9]{64}$/.test(value);
+const entityId = (value: unknown): value is string => typeof value === "string" && value.length > 0 && value.length <= 200
+  && !/[\s\u0000-\u001f\u007f]/u.test(value);
 const row = (value: unknown, fields: string): value is Row => value !== null && typeof value === "object" && !Array.isArray(value)
   && Object.keys(value).sort().join(" ") === fields.split(" ").sort().join(" ");
 const timestamp = (value: unknown): value is string => typeof value === "string" && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(value)
@@ -95,6 +97,29 @@ function dataArray(value: unknown, max: number): readonly unknown[] | null {
   }
   return result;
 }
+/** Explicit invalid authorship must survive as invalid, never turn into absent
+ * legacy authorship. Only activity target books need this additional data. */
+function activityAuthorship(book: unknown): unknown {
+  if (!book || typeof book !== "object" || ![Object.prototype, null].includes(Object.getPrototypeOf(book))) return null;
+  const descriptor = Object.getOwnPropertyDescriptor(book, "authorship");
+  if (!descriptor) return undefined;
+  if (!descriptor.enumerable || !("value" in descriptor)) return null;
+  if (descriptor.value === undefined) return undefined;
+  const captured = snapshot(descriptor.value);
+  return captured === undefined ? null : captured;
+}
+function writerNames(writer: unknown): Readonly<{ name?: string; fullName?: string }> {
+  const names: { name?: string; fullName?: string } = {};
+  for (const field of ["name", "fullName"] as const) {
+    const descriptor = writer && typeof writer === "object" ? Object.getOwnPropertyDescriptor(writer, field) : undefined;
+    if (!descriptor) continue;
+    if (!descriptor.enumerable || !("value" in descriptor)) throw Error("writer-name-accessor");
+    if (descriptor.value === undefined) continue;
+    if (typeof descriptor.value !== "string" || descriptor.value.length > 200 || /[\u0000-\u001f\u007f]/u.test(descriptor.value)) throw Error("writer-name");
+    names[field] = descriptor.value;
+  }
+  return Object.freeze(names);
+}
 function coordinates(value: unknown) {
   const pair = Array.isArray(value) ? dataArray(value, 2) : null;
   const lat = pair?.length === 2 ? pair[0] : Array.isArray(value) ? undefined : own(value, "lat");
@@ -155,35 +180,57 @@ export function createBookyJourneyCatalog(options: BookyJourneyCatalogOptions): 
     // The large public catalog is checked for membership, never turned into a
     // giant canonical-id policy or copied with its embedded pre-quarantine data.
     const refs = new Map<string, ContentEntityRef>();
-    const wantedCountries = new Map<string, Set<string>>(), wantedWorks = new Set<string>();
-    for (const definition of content.definitions) for (const node of definition.nodes) if (node.entity) {
-      const ref = node.entity, id = bookyJourneyEntityId(ref);
+    const wantedCountries = new Map<string, Set<string>>(), wantedWorks = new Set<string>(), activityWorks = new Set<string>();
+    const activityChoiceWriters = new Set<string>();
+    const includeRef = (ref: ContentEntityRef) => {
+      const id = bookyJourneyEntityId(ref);
       refs.set(id, ref);
-      if (refs.size > 512) return emptyCatalog;
+      if (refs.size > 512) throw Error("entity-bounds");
       let writers = wantedCountries.get(ref.countryId);
       if (!writers) { writers = new Set(); wantedCountries.set(ref.countryId, writers); }
       if (ref.kind !== "country") writers.add(ref.writerId);
       if (ref.kind === "work") wantedWorks.add(id);
+    };
+    for (const definition of content.definitions) for (const node of definition.nodes) {
+      if (node.entity) includeRef(node.entity);
+      if (node.activity) {
+        includeRef(node.activity.targetWork); activityWorks.add(bookyJourneyEntityId(node.activity.targetWork));
+        for (const choice of node.activity.choices) {
+          includeRef(choice.writer); activityChoiceWriters.add(bookyJourneyEntityId(choice.writer));
+        }
+      }
     }
     // These frozen projections intentionally contain only the actual fields
     // read by the compiler's membership checks, not display or narrative data.
+    // Capture activity authorship before projecting writers: factual authors
+    // can differ from the archive owner and must resolve in the current public view.
+    const publicBooks = Object.freeze(books.flatMap(book => {
+      const id = own(book, "id"), countryId = own(book, "countryId"), writerId = own(book, "writerId");
+      if (typeof id !== "string" || typeof countryId !== "string" || typeof writerId !== "string") return [];
+      const refId = bookyJourneyEntityId({ kind: "work", countryId, writerId, workId: id });
+      if (!wantedWorks.has(refId)) return [];
+      const status = own(own(book, "editorial"), "status");
+      const authorship = activityWorks.has(refId) ? activityAuthorship(book) : undefined;
+      if (own(authorship, "kind") === "single") {
+        const authors = dataArray(own(authorship, "authors"), 1), author = authors?.length === 1 ? authors[0] : null;
+        const authorCountry = own(author, "countryId"), authorWriter = own(author, "writerId");
+        if (entityId(authorCountry) && entityId(authorWriter)) includeRef({ kind: "writer", countryId: authorCountry, writerId: authorWriter });
+      }
+      return [Object.freeze({ id, countryId, writerId,
+        editorial: Object.freeze({ status: typeof status === "string" ? status : undefined }),
+        ...(authorship !== undefined ? { authorship } : {}) }) as unknown as BookArchiveEntry];
+    }));
     const publicCountries = Object.freeze(countries.flatMap(country => {
       const id = own(country, "id");
       if (typeof id !== "string" || !wantedCountries.has(id)) return [];
       const writers = dataArray(own(country, "writers"), 50_000);
       const relevant = Object.freeze((writers ?? []).flatMap(writer => {
         const writerId = own(writer, "id");
-        return typeof writerId === "string" && wantedCountries.get(id)!.has(writerId) ? [Object.freeze({ id: writerId })] : [];
+        if (typeof writerId !== "string" || !wantedCountries.get(id)!.has(writerId)) return [];
+        const choiceId = bookyJourneyEntityId({ kind: "writer", countryId: id, writerId });
+        return [Object.freeze({ id: writerId, ...(activityChoiceWriters.has(choiceId) ? writerNames(writer) : {}) })];
       }));
       return [Object.freeze({ id, coordinates: coordinates(own(country, "coordinates")), writers: relevant }) as unknown as Country];
-    }));
-    const publicBooks = Object.freeze(books.flatMap(book => {
-      const id = own(book, "id"), countryId = own(book, "countryId"), writerId = own(book, "writerId");
-      if (typeof id !== "string" || typeof countryId !== "string" || typeof writerId !== "string"
-        || !wantedWorks.has(bookyJourneyEntityId({ kind: "work", countryId, writerId, workId: id }))) return [];
-      const status = own(own(book, "editorial"), "status");
-      return [Object.freeze({ id, countryId, writerId,
-        editorial: Object.freeze({ status: typeof status === "string" ? status : undefined }) }) as unknown as BookArchiveEntry];
     }));
     const canonicalEntityIds = Object.freeze([...refs].flatMap(([id, ref]) => {
       const matches = publicCountries.filter(country => country.id === ref.countryId);

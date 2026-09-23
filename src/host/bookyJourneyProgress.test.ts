@@ -1,6 +1,8 @@
 import { describe, expect, it, vi } from "vitest";
 import { contentTextHash } from "../planet/contentExportHash";
 import type { BookyJourneyPlan } from "./bookyJourney";
+import type { BookArchiveEntry, Country } from "../planet/types";
+import { resolveBookyJourneyActivity, type BookyJourneyActivitySpec } from "./bookyJourneyActivity";
 import { createBookyReaderPolicy, serializeBookyReaderPolicy } from "./bookyReaderPolicy";
 import { BOOKY_JOURNEY_PROGRESS_MAX_LENGTH, BOOKY_JOURNEY_PROGRESS_MAX_RECORDS, BOOKY_JOURNEY_PROGRESS_MAX_NODES,
   DEFAULT_BOOKY_JOURNEY_PROGRESS, createBookyJourneyProgressRecord, decodeBookyJourneyProgress,
@@ -11,7 +13,7 @@ const policy = createBookyReaderPolicy({ age: 35, readingLevel: "fluent" }, "202
 // Semantic codec fixtures only. These deliberately contain no editorial review
 // receipts and must never be used to claim that a route was admitted.
 function plan(id = "test-journey", locale: "en" | "ru" = "en", version = 1): BookyJourneyPlan {
-  const nodes: BookyJourneyProgressNode[] = [
+  const nodes: Omit<BookyJourneyProgressNode, "activity">[] = [
     { id: "country", kind: "country", screen: "globe", entity: { kind: "country", countryId: "test-country" } },
     { id: "writer", kind: "writer", screen: "globe", entity: { kind: "writer", countryId: "test-country", writerId: "test-writer" } },
     { id: "work", kind: "work", screen: "collection", entity: { kind: "work", countryId: "test-country", writerId: "test-writer", workId: "test-work" } },
@@ -177,5 +179,64 @@ describe("Booky literary journey semantic progress codec", () => {
     expect(serializeBookyJourneyProgress(parseBookyJourneyProgress(once))).toBe(once);
     expect(serializeBookyJourneyProgress(null)).toBeNull();
     expect(Object.isFrozen(DEFAULT_BOOKY_JOURNEY_PROGRESS.records)).toBe(true);
+  });
+});
+
+describe("Booky activity progress stores semantic identity only", () => {
+  function activityPlan(): BookyJourneyPlan {
+    const source = plan(), spec: BookyJourneyActivitySpec = { schemaVersion: 1, id: "match-test-work", version: 1,
+      type: "match-work-author", targetWork: { kind: "work", countryId: "test-country", writerId: "test-writer", workId: "test-work" },
+      choices: [{ id: "first", writer: { kind: "writer", countryId: "test-country", writerId: "test-writer" } },
+        { id: "second", writer: { kind: "writer", countryId: "test-country", writerId: "other-writer" } }] };
+    const activity = resolveBookyJourneyActivity(spec, {
+      publicCountries: [{ id: "test-country", writers: [{ id: "test-writer" }, { id: "other-writer" }] }] as Country[],
+      publicBooks: [{ id: "test-work", countryId: "test-country", writerId: "test-writer", editorial: { status: "verified" } }] as BookArchiveEntry[],
+    });
+    if (!activity) throw Error("invalid-synthetic-activity-fixture");
+    return { ...source, nodes: [source.nodes[0], { id: "activity", kind: "activity", screen: "globe", entity: null,
+      coordinates: null, dialogue: source.nodes[1].dialogue, activity,
+      activityChoices: activity.spec.choices.map(choice => ({ id: choice.id, label: choice.writer.writerId })) }, source.nodes[3]] };
+  }
+
+  it("round-trips only task id/version/fingerprint without any selected choice or answer key", () => {
+    const source = activityPlan(), value = fixture(source, ["country"], "activity"), saved = value.records[0].nodes[1];
+    expect(saved).toEqual({ id: "activity", kind: "activity", screen: "globe", entity: null,
+      activity: { id: "match-test-work", version: 1, semanticChecksum: source.nodes[1].activity!.semanticChecksum } });
+    const encoded = serializeBookyJourneyProgress(value)!;
+    expect(parseBookyJourneyProgress(encoded)).toEqual(value); expect(Object.isFrozen(saved.activity)).toBe(true);
+    for (const field of ["correctChoiceId", "choiceId", "choices", "activityChoices", "label", "targetWork", "spec", "answer", "dialogue"]) {
+      expect(encoded).not.toContain(`"${field}"`);
+    }
+    const complete = fixture(source, ["country", "activity", "checkpoint"], null);
+    expect(parseBookyJourneyProgress(complete)?.records[0].nodes[1]).toEqual(saved);
+  });
+
+  it("rejects missing fingerprints, extra answers and invalid activity variants without dropping old history", () => {
+    const source = activityPlan(), value = fixture(source, ["country"], "activity"), original = JSON.stringify(value);
+    const saved = value.records[0], activityNode = saved.nodes[1];
+    for (const change of [{ activity: undefined }, { activity: { ...activityNode.activity, semanticChecksum: "bad" } },
+      { activity: { ...activityNode.activity, version: 0 } }, { activity: { ...activityNode.activity, correctChoiceId: "first" } },
+      { screen: "collection" }, { entity: source.nodes[0].entity }, { kind: "checkpoint" }]) {
+      const invalid = { ...value, records: [{ ...saved, nodes: [saved.nodes[0], { ...activityNode, ...change }, saved.nodes[2]] }] };
+      expect(parseBookyJourneyProgress(invalid)).toBeNull();
+      expect(decodeBookyJourneyProgress(JSON.stringify(invalid)).error).toBe("invalid");
+    }
+    expect(JSON.stringify(value)).toBe(original);
+    const old = fixture(), oldBytes = JSON.stringify(old);
+    expect(serializeBookyJourneyProgress(parseBookyJourneyProgress(oldBytes))).toBe(oldBytes);
+    expect(oldBytes).not.toContain('"activity"');
+  });
+
+  it("does not invoke activity accessors or project mismatched authored specs as valid progress", () => {
+    const source = activityPlan(), compiled = source.nodes[1], getter = vi.fn(() => compiled.activity!.semanticChecksum);
+    const accessor = { ...compiled.activity! }; Object.defineProperty(accessor, "semanticChecksum", { enumerable: true, get: getter });
+    expect(createBookyJourneyProgressRecord(policy, { ...source, nodes: [source.nodes[0], { ...compiled, activity: accessor }, source.nodes[2]] }, [], "country")).toBeNull();
+    const mismatched = { ...compiled.activity!, spec: { ...compiled.activity!.spec, version: 2 } };
+    expect(createBookyJourneyProgressRecord(policy, { ...source, nodes: [source.nodes[0], { ...compiled, activity: mismatched }, source.nodes[2]] }, [], "country")).toBeNull();
+    const value = fixture(source, ["country"], "activity"), saved = value.records[0], metadata = { ...saved.nodes[1].activity! };
+    Object.defineProperty(metadata, "semanticChecksum", { enumerable: true, get: getter });
+    expect(parseBookyJourneyProgress({ ...value, records: [{ ...saved,
+      nodes: [saved.nodes[0], { ...saved.nodes[1], activity: metadata }, saved.nodes[2]] }] })).toBeNull();
+    expect(getter).not.toHaveBeenCalled();
   });
 });

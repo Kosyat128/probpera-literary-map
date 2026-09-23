@@ -3,7 +3,7 @@ import { contentTextHash } from "../planet/contentExportHash";
 import type { BookArchiveEntry, Country } from "../planet/types";
 import { getBookyDialogueChecksum, getBookyDialogueContentChecksum,
   type BookyDialoguePayload, type BookyDialogueRecord } from "./bookyDialogueRegistry";
-import { bookyJourneyEntityId, compileBookyJourney, getBookyJourneyChecksum,
+import { bookyJourneyDialogueContext, bookyJourneyEntityId, compileBookyJourney, getBookyJourneyChecksum,
   type BookyJourneyContext, type BookyJourneyDefinition } from "./bookyJourney";
 import { createBookyJourneyCatalog, type BookyJourneyCatalogOptions } from "./bookyJourneyCatalog";
 import { readBookyJourneyContent, type BookyJourneyContent } from "./bookyJourneyContent";
@@ -11,7 +11,7 @@ import { createBookyReaderPolicy } from "./bookyReaderPolicy";
 
 const now = "2026-09-23T12:00:00.000Z", reviewedAt = "2026-09-22T12:00:00.000Z";
 const clone = <T,>(value: T): T => JSON.parse(JSON.stringify(value));
-function fixture(locale: "ru" | "en" = "en") {
+function fixture(locale: "ru" | "en" = "en", withActivity = false) {
   // Synthetic entities and independent receipts exist only in this test.
   // They do not grant real editorial approval or populate production content.
   const country: Country = { id: "fixture-country", name: "Synthetic country", coordinates: { lat: 20, lng: 30 },
@@ -19,18 +19,32 @@ function fixture(locale: "ru" | "en" = "en") {
   const book: BookArchiveEntry = { id: "fixture-work", title: "Synthetic work", countryId: country.id,
     countryName: country.name, writerId: "fixture-writer", writerName: "Synthetic writer", country,
     writer: country.writers[0], editorial: { status: "verified" } };
+  if (withActivity) {
+    Object.assign(country.writers[0], { name: "Тестовый владелец", fullName: "Synthetic Archive Owner" });
+    country.writers.push({ id: "actual-author", name: "Тестовый автор", fullName: "Synthetic Factual Author" }, { id: "unrelated-writer" });
+    book.authorship = { kind: "single", authors: [{ countryId: country.id, writerId: "actual-author", attribution: "credited" }] };
+  }
   const nodes: BookyJourneyDefinition["nodes"] = [
     { id: "country", kind: "country", entity: { kind: "country", countryId: country.id }, screen: "globe", dialogue: { id: "fixture-country-line", version: 1, contentChecksum: "" } },
     { id: "writer", kind: "writer", entity: { kind: "writer", countryId: country.id, writerId: "fixture-writer" }, screen: "globe", dialogue: { id: "fixture-writer-line", version: 1, contentChecksum: "" } },
     { id: "work", kind: "work", entity: { kind: "work", countryId: country.id, writerId: "fixture-writer", workId: book.id }, screen: "collection", dialogue: { id: "fixture-work-line", version: 1, contentChecksum: "" } },
+    ...(withActivity ? [{ id: "activity", kind: "activity" as const, entity: null, screen: "globe" as const,
+      dialogue: { id: "fixture-activity-line", version: 1, contentChecksum: "" }, activity: {
+        schemaVersion: 1 as const, id: "fixture-author-task", version: 1, type: "match-work-author" as const,
+        targetWork: { kind: "work" as const, countryId: country.id, writerId: "fixture-writer", workId: book.id },
+        choices: ["fixture-writer", "actual-author"].map((writerId, index) => ({ id: `choice-${index}`,
+          writer: { kind: "writer" as const, countryId: country.id, writerId } })),
+      } }] : []),
     { id: "checkpoint", kind: "checkpoint", entity: null, screen: "collection", dialogue: { id: "fixture-checkpoint-line", version: 1, contentChecksum: "" } },
   ];
   const dialogues: BookyDialogueRecord[] = nodes.map(node => {
     const copy = { title: locale === "ru" ? "Проверка" : "Test", body: locale === "ru" ? "Тестовый текст." : "Synthetic interface text.",
       caption: "Synthetic caption", reduced: "Test" };
     const payload: BookyDialoguePayload = { id: node.dialogue.id, locale, version: 1, audience: "adult",
-      ageRange: { min: 18, max: 120 }, readingLevel: "plain", intent: "navigation", screens: [node.screen],
-      context: `fixture-journey:${node.id}`, entityIds: node.entity ? [bookyJourneyEntityId(node.entity)] : [],
+      ageRange: { min: 18, max: 120 }, readingLevel: "plain", intent: node.activity ? "activity" : "navigation", screens: [node.screen],
+      context: bookyJourneyDialogueContext("fixture-journey", node)!,
+      entityIds: node.activity ? [node.activity.targetWork, ...node.activity.choices.map(choice => choice.writer)].map(bookyJourneyEntityId)
+        : node.entity ? [bookyJourneyEntityId(node.entity)] : [],
       claimKind: "interface-guidance", factualSources: [], copy, narration: null, prohibitedTags: [],
       provenance: { kind: "editorial", sourcePath: "test/fixture.ts", sourceVersion: 1, sourceRef: node.id,
         sourceSha256: "a".repeat(64), copySha256: contentTextHash(JSON.stringify({ title: copy.title, body: copy.body })) } };
@@ -199,5 +213,88 @@ describe("Booky journey catalog and empty production content", () => {
     expect(f.build({ content }).plans).toEqual([]);
     expect(f.changeContent({ definitions: Array.from({ length: 129 }, () => f.definition) }).plans).toEqual([]);
     expect(getter).not.toHaveBeenCalled();
+  });
+});
+
+describe("Booky activity catalog projection", () => {
+  it.each(["ru", "en"] as const)("retains factual author and distinct %s choices without unrelated writer data", locale => {
+    const f = fixture(locale, true), catalog = f.build(), plan = catalog.plans[0], source = catalog.sourceFor(plan)!;
+    expect(plan.nodes[3].activity!.correctChoiceId).toBe("choice-1");
+    expect(source.trust.publicBooks[0].authorship).toEqual(f.book.authorship);
+    expect(source.trust.publicBooks[0].authorship).not.toBe(f.book.authorship);
+    expect(source.trust.publicCountries[0].writers.map(writer => writer.id)).toEqual(["fixture-writer", "actual-author"]);
+    expect(plan.nodes[3].dialogue.payload.entityIds).toEqual([
+      bookyJourneyEntityId(f.definition.nodes[3].activity!.targetWork),
+      ...f.definition.nodes[3].activity!.choices.map(choice => bookyJourneyEntityId(choice.writer)),
+    ]);
+    expect(Object.isFrozen(source.trust.publicBooks[0].authorship!.authors[0])).toBe(true);
+    expect(Object.isFrozen(plan.nodes[3].activityChoices)).toBe(true);
+    expect(catalog.sourceFor(plan)).toBe(source);
+    const preserved = plan.nodes[3].activity!.semanticChecksum;
+    f.book.authorship!.authors[0].writerId = "fixture-writer";
+    expect(plan.nodes[3].activity!.semanticChecksum).toBe(preserved);
+    expect(f.build().plans[0].nodes[3].activity!.semanticChecksum).not.toBe(preserved);
+  });
+
+  it("collects activity work/choice references even without a normal writer or work node", () => {
+    const f = fixture("en", true), definition = { ...f.definition,
+      nodes: f.definition.nodes.filter(node => !["writer", "work"].includes(node.kind)) };
+    const content = { ...f.content, definitions: [definition],
+      journeyApprovals: f.content.journeyApprovals.map(approval => ({ ...approval, definitionChecksum: getBookyJourneyChecksum(definition)! })),
+      availability: f.content.availability.map(route => ({ ...route, nodes: route.nodes.filter(node => !["writer", "work"].includes(node.nodeId)) })) };
+    const catalog = f.build({ content });
+    expect(catalog.plans[0].nodes.map(node => node.kind)).toEqual(["country", "activity", "checkpoint"]);
+    expect(catalog.plans[0].nodes[1].activity!.correctChoiceId).toBe("choice-1");
+    expect(f.build({ content, publicBooks: [] }).plans).toEqual([]);
+    expect(f.build({ content, publicCountries: [{ ...f.country, writers: [f.country.writers[0]] }] }).plans).toEqual([]);
+  });
+
+  it("never erases explicit invalid authorship into a legacy archive-owner answer", () => {
+    const f = fixture("en", true), getter = vi.fn(() => { throw Error("must not execute"); });
+    const accessor = Object.defineProperty({ ...f.book }, "authorship", { get: getter, enumerable: true });
+    for (const book of [accessor, { ...f.book, authorship: null },
+      { ...f.book, authorship: { kind: "single", authors: [] } },
+      { ...f.book, authorship: { kind: "multiple", authors: f.book.authorship!.authors } },
+      { ...f.book, authorship: { kind: "single", authors: [{ countryId: f.country.id, writerId: "missing-author" }] } },
+      Object.assign(Object.create({ authorship: f.book.authorship }), { ...f.book, authorship: undefined }),
+    ]) expect(f.build({ publicBooks: [book as BookArchiveEntry] }).plans).toEqual([]);
+    expect(getter).not.toHaveBeenCalled();
+    const legacy = { ...f.book }; delete legacy.authorship;
+    expect(f.build({ publicBooks: [legacy] }).plans[0].nodes[3].activity!.correctChoiceId).toBe("choice-0");
+  });
+
+  it("keeps ordinary navigation independent of names while rejecting activity-choice accessors", () => {
+    const getter = vi.fn(() => { throw Error("must not execute"); });
+    const navigation = fixture();
+    Object.defineProperty(navigation.country.writers[0], "name", { get: getter, enumerable: true });
+    const catalog = navigation.build();
+    expect(catalog.plans).toHaveLength(1);
+    expect(catalog.sourceFor(catalog.plans[0])!.trust.publicCountries[0].writers).toEqual([{ id: "fixture-writer" }]);
+    const activity = fixture("en", true);
+    Object.defineProperty(activity.country.writers[0], "name", { get: getter, enumerable: true });
+    expect(activity.build().plans).toEqual([]);
+    expect(getter).not.toHaveBeenCalled();
+  });
+
+  it("preserves only bounded own names and ignores unrelated display getters", () => {
+    const f = fixture("en", true), getter = vi.fn(() => { throw Error("must not execute"); });
+    Object.defineProperty(f.country.writers[2], "fullName", { get: getter, enumerable: true });
+    const catalog = f.build(); expect(catalog.plans).toHaveLength(1);
+    expect(catalog.plans[0].nodes[3].activityChoices).toEqual([
+      { id: "choice-0", label: "Synthetic Archive Owner" }, { id: "choice-1", label: "Synthetic Factual Author" },
+    ]);
+    f.country.writers[1].fullName = "x".repeat(201); expect(f.build().plans).toEqual([]);
+    Object.defineProperty(f.country.writers[1], "fullName", { get: getter, enumerable: true });
+    expect(f.build().plans).toEqual([]); expect(getter).not.toHaveBeenCalled();
+  });
+
+  it("keeps production empty and withholds activity on missing review or unusable locale names", () => {
+    const f = fixture("en", true);
+    expect(f.build({ content: readBookyJourneyContent() }).plans).toEqual([]);
+    expect(f.changeContent({ journeyApprovals: [] }).plans).toEqual([]);
+    expect(f.changeContent({ dialogueApprovals: f.content.dialogueApprovals.filter(item => item.id !== "fixture-activity-line") }).plans).toEqual([]);
+    f.country.writers[1].name = "Нет английского имени"; delete f.country.writers[1].fullName;
+    expect(f.build().plans).toEqual([]);
+    const ru = fixture("ru", true); expect(ru.build().plans).toHaveLength(1);
   });
 });

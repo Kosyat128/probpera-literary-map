@@ -1,15 +1,20 @@
 import { contentRecordHash } from "../planet/contentExportHash";
+import { selectWriterDisplayName } from "../data/bookLocalization";
 import type { ContentEntityRef } from "../planet/contentExportTypes";
 import type { Country, BookArchiveEntry } from "../planet/types";
 import type { BookyDialogueLocale, BookyDialogueReadingLevel, BookyDialogueRecord, BookyDialogueRegistry } from "./bookyDialogueRegistry";
+import { getBookyJourneyActivityChecksum, resolveBookyJourneyActivity,
+  type BookyJourneyActivitySpec, type BookyJourneyActivityResolved } from "./bookyJourneyActivity";
 
 export type BookyJourneyPrerequisite = Readonly<{ id: string; version: number }>;
 export type BookyJourneyNode = Readonly<{
   id: string;
   entity: Readonly<ContentEntityRef> | null;
-  kind: "country" | "writer" | "work" | "checkpoint";
+  kind: "country" | "writer" | "work" | "checkpoint" | "activity";
   screen: "globe" | "collection";
   dialogue: Readonly<{ id: string; version: number; contentChecksum: string }>;
+  /** Present only for activity nodes; old navigation node fields stay exact. */
+  activity?: BookyJourneyActivitySpec;
 }>;
 export type BookyJourneyDefinition = Readonly<{
   schemaVersion: 1;
@@ -53,6 +58,8 @@ export type BookyJourneyPlan = Readonly<{
   nodes: readonly Readonly<{
     id: string; kind: BookyJourneyNode["kind"]; screen: BookyJourneyNode["screen"]; entity: Readonly<ContentEntityRef> | null;
     coordinates: readonly [number, number] | null; dialogue: BookyDialogueRecord;
+    activity?: BookyJourneyActivityResolved;
+    activityChoices?: readonly Readonly<{ id: string; label: string }>[];
   }>[];
 }>;
 
@@ -131,15 +138,25 @@ export function bookyJourneyEntityId(ref: ContentEntityRef): string {
   return JSON.stringify(ref.kind === "country" ? [ref.kind, ref.countryId]
     : ref.kind === "writer" ? [ref.kind, ref.countryId, ref.writerId] : [ref.kind, ref.countryId, ref.writerId, ref.workId]);
 }
+/** Activity dialogue approval binds the exact authored task as well as its
+ * journey/node. The compact context fits the existing registry's 96-char key. */
+export function bookyJourneyDialogueContext(journeyId: string, node: BookyJourneyNode): string | null {
+  if (!key(journeyId) || !key(node.id)) return null;
+  if (node.kind !== "activity") return `${journeyId}:${node.id}`;
+  const activityChecksum = getBookyJourneyActivityChecksum(node.activity);
+  return activityChecksum ? `activity:${contentRecordHash({ journeyId, nodeId: node.id, activityChecksum })}` : null;
+}
 function definitionValid(value: unknown): value is BookyJourneyDefinition {
   if (!row(value, "schemaVersion id version locale audience ageRange readingLevel title prerequisites nodes") || value.schemaVersion !== 1
     || !key(value.id) || !integer(value.version, 1, 1_000_000) || !locale(value.locale) || !choice(value.audience, ["adult", "child"])
     || !row(value.ageRange, "min max") || !integer(value.ageRange.min, 0, 120) || !integer(value.ageRange.max, Number(value.ageRange.min), 120)
     || !level(value.readingLevel) || !text(value.title, 200) || !uniqueRows(value.prerequisites, 16, prerequisite)
-    || !uniqueRows(value.nodes, 32, node => row(node, "id entity kind screen dialogue") && key(node.id)
-      && choice(node.kind, ["country", "writer", "work", "checkpoint"]) && choice(node.screen, ["globe", "collection"])
+    || !uniqueRows(value.nodes, 32, node => !!node && typeof node === "object"
+      && row(node, (node as Row).kind === "activity" ? "id entity kind screen dialogue activity" : "id entity kind screen dialogue") && key(node.id)
+      && choice(node.kind, ["country", "writer", "work", "checkpoint", "activity"]) && choice(node.screen, ["globe", "collection"])
       && (node.kind === "checkpoint" || node.screen === (node.kind === "work" ? "collection" : "globe"))
-      && (node.kind === "checkpoint" ? node.entity === null : entityRef(node.entity) && node.entity.kind === node.kind)
+      && (node.kind === "checkpoint" || node.kind === "activity" ? node.entity === null : entityRef(node.entity) && node.entity.kind === node.kind)
+      && (node.kind !== "activity" || getBookyJourneyActivityChecksum(node.activity) !== null)
       && row(node.dialogue, "id version contentChecksum") && key(node.dialogue.id) && integer(node.dialogue.version, 1, 1_000_000)
       && hash(node.dialogue.contentChecksum)) || value.nodes.length < 2) return false;
   return value.nodes[0].kind === "country" && value.nodes[value.nodes.length - 1].kind === "checkpoint"
@@ -161,6 +178,30 @@ function contextValid(value: unknown): value is BookyJourneyContext {
 export function getBookyJourneyChecksum(input: unknown): string | null {
   const definition = snapshot(input);
   return definitionValid(definition) ? contentRecordHash(definition) : null;
+}
+
+function activityChoices(activity: BookyJourneyActivityResolved, trust: BookyJourneyTrust, locale: BookyDialogueLocale) {
+  const labels = new Set<string>();
+  const choices: Readonly<{ id: string; label: string }>[] = [];
+  for (const choice of activity.spec.choices) {
+    const country = trust.publicCountries.find(country => country.id === choice.writer.countryId);
+    const writer = country?.writers.find(writer => writer.id === choice.writer.writerId);
+    if (!writer) return null;
+    const names: { id: string; name?: string; fullName?: string } = { id: choice.writer.writerId };
+    for (const field of ["name", "fullName"] as const) {
+      const descriptor = Object.getOwnPropertyDescriptor(writer, field);
+      if (!descriptor) continue;
+      if (!descriptor.enumerable || !("value" in descriptor)) return null;
+      if (descriptor.value === undefined) continue;
+      if (typeof descriptor.value !== "string" || descriptor.value.length > 200 || /[\u0000-\u001f\u007f]/u.test(descriptor.value)) return null;
+      names[field] = descriptor.value;
+    }
+    const label = selectWriterDisplayName(names, locale, "");
+    const normalized = label.normalize("NFKC").trim().replace(/\s+/gu, " ").toLocaleLowerCase(locale);
+    if (!normalized || labels.has(normalized)) return null;
+    labels.add(normalized); choices.push(Object.freeze({ id: choice.id, label }));
+  }
+  return Object.freeze(choices);
 }
 
 /** Pure admission of an entire ordered plan. No navigation, catalog creation,
@@ -212,11 +253,27 @@ export function compileBookyJourney(input: unknown, inputContext: unknown, trust
           }
         }
       }
+      const activity = node.kind === "activity" ? resolveBookyJourneyActivity(node.activity, trust) : null;
+      if (node.kind === "activity" && !activity) return null;
+      const choices = activity ? activityChoices(activity, trust, context.locale) : null;
+      if (activity && !choices) return null;
+      const dialogueContext = bookyJourneyDialogueContext(definition.id, node);
+      if (!dialogueContext) return null;
+      const entityIds = activity ? [...new Set([activity.spec.targetWork, ...activity.spec.choices.map(choice => choice.writer)]
+        .map(bookyJourneyEntityId))] : ref ? [bookyJourneyEntityId(ref)] : [];
       const dialogue = trust.dialogueRegistry.resolve({ id: node.dialogue.id, locale: context.locale, audience: "adult", age: context.age,
-        readingLevel: context.readingLevel, intent: "navigation", screen: node.screen, context: `${definition.id}:${node.id}`,
-        entityIds: ref ? [bookyJourneyEntityId(ref)] : [], now: context.now });
+        readingLevel: context.readingLevel, intent: activity ? "activity" : "navigation", screen: node.screen, context: dialogueContext,
+        entityIds, now: context.now });
       if (!dialogue || dialogue.payload.version !== node.dialogue.version || dialogue.review.contentChecksum !== node.dialogue.contentChecksum) return null;
-      nodes.push(Object.freeze({ id: node.id, kind: node.kind, screen: node.screen, entity: ref, coordinates, dialogue }));
+      nodes.push(Object.freeze({ id: node.id, kind: node.kind, screen: node.screen, entity: ref, coordinates, dialogue,
+        ...(activity ? { activity, activityChoices: choices! } : {}) }));
+    }
+    // Any injected dialogue callback, including a later checkpoint, may revoke
+    // a relation or label. Never retain an earlier answer from changed input.
+    for (const node of nodes) if (node.activity) {
+      const current = resolveBookyJourneyActivity(node.activity.spec, trust);
+      if (!current || current.semanticChecksum !== node.activity.semanticChecksum
+        || JSON.stringify(activityChoices(current, trust, context.locale)) !== JSON.stringify(node.activityChoices)) return null;
     }
     return Object.freeze({ id: definition.id, version: definition.version, locale: definition.locale, title: definition.title,
       definitionChecksum: checksum, nodes: Object.freeze(nodes) });

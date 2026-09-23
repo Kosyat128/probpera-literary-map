@@ -2,12 +2,15 @@ import { describe, expect, it, vi } from "vitest";
 import { getBookyJourneyChecksum, type BookyJourneyDefinition, type BookyJourneyPlan } from "./bookyJourney";
 import { createBookyJourneyProgressRecord, type BookyJourneyProgressNode } from "./bookyJourneyProgress";
 import { createBookyReaderPolicy } from "./bookyReaderPolicy";
+import type { BookArchiveEntry, Country } from "../planet/types";
+import { resolveBookyJourneyActivity, type BookyJourneyActivitySpec } from "./bookyJourneyActivity";
 import { getBookyJourneyMigrationChecksum, resolveBookyJourneyMigration,
   type BookyJourneyMigration, type BookyJourneyMigrationInput } from "./bookyJourneyMigration";
 
 const now = "2026-09-23T12:00:00.000Z", reviewedAt = "2026-09-22T12:00:00.000Z";
 const policy = createBookyReaderPolicy({ age: 30, readingLevel: "plain" }, reviewedAt, 1)!;
-const nodes: readonly BookyJourneyProgressNode[] = [
+type PlainNode = Omit<BookyJourneyProgressNode, "activity">;
+const nodes: readonly PlainNode[] = [
   { id: "country", kind: "country", screen: "globe", entity: { kind: "country", countryId: "synthetic-country" } },
   { id: "writer", kind: "writer", screen: "globe", entity: { kind: "writer", countryId: "synthetic-country", writerId: "synthetic-writer" } },
   { id: "work", kind: "work", screen: "collection", entity: { kind: "work", countryId: "synthetic-country", writerId: "synthetic-writer", workId: "synthetic-work" } },
@@ -18,19 +21,28 @@ function definition(version: number, semanticNodes = nodes): BookyJourneyDefinit
     readingLevel: "plain", title: "Synthetic migration test", prerequisites: [],
     nodes: semanticNodes.map(node => ({ ...node, dialogue: { id: `test-${node.id}`, version: 1, contentChecksum: "a".repeat(64) } })) };
 }
-function hostPlan(source: BookyJourneyDefinition): BookyJourneyPlan {
+function hostPlan(source: BookyJourneyDefinition, author?: string): BookyJourneyPlan {
   // Synthetic host-plan stand-in ONLY. Editorial admission is tested at its own
   // boundary; this suite neither creates production review nor invokes navigation.
   return { id: source.id, version: source.version, locale: source.locale, title: source.title,
-    definitionChecksum: getBookyJourneyChecksum(source)!, nodes: source.nodes.map(node => ({ ...node,
-      coordinates: null, dialogue: {} as BookyJourneyPlan["nodes"][number]["dialogue"] })) };
+    definitionChecksum: getBookyJourneyChecksum(source)!, nodes: source.nodes.map(({ activity: spec, ...node }) => {
+      const compiled = { ...node, coordinates: null, dialogue: {} as BookyJourneyPlan["nodes"][number]["dialogue"] };
+      if (node.kind !== "activity") return compiled;
+      const activity = resolveBookyJourneyActivity(spec, {
+        publicCountries: [{ id: "synthetic-country", writers: [{ id: "synthetic-writer" }, { id: "other-writer" }] }] as Country[],
+        publicBooks: [{ id: "synthetic-work", countryId: "synthetic-country", writerId: "synthetic-writer", editorial: { status: "verified" },
+          ...(author ? { authorship: { kind: "single", authors: [{ countryId: "synthetic-country", writerId: author }] } } : {}) }] as BookArchiveEntry[],
+      });
+      if (!activity) throw Error("invalid-synthetic-migration-activity");
+      return { ...compiled, activity, activityChoices: activity.spec.choices.map(choice => ({ id: choice.id, label: choice.writer.writerId })) };
+    }) };
 }
 function reviewed(input: BookyJourneyMigrationInput, change: Partial<BookyJourneyMigration> = {}): BookyJourneyMigrationInput {
   const migration = { ...input.migration, ...change }, checksum = getBookyJourneyMigrationChecksum(migration);
   return { ...input, migration, approvedMigrationReceipts: checksum ? [{ id: migration.id, checksum,
     reviewer: "synthetic-test-reviewer-not-real", reviewedAt }] : [] };
 }
-function fixture(acknowledgedCount = 2, targetNodes: readonly BookyJourneyProgressNode[] = nodes.map(node => ({ ...node, id: `new-${node.id}` }))): BookyJourneyMigrationInput {
+function fixture(acknowledgedCount = 2, targetNodes: readonly PlainNode[] = nodes.map(node => ({ ...node, id: `new-${node.id}` }))): BookyJourneyMigrationInput {
   const historicalDefinition = definition(1), currentPlan = hostPlan(definition(2, targetNodes));
   const savedRecord = createBookyJourneyProgressRecord(policy, hostPlan(historicalDefinition),
     nodes.slice(0, acknowledgedCount).map(node => node.id), nodes[acknowledgedCount]?.id ?? null)!;
@@ -94,7 +106,7 @@ describe("explicit reviewed Booky journey version migration", () => {
       { index: 1, kind: "country", entity: { kind: "country", countryId: "synthetic-country" } },
     ];
     for (const { index, ...change } of variations) {
-      const target = nodes.map((node, at) => ({ ...node, id: `new-${node.id}`, ...(index === at ? change : {}) })) as BookyJourneyProgressNode[];
+      const target = nodes.map((node, at) => ({ ...node, id: `new-${node.id}`, ...(index === at ? change : {}) })) as PlainNode[];
       expect(resolveBookyJourneyMigration(fixture(3, target))).toBeNull();
     }
     const target = nodes.map(node => ({ ...node, id: `new-${node.id}`, ...(node.kind === "checkpoint" ? { screen: "collection" as const } : {}) }));
@@ -179,5 +191,69 @@ describe("explicit reviewed Booky journey version migration", () => {
     const cycle: Record<string, unknown> = {}; cycle.cycle = cycle;
     expect(resolveBookyJourneyMigration({ ...input, currentPlan: cycle })).toBeNull();
     expect(JSON.stringify(input.savedRecord)).toBe(original);
+  });
+});
+
+describe("activity migration requires equivalent derived semantics", () => {
+  const spec: BookyJourneyActivitySpec = { schemaVersion: 1, id: "match-synthetic-work", version: 1, type: "match-work-author",
+    targetWork: { kind: "work", countryId: "synthetic-country", writerId: "synthetic-writer", workId: "synthetic-work" },
+    choices: [{ id: "owner", writer: { kind: "writer", countryId: "synthetic-country", writerId: "synthetic-writer" } },
+      { id: "other", writer: { kind: "writer", countryId: "synthetic-country", writerId: "other-writer" } }] };
+  function activityDefinition(version: number, task = spec): BookyJourneyDefinition {
+    const source = definition(version);
+    return { ...source, nodes: [source.nodes[0], { id: "activity", kind: "activity", screen: "globe", entity: null,
+      activity: task, dialogue: { id: "synthetic-activity", version: 1, contentChecksum: "b".repeat(64) } }, source.nodes[3]] };
+  }
+  function activityFixture(count = 2, author?: string, task = spec): BookyJourneyMigrationInput {
+    const historicalDefinition = activityDefinition(1), old = hostPlan(historicalDefinition);
+    const currentDefinition = activityDefinition(2, task);
+    const currentPlan = hostPlan({ ...currentDefinition, nodes: currentDefinition.nodes.map(node => ({ ...node, id: `new-${node.id}` })) }, author);
+    const savedRecord = createBookyJourneyProgressRecord(policy, old, old.nodes.slice(0, count).map(node => node.id), old.nodes[count]?.id ?? null)!;
+    return reviewed({ savedRecord, historicalDefinition, currentPlan, currentPolicy: policy, now,
+      migration: { schemaVersion: 1, id: "synthetic-activity-v1-v2", journeyId: historicalDefinition.id, locale: "en", fromVersion: 1,
+        fromDefinitionChecksum: savedRecord.definitionChecksum, toVersion: 2, toDefinitionChecksum: currentPlan.definitionChecksum,
+        nodeMap: { country: "new-country", activity: "new-activity", checkpoint: "new-checkpoint" }, safeCheckpointId: null },
+      approvedMigrationReceipts: [] });
+  }
+
+  it("transfers an acknowledged activity only with its exact saved semantic fingerprint", () => {
+    const input = activityFixture(), original = JSON.stringify(input.savedRecord), result = resolveBookyJourneyMigration(input)!;
+    expect(result.targetRecord.acknowledgedNodeIds).toEqual(["new-country", "new-activity"]);
+    expect(result.targetRecord.resumeNodeId).toBe("new-checkpoint");
+    expect(result.targetRecord.nodes[1].activity).toEqual(input.savedRecord.nodes[1].activity);
+    expect(result.preservedRecord).toEqual(input.savedRecord); expect(JSON.stringify(input.savedRecord)).toBe(original);
+    expect(JSON.stringify(result.targetRecord)).not.toContain("correctChoiceId");
+  });
+
+  it("rejects changed factual author, authorship provenance, question id or version despite fresh mapping review", () => {
+    const original = activityFixture();
+    for (const changed of [activityFixture(2, "other-writer"), activityFixture(2, "synthetic-writer"),
+      activityFixture(2, undefined, { ...spec, id: "different-question" }), activityFixture(2, undefined, { ...spec, version: 2 })]) {
+      expect(changed.approvedMigrationReceipts).toHaveLength(1);
+      expect(resolveBookyJourneyMigration(changed)).toBeNull();
+    }
+    const authorChanged = activityFixture(2, "other-writer");
+    expect(authorChanged.currentPlan.definitionChecksum).toBe(original.currentPlan.definitionChecksum);
+    expect(authorChanged.currentPlan.nodes[1].activity!.semanticChecksum).not.toBe(original.currentPlan.nodes[1].activity!.semanticChecksum);
+  });
+
+  it("does not manufacture a saved answer for an unacknowledged changed activity", () => {
+    const input = activityFixture(1, "other-writer"), result = resolveBookyJourneyMigration(input)!;
+    expect(result.targetRecord.acknowledgedNodeIds).toEqual(["new-country"]);
+    expect(result.targetRecord.resumeNodeId).toBe("new-activity");
+    expect(result.targetRecord.nodes[1].activity!.semanticChecksum).not.toBe(input.savedRecord.nodes[1].activity!.semanticChecksum);
+    expect(result.preservedRecord).toEqual(input.savedRecord);
+  });
+
+  it("rejects forged task metadata and legacy checkpoints relabelled as answered activities", () => {
+    const input = activityFixture();
+    const savedRecord = { ...input.savedRecord, nodes: input.savedRecord.nodes.map((node, index) => index === 1
+      ? { ...node, activity: { ...node.activity!, id: "forged-task" } } : node) };
+    expect(resolveBookyJourneyMigration({ ...input, savedRecord })).toBeNull();
+    const legacyDefinition = definition(1, [nodes[0], { ...nodes[3], id: "activity" }, nodes[3]]);
+    const legacy = hostPlan(legacyDefinition), legacySaved = createBookyJourneyProgressRecord(policy, legacy, ["country", "activity"], "checkpoint")!;
+    const legacyInput = reviewed({ ...input, historicalDefinition: legacyDefinition, savedRecord: legacySaved },
+      { fromDefinitionChecksum: legacySaved.definitionChecksum });
+    expect(resolveBookyJourneyMigration(legacyInput)).toBeNull();
   });
 });

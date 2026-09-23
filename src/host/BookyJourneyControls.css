@@ -61,6 +61,10 @@
 .booky-journey-controls__capacity { min-width: 0; margin-block: 12px; padding: 10px; border: 1px solid #d8c79e; border-radius: 6px; }
 .booky-journey-controls__capacity > p { margin: 0 0 8px; }
 .booky-journey-controls__capacity > button { width: 100%; }
+.booky-journey-controls__activity { min-width: 0; margin-block: 12px; }
+.booky-journey-controls__activity-choices { display: grid; gap: 8px; }
+.booky-journey-controls__activity-choices > button { width: 100%; }
+.booky-journey-controls__activity-choices > button[aria-pressed="true"] { border-width: 2px; font-weight: 700; }
 .booky-journey-controls__reset { margin-top: 12px; }
 .booky-journey-controls__storage { margin-top: 16px; padding-top: 8px; border-top: 1px solid #d8c79e; }
 .booky-journey-controls__storage > button { width: 100%; margin-top: 8px; }

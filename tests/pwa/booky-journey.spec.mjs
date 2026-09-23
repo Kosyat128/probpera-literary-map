@@ -30,9 +30,10 @@ let countryChunks, primaryCountryChunk, retryCountryChunk, componentChunks, prim
 const SYNTHETIC_CONTENT = `
 import { contentTextHash } from '../planet/contentExportHash';
 import { getBookyDialogueChecksum, getBookyDialogueContentChecksum } from './bookyDialogueRegistry';
-import { bookyJourneyEntityId, getBookyJourneyChecksum } from './bookyJourney';
+import { bookyJourneyEntityId, bookyJourneyDialogueContext, getBookyJourneyChecksum } from './bookyJourney';
 const primaryId='test.actual-app-journey',version=window.__journeyContentMode==='new-version'||window.__journeyContentMode.startsWith('migration-')?2:1,reviewedAt='2026-09-20T12:00:00.000Z';
 const routeIds=window.__journeyContentMode.startsWith('history')?[primaryId,'test.dependent-journey']:[primaryId];
+const activityMode=window.__journeyContentMode.startsWith('activity');
 const definitions=[],dialogues=[],dialogueApprovals=[],journeyApprovals=[],availability=[];
 for(const id of routeIds){
 for(const locale of ['ru','en']){
@@ -40,13 +41,19 @@ for(const locale of ['ru','en']){
     {id:'country',kind:'country',screen:'globe',entity:{kind:'country',countryId:'russia'}},
     {id:'writer',kind:'writer',screen:'globe',entity:{kind:'writer',countryId:'russia',writerId:'dostoevsky'}},
     {id:'work',kind:'work',screen:'collection',entity:{kind:'work',countryId:'russia',writerId:'dostoevsky',workId:'crime-and-punishment'}},
+    ...(activityMode?[{id:'activity',kind:'activity',screen:'globe',entity:null,activity:{schemaVersion:1,id:'test.match-author',version:1,
+      type:'match-work-author',targetWork:{kind:'work',countryId:'russia',writerId:'dostoevsky',workId:'crime-and-punishment'},
+      choices:[{id:'dostoevsky',writer:{kind:'writer',countryId:'russia',writerId:'dostoevsky'}},
+        {id:'tolstoy',writer:{kind:'writer',countryId:'russia',writerId:'tolstoy'}}]}}]:[]),
     {id:'checkpoint',kind:'checkpoint',screen:'globe',entity:null},
-  ].filter(node=>id===primaryId||['country','checkpoint'].includes(node.id)).map(node=>{
+  ].filter(node=>activityMode?['country','activity','checkpoint'].includes(node.id):id===primaryId||['country','checkpoint'].includes(node.id)).map(node=>{
     const title=locale==='ru'?'Тест интерфейса: '+node.id:'Interface test: '+node.id;
-    const body=locale==='ru'?'Откройте этот экран и подтвердите шаг, когда будете готовы.':'Open this screen and acknowledge the step when you are ready.';
+    const body=node.kind==='activity'?(locale==='ru'?'Тест задания: выберите автора книги «Преступление и наказание».':'Activity test: choose the author of Crime and Punishment.')
+      :locale==='ru'?'Откройте этот экран и подтвердите шаг, когда будете готовы.':'Open this screen and acknowledge the step when you are ready.';
     const payload={id:id+'.'+node.id,locale,version:1,audience:'adult',ageRange:{min:18,max:120},readingLevel:'plain',
-      intent:'navigation',screens:[node.screen],context:id+':'+node.id,
-      entityIds:node.entity?[bookyJourneyEntityId(node.entity)]:[],claimKind:'interface-guidance',factualSources:[],
+      intent:node.kind==='activity'?'activity':'navigation',screens:[node.screen],context:bookyJourneyDialogueContext(id,node),
+      entityIds:node.activity?[node.activity.targetWork,...node.activity.choices.map(choice=>choice.writer)].map(bookyJourneyEntityId)
+        :node.entity?[bookyJourneyEntityId(node.entity)]:[],claimKind:'interface-guidance',factualSources:[],
       copy:{title,body,caption:body,reduced:title},narration:null,prohibitedTags:[],
       provenance:{kind:'editorial',sourcePath:'tests/pwa/booky-journey.spec.mjs',sourceVersion:1,sourceRef:'synthetic-only:'+node.id,
         sourceSha256:'a'.repeat(64),copySha256:contentTextHash(JSON.stringify({title,body}))}};
@@ -68,7 +75,7 @@ for(const locale of ['ru','en']){
 const approved={definitions,dialogues,currentVersions:routeIds.map(id=>({id,version})),dialogueApprovals,journeyApprovals,availability};
 const missingReview={...approved,journeyApprovals:[]};
 const missingSavedLocaleReview={...approved,journeyApprovals:journeyApprovals.filter(receipt=>receipt.id!==primaryId||receipt.locale!=='ru')};
-export function readBookyJourneyContent(){return window.__journeyContentMode==='missing-review'?missingReview
+export function readBookyJourneyContent(){return ['missing-review','activity-missing-review'].includes(window.__journeyContentMode)?missingReview
   :window.__journeyContentMode==='history-missing-ru-review'?missingSavedLocaleReview:approved;}
 `;
 
@@ -444,6 +451,134 @@ async function loadBooks(page) {
   const load = page.locator('[data-booky-journey-load]');
   if (await load.count()) { await expect(load).toBeEnabled(); await load.click(); await expect(load).toHaveCount(0, { timeout: 60_000 }); }
 }
+const answerChoice = (page, id) => page.locator('[data-booky-journey-answer=' + JSON.stringify(id) + ']');
+const answerState = page => page.locator('[data-booky-journey-answer-status]');
+async function startActivity(fixture) {
+  const { page } = fixture;
+  await openPanel(page); await loadBooks(page);
+  await routeFor(page, PRIMARY_JOURNEY).click();
+  await expectReadyNode(page, 'country', 0, 3);
+  await next(page).click();
+  await expect(node(page)).toHaveAttribute('data-booky-journey-node', 'activity');
+  await expect(status(page)).toHaveAttribute('data-booky-journey-status', 'ready');
+  await expect(answerChoice(page, 'dostoevsky')).toBeEnabled();
+  await expect(next(page)).toBeDisabled();
+  await expectProgress(page, 1, 3);
+  await expect.poll(() => savedRecord(fixture)?.acknowledgedNodeIds).toEqual(['country']);
+  await expect(storageState(page)).toHaveAttribute('data-booky-journey-storage', 'ready');
+  expect(savedRecord(fixture).resumeNodeId).toBe('activity');
+  return fixture.memory.get(PROGRESS);
+}
+async function captureActivity(fixture, testInfo, filename) {
+  const surface = fixture.page.locator('[data-booky-journey-activity]');
+  await surface.scrollIntoViewIfNeeded();
+  const bounds = await surface.evaluate(element => {
+    const measure = target => {
+      const b = target.getBoundingClientRect();
+      return { x: b.x, y: b.y, width: b.width, height: b.height,
+        fullyInViewport: b.left >= 0 && b.top >= 0 && b.right <= innerWidth && b.bottom <= innerHeight };
+    };
+    return { surface: measure(element), feedback: measure(element.querySelector('[role="status"]')),
+      choices: [...element.querySelectorAll('button')].map(button => {
+        const box = measure(button);
+        return { ...box, hit: button.contains(document.elementFromPoint(box.x + box.width / 2, box.y + box.height / 2)) };
+      }), overflow: document.documentElement.scrollWidth > innerWidth + 1 };
+  });
+  expect(bounds.surface.fullyInViewport).toBe(true); expect(bounds.feedback.fullyInViewport).toBe(true);
+  expect(bounds.overflow).toBe(false);
+  for (const choice of bounds.choices) { expect(choice.fullyInViewport).toBe(true); expect(choice.hit).toBe(true); expect(choice.height).toBeGreaterThanOrEqual(44); }
+  await capture(fixture, testInfo, filename, 'Actual App activity choices and temporary answer feedback; independently synthetic task receipts only');
+  fixture.result.screenshots.at(-1).bounds = bounds;
+}
+
+test('activity answers require fresh explicit acknowledgement and stay separate from navigation and saved progress', async ({}, testInfo) => {
+  const fixture = await open(testInfo, { contentMode: 'activity' }), { page, result } = fixture;
+  result.scenario = 'explicit-activity-answer';
+  try {
+    const raw = await startActivity(fixture), writes = fixture.progressWrites().length;
+    await page.setViewportSize({ width: 320, height: 900 }); await stablePose(page);
+    const before = await actual(page), url = page.url();
+    const wrong = answerChoice(page, 'tolstoy'), correct = answerChoice(page, 'dostoevsky');
+    await correct.focus(); await page.keyboard.press('Tab'); await expect(wrong).toBeFocused();
+    await page.keyboard.press('Enter');
+    await expect(answerState(page)).toHaveAttribute('data-booky-journey-answer-status', 'incorrect');
+    await expect(wrong).toHaveAttribute('aria-pressed', 'true'); await expect(wrong).toBeFocused();
+    await expect(next(page)).toBeDisabled(); await expectProgress(page, 1, 3);
+    expect(fixture.memory.get(PROGRESS)).toBe(raw); expect(fixture.progressWrites()).toHaveLength(writes);
+    expect(page.url()).toBe(url); retained(await actual(page), before, true);
+    await captureActivity(fixture, testInfo, 'journey-activity-incorrect-ru-320.png');
+    await page.keyboard.press('Shift+Tab'); await expect(correct).toBeFocused(); await page.keyboard.press('Enter');
+    await expect(answerState(page)).toHaveAttribute('data-booky-journey-answer-status', 'correct');
+    await expect(next(page)).toBeEnabled(); await expectProgress(page, 1, 3);
+    expect(fixture.memory.get(PROGRESS)).toBe(raw); expect(fixture.progressWrites()).toHaveLength(writes);
+    expect(page.url()).toBe(url); retained(await actual(page), before, true);
+    await locale(page, 'en');
+    await expect(answerState(page)).toHaveAttribute('data-booky-journey-answer-status', 'unanswered');
+    await expect(next(page)).toBeDisabled(); expect(fixture.memory.get(PROGRESS)).toBe(raw);
+    await expect(correct).toContainText('Dost'); await expect(wrong).toContainText('Tolst');
+    await page.setViewportSize({ width: 1440, height: 850 }); await stablePose(page);
+    const afterLocale = await actual(page), afterLocaleUrl = page.url();
+    await correct.click(); await expect(next(page)).toBeEnabled();
+    await expect(answerState(page)).toHaveAttribute('data-booky-journey-answer-status', 'correct');
+    expect(page.url()).toBe(afterLocaleUrl); retained(await actual(page), afterLocale, true);
+    await captureActivity(fixture, testInfo, 'journey-activity-correct-en.png');
+    expect(fixture.progressWrites()).toHaveLength(writes); expect(fixture.memory.get(PROGRESS)).toBe(raw);
+    expect(page.url()).toBe(afterLocaleUrl); retained(await actual(page), afterLocale, true);
+    await next(page).click(); await expectReadyNode(page, 'checkpoint', 2, 3);
+    await expect.poll(() => savedRecord(fixture)?.acknowledgedNodeIds).toEqual(['country', 'activity']);
+    await expect(storageState(page)).toHaveAttribute('data-booky-journey-storage', 'ready');
+    const record = savedRecord(fixture), activity = record.nodes.find(item => item.kind === 'activity');
+    expect(Object.keys(activity).sort()).toEqual(['activity', 'entity', 'id', 'kind', 'screen']);
+    expect(Object.keys(activity.activity).sort()).toEqual(['id', 'semanticChecksum', 'version']);
+    expect(activity.activity.semanticChecksum).toMatch(/^[a-f0-9]{64}$/u);
+    expect(JSON.stringify(record)).not.toMatch(/choiceId|correctChoiceId|incorrect|unanswered/u);
+    await next(page).click(); await expect(status(page)).toHaveAttribute('data-booky-journey-status', 'complete');
+    await expect.poll(() => savedRecord(fixture)?.acknowledgedNodeIds).toEqual(['country', 'activity', 'checkpoint']);
+    Object.assign(result.observations, { wrongAnswerNoProgress: true, keyboardChoiceKeepsFocus: true,
+      answerNoNavigationOrStorage: true, correctRequiresExplicitNext: true, localeClearsAnswer: true,
+      canonicalLocalizedChoices: true, activitySemanticFingerprintSaved: true, answerNotPersisted: true,
+      canonicalSceneRetainedWithinDocument: true, explicitCompletion: true });
+    fixture.verify();
+  } finally { await fixture.close(); }
+});
+
+test('activity answer is temporary across suspension cold restoration and revoked journey review', async ({}, testInfo) => {
+  const fixture = await open(testInfo, { contentMode: 'activity' }), { page, result } = fixture;
+  result.scenario = 'activity-lifecycle-revocation';
+  try {
+    const raw = await startActivity(fixture), writes = fixture.progressWrites().length;
+    await answerChoice(page, 'dostoevsky').click(); await expect(next(page)).toBeEnabled();
+    await page.evaluate(() => window.__bookyJourneyFixture.setVisible(false));
+    await expect(page.locator('[data-booky-journey-controls]')).toHaveCount(0);
+    await page.evaluate(() => window.__bookyJourneyFixture.setVisible(true)); await openPanel(page);
+    await expect(status(page)).toHaveAttribute('data-booky-journey-status', 'paused');
+    await resumeIfPaused(page);
+    await expect(answerState(page)).toHaveAttribute('data-booky-journey-answer-status', 'unanswered');
+    await expect(next(page)).toBeDisabled();
+    await answerChoice(page, 'dostoevsky').click(); await expect(next(page)).toBeEnabled();
+    await fixture.coldReload(); await openPanel(page); await loadBooks(page);
+    await expect(status(page)).toHaveAttribute('data-booky-journey-status', 'paused');
+    expect(fixture.memory.get(PROGRESS)).toBe(raw); expect(fixture.progressWrites()).toHaveLength(writes);
+    const cold = await actual(page), coldUrl = page.url();
+    await resumeIfPaused(page); await expect(answerState(page)).toHaveAttribute('data-booky-journey-answer-status', 'unanswered');
+    await expect(next(page)).toBeDisabled(); await expectProgress(page, 1, 3);
+    expect(page.url()).toBe(coldUrl); retained(await actual(page), cold, true);
+    await answerChoice(page, 'dostoevsky').click(); await expect(next(page)).toBeEnabled();
+    await fixture.coldReload('activity-missing-review'); await openPanel(page); await loadBooks(page);
+    await expect(page.locator('[data-booky-journey-answer]')).toHaveCount(0);
+    await expect(page.locator('[data-booky-journey-route]')).toHaveCount(0);
+    await expect(status(page)).toHaveAttribute('data-booky-journey-status', 'unavailable');
+    expect(fixture.memory.get(PROGRESS)).toBe(raw); expect(fixture.progressWrites()).toHaveLength(writes);
+    await fixture.coldReload('activity'); await openPanel(page); await loadBooks(page); await resumeIfPaused(page);
+    await expect(answerState(page)).toHaveAttribute('data-booky-journey-answer-status', 'unanswered');
+    await expect(next(page)).toBeDisabled(); await expectProgress(page, 1, 3);
+    expect(fixture.memory.get(PROGRESS)).toBe(raw); expect(fixture.progressWrites()).toHaveLength(writes);
+    Object.assign(result.observations, { backgroundClearsAnswer: true, coldRestorePausedWithoutAnswer: true,
+      noAnswerReplayed: true, revokedReviewHidesActivity: true, reviewRecoveryRequiresFreshAnswer: true,
+      savedPrefixPreserved: true, noLifecycleProgressWrite: true });
+    fixture.verify();
+  } finally { await fixture.close(); }
+});
 async function expectProgress(page, count, total = 4) {
   await expect(page.locator('[data-booky-journey-progress]')).toHaveText(new RegExp('(?:Подтверждено шагов:|Steps acknowledged:) ' + count + ' (?:из|of) ' + total, 'u'));
 }

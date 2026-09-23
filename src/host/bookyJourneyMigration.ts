@@ -1,5 +1,6 @@
 import { contentRecordHash, contentTextHash } from "../planet/contentExportHash";
 import { getBookyJourneyChecksum, type BookyJourneyDefinition, type BookyJourneyPlan } from "./bookyJourney";
+import { parseBookyJourneyActivity } from "./bookyJourneyActivity";
 import { createBookyJourneyProgressRecord, DEFAULT_BOOKY_JOURNEY_PROGRESS, parseBookyJourneyProgress,
   type BookyJourneyProgressNode, type BookyJourneyProgressRecord } from "./bookyJourneyProgress";
 import { parseBookyReaderPolicy, serializeBookyReaderPolicy, type BookyReaderPolicy } from "./bookyReaderPolicy";
@@ -99,11 +100,21 @@ function validReceipt(value: unknown): value is BookyJourneyMigrationReceipt {
     && typeof value.reviewer === "string" && value.reviewer.trim() === value.reviewer && value.reviewer.length > 0
     && value.reviewer.length <= 160 && !/[\u0000-\u001f\u007f]/u.test(value.reviewer);
 }
-const semantic = (node: BookyJourneyProgressNode) => {
+const entitySemantic = (node: Pick<BookyJourneyProgressNode, "kind" | "screen" | "entity">) => {
   const ref = node.entity;
   return JSON.stringify([node.kind, node.screen, ref === null ? null : ref.kind === "country" ? [ref.kind, ref.countryId]
     : ref.kind === "writer" ? [ref.kind, ref.countryId, ref.writerId] : [ref.kind, ref.countryId, ref.writerId, ref.workId]]);
 };
+const semantic = (node: BookyJourneyProgressNode) => JSON.stringify([entitySemantic(node),
+  node.kind === "activity" ? node.activity : null]);
+function matchesHistoricalNode(node: BookyJourneyDefinition["nodes"][number], saved: BookyJourneyProgressNode): boolean {
+  if (node.id !== saved.id || entitySemantic(node) !== entitySemantic(saved)) return false;
+  if (node.kind !== "activity") return true;
+  // The historical definition binds the authored task, not a current factual
+  // answer. Only saved/current resolved fingerprints can transfer an answer.
+  const spec = parseBookyJourneyActivity(node.activity);
+  return !!spec && saved.activity?.id === spec.id && saved.activity.version === spec.version;
+}
 export function getBookyJourneyMigrationChecksum(input: unknown): string | null {
   const value = snapshot(input);
   return validMigration(value) ? contentRecordHash(value) : null;
@@ -133,7 +144,7 @@ export function resolveBookyJourneyMigration(input: unknown): BookyJourneyMigrat
     const historical = value.historicalDefinition as BookyJourneyDefinition;
     if (historical.id !== saved.journeyId || historical.version !== saved.journeyVersion || historical.locale !== saved.locale
       || historical.nodes.length !== saved.nodes.length
-      || historical.nodes.some((node, index) => node.id !== saved.nodes[index].id || semantic(node) !== semantic(saved.nodes[index]))) return null;
+      || historical.nodes.some((node, index) => !matchesHistoricalNode(node, saved.nodes[index]))) return null;
     const plan = value.currentPlan;
     if (!row(plan, "id version locale title definitionChecksum nodes") || plan.id !== migration.journeyId
       || plan.version !== migration.toVersion || plan.locale !== migration.locale || plan.definitionChecksum !== migration.toDefinitionChecksum

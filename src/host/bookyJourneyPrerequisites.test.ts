@@ -1,9 +1,10 @@
 import { describe, expect, it, vi } from "vitest";
 import { contentTextHash } from "../planet/contentExportHash";
-import type { Country } from "../planet/types";
+import type { BookArchiveEntry, Country } from "../planet/types";
+import type { BookyJourneyActivitySpec } from "./bookyJourneyActivity";
 import { getBookyDialogueChecksum, getBookyDialogueContentChecksum,
   type BookyDialoguePayload, type BookyDialogueRecord } from "./bookyDialogueRegistry";
-import { bookyJourneyEntityId, getBookyJourneyChecksum, type BookyJourneyDefinition,
+import { bookyJourneyDialogueContext, bookyJourneyEntityId, getBookyJourneyChecksum, type BookyJourneyDefinition,
   type BookyJourneyPrerequisite } from "./bookyJourney";
 import { createBookyJourneyCatalog } from "./bookyJourneyCatalog";
 import { readBookyJourneyContent, type BookyJourneyContent } from "./bookyJourneyContent";
@@ -15,9 +16,10 @@ import { createBookyReaderPolicy } from "./bookyReaderPolicy";
 const now = "2026-09-23T12:00:00.000Z", reviewedAt = "2026-09-22T12:00:00.000Z";
 const policy = createBookyReaderPolicy({ age: 30, readingLevel: "plain" }, reviewedAt, 1)!;
 const country: Country = { id: "test-country", name: "Synthetic country", coordinates: { lat: 20, lng: 30 },
-  writers: [{ id: "test-writer" }, { id: "other-writer" }] };
+  writers: [{ id: "test-writer", name: "Synthetic first writer", fullName: "Synthetic first writer" },
+    { id: "other-writer", name: "Synthetic second writer", fullName: "Synthetic second writer" }] };
 type Spec = { id: string; prerequisites?: readonly BookyJourneyPrerequisite[]; version?: number; locale?: "en" | "ru";
-  writerId?: string; checkpointScreen?: "globe" | "collection"; title?: string };
+  writerId?: string; checkpointScreen?: "globe" | "collection"; title?: string; activity?: BookyJourneyActivitySpec };
 
 /** Every entity, text and independent receipt below is synthetic test data.
  * The production content provider remains empty and acquires no approval. */
@@ -25,7 +27,7 @@ function fixture(specs: readonly Spec[] = [{ id: "test-base" }, { id: "test-next
   const definitions: BookyJourneyDefinition[] = [], dialogues: BookyDialogueRecord[] = [];
   for (const spec of specs) {
     const locale = spec.locale ?? "en", version = spec.version ?? 1;
-    const nodes: BookyJourneyDefinition["nodes"] = [
+    const nodes: BookyJourneyDefinition["nodes"][number][] = [
       { id: "country", kind: "country", screen: "globe", entity: { kind: "country", countryId: country.id },
         dialogue: { id: `${spec.id}-country`, version, contentChecksum: "" } },
       { id: "writer", kind: "writer", screen: "globe", entity: { kind: "writer", countryId: country.id, writerId: spec.writerId ?? "test-writer" },
@@ -33,11 +35,15 @@ function fixture(specs: readonly Spec[] = [{ id: "test-base" }, { id: "test-next
       { id: "checkpoint", kind: "checkpoint", screen: spec.checkpointScreen ?? "globe", entity: null,
         dialogue: { id: `${spec.id}-checkpoint`, version, contentChecksum: "" } },
     ];
+    if (spec.activity) nodes.splice(2, 0, { id: "activity", kind: "activity", screen: "globe", entity: null,
+      activity: spec.activity, dialogue: { id: `${spec.id}-activity`, version, contentChecksum: "" } });
     const records = nodes.map(node => {
       const copy = { title: locale === "ru" ? "Тест" : "Test", body: "Synthetic interface text.", caption: "Test", reduced: "Test" };
       const payload: BookyDialoguePayload = { id: node.dialogue.id, locale, version, audience: "adult",
-        ageRange: { min: 18, max: 120 }, readingLevel: "plain", intent: "navigation", screens: [node.screen],
-        context: `${spec.id}:${node.id}`, entityIds: node.entity ? [bookyJourneyEntityId(node.entity)] : [],
+        ageRange: { min: 18, max: 120 }, readingLevel: "plain", intent: node.kind === "activity" ? "activity" : "navigation", screens: [node.screen],
+        context: bookyJourneyDialogueContext(spec.id, node)!, entityIds: node.kind === "activity"
+          ? [...new Set([node.activity!.targetWork, ...node.activity!.choices.map(choice => choice.writer)].map(bookyJourneyEntityId))]
+          : node.entity ? [bookyJourneyEntityId(node.entity)] : [],
         claimKind: "interface-guidance", factualSources: [], copy, narration: null, prohibitedTags: [],
         provenance: { kind: "editorial", sourcePath: "test/prerequisites.ts", sourceVersion: 1, sourceRef: node.id,
           sourceSha256: "a".repeat(64), copySha256: contentTextHash(JSON.stringify({ title: copy.title, body: copy.body })) } };
@@ -60,8 +66,11 @@ function fixture(specs: readonly Spec[] = [{ id: "test-base" }, { id: "test-next
       nodes: definition.nodes.map(node => ({ nodeId: node.id, locale: definition.locale,
         dialogueContentChecksum: node.dialogue.contentChecksum, available: true, offlineAvailable: true })) })),
   };
+  const books = [...new Map(specs.flatMap(spec => spec.activity ? [[bookyJourneyEntityId(spec.activity.targetWork),
+    { id: spec.activity.targetWork.workId, countryId: spec.activity.targetWork.countryId, writerId: spec.activity.targetWork.writerId,
+      editorial: { status: "verified" } } as BookArchiveEntry] as const] : [])).values()];
   const options: BookyJourneyCatalogWithProgressOptions = { content, policy, locale: "en", now, connectivity: "online",
-    publicCountries: [country], publicBooks: [], progress: null };
+    publicCountries: [country], publicBooks: books, progress: null };
   const historyCatalogs = new Map<"en" | "ru", ReturnType<typeof createBookyJourneyCatalog>>();
   function saved(id: string, locale: "en" | "ru" = "en", count = 3) {
     // Historical setup alone supplies the synthetic prerequisites explicitly.
@@ -199,5 +208,52 @@ describe("Booky completed prerequisites require current full catalog admission",
       expect(ids(result)).toEqual(["test-base"]);
     }
     expect(getter).not.toHaveBeenCalled();
+  });
+});
+
+describe("activity completion cannot cross changed question or factual author semantics", () => {
+  const task: BookyJourneyActivitySpec = { schemaVersion: 1, id: "match-test-work", version: 1, type: "match-work-author",
+    targetWork: { kind: "work", countryId: "test-country", writerId: "test-writer", workId: "test-work" },
+    choices: [{ id: "first", writer: { kind: "writer", countryId: "test-country", writerId: "test-writer" } },
+      { id: "second", writer: { kind: "writer", countryId: "test-country", writerId: "other-writer" } }] };
+  const specs = (englishTask = task): Spec[] => [
+    { id: "test-base", locale: "ru", activity: task }, { id: "test-base", locale: "en", activity: englishTask },
+    { id: "test-next", prerequisites: [{ id: "test-base", version: 1 }] },
+  ];
+
+  it("retains acknowledged activity completion only through independently admitted equivalent RU and EN plans", () => {
+    const f = fixture(specs()), completed = f.saved("test-base", "ru", 4), bytes = JSON.stringify(completed);
+    const result = f.build([completed]);
+    expect(ids(result)).toEqual(["test-base", "test-next"]);
+    expect(result.completedPrerequisites).toEqual([{ id: "test-base", version: 1 }]);
+    const current = result.catalog.plans[0], savedPlan = createBookyJourneyCatalog({ ...f.options, locale: "ru", completedPrerequisites: [] }).plans[0];
+    expect(current.nodes[2].activity!.semanticChecksum).toBe(savedPlan.nodes[2].activity!.semanticChecksum);
+    expect(matchesBookyJourneyProgress(completed, policy, current, savedPlan)).toBe(true);
+    expect(JSON.stringify(completed)).toBe(bytes);
+    expect(f.build([f.saved("test-base", "ru", 2)]).completedPrerequisites).toEqual([]);
+    expect(f.build([completed], { content: { ...f.content,
+      dialogueApprovals: f.content.dialogueApprovals.filter(item => item.locale !== "ru") } }).completedPrerequisites).toEqual([]);
+  });
+
+  it("denies old activity completion when canonical authorship changes under the same reviewed prompt and routing key", () => {
+    const f = fixture(specs()), completed = f.saved("test-base", "ru", 4), old = f.build([completed]).catalog.plans[0];
+    const publicBooks = f.options.publicBooks.map(book => ({ ...book, authorship: { kind: "single" as const,
+      authors: [{ countryId: "test-country", writerId: "other-writer" }] } }));
+    const result = f.build([completed], { publicBooks });
+    expect(ids(result)).toEqual(["test-base"]); expect(result.completedPrerequisites).toEqual([]);
+    expect(result.catalog.plans[0].definitionChecksum).toBe(old.definitionChecksum);
+    expect(result.catalog.plans[0].nodes[2].activity!.semanticChecksum).not.toBe(old.nodes[2].activity!.semanticChecksum);
+    expect(result.catalog.plans[0].nodes[2].activity!.correctChoiceId).toBe("second");
+    expect(parseBookyJourneyProgress(preference([completed]))?.records[0]).toEqual(completed);
+  });
+
+  it("rejects locale equivalence for different activity identity or version despite fresh independent reviews", () => {
+    for (const change of [{ ...task, id: "other-question" }, { ...task, version: 2 }]) {
+      const f = fixture(specs(change)), completed = f.saved("test-base", "ru", 4);
+      const result = f.build([completed]);
+      expect(ids(result)).toEqual(["test-base"]); expect(result.completedPrerequisites).toEqual([]);
+      const savedPlan = createBookyJourneyCatalog({ ...f.options, locale: "ru", completedPrerequisites: [] }).plans[0];
+      expect(matchesBookyJourneyProgress(completed, policy, result.catalog.plans[0], savedPlan)).toBe(false);
+    }
   });
 });
