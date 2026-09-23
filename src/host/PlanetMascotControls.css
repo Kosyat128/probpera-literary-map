@@ -71,6 +71,7 @@
   scrollbar-gutter: stable;
   scrollbar-width: thin;
   scrollbar-color: #b5a581 #f8efd9;
+  scroll-padding-top: 76px;
   border: 1px solid #c9b58d;
   border-radius: 4px 20px 6px 4px;
   /* Quiet paper fibres and a shaded binding margin, all painted locally. */
@@ -129,7 +130,7 @@
   border-radius: 6px;
   font: 600 14px/1.35 "Source Sans 3 Local", var(--sans, sans-serif);
 }
-.planet-mascot-controls__heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding-bottom: 8px; }
+.planet-mascot-controls__heading { position: sticky; top: -22px; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 8px; padding-bottom: 8px; background: #fbf3df; }
 .planet-mascot-controls__heading h2 { margin: 0; color: #30583c; font: 600 25px/1.2 var(--planet-mascot-book-font); overflow-wrap: anywhere; }
 .planet-mascot-controls__heading h2::after { content: ""; display: block; width: 38px; margin-top: 8px; border-bottom: 3px double #b28d4b; }
 .planet-mascot-controls__heading button { flex: 0 0 44px; padding: 4px; font-size: 24px; border-color: #bdaa8069; background: transparent; }
@@ -216,6 +217,7 @@
   .planet-mascot-controls { width: 112px; --planet-mascot-avatar-size: 88px; }
   .planet-mascot-controls__panel { padding: 18px 16px 18px 22px; border-radius: 4px 18px 6px 4px; font-size: 16px; }
   .planet-mascot-controls__panel::before { left: 10px; }
+  .planet-mascot-controls__heading { top: -18px; }
   .planet-mascot-controls__heading h2 { font-size: 23px; }
   .planet-mascot-controls__panel h3 { font-size: 19px; }
 }

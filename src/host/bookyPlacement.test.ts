@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { bookyCardHeightLimit, bookyCardViewport, placeBooky, type BookyPlacementRect } from "./bookyPlacement";
+import { bookyCardHeightLimit, bookyCardViewport, bookyCardWidth, placeBooky, placeBookyCard, type BookyPlacementRect } from "./bookyPlacement";
 
 const size = { width: 112, height: 200 };
 const portrait = { left: 0, top: 70, width: 320, height: 774 };
@@ -65,5 +65,58 @@ describe("companion resting placement", () => {
     const controls = [{ left: NaN, top: 300, width: 40, height: 40 },
       { left: 0, top: 300, width: -20, height: 40 }, { left: -300, top: 300, width: 100, height: 100 }];
     expect(placeBooky({ left: Infinity, top: NaN }, size, portrait, controls)).toEqual({ left: 196, top: 632 });
+  });
+});
+
+describe("open companion help placement", () => {
+  it("uses the readable narrow landscape column without squeezing portrait text", () => {
+    const view = { left: 0, top: 65, width: 667, height: 310 };
+    const pet = { left: 335, top: 146, width: 312, height: 96 };
+    const width = bookyCardWidth(view, pet);
+    expect(width).toBe(311);
+    const height = bookyCardHeightLimit(view, pet, width);
+    const card = placeBookyCard({ left: 12, top: 77 }, { width, height }, view, pet, []);
+    expect(overlaps(card, pet)).toBe(false);
+    expect(card.height).toBeGreaterThanOrEqual(160);
+    expect(bookyCardWidth(portrait, { left: 196, top: 250, ...size })).toBe(296);
+  });
+  it("finds a free column between controls away from the four immediate pet positions", () => {
+    const view = { left: 0, top: 70, width: 1000, height: 630 };
+    const pet = { left: 820, top: 490, width: 112, height: 190 };
+    const controls = [{ left: 0, top: 70, width: 300, height: 630 },
+      { left: 680, top: 70, width: 320, height: 630 }];
+    const card = placeBookyCard({ left: 468, top: 380 }, { width: 340, height: 300 }, view, pet, controls);
+    expect(controls.every(rect => !overlaps(card, rect))).toBe(true);
+    expect(overlaps(card, pet)).toBe(false);
+    expect(card.height).toBe(300);
+  });
+  it("uses a readable shorter gap and restores height when the blocking controls leave", () => {
+    const view = { left: 0, top: 70, width: 800, height: 630 };
+    const pet = { left: 640, top: 500, width: 112, height: 180 };
+    const controls = [{ left: 0, top: 100, width: 800, height: 80 },
+      { left: 0, top: 420, width: 800, height: 280 }];
+    const preferred = { left: 120, top: 100 }, size = { width: 340, height: 400 };
+    const compact = placeBookyCard(preferred, size, view, pet, controls);
+    expect(controls.every(rect => !overlaps(compact, rect))).toBe(true);
+    expect(compact.height).toBeGreaterThanOrEqual(160);
+    expect(compact.height).toBeLessThan(400);
+    expect(placeBookyCard(preferred, size, view, pet, []).height).toBe(400);
+  });
+  it("keeps the pet clear and the card readable when every point overlays navigation", () => {
+    const view = { left: 20, top: 70, width: 700, height: 430 };
+    const pet = { left: 580, top: 280, width: 112, height: 200 };
+    const card = placeBookyCard({ left: 570, top: 300 }, { width: 340, height: 300 }, view, pet, [view]);
+    expect(overlaps(card, pet)).toBe(false);
+    expect(card.height).toBeGreaterThanOrEqual(160);
+    expect(card.left).toBeGreaterThanOrEqual(32);
+    expect(card.top + card.height).toBeLessThanOrEqual(488);
+  });
+  it("retains an unobstructed position and ignores invalid or offscreen controls", () => {
+    const view = { left: 0, top: 70, width: 1000, height: 630 };
+    const pet = { left: 820, top: 490, width: 112, height: 190 };
+    const preferred = { left: 350, top: 180 }, size = { width: 340, height: 300 };
+    const controls = [{ left: NaN, top: 70, width: 1000, height: 630 },
+      { left: -400, top: 180, width: 100, height: 300 }];
+    expect(placeBookyCard(preferred, size, view, pet, controls)).toEqual({ ...preferred, ...size });
   });
 });

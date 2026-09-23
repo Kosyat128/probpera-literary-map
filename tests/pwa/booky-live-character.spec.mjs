@@ -793,6 +793,20 @@ test('Mr. Booky walks along the margin only by request and stops for drag, hidin
 
     await begin();await moved(manuallyStopped);
     await page.emulateMedia({reducedMotion:'reduce'});await stopped();await expect(walk()).toBeDisabled();
+    // Stop first retires the walk, then hands its final local point to the
+    // parent. Observe that bounded handoff before taking the exact stillness
+    // reference; inactive gesture alone does not acknowledge the parent.
+    const motionHandoff=[];result.observations.motionHandoff=motionHandoff;let previousMotionRect=null,motionRectMatches=0;
+    await expect.poll(async()=>{
+      const state=await page.evaluate(()=>{
+        const element=document.querySelector('[data-planet-mascot-pet]'),r=element.getBoundingClientRect();
+        return{at:performance.now(),rect:{left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height},
+          inactive:element.getAttribute('data-planet-mascot-gesture')!=='walking',disabled:document.querySelector('[data-booky-walk]')?.disabled===true};
+      });
+      motionHandoff.push(state);const key=JSON.stringify(state.rect);
+      motionRectMatches=state.inactive&&state.disabled&&key===previousMotionRect?motionRectMatches+1:0;previousMotionRect=key;return motionRectMatches;
+    },{timeout:500,intervals:[16,32],message:'Reduced-motion stop completes its finite parent-position handoff'}).toBeGreaterThanOrEqual(2);
+    expect(motionHandoff.every(state=>state.inactive&&state.disabled)).toBe(true);
     const motionStoppedPosition=(await layout(page)).pet;await twoFrames(page);expect((await layout(page)).pet).toEqual(motionStoppedPosition);
     await page.evaluate(()=>window.__bookyLiveFixture.stopObservingWalk());expect(mutations(fixture)).toEqual(before);
     await page.emulateMedia({reducedMotion:'no-preference'});await expect(walk()).toBeEnabled();await stopped();
@@ -1189,5 +1203,120 @@ test('short landscape globe controls stay reachable beside the collapsed country
       globeFrameCannotScroll:true,directStageScrollProbe:true,noAutomaticPreferenceWrites:true,sameCanonicalGlobe:true});await fixture.verify();
   }catch(error){
     await capture(page,result,testInfo,'globe-landscape-controls-failure.png').catch(()=>undefined);throw error;
+  }finally{await fixture.close();}
+});
+
+test('Mr. Booky open help preserves primary navigation and scrolls independently in both locales',async({},testInfo)=>{
+  test.setTimeout(150_000);const fixture=await open(testInfo),{page,result}=fixture;
+  const globeTargets=['zoom-in','zoom-out','reset','edition-info'].map(name=>'[data-globe-control="'+name+'"]');
+  const globeHeader=['.atlas-immersive-chrome .interface-language-control button:first-child',
+    '.atlas-immersive-chrome .interface-language-control button:last-child'];
+  const collectionHeader=['.native-planet-panel__header .interface-language-control button:first-child',
+    '.native-planet-panel__header .interface-language-control button:last-child','.native-planet-panel__header > button'];
+  const optionalRail=['[data-globe-control="edition-rail-toggle"]',
+    '.globe-edition-scroll-cue.is-previous[data-visible="true"] button',
+    '.globe-edition-scroll-cue.is-next[data-visible="true"] button'];
+  async function settleHelp(){
+    await live(page);let previous=null,matches=0;
+    await expect.poll(async()=>{
+      const key=JSON.stringify(await layout(page));matches=key===previous?matches+1:0;previous=key;return matches;
+    },{intervals:[50,100],message:'The open help and companion settle in their actual viewport'}).toBeGreaterThanOrEqual(3);
+  }
+  async function hitTargets(label,selectors,optional=[]){
+    const targets=await page.evaluate(({selectors,optional})=>[...selectors,...optional].map(selector=>{
+      const element=document.querySelector(selector),r=element?.getBoundingClientRect();
+      let shown=!!element&&!!r&&r.width>0&&r.height>0&&!element.closest('[hidden],[inert],[aria-hidden="true"]');
+      for(let node=element;node&&shown;node=node.parentElement){const style=getComputedStyle(node);
+        if(style.display==='none'||style.visibility==='hidden'||Number(style.opacity)===0)shown=false;}
+      if(!shown)return{selector,optional:optional.includes(selector),shown:false};
+      const points=[[.15,.5],[.5,.5],[.85,.5]].map(([x,y])=>{
+        const hit=document.elementFromPoint(r.left+r.width*x,r.top+r.height*y);
+        return{reachable:!!hit&&element.contains(hit),tag:hit?.tagName??null,className:typeof hit?.className==='string'?hit.className:null};
+      });
+      return{selector,optional:optional.includes(selector),shown:true,
+        rect:{left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height},points,
+        fits:r.width>=44-.001&&r.height>=44-.001&&r.left>=0&&r.top>=0&&r.right<=innerWidth+.5&&r.bottom<=innerHeight+.5};
+    }),{selectors,optional});
+    const observation={label,viewport:page.viewportSize(),layout:await layout(page),targets};result.observations.openHelpChecks.push(observation);
+    for(const target of targets){
+      if(target.optional&&!target.shown)continue;
+      expect(target.shown,label+': '+target.selector+' exists visibly').toBe(true);
+      expect(target.fits,label+': '+target.selector+' fits with a 44px target').toBe(true);
+      // Every specified outside control is strict while tips are open: the
+      // card never supplies an overlap exemption or a hidden-host baseline.
+      expect(target.points.every(point=>point.reachable),label+': '+target.selector+' receives all pointer hits').toBe(true);
+      await page.locator(target.selector).click({trial:true});
+    }
+    return observation;
+  }
+  async function scrollAndClose(label,selectors,closedSelectors=selectors,optional=[],closedOptional=optional){
+    const before=mutations(fixture),canonical=await actual(page);
+    await hitTargets(label+' top',[...selectors,'[data-planet-mascot-collapse]'],optional);
+    const metrics=()=>panel(page).evaluate(element=>({scrollTop:element.scrollTop,scrollHeight:element.scrollHeight,clientHeight:element.clientHeight}));
+    const top=await metrics();expect(top.scrollTop).toBe(0);expect(top.scrollHeight).toBeGreaterThan(top.clientHeight+40);
+    const box=await panel(page).boundingBox();await page.mouse.move(box.x+box.width*.65,box.y+box.height*.65);await page.mouse.wheel(0,600);
+    await expect.poll(async()=>(await metrics()).scrollTop).toBeGreaterThan(40);const scrolled=await metrics();
+    await hitTargets(label+' scrolled',[...selectors,'[data-planet-mascot-collapse]'],optional);retained(await actual(page),canonical);
+    expect((await metrics()).scrollTop).toBeGreaterThan(40);
+    await page.locator('[data-planet-mascot-collapse]').click();await expect(panel(page)).toHaveCount(0);await live(page);
+    await hitTargets(label+' closed',closedSelectors,closedOptional);retained(await actual(page),canonical);expect(mutations(fixture)).toEqual(before);
+    result.observations.helpScrolls.push({label,top,scrolled,closedWhileScrolled:true,closedByActualButton:true});
+  }
+  async function setLanguage(language,header){
+    if(await page.locator('html').getAttribute('lang')===language)return;
+    await page.locator(header+' .interface-language-control button').filter({hasText:new RegExp('^'+language.toUpperCase()+'$','u')}).click();
+    await expect(page.locator('html')).toHaveAttribute('lang',language);await expect.poll(()=>fixture.memory.get('probpera-interface-language')).toBe(language);
+  }
+  try{
+    await actual(page);await page.evaluate(()=>window.__bookyLiveFixture.remember());await stablePose(page);
+    const original=await actual(page);result.observations.openHelpChecks=[];result.observations.helpScrolls=[];const landscapeHeights=[];
+    for(const[language,size]of [['ru',{width:800,height:400}],['en',{width:800,height:400}],
+      ['ru',{width:667,height:375}],['en',{width:667,height:375}]]){
+      await setLanguage(language,'.atlas-immersive-chrome');await page.setViewportSize(size);
+      const country=page.locator('.atlas-country-sheet-toggle');
+      for(let i=0;i<3&&await country.getAttribute('aria-expanded')==='true';i++){await country.focus();await page.keyboard.press('Enter');}
+      await expect(country).toHaveAttribute('aria-expanded','false');await stablePose(page);const beforeOpen=await actual(page);
+      await page.locator('[data-planet-mascot-toggle]').click();await expect(panel(page)).toBeVisible();await companionSaved(fixture);await settleHelp();
+      landscapeHeights.push((await panel(page).boundingBox()).height);
+      retained(await actual(page),beforeOpen);
+      // A readable help card cannot avoid every strip on a 375px-high screen.
+      // Persistent host controls stay strict while open; every dock, country
+      // and visible rail control is strict after the real close action.
+      await hitTargets(language+' '+size.width+' open',globeHeader);
+      if(language==='ru'&&size.width===800)await capture(page,result,testInfo,'booky-help-globe-ru-800.png');
+      if(language==='en'&&size.width===667)await capture(page,result,testInfo,'booky-help-globe-en-667.png');
+      await scrollAndClose(language+' '+size.width,globeHeader,[...globeTargets,...globeHeader,'.atlas-country-sheet-toggle'],[],optionalRail);
+      retained(await actual(page),original,false);
+    }
+
+    await page.setViewportSize({width:1440,height:850});await ready(page);await stablePose(page);
+    const beforeDesktop=await actual(page);await page.locator('[data-planet-mascot-toggle]').click();
+    await expect(panel(page)).toBeVisible();await settleHelp();retained(await actual(page),beforeDesktop);
+    const desktopHeight=(await panel(page).boundingBox()).height;expect(desktopHeight).toBeGreaterThan(Math.max(...landscapeHeights)+40);
+    result.observations.helpHeightRegrowth={landscapeHeights,desktopHeight};
+    await scrollAndClose('desktop feasible clear placement',[...globeTargets,...globeHeader],undefined,optionalRail);
+
+    // Enter the actual collection through Booky's existing utility. Its
+    // ordinary content remains a deliberate overlay; the persistent header
+    // must remain usable throughout help scrolling and after collapse.
+    await openUtility(page,'Graphics settings','Useful actions');await page.keyboard.press('Tab');
+    await expect(page.locator('.native-planet-panel')).toBeVisible();await page.setViewportSize({width:320,height:844});
+    await page.locator('[data-planet-mascot-move]').focus();await page.keyboard.press('Home');await live(page);
+    for(const language of ['ru','en']){
+      await setLanguage(language,'.native-planet-panel__header');await stablePose(page);const beforeOpen=await actual(page);
+      await page.locator('[data-planet-mascot-toggle]').click();await expect(panel(page)).toBeVisible();await settleHelp();
+      retained(await actual(page),beforeOpen);await hitTargets(language+' collection open',collectionHeader);
+      await capture(page,result,testInfo,`booky-help-collection-${language}-320.png`);
+      await scrollAndClose(language+' collection',collectionHeader);retained(await actual(page),original,false);
+    }
+    expect(fixture.writes()).toEqual([]);expect(fixture.memory.get(KEY)).toBe(fixture.initialRecord);expect(await downloadActions(page)).toEqual([]);
+    Object.assign(result,{scenario:'booky-open-help-placement',locales:['ru','en'],landscapeViewports:[{width:800,height:400},{width:667,height:375}],collectionPortraitWidth:320,
+      openHelpLocaleControlsReachable:true,desktopOpenHelpNavigationReachable:true,closedHelpNavigationReachable:true,
+      collectionHeaderReachable:true,helpScrollsByPointerWheel:true,helpClosesWhileScrolled:true,helpRegrowsOnLargerViewport:true,petAndHelpFitWithoutOverlap:true,
+      noAutomaticPreferenceWrites:true,noHelpCameraChanges:true,sameCanonicalGlobe:true});await fixture.verify();
+  }catch(error){
+    result.observations.failureLayout=await layout(page).catch(()=>null);
+    result.observations.failureCharacter=await character(page).catch(()=>null);
+    await capture(page,result,testInfo,'booky-help-placement-failure.png').catch(()=>undefined);throw error;
   }finally{await fixture.close();}
 });

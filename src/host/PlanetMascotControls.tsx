@@ -5,7 +5,7 @@ import PlanetMascotAvatar from "./PlanetMascotAvatar";
 import { BOOKY_GESTURES, type BookyGesture } from "./bookyAnimation";
 import { useBookyWalk } from "./useBookyWalk";
 import { BOOKY_APPROACH_MS, planBookyApproach } from "./bookyWalk";
-import { bookyCardHeightLimit, bookyCardViewport, placeBooky } from "./bookyPlacement";
+import { bookyCardHeightLimit, bookyCardViewport, bookyCardWidth, placeBooky, placeBookyCard } from "./bookyPlacement";
 import type { PlanetMascotController, PlanetMascotSnapshot } from "./planetMascot";
 import type { PlanetMascotPersistenceSnapshot } from "./planetMascotPersistence";
 import { isBookyRouteComplete } from "./bookyTourProgress";
@@ -97,11 +97,6 @@ function companionViewport(): Rect {
   // back button and locale switch. The companion must never cover those exits.
   return { ...view, top, height: Math.max(0, view.top + view.height - top) };
 }
-function overlap(a: Rect, b: Rect) {
-  return Math.max(0, Math.min(a.left + a.width, b.left + b.width) - Math.max(a.left, b.left))
-    * Math.max(0, Math.min(a.top + a.height, b.top + b.height) - Math.max(a.top, b.top));
-}
-
 export default function PlanetMascotControls({ controller, snapshot, screen, countryLabel, writerLabel,
   onAction, pointRequest, position, onPositionChange, persistence, onRetryPersistence, onRetryContent, readerSettings }: PlanetMascotControlsProps) {
   const { language } = useInterfaceLanguage();
@@ -206,12 +201,15 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
       const bounds = root.current?.getBoundingClientRect();
       if (bounds) setPetSize(previous => Math.abs(previous.width - bounds.width) < .5 && Math.abs(previous.height - bounds.height) < .5
         ? previous : { width: bounds.width, height: bounds.height });
-      const cardBounds = card.current?.getBoundingClientRect();
-      if (cardBounds) setCardHeight(previous => Math.abs(previous - cardBounds.height) < .5 ? previous : cardBounds.height);
+      // Measure content, not the constrained viewport, so a compact card can
+      // grow again after a resize or after a nearby control disappears.
+      const contentHeight = card.current ? card.current.scrollHeight + 2 : null;
+      if (contentHeight !== null) setCardHeight(previous => Math.abs(previous - contentHeight) < .5 ? previous : contentHeight);
     };
     const observer = typeof ResizeObserver === "undefined" ? null : new ResizeObserver(measure);
     if (root.current) observer?.observe(root.current);
     if (card.current) observer?.observe(card.current);
+    if (card.current?.firstElementChild) observer?.observe(card.current.firstElementChild);
     measure();
     return () => observer?.disconnect();
   }, [snapshot.available, shown, open, language, view.width, view.height]);
@@ -345,22 +343,15 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     if (targetCue?.phase === "approaching" && !walk.active) setTargetCue(null);
   }, [walk.active, targetCue?.phase]);
   const petRect = { ...petPosition, ...petSize };
-  const cardWidth = Math.min(340, Math.max(180, view.width - MARGIN * 2));
+  const cardWidth = bookyCardWidth(view, petRect);
   const cardView = bookyCardViewport(view, petSize, navigation);
   const maxCardHeight = bookyCardHeightLimit(cardView, petRect, cardWidth);
   const height = Math.min(cardHeight, maxCardHeight);
-  const cardCandidates = [
-    { left: petPosition.left - cardWidth - MARGIN, top: petPosition.top + petSize.height - height },
-    { left: petPosition.left + petSize.width + MARGIN, top: petPosition.top + petSize.height - height },
-    { left: petPosition.left + petSize.width - cardWidth, top: petPosition.top - height - MARGIN },
-    { left: petPosition.left + petSize.width - cardWidth, top: petPosition.top + petSize.height + MARGIN },
-  ].map(candidate => ({ ...clamped(candidate, cardWidth, height, cardView), width: cardWidth, height }));
-  const score = (candidate: Rect) => navigation.reduce((sum, rect) => sum + overlap(candidate, rect), 0)
-    + (highlight && highlight.width * highlight.height < view.width * view.height * .45 ? overlap(candidate, highlight) : 0);
-  const cardPosition = cardCandidates.reduce((best, candidate) => {
-    const covered = overlap(candidate, petRect), bestCovered = overlap(best, petRect);
-    return covered < bestCovered || (covered === bestCovered && score(candidate) < score(best)) ? candidate : best;
-  });
+  const cardObstacles = highlight && highlight.width * highlight.height < view.width * view.height * .45
+    ? [...navigation, highlight] : navigation;
+  const cardPosition = open ? placeBookyCard({ left: petPosition.left - cardWidth - MARGIN,
+    top: petPosition.top + petSize.height - height }, { width: cardWidth, height }, cardView, petRect, cardObstacles)
+    : { left: 0, top: 0, width: cardWidth, height };
   const perform = (action: PlanetMascotAction) => {
     const performed = controller.act(action, snapshot.revision, () => onAction(action));
     if (performed) { setGesture("rest"); setReactionKey(value => value + 1); }
@@ -593,7 +584,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
       {!open && persistenceNotice}
       {open && <section ref={card} id={id} role="region" aria-labelledby={`${id}-title`} data-planet-mascot-panel=""
         className="planet-mascot-controls__panel" style={{ left: cardPosition.left, top: cardPosition.top,
-          width: cardWidth, maxHeight: maxCardHeight }}>
+          width: cardPosition.width, maxHeight: cardPosition.height }}>
         <div className="planet-mascot-controls__leaf" data-planet-mascot-leaf={pageTurn}
           style={pageTurn ? { animationName: pageTurn % 2 ? "booky-leaf-reveal-a" : "booky-leaf-reveal-b" } : undefined}>
         <header className="planet-mascot-controls__heading">

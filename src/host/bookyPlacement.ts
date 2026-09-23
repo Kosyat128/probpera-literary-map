@@ -51,9 +51,65 @@ export function bookyCardViewport(view: BookyPlacementRect, size: Size,
   return { ...view, height: bottom - view.top };
 }
 
+export function bookyCardWidth(view: BookyPlacementRect, pet: BookyPlacementRect): number {
+  const fullWidth = Math.min(340, Math.max(180, view.width - GAP * 2));
+  const beside = Math.max(pet.left - view.left,
+    view.left + view.width - pet.left - pet.width) - GAP * 2;
+  // A short landscape screen can have a readable column just under 340 px.
+  // Keep portrait cards full width when neither side can hold readable text.
+  return beside >= 240 ? Math.min(fullWidth, beside) : fullWidth;
+}
+
 export function bookyCardHeightLimit(view: BookyPlacementRect, pet: BookyPlacementRect, cardWidth: number): number {
   const beside = pet.left - view.left >= cardWidth + GAP * 2
     || view.left + view.width - pet.left - pet.width >= cardWidth + GAP * 2;
   return Math.max(100, Math.min(view.height - GAP * 2, beside ? view.height - GAP * 2
     : Math.max(pet.top - view.top - GAP * 2, view.top + view.height - pet.top - pet.height - GAP * 2)));
+}
+
+/** Search the finite gaps between controls before accepting an overlay.
+ * Keep a readable scroll area; a crowded screen cannot promise zero overlap.
+ */
+export function placeBookyCard(preferred: Point, size: Size, view: BookyPlacementRect,
+  pet: BookyPlacementRect, controls: readonly BookyPlacementRect[]): BookyPlacementRect {
+  const width = Math.min(size.width, Math.max(1, view.width - GAP * 2));
+  const height = Math.min(size.height, Math.max(1, view.height - GAP * 2));
+  const minHeight = Math.min(160, height);
+  const leftEdge = view.left + GAP, topEdge = view.top + GAP;
+  const rightEdge = view.left + view.width - GAP, bottomEdge = view.top + view.height - GAP;
+  const clampX = (x: number) => Math.max(leftEdge, Math.min(rightEdge - width, x));
+  const clampY = (y: number, h: number) => Math.max(topEdge, Math.min(bottomEdge - h, y));
+  const origin = { left: clampX(preferred.left), top: clampY(preferred.top, height), width, height };
+  const obstacles = controls.filter(rect => valid(rect) && intersection(rect, view) > 0);
+  const edges = [pet, ...obstacles].filter(valid);
+  const xs = new Set([origin.left, leftEdge, clampX(rightEdge - width)]);
+  const ys = new Set([origin.top, topEdge, clampY(bottomEdge - height, height)]);
+  for (const rect of edges) {
+    xs.add(clampX(rect.left - width - GAP)); xs.add(clampX(rect.left + rect.width + GAP));
+    ys.add(clampY(rect.top - height - GAP, height));
+    ys.add(clampY(rect.top + rect.height + GAP, minHeight));
+  }
+  const score = (rect: BookyPlacementRect) => [intersection(rect, pet),
+    obstacles.reduce((sum, obstacle) => sum + intersection(rect, obstacle), 0), -rect.height,
+    (rect.left - origin.left) ** 2 + (rect.top - origin.top) ** 2];
+  const better = (a: number[], b: number[]) => {
+    for (let i = 0; i < a.length; i++) if (a[i] !== b[i]) return a[i] < b[i];
+    return false;
+  };
+  let best = origin, bestScore = score(best);
+  if (bestScore[0] === 0 && bestScore[1] === 0) return best;
+  for (const left of xs) for (const top of ys) {
+    const available = bottomEdge - top;
+    if (available < minHeight) continue;
+    const heights = new Set([Math.min(height, available), minHeight]);
+    for (const rect of edges) {
+      const h = rect.top - GAP - top;
+      if (h >= minHeight && h <= height && h <= available) heights.add(h);
+    }
+    for (const h of heights) {
+      const candidate = { left, top, width, height: h }, candidateScore = score(candidate);
+      if (better(candidateScore, bestScore)) { best = candidate; bestScore = candidateScore; }
+    }
+  }
+  return best;
 }
