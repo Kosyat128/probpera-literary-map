@@ -107,6 +107,10 @@ function reference(input: unknown): BookyDossierCharacterReference {
   return Object.freeze({ work: Object.freeze({ kind: "work", countryId: work.countryId, writerId: work.writerId, workId: work.workId }),
     dossierVersion: value.dossierVersion, locale: value.locale, sectionId: value.sectionId, blockId: value.blockId, itemId: value.itemId });
 }
+/** Structural, immutable reference only; it supplies no publication or access authority. */
+export function parseBookyDossierCharacterReference(input: unknown): BookyDossierCharacterReference | null {
+  try { return reference(input); } catch { return null; }
+}
 function publicWork(ref: WorkRef, countriesInput: unknown, booksInput: unknown): boolean {
   const countries = array(countriesInput, 256), books = array(booksInput, 50_000);
   const countriesFound = countries.filter(country => own(country, "id") === ref.countryId);
