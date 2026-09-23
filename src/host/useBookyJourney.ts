@@ -1,11 +1,12 @@
+import { contentTextHash } from "../planet/contentExportHash";
 import { useLayoutEffect, useMemo, useRef, useSyncExternalStore } from "react";
 import type { Country, BookArchiveEntry } from "../planet/types";
 import { resolveCountryGlobeCoordinates } from "../components/globeCoordinates";
-import { createBookyJourneyCatalog } from "./bookyJourneyCatalog";
+import { createBookyJourneyCatalogWithProgress, matchesBookyJourneyProgress } from "./bookyJourneyPrerequisites";
 import { readBookyJourneyContent } from "./bookyJourneyContent";
 import type { BookyJourneyPlan } from "./bookyJourney";
 import type { BookyJourneyHostOffer } from "./bookyJourneyHost";
-import { createBookyJourneyRuntime, type BookyJourneyRuntimeHost } from "./bookyJourneyRuntime";
+import { bookyJourneyRouteKey, createBookyJourneyRuntime, type BookyJourneyRuntimeHost } from "./bookyJourneyRuntime";
 import { serializeBookyReaderPolicy, type BookyReaderPolicy } from "./bookyReaderPolicy";
 import type { createPlanetMascotController, PlanetMascotSnapshot } from "./planetMascot";
 import type { PreferenceStore } from "../platform/ports";
@@ -16,7 +17,6 @@ import { createBookyJourneyMigrationRegistry } from "./bookyJourneyMigrationRegi
 
 const EMPTY_COUNTRIES: readonly Country[] = Object.freeze([]);
 const EMPTY_BOOKS: readonly BookArchiveEntry[] = Object.freeze([]);
-const NO_PREREQUISITES = Object.freeze([]);
 
 export type BookyJourneyNavigation = (offer: BookyJourneyHostOffer, signal: AbortSignal,
   isCurrent: () => boolean) => boolean;
@@ -49,42 +49,12 @@ export function useBookyJourney(input: {
     const point = resolveCountryGlobeCoordinates(country);
     return point ? { ...country, coordinates: { lat: point.latitude, lng: point.longitude } } : country;
   }), [content, input.countries]);
-  const catalog = useMemo(() => createBookyJourneyCatalog({ content, policy: input.policy,
-    locale: input.locale, connectivity: input.connectivity, now: new Date().toISOString(),
-    publicCountries: input.countryReady ? countries : EMPTY_COUNTRIES,
-    publicBooks: input.booksReady ? input.books : EMPTY_BOOKS, completedPrerequisites: NO_PREREQUISITES }),
-  [content, input.policy, input.locale, input.connectivity, input.countryReady, input.booksReady, countries, input.books]);
-  const profileKey = serializeBookyReaderPolicy(input.policy);
   const hostRef = useRef<BookyJourneyRuntimeHost | null>(null);
   const navigateRef = useRef(input.navigate);
   const sequence = useRef(0);
   const { mascot } = input;
   const storage = useMemo(() => createBookyJourneyProgressStore({ preferences: input.preferences }), [input.preferences]);
   const persistenceRef = useRef<ReturnType<typeof createBookyJourneyPersistence> | null>(null);
-  const active = input.enabled && input.active && input.mascotSnapshot.available
-    && input.mascotSnapshot.visibility === "shown" && input.mascotSnapshot.panel === "open";
-  const host = useMemo<BookyJourneyRuntimeHost>(() => {
-    const resolve = (plan: BookyJourneyPlan, nodeId: string) => {
-      if (!active || !persistenceRef.current?.getSnapshot().canAct || !profileKey || serializeBookyReaderPolicy(input.readPolicy()) !== profileKey
-        || serializeBookyReaderPolicy(mascot.getReaderPolicy()) !== profileKey) return null;
-      const source = catalog.sourceFor(plan);
-      if (!source) return null;
-      return mascot.resolveJourneyNode({ journeyId: plan.id, version: plan.version, locale: plan.locale,
-        definitionChecksum: plan.definitionChecksum, nodeId, hostRevision: mascot.getSnapshot().revision },
-      () => hostRef.current?.resolve === resolve ? source : null);
-    };
-    const resolveMigration: NonNullable<BookyJourneyRuntimeHost["resolveMigration"]> = (savedRecord, plan) => {
-      const policy = input.readPolicy();
-      if (!policy || serializeBookyReaderPolicy(policy) !== profileKey
-        || hostRef.current?.resolveMigration !== resolveMigration || !resolve(plan, plan.nodes[0].id)) return null;
-      const offer = migrations.resolve(savedRecord, plan, policy, new Date().toISOString());
-      // The mapping supplies semantic equivalence, never authority to access
-      // its target. Recheck the same currently reviewed whole journey.
-      return hostRef.current?.resolveMigration === resolveMigration && resolve(plan, plan.nodes[0].id) ? offer : null;
-    };
-    return Object.freeze({ revision: ++sequence.current, active, profileKey, locale: input.locale,
-      plans: catalog.plans, resolve, resolveMigration, view: input.view });
-  }, [active, profileKey, input.locale, catalog, migrations, input.view, input.readPolicy, mascot]);
   const controller = useMemo(() => createBookyJourneyRuntime({ readHost: () => hostRef.current,
     navigate: (offer, signal) => {
       const ownerProfile = hostRef.current?.profileKey;
@@ -98,6 +68,60 @@ export function useBookyJourney(input: {
       return isCurrent() && navigateRef.current(offer, signal, isCurrent);
     } }), []);
   const snapshot = useSyncExternalStore(controller.subscribe, controller.getSnapshot, controller.getSnapshot);
+  const progress = useSyncExternalStore(controller.subscribe, controller.getProgressIntent, controller.getProgressIntent).preference;
+  const catalogs = useMemo(() => {
+    const build = (preference: typeof progress, locale: "ru" | "en") => createBookyJourneyCatalogWithProgress({ content, policy: input.policy,
+      locale, connectivity: input.connectivity, now: new Date().toISOString(),
+      publicCountries: input.countryReady ? countries : EMPTY_COUNTRIES,
+      publicBooks: input.booksReady ? input.books : EMPTY_BOOKS, progress: preference }).catalog;
+    const initial = build(progress, input.locale);
+    let currentProgress = progress;
+    const byLocale = new Map([[input.locale, initial]]);
+    return { initial, forProgress(preference: typeof progress, locale = input.locale) {
+      if (preference !== currentProgress) { byLocale.clear(); currentProgress = preference; }
+      if (!byLocale.has(locale)) byLocale.set(locale, build(preference, locale));
+      return byLocale.get(locale)!;
+    } };
+  }, [content, input.policy, input.locale, input.connectivity, input.countryReady, input.booksReady, countries, input.books, progress]);
+  const catalog = catalogs.initial;
+  const profileKey = serializeBookyReaderPolicy(input.policy);
+  const profileFingerprint = profileKey ? contentTextHash(profileKey) : null;
+  const active = input.enabled && input.active && input.mascotSnapshot.available
+    && input.mascotSnapshot.visibility === "shown" && input.mascotSnapshot.panel === "open";
+  const host = useMemo<BookyJourneyRuntimeHost>(() => {
+    const resolve = (plan: BookyJourneyPlan, nodeId: string) => {
+      // A just-deleted prerequisite must revoke admission before React commits
+      // a new catalog. Live intent also preserves local progress on write failure.
+      if (!active || !persistenceRef.current?.getSnapshot().canAct || !profileKey || serializeBookyReaderPolicy(input.readPolicy()) !== profileKey
+        || serializeBookyReaderPolicy(mascot.getReaderPolicy()) !== profileKey) return null;
+      const intent = controller.getProgressIntent().preference, currentCatalog = catalogs.forProgress(intent);
+      const currentPlan = currentCatalog.plans.find(candidate => bookyJourneyRouteKey(candidate) === bookyJourneyRouteKey(plan));
+      if (!currentPlan) return null;
+      const saved = intent.records.find(record => record.policyFingerprint === profileFingerprint
+        && record.journeyId === plan.id && record.journeyVersion === plan.version);
+      if (saved) {
+        const savedPlan = catalogs.forProgress(intent, saved.locale).plans.find(candidate =>
+          candidate.id === saved.journeyId && candidate.version === saved.journeyVersion);
+        if (!input.policy || !savedPlan || !matchesBookyJourneyProgress(saved, input.policy, currentPlan, savedPlan)) return null;
+      }
+      const source = currentCatalog.sourceFor(currentPlan);
+      if (!source) return null;
+      return mascot.resolveJourneyNode({ journeyId: plan.id, version: plan.version, locale: plan.locale,
+        definitionChecksum: plan.definitionChecksum, nodeId, hostRevision: mascot.getSnapshot().revision },
+      () => hostRef.current?.resolve === resolve && controller.getProgressIntent().preference === intent ? source : null);
+    };
+    const resolveMigration: NonNullable<BookyJourneyRuntimeHost["resolveMigration"]> = (savedRecord, plan) => {
+      const policy = input.readPolicy();
+      if (!policy || serializeBookyReaderPolicy(policy) !== profileKey
+        || hostRef.current?.resolveMigration !== resolveMigration || !resolve(plan, plan.nodes[0].id)) return null;
+      const offer = migrations.resolve(savedRecord, plan, policy, new Date().toISOString());
+      // The mapping supplies semantic equivalence, never authority to access
+      // its target. Recheck the same currently reviewed whole journey.
+      return hostRef.current?.resolveMigration === resolveMigration && resolve(plan, plan.nodes[0].id) ? offer : null;
+    };
+    return Object.freeze({ revision: ++sequence.current, active, profileKey, locale: input.locale,
+      plans: catalog.plans, resolve, resolveMigration, view: input.view });
+  }, [active, profileKey, profileFingerprint, input.policy, input.locale, catalog, migrations, input.view, input.readPolicy, mascot, controller, catalogs]);
   const persistence = useMemo(() => createBookyJourneyPersistence(controller, storage), [controller, storage]);
   const persistenceSnapshot = useSyncExternalStore(persistence.subscribe, persistence.getSnapshot, persistence.getSnapshot);
   useLayoutEffect(() => {

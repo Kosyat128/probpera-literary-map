@@ -596,3 +596,141 @@ describe("explicit reviewed Booky journey migration", () => {
     expect(f.navigate).not.toHaveBeenCalled(); f.runtime.dispose();
   });
 });
+
+describe("explicit saved Booky journey history", () => {
+  function historySetup() {
+    const f = durableSetup(), second = fixture("en", { id: "second-journey", title: "Second synthetic journey" });
+    f.switchSource(second); f.patch({ plans: [f.initial.plan, second.plan] });
+    const firstRecord = createBookyJourneyProgressRecord(explicitPolicy, f.initial.plan, ["country"], "writer")!;
+    const secondRecord = createBookyJourneyProgressRecord(explicitPolicy, second.plan, [], "country")!;
+    const preference = { ...DEFAULT_BOOKY_JOURNEY_PROGRESS, activeRecordId: firstRecord.recordId, records: [firstRecord, secondRecord] };
+    f.runtime.restoreProgress(preference, 0);
+    return { ...f, firstRecord, secondRecord, preference };
+  }
+
+  it("always exposes immutable bounded semantic history with only freshly admitted titles", () => {
+    const empty = durableSetup(); expect(empty.runtime.getSnapshot().history).toEqual([]); empty.runtime.dispose();
+    const f = historySetup(), state = f.runtime.getSnapshot();
+    expect(state.history).toEqual([
+      { key: f.firstRecord.recordId, title: f.initial.plan.title, journeyId: "test-journey", version: 1, locale: "en",
+        completedCount: 1, total: 4, selected: true, canSelect: true, available: true },
+      { key: f.secondRecord.recordId, title: "Second synthetic journey", journeyId: "second-journey", version: 1, locale: "en",
+        completedCount: 0, total: 4, selected: false, canSelect: true, available: true },
+    ]);
+    expect(Object.isFrozen(state.history)).toBe(true); expect(Object.isFrozen(state.history[0])).toBe(true);
+    f.patch({ resolve: () => null }); f.runtime.refresh();
+    expect(f.runtime.getSnapshot().history.every(item => item.title === null && !item.available && item.canSelect)).toBe(true);
+    expect(f.runtime.getProgressIntent()).toEqual({ revision: 0, preference: f.preference }); f.runtime.dispose();
+  });
+
+  it("selects without navigation, acknowledgement or alteration of either saved record", () => {
+    const f = historySetup(), state = f.runtime.getSnapshot();
+    expect(f.runtime.selectHistory(f.secondRecord.recordId, state.revision)).toBe(true);
+    expect(f.runtime.getProgressIntent()).toEqual({ revision: 1,
+      preference: { ...f.preference, activeRecordId: f.secondRecord.recordId } });
+    expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "paused", completedCount: 0, index: 0 });
+    expect(f.runtime.getSnapshot().history.map(item => item.selected)).toEqual([false, true]);
+    expect(f.navigate).not.toHaveBeenCalled();
+    expect(f.runtime.selectHistory(f.firstRecord.recordId, f.runtime.getSnapshot().revision)).toBe(true);
+    expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "paused", completedCount: 1, index: 1 });
+    expect(f.runtime.getProgressIntent().preference.records).toEqual(f.preference.records);
+    expect(f.navigate).not.toHaveBeenCalled(); f.runtime.dispose();
+  });
+
+  it("selects unavailable old history to reveal migration and completed history without replay", () => {
+    const f = migrationSetup();
+    f.runtime.restoreProgress({ ...f.preference, activeRecordId: null }, 0);
+    expect(f.runtime.getSnapshot()).toMatchObject({ active: null, migrations: [], history: [
+      { title: null, available: false, canSelect: true, selected: false },
+    ] });
+    expect(f.runtime.selectHistory(f.old.recordId, f.runtime.getSnapshot().revision)).toBe(true);
+    expect(f.runtime.getSnapshot()).toMatchObject({ active: { phase: "unavailable", completedCount: 1 }, migrations: [{ fromVersion: 1, toVersion: 2 }] });
+    expect(f.navigate).not.toHaveBeenCalled(); expect(f.runtime.getProgressIntent().preference.records).toEqual([f.old]); f.runtime.dispose();
+    const completed = durableSetup(), plan = completed.initial.plan;
+    const record = createBookyJourneyProgressRecord(explicitPolicy, plan, plan.nodes.map(node => node.id), null)!;
+    completed.runtime.restoreProgress({ ...DEFAULT_BOOKY_JOURNEY_PROGRESS, records: [record] }, 0);
+    expect(completed.runtime.selectHistory(record.recordId, completed.runtime.getSnapshot().revision)).toBe(true);
+    expect(completed.runtime.getSnapshot().active).toMatchObject({ phase: "complete", completedCount: 4, canNext: false, canOpen: false });
+    expect(completed.navigate).not.toHaveBeenCalled(); expect(completed.runtime.getProgressIntent().preference.records).toEqual([record]); completed.runtime.dispose();
+  });
+
+  it("requires fresh revision and active explicit policy; other-profile history can only be deleted", () => {
+    const f = historySetup(), old = f.runtime.getSnapshot().revision;
+    f.patch({ view: { ...f.host().view } });
+    expect(f.runtime.deleteHistory(f.firstRecord.recordId, old)).toBe(false);
+    expect(f.runtime.selectHistory(f.secondRecord.recordId, old)).toBe(false);
+    for (const profileKey of [null, "opaque-policy", serializeBookyReaderPolicy({ ...explicitPolicy, revision: 2 })]) {
+      f.patch({ profileKey }); f.runtime.refresh();
+      const state = f.runtime.getSnapshot();
+      expect(state.history.every(item => item.title === null && !item.available && !item.canSelect)).toBe(true);
+      expect(f.runtime.selectHistory(f.firstRecord.recordId, state.revision)).toBe(false);
+      if (!profileKey || profileKey === "opaque-policy") expect(f.runtime.deleteHistory(f.firstRecord.recordId, state.revision)).toBe(false);
+    }
+    f.patch({ active: false }); f.runtime.refresh();
+    expect(f.runtime.deleteHistory(f.firstRecord.recordId, f.runtime.getSnapshot().revision)).toBe(false);
+    f.patch({ active: true }); f.runtime.refresh();
+    expect(f.runtime.deleteHistory(f.firstRecord.recordId, f.runtime.getSnapshot().revision)).toBe(true);
+    expect(f.runtime.getProgressIntent().preference).toMatchObject({ activeRecordId: null, records: [f.secondRecord] });
+    expect(f.navigate).not.toHaveBeenCalled(); f.runtime.dispose();
+  });
+
+  it("deletes one inactive record without disturbing the active navigation, then aborts selected deletion", () => {
+    const f = historySetup(); expect(f.runtime.resume(f.runtime.getSnapshot().revision)).toBe(true);
+    const signal = f.navigate.mock.calls[0][1], active = f.runtime.getSnapshot().active;
+    expect(f.runtime.deleteHistory(f.secondRecord.recordId, f.runtime.getSnapshot().revision)).toBe(true);
+    expect(signal.aborted).toBe(false); expect(f.runtime.getSnapshot().active).toEqual(active);
+    expect(f.runtime.getProgressIntent().preference).toMatchObject({ activeRecordId: f.firstRecord.recordId, records: [f.firstRecord] });
+    expect(f.runtime.deleteHistory(f.firstRecord.recordId, f.runtime.getSnapshot().revision)).toBe(true);
+    expect(signal.aborted).toBe(true); expect(f.runtime.getSnapshot()).toMatchObject({ active: null, history: [] });
+    expect(f.runtime.getProgressIntent().preference).toMatchObject({ activeRecordId: null, records: [] });
+    expect(f.navigate).toHaveBeenCalledOnce();
+    const intent = f.runtime.getProgressIntent();
+    expect(f.runtime.deleteHistory(f.firstRecord.recordId, f.runtime.getSnapshot().revision)).toBe(false);
+    expect(f.runtime.getProgressIntent()).toBe(intent); f.runtime.dispose();
+  });
+
+  it.each(["selectHistory", "deleteHistory"] as const)("rejects %s when an abort observer revokes the profile before mutation", action => {
+    const f = historySetup(); f.runtime.resume(f.runtime.getSnapshot().revision);
+    const intent = f.runtime.getProgressIntent(), signal = f.navigate.mock.calls[0][1];
+    signal.addEventListener("abort", () => f.patch({ profileKey: null }), { once: true });
+    const key = action === "selectHistory" ? f.secondRecord.recordId : f.firstRecord.recordId;
+    expect(f.runtime[action](key, f.runtime.getSnapshot().revision)).toBe(false);
+    expect(signal.aborted).toBe(true); expect(f.runtime.getProgressIntent()).toBe(intent);
+    expect(f.runtime.getSnapshot().history.every(item => item.title === null && !item.canSelect)).toBe(true); f.runtime.dispose();
+  });
+
+  it("preserves a newer reentrant deletion and rejects nested source-driven selection", () => {
+    const f = historySetup(); let changed = false;
+    const remove = f.runtime.subscribe(() => {
+      if (!changed && f.runtime.getProgressIntent().preference.activeRecordId === f.secondRecord.recordId) {
+        changed = true; f.runtime.deleteHistory(f.secondRecord.recordId, f.runtime.getSnapshot().revision);
+      }
+    });
+    expect(f.runtime.selectHistory(f.secondRecord.recordId, f.runtime.getSnapshot().revision)).toBe(false);
+    expect(f.runtime.getProgressIntent()).toMatchObject({ revision: 2, preference: { activeRecordId: null, records: [f.firstRecord] } });
+    remove();
+    const intent = f.runtime.getProgressIntent();
+    f.patch({ resolve: (plan, nodeId) => {
+      expect(f.runtime.selectHistory(f.firstRecord.recordId, f.runtime.getSnapshot().revision)).toBe(false);
+      return f.resolve(plan, nodeId);
+    } });
+    f.runtime.refresh(); expect(f.runtime.getProgressIntent()).toBe(intent);
+    expect(f.navigate).not.toHaveBeenCalled(); f.runtime.dispose();
+  });
+
+  it("hides same-version edits and mismatched topology but permits admitted equivalent locale selection", () => {
+    const f = historySetup(), original = f.runtime.getProgressIntent();
+    for (const source of [fixture("en", { title: "Edited version without migration" }), fixture("ru", { workId: "different-work" })]) {
+      f.switchSource(source);
+      expect(f.runtime.getSnapshot().history[0]).toMatchObject({ title: null, available: false, canSelect: true });
+      expect(f.runtime.selectHistory(f.firstRecord.recordId, f.runtime.getSnapshot().revision)).toBe(true);
+      expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "unavailable", node: null });
+    }
+    f.switchSource(fixture("ru"));
+    expect(f.runtime.getSnapshot().history[0]).toMatchObject({ title: "ru: Synthetic journey", available: true });
+    expect(f.runtime.selectHistory(f.firstRecord.recordId, f.runtime.getSnapshot().revision)).toBe(true);
+    expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "paused", completedCount: 1, index: 1 });
+    expect(f.runtime.getProgressIntent().preference.records).toEqual(original.preference.records);
+    expect(f.navigate).not.toHaveBeenCalled(); f.runtime.dispose();
+  });
+});

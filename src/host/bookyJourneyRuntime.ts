@@ -26,6 +26,8 @@ export type BookyJourneyRuntimeSnapshot = Readonly<{
   status: "profile-required" | "unavailable" | "ready";
   routes: readonly Readonly<{ key: string; title: string }>[];
   migrations: readonly Readonly<{ key: string; title: string; fromVersion: number; toVersion: number }>[];
+  history: readonly Readonly<{ key: string; title: string | null; journeyId: string; version: number; locale: "ru" | "en";
+    completedCount: number; total: number; selected: boolean; canSelect: boolean; available: boolean }>[];
   active: Readonly<{ title: string | null; node: BookyJourneyPlan["nodes"][number] | null;
     index: number; total: number; completedCount: number; phase: Phase; canOpen: boolean; canNext: boolean }> | null;
 }>;
@@ -75,7 +77,8 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
   readHost: () => BookyJourneyRuntimeHost | null;
   navigate: (offer: BookyJourneyHostOffer, signal: AbortSignal) => boolean;
 }) {
-  let snapshot: BookyJourneyRuntimeSnapshot = Object.freeze({ revision: 0, status: "unavailable", routes: emptyRoutes, migrations: emptyRoutes, active: null });
+  let snapshot: BookyJourneyRuntimeSnapshot = Object.freeze({ revision: 0, status: "unavailable", routes: emptyRoutes,
+    migrations: emptyRoutes, history: emptyRoutes, active: null });
   let session: Session | null = null, navigation: Navigation | null = null;
   let progressIntent: BookyJourneyProgressIntent = Object.freeze({ revision: 0, preference: DEFAULT_BOOKY_JOURNEY_PROGRESS });
   let progressViewRevision = 0;
@@ -151,6 +154,12 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
     return observed.plans.find(plan => bookyJourneyRouteKey(plan) === bookyJourneyRouteKey(target)
       && topology(plan) === target.topology) ?? null;
   }
+  function historyPlan(observed: Observation, record: BookyJourneyProgressRecord): BookyJourneyPlan | null {
+    if (!observed.host?.active || record.policyFingerprint !== fingerprint(observed.host.profileKey)) return null;
+    const plans = observed.plans.filter(plan => plan.id === record.journeyId && plan.version === record.journeyVersion
+      && topology(plan) === topology(record) && (plan.locale !== record.locale || plan.definitionChecksum === record.definitionChecksum));
+    return plans.length === 1 ? plans[0] : null;
+  }
   function publish(observed: Observation) {
     const host = observed.host, plan = currentPlan(observed);
     const status = host?.profileKey === null ? "profile-required" : observed.plans.length ? "ready" : "unavailable";
@@ -158,16 +167,24 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
     const migrations = Object.freeze(session?.phase === "unavailable" ? (observed.migrations ?? []).map(candidate => Object.freeze({
       key: candidate.key, title: candidate.plan.title, fromVersion: candidate.offer.preservedRecord.journeyVersion,
       toVersion: candidate.offer.targetRecord.journeyVersion })) : []);
+    const currentFingerprint = host?.active ? fingerprint(host.profileKey) : null;
+    const history = Object.freeze(progressIntent.preference.records.map(record => {
+      const admitted = historyPlan(observed, record);
+      return Object.freeze({ key: record.recordId, title: admitted?.title ?? null, journeyId: record.journeyId,
+        version: record.journeyVersion, locale: record.locale, completedCount: record.acknowledgedNodeIds.length, total: record.nodes.length,
+        selected: progressIntent.preference.activeRecordId === record.recordId,
+        canSelect: currentFingerprint !== null && currentFingerprint === record.policyFingerprint, available: admitted !== null });
+    }));
     const node = plan && session && session.phase !== "unavailable" ? plan.nodes[session.index] ?? null : null;
     const active = session ? Object.freeze({ title: node ? plan!.title : null, node, index: session.index, total: session.total,
       completedCount: session.completedCount, phase: session.phase,
       canOpen: !!node && (session.phase === "ready" || session.phase === "failed"),
       canNext: !!node && session.phase === "ready" && !!host && matches(node, host.view) }) : null;
-    const key = JSON.stringify([progressViewRevision, status, routes, migrations, active && [active.title, session && bookyJourneyRouteKey(session), active.index,
+    const key = JSON.stringify([progressViewRevision, status, routes, migrations, history, active && [active.title, session && bookyJourneyRouteKey(session), active.index,
       active.total, active.completedCount, active.phase, active.canOpen, active.canNext, !!active.node]]);
     if (key === renderedKey && host === renderedHost && (host?.revision ?? null) === renderedRevision) return;
     renderedKey = key; renderedHost = host; renderedRevision = host?.revision ?? null;
-    const next = Object.freeze({ revision: snapshot.revision + 1, status, routes, migrations, active }); snapshot = next;
+    const next = Object.freeze({ revision: snapshot.revision + 1, status, routes, migrations, history, active }); snapshot = next;
     for (const listener of [...listeners]) {
       if (snapshot !== next) break;
       if (listeners.has(listener)) { try { listener(); } catch { /* Views do not own admission. */ } }
@@ -298,6 +315,39 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
     const observed = refresh();
     return observed && revision === snapshot.revision ? observed : null;
   }
+  function editHistory(key: string, revision: number, remove: boolean): boolean {
+    const observed = prepare(revision), previous = progressIntent;
+    const record = previous.preference.records.find(item => item.recordId === key);
+    const currentFingerprint = observed?.host?.active ? fingerprint(observed.host.profileKey) : null;
+    // Explicit deletion may recover capacity occupied by another profile, but
+    // selecting it must never disclose copy or adopt its semantic progress.
+    if (!observed || !record || !currentFingerprint || !remove && record.policyFingerprint !== currentFingerprint) return false;
+    const selected = previous.preference.activeRecordId === key;
+    const preference = parseBookyJourneyProgress({ ...previous.preference,
+      activeRecordId: remove ? selected ? null : previous.preference.activeRecordId : key,
+      records: remove ? previous.preference.records.filter(item => item.recordId !== key) : previous.preference.records });
+    if (!preference) return false;
+    const token = ++epoch;
+    if (!remove || selected || navigation && !navigation.accepted) {
+      cancelNavigation();
+      if (epoch !== token || disposed || progressIntent !== previous) return false;
+      if (session?.phase === "navigating") session.phase = "paused";
+    }
+    // Abort listeners and sources are external callbacks: recheck the exact
+    // host and local intent before consuming the revision-bound user gesture.
+    const current = capture(token);
+    if (!current || current.host !== observed.host || current.host?.revision !== observed.host?.revision
+      || epoch !== token || disposed || progressIntent !== previous) {
+      if (epoch === token && !disposed) refresh();
+      return false;
+    }
+    if (!remove) session = storedSession(record);
+    else if (selected) session = null;
+    commitProgress(preference, true);
+    const committed = progressIntent;
+    refresh();
+    return !disposed && progressIntent === committed;
+  }
   function move(observed: Observation, index: number, acknowledged: number, semantic = false,
     migration?: { candidate: MigrationCandidate; original: Session }): boolean {
     const target = session, plan = currentPlan(observed);
@@ -346,6 +396,8 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
     getProgressIntent: () => progressIntent,
     subscribe(listener: () => void) { if (!disposed) listeners.add(listener); return () => { listeners.delete(listener); }; },
     refresh() { refresh(); },
+    selectHistory(key: string, revision: number): boolean { return editHistory(key, revision, false); },
+    deleteHistory(key: string, revision: number): boolean { return editHistory(key, revision, true); },
     migrate(key: string, revision: number): boolean {
       const observed = prepare(revision), candidate = observed?.migrations?.find(item => item.key === key), original = session;
       if (!observed || !candidate || !original || original.phase !== "unavailable") return false;

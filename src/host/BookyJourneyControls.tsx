@@ -4,6 +4,7 @@ import type { BookyJourneyRuntime, BookyJourneyRuntimeSnapshot } from "./bookyJo
 import type { BookyJourneyPersistence, BookyJourneyPersistenceSnapshot } from "./bookyJourneyPersistence";
 import BookyJourneyStorageControls from "./BookyJourneyStorageControls";
 import BookyJourneyMigrationControls from "./BookyJourneyMigrationControls";
+import BookyJourneyHistoryControls from "./BookyJourneyHistoryControls";
 import "./BookyJourneyControls.css";
 
 export type BookyJourneyControlsProps = {
@@ -200,6 +201,8 @@ export default function BookyJourneyControls({ snapshot, controller, persistence
             onClick={() => setResetAtRevision(snapshot.revision)}>{copy.reset}</button>}
         </div>
       </div>}
+      <BookyJourneyHistoryControls controller={controller} snapshot={snapshot} persistence={persistence}
+        onAccepted={() => heading.current?.focus()} />
       <BookyJourneyMigrationControls controller={controller} snapshot={snapshot} persistence={persistence}
         onAccepted={() => heading.current?.focus()} />
       <BookyJourneyStorageControls runtime={controller} persistence={persistence} snapshot={persistenceSnapshot} />

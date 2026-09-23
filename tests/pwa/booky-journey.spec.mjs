@@ -11,6 +11,8 @@ const KEY = 'probpera-planet-composition-v1';
 const BOOKY = 'probpera-booky-adult-v1';
 const READER='probpera-booky-reader-policy-v1';
 const PROGRESS='probpera-booky-journey-progress-v1';
+const PRIMARY_JOURNEY = 'test.actual-app-journey';
+const DEPENDENT_JOURNEY = 'test.dependent-journey';
 const V1_SEED = {schemaVersion:2,audience:'adult',visible:true,resume:null,progress:[]};
 const ASSET = 'src/assets/mascots/knizhulyk-green-v1.png';
 const ASSET_SHA = '44f97b5c83189ba1ddca26fd1313edc515e5008a2e92c2c694d1d57c29a2a4ed';
@@ -29,15 +31,17 @@ const SYNTHETIC_CONTENT = `
 import { contentTextHash } from '../planet/contentExportHash';
 import { getBookyDialogueChecksum, getBookyDialogueContentChecksum } from './bookyDialogueRegistry';
 import { bookyJourneyEntityId, getBookyJourneyChecksum } from './bookyJourney';
-const id='test.actual-app-journey',version=window.__journeyContentMode==='new-version'||window.__journeyContentMode.startsWith('migration-')?2:1,reviewedAt='2026-09-20T12:00:00.000Z';
+const primaryId='test.actual-app-journey',version=window.__journeyContentMode==='new-version'||window.__journeyContentMode.startsWith('migration-')?2:1,reviewedAt='2026-09-20T12:00:00.000Z';
+const routeIds=window.__journeyContentMode.startsWith('history')?[primaryId,'test.dependent-journey']:[primaryId];
 const definitions=[],dialogues=[],dialogueApprovals=[],journeyApprovals=[],availability=[];
+for(const id of routeIds){
 for(const locale of ['ru','en']){
   const nodes=[
     {id:'country',kind:'country',screen:'globe',entity:{kind:'country',countryId:'russia'}},
     {id:'writer',kind:'writer',screen:'globe',entity:{kind:'writer',countryId:'russia',writerId:'dostoevsky'}},
     {id:'work',kind:'work',screen:'collection',entity:{kind:'work',countryId:'russia',writerId:'dostoevsky',workId:'crime-and-punishment'}},
     {id:'checkpoint',kind:'checkpoint',screen:'globe',entity:null},
-  ].map(node=>{
+  ].filter(node=>id===primaryId||['country','checkpoint'].includes(node.id)).map(node=>{
     const title=locale==='ru'?'Тест интерфейса: '+node.id:'Interface test: '+node.id;
     const body=locale==='ru'?'Откройте этот экран и подтвердите шаг, когда будете готовы.':'Open this screen and acknowledge the step when you are ready.';
     const payload={id:id+'.'+node.id,locale,version:1,audience:'adult',ageRange:{min:18,max:120},readingLevel:'plain',
@@ -52,15 +56,20 @@ for(const locale of ['ru','en']){
     return {...node,dialogue:{id:payload.id,version:1,contentChecksum:review.contentChecksum}};
   });
   const definition={schemaVersion:1,id,version,locale,audience:'adult',ageRange:{min:18,max:120},readingLevel:'plain',
-    title:locale==='ru'?'Тестовый маршрут интерфейса':'Synthetic interface journey',prerequisites:[],nodes};
+    title:id===primaryId?(locale==='ru'?'Тестовый маршрут интерфейса':'Synthetic interface journey')
+      :(locale==='ru'?'Тестовый зависимый маршрут':'Synthetic dependent journey'),
+    prerequisites:id===primaryId?[]:[{id:primaryId,version}],nodes};
   definitions.push(definition);
   journeyApprovals.push({id,version,locale,definitionChecksum:getBookyJourneyChecksum(definition),reviewer:'synthetic-journey-reviewer-not-real',reviewedAt});
   availability.push({journeyId:id,version,locale,nodes:nodes.map(node=>({nodeId:node.id,locale,
     dialogueContentChecksum:node.dialogue.contentChecksum,available:true,offlineAvailable:true}))});
 }
-const approved={definitions,dialogues,currentVersions:[{id,version}],dialogueApprovals,journeyApprovals,availability};
+}
+const approved={definitions,dialogues,currentVersions:routeIds.map(id=>({id,version})),dialogueApprovals,journeyApprovals,availability};
 const missingReview={...approved,journeyApprovals:[]};
-export function readBookyJourneyContent(){return window.__journeyContentMode==='missing-review'?missingReview:approved;}
+const missingSavedLocaleReview={...approved,journeyApprovals:journeyApprovals.filter(receipt=>receipt.id!==primaryId||receipt.locale!=='ru')};
+export function readBookyJourneyContent(){return window.__journeyContentMode==='missing-review'?missingReview
+  :window.__journeyContentMode==='history-missing-ru-review'?missingSavedLocaleReview:approved;}
 `;
 
 // Independent synthetic migration receipts are distinct from route and dialogue
@@ -225,6 +234,7 @@ test.beforeAll(async () => {
     'src/host/PlanetMascotControls.tsx', 'src/host/PlanetMascotControls.css', 'src/host/PlanetMascotAvatar.tsx', 'src/host/PlanetMascotAvatar.css',
     'src/host/bookyModel.ts', 'src/host/bookyAnimation.ts', 'src/host/useBookyRenderer.ts', 'src/host/bookySupport.ts', 'src/host/bookyTourProgress.ts',
     'src/host/planetMascotPreference.ts', 'src/host/planetMascotPersistence.ts', 'src/host/HostPlatformServices.ts', ASSET];
+  required.push('src/host/bookyJourneyPrerequisites.ts', 'src/host/BookyJourneyHistoryControls.tsx');
   for (const filename of required) expect(inputs).toContain(filename);
   const sourcePaths = [...new Set([...required, ...inputs.filter(value => value.startsWith('src/') && !value.includes('?')), 'tests/pwa/booky-journey.spec.mjs'])].sort();
   const sourceInputs = await Promise.all(sourcePaths.map(async filename => ({ path: filename, sha256: digest(await fs.readFile(path.join(ROOT, filename))) })));
@@ -262,6 +272,11 @@ const next = page => page.locator('[data-booky-journey-next]');
 const node = page => page.locator('[data-booky-journey-node]');
 const sample = page => page.evaluate(() => window.__bookyJourneyFixture.sample());
 const storageState = page => page.locator('[data-booky-journey-storage]');
+const routeFor = (page, id) => page.locator('[data-booky-journey-route]').filter({ hasText: id === PRIMARY_JOURNEY
+  ? /^(?:Тестовый маршрут интерфейса|Synthetic interface journey)$/u
+  : /^(?:Тестовый зависимый маршрут|Synthetic dependent journey)$/u });
+const historyRow = (page, key) => page.locator('[data-booky-journey-history-entry=' + JSON.stringify(key) + ']');
+const historyAction = (page, name, key) => page.locator('[data-booky-journey-' + name + '=' + JSON.stringify(key) + ']');
 
 async function open(testInfo, { contentMode = 'approved', readerSeed = CONFIRMED_READER, progressSeed = null } = {}) {
   const profileRoot = path.resolve(process.env.S15_BROWSER_PROFILE_ROOT ?? path.join(ROOT, '.tmp/s15-booky-live'));
@@ -409,8 +424,8 @@ async function loadBooks(page) {
   const load = page.locator('[data-booky-journey-load]');
   if (await load.count()) { await expect(load).toBeEnabled(); await load.click(); await expect(load).toHaveCount(0, { timeout: 60_000 }); }
 }
-async function expectProgress(page, count) {
-  await expect(page.locator('[data-booky-journey-progress]')).toHaveText(new RegExp('(?:Подтверждено шагов:|Steps acknowledged:) ' + count + ' (?:из|of) 4', 'u'));
+async function expectProgress(page, count, total = 4) {
+  await expect(page.locator('[data-booky-journey-progress]')).toHaveText(new RegExp('(?:Подтверждено шагов:|Steps acknowledged:) ' + count + ' (?:из|of) ' + total, 'u'));
 }
 function savedRecord(fixture) {
   const raw = fixture.memory.get(PROGRESS);
@@ -429,24 +444,41 @@ async function expectSavedPrefix(fixture, prefix, version = 1) {
 async function startCountryStep(fixture) {
   await openPanel(fixture.page); await loadBooks(fixture.page);
   await expect(storageState(fixture.page)).toHaveAttribute('data-booky-journey-storage', 'ready');
-  const route = fixture.page.locator('[data-booky-journey-route]');
+  const route = routeFor(fixture.page, PRIMARY_JOURNEY);
   await expect(route).toHaveCount(1); await route.click();
   await expectReadyNode(fixture.page, 'country', 0);
   return expectSavedPrefix(fixture, []);
+}
+async function completePrimaryJourney(fixture) {
+  await startCountryStep(fixture);
+  for (const [index, id] of ['writer', 'work', 'checkpoint'].entries()) {
+    await next(fixture.page).click(); await expectReadyNode(fixture.page, id, index + 1);
+  }
+  await next(fixture.page).click();
+  await expect(status(fixture.page)).toHaveAttribute('data-booky-journey-status', 'complete');
+  await expectProgress(fixture.page, 4);
+  const raw = await expectSavedPrefix(fixture, ['country', 'writer', 'work', 'checkpoint']);
+  return { raw, record: savedRecord(fixture) };
+}
+async function expectHistorySaved(fixture, activeRecordId, records) {
+  await expect.poll(() => JSON.parse(fixture.memory.get(PROGRESS) ?? 'null')?.activeRecordId).toBe(activeRecordId);
+  await expect(storageState(fixture.page)).toHaveAttribute('data-booky-journey-storage', 'ready');
+  const value = JSON.parse(fixture.memory.get(PROGRESS)); expect(value.records).toEqual(records);
+  return fixture.memory.get(PROGRESS);
 }
 async function resumeIfPaused(page) {
   await openPanel(page);
   const resume = page.locator('[data-booky-journey-resume]');
   if (await resume.count()) { await expect(resume).toBeEnabled(); await resume.click(); }
 }
-async function expectReadyNode(page, id, count) {
+async function expectReadyNode(page, id, count, total = 4) {
   await openPanel(page);
   await expect(node(page)).toHaveAttribute('data-booky-journey-node', id);
   await expect(status(page)).toHaveAttribute('data-booky-journey-status', /^(ready|paused)$/u);
   await resumeIfPaused(page);
   await expect(status(page)).toHaveAttribute('data-booky-journey-status', 'ready');
   await expect(next(page)).toBeEnabled();
-  await expectProgress(page, count);
+  await expectProgress(page, count, total);
 }
 async function locale(page, language) {
   await page.locator('.native-planet-app .interface-language-control button:visible')
@@ -495,6 +527,23 @@ async function captureMigration(fixture, testInfo) {
   await capture(fixture, testInfo, 'journey-migration-confirm-en.png',
     'Desktop actual App EN independently reviewed v1-to-v2 migration awaits explicit confirmation; original progress is unchanged');
   fixture.result.screenshots.at(-1).bounds = bounds;
+}
+async function captureHistory(fixture, testInfo, key, filename, framing, confirmation = false) {
+  const row = historyRow(fixture.page, key); await row.scrollIntoViewIfNeeded();
+  const bounds = await row.evaluate((element, confirming) => {
+    const measure = target => {
+      const box = target.getBoundingClientRect();
+      return { x: box.x, y: box.y, width: box.width, height: box.height,
+        fullyInViewport: box.left >= 0 && box.top >= 0 && box.right <= innerWidth && box.bottom <= innerHeight };
+    };
+    const action = element.querySelector(confirming ? '[data-booky-journey-confirm-delete-history]' : '[data-booky-journey-delete-history]');
+    const box = action.getBoundingClientRect();
+    return { surface: measure(element), action: measure(action),
+      actionHit: action.contains(document.elementFromPoint(box.x + box.width / 2, box.y + box.height / 2)) };
+  }, confirmation);
+  expect(bounds.surface.fullyInViewport).toBe(true); expect(bounds.action.fullyInViewport).toBe(true);
+  expect(bounds.actionHit).toBe(true); expect(bounds.action.height).toBeGreaterThanOrEqual(44);
+  await capture(fixture, testInfo, filename, framing); fixture.result.screenshots.at(-1).bounds = bounds;
 }
 async function reachableJourneyControls(page) {
   const controls = page.locator('[data-booky-journey-controls] button:visible');
@@ -897,6 +946,128 @@ test('missing or revoked independent migration review preserves the old version 
       revocationAcrossNewDocument: true, offeredConfirmationInvalidated: true, exactOldBytesPreserved: true, noInferredAcknowledgements: true,
       sameDocumentContentRefreshClaimed: false,
       noAutomaticNavigationOrWrite: true, canonicalSceneRetainedWithinDocument: true });
+    fixture.verify();
+  } finally { await fixture.close(); }
+});
+
+test('confirmed exact-version completion unlocks a dependent journey only with independently admitted saved locale', async ({}, testInfo) => {
+  test.setTimeout(210_000);
+  const fixture = await open(testInfo, { contentMode: 'history' }), { page, result } = fixture;
+  result.scenario = 'history-prerequisite-admission';
+  try {
+    const initialScene = await actual(page);
+    await openPanel(page); await loadBooks(page);
+    await expect(routeFor(page, PRIMARY_JOURNEY)).toHaveCount(1);
+    await expect(routeFor(page, DEPENDENT_JOURNEY)).toHaveCount(0);
+    expect(fixture.memory.get(PROGRESS)).toBeUndefined();
+    const { raw, record } = await completePrimaryJourney(fixture);
+    expect(record.journeyId).toBe(PRIMARY_JOURNEY); expect(record.journeyVersion).toBe(1); expect(record.locale).toBe('ru');
+    expect(record.resumeNodeId).toBeNull();
+    await expect(routeFor(page, DEPENDENT_JOURNEY)).toBeEnabled();
+    retained(await actual(page), initialScene);
+    const confirmedWrites = fixture.progressWrites().length;
+    await locale(page, 'en');
+    await expect(routeFor(page, DEPENDENT_JOURNEY)).toBeEnabled();
+    expect(fixture.memory.get(PROGRESS)).toBe(raw); expect(fixture.progressWrites()).toHaveLength(confirmedWrites);
+    await fixture.coldReload('history');
+    await stablePose(page); const restoredScene = await actual(page);
+    await openPanel(page); await loadBooks(page);
+    await expect(status(page)).toHaveAttribute('data-booky-journey-status', 'complete');
+    await expectProgress(page, 4);
+    await expect(routeFor(page, DEPENDENT_JOURNEY)).toBeEnabled();
+    await expect(historyRow(page, record.recordId)).toHaveAttribute('data-booky-journey-history-available', 'true');
+    expect(fixture.memory.get(PROGRESS)).toBe(raw); expect(fixture.progressWrites()).toHaveLength(confirmedWrites);
+    expect(new URL(page.url()).searchParams.get('country')).toBeNull();
+    await stablePose(page); retained(await actual(page), restoredScene, true);
+    await captureHistory(fixture, testInfo, record.recordId, 'journey-history-complete-en.png',
+      'Desktop actual App EN validated completed RU history; the exact-version dependent journey is available without rewriting progress');
+
+    // EN target review remains approved. Revoking only the saved RU route's
+    // independent receipt must invalidate its prerequisite contribution.
+    await fixture.coldReload('history-missing-ru-review');
+    await stablePose(page); const revokedScene = await actual(page);
+    await openPanel(page); await loadBooks(page);
+    await expect(page.locator('[data-booky-journey-route]')).toHaveCount(0);
+    await expect(routeFor(page, DEPENDENT_JOURNEY)).toHaveCount(0);
+    expect(fixture.memory.get(PROGRESS)).toBe(raw); expect(fixture.progressWrites()).toHaveLength(confirmedWrites);
+    expect(savedRecord(fixture)).toEqual(record);
+    expect(new URL(page.url()).searchParams.get('country')).toBeNull();
+    await stablePose(page); retained(await actual(page), revokedScene, true);
+    Object.assign(result.observations, { completedRecord: record, requiredJourneyId: PRIMARY_JOURNEY, requiredVersion: 1,
+      dependentJourneyId: DEPENDENT_JOURNEY, lockedBeforeExplicitCompletion: true, unlockedAfterConfirmedCompletion: true,
+      independentlyAdmittedLocaleEquivalence: true, completedColdRestoreNoWriteOrNavigation: true,
+      revokedSavedLocaleReviewDeniesPrerequisite: true, preservedExactCompletionBytes: true,
+      revokedSavedLocaleReviewDeniesRuntimeOffers: true,
+      syntheticIndependentReviewsOnly: true, canonicalSceneRetainedWithinDocument: true });
+    fixture.verify();
+  } finally { await fixture.close(); }
+});
+
+test('history selection never navigates and confirmed single-record deletion truthfully retries while revoking a prerequisite', async ({}, testInfo) => {
+  test.setTimeout(210_000);
+  const fixture = await open(testInfo, { contentMode: 'history' }), { page, result } = fixture;
+  result.scenario = 'explicit-history-select-delete';
+  try {
+    const { record: completed } = await completePrimaryJourney(fixture);
+    await routeFor(page, DEPENDENT_JOURNEY).click();
+    await expectReadyNode(page, 'country', 0, 2);
+    await expect(storageState(page)).toHaveAttribute('data-booky-journey-storage', 'ready');
+    await expect.poll(() => savedRecord(fixture)?.journeyId).toBe(DEPENDENT_JOURNEY);
+    const incomplete = savedRecord(fixture);
+    expect(incomplete.acknowledgedNodeIds).toEqual([]); expect(incomplete.resumeNodeId).toBe('country');
+    const both = JSON.parse(fixture.memory.get(PROGRESS)).records;
+    expect(both).toHaveLength(2); expect(both.find(record => record.recordId === completed.recordId)).toEqual(completed);
+    await stablePose(page); const selectionScene = await actual(page), selectionUrl = page.url();
+    await historyAction(page, 'select-history', completed.recordId).click();
+    await expect(status(page)).toHaveAttribute('data-booky-journey-status', 'complete');
+    await expectHistorySaved(fixture, completed.recordId, both);
+    await expect(historyRow(page, completed.recordId)).toHaveAttribute('data-booky-journey-history-selected', 'true');
+    expect(page.url()).toBe(selectionUrl); await stablePose(page); retained(await actual(page), selectionScene, true);
+    await historyAction(page, 'select-history', incomplete.recordId).click();
+    await expect(status(page)).toHaveAttribute('data-booky-journey-status', 'paused');
+    await expectProgress(page, 0, 2);
+    const beforeDelete = await expectHistorySaved(fixture, incomplete.recordId, both);
+    await expect(historyRow(page, incomplete.recordId)).toHaveAttribute('data-booky-journey-history-selected', 'true');
+    await expect(page.locator('[data-booky-journey-next]:enabled')).toHaveCount(0);
+    expect(page.url()).toBe(selectionUrl); await stablePose(page); retained(await actual(page), selectionScene, true);
+
+    await page.setViewportSize({ width: 320, height: 900 });
+    await stablePose(page); const deletionScene = await actual(page);
+    const writes = fixture.progressWrites().length;
+    const remove = historyAction(page, 'delete-history', completed.recordId);
+    const confirm = historyAction(page, 'confirm-delete-history', completed.recordId);
+    await remove.click(); await expect(confirm).toBeEnabled();
+    expect(fixture.memory.get(PROGRESS)).toBe(beforeDelete); expect(fixture.progressWrites()).toHaveLength(writes);
+    await historyAction(page, 'cancel-delete-history', completed.recordId).click();
+    await expect(confirm).toHaveCount(0); await expect(remove).toBeFocused();
+    expect(fixture.memory.get(PROGRESS)).toBe(beforeDelete); expect(fixture.progressWrites()).toHaveLength(writes);
+    await remove.click(); await expect(confirm).toBeEnabled();
+    await captureHistory(fixture, testInfo, completed.recordId, 'journey-history-delete-ru-320.png',
+      '320px actual App RU confirms deletion of only the completed prerequisite record; the incomplete dependent record remains separate', true);
+    await stablePose(page); retained(await actual(page), deletionScene, true);
+    fixture.failNextProgressWrite(); await confirm.click();
+    await expect(storageState(page)).toHaveAttribute('data-booky-journey-storage', 'failed');
+    await expect(storageState(page)).toHaveAttribute('data-booky-journey-storage-error', 'write');
+    await expect(page.locator('[data-booky-journey-save-retry]')).toBeVisible();
+    expect(fixture.memory.get(PROGRESS)).toBe(beforeDelete);
+    const failed = fixture.progressWrites().filter(operation => operation.failed);
+    expect(failed).toHaveLength(1);
+    const pending = JSON.parse(failed[0].value);
+    expect(pending.records).toEqual([incomplete]); expect(pending.activeRecordId).toBe(incomplete.recordId);
+    await page.locator('[data-booky-journey-save-retry]').click();
+    const afterDelete = await expectHistorySaved(fixture, incomplete.recordId, [incomplete]);
+    expect(afterDelete).toBe(failed[0].value);
+    await expect(historyRow(page, completed.recordId)).toHaveCount(0);
+    await expect(historyRow(page, incomplete.recordId)).toHaveAttribute('data-booky-journey-history-available', 'false');
+    await expect(status(page)).toHaveAttribute('data-booky-journey-status', 'unavailable');
+    await expect(routeFor(page, DEPENDENT_JOURNEY)).toHaveCount(0);
+    await expect(page.locator('[data-booky-journey-resume]:enabled')).toHaveCount(0);
+    expect(page.url()).toBe(selectionUrl); await stablePose(page); retained(await actual(page), deletionScene, true);
+    Object.assign(result.observations, { deletedRecord: completed, retainedRecord: incomplete,
+      selectedRecordsPreserveAcknowledgements: true, selectionNeverNavigates: true, incompleteSelectionPaused: true,
+      deletionRequiresConfirmation: true, cancellationRetainsBytesAndFocus: true, failedDeletionWritePreservesBytes: true,
+      explicitRetryConfirmsExactDeletion: true, onlyChosenHistoryRecordDeleted: true, deletionRevokesDependentAdmission: true,
+      currentSelectionRetainedUnavailable: true, canonicalSceneRetained: true, failurePort: 'native-preferences-set' });
     fixture.verify();
   } finally { await fixture.close(); }
 });

@@ -63,6 +63,16 @@
 .booky-journey-controls__storage > button { width: 100%; margin-top: 8px; }
 .booky-journey-controls__migration { margin-top: 16px; padding-top: 8px; border-top: 1px solid #d8c79e; }
 .booky-journey-controls__migration > button { width: 100%; margin-top: 8px; }
+.booky-journey-controls__history { min-width: 0; margin-top: 16px; padding-top: 8px; border-top: 1px solid #d8c79e; }
+.booky-journey-controls__history-list { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.booky-journey-controls__history-entry { min-width: 0; padding: 10px; border: 1px solid #d8c79e; border-radius: 6px; }
+.booky-journey-controls__history-entry[data-booky-journey-history-selected="true"] { border-color: #526e58; }
+.booky-journey-controls .booky-journey-controls__history-title { margin: 0 0 4px; }
+.booky-journey-controls .booky-journey-controls__history-meta { margin: 2px 0; color: #625942; font-size: 13px; }
+.booky-journey-controls .booky-journey-controls__history-state { margin: 6px 0 8px; color: #40563f; font-size: 13px; }
+.booky-journey-controls__history-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.booky-journey-controls__history-actions > button { flex: 1 1 120px; }
+.booky-journey-controls [data-booky-journey-history-status] { color: #8d3425; }
 .booky-journey-controls__storage [data-booky-journey-storage="failed"] { color: #8d3425; }
 .booky-journey-controls__confirmation-actions { display: flex; flex-wrap: wrap; gap: 8px; }
 .booky-journey-controls__confirmation-actions > button { flex: 1 1 100px; }
@@ -73,6 +83,8 @@
   .booky-journey-controls__reduced { display: block; }
 }
 @media (max-width: 360px) {
+  .booky-journey-controls__history-actions { flex-direction: column; }
+  .booky-journey-controls__history-actions > button { flex-basis: auto; width: 100%; }
   .booky-journey-controls__confirmation-actions { flex-direction: column; }
   .booky-journey-controls__confirmation-actions > button { flex-basis: auto; width: 100%; }
 }
@@ -80,6 +92,9 @@
   .booky-journey-controls { color: CanvasText; border-color: CanvasText; }
   .booky-journey-controls :is(h3, h4, p) { color: CanvasText; }
   .booky-journey-controls__status { background: Canvas; border-color: CanvasText; }
+  .booky-journey-controls__history,
+  .booky-journey-controls__history-entry { border-color: CanvasText; }
+  .booky-journey-controls .booky-journey-controls__history-entry p { color: CanvasText; }
   .booky-journey-controls button,
   .booky-journey-controls .booky-journey-controls__primary { color: ButtonText; background: ButtonFace; border-color: ButtonText; }
   .booky-journey-controls :is(button, [tabindex="-1"]):focus-visible { outline-color: Highlight; }
