@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "mode": "browser",
+  "attempt": "a1",
+  "pass": true,
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/journey-capacity-20260923/source-manifests/a85bc0c8a954db04.json",
+    "sha256": "a85bc0c8a954db043152fc330125adeea1a9dedf7b33fde4a3b1781ade0e0003",
+    "fileCount": 1625
+  },
+  "checkInputs": [
+    {
+      "path": "docs/mobile/evidence/S15/journey-capacity-20260923/check.mjs",
+      "sha256": "62a1b11d1297af38f9399e616f2ff7e213c697f58286caaac3dea986bc6fa627"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/journey-capacity-20260923/entry.json",
+      "sha256": "db15acd3d6778c03d1a83ff8186f7e0e6026837f01153a26817fab9e4f5a698c"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/journey-capacity-20260923/unit.config.mjs",
+      "sha256": "d7c75997f27067ea641a900711df50f8f378bbca219528f13673b0751ccc97bd"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/journey-capacity-20260923/playwright.config.mjs",
+      "sha256": "0ace09e32c4aa0af5eb6c3764d8c010b451244007e4fc2bb326fb386e3753b88"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "tests": {
+    "passed": 17,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0
+  },
+  "reportError": null,
+  "execution": {
+    "exitCode": 0,
+    "durationMs": 191932
+  },
+  "runtimeUnchanged": false,
+  "runtimeWiringImplemented": true,
+  "stageAccepted": false,
+  "ageAdaptiveJourneysAccepted": false,
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "releaseReady": false
+}
