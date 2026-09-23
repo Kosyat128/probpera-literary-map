@@ -25,6 +25,9 @@ export const bookyJourneyControlsCopy = {
       profileRequired: "Чтобы подобрать маршрут, заполните профиль для маршрутов ниже. Это необязательно: планету можно исследовать самостоятельно.",
       unavailable: "Сейчас подходящих маршрутов нет. Можно продолжить исследовать планету самостоятельно.",
       choose: "Выберите маршрут, чтобы начать.",
+      historyFull: (used: number, limit: number) => `История заполнена: ${used} из ${limit} записей.`,
+      historyCapacityHelp: "Чтобы сохранить новый маршрут или перенести прогресс, удалите одну выбранную запись в истории. Доступные сохранённые маршруты можно продолжать.",
+      manageHistory: "Перейти к истории",
       navigating: "Открываем шаг маршрута…",
       readyToOpen: "Откройте этот шаг, затем подтвердите его.",
       readyToConfirm: "Этот шаг готов к подтверждению.",
@@ -55,6 +58,9 @@ export const bookyJourneyControlsCopy = {
       profileRequired: "To find a journey, fill in the reader profile below. This is optional: you can explore the planet on your own.",
       unavailable: "There are no matching journeys right now. You can keep exploring the planet on your own.",
       choose: "Choose a journey to begin.",
+      historyFull: (used: number, limit: number) => `Journey history is full: ${used} of ${limit} entries.`,
+      historyCapacityHelp: "To save a new journey or transfer progress, remove one history entry of your choice. Saved journeys that are available can still continue.",
+      manageHistory: "Go to history",
       navigating: "Opening this journey step…",
       readyToOpen: "Open this step, then acknowledge it.",
       readyToConfirm: "This step is ready to acknowledge.",
@@ -85,7 +91,8 @@ export const bookyJourneyControlsCopy = {
 export default function BookyJourneyControls({ snapshot, controller, persistence, persistenceSnapshot }: BookyJourneyControlsProps) {
   const { language } = useInterfaceLanguage();
   const copy = bookyJourneyControlsCopy.locales[language];
-  const id = useId();
+  const id = useId(), historyHeadingId = `${id}-history-heading`, capacityId = `${id}-history-capacity`;
+  const capacity = snapshot.historyCapacity;
   const heading = useRef<HTMLHeadingElement>(null), status = useRef<HTMLParagraphElement>(null);
   const resetStart = useRef<HTMLButtonElement>(null), resetConfirm = useRef<HTMLButtonElement>(null);
   const restoreResetFocus = useRef(false), resetFocusOwned = useRef(false);
@@ -151,11 +158,21 @@ export default function BookyJourneyControls({ snapshot, controller, persistence
         aria-live="polite" aria-atomic="true" data-booky-journey-status={active?.phase ?? snapshot.status}>
         {statusText}
       </p>
+      {capacity.full && <div className="booky-journey-controls__capacity">
+        <p id={capacityId} role="status" aria-live="polite" aria-atomic="true"
+          data-booky-journey-history-capacity="full" data-booky-journey-history-used={capacity.used}
+          data-booky-journey-history-limit={capacity.limit}>
+          <strong>{copy.historyFull(capacity.used, capacity.limit)}</strong><br />{copy.historyCapacityHelp}
+        </p>
+        <button type="button" data-booky-journey-manage-history="" aria-controls={historyHeadingId}
+          onClick={() => { document.getElementById(historyHeadingId)?.focus(); }}>{copy.manageHistory}</button>
+      </div>}
       {(!active || active.phase === "complete" || active.phase === "paused" || active.phase === "unavailable")
         && snapshot.status === "ready" && snapshot.routes.length > 0 && (
         <div className="booky-journey-controls__routes">
           {snapshot.routes.map(route => <button key={route.key} type="button" data-booky-journey-route={route.key}
-            disabled={!persistenceSnapshot.canAct}
+            disabled={!persistenceSnapshot.canAct || !route.canStart}
+            aria-describedby={!route.canStart && capacity.full ? capacityId : undefined}
             onClick={() => act(() => controller.start(route.key, snapshot.revision), true)}>{route.title}</button>)}
         </div>
       )}
@@ -208,7 +225,7 @@ export default function BookyJourneyControls({ snapshot, controller, persistence
             onClick={() => setResetAtRevision(snapshot.revision)}>{copy.reset}</button>}
         </div>
       </div>}
-      <BookyJourneyHistoryControls controller={controller} snapshot={snapshot} persistence={persistence}
+      <BookyJourneyHistoryControls controller={controller} snapshot={snapshot} persistence={persistence} historyHeadingId={historyHeadingId}
         onAccepted={focusJourneyHeading} onConfirmationInvalidated={focusJourneyHeading} />
       <BookyJourneyMigrationControls controller={controller} snapshot={snapshot} persistence={persistence}
         onAccepted={focusJourneyHeading} onConfirmationInvalidated={focusJourneyHeading} />

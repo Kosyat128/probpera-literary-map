@@ -1197,3 +1197,159 @@ test('journey focus: keyboard cancellation and fresh document discard consent wi
     fixture.verify();
   } finally { await fixture.close(); }
 });
+
+
+async function captureCapacity(fixture, testInfo) {
+  const surface = fixture.page.locator('.booky-journey-controls__capacity');
+  await surface.scrollIntoViewIfNeeded();
+  const bounds = await surface.evaluate(element => {
+    const measure = target => {
+      const box = target.getBoundingClientRect();
+      return { x: box.x, y: box.y, width: box.width, height: box.height,
+        fullyInViewport: box.left >= 0 && box.top >= 0 && box.right <= innerWidth && box.bottom <= innerHeight };
+    };
+    const action = element.querySelector('[data-booky-journey-manage-history]'), box = action.getBoundingClientRect();
+    return { surface: measure(element), status: measure(element.querySelector('[data-booky-journey-history-capacity]')),
+      action: measure(action), actionHit: action.contains(document.elementFromPoint(box.x + box.width / 2, box.y + box.height / 2)) };
+  });
+  expect(bounds.status.fullyInViewport).toBe(true); expect(bounds.action.fullyInViewport).toBe(true);
+  expect(bounds.actionHit).toBe(true); expect(bounds.action.height).toBeGreaterThanOrEqual(44);
+  await capture(fixture, testInfo, 'journey-capacity-full-ru-320.png',
+    '320px actual App RU explains 32 of 32 entries and offers explicit history management; a new dependent route needs a free entry');
+  fixture.result.screenshots.at(-1).bounds = bounds;
+}
+
+test('full journey history keeps existing progress usable and frees exactly one chosen entry for a new route', async ({}, testInfo) => {
+  test.setTimeout(240_000);
+  const fixture = await open(testInfo, { contentMode: 'history' }), { page, result } = fixture;
+  result.scenario = 'history-capacity-explicit-recovery';
+  try {
+    // Obtain a real saved prefix through App controls before constructing held
+    // synthetic history. The extra IDs have no definitions or review receipts.
+    await startCountryStep(fixture);
+    await next(page).click(); await expectReadyNode(page, 'writer', 1);
+    const genuineBytes = await expectSavedPrefix(fixture, ['country']);
+    const genuinePreference = JSON.parse(genuineBytes), genuine = savedRecord(fixture);
+    const held = Array.from({ length: 31 }, (_, index) => {
+      const journeyId = 'test.held-history-' + index;
+      return { ...genuine, journeyId,
+        // Exact codec identity: SHA-256 of UTF-8 JSON [policy, route, version].
+        recordId: digest(JSON.stringify([genuine.policyFingerprint, journeyId, genuine.journeyVersion])) };
+    });
+    const full = { ...genuinePreference, records: [genuine, ...held] }, seededBytes = JSON.stringify(full);
+    expect(new Set(full.records.map(record => record.recordId)).size).toBe(32);
+    result.observations.capacitySeed = { genuineRecord: genuine, genuinePreferenceSha256: digest(genuineBytes),
+      seededPreferenceSha256: digest(seededBytes), heldRecordIds: held.map(record => record.recordId),
+      heldRecordsUnreviewed: true, suppliedAtFreshDocumentBoundary: true };
+    const beforeColdWrites = fixture.progressWrites().length;
+    fixture.memory.set(PROGRESS, seededBytes);
+    await fixture.coldReload('history');
+    await stablePose(page); const neutral = await actual(page);
+    await openPanel(page); await loadBooks(page);
+    await expect(storageState(page)).toHaveAttribute('data-booky-journey-storage', 'ready');
+    await expect(status(page)).toHaveAttribute('data-booky-journey-status', 'paused');
+    await expectProgress(page, 1);
+    const capacity = page.locator('[data-booky-journey-history-capacity]');
+    await expect(capacity).toHaveAttribute('data-booky-journey-history-capacity', 'full');
+    await expect(capacity).toHaveAttribute('data-booky-journey-history-used', '32');
+    await expect(capacity).toHaveAttribute('data-booky-journey-history-limit', '32');
+    await expect(capacity).toContainText('32 из 32');
+    await expect(page.locator('[data-booky-journey-history-entry]')).toHaveCount(32);
+    await expect(routeFor(page, PRIMARY_JOURNEY)).toBeEnabled();
+    await expect(routeFor(page, DEPENDENT_JOURNEY)).toHaveCount(0);
+    expect(fixture.memory.get(PROGRESS)).toBe(seededBytes); expect(fixture.progressWrites()).toHaveLength(beforeColdWrites);
+    for (const field of ['country', 'writer', 'book']) expect(new URL(page.url()).searchParams.get(field)).toBeNull();
+    await stablePose(page); retained(await actual(page), neutral, true);
+
+    await page.locator('[data-booky-journey-resume]').click();
+    await expectReadyNode(page, 'writer', 1);
+    for (const [index, id] of ['work', 'checkpoint'].entries()) {
+      await next(page).click(); await expectReadyNode(page, id, index + 2);
+    }
+    await next(page).click();
+    await expect(status(page)).toHaveAttribute('data-booky-journey-status', 'complete');
+    const completedBytes = await expectSavedPrefix(fixture, ['country', 'writer', 'work', 'checkpoint']);
+    const completed = savedRecord(fixture), completedPreference = JSON.parse(completedBytes);
+    expect(completedPreference.records).toHaveLength(32); expect(completedPreference.records.slice(1)).toEqual(held);
+    await expect(routeFor(page, PRIMARY_JOURNEY)).toBeEnabled();
+    await expect(routeFor(page, DEPENDENT_JOURNEY)).toBeDisabled();
+    await expect(routeFor(page, DEPENDENT_JOURNEY)).toHaveAttribute('aria-describedby', await capacity.getAttribute('id'));
+    expect(fixture.progressWrites().some(operation => operation.operation === 'remove')).toBe(false);
+    retained(await actual(page), neutral);
+    await page.setViewportSize({ width: 320, height: 900 });
+    await captureCapacity(fixture, testInfo);
+
+    const completedWrites = fixture.progressWrites().length;
+    await locale(page, 'en');
+    await expect(capacity).toContainText('32 of 32');
+    await expect(routeFor(page, DEPENDENT_JOURNEY)).toBeDisabled();
+    expect(fixture.memory.get(PROGRESS)).toBe(completedBytes); expect(fixture.progressWrites()).toHaveLength(completedWrites);
+    await stablePose(page); const beforeManagement = await actual(page), managementUrl = page.url();
+    // Keyboard traversal starts at the persistent status, then reaches the
+    // explicit management action; focusing a heading does not navigate a route.
+    await status(page).focus(); await page.keyboard.press('Tab');
+    const manage = page.locator('[data-booky-journey-manage-history]');
+    await expect(manage).toBeFocused(); await page.keyboard.press('Enter');
+    await expect(page.locator('[data-booky-journey-history-heading]')).toBeFocused();
+    expect(fixture.memory.get(PROGRESS)).toBe(completedBytes); expect(fixture.progressWrites()).toHaveLength(completedWrites);
+    expect(page.url()).toBe(managementUrl); retained(await actual(page), beforeManagement, true);
+
+    const removed = held[0], remove = historyAction(page, 'delete-history', removed.recordId);
+    const confirm = historyAction(page, 'confirm-delete-history', removed.recordId);
+    await remove.focus(); await page.keyboard.press('Enter'); await expect(confirm).toBeFocused();
+    await page.keyboard.press('Tab');
+    await expect(historyAction(page, 'cancel-delete-history', removed.recordId)).toBeFocused();
+    await page.keyboard.press('Enter'); await expect(confirm).toHaveCount(0); await expect(remove).toBeFocused();
+    expect(fixture.memory.get(PROGRESS)).toBe(completedBytes); expect(fixture.progressWrites()).toHaveLength(completedWrites);
+    await page.keyboard.press('Enter'); await expect(confirm).toBeFocused();
+    fixture.failNextProgressWrite(); await page.keyboard.press('Enter');
+    const remaining = [completed, ...held.slice(1)];
+    await expect(storageState(page)).toHaveAttribute('data-booky-journey-storage', 'failed');
+    await expect(storageState(page)).toHaveAttribute('data-booky-journey-storage-error', 'write');
+    await expect(page.locator('[data-booky-journey-save-retry]')).toBeVisible();
+    expect(fixture.memory.get(PROGRESS)).toBe(completedBytes);
+    const failed = fixture.progressWrites().filter(operation => operation.failed);
+    expect(failed).toHaveLength(1); expect(JSON.parse(failed[0].value).records).toEqual(remaining);
+    // Local intent has a slot, but disk confirmation failed: eligibility may
+    // update while the real storage controls keep the change visibly unsaved.
+    await expect(capacity).toHaveCount(0);
+    await expect(routeFor(page, DEPENDENT_JOURNEY)).toBeEnabled();
+    await page.locator('[data-booky-journey-save-retry]').click();
+    const freedBytes = await expectHistorySaved(fixture, completed.recordId, remaining);
+    expect(freedBytes).toBe(failed[0].value);
+    await expect(page.locator('[data-booky-journey-history-entry]')).toHaveCount(31);
+    await expect(historyRow(page, removed.recordId)).toHaveCount(0);
+    await expect(capacity).toHaveCount(0);
+    await expect(routeFor(page, DEPENDENT_JOURNEY)).toBeEnabled();
+    expect(savedRecord(fixture)).toEqual(completed);
+    expect(page.url()).toBe(managementUrl); await stablePose(page); retained(await actual(page), beforeManagement, true);
+    await page.setViewportSize({ width: 1440, height: 850 });
+    await captureHistory(fixture, testInfo, completed.recordId, 'journey-capacity-recovered-en.png',
+      'Desktop actual App EN retains the completed primary record after confirmed removal of exactly one held entry; a new route can now start');
+    await routeFor(page, DEPENDENT_JOURNEY).click();
+    await expectReadyNode(page, 'country', 0, 2);
+    await expect(storageState(page)).toHaveAttribute('data-booky-journey-storage', 'ready');
+    await expect.poll(() => savedRecord(fixture)?.journeyId).toBe(DEPENDENT_JOURNEY);
+    const final = JSON.parse(fixture.memory.get(PROGRESS));
+    expect(final.records).toHaveLength(32);
+    expect(final.records.filter(record => record.recordId !== final.activeRecordId)).toEqual(remaining);
+    expect(savedRecord(fixture).acknowledgedNodeIds).toEqual([]);
+    expect(savedRecord(fixture).resumeNodeId).toBe('country');
+    await expect(capacity).toHaveAttribute('data-booky-journey-history-used', '32');
+    await expect(historyRow(page, removed.recordId)).toHaveCount(0);
+    expect(fixture.progressWrites().some(operation => operation.operation === 'remove')).toBe(false);
+    retained(await actual(page), beforeManagement);
+    Object.assign(result.observations, { fullCount: 32, freedCount: 31, finalCount: 32, removedRecord: removed,
+      retainedCompletedRecord: completed, freedPreferenceSha256: digest(freedBytes),
+      validFullSeedFromActualAppPrefix: true, fullColdRestoreNoWriteOrNavigation: true,
+      sameRecordResumeAndCompletionAtCapacity: true, newDependentStartDisabledAtCapacity: true,
+      capacityExplanationRuEn: true, disabledRouteExplained: true, keyboardManagementFocusesHistory: true,
+      cancellationPreservesFullBytes: true, explicitSingleHeldDeletionFreesSlot: true,
+      failedDeletionWritePreservesFullBytes: true, localSlotRecoveryRemainsUnsavedUntilRetry: true,
+      explicitRetryConfirmsFreedSlot: true,
+      originalCompletionAndOtherHistoryRetained: true, newStartUsesOnlyFreedSlot: true,
+      noAutomaticEvictionOrClear: true, canonicalSceneRetainedWithinDocument: true,
+      productionApprovalClaimed: false, fullAccessibilityAcceptanceClaimed: false });
+    fixture.verify();
+  } finally { await fixture.close(); }
+});

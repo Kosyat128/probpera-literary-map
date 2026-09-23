@@ -29,12 +29,13 @@ export const bookyJourneyHistoryCopy = { reviewStatus: "draft", productionReady:
   },
 } } as const;
 
-export default function BookyJourneyHistoryControls({ controller, snapshot, persistence, onAccepted, onConfirmationInvalidated }: {
+export default function BookyJourneyHistoryControls({ controller, snapshot, persistence, onAccepted, onConfirmationInvalidated, historyHeadingId }: {
   controller: BookyJourneyRuntime;
   snapshot: BookyJourneyRuntimeSnapshot;
   persistence: BookyJourneyPersistence;
   onAccepted: () => void;
   onConfirmationInvalidated: () => void;
+  historyHeadingId: string;
 }) {
   const { language } = useInterfaceLanguage(), copy = bookyJourneyHistoryCopy.locales[language], id = useId();
   const [confirmation, setConfirmation] = useState<{ key: string; revision: number } | null>(null);
@@ -74,8 +75,8 @@ export default function BookyJourneyHistoryControls({ controller, snapshot, pers
     if (accepted) onAccepted();
   }
   if (snapshot.history.length === 0 && !rejected) return null;
-  return <section className="booky-journey-controls__history" aria-labelledby={`${id}-heading`} data-booky-journey-history-controls="">
-    <h4 id={`${id}-heading`}>{copy.heading}</h4>
+  return <section className="booky-journey-controls__history" aria-labelledby={historyHeadingId} data-booky-journey-history-controls="">
+    <h4 id={historyHeadingId} tabIndex={-1} data-booky-journey-history-heading="">{copy.heading}</h4>
     <p ref={statusRef} hidden={!rejected} tabIndex={-1} role="status" aria-live="polite" aria-atomic="true"
       data-booky-journey-history-status="">{rejected ? copy.rejected : ""}</p>
     <ul ref={choices} className="booky-journey-controls__history-list">

@@ -117,7 +117,7 @@ describe("reviewed Booky journey runtime", () => {
     f.patch({ profileKey: "adult-policy:1", resolve: () => null }); f.runtime.refresh();
     expect(f.runtime.getSnapshot()).toMatchObject({ status: "unavailable", routes: [] });
     f.patch({ resolve: f.resolve }); f.runtime.refresh();
-    expect(f.runtime.getSnapshot().routes).toEqual([{ key: bookyJourneyRouteKey(f.initial.plan), title: f.initial.plan.title }]);
+    expect(f.runtime.getSnapshot().routes).toEqual([{ key: bookyJourneyRouteKey(f.initial.plan), title: f.initial.plan.title, canStart: true }]);
     const stable = f.runtime.getSnapshot(); f.runtime.refresh(); expect(f.runtime.getSnapshot()).toBe(stable);
     expect(Object.isFrozen(stable.routes)).toBe(true); f.runtime.dispose();
   });
@@ -731,6 +731,83 @@ describe("explicit saved Booky journey history", () => {
     expect(f.runtime.selectHistory(f.firstRecord.recordId, f.runtime.getSnapshot().revision)).toBe(true);
     expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "paused", completedCount: 1, index: 1 });
     expect(f.runtime.getProgressIntent().preference.records).toEqual(original.preference.records);
+    expect(f.navigate).not.toHaveBeenCalled(); f.runtime.dispose();
+  });
+});
+
+describe("Booky saved journey capacity", () => {
+  function historical(f: ReturnType<typeof durableSetup>, count: number, policy = explicitPolicy) {
+    return Array.from({ length: count }, (_, index) => createBookyJourneyProgressRecord(policy,
+      { ...f.initial.plan, id: `capacity-history-${index}` }, [], "country")!);
+  }
+
+  it("exposes immutable empty capacity without constructor reads or semantic writes", () => {
+    const f = durableSetup(), initial = f.runtime.getSnapshot();
+    expect(initial.historyCapacity).toEqual({ used: 0, limit: 32, full: false });
+    expect(Object.isFrozen(initial.historyCapacity)).toBe(true); expect(f.readHost).not.toHaveBeenCalled();
+    const intent = f.runtime.getProgressIntent(); f.runtime.refresh();
+    expect(f.runtime.getSnapshot().routes[0].canStart).toBe(true);
+    expect(f.runtime.getProgressIntent()).toBe(intent); expect(f.navigate).not.toHaveBeenCalled(); f.runtime.dispose();
+  });
+
+  it("keeps Start, Next and Resume available for an existing exact-profile record at 32 slots", () => {
+    const f = durableSetup(), current = createBookyJourneyProgressRecord(explicitPolicy, f.initial.plan, ["country"], "writer")!;
+    const others = historical(f, 31), records = [current, ...others];
+    f.runtime.restoreProgress({ ...DEFAULT_BOOKY_JOURNEY_PROGRESS, activeRecordId: current.recordId, records }, 0);
+    expect(f.runtime.getSnapshot().historyCapacity).toEqual({ used: 32, limit: 32, full: true });
+    expect(f.runtime.getSnapshot().routes[0].canStart).toBe(true); expect(f.start()).toBe(true);
+    expect(f.navigate.mock.calls[0][0].nodeId).toBe("writer");
+    f.display(1); expect(f.runtime.next(f.runtime.getSnapshot().revision)).toBe(true); f.display(2);
+    expect(f.runtime.pause(f.runtime.getSnapshot().revision)).toBe(true);
+    expect(f.runtime.resume(f.runtime.getSnapshot().revision)).toBe(true);
+    expect(f.runtime.getSnapshot().historyCapacity).toEqual({ used: 32, limit: 32, full: true });
+    expect(f.runtime.getSnapshot().routes[0].canStart).toBe(true);
+    expect(f.runtime.getProgressIntent().preference.records[0].acknowledgedNodeIds).toEqual(["country", "writer"]);
+    expect(f.runtime.getProgressIntent().preference.records.slice(1)).toEqual(others); f.runtime.dispose();
+  });
+
+  it("denies a fresh route at capacity without navigating and enables it after explicit selected deletion", () => {
+    const f = durableSetup(), records = historical(f, 32);
+    f.runtime.restoreProgress({ ...DEFAULT_BOOKY_JOURNEY_PROGRESS, activeRecordId: records[0].recordId, records }, 0);
+    const before = f.runtime.getProgressIntent();
+    expect(f.runtime.getSnapshot().historyCapacity).toEqual({ used: 32, limit: 32, full: true });
+    expect(f.runtime.getSnapshot().routes[0].canStart).toBe(false); expect(f.start()).toBe(false);
+    expect(f.navigate).not.toHaveBeenCalled(); expect(f.runtime.getProgressIntent()).toBe(before);
+    expect(f.runtime.deleteHistory(records[0].recordId, f.runtime.getSnapshot().revision)).toBe(true);
+    expect(f.runtime.getSnapshot().historyCapacity).toEqual({ used: 31, limit: 32, full: false });
+    expect(f.runtime.getSnapshot().routes[0].canStart).toBe(true);
+    expect(f.runtime.getProgressIntent().preference.records).toEqual(records.slice(1));
+    expect(f.start()).toBe(true); expect(f.runtime.getSnapshot().historyCapacity.full).toBe(true);
+    expect(f.runtime.getProgressIntent().preference.records.slice(0, 31)).toEqual(records.slice(1)); f.runtime.dispose();
+  });
+
+  it("counts other-profile records without mistaking their matching route id for a reusable slot", () => {
+    const f = durableSetup(), otherPolicy = createBookyReaderPolicy({ age: 31, readingLevel: "plain" }, reviewedAt, 2)!;
+    const otherCurrent = createBookyJourneyProgressRecord(otherPolicy, f.initial.plan, [], "country")!;
+    const others = historical(f, 31, otherPolicy), records = [otherCurrent, ...others];
+    f.runtime.restoreProgress({ ...DEFAULT_BOOKY_JOURNEY_PROGRESS, activeRecordId: otherCurrent.recordId, records }, 0);
+    expect(f.runtime.getSnapshot().historyCapacity).toEqual({ used: 32, limit: 32, full: true });
+    expect(f.runtime.getSnapshot().history.every(item => item.title === null && !item.canSelect)).toBe(true);
+    expect(f.runtime.getSnapshot().routes[0].canStart).toBe(false); expect(f.start()).toBe(false);
+    expect(f.navigate).not.toHaveBeenCalled();
+    expect(f.runtime.deleteHistory(otherCurrent.recordId, f.runtime.getSnapshot().revision)).toBe(true);
+    expect(f.runtime.getSnapshot().routes[0].canStart).toBe(true); expect(f.start()).toBe(true);
+    expect(f.runtime.getProgressIntent().preference.records.slice(0, 31)).toEqual(others);
+    expect(f.runtime.getSnapshot().historyCapacity.used).toBe(32); f.runtime.dispose();
+  });
+
+  it("never exposes an unreviewed migration merely because an explicit deletion frees capacity", () => {
+    const f = migrationSetup(), others = historical(f, 31);
+    f.runtime.restoreProgress({ ...f.preference, records: [f.old, ...others] }, 0);
+    expect(f.runtime.getSnapshot().historyCapacity.full).toBe(true);
+    expect(f.runtime.getSnapshot().routes[0].canStart).toBe(false);
+    expect(f.runtime.getSnapshot().migrations).toEqual([]);
+    f.resolveMigration.mockReturnValue(null); f.runtime.refresh();
+    expect(f.runtime.deleteHistory(others[0].recordId, f.runtime.getSnapshot().revision)).toBe(true);
+    expect(f.runtime.getSnapshot().historyCapacity).toEqual({ used: 31, limit: 32, full: false });
+    expect(f.runtime.getSnapshot().routes[0].canStart).toBe(true);
+    expect(f.runtime.getSnapshot().migrations).toEqual([]);
+    expect(f.runtime.getProgressIntent().preference.records).toEqual([f.old, ...others.slice(1)]);
     expect(f.navigate).not.toHaveBeenCalled(); f.runtime.dispose();
   });
 });

@@ -2,7 +2,7 @@ import type { BookyJourneyPlan } from "./bookyJourney";
 import type { BookyJourneyHostOffer } from "./bookyJourneyHost";
 import { contentTextHash } from "../planet/contentExportHash";
 import { parseBookyReaderPolicy, serializeBookyReaderPolicy } from "./bookyReaderPolicy";
-import { DEFAULT_BOOKY_JOURNEY_PROGRESS, createBookyJourneyProgressRecord, parseBookyJourneyProgress,
+import { BOOKY_JOURNEY_PROGRESS_MAX_RECORDS, DEFAULT_BOOKY_JOURNEY_PROGRESS, createBookyJourneyProgressRecord, parseBookyJourneyProgress,
   type BookyJourneyProgressNode, type BookyJourneyProgressPreference, type BookyJourneyProgressRecord } from "./bookyJourneyProgress";
 
 export type BookyJourneyMigrationOffer = Readonly<{ migrationId: string; migrationChecksum: string;
@@ -24,7 +24,8 @@ type Phase = "navigating" | "ready" | "paused" | "unavailable" | "failed" | "com
 export type BookyJourneyRuntimeSnapshot = Readonly<{
   revision: number;
   status: "profile-required" | "unavailable" | "ready";
-  routes: readonly Readonly<{ key: string; title: string }>[];
+  routes: readonly Readonly<{ key: string; title: string; canStart: boolean }>[];
+  historyCapacity: Readonly<{ used: number; limit: number; full: boolean }>;
   migrations: readonly Readonly<{ key: string; title: string; fromVersion: number; toVersion: number }>[];
   history: readonly Readonly<{ key: string; title: string | null; journeyId: string; version: number; locale: "ru" | "en";
     completedCount: number; total: number; selected: boolean; canSelect: boolean; available: boolean }>[];
@@ -78,6 +79,7 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
   navigate: (offer: BookyJourneyHostOffer, signal: AbortSignal) => boolean;
 }) {
   let snapshot: BookyJourneyRuntimeSnapshot = Object.freeze({ revision: 0, status: "unavailable", routes: emptyRoutes,
+    historyCapacity: Object.freeze({ used: 0, limit: BOOKY_JOURNEY_PROGRESS_MAX_RECORDS, full: false }),
     migrations: emptyRoutes, history: emptyRoutes, active: null });
   let session: Session | null = null, navigation: Navigation | null = null;
   let progressIntent: BookyJourneyProgressIntent = Object.freeze({ revision: 0, preference: DEFAULT_BOOKY_JOURNEY_PROGRESS });
@@ -163,7 +165,12 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
   function publish(observed: Observation) {
     const host = observed.host, plan = currentPlan(observed);
     const status = host?.profileKey === null ? "profile-required" : observed.plans.length ? "ready" : "unavailable";
-    const routes = Object.freeze(observed.plans.map(plan => Object.freeze({ key: bookyJourneyRouteKey(plan), title: plan.title })));
+    const used = progressIntent.preference.records.length;
+    const historyCapacity = Object.freeze({ used, limit: BOOKY_JOURNEY_PROGRESS_MAX_RECORDS, full: used >= BOOKY_JOURNEY_PROGRESS_MAX_RECORDS });
+    // This is only slot eligibility. Admission, retained history and current
+    // authority are still checked again by Start; no history is evicted here.
+    const routes = Object.freeze(observed.plans.map(plan => Object.freeze({ key: bookyJourneyRouteKey(plan), title: plan.title,
+      canStart: progressFor(observed, plan, 0) !== null })));
     const migrations = Object.freeze(session?.phase === "unavailable" ? (observed.migrations ?? []).map(candidate => Object.freeze({
       key: candidate.key, title: candidate.plan.title, fromVersion: candidate.offer.preservedRecord.journeyVersion,
       toVersion: candidate.offer.targetRecord.journeyVersion })) : []);
@@ -180,11 +187,11 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
       completedCount: session.completedCount, phase: session.phase,
       canOpen: !!node && (session.phase === "ready" || session.phase === "failed"),
       canNext: !!node && session.phase === "ready" && !!host && matches(node, host.view) }) : null;
-    const key = JSON.stringify([progressViewRevision, status, routes, migrations, history, active && [active.title, session && bookyJourneyRouteKey(session), active.index,
+    const key = JSON.stringify([progressViewRevision, status, routes, historyCapacity, migrations, history, active && [active.title, session && bookyJourneyRouteKey(session), active.index,
       active.total, active.completedCount, active.phase, active.canOpen, active.canNext, !!active.node]]);
     if (key === renderedKey && host === renderedHost && (host?.revision ?? null) === renderedRevision) return;
     renderedKey = key; renderedHost = host; renderedRevision = host?.revision ?? null;
-    const next = Object.freeze({ revision: snapshot.revision + 1, status, routes, migrations, history, active }); snapshot = next;
+    const next = Object.freeze({ revision: snapshot.revision + 1, status, routes, historyCapacity, migrations, history, active }); snapshot = next;
     for (const listener of [...listeners]) {
       if (snapshot !== next) break;
       if (listeners.has(listener)) { try { listener(); } catch { /* Views do not own admission. */ } }
