@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S15/journey-persistence-20260923/pwa-a1.config.mjs"
+  ],
+  "exitCode": 0,
+  "durationMs": 16463,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/journey-persistence-20260923/pwa-a1/browser-stdout.log",
+    "bytes": 189,
+    "sha256": "ab8e8a29f489dc04886d0af03779032f50b10af906f57129d1f56d90c3efcc75"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/journey-persistence-20260923/pwa-a1/browser-stderr.log",
+    "bytes": 164,
+    "sha256": "6c422ee825d24bb8631da734ff65fb05092a658e4f20332a8581d5783dd4803d"
+  }
+}

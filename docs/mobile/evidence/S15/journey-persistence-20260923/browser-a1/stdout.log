@@ -1,0 +1,15 @@
+
+Running 9 tests using 1 worker
+
+
+
+[1/9] tests\pwa\booky-journey.spec.mjs:469:1 › actual reviewed fixture follows country writer work and explicit checkpoint across locale and suspension
+[2/9] tests\pwa\booky-journey.spec.mjs:563:4 › journey admission fails closed: no-profile
+[3/9] tests\pwa\booky-journey.spec.mjs:563:4 › journey admission fails closed: no-independent-journey-review
+[4/9] tests\pwa\booky-journey.spec.mjs:585:1 › confirmed journey progress restores the exact prefix paused in a fresh document until explicit resume
+[5/9] tests\pwa\booky-journey.spec.mjs:621:1 › failed journey-progress native write stays visibly unsaved until explicit exact retry
+[6/9] tests\pwa\booky-journey.spec.mjs:655:1 › future journey progress remains unchanged until explicit confirmed removal
+[7/9] tests\pwa\booky-journey.spec.mjs:691:1 › a new reviewed journey version cannot reinterpret or overwrite a saved older prefix
+[8/9] tests\pwa\booky-reader-policy.spec.mjs:481:1 › explicit adult profile survives locale and lifecycle while drafts and deletion never grant stale policy
+[9/9] tests\pwa\booky-reader-policy.spec.mjs:542:1 › future profiles are retained until confirmed deletion and failed deletion cannot restore admission
+  9 passed (1.2m)

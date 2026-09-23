@@ -1,0 +1,4 @@
+src/host/bookyJourneyPersistence.test.ts(47,5): error TS2322: Type 'Readonly<{ revision: number; preference: Readonly<{ schemaVersion: 1; audience: "adult"; revision: number; activeRecordId: string | null; records: readonly Readonly<{ recordId: string; policyFingerprint: string; journeyId: string; ... 5 more ...; resumeNodeId: string | null; }>[]; }>; }>' is not assignable to type 'Readonly<{ revision: 0; preference: Readonly<{ schemaVersion: 1; audience: "adult"; revision: number; activeRecordId: string | null; records: readonly Readonly<{ recordId: string; policyFingerprint: string; journeyId: string; ... 5 more ...; resumeNodeId: string | null; }>[]; }>; }>'.
+  Types of property 'revision' are incompatible.
+    Type 'number' is not assignable to type '0'.
+src/host/bookyJourneyProgress.ts(69,93): error TS2551: Property 'value' does not exist on type 'number'. Did you mean 'valueOf'?

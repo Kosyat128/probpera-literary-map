@@ -5034,7 +5034,15 @@
         "src/host/planetMascotPreference.ts",
         "src/host/planetMascotPersistence.ts",
         "src/host/planetMascotRoutes.ts",
-        "src/host/bookyTourProgress.ts"
+        "src/host/bookyTourProgress.ts",
+        "src/host/BookyJourneyControls.css",
+        "src/host/BookyJourneyControls.tsx",
+        "src/host/bookyJourneyRuntime.ts",
+        "src/host/useBookyJourney.ts",
+        "src/host/bookyJourneyProgress.ts",
+        "src/host/bookyJourneyProgressStore.ts",
+        "src/host/bookyJourneyPersistence.ts",
+        "src/host/BookyJourneyStorageControls.tsx"
       ],
       "tests": [
         "src/host/planetMascot.test.ts",
@@ -5046,15 +5054,33 @@
         "src/host/bookyTourProgress.test.ts",
         "src/host/planetMascotPreference.test.ts",
         "tests/pwa/booky-progress.spec.mjs",
-        "tests/pwa/booky-catalog-readiness.spec.mjs"
+        "tests/pwa/booky-catalog-readiness.spec.mjs",
+        "src/host/bookyJourneyRuntime.test.ts",
+        "src/host/bookyJourneyCatalog.test.ts",
+        "src/host/bookyJourney.test.ts",
+        "src/host/bookyJourneyHost.test.ts",
+        "src/host/bookyJourneyCompanion.test.ts",
+        "src/host/bookyReaderPolicy.test.ts",
+        "src/host/bookyReaderPolicyStore.test.ts",
+        "src/host/bookyDialogueRegistry.test.ts",
+        "src/host/bookyNavigationDrafts.test.ts",
+        "src/host/bookyDialogueDrafts.test.ts",
+        "src/books/bookArchiveDetailView.test.ts",
+        "src/books/bookArchiveAuthorRequest.test.ts",
+        "src/host/bookyJourneyProgress.test.ts",
+        "src/host/bookyJourneyProgressStore.test.ts",
+        "src/host/bookyJourneyPersistence.test.ts",
+        "tests/pwa/booky-journey.spec.mjs",
+        "tests/pwa/booky-reader-policy.spec.mjs"
       ],
       "evidence": [
         "docs/mobile/evidence/S15/booky-resume-preference-20260920/result.json",
         "docs/mobile/evidence/S15/booky-semantic-progress-20260920/result.json",
-        "docs/mobile/evidence/S15/booky-catalog-readiness-20260920/result.json"
+        "docs/mobile/evidence/S15/booky-catalog-readiness-20260920/result.json",
+        "docs/mobile/evidence/S15/journey-persistence-20260923/result.json"
       ],
-      "commit": "f3abea82df910d824216093792a8e257ff6447a4",
-      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion. Adult Booky explicit visibility and semantic navigation-tour resume now persist through existing adult platform preferences. Cold restoration offers a closed, explicit resume and does not navigate or grant permissions. 206 selected preference/controller/adapter cases, TypeScript, one actual-App Chrome case and 3 inspected source-bound views validate the selected source; current local PWA/Android artifacts preserve that runtime. This starts the adult foundation only; child and literary progress, migrations, reviewed dialogue/audio and all art/device/release acceptance remain pending. All former Planetka functions remain Booky scope. Adult navigation progress now uses schema v2 and versioned semantic acknowledgements for the two existing routes. Strict v1 migration adds no inferred steps; hide keeps progress and resume; cold restore stays closed; only confirmed reset can replace unsupported data. 256 focused cases, TypeScript, 3 actual-App Chrome cases and 3 inspected views bind this source, with local PWA/Android preservation. This is not reading or full literary/child journey progress and does not close PLANETKA-008. Retained selection now requires a currently ready country catalog before selection-dependent actions or semantic acknowledgement; loading/error/unknown states suspend those operations, and ready offline content remains usable. 265 focused tests, TypeScript, 2 actual-App Chrome cases and 2 inspected views bind fresh preserved PWA/Android-dev builds. This remains scoped adult behavior, with no stage, child, reviewed-content or release acceptance."
+      "commit": "37e55437307cf81832950440cadc69f32a00f8c6",
+      "notes": "Mandatory V12 requirement. Stage milestones do not imply global completion. Adult Booky explicit visibility and semantic navigation-tour resume now persist through existing adult platform preferences. Cold restoration offers a closed, explicit resume and does not navigate or grant permissions. 206 selected preference/controller/adapter cases, TypeScript, one actual-App Chrome case and 3 inspected source-bound views validate the selected source; current local PWA/Android artifacts preserve that runtime. This starts the adult foundation only; child and literary progress, migrations, reviewed dialogue/audio and all art/device/release acceptance remain pending. All former Planetka functions remain Booky scope. Adult navigation progress now uses schema v2 and versioned semantic acknowledgements for the two existing routes. Strict v1 migration adds no inferred steps; hide keeps progress and resume; cold restore stays closed; only confirmed reset can replace unsupported data. 256 focused cases, TypeScript, 3 actual-App Chrome cases and 3 inspected views bind this source, with local PWA/Android preservation. This is not reading or full literary/child journey progress and does not close PLANETKA-008. Retained selection now requires a currently ready country catalog before selection-dependent actions or semantic acknowledgement; loading/error/unknown states suspend those operations, and ready offline content remains usable. 265 focused tests, TypeScript, 2 actual-App Chrome cases and 2 inspected views bind fresh preserved PWA/Android-dev builds. This remains scoped adult behavior, with no stage, child, reviewed-content or release acceptance. Actual App adult literary-journey progress now persists through platform preferences with exact route/version/node and reader-policy binding. Incomplete cold restoration stays paused with an exact acknowledged prefix and requires explicit resume; admitted completed records retain completion without another acknowledgement. Failed writes retain visibly unsaved intent for exact retry; unknown schemas and incompatible route versions remain unchanged, and deletion requires confirmation and fresh readback. No automatic route-version migration or books-read claim is introduced. Production content remains empty and all 34 inventoried dialogues remain draft. 532 focused tests, TypeScript, 9 actual-App Chrome cases and 7 inspected captures bind fresh PWA 58d15d8f / Android-dev b2a65c07. All 1,598 protected inputs remain exact. No stage or release acceptance."
     },
     {
       "id": "PLATFORM-001",

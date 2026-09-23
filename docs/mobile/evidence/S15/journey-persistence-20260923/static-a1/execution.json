@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/typescript/bin/tsc",
+    "--noEmit"
+  ],
+  "startedAt": "2026-09-22T23:57:30.121Z",
+  "exitCode": 2,
+  "durationMs": 25106,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/journey-persistence-20260923/static-a1/stdout.log",
+    "bytes": 902,
+    "sha256": "9fa09929239d5f32b06815e5992133401dce4d713f210a7e7d122a948944dc5d"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/journey-persistence-20260923/static-a1/stderr.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

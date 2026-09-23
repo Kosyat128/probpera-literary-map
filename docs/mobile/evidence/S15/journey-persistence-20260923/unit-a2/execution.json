@@ -1,0 +1,23 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "--config=docs/mobile/evidence/S15/journey-persistence-20260923/unit.config.mjs",
+    "--reporter=json",
+    "--outputFile=C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\journey-persistence-20260923\\unit-a2\\vitest.json"
+  ],
+  "startedAt": "2026-09-22T23:59:09.976Z",
+  "exitCode": 0,
+  "durationMs": 6231,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/journey-persistence-20260923/unit-a2/stdout.log",
+    "bytes": 183,
+    "sha256": "70cb945c46d1727985f007a5bd2483eadea872fcb3f09dd82aafeba0ebfeba6f"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/journey-persistence-20260923/unit-a2/stderr.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}
