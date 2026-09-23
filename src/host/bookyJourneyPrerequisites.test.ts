@@ -11,6 +11,7 @@ import { readBookyJourneyContent, type BookyJourneyContent } from "./bookyJourne
 import { createBookyJourneyCatalogWithProgress, matchesBookyJourneyProgress, type BookyJourneyCatalogWithProgressOptions } from "./bookyJourneyPrerequisites";
 import { createBookyJourneyProgressRecord, parseBookyJourneyProgress, type BookyJourneyProgressPreference,
   type BookyJourneyProgressRecord } from "./bookyJourneyProgress";
+import type { BookyJourneyFactSpec } from "./bookyJourneyFact";
 import { createBookyReaderPolicy } from "./bookyReaderPolicy";
 
 const now = "2026-09-23T12:00:00.000Z", reviewedAt = "2026-09-22T12:00:00.000Z";
@@ -255,5 +256,94 @@ describe("activity completion cannot cross changed question or factual author se
       const savedPlan = createBookyJourneyCatalog({ ...f.options, locale: "ru", completedPrerequisites: [] }).plans[0];
       expect(matchesBookyJourneyProgress(completed, policy, result.catalog.plans[0], savedPlan)).toBe(false);
     }
+  });
+});
+
+
+/** Synthetic independent fact reviews only; the production providers stay empty. */
+function withReviewedFact(content: BookyJourneyContent, changedLocale?: "ru" | "en", mismatchedEnglishPair = false): BookyJourneyContent {
+  const factRecords = new Map<string, BookyDialogueRecord>();
+  const definitions = content.definitions.map(definition => {
+    const anchor = definition.nodes.find(node => node.kind === "writer")!;
+    const placeholder: BookyJourneyFactSpec = { schemaVersion: 1, id: definition.id + "-fact", version: 1, dialogues: [
+      { locale: "ru", id: definition.id + "-fact-dialogue", version: 1, contentChecksum: "a".repeat(64) },
+      { locale: "en", id: definition.id + "-fact-dialogue", version: 1, contentChecksum: "a".repeat(64) },
+    ] };
+    const raw = { id: "fact", kind: "sourced-fact" as const, entity: anchor.entity, screen: anchor.screen,
+      dialogue: { id: placeholder.dialogues[0].id, version: 1, contentChecksum: "a".repeat(64) }, fact: placeholder };
+    const records = (["ru", "en"] as const).map(locale => {
+      const copy = { title: locale + ": synthetic fact", body: locale + ": synthetic test fact " + (changedLocale === locale ? "changed" : "original"),
+        caption: "Synthetic fact", reduced: "Synthetic fact" };
+      const payload: BookyDialoguePayload = { id: raw.dialogue.id, locale, version: 1, audience: "adult", ageRange: { min: 18, max: 120 },
+        readingLevel: "plain", intent: "sourced-fact", screens: [raw.screen], context: bookyJourneyDialogueContext(definition.id, raw)!,
+        entityIds: [bookyJourneyEntityId(raw.entity!)], claimKind: "factual", factualSources: [
+          { id: "test-source", url: "https://example.org/fact", accessedAt: reviewedAt }], copy, narration: null, prohibitedTags: [],
+        provenance: { kind: "editorial", sourcePath: "test/fact-history.ts", sourceVersion: 1, sourceRef: raw.id,
+          sourceSha256: "a".repeat(64), copySha256: contentTextHash(JSON.stringify({ title: copy.title, body: copy.body })) } };
+      const review = { status: "approved" as const, reviewer: "synthetic-fact-reviewer-not-real", reviewedAt,
+        contentChecksum: getBookyDialogueContentChecksum(payload)! };
+      const record = { payload, review, checksum: getBookyDialogueChecksum({ payload, review })! };
+      factRecords.set(locale + ":" + payload.id, record); return record;
+    });
+    const spec: BookyJourneyFactSpec = { ...placeholder, dialogues: [
+      { ...placeholder.dialogues[0], contentChecksum: mismatchedEnglishPair && definition.locale === "en" ? "d".repeat(64) : records[0].review.contentChecksum },
+      { ...placeholder.dialogues[1], contentChecksum: records[1].review.contentChecksum },
+    ] };
+    const selected = spec.dialogues.find(binding => binding.locale === definition.locale)!;
+    const fact = { ...raw, fact: spec, dialogue: { id: selected.id, version: selected.version, contentChecksum: selected.contentChecksum } };
+    const index = definition.nodes.indexOf(anchor) + 1;
+    return { ...definition, nodes: [...definition.nodes.slice(0, index), fact, ...definition.nodes.slice(index)] };
+  });
+  const dialogues = [...content.dialogues, ...factRecords.values()];
+  return { ...content, definitions, dialogues,
+    dialogueApprovals: dialogues.map(record => ({ id: record.payload.id, version: record.payload.version, locale: record.payload.locale,
+      contentChecksum: record.review.contentChecksum, reviewer: record.review.reviewer!, reviewedAt })),
+    journeyApprovals: definitions.map(definition => ({ id: definition.id, version: definition.version, locale: definition.locale,
+      definitionChecksum: getBookyJourneyChecksum(definition)!, reviewer: "synthetic-journey-reviewer-not-real", reviewedAt })),
+    availability: definitions.map(definition => ({ journeyId: definition.id, version: definition.version, locale: definition.locale,
+      nodes: definition.nodes.map(node => ({ nodeId: node.id, locale: definition.locale,
+        dialogueContentChecksum: node.dialogue.contentChecksum, available: true, offlineAvailable: true })) })),
+  };
+}
+
+
+describe("fact completion prerequisites require exact independently admitted locale bindings", () => {
+  const specs: Spec[] = [{ id: "test-base", locale: "ru" }, { id: "test-base", locale: "en" },
+    { id: "test-next", prerequisites: [{ id: "test-base", version: 1 }] }];
+  function factSetup(mismatchedEnglishPair = false) {
+    const base = fixture(specs), content = withReviewedFact(base.content, undefined, mismatchedEnglishPair), options = { ...base.options, content };
+    const savedPlan = createBookyJourneyCatalog({ ...options, locale: "ru", completedPrerequisites: [] }).plans[0];
+    if (!savedPlan) throw Error("invalid-synthetic-prerequisite-fact");
+    const saved = createBookyJourneyProgressRecord(policy, savedPlan, savedPlan.nodes.map(node => node.id), null)!;
+    return { base, content, options, saved, savedPlan };
+  }
+
+  it("unlocks only complete exact-pair fact history across independently admitted RU and EN plans", () => {
+    const f = factSetup(), bytes = JSON.stringify(f.saved);
+    const result = createBookyJourneyCatalogWithProgress({ ...f.options, progress: preference([f.saved]) });
+    expect(ids(result)).toEqual(["test-base", "test-next"]); expect(result.completedPrerequisites).toEqual([{ id: "test-base", version: 1 }]);
+    expect(matchesBookyJourneyProgress(f.saved, policy, result.catalog.plans[0], f.savedPlan)).toBe(true);
+    const partial = createBookyJourneyProgressRecord(policy, f.savedPlan, ["country", "writer", "fact"], "checkpoint")!;
+    expect(createBookyJourneyCatalogWithProgress({ ...f.options, progress: preference([partial]) }).completedPrerequisites).toEqual([]);
+    expect(JSON.stringify(f.saved)).toBe(bytes);
+  });
+
+  it("denies fact completion when current and saved locales bind different bilingual meanings despite individual admission", () => {
+    const f = factSetup(true), result = createBookyJourneyCatalogWithProgress({ ...f.options, progress: preference([f.saved]) });
+    expect(ids(result)).toEqual(["test-base"]); expect(result.completedPrerequisites).toEqual([]);
+    expect(result.catalog.plans[0].nodes[2].fact!.semanticChecksum).not.toBe(f.savedPlan.nodes[2].fact!.semanticChecksum);
+    expect(matchesBookyJourneyProgress(f.saved, policy, result.catalog.plans[0], f.savedPlan)).toBe(false);
+    expect(parseBookyJourneyProgress(preference([f.saved]))?.records[0]).toEqual(f.saved);
+  });
+
+  it("withdraws fact prerequisites after either locale copy or saved-locale independent review changes without rewriting old history", () => {
+    const f = factSetup(), bytes = JSON.stringify(f.saved);
+    for (const locale of ["ru", "en"] as const) {
+      const changed = withReviewedFact(f.base.content, locale);
+      expect(createBookyJourneyCatalogWithProgress({ ...f.options, content: changed, progress: preference([f.saved]) }).completedPrerequisites).toEqual([]);
+      const revoked = { ...f.content, dialogueApprovals: f.content.dialogueApprovals.filter(item => item.locale !== locale || item.id !== "test-base-fact-dialogue") };
+      expect(createBookyJourneyCatalogWithProgress({ ...f.options, content: revoked, progress: preference([f.saved]) }).completedPrerequisites).toEqual([]);
+    }
+    expect(JSON.stringify(f.saved)).toBe(bytes);
   });
 });

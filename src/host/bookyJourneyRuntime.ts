@@ -64,9 +64,16 @@ const activityKey = (node: IdentityNode) => {
   return "spec" in activity ? [activity.spec.id, activity.spec.version, activity.semanticChecksum]
     : [activity.id, activity.version, activity.semanticChecksum];
 };
+const factKey = (node: IdentityNode) => {
+  const fact = node.fact;
+  if (node.kind !== "sourced-fact" || !fact) return null;
+  return "spec" in fact ? [fact.spec.id, fact.spec.version, fact.semanticChecksum]
+    : [fact.id, fact.version, fact.semanticChecksum];
+};
 const topology = (plan: { nodes: readonly IdentityNode[] }) => JSON.stringify(plan.nodes.map(node => {
   const fields = [node.id, node.kind, entityKey(node), node.screen];
-  return node.kind === "activity" ? [...fields, activityKey(node)] : fields;
+  return node.kind === "activity" ? [...fields, activityKey(node)]
+    : node.kind === "sourced-fact" ? [...fields, factKey(node)] : fields;
 }));
 const fingerprint = (profileKey: string | null) => {
   const serialized = serializeBookyReaderPolicy(profileKey);
@@ -81,7 +88,8 @@ const storedSession = (record: BookyJourneyProgressRecord): Session => ({ id: re
   completedCount: record.acknowledgedNodeIds.length, phase: "unavailable" });
 const viewKey = (view: BookyJourneyRuntimeHost["view"]) => JSON.stringify(view);
 const semanticKey = (node: BookyJourneyProgressNode) => JSON.stringify(node.kind === "activity"
-  ? [node.kind, node.screen, entityKey(node), activityKey(node)] : [node.kind, node.screen, entityKey(node)]);
+  ? [node.kind, node.screen, entityKey(node), activityKey(node)]
+  : node.kind === "sourced-fact" ? [node.kind, node.screen, entityKey(node), factKey(node)] : [node.kind, node.screen, entityKey(node)]);
 function matches(node: BookyJourneyPlan["nodes"][number], view: BookyJourneyRuntimeHost["view"]) {
   if (!view.settled || node.screen !== view.screen) return false;
   const entity = node.entity;
@@ -248,12 +256,14 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
       && offer.node.dialogue.checksum === node.dialogue.checksum
       && (node.kind === "activity" ? !!node.activity && JSON.stringify(offer.node.activity) === JSON.stringify(node.activity)
         && JSON.stringify(offer.node.activityChoices) === JSON.stringify(node.activityChoices)
-        : offer.node.activity === undefined && offer.node.activityChoices === undefined);
+        : offer.node.activity === undefined && offer.node.activityChoices === undefined)
+      && (node.kind === "sourced-fact" ? !!node.fact && JSON.stringify(offer.node.fact) === JSON.stringify(node.fact)
+        : offer.node.fact === undefined);
   }
-  function validActivities(host: BookyJourneyRuntimeHost, plan: BookyJourneyPlan, token: number, checkedNodeId?: string): boolean {
+  function validSemanticNodes(host: BookyJourneyRuntimeHost, plan: BookyJourneyPlan, token: number, checkedNodeId?: string): boolean {
     const revision = host.revision;
     for (const node of plan.nodes) {
-      if (node.kind !== "activity" || node.id === checkedNodeId) continue;
+      if (node.kind !== "activity" && node.kind !== "sourced-fact" || node.id === checkedNodeId) continue;
       if (epoch !== token || disposed || readHost() !== host) return false;
       const offer = host.resolve(plan, node.id), current = readHost();
       if (epoch !== token || disposed || current !== host || current.revision !== revision || !validOffer(offer, plan, node.id)) return false;
@@ -278,12 +288,12 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
           const offer = host.resolve(plan, plan.nodes[0].id);
           if (epoch !== token || disposed) return null;
           if (!validOffer(offer, plan, plan.nodes[0].id)) continue;
-          // A checkpoint offer cannot expose changed activity authorship. Check
-          // all bounded task bindings, including an activity whose Next command
-          // has already advanced the temporary navigation cursor.
-          const activitiesValid = validActivities(host, plan, token, plan.nodes[0].id);
+          // An ordinary-node offer cannot establish every earlier activity or fact
+          // binding. Recheck them all, including a node whose Next command has
+          // already advanced the temporary navigation cursor.
+          const semanticNodesValid = validSemanticNodes(host, plan, token, plan.nodes[0].id);
           if (epoch !== token || disposed) return null;
-          if (activitiesValid) plans.push(plan);
+          if (semanticNodesValid) plans.push(plan);
         }
       }
       const migrations: MigrationCandidate[] = [];
@@ -312,7 +322,7 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
       const offer = host.resolve(plan, plan.nodes[index].id);
       const current = readHost();
       return epoch === token && !disposed && current === host && current.revision === revision
-        && validOffer(offer, plan, plan.nodes[index].id) && validActivities(host, plan, token, plan.nodes[index].id) ? offer : null;
+        && validOffer(offer, plan, plan.nodes[index].id) && validSemanticNodes(host, plan, token, plan.nodes[index].id) ? offer : null;
     } catch { return null; }
     finally { reading = false; }
   }
@@ -328,7 +338,7 @@ export function createBookyJourneyRuntime({ readHost, navigate }: {
       const current = readHost();
       return epoch === token && !disposed && current === host && current.revision === revision && !!candidate
         && candidate.key === expected.key && JSON.stringify(candidate.offer) === JSON.stringify(expected.offer)
-        && validActivities(host, plan, token);
+        && validSemanticNodes(host, plan, token);
     } catch { return false; }
     finally { reading = false; }
   }

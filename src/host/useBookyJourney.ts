@@ -150,5 +150,5 @@ export function useBookyJourney(input: {
     controller.refresh();
   }, [controller]);
   return { controller, snapshot, persistence, persistenceSnapshot, passport, passportState,
-    needsBooks: !!input.policy && !input.booksReady && content.definitions.some(route => route.nodes.some(node => node.kind === "work" || node.kind === "activity")) };
+    needsBooks: !!input.policy && !input.booksReady && content.definitions.some(route => route.nodes.some(node => node.entity?.kind === "work" || node.kind === "activity")) };
 }

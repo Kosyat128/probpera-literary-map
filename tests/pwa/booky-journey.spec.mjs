@@ -25,8 +25,8 @@ const mime = { '.js': 'text/javascript', '.css': 'text/css', '.json': 'applicati
 let files, selectedAssets, sourceEvidence, bookChunks, primaryBookChunk, retryBookChunk;
 let countryChunks, primaryCountryChunk, retryCountryChunk, componentChunks, primaryComponentChunk, retryComponentChunk;
 
-// Test-only interface guidance and synthetic independent receipts. No literary
-// facts, production approval, child access or content are supplied by this module.
+// Test-only guidance, synthetic fact assertions and independent test receipts.
+// No real literary fact, production approval or child access is supplied here.
 const SYNTHETIC_CONTENT = `
 import { contentTextHash } from '../planet/contentExportHash';
 import { getBookyDialogueChecksum, getBookyDialogueContentChecksum } from './bookyDialogueRegistry';
@@ -34,19 +34,49 @@ import { bookyJourneyEntityId, bookyJourneyDialogueContext, getBookyJourneyCheck
 const primaryId='test.actual-app-journey',version=window.__journeyContentMode==='new-version'||window.__journeyContentMode.startsWith('migration-')?2:1,reviewedAt='2026-09-20T12:00:00.000Z';
 const routeIds=window.__journeyContentMode.startsWith('history')?[primaryId,'test.dependent-journey']:[primaryId];
 const activityMode=window.__journeyContentMode.startsWith('activity');
+const factMode=window.__journeyContentMode.startsWith('fact-');
 const definitions=[],dialogues=[],dialogueApprovals=[],journeyApprovals=[],availability=[];
 for(const id of routeIds){
+// Only the opt-in fact cases use synthetic factual payloads. The example.org
+// references are inert test citations, never evidence of a real literary claim.
+const factAnchor={kind:'work',countryId:'russia',writerId:'dostoevsky',workId:'crime-and-punishment'};
+const factSeed={schemaVersion:1,id:'test.source-fact',version:1,dialogues:[
+  {locale:'ru',id:id+'.fact',version:1,contentChecksum:'a'.repeat(64)},
+  {locale:'en',id:id+'.fact',version:1,contentChecksum:'b'.repeat(64)}]};
+const factRecords=factMode?['ru','en'].map(locale=>{
+  const title=locale==='ru'?'Тестовый факт':'Sourced fact test';
+  const body=locale==='ru'?'Синтетический текст для проверки источников.':'Synthetic text for checking sources.';
+  const sourceUrl=window.__journeyContentMode==='fact-invalid-source'?'http://example.org/source-fixture-v1'
+    :window.__journeyContentMode==='fact-changed-source'?'https://example.org/source-fixture-v2':'https://example.org/source-fixture-v1';
+  const payload={id:id+'.fact',locale,version:1,audience:'adult',ageRange:{min:18,max:120},readingLevel:'plain',
+    intent:'sourced-fact',screens:['collection'],context:bookyJourneyDialogueContext(id,
+      {id:'fact',kind:'sourced-fact',screen:'collection',entity:factAnchor,fact:factSeed}),
+    entityIds:[bookyJourneyEntityId(factAnchor)],claimKind:'factual',
+    factualSources:[{id:'synthetic-fact-source',url:sourceUrl,accessedAt:reviewedAt}],
+    copy:{title,body,caption:body,reduced:title},narration:null,prohibitedTags:[],
+    provenance:{kind:'editorial',sourcePath:'tests/pwa/booky-journey.spec.mjs',sourceVersion:1,sourceRef:'synthetic-only:fact',
+      sourceSha256:'a'.repeat(64),copySha256:contentTextHash(JSON.stringify({title,body}))}};
+  const review={status:'approved',reviewer:'synthetic-fact-reviewer-not-real',reviewedAt,contentChecksum:getBookyDialogueContentChecksum(payload)};
+  return {payload,review,checksum:getBookyDialogueChecksum({payload,review})};
+}):[];
+const factSpec=factMode?{...factSeed,dialogues:factSeed.dialogues.map((binding,index)=>({...binding,contentChecksum:factRecords[index].review.contentChecksum}))}:null;
 for(const locale of ['ru','en']){
   const nodes=[
     {id:'country',kind:'country',screen:'globe',entity:{kind:'country',countryId:'russia'}},
     {id:'writer',kind:'writer',screen:'globe',entity:{kind:'writer',countryId:'russia',writerId:'dostoevsky'}},
     {id:'work',kind:'work',screen:'collection',entity:{kind:'work',countryId:'russia',writerId:'dostoevsky',workId:'crime-and-punishment'}},
+    ...(factMode?[{id:'fact',kind:'sourced-fact',screen:'collection',entity:factAnchor,fact:factSpec}]:[]),
     ...(activityMode?[{id:'activity',kind:'activity',screen:'globe',entity:null,activity:{schemaVersion:1,id:'test.match-author',version:1,
       type:'match-work-author',targetWork:{kind:'work',countryId:'russia',writerId:'dostoevsky',workId:'crime-and-punishment'},
       choices:[{id:'dostoevsky',writer:{kind:'writer',countryId:'russia',writerId:'dostoevsky'}},
         {id:'tolstoy',writer:{kind:'writer',countryId:'russia',writerId:'tolstoy'}}]}}]:[]),
     {id:'checkpoint',kind:'checkpoint',screen:'globe',entity:null},
   ].filter(node=>activityMode?['country','activity','checkpoint'].includes(node.id):id===primaryId||['country','checkpoint'].includes(node.id)).map(node=>{
+    if(node.kind==='sourced-fact'){
+      const record=factRecords.find(record=>record.payload.locale===locale);dialogues.push(record);
+      dialogueApprovals.push({id:record.payload.id,locale,version:1,contentChecksum:record.review.contentChecksum,reviewer:record.review.reviewer,reviewedAt});
+      return {...node,dialogue:{id:record.payload.id,version:1,contentChecksum:record.review.contentChecksum}};
+    }
     const title=locale==='ru'?'Тест интерфейса: '+node.id:'Interface test: '+node.id;
     const body=node.kind==='activity'?(locale==='ru'?'Тест задания: выберите автора книги «Преступление и наказание».':'Activity test: choose the author of Crime and Punishment.')
       :locale==='ru'?'Откройте этот экран и подтвердите шаг, когда будете готовы.':'Open this screen and acknowledge the step when you are ready.';
@@ -82,7 +112,9 @@ for(const locale of ['ru','en']){
 const approved={definitions,dialogues,currentVersions:routeIds.map(id=>({id,version})),dialogueApprovals,journeyApprovals,availability};
 const missingReview={...approved,journeyApprovals:[]};
 const missingSavedLocaleReview={...approved,journeyApprovals:journeyApprovals.filter(receipt=>receipt.id!==primaryId||receipt.locale!=='ru')};
-export function readBookyJourneyContent(){return ['missing-review','activity-missing-review'].includes(window.__journeyContentMode)?missingReview
+const missingFactDialogueReview={...approved,dialogueApprovals:dialogueApprovals.filter(receipt=>receipt.id!==primaryId+'.fact')};
+export function readBookyJourneyContent(){return ['missing-review','activity-missing-review','fact-missing-review'].includes(window.__journeyContentMode)?missingReview
+  :window.__journeyContentMode==='fact-missing-dialogue-review'?missingFactDialogueReview
   :window.__journeyContentMode==='history-missing-ru-review'?missingSavedLocaleReview:approved;}
 `;
 
@@ -250,6 +282,7 @@ test.beforeAll(async () => {
     'src/host/planetMascotPreference.ts', 'src/host/planetMascotPersistence.ts', 'src/host/HostPlatformServices.ts', ASSET];
   required.push('src/host/bookyJourneyPrerequisites.ts', 'src/host/BookyJourneyHistoryControls.tsx',
     'src/host/BookyJourneyMigrationControls.tsx', 'src/host/BookyJourneyStorageControls.tsx');
+  required.push('src/host/bookyJourneyFact.ts', 'src/host/BookyJourneyFactSources.tsx');
   for (const filename of required) expect(inputs).toContain(filename);
   const sourcePaths = [...new Set([...required, ...inputs.filter(value => value.startsWith('src/') && !value.includes('?')), 'tests/pwa/booky-journey.spec.mjs'])].sort();
   const sourceInputs = await Promise.all(sourcePaths.map(async filename => ({ path: filename, sha256: digest(await fs.readFile(path.join(ROOT, filename))) })));
@@ -266,7 +299,7 @@ test.beforeAll(async () => {
     countryChunks, primaryCountryChunk, retryCountryChunk, sharedCountryDependencies,
     componentChunks, primaryComponentChunk, retryComponentChunk, sharedComponentDependencies, sourceInputs,
     cameraAuthority: 'Only existing canonical App navigation owns scene changes; no fixture camera assignments or synthetic navigation acknowledgement.',
-    representation: 'Actual App journey controls, compiler, fresh admission, runtime and canonical country/writer/book navigation. Only journey and migration content providers are replaced with explicitly synthetic RU/EN interface guidance, exact historical definitions and independent test review receipts; native bindings and Vite glob delivery are controlled. Source fixture evidence, not a dist artifact, installed-device or production journey acceptance.',
+    representation: 'Actual App journey controls, compiler, fresh admission, runtime and canonical country/writer/book navigation. Only journey and migration content providers are replaced with explicitly synthetic RU/EN interface guidance, opt-in synthetic fact assertions with inert example.org citations, exact historical definitions and independent test review receipts; native bindings and Vite glob delivery are controlled. Source fixture evidence, not a dist artifact, installed-device or production journey acceptance.',
     contentSubstitution: { path: 'src/host/bookyJourneyContent.ts', syntheticOnly: true, sourceSha256: digest(SYNTHETIC_CONTENT), realCanonicalTuple: ['russia','dostoevsky','crime-and-punishment'] },
     migrationContentSubstitution: { path: 'src/host/bookyJourneyMigrationContent.ts', syntheticOnly: true,
       sourceSha256: digest(SYNTHETIC_MIGRATION_CONTENT), independentReceipt: true, fromVersion: 1, toVersion: 2, nodeMap: 'explicit-identity' },
@@ -1796,6 +1829,220 @@ test('reviewed journey overview follows exact locale review and whole-route offl
       estimatedDurationMinutes: 7, offlineUnavailableNodeId: 'work', progressWriteCount: 2,
       sameDocumentReviewRefreshClaimed: false, offlineCacheProofClaimed: false,
       productionApprovalClaimed: false, fullAccessibilityAcceptanceClaimed: false });
+    fixture.verify();
+  } finally { await fixture.close(); }
+});
+
+const factSources = page => page.locator('[data-booky-journey-fact-sources]');
+const factSourcesSummary = page => page.locator('[data-booky-journey-fact-sources-summary]');
+const FACT_NODE_IDS = ['country', 'writer', 'work', 'fact', 'checkpoint'];
+const FACT_SOURCE_URL = 'https://example.org/source-fixture-v1';
+const FACT_SOURCE_DATE = '2026-09-20T12:00:00.000Z';
+async function expectFactPrefix(fixture, prefix) {
+  await expect.poll(() => savedRecord(fixture)?.acknowledgedNodeIds ?? null).toEqual(prefix);
+  await expect(storageState(fixture.page)).toHaveAttribute('data-booky-journey-storage', 'ready');
+  const record = savedRecord(fixture);
+  expect(record.journeyId).toBe(PRIMARY_JOURNEY); expect(record.journeyVersion).toBe(1);
+  expect(record.nodes.map(node => node.id)).toEqual(FACT_NODE_IDS);
+  expect(record.resumeNodeId).toBe(FACT_NODE_IDS[prefix.length] ?? null);
+  return fixture.memory.get(PROGRESS);
+}
+async function startWorkFact(fixture) {
+  const { page } = fixture;
+  await openPanel(page); await loadBooks(page); await routeFor(page, PRIMARY_JOURNEY).click();
+  await expectReadyNode(page, 'country', 0, 5);
+  await next(page).click(); await expectReadyNode(page, 'writer', 1, 5);
+  await next(page).click(); await expectReadyNode(page, 'work', 2, 5);
+  await expect(page.locator('#book-archive-detail')).toBeVisible();
+  expect(new URL(page.url()).searchParams.get('book')).toBe(WORK_KEY);
+  await next(page).click(); await expectReadyNode(page, 'fact', 3, 5);
+  await expect(pet(page)).toHaveAttribute('data-planet-mascot-screen', 'collection');
+  await expect(page.locator('#book-archive-detail')).toBeVisible();
+  expect(new URL(page.url()).searchParams.get('book')).toBe(WORK_KEY);
+  return expectFactPrefix(fixture, ['country', 'writer', 'work']);
+}
+async function openFactSources(page, language) {
+  await expect(factSources(page)).toHaveCount(1);
+  await expect(factSources(page)).toHaveAttribute('data-booky-journey-fact-locale', language);
+  await expect(factSourcesSummary(page)).toHaveText(language === 'ru' ? 'Источники' : 'Sources');
+  await factSourcesSummary(page).focus();
+  if (!await factSources(page).evaluate(element => element.open)) await page.keyboard.press('Enter');
+  await expect(factSources(page)).toHaveJSProperty('open', true); await expect(factSourcesSummary(page)).toBeFocused();
+  await expect(page.locator('[data-booky-journey-fact-source]')).toHaveCount(1);
+  await expect(page.locator('[data-booky-journey-fact-source]')).toHaveAttribute('data-booky-journey-fact-source', 'synthetic-fact-source');
+  await expect(page.locator('[data-booky-journey-fact-source-url]')).toHaveText(FACT_SOURCE_URL);
+  await expect(page.locator('[data-booky-journey-fact-source-accessed]')).toHaveAttribute('datetime', FACT_SOURCE_DATE);
+  await expect(page.locator('[data-booky-journey-fact-source-accessed]')).toHaveText('2026-09-20');
+  await expect(factSources(page).locator('a')).toHaveCount(0);
+}
+async function captureFactSources(fixture, testInfo, filename, framing) {
+  await node(fixture.page).evaluate(element => element.scrollIntoView({ block: 'start' }));
+  const bounds = await factSources(fixture.page).evaluate(element => {
+    const measure = target => {
+      const box = target.getBoundingClientRect();
+      return { x: box.x, y: box.y, width: box.width, height: box.height,
+        fullyInViewport: box.left >= 0 && box.top >= 0 && box.right <= innerWidth && box.bottom <= innerHeight };
+    };
+    const summary = element.querySelector('summary'), next = document.querySelector('[data-booky-journey-next]');
+    const summaryBounds = measure(summary), nextBounds = measure(next);
+    return { surface: measure(element), summary: summaryBounds, next: nextBounds,
+      url: measure(element.querySelector('[data-booky-journey-fact-source-url]')),
+      date: measure(element.querySelector('[data-booky-journey-fact-source-accessed]')),
+      summaryHit: summary.contains(document.elementFromPoint(summaryBounds.x + summaryBounds.width / 2, summaryBounds.y + summaryBounds.height / 2)),
+      nextHit: next.contains(document.elementFromPoint(nextBounds.x + nextBounds.width / 2, nextBounds.y + nextBounds.height / 2)),
+      overflow: document.documentElement.scrollWidth > innerWidth + 1 };
+  });
+  for (const key of ['surface', 'summary', 'next', 'url', 'date']) expect(bounds[key].fullyInViewport).toBe(true);
+  for (const key of ['summary', 'next']) { expect(bounds[key].height).toBeGreaterThanOrEqual(44); expect(bounds[key].width).toBeGreaterThanOrEqual(44); }
+  expect(bounds.summaryHit).toBe(true); expect(bounds.nextHit).toBe(true); expect(bounds.overflow).toBe(false);
+  await capture(fixture, testInfo, filename, framing); fixture.result.screenshots.at(-1).bounds = bounds;
+}
+
+test('sourced fact uses exact work view and read-only bilingual citations before explicit semantic acknowledgement', async ({}, testInfo) => {
+  test.setTimeout(300_000);
+  const fixture = await open(testInfo, { contentMode: 'fact-approved' }), { page, result } = fixture;
+  result.scenario = 'explicit-sourced-fact';
+  try {
+    await page.setViewportSize({ width: 320, height: 900 });
+    const saved = await startWorkFact(fixture), writes = fixture.progressWrites().length;
+    const fingerprint = savedRecord(fixture).nodes.find(node => node.id === 'fact').fact.semanticChecksum;
+    expect(writes).toBe(4); expect(fingerprint).toMatch(/^[a-f0-9]{64}$/u);
+    await expect(factSources(page)).toHaveJSProperty('open', false);
+    await expectPassportCounts(page, 1, 1, 1); await expect(passportCompleted(page)).toHaveCount(0);
+    await passportSummary(page).click(); await expect(passportView(page)).toHaveJSProperty('open', false);
+    await stablePose(page);
+    const beforeSources = await actual(page), beforeUrl = page.url();
+    await openFactSources(page, 'ru');
+    await expect(factSources(page)).toHaveAttribute('data-booky-journey-fact-sources', fingerprint);
+    expect(fixture.memory.get(PROGRESS)).toBe(saved); expect(fixture.progressWrites()).toHaveLength(writes);
+    expect(page.url()).toBe(beforeUrl); retained(await actual(page), beforeSources, true);
+    await expectProgress(page, 3, 5); await expect(next(page)).toBeEnabled();
+    await captureFactSources(fixture, testInfo, 'journey-fact-sources-ru-320.png',
+      '320px actual App RU work-anchored synthetic fact with plain selectable example.org URL and source date; Sources and separate Next remain fully visible');
+    await factSourcesSummary(page).focus(); await page.keyboard.press('Enter');
+    await expect(factSources(page)).toHaveJSProperty('open', false); await expect(factSourcesSummary(page)).toBeFocused();
+    await page.keyboard.press('Enter'); await expect(factSources(page)).toHaveJSProperty('open', true);
+    expect(fixture.memory.get(PROGRESS)).toBe(saved); expect(fixture.progressWrites()).toHaveLength(writes);
+
+    await page.locator('[data-booky-journey-pause]').click();
+    await expect(status(page)).toHaveAttribute('data-booky-journey-status', 'paused');
+    await locale(page, 'en'); await expect(node(page)).toHaveAttribute('data-booky-journey-node', 'fact');
+    await expectProgress(page, 3, 5); await expect(factSources(page)).toHaveJSProperty('open', false);
+    await expect(factSources(page)).toHaveAttribute('data-booky-journey-fact-sources', fingerprint);
+    expect(fixture.memory.get(PROGRESS)).toBe(saved); expect(fixture.progressWrites()).toHaveLength(writes);
+    await expect(status(page)).toHaveAttribute('data-booky-journey-status', 'paused');
+    await page.setViewportSize({ width: 1440, height: 850 }); await stablePose(page);
+    // Only this explicit gesture persists the independently admitted EN binding;
+    // the locale toggle itself neither writes nor acknowledges another node.
+    await page.locator('[data-booky-journey-resume]').click(); await expectReadyNode(page, 'fact', 3, 5);
+    await expect.poll(() => savedRecord(fixture)?.locale).toBe('en');
+    const englishSaved = await expectFactPrefix(fixture, ['country', 'writer', 'work']);
+    expect(savedRecord(fixture).locale).toBe('en'); expect(englishSaved).not.toBe(saved);
+    expect(fixture.progressWrites()).toHaveLength(5);
+    await expect(page.locator('#book-archive-detail')).toHaveAttribute('aria-label', 'Crime and Punishment');
+    expect(new URL(page.url()).searchParams.get('book')).toBe(WORK_KEY);
+    await stablePose(page);
+    const englishScene = await actual(page), englishUrl = page.url();
+    await openFactSources(page, 'en');
+    await captureFactSources(fixture, testInfo, 'journey-fact-sources-en.png',
+      'Desktop actual App EN sourced-fact disclosure uses the same bilingual semantic binding and readable inert source/date; reading citations grants no acknowledgement');
+    expect(fixture.memory.get(PROGRESS)).toBe(englishSaved); expect(fixture.progressWrites()).toHaveLength(5);
+    expect(page.url()).toBe(englishUrl); retained(await actual(page), englishScene, true);
+
+    await fixture.coldReload('fact-approved'); await stablePose(page); const neutral = await actual(page);
+    await openPanel(page); await loadBooks(page);
+    await expect(status(page)).toHaveAttribute('data-booky-journey-status', 'paused');
+    await expect(node(page)).toHaveAttribute('data-booky-journey-node', 'fact'); await expectProgress(page, 3, 5);
+    await expect(factSources(page)).toHaveJSProperty('open', false);
+    await expect(page.locator('[data-booky-journey-next]:enabled')).toHaveCount(0);
+    for (const key of ['country', 'writer', 'book']) expect(new URL(page.url()).searchParams.get(key)).toBeNull();
+    expect(fixture.memory.get(PROGRESS)).toBe(englishSaved); expect(fixture.progressWrites()).toHaveLength(5);
+    retained(await actual(page), neutral, true);
+    await page.locator('[data-booky-journey-resume]').click(); await expectReadyNode(page, 'fact', 3, 5);
+    await expect(page.locator('#book-archive-detail')).toBeVisible();
+    await expect(page.locator('#book-archive-detail')).toHaveAttribute('aria-label', 'Crime and Punishment');
+    expect(new URL(page.url()).searchParams.get('book')).toBe(WORK_KEY);
+    expect(fixture.memory.get(PROGRESS)).toBe(englishSaved); expect(fixture.progressWrites()).toHaveLength(5);
+    retained(await actual(page), neutral);
+
+    await next(page).click(); await expectReadyNode(page, 'checkpoint', 4, 5);
+    const acknowledged = await expectFactPrefix(fixture, ['country', 'writer', 'work', 'fact']);
+    expect(fixture.progressWrites()).toHaveLength(6);
+    const fact = savedRecord(fixture).nodes.find(node => node.id === 'fact');
+    expect(Object.keys(fact).sort()).toEqual(['entity', 'fact', 'id', 'kind', 'screen']);
+    expect(Object.keys(fact.fact).sort()).toEqual(['id', 'semanticChecksum', 'version']);
+    expect(fact.fact.semanticChecksum).toBe(fingerprint);
+    expect(acknowledged).not.toMatch(/example\.org|factualSources|accessedAt|Synthetic text|Синтетический текст/u);
+    await expect(factSources(page)).toHaveCount(0); await expectPassportCounts(page, 1, 1, 1);
+    await expect(passportCompleted(page)).toHaveCount(0);
+    await next(page).click(); await expect(status(page)).toHaveAttribute('data-booky-journey-status', 'complete');
+    const completed = await expectFactPrefix(fixture, FACT_NODE_IDS); expect(fixture.progressWrites()).toHaveLength(7);
+    await expectPassportCounts(page, 1, 1, 1); await expect(passportCompleted(page)).toHaveCount(1);
+    Object.assign(result.observations, { exactWorkViewBeforeFact: true, factNodeCount: 5, bilingualFactFingerprint: fingerprint,
+      sourcesDefaultClosed: true, keyboardSourcesReadOnly: true, sourceUrlsPlainNotLinks: true,
+      sourceUrl: FACT_SOURCE_URL, sourceAccessedAt: FACT_SOURCE_DATE, sourceDatesReadable: true,
+      citationsNoNavigationOrProgressWrite: true, localeResetsDisclosureWithoutAcknowledgement: true,
+      localeToggleNoWrite: true, explicitLocaleResumePersistsBindingOnly: true,
+      localeBindingWrite: { from: 'ru', to: 'en', acknowledgedNodeIds: ['country', 'writer', 'work'], writeNumber: 5 },
+      englishBindingPreferenceSha256: digest(englishSaved),
+      sameFactBindingAcrossRuEn: true, coldFactRestorePaused: true, exactBookRequiresExplicitResume: true,
+      separateNextAcknowledgesFact: true, factFingerprintOnlyPersisted: true, factAddsNoPassportEntityCredit: true,
+      explicitCheckpointCompletion: true, confirmedFactPrefix: ['country', 'writer', 'work', 'fact'],
+      completedPrefix: FACT_NODE_IDS, progressWriteCount: 7, confirmedFactPreferenceSha256: digest(acknowledged),
+      completedPreferenceSha256: digest(completed),
+      canonicalSceneRetainedWithinDocument: true, syntheticIndependentReviewsOnly: true,
+      sourceFetchPerformed: false, productionFactClaimed: false, fullAccessibilityAcceptanceClaimed: false });
+    fixture.verify();
+  } finally { await fixture.close(); }
+});
+
+test('sourced fact revocation and changed source bindings preserve saved acknowledgements until exact reviewed restoration', async ({}, testInfo) => {
+  test.setTimeout(360_000);
+  const fixture = await open(testInfo, { contentMode: 'fact-approved' }), { page, result } = fixture;
+  result.scenario = 'sourced-fact-revocation';
+  try {
+    await startWorkFact(fixture);
+    await next(page).click(); await expectReadyNode(page, 'checkpoint', 4, 5);
+    const saved = await expectFactPrefix(fixture, ['country', 'writer', 'work', 'fact']);
+    const record = savedRecord(fixture), writes = fixture.progressWrites().length;
+    expect(writes).toBe(5);
+    const deniedModes = ['fact-missing-review', 'fact-missing-dialogue-review', 'fact-invalid-source', 'fact-changed-source'];
+    for (const mode of deniedModes) {
+      // Independent synthetic records are replaced only at a document boundary;
+      // this does not claim a live CMS or remote-review update mechanism.
+      await fixture.coldReload(mode); await stablePose(page); const neutral = await actual(page), url = page.url();
+      await openPanel(page); await loadBooks(page);
+      await expect(status(page)).toHaveAttribute('data-booky-journey-status', 'unavailable');
+      await expect(node(page)).toHaveCount(0); await expect(factSources(page)).toHaveCount(0);
+      await expect(page.locator('[data-booky-journey-route]')).toHaveCount(0);
+      await expect(page.locator('[data-booky-journey-next]:enabled')).toHaveCount(0);
+      await expect(page.locator('[data-booky-journey-open]:enabled')).toHaveCount(0);
+      expect(fixture.memory.get(PROGRESS)).toBe(saved); expect(savedRecord(fixture)).toEqual(record);
+      expect(fixture.progressWrites()).toHaveLength(writes);
+      expect(page.url()).toBe(url); for (const key of ['country', 'writer', 'book']) expect(new URL(page.url()).searchParams.get(key)).toBeNull();
+      await stablePose(page); retained(await actual(page), neutral, true);
+    }
+    await fixture.coldReload('fact-approved'); await stablePose(page); const restored = await actual(page), restoredUrl = page.url();
+    await openPanel(page); await loadBooks(page);
+    await expect(status(page)).toHaveAttribute('data-booky-journey-status', 'paused');
+    await expect(node(page)).toHaveAttribute('data-booky-journey-node', 'checkpoint'); await expectProgress(page, 4, 5);
+    await expect(page.locator('[data-booky-journey-resume]')).toBeEnabled();
+    await expect(page.locator('[data-booky-journey-next]:enabled')).toHaveCount(0);
+    expect(fixture.memory.get(PROGRESS)).toBe(saved); expect(fixture.progressWrites()).toHaveLength(writes);
+    expect(page.url()).toBe(restoredUrl); retained(await actual(page), restored, true);
+    await page.locator('[data-booky-journey-resume]').click(); await expectReadyNode(page, 'checkpoint', 4, 5);
+    expect(fixture.memory.get(PROGRESS)).toBe(saved); expect(fixture.progressWrites()).toHaveLength(writes);
+    expect(savedRecord(fixture).acknowledgedNodeIds).toEqual(['country', 'writer', 'work', 'fact']);
+    expect(savedRecord(fixture).resumeNodeId).toBe('checkpoint');
+    Object.assign(result.observations, { deniedModes, missingWholeJourneyReviewDenied: true, missingFactDialogueReviewDenied: true,
+      invalidSourceDenied: true, changedSourceBindingCannotReuseAcknowledgements: true,
+      unavailableFactCopyAndSourcesHidden: true, savedAcknowledgedFactPrefixPreserved: true,
+      restoredExactReviewsRequireResume: true, noAutomaticNavigationWriteOrCompletion: true,
+      preservedPrefix: ['country', 'writer', 'work', 'fact'], savedPreferenceSha256: digest(saved),
+      progressWriteCount: writes,
+      factSemanticChecksum: record.nodes.find(node => node.id === 'fact').fact.semanticChecksum,
+      canonicalSceneRetainedWithinDocument: true, sameDocumentReviewRefreshClaimed: false,
+      syntheticIndependentReviewsOnly: true, sourceFetchPerformed: false, productionFactClaimed: false });
     fixture.verify();
   } finally { await fixture.close(); }
 });

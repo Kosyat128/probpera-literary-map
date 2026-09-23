@@ -277,3 +277,80 @@ describe("bounded Booky dialogue admission (adult infrastructure only)", () => {
     expect(getBookyDialogueContentChecksum(record.payload)).not.toBe(record.review.contentChecksum);
   });
 });
+
+describe("Booky sourced-fact dialogue admission", () => {
+  const anchor = JSON.stringify(["country", "test-country"]), context = "fact:" + "c".repeat(64);
+  const factRequest: BookyDialogueRequest = { ...request, intent: "sourced-fact", context, entityIds: [anchor] };
+  function factual(locale: "ru" | "en" = "en") {
+    const record = fixture();
+    record.payload.locale = locale; record.payload.intent = "sourced-fact";
+    record.payload.context = context; record.payload.entityIds = [anchor];
+    record.payload.claimKind = "factual";
+    record.payload.factualSources = [{ id: "synthetic-reference", url: "https://example.org/synthetic-reference", accessedAt: reviewedAt }];
+    // These are deliberately synthetic test claims and source placeholders.
+    record.payload.copy = locale === "ru"
+      ? { title: "Тест факта", body: "Синтетический текст для проверки источников.", caption: "Тест", reduced: "Тест факта" }
+      : { title: "Fact test", body: "Synthetic text for source checks.", caption: "Test", reduced: "Fact test" };
+    return seal(record);
+  }
+
+  it("requires factual editorial content and nonempty source refs for the new intent", () => {
+    const valid = factual();
+    expect(registry(valid, [receipt(valid)], [anchor]).resolve(factRequest)?.payload).toEqual(valid.payload);
+    for (const change of [
+      (record: Mutable<BookyDialogueRecord>) => { record.payload.claimKind = "interface-guidance"; },
+      (record: Mutable<BookyDialogueRecord>) => { record.payload.provenance.kind = "existing-interface-copy"; },
+      (record: Mutable<BookyDialogueRecord>) => { record.payload.factualSources = []; },
+    ]) {
+      const record = factual(); change(record); seal(record);
+      expect(getBookyDialogueContentChecksum(record.payload)).toBeNull();
+      expect(registry(record, [receipt(record)], [anchor]).size).toBe(0);
+    }
+    // The new gate does not rewrite or restrict existing interface guidance.
+    const legacy = fixture();
+    expect(getBookyDialogueContentChecksum(legacy.payload)).toBe(legacy.review.contentChecksum);
+    expect(getBookyDialogueChecksum({ payload: legacy.payload, review: legacy.review })).toBe(legacy.checksum);
+    expect(registry(legacy).resolve(request)?.payload).toEqual(legacy.payload);
+  });
+
+  it("keeps RU and EN fact admission bound to their own independent exact receipts", () => {
+    const ru = factual("ru"), en = factual("en"), approved = [receipt(ru), receipt(en)];
+    const complete = createBookyDialogueRegistry([ru, en], { canonicalEntityIds: [anchor], approvedReviews: approved });
+    expect(complete.resolve(factRequest)?.payload.copy.body).toBe(en.payload.copy.body);
+    expect(complete.resolve({ ...factRequest, locale: "ru" })?.payload.copy.body).toBe(ru.payload.copy.body);
+    const partial = createBookyDialogueRegistry([ru, en], { canonicalEntityIds: [anchor], approvedReviews: [receipt(en)] });
+    expect(partial.resolve(factRequest)).not.toBeNull();
+    expect(partial.resolve({ ...factRequest, locale: "ru" })).toBeNull();
+    expect(registry(en, [], [anchor]).resolve(factRequest)).toBeNull();
+    expect(complete.resolve({ ...factRequest, intent: "navigation" })).toBeNull();
+  });
+
+  it("does not reuse a fact receipt after rehashing substituted copy or source references", () => {
+    for (const change of [
+      (record: Mutable<BookyDialogueRecord>) => { record.payload.copy.body += " Changed."; },
+      (record: Mutable<BookyDialogueRecord>) => { record.payload.factualSources[0].url = "https://example.org/different-reference"; },
+      (record: Mutable<BookyDialogueRecord>) => { record.payload.factualSources[0].id = "different-reference"; },
+      (record: Mutable<BookyDialogueRecord>) => { record.payload.factualSources[0].accessedAt = "2026-09-18T12:00:00.000Z"; },
+    ]) {
+      const record = factual(), approved = receipt(record); change(record); seal(record);
+      expect(getBookyDialogueContentChecksum(record.payload)).not.toBe(approved.contentChecksum);
+      expect(registry(record, [approved], [anchor]).resolve(factRequest)).toBeNull();
+      expect(registry(record, [receipt(record)], [anchor]).resolve(factRequest)).not.toBeNull();
+    }
+  });
+
+  it("preserves source-time, exact-anchor and explicit-adult gates for factual admission", () => {
+    const record = factual();
+    expect(registry(record, [receipt(record)], []).resolve(factRequest)).toBeNull();
+    const admitted = registry(record, [receipt(record)], [anchor]);
+    for (const patch of [{ audience: "child", age: 10 }, { age: 17 }, { entityIds: [] },
+      { entityIds: [JSON.stringify(["country", "other-country"])] }, { context: "fact:wrong" }]) {
+      expect(admitted.resolve({ ...factRequest, ...patch })).toBeNull();
+    }
+    record.payload.factualSources[0].accessedAt = now; seal(record);
+    expect(registry(record, [receipt(record)], [anchor]).resolve(factRequest)).toBeNull();
+    record.payload.factualSources[0].accessedAt = reviewedAt;
+    record.payload.factualSources[0].url = "javascript:alert(1)"; seal(record);
+    expect(registry(record, [receipt(record)], [anchor]).size).toBe(0);
+  });
+});

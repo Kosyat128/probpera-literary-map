@@ -2,7 +2,7 @@ import { contentRecordHash, contentTextHash } from "../planet/contentExportHash"
 
 export type BookyDialogueLocale = "ru" | "en";
 export type BookyDialogueReadingLevel = "plain" | "developing" | "fluent";
-export type BookyDialogueIntent = "navigation" | "activity" | "offline-help" | "load-error" | "loading-help";
+export type BookyDialogueIntent = "navigation" | "activity" | "sourced-fact" | "offline-help" | "load-error" | "loading-help";
 export type BookyDialogueScreen = "globe" | "collection";
 export const BOOKY_DIALOGUE_PROHIBITED_TAGS = Object.freeze([
   "open-generative-chat", "unverified-facts", "mandatory-microphone", "voice-cloning",
@@ -87,7 +87,7 @@ export type BookyDialogueRegistry = Readonly<{
 type Row = Record<string, unknown>;
 const locales = ["ru", "en"];
 const levels = ["plain", "developing", "fluent"];
-const intents = ["navigation", "activity", "offline-help", "load-error", "loading-help"];
+const intents = ["navigation", "activity", "sourced-fact", "offline-help", "load-error", "loading-help"];
 const screens = ["globe", "collection"];
 const hash = (v: unknown): v is string => typeof v === "string" && /^[a-f0-9]{64}$/.test(v);
 const text = (v: unknown, max: number): v is string => typeof v === "string" && v.length > 0 && v.length <= max && v.trim() === v && !/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/.test(v);
@@ -172,7 +172,8 @@ function payloadValid(v: unknown): v is BookyDialoguePayload {
   return row(p, "kind sourcePath sourceVersion sourceRef sourceSha256 copySha256") && choice(p.kind, ["existing-interface-copy", "editorial"]) &&
     text(p.sourcePath, 240) && !p.sourcePath.includes("..") && !p.sourcePath.startsWith("/") && !p.sourcePath.includes("\\") &&
     integer(p.sourceVersion, 1, 1_000_000) && text(p.sourceRef, 240) && hash(p.sourceSha256) && hash(p.copySha256) &&
-    p.copySha256 === contentTextHash(JSON.stringify({ title: v.copy.title, body: v.copy.body }));
+    p.copySha256 === contentTextHash(JSON.stringify({ title: v.copy.title, body: v.copy.body })) &&
+    (v.intent !== "sourced-fact" || v.claimKind === "factual" && p.kind === "editorial");
 }
 function reviewValid(v: unknown): v is BookyDialogueReview {
   if (!row(v, "status reviewer reviewedAt contentChecksum") || !choice(v.status, ["draft", "approved", "rejected", "stale"]) || !hash(v.contentChecksum)) return false;

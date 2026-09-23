@@ -1,5 +1,6 @@
 import { contentRecordHash, contentTextHash } from "../planet/contentExportHash";
 import { getBookyJourneyChecksum, parseBookyJourneyPlanOverview, type BookyJourneyDefinition, type BookyJourneyPlan } from "./bookyJourney";
+import { getBookyJourneyFactChecksum, parseBookyJourneyFact } from "./bookyJourneyFact";
 import { parseBookyJourneyActivity } from "./bookyJourneyActivity";
 import { createBookyJourneyProgressRecord, DEFAULT_BOOKY_JOURNEY_PROGRESS, parseBookyJourneyProgress,
   type BookyJourneyProgressNode, type BookyJourneyProgressRecord } from "./bookyJourneyProgress";
@@ -106,9 +107,14 @@ const entitySemantic = (node: Pick<BookyJourneyProgressNode, "kind" | "screen" |
     : ref.kind === "writer" ? [ref.kind, ref.countryId, ref.writerId] : [ref.kind, ref.countryId, ref.writerId, ref.workId]]);
 };
 const semantic = (node: BookyJourneyProgressNode) => JSON.stringify([entitySemantic(node),
-  node.kind === "activity" ? node.activity : null]);
+  node.kind === "activity" ? node.activity : node.kind === "sourced-fact" ? node.fact : null]);
 function matchesHistoricalNode(node: BookyJourneyDefinition["nodes"][number], saved: BookyJourneyProgressNode): boolean {
   if (node.id !== saved.id || entitySemantic(node) !== entitySemantic(saved)) return false;
+  if (node.kind === "sourced-fact") {
+    const spec = parseBookyJourneyFact(node.fact);
+    return !!spec && !!node.entity && saved.fact?.id === spec.id && saved.fact.version === spec.version
+      && saved.fact.semanticChecksum === getBookyJourneyFactChecksum(spec, node.entity, node.screen);
+  }
   if (node.kind !== "activity") return true;
   // The historical definition binds the authored task, not a current factual
   // answer. Only saved/current resolved fingerprints can transfer an answer.

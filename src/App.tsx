@@ -2319,7 +2319,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     // after this gesture; an old matching selection is not a navigation receipt.
     setJourneyNavigationRevision(value => value + 1);
     const { node } = offer, entity = node.entity;
-    if (node.kind === "work" && entity?.kind === "work") {
+    if ((node.kind === "work" || node.kind === "sourced-fact") && entity?.kind === "work") {
       const book = verifiedBookArchive.find(item => item.countryId === entity.countryId
         && item.writerId === entity.writerId && item.id === entity.workId);
       return !!book && openBook(book, null, { signal, valid: isCurrent });

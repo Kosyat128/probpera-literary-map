@@ -6,6 +6,7 @@ import BookyJourneyStorageControls from "./BookyJourneyStorageControls";
 import BookyJourneyMigrationControls from "./BookyJourneyMigrationControls";
 import BookyJourneyHistoryControls from "./BookyJourneyHistoryControls";
 import BookyJourneyActivityControls from "./BookyJourneyActivityControls";
+import BookyJourneyFactSources from "./BookyJourneyFactSources";
 import BookyJourneyPassportControls, { type BookyJourneyPassportControlsProps } from "./BookyJourneyPassportControls";
 import "./BookyJourneyControls.css";
 
@@ -154,8 +155,9 @@ export default function BookyJourneyControls({ snapshot, controller, persistence
   else if (active) statusText = active.canNext ? copy.readyToConfirm : active.answer?.canAnswer ? copy.readyToAnswer : copy.readyToOpen;
   else statusText = snapshot.routes.length > 0 ? copy.choose : copy.unavailable;
 
-  const openLabel = active?.phase === "failed" ? copy.retryOpen : node?.kind === "country" ? copy.openCountry
-    : node?.kind === "writer" ? copy.openWriter : node?.kind === "work" ? copy.openWork : copy.openStep;
+  const openKind = node?.kind === "sourced-fact" ? node.entity?.kind : node?.kind;
+  const openLabel = active?.phase === "failed" ? copy.retryOpen : openKind === "country" ? copy.openCountry
+    : openKind === "writer" ? copy.openWriter : openKind === "work" ? copy.openWork : copy.openStep;
   const caption = nodeCopy && nodeCopy.caption !== nodeCopy.title && nodeCopy.caption !== nodeCopy.body
     ? nodeCopy.caption : null;
   const reduced = nodeCopy && nodeCopy.reduced !== nodeCopy.title && nodeCopy.reduced !== nodeCopy.body
@@ -216,6 +218,8 @@ export default function BookyJourneyControls({ snapshot, controller, persistence
           <p className="booky-journey-controls__body">{nodeCopy.body}</p>
           {caption && <p className="booky-journey-controls__caption">{caption}</p>}
           {reduced && <p className="booky-journey-controls__reduced">{reduced}</p>}
+          {node.kind === "sourced-fact" && node.fact && <BookyJourneyFactSources
+            key={`${node.fact.semanticChecksum}:${node.dialogue.payload.locale}`} node={node} />}
           <BookyJourneyActivityControls active={active} canAct={persistenceSnapshot.canAct} onAnswer={choiceId => {
             const accepted = persistence.getSnapshot().canAct && controller.answer(choiceId, snapshot.revision);
             setRejectedAtRevision(accepted ? null : snapshot.revision);

@@ -5,6 +5,7 @@ import { createBookyDialogueRegistry, getBookyDialogueChecksum, getBookyDialogue
   type BookyDialoguePayload, type BookyDialogueRecord } from "./bookyDialogueRegistry";
 import { bookyJourneyDialogueContext, bookyJourneyEntityId, compileBookyJourney, getBookyJourneyChecksum,
   type BookyJourneyContext, type BookyJourneyDefinition, type BookyJourneyTrust } from "./bookyJourney";
+import { getBookyJourneyFactChecksum, type BookyJourneyFactSpec } from "./bookyJourneyFact";
 import { resolveBookyJourneyNode, type BookyJourneyHostOffer, type BookyJourneyHostSnapshot } from "./bookyJourneyHost";
 import { bookyJourneyRouteKey, createBookyJourneyRuntime, type BookyJourneyRuntimeHost } from "./bookyJourneyRuntime";
 import { createBookyReaderPolicy, serializeBookyReaderPolicy } from "./bookyReaderPolicy";
@@ -1097,5 +1098,153 @@ describe("current admitted journey overview in runtime route offers", () => {
     f.patch({ plans: [accessor] }); f.runtime.refresh();
     expect(f.runtime.getSnapshot().routes).toEqual([]); expect(getter).not.toHaveBeenCalled();
     expect(f.navigate).not.toHaveBeenCalled(); f.runtime.dispose();
+  });
+});
+
+
+/** These facts, sources and independent reviews are synthetic test fixtures.
+ * Both locale payload hashes are bound before compiling the requested locale. */
+function sourcedFactFixture(locale: "ru" | "en" = "en", kind: "country" | "writer" | "work" = "work",
+  options: { factVersion?: number; changedLocale?: "ru" | "en"; routeVersion?: number } = {}): ReturnType<typeof fixture> {
+  const base = fixture(locale, { version: options.routeVersion }), anchor = base.definition.nodes.find(node => node.kind === kind)!;
+  const placeholder: BookyJourneyFactSpec = { schemaVersion: 1, id: "test-fact", version: options.factVersion ?? 1, dialogues: [
+    { locale: "ru", id: "test-fact-dialogue", version: 1, contentChecksum: "a".repeat(64) },
+    { locale: "en", id: "test-fact-dialogue", version: 1, contentChecksum: "a".repeat(64) },
+  ] };
+  const raw = { id: "fact", kind: "sourced-fact" as const, entity: anchor.entity, screen: anchor.screen,
+    dialogue: { id: "test-fact-dialogue", version: 1, contentChecksum: "a".repeat(64) }, fact: placeholder };
+  const factRecords = (["ru", "en"] as const).map(language => {
+    const copy = { title: language + ": synthetic fact", body: language + ": synthetic test statement " + (options.changedLocale === language ? "changed" : "original"),
+      caption: "Synthetic fact", reduced: "Synthetic fact" };
+    const payload: BookyDialoguePayload = { id: raw.dialogue.id, version: 1, locale: language, audience: "adult", ageRange: { min: 18, max: 120 },
+      readingLevel: "plain", intent: "sourced-fact", screens: [raw.screen], context: bookyJourneyDialogueContext(base.definition.id, raw)!,
+      entityIds: [bookyJourneyEntityId(raw.entity!)], claimKind: "factual", factualSources: [{ id: "test-source", url: "https://example.org/fact", accessedAt: reviewedAt }],
+      copy, narration: null, prohibitedTags: [], provenance: { kind: "editorial", sourcePath: "test/runtime-fact.ts", sourceVersion: 1,
+        sourceRef: "test-fact", sourceSha256: "a".repeat(64), copySha256: contentTextHash(JSON.stringify({ title: copy.title, body: copy.body })) } };
+    const review = { status: "approved" as const, reviewer: "synthetic-fact-reviewer-not-real", reviewedAt,
+      contentChecksum: getBookyDialogueContentChecksum(payload)! };
+    return { payload, review, checksum: getBookyDialogueChecksum({ payload, review })! };
+  });
+  const spec: BookyJourneyFactSpec = { ...placeholder, dialogues: [
+    { locale: "ru", id: raw.dialogue.id, version: 1, contentChecksum: factRecords[0].review.contentChecksum },
+    { locale: "en", id: raw.dialogue.id, version: 1, contentChecksum: factRecords[1].review.contentChecksum },
+  ] };
+  const selected = spec.dialogues.find(binding => binding.locale === locale)!;
+  const fact = { ...raw, fact: spec, dialogue: { id: selected.id, version: selected.version, contentChecksum: selected.contentChecksum } };
+  const position = base.definition.nodes.indexOf(anchor) + 1;
+  const definition = { ...base.definition, nodes: [...base.definition.nodes.slice(0, position), fact, ...base.definition.nodes.slice(position)] };
+  const records = [...base.plan.nodes.map(node => node.dialogue), ...factRecords];
+  const context = { ...base.context, availability: definition.nodes.map(node => ({ nodeId: node.id, locale,
+    dialogueContentChecksum: node.dialogue.contentChecksum, available: true, offlineAvailable: true })) };
+  const trust: BookyJourneyTrust = { ...base.trust, approvedReviews: [{ id: definition.id, version: definition.version, locale,
+    definitionChecksum: getBookyJourneyChecksum(definition)!, reviewer: "synthetic-journey-reviewer-not-real", reviewedAt }],
+    dialogueRegistry: createBookyDialogueRegistry(records, { canonicalEntityIds: [...new Set(records.flatMap(record => [...record.payload.entityIds]))],
+      approvedReviews: records.map(record => ({ id: record.payload.id, locale: record.payload.locale, version: record.payload.version,
+        contentChecksum: record.review.contentChecksum, reviewer: record.review.reviewer!, reviewedAt })) }) };
+  const plan = compileBookyJourney(definition, context, trust);
+  if (!plan) throw Error("invalid-synthetic-sourced-fact-runtime-fixture");
+  return { definition, context, trust, plan };
+}
+function factSetup(kind: "country" | "writer" | "work" = "work") {
+  const f = setup(sourcedFactFixture("en", kind)); f.patch({ profileKey: durableProfileKey });
+  const index = f.initial.plan.nodes.findIndex(node => node.kind === "sourced-fact");
+  expect(f.start()).toBe(true);
+  for (let position = 0; position < index; position++) { f.display(position); expect(f.runtime.next(f.runtime.getSnapshot().revision)).toBe(true); }
+  f.display(index); return { ...f, factIndex: index };
+}
+
+describe("explicit sourced-fact acknowledgement and whole-route freshness", () => {
+  it.each(["country", "writer", "work"] as const)("requires the exact settled %s anchor before explicit Next and saves no fact prose", kind => {
+    const f = factSetup(kind), intent = f.runtime.getProgressIntent();
+    expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "ready", canNext: true, answer: null });
+    expect(f.runtime.answer("invented-choice", f.runtime.getSnapshot().revision)).toBe(false);
+    for (const changed of [{ settled: false }, { countryId: "other-country" },
+      ...(kind !== "country" ? [{ writerId: "other-writer" }] : []), ...(kind === "work" ? [{ workId: "other-work" }, { screen: "globe" as const }] : [])]) {
+      const movesBefore = f.navigate.mock.calls.length;
+      f.display(f.factIndex, changed); expect(f.runtime.next(f.runtime.getSnapshot().revision)).toBe(false);
+      expect(f.runtime.getProgressIntent()).toBe(intent); expect(f.navigate).toHaveBeenCalledTimes(movesBefore);
+      f.display(f.factIndex); expect(f.runtime.resume(f.runtime.getSnapshot().revision)).toBe(true); f.display(f.factIndex);
+    }
+    const before = f.runtime.getProgressIntent(); f.runtime.refresh(); expect(f.runtime.getProgressIntent()).toBe(before);
+    expect(f.runtime.next(f.runtime.getSnapshot().revision)).toBe(true);
+    const record = f.runtime.getProgressIntent().preference.records[0];
+    expect(record.acknowledgedNodeIds).toEqual(f.initial.plan.nodes.slice(0, f.factIndex + 1).map(node => node.id));
+    expect(record.nodes[f.factIndex].fact!.semanticChecksum).toBe(f.initial.plan.nodes[f.factIndex].fact!.semanticChecksum);
+    expect(JSON.stringify(record)).not.toMatch(/"(?:spec|dialogues|contentChecksum|factualSources|url|body)"/u); f.runtime.dispose();
+  });
+
+  it("restores a saved fact paused and requires explicit resume without adding credit or navigation", () => {
+    const f = factSetup(), saved = f.runtime.getProgressIntent().preference; f.runtime.dispose();
+    const restored = setup(sourcedFactFixture()); restored.patch({ profileKey: durableProfileKey });
+    expect(restored.runtime.restoreProgress(saved, 0)).toBe(true);
+    expect(restored.runtime.getSnapshot().active).toMatchObject({ phase: "paused", completedCount: 3, node: { kind: "sourced-fact" }, canNext: false });
+    expect(restored.navigate).not.toHaveBeenCalled(); expect(restored.runtime.getProgressIntent().preference).toEqual(saved);
+    expect(restored.runtime.resume(restored.runtime.getSnapshot().revision)).toBe(true); restored.display(3);
+    expect(restored.runtime.getProgressIntent().preference.records[0].acknowledgedNodeIds).toEqual(["country", "writer", "work"]);
+    expect(restored.runtime.getSnapshot().active?.canNext).toBe(true); restored.runtime.dispose();
+  });
+
+  it("allows independently admitted locale equivalence only for the exact shared fact pair", () => {
+    const f = factSetup(), old = f.runtime.getProgressIntent(); f.runtime.pause(f.runtime.getSnapshot().revision);
+    const same = sourcedFactFixture("ru");
+    expect(same.plan.nodes[3].fact!.semanticChecksum).toBe(f.initial.plan.nodes[3].fact!.semanticChecksum);
+    f.switchSource(same); expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "paused", completedCount: 3 });
+    expect(f.runtime.getProgressIntent()).toBe(old);
+    f.switchSource(sourcedFactFixture("ru", "work", { changedLocale: "en" }));
+    expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "unavailable", node: null, completedCount: 3 });
+    expect(f.runtime.getProgressIntent()).toBe(old); f.runtime.dispose();
+  });
+
+  it("rejects changed resolved fact bindings before Next even when the host retains its old plan and revision", () => {
+    const f = factSetup(), intent = f.runtime.getProgressIntent(), moves = f.navigate.mock.calls.length;
+    f.patch({ resolve: (plan, id) => {
+      const offer = f.resolve(plan, id);
+      return offer?.node.kind === "sourced-fact" ? { ...offer, node: { ...offer.node,
+        fact: { ...offer.node.fact!, semanticChecksum: "b".repeat(64) } } } : offer;
+    } });
+    expect(f.runtime.next(f.runtime.getSnapshot().revision)).toBe(false);
+    expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "unavailable", completedCount: 3, canNext: false });
+    expect(f.runtime.getProgressIntent()).toBe(intent); expect(f.navigate).toHaveBeenCalledTimes(moves); f.runtime.dispose();
+  });
+
+  it.each(["observer", "navigation-port"] as const)("rechecks every earlier fact after %s changes a binding while Next targets a normal checkpoint", edge => {
+    const f = factSetup(), intent = f.runtime.getProgressIntent(), moves = f.navigate.mock.calls.length;
+    let changed = false;
+    f.patch({ resolve: (plan, id) => {
+      const offer = f.resolve(plan, id);
+      if (!changed || offer?.node.kind !== "sourced-fact") return offer;
+      const spec: BookyJourneyFactSpec = { ...offer.node.fact!.spec, version: 2 };
+      return { ...offer, node: { ...offer.node, fact: { spec, semanticChecksum: getBookyJourneyFactChecksum(spec, offer.node.entity!, offer.node.screen)! } } };
+    } }); f.runtime.refresh();
+    const stop = edge === "observer" ? f.runtime.subscribe(() => {
+      const active = f.runtime.getSnapshot().active; if (active?.phase === "navigating" && active.node?.kind === "checkpoint") changed = true;
+    }) : () => {};
+    if (edge === "navigation-port") f.navigate.mockImplementationOnce(() => { changed = true; return true; });
+    expect(f.runtime.next(f.runtime.getSnapshot().revision)).toBe(false);
+    expect(changed).toBe(true); expect(f.runtime.getProgressIntent()).toBe(intent);
+    expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "unavailable", index: 3, completedCount: 3, canNext: false });
+    expect(f.navigate).toHaveBeenCalledTimes(moves + (edge === "navigation-port" ? 1 : 0));
+    expect(f.navigate.mock.calls[f.navigate.mock.calls.length - 1]![1].aborted).toBe(true); stop(); f.runtime.dispose();
+  });
+
+  it("revalidates acknowledged facts before final completion and retains the exact old prefix after revocation", () => {
+    const f = factSetup(); expect(f.runtime.next(f.runtime.getSnapshot().revision)).toBe(true); f.display(4);
+    const intent = f.runtime.getProgressIntent(), moves = f.navigate.mock.calls.length;
+    f.patch({ resolve: (plan, id) => id === "fact" ? null : f.resolve(plan, id) }); f.runtime.refresh();
+    expect(f.runtime.next(f.runtime.getSnapshot().revision)).toBe(false);
+    expect(f.runtime.getSnapshot().active).toMatchObject({ phase: "unavailable", completedCount: 4 });
+    expect(f.runtime.getProgressIntent()).toBe(intent); expect(f.navigate).toHaveBeenCalledTimes(moves); f.runtime.dispose();
+  });
+
+  it("rejects forged migration acknowledgement when the independently reviewed target changes the fact pair", () => {
+    const f = setup(sourcedFactFixture()); f.patch({ profileKey: durableProfileKey });
+    const old = createBookyJourneyProgressRecord(explicitPolicy, f.initial.plan, ["country", "writer", "work", "fact"], "checkpoint")!;
+    const target = sourcedFactFixture("en", "work", { changedLocale: "ru", routeVersion: 2 });
+    const forged = createBookyJourneyProgressRecord(explicitPolicy, target.plan, old.acknowledgedNodeIds, "checkpoint")!;
+    const saved = { ...DEFAULT_BOOKY_JOURNEY_PROGRESS, activeRecordId: old.recordId, records: [old] };
+    f.switchSource(target); f.patch({ resolveMigration: () => ({ migrationId: "test-forged-fact", migrationChecksum: "a".repeat(64),
+      preservedRecord: old, targetRecord: forged }) });
+    expect(f.runtime.restoreProgress(saved, 0)).toBe(true); expect(f.runtime.getSnapshot().migrations).toEqual([]);
+    expect(f.runtime.getProgressIntent().preference).toEqual(saved); expect(f.navigate).not.toHaveBeenCalled(); f.runtime.dispose();
   });
 });

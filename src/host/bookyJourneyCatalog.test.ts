@@ -8,6 +8,7 @@ import { bookyJourneyDialogueContext, bookyJourneyEntityId, compileBookyJourney,
 import { createBookyJourneyCatalog, type BookyJourneyCatalogOptions } from "./bookyJourneyCatalog";
 import { readBookyJourneyContent, type BookyJourneyContent } from "./bookyJourneyContent";
 import { createBookyReaderPolicy } from "./bookyReaderPolicy";
+import type { BookyJourneyFactSpec } from "./bookyJourneyFact";
 
 const now = "2026-09-23T12:00:00.000Z", reviewedAt = "2026-09-22T12:00:00.000Z";
 const clone = <T,>(value: T): T => JSON.parse(JSON.stringify(value));
@@ -348,5 +349,79 @@ describe("reviewed journey overview catalog", () => {
     const unavailable = { ...content, availability: content.availability.map(route => ({ ...route,
       nodes: route.nodes.map((node, index) => index === 2 ? { ...node, available: false } : node) })) };
     expect(f.build({ content: unavailable }).plans).toEqual([]);
+  });
+});
+
+describe("sourced-fact catalog admission", () => {
+  function withFact(f: ReturnType<typeof fixture>, anchorIndex: number) {
+    const anchor = f.definition.nodes[anchorIndex], locale = f.definition.locale;
+    const seed: BookyJourneyFactSpec = { schemaVersion: 1, id: "fixture-fact", version: 1, dialogues: [
+      { locale: "ru", id: "fixture-fact-line", version: 1, contentChecksum: "a".repeat(64) },
+      { locale: "en", id: "fixture-fact-line", version: 1, contentChecksum: "b".repeat(64) },
+    ] };
+    const node: BookyJourneyDefinition["nodes"][number] = { id: "fact", kind: "sourced-fact", entity: anchor.entity, screen: anchor.screen,
+      dialogue: { id: "fixture-fact-line", version: 1, contentChecksum: "a".repeat(64) }, fact: seed };
+    const factRecords = (["ru", "en"] as const).map(locale => {
+      const copy = { title: `${locale}: synthetic fact`, body: "Synthetic fixture only, not a real factual claim.", caption: "Test", reduced: "Test" };
+      const payload: BookyDialoguePayload = { ...f.dialogues[0].payload, id: "fixture-fact-line", locale, screens: [node.screen], intent: "sourced-fact",
+        context: bookyJourneyDialogueContext(f.definition.id, node)!, entityIds: [bookyJourneyEntityId(node.entity!)], claimKind: "factual",
+        factualSources: [{ id: "synthetic-source", url: "https://example.org/test-only", accessedAt: reviewedAt }], copy,
+        provenance: { ...f.dialogues[0].payload.provenance, copySha256: contentTextHash(JSON.stringify({ title: copy.title, body: copy.body })) } };
+      const review = { status: "approved" as const, reviewer: "synthetic-fact-reviewer-not-real", reviewedAt,
+        contentChecksum: getBookyDialogueContentChecksum(payload)! };
+      return { payload, review, checksum: getBookyDialogueChecksum({ payload, review })! };
+    });
+    const spec: BookyJourneyFactSpec = { ...seed, dialogues: [
+      { ...seed.dialogues[0], contentChecksum: factRecords[0].review.contentChecksum },
+      { ...seed.dialogues[1], contentChecksum: factRecords[1].review.contentChecksum },
+    ] };
+    const binding = spec.dialogues.find(item => item.locale === locale)!;
+    const fact = { ...node, fact: spec, dialogue: { id: binding.id, version: binding.version, contentChecksum: binding.contentChecksum } };
+    const definition = { ...f.definition, nodes: [...f.definition.nodes.slice(0, anchorIndex + 1), fact, ...f.definition.nodes.slice(anchorIndex + 1)] };
+    const content: BookyJourneyContent = { ...f.content, definitions: [definition], dialogues: [...f.dialogues, ...factRecords],
+      dialogueApprovals: [...f.content.dialogueApprovals, ...factRecords.map(record => ({ id: record.payload.id, locale: record.payload.locale,
+        version: record.payload.version, contentChecksum: record.review.contentChecksum, reviewer: record.review.reviewer, reviewedAt }))],
+      journeyApprovals: f.content.journeyApprovals.map(review => ({ ...review, definitionChecksum: getBookyJourneyChecksum(definition)! })),
+      availability: [{ ...f.content.availability[0], nodes: definition.nodes.map(node => ({ nodeId: node.id, locale,
+        dialogueContentChecksum: node.dialogue.contentChecksum, available: true, offlineAvailable: true })) }],
+    };
+    return { content, definition, spec, factRecords };
+  }
+
+  it.each(["ru", "en"] as const)("captures independently reviewed %s facts and only their canonical anchor", locale => {
+    const f = fixture(locale), { content, spec } = withFact(f, 1), catalog = f.build({ content }), plan = catalog.plans[0];
+    expect(plan.nodes[2].fact!.spec).toEqual(spec);
+    expect(plan.nodes[2].dialogue.payload).toMatchObject({ locale, intent: "sourced-fact", claimKind: "factual" });
+    expect(plan.nodes[2].dialogue.payload.entityIds).toEqual([bookyJourneyEntityId(f.definition.nodes[1].entity!)]);
+    expect(catalog.sourceFor(plan)).not.toBeNull();
+    expect(Object.isFrozen(plan.nodes[2].fact!.spec.dialogues)).toBe(true);
+    Reflect.set(spec.dialogues[0], "contentChecksum", "f".repeat(64));
+    expect(plan.nodes[2].fact!.spec.dialogues[0].contentChecksum).not.toBe("f".repeat(64));
+    expect(f.build({ content }).plans).toEqual([]);
+  });
+
+  it("withholds sourced facts when current dialogue, whole-route review or public anchor is unavailable", () => {
+    const f = fixture(), { content } = withFact(f, 2);
+    expect(f.build({ content }).plans).toHaveLength(1);
+    for (const candidate of [{ ...content, journeyApprovals: [] },
+      { ...content, dialogueApprovals: content.dialogueApprovals.filter(item => item.id !== "fixture-fact-line" || item.locale !== "en") },
+      { ...content, dialogues: content.dialogues.filter(item => item.payload.id !== "fixture-fact-line" || item.payload.locale !== "en") },
+    ]) expect(f.build({ content: candidate }).plans).toEqual([]);
+    expect(f.build({ content, publicBooks: [] }).plans).toEqual([]);
+    expect(f.build({ content, publicCountries: [{ ...f.country, writers: [] }] }).plans).toEqual([]);
+    expect(f.build({ content: readBookyJourneyContent() }).plans).toEqual([]);
+  });
+
+  it("keeps country facts independent of book readiness and enforces fact-specific offline availability", () => {
+    const f = fixture(), prepared = withFact(f, 0), definition = { ...prepared.definition,
+      nodes: prepared.definition.nodes.filter(node => node.kind !== "writer" && node.kind !== "work") };
+    const content: BookyJourneyContent = { ...prepared.content, definitions: [definition],
+      journeyApprovals: prepared.content.journeyApprovals.map(review => ({ ...review, definitionChecksum: getBookyJourneyChecksum(definition)! })),
+      availability: prepared.content.availability.map(route => ({ ...route, nodes: route.nodes.filter(node => node.nodeId !== "writer" && node.nodeId !== "work") })) };
+    expect(f.build({ content, publicBooks: [] }).plans[0].nodes.map(node => node.kind)).toEqual(["country", "sourced-fact", "checkpoint"]);
+    const offline = { ...content, availability: content.availability.map(route => ({ ...route,
+      nodes: route.nodes.map(node => node.nodeId === "fact" ? { ...node, offlineAvailable: false } : node) })) };
+    expect(f.build({ content: offline, publicBooks: [], connectivity: "online" }).plans).toHaveLength(1);
+    expect(f.build({ content: offline, publicBooks: [], connectivity: "offline" }).plans).toEqual([]);
   });
 });

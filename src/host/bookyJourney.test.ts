@@ -5,6 +5,7 @@ import { createBookyDialogueRegistry, getBookyDialogueChecksum, getBookyDialogue
 import { bookyJourneyDialogueContext, bookyJourneyEntityId, compileBookyJourney, getBookyJourneyChecksum, parseBookyJourneyPlanOverview,
   type BookyJourneyContext, type BookyJourneyDefinition, type BookyJourneyTrust } from "./bookyJourney";
 import type { Country, BookArchiveEntry } from "../planet/types";
+import { getBookyJourneyFactChecksum, type BookyJourneyFactSpec } from "./bookyJourneyFact";
 
 const now = "2026-09-20T12:00:00.000Z", reviewedAt = "2026-09-19T12:00:00.000Z";
 const clone = <T,>(value: T): T => JSON.parse(JSON.stringify(value));
@@ -59,6 +60,51 @@ function fixture(locale: "ru" | "en" = "en", withActivity = false) {
   const compile = (input: unknown = definition, request: unknown = context, policy = trust) => compileBookyJourney(input, request, policy);
   const reseal = (input: BookyJourneyDefinition): BookyJourneyTrust => ({ ...trust, approvedReviews: trust.approvedReviews.map(approval => ({ ...approval, definitionChecksum: getBookyJourneyChecksum(input)! })) });
   return { definition, context, trust, country, book, records, compile, reseal };
+}
+
+function factFixture(locale: "ru" | "en" = "en", anchorIndex = 1) {
+  const base = fixture(locale), anchor = base.definition.nodes[anchorIndex];
+  const placeholder: BookyJourneyFactSpec = { schemaVersion: 1, id: "test-fact", version: 1, dialogues: [
+    { locale: "ru", id: "test-fact-line", version: 1, contentChecksum: "a".repeat(64) },
+    { locale: "en", id: "test-fact-line", version: 1, contentChecksum: "b".repeat(64) },
+  ] };
+  const seed: BookyJourneyDefinition["nodes"][number] = { id: "fact", kind: "sourced-fact", entity: anchor.entity, screen: anchor.screen,
+    dialogue: { id: "test-fact-line", version: 1, contentChecksum: "a".repeat(64) }, fact: placeholder };
+  const factRecords = (["ru", "en"] as const).map(locale => {
+    const copy = { title: `${locale}: synthetic fact`, body: "Synthetic sourced fixture, not a production assertion.", caption: "Test fact", reduced: "Test" };
+    const payload: BookyDialoguePayload = { ...base.records[0].payload, id: "test-fact-line", locale, intent: "sourced-fact", screens: [seed.screen],
+      context: bookyJourneyDialogueContext(base.definition.id, seed)!, entityIds: [bookyJourneyEntityId(seed.entity!)],
+      claimKind: "factual", factualSources: [{ id: "synthetic-source", url: "https://example.org/test-only", accessedAt: reviewedAt }], copy,
+      provenance: { ...base.records[0].payload.provenance, copySha256: contentTextHash(JSON.stringify({ title: copy.title, body: copy.body })) } };
+    const review = { status: "approved" as const, reviewer: "synthetic-fact-reviewer-not-real", reviewedAt,
+      contentChecksum: getBookyDialogueContentChecksum(payload)! };
+    return { payload, review, checksum: getBookyDialogueChecksum({ payload, review })! };
+  });
+  const spec: BookyJourneyFactSpec = { ...placeholder, dialogues: [
+    { ...placeholder.dialogues[0], contentChecksum: factRecords[0].review.contentChecksum },
+    { ...placeholder.dialogues[1], contentChecksum: factRecords[1].review.contentChecksum },
+  ] };
+  const binding = spec.dialogues.find(item => item.locale === locale)!;
+  const fact = { ...seed, fact: spec, dialogue: { id: binding.id, version: binding.version, contentChecksum: binding.contentChecksum } };
+  const definition = { ...base.definition, nodes: [...base.definition.nodes.slice(0, anchorIndex + 1), fact, ...base.definition.nodes.slice(anchorIndex + 1)] };
+  const records = [...base.records, ...factRecords];
+  const registryFor = (values: readonly BookyDialogueRecord[] = records, omittedApproval = "") => createBookyDialogueRegistry(values, {
+    canonicalEntityIds: [...new Set(records.flatMap(record => [...record.payload.entityIds]))],
+    approvedReviews: values.filter(record => `${record.payload.locale}:${record.payload.id}` !== omittedApproval).map(record => ({
+      id: record.payload.id, locale: record.payload.locale, version: record.payload.version,
+      contentChecksum: record.review.contentChecksum, reviewer: record.review.reviewer!, reviewedAt })),
+  });
+  const trust = { ...base.reseal(definition), dialogueRegistry: registryFor() };
+  const context = { ...base.context, availability: definition.nodes.map(node => ({ nodeId: node.id, locale,
+    dialogueContentChecksum: node.dialogue.contentChecksum, available: true, offlineAvailable: true })) };
+  const reseal = (input: BookyJourneyDefinition) => ({ ...trust, approvedReviews: trust.approvedReviews.map(receipt => ({ ...receipt,
+    definitionChecksum: getBookyJourneyChecksum(input)! })) });
+  const compile = (input: BookyJourneyDefinition = definition, current = context, policy = trust) => compileBookyJourney(input, current, policy);
+  const reordered = (nodes: BookyJourneyDefinition["nodes"]) => {
+    const candidate = { ...definition, nodes };
+    return compile(candidate, { ...context, availability: context.availability.filter(item => nodes.some(node => node.id === item.nodeId)) }, reseal(candidate));
+  };
+  return { ...base, definition, context, trust, records, factRecords, spec, fact, compile, reseal, reordered, registryFor };
 }
 
 describe("guarded adult Booky journey plans", () => {
@@ -355,5 +401,110 @@ describe("optional reviewed journey overview", () => {
       expect(parseBookyJourneyPlanOverview(value)).toBeNull();
     }
     expect(getter).not.toHaveBeenCalled();
+  });
+});
+
+describe("reviewed sourced-fact journey nodes", () => {
+  it.each(["ru", "en"] as const)("admits exact %s country, writer and work anchors with sourced copy", locale => {
+    for (const anchorIndex of [0, 1, 2]) {
+      const f = factFixture(locale, anchorIndex), plan = f.compile()!, node = plan.nodes[anchorIndex + 1];
+      expect(node.kind).toBe("sourced-fact"); expect(node.entity).toEqual(f.fact.entity);
+      expect(node.coordinates).toEqual(anchorIndex === 0 ? [20, 30] : null);
+      expect(node.screen).toBe(anchorIndex === 2 ? "collection" : "globe");
+      expect(node.fact).toEqual({ spec: f.spec, semanticChecksum: getBookyJourneyFactChecksum(f.spec, f.fact.entity!, f.fact.screen) });
+      expect(Object.keys(node).sort()).toEqual(["coordinates", "dialogue", "entity", "fact", "id", "kind", "screen"]);
+      expect(node.dialogue.payload).toMatchObject({ locale, intent: "sourced-fact", claimKind: "factual", provenance: { kind: "editorial" } });
+      expect(node.dialogue.payload.factualSources).toHaveLength(1);
+      for (const value of [node.fact, node.fact!.spec, node.fact!.spec.dialogues, node.fact!.spec.dialogues[0]]) expect(Object.isFrozen(value)).toBe(true);
+      expect(node.fact!.spec).not.toBe(f.spec);
+    }
+  });
+
+  it("avoids recursive dialogue hashes while binding both locales and the canonical anchor to semantic identity", () => {
+    const ru = factFixture("ru"), en = factFixture("en");
+    expect(ru.compile()!.nodes[2].fact!.semanticChecksum).toBe(en.compile()!.nodes[2].fact!.semanticChecksum);
+    const changed = { ...en.fact, fact: { ...en.spec, dialogues: [
+      { ...en.spec.dialogues[0], contentChecksum: "c".repeat(64) }, en.spec.dialogues[1],
+    ] as BookyJourneyFactSpec["dialogues"] } };
+    expect(bookyJourneyDialogueContext(en.definition.id, changed)).toBe(bookyJourneyDialogueContext(en.definition.id, en.fact));
+    expect(getBookyJourneyFactChecksum(changed.fact, changed.entity!, changed.screen)).not.toBe(getBookyJourneyFactChecksum(en.spec, en.fact.entity!, en.fact.screen));
+    expect(bookyJourneyDialogueContext(en.definition.id, en.fact)).toMatch(/^fact:[a-f0-9]{64}$/u);
+    expect(bookyJourneyDialogueContext(en.definition.id, { ...en.fact, fact: { ...en.spec, version: 2 } })).not.toBe(bookyJourneyDialogueContext(en.definition.id, en.fact));
+  });
+
+  it("requires independent whole-journey and exact current-locale sourced-dialogue review", () => {
+    const f = factFixture();
+    expect(f.compile(undefined, undefined, { ...f.trust, approvedReviews: [] })).toBeNull();
+    expect(f.compile(undefined, undefined, { ...f.trust, dialogueRegistry: f.registryFor(undefined, "en:test-fact-line") })).toBeNull();
+    for (const fields of [{ id: "test-country-line" }, { version: 2 }, { contentChecksum: "f".repeat(64) }]) {
+      const candidate = { ...f.definition, nodes: f.definition.nodes.map(node => node.id === "fact" ? { ...node, dialogue: { ...node.dialogue, ...fields } } : node) };
+      expect(getBookyJourneyChecksum(candidate)).toBeNull();
+    }
+    const editedFact = { ...f.fact, fact: { ...f.spec, dialogues: [
+      { ...f.spec.dialogues[0], contentChecksum: "c".repeat(64) }, f.spec.dialogues[1],
+    ] as BookyJourneyFactSpec["dialogues"] } };
+    const candidate = { ...f.definition, nodes: f.definition.nodes.map(node => node.id === "fact" ? editedFact : node) };
+    expect(getBookyJourneyChecksum(candidate)).not.toBe(getBookyJourneyChecksum(f.definition));
+    expect(f.compile(candidate)).toBeNull();
+  });
+
+  it("requires prior exact navigation context and never establishes it merely by a fact", () => {
+    const writer = factFixture("en", 1), work = factFixture("en", 2);
+    expect(writer.reordered(writer.definition.nodes.filter(node => node.kind !== "writer"))).toBeNull();
+    expect(work.reordered(work.definition.nodes.filter(node => node.kind !== "work"))).toBeNull();
+    const [countryNode, writerNode, workNode, factNode, checkpoint] = work.definition.nodes;
+    expect(work.reordered([countryNode, writerNode, factNode, workNode, checkpoint])).toBeNull();
+    // A fact about the active country does not reset an already navigated writer.
+    const country = factFixture("en", 0), [first, fact, writerStep, workStep, end] = country.definition.nodes;
+    expect(country.reordered([first, writerStep, fact, workStep, end])).not.toBeNull();
+    // An ordinary country selection still clears the prior writer/work context.
+    const originalLine = work.records.find(record => record.payload.id === countryNode.dialogue.id)!;
+    const payload: BookyDialoguePayload = { ...originalLine.payload, id: "test-repeat-country-line", context: "test-journey:repeat-country" };
+    const review = { ...originalLine.review, contentChecksum: getBookyDialogueContentChecksum(payload)! };
+    const repeatedLine = { payload, review, checksum: getBookyDialogueChecksum({ payload, review })! };
+    const repeatCountry = { ...countryNode, id: "repeat-country", dialogue: { id: payload.id, version: payload.version, contentChecksum: review.contentChecksum } };
+    const altered = { ...work.definition, nodes: [countryNode, writerNode, workNode, repeatCountry, factNode, checkpoint] };
+    const availability = altered.nodes.map(node => ({ nodeId: node.id, locale: "en" as const,
+      dialogueContentChecksum: node.dialogue.contentChecksum, available: true, offlineAvailable: true }));
+    expect(work.compile(altered, { ...work.context, availability }, { ...work.reseal(altered),
+      dialogueRegistry: work.registryFor([...work.records, repeatedLine]) })).toBeNull();
+  });
+
+  it("rejects malformed fact nodes and keeps all old navigation/activity fields exact", () => {
+    const f = factFixture();
+    for (const fact of [{ ...f.fact, fact: undefined }, { ...f.fact, entity: null }, { ...f.fact, screen: "collection" },
+      { ...f.fact, fact: { ...f.spec, unexpected: true } }, { ...f.fact, activity: {} },
+      { ...f.fact, fact: { ...f.spec, dialogues: [...f.spec.dialogues].reverse() } },
+    ]) expect(getBookyJourneyChecksum({ ...f.definition, nodes: f.definition.nodes.map(node => node.id === "fact" ? fact : node) })).toBeNull();
+    const ordinary = fixture(), activity = fixture("en", true);
+    expect(ordinary.compile()).not.toBeNull(); expect(activity.compile()).not.toBeNull();
+    expect(ordinary.compile()!.nodes.every(node => !Object.prototype.hasOwnProperty.call(node, "fact"))).toBe(true);
+    expect(getBookyJourneyChecksum({ ...ordinary.definition, nodes: ordinary.definition.nodes.map((node, index) => index ? node : { ...node, fact: f.spec }) })).toBeNull();
+  });
+
+  it("requires current exact canonical membership, reviewed work and whole-node offline availability", () => {
+    const f = factFixture("en", 2);
+    for (const change of [{ publicBooks: [] }, { publicBooks: [f.book, f.book] }, { publicCountries: [] },
+      { publicBooks: [{ ...f.book, editorial: { status: "draft" as const } }] },
+      { publicCountries: [{ ...f.country, writers: [] }] },
+    ]) expect(f.compile(undefined, undefined, { ...f.trust, ...change })).toBeNull();
+    const availability = f.context.availability.map(item => item.nodeId === "fact" ? { ...item, offlineAvailable: false } : item);
+    expect(f.compile(undefined, { ...f.context, availability, connectivity: "online" })).not.toBeNull();
+    expect(f.compile(undefined, { ...f.context, availability, connectivity: "offline" })).toBeNull();
+  });
+
+  it("rechecks a fact anchor after later dialogue callbacks revoke its canonical relation", () => {
+    for (const anchorIndex of [0, 1, 2]) {
+      const f = factFixture("en", anchorIndex), registry = f.trust.dialogueRegistry;
+      const trust = { ...f.trust, dialogueRegistry: { ...registry, resolve(request: unknown) {
+        if ((request as BookyDialogueRequest).id === "test-checkpoint-line") {
+          if (anchorIndex === 0) f.country.coordinates = [21, 30];
+          else if (anchorIndex === 1) f.country.writers.length = 0;
+          else f.book.editorial = { status: "draft" };
+        }
+        return registry.resolve(request);
+      } } };
+      expect(f.compile(undefined, undefined, trust)).toBeNull();
+    }
   });
 });

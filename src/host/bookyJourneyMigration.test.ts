@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 import { getBookyJourneyChecksum, type BookyJourneyDefinition, type BookyJourneyPlan } from "./bookyJourney";
 import { createBookyJourneyProgressRecord, type BookyJourneyProgressNode } from "./bookyJourneyProgress";
+import { getBookyJourneyFactChecksum, type BookyJourneyFactSpec } from "./bookyJourneyFact";
 import { createBookyReaderPolicy } from "./bookyReaderPolicy";
 import type { BookArchiveEntry, Country } from "../planet/types";
 import { resolveBookyJourneyActivity, type BookyJourneyActivitySpec } from "./bookyJourneyActivity";
@@ -9,7 +10,7 @@ import { getBookyJourneyMigrationChecksum, resolveBookyJourneyMigration,
 
 const now = "2026-09-23T12:00:00.000Z", reviewedAt = "2026-09-22T12:00:00.000Z";
 const policy = createBookyReaderPolicy({ age: 30, readingLevel: "plain" }, reviewedAt, 1)!;
-type PlainNode = Omit<BookyJourneyProgressNode, "activity">;
+type PlainNode = Omit<BookyJourneyProgressNode, "activity" | "fact">;
 const nodes: readonly PlainNode[] = [
   { id: "country", kind: "country", screen: "globe", entity: { kind: "country", countryId: "synthetic-country" } },
   { id: "writer", kind: "writer", screen: "globe", entity: { kind: "writer", countryId: "synthetic-country", writerId: "synthetic-writer" } },
@@ -27,8 +28,12 @@ function hostPlan(source: BookyJourneyDefinition, author?: string): BookyJourney
   return { id: source.id, version: source.version, locale: source.locale, title: source.title,
     definitionChecksum: getBookyJourneyChecksum(source)!,
     ...(source.overview ? { overview: { ...source.overview, offlineAvailable: true } } : {}),
-    nodes: source.nodes.map(({ activity: spec, ...node }) => {
+    nodes: source.nodes.map(({ activity: spec, fact: factSpec, ...node }) => {
       const compiled = { ...node, coordinates: null, dialogue: {} as BookyJourneyPlan["nodes"][number]["dialogue"] };
+      if (node.kind === "sourced-fact") {
+        if (!factSpec || !node.entity) throw Error("invalid-synthetic-migration-fact");
+        return { ...compiled, fact: { spec: factSpec, semanticChecksum: getBookyJourneyFactChecksum(factSpec, node.entity, node.screen)! } };
+      }
       if (node.kind !== "activity") return compiled;
       const activity = resolveBookyJourneyActivity(spec, {
         publicCountries: [{ id: "synthetic-country", writers: [{ id: "synthetic-writer" }, { id: "other-writer" }] }] as Country[],
@@ -299,5 +304,65 @@ describe("reviewed migration with optional route overview", () => {
     const getter = vi.fn(() => input.currentPlan.overview), accessor = { ...input.currentPlan };
     Object.defineProperty(accessor, "overview", { enumerable: true, get: getter });
     expect(resolveBookyJourneyMigration({ ...input, currentPlan: accessor })).toBeNull(); expect(getter).not.toHaveBeenCalled();
+  });
+});
+
+
+describe("sourced-fact migration keeps exact bilingual semantic meaning", () => {
+  const spec: BookyJourneyFactSpec = { schemaVersion: 1, id: "test-fact", version: 1, dialogues: [
+    { locale: "ru", id: "test-fact-dialogue", version: 1, contentChecksum: "b".repeat(64) },
+    { locale: "en", id: "test-fact-dialogue", version: 1, contentChecksum: "a".repeat(64) },
+  ] };
+  function withFact(version: number, factSpec = spec): BookyJourneyDefinition {
+    const base = definition(version), prefix = version === 1 ? "" : "new-";
+    const fact = { id: prefix + "fact", kind: "sourced-fact" as const, screen: "collection" as const, entity: nodes[2].entity,
+      dialogue: { id: factSpec.dialogues[1].id, version: factSpec.dialogues[1].version, contentChecksum: factSpec.dialogues[1].contentChecksum }, fact: factSpec };
+    return { ...base, nodes: [...base.nodes.slice(0, 3).map(node => ({ ...node, id: prefix + node.id })), fact,
+      { ...base.nodes[3], id: prefix + "checkpoint" }] };
+  }
+  function factFixture(count = 4, targetSpec = spec): BookyJourneyMigrationInput {
+    const base = fixture(), historicalDefinition = withFact(1), currentPlan = hostPlan(withFact(2, targetSpec));
+    const old = hostPlan(historicalDefinition), savedRecord = createBookyJourneyProgressRecord(policy, old,
+      old.nodes.slice(0, count).map(node => node.id), old.nodes[count]?.id ?? null)!;
+    return reviewed({ ...base, historicalDefinition, savedRecord, currentPlan }, { fromDefinitionChecksum: savedRecord.definitionChecksum,
+      toDefinitionChecksum: currentPlan.definitionChecksum, nodeMap: Object.fromEntries(old.nodes.map(node => [node.id, "new-" + node.id])) });
+  }
+
+  it("transfers only acknowledged facts with the exact bilingual fingerprint and preserves the old record", () => {
+    const input = factFixture(), original = JSON.stringify(input.savedRecord), result = resolveBookyJourneyMigration(input)!;
+    expect(result).not.toBeNull(); expect(result.preservedRecord).toEqual(input.savedRecord);
+    expect(result.targetRecord.acknowledgedNodeIds).toEqual(["new-country", "new-writer", "new-work", "new-fact"]);
+    expect(result.targetRecord.resumeNodeId).toBe("new-checkpoint");
+    expect(result.targetRecord.nodes[3].fact).toEqual(input.savedRecord.nodes[3].fact);
+    expect(JSON.stringify(result)).not.toMatch(/"(?:spec|dialogues|contentChecksum|body|factualSources|url)"/u);
+    expect(JSON.stringify(input.savedRecord)).toBe(original);
+  });
+
+  it("denies acknowledged fact transfer after either locale binding, identity or version changes despite fresh mapping review", () => {
+    const alternatives: BookyJourneyFactSpec[] = [
+      { ...spec, id: "other-fact" }, { ...spec, version: 2 },
+      { ...spec, dialogues: [{ ...spec.dialogues[0], contentChecksum: "c".repeat(64) }, spec.dialogues[1]] },
+      { ...spec, dialogues: [spec.dialogues[0], { ...spec.dialogues[1], contentChecksum: "c".repeat(64) }] },
+    ];
+    for (const changed of alternatives) expect(resolveBookyJourneyMigration(factFixture(4, changed))).toBeNull();
+  });
+
+  it("may retain an unacknowledged fact cursor under explicit review without manufacturing acknowledgement", () => {
+    const changed: BookyJourneyFactSpec = { ...spec, version: 2 }, input = factFixture(3, changed);
+    const result = resolveBookyJourneyMigration(input)!; expect(result).not.toBeNull();
+    expect(result.targetRecord.acknowledgedNodeIds).toEqual(["new-country", "new-writer", "new-work"]);
+    expect(result.targetRecord.resumeNodeId).toBe("new-fact"); expect(result.targetRecord.nodes[3].fact!.version).toBe(2);
+    expect(result.preservedRecord.nodes[3].fact!.version).toBe(1);
+  });
+
+  it("rejects forged historical fact fingerprints even when the saved cursor has not acknowledged the fact", () => {
+    const input = factFixture(3), forged = { ...input.savedRecord, nodes: input.savedRecord.nodes.map(node => node.kind === "sourced-fact"
+      ? { ...node, fact: { ...node.fact!, semanticChecksum: "e".repeat(64) } } : node) };
+    expect(resolveBookyJourneyMigration({ ...input, savedRecord: forged })).toBeNull();
+    const getter = vi.fn(() => spec), fact = input.currentPlan.nodes[3];
+    const hostile = Object.defineProperty({ ...fact.fact }, "spec", { enumerable: true, get: getter });
+    expect(resolveBookyJourneyMigration({ ...input, currentPlan: { ...input.currentPlan,
+      nodes: input.currentPlan.nodes.map(node => node === fact ? { ...node, fact: hostile } : node) } })).toBeNull();
+    expect(getter).not.toHaveBeenCalled();
   });
 });

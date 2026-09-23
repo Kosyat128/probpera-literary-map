@@ -3,6 +3,7 @@ import { contentTextHash } from "../planet/contentExportHash";
 import type { BookyJourneyPlan } from "./bookyJourney";
 import type { BookArchiveEntry, Country } from "../planet/types";
 import { resolveBookyJourneyActivity, type BookyJourneyActivitySpec } from "./bookyJourneyActivity";
+import { getBookyJourneyFactChecksum, type BookyJourneyFactSpec } from "./bookyJourneyFact";
 import { createBookyReaderPolicy, serializeBookyReaderPolicy } from "./bookyReaderPolicy";
 import { BOOKY_JOURNEY_PROGRESS_MAX_LENGTH, BOOKY_JOURNEY_PROGRESS_MAX_RECORDS, BOOKY_JOURNEY_PROGRESS_MAX_NODES,
   DEFAULT_BOOKY_JOURNEY_PROGRESS, createBookyJourneyProgressRecord, decodeBookyJourneyProgress,
@@ -13,7 +14,7 @@ const policy = createBookyReaderPolicy({ age: 35, readingLevel: "fluent" }, "202
 // Semantic codec fixtures only. These deliberately contain no editorial review
 // receipts and must never be used to claim that a route was admitted.
 function plan(id = "test-journey", locale: "en" | "ru" = "en", version = 1): BookyJourneyPlan {
-  const nodes: Omit<BookyJourneyProgressNode, "activity">[] = [
+  const nodes: Omit<BookyJourneyProgressNode, "activity" | "fact">[] = [
     { id: "country", kind: "country", screen: "globe", entity: { kind: "country", countryId: "test-country" } },
     { id: "writer", kind: "writer", screen: "globe", entity: { kind: "writer", countryId: "test-country", writerId: "test-writer" } },
     { id: "work", kind: "work", screen: "collection", entity: { kind: "work", countryId: "test-country", writerId: "test-writer", workId: "test-work" } },
@@ -281,5 +282,67 @@ describe("optional admitted journey overview does not change saved semantic byte
     const stored = fixture();
     expect(parseBookyJourneyProgress({ ...stored, records: [{ ...stored.records[0], overview }] })).toBeNull();
     expect(getter).not.toHaveBeenCalled(); expect(nestedGetter).not.toHaveBeenCalled();
+  });
+});
+
+
+describe("sourced-fact progress stores only exact semantic identity", () => {
+  const spec: BookyJourneyFactSpec = { schemaVersion: 1, id: "test-fact", version: 1, dialogues: [
+    { locale: "ru", id: "test-fact-dialogue", version: 1, contentChecksum: "b".repeat(64) },
+    { locale: "en", id: "test-fact-dialogue", version: 1, contentChecksum: "c".repeat(64) },
+  ] };
+  function factPlan(kind: "country" | "writer" | "work" = "work"): BookyJourneyPlan {
+    const base = plan(), anchor = base.nodes.find(node => node.kind === kind)!;
+    const fact = { id: "fact", kind: "sourced-fact" as const, entity: anchor.entity, screen: anchor.screen,
+      coordinates: anchor.coordinates, dialogue: anchor.dialogue,
+      fact: { spec, semanticChecksum: getBookyJourneyFactChecksum(spec, anchor.entity!, anchor.screen)! } };
+    const index = base.nodes.indexOf(anchor);
+    return { ...base, nodes: [...base.nodes.slice(0, index + 1), fact, ...base.nodes.slice(index + 1)] };
+  }
+
+  it("round-trips country, writer and work fact fingerprints without copy, source URLs or locale binding tables", () => {
+    for (const kind of ["country", "writer", "work"] as const) {
+      const source = factPlan(kind), value = fixture(source, source.nodes.map(node => node.id), null);
+      const stored = value.records[0].nodes.find(node => node.kind === "sourced-fact")!;
+      expect(stored).toEqual({ id: "fact", kind: "sourced-fact", screen: kind === "work" ? "collection" : "globe",
+        entity: source.nodes.find(node => node.kind === kind)!.entity,
+        fact: { id: spec.id, version: spec.version, semanticChecksum: source.nodes.find(node => node.kind === "sourced-fact")!.fact!.semanticChecksum } });
+      const bytes = serializeBookyJourneyProgress(value)!;
+      expect(parseBookyJourneyProgress(bytes)).toEqual(value); expect(Object.isFrozen(stored.fact)).toBe(true);
+      expect(bytes).not.toMatch(/"(?:spec|dialogues|contentChecksum|body|factualSources|url)"/u);
+      expect(value.records[0].nodes.filter(node => node.kind !== "sourced-fact")).toEqual(fixture().records[0].nodes);
+    }
+  });
+
+  it("rejects missing, extra, mixed and wrong-anchor persisted fact variants without dropping history", () => {
+    const value = fixture(factPlan()), record = value.records[0], fact = record.nodes.find(node => node.kind === "sourced-fact")!;
+    for (const invalid of [{ ...fact, fact: undefined }, { ...fact, fact: { ...fact.fact, body: "not stored" } },
+      { ...fact, fact: { ...fact.fact, semanticChecksum: "invalid" } }, { ...fact, activity: fact.fact },
+      { ...fact, screen: "globe" }, { ...fact, entity: null }, { ...fact, kind: "work" },
+      { ...fact, entity: { kind: "sourced-fact", countryId: "test-country" } }]) {
+      expect(parseBookyJourneyProgress({ ...value, records: [{ ...record, nodes: record.nodes.map(node => node === fact ? invalid : node) }] })).toBeNull();
+    }
+    expect(parseBookyJourneyProgress(serializeBookyJourneyProgress(value))).toEqual(value);
+  });
+
+  it("projects only exact recomputed bilingual fact fingerprints and rejects forged resolved metadata", () => {
+    const source = factPlan(), fact = source.nodes.find(node => node.kind === "sourced-fact")!;
+    for (const changed of [{ ...fact, fact: { ...fact.fact, semanticChecksum: "d".repeat(64) } },
+      { ...fact, fact: { ...fact.fact, spec: { ...spec, version: 2 } } },
+      { ...fact, fact: { ...fact.fact, spec: { ...spec, dialogues: [spec.dialogues[0], { ...spec.dialogues[1], contentChecksum: "d".repeat(64) }] } } },
+      { ...fact, fact: { ...fact.fact, body: "forged copy" } }, { ...fact, activity: {} },
+      { ...fact, entity: { ...fact.entity, workId: "other-work" } }]) {
+      expect(createBookyJourneyProgressRecord(policy, { ...source, nodes: source.nodes.map(node => node === fact ? changed : node) } as BookyJourneyPlan, [], "country")).toBeNull();
+    }
+  });
+
+  it("never evaluates fact or spec getters during projection and saved-state parsing", () => {
+    const source = factPlan(), fact = source.nodes.find(node => node.kind === "sourced-fact")!, getter = vi.fn(() => fact.fact);
+    const hostile = Object.defineProperty({ ...fact }, "fact", { enumerable: true, get: getter });
+    expect(createBookyJourneyProgressRecord(policy, { ...source, nodes: source.nodes.map(node => node === fact ? hostile : node) }, [], "country")).toBeNull();
+    const value = fixture(source), record = value.records[0], saved = record.nodes.find(node => node.kind === "sourced-fact")!;
+    const invalid = Object.defineProperty({ ...saved.fact }, "semanticChecksum", { enumerable: true, get: getter });
+    expect(parseBookyJourneyProgress({ ...value, records: [{ ...record, nodes: record.nodes.map(node => node === saved ? { ...node, fact: invalid } : node) }] })).toBeNull();
+    expect(getter).not.toHaveBeenCalled();
   });
 });

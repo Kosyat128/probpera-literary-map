@@ -9,6 +9,7 @@ import { createBookyJourneyCatalog } from "./bookyJourneyCatalog";
 import { readBookyJourneyContent, type BookyJourneyContent } from "./bookyJourneyContent";
 import { createBookyJourneyProgressRecord, type BookyJourneyProgressPreference,
   type BookyJourneyProgressRecord } from "./bookyJourneyProgress";
+import type { BookyJourneyFactSpec } from "./bookyJourneyFact";
 import { createBookyReaderPolicy } from "./bookyReaderPolicy";
 import { createBookyJourneyPassport, type BookyJourneyPassportOptions } from "./bookyJourneyPassport";
 
@@ -193,5 +194,86 @@ describe("read-only adult passport of confirmed journey steps", () => {
     for (const confirmedProgress of bad) expect(f.project([], { confirmedProgress: confirmedProgress as BookyJourneyProgressPreference }))
       .toEqual({ entities: [], completedJourneys: [] });
     expect(getter).not.toHaveBeenCalled();
+  });
+});
+
+
+/** Synthetic independent fact reviews only; the production providers stay empty. */
+function withReviewedFact(content: BookyJourneyContent, changedLocale?: "ru" | "en", mismatchedEnglishPair = false): BookyJourneyContent {
+  const factRecords = new Map<string, BookyDialogueRecord>();
+  const definitions = content.definitions.map(definition => {
+    const anchor = definition.nodes.find(node => node.kind === "writer")!;
+    const placeholder: BookyJourneyFactSpec = { schemaVersion: 1, id: definition.id + "-fact", version: 1, dialogues: [
+      { locale: "ru", id: definition.id + "-fact-dialogue", version: 1, contentChecksum: "a".repeat(64) },
+      { locale: "en", id: definition.id + "-fact-dialogue", version: 1, contentChecksum: "a".repeat(64) },
+    ] };
+    const raw = { id: "fact", kind: "sourced-fact" as const, entity: anchor.entity, screen: anchor.screen,
+      dialogue: { id: placeholder.dialogues[0].id, version: 1, contentChecksum: "a".repeat(64) }, fact: placeholder };
+    const records = (["ru", "en"] as const).map(locale => {
+      const copy = { title: locale + ": synthetic fact", body: locale + ": synthetic test fact " + (changedLocale === locale ? "changed" : "original"),
+        caption: "Synthetic fact", reduced: "Synthetic fact" };
+      const payload: BookyDialoguePayload = { id: raw.dialogue.id, locale, version: 1, audience: "adult", ageRange: { min: 18, max: 120 },
+        readingLevel: "plain", intent: "sourced-fact", screens: [raw.screen], context: bookyJourneyDialogueContext(definition.id, raw)!,
+        entityIds: [bookyJourneyEntityId(raw.entity!)], claimKind: "factual", factualSources: [
+          { id: "test-source", url: "https://example.org/fact", accessedAt: reviewedAt }], copy, narration: null, prohibitedTags: [],
+        provenance: { kind: "editorial", sourcePath: "test/fact-history.ts", sourceVersion: 1, sourceRef: raw.id,
+          sourceSha256: "a".repeat(64), copySha256: contentTextHash(JSON.stringify({ title: copy.title, body: copy.body })) } };
+      const review = { status: "approved" as const, reviewer: "synthetic-fact-reviewer-not-real", reviewedAt,
+        contentChecksum: getBookyDialogueContentChecksum(payload)! };
+      const record = { payload, review, checksum: getBookyDialogueChecksum({ payload, review })! };
+      factRecords.set(locale + ":" + payload.id, record); return record;
+    });
+    const spec: BookyJourneyFactSpec = { ...placeholder, dialogues: [
+      { ...placeholder.dialogues[0], contentChecksum: mismatchedEnglishPair && definition.locale === "en" ? "d".repeat(64) : records[0].review.contentChecksum },
+      { ...placeholder.dialogues[1], contentChecksum: records[1].review.contentChecksum },
+    ] };
+    const selected = spec.dialogues.find(binding => binding.locale === definition.locale)!;
+    const fact = { ...raw, fact: spec, dialogue: { id: selected.id, version: selected.version, contentChecksum: selected.contentChecksum } };
+    const index = definition.nodes.indexOf(anchor) + 1;
+    return { ...definition, nodes: [...definition.nodes.slice(0, index), fact, ...definition.nodes.slice(index)] };
+  });
+  const dialogues = [...content.dialogues, ...factRecords.values()];
+  return { ...content, definitions, dialogues,
+    dialogueApprovals: dialogues.map(record => ({ id: record.payload.id, version: record.payload.version, locale: record.payload.locale,
+      contentChecksum: record.review.contentChecksum, reviewer: record.review.reviewer!, reviewedAt })),
+    journeyApprovals: definitions.map(definition => ({ id: definition.id, version: definition.version, locale: definition.locale,
+      definitionChecksum: getBookyJourneyChecksum(definition)!, reviewer: "synthetic-journey-reviewer-not-real", reviewedAt })),
+    availability: definitions.map(definition => ({ journeyId: definition.id, version: definition.version, locale: definition.locale,
+      nodes: definition.nodes.map(node => ({ nodeId: node.id, locale: definition.locale,
+        dialogueContentChecksum: node.dialogue.contentChecksum, available: true, offlineAvailable: true })) })),
+  };
+}
+
+
+describe("sourced facts do not add passive passport navigation credit", () => {
+  function factSetup() {
+    const base = fixture([{ id: "test-route", locale: "ru", work: false }, { id: "test-route", locale: "en", work: false }]);
+    const content = withReviewedFact(base.content), options = { ...base.options, content };
+    const plan = createBookyJourneyCatalog({ ...options, locale: "ru", completedPrerequisites: [] }).plans[0];
+    if (!plan) throw Error("invalid-synthetic-passport-fact");
+    const saved = (count: number) => createBookyJourneyProgressRecord(policy, plan, plan.nodes.slice(0, count).map(node => node.id), plan.nodes[count]?.id ?? null)!;
+    return { base, content, options, plan, saved };
+  }
+
+  it("keeps entity counts unchanged across fact acknowledgement and gives completion only after the explicit final checkpoint", () => {
+    const f = factSetup(), project = (count: number) => createBookyJourneyPassport({ ...f.options, confirmedProgress: preference([f.saved(count)]) });
+    const before = project(2), acknowledged = project(3), completed = project(4);
+    expect(before.entities.map(entity => entity.kind)).toEqual(["country", "writer"]);
+    expect(acknowledged).toEqual(before); expect(acknowledged.completedJourneys).toEqual([]);
+    expect(completed.entities).toEqual(before.entities);
+    expect(completed.completedJourneys).toEqual([{ id: "test-route", version: 1, locale: "en", title: "Synthetic test-route en" }]);
+    expect(JSON.stringify(preference([f.saved(4)]))).not.toMatch(/"(?:spec|dialogues|contentChecksum|factualSources|url|body)"/u);
+  });
+
+  it("withdraws the contributor on changed fact meaning or either locale review and restores only exact admitted history", () => {
+    const f = factSetup(), record = f.saved(4), confirmedProgress = preference([record]), bytes = JSON.stringify(confirmedProgress);
+    for (const locale of ["ru", "en"] as const) {
+      const changed = withReviewedFact(f.base.content, locale);
+      expect(createBookyJourneyPassport({ ...f.options, content: changed, confirmedProgress })).toEqual({ entities: [], completedJourneys: [] });
+      const revoked = { ...f.content, dialogueApprovals: f.content.dialogueApprovals.filter(item => item.locale !== locale || item.id !== "test-route-fact-dialogue") };
+      expect(createBookyJourneyPassport({ ...f.options, content: revoked, confirmedProgress })).toEqual({ entities: [], completedJourneys: [] });
+    }
+    expect(createBookyJourneyPassport({ ...f.options, confirmedProgress }).completedJourneys).toHaveLength(1);
+    expect(JSON.stringify(confirmedProgress)).toBe(bytes);
   });
 });
