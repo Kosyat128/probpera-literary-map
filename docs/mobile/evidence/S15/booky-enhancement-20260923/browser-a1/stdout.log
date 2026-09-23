@@ -1,0 +1,164 @@
+
+Running 36 tests using 1 worker
+
+
+
+[1/36] tests\pwa\book-dossier-character-archive.spec.mjs:213:1 › archive presents a requested second-block character without reading writes and dismisses it before native book Back
+[2/36] tests\pwa\book-dossier-character-archive.spec.mjs:258:1 › late archive character observation uses the already settled exact book instead of an inactive initial receipt
+[3/36] tests\pwa\book-dossier-character-archive.spec.mjs:277:1 › archive fallback cannot satisfy a character request and later publication requires a new explicit token
+[4/36] tests\pwa\book-dossier-character-view.spec.mjs:143:1 › exact character requests open committed RU and EN native views without navigation or progress
+[5/36] tests\pwa\book-dossier-character-view.spec.mjs:169:1 › invalid targets and selection locale remount background invalidation never replay a consumed request
+[6/36] tests\pwa\book-dossier-character-view.spec.mjs:195:1 › lease expiry and unavailable data revoke the open observation without restoring outside focus or replaying
+[7/36] tests\pwa\book-dossier-navigation.spec.mjs:208:1 › early next and contents choices survive delayed physical initialization and locale remapping without replaying another book
+[8/36] tests\pwa\book-dossier-navigation.spec.mjs:251:1 › failed physical pagination keeps accessible progress immediately and across archive remount
+[9/36] tests\pwa\book-dossier-navigation.spec.mjs:276:1 › switching adult identity restores its own dossier place without a transient previous-account write
+[10/36] tests\pwa\booky-journey.spec.mjs:536:1 › activity answers require fresh explicit acknowledgement and stay separate from navigation and saved progress
+[11/36] tests\pwa\booky-journey.spec.mjs:587:1 › activity answer is temporary across suspension cold restoration and revoked journey review
+[12/36] tests\pwa\booky-journey.spec.mjs:767:1 › actual reviewed fixture follows country writer work and explicit checkpoint across locale and suspension
+[13/36] tests\pwa\booky-journey.spec.mjs:861:4 › journey admission fails closed: no-profile
+[14/36] tests\pwa\booky-journey.spec.mjs:861:4 › journey admission fails closed: no-independent-journey-review
+[15/36] tests\pwa\booky-journey.spec.mjs:883:1 › confirmed journey progress restores the exact prefix paused in a fresh document until explicit resume
+[16/36] tests\pwa\booky-journey.spec.mjs:919:1 › failed journey-progress native write stays visibly unsaved until explicit exact retry
+[17/36] tests\pwa\booky-journey.spec.mjs:953:1 › future journey progress remains unchanged until explicit confirmed removal
+[18/36] tests\pwa\booky-journey.spec.mjs:989:1 › a new reviewed journey version cannot reinterpret or overwrite a saved older prefix
+[19/36] tests\pwa\booky-journey.spec.mjs:1024:1 › explicit reviewed journey migration preserves history and restores the exact new prefix paused
+[20/36] tests\pwa\booky-journey.spec.mjs:1099:1 › missing or revoked independent migration review preserves the old version without navigation
+[21/36] tests\pwa\booky-journey.spec.mjs:1150:1 › confirmed exact-version completion unlocks a dependent journey only with independently admitted saved locale
+[22/36] tests\pwa\booky-journey.spec.mjs:1203:1 › history selection never navigates and confirmed single-record deletion truthfully retries while revoking a prerequisite
+[23/36] tests\pwa\booky-journey.spec.mjs:1277:4 › journey focus: owned invalidated confirmation restores stable status
+[24/36] tests\pwa\booky-journey.spec.mjs:1277:4 › journey focus: invalidated confirmation never steals outside keyboard focus
+[25/36] tests\pwa\booky-journey.spec.mjs:1329:1 › journey focus: keyboard cancellation and fresh document discard consent without replaying progress
+[26/36] tests\pwa\booky-journey.spec.mjs:1399:1 › full journey history keeps existing progress usable and frees exactly one chosen entry for a new route
+[27/36] tests\pwa\booky-journey.spec.mjs:1587:1 › literary passport credits only confirmed acknowledged steps and withdraws a deliberately deleted history
+[28/36] tests\pwa\booky-journey.spec.mjs:1742:1 › reviewed journey overview follows exact locale review and whole-route offline availability without writing progress
+[29/36] tests\pwa\booky-journey.spec.mjs:1901:1 › sourced fact uses exact work view and read-only bilingual citations before explicit semantic acknowledgement
+[30/36] tests\pwa\booky-journey.spec.mjs:1999:1 › sourced fact revocation and changed source bindings preserve saved acknowledgements until exact reviewed restoration
+[31/36] tests\pwa\booky-live-character.spec.mjs:400:1 › live Mr. Booky model responds to direct interaction while the canonical globe stays unchanged
+[32/36] tests\pwa\booky-live-character.spec.mjs:543:1 › Mr. Booky opens canonical local utilities without writes and preserves newer keyboard focus
+  1) tests\pwa\booky-live-character.spec.mjs:543:1 › Mr. Booky opens canonical local utilities without writes and preserves newer keyboard focus 
+
+    TimeoutError: locator.click: Timeout 12000ms exceeded.
+    Call log:
+      - waiting for locator('[data-planet-graphics-settings]').locator(':scope > summary')
+        - locator resolved to <summary>Настройки графики</summary>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <button type="button" data-planet-mascot-action="writer">Писатели страны</button> from <div data-planet-mascot-pet="" data-planet-mascot-step="0" class="planet-mascot-controls" data-planet-mascot-mode="help" data-planet-mascot-active="true" data-planet-mascot-gesture="rest" data-planet-mascot-visibility="shown" data-planet-mascot-screen="collection" data-planet-mascot-current-route="none">…</div> subtree intercepts pointer events
+        - retrying click action
+        - waiting 20ms
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - <button type="button" data-planet-mascot-action="writer">Писатели страны</button> from <div data-planet-mascot-pet="" data-planet-mascot-step="0" class="planet-mascot-controls" data-planet-mascot-mode="help" data-planet-mascot-active="true" data-planet-mascot-gesture="rest" data-planet-mascot-visibility="shown" data-planet-mascot-screen="collection" data-planet-mascot-current-route="none">…</div> subtree intercepts pointer events
+      2 × retrying click action
+          - waiting 100ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <button type="button" data-planet-mascot-action="search">Поиск</button> from <div data-planet-mascot-pet="" data-planet-mascot-step="0" class="planet-mascot-controls" data-planet-mascot-mode="help" data-planet-mascot-active="true" data-planet-mascot-gesture="rest" data-planet-mascot-visibility="shown" data-planet-mascot-screen="collection" data-planet-mascot-current-route="none">…</div> subtree intercepts pointer events
+      5 × retrying click action
+          - waiting 500ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <button type="button" data-planet-mascot-action="writer">Писатели страны</button> from <div data-planet-mascot-pet="" data-planet-mascot-step="0" class="planet-mascot-controls" data-planet-mascot-mode="help" data-planet-mascot-active="true" data-planet-mascot-gesture="rest" data-planet-mascot-visibility="shown" data-planet-mascot-screen="collection" data-planet-mascot-current-route="none">…</div> subtree intercepts pointer events
+        - retrying click action
+          - waiting 500ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <button type="button" data-planet-mascot-action="writer">Писатели страны</button> from <div data-planet-mascot-pet="" data-planet-mascot-step="0" class="planet-mascot-controls" data-planet-mascot-mode="help" data-planet-mascot-active="true" data-planet-mascot-gesture="rest" data-planet-mascot-visibility="shown" data-planet-mascot-screen="collection" data-planet-mascot-current-route="none">…</div> subtree intercepts pointer events
+        - retrying click action
+          - waiting 500ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <button type="button" data-planet-mascot-action="search">Поиск</button> from <div data-planet-mascot-pet="" data-planet-mascot-step="0" class="planet-mascot-controls" data-planet-mascot-mode="help" data-planet-mascot-active="true" data-planet-mascot-gesture="rest" data-planet-mascot-visibility="shown" data-planet-mascot-screen="collection" data-planet-mascot-current-route="none">…</div> subtree intercepts pointer events
+        - retrying click action
+          - waiting 500ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <button type="button" data-planet-mascot-action="search">Поиск</button> from <div data-planet-mascot-pet="" data-planet-mascot-step="0" class="planet-mascot-controls" data-planet-mascot-mode="help" data-planet-mascot-active="true" data-planet-mascot-gesture="rest" data-planet-mascot-visibility="shown" data-planet-mascot-screen="collection" data-planet-mascot-current-route="none">…</div> subtree intercepts pointer events
+      2 × retrying click action
+          - waiting 500ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <button type="button" data-planet-mascot-action="writer">Писатели страны</button> from <div data-planet-mascot-pet="" data-planet-mascot-step="0" class="planet-mascot-controls" data-planet-mascot-mode="help" data-planet-mascot-active="true" data-planet-mascot-gesture="rest" data-planet-mascot-visibility="shown" data-planet-mascot-screen="collection" data-planet-mascot-current-route="none">…</div> subtree intercepts pointer events
+      - retrying click action
+        - waiting 500ms
+
+
+      581 |     // Hold only the panel's actual focus callback. A newer real Enter on an
+      582 |     // unrelated summary owns focus even after the old callback is released.
+    > 583 |     await graphicsSummary.click();await expect(graphics).not.toHaveAttribute('open','');
+          |                           ^
+      584 |     await page.evaluate(()=>window.__bookySectionFrames.hold());
+      585 |     await openUtility(page,'Настройки графики','Полезные действия');
+      586 |     await expect.poll(()=>page.evaluate(()=>window.__bookySectionFrames.pending())).toBe(1);
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-live-character.spec.mjs:583:27
+
+    attachment #1: booky-live-character-source-evidence (application/json) ─────────────────────────
+    D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-enhancement\browser-a1\booky-live-character-Mr-Bo-a0973-serves-newer-keyboard-focus\attachments\booky-live-character-source-evidence-b9533b89764950813d26fd57a380f13152ae7e15.json
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-enhancement\browser-a1\booky-live-character-Mr-Bo-a0973-serves-newer-keyboard-focus\error-context.md
+
+
+
+
+[33/36] tests\pwa\booky-live-character.spec.mjs:620:1 › Mr. Booky explicit gestures repeat with bounded animation and remain still with reduced motion
+[34/36] tests\pwa\booky-live-character.spec.mjs:687:1 › Mr. Booky walks along the margin only by request and stops for drag, hiding and reduced motion
+  2) tests\pwa\booky-live-character.spec.mjs:687:1 › Mr. Booky walks along the margin only by request and stops for drag, hiding and reduced motion 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 2
+    + Received  + 2
+
+      Object {
+        "bottom": 838,
+        "height": 272,
+    -   "left": 941.53125,
+    -   "right": 1117.53125,
+    +   "left": 940.734375,
+    +   "right": 1116.734375,
+        "top": 566,
+        "width": 176,
+      }
+
+      743 |     await begin();await moved(manuallyStopped);
+      744 |     await page.emulateMedia({reducedMotion:'reduce'});await stopped();await expect(walk()).toBeDisabled();
+    > 745 |     const motionStoppedPosition=(await layout(page)).pet;await twoFrames(page);expect((await layout(page)).pet).toEqual(motionStoppedPosition);
+          |                                                                                                                 ^
+      746 |     await page.evaluate(()=>window.__bookyLiveFixture.stopObservingWalk());expect(mutations(fixture)).toEqual(before);
+      747 |     await page.emulateMedia({reducedMotion:'no-preference'});await expect(walk()).toBeEnabled();await stopped();
+      748 |     await twoFrames(page);expect((await layout(page)).pet).toEqual(motionStoppedPosition);
+        at C:\Users\User\Documents\ChatGPT\Работа по сайту\literary-planet-v12-work\tests\pwa\booky-live-character.spec.mjs:745:113
+
+    attachment #1: booky-live-character-source-evidence (application/json) ─────────────────────────
+    D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-enhancement\browser-a1\booky-live-character-Mr-Bo-0a43b-g-hiding-and-reduced-motion\attachments\booky-live-character-source-evidence-25660532b804864c66ef695d1de43cce626be17c.json
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: D:\CodexData\.codex\visualizations\2026\09\20\01a0bd7e-e7b5-7111-b319-db1a60746e94\s15-booky-enhancement\browser-a1\booky-live-character-Mr-Bo-0a43b-g-hiding-and-reduced-motion\error-context.md
+
+
+
+
+[35/36] tests\pwa\booky-reader-policy.spec.mjs:481:1 › explicit adult profile survives locale and lifecycle while drafts and deletion never grant stale policy
+[36/36] tests\pwa\booky-reader-policy.spec.mjs:542:1 › future profiles are retained until confirmed deletion and failed deletion cannot restore admission
+  2 failed
+    tests\pwa\booky-live-character.spec.mjs:543:1 › Mr. Booky opens canonical local utilities without writes and preserves newer keyboard focus 
+    tests\pwa\booky-live-character.spec.mjs:687:1 › Mr. Booky walks along the margin only by request and stops for drag, hiding and reduced motion 
+  34 passed (6.9m)

@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-23T08:46:07.134Z",
+  "stage": "S15",
+  "checkpoint": "9f448936cea0b7859b2d3b9a3585afce4436862c",
+  "previous": "docs/mobile/evidence/S15/journey-character-contract-20260923/result.json",
+  "previousCheckpointResult": {
+    "path": "docs/mobile/evidence/S15/journey-character-contract-20260923/result.json",
+    "sha256": "7d54d245bc3fa2447b539b6d9aa32ca8a1ddde8b4140a48a9ed043ca333509a0"
+  },
+  "previousRuntimeResult": {
+    "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/result.json",
+    "sha256": "c5c5f523503751a0b5b80a53110a91e4cf5508314c9f149e5584d13b31da4618"
+  },
+  "priorSourceManifest": {
+    "path": "docs/mobile/evidence/S15/journey-character-contract-20260923/source-manifests/db8862335e2c0b7b.json",
+    "sha256": "db8862335e2c0b7bec2be2c497a5977d0418b9e878267baf7824c7e2350a20a8",
+    "fileCount": 1644
+  },
+  "checkpointFiles": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "ac24767535de8b1775db72c1f2abcc7d16ceb3131c853da1451fd3e78e8fdf38"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "57d6f5916af24e286ce485a2a4c91f9d6eec69492d5bd3a204dba68d3691dd70"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "2ef3239a46bb730d518de0aa69a3e1c693bcc7be59a65e11c1fcdcb4e40de321"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "c63ebd4d15f4be83ba7604192e44c7aecc48e8546a5d8b3e1100151826517662"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "2833d602092346af641c31f90812b092b9150d0b9edc7cdaffb23e3334851632"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "32b48cd81d25e03a1731fced5190dd16c95ae2e730cb488f0959873c02e057ba"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "cc60fb609c019ff090e444b322f284c57d6e333311fc6d5d8d571c7371e7a4aa"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "ef9ddd6926c67a27e462c27cc7599a35f0db4ee2195a2bcb24a84075890c4b4f"
+    }
+  ],
+  "changedPaths": [
+    "src/App.tsx",
+    "src/host/NativePlanetPanel.tsx",
+    "src/host/PlanetMascotAvatar.css",
+    "src/host/PlanetMascotAvatar.tsx",
+    "src/host/PlanetMascotControls.css",
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/bookyAnimation.ts",
+    "src/host/bookyModel.test.ts",
+    "src/host/bookyModel.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascot.ts",
+    "src/host/planetMascotRoutes.ts",
+    "src/host/useBookyRenderer.ts",
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "newSourcePaths": [
+    "src/host/bookyAnimation.test.ts",
+    "src/host/bookyWalk.test.ts",
+    "src/host/bookyWalk.ts",
+    "src/host/useBookyWalk.ts"
+  ],
+  "newImplementationFiles": [
+    "src/host/bookyWalk.ts",
+    "src/host/useBookyWalk.ts"
+  ],
+  "currentSourceInputs": [
+    {
+      "path": "src/App.tsx",
+      "sha256": "2b9e53c28daa1c6190c033e14a83952ff839c5e5f0cf968d67fe437f0bd6e33f"
+    },
+    {
+      "path": "src/host/NativePlanetPanel.tsx",
+      "sha256": "68b9efb9510492567308889b7bfb6dcea6e6170fbba99ccb34e8c4722547db17"
+    },
+    {
+      "path": "src/host/PlanetMascotAvatar.css",
+      "sha256": "de93c23ad52a384efff38c1546b80021940d418c1a77fdbe0baa8430e664421a"
+    },
+    {
+      "path": "src/host/PlanetMascotAvatar.tsx",
+      "sha256": "21256fa46a1539b46773587147e082c941190c1a1ef85a1f21dab27b1c3b2350"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.css",
+      "sha256": "d29e2b471193de13f209760c3daed7eddd51d311e2fad1eb24e69df4a0e8e6b5"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "8ee9f16ad5d0074d32ee711aaba322adb0be75b425505066333f1593ffbf4319"
+    },
+    {
+      "path": "src/host/bookyAnimation.ts",
+      "sha256": "79e80555d5c3c99a5c7e83c7068481e202ac4682a4dab591b7244b0e6a09ee13"
+    },
+    {
+      "path": "src/host/bookyModel.test.ts",
+      "sha256": "08e730d6382d056dbca1f604a250a3e92c8dda12e317b1f1ae876e05bdb58554"
+    },
+    {
+      "path": "src/host/bookyModel.ts",
+      "sha256": "406b1326bc8ba69b45ab871fa813e79eafff4772e5456e33315a837146d403a4"
+    },
+    {
+      "path": "src/host/planetMascot.test.ts",
+      "sha256": "65a28b58fe40074b4b75c230599abe8bc449a9c57406a6b252e496a12f24abee"
+    },
+    {
+      "path": "src/host/planetMascot.ts",
+      "sha256": "6731faf6dde11c0c8039a1995568350e7c9ec807d433616e6a2b888c91b2d65d"
+    },
+    {
+      "path": "src/host/planetMascotRoutes.ts",
+      "sha256": "aba7ab93b75d72a7b6aaf921ecee8f7074fd51dc7a451f5016aebe9c57f7b529"
+    },
+    {
+      "path": "src/host/useBookyRenderer.ts",
+      "sha256": "5db90ed752b1fa14e40edf8c4cf1bea1f24097534e3bbb76f024c152ad7784fb"
+    },
+    {
+      "path": "tests/pwa/booky-live-character.spec.mjs",
+      "sha256": "221f7348823f4162de38ecb0b2dacbd9e081ae53b7e23e67ea023305775f6964"
+    },
+    {
+      "path": "src/host/bookyAnimation.test.ts",
+      "sha256": "b329d510a97d30730ec0020e71b28592e7186ec8ab28827d7d54a089e99f28a5"
+    },
+    {
+      "path": "src/host/bookyWalk.test.ts",
+      "sha256": "7250ac8f7a6b9ade9b48ade6fb9f61412808d5d26d5077672b009bbcb6decb79"
+    },
+    {
+      "path": "src/host/bookyWalk.ts",
+      "sha256": "ebf28448443ddf5c301cb334cc725cdb892a5c0e5af6003c5afa5b3f87f11491"
+    },
+    {
+      "path": "src/host/useBookyWalk.ts",
+      "sha256": "2857b4208d934e46f17b161473816af7166bb43a76d1794137833d363e31a555"
+    }
+  ],
+  "sourceInputCount": 1648,
+  "protectedInputCount": 1630,
+  "runtimeRequired": [
+    "src/App.tsx",
+    "src/host/NativePlanetPanel.tsx",
+    "src/host/PlanetMascotAvatar.css",
+    "src/host/PlanetMascotAvatar.tsx",
+    "src/host/PlanetMascotControls.css",
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/bookyAnimation.ts",
+    "src/host/bookyModel.ts",
+    "src/host/planetMascot.ts",
+    "src/host/planetMascotRoutes.ts",
+    "src/host/useBookyRenderer.ts",
+    "src/host/bookyWalk.ts",
+    "src/host/useBookyWalk.ts"
+  ],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "supplementalArchiveGitIdentity": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "checkpoint": "9f448936cea0b7859b2d3b9a3585afce4436862c",
+      "gitBlobSha256": "d0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef",
+      "checkedOutSha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79",
+      "lineEndingOnly": true
+    }
+  ],
+  "unitFiles": [
+    "src/host/bookyModel.test.ts",
+    "src/host/bookyAnimation.test.ts",
+    "src/host/bookyWalk.test.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascotPreference.test.ts",
+    "src/host/planetMascotPersistence.test.ts",
+    "src/host/bookySupport.test.ts",
+    "src/host/bookyTourProgress.test.ts"
+  ],
+  "browserFiles": [
+    "tests/pwa/booky-journey.spec.mjs",
+    "tests/pwa/booky-reader-policy.spec.mjs",
+    "tests/pwa/book-dossier-character-view.spec.mjs",
+    "tests/pwa/book-dossier-character-archive.spec.mjs",
+    "tests/pwa/book-dossier-navigation.spec.mjs",
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "expectedBrowserTests": 37,
+  "expectedImages": 35,
+  "priorRuntimeUnitContext": {
+    "sourceCommit": "d970b0dcc76f505b6d90e4fbe391a3e88bcf2eeb",
+    "unitCount": 64,
+    "result": {
+      "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/unit-a2/result.json",
+      "sha256": "33af3933bf8676d3e666558269af2e85fb6d5a2c4802e17a7eb177379adbfd04",
+      "tests": {
+        "passed": 64,
+        "failed": 0,
+        "skipped": 0
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/unit-a2/execution.json",
+        "sha256": "bd2fcbb64b222154a3d024699e51f3e50df781967ce8d8ae1bc7a111aea46c4d"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/unit-a2/vitest.json",
+        "sha256": "092778368450903b5d70c17e5773b7ada5848f70b1675c405d3e7483f8e2ee45"
+      },
+      "checkInputs": [
+        {
+          "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/check.mjs",
+          "sha256": "383ec767a95396db8d2e3a07af980b04621a3043dccdb886dca1cdb25e0c30e0"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/entry.json",
+          "sha256": "9574190560a69af52617179c51da95aefdc08ccffacd33bb7776e596083a694f"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/unit.config.mjs",
+          "sha256": "3a07ece96e776174c78a910aca321121175674293c00b40af3ce31c014089230"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/playwright.config.mjs",
+          "sha256": "4d71778c37a6b9e28236af79e4c05514b0b11dc448e0f7415fd14c7e1d6e8b08"
+        }
+      ]
+    }
+  },
+  "scope": "Actual Booky 3D model, thirteen finite explicit reactions, deliberate bounded margin walking, canonical local utility actions and finite approach to an explicitly selected section with a single pointing gesture without activating its controls; existing scene, policy, progress, dossier, preferences and source content retained.",
+  "runtimeWiringImplemented": true,
+  "characterJourneyNodeImplemented": false,
+  "childApproved": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

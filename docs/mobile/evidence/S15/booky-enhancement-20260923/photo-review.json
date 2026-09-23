@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "pass": true,
+  "scope": "Standalone actual source renders from frozen thirteen-gesture model/animation/renderer. Directly inspected all three final PNGs.",
+  "sourceBindings": [
+    {
+      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\src\\host\\bookyModel.ts",
+      "sha256": "406b1326bc8ba69b45ab871fa813e79eafff4772e5456e33315a837146d403a4",
+      "bytes": 32944
+    },
+    {
+      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\src\\host\\bookyAnimation.ts",
+      "sha256": "79e80555d5c3c99a5c7e83c7068481e202ac4682a4dab591b7244b0e6a09ee13",
+      "bytes": 12945
+    },
+    {
+      "path": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\src\\host\\useBookyRenderer.ts",
+      "sha256": "5db90ed752b1fa14e40edf8c4cf1bea1f24097534e3bbb76f024c152ad7784fb",
+      "bytes": 14268
+    }
+  ],
+  "provenance": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-enhancement\\portraits-v2\\render-portraits.mjs",
+      "sha256": "e9de562b3c29143131dc5f008d36a9a3932a101ea69814321f351aea1637858d",
+      "bytes": 10622
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-enhancement\\portraits-v2\\render-source.ts",
+      "sha256": "d0f7ce29e1e529138f3826e4e6386ab4247d4b8924103fab9d1ce3945390447b",
+      "bytes": 3335
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-enhancement\\portraits-v2\\render-bundle.js",
+      "sha256": "7cfb9ff9022ad390922e585484f5afd1f8a2d4f5a3ddc7b21fe9d51d8d6ce41c",
+      "bytes": 1221781
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-enhancement\\portraits-v2\\portrait.html",
+      "sha256": "10215876d420945c69dc610d413fffe053d267635de5b3a19c77885423988f93",
+      "bytes": 1258
+    }
+  ],
+  "renderReport": {
+    "sha256": "c16148f1c46180b6989061f65fa256f48eb4ca8f6baae54d93912a54a77cde22",
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-enhancement\\portraits-v2\\render-result.json"
+  },
+  "artAccepted": false,
+  "childApproved": false,
+  "releaseReady": false,
+  "images": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-enhancement\\portraits-v2\\knizhulik-3d-full.png",
+      "sha256": "ab640988272894ed0567013a9255e4e7d8baf4fa4e31775e919b7664c33912be",
+      "bytes": 796030,
+      "width": 1200,
+      "height": 1400,
+      "inspected": true,
+      "reviewer": "Codex /root/reader_policy_ui",
+      "actualSourceRender": true,
+      "findings": [
+        "Complete current real model visible with clear margins: bookmark, magnifier, both hands and both shoes remain in frame.",
+        "Right fingers visibly surround the handle; magnifier stays outside the face.",
+        "No text overlay or retouching; neutral presentation background."
+      ]
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-enhancement\\portraits-v2\\knizhulik-3d-grip.png",
+      "sha256": "8be1e144768076dced7ca3e5fb1e66963076167252a556a344a83eaa70e7d786",
+      "bytes": 242210,
+      "width": 1200,
+      "height": 1200,
+      "inspected": true,
+      "reviewer": "Codex /root/reader_policy_ui",
+      "actualSourceRender": true,
+      "findings": [
+        "Selected right-hand geometry clearly shows fingers in front of the shaft, opposed thumb and handle emerging above and below the grip.",
+        "Intentional close-up crops the continuation of sleeve and upper shaft; the hand and lower handle cap remain visible.",
+        "Native mesh facets and join lines remain visible at this magnification; no smoothing filter or retouching applied."
+      ]
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-enhancement\\portraits-v2\\knizhulik-3d-gestures.png",
+      "sha256": "dcc1a9c931fcdaa1843790f9b70d2fa48a583a0d2d62523b6fa5b4aba10a826a",
+      "bytes": 1043073,
+      "width": 1600,
+      "height": 2080,
+      "inspected": true,
+      "reviewer": "Codex /root/reader_policy_ui",
+      "actualSourceRender": true,
+      "findings": [
+        "All thirteen exact current authored gesture samples are fully framed and their RU/EN labels are readable.",
+        "Twirl deliberately shows the side/rear of the actual book geometry mid-turn; wink deliberately closes one eye.",
+        "Names are exactly Книжулик and Mr. Booky. No pose generated or retouched. No app/device or art acceptance claimed."
+      ]
+    }
+  ],
+  "previousArtifactsUnmodified": true,
+  "sourceCommit": "10beb1315ea29184fced208ee26049db093e4823",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-enhancement-20260923/source-manifests/9f5618139b424415.json",
+    "sha256": "9f5618139b42441598cc423e2db07bd92bf4b465cb229e5f024b78003a9d356c",
+    "fileCount": 1648
+  },
+  "originalInspection": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-enhancement\\portraits-v2\\visual-review.json",
+    "sha256": "cce64a8881563b63b190f7cece66b5b972fb5853d6f71fe8038b5e9f65ef8505"
+  },
+  "boundInspectionPart": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/photo-review-bound-a2.json",
+    "sha256": "0e07a4be0224494863ce4a6637459675d6875920f78b4746eb86d3537522294c"
+  }
+}

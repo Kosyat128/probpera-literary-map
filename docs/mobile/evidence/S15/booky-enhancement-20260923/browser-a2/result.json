@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "mode": "browser",
+  "attempt": "a2",
+  "pass": true,
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-enhancement-20260923/source-manifests/9f5618139b424415.json",
+    "sha256": "9f5618139b42441598cc423e2db07bd92bf4b465cb229e5f024b78003a9d356c",
+    "fileCount": 1648
+  },
+  "checkInputs": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-enhancement-20260923/check.mjs",
+      "sha256": "ecb331194ddb302ec33a47d8fc70860f0c647ec5cdd154576a7089a296f46780"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-enhancement-20260923/entry.json",
+      "sha256": "224d1330805701253643459fe3f0ffb0b6767101aeea2a85d1958a7202a14059"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-enhancement-20260923/unit.config.mjs",
+      "sha256": "d318b65a836ba8ea5bfd647899647c053d10c396639c18caa371d0a478b1a08f"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-enhancement-20260923/playwright.config.mjs",
+      "sha256": "4d71778c37a6b9e28236af79e4c05514b0b11dc448e0f7415fd14c7e1d6e8b08"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-enhancement-20260923/configure.mjs",
+      "sha256": "930394c88dfe0deebd5cdc4d0db9fc5d04af035be1a17b9c696505e58d05f9a4"
+    }
+  ],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "tests": {
+    "passed": 37,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0
+  },
+  "reportError": null,
+  "execution": {
+    "exitCode": 0,
+    "durationMs": 446515
+  },
+  "runtimeUnchanged": false,
+  "runtimeWiringImplemented": true,
+  "bookyEnhancementImplemented": true,
+  "journeyCharacterWiringImplemented": false,
+  "stageAccepted": false,
+  "ageAdaptiveJourneysAccepted": false,
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "releaseReady": false
+}

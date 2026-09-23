@@ -3,9 +3,9 @@
   "repository": "Kosyat128/probpera-literary-map",
   "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
-  "headSha": "ba23d538b895212d281888bdb7a91c7db7c9f4cb",
+  "headSha": "10beb1315ea29184fced208ee26049db093e4823",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-09-23T06:42:37.280Z",
+  "updatedAt": "2026-09-23T13:43:32.148Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -2593,22 +2593,24 @@
           "status": "IN_PROGRESS",
           "evidence": [
             "docs/mobile/evidence/S15/planetka-visual-mode-20260920/result.json",
-            "docs/mobile/evidence/S15/booky-live-character-20260920/result.json"
+            "docs/mobile/evidence/S15/booky-live-character-20260920/result.json",
+            "docs/mobile/evidence/S15/booky-enhancement-20260923/result.json"
           ],
-          "commit": "9b2ec5885740680f6cdb0ca84c82d7070c0b2535",
-          "lastValidatedAt": "2026-09-20T06:00:42.614Z",
-          "notes": "Original mascot separate from globe surface. Implement the original guide and shared policy before complete English dialogue/audio validation. Following the owner's explicit revised contract, Книжулик / Mr. Booky is an independent DOM companion using an original green 3D-rendered PNG, not facial/limb objects attached to the globe. Show/hide, contextual navigation help, next/back/collapse and real country/writer/collection actions leave the canonical renderer, atlas and camera ownership intact. 7 cases in the two selected controller/author-request suites, TypeScript and one actual-App Chrome case cover locale/320px/landscape layout, actual highlighted controls, writer selection and collection keyboard behavior. Forty-three established inputs including all globe/rig/geometry owners remain byte-exact; the PNG is bound into local PWA/Android artifacts. This is scoped IN_PROGRESS evidence only; reviewed dialogue, literary journeys, art, child, rights, device and release gates remain open. The owner's interactive-character refinement adds a live independent articulated green book, owned decorative renderer and short direct reactions. After the initial model was explicitly rejected, covers/pages/spine, eyes, ribbon and shoes were revised; final geometry has 45792 triangles within the 50000 budget. 3 focused model/pose/resource cases, TypeScript, one actual-App Chrome case and 4 inspected product/drawing-buffer views bind the source, drag/tap/keyboard behavior, reduced motion, resource cleanup and real context recovery/fallback. Supplementary a4 720/160px isolated Avatar captures are separate from full-App evidence. App/controller/routes and 50 protected inputs remain exact; local PWA/Android artifacts include the runtime and previous PNG fallback. S15 remains IN_PROGRESS; this does not approve child mode, literary dialogue/journeys, art, devices or release."
+          "commit": "10beb1315ea29184fced208ee26049db093e4823",
+          "lastValidatedAt": "2026-09-23T13:43:32.148Z",
+          "notes": "Original mascot separate from globe surface. Implement the original guide and shared policy before complete English dialogue/audio validation. Following the owner's explicit revised contract, Книжулик / Mr. Booky is an independent DOM companion using an original green 3D-rendered PNG, not facial/limb objects attached to the globe. Show/hide, contextual navigation help, next/back/collapse and real country/writer/collection actions leave the canonical renderer, atlas and camera ownership intact. 7 cases in the two selected controller/author-request suites, TypeScript and one actual-App Chrome case cover locale/320px/landscape layout, actual highlighted controls, writer selection and collection keyboard behavior. Forty-three established inputs including all globe/rig/geometry owners remain byte-exact; the PNG is bound into local PWA/Android artifacts. This is scoped IN_PROGRESS evidence only; reviewed dialogue, literary journeys, art, child, rights, device and release gates remain open. The owner's interactive-character refinement adds a live independent articulated green book, owned decorative renderer and short direct reactions. After the initial model was explicitly rejected, covers/pages/spine, eyes, ribbon and shoes were revised; final geometry has 45792 triangles within the 50000 budget. 3 focused model/pose/resource cases, TypeScript, one actual-App Chrome case and 4 inspected product/drawing-buffer views bind the source, drag/tap/keyboard behavior, reduced motion, resource cleanup and real context recovery/fallback. Supplementary a4 720/160px isolated Avatar captures are separate from full-App evidence. App/controller/routes and 50 protected inputs remain exact; local PWA/Android artifacts include the runtime and previous PNG fallback. S15 remains IN_PROGRESS; this does not approve child mode, literary dialogue/journeys, art, devices or release. Scoped technical evidence for the separate live mascot model and explicit interaction only; original-design, branding and rights approval remain open. Followed the user-directed product names Книжулик / Mr. Booky without treating that direction as legal or art approval. Refined the live Книжулик / Mr. Booky model, facial expressions, magnifier grip and articulated legs/shoes. Added thirteen finite explicit gestures, an interruptible optional margin walk and canonical local utility actions with guarded focus. A finite approach points once into the explicitly selected section without activating its controls. Reduced motion remains still, hidden owners stop work, and first-frame/recovery uses the existing fallback. Fresh 132 unit tests from 8 files, TypeScript and 37 browser cases passed; 35 browser captures were inspected. PWA e269ae0e / Android-dev 2c2cccd3 bind the source; 1630 protected inputs stay exact. All statuses and approval gates remain unchanged."
         },
         {
           "id": "S15.PLANETKA-002",
           "status": "IN_PROGRESS",
           "evidence": [
             "docs/mobile/evidence/S15/planetka-visual-mode-20260920/result.json",
-            "docs/mobile/evidence/S15/booky-live-character-20260920/result.json"
+            "docs/mobile/evidence/S15/booky-live-character-20260920/result.json",
+            "docs/mobile/evidence/S15/booky-enhancement-20260923/result.json"
           ],
-          "commit": "9b2ec5885740680f6cdb0ca84c82d7070c0b2535",
-          "lastValidatedAt": "2026-09-20T06:00:42.614Z",
-          "notes": "Mouth below eyes; hands/legs fully visible. Implement the original guide and shared policy before complete English dialogue/audio validation. Following the owner's explicit revised contract, Книжулик / Mr. Booky is an independent DOM companion using an original green 3D-rendered PNG, not facial/limb objects attached to the globe. Show/hide, contextual navigation help, next/back/collapse and real country/writer/collection actions leave the canonical renderer, atlas and camera ownership intact. 7 cases in the two selected controller/author-request suites, TypeScript and one actual-App Chrome case cover locale/320px/landscape layout, actual highlighted controls, writer selection and collection keyboard behavior. Forty-three established inputs including all globe/rig/geometry owners remain byte-exact; the PNG is bound into local PWA/Android artifacts. This is scoped IN_PROGRESS evidence only; reviewed dialogue, literary journeys, art, child, rights, device and release gates remain open. The owner's interactive-character refinement adds a live independent articulated green book, owned decorative renderer and short direct reactions. After the initial model was explicitly rejected, covers/pages/spine, eyes, ribbon and shoes were revised; final geometry has 45792 triangles within the 50000 budget. 3 focused model/pose/resource cases, TypeScript, one actual-App Chrome case and 4 inspected product/drawing-buffer views bind the source, drag/tap/keyboard behavior, reduced motion, resource cleanup and real context recovery/fallback. Supplementary a4 720/160px isolated Avatar captures are separate from full-App evidence. App/controller/routes and 50 protected inputs remain exact; local PWA/Android artifacts include the runtime and previous PNG fallback. S15 remains IN_PROGRESS; this does not approve child mode, literary dialogue/journeys, art, devices or release."
+          "commit": "10beb1315ea29184fced208ee26049db093e4823",
+          "lastValidatedAt": "2026-09-23T13:43:32.148Z",
+          "notes": "Mouth below eyes; hands/legs fully visible. Implement the original guide and shared policy before complete English dialogue/audio validation. Following the owner's explicit revised contract, Книжулик / Mr. Booky is an independent DOM companion using an original green 3D-rendered PNG, not facial/limb objects attached to the globe. Show/hide, contextual navigation help, next/back/collapse and real country/writer/collection actions leave the canonical renderer, atlas and camera ownership intact. 7 cases in the two selected controller/author-request suites, TypeScript and one actual-App Chrome case cover locale/320px/landscape layout, actual highlighted controls, writer selection and collection keyboard behavior. Forty-three established inputs including all globe/rig/geometry owners remain byte-exact; the PNG is bound into local PWA/Android artifacts. This is scoped IN_PROGRESS evidence only; reviewed dialogue, literary journeys, art, child, rights, device and release gates remain open. The owner's interactive-character refinement adds a live independent articulated green book, owned decorative renderer and short direct reactions. After the initial model was explicitly rejected, covers/pages/spine, eyes, ribbon and shoes were revised; final geometry has 45792 triangles within the 50000 budget. 3 focused model/pose/resource cases, TypeScript, one actual-App Chrome case and 4 inspected product/drawing-buffer views bind the source, drag/tap/keyboard behavior, reduced motion, resource cleanup and real context recovery/fallback. Supplementary a4 720/160px isolated Avatar captures are separate from full-App evidence. App/controller/routes and 50 protected inputs remain exact; local PWA/Android artifacts include the runtime and previous PNG fallback. S15 remains IN_PROGRESS; this does not approve child mode, literary dialogue/journeys, art, devices or release. Scoped model geometry and visibility evidence for the face, hands gripping the magnifier and articulated whole shoes/legs. This is not artistic or anatomy acceptance across all devices. Followed the user-directed product names Книжулик / Mr. Booky without treating that direction as legal or art approval. Refined the live Книжулик / Mr. Booky model, facial expressions, magnifier grip and articulated legs/shoes. Added thirteen finite explicit gestures, an interruptible optional margin walk and canonical local utility actions with guarded focus. A finite approach points once into the explicitly selected section without activating its controls. Reduced motion remains still, hidden owners stop work, and first-frame/recovery uses the existing fallback. Fresh 132 unit tests from 8 files, TypeScript and 37 browser cases passed; 35 browser captures were inspected. PWA e269ae0e / Android-dev 2c2cccd3 bind the source; 1630 protected inputs stay exact. All statuses and approval gates remain unchanged."
         },
         {
           "id": "S15.PLANETKA-003",
@@ -2647,19 +2649,22 @@
           "evidence": [
             "docs/mobile/evidence/S15/booky-offline-help-20260920/result.json",
             "docs/mobile/evidence/S15/booky-catalog-readiness-20260920/result.json",
-            "docs/mobile/evidence/S15/booky-catalog-scene-20260923/result.json"
+            "docs/mobile/evidence/S15/booky-catalog-scene-20260923/result.json",
+            "docs/mobile/evidence/S15/booky-enhancement-20260923/result.json"
           ],
-          "commit": "259e93cc7a58a6b10d49a0025bf502be54239b79",
-          "lastValidatedAt": "2026-09-22T22:00:27.288Z",
-          "notes": "Offline/error helper. Implement the original guide and shared policy before complete English dialogue/audio validation. Adult Booky now gives RU/EN offline, unknown, loading and recoverable-error guidance from actual host state, with explicit context-fenced recovery. Failed primary split-module entries use bounded build-known alternate facades while canonical dependencies stay shared. 114 focused cases, TypeScript, 5 actual-App Chrome cases and 5 inspected views bind this source; local PWA/Android preserve the runtime. Original browser-a1 import failure and browser-a2 language-control overlap remain evidence; final narrow-view captures prove both locale controls are uncovered. This starts the adult offline/error foundation only; child, dialogue, literary journeys, accessibility/device and release gates remain open. Retained selection now requires a currently ready country catalog before selection-dependent actions or semantic acknowledgement; loading/error/unknown states suspend those operations, and ready offline content remains usable. 265 focused tests, TypeScript, 2 actual-App Chrome cases and 2 inspected views bind fresh preserved PWA/Android-dev builds. This remains scoped adult behavior, with no stage, child, reviewed-content or release acceptance. The application retains its existing canonical globe across catalog loading/failure/recovery while current readiness still gates Booky actions and progress. First failure retains the original fallback. TypeScript, 3 actual-App Chrome cases and 4 inspected views bind fresh preserved PWA/Android-dev builds; 265 prior controller tests are retained without rerun. No stage, child, reviewed-content or release acceptance is claimed."
+          "commit": "10beb1315ea29184fced208ee26049db093e4823",
+          "lastValidatedAt": "2026-09-23T13:43:32.148Z",
+          "notes": "Offline/error helper. Implement the original guide and shared policy before complete English dialogue/audio validation. Adult Booky now gives RU/EN offline, unknown, loading and recoverable-error guidance from actual host state, with explicit context-fenced recovery. Failed primary split-module entries use bounded build-known alternate facades while canonical dependencies stay shared. 114 focused cases, TypeScript, 5 actual-App Chrome cases and 5 inspected views bind this source; local PWA/Android preserve the runtime. Original browser-a1 import failure and browser-a2 language-control overlap remain evidence; final narrow-view captures prove both locale controls are uncovered. This starts the adult offline/error foundation only; child, dialogue, literary journeys, accessibility/device and release gates remain open. Retained selection now requires a currently ready country catalog before selection-dependent actions or semantic acknowledgement; loading/error/unknown states suspend those operations, and ready offline content remains usable. 265 focused tests, TypeScript, 2 actual-App Chrome cases and 2 inspected views bind fresh preserved PWA/Android-dev builds. This remains scoped adult behavior, with no stage, child, reviewed-content or release acceptance. The application retains its existing canonical globe across catalog loading/failure/recovery while current readiness still gates Booky actions and progress. First failure retains the original fallback. TypeScript, 3 actual-App Chrome cases and 4 inspected views bind fresh preserved PWA/Android-dev builds; 265 prior controller tests are retained without rerun. No stage, child, reviewed-content or release acceptance is claimed. Explicit access to existing Recent History, Downloads and Graphics sections plus canonical random-country navigation. Explicit utility navigation collapses tips so the destination controls are usable. The finite approach points inside the selected Graphics area without activating a control. Opening those sections does not mutate graphics/downloads or journey progress; newer user focus cancels obsolete focus intent. Followed the user-directed product names Книжулик / Mr. Booky without treating that direction as legal or art approval. Refined the live Книжулик / Mr. Booky model, facial expressions, magnifier grip and articulated legs/shoes. Added thirteen finite explicit gestures, an interruptible optional margin walk and canonical local utility actions with guarded focus. A finite approach points once into the explicitly selected section without activating its controls. Reduced motion remains still, hidden owners stop work, and first-frame/recovery uses the existing fallback. Fresh 132 unit tests from 8 files, TypeScript and 37 browser cases passed; 35 browser captures were inspected. PWA e269ae0e / Android-dev 2c2cccd3 bind the source; 1630 protected inputs stay exact. All statuses and approval gates remain unchanged."
         },
         {
           "id": "S15.PLANETKA-006",
           "status": "OPEN",
-          "evidence": [],
-          "commit": null,
-          "lastValidatedAt": null,
-          "notes": "Reduced motion/captions/narration rights. Implement the original guide and shared policy before complete English dialogue/audio validation."
+          "evidence": [
+            "docs/mobile/evidence/S15/booky-enhancement-20260923/result.json"
+          ],
+          "commit": "10beb1315ea29184fced208ee26049db093e4823",
+          "lastValidatedAt": "2026-09-23T13:43:32.148Z",
+          "notes": "Reduced motion/captions/narration rights. Implement the original guide and shared policy before complete English dialogue/audio validation. Thirteen finite explicit gestures and bounded optional walking respect reduced motion, visibility and cancellation. A deliberate section approach points once without activating the target control. Silent static reduced-motion poses and local keyboard evidence do not establish narration rights, captions, screen-reader or full accessibility acceptance. Followed the user-directed product names Книжулик / Mr. Booky without treating that direction as legal or art approval. Refined the live Книжулик / Mr. Booky model, facial expressions, magnifier grip and articulated legs/shoes. Added thirteen finite explicit gestures, an interruptible optional margin walk and canonical local utility actions with guarded focus. A finite approach points once into the explicitly selected section without activating its controls. Reduced motion remains still, hidden owners stop work, and first-frame/recovery uses the existing fallback. Fresh 132 unit tests from 8 files, TypeScript and 37 browser cases passed; 35 browser captures were inspected. PWA e269ae0e / Android-dev 2c2cccd3 bind the source; 1630 protected inputs stay exact. All statuses and approval gates remain unchanged."
         },
         {
           "id": "S15.PLANETKA-007",
@@ -2833,7 +2838,10 @@
         "node docs/mobile/evidence/S15/dossier-character-view-20260923/check.mjs static a2",
         "node docs/mobile/evidence/S15/dossier-character-view-20260923/check.mjs browser a2",
         "node docs/mobile/evidence/S15/journey-character-contract-20260923/check.mjs unit a1",
-        "node docs/mobile/evidence/S15/journey-character-contract-20260923/check.mjs static a1"
+        "node docs/mobile/evidence/S15/journey-character-contract-20260923/check.mjs static a1",
+        "node docs/mobile/evidence/S15/booky-enhancement-20260923/check.mjs unit a3",
+        "node docs/mobile/evidence/S15/booky-enhancement-20260923/check.mjs static a2",
+        "node docs/mobile/evidence/S15/booky-enhancement-20260923/check.mjs browser a2"
       ],
       "artifacts": [
         "docs/mobile/evidence/S15/planetka-visual-mode-20260920/entry.json",
@@ -3070,7 +3078,17 @@
         "docs/mobile/evidence/S15/journey-character-contract-20260923/entry.json",
         "docs/mobile/evidence/S15/journey-character-contract-20260923/source-manifests/db8862335e2c0b7b.json",
         "docs/mobile/evidence/S15/journey-character-contract-20260923/unit-a1/result.json",
-        "docs/mobile/evidence/S15/journey-character-contract-20260923/static-a1/result.json"
+        "docs/mobile/evidence/S15/journey-character-contract-20260923/static-a1/result.json",
+        "docs/mobile/evidence/S15/booky-enhancement-20260923/result.json",
+        "docs/mobile/evidence/S15/booky-enhancement-20260923/README.md",
+        "docs/mobile/evidence/S15/booky-enhancement-20260923/entry.json",
+        "docs/mobile/evidence/S15/booky-enhancement-20260923/source-manifests/9f5618139b424415.json",
+        "docs/mobile/evidence/S15/booky-enhancement-20260923/visual-review.json",
+        "docs/mobile/evidence/S15/booky-enhancement-20260923/unit-a3/result.json",
+        "docs/mobile/evidence/S15/booky-enhancement-20260923/static-a2/result.json",
+        "docs/mobile/evidence/S15/booky-enhancement-20260923/browser-a2/result.json",
+        "docs/mobile/evidence/S15/booky-enhancement-20260923/pwa-a1/result.json",
+        "docs/mobile/evidence/S15/booky-enhancement-20260923/android-a1/result.json"
       ],
       "externalBlockers": []
     },
@@ -11431,7 +11449,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "User steering 2026-09-23: improve the actual 3D mascot, its useful interactive functions and varied finite animations, then deliver photographs/screenshots of the finished actual model. Exact display names: RU Книжулик; EN Mr. Booky. This takes priority over further dossier-character journey-node integration. Keep the existing real Three model and viewport; preserve the canonical globe, no extra renderer, silent finite event reactions, reduced-motion and lifecycle recovery. Four new explicit useful actions and five playful gestures are being prepared outside the repo in Droot/s15-booky-enhancement/staging by disjoint source owners; review and integrate them after this checkpoint. Capture the actual rendered model for the user, not an imagined illustration.",
+    "nextAction": "Continue the user-prioritized Книжулик / Mr. Booky visual and interaction work from this verified source. Review any remaining concrete model, expression, placement or interruption defects in actual views before adding new behavior; preserve finite explicit gestures, reduced-motion stillness, truthful fallback and the single canonical globe owner. Do not automatically return to character-route integration, add endless idle animation, enable remote content, or infer branding/art/rights/device approval. Existing child, reviewed content, narration, full accessibility, installed-device, iOS and stage/release gates remain open; S03.acceptance stays first unresolved.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -11548,7 +11566,8 @@
       "docs/mobile/evidence/S15/journey-fact-20260923/android-a1/result.json",
       "docs/mobile/evidence/S15/dossier-character-20260923/result.json",
       "docs/mobile/evidence/S15/dossier-character-view-20260923/result.json",
-      "docs/mobile/evidence/S15/journey-character-contract-20260923/result.json"
+      "docs/mobile/evidence/S15/journey-character-contract-20260923/result.json",
+      "docs/mobile/evidence/S15/booky-enhancement-20260923/result.json"
     ],
     "commands": [
       "node scripts/mobile/verify-requirements.mjs",
@@ -11615,7 +11634,8 @@
       "S15 sourced facts require admitted canonical anchors, factual editorial dialogue and independent review. Preserve both-locale fingerprints at all runtime and history boundaries, explicit Next, read-only citation disclosure, no fact passport navigation credit, old byte formats and all prior journey behavior. Audit remaining place/character-world source contracts before selecting a bounded next implementation; production inventories and 34 dialogue drafts remain unapproved.",
       "S15 dossier character admission validated without App wiring: exact published character, canonical work, source/version/locale/lease and fresh host revision. Prior browser/visual/PWA/Android evidence retained unchanged; no rebuilt adapter or full stage acceptance.",
       "S15 exact published character Reader/Map observation and optional archive bridge validated; ephemeral tokens and deliberate lifecycle revocation, no character journey acknowledgement or remote enablement. Existing App/reading regressions and fresh local artifacts checked; no stage acceptance.",
-      "S15 static bilingual character contract and leased composer validated without production imports or journey/modal wiring; parser export only in prior adapter. Original browser/visual/artifact evidence retained; no remote or editorial approval."
+      "S15 static bilingual character contract and leased composer validated without production imports or journey/modal wiring; parser export only in prior adapter. Original browser/visual/artifact evidence retained; no remote or editorial approval.",
+      "S15 user-prioritized Booky model, thirteen finite gestures, interruptible optional margin walk and canonical utility actions validated against actual App/rig. No art/branding/rights/device or stage acceptance; preserve earlier character contract as unintegrated history."
     ]
   },
   "requirementsHash": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732",
@@ -13772,6 +13792,22 @@
       "sha256": "7d54d245bc3fa2447b539b6d9aa32ca8a1ddde8b4140a48a9ed043ca333509a0",
       "sourceCommit": "ba23d538b895212d281888bdb7a91c7db7c9f4cb",
       "status": "BOOKY_JOURNEY_CHARACTER_CONTRACT_VALIDATED",
+      "stageAccepted": false,
+      "releaseReady": false
+    },
+    "s15BookyEnhancement": {
+      "path": "docs/mobile/evidence/S15/booky-enhancement-20260923/result.json",
+      "sha256": "76c73a7efac86c90eadf58b080fea8ec4f4f80b4c38400b6b64ae6c30c1c219f",
+      "sourceCommit": "10beb1315ea29184fced208ee26049db093e4823",
+      "status": "BOOKY_ENHANCEMENT_SCOPED_VALIDATION",
+      "pwa": {
+        "path": "docs/mobile/evidence/S15/booky-enhancement-20260923/pwa-a1/result.json",
+        "sha256": "654d86f0cbfd414dc3b44aebec87d6bef29c229d63390642c610d74abba22c46"
+      },
+      "android": {
+        "path": "docs/mobile/evidence/S15/booky-enhancement-20260923/android-a1/result.json",
+        "sha256": "099fb902be97c6368c0ae4075fb1ace0013f164408bfd8ea08528ef2826ef67f"
+      },
       "stageAccepted": false,
       "releaseReady": false
     }

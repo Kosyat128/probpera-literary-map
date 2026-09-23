@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "scope": "Evidence helper only; source code and successful test/build reports unchanged.",
+  "before": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/checkpoint-staging/checkpoint-before-retained-runtime-fix.mjs",
+    "sha256": "6679cab25172e51837ce8e45d0df9d024e78802510e82407aff68e2f176bb0c7"
+  },
+  "after": {
+    "path": "docs/mobile/evidence/S15/booky-enhancement-20260923/checkpoint.mjs",
+    "sha256": "e954958ab5a67028d6bafd9884f7ee13480a0032bed10ceccada27b426c18f22"
+  },
+  "originalFailure": "Retained d970 runtime build was compared against the later ba23 source snapshot; bookyDossierCharacter.ts intentionally differs by the unimported parser export.",
+  "repair": "Retained builds are authenticated against runtimePrior.sourceManifest at d970; current builds retain current-source and payload verification.",
+  "originalAttemptWroteCheckpoint": false,
+  "repairedCheckpointPass": true
+}

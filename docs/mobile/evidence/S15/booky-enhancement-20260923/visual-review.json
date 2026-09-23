@@ -1,0 +1,446 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-23T13:42:14.465Z",
+  "pass": true,
+  "sourceCommit": "10beb1315ea29184fced208ee26049db093e4823",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-enhancement-20260923/source-manifests/9f5618139b424415.json",
+    "sha256": "9f5618139b42441598cc423e2db07bd92bf4b465cb229e5f024b78003a9d356c",
+    "fileCount": 1648
+  },
+  "images": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-enhancement\\browser-a2\\booky-live-character-live--d3a75-nical-globe-stays-unchanged\\booky-live-actual-drawing-buffer.png",
+      "sha256": "cab8fddfc3b4362824f3d42d1db2b3b275abbdaccc6b26a1fb6d00fe9a65543c",
+      "inspected": true,
+      "reviewer": "Codex /root/reader_policy_ui",
+      "check": "direct",
+      "findings": [
+        "Actual transparent drawing buffer shows the complete native model, both hands, both feet and magnifier without clipping.",
+        "Right glove visibly encloses the handle; face and lens remain separate."
+      ]
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-enhancement\\browser-a2\\booky-live-character-live--d3a75-nical-globe-stays-unchanged\\booky-live-guide-en-320.png",
+      "sha256": "e754163ef3530c8a1b3cd0ce71ef2e0ac66b1bfc6facf83b1342d14833e015e5",
+      "inspected": true,
+      "reviewer": "Codex /root/reader_policy_ui",
+      "check": "direct",
+      "findings": [
+        "English guide fits the narrow viewport with readable heading, step copy, primary action and navigation; canonical scene remains visible behind.",
+        "Small live model retains the green-book silhouette and magnifier; no model clipping.",
+        "The lower companion toolbar overlays part of the underlying country card; this inspection does not claim all underlying country controls are unobstructed."
+      ]
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-enhancement\\browser-a2\\booky-live-character-live--d3a75-nical-globe-stays-unchanged\\booky-live-help-ru-1440.png",
+      "sha256": "3b7df53c211a52071e8823bf43f8ac28745e93b420f4e50b1b94aa5c9e8b926a",
+      "inspected": true,
+      "reviewer": "Codex /root/reader_policy_ui",
+      "check": "direct",
+      "findings": [
+        "Russian name Книжулик and help copy are clear on the scrollable book panel, with canonical globe and country view retained behind.",
+        "Complete live character, magnifier and local move/hide controls remain visible beside the panel."
+      ]
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-enhancement\\browser-a2\\booky-live-character-live--d3a75-nical-globe-stays-unchanged\\booky-live-interaction-en-landscape.png",
+      "sha256": "ed230f202f94a60f68ce9bee10248f1acb8df8ae66735ec276c8a5d7e9ef139e",
+      "inspected": true,
+      "reviewer": "Codex /root/reader_policy_ui",
+      "check": "direct",
+      "findings": [
+        "Landscape guide uses its bounded scroll area below the host toolbar; visible heading and copy remain readable.",
+        "Small live character and its own controls remain visible to the right; the lower toolbar overlays part of the country card, so no full unobstructed-underlay claim."
+      ]
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-enhancement\\browser-a2\\booky-live-character-Mr-Bo-0a43b-g-hiding-and-reduced-motion\\booky-margin-walk-ru-1440.png",
+      "sha256": "3511104b66003c8e65467a9850c6a60aeadc1486f835e116f19ec95ce4de2716",
+      "inspected": true,
+      "reviewer": "Codex /root/reader_policy_ui",
+      "check": "direct",
+      "findings": [
+        "Live full model is visible at the lower screen margin with connected complete sneakers and readable Остановить control.",
+        "Glove retains the magnifier in the sampled walking pose; no body or lens clipping visible.",
+        "A still image shows the sampled pose only; motion duration and interruption are established by the separate browser report."
+      ]
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-enhancement\\browser-a2\\booky-live-character-Mr-Bo-58b82-ellation-and-reduced-motion\\booky-target-approach-ru-1440.png",
+      "sha256": "c6d1bff4fb897a9ca0cfbcd4c04f1d1828befd8d755a1a3be33e0b3befcd963c",
+      "inspected": true,
+      "reviewer": "Codex /root/reader_policy_ui",
+      "check": "direct",
+      "findings": [
+        "Graphics destination is open, with its title and three quality choices readable; a ring identifies an area within the graphics fieldset.",
+        "The model is visibly below the target during the approaching phase, with the Stop control visible and complete body in frame.",
+        "This image is not the final tapping pose and cannot itself establish hand-to-target contact accuracy; the separate browser trace covers arrival and tapping."
+      ]
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-enhancement\\browser-a2\\booky-live-character-Mr-Bo-a0973-serves-newer-keyboard-focus\\booky-useful-actions-ru-320.png",
+      "sha256": "19995d4fc131ba0f725cd4fbf3c6b4a71ac987ecb0723bfada6e75aa8cad614e",
+      "inspected": true,
+      "reviewer": "Codex /root/reader_policy_ui",
+      "check": "direct",
+      "findings": [
+        "All four explicit Russian utility controls and their section explanation are readable in the narrow scrollable book panel.",
+        "The live small character is fully visible below; top host toolbar remains clear of the book panel.",
+        "Lower companion controls overlap part of the underlying country card; no assertion of every underlying control being unobstructed."
+      ]
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-enhancement\\browser-a2\\booky-live-character-Mr-Bo-b0fb7-n-still-with-reduced-motion\\booky-explicit-gestures-en-1440.png",
+      "sha256": "203017c75328a3b0d9bd694263e3500eb5e1b470daf05538ab0daf37c21f1c19",
+      "inspected": true,
+      "reviewer": "Codex /root/reader_policy_ui",
+      "check": "direct",
+      "findings": [
+        "All thirteen named gesture controls and Surprise me are visible with readable English labels; selected Dance and focused Surprise me have distinct visual states.",
+        "Feedback remains readable and the full live character with its magnifier is visible alongside the panel."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/browser-a2/booky-journey-sourced-fact-48ec2-it-semantic-acknowledgement/journey-fact-sources-ru-320.png",
+      "sha256": "d572a7a884f2620cec608617446ac35dce14f40634ff8279a66fd07dd70becf7",
+      "inspected": true,
+      "reviewer": "/root",
+      "findings": [
+        "The expanded Russian Sources row, dated fixture citation and explicit step buttons are readable in the 320px capture.",
+        "The entire small character is visible. Its lower toolbar overlaps underlying collection controls; this capture does not establish unobstructed underlying controls."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/browser-a2/booky-reader-policy-explic-219f8-on-never-grant-stale-policy/reader-profile-draft-narrow-en.png",
+      "sha256": "e5739402a76e2ac46599369eb66a2f2351d6df9e99d47985790f233a6df629ab",
+      "inspected": true,
+      "reviewer": "/root",
+      "findings": [
+        "The English draft age and reading-level fields, Save/Delete actions and unsaved status are readable in the narrow panel.",
+        "The entire character is visible below the panel. Its toolbar overlaps the underlying country Open action; no unobstructed-underlay claim."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/browser-a2/booky-reader-policy-explic-219f8-on-never-grant-stale-policy/reader-profile-saved-ru.png",
+      "sha256": "b7602973c66f5ae94a1f79731ed8ee5d864ef3a05e1928d9242e746cb7404b9f",
+      "inspected": true,
+      "reviewer": "/root",
+      "findings": [
+        "The Russian saved-profile values and saved-on-device status are readable, with the Save button visibly disabled.",
+        "The model, magnifier and shoes are complete beside the active profile panel; the existing globe remains visible."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/browser-a2/booky-reader-policy-future-298cd-on-cannot-restore-admission/reader-profile-delete-failed-en.png",
+      "sha256": "decf3637347ce004eeb93f4f55d7fbc3da456bb42caf2c2f2a653d71b2859165",
+      "inspected": true,
+      "reviewer": "/root",
+      "findings": [
+        "The English profile deletion failure and retry button are readable in the active panel.",
+        "The model and magnifier remain whole beside the panel; a screenshot is not evidence of completed deletion."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/browser-a2/book-dossier-character-vie-af365-hout-navigation-or-progress/dossier-character-view-en.png",
+      "sha256": "0af0f041ab8628b216284ce33a8381d9b38d13aa723a546dada266f374df060d",
+      "inspected": true,
+      "reviewer": "/root exact-byte prior-inspection verification",
+      "findings": [
+        "EN 1440x850 native dialog: graph and selected character B detail visible and readable; focused Close control visible.",
+        "Russian synthetic group labels remain in the EN fixture (Учебная группа, Гости). This is not complete English editorial-copy evidence. Lower list content continues beyond the visible scroll area; selected detail is fully visible.",
+        "Current bytes exactly match the authenticated previously inspected capture."
+      ],
+      "priorInspection": {
+        "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/visual-review.json",
+        "sha256": "47fd0d08ea7e27bdc2af11a6c67d674a4e3fdb2b9992d774d925098764eab60b",
+        "imagePath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-dossier-character-view/browser-a2/book-dossier-character-vie-af365-hout-navigation-or-progress/dossier-character-view-en.png",
+        "imageSha256": "0af0f041ab8628b216284ce33a8381d9b38d13aa723a546dada266f374df060d"
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/browser-a2/book-dossier-character-vie-af365-hout-navigation-or-progress/dossier-character-view-ru-320.png",
+      "sha256": "e024f6e694f422c6fac990b7bfdf7d7f884c4152cac96c385f5ac806bbab4da7",
+      "inspected": true,
+      "reviewer": "/root exact-byte prior-inspection verification",
+      "findings": [
+        "RU 320x900 native dialog: title and Close control visible; selected character C detail, body, source and attribution readable without horizontal clipping.",
+        "The captured current detail rectangle is wholly inside the viewport. The scrolled map content above the list is not fully visible; this image makes no whole-dialog-content or control-hit-size claim.",
+        "Current bytes exactly match the authenticated previously inspected capture."
+      ],
+      "priorInspection": {
+        "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/visual-review.json",
+        "sha256": "47fd0d08ea7e27bdc2af11a6c67d674a4e3fdb2b9992d774d925098764eab60b",
+        "imagePath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-dossier-character-view/browser-a2/book-dossier-character-vie-af365-hout-navigation-or-progress/dossier-character-view-ru-320.png",
+        "imageSha256": "e024f6e694f422c6fac990b7bfdf7d7f884c4152cac96c385f5ac806bbab4da7"
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/browser-a2/book-dossier-navigation-ea-223b1-hout-replaying-another-book/dossier-book-scope.png",
+      "sha256": "02edd51f3583dd04496907a3db580c184fe1e494429afca5a7c3392c78866325",
+      "inspected": true,
+      "reviewer": "/root exact-byte prior-inspection verification",
+      "findings": [
+        "Cropped Reader card: provisional work title, synthetic author value and Section 1/2 pager readable; left arrow disabled-looking and right arrow enabled-looking.",
+        "Surface crop only: no viewport containment, keyboard behavior, persistence, or target-size claim from this image.",
+        "Current bytes exactly match the authenticated previously inspected capture."
+      ],
+      "priorInspection": {
+        "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/visual-review.json",
+        "sha256": "47fd0d08ea7e27bdc2af11a6c67d674a4e3fdb2b9992d774d925098764eab60b",
+        "imagePath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-dossier-character-view/browser-a2/book-dossier-navigation-ea-223b1-hout-replaying-another-book/dossier-book-scope.png",
+        "imageSha256": "02edd51f3583dd04496907a3db580c184fe1e494429afca5a7c3392c78866325"
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/browser-a2/book-dossier-navigation-fa-5b733--and-across-archive-remount/dossier-pagination-unavailable.png",
+      "sha256": "d627fcf6c61cc1d73b2d0e3cc94951de26930833c5a2d97840e81bd1a346240b",
+      "inspected": true,
+      "reviewer": "/root exact-byte prior-inspection verification",
+      "findings": [
+        "Cropped Reader card: title, explanatory paragraph and Section 2/2 pager readable; no visible overlap or clipped text.",
+        "Surface crop only: no viewport containment, keyboard behavior, persistence, or target-size claim from this image.",
+        "Current bytes exactly match the authenticated previously inspected capture."
+      ],
+      "priorInspection": {
+        "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/visual-review.json",
+        "sha256": "47fd0d08ea7e27bdc2af11a6c67d674a4e3fdb2b9992d774d925098764eab60b",
+        "imagePath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-dossier-character-view/browser-a2/book-dossier-navigation-fa-5b733--and-across-archive-remount/dossier-pagination-unavailable.png",
+        "imageSha256": "d627fcf6c61cc1d73b2d0e3cc94951de26930833c5a2d97840e81bd1a346240b"
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/browser-a2/book-dossier-navigation-sw-ee4e2-ient-previous-account-write/dossier-personal-scope.png",
+      "sha256": "50d65c23f381a6807f069fe6edd678ef3aca3feb0ab9dbb1709d6d78b068073d",
+      "inspected": true,
+      "reviewer": "/root exact-byte prior-inspection verification",
+      "findings": [
+        "Cropped Reader card: title, explanatory paragraph and Section 2/2 pager readable; left arrow enabled-looking and right arrow disabled-looking.",
+        "Surface crop only: no viewport containment, keyboard behavior, persistence, or target-size claim from this image.",
+        "Current bytes exactly match the authenticated previously inspected capture."
+      ],
+      "priorInspection": {
+        "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/visual-review.json",
+        "sha256": "47fd0d08ea7e27bdc2af11a6c67d674a4e3fdb2b9992d774d925098764eab60b",
+        "imagePath": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-dossier-character-view/browser-a2/book-dossier-navigation-sw-ee4e2-ient-previous-account-write/dossier-personal-scope.png",
+        "imageSha256": "50d65c23f381a6807f069fe6edd678ef3aca3feb0ab9dbb1709d6d78b068073d"
+      }
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/browser-a2/booky-journey-activity-ans-b1175-vigation-and-saved-progress/journey-activity-correct-en.png",
+      "sha256": "9e34d147b48f738495111b667277fa806eceb3fcb2b6f644e344e7585830b09e",
+      "inspected": true,
+      "reviewer": "/root/booky_visual_first",
+      "findings": [
+        "Desktop English activity text wraps inside the cream journey panel; both answer buttons, Open step, Acknowledge step, Pause journey and Reset journey are visually distinct.",
+        "Booky is fully visible at the lower right: green book body, face, both hands, both shoes and magnifier; the raised hand visibly meets the magnifier handle."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/browser-a2/booky-journey-activity-ans-b1175-vigation-and-saved-progress/journey-activity-incorrect-ru-320.png",
+      "sha256": "c1cd5918458103d791cd07896aef125d749d39003127634020c19aaf4267bf25",
+      "inspected": true,
+      "reviewer": "/root/booky_visual_first",
+      "findings": [
+        "At 320 px, Russian prompt, long author names, incorrect-answer feedback and Open step fit within the narrow panel; the second answer has a visible focus outline.",
+        "Booky's whole small body, hands, shoes and magnifier are captured below the panel; the lower pet toolbar visibly overlaps the underlying country OPEN control, the known preexisting limitation."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/browser-a2/booky-journey-actual-revie-84536-cross-locale-and-suspension/journey-country-ru.png",
+      "sha256": "70170cf0a23ed0e859dbb6c31349df3977716bd0d06bc4e3b57e28c6b0b31ca4",
+      "inspected": true,
+      "reviewer": "/root/booky_visual_first",
+      "findings": [
+        "The scrolled 320 px Russian country step shows progress, instruction, Open country, Confirm step, Pause journey and Reset journey with legible text and separated buttons.",
+        "Booky's body, face, shoes and held magnifier remain within the viewport; the lower pet toolbar overlaps the underlying country OPEN control, the known preexisting limitation."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/browser-a2/booky-journey-actual-revie-84536-cross-locale-and-suspension/journey-writer-en.png",
+      "sha256": "60682f9ed4ef7ee577714e634937cdac5dd5f5b9e0f72c402c9d2d30ec587eb5",
+      "inspected": true,
+      "reviewer": "/root/booky_visual_first",
+      "findings": [
+        "The narrow English writer step displays its progress, wrapped instruction and stacked actions legibly; the panel covers part of the underlying writer view as an overlay.",
+        "Booky's full small silhouette and held magnifier are visible beside the Leo Tolstoy card; the lower floating toolbar overlays the writer-card area."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/browser-a2/booky-journey-confirmed-ex-7a157-ently-admitted-saved-locale/journey-history-complete-en.png",
+      "sha256": "6172a8e47e2e0e831a79bdbbe21ea232b99deb8f050f5ace54aa8b5846b71646",
+      "inspected": true,
+      "reviewer": "/root/booky_visual_first",
+      "findings": [
+        "Desktop English journey history shows the 4-of-4 completion status and a bordered history entry with readable status text and Remove from history action.",
+        "Delete all saved journeys and the reader-profile disclosure remain visually distinct; Booky's complete body, hands, shoes and magnifier are visible to the right of the panel."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/browser-a2/booky-journey-explicit-rev-b1a6f-the-exact-new-prefix-paused/journey-migration-confirm-en.png",
+      "sha256": "11c1b37b3d5805d6e69b87d6376a900f61e9b4cc49e34f76a7b05ef34f70179a",
+      "inspected": true,
+      "reviewer": "/root/booky_visual_first",
+      "findings": [
+        "Desktop English migration confirmation wraps its explanatory paragraph within the panel and presents Transfer and continue and Cancel as separate adjacent buttons.",
+        "The saved-journey card and currently-unavailable status are readable above the confirmation; Booky's full body and magnifier grip are visible outside the panel."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/browser-a2/booky-journey-failed-journ-ff64b--until-explicit-exact-retry/journey-save-failed-ru-320.png",
+      "sha256": "f7275c44f7c05fb3b21144fdd649a49e1496493b451158c909fdca9c062436a2",
+      "inspected": true,
+      "reviewer": "/root/booky_visual_first",
+      "findings": [
+        "At 320 px, the Russian save-failure message is readable in red across four lines; Retry and Delete all saved journeys fit in separate full-width buttons.",
+        "Booky's complete small body and magnifier are visible below the panel; the lower floating controls and Walk button cover part of the underlying author name."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/browser-a2/booky-journey-full-journey-4d29d-hosen-entry-for-a-new-route/journey-capacity-full-ru-320.png",
+      "sha256": "0208fc7ddc0d85161f1fa371304dae366c31636cefde7741bf27c02ff7f83db5",
+      "inspected": true,
+      "reviewer": "/root/booky_visual_first",
+      "findings": [
+        "At 320 px, the Russian capacity warning clearly shows 32 of 32 records, wraps its explanation inside the bordered notice and includes a separate Go to history button.",
+        "Booky's full small figure and magnifier are visible below the panel; the lower pet toolbar overlaps the underlying country OPEN control, the known preexisting limitation."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/browser-a2/booky-journey-full-journey-4d29d-hosen-entry-for-a-new-route/journey-capacity-recovered-en.png",
+      "sha256": "7b474c93ac5b2ffc4d553b2ffb0bfb46cbc961b77f02bf10233ed29ca8bbf198",
+      "inspected": true,
+      "reviewer": "/root/booky_visual_first",
+      "findings": [
+        "Desktop English recovered-capacity history displays separate bordered current and saved journey cards; Select journey and Remove from history remain distinguishable side-by-side controls.",
+        "Booky's full green body, hands, shoes and held magnifier are visible to the right; the floating pet controls overlap portions of the underlying writer-card actions."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/browser-a2/booky-journey-future-journ-cfc19--explicit-confirmed-removal/journey-future-clear-en.png",
+      "sha256": "ee6b4b2be43cb5dc6cec30632b1c584798c3be8c50f763f18bf98ffb6a2d8cb5",
+      "inspected": true,
+      "reviewer": "/root/booky_visual_second",
+      "findings": [
+        "English empty-journey notice, version-mismatch warning, and delete-progress confirmation wrap within the cream panel; both confirmation buttons have readable labels.",
+        "Booky is fully visible to the right: book silhouette, both white hands, magnifying-glass ring and handle, and both feet are present without image-edge clipping.",
+        "The floating Booky controls remain outside the journey panel; the lower walk control shares space with underlying globe guidance text."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/browser-a2/booky-journey-history-sele-f0d72-ile-revoking-a-prerequisite/journey-history-delete-ru-320.png",
+      "sha256": "1cd12ea3e5c53962459d438ff757e994f3932efa2177bc119565fa25d8b9c163",
+      "inspected": true,
+      "reviewer": "/root/booky_visual_second",
+      "findings": [
+        "At 320 px, Russian journey-history cards and the stacked delete/cancel confirmation buttons fit within the panel; text wraps within card borders.",
+        "The small Booky figure below the panel remains whole, including the magnifier, hand grip, and feet.",
+        "Known pre-existing mobile limitation is visible: the lower Booky toolbar overlaps the underlying Russia card's ОТКРЫТЬ control, so not all background controls are unobstructed."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/browser-a2/booky-journey-journey-focu-5ad75-tion-restores-stable-status/journey-focus-restored-ru.png",
+      "sha256": "f0c00073ea1cc17988fa797334f657da43864d992d1d73e9fe37cebc25846882",
+      "inspected": true,
+      "reviewer": "/root/booky_visual_second",
+      "findings": [
+        "The Russian saved-progress status has a visible dark rectangular focus outline; history-card labels and action text remain legible.",
+        "The topmost writer action is partly above the scroll viewport, while confirm/pause/reset actions and the displayed history card are inside the panel.",
+        "Booky is fully visible at the right of the panel with its magnifier and feet; the panel and floating controls cover portions of the underlying writer dossier."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/browser-a2/booky-journey-journey-focu-6f2c7-eals-outside-keyboard-focus/journey-focus-outside-en.png",
+      "sha256": "b1227ea080a8391268d67ecfba21280f4a2699daecd021f75c4ff1fbaf27ec1c",
+      "inspected": true,
+      "reviewer": "/root/booky_visual_second",
+      "findings": [
+        "The English Remove from history button has a clear dark focus outline; history count, availability, and saved-progress text are legible within the panel.",
+        "The reset-saved-tours status appears in a pale green block near the bottom; panel contents remain within their horizontal bounds.",
+        "Booky remains whole on the right, with both hands, magnifier handle/ring, and both feet visible; its floating controls overlap the underlying writer dossier."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/browser-a2/booky-journey-literary-pas-855d7-eliberately-deleted-history/journey-passport-completed-en.png",
+      "sha256": "912981a3d8434a4cea8bf0507dc3411999fcfc0677483ca667e8a8770e28f209",
+      "inspected": true,
+      "reviewer": "/root/booky_visual_second",
+      "findings": [
+        "The English completion notice and 4-of-4 count are readable; the expanded Literary passport has a clear focus border.",
+        "Countries, Writers, and Works each show a right-aligned 1; the completed-journey entry and Go to history button fit within the panel.",
+        "Booky is fully visible beside the panel with an intact magnifier grip and both feet, over the underlying writer dossier."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/browser-a2/booky-journey-literary-pas-855d7-eliberately-deleted-history/journey-passport-confirmed-ru-320.png",
+      "sha256": "0e8eade956fb00203d1a895b1f4634c5afcabb4d292fdbf9f1fbb133cd9f02be",
+      "inspected": true,
+      "reviewer": "/root/booky_visual_second",
+      "findings": [
+        "At 320 px, the expanded Russian passport shows three distinct rows with right-aligned counts of 1; the no-completed-journeys text wraps inside the panel.",
+        "The history card shows 3 of 4 acknowledged steps and a readable Удалить из истории button without horizontal overflow.",
+        "Booky remains whole below the panel, including magnifier and feet; the lower floating controls overlap the underlying author's name and lower card area."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/browser-a2/booky-journey-reviewed-jou-75eb0-ty-without-writing-progress/journey-overview-en.png",
+      "sha256": "570c3e0c35fd12af260924aa340673861f2e6b9fafe65748453a16644bd5db92",
+      "inspected": true,
+      "reviewer": "/root/booky_visual_second",
+      "findings": [
+        "The English paused-journey notice, overview, offline availability, 1-of-4 count, and writer-step instruction are readable within the panel.",
+        "Resume journey is fully visible; additional lower content continues below the captured panel viewport.",
+        "Booky's full green book body, both hands, magnifier, and both feet are visible to the right, clear of the journey-panel text."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/browser-a2/booky-journey-reviewed-jou-75eb0-ty-without-writing-progress/journey-overview-ru-320.png",
+      "sha256": "e5d7eff3130125c67c62dc00357d542a231ff6e44ca44ebddd9335690a2fed82",
+      "inspected": true,
+      "reviewer": "/root/booky_visual_second",
+      "findings": [
+        "At 320 px, Russian journey heading, introduction, route-selection button, overview, duration, and offline label wrap within the panel.",
+        "The collapsed passport and empty-history message remain readable; the reader-profile row begins below the panel's captured scroll boundary.",
+        "Booky is fully visible beneath the panel with magnifier and feet; the lower floating toolbar covers parts of the underlying globe reset/source controls and bottom guidance."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/browser-a2/booky-journey-sourced-fact-48ec2-it-semantic-acknowledgement/journey-fact-sources-en.png",
+      "sha256": "375d73264fa2e83e62f508f49503484426b5ba7faa9a13481df80a6b0954fb09",
+      "inspected": true,
+      "reviewer": "/root/booky_visual_second",
+      "findings": [
+        "The English sourced-fact panel shows Step 4 of 5, readable fact text, an expanded Sources row with focus outline, the source URL, and access date.",
+        "Open book, Acknowledge step, Pause journey, Reset journey, and the history card remain within the panel bounds; the source fixture URL is visible as captured.",
+        "Booky is fully visible on the right with intact magnifier grip and feet; the journey panel and floating toolbar cover parts of the underlying collection and book-detail content."
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/visual-review-live-a2.json",
+      "sha256": "31a6435ac0e90d6ccd2a775d0f1965e797ed5ee234afd6e5244dd5df679627c9"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/visual-review-recovery-root.json",
+      "sha256": "046e09aeeba8dcf62efa22a6f7170e2b376837c3e8da998ab407e6be71f93dd1"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/visual-review-recovery-first.json",
+      "sha256": "1da356a21f5b5f60372b9789665414f0edc13d9e69493c13c9e58ff184c40230"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/visual-review-recovery-second.json",
+      "sha256": "2dc3aa846858f0cffe0b28def3bc7af23a90f7f3f8ee9011a4aa82d7fa613043"
+    }
+  ],
+  "directInspections": 30,
+  "authenticatedPriorInspections": 5,
+  "artAccepted": false,
+  "childApproved": false,
+  "releaseReady": false,
+  "limitations": [
+    "The captured mobile pet toolbar can overlap underlying country or collection controls. This scoped review does not establish full accessibility or unobstructed underlying controls.",
+    "The approach still image captures movement; the actual browser trace separately validates subsequent pointing inside the selected section."
+  ]
+}

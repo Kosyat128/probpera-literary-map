@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "preparedAt": "2026-09-23T08:23:36.260Z",
+  "files": [
+    {
+      "name": "configure.mjs",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/evidence-staging/configure.mjs",
+      "sha256": "930394c88dfe0deebd5cdc4d0db9fc5d04af035be1a17b9c696505e58d05f9a4",
+      "bytes": 9245,
+      "syntaxCheck": "node --check PASS"
+    },
+    {
+      "name": "check.mjs",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/evidence-staging/check.mjs",
+      "sha256": "ecb331194ddb302ec33a47d8fc70860f0c647ec5cdd154576a7089a296f46780",
+      "bytes": 7777,
+      "syntaxCheck": "node --check PASS"
+    },
+    {
+      "name": "unit.config.mjs",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/evidence-staging/unit.config.mjs",
+      "sha256": "d318b65a836ba8ea5bfd647899647c053d10c396639c18caa371d0a478b1a08f",
+      "bytes": 347,
+      "syntaxCheck": "node --check PASS"
+    },
+    {
+      "name": "playwright.config.mjs",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/evidence-staging/playwright.config.mjs",
+      "sha256": "4d71778c37a6b9e28236af79e4c05514b0b11dc448e0f7415fd14c7e1d6e8b08",
+      "bytes": 515,
+      "syntaxCheck": "node --check PASS"
+    },
+    {
+      "name": "build-pwa-a1.mjs",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/evidence-staging/build-pwa-a1.mjs",
+      "sha256": "83b6a449fd708a3ef3cea1b32ac5bd1b8b4e4c3b355ee6a7a3f517ff5d28386f",
+      "bytes": 8131,
+      "syntaxCheck": "node --check PASS"
+    },
+    {
+      "name": "pwa-a1.config.mjs",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/evidence-staging/pwa-a1.config.mjs",
+      "sha256": "154d440f9df26e4f0b334c73d843e00721d9bbbe205a91d29a769d0a3122f329",
+      "bytes": 586,
+      "syntaxCheck": "node --check PASS"
+    },
+    {
+      "name": "build-android-a1.ps1",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/evidence-staging/build-android-a1.ps1",
+      "sha256": "019d77c0653adb16e946a3407b5cc81fb6fdca97c4773fc86eaba7d800ee9eb0",
+      "bytes": 7195,
+      "syntaxCheck": "PowerShell parser PASS"
+    },
+    {
+      "name": "verify-android-a1.mjs",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/evidence-staging/verify-android-a1.mjs",
+      "sha256": "16544bff0b678515b3e5d9d09a1533296886515e09c934ca7f10568d625388a4",
+      "bytes": 14953,
+      "syntaxCheck": "node --check PASS"
+    },
+    {
+      "name": "preserve-android-a1.mjs",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/evidence-staging/preserve-android-a1.mjs",
+      "sha256": "395edb55986fe987c30937449b7cae67e9755c6b687c600ac6a058edb9bd05e5",
+      "bytes": 6180,
+      "syntaxCheck": "node --check PASS"
+    }
+  ],
+  "externalOnly": true,
+  "entryGenerated": false,
+  "buildBaselineGenerated": false,
+  "sourceFreezeRequired": true,
+  "configureExecuted": false,
+  "checksRun": false,
+  "buildsRun": false,
+  "checkpointPrepared": false,
+  "checkpoint": "9f448936cea0b7859b2d3b9a3585afce4436862c",
+  "expectedScope": {
+    "changed": 14,
+    "added": 4,
+    "sourceInputs": 1648,
+    "protectedInputs": 1630,
+    "runtimePaths": 13,
+    "unitFiles": 8,
+    "browserFiles": 6,
+    "browserCases": 36,
+    "images": 34
+  },
+  "unitCount": "Dynamic from exact final Vitest assertions; no predicted passing count",
+  "supplementalInputs": "Two prior test fixtures, one prior browser public asset and the separately authenticated exact archive source registry",
+  "priorBuilds": "Resolved from authenticated dossier-character-view result at source d970b0dcc76f505b6d90e4fbe391a3e88bcf2eeb by configure; no guessed artifact identities",
+  "commands": [
+    "node docs/mobile/evidence/S15/booky-enhancement-20260923/configure.mjs 9f448936cea0b7859b2d3b9a3585afce4436862c",
+    "node docs/mobile/evidence/S15/booky-enhancement-20260923/check.mjs unit a1",
+    "node docs/mobile/evidence/S15/booky-enhancement-20260923/check.mjs static a1",
+    "node docs/mobile/evidence/S15/booky-enhancement-20260923/check.mjs browser a1",
+    "node docs/mobile/evidence/S15/booky-enhancement-20260923/build-pwa-a1.mjs <SOURCE_COMMIT>",
+    "powershell -NoProfile -ExecutionPolicy Bypass -File docs/mobile/evidence/S15/booky-enhancement-20260923/build-android-a1.ps1 <SOURCE_COMMIT>",
+    "node docs/mobile/evidence/S15/booky-enhancement-20260923/preserve-android-a1.mjs <SOURCE_COMMIT>"
+  ],
+  "notes": [
+    "Copy helpers to repo only when root chooses; configure creates entry.json and build-baseline.json once after final source freeze.",
+    "Configure derives exact staged/unstaged/untracked source diff against the explicit14M4A allowlist, verifies every protected prior input, and pins the final18 changed/new source bytes.",
+    "All check attempts snapshot the same1648 source paths and four supplemental input refs; both S15 and S11 browser profile roots point to D:. Browser attempt raw directory must not already exist.",
+    "Fresh PWA/Android helpers retain existing strict payload/APK checks and copy preservation. Their actual result/source/build identities are determined at execution.",
+    "No checkpoint/global helper is included in this package."
+  ]
+}

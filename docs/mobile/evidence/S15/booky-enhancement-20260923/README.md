@@ -1,0 +1,14 @@
+# S15 Booky model, expressions and explicit actions
+
+Source: 10beb1315ea29184fced208ee26049db093e4823.
+
+Followed the user-directed product names Книжулик / Mr. Booky without treating that direction as legal or art approval. Refined the live Книжулик / Mr. Booky model, facial expressions, magnifier grip and articulated legs/shoes. Added thirteen finite explicit gestures, an interruptible optional margin walk and canonical local utility actions with guarded focus. A finite approach points once into the explicitly selected section without activating its controls. Reduced motion remains still, hidden owners stop work, and first-frame/recovery uses the existing fallback. Fresh 132 unit tests from 8 files, TypeScript and 37 browser cases passed; 35 browser captures were inspected. PWA e269ae0e / Android-dev 2c2cccd3 bind the source; 1630 protected inputs stay exact. All statuses and approval gates remain unchanged.
+
+- The model, thirteen explicit reactions, optional four-second margin walk, finite section approach and local utility actions are implementation evidence, not original-art, branding, rights or child approval.
+- The live fixtures observe the actual App, rig, renderer and canonical globe. Native OS/preferences are controlled test ports; only NativePlanetPanel focus scheduling may be held for the stale-focus regression. This is not installed-device performance evidence.
+- The existing 23 App and 9 dossier/reader/archive regression cases are rerun. Historical 76, 64 and 717 unit reports remain attributed to their original source; only the current selected unit set is rerun.
+- Ordinary journey fixtures retain synthetic independent reviews only. Production journey/migration inventories stay empty, all 34 dialogue drafts remain unapproved, and no character journey node is wired.
+- Images support their recorded surfaces and scroll positions only. Optional additional render photographs are separately identified and do not replace browser evidence.
+- Fresh PWA offline/download smoke and Android-dev artifact/APK audits are local build evidence, not installed-device, iOS, full accessibility, stage or release acceptance.
+
+Next: Continue the user-prioritized Книжулик / Mr. Booky visual and interaction work from this verified source. Review any remaining concrete model, expression, placement or interruption defects in actual views before adding new behavior; preserve finite explicit gestures, reduced-motion stillness, truthful fallback and the single canonical globe owner. Do not automatically return to character-route integration, add endless idle animation, enable remote content, or infer branding/art/rights/device approval. Existing child, reviewed content, narration, full accessibility, installed-device, iOS and stage/release gates remain open; S03.acceptance stays first unresolved.

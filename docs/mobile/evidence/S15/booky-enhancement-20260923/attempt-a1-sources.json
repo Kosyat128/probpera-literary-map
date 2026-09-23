@@ -1,0 +1,153 @@
+{
+  "checkpoint": "9f448936cea0b7859b2d3b9a3585afce4436862c",
+  "entry": {
+    "path": "docs/mobile/evidence/S15/booky-enhancement-20260923/entry-a1.json",
+    "sha256": "c69583a8e7cf6df5479b887f93926f7b3442f50abbf059a2c00cc5d82a0f7af9"
+  },
+  "files": [
+    {
+      "path": "src/App.tsx",
+      "sha256": "d93e6170b9d8ff856a78377573187e850890e126d33ef9a8b0e6655f487c682a",
+      "preservedAs": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/attempt-a1-source/src/App.tsx",
+        "sha256": "d93e6170b9d8ff856a78377573187e850890e126d33ef9a8b0e6655f487c682a"
+      }
+    },
+    {
+      "path": "src/host/NativePlanetPanel.tsx",
+      "sha256": "4d26d9e69f2bbc014322d3cb7ed314869d4c351d26c97634e3045b1ecda2b013",
+      "preservedAs": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/attempt-a1-source/src/host/NativePlanetPanel.tsx",
+        "sha256": "4d26d9e69f2bbc014322d3cb7ed314869d4c351d26c97634e3045b1ecda2b013"
+      }
+    },
+    {
+      "path": "src/host/PlanetMascotAvatar.css",
+      "sha256": "de93c23ad52a384efff38c1546b80021940d418c1a77fdbe0baa8430e664421a",
+      "preservedAs": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/attempt-a1-source/src/host/PlanetMascotAvatar.css",
+        "sha256": "de93c23ad52a384efff38c1546b80021940d418c1a77fdbe0baa8430e664421a"
+      }
+    },
+    {
+      "path": "src/host/PlanetMascotAvatar.tsx",
+      "sha256": "21256fa46a1539b46773587147e082c941190c1a1ef85a1f21dab27b1c3b2350",
+      "preservedAs": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/attempt-a1-source/src/host/PlanetMascotAvatar.tsx",
+        "sha256": "21256fa46a1539b46773587147e082c941190c1a1ef85a1f21dab27b1c3b2350"
+      }
+    },
+    {
+      "path": "src/host/PlanetMascotControls.css",
+      "sha256": "19f7fc0834e1e1eb327c959228ba67de99d624eccd70578d27ca3292cbbf6e26",
+      "preservedAs": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/attempt-a1-source/src/host/PlanetMascotControls.css",
+        "sha256": "19f7fc0834e1e1eb327c959228ba67de99d624eccd70578d27ca3292cbbf6e26"
+      }
+    },
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "a6fdaa1f97be0a6875344d0cd13c222857a49fb296f54f7e72e6f57701656b1f",
+      "preservedAs": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/attempt-a1-source/src/host/PlanetMascotControls.tsx",
+        "sha256": "a6fdaa1f97be0a6875344d0cd13c222857a49fb296f54f7e72e6f57701656b1f"
+      }
+    },
+    {
+      "path": "src/host/bookyAnimation.ts",
+      "sha256": "532742a7f7cc8446be55b3f058d2541e05eb0770029bfb32a0533513a7ebe384",
+      "preservedAs": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/attempt-a1-source/src/host/bookyAnimation.ts",
+        "sha256": "532742a7f7cc8446be55b3f058d2541e05eb0770029bfb32a0533513a7ebe384"
+      }
+    },
+    {
+      "path": "src/host/bookyModel.test.ts",
+      "sha256": "08e730d6382d056dbca1f604a250a3e92c8dda12e317b1f1ae876e05bdb58554",
+      "preservedAs": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/attempt-a1-source/src/host/bookyModel.test.ts",
+        "sha256": "08e730d6382d056dbca1f604a250a3e92c8dda12e317b1f1ae876e05bdb58554"
+      }
+    },
+    {
+      "path": "src/host/bookyModel.ts",
+      "sha256": "406b1326bc8ba69b45ab871fa813e79eafff4772e5456e33315a837146d403a4",
+      "preservedAs": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/attempt-a1-source/src/host/bookyModel.ts",
+        "sha256": "406b1326bc8ba69b45ab871fa813e79eafff4772e5456e33315a837146d403a4"
+      }
+    },
+    {
+      "path": "src/host/planetMascot.test.ts",
+      "sha256": "65a28b58fe40074b4b75c230599abe8bc449a9c57406a6b252e496a12f24abee",
+      "preservedAs": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/attempt-a1-source/src/host/planetMascot.test.ts",
+        "sha256": "65a28b58fe40074b4b75c230599abe8bc449a9c57406a6b252e496a12f24abee"
+      }
+    },
+    {
+      "path": "src/host/planetMascot.ts",
+      "sha256": "6731faf6dde11c0c8039a1995568350e7c9ec807d433616e6a2b888c91b2d65d",
+      "preservedAs": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/attempt-a1-source/src/host/planetMascot.ts",
+        "sha256": "6731faf6dde11c0c8039a1995568350e7c9ec807d433616e6a2b888c91b2d65d"
+      }
+    },
+    {
+      "path": "src/host/planetMascotRoutes.ts",
+      "sha256": "aba7ab93b75d72a7b6aaf921ecee8f7074fd51dc7a451f5016aebe9c57f7b529",
+      "preservedAs": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/attempt-a1-source/src/host/planetMascotRoutes.ts",
+        "sha256": "aba7ab93b75d72a7b6aaf921ecee8f7074fd51dc7a451f5016aebe9c57f7b529"
+      }
+    },
+    {
+      "path": "src/host/useBookyRenderer.ts",
+      "sha256": "5db90ed752b1fa14e40edf8c4cf1bea1f24097534e3bbb76f024c152ad7784fb",
+      "preservedAs": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/attempt-a1-source/src/host/useBookyRenderer.ts",
+        "sha256": "5db90ed752b1fa14e40edf8c4cf1bea1f24097534e3bbb76f024c152ad7784fb"
+      }
+    },
+    {
+      "path": "tests/pwa/booky-live-character.spec.mjs",
+      "sha256": "12a547fc237ba5948320b75c40bcd5afec5f771de3647f7033f45d22f69bf7de",
+      "preservedAs": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/attempt-a1-source/tests/pwa/booky-live-character.spec.mjs",
+        "sha256": "12a547fc237ba5948320b75c40bcd5afec5f771de3647f7033f45d22f69bf7de"
+      }
+    },
+    {
+      "path": "src/host/bookyAnimation.test.ts",
+      "sha256": "93604c594e70dc0a2d4011ce6a7b64f66db8c655db33cf6659a2fbf56c25b1ba",
+      "preservedAs": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/attempt-a1-source/src/host/bookyAnimation.test.ts",
+        "sha256": "93604c594e70dc0a2d4011ce6a7b64f66db8c655db33cf6659a2fbf56c25b1ba"
+      }
+    },
+    {
+      "path": "src/host/bookyWalk.test.ts",
+      "sha256": "d71901c06636bce7ad6837ef3b5da9c46abc25097d7b6ee6a9d90665114c61b7",
+      "preservedAs": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/attempt-a1-source/src/host/bookyWalk.test.ts",
+        "sha256": "d71901c06636bce7ad6837ef3b5da9c46abc25097d7b6ee6a9d90665114c61b7"
+      }
+    },
+    {
+      "path": "src/host/bookyWalk.ts",
+      "sha256": "ddf3f0aefbf79e1417c4fa937a6f1221eb60de19366628cc7cb9708e2ab26cd6",
+      "preservedAs": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/attempt-a1-source/src/host/bookyWalk.ts",
+        "sha256": "ddf3f0aefbf79e1417c4fa937a6f1221eb60de19366628cc7cb9708e2ab26cd6"
+      }
+    },
+    {
+      "path": "src/host/useBookyWalk.ts",
+      "sha256": "217ce68c0abb5f6a10401c559cf3db19c89ef42abc84e97b60e7b6eb6d86e18b",
+      "preservedAs": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-enhancement/attempt-a1-source/src/host/useBookyWalk.ts",
+        "sha256": "217ce68c0abb5f6a10401c559cf3db19c89ef42abc84e97b60e7b6eb6d86e18b"
+      }
+    }
+  ]
+}
