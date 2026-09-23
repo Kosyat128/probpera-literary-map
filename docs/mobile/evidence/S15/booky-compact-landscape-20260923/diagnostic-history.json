@@ -1,0 +1,634 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-23T16:06:33.040Z",
+  "recordingComplete": true,
+  "kind": "retained-pre-freeze-booky-compact-landscape-diagnostics",
+  "baseCheckpoint": "2ced59919dfd1ed6bb14fea536e62b85eb335f5b",
+  "cwd": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work",
+  "attempts": [
+    {
+      "attempt": "a1",
+      "scope": "One focused open-help scenario, not the formal ten-case suite.",
+      "summary": "The sandbox denied esbuild access to an ancestor directory before the actual App could be built or launched. No source capture or screenshot was produced. This is an infrastructure failure, not a geometry or product failure.",
+      "pass": false,
+      "tests": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a1/playwright.json",
+        "sha256": "aa0dd6ae695e9925419d952e46cb034ee0ac8c099293d1bd0a86c56bad4634a5"
+      },
+      "sourceEvidence": null,
+      "attachment": null,
+      "executionEvidence": {
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a1/node.log",
+          "sha256": "d20933b27fd0de21492a3ab653e03aec970a47b0d835c163ea831867446366fc"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a1/node.log",
+          "sha256": "d20933b27fd0de21492a3ab653e03aec970a47b0d835c163ea831867446366fc"
+        },
+        "combinedOutput": true,
+        "streamProvenance": "PowerShell redirected both original Node streams into one preserved node.log; stdout and stderr references intentionally identify that same combined file.",
+        "actualNodeExit": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a1/node-exit.txt",
+          "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b"
+        },
+        "startedAt": "2026-09-23T15:54:41.708Z",
+        "durationMs": 901.423,
+        "testProcessExitCode": 1,
+        "exitCodeProvenance": "Original runner captured $LASTEXITCODE immediately after Node, wrote node-exit.txt and explicitly returned that exact exit code.",
+        "workerCount": 1,
+        "retriesConfigured": 0
+      },
+      "configuration": {
+        "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-help-placement-20260923\\playwright.config.mjs",
+        "testTitle": "Mr. Booky open help preserves primary navigation and scrolls independently in both locales",
+        "playwrightVersion": "1.62.1"
+      },
+      "capturedSourceInputCount": 0,
+      "capturedScopedSourceInputs": [],
+      "originalSourceHashesAreFromEachCapture": false,
+      "originalSourceBytesSeparatelyArchivedByThisLedger": false,
+      "screenshots": [],
+      "failureMessages": [
+        "Error: Build failed with 7 errors:\nerror: Cannot read directory \"../../../..\": Access is denied.\n<stdin>:2:22: ERROR: Could not resolve \"@react-three/fiber\"\n<stdin>:3:24: ERROR: Could not resolve \"three\"\n<stdin>:4:28: ERROR: Could not resolve \"./src/host/mountHostApp\"\n<stdin>:5:36: ERROR: Could not resolve \"./src/host/planetMascotPreference\"\n...\n    at failureErrorWithLog (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\esbuild\\lib\\main.js:1752:15)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\esbuild\\lib\\main.js:1211:25\n    at runOnEndCallbacks (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\esbuild\\lib\\main.js:1592:45)\n    at buildResponseToResult (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\esbuild\\lib\\main.js:1209:7)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\esbuild\\lib\\main.js:1236:16\n    at responseCallbacks.<computed> (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\esbuild\\lib\\main.js:886:9)\n    at handleIncomingPacket (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\esbuild\\lib\\main.js:941:12)\n    at Socket.readFromStdout (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\esbuild\\lib\\main.js:864:7)",
+        "{\n  detail: undefined,\n  id: '',\n  location: null,\n  notes: [],\n  pluginName: '',\n  text: 'Cannot read directory \"../../../..\": Access is denied.'\n}",
+        "{\n  detail: undefined,\n  id: '',\n  location: {\n    column: 22,\n    file: '<stdin>',\n    length: 20,\n    line: 2,\n    lineText: \"    import{_roots}from'@react-three/fiber';\",\n    namespace: '',\n    suggestion: ''\n  },\n  notes: [\n    {\n      location: null,\n      text: 'You can mark the path \"@react-three/fiber\" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.'\n    }\n  ],\n  pluginName: '',\n  text: 'Could not resolve \"@react-three/fiber\"'\n}",
+        "{\n  detail: undefined,\n  id: '',\n  location: {\n    column: 24,\n    file: '<stdin>',\n    length: 7,\n    line: 3,\n    lineText: \"    import*as THREE from'three';\",\n    namespace: '',\n    suggestion: ''\n  },\n  notes: [\n    {\n      location: null,\n      text: 'You can mark the path \"three\" as external to exclude it from the bundle, which will remove this error and leave the unresolved path in the bundle.'\n    }\n  ],\n  pluginName: '',\n  text: 'Could not resolve \"three\"'\n}",
+        "{\n  detail: undefined,\n  id: '',\n  location: {\n    column: 28,\n    file: '<stdin>',\n    length: 25,\n    line: 4,\n    lineText: \"    import{mountHostApp}from'./src/host/mountHostApp';\",\n    namespace: '',\n    suggestion: ''\n  },\n  notes: [],\n  pluginName: '',\n  text: 'Could not resolve \"./src/host/mountHostApp\"'\n}",
+        "{\n  detail: undefined,\n  id: '',\n  location: {\n    column: 36,\n    file: '<stdin>',\n    length: 35,\n    line: 5,\n    lineText: \"    import{parseBookyPreference}from'./src/host/planetMascotPreference';\",\n    namespace: '',\n    suggestion: ''\n  },\n  notes: [],\n  pluginName: '',\n  text: 'Could not resolve \"./src/host/planetMascotPreference\"'\n}",
+        "{\n  detail: undefined,\n  id: '',\n  location: {\n    column: 37,\n    file: '<stdin>',\n    length: 27,\n    line: 6,\n    lineText: \"    import{bookyReactionDuration}from'./src/host/bookyAnimation';\",\n    namespace: '',\n    suggestion: ''\n  },\n  notes: [],\n  pluginName: '',\n  text: 'Could not resolve \"./src/host/bookyAnimation\"'\n}",
+        "{\n  detail: undefined,\n  id: '',\n  location: {\n    column: 44,\n    file: '<stdin>',\n    length: 56,\n    line: 7,\n    lineText: \"    import{createAndroidPlatformAdapter}from'./src/platform/adapters/android/AndroidPlatformAdapter';\",\n    namespace: '',\n    suggestion: ''\n  },\n  notes: [],\n  pluginName: '',\n  text: 'Could not resolve \"./src/platform/adapters/android/AndroidPlatformAdapter\"'\n}"
+      ],
+      "reportedBehaviorFlags": null
+    },
+    {
+      "attempt": "a2",
+      "scope": "One focused open-help scenario, not the formal ten-case suite.",
+      "summary": "The original geometry, wheel-scrolling, sticky close and closed dock/country/locale checks passed at the added RU/EN 568 x 320 and 640 x 360 viewports. At 568 x 320 the recorded help height was only 124-126px, although geometry fit. This raw geometry pass preceded the explicit readable-height regression and additional visible global-header checks.",
+      "pass": true,
+      "tests": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a2/playwright.json",
+        "sha256": "bdd40eee7b74139bba361bf8b7667469d20e61f9818e7bfe2a14c45fd3d05cde"
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a2/output/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-live-character.json",
+        "sha256": "ade7266c6c7b13e798531584ad832e696a225557e751112251a712cb8617fc27"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a2/output/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/attachments/booky-live-character-source-evidence-abd8b279537ef56077b6a31e752aea10cb4b419a.json",
+        "sha256": "ade7266c6c7b13e798531584ad832e696a225557e751112251a712cb8617fc27"
+      },
+      "executionEvidence": {
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a2/node.log",
+          "sha256": "4a17b0a1557dc5170448ec91748f4dd63ce9e6c307182b479fdc469d9332dc45"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a2/node.log",
+          "sha256": "4a17b0a1557dc5170448ec91748f4dd63ce9e6c307182b479fdc469d9332dc45"
+        },
+        "combinedOutput": true,
+        "streamProvenance": "PowerShell redirected both original Node streams into one preserved node.log; stdout and stderr references intentionally identify that same combined file.",
+        "actualNodeExit": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a2/node-exit.txt",
+          "sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+        },
+        "startedAt": "2026-09-23T15:55:24.814Z",
+        "durationMs": 36375.169,
+        "testProcessExitCode": 0,
+        "exitCodeProvenance": "Original runner captured $LASTEXITCODE immediately after Node, wrote node-exit.txt and explicitly returned that exact exit code.",
+        "workerCount": 1,
+        "retriesConfigured": 0
+      },
+      "configuration": {
+        "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-help-placement-20260923\\playwright.config.mjs",
+        "testTitle": "Mr. Booky open help preserves primary navigation and scrolls independently in both locales",
+        "playwrightVersion": "1.62.1"
+      },
+      "capturedSourceInputCount": 669,
+      "capturedScopedSourceInputs": [
+        {
+          "path": "src/host/PlanetMascotControls.css",
+          "sha256": "88c39ea534e2dd39982ea712332c57dd626401df5479e6357ba5359f61457d11"
+        },
+        {
+          "path": "src/host/PlanetMascotControls.tsx",
+          "sha256": "5270ca58f18e8957966b3827e28c9317276e46c409f6409120bc3f0db12874af"
+        },
+        {
+          "path": "src/host/bookyPlacement.ts",
+          "sha256": "14bf1a397e033ab44564eaeea3719f90c0a19ac4b72d94674b4a9e479f55c86b"
+        },
+        {
+          "path": "tests/pwa/booky-live-character.spec.mjs",
+          "sha256": "3b6859d4949b3657c81ac6edd91d0a7ef41699890c8cc69f0b4c337824b9d6fb"
+        }
+      ],
+      "originalSourceHashesAreFromEachCapture": true,
+      "originalSourceBytesSeparatelyArchivedByThisLedger": false,
+      "screenshots": [
+        {
+          "filename": "booky-help-globe-ru-800.png",
+          "sha256": "b15248b2eeb42becc473d3b3eeab533eb2748d9e3a45f5554783555f38a84550",
+          "width": 800,
+          "height": 400,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a2/output/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-ru-800.png"
+        },
+        {
+          "filename": "booky-help-globe-en-667.png",
+          "sha256": "e520a1ab71b5e0ae43dc5a1c5f2bd7f8b15c304dc8da499061d2c9b91e496a14",
+          "width": 667,
+          "height": 375,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a2/output/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-en-667.png"
+        },
+        {
+          "filename": "booky-help-collection-ru-320.png",
+          "sha256": "35dbfde3226bba5bfd336fcaa499e33579c4c0f7d28d1188cb8b47a23cf5ce29",
+          "width": 320,
+          "height": 844,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a2/output/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-collection-ru-320.png"
+        },
+        {
+          "filename": "booky-help-collection-en-320.png",
+          "sha256": "b7c4c0872820fa594f196b6981859e962e57cb23ada4daee1b3e7708151f95da",
+          "width": 320,
+          "height": 844,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a2/output/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-collection-en-320.png"
+        }
+      ],
+      "failureMessages": [],
+      "reportedBehaviorFlags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "openHelpLocaleControlsReachable": true,
+        "desktopOpenHelpNavigationReachable": true,
+        "closedHelpNavigationReachable": true,
+        "collectionHeaderReachable": true,
+        "helpScrollsByPointerWheel": true,
+        "helpClosesWhileScrolled": true,
+        "helpRegrowsOnLargerViewport": true,
+        "petAndHelpFitWithoutOverlap": true,
+        "noAutomaticPreferenceWrites": true,
+        "noHelpCameraChanges": true,
+        "sameCanonicalGlobe": true
+      }
+    },
+    {
+      "attempt": "a3",
+      "scope": "One focused open-help scenario, not the formal ten-case suite.",
+      "summary": "After adding a readable-height assertion and compact screenshots, RU 568 x 320 failed with a 126px card against the 180px minimum. Actual model/card geometry still fit. The compact help-row CSS had not been applied to this capture.",
+      "pass": false,
+      "tests": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a3/playwright.json",
+        "sha256": "a225a086e2d5569117b803eee1e0ebb09021b4776ff85f7f19f0caf8149123b3"
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a3/output/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-live-character.json",
+        "sha256": "7e2d7a775371a523f43e2f15f1f278d44bcb781250d7ae81a56e743ecc7349de"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a3/output/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/attachments/booky-live-character-source-evidence-a9056ef31f8f5dedff4088f760b92915e9b4d33a.json",
+        "sha256": "7e2d7a775371a523f43e2f15f1f278d44bcb781250d7ae81a56e743ecc7349de"
+      },
+      "executionEvidence": {
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a3/node.log",
+          "sha256": "7032c9d7c2a1903ce87cd6f9e6eca8ec5ebf72c4cb34f4665091927bc0d99f4c"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a3/node.log",
+          "sha256": "7032c9d7c2a1903ce87cd6f9e6eca8ec5ebf72c4cb34f4665091927bc0d99f4c"
+        },
+        "combinedOutput": true,
+        "streamProvenance": "PowerShell redirected both original Node streams into one preserved node.log; stdout and stderr references intentionally identify that same combined file.",
+        "actualNodeExit": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a3/node-exit.txt",
+          "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b"
+        },
+        "startedAt": "2026-09-23T15:57:51.330Z",
+        "durationMs": 12119.224,
+        "testProcessExitCode": 1,
+        "exitCodeProvenance": "Original runner captured $LASTEXITCODE immediately after Node, wrote node-exit.txt and explicitly returned that exact exit code.",
+        "workerCount": 1,
+        "retriesConfigured": 0
+      },
+      "configuration": {
+        "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-help-placement-20260923\\playwright.config.mjs",
+        "testTitle": "Mr. Booky open help preserves primary navigation and scrolls independently in both locales",
+        "playwrightVersion": "1.62.1"
+      },
+      "capturedSourceInputCount": 669,
+      "capturedScopedSourceInputs": [
+        {
+          "path": "src/host/PlanetMascotControls.css",
+          "sha256": "88c39ea534e2dd39982ea712332c57dd626401df5479e6357ba5359f61457d11"
+        },
+        {
+          "path": "src/host/PlanetMascotControls.tsx",
+          "sha256": "28f53a5a70456b6e217df993096ed72f31d50984e83107f895344ee594c6846b"
+        },
+        {
+          "path": "src/host/bookyPlacement.ts",
+          "sha256": "14bf1a397e033ab44564eaeea3719f90c0a19ac4b72d94674b4a9e479f55c86b"
+        },
+        {
+          "path": "tests/pwa/booky-live-character.spec.mjs",
+          "sha256": "57401fd8ca472d2b9ca2a23492ec568f3c60778c38f3e388fd83cc5e5aff0f5c"
+        }
+      ],
+      "originalSourceHashesAreFromEachCapture": true,
+      "originalSourceBytesSeparatelyArchivedByThisLedger": false,
+      "screenshots": [
+        {
+          "filename": "booky-help-globe-ru-568.png",
+          "sha256": "8868313ad7728b4b23658d326ed93eec74087f1d13c8000b56c87f675769192a",
+          "width": 568,
+          "height": 320,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a3/output/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-ru-568.png"
+        },
+        {
+          "filename": "booky-help-placement-failure.png",
+          "sha256": "ce0bb1c5b52474c1edf8e6496ccb83ad3ea65392b2977d92851a042624701be0",
+          "width": 568,
+          "height": 320,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a3/output/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-placement-failure.png"
+        }
+      ],
+      "failureMessages": [
+        "Error: Compact landscape help retains a readable scrolling area\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m180\u001b[39m\nReceived:    \u001b[31m126\u001b[39m\n\n  1293 |       if(size.width<=640){\n  1294 |         await capture(page,result,testInfo,`booky-help-globe-${language}-${size.width}.png`);\n> 1295 |         expect(helpHeight,'Compact landscape help retains a readable scrolling area').toBeGreaterThanOrEqual(180);\n       |                                                                                       ^\n  1296 |       }\n  1297 |       if(language==='ru'&&size.width===800)await capture(page,result,testInfo,'booky-help-globe-ru-800.png');\n  1298 |       if(language==='en'&&size.width===667)await capture(page,result,testInfo,'booky-help-globe-en-667.png');\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs:1295:87"
+      ],
+      "reportedBehaviorFlags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": false
+      }
+    },
+    {
+      "attempt": "a4",
+      "scope": "One focused open-help scenario, not the formal ten-case suite.",
+      "summary": "The compact open-help row reduced the pet width from 312px to 194px and retained the 88px model. The card became a 270 x 160px side column at RU 568 x 320, but the readable-height assertion still failed against 180px. The placement solver still preferred its existing 160px minimum.",
+      "pass": false,
+      "tests": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a4/playwright.json",
+        "sha256": "1a6b0e4770e90f419301039c4e82a935b7538c981dd2271b07306e13f9718bfa"
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a4/output/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-live-character.json",
+        "sha256": "146d970904234f6e483c29d4f0dad908835b4e74d0082d942b0e4a3c54a94e8a"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a4/output/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/attachments/booky-live-character-source-evidence-27bddec3cc0d9207988231c40bec5af84976dda2.json",
+        "sha256": "146d970904234f6e483c29d4f0dad908835b4e74d0082d942b0e4a3c54a94e8a"
+      },
+      "executionEvidence": {
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a4/node.log",
+          "sha256": "9d0ce4cf2064b49fa0bd12237544e82b00a0a741417c867e58d79e394e642470"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a4/node.log",
+          "sha256": "9d0ce4cf2064b49fa0bd12237544e82b00a0a741417c867e58d79e394e642470"
+        },
+        "combinedOutput": true,
+        "streamProvenance": "PowerShell redirected both original Node streams into one preserved node.log; stdout and stderr references intentionally identify that same combined file.",
+        "actualNodeExit": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a4/node-exit.txt",
+          "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b"
+        },
+        "startedAt": "2026-09-23T16:00:10.987Z",
+        "durationMs": 11253.743,
+        "testProcessExitCode": 1,
+        "exitCodeProvenance": "Original runner captured $LASTEXITCODE immediately after Node, wrote node-exit.txt and explicitly returned that exact exit code.",
+        "workerCount": 1,
+        "retriesConfigured": 0
+      },
+      "configuration": {
+        "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-help-placement-20260923\\playwright.config.mjs",
+        "testTitle": "Mr. Booky open help preserves primary navigation and scrolls independently in both locales",
+        "playwrightVersion": "1.62.1"
+      },
+      "capturedSourceInputCount": 669,
+      "capturedScopedSourceInputs": [
+        {
+          "path": "src/host/PlanetMascotControls.css",
+          "sha256": "bbd248cf2ba2391c249d9df5cf966ba13c84c6b28480851fc1226fcfac3963a3"
+        },
+        {
+          "path": "src/host/PlanetMascotControls.tsx",
+          "sha256": "28f53a5a70456b6e217df993096ed72f31d50984e83107f895344ee594c6846b"
+        },
+        {
+          "path": "src/host/bookyPlacement.ts",
+          "sha256": "14bf1a397e033ab44564eaeea3719f90c0a19ac4b72d94674b4a9e479f55c86b"
+        },
+        {
+          "path": "tests/pwa/booky-live-character.spec.mjs",
+          "sha256": "57401fd8ca472d2b9ca2a23492ec568f3c60778c38f3e388fd83cc5e5aff0f5c"
+        }
+      ],
+      "originalSourceHashesAreFromEachCapture": true,
+      "originalSourceBytesSeparatelyArchivedByThisLedger": false,
+      "screenshots": [
+        {
+          "filename": "booky-help-globe-ru-568.png",
+          "sha256": "f4b9a58a5608f37567d5a632a484100fe293742f1107b17a2b626edae0fd8b5b",
+          "width": 568,
+          "height": 320,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a4/output/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-ru-568.png"
+        },
+        {
+          "filename": "booky-help-placement-failure.png",
+          "sha256": "8e738b6e88d0a6af57e774d9736e1b08fb29364a3f49da35cdaf86a25e8246ff",
+          "width": 568,
+          "height": 320,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a4/output/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-placement-failure.png"
+        }
+      ],
+      "failureMessages": [
+        "Error: Compact landscape help retains a readable scrolling area\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThanOrEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: >= \u001b[32m180\u001b[39m\nReceived:    \u001b[31m160\u001b[39m\n\n  1293 |       if(size.width<=640){\n  1294 |         await capture(page,result,testInfo,`booky-help-globe-${language}-${size.width}.png`);\n> 1295 |         expect(helpHeight,'Compact landscape help retains a readable scrolling area').toBeGreaterThanOrEqual(180);\n       |                                                                                       ^\n  1296 |       }\n  1297 |       if(language==='ru'&&size.width===800)await capture(page,result,testInfo,'booky-help-globe-ru-800.png');\n  1298 |       if(language==='en'&&size.width===667)await capture(page,result,testInfo,'booky-help-globe-en-667.png');\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs:1295:87"
+      ],
+      "reportedBehaviorFlags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": false
+      }
+    },
+    {
+      "attempt": "a5",
+      "scope": "One focused open-help scenario, not the formal ten-case suite.",
+      "summary": "With the placement solver retaining a 200px help area when available, the complete focused open-help scenario passed. Both locales at 568 x 320 use 270 x 200px cards and at 640 x 360 use 340 x 200px cards. Actual wheel scrolling, sticky dismissal, all visible global-header/dock/country/rail controls after real close, larger viewports, portrait collection, canonical scene and no automatic writes passed. Twelve original screenshots were directly reviewed.",
+      "pass": true,
+      "tests": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a5/playwright.json",
+        "sha256": "17193b7024524c91617c4b5badb4b9a3cc922f7e6b178f64f1a3fb3e34153ae2"
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a5/output/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-live-character.json",
+        "sha256": "66565aec3f277e7be37b8f2671c70a5fbef172d56903c8ee161436645cb1831d"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a5/output/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/attachments/booky-live-character-source-evidence-44bf43d99d9a33c665d1cffcd476bd1d71c89a82.json",
+        "sha256": "66565aec3f277e7be37b8f2671c70a5fbef172d56903c8ee161436645cb1831d"
+      },
+      "executionEvidence": {
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a5/node.log",
+          "sha256": "f4f4fcfdc88dc5c3c964a62973b834c131d6160b62eec69e3a798ec205f07bc1"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a5/node.log",
+          "sha256": "f4f4fcfdc88dc5c3c964a62973b834c131d6160b62eec69e3a798ec205f07bc1"
+        },
+        "combinedOutput": true,
+        "streamProvenance": "PowerShell redirected both original Node streams into one preserved node.log; stdout and stderr references intentionally identify that same combined file.",
+        "actualNodeExit": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a5/node-exit.txt",
+          "sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+        },
+        "startedAt": "2026-09-23T16:02:33.103Z",
+        "durationMs": 35252.638,
+        "testProcessExitCode": 0,
+        "exitCodeProvenance": "Original runner captured $LASTEXITCODE immediately after Node, wrote node-exit.txt and explicitly returned that exact exit code.",
+        "workerCount": 1,
+        "retriesConfigured": 0
+      },
+      "configuration": {
+        "configFile": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-help-placement-20260923\\playwright.config.mjs",
+        "testTitle": "Mr. Booky open help preserves primary navigation and scrolls independently in both locales",
+        "playwrightVersion": "1.62.1"
+      },
+      "capturedSourceInputCount": 669,
+      "capturedScopedSourceInputs": [
+        {
+          "path": "src/host/PlanetMascotControls.css",
+          "sha256": "bbd248cf2ba2391c249d9df5cf966ba13c84c6b28480851fc1226fcfac3963a3"
+        },
+        {
+          "path": "src/host/PlanetMascotControls.tsx",
+          "sha256": "28f53a5a70456b6e217df993096ed72f31d50984e83107f895344ee594c6846b"
+        },
+        {
+          "path": "src/host/bookyPlacement.ts",
+          "sha256": "0a3da8edfa6819cf76517b3a0025f4d47ebf55beaa3c39f16637b57c5dadedac"
+        },
+        {
+          "path": "tests/pwa/booky-live-character.spec.mjs",
+          "sha256": "2f8700da02834d38e618d1900286a9f188096ddc50976a74217914fb2cda130b"
+        }
+      ],
+      "originalSourceHashesAreFromEachCapture": true,
+      "originalSourceBytesSeparatelyArchivedByThisLedger": false,
+      "screenshots": [
+        {
+          "filename": "booky-help-globe-ru-568.png",
+          "sha256": "aa98e9c9d9f86e0e3e21280b26144b0d0d119b95e321a35b05bc18f64d237ac5",
+          "width": 568,
+          "height": 320,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a5/output/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-ru-568.png"
+        },
+        {
+          "filename": "booky-help-globe-ru-568-scrolled.png",
+          "sha256": "9cddb83b8dad25e26650ef16a1165988db34421bd3a7534cb39535d754b6f373",
+          "width": 568,
+          "height": 320,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a5/output/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-ru-568-scrolled.png"
+        },
+        {
+          "filename": "booky-help-globe-en-568.png",
+          "sha256": "3376b2904b692a1ea0c209785a52a66a5635251cbc06d92608b26b3946440ba8",
+          "width": 568,
+          "height": 320,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a5/output/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-en-568.png"
+        },
+        {
+          "filename": "booky-help-globe-en-568-scrolled.png",
+          "sha256": "b99d8563577e1ffb83bbba3516e8326d76f5bfe71cbd0e54728179501e2c3bae",
+          "width": 568,
+          "height": 320,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a5/output/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-en-568-scrolled.png"
+        },
+        {
+          "filename": "booky-help-globe-ru-640.png",
+          "sha256": "74edca0d77a15cf67ba2f9e07b32057f1470d3cedd7a5b69b3568b2760958c9c",
+          "width": 640,
+          "height": 360,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a5/output/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-ru-640.png"
+        },
+        {
+          "filename": "booky-help-globe-ru-640-scrolled.png",
+          "sha256": "b5f71cf0552a59ec3d2e15f82fd212f43e3cfaf4f26f047d9a4767693605239b",
+          "width": 640,
+          "height": 360,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a5/output/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-ru-640-scrolled.png"
+        },
+        {
+          "filename": "booky-help-globe-en-640.png",
+          "sha256": "ec35925aded08c2902ff38c5f0e46e23c5f076a83ea4d0dc3037a38cb184a680",
+          "width": 640,
+          "height": 360,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a5/output/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-en-640.png"
+        },
+        {
+          "filename": "booky-help-globe-en-640-scrolled.png",
+          "sha256": "c8e7c53aa86db0b0290936749297a013bee9fb90dd1cf9a234627726d5e16179",
+          "width": 640,
+          "height": 360,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a5/output/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-en-640-scrolled.png"
+        },
+        {
+          "filename": "booky-help-globe-ru-800.png",
+          "sha256": "c610bf0ca4436dcfc7d97be90a1a3f24bc062decda23feec576d2ddf485c3155",
+          "width": 800,
+          "height": 400,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a5/output/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-ru-800.png"
+        },
+        {
+          "filename": "booky-help-globe-en-667.png",
+          "sha256": "f4617e705d80768e060f4b13c34fe1ad5e491cbec82caa1f2271fd3eade65815",
+          "width": 667,
+          "height": 375,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a5/output/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-globe-en-667.png"
+        },
+        {
+          "filename": "booky-help-collection-ru-320.png",
+          "sha256": "aeb73149745de028718980fa2d990dbf6220e6e07d7980976d8d6c35ec982120",
+          "width": 320,
+          "height": 844,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a5/output/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-collection-ru-320.png"
+        },
+        {
+          "filename": "booky-help-collection-en-320.png",
+          "sha256": "effce2c24e3bd7d5f5968d96574c80e942757c9b48c259158478a0cc3ebd90c5",
+          "width": 320,
+          "height": 844,
+          "framing": "actual-app-independent-live-3d-companion",
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a5/output/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-collection-en-320.png"
+        }
+      ],
+      "failureMessages": [],
+      "reportedBehaviorFlags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "openHelpLocaleControlsReachable": true,
+        "desktopOpenHelpNavigationReachable": true,
+        "closedHelpNavigationReachable": true,
+        "closedHelpGlobalHeaderReachable": true,
+        "collectionHeaderReachable": true,
+        "helpScrollsByPointerWheel": true,
+        "helpClosesWhileScrolled": true,
+        "helpRegrowsOnLargerViewport": true,
+        "compactLandscapeHelpReadable": true,
+        "petAndHelpFitWithoutOverlap": true,
+        "noAutomaticPreferenceWrites": true,
+        "noHelpCameraChanges": true,
+        "sameCanonicalGlobe": true
+      },
+      "directVisualReview": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-compact-landscape/browser-a5/direct-image-review.json",
+        "sha256": "a925069f8c531a9572ac26e86410b17f9b38903311ffe66129eb0415caf277a3"
+      }
+    }
+  ],
+  "limitations": [
+    "Diagnostics do not replace formal ten-case validation.",
+    "The initial a1 infrastructure failure has no actual-App source or image attachment.",
+    "Combined original Node logs are preserved without inventing separated streams.",
+    "No installed-device, iOS, full accessibility, stage or release acceptance."
+  ],
+  "releaseReady": false
+}

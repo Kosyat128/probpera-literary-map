@@ -1,0 +1,13 @@
+{
+  "resolution": "Preserve existing diagnostics; run formal browser a6 into unused output directory.",
+  "exitCode": 1,
+  "error": "AssertionError [ERR_ASSERTION]: Missing expected rejection. check.mjs:48:25; expected ENOENT. External browser-a1 already held preserved diagnostic evidence.",
+  "pass": false,
+  "attempt": "a1",
+  "schemaVersion": 1,
+  "reportRetainedFrom": "exec_command tool output, chunk58da42",
+  "sourceManifest": "source-manifests/72ce7e9c0f5c092a.json",
+  "mode": "browser",
+  "phase": "output-directory-preflight",
+  "browserLaunched": false
+}

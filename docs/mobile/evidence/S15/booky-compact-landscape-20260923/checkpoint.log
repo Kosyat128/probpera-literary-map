@@ -1,0 +1,11 @@
+{
+  "pass": true,
+  "sourceCommit": "13ce467193d918f4fcb1d2ba8101015505c4ebf1",
+  "unitCount": 147,
+  "browserCases": 10,
+  "images": 32,
+  "sourceInputs": 1650,
+  "protectedInputs": 1645,
+  "releaseReady": false
+}
+
