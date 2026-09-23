@@ -1,0 +1,75 @@
+{
+  "scope": "Static bilingual character contract plus existing leased exact-item composer",
+  "stagedOnly": true,
+  "files": [
+    {
+      "path": "src/host/bookyDossierCharacter.ts",
+      "sha256": "4f2840a284e7310c790c367ece00034a819c0375906a8fa5299517d30c291964",
+      "bytes": 12991
+    },
+    {
+      "path": "src/host/bookyJourneyCharacter.ts",
+      "sha256": "09e90c63b1c19364c8f137c2ead35227427af03edad9fa03015bfc4c42927fb6",
+      "bytes": 6886
+    },
+    {
+      "path": "src/host/bookyJourneyCharacter.test.ts",
+      "sha256": "418d853a5ba65e35bb546ea83bb695c115f57e4245f0c770bbcc085ecc63ee09",
+      "bytes": 15211
+    }
+  ],
+  "baseAdapterSha256": "7e800d68bc242b1845658cb861f418286886606d0907e0337969a8532668ab55",
+  "tests": {
+    "command": "node \"C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\node_modules\\vitest\\vitest.mjs\" run --config \"D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-character-contract\\vitest.isolated-a3.config.mjs\"",
+    "report": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-character-contract\\isolated-a3-vitest.json",
+    "reportSha256": "9341f2977ef51406a59ba90c64310a02693a974bfaf88d0636be417ce8a5b10c",
+    "passed": 12,
+    "failed": 0,
+    "names": [
+      "static bilingual Booky character contract and leased composer exports the same immutable canonical reference parser without granting membership",
+      "static bilingual Booky character contract and leased composer snapshots the bounded pair and stores canonical work once without retaining mutable input",
+      "static bilingual Booky character contract and leased composer requires exactly one RU then EN binding without silent locale normalization",
+      "static bilingual Booky character contract and leased composer rejects unsupported schemas, unbounded identities, invalid hashes and extra authority",
+      "static bilingual Booky character contract and leased composer rejects nested getters, sparse or exotic tuples, hidden and symbol properties without calling input code",
+      "static bilingual Booky character contract and leased composer fingerprints both localized references, source projection hashes, dialogue bindings and canonical work",
+      "static bilingual Booky character contract and leased composer resolves the current RU or EN projection with the same whole-pair identity but no dialogue or journey approval",
+      "static bilingual Booky character contract and leased composer denies absent/fallback sources, changed selected-item sources and even checksum-matching non-before mode",
+      "static bilingual Booky character contract and leased composer retains existing host revision, locale, explicit adult and catalog-readiness guards",
+      "static bilingual Booky character contract and leased composer accepts equivalent fresh lease renewal without changing semantic identity and denies expiry",
+      "static bilingual Booky character contract and leased composer fails closed on changing host, expiry during resolution, backwards time and thrown readers",
+      "static bilingual Booky character contract and leased composer snapshots caller spec before source callbacks and never lets a request accessor execute"
+    ]
+  },
+  "repoWrites": false,
+  "compilerRuntimeStorageUiChanged": false,
+  "productionContentAdded": false,
+  "editorialApprovalClaimed": false,
+  "remoteEnabled": false,
+  "formalTypeScriptCheck": false,
+  "browserRun": false,
+  "buildRun": false,
+  "preservedTestHistory": [
+    {
+      "attempt": "a1",
+      "report": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-character-contract\\isolated-a1-vitest.json",
+      "sha256": "9c2d4384f1b1924d696d828e4d92a6913ca69ac65974b85f44dd77b82ca3e4ed",
+      "passed": 12,
+      "failed": 0
+    },
+    {
+      "attempt": "a2",
+      "report": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-character-contract\\isolated-a2-vitest.json",
+      "sha256": "9aa09fa11bd6dd609f26736de43486627b12461e9a01edec8682d7b3da416e70",
+      "passed": 11,
+      "failed": 1
+    },
+    {
+      "attempt": "a3",
+      "report": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-journey-character-contract\\isolated-a3-vitest.json",
+      "sha256": "9341f2977ef51406a59ba90c64310a02693a974bfaf88d0636be417ce8a5b10c",
+      "passed": 12,
+      "failed": 0
+    }
+  ],
+  "reviewRepair": "Stable negative hosts; positive original-mode control; consistent allowed-domain source change has valid different projection; base resolver accepts matching DURING_READING before composer denies; remaining host identity change is intentional race test."
+}

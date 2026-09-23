@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "mode": "static",
+  "attempt": "a1",
+  "pass": true,
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/journey-character-contract-20260923/source-manifests/db8862335e2c0b7b.json",
+    "sha256": "db8862335e2c0b7bec2be2c497a5977d0418b9e878267baf7824c7e2350a20a8",
+    "fileCount": 1644
+  },
+  "checkInputs": [
+    {
+      "path": "docs/mobile/evidence/S15/journey-character-contract-20260923/check.mjs",
+      "sha256": "ab342de58b2d7edc0d2df04b76baf9e4af4bb52132f98cc47f2939c058e273a9"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/journey-character-contract-20260923/entry.json",
+      "sha256": "c10c7d54e51a3783854785ce7b461e56e70a905e7ea7ccbc2419c1dd00e06c5c"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/journey-character-contract-20260923/unit.config.mjs",
+      "sha256": "c14ace19ff9a9d95b9569846d7b31bf79e7aa6f38a971cfbe043d029d9c7c8ff"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/journey-character-contract-20260923/configure.mjs",
+      "sha256": "0ff2c15693c9cb43ab611c13e3c17cd11492c44539cde86d3321e5d4369ac6b6"
+    }
+  ],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "sourceInputsUnchanged": true,
+  "tests": null,
+  "reportError": null,
+  "execution": {
+    "exitCode": 0,
+    "durationMs": 28435
+  },
+  "runtimeUnchanged": true,
+  "runtimeWiringImplemented": false,
+  "stageAccepted": false,
+  "ageAdaptiveJourneysAccepted": false,
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "releaseReady": false
+}

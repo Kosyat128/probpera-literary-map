@@ -1,0 +1,13 @@
+# S15 Booky bilingual character contract
+
+Source: ba23d538b895212d281888bdb7a91c7db7c9f4cb.
+
+Added an unimported bounded RU/EN character contract with exact canonical work, localized dossier/item projection hashes and dialogue payload references, composed with the existing fresh leased adult resolver. The old adapter only exports its immutable structural parser. 76 focused tests from 8 files and TypeScript passed; 1,641 protected inputs remain exact. Prior 32 browser cases, 27 inspected captures and PWA/Android payloads are authenticated at source d970b0dc, without including the new contract. Independent review, current-only admission, capability gating and modal acknowledgement wiring remain separate pending work. No stage or release acceptance.
+
+- The character contract and its leased composer remain unimported by production entry points. The existing unimported adapter only gains an exported structural reference parser.
+- Both RU/EN references, projection hashes and exact dialogue bindings participate in identity. This proves neither independent editorial review nor availability of the other locale; only the current trusted published projection is resolved.
+- Fresh focused tests and TypeScript cover the additive boundary. Historical 64 focused and 717 journey unit reports retain their original source identities; no new broad host-unit, browser, visual or build run is claimed.
+- Prior 32 browser cases, 27 inspected captures and PWA/Android artifacts retain their original source d970b0dcc76f505b6d90e4fbe391a3e88bcf2eeb. Actual App/Reader/Map/Archive graphs exclude these host modules. Artifact source audits may list the old unimported adapter; its old hash is authenticated against the prior manifest and unchanged emitted payloads, not misrepresented as current source bytes.
+- No character journey node, modal acknowledgement, compiler/runtime/storage wiring, production content, remote capability or child access was enabled.
+
+Next: Continue S15 with current-only character admission and deliberate modal action composition, gated by real published-dossier capability while controlled remote delivery remains disabled. Independently admit the journey, dialogue and exact adult policy before issuing an ephemeral view token; revalidate current canonical work, locale, published item/source projection, lease and modal receipt before explicit acknowledgement. The static RU/EN contract supplies identity only, never review, availability, navigation or credit. Preserve existing history, sourced facts, passport and canonical scene. Do not invent production character content, remote availability, child approval, place/world entities, device or release acceptance; S03.acceptance remains first unresolved.

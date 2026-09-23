@@ -1,0 +1,930 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-23T06:22:42.591Z",
+  "pass": true,
+  "sourceCommit": "ba23d538b895212d281888bdb7a91c7db7c9f4cb",
+  "stage": "S15",
+  "status": "BOOKY_JOURNEY_CHARACTER_CONTRACT_VALIDATED",
+  "entry": {
+    "path": "docs/mobile/evidence/S15/journey-character-contract-20260923/entry.json",
+    "sha256": "c10c7d54e51a3783854785ce7b461e56e70a905e7ea7ccbc2419c1dd00e06c5c"
+  },
+  "previous": {
+    "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/result.json",
+    "sha256": "c5c5f523503751a0b5b80a53110a91e4cf5508314c9f149e5584d13b31da4618"
+  },
+  "previousRuntime": {
+    "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/result.json",
+    "sha256": "c5c5f523503751a0b5b80a53110a91e4cf5508314c9f149e5584d13b31da4618"
+  },
+  "checkpointHelper": {
+    "path": "docs/mobile/evidence/S15/journey-character-contract-20260923/checkpoint.mjs",
+    "sha256": "316d42956026c016abd7ee54d600b15eecae11269ab99466f746b4e76dfb7cf2"
+  },
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/journey-character-contract-20260923/source-manifests/db8862335e2c0b7b.json",
+    "sha256": "db8862335e2c0b7bec2be2c497a5977d0418b9e878267baf7824c7e2350a20a8",
+    "fileCount": 1644
+  },
+  "runs": {
+    "unit": {
+      "path": "docs/mobile/evidence/S15/journey-character-contract-20260923/unit-a1/result.json",
+      "sha256": "3e854a64dfe68497c69a3f148c78df18f7fff8c59f024802e72c0e5b5055f28f",
+      "tests": {
+        "passed": 76,
+        "failed": 0,
+        "skipped": 0
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/journey-character-contract-20260923/unit-a1/execution.json",
+        "sha256": "4a93bed10023f635f3fc63964ac756a2ea8d446c065ae3f9fce662a2ab1dd8b4"
+      }
+    },
+    "static": {
+      "path": "docs/mobile/evidence/S15/journey-character-contract-20260923/static-a1/result.json",
+      "sha256": "bc1318deb80ab6df65ba310687f7462a5605ebe8fbb937bc9e91ad0d544a52eb",
+      "tests": null,
+      "execution": {
+        "path": "docs/mobile/evidence/S15/journey-character-contract-20260923/static-a1/execution.json",
+        "sha256": "c7d2709508113b47c5b28aa6c7e2454de75910086aa77825dcd14cf0e6c9da13"
+      }
+    }
+  },
+  "attempts": {
+    "unit": "a1",
+    "static": "a1"
+  },
+  "earlierAttempts": [],
+  "unitFiles": [
+    "src/host/bookyDossierCharacter.test.ts",
+    "src/books/bookDossier.test.ts",
+    "src/books/bookDossierDiagram.test.ts",
+    "src/books/bookDossierPublicClient.test.ts",
+    "src/books/bookDossierCharacterView.test.ts",
+    "src/books/bookDossierLocation.test.ts",
+    "src/books/bookArchiveDetailView.test.ts",
+    "src/host/bookyJourneyCharacter.test.ts"
+  ],
+  "unitCount": 76,
+  "unitRerun": true,
+  "unitReport": {
+    "path": "docs/mobile/evidence/S15/journey-character-contract-20260923/unit-a1/vitest.json",
+    "sha256": "b984188a785a334e8fdfffe3c158c5b6f49beeb614588c590a0e42d2092aedf9"
+  },
+  "retainedUnits": [
+    {
+      "label": "dossier-character-view",
+      "sourceCommit": "d970b0dcc76f505b6d90e4fbe391a3e88bcf2eeb",
+      "authority": {
+        "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/result.json",
+        "sha256": "c5c5f523503751a0b5b80a53110a91e4cf5508314c9f149e5584d13b31da4618"
+      },
+      "result": {
+        "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/unit-a2/result.json",
+        "sha256": "33af3933bf8676d3e666558269af2e85fb6d5a2c4802e17a7eb177379adbfd04",
+        "tests": {
+          "passed": 64,
+          "failed": 0,
+          "skipped": 0
+        },
+        "execution": {
+          "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/unit-a2/execution.json",
+          "sha256": "bd2fcbb64b222154a3d024699e51f3e50df781967ce8d8ae1bc7a111aea46c4d"
+        },
+        "rawReport": {
+          "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/unit-a2/vitest.json",
+          "sha256": "092778368450903b5d70c17e5773b7ada5848f70b1675c405d3e7483f8e2ee45"
+        },
+        "checkInputs": [
+          {
+            "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/check.mjs",
+            "sha256": "383ec767a95396db8d2e3a07af980b04621a3043dccdb886dca1cdb25e0c30e0"
+          },
+          {
+            "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/entry.json",
+            "sha256": "9574190560a69af52617179c51da95aefdc08ccffacd33bb7776e596083a694f"
+          },
+          {
+            "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/unit.config.mjs",
+            "sha256": "3a07ece96e776174c78a910aca321121175674293c00b40af3ce31c014089230"
+          },
+          {
+            "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/playwright.config.mjs",
+            "sha256": "4d71778c37a6b9e28236af79e4c05514b0b11dc448e0f7415fd14c7e1d6e8b08"
+          }
+        ]
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/unit-a2/vitest.json",
+        "sha256": "092778368450903b5d70c17e5773b7ada5848f70b1675c405d3e7483f8e2ee45"
+      },
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/source-manifests/0b5acc80ab91c0fb.json",
+        "sha256": "0b5acc80ab91c0fb1433e83e42cf7de5f5dfbfed2ec731236ce8a11a8d5a4048",
+        "fileCount": 1642
+      },
+      "passed": 64,
+      "rerun": false
+    },
+    {
+      "label": "journey-fact",
+      "sourceCommit": "3349b125c2e30553e6b1237b4e3b73e1975a590a",
+      "authority": {
+        "path": "docs/mobile/evidence/S15/journey-fact-20260923/result.json",
+        "sha256": "2699587e0a330828bc314476b93a4017795e81a2fc28d207ce0e9016cdf02198"
+      },
+      "result": {
+        "path": "docs/mobile/evidence/S15/journey-fact-20260923/unit-a2/result.json",
+        "sha256": "7cb9a983ea860aa1db8d984ee4ccd6dfcaf2a4b94ff638a7038e3eafe01866a2",
+        "tests": {
+          "passed": 717,
+          "failed": 0,
+          "skipped": 0
+        },
+        "execution": {
+          "path": "docs/mobile/evidence/S15/journey-fact-20260923/unit-a2/execution.json",
+          "sha256": "e24f3b10aeef761f4de7b41715bc043a4a62bf26e26bd42ea931a1dd8bcc61ee"
+        },
+        "rawReport": {
+          "path": "docs/mobile/evidence/S15/journey-fact-20260923/unit-a2/vitest.json",
+          "sha256": "25307f057fd456a0c280031bb8c23fddd2a906941b7cd05c64b8e055593fe2e8"
+        },
+        "checkInputs": [
+          {
+            "path": "docs/mobile/evidence/S15/journey-fact-20260923/check.mjs",
+            "sha256": "314ecc82c4e557aa7f11b85b7fd0e94e50453bc3431ce3cd4229e7c650514653"
+          },
+          {
+            "path": "docs/mobile/evidence/S15/journey-fact-20260923/entry.json",
+            "sha256": "d464287606dc574143a2ecb0343059f09840163e64226fda5273a0ed2cdf4891"
+          },
+          {
+            "path": "docs/mobile/evidence/S15/journey-fact-20260923/unit.config.mjs",
+            "sha256": "aac37bbe358482a2dcb13edda4d0ffa57f8be4a2e861b94ec408baba0ad0006a"
+          },
+          {
+            "path": "docs/mobile/evidence/S15/journey-fact-20260923/playwright.config.mjs",
+            "sha256": "0ace09e32c4aa0af5eb6c3764d8c010b451244007e4fc2bb326fb386e3753b88"
+          }
+        ]
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/journey-fact-20260923/unit-a2/vitest.json",
+        "sha256": "25307f057fd456a0c280031bb8c23fddd2a906941b7cd05c64b8e055593fe2e8"
+      },
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/journey-fact-20260923/source-manifests/5ab2f74580ce44d2.json",
+        "sha256": "5ab2f74580ce44d2fb845a5fe8dd652ff530f2ae35e04a5160b06e5f72436a77",
+        "fileCount": 1636
+      },
+      "passed": 717,
+      "rerun": false
+    }
+  ],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalGitIdentity": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "worktreeSha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c",
+      "gitBlobSha256": "9246ce2df1e44e205d7e58ae67e501239b77ccc46516e81b321aa9a35650e4f0",
+      "lineEndingOnly": true
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "worktreeSha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563",
+      "gitBlobSha256": "965c62a1d67189b683bce26271d32bc137f0503bd3e0d8cbce7e9e0a236957a7",
+      "lineEndingOnly": true
+    }
+  ],
+  "unchangedTrackedInputCount": 1641,
+  "protectedInputsVerified": true,
+  "changedSourcePaths": [
+    "src/host/bookyDossierCharacter.ts"
+  ],
+  "newSourcePaths": [
+    "src/host/bookyJourneyCharacter.ts",
+    "src/host/bookyJourneyCharacter.test.ts"
+  ],
+  "newImplementationFiles": [
+    "src/host/bookyJourneyCharacter.ts"
+  ],
+  "adapterExportOnly": {
+    "path": "src/host/bookyDossierCharacter.ts",
+    "beforeGitSha256": "7e800d68bc242b1845658cb861f418286886606d0907e0337969a8532668ab55",
+    "afterSha256": "4f2840a284e7310c790c367ece00034a819c0375906a8fa5299517d30c291964",
+    "structuralParserExportOnly": true
+  },
+  "retainedBuilds": [
+    {
+      "kind": "pwa",
+      "buildId": "79064f5d00e7fedc6562597730a7f504ffcfbd6fc1e2f5110f2f10fc7548bc6c",
+      "sourceCommit": "d970b0dcc76f505b6d90e4fbe391a3e88bcf2eeb",
+      "priorResult": {
+        "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/pwa-a1/result.json",
+        "sha256": "abc230b1e2f95620c15a436d0a48901e8f2ef596b786a81580dcf06e129b642d"
+      },
+      "artifactManifest": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-dossier-character-view/pwa-79064f5d/artifact.json",
+        "sha256": "18bda9560108b829feb0ace980b540db5e722f4356c0baa4cac8d683f6236a54"
+      },
+      "apk": null,
+      "retainedArtifactSourceInputsAuthenticated": true,
+      "reachableRuntimeSourceInputsUnchanged": true,
+      "runtimePayloadRehashed": true,
+      "newJourneyCharacterContractIncluded": false,
+      "rebuilt": false
+    },
+    {
+      "kind": "android",
+      "buildId": "dd83547e743e53f973fe92e7fc1afcf6bfa425448c42dfaddc65bd25361b62b2",
+      "sourceCommit": "d970b0dcc76f505b6d90e4fbe391a3e88bcf2eeb",
+      "priorResult": {
+        "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/android-a1/result.json",
+        "sha256": "c424245fbd98549f5834b42e2273217092e81f015ed596d57b35bfc2fef679d8"
+      },
+      "artifactManifest": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-dossier-character-view/android-dd83547e/runtime/artifact.json",
+        "sha256": "3702eb5ae3497832889c65ddf4939b7f5d8092fc1886881a225ae7e70e5159e1"
+      },
+      "apk": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-dossier-character-view/android-dd83547e/app-dev-debug.apk",
+        "bytes": 70289891,
+        "sha256": "0a63342cfaeaeffcb0bc1f1bc6c8b14c4cd1986b16580f33b96b9f51623f24dd"
+      },
+      "retainedArtifactSourceInputsAuthenticated": true,
+      "reachableRuntimeSourceInputsUnchanged": true,
+      "runtimePayloadRehashed": true,
+      "newJourneyCharacterContractIncluded": false,
+      "rebuilt": false
+    }
+  ],
+  "retainedBrowser": {
+    "sourceCommit": "d970b0dcc76f505b6d90e4fbe391a3e88bcf2eeb",
+    "sourceManifest": {
+      "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/source-manifests/0b5acc80ab91c0fb.json",
+      "sha256": "0b5acc80ab91c0fb1433e83e42cf7de5f5dfbfed2ec731236ce8a11a8d5a4048",
+      "fileCount": 1642
+    },
+    "run": {
+      "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/browser-a2/result.json",
+      "sha256": "806deeca06c48bc41fbd77892b78558e740f445d5d35933be1c167d17c63875d",
+      "tests": {
+        "passed": 32,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/browser-a2/execution.json",
+        "sha256": "728587c6160759762ebc72dcb16d99bfd2fcd59ce883fa98a57b28294b8fc467"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/browser-a2/playwright.json",
+        "sha256": "49dfaf7e86b6f6751e54bedea8c6fc187f3bfd9329543471525cdde576517e6f"
+      },
+      "checkInputs": [
+        {
+          "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/check.mjs",
+          "sha256": "383ec767a95396db8d2e3a07af980b04621a3043dccdb886dca1cdb25e0c30e0"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/entry.json",
+          "sha256": "9574190560a69af52617179c51da95aefdc08ccffacd33bb7776e596083a694f"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/unit.config.mjs",
+          "sha256": "3a07ece96e776174c78a910aca321121175674293c00b40af3ce31c014089230"
+        },
+        {
+          "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/playwright.config.mjs",
+          "sha256": "4d71778c37a6b9e28236af79e4c05514b0b11dc448e0f7415fd14c7e1d6e8b08"
+        }
+      ]
+    },
+    "visualReview": {
+      "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/visual-review.json",
+      "sha256": "47fd0d08ea7e27bdc2af11a6c67d674a4e3fdb2b9992d774d925098764eab60b"
+    },
+    "captures": [
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-a-new-review-ad865-rwrite-a-saved-older-prefix\\booky-journey.json",
+        "sha256": "2fce86e3baf4593723e8cb76ed05169ddcd6245f4ac0e1fb95839a67745f218c"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-activity-ans-b1175-vigation-and-saved-progress\\booky-journey.json",
+        "sha256": "6c4bf17119340f9310494339c6d983aebd274d2e5eba92e60349dd68ea995f1c"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-activity-ans-b190e--and-revoked-journey-review\\booky-journey.json",
+        "sha256": "d1ea7809c9d79ea029cfb52faea10f82c6ea4ec9024733f7db24653fc7d51264"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-actual-revie-84536-cross-locale-and-suspension\\booky-journey.json",
+        "sha256": "de98b5b18178d5df99099b1263b94f0c5f269ef120b709013545847cfee7d1b5"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-confirmed-ex-7a157-ently-admitted-saved-locale\\booky-journey.json",
+        "sha256": "c5a9a217010267d033792d56a8746d53cb3bac18507c59c1b24da4f3d7a7b74e"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-confirmed-jo-c9068-ument-until-explicit-resume\\booky-journey.json",
+        "sha256": "53ed459b4fb6f9c1c1872ea80b23ba4c4153fa575a25af0fdcafa0c4332f27be"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-explicit-rev-b1a6f-the-exact-new-prefix-paused\\booky-journey.json",
+        "sha256": "d1eb7ba4f190766c7f66710b3514612e9cbfeca82fd3b55b5fc928b79645e7b2"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-failed-journ-ff64b--until-explicit-exact-retry\\booky-journey.json",
+        "sha256": "2e4d2d17551414c72e0538c54e2adba14345a11a2d25f8155279dd116112a25e"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-full-journey-4d29d-hosen-entry-for-a-new-route\\booky-journey.json",
+        "sha256": "540fd4d7f131712a2855032ab5b2f11bbe8e790d6d035a04c84b9ad2e6ba53d3"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-future-journ-cfc19--explicit-confirmed-removal\\booky-journey.json",
+        "sha256": "7a71c78b1b23b0c18b8d20ff0c099eb64bad06327834bfc41de4ba6db2d51770"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-history-sele-f0d72-ile-revoking-a-prerequisite\\booky-journey.json",
+        "sha256": "692971420d11b18cc7dad01dd3096a5f8b85bf420dbde2d5163b453b644f066d"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-journey-admi-1436d--independent-journey-review\\booky-journey.json",
+        "sha256": "324414147424e55dc83210ab299e887608429f99533d25dbd72495d6cf345114"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-journey-admission-fails-closed-no-profile\\booky-journey.json",
+        "sha256": "8131898674fbd83f353038523ac0b07d9cb0e7bdd694e6ec39474079062750ae"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-journey-focu-000aa--without-replaying-progress\\booky-journey.json",
+        "sha256": "86f0cf8848c386b415c219735ce790e822f48320df5e061888187ea88f8c2750"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-journey-focu-5ad75-tion-restores-stable-status\\booky-journey.json",
+        "sha256": "c5b66fa74b9c8656c1b9c7cc1200c6f7e695dc635abbb65b165a8ff631abf5b9"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-journey-focu-6f2c7-eals-outside-keyboard-focus\\booky-journey.json",
+        "sha256": "2ea0d1620e031c608175deb98238cd4c2bef9c629e0e45adb3185cb675bf24fc"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-literary-pas-855d7-eliberately-deleted-history\\booky-journey.json",
+        "sha256": "4e02fc432c5ef576b4cfaa83207fda900319be962ac5cee5efcd658ca4146d64"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-missing-or-r-abb1e--version-without-navigation\\booky-journey.json",
+        "sha256": "cde7acac1619ca05ff0c50d586eaefaa5019d6b82d19c09df26f6ca09933c68a"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-reviewed-jou-75eb0-ty-without-writing-progress\\booky-journey.json",
+        "sha256": "f0e2a1818390f9fd1f6a12f4db0ac819418085d6c14e2d0155234b77c89758ea"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-sourced-fact-48ec2-it-semantic-acknowledgement\\booky-journey.json",
+        "sha256": "cc1cc393f30ad0784a645fca57201ccd87202eb207c966b8d0edbcb23e051ce8"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-sourced-fact-f6df9--exact-reviewed-restoration\\booky-journey.json",
+        "sha256": "3f99f3e695dabb3c2a9f0e8ea371357dd3d83aa18c298c1cc7b4c0165b87a46f"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-reader-policy-explic-219f8-on-never-grant-stale-policy\\booky-reader-policy.json",
+        "sha256": "dfcac0461fa2892a84c12b183db98112ef23c34f127672fb8c2fab37880ce147"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-reader-policy-future-298cd-on-cannot-restore-admission\\booky-reader-policy.json",
+        "sha256": "877102c8a51206b0a80a23d0221a206d35aec55316f97d239737d60eb62564dd"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\book-dossier-character-vie-af365-hout-navigation-or-progress\\dossier-character-view.json",
+        "sha256": "148eb73612ad5c0d39c847bf7d3881fe375fd4c4db3d2db8167aa42b93c5f30f"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\book-dossier-character-vie-d14eb-r-replay-a-consumed-request\\dossier-character-view.json",
+        "sha256": "ed3b9eb71dc5d7c21df59911d40883be9b439d412911f8ccec928d7bf123ca8d"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\book-dossier-character-vie-ec024--outside-focus-or-replaying\\dossier-character-view.json",
+        "sha256": "acc6af46f7fb17af55c84f1a0d0c01b9fe2e6b8b034a99f01995591cac122370"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\book-dossier-navigation-ea-223b1-hout-replaying-another-book\\dossier-navigation.json",
+        "sha256": "83765dcf64511939903b80c3aea1ab7163fdb254b32593146f354c1302ed054a"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\book-dossier-navigation-fa-5b733--and-across-archive-remount\\dossier-navigation.json",
+        "sha256": "46078f373359de44bb297c2dafbedc1ce736a8d103a7614294d4985340431b55"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\book-dossier-navigation-sw-ee4e2-ient-previous-account-write\\dossier-navigation.json",
+        "sha256": "08f74a83b3017eb7783d5b00a033471e9627a1ee284eacdf87041767d353f2a7"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\book-dossier-character-arc-4ffa2-an-inactive-initial-receipt\\dossier-character-archive.json",
+        "sha256": "d7f9eca2e0f27b9a35c22bad8381d7ad4bcaad1d829c6a0cbc83e1ee2a8120bd"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\book-dossier-character-arc-c3396--it-before-native-book-Back\\dossier-character-archive.json",
+        "sha256": "35f70ce3df8829f6edf0ecf6e3093635869ef833ac8e3a29af07bce9114fb391"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\book-dossier-character-arc-fdca1-quires-a-new-explicit-token\\dossier-character-archive.json",
+        "sha256": "df3a80460c19ce3fc49db0a82e6b79e0a56c5e64518ee491bb38eb7cb25d268d"
+      }
+    ],
+    "appEvidenceAttachments": [
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-activity-ans-b1175-vigation-and-saved-progress\\attachments\\booky-journey-source-evidence-6abf51be3beb69c269ba25b11f5318475139e9b9.json",
+        "sha256": "6c4bf17119340f9310494339c6d983aebd274d2e5eba92e60349dd68ea995f1c"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-activity-ans-b190e--and-revoked-journey-review\\attachments\\booky-journey-source-evidence-0be5d4c5b3fb481dee9695560cd5fd2d1f9f6a3e.json",
+        "sha256": "d1ea7809c9d79ea029cfb52faea10f82c6ea4ec9024733f7db24653fc7d51264"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-actual-revie-84536-cross-locale-and-suspension\\attachments\\booky-journey-source-evidence-1c4be55f6ddeb6cd4a4a59a882746917769f410a.json",
+        "sha256": "de98b5b18178d5df99099b1263b94f0c5f269ef120b709013545847cfee7d1b5"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-journey-admission-fails-closed-no-profile\\attachments\\booky-journey-source-evidence-6e83b2e37a1a322394b618db8d23fcd66c63ac5e.json",
+        "sha256": "8131898674fbd83f353038523ac0b07d9cb0e7bdd694e6ec39474079062750ae"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-journey-admi-1436d--independent-journey-review\\attachments\\booky-journey-source-evidence-987507d259638828eb80811e02a80cb9b45f3a7e.json",
+        "sha256": "324414147424e55dc83210ab299e887608429f99533d25dbd72495d6cf345114"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-confirmed-jo-c9068-ument-until-explicit-resume\\attachments\\booky-journey-source-evidence-72f1da3e049b8d5ee993daad50aa823c7e091810.json",
+        "sha256": "53ed459b4fb6f9c1c1872ea80b23ba4c4153fa575a25af0fdcafa0c4332f27be"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-failed-journ-ff64b--until-explicit-exact-retry\\attachments\\booky-journey-source-evidence-08074d951b762f43ce2d53ef22b8efc1a0ed77b1.json",
+        "sha256": "2e4d2d17551414c72e0538c54e2adba14345a11a2d25f8155279dd116112a25e"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-future-journ-cfc19--explicit-confirmed-removal\\attachments\\booky-journey-source-evidence-9b7888dd1fca5fb34d3f815b67e454a990da2d77.json",
+        "sha256": "7a71c78b1b23b0c18b8d20ff0c099eb64bad06327834bfc41de4ba6db2d51770"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-a-new-review-ad865-rwrite-a-saved-older-prefix\\attachments\\booky-journey-source-evidence-a7a8c724aee4d670a1c771bc725d4bbf322ef4a8.json",
+        "sha256": "2fce86e3baf4593723e8cb76ed05169ddcd6245f4ac0e1fb95839a67745f218c"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-explicit-rev-b1a6f-the-exact-new-prefix-paused\\attachments\\booky-journey-source-evidence-2156d801c646fb6c34da7c8192cb5fe212789a23.json",
+        "sha256": "d1eb7ba4f190766c7f66710b3514612e9cbfeca82fd3b55b5fc928b79645e7b2"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-missing-or-r-abb1e--version-without-navigation\\attachments\\booky-journey-source-evidence-b6653ccacaee1ab3c5f6e6dd0cdd62ceafa78af2.json",
+        "sha256": "cde7acac1619ca05ff0c50d586eaefaa5019d6b82d19c09df26f6ca09933c68a"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-confirmed-ex-7a157-ently-admitted-saved-locale\\attachments\\booky-journey-source-evidence-a5562de0046fbc3aeee22bf7b6ee12432403cf83.json",
+        "sha256": "c5a9a217010267d033792d56a8746d53cb3bac18507c59c1b24da4f3d7a7b74e"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-history-sele-f0d72-ile-revoking-a-prerequisite\\attachments\\booky-journey-source-evidence-6b4966f830269eb8c330d868a43b967a892ac14d.json",
+        "sha256": "692971420d11b18cc7dad01dd3096a5f8b85bf420dbde2d5163b453b644f066d"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-journey-focu-5ad75-tion-restores-stable-status\\attachments\\booky-journey-source-evidence-b66721746e51c8eab5d468710a85fbf71b8a799e.json",
+        "sha256": "c5b66fa74b9c8656c1b9c7cc1200c6f7e695dc635abbb65b165a8ff631abf5b9"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-journey-focu-6f2c7-eals-outside-keyboard-focus\\attachments\\booky-journey-source-evidence-a8004f5ddf429757fa4dec362dc9b292f1eb1806.json",
+        "sha256": "2ea0d1620e031c608175deb98238cd4c2bef9c629e0e45adb3185cb675bf24fc"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-journey-focu-000aa--without-replaying-progress\\attachments\\booky-journey-source-evidence-4d7ace0571fd4e328016623b504a16cdea33422f.json",
+        "sha256": "86f0cf8848c386b415c219735ce790e822f48320df5e061888187ea88f8c2750"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-full-journey-4d29d-hosen-entry-for-a-new-route\\attachments\\booky-journey-source-evidence-e11e5d6430dd709465a4127c55798c56ec5f78d4.json",
+        "sha256": "540fd4d7f131712a2855032ab5b2f11bbe8e790d6d035a04c84b9ad2e6ba53d3"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-literary-pas-855d7-eliberately-deleted-history\\attachments\\booky-journey-source-evidence-f9a81f96ea13bf4b43854599f4c76b6cc0ec5a4f.json",
+        "sha256": "4e02fc432c5ef576b4cfaa83207fda900319be962ac5cee5efcd658ca4146d64"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-reviewed-jou-75eb0-ty-without-writing-progress\\attachments\\booky-journey-source-evidence-7bea9daccb6b727c9073c915f40af26b56896065.json",
+        "sha256": "f0e2a1818390f9fd1f6a12f4db0ac819418085d6c14e2d0155234b77c89758ea"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-sourced-fact-48ec2-it-semantic-acknowledgement\\attachments\\booky-journey-source-evidence-a2db16403d43452fe06f1eea1215d1021acbc8fd.json",
+        "sha256": "cc1cc393f30ad0784a645fca57201ccd87202eb207c966b8d0edbcb23e051ce8"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-sourced-fact-f6df9--exact-reviewed-restoration\\attachments\\booky-journey-source-evidence-79f4e8bca633ec8477e6f8266f2099aa5c3a3b7e.json",
+        "sha256": "3f99f3e695dabb3c2a9f0e8ea371357dd3d83aa18c298c1cc7b4c0165b87a46f"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-reader-policy-explic-219f8-on-never-grant-stale-policy\\attachments\\booky-reader-policy-source-evidence-e096ca2b59b6d0c0dfeec6e90ff4e8d2c6eb4b4f.json",
+        "sha256": "dfcac0461fa2892a84c12b183db98112ef23c34f127672fb8c2fab37880ce147"
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-reader-policy-future-298cd-on-cannot-restore-admission\\attachments\\booky-reader-policy-source-evidence-22c34221b5ff538695bc4c57242da14ecf5a0a1b.json",
+        "sha256": "877102c8a51206b0a80a23d0221a206d35aec55316f97d239737d60eb62564dd"
+      }
+    ],
+    "passedCases": 32,
+    "actualAppCaseCount": 23,
+    "componentAndArchiveCaseCount": 9,
+    "inspectedImageCount": 27,
+    "runtimeGraphs": [
+      {
+        "capture": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-a-new-review-ad865-rwrite-a-saved-older-prefix\\booky-journey.json",
+          "sha256": "2fce86e3baf4593723e8cb76ed05169ddcd6245f4ac0e1fb95839a67745f218c"
+        },
+        "fileCount": 666,
+        "dependencyCount": 0,
+        "inlineFixtureCount": 0,
+        "adapterAndContractAbsent": true
+      },
+      {
+        "capture": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-activity-ans-b1175-vigation-and-saved-progress\\booky-journey.json",
+          "sha256": "6c4bf17119340f9310494339c6d983aebd274d2e5eba92e60349dd68ea995f1c"
+        },
+        "fileCount": 666,
+        "dependencyCount": 0,
+        "inlineFixtureCount": 0,
+        "adapterAndContractAbsent": true
+      },
+      {
+        "capture": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-activity-ans-b190e--and-revoked-journey-review\\booky-journey.json",
+          "sha256": "d1ea7809c9d79ea029cfb52faea10f82c6ea4ec9024733f7db24653fc7d51264"
+        },
+        "fileCount": 666,
+        "dependencyCount": 0,
+        "inlineFixtureCount": 0,
+        "adapterAndContractAbsent": true
+      },
+      {
+        "capture": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-actual-revie-84536-cross-locale-and-suspension\\booky-journey.json",
+          "sha256": "de98b5b18178d5df99099b1263b94f0c5f269ef120b709013545847cfee7d1b5"
+        },
+        "fileCount": 666,
+        "dependencyCount": 0,
+        "inlineFixtureCount": 0,
+        "adapterAndContractAbsent": true
+      },
+      {
+        "capture": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-confirmed-ex-7a157-ently-admitted-saved-locale\\booky-journey.json",
+          "sha256": "c5a9a217010267d033792d56a8746d53cb3bac18507c59c1b24da4f3d7a7b74e"
+        },
+        "fileCount": 666,
+        "dependencyCount": 0,
+        "inlineFixtureCount": 0,
+        "adapterAndContractAbsent": true
+      },
+      {
+        "capture": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-confirmed-jo-c9068-ument-until-explicit-resume\\booky-journey.json",
+          "sha256": "53ed459b4fb6f9c1c1872ea80b23ba4c4153fa575a25af0fdcafa0c4332f27be"
+        },
+        "fileCount": 666,
+        "dependencyCount": 0,
+        "inlineFixtureCount": 0,
+        "adapterAndContractAbsent": true
+      },
+      {
+        "capture": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-explicit-rev-b1a6f-the-exact-new-prefix-paused\\booky-journey.json",
+          "sha256": "d1eb7ba4f190766c7f66710b3514612e9cbfeca82fd3b55b5fc928b79645e7b2"
+        },
+        "fileCount": 666,
+        "dependencyCount": 0,
+        "inlineFixtureCount": 0,
+        "adapterAndContractAbsent": true
+      },
+      {
+        "capture": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-failed-journ-ff64b--until-explicit-exact-retry\\booky-journey.json",
+          "sha256": "2e4d2d17551414c72e0538c54e2adba14345a11a2d25f8155279dd116112a25e"
+        },
+        "fileCount": 666,
+        "dependencyCount": 0,
+        "inlineFixtureCount": 0,
+        "adapterAndContractAbsent": true
+      },
+      {
+        "capture": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-full-journey-4d29d-hosen-entry-for-a-new-route\\booky-journey.json",
+          "sha256": "540fd4d7f131712a2855032ab5b2f11bbe8e790d6d035a04c84b9ad2e6ba53d3"
+        },
+        "fileCount": 666,
+        "dependencyCount": 0,
+        "inlineFixtureCount": 0,
+        "adapterAndContractAbsent": true
+      },
+      {
+        "capture": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-future-journ-cfc19--explicit-confirmed-removal\\booky-journey.json",
+          "sha256": "7a71c78b1b23b0c18b8d20ff0c099eb64bad06327834bfc41de4ba6db2d51770"
+        },
+        "fileCount": 666,
+        "dependencyCount": 0,
+        "inlineFixtureCount": 0,
+        "adapterAndContractAbsent": true
+      },
+      {
+        "capture": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-history-sele-f0d72-ile-revoking-a-prerequisite\\booky-journey.json",
+          "sha256": "692971420d11b18cc7dad01dd3096a5f8b85bf420dbde2d5163b453b644f066d"
+        },
+        "fileCount": 666,
+        "dependencyCount": 0,
+        "inlineFixtureCount": 0,
+        "adapterAndContractAbsent": true
+      },
+      {
+        "capture": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-journey-admi-1436d--independent-journey-review\\booky-journey.json",
+          "sha256": "324414147424e55dc83210ab299e887608429f99533d25dbd72495d6cf345114"
+        },
+        "fileCount": 666,
+        "dependencyCount": 0,
+        "inlineFixtureCount": 0,
+        "adapterAndContractAbsent": true
+      },
+      {
+        "capture": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-journey-admission-fails-closed-no-profile\\booky-journey.json",
+          "sha256": "8131898674fbd83f353038523ac0b07d9cb0e7bdd694e6ec39474079062750ae"
+        },
+        "fileCount": 666,
+        "dependencyCount": 0,
+        "inlineFixtureCount": 0,
+        "adapterAndContractAbsent": true
+      },
+      {
+        "capture": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-journey-focu-000aa--without-replaying-progress\\booky-journey.json",
+          "sha256": "86f0cf8848c386b415c219735ce790e822f48320df5e061888187ea88f8c2750"
+        },
+        "fileCount": 666,
+        "dependencyCount": 0,
+        "inlineFixtureCount": 0,
+        "adapterAndContractAbsent": true
+      },
+      {
+        "capture": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-journey-focu-5ad75-tion-restores-stable-status\\booky-journey.json",
+          "sha256": "c5b66fa74b9c8656c1b9c7cc1200c6f7e695dc635abbb65b165a8ff631abf5b9"
+        },
+        "fileCount": 666,
+        "dependencyCount": 0,
+        "inlineFixtureCount": 0,
+        "adapterAndContractAbsent": true
+      },
+      {
+        "capture": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-journey-focu-6f2c7-eals-outside-keyboard-focus\\booky-journey.json",
+          "sha256": "2ea0d1620e031c608175deb98238cd4c2bef9c629e0e45adb3185cb675bf24fc"
+        },
+        "fileCount": 666,
+        "dependencyCount": 0,
+        "inlineFixtureCount": 0,
+        "adapterAndContractAbsent": true
+      },
+      {
+        "capture": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-literary-pas-855d7-eliberately-deleted-history\\booky-journey.json",
+          "sha256": "4e02fc432c5ef576b4cfaa83207fda900319be962ac5cee5efcd658ca4146d64"
+        },
+        "fileCount": 666,
+        "dependencyCount": 0,
+        "inlineFixtureCount": 0,
+        "adapterAndContractAbsent": true
+      },
+      {
+        "capture": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-missing-or-r-abb1e--version-without-navigation\\booky-journey.json",
+          "sha256": "cde7acac1619ca05ff0c50d586eaefaa5019d6b82d19c09df26f6ca09933c68a"
+        },
+        "fileCount": 666,
+        "dependencyCount": 0,
+        "inlineFixtureCount": 0,
+        "adapterAndContractAbsent": true
+      },
+      {
+        "capture": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-reviewed-jou-75eb0-ty-without-writing-progress\\booky-journey.json",
+          "sha256": "f0e2a1818390f9fd1f6a12f4db0ac819418085d6c14e2d0155234b77c89758ea"
+        },
+        "fileCount": 666,
+        "dependencyCount": 0,
+        "inlineFixtureCount": 0,
+        "adapterAndContractAbsent": true
+      },
+      {
+        "capture": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-sourced-fact-48ec2-it-semantic-acknowledgement\\booky-journey.json",
+          "sha256": "cc1cc393f30ad0784a645fca57201ccd87202eb207c966b8d0edbcb23e051ce8"
+        },
+        "fileCount": 666,
+        "dependencyCount": 0,
+        "inlineFixtureCount": 0,
+        "adapterAndContractAbsent": true
+      },
+      {
+        "capture": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-journey-sourced-fact-f6df9--exact-reviewed-restoration\\booky-journey.json",
+          "sha256": "3f99f3e695dabb3c2a9f0e8ea371357dd3d83aa18c298c1cc7b4c0165b87a46f"
+        },
+        "fileCount": 666,
+        "dependencyCount": 0,
+        "inlineFixtureCount": 0,
+        "adapterAndContractAbsent": true
+      },
+      {
+        "capture": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-reader-policy-explic-219f8-on-never-grant-stale-policy\\booky-reader-policy.json",
+          "sha256": "dfcac0461fa2892a84c12b183db98112ef23c34f127672fb8c2fab37880ce147"
+        },
+        "fileCount": 666,
+        "dependencyCount": 0,
+        "inlineFixtureCount": 0,
+        "adapterAndContractAbsent": true
+      },
+      {
+        "capture": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\booky-reader-policy-future-298cd-on-cannot-restore-admission\\booky-reader-policy.json",
+          "sha256": "877102c8a51206b0a80a23d0221a206d35aec55316f97d239737d60eb62564dd"
+        },
+        "fileCount": 666,
+        "dependencyCount": 0,
+        "inlineFixtureCount": 0,
+        "adapterAndContractAbsent": true
+      },
+      {
+        "capture": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\book-dossier-character-vie-af365-hout-navigation-or-progress\\dossier-character-view.json",
+          "sha256": "148eb73612ad5c0d39c847bf7d3881fe375fd4c4db3d2db8167aa42b93c5f30f"
+        },
+        "fileCount": 26,
+        "dependencyCount": 9,
+        "inlineFixtureCount": 1,
+        "adapterAndContractAbsent": true
+      },
+      {
+        "capture": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\book-dossier-character-vie-d14eb-r-replay-a-consumed-request\\dossier-character-view.json",
+          "sha256": "ed3b9eb71dc5d7c21df59911d40883be9b439d412911f8ccec928d7bf123ca8d"
+        },
+        "fileCount": 26,
+        "dependencyCount": 9,
+        "inlineFixtureCount": 1,
+        "adapterAndContractAbsent": true
+      },
+      {
+        "capture": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\book-dossier-character-vie-ec024--outside-focus-or-replaying\\dossier-character-view.json",
+          "sha256": "acc6af46f7fb17af55c84f1a0d0c01b9fe2e6b8b034a99f01995591cac122370"
+        },
+        "fileCount": 26,
+        "dependencyCount": 9,
+        "inlineFixtureCount": 1,
+        "adapterAndContractAbsent": true
+      },
+      {
+        "capture": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\book-dossier-character-arc-4ffa2-an-inactive-initial-receipt\\dossier-character-archive.json",
+          "sha256": "d7f9eca2e0f27b9a35c22bad8381d7ad4bcaad1d829c6a0cbc83e1ee2a8120bd"
+        },
+        "fileCount": 165,
+        "dependencyCount": 0,
+        "inlineFixtureCount": 0,
+        "adapterAndContractAbsent": true
+      },
+      {
+        "capture": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\book-dossier-character-arc-c3396--it-before-native-book-Back\\dossier-character-archive.json",
+          "sha256": "35f70ce3df8829f6edf0ecf6e3093635869ef833ac8e3a29af07bce9114fb391"
+        },
+        "fileCount": 165,
+        "dependencyCount": 0,
+        "inlineFixtureCount": 0,
+        "adapterAndContractAbsent": true
+      },
+      {
+        "capture": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-dossier-character-view\\browser-a2\\book-dossier-character-arc-fdca1-quires-a-new-explicit-token\\dossier-character-archive.json",
+          "sha256": "df3a80460c19ce3fc49db0a82e6b79e0a56c5e64518ee491bb38eb7cb25d268d"
+        },
+        "fileCount": 165,
+        "dependencyCount": 0,
+        "inlineFixtureCount": 0,
+        "adapterAndContractAbsent": true
+      }
+    ],
+    "ordinaryNavigationGraphNotRecorded": true,
+    "productionImportScanApplied": true,
+    "reachableRuntimeInputsUnchanged": true,
+    "rawReportsAndScreenshotsRehashed": true,
+    "adapterAndContractIncluded": false,
+    "rerun": false,
+    "visualInspectionRepeated": false
+  },
+  "pwa": {
+    "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/pwa-a1/result.json",
+    "sha256": "abc230b1e2f95620c15a436d0a48901e8f2ef596b786a81580dcf06e129b642d"
+  },
+  "android": {
+    "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/android-a1/result.json",
+    "sha256": "c424245fbd98549f5834b42e2273217092e81f015ed596d57b35bfc2fef679d8"
+  },
+  "pwaBuildId": "79064f5d00e7fedc6562597730a7f504ffcfbd6fc1e2f5110f2f10fc7548bc6c",
+  "androidBuildId": "dd83547e743e53f973fe92e7fc1afcf6bfa425448c42dfaddc65bd25361b62b2",
+  "browserCases": 32,
+  "actualAppCaseCount": 23,
+  "componentAndArchiveCaseCount": 9,
+  "inspectedImageCount": 27,
+  "visualReview": {
+    "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/visual-review.json",
+    "sha256": "47fd0d08ea7e27bdc2af11a6c67d674a4e3fdb2b9992d774d925098764eab60b"
+  },
+  "buildsRebuilt": false,
+  "browserRerun": false,
+  "visualReviewRerun": false,
+  "runtimeUnchanged": true,
+  "runtimeSourceCommit": "d970b0dcc76f505b6d90e4fbe391a3e88bcf2eeb",
+  "runtimeWiringImplemented": false,
+  "newContractIncludedInRetainedArtifacts": false,
+  "criterionChanges": [],
+  "requirementChanges": [],
+  "allStageAndCriterionStatusesUnchanged": true,
+  "counts": {
+    "COMPLETE": 3,
+    "IN_PROGRESS": 12,
+    "NOT_STARTED": 26
+  },
+  "firstUnresolved": "S03.acceptance",
+  "decisionD176Recorded": true,
+  "nextAction": "Continue S15 with current-only character admission and deliberate modal action composition, gated by real published-dossier capability while controlled remote delivery remains disabled. Independently admit the journey, dialogue and exact adult policy before issuing an ephemeral view token; revalidate current canonical work, locale, published item/source projection, lease and modal receipt before explicit acknowledgement. The static RU/EN contract supplies identity only, never review, availability, navigation or credit. Preserve existing history, sourced facts, passport and canonical scene. Do not invent production character content, remote availability, child approval, place/world entities, device or release acceptance; S03.acceptance remains first unresolved.",
+  "limitations": [
+    "The character contract and its leased composer remain unimported by production entry points. The existing unimported adapter only gains an exported structural reference parser.",
+    "Both RU/EN references, projection hashes and exact dialogue bindings participate in identity. This proves neither independent editorial review nor availability of the other locale; only the current trusted published projection is resolved.",
+    "Fresh focused tests and TypeScript cover the additive boundary. Historical 64 focused and 717 journey unit reports retain their original source identities; no new broad host-unit, browser, visual or build run is claimed.",
+    "Prior 32 browser cases, 27 inspected captures and PWA/Android artifacts retain their original source d970b0dcc76f505b6d90e4fbe391a3e88bcf2eeb. Actual App/Reader/Map/Archive graphs exclude these host modules. Artifact source audits may list the old unimported adapter; its old hash is authenticated against the prior manifest and unchanged emitted payloads, not misrepresented as current source bytes.",
+    "No character journey node, modal acknowledgement, compiler/runtime/storage wiring, production content, remote capability or child access was enabled."
+  ],
+  "productionContentSource": {
+    "path": "src/host/bookyJourneyContent.ts",
+    "sha256": "1ccdde359d1b363304cd177c501b9092d7cc97f878e9b5b9d66d3080fbd86a5c"
+  },
+  "productionMigrationContentSource": {
+    "path": "src/host/bookyJourneyMigrationContent.ts",
+    "sha256": "de3760af303a3fa2ead0f10142a725d814b0e532a344b296e44d457ace503823"
+  },
+  "productionInventorySources": [
+    {
+      "path": "src/host/bookyJourneyContent.ts",
+      "sha256": "1ccdde359d1b363304cd177c501b9092d7cc97f878e9b5b9d66d3080fbd86a5c"
+    },
+    {
+      "path": "src/host/bookyJourneyMigrationContent.ts",
+      "sha256": "de3760af303a3fa2ead0f10142a725d814b0e532a344b296e44d457ace503823"
+    }
+  ],
+  "productionInventorySourcesRehashed": true,
+  "productionJourneyCount": 0,
+  "approvedProductionDialogueCount": 0,
+  "combinedDraftCount": 34,
+  "productionSourcedFactCount": 0,
+  "productionActivityCount": 0,
+  "productionHistoricalDefinitionCount": 0,
+  "productionMigrationCount": 0,
+  "approvedProductionMigrationReceiptCount": 0,
+  "productionJourneysEnabled": false,
+  "reviewedDialogueAccepted": false,
+  "ageAdaptiveJourneysAccepted": false,
+  "childApproved": false,
+  "narrationEnabled": false,
+  "remoteDossierDeliveryEnabled": false,
+  "stageAccepted": false,
+  "productionActionsPerformed": false,
+  "releaseReady": false
+}

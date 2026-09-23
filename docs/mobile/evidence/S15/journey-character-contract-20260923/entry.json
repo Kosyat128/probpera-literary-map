@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-23T05:48:40.102Z",
+  "checkpoint": "4c726e78a13466b7976fbeff4199b030187738d0",
+  "stage": "S15",
+  "previous": {
+    "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/result.json",
+    "sha256": "c5c5f523503751a0b5b80a53110a91e4cf5508314c9f149e5584d13b31da4618"
+  },
+  "priorSourceManifest": {
+    "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/source-manifests/0b5acc80ab91c0fb.json",
+    "sha256": "0b5acc80ab91c0fb1433e83e42cf7de5f5dfbfed2ec731236ce8a11a8d5a4048",
+    "fileCount": 1642
+  },
+  "checkpointFiles": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "e1961d2b6d6f43f2f2bbc682415f39b48659310b5324b1d8db8e0d87d3ee86f3"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "5360170bc4e7769604d46c24b782b4bf1c944a36ba3058cd3d4ecfc6a0b4abd3"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "5490c3a680bf56c7128593d2eb19a3163bcd68c878ff775a90e872247ffa9bbb"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "181b74c4425e7071e92ef29a3aba6367aa0865aea83dccc21be091e4e171cc5c"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "ae98d0b6df09ece23a1966b9f96b18f60c9a13ff8b6f68990c0be26a0a24fb75"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "06a13f16671087b23b26edf277a2cb02a2a70923bfa66c3aacaeca9190f82b49"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "b5ebe34c83e0606557a7ff3e696b8112d84ec419ff45f11cb7c452db829d9ea2"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "a8c2a777a7f8d0f6604bd17ede9e471e3ce4f208fcb60cfedca16bc5022bdaee"
+    }
+  ],
+  "changedPaths": [
+    "src/host/bookyDossierCharacter.ts"
+  ],
+  "newSourcePaths": [
+    "src/host/bookyJourneyCharacter.ts",
+    "src/host/bookyJourneyCharacter.test.ts"
+  ],
+  "newImplementationFiles": [
+    "src/host/bookyJourneyCharacter.ts"
+  ],
+  "currentSourceInputs": [
+    {
+      "path": "src/host/bookyDossierCharacter.ts",
+      "sha256": "4f2840a284e7310c790c367ece00034a819c0375906a8fa5299517d30c291964"
+    },
+    {
+      "path": "src/host/bookyJourneyCharacter.ts",
+      "sha256": "09e90c63b1c19364c8f137c2ead35227427af03edad9fa03015bfc4c42927fb6"
+    },
+    {
+      "path": "src/host/bookyJourneyCharacter.test.ts",
+      "sha256": "418d853a5ba65e35bb546ea83bb695c115f57e4245f0c770bbcc085ecc63ee09"
+    }
+  ],
+  "sourceInputCount": 1644,
+  "protectedInputCount": 1641,
+  "unitFiles": [
+    "src/host/bookyDossierCharacter.test.ts",
+    "src/books/bookDossier.test.ts",
+    "src/books/bookDossierDiagram.test.ts",
+    "src/books/bookDossierPublicClient.test.ts",
+    "src/books/bookDossierCharacterView.test.ts",
+    "src/books/bookDossierLocation.test.ts",
+    "src/books/bookArchiveDetailView.test.ts",
+    "src/host/bookyJourneyCharacter.test.ts"
+  ],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "priorPwa": {
+    "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/pwa-a1/result.json",
+    "sha256": "abc230b1e2f95620c15a436d0a48901e8f2ef596b786a81580dcf06e129b642d"
+  },
+  "priorAndroid": {
+    "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/android-a1/result.json",
+    "sha256": "c424245fbd98549f5834b42e2273217092e81f015ed596d57b35bfc2fef679d8"
+  },
+  "priorBrowser": {
+    "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/browser-a2/result.json",
+    "sha256": "806deeca06c48bc41fbd77892b78558e740f445d5d35933be1c167d17c63875d",
+    "tests": {
+      "passed": 32,
+      "failed": 0,
+      "skipped": 0,
+      "flaky": 0
+    },
+    "execution": {
+      "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/browser-a2/execution.json",
+      "sha256": "728587c6160759762ebc72dcb16d99bfd2fcd59ce883fa98a57b28294b8fc467"
+    },
+    "rawReport": {
+      "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/browser-a2/playwright.json",
+      "sha256": "49dfaf7e86b6f6751e54bedea8c6fc187f3bfd9329543471525cdde576517e6f"
+    },
+    "checkInputs": [
+      {
+        "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/check.mjs",
+        "sha256": "383ec767a95396db8d2e3a07af980b04621a3043dccdb886dca1cdb25e0c30e0"
+      },
+      {
+        "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/entry.json",
+        "sha256": "9574190560a69af52617179c51da95aefdc08ccffacd33bb7776e596083a694f"
+      },
+      {
+        "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/unit.config.mjs",
+        "sha256": "3a07ece96e776174c78a910aca321121175674293c00b40af3ce31c014089230"
+      },
+      {
+        "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/playwright.config.mjs",
+        "sha256": "4d71778c37a6b9e28236af79e4c05514b0b11dc448e0f7415fd14c7e1d6e8b08"
+      }
+    ]
+  },
+  "priorVisualReview": {
+    "path": "docs/mobile/evidence/S15/dossier-character-view-20260923/visual-review.json",
+    "sha256": "47fd0d08ea7e27bdc2af11a6c67d674a4e3fdb2b9992d774d925098764eab60b"
+  },
+  "requirements": [
+    "PLANETKA-004"
+  ],
+  "scope": "Unimported static RU/EN character contract and current leased dossier composer; existing adapter adds a structural parser export only. No compiler, runtime, UI, progress or remote capability is wired.",
+  "runtimeWiringImplemented": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

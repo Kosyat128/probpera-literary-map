@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "preparedAt": "2026-09-23T05:22:51.437Z",
+  "scope": "External evidence helpers only; no repository changes or execution",
+  "files": [
+    {
+      "name": "configure.mjs",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-character-contract/evidence-staging/configure.mjs",
+      "sha256": "0ff2c15693c9cb43ab611c13e3c17cd11492c44539cde86d3321e5d4369ac6b6",
+      "bytes": 4146,
+      "syntaxCheck": "node --check PASS"
+    },
+    {
+      "name": "check.mjs",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-character-contract/evidence-staging/check.mjs",
+      "sha256": "ab342de58b2d7edc0d2df04b76baf9e4af4bb52132f98cc47f2939c058e273a9",
+      "bytes": 6534,
+      "syntaxCheck": "node --check PASS"
+    },
+    {
+      "name": "unit.config.mjs",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-character-contract/evidence-staging/unit.config.mjs",
+      "sha256": "c14ace19ff9a9d95b9569846d7b31bf79e7aa6f38a971cfbe043d029d9c7c8ff",
+      "bytes": 342,
+      "syntaxCheck": "node --check PASS"
+    },
+    {
+      "name": "checkpoint.mjs",
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-character-contract/evidence-staging/checkpoint.mjs",
+      "sha256": "316d42956026c016abd7ee54d600b15eecae11269ab99466f746b4e76dfb7cf2",
+      "bytes": 28996,
+      "syntaxCheck": "node --check PASS"
+    }
+  ],
+  "sourcePreparation": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-journey-character-contract/staging-receipt.json",
+    "sha256": "be8875f3ca8c7132037b03404d57fe4583fa9857a91f672dc8c6f3d7bd0c0066"
+  },
+  "entryGenerated": false,
+  "checkpointExecuted": false,
+  "testsRun": false,
+  "buildsRun": false,
+  "browserRun": false,
+  "sourceInputs": 1644,
+  "protectedInputs": 1641,
+  "changedSourceCount": 1,
+  "addedSourceCount": 2,
+  "unitFiles": 8,
+  "expectedUnitCount": 76,
+  "unitCountCalculatedFromFinalReport": true,
+  "retainedRuntimeEvidence": {
+    "browserCases": 32,
+    "images": 27,
+    "originalUnitCounts": [
+      64,
+      717
+    ],
+    "sourceCommit": "d970b0dcc76f505b6d90e4fbe391a3e88bcf2eeb",
+    "finalCheckpointAndArtifactReferences": "Read from committed D175 result at configure time; no guessed identities"
+  },
+  "commands": [
+    "node docs/mobile/evidence/S15/journey-character-contract-20260923/configure.mjs <D175_CHECKPOINT_SHA>",
+    "node docs/mobile/evidence/S15/journey-character-contract-20260923/check.mjs unit a1",
+    "node docs/mobile/evidence/S15/journey-character-contract-20260923/check.mjs static a1",
+    "node docs/mobile/evidence/S15/journey-character-contract-20260923/checkpoint.mjs <SOURCE_COMMIT> a1 a1"
+  ],
+  "assumptions": [
+    "Copy helpers and the final three source files only after the D175 checkpoint is committed. Configure requires HEAD to equal that checkpoint and creates entry.json once.",
+    "Final source commit must directly parent the configured checkpoint and contain exactly one modified adapter and the two added contract paths.",
+    "The prior artifact source audit may contain the old unimported adapter. Its historical bytes are checked against the prior source manifest; all payloads are rehashed and current production import/runtime graphs must exclude the adapter and contract.",
+    "Only PLANETKA-004 notes/evidence change at D176; all stage and criterion statuses, S03.acceptance, and releaseReady:false remain unchanged."
+  ]
+}
