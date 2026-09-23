@@ -221,7 +221,7 @@ test.beforeAll(async () => {
     'src/components/GlobeCameraRig.tsx', 'src/components/globeAtlas.ts', 'src/host/planetMascot.ts', 'src/host/planetMascotRoutes.ts',
     'src/host/PlanetMascotControls.tsx', 'src/host/PlanetMascotControls.css', 'src/host/PlanetMascotAvatar.tsx', 'src/host/PlanetMascotAvatar.css',
     'src/host/bookyModel.ts', 'src/host/bookyAnimation.ts', 'src/host/useBookyRenderer.ts', 'src/host/NativePlanetPanel.tsx',
-    'src/host/PlanetDownloadsPanel.tsx', 'src/host/PlanetGraphicsSettings.tsx', 'src/components/RecentHistoryPanel.tsx', ASSET];
+    'src/host/host.css', 'src/host/bookyWalk.ts', 'src/host/PlanetDownloadsPanel.tsx', 'src/host/PlanetGraphicsSettings.tsx', 'src/components/RecentHistoryPanel.tsx', ASSET];
   for (const filename of required) expect(inputs).toContain(filename);
   const sourcePaths = [...new Set([...required, ...inputs.filter(value => value.startsWith('src/') && !value.includes('?')), 'tests/pwa/booky-live-character.spec.mjs'])].sort();
   const sourceInputs = await Promise.all(sourcePaths.map(async filename => ({ path: filename, sha256: digest(await fs.readFile(path.join(ROOT, filename))) })));
@@ -1574,3 +1574,176 @@ test('Mr. Booky treats held Enter and Space as one walking command',async({},tes
   }catch(error){await capture(page,result,testInfo,'booky-held-key-failure.png').catch(()=>undefined);throw error;}
   finally{await page.keyboard.up('Enter').catch(()=>undefined);await page.keyboard.up('Space').catch(()=>undefined);await fixture.close();}
 });
+
+// Three explicit touch-only sequences share one actual App:
+// natural approach/point/return, cancelling return, and reduced-motion pointing.
+// Read-only finite observers; OS reduced-motion emulation; no app state writes.
+for(const [language,view] of [['ru',{width:390,height:844}],['en',{width:320,height:844}]]){
+test(`mobile touch graphics approach returns to reserved dock and respects Stop and reduced motion ${language} ${view.width}`,async({},testInfo)=>{
+  test.setTimeout(120000);const fixture=await open(testInfo),{page,result}=fixture;
+  result.scenario='mobile-touch-graphics-dock-return-'+language;result.observations.mobileDock={language,viewport:view};
+  const all=result.observations.mobileDock;let currentRecord=null;
+  const state=label=>page.evaluate(label=>window.__mobileApproach.read(label),label);
+  const contains=(outer,inner)=>!!outer&&!!inner&&inner.left>=outer.left-.1&&inner.top>=outer.top-.1&&inner.right<=outer.right+.1&&inner.bottom<=outer.bottom+.1;
+  const snapshotPreferences=()=>({mutations:mutations(fixture),saved:fixture.memory.get(BOOKY)});
+  const unchanged=before=>JSON.stringify(mutations(fixture))===JSON.stringify(before.mutations)&&fixture.memory.get(BOOKY)===before.saved;
+  async function photograph(name){if(result.screenshots.some(s=>s.filename===name))return;await capture(page,result,testInfo,name);}
+  async function graphicsAction(){
+    if(!await panel(page).isVisible()){await page.locator('[data-planet-mascot-toggle]').tap();await expect(panel(page)).toBeVisible();await companionSaved(fixture);}
+    const summary=panel(page).locator('[data-booky-useful-actions] > summary');
+    if(!await summary.evaluate(element=>element.parentElement.open))await summary.tap();
+    const action=panel(page).getByRole('button',{name:language==='ru'?'Настройки графики':'Graphics settings',exact:true});await expect(action).toBeEnabled();return action;
+  }
+  async function observe(){
+    await page.evaluate(()=>{
+      const rect=r=>({left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height});
+      const visible=element=>{
+        if(!element)return null;let r=element.getBoundingClientRect(),l=Math.max(0,r.left),t=Math.max(0,r.top),b=Math.min(innerHeight,r.bottom),q=Math.min(innerWidth,r.right);
+        const style=getComputedStyle(element);if(element.closest('[hidden],[inert],[aria-hidden="true"]')||style.display==='none'||style.visibility!=='visible'||Number(style.opacity)===0||r.width<2||r.height<2)return null;let clipAncestors=style.position!=='fixed';
+        for(let p=element.parentElement;p;p=p.parentElement){const s=getComputedStyle(p),pr=p.getBoundingClientRect();
+          if(s.display==='none'||Number(s.opacity)===0)return null;
+          if(clipAncestors&&p!==document.body&&p!==document.documentElement&&/auto|scroll|hidden|clip/u.test(s.overflowX)){l=Math.max(l,pr.left);q=Math.min(q,pr.right);}
+          if(clipAncestors&&p!==document.body&&p!==document.documentElement&&/auto|scroll|hidden|clip/u.test(s.overflowY)){t=Math.max(t,pr.top);b=Math.min(b,pr.bottom);}
+          if(s.position==='fixed')clipAncestors=false;
+        }
+        return q-l>2&&b-t>2?{left:l,top:t,right:q,bottom:b,width:q-l,height:b-t}:null;
+      };
+      const check=element=>{
+        const r=visible(element),key=element.querySelector('[data-planet-quality-option]')?.getAttribute('data-planet-quality-option')
+          ??element.getAttribute('aria-label')??element.textContent.trim().slice(0,60);
+        if(!r)return{key,visible:false};
+        const points=[.15,.5,.85].map(fraction=>{const top=document.elementFromPoint(r.left+r.width*fraction,r.top+r.height/2);
+          return{fraction,reachable:!!top&&element.contains(top),petBlocked:!!top?.closest('[data-planet-mascot-pet]'),hit:top?.tagName,hitClass:top?.className??null};});
+        const input=element.querySelector('[data-planet-quality-option]'),ir=input&&visible(input);let inputHit=null;if(ir){const top=document.elementFromPoint(ir.left+ir.width/2,ir.top+ir.height/2);inputHit={reachable:!!top&&input.contains(top),petBlocked:!!top?.closest('[data-planet-mascot-pet]'),hit:top?.tagName,hitClass:top?.className??null};}
+        return{key,visible:true,rect:r,points,inputHit,reachable:points.every(p=>p.reachable)};
+      };
+      const read=label=>{
+        const pet=document.querySelector('[data-planet-mascot-pet]'),cue=document.querySelector('[data-booky-target]'),graphics=document.querySelector('[data-planet-graphics-settings]');
+        const controls=[...document.querySelectorAll('.native-planet-panel__header button,[data-planet-graphics-settings] > summary,[data-planet-graphics-settings] .planet-graphics-settings__option')].map(check);
+        return{at:performance.now(),label,phase:cue?.getAttribute('data-booky-target')??null,action:cue?.getAttribute('data-booky-target-action')??null,
+          returning:pet?.getAttribute('data-booky-returning')==='true',dock:visible(document.querySelector('[data-booky-dock-active="true"]')),content:visible(document.querySelector('.native-planet-panel__content')),gesture:pet?.getAttribute('data-planet-mascot-gesture')??null,pet:pet?rect(pet.getBoundingClientRect()):null,
+          cue:cue?rect(cue.getBoundingClientRect()):null,graphicsOpen:graphics?.open??false,graphicsArea:visible(graphics?.querySelector('fieldset')),controls};
+      };
+      const value=window.__mobileApproach={events:[],samples:[],startedAt:performance.now(),frame:0,stopped:false,read};
+      const event=event=>{const target=event.target instanceof Element?event.target:null;
+        value.events.push({at:performance.now(),type:event.type,trusted:event.isTrusted,pointerType:event.pointerType??null,
+          action:target?.closest('[data-planet-mascot-action]')?.getAttribute('data-planet-mascot-action')??null,
+          control:target?.closest('[data-booky-walk-stop]')?'stop':target?.closest('[data-booky-walk]')?'start':null,state:read('input'),insideGraphics:!!target?.closest('[data-planet-graphics-settings]')});};
+      for(const type of ['pointerdown','pointerup','click'])document.addEventListener(type,event,true);
+      const sample=()=>{if(value.stopped)return;value.samples.push(read('frame'));
+        if(performance.now()-value.startedAt<10000)value.frame=requestAnimationFrame(sample);};
+      value.stop=()=>{value.stopped=true;cancelAnimationFrame(value.frame);
+        for(const type of ['pointerdown','pointerup','click'])document.removeEventListener(type,event,true);
+        return{events:value.events,samples:value.samples,startedAt:value.startedAt};};
+      value.frame=requestAnimationFrame(sample);
+    });
+  }
+  async function settle(){
+    let previous=null,matches=0;await expect.poll(async()=>{const s=await state('settling'),value=JSON.stringify(s.pet);
+      matches=s.phase===null&&!s.returning&&s.gesture!=='walking'&&value===previous?matches+1:0;previous=value;return matches;
+    },{timeout:1500,intervals:[30,50]}).toBeGreaterThanOrEqual(3);
+    return state('settled');
+  }
+  const finishTrace=()=>page.evaluate(()=>window.__mobileApproach.stop());
+  function trustedAction(trace){expect(trace.events.some(e=>e.type==='pointerdown'&&e.action==='graphics'&&e.pointerType==='touch'&&e.trusted)).toBe(true);
+    expect(trace.events.some(e=>e.type==='click'&&e.action==='graphics'&&e.pointerType==='touch'&&e.trusted)).toBe(true);
+    expect(trace.events.filter(e=>e.type==='click'&&e.insideGraphics)).toEqual([]);}
+  function motionMetrics(samples){
+    const phases={};
+    for(const name of ['approaching','tapping','returning']){const values=samples.filter(s=>name==='returning'?s.returning:s.phase===name);
+      const steps=values.slice(1).map((value,i)=>({dt:value.at-values[i].at,px:Math.hypot(value.pet.left-values[i].pet.left,value.pet.top-values[i].pet.top)}));
+      phases[name]={frames:values.length,first:values[0]??null,last:values.at(-1)??null,
+        distance:values.length>1?Math.hypot(values.at(-1).pet.left-values[0].pet.left,values.at(-1).pet.top-values[0].pet.top):0,
+        maxStep:Math.max(0,...steps.map(s=>s.px)),maxFrameGap:Math.max(0,...steps.map(s=>s.dt)),steps};
+    }return phases;
+  }
+  function finalHitChecks(s){
+    const visible=s.controls.filter(c=>c.visible);expect(visible.filter(c=>c.inputHit).length).toBeGreaterThan(0);
+    expect(visible.filter(c=>!c.reachable||c.inputHit?.reachable===false),'Settled visible label/radio/header targets stay reachable').toEqual([]);
+  }
+  try{
+    await page.setViewportSize(view);await ready(page);
+    if(language==='en'){
+      await page.locator('.atlas-immersive-chrome .interface-language-control button').filter({hasText:/^EN$/u}).tap();
+      await expect(page.locator('html')).toHaveAttribute('lang','en');await expect.poll(()=>fixture.memory.get('probpera-interface-language')).toBe('en');
+      await ready(page);
+    }
+    await actual(page);await stablePose(page);
+    await page.evaluate(()=>window.__bookyLiveFixture.remember());
+    let action=await graphicsAction();await live(page);
+    const canonical=await actual(page);all.initialCanonical=canonical;
+    const natural=currentRecord=all.natural={preferencesBefore:snapshotPreferences()};await observe();
+    await action.tap();await expect(panel(page)).not.toBeVisible();
+    await page.waitForFunction(()=>document.querySelector('[data-booky-target]')?.getAttribute('data-booky-target')==='tapping',undefined,{timeout:4000});
+    natural.atPoint=await state('pointing');await photograph(`booky-mobile-graphics-approach-${language}-${view.width}.png`);
+    await page.waitForFunction(()=>window.__mobileApproach.samples.some(s=>s.returning),undefined,{timeout:3000});
+    await page.waitForFunction(()=>!document.querySelector('[data-booky-target]')&&document.querySelector('[data-planet-mascot-pet]')?.getAttribute('data-booky-returning')!=='true'
+      &&document.querySelector('[data-planet-mascot-pet]')?.getAttribute('data-planet-mascot-gesture')!=='walking',undefined,{timeout:3500});
+    natural.final=await settle();natural.trace=await finishTrace();natural.motion=motionMetrics(natural.trace.samples);
+    natural.preferencesUnchanged=unchanged(natural.preferencesBefore);natural.canonical=await actual(page);
+    await photograph(`booky-mobile-graphics-settled-${language}-${view.width}.png`);
+    trustedAction(natural.trace);
+    for(const phase of ['approaching','returning']){expect(natural.motion[phase].frames).toBeGreaterThan(2);expect(natural.motion[phase].distance).toBeGreaterThan(8);
+      // Conservative screen-diagonal velocity bound catches a teleport while
+      // allowing ordinary real-browser frame delays; raw deltas are retained.
+      for(const step of natural.motion[phase].steps)expect(step.px).toBeLessThanOrEqual(Math.hypot(view.width,view.height)*1.5/1600*step.dt+3);}
+    expect(natural.motion.tapping.frames).toBeGreaterThan(0);
+    expect(natural.motion.approaching.last.at).toBeLessThan(natural.motion.tapping.first.at);
+    expect(natural.motion.tapping.last.at).toBeLessThan(natural.motion.returning.first.at);
+    expect(natural.motion.returning.last.at-natural.motion.approaching.first.at).toBeLessThan(5500);
+    expect(natural.trace.samples.filter(s=>s.returning).every(s=>s.phase===null&&s.cue===null&&s.gesture==='walking')).toBe(true);
+    const returning=natural.trace.samples.filter(s=>s.returning),tapEnd=natural.motion.tapping.last,returnStart=returning[0];
+    expect(Math.hypot(returnStart.pet.left-tapEnd.pet.left,returnStart.pet.top-tapEnd.pet.top),'Return starts continuously at the pointing position').toBeLessThan(5);
+    const lastReturn=returning.at(-1);expect(Math.hypot(natural.final.pet.left-lastReturn.pet.left,natural.final.pet.top-lastReturn.pet.top),'Final handoff does not teleport').toBeLessThan(5);
+    expect(contains(natural.final.dock,natural.final.pet)).toBe(true);
+    expect(natural.final.content.bottom,'Collection content ends above the reserved dock').toBeLessThanOrEqual(natural.final.dock.top+.1);
+    expect(natural.final.pet.width).toBe(240);expect(natural.final.pet.height).toBe(96);
+    finalHitChecks(natural.final);expect(natural.final.graphicsOpen).toBe(true);expect(natural.preferencesUnchanged).toBe(true);retained(natural.canonical,canonical,false);
+
+    action=await graphicsAction();const cancelled=currentRecord=all.cancelledReturn={preferencesBefore:snapshotPreferences()};await observe();
+    await action.tap();await expect(panel(page)).not.toBeVisible();
+    await page.waitForFunction(()=>document.querySelector('[data-planet-mascot-pet]')?.getAttribute('data-booky-returning')==='true',undefined,{timeout:4500});
+    await page.waitForTimeout(250);cancelled.beforeStop=await state('before trusted Stop');
+    const button=await page.locator('[data-booky-walk-stop]').boundingBox();
+    await page.touchscreen.tap(button.x+button.width/2,button.y+button.height/2);
+    cancelled.settled=await settle();await page.waitForTimeout(1900);cancelled.after1900ms=await state('1900ms after cancelled return');
+    cancelled.trace=await finishTrace();cancelled.preferencesUnchanged=unchanged(cancelled.preferencesBefore);cancelled.canonical=await actual(page);
+    trustedAction(cancelled.trace);
+    expect(cancelled.trace.events.some(e=>e.type==='pointerdown'&&e.control==='stop'&&e.pointerType==='touch'&&e.trusted&&e.state.returning)).toBe(true);
+    expect(cancelled.trace.events.some(e=>e.type==='click'&&e.control==='stop'&&e.pointerType==='touch'&&e.trusted)).toBe(true);
+    expect(cancelled.settled.returning).toBe(false);expect(cancelled.settled.phase).toBeNull();expect(cancelled.settled.gesture).not.toBe('walking');
+    expect(contains(cancelled.settled.dock,cancelled.settled.pet),'Explicit Stop keeps the interrupted position outside the dock').toBe(false);
+    expect(cancelled.after1900ms.pet).toEqual(cancelled.settled.pet);expect(cancelled.after1900ms.returning).toBe(false);expect(cancelled.after1900ms.phase).toBeNull();
+    for(const s of cancelled.trace.samples.filter(s=>s.at>=cancelled.settled.at)){expect(s.pet).toEqual(cancelled.settled.pet);expect(s.returning).toBe(false);expect(s.phase).toBeNull();expect(s.gesture).not.toBe('walking');}
+    expect(cancelled.preferencesUnchanged).toBe(true);retained(cancelled.canonical,natural.canonical);
+    // Intentionally no overlap assertion after a user explicitly stops mid-route.
+
+    const resetBefore=mutations(fixture);await page.locator('[data-planet-mascot-hide]').tap();
+    await expect.poll(()=>JSON.parse(fixture.memory.get(BOOKY)??'null')?.visible).toBe(false);
+    await page.emulateMedia({reducedMotion:'reduce'});
+    await page.locator('[data-planet-mascot-toggle]').tap();await expect(panel(page)).toBeVisible();await companionSaved(fixture);await live(page);
+    await page.locator('[data-planet-mascot-collapse]').tap();await expect(panel(page)).toHaveCount(0);await companionSaved(fixture);
+    await observe();all.resetToDock={state:await settle(),explicitPreferenceOperations:mutations(fixture).slice(resetBefore.length)};await finishTrace();
+    action=await graphicsAction();const reduced=currentRecord=all.reducedMotion={preferencesBefore:snapshotPreferences()};await observe();reduced.origin=await state('before reduced-motion action');
+    await action.tap();await expect(panel(page)).not.toBeVisible();
+    await page.waitForFunction(()=>document.querySelector('[data-booky-target]')?.getAttribute('data-booky-target')==='tapping',undefined,{timeout:1500});
+    reduced.atPoint=await state('static pointing');await page.waitForTimeout(1000);reduced.final=await settle();reduced.trace=await finishTrace();
+    reduced.preferencesUnchanged=unchanged(reduced.preferencesBefore);reduced.canonical=await actual(page);
+    trustedAction(reduced.trace);expect(reduced.trace.samples.some(s=>s.phase==='tapping'&&s.gesture==='pointing')).toBe(true);
+    expect(reduced.trace.samples.some(s=>s.phase==='approaching'||s.returning||s.gesture==='walking')).toBe(false);
+    expect(contains(reduced.atPoint.dock,reduced.atPoint.pet)).toBe(true);expect(contains(reduced.final.dock,reduced.final.pet)).toBe(true);
+    for(const s of reduced.trace.samples)expect(s.pet).toEqual(reduced.origin.pet);
+    expect(reduced.final.pet).toEqual(reduced.origin.pet);finalHitChecks(reduced.final);
+    expect(reduced.preferencesUnchanged).toBe(true);retained(reduced.canonical,cancelled.canonical);
+    Object.assign(result,{trustedTouchUtilityOpens:true,mobileApproachAndReturnFinite:true,mobileReturnContinuous:true,mobileNaturalReturnStaysInReservedDock:true,
+      finalGraphicsControlsReachable:true,collectionContentExcludesDock:true,trustedTouchStopCancelsReturn:true,stoppedReturnRemainsStill:true,
+      reducedMotionPointsFromDockWithoutTravel:true,noAutomaticPreferenceWrites:true,sameCanonicalGlobe:true});
+    await fixture.verify();
+  }finally{
+    const trace=await finishTrace().catch(()=>null);if(trace&&currentRecord&&!currentRecord.trace)currentRecord.trace=trace;
+    await photograph(`booky-mobile-graphics-approach-${language}-${view.width}.png`).catch(()=>undefined);
+    await photograph(`booky-mobile-graphics-settled-${language}-${view.width}.png`).catch(()=>undefined);
+    await fixture.close();
+  }
+});
+}

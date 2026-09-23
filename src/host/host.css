@@ -95,7 +95,17 @@
   outline: 2px solid var(--violet-950);
   outline-offset: 2px;
 }
-.native-planet-panel__content { min-height: 0; overflow: auto; overscroll-behavior: contain; }
+.native-planet-panel__content { flex: 1; min-height: 0; overflow: auto; overscroll-behavior: contain; }
+.native-planet-panel__companion { display: contents; }
+@media (max-width: 640px) {
+  .native-planet-panel__companion[data-booky-dock-active="true"] {
+    display: block;
+    box-sizing: border-box;
+    flex: 0 0 auto;
+    height: var(--booky-dock-height, 120px);
+    padding: 12px;
+  }
+}
 .native-planet-panel .book-archive-section { padding: 24px clamp(12px, 3vw, 40px); }
 .native-planet-panel .recent-history {
   margin: 12px clamp(12px, 3vw, 40px);

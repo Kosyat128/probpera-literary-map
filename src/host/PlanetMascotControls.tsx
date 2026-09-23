@@ -4,7 +4,7 @@ import mascotImage from "../assets/mascots/knizhulyk-green-v1.png";
 import PlanetMascotAvatar from "./PlanetMascotAvatar";
 import { BOOKY_GESTURES, type BookyGesture } from "./bookyAnimation";
 import { useBookyWalk } from "./useBookyWalk";
-import { BOOKY_APPROACH_MS, planBookyApproach } from "./bookyWalk";
+import { BOOKY_APPROACH_MS, planBookyApproach, planBookyDockReturn } from "./bookyWalk";
 import { bookyCardHeightLimit, bookyCardViewport, bookyCardWidth, placeBooky, placeBookyCard } from "./bookyPlacement";
 import type { PlanetMascotController, PlanetMascotSnapshot } from "./planetMascot";
 import type { PlanetMascotPersistenceSnapshot } from "./planetMascotPersistence";
@@ -110,6 +110,8 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     ? { left: 0, top: 0, width: 1024, height: 768 } : companionViewport());
   const [petSize, setPetSize] = useState({ width: 176, height: 216 });
   const [navigation, setNavigation] = useState<Rect[]>([]);
+  const [dockBounds, setDockBounds] = useState<Rect | null>(null);
+  const dockDetached = useRef(false);
   const [cardHeight, setCardHeight] = useState(360);
   const [highlight, setHighlight] = useState<Rect | null>(null);
   const drag = useRef<{ pointerId: number; x: number; y: number; origin: Position; source: "avatar" | "handle";
@@ -118,7 +120,8 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
   const walkStopActivation = useRef<"pointer" | "keyboard" | null>(null);
   const [pointerLook, setPointerLook] = useState<{ x: number; y: number } | null>(null);
   const [gesture, setGesture] = useState<"rest" | "dragging" | "pointing" | BookyGesture>("rest");
-  const [targetCue, setTargetCue] = useState<{ touch: Position; phase: "approaching" | "tapping"; action: PlanetMascotAction } | null>(null);
+  const [targetCue, setTargetCue] = useState<{ touch: Position; phase: "approaching" | "tapping" | "returning";
+    action: PlanetMascotAction; floating: boolean } | null>(null);
   const handledPoint = useRef<number | null>(null);
   const cancelPoint = useRef<(() => void) | null>(null);
   const [reactionKey, setReactionKey] = useState(0);
@@ -148,6 +151,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
 
   useLayoutEffect(() => {
     if (shown && snapshot.available) return;
+    if (!shown) dockDetached.current = false;
     const intent = drag.current;
     drag.current = null;
     if (intent?.element.hasPointerCapture(intent.pointerId)) intent.element.releasePointerCapture(intent.pointerId);
@@ -176,11 +180,20 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
       setView(previous => sameRect(previous, next) ? previous : next);
       // The sheet header can move while retaining its own size. Observe the
       // resizing sheet as well, so a finite expansion/drag updates its bounds.
-      const elements = new Set(document.querySelectorAll(`${protectedControls}, ${navigationControls}, .native-planet-app .atlas-country-presentation`));
+      const elements = new Set(document.querySelectorAll(`${protectedControls}, ${navigationControls}, .native-planet-app .atlas-country-presentation, [data-booky-dock], .native-planet-panel__content`));
       for (const element of watched) if (!elements.has(element)) { observer?.unobserve(element); watched.delete(element); }
       for (const element of elements) if (!watched.has(element)) { observer?.observe(element); watched.add(element); }
       const bounds = [...document.querySelectorAll(navigationControls)]
         .map(element => visibleRect(element, next)).filter((rect): rect is Rect => rect !== null);
+      const panel = root.current?.closest(".native-planet-panel");
+      const dockElement = panel?.querySelector('[data-booky-dock-active="true"]');
+      const nextDock = dockElement ? visibleRect(dockElement, next) : null;
+      setDockBounds(previous => previous && nextDock && sameRect(previous, nextDock) ? previous : nextDock);
+      // Manual walks remain in the reserved space. Explicit demonstration
+      // paths own their finite trip through the selected content separately.
+      const content = nextDock && panel?.querySelector(".native-planet-panel__content");
+      const contentBounds = content ? visibleRect(content, next) : null;
+      if (contentBounds) bounds.push(contentBounds);
       setNavigation(previous => previous.length === bounds.length && previous.every((rect, index) => sameRect(rect, bounds[index])) ? previous : bounds);
     };
     const observer = typeof ResizeObserver === "undefined" ? null : new ResizeObserver(measure);
@@ -189,7 +202,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     // The globe toolbar becomes interactive after a panel's passive cleanup
     // removes inert. That changes availability without resizing the toolbar.
     if (host) visibility?.observe(host, { subtree: true, childList: true, attributes: true,
-      attributeFilter: ["inert", "hidden", "aria-hidden", "data-atlas-sheet-state", "data-globe-edition-rail", "data-visible"] });
+      attributeFilter: ["inert", "hidden", "open", "aria-hidden", "data-atlas-sheet-state", "data-globe-edition-rail", "data-visible", "data-booky-dock-active"] });
     window.addEventListener("resize", measure); window.addEventListener("scroll", measure, true);
     window.visualViewport?.addEventListener("resize", measure);
     window.visualViewport?.addEventListener("scroll", measure);
@@ -262,18 +275,21 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
 
   const preferredPosition = clamped(position ?? { left: view.left + view.width - petSize.width - 20,
     top: view.top + view.height - petSize.height - 20 }, petSize.width, petSize.height, view);
+  const dock = dockBounds && dockBounds.width >= petSize.width + MARGIN * 2
+    && dockBounds.height >= petSize.height + MARGIN * 2 ? dockBounds : null;
   // Follow the pointer/selected target exactly during an explicit movement;
   // settle beside navigation controls without writing a new saved preference.
-  const restingPosition = gesture === "dragging" || targetCue ? preferredPosition
-    : placeBooky(preferredPosition, petSize, view, navigation);
+  const floating = gesture === "dragging" || dock && dockDetached.current || targetCue && (!dock || targetCue.floating);
+  const restingPosition = floating ? preferredPosition
+    : placeBooky(preferredPosition, petSize, dock ?? view, navigation);
   const walk = useBookyWalk({ available: shown && snapshot.available && !open && snapshot.mode === "help",
     revision: snapshot.revision, position: restingPosition, committedPosition: position ?? preferredPosition,
     size: petSize, viewport: view, controls: navigation, onFinish: onPositionChange });
   const walkNeedsSpace = !walk.active && !walk.canStart && !walk.reducedMotion && !open
     && snapshot.available && snapshot.mode === "help";
   const petPosition = walk.position ?? restingPosition;
-  const pointEnvironment = useRef({ position: petPosition, size: petSize, view });
-  pointEnvironment.current = { position: petPosition, size: petSize, view };
+  const pointEnvironment = useRef({ position: petPosition, size: petSize, view, dock });
+  pointEnvironment.current = { position: petPosition, size: petSize, view, dock };
   useEffect(() => {
     if (!pointRequest || handledPoint.current === pointRequest.id) return;
     if (!shown || !snapshot.available || open || snapshot.mode !== "help" || document.hidden) {
@@ -286,6 +302,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     const selector = targets[pointRequest.action];
     if (!selector) { handledPoint.current = pointRequest.id; return; }
     let cancelled = false, frame = 0, timer = 0, target: Element | null = null;
+    let movementStarted = false, returnedToDock = false;
     const began = performance.now();
     const stop = (consume: unknown = true) => {
       // Let the Stop button own its activation. Stopping on pointer/key down
@@ -297,20 +314,60 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
       if (cancelPoint.current === stop) cancelPoint.current = null;
       if (consume !== false) handledPoint.current = pointRequest.id;
       if (cancelled) return;
+      // Cancellation is a real stop, even halfway over content. Do not turn
+      // it into a snap to the dock or another unsolicited return animation.
+      if (movementStarted && !returnedToDock && pointEnvironment.current.dock) dockDetached.current = true;
       cancelled = true; cancelAnimationFrame(frame); window.clearTimeout(timer);
       detach(); walk.stop(); setTargetCue(null); setGesture(value => value === "pointing" ? "rest" : value);
       setPointerLook(null);
     };
     cancelPoint.current = stop;
+    const finish = () => {
+      if (cancelled) return;
+      const current = pointEnvironment.current, destination = current.dock;
+      if (!destination || window.matchMedia("(prefers-reduced-motion: reduce)").matches) { stop(); return; }
+      const path = planBookyDockReturn(current.position, current.size, current.view, destination);
+      if (!path) { stop(); return; }
+      const arrived = () => { returnedToDock = true; dockDetached.current = false; stop(); };
+      if (Math.hypot(path.to.left - path.from.left, path.to.top - path.from.top) < .01) { arrived(); return; }
+      const currentDock = () => {
+        const next = pointEnvironment.current.dock;
+        return !cancelled && Boolean(next && sameRect(next, destination));
+      };
+      if (walk.start(path, arrived, BOOKY_APPROACH_MS, currentDock)) {
+        movementStarted = true;
+        setTargetCue(value => value ? { ...value, phase: "returning", floating: true } : null);
+        setGesture("rest"); setPointerLook(null);
+      } else stop();
+    };
     const tap = (touch: Position) => {
       if (cancelled || !target?.isConnected || !visibleRect(target, viewport()) || document.hidden) { stop(); return; }
-      setTargetCue({ touch, phase: "tapping", action: pointRequest.action });
+      setTargetCue({ touch, phase: "tapping", action: pointRequest.action, floating: movementStarted });
       setPointerLook({ x: -1, y: 0 }); setGesture("pointing"); setReactionKey(value => value + 1);
-      timer = window.setTimeout(stop, 700);
+      timer = window.setTimeout(finish, 700);
     };
     const find = () => {
       if (cancelled) return;
       const current = pointEnvironment.current;
+      // Opening phone settings changes both the panel and the companion size.
+      // Wait for those measured bounds before consuming this one-shot request;
+      // otherwise the first walking frame immediately invalidates its route.
+      const panel = root.current?.closest(".native-planet-panel");
+      const expectsDock = window.matchMedia("(max-width: 640px)").matches
+        && panel?.querySelector<HTMLDetailsElement>("[data-planet-graphics-settings]")?.open;
+      if (expectsDock) {
+        const actualPet = root.current?.getBoundingClientRect();
+        const actualDock = panel?.querySelector('[data-booky-dock-active="true"]')?.getBoundingClientRect();
+        const ready = actualPet && actualDock && current.dock
+          && sameRect(actualPet, { ...current.position, ...current.size })
+          && sameRect(actualDock, current.dock)
+          && Math.abs(actualDock.height - Math.ceil(actualPet.height) - MARGIN * 2) < .5;
+        if (!ready) {
+          if (performance.now() - began < 600) frame = requestAnimationFrame(find);
+          else stop();
+          return;
+        }
+      }
       target = [...document.querySelectorAll(selector)].find(element => visibleRect(element, viewport())) ?? null;
       const bounds = target && visibleRect(target, viewport());
       const canvas = root.current?.querySelector('[data-booky-canvas]')?.getBoundingClientRect();
@@ -332,7 +389,8 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
         return !cancelled && Boolean(next && bounds && sameRect(next, bounds));
       };
       if (walk.start(path, () => tap(path.touch), BOOKY_APPROACH_MS, currentTarget)) {
-        setTargetCue({ touch: path.touch, phase: "approaching", action: pointRequest.action });
+        movementStarted = true;
+        setTargetCue({ touch: path.touch, phase: "approaching", action: pointRequest.action, floating: true });
         setGesture("rest"); setPointerLook(null); setReactionKey(value => value + 1);
       }
     };
@@ -352,7 +410,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     return () => stop(false);
   }, [pointRequest, shown, snapshot.available, open, snapshot.mode, screen, language, walk.start, walk.stop]);
   useEffect(() => {
-    if (targetCue?.phase === "approaching" && !walk.active) cancelPoint.current?.();
+    if ((targetCue?.phase === "approaching" || targetCue?.phase === "returning") && !walk.active) cancelPoint.current?.();
   }, [walk.active, targetCue?.phase]);
   const petRect = { ...petPosition, ...petSize };
   const cardWidth = bookyCardWidth(view, petRect);
@@ -387,7 +445,10 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     // Keep focus on the stable toggle when the retry control disappears.
     if (onRetryPersistence()) toggle.current?.focus({ preventScroll: true });
   };
-  const move = (next: Position) => onPositionChange(clamped(next, petSize.width, petSize.height, view));
+  const move = (next: Position) => {
+    dockDetached.current = Boolean(dock);
+    onPositionChange(clamped(next, petSize.width, petSize.height, view));
+  };
   const endDrag = (event: ReactPointerEvent<HTMLButtonElement>) => {
     const intent = drag.current;
     if (intent?.pointerId !== event.pointerId) return;
@@ -495,7 +556,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
 
   if (!snapshot.available) return null;
   return <>
-    {targetCue && <div className="planet-mascot-target" aria-hidden="true" data-booky-target={targetCue.phase}
+    {targetCue && targetCue.phase !== "returning" && <div className="planet-mascot-target" aria-hidden="true" data-booky-target={targetCue.phase}
       data-booky-target-action={targetCue.action} style={{ left: targetCue.touch.left - 20, top: targetCue.touch.top - 20 }} />}
     {open && highlight && snapshot.highlight && <div className="planet-mascot-highlight" aria-hidden="true"
       data-planet-mascot-highlight={snapshot.highlight} style={highlight as CSSProperties} />}
@@ -504,6 +565,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
       data-planet-mascot-panel-state={open ? "open" : "closed"}
       data-planet-mascot-mode={snapshot.mode} data-planet-mascot-current-route={snapshot.route ?? "none"}
       data-planet-mascot-step={snapshot.step} data-planet-mascot-screen={screen} data-planet-mascot-gesture={walk.active ? "walking" : gesture}
+      data-booky-returning={targetCue?.phase === "returning" ? "true" : undefined}
       data-planet-mascot-closed-notice={!open && persistence.state !== "idle" ? "true" : undefined}
       style={petPosition} onPointerDown={event => event.stopPropagation()} onPointerUp={event => event.stopPropagation()}
       onPointerMove={event => event.stopPropagation()} onWheel={event => event.stopPropagation()}
@@ -559,6 +621,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
           onPointerDown={event => {
             if (!event.isPrimary || event.button !== 0) return;
             event.preventDefault(); event.currentTarget.focus({ preventScroll: true });
+            if (dock) { dockDetached.current = true; onPositionChange(petPosition); }
             drag.current = { pointerId: event.pointerId, x: event.clientX, y: event.clientY, origin: petPosition,
               source: "handle", moved: true, element: event.currentTarget };
             setGesture("dragging");
@@ -568,7 +631,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
             event.preventDefault(); move({ left: intent.origin.left + event.clientX - intent.x, top: intent.origin.top + event.clientY - intent.y });
           }} onPointerUp={endDrag} onPointerCancel={endDrag} onLostPointerCapture={() => { drag.current = null; setGesture("rest"); }}
           onKeyDown={event => {
-            if (event.key === "Home") { event.preventDefault(); onPositionChange(null); return; }
+            if (event.key === "Home") { event.preventDefault(); dockDetached.current = false; onPositionChange(null); return; }
             const direction = arrowDirections[event.key];
             if (!direction) return;
             event.preventDefault(); const distance = event.shiftKey ? 30 : 10;

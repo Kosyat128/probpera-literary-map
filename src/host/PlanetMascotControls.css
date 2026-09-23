@@ -242,6 +242,37 @@
     display: none;
   }
 }
+@media (max-width: 640px) {
+  /* The collection reserves this row below its scrolling graphics settings. */
+  [data-booky-dock-active="true"] .planet-mascot-controls[data-planet-mascot-active="true"] {
+    width: 240px;
+    max-width: calc(100vw - 24px);
+    display: grid;
+    grid-template-columns: 96px minmax(0, 1fr);
+    grid-template-rows: 46px 46px;
+    align-items: center;
+    gap: 4px;
+  }
+  [data-booky-dock-active="true"] .planet-mascot-controls > .planet-mascot-controls__avatar-button {
+    grid-column: 1;
+    grid-row: 1 / 3;
+  }
+  [data-booky-dock-active="true"] .planet-mascot-controls > .planet-mascot-controls__tools {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  [data-booky-dock-active="true"] .planet-mascot-controls > .planet-mascot-controls__walk {
+    display: block;
+    grid-column: 2;
+    grid-row: 2;
+    height: 44px;
+    min-height: 44px;
+    padding: 4px 8px;
+  }
+  [data-booky-dock-active="true"] .planet-mascot-controls > .planet-mascot-controls__persistence {
+    grid-column: 1 / -1;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   .planet-mascot-controls *, .planet-mascot-highlight { scroll-behavior: auto; }
   .planet-mascot-controls__leaf { animation: none !important; }

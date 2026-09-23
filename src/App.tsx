@@ -3375,12 +3375,12 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
         }
       }}>{atlasContent}<ProductNoticeSlot placement="root" reserveSpaceRef={nativeGlobeRootRef} /></main>
       <NativePlanetPanel open={nativeCollectionOpen} onClose={requestReturnToPlanet} onBack={handleNativePanelBack}
-        globeRef={nativeGlobeRootRef} returnFocusRef={atlasExperience.closeButtonRef} sectionRequest={mascotSectionRequest}>
+        globeRef={nativeGlobeRootRef} returnFocusRef={atlasExperience.closeButtonRef} sectionRequest={mascotSectionRequest}
+        companion={nativeCollectionOpen ? mascotControls : null}>
         <PlanetGraphicsSettings value={graphics.qualityTier} onChange={graphics.selectQuality} saveState={graphics.saveState} />
         {platformServices.downloads && <PlanetDownloadsPanel downloads={platformServices.downloads} />}
         {productHelp}
         {collectionContent}
-        {nativeCollectionOpen && mascotControls}
       </NativePlanetPanel>
       {!nativeCollectionOpen && mascotControls}
       <NativePlanetLaunch ready={globeViewSample.revision > 0} failed={archiveDataStatus === "error"} onComplete={completePlanetLaunch} />

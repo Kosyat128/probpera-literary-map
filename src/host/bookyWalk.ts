@@ -77,6 +77,23 @@ export function planBookyWalk(current: BookyWalkPoint, size: Readonly<{ width: n
     to: Object.freeze({ left: x + direction * distance, top }), direction });
 }
 
+/** Finish an explicitly requested demonstration in a measured, reserved dock.
+ * Never repair the starting point by teleporting it into a different viewport. */
+export function planBookyDockReturn(current: BookyWalkPoint, size: Readonly<{ width: number; height: number }>,
+  viewport: BookyWalkBounds, dock: BookyWalkBounds): BookyWalkPath | null {
+  const full = walkLimits(size, viewport);
+  if (!full || !validBounds(dock) || ![current.left, current.top].every(Number.isFinite)
+    || current.left < full.left || current.left > full.right || current.top < full.top || current.top > full.bottom) return null;
+  const left = Math.max(viewport.left, dock.left), top = Math.max(viewport.top, dock.top);
+  const bounds = walkLimits(size, { left, top,
+    width: Math.min(viewport.left + viewport.width, dock.left + dock.width) - left,
+    height: Math.min(viewport.top + viewport.height, dock.top + dock.height) - top });
+  if (!bounds) return null;
+  const to = { left: Math.max(bounds.left, Math.min(bounds.right, current.left)),
+    top: Math.max(bounds.top, Math.min(bounds.bottom, current.top)) };
+  return { from: { ...current }, to, direction: to.left >= current.left ? 1 : -1 };
+}
+
 export function sampleBookyWalk(path: BookyWalkPath, progress: number): BookyWalkPoint {
   const phase = Number.isFinite(progress) ? Math.max(0, Math.min(1, progress)) : 0;
   const eased = phase * phase * (3 - 2 * phase);

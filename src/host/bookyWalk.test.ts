@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { isBookyWalkPathClear, planBookyApproach, planBookyWalk, sampleBookyWalk } from "./bookyWalk";
+import { isBookyWalkPathClear, planBookyApproach, planBookyDockReturn, planBookyWalk, sampleBookyWalk } from "./bookyWalk";
 
 describe("explicit companion walk", () => {
   it.each([{ left: 0, top: 0, width: 320, height: 844 }, { left: 14, top: 90, width: 1440, height: 760 }])(
@@ -101,5 +101,29 @@ describe("explicit companion walk", () => {
     expect(path.to.left + hand.left).toBeCloseTo(path.touch.left);
     expect(path.to.top + hand.top).toBeCloseTo(path.touch.top);
     expect(planBookyApproach(path.from, size, view, target, { left: NaN, top: 87 })).toBeNull();
+  });
+  it.each([320, 390])("returns continuously to a reserved phone dock without changing the starting point (%s)", width => {
+    const view = { left: 0, top: 74, width, height: 770 }, size = { width: 240, height: 96 };
+    const dock = { left: 0, top: 724, width, height: 120 }, current = { left: 40, top: 360 };
+    const path = planBookyDockReturn(current, size, view, dock)!;
+    expect(path.from).toEqual(current); expect(path.to).toEqual({ left: 40, top: 736 });
+    expect(sampleBookyWalk(path, 0)).toEqual(current);
+    for (let frame = 0; frame <= 100; frame++) {
+      const point = sampleBookyWalk(path, frame / 100);
+      expect(point.left).toBeGreaterThanOrEqual(view.left + 12);
+      expect(point.top).toBeGreaterThanOrEqual(view.top + 12);
+      expect(point.left + size.width).toBeLessThanOrEqual(view.width - 12);
+      expect(point.top + size.height).toBeLessThanOrEqual(view.top + view.height - 12);
+    }
+  });
+  it("refuses missing dock space or an invalid starting point instead of teleporting", () => {
+    const view = { left: 10, top: 74, width: 390, height: 770 }, size = { width: 240, height: 96 };
+    const dock = { left: 10, top: 724, width: 390, height: 120 }, current = { left: 40, top: 360 };
+    expect(planBookyDockReturn({ left: 0, top: 360 }, size, view, dock)).toBeNull();
+    expect(planBookyDockReturn({ left: 40, top: NaN }, size, view, dock)).toBeNull();
+    expect(planBookyDockReturn(current, size, view, { ...dock, top: 740 })).toBeNull();
+    expect(planBookyDockReturn(current, size, view, { ...dock, width: 250 })).toBeNull();
+    expect(planBookyDockReturn(current, size, view, { ...dock, height: Infinity })).toBeNull();
+    expect(planBookyDockReturn(current, { ...size, height: 160 }, view, dock)).toBeNull();
   });
 });

@@ -1,4 +1,4 @@
-import { useEffect, useRef, type ReactNode, type RefObject } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode, type RefObject } from "react";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import BrandCloseIcon from "../components/BrandCloseIcon";
 import IconButton from "../ui/IconButton";
@@ -26,19 +26,55 @@ type Props = {
   globeRef: RefObject<HTMLElement>;
   returnFocusRef: RefObject<HTMLButtonElement>;
   children: ReactNode;
+  companion?: ReactNode;
   sectionRequest?: NativePlanetSectionRequest | null;
 };
 
 /** Keep canonical collection/reader state mounted above the same globe. */
-export default function NativePlanetPanel({ open, onClose, onBack, globeRef, returnFocusRef, children, sectionRequest }: Props) {
+export default function NativePlanetPanel({ open, onClose, onBack, globeRef, returnFocusRef, children, companion, sectionRequest }: Props) {
   const { language } = useInterfaceLanguage();
   const panelRef = useRef<HTMLElement>(null);
+  const dockRef = useRef<HTMLDivElement>(null);
+  const [dockLayout, setDockLayout] = useState({ active: false, height: 120 });
   const closeRef = useRef<HTMLButtonElement>(null);
   const onBackRef = useRef(onBack);
   onBackRef.current = onBack;
   const sectionRequestRef = useRef(sectionRequest);
   sectionRequestRef.current = sectionRequest;
   const handledSectionRequest = useRef<number | null>(null);
+  useLayoutEffect(() => {
+    const panel = panelRef.current, dock = dockRef.current;
+    if (!panel || !dock) return;
+    const mobile = window.matchMedia("(max-width: 640px)");
+    let observedPet: HTMLElement | null = null;
+    const measure = () => {
+      const pet = dock.querySelector<HTMLElement>("[data-planet-mascot-pet]");
+      if (pet !== observedPet) {
+        if (observedPet) resize?.unobserve(observedPet);
+        observedPet = pet;
+        if (pet) resize?.observe(pet);
+      }
+      const graphics = panel.querySelector<HTMLDetailsElement>(sectionSelectors.graphics);
+      const active = open && mobile.matches && Boolean(pet && graphics?.open
+        && !graphics.closest('[hidden], [inert], [aria-hidden="true"]'));
+      const fallback = pet?.getAttribute("data-planet-mascot-visibility") === "hidden" ? 68 : 120;
+      const measured = pet?.getBoundingClientRect().height ?? 0;
+      setDockLayout(previous => {
+        // Activating the dock also applies its compact layout. Measure that
+        // layout on the next layout effect before reserving its actual height.
+        const height = active && previous.active && measured > 0 ? Math.ceil(measured) + 24 : fallback;
+        return previous.active === active && previous.height === height ? previous : { active, height };
+      });
+    };
+    const resize = typeof ResizeObserver === "undefined" ? null : new ResizeObserver(measure);
+    const mutation = typeof MutationObserver === "undefined" ? null : new MutationObserver(measure);
+    mutation?.observe(panel, { subtree: true, childList: true, attributes: true,
+      attributeFilter: ["open", "hidden", "inert", "aria-hidden", "data-planet-mascot-visibility"] });
+    mobile.addEventListener("change", measure);
+    measure();
+    return () => { resize?.disconnect(); mutation?.disconnect(); mobile.removeEventListener("change", measure); };
+  }, [open, dockLayout.active]);
+
   useEffect(() => {
     if (!open) return;
     const globe = globeRef.current;
@@ -117,5 +153,8 @@ export default function NativePlanetPanel({ open, onClose, onBack, globeRef, ret
     </header>
     <ProductNoticeSlot placement="panel" active={open} />
     <div className="native-planet-panel__content">{children}</div>
+    <div ref={dockRef} className="native-planet-panel__companion" data-booky-dock=""
+      data-booky-dock-active={String(dockLayout.active)}
+      style={{ "--booky-dock-height": `${dockLayout.height}px` } as CSSProperties}>{companion}</div>
   </section>;
 }
