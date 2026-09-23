@@ -1,0 +1,1151 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-23T16:57:14.812Z",
+  "recordingComplete": true,
+  "kind": "retained-booky-walk-continuity-and-input-diagnostics",
+  "baseCheckpoint": "990d8700d6ce647bac92c7f11de896fae0ed9b80",
+  "cwd": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work",
+  "attempts": [
+    {
+      "attempt": "keyboard-a1",
+      "classification": "driver-setup-failure",
+      "summary": "The external diagnostic attempted to activate walking before explicitly showing the initially hidden companion. It did not reach the held-key interaction.",
+      "scope": "Focused diagnostic only; not the final formal browser suite.",
+      "pass": false,
+      "tests": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-keyboard-review/a1/playwright.json",
+        "sha256": "e62d265e174c24cec1468ec5b902bcb0daa0b10066d310ed6cd82512dee66894"
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-keyboard-review/a1/output/held-enter-held-Enter-must-not-restart-Booky-after-Stop/booky-live-character.json",
+        "sha256": "7b1063ca0b391fe8fe1590b68c37bd900e0939ad6ac4d178f13f95f772f3ecf7"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-keyboard-review/a1/output/held-enter-held-Enter-must-not-restart-Booky-after-Stop/attachments/booky-live-character-source-evidence-b5a7d1c4c19546dd91cab7a6b5ac333c8cc6ae91.json",
+        "sha256": "7b1063ca0b391fe8fe1590b68c37bd900e0939ad6ac4d178f13f95f772f3ecf7"
+      },
+      "captures": [
+        {
+          "sourceEvidence": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-keyboard-review/a1/output/held-enter-held-Enter-must-not-restart-Booky-after-Stop/booky-live-character.json",
+            "sha256": "7b1063ca0b391fe8fe1590b68c37bd900e0939ad6ac4d178f13f95f772f3ecf7"
+          },
+          "attachment": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-keyboard-review/a1/output/held-enter-held-Enter-must-not-restart-Booky-after-Stop/attachments/booky-live-character-source-evidence-b5a7d1c4c19546dd91cab7a6b5ac333c8cc6ae91.json",
+            "sha256": "7b1063ca0b391fe8fe1590b68c37bd900e0939ad6ac4d178f13f95f772f3ecf7"
+          },
+          "sourceInputCount": 669,
+          "capturedScopedSourceInputs": [
+            {
+              "path": "src/host/PlanetMascotControls.css",
+              "sha256": "bbd248cf2ba2391c249d9df5cf966ba13c84c6b28480851fc1226fcfac3963a3"
+            },
+            {
+              "path": "src/host/PlanetMascotControls.tsx",
+              "sha256": "7757cb1ed06378bba3eecab43727daec1b1bb7914912d84ac035850add5e7691"
+            },
+            {
+              "path": "src/host/bookyWalk.ts",
+              "sha256": "ebf28448443ddf5c301cb334cc725cdb892a5c0e5af6003c5afa5b3f87f11491"
+            },
+            {
+              "path": "src/host/useBookyWalk.ts",
+              "sha256": "c5b6bc0d24789d0bf508c54b72197189a3aced8f9ba4232e1e2d00ff087c3e01"
+            },
+            {
+              "path": "tests/pwa/booky-live-character.spec.mjs",
+              "sha256": "da55ef9069c07023383f2c47054edcd044cf456cd08b7230a74b52aa98cd08f6"
+            }
+          ],
+          "pass": false,
+          "scenario": null,
+          "screenshots": [
+            {
+              "filename": "held-enter-stop-failure.png",
+              "sha256": "3e5694c6961c468690377de9f160f71c4e7d6103c034cfdd10169fa232e404a9",
+              "width": 1440,
+              "height": 850,
+              "framing": "actual-app-independent-live-3d-companion",
+              "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-keyboard-review/a1/output/held-enter-held-Enter-must-not-restart-Booky-after-Stop/held-enter-stop-failure.png"
+            }
+          ]
+        }
+      ],
+      "executionEvidence": {
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-keyboard-review/a1/node.log",
+          "sha256": "70e526455315e795edd8685493393082964455e3fd9c9e7c9b28e63ec7c735b5"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-keyboard-review/a1/node.log",
+          "sha256": "70e526455315e795edd8685493393082964455e3fd9c9e7c9b28e63ec7c735b5"
+        },
+        "combinedOutput": true,
+        "streamProvenance": "Original stdout and stderr were redirected to the same retained node.log.",
+        "actualNodeExit": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-keyboard-review/a1/node-exit.txt",
+          "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b"
+        },
+        "testProcessExitCode": 1,
+        "exitCodeProvenance": "The runner captured the actual Node LASTEXITCODE immediately and preserved it in node-exit.txt.",
+        "startedAt": "2026-09-23T16:33:24.766Z",
+        "durationMs": 20784.289,
+        "workerCount": 1,
+        "retriesConfigured": 0
+      },
+      "configuration": {
+        "file": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-keyboard-review\\a1\\playwright.config.mjs",
+        "testTitles": [
+          "held Enter must not restart Booky after Stop"
+        ],
+        "playwrightVersion": "1.62.1"
+      },
+      "failureMessages": [
+        "TimeoutError: locator.click: Timeout 12000ms exceeded.\nCall log:\n  - waiting for locator('[data-booky-walk]')\n\n\n  1380 |   await actual(page);await stablePose(page);\n  1381 |   if(await panel(page).isVisible()){await page.locator('[data-planet-mascot-collapse]').click();await companionSaved(fixture);}\n> 1382 |   const before=mutations(fixture);await page.locator('[data-booky-walk]').click();\n       |                                                                           ^\n  1383 |   await expect(pet(page)).toHaveAttribute('data-planet-mascot-gesture','walking');\n  1384 |   await page.locator('[data-booky-walk-stop]').focus();\n  1385 |   await page.evaluate(()=>{window.__heldBookyKeys=[];document.addEventListener('keydown',e=>window.__heldBookyKeys.push({key:e.key,repeat:e.repeat,at:performance.now()}),true)});\n    at D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-keyboard-review\\a1\\held-enter.spec.mjs:1382:75"
+      ],
+      "originalSourceHashesAreFromEachCapture": true,
+      "externalDriver": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-keyboard-review/a1/driver-inputs.json",
+        "sha256": "dd8e07a051a0a0f03bcaee723b6da4b48ba89f480f39e9c84c904f993b724b92"
+      },
+      "capturedSourceFixture": {
+        "path": "tests/pwa/booky-live-character.spec.mjs",
+        "sha256": "da55ef9069c07023383f2c47054edcd044cf456cd08b7230a74b52aa98cd08f6"
+      }
+    },
+    {
+      "attempt": "keyboard-a2",
+      "classification": "reproduced-product-defect",
+      "summary": "After genuine help open/close, the first Enter down stopped the walk and a second real keydown with repeat=true started an unwanted new walk. Preferences were unchanged.",
+      "scope": "Focused diagnostic only; not the final formal browser suite.",
+      "pass": false,
+      "tests": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-keyboard-review/a2/playwright.json",
+        "sha256": "7f3f88cd44667e97d9988a394a423db502fdb52d6740bec9892072f641c781be"
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-keyboard-review/a2/output/held-enter-held-Enter-must-not-restart-Booky-after-Stop/booky-live-character.json",
+        "sha256": "8cb658a096a1cf04603277b449bb03ccc0be2649eb977de95a7175a63d8fb573"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-keyboard-review/a2/output/held-enter-held-Enter-must-not-restart-Booky-after-Stop/attachments/booky-live-character-source-evidence-fcf36e05c0b8bc945b05f08d2ce60ca90603ce19.json",
+        "sha256": "8cb658a096a1cf04603277b449bb03ccc0be2649eb977de95a7175a63d8fb573"
+      },
+      "captures": [
+        {
+          "sourceEvidence": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-keyboard-review/a2/output/held-enter-held-Enter-must-not-restart-Booky-after-Stop/booky-live-character.json",
+            "sha256": "8cb658a096a1cf04603277b449bb03ccc0be2649eb977de95a7175a63d8fb573"
+          },
+          "attachment": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-keyboard-review/a2/output/held-enter-held-Enter-must-not-restart-Booky-after-Stop/attachments/booky-live-character-source-evidence-fcf36e05c0b8bc945b05f08d2ce60ca90603ce19.json",
+            "sha256": "8cb658a096a1cf04603277b449bb03ccc0be2649eb977de95a7175a63d8fb573"
+          },
+          "sourceInputCount": 669,
+          "capturedScopedSourceInputs": [
+            {
+              "path": "src/host/PlanetMascotControls.css",
+              "sha256": "bbd248cf2ba2391c249d9df5cf966ba13c84c6b28480851fc1226fcfac3963a3"
+            },
+            {
+              "path": "src/host/PlanetMascotControls.tsx",
+              "sha256": "7757cb1ed06378bba3eecab43727daec1b1bb7914912d84ac035850add5e7691"
+            },
+            {
+              "path": "src/host/bookyWalk.ts",
+              "sha256": "ebf28448443ddf5c301cb334cc725cdb892a5c0e5af6003c5afa5b3f87f11491"
+            },
+            {
+              "path": "src/host/useBookyWalk.ts",
+              "sha256": "c5b6bc0d24789d0bf508c54b72197189a3aced8f9ba4232e1e2d00ff087c3e01"
+            },
+            {
+              "path": "tests/pwa/booky-live-character.spec.mjs",
+              "sha256": "da55ef9069c07023383f2c47054edcd044cf456cd08b7230a74b52aa98cd08f6"
+            }
+          ],
+          "pass": false,
+          "scenario": null,
+          "screenshots": [
+            {
+              "filename": "held-enter-stop-failure.png",
+              "sha256": "6553e634188471cc9e56b0a63df5af6cd96366a82a65d6256e854a409b6d2384",
+              "width": 1440,
+              "height": 850,
+              "framing": "actual-app-independent-live-3d-companion",
+              "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-keyboard-review/a2/output/held-enter-held-Enter-must-not-restart-Booky-after-Stop/held-enter-stop-failure.png"
+            }
+          ],
+          "inputObservation": {
+            "afterFirstDown": {
+              "gesture": "rest",
+              "layout": {
+                "viewport": {
+                  "width": 1440,
+                  "height": 850
+                },
+                "pet": {
+                  "left": 1243.921875,
+                  "top": 566,
+                  "right": 1419.921875,
+                  "bottom": 838,
+                  "width": 176,
+                  "height": 272
+                },
+                "card": null,
+                "canvas": {
+                  "left": 1251.921875,
+                  "top": 570,
+                  "right": 1411.921875,
+                  "bottom": 730,
+                  "width": 160,
+                  "height": 160
+                },
+                "overflow": false,
+                "leaf": null
+              }
+            },
+            "afterRepeat": {
+              "gesture": "walking",
+              "layout": {
+                "viewport": {
+                  "width": 1440,
+                  "height": 850
+                },
+                "pet": {
+                  "left": 1243.90625,
+                  "top": 566,
+                  "right": 1419.90625,
+                  "bottom": 838,
+                  "width": 176,
+                  "height": 272
+                },
+                "card": null,
+                "canvas": {
+                  "left": 1251.90625,
+                  "top": 570,
+                  "right": 1411.90625,
+                  "bottom": 730,
+                  "width": 160,
+                  "height": 160
+                },
+                "overflow": false,
+                "leaf": null
+              },
+              "keys": [
+                {
+                  "key": "Enter",
+                  "repeat": false,
+                  "at": 7752.200000001118
+                },
+                {
+                  "key": "Enter",
+                  "repeat": true,
+                  "at": 7806.4000000003725
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "executionEvidence": {
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-keyboard-review/a2/node.log",
+          "sha256": "1ddc252bd771499d54e95a7422d00dd38d914b1fe6aaa930984b9ae27bfc2934"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-keyboard-review/a2/node.log",
+          "sha256": "1ddc252bd771499d54e95a7422d00dd38d914b1fe6aaa930984b9ae27bfc2934"
+        },
+        "combinedOutput": true,
+        "streamProvenance": "Original stdout and stderr were redirected to the same retained node.log.",
+        "actualNodeExit": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-keyboard-review/a2/node-exit.txt",
+          "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b"
+        },
+        "testProcessExitCode": 1,
+        "exitCodeProvenance": "The runner captured the actual Node LASTEXITCODE immediately and preserved it in node-exit.txt.",
+        "startedAt": "2026-09-23T16:34:20.050Z",
+        "durationMs": 10355.24,
+        "workerCount": 1,
+        "retriesConfigured": 0
+      },
+      "configuration": {
+        "file": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-keyboard-review\\a2\\playwright.config.mjs",
+        "testTitles": [
+          "held Enter must not restart Booky after Stop"
+        ],
+        "playwrightVersion": "1.62.1"
+      },
+      "failureMessages": [
+        "Error: Holding the Stop key must not start a new walk\n\nexpect(received).not.toBe(expected) // Object.is equality\n\nExpected: not \"walking\"\n\n  1393 |   await page.keyboard.up('Enter');\n  1394 |   expect(mutations(fixture)).toEqual(before);\n> 1395 |   expect(result.observations.afterRepeat.gesture,'Holding the Stop key must not start a new walk').not.toBe('walking');\n       |                                                                                                        ^\n  1396 |   result.scenario='held-enter-stop';await fixture.verify();\n  1397 |  }catch(error){await capture(page,result,testInfo,'held-enter-stop-failure.png').catch(()=>undefined);throw error;}\n  1398 |  finally{await page.keyboard.up('Enter').catch(()=>undefined);await fixture.close();}\n    at D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-keyboard-review\\a2\\held-enter.spec.mjs:1395:104"
+      ],
+      "originalSourceHashesAreFromEachCapture": true,
+      "externalDriver": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-keyboard-review/a2/driver-inputs.json",
+        "sha256": "ec80133c228e172c20568be6a2b5445e4a2fdf2b38f2c6697df653a81855d798"
+      },
+      "capturedSourceFixture": {
+        "path": "tests/pwa/booky-live-character.spec.mjs",
+        "sha256": "da55ef9069c07023383f2c47054edcd044cf456cd08b7230a74b52aa98cd08f6"
+      }
+    },
+    {
+      "attempt": "keyboard-a3",
+      "classification": "focused-fixed-pass",
+      "summary": "The same external held-Enter driver passed after repeat-key suppression. This is one focused keyboard diagnostic, not mobile or full-suite acceptance.",
+      "scope": "Focused diagnostic only; not the final formal browser suite.",
+      "pass": true,
+      "tests": {
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-keyboard-review/a3/playwright.json",
+        "sha256": "e92b69bf81d38ed2ea01d67d343821b2fd0c6f88c9680fe92f0b4aad87ebc9d9"
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-keyboard-review/a3/output/held-enter-held-Enter-must-not-restart-Booky-after-Stop/booky-live-character.json",
+        "sha256": "135e194bd1d0030dc51cda9088b2c2b524794eee0b62120a7cefe76270a5fe9d"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-keyboard-review/a3/output/held-enter-held-Enter-must-not-restart-Booky-after-Stop/attachments/booky-live-character-source-evidence-fc3b2cf14c753706622da96a99febed519572a34.json",
+        "sha256": "135e194bd1d0030dc51cda9088b2c2b524794eee0b62120a7cefe76270a5fe9d"
+      },
+      "captures": [
+        {
+          "sourceEvidence": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-keyboard-review/a3/output/held-enter-held-Enter-must-not-restart-Booky-after-Stop/booky-live-character.json",
+            "sha256": "135e194bd1d0030dc51cda9088b2c2b524794eee0b62120a7cefe76270a5fe9d"
+          },
+          "attachment": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-keyboard-review/a3/output/held-enter-held-Enter-must-not-restart-Booky-after-Stop/attachments/booky-live-character-source-evidence-fc3b2cf14c753706622da96a99febed519572a34.json",
+            "sha256": "135e194bd1d0030dc51cda9088b2c2b524794eee0b62120a7cefe76270a5fe9d"
+          },
+          "sourceInputCount": 669,
+          "capturedScopedSourceInputs": [
+            {
+              "path": "src/host/PlanetMascotControls.css",
+              "sha256": "bbd248cf2ba2391c249d9df5cf966ba13c84c6b28480851fc1226fcfac3963a3"
+            },
+            {
+              "path": "src/host/PlanetMascotControls.tsx",
+              "sha256": "a73fc44a1c0c106b81a2e5178bd9bced2a279ea96c0bcb19d65ce95ee5de60fe"
+            },
+            {
+              "path": "src/host/bookyWalk.ts",
+              "sha256": "ebf28448443ddf5c301cb334cc725cdb892a5c0e5af6003c5afa5b3f87f11491"
+            },
+            {
+              "path": "src/host/useBookyWalk.ts",
+              "sha256": "c5b6bc0d24789d0bf508c54b72197189a3aced8f9ba4232e1e2d00ff087c3e01"
+            },
+            {
+              "path": "tests/pwa/booky-live-character.spec.mjs",
+              "sha256": "da55ef9069c07023383f2c47054edcd044cf456cd08b7230a74b52aa98cd08f6"
+            }
+          ],
+          "pass": true,
+          "scenario": "held-enter-stop",
+          "screenshots": [],
+          "inputObservation": {
+            "afterFirstDown": {
+              "gesture": "rest",
+              "layout": {
+                "viewport": {
+                  "width": 1440,
+                  "height": 850
+                },
+                "pet": {
+                  "left": 1243.9375,
+                  "top": 566,
+                  "right": 1419.9375,
+                  "bottom": 838,
+                  "width": 176,
+                  "height": 272
+                },
+                "card": null,
+                "canvas": {
+                  "left": 1251.9375,
+                  "top": 570,
+                  "right": 1411.9375,
+                  "bottom": 730,
+                  "width": 160,
+                  "height": 160
+                },
+                "overflow": false,
+                "leaf": null
+              }
+            },
+            "afterRepeat": {
+              "gesture": "rest",
+              "layout": {
+                "viewport": {
+                  "width": 1440,
+                  "height": 850
+                },
+                "pet": {
+                  "left": 1243.9375,
+                  "top": 566,
+                  "right": 1419.9375,
+                  "bottom": 838,
+                  "width": 176,
+                  "height": 272
+                },
+                "card": null,
+                "canvas": {
+                  "left": 1251.9375,
+                  "top": 570,
+                  "right": 1411.9375,
+                  "bottom": 730,
+                  "width": 160,
+                  "height": 160
+                },
+                "overflow": false,
+                "leaf": null
+              },
+              "keys": [
+                {
+                  "key": "Enter",
+                  "repeat": false,
+                  "at": 7907.9000000003725
+                },
+                {
+                  "key": "Enter",
+                  "repeat": true,
+                  "at": 7960.10000000149
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "executionEvidence": {
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-keyboard-review/a3/node.log",
+          "sha256": "13fa675f932620367978d97d77fc8ecba703d44774e8ef83019d1d0f7a36ba53"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-keyboard-review/a3/node.log",
+          "sha256": "13fa675f932620367978d97d77fc8ecba703d44774e8ef83019d1d0f7a36ba53"
+        },
+        "combinedOutput": true,
+        "streamProvenance": "Original stdout and stderr were redirected to the same retained node.log.",
+        "actualNodeExit": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-keyboard-review/a3/node-exit.txt",
+          "sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+        },
+        "testProcessExitCode": 0,
+        "exitCodeProvenance": "The runner captured the actual Node LASTEXITCODE immediately and preserved it in node-exit.txt.",
+        "startedAt": "2026-09-23T16:36:00.176Z",
+        "durationMs": 10599.669,
+        "workerCount": 1,
+        "retriesConfigured": 0
+      },
+      "configuration": {
+        "file": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-keyboard-review\\a3\\playwright.config.mjs",
+        "testTitles": [
+          "held Enter must not restart Booky after Stop"
+        ],
+        "playwrightVersion": "1.62.1"
+      },
+      "failureMessages": [],
+      "originalSourceHashesAreFromEachCapture": true,
+      "externalDriver": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-keyboard-review/a3/driver-inputs.json",
+        "sha256": "cf322f047ba1d7ec296dfe6a94ae81b86468ab2b5dfd49e460fabfaef66c53b2"
+      },
+      "capturedSourceFixture": {
+        "path": "tests/pwa/booky-live-character.spec.mjs",
+        "sha256": "da55ef9069c07023383f2c47054edcd044cf456cd08b7230a74b52aa98cd08f6"
+      }
+    },
+    {
+      "attempt": "walk-continuity-a1",
+      "classification": "driver-setup-failure",
+      "summary": "The external diagnostic called live-character assertions before explicitly showing the initially hidden companion. No walking defect is inferred from this setup failure.",
+      "scope": "Focused diagnostic only; not the final formal browser suite.",
+      "pass": false,
+      "tests": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a1/playwright.json",
+        "sha256": "eb8c472cd43bc7d6c73c5b56dc184908fde75e8bb054e71c5689d561d8c37f34"
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a1/output/walk-continuity-manual-com-da7fa--keeps-navigation-reachable/booky-live-character.json",
+        "sha256": "c763afbb86309709df08684b019372562de9d0e9131278333f4a9cb1a4970ffe"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a1/output/walk-continuity-manual-com-da7fa--keeps-navigation-reachable/attachments/booky-live-character-source-evidence-d5402bc73633105a86867a32dd7f339416c9de2d.json",
+        "sha256": "c763afbb86309709df08684b019372562de9d0e9131278333f4a9cb1a4970ffe"
+      },
+      "captures": [
+        {
+          "sourceEvidence": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a1/output/walk-continuity-manual-com-da7fa--keeps-navigation-reachable/booky-live-character.json",
+            "sha256": "c763afbb86309709df08684b019372562de9d0e9131278333f4a9cb1a4970ffe"
+          },
+          "attachment": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a1/output/walk-continuity-manual-com-da7fa--keeps-navigation-reachable/attachments/booky-live-character-source-evidence-d5402bc73633105a86867a32dd7f339416c9de2d.json",
+            "sha256": "c763afbb86309709df08684b019372562de9d0e9131278333f4a9cb1a4970ffe"
+          },
+          "sourceInputCount": 669,
+          "capturedScopedSourceInputs": [
+            {
+              "path": "src/host/PlanetMascotControls.css",
+              "sha256": "bbd248cf2ba2391c249d9df5cf966ba13c84c6b28480851fc1226fcfac3963a3"
+            },
+            {
+              "path": "src/host/PlanetMascotControls.tsx",
+              "sha256": "7757cb1ed06378bba3eecab43727daec1b1bb7914912d84ac035850add5e7691"
+            },
+            {
+              "path": "src/host/bookyWalk.ts",
+              "sha256": "ebf28448443ddf5c301cb334cc725cdb892a5c0e5af6003c5afa5b3f87f11491"
+            },
+            {
+              "path": "src/host/useBookyWalk.ts",
+              "sha256": "c5b6bc0d24789d0bf508c54b72197189a3aced8f9ba4232e1e2d00ff087c3e01"
+            },
+            {
+              "path": "tests/pwa/booky-live-character.spec.mjs",
+              "sha256": "da55ef9069c07023383f2c47054edcd044cf456cd08b7230a74b52aa98cd08f6"
+            }
+          ],
+          "pass": false,
+          "scenario": null,
+          "screenshots": []
+        }
+      ],
+      "executionEvidence": {
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a1/node.log",
+          "sha256": "11081dac7774cfeaec39fda97ca6c8cbef9f6ec94b15dcb8036a313066d18637"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a1/node.log",
+          "sha256": "11081dac7774cfeaec39fda97ca6c8cbef9f6ec94b15dcb8036a313066d18637"
+        },
+        "combinedOutput": true,
+        "streamProvenance": "Original stdout and stderr were redirected to the same retained node.log.",
+        "actualNodeExit": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a1/node-exit.txt",
+          "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b"
+        },
+        "testProcessExitCode": 1,
+        "exitCodeProvenance": "The runner captured the actual Node LASTEXITCODE immediately and preserved it in node-exit.txt.",
+        "startedAt": "2026-09-23T16:34:52.860Z",
+        "durationMs": 13439.309000000001,
+        "workerCount": 1,
+        "retriesConfigured": 0
+      },
+      "configuration": {
+        "file": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-walk-continuity-review\\a1\\playwright.config.mjs",
+        "testTitles": [
+          "manual compact Booky walk starts continuously after real help close and keeps navigation reachable"
+        ],
+        "playwrightVersion": "1.62.1"
+      },
+      "failureMessages": [
+        "Error: expect(locator).toHaveAttribute(expected) failed\n\nLocator: locator('[data-planet-mascot-avatar]')\nExpected: \"live3d\"\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toHaveAttribute\" with timeout 5000ms\n  - waiting for locator('[data-planet-mascot-avatar]')\n\n\n  354 | }\n  355 | async function live(page) {\n> 356 |   await expect(avatar(page)).toHaveAttribute('data-renderer-state','live3d');\n      |                              ^\n  357 |   await expect(page.locator('[data-booky-canvas]')).toHaveCount(1);\n  358 |   await expect(avatar(page).locator('img')).toHaveCount(0);\n  359 |   let observed, positions;\n    at live (D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-walk-continuity-review\\a1\\walk-continuity.spec.mjs:356:30)\n    at D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-walk-continuity-review\\a1\\walk-continuity.spec.mjs:1391:99"
+      ],
+      "originalSourceHashesAreFromEachCapture": true,
+      "externalDriver": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a1/driver-inputs.json",
+        "sha256": "e8f7018c8efc28ef687c3fcd7c18ffb985fdcd73052a21d422327dd963216fcc"
+      },
+      "capturedSourceFixture": {
+        "path": "tests/pwa/booky-live-character.spec.mjs",
+        "sha256": "da55ef9069c07023383f2c47054edcd044cf456cd08b7230a74b52aa98cd08f6"
+      }
+    },
+    {
+      "attempt": "walk-continuity-a2",
+      "classification": "reproduced-product-defect",
+      "summary": "After real help open/close, 568x320 jumped from top74 to212 (138px in7.9ms) and640x360 from146 to252 (106px in6.9ms). Walking tools intercepted country-button points; sampled navigation was reachable before walking. Movement source was unchanged; captured Controls already included the concurrent held-Enter fix.",
+      "scope": "Focused diagnostic only; not the final formal browser suite.",
+      "pass": false,
+      "tests": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a2/playwright.json",
+        "sha256": "3d4f2a9b4ca51d5a155e5b3aaf27b7909442fe4dfd951b2839e03e8414e6f9cb"
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a2/output/walk-continuity-manual-com-da7fa--keeps-navigation-reachable/booky-live-character.json",
+        "sha256": "d2567e01323d595a769ff602afb4ebfda84b07945fab863125e228f20d5703e1"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a2/output/walk-continuity-manual-com-da7fa--keeps-navigation-reachable/attachments/booky-live-character-source-evidence-4cc560b3292ff39a7b1a5c7eb992b29acdda8496.json",
+        "sha256": "d2567e01323d595a769ff602afb4ebfda84b07945fab863125e228f20d5703e1"
+      },
+      "captures": [
+        {
+          "sourceEvidence": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a2/output/walk-continuity-manual-com-da7fa--keeps-navigation-reachable/booky-live-character.json",
+            "sha256": "d2567e01323d595a769ff602afb4ebfda84b07945fab863125e228f20d5703e1"
+          },
+          "attachment": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a2/output/walk-continuity-manual-com-da7fa--keeps-navigation-reachable/attachments/booky-live-character-source-evidence-4cc560b3292ff39a7b1a5c7eb992b29acdda8496.json",
+            "sha256": "d2567e01323d595a769ff602afb4ebfda84b07945fab863125e228f20d5703e1"
+          },
+          "sourceInputCount": 669,
+          "capturedScopedSourceInputs": [
+            {
+              "path": "src/host/PlanetMascotControls.css",
+              "sha256": "bbd248cf2ba2391c249d9df5cf966ba13c84c6b28480851fc1226fcfac3963a3"
+            },
+            {
+              "path": "src/host/PlanetMascotControls.tsx",
+              "sha256": "a73fc44a1c0c106b81a2e5178bd9bced2a279ea96c0bcb19d65ce95ee5de60fe"
+            },
+            {
+              "path": "src/host/bookyWalk.ts",
+              "sha256": "ebf28448443ddf5c301cb334cc725cdb892a5c0e5af6003c5afa5b3f87f11491"
+            },
+            {
+              "path": "src/host/useBookyWalk.ts",
+              "sha256": "c5b6bc0d24789d0bf508c54b72197189a3aced8f9ba4232e1e2d00ff087c3e01"
+            },
+            {
+              "path": "tests/pwa/booky-live-character.spec.mjs",
+              "sha256": "da55ef9069c07023383f2c47054edcd044cf456cd08b7230a74b52aa98cd08f6"
+            }
+          ],
+          "pass": false,
+          "scenario": "diagnostic-manual-walk-continuity",
+          "screenshots": [
+            {
+              "filename": "walk-before-568.png",
+              "sha256": "c60bf35786e6c2ff5892915cf8969174bda7d97eec95333c8b6e8f2738736cb0",
+              "width": 568,
+              "height": 320,
+              "framing": "actual-app-independent-live-3d-companion",
+              "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a2/output/walk-continuity-manual-com-da7fa--keeps-navigation-reachable/walk-before-568.png"
+            },
+            {
+              "filename": "walk-moving-568.png",
+              "sha256": "2cad7fdda5804deda2ea3593c62d97814b720d3c4f934ee5a778f58603a232c3",
+              "width": 568,
+              "height": 320,
+              "framing": "actual-app-independent-live-3d-companion",
+              "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a2/output/walk-continuity-manual-com-da7fa--keeps-navigation-reachable/walk-moving-568.png"
+            },
+            {
+              "filename": "walk-before-640.png",
+              "sha256": "2e0ccfa9e9ab92fa123981ac7866965ec2cc7f50f9e549cc9816d9c56eab3b2e",
+              "width": 640,
+              "height": 360,
+              "framing": "actual-app-independent-live-3d-companion",
+              "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a2/output/walk-continuity-manual-com-da7fa--keeps-navigation-reachable/walk-before-640.png"
+            },
+            {
+              "filename": "walk-moving-640.png",
+              "sha256": "cc7a42693c179b8020f83014d5f8649a1e68f94d5db703b4cf8971adfb27c854",
+              "width": 640,
+              "height": 360,
+              "framing": "actual-app-independent-live-3d-companion",
+              "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a2/output/walk-continuity-manual-com-da7fa--keeps-navigation-reachable/walk-moving-640.png"
+            }
+          ],
+          "observations": [
+            {
+              "size": {
+                "width": 568,
+                "height": 320
+              },
+              "origin": {
+                "left": 176,
+                "top": 74,
+                "right": 488,
+                "bottom": 170,
+                "width": 312,
+                "height": 96
+              },
+              "activated": {
+                "left": 175.984375,
+                "top": 212,
+                "right": 487.984375,
+                "bottom": 308,
+                "width": 312,
+                "height": 96
+              },
+              "maxVerticalStep": {
+                "pixels": 138,
+                "milliseconds": 7.899999998509884,
+                "from": 74,
+                "to": 212
+              },
+              "blockedDuring": [
+                {
+                  "selector": ".atlas-country-sheet-toggle",
+                  "rect": {
+                    "left": 8,
+                    "top": 248,
+                    "right": 560,
+                    "bottom": 312,
+                    "width": 552,
+                    "height": 64
+                  },
+                  "points": [
+                    {
+                      "reachable": true,
+                      "tag": "STRONG",
+                      "className": ""
+                    },
+                    {
+                      "reachable": false,
+                      "tag": "BUTTON",
+                      "className": "planet-mascot-controls__move"
+                    },
+                    {
+                      "reachable": false,
+                      "tag": "BUTTON",
+                      "className": "planet-mascot-controls__walk"
+                    }
+                  ]
+                }
+              ],
+              "preferenceMutationsUnchanged": true
+            },
+            {
+              "size": {
+                "width": 640,
+                "height": 360
+              },
+              "origin": {
+                "left": 172.5625,
+                "top": 146,
+                "right": 484.5625,
+                "bottom": 242,
+                "width": 312,
+                "height": 96
+              },
+              "activated": {
+                "left": 172.5625,
+                "top": 252,
+                "right": 484.5625,
+                "bottom": 348,
+                "width": 312,
+                "height": 96
+              },
+              "maxVerticalStep": {
+                "pixels": 106,
+                "milliseconds": 6.900000000372529,
+                "from": 146,
+                "to": 252
+              },
+              "blockedDuring": [
+                {
+                  "selector": ".atlas-country-sheet-toggle",
+                  "rect": {
+                    "left": 8,
+                    "top": 288,
+                    "right": 632,
+                    "bottom": 352,
+                    "width": 624,
+                    "height": 64
+                  },
+                  "points": [
+                    {
+                      "reachable": true,
+                      "tag": "STRONG",
+                      "className": ""
+                    },
+                    {
+                      "reachable": false,
+                      "tag": "DIV",
+                      "className": "planet-mascot-controls__tools"
+                    },
+                    {
+                      "reachable": true,
+                      "tag": "SPAN",
+                      "className": "atlas-country-sheet-action-full"
+                    }
+                  ]
+                }
+              ],
+              "preferenceMutationsUnchanged": true
+            }
+          ]
+        }
+      ],
+      "executionEvidence": {
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a2/node.log",
+          "sha256": "921c054c125fad977d3599f19ecac1cfbad6144cfe358037af740577b993c87b"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a2/node.log",
+          "sha256": "921c054c125fad977d3599f19ecac1cfbad6144cfe358037af740577b993c87b"
+        },
+        "combinedOutput": true,
+        "streamProvenance": "Original stdout and stderr were redirected to the same retained node.log.",
+        "actualNodeExit": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a2/node-exit.txt",
+          "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b"
+        },
+        "testProcessExitCode": 1,
+        "exitCodeProvenance": "The runner captured the actual Node LASTEXITCODE immediately and preserved it in node-exit.txt.",
+        "startedAt": "2026-09-23T16:36:28.247Z",
+        "durationMs": 12641.175000000001,
+        "workerCount": 1,
+        "retriesConfigured": 0
+      },
+      "configuration": {
+        "file": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-walk-continuity-review\\a2\\playwright.config.mjs",
+        "testTitles": [
+          "manual compact Booky walk starts continuously after real help close and keeps navigation reachable"
+        ],
+        "playwrightVersion": "1.62.1"
+      },
+      "failureMessages": [
+        "Error: 568 manual walk starts at actual resting position without a vertical teleport\n\nexpect(received).toBeLessThanOrEqual(expected)\n\nExpected: <= 12\nReceived:    138\n\n  1408 |       result.observations.manualWalkContinuity.push({size,before,activated,moving,afterStop,trace,maxVerticalStep,blockedDuring,preferenceMutationsUnchanged:true});\n  1409 |       expect.soft(before.targets.every(target=>target.points.every(point=>point.reachable)),size.width+' closed-help baseline navigation').toBe(true);\n> 1410 |       expect.soft(maxVerticalStep.pixels,size.width+' manual walk starts at actual resting position without a vertical teleport').toBeLessThanOrEqual(12);\n       |                                                                                                                                   ^\n  1411 |       expect.soft(blockedDuring.map(target=>target.selector),size.width+' explicit walk keeps mandatory navigation reachable').toEqual([]);\n  1412 |     }\n  1413 |     result.scenario='diagnostic-manual-walk-continuity';result.diagnosticComplete=true;\n    at D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-walk-continuity-review\\a2\\walk-continuity.spec.mjs:1410:131",
+        "Error: 568 explicit walk keeps mandatory navigation reachable\n\nexpect(received).toEqual(expected) // deep equality\n\n- Expected  - 1\n+ Received  + 3\n\n- Array []\n+ Array [\n+   \".atlas-country-sheet-toggle\",\n+ ]\n\n  1409 |       expect.soft(before.targets.every(target=>target.points.every(point=>point.reachable)),size.width+' closed-help baseline navigation').toBe(true);\n  1410 |       expect.soft(maxVerticalStep.pixels,size.width+' manual walk starts at actual resting position without a vertical teleport').toBeLessThanOrEqual(12);\n> 1411 |       expect.soft(blockedDuring.map(target=>target.selector),size.width+' explicit walk keeps mandatory navigation reachable').toEqual([]);\n       |                                                                                                                                ^\n  1412 |     }\n  1413 |     result.scenario='diagnostic-manual-walk-continuity';result.diagnosticComplete=true;\n  1414 |     if(testInfo.errors.length===0)await fixture.verify();\n    at D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-walk-continuity-review\\a2\\walk-continuity.spec.mjs:1411:128",
+        "Error: 640 manual walk starts at actual resting position without a vertical teleport\n\nexpect(received).toBeLessThanOrEqual(expected)\n\nExpected: <= 12\nReceived:    106\n\n  1408 |       result.observations.manualWalkContinuity.push({size,before,activated,moving,afterStop,trace,maxVerticalStep,blockedDuring,preferenceMutationsUnchanged:true});\n  1409 |       expect.soft(before.targets.every(target=>target.points.every(point=>point.reachable)),size.width+' closed-help baseline navigation').toBe(true);\n> 1410 |       expect.soft(maxVerticalStep.pixels,size.width+' manual walk starts at actual resting position without a vertical teleport').toBeLessThanOrEqual(12);\n       |                                                                                                                                   ^\n  1411 |       expect.soft(blockedDuring.map(target=>target.selector),size.width+' explicit walk keeps mandatory navigation reachable').toEqual([]);\n  1412 |     }\n  1413 |     result.scenario='diagnostic-manual-walk-continuity';result.diagnosticComplete=true;\n    at D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-walk-continuity-review\\a2\\walk-continuity.spec.mjs:1410:131",
+        "Error: 640 explicit walk keeps mandatory navigation reachable\n\nexpect(received).toEqual(expected) // deep equality\n\n- Expected  - 1\n+ Received  + 3\n\n- Array []\n+ Array [\n+   \".atlas-country-sheet-toggle\",\n+ ]\n\n  1409 |       expect.soft(before.targets.every(target=>target.points.every(point=>point.reachable)),size.width+' closed-help baseline navigation').toBe(true);\n  1410 |       expect.soft(maxVerticalStep.pixels,size.width+' manual walk starts at actual resting position without a vertical teleport').toBeLessThanOrEqual(12);\n> 1411 |       expect.soft(blockedDuring.map(target=>target.selector),size.width+' explicit walk keeps mandatory navigation reachable').toEqual([]);\n       |                                                                                                                                ^\n  1412 |     }\n  1413 |     result.scenario='diagnostic-manual-walk-continuity';result.diagnosticComplete=true;\n  1414 |     if(testInfo.errors.length===0)await fixture.verify();\n    at D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-walk-continuity-review\\a2\\walk-continuity.spec.mjs:1411:128"
+      ],
+      "originalSourceHashesAreFromEachCapture": true,
+      "externalDriver": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a2/driver-inputs.json",
+        "sha256": "1568fd4003b5c69c1381f2a33db040c80917dab15397ccd8bb5d9c0ae86170a0"
+      },
+      "capturedSourceFixture": {
+        "path": "tests/pwa/booky-live-character.spec.mjs",
+        "sha256": "da55ef9069c07023383f2c47054edcd044cf456cd08b7230a74b52aa98cd08f6"
+      }
+    },
+    {
+      "attempt": "walk-continuity-a3",
+      "classification": "driver-assertion-failures",
+      "summary": "The changed walking case referenced an overlap helper scoped in another case. The held-key case omitted the established fixture.remember setup, so sameScene was false despite passing input assertions. Both original failed captures are preserved. These failures do not prove a product regression.",
+      "scope": "Focused diagnostic only; not the final formal browser suite.",
+      "pass": false,
+      "tests": {
+        "passed": 0,
+        "failed": 2,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a3/playwright.json",
+        "sha256": "9e5ac584a4910898a335a07135eadc0a04be8a12569b5694d22a1b589d1a1cfb"
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a3/output/booky-live-character-Mr-Bo-98b11-g-hiding-and-reduced-motion/booky-live-character.json",
+        "sha256": "41433f1a3a38823fcefaf51c1a195fe4c33a31f35008274af04d2f82ca2ef27d"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a3/output/booky-live-character-Mr-Bo-98b11-g-hiding-and-reduced-motion/attachments/booky-live-character-source-evidence-468fc13fd2166ecc6905141050038504a998d04e.json",
+        "sha256": "41433f1a3a38823fcefaf51c1a195fe4c33a31f35008274af04d2f82ca2ef27d"
+      },
+      "captures": [
+        {
+          "sourceEvidence": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a3/output/booky-live-character-Mr-Bo-98b11-g-hiding-and-reduced-motion/booky-live-character.json",
+            "sha256": "41433f1a3a38823fcefaf51c1a195fe4c33a31f35008274af04d2f82ca2ef27d"
+          },
+          "attachment": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a3/output/booky-live-character-Mr-Bo-98b11-g-hiding-and-reduced-motion/attachments/booky-live-character-source-evidence-468fc13fd2166ecc6905141050038504a998d04e.json",
+            "sha256": "41433f1a3a38823fcefaf51c1a195fe4c33a31f35008274af04d2f82ca2ef27d"
+          },
+          "sourceInputCount": 669,
+          "capturedScopedSourceInputs": [
+            {
+              "path": "src/host/PlanetMascotControls.css",
+              "sha256": "bbd248cf2ba2391c249d9df5cf966ba13c84c6b28480851fc1226fcfac3963a3"
+            },
+            {
+              "path": "src/host/PlanetMascotControls.tsx",
+              "sha256": "fc031843dfdec6448ee249cbd724c3d563415e2a9a95bb707722518c72177fc9"
+            },
+            {
+              "path": "src/host/bookyWalk.ts",
+              "sha256": "b94129b2353370a9e0c9b7c265b88a3d1af30564b693ce1eaa8731b37c437947"
+            },
+            {
+              "path": "src/host/useBookyWalk.ts",
+              "sha256": "b4f60c6bfa1a24394007dba2c89dd04f70d98673a37056332e25e1bcaa8beaf0"
+            },
+            {
+              "path": "tests/pwa/booky-live-character.spec.mjs",
+              "sha256": "c9561ecfea893b422f1b0a0f0223fd7097b8802143a7a9b6a3b24d69f9dc7caa"
+            }
+          ],
+          "pass": false,
+          "scenario": null,
+          "screenshots": [
+            {
+              "filename": "booky-margin-walk-ru-1440.png",
+              "sha256": "c39ce7fd47144d249810cf31a86c8f44f7becdb886d5ffefc8fbf88d493476c8",
+              "width": 1440,
+              "height": 850,
+              "framing": "actual-app-independent-live-3d-companion",
+              "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a3/output/booky-live-character-Mr-Bo-98b11-g-hiding-and-reduced-motion/booky-margin-walk-ru-1440.png"
+            }
+          ]
+        },
+        {
+          "sourceEvidence": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a3/output/booky-live-character-Mr-Bo-6ba06-pace-as-one-walking-command/booky-live-character.json",
+            "sha256": "ea3e8b1974f365b1d3f064c5fcdeb8494a78216e2bc783f74aa66593eda0ec47"
+          },
+          "attachment": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a3/output/booky-live-character-Mr-Bo-6ba06-pace-as-one-walking-command/attachments/booky-live-character-source-evidence-dccd3601b18494e338f4b215b13c38991c5203f6.json",
+            "sha256": "ea3e8b1974f365b1d3f064c5fcdeb8494a78216e2bc783f74aa66593eda0ec47"
+          },
+          "sourceInputCount": 669,
+          "capturedScopedSourceInputs": [
+            {
+              "path": "src/host/PlanetMascotControls.css",
+              "sha256": "bbd248cf2ba2391c249d9df5cf966ba13c84c6b28480851fc1226fcfac3963a3"
+            },
+            {
+              "path": "src/host/PlanetMascotControls.tsx",
+              "sha256": "fc031843dfdec6448ee249cbd724c3d563415e2a9a95bb707722518c72177fc9"
+            },
+            {
+              "path": "src/host/bookyWalk.ts",
+              "sha256": "b94129b2353370a9e0c9b7c265b88a3d1af30564b693ce1eaa8731b37c437947"
+            },
+            {
+              "path": "src/host/useBookyWalk.ts",
+              "sha256": "b4f60c6bfa1a24394007dba2c89dd04f70d98673a37056332e25e1bcaa8beaf0"
+            },
+            {
+              "path": "tests/pwa/booky-live-character.spec.mjs",
+              "sha256": "c9561ecfea893b422f1b0a0f0223fd7097b8802143a7a9b6a3b24d69f9dc7caa"
+            }
+          ],
+          "pass": false,
+          "scenario": null,
+          "screenshots": [
+            {
+              "filename": "booky-held-key-failure.png",
+              "sha256": "74ce625c86917ba5040e490dce897668d2f30b0376f79a12f4658daf90e6ec80",
+              "width": 1440,
+              "height": 850,
+              "framing": "actual-app-independent-live-3d-companion",
+              "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a3/output/booky-live-character-Mr-Bo-6ba06-pace-as-one-walking-command/booky-held-key-failure.png"
+            }
+          ]
+        }
+      ],
+      "executionEvidence": {
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a3/node.log",
+          "sha256": "c4fc6083bfd5f96190ef2fbf8a02cd3b8efa0587c40f0dc1ce6c840b7f06cfd7"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a3/node.log",
+          "sha256": "c4fc6083bfd5f96190ef2fbf8a02cd3b8efa0587c40f0dc1ce6c840b7f06cfd7"
+        },
+        "combinedOutput": true,
+        "streamProvenance": "Original stdout and stderr were redirected to the same retained node.log.",
+        "actualNodeExit": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a3/node-exit.txt",
+          "sha256": "f1b2f662800122bed0ff255693df89c4487fbdcf453d3524a42d4ec20c3d9c04"
+        },
+        "testProcessExitCode": 1,
+        "exitCodeProvenance": "The runner captured the actual Node LASTEXITCODE immediately and preserved it in node-exit.txt.",
+        "startedAt": "2026-09-23T16:48:57.916Z",
+        "durationMs": 33522.059,
+        "workerCount": 1,
+        "retriesConfigured": 0
+      },
+      "configuration": {
+        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-approach-stop-20260923\\playwright.config.mjs",
+        "testTitles": [
+          "Mr. Booky walks continuously in clear space only by request and stops for drag, hiding and reduced motion",
+          "Mr. Booky treats held Enter and Space as one walking command"
+        ],
+        "playwrightVersion": "1.62.1"
+      },
+      "failureMessages": [
+        "ReferenceError: overlap is not defined\n\n  785 |     expect(Math.abs(complete.samples[0].left-origin.left),'The first frame starts at the actual resting position').toBeLessThanOrEqual(3);\n  786 |     expect(complete.samples.every(value=>fits({left:value.left,top:value.top,right:value.right,bottom:value.bottom,width:value.width,height:value.height},value.viewport))).toBe(true);\n> 787 |     for(const target of desktopNavigation.filter(target=>target.visible))expect(complete.samples.every(sample=>!overlap(sample,target.rect)),target.selector+' stays clear for the complete walk').toBe(true);\n      |                                                                                                                ^\n  788 |     const trace=await page.evaluate(()=>window.__bookyLiveFixture.gestureTrace());\n  789 |     for(const key of ['leftLeg','rightLeg']){\n  790 |       expect(trace.timeline.every(value=>Boolean(value.pose?.[key]))).toBe(true);\n    at every (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs:787:112)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs:787:98",
+        "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: true\nReceived: false\n\n  330 | }\n  331 | function retained(current, original, samePose = true, sameRoute = true) {\n> 332 |   expect(current.sameScene).toBe(true); expect(current.texture).toBe(original.texture); expect(current.geometry).toBe(original.geometry);\n      |                             ^\n  333 |   expect(current.backgroundResource).toBe(original.backgroundResource); expect(current.selection).toEqual(original.selection);\n  334 |   if (sameRoute) expect(current.url).toBe(original.url);\n  335 |   if (samePose) expect(current.pose).toEqual(original.pose);\n    at retained (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs:332:29)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs:1473:5"
+      ],
+      "originalSourceHashesAreFromEachCapture": true,
+      "runnerCapturedSourceInputs": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a3/source-inputs.json",
+        "sha256": "1fefc8fa8a775827c152ffba8390737e34bd968521a775e8786b73ed3da3951e"
+      }
+    },
+    {
+      "attempt": "walk-continuity-a4",
+      "classification": "driver-actionability-failure",
+      "summary": "Touch successfully started walking at390x844, then locator.tap on the moving Stop button waited for actionability and the case failed its stopped assertion. This cannot prove that a touch on the moving Stop was delivered during the original walk. The final fixture taps the current measured screen point and asserts trusted touch/click chronology; separate formal evidence validates that correction. Compact branches were not reached.",
+      "scope": "Focused diagnostic only; not the final formal browser suite.",
+      "pass": false,
+      "tests": {
+        "passed": 0,
+        "failed": 1,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "report": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a4/playwright.json",
+        "sha256": "d383f4a3e000d2f06cf69422a678675edf2e91618fd23614edd35091ff0119fc"
+      },
+      "sourceEvidence": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a4/output/booky-live-character-Mr-Bo-98b11-g-hiding-and-reduced-motion/booky-live-character.json",
+        "sha256": "24669e12b62292347bf9c1e6ef8b7c47c8e49b201c40c76989f72c2b118e3b55"
+      },
+      "attachment": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a4/output/booky-live-character-Mr-Bo-98b11-g-hiding-and-reduced-motion/attachments/booky-live-character-source-evidence-d2fa20a3b9341bf14d5a9919eeaf3763a7151cac.json",
+        "sha256": "24669e12b62292347bf9c1e6ef8b7c47c8e49b201c40c76989f72c2b118e3b55"
+      },
+      "captures": [
+        {
+          "sourceEvidence": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a4/output/booky-live-character-Mr-Bo-98b11-g-hiding-and-reduced-motion/booky-live-character.json",
+            "sha256": "24669e12b62292347bf9c1e6ef8b7c47c8e49b201c40c76989f72c2b118e3b55"
+          },
+          "attachment": {
+            "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a4/output/booky-live-character-Mr-Bo-98b11-g-hiding-and-reduced-motion/attachments/booky-live-character-source-evidence-d2fa20a3b9341bf14d5a9919eeaf3763a7151cac.json",
+            "sha256": "24669e12b62292347bf9c1e6ef8b7c47c8e49b201c40c76989f72c2b118e3b55"
+          },
+          "sourceInputCount": 669,
+          "capturedScopedSourceInputs": [
+            {
+              "path": "src/host/PlanetMascotControls.css",
+              "sha256": "bbd248cf2ba2391c249d9df5cf966ba13c84c6b28480851fc1226fcfac3963a3"
+            },
+            {
+              "path": "src/host/PlanetMascotControls.tsx",
+              "sha256": "fc031843dfdec6448ee249cbd724c3d563415e2a9a95bb707722518c72177fc9"
+            },
+            {
+              "path": "src/host/bookyWalk.ts",
+              "sha256": "b94129b2353370a9e0c9b7c265b88a3d1af30564b693ce1eaa8731b37c437947"
+            },
+            {
+              "path": "src/host/useBookyWalk.ts",
+              "sha256": "b4f60c6bfa1a24394007dba2c89dd04f70d98673a37056332e25e1bcaa8beaf0"
+            },
+            {
+              "path": "tests/pwa/booky-live-character.spec.mjs",
+              "sha256": "d08724a7c34393e60144e0cb9e4bc26b3d0d580fdb4d8975381398e5ba57daa7"
+            }
+          ],
+          "pass": false,
+          "scenario": null,
+          "screenshots": [
+            {
+              "filename": "booky-margin-walk-ru-1440.png",
+              "sha256": "88f252c35368b81b1d06dcb6c5ba77a54608f3a8ca0282e335bd5ba053531605",
+              "width": 1440,
+              "height": 850,
+              "framing": "actual-app-independent-live-3d-companion",
+              "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a4/output/booky-live-character-Mr-Bo-98b11-g-hiding-and-reduced-motion/booky-margin-walk-ru-1440.png"
+            },
+            {
+              "filename": "booky-touch-walk-ru-390.png",
+              "sha256": "b9babe0625db2156d8c41c00795fedc75ae251082abaeb2ebe66bf115069d532",
+              "width": 390,
+              "height": 844,
+              "framing": "actual-app-independent-live-3d-companion",
+              "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a4/output/booky-live-character-Mr-Bo-98b11-g-hiding-and-reduced-motion/booky-touch-walk-ru-390.png"
+            }
+          ]
+        }
+      ],
+      "executionEvidence": {
+        "stdout": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a4/node.log",
+          "sha256": "9ee5258b9381724fbebf8435762a840c38ad1ad19dd5049ac7a87f907b44f6c7"
+        },
+        "stderr": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a4/node.log",
+          "sha256": "9ee5258b9381724fbebf8435762a840c38ad1ad19dd5049ac7a87f907b44f6c7"
+        },
+        "combinedOutput": true,
+        "streamProvenance": "Original stdout and stderr were redirected to the same retained node.log.",
+        "actualNodeExit": {
+          "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a4/node-exit.txt",
+          "sha256": "f1b2f662800122bed0ff255693df89c4487fbdcf453d3524a42d4ec20c3d9c04"
+        },
+        "testProcessExitCode": 1,
+        "exitCodeProvenance": "The runner captured the actual Node LASTEXITCODE immediately and preserved it in node-exit.txt.",
+        "startedAt": "2026-09-23T16:52:08.339Z",
+        "durationMs": 26608.658,
+        "workerCount": 1,
+        "retriesConfigured": 0
+      },
+      "configuration": {
+        "file": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-approach-stop-20260923\\playwright.config.mjs",
+        "testTitles": [
+          "Mr. Booky walks continuously in clear space only by request and stops for drag, hiding and reduced motion"
+        ],
+        "playwrightVersion": "1.62.1"
+      },
+      "failureMessages": [
+        "Error: expect(locator).not.toHaveAttribute(expected) failed\n\nLocator:  locator('[data-planet-mascot-pet]')\nExpected: not \"walking\"\nReceived: \"walking\"\nTimeout:  1000ms\n\nCall log:\n  - Expect \"not toHaveAttribute\" with timeout 1000ms\n  - waiting for locator('[data-planet-mascot-pet]')\n    11 × locator resolved to <div data-planet-mascot-pet=\"\" data-planet-mascot-step=\"0\" class=\"planet-mascot-controls\" data-planet-mascot-mode=\"help\" data-planet-mascot-active=\"true\" data-planet-mascot-screen=\"globe\" data-planet-mascot-gesture=\"walking\" data-planet-mascot-visibility=\"shown\" data-planet-mascot-panel-state=\"closed\" data-planet-mascot-current-route=\"none\">…</div>\n       - unexpected value \"walking\"\n\n\n  740 |   const walk=()=>page.locator('[data-booky-walk]');\n  741 |   const walking=()=>expect(pet(page)).toHaveAttribute('data-planet-mascot-gesture','walking');\n> 742 |   const stopped=(timeout=1000)=>expect(pet(page)).not.toHaveAttribute('data-planet-mascot-gesture','walking',{timeout});\n      |                                                       ^\n  743 |   const overlap=(a,b)=>Math.min(a.right,b.right)>Math.max(a.left,b.left)&&Math.min(a.bottom,b.bottom)>Math.max(a.top,b.top);\n  744 |   async function showWalk(){\n  745 |     // The product deliberately disables walking while tips are open. Closing\n    at stopped (C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs:742:55)\n    at C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\tests\\pwa\\booky-live-character.spec.mjs:858:62"
+      ],
+      "originalSourceHashesAreFromEachCapture": true,
+      "runnerCapturedSourceInputs": {
+        "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/a4/source-inputs.json",
+        "sha256": "5a11345e42e8cc395c817f56edb9463570042a2dd1ea02b6b799c907b8aeffaa"
+      }
+    }
+  ],
+  "originalWalkProof": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/proof.json",
+    "sha256": "f0cb9b2d50261f31a794562aafb7007dd3e9b90a8c4cf3a43069ebd2fa4b9383"
+  },
+  "purePlannerCheck": {
+    "report": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/unit-a1/vitest.json",
+      "sha256": "b5a47e596adccdb3581504589efd1feb7893d825ad1f36b3232853112f578fb6"
+    },
+    "log": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/unit-a1/node.log",
+      "sha256": "dc5a3521170ec58c7aa297adbb9fc1067c87e3938095eb25673acbad0d0a9462"
+    },
+    "actualNodeExit": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/unit-a1/node-exit.txt",
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354"
+    },
+    "exitCode": 0,
+    "capturedSourceInputs": {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity-review/unit-a1/source-inputs.json",
+      "sha256": "578f16ff291e163011491c150e97cdbdd23a25b6b30969166fce4cab6f7d3284"
+    },
+    "passed": 10,
+    "failed": 0
+  },
+  "finalFixture": {
+    "path": "tests/pwa/booky-live-character.spec.mjs",
+    "sha256": "ff965ff74a42766dabb55c6d7a4a1f66a154dda81c2534209fb5358f35370214"
+  },
+  "finalFixtureDifferences": "After a4 the fixture replaced moving-target locator.tap with touchscreen.tap at the current rectangle, added trusted touch/click chronology, and asserts the visible RU/EN unavailable-walk label. It is validated by a distinct formal run; old capture hashes and failed reports were not rewritten.",
+  "limitations": [
+    "Original captured application hashes are read from each retained capture, never reconstructed from current source.",
+    "a4 proves touch start at390x844, but does not prove touch Stop or the not-yet-reached compact branches. Those require the final formal result.",
+    "Browser viewport/touch evidence is not installed Android-device, iOS, full accessibility, stage or release acceptance."
+  ],
+  "releaseReady": false
+}

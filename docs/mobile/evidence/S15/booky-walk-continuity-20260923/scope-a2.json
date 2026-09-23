@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "description": "Книжулик / Mr. Booky starts an explicitly requested walk from his resting row and follows a clear horizontal corridor without jumping onto navigation. Crowded layouts explain unavailable walking in RU/EN; visible control changes interrupt a stale route. Touch start, Stop and drag remain the primary interaction. Holding a browser activation key cannot issue a second walking command. A touch begun on Stop retains its original intent if the finite walk ends before release, preventing an unintended restart.",
+  "changedPaths": [
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/bookyWalk.ts",
+    "src/host/bookyWalk.test.ts",
+    "src/host/useBookyWalk.ts",
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "unitFiles": [
+    "src/host/bookyModel.test.ts",
+    "src/host/bookyAnimation.test.ts",
+    "src/host/bookyWalk.test.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascotPreference.test.ts",
+    "src/host/planetMascotPersistence.test.ts",
+    "src/host/bookySupport.test.ts",
+    "src/host/bookyTourProgress.test.ts",
+    "src/host/bookyPlacement.test.ts"
+  ],
+  "browserFiles": [
+    "tests/pwa/booky-live-character.spec.mjs",
+    "tests/pwa/booky-reader-policy.spec.mjs"
+  ],
+  "expectedBrowserTests": 11,
+  "expectedImages": 37,
+  "requiredCaptureFlags": [
+    {
+      "scenario": "booky-open-help-placement",
+      "flags": [
+        "openHelpLocaleControlsReachable",
+        "desktopOpenHelpNavigationReachable",
+        "closedHelpNavigationReachable",
+        "collectionHeaderReachable",
+        "helpScrollsByPointerWheel",
+        "helpClosesWhileScrolled",
+        "helpRegrowsOnLargerViewport",
+        "petAndHelpFitWithoutOverlap",
+        "noAutomaticPreferenceWrites",
+        "noHelpCameraChanges",
+        "sameCanonicalGlobe",
+        "compactLandscapeHelpReadable",
+        "closedHelpGlobalHeaderReachable"
+      ]
+    },
+    {
+      "scenario": "explicit-target-approach",
+      "flags": [
+        "actualStopPointerCancelsApproach",
+        "actualStopEnterCancelsApproach",
+        "actualStopSpaceCancelsApproach",
+        "stopNeverStartsReplacementWalk",
+        "stoppedApproachRemainsStillBeyondOriginalDeadline"
+      ]
+    },
+    {
+      "scenario": "explicit-margin-walk",
+      "flags": [
+        "walkStartsAtRestingRow",
+        "walkPathAvoidsNavigation",
+        "compactWalkAvailabilityMatchesClearSpace",
+        "compactWalkKeepsNavigationReachable",
+        "compactUnavailableWalkExplained",
+        "mobileTouchWalkStartsContinuously",
+        "mobileTouchStopsWalk",
+        "mobileTouchDragStopsWalk",
+        "mobileHeldStopCannotRestart"
+      ]
+    },
+    {
+      "scenario": "held-walk-keyboard",
+      "flags": [
+        "heldEnterStartsOnlyOnce",
+        "heldEnterCannotRestartAfterStop",
+        "heldSpaceUsesOneReleaseAction",
+        "noHeldKeyAutomaticResume",
+        "noAutomaticPreferenceWrites",
+        "sameCanonicalGlobe"
+      ]
+    }
+  ]
+}

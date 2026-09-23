@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S15/booky-walk-continuity-20260923/pwa-a1.config.mjs"
+  ],
+  "exitCode": 0,
+  "durationMs": 23111,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/booky-walk-continuity-20260923/pwa-a1/browser-stdout.log",
+    "bytes": 189,
+    "sha256": "a69c51b34399fb82b437dfe98611424b051e0e065393bf38ed05ac3ca2c6dd9d"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/booky-walk-continuity-20260923/pwa-a1/browser-stderr.log",
+    "bytes": 164,
+    "sha256": "63921743acce0224ed22e6373d5e35712cb40f213fa99c1db80d1052e84d346a"
+  }
+}

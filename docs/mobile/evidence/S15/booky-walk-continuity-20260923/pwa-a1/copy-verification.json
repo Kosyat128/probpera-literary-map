@@ -1,0 +1,13 @@
+{
+  "pass": true,
+  "files": 1427,
+  "bytes": 76766596,
+  "detailedLedger": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity/pwa-a1-copy-verification.json",
+    "sha256": "e056a0fe99aba1ab7da137e0048f490d80497a8bff59c9a8b853216b4116d610"
+  },
+  "artifactManifest": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity/pwa-98c6f6b5/artifact.json",
+    "sha256": "72829271daf417b5a8da1279b61890ffb6538e228125484ae5b560fbf19c57bb"
+  }
+}

@@ -1,0 +1,802 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-23T17:16:06.493Z",
+  "pass": true,
+  "stage": "S15",
+  "status": "BOOKY_WALK_CONTINUITY_SCOPED_VALIDATION",
+  "sourceCommit": "50170c3a2be24a698957eda999c303a6189351c4",
+  "entry": {
+    "path": "docs/mobile/evidence/S15/booky-walk-continuity-20260923/entry-a2.json",
+    "sha256": "4d6dafcef7d1cbb43f117d8aa615dc2f299db656b98d19f1599bdab9cf758c89"
+  },
+  "checkpointHelper": {
+    "path": "docs/mobile/evidence/S15/booky-walk-continuity-20260923/checkpoint.mjs",
+    "sha256": "beed6d048ba2c0b0c7b7cb6d14e23d298617f4e551732d1218e4272f7284eb4e"
+  },
+  "previous": {
+    "path": "docs/mobile/evidence/S15/booky-approach-stop-20260923/result.json",
+    "sha256": "b55dbae9b598a5e67ac0c21a307db220a8a95dfb0d920310aa953a96bf29aae4"
+  },
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-walk-continuity-20260923/source-manifests/8a694d6a23fc1db5.json",
+    "sha256": "8a694d6a23fc1db59411c0b196b169b4d9c8311b06d1ec8fad4411215ad3617b",
+    "fileCount": 1650
+  },
+  "sourceCommits": [
+    "00e551284c590316499830a19864c01e2a98e2ac",
+    "50170c3a2be24a698957eda999c303a6189351c4"
+  ],
+  "attempts": {
+    "unit": "a2",
+    "static": "a2",
+    "browser": "a2"
+  },
+  "runs": {
+    "unit": {
+      "path": "docs/mobile/evidence/S15/booky-walk-continuity-20260923/unit-a2/result.json",
+      "sha256": "6583f1dcc81538b259e8335e622989b72a0ff35daa07b9b49806ee572aa52b0c",
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-walk-continuity-20260923/unit-a2/execution.json",
+        "sha256": "4704cc42e2f7e01c093e84224f4453fe7b97cc723ab2d87acd57107948278e33"
+      },
+      "tests": {
+        "passed": 151,
+        "failed": 0,
+        "skipped": 0
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-walk-continuity-20260923/unit-a2/vitest.json",
+        "sha256": "8b0c8c04029fc4dcfe966d1300f0e0b12897d6c0f56a52fa93492f3c6cdfe854"
+      }
+    },
+    "static": {
+      "path": "docs/mobile/evidence/S15/booky-walk-continuity-20260923/static-a2/result.json",
+      "sha256": "07a985081f0e8582246dc22aef6daa0fd24dfc812a2be03cffe2cbb7aebdf040",
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-walk-continuity-20260923/static-a2/execution.json",
+        "sha256": "6020e88fff29bb09f1a4ded19a1d7f52cd76a478ca0d088c733cb009cd316ff2"
+      },
+      "tests": null,
+      "rawReport": null
+    },
+    "browser": {
+      "path": "docs/mobile/evidence/S15/booky-walk-continuity-20260923/browser-a2/result.json",
+      "sha256": "7a30ac66c4889f6d55ec5a05deb5a42a3117d5f21c85161a659e7bc2d380d9a4",
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-walk-continuity-20260923/browser-a2/execution.json",
+        "sha256": "1a4b1827c51d24f2fed14f78988ea8d7fe825ed57e0508fbfd095bed6fc4a91d"
+      },
+      "tests": {
+        "passed": 11,
+        "failed": 0,
+        "skipped": 0,
+        "flaky": 0
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-walk-continuity-20260923/browser-a2/playwright.json",
+        "sha256": "ce8f746c641d282e1df8c24f5fc100962fb47fedaf28f1ed855820db017465d0"
+      }
+    }
+  },
+  "earlierAttempts": [
+    {
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-walk-continuity-20260923/browser-a1/result.json",
+        "sha256": "74dec7be119db8de1f60fb007b96f4672302bea89684782620e5c766a600d10d"
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-walk-continuity-20260923/browser-a1/execution.json",
+        "sha256": "2b6b5c17bcff64b52070e4ca3cfa3d6263ea62062a578d30310fa3a9c535444a"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-walk-continuity-20260923/browser-a1/playwright.json",
+        "sha256": "6d597472594b34aa3f5ef9843c2d8b7980c2296b0d093bd048ad39bc62b5b26f"
+      },
+      "pass": true,
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-walk-continuity-20260923/source-manifests/f34c383be67f7b1b.json",
+        "sha256": "f34c383be67f7b1b9b3f84868942de02b71929a078f3d6bab05fc9246a14e561",
+        "fileCount": 1650
+      },
+      "retainedOnly": true
+    },
+    {
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-walk-continuity-20260923/static-a1/result.json",
+        "sha256": "207899eb9fb376d8967cbdb8e0c87cac980d339d5f11495eb48a99db25e20347"
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-walk-continuity-20260923/static-a1/execution.json",
+        "sha256": "2225ce19c25f9baf8e16a808ccc340cb88ce6d02c8e5bec001ecdf9c03ee7f12"
+      },
+      "rawReport": null,
+      "pass": true,
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-walk-continuity-20260923/source-manifests/f34c383be67f7b1b.json",
+        "sha256": "f34c383be67f7b1b9b3f84868942de02b71929a078f3d6bab05fc9246a14e561",
+        "fileCount": 1650
+      },
+      "retainedOnly": true
+    },
+    {
+      "result": {
+        "path": "docs/mobile/evidence/S15/booky-walk-continuity-20260923/unit-a1/result.json",
+        "sha256": "c9278f9242440609af8bddc6c520fd99708d8ef367549ae391d4c5da63a22a98"
+      },
+      "execution": {
+        "path": "docs/mobile/evidence/S15/booky-walk-continuity-20260923/unit-a1/execution.json",
+        "sha256": "0c41994074175750a69961e1b5e83eb9d702104a3131b8bb5abf596446891fa6"
+      },
+      "rawReport": {
+        "path": "docs/mobile/evidence/S15/booky-walk-continuity-20260923/unit-a1/vitest.json",
+        "sha256": "8203f6dc88c3b075e0a2d6ab429102115f952d804557876004a6fb814c1fdaee"
+      },
+      "pass": true,
+      "sourceManifest": {
+        "path": "docs/mobile/evidence/S15/booky-walk-continuity-20260923/source-manifests/f34c383be67f7b1b.json",
+        "sha256": "f34c383be67f7b1b9b3f84868942de02b71929a078f3d6bab05fc9246a14e561",
+        "fileCount": 1650
+      },
+      "retainedOnly": true
+    }
+  ],
+  "diagnosticHistory": {
+    "path": "docs/mobile/evidence/S15/booky-walk-continuity-20260923/diagnostic-history-final.json",
+    "sha256": "c1e50539892192b069b80bb88bdde8d5bab8c36521111dfee6763985aafa2603"
+  },
+  "unitCount": 151,
+  "unitFiles": [
+    "src/host/bookyModel.test.ts",
+    "src/host/bookyAnimation.test.ts",
+    "src/host/bookyWalk.test.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascotPreference.test.ts",
+    "src/host/planetMascotPersistence.test.ts",
+    "src/host/bookySupport.test.ts",
+    "src/host/bookyTourProgress.test.ts",
+    "src/host/bookyPlacement.test.ts"
+  ],
+  "browserCases": 11,
+  "actualAppCaseCount": 11,
+  "captures": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-walk-continuity\\browser-a2\\booky-live-character-live--d3a75-nical-globe-stays-unchanged\\booky-live-character.json",
+      "sha256": "a5ee92bb44194eae89075dc17298d65ad41c9301f3c01ad4fd9012864b4573e6",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-walk-continuity\\browser-a2\\booky-live-character-live--d3a75-nical-globe-stays-unchanged\\attachments\\booky-live-character-source-evidence-48e21e7abd054b5372e079784e7fcc82118bd5af.json",
+        "sha256": "a5ee92bb44194eae89075dc17298d65ad41c9301f3c01ad4fd9012864b4573e6"
+      },
+      "test": "live Mr. Booky model responds to direct interaction while the canonical globe stays unchanged"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-walk-continuity\\browser-a2\\booky-live-character-Mr-Bo-a0973-serves-newer-keyboard-focus\\booky-live-character.json",
+      "sha256": "10c3f2a526a5743d8f65609aec69540fef2d11e9b4332c65ad07a4ac36393bbf",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-walk-continuity\\browser-a2\\booky-live-character-Mr-Bo-a0973-serves-newer-keyboard-focus\\attachments\\booky-live-character-source-evidence-762cb2713b30d3a0dcd1b5b0af4ad35ae1c7e031.json",
+        "sha256": "10c3f2a526a5743d8f65609aec69540fef2d11e9b4332c65ad07a4ac36393bbf"
+      },
+      "test": "Mr. Booky opens canonical local utilities without writes and preserves newer keyboard focus"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-walk-continuity\\browser-a2\\booky-live-character-Mr-Bo-b0fb7-n-still-with-reduced-motion\\booky-live-character.json",
+      "sha256": "b6770e09964cbd2729afdcfdc2e416c1bc0244d4264677412e4c9e4f3e65a90e",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-walk-continuity\\browser-a2\\booky-live-character-Mr-Bo-b0fb7-n-still-with-reduced-motion\\attachments\\booky-live-character-source-evidence-83dae06b8b6133d4aa6a9294e5ba3d435f8f7389.json",
+        "sha256": "b6770e09964cbd2729afdcfdc2e416c1bc0244d4264677412e4c9e4f3e65a90e"
+      },
+      "test": "Mr. Booky thirteen gestures and nonrepeating surprises finish and remain still with reduced motion"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-walk-continuity\\browser-a2\\booky-live-character-Mr-Bo-98b11-g-hiding-and-reduced-motion\\booky-live-character.json",
+      "sha256": "6223209aba977ca08c0fcb493576bb7e02b5b19b1edb8734aa7dbd0bfc091bc6",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-walk-continuity\\browser-a2\\booky-live-character-Mr-Bo-98b11-g-hiding-and-reduced-motion\\attachments\\booky-live-character-source-evidence-4de57ab6a849e13e889d8dc234fc2b079dab0315.json",
+        "sha256": "6223209aba977ca08c0fcb493576bb7e02b5b19b1edb8734aa7dbd0bfc091bc6"
+      },
+      "test": "Mr. Booky walks continuously in clear space only by request and stops for drag, hiding and reduced motion"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-walk-continuity\\browser-a2\\booky-live-character-Mr-Bo-58b82-ellation-and-reduced-motion\\booky-live-character.json",
+      "sha256": "450075feb0f05a25ac573029f51219d8addba73bb4699ce3b146ecefbd7077ef",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-walk-continuity\\browser-a2\\booky-live-character-Mr-Bo-58b82-ellation-and-reduced-motion\\attachments\\booky-live-character-source-evidence-b2545805aaad8c4a61efc446f9ecb6ee1f3db48b.json",
+        "sha256": "450075feb0f05a25ac573029f51219d8addba73bb4699ce3b146ecefbd7077ef"
+      },
+      "test": "Mr. Booky approaches the selected section once, points, and respects cancellation and reduced motion"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-walk-continuity\\browser-a2\\booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales\\booky-live-character.json",
+      "sha256": "6328ba559d0ed5a242f06034d02e329663491091f697eba4370f1afb028396ba",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-walk-continuity\\browser-a2\\booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales\\attachments\\booky-live-character-source-evidence-157af9dded5dcfd9e5e550275d438b1688f63095.json",
+        "sha256": "6328ba559d0ed5a242f06034d02e329663491091f697eba4370f1afb028396ba"
+      },
+      "test": "Mr. Booky mobile placement preserves globe and collection hit targets in both locales"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-walk-continuity\\browser-a2\\booky-live-character-short-14e75-try-archive-in-both-locales\\booky-live-character.json",
+      "sha256": "2a776cc6345e8f3605a6e878b767d6110748a9e7c6de99a30d6b05b30393122a",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-walk-continuity\\browser-a2\\booky-live-character-short-14e75-try-archive-in-both-locales\\attachments\\booky-live-character-source-evidence-36e45cd0433287b73591112ecac25c57dae0d008.json",
+        "sha256": "2a776cc6345e8f3605a6e878b767d6110748a9e7c6de99a30d6b05b30393122a"
+      },
+      "test": "short landscape globe controls stay reachable beside the collapsed country archive in both locales"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-walk-continuity\\browser-a2\\booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales\\booky-live-character.json",
+      "sha256": "126c7d031e0d5144c93fa4e05af40a22c820f93bdc7f0cf83d8bcf9365319382",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-walk-continuity\\browser-a2\\booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales\\attachments\\booky-live-character-source-evidence-857ca0d337745a12df7fec69ff4d9b8b870e6a4e.json",
+        "sha256": "126c7d031e0d5144c93fa4e05af40a22c820f93bdc7f0cf83d8bcf9365319382"
+      },
+      "test": "Mr. Booky open help preserves primary navigation and scrolls independently in both locales"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-walk-continuity\\browser-a2\\booky-live-character-Mr-Bo-6ba06-pace-as-one-walking-command\\booky-live-character.json",
+      "sha256": "36b7d8df7b9c869bcc72517cbd477375fef5d8d4b6123a5f37c240d793a821fb",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-walk-continuity\\browser-a2\\booky-live-character-Mr-Bo-6ba06-pace-as-one-walking-command\\attachments\\booky-live-character-source-evidence-4bc135c08c64487090b50c8265039f1e05de4dc4.json",
+        "sha256": "36b7d8df7b9c869bcc72517cbd477375fef5d8d4b6123a5f37c240d793a821fb"
+      },
+      "test": "Mr. Booky treats held Enter and Space as one walking command"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-walk-continuity\\browser-a2\\booky-reader-policy-explic-219f8-on-never-grant-stale-policy\\booky-reader-policy.json",
+      "sha256": "8646013d46f24bc685de354e09fb053760168a53ab5d9411bda4bce877428f5c",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-walk-continuity\\browser-a2\\booky-reader-policy-explic-219f8-on-never-grant-stale-policy\\attachments\\booky-reader-policy-source-evidence-ef65e0e59d1ef61223a8701babaabee7b0939e11.json",
+        "sha256": "8646013d46f24bc685de354e09fb053760168a53ab5d9411bda4bce877428f5c"
+      },
+      "test": "explicit adult profile survives locale and lifecycle while drafts and deletion never grant stale policy"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-walk-continuity\\browser-a2\\booky-reader-policy-future-298cd-on-cannot-restore-admission\\booky-reader-policy.json",
+      "sha256": "50d8c1f178142da874cbc0b9b13e2e951015d0863e5e91022acbe6d9ab0a4e12",
+      "attachment": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-walk-continuity\\browser-a2\\booky-reader-policy-future-298cd-on-cannot-restore-admission\\attachments\\booky-reader-policy-source-evidence-4ce2916c60a067608d6fdb5b861797e2186e0de3.json",
+        "sha256": "50d8c1f178142da874cbc0b9b13e2e951015d0863e5e91022acbe6d9ab0a4e12"
+      },
+      "test": "future profiles are retained until confirmed deletion and failed deletion cannot restore admission"
+    }
+  ],
+  "validatedBehavior": [
+    {
+      "test": "live Mr. Booky model responds to direct interaction while the canonical globe stays unchanged",
+      "scenario": null,
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "liveThreeModelRendered": true,
+        "normalModeHasNoBitmap": true,
+        "actualRigResponds": true,
+        "actualGuidedTargetPose": true,
+        "bodyDragDoesNotTogglePanel": true,
+        "escapeCancelsBodyDrag": true,
+        "touchTapAndKeyboardWork": true,
+        "semanticPageTurn": true,
+        "wholeModelFits": true,
+        "localeRetainsRoute": true,
+        "reducedMotionStopsAnimation": true,
+        "noHiddenFrames": true,
+        "independentResourcesDisposed": true,
+        "realContextLossFallbackWorks": true,
+        "realContextRestoreRetainsModel": true,
+        "repeatedContextLossUsesFallback": true,
+        "sameCanonicalGlobe": true,
+        "noAppearanceWrites": true
+      }
+    },
+    {
+      "test": "Mr. Booky opens canonical local utilities without writes and preserves newer keyboard focus",
+      "scenario": "explicit-local-utilities",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "fourCanonicalActions": true,
+        "utilitiesBilingual": true,
+        "initialPanelHeadingDoesNotBlockRequestedFocus": true,
+        "utilitiesCollapseTips": true,
+        "underlyingSectionControlsUsable": true,
+        "newerKeyboardFocusRetained": true,
+        "staleFocusDoesNotReopenSection": true,
+        "openDoesNotChangeGraphicsOrDownloads": true,
+        "noUtilityProgressWrites": true,
+        "randomUsesCanonicalGlobe": true,
+        "sameCanonicalGlobe": true
+      }
+    },
+    {
+      "test": "Mr. Booky thirteen gestures and nonrepeating surprises finish and remain still with reduced motion",
+      "scenario": "explicit-bounded-gestures",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "thirteenExplicitGestures": true,
+        "repeatedReactionRestarts": true,
+        "surpriseChoosesDifferentGesture": true,
+        "actualRigChanges": true,
+        "sixNewMotionsObserved": true,
+        "newGesturesHaveDistinctStaticPoses": true,
+        "winkMovesOnlyOneEye": true,
+        "swayDoesNotStep": true,
+        "originalSevenAtMost1100ms": true,
+        "configuredReactionsAtMost2400ms": true,
+        "reactionsStopWithinSchedulingAllowance": true,
+        "reducedMotionHasNoReactionLoop": true,
+        "gesturesDoNotWritePreferencesOrProgress": true,
+        "sameCanonicalGlobe": true
+      }
+    },
+    {
+      "test": "Mr. Booky walks continuously in clear space only by request and stops for drag, hiding and reduced motion",
+      "scenario": "explicit-margin-walk",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "explicitFiniteWalk": true,
+        "tipsRequireExplicitCollapse": true,
+        "walkFitsViewport": true,
+        "walkStartsAtRestingRow": true,
+        "walkPathAvoidsNavigation": true,
+        "actualLegsStep": true,
+        "compactWalkAvailabilityMatchesClearSpace": true,
+        "compactWalkKeepsNavigationReachable": true,
+        "compactUnavailableWalkExplained": true,
+        "mobileTouchWalkStartsContinuously": true,
+        "mobileTouchStopsWalk": true,
+        "mobileTouchDragStopsWalk": true,
+        "mobileHeldStopCannotRestart": true,
+        "dragStopsWalk": true,
+        "manualStopWorks": true,
+        "backgroundStopsWalk": true,
+        "noAutomaticWalkResume": true,
+        "reducedMotionStopsCurrentWalk": true,
+        "reducedMotionPreventsWalk": true,
+        "walkDoesNotWritePreferencesOrProgress": true,
+        "sameCanonicalGlobe": true
+      }
+    },
+    {
+      "test": "Mr. Booky approaches the selected section once, points, and respects cancellation and reduced motion",
+      "scenario": "explicit-target-approach",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "canonicalSectionOpensBeforeWalk": true,
+        "approachMovesActualPet": true,
+        "actualLegsStep": true,
+        "tapFollowsWalk": true,
+        "tapInsideSelectedGraphicsArea": true,
+        "targetSectionStaysOpen": true,
+        "noSyntheticTargetClick": true,
+        "approachFitsViewport": true,
+        "newKeyboardInputCancelsApproach": true,
+        "actualStopPointerCancelsApproach": true,
+        "actualStopEnterCancelsApproach": true,
+        "actualStopSpaceCancelsApproach": true,
+        "stopNeverStartsReplacementWalk": true,
+        "stoppedApproachRemainsStillBeyondOriginalDeadline": true,
+        "cancelledApproachDoesNotTapOrResume": true,
+        "reducedMotionPointsWithoutTravel": true,
+        "approachDoesNotWritePreferencesOrProgress": true,
+        "sameCanonicalGlobe": true
+      }
+    },
+    {
+      "test": "Mr. Booky mobile placement preserves globe and collection hit targets in both locales",
+      "scenario": "mobile-companion-placement",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "companionAddsNoGlobeObstruction": true,
+        "openTipsDoNotBlockOutsideControls": true,
+        "collectionVisibleControlsReachable": true,
+        "manualDragAndHomeRetained": true,
+        "immediateWalkStopSettlesClear": true,
+        "resizeClampsWithoutPreferenceWrites": true,
+        "hideAndShowRetained": true,
+        "sameCanonicalGlobe": true
+      }
+    },
+    {
+      "test": "short landscape globe controls stay reachable beside the collapsed country archive in both locales",
+      "scenario": "globe-landscape-controls",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "hiddenCompanionToolbarReachable": true,
+        "shownCompanionToolbarReachable": true,
+        "allFourControlsReceiveHits": true,
+        "genuineZoomAndResetWork": true,
+        "sourceDialogCloses": true,
+        "countryExpandCollapseRetained": true,
+        "expandedCountryHeaderReachable": true,
+        "countryPanelCloseReachable": true,
+        "portraitAndDesktopRetained": true,
+        "globeFrameCannotScroll": true,
+        "directStageScrollProbe": true,
+        "noAutomaticPreferenceWrites": true,
+        "sameCanonicalGlobe": true
+      }
+    },
+    {
+      "test": "Mr. Booky open help preserves primary navigation and scrolls independently in both locales",
+      "scenario": "booky-open-help-placement",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "openHelpLocaleControlsReachable": true,
+        "desktopOpenHelpNavigationReachable": true,
+        "closedHelpNavigationReachable": true,
+        "closedHelpGlobalHeaderReachable": true,
+        "collectionHeaderReachable": true,
+        "helpScrollsByPointerWheel": true,
+        "helpClosesWhileScrolled": true,
+        "helpRegrowsOnLargerViewport": true,
+        "compactLandscapeHelpReadable": true,
+        "petAndHelpFitWithoutOverlap": true,
+        "noAutomaticPreferenceWrites": true,
+        "noHelpCameraChanges": true,
+        "sameCanonicalGlobe": true
+      }
+    },
+    {
+      "test": "Mr. Booky treats held Enter and Space as one walking command",
+      "scenario": "held-walk-keyboard",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "heldEnterStartsOnlyOnce": true,
+        "heldEnterCannotRestartAfterStop": true,
+        "heldSpaceUsesOneReleaseAction": true,
+        "noHeldKeyAutomaticResume": true,
+        "noAutomaticPreferenceWrites": true,
+        "sameCanonicalGlobe": true
+      }
+    },
+    {
+      "test": "explicit adult profile survives locale and lifecycle while drafts and deletion never grant stale policy",
+      "scenario": "explicit-reader-policy",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "explicitPolicyOnly": true,
+        "unsavedDraftDoesNotGrantPolicy": true,
+        "localeDraftRetained": true,
+        "lifecycleRechecksPolicy": true,
+        "explicitDeleteConfirmed": true,
+        "failedSaveDraftRetained": true,
+        "editedFailureRequiresExplicitSave": true,
+        "collectionDraftRetained": true,
+        "transientDeleteConfirmation": true,
+        "canonicalSceneRetained": true,
+        "noNewDialogueOrJourneyEnabled": true
+      }
+    },
+    {
+      "test": "future profiles are retained until confirmed deletion and failed deletion cannot restore admission",
+      "scenario": "future-profile-delete-recovery",
+      "flags": {
+        "actualApp": true,
+        "actualCss": true,
+        "actualGlobe": true,
+        "installedNative": false,
+        "deviceTested": false,
+        "childReviewed": false,
+        "childProfileCreated": false,
+        "childAccessGranted": false,
+        "reviewedDialogueAccepted": false,
+        "narrationEnabled": false,
+        "artAccepted": false,
+        "devicePerformanceAccepted": false,
+        "releaseReady": false,
+        "pass": true,
+        "futureRecordPreserved": true,
+        "failedDeleteDoesNotGrantPolicy": true,
+        "explicitDeleteRetryConfirmed": true,
+        "failedDeleteIntentRetained": true,
+        "canonicalSceneRetained": true,
+        "noNewDialogueOrJourneyEnabled": true
+      }
+    }
+  ],
+  "visualReview": {
+    "path": "docs/mobile/evidence/S15/booky-walk-continuity-20260923/visual-review.json",
+    "sha256": "b1fabb396df8439855754f13888e10107c3bf46c704b651cafdfc7cd3fc99c1f"
+  },
+  "inspectedImageCount": 37,
+  "unchangedTrackedInputCount": 1645,
+  "protectedInputsVerified": true,
+  "changedSourcePaths": [
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/bookyWalk.test.ts",
+    "src/host/bookyWalk.ts",
+    "src/host/useBookyWalk.ts",
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "supplementalArchiveGitIdentity": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "checkpoint": "990d8700d6ce647bac92c7f11de896fae0ed9b80",
+      "gitBlobSha256": "d0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef",
+      "checkedOutSha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79",
+      "lineEndingOnly": true
+    }
+  ],
+  "productionInventorySources": [
+    {
+      "path": "src/host/bookyJourneyContent.ts",
+      "sha256": "1ccdde359d1b363304cd177c501b9092d7cc97f878e9b5b9d66d3080fbd86a5c"
+    },
+    {
+      "path": "src/host/bookyJourneyMigrationContent.ts",
+      "sha256": "de3760af303a3fa2ead0f10142a725d814b0e532a344b296e44d457ace503823"
+    }
+  ],
+  "productionJourneyCount": 0,
+  "approvedProductionDialogueCount": 0,
+  "combinedDraftCount": 34,
+  "productionMigrationCount": 0,
+  "pwa": {
+    "path": "docs/mobile/evidence/S15/booky-walk-continuity-20260923/pwa-a1/result.json",
+    "sha256": "309629b11a23bc303f86422ffa441a1483a1e5a53c6e66ebc059886070cf69c7"
+  },
+  "android": {
+    "path": "docs/mobile/evidence/S15/booky-walk-continuity-20260923/android-a1/result.json",
+    "sha256": "bd03a4c6bbc1354cc7be010fb2e8bbb3cc6010b30f1621bfc02b5f34c40d4dc4"
+  },
+  "pwaBuildId": "98c6f6b5edcc692e48af7d91a143b708634737c057687e823954e21678aba3ba",
+  "androidBuildId": "050a07df6e8aaf9af6edb30e22d21018eea0cd31a569bf2bdc4d69b5eb247745",
+  "apk": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity/android-050a07df/app-dev-debug.apk",
+    "bytes": 70289891,
+    "sha256": "53f3ffda9337b3494b8fcb5d73c17c1c767b3e70e04e8fc5e8b2bfa5add49985"
+  },
+  "buildManifests": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity/pwa-98c6f6b5/artifact.json",
+      "sha256": "72829271daf417b5a8da1279b61890ffb6538e228125484ae5b560fbf19c57bb"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-walk-continuity/android-050a07df/runtime/artifact.json",
+      "sha256": "5ab123382e76eb33cd7522a72ed33666f069ee41c29715403824d450945ba99c"
+    }
+  ],
+  "buildAudits": [
+    {
+      "path": "docs/mobile/evidence/S15/booky-walk-continuity-20260923/pwa-a1/strict-audit.json",
+      "sha256": "3bc1fe9bd3957a7fbd126163365cee65e2955e1dd4312eb7d8ddb877d85f53f9"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-walk-continuity-20260923/android-a1/native-artifact-audit.json",
+      "sha256": "53ef302a7a6f8aa388bab3f22c3244f9387307e0cfc5afada90b2aa6fca887a0"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-walk-continuity-20260923/android-a1/android-dev-apk-verification.json",
+      "sha256": "9f89e49b0276416ec04e5372fbf96512beeb68d28de930bd219e334f47d6e85a"
+    },
+    {
+      "path": "docs/mobile/evidence/S15/booky-walk-continuity-20260923/android-a1/build-run.json",
+      "sha256": "485f45408e9e457e9f8b1f6a82cc25bb4a500c216b50dbe48020ea560018b666"
+    }
+  ],
+  "buildBaseline": {
+    "path": "docs/mobile/evidence/S15/booky-walk-continuity-20260923/build-baseline-a2.json",
+    "sha256": "bfa5efaafe5490bef3228315380e3b2f582f381adba1b3251b696ccca13d9374"
+  },
+  "copyVerification": {
+    "path": "docs/mobile/evidence/S15/booky-walk-continuity-20260923/pwa-a1/copy-verification.json",
+    "sha256": "132225fd56136f79c200a379d29b9399fdfc3f303aa0fa94536e66b8b1ba9b7e"
+  },
+  "pwaBrowserReport": {
+    "path": "docs/mobile/evidence/S15/booky-walk-continuity-20260923/pwa-a1/playwright.json",
+    "sha256": "acd49518c33f203fd5d0d9d600d957c0047dce1384372137ca807367610bc3ca"
+  },
+  "buildsRebuilt": true,
+  "browserRerun": true,
+  "retainedContext": {
+    "sourceCommit": "78d6c5731db4b6123c240153e59fa3bd2c346ee9",
+    "result": {
+      "path": "docs/mobile/evidence/S15/booky-approach-stop-20260923/result.json",
+      "sha256": "b55dbae9b598a5e67ac0c21a307db220a8a95dfb0d920310aa953a96bf29aae4"
+    },
+    "unitCount": 147,
+    "browserCases": 10,
+    "allPriorSelectedCasesRerun": true,
+    "formerLargerSuitesRerun": false,
+    "photos": {
+      "path": "docs/mobile/evidence/S15/booky-enhancement-20260923/photo-review.json",
+      "sha256": "3ff136d24df8259fb1449370801f9c95b0415f4bcc0ba716a15205718f050acc",
+      "renderReport": {
+        "sha256": "c16148f1c46180b6989061f65fa256f48eb4ca8f6baae54d93912a54a77cde22",
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-enhancement\\portraits-v2\\render-result.json"
+      },
+      "imageCount": 3,
+      "additionalToBrowserImages": true,
+      "sourceBindingsVerified": true
+    }
+  },
+  "criteriaUpdated": [
+    "PLANETKA-002",
+    "PLANETKA-005"
+  ],
+  "criterionChanges": [],
+  "requirementChanges": [],
+  "allStageAndCriterionStatusesUnchanged": true,
+  "counts": {
+    "COMPLETE": 3,
+    "IN_PROGRESS": 12,
+    "NOT_STARTED": 26
+  },
+  "firstUnresolved": "S03.acceptance",
+  "decisionD183Recorded": true,
+  "nextAction": "Continue the user-prioritized mobile companion refinement from this checkpoint without repeated authorization. Preserve touch activation, continuous walking through clear space, explicit cancellation, readable help, reduced-motion stillness, saved progress and canonical scene ownership. Full journey integration remains deferred. S03.acceptance remains first unresolved; device, full accessibility and stage/release acceptance remain open.",
+  "limitations": [
+    "Manual walking uses a conservative whole-companion corridor. A cramped layout can disable walking with a localized explanation instead of moving through controls. Mobile browser touch checks do not constitute installed-device acceptance.",
+    "The open-help placement searches finite gaps and retains readable scrolling; crowded small screens can still require overlap with underlying navigation. Strict navigation reachability is claimed only for the tested desktop/open-help and small-screen/closed-help states.",
+    "Fresh browser evidence covers the configured companion and reader-policy fixtures only; earlier broader suites remain attributed to their original sources.",
+    "Native OS/preference ports are controlled browser test ports. No installed device, nonzero OS-safe-area validation or iOS compilation was used.",
+    "Companion geometry and finite gesture poses are unchanged; retained real model photographs remain original-source renders.",
+    "Production journey and migration inventories remain empty; all 34 dialogue drafts remain unapproved.",
+    "All requirement and stage statuses remain unchanged; no release or production action is performed."
+  ],
+  "bookyWalkContinuityImplemented": true,
+  "runtimeWiringImplemented": true,
+  "characterJourneyNodeImplemented": false,
+  "productionJourneysEnabled": false,
+  "reviewedDialogueAccepted": false,
+  "childApproved": false,
+  "narrationEnabled": false,
+  "installedNativeDevice": false,
+  "iosCompiled": false,
+  "fullAccessibilityAccepted": false,
+  "artAccepted": false,
+  "brandingApproved": false,
+  "rightsApproved": false,
+  "stageAccepted": false,
+  "productionActionsPerformed": false,
+  "releaseReady": false
+}
