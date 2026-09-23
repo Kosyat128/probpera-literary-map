@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-23T17:43:41.652Z",
+  "stage": "S15",
+  "checkpoint": "350aa50c8bb0610d60778fe59f14ac84ba992a65",
+  "previous": "docs/mobile/evidence/S15/booky-walk-continuity-20260923/result.json",
+  "previousCheckpointResult": {
+    "path": "docs/mobile/evidence/S15/booky-walk-continuity-20260923/result.json",
+    "sha256": "8b50f0ff41902388f941207a8883d98d811b10a9a783fba0b8eef00e053c2a23"
+  },
+  "previousRuntimeResult": {
+    "path": "docs/mobile/evidence/S15/booky-walk-continuity-20260923/result.json",
+    "sha256": "8b50f0ff41902388f941207a8883d98d811b10a9a783fba0b8eef00e053c2a23"
+  },
+  "priorSourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-walk-continuity-20260923/source-manifests/8a694d6a23fc1db5.json",
+    "sha256": "8a694d6a23fc1db59411c0b196b169b4d9c8311b06d1ec8fad4411215ad3617b",
+    "fileCount": 1650
+  },
+  "scopeConfiguration": {
+    "path": "docs/mobile/evidence/S15/booky-mobile-dock-20260923/scope.json",
+    "sha256": "69c8d73f8872db4acaeb938c23608e5a263258706d157268905bebaab2e04b45"
+  },
+  "checkpointFiles": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "6691806ac8f76aaee14d5af4b78fb1c6f4a26ef6266b7b67ee4687e4f4089f87"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "89243ae67324082f8f92e3837b8829e511b9611413a764c7330580c05afe3748"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "525fc12f1c33dc176c9280bb4a9ef675624efd65015b11583dd9e8f82fda9be5"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "42024a630049c9f60ef75c95c9c327e8eca6539a0ca89331585b5c9f44d62335"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "fcb56876b378d6b94ff73e686018e3596f83cfafbaf30f00dd010e50b1b286bd"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "edefec9ddd4008b81d3782b5f85f77d157f39a2c7737340237a9ea5166f8f4d9"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.json",
+      "sha256": "848f27af43654736285c62e6160e7dc4e902b673adcfe15e3db3ff29786c308b"
+    },
+    {
+      "path": "docs/mobile/REQUIREMENTS_TRACEABILITY.csv",
+      "sha256": "8014a1cd99a8ed3039d325d50def080620c9e34a4e8d4982d556a8721b2e743c"
+    }
+  ],
+  "changedPaths": [
+    "src/App.tsx",
+    "src/host/NativePlanetPanel.tsx",
+    "src/host/PlanetMascotControls.css",
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/bookyWalk.test.ts",
+    "src/host/bookyWalk.ts",
+    "src/host/host.css",
+    "tests/pwa/booky-live-character.spec.mjs"
+  ],
+  "newSourcePaths": [],
+  "newImplementationFiles": [],
+  "currentSourceInputs": [
+    {
+      "path": "src/App.tsx",
+      "sha256": "98c62e65a3233f812ce1a76003885890de481abdce55ec51d0e4f9f3cc9ea5e1"
+    },
+    {
+      "path": "src/host/NativePlanetPanel.tsx",
+      "sha256": "1a719e276a818c667d40467beee4079e082b3f8756eda64a9989ab9bd77b4910"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.css",
+      "sha256": "0b8c098f7b489797055e8600c416c183e3de42c008794c413a58c95640da8ea7"
+    },
+    {
+      "path": "src/host/PlanetMascotControls.tsx",
+      "sha256": "800412fc1f91b1d77882f9372a97632d0f89103416100859de6fb888df9c10e3"
+    },
+    {
+      "path": "src/host/bookyWalk.test.ts",
+      "sha256": "de88b01edb57a19dd41f03c973dfc2a6249686e1416f876988291991e3e9917c"
+    },
+    {
+      "path": "src/host/bookyWalk.ts",
+      "sha256": "959f4cfe393d6e46ad798ecfba61e423b06f1f3b035bf2e1e762142b65b95f05"
+    },
+    {
+      "path": "src/host/host.css",
+      "sha256": "5293682e2f25b108a1aca1281d9133810476aefd0eefdb770e65c81a7262875d"
+    },
+    {
+      "path": "tests/pwa/booky-live-character.spec.mjs",
+      "sha256": "65e12864a795538ce82ae7792b90bccf50d4f4d5ada6e76f7a0537367144d2f5"
+    }
+  ],
+  "sourceInputCount": 1650,
+  "protectedInputCount": 1642,
+  "runtimeRequired": [
+    "src/App.tsx",
+    "src/host/NativePlanetPanel.tsx",
+    "src/host/PlanetMascotControls.css",
+    "src/host/PlanetMascotControls.tsx",
+    "src/host/bookyWalk.ts",
+    "src/host/host.css"
+  ],
+  "supplementalTestInputs": [
+    {
+      "path": "scripts/lib/book-dossier-fixtures.ts",
+      "sha256": "b25d8053e541ef7ee417d01525df846de27b7ba9ab9084547110c6cac599d82c"
+    },
+    {
+      "path": "scripts/lib/book-dossier-graph-fixture.ts",
+      "sha256": "01c16a94949b2d396dc421b48da660f63c920f41c6b19857d30b0d134abda563"
+    }
+  ],
+  "supplementalBrowserInputs": [
+    {
+      "path": "public/articles/book-mentions.json",
+      "sha256": "d0fb545eef2475f5065a2e4c37fabb44785b701841671254e642bcec072716e1"
+    }
+  ],
+  "supplementalArchiveInputs": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "sha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79"
+    }
+  ],
+  "supplementalArchiveGitIdentity": [
+    {
+      "path": "data/book-canon-source-registry.json",
+      "checkpoint": "350aa50c8bb0610d60778fe59f14ac84ba992a65",
+      "gitBlobSha256": "d0428d265845b68d6d5ee2ad9828353c91456eb5e57baf0f639702b8656044ef",
+      "checkedOutSha256": "5eae97e202f4369f76e6b8e7b66764c5fae6fe81099d442a12339af197b9ef79",
+      "lineEndingOnly": true
+    }
+  ],
+  "unitFiles": [
+    "src/host/bookyModel.test.ts",
+    "src/host/bookyAnimation.test.ts",
+    "src/host/bookyWalk.test.ts",
+    "src/host/planetMascot.test.ts",
+    "src/host/planetMascotPreference.test.ts",
+    "src/host/planetMascotPersistence.test.ts",
+    "src/host/bookySupport.test.ts",
+    "src/host/bookyTourProgress.test.ts",
+    "src/host/bookyPlacement.test.ts"
+  ],
+  "browserFiles": [
+    "tests/pwa/booky-live-character.spec.mjs",
+    "tests/pwa/booky-reader-policy.spec.mjs"
+  ],
+  "expectedUnitTests": 154,
+  "expectedBrowserTests": 13,
+  "expectedImages": 41,
+  "scope": "Книжулик / Mr. Booky uses a reserved compact mobile row beneath scrolling open graphics settings. A selected-section approach points once and can finish with a finite return; explicit Stop or dragging cancels the return and retains the current position. Reduced motion remains still. The tested graphics labels, radios and collection header remain reachable, using scrolling where required; narrow screens need not show all options at once. The same avatar, saved progress and canonical globe remain in use.",
+  "runtimeWiringImplemented": true,
+  "characterJourneyNodeImplemented": false,
+  "childApproved": false,
+  "stageAccepted": false,
+  "releaseReady": false
+}

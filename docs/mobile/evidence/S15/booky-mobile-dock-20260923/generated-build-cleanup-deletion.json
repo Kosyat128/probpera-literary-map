@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-23T17:44:34.6750407+00:00",
+  "pass": true,
+  "dryRun": false,
+  "removed": true,
+  "onlyD182GeneratedDuplicates": true,
+  "priorCheckpoint": {
+    "sha256": "8b50f0ff41902388f941207a8883d98d811b10a9a783fba0b8eef00e053c2a23",
+    "path": "docs/mobile/evidence/S15/booky-walk-continuity-20260923/result.json"
+  },
+  "priorEvidence": {
+    "path": "docs/mobile/evidence/S15/booky-approach-stop-20260923/result.json",
+    "sha256": "b55dbae9b598a5e67ac0c21a307db220a8a95dfb0d920310aa953a96bf29aae4"
+  },
+  "targets": [
+    {
+      "sourceCommit": "78d6c5731db4b6123c240153e59fa3bd2c346ee9",
+      "kind": "pwa",
+      "preserved": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-approach-stop\\pwa-86fb2772",
+      "buildId": "86fb2772591dc9cd29946cf9b43e2502ca4062e0b77e17e5726ae649f8400b32",
+      "files": 1427,
+      "artifactSha256": "07bf601351680a5676b1e63a11ec1da0ff1f35845ca0a0b77b2b04c666a1e404",
+      "target": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\pwa-previous-51ea237a-e652-4f2d-931a-ea56a5aa7050",
+      "buildResult": {
+        "path": "docs/mobile/evidence/S15/booky-approach-stop-20260923/pwa-a1/result.json",
+        "sha256": "fdd1d9d27094fc0dea31ced3dd57d8039017fcc866b30f49473f9b05a5372e95"
+      },
+      "bytes": 76764827
+    },
+    {
+      "sourceCommit": "78d6c5731db4b6123c240153e59fa3bd2c346ee9",
+      "kind": "android",
+      "preserved": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-approach-stop\\android-a74ff0e4\\runtime",
+      "buildId": "a74ff0e4c1450412b9ca35ffc4553b5c2de8de44a584418c07b07c377a53d62e",
+      "files": 1408,
+      "artifactSha256": "9751af88907d83817281a5c28eefa53f4eacfbb28d7302457f196ee55d23ed56",
+      "target": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-previous-844188c0-da11-4d36-b25d-2db0dd67bb13",
+      "buildResult": {
+        "path": "docs/mobile/evidence/S15/booky-approach-stop-20260923/android-a1/result.json",
+        "sha256": "434f9fc3c369abc65704b871e1a7518fabebbfb6148e606f0201bf22c7a57195"
+      },
+      "bytes": 74844790
+    }
+  ],
+  "bytes": 151609617.0,
+  "releaseReady": false,
+  "preflight": {
+    "sha256": "28973ada6d926f6daff3510e6329a9e0cc8a27d45ca11a9f4688726bb9ebd0fa",
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s15-booky-mobile-dock\\staging\\generated-build-cleanup-preflight.json"
+  }
+}

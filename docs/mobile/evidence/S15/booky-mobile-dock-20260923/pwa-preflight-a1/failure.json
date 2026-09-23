@@ -1,0 +1,12 @@
+{
+  "pass": false,
+  "classification": "launcher-preflight-failure",
+  "nodeExit": 1,
+  "command": "node docs/mobile/evidence/S15/booky-mobile-dock-20260923/build-pwa-a1.mjs b5ee5ac5fc0c314bdd2060b2c2234fcb63c3d28c",
+  "evidence": "exec chunk9229f1 returned exit1 before build start",
+  "error": "git rev-parse HEAD failed with dubious ownership; process-local safe.directory environment was missing",
+  "buildStarted": false,
+  "sourceChanged": false,
+  "preservedEmptyAttemptDirectory": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S15\\booky-mobile-dock-20260923\\pwa-preflight-a1",
+  "correction": "Pass process-local safe.directory and core.autocrlf=false to the launcher; no global Git changes"
+}

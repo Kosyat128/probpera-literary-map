@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    "--config=docs/mobile/evidence/S15/booky-mobile-dock-20260923/playwright.config.mjs"
+  ],
+  "startedAt": "2026-09-23T17:43:58.556Z",
+  "exitCode": 0,
+  "durationMs": 275712,
+  "stdout": {
+    "path": "docs/mobile/evidence/S15/booky-mobile-dock-20260923/browser-a1/stdout.log",
+    "bytes": 2036,
+    "sha256": "1e2e7ec27404c5adb857284748ad3dfaa144b7ba163dac6000bcff3f4d2d3781"
+  },
+  "stderr": {
+    "path": "docs/mobile/evidence/S15/booky-mobile-dock-20260923/browser-a1/stderr.log",
+    "bytes": 164,
+    "sha256": "7fc9265662dc0f808f8871523554006b8aab4d133f6d7e2f448e38bcc50314c2"
+  }
+}

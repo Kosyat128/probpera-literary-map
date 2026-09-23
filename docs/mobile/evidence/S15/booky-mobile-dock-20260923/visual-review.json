@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-23T17:51:48.842Z",
+  "pass": true,
+  "sourceCommit": "b5ee5ac5fc0c314bdd2060b2c2234fcb63c3d28c",
+  "sourceManifest": {
+    "path": "docs/mobile/evidence/S15/booky-mobile-dock-20260923/source-manifests/75cb91459457a4d7.json",
+    "sha256": "75cb91459457a4d7d9ccf278af6cc6eeb31cb0fa90f77db469da59c0ad604d1b",
+    "fileCount": 1650
+  },
+  "inspectedCount": 8,
+  "totalCapturedCount": 41,
+  "scope": "Direct review of all four new RU390/EN320 pointing and settled captures, plus four affected collection/help captures. Other retained regression images are authenticated but are not claimed visually reviewed in this batch.",
+  "limitations": [
+    "Static review covers eight of the 41 authenticated final captures. Touch behavior and movement are established by the corresponding browser assertions and finite traces.",
+    "During deliberate pointing or after explicit Stop, the companion can remain above content. Open help can overlay underlying controls; the tested completed demonstration clears the visible graphics labels.",
+    "The lower part of narrow-screen graphics content requires scrolling. No installed-device or nonzero native safe-area visual acceptance is claimed."
+  ],
+  "delegatedReview": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-dock/visual-subset.json",
+    "sha256": "d1f603457a9fcb644ed0473cde11f6089f08c32b55973bdfeaa665dd02139b83"
+  },
+  "images": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-dock/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-collection-en-landscape.png",
+      "sha256": "35bb2c34a48efa167b75b4e283d3301f996bf8c547b9473681d432f15e38ba87",
+      "bytes": 151200,
+      "inspected": true,
+      "reviewer": "/root/booky_compact_browser",
+      "method": "direct-view_image",
+      "findings": [
+        "At 800 x 400 the collection header, locale selector and close control are separate from the floating companion.",
+        "The existing landscape avatar and tools remain legible; lower About the book buttons are visible. The floating row still overlays some card title text at this width, outside the mobile graphics dock scope."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-dock/browser-a1/booky-live-character-Mr-Bo-94eeb-hit-targets-in-both-locales/booky-mobile-collection-tips-en-320.png",
+      "sha256": "5fc43fa7a72836fc4e84d0f9274eeb1067bb51ce65503bfaac9a023491d89697",
+      "bytes": 130493,
+      "inspected": true,
+      "reviewer": "/root/booky_compact_browser",
+      "method": "direct-view_image",
+      "findings": [
+        "At 320 x 844 the collection header remains separate from the help card and its visible close control.",
+        "The compact companion row occupies the reserved bottom strip with a fully visible avatar, move/hide buttons and disabled walking button. The scrolling collection ends above that strip.",
+        "The readable help viewport intentionally overlays collection content; the screenshot does not establish reachability of controls underneath the open help."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-dock/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-collection-ru-320.png",
+      "sha256": "8a9c0eebef4963ea5e3347956e576658f925c1969f619aa80c1345b85abcd923",
+      "bytes": 102393,
+      "inspected": true,
+      "reviewer": "/root/booky_compact_browser",
+      "method": "direct-view_image",
+      "findings": [
+        "The Russian collection header, locale selector and close control remain clear at 320 x 844.",
+        "The Russian help heading and close button fit its scrolling viewport; the compact avatar, move/hide buttons and walk label fit the reserved footer without covering the visible Balanced/Economy labels.",
+        "Open help intentionally overlays part of the graphics content. Lower graphics content continues beneath the scroll boundary and requires scrolling; this is not a claim that every option is fully visible at once."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-dock/browser-a1/booky-live-character-Mr-Bo-ed7a0-dependently-in-both-locales/booky-help-collection-en-320.png",
+      "sha256": "ea1da3ad5c7357744fe2cac6f4d0bff67604a3fac2022619685787fc215a14c7",
+      "bytes": 104121,
+      "inspected": true,
+      "reviewer": "/root/booky_compact_browser",
+      "method": "direct-view_image",
+      "findings": [
+        "The English collection header, locale selector and close control remain clear at 320 x 844.",
+        "The English help heading and close button fit; Balanced and Economy labels remain visually clear below the card. Avatar and 44 px controls form a readable compact footer.",
+        "Open help still overlays part of the Rich option and preceding copy. The scroll-content ends above the reserved footer, and full option visibility requires scrolling."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-dock/browser-a1/booky-live-character-mobil-872bf-p-and-reduced-motion-ru-390/booky-mobile-graphics-approach-ru-390.png",
+      "sha256": "bf649819ab97f36d20e9a96336979b75a96ce61095ead588a133d8742249d8bb",
+      "bytes": 79088,
+      "inspected": true,
+      "reviewer": "/root",
+      "method": "direct-view_image",
+      "findings": [
+        "The finite pointing frame shows the existing green 3D companion beside the selected graphics area. The native header remains separate.",
+        "The deliberate demonstration temporarily overlays part of the option text; the subsequent return is necessary and tested separately."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-dock/browser-a1/booky-live-character-mobil-872bf-p-and-reduced-motion-ru-390/booky-mobile-graphics-settled-ru-390.png",
+      "sha256": "5d207252dd1b8b1cd827cb219801c15b6815ceb147333de3ac053e2d3a1b0a44",
+      "bytes": 78975,
+      "inspected": true,
+      "reviewer": "/root",
+      "method": "direct-view_image",
+      "findings": [
+        "The complete avatar, move/hide buttons and walking control fit in the reserved bottom row; visible setting labels and radio controls are clear.",
+        "Scrolling graphics content ends above the companion. At 320 px the lower Economy paragraph continues below that boundary and requires ordinary scrolling."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-dock/browser-a1/booky-live-character-mobil-9ea6d-p-and-reduced-motion-en-320/booky-mobile-graphics-approach-en-320.png",
+      "sha256": "2a7a2762682a8b63ce1fcd8cfce4582871b2828aeb25fe24fbe38fca3aa3c3ee",
+      "bytes": 67654,
+      "inspected": true,
+      "reviewer": "/root",
+      "method": "direct-view_image",
+      "findings": [
+        "The finite pointing frame shows the existing green 3D companion beside the selected graphics area. The native header remains separate.",
+        "The deliberate demonstration temporarily overlays part of the option text; the subsequent return is necessary and tested separately."
+      ]
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s15-booky-mobile-dock/browser-a1/booky-live-character-mobil-9ea6d-p-and-reduced-motion-en-320/booky-mobile-graphics-settled-en-320.png",
+      "sha256": "11a6e0068d69e94af8afb183462e98737313b576f481da6c1edd68a0fef4e618",
+      "bytes": 67671,
+      "inspected": true,
+      "reviewer": "/root",
+      "method": "direct-view_image",
+      "findings": [
+        "The complete avatar, move/hide buttons and walking control fit in the reserved bottom row; visible setting labels and radio controls are clear.",
+        "Scrolling graphics content ends above the companion. At 320 px the lower Economy paragraph continues below that boundary and requires ordinary scrolling."
+      ]
+    }
+  ],
+  "releaseReady": false
+}
